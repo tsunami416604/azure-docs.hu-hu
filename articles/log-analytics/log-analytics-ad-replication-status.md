@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c248e126d99c7cb83895871ec24d41ffcfd84d29
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 08d17566faa61c5dcac01a49f99f0f39eb280946
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960684"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009742"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>A Log Analytics használatával az Active Directory-replikációs állapotának figyelése
 
@@ -110,7 +110,7 @@ Ha egyik lista tetszőleges elemre kattint, láthatja naplóbeli keresés haszn�
 
 ![Replikációs állapothibák AD keresési eredmények](./media/log-analytics-ad-replication-status/oms-ad-replication-search-details.png)
 
-Itt további szűréséhez, módosítsa a keresési lekérdezést, és így tovább. A naplóbeli keresés használatával kapcsolatos további információkért lásd: [Naplókereséseket](log-analytics-log-search.md).
+Itt további szűréséhez, módosítsa a keresési lekérdezést, és így tovább. A naplóbeli keresés használatával kapcsolatos további információkért lásd: [Naplókereséseket](log-analytics-queries.md).
 
 A **HelpLink** mezőben látható URL-címét a TechNet-oldal, további részletekkel a meghatározott hiba. Másolja, és ez a hivatkozás illessze be a böngészőablakot, hibaelhárítási és a hiba kijavítása információinak megtekintéséhez.
 
@@ -154,4 +154,4 @@ Csatlakozás a tartományvezérlők egyik segítségre van szüksége, ha megtek
 Ha nem szeretne csatlakozni a tartományvezérlők bármelyikét közvetlenül a Log Analytics vagy a System Center Operations Manager, [ahhoz, hogy egy nem tartományvezérlő AD adatokat küldeni a Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
 
 ## <a name="next-steps"></a>További lépések
-* Használat [Log Analytics naplóbeli kereséseivel](log-analytics-log-search.md) Active Directory-replikáció állapota részletes adatainak megtekintéséhez.
+* Használat [Log Analytics naplóbeli kereséseivel](log-analytics-queries.md) Active Directory-replikáció állapota részletes adatainak megtekintéséhez.

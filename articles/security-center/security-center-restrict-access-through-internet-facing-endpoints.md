@@ -3,7 +3,7 @@ title: Az Azure Security Centerben az Internet felé néző végpontok hozzáfé
 description: Ez a dokumentum bemutatja, hogyan valósíthat meg az Azure Security Center javaslatait **internetről elérhető végponton keresztüli hozzáférés korlátozása**.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 727d88c9-163b-4ea0-a4ce-3be43686599f
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/03/2017
-ms.author: terrylan
-ms.openlocfilehash: 0b7de1f63f765705a78535ae04c1b844e06c029c
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: 8e404651fa315f630ff190c9e70ccdd3eec7f117
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301157"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230002"
 ---
 # <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>Az Azure Security Centerben az Internet felé néző végpontok hozzáférésének korlátozása
 Az Azure Security Center javasolni fogja, hogy az Internet felé néző végpontok hozzáférésének korlátozása, ha bármely a hálózati biztonsági csoportok (NSG) egy vagy több bejövő szabályt, amely engedélyezi a hozzáférést a "bármely" forrás IP-címről. Nyissa meg a "bármely" való hozzáférést lehetővé teheti a támadók számára az erőforrások eléréséhez. A Security Center javasolni fogja, hogy a forrás IP-címek, amelyek ténylegesen hozzá kell férniük való hozzáférés korlátozása a bejövő szabályok szerkesztése.
@@ -66,7 +66,7 @@ A Security Centerrel kapcsolatos további információkért olvassa el a követk
 * [Biztonsági riasztások kezelése és reagálás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Partneri megoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md) – Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-* [Azure biztonsági blog](http://blogs.msdn.com/b/azuresecurity/) – Tájékozódás az Azure biztonságával kapcsolatos legfrissebb hírekről és információkról.
+* [Azure biztonsági blog](https://blogs.msdn.com/b/azuresecurity/) – Tájékozódás az Azure biztonságával kapcsolatos legfrissebb hírekről és információkról.
 
 <!--Image references-->
 [1]: ./media/security-center-restrict-access-thru-internet-facing-endpoint/restrict-access-thru-internet-facing-endpoint.png

@@ -8,12 +8,12 @@ ms.date: 06/06/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: beb7574653375024f36912c4b3a37b01d2f59bd5
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 12c53b1fdad4ab8f55c000ca1cb4f08dab7c8a74
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248395"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230368"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Ismerje meg, hogyan helyezhet üzembe modulokat, és ezekkel létesíthetnek útvonalat IoT Edge-ben
 
@@ -174,7 +174,7 @@ Manifest nasazení az IoT Edge-eszközön üzembe helyezett minden egyes modul a
 
 Manifest nasazení nem ad meg egy ikermodul kívánt tulajdonságok, ha az IoT Hub az ikermodul semmilyen módon nem módosítják, és állítsa be a kívánt tulajdonságokat programozott módon lesz.
 
-Ugyanazt a mechanizmust, amelyek lehetővé teszik, hogy módosítsa az ikereszközök ikermodulokkal módosítására szolgálnak. További információkért lásd: a [device twin fejlesztői útmutató](../iot-hub/iot-hub-devguide-device-twins.md).   
+Ugyanazt a mechanizmust, amelyek lehetővé teszik, hogy módosítsa az ikereszközök ikermodulokkal módosítására szolgálnak. További információkért lásd: a [modul ikereszköz – fejlesztői útmutató](../iot-hub/iot-hub-devguide-module-twins.md).   
 
 ## <a name="deployment-manifest-example"></a>Jegyzékfájl központi telepítés példája
 

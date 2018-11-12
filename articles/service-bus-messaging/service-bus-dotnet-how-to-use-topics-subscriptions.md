@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 09/03/2018
 ms.author: spelluru
-ms.openlocfilehash: ea145a1f5ccad98c19b3f779ea297644350b984b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: d48d658883324637e1026ac00312ade86ccc1400
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393315"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230580"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Bevezetés a Service Bus-üzenettémák használatába
 
@@ -35,7 +35,7 @@ Ez az oktatóanyag a következő lépéseken vezet végig:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. [Visual Studio 2017 3-as frissítés (verziószám: 15.3, 26730.01)](http://www.visualstudio.com/vs) vagy újabb.
+1. [Visual Studio 2017 3-as frissítés (verziószám: 15.3, 26730.01)](https://www.visualstudio.com/vs) vagy újabb.
 2. [NET Core SDK](https://www.microsoft.com/net/download/windows), 2.0-s vagy újabb verzió.
 2. Azure-előfizetés.
 

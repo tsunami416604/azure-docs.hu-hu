@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 2ec712dcce1295a91f552176ddcf6572d3f23ecc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8bf87f9d1d1ab6da4b034890f1fbe058199eca41
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993561"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007136"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Jelentkezzen be egy Linux rendszerű virtuális gép az Azure-ban az Azure Active Directory-hitelesítés (előzetes verzió)
 
@@ -43,7 +43,7 @@ Nincsenek számos előnnyel jár, jelentkezzen be az Azure-beli, Linux rendszer�
 
 A következő Linux-disztribúció jelenleg a szolgáltatás az előzetes verzióban támogatja:
 
-| Disztribúció | Verzió |
+| Terjesztés | Verzió |
 | --- | --- |
 | CentOS | CentOS 6.9 és a CentOS 7.4 |
 | Debian | Debian 9 |
@@ -147,6 +147,20 @@ Amikor a rendszer kéri, adja meg az Azure AD bejelentkezési hitelesítő adata
     You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.
 
 Zárja be a böngészőablakot, térjen vissza az SSH parancssor, és nyomja le az **Enter** kulcsot. Most már bejelentkezett az Azure-beli Linuxos virtuális gép szerepkör engedélyeivel, hozzárendelt, mint például *a virtuális gép felhasználójának* vagy *VM rendszergazda*. Ha a felhasználói fiók hozzá van rendelve a *virtuális gépre való rendszergazdai bejelentkezés* szerepkör, használhatja a `sudo` legfelső szintű jogosultságokat igénylő parancsok futtatásához.
+
+## <a name="sudo-and-aad-login"></a>Sudo és AAD-bejelentkezés
+
+Az első futtatásakor sudo, a rendszer kéri, másodszor hitelesítéséhez. Ha nem szeretné futtatni a sudo újra hitelesíteni kell, szerkesztheti a sudoers fájl `/aad/etc/sudoers.d/aad_admins` , és cserélje le ezt a sort:
+
+```bash
+%aad_admins ALL=(ALL) ALL
+```
+az ezt a sort:
+
+```bash
+%aad_admins ALL=(ALL) NOPASSWD:ALL
+```
+
 
 ## <a name="troubleshoot-sign-in-issues"></a>Bejelentkezési problémák elhárítása
 

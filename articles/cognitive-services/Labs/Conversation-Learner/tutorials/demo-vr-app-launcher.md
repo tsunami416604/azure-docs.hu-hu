@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 896ec007c03e30e5c20a5344430be040271bc00b
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 31efcb2b2f05bd7a49701be708a89db8f2ef26f7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171148"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229697"
 ---
 # <a name="demo-virtual-reality-app-launcher"></a>Bemutató: Virtuális valóságban appindítója
 
@@ -23,7 +23,7 @@ Ez a bemutató mutatja be a virtuális valóságban modell indítója, amely tá
 
 ## <a name="video"></a>Videó
 
-[![Bemutató VR alkalmazás előnézete](http://aka.ms/cl-demo-vrapp-preview)](http://aka.ms/blis-demo-vrapp)
+[![Bemutató VR alkalmazás előnézete](https://aka.ms/cl-demo-vrapp-preview)](https://aka.ms/blis-demo-vrapp)
 
 ## <a name="requirements"></a>Követelmények
 

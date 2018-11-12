@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: be6bda4f5c420d1e631690fc648f982d4910e198
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 6688432342ff08d2ca177570cc6bbbe0095ccbe0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585985"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229065"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Méretezhető adatelemzés az Azure Data Lake: egy végpontok közötti forgatókönyv
-Ez az útmutató bemutatja, hogyan használható az Azure Data Lake adatáttekintés és a bináris osztályozási feladatok NYC taxi út mintán és adatkészlet előrejelzési e tipp egy diszkont fizeti díjszabás. Emellett végigvezeti a lépéseken, a [csoportos adatelemzési folyamat](http://aka.ms/datascienceprocess), a végpontok közötti, az adatgyűjtés a tanítási modell, majd a központi telepítését egy webszolgáltatás, amelyet a modell tesz közzé.
+Ez az útmutató bemutatja, hogyan használható az Azure Data Lake adatáttekintés és a bináris osztályozási feladatok NYC taxi út mintán és adatkészlet előrejelzési e tipp egy diszkont fizeti díjszabás. Emellett végigvezeti a lépéseken, a [csoportos adatelemzési folyamat](https://aka.ms/datascienceprocess), a végpontok közötti, az adatgyűjtés a tanítási modell, majd a központi telepítését egy webszolgáltatás, amelyet a modell tesz közzé.
 
 ### <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 A [a Microsoft Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/) minden képessége az adatszakértők elérhetővé bármilyen méretű, alakzat és sebességű adatok tárolására, és elvégezheti az adatok feldolgozási, fejlett elemzési és gépi tanulási modellezés nagy az a költséghatékony méretezhetősége.   A díjfizetés Feladatonkénti alapon, csak a ténylegesen feldolgozott adatok esetén. Az Azure Data Lake Analytics U-SQL tartalmazza, egy nyelv, amely az SQL deklaratív jellegét a biztosít méretezhető C# kifejezőerejével az elosztott lekérdezési képességek. Ez lehetővé teszi az olvasási séma alkalmazásával strukturált adatok feldolgozására, egyéni logikát és a felhasználó által definiált függvények (UDF) beszúrása, és ahhoz, hogy szabályozásához hogyan hajtható végre, ipari méretekben bővíthetőséget. A U-SQL mögött tervezési filozófia kapcsolatos további információkért lásd: [Visual Studio blogbejegyzés](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/).
@@ -684,7 +684,7 @@ A webszolgáltatás irányítópultján hamarosan jeleníti meg:
 Ez a forgatókönyv végrehajtásával létrehozott egy olyan adatelemezési környezetet az Azure Data Lake méretezhető végpontok közötti megoldások kialakításához. Ebben a környezetben használt elemzése egy nagy méretű nyilvános adathalmazt vesz igénybe, a adatelemzési folyamat, az adatok beszerzési modell betanítása keresztül, majd a modellt webszolgáltatásként üzembe helyezés a canonical lépésein. U-SQL dolgozza fel, ismerje meg, és a mintaadatok lett megadva. Python- és Hive használták az Azure Machine Learning Studio készíthet és helyezhet üzembe prediktív modelleket.
 
 ## <a name="whats-next"></a>A következő lépések
-A képzési terv a [csoportos adatelemzési folyamat (TDSP)](http://aka.ms/datascienceprocess) leíró a fejlett analitikai folyamat minden lépése témakörökre mutató hivatkozásokat tartalmaz. Nincsenek a forgatókönyvek az esethez sorozata a [csoportos adatelemzési folyamat forgatókönyvek](walkthroughs.md) mutatni, hogyan használhatja az erőforrásokat és szolgáltatásokat a prediktív elemzések különböző forgatókönyvekben oldal:
+A képzési terv a [csoportos adatelemzési folyamat (TDSP)](https://aka.ms/datascienceprocess) leíró a fejlett analitikai folyamat minden lépése témakörökre mutató hivatkozásokat tartalmaz. Nincsenek a forgatókönyvek az esethez sorozata a [csoportos adatelemzési folyamat forgatókönyvek](walkthroughs.md) mutatni, hogyan használhatja az erőforrásokat és szolgáltatásokat a prediktív elemzések különböző forgatókönyvekben oldal:
 
 * [A csoportos adatelemzési folyamat működés közben: az SQL Data Warehouse használatával](sqldw-walkthrough.md)
 * [A csoportos adatelemzési folyamat működés közben: HDInsight Hadoop-fürtök használata](hive-walkthrough.md)

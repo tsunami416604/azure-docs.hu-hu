@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: d49360fe39b0df7fc1172c3927e8725af10f927d
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: a38532d7a411080feb637549288bdad036a11153
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963880"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011051"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
 
@@ -251,9 +251,9 @@ A topológia a gráfon látható 3. rétegbeli topológia, és nem tartalmazza 2
 
 ## <a name="log-analytics-search"></a>A log Analytics-keresés 
 
-Összes adat, amely grafikusan közzétett keretében a Network Performance Monitor-irányítópult és a részletezés oldal is érhető el natív módon [Log Analytics keresési](log-analytics-log-search.md). Az adatok interaktív elemzéseket végezhet a tárházban, és vesse össze a különböző forrásokból származó adatok. Emellett egyéni riasztások és nézetek létrehozása és az adatok exportálása az Excel, a Power bi-ban vagy a megosztható hivatkozás. A **gyakori lekérdezések** tartalmaz néhány hasznos lekérdezést, amely kiindulási pontként használhatja a saját lekérdezéseket és jelentéseket hozhat létre az irányítópulton. 
+Összes adat, amely grafikusan közzétett keretében a Network Performance Monitor-irányítópult és a részletezés oldal is érhető el natív módon [Log Analytics keresési](log-analytics-queries.md). Az adatok interaktív elemzéseket végezhet a tárházban, és vesse össze a különböző forrásokból származó adatok. Emellett egyéni riasztások és nézetek létrehozása és az adatok exportálása az Excel, a Power bi-ban vagy a megosztható hivatkozás. A **gyakori lekérdezések** tartalmaz néhány hasznos lekérdezést, amely kiindulási pontként használhatja a saját lekérdezéseket és jelentéseket hozhat létre az irányítópulton. 
 
-## <a name="alerts"></a>Riasztások
+## <a name="alerts"></a>Értesítések
 
 A Network Performance Monitor riasztási képességeit használja [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts).
 

@@ -3,19 +3,19 @@ title: A Power bi használatával az Azure HDInsight big Data típusú adatok me
 description: Ismerje meg, hogyan dolgozza fel az Azure HDInsight Hive-adatok vizualizálása a Microsoft Power BI használatával.
 keywords: a hdinsight hadoop-, hive, interaktív lekérdezés, interaktív hive, LLAP, odbc
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jasonh
-ms.openlocfilehash: c24818f6b746754111540bae5fbf7f21d22c3a61
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: b094df367d4396533d368b9fdbcb4b78ec1673de
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041904"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008895"
 ---
 # <a name="visualize-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>A Microsoft Power BI ODBC segítségével az Azure HDInsight Hive-adatok vizualizálása
 
@@ -54,7 +54,7 @@ A hivesampletable Hive-tábla összes HDInsight-fürtöket tartalmaz.
 4. Az a **származó ODBC** panelen válassza ki az adatokat a forrás az előző szakaszban létrehozott nevet, és kattintson **OK**.
 5. Az a **kezelő** ablaktáblán bontsa ki a **HIVE ODBC -> -> alapértelmezett**, jelölje be **hivesampletable**, és kattintson a **terhelés**.
 
-## <a name="visualize-data"></a>Adatok megjelenítése
+## <a name="visualize-data"></a>Adatok vizualizációja
 
 Továbbra is az előző eljárást.
 
