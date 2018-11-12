@@ -1,24 +1,24 @@
 ---
-title: Az Azure HDInsight a saját egyéni Hadoop-alkalmazások telepítése
+title: Az Azure HDInsight a saját egyéni Apache Hadoop-alkalmazások telepítése
 description: A HDInsight-alkalmazások HDInsight-alkalmazásokra való telepítésének ismertetése.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 5e3194b856766502e4cc8c68ffa4bb936634adfa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: b5870d53053511cb56f668943678aeb91bf23b3b
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983140"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035356"
 ---
-# <a name="install-custom-hadoop-applications-on-azure-hdinsight"></a>Egyéni Hadoop-alkalmazások telepítése Azure HDInsight platformon
+# <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Egyéni Apache Hadoop-alkalmazások telepítése Azure HDInsight platformon
 
-Ebből a cikkből megtudhatja, hogyan telepíthet korábban az Azure Portalon közzé nem tett Hadoop-alkalmazásokat Azure HDInsight platformon. Ebben a cikkben a [Hue](http://gethue.com/) alkalmazást fogja telepíteni.
+Ebben a cikkben, megtudhatja, hogyan telepíthet az Apache Hadoop-alkalmazásokat az Azure HDInsight, amely az Azure Portalon közzé nem lett. Ebben a cikkben a [Hue](http://gethue.com/) alkalmazást fogja telepíteni.
 
 A HDInsight-alkalmazások olyan alkalmazások, amelyeket a felhasználók egy Linux-alapú HDInsight-fürtre telepíthetnek.  Ezek az alkalmazások lehetnek a Microsoft, független szoftvergyártók (ISV-k) vagy a felhasználók fejlesztései.  
 
@@ -114,7 +114,7 @@ A HDInsight-alkalmazások többféleképpen törölhetők.
 
 A portálon törölheti a fürtöt, vagy akár az alkalmazást tartalmazó erőforráscsoportot is.
 
-### <a name="use-azure-powershell"></a>Azure PowerShell használatával
+### <a name="use-azure-powershell"></a>Az Azure PowerShell használata
 Az Azure PowerShell használatával törölheti a fürtöt vagy az erőforráscsoportot. Lásd: [Fürtök törlése az Azure PowerShell használatával](hdinsight-administer-use-powershell.md#delete-clusters).
 
 ### <a name="use-azure-classic-cli"></a>Az Azure klasszikus parancssori felület használata
