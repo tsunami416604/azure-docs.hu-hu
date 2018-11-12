@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 11/05/2018
 ms.author: danlep
-ms.openlocfilehash: cab19cf051efea55a476128e4038aa69efdce8d9
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: e2f0d90a0a4384560c0a4126c028761765cb9e45
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157088"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288866"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Egy Azure-beli virtuális hálózatban a tárolópéldányok üzembe helyezése
 
@@ -56,7 +56,7 @@ Bár ez a funkció előzetes verzióban érhető el, az alábbi korlátozások �
 
 ## <a name="required-network-resources"></a>Szükséges hálózati erőforrások
 
-Három Azure Virtual Network erőforrás tárolócsoportok üzembe helyezéséhez a virtual Network szükséges: a [virtuális hálózati](#virtual-network) , egy [alhálózati delegált](#subnet-delegated) belül a virtuális hálózat és a egy [hálózati profil](#network-profile).
+Három Azure Virtual Network erőforrás tárolócsoportok üzembe helyezéséhez a virtual Network szükséges: a [virtuális hálózati](#virtual-network) , egy [alhálózati delegált](#subnet-delegated) belül a virtuális hálózat és a egy [hálózati profil](#network-profile). 
 
 ### <a name="virtual-network"></a>Virtuális hálózat
 
@@ -70,15 +70,17 @@ A tárolócsoportok használt alhálózat csak tárolócsoportok tartalmazhat. E
 
 ### <a name="network-profile"></a>Hálózati profil
 
-Hálózati profil a hálózati konfigurációs sablon az Azure-erőforrásokhoz. Azt adja meg az erőforrás, például az alhálózat, amelybe azt kell telepíteni, bizonyos hálózati tulajdonságok. Először egy tárolócsoport egy alhálózat (és így egy virtuális hálózat) üzembe helyezése, Azure hálózati profilt hoz létre az Ön számára. Ezután használhatja a hálózati profilban a későbbiekben az alhálózathoz.
+Hálózati profil a hálózati konfigurációs sablon az Azure-erőforrásokhoz. Azt adja meg az erőforrás, például az alhálózat, amelybe azt kell telepíteni, bizonyos hálózati tulajdonságok. Első használatakor a [az tároló létrehozása] [ az-container-create] parancsot egy alhálózat (és így a virtuális hálózat) üzembe helyezése egy tárolócsoportot, az Azure hálózati profilt hoz létre az Ön számára. Ezután használhatja a hálózati profilban a későbbiekben az alhálózathoz. 
+
+Resource Manager-sablonnal, YAML-fájlt vagy egy programozható metódus használatával üzembe helyezése egy tárolócsoport egy alhálózathoz, a teljes erőforrás-kezelő erőforrás-azonosító egy hálózati profil van szükség. Használhat egy korábban létrehozott profil [az tároló létrehozása][az-container-create], vagy hozzon létre egy profilt, Resource Manager-sablon használatával (lásd: [referencia](https://docs.microsoft.com/azure/templates/microsoft.network/networkprofiles)). A korábban létrehozott profil Azonosítójának lekéréséhez használja a [az hálózati profillista] [ az-network-profile-list] parancsot. 
 
 Az alábbi ábrán több tárolóból álló csoportok az Azure Container Instances delegált alhálózathoz van telepítve. Miután üzembe helyezte egy tárolócsoport egy alhálózathoz, az azonos hálózati profil megadásával további tárolócsoportok telepítheti azt.
 
 ![Tárolócsoportok egy virtuális hálózaton belül][aci-vnet-01]
 
-## <a name="deploy-to-virtual-network"></a>Virtuális hálózat üzembe helyezése
+## <a name="deployment-scenarios"></a>Üzembe helyezési forgatókönyvek
 
-Tárolócsoportok egy új virtuális hálózaton üzembe helyezni, és engedélyezni az Azure az Ön számára a szükséges hálózati erőforrások létrehozása, vagy egy meglévő virtuális hálózaton üzembe helyezni.
+Használhat [az tároló létrehozása] [ az-container-create] tárolócsoportok új virtuális hálózat üzembe helyezni, és engedélyezni az Azure az Ön számára a szükséges hálózati erőforrások létrehozása, vagy egy meglévő virtuális hálózaton üzembe helyezni. 
 
 ### <a name="new-virtual-network"></a>Új virtuális hálózat
 
@@ -99,19 +101,21 @@ Az egy meglévő virtuális hálózaton üzembe helyezni egy tárolócsoport:
 
 1. Hozzon létre egy alhálózatot a meglévő virtuális hálózaton belül, vagy egy meglévő alhálózat az üres *összes* más erőforrásokhoz
 1. Üzembe helyezése egy tárolócsoportot [az tároló létrehozása] [ az-container-create] , és adja meg a következők egyikét:
-   * Virtuális hálózat és alhálózat neve</br>
-    vagy
-   * Hálózati profil neve vagy azonosítója
+   * Virtuális hálózat és alhálózat neve
+   * Virtuális hálózati erőforrás-azonosító és az alhálózat erőforrás-azonosító, amely lehetővé teszi, hogy az egy másik erőforráscsoportban található virtuális hálózatok használatának
+   * Hálózati profil neve vagy azonosítója, amelyet szerezhet használatával [az hálózati profil listája][az-network-profile-list]
 
 Miután telepít egy meglévő alhálózat az első tárolócsoport, Azure ad az Azure Container Instances alhálózat. Már nem telepíthet tárolócsoportok naplóátvitelen kívüli egyéb erőforrásokra arra az alhálózatra.
 
+## <a name="deployment-examples"></a>Üzembe helyezési példa
+
 A következő szakaszok ismertetik, hogyan helyezhet üzembe egy virtuális hálózatot az Azure CLI-vel tárolócsoportok. A parancspéldákban vannak formázva a **Bash** rendszerhéjat. Ha inkább egy másik, például a PowerShell vagy az parancssor rendszerhéj, ennek megfelelően módosítsa a folytatási karakterek.
 
-## <a name="deploy-to-new-virtual-network"></a>Új virtuális hálózat üzembe helyezése
+### <a name="deploy-to-a-new-virtual-network"></a>Új virtuális hálózat üzembe helyezése
 
 Először üzembe helyezése egy tárolócsoportot, és adjon meg egy új virtuális hálózatot és alhálózatot a paramétereket. Amikor megadja ezeket a paramétereket, az Azure a virtuális hálózatot és alhálózatot hoz létre erőforrásához biztosít az Azure Container Instances szolgáltatásban az alhálózat és is létrehoz egy hálózati profilt. Ezek az erőforrások létrejönnek, miután a tárolócsoport helyezünk üzembe az alhálózathoz.
 
-Futtassa a következő [az tároló létrehozása] [ az-container-create] parancsot, amely egy új virtuális hálózatot és alhálózatot beállítást határoz meg. Ez a parancs üzembe helyezi a [microsoft/aci-helloworld] [ aci-helloworld] tároló, amely egy statikus weblapot kiszolgáló kis Node.js-webkiszolgálót futtat. A következő szakaszban fog üzembe helyezése egy második tárolócsoport ugyanahhoz az alhálózathoz, és a két tárolót a példányok közötti kommunikáció tesztelése.
+Futtassa a következő [az tároló létrehozása] [ az-container-create] parancsot, amely egy új virtuális hálózatot és alhálózatot beállítást határoz meg. Meg kell adnia egy adott régióban létrehozott erőforráscsoport nevét, amely [támogatja](#preview-limitations) tárolócsoportok egy virtuális hálózaton. Ez a parancs üzembe helyezi a [microsoft/aci-helloworld] [ aci-helloworld] tároló, amely egy statikus weblapot kiszolgáló kis Node.js-webkiszolgálót futtat. A következő szakaszban fog üzembe helyezése egy második tárolócsoport ugyanahhoz az alhálózathoz, és a két tárolót a példányok közötti kommunikáció tesztelése.
 
 ```azurecli
 az container create \
@@ -126,7 +130,7 @@ az container create \
 
 Amikor telepít egy új virtuális hálózatra a metódus segítségével, az üzembe helyezés eltarthat néhány percig során jönnek létre a hálózati erőforrásokhoz. A kezdeti telepítés után további csoportban üzembe helyezett gyorsabban befejezéséhez.
 
-## <a name="deploy-to-existing-virtual-network"></a>Meglévő virtuális hálózaton üzembe helyezni
+### <a name="deploy-to-existing-virtual-network"></a>Meglévő virtuális hálózaton üzembe helyezni
 
 Most, hogy telepítette a tárolócsoport egy új virtuális hálózatra, üzembe helyezése egy második tárolócsoport ugyanahhoz az alhálózathoz, és a két tárolót a példányok közötti kommunikáció ellenőrzéséhez.
 
@@ -174,7 +178,7 @@ index.html           100% |*******************************|  1663   0:00:00 ETA
 
 A kimenet kell megjelennie, amely `wget` tudta csatlakozhat, és töltse le az index fájlt az első tároló privát IP-címének használatával a helyi alhálózaton. A két tárolócsoportok közötti hálózati forgalmat a virtuális hálózaton belüli maradt.
 
-## <a name="deploy-to-existing-virtual-network---yaml"></a>Meglévő virtuális hálózat – YAML üzembe helyezése
+### <a name="deploy-to-existing-virtual-network---yaml"></a>Meglévő virtuális hálózat – YAML üzembe helyezése
 
 Egy meglévő virtuális hálózatot egy YAML-fájl használatával is telepítheti egy tárolócsoport. Egy alhálózatot a virtuális hálózatban való üzembe helyezéséhez meg néhány további tulajdonságok a YAML:
 

@@ -4,40 +4,46 @@ description: Azure szabályzat-definíció rendelkezik, amelyek meghatározzák,
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/30/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 54562401c830232d0a4bf90405cc5a2dbedcd8bc
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 4668b1fe6e59898d81fc71558e21acd1a89be767
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055968"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279497"
 ---
-# <a name="understand-policy-effects"></a>A házirend hatások ismertetése
+# <a name="understand-policy-effects"></a>A szabályzat hatásainak megismerése
 
 Az Azure Policy mindegyik szabályzatdefiníció, amely meghatározza, hogy mi történik, ha ellenőrzése közben egyetlen hatása van a **Ha** szegmense, amely a szabály kiértékelése történik az éppen beolvasott erőforrás megfelelően. A hatásokat is is eltérően viselkednek, ha azok egy új erőforrást, egy frissíteni az erőforrás vagy egy meglévő erőforrást.
 
-Jelenleg a szabályzat-definíció által támogatott öt hatások:
+Jelenleg a szabályzat-definíció által támogatott hat hatások:
 
 - Hozzáfűzés
 - Naplózás
 - AuditIfNotExists
 - Megtagadás
 - DeployIfNotExists
+- Letiltva
 
 ## <a name="order-of-evaluation"></a>Kiértékelési sorrend
 
 Egy kérelmet létrehozni vagy frissíteni egy erőforrást az Azure Resource Manageren keresztül történik, ha a házirend dolgozza fel a hatások előtt a kérés átadja a megfelelő erőforrás-szolgáltató több.
 Ami felesleges feldolgozási erőforrás-szolgáltató által ezzel megakadályozza, ha egy erőforrás nem felel meg a házirend tervezett cégirányítási vezérlőket. Szabályzat létrehoz egy listát az összes szabályzat-meghatározást, egy házirend vagy a kezdeményezés-hozzárendelést, által hozzárendelt, amelyek az erőforrás (mínusz kizárások) hatókör szerint érvényesek, és előkészíti az erőforrás minden definíció alapján kiértékelheti, hogy.
 
-- **Hozzáfűzés** abban az esetben először. Azóta hozzáfűzése módosíthatta a kérést, módosítását, a hozzáfűző megelőzhetik a naplózási vagy a hatás megtagadása elindítása.
+- **Letiltott** határozza meg, ha a szabály kell kiértékelni, először be van jelölve.
+- **Hozzáfűzés** Ezután kiértékeli. Azóta hozzáfűzése módosíthatta a kérést, módosítását, a hozzáfűző megelőzhetik a naplózási vagy a hatás megtagadása elindítása.
 - **Megtagadási** Ezután kiértékeli. Kiértékelésével megtagadása naplózás, mielőtt egy nemkívánatos erőforrás dupla naplózása a rendszer letiltja.
 - **Naplózási** Ezután kiértékeli a kérést az erőforrás-szolgáltató fog előtt.
 
 A kérelemben megadott erőforrás-szolgáltató, és az erőforrás-szolgáltató egy sikeres állapotkódot adja vissza **AuditIfNotExists** és **DeployIfNotExists** annak meghatározásához, hogy követő kiértékelése a naplózás megfelelőségi vagy művelet szükség.
+
+## <a name="disabled"></a>Letiltva
+
+Ez a hatás hasznos tesztelési helyzetek, és ha a szabályzatdefiníció rendelkezik paraméterezni a hatást. Egy egyetlen, hogy a szabályzat-hozzárendelés letiltása a hozzárendelés paraméter helyett letiltása az összes hozzárendelést a házirend hatásának megváltoztatásával lehetségessé válik.
 
 ## <a name="append"></a>Hozzáfűzés
 

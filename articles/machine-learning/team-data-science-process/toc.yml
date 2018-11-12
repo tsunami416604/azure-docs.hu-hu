@@ -121,31 +121,34 @@ items:
       href: plan-your-environment.md
   - name: Adatok beszerzése és megértése
     items:
-    - name: Adatlogisztika felügyelete
+    - name: Adatok betöltése
+      displayName: move data, manage data logistics
       items:
       - name: Áttekintés
         href: ingest-data.md
-      - name: Blob Storage
-        href: move-azure-blob.md
-      - name: A Storage Explorer használata
-        href: move-data-to-azure-blob-using-azure-storage-explorer.md
-      - name: Az AzCopy használata
-        href: move-data-to-azure-blob-using-azcopy.md
-      - name: A Python használata
-        href: ../../storage/blobs/storage-python-how-to-use-blob-storage.md
-        maintainContext: true
-      - name: Az SSIS használata
-        href: move-data-to-azure-blob-using-ssis.md
-      - name: Áthelyezés virtuális gépre
+      - name: Áthelyezés blobtárolóba/eltávolítás blobtárolóból
+        items:
+        - name: Áttekintés
+          href: move-azure-blob.md
+        - name: A Storage Explorer használata
+          href: move-data-to-azure-blob-using-azure-storage-explorer.md
+        - name: Az AzCopy használata
+          href: move-data-to-azure-blob-using-azcopy.md
+        - name: A Python használata
+          href: ../../storage/blobs/storage-python-how-to-use-blob-storage.md
+          maintainContext: true
+        - name: Az SSIS használata
+          href: move-data-to-azure-blob-using-ssis.md
+      - name: Áthelyezés virtuális gépen futó SQL-be
         href: move-sql-server-virtual-machine.md
-      - name: Áthelyezés SQL Database szolgáltatásra
+      - name: Áthelyezés az Azure SQL Database-be
         href: move-sql-azure.md
-      - name: Betöltés Hive táblákba
+      - name: Áthelyezés Hive-táblákba
         href: move-hive-tables.md
-      - name: Betöltés helyszíni SQL-ből
-        href: move-sql-azure-adf.md
-      - name: Betöltés SQL partíciós táblákból
+      - name: Áthelyezés particionált SQL-táblákba
         href: parallel-load-sql-partitioned-tables.md
+      - name: Áthelyezés helyszíni SQL-ből
+        href: move-sql-azure-adf.md
     - name: Adatok felfedezése és vizualizálása
       items:
       - name: Adatok előkészítése
@@ -154,11 +157,11 @@ items:
         items:
         - name: Áttekintés
           href: explore-data.md
-        - name: Pandas használata
+        - name: Az Azure Blob Storage megismerése
           href: explore-data-blob.md
-        - name: SQL-alapú virtuális gép használata
+        - name: A virtuális gépen futó SQL megismerése
           href: explore-data-sql-server.md
-        - name: Hive-táblák használata
+        - name: A Hive-táblák megismerése
           href: explore-data-hive-tables.md
       - name: Mintaadatok
         items:
@@ -235,9 +238,9 @@ items:
       items:
       - name: Áttekintés
         href: cortana-analytics-playbook-vehicle-telemetry.md
-      - name: Útmutató
+      - name: Forgatókönyv részletes bemutatása
         href: cortana-analytics-playbook-vehicle-telemetry-deep-dive.md
-      - name: Beállítás
+      - name: A Power BI beállítása
         href: cortana-analytics-playbook-vehicle-telemetry-powerbi.md
 - name: További források
   items:
@@ -269,9 +272,9 @@ items:
       href: http://stackoverflow.com/questions/tagged/azure-machine-learning
     - name: Videók
       href: https://azure.microsoft.com/resources/videos/index/?services=machine-learning
-ms.openlocfilehash: 7a0e7527b62fec7e3c0d65ad59f53709a13039eb
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 64047bdb6dc25a2e31c2c5e282e7706194ff0733
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092474"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344671"

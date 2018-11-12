@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.openlocfilehash: f064521929bdaf0565a2993e12be62a3959ad567
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: df1f8d805c950bdfbe2c18f365a450a6d630891b
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945297"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300438"
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>A kiemelt jogosultságú végpont használata az Azure Stackben
 
@@ -55,7 +55,7 @@ Mielőtt elkezdené integrált rendszer ezt az eljárást, győződjön meg arr�
       ````PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ````
-    - Ha a ADSK futtatja, jelentkezzen be a development kit gazdagépre.
+    - Ha a ASDK futtatja, jelentkezzen be a development kit gazdagépre.
 
 2. A megerősített futó virtuális géphez a hardver életciklus-gazdagép vagy a Privileged Access Workstation nyisson meg egy Windows PowerShell-munkamenetet. Futtassa a következő parancsok futtatásával hozzon létre egy távoli munkamenetet a virtuális gépen, amelyen az EGP:
  
@@ -67,7 +67,7 @@ Mielőtt elkezdené integrált rendszer ezt az eljárást, győződjön meg arr�
           -ConfigurationName PrivilegedEndpoint -Credential $cred
       ````
       A `ComputerName` paraméter lehet, az IP-cím vagy egy virtuális gépet, amelyen az EGP DNS-nevét. 
-    - Ha a ADSK futtatja:
+    - Ha a ASDK futtatja:
      
       ````PowerShell
         $cred = Get-Credential
@@ -127,7 +127,7 @@ Importálja a EGP-munkamenetet a helyi gépén, tegye a következőket:
       ````PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ````
-    - Ha a ADSK futtatja, jelentkezzen be a development kit gazdagépre.
+    - Ha a ASDK futtatja, jelentkezzen be a development kit gazdagépre.
 
 2. A megerősített futó virtuális géphez a hardver életciklus-gazdagép vagy a Privileged Access Workstation nyisson meg egy Windows PowerShell-munkamenetet. Futtassa a következő parancsok futtatásával hozzon létre egy távoli munkamenetet a virtuális gépen, amelyen az EGP:
  
@@ -139,7 +139,7 @@ Importálja a EGP-munkamenetet a helyi gépén, tegye a következőket:
           -ConfigurationName PrivilegedEndpoint -Credential $cred
       ````
       A `ComputerName` paraméter lehet, az IP-cím vagy egy virtuális gépet, amelyen az EGP DNS-nevét. 
-    - Ha a ADSK futtatja:
+    - Ha a ASDK futtatja:
      
       ````PowerShell
        $cred = Get-Credential

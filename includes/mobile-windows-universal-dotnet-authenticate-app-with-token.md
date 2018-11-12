@@ -1,9 +1,9 @@
 
-1. A MainPage.xaml.cs projekt fájlban adja hozzá a következő **használatával** utasításokat:
+1. Projekt a MainPage.xaml.cs fájlban adja hozzá a következő **használatával** utasításokat:
    
         using System.Linq;        
         using Windows.Security.Credentials;
-2. Cserélje le a **AuthenticateAsync** metódus a következő kóddal:
+2. Cserélje le a **AuthenticateAsync** módszer a következő kóddal:
    
         private async System.Threading.Tasks.Task<bool> AuthenticateAsync()
         {
@@ -72,13 +72,13 @@
             return success;
         }
    
-    Ezen verziója **AuthenticateAsync**, az alkalmazás megkísérli a tárolt hitelesítő adatok használatát a **PasswordVault** a szolgáltatás eléréséhez. Rendszeres bejelentkezés is történik, amikor nincs nem tárolt hitelesítő adatok.
+    Az ebben a verzióban **AuthenticateAsync**, az alkalmazás megpróbálja tárolt hitelesítő adatok használata a **PasswordVault** a szolgáltatás eléréséhez. Egy szokásos bejelentkezési is történik, amikor nincs semmilyen tárolt hitelesítő adatok.
    
    > [!NOTE]
-   > Előfordulhat, hogy egy gyorsítótárazott token lejárt, és jogkivonat lejáratáról is esetén fordul elő a hitelesítés után az alkalmazás használatban van. Annak megállapítása, ha a jogkivonat lejárt-e további tudnivalókért lásd: [lejárt a hitelesítési tokenek keressen](http://aka.ms/jww5vp). Lejáró jogkivonatok kapcsolatban a hitelesítési hibák kezelési megoldást, lásd: a feladás egy vagy több [gyorsítótárazáshoz és kezelése az Azure Mobile Services lejárt jogkivonatok felügyelt SDK](http://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx). 
+   > Előfordulhat, hogy a gyorsítótárazott jogkivonat lejár, és a jogkivonat lejárati is előfordulhatnak a hitelesítés után, ha az alkalmazás használatban van. Ismerje meg, hogyan határozza meg, ha a jogkivonat lejárt, lásd: [keresése a lejárt érvényességű hitelesítési jogkivonatok](https://aka.ms/jww5vp). Lejáró jogkivonatok kapcsolódó engedélyezési hibák kezelési megoldást, tekintse meg a bejegyzését [gyorsítótár és az Azure Mobile Services lejárt jogkivonatok kezelése felügyelt SDK](https://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx). 
    > 
    > 
-3. Indítsa újra az alkalmazást kétszer.
+3. Kétszer indítsa újra az alkalmazást.
    
-    Figyelje meg, hogy az első indításkor, jelentkezzen be a szolgáltató újra szükség. Azonban a második újraindítás közben a gyorsítótárazott hitelesítő adatokat használja, és a bejelentkezési elmarad. 
+    Figyelje meg, hogy az első indításkor, jelentkezzen be a szolgáltató újra szükség. Azonban a második újraindítás a gyorsítótárazott hitelesítő adatokat használja, és jelentkezzen be elmarad. 
 

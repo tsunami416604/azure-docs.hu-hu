@@ -5,20 +5,21 @@ services: automation
 author: georgewallace
 ms.service: automation
 ms.topic: include
-ms.date: 04/05/2018
+ms.date: 11/07/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: abe7668ed16ddd5cc1b247207d3e80f7c1118137
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
-ms.translationtype: HT
+ms.openlocfilehash: 70cdd5a9d0482c24dfeb2037ae56b86cd9339fcf
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50964565"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51285729"
 ---
 | Erőforrás | Felső korlát |Megjegyzések|
 | --- | --- |---|
 | Így el lehet egy Automation-fiók (nem ütemezett feladatok) 30 másodpercenként új feladatok maximális száma |100 |Ezt a korlátot, nyomja le, amikor létrehoz egy feladatot a későbbi kérelmeket sikertelen. Az ügyfél hibaüzenetet kap.|
 | Az Automation-fiók (nem ütemezett feladatok) ideje példányát, egyidejűleg futó feladatok maximális száma |200 |Ezt a korlátot, nyomja le, amikor létrehoz egy feladatot a későbbi kérelmeket sikertelen. Az ügyfél hibaüzenetet kap.|
+| Feladat-metaadatok a működés közbeni egy 30 napos időszak maximális tárolómérete. | 10GB (4 millió feladatok megközelítőleg)|Ezt a korlátot, nyomja le, amikor létrehoz egy feladatot a későbbi kérelmeket sikertelen. |
 | Modulok egy Automation-fiók 30 másodpercenként importálható maximális száma |5 ||
 | Modulok maximális mérete |100 MB ||
 | Feladat futtatási idő – ingyenes |előfizetés naptári hónapban 500 perc ||

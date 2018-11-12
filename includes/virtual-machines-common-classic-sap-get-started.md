@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 3ad1f0638284ad1d9b65a5bb6f2d2b03e9c51e04
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 1983e7560c986df241e9c592aaaa6b646a99840f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227002"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264268"
 ---
 ## <a name="planning-and-implementation"></a>Tervezés és megvalósítás
 Cím: SAP NetWeaver az Azure virtuális gépeken – tervezési és megvalósítási útmutató
@@ -18,7 +18,7 @@ Cím: SAP NetWeaver az Azure virtuális gépeken – tervezési és megvalósít
 
 Frissítve: 2015. augusztus
 
-[Ez az útmutató letöltése](http://go.microsoft.com/fwlink/?LinkId=397963)
+[Ez az útmutató letöltése](https://go.microsoft.com/fwlink/?LinkId=397963)
 
 ## <a name="deployment"></a>Környezet
 Cím: SAP NetWeaver az Azure-beli virtuális gépek – üzembe helyezési útmutató
@@ -27,7 +27,7 @@ Cím: SAP NetWeaver az Azure-beli virtuális gépek – üzembe helyezési útmu
 
 Frissítve: 2015. szeptember
 
-[Ez az útmutató letöltése](http://go.microsoft.com/fwlink/?LinkId=397964)
+[Ez az útmutató letöltése](https://go.microsoft.com/fwlink/?LinkId=397964)
 
 ## <a name="sap-dbms-on-azure"></a>Az SAP DBMS Azure-ban
 Cím: SAP DBMS Azure üzembe helyezési útmutató
@@ -36,7 +36,7 @@ Cím: SAP DBMS Azure üzembe helyezési útmutató
 
 Frissítve: 2015. December
 
-[Ez az útmutató letöltése](http://go.microsoft.com/fwlink/?LinkId=397965)
+[Ez az útmutató letöltése](https://go.microsoft.com/fwlink/?LinkId=397965)
 
 ## <a name="sap-netweaver-on-azure"></a>Az Azure-beli SAP NetWeaver
 Cím: SAP NetWeaver - alapú Azure-beli létrehozása a vész-helyreállítási megoldást
@@ -45,5 +45,5 @@ Cím: SAP NetWeaver - alapú Azure-beli létrehozása a vész-helyreállítási 
 
 Frissítve: 2015. szeptember
 
-[Ez az útmutató letöltése](http://go.microsoft.com/fwlink/?LinkID=521971)
+[Ez az útmutató letöltése](https://go.microsoft.com/fwlink/?LinkID=521971)
 

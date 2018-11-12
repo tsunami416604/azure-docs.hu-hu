@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 8201e1569bd3030a205ab0ec5adb8a1f39a0ecc3
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0ee38eb32886c050eb87b2d6ed91252ee7bcfea0
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960735"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280702"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhook-műveletek a riasztási szabály
 Ha egy [riasztás jön létre az Azure-ban](alert-log.md), lehetősége van a [konfigurálása a Műveletcsoportok használatával](monitoring-action-groups.md) egy vagy több művelet végrehajtásához.  Ez a cikk ismerteti a rendelkezésre álló különböző webhook-műveletek és a részletek az egyéni JSON-alapú webhook konfigurálásáról.
@@ -79,7 +79,7 @@ Keresési eredmények belefoglalása az egyéni adattartalom, ellenőrizze, hogy
 Ez a szakasz bemutatja a webhook hasznosadat-minta a riasztások, beleértve a szabványos terhelés esetén, és ha az egyéni.
 
 > [!NOTE]
-> Előző verziókkal való kompatibilitás biztosítása érdekében standard webhook hasznos adatai az Azure Log Analytics használatával értesítések megegyezik [Log Analytics-riasztás felügyeleti](../log-analytics/log-analytics-alerts-creating.md). De riasztások használatával [Application Insights](../application-insights/app-insights-analytics.md), a standard szintű webhook hasznos adatai műveletcsoport sémán alapul.
+> Előző verziókkal való kompatibilitás biztosítása érdekében standard webhook hasznos adatai az Azure Log Analytics használatával értesítések megegyezik [Log Analytics-riasztás felügyeleti](../monitoring-and-diagnostics/alert-metric.md). De riasztások használatával [Application Insights](../application-insights/app-insights-analytics.md), a standard szintű webhook hasznos adatai műveletcsoport sémán alapul.
 
 ### <a name="standard-webhook-for-log-alerts"></a>Standard szintű, Naplóriasztásokra vonatkozó Webhook 
 A helyőrző adattartalom csak két oszlop, és két sor mindkét példa jeleztük.

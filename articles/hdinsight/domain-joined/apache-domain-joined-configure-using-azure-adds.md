@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/9/2018
-ms.openlocfilehash: 5707f97dff099d1ad914dcf3faa96cc287d48de9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f0727d7ad415c718c01361cba8e8822a43298f66
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245664"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300727"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>A HDInsight-fürt konfigurálása a vállalati biztonsági csomaggal az Azure Active Directory Domain Services használatával
 
@@ -64,6 +64,9 @@ A felügyelt identitás létrehozása és a megfelelő szerepkört kap, után az
 ![HDInsight által felügyelt identitás operátor szerepkör-hozzárendelés](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-managed-identity-operator-role-assignment.png)
 
 ## <a name="networking-considerations"></a>Hálózati megfontolások
+
+> [!NOTE]
+> Az Azure AD-Tartományi telepíteni kell egy Azure Resource Manager (ARM) alapú virtuális hálózatban. A klasszikus virtuális hálózatok nem támogatottak az Azure AD-DS-ben. Tekintse meg [engedélyezése az Active Directory Domain Servicest az Azure portal használatával](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-getting-started-network) további részletekért.
 
 Miután engedélyezte az Azure AD-Tartományi, egy helyi tartomány neve szolgáltatás (DNS) kiszolgáló fut, az AD virtuális gépeken (VM). Az Azure AD-Tartományi Virtual Network (VNET) ezen egyéni DNS-kiszolgálók használatára konfigurálja. Keresse meg a megfelelő IP-címeket, válasszon **tulajdonságok** alatt a **kezelés** alatt felsorolt kategória és tekintse meg az IP-címek **IP-cím virtuális hálózaton**.
 

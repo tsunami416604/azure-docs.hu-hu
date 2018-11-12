@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 10/24/2018
 ms.author: diberry
-ms.openlocfilehash: 178f4314f9ede86444ee60fd2a64f85dc283080b
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 5beb952c2330d44ffe090fc422afa6da67376b0d
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138531"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288050"
 ---
 # <a name="create-entities-without-utterances"></a>Beszédmódok nélkül entitások létrehozása
 
@@ -116,7 +116,7 @@ Az utterance (kifejezés) a `Where is Request relocation from employee new to th
 
 1. A a **összeállítása** szakaszban jelölje be **entitások** a bal oldali panelen, és válassza ki a **új entitás létrehozása**.
 
-1. Az a **entitás hozzáadása** párbeszédpanelen adja meg az entitás neve mezőbe, majd válassza **Pattern.any** , a **entitástípus**.
+1. Az a **entitás hozzáadása** párbeszédpanelen adja meg `HumanResourcesFormTitle` a a **entitás neve** mezőbe, majd válassza ki **Pattern.any** , a **entitástípus**.
 
     A pattern.any entitást használja, adjon hozzá egy minta a **minták** lap a **megnövelheti az alkalmazások teljesítményét** részben, a megfelelő kapcsos zárójel szintaxissal, mint például `Where is **{HumanResourcesFormTitle}** on the server?`.
 

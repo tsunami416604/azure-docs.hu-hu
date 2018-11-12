@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: 1bee48225448a964da7caa2a7b284b274c52bea6
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 8e57c071c9fd93a8581d574aeec2b23b38b3ab95
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914056"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281659"
 ---
 # <a name="introduction-to-auto-scaling"></a>Automatikus skálázás bemutatása
 Automatikus skálázás egy további lehetőség a Service Fabric dinamikusan méretezheti az services szolgáltatásokat jelent, vagy az erőforrások használat alapján a terhelés alapján. Automatikus skálázás nagy rugalmasságot biztosít, és lehetővé teszi, hogy további példányok vagy a partíciók az igény szerinti szolgáltatás kiépítése. A teljes automatikus skálázást folyamat automatizált és átlátható, és a szabályzatok a szolgáltatás beállítása után esetén nem kell a szolgáltatási szintű manuális méretezési műveletekhez. Automatikus skálázás is be kell kapcsolni vagy szolgáltatás-létrehozás időpontjában, vagy bármikor a szolgáltatás frissítésével.
@@ -28,7 +28,9 @@ Egy gyakori forgatókönyv, ahol automatikus skálázást hasznos akkor, ha a id
 * Ha az átjáró összes példánya átlagosan több mint két magot használ, majd ki az átjáró szolgáltatás hozzáadásával méretezhető egy további példányt. Ehhez minden órában, de soha ne legyen több mint hét példányok összesen.
 * Ha saját átjáró összes példánya használ a átlagosan kevesebb mint 0,5 mag, majd a szolgáltatás a méretezhető egy példány eltávolításával. Ehhez minden órában, de soha ne legyen kevesebb mint három példányban összesen.
 
-Automatikus skálázás tárolók és a Service Fabric-szolgáltatások rendszeres is támogatott. Ez a cikk további részének a skálázási szabályzattal, engedélyezése vagy letiltása az automatikus skálázás, módszereket ismerteti, és példákkal Ez a funkció használatához.
+Automatikus skálázás tárolók és a Service Fabric-szolgáltatások rendszeres is támogatott. Automatikus skálázás használatához verzió 6.2 vagy újabb futnia kell a Service Fabric-futtatókörnyezet. 
+
+Ez a cikk további részének a skálázási szabályzattal, engedélyezése vagy letiltása az automatikus skálázás, módszereket ismerteti, és példákkal Ez a funkció használatához.
 
 ## <a name="describing-auto-scaling"></a>Ismertető az automatikus skálázás
 A Service Fabric-fürt minden egyes szolgáltatás automatikus skálázást házirendeket lehet definiálni. Minden egyes méretezési szabályzat két részből áll:
@@ -41,7 +43,7 @@ A Service Fabric-fürt minden egyes szolgáltatás automatikus skálázást ház
 Nincsenek kétféle által jelenleg támogatott automatikus skálázás. Az első egy kifejezés az állapotmentes szolgáltatások esetében vagy for containers szolgáltatásban, ahol az automatikus skálázás történik hozzáadásával vagy eltávolításával [példányok](service-fabric-concepts-replica-lifecycle.md). A egyaránt állapotalapú és állapotmentes szolgáltatások esetében az automatikus skálázás is végrehajtható hozzáadásával vagy eltávolításával nevű [partíciók](service-fabric-concepts-partitioning.md) a szolgáltatás.
 
 > [!NOTE]
-> Jelenleg nincs szolgáltatásonként csak egy méretezési szabályzat, és csak egy méretezési eseményindító szabályzatonként támogatása.
+> Jelenleg nincs szolgáltatásonként csak egy méretezési szabályzat és a egy skálázási szabályzat csak egy méretezési eseményindító támogatása.
 
 ## <a name="average-partition-load-trigger-with-instance-based-scaling"></a>Átlagos partíció terhelés eseményindító-alapú példányok skálázása
 Az első típusú trigger állapotmentes szolgáltatás partíció-példánya a terhelés alapján történik. Metrika terhelések vannak először Görbített beszerzése a terhelés egy partíció minden példányát, és majd ezeket az értékeket átlagolja az a partíció összes példányát. Nincsenek mindhárom tényezőt, amelyek meghatározzák, hogy mikor lesz skálázva a szolgáltatást:

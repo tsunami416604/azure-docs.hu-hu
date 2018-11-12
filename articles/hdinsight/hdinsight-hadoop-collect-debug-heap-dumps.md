@@ -1,25 +1,25 @@
 ---
-title: Hibakeresés és elemzése a Hadoop-szolgáltatásokhoz az halomürítések – Azure
-description: Automatikus gyűjtése halomürítések a Hadoop-szolgáltatásokhoz, és helyezze el az Azure Blob storage-fiók a hibakereséshez és elemzéshez belül.
+title: Hibakeresés és elemezheti az Apache Hadoop-szolgáltatások használatával halomürítések – Azure
+description: Automatikusan összegyűjtheti halomürítések Apache Hadoop-szolgáltatásokhoz, és helyezze el az Azure Blob storage-fiók a hibakereséshez és elemzéshez belül.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 35f7843ebf49e79d9045c72493bb38b218234288
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 2a399899c93addf966d3f2ec0e36d4b1c76b686f
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43099767"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038307"
 ---
-# <a name="collect-heap-dumps-in-blob-storage-to-debug-and-analyze-hadoop-services"></a>Halommemória-képek összegyűjtése a Blob storage-hibakeresést és elemzése a Hadoop-szolgáltatásokhoz
+# <a name="collect-heap-dumps-in-blob-storage-to-debug-and-analyze-apache-hadoop-services"></a>Halommemória-képek összegyűjtése a Blob storage a hibakereséshez és az Apache Hadoop-szolgáltatásokhoz elemzése
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
-Halomürítések az alkalmazás memória, beleértve a változók értékeit, a memóriakép létrehozásakor pillanatképet tartalmaz. Ezért hasznosak lehetnek, amelyet a futásidejű kapcsolatos problémák diagnosztizálásához. Halomürítések automatikusan gyűjti a Hadoop-szolgáltatásokhoz és az Azure Blob storage-fiók alatt HDInsightHeapDumps felhasználó belül elhelyezett /.
+Halomürítések az alkalmazás memória, beleértve a változók értékeit, a memóriakép létrehozásakor pillanatképet tartalmaz. Ezért hasznosak lehetnek, amelyet a futásidejű kapcsolatos problémák diagnosztizálásához. Halomürítések automatikusan gyűjti a Apache Hadoop-szolgáltatásokhoz és az Azure Blob storage-fiók alatt HDInsightHeapDumps felhasználó belül elhelyezett /.
 
 Halomürítések a különböző szolgáltatások gyűjteménye engedélyezni kell a szolgáltatások az egyes fürtökön. Ez a funkció alapértelmezés szerint a fürt számára ki lehet. Ezek halomürítések nagy, lehet, így célszerű a Blob storage-fiók figyelése, azok változtatásainak mentése után a gyűjtemény engedélyezve van.
 
@@ -30,11 +30,11 @@ Halomürítések a különböző szolgáltatások gyűjteménye engedélyezni ke
 ## <a name="eligible-services-for-heap-dumps"></a>Halomürítések a jogosult szolgáltatások
 A következő szolgáltatásokat halomürítések engedélyezheti:
 
-* **hcatalog** -tempelton
-* **Hive** -hiveserver2-n, metaadattár, derbyserver
+* **Az Apache hcatalog** -tempelton
+* **Az Apache hive** -hiveserver2-n, metaadattár, derbyserver
 * **a mapreduce** -jobhistoryserver
-* **yarn** -resourcemanager, nodemanager, timelineserver
-* **hdfs** -datanode, secondarynamenode, namenode
+* **Az Apache yarn** -resourcemanager, nodemanager, timelineserver
+* **Az Apache hdfs** -datanode, secondarynamenode, namenode
 
 ## <a name="configuration-elements-that-enable-heap-dumps"></a>Halomürítések engedélyezése konfigurációs elemek
 Egy szolgáltatás halomürítések bekapcsolásához állítsa be a megfelelő konfigurációs elemek a szakasz az adott szolgáltatáshoz, amely által meghatározott kell **service_name**.

@@ -17,12 +17,12 @@ ms.date: 11/16/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol
-ms.openlocfilehash: 8d219ecb2d8a6694da038044bcab883a5535e957
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dc3bbab2242321ae736f3f2cefb1eed5e96e834e
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999256"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288730"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Az Azure Active Directory fejlesztői szószedet
 
@@ -69,7 +69,7 @@ A művelet egy entitás alapján biztosít az identitás- és hozzáférés-vez�
 
 ## <a name="authorization"></a>Engedélyezési
 
-A törvény, egy hitelesített biztonsági megoldást valósíthatunk egyszerű engedély megadására. Nincsenek két elsődleges használati eset az Azure ad-ben programozási modellt:
+A törvény, egy hitelesített biztonsági megoldást valósíthatunk egyszerű engedély megadására. Az Azure AD programozási modellben két alapvető használati eset létezik:
 
 * Során egy [OAuth2 engedélyezést](#authorization-grant) folyamat: Ha a [erőforrás tulajdonosa](#resource-owner) engedélyt ad a [ügyfélalkalmazás](#client-application), így az ügyfél az erőforrás eléréséhez a tulajdonos az erőforrásokat.
 * Az ügyfél által az erőforrás-hozzáférés során: által megvalósított módon a [erőforrás-kiszolgáló](#resource-server)révén a [jogcím](#claim) értékek szerepelnek a [hozzáférési jogkivonat](#access-token) , hogy döntést hozhasson a hozzáférésről alapján őket.
@@ -94,7 +94,7 @@ A hitelesítő adatok jelölő a [erőforrás tulajdonosa](#resource-owner) [eng
 
 Esetén az Azure AD alkalmazás-integráció, az Azure AD valósítja meg az engedélyezési kiszolgálói szerepkör az Azure AD-alkalmazások és a Microsoft-szolgáltatás API-k, például [Microsoft Graph API-k][Microsoft-Graph].
 
-## <a name="claim"></a>Jogcím
+## <a name="claim"></a>igénylés
 
 A [biztonsági jogkivonat](#security-token) jogcímeket, adja meg a helyességi feltételek egy entitás tartalmaz (például egy [ügyfélalkalmazás](#client-application) vagy [erőforrás tulajdonosa](#resource-owner)) (például a egymásikentitáshoz[erőforrás-kiszolgáló](#resource-server)). Jogcímek olyan név/érték párok, amelyek a jogkivonat tárgyában kapcsolatos továbbítási (például a hitelesített rendszerbiztonsági tagot a [az engedélyezési kiszolgáló](#authorization-server)). A jogcímeket egy adott jogkivonat értékkel a változókat, például a típusuk jogkivonatot, tárgyát, az alkalmazás konfigurációja és egyéb hitelesítéséhez használandó hitelesítő adatok típusától függenek.
 
@@ -120,7 +120,7 @@ Lásd: [az Azure AD-jogkivonatok referenciájából] [ AAD-Tokens-Claims] továb
 
 ## <a name="microsoft-identity-platform"></a>A Microsoft identity platform
 
-A Microsoft identity platform az Azure Active Directory (Azure AD) identity service és a fejlesztői platform továbbfejlesztett változata. Lehetővé teszi a fejlesztők számára, hogy jelentkezzen be az összes Microsoft-identitást, tokenekhez hívja a Microsoft Graph, más Microsoft APIs vagy API-kat a fejlesztők számára készült alkalmazások. Egy teljes körű platform, amely olyan hitelesítési szolgáltatás, könyvtárak, alkalmazásregisztráció és konfigurációs, teljes körű fejlesztői dokumentáció, Kódminták és egyéb fejlesztői tartalom áll. A Microsoft identity platform támogatja az iparági szabványos protokollok, például az OAuth 2.0 és OpenID Connect. Lásd: [kapcsolatos Microsoft identitásplatformja](about-microsoft-identity-platform.md) további részletekért.
+A Microsoft identitásplatformja az Azure Active Directory (Azure AD) identitásszolgáltatás és fejlesztői platform fejlődésének eredménye. Lehetővé teszi a fejlesztők számára, hogy olyan alkalmazásokat építsenek, amelyek az összes Microsoft-identitás használatával biztonságosan jelentkeznek be, és jogkivonattal hívják meg a Microsoft Graphot, más Microsoft API-kat vagy olyan API-kat, amelyeket fejlesztők készítettek. Egy teljes körű platform, amely olyan hitelesítési szolgáltatás, könyvtárak, alkalmazásregisztráció és konfigurációs, teljes körű fejlesztői dokumentáció, Kódminták és egyéb fejlesztői tartalom áll. A Microsoft identitásplatformja támogatja a nyílt szabványokat, többek között az OAuth 2.0-t és az OpenID Connectet. Lásd: [kapcsolatos Microsoft identitásplatformja](about-microsoft-identity-platform.md) további részletekért.
 
 ## <a name="multi-tenant-application"></a>több-bérlős alkalmazást
 
@@ -244,7 +244,7 @@ Használja a következő megjegyzéseket visszajelzést és pontosíthatja vagy 
 [AZURE-portal]: https://portal.azure.com
 [AAD-RBAC]: ../../role-based-access-control/role-assignments-portal.md
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
-[Microsoft-Graph]: https://graph.microsoft.io
+[Microsoft-Graph]: https://developer.microsoft.com/graph
 [O365-Perm-Ref]: https://msdn.microsoft.com/office/office365/howto/application-manifest
 [OAuth2-Access-Token-Scopes]: https://tools.ietf.org/html/rfc6749#section-3.3
 [OAuth2-AuthZ-Endpoint]: https://tools.ietf.org/html/rfc6749#section-3.1

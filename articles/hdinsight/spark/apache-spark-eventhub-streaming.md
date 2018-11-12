@@ -3,18 +3,18 @@ title: 'Oktatóanyag: Az Azure Event Hubsból az Apache Spark on Azure HDInsight
 description: Csatlakozás az Apache Spark on Azure HDInsight az Azure Event Hubs és a streamelési adatok dolgozhatók.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: conceptual
-ms.date: 06/14/2018
-ms.openlocfilehash: 9cdb5ae31e2743b5ebe877ddd8d6680423e3d9b2
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 11/06/2018
+ms.openlocfilehash: eb2145d2e7b787bafa0b546449282454f7059999
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046252"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283410"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-spark-in-hdinsight"></a>Oktatóanyag: Folyamat Twitter HDInsight az Azure Event Hubs és a Spark használatával
 
@@ -73,18 +73,14 @@ Az eseményközpont használatával tárolja a tweeteket.
     ![Adjon meg egy eseményközpont neve Spark streamelési példa](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "adja meg a Spark streamelési példa egy eseményközpont neve")
 5. Válassza ki **létrehozás** a névteret létre kívánja hozni.
 
-6. Nyissa meg az eseményközpont-névtér az alábbi utasítások szerint:
+7. Nyissa meg az eseményközpont-névtér az alábbi utasítások szerint:
 
     1. Válassza ki a portálról, **minden szolgáltatás**.
     2. A Szűrő mezőbe írja be a **az event hubs**.
-    3. Kattintson duplán a létrehozott névtérre.
+    3. Válassza ki az újonnan létrehozott névtér.
     4. Válassza ki **+ Event Hub**.
 
-6. Az Event Hubs névtér listában válassza ki az újonnan létrehozott névtér.      
-5. Válassza ki **az Event Hubs**, majd válassza ki **+ Event Hub** egy új Eseményközpont létrehozásához.
-  
-
-6. Írja be a következő értékeket:
+8. Írja be a következő értékeket:
 
     - Name: Adjon nevet az eseményközpont.
     - Partíció száma: 10
@@ -92,12 +88,12 @@ Az eseményközpont használatával tárolja a tweeteket.
    
     ![Adja meg az event hub-adatok a Spark streamelési példa](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "Spark streamelési példa event hub-adatok megadása")
 
-7. Kattintson a **Létrehozás** gombra.
-8. Válassza ki **megosztott elérési házirendek** a névtér (már nem az esemény eseményközpont megosztott elérési szabályzatainak. megjegyzés), és válassza ki a **RootManageSharedAccessKey**.
+9. Kattintson a **Létrehozás** gombra.
+10. Válassza ki **megosztott elérési házirendek** a névtér (már nem az esemény eseményközpont megosztott elérési szabályzatainak. megjegyzés), és válassza ki a **RootManageSharedAccessKey**.
     
      ![Event Hub-házirendek beállítása a Spark streamelési példa](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "Eseményközpont beállítása házirendek a Spark streamelési példa")
 
-9. Mentse az értékeket a **elsődleges kulcs** és **kapcsolati karakterlánc – elsődleges kulcs** az oktatóanyag későbbi részében használni.
+11. Mentse az értékeket a **elsődleges kulcs** és **kapcsolati karakterlánc – elsődleges kulcs** az oktatóanyag későbbi részében használni.
 
      ![Eseményközpont-szabályzat kulcsok megtekintéséhez a Spark streamelési példa](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "nézet Eseményközpontba szabályzat a kulcsok a Spark streamelési példa")
 
@@ -222,7 +218,7 @@ Hozzon létre egy másik Jupyter notebookot, és adja neki kell **ReadTweetsFrom
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A HDInsight az Azure Storage vagy az Azure Data Lake Store tárhelyein tárolja az adatokat, így a nem használt fürtök biztonságosan törölhetők. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket. Ha azt tervezi, hogy rögtön elvégzi a következő oktatóanyagot is, akkor érdemes lehet megtartani a fürtöt.
+A HDInsight az Azure Storage vagy az Azure Data Lake Store tárhelyein tárolja az adatokat, így a nem használt fürtök biztonságosan törölhetők. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Ha azt tervezi, azonnal dolgozhat a következő oktatóanyaggal, érdemes a fürtöt megtarthatja, ellenkező esetben lépjen tovább, és törölje a fürtöt.
 
 Nyissa meg az Azure Portalon a fürtöt, és válassza a **Törlés** lehetőséget.
 

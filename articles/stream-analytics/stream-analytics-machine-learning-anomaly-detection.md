@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: 2f35f54c7ec5ad169673aebe08602294270f470a
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
-ms.translationtype: HT
+ms.openlocfilehash: a2bf6ef44a8698e802d9bbc25689988498c55f13
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364455"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300268"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomáliadetektálás az Azure Stream Analytics szolgáltatásban
 
@@ -31,7 +31,7 @@ AnomalyDetection operátort észleli a rendellenességeket háromféle:
 
 * **Lassú negatív trendek**: idővel a trendek lassú csökkenését.  
 
-Amikor a AnomalyDetection operátort használja, meg kell adnia a **Limit Duration** záradékban. Ez a záradék megadja az időintervallum (milyen vissza az előzményekben az aktuális esemény) kell alkalmazni, amikor a rendellenességek észlelése. Ez az operátor dönthet úgy, hogy csak olyan események, amelyek megfelelnek egy bizonyos tulajdonság vagy feltétel használatával korlátozni az  **amikor** záradékban.   Ez az operátor is képes feldolgozni a megadott kulcs külön-külön alapján események csoportjait a **partíció által** záradékban. Betanítási és Predikciós fordulhat elő, egymástól függetlenül minden partíció esetében. 
+Amikor a AnomalyDetection operátort használja, meg kell adnia a **Limit Duration** záradékban. Ez a záradék megadja az időintervallum (milyen vissza az előzményekben az aktuális esemény) kell alkalmazni, amikor a rendellenességek észlelése. Ez az operátor dönthet úgy, hogy csak olyan események, amelyek megfelelnek egy bizonyos tulajdonság vagy feltétel használatával korlátozni az **amikor** záradékban. Ez az operátor is képes feldolgozni a megadott kulcs külön-külön alapján események csoportjait a **partíció által** záradékban. Betanítási és Predikciós fordulhat elő, egymástól függetlenül minden partíció esetében. 
 
 ## <a name="syntax-for-anomalydetection-operator"></a>AnomalyDetection operátort szintaxisa
 
@@ -45,11 +45,11 @@ Amikor a AnomalyDetection operátort használja, meg kell adnia a **Limit Durati
 
 * **scalar_expression** – a skaláris kifejezés, amely fölött a rendellenességek észlelése történik. Megengedett értékek esetében ez a paraméter tartalmazza a lebegőpontos vagy Bigint adattípusok, amely visszatérési egyetlen (skaláris) értéket. A helyettesítő karakteres kifejezést **\*** nem engedélyezett. Skaláris kifejezés nem tartalmazhatnak más elemzési funkciók vagy külső funkciók. 
 
-* **partition_by_clause** – a `PARTITION BY <partition key>` osztja fel a tanuláshoz és továbbképzéshez záradék külön partíciókon. Más szóval egy külön modell használni kívánt értéket kiszolgálónként `<partition key>` , és csak események ezt az értéket a használni kívánt tanuláshoz és továbbképzéshez a modellben. Például a következő lekérdezés vonatok és egy olvasási ellen, csak az azonos érzékelő más olvasmányok pontszámok:
+* **partition_by_clause** – a `PARTITION BY <partition key>` osztja fel a tanuláshoz és továbbképzéshez záradék külön partíciókon. Más szóval egy külön modell használni kívánt értéket kiszolgálónként `<partition key>` , és csak események ezt az értéket a használni kívánt tanuláshoz és továbbképzéshez a modellben. Például a következő lekérdezés vonatok és egy olvasási ellen, csak az azonos érzékelő más olvasmányok pontszámok:
 
   `SELECT sensorId, reading, ANOMALYDETECTION(reading) OVER(PARTITION BY sensorId LIMIT DURATION(hour, 1)) FROM input`
 
-* **limit_duration záradék** `DURATION(<unit>, <length>)` – Itt adhatja meg az időintervallum (milyen vissza az előzményekben az aktuális esemény) kell alkalmazni, amikor a rendellenességek észlelése. Lásd: [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics) támogatott egységek és rövidítésekkel részletes leírását. 
+* **limit_duration záradék**  `DURATION(<unit>, <length>)` – Itt adhatja meg az időintervallum (milyen vissza az előzményekben az aktuális esemény) kell alkalmazni, amikor a rendellenességek észlelése. Lásd: [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics) támogatott egységek és rövidítésekkel részletes leírását. 
 
 * **when_clause** – Itt adhatja meg az eseményeket is figyelembe venni a rendellenességek észlelése számítási logikai feltételt.
 
@@ -243,7 +243,7 @@ Ha a bemeneti stream nem egységes, az összesítés lépés segít átalakítja
 ## <a name="references"></a>Referencia
 
 * [Rendellenességek észlelése – a gépi tanulás segítségével észlelheti a rendellenességeket idősorozat-adatok](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/)
-* [A Machine learning anomáliadetektálás API](https://docs.microsoft.com/en-gb/azure/machine-learning/machine-learning-apps-anomaly-detection-api)
+* [A Machine learning anomáliadetektálás API](https://docs.microsoft.com/azure/machine-learning/machine-learning-apps-anomaly-detection-api)
 * [Time series anomáliadetektálás](https://msdn.microsoft.com/library/azure/mt775197.aspx)
 
 ## <a name="next-steps"></a>További lépések

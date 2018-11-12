@@ -6,18 +6,20 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 10/02/2018
+ms.date: 11/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: f79fa096484edc34294ea0a69584e12788dba647
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: ce9df1d45de82c759883dc90d50c28551bf62cdf
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043397"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287304"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Egyéni mezők leképezése sémára Event Grid
 
 Ha az eseményadatok nem egyezik a várt [Event Grid séma](event-schema.md), Event Grid útvonal esemény-előfizetők továbbra is használhatja. Ez a cikk ismerteti, hogyan képezhet le a séma az Event Grid-sémát.
+
+## <a name="install-preview-feature"></a>Előzetes verziójú funkció telepítése
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
@@ -39,18 +41,18 @@ Bár a formátuma nem felel meg a szükséges séma, Event Grid lehetővé teszi
 
 ## <a name="create-custom-topic-with-mapped-fields"></a>Leképezett mezők az egyéni témakör létrehozása
 
-Egy egyéni témakör létrehozásakor adja meg, hogyan képezhet le a mezők az eredeti esemény az event grid-séma. Nincsenek segítségével testre szabhatja a leképezés három tulajdonságot:
+Egy egyéni témakör létrehozásakor adja meg, hogyan képezhet le a mezők az eredeti esemény az event grid-séma. Három értékek testre szabhatja a leképezés használatával:
 
-* A `--input-schema` paraméter meghatározza a sémát. Az elérhető lehetőségek *cloudeventv01schema*, *customeventschema*, és *eventgridschema*. Az alapértelmezett érték: eventgridschema. Egyéni leképezés a séma- és az event grid-séma közötti létrehozásakor customeventschema használja. Amikor események válnak a CloudEvents-séma, cloudeventv01schema használja.
+* A **bemeneti séma** érték határozza meg a séma. Az elérhető lehetőségek a következők: CloudEvents-séma, egyéni eseményt séma vagy Event Grid-sémát. Az alapértelmezett értéke az Event Grid-sémát. Egyéni leképezés a séma- és az event grid-séma közötti létrehozásakor használja az egyéni esemény sémája. Amikor események válnak a CloudEvents-séma, Cloudevents-séma használja.
 
-* A `--input-mapping-default-values` paraméter adja meg a mezők alapértelmezett értékeit, az Event Grid-sémában. Az alapértelmezett értékeket megadhatja a `subject`, `eventtype`, és `dataversion`. Jellemzően ezt a paramétert használni, amikor az egyéni séma nem tartalmaz egy olyan mező, ezek három mezőt valamelyikének felel meg. Például megadhatja a verzió értéke mindig **1.0**.
+* A **alapértelmezett értékek leképezése** tulajdonság határozza meg a mezők alapértelmezett értékeit, az Event Grid-sémában. Az alapértelmezett értékeket megadhatja a `subject`, `eventtype`, és `dataversion`. Jellemzően ezt a paramétert használni, amikor az egyéni séma nem tartalmaz egy olyan mező, ezek három mezőt valamelyikének felel meg. Például megadhatja a verzió értéke mindig **1.0**.
 
-* A `--input-mapping-fields` paraméter leképezi a séma az event grid séma mezőket. Szóközzel elválasztott kulcs/érték párok értékeket határozhat meg. A kulcs nevét az event grid mező nevét használja. Az érték használja a mező nevét. Használhatja a kulcsnevek `id`, `topic`, `eventtime`, `subject`, `eventtype`, és `dataversion`.
+* A **mezők leképezése** értéket rendeli az event grid-séma a sémát a mezők. Szóközzel elválasztott kulcs/érték párok értékeket határozhat meg. A kulcs nevét az event grid mező nevét használja. Az érték használja a mező nevét. Használhatja a kulcsnevek `id`, `topic`, `eventtime`, `subject`, `eventtype`, és `dataversion`.
 
-Az alábbi példa létrehoz egy egyéni témakör egyes leképezve, és alapértelmezett mezők:
+Az Azure CLI-vel egy egyéni témakör létrehozásához használja:
 
 ```azurecli-interactive
-# if you have not already installed the extension, do it now.
+# If you have not already installed the extension, do it now.
 # This extension is required for preview features.
 az extension add --name eventgrid
 
@@ -63,39 +65,77 @@ az eventgrid topic create \
   --input-mapping-default-values subject=DefaultSubject dataVersion=1.0
 ```
 
+PowerShell esetén használja az alábbi parancsot:
+
+```azurepowershell-interactive
+# If you have not already installed the module, do it now.
+# This module is required for preview features.
+Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
+
+New-AzureRmEventGridTopic `
+  -ResourceGroupName myResourceGroup `
+  -Name demotopic `
+  -Location eastus2 `
+  -InputSchema CustomEventSchema `
+  -InputMappingField @{eventType="myEventTypeField"} `
+  -InputMappingDefaultValue @{subject="DefaultSubject"; dataVersion="1.0" }
+```
+
 ## <a name="subscribe-to-event-grid-topic"></a>Fizessen elő az event grid-témakör
 
-Amikor feliratkozik az egyéni témakörre, adja meg a séma, az események fogadására használni szeretné. Használja a `--event-delivery-schema` paraméter, illetve beállíthatja *cloudeventv01schema*, *eventgridschema*, vagy *inputeventschema*. Az alapértelmezett érték: eventgridschema.
+Amikor feliratkozik az egyéni témakörre, adja meg a séma, az események fogadására használni szeretné. Megadhatja a CloudEvents-séma használata, egyéni eseményt séma vagy Event Grid-sémát. Az alapértelmezett értéke az Event Grid-sémát.
 
-Ebben a szakaszban szereplő példák a Queue storage használata az eseménykezelő. További információkért lásd: [egyéni események átirányítása az Azure Queue storage](custom-event-to-queue-storage.md).
-
-Az alábbi példa feliratkozik egy event grid-témakört, és használja az event grid-séma:
+Az alábbi példa feliratkozik egy event grid-témakört, és az Event Grid-sémát használja. Azure CLI esetén használja az alábbi parancsot:
 
 ```azurecli-interactive
+topicid=$(az eventgrid topic show --name demoTopic -g myResourceGroup --query id --output tsv)
+
 az eventgrid event-subscription create \
-  --topic-name demotopic \
-  -g myResourceGroup \
+  --source-resource-id $topicid \
   --name eventsub1 \
   --event-delivery-schema eventgridschema \
-  --endpoint-type storagequeue \
-  --endpoint <storage-queue-url>
+  --endpoint <endpoint_URL>
 ```
 
 A következő példában a bemeneti sémát az esemény:
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
-  --topic-name demotopic \
-  -g myResourceGroup \
+  --source-resource-id $topicid \
   --name eventsub2 \
   --event-delivery-schema inputeventschema \
-  --endpoint-type storagequeue \
-  --endpoint <storage-queue-url>
+  --endpoint <endpoint_URL>
+```
+
+Az alábbi példa feliratkozik egy event grid-témakört, és az Event Grid-sémát használja. PowerShell esetén használja az alábbi parancsot:
+
+```azurepowershell-interactive
+$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName myResourceGroup -Name demoTopic).Id
+
+New-AzureRmEventGridSubscription `
+  -ResourceId $topicid `
+  -EventSubscriptionName eventsub1 `
+  -EndpointType webhook `
+  -Endpoint <endpoint-url> `
+  -DeliverySchema EventGridSchema
+```
+
+A következő példában a bemeneti sémát az esemény:
+
+```azurepowershell-interactive
+New-AzureRmEventGridSubscription `
+  -ResourceId $topicid `
+  -EventSubscriptionName eventsub2 `
+  -EndpointType webhook `
+  -Endpoint <endpoint-url> `
+  -DeliverySchema CustomInputSchema
 ```
 
 ## <a name="publish-event-to-topic"></a>A témakör esemény közzététele
 
 Most már készen áll, küldünk egy eseményt az egyéni témakör és az eredmény a leképezés megjelenítéséhez. A következő szkriptet az esemény közzététele a [példa séma](#original-event-schema):
+
+Azure CLI esetén használja az alábbi parancsot:
 
 ```azurecli-interactive
 endpoint=$(az eventgrid topic show --name demotopic -g myResourceGroup --query "endpoint" --output tsv)
@@ -106,23 +146,43 @@ event='[ { "myEventTypeField":"Created", "resource":"Users/example/Messages/1000
 curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 ```
 
-Most tekintse meg a Queue storage. A két előfizetés különböző sémákkal leszállítani eseményeket.
+PowerShell esetén használja az alábbi parancsot:
+
+```azurepowershell-interactive
+$endpoint = (Get-AzureRmEventGridTopic -ResourceGroupName myResourceGroup -Name demotopic).Endpoint
+$keys = Get-AzureRmEventGridTopicKey -ResourceGroupName myResourceGroup -Name demotopic
+
+$htbody = @{
+    myEventTypeField="Created"
+    resource="Users/example/Messages/1000"
+    resourceData= @{
+        someDataField1="SomeDataFieldValue"
+    }
+}
+
+$body = "["+(ConvertTo-Json $htbody)+"]"
+Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
+```
+
+Most tekintse meg a WebHook-végpontot. A két előfizetés különböző sémákkal leszállítani eseményeket.
 
 Az első előfizetés event grid séma használja. A szállított események formátuma:
 
 ```json
 {
-  "Id": "016b3d68-881f-4ea3-8a9c-ed9246582abe",
-  "EventTime": "2018-05-01T20:00:25.2606434Z",
-  "EventType": "Created",
-  "DataVersion": "1.0",
-  "MetadataVersion": "1",
-  "Topic": "/subscriptions/<subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.EventGrid/topics/demotopic",
-  "Subject": "DefaultSubject",
-  "Data": {
+  "id": "aa5b8e2a-1235-4032-be8f-5223395b9eae",
+  "eventTime": "2018-11-07T23:59:14.7997564Z",
+  "eventType": "Created",
+  "dataVersion": "1.0",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/<subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.EventGrid/topics/demotopic",
+  "subject": "DefaultSubject",
+  "data": {
     "myEventTypeField": "Created",
     "resource": "Users/example/Messages/1000",
-    "resourceData": { "someDataField1": "SomeDataFieldValue" } 
+    "resourceData": {
+      "someDataField1": "SomeDataFieldValue"
+    }
   }
 }
 ```
@@ -135,7 +195,9 @@ A második előfizetés használni a bemeneti eseményt séma. A szállított es
 {
   "myEventTypeField": "Created",
   "resource": "Users/example/Messages/1000",
-  "resourceData": { "someDataField1": "SomeDataFieldValue" }
+  "resourceData": {
+    "someDataField1": "SomeDataFieldValue"
+  }
 }
 ```
 

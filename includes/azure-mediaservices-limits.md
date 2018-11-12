@@ -26,7 +26,7 @@
 
 2017. április 1. a fiókban 90 napnál régebbi feladat rekordot automatikusan törölve lesznek, a társított feladat bejegyzéseket, valamint akkor is, ha a rekordok száma nem éri a maximális kvótát. A feladatok/műveletek adatainak archiválásához használhatja az [itt](../articles/media-services/previous/media-services-dotnet-manage-entities.md) ismertetett programkódot.
 
-<sup>3</sup> kérés a feladat entitások, legfeljebb 1000 feladatok kérelmenként adja vissza. Ha az összes elküldött feladatot nyomon szeretné követni, ezt a top/skip (felső korlát/kihagyás) beállítás segítségével teheti meg az [OData rendszerlekérdezési beállításait](http://msdn.microsoft.com/library/gg309461.aspx) ismertető cikkben leírtak szerint.
+<sup>3</sup> kérés a feladat entitások, legfeljebb 1000 feladatok kérelmenként adja vissza. Ha az összes elküldött feladatot nyomon szeretné követni, ezt a top/skip (felső korlát/kihagyás) beállítás segítségével teheti meg az [OData rendszerlekérdezési beállításait](https://msdn.microsoft.com/library/gg309461.aspx) ismertető cikkben leírtak szerint.
 
 <sup>4</sup> A keresőket nem a felhasználónkénti hozzáférés-vezérlés kezelésére tervezték. Ha az egyes felhasználóknak különböző hozzáférési jogosultságokat szeretne biztosítani, válassza a digitális jogkezelési (DRM) megoldásokat. További információ [itt](../articles/media-services/previous/media-services-content-protection-overview.md) érhető el.
 

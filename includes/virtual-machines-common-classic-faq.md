@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 45a6bd349169265ef411d01a3601a27551847633
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 37dc96cf965181c5acba74449c684a08035e37b2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226760"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264407"
 ---
 Ez a cikk néhány, a felhasználók által a klasszikus üzemi modellel létrehozott Azure-beli virtuális gépekkel kapcsolatban gyakran feltett kérdéssel foglalkozik.
 
@@ -22,9 +22,9 @@ Igen. A migrálással kapcsolatos utasításokért lásd:
 ## <a name="what-can-i-run-on-an-azure-vm"></a>Mit futtathatok egy Azure-beli virtuális gépen?
 Minden előfizető kiszolgálószoftvereket futtathat az Azure-beli virtuális gépeken. Futtathatja a Windows Server legújabb verzióit, valamint különböző Linux-disztribúciókat. Támogatási részletek:
 
-• Windows rendszerű virtuális gépek – [Microsoft kiszolgálószoftveres támogatás az Azure Virtual Machines szolgáltatáshoz](http://go.microsoft.com/fwlink/p/?LinkId=393550)
+• Windows rendszerű virtuális gépek – [Microsoft kiszolgálószoftveres támogatás az Azure Virtual Machines szolgáltatáshoz](https://go.microsoft.com/fwlink/p/?LinkId=393550)
 
-• Linux rendszerű virtuális gépek – [Linux az Azure által támogatott disztribúciókon](http://go.microsoft.com/fwlink/p/?LinkId=393551)
+• Linux rendszerű virtuális gépek – [Linux az Azure által támogatott disztribúciókon](https://go.microsoft.com/fwlink/p/?LinkId=393551)
 
 A Windows-alapú rendszerképeknél fejlesztési és tesztelési feladatokhoz a Windows 7 és a Windows 8.1 bizonyos verziói elérhetők az MSDN Azure előfizetői előnyöket és az MSDN fejlesztés/tesztelés – használatalapú fizetést választó előfizetők számára. Részletekért, többek között az utasításokért és korlátozásokért tekintse meg az [MSDN-előfizetők számára elérhető Windows-rendszerképeket](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/) ismertető cikket.
 
@@ -38,10 +38,10 @@ Az affinitáscsoport-funkciók már elavultnak számítanak az Azure Resource Ma
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Mennyi tárhelyet használhatok egy virtuális gép esetén?
 Minden adatlemez akár 1 TB méretű is lehet. A használható adatlemezek száma a virtuális gép méretétől függ. Részletek: [Virtuális gépek méretei](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Az Azure-tárfiók tárhelyet biztosít az operációsrendszer-lemez és bármely adatlemez számára. Minden lemez egy lapblobként tárolt .vhd-fájl. A díjszabás részleteiért lásd [a Storage szolgáltatás díjszabását](http://go.microsoft.com/fwlink/p/?LinkId=396819).
+Az Azure-tárfiók tárhelyet biztosít az operációsrendszer-lemez és bármely adatlemez számára. Minden lemez egy lapblobként tárolt .vhd-fájl. A díjszabás részleteiért lásd [a Storage szolgáltatás díjszabását](https://go.microsoft.com/fwlink/p/?LinkId=396819).
 
 ## <a name="which-virtual-hard-disk-types-can-i-use"></a>Milyen típusú virtuális merevlemezeket használhatok?
-Az Azure csak a rögzített méretű, VHD formátumú virtuális merevlemezek használatát támogatja. Ha rendelkezik olyan VHDX-szel, amelyet szeretne használni az Azure-ban, először konvertálnia kell azt a Hyper-V Manager vagy a [convert-VHD](http://go.microsoft.com/fwlink/p/?LinkId=393656) parancsmag használatával. Miután ezt megtette, használja az [Add-AzureVHD](https://msdn.microsoft.com/library/azure/dn495173.aspx) parancsmagot (Szolgáltatásfelügyelet módban) a VHD egy Azure-ban található tárfiókba való feltöltésére, így azt használhatja a virtuális gépekkel.
+Az Azure csak a rögzített méretű, VHD formátumú virtuális merevlemezek használatát támogatja. Ha rendelkezik olyan VHDX-szel, amelyet szeretne használni az Azure-ban, először konvertálnia kell azt a Hyper-V Manager vagy a [convert-VHD](https://go.microsoft.com/fwlink/p/?LinkId=393656) parancsmag használatával. Miután ezt megtette, használja az [Add-AzureVHD](https://msdn.microsoft.com/library/azure/dn495173.aspx) parancsmagot (Szolgáltatásfelügyelet módban) a VHD egy Azure-ban található tárfiókba való feltöltésére, így azt használhatja a virtuális gépekkel.
 
 * A Linuxra vonatkozó utasításokért tekintse meg a [Linux operációs rendszert tartalmazó virtuális merevlemez létrehozását és feltöltését](../articles/virtual-machines/linux/classic/create-upload-vhd-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) ismertető témakört.
 
@@ -50,7 +50,7 @@ Több szempontból hasonlítanak az 1. generációs Hyper-V-beli virtuális gép
 
 * Az Azure nem biztosít konzolos hozzáférést a virtuális gépekhez. A virtuális géphez nem lehet hozzáférni az indítás befejezése előtt.
 * Az Azure-beli virtuális gépek a legtöbb [méretben](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) csak 1 virtuális hálózati adapterrel rendelkeznek, ami azt jelenti, hogy csak 1 külső IP-címmel rendelkezhetnek. (Az A8 és A9 méretűek – konkrét körülmények esetén – egy második hálózati adaptert használnak a példányok közötti alkalmazáskommunikációhoz.)
-* Az Azure-beli virtuális gépek nem támogatják a 2. generációs Hyper-V-beli virtuálisgép-funkciókat. A funkciókkal kapcsolatban lásd a [virtuális gépek műszaki adatait Hyper-V használata estén](http://technet.microsoft.com/library/dn592184.aspx) és a [2. generációs virtuális gépek áttekintését](https://technet.microsoft.com/library/dn282285.aspx).
+* Az Azure-beli virtuális gépek nem támogatják a 2. generációs Hyper-V-beli virtuálisgép-funkciókat. A funkciókkal kapcsolatban lásd a [virtuális gépek műszaki adatait Hyper-V használata estén](https://technet.microsoft.com/library/dn592184.aspx) és a [2. generációs virtuális gépek áttekintését](https://technet.microsoft.com/library/dn282285.aspx).
 
 ## <a name="can-these-virtual-machines-use-my-existing-on-premises-networking-infrastructure"></a>Használhatják ezek a virtuális gépek a meglévő, helyszíni hálózati infrastruktúrát?
 A klasszikus üzemi modellben létrehozott virtuális gépek esetében használhatja az Azure Virtual Networköt a meglévő infrastruktúra kiterjesztésére. A módszer a fiókirodák létrehozásához hasonlít. Az Azure-ban létrehozhat és kezelhet virtuális magánhálózatokat (VPN-eket), valamint biztonságosan csatlakoztathatja ezeket egy helyszíni informatikai infrastruktúrához. További részleteket a [virtuális hálózatok áttekintésében](../articles/virtual-network/virtual-networks-overview.md) talál.
@@ -85,7 +85,7 @@ A frissítés kifejezés általában azt jelenti, hogy az operációs rendszeré
 * Linuxos virtuális gépeken használja a disztribúciónak megfelelő csomagkezelő eszközöket és eljárásokat.
 * Windowsos virtuális gépeken a kiszolgálót a Windows Server áttelepítési eszközökkel vagy hasonló eszközökkel migrálhatja. Ne kísérelje meg a vendég operációs rendszer frissítését, amíg a gép az Azure-ban található. Ez nem támogatott, mivel így fennállna a kockázat, hogy elveszíti a virtuális géphez való hozzáférést. Ha problémák lépnek fel a frissítés közben, előfordulhatna, hogy nem tud távoli asztali munkamenetet indítani, és nem tudná elhárítani a problémákat.
 
-Általános adatok a Windows Server migrálásának eszközeiről és folyamatairól: [Szerepkörök és szolgáltatások áttelepítése Windows Serverre](http://go.microsoft.com/fwlink/p/?LinkId=396940).
+Általános adatok a Windows Server migrálásának eszközeiről és folyamatairól: [Szerepkörök és szolgáltatások áttelepítése Windows Serverre](https://go.microsoft.com/fwlink/p/?LinkId=396940).
 
 ## <a name="whats-the-default-user-name-and-password-on-the-virtual-machine"></a>Mi az alapértelmezett felhasználónév és jelszó a virtuális gépen?
 Az Azure által biztosított rendszerképek nem rendelkeznek előre konfigurált felhasználónévvel és jelszóval. Amikor hoz létre virtuális gépet egy ilyen rendszerképpel, szüksége, adjon meg egy felhasználónevet és jelszót, amely segítségével jelentkezzen be a virtuális gép.
@@ -100,8 +100,8 @@ További részletek:
 ## <a name="can-azure-run-anti-virus-on-my-virtual-machines"></a>Tud víruskeresőt futtatni az Azure a virtuális gépeimen?
 Az Azure számos víruskereső megoldást kínál, azonban a kezelésük az Ön feladata. Például egy külön előfizetésre lehet szüksége egy kártevőirtó szoftverhez, és Önnek kell eldöntenie, hogy mikor futtat vizsgálatokat és telepít frissítéseket. A Microsoft Antimalware, a Symantec Endpoint Protection vagy a TrendMicro Deep Security Agent VM-bővítményével a windowsos virtuális gép létrehozásakor vagy később is biztosíthatja a víruskereső-támogatást. A Symantec és a TrendMicro bővítményeit ingyenes korlátozott idejű próbaverziós előfizetéssel vagy egy meglévő vállalati előfizetéssel használhatja. A Microsoft Antimalware ingyenes. Részletes információ:
 
-* [A Symantec Endpoint Protection telepítése és konfigurálása Azure-beli virtuális gépen](http://go.microsoft.com/fwlink/p/?LinkId=404207)
-* [A Trend Micro Deep Security telepítése és konfigurálása szolgáltatásként Azure-beli virtuális gépen](http://go.microsoft.com/fwlink/p/?LinkId=404206)
+* [A Symantec Endpoint Protection telepítése és konfigurálása Azure-beli virtuális gépen](https://go.microsoft.com/fwlink/p/?LinkId=404207)
+* [A Trend Micro Deep Security telepítése és konfigurálása szolgáltatásként Azure-beli virtuális gépen](https://go.microsoft.com/fwlink/p/?LinkId=404206)
 * [Kártevőirtó megoldások telepítése Azure-beli virtuális gépeken](https://azure.microsoft.com/blog/2014/05/13/deploying-antimalware-solutions-on-azure-virtual-machines/)
 
 ## <a name="what-are-my-options-for-backup-and-recovery"></a>Milyen biztonsági mentési és helyreállítási lehetőségek közül választhatok?

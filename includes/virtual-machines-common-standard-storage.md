@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: f1fe45283ef2886a50bf6a36e50e7ffe42055ee2
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: e266b239a44907e8e38e60cfc217aa21e46ab17e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49312419"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264088"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Költséghatékony Standard Storage és a nem felügyelt és felügyelt Azure-beli Virtuálisgép-lemezek
 
@@ -61,10 +61,10 @@ Ebben a szakaszban ismertetünk, a méretezhetőségi és teljesítménycéljai 
 | **Erőforrás** | **Alapértelmezett korlát** |
 |--------------|-------------------|
 | Storage-fiók / TB  | 500 TB |
-| Maximális bejövő<sup>1</sup> tárfiókonként (USA régió) | Ha GRS/zrs esetén engedélyezve van, 20 GB/s az lrs esetén 10 GB/s |
-| Maximális kimenő<sup>1</sup> tárfiókonként (USA régió) | Ha engedélyezett a RA-GRS/GRS/zrs esetén, 30 GB/s az lrs esetén 20 GB/s |
-| Maximális bejövő<sup>1</sup> tárfiókonként (Európai és ázsiai régióban) | Ha GRS/zrs esetén engedélyezve van, 10 GB/s az lrs esetén 5 GB/s |
-| Maximális kimenő<sup>1</sup> tárfiókonként (Európai és ázsiai régióban) | Ha engedélyezett a RA-GRS/GRS/zrs esetén, 15 GB/s az lrs esetén 10 GB/s |
+| Maximális bejövő<sup>1</sup> tárfiókonként (USA régió) | Ha GRS/zrs esetén engedélyezve van, 20 GB/s az lrs esetén 10 GB/s |
+| Maximális kimenő<sup>1</sup> tárfiókonként (USA régió) | Ha engedélyezett a RA-GRS/GRS/zrs esetén, 30 GB/s az lrs esetén 20 GB/s |
+| Maximális bejövő<sup>1</sup> tárfiókonként (Európai és ázsiai régióban) | Ha GRS/zrs esetén engedélyezve van, 10 GB/s az lrs esetén 5 GB/s |
+| Maximális kimenő<sup>1</sup> tárfiókonként (Európai és ázsiai régióban) | Ha engedélyezett a RA-GRS/GRS/zrs esetén, 15 GB/s az lrs esetén 10 GB/s |
 | Összes kérelem Egységár (1 KB-os objektumméret feltételezve) storage-fiók | Legfeljebb 20 000 IOPS, másodpercenként entitások vagy üzenetek / másodperc |
 
 <sup>1</sup> bejövő küld a storage-fiók összes adatot (kérést) hivatkozik. Kimenő adatforgalom egy tárfiók felől fogadott összes adatot (választ) hivatkozik.
@@ -111,8 +111,8 @@ Ha egy felügyelt lemezt egy virtuális Géphez van csatlakoztatva, bizonyos API
 
 Standard szintű Storage használata esetén az alábbi számlázási szempontok érvényesek:
 
-* Standard szintű storage nem felügyelt lemez/adatok mérete 
-* Standard szintű Managed Disks
+* Standard szintű storage nem felügyelt lemez/adatok mérete
+* Standard szintű felügyelt lemezekre
 * Standard szintű storage-pillanatképek
 * Kimenő adatforgalom
 * Tranzakciók
@@ -121,14 +121,16 @@ Standard szintű Storage használata esetén az alábbi számlázási szempontok
 
 **A felügyelt lemezek:** standard szintű managed disks díjszabása a kiépített a lemez mérete függ. Azure maps-a kiépítési méret (kerekítve) a legközelebbi Managed Disks beállítás, az alábbi táblázatban megadott módon. Minden egyes felügyelt lemezéhez vannak leképezve a támogatott kiosztott méretek egyikét, és ennek megfelelően történik. Például ha standard szintű felügyelt lemez létrehozása, és adja meg a 200 GB kiosztott méretét, számítjuk fel a díjszabás a S15 lemez típusa alapján.
 
-| **Felügyelt standard HDD <br>lemez típusa** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60** | **S70** | **S80** |
+Csillaggal szintben méretek jelenleg előzetes verzióban érhető el.
+
+| **Felügyelt standard HDD <br>lemez típusa** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60*** | **S70*** | **S80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | Lemezméret        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 giB (1 TiB) | A 2048 giB (2 Tib-ra) | 4095 giB (4 TiB) | 8192 giB (8 TiB) | 16,385 giB (16 TiB) | 32 767 giB (32 TiB) |
 
 
 **A pillanatképek**: a megnövelt kapacitás, a pillanatképek által használt standard szintű lemezek pillanatképei számlázzuk ki. A pillanatképek információkért lásd: [létrehozása egy pillanatképet egy Blobról](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
 
-**Kimenő adatforgalom**: [kimenő adatforgalom](https://azure.microsoft.com/pricing/details/data-transfers/) (adatok csak az Azure adatközpontok kimenő adatforgaloma) díjak lépnek fel a sávszélesség-használat.
+**Kimenő adatforgalom**: [kimenő adatforgalom](https://azure.microsoft.com/pricing/details/data-transfers/) (adatok csak az Azure adatközpontok kimenő adatforgaloma) díjak lépnek fel a sávszélesség-használat.
 
 **Tranzakció**: Azure 0.0036 $ / 100 000 tranzakció standard szintű tárolóra vonatkozó díjak. Tranzakciónak számít az adatok tárolóba írása és tárolóból való olvasása is.
 

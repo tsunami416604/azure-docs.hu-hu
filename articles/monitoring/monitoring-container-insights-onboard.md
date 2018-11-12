@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/04/2018
+ms.date: 11/05/2018
 ms.author: magoedte
-ms.openlocfilehash: 505abe8f3dc19458b3f0e18f349974199ae4ba58
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 2b7045f74a22732337ceb8dc9136da1c93ee7c2c
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212114"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037787"
 ---
 # <a name="how-to-onboard-azure-monitor-for-containers-preview"></a>Hogyan előkészítése az Azure Monitor tárolók (előzetes verzió) 
 Ez a cikk bemutatja, hogyan állítható be az Azure Monitor for containers szolgáltatásban üzembe helyezett Kubernetes-környezetben és lévő üzemeltetett számítási feladatok teljesítményének figyeléséhez [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/).
@@ -41,7 +41,7 @@ A teljesítmény monitorozását teszi lehetővé a teljesítmény- és esemény
 >[!NOTE] 
 >Ha már telepített egy AKS-fürtöt, akkor engedélyeznie figyelése Azure CLI vagy a megadott Azure Resource Manager-sablon használatával, ahogyan az a cikk későbbi részében is. Nem használhat `kubectl` frissítése, törlése, telepítse újra vagy telepítheti az ügynököt. A sablon kell telepíteni szeretné ugyanabban az erőforráscsoportban a fürttel."
 
-## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
+## <a name="sign-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portal webhelyre
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
 ## <a name="enable-monitoring-for-a-new-cluster"></a>Engedélyezze a monitorozást az új fürt
@@ -110,7 +110,7 @@ Miután engedélyezte a figyelés, a fürt mérőszámok megtekintéséhez nagyj
 ### <a name="enable-monitoring-from-aks-cluster-in-the-portal"></a>Engedélyezze a monitorozást az AKS-fürtöt a portálon
 Az AKS-tároló az Azure Portal figyelés engedélyezése, tegye a következőket:
 
-1. Az Azure Portalon válassza ki a **minden szolgáltatás**. 
+1. Az Azure Portalon válassza a **Minden szolgáltatás** elemet. 
 2. Az erőforrások listájába írja be a szöveget **tárolók**.  
     A szűrők megjelenítése a bemenetet a következők alapján. 
 3. Válassza ki **Kubernetes-szolgáltatás**.  
@@ -244,7 +244,7 @@ Ha az Azure CLI-vel, akkor először helyi telepítése és használata a paranc
 
     ```json
     {
-       "$schema": "https://schema.management.azure.com/  schemas/2015-01-01/deploymentParameters.json#",
+       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
        "contentVersion": "1.0.0.0",
        "parameters": {
          "aksResourceId": {

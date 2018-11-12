@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: juliako
-ms.openlocfilehash: e46ff880ff94abb2de2a9bef1464df0f6ac78fc6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 953cd536c390e571ee4c40dc670316197718eff2
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250798"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279194"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Smooth Streaming-Windows Store-alkalmazás létrehozása
 
@@ -95,7 +95,7 @@ Miután hozzáadta a hivatkozásokat, ki kell választania a megcélzott platfor
 
 1. A Megoldáskezelőben kattintson duplán **MainPage.xaml** a tervezési nézetében való megnyitásához.
 2. Keresse meg a **&lt;rács&gt;** és **&lt;/Grid&gt;** címkék az XAML-fájlt, és illessze be a két címke között az alábbi kódot:
-
+```xml
          <Grid.RowDefinitions>
 
             <RowDefinition Height="20"/>    <!-- spacer -->
@@ -138,7 +138,7 @@ Miután hozzáadta a hivatkozásokat, ki kell választania a megcélzott platfor
                FontSize="16" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" />
             <TextBox x:Name="txtStatus" FontSize="10" Width="700" VerticalAlignment="Center"/>
          </StackPanel>
-   
+```
    Médiatartalom lejátszása a prvku MediaElement vezérlő szolgál. A csúszka vezérlőelemmel sliderProgress nevű szabályozhatja az adathordozó folyamatban van a következő lecke lesz használható.
 3. Nyomja meg **CTRL + S** szeretné menteni a fájlt.
 
@@ -160,7 +160,7 @@ A XAML fájlban néhány eseménykezelők kapcsolódnak a vezérlőkkel.  Meg ke
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "text/xml");
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "application/vnd.ms-sstr+xml");
 5. A végén a **MainPage** osztály, illessze be a következő kódot:
-   
+```csharp
          # region UI Button Click Events
          private void btnPlay_Click(object sender, RoutedEventArgs e)
          {
@@ -202,7 +202,7 @@ A XAML fájlban néhány eseménykezelők kapcsolódnak a vezérlőkkel.  Meg ke
          mediaElement.Position = new TimeSpan(0, 0, (int)(sliderProgress.Value));
          }
          # endregion
-
+```
 A sliderProgress_PointerPressed eseménykezelő itt van definiálva.  Nincsenek működéséhez, ehhez további működik, amely ebben az oktatóanyagban a következő leckében tárgyalja.
 6. Nyomja meg **CTRL + S** szeretné menteni a fájlt.
 
@@ -242,22 +242,25 @@ Ebben a leckében az alábbi eljárásokat tartalmazza:
 
 1. A Megoldáskezelőben kattintson a jobb gombbal **MainPage.xaml**, és kattintson a **nézet kód**.
 2. A fájl elején adja hozzá a következő using utasítást:
-
+```csharp
         using Microsoft.Media.AdaptiveStreaming;
+```
 3. A MainPage osztály elején adja hozzá a következő adatok tagok:
-
+```csharp
          private Windows.Foundation.Collections.PropertySet propertySet = new Windows.Foundation.Collections.PropertySet();             
          private IAdaptiveSourceManager adaptiveSourceManager;
+```
 4. Belül a **MainPage** konstruktor, hozzáadása után a következő kódot a **ez. Components(); inicializálása**  vonal- és a regisztrációs kód az előző leckét írt sorok:
-
+```csharp
         // Gets the default instance of AdaptiveSourceManager which manages Smooth 
         //Streaming media sources.
         adaptiveSourceManager = AdaptiveSourceManager.GetDefault();
         // Sets property key value to AdaptiveSourceManager default instance.
         // {A5CE1DE8-1D00-427B-ACEF-FB9A3C93DE2D}" must be hardcoded.
         propertySet["{A5CE1DE8-1D00-427B-ACEF-FB9A3C93DE2D}"] = adaptiveSourceManager;
+```
 5. Belül a **MainPage** konstruktor, módosítsa a két RegisterByteStreamHandler vehetők fel a rögzített paraméterek:
-
+```csharp
          // Registers Smooth Streaming byte-stream handler for ".ism" extension and, 
          // "text/xml" and "application/vnd.ms-ss" mime-types and pass the propertyset. 
          // http://*.ism/manifest URI resources will be resolved by Byte-stream handler.
@@ -273,16 +276,18 @@ Ebben a leckében az alábbi eljárásokat tartalmazza:
             ".ism", 
             "application/vnd.ms-sstr+xml", 
          propertySet);
+```
 6. Nyomja meg **CTRL + S** szeretné menteni a fájlt.
 
 **Az adaptív forrás manager szintű eseménykezelő**
 
 1. A Megoldáskezelőben kattintson a jobb gombbal **MainPage.xaml**, és kattintson a **nézet kód**.
 2. Belül a **MainPage** osztályban adja hozzá a következő adatelem:
-   
-     privát AdaptiveSource adaptiveSource = null;
+```csharp
+     private AdaptiveSource adaptiveSource = null;
+```
 3. A végén a **MainPage** osztályban adja hozzá a következő eseménykezelő:
-   
+```csharp
          # region Adaptive Source Manager Level Events
          private void mediaElement_AdaptiveSourceOpened(AdaptiveSource sender, AdaptiveSourceOpenedEventArgs args)
          {
@@ -291,20 +296,24 @@ Ebben a leckében az alábbi eljárásokat tartalmazza:
          }
 
          # endregion Adaptive Source Manager Level Events
+```
 4. A végén a **MainPage** konstruktorhoz adja hozzá a következő sort az adaptív forrás nyílt esemény előfizetni:
-   
+```csharp
          adaptiveSourceManager.AdaptiveSourceOpenedEvent += 
            new AdaptiveSourceOpenedEventHandler(mediaElement_AdaptiveSourceOpened);
+```
 5. Nyomja meg **CTRL + S** szeretné menteni a fájlt.
 
 **Az adaptív forrás szintű eseménykezelők hozzáadása**
 
 1. A Megoldáskezelőben kattintson a jobb gombbal **MainPage.xaml**, és kattintson a **nézet kód**.
 2. Belül a **MainPage** osztályban adja hozzá a következő adatelem:
-   
-     privát AdaptiveSourceStatusUpdatedEventArgs adaptiveSourceStatusUpdate;   privát jegyzékfájl manifestObject;
+```csharp
+     private AdaptiveSourceStatusUpdatedEventArgs adaptiveSourceStatusUpdate; 
+     private Manifest manifestObject;
+```
 3. A végén a **MainPage** osztályban adja hozzá a következő esemény-kezelők:
-
+```csharp
          # region Adaptive Source Level Events
          private void mediaElement_ManifestReady(AdaptiveSource sender, ManifestReadyEventArgs args)
          {
@@ -326,7 +335,7 @@ Ebben a leckében az alábbi eljárásokat tartalmazza:
          }
 
          # endregion Adaptive Source Level Events
-4. Végén a **prvku mediaElement AdaptiveSourceOpened** metódus, a következő kódot a feliratkozás az esemény hozzáadása:
+4. At the end of the **mediaElement AdaptiveSourceOpened** method, add the following code to subscribe to the events:
    
          adaptiveSource.ManifestReadyEvent +=
 
@@ -337,6 +346,7 @@ Ebben a leckében az alábbi eljárásokat tartalmazza:
          adaptiveSource.AdaptiveSourceFailedEvent += 
 
             mediaElement_AdaptiveSourceFailed;
+```
 5. Nyomja meg **CTRL + S** szeretné menteni a fájlt.
 
 Ugyanazokat az eseményeket adaptív forrás Manager szinten is, amely az alkalmazás összes médiaelemek közös funkciók kezeléséhez használható érhetők el. Minden egyes AdaptiveSource magában foglalja a saját eseményeket, és minden AdaptiveSource események átkerül AdaptiveSourceManager alatt.
@@ -345,7 +355,7 @@ Ugyanazokat az eseményeket adaptív forrás Manager szinten is, amely az alkalm
 
 1. A Megoldáskezelőben kattintson a jobb gombbal **MainPage.xaml**, és kattintson a **nézet kód**.
 2. A végén a **MainPage** osztályban adja hozzá a következő esemény-kezelők:
-
+```csharp
          # region Media Element Event Handlers
          private void MediaOpened(object sender, RoutedEventArgs e)
          {
@@ -366,30 +376,35 @@ Ugyanazokat az eseményeket adaptív forrás Manager szinten is, amely az alkalm
          }
 
          # endregion Media Element Event Handlers
+```
 3. A végén a **MainPage** konstruktort, azokhoz az eseményekhez dolní index je ad hozzá a következő kódot:
-
+```csharp
          mediaElement.MediaOpened += MediaOpened;
          mediaElement.MediaEnded += MediaEnded;
          mediaElement.MediaFailed += MediaFailed;
+```
 4. Nyomja meg **CTRL + S** szeretné menteni a fájlt.
 
 **Adja hozzá a csúszka sávjának kapcsolódó kód**
 
 1. A Megoldáskezelőben kattintson a jobb gombbal **MainPage.xaml**, és kattintson a **nézet kód**.
 2. A fájl elején adja hozzá a következő using utasítást:
-      
+```csharp
         using Windows.UI.Core;
+```
 3. Belül a **MainPage** osztályban adja hozzá a következő adatok tagok:
-   
+```csharp
          public static CoreDispatcher _dispatcher;
          private DispatcherTimer sliderPositionUpdateDispatcher;
+```
 4. A végén a **MainPage** konstruktorhoz adja hozzá a következő kódot:
-   
+```csharp
          _dispatcher = Window.Current.Dispatcher;
          PointerEventHandler pointerpressedhandler = new PointerEventHandler(sliderProgress_PointerPressed);
          sliderProgress.AddHandler(Control.PointerPressedEvent, pointerpressedhandler, true);    
+```
 5. A végén a **MainPage** osztályhoz, adja hozzá a következő kódot:
-
+```csharp
          # region sliderMediaPlayer
          private double SliderFrequency(TimeSpan timevalue)
          {
@@ -471,25 +486,30 @@ Ugyanazokat az eseményeket adaptív forrás Manager szinten is, amely az alkalm
          }
 
          # endregion sliderMediaPlayer
-      
+```
+
 >[!NOTE]
 >Módosíthatja a felhasználói felület szála nem UI-szálból CoreDispatcher szolgál. Esetén szűk keresztmetszet dispatcher szálon fejlesztői is választható hallgatója kíván frissíteni a felhasználói felületi elem által biztosított dispatcher.  Példa:
-   
+
+```csharp
          await sliderProgress.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { TimeSpan 
 
          timespan = new TimeSpan(adaptiveSourceStatusUpdate.EndTime); 
          double absvalue  = (int)Math.Round(timespan.TotalSeconds, MidpointRounding.AwayFromZero); 
 
          sliderProgress.Maximum = absvalue; }); 
+```
 6. A végén a **mediaElement_AdaptiveSourceStatusUpdated** metódust, adja hozzá a következő kódot:
-
+```csharp
          setSliderStartTime(args.StartTime);
          setSliderEndTime(args.EndTime);
+```
 7. A végén a **MediaOpened** metódust, adja hozzá a következő kódot:
-
+```csharp
          sliderProgress.StepFrequency = SliderFrequency(mediaElement.NaturalDuration.TimeSpan);
          sliderProgress.Width = mediaElement.Width;
          setupTimer();
+```
 8. Nyomja meg **CTRL + S** szeretné menteni a fájlt.
 
 **Fordítsa le és az alkalmazás tesztelése**
@@ -506,14 +526,14 @@ Ugyanazokat az eseményeket adaptív forrás Manager szinten is, amely az alkalm
 Smooth Streaming stream tartalom több nyelven hangsáv, amelyek a nézők által választható kezelésére képes.  Ebben a leckében lehetővé teszi a nézők jelölje be a Streamek. Ebben a leckében az alábbi eljárásokat tartalmazza:
 
 1. Az XAML-fájl módosítása
-2. A kód behand fájl módosítása
+2. Módosítsa a fájl mögötti kódban
 3. Fordítsa le és az alkalmazás tesztelése
 
 **Az XAML-fájl módosítása**
 
 1. A Megoldáskezelőben kattintson a jobb gombbal **MainPage.xaml**, és kattintson a **adatforrásnézet-tervezőből**.
 2. Keresse meg &lt;Grid.RowDefinitions&gt;, módosítsa a RowDefinitions, úgy hogy néz ki:
-   
+```xml
          <Grid.RowDefinitions>            
             <RowDefinition Height="20"/>
             <RowDefinition Height="50"/>
@@ -521,8 +541,9 @@ Smooth Streaming stream tartalom több nyelven hangsáv, amelyek a nézők álta
             <RowDefinition Height="80"/>
             <RowDefinition Height="50"/>
          </Grid.RowDefinitions>
+```
 3. Belül a &lt;rács&gt;&lt;/Grid&gt; címkéket, adja hozzá a következő kódot egy lista vezérlőelem határozza meg, így a felhasználók elérhető Streamek listájának megtekintéséhez, vagy jelölje be a Streamek:
-
+```xml
          <Grid Name="gridStreamAndBitrateSelection" Grid.Row="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="300"/>
@@ -546,13 +567,14 @@ Smooth Streaming stream tartalom több nyelven hangsáv, amelyek a nézők álta
                 </ListBox>
             </StackPanel>
          </Grid>
+```
 4. Nyomja meg **CTRL + S** menti a módosításokat.
 
 **Módosíthatja a fájl mögötti kódban**
 
 1. A Megoldáskezelőben kattintson a jobb gombbal **MainPage.xaml**, és kattintson a **nézet kód**.
 2. Az SSPlayer névtéren belül adjon hozzá egy új osztályt:
-   
+```csharp
         #region class Stream
    
         public class Stream
@@ -597,14 +619,16 @@ Smooth Streaming stream tartalom több nyelven hangsáv, amelyek a nézők álta
             }
         }
         #endregion class Stream
+```
 3. A MainPage osztály elején adja hozzá a következő változó definíciókat:
-   
+```csharp
          private List<Stream> availableStreams;
          private List<Stream> availableAudioStreams;
          private List<Stream> availableTextStreams;
          private List<Stream> availableVideoStreams;
+```
 4. A MainPage osztály belül adja hozzá a következő régióban:
-   
+```csharp
         #region stream selection
         ///<summary>
         ///Functionality to select streams from IManifestStream available streams
@@ -691,7 +715,7 @@ Smooth Streaming stream tartalom több nyelven hangsáv, amelyek a nézők álta
                 }
             }
    
-            // Select the frist video stream from the list if no video stream is selected
+            // Select the first video stream from the list if no video stream is selected
             if (!isOneVideoSelected)
             {
                 availableVideoStreams[0].isChecked = true;
@@ -709,7 +733,7 @@ Smooth Streaming stream tartalom több nyelven hangsáv, amelyek a nézők álta
                 }
             }
    
-            // Select the frist audio stream from the list if no audio steam is selected.
+            // Select the first audio stream from the list if no audio steam is selected.
             if (!isOneAudioSelected)
             {
                 availableAudioStreams[0].isChecked = true;
@@ -740,14 +764,15 @@ Smooth Streaming stream tartalom több nyelven hangsáv, amelyek a nézők álta
             }
         }
         #endregion stream selection
+```
 5. Keresse meg a mediaElement_ManifestReady módszer, fűzze hozzá a következő kódot a függvény végén:
-   
+```csharp
         getStreams(manifestObject);
         refreshAvailableStreamsListBoxItemSource();
-   
-    Így ha o MediaElement jegyzékfájl készen áll, a kód a rendelkezésre álló adatfolyamok listáját kéri le, és feltölti a felhasználói felület lista mezőt a lista.
+```
+    So when MediaElement manifest is ready, the code gets a list of the available streams, and populates the UI list box with the list.
 6. Az MainPage osztály keresse meg a felhasználói felület gombok események régió kattintson, és adja a következő függvény definíciója:
-   
+```csharp
         private void btnChangeStream_Click(object sender, RoutedEventArgs e)
         {
             List<IManifestStream> selectedStreams = new List<IManifestStream>();
@@ -758,14 +783,14 @@ Smooth Streaming stream tartalom több nyelven hangsáv, amelyek a nézők álta
             // Change streams on the presentation
             changeStreams(selectedStreams);
         }
-
+```
 **Fordítsa le és az alkalmazás tesztelése**
 
 1. Nyomja meg **F6** összeállítása a projekt. 
 2. Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 3. Az alkalmazás tetején használja az alapértelmezett Smooth Streaming URL-címet, vagy adjon meg egy másikat. 
 4. Kattintson a **Nastavit Zdroje**. 
-5. Az alapértelmezett nyelv az audio_eng. Próbálja meg audio_eng és audio_es közötti váltáshoz. Amikor valaki, válasszon egy új adatfolyamot, a Küldés gombra kattintva kell.
+5. Az alapértelmezett nyelv az audio_eng. Próbálja meg audio_eng és audio_es közötti váltáshoz. Minden alkalommal egy új adatfolyamot választja, kattintson a Küldés gombra.
 
 3. lecke befejeződött.  Ebben a leckében a Streamek kiválasztása funkciókat adhat meg.
 
@@ -780,7 +805,7 @@ Smooth Streaming bemutató különböző minőségi szintet (átviteli sebesség
 
 1. A Megoldáskezelőben kattintson a jobb gombbal **MainPage.xaml**, és kattintson a **adatforrásnézet-tervezőből**.
 2. Keresse meg a &lt;rács&gt; nevű címke **gridStreamAndBitrateSelection**, fűzze hozzá a következő kódot a címke végén:
-   
+```xml
          <StackPanel Name="spBitRateSelection" Grid.Row="1" Grid.Column="1">
          <StackPanel Orientation="Horizontal">
              <TextBlock Name="tbBitRate" Text="Available Bitrates:" FontSize="16" VerticalAlignment="Center"/>
@@ -795,13 +820,14 @@ Smooth Streaming bemutató különböző minőségi szintet (átviteli sebesség
              </ListBox.ItemTemplate>
          </ListBox>
          </StackPanel>
+```
 3. Nyomja meg **CTRL + S** he módosítások mentése
 
 **Módosíthatja a fájl mögötti kódban**
 
 1. A Megoldáskezelőben kattintson a jobb gombbal **MainPage.xaml**, és kattintson a **nézet kód**.
 2. Az SSPlayer névtéren belül adjon hozzá egy új osztályt:
-   
+```csharp
         #region class Track
         public class Track
         {
@@ -838,11 +864,13 @@ Smooth Streaming bemutató különböző minőségi szintet (átviteli sebesség
             //public Track() { }
         }
         #endregion class Track
+```
 3. A MainPage osztály elején adja hozzá a következő változó definíciókat:
-   
+```csharp
         private List<Track> availableTracks;
+```
 4. A MainPage osztály belül adja hozzá a következő régióban:
-   
+```csharp
         #region track selection
         /// <summary>
         /// Functionality to select video streams
@@ -939,12 +967,14 @@ Smooth Streaming bemutató különböző minőségi szintet (átviteli sebesség
             }
         }
         #endregion track selection
+```
 5. Keresse meg a mediaElement_ManifestReady módszer, fűzze hozzá a következő kódot a függvény végén:
-   
+```csharp
          getTracks(manifestObject);
          refreshAvailableTracksListBoxItemSource();
+```
 6. Az MainPage osztály keresse meg a felhasználói felület gombok események régió kattintson, és adja a következő függvény definíciója:
-   
+```csharp
          private void btnChangeStream_Click(object sender, RoutedEventArgs e)
          {
             List<IManifestStream> selectedStreams = new List<IManifestStream>();
@@ -955,7 +985,7 @@ Smooth Streaming bemutató különböző minőségi szintet (átviteli sebesség
             // Change streams on the presentation
             changeStreams(selectedStreams);
          }
-
+```
 **Fordítsa le és az alkalmazás tesztelése**
 
 1. Nyomja meg **F6** összeállítása a projekt. 

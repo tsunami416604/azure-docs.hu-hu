@@ -9,20 +9,20 @@ ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
-ms.openlocfilehash: daef00bc7b39326b79e5f56bf803dc6aad1ac0ff
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: b70de1e4494bb142da1cad0d0154b5dc7f765983
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221942"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233356"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>U-SQL-lel az Azure Data Lake Analytics használatának első lépései
 U-SQL nyelv, amely ötvözi az deklaratív SQL C-vel imperatív lehetővé teszi, hogy az bármilyen méretű adatok feldolgozása. U-SQL skálázható, elosztott lekérdezési képességek segítségével hatékonyan elemezheti adatok például az Azure SQL Database relációs adattárak között. Az U-SQL strukturált adatok feldolgozására olvasási séma alkalmazásának, és egyéni logikát és felhasználói függvények szúr be. Továbbá a U-SQL tartalmazza, amely felkínálja részletesen szabályozhatja, hogyan hajtható végre, ipari méretekben bővíthetőséget. 
 
 ## <a name="learning-resources"></a>Tanulási források
 
-* A [U-SQL-oktatóanyag](http://aka.ms/usqltutorial) nyelve a U-SQL legtöbb részletes bemutatóját tartalmazza. Ebben a dokumentumban ajánlott minden fejlesztő, aki a U-SQL további olvasása.
-* További információk a **U-SQL nyelv szintaxisát**, tekintse meg a [U-SQL nyelvi referencia](http://go.microsoft.com/fwlink/p/?LinkId=691348).
+* A [U-SQL-oktatóanyag](https://aka.ms/usqltutorial) nyelve a U-SQL legtöbb részletes bemutatóját tartalmazza. Ebben a dokumentumban ajánlott minden fejlesztő, aki a U-SQL további olvasása.
+* További információk a **U-SQL nyelv szintaxisát**, tekintse meg a [U-SQL nyelvi referencia](https://go.microsoft.com/fwlink/p/?LinkId=691348).
 * Megérteni a **U-SQL-Tervező filozófia**, blogbejegyzésből a Visual Studio [bemutatása U-SQL – A nyelvet, amely a big Data jellegű adatok feldolgozása egyszerűen](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/).
 
 ## <a name="prerequisites"></a>Előfeltételek

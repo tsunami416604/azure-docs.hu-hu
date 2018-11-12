@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 19963edc3742cc5f09ed02249d313728410711c8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d55eab128c8ad295b09ee4fe54f803330a1cb1b4
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973496"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51298802"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>Lista létrehozása vagy törlése az Azure CLI használatával felügyelt felhasználó által hozzárendelt identitás
 
@@ -33,9 +33,6 @@ Ebből a cikkből megismerheti, hogyan hozhat létre, listázása és törlése 
 
 - Ha még nem ismeri a felügyelt identitások Azure-erőforrások számára, tekintse meg a [áttekintés szakaszban](overview.md). **Ne feledje el áttekinteni a [különbség a rendszer által hozzárendelt, és a felhasználó által hozzárendelt felügyelt identitás](overview.md#how-does-it-work)**.
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
-- Ez a cikk a felügyeleti műveleteket hajt végre, a fiók az alábbi szerepkör-hozzárendelések van szüksége:
-    - [Felügyelt identitások Közreműködője](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) szerepkör létrehozása, olvasása (lista), frissítése és törlése a felhasználóhoz felügyelt identitásnak.
-    - [Felügyelt identitások üzemeltetője](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkört (lista) egy felhasználó által hozzárendelt felügyelt identitás tulajdonságainak olvasása.
 - Három lehetősége van a CLI-példaszkriptek futtatásához:
     - Használat [Azure Cloud Shell](../../cloud-shell/overview.md) az Azure Portalon (lásd a következő szakaszban).
     - Használja a beágyazott Azure Cloud Shell-t a "Kipróbálom" gomb, mindegyik blokk jobb felső sarkában található.
@@ -45,7 +42,9 @@ Ebből a cikkből megismerheti, hogyan hozhat létre, listázása és törlése 
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása 
 
-Egy felhasználó által hozzárendelt felügyelt identitás létrehozásához használja a [az identitás létrehozása](/cli/azure/identity#az-identity-create) parancsot. A `-g` paraméter adja meg az erőforráscsoport, hová hozza létre a felhasználó által hozzárendelt felügyelt identitást, és a `-n` paraméter adja meg a nevét. Cserélje le a `<RESOURCE GROUP>` és `<USER ASSIGNED IDENTITY NAME>` paraméterértékeket a saját értékeire:
+A felügyelt felhasználó által hozzárendelt identitás létrehozása, a fióknak rendelkeznie kell a [felügyelt identitások Közreműködője](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) szerepkör-hozzárendelés.
+
+Használja a [az identitás létrehozása](/cli/azure/identity#az-identity-create) paranccsal hozzon létre egy felhasználó által hozzárendelt felügyelt identitás. A `-g` paraméter adja meg az erőforráscsoport, hová hozza létre a felhasználó által hozzárendelt felügyelt identitást, és a `-n` paraméter adja meg a nevét. Cserélje le a `<RESOURCE GROUP>` és `<USER ASSIGNED IDENTITY NAME>` paraméterértékeket a saját értékeire:
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -53,6 +52,8 @@ Egy felhasználó által hozzárendelt felügyelt identitás létrehozásához h
 az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
 ```
 ## <a name="list-user-assigned-managed-identities"></a>Felügyelt identitások felhasználó által hozzárendelt listából
+
+A felhasználó által hozzárendelt felügyelt identitás lista/Olvasás, a fióknak rendelkeznie kell a [felügyelt identitások üzemeltetője](/azure/role-based-access-control/built-in-roles#managed-identity-operator) vagy [felügyelt identitások Közreműködője](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) szerepkör-hozzárendelés.
 
 Felügyelt identitások felhasználó által hozzárendelt listán, használja a [az identitás lista](/cli/azure/identity#az-identity-list) parancsot. Cserélje le a `<RESOURCE GROUP>` saját értékét:
 
@@ -64,6 +65,8 @@ A json-választ a felhasználó által hozzárendelt felügyelt identitások van
 `"type": "Microsoft.ManagedIdentity/userAssignedIdentities"`
 
 ## <a name="delete-a-user-assigned-managed-identity"></a>Egy felhasználó által hozzárendelt felügyelt identitás törlése
+
+Ha törölni szeretné egy felhasználó által hozzárendelt felügyelt identitás, a fióknak rendelkeznie kell a [felügyelt identitások Közreműködője](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) szerepkör-hozzárendelés.
 
 Egy felhasználó által hozzárendelt felügyelt identitás törléséhez használja a [az identitás törlése](/cli/azure/identity#az-identity-delete) parancsot.  A - n paraméter adja meg a nevét, és a – g paraméter adja meg az erőforráscsoport, ahol a felhasználó által hozzárendelt felügyelt identitás létrehozták. Cserélje le a `<USER ASSIGNED IDENTITY NAME>` és `<RESOURCE GROUP>` paraméterek értékét a saját értékeire:
 

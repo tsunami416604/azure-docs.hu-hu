@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/06/2018
+ms.date: 11/06/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3948c226f13f0ff358f9ca467f19cf0e48795911
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: bed053f812cc5c14e6cfe76b8a08b1ffe0cadcb3
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429887"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289121"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Az SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -64,7 +64,7 @@ A dokumentumban a következő kifejezéseket használjuk:
 * Az SAP-összetevőt: Egyedi SAP alkalmazások például az ECC, a BW, a megoldás Manager vagy a EP  Az SAP-összetevők hagyományos ABAP és Java-technológiák vagy egy nem NetWeaver-alapú alkalmazás, például az üzleti objektumok alapulhat.
 * Az SAP-környezet: egy vagy több SAP összetevő logikusan például fejlesztési, QAS, képzés, DR vagy éles üzleti függvény végrehajtásához.
 * SAP-rendszeren: A kifejezés a teljes SAP-eszközök az ügyfél informatikai környezetét. Az SAP-rendszeren, tartalmazza az összes éles környezetben, és nem éles környezetekben.
-* SAP-rendszerhez: Adatbázis-kezelő réteg és kombinációja alkalmazásréteg, például egy fejlesztőrendszerrel SAP ERP, SAP BW tesztgépen, SAP CRM-előállítási rendszerek stb. Az Azure-környezetek nem támogatott ezen két réteg között a helyszíni és az Azure osztani. Ez azt jelenti, hogy az SAP-rendszer vagy az üzembe helyezett helyszíni, vagy azt az Azure-ban üzemel. Azonban telepíthet egy Azure-ban vagy a helyszíni SAP-rendszeren, a különböző rendszerek. Például sikerült telepíteni az SAP CRM fejlesztési és rendszerek tesztelése az Azure azonban az SAP CRM rendszert a helyi környezetben.
+* SAP-rendszerhez: Adatbázis-kezelő réteg és kombinációja alkalmazásréteg, például egy fejlesztőrendszerrel SAP ERP, SAP BW tesztgépen, SAP CRM-előállítási rendszerek stb. Az Azure-környezetek nem támogatott ezen két réteg között a helyszíni és az Azure osztani. Ennek eredményeképpen az SAP-rendszer-e üzembe helyezett helyszíni vagy az Azure-ban központilag telepítették. Azonban telepíthet egy Azure-ban vagy a helyszíni SAP-rendszeren, a különböző rendszerek. Például sikerült telepíteni az SAP CRM fejlesztési és rendszerek tesztelése az Azure azonban az SAP CRM rendszert a helyi környezetben.
 * Létesítmények közötti: Egy forgatókönyvet, ahol a virtuális gépek Azure-előfizetéssel, amely rendelkezik a site-to-site, többhelyes vagy az ExpressRoute-kapcsolat a helyszíni kommunikálhassanak és az Azure közötti üzembe ismerteti. A gyakori Azure dokumentációjában, az ilyen típusú központi telepítések is rendelkezésre állnak, létesítmények közötti forgatókönyvek leírtak szerint. A kapcsolat az az oka, hogy kiterjesztése a helyszíni tartományokra, a helyszíni Active Directory és a helyszíni DNS az Azure-bA. Az Azure-előfizetés objektumok kiterjed a helyszíni környezet változásaihoz. Ez a bővítmény kapcsolatban, a virtuális gépek a helyszíni tartomány része lehet. Tartományi felhasználókat a helyszíni tartomány férhet hozzá a kiszolgálókat, és futtathatja a szolgáltatások a virtuális gépeken (például adatbázis-kezelő szolgáltatások). Virtuális gépek közötti kommunikációt és a névfeloldás üzembe helyezte a helyszínen és az Azure-ban üzembe helyezett virtuális gépek lehetséges. Ebben a forgatókönyvben az a leggyakoribb forgatókönyv üzembe helyezéséhez SAP-eszközök az Azure-ban. További információkért lásd: [tervezéssel és kialakítással VPN-átjáró](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design).
 
 > [!NOTE]
@@ -161,7 +161,7 @@ Mint már említettük Ha az IOPS követelmény nagyobb, mint ami egy virtuális
 >
 
 ### <a name="managed-or-non-managed-disks"></a>Felügyelt vagy nem felügyelt lemezek
-Egy Azure Storage-fiók nem, nem csak egy felügyeleti szerkezet, de korlátozások tárgya is. A korlátozások az Azure standard szintű Storage Accounst és az Azure Premium Storage-fiókok különböznek. A cikkben felsorolt pontos lehetőségeit és korlátait [Azure Storage méretezhetőségi és Teljesítménycéljai](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets)
+Egy Azure Storage-fiók nem, nem csak egy felügyeleti szerkezet, de korlátozások tárgya is. A korlátozások a standard szintű Azure Storage-fiókot és az Azure Premium Storage-fiókok különböznek. A cikkben felsorolt pontos lehetőségeit és korlátait [Azure Storage méretezhetőségi és Teljesítménycéljai](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets)
 
 Az Azure standard szintű Storage esetében fontos, hogy nincs-e korlátozni az iops-értékkel tárfiókonként visszahívása (sor **teljes kérelmek gyakorisága** cikkben [Azure Storage méretezhetőségi és Teljesítménycéljai](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets)). Emellett van egy kezdeti maximális számát, a Tárfiókok és Azure-előfizetésenként. Ezért kell VHD-k egyenleg nagyobb SAP-rendszeren, ezeket a tárfiókok korlátairól elkerülje a különböző tárfiókok között. Egy fárasztó munka, ha néhány száz virtuális gépekről több ezer virtuális merevlemezzel rendelkező kiindulásként. 
 
@@ -276,7 +276,10 @@ Nincsenek kívül rendszereit több száz szabványosította többféle ajánlot
 > [!NOTE]
 > Segítségével Azure azt jelenti, hogy statikus IP-címeket kell rendel az egyes Vnic. A vendég operációs rendszeren belül a statikus IP-címek nem egy virtuális hálózati adaptert kell hozzárendelése. Egyes Azure-szolgáltatásokhoz hasonlóan az Azure Backup szolgáltatás támaszkodhat, hogy legalább az elsődleges virtuális hálózati adapter van beállítva, a DHCP és a statikus IP-címeket. Lásd még a dokumentum [elhárítása Azure virtuális gépek biztonsági mentésének](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#networking). Ha több statikus IP-cím hozzárendelése virtuális Géphez van szüksége, több virtuális hálózati adapter hozzárendelése virtuális Géphez szeretné.
 >
->
+
+
+> [!IMPORTANT]
+> Kívül funkciókat, de további fontos kívül teljesítménybeli megfontolások miatt nem támogatott konfigurálása [Azure hálózati virtuális berendezések](https://azure.microsoft.com/solutions/network-appliances/) a az SAP-alkalmazás és a egy SAP NetWeaver DBMS rétege közötti kommunikációs útvonal Hybris vagy S/4HANA-alapú SAP-rendszerhez. További forgatókönyvek, ahol az nva-k nem támogatottak, amelyek Linux támasztja fürtcsomópontokat és SBD eszközök leírtak szerint az Azure virtuális gépek közötti kommunikációs útvonalak vannak [magas rendelkezésre állás az SAP NetWeaver SUSE Linux Enterprise Server az Azure virtuális gépeken az SAP-alkalmazások](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse). Vagy a kommunikációs elérési utak között az Azure virtuális gépek és a Windows Server SOFS akár leírtak szerint [egy SAP ASCS/SCS példányhoz Windows feladatátvevő fürtre a fürt az Azure-beli fájlmegosztás használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share). Kommunikációs útvonalak is nva-t egyszerűen duplán két kommunikációs partnerek között a hálózati késést, korlátozhatja a kritikus útvonalakat az SAP alkalmazásrétegre és az adatbázis-kezelő réteg közötti átviteli sebesség. Bizonyos esetekben megfigyelhető az ügyfelekkel az nva-k okozhat azokban az esetekben, ahol a Linux támasztja fürtcsomópontok közti kommunikációra kell kommunikálniuk nva-n keresztül SBD eszközére sikertelen támasztja Linux-fürtöket.   
 
 Két virtuális gépet az éles üzemben futó DBMS üzembe helyezési belüli Azure rendelkezésre állási csoport és a egy külön útválasztási az SAP-alkalmazási rétegre és a felügyeleti és a műveletek forgalmat a két adatbázis-kezelő virtuális gépekhez használja, a nyers diagram jelenne meg:
 
@@ -324,7 +327,7 @@ Annak érdekében, hogy további csökkentése érdekében az Azure virtuális g
 ## <a name="deployment-of-host-monitoring"></a>Host Monitoring telepítése
 Az éles használathoz az SAP alkalmazások az Azure Virtual machines szolgáltatásban az SAP képes monitorozási adatai az Azure Virtual machines szolgáltatásban futó fizikai gazdagép-gazda lekérése használatához. Egy adott gazdagép-ügynök SAP javítási szintje szükség, amely lehetővé teszi, hogy ez a funkció a SAPOSCOL és SAP-gazdagép-ügynök. A pontos javítási szintet leírása itt található SAP-Jegyzetnek [1409604].
 
-Összetevő-gazdagép adatok SAPOSCOL és SAP-gazdagép-ügynök telepítési és összetevők életciklusának kezelését a részletekért tekintse meg a [üzembe helyezési útmutató][deployment-guide]
+Összetevőket, amelyek a gazdagép adatok SAPOSCOL és SAP-gazdagép-ügynök telepítése és életciklus-felügyeletét, ezen összetevők kapcsolatos részletekért tekintse meg a [üzembe helyezési útmutató][deployment-guide]
 
 
 ## <a name="next-steps"></a>További lépések

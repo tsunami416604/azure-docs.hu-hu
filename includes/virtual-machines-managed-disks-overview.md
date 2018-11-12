@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 40396462cc568a4ad7dea798fc30d72dcd75fd07
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 6ca819b20bd033cc4081fb98a0c22c23aed05a28
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51208690"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264187"
 ---
 # <a name="azure-managed-disks-overview"></a>Az Azure Managed Disks – áttekintés
 
@@ -67,21 +67,21 @@ Vizsgáljuk meg közelebbről ezeket a beállításokat.
 
 **Lemezméret**: felügyelt lemezek díjszabása a kiépített a lemez mérete függ. Azure maps-a kiépítési méret (kerekítve) a legközelebbi Managed Disks beállítás, az alábbi táblázatban megadott módon. Minden egyes felügyelt lemezéhez vannak leképezve a támogatott kiosztott méretek egyikét, és ennek megfelelően történik. Például ha standard szintű felügyelt lemez létrehozása, és adja meg a 200 GB kiosztott méretét, számítjuk fel a díjszabás a S15 lemez típusa alapján.
 
-Íme egy prémium szintű felügyelt lemez a lemezek mérete:
+Itt érhetők el a lemezméretek a prémium szintű felügyelt lemez, csillaggal szintben méretek jelenleg előzetes verzióban érhető el:
 
-| **Prémium szintű SSD felügyelt <br>lemez típusa** | **P4** | **P6** | **P10** | **P15** | **P20** | **P30** | **P40** | **P50** | **A P60** | **P70** | **P80** |
+| **Prémium szintű SSD felügyelt <br>lemez típusa** | **P4** | **P6** | **P10** | **P15** | **P20** | **P30** | **P40** | **P50** | **A P60*** | **P70*** | **P80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | Lemezméret        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 giB (1 TiB) | A 2048 giB (2 Tib-ra) | 4095 giB (4 TiB) | 8192 giB (8 TiB) | 16384 giB (16 TiB) | – 32 767 giB (TiB) |
 
-Íme egy standard szintű felügyelt SSD-lemez a lemezek mérete:
+Itt érhető el, az egy standard SSD-Tárolóeszközön lemezméretek felügyelt lemez, csillaggal szintben méretek jelenleg előzetes verzióban érhető el:
 
-| **Standard SSD-felügyelt <br>lemez típusa** | **E10** | **E15** | **E20** | **E30** | **E40** | **E50** | **E60** | **E70** | **E80** |
+| **Standard SSD-felügyelt <br>lemez típusa** | **E10** | **E15** | **E20** | **E30** | **E40** | **E50** | **E60*** | **E70*** | **E80*** |
 |------------------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | Lemezméret        | 128 GiB | 256 GiB | 512 GiB | 1024 giB (1 TiB) | A 2048 giB (2 Tib-ra) | 4095 giB (4 TiB) | 8192 giB (8 TiB) | 16384 giB (16 TiB) | – 32 767 giB (TiB) |
 
-Itt érhetők el a lemezméretet HDD standard szintű felügyelt lemez:
+Itt érhető el egy standard HDD lemezméretek felügyelt lemez, csillaggal szintben méretek jelenleg előzetes verzióban érhető el:
 
-| **Felügyelt standard HDD <br>lemez típusa** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60** | **S70** | **S80** |
+| **Felügyelt standard HDD <br>lemez típusa** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60*** | **S70*** | **S80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | Lemezméret        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 giB (1 TiB) | A 2048 giB (2 Tib-ra) | 4095 giB (4 TiB) | 8192 giB (8 TiB) | 16384 giB (16 TiB) | – 32 767 giB (TiB) |
 

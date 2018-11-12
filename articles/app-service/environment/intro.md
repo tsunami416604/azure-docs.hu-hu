@@ -14,15 +14,15 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 34c041bf96ecc8ce7f4440d7afaa64de775baef7
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: ee0b9fad15653c9315a8bdaad9a76d8355912863
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576936"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248843"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Az App Service Environment bemutatása #
- 
+ 
 ## <a name="overview"></a>Áttekintés ##
 
 Az Azure App Service Environment egy Azure App Service-funkció, amely teljesen elkülönített és dedikált környezetet biztosít az App Service-alkalmazások biztonságos, nagy léptékű futtatásához. Ez a szolgáltatás a következők üzemeltetésére képes:
@@ -73,7 +73,7 @@ Az ASE lehet internetre irányuló, nyilvános IP-címmel, vagy befelé irányul
 
 A [hálózati biztonsági csoportok][NSGs] korlátozzák az ASE alhálózatára beérkező hálózati kommunikációt. A hálózati biztonsági csoportok használatával futtathatja az alkalmazásait alsóbb rétegbeli eszközök és szolgáltatások, valamint WAF-ok és hálózati SaaS-szolgáltatók mögött.
 
-Az alkalmazásoknak gyakran kell hozzáférniük vállalati erőforrásokhoz, például belső adatbázisokhoz vagy webes szolgáltatásokhoz. Ha olyan virtuális hálózatban telepíti az ASE környezetet, amely VPN-kapcsolatban van a helyszíni hálózattal, akkor az ASE környezeten belüli alkalmazások hozzáférhetnek a helyszíni erőforrásokhoz. Ez mind a [helyek közötti](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site), mind az [Azure ExpressRoute](http://azure.microsoft.com/services/expressroute/) VPN-kapcsolatok esetében igaz.
+Az alkalmazásoknak gyakran kell hozzáférniük vállalati erőforrásokhoz, például belső adatbázisokhoz vagy webes szolgáltatásokhoz. Ha olyan virtuális hálózatban telepíti az ASE környezetet, amely VPN-kapcsolatban van a helyszíni hálózattal, akkor az ASE környezeten belüli alkalmazások hozzáférhetnek a helyszíni erőforrásokhoz. Ez mind a [helyek közötti](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site), mind az [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) VPN-kapcsolatok esetében igaz.
 
 Az ASE-k virtuális és helyszíni hálózatokkal történő használatáról az [App Service Environment hálózati szempontjai][ASENetwork] részben találhat további információkat.
 

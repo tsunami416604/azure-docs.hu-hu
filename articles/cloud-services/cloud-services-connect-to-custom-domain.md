@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: b05e20b5c99c6f1b5b1bf93ca781ec97284fba79
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: bb812699795f112023b579352ac3a52bef311d40
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004915"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232647"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Az Azure Cloud Services-szerepkörök csatlakozik az Azure AD Domain Controller egyéni
 Mi lesz először beállítása egy virtuális hálózatot (VNet) az Azure-ban. Majd hozzáadjuk egy Active Directory tartományvezérlővel (egy Azure virtuális gépen található) a virtuális hálózathoz. Ezután azt fogja hozzáadása meglévő felhőszolgáltatásokhoz tartozó szerepkörök az előre létrehozott virtuális hálózathoz, majd csatlakoztassa őket a tartományvezérlő.
@@ -95,7 +95,7 @@ Jelentkezzen be a virtuális Gépet, akkor az RDP-fájljának beolvasása a Powe
 Get-AzureRemoteDesktopFile -ServiceName $vmsvc1 -Name $vm1 -LocalPath <rdp-file-path>
 ```
 
-Miután bejelentkezett a virtuális Gépet, a virtuális gép beállításához AD-tartományvezérlő, a következő, a részletes útmutató [hogyan állítható be az ügyfél AD-tartományvezérlő](http://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx).
+Miután bejelentkezett a virtuális Gépet, a virtuális gép beállításához AD-tartományvezérlő, a következő, a részletes útmutató [hogyan állítható be az ügyfél AD-tartományvezérlő](https://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx).
 
 ## <a name="add-your-cloud-service-to-the-virtual-network"></a>A Felhőszolgáltatás a virtuális hálózat hozzáadása
 Következő lépésként hozzá kell a felhőszolgáltatás üzembe helyezésének és az új vnet között. Ehhez módosítsa a cloud service cscfg vonatkozó szakaszaihoz vezetnek ad hozzá a cscfg a Visual Studio vagy a tetszőleges szövegszerkesztőben.

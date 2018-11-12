@@ -1,6 +1,6 @@
 ---
-title: Tanácsadási szolgáltatások |} A Microsoft Docs
-description: Az útmutató meghatározása és a egy tanácsadási szolgáltatási ajánlat közzététele.
+title: Azure-ban és Dynamcis 365 tanácsadási szolgáltatási ajánlat |} A Microsoft Docs
+description: Útmutató a meghatározása, és egy Azure-ban vagy Dynamcis 365 tanácsadási szolgáltatási ajánlat közzététele a Cloud Partner portálra.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
 author: dan-wesley
@@ -12,19 +12,29 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 11/01/2018
 ms.author: pbutlerm
-ms.openlocfilehash: b3f6b9166afce9ca0cdeaa1c9dd6e10a5a976453
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 43f1e71486cedbeccb2c02388147a68756581e50
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810587"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037762"
 ---
-<a name="defining-and-publishing-your-consulting-services-offer"></a>Meghatározása és a tanácsadási szolgáltatási ajánlat közzététele
-======================================================
+# <a name="azure-and-dynamics-365-consulting-service-offer"></a>Az Azure és Dynamics 365 tanácsadási szolgáltatási ajánlat
 
-Ez az útmutató célja határozza meg, és a tanácsadási szolgáltatási ajánlat közzététele az a Cloud Partner portálra.
+<table> <tr> <td>Ez a szakasz azt ismerteti, hogyan közzététel tanácsadási szolgáltatást vagy a Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace-en</a> vagy a <a href="https://appsource.microsoft.com">az AppSource piactérről</a>. Megoldások a Microsoft alapján <a href="https://dynamics.microsoft.com">Dynamics 365</a>, <a href="https://products.office.com">Office 365</a>, <a href="https://powerbi.microsoft.com">Power BI</a>, és <a href="https://powerapps.microsoft.com">PowerApps</a> jogosultak arra, hogy az appsource-on szerepelnie. Más Microsoft-alapján más ajánlatokra <a href="https://azure.microsoft.com/services">Azure-szolgáltatások</a> is jogosult, ha az Azure Marketplace-en. </td> <td><img src="./media/consulting-services-publishing-offer/consulting-icon1.png"  alt="Microsoft consulting icon" /></td> </tr> </table>
+
+
+# <a name="publishing-benefits"></a>Közzétételi lehetőségekről
+
+Vagy a Microsoft piacterein való közzététel jelentős előnyökkel jár:
+
+- A vállalat előléptetése a Microsoft márka kihasználva.
+- Potenciálisan elérje a több mint 100 millió Office 365 és Dynamics 365-felhasználókat az appsource-ban; érjen el több mint 200 ezer szervezetek Azure Marketplace-en keresztül.
+- Kiváló minőségű érdeklődők le ezeket a piactér.
+- A szolgáltatások által a Microsoft a mező és telefonos értékesítést csapat előléptetett beolvasása.
+
 
 <a name="define-your-consulting-services-offer"></a>A tanácsadási szolgáltatási ajánlat megadása
 -------------------------------------
@@ -52,45 +62,38 @@ Hozzon létre egy új ajánlatunk, hajtsa végre az alábbi lépéseket:
 
 ### <a name="define-offer-settings"></a>Az ajánlat beállításainak megadása
 
-Az új ajánlat képernyőn az első lépés, ha az ajánlat identitást.
-Az ajánlat identitás három részből áll:
-
-1.  Ajánlat azonosítója
-2.  Közzétevő azonosítója
-3.  Name (Név)
-
-Ezek a részek mindegyike terjed ki az alábbi szakaszokban található.
+Az új ajánlat képernyőn az első lépés, ha az ajánlat identitást.  Az ajánlat identitás három részből áll: **Ajánlatazonosító**, **közzétevő-azonosító**, és **neve**.  Ezek a részek mindegyike terjed ki az alábbi szakaszokban található.
 
 #### <a name="offer-id"></a>Ajánlat azonosítója
 
-Ez a hoz létre, amikor először küld az ajánlat egyedi nevét. Csak kisbetűs alfanumerikus karaktereket, kötőjeleket és aláhúzást tartalmazhatnak, kell állnia. Az azonosító az URL-címe látható lesz, és hatások keresési összetevő motorjának eredménye. Ha például *yourcompanyname\_exampleservice*
+Ezt az azonosítót hoz létre, amikor először küld az ajánlat egyedi neve. Csak kisbetűs alfanumerikus karaktereket, kötőjeleket és aláhúzást tartalmazhatnak, kell állnia. A Ajánlatazonosító meg fognak jelenni az URL-címet, és hatások keresési összetevő motorjának eredménye. Ha például *yourcompanyname\_exampleservice*
 
-Ahogy a példában látható, az ajánlat azonosítója hozzáfűzi lekérdezi a a Gyártóazonosítóval hozhat létre egy egyedi azonosítója. Ez lehet lefoglalt és indexelik a keresőprogramok állandó hivatkozásként van közzétéve.
+Ahogy a példában látható, az ajánlat azonosítója lekérdezi hozzáfűzi a Gyártóazonosítóval egyedi azonosító létrehozása. Ez lehet lefoglalt és indexelik a keresőprogramok állandó hivatkozásként van közzétéve. 
 
-**Az ajánlat nem élő után is\'t frissíteni kell**
+*Miután egy ajánlatot az élő, annak azonosítója nem lehet frissíteni.*
 
 #### <a name="publisher-id"></a>Közzétevő azonosítója
 
-Ez a fiók kapcsolódik. Ha a szervezeti fiókkal jelentkezik be van jelentkezve, a Gyártóazonosítóval jelennek meg a legördülő menüből.
+Ez az azonosító van a fiókjával kapcsolatban. Ha a szervezeti fiókkal jelentkezik be van jelentkezve, a Gyártóazonosítóval jelennek meg a legördülő menüből.
 
 #### <a name="name"></a>Name (Név)
 
-Ez a mi jelenik meg: az ajánlat neve az appsource-on vagy az Azure Marketplace-en.
+Ez a karakterlánc, mi az appsource-on vagy az Azure Marketplace-en ajánlat nevét jeleníti meg.
 
 **Fontos:** csak adja meg a tényleges szolgáltatás nevét. Szolgáltatás típusa és időtartama, valamint nem tartalmazzák.
 
-Edgewater Fullscope szerint a következő példa bemutatja, hogyan van-e összeállítva ajánlat nevét. Az ajánlat neve jelenik meg, ehhez hasonló:
+Edgewater Fullscope szerint a következő példa bemutatja, hogyan van-e összeállítva ajánlat nevét. Az ajánlat neve jelenik meg:
 
 ![Hozzon létre egy új Consulting Services-ajánlat](media/consulting-services-publishing-offer/cppsampleconsultingoffer.png)
 
 Az ajánlat neve négy részből áll:
 
--   **Időtartam:** határozhat meg ezt a szerkesztő kirakat Részletek lapján. Időtartam órában, napban vagy hétben a jelöl.
--   **Szolgáltatás típusa:** határozhat meg ezt a szerkesztő kirakat Részletek lapján. A szolgáltatások típusok a következők: értékelés, Briefing, megvalósítás, a koncepció igazolása és Workshopra.
--   **Preposition:** szúrhat be a felülvizsgáló
--   **Name:** Ez az ajánlat beállítások lapján definiált.
+-   **Időtartam:** – az a **kirakat részletek** a szerkesztő lapján. Időtartam órában, napban vagy hétben a jelöl.
+-   **Szolgáltatás típusa:** – meghatározva a **kirakat részletek** a szerkesztő lapján. A szolgáltatások típusok a következők `Assessment`, `Briefing`, `Implementation`, `Proof of concept`, és `Workshop`.
+-   **Preposition:** – a véleményező beszúrva
+-   **Név:** – az a **ajánlat beállítások** lap.
 
-Az alábbi lista néhány jól elnevezett ajánlat nevét tartalmazza:
+Az alábbi lista tartalmazza a több jól elnevezett ajánlat neve:
 
 -   A professzionális szolgáltatások Essentials: 1-Hr Briefing
 -   Felhőplatform-áttelepítés: 1-Hr Briefing
@@ -124,7 +127,7 @@ Az ajánlat részletei szakasz a következő mezőket tartalmazzák:
 
 ##### <a name="offer-summary"></a>Ajánlat-összefoglaló
 
-Az ajánlat összefoglalásának, amely alatt az ajánlat neve jelenik meg az ajánlat rövid leírása. Egyszerű szöveges kell használnia, az ajánlat-összefoglaló beírásakor, és nem tartalmazhat sortörést. Az ajánlat összegzéseket és azok megfelelő ajánlat nevét jó példa a következők:
+Az ajánlat összefoglalásának, amely alatt az ajánlat neve jelenik meg az ajánlat rövid leírása. Egyszerű szöveg használata összefoglaló ajánlat megadásakor, és nem kell sortörést. Az ajánlat összegzéseket és azok megfelelő ajánlat nevét jó példa a következők:
 
 *1. példa*
 
@@ -153,7 +156,7 @@ Az ajánlat összefoglalásának, amely alatt az ajánlat neve jelenik meg az aj
 
 ##### <a name="offer-description"></a>Az ajánlat leírása
 
-Ez az, hogy a tanácsadási szolgáltatási ajánlat leírása. Egy jó ajánlat leírása az engagement fog kinézni, és mi lesz a termék az ügyfélnek vége pontos részleteit ismerteti. Megismerheti, mit kapnak az ügyfélnek egyértelműen segítenie kell.
+A tanácsadási szolgáltatási ajánlat leírása. Egy jó ajánlat leírása az engagement fog kinézni, és mi lesz a termék az ügyfélnek vége pontos részleteit ismerteti. Megismerheti, mit kapnak az ügyfélnek egyértelműen segítenie kell.
 
 E-mail-hivatkozások, illetve nem tartalmazzák telefonszámok részleggel, az ajánlat leírása. Nem lesznek egy gombra az ajánlat, amely feltölti az ügyfél azonosíthatja az ajánlat az érdeklődő felügyeleti célként megadott vezet.
 
@@ -161,7 +164,7 @@ Az ajánlat leírása a Markdown formátumban kell megadnia. Ha nem ismeri a Mar
 
 Ezek a formátumok használatával biztosítja az ajánlat maximális olvashatóság érdekében van az ügyfelek.
 
-Az ajánlat leírása rövid tartani, és a maximális karakterszámot, a felhasználók nem tetszett, olvassa el a sok szöveget tartalmazó formátumhoz. Továbbra is fennáll feltöltését a marketing brosúrák, adatlapok és egyéb dokumentumokat, amelyek az ajánlat mélyebb részletesen ismertetik.
+Az ajánlat leírása rövid tartani, és a maximális karakterszámot, a felhasználók nem szeretne hosszú szöveg formátumhoz. Továbbra is fennáll feltöltését a marketing brosúrák, adatlapok és egyéb dokumentumokat, amelyek az ajánlat mélyebb részletesen ismertetik.
 
 A következő példa bemutatja egy jól szintből ajánlat leírása és a kapcsolódó neve és összegzése:
 
@@ -223,7 +226,7 @@ A 9 számjegyű Microsoft Partner Network (MPN) azonosítóját. Ha nem rendelke
 **MPN-AZONOSÍTÓ**
 
 Adjon meg egy titkos kulcsot, mielőtt továbblépne élő az appsource-ban az ajánlat kipróbálásához.
-Ez a jelszó nem.
+Ez az azonosító nem egy jelszót.
 
 #### <a name="listing-details"></a>Lista részletei
 
@@ -287,4 +290,4 @@ Töltse fel az ajánlatra, az ajánlat le vagy a vállalat további információ
 
 Miután megadta a beállításokat kínálnak, Storefront adatait és partnerek, válassza ki a **közzététel** , és adjon meg egy e-mail címet. Ha készen áll az ajánlat közzététele a Microsoft, kapni fog egy e-mailt az előzetes verzióra, mielőtt élő kerül. A portálon ellenőrizheti az állapotot az Ön ajánlatát időpontban bármikor visszatérhet.
 
-Ajánlatok jelenhet meg a "Közzététel megszakítva" vagy "Közzététel sikertelen" állapotot a közzétételi folyamat során. Ez a folyamat normál része, és lehetővé teszi a Microsoft az ajánlat szerkesztenie. Ha megjelenik a "Közzététel megszakítva", az ajánlat hagyja az adott állapotban.
+Ajánlatok jelenhet meg a "Közzététel megszakítva" vagy "Közzététel sikertelen" állapotot a közzétételi folyamat során. Ez az állapot a szokásos részét, és lehetővé teszi a Microsoft az ajánlat szerkesztenie. Ha megjelenik a "Közzététel megszakítva", az ajánlat hagyja az adott állapotban.

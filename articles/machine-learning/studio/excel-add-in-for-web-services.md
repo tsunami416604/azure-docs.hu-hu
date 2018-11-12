@@ -13,22 +13,22 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 2/1/2018
-ms.openlocfilehash: 8fade171095ff6a9f4c10925089452d8925e11fe
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: ed3fc6d1d2a4b674e2866d2e168fb72490575869
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095808"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281833"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Excel-bővítmény az Azure Machine Learning Studio-webszolgáltatások
 Az Excel megkönnyíti a webszolgáltatások közvetlenül kód írása nélkül.
 
 ## <a name="steps-to-use-an-existing-web-service-in-the-workbook"></a>Egy meglévő webes szolgáltatás használatához a munkafüzetben lévő lépéseket
 
-1. Nyissa meg a [minta Excel-fájl](http://aka.ms/amlexcel-sample-2), amely Excel-bővítmény és a titanic Katasztrófáját az utasok adatait tartalmazza. 
+1. Nyissa meg a [minta Excel-fájl](https://aka.ms/amlexcel-sample-2), amely Excel-bővítmény és a titanic Katasztrófáját az utasok adatait tartalmazza. 
  
 > [!NOTE]
-> Látni fogja a webszolgáltatások listája kapcsolódó a fájl és a lap alján egy jelölőnégyzetet az "Automatikus előrejelzése". Ha engedélyezi az automatikus – előre jelezni az előrejelzések **összes** a szolgáltatások lesznek frissítve, amikor valaki módosítják a bemenetei. Ha nincs bejelölve, kell kattintson "Az összes előrejelzése" a frissítéshez. Engedélyezésének automatikus – előrejelzésére egy szolgáltatási szint lépjen a 6. lépés:.
+> Látni fogja a webszolgáltatások listája kapcsolódó a fájl és a lap alján egy jelölőnégyzetet az "Automatikus előrejelzése". Ha engedélyezi az automatikus – előre jelezni az előrejelzések **összes** minden alkalommal, amikor megváltozik a bemeneti adatok az frissíti a szolgáltatásokat. Ha nincs bejelölve, kell kattintson "Az összes előrejelzése" a frissítéshez. Engedélyezésének automatikus – előrejelzésére egy szolgáltatási szint lépjen a 6. lépés:.
 
 2. Válassza ki a web service rákattintva – "Titanic túlélő előjelző (Excel-bővítményben minta) [Pontszám]" Ebben a példában.
    
@@ -85,7 +85,7 @@ A webszolgáltatás API-kulcs beszerzése. Hajt végre, ha ez a művelet attól 
 ## <a name="sharing-your-workbook"></a>A munkafüzet megosztása
 Ha mentette a munkafüzetet, a webszolgáltatások hozzáadta az API/elsődleges kulcs is menti. Azt jelenti, hogy a munkafüzet kell csak megosztása, megbízható személlyel.
 
-Kérje meg a következő megjegyzéseket tartalmazó részében vagy a felmerülő kérdéseket a [fórum](http://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409).
+Kérje meg a következő megjegyzéseket tartalmazó részében vagy a felmerülő kérdéseket a [fórum](https://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409).
 
 [01]: ./media/excel-add-in-for-web-services/image1.png
 [02]: ./media/excel-add-in-for-web-services/image2.png

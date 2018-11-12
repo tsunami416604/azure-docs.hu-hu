@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: spelluru
-ms.openlocfilehash: 26118d55d200bb4a67c7f9cfad3975e7e6e5b45b
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: d96982f4dff523e1a262ee4f9d8bdc2dfc8480e1
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855323"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037600"
 ---
 # <a name="service-bus-messaging-exceptions"></a>A Service Bus-alapú üzenetkezelés kivételei
 Ez a cikk néhány a Microsoft Azure Service Bus-üzenetkezelés API-k által előállított kivételeket sorolja fel. Ez a hivatkozás változhatnak, ezért vissza frissítések keresése.
@@ -29,7 +29,7 @@ Az üzenetkezelési API-k készítése a kivételeket, amelyek együtt őket meg
 
 1. Kódolási hiba felhasználói ([System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [ System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx)). Általános művelet: megpróbálja kijavítani a kódot, a folytatás előtt.
 2. A telepítő vagy konfigurációs hibát ([Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception), [System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx). Általános művelet: tekintse át a konfigurációt, és szükség esetén módosítsa.
-3. Átmeneti kivételek ([Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft.ServiceBus.Messaging.ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception), [ Microsoft.ServiceBus.Messaging.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception)). Általános művelet: értesítse a felhasználókat, vagy próbálja megismételni a műveletet.
+3. Átmeneti kivételek ([Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft.ServiceBus.Messaging.ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception), [ Microsoft.ServiceBus.Messaging.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception)). Általános művelet: értesítse a felhasználókat, vagy próbálja megismételni a műveletet. Vegye figyelembe, hogy a `RetryPolicy` az ügyfél-SDK osztályában beállítható úgy, hogy automatikusan kezelheti az újrapróbálkozásokat. Lásd: [újrapróbálkozási útmutatás](/azure/architecture/best-practices/retry-service-specific#service-bus) további információt.
 4. Kivételek ([System.Transactions.TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx), [System.TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx), [Microsoft.ServiceBus.Messaging.MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception), [Microsoft.ServiceBus.Messaging.SessionLockLostException](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception)). Általános művelet: kivétel típusának; a tábla a következő szakaszban talál: 
 
 ## <a name="exception-types"></a>Kivételtípusok

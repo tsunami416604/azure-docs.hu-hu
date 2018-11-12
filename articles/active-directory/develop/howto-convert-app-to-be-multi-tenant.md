@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: justhu, elisol
 ms.custom: aaddev
-ms.openlocfilehash: 61238482339250e45be36162e7eef252f78c74b1
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
-ms.translationtype: HT
+ms.openlocfilehash: 6581081f0f34f73c915f0b026a3ed50816f6731f
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288985"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51298943"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Útmutató: Azure Active Directory-felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával
 
@@ -118,7 +118,7 @@ Bizonyos jogosultságokat is lehet fogadta el a normál felhasználói, míg má
 
 Csak az alkalmazásra vonatkozó engedélyeket mindig szükség van egy bérlői rendszergazdai jóváhagyást. Ha az alkalmazás egy csak az alkalmazásra vonatkozó engedélyt kér, és a egy felhasználó megpróbál bejelentkezni az alkalmazásba, egy hibaüzenet jelenik meg arról, hogy a felhasználó nem tudja, hogy engedélyt adjanak.
 
-Egyes delegált engedélyeket is egy bérlői rendszergazdai jóváhagyás szükséges. Írási vissza az Azure AD a bejelentkezett felhasználó, például egy Bérlői rendszergazda jóváhagyást igényel. Csak az alkalmazásra vonatkozó engedélyeket, mint egy átlagos felhasználó próbál bejelentkezni az olyan alkalmazás, amely kéri a rendszergazdai jóváhagyást, igénylő delegált engedély az alkalmazás kap hibaüzenetet. Engedélyt igényel-e rendszergazdai jóváhagyásra határozza meg a fejlesztői, az erőforrás közzétett el, és az erőforrás a dokumentációban található. Az engedélyek dokumentációját a [Azure AD Graph API] [ AAD-Graph-Perm-Scopes] és [Microsoft Graph API] [ MSFT-Graph-permision-scopes] azt jelzik, milyen engedélyeket igényel rendszergazdai hozzájárulás megadása.
+Egyes delegált engedélyeket is egy bérlői rendszergazdai jóváhagyás szükséges. Írási vissza az Azure AD a bejelentkezett felhasználó, például egy Bérlői rendszergazda jóváhagyást igényel. Csak az alkalmazásra vonatkozó engedélyeket, mint egy átlagos felhasználó próbál bejelentkezni az olyan alkalmazás, amely kéri a rendszergazdai jóváhagyást, igénylő delegált engedély az alkalmazás kap hibaüzenetet. Engedélyt igényel-e rendszergazdai jóváhagyásra határozza meg a fejlesztői, az erőforrás közzétett el, és az erőforrás a dokumentációban található. Az engedélyek dokumentációját a [Azure AD Graph API] [ AAD-Graph-Perm-Scopes] és [Microsoft Graph API] [ MSFT-Graph-permission-scopes] azt jelzik, milyen engedélyeket igényel rendszergazdai hozzájárulás megadása.
 
 Az alkalmazás használja az engedélyeket, amelyek rendszergazdai jóváhagyás megkövetelése, ha szüksége van egy kézmozdulatot, például egy gomb vagy hivatkozás, ahol a rendszergazda kezdeményezhet a művelet. Az alkalmazás által esetében ez a művelet nem a szokásos OAuth2/OpenID Connect engedélyezési kérést, amely szintén tartalmazza a kérés a `prompt=admin_consent` lekérdezési karakterlánc paraméter. A rendszergazda hozzájárult, és az egyszerű szolgáltatás létrehozása az ügyfél-bérlőben, nem kell további bejelentkezési kérések a `prompt=admin_consent` paraméter. A rendszergazda úgy döntött, a kért engedélyeket is, mivel nem a bérlő többi felhasználójával a rendszer ettől kezdve beleegyezését kéri.
 
@@ -184,7 +184,7 @@ Ebben a cikkben megtanulta, hogyan hozhat létre olyan alkalmazás, amely bárme
 * [Alkalmazásobjektumok és egyszerű szolgáltatási objektumok][AAD-App-SP-Objects]
 * [Alkalmazások integrálása az Azure Active Directoryval][AAD-Integrating-Apps]
 * [A hozzájárulási keretrendszer áttekintése][AAD-Consent-Overview]
-* [A Microsoft Graph API-engedélyhatókörök][MSFT-Graph-permision-scopes]
+* [A Microsoft Graph API-engedélyhatókörök][MSFT-Graph-permission-scopes]
 * [Az Azure AD Graph API-engedélyhatókörök][AAD-Graph-Perm-Scopes]
 
 <!--Reference style links IN USE -->
@@ -202,7 +202,7 @@ Ebben a cikkben megtanulta, hogyan hozhat létre olyan alkalmazás, amely bárme
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
 [AZURE-portal]: https://portal.azure.com
 [MSFT-Graph-overview]: https://developer.microsoft.com/graph/docs/overview/overview
-[MSFT-Graph-permision-scopes]: https://developer.microsoft.com/graph/docs/concepts/permissions_reference
+[MSFT-Graph-permission-scopes]: https://developer.microsoft.com/graph/docs/concepts/permissions_reference
 
 <!--Image references-->
 [AAD-Sign-In]: ./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png

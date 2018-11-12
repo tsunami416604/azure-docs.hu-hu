@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/23/2018
 ms.author: sethm
 ms.reviewer: harik
-ms.openlocfilehash: f00b175fed36fbe2b28f1d11843bb17c54ac3873
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 0bbe2ee7436cc03a3780da096a498769d66eb505
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086964"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277936"
 ---
 # <a name="azure-stack-servicing-policy"></a>Az Azure Stack karbantartási szabályzat
 Ez a cikk ismerteti a karbantartási szabályzat az Azure Stack integrált rendszerek, és hogy mit kell tennie, hogy a rendszer egy támogatott állapotban. 
@@ -55,7 +55,7 @@ A folytatáshoz szeretne támogatást kapni az Azure Stack üzemelő példányá
 
 Például ha a rendelkezésre álló legfrissebb frissített verziót 1805, és az előző két frissítési csomagokat is 1804 és 1803 verziója, 1803 és 1804 is maradnak támogatása. Azonban az 1802, nem támogatott. A szabályzat igaznak, ha egy hónapban, vagy két nincs kiadási. Például a jelenlegi kiadásban 1805, és nincs 1804 kiadás volt, az előző két frissítési csomagokat 1803 és 1802 továbbra is támogatott.
 
-A szoftverfrissítési csomagokat a Microsoft nem összesítő és a korábbi frissítési csomag előfeltételként szükséges. Ha úgy dönt, hogy egy vagy több frissítések késleltetése, fontolja meg a teljes runtime, ha szeretne kapni a legújabb verzióra. 
+A szoftverfrissítési csomagokat a Microsoft nem összesítő és a korábbi frissítési csomag vagy gyorsjavítás előfeltételként szükséges. Ha úgy dönt, hogy egy vagy több frissítések késleltetése, fontolja meg a teljes runtime, ha szeretne kapni a legújabb verzióra. 
 
 ## <a name="get-support"></a>Támogatás kérése
 Az Azure Stack az Azure támogatási folyamatot követi. Nagyvállalati ügyfeleink is kövesse az ismertetett folyamatot [létrehozása egy Azure-támogatáskérést](/azure/azure-supportability/how-to-create-azure-support-request). Ha egy ügyfél egy Cloud Service Provider (CSP), forduljon a CSP.  További információkért lásd: a [Azure támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/). 

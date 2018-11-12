@@ -8,21 +8,21 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: 6ae0217ed4b8833eb42a4719a1f2525461f9dcdd
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: d98a890cfb6bd388477ff3f14b81c8df02ece879
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143648"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287965"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>A megoldás a megfelelő IoT Hub-csomag kiválasztása
 
-Minden IoT-megoldás eltér, ezért a tarifacsomag és méret alapján többféle lehetőséget kínál az Azure IoT Hub. Ez a cikk az adott segítségével kiértékelheti az IoT Hub igényeinek. További díjszabási információk az IoT Hub szintekről [IoT Hub díjszabása](https://azure.microsoft.com/pricing/details/iot-hub). 
+Minden IoT-megoldás eltér, ezért a tarifacsomag és méret alapján többféle lehetőséget kínál az Azure IoT Hub. Ez a cikk az adott segítségével kiértékelheti az IoT Hub igényeinek. Díjszabási információk az IoT Hub szintekről, lásd: [IoT Hub díjszabása](https://azure.microsoft.com/pricing/details/iot-hub). 
 
 Döntse el, melyik az IoT Hub-szint a legmegfelelőbb megoldás, tegye fel magának két kérdéseket:
 
 **Milyen funkciókat tervezhetem használni?**
-Az Azure IoT Hub réteget kínál a két, alapszintű és standard szintű, az általuk támogatott funkciókról számában eltérő. Ha az adatok gyűjtése eszközökről, és központilag elemezheti őket az IoT-megoldás alapul majd az alapszintű csomag valószínűleg Önnek ideális. Ha speciális konfigurációk használatával távolról vezérelheti az IoT-eszközök, vagy eloszthatja az alakzatot magukhoz az eszközökhöz tevékenységprofilok egy része szeretne majd érdemes a standard szintre. A funkciókat, amelyek az egyes szintek tartalmaz részletes információkat továbbra is [alapszintű és standard csomagokról](#basic-and-standard-tiers).
+Az Azure IoT Hub réteget kínál a két, alapszintű és standard szintű, az általuk támogatott funkciókról számában eltérő. Ha az IoT-megoldás adatok gyűjtése eszközökről, és elemezheti őket központilag köré épülnek, majd az alapszintű csomag, valószínűleg az Önnek megfelelő. Ha azt szeretné, speciális konfigurációk használatával távolról vezérelheti az IoT-eszközök, vagy eloszthatja az alakzatot magukhoz az eszközökhöz tevékenységprofilok egy része, majd vegye figyelembe a standard szintre. A funkciókat, amelyek az egyes szintek tartalmaz részletes információkat továbbra is [alapszintű és standard csomagokról](#basic-and-standard-tiers).
 
 **Mennyi adatot tervezhetem naponta áthelyezni?**
 Minden IoT Hub-csomag érhető el három méretben alapú körül mennyi adat átviteli bármelyik nap, képes kezelni. 1, 2 és 3 numerikusan azonosítja ezeket a méreteket. Például egy 1. szintű IoT-központ minden egység képes kezelni napi 400 ezer üzenetet, míg a 3. szintre egység 300 millió képes kezelni. Az adatok irányelvek kapcsolatos további információért folytassa [üzeneteinek átviteli sebessége](#message-throughput).
@@ -31,7 +31,7 @@ Minden IoT Hub-csomag érhető el három méretben alapú körül mennyi adat á
 
 A standard szintű IoT-központ összes funkciókat tesz elérhetővé, és kötelező megadni minden olyan IoT-megoldások, győződjön meg arról, hogy a kívánt kétirányú kommunikációt képességeket használhatja. Az alapszintű csomag lehetővé teszi, hogy az funkciók egy részét, és csak egyirányú kommunikációs eszközökről a felhőbe igénylő IoT-megoldások szól. Mindkét rétegei ugyanazokat a biztonsági és hitelesítési szolgáltatásokat.
 
-Miután létrehozta az IoT hub a frissíthető az alapszintű csomag a standard szintre a meglévő operations megszakítása nélkül. További információkért lásd: [az IoT hub frissítése](iot-hub-upgrade.md). Vegye figyelembe, hogy a partíciók maximális korlátot, az alapszintű csomag az IoT Hub 8 és a standard csomag az 32. A legtöbb IoT-központok csak 4 partíciók van szükség. A partíciós korlát akkor kell kiválasztani, amikor az IoT Hub jön létre, és az eszköz – felhő üzeneteket vonatkozik, az ezeket az üzeneteket az egyidejű olvasók. Ez az érték az alapszintű csomag a standard szintű csomag áttelepítésekor változatlan marad. Azt is vegye figyelembe, hogy csak egyféle típusú [edition](https://azure.microsoft.com/pricing/details/iot-hub/) szinten belüli választható ki az IoT Hub száma. Létrehozhat például egy IoT hubot, több S1-egységet, de nem különböző kiadásait, például az S1 és B3, vagy S1 és S2 egységek vegyesen.
+Miután létrehozta az IoT hub, frissítheti az alapszintű csomag a standard szintre a meglévő operations megszakítása nélkül. További információkért lásd: [az IoT hub frissítése](iot-hub-upgrade.md). A partíciók maximális korlátot, az alapszintű csomag az IoT Hub 8 és a standard csomag az 32. A legtöbb IoT-központok csak 4 partíciók van szükség. A partíciós korlát akkor kell kiválasztani, amikor az IoT Hub jön létre, és az eszköz – felhő üzeneteket vonatkozik, az ezeket az üzeneteket az egyidejű olvasók. Ez az érték az alapszintű csomag a standard szintű csomag áttelepítésekor változatlan marad. Azt is vegye figyelembe, hogy csak egyféle típusú [edition](https://azure.microsoft.com/pricing/details/iot-hub/) szinten belüli választható ki az IoT Hub száma. Létrehozhat például egy IoT hubot, több S1-egységet, de nem különböző kiadásait, például az S1 és B3, vagy S1 és S2 egységek vegyesen.
 
 | Képesség | Alapszintű csomag | Standard csomag |
 | ---------- | ---------- | ------------- |
@@ -42,7 +42,7 @@ Miután létrehozta az IoT hub a frissíthető az alapszintű csomag a standard 
 | [Eszközök kiépítési szolgáltatáshoz](../iot-dps/about-iot-dps.md) | Igen | Igen |
 | [Monitorozás és diagnosztika](iot-hub-monitor-resource-health.md) | Igen | Igen |
 | [Üzenetküldés a felhőből az eszközre](iot-hub-devguide-c2d-guidance.md) |   | Igen |
-| [Ikereszközök](iot-hub-devguide-device-twins.md), [ikermodulokkal](iot-hub-devguide-module-twins.md) és [Eszközkezelés](iot-hub-device-management-overview.md) |   | Igen |
+| [Ikereszközök](iot-hub-devguide-device-twins.md), [ikermodulokkal](iot-hub-devguide-module-twins.md), és [Eszközkezelés](iot-hub-device-management-overview.md) |   | Igen |
 | [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Igen |
 
 Az IoT Hub is biztosít egy ingyenes csomag, amelynek szinkronban tesztelés és értékelés céljából használják. Rendelkezik a standard szintű, de korlátozott üzenetkezelési keretek összes funkcióját. Az ingyenes vagy alapszintű vagy standard szintű nem verzióról. 
@@ -115,7 +115,7 @@ Egyetlen IoT hubra eszközök millióira méretezhetők, míg egyes esetekben a 
 
 ## <a name="next-steps"></a>További lépések
 
-* Az IoT Hub képességek és a teljesítményadatok kapcsolatos további információkért lásd: [az IoT Hub díjszabás] [hivatkozás díjszabás] vagy [az IoT Hub kvótái és szabályozások][IoT Hub quotas and throttles].
+* További információ az IoT Hub képességek és a teljesítmény részletei: [IoT Hub díjszabása] [ lnk-pricing] vagy [az IoT Hub kvótái és szabályozások] [ IoT Hub quotas and throttles].
 * Az IoT Hub-csomag módosításához kövesse [az IoT hub frissítése](iot-hub-upgrade.md).
 
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub

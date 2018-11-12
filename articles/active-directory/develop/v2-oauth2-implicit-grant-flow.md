@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 1722f81c55c490d6030dd04e5907e93012051492
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: d063c5e5a5b81f16d8921864ab2e2a0c3504e334
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817098"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289019"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>v2.0 protokoll - gyógyfürdők az implicit folyamat használata
 
@@ -145,7 +145,7 @@ Teljesen ellenőrzése a id_token, után megkezdheti a felhasználói munkamenet
 
 ## <a name="get-access-tokens"></a>Hozzáférési jogkivonat beszerzése
 
-Most, hogy a felhasználó már bejelentkezett az egyoldalas alkalmazás, kérheti a hívó webes API-kat, mint például az Azure AD által védett hozzáférési jogkivonatok az [Microsoft Graph](https://graph.microsoft.io). Akkor is, ha már kapott segítségével a `token` response_type, ez a módszer használatával szerzi be a további erőforrások jogkivonatokat nélkül átirányítja a felhasználót, hogy jelentkezzen be újra.
+Most, hogy a felhasználó már bejelentkezett az egyoldalas alkalmazás, kérheti a hívó webes API-kat, mint például az Azure AD által védett hozzáférési jogkivonatok az [Microsoft Graph](https://developer.microsoft.com/graph). Akkor is, ha már kapott segítségével a `token` response_type, ez a módszer használatával szerzi be a további erőforrások jogkivonatokat nélkül átirányítja a felhasználót, hogy jelentkezzen be újra.
 
 A normál OpenID Connect vagy OAuth-folyamat ehhez egy kérelmet, így a 2.0-s verziójú `/token` végpont. A v2.0-végpont azonban nem támogatja CORS-kérések, így AJAX hívások és frissítési jogkivonatok kívül esik a kérdést. Rejtett iframe az implicit folyamatot használhatja inkább más webes API-k új tokenekhez: 
 

@@ -5,21 +5,21 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/06/2018
+ms.date: 11/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 0c071fbfb962de1bf077dfa720cd66bc06e42178
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 3bd4adcd6df07aa47312223c559f0e9ed4fc0b14
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49312577"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264156"
 ---
 <!-- F-series, Fs-series* -->
 
 A számítási optimalizált Virtuálisgép-méretek rendelkezik a magas CPU-memória arány és közepes adatforgalmú webkiszolgálók, hálózati berendezések, kötegfolyamatok és alkalmazáskiszolgálók számára hasznos. Ez a cikk ismerteti a vcpu-k, az adatlemezeket, és a hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélességet az ennél a csoportosításnál méreteire vonatkoztatva számát.
 
-Fsv2 sorozat alapjául a Intel® Xeon® Platinum 8168 processzor 2,7 GHz-es alapszintű core gyakorisága és a egy 3,7 GHz-es maximális egymagos turbo gyakorisága. Az Intel® AVX-512 utasításokat, amelyek új, méretezhető Intel processzorral, akár egy 2 X teljesítmény boost vektor-feldolgozási feladataikat az egyetlen és a dupla pontosságú lebegőpontos művelet a biztosít. Más szóval azok nagyon gyors számára bármilyen számítási feladatot. 
+Fsv2 sorozat az Intel® Xeon® Platinum 8168 processzor alapul, egy tartós, amely az összes alapvető 3.4GHz turbó órajele és 3,7 GHz-es maximális egymagos turbo gyakorisága. Az Intel® AVX-512 utasításokat, amelyek új, méretezhető Intel processzorral, akár egy 2 X teljesítmény boost vektor-feldolgozási feladataikat az egyetlen és a dupla pontosságú lebegőpontos művelet a biztosít. Más szóval azok nagyon gyors számára bármilyen számítási feladatot. 
 
 Listaáron egy alacsonyabb óránkénti Fsv2-sorozat képviseli a legjobb ár – teljesítmény arányt az Azure-portfólióban az az Azure számítási egységek (ACU) vCPU-alapú. 
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: bf73f64cc1e1789b770d7fae5f62e0ec27425263
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 8c8f3cd67186450fdcf65c177ea0353d297a3b01
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42915505"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264171"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>A tanúsítvány-aláírási kérelem fájljának létrehozása
 
@@ -41,7 +41,7 @@ Ezután regisztrálni fogja az alkalmazását az Apple rendszerében, engedélye
 
 Ahhoz, hogy leküldéses értesítéseket küldhessen az iOS-alkalmazásoknak, először regisztrálnia kell az alkalmazását az Apple rendszerében, és regisztrálnia kell a leküldéses értesítésekhez is.  
 
-1. Ha még nem regisztrálta az alkalmazását, lépjen az [iOS Provisioning Portal](http://go.microsoft.com/fwlink/p/?LinkId=272456) (iOS üzembehelyezési portál) felületére az Apple Developer Center központban, jelentkezzen be Apple ID-jával, kattintson az **Identifiers** (Azonosítók), majd az **App IDs** (Alkalmazásazonosítók) lehetőségre, végül kattintson a **+** jelre az új alkalmazás regisztrálásához.
+1. Ha még nem regisztrálta az alkalmazását, lépjen az [iOS Provisioning Portal](https://go.microsoft.com/fwlink/p/?LinkId=272456) (iOS üzembehelyezési portál) felületére az Apple Developer Center központban, jelentkezzen be Apple ID-jával, kattintson az **Identifiers** (Azonosítók), majd az **App IDs** (Alkalmazásazonosítók) lehetőségre, végül kattintson a **+** jelre az új alkalmazás regisztrálásához.
 
     ![Az iOS Provisioning Portal alkalmazásazonosítói oldala](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids.png)
 
@@ -111,7 +111,7 @@ Ahhoz, hogy leküldéses értesítéseket küldhessen az iOS-alkalmazásoknak, e
 
 ## <a name="create-a-provisioning-profile-for-the-app"></a>Üzembe helyezési profil létrehozása az alkalmazáshoz
 
-1. Térjen vissza az [iOS Provisioning Portal](http://go.microsoft.com/fwlink/p/?LinkId=272456) felületére, válassza a **Provisioning Profiles** (Üzembehelyezési profilok), majd az **All** (Összes) lehetőséget, és kattintson a **+** (plusz) gombra az új profil létrehozásához. Ekkor megjelenik az **Add iOS Provisioning Profile** (Üzembehelyezési iOS-profil hozzáadása) varázsló:
+1. Térjen vissza az [iOS Provisioning Portal](https://go.microsoft.com/fwlink/p/?LinkId=272456) felületére, válassza a **Provisioning Profiles** (Üzembehelyezési profilok), majd az **All** (Összes) lehetőséget, és kattintson a **+** (plusz) gombra az új profil létrehozásához. Ekkor megjelenik az **Add iOS Provisioning Profile** (Üzembehelyezési iOS-profil hozzáadása) varázsló:
 
     ![Üzembehelyezési profillista](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-provisioning-profile.png)
 

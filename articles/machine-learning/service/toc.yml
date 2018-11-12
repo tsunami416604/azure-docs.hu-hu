@@ -4,7 +4,7 @@ items:
 - name: Áttekintés
   items:
   - name: Mi az Azure Machine Learning szolgáltatás?
-    displayName: AML, services
+    displayName: AML, services, overview
     href: overview-what-is-azure-ml.md
   - name: A szolgáltatás működése
     displayName: architecture
@@ -17,6 +17,7 @@ items:
   - name: Az első lépések – Portal
     href: quickstart-get-started.md
   - name: Az első lépések – Python
+    displayName: create workspace
     href: quickstart-create-workspace-with-python.md
 - name: Oktatóanyagok
   items:
@@ -25,6 +26,7 @@ items:
   - name: 'Modellek üzembe helyezése: 2. rész'
     href: tutorial-deploy-models-with-aml.md
   - name: Automatizált gépi tanulási modellek betanítása
+    displayName: automl
     href: tutorial-auto-train-models.md
 - name: Példák
   items:
@@ -34,6 +36,7 @@ items:
 - name: Alapelvek
   items:
   - name: Modellkezelés
+    displayName: deploy, deployment
     href: concept-model-management-and-deployment.md
   - name: Gyorsítás FPGA-kkal
     href: concept-accelerate-with-fpgas.md
@@ -51,13 +54,14 @@ items:
     - name: Környezet konfigurálása
       href: how-to-configure-environment.md
     - name: VS Code Tools for AI
+      displayName: Visual Studio Code, vscode
       items:
       - name: Bevezetés
         href: how-to-vscode-tools.md
       - name: Betanítás és üzembe helyezés
         href: how-to-vscode-train-deploy.md
   - name: Adatok előkészítése
-    displayName: data prep, etl, elt
+    displayName: data prep, etl, elt, data preparation
     href: how-to-data-prep.md
     items:
     - name: Adatok betöltése
@@ -69,6 +73,7 @@ items:
   - name: Modellek betanítása
     items:
     - name: Betanítási környezetek beállítása
+      displayName: compute target, train
       href: how-to-set-up-training-targets.md
     - name: Adathozzáférés a betanítás során
       href: how-to-access-data.md
@@ -79,13 +84,12 @@ items:
         href: how-to-train-pytorch.md
       - name: TensorFlow
         href: how-to-train-tensorflow.md
-  - name: Modellek hangolása
-    items:
     - name: Hiperparaméterek hangolása
       href: how-to-tune-hyperparameters.md
     - name: Kísérletek és mérőszámok nyomon követése
       href: how-to-track-experiments.md
   - name: Gépi tanulás automatizálása
+    displayName: automl
     href: how-to-automated-ml.md
     items:
     - name: Automatikus betanítás konfigurálása
@@ -101,8 +105,10 @@ items:
     - name: A modellek üzembe helyezési helyének kiválasztása
       href: how-to-deploy-and-where.md
     - name: Üzembe helyezés az ACI-ban
+      displayName: Azure Container Instances
       href: how-to-deploy-to-aci.md
     - name: Üzembe helyezés az AKS-ben
+      displayName: Azure Kubernetes
       href: how-to-deploy-to-aks.md
     - name: Üzembe helyezés az FPGA-kban
       href: how-to-deploy-fpga-web-service.md
@@ -112,6 +118,9 @@ items:
       href: how-to-troubleshoot-deployment.md
     - name: Védelem az SSL-lel
       href: how-to-secure-web-service.md
+    - name: Üzembe helyezett modell felhasználása
+      displayName: create client, client, consume
+      href: how-to-consume-web-service.md
   - name: Modellek monitorozása
     items:
     - name: Éles adatok gyűjtése
@@ -126,6 +135,8 @@ items:
     href: http://aka.ms/aml-sdk
   - name: Adat-előkészítési SDK
     href: http://aka.ms/data-prep-sdk
+  - name: Monitorozási SDK
+    href: https://aka.ms/aml-monitoring-sdk
   - name: Machine learning CLI
     href: reference-azure-machine-learning-cli.md
 - name: További források
@@ -347,9 +358,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: Régi problémák
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 23e715064db714765a11771182248978f9493bd2
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 8519a04730105537d5bd8639da54afafdf76590b
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095075"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345012"

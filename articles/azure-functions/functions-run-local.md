@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: cc3a835c0322aded4a92b15c1320259780ffb6d2
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 6ba2fd85e23f3a0b634319f7399f97bec9ef3954
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249220"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346422"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -114,16 +114,6 @@ Az alábbi lépések az [APT](https://wiki.debian.org/Apt) Core Tools telepíté
     sudo apt-get install azure-functions-core-tools
     ```
 
-### <a name="v1"></a>Verzió 1.x
-
-Az eszközök az eredeti verzió a Functions 1.x modul használja. Ez a verzió a .NET-keretrendszer (4.7.1) használ, és csak a Windows-számítógépeken támogatott. Előtt a verzió 1.x eszközök telepítése, be kell [NodeJS telepítése](https://docs.npmjs.com/getting-started/installing-node), amely tartalmazza az npm-et.
-
-Használja a következő parancsot a verzió 1.x eszközök telepítéséhez:
-
-```bash
-npm install -g azure-functions-core-tools@v1
-```
-
 ## <a name="create-a-local-functions-project"></a>Egy helyi Functions-projekt létrehozása
 
 A functions projektkönyvtár fájlokat tartalmazza [host.json](functions-host-json.md) és [local.settings.json](#local-settings-file), a kód az egyes funkciók almappáit együtt. Ez a könyvtár megegyezik egy függvényalkalmazást az Azure-ban. A Functions mappastruktúra kapcsolatos további információkért tekintse meg a [Azure Functions fejlesztői útmutató](functions-reference.md#folder-structure).
@@ -214,7 +204,7 @@ A függvény alkalmazás beállítások értékeit is elolvashatja a kódban kö
 
 + [C# előre lefordított](functions-dotnet-class-library.md#environment-variables)
 + [C# script (.csx)](functions-reference-csharp.md#environment-variables)
-+ [F #-szkript (.fsx)](functions-reference-fsharp.md#environment-variables)
++ [F#parancsprogram (.fsx)](functions-reference-fsharp.md#environment-variables)
 + [Java](functions-reference-java.md#environment-variables) 
 + [JavaScript](functions-reference-node.md#environment-variables)
 
@@ -288,7 +278,7 @@ A parancs az alábbi argumentumok használatával is megadhatja ezeket a beáll�
 | Argumentum     | Leírás                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (Verzió 2.x) Állít elő, ugyanazt a C#-szkript (.csx) használt sablonok verzióban 1.x és a portálon. |
-| **`--language -l`**| A sablon programozási nyelvet, például C#, F # vagy JavaScript. Ez a beállítás szükséges verzió 1.x. A verzió 2.x, ne használja ezt a beállítást, és válasszon egy nyelvet, amely megfelel a worker futásidejű. |
+| **`--language -l`**| A programozási nyelvet, például a sablon C#, F#, és a Javascripthez. Ez a beállítás szükséges verzió 1.x. A verzió 2.x, ne használja ezt a beállítást, és válasszon egy nyelvet, amely megfelel a worker futásidejű. |
 | **`--name -n`** | A függvény nevét. |
 | **`--template -t`** | Használja a `func templates list` parancsot minden támogatott nyelven elérhető sablonok teljes listájának megtekintéséhez.   |
 

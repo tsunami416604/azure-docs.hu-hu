@@ -3,7 +3,7 @@ title: Az Azure Active Directory Connect Health műveletei
 description: Ez a cikk ismerteti, amely az Azure AD Connect Health üzembe helyezését követően végezhető további műveletek.
 services: active-directory
 documentationcenter: ''
-author: zhiweiw
+author: zhiweiwangmsft
 manager: mtillman
 ms.assetid: 86cc3840-60fb-43f9-8b2a-8598a9df5c94
 ms.service: active-directory
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 4fa19c7feac8aab62e7e0b768c193aec6846d4fa
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 7e0e2e19f2f21fa3199cbc4911fed3427cbc162c
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311086"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280516"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Az Azure Active Directory Connect Health műveletei
 Ez a témakör ismerteti a különféle műveleteket hajthat végre az Azure Active Directory (Azure AD) Connect Health használatával.

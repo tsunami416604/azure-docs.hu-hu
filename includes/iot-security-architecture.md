@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: ac51dc8b7cbfa08ebca201c42c0c82356b7d5b6c
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
-ms.translationtype: MT
+ms.openlocfilehash: 7407bed746f863a5daecfc98d2df89175ff35b5f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50254599"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264440"
 ---
 # <a name="internet-of-things-security-architecture"></a>IOT-biztonsági architektúrája
 
@@ -252,7 +252,7 @@ Minden eszköz- és mezőnevek átjáró valamilyen storage (az adatok, az oper�
 
 A felhőátjáró rendszer, amely lehetővé teszi, hogy az eszközök vagy helyszíni átjárók számos különböző helyekről és távoli kommunikációs nyilvános hálózati helyet, általában egy felhőalapú vezérlőt, és az adatok elemzési rendszer, az ilyen rendszerek összevonási felé között. Bizonyos esetekben egy felhőátjáróhoz előfordulhat, hogy azonnal biztosítja a hozzáférést a speciális célú eszközök, például táblagépek vagy telefonok terminálok. A tárgyalt környezetben itt "felhő" célja, hogy egy dedikált adatfeldolgozási rendszer, amely nincs kötve a csatlakoztatott eszközökkel vagy helyszíni átjárók ugyanazon a helyen, és ahol működési mértékek célzott fizikai hozzáférés megakadályozása érdekében tekintse meg, de nem feltétlenül a egy " nyilvános felhő"infrastruktúrát. A felhőátjáró potenciálisan leképezni egy hálózati virtualizációs területre, megvédheti a felhőátjáró és az összes a csatlakoztatott eszközökkel vagy a helyszíni átjárók más hálózati forgalomtól. A felhőátjáró maga nem egy eszköz verziókezelő rendszer vagy egy feldolgozási vagy a tárolási létesítmény az eszközadatok; Ezekben a létesítményekben kommunikáljanak a felhőátjárónak. A felhő átjáró felhőalapú maga az átjáró együtt minden helyszíni átjárók és közvetve vagy közvetlenül csatlakoztatott eszköz tartozik.
 
-Átjáró csak a szoftvert, szolgáltatásként való elérhetővé tett végpontokon, amelyhez a helyszíni átjáró és az eszközök csatlakozni egyéni beépített részét. Ezért úgy kell megtervezni a biztonság szem. Hajtsa végre a [SDL](http://www.microsoft.com/sdl) feldolgozása tervezéséről és kiépítéséről ezt a szolgáltatást.
+Átjáró csak a szoftvert, szolgáltatásként való elérhetővé tett végpontokon, amelyhez a helyszíni átjáró és az eszközök csatlakozni egyéni beépített részét. Ezért úgy kell megtervezni a biztonság szem. Hajtsa végre a [SDL](https://www.microsoft.com/sdl) feldolgozása tervezéséről és kiépítéséről ezt a szolgáltatást.
 
 #### <a name="services-zone"></a>Szolgáltatások zóna
 

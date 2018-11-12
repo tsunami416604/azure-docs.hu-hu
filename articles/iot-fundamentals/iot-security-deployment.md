@@ -1,6 +1,6 @@
 ---
-title: Az eszközök internetes hálózata üzemelő példány biztonságos |} A Microsoft Docs
-description: Ez a cikk részletesen az IoT-környezet biztonságossá tétele
+title: Az Azure Internet of Things (IoT) üzemelő példány biztonságos |} A Microsoft Docs
+description: Ez a cikk részletesen bemutatja az Azure IoT-környezet biztonságossá tétele
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: 00acb08f567dbd50522d0e8a0b7b9a18a6658000
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: b2d69f6ee24ced392da09585c9e934f647efbf14
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42056652"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51286877"
 ---
 [!INCLUDE [iot-secure-your-deployment](../../includes/iot-secure-your-deployment.md)]
 

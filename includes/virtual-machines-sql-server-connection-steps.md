@@ -4,12 +4,12 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: c7c3aea53a1bbdbfc39bad568b2879311e365acd
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4d77e9b57301bea30d8a33985071c28e972a81a6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226525"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264292"
 ---
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>A Windows-tűzfal TCP-portjainak megnyitása az Adatbázismotor alapértelmezett példányában
 1. Csatlakozzon a virtuális géphez a távoli asztalról. Részletes útmutatás a virtuális géphez való csatlakozásról: [SQL virtuális gép megnyitása a távoli asztalról](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#remotedesktop).
@@ -38,7 +38,7 @@ ms.locfileid: "50226525"
    
     ![Szabály neve](./media/virtual-machines-sql-server-connection-steps/17Rule-Name.png)
 
-Szükség szerint nyisson meg további portokat a többi összetevőhöz. További információ: [A Windows Tűzfal konfigurálása SQL Server-hozzáféréshez](http://msdn.microsoft.com/library/cc646023.aspx).
+Szükség szerint nyisson meg további portokat a többi összetevőhöz. További információ: [A Windows Tűzfal konfigurálása SQL Server-hozzáféréshez](https://msdn.microsoft.com/library/cc646023.aspx).
 
 ### <a name="configure-sql-server-to-listen-on-the-tcp-protocol"></a>Az SQL Server konfigurálása a TCP-protokoll figyeléséhez
 
@@ -94,5 +94,5 @@ Ha az Adatbázismotorhoz egy másik számítógépről szeretne csatlakozni, lé
    ![sysadmin](./media/virtual-machines-sql-server-connection-steps/25sysadmin.png)
 9. Kattintson az OK gombra.
 
-További információ az SQL Server-bejelentkezésekről: [Bejelentkezés létrehozása](http://msdn.microsoft.com/library/aa337562.aspx).
+További információ az SQL Server-bejelentkezésekről: [Bejelentkezés létrehozása](https://msdn.microsoft.com/library/aa337562.aspx).
 

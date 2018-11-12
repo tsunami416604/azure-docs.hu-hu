@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 61a7d31dcba538e80b09e927dd8f5aa5c81cf130
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f70faff478da9840a6c40b2f1360aec2cf3aecda
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007756"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235649"
 ---
 # <a name="enable-network-security-groups-in-azure-security-center"></a>Az Azure Security Center hálózati biztonsági csoportok engedélyezése
 Az Azure Security Center javasolja, hogy egy hálózati biztonsági csoport (NSG) engedélyezése, ha egy nem engedélyezett. NSG-k, amelyek engedélyezik vagy megtagadják a hálózati forgalmat a virtuális hálózatban futó Virtuálisgép-példányokat hozzáférés-vezérlési lista (ACL) szabályok listáját tartalmazzák. Az NSG-ket alhálózatokhoz vagy az alhálózaton belüli virtuálisgép-példányokhoz lehet hozzárendelni. Ha az NSG-t hozzárendelik egy alhálózathoz, az ACL-szabályok érvényesek lesznek az alhálózatban lévő összes virtuálisgép-példányra. Emellett a forgalmat egy adott virtuális gépre is lehet korlátozni további korlátozásokat egy NSG-t közvetlenül a virtuális Gépre. További tudnivalókért tekintse meg [Mi az a hálózati biztonsági csoport (NSG)?](../virtual-network/security-overview.md)
@@ -59,7 +59,7 @@ A Security Centerrel kapcsolatos további információkért olvassa el a követk
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) – Megtudhatja, hogyan figyelheti a partnermegoldások biztonsági állapotát.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-* [Az Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) – a legújabb Azure biztonsági hírek és információ.
+* [Az Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – a legújabb Azure biztonsági hírek és információ.
 
 <!--Image references-->
 [1]: ./media/security-center-enable-nsg/enable-nsg.png
