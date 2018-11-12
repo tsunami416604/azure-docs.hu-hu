@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 6f28a636f4df1343431762cf1eb8aec9b660f2e2
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 442371ffc63e32906d9faafc3b803bb5e6386905
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962503"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283444"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>OMS-portálon való váltás az Azure portálon a Log Analytics felhasználók kapcsolatos gyakori kérdések
 A log Analytics kezdetben a saját Portalt használta az OMS-portál nevű felügyelje a konfigurációt, és elemezheti az összegyűjtött adatokat.  Ezen a portálon az összes funkció át lett helyezve az Azure Portalra, továbbra is ki kell alakítani.
@@ -35,7 +35,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 ![Log Analytics-munkaterület](media/log-analytics-oms-portal-faq/log-analytics.png)
 
 ## <a name="how-do-i-manage-permissions"></a>Hogyan kezelhetem engedélyeket?
-A Log Analytics-munkaterületet az Azure Portalon nem érheti el, ha szüksége konfigurálja az engedélyeik [Azure szerepköralapú hozzáférés-](../active-directory/role-based-access-control-configure.md). A munkaterület-engedélyek kezelésének részletes ismertetéséért lásd: [munkaterületeinek kezeléséhez](../log-analytics/log-analytics-manage-access.md#manage-accounts-and-users). A riasztásokra vonatkozó engedélyekkel kezeléséről további információért lásd: [szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md).
+A Log Analytics-munkaterületet az Azure Portalon nem érheti el, ha szüksége konfigurálja az engedélyeik [Azure szerepköralapú hozzáférés-](../role-based-access-control/role-assignments-portal.md). A munkaterület-engedélyek kezelésének részletes ismertetéséért lásd: [munkaterületeinek kezeléséhez](../log-analytics/log-analytics-manage-access.md#manage-accounts-and-users). A riasztásokra vonatkozó engedélyekkel kezeléséről további információért lásd: [szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md).
 
 ## <a name="how-do-i-create-a-new-workspace"></a>Hogyan hozhatok létre egy új munkaterületet? 
 A munkaterület listája, az Azure Portalon, kattintson **Hozzáadás** munkaterületek listájában.  További információkat lásd: [Log Analytics-munkaterület létrehozása az Azure Portalon](../log-analytics/log-analytics-quick-create-workspace.md).
@@ -110,7 +110,7 @@ A megoldások kezelése az **megoldások** a munkaterület menüje.
 Az OMS-portálon az eszközfelügyeleti megoldások telepítéséhez kövesse a megoldástárban, és eltávolítja azokat **beállítások**. Az Azure Portalon [felügyeleti megoldások telepítése](../monitoring/monitoring-solutions.md#install-a-management-solution) az Azure Marketplace-ről. [Távolítsa el a megoldások](../monitoring/monitoring-solutions.md#remove-a-management-solution) telepített megoldások listájából.
 
 ## <a name="how-do-i-create-and-manage-alerts"></a>Hogyan hozzon létre és kezelheti a riasztásokat?
-Riasztási szabályok alapján a Log Analytics-lekérdezések már kezelhetők a [egységes felhasználói élményt riasztási](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). Lásd: [bővítése a riasztások a Log Analytics az Azure Alerts](../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md) konfigurálása és riasztások használatával az Azure Portalon.
+Riasztási szabályok alapján a Log Analytics-lekérdezések már kezelhetők a [egységes felhasználói élményt riasztási](../monitoring-and-diagnostics/alert-metric.md). Lásd: [bővítése a riasztások a Log Analytics az Azure Alerts](../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md) konfigurálása és riasztások használatával az Azure Portalon.
 
 ## <a name="how-do-i-access-my-dashboards"></a>Hogyan érhetem el az irányítópultokat?
 A [saját irányítópult](../log-analytics/log-analytics-dashboards.md) a Log Analytics funkció elavult. Ez a funkció engedélyezett, hogy privát adatforrásnézet-tervezőből részek-gyűjteménnyel rendelkezik, és a beépített Azure-irányítópulton funkcióval helyettesít. Folytathatja az adatok megjelenítése a Log Analytics használatával [adatforrásnézet-tervezőből](../log-analytics/log-analytics-view-designer.md) megosztott nézetekhez. Az ezeket a nézeteket, vagy vizualizációkat is rögzíthet [az egyes lekérdezések](../log-analytics/log-analytics-tutorial-dashboards.md) az Azure-irányítópultok.

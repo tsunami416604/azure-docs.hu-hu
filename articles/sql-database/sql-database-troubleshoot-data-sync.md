@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 07/16/2018
-ms.openlocfilehash: beab191ff33939053da942b0ce7df22238b8acef
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 44bf04d3840009b9408ccfc51fdcefa7c7e116cb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247313"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278939"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Az SQL Data Sync szolgáltatással kapcsolatos problémák elhárítása
 
@@ -112,143 +112,7 @@ Adatok szinkronizálása. a körkörös hivatkozások nem kezeli. Mindenképpen 
 
 ## <a name="client-agent-issues"></a>Ügyfél ügynök kapcsolatos problémák
 
-- [Az ügyfél-ügynök telepítése, eltávolítása vagy javítása sikertelen](#agent-install)
-
-- [Az ügyfélügynök megszakítom az Eltávolítás után nem működik.](#agent-uninstall)
-
-- [Az adatbázis nem szerepel a listán az ügynök listában](#agent-list)
-
-- [Ügyfélügynök nem indul el (Hiba 1069)](#agent-start)
-
-- [Az ügynök kulcs nem küldhető be](#agent-key)
-
-- [Az ügyfélügynök nem törölhető a portálról, ha annak társított helyszíni adatbázis nem érhető el](#agent-delete)
-
-- [Szinkronizációs ügynök helyi alkalmazás nem tud kapcsolódni a helyi szinkronizálási szolgáltatás](#agent-connect)
-
-### <a name="agent-install"></a> Az ügyfél-ügynök telepítése, eltávolítása vagy javítása sikertelen
-
-- **OK**. Számos forgatókönyv ezt a hibát okozhatja. Ez a hiba az adott hiba okának megállapításához tekintse meg a naplókat.
-
-- **Feloldási**. Keresse meg a konkrét okát, hozzon létre, és tekintse meg a Windows-telepítési naplókat. Bekapcsolhatja a naplózást, a parancssorba. LocalAgentHost.msi AgentServiceSetup.msi letöltött fájl esetén például hozzon létre, és vizsgálja meg a naplófájlokat a következő parancssorok használatával:
-
-    -   Telepítések: `msiexec.exe /i SQLDataSyncAgent-Preview-ENU.msi /l\*v LocalAgentSetup.InstallLog`
-    -   Az eltávolítása: `msiexec.exe /x SQLDataSyncAgent-se-ENU.msi /l\*v LocalAgentSetup.InstallLog`
-
-    Windows Installer által végzett összes telepítés naplózását is bekapcsolhatja. A Microsoft Tudásbázis megfelelő cikkében [Windows Installer-naplózás engedélyezése](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging) kapcsolja be a naplózást, a Windows Installer egykattintásos megoldást kínál. A naplók helye is tartalmazza.
-
-### <a name="agent-uninstall"></a> Az ügyfélügynök megszakítom az Eltávolítás után nem működik.
-
-Az ügyfélügynök nem működik, akár az eltávolítási megszüntetése után.
-
-- **OK**. Ennek oka az, hogy az SQL Data Sync ügyfélügynök nem tárolja a hitelesítő adatokat.
-
-- **Feloldási**. E két megoldásokkal próbálkozhat:
-
-    -   Írja be újra a hitelesítő adatokat, az ügyfél ügynökének a services.msc használatával.
-    -   Távolítsa el az ügyfél ügynökprogramjának, és a egy új telepítését. Töltse le és telepítse a legújabb ügyfél ügynököt [letöltőközpontból](https://go.microsoft.com/fwlink/?linkid=221479).
-
-### <a name="agent-list"></a> Az adatbázis nem szerepel a listán az ügynök listában
-
-Meglévő SQL Server-adatbázis hozzáadása a szinkronizálási csoport kísérli meg, amikor nem ügynökök listája jelenik meg az adatbázis.
-
-Ezekben az esetekben előfordulhat, hogy a probléma:
-
-- **OK**. Az ügyfél-ügynök és a szinkronizálási csoport különböző adatközpontokban találhatók.
-
-- **Feloldási**. Az ügyfél-ügynök és a szinkronizálási csoport ugyanabban az adatközpontban kell lennie. Beállítására, két lehetősége van:
-
-    -   Hozzon létre egy új ügynököt az adatközpont, ahol a szinkronizálási csoport is található. Az ügynök ezután regisztrálja az adatbázisban.
-    -   A jelenlegi szinkronizálási csoport törlése. Majd hozza létre a szinkronizálási csoport az adatközpont, ahol az ügynök nem található.
-
-- **OK**. Az ügyfélügynök-adatbázisok listája nem aktuális.
-
-- **Feloldási**. Állítsa le és indítsa újra az ügyfélügynök-szolgáltatás.
-
-    A helyi ügynök letölti az ügynökkulcs első benyújtása csak a társított adatbázisok listája. Nem sikerül letölteni a későbbi ügynök kulcs beküldés a társított adatbázisok listája. Adatbázisok, amelyek regisztrálva vannak az ügynök áthelyezés ideje alatt nem jelenik meg az eredeti példány.
-
-### <a name="agent-start"></a> Ügyfélügynök nem indul el (Hiba 1069)
-
-Tudomására jut, hogy az ügynök nem fut SQL Servert futtató számítógépre. Amikor megpróbálja manuálisan elindítani az ügynököt, megjelenik egy párbeszédpanel, amely a következő üzenetet jeleníti meg "1069. hiba: A szolgáltatás nem indult el a bejelentkezési hiba miatt."
-
-![Szinkronizálási hiba 1069 párbeszédpanel](media/sql-database-troubleshoot-data-sync/sync-error-1069.png)
-
-- **OK**. Egy valószínűleg ez a hiba oka, hogy a jelszót a helyi kiszolgálón módosult-e, mivel az ügynök és az ügynök jelszót hozott létre.
-
-- **Feloldási**. Az ügynök jelszó frissítése a kiszolgáló jelenlegi jelszavát:
-
-  1. Keresse meg az SQL Data Sync ügyfélügynök-szolgáltatás.  
-    a. Válassza ki **Start**.  
-    b. A Keresés mezőbe írja be a **services.msc**.  
-    c. A keresési eredmények között, válassza ki a **szolgáltatások**.  
-    d. Az a **szolgáltatások** ablakban görgessen a bejegyzés **SQL Data Sync-ügynök**.  
-  1. Kattintson a jobb gombbal **SQL Data Sync-ügynök**, majd válassza ki **leállítása**.
-  1. Kattintson a jobb gombbal **SQL Data Sync-ügynök**, majd válassza ki **tulajdonságok**.
-  1. A **SQL Data Sync ügynök tulajdonságainak**, jelölje be a **bejelentkezés** fülre.
-  1. Az a **jelszó** mezőbe írja be a jelszót.
-  1. Az a **jelszó megerősítése** mezőbe írja be újból a jelszót.
-  1. Válassza az **Apply** (Alkalmaz) lehetőséget, majd kattintson az **OK** gombra.
-  1. Az a **szolgáltatások** ablakban kattintson a jobb gombbal a **SQL Data Sync-ügynök** szolgáltatásra, és kattintson a **Start**.
-  1. Zárja be a **szolgáltatások** ablak.
-
-### <a name="agent-key"></a> Az ügynök kulcs nem küldhető be
-
-Miután hoz létre, vagy hozza létre a kulcsot egy ügynöknek, küldje el a kulcs az SqlAzureDataSyncAgent alkalmazáson keresztül próbál. A küldés nem lehetett végrehajtani.
-
-![Hiba-párbeszédpanel szinkronizálása – nem küldhetnek ügynökkulcs](media/sql-database-troubleshoot-data-sync/sync-error-cant-submit-agent-key.png)
-
-- **Előfeltételek**. Mielőtt folytatná, ellenőrizze a következő előfeltételek vonatkoznak:
-
-  - Az SQL Data Sync Windows-szolgáltatás fut.
-
-  - A szolgáltatás az SQL Data Sync Windows-szolgáltatásfiókot hálózati hozzáféréssel rendelkezik.
-
-  - A kimenő 1433-as port meg nyitva, a helyi tűzfalszabály.
-
-  - A helyi IP-cím hozzáadódik a kiszolgáló vagy adatbázis tűzfalszabályt a szinkronizálási metaadat-adatbázisként.
-
-- **OK**. Az ügynökkulcs egyedileg azonosítja az egyes helyi ügynök. A kulcs két feltételeknek kell megfelelniük:
-
-  -   Az SQL Data Sync-kiszolgáló és a helyi számítógépen az ügynök ügyfélkulcsot azonosnak kell lennie.
-  -   Az ügyfél ügynökkulcs csak egyszer használható.
-
-- **Feloldási**. Az ügynök nem működik, ha, mert az egyik vagy mindkét ezek a feltételek nem teljesülnek. Az ügynök újra működéséhez lekérése:
-
-  1. Hozzon létre egy új kulcsot.
-  1. Az ügynök az új kulcs érvényesek.
-
-  A alkalmazni az ügynököt az új kulcs:
-
-  1. A Fájlkezelőben nyissa meg az ügynöktelepítési könyvtár. Az alapértelmezett telepítési könyvtárra a C:\\Program Files (x86)\\Microsoft SQL Data Sync szolgáltatással.
-  1. Kattintson duplán a bin alkönyvtárat.
-  1. Nyissa meg a SqlAzureDataSyncAgent alkalmazást.
-  1. Válassza ki **Ügynökkulcs elküldése**.
-  1. A rendelkezésre álló illessze be a vágólapra másolt kulcsot.
-  1. Kattintson az **OK** gombra.
-  1. Zárja be a program.
-
-### <a name="agent-delete"></a> Az ügyfélügynök nem törölhető a portálról, ha annak társított helyszíni adatbázis nem érhető el
-
-Ha a helyi végpont (azaz egy adatbázis), amely regisztrálva van egy SQL Data Sync ügyfélügynök elérhetetlenné válik, az ügyfél ügynöke nem lehet törölni.
-
-- **OK**. A helyi ügynök nem törölhető, mert az nem érhető el adatbázis továbbra is regisztrálva van az ügynök. Ha törli az ügynököt próbál, a törlési folyamat megpróbálja elérni az adatbázist, amelyet nem sikerül.
-
-- **Feloldási**. Használja a "kényszerítéséhez delete" törli nem érhető el az adatbázist.
-
-> [!NOTE]
-> Ha a szinkronizálási metaadat-táblát egy "kényszerítéséhez delete" után továbbra is használható `deprovisioningutil.exe` karbantartása őket.
-
-### <a name="agent-connect"></a> Szinkronizációs ügynök helyi alkalmazás nem tud kapcsolódni a helyi szinkronizálási szolgáltatás
-
-- **Feloldási**. Próbálja meg a következőket:
-
-  1. Lépjen ki az alkalmazást.  
-  1. Az összetevő-szolgáltatások Panel megnyitásához.  
-    a. A tálcán a Keresés mezőbe írja be **services.msc**.  
-    b. A keresési eredmények között kattintson duplán a **szolgáltatások**.  
-  1. Állítsa le a **SQL Data Sync** szolgáltatás.
-  1. Indítsa újra a **SQL Data Sync** szolgáltatás.  
-  1. újra meg kell nyitniuk az alkalmazást;
+Az ügyfélügynök-problémák hibaelhárítása: [Data Sync-ügynök hibaelhárítása problémák](sql-database-data-sync-agent.md#agent-tshoot).
 
 ## <a name="setup-and-maintenance-issues"></a>Telepítési és karbantartási kapcsolatos problémák
 

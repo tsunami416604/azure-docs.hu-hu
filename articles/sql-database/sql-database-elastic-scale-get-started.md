@@ -12,12 +12,12 @@ ms.author: anjangsh
 ms.reviewer: ''
 manager: craigg
 ms.date: 08/27/2018
-ms.openlocfilehash: 74bbaeeee390952bf42407a53684bc33a7cfc543
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: ad07b0a9ae2d0c90f63d4f3a842a5d386ac4c59b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242773"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249863"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Ismerkedés az Elastic Database-eszközökkel
 Ez a dokumentum bemutatja a fejlesztői felületet a [elastic database-ügyfélkódtár](sql-database-elastic-database-client-library.md) segít egy mintaalkalmazás futtatásához. A mintaalkalmazás egy egyszerű szilánkokra osztott alkalmazás létrehozása, és bemutatja az Azure SQL Database rugalmas Adatbáziseszközöket funkcióját rejlő lehetőségeket. Használati eset foglalkozik [szilánkleképezés-kezelés](sql-database-elastic-scale-shard-map-management.md), [Adatfüggő útválasztásnak](sql-database-elastic-scale-data-dependent-routing.md), és [több szegmensre vonatkozó lekérdezésekkel](sql-database-elastic-scale-multishard-querying.md). Az ügyféloldali kódtára a .NET, Java érhető el. 
@@ -67,7 +67,7 @@ Az ügyféloldali kódtár hozzáadása a saját Maven-projektet, adja hozzá a 
 
 ## <a name="elastic-database-tools-for-net"></a>.NET-hez készült elastic Database-eszközökkel 
 ### <a name="prerequisites"></a>Előfeltételek
-* Visual Studio 2012 vagy újabb a C# használatával. Töltse le az olyan díjmentes verziója, [Visual Studio letölti](http://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
+* Visual Studio 2012 vagy újabb a C# használatával. Töltse le az olyan díjmentes verziója, [Visual Studio letölti](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
 * NuGet 2.7-es vagy újabb verziója. A legújabb verzió beszerzéséhez tekintse meg a [NuGet telepítése](http://docs.nuget.org/docs/start-here/installing-nuget).
 
 ### <a name="download-and-run-the-sample-app"></a>Töltse le és futtassa a mintaalkalmazást
@@ -95,13 +95,13 @@ Gratulálunk! Sikeresen létrehozott és az első szilánkokra osztott alkalmaz�
 > 
 
 ## <a name="key-pieces-of-the-code-sample"></a>A kódminta kulcsfontosságú adatokra
-* **Leképezések szegmensek és a szilánkleképezés kezelése**: A kód azt ábrázolja, hogyan-szegmens, tartományok és -hozzárendeléseket a *ShardManagementUtils.cs* fájlt. További információkért lásd: [horizontális felskálázás a szilánkleképezés-kezelővel rendelkező adatbázisok](http://go.microsoft.com/?linkid=9862595).  
+* **Leképezések szegmensek és a szilánkleképezés kezelése**: A kód azt ábrázolja, hogyan-szegmens, tartományok és -hozzárendeléseket a *ShardManagementUtils.cs* fájlt. További információkért lásd: [horizontális felskálázás a szilánkleképezés-kezelővel rendelkező adatbázisok](https://go.microsoft.com/?linkid=9862595).  
 
-* **Adatfüggő útválasztás**: jelenik meg a megfelelő szegmensre tranzakciók útválasztás a *DataDependentRoutingSample.cs* fájlt. További információkért lásd: [Adatfüggő útválasztásnak](http://go.microsoft.com/?linkid=9862596). 
+* **Adatfüggő útválasztás**: jelenik meg a megfelelő szegmensre tranzakciók útválasztás a *DataDependentRoutingSample.cs* fájlt. További információkért lásd: [Adatfüggő útválasztásnak](https://go.microsoft.com/?linkid=9862596). 
 
-* **Lekérdezés a több szegmens**: szegmensek közötti lekérdezési állapotkezelőjében tekintheti meg a *MultiShardQuerySample.cs* fájlt. További információkért lásd: [több szegmensre vonatkozó lekérdezésekkel](http://go.microsoft.com/?linkid=9862597).
+* **Lekérdezés a több szegmens**: szegmensek közötti lekérdezési állapotkezelőjében tekintheti meg a *MultiShardQuerySample.cs* fájlt. További információkért lásd: [több szegmensre vonatkozó lekérdezésekkel](https://go.microsoft.com/?linkid=9862597).
 
-* **Üres szegmensek hozzáadásával**: a kód az új üres szegmensek iteratív hozzáadása végzi a *CreateShardSample.cs* fájlt. További információkért lásd: [horizontális felskálázás a szilánkleképezés-kezelővel rendelkező adatbázisok](http://go.microsoft.com/?linkid=9862595).
+* **Üres szegmensek hozzáadásával**: a kód az új üres szegmensek iteratív hozzáadása végzi a *CreateShardSample.cs* fájlt. További információkért lásd: [horizontális felskálázás a szilánkleképezés-kezelővel rendelkező adatbázisok](https://go.microsoft.com/?linkid=9862595).
 
 ## <a name="other-elastic-scale-operations"></a>Egyéb rugalmas méretezési műveletek
 * **Egy meglévő szegmens felosztás**: szegmensek felosztása a funkció a felosztó / egyesítő eszköz által biztosított. További információkért lásd: [adatok mozgatása kiterjesztett felhőalapú adatbázisok között](sql-database-elastic-scale-overview-split-and-merge.md).
@@ -119,12 +119,12 @@ Díjszabási információkért tekintse meg a [SQL Database szolgáltatás díjs
 Elastic Database-eszközökkel kapcsolatos további információkért lásd a következő cikkeket:
 
 * Kódminták: 
-  * Elastic Database-eszközök ([.NET](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
-  * [Elastic Database-eszközök az Azure SQL - Entity Framework-integráció](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
+  * Elastic Database-eszközök ([.NET](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
+  * [Elastic Database-eszközök az Azure SQL - Entity Framework-integráció](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [A Script Centerbe a horizontális partíciók rugalmassága](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * Blog: [rugalmasan méretezhető bejelentés](https://azure.microsoft.com/blog/2014/10/02/introducing-elastic-scale-preview-for-azure-sql-database/)
 * A Channel 9: [rugalmasan méretezhető áttekintő videó](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
-* Fórum: [Azure SQL Database-fórum](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
+* Fórum: [Azure SQL Database-fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
 * Teljesítmény mérésére: [teljesítményszámlálók a szilánkleképezés-kezelővel](sql-database-elastic-database-client-library.md)
 
 <!--Anchors-->

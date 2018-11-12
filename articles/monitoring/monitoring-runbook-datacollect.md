@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: a0dc515bb6a4cbf0395dc1407ca65edd5d517d15
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7ef7f6548cd3dd838889fd51ff0521428bbbc2aa
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261591"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282679"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Adatgyűjtés, a Log Analytics az Azure Automation-runbook
 Számos különféle forrásból például gyűjthet adatokat a Log Analytics jelentős mennyiségű [adatforrások](../log-analytics/log-analytics-data-sources.md) ügynökökön és is [adatokat gyűjteni az Azure-ból](../log-analytics/log-analytics-azure-storage.md).  Vannak olyan forgatókönyvek ellenére, hogy hol kell gyűjtenie az adatokat, amely nem érhető el standard források segítségével.  Ezekben az esetekben használhatja a [HTTP-adatgyűjtő API](../log-analytics/log-analytics-data-collector-api.md) használatával írhat adatokat a Log Analyticsbe bármely REST API-ügyfélből.  Egy általános módszer az adatgyűjtést az Azure Automation runbook használ.   
@@ -198,7 +198,7 @@ Az ütemezés létrehozása után kell beállítani, amely minden alkalommal, am
 8. Kattintson az **OK** gombra. 
 
 ## <a name="9-verify-runbook-starts-on-schedule"></a>9. Runbook indítása a ütemezés ellenőrzése
-Egy runbook elindul, amikor valaki [létrejön egy feladat](../automation/automation-runbook-execution.md) és a kimenetet a naplóba.  Sőt ezek a ugyanazt a feladatot, amely a runbook gyűjti.  Ellenőrizheti, hogy a runbookot a runbook a feladatok ellenőrzésével, az ütemezés kezdési ideje után megfelelően elindul-e.
+Minden alkalommal, amikor egy runbook elindult, [létrejön egy feladat](../automation/automation-runbook-execution.md) és a kimenetet a naplóba.  Sőt ezek a ugyanazt a feladatot, amely a runbook gyűjti.  Ellenőrizheti, hogy a runbookot a runbook a feladatok ellenőrzésével, az ütemezés kezdési ideje után megfelelően elindul-e.
 
 ![Feladatok](media/monitoring-runbook-datacollect/jobs.png)
 

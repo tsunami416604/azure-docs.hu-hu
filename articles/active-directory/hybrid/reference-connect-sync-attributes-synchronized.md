@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9ea901d51403096166b367a1586cb26d2d914e2d
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 08633b52e6b7cfef28635925ad9fcf34e065e9bf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312402"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251798"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Az Azure AD Connect szinkronizálása: az Azure Active Directoryval szinkronizált attribútumok
 Ez a témakör az Azure AD Connect sync szinkronizált attribútumok listája.  
@@ -376,7 +376,7 @@ Ebben az esetben indítsa el az ebben a témakörben az attribútumlistát, és 
 Ez a csoport olyan készlete, az általános számítási feladat vagy alkalmazás számára szükséges minimális attribútumok szintként használt attribútumoknál. A munkaterhelés nem szerepel egy másik szakaszt vagy egy nem Microsoft-alkalmazáshoz is használható. Explicit módon használható a következő:
 
 * A Yammer (csak a felhasználó használja fel)
-* [Hibrid vállalatközi (B2B) szervezetek közötti együttműködés forgatókönyvek erőforrásokhoz, mint a SharePoint által kínált](http://go.microsoft.com/fwlink/?LinkId=747036)
+* [Hibrid vállalatközi (B2B) szervezetek közötti együttműködés forgatókönyvek erőforrásokhoz, mint a SharePoint által kínált](https://go.microsoft.com/fwlink/?LinkId=747036)
 
 Ez a csoport olyan készlete, az attribútumokat, amelyek is használható, ha az Azure AD-címtár nem támogatja az Office 365, Dynamics, vagy az Intune-ban. Rendelkezik egy kis készletét alapvető attribútum.
 

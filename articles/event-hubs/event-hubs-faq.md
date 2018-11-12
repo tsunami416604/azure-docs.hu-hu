@@ -9,12 +9,12 @@ ms.service: event-hubs
 ms.topic: article
 ms.date: 10/07/2018
 ms.author: shvija
-ms.openlocfilehash: 4e0f762a69451ce0dc9ec00db5992fce0707f275
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 9bd1649c0ec89abf660865971314becb6580852f
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282441"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300675"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Az Event Hubs – gyakori kérdések
 
@@ -50,7 +50,7 @@ Event Hubs Standard csomag jelenleg támogatja a maximális adatmegőrzési idő
 ### <a name="how-do-i-monitor-my-event-hubs"></a>Hogyan követhetem figyelemmel az Event Hubs?
 Az Event Hubs bocsát ki, amelyek az erőforrásokat az állapotát az alábbi mérőszámok [Azure Monitor](../azure-monitor/overview.md). Emellett segítségével felmérheti az általános állapotát, az Event Hubs szolgáltatás nem csak a névterek szintjén, hanem az entitások szintjén. Ismerje meg, milyen figyelésével kapcsolatos kínáljuk [Azure Event Hubs](event-hubs-metrics-azure-monitor.md).
 
-## <a name="apache-kakfa-integration"></a>Az Apache Kakfa integráció
+## <a name="apache-kafka-integration"></a>Az Apache Kafka-integráció
 
 ### <a name="how-do-i-integrate-my-existing-kafka-application-with-event-hubs"></a>Hogyan integrálhatja meglévő Kafka az alkalmazásom az Event Hubs?
 Az Event Hubs biztosít egy Kafka-végpontot, amely a meglévő Apache Kafka-alapú alkalmazások által használható. Egy konfigurációmódosítás Ez minden, a PaaS Kafka tapasztalatra van szükség. Biztosít a saját Kafka-fürt futtatása helyett használhatók. Az Event Hubs az Apache Kafka 1.0-s és újabb ügyfél verzióit támogatja, és együttműködik a meglévő Kafka alkalmazásokat, eszközöket és keretrendszereket. További információkért lásd: [az Event Hubs, Kafka adattárban](https://github.com/Azure/azure-event-hubs-for-kafka).

@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 65a0d8074b8dcf89d8fc713cb4b2272c6576e8fb
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 400cb16e4f4440283a783116c4ee843bc0a7344c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43043954"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248571"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Feladatok beküldése az R Tools for Visual Studio használatával
 
-[Az R Tools for Visual Studio](https://www.visualstudio.com/vs/rtvs/) (RTVS) egy ingyenes, nyílt forráskódú bővítmény a Community (ingyenes), Professional, és Enterprise kiadás mindkét [Visual Studio 2017](https://www.visualstudio.com/downloads/), és [Visual Studio 2015 Update 3](http://go.microsoft.com/fwlink/?LinkId=691129)vagy újabb verziója.
+[Az R Tools for Visual Studio](https://www.visualstudio.com/vs/rtvs/) (RTVS) egy ingyenes, nyílt forráskódú bővítmény a Community (ingyenes), Professional, és Enterprise kiadás mindkét [Visual Studio 2017](https://www.visualstudio.com/downloads/), és [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129)vagy újabb verziója.
 
 RTVS bővíti az R-munkafolyamat eszközök felajánlásával a [R Interaktivní okno](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL), az intellisense (kódkiegészítés), [jeleníti meg képi megjelenítés](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data) keresztül R-kódtárak ggplot2 és ggviz, például[R-kód hibakeresése](https://docs.microsoft.com/visualstudio/rtvs/debugging), stb.
 

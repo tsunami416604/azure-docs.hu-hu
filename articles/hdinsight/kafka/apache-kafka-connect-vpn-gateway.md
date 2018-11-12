@@ -8,13 +8,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/02/2018
-ms.openlocfilehash: 5f47ce84203d88604183d13f6e9282e2bb846451
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.date: 11/06/2018
+ms.openlocfilehash: da98873b133d69d78271494b991b67caea1d5a11
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006005"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283070"
 ---
 # <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Kafka on HDInsight az Azure virtuális hálózaton keresztül kapcsolódni
 
@@ -35,7 +35,7 @@ HDInsight nem engedélyezi a közvetlen kapcsolat, a Kafka, a nyilvános interne
     2. Hozzon létre egy VPN-átjáró, amely a site-to-site-konfigurációt használ. Az itt bemutatott konfiguráció kapcsolódik a helyszíni hálózat VPN-átjáróeszközt.
     3. Hozzon létre egy DNS-kiszolgáló a virtuális hálózatban.
     4. Konfigurálja a DNS-kiszolgáló, az egyes hálózatok közötti továbbítás.
-    5. HDInsight Kafka telepítse a virtuális hálózatban.
+    5. Hozzon létre egy Kafka HDInsight-fürtön a virtuális hálózatban.
 
     További információkért lásd: a [Kafka csatlakozhat egy helyszíni hálózatról](#on-premises) szakaszban. 
 
@@ -43,8 +43,8 @@ HDInsight nem engedélyezi a közvetlen kapcsolat, a Kafka, a nyilvános interne
 
     1. Hozzon létre egy virtuális hálózatot.
     2. Hozzon létre egy VPN-átjáró, amely a pont – hely konfigurációt használ. Ez a konfiguráció Windows- és MacOS-ügyfelek is használható.
-    3. HDInsight Kafka telepítse a virtuális hálózatban.
-    4. Konfigurálja a Kafka IP hirdetési célból. Ez a konfiguráció lehetővé teszi, hogy az ügyfél IP-címkezelés helyett tartománynevek használatával csatlakozni.
+    3. Hozzon létre egy Kafka HDInsight-fürtön a virtuális hálózatban.
+    4. Konfigurálja a Kafka IP hirdetési célból. Ez a konfiguráció lehetővé teszi az ügyfél broker segítségével szeretne csatlakozni, IP-címek tartománynevek helyett.
     5. Töltse le és használja a VPN-ügyfél a fejlesztői rendszeren.
 
     További információkért lásd: a [Kafka az egy VPN-ügyfél csatlakozhat](#vpnclient) szakaszban.

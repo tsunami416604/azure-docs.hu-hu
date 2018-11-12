@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: lmolkova
-ms.openlocfilehash: 2e4ff84c957540aa6863cd9836b1744e73c5b2f5
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 770d8950e25431e1edc496e0710cf199b45e5847
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854881"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283835"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Elosztott nyomkövetést és korrelációs révén a Service Bus-üzenetkezelés
 
@@ -181,7 +181,7 @@ Minden esemény elérheti `Activity.Current` , amely tartalmazza az aktuális m�
 
 #### <a name="logging-additional-properties"></a>További naplózási tulajdonságok
 
-`Activty.Current` részletes kontextusában a jelenlegi műveletet és annak szülői biztosít. További információkért lásd: [tevékenységek dokumentációja](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) további részletekért.
+`Activity.Current` részletes kontextusában a jelenlegi műveletet és annak szülői biztosít. További információkért lásd: [tevékenységek dokumentációja](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) további részletekért.
 A Service Bus instrumentation az további információkkal szolgál a `Activity.Current.Tags` -azok `MessageId` és `SessionId` , ha elérhetők legyenek.
 
 "Kapnak" nyomon követő tevékenység, "Betekintési" és "ReceiveDeferred" esemény is lehet `RelatedTo` címke. Különböző listája magánál tartja `Diagnostic-Id`(s) az üzenetek eredményeként kapott.

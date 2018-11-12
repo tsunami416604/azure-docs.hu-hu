@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 988a2433f098f41bca4796299825293efd4de44b
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: da261beeec4f02dfa7c7cf9071e51dc17cf5c7cd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171134"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254383"
 ---
 # <a name="how-to-use-cards-part-1-of-2"></a>Kártya (2 1. rész) használata
 
@@ -26,7 +26,7 @@ Ez az oktatóanyag bemutatja, hogyan adhat hozzá, és a egy egyszerű kártya h
 
 ## <a name="video"></a>Videó
 
-[![Az oktatóanyag 13 előzetes verzió](http://aka.ms/cl-tutorial-13-preview)](http://aka.ms/blis-tutorial-13)
+[![Az oktatóanyag 13 előzetes verzió](https://aka.ms/cl-tutorial-13-preview)](https://aka.ms/blis-tutorial-13)
 
 ## <a name="requirements"></a>Követelmények
 Ehhez az oktatóanyaghoz, hogy fut-e az általános oktatóanyag robotot
