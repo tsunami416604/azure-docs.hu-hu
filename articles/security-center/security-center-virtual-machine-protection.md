@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/28/2018
+ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 1692e111d48a6e4574b2b114c0de84d9bc9f3203
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 0bd93e0732b0e822fae68b4ac2cc5e28fb246808
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299831"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016964"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>A gépek és az alkalmazások az Azure Security Center védelme
 Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán hoz létre. Javaslatok alkalmazása az Azure-erőforrástípus: virtuális gépek (VM) és a számítógépek, alkalmazások, hálózati, SQL, és az identitás- és hozzáférés.
@@ -37,11 +37,11 @@ A folytatáshoz válasszon ki **számítás és alkalmazások** alatt **erőforr
 ![Security Center irányítópultja][1]
 
 ## <a name="monitor-compute-and-app-services"></a>Számítási tevékenység figyelése és az App services
-A **számítási**, négy lap található:
+A **számítások** alatt négy fül található:
 
-- **Áttekintés**: figyelés és javaslatok a Security Center által azonosított.
-- **Virtuális gépek és számítógépek**: a virtuális gépek, a számítógépek és az egyes aktuális biztonsági állapotának listája.
-- **Cloud Services**: a Security Center által figyelt webes és feldolgozói szerepkörök listáját.
+- **Áttekintés**: Monitorozás és a Security Center által azonosított javaslatok.
+- **Virtuális gépek és számítógépek**: a virtuális gépek és számítógépek listája, valamint mindegyikre az aktuális biztonsági állapota.
+- **Felhőszolgáltatások**: a Security Center által figyelt összes webes és feldolgozói szerepkör listája.
 - **App services (előzetes verzió)**: az App service Environment-környezetek és az egyes aktuális biztonsági állapotának listája.
 A folytatáshoz válasszon ki **számítás és alkalmazások** alatt **erőforrások** vagy a Security Center főmenüjébe.
 
@@ -63,10 +63,10 @@ A bővítményt a nem monitorozott virtuális gép vagy a számítógépen a má
 
 [A Monitoring Agent állapotproblémái](security-center-troubleshooting-guide.md#mon-agent) szakaszban többet is megtudhat arról, hogy a Security Center miért nem tudja sikeresen monitorozni az automatikus üzembe helyezésre inicializált virtuális gépeket és számítógépeket.
 
-### <a name="recommendations"></a>Javaslatok
+### <a name="recommendations"></a>Ajánlatok
 Ebben a szakaszban rendelkezik minden virtuális gép és számítógép, webes és feldolgozói szerepkörök, az Azure App Service Web Apps és az Azure App Service-környezet, amely a Security Center figyeli vonatkozó javaslatok szerepelnek. Az első oszlop a javaslatokat sorolja fel. A második oszlop az adott javaslat által érintett erőforrások teljes számát jeleníti meg. A harmadik oszlop a probléma súlyosságát mutatja, ahogyan az alábbi képernyőfelvételen látható:
 
-![Javaslatok][4]
+![Ajánlatok][4]
 
 Minden egyes javaslatokra műveleteket hajthat végre kijelölése után. Például, ha kiválasztja **hiányzó rendszerfrissítések**, a virtuális gépek számát és számítógépekre, amelyekről hiányoznak a javításokat, és a hiányzó frissítés súlyosságát jelenik meg, az alábbi képernyőképen látható módon:
 
@@ -101,7 +101,7 @@ A javaslat részleteinek megtekintéséhez kattintson a hiányzó frissítés ne
 ### <a name="vms-and-computers"></a>Virtuális gépek és számítógépek
 A virtuális gépek és számítógépek szakasz áttekintheti az összes virtuális gép és számítógép ajánlások. Ahogy az alábbi képernyőfelvételen is látható, minden oszlop egy javaslatcsoportot képvisel:
 
-![Virtuális gép és számítógép vonatkozó javaslatok][7]
+![Javaslatok virtuális gépekhez és számítógépekhez][7]
 
 A listában szereplő ikon négy típusa van:
 
@@ -115,7 +115,7 @@ A listában szereplő ikon négy típusa van:
 
 Az egyes javaslatok alatt megjelenő ikonok segít gyorsan azonosítani a virtuális gép és számítógép hagyni a figyelmet, és a javaslat típusát. Szűrje segítségével válassza ki a beállítások ezen a képernyőn láthatja.
 
-![Szűrés][12]
+![Szűrő][12]
 
 Az előző példában egy virtuális gépnél kritikus súlyosságú javaslat az endpoint protection kapcsolatban. További információt szeretne kapni a virtuális gép kiválasztása:
 
@@ -176,6 +176,65 @@ A listában szereplő ikon három típusa van:
 3. Válassza ki a átadott értékelés listájából az értékelés leírását, a nem megfelelő állapotú és kifogástalan állapotú erőforrások listájának és a nem vizsgált erőforrások listáját. Nem megfelelő állapotú erőforrások lapja, de a lista mindig üres lesz, mivel az értékelés átadott.
 
     ![Kifogástalan állapotú erőforrások][23]
+
+## <a name="compute-and-app-recommendations"></a>Számítási és az alkalmazás vonatkozó javaslatok
+|Erőforrás típusa|Biztonsági pontszám|Ajánlás|Leírás|
+|----|----|----|----|
+|Gép|50|Figyelési ügynök telepítése a gépeken|A Monitoring agent engedélyezni az adatgyűjtést, a frissítések vizsgálata, alapkonfiguráció-keresés és az endpoint protection az összes olyan számítógépen telepíti.|
+|Gép|50|Az Automatikus kiépítés és az előfizetésekre vonatkozó adatok gyűjtésének engedélyezése |Automatikus üzembe helyezés és a gépek előfizetéseiben engedélyezni az adatgyűjtést, a frissítések vizsgálata, alapkonfiguráció-keresés és az endpoint protection az összes olyan számítógépen, hozzáadva az előfizetésekhez az adatgyűjtés engedélyezése.|
+|Gép|40|A gépek figyelőügynök-állapotproblémáinak megoldása|A védelemhez a Security Center teljes monitorozási ügynök problémák megoldásához a gépeken a hibaelhárítási útmutató utasításait követve| 
+|Gép|40|A gépek Endpoint Protection-állapotproblémáinak megoldása|A Security Center teljes védelem, figyelési ügynök problémák megoldásához a gépeken a hibaelhárítási útmutató utasításait követve.|
+|Gép|40|Hiányzó ellenőrzési adatok hibaelhárítása a gépeken|Hárítsa el a virtuális gépek és számítógépek hiányzó vizsgálati adatok. Hiányzó vizsgálati adatok, például hiányzó biztonsági értékelések a gépek eredményezi a frissítés vizsgálata, a baseline vizsgálata, és a hiányzó endpoint protection megoldás vizsgálata.|
+|Gép|40|Rendszerfrissítések telepítése a gépeken|Hiányzó rendszerbiztonsági és kritikus frissítések, a Windows és Linux rendszerű virtuális gépek és számítógépek biztonságossá tétele
+|Gép|40|Frissítse az operációs rendszer verzióját felhőszolgáltatási szerepköreihez|Frissítse az operációs rendszer verzióját felhőszolgáltatási szerepköreihez az operációsrendszer-család elérhető legújabb verziójára.|
+|Gép|35|Biztonsági rések javítása a gépek biztonsági konfigurációjában|A biztonsági rések támadások elleni védelem érdekében a gépeken biztonsági beállításokkal. |
+|Gép|35|A biztonsági rések biztonsági konfigurációban telepíti a tárolókat|Biztonsági rések eltávolítása a telepített Dockerrel rendelkező gépek biztonsági konfigurációjából a támadások elleni védekezés céljából.|
+|Gép|25|Adaptív alkalmazásvezérlés engedélyezése|Engedélyezze az alkalmazás vezérlő a vezérlőelem, mely alkalmazások futhatnak az Azure-ban található virtuális gépek. Ez segít felvértezni virtuális gépeit a kártevők ellen. A Security Center gépi tanulási az egyes virtuális gépeken futó alkalmazások elemzése, és segít a alkalmazni, lehetővé teszi a szabályok alkalmazásában. Ez a funkció egyszerűsíti konfigurálásának folyamatán, és fenntartja az alkalmazás lehetővé teszi a szabályokat.|
+|Gép|20|Endpoint Protection-megoldás telepítése a gépeken|Végpontvédelmi megoldás telepítse a virtuális gépekhez, a fenyegetések és biztonsági rések elleni védelem érdekében.|
+|Gép|20|Indítsa újra a gépeket a rendszerfrissítések alkalmazásához|Indítsa újra a gépeket a rendszerfrissítések alkalmazásához és a számítógépek biztonsági rések elleni védelméhez.|
+|App Service|20|Webes alkalmazás csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül|Csak HTTPS-kapcsolaton keresztül korlátozza a webes alkalmazások elérésére.|
+|App Service|20|Alkalmazás függvény csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül|Csak HTTPS-kapcsolaton keresztül korlátozza a Függvényalkalmazások elérésére.|
+|Gép|15|Lemeztitkosítás alkalmazása a virtuális gépeken|Az Azure Disk Encryption mindkét használatával a Windows és Linux rendszerű virtuális gépek virtuálisgép-lemezek titkosítása. Az Azure Disk Encryption (ADE) használja, az iparági szabványos BitLocker funkcióját Windows és Linux operációsrendszer- és lemeztitkosítás védheti és az adatok biztonságos, és a szervezeti biztonsági és megfelelőségi igazodjunk biztosít DM-Crypt funkcióját az ügyfeleknek az Azure key vault kötelezettségvállalás. Ha a megfelelőségi és biztonsági követelményt megköveteli, hogy a teljes körű a titkosítási kulcsokat, beleértve a rövid élettartamú (helyileg csatlakoztatott ideiglenes) lemez, használja az Azure disk encryption titkosítás használata adatok titkosításához. Azt is megteheti alapértelmezés szerint felügyelt lemezek vannak titkosítása az Azure Storage Service Encryption az Azure-ban a Microsoft által felügyelt kulcsok esetén a titkosítási kulcsok használatával alapértelmezés szerint. Ha ez megfelel a megfelelőségi és biztonsági követelmények, használhatja az alapértelmezett felügyelt lemeztitkosítás az igényeknek.|
+|Számítási erőforrások (a service fabric)|10|Azure Active Directory használata az ügyfél-hitelesítéshez, a Service Fabricben|Hajtsa végre a Service Fabric ügyfél-hitelesítés csak az Azure Active Directory segítségével.|
+|Számítási erőforrások (automation-fiók)|5| Automation-fiók titkosításának engedélyezése|Automation-fiók változó adategységek titkosítást bizalmas adatok tárolásakor.|
+|App Service|5|Az App Service-ben a diagnosztikai naplók engedélyezése|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
+|Számítási erőforrások (Load balancer)|5|Load Balancer-diagnosztikai naplók engedélyezése|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
+|Számítási erőforrások (Keresés)|5|A keresési szolgáltatás diagnosztikai naplók engedélyezése|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
+|Számítási erőforrások (a service bus)|5|A Service Bus-diagnosztikai naplók engedélyezése|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
+|Számítási erőforrások (stream analytics)|5|Az Azure Stream Analytics diagnosztikai naplóinak engedélyezése|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
+|Számítási erőforrások (a service fabric)|5|A Service Fabric-diagnosztikai naplók engedélyezése|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
+|Számítási erőforrások (kötegelt)|5|A Batch-fiókok a diagnosztikai naplók engedélyezése|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
+|Számítási erőforrások (eseményközpontból)|5|Event Hub-diagnosztikai naplók engedélyezése|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
+|Számítási erőforrások (a logic apps)|5|A Logic Apps-diagnosztikai naplók engedélyezése|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
+|Gép|30|Biztonsági rések felmérését lehetővé tevő megoldás telepítése a virtuális gépeken|Biztonsági rések felmérését lehetővé tevő megoldás telepítése a virtuális gépeken|
+|Gép|15|Webalkalmazási tűzfal felvétele| Telepítse a webalkalmazási tűzfal (WAF) megoldás a webalkalmazások biztonságossá tételéhez. |
+|Gép|30|Biztonsági rések - sebezhetőség-felmérési megoldás által szervizelése|Amelynek a sebezhetőség-felmérési 3. fél megoldás üzembe helyezett virtuális gépek folyamatosan értékelni alatt álló alkalmazás és az operációs rendszer biztonsági rések ellen. Minden alkalommal, amikor kivédeni találhatók, ezek érhetők el további információ az ajánlás része.|
+|Számítási erőforrások (a service fabric)|15|A Service Fabric EncryptAndSign a ClusterProtectionLevel tulajdonsága|Service Fabric egy elsődleges fürttanúsítvány csomópontok közötti kommunikációt három szintje (nincs, bejelentkezési és EncryptAndSign) védelmet biztosít.  Biztosíthatja, hogy a csomópontok közötti üzenetek titkosítva és digitálisan aláírt védelmi szintjének beállítása. |
+|App Service|10|Távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz|Kapcsolja ki a hibakeresési webes alkalmazásokhoz, ha már nincs rá szüksége. Távoli hibakeresés használatához meg kell nyitni a Függvényalkalmazás bejövő portokat.|
+|App Service|10|Távoli hibakeresést ki kell kapcsolni a Függvényalkalmazást|Ha már nincs szüksége rá a függvényalkalmazás hibakeresés kikapcsolását. Távoli hibakeresés használatához meg kell nyitni a Függvényalkalmazás bejövő portokat.|
+|App Service|10|Webes alkalmazás IP-korlátozások konfigurálása|Az alkalmazás-hozzáférést IP-címek listájának meghatározását. Az IP-korlátozások használatát megvédheti webalkalmazását a gyakori támadásoktól.|
+|App Service|10|Függvényalkalmazás IP-korlátozások konfigurálása| Az alkalmazás-hozzáférést IP-címek listájának meghatározását. Az IP-korlátozások használata gyakori támadások ellen védi a függvényalkalmazást.|
+|App Service|10|Ne engedélyezze az összes ("*") erőforrások hozzáférhetnek az alkalmazáshoz| Ne engedélyezze a WEBSITE_LOAD_CERTIFICATES paraméter beállítása "". A paraméter beállítása "azt jelenti, hogy minden tanúsítvány töltődnek be a webes alkalmazások személyes tanúsítványtárolójába. A minimális jogosultság elvével való visszaéléshez ez is vezethet, mert nem valószínű, hogy a hely összes tanúsítvány futásidőben hozzá kell férnie.|
+|App Service|5|Webes szoftvercsatornák le kell tiltani a webes alkalmazás|Tekintse át a Web Sockets websocket webalkalmazásokban használatát. A Websocket protokoll téve a különböző típusú biztonsági fenyegetéseket.|
+|App Service|5|Webes szoftvercsatornák le kell tiltani a Függvényalkalmazás|Tekintse át a Web Sockets funkciót alkalmazásokon belüli használatát. A Websocket protokoll téve a különböző típusú biztonsági fenyegetéseket.|
+|App Service|5|Egyéni tartományok használata az zabalení Webové Aplikace|Egyéni tartományok használatával védi a webalkalmazást a közös adathalász támadások és más DNS-sel támadásoktól.|
+|App Service|5|Egyéni tartományok használata az Függvényalkalmazás|Egyéni tartományok használatával védi a függvényalkalmazás a közös adathalász támadások és más DNS-sel támadásoktól.|
+|Számítási erőforrások (kötegelt)|1|Batch-fiókot a metrikaalapú riasztási szabályok konfigurálása|Metrikaalapú riasztási szabályok konfigurálása a Batch-fiók és a készlet törlése kész események és a készlet törlése Start események típusú metrikák engedélyezése|
+|Számítási erőforrások (a service bus)|1|A Service Bus-névtér RootManageSharedAccessKey kivételével minden engedélyezési szabályok törlése |Service Bus-ügyfél ne használjon egy névtér szintű hozzáférési szabályzatot, amely valamennyi üzenetsorok és témakörök a névtérben hozzáférést biztosít. A legalacsonyabb jogosultsági biztonsági igazodva modellt, akkor értékének hossza hozzáférési szabályzatokat hozhat létre az entitások szintjén, az üzenetsorok és témakörök biztosíthat hozzáférést az adott entitáshoz.|
+|Számítási erőforrások (eseményközpontból)|1|Eseményközpont-névtérrel távolítsa el RootManageSharedAccessKey kivételével minden engedélyezési szabályok |Event Hub-ügyfelek ne használjon egy névtér szintű hozzáférési szabályzatot, amely valamennyi üzenetsorok és témakörök a névtérben hozzáférést biztosít. A legalacsonyabb jogosultsági biztonsági igazodva modellt, akkor értékének hossza hozzáférési szabályzatokat hozhat létre az entitások szintjén, az üzenetsorok és témakörök biztosíthat hozzáférést az adott entitáshoz.|
+|Számítási erőforrások (eseményközpontból)|5|Az Event Hubs entitásra az engedélyezési szabályok definiálása|Azoknak az engedélyezési szabályok alacsonyabb szintű hozzáférést biztosítani az Event Hubs entitáson naplózása.|
+|Gép|30|Biztonsági rések felmérését lehetővé tevő megoldás telepítése a virtuális gépeken|Biztonsági rések felmérését lehetővé tevő megoldás telepítése a virtuális gépeken|
+|App Service|20|A CORS nem teszi lehetővé minden erőforrás eléréséhez a webes alkalmazások|Együttműködhet a webalkalmazás csak a szükséges tartományok engedélyezése. Közötti eredetű erőforrások megosztása (CORS) kell nem teszi lehetővé minden tartománynak a webalkalmazáshoz való hozzáférés.|
+|App Service|20|A CORS nem teszi lehetővé a Függvényalkalmazás eléréséhez minden erőforrás| Lehetővé teszi a funkció alkalmazását interakcióba csak a szükséges tartományok. Közötti eredetű erőforrások megosztása (CORS) kell nem teszi lehetővé minden tartománynak a függvény-alkalmazás elérésére.|
+|Gép|15|Webalkalmazási tűzfal felvétele| Telepítse a webalkalmazási tűzfal (WAF) megoldás a webalkalmazások biztonságossá tételéhez. |
+|App Service|10|A legújabb támogatott .NET-keretrendszer-webalkalmazás|Használja a .NET-keretrendszer legújabb verzióját a legújabb biztonsági osztályokkal. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását.|
+|App Service|10|A Java legújabb támogatott verzióját használja a webalkalmazáshoz|Használja a legújabb Java verzióját a legújabb biztonsági osztályokkal. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását.|
+|App Service|10|A PHP legújabb támogatott verzióját használja a webalkalmazáshoz|Használja a legújabb PHP verzióját a legújabb biztonsági osztályokkal. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását.|
+|App Service|10|A legújabb támogatott Node.js verzió használata a webalkalmazáshoz|Használja a Node.js legújabb verzióját a legújabb biztonsági osztályokkal. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását.|
+|App Service|10|Használja a Python legújabb támogatott verzióját a webalkalmazáshoz|A legújabb Python-verzió használata a legújabb biztonsági osztályokkal. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását.|
+|Virtuális gépek és számítógépek|1|Virtuális gépek áttelepítése az új AzureRM-erőforrások|A virtuális gépek új Azure Resource Manager-v2 használatával adja meg például a biztonsági fejlesztések: erősebb hozzáférés-vezérlés (RBAC), jobb naplózás, ARM-alapú üzembe helyezési és irányítási elérését a felügyelt identitásokból, például a következők, az Azure key vaulthoz való hozzáférés AD-alapú hitelesítés és címkék támogatása és -erőforráscsoportok egyszerűbb biztonság kezelése. |
+|Gép|30|Biztonsági rések - sebezhetőség-felmérési megoldás által szervizelése|Amelynek a sebezhetőség-felmérési 3. fél megoldás üzembe helyezett virtuális gépek folyamatosan értékelni alatt álló alkalmazás és az operációs rendszer biztonsági rések ellen. Minden alkalommal, amikor kivédeni találhatók, ezek érhetők el további információ az ajánlás része.|
+
 
 
 

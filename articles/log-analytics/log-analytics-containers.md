@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 824be21623892b8810ca4af5b885daf65bfb1594
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 087e11f906fe7f5c2fe67c43a597de8551dfc951
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959154"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51013054"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Figyelés a Log Analytics megoldásra
 
@@ -49,7 +49,7 @@ Mielőtt hozzákezdene, tekintse át a következő adatokat, ellenőrizze, hogy 
 ### <a name="container-monitoring-solution-support-for-docker-orchestrator-and-os-platform"></a>Tárolómonitorozási megoldás támogatja a Docker Orchestrator, illetve az operációs rendszer platform
 Az alábbi táblázat ismerteti a Docker vezénylési és az operációs rendszer figyelési támogatást a tároló szoftverleltár, a teljesítmény és a naplók a Log Analytics használatával.   
 
-| | ACS | Linux | Windows | Tároló<br>Leltár | Kép<br>Leltár | Csomópont<br>Leltár | Tároló<br>Teljesítmény | Tároló<br>Esemény | Esemény<br>Napló | Tároló<br>Napló |
+| | ACS | Linux | Windows | Tároló<br>Leltározás | Kép<br>Leltározás | Csomópont<br>Leltározás | Tároló<br>Teljesítmény | Tároló<br>Esemény | Esemény<br>Napló | Tároló<br>Napló |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
@@ -604,7 +604,7 @@ Naplóbeli keresés jelenik meg, amelyen a tárolókat állapotával kapcsolatos
 
 ![Log Search for containers szolgáltatásban](./media/log-analytics-containers/containers-log-search.png)
 
-Itt szerkesztheti a keresési lekérdezés módosítása, hogy az adott információk kereséséhez érdekli. Naplókeresések kapcsolatos további információkért lásd: [Log Analytics naplóbeli kereséseivel](log-analytics-log-search.md).
+Itt szerkesztheti a keresési lekérdezés módosítása, hogy az adott információk kereséséhez érdekli. Naplókeresések kapcsolatos további információkért lásd: [Log Analytics naplóbeli kereséseivel](log-analytics-queries.md).
 
 ## <a name="troubleshoot-by-finding-a-failed-container"></a>Hibás tárolók felderítésével hibaelhárítása
 
@@ -672,4 +672,4 @@ A Log Analytics alapvető szolgáltatás lekérdezéseket elmenti. Menti őket, 
 Miután létrehozott egy lekérdezést, amely akkor hasznosak, mentse kattintva **Kedvencek** a naplók keresése lap tetején. Ezután könnyedén elérheti később a **saját irányítópult** lapot.
 
 ## <a name="next-steps"></a>További lépések
-* [Naplók keresése](log-analytics-log-search.md) részletes tároló adatfelderítési rekordok megtekintéséhez.
+* [Naplók keresése](log-analytics-queries.md) részletes tároló adatfelderítési rekordok megtekintéséhez.

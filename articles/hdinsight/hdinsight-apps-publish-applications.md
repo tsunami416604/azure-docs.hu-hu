@@ -2,19 +2,19 @@
 title: Az Azure HDInsight-alkalmazások közzététele
 description: Ismerje meg, hogyan hozhat létre egy HDInsight-alkalmazás, és közzé kell tennie az Azure piactéren.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 1cfefc3463fee6e432170a16034175bb4267fad5
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: 4206301296c94bd0d24743854756ac6dd1d712dd
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43103570"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014329"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Egy HDInsight-alkalmazás közzététele az Azure Marketplace-en
 Egy Azure HDInsight alkalmazást is telepítheti egy Linux-alapú HDInsight-fürtön. Ebből a cikkből megtudhatja, hogyan HDInsight alkalmazás közzététele az Azure piactéren. Az Azure Marketplace közzétételi kapcsolatos általános információkért lásd: [-ajánlat közzététele az Azure Marketplace-en](../marketplace/marketplace-publishers-guide.md).
@@ -48,7 +48,7 @@ Két lépést is igényel, az alkalmazás-közzététel a piactéren. Először 
 | Mező | Leírás | Lehetséges értékek |
 | --- | --- | --- |
 | types |Azok a fürttípusok, amelyekkel az alkalmazás kompatibilis. |Hadoop, HBase, Storm, Spark (vagy ezek kombinációi) |
-| versions |Azok a HDInsight-fürttípusok, amelyekkel az alkalmazás kompatibilis. |3.4 |
+| verziók |Azok a HDInsight-fürttípusok, amelyekkel az alkalmazás kompatibilis. |3.4 |
 
 ## <a name="application-installation-script"></a>Alkalmazás telepítési parancsfájlt
 Ha az alkalmazás telepítve van egy fürtön (vagy egy meglévő fürthöz, vagy egy új), egy élcsomópontot jön létre. Az alkalmazás telepítési parancsfájlt futtat az élcsomóponthoz.

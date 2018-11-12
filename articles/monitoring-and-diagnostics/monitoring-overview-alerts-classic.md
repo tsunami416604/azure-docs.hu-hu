@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: c69a61f19b55cd325cd594173dbf3b5f2b4576b8
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 02e69a9e3442f276e89e8515fb506ddd876ad2d2
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962928"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015774"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Mik azok a Microsoft Azure klasszikus riasztások?
 
@@ -25,11 +25,11 @@ Riasztások lehetővé teszik a feltételek konfigurálása adatokon, és értes
 
 ## <a name="old-and-new-alerting-capabilities"></a>Régi és Új riasztási képességek
 
-Az elmúlt Azure Monitor az Application Insights, a Log Analytics és a Service Health kellett külön riasztási képességek. Az Azure túlóra, továbbfejlesztett, és a felhasználói felület és a különböző módszerek riasztások kombinált. A konszolidáció még folyamatban van. Riasztások
+Az elmúlt Azure Monitor az Application Insights, a Log Analytics és a Service Health kellett külön riasztási képességek. Az Azure túlóra, továbbfejlesztett, és a felhasználói felület és a különböző módszerek riasztások kombinált. A konszolidáció még folyamatban van. Értesítések
 
 Csak a klasszikus riasztások felhasználói képernyő az Azure Portalon a klasszikus riasztások is megtekintheti. Az ezen a képernyőn megjelenik a **klasszikus riasztások megtekintése** a riasztások képernyőn megjelenő gomb. 
 
- ![Riasztási lehetőségeket az Azure Portalon](./media/monitoring-overview-alerts-classic/monitor-alert-screen2.png)�
+ ![Riasztási lehetőségeket az Azure Portalon](./media/monitoring-overview-alerts-classic/monitor-alert-screen2.png)
 
 Az új riasztások felhasználói felületet a klasszikus riasztások élmény felett az alábbi előnyökkel jár:
 -   **Értesítési rendszer jobb** – minden újabb riasztás nevesített csoportok vagy értesítési és műveleteket, amelyeket több riasztás felhasználható Műveletcsoportok használata. Ne használjon Műveletcsoportok klasszikus metrikariasztásokat és a korábbi Log Analytics-riasztásokkal.
@@ -40,7 +40,7 @@ Az új riasztások felhasználói felületet a klasszikus riasztások élmény f
 -   **Riasztások összevonása intelligens** és **figyelmeztetési állapotra állítja az** -újabb riasztások automatikus csoportosítási funkcióval együtt a túlterhelési felhasználói felületének csökkentése érdekében a hasonló riasztások megjelenítése tartalmazza. 
 
 Az újabb metrikákhoz kapcsolódó riasztások szabályozhatják a klasszikus metrikariasztásokat a következő előnyökkel jár:
--   **Továbbfejlesztett késés**: újabb metrikákhoz kapcsolódó riasztások percenkénti gyakorisággal futtatható. Régebbi metrikákhoz kapcsolódó riasztások mindig futtatja, 5 perces gyakorisággal. Újabb riasztások rendelkezik, növelje az értesítési vagy (3-5 perc) műveletet a probléma elemként kisebb késleltetés. Régebbi riasztások a típusától függően 5-15 perc.  Naplóriasztások általában rendelkeznek 10 – 15 perces késedelem miatt a időt vesz igénybe, hogy a naplók, de újabb feldolgozási módszerek csökkenthető az időpont. 
+-   **Továbbfejlesztett késés**: újabb metrikákhoz kapcsolódó riasztások percenkénti gyakorisággal futtatható. Régebbi metrikákhoz kapcsolódó riasztások mindig futtatja, 5 perces gyakorisággal. Újabb riasztások rendelkezik, növelje az értesítési vagy (3-5 perc) műveletet a probléma előfordulását kisebb késleltetés. Régebbi riasztások a típusától függően 5-15 perc.  Naplóriasztások általában rendelkeznek 10 – 15 perces késedelem miatt a időt vesz igénybe, hogy a naplók, de újabb feldolgozási módszerek csökkenthető az időpont. 
 -   **Többdimenziós metrikák támogatása**: azt a többdimenziós metrikák hogy felmérhesse a mérőszám egy érdekes szegmens riasztja Önt.
 -   **Metrikai feltétel több felügyeleti**: megadhatja, hogy részletesebb riasztási szabályok. Az újabb riasztások a metrikák maximális, minimális, átlagos és teljes értékek figyelésére is alkalmas.
 -   **Több metrika figyelése kombinált**: (jelenleg legfeljebb két mérőszám) egyetlen szabállyal több metrikát figyelheti. Egy riasztás akkor aktiválódik, ha mindkét metrikák megsértik a megfelelő mértékben a küszöbértékeket a megadott időszakban.

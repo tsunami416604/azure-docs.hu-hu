@@ -1,6 +1,6 @@
 ---
-title: Azure Machine Learning szolgáltatás 59 karakter vagy kevesebb művelet művelet. Azure Machine Learning neve is. Itt cím tesztelése https://moz.com/learn/seo/title-tag (pl. - webszolgáltatásokat Python az Azure Machine Learning szolgáltatás telepítése)
-description: Ismerje meg, ezzel és, hogy az Azure Machine Learning segítségével felhasználói jelenti. Ez a karakterlánc 115-145 karakter a cikk ismerteti. Használja a keresőmotor-Optimalizáláshoz típusú műveleti utasítások itt. Ezeket az adatokat a keresés lapon beágyazott a cikk időbélyeggel megjelenik. Ha a bevezetés para leképezés a cikk azt ismerteti, azt itt szerkeszteni hosszértéke használhatja.
+title: 'Az Azure Machine Learning szolgáltatás 59 karakter vagy kevesebb művelet művelet. Az Azure Machine Learning neve is. Sem zadejte název tesztelése https://moz.com/learn/seo/title-tag (PÉLDÁUL: Azure Machine Learning szolgáltatással a Python webes szolgáltatások üzembe helyezése)'
+description: Megtudhatja, hogyan teheti ezt és, hogy az Azure Machine Learning szavak ügyfél használatával. Ez a karakterlánc a 115-145 karaktereket a cikk ismerteti. Keresőmotor-Optimalizálást típusú igéi itt használhassa. Ezt az információt a cikk dátumbélyeg a keresési lap beágyazott jelenik meg. Ha a bevezetés para ismerteti a cikk célja, használhatja azt a hossz itt szerkesztett.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -10,49 +10,49 @@ ms.author: your-msft-alias
 author: your-github-account-name
 ms.date: 04/10/2018
 ms.openlocfilehash: 1fd64cca8eb51cdcaa2eb6e8cbce853b6a55b0e6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32188162"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51013008"
 ---
-# <a name="this-h1-is-the-title-of-the-article-it-appears-in-search-appears-at-the-top-of-article-second-greatest-impact-on-search-100-chars-or-less"></a>A H1 a cikk címe. Úgy tűnik, a keresés második legnagyobb hatással lehetnek a keresési, 100 karakter vagy kevesebb, a cikk tetején megjelenik
+# <a name="this-h1-is-the-title-of-the-article-it-appears-in-search-appears-at-the-top-of-article-second-greatest-impact-on-search-100-chars-or-less"></a>A H1 a cikk címe. Keresés, megjelenik a szolgáltatást, 100 karakter vagy kevesebb mint a második legnagyobb hatással lehetnek a cikk tetején jelenik meg
 
 Itt útmutatást: https://review.docs.microsoft.com/help/contribute/contribute-how-to-write-seo-basics?branch=master
 
 
-1. bekezdés biztosít a cikk az 1 vagy 2 rövid mondat elsődleges célját. 
+1. bekezdés a cikk 1 vagy 2 rövid mondatokban tevékenységük biztosít. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az útmutató Útmutató lépéseit, az alábbiak szükségesek:
+Ez az útmutató lépéseinek, az alábbiak szükségesek:
 - [A machine learning fiók](template-howto.md)
 
-## <a name="section-here-h2"></a>Itt H2 szakasz 
+## <a name="section-here-h2"></a>Itt a H2 szakasz 
 Itt bekezdés. 
-**Ezt a kifejezést félkövér. ** 
+**Ez a kifejezés a félkövérrel szedett. ** 
  *Ezt a kifejezést dőlt.*
 
 Ez egy [egy cikkre mutató hivatkozás](./template-concepts.md)
 
-Ez az a képfájl:
+Ez a kép:
 
-![Ez az egy lemezkép leírása](media/overview-what-is-azure-ml/aml-concepts.png) vegye figyelembe, hogy képeket szeretne-e a media mappa nevét a cikk és a fájlnév megfelelő alkönyvtár együtt tárolni.
+![Ez az egy Képleírás](media/overview-what-is-azure-ml/aml-concepts.png) vegye figyelembe, hogy képeket kell legyen az a cikk, majd a fájlnevet névnek megfelelő alkönyvtárban media mappában lesz tárolva.
 
-## <a name="section-here-h2"></a>Itt H2 szakasz
-Ez a táblázat fejlécére kattintva rendezhető tartalmaz:
+## <a name="section-here-h2"></a>Itt a H2 szakasz
+Ez a tábla fejléceit rendelkezik:
 
-|Oszlop1  |Column2  |Column3  |
+|1. oszlop  |Column2  |Column3  |
 |---------|---------|---------|
-|Row1|1 érték|A érték|
-|Row2|Érték 2|B értéke|
+|Row1|1. érték|A érték|
+|Row2|2. érték|B értéke|
 |Row3|3. érték|C érték|
 
-## <a name="section-here-h2"></a>Itt H2 szakasz
-Ez az számozott lista:
+## <a name="section-here-h2"></a>Itt a H2 szakasz
+Ez a számozott lista:
 
-1. Első eleme
+1. Első elem
 
-   A bekezdés kell lennie az első számozott elemmel azonos térköz van húzva.
+   A bekezdés behúzása van ugyanazt a karakterelrendezést első számozott helyén lennie.
 
 2. Második elem
    - Ezt a mondatot egy listajele
@@ -60,18 +60,18 @@ Ez az számozott lista:
 
 3. Harmadik elem
 
-4. Oda-konfigurációelem
+4. Rögzített elem
 
 5. Ötödik elem
 
-## <a name="this-list-is-bulleted-list"></a>A lista létrehozási felsorolás:
+## <a name="this-list-is-bulleted-list"></a>Ez a lista a következő felsorolás:
 - 1. elem
 - 2. elem
 - 3. elem
-  - Alelemre 1
-  - Alelemre 2
+  - Almappát 1
+  - Almappát 2
 
 
 ## <a name="next-steps"></a>További lépések
 
-Gépi tanulás kapcsolatos információkért lásd: [egy másik cikkben](template-howto.md)
+További információ a machine learning: [egy másik cikk](template-howto.md)

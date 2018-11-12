@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 4c60474c07a3853e409436359713578178b639fb
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 289aa893a0ffa598d5b9fae67a81e9bf0c9782f7
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024858"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014397"
 ---
 # <a name="configure-advanced-networking-in-azure-kubernetes-service-aks"></a>Speciális hálózatkezelés konfigurálása az Azure Kubernetes Service (AKS)
 
@@ -35,12 +35,21 @@ A speciális hálózati szolgáltatással konfigurált fürtöknél szükség to
 
 IP-címek a podok és a fürtcsomópontok vannak rendelve az adott alhálózatról a virtuális hálózaton belül. Minden egyes csomópont elsődleges IP-címmel van konfigurálva. Alapértelmezés szerint 30 további IP-címek előre ütemezett a csomóponton podok rendelt Azure CNI által konfigurált. Horizontális felskálázás a fürthöz, minden egyes csomópont hasonló módon van konfigurálva az alhálózat IP-címeket. Megtekintheti a [csomópontonkénti maximális podok](#maximum-pods-per-node).
 
+> [!IMPORTANT]
+> A szükséges IP-címek száma tartalmaznia kell a frissítés és a méretezési műveletek szempontjai. Ha az IP-címtartomány csak a csomópontok rögzített számú támogatásához, nem frissítése vagy a fürt méretezése.
+>
+> - Ha Ön **frissítése** a fürtöt helyezünk üzembe az AKS-fürt, egy új csomópont. Az új csomópont futni kezdenek szolgáltatásokra és számítási feladatokra, és a egy régebbi csomópont eltávolítása a fürtből. A működés közbeni frissítés során legalább egy további blokk elérhető IP-címek igényel. A csomópontok száma van majd `n + 1`.
+>
+> - Ha Ön **méretezési** a fürtöt helyezünk üzembe egy AKS-fürtöt, egy új csomópont. Az új csomópont futni kezdenek szolgáltatásokra és számítási feladatokra. Az IP-címtartomány kell szempontokat figyelembe, hogyan érdemes vertikális felskálázás a csomópontok és a fürt támogathatja a podok számát. Frissítési műveletek eggyel több csomópontja is benne kell lennie. A csomópontok száma van majd `n + number-of-additional-scaled-nodes-you-anticipate + 1`.
+
+A csomópontok futhat a podok, maximális száma és rendszeresen megszüntetése és üzembe helyezése a podok várható, néhány további IP-címek száma csomópontonként is meg kell tényező. Ezen további IP-címek törölhető egy szolgáltatás néhány másodpercet vehet figyelembe kell venni, és az IP-címet, amely egy új szolgáltatás telepíthető, és szerezze be a címet.
+
 Az IP-cím terv az AKS-fürt tartalmaz egy virtuális hálózat, legalább egy alhálózatot a csomópontok és a podok és a egy Kubernetes-szolgáltatás-címtartományt.
 
 | Címtartomány / Azure erőforrás | Korlátok és méretezés |
 | --------- | ------------- |
 | Virtuális hálózat | Az Azure virtuális hálózat /8 méretűek is lehetnek, de legfeljebb 65 536 IP-címeit. |
-| Alhálózat | Elég nagy a csomópontok, a podok és a Kubernetes és az Azure-erőforrások, előfordulhat, hogy építhető ki a fürtben kell lennie. Például ha telepít egy belső Azure Load Balancert, az előtérbeli IP-címek vannak lefoglalva a fürt alhálózatról, nem a nyilvános IP-címek. <p/>Kiszámításához *minimális* alhálózat mérete: `(number of nodes) + (number of nodes * maximum pods per node that you configure)` <p/>Példa egy 50 csomópontot tartalmazó fürtben: `(50) + (50 * 30 (default)) = 1,550` (/ 21, vagy nagyobb)<p>Ha nem ad meg podok csomópontonkénti maximális számát, a fürt létrehozásakor, a podok csomópontonkénti maximális számát értéke *30*. IP-címek szükséges minimális száma, hogy az értéken alapul. A minimális IP-követelményei az egy másik maximális értéket számít, ha [podok csomópontonkénti maximális számának konfigurálása](#configure-maximum---new-clusters) a beállítás a fürt telepítésekor. |
+| Alhálózat | Elég nagy a csomópontok, a podok és a Kubernetes és az Azure-erőforrások, előfordulhat, hogy építhető ki a fürtben kell lennie. Például ha telepít egy belső Azure Load Balancert, az előtérbeli IP-címek vannak lefoglalva a fürt alhálózatról, nem a nyilvános IP-címek. Az alhálózat méretét is kell venniük fiók frissítési műveleteket, illetve a jövőbeli skálázási igényeinek.<p />Kiszámítása a *minimális* alhálózat méretét, beleértve a frissítési műveletek egy másik csomópontjára: `(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)`<p/>Példa egy 50 csomópontot tartalmazó fürtben: `(51) + (51  * 30 (default)) = 1,581` (/ 21, vagy nagyobb)<p/>Példa egy 50 csomópontot tartalmazó fürt vertikális felskálázása további 10-csomópontok üzembe helyezése is tartalmazó: `(61) + (61 * 30 (default)) = 2,440` (/ 20, vagy nagyobb)<p>Ha nem ad meg podok csomópontonkénti maximális számát, a fürt létrehozásakor, a podok csomópontonkénti maximális számát értéke *30*. IP-címek szükséges minimális száma, hogy az értéken alapul. A minimális IP-követelményei az egy másik maximális értéket számít, ha [podok csomópontonkénti maximális számának konfigurálása](#configure-maximum---new-clusters) a beállítás a fürt telepítésekor. |
 | Kubernetes szolgáltatás címtartomány | Ezt a tartományt nem szabad a bármely hálózati elem által használt vagy a virtuális hálózathoz csatlakozik. Szolgáltatás címének CIDR /12 kisebbnek kell lennie. |
 | Kubernetes DNS szolgáltatás IP-címe | IP-címnek a Kubernetes-címtartományt, amely a fürtszolgáltatás felderítése (kube-dns) által használt szolgáltatás. |
 | Docker híd címe | IP-címet (a CIDR-jelölés) használja a Docker-hidat, IP-cím csomópontokon. Alapértelmezés szerint 172.17.0.1/16. |
@@ -51,7 +60,7 @@ Podok száma csomópontonként az AKS-fürtben legfeljebb 110. A *alapértelmeze
 
 | Az üzembe helyezési módszer | Alapszintű alapértelmezett | Speciális alapértelmezett | Üzembe helyezés konfigurálhatók |
 | -- | :--: | :--: | -- |
-| Azure CLI | 110 | 30 | Igen (legfeljebb 110) |
+| Azure parancssori felület (CLI) | 110 | 30 | Igen (legfeljebb 110) |
 | Resource Manager-sablon | 110 | 30 | Igen (legfeljebb 110) |
 | Portál | 110 | 30 | Nem |
 
@@ -73,7 +82,7 @@ AKS-fürt létrehozásakor konfigurálható speciális hálózati a következő 
 
 **Virtuális hálózat**: A virtuális hálózatot, amelybe át szeretné a Kubernetes-fürt üzembe helyezéséhez. Ha azt szeretné, a fürt számára egy új virtuális hálózat létrehozásához, válassza ki a *új létrehozása* kövesse a lépéseket a *virtuális hálózat létrehozása* szakaszban. További információ a korlátok és kvóták az Azure-beli virtuális hálózathoz: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
 
-**Alhálózat**: az alhálózaton, ahol szeretné a fürt üzembe helyezése virtuális hálózaton belül. Ha azt szeretné, hozzon létre egy új alhálózatot a virtuális hálózat a fürt számára, válassza *új létrehozása* kövesse a lépéseket a *alhálózat létrehozásához* szakaszban.
+**Alhálózat**: az alhálózaton, ahol szeretné a fürt üzembe helyezése virtuális hálózaton belül. Ha azt szeretné, hozzon létre egy új alhálózatot a virtuális hálózat a fürt számára, válassza *új létrehozása* kövesse a lépéseket a *alhálózat létrehozásához* szakaszban. A hibrid kapcsolatot a címtartomány nem a környezetben lévő más virtuális hálózatok átfedésben.
 
 **Kubernetes szolgáltatás címtartomány**: Ez a Kubernetes rendel a virtuális IP-címek készletét [szolgáltatások] [ services] a fürtben. Használhatja bármely magánhálózati címtartomány, amely eleget tesz a következő követelményeknek:
 

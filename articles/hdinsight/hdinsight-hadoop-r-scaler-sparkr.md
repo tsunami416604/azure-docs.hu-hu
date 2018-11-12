@@ -2,18 +2,18 @@
 title: ScaleR és SparkR használata Azure HDInsight
 description: ScaleR és SparkR használata a HDInsight Machine Learning-szolgáltatások
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: c59ac5efab8b46463f97c375d999a131667d3cea
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: da486b25a9a35cb4f00d6e5a4689d5be3d270e36
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699549"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51013275"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>ScaleR és SparkR a HDInsight egyesítése
 
@@ -529,7 +529,7 @@ elapsed <- (proc.time() - t0)[3]
 logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 ```
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ez a cikk mutattuk be, hogyan kombinálhatók az adatkezelés a ScaleR modell fejlesztéséhez, a Hadoop Spark SparkR használata lehetőség. Ehhez a forgatókönyvhöz szükséges, hogy karbantartása külön Spark-munkameneteket, csak egy időben futnak egy munkamenetet, és exchange-adatok CSV-fájlok használatával. Bár ez egyszerűnek tűnik, ez a folyamat lehet még egyszerűbbé teszi a Machine Learning Services egy soron következő kiadásban SparkR és ScaleR is megosztani egy Spark-munkamenetet, és így a Spark DataFrames megosztása.
 

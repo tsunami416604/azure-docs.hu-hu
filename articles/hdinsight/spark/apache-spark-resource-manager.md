@@ -2,19 +2,19 @@
 title: Az Azure HDInsight az Apache Spark-fürt erőforrásainak kezelése
 description: Ismerje meg, hogyan használható a jobb teljesítmény érdekében az Azure HDInsight Spark-fürtök erőforrásainak kezelése.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.author: jasonh
-ms.openlocfilehash: d7395231662d79d284bdf061e651602dea392c28
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: 166d52322504e57e01a4bd798252fc956c1a3e44
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051498"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014584"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Az Azure HDInsight az Apache Spark-fürt erőforrásainak kezelése 
 
@@ -76,7 +76,7 @@ A három kvórumbeállítási mód paraméterek (az összes alkalmazáshoz a fü
 2. Az alapértelmezett értékei négy Spark-alkalmazások egyidejű futtatását a fürt rendelkezik a megfelelő. Ezeket az értékeket módosíthatja a felhasználói felületen, az alábbi képernyőképen látható módon:
 
     ![Az Ambari paramétereinek megadása](./media/apache-spark-resource-manager/set-executor-parameters.png)
-3. Kattintson a **mentése** konfiguráció módosításainak mentéséhez. Az oldal tetején lévő kéri, indítsa újra az érintett szolgáltatásokat. Kattintson a **indítsa újra a**.
+3. Kattintson a **mentése** konfiguráció módosításainak mentéséhez. Az oldal tetején lévő kéri, indítsa újra az érintett szolgáltatásokat. Kattintson a **Restart** (Újraindítás) elemre.
 
     ![Szolgáltatások újraindítása](./media/apache-spark-resource-manager/restart-services.png)
 

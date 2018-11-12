@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: d1c5c9a8709467c9f9ca87c841cffcf77a5b5f0b
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
-ms.translationtype: HT
+ms.openlocfilehash: e765739384aa7d18b95394cb0a9b2b6748174e7c
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219891"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51525651"
 ---
 <a name="virtual-networking-limits-classic"></a>Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése előfizetésenként, a klasszikus üzemi modellel történik. Ismerje meg, hogyan [megtekintheti az aktuális erőforrás-használat elleni az előfizetési korlátok](../articles/networking/check-usage-against-limits.md).
 
@@ -45,7 +45,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Virtuális hálózatok |1000 |
 | Alhálózatok száma virtuális hálózatonként |3000 |
 | Virtuális hálózati társviszony-létesítések száma virtuális hálózatonként |100 |
-| DNS-kiszolgálók száma virtuális hálózatonként |25 |
+| DNS-kiszolgálók száma virtuális hálózatonként |20 |
 | Magánhálózati IP-címek száma virtuális hálózatonként |a 65536 értékű |
 | Magánhálózati IP-címek száma hálózati adapterenként |256 |
 | Egyidejű TCP vagy UDP-folyamatok egy virtuális gép vagy szerepkörpéldány adapterenként |500 000 |

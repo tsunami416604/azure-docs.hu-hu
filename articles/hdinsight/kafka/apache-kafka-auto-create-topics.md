@@ -2,18 +2,18 @@
 title: Az Apache kafka platformmal – Azure HDInsight automatikus témakör-létrehozás engedélyezése
 description: Ismerje meg, hogyan konfigurálhatja az Apache Kafka HDInsight automatikusan létrehozza a témakörök. A Kafka konfigurálhatja úgy, hogy igaz ambarival, vagy a PowerShell vagy a Resource Manager-sablonokkal a fürt létrehozásakor auto.create.topics.enable.
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.openlocfilehash: f187991b1ff128a45845c2096928945722a9ae6a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 65dd4b172c0913e11bb7f25909eb062e93a4a03a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618269"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015230"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Az Apache Kafka HDInsight automatikusan létrehozza a témakörök konfigurálása
 
@@ -58,7 +58,7 @@ Az Ambari webes felhasználói felületen keresztül meglévő fürt automatikus
 > [!NOTE]
 > Ambari-értékek az Ambari REST API-n keresztül is beállíthatja. Ez a lehetőség általában sokkal nehezebb, hogy több REST-hívást a jelenlegi konfiguráció lekérése, módosítsa azt, és így tovább. További információkért lásd: a [kezelése a HDInsight-fürtök az Ambari REST API használatával](../hdinsight-hadoop-manage-ambari-rest-api.md) dokumentumot.
 
-## <a name="resource-manager-templates"></a>Resource Manager-sablonok
+## <a name="resource-manager-templates"></a>Erőforrás-kezelői sablonok
 
 Egy Azure Resource Manager-sablon használatával a Kafka-fürt létrehozásakor is közvetlenül megadhatja a `auto.create.topics.enable` hozzáadásával a egy `kafka-broker`. Az alábbi JSON-kódrészlet bemutatja, hogyan lehet ez az érték `true`:
 

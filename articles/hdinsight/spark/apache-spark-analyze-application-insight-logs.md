@@ -2,19 +2,19 @@
 title: Application Insights-naplók elemzése a Spark – Azure HDInsight segítségével
 description: Ismerje meg, hogyan exportálhatja a blob storage-ban, és ezután a-naplók elemzése a Spark on HDInsight az Application Insights-naplókat.
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.openlocfilehash: 51123fee9a3ab3c79e57af12a64e1c0b05daf79a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a1b21afb02cffe608ece8687359a021c84b05e1e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041605"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014295"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-spark-on-hdinsight"></a>Az Application Insights-telemetrianaplók elemzése a Spark on HDInsight
 
@@ -45,7 +45,7 @@ Az alábbi ábra az ebben a példában a service-architektúra:
 
 ![ábra, amely az Application Insights szolgáltatásból a blob storage, adatátvitel, és a Spark on HDInsight által feldolgozott azt](./media/apache-spark-analyze-application-insight-logs/appinsightshdinsight.png)
 
-### <a name="azure-storage"></a>Azure Storage tárterület
+### <a name="azure-storage"></a>Azure Storage
 
 Az Application Insights beállítható úgy, hogy folyamatosan exportálhatja a blobokhoz telemetrikus adatokat. HDInsight el tudja olvasni a blobokban tárolt adatokat. Vannak azonban bizonyos követelményeknek, figyelembe kell venni:
 

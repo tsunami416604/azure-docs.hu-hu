@@ -8,12 +8,12 @@ ms.author: tanmayb
 ms.date: 10/29/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 5db215a3bf87ac42ac832a59ce39f7e72c45527f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: dbc72e040f3d68ca77c036c41612f57616d1e74e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963353"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016828"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Egy CSP-hez hozzon létre, és az ügyfél nevében egy Azure IoT központi alkalmazás kezelése 
 
@@ -29,7 +29,7 @@ Az Azure IoT Central felügyeletére a szolgáltatásként jelenik meg. Kattints
 
 ![Segítségével kezelheti az Azure IoT Central](media\howto-create-application-asCSP\image2.png)
 
-Az Azure IoT központi alkalmazás-kezelő lap megjelenni. Az Azure IoT Central tartja a környezetet, hogy honnan származnak a Microsoft Partner Centeren és honnan vevőt kezeléséhez. Ez arra vonatkozik, az alkalmazás-kezelő lap fejlécében megjelenik. Itt választhatja egy meglévő alkalmazás korábban hozta létre az ügyfélhez kezelheti, vagy hozzon létre egy új alkalmazást az ügyfél lépjen.
+Az Azure IoT központi alkalmazás-kezelő lap megjelenni. Az Azure IoT Central tartja a környezetet, hogy honnan származnak a Microsoft Partner Centeren és honnan vevőt kezeléséhez. Ez arra vonatkozik, az alkalmazás-kezelő lap fejlécében megjelenik. Itt akár navigálhat egy korábban az ügyfélhez kezeléséhez, vagy hozzon létre egy új alkalmazást az ügyfél korábban létrehozott meglévő alkalmazáshoz.
 
 ![Hozzon létre a CSP-kezelője](media\howto-create-application-asCSP\image3.png)
 
@@ -51,9 +51,9 @@ Az alkalmazás neve jelenik meg a **alkalmazáskezelő** lapot, és minden egyes
 
 Az alkalmazás URL-je a hivatkozásra kattintva az alkalmazás. A böngészőben szeretné menteni a könyvjelzőt, vagy ossza meg másokkal.
 
-Ad meg a nevet az alkalmazásnak, amikor az alkalmazás URL-címe, automatikusan létrehozott. Igény szerint választhat egy másik URL-címet az alkalmazás. Minden egyes Azure IoT Central URL-cím az Azure IoT Central belül egyedinek kell lennie. Akkor egy hibaüzenet jelenik meg, ha úgy dönt, az URL-cím már foglalt.
+Adja meg a nevet az alkalmazásnak az alkalmazás URL-címe esetén automatikusan létrehozott. Igény szerint választhat egy másik URL-címet az alkalmazás. Minden egyes Azure IoT Central URL-cím az Azure IoT Central belül egyedinek kell lennie. Akkor egy hibaüzenet jelenik meg, ha úgy dönt, az URL-cím már foglalt.
 
-## <a name="directory"></a>Címtár
+## <a name="directory"></a>Könyvtár
 
 Mivel az Azure IoT Central kezelheti a kiválasztott a Microsoft Partner portál ügyfél tartalomcsomagokból környezet rendelkezik, csak az Azure Active Directory-bérlő a Directory mezőben adott ügyfélhez tartozó láthatja. 
 
@@ -69,7 +69,7 @@ Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egyet a Microsoft Partner
 
 További tudnivalókért lásd: [Azure-előfizetések](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing).
 
-## <a name="region"></a>Régió
+## <a name="region"></a>Region (Régió)
 
 Válassza ki a régiót, ahol szeretné az Azure IoT központi alkalmazás létrehozása. Általában a fizikailag az optimális teljesítmény eléréséhez az eszközök legközelebb eső régiót kell választania.
 

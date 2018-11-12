@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: be2fd826ffa658ec04bd937036e37bf55cbf65a4
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 96163188fad464bc4b94457f7061a78b3f4997a9
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964135"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014499"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optimalizálhatja a környezetet SQL az SQL Server állapotának ellenőrzése megoldás a Log Analyticsben
 
@@ -184,7 +184,7 @@ Ha javaslatoknál, amelyeket figyelmen kívül kívánja, létrehozhat egy szöv
     ```
 
     >[!NOTE]
-    > Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](log-analytics-log-search.md), akkor a fenti lekérdezés módosulnak az alábbiak.
+    > Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](log-analytics-queries.md), akkor a fenti lekérdezés módosulnak az alábbiak.
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -209,7 +209,7 @@ Ha javaslatoknál, amelyeket figyelmen kívül kívánja, létrehozhat egy szöv
     ```
 
     >[!NOTE]
-    > Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](log-analytics-log-search.md), akkor a fenti lekérdezés módosulnak az alábbiak.
+    > Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](log-analytics-queries.md), akkor a fenti lekérdezés módosulnak az alábbiak.
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -265,4 +265,4 @@ Ha javaslatoknál, amelyeket figyelmen kívül kívánja, létrehozhat egy szöv
 * Igen, tekintse meg [figyelmen kívül hagyja a javaslatok](#ignore-recommendations) című fenti szakaszban.
 
 ## <a name="next-steps"></a>További lépések
-* [Naplók keresése](log-analytics-log-search.md) megtudhatja, hogyan elemezhet SQL állapotának ellenőrzése a részletes adatok és javaslatok.
+* [Naplók keresése](log-analytics-queries.md) megtudhatja, hogyan elemezhet SQL állapotának ellenőrzése a részletes adatok és javaslatok.

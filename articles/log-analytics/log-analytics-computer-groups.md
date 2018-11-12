@@ -15,29 +15,29 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: bb95caf7f50b52d2c423de31d4fda701f4c16b40
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f96d18c2e1a00008f2e391302a41d145d6b47efd
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963764"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016605"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Számítógépcsoportok a Log Analytics naplóbeli kereséseivel
 
-A Log Analytics számítógépcsoportjaival lehetővé teszi a hatókör [naplókereséseket](log-analytics-log-search.md) a számítógépek egy adott készletét.  Minden csoport fel van töltve, vagy az Ön által meghatározott lekérdezés segítségével számítógépek vagy csoportok különböző forrásokból származó importálásával.  A csoport szerepel egy Naplókeresés, amikor az eredmények korlátozódnak, amelyek megfelelnek a számítógépek a csoportban lévő rekordok.
+A Log Analytics számítógépcsoportjaival lehetővé teszi a hatókör [naplókereséseket](log-analytics-queries.md) a számítógépek egy adott készletét.  Minden csoport fel van töltve, vagy az Ön által meghatározott lekérdezés segítségével számítógépek vagy csoportok különböző forrásokból származó importálásával.  A csoport szerepel egy Naplókeresés, amikor az eredmények korlátozódnak, amelyek megfelelnek a számítógépek a csoportban lévő rekordok.
 
 ## <a name="creating-a-computer-group"></a>Számítógépcsoport létrehozása
 Létrehozhat egy számítógépcsoportot a Log Analytics az alábbi táblázatban a módszerek bármelyikével.  Részletek az egyes módszerek az alábbi szakaszokban találhatók. 
 
 | Módszer | Leírás |
 |:--- |:--- |
-| Naplókeresés |Hozzon létre egy naplókeresést, amely a számítógépek listáját adja vissza. |
-| Log Search API |A Log Search API használatával programozott módon létrehozhat egy Naplókeresés eredménye alapján számítógép csoport. |
+| Naplók keresése |Hozzon létre egy naplókeresést, amely a számítógépek listáját adja vissza. |
+| Naplókeresési API |A Log Search API használatával programozott módon létrehozhat egy Naplókeresés eredménye alapján számítógép csoport. |
 | Active Directory |Automatikus vizsgálatokat végez a csoport tagságát, minden olyan ügynököt futtató számítógépek, amelyek az Active Directory-tartomány tagja, és hozzon létre egy csoportot a Log Analytics az egyes biztonsági csoportokhoz. |
 | Configuration Manager | Gyűjtemények importálása a System Center Configuration Managerben, és hozzon létre egy csoportot a Log Analytics az egyes. |
 | A Windows Server Update Services |Automatikus csoportok célzó WSUS-kiszolgálók vagy az ügyfelek keresése, és hozzon létre egy csoportot a Log Analytics az egyes. |
 
-### <a name="log-search"></a>Naplókeresés
+### <a name="log-search"></a>Naplók keresése
 Naplókeresés létre számítógépcsoportokat tartalmaz minden Ön által meghatározott lekérdezés által visszaadott számítógépek.  Ez a lekérdezés futtatása minden alkalommal, amikor a számítógép (csoport) használja úgy, hogy a csoport létrehozása óta módosítások is megjelenik.  
 
 Minden lekérdezés egy számítógép (csoport) is használhat, de egy különálló számítógépek csoportja használatával kell visszaadnia `distinct Computer`.  Következő sikerült használhat olyan számítógépcsoportként jellemző példa keresés.
@@ -48,7 +48,7 @@ A következő táblázat ismerteti, amelyek meghatározzák egy számítógép (
 
 | Tulajdonság | Leírás |
 |:---|:---|
-| Megjelenítendő név   | A Keresés a portálon megjelenítendő neve. |
+| Megjelenített név   | A Keresés a portálon megjelenítendő neve. |
 | Kategória       | A keresések a portálon rendszerezéséhez kategória. |
 | Lekérdezés          | A lekérdezés a számítógép (csoport). |
 | Függvényalias | A számítógépcsoport-lekérdezés azonosítására használt egyedi nevet. |
@@ -125,9 +125,9 @@ Egy rekord jön létre minden egyes létrehozott Active Directory vagy a WSUS sz
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Típus |*ComputerGroup* |
+| Type (Típus) |*ComputerGroup* |
 | SourceSystem |*SourceSystem* |
-| Computer |A számítógép neve. |
+| Számítógép |A számítógép neve. |
 | Csoport |A csoport nevét. |
 | GroupFullName |Teljes elérési útja a csoporthoz, többek között a forrás- és adatforrás neve. |
 | GroupSource |Forrás-csoporthoz való gyűjtése történt. <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |
@@ -136,5 +136,5 @@ Egy rekord jön létre minden egyes létrehozott Active Directory vagy a WSUS sz
 | TimeGenerated |Dátum és időpont a számítógép (csoport) létrehozott vagy frissített. |
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [naplókereséseket](log-analytics-log-search.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
+* Ismerje meg [naplókereséseket](log-analytics-queries.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: d86a4de5f54d0c1c492fa17081623366692712af
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c6206d4aa98ab3c9744f1f82840817b4bdb000ef
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959783"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016335"
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>Az Automation-Runbook egy naplót a Log Analytics keresési eredmény művelet végrehajtása
 
@@ -32,7 +32,7 @@ A napló keresési eredmény az Azure Log Analyticsben, mostantól kiválaszthat
 
 ## <a name="to-initiate-runbook-from-log-search"></a>A naplóbeli keresés runbook kezdeményezése
 
-A művelet végrehajtása a egy eseményt, és a egy runbookot, a napló keresési eredmények között, első lépésként létrehozni egy naplókeresést, és az eredmények közül egy runbook igény szerinti hívhatók meg.  Ez a napló keresési funkciója érhető el a [az Azure portal](log-analytics-log-search.md).  Ebben a példában egy Naplókeresés Ez a funkció az alapszintű bemutatója az Azure Portalról elvégzése.
+A művelet végrehajtása a egy eseményt, és a egy runbookot, a napló keresési eredmények között, első lépésként létrehozni egy naplókeresést, és az eredmények közül egy runbook igény szerinti hívhatók meg.  Ez a napló keresési funkciója érhető el a [az Azure portal](log-analytics-queries.md).  Ebben a példában egy Naplókeresés Ez a funkció az alapszintű bemutatója az Azure Portalról elvégzése.
 
 1. Az Azure Portalon kattintson a **minden szolgáltatás** válassza **Log Analytics**.  
 2. Válassza ki a Log Analytics-munkaterületre.
@@ -51,5 +51,5 @@ Ha kiválaszt egy runbookot, amely úgy lett konfigurálva, hogy [nevű Log Anal
     
 ## <a name="next-steps"></a>További lépések
 
-* Tekintse át a [Log Analytics naplóbeli keresési referencia](log-analytics-log-search.md) megtekintéséhez az összes keresési mezők és elérhető a Log Analytics metszettel.
+* Tekintse át a [Log Analytics naplóbeli keresési referencia](log-analytics-queries.md) megtekintéséhez az összes keresési mezők és elérhető a Log Analytics metszettel.
 * Megtudhatja, hogyan lehet Automation-runbook hívása automatikusan, tekintse át a [egy Azure Automation-runbook hívása Log Analytics-riasztásokból](../automation/automation-create-alert-triggered-runbook.md).  

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/05/2018
 ms.author: raynew
-ms.openlocfilehash: b472ed1c32e64b8f8ac881c09f22590c49f39c75
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 076cd987cdc74cad07287c15ad52394ef304f251
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215361"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015366"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-támogatási mátrixa
 
@@ -29,7 +29,7 @@ Fizikai kiszolgálók | A helyszíni Windows/Linux fizikai kiszolgálók Azure-b
 
 ## <a name="on-premises-virtualization-servers"></a>A helyszíni virtualizálási kiszolgálók
 
-**Kiszolgáló** | **Követelmények** | **Részletek**
+**Server** | **Követelmények** | **Részletek**
 --- | --- | ---
 VMware | vCenter Server 6.7, 6.5-ös, 6.0 vagy 5.5-ös vagy vSphere 6.7, 6.5-ös, 6.0 vagy 5.5 | Azt javasoljuk, hogy a vCenter-kiszolgáló használja.<br/><br/> Azt javasoljuk, hogy a vSphere-gazdagépek és vCenter-kiszolgálók található-e a folyamatkiszolgáló ugyanazon a hálózaton. Alapértelmezés szerint a folyamat kiszolgáló-összetevők fut a konfigurációs kiszolgálón, így ez lesz a hálózatot, amelyben állítsa be a konfigurációs kiszolgálót, kivéve, ha dedikált kiszolgáló beállításához.
 Fizikai | –
@@ -63,16 +63,9 @@ A Site Recovery támogatja az egy támogatott gépen futó bármilyen számítá
 --- | ---
 Gép beállításai | Az Azure-bA replikált gépek meg kell felelnie [Azure-követelmények](#azure-vm-requirements).
 Windows operációs rendszer | 64 bites Windows Server 2016 (Server Core, kiszolgáló asztali kezelőfelülettel), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2, legalább SP1. </br></br>  [A Windows Server 2008, legalább SP2 – 32 bites és 64 bites](migrate-tutorial-windows-server-2008.md) (csak a migrálás). </br></br> Windows 2016 Nano Server nem támogatott.
-Linux operációs rendszer | Red Hat Enterprise Linux: 5.2 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0-ban való 7.5 <br/><br/>CentOS: 5.2 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0-ban való 7.5 <br/><br/>Ubuntu 14.04 LTS server[ (támogatott kernel-verzióknál)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS server[ (támogatott kernel-verzióknál)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (támogatott kernel-verzióknál)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1, SP2 SP3 [ (támogatott kernel-verzióknál)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, SUSE Linux Enterprise Server 11 SP4 * </br></br>Oracle Linux 6.4, 6.5, 6.6, a Red Hat-kompatibilis kernel vagy a szoros vállalati Kernel kiadási 3 (UEK3) 6.7 <br/><br/></br>* *Replikált gépek frissítése az SUSE Linux Enterprise Server 11 SP3 SP4 szervizcsomag nem támogatott. Szeretné frissíteni, tiltsa le a replikációt, és engedélyezze újra a frissítés után.*</br></br><b>\*\*</b> *Tekintse meg [támogatja a Linux rendszerű virtuális gépek az Azure-ban](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) tudni, hogy Linux- és az Azure-ban nyílt forráskódú technológia támogatása. Az Azure Site Recovery feladatátvételi teszi lehetővé, és futtassa a Linux-kiszolgálók az Azure-ban, azonban Linux-szállítók korlátozhatja csak verziókat, azok elosztásának, amely nem éri el életciklusának vége a támogatási.*
+Linux operációs rendszer | Red Hat Enterprise Linux: 5.2 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0-ban való 7.5 <br/><br/>CentOS: 5.2 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0-ban való 7.5 <br/><br/>Ubuntu 14.04 LTS server[ (támogatott kernel-verzióknál)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS server[ (támogatott kernel-verzióknál)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (támogatott kernel-verzióknál)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1, SP2 SP3 [ (támogatott kernel-verzióknál)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, SUSE Linux Enterprise Server 11 SP4 * </br></br>Oracle Linux 6.4, 6.5, 6.6, a Red Hat-kompatibilis kernel vagy a szoros vállalati Kernel kiadási 3 (UEK3) 6.7 <br/><br/></br>– A replikált gépek SUSE Linux Enterprise Server 11 SP3 rendszerről történő SP4 szervizcsomag nem támogatott. Szeretné frissíteni, tiltsa le a replikációt, és engedélyezze újra a frissítés után.</br></br> - [További](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) Linux- és az Azure-ban nyílt forráskódú technológia támogatása. A Site Recovery koordinálja a feladatátvétel futtatása a Linux-kiszolgálók az Azure-ban. Linux-szállítók azonban csak a teljes életciklusa még nem értek el terjesztési verziók támogatási előfordulhat, hogy korlátozza.<br/><br/> – A Linux-disztribúció csak a tőzsdei kernelekkel, amelyek részei a terjesztési alverzió kiadási/frissítés támogatottak.<br/><br/> -Frissítése a védett számítógépek között jelentős Linux terjesztési verziója nem támogatott. Szeretné frissíteni, tiltsa le a replikációt, és frissítse az operációs rendszert, majd újból engedélyezze a replikációt.<br/><br/> – Red Hat Enterprise Linux 5.2-5.11 vagy CentOS 5.2-5.11 operációs rendszert futtató kiszolgálókat kell rendelkeznie a [Linux Integration Services (LIS) összetevők](https://www.microsoft.com/download/details.aspx?id=55106) telepítve van a gépek Azure-ban.
 
 
->[!NOTE]
->
-> - A Linux-disztribúció csak a tőzsdei kernelekkel, amelyek részei a terjesztési alverzió kiadási/frissítés támogatottak.
->
-> - Frissíti a védett számítógépek közötti fő Linux terjesztési verziója nem támogatott. Szeretné frissíteni, tiltsa le a replikációt, és frissítse az operációs rendszert, majd újból engedélyezze a replikációt.
->
-> - Red Hat Enterprise Linux 5.2 futtató 5.11 vagy CentOS 5.2 a 5.11 kiszolgálók kell rendelkeznie a [Services(LIS) a Linux Integration components](https://www.microsoft.com/en-us/download/details.aspx?id=55106) ahhoz, hogy a gépek Azure-ban telepítve.
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu kernel-verzióknál
 
@@ -129,7 +122,7 @@ XFSv5 | XFSv5 funkcióinak XFS fájlrendszereket, metaadatok ellenőrzőösszeg,
 A replikált virtuális gép lemez átméretezése | Támogatott.
 Lemez hozzáadása a replikált virtuális Gépen | Tiltsa le a replikációt a virtuális gép, és a lemezt adja hozzá a majd újraengedélyezni replikációs. Lemez hozzáadása egy replikáló gépen jelenleg nem támogatott.
 
-## <a name="network"></a>Network (Hálózat)
+## <a name="network"></a>Hálózat
 
 **Összetevő** | **Támogatott**
 --- | ---
@@ -160,7 +153,7 @@ Forrás IP-cím megőrzése | Igen
 Az Azure virtuális hálózati Szolgáltatásvégpontok<br/> (nem Azure Storage-tűzfalak) | Igen
 Gyorsított hálózatkezelés | Nem
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárhely
 **Összetevő** | **Támogatott**
 --- | ---
 Gazdagép NFS | Igen: VMware-ről<br/><br/> Nincs a fizikai kiszolgálók számára
@@ -192,7 +185,7 @@ Vendég-kiszolgáló többutas (MPIO) | Nem
 > - A mobilitási szolgáltatás 9.13 vagy újabb verziójára van szükség.
 > - Fizikai kiszolgálók esetében nem támogatott.
 
-## <a name="azure-storage"></a>Azure Storage tárterület
+## <a name="azure-storage"></a>Azure Storage
 
 **Összetevő** | **Támogatott**
 --- | ---
@@ -214,7 +207,7 @@ A cél tárolási illetve gyorsítótárfiók (replikációs adatainak tárolás
 --- | ---
 Rendelkezésre állási csoportok | Igen
 HUB | Igen
-Felügyelt lemezek | Igen
+Managed Disks | Igen
 
 ## <a name="azure-vm-requirements"></a>Azure Virtuálisgép-követelmények
 
@@ -232,7 +225,7 @@ Hálózati adapterek | Több adapter támogatott. |
 Megosztott VHD | Nem támogatott. | Az ellenőrzés sikertelen, ha nem támogatott.
 FC-lemez | Nem támogatott. | Az ellenőrzés sikertelen, ha nem támogatott.
 BitLocker | Nem támogatott. | A BitLocker az adott gép replikálását engedélyezése előtt le kell tiltani. |
-a virtuális gép neve | 1 és 63 karakternél.<br/><br/> Csak betűket, számokat és kötőjelet tartalmazhat.<br/><br/> A gép nevét kell kezdődnie, és betűvel vagy számmal végződhet. |  Frissítse az értéket a Site Recovery virtuálisgép-tulajdonságokat.
+Virtuális gép neve | 1 és 63 karakternél.<br/><br/> Csak betűket, számokat és kötőjelet tartalmazhat.<br/><br/> A gép nevét kell kezdődnie, és betűvel vagy számmal végződhet. |  Frissítse az értéket a Site Recovery virtuálisgép-tulajdonságokat.
 
 
 ## <a name="vault-tasks"></a>Tároló-feladatok
@@ -249,7 +242,7 @@ Tárolás, hálózat, Azure-beli virtuális gépek erőforráscsoportok között
 --- | --- | --- | --- | ---
 Konfigurációs kiszolgáló | Koordinálja a helyszíni VMware-kiszolgálók és Azure közötti kommunikációt <br/><br/> A helyszíni VMware-kiszolgálók telepítése | Kattintson a friss telepítés helyett, [Itt](vmware-azure-deploy-configuration-server.md). Meglévő összetevő legújabb verziójára való frissítését, kattintson a [Itt](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
 Folyamatkiszolgáló|Alapértelmezés szerint telepítve van a konfigurációs kiszolgálón. Ez fogadja a replikált adatokat; gyorsítótárazás, tömörítés és titkosítással optimalizálja őket és elküldi azt az Azure Storage. Az üzembe helyezés növekedésével további, külön folyamatkiszolgálók nagyobb mértékű replikációs forgalom kezelésére is hozzáadhat.| Kattintson a friss telepítés helyett, [Itt](vmware-azure-set-up-process-server-scale.md). Meglévő összetevő legújabb verziójára való frissítését, kattintson a [Itt](vmware-azure-manage-process-server.md#upgrade-a-process-server).
-A mobilitási szolgáltatás | Koordinálja a helyszíni VMware-kiszolgálók/fizikai kiszolgálók és az Azure és a másodlagos hely közötti replikáció<br/><br/> A VMware virtuális gépek vagy fizikai kiszolgálókat szeretne replikálni telepítve | Kattintson a friss telepítés helyett, [Itt](vmware-azure-install-mobility-service.md). Meglévő összetevő legújabb verziójára való frissítését, kattintson a [Itt](vmware-azure-install-mobility-service.md#update-mobility-service).
+A mobilitási szolgáltatás | Koordinálja a helyszíni VMware-kiszolgálók/fizikai kiszolgálók és az Azure és a másodlagos hely közötti replikáció<br/><br/> A VMware virtuális gépek vagy fizikai kiszolgálókat szeretne replikálni telepítve | Kattintson a friss telepítés helyett, [Itt](vmware-azure-install-mobility-service.md). Meglévő összetevő legújabb verziójára való frissítését, kattintson a [Itt](vmware-physical-mobility-service-overview.md#update-the-mobility-service).
 
 A legújabb funkciókkal és javításokkal kapcsolatos további információkért kattintson [Itt](https://aka.ms/latest_asr_updates).
 

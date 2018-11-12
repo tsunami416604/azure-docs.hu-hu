@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 776033bde46f170295900d154cbbb3c7df73ab11
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: d514728b892126522a73827bb79952612f34704b
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960259"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014023"
 ---
 # <a name="data-sources-in-log-analytics"></a>A Log Analytics adatforrások
 Log Analytics gyűjti az adatokat a csatlakoztatott források, és azt a Log Analytics-munkaterületen tárolja.  Az adatok az egyes gyűjtött határozza meg azokat az adatforrásokat, konfigurálhat.  A Log Analytics Data rekordkészletet van tárolva.  Minden adatforrás egy adott típusú rekordot hoz létre a saját tulajdonságkészlettel minden típus.
@@ -34,7 +34,7 @@ Adatforrások eltérnek [felügyeleti megoldások](../monitoring/monitoring-solu
 A következő táblázat sorolja fel az adatforrásokat, amelyek jelenleg a Log Analyticsben.  Mindegyik rendelkezik egy külön cikk tárgyalja részletesen biztosítása, hogy az adatforrás mutató hivatkozást.   A módszer és a Log analyticsbe adatok gyűjtésének gyakorisága információkat is biztosít.  Használhatja az információkat ebben a cikkben, azonosíthatja a különféle elérhető megoldások és más felügyeleti megoldásokkal data flow és a kapcsolat követelményeinek megismeréséhez. Az egyes oszlopok, lásd: [felügyeleti megoldások az Azure-beli adatok gyűjtemény adatait](../monitoring/monitoring-solutions-inventory.md).
 
 
-| Adatforrás | Platform | A Microsoft-figyelőügynököt | Operations Manager-ügynök | Azure Storage tárterület | Az Operations Manager szükséges? | A felügyeleti csoport Operations Manager-ügynök adatok küldött | A gyűjtés gyakorisága |
+| Adatforrás | Platform | A Microsoft-figyelőügynököt | Operations Manager-ügynök | Azure Storage | Az Operations Manager szükséges? | A felügyeleti csoport Operations Manager-ügynök adatok küldött | A gyűjtés gyakorisága |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Egyéni naplók](log-analytics-data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | a beérkezéskor |
 | [Egyéni naplók](log-analytics-data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | a beérkezéskor |
@@ -68,5 +68,5 @@ Rekordokat a munkaterületet a Log Analytics által gyűjtött összes adat van 
 
 ## <a name="next-steps"></a>További lépések
 * Ismerje meg [megoldások](../monitoring/monitoring-solutions.md) , amelyek további funkciókkal bővítik a Log Analytics és a is gyűjthet adatokat a munkaterületre.
-* Ismerje meg [naplókereséseket](log-analytics-log-search.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
+* Ismerje meg [naplókereséseket](log-analytics-queries.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
 * Konfigurálása [riasztások](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) proaktívan értesíti az adatforrások és megoldások kritikus fontosságú adatok.

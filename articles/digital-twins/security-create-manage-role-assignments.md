@@ -1,6 +1,6 @@
 ---
-title: Eszköz csatlakoztatása az Azure digitális Ikrekhez és a hitelesítési ismertetése |} A Microsoft Docs
-description: Az Azure digitális Twins használatával csatlakozhat, és eszközök hitelesítéséhez
+title: Eszköz csatlakoztatása az Azure digitális Ikrekhez és a hitelesítési |} A Microsoft Docs
+description: Az Azure digitális Twins használatával csatlakozhat, és eszközök hitelesítéséhez.
 author: lyrana
 manager: alinast
 ms.service: digital-twins
@@ -8,28 +8,28 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: lyrana
-ms.openlocfilehash: adfb4c369ea1b324da8562a5b0b245ebdecff602
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 42c1b0fbb6d87e9ed35d4ecce3971d8512eed4d4
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324112"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012462"
 ---
-# <a name="create-and-manage-role-assignments"></a>Hozzon létre és kezelhetik a szerepkör-hozzárendeléseket
+# <a name="create-and-manage-role-assignments"></a>Szerepkör-hozzárendelések létrehozása és felügyelete
 
 Az Azure digitális Twins használ a szerepköralapú hozzáférés-vezérlés ([RBAC](./security-role-based-access-control.md)) erőforrásokhoz való hozzáférés kezelésére.
 
 Minden egyes szerepkör-hozzárendelés tartalmazza:
 
-* Egy **objektumazonosító** (egy Azure Active Directory-azonosítója, azonosítója vagy tartománynevet).
-* Egy **objektumtípus azonosítója**.
-* A **szerepkör-definíció Azonosítóját**.
-* A **terület elérési útja**.
-* (A legtöbb esetben) egy Azure Active Directory **bérlőazonosító**.
+* **Objektumazonosító**: egy Azure Active Directory-azonosítója, azonosítója vagy tartománynév
+* **Objektumtípus azonosítója**
+* **Szerepkör-definíció Azonosítóját**
+* **Terület elérési útja**
+* **Bérlőazonosító**: A legtöbb esetben egy Azure Active Directory-bérlő Azonosítóját
 
 ## <a name="role-definition-identifiers"></a>Szerepkör-definíció azonosítók
 
-Az alábbi táblázat bemutatja, mit is beszerezhetők a helyrendszer-szerepkörök API lekérdezésével:
+Az alábbi táblázat bemutatja, mit is beszerezhetők a/szerepkörök API lekérdezésével.
 
 | **Szerepkör** | **azonosító** |
 | --- | --- |
@@ -41,11 +41,11 @@ Az alábbi táblázat bemutatja, mit is beszerezhetők a helyrendszer-szerepkör
 | Felhasználó | b1ffdb77-c635-4e7e-ad25-948237d85b30 |
 | Támogatási szakértő | 6e46958b-dc62-4e7c-990c-c3da2e030969 |
 | Eszköz-telepítő | b16dd9fe-4efe-467b-8c8c-720e2ff8817c |
-| GatewayDevice | d4c69766-e9bd-4e61-BFC1-d8b6e686c7a8 |
+| Átjáróeszköz | d4c69766-e9bd-4e61-BFC1-d8b6e686c7a8 |
 
 ## <a name="supported-objectidtypes"></a>Támogatott ObjectIdTypes
 
-A támogatott `ObjectIdTypes` vannak:
+A támogatott `ObjectIdTypes`:
 
 * `UserId`
 * `DeviceId`
@@ -62,15 +62,15 @@ HTTP POST /api/v1.0/roleassignments
 
 | **Name (Név)** | **Szükséges** | **Típus** | **Leírás** |
 | --- | --- | --- | --- |
-| Szerepkör azonosítója| Igen |sztring | A szerepkör-definíció azonosítója. Szerepkör-definíciók és a azonosítókról található a rendszer API lekérdezésével. |
-| objectId | Igen |sztring | A szerepkör-hozzárendelés, amelyek a társított típusa szerint kell formázni objektum azonosítója. Az a `DomainName` ObjectId ObjectIdType, kell kezdődnie az `“@”` karakter. |
-| objectIdType | Igen |sztring | A szerepkör-hozzárendelés típusa. A következő sorokat a táblában egyikének kell lennie. |
-| tenantId | Változó | sztring |A bérlőazonosító. Nem engedélyezett a `DeviceId` és `TenantId` ObjectIdTypes. Szükséges `UserId` és `ServicePrincipalId` ObjectIdTypes. A tartománynév ObjectIdType esetén nem kötelező. |
-| elérési út * | Igen | sztring |A teljes elérési útvonal a `Space` objektum. Például: `/{Guid}/{Guid}` azonosítót a szerepkör-hozzárendelést a teljes grafikon van szüksége, adja meg a `"/"` (amely a legfelső szintű jelöli). Azonban, hogy használatával nem ajánlott, és **mindig kövesse a minimális jogosultság elvének**. |
+| Szerepkör azonosítója| Igen |Karakterlánc | A szerepkör-definíció azonosítója. Keresse meg a szerepkör-definíciók és azok azonosítók a rendszer API lekérdezésével. |
+| objectId | Igen |Karakterlánc | A szerepkör-hozzárendelés, amelyek a társított típusa szerint kell formázni objektum azonosítója. Az a `DomainName` ObjectId ObjectIdType, kell kezdődnie az `“@”` karakter. |
+| objectIdType | Igen |Karakterlánc | A szerepkör-hozzárendelés típusa. A következő sorokat a táblában egyikének kell lennie. |
+| tenantId | Változó | Karakterlánc |A bérlőazonosító. Nem engedélyezett a `DeviceId` és `TenantId` ObjectIdTypes. Szükséges `UserId` és `ServicePrincipalId` ObjectIdTypes. A tartománynév ObjectIdType esetén nem kötelező. |
+| elérési út * | Igen | Karakterlánc |A teljes elérési útvonal a `Space` objektum. Például: `/{Guid}/{Guid}`. Ha egy azonosítót a szerepkör-hozzárendelést a teljes grafikon van szüksége, adja meg `"/"`. Ezt a karaktert jelöli meg a legfelső szintű, de a használata nem ajánlott. A minimális jogosultság elvének mindig követik. |
 
 ## <a name="sample-configuration"></a>Példa konfigurációja
 
-Egy felhasználónak egy emelet egy bérlői tárhely rendszergazdai hozzáféréssel kell rendelkeznie:
+Ebben a példában egy felhasználó egy emelet egy bérlői tárhely felügyeleti hozzá kell férnie.
 
   ```JSON
     {
@@ -82,7 +82,7 @@ Egy felhasználónak egy emelet egy bérlői tárhely rendszergazdai hozzáfér�
     }
   ```
 
-Egy alkalmazás, hogy a futtatások vizsgálati eszközök és érzékelők utánzási forgatókönyvek:
+Ebben a példában az alkalmazás futása eszközeit és érzékelőit szimulálása tesztelési forgatókönyvekkel.
 
   ```JSON
     {
@@ -94,7 +94,7 @@ Egy alkalmazás, hogy a futtatások vizsgálati eszközök és érzékelők utá
     }
   ```
 
-A tartomány része minden felhasználók kapnak olvasási hozzáféréssel tárolóhelyek, érzékelők és a felhasználókat, beleértve azok megfelelő kapcsolódó objektumok:
+Egy tartomány részét képezik az összes felhasználó megkapja a tárolóhelyek eszközök, érzékelők és felhasználók számára olvasási hozzáférést. Ezt a hozzáférést a megfelelő kapcsolódó objektumokat tartalmaz.
 
   ```JSON
     {
@@ -105,7 +105,7 @@ A tartomány része minden felhasználók kapnak olvasási hozzáféréssel tár
     }
   ```
 
-Szerepkör-hozzárendelés beolvasása:
+Használat beolvasni a szerepkör-hozzárendelés beolvasása.
 
 ```plaintext
 HTTP GET /api/v1/roleassignments?path={path}
@@ -113,9 +113,9 @@ HTTP GET /api/v1/roleassignments?path={path}
 
 | **Name (Név)** | **A** | **Szükséges** |    **Típus** |  **Leírás** |
 | --- | --- | --- | --- | --- |
-| Útvonal | Útvonal | True (Igaz) | Sztring | A hely teljes elérési útja |
+| Elérési út | Elérési út | Igaz | Karakterlánc | A hely teljes elérési útja |
 
-Szerepkör-hozzárendelés törlése:
+Szerepkör-hozzárendelés törlése a törlés használatával.
 
 ```plaintext
 HTTP DELETE /api/v1/roleassignments/{id}
@@ -123,7 +123,7 @@ HTTP DELETE /api/v1/roleassignments/{id}
 
 | **Name (Név)** | **A** | **Szükséges** | **Típus** | **Leírás** |
 | --- | --- | --- | --- | --- |
-| ID (Azonosító) | Útvonal | True (Igaz) | Sztring |   Szerepkör-hozzárendelés azonosítója |
+| Azonosító | Elérési út | Igaz | Karakterlánc |   Szerepkör-hozzárendelés azonosítója |
 
 ## <a name="next-steps"></a>További lépések
 

@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 08/09/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9cd5789cd2ee6e167f3d3ed05c2fde077f7ec9a3
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 2043e0fc9fa63903073311856e7e8d31fb34c506
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344941"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015349"
 ---
 # <a name="azure-ad-b2c-requesting-access-tokens"></a>Az Azure AD B2C: Kérő hozzáférési jogkivonatok
 
-Hozzáférési jogkivonat (néven **hozzáférés\_token** a válaszok az Azure AD B2C-ből a) egy biztonsági jogkivonat erőforrások elérésére szolgál egy ügyfél által védett formája egy [az engedélyezési kiszolgáló](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-protocols#the-basics), például a webes API-t. Hozzáférési jogkivonatok jelentésekként jelennek meg [JWTs](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#types-of-tokens) az importálni kívánt erőforrás-kiszolgáló és a megadott engedélyek a kiszolgálóra vonatkozó adatokat tartalmaznak. Hívja meg az erőforrás-kiszolgáló, ha a hozzáférési jogkivonatot a HTTP-kérelem jelen kell lennie.
+Hozzáférési jogkivonat (néven **hozzáférés\_token** a válaszok az Azure AD B2C-ből a) egy biztonsági jogkivonat erőforrások elérésére szolgál egy ügyfél által védett formája egy [az engedélyezési kiszolgáló](active-directory-b2c-reference-protocols.md), például a webes API-t. Hozzáférési jogkivonatok jelentésekként jelennek meg [JWTs](active-directory-b2c-reference-tokens.md) az importálni kívánt erőforrás-kiszolgáló és a megadott engedélyek a kiszolgálóra vonatkozó adatokat tartalmaznak. Hívja meg az erőforrás-kiszolgáló, ha a hozzáférési jogkivonatot a HTTP-kérelem jelen kell lennie.
 
 Ez a cikk bemutatja, miként ügyfélalkalmazás konfigurálása és a webes API-t a beszerzéséhez egy **hozzáférés\_token**.
 
@@ -37,22 +37,22 @@ Hozzáférési jogkivonatot kér, mielőtt először a webes API regisztrálása
 ### <a name="register-a-web-api"></a>Webes API regisztrálása
 
 1. Az Azure Portalon az Azure AD B2C Funkciók menüjében kattintson a **alkalmazások**.
-1. Kattintson a **+ Hozzáadás** a menü tetején.
-1. Adjon meg az alkalmazáshoz egy olyan **nevet**, amely a felhasználók számára ismerteti az alkalmazást. Például adja meg "Contoso API".
-1. Állítsa az **Include web app / web API** (Webappal/webes API-val együtt) kapcsolót **Yes** (Igen) állásba.
-1. Adjon meg egy tetszőleges értéket a **válasz URL-címek**. Adja meg például a következőt: `https://localhost:44316/`. Az érték nem számít, mivel az API-k nem kell kapnia a token közvetlenül az Azure AD B2C-t.
-1. Adjon meg egy **Alkalmazásazonosító URI-t**. Ez a webes API-hoz használt azonosító. A mezőben adja meg például: "Megjegyzések". A **Alkalmazásazonosító URI-t** lesz `https://{tenantName}.onmicrosoft.com/notes`.
-1. Kattintson a **Create** (Létrehozás) gombra az alkalmazás regisztrálásához.
-1. Kattintson az imént létrehozott alkalmazásra, és másolja le az alkalmazás globálisan egyedi **ügyfél-azonosítóját**, amelyet később a kódjában fog használni.
+2. Kattintson a **+ Hozzáadás** a menü tetején.
+3. Adjon meg az alkalmazáshoz egy olyan **nevet**, amely a felhasználók számára ismerteti az alkalmazást. Például adja meg "Contoso API".
+4. Állítsa az **Include web app / web API** (Webappal/webes API-val együtt) kapcsolót **Yes** (Igen) állásba.
+5. Adjon meg egy tetszőleges értéket a **válasz URL-címek**. Adja meg például a következőt: `https://localhost:44316/`. Az érték nem számít, mivel az API-k nem kell kapnia a token közvetlenül az Azure AD B2C-t.
+6. Adjon meg egy **Alkalmazásazonosító URI-t**. Ez a webes API-hoz használt azonosító. A mezőben adja meg például: "Megjegyzések". A **Alkalmazásazonosító URI-t** lesz `https://{tenantName}.onmicrosoft.com/notes`.
+7. Kattintson a **Create** (Létrehozás) gombra az alkalmazás regisztrálásához.
+8. Kattintson az imént létrehozott alkalmazásra, és másolja le az alkalmazás globálisan egyedi **ügyfél-azonosítóját**, amelyet később a kódjában fog használni.
 
 ### <a name="publishing-permissions"></a>Közzétételi engedélyek
 
 Hatókörök, amelyek megfelel az engedélyeket, szükség, ha az alkalmazás egy API-t hívja. Néhány példa a hatókörök "olvasási" vagy "write". Tegyük fel, hogy webes vagy natív alkalmazás "olvasási" API-k. Az alkalmazás Azure AD B2C-t hívja és a hatókör "olvasási" hozzáférést biztosító hozzáférési jogkivonat kérése. Ahhoz, hogy az Azure AD B2C hozzáférési jogkivonat kibocsátható az alkalmazás kell jogosítania a "olvasási" az adott API-ból. Ehhez az API-t először meg kell közzétenni a "olvasási" hatókör.
 
 1. Az Azure AD B2C belül **alkalmazások** menüben nyissa meg a webes API-alkalmazás ("Contoso API").
-1. Kattintson a **Published scopes** (Közzétett hatókörök) elemre. Itt határozza meg a más alkalmazásoknak megadható engedélyeket (hatóköröket).
-1. Adjon hozzá **hatókör értékeinek** szükség szerint (például "olvassa el"). Alapértelmezés szerint a „user_impersonation” hatókör van meghatározva. Figyelmen kívül hagyhatja ezt, ha szeretné. Adjon meg egy leírást a hatókör az **hatókör neve** oszlop.
-1. Kattintson a **Save** (Mentés) gombra.
+2. Kattintson a **Published scopes** (Közzétett hatókörök) elemre. Itt határozza meg a más alkalmazásoknak megadható engedélyeket (hatóköröket).
+3. Adjon hozzá **hatókör értékeinek** szükség szerint (például "olvassa el"). Alapértelmezés szerint a „user_impersonation” hatókör van meghatározva. Figyelmen kívül hagyhatja ezt, ha szeretné. Adjon meg egy leírást a hatókör az **hatókör neve** oszlop.
+4. Kattintson a **Save** (Mentés) gombra.
 
 > [!IMPORTANT]
 > A **hatókör neve** leírása, a **hatókör értéke**. A hatókör használata esetén mindenképp használja a **hatókör értéke**.
@@ -62,11 +62,11 @@ Hatókörök, amelyek megfelel az engedélyeket, szükség, ha az alkalmazás eg
 Miután egy API közzé hatókörök van konfigurálva, az ügyfélalkalmazás kell adni ezeket a hatókörök, az Azure Portalon keresztül.
 
 1. Keresse meg a **alkalmazások** menü az Azure AD B2C Funkciók menüben.
-1. Regisztráljon egy ügyfélalkalmazás ([webalkalmazás](active-directory-b2c-app-registration.md#register-a-web-app) vagy [natív ügyfél](active-directory-b2c-app-registration.md#register-a-mobile-or-native-app)) Ha már nincs ilyen. Ha ez az útmutató a kiindulási pontként követi, szüksége lesz egy ügyfélalkalmazás regisztrálására.
-1. Kattintson a **API-hozzáférés**.
-1. Kattintson a **Hozzáadás** gombra.
-1. Válassza ki a webes API és a hatóköröket (engedélyeket), amelyet szeretne megadni.
-1. Kattintson az **OK** gombra.
+2. Regisztráljon egy ügyfélalkalmazás ([webalkalmazás](active-directory-b2c-app-registration.md) vagy [natív ügyfél](active-directory-b2c-app-registration.md)) Ha már nincs ilyen. Ha ez az útmutató a kiindulási pontként követi, szüksége lesz egy ügyfélalkalmazás regisztrálására.
+3. Kattintson a **API-hozzáférés**.
+4. Kattintson a **Hozzáadás** gombra.
+5. Válassza ki a webes API és a hatóköröket (engedélyeket), amelyet szeretne megadni.
+6. Kattintson az **OK** gombra.
 
 > [!NOTE]
 > Az Azure AD B2C nem kér az ügyfél az alkalmazáshasználók hozzájárulásukat. Ehelyett minden hozzájárulása a fent leírt alkalmazás közötti konfigurált engedélyek alapján, a rendszergazda által biztosított. Ha egy alkalmazás engedélymegadásának visszavonja, minden felhasználó, aki korábban sikerült lekérni az engedélyt már nem tudja megtenni.
@@ -114,9 +114,9 @@ Ha a `response_type` paramétert egy `/authorize` kérelmet tartalmaz `token`, a
 
 A sikeres minted **hozzáférés\_token** (vagy a `/authorize` vagy `/token` végpont), a következő jogcímek lesznek jelen:
 
-| Name (Név) | Jogcím | Leírás |
+| Name (Név) | Igénylés | Leírás |
 | --- | --- | --- |
-|Célközönség |`aud` |A **Alkalmazásazonosító** az egyetlen erőforrás, amely a token engedélyt biztosít. |
+|Közönség |`aud` |A **Alkalmazásazonosító** az egyetlen erőforrás, amely a token engedélyt biztosít. |
 |Hatókör |`scp` |Az erőforráshoz rendelt engedélyeket. Megadott engedélyek több helyet fogja elválasztani. |
 |Jogosult fél |`azp` |A **Alkalmazásazonosító** az ügyfélalkalmazás által kezdeményezett a kérelmet. |
 

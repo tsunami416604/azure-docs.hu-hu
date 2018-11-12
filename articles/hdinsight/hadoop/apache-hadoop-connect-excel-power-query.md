@@ -2,19 +2,19 @@
 title: Az Excel összekapcsolása a Hadooppal a Power Query – Azure HDInsight segítségével
 description: Ismerje meg, hogyan üzleti intelligencia összetevők előnyeit, és használja a Power Query az Excel programhoz Hadoop on HDInsight tárolt adatok elérését.
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 45014592cd648ee1a7b75fa59babf8571c151269
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7335e4370d25b7cc404d93ad6f2c9ff524d928e0
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042301"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016301"
 ---
 # <a name="connect-excel-to-hadoop-by-using-power-query"></a>Az Excel összekapcsolása a Hadooppal a Power Query használatával
 A Microsoft big-data megoldás egyik fontos szolgáltatása az integrációt a Microsoft üzleti intelligenciára épülő (BI) összetevők az Azure HDInsight Hadoop-fürtök. Egy elsődleges példája az Excel összekapcsolása a az Azure Storage-fiókot, amely tartalmazza az adatokat a Hadoop-fürt társított az Excel-bővítmény a Microsoft Power Query használatával lehetővé teszi. Ez a cikk ismerteti, hogyan beállítása és használata a Power Query használatával adatokat lekérdezni a HDInsight felügyelt Hadoop-fürt társított.

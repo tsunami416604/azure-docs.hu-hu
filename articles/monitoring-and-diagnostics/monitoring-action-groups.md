@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 6163a099894a823614355f71a3e1af4a6a9026ec
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 3ce7c5111fa176bb7fa734f54084b9e14e7afbef
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717675"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016046"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Az Azure Portalon a műveleti csoportok létrehozása és kezelése
 ## <a name="overview"></a>Áttekintés ##
@@ -24,8 +24,8 @@ Ez a cikk bemutatja, hogyan hozhat létre és kezelheti az Azure Portalon Művel
 Minden művelet a következő tulajdonságok tevődik össze:
 
 * **Név**: a művelet csoporton belül egyedi azonosítója.  
-* **Művelet típusa**: hanghívások vagy SMS-küldenek, e-mail küldése, webhook meghívása, adatokat küld egy ITSM-eszközhöz, logikai alkalmazások hívása, leküldéses értesítés küldése az Azure-alkalmazáshoz vagy lefuttatni egy Automation-runbookot.
-* **Részletek**: A megfelelő telefonszám, számot, az e-mail címet, a webhook URI-t vagy a ITSM-kapcsolat adatai.
+* **Művelet típusa**: A művelet végrehajtásához. Ilyenek például a voice hívás, SMS, e-mailt küld; vagy automatizált műveletek különböző típusú elindítása. Tekintse meg a cikk későbbi részében típusokat. 
+* **Részletek**: A megfelelő részleteket, amely régiónként eltérő *művelettípus*. 
 
 Műveletcsoportok konfigurálása Azure Resource Manager-sablonok használatáról további információért lásd: [műveleti csoport Resource Manager-sablonok](monitoring-create-action-group-with-resource-manager-template.md).
 
@@ -57,64 +57,45 @@ Műveletcsoportok konfigurálása Azure Resource Manager-sablonok használatár�
 
 1. Válassza ki **OK** a műveletcsoport létrehozásához.
 
-## <a name="action-specific-information"></a>A művelet adott információk
-<dl>
-<dt>Az Azure app-leküldés</dt>
-<dd>Műveletcsoport az Azure app-műveletek legfeljebb 10 lehet.</dd>
-<dd>Jelenleg az Azure-alkalmazás a művelet csak ServiceHealth riasztások támogatja. Más riasztási bármikor figyelmen kívül lesz hagyva. Lásd: [riasztások konfigurálása, ha a szolgáltatás állapotával kapcsolatos értesítés közzétételekor](monitoring-activity-log-alerts-on-service-notifications.md).</dd>
-
-<dt>e-mailben</dt>
-<dd>E-mailt küld a következő e-mail-címekről. Győződjön meg arról, hogy az e-mailek szűrése megfelelően vannak konfigurálva
-<ul>
-    <li>azure-noreply@microsoft.com</li>
-    <li>azureemail-noreply@microsoft.com</li>
-    <li>alerts-noreply@mail.windowsazure.com</li>
-</ul>
-</dd>
-<dd>Előfordulhat, hogy e-mailes műveletek legfeljebb 1000 tartalmaz műveletcsoportot</dd>
-<dd>Tekintse meg a [sebessége korlátozza az információk](./monitoring-alerts-rate-limiting.md) cikk</dd>
-
-<dt>ITSM</dt>
-<dd>Előfordulhat, hogy legfeljebb 10 ITSM-műveletek tartalmaz műveletcsoportot</dd>
-<dd>ITSM-művelethez egy ITSM-kapcsolat szükséges. Ismerje meg, hogyan hozhat létre egy [ITSM-kapcsolat](../log-analytics/log-analytics-itsmc-overview.md).</dd>
-
-<dt>Logikai alkalmazás</dt>
-<dd>Előfordulhat, hogy legfeljebb 10 Logic App-műveletek tartalmaz műveletcsoportot</dd>
-
-<dt>Runbook</dt>
-<dd>Előfordulhat, hogy legfeljebb 10 Runbook műveleteket tartalmaz műveletcsoportot</dd>
-<dd>Tekintse meg a [az Azure-előfizetési szolgáltatási korlátok](../azure-subscription-service-limits.md) a korlátok a Runbook is észleltünk adattartalmakat.</dd>
-
-<dt>SMS</dt>
-<dd>Előfordulhat, hogy legfeljebb 10 SMS műveleteket tartalmaz műveletcsoportot</dd>
-<dd>Tekintse meg a [sebessége korlátozza az információk](./monitoring-alerts-rate-limiting.md) cikk</dd>
-<dd>Tekintse meg a [SMS-riasztás viselkedése](monitoring-sms-alert-behavior.md) cikk</dd>
-
-<dt>Hang</dt>
-<dd>Előfordulhat, hogy legfeljebb 10 hangalapú műveleteket tartalmaz műveletcsoportot</dd>
-<dd>Tekintse meg a [sebessége korlátozza az információk](./monitoring-alerts-rate-limiting.md) cikk</dd>
-
-<dt>Webhook</dt>
-<dd>Előfordulhat, hogy legfeljebb 10 Webhook-műveletek tartalmaz műveletcsoportot
-<dd>Újrapróbálkozási logika – az időkorlát választ érték 10 másodperc. A webhook hívása lesz újból legfeljebb 2 idők esetén a következő HTTP-állapotkódok adja vissza: 408, 429-es, 503-as, 504 vagy a HTTP-végpont nem válaszol. Az első újrapróbálkozás 10 másodperc után történik. A második és az utolsó újrapróbálkozási 100 másodperc múlva történik.</dd>
-<dd>Forrás IP-címtartományok
-<ul>
-    <li>13.106.57.181</li>
-    <li>13.106.54.3</li>
-    <li>13.106.54.19</li>
-    <li>13.106.38.142</li>
-    <li>13.106.38.148</li>
-    <li>13.106.57.196</li>
-</ul>
-A érintő változásokról ezen IP-címek, javasoljuk, hogy konfigurálja a frissítések fogadásához egy [szolgáltatásállapot-riasztás](./monitoring-service-notifications.md) amely figyeli a Műveletcsoportok szolgáltatással kapcsolatos tájékoztató értesítések.
-</dd>
-</dl>
-
 ## <a name="manage-your-action-groups"></a>A műveleti csoportok kezelése ##
 Miután létrehozta a műveletcsoport, is látható, az a **Műveletcsoportok** szakaszában a **figyelő** panelen. Válassza ki a kezelni kívánt műveletcsoport:
 
 * Adja hozzá, szerkeszthet és eltávolíthat műveleteket.
 * A műveletcsoport törlése.
+
+## <a name="action-specific-information"></a>A művelet adott információk
+**Azure-alkalmazás leküldéses** -műveletcsoport az Azure app-műveletek legfeljebb 10 lehet. Jelenleg az Azure-alkalmazás a művelet csak ServiceHealth riasztások támogatja. Más riasztási bármikor figyelmen kívül lesz hagyva. Lásd: [riasztások konfigurálása, ha a szolgáltatás állapotával kapcsolatos értesítés közzétételekor](monitoring-activity-log-alerts-on-service-notifications.md).
+
+**E-mailek** -e-mailt küld a következő e-mail-címekről. Győződjön meg arról, hogy az e-mailek szűrése megfelelően vannak konfigurálva
+   - azure-noreply@microsoft.com
+   - azureemail-noreply@microsoft.com
+   - alerts-noreply@mail.windowsazure.com
+
+Műveletcsoport e-mailes műveletek akár 1000 is lehet. Tekintse meg a [sebessége korlátozza az információk](./monitoring-alerts-rate-limiting.md) cikk
+
+**ITSM** – előfordulhat, hogy legfeljebb 10 műveleti csoport ITSM művelet az ITSM-műveletek egy ITSM-kapcsolatot igényel. Ismerje meg, hogyan hozhat létre egy [ITSM-kapcsolat](../log-analytics/log-analytics-itsmc-overview.md).
+
+**Logikai alkalmazás** – előfordulhat, hogy legfeljebb 10 Logic App-műveletek tartalmaz műveletcsoportot
+
+**Runbook** – előfordulhat, hogy legfeljebb 10 Runbook műveleteket tartalmaz egy művelet csoport hivatkozik, amely a [az Azure-előfizetési szolgáltatási korlátok](../azure-subscription-service-limits.md) a korlátok a Runbook is észleltünk adattartalmakat.
+
+**SMS** – előfordulhat, hogy legfeljebb 10 SMS műveleteket tartalmaz egy művelet csoport tekintse meg a [sebessége korlátozza az adatokat](./monitoring-alerts-rate-limiting.md) lásd a cikk a [SMS-riasztás viselkedése](monitoring-sms-alert-behavior.md) cikk
+
+**Beszédfelismerési** – előfordulhat, hogy legfeljebb 10 hangalapú műveleteket tartalmaz műveletcsoportot</dd>
+Tekintse meg a [sebessége korlátozza az információk](./monitoring-alerts-rate-limiting.md) cikk</dd>
+
+**Webhook** -műveletcsoport Webhook-műveletek legfeljebb 10 lehet. Újrapróbálkozási logika – az időkorlát választ érték 10 másodperc. A webhook hívása lesz újból legfeljebb 2 idők esetén a következő HTTP-állapotkódok adja vissza: 408, 429-es, 503-as, 504 vagy a HTTP-végpont nem válaszol. Az első újrapróbálkozás 10 másodperc után történik. A második és az utolsó újrapróbálkozási 100 másodperc múlva történik.
+
+Forrás IP-címtartományok
+    - 13.106.57.181
+    - 13.106.54.3
+    - 13.106.54.19
+    - 13.106.38.142
+    - 13.106.38.148
+    - 13.106.57.196
+
+A érintő változásokról ezen IP-címek, javasoljuk, hogy konfigurálja a frissítések fogadásához egy [szolgáltatásállapot-riasztás](./monitoring-service-notifications.md) amely figyeli a Műveletcsoportok szolgáltatással kapcsolatos tájékoztató értesítések.
+
 
 ## <a name="next-steps"></a>További lépések ##
 * Tudjon meg többet [SMS-riasztás viselkedése](monitoring-sms-alert-behavior.md).  

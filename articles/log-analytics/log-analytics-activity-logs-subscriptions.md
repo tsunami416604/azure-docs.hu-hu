@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c078320ce31e0c51c7aef0bc0a2aa14e68ac2fc3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 41e627d895f0276d372ee42df3e0a43fdadc4051
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042861"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016063"
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>Előfizetések Azure-tevékenységnaplóinak gyűjtése a Log Analyticsbe
 
@@ -29,7 +29,7 @@ Ha a Log Analytics-munkaterület ugyanabban az Azure-előfizetésben, vagy egy m
 
 ## <a name="overview"></a>Áttekintés
 
-A forgatókönyvben alkalmazott stratégia az, hogy az Azure-tevékenységnapló eseményeket küld egy [eseményközpontnak](../event-hubs/event-hubs-what-is-event-hubs.md), ahol egy [logikai alkalmazás](../logic-apps/logic-apps-overview.md) továbbítja azokat a Log Analytics-munkaterületnek. 
+A forgatókönyvben alkalmazott stratégia az, hogy az Azure-tevékenységnapló eseményeket küld egy [eseményközpontnak](../event-hubs/event-hubs-about.md), ahol egy [logikai alkalmazás](../logic-apps/logic-apps-overview.md) továbbítja azokat a Log Analytics-munkaterületnek. 
 
 ![a tevékenységnaplóból a Log Analyticsbe érkező adatfolyam képe](media/log-analytics-activity-logs-subscriptions/data-flow-overview.png)
 
@@ -133,7 +133,7 @@ Az eseményközpont nevének és a kapcsolati sztringjének lekéréséhez köve
    | Name (Név)           | A logikai alkalmazás egyedi neve. |
    | Előfizetés   | Válassza ki azt az Azure-előfizetést, amely a logikai alkalmazást tartalmazni fogja. |
    | Erőforráscsoport | Válasszon ki egy meglévő Azure-erőforráscsoportot, vagy hozzon létre egy újat a logikai alkalmazás számára. |
-   | Hely       | Válassza ki az adatközpont-régiót a logikai alkalmazás üzembe helyezéséhez. |
+   | Földrajzi egység       | Válassza ki az adatközpont-régiót a logikai alkalmazás üzembe helyezéséhez. |
    | Log Analytics  | Adja meg, hogy szeretné-e naplózni a logikai alkalmazás Log Analyticsben való futtatásainak állapotát.  |
 
     
@@ -303,11 +303,11 @@ Az [Azure Log Analytics Data Collector](https://docs.microsoft.com/connectors/az
 
     ![Az adatküldési művelet konfigurálása](media/log-analytics-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-configuration.png)
 
-   |Beállítás        | Érték           | Leírás  |
+   |Beállítás        | Value (Díj)           | Leírás  |
    |---------------|---------------------------|--------------|
    |JSON-kérelem törzse  | Az **Összeállítás** művelet **kimenete** | Lekéri a rekordokat az Összeállítás művelet törzséből. |
    | Egyéni napló neve | AzureActivity | A Log Analyticsben az importált adatok tárolására létrehozni kívánt egyéni naplótábla neve. |
-   | Time-generated-field | time | Ne válassza ki a **time** JSON-mezőt, csak írja be a „time” szót. Ha kiválasztja a JSON-mezőt, a tervező egy **For each** iterációba helyezi az *Adatküldés* műveletet, amely nem felel meg a szándékainak. |
+   | Time-generated-field | idő- | Ne válassza ki a **time** JSON-mezőt, csak írja be a „time” szót. Ha kiválasztja a JSON-mezőt, a tervező egy **For each** iterációba helyezi az *Adatküldés* műveletet, amely nem felel meg a szándékainak. |
 
 
 

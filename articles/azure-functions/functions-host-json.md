@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 13f81ced7ebaee97b53cf843421b339db6fd6096
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: d794648d3af086263ccffc782f3f3fdf6456eacc
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50246907"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51013377"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>az Azure Functions – Host.JSON referencia 2.x  
 
@@ -94,7 +94,7 @@ Ez a cikk a következő szakaszok azt ismertetik, hogy minden felső szintű tul
 
 ## <a name="applicationinsights"></a>applicationInsights
 
-Ez a beállítás nem gyermeke [naplózás](#log).
+Ez a beállítás nem gyermeke [naplózás](#logging).
 
 [!INCLUDE [applicationInsights](../../includes/functions-host-json-applicationinsights.md)]
 
@@ -152,7 +152,7 @@ A konfigurációs beállítások [gazdagép állapotfigyelőjét](https://github
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|engedélyezve|true|Itt adhatja meg, hogy engedélyezve van-e a szolgáltatás. | 
+|engedélyezve|igaz|Itt adhatja meg, hogy engedélyezve van-e a szolgáltatás. | 
 |healthCheckInterval|10 másodperc|A háttérben történő rendszeres egészségügyi közötti időintervallum ellenőrzi. | 
 |healthCheckWindow|2 perc|Egy változó időablakban együtt használható a `healthCheckThreshold` beállítás.| 
 |healthCheckThreshold|6|Az állapot-ellenőrzés maximálisan megengedett számú meghiúsulhat a rendszer kezdeményezi a gazdagép újraindítása előtt.| 
@@ -184,8 +184,8 @@ A függvényalkalmazás, beleértve az Application Insights naplózási viselked
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Határozza meg, milyen szintű fájl naplózás engedélyezve van.  Lehetőségek a következők `never`, `always`, `debugOnly`. |
-|LogLevel|n/a|A szűrés az alkalmazás a Functions naplókategória definiáló objektum. Verzió 2.x követi az ASP.NET Core-elrendezés log kategóriához szűrésre. Ez lehetővé teszi az egyes funkciók naplózási szűrő. További információkért lásd: [napló szűrése](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) az ASP.NET Core dokumentációjában. |
-|applicationInsights|n/a| A [applicationInsights](#applicationinsights) beállítás. |
+|LogLevel|–|A szűrés az alkalmazás a Functions naplókategória definiáló objektum. Verzió 2.x követi az ASP.NET Core-elrendezés log kategóriához szűrésre. Ez lehetővé teszi az egyes funkciók naplózási szűrő. További információkért lásd: [napló szűrése](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) az ASP.NET Core dokumentációjában. |
+|applicationInsights|–| A [applicationInsights](#applicationinsights) beállítás. |
 
 ## <a name="queues"></a>üzenetsorok
 
@@ -221,9 +221,9 @@ Egyszeres zárolási viselkedés konfigurációs beállításait. További infor
 |listenerLockPeriod|00:01:00|Az időszak elvégzett figyelő zárolások számára.| 
 |listenerLockRecoveryPollingInterval|00:01:00|A figyelő zárolási helyreállításhoz használt, ha egy figyelő nem zárolható indításkor időtartam alatt.| 
 |lockAcquisitionTimeout|00:01:00|Legfeljebb ennyi idő a modul megpróbálja zárolni.| 
-|lockAcquisitionPollingInterval|n/a|A zárolás adatolvasási kísérletek közötti időköz.| 
+|lockAcquisitionPollingInterval|–|A zárolás adatolvasási kísérletek közötti időköz.| 
 
-## <a name="version"></a>version
+## <a name="version"></a>verzió:
 
 A verzió-karakterlánc `"version": "2.0"` a v2 futtatókörnyezetre függvényalkalmazás megadása kötelező.
 
