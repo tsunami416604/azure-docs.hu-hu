@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 14b9a4ed66995a73f00234f4b25f52fccbcbe556
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e055b51af19ad3958c0c9155490c598ed0f4a80e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38562604"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235207"
 ---
 # <a name="tutorial-push-notifications-to-windows-phone-apps-by-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések küldése Windows Phone-alkalmazásokba az Azure Notification Hubs használatával
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -61,7 +61,7 @@ Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, Windows P
     A szolgáltatás létrehozza a központot, és nem hitelesített értesítések Windows Phone rendszerű eszközökre való küldésére konfigurálja.
 
     > [!NOTE]
-    > Ez az oktatóanyag nem hitelesített módban használja az MPNS-t. Az MPNS nem hitelesített módja korlátozásokat tartalmaz az egyes csatornákra küldhető értesítések tekintetében. A Notification Hubs tanúsítvány feltöltésének lehetővé tételével támogatja az [MPNS hitelesített módját](http://msdn.microsoft.com/library/windowsphone/develop/ff941099.aspx).
+    > Ez az oktatóanyag nem hitelesített módban használja az MPNS-t. Az MPNS nem hitelesített módja korlátozásokat tartalmaz az egyes csatornákra küldhető értesítések tekintetében. A Notification Hubs tanúsítvány feltöltésének lehetővé tételével támogatja az [MPNS hitelesített módját](https://msdn.microsoft.com/library/windowsphone/develop/ff941099.aspx).
 
 ## <a name="create-a-windows-phone-application"></a>Windows Phone-alkalmazás létrehozása
 Ebben a szakaszban egy új Windows Phone-alkalmazást hoz létre, amely regisztrálja magát az értesítési központban. 

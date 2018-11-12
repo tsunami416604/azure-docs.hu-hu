@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/05/2018
 ms.author: bryanla
-ms.openlocfilehash: 3dc80c97a43c35295deacefc37a76471912c9b42
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 9ab399ae50f9b04acad411b225797f89547a2824
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603991"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237536"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Az Azure Key Vault fejlesztői útmutató
 
@@ -48,8 +48,8 @@ Ez a videó bemutatja, hogyan hozhat létre saját key vault és a "Hello Key Va
 
 A fenti videó erőforrások:
 
-- [Azure PowerShell](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)
-- [Az Azure Key Vault-mintakód](http://go.microsoft.com/fwlink/?LinkId=521527&clcid=0x409)
+- [Azure PowerShell](https://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)
+- [Az Azure Key Vault-mintakód](https://go.microsoft.com/fwlink/?LinkId=521527&clcid=0x409)
 
 ## <a name="creating-and-managing-key-vaults"></a>Létrehozása és kezelése a Kulcstartók
 
@@ -151,8 +151,8 @@ Ezek a cikkek más forgatókönyvek és a szolgáltatásokat, vagy a Key Vault i
 
 ## <a name="social"></a>Közösségi tartalom
 
-- [A Key Vault-Blog](http://aka.ms/kvblog)
-- [A Key Vault-fórum](http://aka.ms/kvforum)
+- [A Key Vault-Blog](https://aka.ms/kvblog)
+- [A Key Vault-fórum](https://aka.ms/kvforum)
 
 ## <a name="supporting-libraries"></a>Szalagtárak támogatása
 
