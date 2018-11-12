@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 8137a292045377c5dccb69c21a8118d0dc17874e
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 14e8eb7c73a1e2cf5047410d3571008c1cd1e1ca
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069952"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289274"
 ---
-# <a name="internet-of-things-security-from-the-ground-up"></a>IOT-biztonság az alapoktól
+# <a name="security-for-internet-of-things-iot-from-the-ground-up"></a>Biztonsági eszközök internetes hálózatához (IoT) létrehozása az alapoktól
 
 A dolgok Internete (IoT) a vállalkozások világszerte egyedi biztonsági, adatvédelmi és megfelelőségi kihívást jelent. Ellentétben a hagyományos kibertámadások technológia, ahol a ezeket a problémákat a szoftvert, és hogyan valósul köré szerveződik IoT vonatkozik, mi történik, ha az internetes és a fizikai világ lesz. Biztonságos kiépítés eszközök, ezek az eszközök és a felhőben és a biztonságos adatvédelem a felhőben feldolgozásra és tárolásra során közötti biztonságos kapcsolatot biztosító IoT-megoldások védelme szükséges. Azonban működik a funkció, olyan eszközök erőforrás korlátozott, központi telepítések földrajzi eloszlása és egy nagy számú egy megoldáson belül.
 

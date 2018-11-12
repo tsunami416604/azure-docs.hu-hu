@@ -1,24 +1,24 @@
 ---
-title: Az Ambari Tez nézet használata a HDInsight – Azure
-description: Ismerje meg az Ambari Tez nézet használata a HDInsight a Tez-feladatok hibakereséséhez.
+title: Az Apache Ambari Tez nézet használata a HDInsight – Azure
+description: Ismerje meg, az Apache Ambari Tez nézet használata a HDInsight a Tez-feladatok hibakereséséhez.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: jasonh
-ms.openlocfilehash: 576460f4b68d670e534e0ddeed920f7ac99e1458
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: c85ad59acc8e307de05f41365855f3a9669ac2b5
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108886"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034676"
 ---
-# <a name="use-ambari-views-to-debug-tez-jobs-on-hdinsight"></a>Ambari-nézetek használata a HDInsight a Tez-feladatok hibakereséséhez
+# <a name="use-apache-ambari-views-to-debug-apache-tez-jobs-on-hdinsight"></a>Az Apache Ambari-nézetek használata a HDInsight Apache Tez-feladatok hibakereséséhez
 
-A HDInsight az Ambari webes Kezelőfelületen tartalmaz egy Tez megtekintése és használata a Tez-feladatok hibakereséséhez használható. A Tez nézet lehetővé teszi a feladatban egy grafikont a csatlakoztatott elemek megjelenítése, minden egyes cikk részletesen és statisztikák és a naplózási információk lekéréséhez.
+Az Apache Ambari webes Kezelőfelületen for HDInsight egy Apache Tez megtekintése és használata a Tez-feladatok hibakereséséhez használható tartalmazza. A Tez nézet lehetővé teszi a feladatban egy grafikont a csatlakoztatott elemek megjelenítése, minden egyes cikk részletesen és statisztikák és a naplózási információk lekéréséhez.
 
 > [!IMPORTANT]
 > A dokumentum lépéseinek elvégzéséhez egy Linux-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight összetevők verziószámozása](hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -28,9 +28,9 @@ A HDInsight az Ambari webes Kezelőfelületen tartalmaz egy Tez megtekintése é
 * Egy Linux-alapú HDInsight-fürt. A fürt létrehozásának lépéseiért lásd: [Linux-alapú HDInsight használatának első lépései](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 * Egy HTML5-támogatással rendelkező modern webböngésző.
 
-## <a name="understanding-tez"></a>Tez ismertetése
+## <a name="understanding-apache-tez"></a>Az Apache Tez ismertetése
 
-Tez egy bővíthető keretrendszer a Hadoop nagyobb sebességre képes, mint a hagyományos MapReduce feldolgozást biztosító adatfeldolgozási. A Linux-alapú HDInsight-fürtök esetén az alapértelmezett szolgáltatás a Hive.
+Tez adatfeldolgozás az Apache Hadoop, amely nagyobb sebességre képes, mint a hagyományos MapReduce feldolgozási biztosít egy bővíthető keretrendszer. A Linux-alapú HDInsight-fürtök esetén az alapértelmezett szolgáltatás a Hive.
 
 Tez létrehoz egy irányított aciklikus Graph (DAG), amely leírja a feladatok által szükséges műveletek sorrendjét. Egyes műveleteket hívják csúcspontokat, és hajtsa végre a teljes feladat egy részét. A tényleges végrehajtása a csúcspont által leírt munka feladat neve, és előfordulhat, hogy legyen elosztva a fürtben több csomóponton.
 

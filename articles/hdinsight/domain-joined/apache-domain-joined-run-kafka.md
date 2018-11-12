@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 5dd05a5bbf52fe7fa68a621cc762378024951487
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 48cfba6f62d75470efd27e3a4cdcb995e716798b
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249279"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037141"
 ---
 # <a name="tutorial-configure-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Oktatóanyag: Kafka-házirendek konfigurálása a HDInsightban az Enterprise Security Package csomaggal (Előzetes verzió)
 
@@ -123,7 +123,7 @@ Hozzon létre két témakört **salesevents** és **marketingspend** néven:
 > Mielőtt továbblépne, konfigurálnia kell a fejlesztési környezetet, ha még nem tette volna meg. A következő összetevőkre lesz szüksége: Java JDK, Apache Maven, valamint egy SSH-ügyfél SCP-vel. További információkért lásd ezeket [a beállítási utasításokat](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
 1. Töltse le az [Apache Kafka tartományhoz csatlakoztatott előállítói és fogyasztói példákat](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
 
-1. Kövesse [az Apache Kafka Producer és Consumer API-k használatát bemutató oktatóanyag](https://docs.microsoft.com/en-us/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example) **a példák létrehozását és üzembe helyezését** ismertető szakaszának 2. és 3. lépését.
+1. Kövesse [az Apache Kafka Producer és Consumer API-k használatát bemutató oktatóanyag](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example) **a példák létrehozását és üzembe helyezését** ismertető szakaszának 2. és 3. lépését.
 
 1. Futtassa az alábbi parancsot:
 
