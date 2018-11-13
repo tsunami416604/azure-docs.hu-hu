@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/03/2017
 ms.author: ryanwi
-ms.openlocfilehash: 0243f6ca96b5e2c20b40bf6e0fc11e8d760db475
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 639293a1811c35d87bd705800b8ecf62f667c0e9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053363"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246718"
 ---
 # <a name="get-started-with-deploying-and-upgrading-applications-on-your-local-cluster"></a>A helyi fürtön lévő alkalmazások üzembe helyezésének és frissítésének elsajátítása
 Az Azure Service Fabric SDK teljes helyi fejlesztőkörnyezetet tartalmaz, amely segítségével gyorsan megismerkedhet a helyi fürtön lévő alkalmazások üzembe helyezésével és kezelésével. Ebben a cikkben létrehoz egy helyi fürtöt, üzembe helyez rajta egy meglévő alkalmazást, majd új verzióra frissíti, és mindezt a Windows PowerShellből fogja elvégezni.
@@ -71,7 +71,7 @@ Ebben az oktatóanyag egy meglévő mintaalkalmazást (a neve WordCount) haszná
     mkdir c:\ServiceFabric\
     cd c:\ServiceFabric\
     ```
-4. [Töltse le a WordCount alkalmazást](http://aka.ms/servicefabric-wordcountapp) a létrehozott helyre.  Megjegyzés: A Microsoft Edge böngésző *.zip* kiterjesztéssel menti a fájlt.  Módosítsa a fájl kiterjesztését a következőre: *.sfpkg*.
+4. [Töltse le a WordCount alkalmazást](https://aka.ms/servicefabric-wordcountapp) a létrehozott helyre.  Megjegyzés: A Microsoft Edge böngésző *.zip* kiterjesztéssel menti a fájlt.  Módosítsa a fájl kiterjesztését a következőre: *.sfpkg*.
 5. Csatlakozzon a helyi fürthöz:
    
     ```powershell
@@ -139,7 +139,7 @@ A Service Fabric állásidő nélküli frissítéseket biztosít az alkalmazás 
 
 Az alkalmazás új verziója kizárólag a magánhangzóval kezdődő szavakat számolja össze. A frissítés előre haladtával két változást vehet észre az alkalmazás viselkedésében. Az első az a sebesség, amelynél a számok növekedésének le kell lassulnia, mivel kevesebb szót kell megszámolni. A második, mivel az első partíció két magánhangzót tartalmaz (A és E), és az összes többi partíció mindegyike csak egyet, az első partíciónál a szám gyorsabban fog növekedni, mint a többinél.
 
-1. [Töltse le a WordCount 2-es verziójának csomagját](http://aka.ms/servicefabric-wordcountappv2) ugyanarra a helyre, ahová az 1-es verzió csomagját letöltötte.
+1. [Töltse le a WordCount 2-es verziójának csomagját](https://aka.ms/servicefabric-wordcountappv2) ugyanarra a helyre, ahová az 1-es verzió csomagját letöltötte.
 2. Térjen vissza a PowerShell-ablakhoz, és az SDK frissítési parancsával regisztrálja az új verziót a fürtben. Ezután indítsa el a fabric:/WordCount alkalmazás frissítését.
    
     ```powershell

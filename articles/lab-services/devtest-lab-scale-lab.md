@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 5a179c0c6b777ee6b2afdd0f2e9267d247665d8d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 00f64deaa5e02f9bb74baaf86bfdf71690a3345d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38675965"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248248"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Kvóták és korlátozások méretezése a DevTest Labs szolgáltatásban
 DevTest Labs szolgáltatásban létrehozott munka során Észreveheti, hogy nincsenek-e az egyes Azure-erőforrások, amelyek hatással lehetnek a DevTest Labs szolgáltatás egyes alapértelmezett korlátok. Ezek a korlátok nevezzük **kvóták**.
@@ -35,7 +35,7 @@ Ha például minden előfizetési csomaghoz tartozik egy alapértelmezett kvóta
 ## <a name="view-your-usage-and-quotas"></a>A használat és kvóták megtekintése
 Ezek a lépések bemutatják, hogyan az aktuális kvótái megtekintheti az adott Azure-erőforrásokhoz az előfizetésben, és tekintse meg az egyes kvóta százaléka használja.
 
-1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Válassza ki **további szolgáltatások**, majd válassza ki **számlázási** a listából.
 1. A számlázás panelen válasszon ki egy előfizetést.
 4. Válassza ki **használat + kvóták**.
@@ -49,7 +49,7 @@ Ezek a lépések bemutatják, hogyan az aktuális kvótái megtekintheti az adot
 ## <a name="requesting-more-resources-in-your-subscription"></a>További erőforrások az előfizetésében kérése
 Ha eléri a kvótakorlátot, egy adott erőforrás az előfizetéshez az alapértelmezett korlát növelhető a maximális korlátig leírtak szerint [Azure előfizetés- és Szolgáltatáskorlátok](https://docs.microsoft.com/azure/azure-subscription-service-limits).
 
-Ezek a lépések bemutatják, hogyan kérje egy kvótájának növelését, keresztül a [az Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+Ezek a lépések bemutatják, hogyan kérje egy kvótájának növelését, keresztül a [az Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Válassza ki **további szolgáltatások**válassza **számlázási**, majd válassza ki **használat + kvóták**.
 1. A használat + kvóták panelen válassza ki a **kérelem növelése** gombra.

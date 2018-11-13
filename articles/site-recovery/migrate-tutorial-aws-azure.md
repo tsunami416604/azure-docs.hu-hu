@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b09cfe106eefe9f6ab76cd1bfea91a0b6ff13b7c
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: cd33b7cb45bb165a120a7efe20eba962ec75e273
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214528"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252139"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek áttelepítése az Azure-ba
 
@@ -119,7 +119,7 @@ A **Forrás előkészítése** lapon válassza a **+ Konfigurációs kiszolgál�
 
 1. Használjon egy Windows Server 2012 R2 rendszert futtató EC2-példányt a konfigurációs kiszolgáló létrehozásához és a helyreállítási tárolóban való regisztrálásához.
 2. Konfigurálja a konfigurációs kiszolgálóként használt EC2-példány virtuális gépén lévő proxyt, hogy elérje a [szolgáltatás URL-címeit](site-recovery-support-matrix-to-azure.md).
-3. Töltse le a [Microsoft Azure Site Recovery egyesített telepítő](http://aka.ms/unifiedinstaller_wus) programot. A programot letöltheti a helyi gépére, majd onnan átmásolhatja a konfigurációs kiszolgálóként használt virtuális gépre.
+3. Töltse le a [Microsoft Azure Site Recovery egyesített telepítő](https://aka.ms/unifiedinstaller_wus) programot. A programot letöltheti a helyi gépére, majd onnan átmásolhatja a konfigurációs kiszolgálóként használt virtuális gépre.
 4. Válassza a **Letöltés** gombot a tárolóregisztrációs kulcs letöltéséhez. Másolja át a letöltött fájlt a konfigurációs kiszolgálóként használt virtuális gépre.
 5. A virtuális gépen kattintson a jobb gombbal a letöltött Microsoft Azure Site Recovery egyesített telepítőre, majd válassza a **Futtatás rendszergazdaként** lehetőséget.
 

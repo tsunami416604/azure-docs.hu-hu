@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 78796b5dc62cb573f149c24d90205d26fb139cf7
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: eb5b4b3741b064a934833b3094c69db85e9ccabb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628647"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238709"
 ---
 # <a name="biztalk-services-issuer-name-and-issuer-key"></a>BizTalk Services: Kiállító neve és kiállító kulcsa
 
@@ -84,17 +84,17 @@ A BizTalk Adapter szolgáltatás által használt Service Bus kiállító neve �
 ## <a name="next"></a>Következő lépés
 További Azure BizTalk Services témakörök:
 
-* [Az Azure BizTalk Services SDK telepítése](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
-* [Az oktatóanyagok: Az Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
-* [Hogyan kezdhetem el az Azure BizTalk Services SDK használatát](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
-* [Az Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
+* [Az Azure BizTalk Services SDK telepítése](https://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
+* [Az oktatóanyagok: Az Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
+* [Hogyan kezdhetem el az Azure BizTalk Services SDK használatát](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [Az Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
 
 ## <a name="see-also"></a>Lásd még:
-* [How to: ACS felügyeleti szolgáltatás segítségével Szolgáltatásidentitások konfigurálása](http://go.microsoft.com/fwlink/p/?LinkID=303942)<br/>
-* [A BizTalk Services: Fejlesztői, alapszintű, Standard és prémium kiadások diagramja](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-* [A BizTalk Services: kiépítés](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
-* [BizTalk Services: Kiépítési állapot diagramja](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
-* [BizTalk Services: Irányítópult, Figyelés és Méret lapok](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
-* [BizTalk Services: Biztonsági mentés és visszaállítás](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
-* [BizTalk Services: Szabályozás](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
+* [How to: ACS felügyeleti szolgáltatás segítségével Szolgáltatásidentitások konfigurálása](https://go.microsoft.com/fwlink/p/?LinkID=303942)<br/>
+* [A BizTalk Services: Fejlesztői, alapszintű, Standard és prémium kiadások diagramja](https://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+* [A BizTalk Services: kiépítés](https://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+* [BizTalk Services: Kiépítési állapot diagramja](https://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
+* [BizTalk Services: Irányítópult, Figyelés és Méret lapok](https://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+* [BizTalk Services: Biztonsági mentés és visszaállítás](https://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
+* [BizTalk Services: Szabályozás](https://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
 

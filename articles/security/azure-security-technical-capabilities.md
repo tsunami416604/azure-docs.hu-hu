@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 862143aec0ac54abb3c62677c5a1ab1c15007edb
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b58d6315c4399a7bb23514eb90ab5a94acda2592
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405565"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249030"
 ---
 # <a name="azure-security-technical-capabilities"></a>Az Azure biztonságtechnikai képességek
 
@@ -238,7 +238,7 @@ Az Azure Disk Encryption jelenleg nem támogatott a PaaS v1. Ezért inaktív meg
 
 A legtöbb szolgáltatás megpróbáljon-használhatja a storage erőforrás-szolgáltató titkosítása. Egyes szolgáltatások kell elvégeznie, explicit titkosítás, például minden megőrzött megosztottkulcs-anyag (tanúsítványok, a legfelső szintű / fő kulcsok) a Key Vaultban kell tárolni.
 
-Ha ügyfél által felügyelt kulcsokkal Szolgáltatásoldali titkosítási támogatja szükség van oly módon, az ügyfél a kulcs lekérése velünk a kapcsolatot. A támogatott és ajánlott módja, hogy integrálja az Azure Key Vault (AKV). Ebben az esetben az ügyfelek veheti fel és kezelheti a saját kulcsok Azure Key vaultban. Egy ügyfél is megtudhatja, hogyan használhatja az AKV-n keresztül [Ismerkedés a Key Vault](http://go.microsoft.com/fwlink/?linkid=521402).
+Ha ügyfél által felügyelt kulcsokkal Szolgáltatásoldali titkosítási támogatja szükség van oly módon, az ügyfél a kulcs lekérése velünk a kapcsolatot. A támogatott és ajánlott módja, hogy integrálja az Azure Key Vault (AKV). Ebben az esetben az ügyfelek veheti fel és kezelheti a saját kulcsok Azure Key vaultban. Egy ügyfél is megtudhatja, hogyan használhatja az AKV-n keresztül [Ismerkedés a Key Vault](https://go.microsoft.com/fwlink/?linkid=521402).
 
 Integrálható az Azure Key Vault, akkor adja hozzá kódot kulcsot kérni az AKV visszafejtéshez szükség esetén.
 
@@ -283,7 +283,7 @@ Az Azure RMS bevezetésének tervezésekor a következőket javasoljuk:
 
 - Hozzon létre [egyéni sablonokat](https://technet.microsoft.com/library/dn642472.aspx) , amely az üzleti követelményeinek megfelelően. Példa: egy sablont, amely a alkalmazni szeretné az összes szigorúan titkos titkos adatkezelési kapcsolatos e-maileket.
 
-Szervezetek számára, amelyek a gyenge [adatbesorolás](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) és lehetséges, hogy a fájlok védelmének adatszivárgás érzékenyebb. Megfelelő fájlt nem védett szervezetek nem tudják üzleti információk beszerzése, figyelje a visszaélések és rosszindulatú hozzáférés megakadályozása érdekében a fájlokat.
+Szervezetek számára, amelyek a gyenge [adatbesorolás](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) és lehetséges, hogy a fájlok védelmének adatszivárgás érzékenyebb. Megfelelő fájlt nem védett szervezetek nem tudják üzleti információk beszerzése, figyelje a visszaélések és rosszindulatú hozzáférés megakadályozása érdekében a fájlokat.
 
 > [!Note]
 > További információ az Azure RMS című cikkben [Ismerkedés az Azure Rights Management](https://technet.microsoft.com/library/jj585016.aspx).
@@ -408,7 +408,7 @@ A Log Analytics-szel a felhőhöz, beleértve a helyszíni, Azure, az AWS, a Win
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) adatokat gyűjt a felügyelt erőforrások egy központi tárházba figyelési szolgáltatásokat biztosít. Ezek az adatok lehetnek események, teljesítményadatok vagy az API segítségével biztosított egyéni adatok. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz.
+[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics) adatokat gyűjt a felügyelt erőforrások egy központi tárházba figyelési szolgáltatásokat biztosít. Ezek az adatok lehetnek események, teljesítményadatok vagy az API segítségével biztosított egyéni adatok. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz.
 
 ![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
 
@@ -452,7 +452,7 @@ A felhőalapú alkalmazások összetettek a részek. Győződjön meg arról, ho
 
 A hálózati biztonsági naplózás létfontosságú a hálózati biztonsági rések és az IT-biztonsági és jogszabályi cégirányítási modell betartásáért. Biztonsági csoport nézet kérheti le a konfigurált hálózati biztonsági csoport és a biztonsági szabályokat, valamint az érvényben lévő biztonsági szabályokat. A alkalmazni szabályok listáját, és megadhatja, hogy a nyitott portok irányítását és ss hálózati biztonsági rések.
 
-### <a name="network-watcher"></a>Hálózati figyelő
+### <a name="network-watcher"></a>A Network watcher
 
 [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher) egy regionális szolgáltatás, amely lehetővé teszi a figyelési és diagnosztizálási tevékenységet végezhet hálózati szinten lévő, a és az Azure-ból. A hálózati diagnosztikai és vizualizációs eszközök a Network Watcherrel elérhető segítenek megérteni, diagnosztizálása és betekintést nyerhet az Azure-ban a hálózati. A szolgáltatás része, csomagrögzítés, következő ugrási, IP-folyamat ellenőrzése, a biztonsági csoport nézet NSG-Folyamatnaplók. Forgatókönyv szintű monitorozása biztosítja a teljes körű képet szakembereket egyes hálózati erőforrások monitorozása a hálózati erőforrásokhoz.
 

@@ -8,12 +8,12 @@ ms.assetid: 03332872-8d84-44a0-8a78-04fd30e14b18
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 4386f87b6986e6ab1742a8d3c14a100fea112182
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: dd3cb108844cd009d74de42630511073021d94b1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406311"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238488"
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Ismerkedés az Azure Data Catalog szolgáltatással
 Az Azure Data Catalog teljes körűen felügyelt felhőszolgáltatás, amely vállalati adategységek regisztrációs és felderítőrendszereként szolgál. A szolgáltatás részletes bemutatásáért olvassa el a [Mi az az Azure Data Catalog?](data-catalog-what-is-data-catalog.md) című cikket.
@@ -96,7 +96,7 @@ Az Adventure Works adatbázisa olyan szabványos online tranzakciófeldolgozási
 Az Adventure Works példaadatbázisának telepítése:
 
 1. Töltse le az [Adventure Works 2014 Full Database Backup.zip](https://msftdbprodsamples.codeplex.com/downloads/get/880661) fájlt a CodePlex oldalról.
-2. Állítsa vissza az adatbázist a gépére. Ehhez kövesse a [Restore a Database Backup by using SQL Server Management Studio](http://msdn.microsoft.com/library/ms177429.aspx) (Adatbázis biztonsági másolatának visszaállítása az SQL Server Management Studio segítségével) című cikk utasításait, vagy az alábbi lépéseket:
+2. Állítsa vissza az adatbázist a gépére. Ehhez kövesse a [Restore a Database Backup by using SQL Server Management Studio](https://msdn.microsoft.com/library/ms177429.aspx) (Adatbázis biztonsági másolatának visszaállítása az SQL Server Management Studio segítségével) című cikk utasításait, vagy az alábbi lépéseket:
    1. Nyissa meg az SQL Server Management Studiót, és kapcsolódjon az SQL Server adatbázismotorjához.
    2. Kattintson jobb gombbal a **Databases** (Adatbázisok) lehetőségre, majd a **Restore Database** (Adatbázis visszaállítása) elemre.
    3. A **Restore Database** (Adatbázis visszaállítása) területen kattintson a **Source** (Forrás) beállításhoz tartozó **Device** (Eszköz) lehetőségre, majd a **Browse** (Tallózás) gombra.

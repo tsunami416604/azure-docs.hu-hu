@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/21/2018
 ms.author: markgal
-ms.openlocfilehash: 9fad5876ce177129d6178052916843b94b33ccf1
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: c9b3b027a52a6847c566c385c304edc195f7fdda
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42445467"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250696"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-tárolók figyelése és kezelése
 
@@ -296,4 +296,4 @@ A biztonsági mentési tár irányítópult-csempét jeleníti meg az Azure-ban 
 ## <a name="next-steps"></a>További lépések
 * [A Windows Server vagy a Windows ügyfél visszaállítása az Azure-ból](backup-azure-restore-windows-server.md)
 * Az Azure Backuppal kapcsolatos további tudnivalókért lásd: [Azure Backup áttekintése](backup-introduction-to-azure-backup.md)
-* Látogasson el a [Azure Backup fórum](http://go.microsoft.com/fwlink/p/?LinkId=290933)
+* Látogasson el a [Azure Backup fórum](https://go.microsoft.com/fwlink/p/?LinkId=290933)
