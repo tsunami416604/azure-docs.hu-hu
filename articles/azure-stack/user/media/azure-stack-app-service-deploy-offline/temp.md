@@ -1,1 +1,0 @@
-ideiglenes fájl
