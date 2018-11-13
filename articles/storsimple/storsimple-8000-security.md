@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: fb8c3fe9dd5ca207e4ae37faf9a5a1c4edfffc63
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ded3c89774c39b5edee02b9e3c6807ce75ff16a4
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233813"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566193"
 ---
 # <a name="storsimple-security-and-data-protection"></a>A StorSimple biztonsági és adatvédelmi
 
@@ -205,9 +205,9 @@ A StorSimple-ban tárolt adatok védelme érdekében a következő titkosítási
 
 [!INCLUDE [storsimple Cloud Appliance security](../../includes/storsimple-virtual-device-security.md)]
 
-## <a name="managing-personal-inforamation"></a>Személyes je kezelése
+## <a name="managing-personal-information"></a>Személyes adatok kezelése
 
-A fizikai és virtuális Series StorSimple-Eszközkezelő gyűjt személyes adatokat a feloldását kérte-példányok:
+A fizikai és virtuális Series StorSimple-Eszközkezelő gyűjt személyes adatokat a következő kulcs példányok:
 
 - Riasztás, ahol a felhasználók e-mail-címe konfigurálva vannak-e a felhasználói beállításokat. Ez az információ is megtekinthető és nincs bejelölve, a rendszergazda által. Ez a StorSimple 8000 sorozatú eszközök és a StorSimple Virtual Arrayt vonatkozik.
  * Megtekintheti, és törölje a beállításokat a StorSimple 8000 sorozat, kövesse a [megtekintése és kezelése a StorSimple-riasztások](storsimple-8000-manage-alerts.md#configure-alert-settings)
