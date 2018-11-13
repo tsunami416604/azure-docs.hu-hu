@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 0765e79b90eed49742f5eead33063907eb1db1f4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 7f93a225db845840545b761d812f5a8a81f76f91
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47030846"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913563"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Oktatóanyag: Exportált adatok létrehozása és kezelése
 
@@ -46,7 +46,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 ## <a name="create-a-daily-export"></a>Napi rendszerességű exportálás létrehozása
 
-Cost Management + Számlázás &gt; válasszon ki egy előfizetést vagy egy előfizetésben szereplő erőforráscsoportot &gt; Exportálás &gt; **Hozzáadás**.
+Cost Management + Számlázás &gt; Cost Management &gt; válasszon ki egy előfizetést vagy egy előfizetésben szereplő erőforráscsoportot &gt; Exportálás &gt; **Hozzáadás**.
 
 Adjon meg egy nevet az exportálási feladathoz, és adja meg az előfizetést, az Azure Storage-fiókot, a tárolót és a fájltároló mappát vagy blobtárolót, majd kattintson a **Létrehozás** parancsra.
 

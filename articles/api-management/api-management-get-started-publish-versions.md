@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: f9b63beeb6979d7dec5fc2cf2d91a3327ba7c43c
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 6820b44309ac2b3dbeb5ad6f0beb460c8712e9af
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415236"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912119"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>Az API több verziójának közzététele 
 
@@ -59,20 +59,25 @@ Az Azure API Management segítségével meghatározhatja, hogy a hívók hogyan 
 ![Verzió hozzáadása képernyő](media/api-management-getstarted-publish-versions/AddVersion.PNG)
 
 1. A **verziókezelési sémánál** hagyja bejelölve az **elérési út** beállítást.
-2. Adja hozzá a **v1** tagot **névként** és **verzióazonosítóként**.
+2. Írja be a **demo-conference-api-v1** nevet a **Név** mezőbe.
+
+    > [!NOTE]
+    > A verzió lényegében egy valamely API-változaton alapuló új API. A **Név** az új API neve, amelynek egyedinek kell lennie az API Management-példányban.
+
+3. Írja be a **v1** azonosítót a **Verzióazonosító** mezőbe.
 
     > [!TIP]
     > Ha a **fejléc** vagy a **lekérdezési sztring** lehetőséget választja verziókezelési sémaként, meg kell adnia egy további értéket is – a fejléc vagy a lekérdezési sztring paraméterének nevét.
 
-3. Válassza a **Létrehozás** lehetőséget az új verzió beállításához.
-4. Az API listában a **Demo Conference API** alatt most két különböző API látható – az **Eredeti** és a **v1**.
+4. Válassza a **Létrehozás** lehetőséget az új verzió beállításához.
+5. Az API listában a **Demo Conference API** alatt most két különböző API látható – az **Eredeti** és a **v1**.
 
     ![Az API alatt listázott verziók az Azure Portalon](media/api-management-getstarted-publish-versions/VersionList.PNG)
 
     > [!Note]
     > Ha egy verzióval nem rendelkező API-hoz ad hozzá egy verziót, automatikusan létrejön egy **Eredeti** verzió – ez az alapértelmezett URL-címen válaszol. Ez biztosítja, hogy a meglévő hívók kapcsolata ne szakadjon meg az új verzió hozzáadásával. Ha egy új API létrehozásakor engedélyezi a verziókat, nem jön létre Eredeti verzió.
 
-5. A **v1** most az **Eredeti** API-tól eltérő API-ként szerkeszthető és konfigurálható. Az egyik verzió módosítása nem érinti a másikat.
+6. A **v1** most az **Eredeti** API-tól eltérő API-ként szerkeszthető és konfigurálható. Az egyik verzió módosítása nem érinti a másikat.
 
 ## <a name="add-the-version-to-a-product"></a>A verzió hozzáadása egy termékhez
 

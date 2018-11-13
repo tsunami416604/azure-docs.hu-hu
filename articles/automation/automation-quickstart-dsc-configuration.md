@@ -7,16 +7,16 @@ ms.component: dsc
 keywords: dsc, konfigurálás, automatizálás
 author: KrisBash
 ms.author: krbash
-ms.date: 12/17/2017
+ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 959171963bcdc721c81823fcf4f9769174b32636
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 7a9e394213ef40b995cb048c71f14a190e5e7970
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34053715"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243692"
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Konfigurálás Linux rendszerű virtuális gépen a Desired State Configurationnel
 
@@ -30,20 +30,20 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 * Egy Azure Automation-fiókra. Azure Automation futtató fiók létrehozásával kapcsolatos információkért tekintse meg az [Azure-beli futtató fiókkal](automation-sec-configure-azure-runas-account.md) kapcsolatos részt.
 * Red Hat Enterprise Linux, CentOS vagy Oracle Linux rendszert futtató Azure Resource Manager-alapú virtuális gép (nem klasszikus). A virtuális gépek létrehozásával kapcsolatos útmutatásért tekintse meg [az első Linux virtuális gép Azure Portallal való létrehozását](../virtual-machines/linux/quick-create-portal.md) bemutató cikket.
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
-Jelentkezzen be az Azure-ba a https://portal.azure.com címen
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+Jelentkezzen be az Azure-ba a https://portal.azure.com címen.
 
 ## <a name="onboard-a-virtual-machine"></a>Virtuális gép előkészítése
 Különböző módszerekkel készíthetők elő a gépek és engedélyezhető a Desired State Configuration. Ez a rövid útmutató az Automation-fiókon keresztüli előkészítést részletezi. A gépek Desired State Configurationnel való előkészítésének módszereiről az [előkészítéssel](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding) foglalkozó cikkben talál további információkat.
 
 1. Az Azure Portal bal oldali panelén válassza az **Automation-fiókok** elemet. Ha nem látja ezt az elemet a bal oldali panelen, kattintson a **Minden szolgáltatás** elemre, és keressen rá az eredményül kapott nézetben.
 1. Válasszon egy Automation-fiókot a listában.
-1. Az Automation-fiók bal oldali panelén válassza a **DSC-csomópontok** elemet.
-1. Kattintson az **Azure-beli virtuális gép hozzáadása** menüelemére.
-1. Keresse meg azt a virtuális gépet, amelyhez engedélyezni szeretné a DSC-t. A keresőmező és a szűrési lehetőségek használatával kereshet meg egy adott virtuális gépet.
-1. Kattintson a virtuális gépre, majd válassza a **Csatlakozás** elemet.
-1. Válassza ki a virtuális géphez megfelelő DSC-beállításokat. Ha már előkészített egy konfigurációt, megadhatja azt a *Csomópont-konfiguráció neveként*. Beállíthatja a [konfigurációs módot](https://docs.microsoft.com/powershell/dsc/metaconfig) a gép konfigurációs viselkedésének vezérléséhez.
-1. Kattintson az **OK** gombra
+1. Az Automation-fiók bal oldali panelén válassza az **Állapotkonfiguráció (DSC)** elemet.
+2. Kattintson a **Hozzáadás** elemre a virtuális gép kiválasztását lehetővé tevő oldal megnyitásához.
+3. Keresse meg azt a virtuális gépet, amelyhez engedélyezni szeretné a DSC-t. A keresőmező és a szűrési lehetőségek használatával kereshet meg egy adott virtuális gépet.
+4. Kattintson a virtuális gépre, majd válassza a **Csatlakozás** elemet.
+5. Válassza ki a virtuális géphez megfelelő DSC-beállításokat. Ha már előkészített egy konfigurációt, megadhatja azt a *Csomópont-konfiguráció neveként*. Beállíthatja a [konfigurációs módot](https://docs.microsoft.com/powershell/dsc/metaconfig) a gép konfigurációs viselkedésének vezérléséhez.
+6. Kattintson az **OK** gombra
 
 ![Azure-beli virtuális gép előkészítése a DSC-hez](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
 
@@ -101,10 +101,10 @@ configuration LAMPServer {
 
 A konfiguráció importálása:
 
-1. Az Automation-fiók bal oldali panelén válassza a **DSC-konfigurációk** elemet.
-1. Kattintson a **Konfiguráció hozzáadása** menüelemre
-1. Válassza ki az előző lépésben mentett *konfigurációs fájlt*
-1. Kattintson az **OK** gombra
+1. Az Automation-fiók bal oldali panelén válassza az **Állapotkonfiguráció (DSC)** elemet, majd kattintson a **Konfigurációk** lapra.
+2. Kattintson a **+ Hozzáadás** lehetőségre
+3. Válassza ki az előző lépésben mentett *konfigurációs fájlt*
+4. Kattintson az **OK** gombra
 
 ## <a name="compile-a-configuration"></a>Konfiguráció fordítása
 
@@ -112,18 +112,16 @@ A DSC-konfigurációkat csomópont-konfigurációvá (MOF-dokumentummá) kell fo
 
 Konfiguráció fordítása:
 
-1. Az Automation-fiók bal oldali panelén válassza a **DSC-konfigurációk** elemet.
+1. Az Automation-fiók bal oldali panelén válassza az **Állapotkonfiguráció (DSC)** elemet, majd kattintson a **Konfigurációk** lapra.
 1. Válassza ki az előző lépésben importált „LAMPServer” konfigurációt
 1. A menüelemekért kattintson a **Fordítás** elemre, majd az **Igen** gombra
 1. A Konfiguráció nézet sorában megjelenik egy új *Fordítási feladat*. Amikor a feladat sikeresen elkészül, továbbléphet a következő lépésre. Hiba esetén a részletekért a fordítási feladatra kattinthat.
-
-![Fordítási feladat állapota](./media/automation-quickstart-dsc-configuration/dsc-compilationjob.png)
 
 ## <a name="assign-a-node-configuration"></a>Csomópont-konfiguráció hozzárendelése
 
 A lefordított *Csomópont-konfigurációk* DSC-csomópontokhoz rendelhetők. A hozzárendelés a gépre alkalmazza a konfigurációt, és monitorozza (vagy automatikusa kijavítja) a konfigurációtól való eltéréseket.
 
-1. Az Automation-fiók bal oldali panelén válassza a **DSC-csomópontok** elemet
+1. Az Automation-fiók bal oldali panelén válassza az **Állapotkonfiguráció (DSC) elemet, majd kattintson a **Csomópontok** lapra.
 1. Válassza ki azt a csomópontot, amelyhez konfigurációt szeretne rendelni
 1. Kattintson a **Csomópont-konfiguráció hozzárendelése** elemre
 1. Válassza a *Csomópont-konfiguráció* - **LAMPServer.localhost** elemet a hozzárendeléshez, és kattintson az **OK** gombra
@@ -133,7 +131,7 @@ A lefordított *Csomópont-konfigurációk* DSC-csomópontokhoz rendelhetők. A 
 
 ## <a name="viewing-node-status"></a>Csomópont állapotának megtekintése
 
-Az összes felügyelt csomópont állapota megtalálható az Automation-fiók **DSC-csomópontok** nézetében. Állapot, csomópont-konfiguráció vagy névkeresés alapján szűrheti a megjelenítést. 
+Az összes felügyelt csomópont állapota megtalálható az Automation-fiók **Állapotkonfiguráció (DSC)** felületének **Csomópontok** lapján. Állapot, csomópont-konfiguráció vagy névkeresés alapján szűrheti a megjelenítést.
 
 ![DSC-csomópont állapota](./media/automation-quickstart-dsc-configuration/dsc-node-status.png)
 

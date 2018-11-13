@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 31ef8577a2304091fc4df1b394555c4b30fcf96e
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 027b370d2497822dcbd6f3958556357957f9e8f5
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165362"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964662"
 ---
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -19,7 +19,7 @@ Jelentkezzen be az Azure-előfizetésbe a `Connect-AzureRmAccount` paranccsal, �
 Connect-AzureRmAccount
 ```
 
-Ha nem tudja, melyik helyet szeretné használni, kilistázhatja az elérhető helyeket. A megjelenő listában keresse meg a használni kívánt helyet. Ez a példa az **eastus** helyet használja. Tárolja el ezt egy változóban, és használja azt, így szükség esetén csak egy helyen kell módosítania az adatokat.
+Ha nem tudja, melyik helyet szeretné használni, kilistázhatja az elérhető helyeket. A következő példakóddal jelenítse meg a helyek listáját, és keresse meg azt, amelyiket használni szeretné. Ez a példa az **eastus** helyet használja. Tárolja a helyet egy változóban, és használja azt, így szükség esetén csak egy helyen kell módosítania az adatokat.
 
 ```powershell
 Get-AzureRmLocation | select Location 
@@ -37,13 +37,13 @@ New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Hozzon létre egy szabványos, általános célú tárfiókot LRS-replikációval a [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) parancsmag használatával, majd olvassa be a tárfiók környezetét, mely definiálja a használandó tárfiókot. Ha a tárfiókokkal való munka során erre a környezetre hivatkozik, nem kell minden alkalommal megadnia a hitelesítő adatokat. A példában egy *mystorageaccount* nevű tárfiókot hozunk létre helyileg redundáns tárolással (LRS) és blobtitkosítással (alapértelmezés szerint aktív).
+Hozzon létre egy szabványos, általános célú tárfiókot LRS-replikációval a [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) használatával. Következő lépésként kérje le a tárfiókkörnyezetet, amely meghatározza a használni kívánt tárfiókot. Ha a tárfiókokkal való munka során erre a környezetre hivatkozik, nem kell minden alkalommal megadnia a hitelesítő adatokat. A következő példa használatával egy *mystorageaccount* nevű tárfiókot hozhat létre helyileg redundáns tárolással (LRS) és (alapértelmezés szerint bekapcsolt) blobtitkosítással.
 
 ```powershell
 $storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
   -Name "mystorageaccount" `
-  -Location $location `
   -SkuName Standard_LRS `
+  -Location $location `
   -Kind Storage
 
 $ctx = $storageAccount.Context

@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: 69eafaa3be7a966bec179713d3e7eecd48ea3b67
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 67cd78d4900b8ce53cf0c50116c02a9c1b967687
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243690"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958763"
 ---
-# <a name="manage-database-account"></a>Adatbázisfiók kezelése
+# <a name="manage-database-accounts-in-azure-cosmos-db"></a>Adatbázisfiókok kezelése az Azure Cosmos DB-ben
 
-Ez a cikk ismerteti, hogyan kezelheti Cosmos DB-fiókját: többkiszolgálós környezet beállítását, régiók hozzáadását és eltávolítását, több írási régió konfigurálását és a feladatátvételi prioritásokat. 
+Ez a cikk ismerteti, hogyan kezelheti Cosmos DB-fiókját: többkiszolgálós környezet beállítását, régiók hozzáadását és eltávolítását, több írási régió konfigurálását és a feladatátvételi prioritások beállítását. 
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
@@ -33,7 +33,7 @@ az cosmosdb create --name <Cosmos DB Account name> --resource-group <Resource Gr
 
 ## <a name="configure-clients-for-multi-homing"></a>Ügyfelek konfigurálása többkiszolgálós környezethez
 
-### <a id="configure-clients-multi-homing-dotnet"></a>.NET
+### <a id="configure-clients-multi-homing-dotnet"></a>.NET SDK
 
 ```csharp
 // Create a new Connection Policy
@@ -54,7 +54,7 @@ policy.PreferredLocations.Add("North Europe");
 DocumentClient client = new DocumentClient(new Uri(this.accountEndpoint), this.accountKey, policy);
 ```
 
-### <a id="configure-clients-multi-homing-java-async"></a>Java Async
+### <a id="configure-clients-multi-homing-java-async"></a>Java Async SDK
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -66,7 +66,7 @@ AsyncDocumentClient client =
                 .withConnectionPolicy(policy).build();
 ```
 
-### <a id="configure-clients-multi-homing-java-sync"></a>Java Sync
+### <a id="configure-clients-multi-homing-java-sync"></a>Java Sync SDK
 
 ```java
 ConnectionPolicy connectionPolicy = new ConnectionPolicy();
@@ -76,7 +76,7 @@ connectionPolicy.setPreferredLocations(preferredLocations);
 DocumentClient client = new DocumentClient(accountEndpoint, accountKey, connectionPolicy);
 ```
 
-### <a id="configure-clients-multi-homing-javascript"></a>Node.js/JavaScript/TypeScript
+### <a id="configure-clients-multi-homing-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 // Set up the connection policy with your preferred regions
@@ -91,7 +91,7 @@ const client = new CosmosClient({
 });
 ```
 
-### <a id="configure-clients-multi-homing-python"></a>Python
+### <a id="configure-clients-multi-homing-python"></a>Python SDK
 
 ```python
 connection_policy = documents.ConnectionPolicy()
@@ -212,7 +212,7 @@ Az alábbi JSON-kód példa egy Resource Manager-sablonra. A segítségével üz
 
    ![Adatok globális replikálása menü](./media/how-to-manage-database-account/replicate-data-globally.png)
 
-3. A **Manuális feladatátvétel** menüben válassza ki az új írási régiót, és a négyzetet bejelölve erősítse meg, hogy megértette, ezzel módosul az írási régió.
+3. A **Manuális feladatátvétel** menüben válassza ki az új írási régiót, és a négyzetet bejelölve erősítse meg, hogy megértette, ezzel a beállítással módosul az írási régió.
 
 4. A feladatátvételi művelet elindításához kattintson az OK gombra.
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 09/19/2018
 ms.author: tamram
-ms.openlocfilehash: 10b54d20f73a16bdc723f60019b1184b01812508
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 4aa78fe91d5813e9b1fa8abd30c8b8720ea510e4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138123"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278401"
 ---
 # <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript-preview"></a>Rövid útmutató: Blobok feltöltése, letöltése, listázása és törlése a JavaScripthez készült Azure Storage SDK 10-es verziójának (előzetes verzió) használatával
 
@@ -349,3 +349,4 @@ Ez a rövid útmutató azt mutatja be, hogyan kezelhetők a blobok és tárolók
 
 > [!div class="nextstepaction"]
 > [A JavaScripthez készült Azure Storage SDK 10-es verziójának adattára](https://github.com/Azure/azure-storage-js)
+> [JavaScript API-referencia](https://docs.microsoft.com/en-us/javascript/api/overview/azure/storage/client?view=azure-node-preview)

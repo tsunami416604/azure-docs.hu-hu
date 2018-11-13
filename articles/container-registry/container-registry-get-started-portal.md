@@ -5,15 +5,15 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 03/03/2018
+ms.date: 11/06/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a75d7e599b10b1d56bd41db1d6785dace67d5d06
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 1e039c465bf37e0ee5ca1db5837798680e27463d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857839"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278667"
 ---
 # <a name="quickstart-create-a-container-registry-using-the-azure-portal"></a>Rövid útmutató: Tárolóregisztrációs adatbázis létrehozása az Azure Portalon
 
@@ -27,11 +27,11 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
 
-Válassza az **Erőforrás létrehozása** > **Tárolók** > **Azure Container Registry** elemet.
+Válassza az **Erőforrás létrehozása** > **Tárolók** > **Container Registry** elemet.
 
 ![Tároló-beállításjegyzék létrehozása az Azure Portalon][qs-portal-01]
 
-Adjon meg értékeket az **Adatbázis neve** és **Erőforráscsoport** mezőkben. A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 5–50 alfanumerikus karaktert kell tartalmaznia. Hozzon létre egy `myResourceGroup` nevű új erőforráscsoportot, majd a **Termékváltozat** mezőben válassza az „Alapszintű” lehetőséget. Kattintson a **Létrehozás** elemre az ACR-példány üzembe helyezéséhez.
+Adjon meg értékeket az **Adatbázis neve** és **Erőforráscsoport** mezőkben. A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 5–50 alfanumerikus karaktert kell tartalmaznia. Ebben a rövid útmutatóban hozzon létre egy `myResourceGroup` nevű új erőforráscsoportot az `West US` nevű helyen, majd a **Termékváltozat** mezőben válassza az „Alapszintű” lehetőséget. Kattintson a **Létrehozás** elemre az ACR-példány üzembe helyezéséhez.
 
 ![Tároló-beállításjegyzék létrehozása az Azure Portalon][qs-portal-03]
 
@@ -71,29 +71,29 @@ Ahhoz, hogy rendszerképet tudjon küldeni az Azure Container Registry-be, elős
 docker pull microsoft/aci-helloworld
 ```
 
-Mielőtt leküldi a rendszerképet a beállításjegyzékbe, fel kell címkéznie az ACR bejelentkezési kiszolgáló nevével. Címkézze fel a rendszerképet a [docker tag][docker-tag] parancs használatával. Cserélje le a *bejelentkezési kiszolgáló* értéket a korábban feljegyzett bejelentkezési kiszolgáló nevére.
+Mielőtt leküldi a rendszerképet a beállításjegyzékbe, fel kell címkéznie az ACR bejelentkezési kiszolgáló nevével. Címkézze fel a rendszerképet a [docker tag][docker-tag] parancs használatával. Cserélje le a *bejelentkezési kiszolgáló* értéket a korábban feljegyzett bejelentkezési kiszolgáló nevére. Adjon hozzá egy *adattárnevet* (például: **`myrepo`**) a képei adattárban való elhelyezéséhez.
 
 ```bash
-docker tag microsoft/aci-helloworld <login server>/aci-helloworld:v1
+docker tag microsoft/aci-helloworld <login server>/<repository name>/aci-helloworld:v1
 ```
 
-Végül a [docker push][docker-push] paranccsal küldje le a rendszerképet az ACR-példányba. Cserélje le a *bejelentkezési kiszolgáló* értéket ACR-példánya bejelentkezési kiszolgálójának nevére.
+Végül a [docker push][docker-push] paranccsal küldje le a rendszerképet az ACR-példányba. Cserélje le a *bejelentkezési kiszolgáló* értéket az ACR-példánya bejelentkezési kiszolgálójának nevére, és cserélje le az *adattár nevét* az előző parancsban használt adattár nevére.
 
 ```bash
-docker push <login server>/aci-helloworld:v1
+docker push <login server>/<repository name>/aci-helloworld:v1
 ```
 
 A sikeres `docker push` parancs kimenete ehhez hasonló:
 
 ```
-The push refers to a repository [uniqueregistryname.azurecr.io/aci-helloworld]
-7c701b1aeecd: Pushed
-c4332f071aa2: Pushed
-0607e25cc175: Pushed
+The push refers to repository [specificregistryname.azurecr.io/myrepo/aci-helloworld]
+31ba1ebd9cf5: Pushed
+cd07853fe8be: Pushed
+73f25249687f: Pushed
 d8fbd47558a8: Pushed
 44ab46125c35: Pushed
 5bef08742407: Pushed
-v1: digest: sha256:f2867748615cc327d31c68b1172cc03c0544432717c4d2ba2c1c2d34b18c62ba size: 1577
+v1: digest: sha256:565dba8ce20ca1a311c2d9485089d7ddc935dd50140510050345a1b0ea4ffa6e size: 1576
 ```
 
 ## <a name="list-container-images"></a>Tárolórendszerképek listázása
@@ -114,7 +114,7 @@ Válassza a megjelenő helyi menü **Run instance** (Példány futtatása) elem�
 
 ![ACI indítása – helyi menü][qs-portal-11]
 
-Töltse ki a **Tárolónév** mezőt, ellenőrizze, hogy a megfelelő előfizetés van kijelölve, az **Erőforráscsoport** részen válassza a meglévő „myResourceGroup” erőforráscsoportot, majd kattintson az **OK** gombra az Azure Container Instance-példány elindításához.
+Töltse ki a **Tárolónév** mezőt, ellenőrizze, hogy a megfelelő előfizetés van-e kijelölve, és válassza a meglévő myResourceGroup **erőforráscsoportot**. Az **Igen** lehetőség kiválasztásával győződjön meg arról, hogy a „Nyilvános IP-cím” beállítás engedélyezve van, majd kattintson az **OK** gombra az Azure Container Instance elindításához.
 
 ![ACI indítása – üzembehelyezési beállítások][qs-portal-12]
 
@@ -136,7 +136,7 @@ Ha a tároló **Fut** állapotú, a kedvenc böngészőjében nyissa meg az elő
 
 Az erőforrások eltávolításához lépjen a **myResourceGroup** erőforráscsoporthoz a portálon. Miután az erőforráscsoport betöltött, kattintson az **Erőforráscsoport törlése** lehetőségre az erőforráscsoport, az Azure Container Registry és az Azure Container Instances eltávolításához.
 
-![Tároló-beállításjegyzék létrehozása az Azure Portalon][qs-portal-08]
+![Erőforráscsoport törlése az Azure Portalon][qs-portal-08]
 
 ## <a name="next-steps"></a>További lépések
 

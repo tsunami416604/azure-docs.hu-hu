@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/25/2018
+ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: c3c0d9bb6da00272cc7da0ad9f4fae978552c39b
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 48bedff0cd09c3f0dbffdabe6a94847d035a0cf9
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352610"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963931"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Oktatóanyag: A hibrid Azure Active Directory-csatlakozás konfigurálása felügyelt tartományokhoz
 
@@ -140,6 +140,9 @@ Ha a tartományhoz csatlakoztatott eszközök között korábbi verziójú Windo
  
 - A helyi intranet-beállítások konfigurálása az eszközregisztrációhoz
 
+- A korábbi verziójú Windows-eszközök vezérlése 
+
+
 ### <a name="update-device-settings"></a>Eszközbeállítások frissítése 
 
 A korábbi verziójú Windows-eszközök regisztrálásának feltétele, hogy az eszközbeállításokban be legyen állítva, hogy a felhasználók regisztrálhassák az eszközöket az Azure AD-ben. Ez a beállítás az Azure Portalon a következő helyen található:
@@ -163,6 +166,12 @@ A korábbi verziójú Windows-eszközök sikeres hibrid Azure AD-csatlakoztatás
 - `https://autologon.microsoftazuread-sso.com`.
 
 Emellett engedélyezni kell **az állapotsor szkriptekkel való frissítését** a felhasználó helyi intranetes zónájában.
+
+
+### <a name="control-windows-down-level-devices"></a>A korábbi verziójú Windows-eszközök vezérlése 
+
+A korábbi verziójú Windows-eszközök regisztrálásához a Letöltőközpontból le kell töltenie, majd telepítenie kell egy Windows Installer-csomagot (.msi). További információért kattintson [ide](hybrid-azuread-join-control.md#control-windows-down-level-devices). 
+
 
 ## <a name="verify-the-registration"></a>A regisztráció ellenőrzése
 

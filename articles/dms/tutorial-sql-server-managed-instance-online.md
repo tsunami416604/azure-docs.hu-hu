@@ -1,5 +1,5 @@
 ---
-title: Az SQL Server online migrálása egy felügyelt Azure SQL Database-példányra az Azure Database Migration Service használatával | Microsoft Docs
+title: 'Oktatóanyag: Az SQL Server online migrálása egy felügyelt Azure SQL Database-példányra az Azure Database Migration Service használatával | Microsoft Docs'
 description: Ismerje meg, hogyan végezhet online migrálást a helyszíni SQL Serverről egy felügyelt Azure SQL Database-példányra az Azure Database Migration Service használatával.
 services: dms
 author: pochiraju
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 4d46a438708e2e72d625f5104293b4605f7b096d
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: ab869e53810f049593803d58b3df75d0c083bbd2
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946079"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962894"
 ---
-# <a name="migrate-sql-server-to-azure-sql-database-managed-instance-online-using-dms"></a>SQL Server online migrálása felügyelt Azure SQL Database-példányra a DMS használatával
+# <a name="tutorial-migrate-sql-server-to-azure-sql-database-managed-instance-online-using-dms"></a>Oktatóanyag: SQL Server online migrálása felügyelt Azure SQL Database-példányra a DMS használatával
 Az Azure Database Migration Service használatával minimális állásidővel migrálhatja egy helyszíni SQL Server-példány adatbázisait egy [felügyelt Azure SQL Database-példányra](../sql-database/sql-database-managed-instance.md). Ha olyan módszerek is érdeklik, amelyek esetenként manuális beavatkozást is igényelhetnek, tekintse át az [SQL Server-példány felügyelt Azure SQL Database-példányra történő migrálásával](../sql-database/sql-database-managed-instance-migrate.md) foglalkozó témakört.
 
 >[!IMPORTANT]
@@ -145,7 +145,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 
 3. Adja meg az **SQL-felhasználót** és a **jelszót** a célként szolgáló felügyelt Azure SQL Database-példányhoz való csatlakozáshoz.
 
-       ![Select Target](media\tutorial-sql-server-to-managed-instance-online\dms-target-details3.png)
+    ![Cél kiválasztása](media\tutorial-sql-server-to-managed-instance-online\dms-target-details3.png)
 
 2.  Kattintson a **Mentés** gombra.
 

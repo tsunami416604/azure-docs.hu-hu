@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/08/2018
+ms.date: 11/01/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 21ac3de793f5ce559c3a03de2a09f11ccb86b12a
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 6bd3c1b2cdbd83673a181ee7e088adb39749036e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167358"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963846"
 ---
 # <a name="tutorial-install-azure-data-box-edge-preview"></a>Oktatóanyag: Az Azure Data Box Edge (előzetes verzió) üzembe helyezése
 
@@ -111,8 +111,14 @@ Az eszköz kábelezésének megkezdéséhez az alábbiakra lesz szüksége:
 
 - Kicsomagolt és kiszolgálószekrénybe szerelt állapotú Edge fizikai eszköz.
 - Két tápkábel. 
-- Két 1-GbE RJ-45 hálózati kábel és négy 25-GbE SFP+ rézkábel.
+- Legalább egy 1-GbE RJ-45 hálózati kábel a felügyeleti felülethez való csatlakozáshoz. Az eszközön két 1-GbE hálózati adapter (egy felügyeleti és egy adathálózati) található.
+- Egy 25-GbE SFP+ rézkábel minden konfigurálni kívánt adathálózati adapterhez. Legalább egy adathálózati adaptert (PORT 2, PORT 3, PORT 4, PORT 5 vagy PORT 6) az internethez kell csatlakoztatni (csatlakozás az Azure-hoz).
 - Hozzáférés két áramelosztó egységhez (ajánlott).
+
+> [!NOTE]
+> - Ha csak egyetlen adathálózati adaptert csatlakoztat, az adatok Azure-ra való küldéséhez egy 25-GbE hálózati adapter használatát (pl. PORT 3, PORT 4, PORT 5 vagy PORT 6) javasoljuk. 
+> - A legjobb teljesítmény érdekében és nagy mennyiségű adat kezeléséhez fontolja meg az összes adatport csatlakoztatását.
+> - Az Edge-eszköznek csatlakoznia kell az adatközponti hálózathoz, hogy fel tudja dolgozni az adatforrás-kiszolgálókról érkező adatokat. 
 
 Az Edge-eszköz 8 NVMe SSD-vel rendelkezik. Az előlapon találhatók az állapotjelző LED-ek és a bekapcsológomb. Az eszközön a redundáns tápegységek hátul találhatók. Az eszköznek hat hálózati adaptere van: két 1 Gbps-adapter és négy 25 Gbps-adapter. Az eszköz rendelkezik alaplapi felügyeleti vezérlővel. Keresse meg a különböző portokat az eszköz hátlapján.
  
@@ -123,13 +129,7 @@ Kövesse az alábbi lépéseket az eszköz tápkábellel és hálózati kábelle
 1. Csatlakoztassa a tápkábeleket a burkolat egy-egy tápegységéhez. A magas rendelkezésre állás biztosításához az egyes tápegységeket különböző áramforrásokhoz csatlakoztassa.
 2. Csatlakoztassa a tápkábeleket a kiszolgálószekrény áramelosztó egységeihez (PDU-k). Ügyeljen arra, hogy a két tápegység külön áramforrást használjon.
 3. Csatlakoztassa a PORT 1 jelölésű 1-GbE hálózati adaptert a fizikai eszköz konfigurálásához használt számítógéphez. A PORT 1 a dedikált felügyeleti felület.
-4. Csatlakoztassa a PORT 2 jelölésű 1-GbE hálózati adaptert az RJ-45 hálózati kábelekkel az adatközpont hálózatához vagy az internethez. 
-5. Csatlakoztassa a négy 25-GbE hálózati adaptert (PORT 3, PORT 4, PORT 5 és PORT 6) az adatközpont hálózatához vagy az internethez SFP+ rézkábelekkel. 
-
-> [!NOTE]
-> - Legalább egy adathálózati adaptert (PORT 2, PORT 3, PORT 4, PORT 5 vagy PORT 6) az internethez kell csatlakoztatni (csatlakozás az Azure-hoz). 
-> - Az adatok Azure-ra való küldéséhez egy 25-GbE hálózati adapter használatát (pl. PORT 3, PORT 4, PORT 5 vagy PORT 6) javasoljuk. 
-> - Az Edge-eszköznek csatlakoznia kell az adatközponti hálózathoz, hogy fel tudja dolgozni az adatforrás-kiszolgálókról érkező adatokat.  
+4. A PORT 2, PORT 3, PORT 4, PORT 5 vagy PORT 6 közül legalább egyet az adatközponti hálózathoz/internethez kell csatlakoztatni. A PORT 2 csatlakoztatása esetén használja az RJ-45 hálózati kábelt. A 25-GbE hálózati adapterek esetén használja az SFP+ rézkábeleket.  
 
 
 ## <a name="next-steps"></a>További lépések

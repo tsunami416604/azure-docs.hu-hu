@@ -3,7 +3,7 @@ title: Az Azure Event Grid használata a feltöltött képek átméretezésének
 description: Az Azure Event Grid a blobok Azure Storage-ba való feltöltésekor aktiválódhat. A segítségével Azure Storage-ba feltöltött képfájlokat küldhet más szolgáltatásoknak, például az Azure Functions szolgáltatásnak átméretezés vagy egyéb javítás céljából.
 services: event-grid, functions
 author: ggailey777
-manager: cfowler
+manager: jpconnoc
 editor: ''
 ms.service: event-grid
 ms.tgt_pltfrm: na
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/29/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 2d94389ade02cb6e61f192e9b9e8adb8f8ceec31
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 2a60084577255b9aa88700509129b8d917c43a79
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585577"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282506"
 ---
 # <a name="automate-resizing-uploaded-images-using-event-grid"></a>Feltöltött képek átméretezésének automatizálása az Event Grid használatával
 
@@ -158,19 +158,18 @@ Az esemény-előfizetés jelzi, hogy melyik szolgáltató eseményeit kívánja 
 
 3. Használja a táblázatban megadott esemény-előfizetési beállításokat.
     
-    ![Esemény-előfizetés létrehozása a függvényből az Azure Portalon](./media/resize-images-on-storage-blob-upload-event/event-subscription-create-flow.png)
+    ![Esemény-előfizetés létrehozása a függvényből az Azure Portalon](./media/resize-images-on-storage-blob-upload-event/event-subscription-create.png)
 
     | Beállítás      | Ajánlott érték  | Leírás                                        |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Name (Név)** | imageresizersub | Az új esemény-előfizetés azonosítóneve. | 
     | **Témakörtípus** |  Tárfiókok | Válassza ki a Storage-fiók eseményszolgáltatóját. | 
     | **Előfizetés** | Az Azure-előfizetése | Alapértelmezés szerint az aktuális Azure-előfizetés van kiválasztva.   |
     | **Erőforráscsoport** | myResourceGroup | Válassza a **Meglévő használata** elemet, majd válassza ki az oktatóanyagban használt erőforráscsoportot.  |
-    | **Példány** |  Saját Blob Storage-fiók |  Válassza ki a létrehozott Blob Storage-fiókot. |
+    | **Erőforrás** |  Saját Blob Storage-fiók |  Válassza ki a létrehozott Blob Storage-fiókot. |
     | **Eseménytípusok** | Létrehozott blob | Törölje a jelölést az összes típus mellől a **Létrehozott blob** kivételével. A rendszer csak a `Microsoft.Storage.BlobCreated` eseménytípusokat adja át a függvénynek.| 
-    | **Előfizető típusa** |  Webhook |  A webhook és az Event Hubs közül választhat. |
+    | **Előfizető típusa** |  automatikusan létrehozott |  Előre meg van határozva webhookként. |
     | **Előfizető végpontja** | automatikusan létrehozott | Használja a rendszer által létrehozott végpont URL-címét. | 
-    | **Előtagszűrő** | /blobServices/default/containers/images/blobs/ | Csak a **képek** tároló Storage-eseményeit szűri.| 
+    | **Name (Név)** | imageresizersub | Az új esemény-előfizetés azonosítóneve. | 
 
 4. Kattintson a **Létrehozás** gombra az esemény-előfizetés hozzáadásához. Ez létrehoz egy esemény-előfizetést, amely aktiválja az `imageresizerfunc` függvényt, amikor a *képek* tárolóba bekerül egy blob. A függvény átméretezi a képeket, és hozzáadja őket a *miniatűrök* tárolóhoz.
 

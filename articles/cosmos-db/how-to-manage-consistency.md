@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: aa42737274432180540584c01a7125c1a9765b49
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: be2c68922221af848c9e484d03527d02808c071a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243656"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283818"
 ---
-# <a name="manage-consistency"></a>Konzisztencia kezelése
+# <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Az Azure Cosmos DB konzisztenciaszintjeinek kezelése
 
 Ez a cikk ismerteti az alapértelmezett konzisztencia beállításának különböző módjait, a konzisztencia felülírását az ügyfélen, a munkamenet-jogkivonatok manuális kezelését, valamint a valószínűség alapján korlátozott frissesség (PBS) metrika működését.
 
@@ -70,7 +70,7 @@ Az alapértelmezett konzisztenciaszint megtekintéséhez vagy módosításához 
 
 Az ügyfelek felülírhatják a szolgáltatás által beállított alapértelmezett konzisztenciaszintet. Ezt megtehetik a teljes ügyfélre vonatkozóan vagy kérelmenként.
 
-### <a id="override-default-consistency-dotnet"></a>.NET
+### <a id="override-default-consistency-dotnet"></a>.NET SDK
 
 ```csharp
 // Override consistency at the client level
@@ -88,7 +88,7 @@ RequestOptions requestOptions = new RequestOptions { ConsistencyLevel = Consiste
 var response = await client.CreateDocumentAsync(collectionUri, document, requestOptions);
 ```
 
-### <a id="override-default-consistency-java-async"></a>Java Async
+### <a id="override-default-consistency-java-async"></a>Java Async SDK
 
 ```java
 // Override consistency at the client level
@@ -102,7 +102,7 @@ AsyncDocumentClient client =
                 .withConnectionPolicy(policy).build();
 ```
 
-### <a id="override-default-consistency-java-sync"></a>Java Sync
+### <a id="override-default-consistency-java-sync"></a>Java Sync SDK
 
 ```java
 // Override consistency at the client level
@@ -110,7 +110,7 @@ ConnectionPolicy connectionPolicy = new ConnectionPolicy();
 DocumentClient client = new DocumentClient(accountEndpoint, accountKey, connectionPolicy, ConsistencyLevel.Strong);
 ```
 
-### <a id="override-default-consistency-javascript"></a>Node.js/JavaScript/TypeScript
+### <a id="override-default-consistency-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 // Override consistency at the client level
@@ -123,7 +123,7 @@ const client = new CosmosClient({
 const { body } = await item.read({ consistencyLevel: ConsistencyLevel.Eventual });
 ```
 
-### <a id="override-default-consistency-python"></a>Python
+### <a id="override-default-consistency-python"></a>Python SDK
 
 ```python
 # Override consistency at the client level
@@ -135,7 +135,7 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.ac
 
 Ha manuálisan szeretné kezelni a munkamenet-jogkivonatokat, beszerezheti őket a válaszokból, és kérelmenként beállíthatja őket. Ha nem szeretné manuálisan kezelni a munkamenet-jogkivonatokat, nem kell használnia az alábbi példákat. Az SDK automatikusan nyomon követi a munkamenet-jogkivonatokat, és mindig a legújabbat használja, ha nem állít be manuálisan munkamenet-jogkivonatot.
 
-### <a id="utilize-session-tokens-dotnet"></a>.NET
+### <a id="utilize-session-tokens-dotnet"></a>.NET SDK
 
 ```csharp
 var response = await client.ReadDocumentAsync(
@@ -148,7 +148,7 @@ var response = await client.ReadDocumentAsync(
                 UriFactory.CreateDocumentUri(databaseName, collectionName, "SalesOrder1"), options);
 ```
 
-### <a id="utilize-session-tokens-java-async"></a>Java Async
+### <a id="utilize-session-tokens-java-async"></a>Java Async SDK
 
 ```java
 // Get session token from response
@@ -170,7 +170,7 @@ requestOptions.setSessionToken(sessionToken);
 Observable<ResourceResponse<Document>> readObservable = client.readDocument(document.getSelfLink(), options);
 ```
 
-### <a id="utilize-session-tokens-java-sync"></a>Java Sync
+### <a id="utilize-session-tokens-java-sync"></a>Java Sync SDK
 
 ```java
 // Get session token from response
@@ -183,7 +183,7 @@ options.setSessionToken(sessionToken);
 ResourceResponse<Document> response = client.readDocument(documentLink, options);
 ```
 
-### <a id="utilize-session-tokens-javascript"></a>Node.js/JavaScript/TypeScript
+### <a id="utilize-session-tokens-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 // Get session token from response
@@ -194,7 +194,7 @@ const sessionToken = headers["x-ms-session-token"];
 const { body } = await item.read({ sessionToken });
 ```
 
-### <a id="utilize-session-tokens-python"></a>Python
+### <a id="utilize-session-tokens-python"></a>Python SDK
 
 ```python
 // Get the session token from the last response headers

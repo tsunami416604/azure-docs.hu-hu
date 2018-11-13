@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 11/07/2018
 ms.author: daveba
-ms.openlocfilehash: 57f9def09f498c3fc644cbee979d5ae552f2206c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 61b176f4f1fccbb975ee53de497d5afcc8ede060
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46369393"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238114"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Oktatóanyag: Hozzáférés az Azure SQL-hez egy Windows VM rendszer által hozzárendelt felügyelt identitásával
 
@@ -29,9 +29,8 @@ Az oktatóanyag bemutatja, hogyan használhat rendszer által hozzárendelt iden
 
 > [!div class="checklist"]
 > * Azure SQL Server-hozzáférés engedélyezése a VM számára
-> * Csoport létrehozása az Azure AD-ban, és a VM rendszer által hozzárendelt felügyelt identitásának felvétele a csoportba
 > * Azure AD-hitelesítés engedélyezése az SQL-kiszolgáló számára
-> * Az Azure AD-csoportot képviselő tartalmazott felhasználó létrehozása az adatbázisban
+> * A virtuális gép rendszerhez hozzárendelt identitását képviselő tartalmazott felhasználó létrehozása az adatbázisban
 > * Hozzáférési jogkivonat lekérése a VM identitásával, majd egy Azure SQL Server-kiszolgáló lekérdezése a jogkivonattal
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -48,74 +47,16 @@ Az oktatóanyag bemutatja, hogyan használhat rendszer által hozzárendelt iden
 
 ## <a name="grant-your-vm-access-to-a-database-in-an-azure-sql-server"></a>Hozzáférés engedélyezése a virtuális gép számára egy Azure SQL Server-adatbázishoz
 
-Most hozzáférést biztosíthat a virtuális gépnek egy Azure SQL Serveren található adatbázishoz.  Ehhez a lépéshez meglévő SQL-kiszolgálót használhat, de újat is létrehozhat.  Ha új kiszolgálót és adatbázist szeretne létrehozni az Azure Portalon, kövesse ennek az [Azure SQL rövid útmutatónak](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal) a lépéseit. Az [Azure SQL dokumentációjában](https://docs.microsoft.com/azure/sql-database/) olyan rövid útmutatók is vannak, amelyek az Azure CLI-t és az Azure PowerShellt használják.
+A virtuális gép egy Azure SQL Server-adatbázishoz való hozzáférésének engedélyezéséhez használhat egy meglévő SQL-kiszolgálót, vagy létrehozhat egy újat.  Ha új kiszolgálót és adatbázist szeretne létrehozni az Azure Portalon, kövesse ennek az [Azure SQL rövid útmutatónak](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal) a lépéseit. Az [Azure SQL dokumentációjában](https://docs.microsoft.com/azure/sql-database/) olyan rövid útmutatók is vannak, amelyek az Azure CLI-t és az Azure PowerShellt használják.
 
-Három lépés kell hozzá, hogy a VM hozzá tudjon férni egy adatbázishoz:
-1.  Létre kell hozni egy csoportot az Azure AD-ban, és a VM rendszer által hozzárendelt felügyelt identitását fel kell venni a csoportba.
-2.  Engedélyezni kell az Azure AD-hitelesítést az SQL-kiszolgáló számára.
-3.  Létre kell hozni egy **tartalmazott felhasználót** az adatbázisban, amely az Azure AD-csoportot fogja képviselni.
+Két lépés kell hozzá, hogy a VM hozzá tudjon férni egy adatbázishoz:
 
-> [!NOTE]
-> Általában egy olyan tartalmazott felhasználót érdemes létrehozni, aki közvetlenül a VM rendszer által hozzárendelt felügyelt identitásához van leképezve.  Az Azure SQL jelenleg nem engedélyez olyan Azure AD-szolgáltatásneveket, amelyek egy tartalmazott felhasználóra leképezni kívánt, VM-hez tartozó rendszer által hozzárendelt felügyelt identitást képviselnek.  Támogatott áthidaló megoldásként a VM rendszer által hozzárendelt felügyelt identitását egy Azure AD-csoport tagjává kell tenni, majd létre kell hozni a csoportot képviselő tartalmazott felhasználót az adatbázisban.
-
-
-## <a name="create-a-group-in-azure-ad-and-make-the-vms-system-assigned-managed-identity-a-member-of-the-group"></a>Csoport létrehozása az Azure AD-ban, és a VM rendszer által hozzárendelt felügyelt identitásának felvétele a csoportba
-
-Meglévő Azure AD-csoportot is használhat, de újat is létrehozhat az Azure AD PowerShell-lel.  
-
-Először telepítse az [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modult. Ezután jelentkezzen be a `Connect-AzureAD` paranccsal, és futtassa a következő parancsot a csoport létrehozásához, majd mentse azt egy változóban:
-
-```powershell
-$Group = New-AzureADGroup -DisplayName "VM managed identity access to SQL" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
-```
-
-A kimenet a következőképpen néz ki, amely a változó értékét is megvizsgálja:
-
-```powershell
-$Group = New-AzureADGroup -DisplayName "VM managed identity access to SQL" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
-$Group
-ObjectId                             DisplayName          Description
---------                             -----------          -----------
-6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 VM managed identity access to SQL
-```
-
-Ezután adja hozzá a VM rendszer által hozzárendelt felügyelt identitását a csoporthoz.  Szüksége van a rendszer által hozzárendelt felügyelt identitás **ObjectId** azonosítójára, amelyet az Azure PowerShell-lel kérhet le.  Először töltse le az [Azure PowerShellt](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Ezután jelentkezzen be a `Connect-AzureRmAccount` paranccsal, és futtassa az alábbi parancsokat, amelyekkel:
-- Meggyőződhet róla, hogy a munkamenet-környezet a kívánt Azure-előfizetéshez van beállítva, ha több előfizetéssel is rendelkezik.
-- Listázhatja az Azure-előfizetésekben elérhető erőforrásokat annak ellenőrzéséhez, hogy az erőforráscsoport és a virtuális gép neve megfelelő-e.
-- Lekérheti a VM rendszer által hozzárendelt felügyelt identitásának tulajdonságait a `<RESOURCE-GROUP>` és a `<VM-NAME>` megfelelő értékeivel.
-
-```powershell
-Set-AzureRMContext -subscription "bdc79274-6bb9-48a8-bfd8-00c140fxxxx"
-Get-AzureRmResource
-$VM = Get-AzureRmVm -ResourceGroup <RESOURCE-GROUP> -Name <VM-NAME>
-```
-
-A kimenet a következőképpen néz ki, amely a VM rendszer által hozzárendelt felügyelt identitás szolgáltatásnevének objektumazonosítóját is megvizsgálja:
-```powershell
-$VM = Get-AzureRmVm -ResourceGroup DevTestGroup -Name DevTestWinVM
-$VM.Identity.PrincipalId
-b83305de-f496-49ca-9427-e77512f6cc64
-```
-
-Most adja hozzá a VM rendszer által hozzárendelt felügyelt identitását a csoporthoz.  Csak az Azure AD PowerShell-lel adhat szolgáltatásnevet egy csoporthoz.  Futtassa ezt a parancsot:
-```powershell
-Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId $VM.Identity.PrincipalId
-```
-
-Ha később a csoporttagságot is megvizsgálja, a kimenet a következőképpen néz ki:
-
-```powershell
-Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId $VM.Identity.PrincipalId
-Get-AzureAdGroupMember -ObjectId $Group.ObjectId
-
-ObjectId                             AppId                                DisplayName
---------                             -----                                -----------
-b83305de-f496-49ca-9427-e77512f6cc64 0b67a6d6-6090-4ab4-b423-d6edda8e5d9f DevTestWinVM
-```
+1.  Engedélyezni kell az Azure AD-hitelesítést az SQL-kiszolgáló számára.
+2.  Létre kell hozni egy, a virtuális gép rendszerhez hozzárendelt identitását képviselő **tartalmazott felhasználót** az adatbázisban.
 
 ## <a name="enable-azure-ad-authentication-for-the-sql-server"></a>Azure AD-hitelesítés engedélyezése az SQL-kiszolgáló számára
 
-Most, hogy létrehozta a csoportot, majd a VM rendszer által hozzárendelt felügyelt identitását a tagjává tette, az alábbi lépésekkel [konfigurálhatja az SQL Server Azure AD-hitelesítését](/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-azure-sql-server):
+[Az SQL-kiszolgáló Azure AD-hitelesítésének konfigurálásához](/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-azure-sql-server) hajtsa végre az alábbi lépéseket:
 
 1.  Az Azure Portal bal oldali navigációs sávjában válassza az **SQL-kiszolgálók** elemet.
 2.  Kattintson az Azure AD-hitelesítéshez engedélyezni kívánt SQL-kiszolgálóra.
@@ -124,7 +65,7 @@ Most, hogy létrehozta a csoportot, majd a VM rendszer által hozzárendelt fel�
 5.  Válassza ki azt az Azure AD felhasználói fiókot, amelyet a kiszolgáló rendszergazdájává szeretne tenni, és kattintson a **Kiválasztás** lehetőségre.
 6.  Kattintson a **Mentés** gombra a parancssávon.
 
-## <a name="create-a-contained-user-in-the-database-that-represents-the-azure-ad-group"></a>Az Azure AD-csoportot képviselő tartalmazott felhasználó létrehozása az adatbázisban
+## <a name="create-a-contained-user-in-the-database-that-represents-the-vms-system-assigned-identity"></a>A virtuális gép rendszerhez hozzárendelt identitását képviselő tartalmazott felhasználó létrehozása az adatbázisban
 
 A következő lépéshez a [Microsoft SQL Server Management Studióra](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) lesz szüksége. Mielőtt hozzálátna, hasznos lehet áttekinteni az Azure AD-integráció hátterével foglalkozó következő cikkeket:
 
@@ -140,17 +81,23 @@ A következő lépéshez a [Microsoft SQL Server Management Studióra](https://d
 7.  Kattintson a **Connect** (Csatlakozás) gombra.  Fejezze be a bejelentkezést.
 8.  Az **Object Explorerben** bontsa ki a **Databases** (Adatbázisok) mappát.
 9.  Kattintson a jobb gombbal egy felhasználói adatbázisra, majd kattintson a **New Query** (Új lekérdezés) menüpontra.
-10.  A lekérdezési ablakban írja be a következő sort, és kattintson az eszköztár **Execute** (Végrehajtás) gombjára:
+10. A lekérdezési ablakban írja be a következő sort, és kattintson az eszköztár **Execute** (Végrehajtás) gombjára:
+
+    > [!NOTE]
+    > Az alábbi parancsban a `VMName` a virtuális gép neve, amelyen az előfeltételek szakaszban a rendszerhez hozzárendelt identitást engedélyezte.
     
      ```
-     CREATE USER [VM managed identity access to SQL] FROM EXTERNAL PROVIDER
+     CREATE USER [VMName] FROM EXTERNAL PROVIDER
      ```
     
-     A parancsnak sikeresen futnia kell, és létre kell hoznia a csoport tartalmazott felhasználóját.
+     A parancsnak sikeresen futnia kell, és létre kell hoznia a virtuális gép rendszerhez hozzárendelt identitásának tartalmazott felhasználóját.
 11.  Törölje a lekérdezési ablakot, írja be a következő sort, és kattintson az eszköztár **Execute** (Végrehajtás) gombjára:
+
+    > [!NOTE]
+    > Az alábbi parancsban a `VMName` a virtuális gép neve, amelyen az előfeltételek szakaszban a rendszerhez hozzárendelt identitást engedélyezte.
      
      ```
-     ALTER ROLE db_datareader ADD MEMBER [VM managed identity access to SQL]
+     ALTER ROLE db_datareader ADD MEMBER [VMName]
      ```
 
      A parancsnak sikeresen futnia kell, így a tartalmazott felhasználó képes lesz a teljes adatbázis olvasására.

@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 7e2225a173562be28840cb0a66913b9f8c9657ff
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4608e9ec0cd67b6c0f7ac23e27761b0355a5d738
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962045"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50911864"
 ---
 # <a name="quickstart-register-an-app-with-the-azure-active-directory-v10-endpoint"></a>Rövid útmutató: Alkalmazás regisztrálása az Azure Active Directory 1.0-s verziójú végpontján
 
@@ -31,7 +31,10 @@ A nagyvállalati fejlesztők és SaaS-szolgáltatók (szoftverszolgáltatók) az
 
 Az Azure AD képességeit felhasználó alkalmazásokat először regisztrálni kell egy Azure AD-bérlőben. A regisztrálási folyamat során a következő részleteket kell megadni az Azure AD-nek az alkalmazásról: az URL-cím, amelyen az alkalmazás megtalálható, az URL-cím, amelyre a rendszer a válaszokat küldi egy felhasználó hitelesítését követően, az alkalmazást azonosító URI, és így tovább.
 
-Ez a rövid útmutató bemutatja, hogyan adhat hozzá és regisztrálhat egy alkalmazást az Azure AD-ben.
+Ez a rövid útmutató bemutatja, hogyan adhat hozzá és regisztrálhat egy alkalmazást az Azure AD-ben a meglévő **Alkalmazásregisztrációk** felület használatával az Azure Portalon.
+
+> [!NOTE]
+> Új alkalmazást regisztrál? Próbálja ki az új **Alkalmazásregisztrációk (Előzetes verzió)** felületet az Azure Portalon. A kezdéshez tekintse meg az [Alkalmazás regisztrálása (Előzetes verzió)](quickstart-register-app.md) szakaszt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

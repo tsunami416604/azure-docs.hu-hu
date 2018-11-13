@@ -4,17 +4,17 @@ description: Az Azure Policy az Azure egy szolgáltatása, amelynek használatá
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 11/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: dbdffc7a6f77f3f34ce7937c60eb7a53e5f72590
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c016e21ff59d5f68afee79b2159218d10e90a7ec
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961280"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252819"
 ---
 # <a name="what-is-azure-policy"></a>Mi az Azure Policy?
 
@@ -35,12 +35,14 @@ A szabályzat az erőforrások tulajdonságaira összpontosít az üzembe helyez
 
 ### <a name="rbac-permissions-in-azure-policy"></a>RBAC-engedélyek az Azure Policyban
 
-Az Azure Policy az engedélyeket a következő két erőforrás-szolgáltató műveleteiként jeleníti meg:
+Az Azure Policy több engedéllyel (más néven művelettel) rendelkezik két erőforrás-szolgáltatóban:
 
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
-- [Microsoft.PolicyInsight](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
+- [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Számos beépített szerepkör biztosít különböző szintű engedélyeket az Azure Policy-erőforrásokhoz. Ilyen például a **Biztonsági rendszergazda**, amely felügyelheti a szabályzat-hozzárendeléseket és -definíciókat, de nem tekintheti meg a megfelelőségi információkat, vagy az **Olvasó**, amely olvashatja a szabályzat-hozzárendeléseket és -definíciókat, de nem végezhet módosításokat vagy tekintheti meg a megfelelőségi információkat. Míg a **Tulajdonos** teljes körű jogosultsággal rendelkezik, a **Közreműködő** semmilyen Azure Policy-jogosultsággal nem bír. A Policy megfelelőségi adatainak megtekintésére vonatkozó engedélyek kiosztásához hozzon létre egy [egyéni szerepkört](../../role-based-access-control/custom-roles.md).
+Számos beépített szerepkör oszt ki engedélyeket Azure Policy-erőforrásoknak. Az **Erőforrás-szabályzat közreműködője (előzetes verzió)** szerepkör a legtöbb Policy-műveletet tartalmazza, a **Tulajdonos** pedig teljes körű jogosultsággal rendelkezik. Mind a **Közreműködő**, mind az **Olvasó** olvashatja a Policyval kapcsolatos összes adatot, és a **Közreműködő** emellett aktiválhatja is a javítást.
+
+Ha egyik beépített szerepkör sem tartalmazza a szükséges engedélyeket, hozzon létre egy [egyéni szerepkört](../../role-based-access-control/custom-roles.md).
 
 ## <a name="policy-definition"></a>Szabályzatdefiníció
 

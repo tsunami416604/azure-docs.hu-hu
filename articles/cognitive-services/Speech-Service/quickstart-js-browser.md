@@ -8,25 +8,25 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 10/12/2018
+ms.date: 11/06/2018
 ms.author: fmegen
-ms.openlocfilehash: b01746c20dbef7726f129badac045c1fb440f602
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 1e844f83c715dd8ac78a3340628988625e95a4ba
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467463"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218440"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-service-sdk"></a>Rövid útmutató: Beszédfelismerés a JavaScripttel böngészőben a Speech Service SDK használatával
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Ez a cikk azt mutatja be, hogyan hozhat létre egy webhelyet, amely a Cognitive Services Speech SDK JavaScript-kötésével írja át a beszédet szöveggé.
-Az alkalmazás a Microsoft Cognitive Services Speech SDK-n alapul ([Az 1.0.1-es verzió letöltése](https://aka.ms/csspeech/jsbrowserpackage)).
+Az alkalmazás a Microsoft Cognitive Services Speech SDK-n alapul ([Az 1.1.0-s verzió letöltése](https://aka.ms/csspeech/jsbrowserpackage)).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy előfizetői azonosító a Speech Service szolgáltatáshoz. Lásd a [Speech Service ingyenes kipróbálását](get-started.md) ismertető részt.
+* Előfizetői azonosító a Speech Service-hez. Lásd a [Speech Service ingyenes kipróbálását](get-started.md) ismertető részt.
 * Egy PC vagy Mac számítógép egy működő mikrofonnal.
 * Egy szövegszerkesztő.
 * A Chrome vagy a Microsoft Edge egy aktuális verziója.

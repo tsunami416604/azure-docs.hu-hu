@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 10/12/2018
+ms.date: 11/06/2018
 ms.author: chlandsi
-ms.openlocfilehash: 8d6ecf251bb816eb0f41352af7c9d086c4aad751
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 7d1e05e13e55b8b7bc07eda71d63f96f12c81ff9
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469775"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219188"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-service-sdk"></a>Rövid útmutató: Beszédfelismerés Objective-C nyelven írt iOS-alkalmazásokban a Speech Service SDK használatával
 
@@ -32,7 +32,7 @@ Ebből a cikkből megtudhatja, hogyan írhat Objective-C nyelven olyan iOS-alkal
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-A Cognitive Services Speech SDK jelenlegi verziója az `1.0.1`.
+A Cognitive Services Speech SDK jelenlegi verziója az `1.1.0`.
 
 A Macre és iOS-re szánt Cognitive Services Speech SDK-t jelenleg Cocoa-keretrendszerként áll rendelkezésre.
 Innen tölthető le: https://aka.ms/csspeech/iosbinary. Töltse le a fájlt a kezdőkönyvtárába.
@@ -90,7 +90,7 @@ A következő párbeszédpanelen a beállítások módosítása nélkül kattint
 1. A **Product** -> **Destination** menüpontban található listáról válassza ki az alkalmazás célhelyeként használni kívánt iOS-szimulátort vagy fejlesztőgépéhez csatlakoztatott iOS-eszközt.
 1. Fordítsa le és futtassa a példakódot az iOS-szimulátorban úgy, hogy a **Product** -> **Run** lehetőséget választja a menüből, vagy a **Play** gombra kattint.
 A Speech SDK jelenleg csak a 64 bites iOS-platformokat támogatja.
-1. Miután a „Recognize (File)” gombra kattint az alkalmazásban, a képernyő alsó részén meg kell jelennie a „What's the weather like?” hangfájl tartalmának.
+1. Miután a „Recognize (File)” (Felismerés (Fájl)) gombra kattint az alkalmazásban, a képernyő alsó részén meg kell jelennie a „What's the weather like?” (Milyen az időjárás?) hangfájl tartalmának.
 
  ![Szimulált iOS-alkalmazás](media/sdk/qs-objectivec-simulated-app.png)
 

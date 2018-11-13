@@ -1,5 +1,5 @@
 ---
-title: Az SQL Server migrálása az Azure SQL Database-be kapcsolat nélküli üzemmódban, az Azure Database Migration Service használatával | Microsoft Docs
+title: 'Oktatóanyag: Az SQL Server migrálása az Azure SQL Database-be kapcsolat nélküli üzemmódban, az Azure Database Migration Service használatával | Microsoft Docs'
 description: Ismerje meg, hogyan migrálhat a helyi SQL Serverről az Azure SQL Database-be kapcsolat nélküli üzemmódban az Azure Database Migration Service használatával.
 services: dms
 author: pochiraju
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 6b8b6994b810db939a5e690d16d3c5d2f1a0825f
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 783785a73b3a6a99126b07f3759be540fe3098d8
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945399"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959239"
 ---
-# <a name="migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>SQL Server migrálása felügyelt Azure SQL Database-példányra kapcsolat nélküli üzemmódban, a DMS használatával
+# <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Oktatóanyag: SQL Server migrálása Azure SQL Database-példányra kapcsolat nélküli üzemmódban, a DMS használatával
 Az Azure Database Migration Service használatával migrálhatja egy helyszíni SQL Server-példány adatbázisait az [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/)-be. Ebben az oktatóanyagban az SQL Server 2016 (vagy újabb) helyi példányára visszaállított **Adventureworks2012** adatbázist migrálhatja egy Azure SQL Database-példányba az Azure Database Migration Service használatával.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:

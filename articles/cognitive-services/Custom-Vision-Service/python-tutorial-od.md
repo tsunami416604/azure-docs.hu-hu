@@ -1,57 +1,52 @@
 ---
-title: 'Oktatóanyag: Objektumészlelési projekt létrehozása a Pythonhoz készült Custom Vision SDK-val – Custom Vision Service'
+title: 'Rövid útmutató: Objektumészlelési projekt létrehozása a Pythonhoz készült Custom Vision SDK-val'
 titlesuffix: Azure Cognitive Services
-description: Hozzon létre projektet, adjon hozzá címkéket, töltsön fel képeket, tanítsa be a projektet és adjon előrejelzést az alapértelmezett végpont használatával.
+description: Projekt létrehozása, címkék hozzáadása, képek feltöltése, projekt betanítása és objektumok észlelése a Python SDK használatával.
 services: cognitive-services
 author: areddish
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: tutorial
-ms.date: 05/03/2018
+ms.topic: quickstart
+ms.date: 11/5/2018
 ms.author: areddish
-ms.openlocfilehash: 36b283965766130e86e079c807139998cd01c8a6
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 35548284302dead41df1a4b9bf6218d842214e11
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958533"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278752"
 ---
-# <a name="tutorial-create-an-object-detection-project-with-the-custom-vision-sdk-for-python"></a>Oktatóanyag: Objektumészlelési projekt létrehozása a Pythonhoz készült Custom Vision SDK-val
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>Rövid útmutató: Objektumészlelési projekt létrehozása a Custom Vision Python SDK-val
 
-Nézze meg, hogyan készít a Computer Vision API használatával objektumészlelési projektet egy egyszerű Python alkalmazás. Miután elkészült, adhat hozzá címkézett régiókat, tölthet fel képeket, betaníthatja a projektet, megkaphatja a projekt alapértelmezett előrejelzési végpont URL-címét és ezt a végpontot felhasználhatja kép programozott tesztelésére. Ez a nyílt forráskódú példa sablonként használható saját, Custom Vision API használatával készülő alkalmazásaihoz.
+Ez a cikk ahhoz biztosít információt és mintakódot, hogy megismerkedhessen a Custom Vision SDK és a Python együttes használatával egy objektumészlelési modell létrehozása céljából. Miután elkészült, adhat hozzá címkézett régiókat, tölthet fel képeket, betaníthatja a projektet, megkaphatja a projekt alapértelmezett előrejelzési végpont URL-címét és ezt a végpontot felhasználhatja kép programozott tesztelésére. Használja sablonként a példát a saját Python-alkalmazása létrehozásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag használatához a következőket kell tennie:
+- [A Python 2.7-es vagy újabb, illetve 3.5-ös vagy újabb verziója](https://www.python.org/downloads/)
+- [pip](https://pip.pypa.io/en/stable/installing/) eszköz
 
-- Telepítse a Python 2.7 vagy újabb, illetve a Python 3.5 vagy újabb verzióját.
-- Pip telepítése.
+## <a name="install-the-custom-vision-sdk"></a>A Custom Vision SDK telepítése
 
-### <a name="platform-requirements"></a>Platform követelmények
-Ezt a példát Pythonhoz fejlesztették ki.
+A Pythonhoz készült Custom Vision Service SDK telepítéséhez futtassa a következő parancsot a PowerShellben:
 
-### <a name="get-the-custom-vision-sdk"></a>A Custom Vision SDK letöltése
-
-A példa elkészítéséhez telepítenie kell a Custom Vision API-hoz a Python SDK-t:
-
-```
+```PowerShell
 pip install azure-cognitiveservices-vision-customvision
 ```
 
 A képeket letöltheti a [Python példákkal](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples) együtt.
 
-## <a name="step-1-get-the-training-and-prediction-keys"></a>1. lépés: A betanítási és előrejelzési kulcsok letöltése
+[!INCLUDE [get-keys](includes/get-keys.md)]
 
-Az ebben a példában használt kulcsok megszerzéséhez látogasson el a [Custom Vision oldalra](https://customvision.ai), válassza ki a __fogaskerék ikont__ a jobb felső sarokban. A __Fiókok__ területen másolja ki a __Betanítási kulcs__ és __Előrejelzési kulcs__ mezők értékeit.
+[!INCLUDE [python-get-images](includes/python-get-images.md)]
 
-![A kulcsok felhasználói felület képe](./media/python-tutorial/training-prediction-keys.png)
+## <a name="add-the-code"></a>A kód hozzáadása
 
-A példa a képeket [erről a helyről](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images) használja.
+Hozzon létre egy új fájlt *sample.py* néven a használni kívánt projektkönyvtárban.
 
-## <a name="step-2-create-a-custom-vision-service-project"></a>2. lépés Custom Vision Service-projekt létrehozása
+### <a name="create-the-custom-vision-service-project"></a>A Custom Vision Service-projekt létrehozása
 
-Új Custom Vision Service-projekt létrehozásához, készítsen egy sample.py parancsfájlt a következő tartalommal. Ne feledje, az objektumérzékelő és a képosztályozó projekt közötti különbség a create_project hívásnak megadott tartományban van.
+Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Illessze be az előfizetői azonosítókat a megfelelő definíciókba. Ne feledje, hogy az objektumészlelési és a képosztályozási projekt létrehozásánál a különbség a **create_project** hívásban megadott tartományban rejlik.
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import training_api
@@ -71,9 +66,9 @@ print ("Creating project...")
 project = trainer.create_project("My Detection Project", domain_id=obj_detection_domain.id)
 ```
 
-## <a name="step-3-add-tags-to-your-project"></a>3. lépés: Címkék hozzáadása a projekthez
+### <a name="create-tags-in-the-project"></a>Címkék létrehozása a projektben
 
-A projekthez címkék hozzáadásához, a következő kód beszúrásával hozzon létre két címkét:
+Ha besorolási címkéket szeretne létrehozni a projekthez, adja hozzá a következő kódot a *sample.py* fájl végéhez:
 
 ```Python
 # Make two tags in the new project
@@ -81,14 +76,13 @@ fork_tag = trainer.create_tag(project.id, "fork")
 scissors_tag = trainer.create_tag(project.id, "scissors")
 ```
 
-## <a name="step-4-upload-images-to-the-project"></a>4. lépés: Képek feltöltése a projekthez
+### <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
 
-Az objektumérzékelési projekthez képet, régiókat és címkéket kell feltölteni. A címkézett objektum helyét megadó régiót normalizált koordinátákkal adjuk meg.
+Ha képeket címkéz meg az objektumészlelési projektekben, meg kell adnia a címkével ellátott objektumok régióját a normalizált koordináták használatával.
 
-Képek, régió és címkék projekthez adásához, helyezze el a következő kódot a címke létrehozása után. Vegye észre, hogy ebben az oktatóanyagban a régiókat a kódon belül fixen beprogramoztuk. A régiók a határolókeretet adják meg normalizált koordinátákkal.
+A képek, címkék és régiók projekthez való hozzáadásához szúrja be az alábbi kódot a címke létrehozása után. Vegye észre, hogy ebben az oktatóanyagban a régiókat a kódon belül fixen beprogramoztuk. A régiók normalizált koordinátákban adják meg a határolókeretet, és a következő sorrendben adják meg a koordinátákat: bal oldali, felső, szélesség, magasság.
 
 ```Python
-
 fork_image_regions = {
     "fork_1": [ 0.145833328, 0.3509314, 0.5894608, 0.238562092 ],
     "fork_2": [ 0.294117659, 0.216944471, 0.534313738, 0.5980392 ],
@@ -134,7 +128,10 @@ scissors_image_regions = {
     "scissors_19": [ 0.333333343, 0.0274019931, 0.443627447, 0.852941155 ],
     "scissors_20": [ 0.158088237, 0.04047389, 0.6691176, 0.843137264 ]
 }
+```
+Ezután használja ezt a társítási térképet a mintaképek feltöltéséhez a régiókoordinátáikkal együtt. Adja hozzá a következő kódot.
 
+```Python
 # Go through the data table above and create the images
 print ("Adding images...")
 tagged_images_with_regions = []
@@ -157,12 +154,9 @@ for file_name in scissors_image_regions.keys():
 trainer.create_images_from_files(project.id, images=tagged_images_with_regions)
 ```
 
-## <a name="step-5-train-the-project"></a>5. lépés A projekt tanítása
+### <a name="train-the-project"></a>A projekt tanítása
 
-Most, hogy a projekthez hozzáadta a címkéket és képeket, következhet a betanítása: 
-
-1. Szúrja be az alábbi kódot. Ez készíti az első iterációt a projektben. 
-2. Jelölje meg ezt alapértelmezett iterációnak.
+Ez a kód létrehozza az első iterációt a projektben, és alapértelmezett iterációként jelöli meg. Az alapértelmezett iteráció azt a modellverziót tükrözi, amely válaszolni fog az előrejelzési kérésekre. Mindig frissítse a modell újbóli betanításakor.
 
 ```Python
 import time
@@ -179,12 +173,9 @@ trainer.update_iteration(project.id, iteration.id, is_default=True)
 print ("Done!")
 ```
 
-## <a name="step-6-get-and-use-the-default-prediction-endpoint"></a>6. lépés: Kérje le és használja az alapértelmezett előrejelzési végpontot
+### <a name="get-and-use-the-default-prediction-endpoint"></a>Szerezze meg és használja az alapértelmezett előrejelzési végpontot
 
-Most már készen áll, hogy a modellt előrejelzésre használja: 
-
-1. Kérje le az alapértelmezett iterációhoz társított végpontot. 
-2. Küldjön képet a projektnek ezt a végpontot felhasználva.
+A képek előrejelzési végpontra való küldéséhez és az előrejelzés lekéréséhez adja hozzá a következő kódot a fájl végéhez:
 
 ```Python
 from azure.cognitiveservices.vision.customvision.prediction import prediction_endpoint
@@ -203,10 +194,21 @@ for prediction in results.predictions:
     print ("\t" + prediction.tag_name + ": {0:.2f}%".format(prediction.probability * 100), prediction.bounding_box.left, prediction.bounding_box.top, prediction.bounding_box.width, prediction.bounding_box.height)
 ```
 
-## <a name="step-7-run-the-example"></a>7. lépés: Futtassa a példát
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa a megoldást. Az előrejelzési eredmények megjelennek a konzolon.
+Futtassa a *sample.py* fájlt.
 
-```
+```PowerShell
 python sample.py
 ```
+
+Az alkalmazás kimenetének meg kell jelennie a konzolon. Ezután ellenőrizheti, hogy a tesztkép (amely a **samples/vision/images/Test** helyen található) megfelelően lett-e megcímkézve, és helyes-e az észlelési régió.
+
+[!INCLUDE [clean-od-project](includes/clean-od-project.md)]
+
+## <a name="next-steps"></a>További lépések
+
+Láthatta, hogyan hajthatók végre az objektumészlelési folyamat lépései kódok használatával. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran előfordulhat, hogy a nagyobb pontosság érdekében többször is be kell tanítania és tesztelnie kell a modellt. Az alábbi útmutató a képosztályozással foglalkozik, az alapelvei azonban hasonlóak az objektumészlelés alapelveihez.
+
+> [!div class="nextstepaction"]
+> [Modell tesztelése és újratanítása](test-your-model.md)

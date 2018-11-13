@@ -1,7 +1,7 @@
 ---
-title: Az API Management használata AzureML webszolgáltatások kezelése |} Microsoft Docs
-description: Egy útmutató bemutatja, hogyan kezelheti az AzureML-webszolgáltatások API Management használata.
-keywords: gépi tanulási, az api management
+title: Az API Management használatával AzureML webszolgáltatások kezelése |} A Microsoft Docs
+description: Az API Management használatával AzureML webszolgáltatások kezelése bemutató útmutató.
+keywords: a Machine learning, az api management
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
@@ -16,152 +16,152 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.openlocfilehash: 4ca551ed07447e41ec94b0334eac0d235e0a5b6f
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 9543b1f3b10c246dadaf21b6960c7b6785fb66f4
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835083"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566380"
 ---
 # <a name="learn-how-to-manage-azureml-web-services-using-api-management"></a>AzureML webszolgáltatások kezelése az API Management használatával
 ## <a name="overview"></a>Áttekintés
-Ez az útmutató bemutatja, hogyan gyorsan megkezdheti az API Management az AzureML webszolgáltatások kezeli.
+Ez az útmutató bemutatja, hogyan gyorsan használatba az API Management az AzureML webszolgáltatások kezelése.
 
 ## <a name="what-is-azure-api-management"></a>Mi az Azure API Management?
-Az Azure API-kezelés nem az Azure-szolgáltatások, amely lehetővé teszi a REST API-végpontokat kezelheti a felhasználói hozzáférés-szabályozás és figyelési irányítópult meghatározásával. Kattintson a [Itt](https://azure.microsoft.com/services/api-management/) Azure API Management leírását. Kattintson a [Itt](../../api-management/api-management-get-started.md) az Azure API Management az első lépések útmutató. Ez más útmutató, ez az útmutató alapján, minden olyan további témaköreit, beleértve az értesítési konfigurációk, a árképzési szint, a válasz kezelése, a felhasználói hitelesítést, termékek, a fejlesztői előfizetésekhez és a használati dashboarding létrehozása.
+Az Azure API Management egy Azure-szolgáltatás, amellyel a REST API-végpontokat kezelheti a felhasználói hozzáférés-szabályozás és figyelési irányítópult definiálásával. Kattintson a [Itt](https://azure.microsoft.com/services/api-management/) Azure API Management részleteiért. Kattintson a [Itt](../../api-management/api-management-get-started.md) útmutató az első lépések az Azure API Management szolgáltatással. A többi útmutató, amely a jelen útmutató alapján, termékek, a fejlesztői előfizetésekhez és a használati dashboarding további témaköreit, beleértve az értesítési konfiguráció, szint díjszabása, válasz kezelését, felhasználói hitelesítés, ismerteti.
 
-## <a name="what-is-azureml"></a>Mi az az AzureML?
-Az AzureML az Azure-szolgáltatások a gépi tanulási, amelynek segítségével könnyedén létre, telepíthetnek és speciális elemzési megoldások megosztása. Kattintson a [Itt](https://azure.microsoft.com/services/machine-learning/) AzureML leírását.
+## <a name="what-is-azureml"></a>Mi az AzureML?
+Az AzureML egy Azure-szolgáltatás a machine learning, amely lehetővé teszi, hogy egyszerűen elkészítheti, telepítheti, és megoszthatja a fejlett elemzési megoldásokat. Kattintson a [Itt](https://azure.microsoft.com/services/machine-learning/) AzureML részleteiért.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az útmutató, szüksége:
+Ez az útmutató végrehajtásához lesz szüksége:
 
-* Egy Azure-fiók. Ha nem rendelkezik Azure-fiókot, kattintson a [Itt](https://azure.microsoft.com/pricing/free-trial/) talál részletes egy ingyenes próbafiók létrehozásához.
-* Az AzureML-fiók. Ha nincs AzureML fiókja, kattintson a [Itt](https://studio.azureml.net/) talál részletes egy ingyenes próbafiók létrehozásához.
-* A munkaterületen, a szolgáltatás és a api_key egy webes szolgáltatásként telepített AzureML kísérleti fázisú funkciókat. Kattintson a [Itt](create-experiment.md) talál részletes AzureML kísérlet létrehozásához. Kattintson a [Itt](publish-a-machine-learning-web-service.md) vonatkozó részletes információt az AzureML telepítendő kísérletezhet webszolgáltatásként. Alternatív megoldásként a melléklet rendelkezik létrehozása és tesztelése egy egyszerű AzureML kísérletet, és egy webszolgáltatás üzembe vonatkozó utasításokat.
+* Egy Azure-fiók. Ha nem rendelkezik Azure-fiókot, kattintson a [Itt](https://azure.microsoft.com/pricing/free-trial/) a megtudhatja, hogyan hozhat létre egy ingyenes próbafiókot.
+* Az AzureML-fiók. Ha nem rendelkezik egy AzureML-fiókot, kattintson a [Itt](https://studio.azureml.net/) a megtudhatja, hogyan hozhat létre egy ingyenes próbafiókot.
+* A munkaterület, a szolgáltatás és a egy webszolgáltatásként üzembe helyezett AzureML kísérlethez api_key. Kattintson a [Itt](create-experiment.md) AzureML a kísérlet létrehozásának részleteiért. Kattintson a [Itt](publish-a-machine-learning-web-service.md) számára való üzembe helyezése az AzureML kísérletezhet webszolgáltatásként. A függelék rendelkezik, azt is megteheti, létrehozása és tesztelése egy egyszerű AzureML kísérletet, és helyezze üzembe webszolgáltatásként, amely utasításokat.
 
 ## <a name="create-an-api-management-instance"></a>API Management-példány létrehozása
 
-Kezelheti az Azure Machine Learning webszolgáltatásba az API Management-példánnyal.
+Az API Management-példány az Azure Machine Learning webszolgáltatás kezelheti.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza a **+ Erőforrás létrehozása** lehetőséget.
-3. A keresési mezőbe írja be a "API-felügyelet", majd válassza ki a "API-kezelés" erőforrást.
+3. A Keresés mezőbe írja be az "API-kezelési", majd válassza az "API-kezelés" erőforráshoz.
 4. Kattintson a **Create** (Létrehozás) gombra.
-5. A **neve** érték használandó hozzon létre egy egyedi URL-címet (a példában az "demoazureml").
-6. Válassza ki a **előfizetés**, **erőforráscsoport**, és **hely** a szolgáltatáspéldány.
-7. Adjon meg egy értéket **szervezetnév** (a példában az "demoazureml").
-8. Adja meg a **rendszergazdai e-mail** -értesítést kapnak az API Management rendszer az e-mailt fog történni.
+5. A **neve** értéket fogja hozzon létre egy egyedi URL-cím (ebben a példában használja "demoazureml").
+6. Válassza ki a **előfizetés**, **erőforráscsoport**, és **hely** a szolgáltatáspéldány számára.
+7. Adjon meg egy értéket **szervezetnevet** (ebben a példában használja "demoazureml").
+8. Adja meg a **rendszergazdai e-mail** -e-mailt fog használni az API Management rendszer értesítései.
 9. Kattintson a **Create** (Létrehozás) gombra.
 
-A létrehozandó új szolgáltatáshoz akár 30 percet is igénybe vehet.
+Létrejön egy új szolgáltatáshoz akár 30 percig is eltarthat.
 
 ![szolgáltatás létrehozása](./media/manage-web-service-endpoints-using-api-management/create-service.png)
 
 
-## <a name="create-the-api"></a>Az API-t létrehozni
-A szolgáltatáspéldány létrehozása után a következő lépésre az API-t létrehozni. Az API egy ügyfélalkalmazásokból meghívható műveletkészletből áll. Az API-műveleteket létező webszolgáltatásokhoz használják proxyként. Ez az útmutató a meglévő AzureML RR-EKET és BES webszolgáltatásokhoz proxybeállítások API-kat hoz létre.
+## <a name="create-the-api"></a>Az API létrehozása
+A szolgáltatáspéldány létrehozása után a a következő lépés, ha az API-t. Az API egy ügyfélalkalmazásokból meghívható műveletkészletből áll. Az API-műveleteket létező webszolgáltatásokhoz használják proxyként. Ez az útmutató a meglévő AzureML RRS- és BES-webszolgáltatásokat a proxyk API-kat hoz létre.
 
-Az API létrehozása:
+Az API létrehozásához:
 
-1. Nyissa meg az imént létrehozott szolgáltatáspéldány az Azure-portálon.
-2. A bal oldali navigációs ablakból válassza **API-k**.
+1. Az Azure Portalon nyissa meg az imént létrehozott szolgáltatáspéldány.
+2. A bal oldali navigációs panelen válassza ki **API-k**.
 
    ![api-management-menu](./media/manage-web-service-endpoints-using-api-management/api-management.png)
 
 1. Kattintson a **API hozzáadása**.
-2. Adjon meg egy **webes API-név** (a példában az "AzureML bemutató API").
+2. Adjon meg egy **webes API név** (ebben a példában használja "AzureML bemutató API").
 3. A **webszolgáltatás URL-címe**, adja meg "`https://ussouthcentral.services.azureml.net`".
-4. Adjon meg egy ** webes API URL-címe utótag ". Ez az URL-címet használó ügyfelek kérelmek küldéséhez a szolgáltatáspéldány (a példában az "azureml-bemutató") utolsó része lesz.
-5. A **webes API URL-séma**, jelölje be **HTTPS**.
-6. A **termékek**, jelölje be **alapszintű**.
+4. Adja meg a ** webes API URL-Címének utótagja ". Ez lesz az ügyfelek által használt, a kérések küldését a szolgáltatáspéldány (ebben a példában használja "azureml-demo") URL-cím utolsó része.
+5. A **webes API URL-séma**válassza **HTTPS**.
+6. A **termékek**válassza **alapszintű**.
 7. Kattintson a **Save** (Mentés) gombra.
 
 
 ## <a name="add-the-operations"></a>A műveletek hozzáadása
 
-Műveletek felvétele, illetve egy API-t, a közzétevő portálon konfigurálva. A közzétevő portál eléréséhez kattintson **Publisher portal** az API Management szolgáltatás az Azure portálon, válassza ki **API-k**, **műveletek**, kattintson a **Hozzáadási művelet**.
+Műveletek hozzáadása és API-khoz, a közzétevő portálon konfigurált. A közzétevő portál eléréséhez kattintson **Publisher Portalon** az API Management szolgáltatás az Azure Portalon, válassza ki a **API-k**, **Operations**, majd kattintson a **Hozzáadási művelet**.
 
-![Adja hozzá művelet](./media/manage-web-service-endpoints-using-api-management/add-an-operation.png)
+![művelet hozzáadása](./media/manage-web-service-endpoints-using-api-management/add-an-operation.png)
 
-A **új művelet** ablak megjelenik, és a **aláírás** alapértelmezett kiválasztása lapon.
+A **új művelet** ablak jelenik és a **aláírás** alapértelmezés szerint a program lapot választja.
 
-## <a name="add-rrs-operation"></a>RR-EKET művelet hozzáadása
-Először létre kell hoznia egy műveletet az AzureML RR-EKET szolgáltatáshoz:
+## <a name="add-rrs-operation"></a>RRS művelet hozzáadása
+Először hozzon létre egy műveletet az AzureML RRS szolgáltatás:
 
-1. Az a **HTTP-műveletet**, jelölje be **POST**.
-2. Az a **URL-cím sablon**, típusa "`/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}`".
-3. Adjon meg egy **megjelenített név** (a példában az "RR-EKET hajtható végre").
+1. Az a **HTTP-műveletet**válassza **POST**.
+2. Az a **URL-cím sablon**, írja be "`/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}`".
+3. Adjon meg egy **megjelenítendő név** (ebben a példában "RRS hajtható végre").
 
-   ![Adja hozzá-rrs-művelet-aláírása](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
+   ![Adjon hozzá-rrs-művelet-aláírás](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
 
-4. Kattintson a **válaszok** > **hozzáadása** a bal oldalon válassza ki **200 OK**.
-5. Kattintson a **mentése** menti ezt a műveletet.
+4. Kattintson a **válaszok** > **hozzáadása** a bal oldalon, majd válassza a **200 OK**.
+5. Kattintson a **mentése** menteni ezt a műveletet.
 
-   ![Adja hozzá-rrs-művelet-válasz](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-response.png)
+   ![Adjon hozzá-rrs-művelet-válasz](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-response.png)
 
-## <a name="add-bes-operations"></a>Adja hozzá a BES műveletek
+## <a name="add-bes-operations"></a>BES műveletek hozzáadása
 
 > [!NOTE]
-> Képernyőfelvételek nem ide tartoznak a BES műveletek szerint nagyon hasonló a hozzáadása a RR-EKET műveletet.
+> Képernyőképek nem szerepelnek itt a BES műveletek azok nagyon hasonlóak az RRS művelet hozzáadásához.
 
-### <a name="submit-but-not-start-a-batch-execution-job"></a>A kötegelt végrehajtási feladatok elküldése (de indul el)
+### <a name="submit-but-not-start-a-batch-execution-job"></a>A kötegelt végrehajtási feladat elküldése (de nem indul el)
 
-1. Kattintson a **hozzáadási művelet** a BES művelet hozzáadása az API-t.
-2. Az a **HTTP-műveletet**, jelölje be **POST**.
-3. Az a **URL-cím sablon**, típusa "`/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}`".
-4. Adjon meg egy **megjelenített név** (a példában az "BES küldje el").
-5. Kattintson a **válaszok** > **hozzáadása** a bal oldalon válassza ki **200 OK**.
+1. Kattintson a **hozzáadási művelet** egy BES művelet hozzáadása az API-t.
+2. Az a **HTTP-műveletet**válassza **POST**.
+3. Az a **URL-cím sablon**, írja be "`/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}`".
+4. Adjon meg egy **megjelenítendő név** (ebben a példában "BES küldje el").
+5. Kattintson a **válaszok** > **hozzáadása** a bal oldalon, majd válassza a **200 OK**.
 6. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="start-a-batch-execution-job"></a>Kötegelt végrehajtási feladat indítása
 
-1. Kattintson a **hozzáadási művelet** a BES művelet hozzáadása az API-t.
-2. Az a **HTTP-műveletet**, jelölje be **POST**.
-3. Az a **HTTP-műveletet**, típusa "`/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}`".
-4. Adjon meg egy **megjelenített név** (a példában az "BES Start").
-6. Kattintson a **válaszok** > **hozzáadása** a bal oldalon válassza ki **200 OK**.
+1. Kattintson a **hozzáadási művelet** egy BES művelet hozzáadása az API-t.
+2. Az a **HTTP-műveletet**válassza **POST**.
+3. Az a **HTTP-műveletet**, írja be "`/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}`".
+4. Adjon meg egy **megjelenítendő név** (ebben a példában "BES Start").
+6. Kattintson a **válaszok** > **hozzáadása** a bal oldalon, majd válassza a **200 OK**.
 7. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="get-the-status-or-result-of-a-batch-execution-job"></a>Az állapot vagy a kötegelt végrehajtási feladat eredménye
 
-1. Kattintson a **hozzáadási művelet** a BES művelet hozzáadása az API-t.
-2. Az a **HTTP-műveletet**, jelölje be **beolvasása**.
-3. Az a **URL-cím sablon**, típusa "`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`".
-4. Adjon meg egy **megjelenített név** (a példában az "BES állapota").
-6. Kattintson a **válaszok** > **hozzáadása** a bal oldalon válassza ki **200 OK**.
+1. Kattintson a **hozzáadási művelet** egy BES művelet hozzáadása az API-t.
+2. Az a **HTTP-műveletet**válassza **első**.
+3. Az a **URL-cím sablon**, írja be "`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`".
+4. Adjon meg egy **megjelenítendő név** (ebben a példában használja "BES állapot").
+6. Kattintson a **válaszok** > **hozzáadása** a bal oldalon, majd válassza a **200 OK**.
 7. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="delete-a-batch-execution-job"></a>A kötegelt végrehajtási feladatok törlése
+### <a name="delete-a-batch-execution-job"></a>Kötegelt végrehajtási feladat törlése
 
-1. Kattintson a **hozzáadási művelet** a BES művelet hozzáadása az API-t.
-2. Az a **HTTP-műveletet**, jelölje be **törlése**.
-3. Az a **URL-cím sablon**, típusa "`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`".
-4. Adjon meg egy **megjelenített név** (a példában az "BES Delete").
-5. Kattintson a **válaszok** > **hozzáadása** a bal oldalon válassza ki **200 OK**.
+1. Kattintson a **hozzáadási művelet** egy BES művelet hozzáadása az API-t.
+2. Az a **HTTP-műveletet**válassza **törlése**.
+3. Az a **URL-cím sablon**, írja be "`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`".
+4. Adjon meg egy **megjelenítendő név** (ebben a példában "BES törlése").
+5. Kattintson a **válaszok** > **hozzáadása** a bal oldalon, majd válassza a **200 OK**.
 6. Kattintson a **Save** (Mentés) gombra.
 
-## <a name="call-an-operation-from-the-developer-portal"></a>Egy művelet hívása a Developer portálról
+## <a name="call-an-operation-from-the-developer-portal"></a>Művelet meghívása a fejlesztői portálról
 
-Műveletek hívható közvetlenül a megtekintése, és az API-k működésének teszteléséhez kényelmes megoldást kínál Developer portálon. Ebben a lépésben fogja hívni a **RRS hajtható végre** módszerrel, amely hozzá lett adva a **AzureML bemutató API**. 
+Közvetlenül a fejlesztői portál, amely megtekintésére és tesztelésére egy API műveleteit kényelmes módot biztosít a lehet hívni. Ebben a lépésben fogja meghívni az **RRS végrehajtása** metódushoz, amely hozzá lett adva a **AzureML bemutató API**. 
 
-1. Kattintson a **fejlesztői portálján**.
+1. Kattintson a **fejlesztői portál**.
 
-   ![fejlesztői-portál](./media/manage-web-service-endpoints-using-api-management/developer-portal.png)
+   ![fejlesztői – portál](./media/manage-web-service-endpoints-using-api-management/developer-portal.png)
 
-2. Kattintson a **API-k** a felső menüben, majd kattintson a **AzureML bemutató API** a rendelkezésre álló műveletek megjelenítéséhez.
+2. Kattintson a **API-k** a felső menüben, és kattintson a **AzureML bemutató API** a rendelkezésre álló műveletek megjelenítéséhez.
 
    ![demoazureml-api](./media/manage-web-service-endpoints-using-api-management/demoazureml-api.png)
 
-3. Válassza ki **RRS hajtható végre** a művelethez. Kattintson a **kipróbálás**.
+3. Válassza ki **RRS végrehajtása** a művelethez. Kattintson a **kipróbálás**.
 
-   ![Próbálja meg-it](./media/manage-web-service-endpoints-using-api-management/try-it.png)
+   ![try-it](./media/manage-web-service-endpoints-using-api-management/try-it.png)
 
-4. A **kérelem paraméterei**, típusa a **munkaterület** és **szolgáltatás**, típusa "2.0 a **apiversion**, és a"true", az a **részletek**. Megtalálhatja a **munkaterület** és **szolgáltatás** az AzureML webes szolgáltatás irányítópultján (lásd: **tesztelése a webszolgáltatás** függelék).
+4. A **kérés paraméterei**, írja be a **munkaterület** és **szolgáltatás**, írja be "2.0 a **API-verzió**, és a"true"az a **részletek**. Annak a **munkaterület** és **szolgáltatás** az AzureML webszolgáltatás irányítópultján (lásd: **a webszolgáltatás teszteléséhez** függelék).
 
-   A **kérelem fejlécei**, kattintson a **Hozzáadás fejléc** , és írja be a "Content-Type" és "application/json". Kattintson a **Hozzáadás fejléc** újra és írja be az "Engedélyezés" és "tulajdonosi  *\<a szolgáltatás API-kulcs\>*". Az API-kulcsot az AzureML webes szolgáltatás irányítópultján található (lásd: **tesztelése a webszolgáltatás** függelék).
+   A **Kérésfejlécek**, kattintson a **fejléc hozzáadása** , és írja be a "Content-Type" és "application/json". Kattintson a **fejléc hozzáadása** újra és írja be az "Engedélyezés" és "tulajdonosi  *\<a szolgáltatás API-kulcs\>*". Az API-KULCSÁT az AzureML webszolgáltatási irányítópultján található (lásd: **a webszolgáltatás teszteléséhez** függelék).
 
-   A **Request body**, típus `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`.
+   A **kérelem törzse**, típus `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`.
 
    ![azureml-demo-api](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
 
@@ -169,88 +169,88 @@ Műveletek hívható közvetlenül a megtekintése, és az API-k működésének
 
    ![Küldés](./media/manage-web-service-endpoints-using-api-management/send.png)
 
-Után egy művelet indítása, a fejlesztői portál megjeleníti-e a **a kért URL-cím** a háttér-szolgáltatás a **válaszállapot**, a **válaszfejlécek**, és az egyik **válasz tartalom**.
+Művelet meghívása után a fejlesztői portál megjeleníti a **kért URL-cím** a háttér-szolgáltatás a **válasz állapota**, a **válaszfejlécek**, és bármely  **Válasz tartalma**.
 
-![válasz-állapot](./media/manage-web-service-endpoints-using-api-management/response-status.png)
+![Válasz-állapota](./media/manage-web-service-endpoints-using-api-management/response-status.png)
 
 ## <a name="appendix-a---creating-and-testing-a-simple-azureml-web-service"></a>A függelék – létrehozása és tesztelése egy egyszerű AzureML webszolgáltatás
 ### <a name="creating-the-experiment"></a>A kísérlet létrehozása
-Az alábbiakban az AzureML egyszerű kísérlet létrehozását és telepítését webszolgáltatásként lépéseit. A webes szolgáltatás vesz igénybe, adja meg a tetszőleges szöveget, és adja vissza egész számok-ként funkciókat. Példa:
+Az alábbiakban az AzureML egyszerű kísérlet létrehozására és központi telepítésére, webszolgáltatásként lépéseket. A web service veszi adjon meg egy tetszőleges szöveges oszlop és funkciókat egészként képviselt készletét adja vissza. Példa:
 
 | Szöveg | Kivonatolt szöveg |
 | --- | --- |
-| Ez az jó naponta |1 1 2 2 0 2 0 1 |
+| Ez a jó naponta |1 1 2 2 0 2 0 1 |
 
-Először egy böngészőt, nyissa meg azt: [ https://studio.azureml.net/ ](https://studio.azureml.net/) bejelentkezési hitelesítő adataival. Ezután hozzon létre egy új üres kísérlet.
+Először a kiválasztott, egy böngészőben nyissa meg azt: [ https://studio.azureml.net/ ](https://studio.azureml.net/) , és adja meg a hitelesítő adataival, és jelentkezzen be. Ezután hozzon létre egy új üres kísérlet.
 
-![Keresés – kísérlet-sablonok](./media/manage-web-service-endpoints-using-api-management/search-experiment-templates.png)
+![a sablonok kísérlet keresése](./media/manage-web-service-endpoints-using-api-management/search-experiment-templates.png)
 
-Nevezze át **SimpleFeatureHashingExperiment**. Bontsa ki a **mentett adatkészletek** , és húzza **könyv értékelést az Amazon** alakzatot a kísérlet során.
+Nevezze át, hogy **SimpleFeatureHashingExperiment**. Bontsa ki a **mentett adatkészletek** , és húzza **könyv ismertetők az Amazon** alakzatot a kísérlet során.
 
-![egyszerű-szolgáltatás-kivonatolás-kísérlet](./media/manage-web-service-endpoints-using-api-management/simple-feature-hashing-experiment.png)
+![egyszerű – a szolgáltatás-kivonatolás – kísérlet](./media/manage-web-service-endpoints-using-api-management/simple-feature-hashing-experiment.png)
 
-Bontsa ki a **Data Transformation** és **adatkezelési** , és húzza **Select Columns in Dataset** alakzatot a kísérlet során. Csatlakozás **értékelést le az Amazon** való **oszlopok kiválasztása az adathalmaz**.
+Bontsa ki a **adatátalakítás** és **adatkezelési** , és húzza **Select Columns in Dataset** alakzatot a kísérlet során. Csatlakozás **felülvizsgálatok lefoglalja az Amazon** való **oszlopok kiválasztása az adathalmaz**.
 
 ![select-columns](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
 
-Kattintson a **Select Columns in Dataset** majd **Oszlopválasztás** válassza **Col2**. Kattintson a pipa ikonra, hogy alkalmazza a módosításokat.
+Kattintson a **Select Columns in Dataset** majd **Oszlopválasztás indítása** válassza **Col2**. Kattintson a pipa jelre a módosítások alkalmazásához.
 
 ![select-columns](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
 
-Bontsa ki a **Szövegelemzések** , és húzza **Szolgáltatáskivonatolás** alakzatot a kísérletet. Csatlakozás **oszlopok kiválasztása az adathalmaz** való **Szolgáltatáskivonatolás**.
+Bontsa ki a **Szövegelemzés** , és húzza **Szolgáltatáskivonatolás** alakzatot a kísérletet. Csatlakozás **oszlopok kiválasztása az adathalmaz** való **Szolgáltatáskivonatolás**.
 
-![Connect--projektoszlopok](./media/manage-web-service-endpoints-using-api-management/connect-project-columns.png)
+![Connect-projekt-oszlopok](./media/manage-web-service-endpoints-using-api-management/connect-project-columns.png)
 
-Típus **3** a a **bitsize kivonatoláshoz**. Ezzel létrehoz 8 (23) oszlopot.
+Típus **3** számára a **bitsize kivonatoláshoz**. Ekkor létrejön a 8 (23) oszlopot.
 
 ![kivonatoló bitsize](./media/manage-web-service-endpoints-using-api-management/hashing-bitsize.png)
 
-Ezen a ponton érdemes lehet kattintson **futtatása** tesztelése a kísérletet.
+Ezen a ponton érdemes kattintson **futtatása** , tesztelje a kísérletét.
 
 ![Futtatás](./media/manage-web-service-endpoints-using-api-management/run.png)
 
 ### <a name="create-a-web-service"></a>Webszolgáltatás létrehozása
-Most hozzon létre egy webszolgáltatás-bővítmény. Bontsa ki a **webszolgáltatás** , és húzza **bemeneti** alakzatot a kísérlet során. Csatlakozás **bemeneti** való **Szolgáltatáskivonatolás**. Húzással is **kimeneti** alakzatot a kísérlet során. Csatlakozás **kimeneti** való **Szolgáltatáskivonatolás**.
+Most hozzon létre egy webes szolgáltatás. Bontsa ki a **webszolgáltatás** , és húzza **bemeneti** alakzatot a kísérlet során. Csatlakozás **bemeneti** való **Szolgáltatáskivonatolás**. Húzással is **kimeneti** alakzatot a kísérlet során. Csatlakozás **kimeneti** való **Szolgáltatáskivonatolás**.
 
-![kimeneti-az-szolgáltatás-kivonatolás](./media/manage-web-service-endpoints-using-api-management/output-to-feature-hashing.png)
+![kimeneti-az--szolgáltatáskivonatolás](./media/manage-web-service-endpoints-using-api-management/output-to-feature-hashing.png)
 
-Kattintson a **webszolgáltatás**.
+Kattintson a **webszolgáltatás közzététele**.
 
 ![publish-web-service](./media/manage-web-service-endpoints-using-api-management/publish-web-service.png)
 
 Kattintson a **Igen** közzététele a kísérletet.
 
-![Igen – közzététele](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
+![Igen – közzététel](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
-### <a name="test-the-web-service"></a>A webszolgáltatás tesztelése
-Az AzureML webszolgáltatás RSS (kérelem/válasz szolgáltatás) és a BES (kötegelt végrehajtási szolgáltatás) végpontok áll. RSS szinkron végrehajtásra van. BES aszinkron feladat végrehajtása szolgál. A webes szolgáltatás, az alábbi minta Python-forrással rendelkező tesztelése, esetleg töltse le és telepítse az Azure SDK Python (lásd: [Python telepítése](../../python-how-to-install.md)).
+### <a name="test-the-web-service"></a>A webszolgáltatás teszteléséhez
+Az AzureML webszolgáltatás (kérelem/válasz szolgáltatás) az RSS- és BES (kötegelt végrehajtási szolgáltatás) végpontok áll. Az RSS szinkron végrehajtásra van. BES az aszinkron feladatok végrehajtásra. Az alábbi minta Python-forrás a webes szolgáltatás tesztelése, szükség lehet töltse le és telepítse az Azure SDK a Pythonhoz készült (lásd: [Python telepítése](../../python-how-to-install.md)).
 
-Konfigurálnia kell a **munkaterület**, **szolgáltatás**, és **api_key** a kísérlet az alábbi minta adatforrásra vonatkozóan. Megtalálhatja az munkaterület és a szolgáltatás lehet **kérelem/válasz** vagy **kötegelt végrehajtási** webes szolgáltatás irányítópultján a kísérleti fázisú funkciókat.
+Is szüksége lesz a **munkaterület**, **szolgáltatás**, és **api_key** a kísérlet a minta az alábbi forrás. Annak a munkaterület és a szolgáltatás lehet **kérés/válasz** vagy **kötegelt végrehajtási** a webszolgáltatás irányítópultján a kísérlethez.
 
 ![find-workspace-and-service](./media/manage-web-service-endpoints-using-api-management/find-workspace-and-service.png)
 
-Megtalálhatja az **api_key** webes szolgáltatás irányítópultján kísérletbe kattintva.
+Annak a **api_key** kattintva is futtathatja a kísérletet a webszolgáltatás irányítópultján.
 
 ![Keresés – api-kulcs](./media/manage-web-service-endpoints-using-api-management/find-api-key.png)
 
-#### <a name="test-rrs-endpoint"></a>Teszt RR-EKET végpont
+#### <a name="test-rrs-endpoint"></a>Teszt RRS-végpont
 ##### <a name="test-button"></a>Teszt gomb
-Az RRS végpont teszteléséhez egyszerűen: kattintson **tesztelése** a webes szolgáltatás irányítópultján.
+Egy egyszerű módja annak, hogy az RRS-végpont tesztelése, hogy **tesztelése** webszolgáltatási irányítópultján található.
 
-![teszt](./media/manage-web-service-endpoints-using-api-management/test.png)
+![test](./media/manage-web-service-endpoints-using-api-management/test.png)
 
-Típus **Ez az jó naponta** a **col2**. Kattintson a pipa jelre.
+Típus **Ez a jó naponta** a **col2**. Kattintson a pipa jelre.
 
-![Adja meg adatok](./media/manage-web-service-endpoints-using-api-management/enter-data.png)
+![Adja meg adatait](./media/manage-web-service-endpoints-using-api-management/enter-data.png)
 
-Látni fogja hasonlót
+Látni fogja például
 
-![minta-kimenet](./media/manage-web-service-endpoints-using-api-management/sample-output.png)
+![kimeneti példa](./media/manage-web-service-endpoints-using-api-management/sample-output.png)
 
 ##### <a name="sample-code"></a>Mintakód
-Egy másik módszer a RR-EKET az Ügyfélkód származik. Ha **kérelem/válasz** az irányítópultot és a felülről lefelé görgetési jelennek meg példakód C#, Python, és R. Ezenkívül megjelenik az RRS kérelem a kérelem URI-azonosítója, beleértve a szintaxist fejlécek és törzse.
+Az RRS tesztelje egy másik módja az Ügyfélkód származik. Ha rákattint **kérés/válasz** meg az irányítópultot, és görgessen le, látni fogja a mintakód C#, Python és az r segítségével Az RRS-kérelem, a kérelem URI-t, beleértve a szintaxist is megjelennek a fejlécek és törzs.
 
-Ez az útmutató bemutatja egy működő Python példa. Módosítani kell a **munkaterület**, **szolgáltatás**, és **api_key** a kísérlet.
+Ez az útmutató bemutatja egy működő Python-példát. Módosítani kell a **munkaterület**, **szolgáltatás**, és **api_key** a kísérlet.
 
     import urllib2
     import json
@@ -279,10 +279,10 @@ Ez az útmutató bemutatja egy működő Python példa. Módosítani kell a **mu
         print(error.info())
         print(json.loads(error.read()))
 
-#### <a name="test-bes-endpoint"></a>Teszt BES végpont
-Kattintson a **kötegelt végrehajtás** az irányítópult és alján görgessen. Mintakód látni fogja a C#, Python, és R. A feladat elküldése, elindíthat egy feladatot, az állapot vagy a feladat eredményeinek lekérése és törli a feladatot BES kérelmeket szintaxist is megtekintheti.
+#### <a name="test-bes-endpoint"></a>Teszt BES-végpont
+Kattintson a **kötegelt végrehajtás** az irányítópult-és alján görgessen. Látni fogja a mintakód C#, Python és az r segítségével A BES kéréseket olyan feladatot küld el, indítsa el a feladatot, és az egyes feladatok eredményeinek lekérése és egy feladat törlése szintaxisát is megjelenik.
 
-Ez az útmutató bemutatja egy működő Python példa. Módosítani kell a **munkaterület**, **szolgáltatás**, és **api_key** a kísérlet. Továbbá, hogy módosítania kell a **tárfióknév**, **tárfiók kulcsa**, és **storage-tároló nevének**. Végül, szüksége lesz a helyét, módosítsa a **bemeneti fájl** és helye a **kimeneti fájl**.
+Ez az útmutató bemutatja egy működő Python-példát. Módosítani kell a **munkaterület**, **szolgáltatás**, és **api_key** a kísérlet. Ezenkívül módosítani kell a **tárfióknevet**, **tárfiókkulcs**, és **tároló neve**. Végül kell módosítani a helyét a **bemeneti fájl** és helye a **kimeneti fájl**.
 
     import urllib2
     import json
@@ -377,7 +377,7 @@ Ez az útmutató bemutatja egy működő Python példa. Módosítani kell a **mu
 
     while True:
         print("Checking the job status...")
-        # If you are using Python 3+, replace urllib2 with urllib.request in the follwing code
+        # If you are using Python 3+, replace urllib2 with urllib.request in the following code
         req = urllib2.Request(url2, headers = { "Authorization":("Bearer " + api_key) })
         try:
             response = urllib2.urlopen(req)

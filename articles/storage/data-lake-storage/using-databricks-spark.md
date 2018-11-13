@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 6/27/2018
 ms.author: dineshm
-ms.openlocfilehash: fd9dfaa2042cae0923c919f4e76d7b59a170918e
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: c46a9f827bdeeaf7a2b9897b262484f64f83b9a8
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46466030"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283461"
 ---
 # <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Oktatóanyag: Hozzáférés a 2. generációs Azure Data Lake Storage előzetes verziójának adataihoz az Azure Databricks és a Spark használatával
 
-Ez az oktatóanyag bemutatja, hogyan futtathat Spark-lekérdezéseket egy Azure Databricks-fürtön adatok lekérdezéséhez egy 2. generációs Azure Data Lake Storage előzetes verziójával kompatibilis fiókban.
+Ez az oktatóanyag bemutatja, hogyan futtathat Spark-lekérdezéseket egy Azure Databricks-fürtön, ha adatokat szeretne lekérni egy olyan Azure Storage-fiókból, amelyen engedélyezve van az Azure Data Lake Storage Gen2 előzetes verziója.
 
 > [!div class="checklist"]
 > * Databricks-fürt létrehozása
@@ -31,9 +31,9 @@ Ez az oktatóanyag bemutatja, hogyan használhatja fel és kérdezheti le légit
 > [!NOTE]
 > Kattintson a **Prezipped file** (Előre tömörített fájl) jelölőnégyzetre az összes adatmező kiválasztásához. A letöltés mérete több gigabájtnyi, de ez az adatmennyiség szükséges az elemzéshez.
 
-## <a name="create-an-azure-data-lake-storage-gen2-account"></a>2. generációs Azure Data Lake Storage-fiók létrehozása
+## <a name="create-an-azure-storage-account-with-analytic-capabilities"></a>Elemzési képességekkel rendelkező Azure Storage-fiók létrehozása
 
-Elsőként hozzon létre egy új [2. generációs Azure Data Lake Storage-fiókot](quickstart-create-account.md), és adjon meg hozzá egy egyedi nevet. Ezután lépjen a tárfiókra a konfigurációs beállítások lekéréséhez.
+Elsőként hozzon létre egy [elemzési képességekkel rendelkező új tárfiókot](quickstart-create-account.md), és adjon neki egy egyedi nevet. Ezután lépjen a tárfiókra a konfigurációs beállítások lekéréséhez.
 
 1. A **Beállítások** oldalon kattintson a **Hozzáférési kulcsok** gombra.
 2. Kattintson a **Másolás** gombra a **key1** elem mellett a kulcs értékének másolásához.
@@ -137,11 +137,12 @@ dbutils.fs.help()
 dbutils.fs.put(source + "/temp/1.txt", "Hello, World!", True)
 dbutils.fs.ls(source + "/temp/parquet/flights")
 ```
-Ezekkel a kódmintákkal megismerte a Hadoop elosztott fájlrendszer hierarchikus jellegét a 2. generációs Azure Data Lake Storage-kompatibilis fiókban tárolt adatok használatának segítségével.
+
+Ezekkel a kódmintákkal megismerte a HDFS hierarchikus jellegét a Data Lake Storage Gen2-kompatiblis tárfiókban tárolt adatok használatával.
 
 ## <a name="query-the-data"></a>Adatok lekérdezése
 
-Ezt követően megkezdheti az Azure Data Lake Storage-be feltöltött adatok lekérdezését. Írja be a következő kódblokkok mindegyikét a **Cmd 1** területre, majd nyomja le a **Cmd + ENTER** billentyűkombinációt a Python-szkript futtatásához.
+Következő lépésként megkezdheti a tárfiókba feltöltött adatok lekérdezését. Írja be a következő kódblokkok mindegyikét a **Cmd 1** területre, majd nyomja le a **Cmd + ENTER** billentyűkombinációt a Python-szkript futtatásához.
 
 ### <a name="simple-queries"></a>Egyszerű lekérdezések
 

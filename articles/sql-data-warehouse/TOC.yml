@@ -18,7 +18,10 @@ items:
   - name: GYIK
     href: sql-data-warehouse-overview-faq.md
 - name: Kibocsátási megjegyzések
+  href: release-notes.md
   items:
+  - name: 2018. október
+    href: release-notes-october-2018.md
   - name: 2018. szeptember
     href: release-notes-september-2018.md
   - name: 2018. augusztus
@@ -300,9 +303,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: Adatkezelés
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: a4f380510223fb5d3570414cd4049bf326a02a69
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ec30b0d6cdfeea74350bfdfdc6503992adf20285
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245222"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578178"

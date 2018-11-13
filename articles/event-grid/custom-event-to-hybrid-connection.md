@@ -8,12 +8,12 @@ ms.author: tomfitz
 ms.date: 10/30/2018
 ms.topic: tutorial
 ms.service: event-grid
-ms.openlocfilehash: 788e0c8cf799922c425424fe4733e1e6618215e4
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 488f4e09e329ee41fb307dc3579e76b5378d3a9f
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421016"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747779"
 ---
 # <a name="route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Egyéni események átvitele hibrid Azure Relay-kapcsolatokon keresztül az Azure CLI és az Event Grid segítségével
 
@@ -73,10 +73,10 @@ az eventgrid event-subscription create \
   --name <event_subscription_name> \
   --endpoint-type hybridconnection \
   --endpoint $hybridid \
-  --expiration-date "2018-11-30"
+  --expiration-date "<yyyy-mm-dd>"
 ```
 
-Vegye figyelembe, hogy az előfizetéshez lejárati dátum tartozik. Az esemény-előfizetés a megadott dátumot követően automatikusan lejár. Olyan esemény-előfizetésekhez állítson be lejárati dátumot, amelyekre csak korlátozott ideig lesz szükség.
+Vegye figyelembe, hogy az előfizetéshez [lejárati dátum](concepts.md#event-subscription-expiration) tartozik.
 
 ## <a name="create-application-to-process-events"></a>Alkalmazás létrehozása események feldolgozásához
 

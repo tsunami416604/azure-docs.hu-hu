@@ -9,16 +9,16 @@ ms.reviewer: jasonwhowell
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/27/2018
-ms.openlocfilehash: 96114270c246e23db0423dec7871e4c24fe1be10
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 5c1684f7367aec2d283cd6ad310657def49dd3cb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024352"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282560"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure Databricks használatával
 
-Ebben az oktatóanyagban egy ETL-művelet (kinyerés, átalakítás és adatbetöltés) végrehajtásával adatokat fog mozgatni a 2. generációs Azure Data Lake Storage előzetes verziójából az Azure SQL Data Warehouse-ba az Azure Databricks használatával.
+Ebben az oktatóanyagban egy ETL-művelet (kinyerés, átalakítás és adatbetöltés) végrehajtásával adatokat fog áthelyezni egy Azure Data Lake Storage Gen2-kompatibilis Azure Storage-fiókból az Azure SQL Data Warehouse-ba az Azure Databricks használatával.
 
 Az alábbi ábrán az alkalmazásfolyam látható:
 
@@ -52,7 +52,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks-munkaterület létrehozása
 
-Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure Portal használatával. 
+Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure Portal használatával.
 
 1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Elemzés** > **Azure Databricks** elemet.
 
@@ -138,7 +138,7 @@ A következő lépés egy mintaadatfájl feltöltése a tárfiókba későbbi á
 
 2. Ezután töltse fel a mintaadatokat a tárfiókba. Az adatok tárfiókba történő feltöltésének módja eltérő attól függően, hogy a hierarchikus névtér-szolgáltatás engedélyezve van-e.
 
-    Ha a hierarchikus névtér engedélyezve van a 2. generációs Azure Storage-fiókjában, a feltöltéshez használhatja az Azure Data Factoryt, terjesztési pontokat vagy az AzCopyt (10-es verzió). Az AzCopy 10-es verziója csak az előzetes verzióval rendelkező ügyfelek számára érhető el. Az AzCopy használatához illessze be a következő kódot egy parancssori ablakba:
+    Ha a hierarchikus névtér engedélyezve van az Azure Storage-fiókban, a feltöltéshez használhatja az Azure Data Factoryt, a terjesztési pontokat vagy az AzCopyt (10-es verzió). Az AzCopy 10-es verziója jelenleg csak előzetes verzióként érhető el. Az AzCopy használatához illessze be a következő kódot egy parancssori ablakba:
 
     ```bash
     set ACCOUNT_NAME=<ACCOUNT_NAME>

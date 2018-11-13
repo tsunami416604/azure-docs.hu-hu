@@ -8,14 +8,14 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/28/2018
+ms.date: 11/02/2018
 ms.author: dech
-ms.openlocfilehash: 4f4cc18bb8423a20358476142488c94361d6b72d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 782975cfa548d214515761e45b8f79a2219831e2
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419214"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036971"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>CI-/CD-folyamat beállítása az Azure Cosmos DB Emulator buildelési feladatával az Azure DevOpsban
 
@@ -40,32 +40,32 @@ Ezután válassza ki a szervezetet, amelyben telepíteni kívánja a bővítmén
 
 ## <a name="create-a-build-definition"></a>Builddefiníció létrehozása
 
-Miután telepítette, hozzá kell adnia a bővítményt egy [builddefinícióhoz](https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav). Használhat egy meglévő builddefiníciót, vagy létrehozhat egy újat. Ha már rendelkezik builddefinícióval, folytassa [az Emulator buildelési feladatának hozzáadása egy builddefinicióhoz](#addEmulatorBuildTaskToBuildDefinition) résszel.
+Most, hogy a bővítmény települt, jelentkezzen be az Azure DevOps-fiókjába, és keresse meg a projektet a projektek irányítópultján. Hozzáadhat egy új [buildfolyamatot](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) a projekthez, vagy módosíthat egy meglévőt is. Ha már rendelkezik buildfolyamattal, továbbléphet [az Emulator buildelési feladatának hozzáadása egy builddefinícióhoz](#addEmulatorBuildTaskToBuildDefinition) részre.
 
-Új builddefiníció létrehozásához lépjen Azure DevOps **Build and Release** (Buildelés és kiadás) lapjára. Válassza a **+New** (+Új) lehetőséget.
+1. Új builddefiníció létrehozásához lépjen az Azure DevOps **Builds** (Buildek) lapjára. Válassza a **+New** (+Új) lehetőséget. > **Új buildfolyamat**
 
-![Új builddefiníció létrehozása](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png) Válassza ki a kívánt csapatprojektet, adattárat és ágat a buildek engedélyezéséhez. 
+   ![Új buildfolyamat létrehozása](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png)
 
-![Válassza ki a csapatprojektet, az adattárat és az ágat a builddefiníció számára ](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
+2. Válassza ki a kívánt értékeket a következőkhöz: **Source** (Forrás), **Team project** (Csapatprojekt), **Repository** (Adattár) és **Default branch for manual and scheduled builds** (Manuális és ütemezett buildelések alapértelmezett ága). Miután megadta a kívánt beállításokat, kattintson a **Continue** (Folytatás) elemre.
 
-Végül válassza ki a builddefinícióhoz használni kívánt sablont. Ebben az oktatóanyagban az **ASP.NET** sablont választjuk. 
+   ![Válassza ki a csapatprojektet, az adattárat és az ágat a buildfolyamathoz. ](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
 
-![Válassza ki a builddefinícióhoz használni kívánt sablont ](./media/tutorial-setup-ci-cd/CreateNewBuildDef_3.png)
+3. Végül válassza ki a buildfolyamathoz használni kívánt sablont. Ebben az oktatóanyagban az **ASP.NET** sablont választjuk. 
 
-Most már van builddefiníciónk, amelyet beállíthatunk az Azure Cosmos DB emulátor buildelési feladatának használatához, és amely az alábbihoz hasonlóan fest. 
+Most már van buildfolyamatunk, amelyet beállíthatunk az Azure Cosmos DB emulátor buildelési feladatának használatára. 
 
-![ASP.NET builddefiníció-sablon](./media/tutorial-setup-ci-cd/CreateNewBuildDef_4.png)
+## <a name="addEmulatorBuildTaskToBuildDefinition"></a>Feladat hozzáadása buildfolyamathoz
 
-## <a name="addEmulatorBuildTaskToBuildDefinition"></a>Feladat hozzáadása egy builddefinícióhoz
+1. Mielőtt hozzáadhatna egy feladatot a buildfolyamathoz, hozzá kell adnia egy ügynökfeladatot. Keresse meg a buildfolyamatot, kattintson a három pont (**...**) elemre, és válassza az **Add an agent job** (Ügynökfeladat hozzáadása) lehetőséget.
 
-Az emulátor buildelési feladatának hozzáadásához keressen a **cosmos** kifejezésre a keresőmezőben, és válassza az **Add** (Hozzáadás) lehetőséget. A buildelési feladat elindít egy tárolót, amelyben már fut a Cosmos DB Emulator egy példánya, ezért minden olyan feladat elé kell ütemezni, amelyhez az emulátor futása szükséges.
+1. Ezután válassza a **+** jelet az ügynökfeladat mellett az emulátor buildelési feladatának hozzáadásához. Keressen a **cosmos** kifejezésre a keresőmezőben, válassza ki az **Azure Cosmos DB Emulator** lehetőséget, és adja hozzá az ügynökfeladathoz. A buildelési feladat elindít egy tárolót, amelyben már fut a Cosmos DB Emulator egy példánya. Az Azure Cosmos DB Emulator-feladatot minden olyan feladat elé kell ütemezni, amelyhez az emulátor futása szükséges.
 
-![Az emulátor buildelési feladatának hozzáadása a builddefinícióhoz](./media/tutorial-setup-ci-cd/addExtension_3.png) Ebben az oktatóanyagban a feladatot az 1. fázis kezdetéhez adjuk hozzá, hogy biztosítsuk az emulátor elérhetőségét a tesztjeink futtatása előtt.
-A kész builddefiníció most így néz ki: 
+   ![Az emulátor buildelési feladatának hozzáadása a builddefinícióhoz](./media/tutorial-setup-ci-cd/addExtension_3.png)
 
-![ASP.NET builddefiníció-sablon](./media/tutorial-setup-ci-cd/CreateNewBuildDef_5.png)
+Ebben az oktatóanyagban a feladatot a legelején adjuk hozzá, hogy biztosítsuk az emulátor elérhetőségét a tesztjeink futtatása előtt.
 
 ## <a name="configure-tests-to-use-the-emulator"></a>Tesztek konfigurálása az emulátor használatához
+
 Most konfigurálni fogjuk a tesztjeinket az emulátor használatához. Az emulátor buildelési feladata exportál egy környezeti változót (CosmosDbEmulator.Endpoint), amelyre a buildfolyamat összes további feladata küldhet kéréseket. 
 
 Ebben az oktatóanyagban a [Visual Studio tesztelési feladatával](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) futtatunk olyan egységteszteket, amelyek **.runsettings** fájllal lettek konfigurálva. Az egységtesztek beállításáról a [dokumentációban](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017) talál további információt.
@@ -136,7 +136,8 @@ Lépjen az Execution Options (Végrehajtási beállítások) lapra a Visual Stud
 ![A végpont változójának felülbírálása az emulátor buildelési feladatának végpontjával](./media/tutorial-setup-ci-cd/addExtension_5.png)
 
 ## <a name="run-the-build"></a>A build futtatása
-Most mentse és helyezze várakozási sorba a buildet. 
+
+Most a **Save and queue** (Mentés és üzenetsorba helyezés) elemre kattintva mentse és helyezze az üzenetsorba a buildet. 
 
 ![A build mentése és futtatása](./media/tutorial-setup-ci-cd/runBuild_1.png)
 

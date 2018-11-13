@@ -3,24 +3,24 @@ title: Új eszköztípus definiálása az Azure IoT Centralban | Microsoft Docs
 description: Ez az oktatóanyag bemutatja, hogy szerkesztőként hogyan definiálhat új eszköztípust az Azure IoT Central alkalmazásban. Meghatározza a típus telemetriáját, állapotát, tulajdonságait és beállításait.
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 10/12/2018
+ms.date: 10/30/2018
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 8c69a863d8719a0e4eba30a6d5a619210e7f95b8
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: dd81c10bcda6665de7ffabe94a4c1be991687797
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156034"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963595"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Oktatóanyag: Új eszköztípus definiálása az Azure IoT Central-alkalmazásban
 
 Ez az oktatóanyag bemutatja, hogy szerkesztőként hogyan definiálhat új eszköztípust egy eszközsablon használatával a Microsoft Azure IoT Central alkalmazásban. Az eszközsablon határozza meg az eszköztípus telemetriáját, állapotát, tulajdonságait és beállításait.
 
-A valós eszköz csatlakoztatása előtt az alkalmazás teszteléséhez az Azure IoT Central létrehoz egy szimulált eszközt az eszközsablonból annak létrehozásakor.
+A valós eszköz csatlakoztatása előtt az alkalmazás teszteléséhez az IoT Central létrehoz egy szimulált eszközt az eszközsablonból annak létrehozásakor.
 
 Ebben az oktatóanyagban egy **Csatlakoztatott légkondicionáló** eszközsablont hoz létre. Egy csatlakoztatott légkondicionáló eszköz:
 
@@ -59,9 +59,9 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy Azure IoT Central-alkalmazá
 
 4. Új Azure IoT Central-alkalmazás létrehozása:
     
-    * Válassza az **Ingyenes** elemet. A 7 napos ingyenes próbaidőszaknak nincsenek előfizetési követelményei.
+    * Válassza a **Próba** elemet. Próbaalkalmazás létrehozásához nincs szükség Azure-előfizetésre.
     
-       A könyvtárakkal és előfizetésekkel kapcsolatban további információért lásd az [Azure IoT Central-alkalmazás létrehozását](howto-create-application.md) ismertető cikket.
+       A könyvtárakkal és előfizetésekkel kapcsolatban további információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
     
     * Válassza az **Egyéni alkalmazás** elemet.
     
@@ -69,9 +69,9 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy Azure IoT Central-alkalmazá
     
     * Válassza a **Létrehozás** elemet.
 
-    ![Azure IoT Central Alkalmazás létrehozása oldal](./media/tutorial-define-device-type/iotcentralcreatenew.png)
+    ![Azure IoT Central Alkalmazás létrehozása oldal](./media/tutorial-define-device-type/iotcentralcreate.png)
 
-    További információt az [Azure IoT Central-alkalmazás létrehozását](howto-create-application.md) ismertető cikkben talál.
+    További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
 
 ## <a name="create-a-new-custom-device-template"></a>Új egyéni ügyfélsablon létrehozása
 

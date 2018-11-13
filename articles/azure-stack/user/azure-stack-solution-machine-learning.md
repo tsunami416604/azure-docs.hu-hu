@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 28ff8dbf073596e5f9565c56ae903af6af68f3e2
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 59696245dc33302c65aee5a39dc856926347b8fb
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353716"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51569114"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>Oktatóanyag: Hozzon létre egy gépi tanulási megoldásokat az Azure és az Azure Stack megoldás
 
@@ -1175,7 +1175,7 @@ A munkamenet a Linux Windows alrendszere belül használja a következő parancs
 
 ### <a name="create-a-service-principal-in-azure-ad"></a>Egyszerű szolgáltatás létrehozása az Azure ad-ben
 
-1.  Jelentkezzen be globális [ *az Azure portal*](http://www.poartal.azure.com/).
+1.  Jelentkezzen be globális [ *az Azure portal*](http://portal.azure.com/).
 
 2.  Jelentkezzen be az Azure Stack-példányhoz társított Azure AD-bérlővel.
 

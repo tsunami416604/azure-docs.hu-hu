@@ -1,5 +1,5 @@
 ---
-title: MySQL online migrálása az Azure Database for MySQL-be, az Azure Database Migration Service használatával | Microsoft Docs
+title: 'Oktatóanyag: MySQL online migrálása az Azure Database for MySQL-be az Azure Database Migration Service használatával | Microsoft Docs'
 description: Megtudhatja, hogyan végezhet online migrálást a helyszíni MySQL-ből az Azure Database for MySQL-be, az Azure Database Migration Service használatával.
 services: dms
 author: HJToland3
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/06/2018
-ms.openlocfilehash: 4825985253f5525314a496f2adbc40657231f5d5
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 8b0e15ac6cd59a77e283d9256ab5fa4542dfc9a9
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829851"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960514"
 ---
-# <a name="migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>MySQL online migrálása az Azure Database for MySQL-be a DMS használatával
+# <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Oktatóanyag: MySQL online migrálása az Azure Database for MySQL-be a DMS használatával
 Az Azure Database Migration Service használatával minimális szolgáltatáskieséssel migrálhatja egy helyszíni MySQL-példány adatbázisait az [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/)-be. Ez azt jelenti, hogy a migrálás az alkalmazás minimális ideig tartó leállásával végezhető el. Ebben az oktatóanyagban az **Employees** mintaadatbázist fogja migrálni a MySQL 5.7 egy helyszíni példányáról az Azure Database for MySQL-be az Azure Database Migration Service online migrálási tevékenységének használatával.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:

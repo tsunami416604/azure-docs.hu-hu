@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/30/2018
-ms.openlocfilehash: 9ad4462bba861e2bcc940661242d8801355c2f6c
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: f35585fc77f085f58b7be2d55e03919cc1e8b248
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240801"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283784"
 ---
 # <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>Stream Analytics-feladat létrehozása telefonhívás-adatok elemzésére és az eredmények Power BI-irányítópulton való vizualizációjára
 
@@ -36,7 +36,8 @@ Mielőtt hozzálátna, győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).  
 * Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).  
-* Töltse le a [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) telefonhívás-eseménykészítő alkalmazást a Microsoft letöltőközpontjából, vagy szerezze be a forráskódot a [GitHubról](https://aka.ms/azure-stream-analytics-telcogenerator).  
+* Töltse le a [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) telefonhívás-eseménykészítő alkalmazást a Microsoft letöltőközpontjából, vagy szerezze be a forráskódot a [GitHubról](https://aka.ms/azure-stream-analytics-telcogenerator).
+* Szüksége lesz egy Power BI-fiókra.
 
 ## <a name="create-an-azure-event-hub"></a>Azure Event Hub létrehozása 
 
@@ -86,9 +87,7 @@ Mielőtt egy alkalmazás adatokat küldhet az Azure Event Hubsnak, az eseményk�
 
    `Endpoint=sb://<Your event hub namespace>.servicebus.windows.net/;SharedAccessKeyName=<Your shared access policy name>;SharedAccessKey=<generated key>;EntityPath=<Your event hub name>` 
 
-   Figyelje meg, hogy a kapcsolati sztring több, pontosvesszővel elválasztott kulcs–érték párt tartalmaz: **Endpoint**, **SharedAccessKeyName**, **SharedAccessKey** és **EntityPath**.  
-
-5. Távolítsa el az **EntityPath** párt a kapcsolati sztringből az előtte található pontosvesszővel együtt.
+   Figyelje meg, hogy a kapcsolati sztring több, pontosvesszővel elválasztott kulcs–érték párt tartalmaz: **Endpoint**, **SharedAccessKeyName**, **SharedAccessKey** és **EntityPath**.
 
 ## <a name="start-the-event-generator-application"></a>Az eseménylétrehozó alkalmazás elindítása
 
@@ -229,7 +228,7 @@ A lekérdezésszerkesztőben létrehozott lekérdezéseket mintaadatokkal teszte
 
 2. A **Lekérdezés** panelen válassza ki a *CallStream* bemenet melletti pontokat, majd válassza a **Mintaadatok bemenetből** lehetőséget. 
 
-3. Állítsa a **Percek** beállítást 3 értékre, majd válassza az **OK** lehetőséget. A rendszer három percnyi adatmintát vesz a bemeneti streamből, és jelzi, amikor készen állnak a mintaadatok. A mintavételezés állapotát az értesítési sávon tekintheti meg. 
+3. Állítsa a **Percek** beállítást 3 értékre, majd válassza az **OK** lehetőséget. A rendszer három percnyi adatmintát vesz a bemeneti streamből, és jelzi, amikor a mintaadatok készen állnak. A mintavételezés állapotát az értesítési sávon tekintheti meg. 
 
    A rendszer ideiglenesen tárolja a mintaadatokat, amelyek akkor érhetők el, amikor meg van nyitva a lekérdezési ablak. Ha bezárja a lekérdezési ablakot, a mintaadatok elvesznek, és új mintaadatkészletet kell létrehoznia, ha tesztet kíván végrehajtani. Alternatív megoldásként használhat a [GitHubról](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json) származó, mintaadatokat tartalmazó JSON-fájlt, majd feltöltheti ezt a JSON-fájlt, hogy a benne lévő mintaadatokat használja a *CallStream* bemenethez.
 
@@ -253,7 +252,7 @@ A lekérdezésszerkesztőben létrehozott lekérdezéseket mintaadatokkal teszte
 
    ![Csempék létrehozása](media/stream-analytics-manage-job/create-tiles.png)
 
-6. Hajtsa végre újra a 4. és az 5. lépést az alábbi beállításokkal:
+6. Hajtsa végre újra az 5. lépést az alábbi beállításokkal:
    * Amikor a Vizualizáció típusa részhez ér, válassza a Vonaldiagram lehetőséget.  
    * Adjon hozzá egy tengelyt, és válassza ki **windowend** lehetőséget.  
    * Adjon meg egy értéket, és válassza a **fraudulentcalls** lehetőséget.  

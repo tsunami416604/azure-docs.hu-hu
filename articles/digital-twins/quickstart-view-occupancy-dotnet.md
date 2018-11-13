@@ -8,20 +8,24 @@ services: digital-twins
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/02/2018
+ms.date: 11/7/2018
 ms.author: alinast
-ms.openlocfilehash: e0b47b1322a520ad8b09fd2fe2967e628b5e4e03
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 6e83ca543937948ad8028969cceca0f8787972c9
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49322879"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281218"
 ---
 # <a name="quickstart-find-available-rooms-using-azure-digital-twins"></a>Rövid útmutató: Szabad szobák keresése az Azure Digital Twins segítségével
 
 Az Azure Digital Twins szolgáltatással előállítható a fizikai környezet digitális képe. Ezután értesítéseket kaphat a környezetben zajló eseményekről, és testre szabhatja a rájuk adott válaszokat. 
 
 Ez a rövid útmutató [két .NET-minta](https://github.com/Azure-Samples/digital-twins-samples-csharp) használatával digitalizál egy képzeletbeli épületet, és bemutatja, hogyan lehet szabad szobákat keresni az épületben. A Digital Twinsszel több érzékelőt rendelhet hozzá a környezethez. A szimulált szén-dioxid-érzékelő segítségévvel a szobák foglaltsága mellett azt is megtudhatja, hogy a szabad szobákban jó-e a levegőminőség. A mintaalkalmazások egyike véletlenszerű érzékelőadatokat hoz létre a forgatókönyv jobb vizuális megjelenítése érdekében.
+
+A következő videó a rövid útmutatóban ismertetett beállítási folyamatot foglalja össze:
+
+> [!VIDEO https://www.youtube.com/embed/1izK266tbMI]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -36,7 +40,7 @@ Ez a rövid útmutató [két .NET-minta](https://github.com/Azure-Samples/digita
 
 Az ebben a szakaszban ismertetett lépések végrehajtásával hozzon létre egy új Digital Twins-példányt a [portálon](https://portal.azure.com).
 
-[!INCLUDE [create-digital-twins-portal](../../includes/create-digital-twins-portal.md)]
+[!INCLUDE [create-digital-twins-portal](../../includes/digital-twins-create-portal.md)]
 
 ## <a name="set-permissions-for-your-app"></a>Az alkalmazás engedélyeinek beállítása
 

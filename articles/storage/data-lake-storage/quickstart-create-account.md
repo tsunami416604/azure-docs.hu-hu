@@ -9,18 +9,18 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 2dae7938c63ee141ea6705ab4c324882f575e298
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 41f25496d089a5c6487176afee01f7cb06330794
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426872"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281557"
 ---
-# <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>Rövid útmutató: Előzetes verziójú, 2. generációs Azure Data Lake Storage-tárfiók létrehozása
+# <a name="quickstart-create-a-storage-account-for-analytics"></a>Rövid útmutató: Tárfiók létrehozása elemzési célokra
 
-Az előzetes verziójú, 2. generációs Azure Data Lake Storage-fiókok [támogatnak egy HNS-t (Hierarchical Namespace Service – hierarchikus névtérszolgáltatás)](introduction.md), amely egy, a Hadoop elosztott fájlrendszerrel (HDFS) való együttműködésre kialakított natív könyvtáralapú fájlrendszert biztosít. A 2. generációs Data Lake Storage-adatok a HDFS-ből az [ABFS illesztőprogramon](abfs-driver.md) keresztül érhetők el.
+Azok a tárfiókok, amelyeken engedélyezve van a Data Lake Storage Gen2 előzetes verziója, [támogatnak egy hierarchikus névtérszolgáltatást](introduction.md), amely egy, a Hadoop elosztott fájlrendszerrel (HDFS) való együttműködésre kialakított natív könyvtáralapú fájlrendszert biztosít. A 2. generációs Data Lake Storage-adatok a HDFS-ből az [ABFS illesztőprogramon](abfs-driver.md) keresztül érhetők el.
 
-Ha engedélyezni szeretné a 2. generációs Data Lake Storage funkcióit a tárfiókon, [töltse ki az előzetes verzió használatára vonatkozó felmérést hozzáférés igényléséhez](https://aka.ms/adlsgen2signup). Miután jóvá lett hagyva, létrehozhat egy új, 2. generációs Data Lake Storage-fiókot. Ez a rövid útmutató bemutatja, hogyan hozhat létre fiókot az [Azure Portal](https://portal.azure.com/), az [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) használatával.
+Ha engedélyezni szeretné a 2. generációs Data Lake Storage funkcióit a tárfiókon, [töltse ki az előzetes verzió használatára vonatkozó felmérést hozzáférés igényléséhez](https://aka.ms/adlsgen2signup). Miután jóvá lett hagyva, létrehozhat egy engedélyezett Data Lake Storage Gen2-kompatibilis tárfiókot. Ez a rövid útmutató bemutatja, hogyan hozhat létre fiókot az [Azure Portal](https://portal.azure.com/), az [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) használatával.
 
 > [!NOTE]
 > A 2. generációs Data Lake Storage-fiók létrehozásának jóváhagyása után az Azure Portal fióklétrehozási felülete módosul. Ugyanígy a 2. generációs Data Lake Storage-hez kapcsolódó PowerShell- és parancssori felületi argumentumok is csak azután működnek, hogy az előzetes verzió használatára vonatkozó igénye jóvá lett hagyva.
@@ -51,7 +51,7 @@ A gombra kattintva megjelenik egy interaktív kezelőfelület jelenik, amelyet a
 
 Az Azure CLI-t helyben is telepítheti és használhatja. A rövid útmutatóhoz az Azure CLI 2.0.38-as vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
-## <a name="overview-of-creating-an-azure-data-lake-storage-gen2-account"></a>2. generációs Azure Data Lake Storage-fiókok létrehozása – áttekintés
+## <a name="create-a-storage-account-with-azure-data-lake-storage-gen2-enabled"></a>Azure Data Lake Storage Gen2-kompatibilis tárfiók létrehozása
 
 Mielőtt létrehozna egy fiókot, először létre kell hoznia egy erőforráscsoportot, amely logikai tárolóként szolgál majd a tárfiókok és bármely egyéb létrehozott Azure-erőforrás számára. Ha törölni szeretné a jelen rövid útmutató által létrehozott erőforrásokat, akkor egyszerűen törölje az erőforráscsoportot. Az erőforráscsoport törlésekor a kapcsolódó tárfiók, valamint az esetlegesen az erőforráscsoporthoz társított egyéb erőforrások is törlődnek. További információt az erőforráscsoportokkal kapcsolatban [az Azure Resource Manager áttekintésében](../../azure-resource-manager/resource-group-overview.md) találhat.
 
@@ -135,7 +135,7 @@ Ezután indítsa újra a felületet.
 Az új erőforráscsoport PowerShell használatával történő létrehozása a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) paranccsal történik: 
 
 > [!NOTE]
-> > A hierarchikus névtér jelenleg minden nyilvános régióban elérhető, a privát régiókban azonban nem. Szuverén felhőkben jelenleg nem érhető el.
+> > A hierarchikus névtér jelenleg minden nyilvános régióban elérhető. Szuverén felhőkben jelenleg nem érhető el.
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -222,6 +222,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban egy 2. generációs Data Lake Storage-tárfiókot hozott létre. Ha szeretne megismerkedni a blobok tárfiókba történő felöltésével és onnan való letöltésével, folytassa a Blob Storage rövid útmutatójával.
+Ebben a rövid útmutatóban létrehozott egy Data Lake Storage Gen2-funkciókkal rendelkező tárfiókot. Ha szeretne megismerkedni a blobok tárfiókba történő felöltésével és onnan való letöltésével, folytassa a Blob Storage rövid útmutatójával.
 
 * [Adatok áthelyezése az Azure Blob Storage-be vagy onnan máshová az AzCopy használatával](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azcopy)

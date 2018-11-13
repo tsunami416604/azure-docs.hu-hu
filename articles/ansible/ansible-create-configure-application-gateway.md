@@ -1,6 +1,6 @@
 ---
-title: Webes forgalom kezelése az Azure Application Gatewayjel az Ansible segítségével (Előzetes verzió)
-description: Megtudhatja, hogyan hozhat létre és konfigurálhat az Ansible segítségével egy Azure Application Gatewayt a webes forgalma kezelésére
+title: Webes forgalom kezelése az Azure Application Gateway és az Ansible használatával (előzetes verzió)
+description: Megtudhatja, hogyan hozhat létre és konfigurálhat egy Azure Application Gatewayt a webes forgalom kezeléséhez az Ansible használatával
 ms.service: ansible
 keywords: ansible, azure, devops, bash, forgatókönyv, azure application gateway, load balancer, webes forgalom
 author: tomarcher
@@ -8,34 +8,36 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/20/2018
-ms.openlocfilehash: 02b98cb22d897fc9599f6e44ddc57ef4211b0893
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: e3c165c87d6c179141f2ddd44f00f0f62a84b285
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410844"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912866"
 ---
-# <a name="manage-web-traffic-with-azure-application-gateway-using-ansible-preview"></a>Webes forgalom kezelése az Azure Application Gatewayjel az Ansible segítségével (Előzetes verzió)
-Az [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/) egy webes forgalomra vonatkozó terheléselosztó, amellyel kezelheti a webalkalmazásai forgalmát. 
+# <a name="manage-web-traffic-with-azure-application-gateway-by-using-ansible-preview"></a>Webes forgalom kezelése az Azure Application Gateway és az Ansible használatával (előzetes verzió)
 
-Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat az Ansible használatával egy Azure Application Gatewayt, és hogyan használhatja Azure-tárolópéldányokban futó két webes kiszolgáló forgalmának kezelésére. 
+Az [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/) egy webes forgalomra vonatkozó terheléselosztó, amellyel kezelheti a webalkalmazásai forgalmát.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az Ansible használatával automatizálhatja a környezetében található erőforrások üzembe helyezését és konfigurálását. Ebből a cikkből megtudhatja, hogyan hozhat létre alkalmazásátjárót az Ansible használatával. A cikk azt is bemutatja, hogyan kezelheti a forgalmat az átjáró használatával két olyan webkiszolgálón, amelyek az Azure tárolópéldányokban futnak.
+
+Ez az oktatóanyag a következőket mutatja be:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
-> * Két Azure-tárolópéldány létrehozása httpd-rendszerképpel
-> * Egy alkalmazásátjáró létrehozása a háttérkészletben a fenti Azure-tárolópéldányokkal
-
+> * Két Azure-beli tárolópéldány létrehozása HTTPD-rendszerképekkel
+> * Alkalmazásátjáró létrehozása, amely működik az Azure-beli tárolópéldányokkal a kiszolgálókészletben
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 - **Azure-előfizetés** – Ha nem rendelkezik Azure-előfizetéssel, első lépésként hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> Az oktatóanyagban szereplő következő forgatókönyvek futtatásához az Ansible 2.7-es verziója szükséges. Az Ansible 2.7-es RC verzióját a `sudo pip install ansible[azure]==2.7.0rc2` parancs futtatásával telepítheti. Az Ansible 2.7-es verziója 2018 októberében jelenik meg. Ezt követően már nem lesz szükséges megadnia a verziót, mert az alapértelmezett verzió a 2.7-es lesz. 
+> Az oktatóanyagban szereplő következő forgatókönyvek futtatásához az Ansible 2.7-es verziója szükséges. Az Ansible 2.7 RC-t a `sudo pip install ansible[azure]==2.7.0rc2` parancs futtatásával telepítheti. Az Ansible 2.7-es kiadását követően nem kell megadnia a verziót.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+
 Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.  
 
 A következő példában létrehozunk egy **myResourceGroup** nevű erőforráscsoportot az **eastus** helyen.
@@ -52,15 +54,17 @@ A következő példában létrehozunk egy **myResourceGroup** nevű erőforrásc
         location: "{{ location }}"
 ```
 
-Mentse a fenti forgatókönyvet *rg.yml* néven. A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
+Mentse a forgatókönyvet *rg.yml* néven. A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
+
 ```bash
 ansible-playbook rg.yml
 ```
 
-## <a name="create-network-resources"></a>Hálózati erőforrások létrehozása 
-Ahhoz, hogy az alkalmazásátjáró kommunikálhasson más erőforrásokkal, létre kell hoznia egy virtuális hálózatot. 
+## <a name="create-network-resources"></a>Hálózati erőforrások létrehozása
 
-Az alábbi példa létrehoz egy **myAGSubnet** nevű alhálózattal rendelkező **myVNet** nevű virtuális hálózatot, és **mydomain** tartományú **myAGPublicIPAddress** nevű nyilvános IP-címet. 
+Ahhoz, hogy az alkalmazásátjáró kommunikálhasson más erőforrásokkal, először hozzon létre egy virtuális hálózatot.
+
+Az alábbi példa létrehoz egy **myVNet** nevű virtuális hálózatot, egy **myAGSubnet** nevű alhálózatot és egy **mydomain** tartománnyal rendelkező **myAGPublicIPAddress** nevű nyilvános IP-címet.
 
 ```yml
 - hosts: localhost
@@ -98,13 +102,15 @@ Az alábbi példa létrehoz egy **myAGSubnet** nevű alhálózattal rendelkező 
         domain_name_label: "{{ publicip_domain }}"
 ```
 
-Mentse a fenti forgatókönyvet *vnet_create.yml* néven. A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
+Mentse a forgatókönyvet *vnet_create.yml* néven. A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
+
 ```bash
 ansible-playbook vnet_create.yml
 ```
 
-## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
-Ebben a példában httpd rendszerképekkel két Azure-tárolópéldányt hozunk létre, amelyeket az alkalmazásátjáró háttérkiszolgálóiként fogunk használni.  
+## <a name="create-servers"></a>Kiszolgálók létrehozása
+
+Az alábbi példa bemutatja, hogy hozhat létre két Azure-beli tárolópéldányt HTTPD-rendszerképekkel, hogy azokat webkiszolgálóként lehessen használni az alkalmazásátjáróhoz.  
 
 ```yml
 - hosts: localhost
@@ -147,22 +153,22 @@ Ebben a példában httpd rendszerképekkel két Azure-tárolópéldányt hozunk 
               - 80
 ```
 
-Mentse a fenti forgatókönyvet *aci_create.yml* néven. A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
+Mentse a forgatókönyvet *aci_create.yml* néven. A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
+
 ```bash
 ansible-playbook aci_create.yml
 ```
 
 ## <a name="create-the-application-gateway"></a>Application Gateway létrehozása
 
-Most hozzunk létre egy alkalmazásátjárót. A következő példa létrehoz egy **myAppGateway** nevű alkalmazásátjárót háttéralkalmazás-, előtér- és HTTP-konfigurációval.  
+Az alábbi példa létrehoz egy **myAppGateway** nevű alkalmazásátjárót a háttér, az előtér és a HTTP konfigurációival együtt.  
 
-> [!div class="checklist"]
-> * A **gateway_ip_configurations** blokkban megadott **appGatewayIP** – Az átjáró IP-konfigurációjához szükséges egy hivatkozás az alhálózatra. 
-> * A **backend_address_pools** blokkban megadott **appGatewayBackendPool** – Az alkalmazásátjáróknak rendelkezniük kell legalább egy háttércímkészlettel. 
-> * A **backend_http_settings_collection** blokkban megadott **appGatewayBackendHttpSettings** – Meghatározza, hogy a kommunikációhoz a rendszer a 80-as portot és egy HTTP-protokollt használ. 
-> * A **backend_http_settings_collection** blokkban megadott **appGatewayHttpListener** – Az appGatewayBackendPool készlethez társított alapértelmezett figyelő. 
-> * A **frontend_ip_configurations** blokkban megadott **appGatewayFrontendIP** – Hozzárendeli a myAGPublicIPAddress IP-címet az appGatewayHttpListener figyelőhöz. 
-> * A **request_routing_rules** blokkban megadott **rule1** – Az appGatewayHttpListener figyelőhöz rendelt alapértelmezett útválasztási szabály. 
+* Az **appGatewayIP** a **gateway_ip_configurations** blokkban van meghatározva. Az átjáró IP-konfigurációjához egy alhálózat-referencia szükséges.
+* Az **appGatewayBackendPool** a **backend_address_pools** blokkban van meghatározva. Az alkalmazásátjáróknak rendelkezniük kell legalább egy háttércímkészlettel.
+* Az **appGatewayBackendHttpSettings** a **backend_http_settings_collection** blokkban van meghatározva. Megszabja, hogy a kommunikációhoz a rendszer egy HTTP-protokollt és a 80-as portot használja.
+* Az **appGatewayHttpListener** a **backend_http_settings_collection** blokkban van meghatározva. Ez az appGatewayBackendPool készlethez társított alapértelmezett figyelő.
+* Az **appGatewayFrontendIP** a **frontend_ip_configurations** blokkban van meghatározva. Hozzárendeli a myAGPublicIPAddress IP-címet az appGatewayHttpListener figyelőhöz.
+* A **rule1** a **request_routing_rules** blokkban van meghatározva. Ez az appGatewayHttpListener figyelőhöz rendelt alapértelmezett útválasztási szabály.
 
 ```yml
 - hosts: localhost
@@ -246,22 +252,23 @@ Most hozzunk létre egy alkalmazásátjárót. A következő példa létrehoz eg
             name: rule1
 ```
 
-Mentse el a fenti forgatókönyvet *appgw_create.yml* néven. A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
+Mentse a forgatókönyvet *appgw_create.yml* néven. A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
+
 ```bash
 ansible-playbook appgw_create.yml
 ```
 
-Az alkalmazásátjáró létrehozása néhány percig is eltarthat. 
+Az alkalmazásátjáró létrehozása néhány percig is eltarthat.
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-A fenti forgatókönyvben a hálózati erőforrásokhoz a **mydomain** nevű tartomány az **eastus** régióban lett létrehozva. Ekkor ha megnyitja egy böngészőben a `http://mydomain.eastus.cloudapp.azure.com` címet, akkor az alábbi oldalt kell látnia, amely megerősíti, hogy az Application Gateway megfelelően működik.
+A hálózati erőforrások mintaforgatókönyvében létrehozta a **mydomain** nevű tartományt az **eastus** régióban. A böngészőben lépjen a `http://mydomain.eastus.cloudapp.azure.com` oldalra. Ha az alábbi oldalt látja, az alkalmazásátjáró megfelelően működik.
 
-![Hozzáférés az Application Gatewayhez](media/ansible-create-configure-application-gateway/applicationgateway.PNG)
+![Működő alkalmazásátjáró sikeres tesztelése](media/ansible-create-configure-application-gateway/applicationgateway.PNG)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha ezekre az erőforrásokra nincs szüksége, az alábbi példa futtatásával törölheti őket. Törli a **myResourceGroup** nevű erőforráscsoportot. 
+Ha ezekre az erőforrásokra már nincs szüksége, az alábbi kód futtatásával törölheti őket. Ez töröl egy **myResourceGroup** nevű erőforráscsoportot.
 
 ```yml
 - hosts: localhost
@@ -274,11 +281,13 @@ Ha ezekre az erőforrásokra nincs szüksége, az alábbi példa futtatásával 
         state: absent
 ```
 
-Mentse a fenti forgatókönyvet *rg_delete*.yml néven. A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
+Mentse a forgatókönyvet *rg_delete.yml* néven. A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
+
 ```bash
 ansible-playbook rg_delete.yml
 ```
 
 ## <a name="next-steps"></a>További lépések
-> [!div class="nextstepaction"] 
-> [Ansible az Azure-ban](https://docs.microsoft.com/azure/ansible/)
+
+> [!div class="nextstepaction"]
+> [Ansible az Azure-on](https://docs.microsoft.com/azure/ansible/)

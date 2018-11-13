@@ -9,13 +9,13 @@ editor: jasonwhowell
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 09/12/2018
-ms.openlocfilehash: f26cadf28205359b111a8f92b8fadcbd9f26f958
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.date: 11/01/2018
+ms.openlocfilehash: b413636f173a682ed74bf92688126d33d429839e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407621"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959222"
 ---
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure Portal használatával
 
@@ -98,20 +98,9 @@ Az értékek kikereséséhez végezze el az alábbi lépéseket:
 Ebben a példában a kiszolgáló neve **mydemoserver.mysql.database.azure.com**, a kiszolgáló-rendszergazdai bejelentkezési név pedig **myadmin@mydemoserver**.
 
 ## <a name="connect-to-mysql-by-using-the-mysql-command-line-tool"></a>Csatlakozás a MySQL-hez a mysql parancssori eszköz használatával
-Számos különféle alkalmazással csatlakozhat a MySQL-kiszolgálóhoz készült Azure-adatbázishoz. 
+Csatlakozzon kiszolgálójához a **mysql.exe** parancssori eszközzel. A MySQL-t [innen](https://dev.mysql.com/downloads/) töltheti le és telepítheti számítógépén. 
 
-Először használjuk a [mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) parancssori eszközt a kiszolgálóhoz való csatlakozás bemutatásához. Az itt leírtak szerint használhatja a webböngészőt és az Azure Cloud Shellt is, anélkül, hogy valamilyen más szoftvert telepítenie kéne. Ha helyileg telepítve van a mysql segédprogram, onnan is csatlakozhat.
-
-1. Indítsa el az Azure Cloud Shellt az Azure Portal jobb felső részén található terminálikonnal (**>_**).
-![Azure Cloud Shell terminál szimbóluma](./media/quickstart-create-mysql-server-database-using-azure-portal/7-cloud-console.png)
-
-2.  Az Azure Cloud Shell megnyílik a böngészőben, ami lehetővé teszi Bash rendszerhéjparancsok beírását.
-
-   ![Parancssor – mysql parancssori példa](./media/quickstart-create-mysql-server-database-using-azure-portal/8-bash.png)
-
-3. A Cloud Shell parancssorában csatlakozzon a MySQL-kiszolgálóhoz készült Azure-adatbázishoz. Ehhez írja be a mysql parancsot.
-
-    A következő szintaxissal kapcsolódhat a mysql segédprogrammal egy MySQL-kiszolgálóhoz készült Azure-adatbázishoz:
+1. A következő szintaxissal kapcsolódhat a mysql segédprogrammal egy MySQL-kiszolgálóhoz készült Azure-adatbázishoz:
 
     ```bash
     mysql --host <fully qualified server name> --user <server admin login name>@<server name> -p
@@ -119,7 +108,7 @@ Először használjuk a [mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.ht
 
     Például a következő paranccsal a példakiszolgálónkhoz csatlakozhat:
 
-    ```azurecli-interactive
+    ```bash
     mysql --host mydemoserver.mysql.database.azure.com --user myadmin@mydemoserver -p
     ```
 
@@ -149,7 +138,7 @@ Először használjuk a [mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.ht
     mysql>
     ```
     > [!TIP]
-    > Ha a tűzfal nincs konfigurálva az Azure Cloud Shell IP-címének engedélyezésére, a következő hiba jelenik meg:
+    > Ha a tűzfal nincs konfigurálva az ügyfél IP-címének engedélyezésére, a következő hiba jelenik meg:
     >
     > HIBA 2003 (28000): A következő IP-címmel rendelkező ügyfél nem rendelkezik hozzáféréssel a kiszolgálóhoz: 123.456.789.0
     >
@@ -178,7 +167,7 @@ Először használjuk a [mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.ht
     SHOW DATABASES;
     ```
 
-7.  A mysql segédprogramból való kilépéshez írja be a `\q` karakterláncot, majd nyomja le az **Enter** billentyűt. Miután végzett, bezárhatja az Azure Cloud Shellt.
+7.  A mysql segédprogramból való kilépéshez írja be a `\q` karakterláncot, majd nyomja le az **Enter** billentyűt. 
 
 Ezzel csatlakozott a MySQL-kiszolgálóhoz készült Azure-adatbázishoz, és létrehozott egy üres felhasználói adatbázist. Folytassa a következő szakasszal, ha további gyakorlatokat szeretne végrehajtani. A következő gyakorlatban megtudhatja, hogyan csatlakozhat ugyanazon kiszolgálóhoz egy másik ismert eszköz, a MySQL Workbench segítségével.
 

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/25/2018
+ms.date: 11/07/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: c7396d7322958442fab51417eb350f26f7ada78e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: e40c18edadebae1f92cf811ea054503b9cd6b1ae
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352660"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277970"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>A hibrid Azure Active Directory-csatlakozás konfigurálása összevont tartományokhoz
 
@@ -156,6 +156,8 @@ Ha a tartományhoz csatlakoztatott eszközök között korábbi verziójú Windo
  
 - A helyi intranet-beállítások konfigurálása az eszközregisztrációhoz
 
+- A korábbi verziójú Windows-eszközök vezérlése 
+
 
 ### <a name="update-device-settings"></a>Eszközbeállítások frissítése 
 
@@ -176,8 +178,6 @@ A korábbi verziójú Windows-eszközök sikeres hibrid Azure AD-csatlakoztatás
 
 - `https://device.login.microsoftonline.com`
 
-- `https://device.login.microsoftonline.com`
-
 - A szervezet biztonsági jogkivonatokkal kapcsolatos szolgáltatása (STS – összevont tartományok esetén)
 
 - `https://autologon.microsoftazuread-sso.com` (közvetlen egyszeri bejelentkezés esetén)
@@ -185,6 +185,10 @@ A korábbi verziójú Windows-eszközök sikeres hibrid Azure AD-csatlakoztatás
 Emellett engedélyezni kell **az állapotsor szkriptekkel való frissítését** a felhasználó helyi intranetes zónájában.
 
 
+
+### <a name="control-windows-down-level-devices"></a>A korábbi verziójú Windows-eszközök vezérlése 
+
+A korábbi verziójú Windows-eszközök regisztrálásához a Letöltőközpontból le kell töltenie, majd telepítenie kell egy Windows Installer-csomagot (.msi). További információért kattintson [ide](hybrid-azuread-join-control.md#control-windows-down-level-devices). 
 
 ## <a name="verify-the-registration"></a>A regisztráció ellenőrzése
 

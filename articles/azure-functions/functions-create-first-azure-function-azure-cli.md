@@ -12,12 +12,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 07a079e00963f1f5aff96369649e2e4fb248aae0
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: fdee336298212f2536c2408e49f40e25e2c24161
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985998"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227688"
 ---
 # <a name="create-your-first-function-from-the-command-line"></a>Az első függvény létrehozása parancssorból
 
@@ -108,17 +108,19 @@ A függvény létrehozása után az Azure CLI az alábbi példához hasonló inf
 }
 ```
 
-## <a name="configure-the-function-app"></a>A függvényalkalmazás konfigurálása
+### <a name="configure-the-function-app-nodejs"></a>A függvényalkalmazás (Node.js) konfigurálása
 
-A 2.x verziójú Core Tools a 2.x verziójú Azure Functions-futtatókörnyezet sablonjai használatával hozza létre a projekteket. Ezért ellenőrizze, hogy az Azure a 2.x verziójú futtatókörnyezetet használja. Ha `~2` értékre állítja a `FUNCTIONS_WORKER_RUNTIME` alkalmazásbeállítás, azzal a legújabb 2.x verzióra rögzíti a függvényalkalmazást. Adja meg az alkalmazásbeállításokat az [az functionapp config appsettings set](https://docs.microsoft.com/cli/azure/functionapp/config/appsettings#set) paranccsal.
+Amikor egy JavaScript-függvényalkalmazást hoz létre, fontos, hogy a megfelelő Node.js-verziót célozza meg. A függvények futtatókörnyezetének 2.x-es verziójához a Node.js 8.x-es verziója szükséges. A `WEBSITE_NODE_DEFAULT_VERSION` alkalmazásbeállítás vezérli, hogy az Azure-beli függvényalkalmazás a Node.js mely verzióját használja. Az [az functionapp config appsettings set](https://docs.microsoft.com/cli/azure/functionapp/config/appsettings#set) paranccsal állítsa be a Node.js verzióját a következőre: `8.11.1`.
 
 A következő Azure CLI-parancsban az <app_name> a függvényalkalmazás neve.
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <app_name> \
 --resource-group myResourceGroup \
---settings FUNCTIONS_WORKER_RUNTIME=~2
+--settings WEBSITE_NODE_DEFAULT_VERSION=8.11.1
 ```
+
+A kimeneten ellenőrizze az új beállítást.
 
 [!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
 
@@ -127,3 +129,4 @@ az functionapp config appsettings set --name <app_name> \
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
 [!INCLUDE [functions-quickstart-next-steps-cli](../../includes/functions-quickstart-next-steps-cli.md)]
+

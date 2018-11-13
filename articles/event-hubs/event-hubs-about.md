@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 08/01/2018
 ms.author: shvija
-ms.openlocfilehash: 5493819efb32fa594cf27695b2ab5d1273225756
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: f3f9abfb8373e7257237b39d16dfb3f36259ddd5
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429895"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281914"
 ---
 # <a name="what-is-azure-event-hubs"></a>Mi az Azure Event Hubs?
 
@@ -58,9 +58,9 @@ Az Event Hubs szolgáltatással megabájtokban kezdheti az adatstreameket, és o
 
 ## <a name="rich-ecosystem"></a>Gazdag ökoszisztéma
 
-[Az Apache Kafkához készült Event Hubs-ökoszisztéma](event-hubs-for-kafka-ecosystem-overview.md) lehetővé teszi, hogy az [Apache Kafka (1.0-s és újabb verzió)](https://kafka.apache.org/) ügyfelei és alkalmazásai fürtök kezelése nélkül kommunikálhassanak az Event Hubs szolgáltatással.
+[Az Apache Kafkához készült Event Hubs-ökoszisztéma](event-hubs-for-kafka-ecosystem-overview.md) lehetővé teszi, hogy az [(1.0-s és újabb) Apache Kafka](https://kafka.apache.org/) ügyfelei és alkalmazásai fürtök kezelése nélkül kommunikálhassanak az Event Hubs szolgáltatással.
  
-A különböző [nyelveken (.NET, Java, Python, Go, Node.js)](https://github.com/Azure/azure-event-hubs) elérhető sokoldalú ökoszisztéma megkönnyíti a streamek feldolgozását az Event Hubsból. Az összes támogatott ügyfélnyelv alacsony szintű integrációt biztosít.
+A különböző [nyelveken (.NET, Java, Python, Go, Node.js)](https://github.com/Azure/azure-event-hubs) elérhető sokoldalú ökoszisztéma megkönnyíti a streamek feldolgozását az Event Hubsból. Az összes támogatott ügyfélnyelv alacsony szintű integrációt biztosít. Az ökoszisztéma olyan Azure-szolgáltatásokkal is zökkenőmentes integrációt biztosít, mint például a Stream Analytics és az Azure Functions, így kiszolgáló nélküli architektúrákat építhet ki.
 
 ## <a name="key-architecture-components"></a>Az architektúra legfontosabb összetevői
 

@@ -13,36 +13,36 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/25/2018
+ms.date: 11/02/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9c946c9b7d041b1d08dadc9f7bd830d4a1d658ad
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 2aca42c23cc213d5d7e451105052d5d5d697b77d
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250869"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979471"
 ---
-# <a name="hybrid-identity-and-microsofts-identity-solutions"></a>Hibrid identitáskezelési és Microsoft identitáskezelési megoldások
-A [Microsoft Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) hibrid identitásmegoldásaival szinkronizálhatja helyszíni címtárobjektumait az Azure AD-vel, miközben továbbra is a helyszínen kezelheti a felhasználókat. Amikor megtervezi a helyszíni Windows Server Active Directory és az Azure AD szinkronizálását, elsőként azt kell eldöntenie, hogy szinkronizált vagy összevont identitásokat szeretne-e használni. 
+# <a name="hybrid-identity-and-microsoft-identity-solutions"></a>Hibrid identitáskezelési és Microsoft identitáskezelési megoldások
+A [Microsoft Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) hibrid identitásmegoldásaival szinkronizálhatja helyszíni címtárobjektumait az Azure AD-vel, miközben továbbra is a helyszínen kezelheti a felhasználókat. Amikor megtervezi a helyszíni Windows Server Active Directory és az Azure AD szinkronizálását, elsőként azt kell eldöntenie, hogy felügyelt vagy összevont identitásokat szeretne-e használni. 
 
-- A **szinkronizált identitások** – és az opcionális jelszókivonatok – segítségével a felhasználók ugyanazt a jelszót használhatják mind a helyszíni, mind a felhőalapú vállalati erőforrások eléréséhez. 
+- A **felügyelt identitások** olyan felhasználói fiókok és csoportok, amelyek szinkronizálása egy helyszíni Active Directoryból történik, a felhasználók hitelesítését pedig az Azure felügyeli.   
 - Az **összevont identitások** nagyobb fokú kontrollt biztosítanak a felhasználók felett, mivel a felhasználók hitelesítése le van választva az Azure-ról, és egy megbízható helyszíni identitásszolgáltató foglalkozik vele. 
 
 A hibrid hitelesítés többféleképpen is konfigurálható. A cég igényeinek leginkább megfelelő identitáskezelési modell kiválasztásakor figyelembe kell vennie az időigényeket, a meglévő infrastruktúrát, a megoldás összetettségét és a felmerülő költségeket. Ezek a tényezők cégenként különbözőek, és idővel változhatnak is, de lehetősége van rugalmasan áttérni egy másik identitáskezelési modellre, ha a követelmények megváltozása ezt szükségszerűvé teszi.
 
-## <a name="synchronized-identity"></a>Szinkronizált identitások 
+## <a name="managed-identity"></a>Felügyelt identitás 
 
-A szinkronizált identitáskezelés a legegyszerűbb módja a helyszíni címtárobjektumok (felhasználók és csoportok) Azure AD-vel való szinkronizálásának. 
+A felügyelt identitáskezelés a legegyszerűbb módja a helyszíni címtárobjektumok (felhasználók és csoportok) az Azure AD-vel való szinkronizálásának. 
 
-![Szinkronizált hibrid identitások](./media/whatis-hybrid-identity/synchronized-identity.png)
+![Szinkronizált hibrid identitások](./media/whatis-hybrid-identity/managed.png)
 
-Bár a szinkronizált identitáskezelés a legkönnyebb és leggyorsabb módszer, a felhasználóknak továbbra is külön jelszóra van szükségük a felhőbeli erőforrásokhoz. Ennek elkerülése érdekében dönthet úgy, hogy [szinkronizálja a felhasználói jelszavak kivonatát](how-to-connect-password-hash-synchronization.md) az Azure AD-címtárral. A jelszókivonatok szinkronizálásával a felhasználók ugyanazzal a felhasználónév-jelszó párossal jelentkezhetnek be a felhőalapú vállalati erőforrásokba, mint amelyet a helyszíni rendszereken használnak. Az Azure AD Connect rendszeresen ellenőrzi a változásokat a helyszíni címtárban, és szinkronban tartja az Azure AD-t. Ha egy felhasználói attribútum vagy jelszó megváltozik a helyszíni Active Directoryban, automatikusan frissül az Azure AD-ben. 
+Bár a felügyelt identitáskezelés a legkönnyebb és leggyorsabb módszer, a felhasználóknak továbbra is külön jelszóra van szükségük a felhőbeli erőforrásokhoz. Ennek elkerülése érdekében dönthet úgy, hogy [szinkronizálja a felhasználói jelszavak kivonatát](how-to-connect-password-hash-synchronization.md) az Azure AD-címtárral. A jelszókivonatok szinkronizálásával a felhasználók ugyanazzal a felhasználónév-jelszó párossal jelentkezhetnek be a felhőalapú vállalati erőforrásokba, mint amelyet a helyszíni rendszereken használnak. Az Azure AD Connect rendszeresen ellenőrzi a változásokat a helyszíni címtárban, és szinkronban tartja az Azure AD-t. Ha egy felhasználói attribútum vagy jelszó megváltozik a helyszíni Active Directoryban, automatikusan frissül az Azure AD-ben. 
 
-A legtöbb cég számára, amelyek csak az Office 365-be, SaaS-alkalmazásokba és más Azure AD-alapú erőforrásokba szeretnék lehetővé tenni a felhasználók bejelentkezését, az alapértelmezett jelszó-szinkronizálási beállítás használata javasolt. Ha ez nem megfelelő megoldás, el kell eldöntenie, hogy átmenő hitelesítést vagy AD FS-t szeretne-e használni.
+A legtöbb cég számára, amelyek csak az Office 365-be, SaaS-alkalmazásokba és más Azure AD-alapú erőforrásokba szeretnék lehetővé tenni a felhasználók bejelentkezését, az alapértelmezett jelszókivonat-szinkronizálási beállítás használata javasolt. Ha ez nem megfelelő megoldás, el kell eldöntenie, hogy átmenő hitelesítést vagy AD FS-t szeretne-e használni.
 
 > [!TIP]
-> A felhasználói jelszavakat a helyszíni Windows Server Active Directory tárolja egy kivonatérték formájában, amely a tényleges felhasználói jelszót jelöli. A kivonatérték egy egyirányú matematikai függvény (a kivonatoló algoritmus) eredménye. Az egyirányú függvény eredménye semmilyen módszerrel nem fejthető vissza a jelszó egyszerű szöveges verziójára. A jelszókivonattal nem lehet a helyszíni hálózatra bejelentkezni. Ha úgy dönt, hogy szinkronizálja a jelszavakat, az Azure AD Connect kinyeri a jelszókivonatokat a helyszíni Active Directoryból, és további biztonsági intézkedéseket alkalmaz rajtuk, mielőtt szinkronizálná őket az Azure AD-vel. A jelszó-szinkronizálás és a jelszóvisszaírás együttes használata lehetővé teszi az új jelszó önkiszolgáló kérését az Azure AD-ben. Egyszeri bejelentkezést (single sign-on, SSO) is engedélyezhet a vállalati hálózathoz kapcsolódó, tartományhoz csatlakozó számítógépeken dolgozó felhasználók számára. Az egyszeri bejelentkezéssel a felhasználóknak csak egy felhasználónevet kell megadniuk a felhőalapú erőforrások biztonságos eléréséhez. 
+> A felhasználói jelszavakat a helyszíni Windows Server Active Directory tárolja egy kivonatérték formájában, amely a tényleges felhasználói jelszót jelöli. A kivonatérték egy egyirányú matematikai függvény (a kivonatoló algoritmus) eredménye. Az egyirányú függvény eredménye semmilyen módszerrel nem fejthető vissza a jelszó egyszerű szöveges verziójára. A jelszókivonattal nem lehet a helyszíni hálózatra bejelentkezni. Ha úgy dönt, hogy szinkronizálja a jelszavakat, az Azure AD Connect kinyeri a jelszókivonatokat a helyszíni Active Directoryból, és további biztonsági intézkedéseket alkalmaz rajtuk, mielőtt szinkronizálná őket az Azure AD-vel. A jelszókivonat-szinkronizálás és a jelszóvisszaírás együttes használata lehetővé teszi az új jelszó önkiszolgáló kérését az Azure AD-ben. Egyszeri bejelentkezést (single sign-on, SSO) is engedélyezhet a vállalati hálózathoz kapcsolódó, tartományhoz csatlakozó számítógépeken dolgozó felhasználók számára. Az egyszeri bejelentkezéssel a felhasználóknak csak egy felhasználónevet kell megadniuk a felhőalapú erőforrások biztonságos eléréséhez. 
 >
 
 ## <a name="pass-through-authentication"></a>Átmenő hitelesítés
@@ -67,14 +67,14 @@ A felhasználók Office 365-höz és egyéb felhőszolgáltatásokhoz való hozz
 Ez az identitás-összevonásnak is nevezett bejelentkezési módszer garantálja, hogy a felhasználók hitelesítésének ellenőrzésére a helyszínen kerüljön sor, így a rendszergazdák szigorúbb hozzáférés-vezérlési intézkedéseket foganatosíthatnak. Az identitás-összevonás és az AD FS együttes használata a legbonyolultabb megoldás, amelyhez további kiszolgálókat kell telepíteni a helyszíni környezetben. Az identitás-összevonás használata azzal is jár, hogy napi 24 órás támogatást kell biztosítani az Active Directory- és AD FS-infrastruktúrához. Az ilyen magas fokú támogatásra azért van szükség, mert ha a helyszíni internetkapcsolat, tartományvezérlő vagy AD FS-kiszolgálók nem működnek, a felhasználók nem tudnak bejelentkezni a felhőalapú szolgáltatásokba.
 
 > [!TIP]
-> Ha az összevont identitáskezelést az Active Directory összevonási szolgáltatásokkal (AD FS) együtt használja, dönthet úgy, hogy biztonsági tartalékként a jelszó-szinkronizálást is konfigurálja, hogy lehessen mit használni, ha az AD FS-infrastruktúra leáll.
+> Ha az összevont identitáskezelést az Active Directory összevonási szolgáltatásokkal (AD FS) együtt használja, dönthet úgy, hogy biztonsági tartalékként a jelszókivonat-szinkronizálást is konfigurálja, hogy lehessen mit használni, ha az AD FS-infrastruktúra leáll.
 >
 
 ## <a name="common-scenarios-and-recommendations"></a>Gyakori forgatókönyvek és javaslatok
 
 Szeretnénk bemutatni néhány gyakori hibrid identitás- és hozzáféréskezelési helyzetet és a hozzájuk ajánlott hibrid identitáskezelési lehetősége(ke)t.
 
-|Cél:|PWS és SSO<sup>1</sup>| PTA és SSO<sup>2</sup> | AD FS<sup>3</sup>|
+|Cél:|PHS és SSO<sup>1</sup>| PTA és SSO<sup>2</sup> | AD FS<sup>3</sup>|
 |-----|-----|-----|-----|
 |A helyszíni Active Directoryban létrehozott új felhasználói, kapcsolattartói és csoportfiókok automatikus szinkronizálása a felhőbe|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| ![Ajánlott](./media/whatis-hybrid-identity/ic195031.png) |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)|
 |A bérlő beállítása hibrid Office 365-forgatókönyvekhez|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| ![Ajánlott](./media/whatis-hybrid-identity/ic195031.png) |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)|
@@ -86,7 +86,7 @@ Szeretnénk bemutatni néhány gyakori hibrid identitás- és hozzáféréskezel
 |Intelligens kártyával végzett hitelesítés támogatása a felhasználók számára<sup>4</sup>| | |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)|
 |Jelszólejárati értesítések megjelenítése az Office portálon és a Windows 10 asztali verziójában| | |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)|
 
-> <sup>1</sup> Jelszó-szinkronizálás egyszeri bejelentkezéssel.
+> <sup>1</sup> Jelszókivonat-szinkronizálás egyszeri bejelentkezéssel.
 >
 > <sup>2</sup> Átmenő hitelesítés és egyszeri bejelentkezés. 
 >

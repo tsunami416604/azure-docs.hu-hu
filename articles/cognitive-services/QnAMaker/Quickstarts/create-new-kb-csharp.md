@@ -1,36 +1,38 @@
 ---
 title: 'Rövid útmutató: Tudásbázis létrehozása – REST, C# – QnA Maker'
 titlesuffix: Azure Cognitive Services
-description: Ez a REST-alapú rövid útmutató végigvezeti egy olyan minta QnA Maker-tudásbázis programozott módon történő létrehozásán, amely a Cognitive Services API-fiók Azure-irányítópultján fog megjelenni.
+description: Ez a C# REST-alapú rövid útmutató végigvezeti egy olyan minta QnA Maker-tudásbázis programozott módon történő létrehozásán, amely a Cognitive Services API-fiók Azure-irányítópultján fog megjelenni.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/19/2018
+ms.date: 11/6/2018
 ms.author: diberry
-ms.openlocfilehash: e1456cb0e7b7662cd460e51af3456fc496502798
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: d9040965a0cfaf022bf4cc582cb2aeaa34d04849
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645068"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252445"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c"></a>Rövid útmutató: Tudásbázis létrehozása a QnA Makerben a C# használatával
 
-Ez a rövid útmutató végigvezeti egy minta QnA Maker-tudásbázis programozott módon való létrehozásán. A QnA Maker automatikusan nyer ki kérdéseket és válaszokat a félig strukturált tartalmak, például a gyakori kérdések közül, az [adatforrásokból](../Concepts/data-sources-supported.md). A tudásbázis modelljét az API-kérés törzsében küldött JSON definiálja. 
+Ez a rövid útmutató végigvezeti egy minta QnA Maker-tudásbázis programozott módon való létrehozásán és közzétételén. A QnA Maker automatikusan nyer ki kérdéseket és válaszokat a félig strukturált tartalmak, például a gyakori kérdések közül, az [adatforrásokból](../Concepts/data-sources-supported.md). A tudásbázis modelljét az API-kérés törzsében küldött JSON definiálja. 
 
 Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 * [Tudásbázis létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
 * [Műveletek részleteinek lekérése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
+* [Közzététel](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Legújabb [**Visual Studio Community kiadás**](https://www.visualstudio.com/downloads/).
 * Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. A kulcs lekéréséhez válassza az irányítópulton az **Erőforrás-kezelés** területen lévő **Kulcsok** lehetőséget. 
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-csharp-repo-note.md)]
+> [!NOTE] 
+> A teljes megoldásfájlok az [**Azure-Samples/cognitive-services-qnamaker-csharp** GitHub-adattárból](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/quickstarts/create-and-publish-knowledge-base) érhetők el.
 
 ## <a name="create-a-knowledge-base-project"></a>Tudásbázisprojekt létrehozása
 
@@ -38,80 +40,34 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 
 ## <a name="add-the-required-dependencies"></a>A szükséges függőségek hozzáadása
 
-[!INCLUDE [Add required constants to code file](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-required-dependencies.md)]  
+A Program.cs tetején cserélje le az önálló using utasítást a következő sorokkal, hogy felvegye a szükséges függőségeket a projektbe:
+
+[!code-csharp[Add the required dependencies](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=1-11 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>A szükséges konstansok hozzáadása
 
-[!INCLUDE [Add required constants to code file](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-required-constants.md)] 
+A Program osztály tetején adja hozzá a következő konstansokat a QnA Maker elérése érdekében:
+
+[!code-csharp[Add the required constants](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=17-24 "Add the required constants")]
 
 ## <a name="add-the-kb-definition"></a>A tudásbázis-definíció hozzáadása
 
 A konstansok után adja hozzá az alábbi tudásbázis-definíciót:
 
-```csharp
-static string kb = @"
-{
-  'name': 'QnA Maker FAQ from quickstart',
-  'qnaList': [
-    {
-      'id': 0,
-      'answer': 'You can use our REST APIs to manage your knowledge base. See here for details: https://westus.dev.cognitive.microsoft.com/docs/services/58994a073d9e04097c7ba6fe/operations/58994a073d9e041ad42d9baa',
-      'source': 'Custom Editorial',
-      'questions': [
-        'How do I programmatically update my knowledge base?'
-      ],
-      'metadata': [
-        {
-          'name': 'category',
-          'value': 'api'
-        }
-      ]
-    }
-  ],
-  'urls': [
-    'https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs',
-    'https://docs.microsoft.com/bot-framework/resources-bot-framework-faq'
-  ],
-  'files': []
-}
-";
-```
+[!code-csharp[Add the required constants](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=32-57 "Add the required constants")]
 
 ## <a name="add-supporting-functions-and-structures"></a>Támogató függvények és struktúrák hozzáadása
+Adja hozzá a következő kódblokkot a Program osztályon belül:
 
-[!INCLUDE [Add supporting functions and structures](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-support-functions.md)] 
+[!code-csharp[Add supporting functions and structures](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=62-82 "Add supporting functions and structures")]
 
 ## <a name="add-a-post-request-to-create-kb"></a>POST kérés hozzáadása a tudásbázis létrehozására
 
 A következő kód egy HTTPS-kérést küld a QnA Maker API-ra egy tudásbázis létrehozásához, és a következő választ kapja:
 
-```csharp
-async static Task<Response> PostCreateKB(string kb)
-{
-    // Builds the HTTP request URI.
-    string uri = host + service + method;
+[!code-csharp[Add a POST request to create KB](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=91-105 "Add a POST request to create KB")]
 
-    // Writes the HTTP request URI to the console, for display purposes.
-    Console.WriteLine("Calling " + uri + ".");
-
-    // Asynchronously invokes the Post(string, string) method, using the
-    // HTTP request URI and the specified data source.
-    using (var client = new HttpClient())
-    using (var request = new HttpRequestMessage())
-    {
-        request.Method = HttpMethod.Post;
-        request.RequestUri = new Uri(uri);
-        request.Content = new StringContent(kb, Encoding.UTF8, "application/json");
-        request.Headers.Add("Ocp-Apim-Subscription-Key", key);
-
-        var response = await client.SendAsync(request);
-        var responseBody = await response.Content.ReadAsStringAsync();
-        return new Response(response.Headers, responseBody);
-    }
-}
-```
-
-Az API egy JSON-választ ad vissza, amely tartalmazza a művelet azonosítóját. A művelet azonosítója alapján megállapíthatja, hogy a tudásbázis sikeresen létrejött-e. 
+Az API egy JSON-választ ad vissza, amely tartalmazza a művelet azonosítóját a **Location** fejlécmezőben. A művelet azonosítója alapján megállapíthatja, hogy a tudásbázis sikeresen létrejött-e. 
 
 ```JSON
 {
@@ -127,30 +83,7 @@ Az API egy JSON-választ ad vissza, amely tartalmazza a művelet azonosítóját
 
 Ellenőrizze a művelet állapotát.
 
-```csharp
-async static Task<Response> GetStatus(string operationID)
-{
-    // Builds the HTTP request URI.
-    string uri = host + service + operationID;
-
-    // Writes the HTTP request URI to the console, for display purposes.
-    Console.WriteLine("Calling " + uri + ".");
-
-    // Asynchronously invokes the Get(string) method, using the
-    // HTTP request URI.
-    using (var client = new HttpClient())
-    using (var request = new HttpRequestMessage())
-    {
-        request.Method = HttpMethod.Get;
-        request.RequestUri = new Uri(uri);
-        request.Headers.Add("Ocp-Apim-Subscription-Key", key);
-
-        var response = await client.SendAsync(request);
-        var responseBody = await response.Content.ReadAsStringAsync();
-        return new Response(response.Headers, responseBody);
-    }
-}
-```
+[!code-csharp[Add GET request to determine creation status](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=159-170 "Add GET request to determine creation status")]
 
 Az API-hívás egy JSON-választ ad vissza, amely tartalmazza a művelet állapotát: 
 
@@ -179,95 +112,24 @@ Ismételje a hívást, amíg nem sikerül vagy meg nem hiúsul:
 
 ## <a name="add-createkb-method"></a>CreateKB metódus hozzáadása
 
-A következő metódus létrehozza a tudásbázist, és megismétli az állapotellenőrzést. Mivel a tudásbázis létrehozása eltarthat egy ideig, előfordulhat, hogy többször is meg kell ismételnie az állapot-ellenőrző hívásokat, amíg az állapot sikeresnek vagy sikertelennek nem bizonyul.
+A következő metódus létrehozza a tudásbázist, és megismétli az állapotellenőrzést.  A _létrehozás_ **műveletazonosítót** a rendszer a POST válasz **Hely** fejlécmezőjében adja vissza, majd a GET kérésben az útvonal részeként használja. Mivel a tudásbázis létrehozása eltarthat egy ideig, előfordulhat, hogy többször is meg kell ismételnie az állapot-ellenőrző hívásokat, amíg az állapot sikeresnek vagy sikertelennek nem bizonyul. Ha a művelet sikeres, a tudásbázis azonosítóját adja vissza a **resourceLocation** változóban. 
 
-```csharp
-async static void CreateKB()
-{
-    try
-    {
-        // Starts the QnA Maker operation to create the knowledge base.
-        var response = await PostCreateKB(kb);
-
-        // Retrieves the operation ID, so the operation's status can be
-        // checked periodically.
-        var operation = response.headers.GetValues("Location").First();
-
-        // Displays the JSON in the HTTP response returned by the 
-        // PostCreateKB(string) method.
-        Console.WriteLine(PrettyPrint(response.response));
-
-        // Iteratively gets the state of the operation creating the
-        // knowledge base. Once the operation state is set to something other
-        // than "Running" or "NotStarted", the loop ends.
-        var done = false;
-        while (true != done)
-        {
-            // Gets the status of the operation.
-            response = await GetStatus(operation);
-
-            // Displays the JSON in the HTTP response returned by the
-            // GetStatus(string) method.
-            Console.WriteLine(PrettyPrint(response.response));
-
-            // Deserialize the JSON into key-value pairs, to retrieve the
-            // state of the operation.
-            var fields = JsonConvert.DeserializeObject<Dictionary<string, string>>(response.response);
-
-            // Gets and checks the state of the operation.
-            String state = fields["operationState"];
-            if (state.CompareTo("Running") == 0 || state.CompareTo("NotStarted") == 0)
-            {
-                // QnA Maker is still creating the knowledge base. The thread is 
-                // paused for a number of seconds equal to the Retry-After header value,
-                // and then the loop continues.
-                var wait = response.headers.GetValues("Retry-After").First();
-                Console.WriteLine("Waiting " + wait + " seconds...");
-                Thread.Sleep(Int32.Parse(wait) * 1000);
-            }
-            else
-            {
-                // QnA Maker has completed creating the knowledge base. 
-                done = true;
-            }
-        }
-    }
-    catch
-    {
-        // An error occurred while creating the knowledge base. Ensure that
-        // you included your QnA Maker subscription key where directed in the sample.
-        Console.WriteLine("An error occurred while creating the knowledge base.");
-    }
-    finally
-    {
-        Console.WriteLine("Press any key to continue.");
-    }
-
-}
-``` 
+[!code-csharp[Add CreateKB method](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=176-237 "Add CreateKB method")]
 
 ## <a name="add-the-createkb-method-to-main"></a>A CreateKB metódus hozzáadása a Main metódushoz
 
 A Main metódus módosítása a CreateKB metódus meghívására:
 
-```csharp
-static void Main(string[] args)
-{
-    // Call the CreateKB() method to create a knowledge base, periodically 
-    // checking the status of the QnA Maker operation until the 
-    // knowledge base is created.
-    CreateKB();
-
-    // The console waits for a key to be pressed before closing.
-    Console.ReadLine();
-}
-```
+[!code-csharp[Add CreateKB method](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=239-248 "Add CreateKB method")]
 
 ## <a name="build-and-run-the-program"></a>A program létrehozása és futtatása
 
 Hozza létre és futtassa a programot. A parancs automatikusan egy kérést küld a QnA Maker API-ra a tudásbázis létrehozásához, majd 30 másodpercenként lekérdezi az eredményeket. Mindegyik válasz megjelenik a konzolablakban.
 
 A tudásbázis létrehozása után a QnA Maker portálján, a [My knowledge bases](https://www.qnamaker.ai/Home/MyServices) (Saját tudásbázisok) lapon tekintheti meg azt. 
+
+
+[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
 
 ## <a name="next-steps"></a>További lépések
 

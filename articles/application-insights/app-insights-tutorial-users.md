@@ -1,6 +1,6 @@
 ---
-title: Az Azure Application Insights az ügyfeleknek megértéséhez |} Microsoft Docs
-description: Az oktatóanyag az Azure Application Insights megértése, hogyan használják az ügyfelek a az alkalmazás használatával.
+title: Az ügyfelek megismerése az Azure Application Insightsban | Microsoft Docs
+description: Oktatóanyag, amely bemutatja, hogy az Azure Application Insights használatával hogyan tudhatja meg, miként használják az ügyfelek az alkalmazását.
 keywords: ''
 services: application-insights
 author: mrbullwinkle
@@ -10,25 +10,25 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: db61c300ad82270e59d315fa3372d9e4390c7a21
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 6d4f96a2c1d288648543a92614cab0f8cf5ee2ea
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
-ms.locfileid: "24099021"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256000"
 ---
-# <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Azure Application Insights segítségével megérteni a felhasználók hogyan használják az alkalmazást
+# <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Az alkalmazás ügyfelek általi használatának megismerése az Azure Application Insights használatával
 
-Azure Application Insights gyűjti a használati adatok, amelyekkel jobban megértheti, hogy a felhasználók hogyan használják az alkalmazással.  Ez az oktatóanyag végigvezeti Önt a különböző erőforrások elérhetők ezek az információk elemzése.  Megtudhatja, hogyan:
+Az Azure Application Insights használati adatokat gyűjt, amely alapján megismerheti, hogyan használják a felhasználók az alkalmazást.  Az oktatóanyag lépésről lépésre bemutatja a különböző rendelkezésre álló erőforrásokat, amelyekkel ezek az információk elemezhetők.  Az alábbiakat fogja elsajátítani:
 
 > [!div class="checklist"]
-> * Az alkalmazáshoz hozzáférő felhasználók adatainak elemzése
-> * Munkamenet-információk segítségével elemezheti az ügyfelek hogyan használják az alkalmazást
-> * Adja meg, amelyek lehetővé teszik a kívánt felhasználói tevékenység a tényleges tevékenységével összehasonlítása tölcsérek 
-> * Hozzon létre egy munkafüzetet vonják össze a képi megjelenítések és a lekérdezések egyetlen dokumentumba
-> * Csoport hasonló felhasználók azokat együtt
-> * Ismerje meg, hogy mely felhasználók vannak állítja azt vissza az alkalmazás
-> * Ellenőrizze, hogy a felhasználók hogyan navigálnak az alkalmazás
+> * Az alkalmazást használó felhasználókkal kapcsolatos adatok elemzése
+> * Az alkalmazás felhasználók általi használatának elemzése munkamenet-információk alapján
+> * Tölcsérek definiálása a várt és a tényleges felhasználói tevékenységek összevetéséhez 
+> * Vizualizációk és lekérdezések összerendelése egyetlen dokumentumba munkafüzetek létrehozásával
+> * Hasonló felhasználók együttes elemzése csoportba rendezéssel
+> * Az alkalmazás visszatérő felhasználóinak megismerése
+> * A felhasználók alkalmazáson belüli mozgásának vizsgálata
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -38,133 +38,133 @@ Az oktatóanyag elvégzéséhez:
 - Telepítse a [Visual Studio 2017](https://www.visualstudio.com/downloads/) szoftvert a következő számítási feladatokkal:
     - ASP.NET és webfejlesztés
     - Azure-fejlesztés
-- Töltse le és telepítse a [Visual Studio pillanatkép hibakereső](http://aka.ms/snapshotdebugger).
-- Az Azure-bA egy .NET-alkalmazás központi telepítése és [engedélyezze az Application Insights SDK](app-insights-asp-net.md). 
-- [Telemetriai adatokat küldhet az alkalmazásból](app-insights-usage-overview.md#send-telemetry-from-your-app) egyéni események/Lapmegtekintések hozzáadásához
-- Küldési [felhasználói környezet](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context) nyomon követhető a felhasználó funkciója adott idő alatt, és a használati szolgáltatások teljesen használják.
+- Töltse le és telepítse a [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) alkalmazást.
+- Telepítsen egy .NET-alkalmazást az Azure-hoz, és [engedélyezze az Application Insights SDK](app-insights-asp-net.md)-t. 
+- [Küldjön telemetriát az alkalmazásból](app-insights-usage-overview.md#send-telemetry-from-your-app) egyéni események/oldalmegtekintések hozzáadásához
+- Küldjön [felhasználói környezetet](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context) a felhasználók tevékenységeinek időbeli nyomon követéséhez és a használati funkciók teljes körű kiaknázásához.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
-Jelentkezzen be az Azure portálon, a [https://portal.azure.com](https://portal.azure.com).
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen.
 
-## <a name="get-information-about-your-users"></a>A felhasználók adatainak beolvasása
-A **felhasználók** lehetővé teszi a felhasználók az sokféleképpen fontos tudnivalók ismertetése. A Vezérlőpult használatával megérthetik, hogy olyan adatokat, mint ahol a felhasználók csatlakozik, az ügyfél részletes adatait, és az alkalmazás milyen területeken próbál hozzáférni. 
+## <a name="get-information-about-your-users"></a>A felhasználókkal kapcsolatos információk lekérése
+A **Felhasználók** panelen különböző módokon fontos részleteket tudhat meg a felhasználókról. A panelen megtudhatja például, hogy a felhasználók honnan és milyen ügyfélről csatlakoznak, és hogy az alkalmazás mely területeit tekintik meg. 
 
-1. Válassza ki **Application Insights** és majd jelölje ki az előfizetését.
-2. Válassza ki **felhasználók** a menüben.
-3. Az alapértelmezett nézet megjeleníti az egyedi felhasználók száma, amelyek az alkalmazás az elmúlt 24 óra során legalább egyszer csatlakoztak.  Módosítsa az időszak, és állítsa be ezeket az információkat szűrése különböző egyéb feltételeket.
+1. Válassza ki az **Application Insights** elemet, majd az előfizetését.
+2. Kattintson a **Felhasználók** elemre a menüben.
+3. Az alapértelmezett nézet az elmúlt 24 órában az alkalmazáshoz csatlakozó egyed felhasználók számát mutatja.  Az időablak módosítható, és az adatok különböző feltételek mentén szűrhetők.
 
-    ![Lekérdezés-szerkesztő](media\app-insights-tutorial-users\QueryBuilder.png)
+    ![Lekérdezéskészítő](media\app-insights-tutorial-users\QueryBuilder.png)
 
-6. Kattintson a **során** legördülő menüből, és módosítsa a időszak 7 nap.  Ez növeli a panelen levő különböző diagramok szereplő adatok.
+6. Kattintson az **Időszak** legördülő menüre, és módosítsa az időablakot 7 napra.  Ez növeli a panelen lévő grafikonokon megjelenített adatok mennyiségét.
 
     ![Időtartomány módosítása](media\app-insights-tutorial-users\TimeRange.png)
 
-4. Kattintson a **szerint** legördülő meghibásodás hozzáadása egy felhasználói tulajdonságot a diagramhoz.  Válassza ki **ország vagy régió**.  A grafikon ugyanazokat az adatokat tartalmaz, de lehetővé teszi a felhasználók az egyes országok számát részletes információkat.
+4. A **Felosztási szempont** legördülő menüben kiválaszthat egy felhasználói tulajdonságot, amely alapján a grafikon le lesz bontva.  Válassza az **Ország vagy régió** lehetőséget.  A grafikon most is ugyanazokat az adatokat tartalmazza, de a felhasználók számát országonkénti bontásban jeleníti meg.
 
-    ![Ország vagy régió](media\app-insights-tutorial-users\CountryorRegion.png)
+    ![Ország vagy régió grafikon](media\app-insights-tutorial-users\CountryorRegion.png)
 
-5. A kurzor fölé különböző sávok a diagramon, és vegye figyelembe, hogy a számláló az egyes országok tükrözi csak a időszak, amely képviseli.
-6. Tekintse meg a következő a **Insights** oszlop, amely a felhasználó adatai elemzést jobb szélén.  Ez közös tulajdonságok is a felhasználói adatok jelentős biztosít információkat, például az az időszak, és a rekordok egyedi munkamenetek száma 
+5. A kurzort a grafikon különböző sávjai fölé mozgatva láthatja, hogy az egyes országokhoz tartozó darabszámok csak a sáv által jelzett időtartományokat tükrözik.
+6. Tekintse meg a jobb oldalon az **Elemzések** oszlopot, amely az adatokon végrehajtott elemzéseket tartalmazza.  Ez az időtartomány során bejelentkezett egyedi munkamenetek számát tartalmazza, valamint a gyakori tulajdonságokkal rendelkező rekordokat, amelyek a felhasználói adatok jelentős hányadában szerepelnek. 
 
     ![Elemzések oszlop](media\app-insights-tutorial-users\insights.png)
 
 
 ## <a name="analyze-user-sessions"></a>Felhasználói munkamenetek elemzése
-A **munkamenetek** panel hasonlít a **felhasználók** panel.  Ha **felhasználók** segít megérteni a felhasználók elérésekor az alkalmazás részleteinek **munkamenetek** segít megérteni a azoknak a felhasználóknak az alkalmazás használatáról.  
+A **Munkamenetek** panel a **Felhasználók** panelhez hasonló.  Míg a **Felhasználók** panel az alkalmazást használó felhasználókkal kapcsolatos információkat mutatja, a **Munkamenetek** panel azt segít megérteni, hogyan használják a felhasználók az alkalmazást.  
 
-1. Válassza ki **munkamenetek** a menüben.
-2. Tekintse meg a következő a diagramon, és vegye figyelembe, hogy rendelkezik-e ugyanazokkal a beállításokkal, hogy szűrje és az adatok és a a **felhasználók** panel.
+1. Kattintson a **Munkamenetek** elemre a menüben.
+2. Láthatja, hogy ezen a grafikonon is ugyanazok a szűrési és bontási lehetőségek érhetők el, mint a **Felhasználók** panelen.
 
-    ![Munkamenetek lekérdezés-szerkesztő](media\app-insights-tutorial-users\SessionsBuilder.png)
+    ![Munkamenetek lekérdezéskészítő](media\app-insights-tutorial-users\SessionsBuilder.png)
 
-3. A **ezeket a munkameneteket mintát** a jobb oldali ablaktábla listázza a munkamenetek, amelyek nagyszámú események tartalmazzák.  Ezek a érdekes munkamenetek elemzéséhez.
+3. A jobb oldalon a **Minta ezekből a munkamenetekből** panel azokat a munkameneteket listázza, amelyek nagy számú eseményt tartalmaznak.  Ezek elemzésre érdemes munkamenetek.
 
-    ![Ezeket a munkameneteket minta](media\app-insights-tutorial-users\SessionsSample.png)
+    ![Minta ezekből a munkamenetekből](media\app-insights-tutorial-users\SessionsSample.png)
 
-4. A munkamenetet megtekintéséhez kattintson a **munkamenet ütemterv**, amely minden műveletet jeleníti meg a munkamenetek.  Ez segít például a nagy mennyiségű kivételek munkamenetek azonosítása.
+4. Az egyes munkamenetekre kattintva tekinthető meg a **Munkamenet idővonala**, amely a munkamenet során végrehajtott műveleteket mutatja.  Így azonosíthatók például a nagy számú kivételt eredményező munkamenetek.
 
-    ![Munkamenetek ütemterv](media\app-insights-tutorial-users\SessionsTimeline.png)
+    ![Munkamenetek idővonala](media\app-insights-tutorial-users\SessionsTimeline.png)
 
-## <a name="group-together-similar-users"></a>Egy hasonló felhasználók csoportba
-A **Kohorszok** felhasználók groupd a hasonló jellemzőkkel készlete.  Adatok szűrése cohorts használhatja más paneleken, hogy lehetővé teszi a felhasználók adott csoportja elemzése.  Például előfordulhat, hogy elemezni szeretné csak olyan felhasználók, akik befejezte a vásárlást.
+## <a name="group-together-similar-users"></a>Hasonló felhasználók csoportosítása
+Egy **Kohorsz** a hasonló tulajdonságaik alapján csoportosított felhasználók halmaza.  A kohorszok segítségével a többi panelen szűrheti az adatokat, így az elemzéseket adott felhasználói csoportokra szűkítheti.  Például elképzelhető, hogy csak az olyan felhasználókat szeretné elemezni, akik vásároltak is.
 
-1.  Válassza ki **Cohorts** a menüben.
-2.  Kattintson a **új** egy új kohorszok létrehozásához.
-3.  Válassza ki a **ki a használt** legördülő menüből, és adja meg a műveletet.  Csak azok a felhasználók ezt a műveletet a jelentés a időszak belül elvégző is fog szerepelni.
+1.  Kattintson a **Kohorsz** elemre a menüben.
+2.  Kattintson az **Új** gombra egy új kohorsz létrehozásához.
+3.  Kattintson a **Használók** legördülő menüre, és válasszon egy műveletet.  A jelentés csak azokat a felhasználókat tartalmazza majd, akik az adott műveletet használták az időablakban.
 
-    ![Megadott műveleteket végrehajtó kohorszok](media\app-insights-tutorial-users\CohortsDropdown.png)
+    ![Megadott műveleteket használó kohorsz](media\app-insights-tutorial-users\CohortsDropdown.png)
 
-4.  Válassza ki **felhasználók** a menüben.
-5.  Az a **megjelenítése** legördülő menüben válassza ki az imént kohorszok létrehozni.  Az adatok a diagram azoknak a felhasználóknak korlátozódik.
+4.  Kattintson a **Felhasználók** elemre a menüben.
+5.  A **Megjelenítés** legördülő menüben válassza ki az imént létrehozott kohorszt.  A grafikonon csak az ehhez tartozó felhasználók adatai jelennek meg.
 
-    ![A felhasználó-eszköz kohorszok](media\app-insights-tutorial-users\UsersCohort.png)
+    ![Kohorsz a Felhasználók eszközben](media\app-insights-tutorial-users\UsersCohort.png)
 
 
-## <a name="compare-desired-activity-to-reality"></a>Hasonlítsa össze a valósághoz kívánt tevékenység
-Az előző paneleken összpontosított Mi az alkalmazás felhasználók volt, miközben **tölcsérek** mit felhasználók nem szeretne összpontosítani.  A tölcsér ismertetett lépések az alkalmazás és a felhasználók, akik lépései közötti áthelyezése százalékos jelöli.  Például létrehozhatja a tölcsér, hogy a felhasználók az alkalmazás kapcsolódni termék keresési százalékos arányát méri.  Láthatja majd százalékos aránya adja hozzá a termék egy kosár a felhasználók, és azok, akik egy megvásárolhatja hány százalékát.
+## <a name="compare-desired-activity-to-reality"></a>Várt és tényleges tevékenységek összevetése
+Míg az eddigi panelek arra összpontosítottak, hogy mit tettek az alkalmazás felhasználói, a **Tölcsérek** arra összpontosít, hogy mit szeretne, ha a felhasználók tennének.  A tölcsér a lépések egy halmazát jelzi az alkalmazásban, valamint hogy a felhasználók hány százaléka követi ezeket a lépéseket.  Például létrehozhat egy tölcsért, amely azt méri, hogy az alkalmazást használó felhasználók hány százaléka keres rá egy termékre.  Ezután megtekintheti, hogy a felhasználók hány százaléka helyezte a terméket a kosarába, valamint hogy hány százalékuk vásárolta is meg a terméket.
 
-1. Válassza ki **tölcsérek** a menü majd **új**. 
+1. Kattintson a menüben a **Tölcsérek** elemre, majd kattintson az **Új** gombra. 
 
     ![](media\app-insights-tutorial-users\funnelsnew.png)
 
-2. Írja be a **neve tölcsér**.
-3. Hozzon létre egy tölcsér egyes lépéseihez szükséges művelet kiválasztásával legalább két lépést.  A műveletek listájának Application Insights által gyűjtött használati adatok össze.
+2. Adja meg a **Tölcsér nevét**.
+3. Hozzon létre egy tölcsért két lépéssel, mindkét lépéshez kiválasztva egy műveletet.  A műveletek listája az Application Insights által gyűjtött használati adatok alapján áll össze.
 
     ![](media\app-insights-tutorial-users\funnelsedit.png)
 
-4. Kattintson a **mentése** a tölcsér mentéséhez, és nézze meg, az eredményeket.  Az ablak jobb oldalán a tölcsér az első tevékenység előtt és után utolsó tevékenysége, amelyekkel jobban megértheti az adott feladatütemezési körül tendenciák felhasználói feltárásához leggyakoribb eseményeket jeleníti meg.
+4. A **Mentés** gombra kattintva mentheti a tölcsért és tekintheti meg az eredményeket.  A tölcsér jobb oldalán lévő ablakban az első tevékenység előtti és az utolsó tevékenység utáni események láthatók, így könnyebben megértheti az adott sorozat körüli felhasználói trendeket.
 
     ![](media\app-insights-tutorial-users\funnelsright.png)
 
 
-## <a name="learn-which-customers-return"></a>Ismerje meg, hogy mely ügyfelek visszaadása
-**Megőrzési** segítségével megismerheti, hogy mely felhasználók vissza érkeznek az alkalmazáshoz.  
+## <a name="learn-which-customers-return"></a>A visszatérő ügyfelek megismerése
+A **Megtartás** panelen megtudhatja, hogy mely felhasználók térnek vissza az alkalmazásba.  
 
-1. Válassza ki **megőrzési** a menüben.
-2. Alapértelmezés szerint az elemzett adatok tartalmazzák a felhasználók, akik hajtotta végre semmilyen műveletet, és ezután visszaérkezik bármely művelet elvégzésére.  Ez a szűrő bármely belefoglalási, például kizárólag olyan felhasználók, akik adott vissza, miután befejezte a vásárlást módosítható.
+1. Kattintson a **Megtartás** elemre a menüben.
+2. Alapértelmezés szerint az elemzés azokat a felhasználókat tartalmazza, akik végrehajtottak valamilyen műveletet, majd visszatértek, és megint végrehajtottak valamilyen művelet.  Ennek a szűrőnek az átállításával például szűkítheti az elemzést azokra a felhasználókra, akik egy sikeres vásárlás után térnek vissza.
 
     ![](media\app-insights-tutorial-users\retentionquery.png)
 
-3. A visszatérő felhasználó, a feltételeknek eleget tevő grafikus is látható, és az űrlap különböző idő időtartamok tábla.  A tipikus mintája fokozatos csökkenését ad vissza a felhasználók adott idő alatt van.  A következő egy időszak hirtelen eldobási aggodalomra lehet. 
+3. A feltételeknek megfelelő visszatérő felhasználók grafikus és táblázatos formában jelennek meg az egyes időintervallumokra vetítve.  A jellegzetes minta szerint a visszatérő felhasználók száma idővel fokozatosan csökken.  Ha a mennyiség egyik időszakról a következőre hirtelen esik, ez okot adhat aggodalomra. 
 
     ![](media\app-insights-tutorial-users\retentiongraph.png)
 
-## <a name="analyze-user-navigation"></a>Felhasználói navigációs elemzése
-A **felhasználói folyamat** visualizes a felhasználók hogyan keresse meg a lapok és az alkalmazás szolgáltatásai között.  Ennek segítségével választ kaphat például adott felhasználók általában át egy adott oldal, hogyan azok általában kilép az alkalmazásból, és vannak-e rendszeresen ismétlődő semmilyen műveletet.
+## <a name="analyze-user-navigation"></a>A felhasználók mozgásának elemzése
+A **Felhasználókövetés** megjeleníti, hogy a felhasználók hogyan mozognak az alkalmazás lapjai és funkciói között.  Ennek segítségével választ kaphat például az olyan kérdésekre, hogy a felhasználók általában hová lépnek egy adott oldalról, általában hogyan lépnek ki az alkalmazásból, illetve hogy vannak-e olyan műveletek, amelyek általában ismétlődnek.
 
-1.  Válassza ki **felhasználói adatfolyamok** a menüben.
-2.  Kattintson a **új** hozzon létre egy új felhasználói folyamat, majd **szerkesztése** a részleteinek szerkesztéséhez.
-3.  Növelje a **időtartomány** 7 napra, majd válassza ki az első esemény.  A folyamat esemény kezdődő felhasználói munkamenetek fogja követni.
+1.  Kattintson a **Felhasználókövetés** elemre a menüben.
+2.  Az **Új** gombra kattintva hozzon létre egy új felhasználókövetést, majd a **Szerkesztés** gombra kattintva szerkessze a részleteket.
+3.  Növelje az **Időtartományt** 7 napra, majd állítson be egy kezdőeseményt.  A követés azokat a felhasználói munkameneteket követi majd, amelyek az adott eseménnyel indulnak.
 
     ![](media\app-insights-tutorial-users\flowsedit.png)
 
-4.  A felhasználói folyamat jelenik meg, és megtekintheti a különböző felhasználói elérési útját, és a munkamenet-adatokra.  Kék vonal jelzi a felhasználó az aktuális művelet után végrehajtott művelet.  A piros sor a felhasználói munkamenet végét jelöli.
+4.  Megjelenik a felhasználókövetés, amelyen a különböző felhasználói útvonalak és az azokhoz tartozó munkamenetek száma látható.  A kék vonalak azokat a műveleteket jelzik, amelyeket a felhasználó az aktuális művelet után hajtott végre.  A vörös vonalak a felhasználói munkamenetek végét jelzik.
 
     ![](media\app-insights-tutorial-users\flows.png)
 
-5.  A folyamat esemény eltávolításához kattintson a **x** a művelet, és kattintson a sarkában **létrehozása Graph**.  A diagram újrarajzolódik eltávolítja az esemény minden példányát.  Kattintson a **szerkesztése** megtekintéséhez, hogy az esemény ezzel hozzáadja **események kizárt**.
+5.  Ha el szeretne távolítani egy eseményt a követésből, kattintson az **x** ikonra a művelet sarkában, majd kattintson a **Grafikon létrehozása** gombra.  Az újrarajzolt grafikon már nem tartalmazza az eltávolított esemény példányait.  A **Szerkesztés** gombra kattintva láthatja, hogy az esemény felkerült a **Kizárt események** listájára.
 
     ![](media\app-insights-tutorial-users\flowsexclude.png)
 
 ## <a name="consolidate-usage-data"></a>Használati adatok összesítése
-**Munkafüzetek** adatmegjelenítésekkel, elemzési lekérdezések és szöveges interaktív dokumentumok egységgé kombinálják.  Gyakori használati adatok egy csoportba, összesítik az egy adott eseményből származó információkat vagy visszajelzést a csapat a az alkalmazás használati munkafüzetek segítségével.
+A **munkafüzetek** adatvizualizációkat, Analytics-lekérdezéseket és szövegeket egyesítő interaktív dokumentumok.  A munkafüzetek használatával csoportba foglalhatók a gyakori használati információk, összesíthetők egy adott incidensre vonatkozó információk, vagy visszajelzés küldhető a csapat számára az alkalmazás használatáról.
 
-1.  Válassza ki **munkafüzetek** a menüben.
-2.  Kattintson a **új** új munkafüzet létrehozásához.
-3.  A lekérdezés már biztosított összes használati adatok az elmúlt nap során, a sávdiagram jelennek meg, amely tartalmazza.  Is ezzel a lekérdezéssel, manuálisan szerkessze, vagy kattintson a **lekérdezések minta** számára a más hasznos lekérdezések.
+1.  Kattintson a **Munkafüzetek** elemre a menüben.
+2.  Kattintson az **Új** gombra egy új munkafüzet létrehozásához.
+3.  A rendszer felkínál egy lekérdezést, amely az utolsó napi összes használati adatot sávdiagram formájában jeleníti meg.  Használhatja ezt a lekérdezést, manuálisan szerkesztheti, vagy a **Mintalekérdezések** gombra kattintva további hasznos lekérdezések közül is választhat.
 
     ![](media\app-insights-tutorial-users\samplequeries.png)
 
-4.  Kattintson a **szerkesztésének befejezése után**.
-5.  Kattintson a **szerkesztése** a felső ablaktáblán, a szöveg elején található a munkafüzet szerkesztéséhez.  Ez van formázva a markdown formátum használatával.
+4.  Kattintson a **Szerkesztés kész** gombra.
+5.  A panel tetején a **Szerkesztés** gombra kattintva szerkesztheti a munkafüzet tetején lévő szöveget.  Ez Markdown-szerkesztővel formázható.
 
     ![](media\app-insights-tutorial-users\markdown.png)
 
-6.  Kattintson a **felhasználók hozzáadása az** hozzáadása egy grafikonon felhasználó adataival.  A grafikon adatainak szerkesztése, ha szeretné, és kattintson a **szerkesztésének befejezése után** menti.
+6.  A **Felhasználók hozzáadása** gombra kattintva adhat hozzá egy grafikont a felhasználóinformációkkal.  Igény szerint szerkessze a grafikon részleteit, majd kattintson a **Szerkesztés kész** gombra a mentéséhez.
 
 
-## <a name="next-steps"></a>Következő lépések
-Most, hogy megismerte a felhasználók elemzése, hogy értékről a következő oktatóanyag áttekintésével megismerheti, hogyan lehet ezeket az információkat és más hasznos adatokat az alkalmazással kapcsolatos egyéni-irányítópultot létrehozni.
+## <a name="next-steps"></a>További lépések
+Most, hogy elsajátította, hogyan elemezheti a felhasználókat, térjen át a következő oktatóanyagra, amelyből elsajátíthatja az egyéni irányítópultok létrehozását, amelyek ezeket az információkat az alkalmazással kapcsolatos további hasznos adatokkal kombinálják.
 
 > [!div class="nextstepaction"]
 > [Egyéni irányítópultok létrehozása](app-insights-tutorial-dashboards.md)

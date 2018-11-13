@@ -9,12 +9,12 @@ ms.date: 10/1/2018
 ms.topic: overview
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 361e742b3d9b7a5d2d12aafd15233077c967b825
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: f753d7273c685a7ec3e4e0877e171df04e69e5b4
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888196"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978315"
 ---
 # <a name="what-is-service-fabric-mesh"></a>Mi a Service Fabric Mesh?
 
@@ -66,6 +66,8 @@ A Service Fabric Mesh használatával a következőket teheti:
 ## <a name="next-steps"></a>További lépések
 
 Csupán néhány lépést kell elvégezni a mintaprojekt Visual Studióval való üzembe helyezéséhez. További információért lásd: [ASP.NET Core-webhely létrehozása](service-fabric-mesh-quickstart-dotnet-core.md). 
+
+Válaszok a [gyakori kérdésekre](service-fabric-mesh-faq.md).
 
 
 <!-- Links -->

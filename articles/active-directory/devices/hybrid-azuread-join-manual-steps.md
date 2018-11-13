@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/18/2018
+ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 33fc8a3822def68cc0baad4670233f57044d1985
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: a3c35057af883eb790c44b3547072031eaf4ad2f
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408407"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962010"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Oktatóanyag: Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök manuális konfigurálása 
 
@@ -504,6 +504,9 @@ Ha a tartományhoz csatlakoztatott eszközök között korábbi verziójú Windo
  
 - Adja hozzá az Azure AD eszközhitelesítési végpontot a helyi intranetes zónákhoz az eszközök hitelesítésekor megjelenő tanúsítványkérések elkerüléséhez.
 
+- A korábbi verziójú Windows-eszközök vezérlése 
+
+
 ### <a name="set-policy-in-azure-ad-to-enable-users-to-register-devices"></a>Szabályzat beállítása az Azure AD-ben a felhasználói eszközregisztráció engedélyezéséhez
 
 A korábbi verziójú Windows-eszközök regisztrálásának feltétele, hogy az eszközbeállításokban be legyen állítva, hogy a felhasználók regisztrálhassák az eszközöket az Azure AD-ben. Ez a beállítás az Azure Portalon a következő helyen található:
@@ -551,6 +554,12 @@ AD FS-ben hozzá kell adnia egy kiállítási átalakítószabályt, amely átha
 A felhasználók regisztráló eszközeinek Azure AD-hitelesítésekor megjelenő tanúsítványkérések elkerüléséhez leküldhet egy szabályzatot a tartományhoz csatlakozó eszközökre, amely hozzáadja az alábbi URL-címeket a helyi intranetes zónához az Internet Explorerben:
 
 `https://device.login.microsoftonline.com`
+
+
+### <a name="control-windows-down-level-devices"></a>A korábbi verziójú Windows-eszközök vezérlése 
+
+A korábbi verziójú Windows-eszközök regisztrálásához a Letöltőközpontból le kell töltenie, majd telepítenie kell egy Windows Installer-csomagot (.msi). További információért kattintson [ide](hybrid-azuread-join-control.md#control-windows-down-level-devices). 
+
 
 
 ## <a name="verify-joined-devices"></a>Csatlakoztatott eszközök ellenőrzése

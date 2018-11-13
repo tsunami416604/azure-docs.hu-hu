@@ -4,20 +4,19 @@ description: Azure CLI-példaszkript – Feliratkozás Azure-előfizetésre
 services: event-grid
 documentationcenter: na
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/05/2018
+ms.date: 11/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: ac02c5515f598daf4aa91879af78341969718163
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9d1aa53ede323c2bb536c74eeaaba9fd28b01712
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31425887"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037532"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-azure-cli"></a>Feliratkozás egy Azure-előfizetés eseményeire az Azure CLI-vel
 
@@ -27,9 +26,15 @@ Ez a szkript létrehoz egy Event Grid-előfizetést egy Azure-előfizetés esem�
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-script"></a>Példaszkript
+Az előzetes verziójú példaszkripthez az Event Grid-bővítményre van szükség. A telepítéséhez futtassa az `az extension add --name eventgrid` parancsot.
+
+## <a name="sample-script---stable"></a>Példaszkript – stabil
 
 [!code-azurecli[main](../../../cli_scripts/event-grid/subscribe-to-azure-subscription/subscribe-to-azure-subscription.sh "Subscribe to Azure subscription")]
+
+## <a name="sample-script---preview-extension"></a>Példaszkript – előzetes verziójú bővítmény
+
+[!code-azurecli[main](../../../cli_scripts/event-grid/subscribe-to-azure-subscription-preview/subscribe-to-azure-subscription-preview.sh "Subscribe to Azure subscription")]
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
@@ -37,8 +42,8 @@ A szkript a következő parancsot használja az esemény-előfizetés létrehoz�
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | Event Grid-előfizetés létrehozása. |
-
+| [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | Event Grid-előfizetés létrehozása. |
+| [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) – bővítmény verziója | Event Grid-előfizetés létrehozása. |
 
 ## <a name="next-steps"></a>További lépések
 

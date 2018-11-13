@@ -10,12 +10,12 @@ ms.component: bing-custom-search
 ms.topic: tutorial
 ms.date: 10/16/2017
 ms.author: v-brapel
-ms.openlocfilehash: 3e892131a0109d2fff924940542b5d8b2b701950
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 6d08a36d7a464ccc1904839d6631be0553aacb17
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815375"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279211"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Oktatóanyag: Custom Search-weboldal létrehozása
 
@@ -79,7 +79,7 @@ Ha szeretné kizárni egyes webhelyek vagy URL-címek eredményeit, adja hozzá 
 
 ## <a name="add-pinned-entries"></a>Rögzített bejegyzések hozzáadása
 
-Ha egy adott webhelyet rögzíteni kíván a keresési találatok első helyén, adja hozzá a webhelyet és a lekérdezési kifejezést a **Pinned** (Rögzített) laphoz. A **Pinned** (Rögzített) lap a webhelyek és lekérdezési kifejezések olyan párosainak listáját tartalmazza, amely meghatározza, hogy egy adott lekérdezésnél melyik webhely jelenjen meg első eredményként. A webhely csak akkor rögzített, ha a felhasználó lekérdezési sztringje egyezik a rögzített elem egyezési állapotának rögzített lekérdezési sztringjével. [További információ](../define-your-custom-view.md#pin-to-top).
+Ha egy adott webhelyet rögzíteni kíván a keresési találatok első helyén, adja hozzá a webhelyet és a lekérdezési kifejezést a **Pinned** (Rögzített) laphoz. A **Pinned** (Rögzített) lap a webhelyek és lekérdezési kifejezések olyan párosainak listáját tartalmazza, amely meghatározza, hogy egy adott lekérdezésnél melyik webhely jelenjen meg első eredményként. A webhely csak akkor rögzített, ha a felhasználó lekérdezési sztringje egyezik a rögzített elem egyezési állapotának rögzített lekérdezési sztringjével. Csak az indexelt webhelyek jelennek meg a keresésekben. További információkért lásd az [egyéni nézet meghatározásával](../define-your-custom-view.md#pin-to-top) foglalkozó témakört.
 
 1. A **Configuration** (Konfiguráció) lapon kattintson a **Pinned** (Rögzített) lapra, és adja meg az első helyen megjeleníteni kívánt weblapot és a hozzá tartozó lekérdezési kifejezést.  
   

@@ -1,24 +1,24 @@
 ---
-title: 'Oktatóanyag: Az Apache Spark strukturált stream használata a Kafkával – Azure HDInsight '
+title: 'Oktatóanyag: Az Apache Spark strukturált stream használata az Apache Kafkával – Azure HDInsight '
 description: Megtudhatja, hogyan használhatja az Apache Spark streamelést az adatok az Apache Kafkába való betöltéséhez, illetve az onnan való exportálásához. Ebben az oktatóanyagban egy Jupyter notebookkal streamelünk adatokat a Spark on HDInsightból.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 05/08/2018
-ms.author: jasonh
-ms.openlocfilehash: 11169e45d5fbdc5e51b81c06d814524a7b09c614
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 83e277eceea2df746de6f6e9a33130989e2d874d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108289"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278361"
 ---
-# <a name="tutorial-use-spark-structured-streaming-with-kafka-on-hdinsight"></a>Oktatóanyag: A Spark strukturált stream használata a Kafkával a HDInsighton
+# <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Oktatóanyag: Az Apache Spark strukturált stream használata az Apache Kafkával a HDInsighton
 
-Az oktatóanyag bemutatja, hogyan használhatja a Spark strukturált streamet adatok olvasásához és írásához az Apache Kafkával az Azure HDInsighton.
+Ez az oktatóanyag bemutatja, hogyan használhatja az Apache Spark strukturált streamet adatok olvasásához és írásához az Apache Kafkával az Azure HDInsighton.
 
 A Spark strukturált stream egy Spark SQL-alapú streamfeldolgozó rendszer. Lehetővé teszi, hogy ugyanúgy fejezze ki a streamszámításokat, mint a kötegelt számításokat a statikus adatok esetében. 
 
