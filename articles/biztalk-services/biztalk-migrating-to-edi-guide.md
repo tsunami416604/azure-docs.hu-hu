@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.reviewer: jonfan, LADocs
 ms.suite: integration
-ms.openlocfilehash: 681cafc60661e16d70deb862da71f6baf80509fd
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 38fe0e4901977637be22670d09dccffdfa274304
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856530"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253822"
 ---
 # <a name="migrate-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>BizTalk Server EDI-megoldások áttelepítése a BizTalk Services: műszaki útmutató
 
@@ -77,10 +77,10 @@ Lásd: **forgatókönyvek/Üzenetáramlás** ebben a cikkben, az üzenet a folya
 ## <a name="agreements"></a>Egyezmények
 Ha ismeri a BizTalk Server 2010 Trading Partner kimutatáshoz alapul szolgáló licencszerződések EDI-feldolgozást, majd a BizTalk Services kereskedelmipartner-egyezmények ismerős nagyon. A szerződés beállításai a legtöbb azonosak, és ugyanazokat a kifejezéseket használni. Bizonyos esetekben a szerződés beállítások a következők jóval egyszerűbb ugyanazokat a beállításokat a BizTalk Server képest. A Microsoft Azure BizTalk Services által támogatott X12, EDIFACT és az AS2 átviteli.
 
-A Microsoft Azure BizTalk Services is biztosít egy **TPM adatáttelepítés** eszközt, amellyel kereskedelmi partnerek és egyezmények a BizTalk Server kereskedelmi partneri modulból a BizTalk Services portáljára. A TPM adatáttelepítési eszköz érhető el egy eszközcsomag részeként, amely letölthető a a [MABS SDK](http://go.microsoft.com/fwlink/p/?LinkId=235057). A csomag egy információs fájl, amely útmutatást ad az eszköz használata az eszközt, és alapvető információkat is tartalmaz.
+A Microsoft Azure BizTalk Services is biztosít egy **TPM adatáttelepítés** eszközt, amellyel kereskedelmi partnerek és egyezmények a BizTalk Server kereskedelmi partneri modulból a BizTalk Services portáljára. A TPM adatáttelepítési eszköz érhető el egy eszközcsomag részeként, amely letölthető a a [MABS SDK](https://go.microsoft.com/fwlink/p/?LinkId=235057). A csomag egy információs fájl, amely útmutatást ad az eszköz használata az eszközt, és alapvető információkat is tartalmaz.
 
 ## <a name="schemas"></a>Sémák
-BizTalk Services modullal járulékos EDI-sémák, amely használható a BizTalk Services-megoldásokban.  Emellett a BizTalk Server EDI-sémák is használható a BizTalk Services segítségével mivel a legfelső szintű csomópontja az EDI-sémák azonos között a BizTalk Server, valamint a BizTalk Services. Így lesz közvetlenül a BizTalk Server EDI-sémák és a BizTalk Services fejleszthet EDI-megoldások használni őket. Is letöltheti a sémák, a [MABS SDK](http://go.microsoft.com/fwlink/p/?LinkId=235057).
+BizTalk Services modullal járulékos EDI-sémák, amely használható a BizTalk Services-megoldásokban.  Emellett a BizTalk Server EDI-sémák is használható a BizTalk Services segítségével mivel a legfelső szintű csomópontja az EDI-sémák azonos között a BizTalk Server, valamint a BizTalk Services. Így lesz közvetlenül a BizTalk Server EDI-sémák és a BizTalk Services fejleszthet EDI-megoldások használni őket. Is letöltheti a sémák, a [MABS SDK](https://go.microsoft.com/fwlink/p/?LinkId=235057).
 
 ## <a name="maps-transforms"></a>Térképek (átalakító)
 A BizTalk Server Maps a BizTalk Services átalakítások nevezik. Leképezések áttelepítése a BizTalk Server a BizTalk Services eléréséhez (a map összetettsége) függően az összetettebb feladatok egyike lehet. A BizTalk Services használt térképkészítő eszközével eltér a BizTalk-végpontleképező. Annak ellenére, hogy a teljesítményleképező ugyanúgy néz ki, főleg, az alapul szolgáló térkép formátuma eltér. A functoids (nevű **térkép Operations** a BizTalk Services) érhető el, hogy a felhasználókat, valamint nem ugyanaz.  Érvényben nem közvetlenül használható a BizTalk-térkép a BizTalk Services. Nem minden elérhető a BizTalk Server functoids is elérhető a BizTalk Services térkép műveleteket.
@@ -93,23 +93,23 @@ Egy másik példa a BizTalk Services alakítja át az új funkciók vannak a **h
 Még egy másik példa a **If-majd más** kifejezés térkép művelete.  Ennek során egy if-majd más művelet nem volt lehetőség a BizTalk eseményleképező, de ez több functoids látszólag egyszerű feladat elvégzéséhez szükséges.
 
 ### <a name="migrating-biztalk-server-maps"></a>A BizTalk-kiszolgáló áttelepítése térképek
-A Microsoft Azure BizTalk Services biztosítja, hogy egy eszköz a BizTalk-kiszolgáló áttelepítése a BizTalk Services átalakítások képez le. A **BTMMigrationTool** elérhető része a **eszközök** megadott csomag a [BizTalk Services SDK letöltése](http://go.microsoft.com/fwlink/p/?LinkId=235057). Az eszközzel kapcsolatos további információkért lásd: [BizTalk térkép átalakítása a BizTalk Services átalakítása](https://msdn.microsoft.com/library/windowsazure/hh949812.aspx).
+A Microsoft Azure BizTalk Services biztosítja, hogy egy eszköz a BizTalk-kiszolgáló áttelepítése a BizTalk Services átalakítások képez le. A **BTMMigrationTool** elérhető része a **eszközök** megadott csomag a [BizTalk Services SDK letöltése](https://go.microsoft.com/fwlink/p/?LinkId=235057). Az eszközzel kapcsolatos további információkért lásd: [BizTalk térkép átalakítása a BizTalk Services átalakítása](https://msdn.microsoft.com/library/windowsazure/hh949812.aspx).
 
-Emellett tekintse meg a mintát Sandro Pereira, BizTalk MVP, amelyet szeretne [BizTalk Server leképezések áttelepítése a BizTalk Services átalakítások](http://social.technet.microsoft.com/wiki/contents/articles/23220.migrating-biztalk-server-maps-to-windows-azure-biztalk-services-wabs-maps.aspx).
+Emellett tekintse meg a mintát Sandro Pereira, BizTalk MVP, amelyet szeretne [BizTalk Server leképezések áttelepítése a BizTalk Services átalakítások](https://social.technet.microsoft.com/wiki/contents/articles/23220.migrating-biztalk-server-maps-to-windows-azure-biztalk-services-wabs-maps.aspx).
 
 ## <a name="orchestrations"></a>Vezénylések
 Ha szeretné áttelepíteni a BizTalk Server vezénylési feldolgozása a Microsoft Azure-ba, a vezénylések kell írni, mert a Microsoft Azure nem támogatja a futó BizTalk Server vezénylések kellene.  A vezénylési funkciót a Windows Workflow Foundation 4.0 (WF4) szolgáltatásként sikerült újraírása.  Ez lehet egy teljes újraírási jelenleg nincs áttelepítése a BizTalk Server vezénylések WF4 nem. Íme néhány forrás, a Windows-munkafolyamat:
 
 * [*A munkafolyamat WCF-szolgáltatások integrálása a Service Bus-üzenetsorok és témakörök* ](https://blogs.msdn.microsoft.com/paolos/2013/04/09/how-to-integrate-a-wcf-workflow-service-with-service-bus-queues-and-topics/) Paolo Salvatori szerint. 
-* [*Alkalmazások a Windows Workflow Foundation és az Azure* munkamenet](http://go.microsoft.com/fwlink/p/?LinkId=237314) a Build 2011 konferenciáról.
-* [*Windows folyamatkövető alaprendszer fejlesztői központja* ](http://go.microsoft.com/fwlink/p/?LinkId=237315) az MSDN Webhelyén.
+* [*Alkalmazások a Windows Workflow Foundation és az Azure* munkamenet](https://go.microsoft.com/fwlink/p/?LinkId=237314) a Build 2011 konferenciáról.
+* [*Windows folyamatkövető alaprendszer fejlesztői központja* ](https://go.microsoft.com/fwlink/p/?LinkId=237315) az MSDN Webhelyén.
 * [*Windows munkafolyamat Foundation 4 (WF4) dokumentációja* ](https://msdn.microsoft.com/library/dd489441.aspx) az MSDN Webhelyén.
 
 ## <a name="other-considerations"></a>Egyéb szempontok
 Az alábbiakban néhány megfontolandó szempont a BizTalk Services használata közben kell végrehajtania.
 
 ### <a name="fallback-agreements"></a>Tartalék szerződések
-BizTalk Server EDI-feldolgozást tartalmaz "Tartalék szerződések" fogalma.  A BizTalk Services does **nem** , amennyiben rendelkezik egy tartalék szerződés fogalom.  A BizTalk-dokumentáció témakörök [feldolgozása EDI szerződések a a szerepkör](http://go.microsoft.com/fwlink/p/?LinkId=237317) és [globális konfigurálása vagy tartalék megállapodás tulajdonságai](https://msdn.microsoft.com/library/bb245981.aspx) információ a tartalék szerződések használata a BizTalk A kiszolgáló.
+BizTalk Server EDI-feldolgozást tartalmaz "Tartalék szerződések" fogalma.  A BizTalk Services does **nem** , amennyiben rendelkezik egy tartalék szerződés fogalom.  A BizTalk-dokumentáció témakörök [feldolgozása EDI szerződések a a szerepkör](https://go.microsoft.com/fwlink/p/?LinkId=237317) és [globális konfigurálása vagy tartalék megállapodás tulajdonságai](https://msdn.microsoft.com/library/bb245981.aspx) információ a tartalék szerződések használata a BizTalk A kiszolgáló.
 
 ### <a name="routing-to-multiple-destinations"></a>Több célhelyre Útválasztás
 A BizTalk Services-hidat, a jelenlegi állapotában nem támogatja a útválasztási üzenetek, több célra irányuló használatával közzétételi-feliratkozási modell. Ehelyett sikerült irányíthatja a Service Bus-témakörbe, majd az üzenetet, egynél több végponton több előfizetéssel is rendelkezhet, amely a BizTalk Services hidat üzeneteket.

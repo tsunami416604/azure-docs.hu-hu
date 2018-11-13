@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: db79ee85c19e5f3cdced9b894aca48de4d7d1c42
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: f990aa086997d51e59df4285aabeccd31dcce822
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576470"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253431"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Az Azure BizTalk Services – kibocsátási megjegyzések
 
@@ -188,7 +188,7 @@ Példaként vegyünk egy forgatókönyvet, ahol-névalapú viselkedések azonos�
 
 ### <a name="bridges-continue-to-process-messages-even-when-the-sql-database-is-offline"></a>Hidak folytatja az üzenetek feldolgozásához, még akkor is, ha az SQL-adatbázis offline állapotban
 A BizTalk Services hidak továbbra is üzenetek feldolgozása egy ideig, még akkor is, ha a Microsoft Azure SQL Database (amely tárolja a futó további információkat, például a telepített összetevőket és folyamatokat), offline állapotban van. Ennek az az oka a BizTalk Services használja a gyorsítótárazott összetevők és a híd konfigurációjához.
-Ha nem szeretné, hogy a hidak olyan üzeneteket feldolgoznia, ha az SQL-adatbázis offline állapotban, a BizTalk Services PowerShell-parancsmagok segítségével vagy felfüggesztheti a BizTalk-szolgáltatás. Lásd: [Azure BizTalk Service Management példa](http://go.microsoft.com/fwlink/p/?LinkID=329019) műveleteinek kezelésére szolgáló Windows PowerShell-parancsmagok számára.  
+Ha nem szeretné, hogy a hidak olyan üzeneteket feldolgoznia, ha az SQL-adatbázis offline állapotban, a BizTalk Services PowerShell-parancsmagok segítségével vagy felfüggesztheti a BizTalk-szolgáltatás. Lásd: [Azure BizTalk Service Management példa](https://go.microsoft.com/fwlink/p/?LinkID=329019) műveleteinek kezelésére szolgáló Windows PowerShell-parancsmagok számára.  
 
 ### <a name="reading-the-xml-message-within-a-bridges-custom-code-component-includes-an-extra-bom-character"></a>Egy extra Anyagjegyzék-karaktert tartalmaz belüli egy híd egyéni kód XML-üzenet olvasása
 Példaként vegyünk egy forgatókönyvet, ahol szeretné olvasni a híd egyéni kód egy XML-üzenet. Ha a .NET API System.Text.Encoding.UTF8.GetString(bytes) egy extra AJ karakter a kimenet az üzenet elején szerepel. Ezért, ha nem szeretné, hogy a kimenet tartalmazza az extra AJ karaktert, kell használnia ```System.IO.StreamReader().ReadToEnd()```.

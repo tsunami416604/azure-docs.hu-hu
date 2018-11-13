@@ -9,12 +9,12 @@ ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/13/2017
-ms.openlocfilehash: fb8fb153c7393af0e084cb96ee2f5e82fba5b220
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: dc59531b282f6c99dd399ac384a8c6264ee260ea
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798053"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258765"
 ---
 # <a name="upload-data-to-azure-search-using-the-net-sdk"></a>Adatfeltöltés az Azure Search szolgáltatásba, a .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ Jelen cikk bemutatja, hogyan lehet adatokat importálni az Azure Search-indexbe 
 A bemutató elindítása előtt [létre kell hoznia egy Azure Search-indexet](search-what-is-an-index.md). A jelen cikk azt feltételezi, hogy már létrehozott egy `SearchServiceClient` objektumot, az [Azure Search-index létrehozása .NET SDK használatával](search-create-index-dotnet.md#CreateSearchServiceClient) részben megadott módon.
 
 > [!NOTE]
-> A cikkben szereplő összes példakód C# nyelven van megírva. A teljes forráskódot a [GitHub](http://aka.ms/search-dotnet-howto) webhelyén találja. Az [Azure Search .NET SDK](search-howto-dotnet-sdk.md) leírásában részletesebb útmutatást kaphat a példakóddal kapcsolatban.
+> A cikkben szereplő összes példakód C# nyelven van megírva. A teljes forráskódot a [GitHub](https://aka.ms/search-dotnet-howto) webhelyén találja. Az [Azure Search .NET SDK](search-howto-dotnet-sdk.md) leírásában részletesebb útmutatást kaphat a példakóddal kapcsolatban.
 
 A dokumentumok .NET SDK használatával az indexbe történő küldéséhez a következőket kell tennie:
 

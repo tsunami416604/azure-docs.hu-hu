@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 1a0d8106c6a48494a938ee7a9da6f43f467516f6
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 2fe57480f7d8e22cfffafec6845372718587958e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394017"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258425"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Adatok áthelyezése vagy onnan máshová SSIS-összekötők használatával az Azure Blob Storage
 A [SQL Server Integration Services funkciócsomag Azure](https://msdn.microsoft.com/library/mt146770.aspx) szeretne csatlakozni az Azure-összetevők közötti Azure-ban és a helyszíni adatforrások, és dolgozza fel az adatokat az Azure-ban tárolt adatok átvitele biztosít.
@@ -31,7 +31,7 @@ A [SQL Server Integration Services funkciócsomag Azure](https://msdn.microsoft.
 
 Ez a általában az első lépés lehet a [SQL](sql-walkthrough.md) és [HDInsight](hive-walkthrough.md) forgatókönyvek.
 
-Az SSIS használata gyakori hibrid adatintegrációs forgatókönyveket az üzleti igények elvégzéséhez kanonikus forgatókönyvek, lásd: [ezzel nagyobb az SQL Server Integration Services funkciócsomag Azure](http://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx) blog.
+Az SSIS használata gyakori hibrid adatintegrációs forgatókönyveket az üzleti igények elvégzéséhez kanonikus forgatókönyvek, lásd: [ezzel nagyobb az SQL Server Integration Services funkciócsomag Azure](https://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx) blog.
 
 > [!NOTE]
 > Egy teljes körű Bevezetés az Azure blob storage, tekintse meg a [Azure Blob alapjai](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) és [Azure Blob Service-ben](https://msdn.microsoft.com/library/azure/dd179376.aspx).
@@ -47,10 +47,10 @@ Ebben a cikkben ismertetett feladatok végrehajtásához Azure-előfizetéssel, 
 Használatához a **SSIS-összekötők**, le kell töltenie:
 
 * **Az SQL Server 2014 vagy 2016 Standard (vagy újabb)**: telepítés tartalmazza az SQL Server Integration Services.
-* **A Microsoft SQL Server 2014 vagy 2016 Integration Services Feature Pack for Azure**: ezek letölthető, az a [SQL Server 2014 Integration Services](http://www.microsoft.com/download/details.aspx?id=47366) és [SQL Server 2016 Integration Szolgáltatások](https://www.microsoft.com/download/details.aspx?id=49492) oldalakat.
+* **A Microsoft SQL Server 2014 vagy 2016 Integration Services Feature Pack for Azure**: ezek letölthető, az a [SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) és [SQL Server 2016 Integration Szolgáltatások](https://www.microsoft.com/download/details.aspx?id=49492) oldalakat.
 
 > [!NOTE]
-> SSIS az SQL Server telepítve van, de nem szerepel az Express verzió. Milyen alkalmazások szerepelnek-e az SQL Server különböző kiadásainak kapcsolatos információkért lásd: [SQL Server-verziók](http://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/)
+> SSIS az SQL Server telepítve van, de nem szerepel az Express verzió. Milyen alkalmazások szerepelnek-e az SQL Server különböző kiadásainak kapcsolatos információkért lásd: [SQL Server-verziók](https://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/)
 > 
 > 
 

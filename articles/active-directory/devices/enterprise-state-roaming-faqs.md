@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: bea59f0d1ce1d1f3813c0b39a57b1f4e726fe2a5
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 24c7ddff1eea16fc2be3f99d04abd90ee0791f4c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50097999"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247296"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Beállítások és adatroaming GYIK
 Ez a cikk rendszergazdák lehet beállításai és alkalmazás data Sync szolgáltatással kapcsolatos kérdésekre ad választ.
@@ -37,7 +37,7 @@ Ez a cikk rendszergazdák lehet beállításai és alkalmazás data Sync szolgá
 * *Könnyű hozzáférés funkciók*, például a Narrátor, Nagyító és a kontrasztos téma.
 * *Egyéb Windows-beállítások*, például az egér beállításait.
 
-**Alkalmazásadatok**: univerzális Windows-alkalmazások beállításainak adatokat írhatna központi mappába, és minden ebbe a mappába írt adatok automatikusan szinkronizálja. Fontos az egyéni alkalmazás fejlesztőjénél, ez a funkció kihasználásához alkalmazásokat. Egy univerzális Windows-alkalmazást, amely központi fejlesztésével kapcsolatos további részletekért lásd: a [appdata storage API-JÁNAK](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) és a [fejlesztői blog barangolás Windows 8 appdata](http://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
+**Alkalmazásadatok**: univerzális Windows-alkalmazások beállításainak adatokat írhatna központi mappába, és minden ebbe a mappába írt adatok automatikusan szinkronizálja. Fontos az egyéni alkalmazás fejlesztőjénél, ez a funkció kihasználásához alkalmazásokat. Egy univerzális Windows-alkalmazást, amely központi fejlesztésével kapcsolatos további részletekért lásd: a [appdata storage API-JÁNAK](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) és a [fejlesztői blog barangolás Windows 8 appdata](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
 
 ## <a name="what-account-is-used-for-settings-sync"></a>Milyen fiókot szolgál szinkronizálási beállítások?
 Windows 8.1, a szinkronizálási beállítások mindig használja a fogyasztói Microsoft-fiókok. Vállalati felhasználó számára lehetővé teszi egy Microsoft-fiók csatlakozni az Active Directory tartományi fiók a szinkronizálási beállítások eléréséhez rendelkezett. A Windows 10 csatlakozik egy elsődleges és másodlagos fiók keretrendszer helyére, a funkciók Microsoft-fiókjával.

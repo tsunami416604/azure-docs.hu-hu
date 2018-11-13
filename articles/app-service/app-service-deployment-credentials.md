@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: a17260770f0b2e0a73585ce4108bd5625ac22229
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 79841887ce8413970cb7dff0ca0099d4e0745a68
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436148"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259309"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Az Azure App Service üzembe helyezési hitelesítő adatok konfigurálása
-[Az Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) hitelesítő adatok kétféle [Git helyi üzemelő példányának](app-service-deploy-local-git.md) és [FTP/S üzembe helyezési](app-service-deploy-ftp.md). Ezek nem azonosak az Azure Active Directory hitelesítő adatként.
+[Az Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) hitelesítő adatok kétféle [Git helyi üzemelő példányának](app-service-deploy-local-git.md) és [FTP/S üzembe helyezési](app-service-deploy-ftp.md). Ezek nem azonosak az Azure Active Directory hitelesítő adatként.
 
 * **A felhasználói szintű hitelesítő adatokat**: a teljes Azure-fiók hitelesítő adatait egy készletét. App Service-ben minden olyan alkalmazáshoz, minden előfizetéshez, amely az Azure-fiók rendelkezik hozzáféréssel a üzembe helyezéséhez használható. Ezek a konfigurált alapértelmezett hitelesítő adatok beállítása a **App Services** > **&lt;app_name >** > **üzembe helyezési hitelesítő adatok**. Ez egyben az alapértelmezett csoportot, amely a portálon grafikus felhasználói Felülettel illesztett van (például a **áttekintése** és **tulajdonságok** az alkalmazás [erőforráslapján](../azure-resource-manager/resource-group-portal.md#manage-resources)).
 

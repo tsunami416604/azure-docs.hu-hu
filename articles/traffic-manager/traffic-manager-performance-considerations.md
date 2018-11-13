@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 2fabe1671e9cc2aeed3b0dcd08ad5b5f09da3f11
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 1bf2222e09644520bbfc6c5424c7f29d05b3c799
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140840"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257697"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Teljesítménnyel kapcsolatos megfontolások a Traffic Manager esetében
 
@@ -80,7 +80,7 @@ Az eszközök ezeket a helyek mérték DNS késéseket és megjelenítési a fel
 
 [A Traffic Manager beállításainak tesztelése](traffic-manager-testing-settings.md)
 
-[A Traffic Manager műveletei (REST API-referencia)](http://go.microsoft.com/fwlink/?LinkId=313584)
+[A Traffic Manager műveletei (REST API-referencia)](https://go.microsoft.com/fwlink/?LinkId=313584)
 
 [Az Azure Traffic Manager parancsmagjai](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager)
 
