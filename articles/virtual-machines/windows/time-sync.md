@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/017/2018
 ms.author: zarhoads
-ms.openlocfilehash: 1c784721d103ca623f6e9bac5ec1281beeb70074
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: ad5ceeef170e38bf6368c54894b20245d10b74ee
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468319"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578195"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Idő szinkronizálása a Windows virtuális gépek az Azure-ban
 
@@ -40,6 +40,8 @@ A számítógép órája pontosságának van kivett a hogyan zárja be a számí
 Azure gazdagép belső hierarchiabeli 1 Microsoft tulajdonú eszközökről, a GPS-antennák azok időt vesz igénybe a Microsoft idő kiszolgálók vannak szinkronizálva. Az Azure Virtual machines vagy függőségi viszonyban lehet átadni a pontos időt a gazdagép (*idő gazdagép*) be a virtuális gép vagy a virtuális gép közvetlenül lekérheti a idő egy kiszolgálót vagy mindkettőt. 
 
 A gazdagép virtuálisgép-interakció is befolyásolhatja az óra. Során [karbantartás megőrzése memória](maintenance-and-updates.md#memory-preserving-maintenance), virtuális gépek vannak függesztve, akár 30 másodpercig. Például karbantartás megkezdése előtt a virtuális gép órája jeleníti meg a 10:00:00-kor és 28 másodperc tart. Után folytatja a virtuális Gépet, az óra, a virtuális gép továbbra is megjeleníti 10:00:00-kor, amelyek 28 másodperc ki. Ennek, a VMICTimeSync szolgáltatás figyeli a gazdagép és a módosítások utasításokat található a virtuális gépek esetében történő kompenzálás mi történik.
+
+A VMICTimeSync szolgáltatás minta vagy a szinkronizálás üzemmódban működik, és csak befolyásolják az óra előre. Minta módban, amelyhez szükség van a W32time futnia kell, a VMICTimeSync szolgáltatást a gazdagép 5 másodpercenként lekérdezi és W32time mintákat biztosít. Körülbelül 30 másodpercenként, a W32time szolgáltatás legújabb idő mintát vesz igénybe, és befolyásolhatja a Vendég óra használja. Szinkronizálási mód aktiválódik, ha Vendég folytatódik, vagy ha a Vendég óra drifts mögött a gazdagép óra több mint 5 másodperc. Azokban az esetekben, ahol a W32time szolgáltatás megfelelően fut az utóbbi esetben szabad bekövetkeznie.
 
 Nélkül idő szinkronizálási működő, a virtuális gép órája hibák lenne összeadódhatnak. Ha csak egy virtuális Gépet, a hatás nem jelentős, kivéve, ha a munkaterhelés rendkívül pontos időmérő igényel. De a legtöbb esetben azt kell több, összekapcsolt virtuális gépeket, amelyek idő segítségével nyomon követheti a tranzakciók és az időt kell lennie a teljes telepítés során. Ha más virtuális gépek között eltelt idő, sikerült jelenik meg a következő hatásai vannak:
 

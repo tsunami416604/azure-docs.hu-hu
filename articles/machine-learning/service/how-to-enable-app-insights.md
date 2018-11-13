@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
 ms.date: 10/01/2018
-ms.openlocfilehash: 962090340cad6bcd95245cffe16c25f08a98226b
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 285486d5fe641d49ee21d7340b62f83d75862553
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300761"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578298"
 ---
 # <a name="monitor-your-azure-machine-learning-models-in-production-with-application-insights"></a>Az Azure Machine Learning-modellek éles környezetben az Application Insights figyelése
 
@@ -24,6 +24,10 @@ Ebből a cikkből elsajátíthatja az Azure Application Insights beállítása a
 * Kivételek.
 
 [További információ az Application Insights](../../application-insights/app-insights-overview.md). 
+
+>[!NOTE]
+> Ebben a cikkben kód teszteltük az Azure Machine Learning SDK verziója 0.1.74
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.

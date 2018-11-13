@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.openlocfilehash: e2dd9b1d6031d8c8695ff6821e9af4e464ef270a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: d38b4e511defbb50dd5f74ae72e71d3316a57b3c
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009351"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567128"
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>A HDInsight Apache Storm írhat HDFS-be
 
@@ -23,7 +23,7 @@ Ismerje meg, hogyan adatokat írni az Apache Storm on HDInsight által használt
 > [!IMPORTANT]
 > Ebben a dokumentumban használt példatopológiát a HDInsight alatt futó Stormmal összetevők támaszkodik. Megkövetelheti, hogy a módosítás az Azure Data Lake Store más Apache Storm-fürtök együttes használata.
 
-## <a name="get-the-code"></a>Kód letöltése
+## <a name="get-the-code"></a>A kód letöltése
 
 Letölthető érhető el a projektet, amely tartalmazza az ebben a topológiában [ https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store).
 
@@ -198,7 +198,7 @@ Az adatok megtekintéséhez használja a következő parancsot:
 
 Ez a topológia által létrehozott fájlok listája jelenik meg.
 
-Az alábbi lista az adatok alapján az előző parancsok retuned példája:
+Az alábbi lista a következő egy példa az előző parancs által visszaadott adatok:
 
     Found 30 items
     -rw-r-----+  1 sshuser sshuser       488000 2017-03-03 19:13 /stormdata/hdfs-bolt-3-0-1488568403092.txt

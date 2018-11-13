@@ -4,17 +4,17 @@ description: A Visual Studio Code segítségével hozhatja létre, hozhat létre
 services: iot-edge
 keywords: ''
 author: shizn
-manager: timlt
+manager: philmea
 ms.author: xshi
 ms.date: 09/13/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 3ec7f6043c1d2e8e8f090ffc60822768ab9bc9d9
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: d40b82b5beac2da78038e303cb50402d6fa0be7a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984001"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566024"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Fejlesztés és hibakeresés a C-modulok az Azure IoT Edge-hez a Visual Studio Code használatával
 
@@ -94,7 +94,7 @@ Minden modul mappában nincsenek különböző tároló esetében több Docker-f
 2. Cserélje le a C modul createOptions a **deployment.template.json** az alábbi tartalmat, és mentse a fájlt: 
     
     ```json
-    "createOptions": "{\"HostConfig\": {\"Privileged\": true}}"
+    "createOptions": "{\"HostConfig\": {\"Privileged\": true}}"
     ```
 
 2. A VS Code parancskatalógus adja meg, és futtassa a parancsot **Azure IoT Edge: Build, és küldje le az IoT Edge megoldás**.

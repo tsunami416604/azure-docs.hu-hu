@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 65b34a49006e6a2f9be003414498d9a8fc9955ae
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 231a3e87692e47ec33f8a613832acf5102257c96
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161820"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567060"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -49,8 +49,7 @@ A **UserJourney** elem a következő elemeket tartalmazza:
 
 Felhasználói út jelenik meg egy vezénylési feladatütemezés sikeres tranzakció kell követnie. Ha valamelyik lépés meghiúsul, a tranzakció sikertelen lesz. Vezénylési lépések hivatkozhat mindkét építőelemeket, és a Jogcímszolgáltatók engedélyezett a házirend-fájlban. Bármely vezénylési lépés, amelyek felelős megjelenítése vagy jelennek meg a felhasználói élmény is tartalmaz egy hivatkozást a megfelelő tartalomdefiníció-azonosítóval.
 
-Vezénylési lépésekből conditionaly ecxetuted előfeltételeket a vezénylési lépés elemben definiált alapján lehet. A examle ellenőrizheti, hogy egy vezénylési lépés végrehajtása csak akkor, ha egy adott jogcímek létezik, vagy ha jogcím értéke, vagy nem a megadott érték. 
-
+Vezénylési lépésekből lehet conditionaly hajtja végre, a vezénylési lépés elemben definiált előfeltételeket alapján. A examle ellenőrizheti, hogy egy vezénylési lépés végrehajtása csak akkor, ha egy adott jogcímek létezik, vagy ha jogcím értéke, vagy nem a megadott érték. 
 
 A vezénylési lépésekből, rendezett listáját adja meg egy **OrchestrationSteps** elem kerül a szabályzat részeként. Ez az elem megadása kötelező.
 
@@ -66,7 +65,7 @@ A **OrchestrationStep** elem tartalmazza a következő attribútumokat:
 | --------- | -------- | ----------- |
 | Rendelés | Igen | A vezénylési lépéseinek sorrendjét. | 
 | Típus | Igen | A vezénylési lépés típusát. Érvényes értékek: <ul><li>**Hiányzik a ClaimsProviderSelection** -azt jelzi, hogy megjelennek-e a vezénylési lépés különböző jogcímszolgáltatóktól a felhasználó kiválaszthat egy számára.</li><li>**CombinedSignInAndSignUp** -azt jelzi, hogy a vezénylési lépés bemutatja egy kombinált közösségi szolgáltató be- és a helyi fiók regisztrálási oldala.</li><li>**ClaimsExchange** -azt jelzi, hogy a vezénylési lépés adatcseréihez használható-e jogcímeket egy jogcímszolgáltatótól.</li><li>**SendClaims** -azt jelzi, hogy a vezénylési lépés a jogcímek kiállítója által kiállított jogkivonatok küld a jogcímeket a függő entitáshoz.</li></ul> | 
-| ContentDefinitionReferenceId | Nem | Az azonosítója a [definíciós tartalom](contentdefinitions.md) a vezénylési lépés társított. Általában a tartalomdefiníció Referenciaazonosító definiálva van az önellenőrzött technikai profilban. De vannak bizonyos esetekben az Azure AD B2C-vel valami technikai profil nélkül megjeleníthető van szükség. Nincsenek két példa, ha a vezénylési lépés típusát egyike feloldását kérte: `ClaimsProviderSelection` vagy `CombinedSignInAndSignUp`. Az Azure AD B2C kell megjeleníteni az identity provider kijelölés technikai profil nélkül. | 
+| ContentDefinitionReferenceId | Nem | Az azonosítója a [definíciós tartalom](contentdefinitions.md) a vezénylési lépés társított. Általában a tartalomdefiníció Referenciaazonosító definiálva van az önellenőrzött technikai profilban. De vannak bizonyos esetekben az Azure AD B2C-vel valami technikai profil nélkül megjeleníthető van szükség. Nincsenek két példa, ha a vezénylési lépés típusát a következők egyikét: `ClaimsProviderSelection` vagy `CombinedSignInAndSignUp`. Az Azure AD B2C kell megjeleníteni az identity provider kijelölés technikai profil nélkül. | 
 | CpimIssuerTechnicalProfileReferenceId | Nem | A vezénylési lépés típusa `SendClaims`. Ez a tulajdonság határozza meg, hogy a jogcímszolgáltató jogcímszolgáltató-kibocsátja a jogkivonatot a függő entitás technikai profil azonosítója.  Ha hiányoznak, nem megbízható függő entitás jogkivonat jön létre. |
 
 

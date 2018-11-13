@@ -1,5 +1,5 @@
 ---
-title: Az Azure SQL Data Warehouse kiadási megjegyzések RSe 2018 |} A Microsoft Docs
+title: Az Azure SQL Data Warehouse kibocsátási megjegyzések 2018 szeptember |} A Microsoft Docs
 description: Kibocsátási megjegyzések az Azure SQL Data warehouse-hoz.
 services: sql-data-warehouse
 author: twounder
@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 10/08/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: f2fe1bc06f4122a1d27b22288784b3db167c300c
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: f8073fd746bc02c23efab914c45c61830942a677
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321699"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51577981"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-september-2018"></a>Mi az új Azure SQL Data warehouse? 2018. szeptember
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek a 2018 szeptember.

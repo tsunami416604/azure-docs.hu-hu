@@ -7,14 +7,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 11/12/2018
 ms.author: erhopf
-ms.openlocfilehash: be2f6c49a260477e907f1f8f29f64b9eb08e6926
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a8aa2600c8f3bcbc9d2ebc7f55ac0d2f038d8ecd
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038603"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566618"
 ---
 # <a name="speech-service-rest-apis"></a>Beszédfelismerési szolgáltatás REST API-k
 
@@ -36,11 +36,11 @@ Az API-t csak rövid beszédet támogat. Kérelmek legfeljebb 10 másodpercet, h
 
 Az alábbi paramétereket a lekérdezési karakterláncban a REST-kérés szerepelhet.
 
-|Paraméternév|Kötelező/választható|Jelentés|
+|Paraméter neve|Kötelező/választható|Jelentés|
 |-|-|-|
 |`language`|Szükséges|A nyelvet, hogy a azonosítóját. Lásd: [támogatott nyelvek](language-support.md#speech-to-text).|
-|`format`|Választható<br>alapértelmezett érték: `simple`|Eredményformátum, `simple` vagy `detailed`. Egyszerű eredmények tartalmazzák a `RecognitionStatus`, `DisplayText`, `Offset`, és időtartama. Részletes eredmények tartalmazzák a több jelöltek megbízhatósági értékeket és a négy különböző értük felelősséget.|
-|`profanity`|Választható<br>alapértelmezett érték: `masked`|A felismerési eredményeket cenzúrázása kezelésének módját. Előfordulhat, hogy `masked` (cenzúrázása cseréli csillagok), `removed` (eltávolítja az összes cenzúrázása), vagy `raw` (tartalmazza a vulgáris).
+|`format`|Optional<br>alapértelmezett érték: `simple`|Eredményformátum, `simple` vagy `detailed`. Egyszerű eredmények tartalmazzák a `RecognitionStatus`, `DisplayText`, `Offset`, és időtartama. Részletes eredmények tartalmazzák a több jelöltek megbízhatósági értékeket és a négy különböző értük felelősséget.|
+|`profanity`|Optional<br>alapértelmezett érték: `masked`|A felismerési eredményeket cenzúrázása kezelésének módját. Előfordulhat, hogy `masked` (cenzúrázása cseréli csillagok), `removed` (eltávolítja az összes cenzúrázása), vagy `raw` (tartalmazza a vulgáris).
 
 ### <a name="request-headers"></a>Kérelemfejlécek
 
@@ -127,14 +127,43 @@ HTTP-kód|Jelentés|Lehetséges ok
 
 ### <a name="json-response"></a>JSON-válasz
 
-Eredmények a rendszer JSON formátumban adja vissza. A `simple` formátum csak a következő legfelső szintű mezőket tartalmazza.
+Eredmények a rendszer JSON formátumban adja vissza. A lekérdezési paraméterek függően egy `simple` vagy `detailed` visszaadott formátum.
 
-|Mezőnév|Tartalom|
+#### <a name="the-simple-format"></a>A `simple` formátuma 
+
+Ez a formátum a következő legfelső szintű mezőket tartalmazza.
+
+|Mező neve|Tartalom|
 |-|-|
-|`RecognitionStatus`|Állapot, mint például `Success` sikeres felismeréséhez. Lásd a következő táblázatot.|
+|`RecognitionStatus`|Állapot, mint például `Success` sikeres felismeréséhez. Ez [tábla](rest-apis.md#recognitionstatus).|
 |`DisplayText`|A felismert szöveget után nagybetűk, írásjelek, más néven Inverz szöveg normalizálási (átalakítása a kimondott szöveg rövidebb űrlapok, például a 200-as "kétszáz" vagy "Dr. János""orvos Smith"), és a vulgáris maszkolási. Jelenleg csak a sikeres.|
 |`Offset`|Az idő (100 nanoszekundumos egységek), amelyen a felismert speech az audio-adatfolyam kezdődik.|
 |`Duration`|Az időtartam (100 nanoszekundumos egység) a felismert beszéd, a hang adatfolyamban.|
+
+#### <a name="the-detailed-format"></a>A `detailed` formátuma 
+
+Ez a formátum a következő legfelső szintű mezőket tartalmazza.
+
+|Mező neve|Tartalom|
+|-|-|
+|`RecognitionStatus`|Állapot, mint például `Success` sikeres felismeréséhez. Ez [tábla](rest-apis.md#recognition-status).|
+|`Offset`|Az idő (100 nanoszekundumos egységek), amelyen a felismert speech az audio-adatfolyam kezdődik.|
+|`Duration`|Az időtartam (100 nanoszekundumos egység) a felismert beszéd, a hang adatfolyamban.|
+|`NBest`|Alternatív értelmezéseket a azonos beszéd, a legkisebb valószínűséggel nagy valószínűséggel a rangsorolt listáját. Tekintse meg a [NBest leírás](rest-apis.md#nbest).|
+
+#### <a name="nbest"></a>NBest
+
+A `NBest` mező az alternatív értelmezéseket a azonos beszéd, ahol az a legvalószínűbb valószínűleg legalább listája. Az első bejegyzés ugyanaz, mint a fő felismerés eredményét. Mindegyik bejegyzés a következő mezőket tartalmazzák:
+
+|Mező neve|Tartalom|
+|-|-|
+|`Confidence`|A megbízhatósági pontszám a bejegyzés a 0,0 (nincs megbízhatóság) 1.0-s (teljes megbízhatósági)
+|`Lexical`|A felismert szöveget lexikai formájában: a tényleges szavak ismerhető fel.
+|`ITN`|Inverz szöveg normalizált ("kanonikus") formájában a felismert szöveget, phone számok, rövidítések ("orvos smith", "dr smith") és egyéb átalakítások alkalmazza.
+|`MaskedITN`| A vulgáris maszkolási alkalmazza, ha a rendszer kéri fel űrlapján.
+|`Display`| A megjelenítési formája a felismert szöveget, írásjelek és a nagybetűk hozzáadva.
+
+#### <a name="recognitionstatus"></a>RecognitionStatus
 
 A `RecognitionStatus` mező a következő értékeket tartalmazhat.
 
@@ -148,17 +177,6 @@ A `RecognitionStatus` mező a következő értékeket tartalmazhat.
 
 > [!NOTE]
 > Ha a hanganyag csak káromkodás tartalmaz, és a `profanity` lekérdezési paraméter értéke `remove`, a szolgáltatás nem ad vissza egy beszéd eredményt.
-
-
-A `detailed` formátum tartalmazza, ugyanazokat a mezőket a `simple` formájában, valamint az egy `NBest` mező. A `NBest` mező az alternatív értelmezéseket a azonos beszéd, ahol az a legvalószínűbb valószínűleg legalább listája. Az első bejegyzés ugyanaz, mint a fő felismerés eredményét. Mindegyik bejegyzés a következő mezőket tartalmazzák:
-
-|Mezőnév|Tartalom|
-|-|-|
-|`Confidence`|A megbízhatósági pontszám a bejegyzés a 0,0 (nincs megbízhatóság) 1.0-s (teljes megbízhatósági)
-|`Lexical`|A felismert szöveget lexikai formájában: a tényleges szavak ismerhető fel.
-|`ITN`|Inverz szöveg normalizált ("kanonikus") formájában a felismert szöveget, phone számok, rövidítések ("orvos smith", "dr smith") és egyéb átalakítások alkalmazza.
-|`MaskedITN`| A vulgáris maszkolási alkalmazza, ha a rendszer kéri fel űrlapján.
-|`Display`| A megjelenítési formája a felismert szöveget, írásjelek és a nagybetűk hozzáadva. Ugyanaz, mint a `DisplayText` a legfelső szintű eredményei.
 
 ### <a name="sample-responses"></a>Minta válaszok
 
@@ -199,7 +217,7 @@ Az alábbiakban található a tipikus választ `detailed` felismerése.
 }
 ```
 
-## <a name="text-to-speech"></a>Szöveg-hang transzformáció
+## <a name="text-to-speech"></a>Szövegfelolvasás
 
 Az alábbiakban a Speech service Text to Speech API a REST-végpontokat. A végpont, amely megfelel az előfizetés régiót használni.
 
@@ -239,7 +257,7 @@ A rendelkezésre álló hangkimeneti formátumok (`X-Microsoft-OutputFormat`) eg
 > [!NOTE]
 > Ha a kiválasztott hang- és kimeneti formátum különböző átviteli sebességet, a hanganyag szükség szerint módosítva a felbontása. Azonban nem támogatja a 24khz beszédhangot `audio-16khz-16kbps-mono-siren` és `riff-16khz-16kbps-mono-siren` kimeneti formátumot.
 
-### <a name="request-body"></a>Kérelem törzse
+### <a name="request-body"></a>A kérés törzse
 
 A szöveg beszéddé alakítandó legyen elküldve, a szervezet egy HTTP `POST` kérheti a vagy egyszerű szöveg (ASCII vagy UTF-8) vagy [Speech összefoglaló Markup Language](speech-synthesis-markup.md) (SSML) formátum (UTF-8). Egyszerű szöveges kérelmeket a szolgáltatás alapértelmezett beszédfelismerési és nyelvi használja. SSML, használjon egy másik küldése.
 

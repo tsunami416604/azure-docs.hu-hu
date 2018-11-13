@@ -2,18 +2,18 @@
 title: Az Azure IoT Edge-tanúsítványok ismertetése |} A Microsoft Docs
 description: További tudnivalók az Azure IoT Edge-tanúsítványok és a használatuk.
 author: stevebus
-manager: timlt
+manager: philmea
 ms.author: stevebus
 ms.date: 09/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: af1a14f87eaf20a7f49a8fc6112c4f3c7595f6bd
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 5ff85f2c9ef708c7cbac9be4933541f063a6c95b
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914366"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568590"
 ---
 # <a name="azure-iot-edge-certificate-usage-detail"></a>Az Azure IoT Edge-tanúsítvány felhasználási részletek
 

@@ -1,3 +1,16 @@
+---
+author: dlepow
+ms.service: container-service
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: danlep
+ms.openlocfilehash: 4f542f313b1c55ea68532efcbd6da780caae399f
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572231"
+---
 # <a name="securing-docker-containers-in-azure-container-service"></a>Docker-tárolók védelme az Azure Container Service-ben
 
 Ez a cikk az Azure Container Service-ben üzembe helyezett Docker-tárolók védelmével kapcsolatos szempontokat és javaslatokat tartalmazza. A szempontok nagy része általánosságban az Azure vagy egyéb környezetben üzembe helyezett Docker-tárolókra vonatkozik. 
@@ -49,7 +62,7 @@ Az egyes vezénylőkre vonatkozó további biztonsági információkat a követk
 
 * **Docker Swarm**: [Docker-biztonság](https://www.docker.com/docker-security)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Docker architektúrával és tárolók biztonságával kapcsolatos további információkért lásd: [a tárolóbiztonságot bemutató](https://www.docker.com/sites/default/files/WP_IntrotoContainerSecurity_08.19.2016.pdf) dokumentumot.
 

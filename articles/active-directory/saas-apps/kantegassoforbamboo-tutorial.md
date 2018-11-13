@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: ceab1293b5bd1fbae9088783651d0effa8c5a78a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5e6e534aaa833d7c66216896765d20cdcf50a461
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449002"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568200"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>Oktatóanyag: Azure Active Directory-integráció a bambusz Kantega SSO-val
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása a bambusz Kantega SSO-val, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Kantega SSO bambusz egyszeri bejelentkezés az előfizetés engedélyezve van
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az Azure AD-be a bambusz Kantega SSO-integráció konfigurálásához, hozzá ke
 
 **A bambusz Kantega SSO hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -263,7 +263,7 @@ Ahhoz, hogy az Azure AD-felhasználók bambusz jelentkezzen be, akkor ki kell é
 
     ![Alkalmazott hozzáadása](./media/kantegassoforbamboo-tutorial/user1.png) 
 
-1. Kattintson a **felhasználók**. Alatt a **felhasználó hozzáadása** területén feloldását kérte lépésekkel:
+1. Kattintson a **felhasználók**. Alatt a **felhasználó hozzáadása** részben, hajtsa végre a következő lépéseket:
 
     ![Alkalmazott hozzáadása](./media/kantegassoforbamboo-tutorial/user2.png) 
 

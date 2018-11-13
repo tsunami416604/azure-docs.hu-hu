@@ -2,19 +2,19 @@
 title: Az Azure IoT Edge Windows telepítése a Windows-tárolók |} A Microsoft Docs
 description: Az Azure IoT Edge telepítési utasításokat a Windows a Windows-tárolókkal
 author: kgremban
-manager: timlt
+manager: philmea
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: d85355b50bad9f05acc7da92d763d011e6f807b6
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: e6edc9d6e98c03b1a5847dc08bbaa3ad029aa673
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741079"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51565037"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-windows-containers"></a>Az Azure IoT Edge-futtatókörnyezet telepíthető Windows használható a Windows-tárolókkal
 

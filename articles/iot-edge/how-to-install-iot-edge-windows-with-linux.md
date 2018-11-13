@@ -2,19 +2,19 @@
 title: Az Azure IoT Edge telepítése Windows és Linux-tárolók |} A Microsoft Docs
 description: Az Azure IoT Edge telepítési utasításokat a Windows és Linux-tárolók
 author: kgremban
-manager: timlt
+manager: philmea
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: c389f904fb3ea21c9bcc538a62c7a866ef3b254d
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 7bae81f2f8b9ef9f7da45aed3bf8d7b6e15c9d0b
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739260"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568267"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows-to-use-with-linux-containers"></a>Telepítse az Azure IoT Edge-modul Windows, Linux-tárolók használata
 

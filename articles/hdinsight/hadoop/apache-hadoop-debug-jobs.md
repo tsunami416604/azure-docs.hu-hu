@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 694129fa39a84deac118c35da52a0617fe805d6c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7600ff1a11435ee079fef80ecfa5ad88de1b4750
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261149"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51569022"
 ---
 # <a name="analyze-hadoop-logs"></a>Hadoop-naplók elemzése
 
@@ -131,7 +131,7 @@ Az ebben a szakaszban részletezett hibaüzenetek segítségével a felhasznál�
 
 Bizonyos hibaüzenetek sikerült is látható az Azure Portalon kezelheti a HDInsight-fürtök használatakor. Egyéb hibaüzeneteit, esetleg előforduló, de vannak kevésbé részletes lehetséges ebben a környezetben a helyreigazító műveletek korlátozásai miatt. Más hibaüzenetek a környezetekben, ahol a megoldás az nyilvánvaló vannak megadva. 
 
-### <a id="AtleastOneSqlMetastoreMustBeProvided"></a>AtleastOneSqlMetastoreMustBeProvided
+### <a id="AtLeastOneSqlMetastoreMustBeProvided"></a>AtLeastOneSqlMetastoreMustBeProvided
 * **Leírás**: Adja meg az Azure SQL database adatokat legalább egy összetevő annak érdekében, hogy az egyéni beállítások használatához az Oozie és a Hive-metaadattárak.
 * **Kockázatcsökkentési**: A felhasználónak van szüksége, adjon meg egy érvényes SQL Azure-metaadattár, és ismételje meg a kérelmet.  
 

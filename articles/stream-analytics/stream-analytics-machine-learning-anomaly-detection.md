@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: a2bf6ef44a8698e802d9bbc25689988498c55f13
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 3f6d6f700ccf232dacb512f22dd1f9fb5d870740
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300268"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567043"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomáliadetektálás az Azure Stream Analytics szolgáltatásban
 
@@ -131,7 +131,7 @@ Tekintsük át részletesen a strangeness számítás (feltételezik, hogy a kor
    - Görbét, ha a görbét negatív  
    - 0, egyéb  
 
-A beérkező eseményben strangeness értékét számítja ki, ha egy martingale érték kiszámítása a strangeness érték alapján (lásd a [Machine Learning blog](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/) hogyan az martingale érték kiszámítása a részletekért). Ez az érték martingale szerint az anomáliadetektálási pontszám van retuned. A martingale érték lassan válaszul furcsa értékek, amely lehetővé teszi, hogy az érzékelő szórványos változások hatékony maradjon, és csökkenti a téves riasztások növekszik. A hasznos tulajdonsággal is rendelkezik: 
+A beérkező eseményben strangeness értékét számítja ki, ha egy martingale érték kiszámítása a strangeness érték alapján (lásd a [Machine Learning blog](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/) hogyan az martingale érték kiszámítása a részletekért). Az anomáliadetektálás pontszámot, a martingale értéket adja vissza. A martingale érték lassan válaszul furcsa értékek, amely lehetővé teszi, hogy az érzékelő szórványos változások hatékony maradjon, és csökkenti a téves riasztások növekszik. A hasznos tulajdonsággal is rendelkezik: 
 
 Mekkora valószínűséggel [t ilyen létezik, M<sub>t</sub> > λ] < 1/λ, ahol M<sub>t</sub> azonnali t martingale értékét, és λ valós értékű. Például, ha egy riasztás amikor M<sub>t</sub>> 100, majd a valószínűsége annak, téves 1/100-nál kisebb.  
 

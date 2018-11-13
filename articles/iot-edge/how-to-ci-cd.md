@@ -4,367 +4,186 @@ description: A folyamatos integráció és folyamatos üzembe helyezés az Azure
 author: shizn
 manager: ''
 ms.author: xshi
-ms.date: 06/27/2018
+ms.date: 11/12/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5099ca70503ba2ed4ae8f4969a9199816c4986fb
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: a110c0a938e56c8ac276e0efed22ea3af23f111a
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302571"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578535"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Folyamatos integráció és folyamatos üzembe helyezés az Azure IoT Edge-ben
 
 Ez a cikk bemutatja, hogyan lehet a a folyamatos integráció és folyamatos üzembe helyezési funkcióival az Azure DevOps-szolgáltatásokkal és a Microsoft Team Foundation Server (TFS) hozhat létre, tesztelheti és gyorsan és hatékonyan helyezhetnek üzembe alkalmazásokat az Azure IoT Edge-ben. 
 
 Ez a cikk azt ismerteti, hogyan lehet:
-* Hozzon létre, és ellenőrizze a minta az IoT Edge-megoldás tartalmazó egység teszteket.
+* Hozzon létre, és ellenőrizze a minta az IoT Edge-megoldás.
 * Az Azure IoT Edge-bővítmény telepítése az Azure fejlesztők és üzemeltetők számára.
-* Állítsa be a folyamatos integrációs (CI) a megoldás felépítéséhez és futtatni az egységteszteket.
+* Állítsa be a folyamatos integrációs (CI) a megoldás létrehozásához.
 * Állítsa be a folyamatos készregyártás (CD) a megoldás üzembe helyezése, és megtekintheti a válaszokat.
 
 A jelen cikkben ismertetett lépések 30 percet vesz igénybe.
 
 ![CI és CD-ről](./media/how-to-ci-cd/cd.png)
 
+
 ## <a name="create-a-sample-azure-iot-edge-solution-using-visual-studio-code"></a>Hozzon létre egy minta Azure IoT Edge megoldást a Visual Studio Code használatával
 
 Ebben a szakaszban létrehoz egy mintául szolgáló IoT Edge megoldást tartalmazó egységteszteket, amely az összeállítási folyamat részeként hajthat végre. Ebben a szakaszban található útmutatást követve, előtt hajtsa végre a [egyszerre több modul a Visual Studio Code egy IoT Edge-megoldás fejlesztése](tutorial-multiple-modules-in-vscode.md).
 
-1. A VS Code parancskatalógus, írja be, és futtassa a parancsot **Edge: IoT-Edge új megoldás**. Válassza ki a munkaterület-mappába, adja meg a megoldás nevét (alapértelmezés szerint ez **EdgeSolution**), és hozzon létre egy C# modul (**FilterModule**) Ez a megoldás első felhasználói modulként. Az első modulhoz meg kell adnia a Docker rendszerképadattárat is. Az alapértelmezett lemezképtárban alapul egy helyi Docker-beállításjegyzék (`localhost:5000/filtermodule`). Módosítania azt az Azure Container Registrybe (`<your container registry address>/filtermodule`) vagy a Docker Hub további folyamatos integrációhoz.
+1. A VS Code parancskatalógus, írja be, és futtassa a parancsot **Azure IoT Edge: IoT-Edge új megoldás**. Válassza ki a munkaterület-mappába, adja meg a megoldás nevét (alapértelmezés szerint ez **EdgeSolution**), és hozzon létre egy C# modul (**FilterModule**) Ez a megoldás első felhasználói modulként. Az első modulhoz meg kell adnia a Docker rendszerképadattárat is. Az alapértelmezett lemezképtárban alapul egy helyi Docker-beállításjegyzék (`localhost:5000/filtermodule`). Módosítania azt az Azure Container Registrybe (`<your container registry address>/filtermodule`) vagy a Docker Hub további folyamatos integrációhoz.
 
-    ![A telepítő ACR](./media/how-to-ci-cd/acr.png)
+    ![Állítsa be az ACR](./media/how-to-ci-cd/acr.png)
 
-2. A VS Code-ablak betölti az IoT Edge-megoldás munkaterülethez. Szükség esetén írja be és futtassa **Edge: hozzáadása IoT Edge-modul** további modulok hozzáadása. Van egy `modules` mappában egy `.vscode` mappát, és a egy központi telepítési jegyzékfájl sablon fájl a gyökérmappában. Minden felhasználó modul kód lesz a mappa almappái `modules`. A `deployment.template.json` az alkalmazásjegyzék központi telepítési sablon. Egyes paraméterek a fájlban a fog értelmezni a `module.json`, amely minden modul mappában van.
+2. A VS Code-ablak betölti az IoT Edge-megoldás munkaterülethez. Szükség esetén írja be és futtassa **Azure IoT Edge: hozzáadása IoT Edge-modul** további modulok hozzáadása. Van egy `modules` mappában egy `.vscode` mappát, és a egy központi telepítési jegyzékfájl sablon fájl a gyökérmappában. Minden felhasználó modul kód lesz a mappa almappái `modules`. A `deployment.template.json` az alkalmazásjegyzék központi telepítési sablon. Egyes paraméterek a fájlban a fog értelmezni a `module.json`, amely minden modul mappában van.
 
-3. A minta az IoT Edge-megoldást most már készen áll. Az alapértelmezett C# modul egy függőleges vonal üzenet-modult funkcionál. Az a `deployment.template.json`, látni fogja, ez a megoldás két lehetővé tevő modulokat tartalmaz. Az üzenet akkor jöjjön létre a `tempSensor` modult, és a rendszer kell közvetlenül adatcsatornán keresztül `FilterModule`, majd az IoT hubnak küldött. Cserélje le a teljes **Program.cs** fájlt az alábbi tartalmat. Ez a kódrészlet kapcsolatos további információkért olvassa el [hozzon létre egy IoT Edge C# modul projektet](https://docs.microsoft.com/azure/iot-edge/tutorial-csharp-module#create-an-iot-edge-module-project).
+3. A minta az IoT Edge-megoldást most már készen áll. Az alapértelmezett C# modul egy függőleges vonal üzenet-modult funkcionál. Az a `deployment.template.json`, látni fogja, ez a megoldás két lehetővé tevő modulokat tartalmaz. Az üzenet akkor jöjjön létre a `tempSensor` modult, és a rendszer kell közvetlenül adatcsatornán keresztül `FilterModule`, majd az IoT hubnak küldött.
 
-    ```csharp
-    namespace FilterModule
-    {
-        using System;
-        using System.IO;
-        using System.Runtime.InteropServices;
-        using System.Runtime.Loader;
-        using System.Security.Cryptography.X509Certificates;
-        using System.Text;
-        using System.Threading;
-        using System.Threading.Tasks;
-        using Microsoft.Azure.Devices.Client;
-        using Microsoft.Azure.Devices.Client.Transport.Mqtt;
-        using System.Collections.Generic;     // for KeyValuePair<>
-        using Microsoft.Azure.Devices.Shared; // for TwinCollection
-        using Newtonsoft.Json;                // for JsonConvert
-
-        public class MessageBody
-        {
-            public Machine machine { get; set; }
-            public Ambient ambient { get; set; }
-            public string timeCreated { get; set; }
-        }
-        public class Machine
-        {
-            public double temperature { get; set; }
-            public double pressure { get; set; }
-        }
-        public class Ambient
-        {
-            public double temperature { get; set; }
-            public int humidity { get; set; }
-        }
-
-        public class Program
-        {
-            static int counter;
-            static int temperatureThreshold { get; set; } = 25;
-
-            static void Main(string[] args)
-            {
-                Init().Wait();
-
-                // Wait until the app unloads or is cancelled
-                var cts = new CancellationTokenSource();
-                AssemblyLoadContext.Default.Unloading += (ctx) => cts.Cancel();
-                Console.CancelKeyPress += (sender, cpe) => cts.Cancel();
-                WhenCancelled(cts.Token).Wait();
-            }
-
-            /// <summary>
-            /// Handles cleanup operations when app is cancelled or unloads
-            /// </summary>
-            public static Task WhenCancelled(CancellationToken cancellationToken)
-            {
-                var tcs = new TaskCompletionSource<bool>();
-                cancellationToken.Register(s => ((TaskCompletionSource<bool>)s).SetResult(true), tcs);
-                return tcs.Task;
-            }
-
-            /// <summary>
-            /// Initializes the ModuleClient and sets up the callback to receive
-            /// messages containing temperature information
-            /// </summary>
-            static async Task Init()
-            {
-                MqttTransportSettings mqttSetting = new MqttTransportSettings(TransportType.Mqtt_Tcp_Only);
-                ITransportSettings[] settings = { mqttSetting };
-
-                // Open a connection to the Edge runtime
-                ModuleClient ioTHubModuleClient = await ModuleClient.CreateFromEnvironmentAsync(settings);
-                await ioTHubModuleClient.OpenAsync();
-                Console.WriteLine("IoT Hub module client initialized.");
-
-                // Register callback to be called when a message is received by the module
-                await ioTHubModuleClient.SetInputMessageHandlerAsync("input1", FilterMessage, ioTHubModuleClient);
-            }
-
-            /// <summary>
-            /// This method is called whenever the module is sent a message from the EdgeHub. 
-            /// It just pipe the messages without any change.
-            /// It prints all the incoming messages.
-            /// </summary>
-            static async Task<MessageResponse> FilterMessage(Message message, object userContext)
-            {
-                int counterValue = Interlocked.Increment(ref counter);
-
-                var moduleClient = userContext as ModuleClient;
-                if (moduleClient == null)
-                {
-                    throw new InvalidOperationException("UserContext doesn't contain " + "expected values");
-                }
-
-                byte[] messageBytes = message.GetBytes();
-                string messageString = Encoding.UTF8.GetString(messageBytes);
-                Console.WriteLine($"Received message: {counterValue}, Body: [{messageString}]");
-
-                var filteredMessage = filter(message);
-
-                if (filteredMessage != null && !string.IsNullOrEmpty(messageString))
-                {
-                    var pipeMessage = new Message(messageBytes);
-                    foreach (var prop in message.Properties)
-                    {
-                        pipeMessage.Properties.Add(prop.Key, prop.Value);
-                    }
-                    await moduleClient.SendEventAsync("output1", pipeMessage);
-                    Console.WriteLine("Received message sent");
-                }
-                return MessageResponse.Completed;
-            }
-
-            public static Message filter(Message message)
-            {
-                var counterValue = Interlocked.Increment(ref counter);
-
-                var messageBytes = message.GetBytes();
-                var messageString = Encoding.UTF8.GetString(messageBytes);
-                Console.WriteLine($"Received message {counterValue}: [{messageString}]");
-
-                // Get message body
-                var messageBody = JsonConvert.DeserializeObject<MessageBody>(messageString);
-
-                if (messageBody != null && messageBody.machine.temperature > temperatureThreshold)
-                {
-                    Console.WriteLine($"Machine temperature {messageBody.machine.temperature} " +
-                        $"exceeds threshold {temperatureThreshold}");
-                    var filteredMessage = new Message(messageBytes);
-                    foreach (KeyValuePair<string, string> prop in message.Properties)
-                    {
-                        filteredMessage.Properties.Add(prop.Key, prop.Value);
-                    }
-
-                    filteredMessage.Properties.Add("MessageType", "Alert");
-                    return filteredMessage;
-                }
-                return null;
-            }
-        }
-    }
-    ```
-
-4. Hozzon létre egy .net Core egység tesztelő projektet. A VS Code a Fájlkezelőben, hozzon létre egy új mappát **tests\FilterModuleTest** a munkaterületén. Ezt a VS Code integrált termináljában (**Ctrl + '**) futtassa a következő parancsokat, hozzon létre egy xunit tesztelő projektet, és hozzá hivatkozást a **FilterModule** projekt.
-
-    ```cmd
-    cd tests\FilterModuleTest
-    dotnet new xunit
-    dotnet add reference ../../modules/FilterModule/FilterModule.csproj
-    ```
-
-    ![Gyökérmappa-szerkezetében](./media/how-to-ci-cd/add-test-project.png)
-
-5. Az a **FilterModuleTest** mappa, fájl nevének frissítéséhez **UnitTest1.cs** való **FilterModuleTest.cs**. Válassza ki, és nyissa meg a **FilterModuleTest.cs**, cserélje le a teljes kódot az alábbi kódrészletet, amely tartalmazza a FilterModule projekthez az egységteszteket.
-
-    ```csharp
-    using Xunit;
-    using FilterModule;
-    using Newtonsoft.Json;
-    using System;
-    using System.IO;
-    using System.Runtime.InteropServices;
-    using System.Runtime.Loader;
-    using System.Security.Cryptography.X509Certificates;
-    using System.Text;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using Microsoft.Azure.Devices.Client;
-    using Microsoft.Azure.Devices.Client.Transport.Mqtt;
-
-    namespace FilterModuleTest
-    {
-        public class FilterModuleTest
-        {
-            [Fact]
-            public void filterLessThanThresholdTest()
-            {
-                var source = createMessage(25 - 1);
-                var result = Program.filter(source);
-                Assert.True(result == null);
-            }
-
-            [Fact]
-            public void filterMoreThanThresholdAlertPropertyTest()
-            {
-                var source = createMessage(25 + 1);
-                var result = Program.filter(source);
-                Assert.True(result.Properties["MessageType"] == "Alert");
-            }
-
-            [Fact]
-            public void filterMoreThanThresholdCopyPropertyTest()
-            {
-                var source = createMessage(25 + 1);
-                source.Properties.Add("customTestKey", "customTestValue");
-                var result = Program.filter(source);
-                Assert.True(result.Properties["customTestKey"] == "customTestValue");
-            }
-
-            private Message createMessage(int temperature)
-            {
-                var messageBody = createMessageBody(temperature);
-                var messageString = JsonConvert.SerializeObject(messageBody);
-                var messageBytes = Encoding.UTF8.GetBytes(messageString);
-                return new Message(messageBytes);
-            }
-
-            private MessageBody createMessageBody(int temperature)
-            {
-                var messageBody = new MessageBody
-                {
-                    machine = new Machine
-                    {
-                        temperature = temperature,
-                        pressure = 0
-                    },
-                    ambient = new Ambient
-                    {
-                        temperature = 0,
-                        humidity = 0
-                    },
-                    timeCreated = string.Format("{0:O}", DateTime.Now)
-                };
-
-                return messageBody;
-            }
-        }
-    }
-    ```
-
-6. Az integrált terminálon adhatja meg az alábbi parancsokat a helyileg futtatni az egységteszteket. 
-    ```cmd
-    dotnet test
-    ```
-
-    ![Test jednotky](./media/how-to-ci-cd/unit-test.png)
-
-7. Ezek a projektek mentse, majd ellenőrizze azt az Azure DevOps, vagy a TFS-adattárba.
+4. Ezek a projektek mentse, majd ellenőrizze azt az Azure DevOps, vagy a TFS-adattárba.
     
-
 > [!NOTE]
 > Az Azure-kódtárak használatával kapcsolatos további információkért lásd: [megosztani a kódot a Visual Studio és az Azure-Adattárakkal](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts).
 
 
-## <a name="configure-continuous-integration"></a>Folyamatos integráció konfigurálása
-Ebben a szakaszban létre fog hozni egy build folyamatot, amely automatikusan futnak, amikor ellenőrizheti a módosításokat a minta az IoT Edge-megoldás van beállítva, és automatikusan fogja végrehajtani, benne az egységteszteket.
+## <a name="configure-azure-pipeline-for-continuous-integration"></a>Folyamatos integráció konfigurálása Azure folyamat
+Ebben a szakaszban létre fog hozni egy build folyamatot, amely automatikusan futnak, amikor ellenőrizheti a módosításokat a minta az IoT Edge-megoldás van beállítva, és megjelenik a build naplók az Azure folyamat.
 
 1. Jelentkezzen be az Azure DevOps-szervezet (**https://**_-fiók_**. visualstudio.com**), és nyissa meg a projekt, ha bejelölte a mintaalkalmazást.
 
     ![Ellenőrizze a kód](./media/how-to-ci-cd/init-project.png)
 
-1. Látogasson el [Azure fejlesztők és üzemeltetők számára az Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy) DevOps Azure Marketplace-en. Kattintson a **regisztráljon ingyenesen** , és kövesse a varázsló az Azure DevOps-szervezet és a letöltés a TFS, a bővítmény telepítéséhez.
+1. Látogasson el [Azure folyamat az Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy) DevOps Azure Marketplace-en. Kattintson a **regisztráljon ingyenesen** , és kövesse a varázsló az Azure DevOps-szervezet és a letöltés a TFS, a bővítmény telepítéséhez.
 
     ![A bővítmény telepítése](./media/how-to-ci-cd/install-extension.png)
 
-1. Az Azure DevOps, nyissa meg a **hozhat létre &amp; kiadási** hub és az a **buildek** lapra, majd **+ új adatcsatorna**. Vagy, ha már rendelkezik hozhat létre folyamatokat, válassza ki a **+ új** gombra. 
+1. Az Azure DevOps, nyissa meg a **Build & Release** hub és az a **buildek** lapra, majd **+ új adatcsatorna**. Vagy, ha már rendelkezik hozhat létre folyamatokat, válassza ki a **+ új** gombra.
 
-    ![Új build](./media/how-to-ci-cd/add-new-build.png)
+    ![Új adatcsatorna](./media/how-to-ci-cd/add-new-build.png)
 
-1. Ha a rendszer kéri, válassza ki a **Azure DevOps Git** adatforrástípust; válassza ki a projektet, a tárházat és a fiókiroda, ahol a kód megtalálható. Válasszon **továbbra is**.
+1. Ha a rendszer kéri, válassza ki a **Azure DevOps Git** forrás típusa. Ezután válassza ki a projektet, a tárházat és a fiókiroda, ahol a kód megtalálható. Válasszon **továbbra is**.
 
-    ![Válassza ki az Azure DevOps-git](./media/how-to-ci-cd/select-vsts-git.png)
+    ![Válassza ki a git](./media/how-to-ci-cd/select-vsts-git.png)
 
-1. A **válasszon ki egy sablont** ablakban válassza a **egy üres folyamatot kezdődnie**.
+    A **válasszon ki egy sablont** ablakban válassza a **egy üres folyamatot kezdődnie**.
 
-    ![Üresen](./media/how-to-ci-cd/start-with-empty.png)
+    ![Válasszon ki egy sablont](./media/how-to-ci-cd/start-with-empty.png)
 
-1. Kattintson a **+** jobb oldalán található **1. fázis** feladat hozzáadása a fázis. Majd keresse meg és válassza ki **.Net Core**, és kattintson a **hozzáadása** szerenté felvenni ezt feladatot fázisa.
+1. A folyamat-szerkesztőben válassza ki az ügynökkészlet. 
+    
+    * Ha szeretné a modulok a Linux-tárolókhoz tartozó platform amd64 hozhat létre, válassza a **üzemeltetett Ubuntu 1604**
+    * Ha szeretné a modulok Windows-tárolókhoz tartozó platform amd64 hozhat létre, válassza a **Hosted VS2017** 
+    * Ha szeretné a modulok a Linux-tárolókhoz tartozó platform arm32v7 összeállítása kell beállítása a saját build-ügynök telepítése kattintva a **kezelés** gombra.
+    
+    ![A build-ügynök konfigurálása](./media/how-to-ci-cd/configure-env.png)
 
-    ![DotNet teszt](./media/how-to-ci-cd/add-dot-net-core.png)
+1. Az ügynök feladatot, kattintson a "+" két feladat hozzáadása a buildelési folyamat. A rendszer az elsőt **Azure IoT Edge**. A másikat pedig a **összeállítása összetevők közzététele**
+    
+    ![Tevékenységek hozzáadása](./media/how-to-ci-cd/add-tasks.png)
 
-1. Frissítés a **megjelenített név** való **dotnet teszt**, majd a a **parancs** legördülő listában válassza **tesztelése**. Adja hozzá az elérési úton a **elérési útját projekt(ek)**.
+1. Az első **Azure IoT Edge** feladat, frissítse a **megjelenített neve** való **modul létrehozása és leküldése**, és a a **művelet** legördülő listában válassza **És leküldéses**. Az a **Module.json fájl** szövegmezőbe elérési úton kell hozzáadnia. Válassza a **Tárolóregisztrációs adatbázis típusa**, ellenőrizze, hogy konfigurálja, és válassza ki ugyanazt a beállításjegyzékben a code(module.json). Ez a feladat létrehozása és leküldése az összes modult a megoldásban és közzététele a megadott tárolóregisztrációs adatbázisba. Ha a modul el lesz küldve különböző beállításjegyzékek, rendelkezhet több **modul létrehozása és leküldése** feladatokat. Az IoT Edge-megoldás nem áll a kód tárház gyökérkönyvtárában alatt esetben megadhat **elérési útja a peremhálózati megoldás alapvető** a builddefiníció.
+    
+    ![És leküldéses](./media/how-to-ci-cd/build-and-push.png)
 
-    ```
-    tests/FilterModuleTest/*.csproj
-    ```
+1. A **összeállítása összetevők közzététele** feladatban kell megadni az üzembe helyezési fájl az összeállítási feladat által létrehozott. Állítsa be a **közzététele elérési út** a "config/deployment.json". Ha **elérési útja a peremhálózati megoldás alapvető** az utolsó feladatban lesz az útvonalgyökér csatlakozni. Például, ha a peremhálózati megoldás gyökér elérési útja: ". / edgesolution", akkor a **közzététele elérési út** legyen ". / edgesolution/config/deployment.json". A `deployment.json` fájl felépítési idő alatt jön létre, így biztonságosan figyelmen kívül hagyja a szövegmezőben, hogy a piros hibajelző sorokat. 
 
-    ![Dotnet teszt konfigurálása](./media/how-to-ci-cd/dotnet-test.png)
-
-1. Kattintson a **+** jobb oldalán található **1. fázis** feladat hozzáadása a fázis. Majd keresse meg és válassza ki **Azure IoT Edge**, és kattintson a **Hozzáadás** gomb **kétszer** ezek a feladatok hozzáadása a fázis.
-
-    ![IoT Edge](./media/how-to-ci-cd/add-azure-iot-edge.png)
-
-1. Az első Azure IoT Edge-feladat frissítése a **megjelenített neve** való **modul létrehozása és leküldése**, majd a a **művelet** legördülő listában válassza **ésleküldéses**. Az a **Module.json fájl** szövegmezőbe elérési úton kell hozzáadnia. Válassza a **Tárolóregisztrációs adatbázis típusa**, ellenőrizze, hogy konfigurálja, és válassza ki ugyanazt a beállításjegyzékben a kódban. Ez a feladat létrehozása és leküldése az összes modult a megoldásban és közzététele a megadott tárolóregisztrációs adatbázisba. Ha a modul el lesz küldve különböző beállításjegyzékek, rendelkezhet több **modul létrehozása és leküldése** feladatokat.
-
-    ```
-    **/module.json
-    ```
-
-    ![A modul a Build és a leküldéses](./media/how-to-ci-cd/module-build-push.png)
-
-1. A második Azure IoT Edge-feladat, frissítse a **megjelenített név** való **üzembe helyezés az IoT Edge-eszköz**, majd a a **művelet** legördülő listában válassza **üzembe helyezés az IoT Edge eszköz**. Válassza ki az Azure-előfizetéshez, és adjon meg az IoT Hub nevére. Az IoT Edge üzemelő példány azonosítója és az üzembe helyezési prioritás is megadhat. Azt is beállíthatja egy vagy több eszközökre történő telepítéséhez. Ha több eszközre telepít, adja meg az eszköz célfeltétel szeretné. Például ha azt szeretné, eszköz-címkék használata a feltételt, frissítenie a megfelelő eszközök címkék az üzembe helyezés előtt. 
-
-    ![Edge-ben üzembe helyezése](./media/how-to-ci-cd/deploy-to-edge.png)
-
-1. Kattintson a **folyamat** , és győződjön meg arról, hogy a **fronta Agenta** van **üzemeltetett Linux előzetes**.
-
-    ![Konfigurálás](./media/how-to-ci-cd/configure-env.png)
+    ![Összetevők közzététele](./media/how-to-ci-cd/publish-build-artifacts.png)
 
 1. Nyissa meg a **eseményindítók** lapra, és kapcsolja be a **folyamatos integráció** eseményindító. Ellenőrizze, hogy az ág a kódot tartalmazó részét képezi.
 
-    ![Eseményindító](./media/how-to-ci-cd/configure-trigger.png)
+    ![Az eseményindító konfigurálása](./media/how-to-ci-cd/configure-trigger.png)
 
-1. Mentse az új buildelési folyamat, és a egy új build várólistára. Kattintson a **várólistára & mentése** gombra.
+    Mentse az új buildelési folyamat. Kattintson a **Mentés** gombra.
 
-1. Válassza ki a hivatkozásra kattintva a build megjelenő üzenet sávon. Vagy keresse fel a buildelési folyamat megtekintéséhez a legújabb várólistára helyezett fordítási feladatot.
 
-    ![Felépítés](./media/how-to-ci-cd/build-def.png)
+## <a name="configure-azure-pipeline-for-continuous-deployment"></a>Folyamatos üzembe helyezés konfigurálása Azure-folyamat
+Ebben a szakaszban létre fog hozni egy kiadási folyamatot, amely automatikusan futnak, amikor a buildelési folyamat csökken összetevők van beállítva, és a telepítési naplók az Azure-folyamat megjelenik.
 
-1. A létrehozás befejezése után, megnézzük az összesítést, mindegyik tevékenység és az élő naplófájlt eredményez. 
+1. Az a **kiadásokban** lapra, majd **+ új adatcsatorna**. Vagy, ha már rendelkezik kiadási folyamatokat, válassza ki a **+ új** gombra.  
+
+    ![Adja hozzá a kibocsátási folyamat](./media/how-to-ci-cd/add-release-pipeline.png)
+
+    A **válasszon ki egy sablont** ablakban válassza a **egy üres feladat elindításához.**
+
+    ![Az üres feladat indítása](./media/how-to-ci-cd/start-with-empty-job.png)
+
+2. A kiadási folyamathoz szeretné inicializálni egy szakaszhoz, majd: **1. fázis**. Nevezze át a **1. fázis** való **QA** és a egy tesztkörnyezetet, kezelje azt. Egy tipikus folyamatos üzembe helyezés folyamatban több szakaszok általában létezik, még a fejlesztési és üzemeltetési eljárások alapján is létrehozhat.
+
+    ![Szakasz létrehozása](./media/how-to-ci-cd/QA-env.png)
+
+3. A kiadás összekapcsolása a build-összetevőket. Kattintson a **Hozzáadás** összetevők területen.
+
+    ![Adjon hozzá összetevőket](./media/how-to-ci-cd/add-artifacts.png)  
     
-    ![Befejezve](./media/how-to-ci-cd/complete.png)
+    A **adjon hozzá egy összetevő oldalt**, forrástípus kiválasztása **összeállítása**. Ezután válassza ki a projektet, és létrehozott buildelési folyamat. Kattintson a **hozzáadása**.
 
-1. Lépjen vissza a VS Code, és ellenőrizze az IoT Hub device explorer. A peremhálózati eszköz, a modul el kell indulnia, fut (Győződjön meg arról, hogy a tárolójegyzék hitelesítő adatainak hozzáadott az Edge-futtatókörnyezet).
+    ![Az összetevő hozzáadása](./media/how-to-ci-cd/add-an-artifact.png)
 
-    ![Futó Edge](./media/how-to-ci-cd/edge-running.png)
+    Nyissa meg a folyamatos készregyártás eseményindítója, így az új kiadás jön létre minden alkalommal, amikor egy új létrehozást érhető el.
 
-## <a name="continuous-deployment-to-iot-edge-devices"></a>IoT Edge-eszközökön való folyamatos üzembe helyezés
+    ![Az eseményindító konfigurálása](./media/how-to-ci-cd/add-a-trigger.png)
 
-Folyamatos üzembe helyezés engedélyezése alapvetően kell állítsa be a CI-feladatok megfelelő IoT Edge-eszközök engedélyezése a **eseményindítók** a projektben az ágak esetén. A gyakorlatban egy klasszikus DevOps-projekt tartalmazza a két fő ág. A főág kell lennie a kód stabil verzióját, és a develop ág tartalmazza a legújabb kódmódosításokat. A csoport minden fejlesztőnek kell ágaztatnia a develop ág számára annak, vagy saját funkció ágat, ha a szolgáltatás indítása a kódot, ami azt jelenti, minden véglegesítés frissítése történik a develop ág ágazik. És minden egyes leküldött véglegesítési kell tesztelni a CI-rendszeren keresztül. Teljes körűen tesztelve helyileg a kódot, miután a szolgáltatás ág össze kell vonni a develop ágra keresztül irányuló lekéréses kérelmet. A kód a fejlesztői ág tesztelésekor a CI-rendszer keresztül egyesíthető főágba irányuló lekéréses kérelmet keresztül.
+4. Navigáljon a **QA fázis** és a feladatok konfigurálása az ebben a szakaszban.
 
-Tehát üzembe helyezése IoT Edge-eszközökön, ha nincsenek három fő környezetekben.
-- A szolgáltatás ágon szimulált IoT Edge-eszköz használata a fejlesztési számítógépén, vagy fizikai IoT Edge-eszköz üzembe helyezése.
-- Ág a fejlesztése, üzembe kell helyeznie egy fizikai IoT Edge-eszköz.
-- A master ággal a cél IoT Edge-eszközök a gyártási eszközöket kell lennie.
+    ![QA feladatok konfigurálása](./media/how-to-ci-cd/view-stage-tasks.png)
+
+   Üzembe helyezési feladata a platform és nagybetű nincs megkülönböztetve, ami azt jelenti, választhat **Hosted VS2017** vagy **üzemeltetett Ubuntu 1604** a a **ügynökkészlet** (vagy bármely más ügynök által felügyelt saját kezűleg). Kattintson a "+" és a egy feladat hozzáadása.
+
+    ![Tevékenységek hozzáadása a QA](./media/how-to-ci-cd/add-task-qa.png)
+
+5. Az Azure IoT Edge-feladatban, keresse meg a **művelet** legördülő listában válassza **üzembe helyezés az IoT Edge-eszköz**. Válassza ki a **Azure-előfizetés** bemeneti és a **az IoT Hub nevét**. Megadhat egy IoT Edge **üzemelő példány azonosítója** és az üzembe helyezés **prioritású**. Azt is beállíthatja egy vagy több eszközökre történő telepítéséhez. Ha telepíti, akkor **több eszközön**, meg kell adnia az eszköz **feltétel cél**. A cél feltétel nem egyezik meg az Edge-eszközök az IoT Hub egy szűrőt. Ha azt szeretné, eszköz-címkék használata a feltételt, az IoT Hub ikereszköz a megfelelő eszközök címkék frissíteni szeretné. Fel, hogy több IoT Edge eszközök ellátott, a "qa", majd a feladat konfigurációja az alábbi képernyőképen látható módon kell lennie. 
+
+    ![QA üzembe helyezése](./media/how-to-ci-cd/deploy-to-qa.png)
+
+    Mentse az új kiadási folyamatot. Kattintson a **Mentés** gombra. Majd **folyamat** térhet vissza a folyamatot.
+
+6. A második szakasz olyan éles környezetben. Szeretne hozzáadni egy új "ÉLES" szakaszt, is egyszerűen csak klónozza a "QA" szakaszban és a klónozott fázis átnevezése **PROD**,
+
+    ![Szakasz klónozása](./media/how-to-ci-cd/clone-stage.png)
+
+7. Konfigurálja a tevékenységek az éles környezetben. Fel, hogy több IoT Edge 'prod', a feladat-konfigurációkban frissítheti az "éles", és állítsa be az üzemelő példány azonosítója, mint "üzembe helyezése – éles" Célfeltétel ellátott eszközöket. Kattintson a **Mentés** gombra. Majd **folyamat** térhet vissza a folyamatot.
+    
+    ![Éles üzembe helyezése](./media/how-to-ci-cd/deploy-to-prod.png)
+
+7. Jelenleg a buildösszetevő is kiváltódik folyamatosan **QA** szakaszban, majd **PROD** szakaszban. De általában néhány vizsgálati eset a QA eszközökön, és manuálisan integrálnia kell hagynia a bits. Később a bits ÉLES környezetbe telepíti. Állítsa be az ÉLES szakaszt a következő: jóváhagyás.
+
+    1. Nyissa meg **központi telepítés előtti feltételek** beállítás panel.
+
+        ![Nyissa meg a központi telepítés előtti feltételek](./media/how-to-ci-cd/pre-deploy-conditions.png)    
+
+    2. Állítsa be **engedélyezve** a **központi telepítés előtti jóváhagyások**. És töltse ki a **jóváhagyók** bemeneti. Ezután kattintson a **Save** (Mentés) gombra.
+    
+        ![Beállítása feltételek](./media/how-to-ci-cd/set-pre-deployment-conditions.png)
+
+
+8. Most a kibocsátási folyamat a következőképpen be van állítva.
+
+    ![Kibocsátási folyamatok](./media/how-to-ci-cd/release-pipeline.png)
+
+    
+## <a name="verify-iot-edge-cicd-with-the-build-and-release-pipelines"></a>IoT Edge CI/CD kérdezze meg a build és a folyamatok felszabadítása
+
+Ebben a szakaszban a build, hogy működik a CI/CD-folyamat vált. Ellenőrizze az eredményt az Azure DevOps-portálon. 
+
+1. A fordítási feladatot indításához küldje le a véglegesítés forráskódraktárban vagy is aktiválása manuálisan. Is aktiválhatja a fordítási feladatot a buildelési folyamat kattintva a **várólista** gombra az alábbi képernyőképen látható módon.
+
+    ![Manuális eseményindító](./media/how-to-ci-cd/manual-trigger.png)
+
+2. Ha a buildelési folyamat sikeresen befejeződött, aktivál egy üzembehelyezési **QA** szakaszban. Keresse meg a folyamat-naplók létrehozása, és megjelenik a következő.
+
+    ![Buildnaplók](./media/how-to-ci-cd/build-logs.png)
+
+3. A sikeres üzembe helyezés **QA** szakaszban lép működésbe a jóváhagyó értesítést. Keresse meg a kibocsátási folyamat, láthatja, hogy a következő. 
+
+    ![Jóváhagyásra váró elemek](./media/how-to-ci-cd/pending-approval.png)
+
+
+4. Miután a jóváhagyó jóváhagyja ezt a módosítást, is üzembe helyezhető **PROD**.
+
+    ![Éles üzembe helyezése](./media/how-to-ci-cd/approve-and-deploy-to-prod.png)
+
 
 ## <a name="next-steps"></a>További lépések
 

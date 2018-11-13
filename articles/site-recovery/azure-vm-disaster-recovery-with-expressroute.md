@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: e7c63fba892f70ca0e18c1bffcda0782316b7ada
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: af57dc50dd156a3398c2c685e436d22ba3daea95
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211553"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567774"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Vészhelyreállítás az Azure virtuális gépek Azure ExpressRoute integrálása
 
@@ -185,7 +185,7 @@ Ebben a példában a következő topológiát használunk:
 - A helyreállítási Azure Délkelet-Ázsia.
 - Egy másodlagos ExpressRoute-kapcsolatcsoport kapcsolaton keresztül egy fiókpartner peremhálózati a szingapúri jön létre.
 
-Egy egyszerű topológiát használó egyetlen ExpressRoute-kapcsolatcsoport IP-címmel ugyanabban a feladatátvételt követően a [ebből a cikkből](site-recovery-retain-ip-azure-vm-failover.md#on-premises-to-azure-connectivity).
+Egy egyszerű topológiát használó egyetlen ExpressRoute-kapcsolatcsoport IP-címmel ugyanabban a feladatátvételt követően a [ebből a cikkből](site-recovery-retain-ip-azure-vm-failover.md#hybrid-resources-full-failover).
 
 ### <a name="example-steps"></a>Példa lépései
 Ebben a példában Itt a helyreállítás automatizálása, mit kell tennie:

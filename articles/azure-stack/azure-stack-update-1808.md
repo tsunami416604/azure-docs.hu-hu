@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2018
+ms.date: 11/12/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: a28168291c79dc54feb5ff572c609cdfb09a187f
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 37fb4c330004ce87afd900d9cafebb337261ec06
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515590"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568233"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 frissítése
 
@@ -219,6 +219,8 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
    - *Skálázási egység csomópont offline állapotban.*
    
   Futtassa a [Test-AzureStack](azure-stack-diagnostic-test.md) parancsmagot, hogy az infrastruktúra-szerepkör példányai állapotának ellenőrzése és egység csomópontok méretezése. Ha nincsenek problémák észlelhetők által [Test-AzureStack](azure-stack-diagnostic-test.md), ezek a riasztások figyelmen kívül hagyhatja. Ha problémát észlel, próbálja meg elindítani a szerepkörpéldány infrastruktúra vagy a csomópont a felügyeleti portálon vagy a PowerShell használatával.
+
+  A probléma a legújabb javított [1808 gyorsjavítás kiadási](https://support.microsoft.com/help/4471992/), ezért ügyeljen arra, hogy a gyorsjavítás telepítése, ha a probléma fennáll.
 
 <!-- 1264761 - IS ASDK --> 
 - A riasztásokat a **egészségügyi vezérlő** összetevő, amely rendelkezik a következő adatokat:  

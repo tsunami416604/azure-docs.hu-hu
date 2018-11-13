@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: fce96cf5be9e70863fd75e5d4b3045bc49f638cf
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 08991829c9c3d628b5028e04dbd4836647d94826
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432623"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567485"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Hozzáférés-vezérlés az Azure Data Lake Storage Gen1
 
@@ -128,9 +128,11 @@ Automatikusan az elem tulajdonosa lesz az a felhasználó, aki létrehozta az el
 
 A POSIX ACL-ekben minden felhasználó társítva van egy „elsődleges csoporttal”. Például az „alice” nevű felhasználó a „finance” csoportba tartozhat. Alice több csoporthoz is tartozhat, de egy csoport mindig ki van jelölve elsődleges csoportjaként. A POSIX-ben ha Alice létrehoz egy fájlt, a fájl tulajdonoscsoportja Alice elsődleges csoportja lesz, ami ebben az esetben a „finance”. A tulajdonos csoport egyéb esetben egyéb felhasználókhoz/csoportokhoz hozzárendelt engedélyekhez hasonlóan viselkedik.
 
-**Egy új fájl vagy mappa esetében a tulajdonoscsoport Assiging**
+Mivel nincs "elsődleges csoporttal" tartozó Data Lake Storage Gen1 a felhasználók számára, a tulajdonoscsoport hozzá van rendelve az alábbi.
 
-* **1. eset**: A gyökérmappa „/”. Ez a mappa a Data Lake Storage Gen1 fiók létrehozásakor jön létre. Ebben az esetben a tulajdonoscsoport azon felhasználó szerint lesz beállítva, aki létrehozta a fiókot.
+**Egy új fájl vagy mappa esetében a tulajdonoscsoport hozzárendelése**
+
+* **1. eset**: A gyökérmappa „/”. Ez a mappa a Data Lake Storage Gen1 fiók létrehozásakor jön létre. Ebben az esetben a tulajdonoscsoport értéke egy minden nulla GUID-Azonosítót.  Ez az érték nem engedélyezi a hozzáférést.  Egy helyőrző addig egy csoport van hozzárendelve.
 * **2. eset** (minden egyéb eset): Egy új elem létrehozásakor a tulajdonoscsoport a szülőmappából másolódik át.
 
 **A tulajdonoscsoport módosítása**
@@ -140,7 +142,9 @@ A tulajdonoscsoportot megváltoztathatja:
 * a tulajdonos, ha szintén tagja ennek a csoportnak.
 
 > [!NOTE]
-> A tulajdonoscsoport *nem* változtathatja meg egy fájl vagy mappa ACL-eit.  Bár a gyökérmappa esetében a tulajdonoscsoport azon felhasználó szerint lesz beállítva, aki létrehozta a fiókot (**1. eset**, fent), egyetlen felhasználói fiók nem jogosult engedélyeket kiadni a tulajdonoscsoporton keresztül.  Az engedélyt hozzárendelheti egy érvényes felhasználócsoporthoz, ha van ilyen.
+> A tulajdonoscsoport *nem* változtathatja meg egy fájl vagy mappa ACL-eit.
+>
+> Vagy az 2018 szeptember előtt létrehozott fiókok esetében a felhasználónak, aki létrehozta a fiókot a a gyökérmappa esetében a tulajdonoscsoport volt beállítva **1. eset**fenti.  Egyetlen felhasználói fiók érvénytelen nem jogosult engedélyeket kiadni a tulajdonoscsoporton keresztül, így nem engedélyekkel ezen alapbeállítás szerint. Ezt az engedélyt hozzárendelheti egy érvényes felhasználói csoport számára.
 
 
 ## <a name="access-check-algorithm"></a>Hozzáférés-ellenőrzési algoritmus

@@ -1,5 +1,5 @@
 ---
-title: Virtuális gép indítási elakadt a "Getting Windows kész. Ne kapcsolja ki a számítógépet. " az Azure-ban |} A Microsoft Docs
+title: 'A virtuális gép indítása elakadt a következő állapotban: „A Windows előkészítése. Ne kapcsolja ki a számítógépet.” az Azure-ban |} A Microsoft Docs'
 description: Vezessen be a lépéseket, mely a virtuális gép indítási elakadt a probléma elhárítása érdekében az "első Windows kész. Ne kapcsolja ki a számítógép".
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: e0ad7a8b083a72a9d3c630fa53601aa8fb6ad601
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 4a51bd5c16a569d0464d4456e57933a09f2fb285
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48862784"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567298"
 ---
-# <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>Virtuális gép indítási elakadt a "Getting Windows kész. Ne kapcsolja ki a számítógépet. " az Azure-ban
+# <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>A virtuális gép indítása elakadt a következő állapotban: „A Windows előkészítése. Ne kapcsolja ki a számítógépet.” az Azure-ban
 
-Ez a cikk segítséget nyújt a probléma megoldásához, ha a virtuális gép (VM) elakadt be a "Getting Windows kész. Ne kapcsolja ki a számítógépet. " szakasz indításakor.
+Ez a cikk segítséget nyújt a probléma megoldásához, ha a virtuális gép (VM) elakadt be a "Getting Windows kész. Ne kapcsolja ki a számítógépet.” szakasz indításakor.
 
 ## <a name="symptoms"></a>Probléma
 
@@ -189,7 +189,7 @@ $dataDiskResourceId = "/subscriptions/$subid/resourceGroups/$rgname/providers/Mi
 
 $vm = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize;
 
-#Uncomment to add Availabilty Set
+#Uncomment to add Availability Set
 #$avSet = Get-AzureRmAvailabilitySet –Name $avName –ResourceGroupName $rgName;
 #$vm = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $avSet.Id;
 
@@ -207,7 +207,7 @@ $vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDiskResouceId -name $osDiskN
 #Linux VM
 #$vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDiskResouceId -name $osDiskName -CreateOption Attach -Linux;
 
-#Uncomment to add additnal Data Disk
+#Uncomment to add additional Data Disk
 #Add-AzureRmVMDataDisk -VM $vm -ManagedDiskId $dataDiskResourceId -Name $dataDiskName -Caching None -DiskSizeInGB 1024 -Lun 0 -CreateOption Attach;
 
 New-AzureRmVM -ResourceGroupName $rgName -Location $loc -VM $vm;

@@ -8,12 +8,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/07/2018
-ms.openlocfilehash: 5709c71210b1e4ae4b2b0ccb959669a5ac6a3b1f
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: c1c550e6b99b9933b66c85e1de7e0a5cc2eb711d
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289721"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51564843"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli"></a>Létrehozása és kezelése olvasható replikák az Azure Database MySQL-hez az Azure CLI használatával
 
@@ -64,7 +64,7 @@ A `az mysql server replica stop` parancs paraméterei a következők:
 
 ## <a name="delete-a-replica-server"></a>Adatbázisreplika-kiszolgáló törlése
 
-Ehhez futtassa egy olvasási adatbázisreplika-kiszolgáló törlése végezhető a a **[az mysql server delete](/cli/azure/mysql/server#az_mysql_server_delete)** parancsot.
+Ehhez futtassa egy olvasási adatbázisreplika-kiszolgáló törlése végezhető a **[az mysql server delete](/cli/azure/mysql/server#az_mysql_server_delete)** parancsot.
 
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoreplicaserver

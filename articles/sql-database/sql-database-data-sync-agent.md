@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 11/08/2018
-ms.openlocfilehash: 9e873de5899f0cf84fe76b70ffb70b38638055ef
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.date: 11/12/2018
+ms.openlocfilehash: 08585b795b8c407bc66162a961fca92777f78076
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299894"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578621"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Az Azure SQL Data Sync adatok szinkronizációs ügynök
 
@@ -31,8 +31,14 @@ A Data Sync-ügynök letöltéséhez nyissa meg [SQL Azure Data Sync-ügynök](h
 
 A Data Sync-ügynök csendes telepítése a parancssorból, írja be az alábbi példához hasonló parancsot. Ellenőrizze a fájlnevet a letöltött .msi-fájl, és adja meg a saját értékeit a **TARGETDIR** és **SERVICEACCOUNT** argumentumokat.
 
+- Ha nem ad meg értéket **TARGETDIR**, az alapértelmezett érték `C:\Program Files (x86)\Microsoft SQL Data Sync 2.0`.
+
+- Ha megadja `LocalSystem` értékeként **SERVICEACCOUNT**, SQL Server-hitelesítés használata a csatlakozhat a helyszíni SQL Server-ügynök konfigurálásakor.
+
+- Ha egy tartományi felhasználói fiók vagy helyi felhasználói fiókot ad meg értéket **SERVICEACCOUNT**, is meg kell adnia a jelszót a **ServicePassword paraméter csak** argumentum. Például: `SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"`.
+
 ```cmd
-msiexec /i SQLDataSyncAgent-2.0--ENU.msi TARGETDIR="C:\Program Files (x86)\Microsoft SQL Data Sync 2.0" SERVICEACCOUNT="LocalSystem" /qn 
+msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\Microsoft SQL Data Sync 2.0" SERVICEACCOUNT="LocalSystem" /qn
 ```
 
 ## <a name="sync-data-with-sql-server-on-premises"></a>Adatok szinkronizálása a helyszíni SQL Server
@@ -91,10 +97,10 @@ Ha azt szeretné, a szolgáltatás jelenleg egy másik számítógépről futnak
 
 - **OK**. Számos forgatókönyv ezt a hibát okozhatja. Ez a hiba az adott hiba okának megállapításához tekintse meg a naplókat.
 
-- **Feloldási**. Keresse meg a konkrét okát, hozzon létre, és tekintse meg a Windows-telepítési naplókat. Bekapcsolhatja a naplózást, a parancssorba. LocalAgentHost.msi AgentServiceSetup.msi letöltött fájl esetén például hozzon létre, és vizsgálja meg a naplófájlokat a következő parancssorok használatával:
+- **Feloldási**. Keresse meg a konkrét okát, hozzon létre, és tekintse meg a Windows-telepítési naplókat. Bekapcsolhatja a naplózást, a parancssorba. Például, ha a letöltött telepítési fájlt `SQLDataSyncAgent-2.0-x86-ENU.msi`, hozzon létre, és vizsgálja meg a naplófájlokat a következő parancssorok használatával:
 
-    -   Telepítések: `msiexec.exe /i SQLDataSyncAgent-Preview-ENU.msi /l\*v LocalAgentSetup.InstallLog`
-    -   Az eltávolítása: `msiexec.exe /x SQLDataSyncAgent-se-ENU.msi /l\*v LocalAgentSetup.InstallLog`
+    -   Telepítések: `msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+    -   Az eltávolítása: `msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
 
     Windows Installer által végzett összes telepítés naplózását is bekapcsolhatja. A Microsoft Tudásbázis megfelelő cikkében [Windows Installer-naplózás engedélyezése](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging) kapcsolja be a naplózást, a Windows Installer egykattintásos megoldást kínál. A naplók helye is tartalmazza.
 
@@ -275,6 +281,8 @@ SqlDataSyncAgentCommand.exe -action "registerdatabase" -serverName localhost -da
 ```
 
 ### <a name="unregister-a-database"></a>Egy adatbázis regisztrációjának törlése
+
+Ez a parancs használatakor egy adatbázis regisztrációjának törlése, deprovisions az adatbázis teljes egészében. Ha az adatbázis többi szinkronizálási csoport tagja, ez a művelet megszakítja a szinkronizálási csoportok.
 
 #### <a name="usage"></a>Használat
 

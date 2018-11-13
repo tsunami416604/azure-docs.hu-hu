@@ -7,26 +7,26 @@ manager: shivamg
 keywords: az Azure backup server; számítási feladatok; védelme számítási feladatainak biztonsági mentése
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/10/2018
-ms.author: adigan
-ms.openlocfilehash: 67243aca9f5f578402ff79422783148af53798c6
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 11/12/2018
+ms.author: adigan; kasinh
+ms.openlocfilehash: 602b7b2a81ec727c9acaf86165867daa20370947
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38546017"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578722"
 ---
-# <a name="install-and-configure-azure-backup-server"></a>Azure Backup-kiszolgáló telepítése és konfigurálása
+# <a name="install-and-upgrade-azure-backup-server"></a>Telepítése és az Azure Backup Server frissítése
 > [!div class="op_single_selector"]
 > * [Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 > * [SCDPM](backup-azure-dpm-introduction.md)
 >
 >
 
-Ez a cikk ismerteti, hogyan készítse elő a környezetét, használja az Azure Backup Server számítási feladatainak biztonsági mentéséhez. Az Azure Backup Server alkalmazások és szolgáltatások, például a Hyper-V virtuális gépek, a Microsoft SQL Server, SharePoint Server, a Microsoft Exchange és a Windows ügyfelek védheti egyetlen konzolról.
+Ez a cikk bemutatja, hogyan készítse elő a környezetét a Microsoft Azure Backup Server (MABS) használó munkaterhelések biztonsági mentéséhez. Az Azure Backup Server alkalmazások és szolgáltatások, például a Hyper-V virtuális gépek, a Microsoft SQL Server, SharePoint Server, a Microsoft Exchange és a Windows ügyfelek védheti egyetlen konzolról.
 
 > [!NOTE]
-> Az Azure Backup Server most is a VMware virtuális gépek védelméhez és továbbfejlesztett biztonsági képességeket biztosít. A termék telepítése; az alábbi szakaszokban leírtak szerint 1. frissítést és a legújabb Azure Backup szolgáltatás ügynökének vonatkoznak. VMware-kiszolgálók az Azure Backup Server biztonsági mentésével kapcsolatos további tudnivalókért tekintse meg ezt a cikket [a VMware-kiszolgáló biztonsági mentése az Azure Backup Server](backup-azure-backup-server-vmware.md). Biztonsági képességeivel kapcsolatos további információkért tekintse meg [az Azure backup biztonsági funkciók dokumentációja](backup-azure-security-feature.md).
+> Az Azure Backup Server most is a VMware virtuális gépek védelméhez és továbbfejlesztett biztonsági képességeket biztosít. A termék telepítésére, az alábbi szakaszokban és a legújabb Azure Backup szolgáltatás ügynökének leírtak szerint. VMware-kiszolgálók az Azure Backup Server biztonsági mentésével kapcsolatos további tudnivalókért tekintse meg ezt a cikket [a VMware-kiszolgáló biztonsági mentése az Azure Backup Server](backup-azure-backup-server-vmware.md). Biztonsági képességeivel kapcsolatos további információkért tekintse meg [az Azure backup biztonsági funkciók dokumentációja](backup-azure-security-feature.md).
 >
 >
 
@@ -37,13 +37,13 @@ Infrastruktúra-szolgáltatás (IaaS) számítási feladatok, például az Azure
 >
 >
 
-Az Azure Backup Server a Data Protection Manager (DPM) örökli a számítási feladatok biztonsági funkciók. Ez a cikk a DPM dokumentációjának ismertetnek néhányat a megosztott funkciót hivatkozásokat tartalmaz. Bár az Azure Backup Server fájlmegosztások szinte ugyanazokat a funkciókat biztosítja, mint a DPM. Az Azure Backup Server nem létezik a szalagra történő biztonsági mentése, és nem integrálható a System Centerrel.
+Az Azure Backup Server a Data Protection Manager (DPM) örökli a számítási feladatok biztonsági funkciók. Ez a cikk a DPM dokumentációjának ismertetnek néhányat a megosztott funkciót hivatkozásokat tartalmaz. Bár az Azure Backup Server oszt meg ugyanazokat a funkciókat, mint a DPM számos, az Azure Backup Server nem létezik-e a szalagra történő biztonsági mentése, és nem integrálható a System Centerrel.
 
 ## <a name="choose-an-installation-platform"></a>Válasszon egy telepítési platform
 Az Azure Backup Server és az első lépést, hogy állítsa be a Windows Server. A kiszolgáló Azure-ban vagy a helyszínen is lehet.
 
 ### <a name="using-a-server-in-azure"></a>Az Azure-kiszolgáló használatával
-Ha a kiszolgáló Azure Backup Server futtatásához, ajánlott a katalógus-lemezkép a Windows Server 2012 R2 Datacenter vagy a Windows Server 2016 Datacenter megkezdése. A cikk [az első Windows virtuális gép létrehozása az Azure Portalon](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), nyújt segítséget a javasolt virtuális gép az Azure-ban – első lépések akkor is, ha soha nem használta az Azure-t. A kiszolgáló virtuális gép (VM) vonatkozó ajánlott minimális követelményeknek kell: két maggal és 3,5 GB RAM-MAL rendelkező Standard A2.
+Ha a kiszolgáló Azure Backup Server futtatásához, ajánlott a katalógus-lemezkép a Windows Server 2012 R2 Datacenter, Windows Server 2016 Datacenter vagy Windows Server 2019 Datacenter megkezdése. A cikk [az első Windows virtuális gép létrehozása az Azure Portalon](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), nyújt segítséget a javasolt virtuális gép az Azure-ban – első lépések akkor is, ha soha nem használta az Azure-t. A kiszolgáló virtuális gép (VM) vonatkozó ajánlott minimális követelményeknek kell: két maggal és 3,5 GB RAM-MAL rendelkező Standard A2.
 
 Az Azure Backup Server számítási feladatok védelmét már sok apró sajátosságaival. A cikk [DPM telepítése Azure virtuális gépként](https://technet.microsoft.com/library/jj852163.aspx), segít ismertetik ezeket a vállalatánál. A gép üzembe helyezése előtt olvassa el ebben a cikkben teljesen.
 
@@ -52,7 +52,8 @@ Ha nem szeretné, hogy a kiszolgáló futtatása az Azure-ban, a Hyper-V virtuá
 
 | Operációs rendszer | Platform | SKU |
 |:--- | --- |:--- |
-| A Windows Server 2016 és a legújabb szervizcsomagok |64 bit |Standard, Datacenter, Essentials (MABS v2 onwards) |
+| A Windows Server 2019 |64 bit |Standard, Datacenter, Essentials (MABS v3-as és újabb verziók) |
+| A Windows Server 2016 és a legújabb szervizcsomagok |64 bit |Standard, Datacenter, Essentials (MABS V2 és újabb verziók) |
 | Windows Server 2012 R2 és a legújabb szervizcsomagok |64 bit |Standard, Datacenter, Foundation |
 | Windows Server 2012 és a legújabb szervizcsomagok |64 bit |Datacenter, Foundation, Standard |
 | Windows Storage Server 2012 R2 és a legújabb szervizcsomagok |64 bit |Standard, Workgroup |
@@ -157,16 +158,30 @@ Miután a kinyerési folyamat befejezése után, jelölje be a jelölőnégyzete
 2. Az üdvözlőképernyőn kattintson a **tovább** gombra. Ezzel továbblép a *előfeltétel-ellenőrzési* szakaszban. Ezen a képernyőn kattintson a **ellenőrizze** meghatározni, ha a hardver- és az Azure Backup Server teljesült. Ha minden előfeltétel a sikeresen teljesül, látni fogja a egy üzenet jelzi, hogy a gép megfelel-e a követelményeknek. Kattintson a **tovább** gombra.
 
     ![Az Azure Backup Server – Üdvözöljük és az Előfeltételek ellenőrzése](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
-3. A Microsoft Azure Backup Server szükséges SQL Server Standard. Az Azure Backup Server-telepítési csomag emellett tartalmaz csomagolt a megfelelő SQL Server bináris fájlokat, akkor szükséges, ha nem szeretné használni a saját SQL. -Es verziótól kezdve egy új Azure Backup Server telepítése során ki kell választania a beállítás **ezzel a beállítással új SQL Server-példány telepítése** , és kattintson a **ellenőrzés és telepítés** gombra. Ha az előfeltételek telepítése sikeresen megtörtént, kattintson **tovább**.
+3. A Microsoft Azure Backup Server szükséges SQL Server Enterprise. Az Azure Backup Server-telepítési csomag emellett tartalmaz csomagolt a megfelelő SQL Server bináris fájlokat, akkor szükséges, ha nem szeretné használni a saját SQL. -Es verziótól kezdve egy új Azure Backup Server telepítése során ki kell választania a beállítás **ezzel a beállítással új SQL Server-példány telepítése** , és kattintson a **ellenőrzés és telepítés** gombra. Ha az előfeltételek telepítése sikeresen megtörtént, kattintson **tovább**.
 
     ![Az Azure Backup Server – SQL ellenőrzése](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
-    Ha hiba történik, a javaslatra kattintva indítsa újra a gépet, ehhez, és kattintson a **újbóli ellenőrzés**.
+    Ha hiba történik, a javaslatra kattintva indítsa újra a gépet, ehhez, és kattintson a **újbóli ellenőrzés**. Bármely SQL-konfigurációs problémák esetén az SQL-irányelvek szerint az SQL újrakonfigurálása, és ismételje meg telepíteni vagy frissíteni a MABS a meglévő SQL-példány használatával.
 
    > [!NOTE]
-   > Az Azure Backup Server nem működik a távoli SQL Server-példányt. Az Azure Backup Server által használt példány kell lennie a helyi.
-   >
-   >
+   > Az Azure Backup Server nem működik a távoli SQL Server-példányt. Az Azure Backup Server által használt példány kell lennie a helyi. Abban az esetben, ha egy meglévő SQL server a MABS használ, a MABS-telepítő csak támogatja-e a használatát *elnevezett példányokkal* az SQL server.
+
+   **Kézi konfigurálás**
+
+    > [!IMPORTANT]
+
+    > Konfigurálás után a MABS, manuálisan konfigurálásakor ügyeljen arra, hogy *IsInitialized* SSRS tulajdonsága *igaz*. Ha ez igaz értékre van beállítva, MABS feltételezi, hogy az SSRS már konfigurálva van, és kihagyja az SSRS konfigurációja.
+
+    > Az SSRS konfigurációja a következő értékeket használja:
+
+      >- Szolgáltatásfiók: A beépített fiók használata"hálózati szolgáltatás kell lennie
+    >- Web Service URL-címe: 'A virtuális könyvtár' ReportServer_MSDPMINSTANCE kell lennie
+    > - Adatbázis: DatabaseName ReportServer$ MSDPMINSTANCE kell lennie
+    > - Webes portál URL-címe: 'A virtuális könyvtár' Reports_MSDPMINSTANCE kell lennie
+
+    > [További](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) SSRS konfigurálásával kapcsolatban.
+
 4. A Microsoft Azure Backup server-fájlok a telepítés helyét adja meg, és kattintson a **tovább**.
 
     ![A Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
@@ -198,12 +213,58 @@ Miután a kinyerési folyamat befejezése után, jelölje be a jelölőnégyzete
 A telepítési lépés befejezése után a termék asztali ikonok létrejön is. Csak az ikonra duplán kattintva indítsa el a termék.
 
 ### <a name="add-backup-storage"></a>Backup storage hozzáadása
-Az első biztonsági másolat az Azure Backup Server géphez csatolt storage másolatok. Lemezek hozzáadásával kapcsolatos további információkért lásd: [konfigurálhatók a tárolókészletek és a lemezes tárolás](https://technet.microsoft.com/library/hh758075.aspx).
+Az első biztonsági másolat az Azure Backup Server géphez csatolt storage másolatok. Lemezek hozzáadásával kapcsolatos további információkért lásd: [konfigurálhatók a tárolókészletek és a lemezes tárolás](https://docs.microsoft.com/azure/backup/backup-mabs-add-storage).
 
 > [!NOTE]
 > Adja hozzá a biztonsági mentési tár, még akkor is, ha azt tervezi, hogy adatokat küldjön az Azure-bA kell. Az Azure Backup Server aktuális architektúra, az Azure Backup-tároló tárolja a *második* közben a helyi tárhely az adatok másolatát tárolja az első (és kötelező) a biztonsági másolat.
 >
 >
+
+### <a name="install-and-update-the-data-protection-manager-protection-agent"></a>Telepítése és a Data Protection Manager védelmi ügynök frissítése
+
+MABS használja a System Center Data Protection Manager védelmi ügynököt. [A következő lépéseket](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-1807) a védelmi ügynök telepítése a védelem kiszolgálókon.
+
+A következő szakaszok ismertetik az ügyfélszámítógépek védelmi ügynökök frissítése.
+
+1. A Backup Server felügyeleti konzolon válassza ki a **felügyeleti** > **ügynökök**.
+
+2. A kijelzőpanelen válassza ki az ügyfélszámítógépek, amelynek meg szeretné frissíteni a védelmi ügynök.
+
+  > [!NOTE]
+  > A **Ügynökfrissítések** oszlopban látható, ha a védelmi ügynök frissítése elérhető minden védett számítógépen. Az a **műveletek** panelen a **frissítés** művelet érhető el, csak ha egy védett számítógép van kiválasztva, és frissítések érhetők el.
+  >
+  >
+
+3. A kiválasztott számítógépeken a frissített védelmi ügynök telepítése a **műveletek** ablaktáblán válassza előbb **frissítés**.
+
+4. Az ügyfélszámítógép, amely nem csatlakozik a hálózathoz, amíg a számítógép csatlakozik a hálózathoz a **ügynök állapota** az oszlopban látható egy állapotát **frissítés függőben**.
+
+  Miután egy ügyfélszámítógép csatlakozik a hálózathoz, a **Ügynökfrissítések** az ügyfélszámítógép az oszlopban látható egy állapotát **Updating**.
+
+## <a name="move-mabs-to-a-new-server"></a>Helyezze át a MABS egy új kiszolgálóra
+
+Ha át kell helyeznie a MABS egy új kiszolgálóra a tároló megőrzése az alábbiakban a lépéseket. Ez csak akkor, ha minden adat van a Modern Backup Storage elvégezhető.
+
+
+  > [!IMPORTANT]
+  > - Az új kiszolgáló nevét a neve megegyezik az eredeti Azure Backup Server-példányra kell lennie. Az Azure Backup Server új példányának neve nem módosítható, ha azt szeretné használni a korábbi tárolókészlet és a Data Protection Manager-adatbázis helyreállítási pontok megőrzése.
+  > - A Data Protection Manager-adatbázis biztonsági másolatának kell rendelkeznie. Állítsa vissza az adatbázist kell.
+
+1. A kijelzőpanelen válassza ki az ügyfélszámítógépek, amelynek meg szeretné frissíteni a védelmi ügynök.
+2. Leállítása az eredeti Azure backup server, vagy ki az átviteli állapotúra.
+3. Állítsa vissza a számítógépfiókot az active Directoryban.
+4. Telepítse a Server 2016 új gépen, és nevezze el a gép neve megegyezik az eredeti Azure Backup server.
+5. A tartományhoz
+6. Telepítse az Azure Backup server V2 vagy újabb (helyezze át a DPM tárolókészlet-lemezeit a régi kiszolgáló és az importálás)
+7. Állítsa vissza a dpmdb-t 1. lépésében foglalt.
+8. A tároló csatlakoztatása az eredeti biztonsági mentési kiszolgálóról az új kiszolgálóra.
+9. Az SQL állítsa vissza a dpmdb-t
+10. A rendszergazdai parancssorból az új kiszolgáló cd, a Microsoft Azure Backup telepítése a hely és a bin mappa
+
+Elérési út példa: C:\windows\system32 > cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\
+az Azure backup futtassa a DPMSYNC-SYNC
+
+10) Futtassa a DPMSYNC-SYNC Megjegyzés felvett új lemezeket a DPM tárolókészlethez áthelyezése a régiek helyett majd futtassa a DPMSYNC - reallocatereplica parancsot
 
 ## <a name="network-connectivity"></a>Hálózati kapcsolat
 Az Azure Backup Server az Azure Backup szolgáltatás a termék sikeres működéséhez kapcsolat szükséges. Ellenőrizze, hogy a gépe képes az Azure-ba, használja a ```Get-DPMCloudConnection``` parancsmagot az Azure Backup Server PowerShell-konzolon. Ha a parancsmag kimenete értéke igaz, akkor a kapcsolat létezik, ellenkező esetben nincs kapcsolat.
@@ -238,12 +299,45 @@ Az Azure-előfizetéssel is meg lehet egy *lejárt* vagy *megszüntetett* állap
 * A *megszüntetett* előfizetés elveszti a funkciót, a rendszer eltávolította a következő időszakra vonatkozóan. Bekapcsolása folyamatban lévő *aktív*, a termék biztonsági mentési és visszaállítási funkciójának újjáélesztett van. A biztonsági mentés a helyi lemezen lévő adatokat is lekérhetők Ha elég nagy megőrzési idővel rendelkező tartották. Azonban a biztonsági mentési adatok az Azure-ban végérvényesen elvesznek az előfizetés kerül, ha a *megszüntetett* állapota.
 * Egy *lejárt* előfizetés csak elveszíti a funkciót, amíg nem lett végrehajtva *aktív* újra. Bármely, az időszak, amely az előfizetés volt ütemezett biztonsági mentések *lejárt* nem fog futni.
 
+## <a name="upgrade-mabs"></a>MABS frissítése
+Az alábbi eljárásokat követve frissíthet a MABS.
+
+### <a name="upgrade-from-mabs-v2-to-v3"></a>Frissítés a MABS V2 a V3
+
+> [!NOTE]
+
+> MABS V2 nem áll a MABS V3 telepítésének előfeltétele. Azonban frissítheti a MABS V3 csak a MABS V2.
+
+A következő lépések segítségével frissítse a MABS:
+
+1. Frissítse MABS V2 MABS v3-as, frissítse az operációs rendszer Windows Server 2016 vagy Windows Server 2019 szükség esetén.
+
+2.  Frissítse a kiszolgálót. A lépések hasonlóak [telepítési](#install-and-upgrade-azure-backup-server). Az SQL-beállítások, kap egy beállítást, az SQL-példány frissítése SQL 2017-ben a, vagy használja a saját példányát az SQL server 2017.
+
+  > [!NOTE]
+
+  > Ne lépjen ki az SQL-példány frissítés alatt áll, kilép fogja eltávolítani az SQL-jelentéskészítési példány, és ezért újból frissíteni a MABS tett kísérlet sikertelen lesz.
+
+  Nagyon fontos szempont, vegye figyelembe:
+
+  > [!IMPORTANT]
+
+  >  SQL 2017-verziófrissítés részeként a Microsoft SQL titkosítási kulcsok biztonsági mentése, és távolítsa el a jelentéskészítési szolgáltatási. Az SQL server frissítése után jelentéskészítési service(14.0.6827.4788) telepítve van, és a titkosítási kulcsok vissza vannak állítva.
+
+3. Frissítse a védelmi ügynököket a védett kiszolgálókon.
+4. Biztonsági mentések továbbra is az üzemi kiszolgálók újraindítása nélkül.
+5. Megkezdheti az adatok védelmének most. Ha frissít a Modern Backup Storage védelmét, miközben azt is beállíthatja a köteteken lévő biztonsági másolatok tárolására, és keressen kiosztott terület alatt szeretné. [További információk](backup-mabs-add-storage.md).
+
+> [!NOTE]
+
+> Ha frissít a MABS V1, V2, győződjön meg arról, hogy az operációs rendszer Windows Server 2016 vagy Windows Server 2012 R2. Kihasználhatja az új funkciók, például a System Center 2016 Data Protection Manager Modern biztonsági mentési tár, Backup Server V2 telepíteni kell a Windows Server 2016-ban. Előtt, frissítsen, vagy telepítse a Backup Server V2, olvassa el a [telepítésének előfeltételei](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites) a MABS vonatkozik.
+
 ## <a name="troubleshooting"></a>Hibaelhárítás
 Ha a Microsoft Azure Backup server hibákkal meghiúsul, a telepítési fázis (vagy biztonsági mentése és visszaállítása) során, tekintse meg a [hiba kódok dokumentum](https://support.microsoft.com/kb/3041338) további információt.
 Emellett olvassa el [Azure Backup kapcsolatos gyakori kérdések](backup-azure-backup-faq.md)
 
 ## <a name="next-steps"></a>További lépések
-Részletes információkat szerezhet a [a környezet előkészítése a DPM](https://technet.microsoft.com/library/hh758176.aspx) a Microsoft TechNet webhelyen. Támogatott konfigurációk, amelyen az Azure Backup Server telepíthető és használható kapcsolatos információkat is tartalmaz.
+Részletes információkat szerezhet a [a környezet előkészítése a DPM](https://technet.microsoft.com/library/hh758176.aspx) a Microsoft TechNet webhelyen. Támogatott konfigurációk, amelyen az Azure Backup Server telepíthető és használható kapcsolatos információkat is tartalmaz. Használhat egy sorozatát [PowerShell-parancsmag](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016) különféle műveletek végrehajtásához.
 
 Ezek a cikkek segítségével mélyebb betekintést nyerni a munkaterhelések védelme a Microsoft Azure Backup server használatával.
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 92328ffd8b6dbbb2be82bc70352e19f3097eb2a7
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 2d11283ccf58fdc356742d6f4042afd15bf6faab
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637731"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568642"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -50,7 +50,7 @@ A **takar** elem a következő elemeket tartalmazza:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| displayName | 0:1 | Különböző képernyőkön felhasználók számára megjelenő cím. Az érték lehet [honosított](localization.md). |
+| Megjelenítendő név | 0:1 | Különböző képernyőkön felhasználók számára megjelenő cím. Az érték lehet [honosított](localization.md). |
 | Adattípus | 0:1 | A jogcím típusa. A logikai érték, date, dateTime, int, hosszú adattípusok, string, Publishedresources, alternativeSecurityIdCollection is használható. |
 | DefaultPartnerClaimTypes | 0:1 | A partner alapértelmezett jogcímtípusok megadott protokoll használatára. Az érték felülírható legyen a a **PartnerClaimType** megadott a **bemeneti jogcím** vagy **kimeneti jogcím** elemeket. Ez az elem használatával adja meg egy protokoll alapértelmezett nevét.  |
 | Maszk | 0:1 | Egy nem kötelező karakterlánc maszkolás karaktereket is alkalmazható a jogcím megjelenítésekor. Ha például a telefon száma 324-232-4343 is maszkolva XXX-XXX-4343. |
@@ -109,7 +109,7 @@ A **maszk** elem tartalmazza a következő attribútumokat:
 | Típus | Igen | Az igényt maszk típusa. A lehetséges értékek: `Simple` vagy `Regex`. A `Simple` érték azt jelzi, hogy egy egyszerű szöveges maszkot a vezető része egy karakterlánc jogcím van hozzárendelve. A `Regex` érték azt jelzi, hogy a teljes karakterlánc jogcím van hozzárendelve egy reguláris kifejezést.  Ha a `Regex` érték van megadva, nem kötelező attribútum kell definiálni a reguláris kifejezés használata. |
 | reguláris kifejezés | Nem | Ha **típus** értékre van állítva `Regex`, adja meg a reguláris kifejezés használata.
 
-A feloldását kérte példa konfigurálja egy **PhoneNumber** jogcím a `Simple` maszk:
+Ez a példa konfigurálja egy **PhoneNumber** jogcím a `Simple` maszk:
 
 ```XML
 <ClaimType Id="PhoneNumber">
@@ -124,7 +124,7 @@ Az identitás-kezelőfelületi keretrendszer rendereli a telefonszám során az 
 
 ![Használatával jogcím maszkkal rendelkező típusa](./media/claimsschema/mask.png)
 
-A feloldását kérte példa konfigurálja egy **AlternateEmail** jogcím a `Regex` maszk:
+Ez a példa konfigurálja egy **AlternateEmail** jogcím a `Regex` maszk:
 
 ```XML
 <ClaimType Id="AlternateEmail">

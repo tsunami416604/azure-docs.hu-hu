@@ -1,3 +1,16 @@
+---
+author: dlepow
+ms.service: container-service
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: danlep
+ms.openlocfilehash: 7dee92ffd183b852d48bcb150ba3c1ba8d5d0380
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51569051"
+---
 # <a name="make-a-remote-connection-to-a-kubernetes-dcos-or-docker-swarm-cluster"></a>Távoli kapcsolat létrehozása egy Kubernetes-, DC/OS- vagy Docker Swarm-fürttel
 Miután létrehozott egy Azure Container Service-fürtöt, csatlakoznia kell hozzá a számítási feladatok üzembe helyezéséhez és felügyeletéhez. Ez a cikk leírja, hogyan csatlakozhat a fürt fő virtuális gépéhez egy távoli számítógépről. 
 

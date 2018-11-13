@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: cf94ba73d57763f5e05ed9b33d10bb335103400a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a1b4565d4875b60ce36d74f8c99e4c7d79999c36
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946391"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578263"
 ---
 # <a name="an-introduction-to-hadoop-security-with-enterprise-security-package"></a>Bevezetés a Hadoop-biztonság, a vállalati biztonsági csomaggal
 
@@ -25,7 +25,7 @@ Létrehozhat egy HDInsight-fürtöt a vállalati biztonsági csomag (ESP), amely
 A vállalati rendszergazda konfigurálhatja szerepköralapú hozzáférés-vezérlés (RBAC) a Hive-biztonság használatával [Apache Ranger](http://hortonworks.com/apache/ranger/). RBAC konfigurálása korlátozza az adatok elérése csak akkor szükséges. Végül a rendszergazda naplózhatja az alkalmazottak és bármely változtatást a hozzáférés-vezérlési házirendeket adatelérési. A rendszergazda egy magas szintű a vállalati erőforrásokat, majd érheti el.
 
 > [!NOTE]
-> Az ebben a cikkben leírt új funkciók érhetők el a következő típusú fürtöket csak az előzetes verzióban érhető el: Hadoop, Spark- és interaktív lekérdezés. Az Oozie engedélyezve van a ESP-fürtökön. Hozzáférhet az Oozie webes felület, engedélyezze a felhasználók [tunneling](../hdinsight-linux-ambari-ssh-tunnel.md).
+> Az Oozie engedélyezve van a ESP-fürtökön. Hozzáférhet az Oozie webes felület, engedélyezze a felhasználók [tunneling](../hdinsight-linux-ambari-ssh-tunnel.md).
 
 Vállalati biztonság négy fő alappillérét tartalmazza: szegélyhálózat-alapú biztonság, hitelesítés, engedélyezés és titkosítás.
 

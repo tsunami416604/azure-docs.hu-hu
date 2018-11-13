@@ -15,27 +15,27 @@ ms.date: 11/07/2018
 ms.author: celested
 ms.reviewer: jlu
 ms.custom: aaddev
-ms.openlocfilehash: 298afda7549690a9ea0314bff63a714be50a33b9
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0f0de122dc3dbd770e91a8412430423bee222b30
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019167"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51577954"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Hogyan: Reactivate le van tiltva az Access Control Service-névterek
 
 2017 November jelentettük be, hogy a Microsoft Azure Access Control Service (ACS), az Azure Active Directory (Azure AD), a szolgáltatás 2018. November 7 határidővel kivezetjük.
 
-Mivel ezt követően az ACS-előfizetések rendszergazdai e-mailek kapcsolatos ACS funkciókészletét 12 hónap, 9 hónap, 6 hónapra 3 hónap, 1 hónap, 2 héten, 1 hét, és 1 nap 2018. November 7 kivezetési dátuma előtt több e-mailt elküldtük Önnek.
+Mivel ezt követően az ACS-előfizetések rendszergazdai e-mail az ACS használatból való kivonást egyaránt 12 hónap, 9 hónap, 3 hónap, 1 hónap, 2 héten, 1 hét, és 1 nap 2018. November 7 kivezetési dátuma előtt 6 hónapra vonatkozó e-mailt elküldtük Önnek.
 
-2018. október 3. én bejelentettük (e-mailben és [egy blogbejegyzés](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)), akiknek az áttelepítést követően 2018. November 7. nem lehet befejezni a bővítmény ajánlat. A közlemény is tartalmazott utasításokat a bővítmény lekérdezéséhez.
+2018. október 3. én bejelentettük (e-mailben és [egy blogbejegyzés](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)), akiknek az áttelepítést követően 2018. November 7. nem lehet befejezni a bővítmény ajánlat. A közlemény is volt a bővítmény kérő vonatkozó utasításokat.
 
 ## <a name="why-your-namespace-is-disabled"></a>Miért érdemes a névtér le van tiltva
 
-Ha a bővítmény rögzítette még nem található, megkezdjük hogy tiltsa le a 2018. November 7-as Access Control-névtereket. Ha lemaradt a kommunikációhoz, és továbbra is szeretné elvégezni a beléptetést a bővítmény 2019. február 4. kövesse az alábbi szakaszokban található.
+Ha a bővítmény rögzítette még nem található, kezdjük 2018. November 7-as Access Control-névtereket letiltása. Ha lemaradt a kommunikációhoz, és továbbra is szeretné elvégezni a beléptetést a bővítmény 2019. február 4. kövesse az alábbi szakaszokban található.
 
 > [!NOTE]
-> A PowerShell-parancsok futtatása, és hosszabbítsa az előfizetés az rendszergazdájának kell lennie.
+> A PowerShell-parancsok futtatása, és hosszabbítsa szolgáltatás-rendszergazda vagy az előfizetés társadminisztrátorának kell lennie.
 
 ## <a name="find-and-enable-your-acs-namespaces"></a>Keresse meg és az Access Control-névtereket engedélyezése
 
@@ -62,6 +62,9 @@ Az ACS PowerShell használatával az Access Control-névtereket listában, és a
         ```
     
         ahol `[Command-Name]` az ACS-parancs neve.
+1. Az ACS használatával csatlakozhat a **Connect-AcsAccount** parancsmagot. 
+
+    Szükség lehet a végrehajtási házirend módosításához futtassa **Set-ExecutionPolicy** a parancs futtatása előtt.
 1. Az használatával érhető el az Azure-előfizetések listájának a **Get-AcsSubscription** parancsmagot.
 1. Az ACS névterek használatával listázása a **Get-AcsNamespace** parancsmagot.
 1. Győződjön meg arról, hogy erősítse meg, amelyek le vannak-e tiltva a névterek `State` van `Disabled`.

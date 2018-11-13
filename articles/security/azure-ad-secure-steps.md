@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: cb1c525527f7261c10b502a25b3cab3db89dd85f
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 8ce75efae2d735c5653f9dae72c670b0714351ac
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515137"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567950"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Öt lépést a személyazonosság-infrastruktúra védelme
 
@@ -51,8 +51,6 @@ Minden állítható be? Első lépések az ellenőrzőlista a.
 A legtöbb vállalati biztonsági résekkel szemben származnak, egy olyan fiókkal, az egyik módszer, például a jelszó megfelelő, illetéktelen behatolás visszajátszását vagy adathalász néhány biztonsága sérült. További információ a ezeket a támadásokat, ez a videó (45 perc):
 > [!VIDEO https://www.youtube.com/embed/uy0j1_t5Hd4]
 
-Ha a felhasználók az azonosítási rendszer gyenge jelszót, és nem a multi-factor Authentication hitelesítéshez megerősítése, nem csupán néhány Ha, vagy hogy feltört – csak "milyen gyakran."
-
 ### <a name="make-sure-your-organization-use-strong-authentication"></a>Győződjön meg arról, hogy a szervezet erős hitelesítés használata
 
 Adott folyamatban kitalálni, jelszavak phished, újra, vagy a kártevő szoftverrel ellopják gyakoriság rendkívül fontos a jelszó erős hitelesítő adatainak valamilyen biztonsági – további információk [Azure multi-factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication).
@@ -69,7 +67,7 @@ A Microsoft javasolja, hogy a következő alapján modern jelszóházirend bevez
 2. Tiltsa le a lejárati szabályok, amelyek hozzásegítheti a felhasználókat a könnyen kitalálható jelszavakat, mint **Summer2018!**
 3. Tiltsa le a karakter-összeállítás követelményeknek, és megakadályozhatja a felhasználókat gyakran megtámadott jelszavak, kiválasztása, azok kárt a felhasználók kiválaszthatják a kiszámítható karakter helyettesítések hozzáadása a jelszavakat.
 
-Használhat [PowerShell használatával megakadályozhatja, hogy a jelszavak lejárjanak](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy) a felhasználók számára, ha közvetlenül az Azure ad-identitások hoz létre. Ezek a házirendek használatával [tartományi csoportházirend-beállítások] hibrid szervezeteknek meg kell valósítania (https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10) vagy [Windows PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy).
+Használhat [PowerShell használatával megakadályozhatja, hogy a jelszavak lejárjanak](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy) a felhasználók számára, ha közvetlenül az Azure ad-identitások hoz létre. Ezek a házirendek használatával hibrid szervezeteknek meg kell valósítania [tartományi csoportházirend-beállítások](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10)) vagy [Windows PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy).
 
 ### <a name="protect-against-leaked-credentials-and-add-resilience-against-outages"></a>Kiszivárgott hitelesítő adatok ellen, és adja hozzá a leállások ellen rugalmasságának biztosításával
 

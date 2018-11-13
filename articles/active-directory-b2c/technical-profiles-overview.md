@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: fe7d18cdfa88988e1c7dda7f1120d4750fa52e8c
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: faf3cc6c333ee8f8757ec24ecc8ea8299657c4a7
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269428"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578484"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Az Azure Active Directory B2C-vel egyéni szabályzatok műszaki profilokról
 
@@ -38,8 +38,7 @@ A technikai profil lehetővé teszi, hogy az ilyen típusú forgatókönyvek:
 - [Egy SAML2](saml-technical-profile.md) -összevonási bármely SAML-protokoll identitásszolgáltatóval.
 - [Önálló kiszolgáló által megerősített](self-asserted-technical-profile.md) -interakciót folytatni a felhasználóval. Gyűjtsön például a felhasználó hitelesítő adatait, hogy jelentkezzen be, a regisztrációs oldalon jelennek meg, vagy a jelszó-visszaállítási.
 - **WsFed** -összevonási bármely WsFed protokoll identitásszolgáltatóval. 
-- **Munkamenet-kezelés** -munkamenetek különböző típusú kezelni. 
-- **Felhasználói interakciósorozat környezet szolgáltató**
+- [Munkamenet-kezelés](active-directory-b2c-reference-sso-custom.md) -munkamenetek különböző típusú kezelni. 
 - **Az Application insights**
 
 ## <a name="technical-profile-flow"></a>Technikai profil folyamat
@@ -56,7 +55,7 @@ Az összes típusú technikai profil ossza meg ugyanazt a fogalmat fedi. A bemen
     - Hozzon létre vagy módosítsa a felhasználói fiókot.
     - Küld, és ellenőrzi az MFA üzenetre.
 4. **ValidationTechnicalProfiles** – egy [technikai profil önellenőrzött](self-asserted-technical-profile.md), meghívhatja egy bemeneti [ellenőrzési technikai profil](validation-technical-profile.md). Az ellenőrzési technikai profil ellenőrzi a profilkészítés során létrehozott, a felhasználó által, és a egy hibaüzenet vagy az OK gombra, vagy a kimeneti jogcímek nélkül adja vissza. Például az Azure AD B2C-vel hoz létre egy új fiókot, mielőtt azt ellenőrzi, hogy a felhasználó már szerepel a directory services. Segítségével meghívhatja a REST API-val technikai profil hozzáadása a saját üzleti logikája.<p>A kimeneti jogcímek egy érvényesítési technikai profil hatóköre csak a technikai profil, amely meghívja az érvényesítési technikai profilban és egyéb ellenőrzési technikai profilok azonos technikai profil alatt. Ha azt szeretné, a kimeneti jogcímek használata a következő lépésben vezénylési, hozzá kell a kimeneti jogcímek a műszaki profilba, amely meghívja az érvényesítési technikai profilban.
-5. **OutputClaims** -jogcímek a jogcímek tulajdonságcsomag vissza a rendszer retuned. Ezeket a következő vezénylések lépéssel, vagy a kimeneti jogcímek átalakítása jogcímeket is használhatja.
+5. **OutputClaims** -jogcímek visszatér a jogcímek tulajdonságcsomag. Ezeket a következő vezénylések lépéssel, vagy a kimeneti jogcímek átalakítása jogcímeket is használhatja.
 6. **OutputClaimsTransformations** – adjon meg minden kimeneti jogcímek [jogcím-átalakítás](claimstransformations.md) származó jogcímek zsák mértékének. A kimeneti jogcímek az előző lépésekben a technikai profil lehet egy kimeneti jogcímek átalakítását a bemeneti jogcímek között. Végrehajtás után a kimeneti jogcímek kerüljenek vissza a jogcímek csomagban. A kimeneti jogcímek egy kimeneti jogcímek átalakítását a bemeneti jogcímek között, egy későbbi kimeneti jogcímek átalakítását is lehet.
 7. **Egyszeri bejelentkezés (SSO) munkamenet-kezelés** - [egyszeri bejelentkezés munkamenet-kezelés](active-directory-b2c-reference-sso-custom.md) szabályozza a felhasználó-szal, a felhasználó már rendelkezik hitelesítése után. Ha például a rendszergazda szabályozhatja jelenik-e a választott Identitásszolgáltatók meg, vagy hogy helyi fiók adatainak kell újra megadni.
 

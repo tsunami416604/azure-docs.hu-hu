@@ -6,20 +6,23 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 11/12/2018
 ms.author: adgera
-ms.openlocfilehash: 69b8f64574427a6b3d3d2cf0312eac88d86e5907
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0fae059db53668da2d71906bbe94e9dabae931bc
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960198"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578586"
 ---
 # <a name="use-azure-digital-twins-swagger"></a>Az Azure digitális Twins generáljon a swaggerrel
 
 Minden üzembe helyezett Azure digitális Twins-példány saját automatikusan generált Swagger dokumentációja tartalmazza.
 
 [Swagger](https://swagger.io/), vagy [OpenAPI](https://www.openapis.org/), több egység egy interaktív és nyelvtől referencia erőforrás összetett API információval. Swagger biztosít a kritikus fontosságú – referenciaanyag melyik JSON hasznos adatot, a HTTP-metódusok és a egy API-hoz műveletek végrehajtása az eszközspecifikus végpontokat.
+
+> [!IMPORTANT]
+> A Swagger-hitelesítés támogatása ideiglenesen le van tiltva, a nyilvános előzetes verzióban.
 
 ## <a name="swagger-summary"></a>Swagger-összefoglaló
 
@@ -43,10 +46,10 @@ A saját létrehozott felügyeleti API Swagger-dokumentációját a érhető el:
 https://yourInstanceName.yourLocation.azuresmartspaces.net/management/swagger
 ```
 
-| Egyéni attribútum neve | Csere erre |
+| Egyedi név | Csere erre |
 | --- | --- |
-| *Példánynév* | Az Azure digitális Twins-példány nevét |
-| *yourLocation* | Melyik kiszolgáló régióban lévő üzemeltetett a példány |
+| Példánynév | Az Azure digitális Twins-példány nevét |
+| yourLocation | Melyik kiszolgáló régióban lévő üzemeltetett a példány |
 
 ## <a name="reference-material"></a>Leírások
 
@@ -104,7 +107,10 @@ A példák is hibakódok javításához vagy javítása sikertelen tesztek segí
 
 ## <a name="swagger-oauth-20-authorization"></a>OAuth 2.0 engedélyezési swagger
 
-Interaktív módon teszteléséhez kérelmek ellen védi az OAuth 2.0 API-erőforrásokhoz, tekintse meg a [dokumentációs](https://swagger.io/docs/specification/authentication/oauth2/).
+Interaktív módon az OAuth 2.0 által védett kérelmek tesztelésével kapcsolatos további tudnivalókért tekintse meg a [dokumentációs](https://swagger.io/docs/specification/authentication/oauth2/).
+
+> [!NOTE]
+> OAuth 2.0 típusú hitelesítés támogatása ideiglenesen le van tiltva, a nyilvános előzetes verzióban.
 
 ## <a name="next-steps"></a>További lépések
 

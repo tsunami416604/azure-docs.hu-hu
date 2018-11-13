@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/04/2018
 ms.author: raynew
-ms.openlocfilehash: 24102593a294d60b3cc2107bef8d443e672443b3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a3e695e8c238dd4bc333d5cd477e70b93231399b
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019170"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51565020"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Tudnivalók a mobilitási szolgáltatás VMware virtuális gépek és fizikai kiszolgálókhoz
 
@@ -46,6 +46,9 @@ A Microsoft-ASR\_UA\*UBUNTU-16.04-64\*release.tar.gz | Ubuntu Linux 16.04 LTS se
 Microsoft-ASR_UA\*DEBIAN7-64\*release.tar.gz | Debian 7 
 Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8
 
+## <a name="anti-virus-on-replicated-machines"></a>A replikált gépek víruskereső
+
+Ha replikálni kívánt gépek aktív víruskereső szoftvert, ellenőrizze, hogy a mobilitási szolgáltatás telepítési mappa kizárása víruskereső operations (*C:\ProgramData\ASR\agent*). Ez biztosítja, hogy a replikáció megfelelően működik-e.
 
 ## <a name="update-the-mobility-service"></a>A mobilitási szolgáltatás frissítése
 

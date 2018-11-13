@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f08d5732939e853785e2cce1d1e9ed8eea7f9ad7
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: c21a5c5b23b709ce6683c51cf96f0e6ff89efc78
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543139"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568676"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Egyéni Azure Active Directory B2C-házirendek egy érvényesítési technikai profil meghatározása
 
@@ -31,7 +31,7 @@ Egy ellenőrzési technikai profil el például egy szokásos technikai profil m
 }
 ```
 
-Van egy érvényesítési technikai profil retuned jogcímeket vissza a jogcímek tulajdonságcsomag kerülnek. A következő érvényesítési technikai profilban használhatja azokat a jogcímeket.
+A rendszer adja vissza egy érvényesítési technikai profil jogcímeket vissza a jogcímek tulajdonságcsomag kerülnek. A következő érvényesítési technikai profilban használhatja azokat a jogcímeket.
 
 Érvényesítési technikai profilok végrehajtása a sorrendben jelennek meg a **ValidationTechnicalProfiles** elemet. Konfigurálhatja egy érvényesítési technikai profilban bármely ezt követő érvényesítési technikai profilok végrehajtásának kell továbbra is, ha az érvényesítés technikai profilban hibát jelez, vagy sikeres-e.  
 
@@ -53,8 +53,8 @@ A **ValidationTechnicalProfile** elem tartalmazza a következő attribútumot:
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | a referenceid megadása | Igen | Egy már definiált vagy a szülő házirend technikai profil azonosítója. |
-|ContinueOnError|Nem| Jelzi, hogy bármely ezt követő érvényesítési technikai profilok érvényesítése továbbra is ha ez validaiton technikai profil hibát jelez. Rétegbe értékek: `true` vagy `false` (alapértelmezés szerint a további ellenőrzési profilok feldolgozása leáll, és hibát adott vissza). 
-|ContinueOnSuccess | Nem | Jelzi, hogy bármely ezt követő érvényesítési profilok érvényesítése továbbra is ha az érvényesítés technikai profil sikeres. Rétegbe értékek: `true` vagy `false`. Az alapértelmezett érték `true`, tehát továbbra is a további ellenőrzési profilok feldolgozására. |
+|ContinueOnError|Nem| Jelzi, hogy bármely ezt követő érvényesítési technikai profilok érvényesítése továbbra is ha ez validaiton technikai profil hibát jelez. A lehetséges értékek: `true` vagy `false` (alapértelmezés szerint a további ellenőrzési profilok feldolgozása leáll, és hibát adott vissza). 
+|ContinueOnSuccess | Nem | Jelzi, hogy bármely ezt követő érvényesítési profilok érvényesítése továbbra is ha az érvényesítés technikai profil sikeres. A lehetséges értékek: `true` vagy `false`. Az alapértelmezett érték `true`, tehát továbbra is a további ellenőrzési profilok feldolgozására. |
 
 A **ValidationTechnicalProfile** elem tartalmazza a következő elemet:
 
@@ -81,8 +81,8 @@ A **előfeltétel** elem a következő elemeket tartalmazza:
 A követező példában érvényesítési technikai profilok: 
 
 1. Az első érvényesítési technikai profil ellenőrzi a felhasználói hitelesítő adatokat, és nem folytatódik, ha hiba történik, mint például a érvénytelen felhasználónév vagy helytelen jelszó. 
-2. A következő érvényesítési technikai profil nem hajtható végre, ha a userType jogcím nem létezik, vagy ha a userType értéke `Partner`. Az ellenőrzési technikai profil megpróbálja a felhasználói profil olvasása a belső felhasználói adatbázisból, és továbbra is, ha hiba történik, például REST API-szolgáltatás nem elérhető, vagy bármely belső hiba.
-3. Az utolsó ellenőrzési technikai profil nem hajtható végre, ha a userType jogcím még nem létezett, vagy ha a userType értéke `Customer`. Az ellenőrzési technikai profil megpróbálja beolvasni a felhasználói profilt a belső partneradatbázis, és továbbra is fennáll, ha hiba történik, például REST API-szolgáltatás nem elérhető, vagy bármely belső hiba.
+2. A következő érvényesítési technikai profil nem hajtható végre, ha a userType jogcím nem létezik, vagy ha a userType értéke `Partner`. Az ellenőrzési technikai profil megpróbálja a felhasználói profil olvasása a belső felhasználói adatbázisból, és továbbra is, ha hiba történik, például REST API-szolgáltatás nem érhető el, vagy bármely belső hiba.
+3. Az utolsó ellenőrzési technikai profil nem hajtható végre, ha a userType jogcím még nem létezett, vagy ha a userType értéke `Customer`. Az ellenőrzési technikai profil megpróbálja beolvasni a felhasználói profilt a belső partneradatbázis, és továbbra is fennáll, ha hiba történik, például REST API-szolgáltatás nem érhető el, vagy bármely belső hiba.
 
 ```XML
 <ValidationTechnicalProfiles>

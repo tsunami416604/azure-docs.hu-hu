@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 10/26/2018
 ms.author: glenga
-ms.openlocfilehash: f99c0fe798baa272bc2c74e8a171dd6bc7ca4304
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 506bbcf31833b20a6ee06e85fbad166d1f0b80e2
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036546"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567145"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript-fejlesztői útmutató
 
@@ -419,7 +419,7 @@ Az alábbi táblázat az egyes főverziója a Functions futtatókörnyezete ált
 | Functions-verzió | Node.js verziója | 
 |---|---|
 | 1.x | 6.11.2 (futásidejű zárolta) |
-| 2.x  | _Aktív LTS_ és _aktuális_ Node.js-verzió (8.11.1 és ajánlott 10.6.0). A verzió-beállításokat a WEBSITE_NODE_DEFAULT_VERSION [Alkalmazásbeállítás](functions-how-to-use-azure-function-app-settings.md#settings).|
+| 2.x  | _Aktív LTS_ és páros számú _aktuális_ Node.js-verzió (8.11.1 és ajánlott 10.6.0). A verzió-beállításokat a WEBSITE_NODE_DEFAULT_VERSION [Alkalmazásbeállítás](functions-how-to-use-azure-function-app-settings.md#settings).|
 
 Láthatja, hogy a jelenlegi verzió a modul által használt, a fenti alkalmazás beállítás bejelölésével vagy a Nyomtatás `process.version` a függvényeket.
 

@@ -1,3 +1,16 @@
+---
+author: linda33wj
+ms.service: data-factory
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: jingwang
+ms.openlocfilehash: 24bb7a1fcb1569922fb34034fb3c0d003cdd7061
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572226"
+---
 ## <a name="repeatability-during-copy"></a>Másolás során az ismételhetőség
 Amikor adatmásolásra más adatokat az Azure SQL és SQL Server tárolja egy kell ismételhetőség nem kívánt eredmények elkerülése érdekében szem előtt tartani. 
 

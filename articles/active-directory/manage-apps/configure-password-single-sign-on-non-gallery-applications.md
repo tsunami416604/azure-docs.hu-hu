@@ -2,24 +2,20 @@
 title: Jelszó egyszeri bejelentkezést a katalógusban nem szereplő applicationn a konfigurálása |} A Microsoft Docs
 description: Egyéni katalógusban nem szereplő alkalmazás biztonságos jelszavas egyszeri bejelentkezés konfigurálása, ha nem szerepel az Azure AD Alkalmazáskatalógusában
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
-ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2017
+ms.date: 11/12/2018
 ms.author: barbkess
-ms.openlocfilehash: 37ac3b5fb680a9966f5b8f3da43a2b3013554557
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: d880a142b54d253cc1522b3dcc521c86119e0997
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356640"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578399"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Jelszavas egyszeri bejelentkezés nem katalógusból származó alkalmazásra konfigurálása
 
@@ -115,7 +111,6 @@ Egyszeri bejelentkezés az alkalmazás konfigurálásához kövesse az alábbi l
 
 11. Ezenkívül is megadhatja a felhasználó nevében legyenek hitelesítő adatok a sorok, a felhasználók kiválasztva, majd kattintson a **a hitelesítő adatok frissítése** és a felhasználónév és jelszó megadásával a felhasználók nevében. Ellenkező esetben megkérdezi a felhasználókat a hitelesítő adatokat magukat az indítás után.
 
-12. **Választható lehetőség:** bizonyos közösségi média alkalmazások, például a Twitteren és a Facebookon, van a lehetőség a jelszó az alkalmazás a kijelölt gyakorisággal automatikus átvitel engedélyezése. Ahhoz, hogy ez válassza **szeretnék az Azure ad-ben az automatikus kezelésére, ez a felhasználó vagy csoport jelszavát** nevében egy felhasználó vagy csoport hitelesítő adatok megadása közben. Válassza ki a **váltás gyakorisága (hét)**.
 
 ## <a name="assign-a-user-to-an-application-directly"></a>Közvetlenül a felhasználó hozzárendelése egy alkalmazáshoz
 

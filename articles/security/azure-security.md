@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: f11012c90ab2b82e945fdb67e224783c3f05c6dd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2dd6ebb9e2f35eccae3b267402a4ef9b0e1b2dbe
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237553"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567162"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure Security
 ## <a name="overview"></a>Áttekintés
@@ -59,9 +59,9 @@ A következő felsorolt funkciók áttekintheti, hogy biztonságos módon kezeli
 | [Biztonságos platformot](https://www.microsoft.com/en-us/trustcenter/Security/default.aspx)  | [Adatvédelem és vezérlők](https://www.microsoft.com/en-us/trustcenter/Privacy/default.aspx)  |[Megfelelőség](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)   | [Átláthatóság](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
 | :-- | :-- | :-- | :-- |
 | [Biztonsági fejlesztési ciklus](https://www.microsoft.com/en-us/sdl/), belső naplózza | [Folyamatosan-adatok kezelése](https://www.microsoft.com/en-us/trustcenter/Privacy/You-own-your-data) | [Adatvédelmi központ](https://www.microsoft.com/en-us/trustcenter/default.aspx) |[Hogyan teszi biztonságossá a Microsoft az ügyféladatokat az Azure-szolgáltatások](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
-| [Kötelező biztonsági képzés, vissza földön ellenőrzések](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Szabályozhatja az adatok helye](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [Gyakori vezérlők Hub](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Hogyan történik a Microsoft adatok helye az Azure-szolgáltatások kezelése](http://azuredatacentermap.azurewebsites.net/)|
+| [Kötelező biztonsági képzés, a háttér-ellenőrzések](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Szabályozhatja az adatok helye](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [Gyakori vezérlők Hub](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Hogyan történik a Microsoft adatok helye az Azure-szolgáltatások kezelése](http://azuredatacentermap.azurewebsites.net/)|
 | [Behatolásvizsgálat](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx), [behatolásérzékelési, DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagement), [eseményeket és naplózás](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [Adatok hozzáférés biztosítása a saját igényei szerint](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [A Cloud Services megfelelő gondossággal ellenőrzőlista](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[Milyen feltételekkel, akik a Microsoft is elérhetők az adatok](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
-| [A legújabb felhőkörnyezetekből állapota](https://www.microsoft.com/en-us/cloud-platform/global-datacenters), fizikai biztonsági [biztonságos hálózati](https://docs.microsoft.com/azure/security/security-network-overview) | [Válaszadás a bűnüldöző hatóság](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [Megfelelőség szolgáltatást, helye és iparág szerint](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Hogyan teszi biztonságossá a Microsoft az ügyféladatokat az Azure-szolgáltatások](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
+| [A legkorszerűbb adatközpont](https://www.microsoft.com/en-us/cloud-platform/global-datacenters), fizikai biztonsági [biztonságos hálózati](https://docs.microsoft.com/azure/security/security-network-overview) | [Válaszadás a bűnüldöző hatóság](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [Megfelelőség szolgáltatást, helye és iparág szerint](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Hogyan teszi biztonságossá a Microsoft az ügyféladatokat az Azure-szolgáltatások](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
 |  [Biztonsági incidensmegoldási](https://aka.ms/SecurityResponsepaper), [közös felelősség](https://aka.ms/sharedresponsibility) |[Szigorú adatvédelmi normák](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Tekintse át az Azure-szolgáltatásokhoz, átláthatóság hub hitelesítő](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
 
 
@@ -345,7 +345,7 @@ Javítás frissítések adja meg a alapját megtalálásához, és lehetséges p
 ### <a name="azure-security-center"></a>Azure Security Center
 A Security Center az Azure-erőforrások biztonsági felügyeletének átláthatóbbá és szabályozhatóbbá tételével megkönnyíti a fenyegetések megelőzését, észlelését és elhárítását. Az ügyfél összes előfizetésére kiterjedő, integrált biztonsági monitorozást és szabályzatkezelést biztosít, megkönnyíti a nehezen észlelhető fenyegetések azonosítását, és számos biztonsági megoldással együttműködik.
 
-## <a name="identify-and-access-management"></a>Identitások és hozzáférések kezelése
+## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
 
 Identitásalapú hozzáférés-vezérlés kezdődik rendszerek, alkalmazások és adatok védelme. Az identitás- és hozzáférés-felügyeleti funkciókat Microsoft üzleti termékeit és szolgáltatásait beépített segít megvédeni a munkahelyi és személyes adatokat a jogosulatlan hozzáféréstől, miközben megkönnyíti elérhető a jogosult felhasználók bárhol és bármikor, szükség van rá.
 

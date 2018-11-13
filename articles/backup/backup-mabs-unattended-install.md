@@ -1,31 +1,31 @@
 ---
-title: Azure Backup Server v2 csendes telepítése
-description: PowerShell parancsfájl segítségével csendes telepítéséhez az Azure Backup Server v2. Az ilyen típusú telepítés felügyelet nélküli telepítés néven is ismert.
+title: Az Azure Backup Server V2 beavatkozás nélküli telepítés
+description: Egy PowerShell-parancsprogram használatával beavatkozás nélkül telepítse az Azure Backup Server V2. Ez a fajta telepítés felügyelet nélküli telepítés néven is ismert.
 services: backup
 author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/30/2017
+ms.date: 11/06/2018
 ms.author: markgal
-ms.openlocfilehash: 126c1971d83a8874c096caf407231fb6dee2ff59
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3e106d7f669cf14014114ed0fe63651a1a2fe0eb
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606409"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578117"
 ---
-# <a name="run-an-unattended-installation-of-azure-backup-server-v2"></a>Az Azure Backup Server v2 felügyelet nélküli telepítés futtatása
+# <a name="run-an-unattended-installation-of-azure-backup-server"></a>Az Azure Backup Server felügyelet nélküli telepítés futtatása
 
-Útmutató az Azure Backup Server v2 felügyelet nélküli telepítés futtatása. 
+Ismerje meg, hogyan futtathat az Azure Backup Server felügyelet nélküli telepítéséhez.
 
-Ezeket a lépéseket ne alkalmazza az Azure Backup Server v1 telepítésekor.
+Ha az Azure Backup Server V1 telepíti ezeket a lépéseket nem érvényesek.
 
-## <a name="install-backup-server-v2"></a>Telepítse a helykiszolgáló biztonsági mentése v2
+## <a name="install-backup-server"></a>Backup Server telepítése
 
-1. A kiszolgálón, amelyen az Azure Backup Server v2 hozzon létre egy szövegfájlt. (A fájlt létrehozhatja a Jegyzettömbben vagy más szövegszerkesztőben.) Mentse a fájlt MABSSetup.ini. 
+1. A kiszolgáló üzemelteti az Azure Backup Server V2 vagy újabb, hozzon létre egy szövegfájlt. (Létrehozhat a fájlt a Jegyzettömbben vagy más szövegszerkesztőben.) Mentse a fájlt MABSSetup.ini.
 
-2. Illessze be a következő kódot a MABSSetup.ini fájlban. Cserélje le a szöveget a zárójelben (\< \>) a környezet értékeivel. A következő egy példa áll:
+2. Illessze be a következő kódot a MABSSetup.ini fájlban. Cserélje le a zárójelben a szöveget (\< \>) környezete értékeivel. A következő egy példa a következő szöveget:
 
   ```
   [OPTIONS]
@@ -54,16 +54,16 @@ Ezeket a lépéseket ne alkalmazza az Azure Backup Server v1 telepítésekor.
   start /wait <cdlayout path>/Setup.exe /i  /f <.ini file path>/setup.ini /L <log path>/setup.log
   ```
 
-Ezeknek a jelzőknek a telepítéshez használható:</br>
+Ezek a jelölők a telepítéshez használható:</br>
 **/f**: .ini-fájl elérési útja</br>
 **/ l**: napló elérési útja</br>
-**/i**: telepítési útvonala</br>
-**/x**: távolítsa el az elérési út</br>
+**/i**: telepítési útvonal</br>
+**/x**: elérési út eltávolítása</br>
 
 ## <a name="next-steps"></a>További lépések
-Biztonsági kiszolgáló telepítése után megtudhatja, hogyan készíti elő a kiszolgálót, vagy indítsa el a védelmet a munkaterhelés.
+Miután telepítette a Backup Server, megtudhatja, hogyan készíti elő a kiszolgálót, vagy a munkaterhelések védelmének megkezdése.
 
-- [A kiszolgálói biztonsági mentési feladatok előkészítése](backup-azure-microsoft-azure-backup.md)
-- [Készítsen biztonsági másolatot a VMware server Backup Server használatával](backup-azure-backup-server-vmware.md)
-- [Készítsen biztonsági másolatot az SQL Server biztonsági másolat-kiszolgáló használatával](backup-azure-sql-mabs.md)
-- [Modern biztonsági másolatokat tároló hozzáadása a helykiszolgáló biztonsági mentése](backup-mabs-add-storage.md)
+- [Backup Server számítási feladatainak előkészítése](backup-azure-microsoft-azure-backup.md)
+- [VMware-kiszolgáló biztonsági mentése Backup Server használatával](backup-azure-backup-server-vmware.md)
+- [SQL Server biztonsági mentése Backup Server használatával](backup-azure-sql-mabs.md)
+- [Biztonsági mentési kiszolgálóra a Modern Backup Storage hozzáadása](backup-mabs-add-storage.md)

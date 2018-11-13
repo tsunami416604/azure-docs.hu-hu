@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/04/2016
 ms.author: jeconnoc
-ms.openlocfilehash: 9433cbaba774237bc739106af410dd8d3dd7308f
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 83f648b67ae4f8e6fb964d82c245f1c7ba475542
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025710"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568540"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>A Twilio használata az Azure-beli webes szerepkör telefonhívás módját
 Ez az útmutató bemutatja, hogyan a Twilio használata az Azure-ban üzemeltetett weboldalakról irányuló hívások indításához. Az eredményül kapott alkalmazás kéri a felhasználót, hogy a megadott számot, egy üzenet, a hívás, az alábbi képernyőképen látható módon.

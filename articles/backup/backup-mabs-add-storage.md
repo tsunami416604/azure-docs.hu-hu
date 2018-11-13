@@ -1,80 +1,81 @@
 ---
-title: Azure biztonságimásolat-kiszolgáló v2 Modern biztonsági másolatokat tároló használata
-description: További tudnivalók az Azure Backup Server v2 új funkciókkal. A cikkből megtudhatja, hogyan lehet frissíteni a biztonsági mentés Server telepítését.
+title: Modern Backup Storage használata az Azure Backup Server
+description: Az Azure Backup Server új funkcióinak megismerése. Ez a cikk ismerteti a Backup Server-telepítés frissítése.
 services: backup
 author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/15/2017
-ms.author: markgal
-ms.openlocfilehash: 7c583ea048ed1837c662869c62039165aaa3c024
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 11/06/2018
+ms.author: markgal; adigan; kasinh
+ms.openlocfilehash: daa7d6ee13cf55703b71bea321e65d2518a59979
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606754"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578518"
 ---
-# <a name="add-storage-to-azure-backup-server-v2"></a>Azure Backup Server v2 tároló hozzáadása
+# <a name="add-storage-to-azure-backup-server"></a>Tárterület hozzáadása az Azure Backup Serverhez
 
-Az Azure Backup Server v2 tartalmaz a System Center 2016 adatok Protection Manager Modern Backup-tárhelyre. Modern Backup-tárhelyre 50 %-, a biztonsági mentések, amelyek háromszor gyorsabb és hatékonyabb tárolási a tárhely-megtakarítást nyújt. Munkaterhelés-kompatibilis tárterületet is biztosít. 
+Az Azure Backup Server V2, és később a System Center 2016 Data Protection Manager Modern biztonsági mentési tár. Modern Backup Storage kínál bánhat 50 %-os, háromszor gyorsabb és hatékonyabb tárolási biztonsági mentéseket. Munkaterhelés-támogató tárhely is kínál.
 
 > [!NOTE]
-> Modern biztonsági mentési tárolót használni, a Windows Server 2016 Backup Server v2 kell futtatnia. Ha a Windows Server korábbi verzióján futtatja a biztonsági mentés kiszolgáló v2, Azure Backup Server tudják kihasználni a Modern Backup-tárhelyre. Ehelyett azt védi a munkaterheléseket mint a biztonsági mentés kiszolgáló v1. További információkért lásd: a biztonsági mentés kiszolgálóverzió [védelmi mátrix](backup-mabs-protection-matrix.md).
+> Modern Backup Storage használatára, futtatnia kell Backup Server V2 és V3 a Windows Server 2016 vagy Windows Server verzióját 2019 V3.
+> Ha Backup Server V2 Windows Server korábbi verzióján futtatja, az Azure Backup Server nem tudja kihasználni a Modern Backup Storage. Ehelyett azt védi a munkaterheléseket, mint a Backup Server V1. További információkért lásd: a biztonsági mentés kiszolgálóverzió [védelmi mátrix](backup-mabs-protection-matrix.md).
 
-## <a name="volumes-in-backup-server-v2"></a>A helykiszolgáló biztonsági mentése v2 kötetek
+## <a name="volumes-in-backup-server"></a>Kötetek a biztonsági mentési kiszolgálóra
 
-Tartalék kiszolgáló v2 tárolókötetek fogad el. Ha hozzáad egy köteten, a biztonsági mentés Server formázza a kötetet a refs fájlrendszer (ReFS), amelyek Modern Backup-tárhelyre van szükség. Kötet hozzáadása, és később kibontásához, ha szeretné, javasoljuk, hogy a munkafolyamat használja:
+Biztonsági mentés kiszolgáló V2, vagy később a tárolási köteteket is elfogad. Amikor hozzáad egy köteten, a Backup Server formázza a kötetet, a Resilient File System (ReFS) esetén, amelyhez szükség van a Modern Backup Storage. Kötet hozzáadása, és később kibontásához, ha szeretné, javasoljuk, hogy használja a következő munkafolyamatot:
 
-1.  A virtuális gép biztonsági mentése kiszolgáló v2 beállítása.
-2.  Kötet létrehozása a virtuális lemez a tárolókészlethez:
-    1.  Adjon hozzá egy lemezt a tárolókészletbe, és hozzon létre egy virtuális lemezt egyszerű elrendezés.
-    2.  Vegyen fel minden további lemezeket, és a virtuális lemez.
-    3.  A virtuális lemezen található köteteket hozhat létre.
-3.  A kötetek hozzá a biztonsági mentés kiszolgálóhoz.
-4.  Munkaterhelés-t támogató tároló konfigurálásához.
+1.  Állítsa be a virtuális gép biztonsági mentési kiszolgálót.
+2.  Hozzon létre egy virtuális lemezt a tárolókészletben kötetet:
+    1.  Adjon hozzá egy lemezt a tárolókészletbe, és hozzon létre egy virtuális lemezt egyszerű elrendezéssel.
+    2.  Adjon hozzá további lemezeket, és a virtuális lemezek kiterjesztése.
+    3.  Hozzon létre köteteket a virtuális lemezen.
+3.  Adja hozzá a kötetek biztonsági mentési kiszolgálóra.
+4.  Munkaterhelés-támogató tárhely konfigurálása.
 
-## <a name="create-a-volume-for-modern-backup-storage"></a>Kötet létrehozása a Modern Backup-tárhelyre
+## <a name="create-a-volume-for-modern-backup-storage"></a>Kötet létrehozása a Modern Backup Storage
 
-Biztonsági mentés kiszolgáló v2 használatával kötetekkel, mint a lemezes tárolás segíthetnek ellenőrzése alatt tartja a tároló karbantartása. A kötet lehet egyetlen lemezre. Ha azt szeretné, a későbbiekben kibővítheti a tárolási, azonban a tárolóhelyek használatával létrehozott lemezterülete kötet létrehozása. Ez segít, ha azt szeretné, bontsa ki a kötetet a biztonsági másolatok tárolására. Ez a rész nyújt gyakorlati tanácsok a kötet létrehozása ezzel a beállítással.
+Használja a Backup Server V2 vagy újabb, a köteteket, a lemezes tárolás segítségével szabályozhatja a tárolási. A kötet lehet egyetlen lemez. Ha kívánja kiterjeszteni a jövőben a storage, azonban a tárolóhelyek használatával létrehozott lemezből kötetet létrehozni. Ez segíthet, ha azt szeretné, bontsa ki a biztonsági mentési tárterület a köteten. Ez a rész ezzel a beállítással a kötet létrehozásának ajánlott eljárásai nyújt.
 
-1. A Kiszolgálókezelő ablakában válassza **fájl- és tárolási szolgáltatások** > **kötetek** > **Tárolókészletek**. A **fizikai lemezek**, jelölje be **új tárolókészlet**. 
+1. A Kiszolgálókezelőben válasza **fájl- és tárolási szolgáltatások** > **kötetek** > **Tárolókészletek**. A **fizikai lemezek**válassza **új tárolókészlet**.
 
     ![Új tárolókészlet létrehozása](./media/backup-mabs-add-storage/mabs-add-storage-1.png)
 
-2. Az a **feladatok** legördülő mezőben válassza **új virtuális lemez**.
+2. Az a **feladatok** legördülő mezőben válassza ki **új virtuális lemez**.
 
-    ![Virtuális lemez hozzáadása](./media/backup-mabs-add-storage/mabs-add-storage-2.png)
+    ![Egy virtuális lemez hozzáadása](./media/backup-mabs-add-storage/mabs-add-storage-2.png)
 
-3. A tárolókészlet, majd válassza ki és **fizikai lemez hozzáadása**.
+3. Válassza ki a tárolókészletet, és válassza **fizikai lemez hozzáadása**.
 
     ![Fizikai lemez hozzáadása](./media/backup-mabs-add-storage/mabs-add-storage-3.png)
 
 4. A fizikai lemezt, majd válassza ki és **virtuális lemez bővítése**.
 
-    ![A virtuális lemez](./media/backup-mabs-add-storage/mabs-add-storage-4.png)
+    ![A virtuális lemezek kiterjesztése](./media/backup-mabs-add-storage/mabs-add-storage-4.png)
 
 5. A virtuális lemezre, majd válassza ki és **új kötet**.
 
     ![Hozzon létre egy új kötetet](./media/backup-mabs-add-storage/mabs-add-storage-5.png)
 
-6. Az a **válassza ki a kiszolgálót és a lemez** párbeszédpanelen válassza ki a kiszolgálót és az új lemez. Ezt követően válassza **következő**.
+6. Az a **válassza ki a kiszolgálót és a lemez** párbeszédpanelen válassza ki a kiszolgálót és az új lemezt. Ezután válassza a **Tovább** lehetőséget.
 
-    ![Válassza ki a kiszolgáló és lemez](./media/backup-mabs-add-storage/mabs-add-storage-6.png)
+    ![Válassza ki a kiszolgálót és a lemez](./media/backup-mabs-add-storage/mabs-add-storage-6.png)
 
-## <a name="add-volumes-to-backup-server-disk-storage"></a>A biztonsági mentés lemezre tárhelyéhez kötetek hozzáadása
+## <a name="add-volumes-to-backup-server-disk-storage"></a>Kötetek hozzáadása a Backup Server lemezes tárolás
 
-Kiszolgáló biztonsági mentése, a kötet hozzáadása a **felügyeleti** ablaktáblában ellenőrizze újra a tárolót, és válassza **Hozzáadás**. Az összes biztonsági mentés tárolására adható hozzá köteteket jelenik meg. Után rendelkezésre álló köteteken hozzáadódnak a kijelölt kötetek listáját, azokat egy rövid nevet adhat, hogyan kezelheti azokat. Ezeket a köteteket a refs fájlrendszer fájlformátumba biztonsági mentés kiszolgáló használatával a Modern Backup-tárhelyre előnyeit, jelölje be **OK**.
+A Backup Server, a kötet hozzáadása a **felügyeleti** ablaktáblán, a tároló ismételt vizsgálata, és válassza **Hozzáadás**. Megjelenik egy lista a biztonsági mentési tárolót hozzáadható összes kötetről. Miután az elérhető kötetek vesznek fel a kiválasztott kötetek listájához, átadásával, amelyek segítségével kezelheti őket egy rövid nevet. Ezek a kötetek refs formázásához, így Backup Server használatával is a Modern Backup Storage előnyeit, válassza ki a **OK**.
 
-![Adja hozzá a rendelkezésre álló köteteken](./media/backup-mabs-add-storage/mabs-add-storage-7.png)
+![Elérhető kötetek hozzáadása](./media/backup-mabs-add-storage/mabs-add-storage-7.png)
 
-## <a name="set-up-workload-aware-storage"></a>Munkaterhelés-kompatibilis tárolás beállítása
+## <a name="set-up-workload-aware-storage"></a>Állítsa be a munkaterhelés-támogató tárhellyel
 
-Munkaterhelés-kompatibilis tárolóval kiválaszthatja a bizonyos típusú munkaterhelések lehetőleg tárolására szolgáló köteteknél. Például beállíthat költséges kötetek, amelyek támogatják a bemeneti/kimeneti műveletek száma másodpercenként (IOPS) túl magas száma csak a szolgáltatások, amelyek rendszeres, nagy mennyiségű biztonsági másolatok tárolásához. Példa: SQL Server, a tranzakciós naplók. Egyéb munkaterhelések, amelyekről a ritkábban, például a virtuális gépek, alacsony költségű kötetek készíthető.
+Munkaterhelés-támogató tárhellyel kiválaszthatja a köteteket, amelyek részesítsenek bizonyos típusú számítási feladatokat. Például beállíthatja a költséges köteteket, amelyek támogatják a nagy számú bemeneti/kimeneti műveletek száma másodpercenként (IOPS) csak a számítási feladatokat igénylő gyakori, nagy mennyiségű biztonsági másolatok tárolásához. Ilyen például az SQL Server, a tranzakciós naplókhoz. Egyéb munkaterhelések, amelyekről ritkábban, például a virtuális gépek, az alacsony költségű köteteken készíthető.
 
 ### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
-Munkaterhelés-t támogató tárolási állíthat be egy kötetet a tárolókészletből a Data Protection Manager-kiszolgáló tulajdonságait frissítve frissítés-DPMDiskStorage PowerShell-parancsmag használatával.
+Munkaterhelés-támogató tárhely beállítása a PowerShell-parancsmaggal Update-DPMDiskStorage parancsmag frissíti a a kötet tulajdonságait a Data Protection Manager-kiszolgálón a tárolókészletben.
 
 Szintaxis:
 
@@ -83,18 +84,49 @@ Szintaxis:
 ```
 Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-DatasourceType] <VolumeTag[]> ] [-Confirm] [-WhatIf] [ <CommonParameters>]
 ```
-Az alábbi képernyőfelvételen látható a frissítés-DPMDiskStorage parancsmag a PowerShell-ablakban.
+Az alábbi képernyőfelvételen az Update-DPMDiskStorage parancsmag a PowerShell-ablakban.
 
-![A frissítés-DPMDiskStorage parancsot a PowerShell-ablakban](./media/backup-mabs-add-storage/mabs-add-storage-8.png)
+![Az Update-DPMDiskStorage parancsot a PowerShell-ablakban](./media/backup-mabs-add-storage/mabs-add-storage-8.png)
 
-A PowerShell használatával a módosítások megjelennek a biztonsági mentés Server felügyeleti konzol.
+PowerShell-lel a módosításokat a Backup Server felügyeleti konzol is megjelennek.
 
-![A lemezek és kötetek a felügyeleti konzol](./media/backup-mabs-add-storage/mabs-add-storage-9.png)
+![Lemezek és kötetek a felügyeleti konzol](./media/backup-mabs-add-storage/mabs-add-storage-9.png)
+
+
+## <a name="migrate-legacy-storage-to-modern-backup-storage"></a>Régi típusú tárhely áttelepítése a Modern Backup Storage
+Vagy telepítse a Backup Server V2, és frissítse az operációs rendszert Windows Server 2016-ra frissít, frissítse a védelmi csoportok, a Modern Backup Storage használatára. Alapértelmezés szerint a védelmi csoportok nem változnak. Ezek továbbra is működni, először voltak beállítva.
+
+Védelmi csoportok Modern Backup Storage használatára való frissítése nem kötelező. A védelmi csoport frissítéséhez állítsa le az adatbázis megőrzése beállítás használatával összes adatforrás védelmét. Ezután vegye fel az adatforrásokat egy új védelmi csoportba.
+
+1. A felügyeleti konzolon válassza a **védelmi** funkció. Az a **védelmi csoport tagjához** listában kattintson a jobb gombbal a tagja, és válassza ki **tag védelmének kikapcsolása**.
+
+  ![Tag védelmének kikapcsolása](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
+
+2. Az a **eltávolítása a csoportból** párbeszédpanelen tekintse át a felhasznált lemezterület és a rendelkezésre álló szabad területet a tárolókészlethez. Az alapértelmezett érték a helyreállítási pontok meghagyása a lemezen, és lehetővé teszik számukra megőrzési / hamarosan lejár. Kattintson az **OK** gombra.
+
+  Ha szeretné azonnal a felhasznált lemezterület térjen vissza a szabad tárolókészletbe, válassza ki a **lemezen tárolt replika törlése** taghoz tartozó melletti jelölőnégyzetet, hogy törölje a biztonsági mentési adatok (és a helyreállítási pontok).
+
+  ![Távolítsa el a csoport párbeszédpanel](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
+
+3. Hozzon létre egy védelmi csoportot, amely a Modern Backup Storage használja. A nem védett adatforrásokat tartalmaznak.
+
+## <a name="add-disks-to-increase-legacy-storage"></a>Adjon hozzá lemezeket a régi típusú tárhely bővítése
+
+Ha azt szeretné, régi típusú tárhely használata a Backup Server, szüksége lehet adjon hozzá lemezeket a régi típusú tárhely bővítése érdekében.
+
+Lemezterület növelése:
+
+1. A felügyeleti konzolon válassza ki a **felügyeleti** > **Disk Storage** > **Hozzáadás**.
+
+    ![Adja hozzá a lemezes tárolás párbeszédpanel](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
+
+4. Az a **lemezterület hozzáadása** párbeszédablakban válassza **lemezekkel Bővíthetem a gépemet**.
+
+5. Az elérhető lemezek listája, válassza ki a lemezeket, válassza ki a hozzáadni kívánt **Hozzáadás**, majd válassza ki **OK**.
 
 ## <a name="next-steps"></a>További lépések
-Biztonsági kiszolgáló telepítése után megtudhatja, hogyan készíti elő a kiszolgálót, vagy indítsa el a védelmet a munkaterhelés.
+Miután telepítette a Backup Server, megtudhatja, hogyan készíti elő a kiszolgálót, vagy a munkaterhelések védelmének megkezdése.
 
-- [A kiszolgálói biztonsági mentési feladatok előkészítése](backup-azure-microsoft-azure-backup.md)
-- [Készítsen biztonsági másolatot a VMware server Backup Server használatával](backup-azure-backup-server-vmware.md)
-- [Készítsen biztonsági másolatot az SQL Server biztonsági másolat-kiszolgáló használatával](backup-azure-sql-mabs.md)
-
+- [Backup Server számítási feladatainak előkészítése](backup-azure-microsoft-azure-backup.md)
+- [VMware-kiszolgáló biztonsági mentése Backup Server használatával](backup-azure-backup-server-vmware.md)
+- [SQL Server biztonsági mentése Backup Server használatával](backup-azure-sql-mabs.md)

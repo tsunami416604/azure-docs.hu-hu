@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 07/06/2018
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: 631225e6e0a7bb3bc42741e2761e3746c001c217
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 50dcd2a6a2c8dc703b4c8c0ee8fb6270e0840581
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211638"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566465"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Állítsa be a VMware virtuális gépek vészhelyreállítása az Azure-ban a PowerShell-lel
 
@@ -23,7 +23,8 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 > [!div class="checklist"]
 > - Hozzon létre egy Recovery Services-tárolót, és állítsa be a tárolási környezet.
 > - Ellenőrizze a kiszolgáló regisztrálása a tárolóban.
-> - A replikáció, többek között a replikációs szabályzat beállítása. A vCenter-kiszolgáló hozzáadása, és a virtuális gépek felderítéséhez. > - A vCenter-kiszolgáló hozzáadása és felderítése 
+> - A replikáció, többek között a replikációs szabályzat beállítása. A vCenter-kiszolgáló hozzáadása, és a virtuális gépek felderítéséhez. 
+> - VCenter-kiszolgáló hozzáadása és felderítése 
 > - Replikációs adatok tárolásához a storage-fiókok létrehozásához, és a virtuális gépek replikálása.
 > - Feladatátvétel végrehajtása. Feladatátvétel-beállítások konfigurálása, egy e beállítások végrehajtani a virtuális gépek replikálásához.
 
@@ -93,7 +94,7 @@ Select-AzureRmSubscription -SubscriptionName "ASR Test Subscription"
    ```
 
 4. A letöltött regisztrációs kulcsot használja, és kövesse a telepítés befejezéséhez és a konfigurációs kiszolgáló regisztrálása az alábbiakban a cikkeket.
-   - [Védelmi célok megválasztása](vmware-azure-set-up-source.md#choose-your-protection-goals)
+   - [Védelmi célok megválasztása](vmware-azure-set-up-source.md#choose-protection-goals)
    - [A forráskörnyezet beállítása](vmware-azure-set-up-source.md#set-up-the-configuration-server) 
 
 ### <a name="set-the-vault-context"></a>A tárolási környezet beállítása

@@ -3,18 +3,18 @@ title: Üzembe helyezés és monitorozás modulok az Azure IoT Edge (CLI) |} A M
 description: A peremhálózati eszközökön futó modulok kezelése
 keywords: ''
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 07/25/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a3d073e9fd7c535ea84d6e4dbbf8003a6c55725b
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 3f2e7de6b32b4cca6320933050775f843e2cdf39
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394612"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567933"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Üzembe helyezés és monitorozás az Azure CLI használatával nagy mennyiségű IoT Edge-modulok
 
@@ -144,7 +144,7 @@ A következő paranccsal hozzon létre egy központi telepítést:
 * **– címkék** -címkék nyomon követéséhez az üzemelő példányok hozzáadása. Címkék olyan név, érték párok, melyek az üzemelő példány leírására. Ha például `HostPlatform, Linux` vagy `Version, 3.0.1`
 * **– tartalmak** -fájl elérési útja az üzembe helyezés manifest JSON. 
 * **---központnév** – az IoT hub, amely létrehozza a központi telepítés nevét. A központ az aktuális előfizetésben kell lennie. Váltson át a kívánt előfizetés azonosítóértékét paranccsal `az account set -s [subscription name]`
-* **--célfeltétel** – adja meg a célként megadott feltétel meghatározásához, hogy mely eszközök érinteni fog a központi telepítés. A feltétel device twin címkék alapján vagy az ikereszköz jelentett tulajdonságait, és meg kell egyeznie a kifejezés formátuma. Ha például `tags.environment='test'` vagy `properties.reported.devicemodel='4000x'`. 
+* **--célfeltétel** – adja meg a célként megadott feltétel meghatározásához, hogy mely eszközök érinteni fog a központi telepítés. A feltétel device twin címkék alapján vagy az ikereszköz jelentett tulajdonságait, és meg kell egyeznie a kifejezés formátuma. Ha például `tags.environment='test'` vagy `properties.reported.devicemodel='4000x'`. 
 * **--prioritású** -pozitív egész szám. Abban az esetben, ha két vagy több üzemelő példány célzott ugyanarra az eszközre, az üzembe helyezés a legnagyobb numerikus értékkel prioritás érvényes lesz.
 
 ## <a name="monitor-a-deployment"></a>Egy központi telepítésének figyelése
@@ -157,7 +157,7 @@ az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name
 * **– üzembe helyezési azonosító** – a központi telepítés, amely az IoT hub nevét.
 * **---központnév** -neve az IoT hub, amelyben az üzemelő példány található. A központ az aktuális előfizetésben kell lennie. Váltson át a kívánt előfizetés azonosítóértékét paranccsal `az account set -s [subscription name]`
 
-Vizsgálja meg az üzembe helyezés a parancssori ablakba. A **metrikák** tulajdonság mindegyik metrikát, amely kiértékeli a valamennyi elosztóhoz számát sorolja fel:
+Vizsgálja meg az üzembe helyezés a parancssori ablakba. A **metrikák** tulajdonság mindegyik metrikát, amely kiértékeli a valamennyi elosztóhoz számát sorolja fel:
 * **targetedCount** -egy rendszer mérőszám, amely a célcsoport-kezelési feltételnek megfelelő IoT hub device twins számát adja meg.
 * **appliedCount** -rendszer metrika kellett volna a alkalmazni az IoT Hub az ikermodulokkal telepítési tartalmakhoz eszközök számát adja meg.
 * **reportedSuccessfulCount** -eszköz, amely a peremhálózati eszközök számát adja meg az üzembe helyezés sikeressége az IoT Edge-ügyfél futtatókörnyezet reporting metrikát.

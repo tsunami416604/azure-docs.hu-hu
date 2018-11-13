@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 09f827e8784fe2a97c587524d70baf76ae4458ba
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: ad2032345332519713b177596df0556e4c35c18c
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741861"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567740"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>A módosítási hírcsatorna támogatása az Azure Cosmos DB használata
 
@@ -177,7 +177,7 @@ A változáscsatorna feldolgozói könyvtárával olvasási módosítások egysz
 
 A bal oldali ügyfél első lett elindítva, és indulása, figyelés, az összes partíciót, majd a második ügyfél lett elindítva, majd az első lehetővé teszik a bérletek második ügyfélnek némelyikének nyissa meg. Amint láthatja, ez a nagyszerű módja a munkát egymás között különböző gépek és az ügyfelek között.
 
-Vegye figyelembe, hogy ha két kiszolgáló nélküli Azure funtions figyelési ugyanabba a gyűjteménybe, és az azonos bérleti használatával, akkor a két függvényt kaphat a különböző dokumentumokon, attól függően, hogy a feldolgozói kódtára úgy dönt, hogy észlelést a partíciók.
+Vegye figyelembe, hogy ha két kiszolgáló nélküli Azure functions monitorozási ugyanabba a gyűjteménybe, és használja ugyanazt a bérlet rendelkezik majd a két függvényt kaphat attól függően, hogy hogyan a feldolgozói kódtára úgy dönt, hogy a partíciók feldolgozása különböző dokumentumokon.
 
 <a id="understand-cf"></a>
 ### <a name="understanding-the-change-feed-processor-library"></a>Feldolgozói kódtára ismertetése a módosítási hírcsatorna

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: cef3eef86cbb4abde5005f7a5bc278f9cd831b64
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 7ea379516c6e636abd1309416374be75bcdbb686
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515267"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578739"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Az Azure Cosmos DB magas rendelkezésre állás
 
@@ -55,17 +55,7 @@ Regionális üzemkimaradások utáni helyreállításon nem ritkák, és az Azur
 
 - Egyetlen régióban fiókok elveszítheti a rendelkezésre állás a következő regionális kimaradás. Azt javasoljuk, hogy legalább két régió (lehetőleg, legalább két írási régió), a Cosmos-fiók beállítása mindig a magas rendelkezésre állásának biztosításához.
 
-### <a name="durability-following-a-regional-disaster"></a>A következő regionális katasztrófa tartóssága
-
-Írási művelet arra vonatkozik, az ügyfél számára, mielőtt az adatok tartósan véglegesítve lettek szerint a kvórum replikával, amely az írási műveletek a régión belül. Az alábbi táblázat az esetleges adatvesztési időszak melyik konzisztenciaszint, a következő egy helyreállíthatatlan regionális katasztrófa számos régióban átfedés Cosmos-fiókok számára.
-
-| **Konzisztenciaszint** | **A következő regionális katasztrófa lehetséges adatvesztési időszak** |
-| - | - |
-| Erős | Nulla |
-| Kötött elavulás | A Cosmos-fiók konfigurálása a "frissesség ablakban" korlátozódik. |
-| Munkamenet | Legfeljebb 5 másodperc |
-| Konzisztens előtag | Legfeljebb 5 másodperc |
-| Végleges | Legfeljebb 5 másodperc |
+- Még a rendkívül ritka és kellemetlen esemény véglegesen helyreállíthatatlan, az Azure-régió esetén nincs adatvesztés nem lehetséges a többrégiós Cosmos-fiók van konfigurálva az alapértelmezett konzisztenciaszint erős, ha. A véglegesen helyreállíthatatlan írási régiót, a konfigurált, kötött elavulás konzisztencia, többrégiós Cosmos-fiókok esetén az esetleges adatvesztési időszak korlátozódik a frissesség ablak; munkamenet, konzisztens előtag és végleges konzisztencia szintek, a potenciális adatvesztési időszak korlátozva öt másodpercenként legfeljebb.
 
 ## <a name="building-highly-available-applications"></a>Magas rendelkezésre állású alkalmazások létrehozása
 

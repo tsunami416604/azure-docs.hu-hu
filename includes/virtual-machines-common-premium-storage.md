@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 7fa7e6126c415a0a33b77b78975e8f4a533c4675
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2e8b2753a441b0d7f27745fdf622b26dcee7784a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51263287"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572254"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Nagy teljesítményű Premium Storage és a felügyelt lemezek virtuális gépekhez
 
@@ -167,7 +167,7 @@ Csillaggal szintben méretek jelenleg előzetes verzióban érhető el.
 
 * **Kiosztott kapacitás és teljesítmény**
 
-    Amikor üzembe helyez egy prémium szintű tárolólemez standard szintű tárolás esetén, garantáltan a kapacitás, IOPS és átviteli sebessége a lemezen. Ha például P50 lemez létrehozása, ha Azure látja el 4095 GB-os tárolási kapacitás, 7500 IOPS és 250 MB/s átviteli sebességet, hogy a lemez. Az alkalmazás használhatja a kapacitás és teljesítmény részét vagy egészét.
+    Amikor üzembe helyez egy prémium szintű tárolólemez standard szintű tárolás esetén, garantáltan a kapacitás, IOPS és átviteli sebessége a lemezen. Ha például P50 lemez létrehozása, ha Azure látja el 4095 GB-os tárolási kapacitás, 7500 IOPS és 250 MB/s átviteli sebességet, hogy a lemez. Az alkalmazás használhatja a kapacitás és teljesítmény részét vagy egészét. Prémium szintű SSD-lemezeket úgy tervezték, hogy a cél teljesítmény 99,9 %-ában.
 
 * **Lemezméret**
 

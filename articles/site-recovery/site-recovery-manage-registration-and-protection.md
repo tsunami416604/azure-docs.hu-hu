@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 4dac0ed85500e4339f6389f05113dfd68b72c5ff
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: da9319934068709d5635352fdbd52c3ca6ac49be
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244338"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568886"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Kiszolgálók eltávolítása és a védelem letiltása
 
@@ -173,7 +173,7 @@ Hyper-V gazdagépeket nem VMM által felügyelt Hyper-V hely vannak összegyűjt
 
     > [!NOTE]
     > Ha úgy döntött a **eltávolítása** lehetőséget, majd az alábbi parancsfájlok a replikációs beállításokat tun helyszíni VMM-kiszolgálón.
-3. Futtassa ezt a szkriptet a forrás VMM-kiszolgálón (a rendszergazda megfelelő jogosultsággal szükséges) PowerShell használatával a VMM-konzolról. Cserélje le a helyőrző **SQLVM1** a virtuális gép nevére.
+3. Futtassa ezt a szkriptet a forrás VMM-kiszolgálón (szükséges rendszergazdai jogosultságokkal) PowerShell használatával a VMM-konzolról. Cserélje le a helyőrző **SQLVM1** a virtuális gép nevére.
 
         $vm = get-scvirtualmachine -Name "SQLVM1"
         Set-SCVirtualMachine -VM $vm -ClearDRProtection
@@ -194,7 +194,7 @@ Hyper-V gazdagépeket nem VMM által felügyelt Hyper-V hely vannak összegyűjt
 > [!NOTE]
 > Ha úgy döntött a **eltávolítása** lehetőséget, majd az alábbi parancsfájlok a replikációs beállításokat tun helyszíni VMM-kiszolgálón.
 
-3. Futtassa ezt a szkriptet a forrás VMM-kiszolgálón (a rendszergazda megfelelő jogosultsággal szükséges) PowerShell használatával a VMM-konzolról. Cserélje le a helyőrző **SQLVM1** a virtuális gép nevére.
+3. Futtassa ezt a szkriptet a forrás VMM-kiszolgálón (szükséges rendszergazdai jogosultságokkal) PowerShell használatával a VMM-konzolról. Cserélje le a helyőrző **SQLVM1** a virtuális gép nevére.
 
          $vm = get-scvirtualmachine -Name "SQLVM1"
          Set-SCVirtualMachine -VM $vm -ClearDRProtection

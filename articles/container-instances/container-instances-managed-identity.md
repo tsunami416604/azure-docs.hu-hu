@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 6d31e6a4d424b8e3c634c9d5075b1f02c512187b
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 8c3c7e94db1f09164d6248cf0b9b093db0cf1d69
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651435"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578671"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Felügyelt identitások használata Azure Container Instances szolgáltatásban
 
@@ -38,7 +38,7 @@ A futó tárolót egy felügyelt identitás használják a hitelesítéshez bár
 
 ### <a name="enable-a-managed-identity"></a>Egy felügyelt identitás engedélyezése
 
- Az Azure Container Instances szolgáltatásban az Azure-erőforrások felügyelt identitások REST API-verzió 2018-10-01-es és a megfelelő SDK-k és eszközök az újabb verziók támogatják. Amikor egy tárolócsoportot hoz létre, engedélyezze egy vagy több felügyelt identitások beállításával egy [ContainerGroupIdentity](/rest/api/container-instances/containergroups/containergroups_createorupdate#containergroupidentity) tulajdonság. Emellett engedélyezheti vagy felügyelt identitások frissítése után egy tárolócsoport fut; Mindkét művelet hatására a tárolócsoport újraindításához. Az identitások egy új vagy meglévő tárolócsoport létrehozásához használja az Azure CLI, egy Resource Manager-sablon vagy egy YAML-fájlt. 
+ Az Azure Container Instances szolgáltatásban az Azure-erőforrások felügyelt identitások REST API-verzió 2018-10-01-es és a megfelelő SDK-k és eszközök az újabb verziók támogatják. Amikor egy tárolócsoportot hoz létre, engedélyezze egy vagy több felügyelt identitások beállításával egy [ContainerGroupIdentity](/rest/api/container-instances/containergroups/createorupdate#containergroupidentity) tulajdonság. Emellett engedélyezheti vagy felügyelt identitások frissítése után egy tárolócsoport fut; Mindkét művelet hatására a tárolócsoport újraindításához. Az identitások egy új vagy meglévő tárolócsoport létrehozásához használja az Azure CLI, egy Resource Manager-sablon vagy egy YAML-fájlt. 
 
 Az Azure Container Instances támogatja a felügyelt Azure-identitások mindkét típusú: felhasználó által hozzárendelt, és a rendszer által hozzárendelt. A tárolócsoport egy rendszer által hozzárendelt identitással, egy vagy több felhasználó által hozzárendelt identitások vagy mindkét típusú identitások engedélyezheti. 
 

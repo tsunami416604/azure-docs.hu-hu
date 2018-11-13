@@ -3,18 +3,18 @@ title: Helyezhet üzembe, figyelheti a modulok az Azure IoT Edge |} A Microsoft 
 description: A peremhálózati eszközökön futó modulok kezelése
 keywords: ''
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 07/25/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c6700dc4bc0cc458e34e129b2468daad88ecc8be
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 6ebd2a4e24a5f0bd9a9adad97bf26ae61219c8e0
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393457"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566245"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Üzembe helyezés és monitorozás az Azure portal használatával nagy mennyiségű IoT Edge-modulok
 
@@ -106,7 +106,7 @@ Az eszközökről a tags tulajdonság használatával a kívánt eszközök, ame
 Több központi telepítést megcélozhatnak ugyanarra az eszközre, mivel egy prioritást minden egyes üzembe helyezési kell adnia. Minden eddiginél van ütközés, ha az üzemelő példány (a magasabb értékek azt jelzik a magasabb prioritású) a legmagasabb prioritású wins. Ha két üzembe helyezés azonos prioritású számot, azt, amelyik a legtöbb készült nemrégiben wins. 
 
 1. Adja meg egy pozitív egész számot a központi telepítés **prioritású**. Abban az esetben, ha két vagy több üzemelő példány célzott ugyanarra az eszközre, az üzembe helyezés a legnagyobb numerikus értékkel prioritás érvényes lesz.
-1. Adjon meg egy **feltétel cél** meghatározni, hogy mely eszközök érinteni fog a központi telepítés. A feltétel device twin címkék alapján vagy az ikereszköz jelentett tulajdonságait, és meg kell egyeznie a kifejezés formátuma. Ha például `tags.environment='test'` vagy `properties.reported.devicemodel='4000x'`. 
+1. Adjon meg egy **feltétel cél** meghatározni, hogy mely eszközök érinteni fog a központi telepítés. A feltétel device twin címkék alapján vagy az ikereszköz jelentett tulajdonságait, és meg kell egyeznie a kifejezés formátuma. Ha például `tags.environment='test'` vagy `properties.reported.devicemodel='4000x'`. 
 1. Válassza ki **tovább** , továbbléphet az utolsó lépés.
 
 ### <a name="step-5-review-template"></a>5. lépés: A sablon áttekintése
@@ -123,14 +123,14 @@ A központi telepítés a részletek megtekintéséhez és az azt futtató eszk�
 
    ![IoT Edge-telepítések megtekintése](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
-1. Vizsgálja meg a központi telepítés listában. Minden egyes üzemelő példányhoz a következő adatokat tekintheti meg:
+1. Vizsgálja meg a központi telepítés listában. Minden egyes üzemelő példányhoz a következő adatokat tekintheti meg:
    * **ID** – a központi telepítés nevét.
    * **A feltétel cél** – a címke segítségével határozhatók meg a megcélzott eszközökön.
    * **Prioritás** – a prioritást az üzemelő példányhoz társítva.
    * **Rendszermérőszámokat** - **célzott** ikereszközök számát adja meg, amely a célcsoport-kezelési feltételnek megfelelő IoT hub és **alkalmazott** rendelkező eszközök számát adja meg a telepítési tartalom alkalmazza kellett az ikermodulokkal az IoT hubon. 
    * **Eszközmetrikák** – a központi telepítés sikeres vagy hibákat az IoT Edge-ügyfél futtatókörnyezet reporting Edge-eszközök számát.
    * **Létrehozás ideje** – a központi telepítés létrehozásakor időbélyege. Az időbélyegző ties megszüntetése, ha a két üzembe helyezés azonos prioritású szolgál. 
-2. Válassza ki a figyelni kívánt telepítést.  
+2. Válassza ki a figyelni kívánt telepítést.  
 3. Vizsgálja meg az üzembe helyezés részleteiről. Lapok segítségével ellenőrizze az üzemelő példány részleteit.
 
 ## <a name="modify-a-deployment"></a>Központi telepítés módosítása
@@ -151,10 +151,10 @@ Központi telepítés módosításához használja az alábbi lépéseket:
    ![IoT Edge-telepítések megtekintése](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. Válassza ki a telepítést, amelyet módosítani szeretne. 
-1. Hajtsa végre a frissítéseket a következő mezőket: 
-   * Célfeltétel 
-   * Címkék 
-   * Prioritás 
+1. Hajtsa végre a frissítéseket a következő mezőket: 
+   * Célfeltétel 
+   * Címkék 
+   * Prioritás 
 1. Kattintson a **Mentés** gombra.
 1. Kövesse a [központi telepítésének figyeléséről](#monitor-a-deployment) megkezdik a módosítások megtekintéséhez. 
 
@@ -170,7 +170,7 @@ Ha töröl egy központi telepítést, a következő legmagasabb prioritású ü
 
 1. A jelölőnégyzet segítségével válassza ki a törölni kívánt központi telepítés. 
 1. Válassza a **Törlés** elemet.
-1. Kérdés megtudhatja, hogy, hogy ez a művelet törli a központi telepítés és minden eszköz korábbi állapotára visszaállítani.  Ez azt jelenti, hogy egy alacsonyabb prioritású üzembe helyezés során vonatkoznak.  Ha nincs másik üzemelő példány vonatkozik, nem modulok távolítja el. Ha el kívánja távolítani az összes modult az eszközről, nulla modulok egy központi telepítés létrehozásához, és telepítheti az ugyanazokkal az eszközökkel. Válassza ki **Igen** folytatásához. 
+1. Kérdés megtudhatja, hogy, hogy ez a művelet törli a központi telepítés és minden eszköz korábbi állapotára visszaállítani.  Ez azt jelenti, hogy egy alacsonyabb prioritású üzembe helyezés során vonatkoznak.  Ha nincs másik üzemelő példány vonatkozik, nem modulok távolítja el. Ha el kívánja távolítani az összes modult az eszközről, nulla modulok egy központi telepítés létrehozásához, és telepítheti az ugyanazokkal az eszközökkel. Válassza ki **Igen** folytatásához. 
 
 ## <a name="next-steps"></a>További lépések
 

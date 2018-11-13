@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: eb0f5a4a4219c63334e0a5be3ea4378c3c317bec
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: c8bad3642f1e98cac3857d536f539554235e1a51
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288101"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578637"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>A vFXT-fürt üzembe helyezése
 
@@ -90,6 +90,7 @@ A **feltételek és kikötések**:
 
   > [!NOTE] 
   > Ha nem egy előfizetés tulajdonosa, rendelkezik egy olyan tulajdonost, fogadja el a feltételeket, a-ben, az alábbi előfeltételként felsorolt lépéseket [elfogadására szoftver előre](avere-vfxt-prereqs.md#accept-software-terms-in-advance). 
+
 
 Kattintson a **beszerzési** befejezésekor. Az öt vagy hat perccel később a vezérlő csomópont lesz üzembe helyezéséig.
 
@@ -225,7 +226,9 @@ Ehhez a központi telepítés a többi, szeretne csatlakozni a fürthöz vezérl
 ## <a name="create-the-cluster-node-access-role"></a>A fürt csomópont hozzáférés szerepkör létrehozása
 
 > [!NOTE] 
-> Ha Ön nem egy előfizetés tulajdonosa, és a szerepkör még nem hozott létre, kövesse az alábbi lépéseket, vagy az eljárással az előfizetés tulajdonosa van [Avere vFXT fürt modul hozzáférés szerepkör nélkül a tartományvezérlő létrehozása](avere-vfxt-pre-role.md).
+> * Ha Ön nem egy előfizetés tulajdonosa, és a szerepkör még nem hozott létre, kövesse az alábbi lépéseket, vagy az eljárással az előfizetés tulajdonosa van [Avere vFXT fürt modul hozzáférés szerepkör nélkül a tartományvezérlő létrehozása](avere-vfxt-pre-role.md).
+> 
+> * A Microsoft belső felhasználók "Avere fürt-futtatókörnyezet operátor" nevű kísérlet helyett a meglévő szerepkör segítségével hozzon létre egyet. 
 
 [Szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/role-based-access-control/) (RBAC) révén a vFXT fürtcsomópontok engedély szükséges feladatok végrehajtásához.  
 

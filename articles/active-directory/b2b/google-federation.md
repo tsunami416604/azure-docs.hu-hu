@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 08/20/2018
+ms.date: 11/07/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 396fb947a95ebc634ab0dea24d20f35126bc006e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 5bc94b6fe69a9ffec11fcbab952a6f8aa3e2259a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389445"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51569005"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Adja hozzá a Google B2B vendégfelhasználó Identitásszolgáltatóként
 
@@ -43,15 +43,21 @@ Először hozzon létre egy új projektet a Google fejlesztői konzolon a ügyf�
 
    ![A Google API hitelesítő adatai](media/google-federation/google-api.png)
  
-4. Válassza ki a **Oauth-hozzájárulási képernyő** lapra, és adjon meg egy **a felhasználóknak megjelenített Terméknév**. (A többi beállítást hagyja.) Kattintson a **Mentés** gombra.
+4. Válassza ki a **OAuth-hozzájárulási képernyő** lapra, és adjon meg egy **alkalmazásnév**. (A többi beállítást hagyja.)
 
    ![Google OAuth-hozzájárulási képernyő](media/google-federation/google-oauth-consent-screen.png)
 
-5. Válassza ki a **hitelesítő adatok** fülre. Az a **hitelesítő adatok létrehozása** menüben válassza a **OAuth-Ügyfélazonosító**.
+5. Görgessen a **tartományok jogosult** szakaszt, és adja meg a microsoftonline.com.
+
+   ![Jogosult tartományok szakaszban](media/google-federation/google-oauth-authorized-domains.png)
+
+6. Kattintson a **Mentés** gombra.
+
+7. Válassza ki a **hitelesítő adatok** fülre. Az a **hitelesítő adatok létrehozása** menüben válassza a **OAuth-Ügyfélazonosító**.
 
    ![A Google API hitelesítő adatai](media/google-federation/google-api-credentials.png)
 
-6. Alatt **alkalmazástípus**, válassza a **webes alkalmazás**, majd a **jogosult átirányítási URI-k**, adja meg a következő URI-k:
+8. Alatt **alkalmazástípus**, válassza a **webes alkalmazás**, majd a **jogosult átirányítási URI-k**, adja meg a következő URI-k:
    - `https://login.microsoftonline.com` 
    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(Ha `<directory id>` a címtár-azonosító)
    
@@ -60,7 +66,7 @@ Először hozzon létre egy új projektet a Google fejlesztői konzolon a ügyf�
 
    ![Hozzon létre az OAuth-Ügyfélazonosító](media/google-federation/google-create-oauth-client-id.png)
 
-7. Kattintson a **Létrehozás** gombra. Az ügyfél-azonosító és titkos ügyfélkódként fogjuk használni, amikor hozzáadja az identitásszolgáltató az Azure AD-portálra másolja.
+9. Kattintson a **Létrehozás** gombra. Az ügyfél-azonosító és titkos ügyfélkódként fogjuk használni, amikor hozzáadja az identitásszolgáltató az Azure AD-portálra másolja.
 
    ![OAuth-Azonosítót és titkos Ügyfélkód](media/google-federation/google-auth-client-id-secret.png)
 

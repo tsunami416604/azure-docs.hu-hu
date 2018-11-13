@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 11/09/2018
-ms.openlocfilehash: abf41f48ffa08867fd0f06ff88da00ca65286803
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 44d6135c8a259d3d4c791d359136963483088c5a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515709"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567893"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Egyetlen vagy készletezett adatbázisok SQL-adatbázis-replikáció
 
@@ -65,7 +65,7 @@ SQL Server-replikáció beállítható úgy, hogy egyetlen vagy készletezett ad
 
 1. Hozzon létre egy tranzakciós replikáció kiadvány egy helyszíni SQL Server-adatbázisból.  
 2. A helyszíni SQL Server használata a **új előfizetés varázsló** , vagy hozzon létre egy leküldéses előfizetés az Azure SQL Database Transact-SQL utasításokkal.  
-3. Az Azure SQL Database a kezdeti adatok, egy pillanatképet a pillanatkép-kezelő ügynök által létrehozott és az elosztott és a terjesztési ügynök által alkalmazott.   
+3. Egyetlen vagy készletezett adatbázisok az Azure SQL Database a kezdeti adatok, egy pillanatképet a pillanatkép-kezelő ügynök által létrehozott és az elosztott és a terjesztési ügynök által alkalmazott. Az Azure SQL Database felügyelt példányába használhatja egy adatbázis biztonsági másolatának használatával ültet be az előfizetői adatbázisban.
 
 ### <a name="data-migration-scenario"></a>Adatok áttelepítési forgatókönyv  
 

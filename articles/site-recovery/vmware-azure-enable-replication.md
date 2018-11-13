@@ -1,8 +1,18 @@
 ---
-title: VMware-vészhelyreállításhoz az Azure-bA az Azure Site Recovery VMware virtuális gépek replikálásának engedélyezése |} A Microsoft Docs description: Ez a cikk bemutatja, hogyan engedélyezheti a VMware virtuális gépek replikálása az Azure-ba, az Azure Site Recovery használata vész-helyreállítási.
-Szerző: asgang ms.service: a site-recovery ms.date: 07/06/2018 ms.topic: fogalmi ms.author: asgang
-
-
+title: VMware-vészhelyreállításhoz az Azure-bA az Azure Site Recovery VMware virtuális gépek replikálásának engedélyezése |} A Microsoft Docs
+description: Ez a cikk ismerteti az Azure-ba, az Azure Site Recovery használata vész-helyreállítási VMware virtuális gépek replikációjának engedélyezéséhez.
+author: asgang
+ms.service: site-recovery
+ms.date: 07/06/2018
+ms.topic: conceptual
+ms.author: asgang
+ms.openlocfilehash: c6c5aeece9e49a44654d63a7dc243991a62f2d9a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566360"
+---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Az Azure-bA VMware virtuális gépek replikálásának engedélyezése
 
 
@@ -68,10 +78,7 @@ VMware virtuális gépek replikálásához:
     ![A replikáció engedélyezése](./media/vmware-azure-enable-replication/enable-replication7.png)
 14. Kattintson a **Replikáció engedélyezése** elemre. A **Védelem engedélyezése** feladat előrehaladását a **Beállítások** > **Feladatok** > **Site Recovery-feladatok** menüpontban követheti nyomon. A **Védelem véglegesítése** feladat befejeződését követően a gép készen áll a feladatátvételre.
 
-> [!NOTE]
-> Ha a gépet pedig előkészíti a leküldéses telepítéshez, a mobilitási szolgáltatás összetevőt telepítve van, ha engedélyezve van a védelem. Miután az összetevő telepítve van a gépen, egy védelmi feladatot elindul, és nem sikerül. A hiba után manuálisan indítsa újra az egyes gépek kell. Az újraindítás után a védelmi feladat elölről kezdődik, és a kezdeti replikálást.
->
->
+
 
 ## <a name="view-and-manage-vm-properties"></a>A virtuális gépek tulajdonságainak megtekintése és kezelése
 

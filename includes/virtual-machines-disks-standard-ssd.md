@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/14/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7c7671578dc22926dabfe7735038186ab1c2c2b3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 75b3934a7329b4e83a0f36f79bbc8365eaf8a086
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264072"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572233"
 ---
 # <a name="standard-ssd-managed-disks-for-azure-virtual-machine-workloads"></a>Standard SSD Managed Disks-Azure-beli virtuális gépek számítási feladataihoz
 
@@ -46,9 +46,9 @@ Az alábbi táblázat tartalmazza a jelenleg rendelkezésre állnak az Standard 
 |E70 *    |16 384 giB      |Legfeljebb 2000       |Másodpercenként akár 500 MiB        |
 |E80 *    |– 32 767 giB      |Legfeljebb 2000       |Másodpercenként akár 500 MiB        |
 
-Standard SSD-k úgy tervezték, egyszámjegyű ezredmásodperces késéseket nyújt a legtöbb i/o-műveletek és az IOPS és átviteli sebesség, akár a fenti táblázat ismerteti a korlátokat. Tényleges IOPS és átviteli sebesség függvénye néha a forgalmi minták. Standard SSD-k, mint a HDD-lemezek stabilabb teljesítményt biztosít a kisebb hálózati késést.
+Standard SSD-k egyszámjegyű ezredmásodperces késéseket nyújt a legtöbb i/o-műveletek és az IOPS és átviteli sebesség, akár a korlátok a fenti táblázat 99 %-ában ismertetett tervezték. Tényleges IOPS és átviteli sebesség függvénye néha a forgalmi minták. Standard SSD-k, mint a HDD-lemezek stabilabb teljesítményt biztosít a kisebb hálózati késést.
 
-Prémium szintű SSD-k, másrészt jobban teljesítenek, mint Standard SSD-k, az alacsony késés érdekében, a magas IOPS és átviteli sebesség és a lemezteljesítményt együtt még jobb konzisztencia. Ez a kritikus fontosságú éles számítási feladatokhoz ajánljuk lemezes típusa. Ha a számítási feladatok nagy teljesítményű, kis késleltetésű lemeztámogatás van szüksége, érdemes a Premium Storage tárolást használ.
+Prémium szintű SSD-k, másrészt jobban teljesítenek, mint Standard SSD-k, az alacsony késés érdekében, a magas IOPS és átviteli sebesség és a lemezteljesítményt együtt még jobb konzisztencia. Prémium szintű SSD a kritikus fontosságú éles számítási feladatokhoz ajánljuk lemezes típusa. Ha a számítási feladatok nagy teljesítményű, kis késleltetésű lemeztámogatás van szüksége, érdemes a Premium Storage tárolást használ.
 
 A prémium szintű SSD-k, például a Standard SSD-k i/o-egységek mérete 256 KiB is használhatja. Ha az átvitt adatok kisebb, mint 256 KiB, akkor számít 1 i/o-egységek. Nagyobb méretű i/o-méretek számítanak több i/o-mérete 256 KiB. Ha például öt i/o-egységek 1100 KiB i/o számít.
 

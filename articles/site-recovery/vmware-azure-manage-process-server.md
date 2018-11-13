@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: 8a9342a2354cd4c92fa0230965b4eef6284ee826
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: d99b5d1fdca39466d5e09ca077329b7ffa8622bc
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209122"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568852"
 ---
 # <a name="manage-process-servers"></a>Folyamatkiszolgálók kezelése
 
@@ -79,4 +79,16 @@ Ha a folyamatkiszolgáló csatlakozni az Azure Site Recovery egy proxyt használ
 
 [!INCLUDE [site-recovery-vmware-unregister-process-server](../../includes/site-recovery-vmware-unregister-process-server.md)]
 
+## <a name="manage-anti-virus-software-on-process-servers"></a>Víruskereső szoftver a folyamatkiszolgálók kezelése
+
+Ha víruskereső szoftver egy különálló folyamatkiszolgálót vagy a fő célkiszolgáló aktív, a következő mappák kizárása víruskereső műveletek:
+
+
+- C:\Program Files\Microsoft Azure Recovery Services-ügynök
+- C:\ProgramData\ASR
+- C:\ProgramData\ASRLogs
+- C:\ProgramData\ASRSetupLogs
+- C:\ProgramData\LogUploadServiceLogs
+- C:\ProgramData\Microsoft Azure Site Recovery
+- Folyamat kiszolgáló telepítési mappájában, például: C:\Program Files (x86) \Microsoft Azure Site Recovery
 
