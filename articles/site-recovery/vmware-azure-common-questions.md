@@ -7,19 +7,19 @@ ms.service: site-recovery
 ms.date: 10/29/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 05f878d244647a79a2b3e9d0c789ba811dad71ee
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 2436a4e75045200a8d2f48586e31ebfa0c03705a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012105"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566261"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
 Ez a cikk gyakori kérdéseket, láthatjuk, a helyszíni VMware virtuális gépek vészhelyreállítása az Azure-bA telepítésekor. Ha kérdése van a cikk elolvasása után, el őket az a [Azure Recovery Services fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
 
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 ### <a name="how-is-site-recovery-priced"></a>Hogyan van a Site Recovery díjszabása?
 Felülvizsgálat [Azure Site Recovery díjszabásáról](https://azure.microsoft.com/pricing/details/site-recovery/) részleteit.
 
@@ -44,7 +44,7 @@ Ha Ön olyan előfizetés rendszergazdája, akkor a replikációs szükséges en
 
 
 
-## <a name="on-premises"></a>Helyszíni
+## <a name="on-premises"></a>Helyszíni követelmények
 
 ### <a name="what-do-i-need-on-premises"></a>Mire van szükségem helyszíni?
 A helyszíni Site Recovery-összetevőit egyetlen VMware virtuális gépeken telepített kell. Legalább egy ESXi-gazdagépen VMware-infrastruktúrára is szüksége, és azt javasoljuk, hogy a vCenter-kiszolgáló. Ezenkívül egy vagy több VMware virtuális gépek replikálásához szüksége. [További](vmware-azure-architecture.md) VMware-ből az Azure-architektúra kapcsolatban.
@@ -110,6 +110,8 @@ A konfigurációs kiszolgáló futtatja a helyszíni Site Recovery-összetevők,
 - A folyamatkiszolgáló replikációs átjáróként üzemel. Ez fogadja a replikált adatokat; gyorsítótárazás, tömörítés és titkosítással optimalizálja őket majd küld, hogy az Azure storage-., a folyamatkiszolgáló Ezenfelül telepíti a mobilitási szolgáltatás a virtuális gépeket replikálhat, és elvégzi a helyszíni VMware virtuális gépek automatikus felderítését.
 - A fő célkiszolgálón, amely az Azure-ból a feladat-visszavétel során kezeli a replikációs adatokat.
 
+[További](vmware-azure-architecture.md) a konfigurációs kiszolgáló összetevőit és folyamatokról.
+
 ### <a name="where-do-i-set-up-the-configuration-server"></a>Ha a konfigurációs kiszolgáló beállítása?
 A konfigurációs kiszolgálón egy egyetlen magas rendelkezésre állású helyszíni VMware virtuális gép van szükség.
 
@@ -126,15 +128,35 @@ Nem. Ehhez állítsa be a konfigurációs kiszolgáló az egyes régiókban kell
 ### <a name="can-i-host-a-configuration-server-in-azure"></a>Üzemeltethet a konfigurációs kiszolgáló az Azure-ban?
 Bár lehetséges a konfigurációs kiszolgálón futó Azure virtuális gép kell a helyszíni VMware-infrastruktúra és a virtuális gépek kommunikálnak. Ez adja hozzá a késésük, és hatással van a folyamatban lévő replikáció.
 
-
-### <a name="where-can-i-get-the-latest-version-of-the-configuration-server-template"></a>Hol kaphatok a konfigurációs kiszolgálói sablon legújabb verzióját?
-Töltse le a legújabb verziót a [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
-
 ### <a name="how-do-i-update-the-configuration-server"></a>Hogyan frissíthetem a konfigurációs kiszolgálót?
-Kumulatív frissítés telepítése. A legújabb frissítés információkat a a [frissítések wikioldal](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
+[Ismerje meg](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) a konfigurációs kiszolgáló frissítése. A legújabb frissítés információkat a a [Azure frissítéseit tartalmazó lapon](https://azure.microsoft.com/updates/?product=site-recovery). Emellett közvetlenül is letöltheti a legújabb verzióra a konfigurációs kiszolgáló [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
 
 ### <a name="should-i-backup-the-deployed-configuration-server"></a>Kell-e biztonsági a központilag telepített konfigurációs kiszolgálót?
 Azt javasoljuk, hogy a konfigurációs kiszolgáló rendszeres ütemezett biztonsági másolatok készítése. A sikeres feladat-visszavételhez a virtuális gép folyamatban van a feladatátvételben szerepelniük kell a konfigurációs kiszolgáló adatbázisát, és a konfigurációs kiszolgálón fut, és a egy csatlakoztatott állapotban kell lennie. További információ a konfigurációs kiszolgáló gyakori felügyeleti feladatok [Itt](vmware-azure-manage-configuration-server.md).
+
+### <a name="when-im-setting-up-the-configuration-server-can-i-download-and-install-mysql-manually"></a>Beállítom a konfigurációs kiszolgáló, amikor is tölthető le és telepítse manuálisan a MySQL?
+Igen. Töltse le a MySQL, és elhelyezheti a **C:\Temp\ASRSetup** mappát. Ezután telepítse manuálisan. Ha a konfigurációs kiszolgáló virtuális gép beállításához, és fogadja el a a feltételeket, MySQL fog szerepelni **már telepítve van** a **töltse le és telepítse**.
+
+### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>Kerülje a MySQL letöltése azonban telepíteni a Site Recovery segítségével?
+Igen. Töltse le a MySQL-telepítőt, és elhelyezheti a **C:\Temp\ASRSetup** mappát.  Ha beállította a konfigurációs kiszolgáló virtuális gép, fogadja el a a feltételeket, és kattintson a **töltse le és telepítse**, a portálon a telepítő a MySQL telepítése hozzáadott fogja használni.
+ 
+### <a name="canl-i-use-the-configuration-server-vm-for-anything-else"></a>A konfigurációs kiszolgáló virtuális Géphez használni semmi másra CanL?
+Nem, csak használja a virtuális gép a konfigurációs kiszolgáló. 
+
+### <a name="can-i-change-the-vault-registered-in-the-configuration-server"></a>Módosíthatom a tárolót a konfigurációs kiszolgáló regisztrálva?
+Nem. Egy tárolót a konfigurációs kiszolgáló regisztrálása után nem módosítható.
+
+### <a name="can-i-use-the-same-configuration-server-for-disaster-recovery-of-both-vmware-vms-and-physical-servers"></a>Használható a ugyanazon konfigurációs kiszolgáló VMware virtuális gépek és fizikai kiszolgálók vész-helyreállítási
+Igen, de vegye figyelembe, hogy a fizikai gép is lehet csak akkor nem vissza a VMware virtuális gép.
+
+### <a name="where-can-i-download-the-passphrase-for-the-configuration-server"></a>Honnan tölthetem le a hozzáférési kódot a konfigurációs kiszolgáló?
+[Ebből a cikkből](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase) további információ a hozzáférési kód letöltése.
+
+### <a name="where-can-i-download-vault-registration-keys"></a>Honnan tölthetem le tároló regisztrációs kulcsokat?
+
+Az a **Recovery Services-tároló**, **kezelése** > **Site Recovery-infrastruktúra** > **konfigurációskiszolgálók**. A **kiszolgálók**válassza **regisztrációs kulcs letöltése** töltheti le a tároló hitelesítőadat-fájlja.
+
+
 
 ## <a name="mobility-service"></a>Mobilitási szolgáltatás
 
