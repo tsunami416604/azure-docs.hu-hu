@@ -14,12 +14,12 @@ ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 35737b91d8ef0b58223f51530f56408df1c7eb8e
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: d8bb7a975bd5bab8698d20e5d21514b79945eac6
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138792"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51564918"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights kohorszok
 
@@ -49,9 +49,9 @@ A csapata egy szerepet játszanak felhasználói bárki, aki használja az alkal
     Nincsenek a a kohorsz a következő három paramétert:
     * **Tevékenységek**, ha úgy dönt, mely eseményeket és oldalmegtekintéseket számít a "használati."
     * **Időszak**, egy hónapig definíciója.
-    * **UsedAtleastCustom**, szám, ahányszor felhasználók használatára van szükség valami időn belül számítanak bele foglalkozó.
+    * **UsedAtLeastCustom**, szám, ahányszor felhasználók használatára van szükség valami időn belül számítanak bele foglalkozó.
 
-4. Változás **UsedAtleastCustom** való **5 + nap**, és hagyja **időszak** 28 napos alapértelmezett.
+4. Változás **UsedAtLeastCustom** való **5 + nap**, és hagyja **időszak** 28 napos alapértelmezett.
 
     ![Szerepet játszanak felhasználók](.\media\app-insights-usage-cohorts\003.png)
 
