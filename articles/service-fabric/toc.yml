@@ -452,38 +452,40 @@ items:
       href: service-fabric-backuprestoreservice-quickstart-standalonecluster.md
     - name: Régi Java-alkalmazás migrálása a Maven támogatására
       href: service-fabric-migrate-old-javaapp-to-use-maven.md
-  - name: Munka a Windows/VS fejlesztői környezetében
+  - name: IDE-ben végzett munka
     items:
-    - name: Alkalmazások kezelése a Visual Studióban
-      href: service-fabric-manage-application-in-visual-studio.md
-    - name: Biztonságos kapcsolatok konfigurálása a Visual Studióban
-      href: service-fabric-visualstudio-configure-secure-connections.md
-    - name: .NET-szolgáltatás hibakeresése a VS-ben
-      href: service-fabric-debugging-your-application.md
-    - name: Hibakeresés Windows-tárolókon a Service Fabric és a VS használatával
-      href: service-fabric-how-to-debug-windows-containers.md
-    - name: Gyakori hibák és kivételek
-      href: service-fabric-errors-and-exceptions.md
-    - name: Helyi monitorozás és diagnosztika
-      href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
-    - name: Linux-fürt beállítása Windowson
-      href: service-fabric-local-linux-cluster-windows.md
-  - name: Munka a Linux/Eclipse fejlesztői környezetében
-    items:
-    - name: Az Eclipse beépülő modul használatának első lépései Java-fejlesztésekhez
-      href: service-fabric-get-started-eclipse.md
-    - name: Java szolgáltatás hibakeresése az Eclipse-ben
-      href: service-fabric-debugging-your-application-java.md
-    - name: Helyi monitorozás és diagnosztika
-      href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md
-  - name: Munka VS Code-környezetben
-    items:
-    - name: Bevezetés a VS Code használatába
-      href: service-fabric-get-started-vs-code.md
-    - name: C# Service Fabric-alkalmazások fejlesztése a VS Code-dal
-      href: service-fabric-develop-csharp-applications-with-vs-code.md
-    - name: Java Service Fabric-alkalmazások fejlesztése a VS Code-dal
-      href: service-fabric-develop-java-applications-with-vs-code.md
+    - name: Munka a Windows/VS fejlesztői környezetében
+      items:
+      - name: Alkalmazások kezelése a Visual Studióban
+        href: service-fabric-manage-application-in-visual-studio.md
+      - name: Biztonságos kapcsolatok konfigurálása a Visual Studióban
+        href: service-fabric-visualstudio-configure-secure-connections.md
+      - name: .NET-szolgáltatás hibakeresése a VS-ben
+        href: service-fabric-debugging-your-application.md
+      - name: Hibakeresés Windows-tárolókon a Service Fabric és a VS használatával
+        href: service-fabric-how-to-debug-windows-containers.md
+      - name: Gyakori hibák és kivételek
+        href: service-fabric-errors-and-exceptions.md
+      - name: Helyi monitorozás és diagnosztika
+        href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
+      - name: Linux-fürt beállítása Windowson
+        href: service-fabric-local-linux-cluster-windows.md
+    - name: Munka a Linux/Eclipse fejlesztői környezetében
+      items:
+      - name: Az Eclipse beépülő modul használatának első lépései Java-fejlesztésekhez
+        href: service-fabric-get-started-eclipse.md
+      - name: Java szolgáltatás hibakeresése az Eclipse-ben
+        href: service-fabric-debugging-your-application-java.md
+      - name: Helyi monitorozás és diagnosztika
+        href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md
+    - name: Munka VS Code-környezetben
+      items:
+      - name: Bevezetés a VS Code használatába
+        href: service-fabric-get-started-vs-code.md
+      - name: C# Service Fabric-alkalmazások fejlesztése a VS Code-dal
+        href: service-fabric-develop-csharp-applications-with-vs-code.md
+      - name: Java Service Fabric-alkalmazások fejlesztése a VS Code-dal
+        href: service-fabric-develop-java-applications-with-vs-code.md
   - name: Áttelepítés a Cloud Servicesből
     items:
     - name: A Cloud Services és a Service Fabric összehasonlítása
@@ -761,9 +763,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: Videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: 33a243d89888bcb34d9c23a100643876f6eb4b53
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a7549a3544fb40527e0526bfb5c7db424b0d014a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241293"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567808"
