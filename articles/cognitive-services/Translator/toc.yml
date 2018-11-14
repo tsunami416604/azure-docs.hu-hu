@@ -1,180 +1,241 @@
 items:
-- name: A Translator Text API dokumentációja
+- name: A Translator Text dokumentációja
   href: index.yml
-- name: Áttekintés
+- name: Translator Text API
   items:
-  - name: Mi a Translator Text API?
-    href: translator-info-overview.md
-- name: Gyors útmutatók
+  - name: Áttekintés
+    items:
+    - name: Mi a Translator Text API?
+      href: translator-info-overview.md
+  - name: Gyors útmutatók
+    items:
+    - name: Szöveg lefordítása
+      items:
+      - name: C#, REST
+        href: quickstart-csharp-translate.md
+      - name: Go, REST
+        href: quickstart-go-translate.md
+      - name: Java, REST
+        href: quickstart-java-translate.md
+      - name: Node.js, REST
+        href: quickstart-nodejs-translate.md
+      - name: PHP, REST
+        href: quickstart-php-translate.md
+      - name: Python, REST
+        href: quickstart-python-translate.md
+      - name: Ruby, REST
+        href: quickstart-ruby-translate.md
+    - name: Szöveg átírása
+      items:
+      - name: C#, REST
+        href: quickstart-csharp-transliterate.md
+      - name: Go, REST
+        href: quickstart-go-transliterate.md
+      - name: Java, REST
+        href: quickstart-java-transliterate.md
+      - name: Node.js, REST
+        href: quickstart-nodejs-transliterate.md
+      - name: PHP, REST
+        href: quickstart-php-transliterate.md
+      - name: Python, REST
+        href: quickstart-python-transliterate.md
+      - name: Ruby, REST
+        href: quickstart-ruby-transliterate.md
+    - name: Szöveg nyelvének azonosítása
+      items:
+      - name: C#, REST
+        href: quickstart-csharp-detect.md
+      - name: Go, REST
+        href: quickstart-go-detect.md
+      - name: Java, REST
+        href: quickstart-java-detect.md
+      - name: Node.js, REST
+        href: quickstart-nodejs-detect.md
+      - name: PHP, REST
+        href: quickstart-php-detect.md
+      - name: Python, REST
+        href: quickstart-python-detect.md
+      - name: Ruby, REST
+        href: quickstart-ruby-detect.md
+    - name: Alternatív fordítások lekérése
+      items:
+      - name: C#, REST
+        href: quickstart-csharp-dictionary.md
+      - name: Go, REST
+        href: quickstart-go-dictionary.md
+      - name: Java, REST
+        href: quickstart-java-dictionary.md
+      - name: Node.js, REST
+        href: quickstart-nodejs-dictionary.md
+      - name: PHP, REST
+        href: quickstart-php-dictionary.md
+      - name: Python, REST
+        href: quickstart-python-dictionary.md
+      - name: Ruby, REST
+        href: quickstart-ruby-dictionary.md
+    - name: Támogatott nyelvek lekérése
+      items:
+      - name: C#, REST
+        href: quickstart-csharp-languages.md
+      - name: Go, REST
+        href: quickstart-go-languages.md
+      - name: Java, REST
+        href: quickstart-java-languages.md
+      - name: Node.js, REST
+        href: quickstart-nodejs-languages.md
+      - name: PHP, REST
+        href: quickstart-php-languages.md
+      - name: Python, REST
+        href: quickstart-python-languages.md
+      - name: Ruby, REST
+        href: quickstart-ruby-languages.md
+    - name: Mondat hosszának meghatározása
+      items:
+      - name: C#, REST
+        href: quickstart-csharp-sentences.md
+      - name: Go, REST
+        href: quickstart-go-sentences.md
+      - name: Java, REST
+        href: quickstart-java-sentences.md
+      - name: Node.js, REST
+        href: quickstart-nodejs-sentences.md
+      - name: PHP, REST
+        href: quickstart-php-sentences.md
+      - name: Python, REST
+        href: quickstart-python-sentences.md
+      - name: Ruby, REST
+        href: quickstart-ruby-sentences.md
+  - name: Oktatóanyagok
+    items:
+    - name: Translator Textet használó WPF-alkalmazás létrehozása
+      href: tutorial-wpf-translation-csharp.md
+  - name: Alapelvek
+    items:
+    - name: Szövegfordítás testreszabása és javítása
+      href: customization.md
+    - name: Hogyan számolja az API a karaktereket
+      href: character-counts.md
+  - name: Útmutatók
+    items:
+    - name: Regisztrálás a Translator Text API-ra
+      href: translator-text-how-to-signup.md
+    - name: Áttérés a Text API 3-as verziójára
+      href: migrate-to-v3.md
+    - name: Profanitásszűrés hozzáadása
+      href: profanity-filtering.md
+    - name: Szóigazítási információ fogadása
+      href: word-alignment.md
+    - name: A dinamikus szótár funkció használata
+      href: dynamic-dictionary.md
+  - name: Referencia
+    items:
+    - name: 3-as verziójú Translator Text API-referencia
+      href: reference/v3-0-reference.md
+      items:
+      - name: Nyelvek
+        href: reference/v3-0-languages.md
+      - name: Fordítás
+        href: reference/v3-0-translate.md
+      - name: Átírás
+        href: reference/v3-0-transliterate.md
+      - name: Észlelés
+        href: reference/v3-0-detect.md
+      - name: BreakSentence
+        href: reference/v3-0-break-sentence.md
+      - name: Keresés a szótárban
+        href: reference/v3-0-dictionary-lookup.md
+      - name: Szótár – példák
+        href: reference/v3-0-dictionary-examples.md
+    - name: 2-es verziójú Translator Text API-referencia (elavult)
+      href: reference/v2-0-reference.md
+      items:
+      - name: Szöveg átalakítása
+        href: transform-text.md
+      - name: A Collaborative Translation Framework (CTF) jelentéskészítés használata
+        href: ctf-reporting.md
+      - name: Az N számú legjobb fordítás visszaadása
+        href: return-n-best-translations.md
+  - name: További források
+    items:
+    - name: Kódminták a GitHubon
+      href: https://aka.ms/TranslatorGitHub
+    - name: GYIK
+      href: https://www.microsoft.com/translator/faq.aspx
+    - name: Tudásbázis
+      href: https://cognitive.uservoice.com/knowledgebase/topics/132647-translator
+    - name: Nyelvi és régiós támogatás
+      href: language-support.md
+    - name: Díjszabás és korlátok
+      href: https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/
+    - name: Régiónkénti rendelkezésre állás
+      href: https://azure.microsoft.com/global-infrastructure/services/
+    - name: Stack Overflow
+      href: https://stackoverflow.com/questions/tagged/microsoft-translator
+    - name: UserVoice
+      href: https://cognitive.uservoice.com/forums/558796-translator
+- name: Custom Translator
   items:
-  - name: Szöveg lefordítása
+  - name: Áttekintés
     items:
-    - name: C#, REST
-      href: quickstart-csharp-translate.md
-    - name: Go, REST
-      href: quickstart-go-translate.md
-    - name: Java, REST
-      href: quickstart-java-translate.md
-    - name: Node.js, REST
-      href: quickstart-nodejs-translate.md
-    - name: PHP, REST
-      href: quickstart-php-translate.md
-    - name: Python, REST
-      href: quickstart-python-translate.md
-    - name: Ruby, REST
-      href: quickstart-ruby-translate.md
-  - name: Szöveg átírása
+    - name: Mi a Custom Translator?
+      href: custom-translator/overview.md
+  - name: Gyors útmutatók
     items:
-    - name: C#, REST
-      href: quickstart-csharp-transliterate.md
-    - name: Go, REST
-      href: quickstart-go-transliterate.md
-    - name: Java, REST
-      href: quickstart-java-transliterate.md
-    - name: Node.js, REST
-      href: quickstart-nodejs-transliterate.md
-    - name: PHP, REST
-      href: quickstart-php-transliterate.md
-    - name: Python, REST
-      href: quickstart-python-transliterate.md
-    - name: Ruby, REST
-      href: quickstart-ruby-transliterate.md
-  - name: Szöveg nyelvének azonosítása
+    - name: Egyéni modell létrehozása
+      href: custom-translator/quickstart-build-deploy-custom-model.md
+  - name: Alapelvek
     items:
-    - name: C#, REST
-      href: quickstart-csharp-detect.md
-    - name: Go, REST
-      href: quickstart-go-detect.md
-    - name: Java, REST
-      href: quickstart-java-detect.md
-    - name: Node.js, REST
-      href: quickstart-nodejs-detect.md
-    - name: PHP, REST
-      href: quickstart-php-detect.md
-    - name: Python, REST
-      href: quickstart-python-detect.md
-    - name: Ruby, REST
-      href: quickstart-ruby-detect.md
-  - name: Alternatív fordítások lekérése
+    - name: Munkaterület és projektek
+      href: custom-translator/workspace-and-project.md
+    - name: Párhuzamos dokumentumok
+      href: custom-translator/what-are-parallel-documents.md
+    - name: Szótár
+      href: custom-translator/what-is-dictionary.md
+    - name: Dokumentumformátumok
+      href: custom-translator/document-formats-naming-convention.md
+    - name: Mondatok igazítása
+      href: custom-translator/sentence-alignment.md
+    - name: Betanítás és modell
+      href: custom-translator/training-and-model.md
+    - name: BLEU-pontszám
+      href: custom-translator/what-is-bleu-score.md
+  - name: Útmutatók
     items:
-    - name: C#, REST
-      href: quickstart-csharp-dictionary.md
-    - name: Go, REST
-      href: quickstart-go-dictionary.md
-    - name: Java, REST
-      href: quickstart-java-dictionary.md
-    - name: Node.js, REST
-      href: quickstart-nodejs-dictionary.md
-    - name: PHP, REST
-      href: quickstart-php-dictionary.md
-    - name: Python, REST
-      href: quickstart-python-dictionary.md
-    - name: Ruby, REST
-      href: quickstart-ruby-dictionary.md
-  - name: Támogatott nyelvek lekérése
+    - name: Projekt létrehozása
+      href: custom-translator/how-to-create-project.md
+    - name: Projektek kezelése
+      href: custom-translator/how-to-search-edit-delete-projects.md
+    - name: Dokumentum feltöltése
+      href: custom-translator/how-to-upload-document.md
+    - name: Dokumentum részleteinek megtekintése
+      href: custom-translator/how-to-view-document-details.md
+    - name: Modell betanítása
+      href: custom-translator/how-to-train-model.md
+    - name: Modell részleteinek megtekintése
+      href: custom-translator/how-to-view-model-details.md
+    - name: Rendszer teszteredményeinek megtekintése
+      href: custom-translator/how-to-view-system-test-results.md
+    - name: Beállítások kezelése
+      href: custom-translator/how-to-manage-settings.md
+    - name: Migrálás a hubról
+      href: custom-translator/how-to-migrate.md
+  - name: További források
     items:
-    - name: C#, REST
-      href: quickstart-csharp-languages.md
-    - name: Go, REST
-      href: quickstart-go-languages.md
-    - name: Java, REST
-      href: quickstart-java-languages.md
-    - name: Node.js, REST
-      href: quickstart-nodejs-languages.md
-    - name: PHP, REST
-      href: quickstart-php-languages.md
-    - name: Python, REST
-      href: quickstart-python-languages.md
-    - name: Ruby, REST
-      href: quickstart-ruby-languages.md
-  - name: Mondat hosszának meghatározása
-    items:
-    - name: C#, REST
-      href: quickstart-csharp-sentences.md
-    - name: Go, REST
-      href: quickstart-go-sentences.md
-    - name: Java, REST
-      href: quickstart-java-sentences.md
-    - name: Node.js, REST
-      href: quickstart-nodejs-sentences.md
-    - name: PHP, REST
-      href: quickstart-php-sentences.md
-    - name: Python, REST
-      href: quickstart-python-sentences.md
-    - name: Ruby, REST
-      href: quickstart-ruby-sentences.md
-  expanded: true
-- name: Oktatóanyagok
-  items:
-  - name: Translator Textet használó WPF-alkalmazás létrehozása
-    href: tutorial-wpf-translation-csharp.md
-- name: Alapelvek
-  items:
-  - name: Szövegfordítás testreszabása és javítása
-    href: customization.md
-  - name: Hogyan számolja az API a karaktereket
-    href: character-counts.md
-- name: Útmutatók
-  items:
-  - name: Regisztrálás a Translator Text API-ra
-    href: translator-text-how-to-signup.md
-  - name: Áttérés a Text API 3-as verziójára
-    href: migrate-to-v3.md
-  - name: Profanitásszűrés hozzáadása
-    href: profanity-filtering.md
-  - name: Szóigazítási információ fogadása
-    href: word-alignment.md
-  - name: A dinamikus szótár funkció használata
-    href: dynamic-dictionary.md
-- name: Referencia
-  items:
-  - name: 3-as verziójú Translator Text API-referencia
-    href: reference/v3-0-reference.md
-    items:
-    - name: Nyelvek
-      href: reference/v3-0-languages.md
-    - name: Fordítás
-      href: reference/v3-0-translate.md
-    - name: Átírás
-      href: reference/v3-0-transliterate.md
-    - name: Észlelés
-      href: reference/v3-0-detect.md
-    - name: BreakSentence
-      href: reference/v3-0-break-sentence.md
-    - name: Keresés a szótárban
-      href: reference/v3-0-dictionary-lookup.md
-    - name: Szótár – példák
-      href: reference/v3-0-dictionary-examples.md
-  - name: 2-es verziójú Translator Text API-referencia (elavult)
-    href: reference/v2-0-reference.md
-    items:
-    - name: Szöveg átalakítása
-      href: transform-text.md
-    - name: A Collaborative Translation Framework (CTF) jelentéskészítés használata
-      href: ctf-reporting.md
-    - name: Az N számú legjobb fordítás visszaadása
-      href: return-n-best-translations.md
-- name: További források
-  items:
-  - name: Kódminták a GitHubon
-    href: https://aka.ms/TranslatorGitHub
-  - name: GYIK
-    href: https://www.microsoft.com/translator/faq.aspx
-  - name: Tudásbázis
-    href: https://cognitive.uservoice.com/knowledgebase/topics/132647-translator
-  - name: Nyelvi és régiós támogatás
-    href: language-support.md
-  - name: Díjszabás és korlátok
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/
-  - name: Régiónkénti rendelkezésre állás
-    href: https://azure.microsoft.com/global-infrastructure/services/
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/microsoft-translator
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/558796-translator
-ms.openlocfilehash: acc5019177bf75a0bb34eb739cc8e2400552832e
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+    - name: Nyelvi támogatás
+      href: https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support
+    - name: Szószedet
+      href: custom-translator/glossary.md
+    - name: GYIK
+      href: custom-translator/faq.md
+    - name: Díjszabás
+      href: https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/
+    - name: Stack Overflow
+      href: https://stackoverflow.com/questions/tagged/microsoft-translator
+    - name: UserVoice
+      href: https://cognitive.uservoice.com/knowledgebase/articles/1855897-custom-translator-preview-resource-guide
+ms.openlocfilehash: e0a2c0d461cd87ef1ff53e2d8b2b68a2135e6e10
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945263"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624488"

@@ -67,21 +67,9 @@ items:
     - name: Bérlőkorlátozások
       href: tenant-restrictions.md
   - name: Egyszeri bejelentkezés
-    items:
-    - name: Áttekintés
-      href: what-is-single-sign-on.md
-    - name: SSO-metódusok
-      href: application-proxy-single-sign-on.md
-    - name: Válasszon egy módszert
-      href: single-sign-on-modes.md
-    - name: Kezdőtartomány felderítése
-      href: configure-authentication-for-federated-users-portal.md
-    - name: Kerberos általi korlátozott delegálás (KCD)
-      href: application-proxy-configure-single-sign-on-with-kcd.md
-    - name: Jelszótárolás
-      href: application-proxy-configure-single-sign-on-password-vaulting.md
-    - name: Fejlécek
-      href: application-proxy-configure-single-sign-on-with-ping-access.md
+    href: what-is-single-sign-on.md
+  - name: Végfelhasználói portálok
+    href: end-user-experiences.md
 - name: Útmutatók
   items:
   - name: Felhőalkalmazás-integráció
@@ -200,6 +188,8 @@ items:
       href: disable-user-sign-in-portal.md
     - name: Új önkiszolgáló alkalmazás-hozzárendelés konfigurálása
       href: manage-self-service-access.md
+    - name: Kezdőtartomány felderítése
+      href: configure-authentication-for-federated-users-portal.md
   - name: Egyszeri bejelentkezés
     items:
     - name: Nem katalógusbeli alkalmazások konfigurálása
@@ -220,6 +210,14 @@ items:
       href: configure-password-single-sign-on-non-gallery-applications.md
     - name: Gyakori problémák jelszó konfigurálásakor – nem katalógusbeli alkalmazások
       href: configure-password-single-sign-on-non-gallery-applications-problems.md
+    - name: Alkalmazásproxy
+      items:
+      - name: Kerberos általi korlátozott delegálás (KCD)
+        href: application-proxy-configure-single-sign-on-with-kcd.md
+      - name: Jelszótárolás
+        href: application-proxy-configure-single-sign-on-password-vaulting.md
+      - name: Fejlécek
+        href: application-proxy-configure-single-sign-on-with-ping-access.md
   - name: Hozzáférési panel
     items:
     - name: Böngészőbővítmény kezelése
@@ -286,9 +284,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-active-directory
   - name: Videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: 7114e27840d9a21701fe30537dbd6d533abaef7e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 80153dcbb00c1d0ac9b0c1c3f87004ffd6f59b1f
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413978"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622788"

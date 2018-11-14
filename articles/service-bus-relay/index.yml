@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: fe78cdfefb8062d3d576937afd133905e1787a8d
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 7eba9c526f26254a400eaee1a00644399d3979a8
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698801"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612100"
 documentType: LandingData
 title: Az Azure Service Bus Relay dokumentációja
 metadata:
@@ -22,33 +22,19 @@ metadata:
 abstract:
   description: Az Azure Relay szolgáltatás elősegíti a helyszíni környezet és a felhő közötti hibrid alkalmazások működtetését egy vállalati hálózaton belül és a nyilvános felhőben anélkül, hogy meg kellene nyitni egy tűzfalkapcsolatot, vagy zavaró módosításokat kellene végrehajtani a vállalati hálózati infrastruktúrán.
 sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: 'Megtudhatja, hogyan küldhet és fogadhat üzeneteket az Azure Relay használatával:'
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: /azure/media/index/logo_net.svg
-      text: .NET webes szoftvercsatornák
-      href: /azure/service-bus-relay/relay-hybrid-connections-dotnet-get-started
-    - image:
-        src: /azure/media/index/logo_net.svg
-      text: .NET HTTP
-      href: /azure/service-bus-relay/relay-hybrid-connections-http-requests-dotnet-get-started
-    - image:
-        src: /azure/media/index/logo_nodejs.svg
-      text: Node.js webes szoftvercsatornák
-      href: /azure/service-bus-relay/relay-hybrid-connections-node-get-started
-    - image:
-        src: /azure/media/index/logo_nodejs.svg
-      text: Node.js HTTP
-      href: /azure/service-bus-relay/relay-hybrid-connections-http-requests-node-get-started
 - title: Részletes útmutatók
   items:
   - type: paragraph
-    text: Megtudhatja, hogyan hozhat létre, kezelhet, illetve küldhet vagy fogadhat üzeneteket az Azure Relay használatával
+    text: <b>Hibrid kapcsolatok:</b>
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/service-bus-relay/relay-hybrid-connections-dotnet-get-started">Üzenetek küldése és fogadása – .NET-alapú webes szoftvercsatornák</a>
+    - html: <a href="/azure/service-bus-relay/relay-hybrid-connections-http-requests-dotnet-get-started">Üzenetek küldése és fogadása – .NET HTTP</a>
+    - html: <a href="/azure/service-bus-relay/relay-hybrid-connections-node-get-started">Üzenetek küldése és fogadása – Node.js-alapú webes szoftvercsatornák</a>
+    - html: <a href="/azure/service-bus-relay/relay-hybrid-connections-http-requests-node-get-started">Üzenetek küldése és fogadása – Node.js HTTP</a>
+  - type: paragraph
+    text: <b>Windows Communication Foundation (WCF) Relay:</b>
   - type: list
     style: ordered
     items:
@@ -58,12 +44,13 @@ sections:
 - title: Példák
   items:
   - type: paragraph
-    text: Szkriptek keresése a gyakori feladatok kezeléséhez.
+    text: Példák a GitHubon
   - type: list
     style: unordered
     className: spaced noBullet
     items:
-    - html: <a href="https://github.com/Azure/azure-relay/tree/master/samples">Azure Relay-minták</a>
+    - html: <a href="https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections">Hibrid kapcsolatok</a>
+    - html: <a href="https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay">Windows Communication Foundation (WCF)</a>
 - title: Referencia
   items:
   - type: list

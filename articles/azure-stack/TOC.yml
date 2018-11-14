@@ -299,6 +299,8 @@ items:
         href: azure-stack-app-service-release-notes-update-two.md
       - name: App Service-ben az Azure Stack 3-as frissítés – kibocsátási megjegyzések
         href: azure-stack-app-service-release-notes-update-three.md
+      - name: App Service-ben az Azure Stack update 4 kibocsátási megjegyzései
+        href: azure-stack-app-service-release-notes-update-four.md
   - name: Csomagok, ajánlatok és kvóták létrehozása
     items:
     - name: Csomag, ajánlat, kvóta és előfizetés áttekintése
@@ -388,9 +390,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: Képzés és tanúsítványok
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 60487f16002df5a55d2859a14ec34559acd5cd5f
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: b68cebd2d6e2a7965eef61bf35c50824f7102c8e
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578151"
+ms.locfileid: "51614752"

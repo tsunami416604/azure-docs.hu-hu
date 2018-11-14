@@ -1,9 +1,15 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: d74ef4b68545c349c8df2cb7090ee8c26e2cd3e4
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622857"
 documentType: LandingData
-title: A Translator Text API dokumentációja
+title: A Translator Text dokumentációja
 metadata:
   title: A Translator Text dokumentációja – Rövid útmutatók, oktatóanyagok és API-referencia – Azure Cognitive Services | Microsoft Docs
-  description: Ismerje meg, hogyan fordíthat le szövegeket több nyelvre a Translator Text API használatával.
+  description: Ismerje meg, hogyan fordíthat le szövegeket több nyelvre a Translator Text használatával.
   services: cognitive-services
   author: Jann-Skotdal
   manager: Chris.Wendt
@@ -11,17 +17,32 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 10/30/2017
+  ms.date: 11/06/18
   ms.author: v-jansko
-  ms.openlocfilehash: 85ef860a742c114d01696b9189f57ac9207c0bc5
-  ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
-  ms.translationtype: HT
-  ms.contentlocale: hu-HU
-  ms.lasthandoff: 07/20/2018
-  ms.locfileid: "39185873"
 abstract:
-  description: A Microsoft Translator Text API egy felhőalapú gépi fordítási szolgáltatás. Az API segítségével közel valós időben fordíthat le szövegeket bármely alkalmazásból vagy szolgáltatásból egy egyszerű REST API-hívással. Az API a legmodernebb idegi gépi fordítási technológiát használja, emellett pedig statisztikai gépi fordító technológiával is rendelkezik. A neurális és a statisztikai gépi fordítás által támogatott nyelvek listáját a <a href="languages.md">Támogatott nyelvek</a> dokumentumban találja.
+  description: 'A Translator Text egy felhőalapú gépi fordítási szolgáltatás, amellyel közel valós időben fordíthat le szövegeket egy egyszerű REST API-hívással. Az API modern idegi gépi fordítási technológiát használ, és statisztikai gépi fordító technológiával is rendelkezik. A Custom Translator a Translator Text API bővítménye, amellyel neurális fordítási rendszereket hozhat létre. A testre szabott fordítási rendszerrel a Translator Text API vagy a <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/"> Microsoft Speech Services</a> használatával fordíthat le szövegeket. A neurális és a statisztikai gépi fordítás által támogatott nyelvek listájáért lásd: <a href="languages.md">Támogatott nyelvek</a>.'
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/translator/translator-info-overview
+      html: <p>A Translator Text API ismertetése</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Mi a Translator Text API?
+    - href: /azure/cognitive-services/translator/custom-translator/overview
+      html: <p>A Custom Translator ismertetése</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Mi a Custom Translator (előzetes verzió)?
+    - href: /azure/cognitive-services/translator/custom-translator/quickstart-build-deploy-custom-model
+      html: <p>Bevezetés a Custom Translator használatába</p>
+      image:
+        src: ../media/index/i_get-started.svg
+      title: A Custom Translator rövid útmutatója
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph

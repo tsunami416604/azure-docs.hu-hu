@@ -70,6 +70,38 @@ items:
   expanded: true
 - name: Alapelvek
   items:
+  - name: Azure Cosmos-fiók használata
+    href: account-overview.md
+  - name: Tárolók és elemek
+    items:
+    - name: Adatbázisok, tárolók és elemek használata
+      href: databases-containers-items.md
+    - name: Indexelés
+      items:
+      - name: Áttekintés
+        href: index-overview.md
+      - name: Indexelési szabályzat
+        href: index-policy.md
+      - name: Indextípusok
+        href: index-types.md
+      - name: Indexek elérési útjai
+        href: index-paths.md
+    - name: Csatorna módosítása
+      items:
+      - name: Áttekintés
+        href: change-feed.md
+      - name: Változáscsatorna olvasása
+        href: read-change-feed.md
+      - name: Változáscsatorna feldolgozója
+        href: change-feed-processor.md
+      - name: Változáscsatorna az Azure Functions szolgáltatással
+        href: change-feed-functions.md
+    - name: Élettartam
+      href: time-to-live.md
+    - name: Egyedi kulcskorlátozások
+      href: unique-keys.md
+    - name: Tranzakciók és optimista párhuzamosság
+      href: database-transactions-optimistic-concurrency.md
   - name: Erőforrásmodell
     href: sql-api-resources.md
   - name: Globális terjesztés
@@ -86,7 +118,7 @@ items:
       href: consistency-levels-tradeoffs.md
     - name: Magas rendelkezésre állás
       href: high-availability.md
-    - name: Átviteli sebesség globális méretezése
+    - name: Kiosztott átviteli sebesség globális méretezése
       href: scaling-throughput.md
     - name: Ütközésfeloldási szabályzatok
       href: conflict-resolution-policies.md
@@ -106,14 +138,6 @@ items:
       href: request-units.md
     - name: Átviteli sebesség kiosztása tárolókra és adatbázisokra
       href: set-throughput.md
-  - name: Indexelés
-    href: indexing-policies.md
-  - name: Csatorna módosítása
-    href: change-feed.md
-  - name: Élettartam
-    href: time-to-live.md
-  - name: Egyedi kulcsok
-    href: unique-keys.md
   - name: Biztonság
     items:
     - name: Áttekintés
@@ -122,9 +146,9 @@ items:
       href: database-encryption-at-rest.md
     - name: Biztonságos hozzáférés az adatokhoz
       href: secure-access-to-data.md
-    - name: Tűzfaltámogatás
+    - name: IP-tűzfal
       href: firewall-support.md
-    - name: VNet-végpont üzembe helyezése
+    - name: Hozzáférés virtuális hálózatokról
       href: vnet-service-endpoint.md
     - name: Key Vault-támogatás
       href: access-secrets-from-keyvault.md
@@ -393,6 +417,38 @@ items:
   expanded: true
 - name: Útmutatók
   items:
+  - name: Adatbázisfiók kezelése
+    href: how-to-manage-database-account.md
+  - name: Élettartam konfigurálása
+    href: how-to-time-to-live.md
+  - name: Globális terjesztés
+    items:
+    - name: Konzisztencia kezelése
+      href: how-to-manage-consistency.md
+    - name: Ütközések kezelése
+      href: how-to-manage-conflicts.md
+  - name: Kiosztott átviteli sebesség
+    items:
+    - name: A tároló átviteli sebességének kiosztása
+      href: how-to-provision-container-throughput.md
+    - name: Az adatbázis átviteli sebességének kiosztása
+      href: how-to-provision-database-throughput.md
+  - name: A tárolók és elemek használata
+    items:
+    - name: Tároló létrehozása
+      href: how-to-create-container.md
+    - name: Tároló lekérdezése
+      href: how-to-query-container.md
+  - name: Indexelés
+    items:
+    - name: Indexelés konfigurálása
+      href: how-to-manage-indexing-policy.md
+  - name: Biztonság
+    items:
+    - name: IP-tűzfal konfigurálása
+      href: how-to-configure-firewall.md
+    - name: Hozzáférés konfigurálása virtuális hálózatokról
+      href: how-to-configure-vnet-service-endpoint.md
   - name: Kezelés
     items:
     - name: Kezelés a PowerShell-lel
@@ -403,8 +459,6 @@ items:
       href: storage-explorer.md
     - name: Kezelés adatkezelő használatával
       href: data-explorer.md
-    - name: Saját fiók kezelése
-      href: manage-account.md
   - name: Naplózás
     items:
     - name: Diagnosztikai naplózás
@@ -427,26 +481,6 @@ items:
       href: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb
   - name: Az Azure DevOps CI-/CD-folyamat beállítása
     href: tutorial-setup-ci-cd.md
-  - name: Globális terjesztés
-    items:
-    - name: Adatbázisfiók kezelése
-      href: how-to-manage-database-account.md
-    - name: Konzisztencia kezelése
-      href: how-to-manage-consistency.md
-    - name: Ütközések kezelése
-      href: how-to-manage-conflicts.md
-  - name: Kiosztott átviteli sebesség
-    items:
-    - name: A tároló átviteli sebességének kiosztása
-      href: how-to-provision-container-throughput.md
-    - name: Az adatbázis átviteli sebességének kiosztása
-      href: how-to-provision-database-throughput.md
-  - name: A tárolók és elemek használata
-    items:
-    - name: Tároló létrehozása
-      href: how-to-create-container.md
-    - name: Tároló lekérdezése
-      href: how-to-query-container.md
   - name: Ajánlott eljárások
     items:
     - name: Teljesítménnyel kapcsolatos tippek
@@ -535,9 +569,9 @@ items:
       href: use-cases.md
     - name: Közösségimédia-alkalmazások
       href: social-media-apps.md
-ms.openlocfilehash: 139bf5c5edfb808e912f2da07ea1bcab57636c55
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5301ed8dad542a03ddd7be617668db9b25417de6
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244270"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622465"
