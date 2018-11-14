@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/26/2017
+ms.date: 11/13/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 95d2f65e99b37b38f99ec5a750d74828661fe7ee
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 13ce1a7c9008a7893892e5d7e6b67a243c381c9f
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349143"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622006"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Felhasználói fiók kiépítése az Azure Portalon a vállalati alkalmazások kezelése
-Ez a cikk ismerteti, hogyan használható a [az Azure portal](https://portal.azure.com) automatikus felhasználói fiók kiépítése és megszüntetést, amelyek támogatják ezt, különösen megjelennek a "kiemelt" kategóriát adta meg a hozzáadottalkalmazásokkezeléséhez[ Az Azure Active Directory alkalmazáskatalógusában](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery). Automatikus felhasználói fiók kiépítése, és hogyan működik kapcsolatos további tudnivalókért lásd: [automatizálhatja a Felhasználókiépítés és -megszüntetés SaaS-alkalmazásokhoz az Azure Active Directoryval](user-provisioning.md).
+Ez a cikk ismerteti, hogyan használható a [az Azure portal](https://portal.azure.com) automatikus felhasználói fiók kiépítése, és az alkalmazásokat, amelyek támogatják ezt a megszüntetést kezeléséhez. Automatikus felhasználói fiók kiépítése, és hogyan működik kapcsolatos további tudnivalókért lásd: [automatizálhatja a Felhasználókiépítés és -megszüntetés SaaS-alkalmazásokhoz az Azure Active Directoryval](user-provisioning.md).
 
 ## <a name="finding-your-apps-in-the-portal"></a>A portál az alkalmazások keresése
-Az egyszeri bejelentkezés egy könyvtárban, a használatával directory rendszergazdája által beállított összes alkalmazás a [Azure Active Directory alkalmazáskatalógusában](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery), tekinthetők meg és kezelhetők a [az Azure portal](https://portal.azure.com). Tekintheti meg az alkalmazások a **minden szolgáltatás** &gt; **vállalati alkalmazások** a portál szakaszát. Vállalati alkalmazások olyan alkalmazások, telepített és a szervezetén belül.
+Minden alkalmazás, amely vannak konfigurálva, az egyszeri bejelentkezés egy könyvtárban tudja megtekinteni és kezelni a [az Azure portal](https://portal.azure.com). Tekintheti meg az alkalmazások a **minden szolgáltatás** &gt; **vállalati alkalmazások** a portál szakaszát. Vállalati alkalmazások olyan alkalmazások, telepített és a szervezetén belül.
 
 ![Vállalati alkalmazások panelen](./media/configure-automatic-user-provisioning-portal/enterprise-apps-pane.png)
 
@@ -77,7 +77,5 @@ Ebben a szakaszban a művelet a kiépítési szolgáltatást, többek között a
 
 Mutató hivatkozások a **kiépítési tevékenységek jelentésének** biztosít naplózása a minden felhasználó és csoport hozta létre, frissített, és az eltávolított között az Azure AD és a cél alkalmazás, és a **hibajelentéskiépítése** , amely biztosítja a részletes hibaüzenetek, felhasználó és csoport objektumok, amelyek nem lehet olvasni, létrehozott, frissítve vagy eltávolítva. 
 
-## <a name="feedback"></a>Visszajelzés
 
-Ne zárja be a visszajelzés hamarosan elérhető! A visszajelzések és javítására szolgáló ötleteket közzététele a **felügyeleti portálon** szakaszában az [Visszajelzési fórum](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  A mérnöki csapathoz nagyon jó cuccok új naponta létrehozásával kapcsolatos Izgatottan várjuk, és kövesse az alakzathoz az útmutatókat, és a meghatározásához, mit hozhat létre a következő.
 

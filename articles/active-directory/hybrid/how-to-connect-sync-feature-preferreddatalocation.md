@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 951ac39e1bb6ce050da26fa8ff3f93fd4e27e7d7
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 1dfc01d0f2f0f5f3eae58fd6c889fee3ad306135
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318390"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623027"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Az Azure Active Directory Connect szinkronizálási szolgáltatás: konfigurálja az Office 365-erőforrások adatainak előnyben részesített helye
 Ez a témakör az a célja, hogy végigvezetik az attribútum a adatainak előnyben részesített helye konfigurálása az Azure Active Directory (Azure AD) Connect-szinkronizálás. Amikor valaki használ Multi-földrajzi funkciókat az Office 365-ben, ez az attribútum használatával a földrajzi helymeghatározás, a felhasználó Office 365-adatokat jelöl ki. (A használati *régió* és *földrajzi* azonos értelemben használják.)
@@ -31,7 +31,7 @@ Alapértelmezés szerint az Office 365-erőforrások a felhasználók számára,
 Az attribútum beállításával **preferredDataLocation**, meghatározhatja, hogy a felhasználó földrajzi. A felhasználó Office 365 erőforrások, például a postaláda és a onedrive vállalati verzió, a felhasználó ugyanabban a földrajzi rendelkezik, és továbbra is fennáll a teljes szervezet számára több bérlőhöz.
 
 > [!IMPORTANT]
-> Multi-földrajzi érhető el jelenleg az Office 365-szolgáltatásokhoz az előfizetések 2500 legalább rendelkező ügyfelek számára. Forduljon a Microsoft helyi képviselőjéhez részleteiről.
+> Multi-földrajzi jelenleg érhető el az 5000-es Office 365-szolgáltatások előfizetések legalább rendelkező ügyfelek számára. Forduljon a Microsoft helyi képviselőjéhez részleteiről.
 >
 >
 

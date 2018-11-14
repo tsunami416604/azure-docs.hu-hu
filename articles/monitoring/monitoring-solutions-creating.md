@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 09dd046f9dc7d6b73207ab1ab739e913a8ed5b92
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: b7839fc498b54d2128528c8d655d78bb759a7cd5
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282050"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612439"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Megtervezik és megvalósítják a felügyeleti megoldás az Azure-ban (előzetes verzió)
 > [!NOTE]
@@ -54,7 +54,7 @@ Nem minden elérhető adatforrások-n keresztül elérhető adatok van szükség
 Meg kell határozni, hogy úgy gondolja, hogy akkor is hasznos lehet a felhasználónak, akkor is, ha nem használta azokat bármilyen nézeteket és riasztásokat lekérdezéseket.  Ezek őket a mentett keresések, a portálon elérhető lesz, és is hozzáadhatja őket egy [lista a lekérdezés vizualizációs rész](../log-analytics/log-analytics-view-designer-parts.md#list-of-queries-part) az egyéni nézetben.
 
 ### <a name="alerts"></a>Riasztások
-[Riasztások a Log Analyticsben](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) azonosíthatja a problémákat keresztül [naplókereséseket](#log-searches) az adatokban a tárházban.  Vagy a felhasználó értesítése, vagy automatikusan válaszként futtatni a műveletet. Azonosítsa az alkalmazás különböző riasztási feltételeket kell és adathordozófájlba felvenni a megoldás megfelelő riasztási szabályok.
+[Riasztások a Log Analyticsben](../monitoring-and-diagnostics/monitoring-overview-alerts.md) azonosíthatja a problémákat keresztül [naplókereséseket](#log-searches) az adatokban a tárházban.  Vagy a felhasználó értesítése, vagy automatikusan válaszként futtatni a műveletet. Azonosítsa az alkalmazás különböző riasztási feltételeket kell és adathordozófájlba felvenni a megoldás megfelelő riasztási szabályok.
 
 Ha a probléma esetleg egy automatizált folyamattal javítani kell, majd általában létrehozhat egy runbook az Azure Automationben a szervizelés végrehajtásához.  A legtöbb Azure-szolgáltatások kezelhetők [parancsmagok](/powershell/azure/overview) , amely a runbook szeretné kihasználni a funkció végrehajtásához.
 

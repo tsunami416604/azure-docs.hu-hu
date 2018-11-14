@@ -3,7 +3,7 @@ title: Tanúsítványok az Azure Service Fabric-fürt kezelése |} A Microsoft D
 description: Hozzáadhat új tanúsítványokat, a helyettesítő tanúsítvány, és távolítsa el a tanúsítványt, illetve a Service Fabric-fürt módját ismerteti.
 services: service-fabric
 documentationcenter: .net
-author: ChackDan
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/23/2018
-ms.author: chackdan
-ms.openlocfilehash: ad32bd521975312b72aa55fc44e9b4d213519a07
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.date: 11/13/2018
+ms.author: aljo-microsoft
+ms.openlocfilehash: cca48e78278cf234d6f6062eadac4f85ecbcb79b
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567876"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625929"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Adja hozzá, vagy távolítsa el a tanúsítványokat a Service Fabric-fürtön az Azure-ban
 Javasoljuk, hogy Ismerkedjen meg hogyan a Service Fabric X.509-tanúsítványokat használ, és ismernie kell a [fürtök – biztonsági helyzetek](service-fabric-cluster-security.md). Ismernie kell a fürt tanúsítványt, és mire használható, mielőtt folytatná.
@@ -175,7 +175,7 @@ Következő mentén könnyű minta 5 – virtuális gép – 1-NodeType-Secure_S
 > 
 
 ### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>A sablonfájl megfelelően a fentiekben hozzáadott új paraméterek szerkesztése
-A minta használata a [git-tárház](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) követéséhez megkezdheti a módosításokat a minta 5 – virtuális gép – 1-NodeType-Secure.paramters_Step2.JSON 
+A minta használata a [git-tárház](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) követéséhez megkezdheti a módosításokat a minta 5 – virtuális gép – 1-NodeType-Secure.parameters_Step2.JSON 
 
 A Resource Manager-sablon paraméter fájl szerkesztése, a két új paraméterek secCertificateThumbprint és secCertificateUrlValue. 
 
@@ -221,11 +221,11 @@ New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <R
 Íme egy kitöltött példa az ugyanazon PowerShell.
 
 ```powershell
-$ResouceGroup2 = "chackosecure5"
+$ResourceGroup2 = "chackosecure5"
 $TemplateFile = "C:\GitHub\Service-Fabric\ARM Templates\Cert Rollover Sample\5-VM-1-NodeTypes-Secure_Step2.json"
 $TemplateParmFile = "C:\GitHub\Service-Fabric\ARM Templates\Cert Rollover Sample\5-VM-1-NodeTypes-Secure.parameters_Step2.json"
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $ResouceGroup2 -TemplateParameterFile $TemplateParmFile -TemplateUri $TemplateFile -clusterName $ResouceGroup2
+New-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroup2 -TemplateParameterFile $TemplateParmFile -TemplateUri $TemplateFile -clusterName $ResourceGroup2
 
 ```
 

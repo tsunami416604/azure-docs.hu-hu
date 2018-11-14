@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.component: common
-ms.openlocfilehash: 4f0558f9619aa06557cf89e885154f6326d4b150
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: ec12da6ccd5b681c85da87d53f944fc4430149b5
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281778"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616197"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer – hibaelhárítási útmutató
 
@@ -81,7 +81,7 @@ A macOS kulcslánc néha kérheti le a Storage Explorer hitelesítési tár prob
 * Indítsa újra a Tártallózót
 * Ha a hitelesítési ablak üres, várjon legalább egy percet, mielőtt bezárná a hitelesítési párbeszédpanelt.
 * Győződjön meg arról, hogy a proxy- és a tanúsítvány beállításait konfigurálja megfelelően a gép és a Storage Explorer.
-* Ha a Windows és a Visual Studio 2017 hozzáférést a gép és a bejelentkezési rendelkezik, próbáljon meg, a Visual Studio 2017 bejelentkezni. A sikeres bejelentkezést követően a Visual Studio 2017 nyissa meg a Storage Explorert, és látja: saját fiók a fiók panel képesnek kell lennie. 
+* Ha a Windows és a Visual Studio 2017 hozzáférést a gép és a bejelentkezési rendelkezik, próbáljon meg, a Visual Studio 2017 bejelentkezni. A sikeres bejelentkezést követően a Visual Studio 2017 nyissa meg a Storage Explorert, és látja: saját fiók a fiók panel képesnek kell lennie.
 
 Ha ezen metódusok közül egyik sem működik [nyisson egy problémát a Githubon](https://github.com/Microsoft/AzureStorageExplorer/issues).
 
@@ -115,6 +115,8 @@ Először is győződjön meg arról, hogy minden helyesen-e a megadott a követ
 
 * A proxykiszolgáló URL-cím és port száma
 * Felhasználónév és jelszó, ha a proxy által igényelt
+
+Vegye figyelembe, hogy Storage Explorer nem támogatja a .pac fájl Proxybeállítások konfigurálása.
 
 ### <a name="common-solutions"></a>Általános megoldások
 

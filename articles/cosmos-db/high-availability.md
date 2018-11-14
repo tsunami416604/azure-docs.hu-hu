@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 7ea379516c6e636abd1309416374be75bcdbb686
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: dd018dca2de018733783605bfdb2802f91ebd76b
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578739"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621173"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Az Azure Cosmos DB magas rendelkezésre állás
 
@@ -49,7 +49,7 @@ Regionális üzemkimaradások utáni helyreállításon nem ritkák, és az Azur
 
 - Többrégiós fiókok több írási régiók konfigurált írások és olvasások magas rendelkezésre állású lesz. Régiónkénti feladatátvétel azonnali és nem igényel módosításokat az alkalmazásból.
 
-- A single-írási régió többrégiós fiókokat: egy írási régió kimaradás során ezek a fiókok marad magas rendelkezésre állású az olvasásokhoz. Azonban az írási műveletek "engedélyeznie kell az Automatikus feladatátvétel" a feladatátvétel az érintett régió egy másik régióba tartozó Cosmos-fiókjában. A feladatátvétel megadott régióban prioritás szerinti sorrendben történik. Végül az érintett régió újra online állapotba kerül, amikor az az érintett írási régió a szolgáltatáskimaradás közben nem replikált adatok keresztül teszik elérhetővé a hírcsatorna-ütközéseket. Alkalmazás is olvashat az ütközések hírcsatorna, az alkalmazás-specifikus logika alapján ütközések feloldásához és a frissített adatokat írhat vissza a megfelelő Cosmos-tároló. A korábban érintett írási régió állítja helyre, ha automatikusan elérhetővé válik, az olvasási régióban. Manuális feladatátvétel meghívása, és konfigurálja az érintett régió az írási régió. A manuális feladatátvétel elvégezhető használatával [Azure CLI-vel vagy az Azure Portalon](how-to-manage-database-account.md#enable-manual-failover-for-your-cosmos-account).  
+- A single-írási régió többrégiós fiókokat: egy írási régió kimaradás során ezek a fiókok marad magas rendelkezésre állású az olvasásokhoz. Azonban az írási műveletek "engedélyeznie kell az Automatikus feladatátvétel" a feladatátvétel az érintett régió egy másik régióba tartozó Cosmos-fiókjában. A feladatátvétel megadott régióban prioritás szerinti sorrendben történik. Végül az érintett régió újra online állapotba kerül, amikor az az érintett írási régió a szolgáltatáskimaradás közben nem replikált adatok keresztül teszik elérhetővé a hírcsatorna-ütközéseket. Alkalmazás is olvashat az ütközések hírcsatorna, az alkalmazás-specifikus logika alapján ütközések feloldásához és a frissített adatokat írhat vissza a megfelelő Cosmos-tároló. A korábban érintett írási régió állítja helyre, ha automatikusan elérhetővé válik, az olvasási régióban. Manuális feladatátvétel meghívása, és konfigurálja az érintett régió az írási régió. A manuális feladatátvétel elvégezhető használatával [Azure CLI-vel vagy az Azure Portalon](how-to-manage-database-account.md#manual-failover).  
 
 - A single-írási régió többrégiós fiókokat: egy olvasási régió kimaradás során ezek a fiókok maradnak magas rendelkezésre állású olvasási és írási. Az érintett terület a rendszer automatikusan leválasztja az írási régió és lesznek megjelölve offline állapotban van. A Cosmos DB SDK átirányítja az olvasási hívásokat a következő rendelkezésre álló terület az elsődleges régió listában. Ha az elsődleges régió lista régiót egyik sem érhető el, hívások automatikusan térhet vissza az aktuális írási régióba. Nincs szükség módosításokra az alkalmazás kódjában olvasási régióban leállás kezelésére. Végül az érintett régió újra online állapotba kerül, ha a korábban érintett olvasási régió automatikusan szinkronizálja az aktuális írási régióba való és újra számára olvasási kérelmek kiszolgálására elérhető lesz. A helyreállított régió további olvasási megnyílik az alkalmazás kódjának módosítása nélkül. Alatt is feladatátvételi és újracsatlakozás egy korábban meghiúsult régió olvasási konzisztenciagaranciákat továbbra is Cosmos DB által veszi figyelembe.
 
@@ -61,20 +61,15 @@ Regionális üzemkimaradások utáni helyreállításon nem ritkák, és az Azur
 
 - Győződjön meg, hogy nagy írási és olvasási rendelkezésre állás, több írási régiók közül legalább két régió span Cosmos fiók beállítása. Ez a konfiguráció a rendelkezésre állás, a legkisebb késést biztosít, és a méretezhetőség is beolvassa, és SLA-k által. További tudnivalókért lásd: hogyan [több írási régiót a Cosmos-fiók beállítása](tutorial-global-distribution-sql-api.md).
 
-- Többrégiós Cosmos-fiókok, egy egyetlen-írási régió konfigurált [automatikus feladatátvétel engedélyezése az Azure CLI-vel vagy az Azure portal használatával](how-to-manage-database-account.md#enable-automatic-failover-for-your-cosmos-account). Miután engedélyezte az automatikus feladatátvételt egy regionális katasztrófa történik, Cosmos DB automatikusan feladatátvételt fiókját.  
+- Többrégiós Cosmos-fiókok, egy egyetlen-írási régió konfigurált [automatikus feladatátvétel engedélyezése az Azure CLI-vel vagy az Azure portal használatával](how-to-manage-database-account.md#automatic-failover). Miután engedélyezte az automatikus feladatátvételt egy regionális katasztrófa történik, Cosmos DB automatikusan feladatátvételt fiókját.  
 
-- Akkor is, ha a Cosmos-fiók magas rendelkezésre állású, az alkalmazás lehetséges, hogy nem helyesen kialakítani, hogy továbbra is magas rendelkezésre állású. A végpontok közötti magas rendelkezésre állás az alkalmazás teszteléséhez rendszeres időközönként meghívása a [manuális feladatátvételt az Azure CLI-vel vagy az Azure portal használatával](how-to-manage-database-account.md#enable-manual-failover-for-your-cosmos-account), az alkalmazás tesztelésének vagy a vészhelyreállítás (DR) részeként gyakorlatokat.
+- Akkor is, ha a Cosmos-fiók magas rendelkezésre állású, az alkalmazás lehetséges, hogy nem helyesen kialakítani, hogy továbbra is magas rendelkezésre állású. A végpontok közötti magas rendelkezésre állás az alkalmazás teszteléséhez rendszeres időközönként meghívása a [manuális feladatátvételt az Azure CLI-vel vagy az Azure portal használatával](how-to-manage-database-account.md#manual-failover), az alkalmazás tesztelésének vagy a vészhelyreállítás (DR) részeként gyakorlatokat.
 
 ## <a name="next-steps"></a>További lépések
 
 Ezután megismerheti skálázása az átviteli sebesség a következő cikkben:
 
-- [Méretezési átviteli sebesség](scaling-throughput.md)
-
-- [Kompromisszumot kínál a különböző konzisztenciaszintet rendelkezésre állás és teljesítmény](consistency-levels-tradeoffs.md)
-
-- [Kiosztott átviteli kapacitás méretezése globálisan](scaling-throughput.md)
-
-- [Globális terjesztés – technikai részletek](global-dist-under-the-hood.md)
-
-- [Az Azure Cosmos DB-ben konzisztenciaszintek](consistency-levels.md)
+* [Kompromisszumot kínál a különböző konzisztenciaszintet rendelkezésre állás és teljesítmény](consistency-levels-tradeoffs.md)
+* [Globálisan a kiosztott átviteli kapacitás méretezése](scaling-throughput.md)
+* [Globális terjesztés – technikai részletek](global-dist-under-the-hood.md)
+* [Az Azure Cosmos DB-ben konzisztenciaszintek](consistency-levels.md)

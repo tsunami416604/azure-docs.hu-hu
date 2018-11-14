@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: bc48101decce9a92a01b8e6958bed08850a94b7e
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 8776a07f4fb1ffcc573bfedace38280576fa3184
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241395"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622966"
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>Az ExpressRoute virtuális hálózati átjáróinak ismertetése
 A virtuális hálózati átjáró Azure virtuális hálózatok közötti hálózati adatforgalom elküldésére használatosak, és a helyszínek. Használhatja egy virtuális hálózati átjáró vagy ExpressRoute-forgalmat, vagy VPN-forgalmat is használható. Ez a cikk az ExpressRoute virtuális hálózati átjárók összpontosít.
@@ -43,19 +43,19 @@ Az alábbi táblázatban az átjárótípusok és a becsült teljesítményét m
 > 
 >
 
-### <a name="zrgw"></a>Zónaredundáns átjáró-termékváltozatok (előzetes verzió)
+### <a name="zrgw"></a>Zónaredundáns átjáró-termékváltozatok
 
 ExpressRoute-átjárók az Azure-beli rendelkezésre állási zónák is telepítheti. Ez fizikailag és logikailag a két különböző rendelkezésre állási zónában, a helyszíni hálózati kapcsolatok védelme az Azure-bA a zónaszintű hibák történő.
 
 ![Zónaredundáns ExpressRoute-átjáró](./media/expressroute-about-virtual-network-gateways/zone-redundant.png)
 
-Átjárók zónaredundáns adott új átjáró-termékváltozatok ExpressRoute-átjárót használja. Az új termékváltozatok a következők jelenleg elérhető **nyilvános előzetes verzióban**.
+Átjárók zónaredundáns adott új átjáró-termékváltozatok ExpressRoute-átjárót használja.
 
 * ErGw1AZ
 * ErGw2AZ
 * ErGw3AZ
 
-Az új átjáró-termékváltozatok támogatják az igényeinek leginkább megfelelő egyéb telepítési lehetőségekért is. Az új átjáró SKU-k használatával virtuális hálózati átjáró létrehozásakor, akkor is telepíteni az átjárót a megadott zónában. Ez a zónaszintű átjáró nevezzük. Zónaszintű az átjáró telepítésekor az átjáró összes példánya ugyanabban a rendelkezésre állási zónában üzemelnek. Az előzetes verzióban érhető el a regisztrációhoz lásd: [zónaredundáns virtuális hálózati átjáró létrehozása](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md).
+Az új átjáró-termékváltozatok támogatják az igényeinek leginkább megfelelő egyéb telepítési lehetőségekért is. Az új átjáró SKU-k használatával virtuális hálózati átjáró létrehozásakor, akkor is telepíteni az átjárót a megadott zónában. Ez a zónaszintű átjáró nevezzük. Zónaszintű az átjáró telepítésekor az átjáró összes példánya ugyanabban a rendelkezésre állási zónában üzemelnek. 
 
 ## <a name="resources"></a>REST API-k és PowerShell-parancsmagok
 További technikai erőforrások és a megadott szintaxissal kapcsolatos követelményeket REST API-k és PowerShell-parancsmagok használata a virtuális hálózati átjáró-konfigurációk tekintse meg a következő lapokon:
@@ -69,3 +69,5 @@ További technikai erőforrások és a megadott szintaxissal kapcsolatos követe
 Lásd: [ExpressRoute áttekintése](expressroute-introduction.md) elérhető kapcsolati konfigurációkkal kapcsolatos további részletekért.
 
 Lásd: [az ExpressRoute virtuális hálózati átjáró létrehozása](expressroute-howto-add-gateway-resource-manager.md) további információ az ExpressRoute-átjáró létrehozásához.
+
+Lásd: [zónaredundáns virtuális hálózati átjáró létrehozása](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md) átjárók zónaredundáns konfigurálásáról további információt.

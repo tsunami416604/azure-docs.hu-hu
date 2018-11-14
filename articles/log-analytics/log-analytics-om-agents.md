@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/02/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: fcdc14534e833ee394645e19cf8bc4bd9d6a7aaa
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 6ed1d9fc810bfa14beed83609d13c1010d479ed9
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961143"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622245"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Az Operations Manager csatlakoztatása a Log Analyticshez
-Meglévő System Center Operations Manager-befektetései kamatoztatása, és a Log Analytics képességeinek kiterjesztése érdekében az Operations Managert integrálhatja Log Analytics-munkaterületével. Így kiaknázhatja a Log Analytics lehetőségeit, miközben továbbra is használhatja az Operations Managert a következőkre:
+A meglévő befektetéseit a [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) és kiterjesztett képességek használata a Log Analytics, az Operations Manager integrálása a Log Analytics-munkaterületre. Így kiaknázhatja a Log Analytics lehetőségeit, miközben továbbra is használhatja az Operations Managert a következőkre:
 
 * Az informatikai szolgáltatások állapotának monitorozása az Operations Managerrel
 * Az incidens- és problémakezelést támogató ITSM-megoldásokkal való integráció megőrzése
@@ -44,7 +44,7 @@ Mielőtt hozzákezdene, tekintse át az alábbi követelményeknek.
 
 * Csak a log Analytics támogatja a System Center Operations Manager 1807, az Operations Manager 1801-re, az Operations Manager 2016-ra, az Operations Manager 2012 SP1 UR6 vagy újabb, és az Operations Manager 2012 R2 UR2 vagy újabb. A proxytámogatás az Operations Manager 2012 SP1 UR 7-es és az Operations Manager 2012 R2 UR 3-as verziójában jelent meg.
 * Minden Operations Manager-ügynöknek meg kell felelnie a minimális támogatási feltételeknek. Győződjön meg arról, hogy ügynök a minimális frissítéskor el, egyéb Windows-ügynök kommunikációja sikertelen és hibák készítése az Operations Manager eseménynaplójában.
-* Egy Log Analytics-munkaterület. További információkért tekintse át a [a környezet számítógépek csatlakoztatása a Log Analytics](log-analytics-concept-hybrid.md).
+* Egy Log Analytics-munkaterület. További információkért tekintse át a [Log Analytics-munkaterület áttekintése](log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json) ).
 * Végez hitelesítést az Azure-bA egy olyan fiókkal, amely tagja a [Log Analytics-közreműködő szerepkör](log-analytics-manage-access.md#manage-accounts-and-users).  
 
 >[!NOTE]

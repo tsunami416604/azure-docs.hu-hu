@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/15/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 2720ecece86133bf551ab42c415b2e9a87420e93
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 55a3f3d7ac08554273464ed7c6f665e27661c6f8
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237825"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625521"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>A Linuxhoz készült Log Analytics-ügynök hibáinak elhárítása 
 
@@ -85,7 +85,7 @@ Ha a fentiek egyikével sem működik, a következő támogatási csatornákat i
 | --- | --- |
 | 2 | Érvénytelen paraméter a omsadmin parancsfájl számára megadott. Futtatás `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` használatra. |
 | 3 | Érvénytelen konfiguráció omsadmin parancsfájl a megadott. Futtatás `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` használatra. |
-| 4 | Érvénytelen proxy omsadmin parancsfájl a megadott. Ellenőrizze a proxy, és tekintse meg a [HTTP proxyk használatára vonatkozó dokumentáció](log-analytics-concept-hybrid.md#network-firewall-requirements). |
+| 4 | Érvénytelen proxy omsadmin parancsfájl a megadott. Ellenőrizze a proxy, és tekintse meg a [HTTP proxyk használatára vonatkozó dokumentáció](log-analytics-agent-overview.md#network-firewall-requirements). |
 | 5 | 403-as HTTP-hiba érkezett a Log Analytics szolgáltatásnak. A részletekért omsadmin parancsfájl teljes kimenet megtekintéséhez. |
 | 6 | A Log Analytics szolgáltatásból származó nem – 200-as HTTP-hibát. A részletekért omsadmin parancsfájl teljes kimenet megtekintéséhez. |
 | 7 | Nem lehet kapcsolódni a Log Analytics szolgáltatásnak. A részletekért omsadmin parancsfájl teljes kimenet megtekintéséhez. |

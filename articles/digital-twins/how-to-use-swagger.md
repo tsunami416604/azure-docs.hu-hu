@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 11/13/2018
 ms.author: adgera
-ms.openlocfilehash: 0fae059db53668da2d71906bbe94e9dabae931bc
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 737c33f6b8cdf9bcb2530816601ff9b5eb994087
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578586"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624250"
 ---
 # <a name="use-azure-digital-twins-swagger"></a>Az Azure digitális Twins generáljon a swaggerrel
 
@@ -36,20 +36,7 @@ Swagger az API-t, amely tartalmaz egy interaktív összegzést tartalmaz:
 
 A swagger, amelyek segítik a fejlesztési és tesztelési, a felügyeleti API-hívások eszköz.
 
-> [!TIP]
-> A Swagger szakmai bemutatóhoz biztosítunk az API-funkció bemutatásához beállítása.
-> Vannak tárolva [docs.westcentralus.azuresmartspaces.net/management/swagger](https://docs.westcentralus.azuresmartspaces.net/management/swagger).
-
-A saját létrehozott felügyeleti API Swagger-dokumentációját a érhető el:
-
-```plaintext
-https://yourInstanceName.yourLocation.azuresmartspaces.net/management/swagger
-```
-
-| Egyedi név | Csere erre |
-| --- | --- |
-| Példánynév | Az Azure digitális Twins-példány nevét |
-| yourLocation | Melyik kiszolgáló régióban lévő üzemeltetett a példány |
+[!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
 ## <a name="reference-material"></a>Leírások
 

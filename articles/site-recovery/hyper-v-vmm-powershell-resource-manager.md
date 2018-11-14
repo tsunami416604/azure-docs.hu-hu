@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: sutalasi
-ms.openlocfilehash: 6ade1d584fad05e33a72a0ff5099378a9cf7f29f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8e1494594546c432123b8b1b98d646e8637eea99
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214579"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622839"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Állítsa be a Hyper-V virtuális gépek vészhelyreállítása egy másodlagos helyre a PowerShell (Resource Manager) használatával
 
@@ -21,7 +21,7 @@ Ez a cikk bemutatja, hogyan automatizálhatja a lépéseket, replikációját a 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Tekintse át a [forgatókönyv-architektúra és összetevők](hyper-v-vmm-architecture.md).
+- Tekintse át [a forgatókönyv-architektúrát és -összetevőket](hyper-v-vmm-architecture.md).
 - Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](site-recovery-support-matrix-to-sec-site.md).
 - Győződjön meg arról, hogy a Virtual Machine Manager-kiszolgálók és a Hyper-V-gazdagépek megfelelnek a [memóriakonfigurációt](site-recovery-support-matrix-to-sec-site.md).
 - Ellenőrizze, hogy a replikálni kívánt virtuális gépek megfelelnek [replikált gépek támogatása](site-recovery-support-matrix-to-sec-site.md).
@@ -29,20 +29,20 @@ Ez a cikk bemutatja, hogyan automatizálhatja a lépéseket, replikációját a 
 
 ## <a name="prepare-for-network-mapping"></a>A hálózatleképezés előkészítése
 
-[A hálózatleképezés](hyper-v-vmm-network-mapping.md) közötti leképezéseket a helyszíni adatforrás és a célfelhő Virtual Machine Manager Virtuálisgép-hálózatok. Leképezés a következőket teszi:
+[A hálózatleképezés](hyper-v-vmm-network-mapping.md) közötti leképezéseket a helyszíni adatforrás és a célfelhő Virtual Machine Manager Virtuálisgép-hálózatok. A leképezés a következőket hajtja végre:
 
-- Virtuális gépek a feladatátvételt követően megfelelő céloldali Virtuálisgép-hálózatok kapcsolódik. 
-- Replika virtuális gépek optimálisan helyezi el a cél Hyper-V gazdakiszolgálókra. 
+- A feladatátvételt követően összekapcsolja a virtuális gépeket a megfelelő céloldali virtuálisgép-hálózatokkal. 
+- Optimális módon helyezi el a virtuális replikagépeket a céloldali Hyper-V gazdakiszolgálókon. 
 - Ha nem konfigurálja a hálózatleképezést, a replika virtuális gépek nem csatlakozik Virtuálisgép-hálózat a feladatátvételt követően.
 
 Virtual Machine Manager készítse elő a következőképpen:
 
 * Ellenőrizze, hogy [Virtual Machine Manager logikai hálózatok](https://docs.microsoft.com/system-center/vmm/network-logical) a forrás- és Virtual Machine Manager-kiszolgálón:
 
-    - Lehet, hogy a forráskiszolgálón a logikai hálózat társítva a forrás-felhő, amelyben a Hyper-V-gazdagépek találhatók.
-    - A célkiszolgálón a logikai hálózat társítva a célfelhő kell lennie.
-* Ellenőrizze, hogy [Virtuálisgép-hálózatok](https://docs.microsoft.com/system-center/vmm/network-virtual) a forrás- és a Virtual Machine Manager kiszolgálójára. Virtuálisgép-hálózatot kösse össze az egyes helyeken a logikai hálózathoz.
-* Virtuális gépek csatlakoztatása a forrás Hyper-V gazdagépeken a forrás Virtuálisgép-hálózathoz. 
+    - A forrásoldali kiszolgálón található logikai hálózatnak ahhoz a forrásfelhőhöz kell tartoznia, amelyikben a Hyper-V gazdagépek találhatók.
+    - A céloldali kiszolgálón található logikai hálózatnak a célfelhőhöz kell tartoznia.
+* Ellenőrizze, hogy [Virtuálisgép-hálózatok](https://docs.microsoft.com/system-center/vmm/network-virtual) a forrás- és a Virtual Machine Manager kiszolgálójára. A virtuálisgép-hálózatokat minden helyen össze kell kapcsolni a logikai hálózattal.
+* A forrásoldali Hyper-V gazdagépeken található virtuális gépeket a forrásoldali virtuálisgép-hálózathoz kell csatlakoztatni. 
 
 ## <a name="prepare-for-powershell"></a>Készítse elő a Powershellhez
 
@@ -73,7 +73,7 @@ Győződjön meg arról, hogy az Azure PowerShell-lel szeretné kipróbálni:
         New-AzureRmResourceGroup -Name #ResourceGroupName -Location #location
 2. Hozzon létre egy új Recovery Services-tárolót. Mentse a tár objektumot egy változóban későbbi felhasználás céljából. 
 
-        $vault = New-AzureRmRecoveryServicesVault -Name #vaultname -ResouceGroupName #ResourceGroupName -Location #location
+        $vault = New-AzureRmRecoveryServicesVault -Name #vaultname -ResourceGroupName #ResourceGroupName -Location #location
    
     Miután a Get-AzureRMRecoveryServicesVault parancsmaggal létrehozott kérheti le a tár objektumot.
 

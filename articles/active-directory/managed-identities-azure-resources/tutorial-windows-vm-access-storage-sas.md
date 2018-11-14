@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: f8f65cbbf3f2583e43416fc36050de6c55f105dc
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: ca9f2fa249a3d9f4387d0fa45e3c5874eea26120
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161713"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625487"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>Oktatóanyag: Azure Storage elérése SAS-hitelesítő adatot keresztül egy Windows virtuális gép alapértelmezett felügyelt identitás használata
 
@@ -36,16 +36,7 @@ A szolgáltatás SAS lehetővé teszi a korlátozott hozzáférést a storage-fi
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
-
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
-
-- [Bejelentkezés az Azure Portalra](https://portal.azure.com)
-
-- [Windows rendszerű virtuális gép létrehozása](/azure/virtual-machines/windows/quick-create-portal)
-
-- [A virtuális gépen, rendszer által hozzárendelt identitás engedélyezése](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
-
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása 
 
@@ -71,9 +62,9 @@ Később feltöltünk egy fájlt az új tárfiókba, majd letöltjük abból. Mi
 
     ![Storage-tároló létrehozása](./media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-## <a name="grant-your-vms-system-assigned-managed-identity-access-to-use-a-storage-sas"></a>A virtuális gép felügyelt identitás alapértelmezett hozzáférést egy SAS tárolók használatához 
+## <a name="grant-your-vms-system-assigned-managed-identity-access-to-use-a-storage-sas"></a>Hozzáférés engedélyezése virtuális gép rendszer által hozzárendelt felügyelt identitása számára a tároló SAS-adatainak használatához 
 
-Az Azure Storage nem támogatja natív módon az Azure AD-hitelesítést.  Azonban a tároló SAS lekérése a Resource Manager egy felügyelt identitás használatával, majd az SAS tároló eléréséhez.  Ebben a lépésben a virtuális gép felügyelt identitás alapértelmezett hozzáférést adhat a tárfiók SAS.   
+Az Azure Storage nem támogatja natív módon az Azure AD-hitelesítést.  Azonban a tároló SAS lekérése a Resource Manager egy felügyelt identitás használatával, majd az SAS tároló eléréséhez.  Ebben a lépésben hozzáférést biztosít a virtuális gép rendszer által hozzárendelt felügyelt identitása számára a tárfiók SAS-adataihoz.   
 
 1. Lépjen vissza az újonnan létrehozott tárfiókra.   
 2. Kattintson a **Hozzáférés-vezérlés (IAM)** hivatkozásra a bal oldali panelen.  
@@ -85,7 +76,7 @@ Az Azure Storage nem támogatja natív módon az Azure AD-hitelesítést.  Azonb
 
     ![Helyettesítő képszöveg](./media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
 
-## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>Hozzáférési jogkivonat lekérése a VM identitásával, majd az Azure Resource Manager meghívása a használatával 
+## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>Hozzáférési jogkivonat lekérése a VM identitásával, majd az Azure Resource Manager meghívása a használatával 
 
 Az oktatóanyag további részében a korábban létrehozott virtuális gépről dolgozunk.
 
@@ -94,7 +85,7 @@ Ebben a részben az Azure Resource Manager PowerShell-parancsmagokat kell haszn�
 1. Az Azure Portalon lépjen a **Virtuális gépek** lapra, keresse meg a Windows rendszerű virtuális gépet, majd kattintson az **Áttekintés** lap tetején található **Csatlakozás** gombra.
 2. A **Felhasználónév** és a **Jelszó** mezőbe azt a felhasználónevet és jelszót írja be, amelyet a Windows VM létrehozásakor adott meg. 
 3. Most, hogy létrehozott egy **távoli asztali kapcsolatot** a virtuális géppel, nyissa meg a PowerShellt a távoli munkamenetben. 
-4. Powershell az Invoke-WebRequest használja, indítson egy Azure-erőforrások végpontot a hozzáférési jogkivonat beszerzése az Azure Resource Manager a helyi felügyelt identitást.
+4. A Powershell Invoke-WebRequest parancsával küldjön kérést az Azure-erőforrások helyi felügyeltidentitási végpontjára, hogy lekérjen egy hozzáférési jogkivonatot az Azure Resource Managerhez.
 
     ```powershell
        $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Method GET -Headers @{Metadata="true"}

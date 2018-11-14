@@ -5,15 +5,15 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 09/27/2018
+ms.date: 11/13/2018
 ms.author: adgera
 ms.custom: include file
-ms.openlocfilehash: 215a6c9ff3fdcfe2cb38728ce100255843d6c26e
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 42aa275e692e4e2e9b7ca38825c828c1f56247fb
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285713"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51628148"
 ---
 Szerepköralapú hozzáférés-vezérlés egy öröklési által készített biztonsági stratégia hozzáférési engedélyek és szerepkörök kezeléséhez. Leszármazott szerepkörök öröklik az engedélyeket a szülő szerepköröket. Emellett engedélyek rendelhetők folyamatban van egy szülő szerepkörből örökölt nélkül. Akkor is rendelhet igény szerint testre szabhatja a szerepkör.
 

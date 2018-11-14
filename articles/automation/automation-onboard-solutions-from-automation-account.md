@@ -9,12 +9,12 @@ ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: d031965a812cd218fbb4e78dfbf90ee01c26f5bb
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: b91c3dec1dda401fbacab39325b2c8980ec7254f
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085976"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625064"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Előkészítése az Update Management, Change Tracking és Inventory megoldásainak
 
@@ -81,7 +81,7 @@ Kattintson a **+ Azure-beli virtuális gépek hozzáadása**, válasszon ki egy 
 
 Gépek Azure-ban nem kell manuálisan kell hozzáadni. Az Automation a fiókot válassza **készlet** vagy **a Change tracking** alatt **konfigurációkezelés**, vagy **frissítéskezelés** a **az UPDATE MANAGEMENT**.
 
-Kattintson a **hozzáadása nem Azure-beli gép**. Ez a művelet egy új böngészőablakot, és megnyílik a [való telepítése és konfigurálása a Microsoft Monitoring Agent a gépen](../log-analytics/log-analytics-concept-hybrid.md) , a gép megkezdheti a megoldás a jelentéskészítés. Ha Ön előkészítése a System Center Operations Manager által kezelt számítógép, egy új ügynököt nem szükséges, a munkaterület-információk írja be a rendszer a meglévő ügynököt.
+Kattintson a **hozzáadása nem Azure-beli gép**. Ez a művelet egy új böngészőablakot, és megnyílik a [való telepítése és konfigurálása a Microsoft Monitoring Agent a gépen](../log-analytics/log-analytics-agent-overview.md) , a gép megkezdheti a megoldás a jelentéskészítés. Ha Ön előkészítése a System Center Operations Manager által kezelt számítógép, egy új ügynököt nem szükséges, a munkaterület-információk írja be a rendszer a meglévő ügynököt.
 
 ## <a name="onboard-machines-in-the-workspace"></a>Előkészítheti a gépeket a munkaterületen
 

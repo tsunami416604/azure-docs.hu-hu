@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 60ecc2bc1d700c223d4a52b05e3b9362241f3f82
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a4d62dd0bc984ce80324b405ddd0dcb625694b21
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414610"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612573"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>A Log Analytics-riasztások kiterjesztése az Azure-riasztások
 Nemrég, amíg az Azure Log Analytics a saját riasztási funkcióval rendelkezik, amely sikerült proaktívan kaphat értesítést a Log Analytics-adatok alapuló feltételek tartalmazza. A Microsoft Operations Management Suite portál riasztási szabályok felügyelt. A riasztások új kezelőfelülete mostantól integrálva van riasztási között különböző szolgáltatások, Microsoft Azure-ban. Érhető el **riasztások** alatt az Azure Monitor az Azure Portalon, és támogatja a vizsgálati naplók, metrikák, a riasztások és a Log Analytics és az Azure Application Insights-naplók. 
@@ -60,5 +60,5 @@ Hozzon létre a riasztások továbbra is a [Log Analytics API](../log-analytics/
 ## <a name="next-steps"></a>További lépések
 
 * Ismerje meg az eszközöket, [kezdeményezési Log Analyticsből származó riasztások kiterjesztése az Azure-ba való](monitoring-alerts-extend-tool.md).
-* Tudjon meg többet a [Azure Alerts élmény](monitoring-overview-unified-alerts.md).
+* Tudjon meg többet a [Azure Alerts élmény](monitoring-overview-alerts.md).
 * Ismerje meg, hogyan hozhat létre [naplóriasztások az Azure Alerts](monitor-alerts-unified-log.md).

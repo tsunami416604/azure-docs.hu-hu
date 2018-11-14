@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 11/08/2018
 ms.author: tulasim
-ms.openlocfilehash: 88e55468c4018b73cb26087c4fbbdbee65cd5db3
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: e6c654b00ee6be0ed87feb0fb2a5ccba38e5cbe4
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515522"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624877"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>A tartalmat a QnA Maker adatforrások
 
@@ -131,6 +131,10 @@ Tudásbázis importálása lecseréli a meglévő Tudásbázis tartalmát. Impor
 ## <a name="editorially-add-to-knowledge-base"></a>Tudásbázis tudásbázishoz hozzáadása
 
 Ha nem rendelkezik már meglévő tartalom feltöltéséhez a Tudásbázis, hozzáadhat QnA-tudásbázisok besorolást a QnA Maker Knowledge base. Ismerje meg, hogyan frissíthető a Tudásbázis [Itt](../How-To/edit-knowledge-base.md).
+
+## <a name="formatting-considerations"></a>Formázási kapcsolatos szempontok
+
+Egy fájlba vagy URL-cím az importálás után konvertálva a Markdown és a formátumban tárolja. Ha az átalakítási folyamat nem megfelelően konvertálása a fájl-és URL-címeket hivatkozásokkal, szerkesztenie kell a kérdések és válaszok a a **szerkesztése** lapot. 
 
 ## <a name="next-steps"></a>További lépések
 

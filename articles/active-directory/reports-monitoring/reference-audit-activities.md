@@ -13,32 +13,31 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 04/19/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 818f4f4d8ea51cb278190d6e41953f0b04b2e995
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 4d86bcf99d5b4cf2b04980e72a2bd0a422233dc3
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42060800"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622874"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD naplózott tevékenységekre vonatkozó referencia
 
-Az Azure Portalon az Azure Active Directory (Azure AD) jelentéskészítési funkciójával minden szükséges információhoz hozzájuthat a környezetével kapcsolatban.
+A jelentések az Azure Active Directory (Azure AD) megtekintheti az adatokat, meg kell határoznia, hogy a környezet működésébe.
 
 Az Azure AD jelentéskészítési architektúrája a következő elemekből áll:
 
-- **Tevékenység** 
-    - **Bejelentkezési tevékenységek** – A felügyelt alkalmazások használatával és a felhasználók bejelentkezési tevékenységeivel kapcsolatos információk
-    - **Auditnaplók** – az Azure AD-n belül különböző szolgáltatások által végrehajtott összes módosításra vonatkozó nyomkövetési naplókat biztosít. A naplók például rögzítik bármely erőforrás módosításait az Azure AD-n belül, úgymint: felhasználók, alkalmazások, csoportok, szerepkörök, szabályzatok, hitelesítések stb.
-- **Biztonság** 
-    - **Kockázatos bejelentkezések** – A kockázatos bejelentkezés egy olyan bejelentkezési kísérletet jelöl, amelyet elképzelhető, hogy olyan személy hajtott végre, aki nem a felhasználói fiók jogos tulajdonosa. További részletek: Kockázatos bejelentkezések.
-    - **Kockázatosként megjelölt felhasználók** – A kockázatos felhasználó egy olyan felhasználói fiókot jelöl, amelynek elképzelhető, hogy sérült a biztonsága. További részletek: Kockázatosként megjelölt felhasználók.
+- **Tevékenységjelentések** 
+    - [Bejelentkezések](concept-sign-ins.md) – arról nyújt tájékoztatást, a használati felügyelt alkalmazások és a felhasználó bejelentkezési tevékenységek
+    - [Auditnaplók](concept-audit-logs.md) – az Azure AD-n belül különböző szolgáltatások által végrehajtott összes módosításra vonatkozó nyomkövetési naplókat biztosít. 
+    
+- **Biztonsági jelentések** 
+    - [Kockázatos bejelentkezések](concept-risky-sign-ins.md) – A kockázatos bejelentkezés egy olyan bejelentkezési kísérletet jelöl, amelyet elképzelhető, hogy olyan személy hajtott végre, aki nem a felhasználói fiók jogos tulajdonosa. 
+    - [Kockázatosként megjelölt felhasználók](concept-user-at-risk.md) – A kockázatos felhasználó egy olyan felhasználói fiókot jelöl, amelynek elképzelhető, hogy sérült a biztonsága. 
 
 Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
- 
-
 
 ## <a name="access-reviews"></a>Hozzáférési felülvizsgálatok
 
@@ -72,9 +71,6 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Felhasználókezelés|V1 alkalmazások lekérése|
 |Felhasználókezelés|V2 alkalmazás lekérése|
 |Felhasználókezelés|V2 alkalmazások lekérése|
-
-
-
 
 ## <a name="account-provisioning"></a>Fiók kiépítése
 
@@ -593,13 +589,8 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Szabályzatkezelés|A felhasználó új jelszó önkiszolgáló kérésére regisztrált|
 
 
-
-
 ## <a name="next-steps"></a>További lépések
 
-Az áttekintéseket a következőképpen érheti el:
-
-- Jelentéskészítés: lásd az [Azure Active Directory jelentéskészítési útmutatót](overview-reports.md).
-
-- Naplózott tevékenységekre vonatkozó jelentések: lásd a [naplózott tevékenységekre vonatkozó jelentésekről szóló útmutatót az Azure Active Directory portálon](concept-audit-logs.md). 
-
+- [Az Azure AD-jelentések áttekintése](overview-reports.md).
+- [Naplók jelentés](concept-audit-logs.md). 
+- [Az Azure AD-jelentések programozás alapú hozzáférést](concept-reporting-api.md)

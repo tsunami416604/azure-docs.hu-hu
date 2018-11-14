@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/02/2018
 ms.author: yurid
-ms.openlocfilehash: 454cfc97aa203d5de7b00f47e1f87fd0aed0d28a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 76d472ff75f66973b3e680d8a30d7691c1cd36dc
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255949"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622567"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Útmutató az Azure Security Center tervezéséhez és működtetéséhez
 Ez az útmutató olyan informatikusok, megoldástervezők, adatbiztonsági elemzők és felhőszolgáltatás-rendszergazdák számára készült, akik az Azure Security Center egész vállalatra kiterjedő bevezetését tervezik.
@@ -161,8 +161,8 @@ A Microsoft Monitoring Agentből (az Azure Security Center nevében) gyűjtött 
 
 Az Azure Portalon megkeresheti a Log Analytics munkaterületeinek listáját, beleértve azokat is, amelyeket az Azure Security Center hozott létre. Egy kapcsolódó erőforráscsoport jön létre az új munkaterületek számára. Mindkettő ezt az elnevezési konvenciót követi: 
 
-* Munkaterület: *DefaultWorkspace-[subscription-ID]-[geo]*
-* Erőforráscsoport: *DefaultResouceGroup-[geo]*
+* Munkaterület: *AlapértelmezettMunkaterület-[előfizetés-azonosító]-[geo]*
+* Erőforráscsoport: *DefaultResourceGroup-[geo]*
 
 Az Azure Security Center által létrehozott munkaterületek adatait 30 napig őrzi meg a rendszer. A meglévő munkaterületeknél a megőrzési idő a munkaterület tarifacsomagjától függ. Ha szeretné, használhat egy létező munkaterületet is.
 

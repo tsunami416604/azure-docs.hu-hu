@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy Azure hálózati figyelőt példányt |} Microsoft Docs
-description: Megtudhatja, hogyan engedélyezze az Azure-régióban hálózati figyelőt.
+title: Az Azure Network Watcher-példány létrehozása |} A Microsoft Docs
+description: Útmutató Network Watcher engedélyezése az Azure-régióba.
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,48 +14,69 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 9d3e579cd58bc6c7d67b29998ea5a48a65548b0a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: ea10e83e8a5963c1ea0073179c15b1c2f3230805
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30904000"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615213"
 ---
-# <a name="create-an-azure-network-watcher-instance"></a>Hozzon létre egy Azure hálózati figyelőt példányt
+# <a name="create-an-azure-network-watcher-instance"></a>Az Azure Network Watcher-példány létrehozása
 
-Hálózati figyelőt olyan regionális szolgáltatás, amely lehetővé teszi, hogy figyelése és diagnosztizálása szintjén feltételek egy hálózati forgatókönyv, hogy, és az Azure-ból. Forgatókönyv szintű figyelését teszi lehetővé egy végpontok közötti hálózati szintű áttekintés a problémák diagnosztizálásához. Hálózati diagnosztika és a képi megjelenítés eszközök is elérhetők a hálózati figyelőt segítenek megérteni, diagnosztizálása és információt kaphat a hálózathoz, az Azure-ban.
+A Network Watcher egy regionális szolgáltatás, amely lehetővé teszi a figyelési és diagnosztizálási tevékenységet végezhet hálózati forgatókönyvek szintjén, a, és az Azure-ból. Forgatókönyv szintű figyelése lehetővé teszi egy teljes körű hálózati szintű áttekintés a problémák diagnosztizálásához. A hálózati diagnosztikai és vizualizációs eszközök a Network Watcherrel elérhető segítenek megérteni, diagnosztizálása és betekintést nyerhet az Azure-ban a hálózati. A Network Watcher engedélyezve van a Network Watcher-erőforrást kell létrehozni. Ehhez az erőforráshoz lehetővé teszi, hogy a Network Watcher képességek használatát.
 
-## <a name="create-a-network-watcher-in-the-portal"></a>Hozzon létre egy hálózati figyelőt a portálon
+## <a name="network-watcher-is-automatically-enabled"></a>A Network Watcher automatikusan engedélyezve van
+Ha hoz létre, vagy frissítse a virtuális hálózat az előfizetésben, Network Watcher a virtuális hálózati régióban automatikusan lesz engedélyezve. Ez nincs hatással az erőforrások vagy társított díj automatikusan a Network Watcher engedélyezése.
 
-Navigáljon a **minden szolgáltatás** > **hálózati** > **hálózati figyelő**. Kiválaszthatja, hogy a hálózati figyelőt engedélyezni szeretné az előfizetéseket. Ez a művelet létrehoz egy hálózati figyelőt minden régióban elérhető.
+#### <a name="opt-out-of-network-watcher-automatic-enablement"></a>Lemondja a Network Watcher automatikus engedélyezés
+Ha szeretné tilthatják le a Network Watcher automatikus lehetővé tétele, megteheti a következő parancsok futtatásával:
 
-![Hozzon létre egy hálózati figyelőt](./media/network-watcher-create/figure1.png)
+> [!WARNING]
+> Engedélyezés meg a Network Watcher automatikus engedélyezését, a módosítás végleges. Ha Ön az elutasítás, nem vehetnek részt nélkül [ügyfélszolgálaton](https://azure.microsoft.com/support/options/)
 
-Ha engedélyezi a hálózati figyelőt a portál használatával, a hálózati figyelőt példányának neve automatikusan értéke *NetworkWatcher_region_name* ahol *region_name* felel meg az Azure-régió Ha a példány engedélyezve van. Például egy hálózati figyelő engedélyezve van a régióban nyugati középső Régiójában nevű *NetworkWatcher_westcentralus*.
+```azurepowershell-interactive
+Register-AzureRmProviderFeature -FeatureName DisableNetworkWatcherAutocreation -ProviderNamespace Microsoft.Network
+Register-AzureRMResourceProvider -ProviderNamespace Microsoft.Network
+```
 
-A hálózati figyelőt példány automatikusan létrejön egy erőforráscsoportot *NetworkWatcherRG*. Az erőforráscsoport jön létre, ha még nem létezik.
+```azurecli-interactive
+az feature register --name DisableNetworkWatcherAutocreation --namespace Microsoft.Network
+az provider register -n Microsoft.Network
+```
 
-Ha egy hálózati figyelőt példány és az erőforráscsoport nevét testreszabja helyezik be, használhatja a Powershell, az Azure parancssori felület, a REST API vagy ARMClient módszerek az az alábbi szakaszok ismertetik. Az egyes lehetőségek az erőforráscsoport léteznie kell egy hálózati figyelőt azt létrehozása előtt.  
 
-## <a name="create-a-network-watcher-with-powershell"></a>A hálózati figyelő létrehozása a PowerShell használatával
 
-Hálózati figyelőt példányának létrehozásához futtassa az alábbi példa:
+## <a name="create-a-network-watcher-in-the-portal"></a>A Network Watcher létrehozása a portálon
+
+Navigáljon a **minden szolgáltatás** > **hálózatkezelés** > **Network Watcher**. Kiválaszthatja, hogy szeretné engedélyezni a Network Watcher, előfizetések. Ez a művelet létrehoz egy Network Watcher minden régióban elérhető.
+
+![A network watcher létrehozásához](./media/network-watcher-create/figure1.png)
+
+Ha engedélyezi a Network Watcher a portál használatával, a Network Watcher-példány nevét értéke automatikusan *NetworkWatcher_region_name* ahol *region_name* felel meg az Azure-régió Ha a példány engedélyezve van. Engedélyezve van az USA nyugati középső régiójában a Network Watchert neve például *NetworkWatcher_westcentralus*.
+
+A Network Watcher-példány automatikusan létrejön egy nevű erőforráscsoportban *NetworkWatcherRG*. Az erőforráscsoport jön létre, ha azt nem létezik.
+
+Ha szeretne egy Network Watcher-példány és az erőforráscsoport nevét testreszabja kerül be, használhatja a Powershell, az Azure CLI-vel, a REST API vagy ARMClient módszerek az az alábbi szakaszok ismertetik. Az egyes lehetőségek az erőforráscsoport, egy Network Watcher létrehozása előtt léteznie kell.  
+
+## <a name="create-a-network-watcher-with-powershell"></a>A Network Watcher létrehozása a PowerShell használatával
+
+A Network Watcher-példány létrehozásához futtassa az alábbi példában:
 
 ```powershell
 New-AzureRmNetworkWatcher -Name "NetworkWatcher_westcentralus" -ResourceGroupName "NetworkWatcherRG" -Location "West Central US"
 ```
 
-## <a name="create-a-network-watcher-with-the-azure-cli"></a>Hozzon létre egy hálózati figyelőt az Azure parancssori felület
+## <a name="create-a-network-watcher-with-the-azure-cli"></a>A Network Watcher létrehozásához az Azure CLI-vel
 
-Hálózati figyelőt példányának létrehozásához futtassa az alábbi példa:
+A Network Watcher-példány létrehozásához futtassa az alábbi példában:
 
 ```azurecli
 az network watcher configure --resource-group NetworkWatcherRG --locations westcentralus --enabled
 ```
 
-## <a name="create-a-network-watcher-with-the-rest-api"></a>Hozzon létre egy hálózati figyelőt REST API-val
+## <a name="create-a-network-watcher-with-the-rest-api"></a>A Network Watcher létrehozásához REST API-val
 
-A PowerShell használatával REST API hívása a ARMclient szolgál. A ARMClient verziója van telepítve, chocolatey [a Chocolatey ARMClient](https://chocolatey.org/packages/ARMClient)
+A ARMclient hívás a REST API, PowerShell-lel történik. A ARMClient megtalálható a chocolatey [ARMClient a chocolatey-t](https://chocolatey.org/packages/ARMClient)
 
 ### <a name="log-in-with-armclient"></a>Jelentkezzen be ARMClient
 
@@ -63,7 +84,7 @@ A PowerShell használatával REST API hívása a ARMclient szolgál. A ARMClient
 armclient login
 ```
 
-### <a name="create-the-network-watcher"></a>A hálózati figyelő létrehozása
+### <a name="create-the-network-watcher"></a>A network watcher létrehozásához
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -81,14 +102,14 @@ armclient put "https://management.azure.com/subscriptions/${subscriptionId}/reso
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy hálózati figyelőt példányának, megismerése funkciók érhetők el:
+Most, hogy a Network Watcher-példány, elérhető szolgáltatások megismerése:
 
 * [Topológia](network-watcher-topology-overview.md)
-* [Csomagrögzítéssel](network-watcher-packet-capture-overview.md)
+* [Csomagrögzítés](network-watcher-packet-capture-overview.md)
 * [IP-forgalom ellenőrzése](network-watcher-ip-flow-verify-overview.md)
 * [Következő ugrás](network-watcher-next-hop-overview.md)
 * [Biztonsági csoport nézet](network-watcher-security-group-view-overview.md)
-* [NSG folyamata naplózás](network-watcher-nsg-flow-logging-overview.md)
-* [Virtuális hálózati átjáró hibaelhárítása](network-watcher-troubleshoot-overview.md)
+* [NSG-t csoportforgalom naplózása](network-watcher-nsg-flow-logging-overview.md)
+* [Virtuális hálózati átjáró hibáinak elhárítása](network-watcher-troubleshoot-overview.md)
 
-Ha a hálózati figyelőt példánya, csomagrögzítéssel virtuális gépekről is engedélyezheti. Megtudhatja, hogyan: [hozzon létre egy riasztási kiváltott csomagrögzítéssel](network-watcher-alert-triggered-packet-capture.md)
+Ha egy Network Watcher-példány, csomagrögzítés virtual machines szolgáltatáson belül is engedélyezheti. További információ [hozzon létre egy aktivált riasztás csomagrögzítés](network-watcher-alert-triggered-packet-capture.md)

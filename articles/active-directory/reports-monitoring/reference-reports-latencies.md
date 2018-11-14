@@ -13,55 +13,55 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 12/15/2017
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b81c66acc0a90ba9b74cf1f4fb34ef7a545837f9
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: e5ceae2959f79c677f5b89c0c3f0a487f92ad1c6
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736606"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623179"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Az Azure Active Directory jelentéskészítés késése
 
-A [reporting](../active-directory-preview-explainer.md) az Azure Active Directoryban, meg kell határoznia, hogy a környezet működésébe összes információ lekérése. Mennyi ideig tart a jelentés adatainak megjelenjen az Azure Portalon a késés is nevezik. 
-
-Ez a témakör a késési adatok az Azure Portalon az összes jelentési kategóriába sorolja fel. 
-
+Késései mennyi ideig tart az Azure Active Directory (Azure AD) jelentéskészítési adatok megjelennek a [az Azure portal](https://portal.azure.com). Ez a cikk a várható késés a különböző típusú jelentéseket sorolja fel. 
 
 ## <a name="activity-reports"></a>Tevékenységjelentések
 
-Nincsenek Tevékenységjelentés két terület:
+Tevékenységjelentések két típusa van:
 
-- **Bejelentkezési tevékenységek** – A felügyelt alkalmazások használatával és a felhasználók bejelentkezési tevékenységeivel kapcsolatos információk
-- **Naplók** – Rendszertevékenység információk a felhasználó- és csoportfelügyeletre, valamint a felügyelt alkalmazásokra és a címtártevékenységekre vonatkozóan
+- [Bejelentkezések](concept-sign-ins.md) – arról nyújt tájékoztatást, a használati felügyelt alkalmazások és a felhasználó bejelentkezési tevékenységek
+- [Auditnaplók](concept-audit-logs.md) – rendszertevékenység információk a felhasználók és csoportok, a felügyelt alkalmazások és a címtártevékenységekre vonatkozóan nyújt
 
-A következő táblázat felsorolja a késési adatok tevékenységre vonatkozó jelentések.
+A következő táblázat felsorolja a késési adatok tevékenységre vonatkozó jelentések. 
 
-| Jelentés | Késés (95 %) |Késés (99 %)|
+> [!NOTE]
+> **Késés (95. százalékérték)** hivatkozik az idő, mely szerint a 95 %-át a naplókat kerülnek, és **késés (99. percentilis)** hivatkozik az idő, amely szerint a naplók 99 %-át lesz jelentve. 
+>
+
+| Jelentés | Késés (95. százalékérték) |Késés (99. percentilis)|
 | :-- | --- | --- | 
 | Naplók | 2 perc  | 5 perc  |
 | Bejelentkezések | 2 perc  | 5 perc |
 
-
 ## <a name="security-reports"></a>Biztonsági jelentések
 
-Nincsenek biztonsági jelentések készítése két terület:
+Biztonsági jelentések két típusa van:
 
-- **Kockázatos bejelentkezések** – A kockázatos bejelentkezés egy olyan bejelentkezési kísérletet jelöl, amelyet elképzelhető, hogy olyan személy hajtott végre, aki nem a felhasználói fiók jogos tulajdonosa. 
-- **Kockázatosként megjelölt felhasználók** – A kockázatos felhasználó egy olyan felhasználói fiókot jelöl, amelynek elképzelhető, hogy sérült a biztonsága. 
+- [Kockázatos bejelentkezések](concept-risky-sign-ins.md) – A kockázatos bejelentkezés egy olyan bejelentkezési kísérletet jelöl, amelyet elképzelhető, hogy olyan személy hajtott végre, aki nem a felhasználói fiók jogos tulajdonosa. 
+- [Kockázatosként megjelölt felhasználók](concept-user-at-risk.md) – A kockázatos felhasználó egy olyan felhasználói fiókot jelöl, amelynek elképzelhető, hogy sérült a biztonsága. 
 
 A következő táblázat felsorolja a biztonsági jelentések késési adatok.
 
 | Jelentés | Minimális | Átlag | Maximum |
 | :-- | --- | --- | --- |
-| Érintett felhasználók          | 5 perc   | 15 perc  | 2 óra  |
+| Veszélyeztetett felhasználók          | 5 perc   | 15 perc  | 2 óra  |
 | Kockázatos bejelentkezések         | 5 perc   | 15 perc  | 2 óra  |
 
 ## <a name="risk-events"></a>Kockázati események
 
-Az Azure Active Directory adaptív gépi tanulási algoritmusok és heurisztika segítségével észleli a felhasználói fiókokhoz kapcsolódó gyanús tevékenységeket. Minden észlelt gyanús művelet egy rekord nevű kockázati esemény van tárolva.
+Azure ad-ben az adaptív gépi tanulási algoritmusok és heurisztika segítségével észleli a felhasználói fiókokhoz kapcsolódó gyanús tevékenységeket. Minden észlelt gyanús művelet nevű rekordot tárolja egy **kockázati esemény**.
 
 A következő táblázat felsorolja a kockázati események késési adatok.
 
@@ -75,17 +75,8 @@ A következő táblázat felsorolja a kockázati események késési adatok.
 | Bejelentkezések gyanús tevékenységeket mutató IP-címekkel |2 óra |4 óra |8 óra  |
 
 
-
 ## <a name="next-steps"></a>További lépések
 
-Ha szeretne többet megtudni a tevékenységre vonatkozó jelentések az Azure Portalon, tekintse meg:
-
-- [Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon](concept-sign-ins.md)
-- [Naplózási tevékenységre vonatkozó jelentések az Azure Active Directory portálon](concept-audit-logs.md)
-
-Ha szeretne többet megtudni az Azure Portalon a biztonsági jelentések, lásd:
-
-- [Felhasználókról szóló biztonsági jelentés az Azure Active Directory portálon](concept-user-at-risk.md)
-- [Kockázatos bejelentkezések jelentés az Azure Active Directory portálon](concept-risky-sign-ins.md)
-
-Ha szeretne többet megtudni a kockázati események, [Azure Active Directory kockázati események](concept-risk-events.md).
+* [Az Azure AD-jelentések áttekintése](overview-reports.md)
+* [Az Azure AD-jelentések programozás alapú hozzáférést](concept-reporting-api.md)
+* [Az Azure Active Directory kockázati eseményei](concept-risk-events.md)

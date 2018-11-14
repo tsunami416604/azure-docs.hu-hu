@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 301ae251413cc174f115479e9ebef2310aa83ba7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: c99099c9b0fdf485bcf1db1d00b23e1e119ec557
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162442"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614157"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Egyéni Azure Active Directory B2C-házirendek egy SAML-alapú technikai profilban meghatározása
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az Azure Active Directory (Azure AD) B2C támogatja az SAML 2.0 identitásszolgáltató. Ez a cikk ismerteti, amely támogatja a szabványos protokoll Jogcímszolgáltatók folytatott interakcióra szolgáló technikai profil adatait. Technikai profilban, a SAML használatával is összevonható az SAML-alapú identitásszolgáltató, például az ADFS és a Salesforce-hoz, így a felhasználóknak, hogy jelentkezzen be a meglévő közösségi vagy vállalati identitásokat.
+Az Azure Active Directory (Azure AD) B2C támogatja az SAML 2.0 identitásszolgáltató. Ez a cikk ismerteti, amely támogatja a szabványos protokoll Jogcímszolgáltatók folytatott interakcióra szolgáló technikai profil adatait. Az SAML-alapú technikai profilban, a SAML-alapú identitásszolgáltató, például az ADFS és a Salesforce-ban, amely lehetővé teszi a felhasználóknak, hogy jelentkezzen be a meglévő közösségi vagy vállalati identitásokat használatával is összevonható.
 
 ## <a name="metadata-exchange"></a>Metaadatok exchange
 
@@ -111,7 +111,7 @@ A **neve** a protokoll elem attribútuma kell beállítani `SAML2`.
 | WantsSignedAssertions | Nem | Azt jelzi, hogy szükséges-e a technikai profil minden bejövő helyességi feltételek aláírva. A lehetséges értékek: `true` vagy `false`. Az alapértelmezett érték `true`. Ha az értéke `true`, minden helyességi feltételek szakasz `saml:Assertion` küldött által az identitás az Azure AD B2C-szolgáltatót kell aláírni. Ha az értéke `false`, az identitásszolgáltató nem jelentkezzen a helyességi feltételek, de még akkor is, ha igen, az Azure AD B2C-vel nem érvényesíteni az aláírást. A metaadatok is szabályozza a metaadatok jelző **WantsAssertionsSigned**, azaz a kimenet az Azure AD B2C az identitásszolgáltatónál történő megosztott technikai profil metaadataiban. Ha letiltja a helyességi feltételek érvényesítése, előfordulhat, hogy szeretné is, a válasz aláírás ellenőrzésének letiltása (további információkért lásd: **ResponsesSigned**). |
 | ResponsesSigned | Nem | A lehetséges értékek: `true` vagy `false`. Az alapértelmezett érték `true`. Ha az értéke `false`, az identitásszolgáltató SAML-válasz nem aláírásához, de még akkor is, ha igen, az Azure AD B2C-vel nem érvényesíteni az aláírást. Ha az értéke `true`, az Azure AD B2C az identitásszolgáltató által küldött SAML-válasz alá van írva, és össze kell vetni. Az SAML-válasz érvényesítés letiltása esetén is érdemes letiltani a helyességi feltétel aláírás-ellenőrzése (további információkért lásd: **WantsSignedAssertions**). |
 | WantsEncryptedAssertions | Nem | Azt jelzi, hogy szükséges-e a technikai profil minden bejövő helyességi feltételek titkosítását. A lehetséges értékek: `true` vagy `false`. Az alapértelmezett érték `false`. Ha az értéke `true`, alá kell írni a helyességi feltételek Azure AD B2C az identitásszolgáltató által küldött és az **SamlAssertionDecryption** kriptográfiai kulcsot meg kell határozni. Ha az értéke `true`, a metaadatokat az Azure AD B2C-vel technikai profil tartalmazza a **titkosítási** szakaszban. Az identitásszolgáltató beolvassa a metaadatokat, és az SAML-válasz előfeltétel titkosítja az Azure AD B2C-vel technikai profil metaadataiban megadott nyilvános kulccsal. Ha engedélyezte a helyességi feltételek titkosítás, is szükség lehet a válasz aláírás ellenőrzésének letiltása (további információkért lásd: **ResponsesSigned**). | 
-| IdpInitiatedProfileEnabled | Nem |Jelzi, hogy egy egyszeri bejelentkezés munkamenet-profilt, amely egy SAML-alapú identitás-szolgáltató profilban kezdeményezte engedélyezett. A lehetséges értékek: `true` vagy `false`. Az alapértelmezett érték `false`. A folyamat az identitásszolgáltató által kezdeményezett a felhasználó hitelesítése külsőleg, és a nem kért választ küld az Azure AD B2C-t, majd használ fel a tokent, hajtja végre a vezénylési lépéseket, és ezután elküldi az adott válasz a függő gyártótól származó alkalmazás. |
+| IdpInitiatedProfileEnabled | Nem |Jelzi, hogy egy egyszeri bejelentkezés munkamenet-profilt, amely egy SAML-alapú identitás-szolgáltató profilban kezdeményezte engedélyezett. A lehetséges értékek: `true` vagy `false`. A mező alapértelmezett értéke: `false`. A folyamat az identitásszolgáltató által kezdeményezett a felhasználó hitelesítése külsőleg, és a nem kért választ küld az Azure AD B2C-t, majd használ fel a tokent, hajtja végre a vezénylési lépéseket, és ezután elküldi az adott válasz a függő gyártótól származó alkalmazás. |
 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: cawa
-ms.openlocfilehash: d1e4177dff3f9ae8c78fb2e22b12e40ff2682c58
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 7578950af2dafdade3c97650dfd212240053dd3b
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037566"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625453"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Biztonságosan a webalkalmazás titkos alkalmazás beállításainak mentése
 
@@ -100,7 +100,7 @@ Ha egy gyors prototípust írása, és nem szeretne Azure-erőforrások kiosztá
 
 1. Telepítse a következő NuGet-csomagot a projekthez
     ```
-    Microsoft.Configuration.ConfigurationBuilders.Basic.1.0.0-alpha1.nupkg
+    Microsoft.Configuration.ConfigurationBuilders.Basic
     ```
 
 2. Hozzon létre egy fájlt, amely hasonlít az alábbi. Mentse a fájlt a projektmappa fájllistájának kívüli helyre.
@@ -145,7 +145,7 @@ Az ASP.NET core szakaszban egy Key Vaultot a projekt konfigurálásához kövess
 
 1. Telepítse a következő NuGet-csomagot a projekthez
 ```
-Microsoft.Configuration.ConfigurationBuilders.UserSecrets.1.0.0-preview2.nupkg
+Microsoft.Configuration.ConfigurationBuilders.UserSecrets
 ```
 
 2. Adja meg a Key Vault konfigurációs builder a Web.config fájlban. Ez a szakasz előtt helyezze *appSettings* szakaszban. Cserélje le *vaultName* kell lennie a Key Vault-e a Key Vault az Azure nyilvános vagy teljes URI szuverén felhő használata.

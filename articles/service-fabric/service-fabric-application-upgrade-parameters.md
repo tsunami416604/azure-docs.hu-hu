@@ -12,30 +12,36 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 9/17/2018
+ms.date: 11/08/2018
 ms.author: subramar
-ms.openlocfilehash: 3f321775ba112471760e627e6b43ed17ff8c5b6b
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 71e7abef725abf95cc20de8d1283d0efea6c3687
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182875"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615857"
 ---
 # <a name="application-upgrade-parameters"></a>Alkalmazásfrissítési paraméterek
-Ez a cikk ismerteti a különböző paraméterek, amelyek érvényesek az Azure Service Fabric-alkalmazás frissítése során. Alkalmazásfrissítési paraméterek szabályozhatja az időtúllépéseket és állapot-ellenőrzést, a frissítés során alkalmazott, és azok adja meg a szabályzatokban, amelyek a alkalmazni kell, amikor a sikertelen frissítés.
-
-Alkalmazás paraméterek érvényesek frissítése a PowerShell vagy a Visual Studio használatával. A alkalmazni, PowerShell és/vagy a Visual Studio szükséges és választható paramétereit módon a szükséges és választható paramétereket táblázatok ismertetik.
+Ez a cikk ismerteti a különböző paraméterek, amelyek érvényesek az Azure Service Fabric-alkalmazás frissítése során. Alkalmazásfrissítési paraméterek szabályozhatja az időtúllépéseket és állapot-ellenőrzést, a frissítés során alkalmazott, és azok adja meg a szabályzatokban, amelyek a alkalmazni kell, amikor a sikertelen frissítés. Alkalmazás-paraméterek használatával verziófrissítések vonatkoznak:
+- PowerShell
+- Visual Studio
+- SFCTL
+- [REST](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-startapplicationupgrade)
 
 Alkalmazásfrissítések kezdeményezett keresztül három felhasználó által választható frissítési módok egyikét. Minden mód rendelkezik a saját alkalmazás paraméterei:
 - Figyelés alatt
 - Nem figyelt automatikus
 - Nem figyelt manuális
 
+A megfelelő szükséges és választható paramétereket módon minden szakasz ismerteti.
+
+## <a name="visual-studio-and-powershell-parameters"></a>A Visual Studio és a PowerShell-paraméterek
+
 A Service Fabric-alkalmazások frissítéséhez használata a PowerShell használata a [Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade) parancsot. A frissítési mód van kiválasztva, vagy adja át a **figyelt**, **UnmonitoredAuto**, vagy **UnmonitoredManual** paramétert [ Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade).
 
 A Visual Studio a Service Fabric alkalmazásfrissítési paraméterek vannak beállítva, a Visual Studio beállítások párbeszédpanelen keresztül. A Visual Studio frissítési mód van kiválasztva, használja a **frissítési mód** legördülő listából vagy **figyelt**, **UnmonitoredAuto**, vagy **UnmonitoredManual** . További információkért lásd: [Service Fabric-alkalmazás verziófrissítésének konfigurálása Visual studióban](service-fabric-visualstudio-configure-upgrade.md).
 
-## <a name="required-parameters"></a>Szükséges paraméterek
+### <a name="required-parameters"></a>Szükséges paraméterek
 (PS = a PowerShell-lel, és a Visual Studio =)
 
 | Paraméter | Erre vonatkozik | Leírás |
@@ -48,7 +54,7 @@ Upgrademode tulajdonság | VS | Engedélyezett értékek a következők **figyel
 UnmonitoredAuto | PS | Azt jelzi, hogy a frissítési mód nem figyelt automatikus. Miután a Service Fabric egy frissítési tartományt frissít, a Service Fabric frissíti attól függetlenül, az alkalmazás állapota a következő frissítési tartományra. Ebben a módban nem javasolt éles környezetben, és csak hasznos az alkalmazások fejlesztése során. |
 UnmonitoredManual | PS | Azt jelzi, hogy a frissítési mód nem figyelt manuális. Service Fabric egy frissítési tartományt frissít, miután arra vár, hogy a következő frissítési tartományra frissítése használatával a *Resume-ServiceFabricApplicationUpgrade* parancsmagot. |
 
-## <a name="optional-parameters"></a>Választható paraméterek:
+### <a name="optional-parameters"></a>Választható paraméterek
 
 Az egészségügyi értékelési paraméter megadása nem kötelező. Ha a frissítés indításakor az egészségügyi értékelési feltételek nincsenek megadva, a Service Fabric az egészségügyi szabályzatok az ApplicationManifest.xml alkalmazáspéldány megadott használ.
 
@@ -69,16 +75,46 @@ A tábla alján a vízszintes görgetősávok segítségével megtekintheti a te
 | HealthCheckWaitDurationSec |PS VS | A frissítés befejezése után a Service Fabric előtt frissítési tartományban (másodpercben) várakozási időt kiértékeli az alkalmazás állapotát. Ennek az időtartamnak az idő, az alkalmazásnak megfelelően kellene futnia, mielőtt azt is figyelembe kell venni kifogástalan is tekinthető. Ha az állapot-ellenőrzés továbbítja, a frissítési folyamat abból a következő frissítési tartományra.  Ha az állapot-ellenőrzés nem sikerül, a Service Fabric várakozik a [UpgradeHealthCheckInterval](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-fabric-settings#clustermanager) állapotát újrapróbálkozás előtt ellenőrizze újra, amíg a *HealthCheckRetryTimeoutSec* elérésekor. Az alapértelmezett és ajánlott érték: 0 másodperc. |
 | MaxPercentUnhealthyDeployedApplications|PS VS |Alapértelmezett és ajánlott érték: 0. Adja meg a központilag telepített alkalmazások maximális számát (lásd a [rész állapotfigyelő](service-fabric-health-introduction.md)), amely lehet nem megfelelő az alkalmazás nem megfelelő állapotúnak számít, és nem sikerül a frissítés előtt. Ez a paraméter határozza meg az alkalmazás állapota a csomóponton, és segít a hibák észlelése, a frissítés során. Általában a replikákat az alkalmazás első kiegyenlített terhelésű egy másik csomópontra, amely lehetővé teszi az alkalmazás megjelenik a kifogástalan állapotú, ezáltal lehetővé téve a folytatja a frissítést. Adjon meg egy szigorú *MaxPercentUnhealthyDeployedApplications* állapotát, a Service Fabric gyors észlelése az alkalmazáscsomag problémájára, és adatsávokat egy gyors frissítése sikertelen. |
 | MaxPercentUnhealthyServices |PS VS |Egy paraméter *DefaultServiceTypeHealthPolicy* és *ServiceTypeHealthPolicyMap*. Alapértelmezett és ajánlott érték: 0. A szolgáltatások maximális számát adja meg az alkalmazáspéldány, amelyek nem megfelelő állapotú lehetnek az alkalmazás nem megfelelő állapotúnak számít, és nem sikerül a frissítés előtt. |
-| MaxPercentUnhealthyPartitionsPerService|PS VS |Alapértelmezett és ajánlott érték: 0. Adja meg a partíciók maximális száma egy szolgáltatás, amely nem megfelelő állapotú is lehet, mielőtt a szolgáltatás nem megfelelő állapotúnak számít. |
-| MaxPercentUnhealthyReplicasPerPartition|PS VS |Alapértelmezett és ajánlott érték: 0. Adja meg a másodpéldányok maximális száma partíció, amely nem megfelelő állapotú is lehet, mielőtt a partíció nem megfelelő állapotúnak számít. |
+| MaxPercentUnhealthyPartitionsPerService|PS VS |Egy paraméter *DefaultServiceTypeHealthPolicy* és *ServiceTypeHealthPolicyMap*. Alapértelmezett és ajánlott érték: 0. Adja meg a partíciók maximális száma egy szolgáltatás, amely nem megfelelő állapotú is lehet, mielőtt a szolgáltatás nem megfelelő állapotúnak számít. |
+| MaxPercentUnhealthyReplicasPerPartition|PS VS |Egy paraméter *DefaultServiceTypeHealthPolicy* és *ServiceTypeHealthPolicyMap*. Alapértelmezett és ajánlott érték: 0. Adja meg a másodpéldányok maximális száma partíció, amely nem megfelelő állapotú is lehet, mielőtt a partíció nem megfelelő állapotúnak számít. |
 | ServiceTypeHealthPolicyMap | PS VS | Szolgáltatástípus tartozó szolgáltatások állapotának értékeléséhez használt állapotházirend jelöli. A kivonatoló tábla bemenete veszi a következő formátumban: @ {"servicetypename tulajdonság is": "MaxPercentUnhealthyPartitionsPerService, MaxPercentUnhealthyReplicasPerPartition, MaxPercentUnhealthyServices"} például: @{"ServiceTypeName01" = "5,10,5"; "ServiceTypeName02" = "5,5,5"} |
 | TimeoutSec | PS VS | Adja meg az időtúllépés másodpercben. a művelet. |
 | UpgradeDomainTimeoutSec |PS VS |Maximális idő (másodperc) egyetlen frissítési tartomány frissítésére. Ha az időkorlát lejár, a frissítés leállítja, és folytatódik a beállítása alapján *FailureAction*. Az alapértelmezett érték: soha nem (végtelen) és az alkalmazás kell szabható meg megfelelően. |
-| UpgradeReplicaSetCheckTimeoutSec |PS VS |**Az állapotmentes szolgáltatás**--belül egyetlen frissítési tartományt, a Service Fabric próbál győződjön meg arról, hogy rendelkezésre állnak-e a szolgáltatás további példányai. Ha a cél-példányok száma egynél több, a Service Fabric megvárja, amíg elérhető, a maximális időkorlátot akár több példányt. Ez az időtúllépési használatával van megadva a *UpgradeReplicaSetCheckTimeoutSec* tulajdonság. Ha az időkorlát lejár, a Service Fabric folytathatná a frissítést, függetlenül a szolgáltatás példányainak számát. Ha a cél-példányok száma, a Service Fabric nem várja meg, és azonnal folytathatná a frissítést.<br><br>**Állapotalapú szolgáltatás**--belül egyetlen frissítési tartományt, a Service Fabric próbál ügyeljen arra, hogy a replikakészlethez kvóruma. Service Fabric várakozik a kvóruma számára elérhető, akár a maximális időkorlátot (azokat a *UpgradeReplicaSetCheckTimeoutSec* tulajdonság). Ha az időkorlát lejár, a Service Fabric folytathatná a frissítést, függetlenül a kvórum. A beállítás értéke szerint soha nem set (végtelen), ha a működés közbeni előre, és az 1200-as másodperc visszaállításakor. |
+| UpgradeReplicaSetCheckTimeoutSec |PS VS |Idejének mérése másodpercben.<br>**Az állapotmentes szolgáltatás**--belül egyetlen frissítési tartományt, a Service Fabric próbál győződjön meg arról, hogy rendelkezésre állnak-e a szolgáltatás további példányai. Ha a cél-példányok száma egynél több, a Service Fabric megvárja, amíg elérhető, a maximális időkorlátot akár több példányt. Ez az időtúllépési használatával van megadva a *UpgradeReplicaSetCheckTimeoutSec* tulajdonság. Ha az időkorlát lejár, a Service Fabric folytathatná a frissítést, függetlenül a szolgáltatás példányainak számát. Ha a cél-példányok száma, a Service Fabric nem várja meg, és azonnal folytathatná a frissítést.<br><br>**Állapotalapú szolgáltatás**--belül egyetlen frissítési tartományt, a Service Fabric próbál ügyeljen arra, hogy a replikakészlethez kvóruma. Service Fabric várakozik a kvóruma számára elérhető, akár a maximális időkorlátot (azokat a *UpgradeReplicaSetCheckTimeoutSec* tulajdonság). Ha az időkorlát lejár, a Service Fabric folytathatná a frissítést, függetlenül a kvórum. A beállítás értéke szerint soha nem set (végtelen), ha a működés közbeni előre, és az 1200-as másodperc visszaállításakor. |
 | UpgradeTimeoutSec |PS VS |Egy időtúllépés (másodpercben), amely a teljes frissítésre vonatkozik. Ha ez az időkorlát lejár, a frissítés leállítja és *FailureAction* aktiválódik. Az alapértelmezett érték: soha nem (végtelen) és az alkalmazás kell szabható meg megfelelően. |
 | WhatIf | PS | Engedélyezett értékek a következők **igaz** és **hamis**. Megmutatja, hogy mi történne a parancsmag futtatásakor. A parancsmag nem fut. |
 
 A *MaxPercentUnhealthyServices*, *MaxPercentUnhealthyPartitionsPerService*, és *MaxPercentUnhealthyReplicasPerPartition* feltételek szerint adható meg szolgáltatás típusa az alkalmazáspéldány. Ezen paraméterek szolgáltatási beállítás lehetővé teszi az alkalmazás számára a különböző értékelési házirendek különböző szolgáltatásokat típusokat tartalmazhat. Például állapotmentes szolgáltatás átjárótípus rendelkezhet egy *MaxPercentUnhealthyPartitionsPerService* , amely eltér az adott alkalmazáspéldány állapot-nyilvántartó motor szolgáltatástípus.
+
+## <a name="sfctl-parameters"></a>SFCTL-paraméterek
+
+A Service Fabric-alkalmazások frissítéséhez használatával a Service Fabric parancssori felület használata a [sfctl-alkalmazás frissítése](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-upgrade) parancsot a következő szükséges és választható paramétereket együtt.
+
+### <a name="required-parameters"></a>Szükséges paraméterek
+
+| Paraméter | Leírás |
+| --- | --- |
+| alkalmazásazonosító  |Az alkalmazás, amely frissítés alatt áll azonosítója. <br> Ez általában a nélkül az alkalmazás teljes nevét a "fabric:" URI-séma. 6.0-s verzió kezdve hierarchikus nevek vannak tagolva, az a "~" karaktert. Például, ha az alkalmazás neve "fabric: / myapp/app1", lesz az identitása "myapp ~ app1" 6.0 + és "myapp/app1" korábbi verzióiban.|
+alkalmazás-verzió |Az alkalmazás verziója írja be, amely a frissítési célokat.|
+paraméterek  |Parametr aplikace JSON-kódolású listáját felülbírálja a alkalmazni, ha az alkalmazás frissítését.|
+
+### <a name="optional-parameters"></a>Választható paraméterek
+| Paraméter | Leírás |
+| --- | --- |
+alapértelmezett-service-állapot-policy | [JSON](https://docs.microsoft.com/rest/api/servicefabric/sfclient-model-servicetypehealthpolicy) alapértelmezés szerint egy bizonyos szolgáltatástípusként állapotának értékeléséhez használt állapotházirend specifikace kódolva. A térkép alapértelmezés szerint üres. |
+a művelet sikertelen | Engedélyezett értékek a következők **visszaállítási**, **manuális**, és **érvénytelen**. A művelet végrehajtásához, amikor egy *figyelt* frissítési szabályzat vagy egészségügyi szabálymegsértéseknek figyelési ütközik. <br>**Visszaállítás** Megadja, hogy a frissítés automatikusan állítja vissza a frissítés előtti verziót. <br>**Manuális** azt jelzi, hogy a frissítés átvált a *UnmonitoredManual* frissítési módban. <br>**Érvénytelen** azt jelzi, hogy a sikertelen művelet érvénytelen.|
+kényszerített újraindítás | Konfiguráció vagy adat-csomag frissítése a szolgáltatást kód frissítése nélkül, ha a szolgáltatás újraindításakor csak akkor, ha a ForceRestart tulajdonság értéke **igaz**. A frissítés befejeződése után a Service Fabric értesíti a szolgáltatást, hogy egy új csomagot vagy adat-csomag érhető el. A szolgáltatás felelős a módosítások alkalmazása. Ha szükséges, a szolgáltatás újraindíthatja magát. |
+állapot-ellenőrzés-újrapróbálkozási-timeout | Mennyi ideig állapotának kiértékelését újra, amikor az alkalmazás vagy a fürt állapota nem kifogástalan, mielőtt *FailureAction* hajtja végre. Először kerül értelmezésre egy karakterlánc, amely az ISO 8601 időtartama. Ha ez nem sikerül, majd kerül értelmezésre egy számot jelölő ezredmásodperc teljes száma. Alapértelmezett: PT0H10M0S. |
+állapot-ellenőrzése – stabil-időtartama | Mennyi ideig, hogy az alkalmazás vagy a fürt kell megfelelő állapotú marad a következő frissítési tartományra abból a frissítés előtt. Először kerül értelmezésre egy karakterlánc, amely az ISO 8601 időtartama. Ha ez nem sikerül, majd kerül értelmezésre egy számot jelölő ezredmásodperc teljes száma. Alapértelmezett: PT0H2M0S. |
+állapotellenőrzés--wait-időtartama | A házirendek alkalmazása előtt a frissítési tartomány befejezése után várakozási idő mennyisége. Először kerül értelmezésre egy karakterlánc, amely az ISO 8601 időtartama. Ha ez nem sikerül, majd kerül értelmezésre egy számot jelölő ezredmásodperc teljes száma. Alapértelmezett: 0.|
+maximális száma nem megfelelő alkalmazások | Alapértelmezett és ajánlott érték: 0. Adja meg a központilag telepített alkalmazások maximális számát (lásd a [rész állapotfigyelő](service-fabric-health-introduction.md)), amely lehet nem megfelelő az alkalmazás nem megfelelő állapotúnak számít, és nem sikerül a frissítés előtt. Ez a paraméter határozza meg az alkalmazás állapota a csomóponton, és segít a hibák észlelése, a frissítés során. Általában a replikákat az alkalmazás első kiegyenlített terhelésű egy másik csomópontra, amely lehetővé teszi az alkalmazás megjelenik a kifogástalan állapotú, ezáltal lehetővé téve a folytatja a frissítést. Adjon meg egy szigorú *maximális száma nem megfelelő alkalmazások* állapotát, a Service Fabric gyors észlelése az alkalmazáscsomag problémájára, és adatsávokat egy gyors frissítése sikertelen. Egy 0 és 100 közötti számot jelöli. |
+mód | Engedélyezett értékek a következők **figyelt**, **upgrademode tulajdonság**, **UnmonitoredAuto**, **UnmonitoredManual**. Alapértelmezett érték a **UnmonitoredAuto**. Tekintse meg a Visual Studio és a PowerShell *szükséges paraméterek* szakasz ezeket az értékeket leírását.|
+replika-set-ellenőrzése – időtúllépés |Idejének mérése másodpercben. <br>**Az állapotmentes szolgáltatás**--belül egyetlen frissítési tartományt, a Service Fabric próbál győződjön meg arról, hogy rendelkezésre állnak-e a szolgáltatás további példányai. Ha a cél-példányok száma egynél több, a Service Fabric megvárja, amíg elérhető, a maximális időkorlátot akár több példányt. Ez az időtúllépési használatával van megadva a *replika-set-ellenőrzése – időtúllépés* tulajdonság. Ha az időkorlát lejár, a Service Fabric folytathatná a frissítést, függetlenül a szolgáltatás példányainak számát. Ha a cél-példányok száma, a Service Fabric nem várja meg, és azonnal folytathatná a frissítést.<br><br>**Állapotalapú szolgáltatás**--belül egyetlen frissítési tartományt, a Service Fabric próbál ügyeljen arra, hogy a replikakészlethez kvóruma. Service Fabric várakozik a kvóruma számára elérhető, akár a maximális időkorlátot (azokat a *replika-set-ellenőrzése – időtúllépés* tulajdonság). Ha az időkorlát lejár, a Service Fabric folytathatná a frissítést, függetlenül a kvórum. A beállítás értéke szerint soha nem set (végtelen), ha a működés közbeni előre, és az 1200-as másodperc visszaállításakor. |
+a házirend Állapotfigyelő szolgáltatás | JSON kódolású térkép rajzolása szolgáltatás típus állapotházirend / szolgáltatás neve. A térkép az üres lehet alapértelmezett. [A paraméter JSON formátumban. ](https://docs.microsoft.com/rest/api/servicefabric/sfclient-model-applicationhealthpolicy#servicetypehealthpolicymap). A "Value" részében a JSON-fájl tartalmaz **MaxPercentUnhealthyServices**, **MaxPercentUnhealthyPartitionsPerService**, és **MaxPercentUnhealthyReplicasPerPartition**. Ezek a paraméterek leírását a Visual Studio és a választható paraméterek: PowerShell című szakaszában talál.
+timeout | Adja meg az időtúllépés másodpercben. a művelet. Alapértelmezett: 60. |
+frissítés-tartomány-időkorlátja | Mennyi ideig mindegyik frissítési tartományon van befejezését, mielőtt *FailureAction* hajtja végre. Először kerül értelmezésre egy karakterlánc, amely az ISO 8601 időtartama. Ha ez nem sikerül, majd kerül értelmezésre egy számot jelölő ezredmásodperc teljes száma. Az alapértelmezett érték: soha nem (végtelen) és az alkalmazás kell szabható meg megfelelően. Alapértelmezett: P10675199DT02H48M05.4775807S. |
+frissítés – időtúllépés | Mennyi ideig mindegyik frissítési tartományon van befejezését, mielőtt *FailureAction* hajtja végre. Először kerül értelmezésre egy karakterlánc, amely az ISO 8601 időtartama. Ha ez nem sikerül, majd kerül értelmezésre egy számot jelölő ezredmásodperc teljes száma. Az alapértelmezett érték: soha nem (végtelen) és az alkalmazás kell szabható meg megfelelően. Alapértelmezett: P10675199DT02H48M05.4775807S.|
+Figyelmeztetés-as hiba | Engedélyezett értékek a következők **igaz** és **hamis**. Az alapértelmezett érték a **False** (Hamis). Az argumentumként átadhatók azt a jelzőt. Az alkalmazás a figyelmeztető állapot események tekinti a hibákat a frissítés során az alkalmazás állapotának kiértékelésekor. Alapértelmezés szerint a Service Fabric nem értékeli figyelmeztetés hálózatállapot-események kell hiba (hibák), így a frissítést folytatni lehessen, még akkor is, ha a figyelmeztetési esemény. |
 
 ## <a name="next-steps"></a>További lépések
 [Az alkalmazás használatával a Visual Studio frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti egy alkalmazás frissítése a Visual Studio használatával.

@@ -5,23 +5,327 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 11/12/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: b4a816c887d1cca78ff845858dce29049946b09f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f8f3584475415cf9ca19458f6da78d34df37f438
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235989"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614361"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Az Azure Blockchain Workbench integrációs üzenetkezelés
 
 Amellett, hogy a REST API-val, az Azure Blockchain Workbench is messaging-alapú integrációt biztosít. Workbench Főkönyv-központú események Azure Event Griddel, alsóbb rétegbeli fogyasztói gyűjthet adatokat, vagy be ezen események alapján keresztül teszi közzé. Ezek az ügyfelek megbízható üzenetküldést igénylő, az Azure Blockchain Workbench használatával továbbítja az üzeneteket, valamint egy Azure Service Bus-végponttal.
 
-A fejlesztők is érdeklődést a külső rendszerek kommunikációhoz felhasználók létrehozása, szerződések létrehozása és frissítése a Főkönyv szerződések kezdeményezési tranzakciók vannak. Ez a funkció jelenleg nem érintkező nyilvános előzetes verzióban érhető el, amíg egy mintát, amely ezt a képességet biztosít fürtpéldány [ http://aka.ms/blockchain-workbench-integration-sample ](https://aka.ms/blockchain-workbench-integration-sample).
+## <a name="input-apis"></a>A bemeneti API-k
+
+Ha el szeretné indítani a külső rendszerekből a felhasználók létrehozása, szerződések létrehozása és frissítése szerződések tranzakciók, használhatja a bemeneti API-k üzenetkezelési Főkönyv tranzakció végrehajtásához. Lásd: [integrációs minták üzenetkezelési](https://aka.ms/blockchain-workbench-integration-sample) minta azt mutatja be, a bemeneti API-k.
+
+Az alábbi táblázat a jelenleg elérhető bemeneti API-k.
+
+### <a name="create-user"></a>Felhasználó létrehozása
+
+Létrehoz egy új felhasználót.
+
+A kérelemhez szükséges a következő mezőket:
+
+| **Name (Név)**             | **Leírás**                                      |
+|----------------------|------------------------------------------------------|
+| Kérelemazonosító:            | Az ügyfél által megadott GUID azonosítója                                |
+| Keresztnév            | A felhasználó utóneve                              |
+| Vezetéknév             | A felhasználó vezetékneve                               |
+| E-mail cím         | A felhasználó e-mail címe                           |
+| externalId           | A felhasználó Azure AD objektum azonosítója                      |
+| ConnectionId         | A blockchain-kapcsolat egyedi azonosítója |
+| messageSchemaVersion | Üzenetkezelési sémaverzió                            |
+| messageName          | **CreateUserRequest**                               |
+
+Példa:
+
+``` json
+{
+    "requestId": "e2264523-6147-41fc-bbbb-edba8e44562d",
+    "firstName": "Ali",
+    "lastName": "Alio",
+    "emailAddress": "aa@contoso.com",
+    "externalId": "6a9b7f65-ffff-442f-b3b8-58a35abd1bcd",
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "CreateUserRequest"
+}
+```
+
+Blockchain Workbenchet választ küld a következő mezőket:
+
+| **Name (Név)**              | **Leírás**                                                                                                             |
+|-----------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| Kérelemazonosító:             | Az ügyfél által megadott GUID azonosítója |
+| userId                | A létrehozott felhasználó azonosítója |
+| UserChainIdentifier   | A blockchain-hálózat létrehozó felhasználó címe. A cím Ethereum, a felhasználó **a láncban lévő** címet. |
+| ConnectionId          | A blockchain-kapcsolat egyedi azonosítója|
+| messageSchemaVersion  | Üzenetkezelési sémaverzió |
+| messageName           | **CreateUserUpdate** |
+| status                | A felhasználó-létrehozási kérés állapotát.  Ha sikeres, értéke **sikeres**. Hiba esetén, a értéke **hiba**.     |
+| AdditionalInformation | További információ a megadott állapota alapján |
+
+Példa a sikeres **felhasználó létrehozása** Blockchain Workbenchet a választ:
+
+``` json
+{ 
+    "requestId": "e2264523-6147-41fc-bb59-edba8e44562d", 
+    "userId": 15, 
+    "userChainIdentifier": "0x9a8DDaCa9B7488683A4d62d0817E965E8f248398", 
+    "connectionId": 1, 
+    "messageSchemaVersion": "1.0.0", 
+    "messageName": "CreateUserUpdate", 
+    "status": "Success", 
+    "additionalInformation": { } 
+} 
+```
+
+Ha a kérelem sikertelen volt, vannak további információkat vegye fel a hiba részleteit.
+
+``` json
+{
+    "requestId": "e2264523-6147-41fc-bb59-edba8e44562d", 
+    "userId": 15, 
+    "userChainIdentifier": null, 
+    "connectionId": 1, 
+    "messageSchemaVersion": "1.0.0", 
+    "messageName": "CreateUserUpdate", 
+    "status": "Failure", 
+    "additionalInformation": { 
+        "errorCode": 4000, 
+        "errorMessage": "User cannot be provisioned on connection." 
+    }
+}
+```
+
+### <a name="create-contract"></a>Szerződés létrehozása
+
+Létrehoz egy új szerződést.
+
+A kérelemhez szükséges a következő mezőket:
+
+| **Name (Név)**             | **Leírás**                                                                                                           |
+|----------------------|---------------------------------------------------------------------------------------------------------------------------|
+| Kérelemazonosító:            | Az ügyfél által megadott GUID azonosítója |
+| UserChainIdentifier  | A blockchain-hálózat létrehozó felhasználó címe. Ez a cím Ethereum, a felhasználó **lánc** címet. |
+| ApplicationName      | Az alkalmazás neve |
+| WorkflowName         | A munkafolyamat neve |
+| paraméterek           | Bemeneti paraméterek szerződés létrehozása |
+| ConnectionId         | A blockchain-kapcsolat egyedi azonosítója |
+| messageSchemaVersion | Üzenetkezelési sémaverzió |
+| messageName          | **CreateContractRequest** |
+
+Példa:
+
+``` json
+{ 
+    "requestId": "ce3c429b-a091-4baa-b29b-5b576162b211", 
+    "userChainIdentifier": "0x9a8DDaCa9B7488683A4d62d0817E965E8f248398", 
+    "applicationName": "AssetTransfer", 
+    "workflowName": "AssetTransfer", 
+    "parameters": [ 
+        { 
+            "name": "description", 
+            "value": "a 1969 dodge charger" 
+        }, 
+        { 
+            "name": "price", 
+            "value": "12345" 
+        } 
+    ], 
+    "connectionId": 1, 
+    "messageSchemaVersion": "1.0.0", 
+    "messageName": "CreateContractRequest" 
+}
+```
+
+Blockchain Workbenchet választ küld a következő mezőket:
+
+| **Name (Név)**                 | **Leírás**                                                                   |
+|--------------------------|-----------------------------------------------------------------------------------|
+| Kérelemazonosító:                | Az ügyfél által megadott GUID azonosítója                                                             |
+| ContractId               | Az Azure Blockchain Workbench a szerződés egyedi azonosítója |
+| ContractLedgerIdentifier | A szerződést a Főkönyv címe                                            |
+| ConnectionId             | A blockchain-kapcsolat egyedi azonosítója                               |
+| messageSchemaVersion     | Üzenetkezelési sémaverzió                                                         |
+| messageName              | **CreateContractUpdate**                                                      |
+| status                   | A szerződés létrehozási kérés állapotát.  A lehetséges értékek: **elküldött**, **lekötött**, **hiba**.  |
+| AdditionalInformation    | További információ a megadott állapota alapján                              |
+
+Példa egy beküldött **szerződés létrehozása** Blockchain Workbenchet a választ:
+
+``` json
+{
+    "requestId": "ce3c429b-a091-4baa-b29b-5b576162b211",
+    "contractId": 55,
+    "contractLedgerIdentifier": "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe",
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "CreateContractUpdate",
+    "status": "Submitted"
+    "additionalInformation": { }
+}
+```
+
+Példa egy véglegesített **szerződés létrehozása** Blockchain Workbenchet a választ:
+
+``` json
+{
+    "requestId": "ce3c429b-a091-4baa-b29b-5b576162b211",
+    "contractId": 55,
+    "contractLedgerIdentifier": "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe",
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "CreateContractUpdate",
+    "status": "Committed",
+    "additionalInformation": { }
+}
+```
+
+Ha a kérelem sikertelen volt, vannak további információkat vegye fel a hiba részleteit.
+
+``` json
+{
+    "requestId": "ce3c429b-a091-4baa-b29b-5b576162b211",
+    "contractId": 55,
+    "contractLedgerIdentifier": null,
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "CreateContractUpdate",
+    "status": "Failure"
+    "additionalInformation": {
+        "errorCode": 4000,
+        "errorMessage": "Contract cannot be provisioned on connection."
+    }
+}
+```
+
+### <a name="create-contract-action"></a>Szerződés művelet létrehozása
+
+Létrehoz egy új szerződés műveletet.
+
+A kérelemhez szükséges a következő mezőket:
+
+| **Name (Név)**                 | **Leírás**                                                                                                           |
+|--------------------------|---------------------------------------------------------------------------------------------------------------------------|
+| Kérelemazonosító:                | Az ügyfél által megadott GUID azonosítója |
+| UserChainIdentifier      | A blockchain-hálózat létrehozó felhasználó címe. Az Ethereum, ez az a felhasználó **lánc** címet. |
+| ContractLedgerIdentifier | A szerződést a Főkönyv címe |
+| WorkflowFunctionName     | A munkafolyamat függvény neve |
+| paraméterek               | Bemeneti paraméterek szerződés létrehozása |
+| ConnectionId             | A blockchain-kapcsolat egyedi azonosítója |
+| messageSchemaVersion     | Üzenetkezelési sémaverzió |
+| messageName              | **CreateContractActionRequest** |
+
+Példa:
+
+``` json
+{
+    "requestId": "a5530932-9d6b-4eed-8623-441a647741d3",
+    "userChainIdentifier": "0x9a8DDaCa9B7488683A4d62d0817E965E8f248398",
+    "contractLedgerIdentifier": "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe",
+    "workflowFunctionName": "modify",
+    "parameters": [
+        {
+            "name": "description",
+            "value": "a 1969 dodge charger"
+        },
+        {
+            "name": "price",
+            "value": "12345"
+        }
+    ],
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "CreateContractActionRequest"
+}
+```
+
+Blockchain Workbenchet választ küld a következő mezőket:
+
+| **Name (Név)**              | **Leírás**                                                                   |
+|-----------------------|-----------------------------------------------------------------------------------|
+| Kérelemazonosító:             | Az ügyfél által megadott GUID azonosítója|
+| ContractId            | Az Azure Blockchain Workbench a szerződés egyedi azonosítója |
+| ConnectionId          | A blockchain-kapcsolat egyedi azonosítója |
+| messageSchemaVersion  | Üzenetkezelési sémaverzió |
+| messageName           | **CreateContractActionUpdate** |
+| status                | A szerződés művelet kérés állapotát. A lehetséges értékek: **elküldött**, **lekötött**, **hiba**.                         |
+| AdditionalInformation | További információ a megadott állapota alapján |
+
+Példa egy beküldött **szerződés művelet létrehozása** Blockchain Workbenchet a választ:
+
+``` json
+{
+    "requestId": "a5530932-9d6b-4eed-8623-441a647741d3",
+    "contractId": 105,
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "CreateContractActionUpdate",
+    "status": "Submitted",
+    "additionalInformation": { }
+}
+```
+
+Példa egy véglegesített **szerződés művelet létrehozása** Blockchain Workbenchet a választ:
+
+``` json
+{
+    "requestId": "a5530932-9d6b-4eed-8623-441a647741d3",
+    "contractId": 105,
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "CreateContractActionUpdate",
+    "status": "Committed"
+    "additionalInformation": { }
+}
+```
+
+Ha a kérelem sikertelen volt, vannak további információkat vegye fel a hiba részleteit.
+
+``` json
+{
+    "requestId": "a5530932-9d6b-4eed-8623-441a647741d3",
+    "contractId": 105,
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "CreateContractActionUpdate",
+    "status": "Failure"
+    "additionalInformation": {
+        "errorCode": 4000,
+        "errorMessage": "Contract action cannot be provisioned on connection."
+    }
+}
+```
+
+### <a name="input-api-error-codes-and-messages"></a>A bemeneti API-hibakódok és üzenetek
+
+**4000-es hibakód: Hibás kérés hiba**
+- Érvénytelen connectionId
+- CreateUserRequest deszerializálás sikertelen volt
+- CreateContractRequest deszerializálás sikertelen volt
+- CreateContractActionRequest deszerializálás sikertelen volt
+- {Alkalmazásnév szerint meghatározott} alkalmazást nem létezik.
+- {Alkalmazásnév által azonosított} alkalmazás nem rendelkezik a munkafolyamat
+- UserChainIdentifier nem létezik.
+- A szerződés {Főkönyv azonosító által azonosított} nem létezik.
+- Nincs kontraktu {Főkönyv azonosító által azonosított} függvény {munkafolyamat függvény neve}
+- UserChainIdentifier nem létezik.
+
+**Hibakód: 4090: ütközés lép fel hiba**
+- A felhasználó már létezik
+- Szerződés már létezik.
+- Szerződés művelet már létezik
+
+**5000-es hibakód: belső kiszolgálóhiba**
+- Kivétel üzenetek
 
 ## <a name="event-notifications"></a>Eseményértesítések
 
@@ -92,15 +396,15 @@ Azt jelzi, hogy az egy kérelem beszúrása vagy frissítése egy szerződést a
 
 | Name (Név) | Leírás |
 |-----|--------------|
-| ChainID | A láncban, a kéréshez társított egyedi azonosítója.|
-| BlockId | A blokkolás a a Főkönyv egyedi azonosítója.|
-| ContractId | A szerződés egyedi azonosítója.|
-| ContractAddress |       A szerződést a Főkönyv címe.|
-| TransactionHash  |     A tranzakció a főkönyvi kivonat.|
-| OriginatingAddress |   A tranzakció a feladó címe.|
-| Műveletnév       |     A művelet neve.|
-| IsUpdate        |      Annak jelzése, hogy ez a frissítés.|
-| Paraméterek       |     Az objektum, amely azonosítja a név, érték és adatok művelet küldött paraméterek listáját.|
+| ChainID | A láncban, a kéréshez társított egyedi azonosítója |
+| BlockId | A blokkolás a a Főkönyv egyedi azonosítója |
+| ContractId | A szerződés egyedi azonosítója |
+| ContractAddress |       A szerződést a Főkönyv címe |
+| TransactionHash  |     A tranzakció a Főkönyv a kivonata |
+| OriginatingAddress |   A tranzakció a feladó címe |
+| Műveletnév       |     A művelet neve |
+| IsUpdate        |      Annak jelzése, hogy ez a frissítés |
+| Paraméterek       |     Az objektum, amely azonosítja a név, érték és adatok művelet küldött paraméterek listáját |
 | TopLevelInputParams |  Olyan esetekben, ahol egy szerződés csatlakozik egy vagy több szerződést ezek a paraméterek a legfelső szintű szerződésből. |
 
 ``` csharp
@@ -126,18 +430,17 @@ Azt jelzi, hogy egy kérés érkezett a végrehajtás egy műveletet az elosztot
 
 | Name (Név)                     | Leírás                                                                                                                                                                   |
 |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ContractActionId         | A szerződés művelet egyedi azonosítója                                                                                                                                |
-| ChainIdentifier          | A láncban egyedi azonosítója                                                                                                                                           |
-| ConnectionId             | A kapcsolat egyedi azonosítója                                                                                                                                      |
-| UserChainIdentifier      | A blockchain-hálózat létrehozó felhasználó címe. Az Ethereum ez lenne a felhasználó "a lánc" címet.                                                     |
-| ContractLedgerIdentifier | A szerződést a Főkönyv címe.                                                                                                                                        |
-| WorkflowFunctionName     | A munkafolyamat függvény nevét.                                                                                                                                                |
-| WorkflowName             | A munkafolyamat nevét.                                                                                                                                                         |
-| WorkflowBlobStorageURL   | Az URL-címe a blob Storage-szerződést.                                                                                                                                      |
-| ContractActionParameters | A szerződés művelet paramétereit.                                                                                                                                           |
-| TransactionHash          | A tranzakció a főkönyvi kivonat.                                                                                                                                    |
-| Kiépítési állapot      | A művelet aktuális kiépítési állapota.</br>0 – létrehozva</br>1 – folyamatban</br>2 – befejezése</br> Teljes azt jelzi, hogy a könyvelési megerősítést, amelyek ezen sikeresen hozzá lett adva.                                               |
-|                          |                                                                                                                                                                               |
+| ContractActionId         | A szerződés művelet egyedi azonosítója |
+| ChainIdentifier          | A láncban egyedi azonosítója |
+| ConnectionId             | A kapcsolat egyedi azonosítója |
+| UserChainIdentifier      | A blockchain-hálózat létrehozó felhasználó címe. Ez a cím Ethereum, a felhasználó **lánc** címet. |
+| ContractLedgerIdentifier | A szerződést a Főkönyv címe |
+| WorkflowFunctionName     | A munkafolyamat függvény neve |
+| WorkflowName             | A munkafolyamat neve |
+| WorkflowBlobStorageURL   | Az URL-címét a blob Storage-szerződés |
+| ContractActionParameters | A szerződés művelet paramétereit |
+| TransactionHash          | A tranzakció a Főkönyv a kivonata |
+| Kiépítési állapot      | A művelet aktuális kiépítési állapota.</br>0 – létrehozva</br>1 – folyamatban</br>2 – befejezése</br> Teljes azt jelzi, hogy a könyvelési megerősítést, amelyek ezen sikeresen hozzáadva |
 
 ```csharp
 public class ContractActionRequest : MessageModelBase
@@ -165,9 +468,9 @@ Azt jelzi, hogy egy kérés érkezett-e frissíteni a felhasználó egy adott el
 
 | Name (Név)    | Leírás                              |
 |---------|------------------------------------------|
-| Cím | A felhasználót, hogy a rendszer finanszírozott címe. |
-| Egyenleg | A felhasználó egyenleg egyenleg.         |
-| ChainID | A láncban egyedi azonosítója.     |
+| Cím | A cím, amelyet a rendszer finanszírozott |
+| Egyenleg | A felhasználó egyenleg egyenlege         |
+| ChainID | A láncban egyedi azonosítója     |
 
 
 ``` csharp
@@ -185,10 +488,10 @@ Az üzenet azt jelzi, hogy egy kérés érkezett-e egy elosztott Főkönyv hozz�
 
 | Name (Név)           | Leírás                                                            |
 |----------------|------------------------------------------------------------------------|
-| ChainId        | Egyedi azonosítója, amelyhez a blokk lett hozzáadva a lánc.             |
-| BlockId        | Az Azure Blockchain Workbench blokk egyedi azonosítója. |
-| BlockHash      | A blokk-kivonat.                                                 |
-| BlockTimeStamp | A blokk időbélyegét.                                            |
+| ChainId        | Egyedi azonosítója, amelyhez a blokk lett hozzáadva a lánc             |
+| BlockId        | Az Azure Blockchain Workbench blokk egyedi azonosítója |
+| BlockHash      | A blokk kivonata                                                 |
+| BlockTimeStamp | A blokk történő küldés időbélyegzője                                            |
 
 ``` csharp
 public class InsertBlockRequest : MessageModelBase
@@ -206,13 +509,13 @@ public class InsertBlockRequest : MessageModelBase
 
 | Name (Név)            | Leírás                                                            |
 |-----------------|------------------------------------------------------------------------|
-| ChainId         | Egyedi azonosítója, amelyhez a blokk lett hozzáadva a lánc.             |
-| BlockId         | Az Azure Blockchain Workbench blokk egyedi azonosítója. |
-| TransactionHash | A tranzakció kivonatát.                                           |
-| Ettől:            | A tranzakció a feladó címe.                      |
-| Művelet              | A tranzakció az illetékes címzett címe.              |
-| Érték           | Az érték a tranzakcióban.                                 |
-| IsAppBuilderTx  | Ha ez az a Blockchain Workbenchet tranzakció azonosítja.                         |
+| ChainId         | Egyedi azonosítója, amelyhez a blokk lett hozzáadva a lánc             |
+| BlockId         | Az Azure Blockchain Workbench blokk egyedi azonosítója |
+| TransactionHash | A tranzakció kivonata                                           |
+| Ettől:            | A tranzakció a feladó címe                      |
+| Művelet              | A tranzakció az illetékes címzett címe              |
+| Érték           | Az érték a tranzakcióban                                 |
+| IsAppBuilderTx  | Annak jelzése, hogy ez az a Blockchain Workbenchet tranzakció                         |
 
 ``` csharp
 public class InsertTransactionRequest : MessageModelBase
@@ -233,8 +536,8 @@ Részletes adatokat biztosít a hozzárendelés egy lánc azonosító egy szerz�
 
 | Name (Név)            | Leírás                                                                       |
 |-----------------|-----------------------------------------------------------------------------------|
-| ContractId      | Ez az Azure Blockchain Workbench a szerződés egyedi azonosítója. |
-| ChainIdentifier | Ez az a szerződés a lánc azonosítóját.                             |
+| ContractId      | Az Azure Blockchain Workbench a szerződés egyedi azonosítója |
+| ChainIdentifier | A szerződés a lánc azonosítója                             |
 
 ``` csharp
 public class AssignContractChainIdentifierRequest : MessageModelBase
@@ -252,8 +555,8 @@ Az alapszintű modell pedig az összes üzenetet.
 
 | Name (Név)          | Leírás                          |
 |---------------|--------------------------------------|
-| OperationName | A művelet neve.           |
-| Kérelemazonosító:     | A kérelem egyedi azonosítója. |
+| OperationName | A művelet neve           |
+| Kérelemazonosító:     | A kérelem egyedi azonosítója |
 
 ``` csharp
 public class MessageModelBase
@@ -269,9 +572,9 @@ Tartalmazza a nevét, az érték és a egy paraméter típusa.
 
 | Name (Név)  | Leírás                 |
 |-------|-----------------------------|
-| Name (Név)  | A paraméter neve.  |
-| Érték | A paraméter értéke. |
-| Típus  | A paraméter típusát.  |
+| Name (Név)  | A paraméter neve  |
+| Érték | A paraméter értéke |
+| Típus  | A paraméter típusa  |
 
 ``` csharp
 public class ContractInputParameter
@@ -288,10 +591,10 @@ Tartalmazza az azonosítója, a nevét, a érték és a egy tulajdonság típus�
 
 | Name (Név)  | Leírás                |
 |-------|----------------------------|
-| Azonosító    | A tulajdonság azonosítója.    |
-| Name (Név)  | A tulajdonság nevét.  |
+| Azonosító    | A tulajdonság azonosítója    |
+| Name (Név)  | A tulajdonság neve  |
 | Érték | A tulajdonság értéke. |
-| Típus  | A tulajdonság típusa.  |
+| Típus  | A tulajdonság típusa  |
 
 ``` csharp
 public class ContractProperty

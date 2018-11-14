@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 09/28/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d3809c2615c1d73d0c4c80bafba77614aac6b17e
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 2f0f5341ba6818f375d463638979c68689519227
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395651"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624199"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-log-analytics-preview"></a>Elemezheti az Azure ad-ben tevékenységeket tartalmazó naplók a Log Analytics (előzetes verzió)
 
@@ -97,7 +97,7 @@ Az Azure Active Directory előre felépített Log Analytics nézeteket is letöl
 * **Bejelentkezési események**: Ebben a nézetben látható a leginkább releváns jelentések kapcsolódó bejelentkezési tevékenységeket, például az alkalmazás, felhasználó, eszköz, valamint nyomon követése a bejelentkezések száma idővel lemezkapacitásáról által bejelentkezések figyelése.
 * **Felhasználói jóváhagyás végrehajtása**: Ebben a nézetben látható a kapcsolódó felhasználói beleegyezés, jelentések, például a hozzájárulási engedélyezi a felhasználói, a felhasználók számára nyújtott hozzájárulási bejelentkezések, valamint a bejelentkezések a jóváhagyás-alapú alkalmazások összes alkalmazás által. 
 
-Ismerje meg, hogyan [telepítése és a Log Analytics-nézetek használata az Azure Active Directory naplóinak](howto-install-use-log-analytics-views.md). 
+További információ [a Log Analytics-nézetek Azure AD-tevékenységnaplókhoz való telepítéséről és használatáról](howto-install-use-log-analytics-views.md). 
 
 
 ## <a name="next-steps"></a>További lépések

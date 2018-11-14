@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.openlocfilehash: 0ca9c7ff1ac4cfbb50f251679286a933429bf03f
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 71ac963f00993f8a66d41a8d6f3f67528d9c0583
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903047"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625149"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Hirdetések ügyféloldali beillesztése
 Ez a cikk különböző típusú hirdetések ügyféloldali beillesztése információt tartalmaz.
@@ -107,7 +107,7 @@ Lineáris ads is megjeleníthetők a megadott sorrendben. Ehhez hozzá további 
           <Description>Unknown</Description>
           <Survey></Survey>
           <Error></Error>
-          <Impression id="Atlas"><![CDATA[http://myserver.com/Impression/Ad1trackingResouce]]></Impression>
+          <Impression id="Atlas"><![CDATA[http://myserver.com/Impression/Ad1trackingResource]]></Impression>
           <Creatives>
             <Creative id="video" sequence="0" AdID="">
               <Linear>
@@ -127,7 +127,7 @@ Lineáris ads is megjeleníthetők a megadott sorrendben. Ehhez hozzá további 
           <Description>Unknown</Description>
           <Survey></Survey>
           <Error></Error>
-          <Impression id="Atlas"><![CDATA[http://myserver.com/Impression/Ad2trackingResouce]]></Impression>
+          <Impression id="Atlas"><![CDATA[http://myserver.com/Impression/Ad2trackingResource]]></Impression>
           <Creatives>
             <Creative id="video" sequence="0" AdID="">
               <Linear>
@@ -160,7 +160,7 @@ Lineáris ads megadott egy <Creative> elemet is. A következő példa bemutatja 
     </Creative>
 ```
 
-A <**NonLinearAds**> elem tartalmazhat egy vagy több <**NonLinear**> elemek, amelyek mindegyike egy lineáris ad is ismertetik. A <**NonLinear**> elem azt határozza meg az erőforrás a nemlineáris ad-hez. Az erőforrás lehet egy <**StaticResouce**>, <**IFrameResource**>, vagy egy <**HTMLResouce**>. <**StaticResource**>-HTML erőforrás ismerteti, és határozza meg, amely meghatározza, hogyan jelenjen meg az erőforrás egy creativeType attribútum:
+A <**NonLinearAds**> elem tartalmazhat egy vagy több <**NonLinear**> elemek, amelyek mindegyike egy lineáris ad is ismertetik. A <**NonLinear**> elem azt határozza meg az erőforrás a nemlineáris ad-hez. Az erőforrás lehet egy <**StaticResource**>, <**IFrameResource**>, vagy egy <**HTMLResource**>. <**StaticResource**>-HTML erőforrás ismerteti, és határozza meg, amely meghatározza, hogyan jelenjen meg az erőforrás egy creativeType attribútum:
 
 Kép/gif, a kép/jpeg, a lemezkép/png – az erőforrás megjelenik egy HTML <**img**> címke.
 

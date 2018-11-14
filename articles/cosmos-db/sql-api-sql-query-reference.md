@@ -10,18 +10,18 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/19/2018
 ms.author: laviswa
-ms.openlocfilehash: 762997492d18e9b14525dc6a196f98815f27fbbb
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 4492324b174c97325f40110b7500d5b0e99a926b
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979505"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623944"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Az Azure Cosmos DB SQL-szintaxis referenciája
 
-Az Azure Cosmos DB támogatja a dokumentumok egy jól ismert SQL (Structured Query Language) lekérdezés nyelvtani például hierarchikus JSON-dokumentumokon végzett explicit séma vagy másodlagos indexek létrehozása nélkül. Ez a cikk az SQL lekérdező nyelve, amely kompatibilis az SQL API-fiókok leírása és szintaxisa dokumentációját. Az SQL-lekérdezések mintaadatokkal olvassa [lekérdezése az Azure Cosmos DB-adatai](sql-api-sql-query.md).  
+Az Azure Cosmos DB támogatja a dokumentumok egy jól ismert SQL (Structured Query Language) lekérdezés nyelvtani például hierarchikus JSON-dokumentumokon végzett explicit séma vagy másodlagos indexek létrehozása nélkül. Ez a cikk az SQL-lekérdezési nyelvi szintaxis, amely kompatibilis az SQL API-fiókok dokumentációját. Példa SQL-lekérdezések leírását lásd: [SQL-lekérdezéseket a Cosmos DB](sql-api-sql-query.md).  
   
-Látogasson el a [Query Playground](http://www.documentdb.com/sql/demo) , amelyen az Azure Cosmos DB kipróbálása és az adatkészletet az SQL-lekérdezések futtatásához.  
+Látogasson el a [Query Playground](http://www.documentdb.com/sql/demo) ahol Cosmos DB kipróbálása és az adatkészletet az SQL-lekérdezések futtatásához.  
   
 ## <a name="select-query"></a>SELECT-lekérdezésben  
 Minden egyes lekérdezés SELECT záradékában és választható FROM áll és a WHERE záradék ANSI SQL előírások szerint. Általában az egyes lekérdezésekhez a forrás a FROM záradékban számbavétele megtörtént. Ezután a WHERE záradékban a szűrő alkalmazása a forrás a JSON-dokumentumok részhalmazának beolvasásához. Végül a SELECT záradékban szolgál a kért JSON-értékeit a kiválasztási listán. Az ismertető a SELECT utasításokban használt konvencióinak megjelennének a szintaxis konvenciók szakaszban. Példák: [SELECT-lekérdezésben példák](sql-api-sql-query.md#SelectClause)
@@ -60,7 +60,7 @@ Vegye figyelembe, hogy ez eltér a megjelenítési sorrendjét a szintaxist. A r
 
 ### <a name="whitespace-characters-and-comments"></a>Az elválasztó karakterek és megjegyzések  
 
-Összes szóközt nem részei egy Idézett karakterlánc vagy quoted azonosítója nem részei a nyelvi szintaxis és elemzés során figyelmen kívül hagyja.  
+Térközkaraktereket, amelyek nem részei egy Idézett karakterlánc vagy quoted azonosítója nem részei a nyelvi szintaxis és elemzés során figyelmen kívül hagyja.  
 
 A lekérdezési nyelvet támogatja például a T-SQL stílus megjegyzések  
 
@@ -69,7 +69,7 @@ A lekérdezési nyelvet támogatja például a T-SQL stílus megjegyzések
 Az elválasztó karakterek és a megjegyzések nincs semmilyen jelentőséggel a gramatice, amíg azok jogkivonatok külön kell használható. Például: `-1e5` egy egyetlen szám token, ideje van`: – 1 e5` egy mínusz tokent követi számának 1 és azonosító e5.  
 
 ##  <a name="bk_select_query"></a> SELECT záradék  
-A SELECT utasítás záradékai kell következniük, ahogy fent látható. A választható záradékot bármelyike elhagyható. De amikor választható záradékot használják, azok kell megjelennie a helyes sorrendben. Példák: [SELECT-lekérdezésben példák](sql-api-sql-query.md#SelectClause)
+A SELECT utasítás záradékai kell következniük, ahogy fent látható. A választható záradékot bármelyike elhagyható. De amikor választható záradékot használják, azok kell megjelennie a helyes sorrendben. Példák: [SELECT-lekérdezésben példák](sql-api-sql-query.md#SelectClause).
 
 **Syntax**  
 
@@ -112,7 +112,7 @@ SELECT <select_specification>
   
 A `SELECT *` szintaxis csak akkor érvényes, ha a FROM záradékban van deklarálva pontosan egy aliast. `SELECT *` Itt egy identitás leképezése, amely lehet hasznos, ha nincs leképezés van szükség. Válassza ki * csak akkor érvényes, ha a FROM záradék van megadva, és csak egyetlen bemeneti forrás bevezetni.  
   
-Vegye figyelembe, hogy `SELECT <select_list>` és `SELECT *` "szintaktikai cukor", és azt is megteheti egyszerű SELECT utasítás használatával, ahogy az alábbi jelöl.  
+Mindkét `SELECT <select_list>` és `SELECT *` "szintaktikai cukor", és azt is megteheti egyszerű SELECT utasítás használatával, ahogy az alábbi jelöl.  
   
 1. `SELECT * FROM ... AS from_alias ...`  
   
@@ -132,7 +132,7 @@ Vegye figyelembe, hogy `SELECT <select_list>` és `SELECT *` "szintaktikai cukor
 [SELECT záradék](#bk_select_query)  
   
 ##  <a name="bk_from_clause"></a> FROM záradékban  
-Itt adhatja meg, a forrás vagy a csatlakoztatott források. A FROM záradék nem kötelező, kivéve, ha a forrás van szűrve, vagy előre jelzett költségről később a lekérdezésben. Az ehhez a záradékhoz célja, hogy adja meg az adatforrás, amelyre a lekérdezést kell működnie. Az egész gyűjteményre gyakran a forrás, de ehelyett egy adhat meg a gyűjtemény egy részét. Nincs megadva ez a záradék, ha más záradékok továbbra is, ha a FROM záradékban megadott egyetlen dokumentum hajtani. Példák: [záradék PÉLDÁKBÓL](sql-api-sql-query.md#FromClause)
+Itt adhatja meg, a forrás vagy a csatlakoztatott források. A FROM záradék nem kötelező, kivéve, ha a forrás van szűrve, vagy előre jelzett költségről később a lekérdezésben. Az ehhez a záradékhoz célja, hogy adja meg az adatforrás, amelyre a lekérdezést kell működnie. A teljes tárolót gyakran a forrás, de ehelyett egy adhat meg a tároló egy részét. Nincs megadva ez a záradék, ha más záradékok továbbra is, ha a FROM záradékban megadott egyetlen dokumentum hajtani. Példák: [záradék PÉLDÁKBÓL](sql-api-sql-query.md#FromClause)
   
 **Syntax**  
   
@@ -143,98 +143,98 @@ FROM <from_specification>
         <from_source> {[ JOIN <from_source>][,...n]}  
   
 <from_source> ::=   
-          <collection_expression> [[AS] input_alias]  
-        | input_alias IN <collection_expression>  
+          <container_expression> [[AS] input_alias]  
+        | input_alias IN <container_expression>  
   
-<collection_expression> ::=   
+<container_expression> ::=   
         ROOT   
-     | collection_name  
+     | container_name  
      | input_alias  
-     | <collection_expression> '.' property_name  
-     | <collection_expression> '[' "property_name" | array_index ']'  
+     | <container_expression> '.' property_name  
+     | <container_expression> '[' "property_name" | array_index ']'  
 ```  
   
 **Argumentumok**  
   
 - `<from_source>`  
   
-  Egy adatforrás, itt adhatja meg, vagy az alias nélkül. Ha nincs megadva alias, azt fogja nelze odvodit z a `<collection_expression>` szabályok a következő használatával:  
+  Egy adatforrás, itt adhatja meg, vagy az alias nélkül. Ha nincs megadva alias, azt fogja nelze odvodit z a `<container_expression>` szabályok a következő használatával:  
   
-  -  Ha a kifejezés egy Lekérdezésnév, majd a lekérdezésnév használható aliasként.  
+  -  Ha a kifejezés egy container_name, majd container_name használható aliasként.  
   
-  -  Ha a kifejezés `<collection_expression>`, akkor property_name, majd property_name használja a rendszer aliasként. Ha a kifejezés egy Lekérdezésnév, majd a lekérdezésnév használható aliasként.  
+  -  Ha a kifejezés `<container_expression>`, akkor property_name, majd property_name használja a rendszer aliasként. Ha a kifejezés egy container_name, majd container_name használható aliasként.  
   
 - AS `input_alias`  
   
-  Megadja, hogy a `input_alias` van az alapul szolgáló gyűjtemény kifejezés által visszaadott értékek egy halmazát.  
+  Megadja, hogy a `input_alias` olyan készlete, a mögöttes tároló-kifejezés által visszaadott értékek.  
  
 - `input_alias` IN  
   
-  Megadja, hogy a `input_alias` kell kívánt csoportjának megfelelő értékeket a léptetés keresztül minden egyes az alapul szolgáló gyűjtemény kifejezés által visszaadott tömb összes tömbelemek rekordsémáját. Alapul szolgáló gyűjtemény kifejezés, amely nem tömb által visszaadott értéket a rendszer figyelmen kívül hagyja.  
+  Megadja, hogy a `input_alias` kell kívánt csoportjának megfelelő értékeket a léptetés keresztül minden egyes a mögöttes tároló-kifejezés által visszaadott tömb összes tömbelemek rekordsémáját. Bármely, amely nem tömb mögöttes tároló-kifejezés által visszaadott értéket a rendszer figyelmen kívül hagyja.  
   
-- `<collection_expression>`  
+- `<container_expression>`  
   
-  Meghatározza azt a gyűjteményt, lekérheti a dokumentumokat.  
+  Meghatározza azt a tárolót, lekérheti a dokumentumokat.  
   
 - `ROOT`  
   
-  Megadja, hogy a dokumentum olvassa be az alapértelmezett beállítás, a jelenleg csatlakoztatott gyűjtemény.  
+  Megadja, hogy a dokumentum az alapértelmezett beállítás, a jelenleg csatlakoztatott tároló lehet beolvasni.  
   
-- `collection_name`  
+- `container_name`  
   
-  Megadja, hogy a dokumentum be kell olvasni a megadott gyűjteményből. A gyűjtemény nevét meg kell egyeznie a gyűjtemény nevét, jelenleg kapcsolódik.  
+  Megadja, hogy a dokumentum a megadott tároló lehet beolvasni. A tároló neve meg kell egyeznie a jelenleg csatlakoztatott tároló nevét.  
   
 - `input_alias`  
   
   Megadja, hogy a dokumentum határozzák meg a megadott alias a más forrásból kell olvasni.  
   
-- `<collection_expression> '.' property_`  
+- `<container_expression> '.' property_`  
   
-  Itt adhatja meg, a dokumentum elérésével legyen beolvasva a `property_name` vlastnost nebo tömbindex tömbelem az lekéri a dokumentumok a megadott gyűjtemény kifejezés.  
+  Itt adhatja meg, a dokumentum elérésével legyen beolvasva a `property_name` által lekért összes dokumentum vlastnost nebo tömbindex tömbelem megadott tároló kifejezés.  
   
-- `<collection_expression> '[' "property_name" | array_index ']'`  
+- `<container_expression> '[' "property_name" | array_index ']'`  
   
-  Itt adhatja meg, a dokumentum elérésével legyen beolvasva a `property_name` vlastnost nebo tömbindex tömbelem az lekéri a dokumentumok a megadott gyűjtemény kifejezés.  
+  Itt adhatja meg, a dokumentum elérésével legyen beolvasva a `property_name` által lekért összes dokumentum vlastnost nebo tömbindex tömbelem megadott tároló kifejezés.  
   
 **Megjegyzések**  
   
-Összes alias következtetni vagy megadott a `<from_source>(`s) egyedinek kell lennie. A szintaxist `<collection_expression>.`property_name megegyezik a `<collection_expression>' ['"property_name"']'`. Az utóbbi szintaxis azonban használható, ha egy tulajdonság nevében egy nem azonosító karaktereket tartalmaz.  
+Összes alias következtetni vagy megadott a `<from_source>(`s) egyedinek kell lennie. A szintaxist `<container_expression>.`property_name megegyezik a `<container_expression>' ['"property_name"']'`. Az utóbbi szintaxis azonban használható, ha egy tulajdonságnév nem azonosító karaktert tartalmaz.  
   
 ### <a name="handling-missing-properties-missing-array-elements-and-undefined-values"></a>Hiányzó tulajdonságok, hiányzik a tömb elemei, és nem definiált értékek kezelése
   
-Ha egy gyűjtemény kifejezés fér hozzá, tulajdonságok vagy a tömb elemeinek és, hogy az érték nem létezik, ezt az értéket figyelmen kívül hagyja, és további nincs feldolgozva.  
+Ha egy tároló kifejezés fér hozzá, tulajdonságok vagy a tömb elemeinek és, hogy az érték nem létezik, ezt az értéket figyelmen kívül hagyja, és további nincs feldolgozva.  
   
-### <a name="collection-expression-context-scoping"></a>Gyűjtemény kifejezés környezeti hatókör  
+### <a name="container-expression-context-scoping"></a>Tároló kifejezés környezeti hatókör  
   
-Egy gyűjtemény kifejezés gyűjtemény hatókörű vagy dokumentum hatókörű lehetnek:  
+Egy tároló-kifejezés lehet tároló hatókörű vagy dokumentum hatókörű:  
   
--   Egy kifejezés a gyűjtemény hatóköre, ha a gyűjtemény kifejezés az alapul szolgáló forrás vagy a legfelső szintű vagy `collection_name`. Az ilyen kifejezés dokumentumokat közvetlenül a gyűjteményből beolvasni egy halmazát jelölik, és nem függ más gyűjtemény-kifejezések feldolgozása.  
+-   Egy kifejezés, tároló-hatáskörű, ha a tároló kifejezés az alapul szolgáló forrás vagy a legfelső szintű vagy `container_name`. Az ilyen kifejezés dokumentumok, a tároló közvetlenül lekért adatok halmazai, és nem függ más tároló-kifejezések feldolgozása.  
   
--   Egy kifejezés, dokumentum-hatáskörű, ha az alapul szolgáló adatforrás a gyűjtemény kifejezés `input_alias` jelent meg a korábban a lekérdezésben. Például egy kifejezést a fióknévnek gyűjteményhez társított csoporthoz tartozó egyes dokumentumok hatókörében a gyűjtemény kifejezés kiértékelése kapott dokumentumokat egy halmazát jelölik.  Eredő beállítása során az egyes dokumentumok az alapul szolgáló készletben a gyűjtemény kifejezés által beszerzett egy Uniója fogja.  
+-   Egy kifejezés, dokumentum-hatáskörű, ha az alapul szolgáló adatforrás a tároló kifejezés `input_alias` jelent meg a korábban a lekérdezésben. Ilyen egy kifejezés kiértékelése a fióknévnek tároló társított csoporthoz tartozó egyes dokumentumok hatókörében a tároló kifejezést kapott dokumentumokat egy halmazát jelölik.  Eredő beállítása során az egyes dokumentumok az alapul szolgáló készletben a tároló kifejezés által beszerzett egy Uniója fogja.  
   
 ### <a name="joins"></a>Illesztések 
   
-A jelenlegi kiadásban az Azure Cosmos DB támogatja a belső illesztések. További illesztési képességek érkeznek. 
+A jelenlegi kiadásban a Cosmos DB támogatja a belső illesztések. További illesztési képességek érkeznek. 
 
 Belső illesztések egy teljes körű a részt vesz a join készlet keresztszorzatát eredményez. Az N-módon való csatlakozás eredménye egy készletét N-elem rekordokat, ahol a rekord minden egyes érték társítva az aliasnevet a JOIN beállítása a résztvevő, és ez az alias más záradékban való hivatkozással érhető el. Példák: [ILLESZTÉSI kulcsszó példák](sql-api-sql-query.md#Joins)
   
 A kiértékelés a JOIN attól függ, hogy a környezet hatókörét a programban részt vevő készletek:  
   
--  Illesztés között A gyűjteménykészlet és a gyűjtemény hatóköre B, több termék eredményezi, beállítja a és b szereplő összes elem beállítása
+-  Illesztés között tároló-készlet és a tároló-hatáskörű B, több termék eredményezi, beállítja a és b szereplő összes elem beállítása
   
 -   A készlet és B, set dokumentum hatókörű közötti csatlakozzon kapott értékelése az egyes dokumentumok B beállítása. a dokumentum hatókörű beállított összes adatkészletek union eredményez.  
   
- A jelenlegi kiadásban egy gyűjtemény hatókörébe tartozó kifejezés legfeljebb a lekérdezés-feldolgozó által támogatott.  
+ Egy tároló-hatáskörű kifejezés legfeljebb a jelenlegi kiadásban, a lekérdezés-feldolgozó által támogatott.  
   
 ### <a name="examples-of-joins"></a>Példák illesztések  
   
 Nézzük meg, a FROM záradék a következő: `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
   
- Lehetővé teszik az egyes forrás megadása `input_alias1, input_alias2, …, input_aliasN`. A FROM záradék az N-rekordokat tartalmazó (N értékekkel rendelkező rekordot) adja vissza. Minden egyes rekord összes gyűjtemény alias léptetés keresztül az adott csoportok által előállított értékkel rendelkezik.  
+ Lehetővé teszik az egyes forrás megadása `input_alias1, input_alias2, …, input_aliasN`. A FROM záradék az N-rekordokat tartalmazó (N értékekkel rendelkező rekordot) adja vissza. Minden egyes rekord összes tároló-alias léptetés keresztül az adott csoportok által előállított értékkel rendelkezik.  
   
 **1. példa** – 2 források  
   
-- Lehetővé teszik `<from_source1>` gyűjtemény-hatóköre beállítható, és a set {A, B, C} képviseli.  
+- Lehetővé teszik `<from_source1>` tároló-tartozni, és a set {A, B, C} képviseli.  
   
 - Lehetővé teszik `<from_source2>` dokumentum hatókörű input_alias1 hivatkozik, és csoportok képviselik:  
   
@@ -252,7 +252,7 @@ Nézzük meg, a FROM záradék a következő: `<from_source1> JOIN <from_source2
   
 **2. példa** – 3 források  
   
-- Lehetővé teszik `<from_source1>` gyűjtemény-hatóköre beállítható, és a set {A, B, C} képviseli.  
+- Lehetővé teszik `<from_source1>` tároló-tartozni, és a set {A, B, C} képviseli.  
   
 - Lehetővé teszik `<from_source2>` kell hivatkozik a dokumentum-hatáskörű `input_alias1` és -mappáknak a csoportok tartalmazzák:  
   
@@ -279,9 +279,9 @@ Nézzük meg, a FROM záradék a következő: `<from_source1> JOIN <from_source2
   
 **3. példa** – 3 források  
   
-- Tudassa < from_source1 > kell a gyűjtemény hatóköre, és a set {A, B, C} képviseli.  
+- Tudassa < from_source1 > kell a tároló hatókörű, és a set {A, B, C} képviseli.  
   
-- Lehetővé teszik `<from_source1>` gyűjtemény-hatóköre beállítható, és a set {A, B, C} képviseli.  
+- Lehetővé teszik `<from_source1>` tároló-tartozni, és a set {A, B, C} képviseli.  
   
 - < From_source2 > hivatkozó input_alias1 dokumentum hatókörű, és képviselik a készletek lehetővé teszik:  
   
@@ -371,12 +371,12 @@ ORDER BY <sort_specification>
   
  **Megjegyzések**  
   
- A lekérdezési szintaxis támogatja a több sorrend tulajdonságai, amíg az Azure Cosmos DB lekérdezési modul támogatja a rendezés csak egyetlen tulajdonság, és csak elleni tulajdonságneveket, azaz a nem számított tulajdonságokhoz. Rendezés is megköveteli, hogy az indexelési házirendet egy tulajdonság és a megadott típus, a maximális pontosság tartományindexszel tartalmazza-e. Tekintse meg a további részletekért indexelési házirend dokumentációját.  
+ Bár a lekérdezési szintaxis támogatja a több sorrend tulajdonságai, a Cosmos DB lekérdezési modul támogatja a rendezést, csak egyetlen tulajdonság, és csak elleni tulajdonság neve (nem számított tulajdonságokhoz). Rendezés is megköveteli, hogy az indexelési házirendet egy tulajdonság és a megadott típus, a maximális pontosság tartományindexszel tartalmazza-e. Tekintse meg a további részletekért indexelési házirend dokumentációját.  
   
 ##  <a name="bk_scalar_expressions"></a> Skaláris kifejezések  
  Egy skaláris kifejezés szimbólumok és egyetlen értéket beszerzése kiértékelése operátorok kombinációja. Egyszerű kifejezések állandók, tulajdonság hivatkozik, tömb elem hivatkozásokat, alias hivatkozik, vagy lehet függvényhívások. Egyszerű kifejezések operátorok használatával összetett kifejezések egyesíthetők. Példák: [skaláris kifejezések példák](sql-api-sql-query.md#scalar-expressions)
   
- Előfordulhat, hogy mely skaláris kifejezés értékeket a részletekért lásd: [állandók](#bk_constants) szakaszban.  
+ További információ az értékeket, amelyek esetében előfordulhat, hogy a skaláris kifejezés: [állandók](#bk_constants) szakaszban.  
   
  **Syntax**  
   
@@ -424,7 +424,7 @@ ORDER BY <sort_specification>
   
 -   `<scalar_expression>'['"property_name"|array_index']'`  
   
-     Egy nevű tulajdonság értékét jelöli `property_name` vagy az index tömbelem `array_index` egy objektum vagy tömb. Ha a tulajdonság/tömbindex nem létezik, vagy egy érték, amely nem objektum vagy tömb a tulajdonság/tömbindex hivatkozott, majd a kifejezés eredménye nem definiált értéket.  
+     Egy nevű tulajdonság értékét jelöli `property_name` vagy az index tömbelem `array_index` egy objektum vagy tömb. A tulajdonság/tömbindex nem létezik, vagy a tulajdonság/tömbindex hivatkozik egy érték alapján ez nem egy objektum vagy tömb, akkor a kifejezés eredménye nem meghatározott értéket eredményezne.  
   
 -   `unary_operator <scalar_expression>`  
   
@@ -440,7 +440,7 @@ ORDER BY <sort_specification>
   
 -   `udf_scalar_function`  
   
-     A felhasználó neve meg van adva skaláris függvény.  
+     A felhasználó által definiált skaláris függvény nevét.  
   
 -   `builtin_scalar_function`  
   
@@ -460,7 +460,7 @@ ORDER BY <sort_specification>
   
  **Megjegyzések**  
   
- Amikor skalárfüggvény hívása egy beépített vagy felhasználó megadott összes argumentumot meg kell határozni. Ha bármelyik argumentum nem definiált, a függvény nem hívható, és az eredmény az lesz meghatározva.  
+ Beépített vagy felhasználó által definiált skalárfüggvény hívása során az összes argumentum definiálni kell. Ha bármelyik argumentum nem definiált, a függvény nem hívható, és az eredmény az lesz meghatározva.  
   
  Objektum létrehozásakor bármely vlastnost, amelyek nem definiált értéket kapja kihagyva, és nem tartalmazza a létrehozott objektum.  
   
@@ -517,9 +517,9 @@ ORDER BY <sort_specification>
   
  **Megjegyzések**  
   
- Az Azure Cosmos DB a típusú értékek gyakran nem ismert csak a ténylegesen az adatbázisból lekért. Annak érdekében, hogy a hatékony lekérdezések végrehajtása támogatja, az operátorok a legtöbb szigorú adattípus-követelményekkel rendelkeznek. Operátorok önmagukban is hajt végre implicit konverzió.  
+ A Cosmos dB-ben a típusú értékek gyakran nem ismert mindaddig, amíg az adatok lekérése az adatbázisból. Annak érdekében, hogy a hatékony lekérdezések végrehajtása támogatja, az operátorok a legtöbb szigorú adattípus-követelményekkel rendelkeznek. Operátorok önmagukban is hajt végre implicit konverzió.  
   
- Ez azt jelenti, hogy a lekérdezés, például: válassza ki * a legfelső szintű r WHERE r.Age = 21 csak visszatér kora tulajdonsággal rendelkező dokumentumok egyezik a 21. Dokumentumok kora egyenlő a karakterlánc "21" vagy "0021" karakterlánc tulajdonsággal nem egyeznek meg, mint a "21" kifejezés = 21 kiértékeli a nem meghatározott. Ez lehetővé teszi egy jobban használható az indexek, mert az egy adott érték-keresés (azaz számú 21) gyorsabb, mint a lehetséges egyezések (21 szám vagy karakterláncok "21", "021", "21.0" …) határozatlan számú keresése. Ez eltér a hogyan értékeli ki a JavaScript a kezelők az eltérő típusú értékeket.  
+ Ez azt jelenti, hogy a lekérdezés, például: válassza ki * a legfelső szintű r WHERE r.Age = 21 csak visszatér kora tulajdonsággal rendelkező dokumentumok egyezik a 21. Dokumentumok kora egyenlő a karakterlánc "21" vagy "0021" karakterlánc tulajdonsággal nem egyeznek meg, mint a "21" kifejezés = 21 kiértékeli a nem meghatározott. Ez lehetővé teszi egy jobban kihasználja a indexek, mert a keresés egy adott értéket (például a 21) gyorsabb, mint a határozatlan számú keresése lehetséges megegyezik (21 szám vagy karakterláncok "21", "021", "21,0"...). Ez eltér a hogyan értékeli ki a JavaScript a kezelők az eltérő típusú értékeket.  
   
  **Tömbök és objektumok egyenlőség és összehasonlítása**  
   
@@ -632,7 +632,7 @@ ORDER BY <sort_specification>
 |\uXXXX|Egy 4 hexadecimális számjegy által meghatározott Unicode-karakter.|U+XXXX|  
   
 ##  <a name="bk_query_perf_guidelines"></a> Lekérdezési teljesítmény irányelvek  
- Ahhoz, hogy egy lekérdezés gyűjteménye hatékonyan végrehajtható, a szűrőket, amelyek egy vagy több index keresztül kiszolgálható kell használnia.  
+ Ahhoz, hogy egy lekérdezés hatékonyan kell végrehajtani egy nagy méretű tároló, a szűrőket, amelyek segítségével egy vagy több index kiszolgálható kell használnia.  
   
  A keresési index akkor veszi figyelembe a következő szűrőket:  
   
@@ -640,15 +640,15 @@ ORDER BY <sort_specification>
   
 -   Tartomány-operátor használható (<, \<=, >, > =) egy dokumentum elérési út és a szám állandó.  
   
--   A dokumentum elérési út bármely kifejezés, amely azonosítja a dokumentumok a hivatkozott adatbázis-gyűjtemény egy állandó elérési jelöli.  
+-   A dokumentum elérési út bármely kifejezés, amely azonosítja a dokumentumok a hivatkozott adatbázis tárolóból egy állandó elérési jelöli.  
   
  **A dokumentum az elérésiút-kifejezés**  
   
- A dokumentum elérésiút-kifejezések kifejezések, amelyek elérési útvonalát vlastnost nebo Pole indexelő assessors egy dokumentum-adatbázis-gyűjtemény dokumentumok érkező keresztül is. Az elérési út helyét, közvetlenül az adatbázis-gyűjteményben a dokumentumok belül szűrő hivatkozott értékek azonosításához használható.  
+ A dokumentum elérésiút-kifejezések kifejezések, amelyek elérési útvonalát vlastnost nebo Pole indexelő assessors egy dokumentum-adatbázist tároló dokumentumok érkező keresztül is. Az elérési út hivatkozik egy szűrőt, közvetlenül a dokumentumok az adatbázis-tárolóban lévő értékek helyének azonosítására használható.  
   
  Figyelembe kell venni egy dokumentum elérési út kifejezése kifejezés akkor meg:  
   
-1.  A gyűjtemény legfelső szintű közvetlenül hivatkozni.  
+1.  A tároló legfelső szintű közvetlenül hivatkozni.  
   
 2.  Hivatkozás tulajdonság vagy állandó tömb indexelő néhány dokumentum elérési útját kifejezés  
   
@@ -674,15 +674,15 @@ ORDER BY <sort_specification>
     |[.. .n]|Azt jelzi, hogy az előző elemet is lehet az ismétlődő n számú alkalommal. Az előfordulások üres vannak elválasztva.|  
   
 ##  <a name="bk_built_in_functions"></a> Beépített függvények  
- Az Azure Cosmos DB számos beépített SQL-funkciókat biztosít. A beépített függvénykategóriákat alább láthatók.  
+ A cosmos DB számos beépített SQL-funkciókat biztosít. A beépített függvénykategóriákat alább láthatók.  
   
 |Függvény|Leírás|  
 |--------------|-----------------|  
 |[Matematikai függvények](#bk_mathematical_functions)|A matematika függvényekkel végezhet a számítást, általában argumentumként szolgálnak, és a egy numerikus értéket adja vissza a bemeneti értékek alapján.|  
 |[Funkciók ellenőrzése típusa](#bk_type_checking_functions)|A típus ellenőrzése funkciók lehetővé teszik az SQL-lekérdezések belül egy kifejezés típusának ellenőrzése.|  
 |[Sztringfüggvények](#bk_string_functions)|A karakterlánc-függvények végrehajtania egy műveletet a bemeneti karakterlánc-érték, és a egy karakterlánc, numerikus vagy logikai értéket adja vissza.|  
-|[Tömb funkciók](#bk_array_functions)|A tömb funkciók végrehajtása egy logikai érték, vagy a tömb érték, egy tömb bemeneti érték és a visszaadandó numerikus művelet.|  
-|[Térbeli funkciók](#bk_spatial_functions)|A térbeli funkciók végrehajtania egy műveletet egy térbeli objektum bemeneti érték a, és a egy numerikus vagy logikai értéket adja vissza.|  
+|[Tömb funkciók](#bk_array_functions)|A tömb függvények végrehajtania egy műveletet a egy tömb bemeneti érték és a visszaadott numerikus, a logikai vagy a tömb értéket.|  
+|[Térbeli funkciók](#bk_spatial_functions)|A térbeli függvények végrehajtania egy műveletet a térbeli objektum bemeneti érték a, és a egy numerikus vagy logikai értéket adja vissza.|  
   
 ###  <a name="bk_mathematical_functions"></a> Matematikai függvények  
  A következő feladatokat végezhet a számítást, általában argumentumként szolgálnak, és a egy numerikus értéket adja vissza a bemeneti értékek alapján.  
@@ -1051,7 +1051,7 @@ EXP (<numeric_expression>)
   
  Az állandó **e** (2.718281...), a természetes logaritmusokat alapját.  
   
- A kitevő, egy szám az állandó **e** hatványára szám. Például EXP(1.0) = e ^ 1.0-s = 2.71828182845905 és EXP(10) = e ^ 10 = 22026.4657948067.  
+ A kitevő, egy szám az állandó **e** hatványára szám. Ha például EXP(1.0) = e ^ 1.0-s = 2.71828182845905 és EXP(10) = e ^ 10 = 22026.4657948067.  
   
  Az exponenciális egy szám természetes alapú logaritmus alapja az a szám maga: EXP (napló (n)) = n. Az exponenciális egy szám természetes algoritmusát az a szám, és maga: LOG (EXP (n)) = n.  
   
@@ -1761,7 +1761,7 @@ SELECT
 ```  
   
 ####  <a name="bk_is_primitive"></a> IS_PRIMITIVE  
- Visszaad egy logikai értéket, amely azt jelzi, ha a megadott kifejezés típusa egy primitívet (string, logikai értéket, numerikus vagy null értékű).  
+ Visszaad egy logikai értéket, amely azt jelzi, ha a megadott kifejezés típusa egy primitívet (string, logikai típusú, numerikus vagy null értékű).  
   
  **Syntax**  
   
@@ -2697,7 +2697,7 @@ SELECT
 ```  
  
 ###  <a name="bk_spatial_functions"></a> Térbeli funkciók  
- A következő skaláris függvények végrehajtania egy műveletet a egy térbeli objektum bemeneti érték, és a egy numerikus vagy logikai értéket adja vissza.  
+ A következő skaláris függvények végrehajtania egy műveletet a térbeli objektum bemeneti érték a, és a egy numerikus vagy logikai értéket adja vissza.  
   
 ||||  
 |-|-|-|  
@@ -2808,7 +2808,7 @@ ST_INTERSECTS (<spatial_expr>, <spatial_expr>)
   
  **Példák**  
   
- Az alábbi példa bemutatja, hogyan keresse meg az összes terület, amely a megadott sokszög-metszi saját.  
+ Az alábbi példa bemutatja, hogyan keresse meg a megadott sokszög metsző minden terület.  
   
 ```  
 SELECT a.id   
@@ -2904,7 +2904,7 @@ SELECT ST_ISVALIDDETAILED({
 ```  
   
 ## <a name="next-steps"></a>További lépések  
- [SQL-szintaxis és az Azure Cosmos DB SQL-lekérdezés](sql-api-sql-query.md)   
- [Azure Cosmos DB – dokumentáció](https://docs.microsoft.com/azure/cosmos-db/)  
-  
-  
+
+- [SQL-szintaxis és a Cosmos DB SQL-lekérdezés](sql-api-sql-query.md)
+
+- [Cosmos DB-dokumentáció](https://docs.microsoft.com/azure/cosmos-db/)  

@@ -3,22 +3,22 @@ title: Az Azure Application Insights Telemetriai korreláció |} A Microsoft Doc
 description: Application Insights telemetriai korreláció
 services: application-insights
 documentationcenter: .net
-author: mrbullwinkle
+author: lgayhardt
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/09/2018
+ms.date: 10/31/2018
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: eb14a3bc76fef37cdff4ed49cdbb6a99eac40928
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.author: lagayhar
+ms.openlocfilehash: b61163f7e2bc4cf4e7029c9852e5baad431fa0e0
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280163"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615840"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Az Application Insights telemetriai korreláció
 
@@ -146,19 +146,15 @@ Több üzenetkezelési technológiák (például Kafka, RabbitMQ, Azure Service 
 ### <a name="role-name"></a>Szerepkör neve
 Időnként érdemes testre is szabhatja összetevők nevéhez megjelennek a [Alkalmazástérkép](app-insights-app-map.md). Ehhez manuálisan állíthatja a `cloud_roleName` tegye a következők egyikét:
 
-Keresztül egy telemetriainicializáló (összes telemetriai elem címkézett)
-```Java
-public class CloudRoleNameInitializer extends WebTelemetryInitializerBase {
-
-    @Override
-    protected void onInitializeTelemetry(Telemetry telemetry) {
-        telemetry.getContext().getTags().put(ContextTagKeys.getKeys().getDeviceRoleName(), "My Component Name");
-    }
-  }
+Ha használja a `WebRequestTrackingFilter`, a `WebAppNameContextInitializer` automatikusan beállítja az alkalmazás nevét. A konfigurációs fájl (applicationinsights.xml fájlt), adja hozzá a következő:
+```XML
+<ContextInitializers>
+  <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebAppNameContextInitializer" />
+</ContextInitializers>
 ```
--N keresztül a [eszköz adatbáziskörnyezet osztályának](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context._device_context) (csak a telemetriai elem címkézett)
+A felhőalapú környezet osztállyal:
 ```Java
-telemetry.getContext().getDevice().setRoleName("My Component Name");
+telemetryClient.getContext().getCloud().setRole("My Component Name");
 ```
 
 ## <a name="next-steps"></a>További lépések

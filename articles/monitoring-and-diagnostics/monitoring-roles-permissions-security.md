@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 6a197cf5667e1668b2007a5f552b813cb8ed68d3
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: caa1b4b3bf1f9b8fb1a34bd58dde04f13fbc6c88
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957828"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614566"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései
 Számos csapat kell szigorúan szabályozzák a hozzáférést a figyelési adatok és beállítások. Például, ha kizárólag a figyelést (a támogatási szakértők, fejlesztő és üzemeltető mérnököknek) dolgozó csapat tagjai rendelkezik, vagy ha egy felügyelt szolgáltató használ, érdemes hozzáférést biztosít nekik a csak figyelési adatok korlátozásával hozhat létre, módosít, vagy erőforrások törlése. Ez a cikk bemutatja, hogyan gyors beépített figyelési RBAC szerepkör alkalmazásához a felhasználónak az Azure-ban, vagy egy felhasználóhoz, aki csak korlátozott felügyeleti engedélyekre van szüksége a saját egyéni szerepkör létrehozása. Majd az Azure Monitor-kapcsolódó erőforrások és a bennük adatokhoz való hozzáférés korlátozásáról vonatkozó biztonsági szempontokat ismerteti.
@@ -25,7 +25,7 @@ Az Azure Monitor beépített szerepkörök tervezett korlátozza miközben besze
 A Monitoring Reader szerepkörhöz hozzárendelt személyek is az összes monitorozási adat egy előfizetésben, de nem bármely erőforrás módosítása beállításainak megtekintése vagy szerkesztése bármilyen kapcsolódó erőforrások figyeléséhez. Ez a szerepkör a következő megfelelő szervezetekben, például a műveletek vagy támogatási mérnökök, tudnia, hogy a felhasználók számára:
 
 * Figyelési irányítópult megtekintése a portálon, és a saját privát figyelési irányítópultokat hozhat létre.
-* Meghatározott riasztási szabályok megtekintése [Azure-riasztások](monitoring-overview-unified-alerts.md)
+* Meghatározott riasztási szabályok megtekintése [Azure-riasztások](monitoring-overview-alerts.md)
 * Metrikák a lekérdezés a [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx), [PowerShell-parancsmagok](insights-powershell-samples.md), vagy [platformfüggetlen CLI](insights-cli-samples.md).
 * A lekérdezés a tevékenységnaplóban a portálon, az Azure Monitor REST API, PowerShell-parancsmagok vagy többplatformos parancssori felület használatával.
 * Nézet a [diagnosztikai beállítások](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) erőforrás.
@@ -51,7 +51,7 @@ A figyelés közreműködői szerepkörrel mások is láthatják az összes moni
 * Tegye közzé a figyelési irányítópult, egy megosztott irányítópultot.
 * Állítsa be [diagnosztikai beállítások](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) egy resource.* számára
 * Állítsa be a [naplóprofil](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile) egy subscription.* számára
-* Riasztási szabályok tevékenység és a beállításokat az [Azure Alerts](monitoring-overview-unified-alerts.md).
+* Riasztási szabályok tevékenység és a beállításokat az [Azure Alerts](monitoring-overview-alerts.md).
 * Hozza létre az Application Insights-webtesztek és összetevőket.
 * A Log Analytics-munkaterület megosztott kulcsainak listázása.
 * Engedélyezi vagy letiltja a Log Analytics intelligenciacsomagok.

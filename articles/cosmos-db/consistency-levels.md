@@ -11,26 +11,22 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2611c25764503551c4da918d06bcaabe315cbf7c
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 6ace11cf3704ddbd503c0202d45874670476198e
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963081"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624827"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Az Azure Cosmos DB-ben konzisztenciaszintek
 
 Elosztott adatbázisok hagyatkoznia a magas rendelkezésre állás, alacsony késleltetésű, illetve mindkettőt, replikációs győződjön és a rendelkezésre állási, teljesítmény és a késés az olvasás következetes alapvető magával. A legtöbb kereskedelmi forgalomban kapható elosztott adatbázisok kérje meg a fejlesztők számára, hogy a két szélsőséges konzisztencia modell közül választhat: erős konzisztencia és a végleges konzisztencia. Bár a [linearizálhatósági](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) vagy az erős konzisztencia modellje az adatok programozhatóság a gold standard, nagy ahhoz áron (a stabil állapotot) nagyobb késést hozzáadja, és csökkenteni a rendelkezésre állás (meghibásodások). Végleges konzisztencia, másrészt magasabb rendelkezésre állás és jobb teljesítményt nyújt, de nehéz alkalmazások.
 
-A cosmos DB választási lehetőségek, a két szélsőséges helyett egy átfogó, az adatkonzisztencia közelíti meg. Erős konzisztencia és a végleges konzisztencia az értéktartományon két végén, amelyek nincsenek számos konzisztenciaszint mentén az értéktartományon. Ezek konzisztencia beállításai lehetővé teszik a fejlesztők számára, hogy pontos lehetőségeket és a részletes és magas rendelkezésre állás vagy a teljesítmény tekintetében kompromisszumot kínál. A cosmos DB engedélyezve van a fejlesztők számára, hogy az öt jól definiált konzisztenciamodellekkel közül választhat a konzisztencia (legerősebb leggyengébb felé haladva) – színspektrumból **erős**, **korlátozott frissesség**, **munkamenet** , **konzisztens előtag**, és **végleges**. Egyes ezek konzisztenciamodellt kínál jól definiált és könnyen kezelhető és bizonyos valós forgatókönyvek esetén is használható. Az öt konzisztenciamodell mindegyike biztosítanak [rendelkezésre állás és teljesítmény kompromisszumot kínál a](consistency-levels-tradeoffs.md) és átfogó SLA-k élvezik.
+A cosmos DB választási lehetőségek, a két szélsőséges helyett egy átfogó, az adatkonzisztencia közelíti meg. Erős konzisztencia és a végleges konzisztencia az értéktartományon két végén, amelyek nincsenek számos konzisztenciaszint mentén az értéktartományon. Ezek konzisztencia beállításai lehetővé teszik a fejlesztők számára, hogy pontos lehetőségeket és a részletes és magas rendelkezésre állás vagy a teljesítmény tekintetében kompromisszumot kínál. A cosmos DB engedélyezve van a fejlesztők számára, hogy az öt jól definiált konzisztenciamodellekkel közül választhat a konzisztencia (legerősebb leggyengébb felé haladva) – színspektrumból **erős**, **korlátozott frissesség**, **munkamenet** , **konzisztens előtag**, és **végleges**. Egyes ezek konzisztenciamodellt kínál jól definiált és könnyen kezelhető és bizonyos valós forgatókönyvek esetén is használható. Az öt konzisztenciamodell mindegyike biztosítanak [rendelkezésre állás és teljesítmény kompromisszumot kínál a](consistency-levels-tradeoffs.md) és átfogó SLA-k élvezik. Az alábbi képen látható a különböző konzisztenciaszintet, egy értéktartományon:
 
 ![A spektrum, konzisztencia](./media/consistency-levels/five-consistency-levels.png)
 
-A konzisztenciaszintek régiófüggetlen. A Cosmos DB-fiókot, a konzisztencia szintjét garantáltan minden olvasási műveletek, függetlenül a következő tulajdonságokkal:
-
-- A régiót, amelyből az olvasási és írási kiszolgált
-- A Cosmos-fiókjához társított régiók számának
-- Hogy a fiók konfigurációja egy vagy több írási régiót
+A konzisztenciaszintek régiófüggetlen. A konzisztencia szintjét a Cosmos DB-fiókot az összes olvasási műveletek függetlenül a régiót, amelyből az olvasási és írási szolgáltatás szolgálja ki, a Cosmos-fiókjával, illetve e van konfigurálva a fiók egyetlen társított régiók számának garantáltan vagy több az írási régió.
 
 ## <a name="scope-of-the-read-consistency"></a>Hatóköre a olvasásának következetessége
 

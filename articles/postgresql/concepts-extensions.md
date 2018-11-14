@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 05/30/2018
-ms.openlocfilehash: 67f5e6d4674f876b2cfd4d879ab40c5a5b12c0cc
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.date: 11/12/2018
+ms.openlocfilehash: 43db0e66c05b6b5c3331d3fba3e4db363d61c9f8
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985046"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624352"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql"></a>PostgreSQL-bővítmények az Azure Database for postgresql-hez
 PostgreSQL lehetővé teszi az adatbázis-bővítményekkel funkcióinak bővítése érdekében. Bővítmények lehetővé teszik több kapcsolódó SQL objektumok együtt kötegelést betöltve, vagy eltávolítja az adatbázisból, egyetlen paranccsal egyetlen csomagban. Után az adatbázis betöltése, bővítmények működhet, mint a beépített funkciók. A PostgreSQL-bővítmények további információkért lásd: [csomagolási kapcsolódó objektumot egy bővítmény](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
@@ -75,6 +75,7 @@ Az alábbi táblázatok sorolják fel a standard szintű PostgreSQL-bővítmény
 | **Bővítmény** | **Leírás** |
 |---|---|
 | [plpgsql](https://www.postgresql.org/docs/9.6/static/plpgsql.html) | PL/pgSQL oszlopszinten eljárási nyelv. |
+| [plv8](https://plv8.github.io/) | A Javascript nyelvi bővítmény, amely a tárolt eljárások, eseményindítók és egyéb is használható a PostgreSQL-hez. |
 
 ### <a name="miscellaneous-extensions"></a>Személyi bővítmények
 
@@ -88,7 +89,7 @@ Az alábbi táblázatok sorolják fel a standard szintű PostgreSQL-bővítmény
 | [pgstattuple](https://www.postgresql.org/docs/9.6/static/pgstattuple.html) | Arra szolgál, hogy tuple szintű statisztika megjelenítése. |
 | [postgres\_fdw](https://www.postgresql.org/docs/9.6/static/postgres-fdw.html) | A data-idegen burkoló külső PostgreSQL-kiszolgálót a tárolt adatok elérésére használt. |
 | [hypopg](https://hypopg.readthedocs.io/en/latest/) | Elméleti indexekhez nem követelnek CPU vagy a lemez létrehozása módszert biztosít. |
-| [plv8](https://plv8.github.io/) | A Javascript nyelvi bővítmény, amely a tárolt eljárások, eseményindítók és egyéb is használható a PostgreSQL-hez. |
+
 
 ### <a name="postgis-extensions"></a>PostGIS bővítmények
 

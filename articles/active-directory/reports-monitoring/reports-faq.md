@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory jelentéskészítés – gyakori kérdések |} A Microsoft Docs
-description: Jelentéskészítés – gyakori kérdések az Azure Active Directoryban.
+title: Az Azure Active Directory-jelentések – gyakori kérdések |} A Microsoft Docs
+description: Gyakori quesitons Azure Active Directory-jelentések körül.
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -12,55 +12,55 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: report-monitor
-ms.date: 05/10/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: c2e131776fb9f2c5e87c363d0d57e655bc34448f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5cbf0895274672c053158cf07acb344908b37831
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294220"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623468"
 ---
-# <a name="azure-active-directory-reporting-faq"></a>Azure Active Directory jelentéskészítés – gyakori kérdések
+# <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Gyakori kérdések az Azure Active Directory-jelentések körül
 
 Ez a cikk – gyakori kérdések az Azure Active Directory (Azure AD) jelentéskészítési adott válaszokat tartalmazza. További információk: [Jelentéskészítés az Azure Active Directoryban](overview-reports.md). 
 
 ## <a name="getting-started"></a>Első lépések 
 
-**K: használom a https://graph.windows.net/&lt; bérlő neve&gt;lekéréses az Azure AD naplózási és használati integrált alkalmazás API-k programozott módon jelentések jelentéskészítő rendszer /reports/ végpont. Mit kell váltani a?**
+**Kérdés jelenleg használja a https://graph.windows.net/&lt; bérlő neve&gt;lekéréses az Azure AD naplózási és használati integrált alkalmazás API-k programozott módon jelentések jelentéskészítő rendszer /reports/ végpont. Mit kell váltani a?**
 
-**V:** keresse ki a [API referenciadokumentációra](https://developer.microsoft.com/graph/) megtekintéséhez, hogyan használhatja az új API-k eléréséhez [tevékenységre vonatkozó jelentések](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal). Ez a végpont rendelkezik két jelentés (naplózás és a bejelentkezések) kapott a régi API-végpont az összes adat biztosító. Az új végpont bejelentkezésekre, a prémium szintű Azure AD-licenccel, amelyek segítségével az alkalmazások használatát, eszközhasználat és felhasználói bejelentkezési adatokat is tartalmaz.
+**V:** keresse ki a [API-referencia](https://developer.microsoft.com/graph/) való bemutatja, hogyan [tevékenységre vonatkozó jelentések eléréséhez használja az API-k](concept-reporting-api.md). Ez a végpont rendelkezik két jelentés (**naplózási** és **bejelentkezések**) biztosító, itt van a régi API-végpont az összes adatot. Az új végpont bejelentkezésekre, a prémium szintű Azure AD-licenccel, amelyek segítségével az alkalmazások használatát, eszközhasználat és felhasználói bejelentkezési adatokat is tartalmaz.
 
 --- 
 
-**K: használom a https://graph.windows.net/&lt; bérlő neve&gt;/reports/ végpont lekérni az Azure AD biztonsági jelentések (észlelések, mint a kiszivárgott hitelesítő adatok vagy névtelen IP-címekről történő bejelentkezések adott típusú) jelentéskészítési rendszer API-k programozott módon. Mit kell váltani a?**
+**Kérdés jelenleg használja a https://graph.windows.net/&lt; bérlő neve&gt;/reports/ végpont lekérni az Azure AD biztonsági jelentések (észlelések, mint a kiszivárgott hitelesítő adatok vagy névtelen IP-címekről történő bejelentkezések adott típusú) jelentéskészítési rendszer API-k programozott módon. Mit kell váltani a?**
 
-**V:** használhatja a [Identity Protection kockázati események API](../identity-protection/graph-get-started.md) való hozzáférés biztonsági észlelések Microsoft Graphon keresztül. Az új formátum hogyan kérdezheti le adatokat, a Speciális szűrés, mező kiválasztása és több, nagyobb rugalmasságot biztosít, és a kockázati események egységesíti az siem-EK és más adatok gyűjtése eszközök egyszerűbb integráció egy típust. Mivel az adatok különböző, a régi lekérdezések nem helyettesítse be a egy új lekérdezést. Azonban [az új API-t használja a Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), azaz a Microsoft standard ilyen API-t az Office 365 vagy Azure ad-ben. Így a kell elvégeznie, vagy végrehajthatja a meglévő az MS Graph-befektetéseit vagy súgó megkezdése az új standard szintű platform az átállás.
+**V:** használhatja a [Identity Protection kockázati események API](../identity-protection/graph-get-started.md) való hozzáférés biztonsági észlelések Microsoft Graphon keresztül. Az új formátum hogyan kérdezheti le adatokat, a Speciális szűrés, mező kiválasztása és több, nagyobb rugalmasságot biztosít, és a kockázati események egységesíti az siem-EK és más adatok gyűjtése eszközök egyszerűbb integráció egy típust. Mivel az adatok különböző, a régi lekérdezések nem helyettesítse be a egy új lekérdezést. Azonban [az új API-t használja a Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), azaz a Microsoft standard ilyen API-t az Office 365 vagy Azure ad-ben. Így a kell elvégeznie, vagy végrehajthatja a meglévő az MS Graph-befektetéseit vagy súgó megkezdése az új standard szintű platform az átállás.
 
 --- 
 
 **K: Hogyan szerezhetem be a prémium licencre?**
 
-**V:** lásd [Ismerkedés az Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) a választ a kérdésére.
+**V:** lásd [Ismerkedés az Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) az Azure Active Directory-kiadás frissítése.
 
 ---
 
 **K: hogyan hamarosan kell tevékenységek adatainak megtekintéséhez prémium licencre első után?**
 
-**V:** már tevékenységek adatainak, ingyenes licenccel rendelkezik, akkor láthatja, hogy ugyanazokat az adatokat. Ha nem rendelkezik semmilyen adatot, majd vesz igénybe egy vagy két napot.
+**V:** már tevékenységek adatainak, ingyenes licenccel rendelkezik, akkor azonnal látható. Ha nem rendelkezik semmilyen adatot, majd vesz igénybe a jelentések megjelennek az adatok egy vagy két napot.
 
 ---
 
-**K: láthatók a múlt havi adatok lekérdezése az Azure AD premium-licenc után?**
+**K: tekinthető meg a múlt hónapban adatok Ha prémium szintű Azure AD-licenccel?**
 
-**V:** nemrég egy prémium szintű verzió (beleértve a próbaverzió) vált, amennyiben látható adatok mentése és 7 nap kezdetben. Gyűlnek az adatok, látni fogja legfeljebb 30 napig.
+**V:** nemrég egy prémium szintű verzió (beleértve a próbaverzió) vált, amennyiben látható adatok mentése és 7 nap kezdetben. Amikor gyűlnek az adatok, láthatja a adatok az elmúlt 30 nap során.
 
 ---
 
-**K: van szükségem egy globális rendszergazda az Azure Portalon tevékenység bejelentkezések megtekintéséhez vagy az API-n keresztül az adatok a?**
+**K: van szükségem az Azure Portalon tevékenység bejelentkezések megtekintéséhez vagy az API-n keresztül az adatok a globális rendszergazdai?**
 
-**V.:** Nem. Kell egy **biztonsági olvasó**, amely egy **biztonsági rendszergazda**, vagy egy **globális rendszergazdai** lekérése a jelentéskészítés az Azure Portalon vagy az API-n keresztül.
+**V:** nem, emellett a jelentési adatokat a portálon keresztül vagy az API-n keresztül, ha egy **biztonsági olvasó** vagy **biztonsági rendszergazda** a bérlő számára. Természetesen **globális rendszergazdák** is hozzáférhetnek ezekhez az adatokhoz.
 
 ---
 
@@ -70,16 +70,21 @@ Ez a cikk – gyakori kérdések az Azure Active Directory (Azure AD) jelentésk
 
 **Kérdés: Mi az adatmegőrzés (naplózás és a bejelentkezések) tevékenységi naplóit az Azure Portalon?** 
 
-**V:** lásd [mennyi ideig kell a begyűjtött adatok tárolt?](reference-reports-data-retention.md#q-for-how-long-is-the-collected-data-stored) a választ a kérdésére.
+**V:** a következő táblázat felsorolja az Adatmegőrzés időtartama tevékenységi naplóit. További információkért lásd: [adatmegőrzési házirendek az Azure AD-jelentések](reference-reports-data-retention.md).
+
+| Jelentés                 | Azure AD Free | Prémium szintű Azure AD P1 | Prémium szintű Azure AD P2 |
+| :--                    | :--           | :--                 | :--                 |
+| Naplók             | 7 nap        | 30 nap             | 30 nap             |
+| Bejelentkezések               | –           | 30 nap             | 30 nap             |
+| Az Azure MFA-használat        | 30 nap       | 30 nap             | 30 nap             |
 
 --- 
 
 **K: mennyi ideig tart mindaddig, amíg az látható, hogy a tevékenységek adatai I saját feladat befejeződése után?**
 
-**V:** auditnaplók tevékenység egy óra és a 15 perc késéssel rendelkeznek. Bejelentkezési tevékenységeket tartalmazó naplók is igénybe vehet 15 perctől akár 2 órát az egyes bejegyzéseket.
+**V:** auditnaplók egy óra és a 15 perc késéssel rendelkeznek. Bejelentkezési tevékenységeket tartalmazó naplók is igénybe vehet 15 perctől akár 2 órát az egyes bejegyzéseket.
 
 ---
-
 
 **K: be az Office 365-Tevékenységnaplók adatait az Azure Portalon keresztül?**
 
@@ -87,10 +92,9 @@ Ez a cikk – gyakori kérdések az Azure Active Directory (Azure AD) jelentésk
 
 ---
 
-
 **K: mely API-k használható Office 365-Tevékenységnaplók információt szeretne kapni?**
 
-**V:** eléréséhez használja az Office 365 felügyeleti API-k a [Office 365-Tevékenységnaplók az API-n keresztül naplók](https://msdn.microsoft.com/office-365/office-365-managment-apis-overview).
+**V:** használja a [Office 365 felügyeleti API-k](https://msdn.microsoft.com/office-365/office-365-managment-apis-overview) eléréséhez az Office 365 Tevékenységnaplók az API-n keresztül.
 
 ---
 
@@ -102,33 +106,21 @@ Ez a cikk – gyakori kérdések az Azure Active Directory (Azure AD) jelentésk
 
 ## <a name="risky-sign-ins"></a>Kockázatos bejelentkezések
 
-**K: van egy kockázati esemény az Identity Protection, de nem látok kapcsolódó jelentkezzen be az összes bejelentkezés. Ez várható?**
+**K: van egy kockázati esemény az Identity Protection, de nem látok kapcsolódó jelentkezzen be a bejelentkezési jelentésben. Ez várható?**
 
 **V:** Igen, Identity Protection kiértékeli-e az összes hitelesítési folyamatok kockázati e interaktív vagy nem interaktív. Az összes bejelentkezési csak jelentések azonban csak az interaktív bejelentkezések jeleníti meg.
 
 ---
 
-**K: Hogyan tölthetem le a "Kockázatosként megjelölt felhasználók" jelentést az Azure Portalon?**
-
-**V:** a melyre kattintva letölthető *kockázatosként megjelölt felhasználók* jelentés hamarosan közzétesszük.
-
----
-
 **K: Hogyan tudhatom meg, hogy miért vagy egy felhasználó egy bejelentkezési lett megjelölve kockázatos az Azure Portalon?**
 
-**V:** Premium Editiont használó ügyfelek többet is megtudhat a mögöttes kockázatos eseményekről kattintva a felhasználó a "Kockázatosként megjelölt felhasználók" vagy a "kockázatos bejelentkezések" gombjára kattintva. Ingyenes és alapszintű termékváltozatot használó ügyfelek tekintheti meg a kockázatos besorolású felhasználók és bejelentkezések nélkül az alapul szolgáló kockázati események adatait beolvasása.
+**V:** Ha rendelkezik egy **prémium szintű Azure AD** -előfizetéssel, további információ a mögöttes kockázatos eseményekről kiválasztásával a felhasználó a **kockázatosként megjelölt felhasználók** vagy a kellválasztaniaegyrekord **Kockázatos bejelentkezések** jelentést. Ha rendelkezik egy **ingyenes** vagy **alapszintű** előfizetést, akkor megtekintheti a felhasználói kockázat és a kockázatos bejelentkezések jelentéseit, de nem látja az alapul szolgáló kockázati események adatait.
 
 ---
 
 **K: hogyan IP-címek alapján számítjuk ki a bejelentkezési és a kockázatos bejelentkezések jelentés?**
 
-**V:** IP-címek kibocsátott oly módon, hogy ez nem végleges közötti IP-cím és a számítógép ezzel a címmel fizikailag helyét. Ez az összetett tényezők, például a mobil-szolgáltatók és a VPN-EK központi készletek IP-címek nagyon gyakran kiállító távol, ahol az ügyféleszközön ténylegesen szolgál. A fentiek IP-cím átalakítása egy fizikai helyhez célja a legjobb nyomkövetéseket, beállításjegyzék-adatok, fordított keresések és egyéb információk alapján. 
-
----
-
-**K: Mi a nem a "Sign-in további észlelt kockázattal rendelkező" jelölésére kockázati esemény?**
-
-**V:** , hogy az összes kockázatos bejelentkezések betekintést a környezetében, helyőrző bejelentkezések, amelyek az Azure AD Identity Protection-előfizetők exkluzív észlelések "bejelentkezés-növeli annak kockázatát a észlelt" működik.
+**V:** IP-címek kibocsátott oly módon, hogy ez nem végleges közötti IP-cím és a számítógép ezzel a címmel fizikailag helyét. IP-címek leképezése tovább bonyolította tényezők, például a mobil-szolgáltatók és a VPN-EK központi készletek IP-címek nagyon gyakran kiállító távol, ahol az ügyféleszközön ténylegesen szolgál. Jelenleg az Azure AD-jelentések, IP-cím átalakítása egy fizikai helyhez célja a legjobb nyomkövetéseket, beállításjegyzék-adatok, fordított keresések és egyéb információk alapján. 
 
 ---
 

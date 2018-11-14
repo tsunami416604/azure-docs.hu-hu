@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: jeedes
-ms.openlocfilehash: f7fa4c9b0926d796c0c12b39d0056fe72e4028c7
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 3dac1d18a021c8d6c1b6e3db370c60b9aa782f1c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349024"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625351"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Oktatóanyag: Mezőben konfigurálja a felhasználók automatikus átadása
 
@@ -55,7 +55,7 @@ A kiépítési szolgáltatás engedélyezése és konfigurálása, mielőtt szü
 A **Box > felhasználók és csoportok** lap az Azure Portalon lehetővé teszi, hogy adja meg, hogy mely felhasználók és csoportok szabad megadni a hozzáférést a Boxba. Hozzárendelése egy felhasználóhoz vagy csoporthoz történjen az alábbiakat eredményezi:
 
 * Az Azure AD lehetővé teszi, a hozzárendelt felhasználói (akár közvetlen hozzárendelés vagy a csoporttagság) mezőhöz történő hitelesítéséhez. Ha egy felhasználóhoz nincs hozzárendelve, az Azure AD nem engedélyezi azokat jelentkezzen be a mezőbe, és hibaüzenetet jelenít meg az Azure AD bejelentkezési oldal.
-* A Box alkalmazáscsempe bekerül a felhasználó [alkalmazásindítójában](../manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users).
+* A Box alkalmazáscsempe bekerül a felhasználó [alkalmazásindítójában](../manage-apps/end-user-experiences.md).
 * Ha az Automatikus kiépítés engedélyezve van, majd a hozzárendelt felhasználók és csoportok kerülnek automatikusan ki kell építeni az üzembe helyezési üzenetsorba.
   
   * Ha csak a felhasználói objektumok lettek konfigurálva, ki kell építeni, majd az üzembe helyezési várólista összes közvetlenül hozzárendelt felhasználók kerülnek, és minden felhasználó, amelyek tagjai semmilyen hozzárendelt csoportok kerülnek, az üzembe helyezési várólista. 

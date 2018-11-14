@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: dd02dfe37a1566a3121b3571f72d964621330cd0
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: b5314ce874c253151b88882b086257f96612c019
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647306"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615398"
 ---
 # <a name="prepare-the-asdk-host-computer"></a>A ASDK számítógép előkészítése
 Mielőtt telepítené a ASDK a gazdagépen, a ASDK környezet telepítésének kell készíteni. A fejlesztői csomag gazdaszámítógép elő van készítve, amikor az merevlemez-meghajtóról a CloudBuilder.vhdx virtuális gép ASDK üzembe helyezés megkezdéséhez fog elindulni.
@@ -53,7 +53,7 @@ A ASDK a gazdagépen telepítése előtt elő kell készíteni a ASDK gazdakörn
 
 6. Az a **választható beállítások** lap, adja meg a helyi rendszergazda a development kit fogadó számítógép fiókját, és kattintson a **tovább**. Az alábbi választható beállításokat is megadhat értékeket:
   - **ComputerName**: Ez a beállítás a development kit gazdagép nevének beállítása. A névnek FQDN-követelményeknek kell megfelelniük, és hosszabb 15 karakternél rövidebb szerepnevet kell lennie. Az alapértelmezett érték a Windows által generált véletlenszerű számítógép nevét.
-  - **Statikus IP-konfiguráció**: Beállítja a központi telepítés egy statikus IP-címet használja. Ellenkező esetben a telepítő újraindítja a cloudbuilder.vhx, ha a hálózati adapterek vannak konfigurálva a DHCP Protokollt.
+  - **Statikus IP-konfiguráció**: Beállítja a központi telepítés egy statikus IP-címet használja. Ellenkező esetben a telepítő újraindítja a cloudbuilder.vhdx, ha a hálózati adapterek vannak konfigurálva a DHCP Protokollt.
 
     ![](media/asdk-prepare-host/3.PNG)
 

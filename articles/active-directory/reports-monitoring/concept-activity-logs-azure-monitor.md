@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory-tevékenységnaplók az Azure Monitorban (előzetes verzió) | Microsoft Docs
-description: Azure Active Directory-tevékenységnaplók az Azure Monitorban (előzetes verzió) – Áttekintés
+description: Bevezetés az Azure Active Directory-tevékenység naplók az Azure Monitor (előzetes verzió)
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -13,30 +13,30 @@ ms.topic: concept
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 07/13/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 3a4fc814a40bf370a137a2045c6218d3ee4b8778
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 760110d0ac359f6b7f135bf869e2520b8028ba6e
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395654"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625436"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Azure AD-tevékenységnaplók az Azure Monitorban (előzetes verzió)
 
-Mostantól az Azure Active Directory (Azure AD)-tevékenységnaplókat az Azure Monitor használatával átirányíthatja saját tárfiókjába vagy egy eseményközpontba is. Az Azure Monitorban nyilvános előzetes verzióban elérhető Azure Active Directory-naplókezelési szolgáltatás a következő képességeket biztosítja:
+Az Azure Active Directory (Azure AD) tevékenységeket tartalmazó naplók mostantól átirányítása hosszú távú megőrzési és az adatok insights több végpontot is. A nyilvános előzetes verziója az Azure AD-naplók az Azure Monitor lehetővé teszi:
 
-* Az auditnaplóit egy Azure-tárfiókba archiválhatja, így hosszabb ideig őrizheti meg az adatokat.
-* Az auditnaplókat streamelheti egy Azure-eseményközpontba, ahol népszerű Biztonságiadat- és eseménykezelés (SIEM) eszközök (például a Splunk vagy a QRadar) használatával elemezheti őket.
-* Az auditnaplókat egy eseményközpontba streamelve integrálhatja saját egyéni naplókezelő megoldásaival is.
+* A Tevékenységnaplók archiválása az Azure AD az Azure storage-fiókkal, megőrizni az adatokat hosszú ideig.
+* A Stream az Azure AD-Tevékenységnaplók az Azure event hub Analytics népszerű biztonságiadat- és eseménykezelés (SIEM) eszközökkel, például a Splunk és QRadar.
+* Az Azure AD integrálása tevékenységeket tartalmazó naplók a saját egyéni napló megoldásokkal folyamatos őket egy eseményközpontba.
 * Tevékenység naplók küldése az Azure AD a Log Analytics látványos vizualizációkkal, monitorozási és riasztási a csatlakoztatott adatok engedélyezéséhez.
 
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
 ## <a name="supported-reports"></a>Támogatott jelentések
 
-Ezzel a szolgáltatással a tevékenységnaplókat és a bejelentkezési tevékenységnaplókat átirányíthatja Azure-tárfiókjába, egy eseményközpontba vagy valamilyen egyéni megoldásba. 
+Irányíthatja az Azure AD naplózási naplókat és az Azure storage-fiókot, event hub, a Log Analytics vagy egyéni megoldás bejelentkezési naplók a szolgáltatás használatával. 
 
 * **Auditnaplók**: Az [auditnaplók tevékenységjelentés](concept-audit-logs.md) hozzáférést nyújt a bérlőn elvégzett összes feladat előzményeihez.
 * **Bejelentkezési naplók**: A [bejelentkezések tevékenységjelentéssel](concept-sign-ins.md) meghatározhatja, hogy ki hajtotta végre az auditnaplók által jelentett feladatokat.
@@ -101,25 +101,19 @@ A Log Analytics-munkaterület felügyeletével kapcsolatos költségek áttekint
 
 Ez a szakasz az Azure AD-naplók az Azure Monitorban való kezelésével kapcsolatos gyakori kérdéseket válaszolja meg, és ismerteti az ismert problémákat.
 
-**K: Hol érdemes elkezdenem?** 
-
-**V**: Ez a cikk ismerteti a szolgáltatás üzembe helyezéséhez szükséges előfeltételeket. Ha az előfeltételek teljesülnek, lépjen az oktatóanyagokhoz, amelyek segítenek konfigurálni a rendszert és átirányítani a naplókat egy eseményközpontba.
-
----
-
 **K: Melyik naplókat kezeli a rendszer?**
 
 **V**: A bejelentkezési tevékenységnaplókat és az auditnaplókat egyaránt át lehet irányítani a szolgáltatás használatával, azonban ez a B2C-vel kapcsolatos auditeseményekre jelenleg még nem érvényes. Ha szeretné megtudni, hogy jelenleg milyen naplótípusok és mely szolgáltatásalapú naplók támogatottak, olvassa el [az auditnaplók sémáját](reference-azure-monitor-audit-log-schema.md) és [a bejelentkezési naplók sémáját](reference-azure-monitor-sign-ins-log-schema.md) ismertető cikkeket. 
 
 ---
 
-**K: Az egyes műveletek után milyen hamar jelennek meg a vonatkozó naplók az eseményközpontokban?**
+**K: hogyan hamarosan után egy műveletet a hozzá tartozó naplók jelennek meg az eseményközpont?**
 
 **V**: A naplóknak körülbelül két-öt percen belül kell megjelenniük az eseményközpontban a műveletek végrehajtása után. Az Event Hubsról a [Mi az Azure Event Hubs?](../../event-hubs/event-hubs-about.md) című cikkben talál további információt.
 
 ---
 
-**K: Az egyes műveletek után milyen hamar jelennek meg a vonatkozó naplók a tárfiókokban?**
+**K: hogyan hamarosan után egy műveletet a hozzá tartozó naplók megjelennek a storage-fiókomat?**
 
 **V**: Az Azure Storage-fiókok esetében a késés 5–15 perc az egyes műveletek végrehajtása után.
 

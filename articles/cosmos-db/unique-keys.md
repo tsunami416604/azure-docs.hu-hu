@@ -7,12 +7,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: andrl
-ms.openlocfilehash: 36b57fd98de206641422d80bf3ea3d2a3853f578
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 006d0ef28d82a7648a56b3bf871c5a3afd6a55a6
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252564"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624420"
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Azure Cosmos DB-ben egyedi kulcsaival
 
@@ -48,17 +48,6 @@ Egyedi kulcsok csak egy Cosmos-tároló létrehozásakor definiálhat. Egy egyed
 * Ritka egyedi kulcsok nem támogatottak. Ha néhány egyedi elérési útja érték hiányzik, azok null az értéke, amely részt vesz az egyediségre vonatkozó feltételnek kell kezelni. Ezért csak lehet egy elem null értékű kielégíteni ezt a korlátozást.
 
 * A kulcsnevek egyedi nagybetűk között. Például vegyünk egy tárolót a egyedi key megkötés /address/zipcode beállítása. Ha az adatok mezőnév irányítószám, Cosmos DB beszúrása "null", az egyedi kulcs, mert "Irányítószám" nem ugyanaz, mint a "Irányítószám". A kis-és nagybetűk, mert irányítószám az összes többi rekordot nem lehet beszúrni, mert az ismétlődő "null" megsérti az egyedi megkötés.
-
-## <a name="supported-apis-and-sdks"></a>Támogatott API-k és SDK-k
-
-Az egyedi kulcsok a szolgáltatás a következő Cosmos DB API-kat és az ügyfél SDK-k az jelenleg támogatja: 
-
-|Ügyfél-illesztőprogramok|SQL API|Cassandra API|MongoDB API|Gremlin API|Tábla API|
-|---|---|---|---|---|---|
-|.NET|Igen|Nem|Igen|Nem|Nem|
-|Java|Igen|Nem|Igen|Nem|Nem|
-|Python|Igen|Nem|Igen|Nem|Nem|
-|Csomópont/js rendszerekhez|Igen|Nem|Igen|Nem|Nem|
 
 ## <a name="next-steps"></a>További lépések
 

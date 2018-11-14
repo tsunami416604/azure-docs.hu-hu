@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f7efafe5e3080de15781496032b688bc5fa71df2
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 589aae8321d2c081f09ed46d9def2229d3973ffd
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418420"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613206"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Egyesített riasztások és -monitorozás az Azure monitorban váltja fel a klasszikus riasztások és -monitorozás
 
@@ -72,4 +72,4 @@ Ez a cikk lesz, folyamatosan frissített lesz hivatkozások & Részletek kapcsol
 ## <a name="next-steps"></a>További lépések
 
 * További információ a [új, egységes Azure Monitor](../azure-monitor/overview.md).
-* További információ az új [Azure Alerts](monitoring-overview-unified-alerts.md).
+* További információ az új [Azure Alerts](monitoring-overview-alerts.md).

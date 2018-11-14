@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: erhopf
-ms.openlocfilehash: 5adc0e39c271b71d6c003eaba6cb5b8a71531bd7
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: c1eeee35869f29170a7f15b1d9e2c1ee69a6314d
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471441"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622516"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Nyelvéhez és régiójához támogatása Beszédszolgáltatási API Használatába
 
@@ -37,7 +37,7 @@ A Microsoft beszédfelismerési API-t a következő nyelveket támogatja. Az egy
  en-IN | Angol (India) | Igen | Igen | Igen
  en-NZ | angol (Új-Zéland) | Nem | Igen | Igen  
  hu-HU | angol (Egyesült Államok) | Igen | Igen | Igen
- es-ES | Spanyol (Spanyolország) | Nem | Igen | Nem
+ es-ES | spanyol (spanyolországi) | Nem | Igen | Nem
  es-MX | spanyol (Mexikó) | Nem | Igen | Nem
  fi-FI | finn (Finnország) | Nem | Nem | Nem
  FR-hitelesítésszolgáltató | francia (Kanada) | Nem | Igen | Nem
@@ -95,7 +95,7 @@ hu-HU | Angol (Egyesült Államok) |Nő | "A Microsoft Server beszéd szöveg Sp
 | | |Férfi | "A Microsoft Server beszéd szöveg Speech Voice (en-US, BenjaminRUS)"
 | | |Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Jessa24kRUS)"
 | | |Férfi | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Guy24kRUS)"
-es-ES | Spanyol (Spanyolország) |Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (es-ES, Laura, Apollo)"
+es-ES | spanyol (spanyolországi) |Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (es-ES, Laura, Apollo)"
 | | |Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (es-ES, HelenaRUS)"
 | | |Férfi | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (es-ES, Pablo, Apollo)"
 es-MX | spanyol (Mexikó) | Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (es – MX, HildaRUS)"
@@ -160,7 +160,7 @@ Hangalapú testreszabási amerikai angol (en-US), kontinens kínai (zh-CN) és o
 
 ## <a name="speech-translation"></a>Beszédfordítás
 
-A **beszédalapú fordítási** API különböző nyelveket támogat a speech beszéd és hang-szöveg transzformációs fordítás. A Forrásnyelv mindig az alábbi táblázat a beszédfelismerő nyelvi kell lennie. A cél elérhető nyelvek attól függ,-e a fordítási cél a speech vagy szöveget.
+A **beszédalapú fordítási** API különböző nyelveket támogat a speech beszéd és hang-szöveg transzformációs fordítás. A Forrásnyelv mindig az alábbi táblázat a beszédfelismerő nyelvi kell lennie. A cél elérhető nyelvek attól függ,-e a fordítási cél a speech vagy szöveget. Bejövő speech be, előfordulhat, hogy fordítása több mint [60 nyelvet](https://www.microsoft.com/translator/business/languages/). Ezek egy részét érhetők el a [beszédszintézishez](language-support.md#text-languages). 
 
 ### <a name="speech-languages"></a>Beszédnyelvek lekérdezése
 

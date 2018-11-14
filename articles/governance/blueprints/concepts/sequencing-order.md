@@ -4,16 +4,16 @@ description: Ismerje meg az életciklus-tervrajz halad át, és minden egyes sza
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 11/12/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 4adf427727e7244bbde64a673e7353c1f8270c8a
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: fcfffe6094361c8b47b1cc7ce42cb79561261b15
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094578"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51620595"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Az Azure-tervek telepítési sorrendjét ismertetése
 
@@ -47,6 +47,9 @@ Belül **erőforráscsoport** összetevő, a következő feladatütemezési sorr
 Nagy tervezetek létrehozása, amikor a meghatározott sorrendben létrehozandó erőforrás szükség lehet. Ebben a forgatókönyvben a leggyakoribb használati mintáját akkor, ha a tervrajz több Azure Resource Manager-sablont is tartalmaz. Tervezetek kezeli ezt a mintát azáltal, hogy az alkalmazás-előkészítés sorrendben kell definiálni.
 
 Az eredménykészlet definiálásával történik egy `dependsOn` a JSON-tulajdonságot. Csak a tervezet (az erőforráscsoportok) és az összetevő objektumok támogatja ezt a tulajdonságot. `dependsOn` az összetevő neve, amely az adott összetevő kell létrehozni, mielőtt a létrehozás egy karakterlánc-tömbben.
+
+> [!NOTE]
+> **Erőforráscsoport** összetevők támogatja a `dependsOn` tulajdonság, azonban nem lehet célja egy `dependsOn` bármely összetevő típusa szerint.
 
 ### <a name="example---blueprint-with-ordered-resource-group"></a>Példa – tervezet rendezett erőforráscsoport
 

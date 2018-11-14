@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: asgang
-ms.openlocfilehash: c1cc8769617e4c9cd823b1e44d60c49b73f4bdb9
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 0ac90d8ef29d4293a5eeb5f932687788320c218e
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289714"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615796"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-ongoing-replication-issues"></a>Azure – Azure virtuális gép folyamatban lévő replikáció hibáinak elhárítása
 
@@ -56,12 +56,6 @@ Prémium szintű P10 vagy P15 lemez | 16 KB | 4 MB/s |  Lemezenként 336 GB
 Prémium szintű P10 vagy P15 lemez | 32 KB vagy több | 8 MB/s | Lemezenként 672 GB
 Prémium szintű P20, P30, P40 vagy P50 lemez | 8 KB    | 5 MB/s | Lemezenként 421 GB
 Prémium szintű P20, P30, P40 vagy P50 lemez | 16 KB vagy több |10 MB/s | Lemezenként 842 GB
-
-
-**Forrásadat-változás** | **Maximális korlát**
----|---
-Átlagos adatváltozás virtuális gépenként| 25 MB/s
-Adatváltozás csúcsértéke az összes lemezen virtuális gépenként | 54 MB/s
 
 ### <a name="solution"></a>Megoldás
 Tisztában vagyunk kell azzal, hogy rendelkezik-e az Azure Site Recovery data sebességhatárok lemez típusának módosítása. Az, ha a probléma ismétlődő vagy rövid ideig, fontos, hogy az adatváltozási sebesség minta az érintett virtuális gép található.

@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 10/01/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: bc918d0ee3b3b435905546507287dc655f68e8c9
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 7509081bbf43aeaf39570f84afef81b6dd5a39fe
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429779"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621666"
 ---
 # <a name="integrate-azure-ad-logs-with-log-analytics-using-azure-monitor-preview"></a>Az Azure AD-naplók integrálása az Azure Monitor (előzetes verzió) használatával Log Analytics szolgáltatással
 
@@ -57,7 +57,7 @@ A szolgáltatás használatához a következőkre lesz szüksége:
 * Egy felhasználó, aki az adott Azure AD-bérlő *globális* vagy *biztonsági rendszergazdája*.
 * Az Azure-előfizetés a Log Analytics-munkaterületet. Ismerje meg, hogyan [hozzon létre egy Log Analytics-munkaterület](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
 
-## <a name="send-logs-to-log-analytics"></a>Naplók elküldése a Log Analyticsbe
+## <a name="send-logs-to-log-analytics"></a>Naplók küldése a Log Analyticsbe
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 

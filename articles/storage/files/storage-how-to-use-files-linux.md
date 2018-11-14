@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: bbd250e9ee987403d670b2605fdb8deda8c19092
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 4b844fe50623782f23c1819c14eb7626eb9506cf
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782050"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614946"
 ---
-# <a name="use-azure-files-with-linux"></a>Az Azure Files használata Linuxszal
+# <a name="use-azure-files-with-linux"></a>Az Azure Files használata Linux rendszerrel
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Azure-fájlmegosztások használatával Linux-disztribúciók csatlakoztathatók a [SMB-kernel ügyfél](https://wiki.samba.org/index.php/LinuxCIFS). Ez a cikk bemutatja az Azure-fájlmegosztások csatlakoztatására kétféleképpen: az igény a `mount` paranccsal, és a rendszerindítási bejegyzés létrehozásával `/etc/fstab`.
 
 > [!NOTE]  
@@ -117,7 +117,7 @@ Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használhat
     fi
     ```
 
-4. **A hitelesítő adatait tartalmazó fájlt engedélyeinek módosítása, így csak a legfelső szintű olvassa el vagy módosítsa a jelszót fájlt is.** Mivel a tárfiók kulcsát lényegében a storage-fiókhoz tartozó felettes rendszergazdai jelszót, az engedélyek beállítása a fájlt úgy, hogy csak a legfelső szintű hozzáférhetnek a fontos, hogy az alacsonyabb jogosultságú felhasználók nem lehet beolvasni a tárfiókkulcsot.   
+4. **A hitelesítő adatait tartalmazó fájlt engedélyeinek módosítása, így csak a legfelső szintű olvassa el vagy módosítsa a jelszót fájlt is.** Mivel a tárfiók kulcsát lényegében a storage-fiókhoz tartozó felettes rendszergazdai jelszót, az engedélyek beállítása a fájlt úgy, hogy csak a legfelső szintű hozzáférhetnek a fontos, hogy az alacsonyabb jogosultságú felhasználók nem sikerült beolvasni a tárfiókkulcsot.   
 
     ```bash
     sudo chmod 600 /etc/smbcredentials/<storage-account-name>.cred
@@ -141,5 +141,5 @@ Az Azure Files Linux-felhasználók csoport számára biztosít egy fórumban, h
 Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesról.
 * [Bevezetés az Azure Files használatába](storage-files-introduction.md)
 * [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
-* [GYIK](../storage-files-faq.md)
+* [Gyakori kérdések](../storage-files-faq.md)
 * [hibaelhárítással](storage-troubleshoot-linux-file-connection-problems.md)

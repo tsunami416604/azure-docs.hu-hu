@@ -10,18 +10,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 11/12/2018
 ms.author: douglasl
-ms.openlocfilehash: 94633ce2f11f9efa99f1ad44820abd5aecdec923
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 60c715e97f6b1d2046fb4050ae41b27146c0610a
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457210"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623785"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Folyamatos integráció és teljesítés (CI/CD) az Azure Data Factoryban
 
-Folyamatos integráció az eljárás a tesztelési minden módosítás történik az automatikusan és a lehető leghamarabb kódbázis. Folyamatos Készregyártás követi a tesztelés, amely történik a folyamatos integráció során, majd leküldi a módosítások egy átmeneti és éles rendszerbe.
+Folyamatos integráció az eljárás a tesztelési minden módosítás történik az automatikusan és a lehető leghamarabb kódbázis. Folyamatos Készregyártás követi a tesztelés, amely történik a folyamatos integráció során, majd leküldi a módosítások egy átmeneti és éles rendszerbe.
 
 Az Azure Data Factoryhoz folyamatos integráció és teljesítés azt jelenti, hogy a másikra történő áthelyezésének Data Factory-folyamatok az egyik környezetből (fejlesztési, tesztelési és éles környezetben). Ehhez a folyamatos integráció és teljesítés, Data Factory felhasználói felülete integrációs használhatja az Azure Resource Manager-sablonok. A Data Factory felhasználói felülete egy Resource Manager-sablont hozhat létre, kiválasztásakor a **ARM-sablon** beállítások. Ha bejelöli **exportálása ARM-sablon**, a portál létrehozza a Resource Manager-sablon a data factory és a egy konfigurációs fájl, amely tartalmazza az összes kapcsolat-karakterlánc és más paramétereket. Akkor rendelkezik az egyes környezetekhez (fejlesztési, tesztelési és éles környezetben) egy konfigurációs fájl létrehozása céljából. A fő Resource Manager-sablonfájl minden környezet esetében ugyanaz marad.
 
@@ -75,11 +75,11 @@ Az alábbiakban a lépéseket egy Azure-folyamatok verzió beállításához, ad
 
 ### <a name="requirements"></a>Követelmények
 
--   A Team Foundation Server vagy az Azure-kódtárak a kapcsolódó Azure-előfizetés a [ *Azure Resource Manager-szolgáltatásvégpont*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
+-   A Team Foundation Server vagy az Azure-kódtárak a kapcsolódó Azure-előfizetés a [*Azure Resource Manager-szolgáltatásvégpont*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
 
 -   Konfigurált Azure-Adattárakkal Git-integrációval rendelkező Data Factoryt.
 
--   Egy [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) tartalmazó a titkos kulcsok.
+-   Egy [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) tartalmazó a titkos kulcsok.
 
 ### <a name="set-up-an-azure-pipelines-release"></a>Egy Azure-folyamatok-verzió beállítása
 
@@ -832,6 +832,48 @@ else {
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Egyéni paraméterek használata a Resource Manager-sablon
 
 A Resource Manager-sablon egyéni paraméterek határozhatja meg. Rendelkezik egy fájlt a `arm-template-parameters-definition.json` a tárház gyökérmappájában. (A fájl nevének egyeznie kell a név pontosan az itt látható.) A Data Factory megpróbálja beolvasni a fájlt, bármelyik ágból az éppen dolgozik, ne csak az együttműködés ágból. Ha nincs fájl található, adat-előállító használ, az alapértelmezett paramétereket és értékeket.
+
+### <a name="syntax-of-a-custom-parameters-file"></a>Egy egyéni paraméterfájl szintaxisa
+
+Az alábbiakban néhány irányelv használatához az egyéni paraméterfájl runboookok létrehozásakor. A a szintaxisra vonatkozó példákat lásd a következő szakaszban [egyéni paraméterek mintafájl](#sample).
+
+1. Tömb a szolgáltatásdefiníciós fájlban adja meg, ha azt jelzi, hogy az egyező tulajdonság a sablonban egy tömb. A Data Factory végighalad a tömb első objektumban megadott definíció használatával a tömbben található összes objektumot. A második objektum egy karakterláncot, a tulajdonság, amely minden egyes ismétléskor szolgál a neveként a paraméter neve lesz.
+
+    ```json
+    ...
+    "Microsoft.DataFactory/factories/triggers": {
+        "properties": {
+            "pipelines": [{
+                    "parameters": {
+                        "*": "="
+                    }
+                },
+                "pipelineReference.referenceName"
+            ],
+            "pipeline": {
+                "parameters": {
+                    "*": "="
+                }
+            }
+        }
+    },
+    ...
+    ```
+
+2. Ha beállította a tulajdonságnév `*`, azt jelzi, amelyet az összes tulajdonság használata ezen a szinten csak az általunk explicit módon definiálva a sablon.
+
+3. A tulajdonság értékének beállításakor karakterláncként, jelzésére, hogy szeretné-e paraméterezni a tulajdonságot. Használja a következő formátumot: `<action>:<name>:<stype>`.
+    1.  `<action>` a következő karakterek egyike lehet: 
+        1.  `=`  azt jelenti, hogy a jelenlegi érték folyamatosan, a paraméter alapértelmezett értéke.
+        2.  `-` azt jelenti, hogy ne legyenek a paraméter alapértelmezett értéke.
+        3.  `|` van egy különleges esetben egy kapcsolati karakterláncot az Azure Key vault titkos kulcsok számára.
+    2.  `<name>` a paraméter neve van. Ha `<name`> van üres, vesz igénybe a paraméter neve 
+    3.  `<stype>` a paraméter típusa. Ha `<stype>` van üres, az alapértelmezett típus: karakterlánc.
+4.  Ha megad egy `-` karakter a paraméternév megadásához, paraméter neve röviden teljes erőforrás-kezelő elején `<objectName>_<propertyName>`.
+Ha például `AzureStorage1_properties_typeProperties_connectionString` csonkolva van `AzureStorage1_connectionString`.
+
+
+### <a name="sample"></a> Mintafájl egyéni paraméterek
 
 Az alábbi példa bemutatja egy minta paramétereket tartalmazó fájlt. Referenciaként a minta használatával hozza létre a saját egyéni paramétereket tartalmazó fájlt. Ha Ön a fájl nem a megfelelő JSON formátumban, a Data Factory kimenete egy a böngészőbeli konzolon megjelenő hibaüzenet, és visszaáll az alapértelmezett paraméterek és a Data Factory felhasználói felülete látható értékeket.
 

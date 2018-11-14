@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 3739ad3d90dd9d97d755bc0e2fa41e0962396cb1
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: c6a1647293cb0e075b3269d795b018bb223ab8f1
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354240"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615177"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Metrikariasztás létrehozása Resource Manager-sablonnal
 
@@ -1372,5 +1372,5 @@ az group deployment create \
 ```
 
 ## <a name="next-steps"></a>További lépések
-* Tudjon meg többet [riasztások az Azure-ban](monitoring-overview-unified-alerts.md)
+* Tudjon meg többet [riasztások az Azure-ban](monitoring-overview-alerts.md)
 * Ismerje meg, hogyan [műveletcsoport létrehozása a Resource Manager-sablonokkal](monitoring-create-action-group-with-resource-manager-template.md)

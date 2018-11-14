@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/11/2018
+ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4540b68dedc3086c3ea0fb12ebbe3cfe2344698b
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: a21a21f40e731e8bc1d20e01d3671c372df65d84
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718797"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622040"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>A hozzáférési Panel bővítmény telepítése csoportházirend használatával az Internet Explorer
-Ez az oktatóanyag bemutatja, hogyan csoportházirend használatával távolról telepíteni a felhasználók gépein az Internet Explorer a hozzáférési Panel bővítményt. A bővítmény szükséges az Internet Explorer-felhasználók, akik alkalmazásokat használatával vannak konfigurálva, be kell jelentkeznie az [jelszóalapú egyszeri bejelentkezés](what-is-single-sign-on.md#password-based-single-sign-on).
+Ez az oktatóanyag bemutatja, hogyan csoportházirend használatával távolról telepíteni a felhasználók gépein az Internet Explorer a hozzáférési Panel bővítményt. A bővítmény szükséges az Internet Explorer-felhasználók, akik alkalmazásokat használatával vannak konfigurálva, be kell jelentkeznie az [jelszóalapú egyszeri bejelentkezés](what-is-single-sign-on.md#password-based-sso).
 
 Javasoljuk, hogy a rendszergazdák automatizálható a ezt a bővítményt. Ellenkező esetben felhasználóknak kell töltse le és telepítse a bővítményt, amely magában rejtő, a felhasználói és rendszergazdai engedélyekkel kell rendelkeznie. Ebben az oktatóanyagban a szoftverfrissítési központi telepítések automatizálása a csoportházirend használatával több módszerét ismerteti. [További információ a csoportházirend.](https://technet.microsoft.com/windowsserver/bb310732.aspx)
 

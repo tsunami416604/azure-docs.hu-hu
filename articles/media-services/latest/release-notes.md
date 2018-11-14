@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 11/09/2018
 ms.author: juliako
-ms.openlocfilehash: db68f979239a5783338d99360209ae231a75c936
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 70a3de35f6fd942bca5355db3a7c6b57aec6adbc
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945035"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613936"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Az Azure Media Services v3 kibocsátási megjegyzései 
 
@@ -27,6 +27,54 @@ Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
 * Hibajavítások
 * Elavult funkciók
 * Módosítások tervek
+
+## <a name="november-2018"></a>A 2018. november
+
+A CLI 2.0 modul már elérhető a [Azure Media Services v3 GA](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest) – v 2.0.50.
+
+### <a name="new-commands"></a>Új parancsok
+
+- [az ams-fiók](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
+- [az ams-fiók-szűrő](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
+- [az ams-adategység](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
+- [az ams az eszközintelligencia-szűrő](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
+- [az ams tartalom-key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
+- [az ams-feladat](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
+- [élő az ams-esemény](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
+- [az ams élő kimenet](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
+- [az ams-streamvégpont](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
+- [streamelési az ams-lokátor](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
+- [az ams-fiók legutóbbi](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) – lehetővé teszi a Media szolgáltatás számára fenntartott egységek kezelése
+
+### <a name="new-features-and-breaking-changes"></a>Új funkciókat és jelentős módosításai
+
+#### <a name="asset-commands"></a>Az eszközintelligencia-parancsok
+
+- ```--storage-account``` és ```--container``` argumentumok hozzáadva.
+- A lejárati idő (Now + 23 óra) és az engedélyek (olvasás), az alapértelmezett értékeket ```az ams asset get-sas-url``` parancs hozzáadva.
+
+#### <a name="job-commands"></a>Feladat-parancsok
+
+- ```--correlation-data``` és ```--label``` argumentumok hozzáadva
+- ```--output-asset-names``` átnevezett ```--output-assets```. Most fogad el egy szóközzel elválasztott lista lévő eszközök "assetName = label" formátumban. Egy címke nélküli eszköz elküldött ehhez hasonló: "assetName ='.
+
+#### <a name="streaming-locator-commands"></a>Streamelési lokátor parancsok
+
+- ```az ams streaming locator``` Alap parancs helyére ```az ams streaming-locator```.
+- ```--streaming-locator-id``` és ```--alternative-media-id support``` argumentumok hozzáadva.
+- ```--content-keys argument``` az argumentum frissítve.
+- ```--content-policy-name``` átnevezett ```--content-key-policy-name```.
+
+#### <a name="streaming-policy-commands"></a>Adatfolyam-továbbítási szabályzat parancsok
+
+- ```az ams streaming policy``` Alap parancs helyére ```az ams streaming-policy```.
+- Támogatja a titkosítási paraméterek ```az ams streaming-policy create``` hozzáadva.
+
+#### <a name="transform-commands"></a>Parancsok átalakítása
+
+- ```--preset-names``` Argument helyére ```--preset```. Most csak akkor állíthat 1 kimeneti/készlet egyszerre (Továbbiak futtatásával hozzáadásához ```az ams transform output add```). Beállíthatja a egyéni StandardEncoderPreset is, az egyéni JSON elérési átadásával.
+- ```az ams transform output remove``` a kimeneti index eltávolítása átadásával hajtható végre.
+- ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` a hozzáadott argumentumok ```az ams transform create``` és ```az ams transform output add``` parancsokat.
 
 ## <a name="october-2018---ga"></a>Október 2018 – GA
 
@@ -120,5 +168,4 @@ A .net SDK-t a következő funkciók találhatók:
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Áttekintés](media-services-overview.md)
+[Áttekintés](media-services-overview.md)

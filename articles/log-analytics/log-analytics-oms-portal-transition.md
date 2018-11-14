@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 8aec6ae3532acaaa5d039ee9db8745927c66957b
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 2e14112220eeea1df094ff0c5844429fa3891a9b
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288781"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612805"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Azure-bA az OMS-portálon
 
@@ -84,7 +84,7 @@ Van már nem hozhat létre új munkaterületek az OMS-portálon. Kövesse az út
 Riasztások lett [kiterjeszthetők az Azure Portalon](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Miután ez befejeződött, a riasztásokat a felügyeleti műveletek csak az Azure Portalon érhető el. Meglévő riasztásokat továbbra is megjelennek az OMS-portálon. Ha a riasztásokat programozott a Log Analytics Alert REST API vagy a Log Analytics riasztási Resource-sablon használatával, szüksége Műveletcsoportok használata az API-hívások, Azure Resource Manager-sablonok és PowerShell-parancsok műveletei helyett.
 
 ### <a name="alert-management-solution"></a>Riasztáskezelés megoldás
-Helyett a [felügyeleti megoldás riasztás](log-analytics-solution-alert-management.md), használható [Azure Monitor riasztási felület egyesített](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) jelenítheti meg és kezelheti a riasztásokat. Az új felületet is beleértve naplóriasztások az Azure Log Analytics belül több forrásból származó összesíti azokat a riasztásokat. Tekintse meg a riasztások disztribúciók, intelligens csoportok keresztül kapcsolódó riasztások Automatikus csoportosítás előnyeit, és megtekintheti a riasztásokat több előfizetésre kiterjedő gazdag szűrők alkalmazása közben. Ezek a szolgáltatások előzetes verziója 2018. június 4 kezdve érhetők el. A riasztási felügyeleti megoldás nem lesz elérhető az Azure Portalon. 
+Helyett a [felügyeleti megoldás riasztás](log-analytics-solution-alert-management.md), használható [Azure Monitor riasztási felület egyesített](../monitoring-and-diagnostics/monitoring-overview-alerts.md) jelenítheti meg és kezelheti a riasztásokat. Az új felületet is beleértve naplóriasztások az Azure Log Analytics belül több forrásból származó összesíti azokat a riasztásokat. Tekintse meg a riasztások disztribúciók, intelligens csoportok keresztül kapcsolódó riasztások Automatikus csoportosítás előnyeit, és megtekintheti a riasztásokat több előfizetésre kiterjedő gazdag szűrők alkalmazása közben. Ezek a szolgáltatások előzetes verziója 2018. június 4 kezdve érhetők el. A riasztási felügyeleti megoldás nem lesz elérhető az Azure Portalon. 
 
 A riasztási felügyeleti megoldások (riasztás típussal rendelkező rekordok) által gyűjtött adatok továbbra is a Log Analytics mindaddig, amíg a megoldás telepítve van-e a munkaterületen. 2018 augusztus kezdődően a munkaterületek, egységes riasztásokban riasztások streamelési engedélyezve lesz, és cserélje le ezt a funkciót. Néhány sémaváltozások várható, és később lesz bejelentve.
 

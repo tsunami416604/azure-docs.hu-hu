@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 603ed12bf74f2d75543fd7e60834e695138c991d
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: dbe2619b99fdc5281375e2c6c1300432d9a4cbb9
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963801"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616129"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Az Azure Diagnostics bővítmény konfigurációs séma verziók és előzményei
 Ezt oldal indexek az Azure Diagnostics bővítmény séma verziója le szállítani, a Microsoft Azure SDK csomag részeként.  
@@ -67,7 +67,7 @@ Az Azure diagnostics különböző verziói különböző konfigurációs sémá
 ### <a name="diagnostics-extension-111"></a>A diagnosztikai bővítmény 1.11
 Az Azure Monitor-fogadó támogatása. Ez a fogadó csak akkor érvényes, a teljesítményszámlálók. Lehetővé teszi, hogy a virtuális gép, VMSS vagy a felhőalapú szolgáltatás az Azure monitornak egyéni mérőszámokként gyűjtött teljesítményszámlálók küldése. Az Azure Monitor-fogadó támogatja:
 * Az Azure Monitor használatával küldött összes teljesítményszámlálók beolvasása a [Azure Monitor-metrikák API-k.](https://docs.microsoft.com/rest/api/monitor/metrics/list)
-* Az Azure Monitor használatával az új riasztást küld minden teljesítményszámlálót küldött [egységes riasztások kezelőfelület](monitoring-overview-unified-alerts.md) az Azure monitorban
+* Az Azure Monitor használatával az új riasztást küld minden teljesítményszámlálót küldött [egységes riasztások kezelőfelület](monitoring-overview-alerts.md) az Azure monitorban
 * Helyettesítő operátor kezelni a teljesítményszámlálók a metrika a "Példány" dimenzió. Például ha összegyűjtött a "logikai lemez (\*) / DiskWrites/mp" számláló tudni szűrőt, és minden egyes logikai lemez (C:, d, stb.) a "Példány" dimenzión diagram vagy a Lemezírások/mp riasztások felosztása
 
 Az Azure Monitor definiálhatja a diagnosztikai bővítmény konfigurációja egy új fogadó

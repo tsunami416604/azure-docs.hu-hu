@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 11/07/2018
 ms.author: juliako
-ms.openlocfilehash: 1c8bacf4c6cb22240609fb9f5dc0c3c456bc4531
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 8c3ff4af3b556614d0b2179dceed6cabd9cbabff
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287540"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616010"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Migrálási útmutató segítséget nyújt a Media Services v2 áthelyezését v3
 
@@ -59,6 +59,7 @@ Ha rendelkezik egy fejlett még ma a videószolgáltatás a [örökölt Media Se
 * A v3-as SDK-k most vannak választva a a Storage SDK-t biztosít a Storage SDK-t szeretné használni, és elkerülhetők a verziókezelés problémák verzióját jobban szabályozhatja. 
 * V3 API-k a kódolási átviteli sebességek összes bit / másodperc. Ez eltér attól a Media Encoder Standard készletek v2. Például az átviteli sebesség a v2-ben ezt kell megadni, mint 128 (kbps), de a v3-as lenne 128000 (bit/másodperc). 
 * Entitások AssetFiles AccessPolicies és IngestManifests v3 nem szerepelnek.
+* A IAsset.ParentAssets tulajdonság nem létezik a v3-as.
 * Tartalomkulcsok már nem egy entitás, hogy most már a StreamingLocator tulajdonsága.
 * Event Grid támogatási NotificationEndpoints váltja fel.
 * A következő entitásokat is átnevezése

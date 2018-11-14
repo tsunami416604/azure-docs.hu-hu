@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: af3d2b997a4d58f2d32705c55151c4cf13bdcc7c
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: ac96de2669a75a5966650afc0b49cc2f926537fa
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095478"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614208"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Térkép (előzetes verzió) virtuális gépek az Azure Monitor használatával történő alkalmazás-összetevők ismertetése
 Megtekintés a detektált alkalmazás-összetevők a környezet figyelhető meg az Azure Monitor szolgáltatással kétféleképpen virtuális gépek esetén közvetlenül a virtuális gépről vagy virtuális gépek az Azure Monitor csoportokhoz Azure-ban futó Windows és Linux rendszerű virtuális gépeken. 
@@ -52,7 +52,7 @@ A kapcsolódó riasztások megjelenítése térképen funkciónak az engedélyez
 - Számítógép csoporthoz záradékot tartalmazni (például **számítógép időköze 1 perces**).
 - Válasszon riasztást metrikus egység alapján.
 
-További információ az Azure-riasztások és a riasztási szabályok létrehozása: [egyesített riasztások az Azure monitorban](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)
+További információ az Azure-riasztások és a riasztási szabályok létrehozása: [egyesített riasztások az Azure monitorban](../monitoring-and-diagnostics/monitoring-overview-alerts.md)
 
 A **jelmagyarázat** lehetőséget a jobb felső sarkában található szimbólumok és szerepkörök ismerteti a térképen.  A térkép közelebbről a nagyítás, és az informatikai körül, a Nagyítás vezérlők alján az oldal jobb oldalán a nagyítási szint beállítása és az aktuális oldal méretét a laphoz.  
 

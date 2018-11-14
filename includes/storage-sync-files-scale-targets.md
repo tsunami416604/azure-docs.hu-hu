@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 07/18/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: a29f1c4a625552dd958884c6a172bee470e61ca6
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 03fe587ede297ac7dea90b7a5fb2d5323f60659e
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49312495"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51628147"
 ---
 | Erőforrás | Cél | Rögzített korlátja |
 |----------|--------------|------------|
-| Társzinkronizálási szolgáltatás előfizetésenként | 15 Társzinkronizálási szolgáltatás | Nem |
+| Társzinkronizálási szolgáltatás előfizetésenként | 15 régiónként Társzinkronizálási szolgáltatás | Nem |
 | Szinkronizálási csoportok tárolási szinkronizálási szolgáltatásonként | 100 szinkronizálási csoportok | Igen |
 | Regisztrált kiszolgálók tárolási szinkronizálási szolgáltatásonként | 99 kiszolgálók | Igen |
 | Felhőbeli végpont szinkronizálási csoportonként | 1 felhőbeli végpont | Igen |
@@ -30,4 +30,4 @@ ms.locfileid: "49312495"
 | Maximális (fájlok és könyvtárak) biztonsági leíró objektumméret | 4 KiB | Igen |
 | Fájlméret | 100 GiB | Nem |
 | A fájlok helyezhető el a minimális fájlméret | 64 KiB | Igen |
-| Egyidejű szinkronizálási munkamenetek | processzor- és legfeljebb 8 aktív szinkronizálási munkamenetek kiszolgálónként 2 active sync-munkamenetek | Igen |
+| Egyidejű szinkronizálási munkamenetek | V4 ügynök: korlát elérhető rendszererőforrásokat alapján változik. <BR> V3 ügynök: processzor- és legfeljebb 8 active 2 aktív szinkronizálási munkamenetek szinkronizálása a kiszolgáló-munkamenetek | Igen

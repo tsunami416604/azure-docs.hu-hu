@@ -12,21 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: 4b6ad2e237d73d5d8ca414bffc3a679ee552105f
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 54ceadc8173526e8638e70c8c859109eea157fa7
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718729"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614038"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Az App Service erőforrás-szolgáltató hozzáadása az AD FS által védett kapcsolat nélküli Azure Stack-környezet
 
 *A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 > [!IMPORTANT]
-> Az Azure Stackkel integrált rendszereknél 1807 frissítés alkalmazása, vagy a legújabb Azure Stack fejlesztői készletének telepítése Azure App Service 1.3 üzembe helyezése előtt.
+> Az Azure Stackkel integrált rendszereknél 1809 frissítés alkalmazása, vagy a legújabb Azure Stack fejlesztői készletének telepítése az Azure App Service 1.4-es üzembe helyezése előtt.
 >
 >
 
@@ -84,8 +84,7 @@ App Service-ben leválasztott környezet üzembe helyezéséhez, először létr
     2. Az a **Azure Stack-előfizetést** jelölje ki a **szolgáltatói előfizetés alapértelmezett**.
     
     > [!NOTE]
-    > App Service-ben csak lesz üzembe helyezve a **szolgáltatói előfizetés alapértelmezett** jelenleg.  Egy következő frissítés App Service-ben fog helyezze üzembe az Azure Stack 1804-ben bevezetett új szoftverhasználat-mérő előfizetés, és minden meglévő üzemelő példányt átkerülnek az új előfizetés is.
-    >
+    > App Service-ben csak lesz üzembe helyezve a **szolgáltatói előfizetés alapértelmezett**.
     >
     
     3. Az a **Azure Stack-helyek** válassza ki a helyet, amely megfelel a régió, helyezi üzembe. Válassza ki például **helyi** Ha az az Azure Stack fejlesztői készletének telepítése.
@@ -170,7 +169,7 @@ App Service-ben leválasztott környezet üzembe helyezéséhez, először létr
     ![Az App Service-telepítő][14]
 
     > [!NOTE]
-    > **A Windows Server 2016 Core nem támogatott platform rendszerképe az Azure App Service az Azure Stacken használható.  Ne használjon értékelési rendszerképek éles környezetekben üzemelő példányok.  Az Azure App Service az Azure Stacken szükséges, hogy az 3.5.1 SP1 Microsoft.Net aktiválva van-e a központi telepítéshez használt lemezkép.   Marketplace-en hírcsatorna-a Windows Server 2016 lemezképek nem rendelkezik a szolgáltatás nincs engedélyezve.**
+    > **A Windows Server 2016 Core nem támogatott platform rendszerképe az Azure App Service az Azure Stacken használható.  Ne használjon értékelési rendszerképek éles környezetekben üzemelő példányok.  Az Azure App Service az Azure Stacken szükséges, hogy az 3.5.1 SP1 Microsoft.Net aktiválva van-e a központi telepítéshez használt lemezkép.   Hírcsatorna-piactéren a Windows Server 2016 lemezképek nem rendelkezik a szolgáltatás nincs engedélyezve, ezért kell létrehozni, és a Windows Server 2016-rendszerkép használata az előre engedélyezett.**
 
 14. Az a **Platformlemezkép kiválasztása** válassza ki a központi telepítés a Windows Server 2016 virtuális gép rendszerképének azoktól, akik az App Service-felhő számítási erőforrás-szolgáltató érhető el. Kattintson a **Tovább** gombra.
 
@@ -198,7 +197,7 @@ App Service-ben leválasztott környezet üzembe helyezéséhez, először létr
 
 1. Az Azure Stack felügyeleti portálon, lépjen a **felügyelet – az App Service**.
 
-2. Állapot áttekintése, ellenőrizze, hogy a **állapot** látható **minden szerepkör készen áll**.
+2. Az áttekintésben, az állapot, ellenőrizze, hogy, amely a **állapot** megjeleníti **minden szerepkör készen áll**.
 
     ![App Service-kezelése](media/azure-stack-app-service-deploy/image12.png)
     

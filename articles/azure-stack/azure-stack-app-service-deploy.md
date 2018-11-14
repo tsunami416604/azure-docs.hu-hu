@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: 08f08d926a9e27e421ff8db46051d8a1e7229041
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: aa745d827db7633dc9f8601f65fa31dfadbb4076
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166882"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614055"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Az App Service erőforrás-szolgáltató hozzáadása az Azure Stackhez
 
@@ -28,7 +28,7 @@ ms.locfileid: "49166882"
 Ez a cikk az útmutató segítségével üzembe helyezése az Azure Stack App Service-ben.
 
 > [!IMPORTANT]  
-> Az Azure Stackkel integrált rendszereknél 1807 frissítés alkalmazása, vagy a legújabb Azure Stack Development Kit (ASDK) üzembe helyezése, Azure App Service 1.3 üzembe helyezése előtt.
+> Az Azure Stackkel integrált rendszereknél 1809 frissítés alkalmazása, vagy a legújabb Azure Stack Development Kit (ASDK) üzembe helyezése, Azure App Service 1.4-es üzembe helyezése előtt.
 
 A felhasználók számára biztosíthat web- és API-alkalmazások létrehozása. Ahhoz, hogy a felhasználók ezeket az alkalmazásokat hozzanak létre, meg kell:
 
@@ -74,8 +74,8 @@ Az App Service erőforrás-szolgáltató üzembe helyezéséhez kövesse az alá
 
    b. A **Azure Stack-előfizetést**, jelölje be a **szolgáltatói előfizetés alapértelmezett**.
 
-     >[!NOTE]
-     >Jelenleg az App Service csak telepíthetők a **szolgáltatói előfizetés alapértelmezett**.
+     > [!IMPORTANT]  
+     > App Service-ben **kell** üzembe helyezhető a **szolgáltatói előfizetés alapértelmezett**.
 
    c. Az a **Azure Stack-helyek**, válassza ki a helyet, amely megfelel a régió, helyezi üzembe. Válassza ki például **helyi** Ha az az Azure Stack fejlesztői készletének telepítése.
 
@@ -198,7 +198,7 @@ Az App Service erőforrás-szolgáltató üzembe helyezéséhez kövesse az alá
 
 1. Az Azure Stack felügyeleti portálon, lépjen a **felügyelet – az App Service**.
 
-2. Állapot áttekintése, ellenőrizze, hogy a **állapot** látható **minden szerepkör készen áll**.
+2. Az áttekintésben, az állapot, ellenőrizze, hogy, amely a **állapot** megjeleníti **minden szerepkör készen áll**.
 
     ![App Service-kezelése](media/azure-stack-app-service-deploy/image12.png)
 

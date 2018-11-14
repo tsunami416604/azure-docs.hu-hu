@@ -13,24 +13,21 @@ ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 05/10/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 68028fd1ba116251860e5c370e9e9ce61fd314bb
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 601169cc62a99438f661adc06ab166b545606edb
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47107007"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624590"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Az Azure Active Directory-jelentés adatmegőrzési szabályai
 
+Ebben a cikkben megismerkedhet a különböző tevékenységre vonatkozó jelentések az Azure Active Directoryban adatmegőrzési házirendek. 
 
-A cikk ismerteti a különböző tevékenységre vonatkozó jelentések az Azure Active Directoryban az adatmegőrzési együtt a leggyakoribb kérdésekre kaphat választ. 
-
-### <a name="q-how-can-you-get-the-collection-of-activity-data-started"></a>K: Hogyan szerezhetem be a tevékenység adatgyűjtés lépései?
-
-**VÁLASZ:**
+### <a name="when-does-azure-ad-start-collecting-data"></a>Ha nem az Azure AD megkezdi az adatok gyűjtését?
 
 | Az Azure AD-kiadástól | Gyűjtemény indítása |
 | :--              | :--   |
@@ -38,25 +35,21 @@ A cikk ismerteti a különböző tevékenységre vonatkozó jelentések az Azure
 | Azure AD Free | Az első megnyitásakor a [Azure Active Directory panel](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) vagy használja a [reporting API-k](https://aka.ms/aadreports)  |
 
 ---
-### <a name="q-when-is-your-activity-data-available-in-the-azure-portal"></a>K: mikor érhető el az adatok az Azure Portalon?
 
-**VÁLASZ:**
+### <a name="when-is-the-activity-data-available-in-the-azure-portal"></a>Amikor a tevékenységek adatai érhető el az Azure Portalon?
 
 - **Azonnal** – Ha már dolgozott a jelentések az Azure Portalon.
 - **2 órán belül** – Ha nem kapcsolta a jelentéskészítés az Azure Portalon.
 
 ---
 
-### <a name="q-how-can-you-get-the-collection-of-security-signals-started"></a>K: Hogyan szerezhetem be a biztonsági jelek elindult a gyűjtemény?  
+### <a name="when-does-azure-ad-start-collecting-security-signal-data"></a>Ha nem az Azure AD adatgyűjtés megkezdéséhez biztonsági jel?  
 
-**V:** a biztonsági jelek, az adatgyűjtési folyamat akkor kezdődik, amikor Ön vehetnek részt az Identity Protection Centerben használja. 
-
+A biztonsági jelek, az adatgyűjtési folyamat akkor kezdődik, amikor, jóváhagyja a használja a **Identity Protection Centerben**. 
 
 ---
 
-### <a name="q-for-how-long-is-the-collected-data-stored"></a>K: mennyi ideig van az összegyűjtött adatok tárolva?
-
-**VÁLASZ:**
+### <a name="how-long-does-azure-ad-store-the-data"></a>Mennyi ideig Azure ad-ben az adatok tárolása?
 
 **Tevékenységjelentések**    
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7f85de79b683ba7b10f5466c4a8042fc0ffdea90
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 3f1e34b4d527d076a0bac2e0cb6ef3a901296c57
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381266"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612475"
 ---
 # <a name="define-a-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Egyéni Azure Active Directory B2C-házirendek OAuth2 technikai profil meghatározása
 
@@ -46,7 +46,7 @@ A **InputClaims** és **InputClaimsTransformations** elemek nem szükségesek. A
 
 ## <a name="output-claims"></a>Kimeneti jogcímek
 
-A **OutputClaims** elem az OAuth2 identitásszolgáltató által visszaküldött jogcímek listáját tartalmazza. Szükség lehet a meghatározott az identitásszolgáltató nevét a szabályzatban meghatározott jogcím nevének való leképezéséhez. Nem adott vissza az identitásszolgáltató mindaddig, amíg a beállított jogcímeket is használható a `DefaultValue` attribútum.
+A **OutputClaims** elem az OAuth2 identitásszolgáltató által visszaküldött jogcímek listáját tartalmazza. Szükség lehet a meghatározott az identitásszolgáltató nevét a szabályzatban meghatározott jogcím nevének való leképezéséhez. Nem adott vissza az identitásszolgáltató mindaddig, amíg meg jogcímeket is használható a `DefaultValue` attribútum.
 
 A **OutputClaimsTransformations** elemet tartalmazhat egy gyűjteményét **OutputClaimsTransformation** elemek, amelyek segítségével módosíthatja a kimeneti jogcímek, és hozzon létre újakat.
 

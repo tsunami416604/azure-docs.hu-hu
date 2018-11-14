@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: 3f0bf2c6c58afbbf9a1256fa5901591e535fe20c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 258d00bcc99165108979ef1679c195a6d2b2d98a
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250764"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623060"
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -100,7 +100,7 @@ A következő feltételek lesznek érvényesek, próbálja ki az Azure Cosmos DB
 Az Azure Cosmos DB az Azure Portalon érhető el. Először regisztráljon egy Azure-előfizetést. Miután bejelentkezett a, is hozzáadhat egy SQL API, a Gremlin API, a Table API, a MongoDB API vagy a Cassandra API-fiókot az Azure-előfizetéshez.
 
 ### <a name="what-is-a-master-key"></a>Mi a főkulcs?
-A főkulcs egy biztonsági jogkivonat, amellyel egy fiók összes erőforrása elérhető. A főkulccsal rendelkező egyének olvasási és írási hozzáférés az adatbázis-fiókban lévő összes erőforrást. Körültekintően járjon el főkulcsok terjesztésekor. Az elsődleges és másodlagos főkulcsok érhetők el a **kulcsok** paneljén a [az Azure portal][azure-portal]. A kulcsokkal kapcsolatos további információkért lásd: [Hozzáférési kulcsok megtekintése, másolása és újragenerálása](manage-account.md#keys).
+A főkulcs egy biztonsági jogkivonat, amellyel egy fiók összes erőforrása elérhető. A főkulccsal rendelkező egyének olvasási és írási hozzáférés az adatbázis-fiókban lévő összes erőforrást. Körültekintően járjon el főkulcsok terjesztésekor. Az elsődleges és másodlagos főkulcsok érhetők el a **kulcsok** paneljén a [az Azure portal][azure-portal]. A kulcsokkal kapcsolatos további információkért lásd: [Hozzáférési kulcsok megtekintése, másolása és újragenerálása](manage-with-cli.md#list-account-keys).
 
 ### <a name="what-are-the-regions-that-preferredlocations-can-be-set-to"></a>Mik azok a régiók, amelyek a PreferredLocations értékre lehet beállítani? 
 A preferredlocations listában érték beállítható bármely Azure-régiót, amelyben Cosmos DB érhető el. Az elérhető régiók listáját lásd: [Azure-régiók](https://azure.microsoft.com/regions/).
@@ -217,7 +217,7 @@ MongoDB gyakori hibakódok mellett a MongoDB API-val rendelkezik a saját adott 
 Igen, használhatja az Azure cosmos DB MongoDB API Simba a Mongo ODBC-illesztő
 
 
-## <a id="table"></a>Tábla API
+## <a id="table"></a>Table API
 
 ### <a name="how-can-i-use-the-table-api-offering"></a>Hogyan használhatom a Table API-ajánlat? 
 Az Azure Cosmos DB Table API érhető el a [az Azure portal][azure-portal]. Először, jelentkezzen Azure-előfizetésre. Miután bejelentkezett a, az egy Azure Cosmos DB Table API-fiók hozzáadása az Azure-előfizetéshez, és adja hozzá a táblák a fiókjához. 

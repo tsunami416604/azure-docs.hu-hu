@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: 7937f3d0db414d7a9cc2adaefd4324d49d734fcb
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 49d68a28180c384a181f29e41c12a5e32bd76aee
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280673"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625215"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure-partneri ügyfél használati megnevezése
 
@@ -126,14 +126,14 @@ GUID 32 hexadecimális számjegyet tartalmaz egyedi hivatkozási szám. Követé
 > [!Note]
 > Erősen ajánlott a használata [Azure Storage GUID generátor űrlap](https://aka.ms/StoragePartners) hozhat létre a GUID Azonosítót. További információkért lásd: a [– gyakori kérdések](#faq).
 
-Hozzon létre egy egyedi GUID azonosító minden ajánlat és a terjesztési csatornák. Ha két megoldás üzembe helyezése sablon használatával, és mindegyikhez az Azure Marketplace-en és githubon érhető el, hozzon létre négy GUID szeretné:
+Javasoljuk, hogy hozzon létre egy egyedi GUID azonosító minden egyes termékekhez tartozó ajánlat és a terjesztési csatorna. A termék több terjesztési csatornák egyetlen GUID használatára, ha nem szeretné méretüknél fogva reporting kérheti. 
 
-*   Az Azure Marketplace-en A ajánlat 
-*   Ajánlat A githubon
-*   B ajánlat az Azure Marketplace-en 
-*   Az ajánlat B a Githubon
+Ha a sablonok segítségével adott termék központi telepítését, és az Azure Marketplace-en és githubon érhető, akkor létrehozhat és regisztrálhat 2 egyedi GUID:
 
-Jelentéskészítés végzi el a partner érték (Microsoft-Partnerazonosító) és a globálisan egyedi Azonosítót. 
+*   Az Azure Marketplace-en A termék 
+*   A termék a Githubon
+
+Jelentéskészítés végzi el a partner érték (Microsoft-Partnerazonosító) és a GUID megváltozott. 
 
 GUID azonosítókat, például a Termékváltozat, ahol a termékváltozatok a következők ajánlat változatának részletesebb szinten is követheti.
 

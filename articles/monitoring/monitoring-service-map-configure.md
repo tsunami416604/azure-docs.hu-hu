@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 653ed7e4cdbd2df166e21acfd1e376638cad6290
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 52476488307b9467665b1b8df35c92419825078f
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257224"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622380"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurálja a Service Map az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Használhatja a kiszolgálók megtekintéséhez, ahogyan Ön gondol rájuk összekapcsolt rendszerekkel, amelyek kritikus fontosságú szolgáltatásokat. A Service Map megmutatja a kapcsolatokat kiszolgálók, folyamatok és portok között bármely TCP-kapcsolattal összekötött architektúrában semmilyen beállítást nem szükséges, eltérő ügynököt telepíteni.
@@ -133,8 +133,8 @@ A Service Map az adatok lekérése a Microsoft Dependency agent. A függőségi 
 
 | Csatlakoztatott forrás | Támogatott | Leírás |
 |:--|:--|:--|
-| Windows-ügynökök | Igen | A Service Map elemzi, és gyűjti az adatokat Windows-számítógépek. <br><br>Mellett a [Log Analytics-ügynököket for Windows](../log-analytics/log-analytics-concept-hybrid.md), Windows-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
-| Linux-ügynökök | Igen | A Service Map elemzi, és a Linux rendszerű számítógépek gyűjti az adatokat. <br><br>Mellett a [Linuxhoz készült Log Analytics-ügynök](../log-analytics/log-analytics-concept-hybrid.md), Linux-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
+| Windows-ügynökök | Igen | A Service Map elemzi, és gyűjti az adatokat Windows-számítógépek. <br><br>Mellett a [Log Analytics-ügynököket for Windows](../log-analytics/log-analytics-agent-overview.md), Windows-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
+| Linux-ügynökök | Igen | A Service Map elemzi, és a Linux rendszerű számítógépek gyűjti az adatokat. <br><br>Mellett a [Linuxhoz készült Log Analytics-ügynök](../log-analytics/log-analytics-agent-overview.md), Linux-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
 | System Center Operations Manage felügyeleti csoport | Igen | A Service Map elemzi, és a egy csatlakoztatott a Windows és Linux-ügynökök gyűjti az adatokat [System Center Operations Manager felügyeleti csoport](../log-analytics/log-analytics-om-agents.md). <br><br>Ehhez közvetlen kapcsolat szükséges a System Center Operations Manager-ügynökszámítógép és a Log Analytics között. |
 | Azure Storage-fiók | Nem | A Service Map gyűjti az adatokat ügynökszámítógépen, így nem szerepel megjeleníthető adat gyűjtését az Azure Storage-ból származó. |
 
@@ -230,7 +230,7 @@ A függőségi ügynök telepítheti manuálisan a Windows-számítógépeken fu
 
 A következő lépések segítségével telepítse a függőségi ügynököt minden olyan Windows-számítógépen:
 
-1.  Az ismertetett módszerek valamelyikét a következő Windows készült Log Analytics-ügynök telepítése [gyűjthet adatokat a Log Analytics-ügynökkel rendelkező hibrid környezetben](../log-analytics/log-analytics-concept-hybrid.md).
+1.  Az ismertetett módszerek valamelyikét a következő Windows készült Log Analytics-ügynök telepítése [Log Analytics-ügynök – áttekintés](../log-analytics/log-analytics-agent-overview.md).
 2.  A Windows-ügynök letöltése, és futtassa a következő paranccsal: 
     
     `InstallDependencyAgent-Windows.exe`
@@ -258,7 +258,7 @@ A függőségi ügynök telepítve van a Linux-számítógépeken `InstallDepend
 
 Az alábbi lépések segítségével a függőségi ügynök telepítése minden egyes Linux rendszerű számítógépen:
 
-1.  Az ismertetett módszerek valamelyikét a következő Log Analytics-ügynök telepítése [gyűjthet adatokat a Log Analytics-ügynökkel rendelkező hibrid környezetben](../log-analytics/log-analytics-concept-hybrid.md).
+1.  Az ismertetett módszerek valamelyikét a következő Log Analytics-ügynök telepítése [Log Analytics-ügynök – áttekintés](../log-analytics/log-analytics-agent-overview.md).
 2.  A Linux függőségi ügynök telepítése rendszergazdaként a következő parancs futtatásával:
     
     `sh InstallDependencyAgent-Linux64.bin`

@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 11/06/2018
+ms.date: 11/08/2018
 ms.author: tulasim
-ms.openlocfilehash: adcefe8fed927aca2533ea811bac56f0b92288de
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: fa5b5e1998d54c7b22d01e7cc70e84059d482cfb
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279761"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623546"
 ---
 # <a name="edit-a-knowledge-base"></a>Tudásbázis szerkesztése
 
@@ -29,30 +29,25 @@ A QnA Maker lehetővé teszi a Tudásbázis tartalmát kezelését azáltal, hog
 
     ![Saját tudásbázisok](../media/qnamaker-how-to-edit-kb/my-kbs.png)
 
-2. Válassza ki az adott Tudásbázis szerkesztenie azt.
+1. Válassza ki az adott Tudásbázis szerkesztenie azt.
  
-3. Kattintson a **Settings** (Beállítások) lehetőségre.
-
-   Itt szerkesztheti a szolgáltatás neve kötelező mező.
+1. Válassza ki **beállítások**. Itt szerkesztheti a szolgáltatás neve kötelező mező.
   
-   Új GYIK-tartalom hozzáadása a tudásbázissal kattintva új URL-címeket adhat hozzá **cikkének kezelés -> "+ URL-cím hozzáadása"** hivatkozásra.
-   
-   Kattintva törölheti a meglévő URL-címei **Törlés ikon**.
-   
-   Ha azt szeretné, hogy a legfrissebb tartalmát, a meglévő URL-címei feltérképezése cikkének, a jelölőnégyzet-name osztásjelek **"Frissítés"**, ez a rendszer ekkor frissíti a tudásbázissal legfrissebb URL tartalmát.
-   
-Támogatott fájl dokumentum cikkének, részének kell kattintva adhat hozzá **cikkének kezelés -> "+ -fájl hozzáadása"**
+    |Cél|Műveletek|
+    |--|--|
+    |URL-cím felvétele|Új GYIK-tartalom hozzáadása a Tudásbázis kattintva új URL-címeket adhat hozzá **Tudásbázis kezelés -> "+ URL-cím hozzáadása"** hivatkozásra.|
+    |URL-cím törlése|A Törlés ikonra kattintva törölheti a meglévő URL-címeket, a Kuka is.|
+    |Tartalom URL-cím frissítése|Ha azt szeretné, hogy a Tudásbázis feltérképezése a legfrissebb tartalmát, a meglévő URL-címei, válassza ki a **frissítése** jelölőnégyzetet. Ez frissíti a Tudásbázis legújabb URL-cím tartalommal.|
+    |Fájl hozzáadása|Egy támogatott dokumentumot, egy Tudásbázis részét kiválasztásával adhat hozzá **Tudásbázis kezelése**, majd válassza **+ fájl hozzáadása**|
+    |Importálás|Minden olyan meglévő Tudásbázis kiválasztásával is importálhat **Ímport Tudásbázis** gombra. |
+    |Frissítés|Frissítés a Tudásbázis függ **felügyeleti tarifacsomag** QnA Maker szolgáltatást a Tudásbázis társított létrehozásakor használt. Ha szükséges, a felügyeleti csomag az Azure Portalról is frissítheti.
 
-Minden olyan meglévő cikkének kattintva is importálhat **Ímport cikkének** gombra. 
-   
-Frissítése az cikkének függ **felügyeleti tarifacsomag** QnA Maker szolgáltatást a knowledgbase társított létrehozása során használt. Ha szükséges, a felügyeleti csomag az Azure Portalról is frissítheti.
-
-4. Ha elkészült a Tudásbázis módosítását, kattintson a **mentéséhez és a vonat** annak érdekében, hogy a változtatások megőrzéséhez az oldal jobb felső sarkában található.    
+1. Ha elkészült a módosítása a Tudásbázis válassza **mentéséhez és betanítunk** annak érdekében, hogy a változtatások megőrzéséhez az oldal jobb felső sarkában található.    
 
     ![Mentse és tanítása](../media/qnamaker-how-to-edit-kb/save-and-train.png)
 
-    >[!NOTE]
-    A Mentés előtt kattintson az oldal elhagyása és train nem menti a módosításokat.
+    >[!CAUTION]
+    >Ha elhagyja a lapot kiválasztása előtt **mentéséhez és a vonat**, minden módosítása elveszik.
 
 ## <a name="add-a-qna-pair"></a>Kérdés-válasz pár hozzáadása
 
@@ -62,7 +57,7 @@ Válassza ki **hozzáadása kérdés-válasz párt** hozzáadása egy új sort a
 
 ## <a name="delete-a-qna-pair"></a>Egy kérdés-válasz párt törlése
 
-A QnA törléséhez kattintson a **törlése** ikonra a jobb szélen a QnA sor.
+A QnA törléséhez kattintson a **törlése** ikonra a jobb szélen a QnA sor. Ez a végleges művelet. Nem lehet visszavonni. Vegye figyelembe a Tudásbázissal való exportálása a **közzététel** lap párok törlése előtt. 
 
 ![Kérdés-válasz párt törlése](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
@@ -95,6 +90,10 @@ A szűrő ikon kiválasztásával metaadatok pár hozzáadása
 (KB) Tudásbázis törlése nem visszavonható művelet. Nem lehet visszavonni. Mielőtt törölné a Tudásbázis, exportálnia kell a Tudásbázis következő, a **beállítások** a QnA Maker portal oldalán. 
 
 Ha a KB, a megosztott [közreműködők](collaborate-knowledge-base.md) törölje azt, mindenki elveszítette a hozzáférését a KB. 
+
+## <a name="delete-azure-resources"></a>Azure-erőforrások törlése 
+
+Ha törli a QnA Maker tudásbázisok használt Azure-erőforrások, a tudásbázisok többé nem fognak működni. Összes erőforrás törlése, előtt győződjön meg arról, a tudásbázisok az Exportálás a **beállítások** lapot. 
 
 ## <a name="next-steps"></a>További lépések
 

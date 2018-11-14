@@ -9,19 +9,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/19/2018
 ms.author: rafats
-ms.openlocfilehash: cfd1160d1592c03eea94e3c4d04fdc5754eca671
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: ed97a2c31897d1e5e61421ea489a35af377f4f37
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42054734"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621445"
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Azure Cosmos DB-adatokhoz való hozzáférés biztonságossá tétele
 Ez a cikk áttekintést tárolt adatokhoz való hozzáférés biztonságossá tétele [a Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
 
 Az Azure Cosmos DB kétféle típusú kulcsok használatával hitelesítheti a felhasználókat, és adja meg az adatok és erőforrások elérését. 
 
-|Kulcstípus|További források|
+|Kulcs típusa|További források|
 |---|---|
 |[Mesterkulcs](#master-keys) |Felügyeleti erőforrásainak: adatbázis-fiókok, adatbázisok, felhasználók és engedélyek|
 |[Erőforrás-jogkivonatokat](#resource-tokens)|Alkalmazás erőforrásainak: tárolók, dokumentumok, a mellékleteket, tárolt eljárások, eseményindítók és felhasználói függvények|
@@ -40,7 +40,7 @@ Minden fiók két főkulcsok áll: egy elsődleges és másodlagos kulcsot. A ke
 
 A Cosmos DB-fiók két fő kulcsok kívül két csak olvasható kulcsok. A csak olvasható kulcsokat csak engedélyezze a fiókot az olvasási műveletek. Írásvédett kulcsok nem biztosítanak engedélyeket erőforrások olvasási hozzáférést.
 
-Elsődleges, másodlagos csak olvasható és írható-olvasható főkulcsok lekérhető és újragenerálta az Azure portal használatával. Útmutatásért lásd: [megtekintése, másolása és újragenerálása tárelérési kulcsok](manage-account.md#keys).
+Elsődleges, másodlagos csak olvasható és írható-olvasható főkulcsok lekérhető és újragenerálta az Azure portal használatával. Útmutatásért lásd: [megtekintése, másolása és újragenerálása tárelérési kulcsok](manage-with-cli.md#regenerate-account-key).
 
 ![Hozzáférés-vezérlés (IAM) bemutatására NoSQL adatbázis-biztonság – az Azure Portalon](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
 
@@ -196,5 +196,4 @@ Az Azure Cosmos DB lehetővé teszi, keresését, válassza ki, módosítani és
 
 ## <a name="next-steps"></a>További lépések
 * Cosmos DB-adatbázis biztonsági kapcsolatos további információkért lásd: [Cosmos DB: adatbázis-biztonság](database-security.md).
-* Fő és a csak olvasható kulcsok kezelésével kapcsolatos tudnivalókért lásd: [kezelése az Azure Cosmos DB-fiók](manage-account.md#keys).
 * Ismerje meg, hogyan hozhat létre Azure Cosmos DB engedélyezési jogkivonatok, lásd: [hozzáférés-vezérlés az Azure Cosmos DB-erőforrások](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources).

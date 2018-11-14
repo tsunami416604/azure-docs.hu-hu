@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f6f94f12fc0a639743f310638af0f0b6ac0d2932
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 51bdc228e27d643cfda75d1e21bc8ea45fe09e3c
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958151"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613290"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Naplóriasztások az Azure monitorban
-Ez a cikk ismerteti a riasztások részleteinek közé tartoznak a különböző típusú riasztások belül támogatott a [Azure Alerts](monitoring-overview-unified-alerts.md) és a felhasználó használhat az Azure elemzési platform alapjaként, mert így.
+Ez a cikk ismerteti a riasztások részleteinek közé tartoznak a különböző típusú riasztások belül támogatott a [Azure Alerts](monitoring-overview-alerts.md) és a felhasználó használhat az Azure elemzési platform alapjaként, mert így.
 
 Riasztás létre naplóbeli keresés szabályból áll [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) vagy [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events). A használattal kapcsolatos további információkért lásd: [riasztások létrehozása az Azure-ban](alert-log.md)
 
@@ -120,6 +120,6 @@ Naplóriasztásokra vonatkozó díjszabás érvényes van megadva a [Azure Monit
 ## <a name="next-steps"></a>További lépések
 * Ismerje meg [létrehozása a naplóriasztások az Azure-ban](alert-log.md).
 * Megismerheti [naplóriasztások az Azure-ban a webhookok](monitor-alerts-unified-log-webhook.md).
-* Ismerje meg [Azure-riasztások](monitoring-overview-unified-alerts.md).
+* Ismerje meg [Azure-riasztások](monitoring-overview-alerts.md).
 * Tudjon meg többet [Application Insights](../application-insights/app-insights-analytics.md).
 * Tudjon meg többet [Log Analytics](../log-analytics/log-analytics-queries.md).    

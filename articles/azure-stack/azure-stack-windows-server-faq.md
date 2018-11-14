@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: sethm
 ms.reviewer: avishwan
-ms.openlocfilehash: 91404f01a1a675ac59898336ef8aa81e1d2638b6
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: bf70f9a74b58758e03800d7f6fb92a8f8754828a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/13/2018
-ms.locfileid: "51579232"
+ms.locfileid: "51613095"
 ---
 # <a name="windows-server-in-azure-stack-marketplace-faq"></a>A Windows Server az Azure Stack piactéren – gyakori kérdések
 
@@ -38,7 +38,7 @@ Ezután ha bármely Virtual Machine Scale Sets egy meghatározott verzióra vona
 A Microsoft kínál a Windows Server-rendszerképeket az Azure Stack piactéren két verziója:
 
 - **Használja, a felhasznált**: ezek a lemezképek futtassa a teljes díj Windows mérőszámok. 
-   Ki kell használnia: nagyvállalati szerződéssel rendelkező ügyfeleink, akik a *Használatalapú számlázási modell*; CSP-k számára nem szeretne a SPLA-licenc.
+   Ki kell használnia: nagyvállalati szerződés (EA) használók a *Használatalapú számlázási modell*; CSP-k számára nem szeretne a SPLA-licenc.
 - **A saját licences (BYOL) használata**: ezek a lemezképek alapvető mérőszámok futtatni.
    Ki kell használnia: nagyvállalati szerződéssel rendelkező ügyfelek a Windows Server-licenc; CSP-k számára a SPLA-licenc.
 
@@ -52,7 +52,7 @@ A nem megfelelő verziójú először törölje Marketplace Management szolgált
 
 Lásd: [konvertálás Windows Serveres virtuális gépek vissza a használatalapú fizetés benefittel](../virtual-machines/windows/hybrid-use-benefit-licensing.md#powershell-1).
 
-### <a name="what-if-i-have-an-older-image-and-my-user-forgot-to-check-the-i-have-a-license-box-or-we-use-our-own-images-and-we-do-have-ea-entitlement"></a>Mi történik, ha van egy régebbi képet, és a felhasználó elfelejtette ellenőrizze "Rendelkezem egy licenc" mezőbe, vagy hogy használhat saját lemezképeket és a nagyvállalati szerződésre vonatkozó jogosultság van?
+### <a name="what-if-i-have-an-older-image-and-my-user-forgot-to-check-the-i-have-a-license-box-or-we-use-our-own-images-and-we-do-have-enterprise-agreement-entitlement"></a>Mi történik, ha van egy régebbi képet, és a felhasználó elfelejtette ellenőrizze "Rendelkezem egy licenc" mezőbe, vagy hogy használhat saját lemezképeket és a nagyvállalati szerződés jogosultság van?
 
 Lásd: [Azure Hybrid Benefit a Windows Server egy meglévő virtuális gép konvertálása](../virtual-machines/windows/hybrid-use-benefit-licensing.md#convert-an-existing-vm-using-azure-hybrid-benefit-for-windows-server). Vegye figyelembe, hogy az Azure Hybrid Benefit nem vonatkozik az Azure Stackhez, de ez a beállítás hatását a alkalmazni.
 
@@ -60,7 +60,7 @@ Lásd: [Azure Hybrid Benefit a Windows Server egy meglévő virtuális gép konv
 
 Ezek a lemezképek a alkalmazni a **licenseType** paramétert, így azok használatalapú használata. Beállíthatja, hogy ezt a paramétert (az előző gyakori kérdések között talál választ). Ez csak a Windows Server szoftverre, például az SQL, szintekre osztott termékekre, amelyek megkövetelik a saját licenc használata nem érvényes. Használatalapú licencelési használata nem vonatkozik a réteges szoftvertermékeire vonatkozik.
 
-### <a name="i-have-an-ea-and-i-create-my-own-images-how-do-i-make-sure-they-are-billed-correctly"></a>Nagyvállalati szerződéssel rendelkezem, és hozhatok létre saját lemezképek; Hogyan ellenőrizhetem, hogy azok megfelelően számlázása?
+### <a name="i-have-an-enterprise-agreement-ea-and-will-be-using-my-ea-windows-server-license-how-do-i-make-sure-images-are-billed-correctly"></a>Rendelkezem egy nagyvállalati szerződés (EA), és használja majd a nagyvállalati szerződéssel rendelkező Windows Server-licenc; Hogyan ellenőrizhetem, hogy képeket megfelelően számlázása?
 
 Hozzáadhat **licenseType: Windows_Server** egy Azure Resource Manager-sablonban. Ez a beállítás minden virtuális gép erőforrás-címblokkra hozzá kell adni.
 

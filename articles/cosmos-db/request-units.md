@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: rimman
-ms.openlocfilehash: eabfe503d9b92252ada0014eba4c83390dd6fd97
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 709cd16c7eee30dd2d88ea87b5f704ad20530ffb
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236075"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621343"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB-kérésegységeiről
 
@@ -53,7 +53,7 @@ Közben RU/s üzembe helyezni számának becslése, fontos, hogy a következő t
 ## <a name="next-steps"></a>További lépések
 
 * Tudjon meg többet [kiépítési átviteli sebesség a Cosmos DB-tárolók és adatbázisok](set-throughput.md)
-* Tudjon meg többet [logikai partíció](partition-data.md)
-* Tudjon meg többet [méretezés átviteli sebesség](scaling-throughput.md)
+* Tudjon meg többet [Llogical partíciók](partition-data.md)
+* Tudjon meg többet [globálisan méretezési kiosztott átviteli sebesség](scaling-throughput.md)
 * Ismerje meg, [átviteli sebességet egy Cosmos-tárolón kiépítése](how-to-provision-container-throughput.md)
 * Ismerje meg, [átviteli sebességet egy Cosmos-adatbázis kiépítése](how-to-provision-database-throughput.md)

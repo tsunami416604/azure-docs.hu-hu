@@ -12,26 +12,42 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/06/2017
+ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: a0f2cc0d76ef3c857bb7c13f46f1397f05b60977
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 40562c77cf38ad316d64f68b54dd4174dae6da1a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232443"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614472"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Az Azure WCF Relay REST oktatóanyag
-
 Ez az oktatóanyag azt ismerteti, hogyan hozhat létre egy egyszerű Azure Relay gazdaalkalmazást REST-alapú felületet. A REST lehetővé teszi egy webes ügyfél, például egy webes böngésző számára, hogy hozzáférjen a HTTP-kérelmeken keresztül a Service Bus alkalmazásprogramozási felületekhez.
 
 Az oktatóanyagban a Windows Communication Foundation (WCF) REST programozási modell segítségével az Azure Relay REST-szolgáltatás létrehozásához. További információt a WCF-dokumentáció [WCF REST Programming Model](/dotnet/framework/wcf/feature-details/wcf-web-http-programming-model) (WCF REST programozási modell) és [Designing and Implementing Services](/dotnet/framework/wcf/designing-and-implementing-services) (Szolgáltatások tervezése és megvalósítása) témakörében találhat.
 
-## <a name="step-1-create-a-namespace"></a>1. lépés: Névtér létrehozása
+Ebben az oktatóanyagban tegye a következőket:
+
+> [!div class="checklist"]
+> * Relay-névtér létrehozása.
+> * REST-alapú WCF szolgáltatási szerződés megadása
+> * A REST-alapú WCF szerződés megvalósítása
+> * A REST-alapú WCF szolgáltatás futtatására
+> * Futtassa, és tesztelheti a szolgáltatást
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
+
+- Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+- [Visual Studio 2015 vagy újabb](http://www.visualstudio.com). A jelen oktatóanyag példái a Visual Studio 2017-et használják.
+- Az Azure SDK for .NET csomaggal. Telepítse a [SDK letöltési oldaláról](https://azure.microsoft.com/downloads/).
+
+## <a name="create-a-relay-namespace"></a>Relay-névtér létrehozása
 
 A Relay-funkciók Azure-ban való használatához először létre kell hoznia egy szolgáltatásnévteret. A névtér egy hatókörkezelési tárolót biztosít az Azure erőforrásainak címzéséhez az alkalmazáson belül. Relay-névtér létrehozásához kövesse az [itt leírt utasításokat](relay-create-namespace-portal.md).
 
-## <a name="step-2-define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>2. lépés: Használata az Azure Relay REST-alapú WCF szolgáltatási szerződés megadása
+## <a name="define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>Az Azure Relay használata REST-alapú WCF szolgáltatási szerződés megadása
 
 Egy WCF REST-stílusú szolgáltatás létrehozásakor meg kell adni a szerződést. A szerződés megadja a gazdagép által támogatott műveleteket. A szolgáltatási művelet tekinthető webszolgáltatási módszernek. A szerződések a C++, a C# vagy a Visual Basic felület meghatározásával jönnek létre. A felület minden metódusa egy konkrét szolgáltatási műveletnek felel meg. A [ServiceContractAttriibute](/dotnet/api/system.servicemodel.servicecontractattribute) attribútumot minden felületre, az [OperationContractAttribaute](/dotnet/api/system.servicemodel.operationcontractattribute) attribútumot pedig minden műveletre alkalmazni kell. Ha egy felület egy metódusa rendelkezik a [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) attribútummal, de nem rendelkezik az [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) attribútummal, nem lesz közzétéve. A feladatokhoz használt kód megtalálható az eljárást követő példában.
 
@@ -136,7 +152,7 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-## <a name="step-3-implement-a-rest-based-wcf-service-contract-to-use-service-bus"></a>3. lépés: A Service Busszal használni kívánt REST-alapú WCF szolgáltatási szerződés megvalósítása
+## <a name="implement-the-rest-based-wcf-service-contract"></a>A REST-alapú WCF szolgáltatási szerződés megvalósítása
 WCF Relay REST-stílusú szolgáltatás létrehozásához először létre kell, hogy hoznia a szerződést, amelyet egy felület használatával. A következő lépés a felület megvalósítása. Ebbe beletartozik egy **ImageService** nevű osztály létrehozása, amely megvalósítja a felhasználó által megadott **IImageContract** felületet. A szerződés megvalósítása után egy App.config fájl segítségével konfigurálhatja a felületet. A konfigurációs fájl tartalmazza a szükséges információkat az alkalmazás, például a szolgáltatás nevét, a neve, a szerződés és a relay szolgáltatással folytatott kommunikációhoz használt protokoll típusát. A feladatokhoz használt kód megtalálható az eljárást követő példában.
 
 Csakúgy, mint az előző lépések során nagyon kicsi a különbség a REST-stílusú szerződés és a egy WCF-továbbító szerződés megvalósítása között van.
@@ -430,7 +446,7 @@ A következő példa a szolgáltatáshoz társított App.config fájlt mutatja b
 </configuration>
 ```
 
-## <a name="step-4-host-the-rest-based-wcf-service-to-use-azure-relay"></a>4. lépés: Az Azure Relay használata REST-alapú WCF szolgáltatás üzemeltetéséhez
+## <a name="host-the-rest-based-wcf-service-to-use-azure-relay"></a>Az Azure Relay használata REST-alapú WCF szolgáltatás üzemeltetéséhez
 Ebben a lépésben egy konzolalkalmazás használatával a WCF Relay egy webszolgáltatás futtatását ismerteti. Az ebben a lépésben írt kód teljes listája megtalálható az eljárást követő példában.
 
 ### <a name="to-create-a-base-address-for-the-service"></a>Alapszintű cím létrehozása a szolgáltatáshoz
@@ -476,7 +492,7 @@ Ebben a lépésben egy konzolalkalmazás használatával a WCF Relay egy webszol
     host.Close();
     ```
 
-## <a name="example"></a>Példa
+### <a name="example"></a>Példa
 Az alábbi példa tartalmazza a szolgáltatási szerződést és a megvalósítását az oktatóanyag előző lépéseiből, és egy konzolalkalmazásban működteti a szolgáltatást. Fordítsa le az alábbi kódot egy ImageListener.exe nevű végrehajtható fájlba.
 
 ```csharp
@@ -551,7 +567,7 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-### <a name="compiling-the-code"></a>A kód fordítása
+## <a name="run-and-test-the-service"></a>Futtassa, és tesztelheti a szolgáltatást
 A megoldás létrehozása után az alábbi lépéseket követve futtathatja az alkalmazást:
 
 1. A szolgáltatás futtatásához nyomja le az **F5** billentyűt, vagy lépjen a végrehajtható fájlhoz (ImageListener\bin\Debug\ImageListener.exe). Nem állítsa le az alkalmazás futását, mert szükség van rá a következő lépés elvégzéséhez.

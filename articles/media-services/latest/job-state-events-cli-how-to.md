@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: juliako
-ms.openlocfilehash: 84f8a45f4755eb478c7ec8074796a6f732800922
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 16f964c6f881777e0217979a329610902b29a87b
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564901"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612620"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Hozzon létre, és az Event GRID használatával az Azure CLI-vel a Media Services-események figyelése
 
@@ -24,12 +24,14 @@ Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a c
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív Azure-előfizetéssel rendelkezik.
+- Aktív Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt.
+- Telepítse és a parancssori Felületet helyileg használja, ez a cikk az Azure CLI 2.0-s vagy újabb verziójára van szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
+
+    Jelenleg nem minden [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) parancsok működnek az Azure Cloud shellben. Javasoljuk, hogy a parancssori Felületet helyileg használja.
+
 - [A Media Services-fiók létrehozása](create-account-cli-how-to.md).
 
     Ellenőrizze, hogy ne felejtse el az értékeket, amelyeket meg az erőforráscsoport-nevet és a Media Services-fiók neve.
-
-- Telepítse az [Azure CLI-t](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Ehhez a cikkhez az Azure CLI 2.0-ás vagy újabb verziója szükséges. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Használhatja az [Azure Cloud Shellt](https://shell.azure.com/bash) is.
 
 ## <a name="create-a-message-endpoint"></a>Üzenetvégpont létrehozása
 
@@ -45,19 +47,11 @@ Ha úgy vált, az "Azure Event Grid megjelenítő" helyhez, láthatja, az esemé
    
 [!INCLUDE [event-grid-register-provider-portal.md](../../../includes/event-grid-register-provider-portal.md)]
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
-
-Jelentkezzen be az [Azure Portalra](http://portal.azure.com), és indítsa el a **CloudShell** szolgáltatást a parancssori felületi parancsok végrehajtásához, ahogy az az alábbi lépésekben látható.
-
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
-
-Ha a CLI helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.0-ás vagy újabb verziójára lesz szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
-
 ## <a name="set-the-azure-subscription"></a>Az Azure-előfizetés beállítása
 
 Az alábbi parancsban adja meg a Media Services-fiókhoz használni kívánt Azure-előfizetés azonosítóját. Az [Előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) lapot megnyitva tekintheti meg az Ön által elérhető előfizetések listáját.
 
-```azurecli-interactive
+```azurecli
 az account set --subscription mySubscriptionId
 ```
 
@@ -69,7 +63,7 @@ Cserélje le `<event_subscription_name>` az esemény-feliratkozás egyedi nevér
 
 1. Az erőforrás-azonosító beszerzése
 
-    ```azurecli-interactive
+    ```azurecli
     amsResourceId=$(az ams account show --name <ams_account_name> --resource-group <resource_group_name> --query id --output tsv)
     ```
 
@@ -81,7 +75,7 @@ Cserélje le `<event_subscription_name>` az esemény-feliratkozás egyedi nevér
 
 2. Fizessen elő az események
 
-    ```azurecli-interactive
+    ```azurecli
     az eventgrid event-subscription create \
     --resource-id $amsResourceId \
     --name <event_subscription_name> \

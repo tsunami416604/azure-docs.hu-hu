@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: de24e8b308c6adf3f69caae4ab671f57fc2f6b8c
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 7d76827a4e4ba4ccb7a146c5f8282000d143eb35
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51565054"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624437"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>Azure VPN Gateway (előzetes verzió) OpenVPN ügyfelek konfigurálása
 
@@ -38,7 +38,7 @@ Győződjön meg arról, hogy végrehajtotta a OpenVPN konfigurálása a VPN-át
   openssl.exe pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
   ```
 6. Nyissa meg *profileinfo.txt* a Jegyzettömbben. Az ügyfél (gyermek) tanúsítvány ujjlenyomatának beszerzéséhez válassza ki a szöveget (köztük a és közötti) "----BEGIN CERTIFICATE---" és "----END tanúsítvány---" a gyermek tanúsítvány, és másolja azt. A gyermek tanúsítvány azonosíthatja a subject = megnézzük / sor.
-7. Váltson a *vpnconfig.ovpn* 3. lépésében a Jegyzettömbben megnyitott fájl. Keresse meg az alább látható csere mindent között "cert" és "/ cert".
+7. Váltson a *vpnconfig.ovpn* 3. lépésében a Jegyzettömbben megnyitott fájl. Az alább látható szakaszt keresés és csere mindent között "cert" és "/ cert".
 
   ```
   # P2S client certificate
@@ -119,7 +119,7 @@ Győződjön meg arról, hogy végrehajtotta a OpenVPN konfigurálása a VPN-át
 11. Csatlakozhat a parancssorból, írja be a következő parancsot:
   
   ```
-  Sudo openvpn –config <name and path of your VPN profile file>
+  sudo openvpn –-config <name and path of your VPN profile file>
   ```
 12. Csatlakozhat a grafikus felhasználói felülettel, nyissa meg a rendszer beállításait.
 13. Kattintson a **+** hozzáadása egy új VPN-kapcsolat.

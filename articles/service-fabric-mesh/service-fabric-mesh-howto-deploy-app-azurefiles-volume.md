@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/09/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3b350deff2883761af6a3a2b3c5c9ef22235bde0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: cb5b421c1bcfe888d65335f3ab7f67bed80eec34
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42055289"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614259"
 ---
 # <a name="store-state-in-an-azure-service-fabric-mesh-application-by-mounting-an-azure-files-based-volume-inside-the-container"></a>Az Azure Service Fabric-háló alkalmazások csatlakoztatja az Azure Files Store állapota alapján kötet tárolón belül
 
@@ -62,10 +62,10 @@ Az alkalmazás és a kapcsolódó erőforrások az alábbi paranccsal hozzon lé
 
 A `storageAccountKey` egy biztonságos karakterláncot paraméter a sablonban. Nem jelennek az üzembe helyezési állapot és `az mesh service show` parancsokat. Győződjön meg arról, hogy ezt helyesen van megadva a következő parancsban.
 
-A következő parancsot helyez üzembe egy Linux alkalmazás használja a [mesh_rp.linux.json sablon](https://sfmeshsamples.blob.core.windows.net/templates/counter/mesh_rp.linux.json). Windows-alkalmazás üzembe helyezése, használja a [mesh_rp.windows.json sablon](https://sfmeshsamples.blob.core.windows.net/templates/counter/mesh_rp.windows.json). Vegye figyelembe, hogy nagyobb tárolórendszerképek hosszabb időt vehet igénybe üzembe helyezéséhez.
+A következő parancsot helyez üzembe egy Linux alkalmazás használja a [counter.azurefilesvolume.linux.json sablon](https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.linux.json). Windows-alkalmazás üzembe helyezése, használja a [counter.azurefilesvolume.windows.json sablon](https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.windows.json). Vegye figyelembe, hogy nagyobb tárolórendszerképek hosszabb időt vehet igénybe üzembe helyezéséhez.
 
 ```azurecli-interactive
-az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/counter/mesh_rp.linux.json  --parameters "{\"location\": {\"value\": \"eastus\"}, \"fileShareName\": {\"value\": \"<fileShareName>\"}, \"storageAccountName\": {\"value\": \"<storageAccountName>\"}, \"storageAccountKey\": {\"value\": \"<storageAccountKey>\"}}"
+az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.linux.json  --parameters "{\"location\": {\"value\": \"eastus\"}, \"fileShareName\": {\"value\": \"<fileShareName>\"}, \"storageAccountName\": {\"value\": \"<storageAccountName>\"}, \"storageAccountKey\": {\"value\": \"<storageAccountKey>\"}}"
 ```
 
 Néhány perc alatt a parancs a kell visszaadnia `counterApp has been deployed successfully on counterAppNetwork with public ip address <IP Address>`
@@ -97,5 +97,5 @@ az group delete --resource-group myResourceGroup
 ## <a name="next-steps"></a>További lépések
 
 - Az Azure Files kötet mintaalkalmazás megtekintése [GitHub](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter).
-- Service Fabric Erőforrásmodell kapcsolatos további információkért lásd: [Service Fabric háló Erőforrásmodell](service-fabric-mesh-service-fabric-resources.md).
-- Service Fabric-háló kapcsolatos további információkért olvassa el a [Service Fabric-háló áttekintése](service-fabric-mesh-overview.md).
+- A Service Fabric-erőforrásmodellel kapcsolatos további tudnivalókért lásd a [Service Fabric Mesh-erőforrásmodellt](service-fabric-mesh-service-fabric-resources.md) bemutató cikket.
+- A Service Fabric Meshsel kapcsolatos további információkért olvassa el a [Service Fabric Mesh áttekintésével](service-fabric-mesh-overview.md) foglalkozó cikket.

@@ -13,38 +13,40 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 05/07/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 1e6ad35702b15090202278cfdead62b245040302
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 860d602ecba257ed9015d1e080e5dcb1aa5ab872
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309620"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624624"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Az Azure Active Directory reporting API használatának első lépései
 
-Az Azure Active Directory segítségével számos [jelentések](overview-reports.md). Ezen jelentések adatai nagyon hasznosak lehetnek az alkalmazások számára, például a SIEM rendszerekhez, a naplózáshoz és az üzleti intelligencia eszközökhöz. 
+Az Azure Active Directory segítségével számos [jelentések](overview-reports.md), hasznos információt alkalmazásokhoz, mint a SIEM rendszerekhez, naplózási és üzletiintelligencia-eszközök esetén. 
 
-Az Azure AD reporting API-t használ, a REST-alapú API-kon keresztül az adatok programozott hozzáférést kaphatnak. Különböző programnyelvekkel és eszközökkel hívhatja ezeket az API-kat.
+A Microsoft Graph API használatával az Azure AD-jelentések, a REST-alapú API-kon keresztül az adatok programozott hozzáférést kaphatnak. Különböző programnyelvekkel és eszközökkel hívhatja ezeket az API-kat.
 
-Ez a cikk biztosít egy ütemtervet a kapcsolódó API-val a jelentési adatok eléréséhez.
+Ez a cikk a jelentéskészítési API-– többek közt az eléréséhez áttekintést nyújt.
 
 Ha problémákat tapasztal, tekintse meg [hogyan kérhet támogatást az Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto).
 
-Ez a cikk az Azure AD Graph API-ra vonatkozik.  Hasonló a Microsoft Graph API-val kapcsolatos információk: [directoryAudit erőforrástípus](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/directoryaudit).
-
 ## <a name="prerequisites"></a>Előfeltételek
 
-A jelentéskészítő API eléréséhez, akkor is, ha azt tervezi, a parancsfájl használatával az API elérése, kell tennie:
+A jelentéskészítő API- vagy felhasználói beavatkozás nélkül, el kell tennie:
 
 1. (Biztonsági olvasó, biztonsági rendszergazdai, globális rendszergazdaként) szerepkörök hozzárendelése
 2. Egy alkalmazás regisztrálása
 3. Engedélyek megadása
 4. Konfigurációs beállítások összegyűjtése
 
-Részletes útmutatásért lásd: a [az Azure Active Directory reporting API elérésének előfeltételeit](howto-configure-prerequisites-for-reporting-api.md).
+Részletes útmutatásért lásd: a [az Azure Active Directory reporting API elérésének előfeltételeit](howto-configure-prerequisites-for-reporting-api.md). 
+
+## <a name="api-endpoints"></a>API-végpontok 
+
+A Microsoft Graph API-végpont az auditnaplókhoz `https://graph.microsoft.com/beta/auditLogs/directoryAudits` és a Microsoft Graph API-végpont a bejelentkezések `https://graph.microsoft.com/beta/auditLogs/signIns`. További információkért lásd: a [naplózási API-referencia](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) és [be API-referencia](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn).
 
 ## <a name="apis-with-graph-explorer"></a>A Graph Explorer API-k
 
@@ -60,11 +62,10 @@ Az Azure AD Reporting API használata tanúsítványok, ha azt tervezi, hogy a j
 
 Részletes útmutatásért lásd: [adatok lekérése az Azure AD Reporting API és tanúsítványok használatával](tutorial-access-api-with-certificates.md).
 
-
 ## <a name="next-steps"></a>További lépések
 
- * [Naplózási referencia API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
- * [Bejelentkezési tevékenységek jelentésének API-referencia](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+ * [A reporting API elérésének előfeltételeit](howto-configure-prerequisites-for-reporting-api.md) 
+ * [Adatok lekérése az Azure AD Reporting API és tanúsítványok használatával](tutorial-access-api-with-certificates.md)
  * [Az Azure AD reporting API hibáinak elhárítása](troubleshoot-graph-api.md)
 
 

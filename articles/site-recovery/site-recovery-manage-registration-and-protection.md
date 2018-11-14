@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: da9319934068709d5635352fdbd52c3ca6ac49be
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: d7dcf27e106f73c828c2c46d4d7180b1f906e4d8
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568886"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614854"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Kiszolgálók eltávolítása és a védelem letiltása
 
@@ -51,7 +51,7 @@ Hyper-V gazdagépeket nem VMM által felügyelt Hyper-V hely vannak összegyűjt
 5. A Hyper-V-gazdagép nem található egy **leválasztott** állapot, majd futtassa az alábbi parancsfájlt minden Hyper-V gazdagépen, amely az eltávolítani kívánt. A parancsfájl törli a beállításokat a kiszolgálón, és megszünteti azt a tárolóból.
 
 
-
+```powershell
         pushd .
         try
         {
@@ -112,7 +112,7 @@ Hyper-V gazdagépeket nem VMM által felügyelt Hyper-V hely vannak összegyűjt
                 "Registry keys removed."
             }
 
-            # First retrive all the certificates to be deleted
+            # First retrieve all the certificates to be deleted
             $ASRcerts = Get-ChildItem -Path cert:\localmachine\my | where-object {$_.friendlyname.startswith('ASR_SRSAUTH_CERT_KEY_CONTAINER') -or $_.friendlyname.startswith('ASR_HYPER_V_HOST_CERT_KEY_CONTAINER')}
             # Open a cert store object
             $store = New-Object System.Security.Cryptography.X509Certificates.X509Store("My","LocalMachine")
@@ -131,7 +131,7 @@ Hyper-V gazdagépeket nem VMM által felügyelt Hyper-V hely vannak összegyűjt
             Write-Host "FAILED" -ForegroundColor "Red"
         }
         popd
-
+```
 
 
 ## <a name="disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure"></a>Tiltsa le a védelmet egy VMware virtuális gép vagy fizikai kiszolgáló (VMware – Azure)
@@ -158,10 +158,12 @@ Hyper-V gazdagépeket nem VMM által felügyelt Hyper-V hely vannak összegyűjt
     > Ha úgy döntött a **eltávolítása** lehetőséget, majd futtassa a következő parancsfájlok a replikációs beállításokat a helyszíni Hyper-V kiszolgálón.
 1. A forrás Hyper-V gazdakiszolgálón, távolítsa el a virtuális gép replikációját. SQLVM1 cserélje le a virtuális gép nevét, és futtassa a parancsfájlt egy felügyeleti PowerShell
 
-
-    
-    $vmName = "SQLVM1" $vm = Get-WmiObject – Namespace "root\virtualization\v2"-lekérdezés "válassza * Msvm_ComputerSystem a ahol ElementName"$vmName"=" $replicationService = Get-WmiObject – Namespace "root\virtualization\v2"-"kiválasztása * a Msvm_ lekérdezése ReplicationService"$replicationService.RemoveReplicationRelationship($vm.__PATH)
-    
+```powershell
+    $vmName = "SQLVM1"
+    $vm = Get-WmiObject -Namespace "root\virtualization\v2" -Query "Select * From Msvm_ComputerSystem Where ElementName = '$vmName'"
+    $replicationService = Get-WmiObject -Namespace "root\virtualization\v2"  -Query "Select * From Msvm_ReplicationService"
+    $replicationService.RemoveReplicationRelationship($vm.__PATH)
+```
 
 ## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario"></a>Tiltsa le a védelmet egy Hyper-V virtuális gép replikálása az Azure-ban a System Center VMM – Azure forgatókönyvére
 
@@ -179,11 +181,14 @@ Hyper-V gazdagépeket nem VMM által felügyelt Hyper-V hely vannak összegyűjt
         Set-SCVirtualMachine -VM $vm -ClearDRProtection
 4. A fenti lépések törölje a jelet a replikációs beállításokat a VMM-kiszolgálón. A Hyper-V gazdakiszolgálón futó virtuális gép replikálása leállításához futtassa ezt a szkriptet. SQLVM1 cserélje le a virtuális gépet, és host01.contoso.com nevére a Hyper-V gazdakiszolgáló nevét.
 
-    
-    $vmName = "SQLVM1" $hostName "host01.contoso.com" $vm = "root\virtualization\v2" Get-WmiObject – Namespace =-lekérdezés "válassza * Msvm_ComputerSystem a ahol ElementName"$vmName"=" - computername $hostName $replicationService = Get-WmiObject – Namespace "root\virtualization\v2"-"Kiválasztása * a Msvm_ReplicationService" - computername $hostName $replicationService.RemoveReplicationRelationship($vm.__PATH) lekérdezése
-    
-       
- 
+```powershell
+    $vmName = "SQLVM1"
+    $hostName  = "host01.contoso.com"
+    $vm = Get-WmiObject -Namespace "root\virtualization\v2" -Query "Select * From Msvm_ComputerSystem Where ElementName = '$vmName'" -computername $hostName
+    $replicationService = Get-WmiObject -Namespace "root\virtualization\v2"  -Query "Select * From Msvm_ReplicationService"  -computername $hostName
+    $replicationService.RemoveReplicationRelationship($vm.__PATH)
+```
+
 ## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-secondary-vmm-server-using-the-system-center-vmm-to-vmm-scenario"></a>Tiltsa le a védelmet egy Hyper-V virtuális gép replikálását a másodlagos VMM-kiszolgálón a System Center VMM a VMM-forgatókönyvet
 
 1. A **védett elemek** > **replikált elemek**, kattintson a jobb gombbal a gépre > **tiltsa le a replikációt**.

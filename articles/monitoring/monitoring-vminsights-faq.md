@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2018
+ms.date: 11/08/2018
 ms.author: magoedte
-ms.openlocfilehash: ff870f948acaae14ba772e14d48b27683f0bf07e
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 7d65752787e65eeabf203f9bdc3ea11a1569f8a1
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091691"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613375"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Gyakori kérdések az Azure Monitor-beli virtuális gépek (előzetes verzió)
 A Microsoft FAQ az összetevővel kapcsolatos gyakori kérdésekre az Azure Monitor-beli virtuális gépek listája. Ha a megoldásról a további kérdése van, lépjen a [fórum](https://feedback.azure.com/forums/34192--general-feedback) és felteheti kérdéseit. Egy kérdést gyakran ismételt, amikor hozzáadjuk ehhez a cikkhez, hogy gyorsan és könnyen megtalálhatók.
@@ -93,6 +93,11 @@ Fejlesztéseket hajtottunk végre térképhez nagy és összetett konfiguráció
 ## <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Miért nem a hálózati diagram a Teljesítmény lapon máshogy néznek ki, mint a hálózati diagram az Azure virtuális gépek – Áttekintés oldalon?
 
 Az Áttekintés oldal egy Azure virtuális gép a gazdagép mérési tevékenység a Vendég virtuális Gépen alapuló diagramot jelenít meg.  A hálózati diagram az Azure virtuális gépek áttekintése a hálózati forgalom, számlázunk csak megjeleníti.  Ez nem tartalmazza a virtuális hálózatok közötti forgalmat.  Az adatok és a virtuális gépek az Azure Monitor látható diagramokat adatait a Vendég virtuális Gépen alapul, és a hálózati diagram, amely a virtuális Gépre, beleértve a virtuális hálózatok közötti kimenő és bejövő összes TCP/IP-forgalmat jeleníti meg.
+
+## <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>A korlátozás, ha a Log Analytics ingyenes díjszabással vagyok?
+Ha már konfigurálta az Azure Monitor egy Log Analytics munkaterület használatával a *ingyenes* tarifacsomagban van, az Azure Monitor tartozó virtuális gépek térkép funkció csak öt csatlakoztatott gépek támogatni fogja a munkaterülethez csatlakozik. Ha rendelkezik egy ingyenes munkaterülethez csatlakoztatott öt virtuális gépek, válassza le a virtuális gépek közül, és később fogja összekapcsolni egy új virtuális Gépet, az új virtuális gép nem felügyelt és a térkép oldalon megjelennek.  
+
+Ez a feltétel alapján meg kell adnia a a **próbálja ki most** beállítást, nyissa meg a virtuális Gépet, majd válassza **Insights (előzetes verzió)** a bal oldali panelen, még akkor is, miután a virtuális gépen már telepítették.  Azonban nem kéri a beállításokkal, akkor általában fordulhat elő, ha a virtuális gép nem lett előkészítve az Azure Monitor-beli virtuális gépek. 
 
 ## <a name="next-steps"></a>További lépések
 Felülvizsgálat [előkészítése az Azure Monitor-beli virtuális gépek](monitoring-vminsights-onboard.md) követelmények és módszerek ahhoz, hogy a virtuális gépek figyelése.

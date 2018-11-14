@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 0c22072d0eaa328fdf786421344e8ef2caaa575c
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 31ce23bf6249ef21a2c9fe515b78cdd6ebea9b9c
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515658"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614379"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Az Azure App Service web Apps-alkalmazások diagnosztikai célú naplózásának engedélyezése
 ## <a name="overview"></a>Áttekintés
@@ -73,16 +73,16 @@ Alapértelmezés szerint naplók nem törlődnek automatikusan (kivéve a **Appl
 > Ha Ön [a tárfiók hozzáférési kulcsainak újragenerálása](../storage/common/storage-create-storage-account.md), alaphelyzetbe kell állítania a megfelelő naplózási konfiguráció frissített kulcsok használatához. Ehhez tegye a következőket:
 >
 > 1. Az a **konfigurálása** lapon, a megfelelő naplózási szolgáltatás beállítása **ki**. A beállítás mentéséhez.
-> 2. Engedélyezze a naplózást a naplótárolásifiók-blob vagy table újra. A beállítás mentéséhez.
+> 2. Engedélyezze a naplózást, a storage-fiók blob újra. A beállítás mentéséhez.
 >
 >
 
-Fájlrendszer, a table storage vagy a blob storage bármilyen kombinációját is engedélyezhető egyszerre, és az egyes naplózási szintekhez rendelkezik. Például érdemes a hibák és figyelmeztetések naplózása hosszú távú megoldás, miközben a rendszer naplózását részletes szintű blob storage-bA.
+A file system vagy a blob storage bármilyen kombinációját is engedélyezhető egyszerre, és egyes naplózási szintekhez rendelkezik. Például érdemes a hibák és figyelmeztetések naplózása hosszú távú megoldás, miközben a rendszer naplózását részletes szintű blob storage-bA.
 
-Habár minden három tárolási helyek naplózott eseményeket, ugyanazokat az alapvető információkat biztosít **táblatároló** és **a blob storage-** további információk, például a példány Azonosítóját, a hozzászóláslánc azonosítója és a egy egyéb naplózása részletes timestamp (osztásjelek formátum), mint a naplózás **fájlrendszer**.
+Mindkét tárolási helyek naplózott események az ugyanazon alapvető adatok megadása közben **a blob storage-** naplózza a további információk, például a Példányazonosító Szálazonosító és részletesebb időbélyeg (osztásjelek formátum), mint a naplózást, és **fájlrendszer**.
 
 > [!NOTE]
-> A tárolt adatok **táblatároló** vagy **a blob storage-** csak érhetők el a storage-kliens vagy olyan alkalmazás, amely közvetlenül is dolgozhat a tárolórendszerek használatával. Például a Visual Studio 2013 tartalmaz, amelyek segítségével ismerje meg a tábla- vagy blob storage a Storage Explorer, és a HDInsight érhessék el az a blob storage-ban tárolt adatokat. Egy alkalmazás, amely hozzáfér az Azure Storage egyikének használatával is kiírhatja a [Azure SDK-k](https://azure.microsoft.com/downloads/).
+> A tárolt adatok **a blob storage-** csak érhetők el a storage-kliens vagy olyan alkalmazás, amely közvetlenül is dolgozhat a tárolórendszerek használatával. Például a Visual Studio 2013 tartalmaz, amelyek segítségével ismerje meg a blob storage a Storage Explorer, és a HDInsight érhessék el az a blob storage-ban tárolt adatokat. Egy alkalmazás, amely hozzáfér az Azure Storage egyikének használatával is kiírhatja a [Azure SDK-k](https://azure.microsoft.com/downloads/).
 >
 
 ## <a name="download"></a> Hogyan: naplók letöltése
@@ -159,7 +159,7 @@ Szűrés konkrét naplófájlokból típusok, például a HTTP, használja a **�
 
 ## <a name="understandlogs"></a> Hogyan: megismerheti a diagnosztikai naplók
 ### <a name="application-diagnostics-logs"></a>Application diagnostics-naplók
-Az Application diagnostics adatait tárolja egy megadott formátumban, a .NET-alkalmazásokban, attól függően, hogy naplókat a fájlrendszer, a table storage vagy a blob storage tárolja. Az Alap az adatkészlethez tartozó tárolt összes három tárolási típusok közötti – a dátum és idő az esemény történt, a Folyamatazonosítója, amely az eseményt, az esemény típusa (információk, figyelmeztetés, hiba) és az eseményüzenet előállított kérelemegysége megegyezik.
+Az Application diagnostics adatait tárolja egy megadott formátumban, a .NET-alkalmazásokban, attól függően, hogy naplókat a file system vagy a blob Storage tárolja. Az Alap az adatkészlethez tartozó tárolt összes három tárolási típusok közötti – a dátum és idő az esemény történt, a Folyamatazonosítója, amely az eseményt, az esemény típusa (információk, figyelmeztetés, hiba) és az eseményüzenet előállított kérelemegysége megegyezik.
 
 **Fájlrendszer**
 
@@ -173,27 +173,9 @@ Ha például egy hibaesemény a következőképpen fog a következő mintához h
 
 A fájlrendszer naplózás legalapvetőbb információkat talál a három elérhető módszerek, csak az idő, Folyamatazonosító, Eseményszint, és üzenet megadása.
 
-**Table Storage**
-
-Ha jelentkezik a table storage, a további tulajdonságok médiatár a tábla, valamint az esemény részletesebb tájékoztatást a tárolt adatok használhatók. Minden entitás (sor), a táblában tárolt szolgálnak a következő tulajdonságok (oszlop).
-
-| Tulajdonság neve | / Formátumban |
-| --- | --- |
-| PartitionKey |Az esemény yyyyMMddHH formátumú dátum/idő |
-| RowKey |Egy GUID azonosítót, amely egyedileg azonosítja az entitást |
-| Időbélyeg |A dátum és időpont, amikor az esemény történt |
-| EventTickCount |A dátum és időpont, amikor az esemény történt, osztásjelek formátumban (nagyobb pontosság) |
-| Alkalmazásnév |A webalkalmazás neve |
-| Szint |Eseményszint (például hiba, figyelmeztetés, információ) |
-| EventId |Ez az esemény esemény azonosítója<p><p>Az alapértelmezett érték 0, ha nincs megadva |
-| Példány azonosítója |A webalkalmazás, amely a még akkor is történt a példány |
-| Folyamatazonosító |Folyamat azonosítója |
-| TID |Az esemény előállított szál hozzászóláslánc azonosítója |
-| Üzenet |Eseménynapló-üzenet részletei |
-
 **Blob Storage**
 
-Blob storage-ba történő bejelentkezéskor adatok vesszővel elválasztott értékeket (CSV) formátum van tárolva. Hasonló a table storage, további mezőket a rendszer naplózza az esemény kapcsolatos részletesebb információkat biztosít. A következő tulajdonságokat a fürt megosztott kötetei szolgáltatás minden egyes sorára használhatók:
+Blob storage-ba történő bejelentkezéskor adatok vesszővel elválasztott értékeket (CSV) formátum van tárolva. További mezők naplózza az esemény kapcsolatos részletesebb információkat biztosít. A következő tulajdonságokat a fürt megosztott kötetei szolgáltatás minden egyes sorára használhatók:
 
 | Tulajdonság neve | / Formátumban |
 | --- | --- |

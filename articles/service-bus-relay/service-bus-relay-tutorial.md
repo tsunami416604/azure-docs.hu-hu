@@ -1,5 +1,5 @@
 ---
-title: Az Azure Service Bus WCF Relay-oktatóanyaga |} A Microsoft Docs
+title: Egy helyszíni WCF REST-szolgáltatás a külső ügyfél Azure WCF Relay használatával teszik közzé |} A Microsoft Docs
 description: WCF Relay használatával ügyfél és a szolgáltatás-alkalmazás létrehozása.
 services: service-bus-relay
 documentationcenter: na
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/02/2017
+ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 9c76e535fe0585ec6ff08a0c9dcab700d8eb5424
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6927788fa79c567222a199064f5b375546ecf9ad
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262012"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615476"
 ---
-# <a name="azure-wcf-relay-tutorial"></a>Az Azure WCF Relay-oktatóanyag
+# <a name="expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Egy helyszíni WCF REST-szolgáltatás a külső ügyfél Azure WCF Relay használatával teszik közzé
 
 Ez az oktatóanyag leírja, hogyan hozhat létre egy egyszerű WCF-továbbító ügyfél és a szolgáltatás az Azure Relay használatával. Egy alkalmazó hasonló oktatóanyagért [Service Bus-üzenetkezelés](../service-bus-messaging/service-bus-messaging-overview.md), lásd: [Ismerkedés a Service Bus-üzenetsorok](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 
@@ -31,19 +31,32 @@ Miután a végére ért az oktatóanyag témaköreinek, rendelkezni fog egy fut�
 
 Az utolsó három lépés azt írja le, hogy hogyan hozhat létre egy ügyfélalkalmazást, hogyan konfigurálhatja azt, valamint hogyan hozhat létre és használhat olyan ügyfélalkalmazásokat, amelyek hozzáférnek a gazdagép funkcióihoz.
 
+Ebben az oktatóanyagban tegye a következőket:
+
+> [!div class="checklist"]
+> * Relay-névtér létrehozása.
+> * Hozzon létre egy WCF szolgáltatási szerződés
+> * A WCF szerződés megvalósítása
+> * A WCF-szolgáltatást szeretne regisztrálni a továbbítási szolgáltatás futtatására
+> * WCF-ügyfél létrehozása a szolgáltatási szerződéshez
+> * A WCF-ügyfél konfigurálása
+> * A WCF-ügyfél megvalósítása
+> * Az alkalmazások futtatásához. 
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag teljesítéséhez az alábbiakra lesz szüksége:
+Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
 
-* [Microsoft Visual Studio 2015 vagy újabb](https://visualstudio.com). Ez az oktatóanyag a Visual Studio 2017-et használja.
-* Aktív Azure-fiók. Ha még nincs fiókja, néhány perc alatt létrehozhat egy ingyenes fiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/).
+- Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+- [Visual Studio 2015 vagy újabb](http://www.visualstudio.com). A jelen oktatóanyag példái a Visual Studio 2017-et használják.
+- Az Azure SDK for .NET csomaggal. Telepítse a [SDK letöltési oldaláról](https://azure.microsoft.com/downloads/).
 
-## <a name="create-a-service-namespace"></a>Szolgáltatásnévtér létrehozása
+## <a name="create-a-relay-namespace"></a>Relay-névtér létrehozása
+Az első lépés, hogy hozzon létre egy névteret, valamint beszerzése egy [közös hozzáférésű Jogosultságkód (SAS)](../service-bus-messaging/service-bus-sas.md) kulcsot. A névtér egy alkalmazáshatárt biztosít a továbbítási szolgáltatás keresztül közzétett minden alkalmazáshoz. A SAS-kulcsot a rendszer automatikusan előállítja a szolgáltatásnévtér létrehozásakor. Szolgáltatásnévtér és SAS-kulcs együttes használata hitelesítő adatokat hitelesíti a hozzáférést egy alkalmazáshoz, hogy az Azure biztosít.
 
-Az első lépés, hogy hozzon létre egy névteret, valamint beszerzése egy [közös hozzáférésű Jogosultságkód (SAS)](../service-bus-messaging/service-bus-sas.md) kulcsot. A névtér egy alkalmazáshatárt biztosít a továbbítási szolgáltatás keresztül közzétett minden alkalmazáshoz. A SAS-kulcsot a rendszer automatikusan előállítja a szolgáltatásnévtér létrehozásakor. Szolgáltatásnévtér és SAS-kulcs együttes használata hitelesítő adatokat hitelesíti a hozzáférést egy alkalmazáshoz, hogy az Azure biztosít. Relay-névtér létrehozásához kövesse az [itt leírt utasításokat](relay-create-namespace-portal.md).
+[!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
 ## <a name="define-a-wcf-service-contract"></a>A WCF szolgáltatási szerződés megadása
-
 A szolgáltatási szerződés Megadja, milyen műveleteket (webszolgáltatás-terminológia a metódusokhoz és függvényeket) a szolgáltatás támogatja. A szerződések a C++, a C# vagy a Visual Basic felület meghatározásával jönnek létre. A felület minden metódusa egy konkrét szolgáltatási műveletnek felel meg. A [ServiceContractAttriibute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) attribútumot minden felületre, az [OperationContractAttribaute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) attribútumot pedig minden műveletre alkalmazni kell. Ha egy felület egy metódusa rendelkezik a [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) attribútummal, de nem rendelkezik az [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) attribútummal, nem lesz közzétéve. A feladatok kódja megtalálható az eljárást követő példában. A szerződések és szolgáltatások részletesebb leírása a WCF-dokumentáció [Designing and Implementing Services](https://msdn.microsoft.com/library/ms729746.aspx) (Szolgáltatások tervezése és megvalósítása) témakörében található.
 
 ### <a name="create-a-relay-contract-with-an-interface"></a>A relay-szerződés létrehozása felülettel
@@ -51,13 +64,13 @@ A szolgáltatási szerződés Megadja, milyen műveleteket (webszolgáltatás-te
 1. Nyissa meg a Visual Studiót rendszergazdaként. Ehhez a **Start** menüben kattintson a jobb gombbal a programra, majd válassza a **Futtatás rendszergazdaként** parancsot.
 2. Hozzon létre új egy új konzolalkalmazás-projektet. Kattintson a **File** (Fájl) menüre, és válassza a **New** (Új), majd a **Project** (Projekt) elemet. A **New Project** (Új projekt) párbeszédpanelen kattintson a **Visual C#** elemre (ha a **Visual C#** nem jelenik meg, keresse meg az **Other Languages** (Más nyelvek) területen). Kattintson a **Console App (.NET Framework)** sablont, és adja neki **EchoService**. A projekt létrehozásához kattintson az **OK** gombra.
 
-    ![][2]
+    ![Konzolalkalmazás létrehozása][2]
 
 3. Telepítse a Service Bus NuGet-csomagot. Ez a csomag automatikusan hivatkozásokat ad a Service Bus-könyvtárakhoz, valamint a WCF **System.ServiceModel** névtérhez. A [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) az a névtér, amely lehetővé teszi a programozott hozzáférést a WCF alapszintű szolgáltatásaihoz. A Service Bus számos WCF-objektumot és -attribútumot használ a szolgáltatási szerződések meghatározására.
 
     A Megoldáskezelőben kattintson a jobb gombbal a projektre, és kattintson **NuGet-csomagok kezelése...** . Kattintson a Browse (Tallózás) lapra, és keressen rá a következőre: **WindowsAzure.ServiceBus**. Ügyeljen arra, hogy a projekt neve ki legyen jelölve a **Version(s)** (Verzió(k)) mezőben. Kattintson az **Install** (Telepítés) gombra, és fogadja el a használati feltételeket.
 
-    ![][3]
+    ![A Service Bus-csomag][3]
 4. A Solution Explorerben (Megoldáskezelőben) kattintson duplán a Program.cs fájlra a szerkesztőben való megnyitásához, ha még nincs megnyitva.
 5. Adja hozzá a következő using utasításokat a fájl elejéhez:
 
@@ -231,7 +244,7 @@ A következő kód a szolgáltatásgazdához társított App.config fájl alapsz
 </configuration>
 ```
 
-## <a name="host-and-run-a-basic-web-service-to-register-with-the-relay-service"></a>Egy alapszintű webszolgáltatás szeretne regisztrálni a továbbítási szolgáltatás futtatására
+## <a name="host-and-run-the-wcf-service-to-register-with-the-relay-service"></a>A WCF-szolgáltatást szeretne regisztrálni a továbbítási szolgáltatás futtatására
 
 Ebben a lépésben azt ismerteti, hogyan futtathat egy Azure Relay szolgáltatás.
 
@@ -501,7 +514,7 @@ Ebben a lépésben létrehozza az App.config fájlt egy alapszintű ügyfélalka
     Ebben a lépésben a végpontot, a szolgáltatás, valamint azt, hogy az ügyfélalkalmazás TCP kommunikálni az Azure Relay meghatározott szerződést nevét adja meg. A következő lépés a végpont neve használatával ezt a végpont-konfigurációt összekapcsolja a szolgáltatás URI-jával.
 5. Kattintson a **fájl**, majd kattintson a **összes mentése**.
 
-## <a name="example"></a>Példa
+### <a name="example"></a>Példa
 
 A következő kód az Echo ügyfél App.config fájlját mutatja.
 
@@ -607,7 +620,7 @@ Azonban a főbb különbségek egyike, hogy az ügyfélalkalmazás egy csatorna 
     channelFactory.Close();
     ```
 
-## <a name="example"></a>Példa
+### <a name="example"></a>Példa
 
 A befejezett kód kell a következőképpen jelenik meg, hogyan hozhat létre egy ügyfélalkalmazást, hogyan hívhat meg a szolgáltatás a műveletek és az ügyfél bezárása után a művelet meghívásának befejeződött.
 
@@ -714,13 +727,10 @@ namespace Microsoft.ServiceBus.Samples
 12. Ezzel a módszerrel folytathatja szöveges üzenetek küldését az ügyfélről a szolgáltatásba. Ha kész van, a két alkalmazás befejezéséhez nyomja le az Enter billentyűt az ügyfél és a szolgáltatás konzolablakában is.
 
 ## <a name="next-steps"></a>További lépések
+Folytassa a következő oktatóanyaggal: 
 
-Ez az oktatóanyag bemutatta, hogyan hozhat létre egy Azure Relay-ügyfelet, és szolgáltatást a Service Bus WCF Relay képességeit. Egy alkalmazó hasonló oktatóanyagért [Service Bus-üzenetkezelés](../service-bus-messaging/service-bus-messaging-overview.md), lásd: [Ismerkedés a Service Bus-üzenetsorok](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
-
-Az Azure Relay kapcsolatos további információkért tekintse meg a következő témaköröket.
-
-* [Az Azure Relay áttekintése](relay-what-is-it.md)
-* [A WCF relay szolgáltatás használata .NET-tel](relay-wcf-dotnet-get-started.md)
+> [!div class="nextstepaction"]
+>[Egy helyszíni WCF REST szolgáltatás egy ügyfél a hálózaton kívülről elérhetővé](service-bus-relay-rest-tutorial.md)
 
 [2]: ./media/service-bus-relay-tutorial/create-console-app.png
 [3]: ./media/service-bus-relay-tutorial/install-nuget.png

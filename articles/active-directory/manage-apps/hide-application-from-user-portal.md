@@ -2,65 +2,57 @@
 title: Alkalmazás elrejtése a felhasználói élmény az Azure Active Directoryban |} A Microsoft Docs
 description: Alkalmazás elrejtése a felhasználói élmény az Azure Active Directory hozzáférési paneljein vagy Office 365 kilövők módja.
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/04/2018
+ms.date: 11/12/2018
 ms.author: barbkess
-ms.reviewer: asteen
-ms.custom: it-pro
-ms.openlocfilehash: 55f80396df4cbfe7d0a16a6a5066b68aadc0bdd3
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.reviewer: kasimpso
+ms.openlocfilehash: f1203b4381055deca79a70e8d295e072feaf492a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39369344"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613576"
 ---
-# <a name="hide-an-application-from-users-experience-in-azure-active-directory"></a>Alkalmazás elrejtése a felhasználói élmény az Azure Active Directoryban
+# <a name="hide-applications-from-end-users-in-azure-active-directory"></a>A végfelhasználók számára az Azure Active Directoryban alkalmazások elrejtése
 
-Ha egy alkalmazás, amelyeket nem kíván megjeleníteni a felhasználók hozzáférési paneljein vagy Office 365 kilövők, lehetőség van az alkalmazás csempéjére elrejtéséhez.  A felhasználó alkalmazás kilövők alkalmazások elrejtése a következő két lehetőség érhetők el.
+Útmutató az alkalmazások végfelhasználók MyApps panelről vagy az Office 365 indítója elrejtése. Amikor egy alkalmazás rejtve marad, a felhasználók továbbra is fennáll az alkalmazásnak. 
 
-- Egy külső alkalmazás a felhasználók hozzáférési paneljein és az Office 365 alkalmazás kilövők elrejtése
-- Minden Office 365-alkalmazások a felhasználók hozzáférési paneljein elrejtése
+## <a name="prerequisites"></a>Előfeltételek
 
-Elrejti a az alkalmazás felhasználóinak továbbra is engedélye arra, hogy az alkalmazás, de nem látják őket az alkalmazás kilövők jelennek meg. A vállalati alkalmazások kezelésére a megfelelő engedélyekkel kell rendelkeznie, és a címtár globális rendszergazdának kell lennie.
+Alkalmazás elrejtése a MyApps panelen és az Office 365 indítója a alkalmazás rendszergazdai jogosultság szükséges.
+
+Globális rendszergazdai jogosultság szükséges összes Office 365-alkalmazások elrejtése.
 
 
-## <a name="hiding-an-application-from-users-end-user-experiences"></a>Az alkalmazás a felhasználó végfelhasználói élményt elrejtése
-Az alábbi lépéseket, használhatja a helyzettől függően a hozzáférési panelen alkalmazások elrejtése.
+## <a name="hide-an-application-from-the-end-user"></a>A végfelhasználó számára az alkalmazás elrejtése
+Az alábbi lépések segítségével alkalmazás elrejtése a MyApps panelen és az Office 365 alkalmazásindítójában.
 
-### <a name="how-do-i-hide-a-third-party-app-from-users-access-panel-and-o365-app-launchers"></a>Hogyan elrejtése a felhasználó hozzáférési panelen és az Office 365 alkalmazás kilövők egy külső alkalmazás?
-Az alábbi lépések segítségével alkalmazás elrejtése a felhasználó hozzáférési panelen és az Office 365 alkalmazás kilövők.
+1.  Jelentkezzen be a [az Azure portal](https://portal.azure.com) a címtár globális rendszergazdájaként.
+2.  Válassza az **Azure Active Directory** elemet.
+3.  Válassza ki **vállalati alkalmazások**. A **nagyvállalati alkalmazások – minden alkalmazás** panel nyílik meg.
+4.  A **alkalmazástípus**válassza **vállalati alkalmazások**, ha még nincs kiválasztva.
+5.  Keresse meg a elrejtéséhez, és kattintson az alkalmazás kívánt alkalmazást.  Megnyílik az alkalmazás áttekintése.
+6.  Kattintson a **Tulajdonságok** elemre. 
+7.  Az a **látható a felhasználók számára?** kérdés, kattintson a **nem**.
+8.  Kattintson a **Save** (Mentés) gombra.
 
-1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
-2.  Válassza ki **minden szolgáltatás**, adja meg **Azure Active Directory** a szövegmezőbe, és válassza ki a **Enter**.
-3.  Az a **Azure Active Directory - *directoryname***  képernyő (azt jelenti, az Azure ad Szolgáltatáshoz képernyőn a címtár kezeli), válassza ki **vállalati alkalmazások**.
-![Vállalati alkalmazások](./media/hide-application-from-user-portal/app1.png)
-4.  Az a **vállalati alkalmazások** képernyőn válassza ki **minden alkalmazás**. Kezelheti az alkalmazások listáját láthatja.
-5.  Az a **nagyvállalati alkalmazások – minden alkalmazás** lapon válasszon ki egy alkalmazást.</br>
-![Vállalati alkalmazások](./media/hide-application-from-user-portal/app2.png)
-6.  Az a ***appname*** képernyő (azaz a képernyő a cím a kijelölt alkalmazás nevét), válassza a tulajdonságok.
-7.  Az a  ***appname* -tulajdonságok** képernyőn válassza ki **Igen** a **látható a felhasználók számára?**.
-![Vállalati alkalmazások](./media/hide-application-from-user-portal/app3.png)
-8.  Válassza ki a **mentése** parancsot.
 
-### <a name="how-do-i-hide-office-365-applications-from-users-access-panel"></a>Hogyan elrejtése a felhasználó hozzáférési panelen Office 365-alkalmazások?
+## <a name="hide-office-365-applications-from-the-myapps-panel"></a>Office 365-alkalmazások a MyApps panelről elrejtése
 
-Az alábbi lépések segítségével a hozzáférési panelen az összes Office 365-alkalmazások elrejtése. Ezek az alkalmazások továbbra is meg fognak jelenni az Office 365 portálra.
+Az alábbi lépések segítségével a MyApps panelről az összes Office 365-alkalmazások elrejtése. Az alkalmazások továbbra is megjelennek az Office 365 portálra.
 
-1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
-2.  Válassza ki **minden szolgáltatás**, adja meg **Azure Active Directory** a szövegmezőbe, és válassza ki a **Enter**.
-3.  Az a **Azure Active Directory - *directoryname***  képernyő (azt jelenti, az Azure ad Szolgáltatáshoz képernyőn a címtár kezeli), válassza ki **felhasználói beállítások**.
-4.  Az a **felhasználói beállítások** képernyő alatt **vállalati alkalmazások** kiválasztása **Igen** a **csak a tekintse meg az Office 365 portálonOffice365-alkalmazások**.
+1.  Jelentkezzen be a [az Azure portal](https://portal.azure.com) a címtár globális rendszergazdájaként.
+2.  Válassza az **Azure Active Directory** elemet.
+3.  Válassza ki **felhasználói beállítások**.
+4.  A **vállalati alkalmazások**, kattintson a **kezelése hogyan végfelhasználók indítsa el, és azok az alkalmazások megtekintéséhez.**
+5.  A **csak a tekintse meg az Office 365 portálon az Office 365-alkalmazások**, kattintson a **Igen**.
+6.  Kattintson a **Save** (Mentés) gombra.
 
-![Vállalati alkalmazások](./media/hide-application-from-user-portal/apps4.png)
 
 ## <a name="next-steps"></a>További lépések
 * [Tekintse meg az összes saját csoportok](../fundamentals/active-directory-groups-view-azure-portal.md)

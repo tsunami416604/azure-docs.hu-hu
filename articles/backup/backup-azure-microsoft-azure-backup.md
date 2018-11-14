@@ -7,14 +7,14 @@ manager: shivamg
 keywords: az Azure backup server; számítási feladatok; védelme számítási feladatainak biztonsági mentése
 ms.service: backup
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 11/13/2018
 ms.author: adigan; kasinh
-ms.openlocfilehash: 602b7b2a81ec727c9acaf86165867daa20370947
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: e1ed8b1f62eeb52d65ba178c8ca13f94b57da6f0
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578722"
+ms.locfileid: "51616316"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Telepítése és az Azure Backup Server frissítése
 > [!div class="op_single_selector"]
@@ -169,18 +169,20 @@ Miután a kinyerési folyamat befejezése után, jelölje be a jelölőnégyzete
 
    **Kézi konfigurálás**
 
-    > [!IMPORTANT]
+   Ha a saját SQL-példányt használ, ellenőrizze, hogy BUILTIN\Rendszergazdák ad hozzá a master DB-hez a sysadmin (rendszergazda) szerepkör.
 
-    > Konfigurálás után a MABS, manuálisan konfigurálásakor ügyeljen arra, hogy *IsInitialized* SSRS tulajdonsága *igaz*. Ha ez igaz értékre van beállítva, MABS feltételezi, hogy az SSRS már konfigurálva van, és kihagyja az SSRS konfigurációja.
+    **SSRS-konfiguráció SQL 2017-ben**
 
-    > Az SSRS konfigurációja a következő értékeket használja:
+    SQL 2017 saját példányát használja, amikor szüksége SSRS manuális konfigurálásához. Az SSRS a konfigurációt követően ellenőrizze, hogy *IsInitialized* SSRS tulajdonsága *igaz*. Ha ez igaz értékre van beállítva, MABS feltételezi, hogy az SSRS már konfigurálva van, és kihagyja az SSRS konfigurációja.
 
-      >- Szolgáltatásfiók: A beépített fiók használata"hálózati szolgáltatás kell lennie
-    >- Web Service URL-címe: 'A virtuális könyvtár' ReportServer_MSDPMINSTANCE kell lennie
-    > - Adatbázis: DatabaseName ReportServer$ MSDPMINSTANCE kell lennie
-    > - Webes portál URL-címe: 'A virtuális könyvtár' Reports_MSDPMINSTANCE kell lennie
+    Az SSRS konfigurációja a következő értékeket használja:
 
-    > [További](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) SSRS konfigurálásával kapcsolatban.
+        - Service Account: ‘Use built-in account’ should be Network Service
+        - Web Service URL: ‘Virtual Directory’ should be ReportServer_<SQLInstanceName>
+        - Database: DatabaseName should be ReportServer$<SQLInstanceName>
+        - Web Portal URL: ‘Virtual Directory’ should be Reports_<SQLInstanceName>
+
+    [További](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) SSRS konfigurálásával kapcsolatban.
 
 4. A Microsoft Azure Backup server-fájlok a telepítés helyét adja meg, és kattintson a **tovább**.
 
@@ -273,7 +275,7 @@ Egy időben az Azure-előfizetést kell lennie a kifogástalan állapotban. Isme
 
 Ha már tudja, hogy az állapot, az Azure-kapcsolat és az Azure-előfizetést, az alábbi táblázat segítségével ismerje meg, hogy a művelet hatása a biztonsági mentési és visszaállítási funkció érhető el.
 
-| Kapcsolati állapota | Azure-előfizetés | Azure biztonsági mentés | Biztonsági mentés lemezre | Állítsa vissza az Azure-ból | Lemez visszaállítása |
+| Kapcsolati állapota | Azure-előfizetés | Azure biztonsági mentés | Biztonsági mentés lemezre | Állítsa vissza az Azure-ból | Visszaállítás lemezről |
 | --- | --- | --- | --- | --- | --- |
 | Csatlakozva |Aktív |Engedélyezve |Engedélyezve |Engedélyezve |Engedélyezve |
 | Csatlakozva |Elévült |Leállítva |Leállítva |Engedélyezve |Engedélyezve |
@@ -323,6 +325,8 @@ A következő lépések segítségével frissítse a MABS:
   > [!IMPORTANT]
 
   >  SQL 2017-verziófrissítés részeként a Microsoft SQL titkosítási kulcsok biztonsági mentése, és távolítsa el a jelentéskészítési szolgáltatási. Az SQL server frissítése után jelentéskészítési service(14.0.6827.4788) telepítve van, és a titkosítási kulcsok vissza vannak állítva.
+
+ > SQL 2017 manuális konfigurálásához, tekintse meg *SQL 2017 SSRS-konfiguráció* szakasz alatt telepítési útmutatást.
 
 3. Frissítse a védelmi ügynököket a védett kiszolgálókon.
 4. Biztonsági mentések továbbra is az üzemi kiszolgálók újraindítása nélkül.

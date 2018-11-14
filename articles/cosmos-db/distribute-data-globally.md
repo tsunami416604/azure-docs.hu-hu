@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: mjbrown
-ms.openlocfilehash: 4aa5e4ff46eeaa4e8d8c723f626dd1f1193fd12a
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: cc7bd6bab76ee6617a2594cb0b84ace3f6f3dafc
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281608"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622125"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db"></a>Az Azure Cosmos DB globális terjesztési
 
@@ -36,7 +36,7 @@ Számos alkalmazásban a teljesítményt érintő továbbfejlesztés többrégi�
 
 **Magas rendelkezésre állású alkalmazásokat készíthet**: egy adatbázis több régióban üzemelő növeli az adatbázis rendelkezésre állását. Ha egy régió elérhetetlenné válik, más régiókban automatikusan fogja kezelni az alkalmazásokra irányuló kérések. Az Azure Cosmos DB kínál 99,999 %-os írási és olvasási többrégiós adatbázisok rendelkezésre állását.
 
-**Üzletmenet-folytonossági során a regionális üzemkimaradások utáni helyreállításon**: Azure Cosmos DB támogatja a [automatikus feladatátvétel](how-to-manage-database-account.md#enable-automatic-failover-for-your-cosmos-account) egy regionális kimaradás során. Ezen felül egy regionális kimaradás során Cosmos DB továbbra is a késés, a rendelkezésre állási, a konzisztencia és az átviteli SLA-k kezelése. Azure Cosmos DB segítségével ellenőrizze a teljes alkalmazás-e magas rendelkezésre állású, kínál a manuális feladatátvételt API egy regionális kimaradás szimulálásához. Ez az API használatával rendszeres üzleti folytonossági gyakorlatokat is végezhet.
+**Üzletmenet-folytonossági során a regionális üzemkimaradások utáni helyreállításon**: Azure Cosmos DB támogatja a [automatikus feladatátvétel](how-to-manage-database-account.md#automatic-failover) egy regionális kimaradás során. Ezen felül egy regionális kimaradás során Cosmos DB továbbra is a késés, a rendelkezésre állási, a konzisztencia és az átviteli SLA-k kezelése. Azure Cosmos DB segítségével ellenőrizze a teljes alkalmazás-e magas rendelkezésre állású, kínál a manuális feladatátvételt API egy regionális kimaradás szimulálásához. Ez az API használatával rendszeres üzleti folytonossági gyakorlatokat is végezhet.
 
 **Globális írási és olvasási méretezhetőség**: több főkiszolgálós képességgel rugalmasan skálázhatja olvasási és írási átviteli sebesség a világ minden tájáról. Több főkiszolgálós funkció biztosítja, hogy az átviteli sebességet, hogy az alkalmazás konfigurálása egy Azure Cosmos DB adatbázison, vagy egy tárolót az összes régióban elérhető, valamint által védett [pénzügyileg támogatott SLA-k](https://aka.ms/acdbsla).
 

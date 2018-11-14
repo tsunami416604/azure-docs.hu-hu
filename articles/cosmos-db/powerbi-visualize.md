@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: 90f5caa13bf95fb5298a06bda5a03e9bc17bcb1a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 782de7dc6e099fade0d2f1099ac19b9398562023
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945178"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622091"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Azure Cosmos DB-adatok megjelenítése Power BI-összekötő használatával
 
@@ -76,11 +76,11 @@ Fogja a Mexikói adatok lekérését az Azure Cosmos DB-fiókot és egy interakt
 
 5. Az a **összekötő előnézete** kattintson **Folytatás**. A **Azure Cosmos DB** ablak jelenik meg.
 
-6. Adja meg az Azure Cosmos DB fiók végponti URL-cím lenne, ha az adatok beolvasásához, ahogy az alábbi, és kattintson **OK**. A saját fiók használatára, az URI azonosító mezőjében található lehet lekérdezni az URL-cím a **[kulcsok](manage-account.md#keys)** panel az Azure Portal. Igény szerint adja meg az adatbázis nevét, a gyűjtemény nevét, vagy a kezelő segítségével válassza ki az adatbázist és gyűjteményt az adatok forrását azonosításához.
+6. Adja meg az Azure Cosmos DB fiók végponti URL-cím lenne, ha az adatok beolvasásához, ahogy az alábbi, és kattintson **OK**. A saját fiók használatára, az URI azonosító mezőjében található lehet lekérdezni az URL-cím a **kulcsok** panel az Azure Portal. Igény szerint adja meg az adatbázis nevét, a gyűjtemény nevét, vagy a kezelő segítségével válassza ki az adatbázist és gyűjteményt az adatok forrását azonosításához.
    
-7. Ha első alkalommal csatlakozik ennek a végpontnak, kéri a fiókkulcsot. Saját fiók lekérni a kulcsot a a **elsődleges kulcs** párbeszédpanel a **[csak olvasható kulcsok](manage-account.md#keys)** panel az Azure Portal. Adja meg a megfelelő kulcsot, és kattintson a **Connect**.
+7. Ha első alkalommal csatlakozik ennek a végpontnak, kéri a fiókkulcsot. Saját fiók lekérni a kulcsot a a **elsődleges kulcs** párbeszédpanel a **csak olvasható kulcsok** panel az Azure Portal. Adja meg a megfelelő kulcsot, és kattintson a **Connect**.
    
-   Azt javasoljuk, hogy a csak olvasható kulcsot használja, jelentések készítése során. Ez megakadályozza a biztonsági kockázatok a főkulcs szükségtelen kitettségtől. A csak olvasható kulcs érhető el a [kulcsok](manage-account.md#keys) panel az Azure Portal. 
+   Azt javasoljuk, hogy a csak olvasható kulcsot használja, jelentések készítése során. Ez megakadályozza a biztonsági kockázatok a főkulcs szükségtelen kitettségtől. A csak olvasható kulcs érhető el a **kulcsok** panel az Azure Portal. 
     
 8. Ha a fiók sikeresen csatlakozott, a **kezelő** ablaktáblán jelenik meg. A **kezelő** a fiókhoz tartozó adatbázisok listája látható.
 

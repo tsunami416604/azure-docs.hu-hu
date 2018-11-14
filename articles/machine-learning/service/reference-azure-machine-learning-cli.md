@@ -1,118 +1,141 @@
 ---
-title: Tudnivalók az Azure Machine Learning CLI-bővítmény
-description: Ismerje meg a gépi tanulási CLI-bővítmény az Azure Machine Learning alkalmazásával.
+title: Az Azure Machine Learning CLI-bővítmény használata
+description: További információ az Azure Machine Learning CLI-bővítmény az Azure CLI-hez. Az Azure CLI-vel egy platformfüggetlen parancssori segédprogram, amely lehetővé teszi, hogy az erőforrások az Azure-felhőben. A Machine Learning-bővítmény lehetővé teszi, hogy az Azure Machine Learning szolgáltatás.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
-ms.topic: reference
+ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 09/24/2018
-ms.openlocfilehash: 45ed1867d6d151250340bb21450b4b0d9b00e993
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f5c74055747cacbede479e12397bbb66ac74d10e
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243147"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615636"
 ---
-# <a name="what-is-the-azure-machine-learning-cli"></a>Mi az az Azure Machine Learning parancssori?
+# <a name="use-the-azure-machine-learning-cli-extension"></a>Az Azure Machine Learning CLI-bővítmény használata
 
-Az Azure Machine Learning parancssori felületének (CLI) kiterjesztés kínál adatelemző szakembereknek és fejlesztőknek az Azure Machine Learning szolgáltatással. Lehetővé teszi, hogy gyorsan machine learning-munkafolyamatok automatizálása, és elhelyezi azokat éles környezetben, mint például:
+Az Azure Machine Learning parancssori az való kiterjesztése a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), többplatformos parancssori felület az Azure platformon. Ez a bővítmény használata az Azure Machine Learning szolgáltatással, a parancssorból parancsokat tartalmaz. Lehetővé teszi a teljes gépi tanulási munkafolyamatokat automatizáló szkriptek létrehozására. Ha például hozhat létre parancsprogramokat, amelyek a következő műveletek végrehajtásához:
+
 + Futtasson kísérleteket a machine learning-modellek létrehozása
 
 + Regisztráljon machine learning-modellek a vásárlók általi használatra
 
 + Csomagolását, üzembe helyezése és a gépi tanulási modellek életciklusának nyomon követése
 
-Ebben a machine learning CLI bővítményeként [Azure CLI-vel](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) és a rendszer a Python-alapú épülő <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> az Azure Machine Learning szolgáltatáshoz.
+A CLI nem helyettesíti a az Azure Machine Learning SDK-t. Egy kiegészítő eszköz, például a magas paraméteres feladatok kezelésére van optimalizálva:
+
+* A számítási erőforrások létrehozása
+
+* a paraméteres kísérlet beküldése
+
+* Modell-regisztráció
+
+* Lemezkép létrehozása
+
+* Szolgáltatástelepítés
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* A [az Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
 > [!NOTE]
-> A CLI jelenleg a korai előzetes verzióban érhető el, és frissülni fog.
+> A CLI használatához Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="installing-and-uninstalling"></a>Telepítése és eltávolítása
+## <a name="install-the-extension"></a>A bővítmény telepítése
 
-Ezzel a paranccsal az előzetes PyPi indexe verzióból a CLI telepítése:
-```AzureCLI
+A Machine Learning CLI-bővítmény telepítéséhez használja a következő parancsot:
+
+```azurecli-interactive
 az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-0.1.68-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
 ```
 
-A parancssori felület, ezzel a paranccsal távolíthatja el:
-```AzureCLI
+Amikor a rendszer kéri, válassza ki a `y` a bővítmény telepítésére.
+
+Győződjön meg arról, hogy a bővítmény telepítve van-e, használja a következő parancsot egy Machine Learning-specifikus almenüpontok listájának megjelenítéséhez:
+
+```azurecli-interactive
+az ml -h
+```
+
+> [!TIP]
+> Frissíteni kell a bővítményt __eltávolítása__ , majd __telepítése__ azt. Ez telepíti a legújabb verzióra.
+
+## <a name="remove-the-extension"></a>Távolítsa el a bővítményt
+
+A CLI-bővítmény eltávolításához használja a következő parancsot:
+
+```azurecli-interactive
 az extension remove -n azure-cli-ml
 ```
 
-A CLI használatával is frissítheti a **eltávolítása** és **hozzáadása** a fenti lépéseket.
+## <a name="resource-management"></a>Erőforrás-kezelés
 
-## <a name="using-the-cli-vs-the-sdk"></a>Az SDK-t vagy a parancssori felület használatával
-A parancssori felület jobban illeszkednek az Automation szolgáltatásban egy fejlesztő-operátor személy, vagy egy folyamatos integrációt és teljesítést folyamat részeként. Alkalmi és magas paraméteres feladatok kezelésére lett optimalizálva. 
+A következő parancsok bemutatják, hogyan használják az Azure Machine Learning-erőforrások kezelése a parancssori felület használatával.
 
-Példák erre vonatkozóan:
-- COMPUTE-kiépítés
-- a paraméteres kísérlet beküldése
-- modell regisztrálását, a lemezkép létrehozása
-- Szolgáltatástelepítés
 
-Az adatszakértők számára ajánlott, hogy az Azure Machine Learning SDK-val.
++ Hozzon létre egy Azure Machine Learning szolgáltatás munkaterület:
 
-## <a name="common-machine-learning-cli-commands"></a>Gyakori a machine learning CLI-parancsok
-> [!NOTE]
-> Minta fájlok sikeres végrehajtásához használhatja az alábbi parancsokkal tekintheti meg [itt.](https://github.com/Azure/MachineLearningNotebooks/tree/cli/cli)
-
-Használjon széles skáláját `az ml` parancsokat használhatja a szolgáltatást minden olyan parancssori környezetben, beleértve a portál Azure cloud shellben.
-
-Íme egy példa a gyakori parancsok:
-
-### <a name="workspace-creation--compute-setup"></a>Munkaterület létrehozása és a számítási beállítása
-
-+ Hozzon létre egy Azure Machine Learning szolgáltatás munkaterületén, a machine Learning a legfelső szintű erőforrás.
-   ```AzureCLI
+   ```azurecli-interactive
    az ml workspace create -n myworkspace -g myresourcegroup
    ```
 
-+ Állítsa be a parancssori felület alapértelmezés szerint ez a munkaterület használatára.
-   ```AzureCLI
++ Állítsa be egy alapértelmezett munkaterületet:
+
+   ```azurecli-interactive
    az configure --defaults aml_workspace=myworkspace group=myresourcegroup
    ```
 
 + Hozzon létre egy adatelemző virtuális GÉPET (adatelemző virtuális gép). BatchAI fürtök elosztott képzéshez vagy üzembe helyezés az AKS-fürtök is létrehozhat.
-  ```AzureCLI
+
+
+  ```azurecli-interactive
   az ml computetarget setup dsvm -n mydsvm
   ```
 
-### <a name="experiment-submission"></a>Kísérlet beküldése
-+ Csatolhat egy kísérlet elküldésére szolgáló projekt (futtatási konfiguráció). Ez szolgál a Kísérletezési futtatások nyomon követéséhez.
-  ```AzureCLI
-  az ml project attach --experiment-name myhistory
-  ```
+## <a name="experiments"></a>Kísérletek
 
-+ Az Azure Machine Learning szolgáltatás a számítási cél tetszőleges ellen egy kísérlet elküldésére. Ebben a példában a rendszer a helyi számítási környezetben hajtja végre. Ellenőrizze, hogy a conda-környezet fájlt a python-függőségekhez rögzíti.
+A következő parancsok bemutatják, hogyan használhatja a parancssori felület kísérletek:
 
-  ```AzureCLI
-  az ml run submit -c local train.py
-  ```
+* A projekt (konfiguráció futtatása) csatolása a kísérlet elküldése előtt:
 
-+ Elküldött kísérletek listájának megtekintéséhez.
-```AzureCLI
-az ml history list
-```
+    ```azurecli-interactive
+    az ml project attach --experiment-name myhistory
+    ```
 
-### <a name="model-registration-image-ceation--deployment"></a>& Központi telepítési modell regisztrációs, kép ceation
+* A kísérlet egy Futtatás elindításához. Ezzel a paranccsal egy számítási célnak adja meg. Ebben a példában `local` használja a helyi számítógép használata a modell betanításához az `train.py` parancsfájlt:
 
-+ Regisztrálja a modellt az Azure Machine Learning.
-  ```AzureCLI
+    ```azurecli-interactive
+    az ml run submit -c local train.py
+    ```
+
+* Az elküldött kísérletek listájának megtekintéséhez:
+
+    ```azurecli-interactive
+    az ml history list
+    ```
+
+## <a name="model-registration-image-creation--deployment"></a>Modell regisztrációs, rendszerképek létrehozását és üzembe helyezés
+
+A következő parancsok bemutatják, hogyan lehet regisztrálni egy betanított modellt, és majd éles szolgáltatásként üzembe:
+
++ Regisztrálja a modellt az Azure Machine Learning:
+
+  ```azurecli-interactive
   az ml model register -n mymodel -m sklearn_regression_model.pkl
   ```
 
-+ Készítsen olyan rendszerképet, a gépi tanulási modell és függőségeket tartalmaznak. 
-  ```AzureCLI
++ A gépi tanulási modell és a függőségeit tartalmazó lemezképek létrehozásához: 
+
+  ```azurecli-interactive
   az ml image create container -n myimage -r python -m mymodel:1 -f score.py -c myenv.yml
   ```
 
-+ A csomagolt modell célnak, beleértve az ACI és az AKS üzembe helyezése.
-  ```AzureCLI
++ Egy rendszerkép üzembe helyezése az számítási célt:
+
+  ```azurecli-interactive
   az ml service create aci -n myaciservice --image-id myimage:1
   ```
-    
-## <a name="full-command-list"></a>A parancs teljes lista
-A teljes listát megtalálja parancsok a CLI-bővítmény (és a támogatott paraméterek) futtatásával ```az ml COMMANDNAME -h```. 

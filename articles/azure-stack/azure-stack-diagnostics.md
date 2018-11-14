@@ -7,15 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 11/02/2018
+ms.date: 11/13/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 6e15fee02fd001bddd25a19b8a9420eb899d4f85
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: f9a7ae76f2d52b3439bfb33f306e164bb81549eb
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978672"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623978"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack-diagnosztikai eszközök
 
@@ -70,12 +70,10 @@ if($s)
     Remove-PSSession $s
 }
 ```
+- A paraméterek **OutputSharePath** és **OutputShareCredential** egy felhasználó által megadott a naplók tárolására szolgáló helyre.
+- A **FromDate** és **ToDate** paraméterek használhatók naplók összegyűjtése egy adott időszakban. Ezek a paraméterek nincsenek megadva, ha vannak összegyűjtött naplók az elmúlt 4 óra alapértelmezés szerint.
 
-- A paraméterek **OutputSharePath** és **OutputShareCredential** segítségével naplók feltöltése egy külső megosztott mappához.
-- Az előző példában látható módon a **FromDate** és **ToDate** paraméterek használhatók naplók összegyűjtése egy adott időszakban. Ez többféle kivitelűek lehetnek például a naplók gyűjtésére az integrált rendszereken frissítések alkalmazása után is praktikus.
 
-
- 
 ### <a name="to-run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system"></a>Get-AzureStackLog futtatásához az Azure Stack Development Kit (ASDK) rendszeren
 1. Jelentkezzen be, **AzureStack\CloudAdmin** a gazdagépen.
 2. Nyisson meg egy PowerShell-ablakot rendszergazdaként.
@@ -111,15 +109,17 @@ if($s)
 
 - Ha a **FromDate** és **ToDate** paraméter nincs megadva, a naplók alapértelmezés szerint az elmúlt 4 órán keresztül gyűjtött.
 - Használja a **FilterByNode** paraméter naplók szűrése a számítógép neve szerint. Példa:
-```powershell
-Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByNode azs-xrp01
-```
+
+    ```powershell
+    Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByNode azs-xrp01
+    ```
 - Használja a **FilterByLogType** paraméter típusa szerint naplók szűrése. Ha szeretné, fájl, fájlmegosztás vagy WindowsEvent alapján. Példa:
-```powershell
-Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByLogType File
-```
+
+    ```powershell
+    Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByLogType File
+    ```
 - Használhatja a **TimeOutInMinutes** paraméter segítségével állítsa be a naplógyűjtés időkorlátja. Időintervallumként 150 (2,5 óra) alapértelmezés szerint.
-- Az 1805 és újabb memóriakép-fájl naplógyűjtés alapértelmezés szerint le van tiltva. Annak engedélyezéséhez használja a **IncludeDumpFile** paraméter váltani. 
+- Memóriakép-fájl naplógyűjtés alapértelmezés szerint le van tiltva. Annak engedélyezéséhez használja a **IncludeDumpFile** paraméter váltani. 
 - Jelenleg is használhatja a **FilterByRole** szűrőt szeretne gyűjteni a következő szerepkörök paramétert:
 
  |   |   |   |    |

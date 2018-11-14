@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f36d08a397836f17ec25a61e77cb1db5ce10b9d4
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: d4b4d99ac943749faaca8cd699b1455795b9c399
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945060"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625794"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Az alkalmazás egyéni szabályzat használata az Azure Active Directory B2C a felhasználói felület testreszabása
 
@@ -99,17 +99,13 @@ Blob storage-ban hozzon létre egy nyilvános tárolóban, tegye a következőke
 
 A Blob storage konfigurálhatja az eltérő eredetű erőforrások megosztása az alábbiak szerint:
 
->[!NOTE]
->Próbálja ki a felhasználói felület-testreszabási funkcióról a minta HTML és CSS-tartalom használatával szeretne? Összeállítottunk [egy egyszerű segédeszköze](active-directory-b2c-reference-ui-customization-helper-tool.md) , amely feltölti és beállítja a minta tartalmat a Blob storage-fiókjában. Ha az eszközt használ, lépjen tovább [a regisztrálási vagy bejelentkezési egyéni szabályzat módosításához](#modify-your-sign-up-or-sign-in-custom-policy).
-
-1. Az a **tárolási** panel alatt **beállítások**, nyissa meg **CORS**.
-2. Kattintson a **Hozzáadás** parancsra.
-3. A **engedélyezett eredetek**, írjon be egy csillag (\*).
-4. Az a **engedélyezett műveletek** legördülő listában, válassza ki mindkét **első** és **beállítások**.
-5. A **engedélyezett fejlécek**, írjon be egy csillag (\*).
-6. A **közzétett fejlécek**, írjon be egy csillag (\*).
-7. A **maximális időtartam (másodperc)**, típus **200**.
-8. Kattintson a **Hozzáadás** parancsra.
+1. Válassza a menüben **CORS**.
+2. A **engedélyezett eredetek**, adja meg `your-tenant-name.b2clogin.com`. Cserélje le `your-tenant-name` az Azure AD B2C-bérlő nevével. Például: `fabrikam.b2clogin.com`.
+3. A **engedélyezett metódusok**, válassza ki mindkét `GET` és `OPTIONS`.
+4. A **engedélyezett fejlécek**, írjon be egy csillagot (*).
+5. A **közzétett fejlécek**, írjon be egy csillagot (*).
+6. A **maximális életkora**, adja meg a 200-as.
+7. Kattintson a **Save** (Mentés) gombra.
 
 ## <a name="test-cors"></a>A CORS tesztelése
 

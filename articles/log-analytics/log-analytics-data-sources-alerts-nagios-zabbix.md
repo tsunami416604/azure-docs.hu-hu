@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 469d97385fd86952c2d287e2b5d15d7470a9e34e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6050771ee1d129edd4370079c07da721f60d2065
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008334"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613545"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-log-analytics-agent-for-linux"></a>A Linuxhoz készült Log Analytics-ügynök Nagios-és Zabbix a Log Analytics-riasztások gyűjtése 
 [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
-[Nagios](https://www.nagios.org/) és [Zabbix](http://www.zabbix.com/) nyílt forrású eszközök figyelését. Meg tud gyűjteni riasztások ezekkel az eszközökkel a Log Analytics annak érdekében, hogy az elemzésük [más forrásból származó riasztások](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md).  Ez a cikk ismerteti, hogyan konfigurálhatja a riasztások gyűjtésére ezekben a rendszerekben Linuxhoz készült Log Analytics-ügynököket.
+[Nagios](https://www.nagios.org/) és [Zabbix](http://www.zabbix.com/) nyílt forrású eszközök figyelését. Meg tud gyűjteni riasztások ezekkel az eszközökkel a Log Analytics annak érdekében, hogy az elemzésük [más forrásból származó riasztások](../monitoring-and-diagnostics/monitoring-overview-alerts.md).  Ez a cikk ismerteti, hogyan konfigurálhatja a riasztások gyűjtésére ezekben a rendszerekben Linuxhoz készült Log Analytics-ügynököket.
  
 ## <a name="prerequisites"></a>Előfeltételek
 A Linuxhoz készült Log Analytics-ügynök verzióra Nagios gyűjtését riasztásai támogatja 4.2.x és Zabbix verzióra 2.x.
@@ -88,7 +88,7 @@ Riasztás Nagios által összegyűjtött rekordokkal rendelkezik egy **típus** 
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Type (Típus) |*Riasztás* |
+| Típus |*Riasztás* |
 | SourceSystem |*Nagios* |
 | AlertName |A riasztás neve. |
 | AlertDescription | A riasztás leírása. |
@@ -104,7 +104,7 @@ Riasztás Zabbix által összegyűjtött rekordokkal rendelkezik egy **típus** 
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Type (Típus) |*Riasztás* |
+| Típus |*Riasztás* |
 | SourceSystem |*Zabbix* |
 | AlertName | A riasztás neve. |
 | AlertPriority | A riasztás súlyosságát.<br><br>nem besorolt<br>Információ<br>figyelmeztetés<br>átlag<br>Magas<br>vészhelyreállítás  |
@@ -118,5 +118,5 @@ Riasztás Zabbix által összegyűjtött rekordokkal rendelkezik egy **típus** 
 
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [riasztások](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) a Log Analyticsben.
+* Ismerje meg [riasztások](../monitoring-and-diagnostics/monitoring-overview-alerts.md) a Log Analyticsben.
 * Ismerje meg [naplókereséseket](log-analytics-queries.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 

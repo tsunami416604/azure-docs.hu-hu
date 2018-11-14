@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 9100722042bfdcbee48af1fc44e294df046c828e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: d88a59d3b9a39a42120b302fd8e7989c968db952
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007212"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624777"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Az adatgyűjtést az Azure Security Centerben
 A Security Center adatokat gyűjt az Azure-beli virtuális gépek (VM) és a nem Azure-beli számítógépekről a biztonsági rések és fenyegetések monitorozásához. Az adatgyűjtés a Microsoft Monitoring Agent segítségével történik, amely a biztonsághoz kapcsolódó különböző konfigurációkat és eseménynaplókat olvas be a gépről, és elemzés céljából átmásolja az adatokat az Ön munkaterületére. Az ilyen adatok többek között: operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép nevét, az IP-címeket, és bejelentkezett felhasználó. A Microsoft Monitoring Agent az összeomlási memóriaképeket is átmásolja a munkaterülethez.
@@ -81,7 +81,7 @@ A Security Center által létrehozott munkaterület kiválasztása:
 
 2. Kattintson a **Save** (Mentés) gombra.<br>
     A Security Center egy új erőforrás és egy alapértelmezett munkaterületet hoz létre, hogy földrajzi hely, és csatlakoztatja az ügynököt a munkaterülethez. A munkaterület és erőforrás-csoport elnevezési van:<br>
-**Munkaterület: Alapértelmezettmunkaterület-[előfizetés-azonosító]-[geo]<br> erőforráscsoport: Alapértelmezetterőforráscsoport-[geo]**
+**Munkaterület: Alapértelmezettmunkaterület-[előfizetés-azonosító]-[geo]<br> erőforráscsoport: DefaultResourceGroup-[geo]**
 
    Ha egy előfizetés több geolocations a virtuális gépeket tartalmaz, a Security Center több munkaterületet hoz létre. Több munkaterülettel jönnek létre az adatok adatvédelmi szabályok kezelése.
 -   A Security Center automatikusan engedélyezi a a tarifacsomagot állítsa be az előfizetés-munkaterülethez a Security Center megoldást. 

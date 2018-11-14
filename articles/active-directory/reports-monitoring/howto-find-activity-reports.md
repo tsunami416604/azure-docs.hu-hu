@@ -10,31 +10,33 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 12/06/2017
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 182537d6f07b624f2395f591681ed4596579bde0
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: fab94088d1d54012a955b0663b078d03b13d6299
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42059126"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624912"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Tevékenységjelentések keresése az Azure Portalon
 
-Ebben a cikkben azt ismertetjük, hogyan található Azure Active Directory felhasználói tevékenységre vonatkozó jelentések az Azure Portalon.
+Ebből a cikkből megismerheti, hogyan találhatja meg az Azure Active Directory (Azure AD) felhasználói tevékenységre vonatkozó jelentések az Azure Portalon.
 
-## <a name="activity-and-integrated-app-reports"></a>Tevékenység és az integrált alkalmazás jelentések
+## <a name="audit-logs-report"></a>Naplók jelentés
 
-Környezetfüggő jelentéskészítés az Azure Portalon, a meglévő jelentések egyesítve egyetlen nézetben. Egyetlen, az alapul szolgáló API-t biztosít az adatok a nézethez.
+A naplók jelentés több jelentések alkalmazás tevékenységek környezetfüggő jelentéskészítési egyetlen nézetben egyesíti. A naplók jelentés elérése:
 
-Ebben a nézetben tekintheti meg a **Azure Active Directory** panel alatt **tevékenység**válassza **Auditnaplók**.
+1. Lépjen az [Azure Portalra](https://portal.azure.com).
+2. A jobb felső sarokban válassza ki a címtárat, majd válassza ki a **Azure Active Directory** a bal oldali navigációs panelen.
+3. Válassza ki **Auditnaplók** származó a **tevékenység** szakaszában az Azure Active Directory panel. 
 
-![Naplók](./media/howto-find-activity-reports/482.png "Naplók")
+    ![Naplók](./media/howto-find-activity-reports/482.png "Naplók")
 
-Az alábbi jelentések ebben a nézetben van összevonva:
+A naplók jelentés összesíti az alábbi jelentések:
 
-* Ellenőrzési jelentés
+* Naplózási jelentés
 * Jelszó-visszaállítási tevékenység
 * Jelszó-visszaállítási regisztrációs tevékenység
 * Önkiszolgáló csoportok tevékenysége
@@ -43,26 +45,11 @@ Az alábbi jelentések ebben a nézetben van összevonva:
 * Jelszó váltása állapota
 * Alkalmazás-kiépítési hibák
 
+### <a name="filtering-on-audit-logs"></a>Auditnaplók szűrése
 
-Az alkalmazás használati jelentés bővült, és tartalmazza a **bejelentkezések** megtekintése. Ebben a nézetben tekintheti meg a **Azure Active Directory** panel alatt **tevékenység**válassza **bejelentkezések**.
+Használhatja a naplózási jelentésben Speciális szűrés megadásával, a naplózási adatokat, konkrét kategóriáját eléréséhez a **tevékenység kategóriája** szűrőt. Válassza ki például az önkiszolgáló jelszó-visszaállítás kapcsolódó összes tevékenységének megtekintéséhez, a **önkiszolgáló jelszókezelés** kategória. 
 
-![Bejelentkezések megtekintése](./media/howto-find-activity-reports/483.png "bejelentkezések megtekintése")
-
-A **bejelentkezések** nézet tartalmazza az összes felhasználói bejelentkezés. Ezen információk használatával alkalmazás használati adatai olvashatók. Alkalmazás használati adatai is megtekinthetők a **vállalati alkalmazások** áttekintése, a a **kezelés** szakaszban.
-
-![Vállalati alkalmazások](./media/howto-find-activity-reports/484.png "vállalati alkalmazások")
-
-## <a name="access-a-specific-report"></a>Egy adott jelentés eléréséhez
-
-Bár az Azure Portalon egyetlen nézetben kínál, továbbá tekintse meg adott jelentéseket.
-
-### <a name="audit-logs"></a>Naplók
-
-Az ügyfelek visszajelzései alapján, az Azure Portalon használhatja a Speciális szűrés a kívánt adatok eléréséhez. Használhat egy szűrő egy *tevékenység kategóriája*, amely felsorolja a különböző típusú tevékenység naplózza az Azure ad-ben. Szűkítheti az eredményeket, amit keres, akkor is válasszon egy kategóriát.
-
-Például, ha szüksége, csak az önkiszolgáló jelszóátállítással kapcsolatos tevékenységeit, választhatja a **önkiszolgáló jelszókezelés** kategória. Megjelenik a kategóriák dolgozik, az erőforrás alapulnak.  
-
-![Kategória lehetőségek szűrő Naplók lapján](./media/howto-find-activity-reports/06.png "kategória lehetőségek szűrő Naplók lapján")
+    ![Category options on the Filter Audit Logs page](./media/howto-find-activity-reports/06.png "Category options on the Filter Audit Logs page")
 
 Tevékenységkategóriák a következők:
 
@@ -71,19 +58,36 @@ Tevékenységkategóriák a következők:
 - Önkiszolgáló csoportkezelés
 - Fiók kiépítése
 
-### <a name="application-usage"></a>Alkalmazáshasználat
 
-Az alkalmazás használatának minden alkalmazás vagy egy önálló alkalmazás részleteinek megtekintéséhez a **tevékenység**válassza **bejelentkezések**. Az eredmények szűkítéséhez szűrheti a felhasználó vagy alkalmazás nevét.
+## <a name="sign-ins-report"></a>Bejelentkezések jelentés 
+
+A **bejelentkezések** nézet tartalmazza az összes felhasználói bejelentkezéseket, valamint a **Alkalmazáshasználat** jelentést. Alkalmazás használati adatai is megtekinthetők a **kezelés** szakaszában a **vállalati alkalmazások** áttekintése.
+
+    ![Enterprise applications](./media/howto-find-activity-reports/484.png "Enterprise applications")
+
+A bejelentkezési jelentések elérése:
+
+1. Lépjen az [Azure Portalra](https://portal.azure.com).
+2. A jobb felső sarokban válassza ki a címtárat, majd válassza ki a **Azure Active Directory** a bal oldali navigációs panelen.
+3. Válassza ki **bejelentkezések** származó a **tevékenység** szakaszában az Azure Active Directory panel. 
+
+    ![Bejelentkezések megtekintése](./media/howto-find-activity-reports/483.png "bejelentkezések megtekintése")
+
+
+### <a name="filtering-on-application-name"></a>Szűrés alkalmazásnév
+
+Használhatja a bejelentkezési jelentések szűrésével felhasználó vagy alkalmazás nevét az alkalmazás használatának részleteinek megtekintéséhez.
 
 ![Szűrő bejelentkezési eseményeket felsoroló weblapunkon](./media/howto-find-activity-reports/07.png "bejelentkezési események szűrése lap")
 
-### <a name="security-reports"></a>Biztonsági jelentések
+## <a name="security-reports"></a>Biztonsági jelentések
 
-#### <a name="azure-ad-anomalous-activity-reports"></a>Az Azure AD rendellenes tevékenységre vonatkozó jelentések
+### <a name="anomalous-activity-reports"></a>Rendellenes tevékenységekre vonatkozó jelentések
 
-Az Azure AD rendellenes tevékenység biztonsági jelentések konszolidálni vannak egy központi nézetet. Ez a nézet megjeleníti az összes biztonsági kockázati események, hogy az Azure AD észleli, és jelentést.
+Rendellenes tevékenységekre vonatkozó jelentések információkat tartalmaz, amely az Azure AD észleli, és a jelentés a biztonsággal kapcsolatos kockázati eseményeket.
 
-A következő táblázat a listák az Azure AD rendellenes tevékenység biztonsági jelentéseket, és megfelelő kockázati események típusai az Azure Portalon.
+A következő táblázat a listák az Azure AD rendellenes tevékenység biztonsági jelentéseket, és megfelelő kockázati események típusai az Azure Portalon. További információkért tekintse át [Az Azure Active Directory kockázati eseményeivel](concept-risk-events.md) foglalkozó cikket.  
+
 
 | Az Azure AD rendellenes tevékenység jelentés |  Identity protection kockázati esemény típusa|
 | :--- | :--- |
@@ -99,29 +103,18 @@ Az alábbi Azure ad-ben rendellenes tevékenység biztonsági jelentések kocká
 * Több hibát követő bejelentkezések
 * Bejelentkezések különböző földrajzi régiókból
 
-További információkért tekintse át [Az Azure Active Directory kockázati eseményeivel](concept-risk-events.md) foglalkozó cikket.  
 
+### <a name="detected-risk-events"></a>Észlelt kockázati események
 
-#### <a name="detected-risk-events"></a>Észlelt kockázati események
+Jelentésekhez észlelt kockázati eseményeket a kapcsolatos a **biztonsági** szakaszában a **Azure Active Directory** paneljén a [az Azure portal](https://portal.azure.com). Észlelt kockázati eseményeket a rendszer a következő jelentések nyomon követi:   
 
-Az Azure Portalon érheti jelentéseket észlelt kockázati eseményeket a a **Azure Active Directory** panel alatt **biztonsági**. Észlelt kockázati eseményeket a rendszer a következő jelentések nyomon követi:   
+- [Veszélyeztetett felhasználók](concept-user-at-risk.md)
+- [Kockázatos bejelentkezések](concept-risky-sign-ins.md)
 
-- Kockázatos felhasználók
-- Kockázatos bejelentkezések
-
-![Biztonsági jelentések](./media/howto-find-activity-reports/04.png "biztonsági jelentések")
-
-Biztonsági jelentésekkel kapcsolatos további információkért lásd:
-
-- [Felhasználókról szóló biztonsági jelentés az Azure Active Directory portálon](concept-user-at-risk.md)
-- [Kockázatos bejelentkezések jelentés az Azure Active Directory portálon](concept-risky-sign-ins.md)
-
-
-Megtekintéséhez a **Alkalmazáshasználat** jelentésben a **Azure Active Directory** panel alatt **kezelés**, jelölje be **vállalati alkalmazások**, majd **bejelentkezések**.
-
-
-![Vállalati alkalmazások bejelentkezési jelentések](./media/howto-find-activity-reports/199.png)
+    ![Biztonsági jelentések](./media/howto-find-activity-reports/04.png "biztonsági jelentések")
 
 ## <a name="next-steps"></a>További lépések
 
-A jelentéskészítés áttekintéséért lásd: [Jelentéskészítés az Azure Active Directoryban](overview-reports.md).
+* [Naplózási naplók áttekintése](concept-audit-logs.md)
+* [Bejelentkezések áttekintése](concept-sign-ins.md)
+* [Kockázatos események áttekintése](concept-risk-events.md)

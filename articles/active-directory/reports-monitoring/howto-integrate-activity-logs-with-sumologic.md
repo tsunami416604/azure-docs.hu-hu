@@ -1,6 +1,6 @@
 ---
-title: Az Azure Monitor (előzetes verzió) használatával az Azure Active Directory-naplók integrálása SumoLogic |} A Microsoft Docs
-description: Ismerje meg, hogyan SumoLogic az Azure Active Directory-naplók integrálása az Azure Monitor (előzetes verzió) használatával
+title: Azure Active Directory-naplók integrálása az Azure Monitor (előzetes verzió) használatával SumoLogic |} A Microsoft Docs
+description: 'Útmutató: Azure Active Directory-naplók integrálása az Azure Monitor (előzetes verzió) használatával SumoLogic'
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -13,19 +13,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 07/13/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d13eb22bd58dc7e680a27738549665bc2b691898
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 4a39ee2fb057547c44c9eb08c85afdbb971ea5d5
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49392210"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622414"
 ---
-# <a name="integrate-azure-ad-logs-with-sumologic-by-using-azure-monitor-preview"></a>Az Azure AD-naplók integrálása SumoLogic az Azure Monitor (előzetes verzió) használatával
+# <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor-preview"></a>Azure Active Directory-naplók integrálása az Azure Monitor (előzetes verzió) használatával SumoLogic
 
-Ebből a cikkből elsajátíthatja az Azure Active Directory (Azure AD) naplókban SumoLogic integrálása az Azure Monitor használatával. A naplók átirányítása az Azure event hubhoz, és majd integrálása az event hubs-SumoLogic.
+Ebből a cikkből elsajátíthatja az Azure Active Directory (Azure AD) naplókban integrálása az Azure Monitor használatával SumoLogic. A naplók átirányítása az Azure event hubhoz, és majd integrálása az event hubs-SumoLogic.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

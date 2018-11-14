@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: 786f6ca3b3a1ad26d36c751c54d3cf69ae1d2fd4
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 4f669d44582c47cc6c7c090627f957288fee0f1a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240868"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615874"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Mielőtt elkezdené, az Azure Stack App Service-szel
 
@@ -28,7 +28,7 @@ ms.locfileid: "50240868"
 Azure App Service az Azure Stack üzembe helyezése, előtt elvégzése szükséges az ebben a cikkben előfeltételként felsorolt lépéseket.
 
 > [!IMPORTANT]
-> Az Azure Stackkel integrált rendszereknél 1807 frissítés alkalmazása, vagy a legújabb Azure Stack Development Kit (ASDK) üzembe helyezése, Azure App Service 1.3 üzembe helyezése előtt.
+> Az Azure Stackkel integrált rendszereknél 1809 frissítés alkalmazása, vagy a legújabb Azure Stack Development Kit (ASDK) üzembe helyezése, Azure App Service 1.4-es üzembe helyezése előtt.
 
 ## <a name="download-the-installer-and-helper-scripts"></a>A telepítő és a segítő szkripteket letöltése
 
@@ -44,6 +44,10 @@ Azure App Service az Azure Stack üzembe helyezése, előtt elvégzése szüksé
    - Remove-AppService.ps1
    - Modulok mappa
      - GraphAPI.psm1
+
+## <a name="syndicate-the-custom-script-extension-from-the-marketplace"></a>Szindikálása az egyéni szkriptek futtatására szolgáló bővítmény a Marketplace-ről
+
+Az Azure Stack az Azure App Service egyéni szkriptek futtatására szolgáló bővítmény v1.9.0 igényel.  A bővítmény kell [hírcsatorna-a Marketplace-ről](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) előtt a központi telepítés vagy frissítés az Azure App Service kezdve az Azure Stackben
 
 ## <a name="high-availability"></a>Magas rendelkezésre állás
 
@@ -151,6 +155,9 @@ Identitás tanúsítványa egy témát, amely megfelel a következő formátumba
 
 ## <a name="virtual-network"></a>Virtuális hálózat
 
+> [!NOTE]
+> Az üzem előtti létrehozása egy egyéni virtuális hálózat nem kötelező használni, mivel az Azure App Service az Azure Stacken hozhat létre a szükséges virtuális hálózati, de az SQL és a fájlkiszolgáló nyilvános IP-cím használatával kommunikálni kell.
+
 Az Azure Stack az Azure App Service lehetővé teszi az erőforrás-szolgáltató üzembe helyezése meglévő virtuális hálózattal, vagy lehetővé teszi a virtuális hálózat létrehozása a központi telepítésének részeként. Meglévő virtuális hálózattal való csatlakozáshoz a fájlkiszolgáló és az Azure App Service az Azure Stacken szükséges az SQL server belső IP-címek használatát teszi lehetővé. A virtuális hálózat az Azure Stack az Azure App Service telepítése előtt a következő címtartományt és alhálózatokat kell konfigurálni:
 
 Virtuálishálózat - /16
@@ -167,12 +174,20 @@ Alhálózatok
 
 Az Azure App Service egy fájlkiszolgálóhoz van szükség. Éles környezetekben üzemelő példányok a fájlkiszolgáló kell konfigurálni kell a magas rendelkezésre állású és hibák kezelésére képes.
 
+### <a name="quickstart-template-for-file-server-for-deployments-of-azure-app-service-on-asdk"></a>Gyorsindítási sablon fájlkiszolgáló ASDK futó Azure App Service-környezetekben.
+
 Csak az Azure Stack Development Kit központi telepítése esetén használhatja a [példa az Azure Resource Manager üzembe helyezési sablon](https://aka.ms/appsvconmasdkfstemplate) konfigurált egy csomópontos fájlkiszolgáló üzembe helyezéséhez. Egy csomópontos fájlkiszolgáló munkacsoport lesz.
+
+### <a name="quickstart-template-for-highly-available-file-server-and-sql-server"></a>Magas rendelkezésre állású fájl kiszolgáló és az SQL Server gyorsindítási sablon
+
+A [referencia architektúra gyorsindítási sablon](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha) már elérhető, amely telepíti a fájlkiszolgáló, az SQL Server, az Active Directory támogatása a virtuális hálózati infrastruktúra úgy konfigurálva, hogy egy magas rendelkezésre állású telepítésének támogatása Az Azure App Service az Azure Stackben.  
+
+### <a name="steps-to-deploy-a-custom-file-server"></a>Egy egyéni fájlkiszolgáló telepítése
 
 >[!IMPORTANT]
 > Ha egy meglévő virtuális hálózatot az App Service üzembe helyezése, a fájlkiszolgáló az App Service-ből egy külön alhálózatot kell telepíteni.
 
-### <a name="provision-groups-and-accounts-in-active-directory"></a>Csoportok és az Active Directory fiókok kiépítése
+#### <a name="provision-groups-and-accounts-in-active-directory"></a>Csoportok és az Active Directory fiókok kiépítése
 
 1. Hozza létre a következő Active Directory globális biztonsági csoportokat:
 
@@ -195,7 +210,7 @@ Csak az Azure Stack Development Kit központi telepítése esetén használhatja
    - Adjon hozzá **FileShareOwner** , a **FileShareOwners** csoport.
    - Adjon hozzá **FileShareUser** , a **FileShareUsers** csoport.
 
-### <a name="provision-groups-and-accounts-in-a-workgroup"></a>Csoportok és munkacsoportban lévő fiókok kiépítése
+#### <a name="provision-groups-and-accounts-in-a-workgroup"></a>Csoportok és munkacsoportban lévő fiókok kiépítése
 
 >[!NOTE]
 > Ha egy fájlkiszolgáló, futtassa az alábbi parancsokat a konfigurálásakor egy **rendszergazdai parancssorból**. <br>***Ne használja a PowerShell.***
@@ -225,7 +240,7 @@ Az Azure Resource Manager-sablon használatakor a felhasználók már jönnek l�
    net localgroup FileShareOwners FileShareOwner /add
    ```
 
-### <a name="provision-the-content-share"></a>A tartalommegosztás kiépítése
+#### <a name="provision-the-content-share"></a>A tartalommegosztás kiépítése
 
 A tartalommegosztás bérlői webhely tartalmát tartalmazza. A tartalommegosztás a fájlkiszolgáló telepítéséhez az eljárás megegyezik az Active Directory és a munkacsoport-környezeteket. De másik feladatátvevő fürt az Active Directoryban.
 

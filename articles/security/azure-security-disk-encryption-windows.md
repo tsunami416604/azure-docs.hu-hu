@@ -7,12 +7,12 @@ ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 10/12/2018
-ms.openlocfilehash: 68fcdbdc2eb844e08c99c0f9567bac7d39ca6511
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 2034616d7c701dfe03761d5a01848171fd264903
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310198"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625115"
 ---
 # <a name="enable-azure-disk-encryption-for-windows-iaas-vms"></a>A Windows IaaS virtuális gépek az Azure Disk Encryption engedélyezése 
 
@@ -253,7 +253,7 @@ A PowerShell-parancsmag használatával a titkosított virtuális merevlemezen l
 ```azurepowershell-interactive
 $VirtualMachine = New-AzureRmVMConfig -VMName "MySecureVM" -VMSize "Standard_A1"
 $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -Name "SecureOSDisk" -VhdUri "os.vhd" Caching ReadWrite -Windows -CreateOption "Attach" -DiskEncryptionKeyUrl "https://mytestvault.vault.azure.net/secrets/Test1/514ceb769c984379a7e0230bddaaaaaa" -DiskEncryptionKeyVaultId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mytestvault"
-New-AzureRmVM -VM $VirtualMachine -ResouceGroupName "MySecureRG"
+New-AzureRmVM -VM $VirtualMachine -ResourceGroupName "MySecureRG"
 ```
 
 ## <a name="enable-encryption-on-a-newly-added-data-disk"></a>Engedélyezheti a titkosítást egy újonnan hozzáadott adatlemez

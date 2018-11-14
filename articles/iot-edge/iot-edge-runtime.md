@@ -8,12 +8,12 @@ ms.date: 08/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 51f00b46283adf0f64bf37d5813640aa4e36f667
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 9894df3bed50059dc28ed6308c96990178cf44ef
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567247"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624979"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Az Azure IoT Edge-futtatókörnyezet és architektúrájának ismertetése
 
@@ -70,8 +70,10 @@ Az Edge hub adatokat küldeni, a modul meghívja a SendEventAsync metódust. Az 
 Egy üzenet jelenik meg, hogy regisztráljon egy visszahívást, amelyet a megadott bemeneti érkező üzeneteket dolgoz fel. A következő pseudocode regisztrálja a függvény messageProcessor input1 fogadott összes üzenetek feldolgozására használható:
 
    ```csharp
-   await client.SetEventHandlerAsync(“input1”, messageProcessor, userContext);
+   await client.SetInputMessageHandlerAsync(“input1”, messageProcessor, userContext);
    ```
+
+A ModuleClient osztály és a kommunikációs módszer kapcsolatos további információkért tekintse meg az API-referencia elsődleges SDK nyelv: [ C# ](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C és Python](https://docs.microsoft.com/en-us/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device._module_client?view=azure-java-stable), vagy [Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
 
 A megoldás fejlesztő feladata a szabályok, amelyek meghatározzák, hogyan Edge hubot továbbítja moduljai közötti üzenetek megadására. Útválasztási szabályok meghatározva a felhőben, és leküldte a az Edge hub az ikereszközön. Ugyanazt a szintaxist, az IoT Hub útvonalakat az Azure IoT Edge moduljai közötti útvonalak meghatározására szolgál. 
 

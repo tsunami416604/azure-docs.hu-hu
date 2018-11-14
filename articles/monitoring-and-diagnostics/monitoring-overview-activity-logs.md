@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 538481088d6355729486c1d9fbaaa6af16a1b841
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0f69a7f5e7aef4da798ec7c9ce3b7af3a456c00e
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006022"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613358"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Az Azure-tevékenységnapló-előfizetési tevékenység figyelése
 
@@ -33,7 +33,7 @@ A tevékenységnapló eltér [diagnosztikai naplók](monitoring-overview-of-diag
 A Tevékenységnaplót, az Azure portal, a parancssori felület, a PowerShell-parancsmagok használatával lehet lekérdezni események és az Azure Monitor REST API-t.
 
 > [!NOTE]
->  [Az újabb riasztások](monitoring-overview-unified-alerts.md) egy továbbfejlesztett felületet kínál, amikor létrehozása és kezelése a tevékenység naplózása a riasztási szabályok.  [További információk](alert-activity-log.md).
+> [Az újabb riasztások](monitoring-overview-alerts.md) ajánlat hatékonyabb, ha jelentkeznek be riasztási szabályok létrehozása és kezelése a tevékenység.  [További információk](alert-activity-log.md).
 
 
 ## <a name="categories-in-the-activity-log"></a>Kategóriák a tevékenységnaplóban
@@ -145,7 +145,7 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 | Name (Név) |Igen |A napló-profil neve. |
 | StorageAccountId |Nem |Erőforrás-azonosító, amelyhez a tevékenységnapló menteni a tárfiók. |
 | serviceBusRuleId |Nem |Service Bus Szabályazonosító a Service Bus-névtér szeretné, hogy a létrehozott event hubs. Egy karakterlánc, a következő formátumban: `{service bus resource ID}/authorizationrules/{key name}`. |
-| Földrajzi egység |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő vesszővel tagolt listája. |
+| Hely |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő vesszővel tagolt listája. |
 | RetentionInDays |Igen |Mely eseményeket meg kell őrizni, 1 és 2147483647 között eltelt napok száma. A nulla érték határozatlan ideig tárolja a naplók (végtelen). |
 | Kategória |Nem |Eseménykategóriák kell gyűjteni, vesszővel tagolt listája. Lehetséges értékek: írási, törlési és művelet. |
 

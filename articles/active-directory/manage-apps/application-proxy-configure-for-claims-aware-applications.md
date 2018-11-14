@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/04/2017
+ms.date: 11/08/2018
 ms.author: barbkess
-ms.reviewer: harshja
-ms.openlocfilehash: cf92b5b6ee3c6a529a43e7fa4cfeeb09954ad9ea
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.reviewer: japere
+ms.openlocfilehash: bb04f1965764413c474c2e0d057d77d5d30edd07
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365391"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623111"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Az alkalmazásproxy jogcímbarát alkalmazások használata
 [Jogcímbarát alkalmazások](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) hajtsa végre egy átirányítási a biztonsági jogkivonat szolgáltatás (STS). Az STS engedélyezések egy jogkivonatot a felhasználó kéri a hitelesítő adatokat, és ezután átirányítja a felhasználót az alkalmazáshoz. Néhány módon engedélyezze az alkalmazásproxyt ezek átirányítások dolgozhat. Ez a cikk segítségével konfigurálhatja a központi telepítés, jogcímeket használó alkalmazásokhoz. 
@@ -54,7 +54,7 @@ Ha a belső URL-címeket az alkalmazások összes teljesen minősített tartomá
    ![Adja hozzá a végpont - állítsa be a megbízható URL-érték – képernyőkép](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
 
 ## <a name="next-steps"></a>További lépések
-* [Az egyszeri bejelentkezés engedélyezése](application-proxy-single-sign-on.md) , amelyek nem jogcímbarát alkalmazások
+* [Az egyszeri bejelentkezés engedélyezése](configure-single-sign-on-portal.md) , amelyek nem jogcímbarát alkalmazások
 * [Együttműködhet a proxy-alkalmazások natív ügyfélalkalmazások engedélyezése](application-proxy-configure-native-client-application.md)
 
 

@@ -12,24 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/09/2018
+ms.date: 11/08/2018
 ms.author: barbkess
-ms.openlocfilehash: 3a9f27a92a4bc808ff9bcf04b66523a92f1bcf03
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 3fe268b6491a2a3cc1237173506ef5a91beb7d26
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356668"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625081"
 ---
-# <a name="how-to-choose-which-application-type-to-use-when-adding-an-application"></a>Hogyan választható ki a használandó alkalmazás hozzáadásakor mely alkalmazástípust
+# <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Az alkalmazástípus kiválasztása, amikor egy alkalmazás hozzáadása az Azure Active Directoryban
+További információ a négy típusú alkalmazások Azure Active Directory (Azure AD) adhat hozzá. Ha egy alkalmazás az Azure Active Directoryban ad hozzá, a program felszólítja válasszon egyet a négy alkalmazástípus. 
 
-Ennek a cikknek a segítségével megismerheti a négy fő típusú integrálható az Azure AD-alkalmazások:
-
-* Azok a támogatott műveletek
-* Előfordulhat, hogy miért választja melyik alkalmazáshoz
-* Ezen alkalmazás alapvető tulajdonságok, például a felhasználók konfigurálása **kiépített**, vagy milyen **egyszeri bejelentkezési** technológiáját használja.
-
-## <a name="supported-application-types-in-azure-ad"></a>Az Azure ad-ben támogatott alkalmazástípusok
+## <a name="what-are-the-types-of-applications"></a>Mik azok az alkalmazások?
 
 Az Azure AD támogatja négy fő alkalmazástípusok használatával adhat hozzá a **Hozzáadás** szolgáltatás alatt található **vállalati alkalmazások**. Ezek a következők:
 
@@ -41,7 +36,7 @@ Az Azure AD támogatja négy fő alkalmazástípusok használatával adhat hozz�
 
 -   **Katalógusban nem szereplő alkalmazások** – saját alkalmazások importálása! Összes webes hivatkozás szeretne, vagy egy felhasználónév és jelszó mezőt megjelenítő alkalmazás támogatja az SAML- vagy OpenID Connect protokollok, vagy az egyszeri bejelentkezés az Azure ad-vel integrálni kívánt SCIM támogatja.
 
-## <a name="features-and-capabilities-supported-by-all-the-preceding-application-types"></a>Funkciók és képességek az összes fenti alkalmazástípusok által támogatott
+## <a name="features-and-capabilities-supported-by-the-application-types"></a>Funkciók és képességek az alkalmazástípusok által támogatott
 
 Az alábbi szolgáltatások az Azure ad-ben szerint az előző négy alkalmazás típusok támogatottak:
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: fe2407f67e2ef7a2eb14105db0fef10917f34ba9
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5c9f37d326d66e69e87ec846ca6f22d1788203f5
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005223"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613987"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>VMware Monitoring (előzetes verzió) megoldás a Log Analyticsben
 
@@ -75,7 +75,7 @@ Hozzon létre egy Linux operációs rendszert a virtuális gép az összes syslo
 
 1. Az Azure Portalon, hajtsa végre a Naplókeresés `VMware_CL`. A Log Analytics a syslog-adatot gyűjt, ha megtartja a syslog formátumba. A portálon az egyes területeken rögzítve lesznek például *állomásnév* és *ProcessName*.  
 
-    ![típus](./media/log-analytics-vmware/type.png)  
+    ![type](./media/log-analytics-vmware/type.png)  
 
     Ha a napló keresési eredmények megtekintése a fenti képen láthatóhoz hasonló, beállíthat már használja a VMware Monitoring megoldás irányítópultján.  
 
@@ -105,8 +105,8 @@ Az alábbi táblázatban példák a VMware Monitoring megoldás által összegy�
 | SCSIStatus_s |VMware-SCSI-állapot |
 | SyslogMessage_s |Syslog-adat |
 | UserName_s |felhasználó, aki létrehozott vagy virtuális gép törlése |
-| VMName_s |Virtuális gép neve |
-| Számítógép |gazdaszámítógép |
+| VMName_s |a virtuális gép neve |
+| Computer |gazdaszámítógép |
 | TimeGenerated |idő az adatok jött létre. |
 | DataCenter_s |VMware-datacenter |
 | StorageLatency_s |tárolási késés (ms) |
@@ -165,7 +165,7 @@ Keresési lekérdezések mentése a Log Analytics alapvető szolgáltatás, és 
 ![DockerDashboardView](./media/log-analytics-vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Riasztások létrehozása a lekérdezések
-Miután létrehozta a lekérdezéseket, érdemes a lekérdezések használata az adott események bekövetkezése esetén riasztást küld. Lásd: [riasztások a Log Analyticsben](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) riasztások létrehozásával kapcsolatos információkat. Riasztási lekérdezések és egyéb példák a lekérdezésekre vonatkozó példákért lásd a [Log Analytics szolgáltatást figyelő VMware](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) blogbejegyzést.
+Miután létrehozta a lekérdezéseket, érdemes a lekérdezések használata az adott események bekövetkezése esetén riasztást küld. Lásd: [riasztások a Log Analyticsben](../monitoring-and-diagnostics/monitoring-overview-alerts.md) riasztások létrehozásával kapcsolatos információkat. Riasztási lekérdezések és egyéb példák a lekérdezésekre vonatkozó példákért lásd a [Log Analytics szolgáltatást figyelő VMware](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) blogbejegyzést.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Mit kell az ESXi a gazdagép beállítást? Milyen hatással legyen benne a jelenlegi környezetemet?
@@ -208,4 +208,4 @@ Több oka lehet:
 ## <a name="next-steps"></a>További lépések
 * Használat [Naplókeresések](log-analytics-queries.md) adatokat tárolni a Log Analytics részletes VMware megtekintéséhez.
 * [Saját irányítópult létrehozásával](log-analytics-dashboards.md) VMware gazdagép adatainak megjelenítése.
-* [Riasztások létrehozása](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) amikor adott VMware gazdagép események történnek.
+* [Riasztások létrehozása](../monitoring-and-diagnostics/monitoring-overview-alerts.md) amikor adott VMware gazdagép események történnek.

@@ -8,16 +8,17 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 15ecbcafd3397b425b669a48f19bee6073b71149
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 89b412a58291dd542b38cd0cbfa1288795024151
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279789"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613715"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Metrikákhoz kapcsolódó riasztások az Azure monitorban támogatott erőforrások
 
-Az Azure Monitor most már támogatja az egy új metrika riasztástípus, amely jelentős előnyökkel jár a korábbi keresztül [klasszikus metrikariasztásokat](alert-metric-classic.md). Metrikák érhetők el a [az Azure-szolgáltatások nagy lista](monitoring-supported-metrics.md). Az újabb riasztások az erőforrástípus (növekvő) részét támogatja. Ez a cikk adott részére sorolja fel.
+Az Azure Monitor mostantól támogatja a [új metrika riasztástípus](monitoring-overview-alerts.md) amely jelentős előnyökkel jár a korábbi keresztül [klasszikus metrikariasztásokat](monitoring-overview-alerts-classic.md). Metrikák érhetők el a [az Azure-szolgáltatások nagy lista](monitoring-supported-metrics.md). Az újabb riasztások az erőforrástípus (növekvő) részét támogatja. Ez a cikk adott részére sorolja fel.
+
 
 Használhatja a újabb metrikákhoz kapcsolódó riasztások a népszerű Log Analytics naplók, metrikák, ki kell olvasni. További információkért tekintse meg [metrika riasztások naplók](monitoring-metric-alerts-logs.md).
 
@@ -120,6 +121,6 @@ A POST művelet a következő JSON-adattartalom és séma tartalmazza a közelé
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ az új [élmény riasztások](monitoring-overview-unified-alerts.md).
+* További információ az új [élmény riasztások](monitoring-overview-alerts.md).
 * Ismerje meg [naplóriasztások az Azure-ban](monitor-alerts-unified-log.md).
 * Ismerje meg [riasztások az Azure-ban](monitoring-overview-alerts.md).

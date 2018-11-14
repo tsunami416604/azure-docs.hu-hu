@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/11/2018
+ms.date: 11/12/2018
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc7510fdc635de03ac4dd4f64118bc5be040e969
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 29a2be1735561d31f934f1353a336b5e4d198227
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719409"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622193"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Egyszeri bejelentkezés konfigurálása olyan alkalmazások, amelyek nem szerepelnek az Azure Active Directory alkalmazáskatalógusában
 
@@ -31,9 +31,9 @@ Az Azure Active Directory alkalmazáskatalógusában felsorolja a alkalmazások 
 Az ügyfelek [Azure Active Directory Premium](../fundamentals/active-directory-whatis.md) licenc is beszerezheti a további képességek:
 
 * Önkiszolgáló integrációja bármilyen alkalmazás, amely támogatja az SAML 2.0 identitásszolgáltató (SP által kezdeményezett vagy identitásszolgáltató által kezdeményezett)
-* Bármely, amely rendelkezik egy a bejelentkezési oldal HTML-alapú webes alkalmazás önkiszolgáló integrációja [jelszóalapú egyszeri bejelentkezés](what-is-single-sign-on.md#password-based-single-sign-on)
+* Bármely, amely rendelkezik egy a bejelentkezési oldal HTML-alapú webes alkalmazás önkiszolgáló integrációja [jelszóalapú egyszeri bejelentkezés](what-is-single-sign-on.md#password-based-sso)
 * A felhasználókiépítés az SCIM-protokollt használó alkalmazások önkiszolgáló kapcsolat ([az itt leírtak szerint](use-scim-to-provision-users-and-groups.md))
-* Lehetővé teszi, hogy minden olyan alkalmazáshoz, a hivatkozások a [Office 365 appindítóban](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) vagy a [Azure AD hozzáférési panel](what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users)
+* Lehetővé teszi, hogy minden olyan alkalmazáshoz, a hivatkozások a [Office 365 appindítóban](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) vagy a [Azure AD hozzáférési panel](what-is-single-sign-on.md#linked-sso)
 
 Ez nem csupán a SaaS-alkalmazásokhoz, amelyek használják, de rendelkezik nem még lett bevezetve, az Azure AD alkalmazáskatalógusában, de a szervezet azt szabályozza, a felhőben vagy a helyszíni kiszolgálókra telepített külső webes alkalmazásokat tartalmazza.
 
@@ -165,7 +165,7 @@ A bejelentkezési oldal rögzített, felhasználók és csoportok rendelhetők, 
 ## <a name="existing-single-sign-on"></a>Meglévő egyszeri bejelentkezés
 Válassza ki ezt a beállítást, hivatkozás hozzáadása egy alkalmazáshoz a szervezet Azure AD hozzáférési Panel vagy az Office 365 portálra. Ezzel a hivatkozásokat adhat hozzá egyéni webes alkalmazások, amelyek jelenleg használják az Azure Active Directory összevonási szolgáltatások (vagy más összevonási szolgáltatásból) az Azure AD-hitelesítés helyett. Vagy mélyhivatkozással hozzáadása adott SharePoint-oldalakba vagy más weblapokat csak át szeretné megjeleníteni a felhasználók hozzáférési Paneljein. 
 
-Kiválasztása után **tovább**, meg kell adnia összekapcsolása az alkalmazás URL-címet. Miután végeztünk ezzel, felhasználók és csoportok rendelhetők hozzá az alkalmazásról, így az alkalmazás megjelenik a [Office 365 appindítóban](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) vagy a [Azure AD hozzáférési panel](what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users) azoknak a felhasználóknak.
+Kiválasztása után **tovább**, meg kell adnia összekapcsolása az alkalmazás URL-címet. Miután végeztünk ezzel, felhasználók és csoportok rendelhetők hozzá az alkalmazásról, így az alkalmazás megjelenik a [Office 365 appindítóban](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) vagy a [Azure AD hozzáférési panel](end-user-experiences.md) azoknak a felhasználóknak.
 
 > [!NOTE] 
 > Feltöltheti az alkalmazást a csempe emblémájának a **embléma feltöltése** gombot a **konfigurálása** az alkalmazás lapon. 

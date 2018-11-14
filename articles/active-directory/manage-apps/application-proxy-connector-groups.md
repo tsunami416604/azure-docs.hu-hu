@@ -2,7 +2,6 @@
 title: Közzététel külön hálózatokon és helyeket összekötő csoportokat használnak az Azure AD-alkalmazásproxyval |} A Microsoft Docs
 description: A cikk ismerteti, hogyan csoportok az Azure AD-alkalmazásproxy-összekötők létrehozásához és kezeléséhez.
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
@@ -11,16 +10,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/31/2018
+ms.date: 11/08/2018
 ms.author: barbkess
-ms.reviewer: harshja
-ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: e149df09bf424d33fa9abdf8108b3b79534a8599
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.reviewer: japere
+ms.openlocfilehash: aebb042c065652bef568f6bc1be2ee8bfde43988
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364973"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622633"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Külön hálózatok és helyek összekötőcsoportok használatával az alkalmazások közzététele
 
@@ -86,14 +84,14 @@ Az Azure AD Application Proxy connector csoportok egy közös szolgáltatást, h
 A legtöbb ügyfél, aki telepítette szolgáltatásalkalmazás-Proxy az egyszeri bejelentkezéses (SSO) képességeket használ Kerberos által korlátozott delegálás (KCD) végrehajtásával. Ennek érdekében a csatlakozó gépek is engedélyezheti – delegálja a felhasználók felé az alkalmazás egy tartományhoz csatlakoztatni kell. KCD támogatja az erdők közötti képességeit. De különböző több erdőt tartalmazó környezetek között nincs megbízhatóság közöttük rendelkező vállalatok esetében egy összekötőt nem használható minden olyan erdőben. 
 
 Ebben az esetben egyedi összekötők telepíthető erdőnként, és állítsa be, amely csak az adott erdőre felhasználók kiszolgálása érdekében közzétett alkalmazások kiszolgálására. Minden egyes összekötőcsoport jelöli egy másik erdőben találhatók. Amíg a bérlő és a felhasználói élményt a legtöbb egységesített van minden olyan erdőben, a felhasználókhoz rendelhető erdő alkalmazásokhoz az Azure AD-csoportok használatával.
- 
+ 
 ### <a name="disaster-recovery-sites"></a>Vész-helyreállítási hely
 
 Attól függően, hogyan vannak megvalósítva a helyek egy vész-helyreállítási hely elvégezhető két többféle módon is:
 
 * A DR-hely aktív – aktív üzemmód, ahol a fő helye pontosan ugyanúgy történik, és azonos hálózati és AD-beállításokat a épül fel, ha az összekötők is létrehozhat a DR hely ugyanazt a összekötő tartozik, mint a fő helye. Ez lehetővé teszi az Azure AD észleli a feladatátvételeket az Ön számára.
 * Ha a DR hely elkülönül a fő helye, egy másik összekötőcsoport a DR-helyet hozhat létre, és vagy (1.) kell biztonsági mentési alkalmazások vagy (2) manuálisan átirányít a meglévő alkalmazást a Vészhelyreállítás összekötőcsoportot, igény szerint.
- 
+ 
 ### <a name="serve-multiple-companies-from-a-single-tenant"></a>Több vállalatot továbbítása az egyetlen új bérlő
 
 Nincsenek a számos különböző módon, amelyben egyetlen szolgáltató üzembe helyezi és kezeli az Azure AD egy modell megvalósításához kapcsolódó szolgáltatások több vállalatok számára. Összekötőcsoportok segítségként a rendszergazdának a elkülönítse az összekötők és az alkalmazások különböző csoportokba. Egyik lehetőség, amelyhez a kisvállalatok számára ideális, hogy egyetlen Azure AD bérlői, míg a különböző vállalatok a saját tartománynév és a hálózatok. Ez a is M & A-forgatókönyveinek és olyan helyzetekben, egy egyetlen IT-részleg szolgál a szabályozási és üzleti okokból több vállalat. 
@@ -101,7 +99,7 @@ Nincsenek a számos különböző módon, amelyben egyetlen szolgáltató üzemb
 ## <a name="sample-configurations"></a>Minta-konfigurációk
 
 Amely valósítható meg, például a következő összekötő-csoportokat.
- 
+ 
 ### <a name="default-configuration--no-use-for-connector-groups"></a>Alapértelmezett konfiguráció – összekötőcsoportok nem használható
 
 Összekötőcsoportok nem használja, ha a konfiguráció következő lenne:
@@ -109,7 +107,7 @@ Amely valósítható meg, például a következő összekötő-csoportokat.
 ![Azure ad nem Összekötőcsoportok](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
  
 Ebben a konfigurációban is használhatók a kisebb telepítésekhez és a teszteket. Jól, ha a szervezet rendelkezik egy egybesimított hálózati topológia fog működni.
- 
+ 
 ### <a name="default-configuration-and-an-isolated-network"></a>Alapértelmezett konfiguráció és a egy elkülönített hálózat
 
 Ez a konfiguráció az alapértelmezett értéktől, amelyben van egy adott alkalmazás, például az IaaS virtuális hálózat egy elkülönített hálózaton futó továbbfejlesztett változata: 
@@ -127,6 +125,6 @@ Az alábbi példában a vállalat rendelkezik két adatközpontban, A és B val�
 ## <a name="next-steps"></a>További lépések
 
 * [Az Azure AD-alkalmazásproxy-összekötők ismertetése](application-proxy-connectors.md)
-* [Egyszeri bejelentkezés engedélyezése](application-proxy-single-sign-on.md)
+* [Egyszeri bejelentkezés engedélyezése](what-is-single-sign-on.md)
 
 

@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 7348f76ab0d5a1057e9fd929e8a55dd0a9e99eb6
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 39b071c258a7aab3f8f0287ef2ce581a8f1b333e
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140976"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623153"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB és az Azure Functions használatával kiszolgáló nélküli adatbázis-használat
 
@@ -98,7 +98,7 @@ A kiskereskedelmi megvalósításokhoz amikor egy felhasználó felvesz egy elem
 
 **Megvalósítás:** több Azure Cosmos DB-eseményindítókról figyeli egy tárolóba
 
-1. Létrehozhat több Azure-funkciók hozzáadásával az Azure Cosmos DB-eseményindítók-mindegyike figyeli a következő azonos módosításcsatornáját a vásárlás bevásárlókocsi adatokat. Vegye figyelembe, hogy amikor több funkciók figyeli a következő azonos módosításcsatornáját, egy új a bérletek gyűjteményének szükség minden egyes függvény. Bérlet gyűjteményekkel kapcsolatos további információkért lásd: [ismertetése a Változáscsatorna feldolgozói kódtárával](change-feed.md#understand-cf).
+1. Létrehozhat több Azure-funkciók hozzáadásával az Azure Cosmos DB-eseményindítók-mindegyike figyeli a következő azonos módosításcsatornáját a vásárlás bevásárlókocsi adatokat. Vegye figyelembe, hogy amikor több funkciók figyeli a következő azonos módosításcsatornáját, egy új a bérletek gyűjteményének szükség minden egyes függvény. Bérlet gyűjteményekkel kapcsolatos további információkért lásd: [ismertetése a Változáscsatorna feldolgozói kódtárával](change-feed-processor.md).
 2. Egy új elemet a bevásárlókocsihoz felhasználók hozzáadásakor, minden egyes függvény egymástól függetlenül hív a változáscsatorna a vásárlási a bevásárlókocsi-tárolóból.
     * Egy függvény az aktuális kosár tartalmát felhasználhatja más elemek, a felhasználó esetlegesen érdeklő célpontokhoz jelenjen meg.
     * Egy másik függvény előfordulhat, hogy frissítse a készlet.

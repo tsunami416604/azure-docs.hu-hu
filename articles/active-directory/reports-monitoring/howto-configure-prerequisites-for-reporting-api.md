@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 05/07/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 8d610dc74b7e2ef10295bc0a3407cf7c3d781b51
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: f72d15707d9f56b9e9b5a5d527d1204007c40afa
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42058385"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621972"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Az Azure Active Directory reporting API elérésének előfeltételeit
 
@@ -31,12 +31,10 @@ A jelentéskészítő API által használt [OAuth](https://msdn.microsoft.com/li
 
 A jelentéskészítő API hozzáférési előkészítéseként kell tennie:
 
-1. Szerepkörök hozzárendelése
-2. Egy alkalmazás regisztrálása
-3. Engedélyek megadása
-4. Konfigurációs beállítások összegyűjtése
-
-
+1. [Szerepkörök hozzárendelése](#assign-roles)
+2. [Egy alkalmazás regisztrálása](#register-an-application)
+3. [Engedélyek megadása](#grant-permissions)
+4. [Konfigurációs beállítások összegyűjtése](#gather-configuration-settings)
 
 ## <a name="assign-roles"></a>Szerepkörök hozzárendelése
 
@@ -49,30 +47,27 @@ A jelentési adatok eléréséhez az API-n keresztül, szüksége lesz hozzáren
 - Globális rendszergazda
 
 
-
-
 ## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
 
-Szeretne regisztrálni egy alkalmazást, akkor is, ha a jelentéskészítő API-parancsfájl használatával éri el. Ez lehetővé teszi egy **Alkalmazásazonosító**, amelyre szükség egy hitelesítési hívás az, és lehetővé teszi, hogy a kód jogkivonatokat fogadni.
+Szeretne regisztrálni egy alkalmazást, akkor is, ha a jelentéskészítő API-parancsfájl használatával éri el. Ez lehetővé teszi egy **Alkalmazásazonosító**, amelynek szükség, a hívások és az lehetővé teszi, hogy a kód jogkivonatokat fogadni.
 
-A címtár az Azure AD reporting API eléréséhez konfigurálásához, jelentkezzen be az Azure Portalon egy Azure-rendszergazdai fiókkal, amely tagja is, hogy a **globális rendszergazdai** címtárbeli szerepkört az Azure AD-bérlőben.
+A címtár az Azure AD reporting API eléréséhez konfigurálásához, jelentkezzen be a a [az Azure portal](https://portal.azure.com) egy Azure-rendszergazdai fiókkal, amely tagja is a **globális rendszergazdai** címtárbeli szerepkört az Azure AD-bérlőben.
 
 > [!IMPORTANT]
-> Futó credentials "rendszergazda" jogosultsággal ehhez hasonló alkalmazások nagyon hatékonyak lehetnek, ezért ügyeljen arra, hogy az alkalmazás azonosítója vagy titkos kódja hitelesítő adatait biztonságban.
+> Rendszergazdai jogosultságokkal rendelkező hitelesítő adatokat a futó alkalmazások nagyon hatékonyak lehetnek, ezért ellenőrizze, hogy az alkalmazás-azonosító és titkos hitelesítő adatok biztonságos helyen.
 > 
 
+**Az Azure AD alkalmazás regisztrálása:**
 
-**Az Azure Active Directory-alkalmazás regisztrálása:**
-
-1. Az a [az Azure portal](https://portal.azure.com), a bal oldali navigációs panelén kattintson **Azure Active Directory**.
+1. Az a [az Azure portal](https://portal.azure.com)válassza **Azure Active Directory** a bal oldali navigációs ablaktáblán.
    
     ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
-2. Az a **Azure Active Directory** kattintson **alkalmazásregisztrációk**.
+2. Az a **Azure Active Directory** lapon jelölje be **alkalmazásregisztrációk**.
 
     ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/02.png) 
 
-3. Az a **alkalmazásregisztrációk** oldalon, a felső eszköztáron kattintson **új alkalmazásregisztráció**.
+3. Az a **alkalmazásregisztrációk** lapon jelölje be **új alkalmazásregisztráció**.
 
     ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/03.png)
 
@@ -86,7 +81,7 @@ A címtár az Azure AD reporting API eléréséhez konfigurálásához, jelentke
 
     c. Az a **bejelentkezési URL-** szövegmezőbe írja be `https://localhost`.
 
-    d. Kattintson a **Create** (Létrehozás) gombra. 
+    d. Kattintson a **Létrehozás** gombra. 
 
 
 ## <a name="grant-permissions"></a>Engedélyek megadása 
@@ -101,54 +96,49 @@ API-t szeretné elérni, attól függően kell biztosítania az alkalmazás a k�
 
 ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/36.png)
 
-
 Az alábbi szakasz lépéseit ismerteti a mindkét API-k. Ha nem szeretne hozzáférni az API-k valamelyikét, a kapcsolódó lépést kihagyhatja.
- 
 
 **Az API-k használata az alkalmazás engedélyek megadására:**
 
-1. Az a **alkalmazásregisztrációk** az alkalmazáslistában kattintson **Reporting API-alkalmazás**.
-
-2. Az a **Reporting API-alkalmazás** oldalon, a felső eszköztáron kattintson **beállítások**. 
+1. Válassza ki az alkalmazás a **Alkalmazásregisztrációk** lapon, és válassza **beállítások**. 
 
     ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
-3. Az a **beállítások** kattintson **szükséges engedélyek**. 
+2. Az a **beállítások** lapon jelölje be **szükséges engedélyek**. 
 
     ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/06.png)
 
-4. A a **szükséges engedélyek** lap a **API** listáról **Windows Azure Active Directory**. 
+3. A a **szükséges engedélyek** lap a **API** listáról **Windows Azure Active Directory**. 
 
     ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/07.png)
 
-5. A a **hozzáférés engedélyezése** lapon jelölje be **címtáradatok olvasása** és kijelölésének megszüntetéséhez **jelentkezzen be és felhasználói profil olvasása**. 
+4. A a **hozzáférés engedélyezése** lapon jelölje be **címtáradatok olvasása** és kijelölésének megszüntetéséhez **jelentkezzen be és felhasználói profil olvasása**. 
 
     ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/08.png)
 
-6. A felső eszköztáron kattintson **mentése**.
+5. A felső eszköztáron kattintson **mentése**.
 
     ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/15.png)
 
-7. Az a **szükséges engedélyek** oldalon, a felső eszköztáron kattintson **Hozzáadás**.
+6. Az a **szükséges engedélyek** oldalon, a felső eszköztáron kattintson **Hozzáadás**.
 
     ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/32.png)
 
-8. Az a **API-hozzáférés hozzáadása** kattintson **API kiválasztása**.
+7. Az a **API-hozzáférés hozzáadása** kattintson **API kiválasztása**.
 
     ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/31.png)
 
-9. Az a **API kiválasztása** kattintson **Microsoft Graph**, és kattintson a **válassza**.
+8. Az a **API kiválasztása** kattintson **Microsoft Graph**, és kattintson a **válassza**.
 
     ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/33.png)
 
-10. A a **hozzáférés engedélyezése** lapon jelölje be **olvassa el az összes naplózási naplóadatok**, és kattintson a **válassza**.  
+9. A a **hozzáférés engedélyezése** lapon jelölje be **olvassa el az összes naplózási naplóadatok**, és kattintson a **válassza**.  
 
     ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/34.png)
 
+10. Az a **API-hozzáférés hozzáadása** kattintson **kész**.  
 
-11. Az a **API-hozzáférés hozzáadása** kattintson **kész**.  
-
-12. Az a **szükséges engedélyek** oldalon, a felső eszköztáron. Kattintson a **engedélyek megadása**, és kattintson a **Igen**.
+11. Az a **szükséges engedélyek** oldalon, a felső eszköztáron. Kattintson a **engedélyek megadása**, és kattintson a **Igen**.
 
     ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/17.png)
 
@@ -167,11 +157,11 @@ A jelentéskészítő API-hívások konfigurálásakor kell ezeket az értékeke
 
 **A tartománynév lekérése:**
 
-1. Az a [az Azure portal](https://portal.azure.com), a bal oldali navigációs panelén kattintson **Azure Active Directory**.
+1. Az a [az Azure portal](https://portal.azure.com), a bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory**.
    
     ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
-2. Az a **Azure Active Directory** kattintson **egyéni tartománynevek**.
+2. Az a **Azure Active Directory** lapon jelölje be **egyéni tartománynevek**.
 
     ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/09.png) 
 
@@ -186,12 +176,11 @@ A jelentéskészítő API-hívások konfigurálásakor kell ezeket az értékeke
    
     ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
-2. Az a **alkalmazásregisztrációk** az alkalmazáslistában kattintson **Reporting API-alkalmazás**.
+2. Válassza ki az alkalmazás a **Alkalmazásregisztrációk** lapot.
 
-3. Az a **Reporting API-alkalmazás** lapon, a **Alkalmazásazonosító**, kattintson a **kattintson a másoláshoz**.
+3. Lépjen az alkalmazás oldaláról **Alkalmazásazonosító** válassza **kattintson a másoláshoz**.
 
     ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/11.png) 
-
 
 
 ### <a name="get-your-applications-client-secret"></a>Az alkalmazás titkos ügyfélkulcsát beolvasása
@@ -203,17 +192,15 @@ Az alkalmazás titkos ügyfélkulcsát lekéréséhez szüksége, hozzon létre 
    
     ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
-2. Az a **alkalmazásregisztrációk** az alkalmazáslistában kattintson **Reporting API-alkalmazás**.
+2.  Válassza ki az alkalmazás a **Alkalmazásregisztrációk** lapot.
 
-
-3. Az a **Reporting API-alkalmazás** oldalon, a felső eszköztáron kattintson **beállítások**. 
+3. Az alkalmazás oldalán, az a felső eszköztáron válassza **beállítások**. 
 
     ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
-4. Az a **beállítások** lap a **APIR hozzáférés** területén kattintson **kulcsok**. 
+4. Az a **beállítások** lap a **API-hozzáférés** területén kattintson **kulcsok**. 
 
     ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/12.png)
-
 
 5. Az a **kulcsok** lapon, a következő lépésekkel:
 
@@ -231,6 +218,5 @@ Az alkalmazás titkos ügyfélkulcsát lekéréséhez szüksége, hozzon létre 
 ## <a name="next-steps"></a>További lépések
 
 * [Adatok lekérése az Azure Active Directory reporting API és tanúsítványok használatával](tutorial-access-api-with-certificates.md)
-* [Ismerkedés a Reporting API-k működésével](concept-reporting-api.md)
 * [Naplózási referencia API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
 * [Bejelentkezési tevékenységek jelentésének API-referencia](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)

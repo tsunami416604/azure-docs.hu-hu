@@ -10,27 +10,27 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/10/2018
+ms.date: 11/02/2018
 ms.author: laviswa
-ms.openlocfilehash: 22b31e7df4e11f8f98877a8497b533203dcc26b3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8799371c911f3e120cb8654bf26fa933b17e4b3c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233303"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623408"
 ---
-# <a name="query-azure-cosmos-db-data-with-sql-queries"></a>Azure Cosmos DB-adatok lekérdezése az SQL-lekérdezésekhez
+# <a name="sql-queries-in-azure-cosmos-db"></a>Az Azure Cosmos DB SQL-lekérdezések
 
-A Microsoft Azure Cosmos DB támogatja a dokumentumok lekérdezését SQL (Structured Query Language), egy JSON lekérdezési nyelve az SQL API-fiókok. A lekérdezési nyelv az Azure Cosmos DB tervezésekor az alábbi két célok tekinthetők meg:
+Az Azure Cosmos DB támogatja az SQL (Structured Query Language) használatával, egy JSON lekérdezési nyelve az SQL API Cosmos-adatbázis lekérdezéséhez. A lekérdezési nyelv, az SQL API Cosmos-adatbázis tervezésekor az alábbi két célok lettek figyelembe véve:
 
-* Helyett egy új lekérdezési nyelvre inventing, tettük az Azure Cosmos DB SQL-lekérdezés ismerős és a népszerű nyelvek támogatása. Az Azure Cosmos DB SQL formális programozási modellt biztosít részletes lekérdezéseket a JSON-dokumentumokon végzett.  
+* Helyett egy új lekérdezési nyelvre inventing, Cosmos DB támogatja az SQL-lekérdezés ismerős és a népszerű nyelvek valamelyikével. Cosmos DB SQL formális programozási modellt biztosít részletes lekérdezéseket a JSON-adatok.  
 
-* Az Azure Cosmos DB JavaScript programozási modellt használ a lekérdezési nyelv alapjaként. Az SQL API a JavaScript, kifejezés kiértékelése, valamint függvény meghívási feltörték. Ez a-kapcsolja be a leképezések relációs, hierarchikus navigációs természetes programozási modellt biztosít JSON-dokumentumok, önkiszolgáló összekapcsolásokat, térinformatikai lekérdezéseket és hívja meg a felhasználó által definiált függvények (UDF), teljes mértékben javascriptben írt, többek között. 
+* A cosmos DB JavaScript programozási modellt használ a lekérdezési nyelv alapjaként. Az SQL API a JavaScript, kifejezés kiértékelése, valamint függvény meghívási feltörték. Így lehetővé teszi a természetes programozási modell leképezések relációs, hierarchikus navigációs JSON-dokumentumok, önkiszolgáló összekapcsolásokat, térinformatikai lekérdezéseket és hívja meg a felhasználó által definiált függvények (UDF), teljes mértékben javascriptben írt, többek között.
 
-Ez a cikk végigvezeti néhány példa SQL-lekérdezések egyszerű JSON-dokumentumok használatával. Azure Cosmos DB SQL nyelvi szintaxissal kapcsolatos további információkért lásd: [SQL-szintaxis referenciája](sql-api-sql-query-reference.md) cikk. 
+Ez a cikk bemutatja a Cosmos DB SQL-lekérdezések egyszerű JSON-dokumentumok használatával néhány példán keresztül. Cosmos DB SQL nyelvi szintaxissal kapcsolatos további információkért lásd: [SQL-szintaxis referenciája](sql-api-sql-query-reference.md).
 
 ## <a id="GettingStarted"></a>Ismerkedés az SQL-parancsok
-Hozzunk létre két egyszerű JSON-dokumentumok és adatok lekérdezése. Két JSON-dokumentumok családok kapcsolatban fontolja meg, ezek a JSON-dokumentumok beszúrása egy gyűjteménybe, és ezt követően az adatok lekérdezéséhez. Itt van egy egyszerű JSON az Andersen és Wakefield családhoz, a szülők, gyermekek (és a kisállatok), a dokumentum-címet, és a regisztrációs adatok. A dokumentum a karakterláncokat, számok, logikai értékek, tömbök és beágyazott tulajdonságok rendelkezik. 
+Most két egyszerű JSON-dokumentumok létrehozása családok leíró, és az adatok lekérdezéséhez. Két dokumentumok beilleszt egy Cosmos-tárolóba, megkezdhetjük az adatok lekérdezéséhez. Az alábbiakban meghatározzuk az Andersen és Wakefield családhoz egyszerű JSON-dokumentumokat. Minden egyes dokumentum karakterláncok, számok, logikai értékek, tömbök, és beágyazott tulajdonságait tartalmazza.
 
 **Dokumentum 1**  
 
@@ -44,8 +44,8 @@ Hozzunk létre két egyszerű JSON-dokumentumok és adatok lekérdezése. Két J
   ],
   "children": [
      {
-         "firstName": "Henriette Thaulow", 
-         "gender": "female", 
+         "firstName": "Henriette Thaulow",
+         "gender": "female",
          "grade": 5,
          "pets": [{ "givenName": "Fluffy" }]
      }
@@ -89,9 +89,9 @@ Hozzunk létre két egyszerű JSON-dokumentumok és adatok lekérdezése. Két J
 }
 ```
 
-Most pedig próbáljuk ki néhány lekérdezéseket az ezeket az adatokat egy Azure Cosmos DB SQL lekérdező nyelve fő szempontja részének megértésében. 
+Most pedig próbáljuk ki néhány lekérdezéseket az ezeket az adatokat a Cosmos DB SQL lekérdező nyelve néhány fontos szempontjai ismertetése.
 
-**Lekérdezés1**: például a következő lekérdezés olyan dokumentumokat ad vissza, az id mezője megegyezik-e `AndersenFamily`. Mivel ez egy `SELECT *`, a lekérdezés kimenete a teljes JSON-dokumentum, a szintaxissal kapcsolatos további tudnivalókért lásd: [SELECT utasítás](sql-api-sql-query-reference.md#select-query):
+**Lekérdezés1**: A következő lekérdezés olyan dokumentumokat ad vissza, az id mezője megegyezik-e `AndersenFamily`. Mivel ez egy `SELECT *`, a lekérdezés kimenete a teljes JSON-dokumentumot. A lekérdezési szintaxissal kapcsolatos további tudnivalókért lásd: [SELECT utasítás](sql-api-sql-query-reference.md#select-query):
 
 ```sql
     SELECT * 
@@ -121,7 +121,7 @@ Most pedig próbáljuk ki néhány lekérdezéseket az ezeket az adatokat egy Az
     }]
 ```
 
-**Lekérdezés2** : Most vegyük azt az esetet, ahol kell formáznia a JSON-kimenet egy másik minősége. Ez a lekérdezés egy új JSON-objektumot két kijelölt mezővel, nevét és az városa, projektek, ha a cím:' város ugyanazzal a névvel rendelkezik, az állapot. Ebben az esetben a "NY, NY" illeszkedik.   
+**Lekérdezés2** : mostantól fontolja meg egy esetet, ahol a JSON-kimenet formáznia kell. A lekérdezés visszaad egy JSON-objektumot két kijelölt mezővel, nevét és az városa, dokumentumok, amelyben város és állam azonosak. Ebben az esetben a "NY, NY" egyezés.
 
 ```sql
     SELECT {"Name":f.id, "City":f.address.city} AS Family 
@@ -159,15 +159,15 @@ Most pedig próbáljuk ki néhány lekérdezéseket az ezeket az adatokat egy Az
     ]
 ```
 
-Az alábbiakban néhány aspektusait a Cosmos DB lekérdezési nyelv bemutatott megtudhatta, amennyiben példákat:  
+Néhány fontos szempontja a Cosmos DB SQL lekérdező nyelve a példákon keresztül láthatta, amennyiben:  
 
-* Mivel az SQL API a JSON-értékeit működik, formázott sorok és oszlopok helyett entitások fa foglalkozik. Ezért a nyelv segítségével, tekintse meg a fa bármilyen tetszőleges mélységben csomópontok például `Node1.Node2.Node3…..Nodem`, hasonlóan ahhoz, hogy a két rész referenciája a hivatkozó relációs SQL `<table>.<column>`.   
+* Mivel az SQL API a JSON-értékeit működik, formázott sorok és oszlopok helyett entitások fa foglalkozik. Ezért a nyelv segítségével, tekintse meg a fa bármilyen tetszőleges mélységben csomópontok például `Node1.Node2.Node3…..Nodem`, hasonlóan ahhoz, hogy a két rész referenciája a hivatkozó relációs SQL `<table>.<column>`.
 
-* A strukturált lekérdezési nyelvi séma nélküli adatokkal dolgozik. Ezért a típus rendszer kell dinamikusan van kötve. Egyazon kifejezésre sikerült eddig is számtalan előnyét különböző dokumentumokon eltérő típusú. A lekérdezés eredménye egy érvényes JSON-értéket, de nem garantált, hogy a rögzített sémát kell.  
+* Az SQL API a séma nélküli adatokkal dolgozik. Ezért a típus rendszer kell dinamikusan van kötve. Egyazon kifejezésre partíciónként akár különböző típusok különböző dokumentumokon kiértékelésekor. A lekérdezés eredménye egy érvényes JSON-értéket, de nem garantált, hogy egy adott séma lehet.
 
-* Az Azure Cosmos DB támogatja a szigorú JSON-dokumentumok csak. Ez azt jelenti, hogy a rendszer típusa és -kifejezések csak JSON típusú kezelésére korlátozva. Tekintse meg a [JSON-specifikáció](http://www.json.org/) további részletekért.  
+* A cosmos DB támogatja a szigorú JSON-dokumentumok csak. Ez azt jelenti, hogy a rendszer típusa és -kifejezések csak JSON típusú kezelésére korlátozva. Tekintse meg a [JSON-specifikáció](http://www.json.org/) további részletekért.  
 
-* A Cosmos DB-gyűjtemények egy sémamentes JSON-dokumentumok tartalmazó tároló. A kapcsolatokat, az adatok entitások belül és azok között a gyűjteményben található dokumentumokat implicit módon rögzítve lesznek a tartalmazási, és nem a primary key és az idegen kulcs kapcsolatokat. Ez az a cikkben később tárgyalt intra-dokumentum illesztéseket naprakészségét megjegyeznünk fontos elemét alkotják.
+* Egy Cosmos-tárolót egy sémamentes JSON-dokumentumokat tároló. A kapcsolatokat, az adatok entitások belül és azok között a tárolóban lévő dokumentumok implicit módon rögzítve lesznek a tartalmazási, és nem a primary key és az idegen kulcs kapcsolatokat. Ez az a cikkben később tárgyalt intra-dokumentum illesztéseket naprakészségét megjegyeznünk fontos elemét alkotják.
 
 ## <a id="SelectClause"></a>SELECT záradék
 
@@ -264,17 +264,19 @@ Nézzük, szerepe `$1` itt. A `SELECT` záradék létre kell hoznia egy JSON-obj
 
 ## <a id="FromClause"></a>FROM záradékban
 
-Az a < from_specification > záradék nem kötelező, kivéve ha a forrás van szűrve, vagy később a lekérdezést az előre jelzett. A szintaxissal kapcsolatos további tudnivalókért lásd: [a szintaxis](sql-api-sql-query-reference.md#bk_from_clause). A lekérdezés, például `SELECT * FROM Families` azt jelzi, hogy a teljes családok gyűjteményt, amelyben végre szeretné számba venni a forrás. Egy legfelső szintű különleges azonosító használható, amelyek a gyűjtemény neve helyett a gyűjteményben. Az alábbi lista tartalmazza a szabályokat, amelyek lekérdezésenként érvényben vannak:
+Az a < from_specification > záradék nem kötelező, kivéve ha a forrás van szűrve, vagy később a lekérdezést az előre jelzett. A szintaxissal kapcsolatos további tudnivalókért lásd: [a szintaxis](sql-api-sql-query-reference.md#bk_from_clause). A lekérdezés, például `SELECT * FROM Families` azt jelzi, hogy a teljes családok tárolót a forrást, amelyen számbavétele. Egy legfelső szintű különleges azonosító segítségével a tároló neve helyett a tárolót képviseli.
 
-* A gyűjtemény lehet aliassal, például `SELECT f.id FROM Families AS f` vagy egyszerűen csak `SELECT f.id FROM Families f`. Itt `f` megfelelője `Families`. `AS` azonosító érték egy nem kötelező kulcsszó használatával alias.  
+Az alábbi lista tartalmazza a szabályokat, amelyek lekérdezésenként érvényben vannak:
 
-* Egyszer aliassal, az eredeti adatforrás nem köthető. Ha például `SELECT Families.id FROM Families f` szintaktikailag érvénytelen, mivel a "Családok" azonosító nem oldható fel többé.  
+* A tároló lehet aliassal, például `SELECT f.id FROM Families AS f` vagy egyszerűen csak `SELECT f.id FROM Families f`. Itt `f` aliasneve `Families`. `AS` azonosító érték egy nem kötelező kulcsszó használatával alias.  
+
+* Egyszer aliassal, az eredeti adatforrás nem köthető. Ha például `SELECT Families.id FROM Families f` szintaktikailag érvénytelen, mert "Családok" azonosítója nem lehet feloldani folyamatban van a fióknévnek után.  
 
 * Az összes tulajdonság, amely lehet hivatkozni kell a teljesen minősített kell lennie. Szigorú sémát megfelelést hiányában ez kényszerítve van a nem egyértelmű kötések elkerülése érdekében. Ezért `SELECT id FROM Families f` szintaktikailag óta a tulajdonság nem `id` nincs kötve.
 
 ### <a name="get-subdocuments-using-from-clause"></a>FROM záradék használatával aldokumentumok beolvasása
 
-A forrás egy kisebb részhalmazra is csökkenteni lehet. Például csak az egyes dokumentumok részfájának enumerálása, hogy a subroot majd válhat a forrás, az alábbi példában látható módon:
+A forrás is részhalmaza is lehet kiválasztani. Például részfából enumerálni, a forrás adható meg az alábbi példában látható módon:
 
 **Lekérdezés**
 
@@ -316,7 +318,7 @@ A forrás egy kisebb részhalmazra is csökkenteni lehet. Például csak az egye
     ]
 ```
 
-A fenti példában egy tömb használja forrásként, amíg egy objektumot is lehet alkalmazni a forrásaként, amely az alábbi példában is látható: a lekérdezés eredménye, hogy bármilyen érvényes JSON-értéket (nem a nem meghatározott), amely a forrásban található számít. Ha egyes termékcsaládok nem rendelkeznek egy `address.state` érték, a lekérdezés eredményei ki vannak zárva.
+A fenti példában egy tömb használja forrásként, amíg egy objektumot is használható forrásként, az alábbi példában látható módon. Bármely érvényes JSON-értéket (nem a nem meghatározott), amely megtalálható a forrás számít, hogy a lekérdezés eredménye. Ha egyes termékcsaládok nem rendelkeznek egy `address.state` érték, a lekérdezési eredmény ki vannak zárva.
 
 **Lekérdezés**
 
@@ -335,7 +337,7 @@ A fenti példában egy tömb használja forrásként, amíg egy objektumot is le
 ```
 
 ## <a id="WhereClause"></a>WHERE záradék
-A WHERE záradékban (**`WHERE <filter_condition>`**) megadása nem kötelező. Azt adja meg a feltételeket, amelyek a forrás által biztosított a JSON-dokumentumok meg kell felelniük ahhoz, hogy az eredmény része. Bármely JSON-dokumentum "igaz" eredmény figyelembe kell venni a megadott feltételeknek kell kiértékelni. A WHERE záradékban az index réteg használják annak érdekében, hogy a forrás-dokumentumok, az eredmény része lehet abszolút legkisebb részhalmazát határozza meg. A szintaxissal kapcsolatos további tudnivalókért lásd: [WHERE szintaxis](sql-api-sql-query-reference.md#bk_where_clause).
+A WHERE záradékban (**`WHERE <filter_condition>`**) megadása nem kötelező. Azt adja meg a feltételeket, amelyek a forrás által biztosított a JSON-dokumentumok meg kell felelniük ahhoz, hogy az eredmény része. Bármely JSON-dokumentum "igaz" eredmény figyelembe kell venni a megadott feltételeknek kell kiértékelni. A WHERE záradékban az index réteg használják annak érdekében, hogy a legkisebb részhalmazát forrás azt jelzi, hogy az eredmény része lehet meghatározni. A szintaxissal kapcsolatos további tudnivalókért lásd: [WHERE szintaxis](sql-api-sql-query-reference.md#bk_where_clause).
 
 A következő lekérdezést a name tulajdonság, amelynek az értéke tartalmazó dokumentumok kérelmek `AndersenFamily`. Bármely más dokumentum, amely nem rendelkezik a name tulajdonság, vagy ha az érték nem egyezik `AndersenFamily` ki van zárva. 
 
@@ -366,10 +368,10 @@ A következő bináris operátorok jelenleg támogatott, és használható leké
 |**Művelettípus**  |**Értékek**  |
 |---------|---------|
 |Aritmetikai    |   +,-,*,/,%   |
-|Bitenkénti  |   |, &, ^, <<>>,, >>> (nulla ki jobbra tolást)      |
+|Bitenkénti  |   , &, ^, &lt; &lt;, &gt; &gt;, &gt; &gt; &gt; (nulla ki jobbra tolást)      |
 |Logikai   |   ÉS, VAGY SEM      |
 |Összehasonlítás   |    =, !=, &lt;, &gt;, &lt;=, &gt;=, <>     |
-|Karakterlánc  |  || (fűzze össze)       |
+|Karakterlánc  |  \|\| (fűzze össze)       |
 
 Vessünk egy pillantást a bináris operátorok használatával néhány lekérdezést.
 
@@ -925,7 +927,7 @@ A felső kulcsszó egy lekérdezés által értékek számának korlátozására
 FELSŐ használható egy állandó értékkel (a fent látható) vagy egy változó értéke a paraméteres lekérdezések használatával. További részletekért tekintse meg az alábbi paraméteres lekérdezések.
 
 ## <a id="Aggregates"></a>Aggregátumfüggvények
-Az összesítéseket is elvégezheti a `SELECT` záradékban. Aggregátumfüggvények számítás elvégzése különböző értékeket, és egyetlen értéket ad vissza. Például az alábbi lekérdezés a gyűjteményben lévő családba tartozó dokumentumok darabszámát adja vissza.
+Az összesítéseket is elvégezheti a `SELECT` záradékban. Aggregátumfüggvények számítás elvégzése különböző értékeket, és egyetlen értéket ad vissza. A következő lekérdezés például családi, a tárolóban lévő dokumentumok darabszámát adja vissza.
 
 **Lekérdezés**
 
@@ -992,7 +994,7 @@ Az alábbi táblázat a támogatott összesítő függvények listáját az SQL 
 >
 
 ## <a id="OrderByClause"></a>ORDER BY záradék
-Például az ANSI-SQL-ben is megadhat egy választható Order By záradék lekérdezése közben. A záradékot tartalmazhat választható ASC/DESC argumentumban adja meg, amelyben az eredményeket kell kérhető sorrendjét.
+Hasonlóan az ANSI SQL LikJust, hozzáadhatja a választható Order By záradék lekérdezése közben. A záradékot tartalmazhat választható ASC/DESC argumentumban adja meg, amelyben az eredményeket kell kérhető sorrendjét.
 
 Például itt látható egy lekérdezést, amely lekéri a tartózkodási város nevét sorrendje szereplő eszközcsaládokban megtalálható.
 
@@ -1085,7 +1087,7 @@ Egy új szerkezet használatával lett hozzáadva a **IN** kulcsszó keresztül 
     ]
 ```
 
-Most nézzük meg, amely végrehajtja az iteráció gyermekek a gyűjtemény egy másik lekérdezés. Vegye figyelembe a különbség a kimeneti tömbben. Ebben a példában bontja `children` és simítja egybe az eredményeket egy egyetlen tömbbe.  
+Most nézzük meg egy másik lekérdezést, amely végrehajtja az iteráció gyermekek a tárolóban. Vegye figyelembe a különbség a kimeneti tömbben. Ebben a példában bontja `children` és simítja egybe az eredményeket egy egyetlen tömbbe.  
 
 **Lekérdezés**
 
@@ -1159,7 +1161,7 @@ Ez további segítségével szűrhet a tömb minden egyes bejegyzés a következ
 ### <a id="Joins"></a>Illesztés
 Több tábla csatlakozni kell egy relációs adatbázisban, fontos. A logikai corollary normalizált sémák tervezéséhez. Ezzel szemben az SQL API a sémamentes dokumentumok denormalizált adatmodell foglalkozik. Ez a logikai megfelelője a "önillesztést".
 
-A nyelv által támogatott szintaxisa < from_source1 > Csatlakozás < from_source2 > Csatlakozás... JOIN < from_sourceN >. Átfogó, ez visszaadja egy **N**- rekordokat tartalmazó (a rekord **N** értékek). Minden egyes rekord összes gyűjtemény alias léptetés keresztül az adott csoportok által előállított értékkel rendelkezik. Más szóval ez az egy teljes a részt vesz a join készlet keresztszorzatát.
+A nyelv által támogatott szintaxisa < from_source1 > Csatlakozás < from_source2 > Csatlakozás... JOIN < from_sourceN >. Átfogó, ez visszaadja egy **N**- rekordokat tartalmazó (a rekord **N** értékek). Minden egyes rekord összes tároló-alias léptetés keresztül az adott csoportok által előállított értékkel rendelkezik. Más szóval ez az egy teljes a részt vesz a join készlet keresztszorzatát.
 
 Az alábbi példák bemutatják, hogyan működik a JOIN záradékban. A következő példában minden egyes dokumentum forrásból keresztszorzatát óta eredménye nem üres és üres üres.
 
@@ -1321,17 +1323,17 @@ A következő példában van egy kiegészítő szűrőt `pet`. Ez nem tartalmazz
 ```
 
 ## <a id="JavaScriptIntegration"></a>JavaScript-integráció
-Az Azure Cosmos DB-alapú JavaScript-alkalmazáslogika végre közvetlenül a gyűjtemények, tárolt eljárásokkal és eseményindítókkal tekintetében a programozási modellt biztosít. Ez lehetővé teszi, hogy mindkét:
+A cosmos DB-alapú JavaScript-alkalmazáslogika végre közvetlenül a tárolókban tárolt eljárások és eseményindítók tekintetében a programozási modellt biztosít. Ez lehetővé teszi, hogy mindkét:
 
-* Lehetővé teszi nagy teljesítményű tranzakciós CRUD-műveletek és a egy gyűjtemény alapján szoros integrációja JavaScript futtatókörnyezet közvetlenül belül az adatbázismotor-dokumentumokon végzett lekérdezések. 
-* A természetes modellezési átvitelvezérlés, változó felmerülő, és a hozzárendelés és integrációs kivételkezelési primitívek adatbázis-tranzakciók. JavaScript-integráció az Azure Cosmos DB támogatásával kapcsolatos további részletekért tekintse meg a JavaScript kiszolgálóoldali programozhatóság dokumentációját.
+* Lehetővé teszi nagy teljesítményű tranzakciós CRUD-műveletek és a egy tárolóban, a mély integráció, közvetlenül az adatbázismotor belül JavaScript futtatókörnyezet-hez tartozó-dokumentumokon végzett lekérdezések. 
+* A természetes modellezési átvitelvezérlés, változó felmerülő, és a hozzárendelés és integrációs kivételkezelési primitívek adatbázis-tranzakciók. JavaScript-integráció a Cosmos DB támogatásával kapcsolatos további részletekért tekintse meg a JavaScript kiszolgálóoldali programozhatóság dokumentációját.
 
 ### <a id="UserDefinedFunctions"></a>Felhasználó által definiált függvények (UDF-EK)
 Az ebben a cikkben már definiált típusok, valamint az SQL API-t biztosít támogatást a felhasználó definiált függvények (UDF). Skaláris UDF-EK támogatottak, ahol a fejlesztők nulla vagy több argumentumot adja át, és vissza egyetlen argumentumot eredményt adja vissza. Minden egyes argumentum ellenőrzése alatt álló jogi JSON-értékeit.  
 
 Az SQL-szintaxis terjeszteni ezen felhasználó által megadott függvények használatával egyéni alkalmazáslogika támogatása. UDF-EK SQL API-val lehet regisztrálni, és ezután lehet hivatkozni az SQL-lekérdezés részeként. Sőt az UDF-EK exquisitely tervezték, hogy a lekérdezések által. Ezt a választást maradhassanak UDF-EK nem rendelkezik a context objektumot, a többi JavaScript típusok (tárolt eljárások és eseményindítók), melynél a hozzáférést. Lekérdezések csak olvashatóként hajtható végre, mert elsődleges vagy másodlagos replikákon is működhetnek. Ezért UDF-EK tervezték, hogy a másodlagos replikákon ellentétben más JavaScript típusú futtassa.
 
-Alább egy példát egy UDF hogyan lehet regisztrálni, a Cosmos DB-adatbázissal kifejezetten egy dokumentum egy dokumentumgyűjteményben alatt van.
+Alább egy példát egy UDF hogyan lehet regisztrálni, Cosmos-adatbázis, kifejezetten egy dokumentumot tároló alatt van.
 
 ```javascript
        UserDefinedFunction regexMatchUdf = new UserDefinedFunction
@@ -1456,7 +1458,7 @@ A cosmos DB, folyamatban van egy JSON-adatbázis rendelkezik rajzol a JavaScript
 
 Az SQL API-ellentétben a hagyományos SQL-ben a típusú értékek gyakran nem ismert mindaddig, amíg a rendszer lekéri az értékek adatbázis. Annak érdekében, hogy hatékonyan hajtsa végre a lekérdezéseket, az operátorok a legtöbb szigorú adattípus-követelményekkel rendelkeznek. 
 
-Az SQL API végre implicit konverzió, ellentétben a JavaScript. Például egy lekérdezést, például `SELECT * FROM Person p WHERE p.Age = 21` megegyezik egy kora tulajdonságot, amelynek az értéke 21 tartalmazó dokumentumokat. Bármely dokumentum amelynek kora tulajdonsága egyezést mutat az "21", vagy más karakterlánc valószínűleg végtelen változata létezik, például "021", "21,0", "0021", "00021", stb. nem található, karakterként lesz. Ez a karakterlánc-értékeket implicit módon casted számok, amelyeknél a JavaScript, ezzel szemben az (például operátor szerinti szűrése, alapján: ==). Ez a választás elengedhetetlen a hatékony indexek az SQL API-t a megfelelő. 
+Az SQL API végre implicit konverzió, ellentétben a JavaScript. Például egy lekérdezést, például `SELECT * FROM Person p WHERE p.Age = 21` megegyezik egy kora tulajdonságot, amelynek az értéke 21 tartalmazó dokumentumokat. Bármely dokumentum amelynek kora tulajdonsága egyezést mutat az "21", vagy más karakterlánc valószínűleg végtelen változata létezik, például "021", "21,0", "0021", "00021", stb. nem található, karakterként lesz. Ez a szakembereket a JavaScript, hol vannak a karakterlánc-értékeket implicit módon konvertálni számok (például operátor szerinti szűrése, alapján: ==). Ez a választás elengedhetetlen a hatékony indexek az SQL API-t a megfelelő. 
 
 ## <a name="parameterized-sql-queries"></a>Paraméteres SQL-lekérdezések
 A cosmos DB támogatja a lekérdezések és az ismerős kifejezett paraméterekkel \@ jelöléssel. Paraméteres SQL biztosít hatékony kezelése és escape-karaktersorozat felhasználói bevitelt, SQL-injektálás az adatok véletlen kitettség megelőzése. 
@@ -1806,7 +1808,7 @@ Térbeli funkciók térbeli adatokon közelségi lekérdezések végrehajtásáh
     }]
 ```
 
-További részleteket a térinformatikai támogatási Cosmos DB-ben, [térinformatikai adatok az Azure Cosmos DB](geospatial.md). Végére értünk térbeli függvények, és az SQL-szintaxis a Cosmos DB. Most vessünk egy pillantást, hogyan működik, és hogyan kommunikál a szintaxissal lekérdezéséhez LINQ megtudtuk, eddig.
+Térinformatikai támogatási Cosmos DB-ben a további részletekért lásd: [Cosmos DB-ben a térinformatikai adatok használata](geospatial.md). Végére értünk térbeli függvények, és az SQL-szintaxis a Cosmos DB. Most vessünk egy pillantást, hogyan működik, és hogyan kommunikál a szintaxissal lekérdezéséhez LINQ megtudtuk, eddig.
 
 ## <a id="Linq"></a>LINQ SQL API-hoz
 LINQ .NET programozási modell, amely kifejezi az objektumok adatfolyamok lekérdezések, számítások. A cosmos DB biztosítja, hogy a LINQ to felület ügyféloldali kódtár a JSON és a .NET-objektumok és a egy LINQ-lekérdezések egy részét a Cosmos DB-lekérdezésekre leképezés közötti váltás megkönnyítése. 
@@ -2138,14 +2140,14 @@ Egy beágyazott lekérdezésen a belső lekérdezés és a külső gyűjtemény 
 ## <a id="ExecutingSqlQueries"></a>SQL-lekérdezések végrehajtása
 A cosmos DB erőforrásokat, amelyek bármilyen, HTTP/HTTPS-kérelem indítására képes nyelv meghívhat REST API-n keresztül tesz elérhetővé. Ezenfelül a Cosmos DB programozási könyvtárakat, mint például a .NET, Node.js, JavaScript és Python számos népszerű nyelvhez biztosít. A REST API és a különböző kódtárak támogatja a lekérdezése SQL használatával. A .NET SDK támogatja a LINQ lekérdezés mellett az SQL.
 
-Az alábbi példák bemutatják, hogyan hozzon létre egy lekérdezést, és küldje el azt egy Cosmos DB-adatbázisfiók ellen.
+Az alábbi példák bemutatják, hogyan hozzon létre egy lekérdezést, és küldje el azt egy Cosmos-fiók ellen.
 
 ### <a id="RestAPI"></a>REST API-VAL
-A cosmos DB egy megnyitott RESTful programozási modellt kínál a HTTP-n keresztül. Adatbázis-fiókoknál bővítheti Azure-előfizetéssel. A Cosmos DB erőforrás-modellje több erőforrást, amelyek mindegyike címmel rendelkező logikai és stabil URI segítségével az adatbázis-fiókja alatt áll. Erőforráscsoport ebben a dokumentumban hírcsatorna nevezzük. Az adatbázisfiók áll, adatbázisok mindegyike több gyűjteményt tartalmazó melyik a-kapcsolja mindegyike tartalmaz, a dokumentumok, felhasználói függvényeket és más erőforrástípusok.
+A cosmos DB egy megnyitott RESTful programozási modellt kínál a HTTP-n keresztül. Cosmos-fiókok bővítheti Azure-előfizetéssel. A Cosmos DB erőforrás-modellje több erőforrást, amelyek mindegyike a megcímezhető logikai és stabil URI segítségével Cosmos-fiókja alatt áll. Erőforráscsoport ebben a dokumentumban hírcsatorna nevezzük. Cosmos-fiók áll adatbázisai, mindegyik több tárolót, mely a-kapcsolja mindegyike tartalmaz, a dokumentumok, felhasználói függvényeket és más erőforrástípusok.
 
 Az alapszintű interakció ezekkel az erőforrásokkal modellje a HTTP-műveletek keresztül GET, PUT, POST és DELETE a standard szintű tolmácsolási szolgáltatással. A POST művelet egy új erőforrást, egy tárolt eljárás végrehajtása vagy egy Cosmos DB lekérdezéssel kiadására használatos. Lekérdezések mindig csak olvasható műveletekhez, nincs mellékhatásokkal.
 
-Az alábbi példák bemutatják egy SQL API-lekérdezés ellen a két minta dokumentumot tartalmazó gyűjtemény, amennyiben már áttekinthette bejegyzés. A lekérdezés egy egyszerű szűrő rendelkezik a JSON-name tulajdonság. Vegye figyelembe a használatát a `x-ms-documentdb-isquery` és a Content-Type: `application/query+json` fejlécek jelölésére, hogy-e a művelet egy lekérdezést.
+Az alábbi példák bemutatják egy SQL API-lekérdezés ellen a két minta dokumentumot tartalmazó tároló eddig már áttekinthette bejegyzés. A lekérdezés egy egyszerű szűrő rendelkezik a JSON-name tulajdonság. Vegye figyelembe a használatát a `x-ms-documentdb-isquery` és a Content-Type: `application/query+json` fejlécek jelölésére, hogy-e a művelet egy lekérdezést.
 
 **Kérés**
 
@@ -2271,11 +2273,11 @@ A második példa bemutatja egy összetettebb lekérdezés, amely a join több e
 
 Ha egy lekérdezés eredményeit nem fér el egyetlen oldalnyi találatot belül, akkor a REST API-t adja vissza egy folytatási tokent keresztül a `x-ms-continuation-token` válaszfejléc. Ügyfelek eredmények oldalakra bontása azzal a fejléc a következő eredményeket is. Eredmények száma oldalanként számát is szabályozható a `x-ms-max-item-count` szám fejléc. Ha például egy összesítő függvényt a megadott lekérdezés `COUNT`, akkor a lekérdezés lap egy részlegesen összesített értéket adhat vissza az eredmények oldalát. Az ügyfelek ezekkel az eredményekkel, például a végső eredményt, a számát adja vissza a teljes száma az egyes lapok keresztül összeg fölé kell végrehajtania egy második szintű összesítést.
 
-Lekérdezések az adatok konzisztencia-szabályzat kezeléséhez használja a `x-ms-consistency-level` például minden REST API-kérelem fejléce. A munkamenet-konzisztencia érdekében fontos, hogy a legújabb is echo `x-ms-session-token` a lekérdezési kérelem Cookie-fejlécet. A lekérdezett gyűjtemény indexelési házirendet is befolyásolhatja a lekérdezési eredmények konzisztenciáját. Az alapértelmezett indexelési házirend-beállításokat, a gyűjtemények az index mindig aktuális a dokumentum tartalma és lekérdezési eredmények megfelelnek a kiválasztott adatok konzisztencia. Ha az indexelési házirendet Lusta van enyhe, lekérdezések elavult eredményeket adhat vissza. További információkért lásd: [Azure Cosmos DB Konzisztenciaszintjeinek][consistency-levels].
+Lekérdezések az adatok konzisztencia-szabályzat kezeléséhez használja a `x-ms-consistency-level` például minden REST API-kérelem fejléce. A munkamenet-konzisztencia érdekében fontos, hogy a legújabb is echo `x-ms-session-token` a lekérdezési kérelem Cookie-fejlécet. A lekérdezett tároló indexelési házirendet is befolyásolhatja a lekérdezési eredmények konzisztenciáját. Az alapértelmezett indexelési házirend-beállítások, for containers szolgáltatásban az index mindig aktuális a dokumentum tartalma és lekérdezési eredmények megfelelnek a kiválasztott adatok konzisztencia. Ha az indexelési házirendet Lusta van enyhe, lekérdezések elavult eredményeket adhat vissza. További információkért lásd: [Cosmos DB Konzisztenciaszintjeinek][consistency-levels].
 
-Ha a beállított indexelési házirendet a a gyűjtemény nem támogatja a megadott lekérdezés, az Azure Cosmos DB kiszolgáló 400 "Hibás kérés" adja vissza. Ez a tartomány-lekérdezéseket az elérési utak kivonata (egyenlőség) kereséseket, valamint az indexelő kifejezetten kizárva elérési utak a konfigurált adja vissza. A `x-ms-documentdb-query-enable-scan` fejléc adható meg, hogy a lekérdezést, hogy vizsgálatot végezzen, ha az index nem érhető el.
+Ha a beállított indexelési házirendet a tárolón a megadott lekérdezés nem támogatja, a Cosmos DB kiszolgáló 400 "Hibás kérés" adja vissza. Ez a tartomány-lekérdezéseket az elérési utak kivonata (egyenlőség) kereséseket, valamint az indexelő kifejezetten kizárva elérési utak a konfigurált adja vissza. A `x-ms-documentdb-query-enable-scan` fejléc adható meg, hogy a lekérdezést, hogy vizsgálatot végezzen, ha az index nem érhető el.
 
-Megjelenik a részletes mérőszámokat a lekérdezés-végrehajtás beállításával `x-ms-documentdb-populatequerymetrics` fejlécet `True`. További információkért lásd: [az Azure Cosmos DB SQL-lekérdezés metrikák](sql-api-sql-query-metrics.md).
+Megjelenik a részletes mérőszámokat a lekérdezés-végrehajtás beállításával `x-ms-documentdb-populatequerymetrics` fejlécet `True`. További információkért lásd: [a Cosmos DB SQL-lekérdezés metrikák](sql-api-sql-query-metrics.md).
 
 ### <a id="DotNetSdk"></a>C# (.NET) SDK
 A .NET SDK támogatja a LINQ- és SQL lekérdezése. Az alábbi példa bemutatja, hogyan jelent meg a jelen dokumentum korábbi az egyszerű szűrő-lekérdezés végrehajtása.
@@ -2364,12 +2366,12 @@ A következő minta bemutatja az illesztések, LINQ SelectMany keresztül.
 
 A .NET-ügyfél automatikusan végighalad a lekérdezési eredmények jelennek meg a foreach egységekben minden oldalára. A lekérdezési beállítások ismertetése a REST API-szakaszban is megtalálhatók a .NET SDK használatával a `FeedOptions` és `FeedResponse` osztályok a CreateDocumentQuery metódusban. A lapok száma használatával lehet irányítani a `MaxItemCount` beállítás. 
 
-Explicit módon is szabályozhatja, lapozási létrehozásával `IDocumentQueryable` használatával a `IQueryable` objektumot, majd olvassa el a` ResponseContinuationToken` értékeket, és átadja azokat a biztonsági másolatot `RequestContinuationToken` a `FeedOptions`. `EnableScanInQuery` beállítható a vizsgálatok engedélyezéséhez, ha a lekérdezés a konfigurált indexelési szabályzat által nem támogatott. A particionált gyűjtemények használhatja `PartitionKey` a lekérdezés futtatásához egy partíció (bár a Cosmos DB automatikusan kinyerheti az Ez a lekérdezés szöveg), és `EnableCrossPartitionQuery` előfordulhat, hogy kell futtatni több partíció-lekérdezések futtatásához. 
+Explicit módon is szabályozhatja, lapozási létrehozásával `IDocumentQueryable` használatával a `IQueryable` objektumot, majd olvassa el a` ResponseContinuationToken` értékeket, és átadja azokat a biztonsági másolatot `RequestContinuationToken` a `FeedOptions`. `EnableScanInQuery` beállítható a vizsgálatok engedélyezéséhez, ha a lekérdezés a konfigurált indexelési szabályzat által nem támogatott. A particionált tárolók használhatja `PartitionKey` a lekérdezés futtatásához egy partíció (bár a Cosmos DB automatikusan kinyerheti az Ez a lekérdezés szöveg), és `EnableCrossPartitionQuery` előfordulhat, hogy kell futtatni több partíció-lekérdezések futtatásához. 
 
-Tekintse meg [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-documentdb-net) további mintákat tartalmazó lekérdezések számára. 
+Tekintse meg [Cosmos DB .NET-minták](https://github.com/Azure/azure-documentdb-net) további mintákat tartalmazó lekérdezések számára. 
 
 ### <a id="JavaScriptServerSideApi"></a>JavaScript server-side API
-A cosmos DB a JavaScript-alapú alkalmazáslogika végrehajtása a gyűjtemények tárolt eljárások és eseményindítók használatával közvetlenül a programozási modellt biztosít. A JavaScript-logika regisztrálva, a gyűjtemény szintjén majd adhat ki az adott gyűjtemény dokumentumok műveleteinek adatbázis-műveleteket. Ezek a műveletek burkolja környezeti ACID-tranzakciókat.
+A cosmos DB a JavaScript-alapú alkalmazáslogika végrehajtása a tárolókban tárolt eljárások és eseményindítók használatával közvetlenül a programozási modellt biztosít. A JavaScript-logika regisztrált tároló szintjén majd bocsát ki a műveletek a dokumentumokon a megadott tároló adatbázis-műveleteket. Ezek a műveletek burkolja környezeti ACID-tranzakciókat.
 
 Az alábbi példa bemutatja, hogyan használható a queryDocuments az API a JavaScript-kiszolgálón, hogy a lekérdezések belül tárolt eljárásokkal és eseményindítókkal.
 

@@ -11,21 +11,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: fcbc924675a97a17b4fcfdf0e1ac39ad5aae9ffd
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: e8a75afe2c7dbe91c7c98d0d35c319088f40748f
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218508"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612678"
 ---
 # <a name="update-azure-app-service-on-azure-stack"></a>Frissítse az Azure App Service az Azure Stackben
 
 *A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 > [!IMPORTANT]  
-> Az Azure Stackkel integrált rendszereknél 1807 frissítés alkalmazása, vagy a legújabb Azure Stack fejlesztői készletének telepítése Azure App Service 1.3 üzembe helyezése előtt.
+> Az Azure Stackkel integrált rendszereknél 1809 frissítés alkalmazása, vagy a legújabb Azure Stack fejlesztői készletének telepítése az Azure App Service 1.4-es üzembe helyezése előtt.
 >
 >
 
@@ -33,7 +33,6 @@ Ez a cikk utasításait követve frissíthet a [App Service erőforrás-szolgál
 
 > [!IMPORTANT]  
 > A frissítés futtatása előtt győződjön meg arról, hogy már végrehajtotta a [központi telepítését az Azure App Service az Azure Stack erőforrás-szolgáltató](azure-stack-app-service-deploy.md)
-
 
 ## <a name="run-the-app-service-resource-provider-installer"></a>Az App Service-ben resource provider telepítőjének futtatása
 
@@ -53,7 +52,7 @@ Ez a folyamat során a frissítés tartalma:
 
 Az App Service üzemelő példánya az Azure Stackben a frissítéshez kövesse az alábbi lépéseket:
 
-1. Töltse le a [az App Service-telepítő](https://aka.ms/appsvcupdate3installer)
+1. Töltse le a [az App Service-telepítő](https://aka.ms/appsvcupdate4installer)
 
 2. Appservice.exe futtassa rendszergazdaként
 
@@ -65,7 +64,7 @@ Az App Service üzemelő példánya az Azure Stackben a frissítéshez kövesse 
 
 5. Tekintse át és fogadja el a külső licencfeltételeket, majd kattintson **tovább**.
 
-6. Győződjön meg arról, hogy az Azure Stack az Azure Resource Manager-végpontot, és az Active Directory-bérlő adatok helyességéről. Az alapértelmezett beállításokat használta az Azure Stack fejlesztői készletének üzembe helyezés során, ha elfogadhatja az alapértelmezett értékeket itt. Azonban ha testre szabta a beállításokat, az Azure Stack üzembe helyezésekor, szerkesztenie kell az értékeket az ebben a változás tükrözése érdekében. Ha például a tartományi utótag használata *mycloud.com*, az Azure Stack az Azure Resource Manager-végpontot kell módosítania *management.region.mycloud.com*. Miután meggyőződött a adatait, kattintson a **tovább**.
+6. Győződjön meg arról, hogy az Azure Stack az Azure Resource Manager-végpontot, és az Active Directory-bérlő adatok helyességéről. Az alapértelmezett beállításokat használta az Azure Stack fejlesztői készletének üzembe helyezés során, ha elfogadhatja az alapértelmezett értékeket itt. Azonban ha testre szabta a beállításokat, az Azure Stack üzembe helyezésekor, szerkesztenie kell az értékek, ebben az ablakban. Ha például a tartományi utótag használata *mycloud.com*, az Azure Stack az Azure Resource Manager-végpontot kell módosítania *management.region.mycloud.com*. Miután meggyőződött a adatait, kattintson a **tovább**.
 
     ![Az Azure Stack a felhőalapú információk][2]
 
@@ -76,7 +75,7 @@ Az App Service üzemelő példánya az Azure Stackben a frissítéshez kövesse 
         * Ha az Active Directory összevonási szolgáltatások (AD FS) használ, adja meg a rendszergazdai fiókjával. Például: *cloudadmin@azurestack.local*. Adja meg a jelszót, és kattintson a **bejelentkezés**.
    2. Az a **Azure Stack-előfizetést** jelölje ki a **szolgáltatói előfizetés alapértelmezett**.
    3. Az a **Azure Stack-helyek** válassza ki a helyet, amely megfelel a régió, helyezi üzembe. Válassza ki például **helyi** Ha az az Azure Stack fejlesztői készletének telepítése.
-   4. Ha meglévő App Service-környezet fel van derítve, majd az erőforrás és a tárfiókja fog használni kitöltve, szürkén jelenik meg.
+   4. Ha meglévő App Service-környezet észlel, majd az erőforrás és a tárfiókja fog használni feltöltve, szürkén jelenik meg.
    5. Kattintson a **tovább** , tekintse át a frissítési összefoglalót.
 
     ![Az App Service-telepítést észlelt][3]

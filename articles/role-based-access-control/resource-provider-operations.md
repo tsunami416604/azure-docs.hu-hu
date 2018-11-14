@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 10/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fd5b0637ab21c9859f2ed06a96c69b51f4681097
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 4f2fc320d0d66e19ec8a1e591377c482a7ec64d9
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569284"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51626133"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Az Azure Resource Manager erőforrás-szolgáltatói műveletek
 
@@ -3188,7 +3188,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Művelettípus | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft.Migrate/locations/assessmentOptions/read | Az adott helyen elérhető értékelési beállítások beolvasása |
-> | Műveletek | Microsoft.Migrate/locations/checknameavailability/action | Az erőforrásnév az adott előfizetésben és az adott helyen való elérhetőségének ellenőrzése |
+> | Műveletek | Microsoft.Migrate/locations/checknameavailability/action | Az erőforrás nevét a megadott helyen az adott előfizetésben való elérhetőségének ellenőrzése |
 > | Műveletek | Microsoft.Migrate/Operations/read | A Microsoft.Migrate erőforrás-szolgáltatónál elérhető műveletek listázása |
 > | Műveletek | Microsoft.Migrate/projects/assessments/read | Projekt értékeléseinek listázása |
 > | Műveletek | Microsoft.Migrate/projects/delete | A projekt törlése |

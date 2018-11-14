@@ -1,59 +1,50 @@
 ---
 title: Felhasználó által definiált függvények használata az Azure digitális Twins |} A Microsoft Docs
-description: A felhasználó által definiált függvények, matchers és szerepkör-hozzárendelések létrehozása az Azure digitális Twins útmutató arra az esetre.
+description: A szerepkör-hozzárendelések, matchers és felhasználó által definiált függvények létrehozása az Azure digitális Twins útmutató arra az esetre.
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 11/13/2018
 ms.author: alinast
-ms.openlocfilehash: 8094965da5fb0a5fad0313fd96e2878f86d78aa7
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 33190472215e7a02b94951a73054ebe3e1994e54
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215497"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623910"
 ---
 # <a name="how-to-use-user-defined-functions-in-azure-digital-twins"></a>Felhasználó által definiált függvények használata az Azure digitális Twins
 
-[Felhasználó által definiált függvények](./concepts-user-defined-functions.md) engedélyezése a felhasználó egyéni logikát beérkező telemetriai üzeneteket és a térbeli graph metaadatok, a felhasználó eseményeket küld az előre definiált végpontjainak futtatásához. Ebben az útmutatóban végigvezetjük működő példát hőmérséklet események észleléséhez, és minden olvasási riasztás, amely meghaladja egy bizonyos hőmérséklet.
+[Felhasználó által definiált függvények](./concepts-user-defined-functions.md) (UDF) engedélyezése a felhasználó egyéni logikát futtatásához a beérkező telemetriai üzeneteket és a térbeli graph metaadatokat. A felhasználó ezután előre definiált végpontjainak is küldhet eseményeket. Ez az útmutató végigvezeti egy működő példát hőmérséklet események észleléséhez, és minden olvasási riasztás, amely meghaladja egy bizonyos hőmérséklet.
 
-Az alábbi példákban `https://yourManagementApiUrl` URI-ját a digitális Twins API-k hivatkozik:
-
-```plaintext
-https://yourInstanceName.yourLocation.azuresmartspaces.net/management
-```
-
-| Egyéni attribútum neve | Cserélje le |
-| --- | --- |
-| *Példánynév* | Az Azure digitális Twins-példány nevét |
-| *yourLocation* | Melyik kiszolgáló régióban lévő üzemeltetett a példány |
+[!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
 ## <a name="client-library-reference"></a>Ügyféloldali kódtár – referencia
 
-A felhasználó által definiált függvények futtatókörnyezetben segédmetódusokat elérhető funkciókat felsorolása a következő [ügyfél hivatkozási](#Client-Reference).
+A függvényeket, amelyek állnak rendelkezésre, a felhasználó által definiált függvények futtatókörnyezetben segítő szerepelnek a [ügyfél hivatkozási](#Client-Reference) szakaszban.
 
 ## <a name="create-a-matcher"></a>Hozzon létre egy megfeleltetőben megadott
 
-Matchers olyan graph objektumok, amelyek meghatározzák, hogy mely felhasználó által definiált függvények mindenképpen végrehajtja az adott telemetriai üzenetet.
+Matchers graph-objektumok, amelyek meghatározzák, milyen felhasználó által definiált függvények futtatása egy adott telemetriai üzenetet is.
 
-Érvényes megfeleltetőben megadott feltétel összehasonlítások:
+- Érvényes megfeleltetőben megadott feltétel összehasonlítások:
 
-- `Equals`
-- `NotEquals`
-- `Contains`
+  - `Equals`
+  - `NotEquals`
+  - `Contains`
 
-Érvényes megfeleltetőben megadott feltétel célok:
+- Érvényes megfeleltetőben megadott feltétel célok:
 
-- `Sensor`
-- `SensorDevice`
-- `SensorSpace`
+  - `Sensor`
+  - `SensorDevice`
+  - `SensorSpace`
 
-A következő példa megfeleltetőben megadott kiértékelik igaz értékre az összes érzékelő telemetriai esemény `"Temperature"` adatok típusú értékként. A felhasználó által definiált függvény több matchers hozhat létre.
+A következő példa megfeleltetőben megadott bármely érzékelő telemetriai esemény az IGAZ értéket ad vissza `"Temperature"` adatok típusú értékként. A felhasználó által definiált függvény több matchers hozhat létre:
 
 ```plaintext
-POST https://yourManagementApiUrl/api/v1.0/matchers
+POST yourManagementApiUrl/matchers
 {
   "Name": "Temperature Matcher",
   "Conditions": [
@@ -64,35 +55,34 @@ POST https://yourManagementApiUrl/api/v1.0/matchers
       "comparison": "Equals"
     }
   ],
-  "SpaceId": "yourSpaceIdentifier"
+  "SpaceId": "YOUR_SPACE_IDENTIFIER"
 }
 ```
 
-| Egyéni attribútum neve | Cserélje le |
+| Az érték | Csere erre |
 | --- | --- |
-| *yourManagementApiUrl* | A felügyeleti API teljes URL-címe  |
-| *yourSpaceIdentifier* | Melyik kiszolgáló régióban lévő üzemeltetett a példány |
+| YOUR_SPACE_IDENTIFIER | Melyik kiszolgáló régióban lévő üzemeltetett a példány |
 
 ## <a name="create-a-user-defined-function-udf"></a>Hozzon létre egy felhasználói függvény (UDF)
 
-A matchers után létrehozott, és töltse fel a függvény kódrészletet a következő bejegyzés hívással:
+A matchers létrehozása után töltse fel a függvény kódrészlet az alábbi **POST** hívása:
 
 > [!IMPORTANT]
 > - A fejlécek, állítsa be a következő `Content-Type: multipart/form-data; boundary="userDefinedBoundary"`.
 > - A szervezetnek többrészes:
->   - Az első rész tárgya UDF szükséges metaadatokat.
->   - A második része a javascript számítási logika.
-> - Cserélje le a `userDefinedBoundary` szakasz `SpaceId` és `Machers` GUID-azonosítói.
+>   - Az első rész az UDF szükséges metaadatokat szól.
+>   - A második része a JavaScript számítási logika.
+> - Az a **userDefinedBoundary** szakaszban, cserélje le a **SpaceId** és **Machers** értékeket.
 
 ```plaintext
-POST https://yourManagementApiUrl/api/v1.0/userdefinedfunctions with Content-Type: multipart/form-data; boundary="userDefinedBoundary"
+POST yourManagementApiUrl/userdefinedfunctions with Content-Type: multipart/form-data; boundary="userDefinedBoundary"
 ```
 
-| Egyéni attribútum neve | Cserélje le |
+| Paraméter értéke | Csere erre |
 | --- | --- |
-| *yourManagementApiUrl* | A felügyeleti API teljes URL-címe  |
+| *userDefinedBoundary* | A többrészes tartalom határcsoport neve |
 
-Szövegtörzs:
+### <a name="body"></a>Törzs
 
 ```plaintext
 --userDefinedBoundary
@@ -100,10 +90,10 @@ Content-Type: application/json; charset=utf-8
 Content-Disposition: form-data; name="metadata"
 
 {
-  "SpaceId": "yourSpaceIdentifier",
+  "SpaceId": "YOUR_SPACE_IDENTIFIER",
   "Name": "User Defined Function",
   "Description": "The contents of this udf will be executed when matched against incoming telemetry.",
-  "Matchers": ["yourMatcherIdentifier"]
+  "Matchers": ["YOUR_MATCHER_IDENTIFIER"]
 }
 --userDefinedBoundary
 Content-Disposition: form-data; name="contents"; filename="userDefinedFunction.js"
@@ -116,10 +106,10 @@ function process(telemetry, executionContext) {
 --userDefinedBoundary--
 ```
 
-| Egyéni attribútum neve | Cserélje le |
+| Az érték | Csere erre |
 | --- | --- |
-| *yourSpaceIdentifier* | Hely azonosítója  |
-| *yourMatcherIdentifier* | A használni kívánt megfeleltetőben megadott azonosítója |
+| YOUR_SPACE_IDENTIFIER | Hely azonosítója  |
+| YOUR_MATCHER_IDENTIFIER | A használni kívánt megfeleltetőben megadott azonosítója |
 
 ### <a name="example-functions"></a>Példa funkciók
 
@@ -139,7 +129,7 @@ function process(telemetry, executionContext) {
 }
 ```
 
-A *telemetriai* paraméter tesz elérhetővé a **SensorId** és **üzenet** attribútumok (egy érzékelő által küldött üzenet megfelelő). A *executionContext* paramétert mutatja meg a következő attribútumokat:
+A **telemetriai** paraméter tesz elérhetővé a **SensorId** és **üzenet** attribútumokat, egy érzékelő által küldött üzenet megfelelő. A **executionContext** paramétert mutatja meg a következő attribútumokat:
 
 ```csharp
 var executionContext = new UdfExecutionContext
@@ -151,7 +141,7 @@ var executionContext = new UdfExecutionContext
 };
 ```
 
-A következő példában azt fog rögzít egy üzenetet, ha az érzékelő telemetria olvasása idővesztesége egy előre meghatározott küszöbértéket. A diagnosztikai beállítások engedélyezve vannak a digitális Twins-példányon, ha a rendszer felhasználó által definiált függvények származó naplók is továbbítja:
+A következő példában azt az üzenetek naplózásához, ha az érzékelő telemetria olvasása idővesztesége egy előre meghatározott küszöbértéket. Ha a diagnosztikai beállítások engedélyezve vannak az Azure digitális Twins-példányon, felhasználó által definiált függvények származó naplók is továbbítja:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -166,7 +156,7 @@ function process(telemetry, executionContext) {
 }
 ```
 
-Az alábbi kód értesítést aktivál, ha hőmérséklet szintje meghaladja a előre definiált konstans.
+A következő kódot egy értesítést aktivál, ha az előre definiált konstans fölé emelkedik a hőmérséklet szint:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -190,300 +180,295 @@ function process(telemetry, executionContext) {
 }
 ```
 
-Egy összetettebb UDF kódmintát talál [elérhető tárolóhelyek friss vezeték nélkül regisztrálja az UDF-ellenőrzése](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js)
+Az UDF összetettebb kódja minta [ellenőrizze a rendelkezésre álló szóközöket egy friss vezeték nélkül regisztrálja az UDF-](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js).
 
 ## <a name="create-a-role-assignment"></a>Szerepkör-hozzárendelés létrehozása
 
-A felhasználó által definiált függvény végrehajtása alatt a szerepkör-hozzárendelés létrehozása kell. Ha nem, nem lesz kommunikál a felügyeleti API-t gráfsémákkal műveleteket hajthat végre a megfelelő engedélyekkel. A végrehajtandó műveleteket végez a felhasználó által definiált függvény nem mentesülnek a szerepköralapú hozzáférés-vezérlést a digitális Twins felügyeleti API-k belül. Ezek is lehet korlátozott hatókör egyes szerepkörök vagy a megadott access control elérési útjait megadásával. További információkért lásd: [szerepköralapú hozzáférés-vezérlés](./security-role-based-access-control.md) dokumentációját.
+A felhasználó által definiált függvény alatt szeretné futtatni a szerepkör-hozzárendelés létrehozása kell. Ha nem, hogy azt nem kell kommunikál a felügyeleti API-t gráfsémákkal műveleteket hajthat végre a megfelelő engedélyekkel. A végrehajtandó műveleteket végez a felhasználó által definiált függvény nem érvényes a szerepköralapú hozzáférés-vezérlés az Azure digitális Twins felügyeleti API-k belül. Akkor is lehet korlátozott hatókör egyes szerepkörök vagy a megadott access control elérési útjait megadásával. További információkért lásd: [szerepköralapú hozzáférés-vezérlés](./security-role-based-access-control.md) dokumentációját.
 
-1. A szerepkörök le, és az UDF; hozzárendelni kívánt szerepkört Azonosítójának lekéréséhez Adja át azt, hogy **RoleId** alatt.
+1. A szerepkörök lekérdezését, és az UDF hozzárendelni kívánt szerepkört Azonosítójának lekéréséhez. Adja át azt, hogy **RoleId**:
 
-```plaintext
-GET https://yourManagementApiUrl/api/v1.0/system/roles
-```
+    ```plaintext
+    GET yourManagementApiUrl/system/roles
+    ```
 
-| Egyéni attribútum neve | Cserélje le |
-| --- | --- |
-| *yourManagementApiUrl* | A felügyeleti API teljes URL-címe  |
+1. **ObjectId** lesz a korábban létrehozott UDF-azonosító.
+1. Keresse meg az értéket a **elérési** a szóközt az lekérdezésével `fullpath`.
+1. Másolja a visszaadott `spacePaths` értéket. Az alábbi kódot, amely használni:
 
-2. **ObjectId** lesz a korábban létrehozott UDF-azonosító.
-3. Keresse meg az értéket a **elérési** a szóközt az lekérdezésével `fullpath`.
-4. Másolja a visszaadott `spacePaths` értéket. Használhat, amely alatt.
+    ```plaintext
+    GET yourManagementApiUrl/spaces?name=yourSpaceName&includes=fullpath
+    ```
 
-```plaintext
-GET https://yourManagementApiUrl/api/v1.0/spaces?name=yourSpaceName&includes=fullpath
-```
+    | Paraméter értéke | Csere erre |
+    | --- | --- |
+    | *yourSpaceName* | A használni kívánt terület neve |
 
-| Egyéni attribútum neve | Cserélje le |
-| --- | --- |
-| *yourManagementApiUrl* | A felügyeleti API teljes URL-címe  |
-| *yourSpaceName* | A használni kívánt terület neve |
+1. Illessze be a visszaadott `spacePaths` be érték **elérési út** UDF szerepkör-hozzárendelés létrehozásához:
 
-4. Illessze be a visszaadott `spacePaths` be érték **elérési út** UDF szerepkör-hozzárendelés létrehozásához.
+    ```plaintext
+    POST yourManagementApiUrl/roleassignments
+    {
+      "RoleId": "YOUR_DESIRED_ROLE_IDENTIFIER",
+      "ObjectId": "YOUR_USER_DEFINED_FUNCTION_ID",
+      "ObjectIdType": "YOUR_USER_DEFINED_FUNCTION_TYPE_ID",
+      "Path": "YOUR_ACCESS_CONTROL_PATH"
+    }
+    ```
 
-```plaintext
-POST https://yourManagementApiUrl/api/v1.0/roleassignments
-{
-  "RoleId": "yourDesiredRoleIdentifier",
-  "ObjectId": "yourUserDefinedFunctionId",
-  "ObjectIdType": "UserDefinedFunctionId",
-  "Path": "yourAccessControlPath"
-}
-```
-
-| Egyéni attribútum neve | Cserélje le |
-| --- | --- |
-| *yourManagementApiUrl* | A felügyeleti API teljes URL-címe  |
-| *yourDesiredRoleIdentifier* | A kívánt szerepkör esetében az azonosító |
-| *yourUserDefinedFunctionId* | Az UDF-ben használni kívánt azonosítója |
-| *yourAccessControlPath* | A hozzáférés-vezérlési elérési útja |
+    | Az érték | Csere erre |
+    | --- | --- |
+    | YOUR_DESIRED_ROLE_IDENTIFIER | A kívánt szerepkör esetében az azonosító |
+    | YOUR_USER_DEFINED_FUNCTION_ID | Az UDF-ben használni kívánt azonosítója |
+    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | Az UDF típusát megadó azonosítója |
+    | YOUR_ACCESS_CONTROL_PATH | A hozzáférés-vezérlési elérési útja |
 
 ## <a name="send-telemetry-to-be-processed"></a>A feldolgozásra telemetria küldése
 
-Az érzékelő, a graph leírtak szerint létrehozott telemetriát a végrehajtás a felhasználó által definiált függvény feltöltött váltanak ki. A telemetriai adatokat a data-feldolgozó dolgozza fel, ha a felhasználó által definiált függvény meghívását egy végrehajtási terv jön létre.
+Az érzékelő, a graph leírtak szerint létrehozott telemetriát a Futtatás, a felhasználó által definiált függvény feltöltött aktivál. A data-feldolgozó szerzi be a telemetriát. Ezután a felhasználó által definiált függvény meghívását futtatási csomag jön létre.
 
 1. A matchers a leolvasás jött létre, ki az érzékelő lekéréséhez.
 1. Attól függően, mi matchers értékelése sikeres a társított felhasználó által definiált függvények beolvasni.
-1. Minden felhasználó által definiált függvény végrehajtásához.
+1. Minden felhasználó által definiált függvény futtatása.
 
 ## <a name="client-reference"></a>Ügyfél-hivatkozása
 
 ### <a name="getspacemetadataid--space"></a>getSpaceMetadata(id) ⇒ `space`
 
-Egy helyet azonosító, a megadott kérdezi le a területet a diagramon.
+Adja meg a helyet azonosító, ez a függvény átveszi a terület a grafikon.
 
 **Milyen**: globális függvény
 
-| Param  | Típus                | Leírás  |
-| ------ | ------------------- | ------------ |
+| Paraméter  | Típus                | Leírás  |
+| ---------- | ------------------- | ------------ |
 | *id*  | `guid` | Hely azonosítója |
 
 ### <a name="getsensormetadataid--sensor"></a>getSensorMetadata(id) ⇒ `sensor`
 
-Érzékelő azonosítónak a megadott lekérdezi a diagram az érzékelő.
+Adja meg az érzékelő azonosítót, ez a függvény átveszi az érzékelő a diagramon.
 
 **Milyen**: globális függvény
 
-| Param  | Típus                | Leírás  |
-| ------ | ------------------- | ------------ |
+| Paraméter  | Típus                | Leírás  |
+| ---------- | ------------------- | ------------ |
 | *id*  | `guid` | érzékelő azonosítója |
 
 ### <a name="getdevicemetadataid--device"></a>getDeviceMetadata(id) ⇒ `device`
 
-Eszközazonosító, a megadott lekérdezi az eszköz a diagramon.
+Adja meg egy eszközazonosítót, ez a függvény átveszi az eszköz a diagramon.
 
 **Milyen**: globális függvény
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *id* | `guid` | Eszközazonosító |
 
 ### <a name="getsensorvaluesensorid-datatype--value"></a>(sensorId, dataType) getSensorValue ⇒ `value`
 
-Adja meg az érzékelő-azonosítót és jeho datovému typu, kérje le az aktuális értéket, az adott érzékelő.
+Adja meg az érzékelő-azonosítót és jeho datovému typu, ez a függvény lekéri a jelenlegi érték az adott érzékelő.
 
 **Milyen**: globális függvény
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *sensorId*  | `guid` | érzékelő azonosítója |
 | *Adattípus*  | `string` | érzékelő adattípus |
 
 ### <a name="getspacevaluespaceid-valuename--value"></a>(spaceId, értéknév) getSpaceValue ⇒ `value`
 
-A jelenlegi érték az adott hely tulajdonságnál adja meg a helyet azonosító és a neve, beolvasni.
+Adja meg a helyet azonosító és a neve, ez a függvény kérdezi le a hely aktuális értékkel.
 
 **Milyen**: globális függvény
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *spaceId*  | `guid` | Hely azonosítója |
 | *Értéknév* | `string` | lemezterület-tulajdonság neve |
 
 ### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>(sensorId, dataType) getSensorHistoryValues ⇒ `value[]`
 
-Adja meg az érzékelő-azonosítót és jeho datovému typu, lekérni az adott érzékelő korábbi értékekkel.
+Adja meg az érzékelő-azonosítót és jeho datovému typu, ez a függvény átveszi az adott érzékelő korábbi értékekkel.
 
 **Milyen**: globális függvény
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | érzékelő azonosítója |
 | *Adattípus* | `string` | érzékelő adattípus |
 
 ### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>(spaceId, dataType) getSpaceHistoryValues ⇒ `value[]`
 
-Adja meg a helyet azonosító és a neve, lekérni az adott tulajdonságnál a tárhelyen a korábbi értékekkel.
+Adja meg a helyet azonosító és a neve, ez a függvény átveszi az adott tulajdonságnál a tárhelyen a korábbi értékekkel.
 
 **Milyen**: globális függvény
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Hely azonosítója |
 | *Értéknév* | `string` | lemezterület-tulajdonság neve |
 
 ### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces(spaceId) ⇒ `space[]`
 
-Adja meg a helyet azonosító, beolvasni az, hogy a fölérendelt hely alárendelt címterét.
+Adja meg a helyet azonosító, ez a függvény átveszi az, hogy a fölérendelt hely alárendelt címterét.
 
 **Milyen**: globális függvény
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Hely azonosítója |
 
 ### <a name="getspacechildsensorsspaceid--sensor"></a>getSpaceChildSensors(spaceId) ⇒ `sensor[]`
 
-Adja meg a helyet azonosító, beolvasni a gyermek érzékelőket, hogy a fölérendelt hely számára.
+Adja meg a helyet azonosító, ez a függvény átveszi a gyermek érzékelő számára, hogy a fölérendelt hely.
 
 **Milyen**: globális függvény
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Hely azonosítója |
 
 ### <a name="getspacechilddevicesspaceid--device"></a>getSpaceChildDevices(spaceId) ⇒ `device[]`
 
-Adja meg a helyet azonosító, lekéréséhez, hogy a fölérendelt hely a gyermek eszközöket.
+Adja meg a helyet azonosító, ez a függvény átveszi a, hogy a fölérendelt hely alárendelt eszközöket.
 
 **Milyen**: globális függvény
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Hely azonosítója |
 
 ### <a name="getdevicechildsensorsdeviceid--sensor"></a>getDeviceChildSensors(deviceId) ⇒ `sensor[]`
 
-Adja meg egy eszközazonosítót, beolvasni a gyermek érzékelők szülő eszköznek.
+Adja meg egy eszközazonosítót, ez a függvény átveszi a gyermek érzékelők szülő eszköz.
 
 **Milyen**: globális függvény
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *az eszközazonosító* | `guid` | Eszközazonosító |
 
 ### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace(childSpaceId) ⇒ `space`
 
-Adja meg a helyet azonosító, beolvasni a fölérendelt hely.
+Adja meg a helyet azonosító, ez a függvény átveszi a fölérendelt hely.
 
 **Milyen**: globális függvény
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *childSpaceId* | `guid` | Hely azonosítója |
 
 ### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace(childSensorId) ⇒ `space`
 
-Adja meg az érzékelő azonosítót, beolvasni a fölérendelt hely.
+Adja meg az érzékelő azonosítót, ez a függvény átveszi a fölérendelt hely.
 
 **Milyen**: globális függvény
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *childSensorId* | `guid` | érzékelő azonosítója |
 
 ### <a name="getdeviceparentspacechilddeviceid--space"></a>getDeviceParentSpace(childDeviceId) ⇒ `space`
 
-Adja meg egy eszközazonosítót, beolvasni a fölérendelt hely.
+Adja meg egy eszközazonosítót, ez a függvény átveszi a fölérendelt hely.
 
 **Milyen**: globális függvény
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *childDeviceId* | `guid` | Eszközazonosító |
 
 ### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice(childSensorId) ⇒ `space`
 
-Adja meg az érzékelő azonosítót, beolvasni a hozzá tartozó szülő eszköz.
+Adja meg az érzékelő azonosítót, ez a függvény átveszi a szülő eszköz.
 
 **Milyen**: globális függvény
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *childSensorId* | `guid` | érzékelő azonosítója |
 
 ### <a name="getspaceextendedpropertyspaceid-propertyname--extendedproperty"></a>(spaceId, propertyName) getSpaceExtendedProperty ⇒ `extendedProperty`
 
-Adja meg a helyet azonosító, lekérdezni a tulajdonság és az értékét a területet.
+Adja meg a helyet azonosító, ez a függvény átveszi a tulajdonságot, és annak értékét a területet.
 
 **Milyen**: globális függvény
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Hely azonosítója |
 | *a propertyName* | `string` | lemezterület-tulajdonság neve |
 
 ### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>(sensorId, propertyName) getSensorExtendedProperty ⇒ `extendedProperty`
 
-Adja meg az érzékelő azonosítót, lekérdezni a tulajdonság és annak értékét az érzékelő.
+Adja meg az érzékelő azonosítót, ez a függvény átveszi a tulajdonságot, és annak értékét az érzékelő.
 
 **Milyen**: globális függvény
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | érzékelő azonosítója |
 | *a propertyName* | `string` | érzékelő tulajdonság neve |
 
 ### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>(deviceId, propertyName) getDeviceExtendedProperty ⇒ `extendedProperty`
 
-Adja meg egy eszközazonosítót, lekérdezni a tulajdonság és annak értékét az eszközön.
+Adja meg egy eszközazonosítót, ez a függvény átveszi a tulajdonságot, és annak értékét az eszközről.
 
 **Milyen**: globális függvény
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *az eszközazonosító* | `guid` | Eszközazonosító |
 | *a propertyName* | `string` | eszköz tulajdonság neve |
 
 ### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue (sensorId, dataType, érték)
 
-Beállít egy értéket a megadott adattípus-érzékelő objektumon.
+Ez a függvény a megadott adattípus-érzékelő objektumon beállít egy értéket.
 
 **Milyen**: globális függvény
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | érzékelő azonosítója |
 | *Adattípus*  | `string` | érzékelő adattípus |
-| *value*  | `string` | érték |
+| *value*  | `string` | Érték |
 
 ### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue (spaceId, dataType, érték)
 
-Beállít egy értéket a megadott adattípus-terület objektumon.
+Ez a függvény a megadott adattípus-terület objektumon beállít egy értéket.
 
 **Milyen**: globális függvény
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Hely azonosítója |
-| *Adattípus* | `string` | adattípus |
-| *value* | `string` | érték |
+| *Adattípus* | `string` | Adattípus |
+| *value* | `string` | Érték |
 
 ### <a name="logmessage"></a>log(Message)
 
-A felhasználó által definiált függvényen belül a következő üzenetet naplózza.
+Ez a függvény a felhasználó által definiált függvényen belül a következő üzenetet naplózza.
 
 **Milyen**: globális függvény
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *üzenet* | `string` | üzenet be kell jelentkeznie |
 
 ### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification (topologyObjectId, topologyObjectType, hasznos adat)
 
-Küld értesítő üzenet egyéni szövegében küldik.
+Ez a függvény küld értesítő üzenet egyéni szövegében küldik.
 
 **Milyen**: globális függvény
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| *topologyObjectId*  | `guid` | Graph-objektum azonosítóját (például. terület / érzékelő/Device ID)|
-| *topologyObjectType*  | `string` | (például. terület / érzékelő vagy eszköz)|
-| *hasznos adat*  | `string` | az értesítéssel elküldendő JSON-adattartalmat |
+| *topologyObjectId*  | `guid` | Graph-objektum azonosítója. Példák: a lemezterület, érzékelő és eszközazonosító.|
+| *topologyObjectType*  | `string` | Példák érzékelő- és.|
+| *hasznos adat*  | `string` | A JSON-adattartalom-értesítés küldésének. |
 
-## <a name="return-types"></a>Návratové Typy
+## <a name="return-types"></a>Návratové typy
 
-Az alábbiakban a fenti ügyfél hivatkozási visszatérési objektumait leíró modelleket.
+Az alábbi minták ismertetik az előző ügyfél hivatkozási visszatérési objektumokat.
 
 ### <a name="space"></a>Űr
 
@@ -502,45 +487,45 @@ Az alábbiakban a fenti ügyfél hivatkozási visszatérési objektumait leíró
 
 #### <a name="parent--space"></a>Parent() ⇒ `space`
 
-Az aktuális hely a fölérendelt hely adja vissza.
+Ez a függvény az aktuális hely a fölérendelt hely adja vissza.
 
 #### <a name="childsensors--sensor"></a>ChildSensors() ⇒ `sensor[]`
 
-A gyermeket érzékelőktől az aktuális hely adja vissza.
+Ez a függvény az aktuális hely érzékelők a gyermek adja vissza.
 
 #### <a name="childdevices--device"></a>ChildDevices() ⇒ `device[]`
 
-Az aktuális hely eszközöket adja vissza.
+Ez a függvény az aktuális lemezterület-eszközeinek a gyermek adja vissza.
 
 #### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty(propertyName) ⇒ `extendedProperty`
 
-A kiterjesztett tulajdonság és az aktuális hely értékét adja vissza.
+Ez a funkció a bővített tulajdonság és az aktuális hely értékét adja vissza.
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *a propertyName* | `string` | a bővített tulajdonság neve |
 
 #### <a name="valuevaluename--value"></a>Value(VALUENAME) ⇒ `value`
 
-Az aktuális hely értékét adja vissza.
+Ez a függvény az aktuális hely értékét adja vissza.
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *Értéknév* | `string` | az érték neve |
 
 #### <a name="historyvaluename--value"></a>History(VALUENAME) ⇒ `value[]`
 
-Az aktuális hely korábbi értékeit adja vissza.
+Ez a függvény az aktuális hely korábbi értékeit adja vissza.
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *Értéknév* | `string` | az érték neve |
 
 #### <a name="notifypayload"></a>Notify(Payload)
 
-A megadott hasznos adattal értesítést küld.
+Ez a függvény a megadott hasznos adattal értesítést küld.
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *hasznos adat* | `string` | Az értesítés foglalandó JSON-adattartalmat |
 
@@ -566,25 +551,25 @@ A megadott hasznos adattal értesítést küld.
 
 #### <a name="parent--space"></a>Parent() ⇒ `space`
 
-A szülő hely az aktuális eszköz adja vissza.
+Ez a függvény az aktuális eszköz a fölérendelt hely adja vissza.
 
 #### <a name="childsensors--sensor"></a>ChildSensors() ⇒ `sensor[]`
 
-A gyermeket érzékelőktől az aktuális eszköz adja vissza.
+Ez a függvény az aktuális eszköz érzékelők a gyermek adja vissza.
 
 #### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty(propertyName) ⇒ `extendedProperty`
 
-A kiterjesztett tulajdonság és az aktuális eszköz értékét adja vissza.
+Ez a funkció a bővített tulajdonság és az aktuális eszköz értékét adja vissza.
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *a propertyName* | `string` | a bővített tulajdonság neve |
 
 #### <a name="notifypayload"></a>Notify(Payload)
 
-A megadott hasznos adattal értesítést küld.
+Ez a függvény a megadott hasznos adattal értesítést küld.
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *hasznos adat* | `string` | Az értesítés foglalandó JSON-adattartalmat |
 
@@ -614,33 +599,33 @@ A megadott hasznos adattal értesítést küld.
 
 #### <a name="space--space"></a>Space() ⇒ `space`
 
-A szülő hely az aktuális érzékelő adja vissza.
+Ez a függvény visszaad a fölérendelt hely áramerősség-érzékelő.
 
 #### <a name="device--device"></a>Device() ⇒ `device`
 
-A szülő eszköz az aktuális érzékelő adja vissza.
+Ez a függvény az aktuális érzékelő szülő eszköz adja vissza.
 
 #### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty(propertyName) ⇒ `extendedProperty`
 
-A kiterjesztett tulajdonság és az aktuális érzékelő értékét adja vissza.
+Ez a funkció a bővített tulajdonság és az aktuális érzékelő értékét adja vissza.
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *a propertyName* | `string` | a bővített tulajdonság neve |
 
 #### <a name="value--value"></a>Value() – ⇒ `value`
 
-Az aktuális érzékelő értékét adja vissza.
+Ez a függvény az aktuális érzékelő értékét adja vissza.
 
 #### <a name="history--value"></a>History() ⇒ `value[]`
 
-A korábbi az aktuális érzékelő-értékeit adja eredményül.
+Ez a függvény az aktuális érzékelő korábbi értékét adja vissza.
 
 #### <a name="notifypayload"></a>Notify(Payload)
 
-A megadott hasznos adattal értesítést küld.
+Ez a függvény a megadott hasznos adattal értesítést küld.
 
-| Param  | Típus                | Leírás  |
+| Paraméter  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
 | *hasznos adat* | `string` | Az értesítés foglalandó JSON-adattartalmat |
 
@@ -665,6 +650,6 @@ A megadott hasznos adattal értesítést küld.
 
 ## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan küldhet eseményeket a digitális Twins végpontok létrehozása, olvasása [digitális Twins létrehozása végpontok](how-to-egress-endpoints.md).
+- Ismerje meg, hogyan [létrehozása az Azure digitális Twins végpontok](how-to-egress-endpoints.md) események küldéséhez.
 
-Digitális Twins végpontokon további részletekért olvassa el a [tudjon meg többet a végpontok](concepts-events-routing.md).
+- Az Azure digitális Twins végpontokon további részletekért tekintse meg [további információk a végpontok](concepts-events-routing.md).

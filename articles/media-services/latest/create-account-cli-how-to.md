@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: ''
-ms.date: 10/15/2018
+ms.date: 11/11/2018
 ms.author: juliako
-ms.openlocfilehash: 988b56569c2537f9f0c74b1bcc2bf5e2a9400a80
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: cb49b642137517c0ceef7d2fa01994a554db1f4e
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378805"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613159"
 ---
 # <a name="create-an-azure-media-services-account"></a>Azure Media Services-fiók létrehozása
 
@@ -27,19 +27,18 @@ Ez a cikk ismerteti az Azure CLI használatával új Azure Media Services-fiók 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+## <a name="prerequisites"></a>Előfeltételek
 
-Jelentkezzen be a [az Azure portal](http://portal.azure.com) , majd indítsa el **cloud Shell** CLI-parancsok, ahogyan a következő lépések végrehajtásához.
+- Aktív Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt.
+- Telepítse és a parancssori Felületet helyileg használja, ez a cikk az Azure CLI 2.0-s vagy újabb verziójára van szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
 
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
-
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
+    Jelenleg nem minden [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) parancsok működnek az Azure Cloud shellben. Javasoljuk, hogy a parancssori Felületet helyileg használja.
 
 ## <a name="set-the-azure-subscription"></a>Az Azure-előfizetés beállítása
 
 Az alábbi parancsban adja meg a Media Services-fiókhoz használni kívánt Azure-előfizetés azonosítóját. Az [Előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) lapot megnyitva tekintheti meg az Ön által elérhető előfizetések listáját.
 
-```azurecli-interactive
+```azurecli
 az account set --subscription mySubscriptionId
 ```
  
@@ -47,5 +46,9 @@ az account set --subscription mySubscriptionId
  
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Fájl streamelése](stream-files-dotnet-quickstart.md)
+[Fájl streamelése](stream-files-dotnet-quickstart.md)
+
+## <a name="see-also"></a>Lásd még
+
+[Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+

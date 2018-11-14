@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a2b6b3334176cb6fdd86c17b4d11cb03a42dd4bf
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 42697f7f4bb8c6b9ef785eef0fe2f5f33b2b38a7
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731802"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615603"
 ---
 # <a name="store-batch-ai-job-input-and-output-with-azure-storage"></a>Batch AI-feladat bemenete és kimenete az Azure Storage Store
 
@@ -30,7 +30,7 @@ Az Azure Storage a Microsoft felhőalapú tárolási megoldása. A Batch AI tám
 
 Ha a Batch AI-környezet az Azure Storage úgy dönt, azt javasoljuk, hogy (például adatkészletek) a bemeneti fájlok tárolása a Blob-tárolóba, melynek nagyobb átviteli sebességet, a képzési kimeneti tárolása egy fájlmegosztást, amely támogatja a folyamatos átviteli (engedélyezése olvasási kimeneti naplók egyidejűleg a feladat futása közben). 
 
-Mielőtt az Azure Storage használatához [hozzon létre egy Azure Storage-fiók](../storage/common/storage-quickstart-create-account.md). A Batch AI támogatja a csatlakoztatáshoz szükséges kötetek mindkét általános célú v1 (GPv1) és az általános célú v2 (GPv2) Azure Storage-fiókokat. Az Azure Storage-fiók több blobtárolók tárolására is, vagy a fájlkezelő példányokat. Vegye figyelembe a költségekre és teljesítményre vonatkozó követelmények, amikor kiválasztja a létrehozni kívánt tárfiók típusát. További információkért lásd: [az Azure storage-fiók áttekintése](../storage/common/storage-account-overview.md). 
+Mielőtt az Azure Storage használatához [hozzon létre egy Azure Storage-fiók](../storage/common/storage-quickstart-create-account.md). A Batch AI támogatja a csatlakoztatáshoz szükséges kötetek mindkét általános célú v1 (GPv1) és az általános célú v2 (GPv2) Azure Storage-fiókokat. Az Azure Storage-fiók több blobtárolók tárolására is, vagy a fájlkezelő példányokat. Vegye figyelembe a költségekre és teljesítményre vonatkozó követelmények, amikor kiválasztja a létrehozni kívánt tárfiók típusát. További információkat az [Azure Storage-fiókok áttekintésében](../storage/common/storage-account-overview.md) találhat. 
 
 Hozzon létre egy blobtárolót és az adatkészlet egy Azure Blob-tárolóba való feltöltéséhez, válassza ki a következő módszerek egyikét:
 - [Az Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md) webes grafikus felhasználói felülettel fel. A feltöltendő fájlokat kis számú, az Azure portal a legegyszerűbb műveletet biztosít.
@@ -98,7 +98,7 @@ Ha a tanítási szkriptet egy elérési utat ismeretek szükségesek, parancssor
 
 ### <a name="abbreviate-input-paths"></a>A bemeneti elérési utak rövidítése
 
-Bemeneti elérési utak rövidítése környezeti változóban, használja a `inputDirectories` tulajdonságát a `job.json` fájlt (vagy `models.JobCreateParamters.input_directories` , ha a Batch AI SDK-val). Sémája `inputDirectories` van:
+Bemeneti elérési utak rövidítése környezeti változóban, használja a `inputDirectories` tulajdonságát a `job.json` fájlt (vagy `models.JobCreateParameters.input_directories` , ha a Batch AI SDK-val). Sémája `inputDirectories` van:
 
 ```json
 {
@@ -115,7 +115,7 @@ További információkért lásd: [Itt](https://github.com/Azure/BatchAI/blob/ma
 
 ### <a name="abbreviate-output-paths"></a>Kimeneti elérési utak rövidítése
 
-Kimeneti elérési utak rövidítése környezeti változóban, használja a `outputDirectories` tulajdonságát a `job.json` fájlt (vagy `models.JobCreateParamters.output_directories` , ha a Batch AI SDK-val). Ezzel a módszerrel egyszerűsítheti a kimeneti fájlok elérési útjait. Sémája `outputDirectories` van:
+Kimeneti elérési utak rövidítése környezeti változóban, használja a `outputDirectories` tulajdonságát a `job.json` fájlt (vagy `models.JobCreateParameters.output_directories` , ha a Batch AI SDK-val). Ezzel a módszerrel egyszerűsítheti a kimeneti fájlok elérési útjait. Sémája `outputDirectories` van:
 
 ```json
 {
@@ -135,7 +135,7 @@ További információkért lásd: [Itt](https://github.com/Azure/BatchAI/blob/ma
 
 ### <a name="use-azure-portal"></a>Az Azure Portal használata
 
-Az Azure Portalon kényelmes módja a feladatok kimenetét megtekintése egy grafikus felhasználói felület a fájlkezelő segítségével. Azonban ha meg szeretné tekinteni az Stdout és Stderr, vagy a elérési utat a kimeneti `outputDirectories`, a fájlok kerülnek egy automatikusan létrehozott útvonalat az Azure Storage-kötet. Alább talál további információt.
+Az Azure Portalon kényelmes módja a feladatok kimenetét megtekintése egy grafikus felhasználói felület a fájlkezelő segítségével. Azonban ha meg szeretné tekinteni az Stdout és Stderr, vagy a elérési utat a kimeneti `outputDirectories`, a fájlok kerülnek egy automatikusan létrehozott útvonalat az Azure Storage-kötet. A további információkat lásd alább.
 
 ### <a name="access-stdout-and-stderr-output"></a>Hozzáférés az Stdout és Stderr kimenetet
 

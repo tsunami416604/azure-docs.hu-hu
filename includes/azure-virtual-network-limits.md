@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: e765739384aa7d18b95394cb0a9b2b6748174e7c
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 3a7c91f4a83cd69bdb87ffaccce555b04eca67cc
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51525651"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51597616"
 ---
 <a name="virtual-networking-limits-classic"></a>Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése előfizetésenként, a klasszikus üzemi modellel történik. Ismerje meg, hogyan [megtekintheti az aktuális erőforrás-használat elleni az előfizetési korlátok](../articles/networking/check-usage-against-limits.md).
 
@@ -49,7 +49,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Magánhálózati IP-címek száma virtuális hálózatonként |a 65536 értékű |
 | Magánhálózati IP-címek száma hálózati adapterenként |256 |
 | Egyidejű TCP vagy UDP-folyamatok egy virtuális gép vagy szerepkörpéldány adapterenként |500 000 |
-| Hálózati adapterek (NIC) |24000 |
+| Hálózati adapterek (NIC) |a 65536 értékű |
 | Hálózati biztonsági csoportok (NSG) |5000 |
 | NSG-ben szereplő NSG-szabályok |1000 |
 | IP-címek és a forrás vagy cél egyetlen biztonsági csoportba tartozó megadott tartományok |4000 |
@@ -64,28 +64,27 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Hálózati adapter KOPPINTSON konfigurációk száma virtuális hálózatonként KOPPINTSON |100 |
 
 #### <a name="publicip-address"></a>Nyilvános IP-cím korlátok
-
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
-| Nyilvános IP-címek – dinamikus |200-as (alapszintű) |kapcsolatfelvétel az ügyfélszolgálattal |
+| Nyilvános IP-címek – dinamikus |1000 (alapszintű) |kapcsolatfelvétel az ügyfélszolgálattal |
 | Nyilvános IP-címek – statikus |200-as (alapszintű) |kapcsolatfelvétel az ügyfélszolgálattal |
 | Nyilvános IP-címek – statikus |200-as (standard) |kapcsolatfelvétel az ügyfélszolgálattal |
 
 #### <a name="load-balancer"></a>Load Balancer korlátok
 Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése régiónként és előfizetésenként, az Azure Resource Managerrel történik. Ismerje meg, hogyan [az aktuális erőforrás-használat az előfizetés korlátozások megtekintése](../articles/networking/check-usage-against-limits.md)
 
-| Erőforrás | Alapértelmezett korlát | Felső korlát |
+| Erőforrás | Alapértelmezett korlát |
 | --- | --- | --- |
-| Terheléselosztók | 100 | 1000 |
-| Erőforrásonként alapszintű szabályok | 250 | 250 |
-| Erőforrásonként Standard szabályok | 1500 | 1500 |
-| Szabályok száma IP-konfiguráció | 299 |299 |
-| Előtérbeli IP-konfigurációk, alapszintű | 10 | 200 |
-| Előtérbeli IP-konfigurációk, Standard | 10 | 600 |
-| Háttérkészlet, alapszintű | 100, egy rendelkezésre állási csoport | 100, egy rendelkezésre állási csoport |
-| Háttérkészlet, a Standard | 1000, egyetlen virtuális hálózaton | 1000, egyetlen virtuális hálózaton |
-| Háttérerőforrásokhoz Load Balancer Standard / * | 150 | 150 |
-| Magas rendelkezésre ÁLLÁS portok, a Standard | 1 / belső frontend | 1 / belső frontend |
+| Terheléselosztók | 1000 | 
+| Erőforrásonként alapszintű szabályok | 250 |
+| Erőforrásonként Standard szabályok | 1500 | 
+| Szabályok száma IP-konfiguráció | 299 |
+| Előtérbeli IP-konfigurációk, alapszintű | 200 |
+| Előtérbeli IP-konfigurációk, Standard | 600 |
+| Háttérkészlet, alapszintű | 100, egy rendelkezésre állási csoport |
+| Háttérkészlet, a Standard | 1000, egyetlen virtuális hálózaton |
+| Háttérerőforrásokhoz Load Balancer Standard / * | 150 |
+| Magas rendelkezésre ÁLLÁS portok, a Standard | 1 / belső frontend |
 
 ** Legfeljebb 150 erőforrásokat, önálló virtuális gépek rendelkezésre állási csoportok és a virtual machine scale sets tetszőleges kombinációját.
 

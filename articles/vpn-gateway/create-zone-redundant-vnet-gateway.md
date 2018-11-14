@@ -8,16 +8,16 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: f531be5a814ed1805a2938daec1d210f9daccfa5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 400ac3232b7e7dcd594734d818e3cafef09188fd
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949774"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614548"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>A zónaredundáns virtuális hálózati átjáró létrehozása az Azure-beli rendelkezésre állási zónák
 
-Az Azure rendelkezésre állási zónák a VPN és ExpressRoute-átjárók telepítheti. Ekkor a rugalmasság, a méretezhetőség és a magasabb rendelkezésre állás virtuális hálózati átjárók. Egy adott régión belül átjárók telepítése átjárók az Azure-beli rendelkezésre állási zónák fizikailag és logikailag elkülöníti a során a helyszíni hálózati kapcsolatok védelme az Azure-bA a zónaszintű hibák. További információ: [kapcsolatos zónaredundáns virtuális hálózati átjárók](about-zone-redundant-vnet-gateways.md) és [kapcsolatos Azure-beli rendelkezésre állási zónák](../availability-zones/az-overview.md).
+Az Azure-beli rendelkezésre állási zónák a VPN és ExpressRoute-átjárók telepítheti. Ekkor a rugalmasság, a méretezhetőség és a magasabb rendelkezésre állás virtuális hálózati átjárók. Egy adott régión belül átjárók telepítése átjárók az Azure-beli rendelkezésre állási zónák fizikailag és logikailag elkülöníti a során a helyszíni hálózati kapcsolatok védelme az Azure-bA a zónaszintű hibák. További információ: [kapcsolatos zónaredundáns virtuális hálózati átjárók](about-zone-redundant-vnet-gateways.md) és [kapcsolatos Azure-beli rendelkezésre állási zónák](../availability-zones/az-overview.md).
 
 ## <a name="before-you-begin"></a>Előkészületek
 

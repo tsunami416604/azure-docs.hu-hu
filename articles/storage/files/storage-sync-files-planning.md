@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 0c9c254625ccca27a3525c45da0303f5e045ef44
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: a2864ca743adf4ced1418630940146fed21b7fd5
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914328"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625300"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -27,7 +27,7 @@ Első adatait, az Azure File Sync üzembe helyezésének megtervezése, mielőtt
 A Storage Sync Service az Azure File Sync legfelső szintű Azure-erőforrás. A Storage Sync Service erőforrás társa a tárfiók típusú erőforrást, és az Azure-erőforráscsoportok hasonló módon telepíthető. A tárfiók típusú erőforrást a distinct legfelsőbb szintű erőforráshoz szükség, mert a Storage Sync Service hozhat létre szinkronizálási kapcsolatot több tárfiókon keresztül több szinkronizálási csoporttal. Egy előfizetéshez tartozhat több Társzinkronizálási szolgáltatás forrásokkal.
 
 ### <a name="sync-group"></a>Szinkronizálási csoport
-A szinkronizálási csoport határozza meg fájlok egy halmazára a szinkronizálási topológiát. Végpontok egy szinkronizálási csoportban vannak szinkronban egymással. Ha például van két külön csoportja, amely az Azure File Sync használatával kezelni kívánt fájlokat, lenne, két szinkronizálási csoport létrehozása, és különböző végpontok hozzáadása az összes szinkronizálási csoportból. Társzinkronizálási szolgáltatás tetszőleges számú szinkronizálási csoportok igény szerint is üzemeltethet.  
+A szinkronizálási csoport határozza meg fájlok egy halmazára a szinkronizálási topológiát. A szinkronizálási csoporton belüli végpontokat a rendszer szinkronban tartja egymással. Ha például van két külön csoportja, amely az Azure File Sync használatával kezelni kívánt fájlokat, lenne, két szinkronizálási csoport létrehozása, és különböző végpontok hozzáadása az összes szinkronizálási csoportból. Társzinkronizálási szolgáltatás tetszőleges számú szinkronizálási csoportok igény szerint is üzemeltethet.  
 
 ### <a name="registered-server"></a>Regisztrált kiszolgáló
 A regisztrált kiszolgáló objektum képviseli a kiszolgáló (vagy fürt) közötti megbízhatósági kapcsolat, és a Storage Sync Service. A Storage Sync Service-példányhoz annyi kiszolgálót a kívánt regisztrálhat. Azonban a kiszolgáló (vagy fürt) regisztrálhatók csak egy Társzinkronizálási szolgáltatást egyszerre.
@@ -191,19 +191,9 @@ A kiszolgálón, amely az Azure File Sync-ügynök van telepítve a sysprep hasz
 Ha a felhőbeli rétegezés engedélyezve van a kiszolgálóvégponton, a rendszer rétegzett fájlok kihagyva, és nem indexeli a Windows Search. A nem rétegzett fájlok megfelelően vannak indexelve.
 
 ### <a name="antivirus-solutions"></a>A víruskereső megoldásokkal
-Víruskereső ismert kártevő kódja fájlok vizsgálata úgy működik, mert egy víruskereső előfordulhat, hogy a rétegzett fájlok visszahívása. Mert rétegzett fájlok beállítása "offline" attribútuma, javasoljuk, hogy a szoftver gyártójával megtudhatja, hogyan konfigurálhatja a kapcsolat nélküli fájlok olvasásakor kihagyandó megoldás egyeztetett. 
+Víruskereső ismert kártevő kódja fájlok vizsgálata úgy működik, mert egy víruskereső előfordulhat, hogy a rétegzett fájlok visszahívása. Verziókban 4.0-s és újabb az Azure File Sync ügynök rétegzett fájlok a biztonságos Windows FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS attribútumkészletet. Azt javasoljuk, hogy a szoftver gyártójával való olvasási rendszerfájlokra ez (számos automatikusan elvégezze ezt) kihagyja a megoldás konfigurálása egyeztetett.
 
-A következő megoldások ismert támogatására, a rendszer kihagyja a kapcsolat nélküli fájlok:
-
-- [A Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
-    - A Windows Defender automatikusan kihagyja az offline attribútum beállítása rendelkező fájlok olvasásához. Azt Defender teszteltük, és egy kisebb hibát azonosított: a kiszolgáló egy meglévő szinkronizálási csoporthoz való hozzáadásakor fájlok kisebb, mint 800 bájt vannak idézni (Letöltés) az új kiszolgálón. Ezek a fájlok továbbra is az új kiszolgálón, és nem lesz rétegzett, mivel azok nem felelnek meg a rétegzési méretkövetelményt (> 64 KB-os).
-- [A System Center Endpoint Protection (SCEP)](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
-    - SCEP működik, mint a Defender; Lásd a fenti
-- [A Symantec Endpoint Protection](https://support.symantec.com/en_US/article.tech173752.html)
-- [McAfee EndPoint Security](https://kc.mcafee.com/resources/sites/MCAFEE/content/live/PRODUCT_DOCUMENTATION/26000/PD26799/en_US/ens_1050_help_0-00_en-us.pdf) (lásd a "Vizsgálat csak szükséges" 90 oldalán a PDF-fájl)
-- [Kaspersky Anti-Virus](https://support.kaspersky.com/4684)
-- [A Sophos az Endpoint Protection](https://community.sophos.com/kb/en-us/40102)
-- [TrendMicro OfficeScan](https://success.trendmicro.com/solution/1114377-preventing-performance-or-backup-and-restore-issues-when-using-commvault-software-with-osce-11-0#collapseTwo) 
+A Microsoft belső fejlesztésű vírusvédelmi megoldások, a Windows Defender és System Center Endpoint Protection (SCEP), mindkettő automatikusan hagyja ki ezt az attribútumot állítsa rendelkező fájlok olvasásához. Tudjuk tesztelni őket, és egy kisebb hibát azonosított: a kiszolgáló egy meglévő szinkronizálási csoporthoz való hozzáadásakor fájlok kisebb, mint 800 bájt vannak idézni (Letöltés) az új kiszolgálón. Ezek a fájlok továbbra is az új kiszolgálón, és nem lesz rétegzett, mivel azok nem felelnek meg a rétegzési méretkövetelményt (> 64 KB-os).
 
 ### <a name="backup-solutions"></a>Biztonsági mentési megoldások
 Például a víruskereső megoldások biztonsági mentési megoldások okozhat a rétegzett fájlok visszahívása. Azt javasoljuk, hogy biztonsági mentése az Azure-fájlmegosztás helyett egy a helyszíni biztonsági mentési termék egy felhőalapú biztonsági mentési megoldás használatával.
