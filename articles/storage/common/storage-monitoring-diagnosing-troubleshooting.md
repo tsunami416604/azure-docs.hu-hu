@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.component: common
-ms.openlocfilehash: 1b949d2baedc7a7da3230212e267c3ac98b30bbd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 64e7b6ad79fc26f8ab2ba796bbca2909417b113c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239542"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625997"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -56,8 +56,8 @@ Teljes körű hibaelhárítás az Azure Storage-alkalmazások gyakorlati útmuta
   * [A mérőszámok emelkedő PercentThrottlingError értéket mutatnak]
   * [A mérőszámok emelkedő PercentTimeoutError értéket mutatnak]
   * [A mérőszámok emelkedő PercentNetworkError értéket mutatnak]
-  * [Az ügyfél fogad üzeneteket HTTP 403 (tiltott)]
-  * [Az ügyfél fogad üzeneteket HTTP 404 (nem található)]
+  * [Az ügyfél HTTP 403 (Tiltott) hibaüzeneteket kap]
+  * [Az ügyfél HTTP 404 (Nem található) hibaüzeneteket kap]
   * [Az ügyfél HTTP 409 (Ütközés) üzeneteket fogad]
   * [Metrika alacsony PercentSuccess vagy analytics naplóbejegyzések rendelkezik ClientOtherErrors működésére a tranzakció állapota]
   * [Teljesítmény-mérőszámait váratlan növekedését megjelenítése a tárolási kapacitás-használat]
@@ -197,7 +197,7 @@ Az alkalmazást is értesíti az ügyfélalkalmazás által jelentett hibákat. 
 A következő erőforrások lehetnek hasznosak ismertetése a storage szolgáltatással kapcsolatos állapota és a hiba kódja:
 
 * [Általános REST API-t hibakódok](https://msdn.microsoft.com/library/azure/dd179357.aspx)
-* [BLOB Service-hibakódok](https://msdn.microsoft.com/library/azure/dd179439.aspx)
+* [A Blob Service hibakódjai](https://msdn.microsoft.com/library/azure/dd179439.aspx)
 * [Várólista hibakódjai](https://msdn.microsoft.com/library/azure/dd179446.aspx)
 * [Tábla hibakódjai](https://msdn.microsoft.com/library/azure/dd179438.aspx)
 * [Fájl hibakódjai](https://msdn.microsoft.com/library/azure/dn690119.aspx)
@@ -319,8 +319,8 @@ A probléma megoldásához egy, a storage-szolgáltatás rendelkezésre állás�
 ---
  Az ügyfélalkalmazás fogadja-e HTTP 4XX (például a 404-es) választ a storage szolgáltatás?
 
-* [Az ügyfél fogad üzeneteket HTTP 403 (tiltott)]
-* [Az ügyfél fogad üzeneteket HTTP 404 (nem található)]
+* [Az ügyfél HTTP 403 (Tiltott) hibaüzeneteket kap]
+* [Az ügyfél HTTP 404 (Nem található) hibaüzeneteket kap]
 * [Az ügyfél HTTP 409 (Ütközés) üzeneteket fogad]
 
 ---
@@ -642,7 +642,7 @@ A **PercentSuccess** metrika a százalékos aránya, amelyek sikerrel járt-e a 
 Fontos megjegyezni, hogy ezek a műveletek sikeresen befejeződtek, és ezért nincs hatással a többi mérőszámokat, például a rendelkezésre állási. Néhány művelet, amely sikeresen végrehajtható legyen, de a sikertelen HTTP-állapotkódok eredményezhet, amely többek között:
 
 * **ResourceNotFound** (nem található 404), például a GET kérést egy blobba, amely nem létezik.
-* **ResouceAlreadyExists** (ütközés 409), például az egy **CreateIfNotExist** művelet, ahol az erőforrás már létezik.
+* **ResourceAlreadyExists** (ütközés 409), például az egy **CreateIfNotExist** művelet, ahol az erőforrás már létezik.
 * **ConditionNotMet** (nem módosított 304), például egy feltételes művelet, például amikor egy ügyfél küld a egy **ETag** érték és a egy olyan HTTP **If-None-Match** fejléc, kép kérése csak akkor, ha van frissítve lett az utolsó művelet óta.
 
 Gyakori REST API-val hibakódok, a tárolási szolgáltatások lapon visszaadó listáját találja [gyakori REST API-hibakódok](https://msdn.microsoft.com/library/azure/dd179357.aspx).
@@ -843,8 +843,8 @@ További információt talál [Mi az Application Insights](../../application-ins
 [A mérőszámok emelkedő PercentTimeoutError értéket mutatnak]: #metrics-show-an-increase-in-PercentTimeoutError
 [A mérőszámok emelkedő PercentNetworkError értéket mutatnak]: #metrics-show-an-increase-in-PercentNetworkError
 
-[Az ügyfél fogad üzeneteket HTTP 403 (tiltott)]: #the-client-is-receiving-403-messages
-[Az ügyfél fogad üzeneteket HTTP 404 (nem található)]: #the-client-is-receiving-404-messages
+[Az ügyfél HTTP 403 (Tiltott) hibaüzeneteket kap]: #the-client-is-receiving-403-messages
+[Az ügyfél HTTP 404 (Nem található) hibaüzeneteket kap]: #the-client-is-receiving-404-messages
 [Az ügyfél vagy egy másik folyamat korábban törölték az objektumot]: #client-previously-deleted-the-object
 [Egy közös hozzáférésű Jogosultságkód (SAS) hitelesítési hiba]: #SAS-authorization-issue
 [Ügyféloldali JavaScript-kód nincs engedélye az objektumhoz való hozzáférést]: #JavaScript-code-does-not-have-permission

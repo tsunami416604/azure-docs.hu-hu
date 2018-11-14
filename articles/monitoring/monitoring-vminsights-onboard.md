@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2018
+ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 8591e723cad1c44e9cc8d00008485e6b304fc4d3
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 9b6fd9a1eb9e5b27f62507e58f9b1a85caa92dea
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283366"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625419"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Hogyan üzembe helyezni az Azure figyeli, hogy virtuális gépeket (előzetes verzió)
-Ez a cikk ismerteti, hogyan állítható be az Azure Monitor az Azure-beli virtuális gépek operációs rendszer állapotának figyelésére és felderítése és képezze le az alkalmazás függőségeit, amelyek rajtuk üzemeltethető virtuális gépek számára.  
+Ez a cikk bemutatja, hogyan állítható be az Azure Monitor a virtuális gépek az Azure-beli virtuális gépek és virtuálisgép-méretezési csoportok és a környezetben, a virtuális gépek operációs rendszer állapotának figyelésére többek között a felderítés és az alkalmazásfüggőségek leképezése Előfordulhat, hogy futhat őket.  
 
 Az Azure Monitor engedélyezése a virtuális gépek az alábbi módszerek egyikének használatával történik, és az egyes módszerek használatával részletei is szerepelnek a cikk későbbi részében.  
 
@@ -50,16 +50,12 @@ Log Analytics-munkaterület az alábbi régiókban jelenleg támogatott:
 
 Ha nem rendelkezik egy munkaterületet, létrehozhat keresztül [Azure CLI-vel](../log-analytics/log-analytics-quick-create-workspace-cli.md)segítségével, [PowerShell](../log-analytics/log-analytics-quick-create-workspace-posh.md), a a [az Azure portal](../log-analytics/log-analytics-quick-create-workspace.md), vagy [Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md).  Ha engedélyezi az Azure Portalon egy Azure virtuális gép figyelése, lehetősége van, hozzon létre egy munkaterületet a folyamat során.  
 
-A megoldás engedélyezéséhez, kell lennie a Log Analytics közreműködő szerepkör tagja. A Log Analytics-munkaterülethez való hozzáférésének kapcsolatos további információkért lásd: [munkaterületeinek kezeléséhez](../log-analytics/log-analytics-manage-access.md).
-
-[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
-
 A megoldás engedélyezése a nagy mennyiségű először példahelyzet a következő konfigurálása a Log Analytics-munkaterület:
 
-* Telepítse a **ServiceMap** és **InfrastructureInsights** megoldások
-* A teljesítményszámlálók adatainak összegyűjtése Log Analytics-munkaterület konfigurálása
+* Telepítse a **ServiceMap** és **InfrastructureInsights** megoldásokat. A csak lehet elvégezni egy ebben a cikkben ismertetett Azure Resource Manager-sablon használatával.   
+* Konfigurálja a teljesítményszámlálók adatainak összegyűjtése a Log Analytics-munkaterületet.
 
-Ebben a forgatókönyvben a munkaterület beállítása: [telepítő Log Analytics-munkaterület](#setup-log-analytics-workspace).
+A munkaterület konfigurálása a skála esetben jelennek meg [telepítő Log Analytics-munkaterületet az a méretezési csoport üzembe helyezéskor](#setup-log-analytics-workspace).
 
 ### <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
@@ -148,20 +144,16 @@ Az alábbi táblázat a virtuális gépek az Azure monitorban támogatott Window
 |12 SP2 | 4.4. * |
 |12 SP3 | 4.4. * |
 
-### <a name="hybrid-environment-connected-sources"></a>Hibrid környezetben csatlakoztatott források
-Virtuális gépek térkép az Azure Monitor az adatok lekérése a Microsoft Dependency agent. A függőségi ügynök a Log Analytics agent a Log Analytics, és ezért a rendszer létesített kapcsolatát rendelkeznie kell a Log Analytics-ügynököket telepíteni és konfigurálni a függőségi ügynök támaszkodik. A következő táblázat ismerteti a térkép funkció támogatja a hibrid környezetben összekapcsolt forrásokról.
+### <a name="microsoft-dependency-agent"></a>A Microsoft Dependency agent
+Virtuális gépek térkép az Azure Monitor az adatok lekérése a Microsoft Dependency agent. A függőségi ügynök a Log Analytics agent a Log Analytics, és ezért a rendszer létesített kapcsolatát rendelkeznie kell a Log Analytics-ügynököket telepíteni és konfigurálni a függőségi ügynök támaszkodik. Engedélyezésekor az Azure Monitor-beli virtuális gépek egyetlen Azure virtuális gép vagy a módszerek használatakor a, a méretezési csoport üzembe helyezési, az Azure virtuális gép függőségi ügynök bővítmény segítségével telepítse az ügynököt, hogy előkészítési folyamatot részeként. Hibrid környezetben a függőségi ügynök letölthető, és manuálisan telepíteni, vagy Azure-on kívül üzemeltetett ezeket a virtuális gépeket egy automatikus központi telepítési módszer használatával.  
+
+A következő táblázat ismerteti a térkép funkció támogatja a hibrid környezetben összekapcsolt forrásokról.
 
 | Csatlakoztatott forrás | Támogatott | Leírás |
 |:--|:--|:--|
-| Windows-ügynökök | Igen | Mellett a [Log Analytics-ügynököket for Windows](../log-analytics/log-analytics-concept-hybrid.md), Windows-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
-| Linux-ügynökök | Igen | Mellett a [Linuxhoz készült Log Analytics-ügynök](../log-analytics/log-analytics-concept-hybrid.md), Linux-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
+| Windows-ügynökök | Igen | Mellett a [Log Analytics-ügynököket for Windows](../log-analytics/log-analytics-agent-overview.md), Windows-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
+| Linux-ügynökök | Igen | Mellett a [Linuxhoz készült Log Analytics-ügynök](../log-analytics/log-analytics-agent-overview.md), Linux-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
 | System Center Operations Manage felügyeleti csoport | Nem | |  
-
-A Windows, a Microsoft Monitoring Agent (MMA) segítségével a System Center Operations Manager és a Log Analytics összegyűjtése és küldése figyelési adatok. A System Center Operations Manager és a Log Analytics biztosít különböző ki a box verziói az ügynököt. Ezek a verziók jelenthetnek a Log Analyticsnek, a System Center Operations Managernek vagy mindkettőnek.  
-
-A Linux, a Linux-összegyűjti és figyelés a Log Analytics az adatokat küld a Log Analytics-ügynököket.   
-
-Ha a Windows vagy Linux rendszerű számítógépek közvetlenül nem lehet csatlakozni a szolgáltatáshoz, a Log Analytics-ügynök csatlakoztatása a Log Analytics használatával az OMS-átjáró konfigurálása szeretné. Hogyan telepítheti és konfigurálhatja az OMS-átjáró további információkért lásd: [számítógépek csatlakoztatását az OMS-átjáró Internet-hozzáférés nélküli](../log-analytics/log-analytics-oms-gateway.md).  
 
 A függőségi ügynök a következő helyről lehet letölteni.
 
@@ -170,63 +162,23 @@ A függőségi ügynök a következő helyről lehet letölteni.
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.1 | 55030ABF553693D8B5112569FB2F97D7C54B66E9990014FC8CC43EFB70DE56C6 |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.1 | 43C75EF0D34471A0CBCE5E396FFEEF4329C9B5517266108FA5D6131A353D29FE |
 
-## <a name="diagnostic-and-usage-data"></a>Diagnosztika és használati adatok
-A Microsoft automatikusan gyűjt keresztül az Azure Monitor szolgáltatás használatának és teljesítményének adatait. A Microsoft ezeket az adatokat adja meg, és a minőségének, biztonságának és integritásának a szolgáltatás javítására használja. Adja meg a pontos és hatékony hibaelhárítási képességeket kínál, a térkép a szolgáltatás adatokat például az operációs rendszer és verzió, IP-cím, DNS-nevet és munkaállomás-neve, a szoftver konfigurációjára vonatkozó információkat tartalmaz. A Microsoft nem gyűjti a neveket, címeket és egyéb kapcsolattartási adatait.
+## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
+A következő hozzáférést kell adni a felhasználók számára, annak érdekében, az Azure monitorban funkcióhoz férhet hozzá a virtuális gépek számára.  
+  
+- A megoldás engedélyezéséhez adható hozzá a Log Analytics közreműködő szerepkör tagjaként kell.  
 
-Az adatok gyűjtésével és használatával kapcsolatos további információkért tekintse meg a [Microsoft Online Services adatvédelmi nyilatkozata](https://go.microsoft.com/fwlink/?LinkId=512132).
+- A teljesítmény, egészségügyi, megtekintése, és adatokat, az Azure virtuális gép és virtuális gépek az Azure Monitor szolgáltatással konfigurált Log Analytics-munkaterületet a Monitoring Reader szerepkör tagjaként hozzá kell.   
 
-[!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
-
-## <a name="performance-counters-enabled"></a>A teljesítményszámlálók engedélyezve
-A virtuális gépek az Azure Monitor konfigurálása a Log Analytics-munkaterületet a megoldás által használt teljesítményszámlálók adatainak összegyűjtése.  A következő táblázat felsorolja azokat az objektumokat és a megoldás által konfigurált számlálói gyűjtött minden 60 másodpercben.
-
-### <a name="windows-performance-counters"></a>Windows-teljesítményszámlálók
-
-|Objektumnév |Számláló neve |  
-|------------|-------------|  
-|Logikai lemez |% Szabad terület |  
-|Logikai lemez |Átl. Lemez mp/Olvasás |  
-|Logikai lemez |Átl. Lemez mp/átvitel |  
-|Logikai lemez |Átl. Lemez mp/írás |  
-|Logikai lemez |Bájt/mp |  
-|Logikai lemez |Lemezolvasási sebesség (bájt/s) |  
-|Logikai lemez |Lemezolvasások/mp |  
-|Logikai lemez |Átvitel/mp |  
-|Logikai lemez |Lemezírási sebesség (bájt/s) |  
-|Logikai lemez |Lemezírások/mp |  
-|Logikai lemez |Szabad hely MB-ban |  
-|Memory (Memória) |Rendelkezésre álló memória |  
-|Hálózati Adapter |Fogadott bájtok/mp |  
-|Hálózati Adapter |Küldött bájtok/s |  
-|Processzor |Processzoridő |  
-
-### <a name="linux-performance-counters"></a>Linux-teljesítményszámlálók
-
-|Objektumnév |Számláló neve |  
-|------------|-------------|  
-|Logikai lemez |Foglalt hely % |  
-|Logikai lemez |Lemezolvasási sebesség (bájt/s) |  
-|Logikai lemez |Lemezolvasások/mp |  
-|Logikai lemez |Átvitel/mp |  
-|Logikai lemez |Lemezírási sebesség (bájt/s) |  
-|Logikai lemez |Lemezírások/mp |  
-|Logikai lemez |Szabad hely MB-ban |  
-|Logikai lemez |Logikai lemez bájt/mp |  
-|Memory (Memória) |Rendelkezésre álló memória |  
-|Network (Hálózat) |Fogadott bájtok teljes száma |  
-|Network (Hálózat) |Küldött bájtok száma összesen |  
-|Processzor |Processzoridő |  
-
-## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
-Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen. 
+A Log Analytics-munkaterülethez való hozzáférésének kapcsolatos további információkért lásd: [munkaterületeinek kezeléséhez](../log-analytics/log-analytics-manage-access.md).
 
 ## <a name="enable-from-the-azure-portal"></a>Az Azure Portalról engedélyezése
 Ha engedélyezni szeretné az Azure Portalon az Azure Virtuálisgép-monitorozási, tegye a következőket:
 
-1. Az Azure Portalon válassza ki a **virtuális gépek**. 
-2. Válasszon ki egy virtuális gépet a listából. 
-3. A virtuális gép lapon található a **figyelés** szakaszban jelölje be **Insights (előzetes verzió)**.
-4. Az a **Insights (előzetes verzió)** lapon jelölje be **kipróbálása**.
+1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen. 
+2. Az Azure Portalon válassza ki a **virtuális gépek**. 
+3. Válasszon ki egy virtuális gépet a listából. 
+4. A virtuális gép lapon található a **figyelés** szakaszban jelölje be **Insights (előzetes verzió)**.
+5. Az a **Insights (előzetes verzió)** lapon jelölje be **kipróbálása**.
 
     ![A virtuális gépek az Azure Monitor engedélyezése a virtuális gép](./media/monitoring-vminsights-onboard/enable-vminsights-vm-portal-01.png)
 
@@ -241,7 +193,13 @@ Miután engedélyezte a figyelés, a virtuális gép mérőszámok megtekintés�
 
 
 ## <a name="on-boarding-at-scale"></a>Az előkészítési ipari méretekben
-Ez a szakasz útmutatást hajtsa végre az a következő felhőméretű üzembe Azure monitor használatával, vagy az Azure Policy-beli virtuális gépek vagy az Azure PowerShell használatával.  Az első lépés szükséges, hogy a Log Analytics-munkaterület konfigurálása.  
+Ez a szakasz útmutatást hajtsa végre az a következő felhőméretű üzembe Azure monitor használatával, vagy az Azure Policy-beli virtuális gépek vagy az Azure PowerShell használatával.  
+
+A lépéseket kell elvégeznie, mielőtt konfigurálhatná üzembe helyezésében a virtuális gépek előre konfigurálása a Log Analytics-munkaterület foglalja össze vannak.
+
+1. Hozzon létre egy új munkaterületen, ha egy még nem létezik, amely használható az Azure Monitor virtuális gépek támogatásához. Felülvizsgálat [munkaterületeinek kezeléséhez](../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json) egy új munkaterületet, a költség, felügyeleti és megfelelőségi szempontokat a folytatás előtt létrehozása előtt.       
+2. Engedélyezze a teljesítményszámlálók a munkaterületen, a Linux és Windows virtuális gépeken a gyűjteményhez.
+3. Telepíteni és engedélyezni az **ServiceMap** és **InfrastructureInsights** megoldás a munkaterületén.  
 
 ### <a name="setup-log-analytics-workspace"></a>Log Analytics-munkaterület beállítása
 Ha nem rendelkezik a Log Analytics-munkaterületet, tekintse át a javasolt alatt elérhető módszerek a [Előfeltételek](#log-analytics) szakasz hozhat létre egyet.  
@@ -337,7 +295,7 @@ Ha az Azure CLI-vel, akkor először helyi telepítése és használata a paranc
     ```
 
 ### <a name="enable-using-azure-policy"></a>Engedélyezze az Azure Policy használata
-Az Azure Monitor engedélyezése a virtuális gépek nagy mennyiségű, amely biztosítja az egységes megfelelőségi és az új virtuális gépek kiépítése, automatikus engedélyezést [Azure Policy](../governance/policy/overview.md) ajánlott. Ezek a házirendek:
+Az Azure Monitor engedélyezése a virtuális gépek nagy mennyiségű, amely biztosítja az egységes megfelelőségi és az új virtuális gépek kiépítése, automatikus engedélyezést [Azure Policy](../azure-policy/azure-policy-introduction.md) ajánlott. Ezek a házirendek:
 
 * Log Analytics-ügynököket és a függőségi ügynök üzembe helyezése 
 * Jelentés a megfelelőségi eredmények 
@@ -573,14 +531,16 @@ Failed: (0)
 ## <a name="enable-for-hybrid-environment"></a>A hibrid környezet engedélyezése
 Ez a szakasz ismerteti, hogyan előkészítheti a virtuális gépeket vagy fizikai számítógépek üzemeltetett az adatközpontban vagy egyéb felhőkörnyezet által az Azure Monitor-beli virtuális gépek figyelésére.  
 
-Az Azure Monitor, virtuális gépek térkép függőségi ügynök nem továbbít adatokat magát, és nem igényel tűzfalak és a portok módosítása. Az adatok térképen mindig továbbítása a Log Analytics-ügynököket, az Azure Monitor szolgáltatásba, vagy közvetlenül vagy keresztül a [OMS-átjáró](../log-analytics/log-analytics-oms-gateway.md) Ha az informatikai biztonsági szabályzatok nem engedélyezik a számítógépeken a hálózat csatlakozik az internethez.
+Az Azure Monitor, virtuális gépek térkép függőségi ügynök nem továbbít adatokat magát, és nem igényel tűzfalak és a portok módosítása. A térképadatok mindig továbbítása a Log Analytics-ügynököket, az Azure Monitor szolgáltatásba, vagy közvetlenül vagy keresztül a [OMS-átjáró](../log-analytics/log-analytics-oms-gateway.md) Ha az informatikai biztonsági szabályzatok nem engedélyezik a számítógépeken a hálózat csatlakozik az internethez.
 
-Tekintse át a követelményeket és a központi telepítési módszerek a [Log Analytics Linux és Windows-ügynök](../log-analytics/log-analytics-concept-hybrid.md).
+Tekintse át a követelményeket és a központi telepítési módszerek a [Log Analytics Linux és Windows-ügynök](../log-analytics/log-analytics-agent-overview.md).  
+
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
 
 Összesített lépéseket:
 
 1. Log Analytics-ügynököket telepíteni Windows vagy Linux
-2. Az Azure Monitor telepítése a virtuális gépek térkép függőségi ügynök
+2. Töltse le és telepítse az Azure Monitor a virtuális gépek térkép függőségi ügynök [Windows](https://aka.ms/dependencyagentwindows) vagy [Linux](https://aka.ms/dependencyagentlinux).
 3. Teljesítményszámlálók gyűjtésének engedélyezéséhez
 4. A virtuális gépek előkészítése az Azure Monitor
 
@@ -723,6 +683,52 @@ Ha az Azure CLI-vel, akkor először helyi telepítése és használata a paranc
     ```
 Miután engedélyezte a figyelés, állapota és a hibrid számítógép mérőszámok megtekintéséhez nagyjából 10 percet vehet igénybe. 
 
+## <a name="performance-counters-enabled"></a>A teljesítményszámlálók engedélyezve
+A virtuális gépek az Azure Monitor konfigurálása a Log Analytics-munkaterületet a megoldás által használt teljesítményszámlálók adatainak összegyűjtése.  A következő táblázat felsorolja azokat az objektumokat és a megoldás által konfigurált számlálói gyűjtött minden 60 másodpercben.
+
+### <a name="windows-performance-counters"></a>Windows-teljesítményszámlálók
+
+|Objektumnév |Számláló neve |  
+|------------|-------------|  
+|Logikai lemez |% Szabad terület |  
+|Logikai lemez |Átl. Lemez mp/Olvasás |  
+|Logikai lemez |Átl. Lemez mp/átvitel |  
+|Logikai lemez |Átl. Lemez mp/írás |  
+|Logikai lemez |Bájt/mp |  
+|Logikai lemez |Lemezolvasási sebesség (bájt/s) |  
+|Logikai lemez |Lemezolvasások/mp |  
+|Logikai lemez |Átvitel/mp |  
+|Logikai lemez |Lemezírási sebesség (bájt/s) |  
+|Logikai lemez |Lemezírások/mp |  
+|Logikai lemez |Szabad hely MB-ban |  
+|Memory (Memória) |Rendelkezésre álló memória |  
+|Hálózati Adapter |Fogadott bájtok/mp |  
+|Hálózati Adapter |Küldött bájtok/s |  
+|Processzor |Processzoridő |  
+
+### <a name="linux-performance-counters"></a>Linux-teljesítményszámlálók
+
+|Objektumnév |Számláló neve |  
+|------------|-------------|  
+|Logikai lemez |Foglalt hely % |  
+|Logikai lemez |Lemezolvasási sebesség (bájt/s) |  
+|Logikai lemez |Lemezolvasások/mp |  
+|Logikai lemez |Átvitel/mp |  
+|Logikai lemez |Lemezírási sebesség (bájt/s) |  
+|Logikai lemez |Lemezírások/mp |  
+|Logikai lemez |Szabad hely MB-ban |  
+|Logikai lemez |Logikai lemez bájt/mp |  
+|Memory (Memória) |Rendelkezésre álló memória |  
+|Network (Hálózat) |Fogadott bájtok teljes száma |  
+|Network (Hálózat) |Küldött bájtok száma összesen |  
+|Processzor |Processzoridő |  
+
+## <a name="diagnostic-and-usage-data"></a>Diagnosztika és használati adatok
+A Microsoft automatikusan gyűjt keresztül az Azure Monitor szolgáltatás használatának és teljesítményének adatait. A Microsoft ezeket az adatokat adja meg, és a minőségének, biztonságának és integritásának a szolgáltatás javítására használja. Adja meg a pontos és hatékony hibaelhárítási képességeket kínál, a térkép a szolgáltatás adatokat például az operációs rendszer és verzió, IP-cím, DNS-nevet és munkaállomás-neve, a szoftver konfigurációjára vonatkozó információkat tartalmaz. A Microsoft nem gyűjti a neveket, címeket és egyéb kapcsolattartási adatait.
+
+Az adatok gyűjtésével és használatával kapcsolatos további információkért tekintse meg a [Microsoft Online Services adatvédelmi nyilatkozata](https://go.microsoft.com/fwlink/?LinkId=512132).
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 ## <a name="next-steps"></a>További lépések
 
 A figyelés engedélyezve van a virtuális gép, ezt az információt és az Azure Monitor-beli virtuális gépek elemzési érhető el.  Az állapotfigyelő szolgáltatás használatával kapcsolatban lásd: [a virtuális gépek állapotának megtekintése az Azure Monitor](monitoring-vminsights-health.md), vagy a felderített alkalmazások függőségeinek megtekintése: [megtekintése az Azure Monitor virtuális gépeket a térképen](monitoring-vminsights-maps.md).  

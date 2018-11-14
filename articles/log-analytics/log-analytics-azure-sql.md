@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: ''
-ms.openlocfilehash: b20a142007b3422d071de47410f4c9cdd1ff62a7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5eb398cf981edbcfe9b98ee89c3dd4e12b3f758f
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006736"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615493"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Az Azure SQL Database megfigyelése az Azure SQL Analytics (előzetes verzió)
 
@@ -119,7 +119,7 @@ Az alábbi táblázat ismerteti a perspektívák az irányítópulton, így az A
 | Perspektíva | Leírás | Támogatja az SQL Database és a rugalmas készletek | Felügyelt példány támogatása |
 | --- | ------- | ----- | ----- |
 | Erőforrás típusa szerint | Adott összes, a figyelt erőforrások szempontjából. | Igen | Igen | 
-| Elemzés | Hierarchikus Lehatolás biztosít intelligens elemzésekké teljesítményéről. | Igen | Igen |
+| Insights | Hierarchikus Lehatolás biztosít intelligens elemzésekké teljesítményéről. | Igen | Igen |
 | Hibák | Hierarchikus Lehatolás biztosít, és ismételje meg az adatbázisok SQL hibákká. | Igen | Igen |
 | Időtúllépések | Hierarchikus Lehatolás biztosít az SQL-időtúllépések, az adatbázisok történt. | Igen | Nem |
 | Letiltások | Hierarchikus Lehatolás biztosít, és ismételje meg az adatbázisok SQL blockings be. | Igen | Nem |
@@ -291,4 +291,4 @@ Bár a megoldás használata ingyenes, vonatkozik-e az diagnostics telemetriai a
 
 - Használat [Naplókeresések](log-analytics-queries.md) a Log Analytics az Azure SQL részletes adatainak megtekintéséhez.
 - [Saját irányítópult létrehozásával](log-analytics-dashboards.md) Azure SQL-adatainak megjelenítése.
-- [Riasztások létrehozása](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) amikor adott Azure SQL-események történnek.
+- [Riasztások létrehozása](../monitoring-and-diagnostics/monitoring-overview-alerts.md) amikor adott Azure SQL-események történnek.
