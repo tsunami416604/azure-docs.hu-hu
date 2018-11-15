@@ -2,21 +2,21 @@
 title: Azure-függvények üzembe helyezése az Azure IoT Edge használatával | Microsoft Docs
 description: Az oktatóanyagban Azure-függvényeket helyezünk üzembe modulként peremhálózati eszközökön.
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 67540a02aab0880ea1a5c52e42036029b95c4f43
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 27aac9431c3f4cd801d090ddf11114c98edab405
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006260"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567315"
 ---
-# <a name="tutorial-deploy-azure-functions-as-iot-edge-modules-preview"></a>Oktatóanyag: Azure-függvény üzembe helyezése IoT Edge-modulként (előzetes verzió)
+# <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Oktatóanyag: Üzembe helyezni az Azure IoT Edge-modulok működik
 
 Az Azure Functions használatával olyan kódot helyezhet üzembe, amely közvetlenül az Azure IoT Edge-eszközökön valósítja meg az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő Azure-függvény létrehozásának és a szimulált IoT Edge-eszközön való üzembe helyezésének lépésein. Az Azure IoT Edge üzembe helyezése szimulált eszközön [Windows](quickstart.md) vagy [Linux](quickstart-linux.md) rendszeren című rövid útmutatóban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:     
 

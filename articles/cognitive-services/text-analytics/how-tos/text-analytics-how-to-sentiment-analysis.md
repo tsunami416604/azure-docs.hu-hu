@@ -1,7 +1,6 @@
 ---
-title: 'Példa: Hangulatelemzés a Text Analytics REST API használatával'
-titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan ismerheti fel a hangulatot a Text Analytics REST API használatával.
+title: A Text Analytics REST API (Microsoft vonatkozó Cognitive Services az Azure-ban) útmutató hangulatelemzés |} A Microsoft Docs
+description: Hogyan hangulat felismerése a Text Analytics REST API használatával a Microsoft Cognitive Services, Azure-ban az bemutató oktatóanyag.
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
@@ -10,12 +9,12 @@ ms.component: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 981e663b6a93abed1da9c2765a1b43063c70ad43
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
-ms.translationtype: HT
+ms.openlocfilehash: bbe9ffd0709157b5f0389ccc68a285b9c3829db9
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605895"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632866"
 ---
 # <a name="example-how-to-detect-sentiment-in-text-analytics"></a>Példa: Hogyan ismerhető fel a hangulat a Text Analytics-ben
 
@@ -24,6 +23,9 @@ A [Hangulatelemzés API](https://westus.dev.cognitive.microsoft.com/docs/service
 Ez a funkció akkor hasznos, ha a közösségi média, a vevő értékelések és a vitafórumokon kell felismeri a pozitív és negatív hangulatokat. Ön a tartalmat biztosítja, a modelleket és a betanítási adatokat a szolgáltatás biztosítja.
 
 A Hangulatelemzés jelenleg az angol, német, spanyol és francia nyelvet támogatja. Más nyelvek előzetes verzióban érhetők el. További információk: [Támogatott nyelvek](../text-analytics-supported-languages.md).
+
+> [!TIP]
+> Szövegelemzés is biztosít a Linux-alapú Docker tároló rendszerképének hangulatelemzés, így [telepítheti és futtathatja a Text Analytics tároló](text-analytics-how-to-install-containers.md) közel az adatokat.
 
 ## <a name="concepts"></a>Alapelvek
 
@@ -77,7 +79,7 @@ A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytic
 
 + Hozzon létre egy **POST** kérést. Nézze meg az API-dokumentációban ezt a kérést: [Sentiment Analysis API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)
 
-+ Állítsa be a kulcsszókereséshez a HTTP-végpontot. Tartalmaznia kell a `/sentiment` erőforrást: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
++ Állítsa be a HTTP-végpontot hangulatelemzés, a Text Analytics erőforrás használatával Azure-ban vagy egy példányosított [Szövegelemzés tároló](text-analytics-how-to-install-containers.md). Tartalmaznia kell a `/sentiment` erőforrást: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
 
 + A kérés fejlécet állítsa be úgy, hogy tartalmazza a Text Analytics műveletekhez a hozzáférési kulcsot. További információkért lásd: [Végpontok és hozzáférési kulcsok megkeresése](text-analytics-how-to-access-key.md).
 

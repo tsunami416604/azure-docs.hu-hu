@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: 2164dedc27d81aa488c3e054b4c6df067e96e612
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 815e3c711850eab11aef63e04a1c512c4510a910
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418194"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684285"
 ---
 #  <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>Névkeresési zónák egy SMTP szalagcím-ellenőrzésre konfigurálása
 
@@ -43,7 +43,7 @@ A PTR-rekordok konfigurálásakor győződjön meg arról, hogy az IP-cím és a
     Set-AzureRmPublicIpAddress : ReverseFqdn mail.contoso.com that PublicIPAddress ip01 is trying to use does not belong to subscription <Subscription ID>. One of the following conditions need to be met to establish ownership: 
                         
     1) Fordított teljes tartománynév egyezik a az előfizetéshez tartozó nyilvános IP-cím erőforrás teljes tartományneve 
-    2) Fordított teljes tartománynév feloldása egy olyan teljes tartománynevét (a CName rekordok lánc) bármely nyilvános IP-cím erőforráshoz az előfizetés társadminisztrátora; alatt 
+    2) Fordított teljes tartománynév feloldása egy olyan teljes tartománynevét (a CName rekordok lánc) bármely nyilvános IP-cím erőforráshoz az előfizetés; 
     3) Az ip-címet (CName és A rekordok lánc) az előfizetéshez tartozó statikus nyilvános IP-cím erőforrás legyen hozzárendelve. 
 
 Ha manuálisan módosítja az alapértelmezett megfelelően az SMTP szalagcím fordított teljes tartománynév, a távoli levelezési kiszolgáló továbbra is sikertelen, mert a, előfordulhat, hogy várhatóan az MX-rekord a tartomány megfelelően hostitel SMTP szalagcím.

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: 4c409dfcfba14093d5e2cf28df4bb6c5d1bd9533
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
-ms.translationtype: HT
+ms.openlocfilehash: a5837a922f14a779260ad6719b01a9c882eb5768
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725972"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622941"
 ---
 # <a name="restart-vms"></a>Virtuális gépek újraindítása
 
@@ -37,7 +37,7 @@ Az első az erőforráscsoportban lévő összes virtuális gépet újraindítja
 az vm restart --ids $(az vm list --resource-group myResourceGroup --query "[].id" -o tsv)
 ```
 
-A második az `az resouce list` segítségével lekérdezi a címkézett virtuális gépeket, rászűr a virtuálisgép-erőforrásokra, majd újraindítja a virtuális gépeket.
+A második az `az resource list` segítségével lekérdezi a címkézett virtuális gépeket, rászűr a virtuálisgép-erőforrásokra, majd újraindítja a virtuális gépeket.
 
 ```bash
 az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Microsoft.Compute/virtualMachines'].id" -o tsv)

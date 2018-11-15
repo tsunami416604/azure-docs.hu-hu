@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 274005d7cea5833f9653038b710a7dbc248f0c04
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.openlocfilehash: b694f72f812696fe1d03a799b31d9ce176cc824d
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221519"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621463"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Oktatóanyag: Az Azure Key Vault elérése Linux VM-beli, rendszer által hozzárendelt felügyelt identitással 
 
@@ -32,61 +32,53 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 > [!div class="checklist"]
 > * Hozzáférés engedélyezése a VM számára a Key Vaultban tárolt titkos kódokhoz 
 > * Hozzáférési jogkivonat lekérése a VM identitásával, majd a titkos kód lekérése a Key Vaultból 
- 
+ 
 ## <a name="prerequisites"></a>Előfeltételek
-
-[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-- [Bejelentkezés az Azure Portalra](https://portal.azure.com)
+## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>Hozzáférés engedélyezése a VM számára a Key Vaultban tárolt titkos kódokhoz  
 
-- [Linux rendszerű virtuális gép létrehozása](/azure/virtual-machines/linux/quick-create-portal)
+Az Azure-erőforrások felügyeltszolgáltatás-identitásának segítségével a kód hozzáférési jogkivonatokat kérhet le az olyan erőforrások felé történő hitelesítéshez, amelyek támogatják az Azure Active Directory-hitelesítést. Az Azure AD-hitelesítést azonban nem minden Azure-szolgáltatás támogatja. Az Azure-erőforrások felügyelt identitásainak ilyen szolgáltatásokkal való használatához tárolja el a szolgáltatás hitelesítő adatait az Azure Key Vaultban, és az Azure-erőforrások felügyelt identitásaival férjen hozzá a Key Vaulthoz, hogy le tudja kérni a hitelesítő adatokat. 
 
-- [Rendszer által hozzárendelt felügyelt identitás engedélyezése a virtuális gépen](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
+Először létre kell hozni egy Key Vaultot, és gondoskodni kell róla, hogy a VM rendszer által hozzárendelt felügyelt identitása hozzá tudjon férni.   
 
-## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>Hozzáférés engedélyezése a VM számára a Key Vaultban tárolt titkos kódokhoz  
-
-Az Azure-erőforrások felügyeltszolgáltatás-identitásának segítségével a kód hozzáférési jogkivonatokat kérhet le az olyan erőforrások felé történő hitelesítéshez, amelyek támogatják az Azure Active Directory-hitelesítést. Az Azure AD-hitelesítést azonban nem minden Azure-szolgáltatás támogatja. Az Azure-erőforrások felügyelt identitásainak ilyen szolgáltatásokkal való használatához tárolja el a szolgáltatás hitelesítő adatait az Azure Key Vaultban, és az Azure-erőforrások felügyelt identitásaival férjen hozzá a Key Vaulthoz, hogy le tudja kérni a hitelesítő adatokat. 
-
-Először létre kell hozni egy Key Vaultot, és gondoskodni kell róla, hogy a VM rendszer által hozzárendelt felügyelt identitása hozzá tudjon férni.   
-
-1. A bal oldali navigációs sáv tetején válassza az **Erőforrás létrehozása** > **Biztonság + identitás** > **Key Vault** lehetőséget.  
-2. Adja meg az új Key Vault **nevét**. 
-3. A Key Vaultot ugyanabban az előfizetésben és erőforráscsoportban hozza létre, mint a korábban létrehozott virtuális gépet. 
-4. Válassza a **Hozzáférési szabályzatok** lehetőséget, és kattintson az **Új hozzáadása** gombra. 
-5. A Konfigurálás sablonból mezőben válassza a **Titkos kódok kezelése** sablont. 
-6. Válassza a **Rendszerbiztonsági tag kijelölése** lehetőséget, és a keresőmezőben adja meg a korábban létrehozott virtuális gép nevét.  Válassza ki a virtuális gépet az eredménylistából, és kattintson a **Kiválasztás** gombra. 
-7. Az új hozzáférési szabályzat hozzáadásának befejezéshez kattintson az **OK**, majd a hozzáférési szabályzat kiválasztásának befejezéséhez ugyanúgy az **OK** gombra. 
-8. Kattintson a **Létrehozás** gombra a Key Vault létrehozásának befejezéséhez. 
+1. A bal oldali navigációs sáv tetején válassza az **Erőforrás létrehozása** > **Biztonság + identitás** > **Key Vault** lehetőséget.  
+2. Adja meg az új Key Vault **nevét**. 
+3. A Key Vaultot ugyanabban az előfizetésben és erőforráscsoportban hozza létre, mint a korábban létrehozott virtuális gépet. 
+4. Válassza a **Hozzáférési szabályzatok** lehetőséget, és kattintson az **Új hozzáadása** gombra. 
+5. A Konfigurálás sablonból mezőben válassza a **Titkos kódok kezelése** sablont. 
+6. Válassza a **Rendszerbiztonsági tag kijelölése** lehetőséget, és a keresőmezőben adja meg a korábban létrehozott virtuális gép nevét.  Válassza ki a virtuális gépet az eredménylistából, és kattintson a **Kiválasztás** gombra. 
+7. Az új hozzáférési szabályzat hozzáadásának befejezéshez kattintson az **OK**, majd a hozzáférési szabályzat kiválasztásának befejezéséhez ugyanúgy az **OK** gombra. 
+8. Kattintson a **Létrehozás** gombra a Key Vault létrehozásának befejezéséhez. 
 
     ![Helyettesítő képszöveg](./media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
 
-Ezután adjon hozzá egy titkos kódot a Key Vaulthoz, hogy később le tudja kérni a VM-ben futó titkos kódot: 
+Ezután adjon hozzá egy titkos kódot a Key Vaulthoz, hogy később le tudja kérni a VM-ben futó titkos kódot: 
 
-1. Válassza a **Minden erőforrás** lehetőséget, majd keresse meg és válassza ki a létrehozott Key Vaultot. 
-2. Válassza a **Titkos kódok** lehetőséget, és kattintson a **Hozzáadás** gombra. 
-3. A **Feltöltési beállítások** mezőben válassza a **Manuális** lehetőséget. 
-4. Adja meg a titkos kód nevét és értékét.  Az érték bármi lehet. 
-5. Hagyja az aktiválási és a lejárati dátumot üresen, az **Engedélyezve** beállítást pedig az **Igen** értéken. 
-6. A titkos kód létrehozásához kattintson a **Létrehozás** parancsra. 
- 
-## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-retrieve-the-secret-from-the-key-vault"></a>Hozzáférési jogkivonat lekérése a VM identitásával, majd a titkos kód lekérése a Key Vaultból  
+1. Válassza a **Minden erőforrás** lehetőséget, majd keresse meg és válassza ki a létrehozott Key Vaultot. 
+2. Válassza a **Titkos kódok** lehetőséget, és kattintson a **Hozzáadás** gombra. 
+3. A **Feltöltési beállítások** mezőben válassza a **Manuális** lehetőséget. 
+4. Adja meg a titkos kód nevét és értékét.  Az érték bármi lehet. 
+5. Hagyja az aktiválási és a lejárati dátumot üresen, az **Engedélyezve** beállítást pedig az **Igen** értéken. 
+6. A titkos kód létrehozásához kattintson a **Létrehozás** parancsra. 
+ 
+## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-retrieve-the-secret-from-the-key-vault"></a>Hozzáférési jogkivonat lekérése a VM identitásával, majd a titkos kód lekérése a Key Vaultból  
 
-A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre.  Windows használata esetén használhatja a [Linux Windows alrendszerében](https://msdn.microsoft.com/commandline/wsl/about) elérhető SSH-ügyfelet. Amennyiben segítségre van szüksége az SSH-ügyfél kulcsának konfigurálásához, [Az SSH-kulcsok és a Windows együttes használata az Azure-ban](../../virtual-machines/linux/ssh-from-windows.md) vagy [Nyilvános és titkos SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez](../../virtual-machines/linux/mac-create-ssh-keys.md) című cikkekben talál további információt.
- 
-1. A portálon lépjen a Linux virtuális gépre, és az **Áttekintés** területen kattintson a **Csatlakozás** gombra. 
-2. **Csatlakozzon** a virtuális géphez a választott SSH-ügyféllel. 
-3. A terminálablakban a CURL használatával indítson egy olyan kérést az Azure-erőforrások helyi felügyelt identitásainak végpontjára, amely lekér egy hozzáférési jogkivonatot az Azure Key Vaultból.  
- 
-    A hozzáférési jogkivonatra vonatkozó CURL-kérelmet alább láthatja.  
+A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre.  Windows használata esetén használhatja a [Linux Windows alrendszerében](https://msdn.microsoft.com/commandline/wsl/about) elérhető SSH-ügyfelet. Amennyiben segítségre van szüksége az SSH-ügyfél kulcsának konfigurálásához, [Az SSH-kulcsok és a Windows együttes használata az Azure-ban](../../virtual-machines/linux/ssh-from-windows.md) vagy [Nyilvános és titkos SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez](../../virtual-machines/linux/mac-create-ssh-keys.md) című cikkekben talál további információt.
+ 
+1. A portálon lépjen a Linux virtuális gépre, és az **Áttekintés** területen kattintson a **Csatlakozás** gombra. 
+2. **Csatlakozzon** a virtuális géphez a választott SSH-ügyféllel. 
+3. A terminálablakban a CURL, használatával indítson egy hozzáférési jogkivonat beszerzése az Azure Key Vault az Azure-erőforrások végpont a helyi felügyelt identitások.  
+ 
+    A hozzáférési jogkivonatra vonatkozó CURL-kérelmet alább láthatja.  
     
     ```bash
-    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net' -H Metadata:true  
+    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net' -H Metadata:true  
     ```
-    A válasz tartalmazza a Resource Manager eléréséhez szükséges hozzáférési jogkivonatot. 
+    A válasz tartalmazza a Resource Manager eléréséhez szükséges hozzáférési jogkivonatot. 
     
-    Válasz:  
+    Válasz:  
     
     ```bash
     {"access_token":"eyJ0eXAi...",
@@ -95,19 +87,19 @@ A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre.  Windows haszná
     "expires_on":"1504130527",
     "not_before":"1504126627",
     "resource":"https://vault.azure.net",
-    "token_type":"Bearer"} 
+    "token_type":"Bearer"} 
     ```
     
-    A hozzáférési jogkivonat használatával hitelesíthet az Azure Key Vaultban.  A következő CURL-kérés bemutatja, hogyan lehet a Key Vaultból titkos kulcsot beolvasni a CURL és a Key Vault REST API használatával.  Szüksége lesz a Key Vault URL-címére, amely a Key Vault **Áttekintés** lapjának **Alapvető erőforrások** szakaszában található.  Szüksége lesz az előző hívásban lekért hozzáférési jogkivonatra is. 
+    A hozzáférési jogkivonat használatával hitelesíthet az Azure Key Vaultban.  A következő CURL-kérés bemutatja, hogyan lehet a Key Vaultból titkos kulcsot beolvasni a CURL és a Key Vault REST API használatával.  Szüksége lesz a Key Vault URL-címére, amely a Key Vault **Áttekintés** lapjának **Alapvető erőforrások** szakaszában található.  Szüksége lesz az előző hívásban lekért hozzáférési jogkivonatra is. 
         
     ```bash
-    curl https://<YOUR-KEY-VAULT-URL>/secrets/<secret-name>?api-version=2016-10-01 -H "Authorization: Bearer <ACCESS TOKEN>" 
+    curl https://<YOUR-KEY-VAULT-URL>/secrets/<secret-name>?api-version=2016-10-01 -H "Authorization: Bearer <ACCESS TOKEN>" 
     ```
     
-    A válasz a következőképp fog kinézni: 
+    A válasz a következőképp fog kinézni: 
     
     ```bash
-    {"value":"p@ssw0rd!","id":"https://mytestkeyvault.vault.azure.net/secrets/MyTestSecret/7c2204c6093c4d859bc5b9eff8f29050","attributes":{"enabled":true,"created":1505088747,"updated":1505088747,"recoveryLevel":"Purgeable"}} 
+    {"value":"p@ssw0rd!","id":"https://mytestkeyvault.vault.azure.net/secrets/MyTestSecret/7c2204c6093c4d859bc5b9eff8f29050","attributes":{"enabled":true,"created":1505088747,"updated":1505088747,"recoveryLevel":"Purgeable"}} 
     ```
     
 Miután lekérte a titkos kódot a Key Vaultból, a használatával hitelesítést végezhet olyan szolgáltatásokban, amelyekhez név és jelszó szükséges.

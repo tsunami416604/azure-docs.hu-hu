@@ -12,12 +12,12 @@ ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
 ms.date: 11/07/2018
-ms.openlocfilehash: 75ec6a3fbfdd45575c46b763f1f5d0b69376e7a7
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 382ac23ea4c8e0ec54314bb754c00a8e6e43e9f6
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285271"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300965"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>Rövid útmutató: A Machine Learning Services (with R) az Azure SQL Database-ben (előzetes verzió)
 
@@ -29,7 +29,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="sign-up-for-the-preview"></a>Feliratkozás az előzetes verzióra
 
-A Machine Learning Services (with R) nyilvános előzetes verziójának használata az SQL Database-ben alapértelmezés szerint nem engedélyezett. Az előzetes verzióra való feliratkozáshoz küldjön egy e-mailt a Microsoftnak a következő címre: [sqldbml@microsoft.com](mailto:sqldbml@microsoft.com).
+A Machine Learning Services (with R) nyilvános előzetes verziójának használata az SQL Database-ben alapértelmezés szerint nem engedélyezett. E-mail küldése a Microsoftnak, [ sqldbml@microsoft.com ](mailto:sqldbml@microsoft.com) regisztrálhat a nyilvános előzetes verziója.
 
 Miután regisztrált a programban, a Microsoft belépteti Önt a nyilvános előzetes verzióba, és vagy migrálja a meglévő adatbázist, vagy egy új adatbázist hoz létre egy R-kompatibilis szolgáltatásban.
 
@@ -441,7 +441,7 @@ Ha olyan csomagot szeretne használni, amely még nincs telepítve az SQL-adatb�
 
     Ha például **„Az „R” nem ismerhető fel belső vagy külső parancsként, működő programként vagy batch-fájlként.”** üzenetet kapja, az valószínűleg azt jelenti, hogy az R.exe nem szerepel a **PATH** környezeti változóban a Windows rendszeren. Ebben az esetben hozzáadhatja a könyvtárat a környezeti változóhoz, vagy megkeresheti a könyvtárat a parancssorban (például `cd C:\Program Files\R\R-3.5.1\bin`).
 
-1. Az **sqlmlutils** telepítéséhez használja az **R CMD INSTALL** parancsot. Adja meg annak a könyvtárnak az elérési útját, amelybe letöltötte a zip-fájlt, valamint adja meg a zip-fájl nevét. Például:
+1. Az **sqlmlutils** telepítéséhez használja az **R CMD INSTALL** parancsot. Adja meg annak a könyvtárnak az elérési útját, amelybe letöltötte a zip-fájlt, valamint adja meg a zip-fájl nevét. Példa:
 
     ```
     R CMD INSTALL C:\Users\youruser\Downloads\sqlmlutils_0.5.0.zip

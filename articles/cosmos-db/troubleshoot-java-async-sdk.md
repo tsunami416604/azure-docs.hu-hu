@@ -9,12 +9,12 @@ ms.date: 10/28/2018
 ms.author: moderakh
 ms.devlang: java
 ms.component: cosmosdb-sql
-ms.openlocfilehash: 74813634aad95f163b06717521bb2c746ac3df6b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ee92a5dd474cdf4f32ed2c7327d732a2cfbbbf79
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238829"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632934"
 ---
 # <a name="troubleshooting-issues-when-using-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Java aszinkron SDK használatával az Azure Cosmos DB SQL API-fiókokkal kapcsolatos hibák elhárítása
 Ez a cikk ismerteti gyakori problémákat, megoldások, diagnosztikai lépések és eszközök használata esetén [Java aszinkron ADK](sql-api-sdk-async-java.md) az Azure Cosmos DB SQL API-fiókok.
@@ -148,7 +148,7 @@ Cosmos DB emulator HTTPS-tanúsítvány önaláírt. SDK emulator dolgozni kell 
 
 ## <a name="enable-client-sice-logging"></a>Ügyfél-SDK naplózásának engedélyezése
 
-Az aszinkron Java SDK-t használja SLF4j a naplózás a adapterréteget támogató elterjedt naplózási keretrendszer például log4j, a logback bejelentkezik.
+A naplózás a adapterréteget a Java SDK-val aszinkron használja SLF4j támogató elterjedt naplózási keretrendszer például log4j, a logback bejelentkezik.
 
 Például ha azt szeretné, log4j használandó naplózási keretrendszer, adja hozzá a következő libs a Java osztályútvonal:
 

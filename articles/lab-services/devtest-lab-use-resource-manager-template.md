@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 99d835d1d0e18bf62d6e64b7e5af45b6c53d809e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4fd9f76223adba20028288b46037586f8f54fd1a
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239508"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686381"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Egy Azure Resource Manager-sablon használatával virtuális gépek létrehozása 
 
@@ -42,7 +42,7 @@ Virtuális gépek létrehozásához a DevTest Labs szolgáltatásban létrehozot
 
    Virtuális gépek ugyanabban a környezetben együtt is kezelhető, és ugyanaz az életciklusuk. DevTest Labs felhasználói szerepkörrel felruházott felhasználók használja ezeket a sablonokat, mindaddig, amíg a rendszergazda úgy állította be a labor létrehozása ezzel a módszerrel környezetet hozhat létre.
 
-Ez a cikk további részében Mirosoft.DevTestLab/labs/virtualmachines használó Resource Manager-sablonok ismerteti. Ezek segítségével tesztlabor rendszergazdák automatizálhatja labor a virtuális gép létrehozása (például igényelhető virtuális gépek) vagy a mesterlemez. generációs (például kép gyári).
+Ez a cikk további részében Microsoft.DevTestLab/labs/virtualmachines használó Resource Manager-sablonok ismerteti. Ezek segítségével tesztlabor rendszergazdák automatizálhatja labor a virtuális gép létrehozása (például igényelhető virtuális gépek) vagy a mesterlemez. generációs (például kép gyári).
 
 [Ajánlott eljárások az Azure Resource Manager-sablonok létrehozására](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) kínál számos irányelvek és javaslatok létrehozása Azure Resource Manager-sablonok, amelyek segítségével a rendszer megbízható és könnyen használható.
 

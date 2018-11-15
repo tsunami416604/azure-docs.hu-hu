@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 10/09/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 633501b03a362fbd07e14e308e18488f03af5af5
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 6f02e20efbcb34d1f70f9f10acbe5bb3800cb4d2
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069204"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683951"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Erőforrástípusok és állapot-ellenőrzések a az Azure resource health segítségével elérhető
 Alább az erőforrástípusok szerint resource health segítségével végrehajtott összes ellenőrzés teljes listája.
@@ -100,6 +100,11 @@ Alább az erőforrástípusok szerint resource health segítségével végrehajt
 |Végrehajtott ellenőrzések|
 |---|
 |<ul><li> Végrehajtható futásidejű műveletek, mint a regisztráció, a telepítéshez vagy a Küldés a névtér?</li></ul>|
+
+## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/Capacities
+|Végrehajtott ellenőrzések|
+|---|
+|<ul><li>A kapacitás erőforrás működik és elérhető?</li><li>Azok a számítási feladatokat, és?</li></ul>|
 
 ## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft.PowerBI/workspaceCollections
 |Végrehajtott ellenőrzések|

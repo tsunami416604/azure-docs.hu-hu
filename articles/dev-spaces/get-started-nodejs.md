@@ -10,12 +10,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
-ms.openlocfilehash: b93276af8e5018d0da68ce837487b8f648944f1e
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 662c324da3b644b7ccdb33fc428c0886ae93d78d
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50977805"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515301"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Bevezetés az Azure Dev Spaces Node.js segítségével történő használatába
 
@@ -72,7 +72,7 @@ az group create --name MyResourceGroup --location <region>
 Hozzon létre egy Kubernetes-fürtöt az alábbi paranccsal:
 
 ```cmd
-az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.11.2 --enable-addons http_application_routing
+az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.11.2 --enable-addons http_application_routing --generate-ssh-keys
 ```
 
 A fürt létrehozása néhány percet vesz igénybe.

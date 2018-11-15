@@ -12,15 +12,15 @@ ms.component: report-monitor
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 07/23/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d99f077449529fb4a4a7f124fe1c0263d4113dee
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
-ms.translationtype: HT
+ms.openlocfilehash: 49d0840ff7a41ed48151b65e1351628d32d46d24
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363445"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623248"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Rövid útmutató: Nevesített helyek konfigurálása Azure Active Directory használatával
 
@@ -34,7 +34,7 @@ Ebben a rövid útmutatóban megismerheti, hogyan lehet nevesített helyeket kon
 
 A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
-* Egy Azure AD-bérlő. Regisztráljon [ingyenes próbaverzióra](https://azure.microsoft.com/trial/get-started-active-directory/). 
+* Egy Azure AD-bérlő. Regisztráljon az [ingyenes próbaverzióra](https://azure.microsoft.com/trial/get-started-active-directory/). 
 * Egy felhasználó, aki a bérlő globális rendszergazdája lesz.
 * Egy IP-címtartomány, amely jól ismert és hiteles a szervezeten belül. Az IP-címtartománynak a **CIDR** formátumban kell lennie.
 
@@ -62,8 +62,6 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 További információkért lásd:
 
-- [Feltételes hozzáférés az Azure Active Directoryban](../active-directory-conditional-access-azure-portal.md).
-
+- [Az Azure ad-beli feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md).
 - [Helyre vonatkozó feltételek az Azure AD feltételes hozzáférésnél](../conditional-access/location-condition.md)
-
-- [Kockázatos bejelentkezésekre vonatkozó jelentések az Azure AD portálon](concept-risky-sign-ins.md).  
+- [Kockázatos bejelentkezések jelentés](concept-risky-sign-ins.md).  

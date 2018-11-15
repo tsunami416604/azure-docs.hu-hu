@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/04/2018
 ms.author: jingwang
-ms.openlocfilehash: a6c17fc897dae765f9789840262cb001d598b731
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: HT
+ms.openlocfilehash: 91c6939e42f0a8a5126883e5258017b2c38e6f2a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297742"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613970"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Adatok másolása az Adatok másolása eszközzel helyszíni SQL Server-adatbázisból Azure Blob Storage-tárolóba
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,6 +27,7 @@ Ebben az oktatóanyagban egy adat-előállítót hoz létre az Azure Portal hasz
 
 > [!NOTE]
 > - Ha még csak ismerkedik az Azure Data Factory szolgáltatással, olvassa el a [Data Factory szolgáltatást bemutató](introduction.md) cikket.
+
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
@@ -107,7 +108,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
 1. A tárolók listájában kattintson az **adftutorial** elemre.
 
-    ![Tároló kiválasztása](media/tutorial-hybrid-copy-powershell/seelct-adftutorial-container.png)
+    ![Tároló kiválasztása](media/tutorial-hybrid-copy-powershell/select-adftutorial-container.png)
 
 1. Ne zárja be az **adftutorial** **tároló** ablakát. A segítségével ellenőrizheti az oktatóanyag eredményét. A Data Factory automatikusan létrehozza a kimeneti mappát a tárolóban, így nem kell újat létrehoznia.
 

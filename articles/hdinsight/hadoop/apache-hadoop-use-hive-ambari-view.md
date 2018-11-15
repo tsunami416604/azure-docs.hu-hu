@@ -1,5 +1,5 @@
 ---
-title: Ambari-nézetek használható a Hive a HDInsight (Hadoop) – Azure
+title: Az Apache Ambari-nézetek használható a Hive a HDInsight (Hadoop Apache) – Azure
 description: Ismerje meg, hogyan használható a Hive-nézet a webböngészőből Hive-lekérdezések elküldéséhez. A Hive-nézet az Ambari webes felhasználói Felületet kapott a Linux-alapú HDInsight-fürt része.
 services: hdinsight
 author: hrasheed-msft
@@ -9,22 +9,22 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: c481889eda53ff46a8899676da2529fe4165dfd5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1328119917276b8135c4a6d4188b67bcff2fc069
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233156"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632747"
 ---
-# <a name="use-ambari-hive-view-with-hadoop-in-hdinsight"></a>Az Ambari Hive-nézet használata a HDInsight Hadoop-keretrendszerrel
+# <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Az Apache Ambari Hive nézete használata a HDInsight Apache Hadoop-keretrendszerrel
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Ismerje meg, hogyan futtathat Hive-lekérdezések Ambari, Hive-nézet használatával. A Hive-nézet létrehozásához, a optimalizálása és a Hive-lekérdezések futtatása a webböngészőből teszi lehetővé.
+Ismerje meg, hogyan futtathat Hive-lekérdezések Apache Ambari Hive-nézet használatával. A Hive-nézet létrehozásához, a optimalizálása és a Hive-lekérdezések futtatása a webböngészőből teszi lehetővé.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Linux-alapú Hadooppal a HDInsight-fürt verziója 3.4-es vagy nagyobb.
+* Egy Linux-alapú Apache Hadoop a HDInsight-fürt verziója 3.4-es vagy nagyobb.
 
   > [!IMPORTANT]
   > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).

@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 33499b378a2d74d94a77dda81f0179d6cb0700c3
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: ccfe108b895450e97df1639f6c47eb01823ce5f4
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957925"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636764"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Egyéni metrikák az Azure-beli erőforráshoz küldeni az Azure Monitor metrika tároló egy REST API-val
 
@@ -51,7 +51,7 @@ Mentse a hozzáférési jogkivonatot a válaszból.
     
     ```json
     { 
-        "time": "2018-09-13T16:34:20”, 
+        "time": "2018-09-13T16:34:20", 
         "data": { 
             "baseData": { 
                 "metric": "QueueDepth", 
@@ -83,7 +83,7 @@ Mentse a hozzáférési jogkivonatot a válaszból.
     - **Hozzáférési tokent**. Illessze be a jogkivonatot, korábban beszerzett.
 
     ```Shell 
-    curl -X POST curl -X POST https://<azureRegion>.monitoring.azure.com/<resourceId> /metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
+    curl -X POST curl -X POST https://<azureRegion>.monitoring.azure.com/<resourceId>/metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
     ```
 1. Módosítsa a timestamp és a JSON-fájlban szereplő értékek. 
 1. Ismételje meg az előző két lépést néhány alkalommal, így adatokat kell néhány percig.

@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: afed471694dd66adfc285965433a1efd92d1653b
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 03961cab8bcf71a9db69937257385db5d3b500d8
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945095"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684103"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Jelentkezzen be egy Salesforce-ban az SAML-szolgáltató által létrehozott egyéni szabályzatok az Azure Active Directory B2C használatával
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ez a cikk bemutatja, hogyan bejelentkezés engedélyezése a felhasználók számára, a Salesforce szervezet használja [egyéni szabályzatok](active-directory-b2c-overview-custom.md) Azure Active Directory (Azure AD) B2C-ben.
+Ez a cikk bemutatja, hogyan bejelentkezés engedélyezése a felhasználók számára, a Salesforce szervezet használja [egyéni szabályzatok](active-directory-b2c-overview-custom.md) Azure Active Directory (Azure AD) B2C-ben. Engedélyezi a bejelentkezést hozzáadásával egy [SAML-alapú technikai profilban](saml-technical-profile.md) egy egyéni házirend.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

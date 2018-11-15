@@ -3,7 +3,7 @@ title: Tárolóalkalmazás üzembe helyezése Service Fabric-fürtön CI/CD seg�
 description: Ez az oktatóanyag bemutatja, hogyan lehet folyamatos integrációt és üzembe helyezést beállítani egy Azure Service Fabric-tárolóalkalmazáshoz a Visual Studio Team Services (VSTS) használatával.
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: TylerMSFT
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/29/2018
-ms.author: ryanwi,v-steg
+ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: db0abf2c70ac79356496c78275dc658d1ee29a23
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
-ms.translationtype: HT
+ms.openlocfilehash: a7cb139da2cdbfb187a62eeadc707f7206de8a34
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035908"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300193"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Oktatóanyag: Tárolóalkalmazás üzembe helyezése Service Fabric-fürtön CI/CD használatával
 

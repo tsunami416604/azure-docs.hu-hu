@@ -11,31 +11,40 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/14/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: f5aa67ad0588e3f42e68056c8ffca97767975e8b
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: b7af23ccdd379aac9959bb9993fc1781a44e705e
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361481"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684026"
 ---
 # <a name="remove-the-sql-resource-provider"></a>Az SQL erőforrás-szolgáltató eltávolítása
 
 Az SQL erőforrás-szolgáltató eltávolítása, előtt el kell távolítania a szolgáltató függőségeket. Emellett szüksége lesz egy példányát a központi telepítési csomag, amely az erőforrás-szolgáltató telepítéséhez használt.
 
-Több karbantartási feladatot a futtatása előtt tegye a _DeploySqlProvider.ps1_ az erőforrás-szolgáltató eltávolítása parancsfájl.
-A bérlők felelősek az alábbi karbantartási feladatokat:
+  |Azure Stack minimális verziója|SQL-RP-verzió|
+  |-----|-----|
+  |Verzió 1808 (1.1808.0.97)|[SQL-RP 1.1.30.0 verzió](https://aka.ms/azurestacksqlrp11300)|
+  |Verzió 1804 (1.0.180513.1)|[SQL-RP 1.1.24.0 verzió](https://aka.ms/azurestacksqlrp11240)
+  |     |     |
+
+## <a name="dependency-cleanup"></a>Függőségi karbantartása
+
+Nincsenek ehhez az erőforrás-szolgáltató eltávolítása a DeploySqlProvider.ps1 parancsfájl futtatása előtt több karbantartási feladatot.
+
+Az Azure Stack-bérlő felhasználók felelősek az alábbi karbantartási feladatokat:
 
 * Törölje az összes adatbázisaikat az erőforrás-szolgáltató. (A bérlői adatbázisok törlésével nem törli az adatokat.)
-* Az erőforrás-szolgáltató névtere regisztrációját.
+* A szolgáltató névterének neve regisztrációját.
 
-A rendszergazda feladata a következő karbantartási feladatokat:
+Az Azure Stack – operátor felelős az alábbi karbantartási feladatokat:
 
-* Az üzemeltetési kiszolgáló törli az erőforrás-szolgáltató SQL.
-* Törli azokat a csomagokat, amelyek az SQL erőforrás-szolgáltató hivatkoznak.
-* Törli az erőforrás-szolgáltató SQL társított kvóták.
+* Az üzemeltetési kiszolgáló törlése a MySQL-adaptert.
+* Törli azokat a csomagokat, amelyek a MySQL-Adapter hivatkoznak.
+* Törli a MySQL-adapterhez társított kvóták.
 
 ## <a name="to-remove-the-sql-resource-provider"></a>Az SQL erőforrás-szolgáltató eltávolítása
 

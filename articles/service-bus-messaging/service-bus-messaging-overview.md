@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: spelluru
-ms.openlocfilehash: 870cfcf8712cc5bee2674b82d5292e4241433386
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.openlocfilehash: 7b4045737ea2be466a436e6abb0de6a1a61e6a5b
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342207"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636594"
 ---
 # <a name="what-is-azure-service-bus"></a>Mi az Azure Service Bus?
 
-A Microsoft Azure Service Bus egy teljes mértékben felügyelt vállalati integrációs üzenetközvetítő. A Service Bust leggyakrabban az alkalmazások és szolgáltatások egymástól való elkülönítésére használják, továbbá az aszinkron adat- és állapotátvitel biztonságos platformjaként is alkalmazható. Az adatok különböző alkalmazások és szolgáltatások közötti átvitele az *üzenetek* segítségével történik. Az üzenet egy bináris formátum, amely kizárólag JSON-t, XML-t vagy szöveget tartalmazhat. 
+A Microsoft Azure Service Bus egy teljes mértékben felügyelt vállalati integrációs üzenetközvetítő. A Service Bust leggyakrabban az alkalmazások és szolgáltatások egymástól való elkülönítésére használják, továbbá az aszinkron adat- és állapotátvitel biztonságos platformjaként is alkalmazható. Az adatok különböző alkalmazások és szolgáltatások közötti átvitele az *üzenetek* segítségével történik. Bináris formátum, JSON, XML vagy csupán szöveget tartalmazó üzenet van. 
 
 Néhány gyakori üzenetküldési forgatókönyv:
 
@@ -39,7 +39,7 @@ Az üzenetek az *üzenetsorokba* érkeznek be, és onnan küldi ki őket a rends
 
 ![Várólista](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
-Az üzenetsorokban található üzeneteket a rendszer a beérkezéskor rendezi és időbélyeggel látja el. Az üzenet elfogadása után azt a rendszer egy redundáns tárolóban helyezi biztonságba. Az üzenetek kézbesítése *lekérési* módban történik, amely kérés esetén kézbesíti az üzeneteket.
+Az üzenetsorokban található üzeneteket a rendszer a beérkezéskor rendezi és időbélyeggel látja el. Miután elfogadták, az üzenet tárolt biztonságosan redundáns tárolást. Üzenetek kézbesítése *lekéréses* üzemmódot, amely a kérést továbbítja az üzeneteket.
 
 ## <a name="topics"></a>Témakörök
 
@@ -93,7 +93,7 @@ Az [Automatikus törlés tétlenség esetén](/dotnet/api/microsoft.servicebus.m
 
 ### <a name="duplicate-detection"></a>Duplikálás észlelése
 
-Ha olyan hiba lép fel, amely következtében az ügyfélnek kétségei támadnak egy küldési művelet eredményéről, a [duplikálásészlelés](duplicate-detection.md) eloszlatja ezen kétségeket azáltal, hogy a feladó újra elküldheti ugyanazt az üzenetet, az üzenetsor vagy a témakör pedig törli az arról készített másolatokat.
+Ha hiba lép fel, amelyek hatására az ügyfél-küldési művelet eredményéről kétségei vannak [észlelési ismétlődő](duplicate-detection.md) vesz igénybe a bizonytalan kívül ezekben a helyzetekben a küldőt, hogy küldje újra ugyanazt az üzenetet, és az üzenetsor vagy témakör engedélyezésével minden ismétlődő példánya elveti.
 
 ### <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>SAS, RBAC és az Azure-erőforrások felügyelt identitásai
 
@@ -115,9 +115,9 @@ A Service Bus támogatja a [.NET](https://github.com/Azure/azure-service-bus-dot
 
 A Service Bus teljes mértékben integrálható a következő Azure-szolgáltatásokkal:
 
-- [Event Grid](https://azure.microsoft.com/services/event-grid/) 
-- [Logic Apps](https://azure.microsoft.com/services/logic-apps/) 
-- [Functions](https://azure.microsoft.com/services/functions/) 
+- [Event Grid](https://azure.microsoft.com/services/event-grid/) 
+- [Logic Apps](https://azure.microsoft.com/services/logic-apps/) 
+- [Functions](https://azure.microsoft.com/services/functions/) 
 - [Dynamics 365](https://dynamics.microsoft.com)
 - [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
  

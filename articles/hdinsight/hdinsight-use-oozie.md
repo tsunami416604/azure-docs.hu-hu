@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/25/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5611830d4d9950a7781062997b13555d95d8e703
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: affef85c917804f0b99200dcfa8e53f6d08fcbe4
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625963"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684222"
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>Az Oozie használata a Hadooppal megadásához és a HDInsight a munkafolyamat futtatása
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
@@ -63,7 +63,7 @@ Ez az oktatóanyag elkezdéséhez a következő elemet kell rendelkeznie:
 
 ## <a name="define-oozie-workflow-and-the-related-hiveql-script"></a>Oozie-munkafolyamatokkal, és a kapcsolódó HiveQL-parancsfájlt megadása
 Az Oozie-munkafolyamatok definíciók hPDL (egy XML folyamat Definition Language) nyelven íródtak. Az alapértelmezett munkafolyamat-fájl neve *workflow.xml*. A munkafolyamat fájlja, ebben az oktatóanyagban használja a következő:
-
+```xml
     <workflow-app name="useooziewf" xmlns="uri:oozie:workflow:0.2">
         <start to = "RunHiveScript"/>
 
@@ -118,7 +118,7 @@ Az Oozie-munkafolyamatok definíciók hPDL (egy XML folyamat Definition Language
 
         <end name="end"/>
     </workflow-app>
-
+```
 Nincsenek definiálva a munkafolyamat két műveletet. A kezdő művelet *RunHiveScript*. Ha a művelet sikeresen lefutott, a következő beavatkozásra *RunSqoopExport*.
 
 A RunHiveScript rendelkezik értékkel a változókat. Az Oozie feladat elküldésekor a munkaállomásáról Azure PowerShell-lel átadhatja az értékeket.
@@ -191,7 +191,7 @@ Ez a szakasz a PowerShell-parancsprogram a következő lépéseket hajtja végre
     Vizsgálja meg az OOzie-feladat eredményét, használja a Visual Studio vagy más eszközök az Azure SQL Database-adatbázishoz csatlakozhat.
 
 Íme a szkript.  A szkriptet futtathatja a Windows PowerShell ISE-ben. Csak az első 7 változók konfigurálásához kell.
-
+```powershell
     #region - provide the following values
 
     $subscriptionID = "<Enter your Azure subscription ID>"
@@ -200,7 +200,7 @@ Ez a szakasz a PowerShell-parancsprogram a következő lépéseket hajtja végre
     $sqlDatabaseLogin = "<Enter SQL Database Login Name>"
     $sqlDatabasePassword = "<Enter SQL Database Login Password>"
 
-    # HDInsight cluster HTTP user credential used for creating and connectin
+    # HDInsight cluster HTTP user credential used for creating and connecting
     $httpUserName = "admin"  # The default name is "admin"
     $httpPassword = "<Enter HDInsight Cluster HTTP User Password>"
 
@@ -529,8 +529,8 @@ Ez a szakasz a PowerShell-parancsprogram a következő lépéseket hajtja végre
     $response = Invoke-RestMethod -Method Get -Uri $clusterUriStatus -Credential $httpCredential -OutVariable $OozieServerStatus
 
     $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
-    $oozieServerSatus = $jsonResponse[0].("systemMode")
-    Write-Host "Oozie server status is $oozieServerSatus."
+    $oozieServerStatus = $jsonResponse[0].("systemMode")
+    Write-Host "Oozie server status is $oozieServerStatus."
 
     # create Oozie job
     Write-Host "Sending the following Payload to the cluster:" -ForegroundColor Green
@@ -570,7 +570,7 @@ Ez a szakasz a PowerShell-parancsprogram a következő lépéseket hajtja végre
     Write-Host "$(Get-Date -format 'G'): $oozieJobId is in $JobStatus state!" -ForegroundColor Green
 
     #endregion
-
+```
 
 **Majd futtassa újból az oktatóanyag**
 
@@ -580,7 +580,7 @@ Futtassa újra a munkafolyamatot, törölnie kell a következőkkel:
 * A log4jLogsCount táblában lévő adatokat
 
 Itt látható egy minta PowerShell-parancsfájlt, amelyet használhat:
-
+```powershell
     $resourceGroupName = "<AzureResourceGroupName>"
 
     $defaultStorageAccountName = "<AzureStorageAccountName>"
@@ -610,6 +610,7 @@ Itt látható egy minta PowerShell-parancsfájlt, amelyet használhat:
     $cmd.executenonquery()
 
     $conn.close()
+```
 
 ## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban megtudhatta, az Oozie-munkafolyamatokkal definiálása és az Oozie-feladatok futtatása a PowerShell használatával. További tudnivalókért tekintse meg a következő cikkeket:
@@ -647,7 +648,6 @@ Ebben az oktatóanyagban megtudhatta, az Oozie-munkafolyamatokkal definiálása 
 
 [hdinsight-develop-mapreduce]:hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
 
-[sqldatabase-create-configue]: ../sql-database-create-configure.md
 [sqldatabase-get-started]: ../sql-database-get-started.md
 
 [azure-management-portal]: https://portal.azure.com/

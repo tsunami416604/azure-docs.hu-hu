@@ -10,18 +10,18 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 07/23/2018
 ms.custom: mvc
-ms.openlocfilehash: c4b20421135ac27712cf50deb7d74ce91ed639e5
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
-ms.translationtype: HT
+ms.openlocfilehash: 080bf465d65199c54e0d09eab8c7bccbc9616ed7
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747864"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568954"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Rövid útmutató: Spark-feladatok futtatása Azure Databricksen az Azure Portal használatával
 
 Ez a rövid útmutató bemutatja, hogyan hozható létre Azure Databricks-munkaterület, illetve azon belül egy Apache Spark-fürt. Végezetül azt is ismertetjük, hogyan futtathat Spark-feladatokat a Databricks-fürtön. További információt az Azure Databricksről [az Azure Databrickset](what-is-azure-databricks.md) ismertető cikkben talál.
 
-Ebben a rövid útmutatóban a Spark-feladat részeként egy rádióadó előfizetési adatait elemzi, hogy a demográfiai adatok alapján betekintést nyerjen az ingyenes/fizetős használatba. 
+Ebben a rövid útmutatóban a Spark-feladat részeként egy rádióadó előfizetési adatait elemzi, hogy a demográfiai adatok alapján betekintést nyerjen az ingyenes/fizetős használatba.
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
@@ -31,9 +31,9 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks-munkaterület létrehozása
 
-Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure Portal használatával. 
+Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure Portal használatával.
 
-1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Adatok + analitika** > **Azure Databricks** elemet. 
+1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Adatok + analitika** > **Azure Databricks** elemet.
 
     ![Databricks az Azure Portalon](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Databricks az Azure Portalon")
 
@@ -41,8 +41,8 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
     ![Azure Databricks-munkaterület létrehozása](./media/quickstart-create-databricks-workspace-portal/create-databricks-workspace.png "Azure Databricks-munkaterület létrehozása")
 
-    Adja meg a következő értékeket: 
-     
+    Adja meg a következő értékeket:
+    
     |Tulajdonság  |Leírás  |
     |---------|---------|
     |**Munkaterület neve**     | Adja meg a Databricks-munkaterület nevét.        |
@@ -59,8 +59,8 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Spark-fürt létrehozása a Databricks használatával
 
-> [!NOTE] 
-> Ha egy ingyenes fiókot használna az Azure Databricks-fürt létrehozásához, a fürt létrehozása előtt nyissa meg a saját profilját, és módosítsa az előfizetését **használatalapú fizetésre**. További információkért lásd az [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) ismertető cikket.  
+> [!NOTE]
+> Ha egy ingyenes fiókot használna az Azure Databricks-fürt létrehozásához, a fürt létrehozása előtt nyissa meg a saját profilját, és módosítsa az előfizetését **használatalapú fizetésre**. További információkért lásd az [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) ismertető cikket.
 
 1. Az Azure Portalon lépjen a korábban létrehozott Databricks-munkaterülethez, majd kattintson a **Munkaterület indítása** elemre.
 
@@ -75,10 +75,10 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
     Fogadja el az összes alapértelmezett értéket, kivéve a következőket:
 
     * Adjon egy nevet a fürtnek.
-    * Ehhez a cikkhez a **4.0** futtatókörnyezetben hozzon létre fürtöt. 
+    * Ehhez a cikkhez a **4.0** futtatókörnyezetben hozzon létre fürtöt.
     * Mindenképpen jelölje be a **Leállítás \_\_ percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
     
-    Válassza a **Fürt létrehozása** lehetőséget. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat. 
+    Válassza a **Fürt létrehozása** lehetőséget. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
 
 További információt a fürtök létrehozásáról a [Spark-fürtök az Azure Databricks használatával történő létrehozását](https://docs.azuredatabricks.net/user-guide/clusters/create.html) ismertető szakaszban talál.
 
@@ -86,29 +86,28 @@ További információt a fürtök létrehozásáról a [Spark-fürtök az Azure 
 ## <a name="download-a-sample-data-file"></a>Mintaadatfájl letöltése
 Töltsön le egy JSON-mintaadatfájlt, és mentse az Azure Blob Storage-ban.
 
-1. Ezt a JSON-mintaadatfájlt a [GitHubról](https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) töltheti le a helyi számítógépére. Kattintson a jobb gombbal, és a Mentés másként paranccsal mentse a fájlt helyileg. 
+1. Ezt a JSON-mintaadatfájlt a [GitHubról](https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) töltheti le a helyi számítógépére. Kattintson a jobb gombbal, és a Mentés másként paranccsal mentse a fájlt helyileg.
 
-2. Ha még nem rendelkezik tárfiókkal, akkor hozzon létre egyet. 
-   - Az Azure Portalon válassza az **Erőforrás létrehozása** lehetőséget.  Válassza ki a **Tároló** kategóriát, majd a **Tárfiókok** lehetőséget.  
-   - Adjon meg egy egyedi nevet a tárfióknak.
-   - A **Fióktípus** beállításnál válassza a **Blob Storage** lehetőséget.
-   - Adja meg az **Erőforráscsoport** nevét. Használja ugyanazt az erőforráscsoportot, mint amelyben a Databricks-munkaterületet létrehozta.
-   
-   További információkért lásd az [Azure Blob Storage-fiók létrehozását](../storage/common/storage-quickstart-create-account.md) ismertető cikket. 
+2. Ha még nem rendelkezik tárfiókkal, akkor hozzon létre egyet.
+    - Az Azure Portalon válassza az **Erőforrás létrehozása** lehetőséget. Válassza ki a **Tároló** kategóriát, majd a **Tárfiókok** lehetőséget.
+    - Adjon meg egy egyedi nevet a tárfióknak.
+    - A **Fióktípus** beállításnál válassza a **Blob Storage** lehetőséget.
+    - Adja meg az **Erőforráscsoport** nevét. Használja ugyanazt az erőforráscsoportot, mint amelyben a Databricks-munkaterületet létrehozta.
+    
+    További információkért lásd az [Azure Blob Storage-fiók létrehozását](../storage/common/storage-quickstart-create-account.md) ismertető cikket.
 
 3. Hozzon létre egy tárolót a Blob Storage-fiókban, és töltse fel a JSON-mintafájlt a tárolóba. A fájlfeltöltéshez használhatja az Azure Portalt vagy a [Microsoft Azure Storage Explorert](../vs-azure-tools-storage-manage-with-storage-explorer.md).
 
-   - Nyissa meg a tárfiókot az Azure Portalon.
-   - Válassza ki a **Blobok** lehetőséget.
-   - Válassza a **+ Tároló** lehetőséget egy új üres tároló létrehozásához.
-   - Adja meg a tároló **nevét**, például: `databricks`. 
-   - Válassza ki a **Privát (nem névtelen hozzáférés)** hozzáférési szintet.
-   - A tároló létrehozása után adja meg a tároló nevét.
-   - Kattintson a **Feltöltés** gombra.
-   - A **Fájlok** oldalon kattintson a **Mappa** ikonra a tallózáshoz, és válassza ki a felöltendő mintafájlt (`small_radio_json.json`). 
-   - A **Feltöltés** gombra kattintva töltse fel a fájlt.
-   
-   
+    - Nyissa meg a tárfiókot az Azure Portalon.
+    - Válassza ki a **Blobok** lehetőséget.
+    - Válassza a **+ Tároló** lehetőséget egy új üres tároló létrehozásához.
+    - Adja meg a tároló **nevét**, például: `databricks`.
+    - Válassza ki **privát (nem névtelen hozzáférés)** hozzáférési szint.
+    - A tároló létrehozása után adja meg a tároló nevét.
+    - Kattintson a **Feltöltés** gombra.
+    - A **Fájlok** oldalon kattintson a **Mappa** ikonra a tallózáshoz, és válassza ki a felöltendő mintafájlt (`small_radio_json.json`).
+    - A **Feltöltés** gombra kattintva töltse fel a fájlt.
+
 ## <a name="run-a-spark-sql-job"></a>Spark SQL-feladat futtatása
 A következő feladatok végrehajtásával hozzon létre egy jegyzetfüzetet a Databricksben, konfigurálja a jegyzetfüzetet úgy, hogy az Azure Blob-tárfiókból olvassa be az adatokat, majd ezt követően futtassa le a Spark SQL-feladatot az adatokon.
 
@@ -122,7 +121,7 @@ A következő feladatok végrehajtásával hozzon létre egy jegyzetfüzetet a D
 
     Kattintson a **Create** (Létrehozás) gombra.
 
-3. Ebben a lépésben társítsa az Azure Storage-fiókot a Databricks Spark-fürttel. A társítás két különböző módon végezhető el. Az Azure Storage-fiókot csatlakoztathatja a Databricks fájlrendszerhez (DBFS), vagy közvetlenül hozzáférhet a létrehozott alkalmazásból.  
+3. Ebben a lépésben társítsa az Azure Storage-fiókot a Databricks Spark-fürttel. A társítás két különböző módon végezhető el. Az Azure Storage-fiókot csatlakoztathatja a Databricks fájlrendszerhez (DBFS), vagy közvetlenül hozzáférhet a létrehozott alkalmazásból.
 
     > [!IMPORTANT]
     >Ez a cikk **a tároló DBFS-sel való csatlakoztatásának módszerét alkalmazza**. Ez a módszer biztosítja, hogy a csatlakoztatott tároló magával a fürt fájlrendszerével legyen társítva. Ezért a fürthöz hozzáférő bármely alkalmazás használhatja a társított tárolót is. A közvetlen hozzáférési módszer arra az alkalmazásra van korlátozva, ahonnan a hozzáférést konfigurálja.
@@ -150,7 +149,7 @@ A következő feladatok végrehajtásával hozzon létre egy jegyzetfüzetet a D
 4. SQL-utasítás futtatásával hozzon létre egy ideiglenes táblát a JSON-mintaadatfájl, a **small_radio_json.json** adataiból. Az alábbi kódtöredékben cserélje le a helyőrzőket a tároló és a tárfiók nevére. Illessze be a kódtöredéket a notebook egyik kódcellájába, majd nyomja le a SHIFT + ENTER billentyűparancsot. A kódtöredék `path` eleme jelöli annak a JSON-mintafájlnak a helyét, amelyet korábban feltöltött Azure Storage-fiókjába.
 
     ```sql
-    %sql 
+    %sql
     DROP TABLE IF EXISTS radio_sample_data;
     CREATE TABLE radio_sample_data
     USING json
@@ -166,7 +165,7 @@ A következő feladatok végrehajtásával hozzon létre egy jegyzetfüzetet a D
 5. A futtatott lekérdezés jobb megértéséhez vessünk egy pillantást a JSON-mintafájl adatairól készült pillanatfelvételre. Illessze be a következő kódtöredéket a kódcellába, majd nyomja le a **SHIFT + ENTER** billentyűparancsot.
 
     ```sql
-    %sql 
+    %sql
     SELECT * from radio_sample_data
     ```
 
@@ -193,7 +192,7 @@ A következő feladatok végrehajtásával hozzon létre egy jegyzetfüzetet a D
 
 9. A kimenetben a következő képernyőképen látható vizuális megjelenítés jelenik meg:
 
-     ![Oszlopdiagram testreszabása](./media/quickstart-create-databricks-workspace-portal/databricks-sql-query-output-bar-chart.png "Oszlopdiagram testreszabása")
+    ![Oszlopdiagram testreszabása](./media/quickstart-create-databricks-workspace-portal/databricks-sql-query-output-bar-chart.png "Oszlopdiagram testreszabása")
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -201,7 +200,7 @@ Ha végzett a cikkel, leállíthatja a fürtöt. Ehhez az Azure Databricks-munka
 
 ![Databricks-fürt leállítása](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 
-Ha nem állítja le manuálisan a fürtöt, az automatikusan le fog állni, amennyiben a fürt létrehozásakor bejelölte a **Leállítás ___ percnyi tétlenség után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
+Ön nem állítja le manuálisan a fürt automatikusan leáll, ha a kiválasztott megadott a **leállítása után \_ \_ ennyi perc inaktivitás** jelölőnégyzetet a fürt létrehozásakor. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
 ## <a name="next-steps"></a>További lépések
 

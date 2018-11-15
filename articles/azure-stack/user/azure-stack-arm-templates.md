@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2018
+ms.date: 11/14/2018
 ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: d520a33fd6729f4a9d4778cfdb8d3380c9ac09b0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 38e85ede1e984aa3d26fe509d68b4582d11b6c26
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237842"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636220"
 ---
 # <a name="use-azure-resource-manager-templates-in-azure-stack"></a>Az Azure Resource Manager-sablonok használata az Azure Stackben
 
@@ -34,7 +34,7 @@ A következő gyorsindítási sablonok érhetők el a [GitHub](https://aka.ms/az
 
 ## <a name="deploy-sharepoint-server-non-high-availability-deployment"></a>A SharePoint Server (nem – magas rendelkezésre állású üzembe helyezés) üzembe helyezése
 
-Használja a PowerShell DSC bővítmény [hozzon létre egy SharePoint Server 2013-farmban](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/sharepoint-2013-non-ha) , amely tartalmazza az alábbi forrásanyagokat:
+Használja a PowerShell DSC bővítmény [hozzon létre egy SharePoint Server 2013-farmban](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sharepoint-2013-non-ha) , amely tartalmazza az alábbi forrásanyagokat:
 
 * Virtuális hálózat
 * Három tárfiókot tartalmaz
@@ -45,7 +45,7 @@ Használja a PowerShell DSC bővítmény [hozzon létre egy SharePoint Server 20
 
 ## <a name="deploy-ad-non-high-availability-deployment"></a>(Nem nagy – rendelkezésre állás – telepítési) AD üzembe helyezése
 
-Használja a PowerShell DSC bővítmény [hozzon létre egy AD domain controller-kiszolgáló](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/ad-non-ha) , amely tartalmazza az alábbi forrásanyagokat:
+Használja a PowerShell DSC bővítmény [hozzon létre egy AD domain controller-kiszolgáló](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/ad-non-ha) , amely tartalmazza az alábbi forrásanyagokat:
 
 * Virtuális hálózat
 * Egy storage-fiók
@@ -54,7 +54,7 @@ Használja a PowerShell DSC bővítmény [hozzon létre egy AD domain controller
 
 ## <a name="deploy-adsql-non-high-availability-deployment"></a>Az AD/SQL (nem nagy – rendelkezésre állás – telepítési) üzembe helyezése
 
-Használja a PowerShell DSC bővítmény [hozzon létre egy SQL Server 2014 önálló kiszolgáló](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/sql-2014-non-ha) , amely tartalmazza az alábbi forrásanyagokat:
+Használja a PowerShell DSC bővítmény [hozzon létre egy SQL Server 2014 önálló kiszolgáló](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sql-2014-non-ha) , amely tartalmazza az alábbi forrásanyagokat:
 
 * Virtuális hálózat
 * Két tárfiókot
@@ -68,11 +68,11 @@ A PowerShell DSC bővítmény segítségével egy meglévő virtuális gép hely
 
 ## <a name="create-a-virtual-machine-from-a-user-image"></a>Virtuális gép létrehozása felhasználói rendszerképből
 
-[Virtuális gép létrehozása egyéni felhasználói rendszerképből](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/101-vm-from-user-image). Ez a sablon is üzembe helyez egy virtuális hálózatot (a DNS-), a nyilvános IP-cím és a egy hálózati adapter.
+[Virtuális gép létrehozása egyéni felhasználói rendszerképből](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-from-user-image). Ez a sablon is üzembe helyez egy virtuális hálózatot (a DNS-), a nyilvános IP-cím és a egy hálózati adapter.
 
 ## <a name="basic-virtual-machine"></a>Alapszintű virtuális gép
 
-[Windows virtuális gép üzembe helyezése](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/101-simple-windows-vm) , amely egy virtuális hálózatot (a DNS-), a nyilvános IP-cím és a egy hálózati adaptert tartalmaz.
+[Windows virtuális gép üzembe helyezése](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-simple-windows-vm) , amely egy virtuális hálózatot (a DNS-), a nyilvános IP-cím és a egy hálózati adaptert tartalmaz.
 
 ## <a name="cancel-a-running-template-deployment"></a>Mégse sablon üzemelő példányban
 

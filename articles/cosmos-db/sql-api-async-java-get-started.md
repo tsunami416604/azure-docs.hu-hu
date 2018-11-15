@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: sngun
-ms.openlocfilehash: 66e937e92528e2f0a1fca9d9aac78f7265eef4f7
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
-ms.translationtype: HT
+ms.openlocfilehash: f79455166ef0d1bec9a2fb1d6045005f844e55ac
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741232"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636747"
 ---
 # <a name="tutorial-build-a-java-app-with-async-java-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Oktatóanyag: Java-alkalmazás létrehozása aszinkron Java SDK-val az Azure Cosmos DB SQL API-adatok kezeléséhez
 
@@ -116,7 +116,7 @@ client = new AsyncDocumentClient.Builder()
 
 ## <a id="CreateDatabase"></a>5. lépés: Adatbázis létrehozása
 
-Az Azure Cosmos DB-[adatbázis](sql-api-resources.md#databases) a DocumentClient osztály createDatabaseIfNotExists() metódusának használatával hozható létre. Az adatbázis a JSON-dokumentumtároló gyűjtemények között particionált logikai tárolója.
+Az Azure Cosmos DB-[adatbázis](databases-containers-items.md#azure-cosmos-databases) a DocumentClient osztály createDatabaseIfNotExists() metódusának használatával hozható létre. Az adatbázis a JSON-dokumentumtároló gyűjtemények között particionált logikai tárolója.
 
 ```java
 private void createDatabaseIfNotExists() throws Exception 
@@ -203,7 +203,7 @@ private void createDocumentCollectionIfNotExists() throws Exception
 
 ## <a id="CreateDoc"></a>7. lépés: JSON-dokumentumok létrehozása
 
-A [dokumentumok](sql-api-resources.md#documents) a DocumentClient osztály createDocument metódusával hozhatók létre. A dokumentumok a felhasználó által megadott (tetszőleges) JSON-tartalmak. Most már beilleszthetünk egy vagy több dokumentumot. Az „src/main/java/com/microsoft/azure/cosmosdb/sample/Families.java” fájl határozza meg a család JSON-dokumentumait. 
+A dokumentum a Documentclient módszer a DocumentClient osztály használatával hozható létre. A dokumentumok a felhasználó által megadott (tetszőleges) JSON-tartalmak. Most már beilleszthetünk egy vagy több dokumentumot. Az „src/main/java/com/microsoft/azure/cosmosdb/sample/Families.java” fájl határozza meg a család JSON-dokumentumait. 
 
 ```java
 public static Family getJohnsonFamilyDocument() {

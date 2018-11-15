@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 51bdc228e27d643cfda75d1e21bc8ea45fe09e3c
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4dae003b011e8e33f0ae935d6dd8399a5687dff6
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613290"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633767"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Naplóriasztások az Azure monitorban
 Ez a cikk ismerteti a riasztások részleteinek közé tartoznak a különböző típusú riasztások belül támogatott a [Azure Alerts](monitoring-overview-alerts.md) és a felhasználó használhat az Azure elemzési platform alapjaként, mert így.
@@ -106,7 +106,7 @@ Most már feltételezik, hogy rendelkezünk egy úgynevezett riasztási szabály
 - 1:15-kor mikor Contoso Naplóriasztás hajtott végre Azure-riasztások, a naplózott keresési eredményeknek megadott 2 rekordok; meghaladja a küszöbértéket, és a riasztást kiváltó után minél hamarabb elindításával a [műveletcsoport](monitoring-action-groups.md) társítva.
 - Jelenleg a következő verzió továbbfejlesztésében du. 1:20 mikor Contoso Naplóriasztás hajtott végre az Azure riasztás, a naplózott keresési eredményeknek most megadott újra 0 rekordot; alább a küszöbérték, és ezért nem aktiválja a riasztást.
 
-De a fenti listán szereplő esetben 1:15 PM -, Azure-riasztások nem tudja megállapítani, hogy az észlelés időpontja: 1:10 alapul szolgáló problémák továbbra is fennállnak-e és van-e nettó új hibák; felhasználó által megadott lekérdezést is kell figyelembe véve korábbi rekordok - Azure-riasztások meg arról, hogy nem lehet. Ezért err oldalán járjon el, hogy a Contoso-Log-riasztás aktiválódik újra 1:15-kor, keresztül konfigurált [műveletcsoport](monitoring-action-groups.md). Du. 1:20 Ha rekordokat nem láthatók – Azure-riasztások nem lehet róla, hogy most már a rekordok okának megoldódott; ezért a Contoso-Log-riasztás fog megoldott riasztás Azure-irányítópult és/vagy értesítéseket figyelmezteti a riasztás feloldása nem változott.
+De a fenti listán szereplő esetben 1:15 PM -, Azure-riasztások nem tudja megállapítani, hogy az észlelés időpontja: 1:10 alapul szolgáló problémák továbbra is fennállnak-e és van-e nettó új hibák; felhasználó által megadott lekérdezést is kell figyelembe véve korábbi rekordok -, Azure-riasztások biztos lehet. Ezért, járjon el, ha a Contoso Naplóriasztási oldalán err hajtja végre: 1:15-kor, konfigurált [műveletcsoport](monitoring-action-groups.md) újra lesz elindítva. Du. 1:20 Ha rekordokat nem láthatók – Azure-riasztások nem lehet róla, hogy most már a rekordok okának megoldódott; ezért a Contoso-Log-riasztás fog megoldott riasztás Azure-irányítópult és/vagy értesítéseket figyelmezteti a riasztás feloldása nem változott.
 
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>Árak és számlázás az riasztások

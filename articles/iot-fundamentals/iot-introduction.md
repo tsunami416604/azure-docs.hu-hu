@@ -1,139 +1,130 @@
 ---
-title: Az Azure és az eszközök internetes hálózatának (IoT) bemutatása
-description: Az Azure IoT és a benne foglalt szolgáltatások áttekintése
+title: Az Azure Internet of Things (IoT) bemutatása
+description: Bevezetés alapjait mutatja be, az Azure IoT- és az IoT-szolgáltatások, beleértve a példákat, amelyek segítségével tájékoztatja az IoT használatát mutatják be.
 author: robinsh
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
-ms.date: 10/09/2018
+ms.date: 10/11/2018
 ms.author: robinsh
-ms.openlocfilehash: d7e5949be9ea09f94ff6ee86c9f996f2e203eac7
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
-ms.translationtype: HT
+ms.openlocfilehash: 2f690e6c930a1a119c9b7bf4b83ec04a564e47c9
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069437"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288747"
 ---
-# <a name="introduction-to-azure-and-the-internet-of-things"></a>Az Azure és az eszközök internetes hálózatának bemutatása
+# <a name="what-is-azure-internet-of-things-iot"></a>Mi az Azure Internet of Things (IoT)?
 
-Az Azure IoT technológiák és megoldások három területét foglalja magában – a megoldásokat, a platformszolgáltatásokat és a peremhálózatot, amelyek mind azzal a céllal lettek kifejlesztve, hogy megkönnyítsék az IoT-alkalmazások teljes körű fejlesztését. Ez a cikk a felhőalapú IoT-megoldások gyakori jellemzőinek ismertetésével indul, majd áttekintést nyújt arról, hogy az Azure IoT milyen válaszokkal szolgál az IoT-projektek kihívásaira, és miért érdemes fontolóra venni az Azure IoT bevezetését.
+Az Azure Internet of Things (IoT) gyűjteménye, csatlakoztatása, figyelése és több milliárd IoT-eszközök felügyelete a Microsoft által felügyelt felhőalapú szolgáltatásokat. Egyszerűbben fogalmazva a IoT-megoldás épül fel egy vagy több IoT-eszközök és a egy vagy több háttér-szolgáltatás a felhőben futó, amely kommunikálni egymással. 
 
-## <a name="iot-solution-architecture"></a>Az IoT-megoldásarchitektúra
+Ez a cikk bemutatja az alapokat, az IoT, használati esetek megemlít és röviden ismerteti az elérhető nyolc külön szolgáltatás. Megismerni, mi érhető el, hogy ismerhetik fel a forgatókönyv további szorosan tervező segítségével meg szeretné.
 
-Az IoT-megoldásokhoz biztonságos, kétirányú kommunikációra van szükség olyan eszközök között, amelyek száma akár a több milliót is elérheti, valamint egy olyan háttérrendszerre, amely például automatizált, prediktív elemzések elvégzésével nyújt betekintést az eszköz-felhő eseménystreambe. 
+## <a name="introduction"></a>Bevezetés
 
-Az alábbi ábrán egy tipikus IoT-megoldásarchitektúra fő elemei láthatók. Az ábra nem tartalmaz olyan megvalósítási részleteket, mint a használt Azure-szolgáltatások vagy az eszközök operációs rendszerei. Ebben az architektúrában az IoT-eszközök begyűjtik az adatokat, majd továbbítják azokat egy felhőátjáróhoz. A felhőátjáró elérhetővé teszi az adatokat más háttérszolgáltatások számára a feldolgozáshoz. Ezek a háttérszolgáltatások a következőknek továbbíthatnak adatokat:
+Az IoT-megoldások fő részei a következők: eszközök, háttér-szolgáltatások és a kettő közötti kommunikációhoz. 
 
-* Más üzletági alkalmazásoknak.
-* Felhasználóknak, egy irányítópulton vagy más megjelenítő eszközön keresztül.
+### <a name="iot-devices"></a>IoT-eszközök
 
-![Az IoT-megoldásarchitektúra](./media/iot-introduction/iot-reference-architecture.png)
+Eszközök általában épülnek fel, csatolt censors egy áramköri lap, amely csatlakozik az internethez. Sok eszköz lapka Wi-Fi-n keresztül kommunikálnak. Íme néhány példa az IoT-eszközök:
 
-> [!NOTE]
-> Az IoT-architektúra részletes ismertetéséhez tekintse át a következő dokumentumot: [Microsoft Azure IoT Reference Architecture](https://aka.ms/iotrefarchitecture) (Microsoft Azure IoT-referenciaarchitektúra).
+* egy távoli olaj szivattyú pressure érzékelő
+* egy légkondicionáló egység hőmérséklettel és páratartalommal kapcsolatos érzékelők
+* az itt szereplő gyorsulásmérő
+* szoba jelenlét érzékelők
 
-### <a name="device-connectivity"></a>Eszközkapcsolatok
+Prototípus-készítés gyakran használt két eszközök lesznek az alapszintű MX lapka IoT Devkit a Microsoft és a Raspberry PI eszközökről. Az MX-lapkához Devkit hőmérséklet, nyomás, páratartalom, valamint egy Giroszkóp és érzékelőből, egy magnetométer és a Wi-Fi-lapkához beépített érzékelők rendelkezik. Raspberry PI egy IoT-eszköz, amelyhez is csatlakoztatható érzékelők, számos különböző típusú, ezért kiválaszthatja, hogy pontosan mit kell a forgatókönyvhöz. 
 
-Az IoT-megoldásarchitektúrákban az eszközök általában telemetriát küldenek a felhőbe tárolás és feldolgozás céljából. Egy prediktív karbantartási forgatókönyvben például a megoldás háttérrendszere az érzékelők adatstreamének felhasználásával megállapíthatja, hogy egy adott szivattyú mikor igényel karbantartást. Az eszközök emellett a felhővégpontokból érkező üzenetek olvasásával fogadhatnak a felhőből az eszközre érkező üzeneteket, és válaszolhatnak is azokra. Ugyanebben a példában a megoldás háttérrendszere üzeneteket küldhet a szivattyútelep többi szivattyújának, hogy azok elkezdjék az áramlás átirányítását a karbantartás megkezdése előtt. Ez az eljárás biztosítja, hogy a karbantartó mérnök megérkezésekor azonnal munkához láthasson.
+A [IoT eszközoldali SDK-k](../iot-hub/iot-hub-devguide-sdks.md) lehetővé teszi olyan alkalmazások fordítása, az eszközök futtatása a szükséges feladatok elvégzéséhez. Az SDK-k telemetriát küldjön az IoT hubhoz, üzenetek és a frissítések fogadása az IoT hubról, és így tovább.
 
-Az IoT-megoldások esetében gyakran az eszközök biztonságos és megbízható csatlakoztatása jelenti a legnagyobb kihívást. Ez azért van, mert az IoT-eszközök más jellemzőkkel rendelkeznek, mint a korábban megszokott ügyfelek, például a böngészők vagy a mobilalkalmazások. Pontosabban, az IoT-eszközök:
+### <a name="communication"></a>Kommunikáció
+
+Az eszköz tud kommunikálni a háttérszolgáltatások mindkét irányban. Az alábbiakban néhány ötletet, amely az eszköz képes kommunikálni a háttér-megoldás.
+
+#### <a name="examples"></a>Példák 
+
+* Az eszköz lehet, hogy hőmérséklet a küldjön egy mobil hűtő teherautó 5 percenként egy IoT hubra. 
+
+* A háttérszolgáltatás is kérje meg az eszközt, hogy a probléma diagnosztizálása érdekében gyakran telemetriát. 
+
+* Az eszköz küldhetnek riasztásokat, olvassa el az érzékelőkről származó értékek alapján. Például ha a figyelés, a batch reaktor kémiai üzemben érdemes riasztás küldése, amikor a hőmérséklet meghaladja a megadott érték.
+
+* Az eszköz képes információkat küldeni a irányítópultra emberi megtekintése. Például egy vezérlő szabad terület a finomítási valószínűleg a hőmérséklet és nyomás egyes cső, valamint a áthaladó pipe, így az operátorok azt. 
+
+Ezeket a feladatokat, és más segítségével valósítható meg a [IoT eszközoldali SDK-k](../iot-hub/iot-hub-devguide-sdks.md).
+
+#### <a name="connection-considerations"></a>Kapcsolat kapcsolatos szempontok
+
+Az IoT-megoldások esetében gyakran az eszközök biztonságos és megbízható csatlakoztatása jelenti a legnagyobb kihívást. Ennek oka az, IoT-eszközök más jellemzőkkel ügyfelek, például böngészők vagy mobilalkalmazások képest rendelkeznek. Pontosabban, az IoT-eszközök:
 
 * Általában beágyazott, emberi beavatkozást nem igénylő rendszerek (a telefonokkal ellentétben).
+
 * Távoli helyeken is üzembe helyezhetők, ahol a fizikai hozzáférés drága lenne.
+
 * Előfordulhat, hogy csak a megoldás háttérrendszerén keresztül érhetők el. Az eszközzel más módon nem lehet kapcsolatba lépni.
+
 * Áramellátásuk és feldolgozási erőforrásaik korlátozottak lehetnek.
+
 * A hálózati kapcsolat időszakos, lassú vagy drága lehet.
+
 * Saját fejlesztésű, egyedi vagy iparág-specifikus alkalmazás-protokollokra lehet szükség.
-* Számos népszerű hardver- és szoftverplatform használatával létrehozhatók.
 
-Az előző korlátozások mellett minden egyes IoT-megoldásnak méretezhetőnek, biztonságosnak és megbízhatónak kell lennie.
+### <a name="back-end-services"></a>Háttérszolgáltatások 
 
-A kommunikációs protokolltól és a hálózati rendelkezésre állástól függően egy eszköz közvetlenül vagy egy köztes átjárón keresztül kommunikálhat a felhővel. Az IoT-architektúrák gyakran mindkét kommunikációs mintát használják.
+Íme néhány a egy háttér-szolgáltatás által biztosított funkciókat.
 
-### <a name="data-processing-and-analytics"></a>Adatfeldolgozás és -elemzés
+* Nagy mennyiségű telemetriai adatok fogadása az eszközök, és hogy hogyan dolgozza fel, és azokat.
 
-A modern IoT-megoldásokban az adatfeldolgozás a felhőben vagy az eszközoldalon is történhet. Az eszközoldali feldolgozást *peremhálózati számítástechnikának* nevezik. Az adatfeldolgozás helye például a következő tényezőktől függ:
+* Elemzés, valós idejű vagy utólagosak biztosít a telemetria elemzése.
 
-* Hálózati korlátozások. Ha az eszközök és a felhő közötti sávszélesség korlátozott, érdemes megnövelni a peremhálózati feldolgozás mennyiségét.
-* Válaszidő. Ha egy eszközön közel valós időben kell műveleteket végezni, érdemes lehet magán az eszközön feldolgozni a választ. Például, ha vészhelyzet esetén le kell állítani egy robotkart.
-* Szabályozási környezet. Bizonyos adatokat nem lehet elküldeni a felhőbe.
+* Parancsok küldését a felhőből egy eszközre. 
 
-Az adatfeldolgozás általában a peremhálózaton és a felhőben is az alábbi képességek kombinációjából áll:
+* Eszközök és szabályozhatja, hogy mely eszközök csatlakozhatnak az infrastruktúra üzembe helyezése.
 
-* Az eszközöktől érkező telemetriák fogadása nagy mennyiségben, valamint az adatfeldolgozás és -tárolás módjának meghatározása.
-* A telemetria elemzése annak megállapításához, hogy az adatok valós idejűek-e vagy utólagosak.
-* Parancsok küldése egy adott eszköznek a felhőből vagy egy átjáróeszközről.
+* Az eszközök állapotának szabályozásához és a tevékenységeik megfigyeléséhez.
 
-Egy IoT-felhő háttérrendszerének emellett a következőket kell biztosítania:
+Egy prediktív karbantartási forgatókönyvben például a felhő háttérrendszerének korábbi telemetriai adatokat tárolja. A megoldás ezeket az adatokat használja a lehetséges rendellenes viselkedés azonosításához az adott szivattyúknál, mielőtt az komoly problémát okozna. Az adatelemzés segítségével azonosítani tudja, hogy megelőző megoldásként vissza kell küldeni egy parancsot az eszköznek, hogy az hajtson végre egy korrekciós műveletet. A folyamat létrehoz egy automatizált visszajelzési hurkot az eszköz és a felhő között, amely jelentősen növeli a megoldás hatékonyságát.
 
-* Eszközregisztrációs képességeket, amelyek a következőket teszik lehetővé:
-    * Eszközök üzembe helyezése.
-    * Annak szabályozása, hogy melyik eszköz csatlakozhat az infrastruktúrához.
-* Eszközfelügyeletet az eszközök állapotának szabályozásához és a tevékenységeik megfigyeléséhez.
+## <a name="an-iot-example"></a>Egy IoT-példa
 
-Egy prediktív karbantartási forgatókönyvben például a felhő háttérrendszere eltárolja a korábbi telemetriai adatokat. A megoldás ezeket az adatokat használja a lehetséges rendellenes viselkedés azonosításához az adott szivattyúknál, mielőtt az komoly problémát okozna. Az adatelemzés segítségével azonosítani tudja, hogy megelőző megoldásként vissza kell küldeni egy parancsot az eszköznek, hogy az hajtson végre egy korrekciós műveletet. A folyamat létrehoz egy automatizált visszajelzési hurkot az eszköz és a felhő között, amely jelentősen növeli a megoldás hatékonyságát.
+Íme egy példa egy vállalati IoT segítségével millió dollárt megtakarítani. 
 
-### <a name="presentation-and-business-connectivity"></a>Megjelenítés és üzleti kapcsolatok
+Egy hatalmas szarvasmarha ranch tehenek akár több száz van. Ennyi tehenek nyomon követheti, és azok még ennek során, és vezetési körül sok igényel nagyon fontos. Minden egyetlen vonatkozó, például a GPS-koordinátáit és hőmérséklettel kapcsolatos adatokat küld egy adatbázisba írandó háttérszolgáltatás érzékelők azok csatolva.
 
-A megjelenítési és üzleti kapcsolati réteg lehetővé teszi a végfelhasználók számára, hogy kapcsolatba lépjenek az IoT-megoldással és az eszközökkel. Segítségével a felhasználók megtekinthetik és elemezhetik az eszközeikről összegyűjtött adatokat. Ezek irányítópultokon vagy BI-jelentések formájában is megtekinthetők, amelyek az előzmény- és a közel valós idejű adatokat egyaránt megjelenítik. A kezelő például ellenőrizheti egy adott szivattyútelep állapotát, és megtekintheti a rendszer által kiadott riasztásokat. Ez a réteg emellett lehetővé teszi az IoT-megoldás háttérrendszerének integrációját egy létező üzleti alkalmazással, hogy be lehessen vonni az üzleti vagy munkafolyamatokba. A prediktív karbantartási megoldás például integrálható egy ütemezési rendszerbe, amely kihív egy mérnököt a szivattyútelephez, ha megállapítja, hogy valamelyik szivattyú karbantartásra szorul.
+Ott van egy analitikai szolgáltatás, amely megvizsgálja a bejövő adatok, és elemzi az adatokat az egyes vonatkozó, ellenőrizni az alábbihoz hasonló kérdéseket:
 
-## <a name="why-azure-iot"></a>Milyen előnyöket kínál az Azure IoT?
+* A vonatkozó fut egy hőmérséklet-e? Mennyi ideig a vonatkozó futási idejének hőmérséklet? Ha egy napnál hosszabb volt, a GPS-koordinátáit lekérése, és keresse meg a vonatkozó, és ha szükséges, kezelje azt a antibiotikumokat találjanak. 
 
-Az Azure IoT csökkenti az IoT-projektek összetettségét, továbbá megoldásokat kínál a különféle kihívásokra, például a biztonság, az infrastruktúra-kompatibilitás vagy az IoT-megoldás méretezése terén. Ezt az alábbiak révén éri el:
+* A vonatkozó van ugyanazon a helyen a több mint egy nap? Ha igen, a GPS-koordinátáit lekérése, és nyissa meg a vonatkozó találja. Minden olyan egy sziklafal csökkent a mintavételt? A vonatkozó többen megsérültek egy Nem a vonatkozó segítségre van szüksége? 
 
-### <a name="agile"></a>Rugalmas
+Az IoT-megoldás megvalósítása tette lehetővé a cég számára, ellenőrizze, gyorsan kezelheti a tehenek és Kivágás fordítania a vezetői körül ellenőrzi az állatokat, pénzt rengeteg történő mentésével volt idő mennyisége. A vállalatok IoT használatáról további valós beszédhelyzetek példák: [Microsoft IOT műszaki esettanulmányok](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured). 
 
-Haladjon gyorsabban az IoT világa felé.
+## <a name="iot-services"></a>IoT-szolgáltatások
 
-* Méretezés: Kezdje kicsiben, majd növekedjen tetszőleges méretre bárhol és mindenhol – eszközök milliói és több terabájt adat a világ legtöbb régiójában.
+Nincsenek több IoT-hez kapcsolódó szolgáltatások az Azure-ban, és lehet kikapcsolnia döntse el, melyiket szeretné használni. Bizonyos, például az IoT-központ és az IoT-megoldásgyorsítók, adja meg a sablonok segítségével létrehozhat saját megoldást, és gyorsan használatba vehető. Elérhető más szolgáltatásokhoz a saját megoldások fejlesztését is teljes mértékben meg is – az összes, amelytől a mennyi súgó szeretne, és mekkora vezérlő. Itt érhető el a szolgáltatások listáját, valamint a mi használhatja azokat a.
 
-* Nyílt: Használja, amije van, vagy készüljön fel korszerűbb rendszerekkel a jövőre bármilyen eszköz, szoftver vagy szolgáltatás csatlakoztatásával.
+1. [**IoT-központ**](../iot-central/overview-iot-central.md): Ez az a Szolgáltatottszoftver-megoldás, amely segítséget nyújt csatlakoztatása, monitorozása és az ioT-eszközök felügyeletére. Először válasszon ki egy sablont az eszköz típusának megfelelő és mentésekkel és ezek tesztelésével egy alapszintű IoT Central alkalmazáshoz, amelyet az eszköz az operátorok fog használni. Az IoT Central-alkalmazást is lehetővé teszi az eszközök figyelésére, és új eszközök kiépítése. Ez a szolgáltatás részletes szolgáltatás-testreszabást nem igénylő egyszerű megoldások van. 
 
-* Hibrid: IoT-megoldását a peremhálózaton, a felhőben vagy a kettő között bárhol üzembe helyezheti, így igényeinek megfelelően építkezhet.
+2. [**IoT-megoldásgyorsítók**](/azure/iot-suite): Ez a PaaS-megoldások segítségével felgyorsíthatja az IoT-megoldások fejlesztését gyűjteménye. Kezdje egy megadott IoT-megoldás, és ezután teljes mértékben testre szabhatja, hogy a megoldás az igényeinek megfelelően. Szüksége van a háttér-testreszabásához Java vagy .NET képességek és a megjelenítés testreszabásához JavaScript-ismeretek. 
 
-* Ütemezés: Gyorsabban végezheti az üzembe helyezést és gyorsabban juttathatja piacra a termékeit, megőrizve ezáltal versenyelőnyét a megoldásgyorsítók és az innováció tempója terén piacvezető IoT-szolgáltatóval.
+3. [**Az IoT Hub**](/azure/iot-hub/): Ez a szolgáltatás lehetővé teszi az eszközök csatlakozni az IoT hub és monitorozását és ellenőrzését is több milliárd IoT-eszközök. Ez különösen hasznos, ha az IoT-eszközök és a háttérrendszer közötti kétirányú kommunikáció van szüksége. Ez az IoT-központ és az IoT-megoldásgyorsítók a mögöttes szolgáltatás. 
 
-### <a name="comprehensive"></a>Átfogó
+4. [**IoT Hub Device Provisioning Service**](/azure/iot-dps/): Ez az, hogy biztonságosan kiépítése az IoT hub-eszközök használatával IoT hub segítő szolgáltatása. Ezzel a szolgáltatással egyszerűen létrehozhat több millió eszköz rövid idő alatt, ahelyett, hogy egyesével kiépítése. 
 
-Biztosítsa vállalkozása lendületét.
+5. [**IoT Edge**](/azure/iot-edge/): Ez a szolgáltatás az IoT hubra épül. Az IoT-eszközökön, nem pedig a felhőben lévő adatok elemzéséhez használható. A számítási feladat része az Edge-ben való váltással kevesebb üzenet kell kell küldeni a felhőben. 
 
-* Teljes: A Microsoft az egyetlen IoT-megoldásszolgáltató, amely egy olyan teljes platformmal rendelkezik, amelynek szolgáltatásai a különféle eszközöktől a felhőn keresztül a big datáig, a fejlett adatelemzésig és a felügyelt szolgáltatásokig terjednek.
+6. [**Az Azure digitális Twins**](/azure/azure-digital-twins/): Ez a szolgáltatás lehetővé teszi a fizikai környezet átfogó modelleket hozhat létre. A kapcsolatok és a személyek, szóközöket és eszközök közötti interakciókat modellezheti. Ha például tudja jelezni karbantartási Factory, egy elektromos rács követelményei valós idejű energia elemzéséhez, vagy optimalizálja az Office használatát, a rendelkezésre álló területet.
 
-* Partner a sikerhez: Aknázza ki a világ legnagyobb partner-ökoszisztémája nyújtotta lehetőségeket, és keltse új életre üzleti és informatikai folyamatait a legkülönfélébb iparágakban és a világ bármely táján.
+7. [**Time Series Insights**](/azure/time-series-insights): Ez a szolgáltatás lehetővé teszi tárolására, megjelenítését és nagy mennyiségű IoT-eszközök által generált idősorozat-adatok lekérdezése. Ezt a szolgáltatást is használhatja az IoT hubbal. 
 
-* Adatalapú: Az IoT az adatokról szól, ezért a legjobb IoT-megoldások egyesítik magukban az összes szükséges eszközt az adatok tárolásához, értelmezéséhez, átalakításához, elemzéséhez és a megfelelő felhasználóknak a megfelelő helyen és a megfelelő időben való megjelenítéséhez.
-
-* Eszközközpontú: A Microsoft IoT segítségével bármit csatlakoztathat, a régi berendezésektől kezdve egészen a hitelesített hardvereszközök széles választékáig, sőt, akár saját eszközöket is készíthet a peremhálózati, mobil és beágyazott rendszerekben.
-
-### <a name="secure"></a>Biztonságos
-
-Megoldás az IoT legnagyobb kihívására – a biztonságra.
-
-* Hatékonyság: A Microsoft IoT segítségével elképzeléseit a technológiával, a bevált gyakorlatokkal és a képességekkel összehangolva találhat megoldást az IoT legnehezebb kihívására – a biztonságra.
-
-* Cselekvés: Védje meg IoT-adatait és kezelje a kockázatokat identitás- és hozzáférés-felügyeleti, a kockázatok elleni védelmi és információbiztonsági, valamint biztonságkezelési megoldásokkal.
-
-* Nyugalom: Biztosítsa a bizalmas adatok védelmét a különböző eszközökön, szoftverekben, alkalmazásokban, felhőalapú szolgáltatásokban és a helyszíni környezetekben.
-
-* Megfelelőség: A Microsoft mindig is piacvezető volt az olyan biztonsági követelmények kialakításában, amelyek az IoT-eszközökre, -adatokra és -szolgáltatásokra vonatkozó nemzetközi és iparági szabványok széles körének megfelelnek.
+8. [**Az Azure Maps**](/azure/azure-maps): Ez a szolgáltatás biztosítja a webes és mobilalkalmazások földrajzi információk. Nincs olyan teljes körű REST API-k, valamint egy webalapú JavaScript-vezérlővel rendelkezik az Apple- és Windows eszközökhöz azon asztali vagy mobil rugalmas alkalmazások létrehozásához használható.
 
 ## <a name="next-steps"></a>További lépések
 
-Fedezze fel a technológiák és megoldások alábbi területeit.
+Bizonyos tényleges üzleti esetekben és a használt architektúra, tekintse meg a [a Microsoft Azure IoT műszaki esettanulmányok](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured).
 
-**Megoldások**
+Az egy IoT DevKit kipróbálni néhány mintaprojektjeit, lásd: a [IoT DevKit projekt katalógus](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/). 
 
-* [IoT-megoldásgyorsítók](/azure/iot-suite)
-* [IoT-központ](/azure/iot-central)
+A különböző szolgáltatásokat és a használatuk részletesebb magyarázatáért lásd: [Azure IoT-szolgáltatások és technológiák](iot-services-and-technologies.md).
 
-**Platformszolgáltatások**
-
-* [IoT Hub](/azure/iot-hub)
-* [IoT Hub eszközregisztrációs szolgáltatás](/azure/iot-dps)
-* [Azure Maps](/azure/azure-maps/)
-* [Time Series Insights](/azure/time-series-insights)
-
-**Edge**
-
-* [IoT Edge – áttekintés](/azure/iot-edge)
-* [Mi az az IoT Edge?](/azure/how-iot-edge-works)
+Az IoT-architektúra részletes ismertetéséhez tekintse át a következő dokumentumot: [Microsoft Azure IoT Reference Architecture](https://aka.ms/iotrefarchitecture) (Microsoft Azure IoT-referenciaarchitektúra).

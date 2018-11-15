@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/04/2018
+ms.date: 11/08/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5d18a1f86e1d870db64199c575450dd475590b55
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
-ms.translationtype: HT
+ms.openlocfilehash: 70a7829c14997287ed130b0b4300c7f5aa0f3a30
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394468"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345572"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Oktatóanyag: Az Azure Deployment Manager Resource Manager-sablonokkal való használata (privát előzetes verzió)
 
@@ -52,7 +52,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 * Azure PowerShell. További információért lásd [az Azure PowerShell használatának első lépéseit](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 * Deployment Manager-parancsmagok. Az előzetes verziójú parancsmagok telepítéséhez a PowerShellGet legújabb verziójára lesz szüksége. A legújabb verzió beszerzéséről lásd [a PowerShellGet telepítését](/powershell/gallery/installing-psget) ismertető cikket. A PowerShellGet telepítése után zárja be a PowerShell-ablakot. Nyisson meg egy új PowerShell-ablakot, és futtassa a következő parancsot:
 
-    ```
+    ```powershell
     Install-Module -Name AzureRM.DeploymentManager -AllowPrerelease
     ```
 * [Microsoft Azure Storage Explorer](https://go.microsoft.com/fwlink/?LinkId=708343&clcid=0x409). Az Azure Storage Explorer használata nem kötelező, de megkönnyíti a dolgokat.
@@ -287,7 +287,7 @@ A sablonok az Azure PowerShell használatával telepíthetők.
 
 1. Futtassa a szkriptet a szolgáltatástopológia üzembe helyezéséhez.
 
-    ```powershell
+    ```azurepowershell-interactive
     $deploymentName = "<Enter a Deployment Name>"
     $resourceGroupName = "<Enter a Resource Group Name>"
     $location = "Central US"  
@@ -312,7 +312,7 @@ A sablonok az Azure PowerShell használatával telepíthetők.
 
 3. Helyezze üzembe a bevezetési sablont:
 
-    ```powershell
+    ```azurepowershell-interactive
     # Create the rollout
     New-AzureRmResourceGroupDeployment `
         -Name $deploymentName `
@@ -323,7 +323,7 @@ A sablonok az Azure PowerShell használatával telepíthetők.
 
 4. A bevezetés állapotát a következő PowerShell-szkripttel ellenőrizheti:
 
-    ```powershell
+    ```azurepowershell-interactive
     # Get the rollout status
     $rolloutname = "<Enter the Rollout Name>"
     Get-AzureRmDeploymentManagerRollout `
@@ -353,7 +353,7 @@ A sablonok az Azure PowerShell használatával telepíthetők.
 
     A bevezetés sikeres üzembe helyezése után két további erőforráscsoport (szolgáltatásonként egy-egy) létrehozása is látható.
 
-## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
+## <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 2. Tallózással keresse meg az újonnan létrehozott webalkalmazásokat a bevezetés üzembe helyezése során létrehozott új erőforráscsoportok alatt.

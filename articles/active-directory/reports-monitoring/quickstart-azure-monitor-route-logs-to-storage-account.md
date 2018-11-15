@@ -13,15 +13,15 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 07/13/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: cf69fdf87f1ce64bd78478f07e575d7ae75c16e0
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
-ms.translationtype: HT
+ms.openlocfilehash: 9d41c0ceeed2a69884b8ef481c79feb495fc89c0
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394243"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621208"
 ---
 # <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account-preview"></a>Oktatóanyag: Azure AD-naplók archiválása egy Azure-tárfiókba (előzetes verzió)
 
@@ -68,10 +68,9 @@ A szolgáltatás használatához a következőkre lesz szüksége:
 
     ![Diagnosztikai beállítások](./media/quickstart-azure-monitor-route-logs-to-storage-account/DiagnosticSettings.png)
 
-12. Körülbelül 15 perc elteltével ellenőrizze, hogy a rendszer leküldi-e a naplókat a tárfiókba. Lépjen az [Azure Portalra](https://portal.azure.com), kattintson a **Tárfiókok** elemre, válassza ki a korábban használt tárfiókot, és kattintson a **Blobok** elemre. 
+12. Körülbelül 15 perc elteltével ellenőrizze, hogy a rendszer leküldi-e a naplókat a tárfiókba. Lépjen az [Azure Portalra](https://portal.azure.com), kattintson a **Tárfiókok** elemre, válassza ki a korábban használt tárfiókot, és kattintson a **Blobok** elemre. Az **Auditnaplók** esetében kattintson az **insights-log-audit** elemre. A **Bejelentkezési naplók** esetében kattintson az **insights-logs-signin** elemre.
 
-13. Az **Auditnaplók** esetében kattintson az **insights-log-audit** elemre. A **Bejelentkezési naplók** esetében kattintson az **insights-logs-signin** elemre.
-    ![Storage-fiók](./media/quickstart-azure-monitor-route-logs-to-storage-account/StorageAccount.png)
+    ![Tárfiók](./media/quickstart-azure-monitor-route-logs-to-storage-account/StorageAccount.png)
 
 ## <a name="next-steps"></a>További lépések
 

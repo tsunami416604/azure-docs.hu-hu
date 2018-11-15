@@ -1,192 +1,91 @@
 ---
-title: 'Rövid útmutató: Arcfelismerés egy képen a .NET SDK és a C# használatával'
+title: 'Gyors útmutató: Azure Face .NET SDK-val a kép arcok észlelése'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban arcokat fog felismerni egy képen a Face Windows C# ügyfélkódtár használatával a Cognitive Servicesben.
+description: Ebben a rövid útmutatóban az Azure Face rendelkező SDK-t fogja használni C# arcokat észleli a képet.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
-ms.date: 09/14/2018
+ms.date: 11/07/2018
 ms.author: pafarley
-ms.openlocfilehash: a4b0b8b277ed6bc6e2bc3c7549d1e67d5f18c615
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.openlocfilehash: 4fbbde167a8c895a71ab3614e8c3ecbce26604a9
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954963"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578154"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-net-sdk-with-c"></a>Rövid útmutató: Arcfelismerés egy képen a .NET SDK és a C# használatával
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-net-sdk"></a>Gyors útmutató: Arcok észlelése, a képet, a Face .NET SDK használatával
 
-Ebben a rövid útmutatóban emberi arcokat fog felismerni egy képen a Face Windows ügyfélkódtár segítségével.
+Az ebben a rövid útmutatóban a Face fogja használni az SDK szolgáltatás C# emberi arcok észlelése a képet. Ebben a rövid útmutatóban a kód egy működő példa: az Arcfelismerés projekt a a [Cognitive Services Látástechnológia csharp útmutatóink](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/Face) adattárat a Githubon.
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A minta futtatásához előfizetési kulcs szükséges. Ingyenes próba előfizetési kulcsot itt szerezhet: [A Cognitive Services kipróbálása](https://azure.microsoft.com/try/cognitive-services/?api=face-api).
-* A [Visual Studio 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
-* A [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview) ügyfélkódtár NuGet-csomagja. A csomag letöltése nem szükséges. A telepítési utasításokat az alábbiakban találja.
+- A Face API előfizetési kulcs. Megjelenik a származó ingyenes próba-előfizetését kulcsok [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Másik lehetőségként kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face API szolgáltatás és a kulcs beszerzése.
+- A [Visual Studio 2015 vagy 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
 
-## <a name="detectwithurlasync-method"></a>DetectWithUrlAsync metódus
+## <a name="create-the-visual-studio-project"></a>A Visual Studio-projekt létrehozása
 
-> [!TIP]
-> Szerezze be a legújabb kódot Visual Studio-megoldásként a [GitHubról](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/Face).
+1. A Visual Studióban hozzon létre egy új **Console app (.NET Framework)** projektre, és adja neki **FaceDetection**. 
+1. Ha más projektek is vannak a megoldásban, válassza ki ezt a projektet az egyedüli kezdőprojektként.
+1. Szerezze be a szükséges NuGet-csomagokat. Kattintson a jobb gombbal a projektre a Megoldáskezelőben, és válassza ki **NuGet-csomagok kezelése**. Kattintson a **Tallózás** lapot, és válasszon **előzetes verzió**; majd keresse meg és telepítse a következő csomagot:
+    - [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
 
-Az `DetectWithUrlAsync` és `DetectWithStreamAsync` metódus rendre az [Arcfelismerő API-t](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) csomagolja be távoli, illetve helyi képekhez. A metódusok képeken arcok felismerésére használhatók, a visszakapott arc attribútumok a következők lehetnek:
+## <a name="add-face-detection-code"></a>Arcok észlelése kód hozzáadása
 
-* Arcazonosító: Számos Face API-forgatókönyvben használt egyedi azonosító.
-* Arcot jelölő téglalap: A képen az arc helyét jelző „bal oldalon, felül, szélesség és hosszúság” érték.
-* Jellegzetes pontok: 27 pontból álló jellegzetes pontok egy tömbje, amely az arcösszetevők fontos részeire mutat.
-* Az arcattribútumok közé tartozik az életkor, a nem, a mosoly intenzitása, a fejtartás és az arcszőrzet.
+Nyissa meg az új projekt *Program.cs* fájlt. Itt fogja hozzáadni a képeket tölthet be és arcfelismerés szükséges kódot.
 
-A minta futtatásához az alábbi lépéseket kell végrehajtania:
+### <a name="include-namespaces"></a>Névterek belefoglalása
 
-1. A Visual Studióban hozzon létre egy új Visual C#-konzolalkalmazást.
-1. Telepítse a Face ügyfélkódtár NuGet-csomagját.
-    1. A felső menüben kattintson a **Eszközök** elemre, és válassza a **NuGet-csomagkezelő**, majd a **NuGet-csomagok kezelése a megoldáshoz** lehetőséget.
-    1. Kattintson a **Tallózás** fülre, majd válassza az **Előzetes verzióval** lehetőséget.
-    1. A **Keresés** mezőbe írja be: „Microsoft.Azure.CognitiveServices.Vision.Face”.
-    1. Válassza a megjelenő **Microsoft.Azure.CognitiveServices.Vision.Face** lehetőséget, majd jelölje be a projektnév melletti jelölőnégyzetet, és kattintson az **Telepítés** gombra.
-1. A *Program.cs* fájl tartalmát cserélje le a következő kódra.
-1. A `<Subscription Key>` helyére írja be az érvényes előfizetési kulcsot.
-1. Ha szükséges, módosítsa a `faceEndpoint` elem értékét arra az Azure-régióra, amelyhez az előfizetési kulcsai társítva vannak.
-1. A <`LocalImage>` helyére beírhatja a helyi kép elérési útját és fájlnevét (ha nincs megadva, a rendszer figyelmen kívül hagyja).
-1. A `remoteImageUrl` értékét beállíthatja egy másik képre.
-1. Futtassa a programot.
+Adja hozzá az alábbi `using` utasításokat a *Program.cs* fájl elejéhez.
 
-```csharp
-using Microsoft.Azure.CognitiveServices.Vision.Face;
-using Microsoft.Azure.CognitiveServices.Vision.Face.Models;
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=1-7)]
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
+### <a name="add-essential-fields"></a>Alapvető mezők hozzáadása
 
-namespace DetectFace
-{
-    class Program
-    {
-        // subscriptionKey = "0123456789abcdef0123456789ABCDEF"
-        private const string subscriptionKey = "<SubscriptionKey>";
+Adja hozzá a **Program** osztályhoz a következő mezőket: Ezeket az adatokat adja meg, hogyan csatlakozhat a Face szolgáltatás és a bemeneti adatok beszerzése. Frissíteni kell a `subscriptionKey` mező értékét az előfizetési kulcs, és előfordulhat, hogy módosítania kell a `faceEndpoint` úgy, hogy a megfelelő régióazonosító tartalmaz. Is kell beállítani a `localImagePath` és/vagy `remoteImageUrl` elérési utakhoz, mutasson a tényleges értékek képfájlok.
 
-        // You must use the same region as you used to get your subscription
-        // keys. For example, if you got your subscription keys from westus,
-        // replace "westcentralus" with "westus".
-        //
-        // Free trial subscription keys are generated in the westcentralus
-        // region. If you use a free trial subscription key, you shouldn't
-        // need to change the region.
-        // Specify the Azure region
-        private const string faceEndpoint =
-            "https://westcentralus.api.cognitive.microsoft.com";
+A `faceAttributes` mező értéke csak bizonyos típusú attribútumok tömbje. Azt határozza meg az észlelt arcok kapcsolatos lekérni kívánt adatokat.
 
-        // localImagePath = @"C:\Documents\LocalImage.jpg"
-        private const string localImagePath = @"<LocalImage>";
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=13-34)]
 
-        private const string remoteImageUrl =
-            "https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg";
+### <a name="create-and-use-the-face-client"></a>Hozzon létre, és a Face ügyfél használata
 
-        private static readonly FaceAttributeType[] faceAttributes =
-            { FaceAttributeType.Age, FaceAttributeType.Gender };
+Ezután adja hozzá a következő kódot a **fő** módszere a **Program** osztály. A Face API-ügyfél állít be.
 
-        static void Main(string[] args)
-        {
-            FaceClient faceClient = new FaceClient(
-                new ApiKeyServiceClientCredentials(subscriptionKey),
-                new System.Net.Http.DelegatingHandler[] { });
-            faceClient.Endpoint = faceEndpoint;
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=38-41)]
 
-            Console.WriteLine("Faces being detected ...");
-            var t1 = DetectRemoteAsync(faceClient, remoteImageUrl);
-            var t2 = DetectLocalAsync(faceClient, localImagePath);
+A a **fő** metódust, adja hozzá a következő kódot arcfelismerés helyi és távoli képen az újonnan létrehozott Face ügyfél használatával. Észlelési módszerek meghatározva mellett. 
 
-            Task.WhenAll(t1, t2).Wait(5000);
-            Console.WriteLine("Press any key to exit");
-            Console.ReadLine();
-        }
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=43-49)]
 
-        // Detect faces in a remote image
-        private static async Task DetectRemoteAsync(
-            FaceClient faceClient, string imageUrl)
-        {
-            if (!Uri.IsWellFormedUriString(imageUrl, UriKind.Absolute))
-            {
-                Console.WriteLine("\nInvalid remoteImageUrl:\n{0} \n", imageUrl);
-                return;
-            }
+### <a name="detect-faces"></a>Arcfelismerés
 
-            try
-            {
-                IList<DetectedFace> faceList =
-                    await faceClient.Face.DetectWithUrlAsync(
-                        imageUrl, true, false, faceAttributes);
+Adja hozzá a **Program** osztályhoz a következő metódust. A Face szolgáltatásügyfél arcfelismerés hivatkozik egy URL-címet, egy távoli képen használ. Vegye figyelembe, hogy használja a `faceAttributes` mező&mdash;a **DetectedFace** adott objektumok `faceList` fog rendelkezni a megadott attribútumok (Ez esetben, életkor és nem).
 
-                DisplayAttributes(GetFaceAttributes(faceList, imageUrl), imageUrl);
-            }
-            catch (APIErrorException e)
-            {
-                Console.WriteLine(imageUrl + ": " + e.Message);
-            }
-        }
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=52-74)]
 
-        // Detect faces in a local image
-        private static async Task DetectLocalAsync(FaceClient faceClient, string imagePath)
-        {
-            if (!File.Exists(imagePath))
-            {
-                Console.WriteLine(
-                    "\nUnable to open or read localImagePath:\n{0} \n", imagePath);
-                return;
-            }
+Hasonlóképpen, adja hozzá a **DetectLocalAsync** metódust. A Face szolgáltatásügyfél arcfelismerés a egy helyi, a fájl elérési útja által hivatkozott rendszerképet használ.
 
-            try
-            {
-                using (Stream imageStream = File.OpenRead(imagePath))
-                {
-                    IList<DetectedFace> faceList =
-                            await faceClient.Face.DetectWithStreamAsync(
-                                imageStream, true, false, faceAttributes);
-                    DisplayAttributes(
-                        GetFaceAttributes(faceList, imagePath), imagePath);
-                }
-            }
-            catch (APIErrorException e)
-            {
-                Console.WriteLine(imagePath + ": " + e.Message);
-            }
-        }
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=76-101)]
 
-        private static string GetFaceAttributes(
-            IList<DetectedFace> faceList, string imagePath)
-        {
-            string attributes = string.Empty;
+### <a name="retrieve-and-display-face-attributes"></a>Lekérni, és olyan tulajdonságok megjelenítése
 
-            foreach (DetectedFace face in faceList)
-            {
-                double? age = face.FaceAttributes.Age;
-                string gender = face.FaceAttributes.Gender.ToString();
-                attributes += gender + " " + age + "   ";
-            }
+Ezt követően adja meg a **GetFaceAttributes** metódust. Ez a kapcsolódó attribútum információkkal karakterláncot ad vissza.
 
-            return attributes;
-        }
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=103-116)]
 
-        // Display the face attributes
-        private static void DisplayAttributes(string attributes, string imageUri)
-        {
-            Console.WriteLine(imageUri);
-            Console.WriteLine(attributes + "\n");
-        }
-    }
-}
-```
+Végül adja meg a **DisplayAttributes** metódus face attribútum adatokat írni a konzol kimenete.
 
-### <a name="detectwithurlasync-response"></a>DetectWithUrlAsync válasz
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=118-123)]
 
-A sikeres válasz a képen látható minden arcra megjeleníti a nemét és korát.
+## <a name="run-the-app"></a>Az alkalmazás futtatása
 
-Nyers JSON-kimenet példákat lásd: [API rövid útmutató: Arcok felismerése képen C# használatával](CSharp.md).
+A sikeres válasz megjelenik a nemek és a korszűrő minden a képen. Példa:
 
 ```
 https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg
@@ -195,7 +94,7 @@ Male 37   Female 56
 
 ## <a name="next-steps"></a>További lépések
 
-Megismerheti, hogyan lehet képen történő arcfelismerésre Face szolgáltatást használó WPF Windows-alkalmazást létrehozni. Az alkalmazás keretet rajzol mindegyik arc köré és leírást jelenít meg az arcról az állapotsávon.
+Ebben a rövid útmutatóban létrehozott egy egyszerű .NET konzolalkalmazást, amely a Face API szolgáltatás segítségével a helyi és távoli képeken arcok észlelése. Ezután az oktatóanyag egy részletesebb megtekintéséhez, hogyan, képesek adatokat megjeleníteni az arcok a felhasználó egy intuitív módon.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: WPF-alkalmazás létrehozása képeken lévő arcok észleléséhez és bekeretezéséhez](../Tutorials/FaceAPIinCSharpTutorial.md)
+> [Oktatóanyag: Észlelése és elemezheti az arcokat a képet a WPF-alkalmazás létrehozása](../Tutorials/FaceAPIinCSharpTutorial.md)

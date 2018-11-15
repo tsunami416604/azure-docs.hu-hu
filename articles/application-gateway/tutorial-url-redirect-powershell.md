@@ -7,15 +7,15 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 7/13/2018
+ms.date: 11/13/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 11cd052ca07e074ce8303891f7a372890fdf7291
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: HT
+ms.openlocfilehash: 785f3e5f55520b3851e8989b79c340bce55c2135
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580599"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566908"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>Alkalmazásátjáró létrehozása URL-útvonalon alapuló átirányítással az Azure PowerShell használatával
 
@@ -32,6 +32,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 A következő példában a 8080-as és a 8081-es portról egyaránt érkezik webhelyforgalom, amely ugyanazokra a háttérkészletekre lesz átirányítva:
 
 ![URL-útválasztási példa](./media/tutorial-url-redirect-powershell/scenario.png)
+
+Igény szerint az oktatóanyag az [Azure CLI](tutorial-url-redirect-cli.md) használatával is elvégezhető.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -516,14 +518,6 @@ Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az alkalmaz
 Remove-AzureRmResourceGroup -Name myResourceGroupAG
 ```
 ## <a name="next-steps"></a>További lépések
-
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
-
-> [!div class="checklist"]
-> * A hálózat beállítása
-> * Application Gateway létrehozása
-> * Figyelők és útválasztási szabályok hozzáadása
-> * Virtuálisgép-méretezési csoportok létrehozása a háttérkészletekhez
 
 > [!div class="nextstepaction"]
 > [Ismerje meg részletesebben az alkalmazásátjárók lehetőségeit](application-gateway-introduction.md)

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: get-started-article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: ef3139c4b3f06644b219e177fad0c094ed600fb6
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
-ms.translationtype: HT
+ms.openlocfilehash: 4af4cae07f4e02bc8306c0b317da3a58e4586494
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394590"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578349"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Szolgáltatásnevek és az Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ Ez a cikk azt mutatja be, hogyan lehet létrehozni és használni egy szolgálta
 
 Azure AD szolgáltatásnév létrehozásához rendelkeznie kell alkalmazásregisztrációs engedéllyel az Azure AD-bérlőben és alkalmazások szerepkörhöz rendeléséhez az előfizetésben. Ha nem rendelkezik a szükséges engedélyekkel, lehet, hogy meg kell kérnie az Azure AD vagy az előfizetés rendszergazdáját, hogy biztosítsa a szükséges engedélyeket, vagy hogy hozzon létre előzetesen egy szolgáltatásnevet, hogy használhassa az AKS-fürthöz.
 
-Emellett az Azure CLI 2.0.46-os vagy újabb, telepített és konfigurált verziójával is rendelkeznie kell. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
+Emellett az Azure CLI 2.0.46-os vagy újabb, telepített és konfigurált verziójával is rendelkeznie kell. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
 
 ## <a name="automatically-create-and-use-a-service-principal"></a>Szolgáltatásnév automatikus létrehozása és használata
 
@@ -75,6 +75,45 @@ Ha az Azure Portal használatával helyez üzembe egy AKS-fürtöt, akkor a **Ku
 
 ![Az Azure Vote keresését ábrázoló kép](media/kubernetes-service-principal/portal-configure-service-principal.png)
 
+## <a name="delegate-access-to-other-azure-resources"></a>Egyéb Azure-erőforrások hozzáférésének delegálása
+
+Az AKS-fürthöz tartozó egyszerű szolgáltatás egyéb erőforrásainak elérésére használható. Például ha szeretné használni a speciális hálózati meglévő virtuális hálózatokhoz való kapcsolódásának, vagy csatlakozna az Azure Container Registry (ACR), meg kell a szolgáltatásnévvel való hozzáférés delegálására.
+
+Engedélyeket delegálhatnak, hozzon létre egy szerepkör hozzárendelése a [az szerepkör-hozzárendelés létrehozása] [ az-role-assignment-create] parancsot. Hozzárendelhet a `appId` egy adott hatókörhöz, például egy erőforráscsoport vagy virtuálishálózat-erőforrást. Egy szerepkör majd meghatározza, milyen engedélyekkel a szolgáltatásnév rendelkezik az erőforráson, az alábbi példában látható módon:
+
+```azurecli
+az role assignment create --assignee <appId> --scope <resourceScope> --role Contributor
+```
+
+A `--scope` erőforrás kell lennie a teljes erőforrás-azonosítója, mint például a */subscriptions/\<guid\>/resourceGroups/myResourceGroup* vagy */subscriptions/\<GUID azonosítója \>/resourceGroups/myResourceGroupVnet/providers/Microsoft.Network/virtualNetworks/myVnet*
+
+Az alábbi szakaszok általános delegálásokat, győződjön meg arról, hogy szükség lehet.
+
+### <a name="azure-container-registry"></a>Azure Container Registry
+
+Az Azure Container Registry (ACR) használja a rendszerképet a tárolóban, ha az AKS-fürt és rendszerképeket engedélyeket szeretne. Az AKS-fürtöt, az egyszerű szolgáltatás kell delegálni a *olvasó* a beállításjegyzék szerepkör. Részletes lépéseiért lásd: [Grant AKS hozzáférés az ACR-be][aks-to-acr].
+
+### <a name="networking"></a>Hálózat
+
+Speciális hálózatkezelés felhasználhatja, ahol a virtuális hálózat és alhálózat vagy nyilvános IP-címek szerepelnek-e egy másik erőforráscsoportot. Rendelje hozzá a következő szerepkör engedélykészletet egyikét:
+
+- Hozzon létre egy [egyéni szerepkör] [ rbac-custom-role] és a következő szerepkör-engedélyek megadása:
+  - *Microsoft.Network/virtualNetworks/subnets/join/action*
+  - *Microsoft.Network/virtualNetworks/subnets/read*
+  - *Microsoft.Network/publicIPAddresses/read*
+  - *Microsoft.Network/publicIPAddresses/write*
+  - *Microsoft.Network/publicIPAddresses/join/action*
+- Vagy, rendelje hozzá a [hálózati közreműködő] [ rbac-network-contributor] beépített szerepkör az alhálózat a virtuális hálózaton belül
+
+### <a name="storage"></a>Storage
+
+Szükség lehet egy másik erőforráscsoportban található meglévő lemez erőforrások eléréséhez. Rendelje hozzá a következő szerepkör engedélykészletet egyikét:
+
+- Hozzon létre egy [egyéni szerepkör] [ rbac-custom-role] és a következő szerepkör-engedélyek megadása:
+  - *Microsoft.Compute/disks/read*
+  - *Microsoft.Compute/disks/write*
+- Vagy, rendelje hozzá a [Tárfiók-közreműködő] [ rbac-storage-contributor] arra az erőforráscsoportra beépített szerepkör
+
 ## <a name="additional-considerations"></a>Néhány fontos megjegyzés
 
 AKS és Azure AD szolgáltatásnevek használata esetén vegye figyelembe a következőket.
@@ -107,3 +146,8 @@ Az Azure Active Directory szolgáltatásnevekkel kapcsolatos további informáci
 [az-ad-app-list]: /cli/azure/ad/app#az-ad-app-list
 [az-ad-app-delete]: /cli/azure/ad/app#az-ad-app-delete
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[rbac-network-contributor]: ../role-based-access-control/built-in-roles.md#network-contributor
+[rbac-custom-role]: ../role-based-access-control/custom-roles.md
+[rbac-storage-contributor]: ../role-based-access-control/built-in-roles.md#storage-account-contributor
+[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
+[aks-to-acr]: ../container-registry/container-registry-auth-aks.md?toc=%2fazure%2faks%2ftoc.json#grant-aks-access-to-acr

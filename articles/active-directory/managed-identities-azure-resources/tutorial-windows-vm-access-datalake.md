@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 11/13/2018
 ms.author: daveba
-ms.openlocfilehash: 0acc5c8211d6f7715e97214c49ee4af37850e330
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
-ms.translationtype: HT
+ms.openlocfilehash: 4beaf9f1a4206f6840bdb3277770e1996dbc83e1
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47106148"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623222"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Oktatóanyag: Hozzáférés az Azure Data Lake Storage-hoz egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással
 
@@ -33,15 +33,7 @@ Az oktatóanyag bemutatja, hogyan használhat rendszer által hozzárendelt fel�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
-
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
-
-- [Bejelentkezés az Azure Portalra](https://portal.azure.com)
-
-- [Windows rendszerű virtuális gép létrehozása](/azure/virtual-machines/windows/quick-create-portal)
-
-- [Rendszer által hozzárendelt identitás engedélyezése a virtuális gépen](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>Hozzáférés engedélyezése a virtuális gép számára egy Azure Data Lake Store-hoz
 

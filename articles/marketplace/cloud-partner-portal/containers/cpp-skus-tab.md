@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 11/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 83acdb320e0be0837ec5188a11cb86b91ed077fa
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 81f7e46e626bb061881be53e8cace36e1478e0e1
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979754"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683978"
 ---
 # <a name="container-skus-tab"></a>Tároló termékváltozatok lap
 
@@ -46,7 +46,7 @@ A Termékváltozat-metaadatokat tároló listáján kirakat megjelenített infor
 
 ### <a name="container-metadata"></a>Tároló metaadatai
 
-A tároló metaadatait az adattár részletei belül az Azure Container Registry (ACR)-hivatkozási információi rendelkezik. Az Azure piactér a lemezkép másolja a nyilvános piactérről regisztrációs adatbázisba, és szeretné elérhetővé tenni az ügyfelek hitelesítő után. Használhat egy tárolórendszerképet az Azure-felhasználó minden kérelmeit a szolgáltatás a Marketplace-en tárolóregisztrációs adatbázisból szolgálja ki.
+A tároló metaadatait az adattár részletei belül az Azure Container Registry (ACR)-hivatkozási információi rendelkezik. Az Azure Marketplace-en másolja át a lemezkép egy Marketplace-specifikus, nyilvános regisztrációs adatbázisba, és majd elérhetővé teszi a lemezkép az ügyfelek hitelesítő után. Érkező kérések az Azure felhasználói az Azure Marketplace-en tárolórendszerképet fel a szolgáltatás a nyilvános beállításjegyzék a Marketplace-en, nem ACR szolgálja ki.
 
 ![Tároló metaadatai](./media/containers-image-repository.png)
     

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/20/2018
 ms.author: daveba
-ms.openlocfilehash: e208c8b52c14b99129bf3fce9ae54ba11f1c0a28
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
-ms.translationtype: HT
+ms.openlocfilehash: 18141e0f58a0b5227c3f5f5c36210017da101780
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47584302"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625334"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Oktatóanyag: Hozzáférés az Azure AD Graph API-hoz egy Windows VM rendszer által hozzárendelt felügyelt identitásával
 
@@ -35,15 +35,7 @@ Ez az oktatóanyag bemutatja, hogyan férhet hozzá a Microsoft Graph API-hoz é
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
-
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
-
-- [Bejelentkezés az Azure Portalra](https://portal.azure.com)
-
-- [Windows rendszerű virtuális gép létrehozása](/azure/virtual-machines/windows/quick-create-portal)
-
-- [Rendszer által hozzárendelt felügyelt identitás engedélyezése a virtuális gépen](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 - Annak érdekében, hogy hozzáférést tudjon biztosítani az Azure AD Graph-hoz a virtuális gép identitása számára, a fiókjához hozzá kell rendelnie a **globális rendszergazda** szerepkört az Azure AD-ben.
 

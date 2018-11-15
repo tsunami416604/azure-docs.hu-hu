@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 92553fc8867a482c0af99c4ba3937dcc0d2f09e6
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
-ms.translationtype: HT
+ms.openlocfilehash: eeb615a89469ef8c165ed7ad76acaa01493f78ec
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158102"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625538"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Oktatóanyag: Windows VM-beli, rendszer által hozzárendelt felügyelt identitás használata az Azure Storage eléréséhez hozzáférési kulccsal
 
@@ -35,15 +35,7 @@ Ez az oktatóanyag bemutatja, hogyan kérheti le a tárfiókok hozzáférési ku
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
-
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
-
-- [Bejelentkezés az Azure Portalra](https://portal.azure.com)
-
-- [Windows rendszerű virtuális gép létrehozása](/azure/virtual-machines/windows/quick-create-portal)
-
-- [Rendszer által hozzárendelt felügyelt identitás engedélyezése a virtuális gépen](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása 
 
@@ -83,7 +75,7 @@ Az Azure Storage nem támogatja natív módon az Azure AD-hitelesítést.  A VM 
 
     ![Helyettesítő képszöveg](./media/msi-tutorial-linux-vm-access-storage/msi-storage-role.png)
 
-## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-to-call-azure-resource-manager"></a>Hozzáférési jogkivonat lekérése a virtuális gép rendszerhez rendelt felügyelt identitásának használatával az Azure Resource Manager meghívásához 
+## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-to-call-azure-resource-manager"></a>Hozzáférési jogkivonat lekérése a virtuális gép rendszerhez rendelt felügyelt identitásának használatával az Azure Resource Manager meghívásához 
 
 Az oktatóanyag további részében a korábban létrehozott virtuális gépről dolgozunk. 
 

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/3/2018
 ms.author: trinadhk
-ms.openlocfilehash: 20c1606d4d6a1ddd43426731e5498d1bee47f2e3
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c65cfedd398bbb18d65f36a3f2a768e11443687a
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962536"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636509"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Azure virtuális gép biztonsági mentési vermének v2 verziójára frissítsen.
 
@@ -86,15 +86,42 @@ Futtassa a következő parancsmagokat egy emelt szintű PowerShell terminálon:
     ```
     PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
     ```
+### <a name="cli"></a>parancssori felület
+Futtassa a következő parancsokat egy rendszerhéjból:
+1.  Jelentkezzen be az Azure-fiókjával:
+
+    ```
+    az login
+    ```
+
+2.  Regisztrálni kívánt előfizetés kiválasztásához:
+
+    ```
+    az account set --subscription "Subscription Name"
+    ```
+
+3.  Ez az előfizetés regisztrálása:
+
+    ```
+    az feature register --namespace Microsoft.RecoveryServices --name InstantBackupandRecovery
+    ```
 
 ## <a name="verify-that-the-upgrade-is-finished"></a>Győződjön meg arról, hogy a frissítés befejeződött
+### <a name="powershell"></a>PowerShell
 Egy rendszergazda jogú PowerShell terminálból futtassa a következő parancsmagot:
 
 ```
 Get-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
 ```
 
-Ugyanakkor "Regisztrálva", majd az előfizetés frissül virtuális gép biztonsági másolat verem Resource Manager-alapú üzemi modellbe.
+### <a name="cli"></a>parancssori felület
+Ashell futtassa a következő parancsot:
+
+```
+az feature show --namespace Microsoft.RecoveryServices --name InstantBackupandRecovery
+```
+
+Ugyanakkor "Regisztrálva", majd az előfizetés biztonsági mentési vermének V2 van frissítve.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 

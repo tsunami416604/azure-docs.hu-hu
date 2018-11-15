@@ -13,15 +13,15 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 06/21/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 334649dbe315cb54ba95a29f4c69441fcd2c3417
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
-ms.translationtype: HT
+ms.openlocfilehash: 0e6e72424530d18b55f68077ba7c3328d9a2e549
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46362969"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621428"
 ---
 # <a name="quickstart-download-a-sign-in-report-using-the-azure-portal"></a>Rövid útmutató: Bejelentkezési jelentés letöltése az Azure portál használatával
 
@@ -32,7 +32,7 @@ Ebben a rövid útmutatóban megismerheti, hogyan lehet az elmúlt 24 órára vo
 A következők szükségesek:
 
 * Azure Active Directory-bérlő prémium licenccel a bejelentkezési tevékenységek jelentésének megtekintéséhez. 
-* Egy felhasználó, aki a bérlőnél biztonsági rendszergazdai, biztonsági olvasó, jelentés olvasó vagy globális rendszergazdai szerepkörben van. Ezen felül a bérlő minden felhasználója elérheti a magára vonatkozó bejelentkezéseket.
+* A felhasználó, aki az a **biztonsági rendszergazda**, **biztonsági olvasó**, **jelentés olvasó** vagy **globális rendszergazdai** szerepkör a bérlő számára. Ezen felül a bérlő minden felhasználója elérheti a magára vonatkozó bejelentkezéseket.
 
 ## <a name="quickstart-download-a-sign-in-report"></a>Első lépések: Bejelentkezési jelentés letöltése
 

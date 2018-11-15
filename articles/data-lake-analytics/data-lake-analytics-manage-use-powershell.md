@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: conceptual
 ms.date: 06/29/2018
-ms.openlocfilehash: b6bed1d42f67c2b5d2ef34a547215c280acb50b8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5bd8763234aa02d68b6e86b7259fcf10b4ef4ac5
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963764"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684282"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Az Azure Data Lake Analytics kezelése az Azure PowerShell-lel
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -503,26 +503,26 @@ function Test-Administrator
 Forrás-előfizetés neve:
 
 ```powershell
-function Get-TenantIdFromSubcriptionName( [string] $subname )
+function Get-TenantIdFromSubscriptionName( [string] $subname )
 {
     $sub = (Get-AzureRmSubscription -SubscriptionName $subname)
     $sub.TenantId
 }
 
-Get-TenantIdFromSubcriptionName "ADLTrainingMS"
+Get-TenantIdFromSubscriptionName "ADLTrainingMS"
 ```
 
 Az egy előfizetés azonosítója:
 
 ```powershell
-function Get-TenantIdFromSubcriptionId( [string] $subid )
+function Get-TenantIdFromSubscriptionId( [string] $subid )
 {
     $sub = (Get-AzureRmSubscription -SubscriptionId $subid)
     $sub.TenantId
 }
 
 $subid = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-Get-TenantIdFromSubcriptionId $subid
+Get-TenantIdFromSubscriptionId $subid
 ```
 
 Például a "contoso.com" tartomány-címről

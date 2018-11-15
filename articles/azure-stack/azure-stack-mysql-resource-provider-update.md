@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/14/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: f58ba1af301379810d5072f55c7b9365f205911f
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 46671a559f4db9aaa798e2c0d8cc668794687a58
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364693"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686330"
 ---
 # <a name="update-the-mysql-resource-provider"></a>A MySQL erőforrás-szolgáltató frissítése 
 
@@ -41,9 +41,6 @@ A **UpdateMySQLProvider.ps1** parancsfájl egy új virtuális Gépet hoz létre 
 >[!NOTE]
 >Azt javasoljuk, hogy le kell tölteni a legújabb Windows Server 2016 Core lemezképet a Marketplace-kezelés. Ha szeretne telepíteni egy frissítést, elhelyezhet egy **egyetlen** MSU-csomagot a helyi függőségi útvonalát. A parancsfájl futtatása sikertelen lesz, ha egynél több MSU-fájlt ezen a helyen.
 
->[!NOTE]  
-> 
-
 A szkript a DeployMySqlProvider.ps1 parancsfájl ismertetett argumentumokkal használatát igényli. A tanúsítvány itt is biztosítanak.  
 
 Az alábbiakban egy példát a a *UpdateMySQLProvider.ps1* parancsfájlt, amely a PowerShell-parancssorban futtathatja. Ügyeljen arra, hogy a fiók- és igény szerint módosíthatja:  
@@ -52,9 +49,10 @@ Az alábbiakban egy példát a a *UpdateMySQLProvider.ps1* parancsfájlt, amely 
 > A frissítési folyamat csak integrált rendszerek vonatkozik. 
 
 ```powershell 
-# Install the AzureRM.Bootstrapper module and set the profile. 
-Install-Module -Name AzureRm.BootStrapper -Force 
-Use-AzureRmProfile -Profile 2017-03-09-profile 
+# Install the AzureRM.Bootstrapper module, set the profile and install the AzureStack module
+Install-Module -Name AzureRm.BootStrapper -Force
+Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
+Install-Module -Name AzureStack -RequiredVersion 1.5.0
 
 # Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time. 
 $domain = "AzureStack" 

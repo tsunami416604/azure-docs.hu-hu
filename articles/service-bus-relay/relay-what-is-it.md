@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 10/08/2018
+ms.date: 11/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 3cc87c0acbed317cccaccec687f27c23a1d32cf0
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
-ms.translationtype: HT
+ms.openlocfilehash: 132fca9c8904c4f64fffe167e3a3f2c6bb0d2cfe
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319336"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621027"
 ---
 # <a name="what-is-azure-relay"></a>Mi az az Azure Relay?
-Az Azure Relay szolgáltatás biztonságosan lehetővé teszi a vállalati hálózaton futó szolgáltatások közzétételét a nyilvános felhőben. Ehhez nincs szükség tűzfalkapcsolat megnyitására, illetve zavaró módosításokra a hálózati infrastruktúrán. 
+Az Azure Relay szolgáltatás biztonságosan lehetővé teszi a vállalati hálózaton futó szolgáltatások közzétételét a nyilvános felhőben. Ezt a port, a tűzfal megnyitása vagy zavaró módosításokat kellene végrehajtani gondoskodik a vállalati hálózati infrastruktúrában anélkül teheti meg. 
 
 A Relay szolgáltatás az alábbi, helyszíni szolgáltatások és felhőben vagy más helyszíni környezetben futtatott alkalmazások közötti forgatókönyveket támogatja. 
 
@@ -56,7 +56,7 @@ A Hibrid kapcsolatok protokolljáról részletes információkat a [hibrid kapcs
 > Az Azure Relay Hibrid kapcsolatok szolgáltatása a BizTalk Services hasonló nevű korábbi szolgáltatását váltja fel, amely az Azure Service Bus WCF Relay szolgáltatására épült. Az Azure Relay Hibrid kapcsolatok képessége kiegészíti a már meglévő WCF Relay szolgáltatást. E két szolgáltatási képesség (WCF Relay és Hibrid kapcsolatok) a továbbiakban egymás mellett fog működni az Azure Relay szolgáltatásban. E szolgáltatások közös átjáróval rendelkeznek, de ettől eltekintve különböző megvalósításról van szó.
 
 ## <a name="wcf-relay"></a>WCF-továbbító
-A WCF Relay szolgáltatás a teljes .NET-keretrendszerrel és WCF-fel is használható. A helyszíni és a továbbítási szolgáltatás közötti kapcsolatot egy WCF továbbító kötéskészlet használatával hozhatja létre. A színfalak mögött a továbbítási kötéseket a rendszer a Service Busszal a felhőben integrálódó WCF-csatornaösszetevők létrehozására tervezett új átviteli kötőelemekké képezi le. További információ: [Ismerkedés a WCF-továbbító szolgáltatással](relay-wcf-dotnet-get-started.md).
+A WCF Relay szolgáltatás a teljes .NET-keretrendszerrel és WCF-fel is használható. A helyszíni és a továbbítási szolgáltatás közötti kapcsolatot egy WCF továbbító kötéskészlet használatával hozhatja létre. A továbbítási kötéseket a Service busszal a felhőben integrálódó WCF-csatornaösszetevők létrehozására tervezett új átviteli kötőelemekké leképezése. További információ: [Ismerkedés a WCF-továbbító szolgáltatással](relay-wcf-dotnet-get-started.md).
 
 ## <a name="hybrid-connections-vs-wcf-relay"></a>A Hibrid kapcsolatok és a WCF-továbbító
 A Hibrid kapcsolatok és a WCF Relay szolgáltatás egyaránt lehetővé teszi a vállalati hálózaton belüli eszközökhöz való biztonságos csatlakozást. Az Ön igényein múlik, hogy melyik lehetőséget választja, ahogy az az alábbi táblázatban látható:
@@ -68,7 +68,7 @@ A Hibrid kapcsolatok és a WCF Relay szolgáltatás egyaránt lehetővé teszi a
 | **.NET-keretrendszer** |x |x |
 | **JavaScript/Node.JS** | |x |
 | **Szabványokon alapuló nyílt protokoll** | |x |
-| **Többszörös RPC programozási modellek** | |x |
+| **RPC programozási modellek** | |x |
 
 ## <a name="architecture-processing-of-incoming-relay-requests"></a>Architektúra: Bejövő továbbítási kérelmek feldolgozása
 Az alábbi ábra azt mutatja be, hogyan kezeli az Azure Relay szolgáltatás a bejövő továbbítási kérelmeket:
@@ -86,9 +86,9 @@ Az alábbi ábra azt mutatja be, hogyan kezeli az Azure Relay szolgáltatás a b
 9. Az átjáró továbbítja az üzeneteket a küldő ügyféltől a figyelő ügyfél felé.  
 
 ## <a name="next-steps"></a>További lépések
-* [Ismerkedés a .NET-websocketekkel](relay-hybrid-connections-dotnet-get-started.md)
+* [Ismerkedés a .NET Websocketek](relay-hybrid-connections-dotnet-get-started.md)
 * [Ismerkedés a .NET-HTTP-kérésekkel](relay-hybrid-connections-http-requests-dotnet-get-started.md)
-* [Ismerkedés a Node-websocketekkel](relay-hybrid-connections-node-get-started.md)
+* [Ismerkedés a node.js Websocketek](relay-hybrid-connections-node-get-started.md)
 * [Ismerkedés a Node-HTTP-kérésekkel](relay-hybrid-connections-http-requests-node-get-started.md)
 * [Relay – gyakori kérdések](relay-faq.md)
 

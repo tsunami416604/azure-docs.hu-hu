@@ -8,21 +8,22 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: video-indexer
 ms.topic: sample
-ms.date: 09/15/2018
+ms.date: 11/12/2018
 ms.author: juliako
-ms.openlocfilehash: 53dc65c3d2c56308dd298f33bb78047904810ae5
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
-ms.translationtype: HT
+ms.openlocfilehash: 513c64ba7c9dad29fbef4a4010f5320dadda3c82
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377830"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625182"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
 
 Ez a cikk bemutatja, hogyan tölthet fel videókat az Azure Video Indexerrel. A Video Indexer API két lehetőséget kínál a feltöltésre: 
 
 * videó feltöltése egy URL-címről (előnyben részesített),
-* a videofájl elküldése a kérelemtörzs egyik bájttömbjeként.
+* küldje el a videó fájlt, egy bájttömböt a kérelem törzsében szereplő
+* Használja meglévő Azure Media Services eszköz azáltal, hogy a [eszközazonosító](https://docs.microsoft.com/azure/media-services/latest/assets-concept) (fizetős fiókok csak a támogatott).
 
 A cikk bemutatja, hogyan használhatja a [Videó feltöltése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API-t a videók URL-cím alapján történő feltöltéséhez és indexeléséhez. A cikkben található kódminta tartalmazza a megjegyzésként szereplő kódot, amely bemutatja, hogyan lehet feltölteni a bájttömböt.  
 
@@ -50,6 +51,35 @@ Ez a szakasz ismertet néhány választható paramétert, és leírja, hogy miko
 
 Ezzel a paraméterrel megadhat egy azonosítót, amely társítva lesz a videóhoz. Az azonosítót a külső „Video Content Management” (VCM) rendszer-integrációra is alkalmazni lehet. A Video Indexer portálon található videók a megadott külső azonosító használatával kereshetők.
 
+### <a name="callbackurl"></a>callbackUrl
+
+Egy URL-címet, amellyel az ügyfél (a POST-kérés használatával) a következő eseményekről kaphat értesítést:
+
+- Az indexelő állapot módosítása: 
+    - Tulajdonságok:    
+    
+        |Name (Név)|Leírás|
+        |---|---|
+        |id|A videó azonosítója|
+        |state|A videó állapota|  
+    - Például: https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
+- A videóban azonosított személy:
+    - Tulajdonságok
+    
+        |Name (Név)|Leírás|
+        |---|---|
+        |id| A videó azonosítója|
+        |faceId|A face ID, hogy megjelenik a videók indexe|
+        |knownPersonId|A egy oldallal modellen belül egyedi személy azonosítója|
+        |PersonName|Annak a személynek a nevét|
+        
+     - Például: https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+
+#### <a name="notes"></a>Megjegyzések
+
+- A video Indexer adja vissza az eredeti URL-címben megadott bármely meglévő paraméterek.
+- A megadott URL-címet kell kódolni.
+
 ### <a name="indexingpreset"></a>indexingPreset
 
 Akkor használja ezt a paramétert, ha a nyers vagy külső felvételek háttérzajt tartalmaznak. Ez a paraméter az indexelési folyamat konfigurálására szolgál. A következő értékeket adhatja meg:
@@ -60,11 +90,11 @@ Akkor használja ezt a paramétert, ha a nyers vagy külső felvételek háttér
 
 Az árat a kiválasztott indexelési lehetőség határozza meg.  
 
-### <a name="callbackurl"></a>callbackUrl
+### <a name="priority"></a>prioritás
 
-Egy POST URL, amely az indexelés befejezéséről küld értesítést. A Video Indexer két lekérdezési sztringparamétert ad hozzá: id és state. Ha például a visszahívási URL-cím https://test.com/notifyme?projectName=MyProject, a rendszer további paraméterekkel küldi el az értesítést a következőnek: https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed.
+Videók a Video Indexer által indexelt prioritásuk szerint. Használja a **prioritású** paraméterrel adja meg az index prioritás. A következő értékek érvényesek: **alacsony**, **normál** (alapértelmezett), és **magas**.
 
-Mielőtt elküldi a hívást a Video Indexernek, további paramétereket is hozzáadhat az URL-címhez. A visszahívás tartalmazni fogja ezeket a paramétereket. Később a kódban elemezheti a lekérdezési sztringet, és visszakaphatja a lekérdezési sztringben megadott összes paramétert (az URL-címhez eredetileg hozzáfűzött adatokat, valamint a Video Indexer által biztosított információkat). Az URL-címet kódolni kell.
+**Prioritás** paraméter csak a díjköteles fiók támogatott.
 
 ### <a name="streamingpreset"></a>streamingPreset
 

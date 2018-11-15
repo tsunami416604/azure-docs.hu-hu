@@ -12,22 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: ce6f40e580595e4f3fbf0519aa1ba8be0355ded1
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: d07a89163d10026851dc26812ac248d92d6d5e8a
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621905"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684171"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Az Azure monitorozási ügynökök 
-A Microsoft Azure több módszert is biztosít a különböző típusú adatok gyűjtésére az Azure rendszerben vagy egyéb felhőszolgáltatók, Microsoft Windows és Linux rendszerű virtuális gépek. Ez a cikk segít a különbségek és képességek érhető el minden ügynök arra, hogy melyik támogatni fogja az IT service management sorrendben vagy általános figyelési követelmények leírása.  
+A Microsoft Azure több módszert is biztosít a különböző típusú adatok gyűjtésére a Microsoft Windows és az Azure, a helyi adatközpontban vagy egyéb felhőszolgáltatók üzemeltetett Linux rendszerű virtuális gépek. Három különböző típusa érhető el a virtuális gép figyelése ügynökök a következők:
 
-## <a name="comparing-agents"></a>Ügynökök összehasonlítása
-Még ma az Azure-ban három típusa van az ügynökök egy Azure-beli Virtuálisgép - figyelhető az Azure Diagnostics bővítmény, a függőségi ügynök és a Log Analytics-ügynököket a Linux és Windows.  Alapvetően az Azure függőségi bővítmény és a Log Analytics-ügynökök úgy tervezték, metrikák és naplók összegyűjtése, és továbbítsa a tárházhoz. Azonban, hogy, ahol azok Hasonlóságok vége.  
+* Az Azure Diagnostics bővítmény
+* Log Analytics-ügynököket a Linux és Windows
+* Függőségi ügynök
 
-### <a name="azure-diagnostic-extension"></a>Az Azure diagnosztikai bővítmény
+Ez a cikk ahhoz, hogy melyik támogatni fogja az IT service management vagy általános a figyelési követelmények meghatározása őket, és azok képességeinek közötti különbségeket mutatja be.  
+
+## <a name="azure-diagnostic-extension"></a>Az Azure diagnosztikai bővítmény
 A [Azure Diagnostics bővítmény](../monitoring-and-diagnostics/azure-diagnostics.md) (más néven a Windows Azure diagnosztikai (WAD) vagy a Linux Azure diagnosztikai (LAD) kiterjesztéssel), amely megadva az Azure Cloud Services általánosan elérhető a 2010-vált, mivel diagnosztikai adatok egyszerű gyűjteménye biztosít a számítási Azure-erőforrások, például egy virtuális Gépet, és továbbra is fennáll az Azure storage-ügynök van. Miután a tároló úgy döntött, hogy az egyik számos elérhető eszköz, például megtekintheti [a Visual Studio Server Explorer](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) és [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).
 
 Ha szeretné, gyűjtése:
@@ -39,9 +42,9 @@ Ha szeretné, gyűjtése:
 * Alkalmazásnapló-események gyűjtése a syslog  
 * összeomlási memóriaképek, 
 
-Az Azure Diagnostics-ügynök kell használni:
+Az Azure Diagnostics-ügynök használata, ha azt szeretné, hogy:
 
-* Naplók és mérőszámok az Azure storage-archiválni kívánja
+* Archív tárolási szint, naplók és mérőszámok az Azure storage
 * Monitorozási adatok integrálása a harmadik felektől származó eszközök. Ezek az eszközök különféle eszközök, például a tárfiók továbbított lekérdezés használata [az Event Hubs](../event-hubs/event-hubs-about.md), vagy a lekérdezés a [Azure Monitoring REST API](../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md)
 * Adatfeltöltés az Azure Monitor mérőszám-diagramok létrehozása az Azure Portalon, vagy hozzon létre, közel valós idejű [metrikákhoz kapcsolódó riasztások](../monitoring-and-diagnostics/alert-metric-overview.md). 
 * Virtuálisgép-méretezési készletek automatikus és a klasszikus Felhőszolgáltatások vendég operációs rendszer metrikák alapján.
@@ -49,27 +52,25 @@ Az Azure Diagnostics-ügynök kell használni:
 * Megismerheti, hogyan az alkalmazások hajt végre, és proaktív módon azonosítja az őket érintő problémákat [Application Insights](../azure-monitor/overview.md).
 * Metrikák importálhatja, és a Cloud Services, a klasszikus virtuális gépeket, gyűjtött adatok Log Analytics konfigurálása és a egy Azure storage-fiókban tárolt Service Fabric csomópontjaival.
 
-### <a name="log-analytics-agent"></a>Log Analytics-ügynököket
-Speciális monitorozás esetében van szüksége több mint gyűjtését metrikák és naplók egy részét, a Log Analytics-ügynököket Windows és Linux rendszerhez készült szükség. A Log Analytics-ügynököket kifejlesztett átfogó felügyeletét nyújtja a helyszíni fizikai és virtuális gépek, a System Center Operations Manager által felügyelt számítógépek, és más felhőkben futó virtuális gépeket. A Windows és Linux-ügynökök gyűjtéséhez monitorozási megoldás-alapú adatok és is egyéni azokat az adatforrásokat, konfigurálhat egy Log Analytics-munkaterület csatlakozni.
+## <a name="log-analytics-agent"></a>Log Analytics-ügynököket
+Speciális monitorozás kell több mint gyűjtenek, metrikák és naplók egy részét, a Log Analytics-ügynököket Windows és Linux rendszerhez készült szükség. A Log Analytics-ügynököket kifejlesztett átfogó felügyeletét nyújtja a helyszíni fizikai és virtuális gépek, a System Center Operations Manager által felügyelt számítógépek, és más felhőkben futó virtuális gépeket. A Windows és Linux-ügynökök gyűjtéséhez monitorozási megoldás-alapú adatok és is egyéni azokat az adatforrásokat, konfigurálhat egy Log Analytics-munkaterület csatlakozni.
 
 [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
 
-A Log Analytics-ügynököket kell használni:
+A Log Analytics-ügynököket kell használni, ha meg szeretné:
 
-* A helyszíni vagy más felhőalapú környezetben futó gépek rendelkezik
+* Többféle forrásból, mind az Azure, a más felhőszolgáltatók és a helyszíni erőforrásokhoz történő adatgyűjtést. 
 * Az Azure Monitor figyelési megoldások például valamelyik [-beli virtuális gépek az Azure Monitor](../monitoring/monitoring-vminsights-overview.md?toc=%2fazure%2fmonitoring%2ftoc.json), [-tárolókhoz az Azure Monitor](../monitoring/monitoring-container-insights-overview.md?toc=%2fazure%2fmonitoring%2ftoc.json)stb.  
-* Használjon egy olyan más Azure felügyeleti szolgáltatást, például [az Azure Security Center](../security-center/security-center-intro.md), [Azure Automation](../automation/automation-intro.md)stb.
-* Napló-és/vagy metrikaadatok feltöltése az Azure Monitor.
+* Használjon egy más az Azure management szolgáltatás például [az Azure Security Center](../security-center/security-center-intro.md), [Azure Automation](../automation/automation-intro.md)stb.
 
-Korábban, a több Azure-szolgáltatások kötegelve is a *Operations Management Suite*, és ennek eredményeképpen a Log Analytics-ügynököket közösen használja többek között az Azure Security Center és Azure Automation szolgáltatásokat.  Ez magában foglalja a kínálnak, továbbítása az Azure-beli virtuális életciklusuk átfogó felügyeleti funkciók teljes készletét. Az érintett műveletek közé tartoznak az alábbiak:
+Korábban, a több Azure-szolgáltatások kötegelve is a *Operations Management Suite*, és ennek eredményeképpen a Log Analytics-ügynököket közösen használja többek között az Azure Security Center és Azure Automation szolgáltatásokat.  Ez magában foglalja a kínálnak, továbbítása az Azure-beli virtuális életciklusuk átfogó felügyeleti funkciók teljes készletét.  Néhány példa ennek a következők:
 
 * [Az Azure Automation Update management](../automation/automation-update-management.md) operációsrendszer-frissítések.
 * [Azure Automation Desired State Configuration](../automation/automation-dsc-overview.md) konzisztens konfiguráció-állapot karbantartásához.
 * Konfigurációs változások követése a [Azure Automation Change Tracking and Inventory](../automation/automation-change-tracking.md).
-* Az operációs rendszer és üzemeltetett alkalmazások, mint például az egyéni naplók gyűjtésének [FluentD](../log-analytics/log-analytics-data-sources-json.md), [egyéni naplók](../log-analytics/log-analytics-data-sources-custom-logs.md), és [MySQL és az Apache](../log-analytics/log-analytics-data-sources-linux-applications.md) a Log Analytics használatával.
-* Azure-szolgáltatások például [Application Insights](https://docs.microsoft.com/azure/application-insights/) és [az Azure Security Center](https://docs.microsoft.com/azure/security-center/) natív módon tárolja az adatokat közvetlenül a Log Analyticsben.  
+* Azure-szolgáltatások például [Application Insights](https://docs.microsoft.com/azure/application-insights/) és [az Azure Security Center](https://docs.microsoft.com/azure/security-center/), amelyek natív módon tárolja az adatokat közvetlenül a Log Analytics.  
 
-### <a name="dependency-agent"></a>Függőségi ügynök
+## <a name="dependency-agent"></a>Függőségi ügynök
 A függőségi ügynök fejlesztette ki a Service Map megoldást, amely eredetileg kívülről a Microsoft részeként. [A Service Map](../monitoring/monitoring-service-map.md) és [-beli virtuális gépek az Azure Monitor](monitoring-vminsights-overview.md) használatához a függőségi ügynököt Windows és Linux rendszerű virtuális gépek és a Log Analytics-ügynök felderített összegyűjti az adatokat a virtuális futó folyamatok integrálható gép és a külső folyamatok függőségeit. Azt tárolja ezeket az adatokat a Log Analytics elérhetővé, és a felderített összekapcsolt összetevőket.
 
 Ezeket az ügynököket a virtuális gép figyelése valamilyen kombinációját szükség lehet. Az ügynökök is telepíthető egymás mellett az Azure-bővítmény, azonban a Linux, a Log Analytics-ügynököket *kell* telepíthető telepítési ellenkező esetben az első sikertelen lesz. 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: qianw211
-ms.openlocfilehash: 3679981a335c380b54d7349d16f94bb7e5e1fee3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1ab00e51aa8677f71990cf3da8bf01c9ab62ce4c
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258867"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683137"
 ---
 # <a name="azure-appsource-and-marketplace-review-policies"></a>Azure appsource-ban és a piactér házirendek áttekintése
 
@@ -52,12 +52,3 @@ Az értékelések és vélemények házirendeket Azure appsource-ban és a piact
 * Győződjön meg arról, hogy áttekintésre kifejezett modelladatok között elosztott terhelésű és semleges.
 * Ne feledje, hogy egy nyilvános fórum könyvelési, és azoknak megfelelő cselekvést.
 
-## <a name="review-guidelines-for-publishers"></a>Tekintse át a szabályokat a közzétevők
-
-* Nem lehet megszegi tartalmak közzététele a [appsource-ban és az Azure Marketplace-en, tekintse át a házirend](./rating-review-policies.md).
-* Vegyen fel bármely marketinganyagot vagy hirdetéseket a megjegyzést.
-* Nem lépteti elő más alkalmazások vagy szolgáltatások a megjegyzést.
-* A válasz közvetlenül kulcsoszlopnak kapcsolódnia kell az adott alkalmazást, és tekintse át.
-* Ne használjon jelzésének válaszokat, és nem megjegyzéseket jelzésének több ellenőrzések között.
-* Nem módosíthatja a felülvizsgálatok semmilyen módon, például a kompenzáció vagy ösztönzők ajánlat részt vevő felülvizsgálóknak minősítések vagy felülvizsgálatok módosítása.
-* Mindig legyen udvarias, és vegye figyelembe, hogy elégedett ügyfelek-e az alkalmazás legjobb végrehajtói.

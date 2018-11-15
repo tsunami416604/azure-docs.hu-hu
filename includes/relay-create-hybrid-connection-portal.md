@@ -1,3 +1,16 @@
+---
+author: clemensv
+ms.service: service-bus-relay
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: clemensv
+ms.openlocfilehash: ceb2626a43ed44338bb0faad475ae2333af2de9e
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572229"
+---
 Ellenőrizze, hogy már [létrehozott-e Relay-névteret][namespace-how-to].
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).

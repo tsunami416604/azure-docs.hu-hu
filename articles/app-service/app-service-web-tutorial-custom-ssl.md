@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: abd751cf867fea2e634161c4cf0b1e84acbe18c6
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
-ms.translationtype: HT
+ms.openlocfilehash: a543561658d593398ca74f8ae68dd6d0d27bcdaa
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354105"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636456"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Oktatóanyag: Meglévő egyéni SSL-tanúsítvány kötése az Azure Web Appshez
 
@@ -193,7 +193,7 @@ A webalkalmazás lapjának bal oldali navigációs sávján válassza az **SSL s
 
 ![HTTPS kényszerítése](./media/app-service-web-tutorial-custom-ssl/enforce-https.png)
 
-Ha a művelet befejeződött, nyissa meg az alkalmazásra mutató HTTP URL-címek valamelyikét. Például:
+Ha a művelet befejeződött, nyissa meg az alkalmazásra mutató HTTP URL-címek valamelyikét. Példa:
 
 - `http://<app_name>.azurewebsites.net`
 - `http://contoso.com`
@@ -260,7 +260,9 @@ New-AzureRmWebAppSSLBinding `
     -SslState SniEnabled
 ```
 ## <a name="public-certificates-optional"></a>Nyilvános tanúsítványok (nem kötelező)
-Feltölthet [nyilvános tanúsítványokat](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/) a webalkalmazásba, így az alkalmazás elérhet olyan külső szolgáltatásokat is, amelyekhez tanúsítványalapú hitelesítés szükséges.  A nyilvános tanúsítványok az alkalmazásokba való feltöltésével és használatával kapcsolatos további információkért lásd az [SSL-tanúsítvány az alkalmazáskódban az Azure App Service-ben való használatát](https://docs.microsoft.com/azure/app-service/app-service-web-ssl-cert-load) ismertető cikket.  App Service Environmentekben is használhat nyilvános tanúsítványokat az alkalmazásokkal. Ha a LocalMachine tanúsítványtárolóban kell tárolnia a tanúsítványt, webalkalmazást kell használnia az App Service Environmentben. További információt [a nyilvános tanúsítványoknak a webalkalmazás számára történő konfigurálását](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer) ismertető cikkben tekinthet meg.
+Az alkalmazás távoli erőforrásokhoz fér hozzá a ügyfélként kell, és a távoli erőforrás Tanúsítványalapú hitelesítés szükséges, feltölthet [nyilvános tanúsítványokat](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/) a webalkalmazáshoz. A nyilvános tanúsítványok nem szükségesek az alkalmazás SSL-kötések.
+
+A nyilvános tanúsítványok az alkalmazásokba való feltöltésével és használatával kapcsolatos további információkért lásd az [SSL-tanúsítvány az alkalmazáskódban az Azure App Service-ben való használatát](https://docs.microsoft.com/azure/app-service/app-service-web-ssl-cert-load) ismertető cikket. Használhatja a nyilvános tanúsítványok alkalmazásokkal az App Service Environment-környezetek túl. Ha a LocalMachine tanúsítványtárolóban kell tárolnia a tanúsítványt, webalkalmazást kell használnia az App Service Environmentben. További információt [a nyilvános tanúsítványoknak a webalkalmazás számára történő konfigurálását](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer) ismertető cikkben tekinthet meg.
 
 ![Nyilvános tanúsítvány feltöltése](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 

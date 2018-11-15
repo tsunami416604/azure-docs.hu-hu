@@ -12,21 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 08/02/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: c6e090fe7e79de7b08e77fe7bb08d5f2bf53c9d5
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: dc7fbce18bc6593c561b2b3ed2563573879f89d2
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282764"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625742"
 ---
 # <a name="configure-log-analytics-agent-for-linux-computers-in-a-hybrid-environment"></a>Log Analytics-ügynök konfigurálása Linux rendszerű számítógépekhez hibrid környezetekben
 Az [Azure Log Analytics](log-analytics-agent-windows.md) közvetlenül tud adatokat gyűjteni az Ön adatközpontjában vagy egyéb felhőalapú környezetében található fizikai vagy virtuális Linux-gépekről egy adattárba, részletes elemzés és összehasonlítás céljából.  Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a Linux rendszerű számítógépekről történő adatgyűjtést néhány egyszerű lépésben.  Azure-beli linuxos virtuális gépek esetén lásd [az Azure-beli virtuális gépekről történő adatgyűjtést](log-analytics-quick-collect-azurevm.md) ismertető cikket.  
 
-A támogatott konfiguráció megismeréséhez tekintse meg a [támogatott Linux operációs rendszerek](log-analytics-concept-hybrid.md#supported-linux-operating-systems) és [hálózati tűzfal konfigurációk](log-analytics-concept-hybrid.md#network-firewall-requirements) részt.
+A támogatott konfiguráció megismeréséhez tekintse meg a [támogatott Linux operációs rendszerek](log-analytics-agent-overview.md#supported-linux-operating-systems) és [hálózati tűzfal konfigurációk](log-analytics-agent-overview.md#network-firewall-requirements) részt.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 

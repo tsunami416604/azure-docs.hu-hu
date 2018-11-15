@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 85016ffb412b9f8773606639eb1496ac8ad251a7
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
+ms.openlocfilehash: 23a62197d20901347be247d331e21d076bcf9e83
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729992"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288033"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Rövid útmutató: Kognitív keresési folyamat létrehozása képességek és mintaadatok használatával
 
@@ -26,10 +26,16 @@ Ebben a rövid útmutatóban a kód megírása előtt kipróbálja a bővítési
 * Futtassa a varázslót (egy entitásképesség észleli a személyeket, a tartózkodási helyet és a szervezeteket)
 * Használja a [keresési ablakot](search-explorer.md) a bővített adatok lekérdezéséhez.
 
+## <a name="supported-regions"></a> Támogatott régiók
+
 A kognitív keresést a következő régiókban létrehozott Azure Search-szolgáltatásban próbálhatja ki:
 
+* USA nyugati középső régiója
 * USA déli középső régiója
+* USA keleti régiója
 * Nyugat-Európa
+* Észak-Európa
+* Délkelet-Ázsia
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -57,7 +63,7 @@ Első lépésként regisztráljon az Azure Search szolgáltatásra.
 
 1. Az Erőforráscsoport résznél hozzon létre egy erőforráscsoportot a rövid útmutató során létrehozott erőforrások tárolására. Ezáltal könnyebb lesz az erőforrások eltávolítása, miután a rövid útmutató végére ért.
 
-1. A Hely esetében válassza az **USA déli középső régióját** vagy a **Nyugat-Európa** régiót. Jelenleg az előzetes verzió csak ezekben a régiókban érhető el.
+1. A helyen, válasszon egyet az a [támogatott régiók](#supported-regions) Cognitive search.
 
 1. A Tarifacsomagra vonatkozóan az oktatóanyagok és rövid útmutatók elvégzéséhez létrehozhat egy **ingyenes** szolgáltatást. A saját adatok mélyrehatóbb vizsgálatához hozzon létre egy **Alapszintű** vagy **Standard** [fizetős szolgáltatást](https://azure.microsoft.com/pricing/details/search/). 
 

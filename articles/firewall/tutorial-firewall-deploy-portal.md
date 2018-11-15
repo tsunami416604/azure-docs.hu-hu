@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/6/2018
+ms.date: 11/9/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 4873da97b790df98b6d10ae8b7a57fc39b534755
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 02805f676a5ea9edbfa619c625bb11e94e16c12e
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278582"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299996"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon
 
@@ -124,7 +124,7 @@ Most hozza létre a helyettesítő és a számítási feladatokat futtató virtu
     Érdemes korlátoznia a hozzáférést a nyilvános IP-címhez, azonban a 3389-es portot nyissa meg, hogy egy távoli asztalt csatlakoztatni lehessen a helyettesítő kiszolgálóhoz. 
 2. Hagyja meg az egyéb alapértelmezett beállításokat, és kattintson az **OK** gombra.
 
-**Összefoglalás**
+**összegzés**
 
 Tekintse át az összefoglalást, majd kattintson a **Létrehozás** gombra. Ez eltarthat pár percig.
 
@@ -196,15 +196,16 @@ Ez az az alkalmazásszabály, amely lehetővé teszi a github.com webhelyhez val
 
 1. Nyissa meg a **Test-FW-RG** erőforráscsoportot, majd kattintson a **Test-FW01** tűzfalra.
 2. A **Test-FW01** oldal **Beállítások** területén kattintson a **Szabályok** elemre.
-3. Kattintson az **Alkalmazásszabály-gyűjtemény hozzáadása** elemre.
-4. A **Név** mezőbe írja be a következőt: **App-Coll01**.
-5. A **Prioritás** mezőbe írja be a következőt: **200**.
-6. A **Művelet** beállításnál válassza az **Engedélyezés** lehetőséget.
-7. A **Szabályok** területen a **Név** mezőbe írja be a következőt: **AllowGH**.
-8. A **Forráscímek** mezőbe írja be a következőt: **10.0.2.0/24**.
-9. A **Protokoll:port** mezőbe írja be a következőt: **http, https**.
-10. A **Cél FQDN** mezőbe írja be a következőt: **github.com**.
-11. Kattintson a **Hozzáadás** parancsra.
+3. Kattintson a **alkalmazás szabálygyűjtemény** fülre.
+4. Kattintson az **Alkalmazásszabály-gyűjtemény hozzáadása** elemre.
+5. A **Név** mezőbe írja be a következőt: **App-Coll01**.
+6. A **Prioritás** mezőbe írja be a következőt: **200**.
+7. A **Művelet** beállításnál válassza az **Engedélyezés** lehetőséget.
+8. A **szabályok**, **cél teljes tartománynevek**, a **neve**, típus **AllowGH**.
+9. A **Forráscímek** mezőbe írja be a következőt: **10.0.2.0/24**.
+10. A **Protokoll:port** mezőbe írja be a következőt: **http, https**.
+11. A **Cél FQDN** mezőbe írja be a következőt: **github.com**.
+12. Kattintson a **Hozzáadás** parancsra.
 
 Az Azure Firewall tartalmaz egy beépített szabálygyűjteményt az infrastruktúra alapértelmezés szerint engedélyezett teljes tartományneveiről. Ezek a teljes tartománynevek csak az adott platformra vonatkoznak, egyéb célra nem használhatók. További információ: [Infrastruktúra FQDN-jei](infrastructure-fqdns.md).
 
@@ -212,6 +213,7 @@ Az Azure Firewall tartalmaz egy beépített szabálygyűjteményt az infrastrukt
 
 Ez az a hálózatszabály, amely lehetővé teszi a kimenő hozzáférést két IP-címhez az 53-as porton (DNS).
 
+1. Kattintson a **szabálygyűjtemény hálózati** fülre.
 1. Kattintson a **Hálózati szabálygyűjtemény hozzáadása** elemre.
 2. A **Név** mezőbe írja be a következőt: **Net-Coll01**.
 3. A **Prioritás** mezőbe írja be a következőt: **200**.

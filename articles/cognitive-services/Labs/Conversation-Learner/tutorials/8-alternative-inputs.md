@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 3b38cc265b4adfb301dc1165e02b17a8aa7c9589
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f344424c372f65cd8bfe5779cc65f0e866e58a11
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252547"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633971"
 ---
 # <a name="how-to-use-alternative-inputs"></a>Alternatív bemenetek használata
 
@@ -137,9 +137,11 @@ Vegyünk fel más bemeneti adatokat az első párbeszédpanel:
     3. Módosítások elküldése gombra.
 4. Kattintson a bal oldali panelen válassza a "denver":
     1. Hozzáadás alternatív beviteli adja meg "denver".
-    2. Adja meg a "austin előrejelzésének".
-        - A teljes kifejezés ki van emelve. Kattintson a kifejezést, majd a piros x. Válasszon austin, majd kattintson az városa.
-        - Kattintson a Submit módosítások
+    1. Adja meg a "austin előrejelzésének".
+        - Hibaüzenet jelenik meg: 'A szöveges változata létezik, az eredeti bemeneti szöveg észlelt ugyanazokat az entitásokat kell tartalmaznia.'
+        - Kattintson a "austin" szó.
+        - Egy előugró ablak jelenik meg, amely lehetővé teszi a "austin" Válassza ki az entitást. Kattintson a **Város**.
+        - Módosítások elküldése gombra.
     1. Kattintson a kész, amelynek hatására a modell újratanítása gombra.
 
 ![](../media/tutorial8_altcities.png)

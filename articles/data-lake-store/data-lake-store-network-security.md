@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: b206b49914a448aa3fc9da63f72cca91f9f9ade1
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: HT
+ms.openlocfilehash: 703a865eca90deabcb6bbc64a75fc2bad52b43b7
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218967"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287999"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1---preview"></a>Virtuális hálózat integrációja az 1. generációs Azure Data Lake Storage-ban (előzetes verzió)
 
@@ -29,8 +29,6 @@ Ezzel a funkcióval megvédheti Data Lake Storage-fiókját a külső fenyegeté
 Az 1. generációs Data Lake Storage-fiókok virtuális hálózati integrációja a virtuális hálózat és az Azure Active Directory (AD) közötti virtuális hálózati szolgáltatási végpont biztonsági funkcióit használja, hogy létrehozza a hozzáférési jogkivonat által tartalmazott további biztonsági jogcímeket. Ezután e jogcímek használatával hitelesíti a virtuális hálózatot az 1. generációs Data Lake Storage-fiókkal, és engedélyezi a hozzáférést.
 
 > [!NOTE]
-> Ez a technológia előzetes verzióban érhető el. Nem ajánlott az éles környezetben való használat.
->
 > A funkció felár nélkül használható. Az 1. generációs Data Lake Storage esetében fiókjánál a standard árat számlázzuk ki. További információt a [díjszabás](https://azure.microsoft.com/pricing/details/data-lake-store/?cdn=disable) tartalmaz. Az összes többi Ön által használt Azure-szolgáltatásról a [díjszabásban](https://azure.microsoft.com/pricing/#product-picker) talál további információt.
 
 ## <a name="scenarios-for-virtual-network-integration-for-data-lake-storage-gen1"></a>Forgatókönyvek a virtuális hálózat integrációjához az 1. generációs Data Lake Storage-ban

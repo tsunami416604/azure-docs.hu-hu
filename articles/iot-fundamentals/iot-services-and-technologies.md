@@ -7,14 +7,14 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: 6834ad6c6915ceb3306284ea738d76027e2c9479
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
-ms.translationtype: HT
+ms.openlocfilehash: ba4f5fcb08d671937c677d8a14c27aaec16bcb1b
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365356"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288713"
 ---
-# <a name="azure-iot-technologies-and-solutions-paas-and-saas"></a>Azure IoT-technológiák és -megoldások: PaaS és SaaS
+# <a name="internet-of-things-iot-technologies-and-solutions-paas-and-saas"></a>Eszközök internetes hálózata (IoT) technológiáival és megoldásaival: PaaS és SaaS
 
 Microsoft valamennyi ügyfél igényeit támogató portfóliót épített fel, lehetővé téve mindenki számára a digitális átalakulás előnyeinek kihasználását. Az Azure IoT-termékportfólió a rendelkezésre álló PaaS/SaaS-technológiák és -megoldások áttekintése. Bemutatja a saját megoldásának létrehozásához rendelkezésre álló két lehetőséget:
 
@@ -24,7 +24,7 @@ Microsoft valamennyi ügyfél igényeit támogató portfóliót épített fel, l
 
 - Szolgáltatott szoftver (SaaS): gyorsan lendületbe jöhet az [Azure IoT Central](https://azure.microsoft.com/services/iot-central/) az új SaaS-megoldás használatával, amellyel az IoT-megoldás bonyolultságának való kitettség nélkül fejleszthet IoT-alkalmazásokat. Arra az esetre, ha a szervezet nem rendelkezik saját IoT-megoldás felépítéséhez szükséges erőforrásokkal, az Azure IoT Central egy kód nélküli IoT-megoldás, amelyekkel percek alatt létrehozhat eszközmodelleket, irányítópultokat és szabályokat.
 
-![Azure IoT-technológiák és -megoldások](./media/iot-comparison/paas-saas-technologies-solutions.png)
+![Azure IoT-technológiák és -megoldások](./media/iot-services-and-technologies/paas-saas-technologies-solutions.png)
 
 ## <a name="solutions"></a>Megoldások
 

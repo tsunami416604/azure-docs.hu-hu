@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 0859e480df0111e26d5b64bf835f94b3852b3414
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 0d76aa5091e77d8713290e6da8908e15ad3ef995
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277358"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684567"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>A Data Lake Store és az Azure HDInsight-fürtök együttes használata
 
@@ -47,7 +47,7 @@ Jelen pillanatban csak bizonyos típusú, illetve verziójú HDInsight-fürtök 
 | A HDInsight 3.2-es verziója | Nem | Igen | |
 | Storm | | |A Data Lake Store használható Storm-topológiából származó adatok írására. A Data Lake Store-ban tárolhatók referenciaadatok is, amelyek olvashatók lesznek egy Storm-topológiából.|
 
-[!WARNING]
+> [!WARNING]
 > HDInsight HBase nem támogatott az Azure Data Lake Storage általános 1
 
 Ha a Data Lake Store-t kiegészítő tárfiókként használja, az nem befolyásolja a fürtből az Azure-tárba történő írás, illetve olvasás lehetőségét vagy hatékonyságát.

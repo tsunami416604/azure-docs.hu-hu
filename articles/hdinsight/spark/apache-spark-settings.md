@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 9533992b939983ceda37a7c98d0bc2426168a0ac
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: b31be534641f2777bcbfaaa33497d96b457db191
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279354"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684086"
 ---
 # <a name="configure-spark-settings"></a>A Spark beállításainak konfigurálása
 
@@ -30,7 +30,7 @@ A virtuális gépek számát, és a Virtuálisgép-méretek esetében a HDInsigh
 
 A legjobb Spark-verziót használja a fürt számára.  A HDInsight szolgáltatás tartalmazza a Spark és a HDInsight magát különböző verzióiban.  Minden Spark verziója alapértelmezett fürtbeállítások készletét tartalmazza.  
 
-Amikor létrehoz egy új fürtöt, nincsenek több Spark-verziók közül választhat. A teljes lista megtekintéséhez [HDInsight-összetevők és verziók](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-component-versioning)
+Amikor létrehoz egy új fürtöt, nincsenek több Spark-verziók közül választhat. A teljes lista megtekintéséhez [HDInsight-összetevők és verziók](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)
 
 
 > [!NOTE]

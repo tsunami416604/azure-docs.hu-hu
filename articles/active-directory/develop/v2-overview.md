@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: daa1bba0aacdceb7d6655c5f491be587d388176a
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
-ms.translationtype: HT
+ms.openlocfilehash: ecb95f0440751a6cdbf81dbf02c62bed6b5e780b
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087372"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51286690"
 ---
 # <a name="about-v20"></a>A 2.0-s verzió bemutatása
 
@@ -32,7 +32,7 @@ A 2.0-s verziójú végpont és platform eddig előzetes verzióban voltak elér
 
 Az Azure Portal fejlesztői élménye jelentősen frissült: mostantól az összes, ADAL vagy MSAL használatával készült alkalmazást tartalmazza, és könnyebben használható.
 
-Korábban, ha a fejlesztők azt akarták, hogy az alkalmazásuk a személyes Microsoft-fiókokat és a munkahelyi Azure Active Directory (Azure AD)-fiókokat is, akkor ehhez két külön rendszert kellett integrálniuk. A 2.0-s verziójú végpont és platform egy olyan hitelesítési API-verziót biztosít, amely leegyszerűsíti ezt a folyamatot. Egyetlen integrációval lehetővé teszi a bejelentkezést mindkét fajta fiók használatával. A 2.0-s végpontot használó alkalmazások [Microsoft Graph API](https://graph.microsoft.io) REST API-jait is használhatják bármelyik típusú fiókkal.
+Korábban, ha a fejlesztők azt akarták, hogy az alkalmazásuk a személyes Microsoft-fiókokat és a munkahelyi Azure Active Directory (Azure AD)-fiókokat is, akkor ehhez két külön rendszert kellett integrálniuk. A 2.0-s verziójú végpont és platform egy olyan hitelesítési API-verziót biztosít, amely leegyszerűsíti ezt a folyamatot. Egyetlen integrációval lehetővé teszi a bejelentkezést mindkét fajta fiók használatával. A 2.0-s végpontot használó alkalmazások [Microsoft Graph API](https://developer.microsoft.com/graph) REST API-jait is használhatják bármelyik típusú fiókkal.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -59,7 +59,7 @@ Részletes információk a 2.0-s verzióról:
 * [Azonosító jogkivonatok referenciája](id-tokens.md)
 * [A 2.0-s verzió hitelesítési kódtárainak referenciája](reference-v2-libraries.md)
 * [Engedélyek és jóváhagyás a 2.0-s verzióban](v2-permissions-and-consent.md)
-* [Microsoft Graph API](https://graph.microsoft.io)
+* [Microsoft Graph API](https://developer.microsoft.com/graph)
 
 > [!NOTE]
 > Ha csak az Azure Active Directoryban tárolt munkahelyi vagy iskolai fiókokra van szüksége a bejelentkezéshez, kezdje az [Azure AD fejlesztői útmutatójának](v1-overview.md) áttekintésével. A 2.0-s verziójú végpontot azoknak a fejlesztőknek szánjuk, akiknek kifejezetten a személyes Microsoft-fiókokkal való bejelentkezésre van szükségük.

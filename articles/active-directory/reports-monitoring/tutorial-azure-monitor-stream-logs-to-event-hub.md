@@ -13,19 +13,19 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 07/13/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: c8157820f7137eb06a0fe10c42645ec91f33edbc
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
-ms.translationtype: HT
+ms.openlocfilehash: 7582c578e91fb3e36d7a0ecc1da7ede0cefc0f4c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364071"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623778"
 ---
-# <a name="tutorial-stream-azure-ad-logs-to-an-azure-event-hub-preview"></a>Oktatóanyag: Azure AD-naplók streamelése Azure-eseményközpontba (előzetes verzió)
+# <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub-preview"></a>Oktatóanyag: Azure Active Directory-naplók streamelése Azure eseményközpontba (előzetes verzió)
 
-Az oktatóanyagból megtudhatja, hogyan konfigurálhatja úgy az Azure Monitort, hogy az Azure Active Directory- (Azure AD-) naplókat egy Azure-eseményközpontba streamelje. Ezzel a mechanizmussal integrálhatja a naplókat olyan külső biztonságiinformáció- és eseménykezelési (SIEM-) eszközökkel, mint a Splunk és a QRadar.
+Ebben az oktatóanyagban megismerheti, hogyan állíthatja be az Azure Active Directory (Azure AD) naplók streamelése az Azure event hub, az Azure Monitor diagnosztika beállításait. Ezzel a mechanizmussal integrálhatja a naplókat olyan külső biztonságiinformáció- és eseménykezelési (SIEM-) eszközökkel, mint a Splunk és a QRadar.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
@@ -36,7 +36,7 @@ A szolgáltatás használatához a következőkre lesz szüksége:
 * Egy felhasználó, aki az adott Azure AD-bérlő *globális* vagy *biztonsági rendszergazdája*.
 * Egy Event Hubs-névtér és -eseményközpont az Azure-előfizetésében. Megismerkedhet az [eseményközpont létrehozásának](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) menetével.
 
-## <a name="archive-logs-to-an-event-hub"></a>Naplók archiválása egy eseményközpontba
+## <a name="stream-logs-to-an-event-hub"></a>Stream naplók egy eseményközpontba
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
