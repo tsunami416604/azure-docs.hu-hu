@@ -5,15 +5,15 @@ services: media-services
 author: Juliako
 ms.service: media-services
 ms.topic: include
-ms.date: 04/13/2018
+ms.date: 11/11/2018
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 9ecb07a2cb278f6cde4ffdc3b252cb9e816d08da
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 513d9a3a044daacd84b810e4795522c2bd6763f8
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38733308"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616571"
 ---
 ## <a name="create-a-media-services-account"></a>Media Services-fiók létrehozása
 
@@ -23,7 +23,7 @@ Először létre kell hoznia egy Media Services-fiókot. Ebben a szakaszban a fi
 
 Az erőforráscsoport létrehozásához használja az alábbi parancsot. Az Azure-erőforráscsoport egy olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az erőforrásokat (például az Azure Media Services-fiókokat és a kapcsolódó Storage-fiókokat).
 
-```azurecli-interactive
+```azurecli
 az group create --name amsResourceGroup --location westus2
 ```
 
@@ -37,7 +37,7 @@ További információ a tárfiókok használatáról a Media Servicesben: [Stora
 
 Az alábbi parancs egy Storage-fiókot hoz létre, amelyet a rendszer a Media Services-fiókhoz fog társítani. Az alábbi szkriptben a `storageaccountforams` helyére helyettesítheti be az Ön által megadott értéket. A fiók neve legfeljebb 24 karakter hosszú lehet.
 
-```azurecli-interactive
+```azurecli
 az storage account create --name storageaccountforams \  
 --kind StorageV2 \
 --sku Standard_RAGRS \
@@ -48,6 +48,6 @@ az storage account create --name storageaccountforams \
 
 Az alábbi Azure CLI-parancs egy új Media Services-fiókot hoz létre. A következő értékeket kell kicserélnie: `amsaccount`, `storageaccountforams` (meg kell egyeznie a tárfiók esetében megadott értékkel) és `amsResourceGroup` (meg kell egyeznie az erőforráscsoport esetében megadott értékkel).
 
-```azurecli-interactive
+```azurecli
 az ams account create --name amsaccount --resource-group amsResourceGroup --storage-account storageaccountforams
 ```

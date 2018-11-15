@@ -1,6 +1,6 @@
 ---
-title: Ismerje meg, a Hadoop-tesztkörnyezet - emulátor – Azure HDInsight használatával
-description: 'A Hadoop-ökoszisztéma használatáról tanulási indításához állíthat be egy Hadoop-tesztkörnyezet a hortonworks által biztosított-beli virtuális gépen. '
+title: Ismerje meg, hogy egy Apache Hadoop-tesztkörnyezet - emulátor – Azure HDInsight használatával
+description: 'Az Apache Hadoop-ökoszisztéma használatáról tanulási indításához állíthat be egy Hadoop-tesztkörnyezet a hortonworks által biztosított-beli virtuális gépen. '
 keywords: hadoop-emulátorban, a hadoop-tesztkörnyezet
 ms.reviewer: jasonh
 services: hdinsight
@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: add1833671b995e747af6a447c65114d1add76e9
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: fc5f27ee17ba750e47c5609d9deb94d7f7c9dd8a
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013105"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51631557"
 ---
-# <a name="get-started-with-a-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Ismerkedés a Hadoop-tesztkörnyezet, egy-egy virtuális gépen emulátoron
+# <a name="get-started-with-a-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Ismerkedés az Apache Hadoop-tesztkörnyezet, egy-egy virtuális gépen emulátoron
 
-Ismerje meg, hogyan lehet telepíteni a Hadoop-tesztkörnyezet Hortonworks megismerheti a Hadoop-ökoszisztéma virtuális gépen. A védőfal megismerheti a Hadoop, a Hadoop elosztott fájlrendszer (HDFS) és a feladat elküldése helyi fejlesztési környezetet biztosít. Ha már ismeri a Hadoop, elkezdheti az Azure-beli Hadoop használata egy HDInsight-fürtöt. Az első lépésekről további információkért lásd: [Hadoop on HDInsight használatának első lépései](apache-hadoop-linux-tutorial-get-started.md).
+Ismerje meg, hogyan lehet telepíteni az Apache Hadoop-tesztkörnyezet Hortonworks megismerheti a Hadoop-ökoszisztéma virtuális gépen. A védőfal megismerheti a Hadoop, a Hadoop elosztott fájlrendszer (HDFS) és a feladat elküldése helyi fejlesztési környezetet biztosít. Ha már ismeri a Hadoop, elkezdheti az Azure-beli Hadoop használata egy HDInsight-fürtöt. Az első lépésekről további információkért lásd: [Hadoop on HDInsight használatának első lépései](apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 * [Oracle VirtualBox](https://www.virtualbox.org/). Töltse le és telepítse azt a [Itt](https://www.virtualbox.org/wiki/Downloads).

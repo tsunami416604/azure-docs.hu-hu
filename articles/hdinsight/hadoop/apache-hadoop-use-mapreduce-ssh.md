@@ -1,6 +1,6 @@
 ---
-title: A HDInsight - Azure Hadoop MapReduce és SSH-kapcsolat
-description: Útmutató az SSH használata a hadooppal a HDInsight MapReduce-feladatok futtatásához.
+title: Az Apache Hadoop, a HDInsight - Azure MapReduce és SSH-kapcsolat
+description: Útmutató az SSH használata a HDInsight segítségével az Apache Hadoop MapReduce-feladatok futtatásához.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,21 +9,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8c3fb1a5474d0546dc06dfea681e6229b563ccc0
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: df6a96d8bbf1c77d279806e69e7aa7f65387dd4b
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014346"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632526"
 ---
-# <a name="use-mapreduce-with-hadoop-on-hdinsight-with-ssh"></a>A MapReduce használata a Hadooppal a HDInsight az ssh-val
+# <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>Az ssh-val a HDInsight az Apache Hadoop MapReduce használata
 
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
 Ismerje meg, hogyan lehet elküldeni a HDInsight a Secure Shell (SSH) kapcsolat MapReduce-feladatok.
 
 > [!NOTE]
-> Ha már ismeri a Linux-alapú Hadoop-kiszolgálók használata, de még nem ismeri a HDInsight: [Linux-alapú HDInsight-tippek](../hdinsight-hadoop-linux-information.md).
+> Ha már ismeri a Linux-alapú Apache Hadoop-kiszolgálók használata, de még nem ismeri a HDInsight: [Linux-alapú HDInsight-tippek](../hdinsight-hadoop-linux-information.md).
 
 ## <a id="prereq"></a>Előfeltételek
 

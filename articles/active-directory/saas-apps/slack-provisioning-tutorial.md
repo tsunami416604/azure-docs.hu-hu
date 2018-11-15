@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.reviewer: asmalser
-ms.openlocfilehash: 7d6056987ee05f68eecf026e954327a2f62cf886
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 83155e448f350618446fb22bf52e831b1cc8d499
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348905"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636543"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Slack konfigurálása
 
@@ -57,7 +57,7 @@ A kiépítési szolgáltatás engedélyezése és konfigurálása, mielőtt kell
 
 Ez a szakasz végigvezeti az Azure AD-csatlakozás Slack a felhasználói fiók üzembe helyezési API, és az eszközkiépítési szolgáltatás létrehozása, frissítése és letiltását konfigurálása hozzárendelt felhasználói fiókok a felhasználó és csoport-hozzárendelést az Azure ad-ben alapján Slack.
 
-**Tipp:** is dönthet úgy, hogy engedélyezve van a SAML-alapú egyszeri bejelentkezés a Slack, a utasításait (az Azure Portalon) [https://portal.azure.com]. Egyszeri bejelentkezés konfigurálható függetlenül az automatikus kiépítést, abban az esetben, ha e két szolgáltatás segítőosztályok egymással.
+**Tipp:** is dönthet úgy, hogy engedélyezve van a SAML-alapú egyszeri bejelentkezés a Slack, a következő szereplő utasítások [az Azure portal](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható függetlenül az automatikus kiépítést, abban az esetben, ha e két szolgáltatás segítőosztályok egymással.
 
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>Konfigurálhatja a felhasználók automatikus fióklétesítés Slack, az Azure ad-ben:

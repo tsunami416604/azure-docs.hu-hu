@@ -3,18 +3,18 @@ title: Azure IoT Edge Python – oktatóanyag | Microsoft Docs
 description: Az oktatóanyag bemutatja, hogyan hozhat létre IoT Edge-modult Python-kóddal, és hogyan helyezheti üzembe peremhálózati eszközökön.
 services: iot-edge
 author: shizn
-manager: timlt
+manager: philmea
 ms.author: xshi
 ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ab09a46c70006d1ca7996767e38d99a9208efcb5
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: 5c05145c550e0d218e009ad33b2a88a2ec0dfd18
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157870"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566295"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device"></a>Oktatóanyag: Python-alapú IoT Edge-modul fejlesztése és üzembe helyezése szimulált eszközön
 

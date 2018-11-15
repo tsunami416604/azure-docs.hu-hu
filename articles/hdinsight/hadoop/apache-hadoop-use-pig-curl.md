@@ -1,6 +1,6 @@
 ---
-title: Hadoop a Pig használata a HDInsight - Azure REST-tel
-description: Útmutató a REST használata a Pig Latin-feladatok futtatása az Azure HDInsight Hadoop-fürtön.
+title: Az Apache Hadoop a Pig használata a HDInsight - Azure REST
+description: Útmutató a REST használata a Pig Latin-feladatok futtatása az Azure HDInsight egy Apache Hadoop-fürtöt.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,21 +9,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: bd729d0d2cd095339a82b8a7f38a17a20b709c15
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: cb96933569c18b8c70d8991c9ba19f9f3e1243e6
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013088"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633699"
 ---
-# <a name="run-pig-jobs-with-hadoop-on-hdinsight-by-using-rest"></a>A Pig feladatok futtatása és a Hadoop HDInsight REST használatával
+# <a name="run-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>A Pig feladatok futtatása az Apache Hadoop HDInsight REST használatával
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-Ismerje meg, a Pig Latin-feladatok futtatásával REST-kérelmeket, így egy Azure HDInsight-fürtön. A curl használatával mutatja be, hogyan használhatja a WebHCat REST API-t használó HDInsight szolgál.
+Ismerje meg, hogyan futtathat Apache Pig Latin feladatokat REST-kérelmeket, így egy Azure HDInsight-fürtön. A curl használatával mutatja be, hogyan használhatja a WebHCat REST API-t használó HDInsight szolgál.
 
 > [!NOTE]
-> Ha már ismeri a Linux-alapú Hadoop-kiszolgálókat használ, de nem ismeri a HDInsight, [Linux-alapú HDInsight-tippek](../hdinsight-hadoop-linux-information.md).
+> Ha már ismeri a Linux-alapú Apache Hadoop-kiszolgálókat használ, de nem ismeri a HDInsight, [Linux-alapú HDInsight-tippek](../hdinsight-hadoop-linux-information.md).
 
 ## <a id="prereq"></a>Előfeltételek
 

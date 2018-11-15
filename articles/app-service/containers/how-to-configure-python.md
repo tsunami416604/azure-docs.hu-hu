@@ -15,24 +15,38 @@ ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: astay;cephalin;kraigb
 ms.custom: mvc
-ms.openlocfilehash: a29f0f4be6286f8acf367a3ea0b4b0e6b31e7d98
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: HT
+ms.openlocfilehash: 9474b2d64c97b6e6d0fc06c3c448fa6e0515e70c
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406466"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633648"
 ---
 # <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>Python-alkalmazás konfigurálása az Azure App Service szolgáltatáshoz Linux rendszeren
 
 Ez a cikk azt ismerteti, hogy a [Linuxon futó Azure App Service](app-service-linux-intro.md) hogyan futtat Python-alkalmazásokat, és szükség esetén hogyan szabhatja testre az App Service viselkedését.
 
+## <a name="set-python-version"></a>Python-verzió beállítása
+
+Két alaplemezképek érhetők el: Python 3.6-os és a Python 3.7-es verzióját. A Python-alapú lemezképhez hozhat létre egy alkalmazást. Ha például létrehoz egy alkalmazást a Python 3.7, futtassa a következő parancsot a a Cloud shellben:
+
+```azurecli-interactive
+az webapp create --resource-group <group_name> --plan <plan_name> --name <app_name> --runtime "PYTHON|3.7"
+```
+
+Python 3.6-os módosítja a Python-verzió (kép alapján), például futtassa a következő parancsot a Cloud shellben:
+
+```azurecli-interactive
+az webapp config set --resource-group <group_name> --name <app_name> --linux-fx-version "PYTHON|3.6"
+```
+
+Ha a Python egy másik verziójára van szüksége, ehelyett létre kell hoznia egy saját tárolórendszerképet, és azt kell telepítenie. További információk: [Egyéni Docker-rendszerkép használata a Web App for Containers szolgáltatásban](tutorial-custom-docker-image.md).
+
 ## <a name="container-characteristics"></a>A tároló jellemzői
 
-Az App Service-hez Linux rendszerre telepített Python-alkalmazások Docker-tárolóban futnak, amely a GitHub-adattárban van definiálva: [Azure-App-Service/python tároló](https://github.com/Azure-App-Service/python/tree/master/3.7.0).
+Python-alkalmazások üzembe helyezését futtathatók Docker-tároló a GitHub-adattár definiált Linuxon futó App Service [Python 3.6-os](https://github.com/Azure-App-Service/python/tree/master/3.6.6) vagy [Python 3.7](https://github.com/Azure-App-Service/python/tree/master/3.7.0).
 
 Ez a tároló a következő jellemzőkkel rendelkezik:
-
-- A kiinduló tároló rendszerképe `python-3.7.0-slim-stretch`, ami azt jelenti, hogy az alkalmazások a Python 3.7 használatával futnak. Ha a Python egy másik verziójára van szüksége, ehelyett létre kell hoznia egy saját tárolórendszerképet, és azt kell telepítenie. További információk: [Egyéni Docker-rendszerkép használata a Web App for Containers szolgáltatásban](tutorial-custom-docker-image.md).
 
 - Az alkalmazások a [Gunicorn WSGI HTTP-kiszolgáló](http://gunicorn.org/) és további argumentumok használatával futnak`--bind=0.0.0.0 --timeout 600`.
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 717ce40caccd1114f8bae762fe38ce986421a4c9
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 120fe358e5c8afe63e98038ad353d5ebc45a1937
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38306692"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636463"
 ---
 # <a name="import-an-api-app-as-an-api"></a>API-alkalmazás importálása API-ként
 
@@ -34,7 +34,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 ## <a name="prerequisites"></a>Előfeltételek
 
 + Végezze el a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
-+ Győződjön meg arról, hogy az előfizetése tartalmaz egy API-alkalmazást. További információkért lásd az [App Service dokumentációját][https://docs.microsoft.com/azure/app-service/]
++ Győződjön meg arról, hogy az előfizetése tartalmaz egy API-alkalmazást. További információkért lásd: [App Service dokumentációja](https://docs.microsoft.com/azure/app-service/)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -43,7 +43,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 1. Válassza ki az **API-kat** az **API MANAGEMENT** részben.
 2. Válasszon ki egy **API-alkalmazást** az **Új API hozzáadása** listából.
 
-    !(API-alkalmazás)[./media/import-api-app-as-api/api-app.png]
+    ![API-alkalmazás](./media/import-api-app-as-api/api-app.png)
 3. Kattintson a **Tallózás** gombra az előfizetésben foglalt API-alkalmazások listájának megtekintéséhez.
 4. Válassza ki az alkalmazást. Az APIM megkeresi a kiválasztott alkalmazáshoz társuló Swaggert, majd beszerzi és importálja azt. 
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/20/2018
 ms.author: kgremban
-ms.openlocfilehash: 96989f8c53508dd1520a38c0df408057ad673d53
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
-ms.translationtype: HT
+ms.openlocfilehash: c2cfe40afb2c855e600e103fc8b9bb0845b09aa3
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365373"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515114"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>Rövid útmutató: Telemetria küldése egy eszközről IoT Hubra (iOS)
 
@@ -36,7 +36,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
-[!INCLUDE [iot-hub-quickstarts-create-hub](../../includes/iot-hub-quickstarts-create-hub.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Eszköz regisztrálása
 
@@ -119,7 +119,7 @@ Futtassa a következő parancsokat az Azure Cloud Shellben úgy, hogy a `YourIoT
 az iot hub monitor-events --device-id myiOSdevice --hub-name YourIoTHubName
 ```
 
-A következő képernyőképen az a kimenet látható, amikor a bővítmény fogadja a szimulálteszköz-alkalmazás által az IoT Hubnak küldött telemetriát:
+A következő képernyőképen az a kimenet látható, amikor a bővítmény fogadja a szimulált eszköz által az IoT Hubnak küldött telemetriát:
 
 Az alábbi képernyőképen a helyi terminálablakban megjelenő telemetria-típus látható:
 

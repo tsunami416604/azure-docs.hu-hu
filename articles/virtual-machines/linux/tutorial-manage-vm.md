@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 01e8f74f409271810652a9202b634762ad88dcea
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 5605ac9f3ac4f9a1c85cfedf257cb721205564db
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981246"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613426"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Oktatóanyag: Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI használatával
 
@@ -262,7 +262,7 @@ Számos energiaállapot van, amelyek közül az Azure-beli virtuális gépek fel
 | Felszabadítva | Azt jelzi, hogy a virtuális gép el lett távolítva a hipervizorról, a vezérlősíkon azonban továbbra is elérhető. A felszabadított állapotban lévő virtuális gépekért nem kell díjat fizetni. |
 | - | Azt jelzi, hogy a virtuális gép energiaállapota ismeretlen. |
 
-### <a name="find-power-state"></a>Energiaállapot keresése
+### <a name="find-the-power-state"></a>A energiaállapot keresése
 
 Egy adott virtuális gép állapotát az [az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view) paranccsal kérheti le. Ügyeljen arra, hogy egy érvényes nevet adjon meg a virtuális géphez és az erőforráscsoporthoz. 
 

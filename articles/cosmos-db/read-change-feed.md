@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: rafats
-ms.openlocfilehash: 596bb31ea2734b389ac8b2d6741907da04730648
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 3168593e30a7f5acf49960c8479da75529860a65
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629159"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684545"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Információk az Azure Cosmos DB-módosítási hírcsatorna
 
@@ -27,7 +27,7 @@ Az Azure Functions, a legegyszerűbb és ajánlott lehetőség. Ha egy Azure Fun
 
 ## <a name="using-the-change-feed-processor-library"></a>Használatával a módosítási hírcsatorna feldolgozói kódtára
 
-A változáscsatorna feldolgozói kódtára elrejti az összetettséget, és továbbra is a változáscsatorna, egy teljes körű felügyeletet biztosít. A könyvtár megfigyelő mintát követi, ahol a feldolgozási függvényt hívja meg, a könyvtárban. Ha egy nagy átviteli sebességű változáscsatorna, olvassa el a módosítási hírcsatorna több ügyféllel példányosítható. A változáscsatorna feldolgozói kódtára használja, mert azt automatikusan felosztja a terhelést a különböző ügyfelek között anélkül, hogy kellene a logikát alkalmazzák. A könyvtár összes összetettsége kezeli. Ha saját terheléselosztóját legyen, majd valósíthat meg `IParitionLoadBalancingStrategy` egy egyéni partíció stratégia feldolgozni a módosítási hírcsatorna. További tudnivalókért lásd: [használatával módosítási hírcsatorna feldolgozói kódtára](change-feed-processor.md).
+A változáscsatorna feldolgozói kódtára elrejti az összetettséget, és továbbra is a változáscsatorna, egy teljes körű felügyeletet biztosít. A könyvtár megfigyelő mintát követi, ahol a feldolgozási függvényt hívja meg, a könyvtárban. Ha egy nagy átviteli sebességű változáscsatorna, olvassa el a módosítási hírcsatorna több ügyféllel példányosítható. A változáscsatorna feldolgozói kódtára használja, mert azt automatikusan felosztja a terhelést a különböző ügyfelek között anélkül, hogy kellene a logikát alkalmazzák. A könyvtár összes összetettsége kezeli. Ha saját terheléselosztóját legyen, majd valósíthat meg `IPartitionLoadBalancingStrategy` egy egyéni partíció stratégia feldolgozni a módosítási hírcsatorna. További tudnivalókért lásd: [használatával módosítási hírcsatorna feldolgozói kódtára](change-feed-processor.md).
 
 ## <a name="using-the-azure-cosmos-db-sql-api-sdk"></a>Az Azure Cosmos DB SQL API SDK használatával
 

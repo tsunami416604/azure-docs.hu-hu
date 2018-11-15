@@ -1,6 +1,6 @@
 ---
-title: C# használata a Hive és a Piggel a hadoop együttes használata a HDInsight – Azure
-description: Ismerje meg a C# felhasználó által definiált függvények (UDF) használata a Hive és a Pig, az Azure HDInsight streaming.
+title: Használat C# az Apache Hive és a HDInsight - Azure Apache hadoop Apache Pig
+description: Ismerje meg, hogyan használható C# felhasználó által definiált függvények (UDF) az Apache Hive és a streamelési Azure HDInsight az Apache Pig.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8011a9b8009abd2688d76dc3f1cda84ca453fde1
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 2ef88fff1313a0e7b1aa0abb502629512daaf636
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014686"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633835"
 ---
-# <a name="use-c-user-defined-functions-with-hive-and-pig-streaming-on-hadoop-in-hdinsight"></a>C# felhasználó által definiált függvények használata a Hive és a Pig, a hadoop együttes használata a HDInsight streaming
+# <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>Használat C# az Apache Hive és a HDInsight az Apache hadoop streamelési Apache Pig, felhasználó által definiált függvények
 
-Ismerje meg, az Apache Hive és a HDInsight Pig használata a C# felhasználó által definiált függvények (UDF).
+Ismerje meg, hogyan használható C# felhasználó által definiált függvények (UDF) az Apache Hive és a HDInsight Apache Pig.
 
 > [!IMPORTANT]
 > A jelen dokumentumban leírt lépések mind a Linux-alapú és a Windows-alapú HDInsight-fürtökkel működik. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight összetevők verziószámozása](../hdinsight-component-versioning.md).

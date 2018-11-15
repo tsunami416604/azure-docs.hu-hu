@@ -1,5 +1,5 @@
 ---
-title: Videók elemzése az Azure Media Serviceszel | Microsoft Docs
+title: Az Azure Media Services videók elemzése |} A Microsoft Docs
 description: Az oktatóanyag lépéseit követve megtudhatja, hogyan elemezhet videókat az Azure Media Serviceszel.
 services: media-services
 documentationcenter: ''
@@ -10,18 +10,18 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/15/2018
+ms.date: 11/08/2018
 ms.author: juliako
-ms.openlocfilehash: 5bb840be119f5eac380c44e2cf45b3f73a9d981e
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: 3f0d6784f7b7c476313c5cc4190cacd99e4c3973
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985709"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612764"
 ---
-# <a name="tutorial-analyze-videos-with-azure-media-services"></a>Oktatóanyag: Videók elemzése az Azure Media Serviceszel 
+# <a name="tutorial-analyze-videos-with-media-services-v3-using-apis"></a>Oktatóanyag: Elemezhet videókat a Media Services v3 API-k használatával
 
-Az oktatóanyag bemutatja, hogyan elemezhet videókat az Azure Media Serviceszel. Bizonyos esetekben szüksége lehet a rögzített video- és audiotartalmak részletesebb elemzésére. Egy vállalatnál például a vásárlói elégedettség növelése érdekében szükség lehet a beszéd szöveggé alakítására, hogy az ügyfélszolgálati beszélgetéseket kereshető katalógussá alakítsák, amelyhez indexek és irányítópultok érhetőek el. Ezt elemezve azonosíthatók a leggyakoribb panaszok, a panaszok forrásai és egyéb problémák.
+Az oktatóanyag bemutatja, hogyan elemezhet videókat az Azure Media Serviceszel. Bizonyos esetekben szüksége lehet a rögzített video- és audiotartalmak részletesebb elemzésére. Egy vállalatnál például a vásárlói elégedettség növelése érdekében szükség lehet a beszéd szöveggé alakítására, hogy az ügyfélszolgálati beszélgetéseket kereshető katalógussá alakítsák, amelyhez indexek és irányítópultok érhetőek el. Ezt követően lekérhetik az üzleti például közös panaszok listáját, források ilyen panaszok és egyéb hasznos információkat.
 
 Ez az oktatóanyag a következőket mutatja be:    
 
@@ -38,7 +38,14 @@ Ez az oktatóanyag a következőket mutatja be:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nincs telepítve a Visual Studio, szerezze be a [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)-et.
+- Ha nincs telepítve a Visual Studio, szerezze be a [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)-et.
+- Telepítse és a parancssori Felületet helyileg használja, ez a cikk az Azure CLI 2.0-s vagy újabb verziójára van szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
+
+    Jelenleg nem minden [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) parancsok működnek az Azure Cloud shellben. Javasoljuk, hogy a parancssori Felületet helyileg használja.
+
+- [A Media Services-fiók létrehozása](create-account-cli-how-to.md).
+
+    Ellenőrizze, hogy ne felejtse el az értékeket, amelyeket meg az erőforráscsoport-nevet és a Media Services-fiók neve.
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
@@ -49,10 +56,6 @@ Klónozza a gépre a .NET-mintát tartalmazó GitHub-adattárat a következő pa
  ```
 
 A minta az [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/AnalyzeVideos) mappában található.
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -154,11 +157,11 @@ A videók elemzésekor keletkező kimeneti fájl neve insights.json. Ez a fájl 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az erőforráscsoportban lévő egyik erőforrásra sem, beleértve a jelen oktatóanyagban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott erőforráscsoportot. Ehhez használhatja a **CloudShell** eszközt.
+Ha már nincs szüksége az erőforráscsoportban lévő egyik erőforrásra sem, beleértve a jelen oktatóanyagban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott erőforráscsoportot. 
 
-Hajtsa végre az alábbi parancsot a **CloudShellben**:
+Hajtsa végre a következő CLI-parancsot:
 
-```azurecli-interactive
+```azurecli
 az group delete --name amsResourceGroup
 ```
 

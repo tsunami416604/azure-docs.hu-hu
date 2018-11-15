@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 10/03/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: f9b60b9365f8856db8ffd8e14d95d46af3808ffb
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
-ms.translationtype: HT
+ms.openlocfilehash: f2890fa4d8260485fa76478571aa66abe1efd35e
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116487"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515403"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Az Azure Functions bemutatása  
 Az Azure Functions megoldással egyszerűen futtathatók kisebb kódrészletek, más néven „függvények”, a felhőben. Elég, ha a szóban forgó problémára vonatkozó kódot megírja, nem kell egy egész alkalmazással vagy futtató infrastruktúrával bajlódnia. A függvények használatával még hatékonyabbá válhat a fejlesztés, amelyhez tetszőleges nyelvet használhat, legyen az akár a C#, az F#, a Node.js, a Java vagy a PHP. Csak annyi időért kell fizetnie, amennyit a kódja fut, a szükség szerinti méretezést pedig rábízhatja az Azure szolgáltatásra. Az Azure Functions segítségével [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) alkalmazások fejleszthetők a Microsoft Azure-on.
@@ -47,7 +47,7 @@ A Functions sablonokkal segít megtenni az első lépéseket a legfontosabb forg
 * **BlobTrigger** – Azure Storage-blobok feldolgozása tárolókhoz való hozzáadáskor. Ez a függvény rendszerképek átméretezéséhez használható. További információért lásd [a blobtárolók kötéseit](functions-bindings-storage-blob.md).
 * **QueueTrigger** – Válaszadás az Azure Storage üzenetsorába beérkező üzenetekre. További információ: [Azure Queue Storage-kötések](functions-bindings-storage-queue.md).
 * **EventGridTrigger** – Válaszadás egy Azure Event Grid-előfizetésnek kézbesített eseményekre. Egy előfizetés-alapú eseményfogadó modellt támogat, amely a szűrést is magában foglalja. Remek megoldás az eseményalapú architektúrák kiépítéséhez. Példa: [Feltöltött képek átméretezésének automatizálása az Event Grid használatával](../event-grid/resize-images-on-storage-blob-upload-event.md).
-* **EventHubTrigger** – Válaszadás egy Azure Eseményközponthoz kézbesített eseményekre. Ez különösen hasznos az alkalmazások felépítésében, a felhasználói élmények vagy munkafolyamatok feldolgozásában és az eszközök internetes hálózatát (IoT) érintő forgatókönyvekben. További információért lásd [az Event Hubs kötéseit](functions-bindings-event-hubs.md).
+* **EventHubTrigger** – Válaszadás egy Azure Eseményközponthoz kézbesített eseményekre. Ez különösen hasznos az alkalmazások felépítésében, felhasználói élmények vagy munkafolyamatok feldolgozásában és internetes hálózatán (IoT). További információért lásd [az Event Hubs kötéseit](functions-bindings-event-hubs.md).
 * **ServiceBusQueueTrigger** – Kód csatlakoztatása egyéb Azure-szolgáltatásokhoz vagy helyi szolgáltatásokhoz az üzenetsor figyelésével. További információért lásd [a Service Bus kötéseit](functions-bindings-service-bus.md).
 * **ServiceBusTopicTrigger** – Kód csatlakoztatása egyéb Azure-szolgáltatásokhoz vagy helyi szolgáltatásokhoz témakörökre való feliratkozással. További információért lásd [a Service Bus kötéseit](functions-bindings-service-bus.md).
 

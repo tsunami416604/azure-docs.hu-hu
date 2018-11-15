@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/16/2017
 ms.author: sngun
-ms.openlocfilehash: 40a80a049e6eb94390bab0b47e1f5ed49b4606b9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: c4f86b9fa949c854b557812a41aa9d86a11ecc94
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991199"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636985"
 ---
 # <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Azure Cosmos DB: Az SQL API kezdeti lépéseit ismertető oktatóanyag
 
@@ -168,7 +168,7 @@ Másolja, majd illessze be a **WriteToConsoleAndPromptToContinue** metódust a *
             Console.ReadKey();
     }
 
-Az Azure Cosmos DB-[adatbázis](sql-api-resources.md#databases) a **DocumentClient** osztály [CreateDatabaseIfNotExistAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) metódusának használatával hozható létre. Az adatbázis a JSON-dokumentumtároló gyűjtemények között particionált logikai tárolója.
+Az Azure Cosmos DB-[adatbázis](databases-containers-items.md#azure-cosmos-databases) a **DocumentClient** osztály [CreateDatabaseIfNotExistAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) metódusának használatával hozható létre. Az adatbázis a JSON-dokumentumtároló gyűjtemények között particionált logikai tárolója.
 
 Az ügyfél létrehozása után másolja, majd illessze be az alábbi kódot a **GetStartedDemo** metódusba. Ezzel létrehoz egy *FamilyDB* elnevezésű adatbázist.
 
@@ -189,7 +189,7 @@ Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-adatbázist.
 > 
 > 
 
-Egy [gyűjtemény](sql-api-resources.md#collections) a **DocumentClient** osztály [CreateDocumentCollectionIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) metódusának használatával hozható létre. A gyűjtemény egy JSON-dokumentumokat és a kapcsolódó JavaScript-alkalmazáslogikát tartalmazó tároló.
+Egy gyűjtemény használatával hozható létre a [Createdocumentcollectionasync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) módszere a **DocumentClient** osztály. A gyűjtemény egy JSON-dokumentumokat és a kapcsolódó JavaScript-alkalmazáslogikát tartalmazó tároló.
 
 Az adatbázis létrehozása után másolja, majd illessze be az alábbi kódot a **GetStartedDemo** metódusba. Ezzel létrehoz egy *FamilyCollection* elnevezésű dokumentumgyűjteményt.
 
@@ -205,7 +205,7 @@ Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-dokumentumgyűjteményt.  
 
 ## <a id="CreateDoc"></a>6. lépés: JSON-dokumentumok létrehozása
-A [dokumentumok](sql-api-resources.md#documents) a **DocumentClient** osztály [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) metódusának használatával hozhatók létre. A dokumentumok a felhasználó által megadott (tetszőleges) JSON-tartalmak. Most már beilleszthetünk egy vagy több dokumentumot. Ha van olyan adat, amelyet szeretne az adatbázisban tárolni, az Azure Cosmos DB [adatmigrálási eszközével](import-data.md) adatokat importálhat az adatbázisba.
+A dokumentum használatával hozható létre a [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) módszere a **DocumentClient** osztály. A dokumentumok a felhasználó által megadott (tetszőleges) JSON-tartalmak. Most már beilleszthetünk egy vagy több dokumentumot. Ha van olyan adat, amelyet szeretne az adatbázisban tárolni, az Azure Cosmos DB [adatmigrálási eszközével](import-data.md) adatokat importálhat az adatbázisba.
 
 Először létre kell hozni egy **Család** osztályt, amely ebben a mintában az Azure Cosmos DB-ben tárolt objektumokat képviseli. Létrehozunk még egy **Szülő**, **Gyermek**, **Háziállat** és **Cím** alosztályt is a **Család** osztályban való használatra. Ne feledje, hogy a dokumentumoknak rendelkezniük kell egy **Azonosító** tulajdonsággal, amely a JSON-fájlban **id**-ként van szerializálva. Az osztályok létrehozásához adja hozzá az alábbi belső alosztályokat a **GetStartedDemo** metódus után.
 

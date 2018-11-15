@@ -1,6 +1,6 @@
 ---
-title: A Hadoop – Azure HDInsight MapReduce és a PowerShell használata
-description: Ismerje meg, hogyan lehet távolról futtatni a HDInsight Hadoop-MapReduce-feladatok PowerShell használatával.
+title: Az Apache Hadoop – Azure HDInsight MapReduce és a PowerShell használata
+description: Ismerje meg, hogyan lehet távolról futtatni a HDInsight az Apache Hadoop MapReduce-feladatok PowerShell használatával.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,14 +9,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: hrasheed
-ms.openlocfilehash: c67ef23a7869c6db6b736b188289a053244b9cbb
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 753a0ad72e1d4b60a93daa570ceecc25d21bb228
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008164"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634141"
 ---
-# <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-powershell"></a>MapReduce-feladatok futtatása és a Hadoop HDInsight PowerShell használatával
+# <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>Az Apache Hadoop MapReduce feladatok futtatása HDInsight PowerShell használatával
 
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 

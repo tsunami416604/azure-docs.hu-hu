@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7451d6ade7f8b042a68f456e604e2919cacab0a5
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
-ms.translationtype: HT
+ms.openlocfilehash: 523f5eba632b15eaaf45f24be820f7b255aae7c0
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378431"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616027"
 ---
 # <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>Első lépések: Alapszintű nyilvános terheléselosztó létrehozása az Azure Portallal
 
@@ -159,6 +159,7 @@ Ahhoz, hogy az alapszintű terheléselosztó monitorozhassa az alkalmazás álla
    - Az állapotminta neve: **myHealthProbe**
    - Protokoll típusa: **HTTP**
    - Portszám: **80**
+   - **Healthprobe.aspx** URI elérési úthoz. Cserélje le ezt az értéket bármely más URI vagy tartsa meg az alapértelmezett elérési útja értéket **"\\"** beolvasni az alapértelmezett URI-t.
    - A mintavételi kísérletek közötti **Időköz** másodpercben megadva: **15**
    - A **Nem kifogástalan állapot küszöbértéke**, vagyis hány egymást követő meghibásodásnak kell történnie, hogy a rendszer sérültnek minősítsen egy virtuális gépet: **2**.
 

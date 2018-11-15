@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 6bde2fb0fc9534d170be1d755856f6f779e47d7c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 575b3ec5e729b325cad216ae463063acbb68f20b
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625861"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685939"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Figyelés a Log Analytics megoldásra
 
@@ -108,7 +108,7 @@ A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi i
     - Ha egy Red Hat OpenShift környezettel rendelkezik, tekintse át [konfigurálása a Log Analytics-ügynököket, a Red Hat OpenShift](#configure-an-oms-agent-for-red-hat-openshift).
     - Ha rendelkezik egy Kubernetes-fürtöt az Azure Container Service használatával:
        - Felülvizsgálat [Kubernetes a Log Analytics Linux-ügynökének konfigurálása](#configure-an-oms-linux-agent-for-kubernetes).
-       - Felülvizsgálat [a Kubernetes-napló Analytis Windows-ügynök konfigurálása](#configure-an-oms-windows-agent-for-kubernetes).
+       - Felülvizsgálat [konfigurálja a Kubernetes a Log Analytics Windows ügynök](#configure-an-oms-windows-agent-for-kubernetes).
        - Felülvizsgálat [Helm használata a Linux Kubernetes a Log Analytics-ügynök telepítése](#use-helm-to-deploy-oms-agent-on-linux-kubernetes).
     - Ha rendelkezik egy Azure Container Service DC/OS-fürtön, további tudnivalókat talál [egy Azure Container Service DC/OS fürt megfigyelése a Log Analytics](../container-service/dcos-swarm/container-service-monitoring-oms.md).
     - Ha egy Docker Swarm módú környezettel rendelkezik, további tudnivalókat talál [konfigurálása egy Log Analytics-ügynököket a Docker Swarmra](#configure-an-oms-agent-for-docker-swarm).

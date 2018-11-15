@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 195686a924d784327c72bcd09a1a50a563e444de
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: d834b7f43d961400e2d5080a46cf921d719f3393
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629075"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684858"
 ---
 # <a name="working-with-azure-cosmos-databases-containers-and-items"></a>Az Azure Cosmos-adatbázisok, tárolók és elemek használata
 
@@ -94,12 +94,10 @@ Az Azure Cosmos-tárolókat a következő műveletek bármelyikével az Azure Co
 | **Művelet** | **Azure CLI** | **SQL API-HOZ** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **Tábla API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | A tárolók egy adatbázis számbavétele | Igen* | Igen | Igen | Igen | NA | NA |
-| Egy tároló olvasása | Igen* | Igen | Igen | Igen | NA | NA |
-| Új tároló létrehozása | Igen* | Igen | Igen | Igen | NA | NA |
-| Tároló frissítése | Igen* | Igen | Igen | Igen | NA | NA |
-| Tároló törlése | Igen* | Igen | Igen | Igen | NA | NA |
-
-\* Január 2019 elérhető lesz.
+| Egy tároló olvasása | Igen | Igen | Igen | Igen | NA | NA |
+| Új tároló létrehozása | Igen | Igen | Igen | Igen | NA | NA |
+| Tároló frissítése | Igen | Igen | Igen | Igen | NA | NA |
+| Tároló törlése | Igen | Igen | Igen | Igen | NA | NA |
 
 ## <a name="azure-cosmos-items"></a>Az Azure Cosmos-elemek
 

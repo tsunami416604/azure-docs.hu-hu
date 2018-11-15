@@ -2,7 +2,7 @@
 title: Az Azure IoT Edge bemutatása | Microsoft Docs
 description: Az Azure IoT Edge szolgáltatás áttekintése
 author: kgremban
-manager: timlt
+manager: philmea
 ms.reviewer: chipalost
 ms.service: iot-edge
 services: iot-edge
@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 06/12/2018
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: 107852bd2c4ec0b932008b498dde4ea77f8071a3
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
-ms.translationtype: HT
+ms.openlocfilehash: 1a1281be1c1b58b21406dad5826e240ccac6c898
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116336"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567762"
 ---
 # <a name="what-is-azure-iot-edge"></a>Az Azure IoT Edge bemutatása
 

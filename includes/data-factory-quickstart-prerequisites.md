@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/01/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 4b209953e957d0c2892bc5c6bca7a577992c5dee
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
-ms.translationtype: HT
+ms.openlocfilehash: c1ae8e1d06fca79b586208a3eaee0c5d26975ea1
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843344"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51628145"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -63,7 +63,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre az Azure B
    ![Tárolónév megadása](media/data-factory-quickstart-prerequisites/new-container-dialog.png)
 4. A tárolók listájában kattintson az **adftutorial**  elemre. 
 
-   ![A tároló kiválasztása](media/data-factory-quickstart-prerequisites/seelct-adftutorial-container.png)
+   ![A tároló kiválasztása](media/data-factory-quickstart-prerequisites/select-adftutorial-container.png)
 5. A **Tároló** lapon kattintson az eszköztár **Feltöltés** elemére.  
 
    ![Feltöltés gomb](media/data-factory-quickstart-prerequisites/upload-toolbar-button.png)

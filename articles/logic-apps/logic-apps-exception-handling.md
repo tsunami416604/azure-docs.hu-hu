@@ -10,12 +10,12 @@ ms.date: 01/31/2018
 ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 7ce5c7007414bfe8e17727c25de9712e7993dc1e
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 19a715812f1250523fd050ac8b80dee9ec664be4
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263752"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686262"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Hibák és az Azure Logic Appsben kivételek kezelése
 
@@ -73,8 +73,8 @@ Vagy manuálisan is megadhatja az újrapróbálkozási szabályzat a `inputs` eg
 
 | Érték | Típus | Leírás |
 |-------|------|-------------|
-| <*újrapróbálkozási házirendtípus*> | Sztring | A használni kívánt újrapróbálkozási házirendtípus: "alapértelmezett", "none", "fixed" vagy "exponenciális" | 
-| <*újrapróbálkozási-időköz*> | Sztring | Az újrapróbálkozási időköz, ahol az értéket kell használnia [ISO 8601 formátumú](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Az alapértelmezett minimális gyakoriság `PT5S` és a maximális időköz `PT1D`. Az exponenciális időköz szabályzat használatakor különböző minimális és maximális értékeket is megadhat. | 
+| <*újrapróbálkozási házirendtípus*> | Karakterlánc | A használni kívánt újrapróbálkozási házirendtípus: `default`, `none`, `fixed`, vagy `exponential` | 
+| <*újrapróbálkozási-időköz*> | Karakterlánc | Az újrapróbálkozási időköz, ahol az értéket kell használnia [ISO 8601 formátumú](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Az alapértelmezett minimális gyakoriság `PT5S` és a maximális időköz `PT1D`. Az exponenciális időköz szabályzat használatakor különböző minimális és maximális értékeket is megadhat. | 
 | <*újrapróbálkozások*> | Egész szám | 1 és 90 között kell lennie újrapróbálkozások száma | 
 ||||
 
@@ -82,8 +82,8 @@ Vagy manuálisan is megadhatja az újrapróbálkozási szabályzat a `inputs` eg
 
 | Érték | Típus | Leírás |
 |-------|------|-------------|
-| <*minimális-időköz*> | Sztring | Az exponenciális időköz házirend, a legkisebb időköze a véletlenszerűen kiválasztott időköz [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
-| <*maximális-időköz*> | Sztring | Az exponenciális időköz házirend, a véletlenszerűen kiválasztott időszakban a legnagyobb időközönként [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
+| <*minimális-időköz*> | Karakterlánc | Az exponenciális időköz házirend, a legkisebb időköze a véletlenszerűen kiválasztott időköz [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
+| <*maximális-időköz*> | Karakterlánc | Az exponenciális időköz házirend, a véletlenszerűen kiválasztott időszakban a legnagyobb időközönként [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
 |||| 
 
 Itt látható a különböző Házirendtípusok további információt.
@@ -221,9 +221,9 @@ Hatókörök korlátozásairól lásd: [határértékek és konfiguráció](../l
 
 ### <a name="get-context-and-results-for-failures"></a>Környezet és az eredmények lekérése sikertelen
 
-Bár egy hatókörből hibák megelőzésével akkor hasznos, érdemes lehet a környezeti segítenek megérteni, hogy pontosan milyen műveleteket végezzen ezen kívül az esetleges hibákat vagy állapotkódokkal is sikertelen volt. A "@result()" kifejezés minden műveletet a hatókör az eredményről kontextust biztosít.
+Bár egy hatókörből hibák megelőzésével akkor hasznos, érdemes lehet a környezeti segítenek megérteni, hogy pontosan milyen műveleteket végezzen ezen kívül az esetleges hibákat vagy állapotkódokkal is sikertelen volt. A `@result()` kifejezése egy hatókör összes művelet eredménye kapcsolatos kontextust biztosít a.
 
-A "@result()" kifejezést fogad el egyetlen paramétert (a hatókör neve), és minden művelet eredményeinek hatókörön belüli tömbjét adja vissza. E művelet objektumok például őket a  **@actions()** objektumot, például a művelet kezdési idő, befejezési időpontja, állapota, bemenetei, korrelációs azonosítók és kimenetek. Hatókörön belüli bármely művelet, amelyet nem sikerült a környezet elküldéséhez, könnyen összepárosíthassa egy  **@result()** függvény és egy **runAfter** tulajdonság.
+A `@result()` kifejezés (a hatókör neve) egyetlen paramétert fogad, és minden művelet eredményeinek hatókörön belüli tömbjét adja vissza. E művelet objektumok például őket a  **@actions()** objektumot, például a művelet kezdési idő, befejezési időpontja, állapota, bemenetei, korrelációs azonosítók és kimenetek. Hatókörön belüli bármely művelet, amelyet nem sikerült a környezet elküldéséhez, könnyen összepárosíthassa egy  **@result()** függvény és egy **runAfter** tulajdonság.
 
 Minden egyes művelethez művelet futtatása egy hatókör, amely rendelkezik egy **sikertelen** eredményt, és az eredmények a sikertelen műveletek le a tömb szűrése, párosítsa  **@result()** az egy **[Tömb szűrése](../connectors/connectors-native-query.md)** művelet és a egy [ **minden** ](../logic-apps/logic-apps-control-flow-loops.md) ciklus. A szűrt eredmények tömb igénybe és a egy műveletet minden egyes hiba a a **minden** ciklus. 
 
@@ -270,22 +270,22 @@ Minden egyes művelethez művelet futtatása egy hatókör, amely rendelkezik eg
 
 Részletes útmutató, amely leírja, mi történik, ebben a példában a következő:
 
-1. Minden művelet belül "My_Scope", az eredmény eléréséhez a **tömb szűrése** művelet használja a szűrési kifejezés: "@result(My_Scope)"
+1. Minden művelet belül "My_Scope", az eredmény eléréséhez a **tömb szűrése** művelet használja a szűrési kifejezés: `@result('My_Scope')`
 
-2. Feltételét **tömb szűrése** tetszőleges "@result()" elem, amely egyenlő állapota **sikertelen**. Ez az állapot a tömb, amely rendelkezik az összes művelet eredményeinek "My_Scope" le egy tömb csak a sikertelen művelet eredményeket szűri.
+2. Feltételét **tömb szűrése** tetszőleges `@result()` egyenlő állapotú elem **sikertelen**. Ez az állapot a tömb, amely rendelkezik az összes művelet eredményeinek "My_Scope" le egy tömb csak a sikertelen művelet eredményeket szűri.
 
 3. Hajtsa végre egy **minden** a hurok a művelet a *szűrt tömb* adja vissza. Ebben a lépésben minden korábban szűrt volt sikertelen művelet eredménye egy műveletet végez.
 
    Ha a hatókörében egyetlen művelettel sikertelen volt a műveletek a **minden** hurok csak egyszer futtatni. 
    Több sikertelen műveletek egy művelet egy hiba miatt.
 
-4. Küldjön egy HTTP POST az a **minden** konfigurációelem-válasz törzsében, amely a "@item() ["kimenetek"] ["törzs"]" kifejezés. 
+4. Küldjön egy HTTP POST az a **minden** konfigurációelem-válasz törzsében, amely a `@item()['outputs']['body']` kifejezés. 
 
-   A "@result()" elem alakzat pedig ugyanaz, mint a "@actions()" formázhatja, és ugyanúgy elemezhető legyen.
+   A `@result()` elem alakzat pedig ugyanaz, mint a `@actions()` formázhatja, és ugyanúgy elemezhető legyen.
 
-5. Sikertelen művelet nevű két egyéni fejlécek belefoglalása ("@item() [name]"), és futtassa a követési azonosító: ügyfél ("@item() ['clientTrackingId"] ").
+5. Sikertelen művelet nevű két egyéni fejlécek belefoglalása (`@item()['name']`) és a sikertelen Futtatás követési azonosító: ügyfél (`@item()['clientTrackingId']`).
 
-Referenciaként, Íme egy példa egy "@result()" elem, amely a **neve**, **törzs**, és **clientTrackingId** tulajdonságait, amely elemzi a korábbi Példa. Kívül egy **minden** művelet "@result()" Ezek az objektumok tömbjét adja vissza.
+Referenciaként, Íme egy példa egy adott `@result()` konfigurációelem, amely a **neve**, **törzs**, és **clientTrackingId** , amely elemzi a korábbi tulajdonságai Példa. Kívül egy **minden** művelet `@result()` ezek az objektumok tömbjét adja vissza.
 
 ```json
 {

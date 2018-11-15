@@ -1,6 +1,6 @@
 ---
-title: Hadoop – Azure HDInsight az Apache sqoop használatával
-description: Ismerje meg, hogyan Apache Sqoop használatával importálása és exportálása a HDInsight Hadoop és a egy Azure SQL Database között.
+title: Az Apache Hadoop – Azure HDInsight az Apache sqoop használatával
+description: Ismerje meg, hogyan Apache Sqoop használatával importálása és exportálása a HDInsight Apache Hadoop és a egy Azure SQL Database között.
 keywords: hadoop sqoop, a sqoop használatával
 services: hdinsight
 author: hrasheed-msft
@@ -10,18 +10,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.openlocfilehash: 6aa5627a0b5e8cb29f0ec68b948084a0bed30529
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bb6ad52f008ddeec5d3ecd3b0fdbc80dbf627101
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259445"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685922"
 ---
-# <a name="use-apache-sqoop-to-import-and-export-data-between-hadoop-on-hdinsight-and-sql-database"></a>Az Apache Sqoop használatával a HDInsight Hadoop- és SQL Database közötti adatok importálása és exportálása
+# <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Apache Hadoop on HDInsight és az SQL Database közötti adatok importálása és exportálása az Apache Sqoop használatával
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Ismerje meg, hogyan Apache Sqoop használatával importálása és exportálása az Azure HDInsight egy Hadoop-fürtöt és az Azure SQL Database vagy a Microsoft SQL Server-adatbázis között. A lépéseket, a jelen dokumentum-használat a `sqoop` közvetlenül a Hadoop-fürt az átjárócsomóponthoz parancsot. Az SSH használatával csatlakozhat az átjárócsomóponthoz, és futtassa a parancsokat ebben a dokumentumban.
+Ismerje meg, hogyan használhatja az Apache Sqoop importálása és exportálása az Azure HDInsight az Apache Hadoop-fürt és Azure SQL Database vagy a Microsoft SQL Server-adatbázis közötti. A lépéseket, a jelen dokumentum-használat a `sqoop` közvetlenül a Hadoop-fürt az átjárócsomóponthoz parancsot. Az SSH használatával csatlakozhat az átjárócsomóponthoz, és futtassa a parancsokat ebben a dokumentumban.
 
 > [!IMPORTANT]
 > A jelen dokumentumban leírt lépések Linux használó HDInsight-fürtök csak dolgozhat. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -170,7 +170,6 @@ Most már megtanulhatta, hogyan használható a sqoop használatával. További 
 [hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
 [sqldatabase-get-started]: ../sql-database-get-started.md
-[sqldatabase-create-configue]: ../sql-database-create-configure.md
 
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
 [powershell-install]: /powershell/azureps-cmdlets-docs

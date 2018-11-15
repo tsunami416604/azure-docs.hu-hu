@@ -3,18 +3,18 @@ title: Azure IoT Edge C – oktatóanyag | Microsoft Docs
 description: Az oktatóanyag bemutatja, hogyan hozhat létre IoT Edge-modult C-kóddal, és hogyan helyezheti üzembe azt peremhálózati eszközökön.
 services: iot-edge
 author: shizn
-manager: timlt
+manager: philmea
 ms.author: xshi
 ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a7151f8b681b0e6129308b194008742986d6a358
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: e5c6b523a098bef4bb40ccd924750cc8aefd0e87
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155694"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567366"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>Oktatóanyag: C-alapú IoT Edge-modul fejlesztése és üzembe helyezése szimulált eszközön
 
@@ -239,7 +239,7 @@ Adjon olyan kódot a C-modulhoz, amely lehetővé teszi adatok beolvasását az 
     }
     ```
 
-9. Adjon hozzá egy `moduleTwinCallback` függvényt. Ez a metódus a kívánt tulajdonságok frissítéseit fogadja a modul ikerdokumentumától, és ennek megfelelően frissíti a **temperatureThreshold** változót. Minden modul rendelkezik saját ikerdokumentummal, amelyekkel közvetlenül a felhőből konfigurálhatja a modulban futó kódot.
+9. Adjon hozzá egy `moduleTwinCallback` függvényt. Ez a metódus a kívánt tulajdonságok frissítéseit fogadja a modul ikerdokumentumától, és ennek megfelelően frissíti a **temperatureThreshold** változót. Az összes modulnál megjelenik a saját modul iker, ahol konfigurálhatja a kódot közvetlenül a felhőből modul keretrendszeren belül fut.
 
     ```c
     static void moduleTwinCallback(DEVICE_TWIN_UPDATE_STATE update_state, const unsigned char* payLoad, size_t size, void* userContextCallback)

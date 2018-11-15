@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/22/2018
 ms.author: pafarley
-ms.openlocfilehash: 39b3f51693229e75f58c4244089f21c7d3f8677d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
-ms.translationtype: HT
+ms.openlocfilehash: 8f18b01409680c07b942087b75b1618c75973391
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250614"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634328"
 ---
 # <a name="what-is-computer-vision"></a>Mi a Computer Vision?
 
@@ -53,6 +53,10 @@ Emellett felismeri a [nyomtatott és kézzel írt szövegeket](concept-recognizi
 ## <a name="moderating-content-in-images"></a>Képek tartalmának moderálása
 
 A Computer Vision [észleli a képen a felnőtteknek szóló és kényes tartalmakat](concept-detecting-adult-content.md), majd egy megbízhatósági pontszámot hoz létre a képen szereplő felnőtt vagy kényes tartalmak valószínűsége alapján. A felnőtteknek szóló vagy kényes tartalom észlelésére vonatkozó szűrő érzékenységét egy csúszka segítségével állíthatja be igényei szerint.
+
+## <a name="using-containers"></a>Tárolók használatával
+
+[Számítógépes Látástechnológia tárolókkal](computer-vision-how-to-install-containers.md) , helyileg, nyomtatott és kézzel írt szöveg felismerése szabványos Docker-tároló közelebb telepítse az adatokhoz.
 
 ## <a name="image-requirements"></a>A rendszerképre vonatkozó követelmények
 

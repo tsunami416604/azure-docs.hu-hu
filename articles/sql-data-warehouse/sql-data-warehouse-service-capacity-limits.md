@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 07/26/2018
+ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 7c6445624b2c03497c881b0c34bac8256fa28a98
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: aa1d98f5ea2db0cc549b60e33769c8628181721b
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302043"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686602"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Az SQL Data Warehouse kapacitáskorlátait
 Azure SQL Data Warehouse különböző összetevői számára engedélyezett maximális értékeket.
@@ -35,7 +35,7 @@ Azure SQL Data Warehouse különböző összetevői számára engedélyezett max
 |:--- |:--- |:--- |
 | Adatbázis |Maximális méret | Gen1: 240 TB tömöríti a lemezen. Ez a terület független terület a tempdb vagy a naplóhoz, és ezért ez a terület dedikált állandó táblák.  Fürtözött oszlopcentrikus tömörítés becsült 5 X.  Ez a fajta tömörítés lehetővé teszi, hogy az adatbázisnak, hogy megközelítőleg 1 PB, ha minden tábla fürtözött oszlopcentrikus (az alapértelmezett táblatípus). <br/><br/> Gen2: 240TB sortárindex és korlátlan tárolási oszlopcentrikus táblák |
 | Tábla |Maximális méret |A lemezen tömörített 60 TB |
-| Tábla |Táblák adatbázisonként |10,000 |
+| Tábla |Táblák adatbázisonként | 100 000 |
 | Tábla |Táblánként oszlopok |1024 oszlopot |
 | Tábla |Bájt / oszlop |Oszlop függ [adattípus](sql-data-warehouse-tables-data-types.md). A határ 8000-es karakteres adattípus, nvarchar a 4000-es vagy 2 GB maximális adattípusok. |
 | Tábla |Minden egyes sorára, meghatározott méret bájt |8060 bájt<br/><br/>Minden egyes sorára bájtok száma azonos módon számítható, mert az SQL Server a lap tömörítéssel. Például az SQL Server az SQL Data Warehouse támogatja a sor-túlcsordulás tároló, amely lehetővé teszi, hogy **változó hosszúságú oszloppal** kell leküldeni, soron kívüli. Változó hosszúságú sorok leküld soron kívüli, csak a 24 bájtos legfelső szintű tárolja a fő rekord. További információkért lásd: [sor-túlcsordulás adatok meghaladja a 8 KB-os](https://msdn.microsoft.com/library/ms186981.aspx). |
@@ -69,7 +69,7 @@ Azure SQL Data Warehouse különböző összetevői számára engedélyezett max
 | SELECT |Csatlakozás soronként |1024 oszlopot<br/><br/>A JOIN soha nem rendelkezhet több mint 1024 oszlopot. Nincs garancia arra, hogy 1024 mindig rendelkezhet. Ha az ILLESZTÉSI csomag több oszlop, mint az ILLESZTÉS eredmény tartalmazó ideiglenes táblát igényel, az ideiglenes tábla az 1024 korlát vonatkozik. |
 | SELECT |Bájtok CSOPORTOSÍTÁSI oszlopok száma. |8060<br/><br/>A GROUP BY záradékban szereplő oszlopok legfeljebb egy 8060 bájt. |
 | SELECT |Oszlopok az ORDER BY / bájt |8060 bájt<br/><br/>Az oszlopok az ORDER BY záradékában legfeljebb 8060 bájtok |
-| Azonosítók utasítás kiszolgálónként |Hivatkozott azonosítók száma |65,535<br/><br/>Az SQL Data Warehouse a lekérdezés egyetlen kifejezés forráselérésiútja azonosítók számának korlátozása. Meghaladja a SQL Server-hiba 8632 számot eredményez. További információkért lásd: [belső hiba: elérte a korlátozását] [belső hiba: elérte a korlátozását]. |
+| Azonosítók utasítás kiszolgálónként |Hivatkozott azonosítók száma |65,535<br/><br/>Az SQL Data Warehouse a lekérdezés egyetlen kifejezés forráselérésiútja azonosítók számának korlátozása. Meghaladja a SQL Server-hiba 8632 számot eredményez. További információkért lásd: [belső hiba: elérte a korlátozását](https://support.microsoft.com/en-us/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a). |
 | Karakterlánc-literálnak | Karakterlánc-literálnak utasításban száma | 20,000 <br/><br/>Az SQL Data Warehouse a lekérdezés egyetlen kifejezés karakterlánc-állandókat számát korlátozza. Meghaladja a SQL Server-hiba 8632 számot eredményez.|
 
 ## <a name="metadata"></a>Metaadatok

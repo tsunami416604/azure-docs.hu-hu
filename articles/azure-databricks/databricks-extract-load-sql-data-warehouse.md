@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
 ms.date: 07/26/2018
-ms.openlocfilehash: c67a223a95e73161b58f8cd4f2aeba2614a9ee76
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: bf7351f5d62958b77473440d618d31cda2c983ea
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419079"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615517"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure Databricks használatával
 
-Ebben az oktatóanyagban egy ETL-műveletet (kinyerés, átalakítás és adatbetöltés) hajt végre az Azure Databricks használatával. Kinyeri az adatokat az Azure Data Lake Store-ból az Azure Databricksbe, átalakításokat futtat az Azure Databricksben található adatokon, majd betölti az átalakított adatokat az Azure SQL Data Warehouse-ba. 
+Ebben az oktatóanyagban egy ETL-műveletet (kinyerés, átalakítás és adatbetöltés) hajt végre az Azure Databricks használatával. Kinyeri az adatokat az Azure Data Lake Store-ból az Azure Databricksbe, átalakításokat futtat az Azure Databricksben található adatokon, majd betölti az átalakított adatokat az Azure SQL Data Warehouse-ba.
 
 A jelen oktatóanyagban szereplő lépések az Azure Databricks SQL Data Warehouse-összekötőjét használják az adatok Azure Databricksbe való átviteléhez. Az összekötő ezután az Azure Blob Storage-ot használja ideiglenes tárolóként az Azure Databricks-fürt és az Azure SQL Data Warehouse között átvitt adatokhoz.
 
@@ -27,7 +27,7 @@ Az alábbi ábrán az alkalmazásfolyam látható:
 
 ![Az Azure Databricks a Data Lake Store-ral és az SQL Data Warehouse-szal](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Az Azure Databricks a Data Lake Store-ral és az SQL Data Warehouse-szal")
 
-Ez az oktatóanyag a következő feladatokat mutatja be: 
+Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
 > * Azure Databricks-munkaterület létrehozása
@@ -64,7 +64,7 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
     ![Azure Databricks-munkaterület létrehozása](./media/databricks-extract-load-sql-data-warehouse/create-databricks-workspace.png "Azure Databricks-munkaterület létrehozása")
 
-    Adja meg a következő értékeket: 
+    Adja meg a következő értékeket:
      
     |Tulajdonság  |Leírás  |
     |---------|---------|
@@ -95,14 +95,14 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
     Fogadja el az összes alapértelmezett értéket, kivéve a következőket:
 
     * Adjon egy nevet a fürtnek.
-    * Ehhez a cikkhez a **4.0** futtatókörnyezetben hozzon létre fürtöt. 
+    * Ehhez a cikkhez a **4.0** futtatókörnyezetben hozzon létre fürtöt.
     * Mindenképpen jelölje be a **Leállítás \_\_ percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
     
     Válassza a **Fürt létrehozása** lehetőséget. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
 
 ## <a name="create-an-azure-data-lake-store-account"></a>Azure Data Lake Store-fiók létrehozása
 
-Ebben a szakaszban létrehoz egy Azure Data Lake Store-fiókot, és társít hozzá egy Azure Active Directory-szolgáltatásnevet. Az oktatóanyag későbbi részében ezt a szolgáltatásnevet fogja használni az Azure Databricksben az Azure Data Lake Store eléréséhez. 
+Ebben a szakaszban létrehoz egy Azure Data Lake Store-fiókot, és társít hozzá egy Azure Active Directory-szolgáltatásnevet. Az oktatóanyag későbbi részében ezt a szolgáltatásnevet fogja használni az Azure Databricksben az Azure Data Lake Store eléréséhez.
 
 1. Az [Azure Portalon](https://portal.azure.com) válassza az **Erőforrás létrehozása** > **Storage** > **Data Lake Store** lehetőséget.
 3. Az **Új Data Lake Store** panelen adja meg az értékeket az alábbi képernyőfelvételen látható módon:
@@ -189,7 +189,7 @@ Ha programozott módon jelentkezik be, át kell adnia a bérlőazonosítót a hi
 
 1. Másolja ki a **Címtár-azonosítót**. Ez az érték a bérlőazonosítója.
 
-   ![bérlőazonosító](./media/databricks-extract-load-sql-data-warehouse/copy-directory-id.png) 
+   ![bérlőazonosító](./media/databricks-extract-load-sql-data-warehouse/copy-directory-id.png)
 
 ## <a name="upload-data-to-data-lake-store"></a>Adatok feltöltése a Data Lake Store-ba
 
@@ -306,7 +306,7 @@ Ezzel kinyerte az adatokat az Azure Data Lake Store-ból az Azure Databricksbe.
 
 ## <a name="transform-data-in-azure-databricks"></a>Adatok átalakítása az Azure Databricksben
 
-A nyers **small_radio_json.json** mintaadat egy rádióállomás hallgatóit rögzíti, és számos oszloppal rendelkezik. Ebben a szakaszban átalakítja az adatokat, hogy a rendszer csak bizonyos oszlopokat kérjen le az adatkészletből. 
+A nyers **small_radio_json.json** mintaadat egy rádióállomás hallgatóit rögzíti, és számos oszloppal rendelkezik. Ebben a szakaszban átalakítja az adatokat, hogy a rendszer csak bizonyos oszlopokat kérjen le az adatkészletből.
 
 1. Első lépésként kérje le csak a *firstName*, *lastName*, *gender*, *location*, és *level* oszlopokat a már létrehozott adathalmazból.
 
@@ -340,7 +340,7 @@ A nyers **small_radio_json.json** mintaadat egy rádióállomás hallgatóit rö
         |  Margaux|     Smith|     F|Atlanta-Sandy Spr...| free|
         +---------+----------+------+--------------------+-----+
 
-2.  Az adatok további átalakításához nevezze át a **level** oszlopot a következőre: **subscription_type**.
+2. Az adatok további átalakításához nevezze át a **level** oszlopot a következőre: **subscription_type**.
 
         val renamedColumnsDf = specificColumnsDf.withColumnRenamed("level", "subscription_type")
         renamedColumnsDf.show()
@@ -382,7 +382,7 @@ Amint korábban említettük, az SQL Data Warehouse-összekötő az Azure Blob S
 
         val blobStorage = "<STORAGE ACCOUNT NAME>.blob.core.windows.net"
         val blobContainer = "<CONTAINER NAME>"
-        val blobAccessKey =  "<ACCESS KEY>"
+        val blobAccessKey = "<ACCESS KEY>"
 
 2. Adjon meg egy ideiglenes mappát, amelyet a rendszer az adatok Azure Databricks és Azure SQL Data Warehouse közötti áthelyezésekor fog használni.
 
@@ -397,15 +397,15 @@ Amint korábban említettük, az SQL Data Warehouse-összekötő az Azure Blob S
 
         //SQL Data Warehouse related settings
         val dwDatabase = "<DATABASE NAME>"
-        val dwServer = "<DATABASE SERVER NAME>" 
+        val dwServer = "<DATABASE SERVER NAME>"
         val dwUser = "<USER NAME>"
         val dwPass = "<PASSWORD>"
-        val dwJdbcPort =  "1433"
+        val dwJdbcPort = "1433"
         val dwJdbcExtraOptions = "encrypt=true;trustServerCertificate=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
         val sqlDwUrl = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass + ";$dwJdbcExtraOptions"
         val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
 
-5. Futtassa az alábbi kódrészletet a **renamedColumnsDF** nevű átalakított adathalmaz SQL Data Warehouse-táblaként való betöltéséhez. Ez a kódrészlet létrehoz egy **SampleTable** nevű táblát az SQL-adatbázisban. Vegye figyelembe, hogy az Azure SQL DW használatához egy főkulcs szükséges.  A főkulcsot az SQL Server Management Studióban, a „CREATE MASTER KEY;” parancs végrehajtásával hozhatja létre.
+5. Futtassa az alábbi kódrészletet a **renamedColumnsDF** nevű átalakított adathalmaz SQL Data Warehouse-táblaként való betöltéséhez. Ez a kódrészlet létrehoz egy **SampleTable** nevű táblát az SQL-adatbázisban. Vegye figyelembe, hogy az Azure SQL DW használatához egy főkulcs szükséges. A főkulcsot az SQL Server Management Studióban, a „CREATE MASTER KEY;” parancs végrehajtásával hozhatja létre.
 
         spark.conf.set(
           "spark.sql.parquet.writeLegacyFormat",
@@ -413,7 +413,7 @@ Amint korábban említettük, az SQL Data Warehouse-összekötő az Azure Blob S
         
         renamedColumnsDf.write
             .format("com.databricks.spark.sqldw")
-            .option("url", sqlDwUrlSmall) 
+            .option("url", sqlDwUrlSmall)
             .option("dbtable", "SampleTable")
             .option( "forward_spark_azure_storage_credentials","True")
             .option("tempdir", tempDir)
@@ -434,9 +434,9 @@ Az oktatóanyag befejezése után leállíthatja a fürtöt. Ehhez az Azure Data
 
 ![Databricks-fürt leállítása](./media/databricks-extract-load-sql-data-warehouse/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 
-Ha nem állítja le manuálisan a fürtöt, az automatikusan le fog állni, amennyiben a fürt létrehozásakor bejelölte a **Leállítás ___ percnyi tétlenség után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
+Ön nem állítja le manuálisan a fürt automatikusan leáll, ha a kiválasztott megadott a **leállítása után \_ \_ ennyi perc inaktivitás** jelölőnégyzetet a fürt létrehozásakor. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]

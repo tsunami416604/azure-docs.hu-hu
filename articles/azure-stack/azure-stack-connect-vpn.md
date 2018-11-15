@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/24/2018
 ms.author: sethm
 ms.reviewer: scottnap
-ms.openlocfilehash: bcdd5b6d28a6c08b7b36e170fcb7d184fcf65eb0
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: d215af253471258e487dadcfae0cfd7edafd1c26
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024460"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634651"
 ---
 # <a name="connect-azure-stack-to-azure-using-vpn"></a>Azure Stack csatlakozni az Azure VPN használatával
 
@@ -62,7 +62,7 @@ Először is, a hálózati erőforrások létrehozása az Azure-hoz. A következ
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) Azure-fiókjával.
 2. Válassza ki a felhasználói portálon **+ erőforrás létrehozása**.
 3. Lépjen a **Marketplace**, majd válassza ki **hálózatkezelés**.
-4. Válassza ki **virtuális hálózati**.
+4. Válassza ki a **Virtuális hálózatot**.
 5. Azonosítsa azokat az értékeket az Azure-ban a hálózati konfiguráció tábla adatait használja **neve**, **címtér**, **alhálózatnév**, és **alhálózati cím tartomány**.
 6. A **erőforráscsoport**, hozzon létre egy új erőforráscsoportot, vagy ha már rendelkezik ilyennel, válassza ki a **meglévő**.
 7. Válassza ki a **hely** virtuális hálózat.  A példában szereplő értékeket használja, ha válassza **USA keleti Régiójában** vagy egy másik helyet.
@@ -89,7 +89,7 @@ Először is, a hálózati erőforrások létrehozása az Azure-hoz. A következ
 3. Hálózati erőforrások listájából válassza ki a **virtuális hálózati átjáró**.
 4. A **neve**, típus **Azure-GW**.
 5. Virtuális hálózat kiválasztásához jelölje ki a **virtuális hálózati**. Válassza ki **AzureVnet** a listából.
-6. Válassza ki **nyilvános IP-cím**. Ha a **nyilvános IP-cím választása** szakasz megnyílik, válassza ki **új létrehozása**.
+6. Válassza a **Nyilvános IP-cím** elemet. Ha a **nyilvános IP-cím választása** szakasz megnyílik, válassza ki **új létrehozása**.
 7. A **neve**, típus **Azure-GW-PiP**, majd válassza ki **OK**.
 8. Alapértelmezés szerint a **VPN-típust**, **útvonalalapú** van kiválasztva. Tartsa a **útvonalalapú** VPN-típust.
 9. Ellenőrizze, hogy az **Előfizetés** és a **Hely** mező értéke helyes-e. Az erőforrás az irányítópulton is rögzíthet. Kattintson a **Létrehozás** gombra.
@@ -127,7 +127,7 @@ Most hozzon létre egy virtuális gépet az Azure-ban, és a virtuális hálóza
 
 1. Az Azure Portalon válassza ki a **+ erőforrás létrehozása**.
 2. Lépjen a **Marketplace**, majd válassza ki **számítási**.
-3. A virtuálisgép-rendszerképek listájában válassza ki a **Windows Server 2016 Datacenter Oval** kép.
+3. A virtuálisgép-rendszerképek listájában válassza ki a **Windows Server 2016 Datacenter próbaverzió** kép.
 4. Az a **alapjai** szakaszban a **neve**, típus **AzureVM**.
 5. Írjon be egy érvényes felhasználónevet és jelszót. Ez a fiók használatával jelentkezzen be a virtuális gép létrehozása után.
 6. Adjon meg egy **előfizetés**, **erőforráscsoport**, és **hely**, majd válassza ki **OK**.
@@ -157,7 +157,7 @@ Szolgáltatás-rendszergazdák jelentkezhetnek be felhasználóként a csomagok,
     ![Új virtuális hálózat létrehozása](media/azure-stack-connect-vpn/image3.png)
 
 3. Lépjen a **Marketplace**, majd válassza ki **hálózatkezelés**.
-4. Válassza ki **virtuális hálózati**.
+4. Válassza ki a **Virtuális hálózatot**.
 5. A **neve**, **címtér**, **alhálózatnév**, és **alhálózati címtartomány**, használja a hálózati konfiguráció táblából az értékeket.
 6. A **előfizetés**, a korábban létrehozott előfizetés jelenik meg.
 7. A **erőforráscsoport**, hozzon létre egy erőforráscsoportot, vagy ha már rendelkezik ilyennel, válassza ki a **meglévő**.
@@ -227,7 +227,7 @@ A VPN-kapcsolat ellenőrzéséhez hozzon létre két virtuális gépet: az Azure
 
 1. Az Azure Portalon válassza ki a **+ erőforrás létrehozása**.
 2. Lépjen a **Marketplace**, majd válassza ki **számítási**.
-3. A virtuálisgép-rendszerképek listájában válassza ki a **Windows Server 2016 Datacenter Oval** kép.
+3. A virtuálisgép-rendszerképek listájában válassza ki a **Windows Server 2016 Datacenter próbaverzió** kép.
 4. Az a **alapjai** részben, a **neve**, típus **Azs-VM**.
 5. Írjon be egy érvényes felhasználónevet és jelszót. Ez a fiók használatával jelentkezzen be a virtuális gép létrehozása után.
 6. Adjon meg egy **előfizetés**, **erőforráscsoport**, és **hely**, majd válassza ki **OK**.

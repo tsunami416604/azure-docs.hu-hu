@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/04/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 430d5938ff8f5fcfee2239e25486459bc7a629ee
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f6b362b260c913faaad57d19c92fe6d6583093f0
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016029"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685871"
 ---
 # <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>Időalapú Oozie-koordinátor használata a HDInsight Hadoop-keretrendszerrel definiálja munkafolyamatait, és a feladatok koordinálása
 Ebből a cikkből megtudhatja, hogy hogyan munkafolyamatok és koordinátorok meghatározásához, és hogy miként indítható el a koordinátor feladatok, ideje alapján. Hasznos lehet haladhat végig [az Oozie használata a HDInsight] [ hdinsight-use-oozie] Ez a cikk elolvasása előtt. Oozie, mellett is ütemezhet feladatokat az Azure Data Factory. Azure Data Factory kapcsolatban lásd: [Hive és a Data Factory és a Pig használata a](../data-factory/transform-data.md).
@@ -69,7 +69,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 * **Egy HDInsight-fürt**. Egy HDInsight-fürt létrehozásával kapcsolatos információkért lásd: [létre HDInsight-fürtök][hdinsight-provision], vagy [HDInsight – első lépések][hdinsight-get-started]. Szüksége lesz az oktatóanyagot az alábbi adatokat:
 
     <table border = "1">
-    <tr><th>Fürt tulajdonság</th><th>Windows PowerShell-változó neve</th><th>Value (Díj)</th><th>Leírás</th></tr>
+    <tr><th>Fürt tulajdonság</th><th>Windows PowerShell-változó neve</th><th>Érték</th><th>Leírás</th></tr>
     <tr><td>HDInsight-fürt neve</td><td>$clusterName</td><td></td><td>A HDInsight-fürt, amelyen ez az oktatóanyag futni fog.</td></tr>
     <tr><td>HDInsight-fürt felhasználóneve</td><td>$clusterUsername</td><td></td><td>A HDInsight fürt felhasználó neve. </td></tr>
     <tr><td>HDInsight-fürt felhasználói jelszó </td><td>$clusterPassword</td><td></td><td>A HDInsight fürt felhasználó jelszavát.</td></tr>
@@ -80,7 +80,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 * **Az Azure SQL database**. Konfigurálnia kell egy tűzfalszabályt az SQL Database-kiszolgálóhoz, hogy engedélyezze a hozzáférést a munkaállomáson. Egy Azure SQL-adatbázis létrehozása, és a tűzfal konfigurálásával kapcsolatos útmutatásért lásd: [első lépései az Azure SQL database-t használó][sqldatabase-get-started]. Ez a cikk egy Windows PowerShell-parancsprogram létrehozásához az Azure SQL database tábla, amely ebben az oktatóanyagban szüksége lesz.
 
     <table border = "1">
-    <tr><th>Az SQL database tulajdonság</th><th>Windows PowerShell-változó neve</th><th>Value (Díj)</th><th>Leírás</th></tr>
+    <tr><th>Az SQL database tulajdonság</th><th>Windows PowerShell-változó neve</th><th>Érték</th><th>Leírás</th></tr>
     <tr><td>Az SQL database-kiszolgálónév</td><td>$sqlDatabaseServer</td><td></td><td>Az SQL adatbázis-kiszolgáló, amelyhez a sqoop használatával exportálja az adatokat. </td></tr>
     <tr><td>SQL database-bejelentkezési név</td><td>$sqlDatabaseLogin</td><td></td><td>Az SQL Database-bejelentkezési név.</td></tr>
     <tr><td>Az SQL database bejelentkezési jelszava</td><td>$sqlDatabaseLoginPassword</td><td></td><td>SQL-adatbázis bejelentkezési jelszót.</td></tr>
@@ -549,12 +549,12 @@ Az Azure PowerShell jelenleg nem biztosít semmilyen parancsmagok Oozie feladato
         $response = Invoke-RestMethod -Method Get -Uri $clusterUriStatus -Credential $creds -OutVariable $OozieServerStatus
 
         $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
-        $oozieServerSatus = $jsonResponse[0].("systemMode")
-        Write-Host "Oozie server status is $oozieServerSatus..."
+        $oozieServerStatus = $jsonResponse[0].("systemMode")
+        Write-Host "Oozie server status is $oozieServerStatus..."
 
-        if($oozieServerSatus -notmatch "NORMAL")
+        if($oozieServerStatus -notmatch "NORMAL")
         {
-            Write-Host "Oozie server status is $oozieServerSatus...cannot submit Oozie jobs. Check the server status and re-run the job."
+            Write-Host "Oozie server status is $oozieServerStatus...cannot submit Oozie jobs. Check the server status and re-run the job."
         }
     }
     ```

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: f408d24a5957061bf03d340a555b87bdc6b2aacc
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: HT
+ms.openlocfilehash: f4edd1632203e2f8723fa7880683727f8fb69c4d
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304135"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614021"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Adatok másolása helyszíni SQL Server-adatbázisból Azure Blob Storage-tárolóba
 Ebben az oktatóanyagban az Azure Data Factory felhasználói felületének (UI) használatával egy adat-előállító folyamatot hoz létre az adatok egy helyszíni SQL Server-adatbázisból egy Azure Blob-tárolóba történő másolására. Létrehozhat és alkalmazhat egy saját üzemeltetésű integrációs modult, amely adatokat helyez át a helyszíni és a felhőalapú adattárolók között.
@@ -111,7 +111,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
 1. A tárolók listájában kattintson az **adftutorial** elemre.
 
-    ![Tároló kiválasztása](media/tutorial-hybrid-copy-powershell/seelct-adftutorial-container.png)
+    ![Tároló kiválasztása](media/tutorial-hybrid-copy-powershell/select-adftutorial-container.png)
 
 1. Ne zárja be az **adftutorial** **tároló** ablakát. A segítségével ellenőrizheti az oktatóanyag eredményét. A Data Factory automatikusan létrehozza a kimeneti mappát a tárolóban, így nem kell újat létrehoznia.
 
@@ -197,7 +197,7 @@ Az adat-előállító nevének *globálisan egyedinek* kell lennie. Ha a Név me
 
 1. Az **1. lehetőség: Expressz telepítés** alatt kattintson a **Kattintson ide a számítógépen történő expressz telepítés indításához** elemre. 
 
-    ![Expressz telepítés hivatkozás](./media/tutorial-hybrid-copy-portal/click-exress-setup.png)
+    ![Expressz telepítés hivatkozás](./media/tutorial-hybrid-copy-portal/click-express-setup.png)
 
 1. Az **Integrációs modul (Saját üzemeltetésű) – Expressz telepítés** ablakban válassza a **Bezárás** elemet. 
 
@@ -237,7 +237,7 @@ Az adat-előállító nevének *globálisan egyedinek* kell lennie. Ha a Név me
 
 1. Lépjen az **SQLServerToBlobPipeline** folyamatot tartalmazó lapra, vagy válassza az **SQLServerToBlobPipeline** folyamatot a fanézetben. 
 
-    ![Folyamat lap](./media/tutorial-hybrid-copy-portal/pipeliene-tab.png)
+    ![Folyamat lap](./media/tutorial-hybrid-copy-portal/pipeline-tab.png)
 
 1. Lépjen a **Fogadó** lapra a **Tulajdonságok** ablak alján, és válassza a **+ Új** elemet. 
 

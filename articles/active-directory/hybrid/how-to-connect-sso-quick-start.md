@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c16da55540faaf165faa592c3565b317a8eab922
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 6d6b8d2bddcd3ac622a2a5f51ebe78cbecc29c29
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914090"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687333"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyors üzembe helyezési
 
@@ -91,7 +91,7 @@ Kövesse az alábbi utasításokat, győződjön meg arról, hogy engedélyezte 
 ![Az Azure portal: az Azure AD Connect panel](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
-> Közvetlen egyszeri bejelentkezés nevű számítógép-fiókot hoz létre `AZUREADSSOACC` (amely jelöli az Azure AD) a helyszíni Active Directory (AD) minden olyan AD-erdőben. Ennek a számítógépfióknak a funkció működéséhez szükség van. Helyezze át a `AZUREADSSOACC` számítógépfiók, egy szervezeti egység (OU) más számítógépfiókokat tároló biztosíthatja, hogy ugyanúgy kezeli, és nem törlődik.
+> Közvetlen egyszeri bejelentkezés nevű számítógép-fiókot hoz létre `AZUREADSSOACC` (amely jelöli az Azure AD) a helyszíni Active Directory (AD) minden olyan AD-erdőben. Ennek a számítógépfióknak a funkció működéséhez szükség van. Ha a Pass-the-Hash és a hitelesítő adatok ellopásának kockázatcsökkentési architektúrák a helyszíni környezetben használ, ellenőrizze, hogy a `AZUREADSSOACC` számítógépfiók végül nem a a karanténba helyezett tárolóra. A megfelelő módosításokat a számítógépfiók létrehozása a számítógépek tárolóban. Miután a közvetlen egyszeri bejelentkezés az Azure AD Connect varázsló sikeresen engedélyezve van, a `AZUREADSSOACC` , egy szervezeti egység (OU), más fiókok, győződjön meg arról, hogy az nem törlődik az véletlenül felügyelt számítógépfiókot.
 
 ## <a name="step-3-roll-out-the-feature"></a>3. lépés: A szolgáltatás bevezetése
 

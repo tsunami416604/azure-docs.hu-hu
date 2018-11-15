@@ -8,16 +8,16 @@ ms.date: 11/12/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a110c0a938e56c8ac276e0efed22ea3af23f111a
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 06dec64a55aaece4cd67ebf0485e34aa206a8936
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578535"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633733"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Folyamatos integráció és folyamatos üzembe helyezés az Azure IoT Edge-ben
 
-Ez a cikk bemutatja, hogyan lehet a a folyamatos integráció és folyamatos üzembe helyezési funkcióival az Azure DevOps-szolgáltatásokkal és a Microsoft Team Foundation Server (TFS) hozhat létre, tesztelheti és gyorsan és hatékonyan helyezhetnek üzembe alkalmazásokat az Azure IoT Edge-ben. 
+Az Azure IoT Edge-alkalmazásokkal egyszerűen képes befogadni fejlesztési és üzemeltetési [Azure IoT Edge Azure folyamatok](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy) vagy [Jenkins beépülő modul az Azure IoT Edge](https://plugins.jenkins.io/azure-iot-edge). Ez a cikk bemutatja, hogyan használhatja a folyamatos integráció és folyamatos üzembe helyezési funkcióival az Azure-adatcsatornák és a Microsoft Team Foundation Server (TFS) hozhat létre, tesztelheti és üzembe helyezése az alkalmazások gyorsan és hatékonyan az Azure IoT Edge. 
 
 Ez a cikk azt ismerteti, hogyan lehet:
 * Hozzon létre, és ellenőrizze a minta az IoT Edge-megoldás.
@@ -42,28 +42,28 @@ Ebben a szakaszban létrehoz egy mintául szolgáló IoT Edge megoldást tartalm
 
 3. A minta az IoT Edge-megoldást most már készen áll. Az alapértelmezett C# modul egy függőleges vonal üzenet-modult funkcionál. Az a `deployment.template.json`, látni fogja, ez a megoldás két lehetővé tevő modulokat tartalmaz. Az üzenet akkor jöjjön létre a `tempSensor` modult, és a rendszer kell közvetlenül adatcsatornán keresztül `FilterModule`, majd az IoT hubnak küldött.
 
-4. Ezek a projektek mentse, majd ellenőrizze azt az Azure DevOps, vagy a TFS-adattárba.
+4. Ezek a projektek mentse, majd ellenőrizze azt az Azure-Adattárakkal, vagy a TFS-adattárba.
     
 > [!NOTE]
 > Az Azure-kódtárak használatával kapcsolatos további információkért lásd: [megosztani a kódot a Visual Studio és az Azure-Adattárakkal](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts).
 
 
-## <a name="configure-azure-pipeline-for-continuous-integration"></a>Folyamatos integráció konfigurálása Azure folyamat
-Ebben a szakaszban létre fog hozni egy build folyamatot, amely automatikusan futnak, amikor ellenőrizheti a módosításokat a minta az IoT Edge-megoldás van beállítva, és megjelenik a build naplók az Azure folyamat.
+## <a name="configure-azure-pipelines-for-continuous-integration"></a>Folyamatos integráció konfigurálása Azure folyamatok
+Ebben a szakaszban létre fog hozni egy build folyamatot, amely automatikusan futnak, amikor ellenőrizheti a módosításokat a minta az IoT Edge-megoldás van beállítva, és megjelenik a build naplók az Azure-folyamatok.
 
-1. Jelentkezzen be az Azure DevOps-szervezet (**https://**_-fiók_**. visualstudio.com**), és nyissa meg a projekt, ha bejelölte a mintaalkalmazást.
+1. Jelentkezzen be az Azure DevOps-szervezet ( **https://dev.azure.com/{your szervezet} /**), és nyissa meg a projekt, ha bejelölte a mintaalkalmazást.
 
     ![Ellenőrizze a kód](./media/how-to-ci-cd/init-project.png)
 
-1. Látogasson el [Azure folyamat az Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy) DevOps Azure Marketplace-en. Kattintson a **regisztráljon ingyenesen** , és kövesse a varázsló az Azure DevOps-szervezet és a letöltés a TFS, a bővítmény telepítéséhez.
+1. Látogasson el [Azure folyamatok esetében az Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy) DevOps Azure Marketplace-en. Kattintson a **regisztráljon ingyenesen** , és kövesse a varázsló az Azure DevOps-szervezet és a letöltés a TFS, a bővítmény telepítéséhez.
 
     ![A bővítmény telepítése](./media/how-to-ci-cd/install-extension.png)
 
-1. Az Azure DevOps, nyissa meg a **Build & Release** hub és az a **buildek** lapra, majd **+ új adatcsatorna**. Vagy, ha már rendelkezik hozhat létre folyamatokat, válassza ki a **+ új** gombra.
+1. Az Azure-folyamatok, nyissa meg a **Build & Release** hub és az a **buildek** lapra, majd **+ új adatcsatorna**. Vagy, ha már rendelkezik hozhat létre folyamatokat, válassza ki a **+ új** gombra.
 
     ![Új adatcsatorna](./media/how-to-ci-cd/add-new-build.png)
 
-1. Ha a rendszer kéri, válassza ki a **Azure DevOps Git** forrás típusa. Ezután válassza ki a projektet, a tárházat és a fiókiroda, ahol a kód megtalálható. Válasszon **továbbra is**.
+1. Ha a rendszer kéri, válassza ki a **Git** a forrás típusaként. Ezután válassza ki a projektet, a tárházat és a fiókiroda, ahol a kód megtalálható. Válasszon **továbbra is**.
 
     ![Válassza ki a git](./media/how-to-ci-cd/select-vsts-git.png)
 
@@ -98,8 +98,8 @@ Ebben a szakaszban létre fog hozni egy build folyamatot, amely automatikusan fu
     Mentse az új buildelési folyamat. Kattintson a **Mentés** gombra.
 
 
-## <a name="configure-azure-pipeline-for-continuous-deployment"></a>Folyamatos üzembe helyezés konfigurálása Azure-folyamat
-Ebben a szakaszban létre fog hozni egy kiadási folyamatot, amely automatikusan futnak, amikor a buildelési folyamat csökken összetevők van beállítva, és a telepítési naplók az Azure-folyamat megjelenik.
+## <a name="configure-azure-pipelines-for-continuous-deployment"></a>Folyamatos üzembe helyezés Azure folyamatok konfigurálása
+Ebben a szakaszban létre fog hozni egy kiadási folyamatot, amely automatikusan futnak, amikor a buildelési folyamat csökken összetevők van beállítva, és annak üzembe helyezési naplók az Azure-folyamatok mutatja.
 
 1. Az a **kiadásokban** lapra, majd **+ új adatcsatorna**. Vagy, ha már rendelkezik kiadási folyamatokat, válassza ki a **+ új** gombra.  
 
@@ -165,7 +165,7 @@ Ebben a szakaszban létre fog hozni egy kiadási folyamatot, amely automatikusan
     
 ## <a name="verify-iot-edge-cicd-with-the-build-and-release-pipelines"></a>IoT Edge CI/CD kérdezze meg a build és a folyamatok felszabadítása
 
-Ebben a szakaszban a build, hogy működik a CI/CD-folyamat vált. Ellenőrizze az eredményt az Azure DevOps-portálon. 
+Ebben a szakaszban a build, hogy működik a CI/CD-folyamat vált. Ellenőrizze az üzembe helyezés sikeres.
 
 1. A fordítási feladatot indításához küldje le a véglegesítés forráskódraktárban vagy is aktiválása manuálisan. Is aktiválhatja a fordítási feladatot a buildelési folyamat kattintva a **várólista** gombra az alábbi képernyőképen látható módon.
 

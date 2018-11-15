@@ -1,6 +1,6 @@
 ---
 title: Egy megosztott saját üzemeltetésű integrációs modul létrehozása az Azure Data Factoryban a PowerShell-lel |} A Microsoft Docs
-description: Ismerje meg, egy megosztott saját üzemeltetésű integrációs modul létrehozása lehetővé teszi, hogy több data factoryk hozzáférés az Azure Data Factory integrációs modul.
+description: Megtudhatja, hogyan hozhat létre egy megosztott saját üzemeltetésű integrációs modul az Azure Data Factoryben, hogy több adat-előállítók hozzáférhessen az integrációs modul.
 services: data-factory
 documentationcenter: ''
 author: nabhishek
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: d7f3fbcb3235c8c620876e68a62f3e491770779d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: b32ea4293daa9206c6b0da4bdee777677c5d340d
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50252137"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685514"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory-with-powershell"></a>Az Azure Data Factoryban a PowerShell-lel megosztott saját üzemeltetésű integrációs modul létrehozása
 
-Ez az útmutató lépésről lépésre bemutatja, hogyan hozhat létre egy megosztott saját üzemeltetésű integrációs modulját (IR) az Azure Data Factory Azure PowerShell-lel. Majd egy másik data factoryben a megosztott saját üzemeltetésű integrációs modult is használhatja. Az oktatóanyag során a következő lépéseket hajtja végre: 
+Ez az útmutató lépésről lépésre bemutatja, hogyan hozhat létre egy megosztott saját üzemeltetésű integrációs modul az Azure Data Factoryban az Azure PowerShell használatával. Majd egy másik data factoryben a megosztott saját üzemeltetésű integrációs modult is használhatja. Ebben az oktatóanyagban a következő lépéseket hajtja végre: 
 
 1. Adat-előállító létrehozása 
 1. Hozzon létre egy saját üzemeltetésű integrációs modult.
@@ -33,18 +33,16 @@ Ez az útmutató lépésről lépésre bemutatja, hogyan hozhat létre egy megos
 
 - **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt. 
 
-- **Azure PowerShell**. Kövesse a [Azure PowerShell telepítése a Windows](/powershell/azure/install-azurerm-ps). PowerShell-parancsprogrammal hozzon létre egy saját üzemeltetésű integrációs modult, amelyek megoszthatók a többi adat-előállítók használhatja. 
+- **Azure PowerShell**. Kövesse a [Azure PowerShell telepítése a Windows a Powershellgettel](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-6.11.0). PowerShell-parancsprogrammal hozzon létre egy saját üzemeltetésű integrációs modult, amelyek megoszthatók a többi adat-előállítók használhatja. 
 
-> [!NOTE]
-> Azure-régióban, amelyben a Data Factory jelenleg listája, válassza ki a régiók, az Ön által megszabott a következő oldalon: [elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
+> [!NOTE]  
+> Azure-régióban, amelyben a Data Factory jelenleg listája, válassza ki az Önt érdeklő a régiók [elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. Indítsa el a Windows PowerShell ISE-ben.
+1. Indítsa el a Windows PowerShell integrált parancsfájlkezelési környezetet (ISE).
 
-1. Változók létrehozása.
-
-    Másolja és illessze be az alábbi parancsfájlt, és a változók (SubscriptionName, ResourceGroupName stb.) cserélje le tényleges értékekre. 
+1. Változók létrehozása. Másolja és illessze be az alábbi parancsfájlt. Cserélje le a változókat, például **SubscriptionName** és **ResourceGroupName**, tényleges értékekre: 
 
     ```powershell
     # If input contains a PSH special character, e.g. "$", precede it with the escape character "`" like "`$". 
@@ -65,9 +63,7 @@ Ez az útmutató lépésről lépésre bemutatja, hogyan hozhat létre egy megos
     $LinkedIntegrationRuntimeDescription = "[Description for Linked Integration Runtime]"
     ```
 
-1. Jelentkezzen be, és válasszon ki egy előfizetést.
-
-    Adja meg a következő kódot a szkripthez jelentkezik be, és válassza ki az Azure-előfizetés:
+1. Jelentkezzen be, és válasszon ki egy előfizetést. Adja meg a következő kódot a szkripthez jelentkezik be, és válassza ki az Azure-előfizetés:
 
     ```powershell
     Connect-AzureRmAccount
@@ -76,9 +72,10 @@ Ez az útmutató lépésről lépésre bemutatja, hogyan hozhat létre egy megos
 
 1. Hozzon létre egy erőforráscsoportot és a egy adat-előállítót.
 
-    *(Ez a lépés nem kötelező. Ha már rendelkezik egy adat-előállítót, kihagyhatja ezt a lépést.)* 
+    > [!NOTE]  
+    > Ez a lépés nem kötelező. Ha már rendelkezik egy adat-előállítót, kihagyhatja ezt a lépést. 
 
-    Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/resource-group-overview.md) a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) paranccsal. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy erőforráscsoportot, nevű `myResourceGroup` WestEurope a helyen. 
+    Hozzon létre egy [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) használatával a [New-AzureRmResourceGroup](https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-6.11.0) parancsot. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy erőforráscsoportot, nevű `myResourceGroup` WestEurope a helyen: 
 
     ```powershell
     New-AzureRmResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
@@ -94,7 +91,8 @@ Ez az útmutató lépésről lépésre bemutatja, hogyan hozhat létre egy megos
 
 ## <a name="create-a-self-hosted-integration-runtime"></a>Saját üzemeltetésű Integration Runtime létrehozása
 
-*(Ez a lépés nem kötelező. Ha már rendelkezik a saját üzemeltetésű integrációs modul többi adat-előállítók megosztani kívánt, kihagyhatja ezt a lépést.)*
+> [!NOTE]  
+> Ez a lépés nem kötelező. Ha már rendelkezik a saját üzemeltetésű integrációs modul többi adat-előállítók megosztani kívánt, kihagyhatja ezt a lépést.
 
 Futtassa a következő parancsot egy saját üzemeltetésű integrációs modul létrehozásához:
 
@@ -132,7 +130,8 @@ A válasz tartalmazza a saját üzemeltetésű integration runtime hitelesítés
 
 ### <a name="create-another-data-factory"></a>Egy másik adat-előállító létrehozása
 
-*(Ez a lépés nem kötelező. Ha már rendelkezik az adat-előállítót, amellyel meg szeretné osztani, kihagyhatja ezt a lépést.)*
+> [!NOTE]  
+> Ez a lépés nem kötelező. Ha már rendelkezik az adat-előállítót, amely a megosztani kívánt, kihagyhatja ezt a lépést.
 
 ```powershell
 $factory = Set-AzureRmDataFactoryV2 -ResourceGroupName $ResourceGroupName `
@@ -141,9 +140,9 @@ $factory = Set-AzureRmDataFactoryV2 -ResourceGroupName $ResourceGroupName `
 ```
 ### <a name="grant-permission"></a>Engedély megadása
 
-Engedélyt ad az adat-előállítót, amelyek a saját üzemeltetésű integrációs modul létrehozása, és regisztrálva hozzáférésre van szüksége.
+Az adat-előállítót, amelyek a saját üzemeltetésű integrációs modul létrehozása, és regisztrálva hozzáférésre van szüksége a engedélyt.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Ebben a lépésben se hagyja ki!
 
 ```powershell
@@ -167,11 +166,11 @@ Set-AzureRmDataFactoryV2IntegrationRuntime `
     -Description $LinkedIntegrationRuntimeDescription
 ```
 
-Most már használhatja a társított integrációs modul bármely társított szolgáltatásban. A társított integrációs modul használatával a megosztott integrációs modul tevékenységek futtatásához.
+Most már használhatja a társított integrációs modul bármely társított szolgáltatásban. A társított integrációs modul használja a megosztott integrációs modul tevékenységek futtatásához.
 
 ## <a name="revoke-integration-runtime-sharing-from-a-data-factory"></a>Az integration runtime az adat-előállító megosztása visszavonása
 
-Visszavonni a hozzáférést, a megosztott integrációs modul hozzáférjen egy adat-előállító, a következő parancsot futtathatja:
+Adat-előállító, a megosztott integrációs modul a hozzáférés visszavonásához futtassa a következő parancsot:
 
 ```powershell
 Remove-AzureRMRoleAssignment `
@@ -180,7 +179,7 @@ Remove-AzureRMRoleAssignment `
     -Scope $SharedIR.Id
 ```
 
-A meglévő társított integrációs modul eltávolításához futtassa a következő parancsot a megosztott integrációs modul szemben:
+Távolítsa el a meglévő kapcsolt integrációs modult, a következő parancsot a megosztott integrációs modul szemben:
 
 ```powershell
 Remove-AzureRmDataFactoryV2IntegrationRuntime `
@@ -193,6 +192,6 @@ Remove-AzureRmDataFactoryV2IntegrationRuntime `
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át az integration runtime fogalmait [integrációs modul az Azure Data Factory](concepts-integration-runtime.md).
+- Felülvizsgálat [az Azure Data Factory integrációs modul fogalmak](https://docs.microsoft.com/en-us/azure/data-factory/concepts-integration-runtime).
 
-- Ismerje meg, hogyan hozhat létre egy saját üzemeltetésű integrációs modul az Azure Portalon, [létrehozása és a egy saját üzemeltetésű integrációs modul konfigurálása](create-self-hosted-integration-runtime.md).
+- Ismerje meg, hogyan [egy saját üzemeltetésű integrációs modul létrehozása az Azure Portalon](https://docs.microsoft.com/en-us/azure/data-factory/create-self-hosted-integration-runtime).

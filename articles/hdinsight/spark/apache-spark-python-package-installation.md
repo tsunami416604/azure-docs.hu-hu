@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: af25dcff2302827f2291d50972f09b8b5fda6cd3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 093a5eb7ee366abfdbc4c5dba68739544b438ff2
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255438"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684528"
 ---
 # <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Parancsfájlművelet használata a HDInsight Apache Spark-fürtök Jupyter notebookokhoz külső Python-csomagok telepítése
 > [!div class="op_single_selector"]
@@ -51,7 +51,7 @@ A Microsoft Azure HDInsight szolgáltatást használ az ökoszisztéma formátum
 
 A HDInsight szolgáltatásban elérhető nyílt forráskódú összetevőket két típusa van:
 
-* **Beépített összetevők** – ezek az összetevők a HDInsight-fürtök előre telepítve vannak, és adja meg a fürt fő funkciói. Ha például YARN ResourceManager, a Hive-lekérdezés nyelv (HiveQL) és a Mahout kódtár tartoznak ebbe a kategóriába. Kiszolgálófürt-összetevők teljes listája megtalálható [a HDInsight által biztosított Hadoop-fürtverziók újdonságai](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-component-versioning).
+* **Beépített összetevők** – ezek az összetevők a HDInsight-fürtök előre telepítve vannak, és adja meg a fürt fő funkciói. Ha például YARN ResourceManager, a Hive-lekérdezés nyelv (HiveQL) és a Mahout kódtár tartoznak ebbe a kategóriába. Kiszolgálófürt-összetevők teljes listája megtalálható [a HDInsight által biztosított Hadoop-fürtverziók újdonságai](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
 * **Egyéni összetevők** -, a fürt felhasználói telepítése vagy használata az alkalmazások és szolgáltatások valamelyik összetevő a Közösségben elérhető vagy Ön által létrehozott.
 
 > [!WARNING]

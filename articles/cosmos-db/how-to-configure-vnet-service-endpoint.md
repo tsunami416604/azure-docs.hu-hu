@@ -7,12 +7,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: b788490d588c217d97786f9306baad3083a9c03f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: a7c2d1e41fa4ac26854e2e6ab57184cd6ed0bd0c
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629163"
+ms.locfileid: "51633682"
 ---
 # <a name="how-to-access-azure-cosmos-db-resources-from-virtual-networks"></a>A virtuális hálózatok az Azure Cosmos DB-erőforrások elérése
 
@@ -31,7 +31,7 @@ A következő szakaszok ismertetik, hogyan konfigurálhatja a virtuális hálóz
 
 ### <a name="configure-service-endpoint-for-an-existing-azure-virtual-network-and-subnet"></a>A meglévő Azure virtuális hálózat és alhálózat szolgáltatásvégpont beállítása
 
-1. A **összes erőforrás** panelen keresse meg a virtuális hálózati szeretné biztonságossá tételéhez.
+1. A **összes erőforrás** panelen keresse meg az Azure Cosmos-fiók szeretné biztonságossá tételéhez.
 
 1. Válassza ki **tűzfalak és virtuális hálózatok** beállítások menüjében, majd engedélyezze a hozzáférést **kiválasztott hálózatok**.
 
@@ -42,7 +42,7 @@ A következő szakaszok ismertetik, hogyan konfigurálhatja a virtuális hálóz
    ![Válassza ki a virtuális hálózatot és alhálózatot](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png)
 
 
-1. Az Azure Cosmos-fiók engedélyezése után csak a kiválasztott alhálózat forgalmát engedélyezi. A virtuális hálózatot és alhálózatot hozzáadott meg kell jelennie az alábbi képernyőképen látható módon:
+1. A virtuális hálózat eléréséhez az Azure Cosmos-fiók engedélyezése után csak akkor engedélyezi a kiválasztott alhálózat forgalmát. A virtuális hálózatot és alhálózatot hozzáadott meg kell jelennie az alábbi képernyőképen látható módon:
 
    ![virtuális hálózat és alhálózat sikeresen konfigurálva](./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
 
@@ -183,6 +183,10 @@ A következő lépések használatával konfigurálja a szolgáltatásvégpontot
 1. Alhálózati ACL-ek a meglévő Azure-Cosmos-fiók frissítése
 
    ```azurecli-interactive
+
+   name="<Azure Cosmos account name>"
+   resourceGroupName="<Resource group name>"
+
    az cosmosdb update \
       --name $name \
     --resource-group $resourceGroupName \

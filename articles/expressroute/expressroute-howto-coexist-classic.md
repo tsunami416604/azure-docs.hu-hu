@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: charwen
-ms.openlocfilehash: 09d1649f0ca0cf4ca464d95b29461cad3fe51788
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
-ms.translationtype: HT
+ms.openlocfilehash: 30d56acf6bd3a882622af41ca0f2095572f72f71
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
-ms.locfileid: "22710133"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615738"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>Párhuzamos ExpressRoute- és párhuzamos helyek közötti kapcsolatok konfigurálása (klasszikus)
 > [!div class="op_single_selector"]
@@ -29,11 +29,11 @@ ms.locfileid: "22710133"
 > 
 > 
 
-A helyek közötti VPN és az ExpressRoute konfigurálásának lehetősége több előnnyel jár. A helyek közötti VPN-t konfigurálhatja biztonságos feladatátvételi útvonalként az ExpressRoute számára, vagy használhat helyek közötti VPN-eket is a nem ExpressRoute-on keresztül kapcsolódó helyekhez való csatlakozáshoz. A cikkben mindkét forgatókönyv lépéseit ismertetjük. Ez a cikk a klasszikus üzembehelyezési modellre vonatkozik. Ez a konfiguráció a portálon nem érhető el.
+A helyek közötti VPN és az ExpressRoute konfigurálásának lehetősége több előnnyel jár. Site-to-Site VPN konfigurálhatja biztonságos feladatátvételi útvonalként az expressroute-hoz, vagy a nem expressroute-on keresztül kapcsolódó helyekhez való csatlakozáshoz használja a Site-to-Site VPN-eket. A cikkben mindkét forgatókönyv lépéseit ismertetjük. Ez a cikk a klasszikus üzembehelyezési modellre vonatkozik. Ez a konfiguráció a portálon nem érhető el.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
-**Tudnivalók az Azure üzembehelyezési modellekről**
+**Tudnivalók az Azure üzembe helyezési modelljeiről**
 
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
@@ -80,7 +80,7 @@ Két különböző eljáráscsoport közül választhat az egyidejűleg használ
     Ha még nem rendelkezik virtuális hálózattal, ez az eljárás lépésről lépésre végigvezeti az új virtuális hálózat létrehozásának folyamatán a klasszikus üzembehelyezési modellnek megfelelően, valamint az új ExpressRoute- és helyek közötti VPN-kapcsolatok létrehozásának folyamatán. A konfiguráláshoz kövesse a cikk az [Új virtuális hálózat és egyidejű kapcsolatok létrehozása](#new) szakaszában foglalt lépéseket.
 * Már rendelkezem egy klasszikus üzembehelyezési modell szerinti VNettel.
   
-    Előfordulhat, hogy már rendelkezik üzemelő virtuális hálózattal egy létező helyek közötti VPN- vagy ExpressRoute-kapcsolattal. A cikk [Egyidejű kapcsolatok konfigurálása meglévő VNet számára](#add) szakasza végigvezeti az átjáró törlésének, majd az új ExpressRoute- és helyek között VPN-kapcsolatok létrehozásának folyamatán. Ügyeljen arra, hogy az új kapcsolatok létrehozásakor a lépéseket szigorú sorrendben kell végrehajtani. Az átjárók és kapcsolatok létrehozására ne használja más cikkek utasításait.
+    Előfordulhat, hogy már rendelkezik üzemelő virtuális hálózattal egy létező helyek közötti VPN- vagy ExpressRoute-kapcsolattal. A cikk szakasz [az egyidejű kapcsolatok konfigurálása meglévő VNet számára](#add) végigvezeti az átjáró törlésének, majd az új ExpressRoute- és helyek közötti VPN-kapcsolatok létrehozásának. Ügyeljen arra, hogy az új kapcsolatok létrehozásakor a lépéseket szigorú sorrendben kell végrehajtani. Az átjárók és kapcsolatok létrehozására ne használja más cikkek utasításait.
   
     Ebben az eljárásban az egyidejű kapcsolatok létrehozásához törölnie kell az átjárót, majd új átjárókat kell konfigurálnia. Ez azt jelenti, hogy a helyszínek közötti kapcsolatok esetében állásidővel kell számolnia, amíg törli és újra létrehozza az átjárót és a kapcsolatokat, azonban a virtuális gépeket és a szolgáltatásokat nem kell áttelepítenie egy új virtuális hálózatra. Ha megfelelően vannak konfigurálva, a virtuális gépek és a szolgáltatások továbbra is képesek lesznek kommunikálni a terheléselosztón keresztül az átjáró konfigurálása közben.
 
@@ -228,6 +228,6 @@ Ha az átjáró-alhálózat /27 vagy nagyobb, és a virtuális hálózat Express
                 </Gateway>
 6. Ezen a ponton egy átjáró nélküli VNettel rendelkezik. Új átjárók létrehozásához és a kapcsolatok véglegesítéséhez folytathatja az előző lépéssorban foglalt [4. lépés – ExpressRoute-átjáró létrehozása](#gw) lépéssel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ az ExpressRoute-tal kapcsolatban: [ExpressRoute – Gyakori kérdések](expressroute-faqs.md).
 

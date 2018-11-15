@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 11/13/2018
 ms.author: adgera
 ms.custom: include file
-ms.openlocfilehash: beffdb0dcfc080bbb6c66a04f8a66454564db25d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 983ecd9973e3c4c0a74b0986317dcae75a023c79
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626150"
+ms.locfileid: "51637019"
 ---
-Az alábbi példákban `yourManagementApiUrl` URI-ját a digitális Twins API-k hivatkozik:
+Az alábbi példákban `YOUR_MANAGEMENT_API_URL` URI-ját a digitális Twins API-k hivatkozik:
 
 ```plaintext
-https://yourInstanceName.yourLocation.azuresmartspaces.net/management/api/v1.0/
+https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/api/v1.0/
 ```
 
-| Egyedi név | Csere erre |
+| Name (Név) | Csere erre |
 | --- | --- |
-| Példánynév | Az Azure digitális Twins-példány nevét |
-| yourLocation | Melyik kiszolgáló régióban lévő üzemeltetett a példány |
+| YOUR_INSTANCE_NAME | Az Azure digitális Twins-példány nevét |
+| YOUR_LOCATION | Melyik kiszolgáló régióban lévő üzemeltetett a példány |

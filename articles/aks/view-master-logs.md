@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: iainfou
-ms.openlocfilehash: c3256b2b1e8be0e883d0f7b47e66ab1fee95b042
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 5f151db9cb2cf7a5ef242f777cd2ad1820c856a8
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138166"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636686"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Engedélyezze, és tekintse át a Kubernetes Azure Kubernetes Service (AKS) naplózza a fő csomópont
 
@@ -42,7 +42,7 @@ Az alábbi példában portál képernyőképe a *diagnosztikai beállítások* a
 ![Log Analytics-munkaterületet a Log Analytics az AKS-fürt engedélyezése](media/view-master-logs/enable-oms-log-analytics.png)
 
 >[!NOTE]
->OMS-munkaterülete mostantól Log Analytics-munkaterületek nevezik.
+>Az OMS-munkaterületeket mostantól Log Analytics-munkaterületeknek nevezzük.
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Az AKS-fürtöt teszt podján ütemezése
 
@@ -116,7 +116,7 @@ Annak érdekében, hogy a naplóadatok elemzéséhez, az alábbi táblázat isme
 | *resourceId*             | Azure-erőforrás, amely a naplófájl előállítása |
 | *idő*                   | Időbélyeg, ha a napló feltöltése |
 | *kategória*               | A napló létrehozása tároló/összetevő neve |
-| *OperationName*          | Mindig *Microsoft.ContainerService/managedClusters/diagnositicLogs/Read* |
+| *OperationName*          | Mindig *Microsoft.ContainerService/managedClusters/diagnosticLogs/Read* |
 | *Properties.log*         | A napló az összetevőtől teljes szövege |
 | *Properties.Stream*      | *stderr* vagy *stdout* |
 | *Properties.Pod*         | A napló tartalomcsomagokból származó podnév |

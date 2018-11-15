@@ -18,16 +18,18 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 7b7f2133634a91b828d7e978c9041b12873fa3a1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b8dba999ac6523aad29aae40b528fd010fec0550
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997216"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687350"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>Útmutató: az Azure AD Graph API használata
 
 Az Azure Active Directory (Azure AD) Graph API programozás alapú hozzáférést biztosít az Azure AD-OData REST API-végpontokon keresztül. Alkalmazások a Azure AD Graph API segítségével hajthat végre létrehozása, olvasása, frissítése és törlése a directory-adatok és objektumok (CRUD) műveleteket. Például használhatja az Azure AD Graph API az új felhasználó létrehozása, megtekintése vagy a felhasználó tulajdonságainak frissítése, felhasználó jelszavának módosítására, ellenőrizze a szerepkör alapú hozzáférés érdekében a csoporttagság letiltása vagy a felhasználó törlése. További információ az Azure AD Graph API-funkciók és alkalmazás-forgatókönyvek: [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) és [Azure AD Graph API Előfeltételek](https://msdn.microsoft.com/library/hh974476.aspx).
+
+Ez a cikk az Azure AD Graph API-ra vonatkozik. Hasonló a Microsoft Graph API-val kapcsolatos információk: [a Microsoft Graph API-val](https://developer.microsoft.com/graph/docs/concepts/use_the_api).
 
 > [!IMPORTANT]
 > Az Azure AD Graph API helyett ajánljuk a [Microsoft Graph](https://developer.microsoft.com/graph) használatát az Azure Active Directory erőforrásainak eléréséhez. A fejlesztési energiáinkat mostantól a Microsoft Graph-ra koncentráljuk, az Azure AD Graph API-hoz nem tervezünk további fejlesztéseket. Nagyon korlátozott azon forgatókönyvek száma, amelyeknél az Azure AD Graph API használata még elegendő. További információért tekintse meg a [Microsoft Graph vagy Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) blogbejegyzést az Office fejlesztői központjában.

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 0058ce8316fa8202cf53eaa1048a44b77efdecb5
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 15064e90690064e67b296e7a46749f27773c0814
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012445"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636900"
 ---
 # <a name="token-session-and-single-sign-on-configuration-in-azure-active-directory-b2c"></a>Jogkivonat, munkamenet és egyszeri bejelentkezés beállításainak az Azure Active Directory B2C-vel
 
@@ -26,9 +26,9 @@ Ez a funkció lehetővé teszi részletesebb szabályozás érdekében az egy [h
 - A biztonsági jogkivonatokat az Azure AD B2C által kibocsátott jogcímek fontos formátumát.
 - Egyszeri bejelentkezés (SSO) viselkedését több alkalmazásokat és szabályzatokat az Azure AD B2C-bérlőben.
 
-Beépített szabályzatokat használhatja ezt a szolgáltatást az Azure AD B2C-címtárát a következő:
+Használhatja ezt a szolgáltatást minden olyan házirendtípus, de ebben a példában a funkció használata regisztrálási vagy bejelentkezési szabályzat megjelenítése. Beépített szabályzatokat használhatja ezt a szolgáltatást az Azure AD B2C-címtárát a következő:
 
-1. Kattintson a **regisztrálási vagy bejelentkezési szabályzatok**. * Megjegyzés: Használhatja ezt a szolgáltatást minden olyan házirendtípus, nem csak a ** regisztrálási vagy bejelentkezési szabályzatok x.
+1. Kattintson a **regisztrálási vagy bejelentkezési szabályzatok**.
 2. Nyissa meg a szabályzat ehhez kattintson rá. Kattintson például a **B2C_1_SiUpIn**.
 3. Kattintson a **szerkesztése** a menü tetején.
 4. Kattintson a **jogkivonatok, munkamenetek és egyszeri bejelentkezési konfiguráció**.

@@ -1,6 +1,6 @@
 ---
-title: A MapReduce és a távoli asztal a HDInsight - Azure Hadoop-keretrendszerrel
-description: Ismerje meg, hogy a távoli asztal használatával csatlakozhat a HDInsight a Hadoop és a MapReduce-feladatok futtatása.
+title: A MapReduce és a távoli asztal Apache hadooppal a HDInsight – Azure
+description: Ismerje meg, hogyan csatlakozhat a HDInsight az Apache Hadoop és a MapReduce-feladatok futtatása a távoli asztal használata.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ee87bd5743307ea5b9ee3ca1258e8cd985a095c5
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: b8cd389bee98058e5362a217268fb53d6aaf3424
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012928"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634481"
 ---
-# <a name="use-mapreduce-in-hadoop-on-hdinsight-with-remote-desktop"></a>A MapReduce használata a Hadooppal a HDInsight a távoli asztallal
+# <a name="use-mapreduce-in-apache-hadoop-on-hdinsight-with-remote-desktop"></a>A távoli asztalon keresztül a HDInsight az Apache Hadoop MapReduce használata
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-Ebből a cikkből megismerheti, hogyan és a egy Hadoop HDInsight-fürtön a távoli asztal használatával csatlakozhat, és a Hadoop-paranccsal futtassa a MapReduce-feladatok lesz.
+Ebből a cikkből megismerheti, hogyan és a egy Apache Hadoop HDInsight-fürtön a távoli asztal használatával csatlakozhat, és a Hadoop-paranccsal futtassa a MapReduce-feladatok lesz.
 
 > [!IMPORTANT]
 > A távoli asztal csak akkor használható a Windows-alapú HDInsight-fürtökön. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).

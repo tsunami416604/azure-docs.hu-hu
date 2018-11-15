@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: A Hadoop és a Hive Azure HDInsightban való használatának első lépései az Azure Portalon '
+title: 'Gyors útmutató: Ismerkedés az Apache Hadoop- és Apache Hive, az Azure HDInsight az Azure portal használatával '
 description: Ismerje meg, hogyan hozhat létre HDInsight-fürtöket az Azure Portal használatával, és hogyan kérdezhet le adatokat a Hive segítségével.
 keywords: hadoop első lépések, hadoop linux, hadoop rövid útmutató, hive első lépések, hive rövid útmutató
 services: hdinsight
@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,hdiseo17may2017,mvc
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 07f9f774e3d133a2a39aad16b06ed77938ad74c8
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 9b6ae9030069f48e1805a657f938595b081271ba
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281644"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632951"
 ---
-# <a name="quickstart-get-started-with-hadoop-and-hive-in-azure-hdinsight-using-the-azure-portal"></a>Rövid útmutató: A Hadoop és a Hive Azure HDInsightban való használatának első lépései az Azure Portalon
+# <a name="quickstart-get-started-with-apache-hadoop-and-apache-hive-in-azure-hdinsight-using-the-azure-portal"></a>Gyors útmutató: Ismerkedés az Apache Hadoop- és Apache Hive, az Azure HDInsight az Azure portal használatával
 
-Ebben a cikkben megtanulhatja, hogyan hozhat létre [Hadoop](http://hadoop.apache.org/)-fürtöket a HDInsightban az Azure Portal használatával, és hogyan futtathat Hive-feladatokat a HDInsightban. A legtöbb Hadoop-feladat kötegelt feladat. Létrehoz fog hozni egy fürtöt, futtat néhány feladatot, majd törölni fogja a fürtöt. Ebben a cikkben mind a három feladatot elvégzi.
+Ebből a cikkből megismerheti, hogyan hozhat létre [Apache Hadoop](http://hadoop.apache.org/) a HDInsight az Azure portal használatával, és futtassa az Apache Hive-feladatok a HDInsight-fürtök. A legtöbb Hadoop-feladat kötegelt feladat. Létrehoz fog hozni egy fürtöt, futtat néhány feladatot, majd törölni fogja a fürtöt. Ebben a cikkben mind a három feladatot elvégzi.
 
 Ebben a rövid útmutatóban egy HDInsight Hadoop-fürtöt hoz létre az Azure Portal használatával. Az [Azure Resource Manager-sablonok](apache-hadoop-linux-tutorial-get-started.md) használatával is létrehozhat fürtöket.
 

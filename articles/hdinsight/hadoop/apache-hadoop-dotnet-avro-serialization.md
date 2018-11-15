@@ -1,5 +1,5 @@
 ---
-title: Az Azure-beli Hadoop - Microsoft Avro Library - adatok szerializálása
+title: Az Azure-ban Apache Hadoop - Microsoft Avro Library - adatok szerializálása
 description: Megtudhatja, hogyan szerializálható és deszerializálható Hadoop on HDInsight a Microsoft Avro Library segítségével memóriában, adatbázisban vagy fájlban való megőrizni az adatokat.
 keywords: az avro, hadoop avro-hoz
 services: hdinsight
@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
 ms.custom: hdiseo17may2017
-ms.openlocfilehash: 5928c6490c9de6c48b75800158b8298007d7b8ed
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ae728cd1cfc27a17badcce319a8cd047b54ddb1e
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246905"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634005"
 ---
-# <a name="serialize-data-in-hadoop-with-the-microsoft-avro-library"></a>A Microsoft Avro Library a Hadoopban lévő adatok szerializálása
+# <a name="serialize-data-in-apache-hadoop-with-the-microsoft-avro-library"></a>Az Apache Hadoop, a Microsoft Avro Library segítségével az adatok szerializálása
 
 >[!NOTE]
 >Az Avro SDK-t a Microsoft már nem támogatott. A kódtár támogatja a nyílt forráskódú fejlesztői Közösség. A források a könyvtárban található [Github](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro).
@@ -52,17 +52,8 @@ A következőkre szükség a kódtár telepítése előtt:
 * <a href="https://www.microsoft.com/download/details.aspx?id=17851" target="_blank">A Microsoft .NET-keretrendszer 4</a>
 * <a href="http://james.newtonking.com/json" target="_blank">Newtonsoft Json.NET</a> (6.0.4 vagy újabb)
 
-Vegye figyelembe, hogy a Newtonsoft.Json.dll függőség telepítése a Microsoft Avro Library együtt automatikusan letöltött. Az eljárás megtalálható a következő szakaszt:
-
-A Microsoft Avro Library NuGet-csomagként, amely az alábbi eljárás segítségével telepíthető a Visual Studióból oszlik:
-
-1. Válassza ki a **projekt** lap -> **NuGet-csomagok kezelése...**
-2. Keressen rá a "Microsoft.Hadoop.Avro" kifejezésre a **Online keresés** mezőbe.
-3. Kattintson a **telepítése** megjelenítő gombra **Microsoft Azure HDInsight Avro Library**.
-
-Vegye figyelembe, hogy a Newtonsoft.Json.dll (> = 6.0.4) függőséget is letöltődik automatikusan a Microsoft Avro Library.
-
-A Microsoft Avro Library forráskódja elérhető [Github](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro).
+> [!Note]
+> A Microsoft Avro Library NuGet-csomagként már nem érhető el. Ha szeretné használni az Avro Libraryvel Klónozás a [Microsoft.Hadoop.Avro Github-adattár](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro) és állíthat össze a kódot a gépen.
 
 ## <a name="compile-schemas-using-avro-library"></a>Fordítsa le a sémák használata az Avro Libraryvel
 A Microsoft Avro Library tartalmaz egy code generation segédprogram, amely lehetővé teszi, hogy a korábban meghatározott JSON-sémája alapján automatikusan C# típusok létrehozása. A code generation segédprogram nem elosztott bináris futtatható, de az alábbi eljárás segítségével könnyen építhető:

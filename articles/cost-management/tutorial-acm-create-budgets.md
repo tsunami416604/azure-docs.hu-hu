@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 338035014cb8e34caa7aea688028a96d039b028c
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 49341b320df98bb08ee4f5c4ee061a51bec29ff2
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50977668"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686160"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Oktatóanyag: Létrehozása és kezelése az Azure költségvetése
 
-A Cost Management költségvetései segítenek a tervezésben és elősegítik a vállalaton belüli elszámolhatóságot. A költségvetések segítségével elszámolhat az egy adott időszak alatt használt vagy előfizetett Azure-szolgáltatásokkal. Ezek segítenek mások tájékoztatja a költségkeret-beállítási proaktív módon kezelheti a költségeket, és figyelheti a költségkeret-beállítási hogyan halad idővel. Hogyan költségkeret különböző fázisokon halad idővel megjelenik. Ha a létrehozott költségvetés küszöbérték túllépése esetén csak az értesítések aktiválódnak. Az erőforrások egyike sem érintett, és a használat nem leállt. Költségvetése segítségével nyomon követheti a Költekezési, a költségek elemzése és összehasonlítása.
+A Cost Management költségvetései segítenek a tervezésben és elősegítik a vállalaton belüli elszámolhatóságot. A költségvetések segítségével elszámolhat az egy adott időszak alatt használt vagy előfizetett Azure-szolgáltatásokkal. Ezek segítenek mások tájékoztatja a költségkeret-beállítási proaktív módon kezelheti a költségeket, és figyelheti a költségkeret-beállítási hogyan halad idővel. Ha a létrehozott költségvetés küszöbérték túllépése esetén csak az értesítések aktiválódnak. Az erőforrások egyike sem érintett, és a használat nem leállt. Költségvetése segítségével nyomon követheti a Költekezési, a költségek elemzése és összehasonlítása.
 
-A költségvetéshez automatikusan átállítani (havonta, negyedévente vagy évente) időszak végén a költségvetés ugyanakkora a jövőbeli lejárati dátumot kiválasztásakor. A költségvetés akkora alaphelyzetbe állítása, mert kell létrehoznia a különálló költségvetéseket, ha a tervezett pénznem összegek különböznek a későbbi elszámolási időszakokra.
+A költségvetéshez automatikusan átállítani (havonta, negyedévente vagy évente) időszak végén a költségvetés akkora lejárati dátumot a jövőben kiválasztásakor. A költségvetés akkora alaphelyzetbe állítása, mert kell létrehoznia a különálló költségvetéseket, ha a tervezett pénznem összegek különböznek a későbbi elszámolási időszakokra.
 
-Ebben az oktatóanyagban szereplő példák bemutatják, hogyan létrehozása és módosítása az Azure nagyvállalati szerződés (EA) előfizetésre költségvetést.
+Ebben az oktatóanyagban szereplő példák végigvezetik létrehozása és módosítása az Azure nagyvállalati szerződés (EA) előfizetésre költségvetést.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -77,7 +77,7 @@ Az előző példában létrehozott egy költségvetés-előfizetéssel. Azonban 
 
 ## <a name="edit-a-budget"></a>Költségvetési szerkesztése
 
-Függően a hozzáférési szintet, amelyet rendelkezik szerkesztheti a költségvetési tulajdonságainak módosításához. Az alábbi példa az egyes tulajdonságok írásvédettek, mivel a felhasználó csak az előfizetés közreműködő engedéllyel rendelkezik. Jelenleg a **lejárati dátum** le van tiltva, és a beállítása után nem módosítható.
+Függően a hozzáférési szintet, amelyet rendelkezik szerkesztheti a költségvetési tulajdonságainak módosításához. A következő példában az egyes tulajdonságok írásvédettek, mert a felhasználó csak az előfizetés közreműködő engedéllyel rendelkezik. Jelenleg a **lejárati dátum** le van tiltva, és a beállítása után nem módosítható.
 
 ![Költségvetés – közreműködői engedélye szerkesztése](./media/tutorial-acm-create-budgets/edit-budget.png)
 

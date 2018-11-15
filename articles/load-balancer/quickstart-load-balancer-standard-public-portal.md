@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 08/21/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 2197ab230341fb2945e7b1acd9a010ef3d3f8c22
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
-ms.translationtype: HT
+ms.openlocfilehash: df79581f4ad6af3dc420e7c7895acf46b5e3d997
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42702406"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615224"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rövid útmutató: Standard terheléselosztó létrehozása a virtuális gépek terhelésének elosztásához az Azure Portalon
 
@@ -145,6 +145,7 @@ Ahhoz, hogy a terheléselosztó monitorozhassa az alkalmazás állapotát, álla
     - Az állapotminta neve: *myHealthProbe*.
     - Protokoll típusa: **HTTP**.
     - Portszám: *80*.
+    - *Healthprobe.aspx* - URI elérési úthoz. Cserélje le ezt az értéket bármely más URI vagy tartsa meg az alapértelmezett elérési útja értéket **"\\"** beolvasni az alapértelmezett URI-t.
     - A mintavételi kísérletek közötti **Időköz** másodpercben megadva: *15*.
     - A **Nem kifogástalan állapot küszöbértéke**, vagyis hány egymást követő meghibásodásnak kell történnie, hogy a rendszer sérültnek minősítsen egy virtuális gépet: *2*.
 4. Kattintson az **OK** gombra.

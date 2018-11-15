@@ -1,6 +1,6 @@
 ---
 title: Kinyerés, átalakítás és betöltés (ETL) nagy léptékben – Azure HDInsight
-description: Ismerje meg, hogyan ETL és a Hadoop HDInsight használatban van.
+description: Ismerje meg, hogyan ETL HDInsight az Apache Hadoop használatban van.
 services: hdinsight
 author: ashishthaps
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 6af55bf8311efc14687ee16c3226988fd730081d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 17aeb847a2c701abf03b46d47e34d13b6fb27316
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049002"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633325"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Kinyerési, átalakítási és betöltési (ETL) ipari méretekben
 
-Kinyerési, átalakítási és betöltési (ETL) az a folyamat, amellyel adatok különböző forrásokból származó megszerzett, egy standard szintű helyen, tisztítani és feldolgozását, és végső soron tölt be egy adattár, amelyről lekérdezhetők. Adatok importálása, megtisztítsa tőle a helyen és tárolása egy relációs adatok motor hagyományos ETL-folyamatok. A HDInsight Hadoop-ökoszisztéma összetevők számos támogatják a nagy mennyiségű ETL végrehajtása. 
+Kinyerési, átalakítási és betöltési (ETL) az a folyamat, amellyel adatok különböző forrásokból származó megszerzett, egy standard szintű helyen, tisztítani és feldolgozását, és végső soron tölt be egy adattár, amelyről lekérdezhetők. Adatok importálása, megtisztítsa tőle a helyen és tárolása egy relációs adatok motor hagyományos ETL-folyamatok. A HDInsight az Apache Hadoop-ökoszisztéma összetevők számos támogatják a ETL végrehajtása ipari méretekben. 
 
 Ez a folyamat HDInsight használatának az az ETL-folyamat lehet összegezni:
 

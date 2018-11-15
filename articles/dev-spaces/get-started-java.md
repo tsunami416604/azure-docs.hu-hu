@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: mmontwil
-ms.openlocfilehash: f07c5a3e28abc3600b13da2320e55860ede2f7c5
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
-ms.translationtype: HT
+ms.openlocfilehash: 6bee2d4e41c383edac81a6b511cf5cfc5d68da9f
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978280"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636628"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-java"></a>Bevezetés az Azure Dev Spaces Java segítségével történő használatába
 
@@ -71,7 +71,7 @@ az group create --name MyResourceGroup --location <region>
 Hozzon létre egy Kubernetes-fürtöt az alábbi paranccsal:
 
 ```cmd
-az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.11.2 --enable-addons http_application_routing
+az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.11.2 --enable-addons http_application_routing --generate-ssh-keys
 ```
 
 A fürt létrehozása néhány percet vesz igénybe.
@@ -83,6 +83,9 @@ A fürt létrehozása néhány percet vesz igénybe.
    ```cmd
    az aks use-dev-spaces -g MyResourceGroup -n MyAKS
    ```
+
+> [!IMPORTANT]
+> Az Azure fejlesztési tárolóhelyek konfigurációs folyamat eltávolítja a `azds` névtér a fürtben, ha az már létezik.
 
 ## <a name="get-kubernetes-debugging-for-vs-code"></a>Kubernetes-hibakeresés VS Code-hoz
 A VS Code-ot használó .NET Core- és Node.js-felhasználók számára számos funkció érhető el, mint például a Kubernetes-hibakeresés.

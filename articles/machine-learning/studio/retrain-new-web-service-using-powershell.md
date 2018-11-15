@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 069a3022cf9b6423b95e8f9f35686965d2654be7
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: abef73a477355d89236b1f62cffc1f3d05ba03d0
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39631078"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687231"
 ---
 # <a name="retrain-a-new-resource-manager-based-web-service-using-the-machine-learning-management-powershell-cmdlets"></a>A Machine Learning Management PowerShell-parancsmagok használatával új Resource Manager-alapú webszolgáltatás újratanítása
 Ha egy új webszolgáltatás újratanítása, a prediktív webszolgáltatás-definíciójának való hivatkozáshoz az új betanított modell frissítenie.
@@ -69,7 +69,7 @@ Meglévő webszolgáltatás, az erőforráscsoport nevének megállapításához
 
 Azt is megteheti annak megállapításához, a meglévő webszolgáltatás az erőforráscsoport neve, jelentkezzen be a Microsoft Azure Machine Learning Web Services portálon. Válassza ki a web service. Az erőforráscsoport nevét a web service URL-CÍMÉT a minden ötödik eleme után a *resourceGroups* elemet. A következő példában az erőforráscsoport nevének alapértelmezett-MachineLearning-SouthCentralUS.
 
-    https://services.azureml.net/subscriptions/<subcription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
+    https://services.azureml.net/subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
 
 
 ## <a name="export-the-web-service-definition-as-json"></a>A webszolgáltatás-definíciójának exportálása JSON-fájlként

@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 6c9172140691f7107d3907ab86938d879989a6c0
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: d1127834732a6fc82e0331370a6c4173e9f61dcf
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748238"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685412"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C#-szkript (.csx) fejlesztői referencia
 
@@ -376,34 +376,27 @@ A fájlok feltöltéséről a függvény mappáját információkért lásd: a s
 A függvény parancsfájl fájlt tartalmazó könyvtárba címzett szerelvények módosítások automatikusan figyeli. Tekintse meg a szerelvény módosításokat más címtárakban, adja hozzá őket a `watchDirectories` listájában [host.json](functions-host-json.md).
 
 ## <a name="using-nuget-packages"></a>NuGet-csomagok használata
+A NuGet-csomagok használata egy C# működik, és töltse fel a *extensions.csproj* fájlt a függvényalkalmazás fájlrendszer a függvény mappájába. Íme egy példa *extensions.csproj* fájlt, amely hozzáad egy rá *Microsoft.ProjectOxford.Face* verzió *1.1.0-s*:
 
-NuGet-csomagok használata a C#-függvény, töltse fel a *project.json* fájlt a függvényalkalmazás fájlrendszer a függvény mappájába. Íme egy példa *project.json* fájlt, amely hozzáad egy rá Microsoft.ProjectOxford.Face 1.1.0-s verzió:
-
-```json
-{
-  "frameworks": {
-    "net46":{
-      "dependencies": {
-        "Microsoft.ProjectOxford.Face": "1.1.0"
-      }
-    }
-   }
-}
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net46</TargetFramework>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Microsoft.ProjectOxford.Face" Version="1.1.0" />
+    </ItemGroup>
+</Project>
 ```
-
-Az Azure-ban 1.x függvények, csak a .NET Framework 4.6 támogatott, ezért ügyeljen arra, hogy a *project.json* fájlban az `net46` itt látható módon.
-
-Amikor feltölt egy *project.json* fájlt, a modul lekérdezi a csomagokat, és automatikusan hozzáadja a csomag szerelvényre hivatkozik. Nem kell hozzá `#r "AssemblyName"` irányelveknek. A NuGet-csomagok; típusokkal használata Adja hozzá a szükséges `using` utasításokat a *run.csx* fájlt. 
-
-A Functions-futtatókörnyezetben NuGet visszaállítási összehasonlításával működik `project.json` és `project.lock.json`. Ha a fájlok dátum és idő stampek **nem** egyezést, egy NuGet-visszaállítás fut, és NuGet letöltések csomagok frissítése. Azonban ha a fájlok dátum és idő stampek **tegye** egyezik, a NuGet nem hajt végre a visszaállítást. Ezért `project.lock.json` nem kell telepíteni, ahogy azt eredményezi, hogy a NuGet csomag-visszaállítás kihagyása. A zárolási fájl telepítése elkerüléséhez adja hozzá a `project.lock.json` , a `.gitignore` fájlt.
 
 Egy egyéni NuGet-hírcsatorna használatához adja meg a hírcsatorna- *Nuget.Config* fájlt a Függvényalkalmazás gyökerében. További információkért lásd: [konfigurálása NuGet viselkedés](/nuget/consume-packages/configuring-nuget-behavior).
 
-### <a name="using-a-projectjson-file"></a>Project.json-fájllal
+### <a name="using-a-extensionscsproj-file"></a>Extensions.csproj fájl használatával
 
 1. Az Azure Portalon nyissa meg a függvényt. A naplófájlok lapján a csomag telepítése kimenetet jeleníti meg.
-2. A project.json-fájl feltöltéséhez használja az ismertetett módszerek valamelyikét a [függvény alkalmazásfájlok frissítése](functions-reference.md#fileupdate) az Azure Functions fejlesztői referencia-témakör.
-3. Miután a *project.json* fájlt töltenek fel úgy, hogy a függvényben az alábbi példához hasonlóan kimeneti a streamelési log:
+2. Feltölteni egy *extensions.csproj* fájlt, az ismertetett módszerek valamelyikét használja a [függvény alkalmazásfájlok frissítése](functions-reference.md#fileupdate) az Azure Functions fejlesztői referencia-témakör.
+3. Miután a *extensions.csproj* fájlt töltenek fel úgy, hogy a függvényben az alábbi példához hasonlóan kimeneti a streamelési log:
 
 ```
 2016-04-04T19:02:48.745 Restoring packages.
@@ -413,7 +406,7 @@ Egy egyéni NuGet-hírcsatorna használatához adja meg a hírcsatorna- *Nuget.C
 2016-04-04T19:02:50.261 C:\DWASFiles\Sites\facavalfunctest\LocalAppData\NuGet\Cache
 2016-04-04T19:02:50.261 https://api.nuget.org/v3/index.json
 2016-04-04T19:02:50.261
-2016-04-04T19:02:50.511 Restoring packages for D:\home\site\wwwroot\HttpTriggerCSharp1\Project.json...
+2016-04-04T19:02:50.511 Restoring packages for D:\home\site\wwwroot\HttpTriggerCSharp1\extensions.csproj...
 2016-04-04T19:02:52.800 Installing Newtonsoft.Json 6.0.8.
 2016-04-04T19:02:52.800 Installing Microsoft.ProjectOxford.Face 1.1.0.
 2016-04-04T19:02:57.095 All packages are compatible with .NETFramework,Version=v4.6.

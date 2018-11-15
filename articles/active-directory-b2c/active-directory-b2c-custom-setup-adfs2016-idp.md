@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 31ae13fb84453a7014b66499c983e1f52554775e
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: d94542e0c6c19fd3a79f465b69fadb6f3f28330e
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279126"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685769"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>AD FS egyéni szabályzatok használatával az Azure Active Directory B2C egy SAML-identitásszolgáltató hozzáadása
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ez a cikk bemutatja, hogyan bejelentkezés engedélyezése az AD FS felhasználói fiókjainak használatával [egyéni szabályzatok](active-directory-b2c-overview-custom.md) Azure Active Directory (Azure AD) B2C-ben.
+Ez a cikk bemutatja, hogyan bejelentkezés engedélyezése az AD FS felhasználói fiókjainak használatával [egyéni szabályzatok](active-directory-b2c-overview-custom.md) Azure Active Directory (Azure AD) B2C-ben. Engedélyezi a bejelentkezést hozzáadásával egy [SAML-alapú technikai profilban](saml-technical-profile.md) egy egyéni házirend.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

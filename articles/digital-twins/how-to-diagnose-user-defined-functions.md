@@ -6,14 +6,14 @@ manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 11/13/2018
 ms.author: stefanmsft
-ms.openlocfilehash: 852b2d35ae605f5529d162d52655fd258ca07c5a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: ac7664e94c6e02ab90dbb1b32a54c8234614afe2
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946096"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636271"
 ---
 # <a name="how-to-debug-issues-with-user-defined-functions-in-azure-digital-twins"></a>Felhasználó által definiált függvények használata az Azure digitális Twins problémák hibakeresése
 
@@ -42,12 +42,12 @@ Telemetria küldése után nyissa meg Azure Log Analytics használatával a napl
 
 ```Kusto
 AzureDiagnostics
-| where CorrelationId = 'yourCorrelationIdentifier'
+| where CorrelationId = 'YOUR_CORRELATION_IDENTIFIER'
 ```
 
-| Egyéni attribútum neve | Cserélje le |
+| Érték lekérdezése | Csere erre |
 | --- | --- |
-| *yourCorrelationIdentifier* | A korrelációs Azonosítót, amely az eseményadatok lett megadva |
+| YOUR_CORRELATION_IDENTIFIER | A korrelációs Azonosítót, amely az eseményadatok lett megadva |
 
 Ha a felhasználó által definiált függvény jelentkezik, ezeket a naplókat fog megjelenni az Azure Log Analytics-példány kategóriával `UserDefinedFunction`. Kérheti le azokat, az Azure Log Analyticsben adja meg a következő lekérdezési feltétel:
 
@@ -62,6 +62,8 @@ Hatékony lekérdezési műveletekkel kapcsolatos további információkért lá
 
 Diagnosztizálás és a gyakori problémák azonosításában is fontosak, a megoldás hibaelhárítása során. Számos gyakori problémát észlelt, amikor a felhasználó által definiált függvények fejlesztése alatti foglalja össze.
 
+[!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
+
 ### <a name="ensure-a-role-assignment-was-created"></a>Győződjön meg arról, szerepkör-hozzárendelés létrehozása
 
 Nélkül szerepkör-hozzárendelés létrehozott felügyeleti API a felhasználó által definiált függvény nem fog tudni hozzáférni minden olyan műveleteket, például az értesítések küldését, metaadatok beolvasása a, és beállítás számított értékek a topológia belül.
@@ -69,13 +71,12 @@ Nélkül szerepkör-hozzárendelés létrehozott felügyeleti API a felhasznál�
 Ellenőrizze, hogy a szerepkör-hozzárendelés a felügyeleti API-n keresztül a felhasználó által definiált függvény:
 
 ```plaintext
-GET https://yourManagementApiUrl/api/v1.0/roleassignments?path=/&traverse=Down&objectId=yourUserDefinedFunctionId
+GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_USER_DEFINED_FUNCTION_ID
 ```
 
-| Egyéni attribútum neve | Cserélje le |
+| Paraméter | Csere erre |
 | --- | --- |
-| *yourManagementApiUrl* | A felügyeleti API teljes URL-címe  |
-| *yourUserDefinedFunctionId* | Szerepkör-hozzárendeléseit a lekérdezni kívánt felhasználó által definiált függvény Azonosítóját|
+| *YOUR_USER_DEFINED_FUNCTION_ID* | Szerepkör-hozzárendeléseit a lekérdezni kívánt felhasználó által definiált függvény Azonosítóját|
 
 Ha nincsenek szerepkör-hozzárendelés beolvasott, végezze el a cikk [a felhasználó által definiált függvény szerepkör-hozzárendelés létrehozása](./how-to-user-defined-functions.md).
 
@@ -84,14 +85,13 @@ Ha nincsenek szerepkör-hozzárendelés beolvasott, végezze el a cikk [a felhas
 A következő hívást kell végrehajtanunk a digitális Twins Azure-példányok felügyeleti API-t akkor hamarosan meg tudja határozni, ha egy adott megfeleltetőben megadott érvényes az adott érzékelő.
 
 ```plaintext
-GET https://yourManagementApiUrl/api/v1.0/matchers/yourMatcherIdentifier/evaluate/yourSensorIdentifier?enableLogging=true
+GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSOR_IDENTIFIER?enableLogging=true
 ```
 
-| Egyéni attribútum neve | Cserélje le |
+| Paraméter | Csere erre |
 | --- | --- |
-| *yourManagementApiUrl* | A felügyeleti API teljes URL-címe  |
-| *yourMatcherIdentifier* | Az értékelni kívánt megfeleltetőben megadott azonosítója |
-| *yourSensorIdentifier* | Az értékelni kívánt érzékelő azonosítója |
+| *YOUR_MATCHER_IDENTIFIER* | Az értékelni kívánt megfeleltetőben megadott azonosítója |
+| *YOUR_SENSOR_IDENTIFIER* | Az értékelni kívánt érzékelő azonosítója |
 
 Válasz:
 
@@ -109,13 +109,12 @@ Válasz:
 Az Azure digitális Twins példányok felügyeleti API a következő hívással fogja meg tudja határozni a felhasználó által definiált függvények, amelyek a bejövő telemetriát az adott érzékelő által kiváltott azonosítók:
 
 ```plaintext
-GET https://yourManagementApiUrl/api/v1.0/sensors/yourSensorIdentifier/matchers?includes=UserDefinedFunctions
+GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=UserDefinedFunctions
 ```
 
-| Egyéni attribútum neve | Cserélje le |
+| Paraméter | Csere erre |
 | --- | --- |
-| *yourManagementApiUrl* | A felügyeleti API teljes URL-címe  |
-| *yourSensorIdentifier* | Az érzékelő, amely a telemetriát küldő azonosítója |
+| *YOUR_SENSOR_IDENTIFIER* | Az érzékelő, amely a telemetriát küldő azonosítója |
 
 Válasz:
 

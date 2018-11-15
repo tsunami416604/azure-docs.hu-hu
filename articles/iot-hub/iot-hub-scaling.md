@@ -1,19 +1,19 @@
 ---
 title: Méretezés az Azure IoT Hub |} A Microsoft Docs
 description: Hogyan skálázhatja az IoT hub a várható üzeneteinek átviteli sebessége és a kívánt funkciók támogatásához. A támogatott, az egyes szintek átviteli és a horizontális skálázási lehetőségek összegzését tartalmazza.
-author: kgremban
+author: wesmc7777
 manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
-ms.author: kgremban
-ms.openlocfilehash: d98a890cfb6bd388477ff3f14b81c8df02ece879
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.author: wesmc
+ms.openlocfilehash: c37492a42322ffc386751c4c63b981c9d93a72f6
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287965"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633376"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>A megoldás a megfelelő IoT Hub-csomag kiválasztása
 
@@ -31,7 +31,7 @@ Minden IoT Hub-csomag érhető el három méretben alapú körül mennyi adat á
 
 A standard szintű IoT-központ összes funkciókat tesz elérhetővé, és kötelező megadni minden olyan IoT-megoldások, győződjön meg arról, hogy a kívánt kétirányú kommunikációt képességeket használhatja. Az alapszintű csomag lehetővé teszi, hogy az funkciók egy részét, és csak egyirányú kommunikációs eszközökről a felhőbe igénylő IoT-megoldások szól. Mindkét rétegei ugyanazokat a biztonsági és hitelesítési szolgáltatásokat.
 
-Miután létrehozta az IoT hub, frissítheti az alapszintű csomag a standard szintre a meglévő operations megszakítása nélkül. További információkért lásd: [az IoT hub frissítése](iot-hub-upgrade.md). A partíciók maximális korlátot, az alapszintű csomag az IoT Hub 8 és a standard csomag az 32. A legtöbb IoT-központok csak 4 partíciók van szükség. A partíciós korlát akkor kell kiválasztani, amikor az IoT Hub jön létre, és az eszköz – felhő üzeneteket vonatkozik, az ezeket az üzeneteket az egyidejű olvasók. Ez az érték az alapszintű csomag a standard szintű csomag áttelepítésekor változatlan marad. Azt is vegye figyelembe, hogy csak egyféle típusú [edition](https://azure.microsoft.com/pricing/details/iot-hub/) szinten belüli választható ki az IoT Hub száma. Létrehozhat például egy IoT hubot, több S1-egységet, de nem különböző kiadásait, például az S1 és B3, vagy S1 és S2 egységek vegyesen.
+Csak egyféle típusú [edition](https://azure.microsoft.com/pricing/details/iot-hub/) szinten belüli választható ki az IoT Hub száma. Létrehozhat például egy IoT hubot, több S1-egységet, de nem különböző kiadásait, például az S1 és B3, vagy S1 és S2 egységek vegyesen.
 
 | Képesség | Alapszintű csomag | Standard csomag |
 | ---------- | ---------- | ------------- |
@@ -47,7 +47,22 @@ Miután létrehozta az IoT hub, frissítheti az alapszintű csomag a standard sz
 
 Az IoT Hub is biztosít egy ingyenes csomag, amelynek szinkronban tesztelés és értékelés céljából használják. Rendelkezik a standard szintű, de korlátozott üzenetkezelési keretek összes funkcióját. Az ingyenes vagy alapszintű vagy standard szintű nem verzióról. 
 
-### <a name="iot-hub-rest-apis"></a>IoT Hub REST API-k
+
+## <a name="partitions"></a>Partíciók
+
+Az Azure IoT Hubs tartalmaznia több fő összetevőinek [Azure Event Hubs](../event-hubs/event-hubs-features.md), többek között [partíciók](../event-hubs/event-hubs-features.md#partitions). Az IoT hubok az eseményfolyamokról általában különböző IoT-eszközök által jelentett bejövő telemetriai adatokkal van feltöltve. A particionálás az eseménystream versenyt válthat ki, amely fordulhat elő, ha az egyidejű olvasása és írása az eseményfolyamokról csökkentésére szolgál. 
+
+A partíciós korlát akkor kell kiválasztani, amikor az IoT Hub jön létre, és nem módosítható. A partíciók maximális korlátot, az alapszintű csomag IoT hubok 8, és a standard csomag esetében a maximális érték a 32. A legtöbb IoT-központok csak 4 partíciók van szükség. További információk a partíciók számával, az Event Hubs – gyakori kérdések: [hány partíciók van szükségem?](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
+
+
+## <a name="tier-upgrade"></a>Csomag frissítése
+
+Miután létrehozta az IoT hub, frissítheti az alapszintű csomag a standard szintre a meglévő operations megszakítása nélkül. További információkért lásd: [az IoT hub frissítése](iot-hub-upgrade.md).
+
+A partíció konfigurációját változatlan marad, az alapszintű csomag a standard szintű csomag áttelepítésekor.
+
+
+## <a name="iot-hub-rest-apis"></a>IoT Hub REST API-k
 
 A támogatott képességek közötti különbség az alapszintű és standard csomagokról az IoT Hub azt jelenti, hogy egyes API-hívások nem működik az alapszintű csomag hubs használatával. Az alábbi táblázat azt mutatja, melyik API-k érhetők el: 
 

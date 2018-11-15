@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/22/2018
 ms.author: dobett
-ms.openlocfilehash: 3e936b3e08884c1728809aea9054278ffdb99045
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 172c3011221e04bfdb4a4f3ae1515fe0eb10065b
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416987"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515250"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>Rövid útmutató: IoT Hubhoz csatlakozó eszköz vezérlése (Java)
 
@@ -26,6 +26,7 @@ Az IoT Hub olyan Azure-szolgáltatás, amely lehetővé teszi nagy mennyiségű 
 Ez a rövid útmutató két előre megírt Java-alkalmazást használ:
 
 * Egy szimulálteszköz-alkalmazás, amely válaszol a háttéralkalmazásokból meghívott közvetlen metódusokra. A közvetlen metódusok meghívásának fogadásához ez az alkalmazás az IoT Hubon található eszközspecifikus végponthoz csatlakozik.
+
 * Egy háttéralkalmazás, amely meghívja a közvetlen metódusokat a szimulált eszközre. A közvetlen metódus egy eszközre való meghívásához ez az alkalmazás az IoT Hubon található szolgáltatásoldali végponthoz csatlakozik.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -58,7 +59,7 @@ Ha még nem tette meg, töltse le a Java-mintaprojektet a https://github.com/Azu
 
 Ha már elvégezte a [Rövid útmutató: Telemetria küldése egy eszközről IoT Hubra](quickstart-send-telemetry-java.md) című előző útmutatót, kihagyhatja ezt a lépést.
 
-[!INCLUDE [iot-hub-quickstarts-create-hub](../../includes/iot-hub-quickstarts-create-hub.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Eszköz regisztrálása
 
@@ -68,13 +69,14 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 1. Futtassa az alábbi parancsokat az Azure Cloud Shellben az IoT Hub CLI-bővítmény hozzáadásához és az eszközidentitás létrehozásához. 
 
-   **YourIoTHubName**: A helyőrző helyére írja be az IoT Hubjához választott nevet.
+   **YourIoTHubName** : alább a helyőrzőt cserélje le az IoT hub számára is választott nevét.
 
    **MyJavaDevice**: Ezt a nevet kapja a regisztrált eszköz. A MyJavaDevice eszközt használja a bemutatott módon. Ha úgy dönt, hogy eszközének egy másik nevet választ, akkor az egész cikkben azt a nevet kell használnia, és a mintaalkalmazások futtatása előtt frissítenie kell bennük az eszköznevet.
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyJavaDevice
+    az iot hub device-identity create \
+      --hub-name YourIoTHubName --device-id MyJavaDevice
     ```
 
 2. Futtassa az alábbi parancsokat az Azure Cloud Shellben az imént regisztrált eszköz _eszközkapcsolati sztringjének_ lekéréséhez:
@@ -82,7 +84,10 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
    **YourIoTHubName**: A helyőrző helyére írja be az IoT Hubjához választott nevet.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyJavaDevice --output table
+    az iot hub device-identity show-connection-string \
+      -hub-name YourIoTHubName \
+      --device-id MyJavaDevice \
+      --output table
     ```
 
     Jegyezze fel az eszköz kapcsolati sztringjét, amely a következőképpen néz ki:
@@ -95,7 +100,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 Szüksége van egy _szolgáltatáskapcsolati sztringre_ is azért, hogy a háttéralkalmazás az üzenetek lekérése érdekében csatlakozhasson az IoT Hubhoz. Az alábbi parancs lekéri az IoT Hub szolgáltatáskapcsolati sztringjét:
    
-**YourIoTHubName**: A helyőrző helyére írja be az IoT Hubjához választott nevet.
+**YourIoTHubName** : alább a helyőrzőt cserélje le az IoT hub számára is választott nevét.
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name YourIoTHubName --output table
@@ -131,7 +136,7 @@ A szimulálteszköz-alkalmazás az IoT Hubon található eszközspecifikus végp
 
     A következő képernyőképen az a kimenet látható, amikor a szimulálteszköz-alkalmazás telemetriát küld az IoT Hubnak:
 
-    ![A szimulált eszköz futtatása](media/quickstart-control-device-java/SimulatedDevice-1.png)
+    ![A szimulált eszköz futtatása](./media/quickstart-control-device-java/SimulatedDevice-1.png)
 
 ## <a name="call-the-direct-method"></a>A közvetlen metódus meghívása
 
@@ -157,11 +162,11 @@ A háttéralkalmazás az IoT Hubon található szolgáltatásoldali végponthoz 
 
     A következő képernyőképen az a kimenet látható, amelyben az alkalmazás közvetlen metódust hív meg az eszközre, és megkapja a nyugtázást:
 
-    ![A háttéralkalmazás futtatása](media/quickstart-control-device-java/BackEndApplication.png)
+    ![A háttéralkalmazás futtatása](./media/quickstart-control-device-java/BackEndApplication.png)
 
     A háttéralkalmazás futtatása után megjelenik egy üzenet a szimulált eszközt futtató konzolablakban, és megváltozik az üzenetküldések gyakorisága:
 
-    ![Változás a szimulált ügyfélben](media/quickstart-control-device-java/SimulatedDevice-2.png)
+    ![Változás a szimulált ügyfélben](./media/quickstart-control-device-java/SimulatedDevice-2.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -169,7 +174,7 @@ A háttéralkalmazás az IoT Hubon található szolgáltatásoldali végponthoz 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban közvetlen metódust hívott meg egy eszközre egy háttéralkalmazásból, és válaszolt a közvetlenmetódus-hívásra egy szimulálteszköz-alkalmazásban.
+Ebben a rövid útmutatóban egy közvetlen metódust hívott az eszközön egy háttér-alkalmazásból, és a közvetlen metódus meghívása egy szimulált eszközalkalmazástól az válaszolt.
 
 Ha szeretné megtudni, hogy hogyan irányíthatók az eszközről felhőbe irányuló üzenetek különböző felhőbeli célokhoz, folytassa a következő oktatóanyaggal.
 

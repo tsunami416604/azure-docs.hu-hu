@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: mahender,cephalin
-ms.openlocfilehash: 6aa7f8c3b9d21d9c55aee3ce49f2bc140769a855
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 27726f261b2d9c88f1544a6e66ea352fbb98d253
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408064"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685667"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service-ben
 
@@ -92,7 +92,7 @@ Ha engedélyezi a hitelesítés és engedélyezés az egyik ilyen szolgáltatók
 A hitelesítési folyamat megegyezik az összes, de az eltér attól függően, hogy a szolgáltató SDK felhasználóval való bejelentkezéshez:
 
 - Szolgáltatói SDK nélkül: az alkalmazás összevont bejelentkezés App Service-ben irányelvmodulnak delegálja. Ez általában a helyzet a böngészőben megjelenő alkalmazásokba, amelyhez a felhasználónak a szolgáltató bejelentkezési oldal is jelenthet. A kiszolgálói kód a bejelentkezési folyamat kezeli, ezért a más néven _kiszolgáló által vezérelt folyamat_ vagy _server flow_. Ebben az esetben a webes alkalmazásokra vonatkozik. Natív alkalmazások, a Mobile Apps ügyfél-SDK használatával, mert az SDK-t, amelyekben az App Service-hitelesítés bejelentkezhetnek a felhasználók a webes nézet nyílik meg a felhasználók bejelentkezhetnek is vonatkozik. 
-- SDK-szolgáltatóval: az alkalmazás felhasználói manuálisan jelentkezik be, és ezután elküldi a hitelesítési jogkivonat az App Service-ellenőrzés céljából. Ez általában a helyzet böngésző nélküli alkalmazásokkal, amelyek a szolgáltató bejelentkezési oldal nem jelenik meg a felhasználónak. Az alkalmazás kódjának a bejelentkezési folyamat kezeli, ezért a más néven _ügyfél által vezérelt folyamat_ vagy _client flow_. Ebben az esetben a REST API-k, érvényes [Azure Functions](../azure-functions/functions-overview.md), és a JavaScript webböngésző-ügyfelek számára, valamint a bejelentkezési folyamat nagyobb rugalmasságot igénylő webes alkalmazások. Natív mobilalkalmazásokban, a szolgáltató SDK-val a felhasználók bejelentkezhetnek is vonatkozik.
+- A szolgáltatói SDK: a szolgáltató a felhasználók manuálisan aláírja az alkalmazást, és ezután elküldi a hitelesítési jogkivonat az App Service-ellenőrzés céljából. Ez általában a helyzet böngésző nélküli alkalmazásokkal, amelyek a szolgáltató bejelentkezési oldal nem jelenik meg a felhasználónak. Az alkalmazás kódjának a bejelentkezési folyamat kezeli, ezért a más néven _ügyfél által vezérelt folyamat_ vagy _client flow_. Ebben az esetben a REST API-k, érvényes [Azure Functions](../azure-functions/functions-overview.md), és a JavaScript webböngésző-ügyfelek számára, valamint a bejelentkezési folyamat nagyobb rugalmasságot igénylő webes alkalmazások. Natív mobilalkalmazásokban, a szolgáltató SDK-val a felhasználók bejelentkezhetnek is vonatkozik.
 
 > [!NOTE]
 > Az App Service szolgáltatásban egy megbízható böngészőalkalmazás hívásait meghívja a REST API-t egy másik App Service-ben vagy [Azure Functions](../azure-functions/functions-overview.md) lehet hitelesíteni a kiszolgáló által vezérelt folyamatot. További információkért lásd: [testre szabhatja a hitelesítés és engedélyezés az App Service-ben](app-service-authentication-how-to.md).
@@ -103,7 +103,7 @@ Az alábbi táblázat a hitelesítési folyamat lépéseit.
 | Lépés | Szolgáltatói SDK nélkül | SDK-szolgáltatóval |
 | - | - | - |
 | 1. A bejelentkezési felhasználói | Átirányítja az ügyfelet, hogy `/.auth/login/<provider>`. | Ügyfélkód felhasználó jelentkezik be közvetlenül a szolgáltató SDK-val, és a egy hitelesítési tokent kap. Információ a szolgáltató dokumentációjában talál. |
-| 2. Utóhitelesítés | Szolgáltató átirányítja az ügyfelet, hogy `/.auth/login/<provider>/callback`. | Ügyfélkód bejegyzések jogkivonat-szolgáltatót a `/.auth/login/<provider>` ellenőrzés céljából. |
+| 2. Utóhitelesítés | Szolgáltató átirányítja az ügyfelet, hogy `/.auth/login/<provider>/callback`. | Ügyfélkód [szolgáltatótól származó jogkivonat bejegyzések](app-service-authentication-how-to.md#validate-tokens-from-providers) való `/.auth/login/<provider>` ellenőrzés céljából. |
 | 3. Hitelesített munkamenet létrehozása | App Service-ben hitelesített cookie ad választ. | App Service-ben a saját hitelesítési jogkivonat ügyféloldali kódot ad vissza. |
 | 4. Hitelesített tartalmat szolgálnak ki | Ügyfél hitelesítési cookie-k tartalmazza (a böngésző automatikusan kezeli) későbbi kérelmeket. | Ügyfélkód megadja a hitelesítési jogkivonat `X-ZUMO-AUTH` (automatikusan kezeli a Mobile Apps-ügyfél SDK-k) fejléc. |
 

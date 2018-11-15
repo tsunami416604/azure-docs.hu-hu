@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 7eeb4fdba8272d9bc2b67d8a33dd7b1d210f5e47
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 61d9d33ae7e8e2104e61bbd24862a709dd6d78ec
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278599"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636492"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Oktatóanyag: Node.js-konzolalkalmazás létrehozása a JavaScript SDK-val az Azure Cosmos DB SQL API-adatok kezeléséhez
 
@@ -218,7 +218,7 @@ Most, hogy rendelkezik az Azure Cosmos DB-ügyfél elindításához szükséges 
    const containerId = config.container.id;
    ```
 
-   Az [adatbázis](sql-api-resources.md#databases) a **Databases** osztály [createIfNotExists](/javascript/api/%40azure/cosmos/databases) vagy [create](/javascript/api/%40azure/cosmos/databases) függvényének használatával hozható létre. Az adatbázis a tárolók között particionált elemek logikai tárolója. 
+   Egy adatbázis használatával hozható létre a [createIfNotExists](/javascript/api/%40azure/cosmos/databases) vagy [létrehozása](/javascript/api/%40azure/cosmos/databases) funkcióját a **adatbázisok** osztály. Az adatbázis a tárolók között particionált elemek logikai tárolója. 
 
 2. Másolja és illessze be a **createDatabase** és a **readDatabase** metódusokat a ```databaseId``` és a ```containerId``` definíciója alá az app.js fájlban. Ha még nem létezne, a **createDatabase** függvény létrehoz egy új adatbázist a ```FamilyDatabase``` azonosítóval, amelyet a ```config``` objektum határoz meg. A **readDatabase** függvény beolvassa az adatbázis definícióját, hogy ellenőrizze, hogy az adatbázis létezik-e.
 

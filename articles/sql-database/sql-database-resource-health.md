@@ -11,13 +11,13 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/13/2018
-ms.openlocfilehash: 520656297fd2f31f02d127e8662c26617a42db83
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.date: 11/14/2018
+ms.openlocfilehash: 9cbe88a44ba598a22fab628ae01605ac9d63bece
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629114"
+ms.locfileid: "51632628"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>A Resource Health használata az Azure SQL Database-kapcsolatának hibaelhárítása
 

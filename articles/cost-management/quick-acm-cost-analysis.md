@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/19/2018
+ms.date: 11/09/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 6b935322c9d892793f3695e0922d15f5886c7e25
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 40f3f56c15956a93176a753f7c66f66df1b8f5f4
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471288"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515726"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rövid útmutató – Költségek feltérképezése és elemzése a Költségelemzés szolgáltatás használatával
 
@@ -32,27 +32,14 @@ Ezen rövid útmutató segítségével megtanulhatja a következőket:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Költségelemzés az összes [Nagyvállalati Szerződéssel](https://azure.microsoft.com/pricing/enterprise-agreement/) rendelkező ügyfél számára elérhető. A költségadatok megtekintéséhez olvasási jogosultsággal kell rendelkeznie a következő hatókörök legalább egyikében:
+A Költségelemzés az összes [Nagyvállalati Szerződéssel](https://azure.microsoft.com/pricing/enterprise-agreement/) rendelkező ügyfél számára elérhető. A költségadatok megtekintéséhez olvasási jogosultsággal kell rendelkeznie a következő hatókörök legalább egyikében: További információ a Cost Management adataihoz való hozzáférés hozzárendelése: [adatokhoz való hozzáférés hozzárendelése](assign-access-acm-data.md).
 
-
-|**Hatókör**|**Meghatározás helye**|**Szükséges hozzáférés a hatókörbe eső költségek elemzéséhez**|**Nagyvállalati Szerződés előfeltételként szükséges beállítása**|**Számlázási adatok összesítésének helye**|
-|---                |---                  |---                   |---            |---           |
-|Számlázási fiók<sup>1</sup>|[https://ea.azure.com ](https://ea.azure.com )|Vállalati rendszergazda|None|A Nagyvállalati Szerződésben foglalt összes előfizetés|
-|Részleg|[https://ea.azure.com ](https://ea.azure.com )|Részlegszintű rendszergazda|Díjtételek megtekintésének engedélyezése a részlegszintű rendszergazda számára|A részleghez kapcsolt regisztrációs fiókhoz tartozó összes előfizetés|
-|Regisztrációs fiók<sup>2</sup2>|[https://ea.azure.com ](https://ea.azure.com )|Fióktulajdonos|Díjtételek megtekintésének engedélyezése a fióktulajdonos számára|A regisztrációs fiókhoz tartozó összes előfizetés|
-|Felügyeleti csoport|[https://portal.azure.com ](https://portal.azure.com )|Cost Management-olvasó (vagy olvasó)|Díjtételek megtekintésének engedélyezése a fióktulajdonos számára|A felügyeleti csoport alá tartozó összes előfizetés|
-|Előfizetés|[https://portal.azure.com ](https://portal.azure.com )|Cost Management-olvasó (vagy olvasó)|Díjtételek megtekintésének engedélyezése a fióktulajdonos számára|Az előfizetésben szereplő összes erőforrás/erőforráscsoport|
-|Erőforráscsoport|[https://portal.azure.com ](https://portal.azure.com )|Cost Management-olvasó (vagy olvasó)|Díjtételek megtekintésének engedélyezése a fióktulajdonos számára|Az erőforráscsoportban található összes erőforrás|
-
-<sup>1</sup>A számlázási fiókot gyakran Nagyvállalati Szerződésnek vagy Beléptetésnek is nevezik.
-
-<sup>2</sup>A regisztrációs fiókot gyakran fióktulajdonosnak is nevezik.
-
-A díjtételeket a **részlegszintű rendszergazda** és a **fióktulajdonos** számára láthatóvá tevő beállítások konfigurálásával kapcsolatos további információkért lásd [a díjtételekhez való hozzáféréssel foglalkozó részt](../billing/billing-enterprise-mgmt-grp-troubleshoot-cost-view.md#enabling-access-to-costs).
-
-
-
-
+- Számlázási fiók
+- Részleg
+- Regisztrációs fiók
+- Felügyeleti csoport
+- Előfizetés
+- Erőforráscsoport
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 

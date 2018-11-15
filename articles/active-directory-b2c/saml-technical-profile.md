@@ -10,22 +10,22 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c99099c9b0fdf485bcf1db1d00b23e1e119ec557
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 347a437a9f45f29348e97c616c985764135e5427
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614157"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687469"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Egyéni Azure Active Directory B2C-házirendek egy SAML-alapú technikai profilban meghatározása
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az Azure Active Directory (Azure AD) B2C támogatja az SAML 2.0 identitásszolgáltató. Ez a cikk ismerteti, amely támogatja a szabványos protokoll Jogcímszolgáltatók folytatott interakcióra szolgáló technikai profil adatait. Az SAML-alapú technikai profilban, a SAML-alapú identitásszolgáltató, például az ADFS és a Salesforce-ban, amely lehetővé teszi a felhasználóknak, hogy jelentkezzen be a meglévő közösségi vagy vállalati identitásokat használatával is összevonható.
+Az Azure Active Directory (Azure AD) B2C támogatja az SAML 2.0 identitásszolgáltató. Ez a cikk ismerteti, amely támogatja a szabványos protokoll Jogcímszolgáltatók folytatott interakcióra szolgáló technikai profil adatait. Az SAML technikai profilban, akkor is összevonható az egy SAML-alapú identitásszolgáltató, például [ADFS](active-directory-b2c-custom-setup-adfs2016-idp.md) és [Salesforce](active-directory-b2c-setup-sf-app-custom.md), amely lehetővé teszi a felhasználóknak, hogy jelentkezzen be a meglévő közösségi vagy vállalati identitásokat.
 
 ## <a name="metadata-exchange"></a>Metaadatok exchange
 
-Metaadatai elérhetővé egy SAML entitás, például a szolgáltató vagy az identitásszolgáltató konfigurációja a SAML protokoll használt információkat. Metaadatok helyét, a szolgáltatások, például a bejelentkezési és kijelentkezési, tanúsítványok, a bejelentkezési módszer, és egyéb határozza meg. Az identitásszolgáltató a metaadatok segítségével tudja, hogyan kell az Azure AD B2C-vel folytatott kommunikációhoz. A metaadatok XML formátumban van beállítva, és előfordulhat, hogy lehet egy digitális aláírásával, hogy a másik fél is a metaadatok integritásának ellenőrzését. Az Azure AD B2C-vel összevonja a SAML identitásszolgáltatóval, amikor egy SAML-kérelem indítása és SAML válaszra való várakozás a szolgáltató funkcionál. És bizonyos esetekben excepts kéretlen SAML-hitelesítés, amely más néven az identitásszolgáltató által kezdeményezett. 
+Metaadatai elérhetővé egy SAML entitás, például a szolgáltató vagy az identitásszolgáltató konfigurációja a SAML protokoll használt információkat. Metaadatok helyét, a szolgáltatások, például a bejelentkezési és kijelentkezési, tanúsítványok, a bejelentkezési módszer, és egyéb határozza meg. Az identitásszolgáltató a metaadatok segítségével tudja, hogyan kell az Azure AD B2C-vel folytatott kommunikációhoz. A metaadatok XML formátumban van beállítva, és előfordulhat, hogy lehet egy digitális aláírásával, hogy a másik fél is a metaadatok integritásának ellenőrzését. Az Azure AD B2C-vel összevonja a SAML identitásszolgáltatóval, amikor egy SAML-kérelem indítása és SAML válaszra való várakozás a szolgáltató funkcionál. És néhány esetben elfogadja a kéretlen SAML-hitelesítés, amely más néven az identitásszolgáltató által kezdeményezett. 
 
 A metaadatok "Statikus metaadatok" vagy "Dinamikus metaadatok" mindkét fél konfigurálható. Statikus módban a teljes metaadatokat másolja át az egyik fél, és állítsa be a másik fél. Dinamikus üzemmódban be az URL-cím metaadat, míg a másik fél dinamikusan beolvassa a konfiguráció. Az ismertetett alapelvek megegyeznek, az identitásszolgáltató beállítása a metaadatokat az Azure AD B2C-vel technikai profil, és a metaadatokat az identitásszolgáltató beállítása az Azure AD B2C-t.
 
@@ -34,14 +34,14 @@ Minden egyes SAML identitásszolgáltató tegye elérhetővé és a service prov
 Az alábbi példa bemutatja egy Azure AD B2C-vel technikai profil SAML-metaadataira mutató URL-címet:
 
 ```
-https://login.microsoftonline.com/te/your-tenant/your-policy/samlp/metadata?idptp=your-technical-profile
+https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadata?idptp=your-technical-profile
 ```
 
 Cserélje le a következő értékeket:
 
-- **a bérlő** az Ön bérlőneve, például a tenant.onmicrosoft.com
+- **a bérlő neve** a bérlő neve például fabrikam.b2clogin.com együtt.
 - **a szabályzat** a házirend neve. Használja a házirend, konfigurálhatja a SAML-alapú technikai profilban szolgáltató, vagy egy szabályzatot, amely örökli az adott házirendnek.
-- **a technikai profil** a SAML identity provider technikai profil neve
+- **a technikai profil** a SAML identity provider technikai profil neve.
 
 ## <a name="digital-signing-certificates-exchange"></a>Digitális aláíró tanúsítványok exchange
 

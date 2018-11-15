@@ -1,6 +1,6 @@
 ---
-title: Alkalmazásátjáró létrehozása URL-alapú átirányítással – Azure CLI
-description: Megismerheti, hogyan hozhat létre alkalmazásátjárót URL-alapú forgalomátirányítással az Azure CLI használatával.
+title: Oktatóanyag – hozzon létre egy application gateway URL-cím-alapú átirányítás – Azure CLI-vel
+description: Ebben az oktatóanyagban elsajátíthatja, hogyan hozhat létre egy application gateway URL-cím-alapú forgalmat az Azure CLI használatával.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 3515d603c16bffe911df1b927d02644fcffa0788
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 8489cf79848eb41e3c6334242ca607e925ae0b31
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46947550"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568148"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Oktatóanyag: Alkalmazásátjáró létrehozása URL-alapú átirányítással az Azure CLI használatával
 
@@ -313,14 +313,6 @@ Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az alkalmaz
 az group delete --name myResourceGroupAG --location eastus
 ```
 ## <a name="next-steps"></a>További lépések
-
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
-
-> [!div class="checklist"]
-> * A hálózat beállítása
-> * Application Gateway létrehozása
-> * Figyelők és útválasztási szabályok hozzáadása
-> * Virtuálisgép-méretezési csoportok létrehozása a háttérkészletekhez
 
 > [!div class="nextstepaction"]
 > [Ismerje meg részletesebben az alkalmazásátjárók lehetőségeit](application-gateway-introduction.md)

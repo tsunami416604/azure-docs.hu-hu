@@ -12,22 +12,24 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/16/2018
+ms.date: 11/11/2018
 ms.author: juliako
-ms.openlocfilehash: 9e6279b2f93cb68043fa96866d8269b7d60b9b25
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
-ms.translationtype: HT
+ms.openlocfilehash: a0ca9d8b51bc3cd5ed46b56a4d7fedb45211b136
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379246"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613490"
 ---
 # <a name="cli-example-create-an-azure-media-services-account"></a>CLI-példa: Azure Media Services-fiók létrehozása
 
 A jelen témakörben lévő Azure CLI-szkript bemutatja, hogyan hozhat létre Azure Media Services-fiókot.
 
-[!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
+## <a name="prerequisites"></a>Előfeltételek 
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0.20-as vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). 
+Telepítse és a parancssori Felületet helyileg használja, ez a cikk az Azure CLI 2.0-s vagy újabb verziójára van szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
+
+Jelenleg nem minden [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) parancsok működnek az Azure Cloud shellben. Javasoljuk, hogy a parancssori Felületet helyileg használja.
 
 ## <a name="example-script"></a>Példaszkript
 
@@ -37,7 +39,7 @@ Ha a parancssori felület helyi telepítése és használata mellett dönt, a t�
 
 A következő paranccsal távolítható el az erőforráscsoport és az ahhoz kapcsolódó összes erőforrás.
 
-```azurecli-interactive
+```azurecli
 az group delete --name amsResourceGroup
 ```
 

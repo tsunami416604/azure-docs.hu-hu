@@ -1,6 +1,6 @@
 ---
-title: Érzékelőadatok elemzése a Hive és a Hadoop – Azure HDInsight segítségével
-description: Ismerje meg, hogyan elemezhet érzékelőadatokat a Hive-lekérdezés konzol segítségével a HDInsight (Hadoop), majd a PowerView-Microsoft Excelben megjeleníthetők.
+title: Az Apache Hive- és Apache Hadoop – Azure HDInsight érzékelőadatok elemzése
+description: Ismerje meg, hogyan elemezhet érzékelőadatokat a HDInsight (Hadoop) az Apache Hive-lekérdezés konzol használatával, majd a PowerView-Microsoft Excelben megjeleníthetők.
 services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/14/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: dfc4d930f185c36c3ba0c869494ba0e7dee64cac
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c3e4ab9dc03afe1c4a19e738804e6400b0830291
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249404"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634413"
 ---
-# <a name="analyze-sensor-data-using-the-hive-query-console-on-hadoop-in-hdinsight"></a>Érzékelőadatok elemzése a Hive-lekérdezés konzol segítségével a HDInsight a Hadoop
+# <a name="analyze-sensor-data-using-the-apache-hive-query-console-on-apache-hadoop-in-hdinsight"></a>Érzékelőadatok elemzése a HDInsight az Apache Hadoop az Apache Hive-lekérdezés konzol segítségével
 
-Ismerje meg, hogyan elemezhet érzékelőadatokat a Hive-lekérdezés konzol segítségével a HDInsight (Hadoop), majd a Power View használatával a Microsoft Excelben megjeleníthetők.
+Ismerje meg, hogyan elemezhet érzékelőadatokat a Hive-lekérdezés konzol segítségével a HDInsight (az Apache Hadoop), majd a Power View használatával a Microsoft Excelben megjeleníthetők.
 
 > [!IMPORTANT]
 > A jelen dokumentumban leírt lépések csak a Windows-alapú HDInsight-fürtökkel működik. HDInsight csak akkor használható a Windows-verziók alacsonyabb, mint a HDInsight 3.4-es. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).

@@ -10,12 +10,12 @@ ms.component: bing-spell-check
 ms.topic: overview
 ms.date: 05/03/2018
 ms.author: nolachar
-ms.openlocfilehash: 48d9dee014d0759bd339c79811bb7b2fddecfe0b
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: 3a277b10561b2756fab0af6455d17557a8d93a53
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214936"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345708"
 ---
 # <a name="what-is-bing-spell-check-api"></a>Mi a Bing Spell Check API?
 
@@ -42,9 +42,12 @@ Az alapértelmezett mód a `Proof`. A `Proof` helyesírási mód biztosítja a l
 <br /><br/>**MEGJEGYZÉS:** Ha a lekérdezés szövegének hossza meghaladja a 4096 karaktert, feldolgozás előtt 4096 karakterre lesz csonkolva. 
 ### <a name="spell----for-web-searchesqueries-scenario"></a>Spell – a webes keresésekhez/lekérdezésekhez
 A `Spell` agresszívabb, hogy jobb keresési eredményeket adhasson. A `Spell` mód megtalálja a legtöbb helyesírási hibát, de nem talál meg néhány olyan nyelvtani hibát, például a nagybetűket és a szóismétlést, amelyeket a `Proof` észlel.
-<br /></br>**MEGJEGYZÉS:** A lekérdezések maximális támogatott hossza az alábbiak szerint alakul. Ha a lekérdezés túllépi a maximális hosszt, sem a lekérdezés, sem az eredmények nem változnak meg.
-<ul><li>130 karakter az en, de, es, fr, pl, pt, sv, ru, nl, nb, tr-tr, it, zh, ko nyelvkódokhoz. </li>
-<li>65 karakter a többi nyelvkódhoz</li></ul>
+
+> [!NOTE]
+> * A lekérdezés a maximális támogatott hossz nem éri el. Ha a lekérdezés túllépi a maximális hosszúságú, a lekérdezés, és az eredményeket nem változik.
+>    * a következő nyelvkódokról 130 karaktert: en, Németország, es, fr, pl, pt, sv, ru, nl, nb, tr-tr, it, zh, ko. 
+>    * minden egyéb esetében: 65 karakter.
+> * A helyesírás-mód nem támogatja a szögletes zárójelet (`[` és `]`) a lekérdezésekben és inkonzisztens eredményhez vezethet. Azt javasoljuk, hogy a helyesírás-mód használatakor eltávolítja a hatóköröket a lekérdezéseket.
 
 ## <a name="market-setting"></a>Piac beállítása
 A piacot meg kell határozni a lekérdezési paraméterben a kérelem URL-címénél, máskülönben a helyesírás-ellenőrző az IP-címből kiindulva az alapértelmezett piacot alkalmazza.

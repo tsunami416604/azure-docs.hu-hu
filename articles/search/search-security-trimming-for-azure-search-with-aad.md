@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: revitalb
-ms.openlocfilehash: ea69befb1084b08352eb3cf38db0364c5c82c45b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b134bc2529bf11557ddb1778b87f127db8da650c
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237060"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684637"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Az Azure Active Directory-identitások használatával találatok vágást biztonsági szűrők
 
@@ -98,7 +98,7 @@ await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
 ### <a name="step-4-cache-the-groups-identifiers"></a>4. lépés: Csoportok azonosítók gyorsítótárazása
-Igény szerint hálózati késés csökkentése érdekében gyorsítótárazhatja a felhasználócsoport-társítások úgy, hogy egy keresési kérelmet ad ki, amikor csoportokat a rendszer adja vissza a gyorsítótár mentése folyamatban van egy körbejárási aad-ben. (Aad-ben, a Batch API-hoz) [https://developer.microsoft.com/graph/docs/concepts/json_batching] több felhasználóval rendelkező egyetlen Http-kérés küldése és a gyorsítótár létrehozása.
+Igény szerint hálózati késés csökkentése érdekében gyorsítótárazhatja a felhasználócsoport-társítások úgy, hogy egy keresési kérelmet ad ki, amikor csoportokat a rendszer adja vissza a gyorsítótár mentése folyamatban van egy körbejárási aad-ben. Használhat [AAD Batch API](https://developer.microsoft.com/graph/docs/concepts/json_batching) több felhasználóval rendelkező egyetlen Http-kérés küldése és a gyorsítótár létrehozása.
 
 A Microsoft Graph úgy lett kialakítva, nagy mennyiségű kérelmet kezelni. Ha túlságosan sok kérelem fordul elő, a Microsoft Graph 429-es HTTP-állapotkód: a kérelem sikertelen lesz. További információkért lásd: [Microsoft Graph-szabályozás](https://developer.microsoft.com/graph/docs/concepts/throttling).
 

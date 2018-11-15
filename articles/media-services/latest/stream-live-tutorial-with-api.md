@@ -1,5 +1,5 @@
 ---
-title: Élő streamelés az Azure Media Services v3 és a .NET Core használatával | Microsoft Docs
+title: Az Azure Media Services v3 élő Stream |} A Microsoft Docs
 description: Ez az útmutató lépésről lépésre ismerteti, hogyan streamelhet élő tartalmakat a .NET Core-keretrendszert használó Media Services 3-as verziójával.
 services: media-services
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/16/2018
+ms.date: 11/08/2018
 ms.author: juliako
-ms.openlocfilehash: bd149177a91bc0d5897723df2fad50fef11a37ef
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
-ms.translationtype: HT
+ms.openlocfilehash: 7863f007093b5a86fb5095ee8bf1e14fc01d0348
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49392335"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613392"
 ---
-# <a name="stream-live-with-azure-media-services-v3-using-net-core"></a>Élő streamelés az Azure Media Services v3 és a .NET Core használatával
+# <a name="tutorial-stream-live-with-media-services-v3-using-apis"></a>Oktatóanyag: A Media Services v3 élő Stream API-k használatával
 
-A Media Services szolgáltatásban a [LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) események feladata a streamelt élő tartalmak feldolgozása. A LiveEvent egy bemeneti végpontot (betöltési URL-címet) biztosít, amelyet aztán megadhat egy élő kódolónak. A LiveEvent élő bemeneti streameket fogad az élő kódolótól, és elérhetővé teszi azt a streameléshez egy vagy több [streamvégponton](https://docs.microsoft.com/rest/api/media/streamingendpoints) keresztül. Emellett a csatorna egy előnézeti végpontot (előnézeti URL-címet) is biztosít, amelynek használatával megtekintheti a stream előnézetét, és ellenőrizheti azt, mielőtt feldolgozná és továbbítaná. Ez az oktatóprogram bemutatja, hogyan hozhat létre **átmenő** típusú élő eseményt a .NET Core használatával. 
+Az Azure Media Services [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) felelősek az élő adatfolyam-tartalmak feldolgozása. A LiveEvent egy bemeneti végpontot (betöltési URL-címet) biztosít, amelyet aztán megadhat egy élő kódolónak. A LiveEvent élő bemeneti streameket fogad az élő kódolótól, és elérhetővé teszi azt a streameléshez egy vagy több [streamvégponton](https://docs.microsoft.com/rest/api/media/streamingendpoints) keresztül. Emellett a csatorna egy előnézeti végpontot (előnézeti URL-címet) is biztosít, amelynek használatával megtekintheti a stream előnézetét, és ellenőrizheti azt, mielőtt feldolgozná és továbbítaná. Ez az oktatóprogram bemutatja, hogyan hozhat létre **átmenő** típusú élő eseményt a .NET Core használatával. 
 
 > [!NOTE]
 > Mielőtt folytatná, mindenképp tekintse át [a Media Services 3-as verziójával megvalósított élő streamelést](live-streaming-overview.md) bemutató cikket. 
@@ -31,7 +31,6 @@ A Media Services szolgáltatásban a [LiveEvent](https://docs.microsoft.com/rest
 Ez az oktatóanyag a következőket mutatja be:    
 
 > [!div class="checklist"]
-> * Media Services-fiók létrehozása
 > * Hozzáférés a Media Services API-hoz
 > * A mintaalkalmazás konfigurálása
 > * Az élő streamelést végrehajtó kód vizsgálata
@@ -44,9 +43,17 @@ Ez az oktatóanyag a következőket mutatja be:
 
 Az oktatóanyag elvégzésének a következők a feltételei.
 
-* A Visual Studio Code vagy a Visual Studio telepítése
-* Egy kamera vagy egyéb eszköz (például laptop), amely az eseményt közvetíti.
-* Egy helyszíni élő kódoló, amely a kamera jeleit streammé alakítja, amelyek aztán továbbítódnak a Media Services élő streamszolgáltatásra. A streamnek **RTMP** vagy **Smooth Streaming** formátumúnak kell lennie.
+- Telepítse a Visual Studio Code-ot vagy a Visual Studióban.
+- Telepítse és a parancssori Felületet helyileg használja, ez a cikk az Azure CLI 2.0-s vagy újabb verziójára van szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
+
+    Jelenleg nem minden [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) parancsok működnek az Azure Cloud shellben. Javasoljuk, hogy a parancssori Felületet helyileg használja.
+
+- [A Media Services-fiók létrehozása](create-account-cli-how-to.md).
+
+    Ügyeljen arra, hogy ne felejtse el az értékeket, amelyeket meg az erőforráscsoport-nevet és a Media Services-fiók neve
+
+- Egy kamera vagy egyéb eszköz (például laptop), amely az eseményt közvetíti.
+- Egy helyszíni élő kódoló, amely a kamera jeleit streammé alakítja, amelyek aztán továbbítódnak a Media Services élő streamszolgáltatásra. A streamnek **RTMP** vagy **Smooth Streaming** formátumúnak kell lennie.
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
@@ -61,10 +68,6 @@ Az elő streamelési minta az [Élő](https://github.com/Azure-Samples/media-ser
 > [!IMPORTANT]
 > A minta egyedi utótagot használ mindegyik erőforráshoz. Ha megszakítja a hibakeresést, vagy leállítja az alkalmazást anélkül, hogy az végigfutna, végül több LiveEvent eseménye is lesz a fiókban. <br/>
 > Ezeket a futó LiveEvent eseményeket mindenképp állítsa le. Ezek ugyanis **díjkötelesek**!
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -176,9 +179,9 @@ A leállítása után az élő esemény automatikusan átalakítja az események
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az erőforráscsoportban lévő egyik erőforrásra sem, beleértve a jelen oktatóanyagban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott erőforráscsoportot. Ehhez használhatja a **CloudShell** eszközt.
+Ha már nincs szüksége az erőforráscsoportban lévő egyik erőforrásra sem, beleértve a jelen oktatóanyagban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott erőforráscsoportot.
 
-Hajtsa végre az alábbi parancsot a **CloudShellben**:
+Hajtsa végre a következő CLI-parancsot:
 
 ```azurecli-interactive
 az group delete --name amsResourceGroup

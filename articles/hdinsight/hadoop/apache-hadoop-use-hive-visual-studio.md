@@ -1,5 +1,5 @@
 ---
-title: A Visual Studio – Azure HDInsight (Hadoop) Data Lake Tools Hive
+title: Az Apache Hive, a (az Apache Hadoop) a Data Lake tools for Visual Studio – Azure HDInsight
 description: Megtudhatja, hogyan futtathat Apache Hive-lekérdezések az Apache Hadoop Azure HDInsight a Data Lake tools for Visual Studio használatával.
 services: hdinsight
 author: hrasheed-msft
@@ -9,20 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4cc2012e40fad9e1343804149cdffaa3a1ab9db4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: bfb53ddf666426253cce08e6f09a5297f5d2f4d3
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011085"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634107"
 ---
-# <a name="run-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>A Data Lake tools for Visual Studio használatával Hive-lekérdezések futtatása
+# <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>A Data Lake tools for Visual Studio használatával, az Apache Hive-lekérdezések futtatása
 
-Útmutató a Data Lake tools for Visual Studio segítségével az Apache Hive-lekérdezést. A Data Lake-eszközök lehetővé teszik egyszerűen létrehozása, küldése és monitorozása az Azure HDInsight Hadoop Hive-lekérdezéseket.
+Útmutató a Data Lake tools for Visual Studio segítségével az Apache Hive-lekérdezést. A Data Lake-eszközök lehetővé teszik egyszerűen létrehozása, küldése és monitorozása az Azure HDInsight az Apache Hadoop Hive-lekérdezéseket.
 
 ## <a id="prereq"></a>Előfeltételek
 
-* Egy Azure HDInsight (Hadoop on HDInsight)-fürt
+* Egy Azure HDInsight (a HDInsight Apache Hadoop) fürtön
 
   > [!IMPORTANT]
   > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).

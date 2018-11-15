@@ -10,25 +10,24 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/16/2018
+ms.date: 11/11/2018
 ms.author: juliako
-ms.openlocfilehash: 404a40f8949add77153d3fbf53b5c68dfb866128
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
-ms.translationtype: HT
+ms.openlocfilehash: d2d648dd02426596e1c070ffd494458c68060085
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377880"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613443"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-using-apis"></a>Oktatóanyag: Videók feltöltése, kódolása és streamelése API-k használatával
 
-A Media Services lehetővé teszi, hogy a médiafájlokat olyan formátumokká kódolja, amelyeket számos különféle böngészőben és eszközön le lehet játszani. Például előfordulhat, hogy az Apple HLS vagy MPEG DASH formátumában szeretné streamelni a tartalmakat. A streamelés előtt érdemes kódolni a jó minőségű digitális médiafájlokat. Kódolással kapcsolatos útmutatásért tekintse meg [a kódolás fogalmát](encoding-concept.md) ismertető cikket. Ez az oktatóanyag feltölt egy helyi videofájlt, és kódolja a feltöltött fájlt. A HTTPS URL-cím segítségével elérhetővé tett tartalmakat is kódolhatja. További információ: [Feladatbemenet létrehozása HTTP(s) URL-címből](job-input-from-http-how-to.md).
+Az Azure Media Services lehetővé teszi a médiafájlok kódolandó, hogy a böngészők és eszközök széles lejátszhatók. Például előfordulhat, hogy az Apple HLS vagy MPEG DASH formátumában szeretné streamelni a tartalmakat. A streamelés előtt érdemes kódolni a jó minőségű digitális médiafájlokat. Kódolással kapcsolatos útmutatásért tekintse meg [a kódolás fogalmát](encoding-concept.md) ismertető cikket. Ez az oktatóanyag feltölt egy helyi videofájlt, és kódolja a feltöltött fájlt. A HTTPS URL-cím segítségével elérhetővé tett tartalmakat is kódolhatja. További információ: [Feladatbemenet létrehozása HTTP(s) URL-címből](job-input-from-http-how-to.md).
 
 ![Videó lejátszása](./media/stream-files-tutorial-with-api/final-video.png)
 
 Ez az oktatóanyag a következőket mutatja be:    
 
 > [!div class="checklist"]
-> * Media Services-fiók létrehozása
 > * Hozzáférés a Media Services API-hoz
 > * A mintaalkalmazás konfigurálása
 > * A feltöltést, kódolást és streamelést végrehajtó kód vizsgálata
@@ -40,7 +39,14 @@ Ez az oktatóanyag a következőket mutatja be:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nincs telepítve a Visual Studio, szerezze be a [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)-et.
+- Ha nincs telepítve a Visual Studio, szerezze be a [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)-et.
+- Telepítse és a parancssori Felületet helyileg használja, ez a cikk az Azure CLI 2.0-s vagy újabb verziójára van szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
+
+    Jelenleg nem minden [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) parancsok működnek az Azure Cloud shellben. Javasoljuk, hogy a parancssori Felületet helyileg használja.
+
+- [A Media Services-fiók létrehozása](create-account-cli-how-to.md).
+
+    Ügyeljen arra, hogy ne felejtse el az értékeket, amelyeket meg az erőforráscsoport-nevet és a Media Services-fiók neve
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
@@ -51,10 +57,6 @@ Klónozza a gépre a streamelési .NET-mintát tartalmazó GitHub-adattárat a k
  ```
 
 A minta az [UploadEncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/UploadEncodeAndStreamFiles) mappában található.
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -185,11 +187,11 @@ Az Azure Media Player használható tesztelésre, az éles környezetben való h
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az erőforráscsoportban lévő egyik erőforrásra sem, beleértve a jelen oktatóanyagban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott erőforráscsoportot. Ehhez használhatja a **CloudShell** eszközt.
+Ha már nincs szüksége az erőforráscsoportban lévő egyik erőforrásra sem, beleértve a jelen oktatóanyagban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott erőforráscsoportot.
 
-Hajtsa végre az alábbi parancsot a **CloudShellben**:
+Hajtsa végre a következő CLI-parancsot:
 
-```azurecli-interactive
+```azurecli
 az group delete --name amsResourceGroup
 ```
 

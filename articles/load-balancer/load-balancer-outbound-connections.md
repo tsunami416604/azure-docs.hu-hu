@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2018
 ms.author: kumud
-ms.openlocfilehash: 1d851b60909d548a0735e3827cdfc7746fd8121d
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: fdcc039eb71eaeea03aaae856a6d031d4c528669
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219715"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687571"
 ---
 # <a name="outbound-connections-in-azure"></a>Az Azure kimenő kapcsolatainak
 
@@ -36,7 +36,7 @@ Egyszerre több [kimenő forgatókönyveket](#scenarios). Igény szerint kombin�
 
 ## <a name="scenarios"></a>Forgatókönyv áttekintése
 
-Az Azure Load Balancer és kapcsolódó erőforrások explicit módon definiálva vannak használatakor [Azure Resource Manager](#arm).  Az Azure jelenleg a kimenő kapcsolat az Azure Resource Manager-erőforrások eléréséhez három különböző módszert biztosít. 
+Az Azure Load Balancer és kapcsolódó erőforrások explicit módon definiálva vannak használatakor [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).  Az Azure jelenleg a kimenő kapcsolat az Azure Resource Manager-erőforrások eléréséhez három különböző módszert biztosít. 
 
 | Forgatókönyv | Módszer | IP-protokollok | Leírás |
 | --- | --- | --- | --- |

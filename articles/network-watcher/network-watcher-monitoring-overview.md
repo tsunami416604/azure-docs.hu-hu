@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 7cccb47bd7489e88649ee82c4d52c72af0d91e8e
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
-ms.translationtype: HT
+ms.openlocfilehash: 983b966ad304afb467df26193dd609f6f21a1b32
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390945"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614277"
 ---
 # <a name="what-is-azure-network-watcher"></a>Mi az az Azure Network Watcher?
 
@@ -98,6 +98,9 @@ Az NSG-forgalomnaplókkal kapcsolatos további információkért végezze el a [
 ### <a name="view-diagnostic-logs-for-network-resources"></a>Hálózati erőforrások diagnosztikai naplóinak megtekintése
 
 Lehetősége van engedélyezni az Azure hálózati erőforrások (pl. hálózati biztonsági csoportok, nyilvános IP-címek, terheléselosztók, virtuális hálózati átjárók és alkalmazásátjárók) diagnosztikai naplózását. A *Diagnosztikai naplók* funkció egyetlen felületet biztosít, ahol engedélyezheti vagy letilthatja azon már meglévő hálózati erőforrások diagnosztikai naplóit, amelyek ilyen naplókat hoznak létre. A diagnosztikai naplók például a Microsoft Power BI és az Azure Log Analytics eszközzel tekinthetők meg. Az Azure hálózati diagnosztikai naplóinak elemzésével kapcsolatos további információért tekintse meg a [Log Analyticsben elérhető Azure hálózati megoldásokat](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ismertető cikket.
+
+## <a name="network-watcher-automatic-enablement"></a>Network Watcher automatikus engedélyezése
+Ha hoz létre, vagy frissítse a virtuális hálózat az előfizetésben, Network Watcher a virtuális hálózati régióban automatikusan lesz engedélyezve. A Network Warcher automatikus engedélyezése semmilyen hatással sincs az Ön erőforrásaira, sem a díjaikra. További információkért lásd: [Network Watcher létrehozásához](network-watcher-create.md).
 
 ## <a name="next-steps"></a>További lépések
 

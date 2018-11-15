@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
-ms.openlocfilehash: cd62083bc7bd0254084f0fc209540de929c25d06
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: c26b4700f32ce4e0bd8327e862d31df8fea2439d
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042253"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632543"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Az Apache Hive használata kinyerési, átalakítási és betöltési (ETL) eszközként
 
-Általában kell tisztítása és átalakítása a bejövő adatok egy cél megfelelő az analytics-be való betöltés előtt. A kinyerési, átalakítási és Load (ETL) operations előkészíti az adatokat, és töltse be az adatok cél szolgálnak.  A HDInsight Hive olvassa el a teljes strukturálatlan adatmennyiséget tárolni, az adatok feldolgozására, igény szerint, és majd betölteni az adatokat relációs adattárházba döntési támogatási rendszereken. Ebben a megközelítésben adatok ki kell olvasni a forrás- és méretezhető tárhelyre, mint az Azure Storage blobból vagy az Azure Data Lake Store tárolja. Az adatok ezután alakította sorozata, a Hive-lekérdezések használatával, és végül előkészített Hive belül a célként megadott adattárba való betöltésének tömeges előkészítésekor.
+Általában kell tisztítása és átalakítása a bejövő adatok egy cél megfelelő az analytics-be való betöltés előtt. A kinyerési, átalakítási és Load (ETL) operations előkészíti az adatokat, és töltse be az adatok cél szolgálnak.  Az Apache Hive a HDInsight is olvassa el a teljes strukturálatlan adatmennyiséget tárolni, az adatok feldolgozására, igény szerint, és majd betöltheti az adatokat döntési támogatási rendszerek egy relációs data warehouse-bA. Ebben a megközelítésben adatok ki kell olvasni a forrás- és méretezhető tárhelyre, mint az Azure Storage blobból vagy az Azure Data Lake Store tárolja. Az adatok ezután alakította sorozata, a Hive-lekérdezések használatával, és végül előkészített Hive belül a célként megadott adattárba való betöltésének tömeges előkészítésekor.
 
 ## <a name="use-case-and-model-overview"></a>Használja a kis- és a model áttekintése
 

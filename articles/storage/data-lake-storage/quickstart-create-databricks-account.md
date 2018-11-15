@@ -8,12 +8,12 @@ ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
-ms.openlocfilehash: 338acd3e26f9b36e5f9afaf90f95f61e7623cebc
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 8c53e86ff18aa0f010bf4bb57b2ac4ccde3f430c
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281727"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51565802"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Rövid útmutató: Spark-feladatok futtatása Azure Databricksen az Azure Portal használatával
 
@@ -103,10 +103,10 @@ Ebben a szakaszban létrehoz egy jegyzetfüzetet az Azure Databricks-munkaterül
 4. Az alábbi kód **ACCOUNT_NAME** és **ACCOUNT_KEY** mezőibe másolja be a jelen rövid útmutató elején rögzített értékeket. A **FILE_SYSTEM_NAME** mezőben szereplő szöveg helyére írja be a fájlrendszer nevét. Ezután írja be a kódot az első cellába.
 
     ```scala
-    spark.conf.set("fs.azure.account.key.<ACCOUNT_NAME>.dfs.core.windows.net", "<ACCOUNT_KEY>") 
+    spark.conf.set("fs.azure.account.key.<ACCOUNT_NAME>.dfs.core.windows.net", "<ACCOUNT_KEY>")
     spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
     dbutils.fs.ls("abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/")
-    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false") 
+    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
     ```
 
     A kódcella futtatásához nyomja le a **SHIFT + ENTER** billentyűparancsot.
@@ -152,7 +152,7 @@ A következő feladatok végrehajtásával futtathat Spark SQL-feladatot az adat
 2. A futtatott lekérdezés jobb megértéséhez vessünk egy pillantást a JSON-mintafájl adatairól készült pillanatfelvételre. Illessze be a következő kódtöredéket a kódcellába, majd nyomja le a **SHIFT + ENTER** billentyűparancsot.
 
     ```sql
-    %sql 
+    %sql
     SELECT * from radio_sample_data
     ```
 
@@ -160,7 +160,7 @@ A következő feladatok végrehajtásával futtathat Spark SQL-feladatot az adat
 
     ![JSON-mintaadatok](./media/quickstart-create-databricks-workspace-portal/databricks-sample-csv-data.png "JSON-mintaadatok")
 
-    A mintaadatok többek között tartalmazzák egy rádióadó hallgatóinak nemét (az oszlop neve **gender** (nem)), illetve azt, hogy ingyenes vagy fizetős előfizetéssel rendelkeznek-e (az oszlop neve **level** (szint)).
+    Többek között, a mintaadatok rögzíti a választógomb csatorna tartalmazzák (oszlopnév, **nemek**) és a saját előfizetés-e ingyenes vagy fizetős (oszlopnév, **szint**).
 
 4. A következőkben vizuálisan jelenítjük meg ezeket az adatokat annak megfelelően, hogy az egyes nemek szerint hány felhasználó rendelkezik ingyenes fiókkal, illetve hányan fizetnek az előfizetésért. A táblázatos kimenet alján kattintson az **Oszlopdiagram** ikonra, majd az **Ábrázolási beállítások** elemre.
 
@@ -187,7 +187,7 @@ Ha végzett a cikkel, leállíthatja a fürtöt. Az Azure Databricks-munkaterül
 
 ![Databricks-fürt leállítása](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 
-Ha nem állítja le manuálisan a fürtöt, az automatikusan le fog állni, ha a fürt létrehozásakor bejelölte a **Leállítás ___ percnyi tétlenség után** jelölőnégyzetet. Ha bejelöli ezt a lehetőséget, a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
+Ha Ön nem állítja le manuálisan a fürt automatikusan leáll, a megadott választotta a **leállítása után \_ \_ ennyi perc inaktivitás** jelölőnégyzetet a fürt létrehozásakor. Ha bejelöli ezt a lehetőséget, a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -14,12 +14,12 @@ ms.date: 11/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: c2e50362de48991c818017b59632be3b0e74cb0b
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: adb53bb5722bff2374097626e8a3f1679ca00788
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282067"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633529"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Az Azure Active Directory a dinamikus tagsági szabályok
 
@@ -352,7 +352,7 @@ A következő eszköz attribútumokat is használható.
  deviceCategory | egy érvényes eszközkategória-név | (device.deviceCategory - eq "BYOD")
  deviceManufacturer | bármilyen karakterlánc típusú értéket | (device.deviceManufacturer - eq "Samsung")
  deviceModel | bármilyen karakterlánc típusú értéket | (device.deviceModel - eq "iPad Air")
- deviceOwnership | Személyes, munkahelyi, ismeretlen | (device.deviceOwnership - eq "Vállalati")
+ deviceOwnership | Személyes, vállalati, ismeretlen | (device.deviceOwnership - eq "Céges")
  Tartománynév | bármilyen karakterlánc típusú értéket | (device.domainName - eq "contoso.com")
  enrollmentProfileName | Az Apple Eszközregisztrációs profilt, vagy a Windows Autopilot-profil neve | (device.enrollmentProfileName - eq "DEP iPhone-OK")
  isRooted | IGAZ, hamis | (device.isRooted - eq true)

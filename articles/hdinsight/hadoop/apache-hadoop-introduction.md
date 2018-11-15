@@ -1,6 +1,6 @@
 ---
-title: Mi a HDInsight, valamint a Hadoop- és a Spark-technológia? – Azure
-description: A HDInsight, a Hadoop- és Spark-technológiák, valamint az olyan összetevők, mint a big data-elemzéshez használt Kafka, Hive, Storm és HBase bemutatása.
+title: Mik azok a HDInsight és az Apache Hadoop és az Apache Spark-technológia? – Azure
+description: A HDInsight és az Apache Hadoop és az Apache Spark-technológiák és összetevők, mint a big data-elemzéshez a Kafka, Hive, Storm és HBase bemutatása.
 keywords: azure hadoop, hadoop azure, hadoop bevezetés, hadoop bemutatása, hadoop-technológiák, bevezetés a hadoop szolgáltatásba, a hadoop bemutatása, mi az a hadoop-fürt, mi a hadoop-fürt, mire való a hadoop
 services: hdinsight
 author: hrasheed-msft
@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017, mvc
 ms.topic: overview
 ms.date: 05/07/2018
-ms.openlocfilehash: 0c617f09c846811f876206e6045b640e63ad90b1
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 190d6203c4a00ed3f448bdbb7366db5bc22c45f8
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007047"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634515"
 ---
-# <a name="what-is-azure-hdinsight-and-the-hadoop-technology-stack"></a>Mi az Azure HDInsight, és mik azok a Hadoop-technológiák?
+# <a name="what-is-azure-hdinsight-and-the-apache-hadoop-technology-stack"></a>Mi az Azure HDInsight és az Apache Hadoop-technológiák
 
 Ebben a cikkben megismerkedhet az Azure HDInsight-alapú Apache Hadooppal. Az Azure HDInsight egy teljes mértékben felügyelt, teljes körű, nyílt forráskódú elemzési szolgáltatás vállalatok részére. Használhat olyan nyílt forráskódú keretrendszereket, mint a Hadoop, a Spark, a Hive, az LLAP, a Kafka, a Storm, az R stb. 
 

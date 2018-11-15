@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: 49d68a28180c384a181f29e41c12a5e32bd76aee
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 3a1c5341e391c8be1af42eea940fbf147b88e7c8
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625215"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685701"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure-partneri ügyfél használati megnevezése
 
@@ -59,12 +59,13 @@ Adjon hozzá egy globálisan egyedi azonosítóját (GUID), győződjön meg a f
 1. [Sikerességéről GUID Azonosítóját a sablon központi telepítésben lévő](#verify-the-guid-deployment).
 
 ### <a name="sample-resource-manager-template-code"></a>Mintául szolgáló Resource Manager-sablon kódot
-Ellenőrizze, hogy módosítani az alábbi mintakód a saját adatbevitel a fő sablonfájl hozzáadásakor.
+
+Ahhoz, hogy a sablon erőforrásainak követési, hozzá kell a következő további erőforrás az erőforrás szakasz alatt. Ellenőrizze, hogy módosítani az alábbi mintakód a saját adatbevitel a fő sablonfájl hozzáadásakor.
 Az erőforrás a hozzá kell adnia a **mainTemplate.json** vagy **azuredeploy.json** fájl csak, és nem az összes beágyazott vagy kapcsolódó sablonok.
 ```
 // Make sure to modify this sample code with your own inputs where applicable
 
-{ // add this resource to the mainTemplate.json (do not add the entire file)
+{ // add this resource to the resources section in the mainTemplate.json (do not add the entire file)
     "apiVersion": "2018-02-01",
     "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your generated GUID here
     "type": "Microsoft.Resources/deployments",

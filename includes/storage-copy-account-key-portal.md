@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 11/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 499ffdf7e91d4ff6926f59ff534142e0a1c5d6c5
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: HT
+ms.openlocfilehash: 13e99f1dc84c5345ba04fcfc412b8ef4237cc581
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51222161"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51285759"
 ---
 ## <a name="copy-your-credentials-from-the-azure-portal"></a>A hitelesítési adatok másolása az Azure Portalról
 
-A mintaalkalmazásnak hitelesítenie kell a tárfiókhoz való hozzáférést. Adja meg az alkalmazás számára a tárfiók hitelesítő adatait egy kapcsolati sztring formájában. A tárfiók hitelesítő adatainak megtekintéséhez a következőt kell tennie:
+A mintaalkalmazásnak hitelesítenie kell a tárfiókhoz való hozzáférést. Adja meg a tárfiók hitelesítő adatait az alkalmazás a kapcsolati karakterlánc formájában. A tárfiók hitelesítő adatainak megtekintéséhez a következőt kell tennie:
 
 1. Lépjen az [Azure Portalra](https://portal.azure.com).
 2. Keresse meg a Storage-fiókját.

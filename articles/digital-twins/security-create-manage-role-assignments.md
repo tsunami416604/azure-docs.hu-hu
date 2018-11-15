@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 11/13/2018
 ms.author: lyrana
-ms.openlocfilehash: 42c1b0fbb6d87e9ed35d4ecce3971d8512eed4d4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f032e3ebf6a10411057cd6d41df0cad6248f328b
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012462"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636237"
 ---
 # <a name="create-and-manage-role-assignments"></a>Szerepkör-hozzárendelések létrehozása és felügyelete
 
@@ -26,6 +26,8 @@ Minden egyes szerepkör-hozzárendelés tartalmazza:
 * **Szerepkör-definíció Azonosítóját**
 * **Terület elérési útja**
 * **Bérlőazonosító**: A legtöbb esetben egy Azure Active Directory-bérlő Azonosítóját
+
+[!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
 ## <a name="role-definition-identifiers"></a>Szerepkör-definíció azonosítók
 
@@ -57,7 +59,7 @@ A támogatott `ObjectIdTypes`:
 ## <a name="create-a-role-assignment"></a>Szerepkör-hozzárendelés létrehozása
 
 ```plaintext
-HTTP POST /api/v1.0/roleassignments
+HTTP POST YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
 | **Name (Név)** | **Szükséges** | **Típus** | **Leírás** |
@@ -108,22 +110,22 @@ Egy tartomány részét képezik az összes felhasználó megkapja a tárolóhel
 Használat beolvasni a szerepkör-hozzárendelés beolvasása.
 
 ```plaintext
-HTTP GET /api/v1/roleassignments?path={path}
+HTTP GET YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
 | **Name (Név)** | **A** | **Szükséges** |    **Típus** |  **Leírás** |
 | --- | --- | --- | --- | --- |
-| Elérési út | Elérési út | Igaz | Karakterlánc | A hely teljes elérési útja |
+| YOUR_PATH | Útvonal | True (Igaz) | Karakterlánc |    A hely teljes elérési útja |
 
 Szerepkör-hozzárendelés törlése a törlés használatával.
 
 ```plaintext
-HTTP DELETE /api/v1/roleassignments/{id}
+HTTP DELETE YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ID
 ```
 
 | **Name (Név)** | **A** | **Szükséges** | **Típus** | **Leírás** |
 | --- | --- | --- | --- | --- |
-| Azonosító | Elérési út | Igaz | Karakterlánc |   Szerepkör-hozzárendelés azonosítója |
+| YOUR_ROLE_ID | Útvonal | True (Igaz) | Karakterlánc | Szerepkör-hozzárendelés azonosítója |
 
 ## <a name="next-steps"></a>További lépések
 

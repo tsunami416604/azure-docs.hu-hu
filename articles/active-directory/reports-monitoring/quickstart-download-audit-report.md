@@ -13,15 +13,15 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 09/13/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d6ecf62b46c25ec7cf4ab80219d1bc220e4eb4cc
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
-ms.translationtype: HT
+ms.openlocfilehash: 3f4090f1724850b0263905a0593fc77cc6dbfd16
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367406"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51620734"
 ---
 # <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>Rövid útmutató: Naplózási jelentés letöltése Azure portál használatával
 
@@ -32,7 +32,7 @@ Ebben a rövid útmutatóban megismerheti, hogyan lehet az elmúlt 24 órára vo
 A következők szükségesek:
 
 * Egy Azure Active Directory-bérlő. 
-* Egy felhasználó, aki a bérlőnél biztonsági rendszergazdai, biztonsági olvasó vagy globális rendszergazdai szerepkörben van. Ezen felül a bérlőnél minden felhasználó elérheti a magára vonatkozó auditnaplókat.
+* A felhasználó, aki az a **biztonsági rendszergazda**, **biztonsági olvasó**, vagy **globális rendszergazdai** szerepkör a bérlő számára. Ezen felül a bérlőnél minden felhasználó elérheti a magára vonatkozó auditnaplókat.
 
 ## <a name="quickstart-download-an-audit-report"></a>Első lépések: Naplózási jelentés letöltése
 

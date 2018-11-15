@@ -1,6 +1,6 @@
 ---
 title: Mi az Apache Hive és a HiveQL – Azure HDInsight
-description: Az Apache Hive-egy rendszer data warehouse hadoop. A Hive használata a HiveQL, tárolt adatok lekérdezheti, amely hasonló Transact-SQL. Ebből a dokumentumból megtudhatja, hogyan használata Azure HDInsight Hive és a HiveQL.
+description: Az Apache Hive-egy rendszer data warehouse az Apache Hadoop. A Hive használata a HiveQL, tárolt adatok lekérdezheti, amely hasonló Transact-SQL. Ebből a dokumentumból megtudhatja, hogyan használata Azure HDInsight Hive és a HiveQL.
 keywords: hiveql, mi az a hive, a hadoop hiveql, hogyan használható a hive, ismerje meg a hive, mi az a hive
 services: hdinsight
 author: hrasheed-msft
@@ -10,16 +10,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 0401717da8c5548033bbbd7720bb1266646bbe48
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d7b29980321f04d1ad9325580bc48ab944f60d1c
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241106"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633716"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Mi az Apache Hive és az Azure HDInsight HiveQL?
 
-[Az Apache Hive](http://hive.apache.org/) egy rendszer data warehouse hadoop. Hive adatösszegzéseket, lekérdezéséhez és az adatok elemzése lehetővé teszi. Hive-lekérdezések HiveQL, amely egy hasonló, az SQL-lekérdezési nyelv nyelven íródtak.
+[Az Apache Hive](http://hive.apache.org/) egy rendszer data warehouse az Apache Hadoop. Hive adatösszegzéseket, lekérdezéséhez és az adatok elemzése lehetővé teszi. Hive-lekérdezések HiveQL, amely egy hasonló, az SQL-lekérdezési nyelv nyelven íródtak.
 
 Hive teszi projektstruktúra nagymértékben strukturálatlan adatokon. Struktúráját határozza meg, miután a HiveQL használatával lekérdezheti az adatokat, a Java vagy a MapReduce ismerete nélkül.
 

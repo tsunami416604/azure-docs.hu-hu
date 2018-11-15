@@ -5,25 +5,33 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 11/12/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: 9ea91f70a72b812803a20244bb4445b76b133b0c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 957aa05efab68f9531fb6576de775aa9901ab44d
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296159"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685803"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Az Azure Active Directory intelligens zárolás
 
 Intelligens zárolás felhőbeli intelligens technológiák használatával kártékony elemek számára kitalálni a felhasználók jelszavát, vagy találgatásos módszerekkel úgy szerezheti be a kívánt zárolására. Adott intelligencia is ismeri fel érvényes felhasználóktól érkező bejelentkezési és működnek, mint a megjelennek a támadók, és az ismeretlen forrásokból való kezelése. Intelligens zárolás bejelentkezzenek a támadók, miközben a felhasználók továbbra is a fiókjaikat eléréséhez, és produktív látni.
 
-Alapértelmezés szerint az intelligens zárolási zárolja a fiókot a bejelentkezési kísérletek tíz sikertelen kísérlet után egy percig. A fiók zárolása minden ezt követő sikertelen bejelentkezési kísérlet az első és az ezt követő kísérletek hosszabb egy perc múlva ismét.
+Alapértelmezés szerint az intelligens zárolási zárolja a fiókot a bejelentkezési kísérletek 10 sikertelen bejelentkezési kísérletek után egy percig. A fiók zárolása minden ezt követő sikertelen bejelentkezési kísérlet az első és az ezt követő kísérletek hosszabb egy perc múlva ismét.
+
+* Intelligens zárolás nyomon követi az utolsó három rossz jelszavak kivonatait a fiókzárolási számláló reincrementing elkerülése érdekében. Ha valaki több alkalommal belép a rossz jelszót, ez a viselkedés nem okoz a fiók zárolása.
+   * Ez a funkció nem áll rendelkezésre az ügyfelek az átmenő hitelesítés engedélyezve van.
 
 Intelligens zárolás mindig be van kapcsolva az Azure AD összes élvező ezeket az alapértelmezett beállításokat, amelyek a megfelelő biztonsági és a használhatóságot vegyesen kínálnak. Testre szabhatja az intelligens zárolás beállításokat a szervezet specifikus értékeket a felhasználók Azure AD alapszintű vagy magasabb szintű licenccel kell rendelkeznie.
+
+Intelligens zárolás használata nem garantálja, hogy a valódi felhasználók rendszer soha nem zárolható lesz. Intelligens zárolás zárolja egy felhasználói fiókot, ha nem az eredeti felhasználó zárolhat legkedvezőbb megpróbáljuk. A zárolási szolgáltatás megkísérli győződjön meg arról, hogy kártékony elemek nem fér hozzá egy valódi felhasználók fiókot.  
+
+* Mindegyik Azure Active Directory adatközpont nyomon követi a zárolási egymástól függetlenül. A felhasználó (threshold_limit * datacenter_count) kísérletek száma, ha a felhasználó eléri minden adatközpontban.
+* Intelligens zárolás ismerős hely vs ismeretlen helyről kiderítsék és az eredeti felhasználó megkülönböztetéséhez használja. Ismeretlen és a jól ismert is külön Fiókzárolási számláló.
 
 Intelligens zárolás integrálható legyen az a hibrid telepítések esetén a helyszíni Active Directory-fiókok védelméhez a támadók kizárásuk Jelszókivonat-szinkronizálás és átmenő hitelesítés használatával. Az intelligens zárolási házirendek beállításával az Azure ad-ben megfelelően támadások is kiszűrte a helyszíni Active Directory elérése előtti.
 

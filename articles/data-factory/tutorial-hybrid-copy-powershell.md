@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: ea5e393ebe204041d96d18481a5c64d2877755f2
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: HT
+ms.openlocfilehash: d2d4957e7fa3114c1d5e8fa7696366fcb7c77002
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304611"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615704"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Oktatóanyag: Adatok másolása helyszíni SQL Server-adatbázisból Azure Blob Storage-tárolóba
 Ebben az oktatóanyagban az Azure PowerShell használatával egy Data Factory-folyamatot hozunk létre az adatok egy helyszíni SQL Server-adatbázisból egy Azure Blob-tárolóba történő másolására. Létrehozhat és alkalmazhat egy saját üzemeltetésű integrációs modult, amely adatokat helyez át a helyszíni és a felhőalapú adattárolók között. 
@@ -104,7 +104,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre az Azure B
 
 1. A tárolók listájában kattintson az **adftutorial** elemre.  
 
-    ![A tároló kiválasztása](media/tutorial-hybrid-copy-powershell/seelct-adftutorial-container.png)
+    ![A tároló kiválasztása](media/tutorial-hybrid-copy-powershell/select-adftutorial-container.png)
 
 1. Ne zárja be az **adftutorial** **tároló** ablakát. A segítségével ellenőrizheti az oktatóanyag eredményét. A Data Factory automatikusan létrehozza a kimeneti mappát a tárolóban, így nem kell újat létrehoznia.
 

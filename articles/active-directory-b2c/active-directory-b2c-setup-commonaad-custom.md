@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d341f7328eb4a977d266c25f6746d4173393b54e
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ef0becd55df43d7ae648a4cbaa5e1a2358fc1910
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887220"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636934"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Állítsa be a bejelentkezési több-bérlős Azure Active Directory az Azure Active Directory B2C-vel egyéni szabályzatok használatával
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ez a cikk bemutatja, hogyan bejelentkezés engedélyezése a felhasználók számára a több-bérlős végpont használata az Azure Active Directory (Azure AD) használatával [egyéni szabályzatok](active-directory-b2c-overview-custom.md) Azure AD B2c-ben. Így a felhasználók több Azure AD-bérlő minden bérlő műszaki szolgáltató konfigurálása nélkül bejelentkezni az Azure AD B2C-vel. Azonban a tagjai bármely ezeket a bérlők vendég **nem lesz** tud bejelentkezni. Ehhez meg kell [külön-külön konfigurálása mindegyik bérlő](active-directory-b2c-setup-aad-custom.md).
+Ez a cikk bemutatja, hogyan bejelentkezés engedélyezése a felhasználók számára a több-bérlős végpont használata az Azure Active Directory (Azure AD) használatával [egyéni szabályzatok](active-directory-b2c-overview-custom.md) Azure AD B2C-ben. Így a felhasználók több Azure AD-bérlő minden bérlő műszaki szolgáltató konfigurálása nélkül bejelentkezni az Azure AD B2C-vel. Azonban a tagjai bármely ezeket a bérlők vendég **nem lesz** tud bejelentkezni. Ehhez meg kell [külön-külön konfigurálása mindegyik bérlő](active-directory-b2c-setup-aad-custom.md).
 
 >[!NOTE]
 >`Contoso.com` a szervezeti használt Azure AD-bérlő és `fabrikamb2c.onmicrosoft.com` használja a következő utasítások az Azure AD B2C-bérlő.

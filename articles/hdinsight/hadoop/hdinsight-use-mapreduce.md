@@ -1,6 +1,6 @@
 ---
-title: A MapReduce és a Hadoop on HDInsight
-description: Ismerje meg, a Hadoop MapReduce-feladatok futtatása HDInsight-fürtök.
+title: A HDInsight az Apache Hadoop MapReduce
+description: Ismerje meg, hogyan lehet Apache Hadoop MapReduce-feladatok futtatása a HDInsight-fürtök.
 services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: f9dea4c965f64576f839a39b813e4361b166ffe6
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: c9a4a0944c51cb8c6f6d91cd153580a17a9b7898
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015162"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632657"
 ---
-# <a name="use-mapreduce-in-hadoop-on-hdinsight"></a>A HDInsight a Hadoop MapReduce használata
+# <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>A HDInsight az Apache Hadoop MapReduce használata
 
 Útmutató MapReduce-feladatok futtatása a HDInsight-fürtökön. Fedezze fel, hogy használható-e a MapReduce különböző módjait az alábbi táblázat segítségével a HDInsight:
 
@@ -32,7 +32,7 @@ ms.locfileid: "51015162"
 
 ## <a id="whatis"></a>Mit jelent a MapReduce
 
-Hadoop MapReduce feladatok, amelyek nagy mennyiségű adatot ír egy szoftveres keretrendszer. A bemeneti adatok van felosztva, amelyek független adattömböket. Minden egyes adattömbbel párhuzamos feldolgozása a fürtben található csomópontok között. Két függvényt tartalmaz egy MapReduce-feladatot:
+Az Apache Hadoop MapReduce feladatok, amelyek nagy mennyiségű adatot ír egy szoftveres keretrendszer. A bemeneti adatok van felosztva, amelyek független adattömböket. Minden egyes adattömbbel párhuzamos feldolgozása a fürtben található csomópontok között. Két függvényt tartalmaz egy MapReduce-feladatot:
 
 * **Eseményleképező**: a bemeneti adatokat feldolgozó, elemzi azokat (általában a szűrési és rendezési műveleteket) és bocsát ki a rekord (kulcs-érték párok)
 

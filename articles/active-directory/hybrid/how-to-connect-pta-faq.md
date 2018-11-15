@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 025202d25d3057f3db7d015faba349a1fe642d4c
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 400f266b1f63de675b9cefae289878dbef0a278c
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637865"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685650"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Az Azure Active Directory átmenő hitelesítés: Gyakori kérdések
 
@@ -79,6 +79,23 @@ Ha nem konfigurálta a jelszóvisszaírás egy adott felhasználó, vagy ha a fe
 ## <a name="can-the-pass-through-authentication-agents-communicate-over-an-outbound-web-proxy-server"></a>Az átmenő hitelesítés ügynökök kommunikálhatnak egy kimenő proxy webkiszolgálón keresztül?
 
 Igen. Ha Proxy automatikus felderítési WPAD (Web) engedélyezve van a helyszíni környezetben, a hitelesítési ügynökök automatikusan megkísérli keresse meg és a egy proxy-webkiszolgálót használ a hálózaton.
+
+WPAD nincs a környezetben, ha a proxyadatokat (lásd alább), egy átmenő hitelesítési ügynök kommunikálni az Azure ad-ben is hozzáadhat:
+- A kiszolgálón a átmenő hitelesítési ügynök telepítése előtt konfigurálja a webproxy-információkat az Internet Explorerben. Ez lehetővé teszi a hitelesítési ügynök a telepítés befejezéséhez, de továbbra is megjelenik **inaktív** a felügyeleti portálon.
+- A kiszolgálón lépjen a "C:\Program Files\Microsoft Azure AD Connect hitelesítési ügynökének" lehetőséget.
+- A "AzureADConnectAuthenticationAgentService" konfigurációs fájl szerkesztésével, és adja hozzá a következő sorokat (cserélje le "http://contosoproxy.com:8080" a tényleges proxycímmel):
+
+```
+   <system.net>
+      <defaultProxy enabled="true" useDefaultCredentials="true">
+         <proxy
+            usesystemdefault="true"
+            proxyaddress="http://contosoproxy.com:8080"
+            bypassonlocal="true"
+         />
+     </defaultProxy>
+   </system.net>
+```
 
 ## <a name="can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server"></a>Két vagy több átmenő hitelesítési ügynökök telepíthető ugyanarra a kiszolgálóra?
 

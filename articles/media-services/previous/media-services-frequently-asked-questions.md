@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: d4b7d8ec5cb162e5fc844f107fbd5eb08fb00639
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: bf5bc66ce55b0b9d6095cd395a11f68b40af1639
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353533"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685718"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -28,7 +28,7 @@ Ez a cikk a gyakori kérdések az Azure Media Services (AMS) felhasználói Köz
 
 K: hogyan tegye meg streamelése Apple iOS-eszközökön
 
-V: hozzáadása "(formátum = m3u8-aapl)" elérési utat az URL-címet adja meg a streamelési forráskiszolgáló eszközöket adja vissza a felhasználásához vissza HLS-tartalom Apple iOS rendszeren natív (a részleteket lásd: (tartalmak továbbítása) ["/ jegyzékfájl" részéhez a Media-services-Delivery-tartalom – overview.md]),
+V: hozzáadása "(formátum = m3u8-aapl)" elérési útját adja meg a streamelési forráskiszolgáló eszközöket adja vissza a felhasználásához vissza HLS-tartalom Apple iOS rendszeren natív URL-címe "/ jegyzékfájl" részét (további információkért lásd: [történő tartalomtovábbításhoz](media-services-deliver-content-overview.md)),
 
 K: hogyan, méretezhető, az indexelés?
 

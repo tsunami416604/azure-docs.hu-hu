@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
-ms.openlocfilehash: b06e3d742a0bed778dc7671128980708ba379e39
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 1a30f9166c81c4757267c95b13b08f3202748467
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714893"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684644"
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>Meglévő prediktív webszolgáltatás újratanítása
 Ez a dokumentum azt ismerteti, hogyan megőrzési az alábbi forgatókönyvet:
@@ -109,7 +109,7 @@ Keresse meg a *StorageAccountName*, *StorageAccountKey*, és *StorageContainerNa
 Is biztosítania kell, hogy a bemeneti fájl a kódban megadott helyen érhető el.
 
 ### <a name="specify-the-output-location"></a>Adja meg a kimeneti helyet
-Ha a kimeneti helyet ad meg a kérelem hasznos adatainak, a megadott fájl kiterjesztése *RelativeLocation* kell megadni, `ilearner`. Tekintse meg a következő példát:
+Ha a kimeneti helyet ad meg a kérelem hasznos adatainak, a megadott fájl kiterjesztése *RelativeLocation* kell megadni, `ilearner`. Lásd a következő példát:
 
     Outputs = new Dictionary<string, AzureBlobDataReference>() {
         {
@@ -156,7 +156,7 @@ Meglévő webszolgáltatás, az erőforráscsoport nevének megállapításához
 
 Azt is megteheti az erőforráscsoport nevének egy létező webes szolgáltatás határozza meg, jelentkezzen be az Azure Machine Learning Web Services portálon. Válassza ki a web service. Az erőforráscsoport nevét a web service URL-CÍMÉT a minden ötödik eleme után a *resourceGroups* elemet. A következő példában az erőforráscsoport nevének alapértelmezett-MachineLearning-SouthCentralUS.
 
-    https://services.azureml.net/subscriptions/<subcription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
+    https://services.azureml.net/subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
 
 
 ## <a name="export-the-web-service-definition-object-as-json"></a>A webszolgáltatás-definíciójának objektum exportálása JSON-fájlként

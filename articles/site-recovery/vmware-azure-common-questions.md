@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 10/29/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 2436a4e75045200a8d2f48586e31ebfa0c03705a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: c261dd083fed8b9c4a0f3846157c666cbb52083c
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566261"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636815"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
@@ -135,10 +135,10 @@ Bár lehetséges a konfigurációs kiszolgálón futó Azure virtuális gép kel
 Azt javasoljuk, hogy a konfigurációs kiszolgáló rendszeres ütemezett biztonsági másolatok készítése. A sikeres feladat-visszavételhez a virtuális gép folyamatban van a feladatátvételben szerepelniük kell a konfigurációs kiszolgáló adatbázisát, és a konfigurációs kiszolgálón fut, és a egy csatlakoztatott állapotban kell lennie. További információ a konfigurációs kiszolgáló gyakori felügyeleti feladatok [Itt](vmware-azure-manage-configuration-server.md).
 
 ### <a name="when-im-setting-up-the-configuration-server-can-i-download-and-install-mysql-manually"></a>Beállítom a konfigurációs kiszolgáló, amikor is tölthető le és telepítse manuálisan a MySQL?
-Igen. Töltse le a MySQL, és elhelyezheti a **C:\Temp\ASRSetup** mappát. Ezután telepítse manuálisan. Ha a konfigurációs kiszolgáló virtuális gép beállításához, és fogadja el a a feltételeket, MySQL fog szerepelni **már telepítve van** a **töltse le és telepítse**.
+Igen. Töltse le a MySQL, és elhelyezheti a **C:\Temp\ASRSetup** mappát. Ezután telepítse manuálisan. Állítsa be a konfigurációs kiszolgáló virtuális Géphez, és fogadja el a feltételeket, amikor megjelennek-e a MySQL **már telepítve van** a **töltse le és telepítse**.
 
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>Kerülje a MySQL letöltése azonban telepíteni a Site Recovery segítségével?
-Igen. Töltse le a MySQL-telepítőt, és elhelyezheti a **C:\Temp\ASRSetup** mappát.  Ha beállította a konfigurációs kiszolgáló virtuális gép, fogadja el a a feltételeket, és kattintson a **töltse le és telepítse**, a portálon a telepítő a MySQL telepítése hozzáadott fogja használni.
+Igen. Töltse le a MySQL-telepítőt, és elhelyezheti a **C:\Temp\ASRSetup** mappát.  Ha beállította a konfigurációs kiszolgáló virtuális gép, fogadja el a feltételeket, majd kattintson a **töltse le és telepítse**, a portálon a telepítő a MySQL telepítése hozzáadott fogja használni.
  
 ### <a name="canl-i-use-the-configuration-server-vm-for-anything-else"></a>A konfigurációs kiszolgáló virtuális Géphez használni semmi másra CanL?
 Nem, csak használja a virtuális gép a konfigurációs kiszolgáló. 

@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: hrasheed
-ms.openlocfilehash: e9fc4773a0dafc813f217564d5d052fa69d3f298
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0aa45ae807f153e6f1a3fde1d648571b29802dc2
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006703"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632475"
 ---
-# <a name="run-pig-jobs-using-the-net-sdk-for-hadoop-in-hdinsight"></a>A .NET SDK használatával a hadoop együttes használata a HDInsight Pig-feladatok futtatása
+# <a name="run-apache-pig-jobs-using-the-net-sdk-for-apache-hadoop-in-hdinsight"></a>A .NET SDK használatával az Apache Hadoop, a HDInsight Apache Pig-feladatok futtatása
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-Ismerje meg, hogyan használhatja a .NET SDK a Hadoophoz Hadoop on Azure HDInsight az Apache Pig-feladatok elküldése.
+Ismerje meg, hogyan használhatja a .NET SDK, az Apache Hadoop az Azure HDInsight Hadoop Apache Pig-feladatok elküldése.
 
 A HDInsight .NET SDK-t biztosít a .NET-ügyfélkönyvtárak, amelyek segítségével könnyebben működik a HDInsight-fürtökkel a .NET használatával. A Pig MapReduce operations hozzon létre egy sorozatát adatátalakítások modellezés teszi lehetővé. Ebből a dokumentumból megismerheti, hogyan egy egyszerű C#-alkalmazás használatával küldjön el egy Pig feladatot egy HDInsight-fürtön.
 
@@ -43,7 +43,7 @@ A HDInsight .NET SDK-t biztosít a .NET-ügyfélkönyvtárak, ami jó hír műk�
 
 2. Írja be az új projekt, vagy válassza ki a következő értékeket:
 
-   | Tulajdonság | Value (Díj) |
+   | Tulajdonság | Érték |
    | ------ | ------ |
    | Kategória | Sablonok/Visual C#/Windows |
    | Sablon | Konzolalkalmazás |

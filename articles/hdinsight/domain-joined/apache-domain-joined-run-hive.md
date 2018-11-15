@@ -9,15 +9,15 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: bdad0bac0d320b641359df4093ae10c9505b7de2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 43b3e293bf2990c953aeb2947b1113ee30175dee
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993425"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632815"
 ---
-# <a name="configure-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Hive-házirendek konfigurálása a HDInsight vállalati biztonsági csomaggal
-Útmutató ahhoz, hogyan lehet az Apache Ranger-házirendeket a Hive számára konfigurálni. Ebben a cikkben két Ranger-házirendet hoz létre a hivesampletable nevű táblához való hozzáférés korlátozása érdekében. A hivesampletable HDInsight-fürtöket tartalmaz. Miután konfigurálta a házirendeket, az Excel és az ODBC-illesztőprogram használatával kapcsolódjon a HDInsight Hive-tábláihoz.
+# <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Az Apache Hive-házirendek konfigurálása a HDInsight vállalati biztonsági csomaggal
+Ismerje meg, az Apache Hive Apache Ranger-házirendek konfigurálása. Ebben a cikkben két Ranger-házirendet hoz létre a hivesampletable nevű táblához való hozzáférés korlátozása érdekében. A hivesampletable HDInsight-fürtöket tartalmaz. Miután konfigurálta a házirendeket, az Excel és az ODBC-illesztőprogram használatával kapcsolódjon a HDInsight Hive-tábláihoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Egy vállalati biztonsági csomag rendelkező HDInsight-fürt. Lásd: [konfigurálása HDInsight-fürtök ESP](apache-domain-joined-configure.md).

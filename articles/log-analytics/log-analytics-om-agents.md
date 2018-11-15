@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 11/14/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 6ed1d9fc810bfa14beed83609d13c1010d479ed9
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: c8bba283a0c3fde75966ae123023e50d497abd5a
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622245"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687554"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Az Operations Manager csatlakoztatása a Log Analyticshez
 A meglévő befektetéseit a [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) és kiterjesztett képességek használata a Log Analytics, az Operations Manager integrálása a Log Analytics-munkaterületre. Így kiaknázhatja a Log Analytics lehetőségeit, miközben továbbra is használhatja az Operations Managert a következőkre:
@@ -44,7 +44,7 @@ Mielőtt hozzákezdene, tekintse át az alábbi követelményeknek.
 
 * Csak a log Analytics támogatja a System Center Operations Manager 1807, az Operations Manager 1801-re, az Operations Manager 2016-ra, az Operations Manager 2012 SP1 UR6 vagy újabb, és az Operations Manager 2012 R2 UR2 vagy újabb. A proxytámogatás az Operations Manager 2012 SP1 UR 7-es és az Operations Manager 2012 R2 UR 3-as verziójában jelent meg.
 * Minden Operations Manager-ügynöknek meg kell felelnie a minimális támogatási feltételeknek. Győződjön meg arról, hogy ügynök a minimális frissítéskor el, egyéb Windows-ügynök kommunikációja sikertelen és hibák készítése az Operations Manager eseménynaplójában.
-* Egy Log Analytics-munkaterület. További információkért tekintse át a [Log Analytics-munkaterület áttekintése](log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json) ).
+* Egy Log Analytics-munkaterület. További információkért tekintse át a [Log Analytics-munkaterület áttekintése](log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json).
 * Végez hitelesítést az Azure-bA egy olyan fiókkal, amely tagja a [Log Analytics-közreműködő szerepkör](log-analytics-manage-access.md#manage-accounts-and-users).  
 
 >[!NOTE]
@@ -52,7 +52,7 @@ Mielőtt hozzákezdene, tekintse át az alábbi követelményeknek.
 >Az Operations Manager egyes verzióihoz kiadása egy új felügyeleti csomagot:  
 >* Töltse le a felügyeleti csomag a System Center Operations Manager 1801 [Itt](https://www.microsoft.com/download/details.aspx?id=57173)  
 >* Töltse le a felügyeleti csomag a System Center 2016 – Operations Manager [Itt](https://www.microsoft.com/download/details.aspx?id=57172)  
->* A System Center Operations Manager 2012 R2, töltse le a felügyeleti csomag [Itt](https://www.microsoft.com/en-us/download/details.aspx?id=57171)  
+>* A System Center Operations Manager 2012 R2, töltse le a felügyeleti csomag [Itt](https://www.microsoft.com/download/details.aspx?id=57171)  
 
 ### <a name="network"></a>Network (Hálózat)
 Az alábbi lista az Operations Management-ügynök, a felügyeleti kiszolgálók és az Operatív konzol a Log Analyticsszel való kommunikációhoz szükséges proxy- és tűzfal-konfigurációját tartalmazza. Az egyes összetevők forgalma kifelé, a hálózatból a Log Analytics szolgáltatásra irányul.   
@@ -101,7 +101,7 @@ Log Analytics szolgáltatással integrálható a következő lépések elvégzé
 1. Nyissa meg az Operatív konzolt, és válassza ki az **Administration** (Adminisztráció) munkaterületet.
 1. Bontsa ki az Operations Management Suite-csomópontot, és kattintson a **Kapcsolat** elemre.
 1. Kattintson a **Register to Operations Management Suite** (Regisztráció az Operations Management Suite-be) hivatkozásra.
-1. Az a **Operations Magement Suite előkészítési varázslója: hitelesítés** lapon adja meg az e-mail cím vagy telefonszám és jelszót a rendszergazdai fiók, amely az OMS-előfizetés társítva van, és kattintson a  **Jelentkezzen be a**.
+1. Az **Operations Management Suite Előkészítési varázsló Hitelesítés lapján** adja meg az OMS-előfizetésével társított rendszergazdai fiók e-mail-címét vagy telefonszámát és jelszavát, és kattintson a **Bejelentkezés** gombra.
 
    >[!NOTE]
    >OMS most már a Log Analytics nevezik.

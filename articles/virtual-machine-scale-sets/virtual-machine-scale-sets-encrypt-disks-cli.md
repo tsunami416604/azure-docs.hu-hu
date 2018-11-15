@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: cynthn
-ms.openlocfilehash: c8035a87816c56daa5ac9e1f95b40d15fa556cd9
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 1ae352a0292e75eb9a5bf07e3ddca79ca687dea2
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465158"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687384"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli-preview"></a>Az operációs rendszer és a egy virtuálisgép-méretezési csoportot az Azure CLI (előzetes verzió) az a csatlakoztatott adatlemezekkel titkosítása
 
@@ -48,7 +48,7 @@ Az Azure disk encryption virtuálisgép-méretezési csoportokhoz előzetes kell
 az feature register --name UnifiedDiskEncryption --namespace Microsoft.Compute
 ```
 
-A regisztrációs kérelem propagálása akár 10 percet is igénybe vehet. A regisztrációs állapot ellenőrzéséhez [az funkció show](/cli/azure/feature#az_feature_show). Ha a `State` jelentések *regisztrált*, regisztrálja újra a *Mirosoft.Compute* szolgáltató [az provider register](/cli/azure/provider#az_provider_register):
+A regisztrációs kérelem propagálása akár 10 percet is igénybe vehet. A regisztrációs állapot ellenőrzéséhez [az funkció show](/cli/azure/feature#az_feature_show). Ha a `State` jelentések *regisztrált*, regisztrálja újra a *Microsoft.Compute* szolgáltató [az provider register](/cli/azure/provider#az_provider_register):
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute

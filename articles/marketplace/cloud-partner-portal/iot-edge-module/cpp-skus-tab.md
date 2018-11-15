@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: a216f3ddd89ad92dbbae617c51d5fc9c478c0c03
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 205fd258ed397f5a9588773549368fc3c4aec058
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49431036"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684817"
 ---
 # <a name="iot-edge-module-skus-tab"></a>IoT Edge-modul termékváltozatok lapon
 
@@ -54,7 +54,7 @@ A következő táblázat ismerteti a célja, tartalom, és a mezők területen f
 |  **Mező**       |     **Leírás**                                                          |
 |  ---------       |     ---------------                                                          |
 | **Cím**        | Ez a Termékváltozat címét. Legfeljebb 50 karakter hosszúságú. <br/> Megjelenik az Azure Portalon, és a egy alapértelmezett Modulnév (nélkül szóközöket és speciális karakterek) lesz mikor telepítették. A képek, lásd: pontosan hol ebben a mezőben jelenik meg az alábbi témakörben talál.|
-| **Összefoglalás**      | Ez a Termékváltozat rövid összefoglalása. A hosszabb 100 karakternél. Tegye **nem** összefoglalója az ajánlat csak a Termékváltozat.  Az összegzés megjelenik az Azure piactéren. A képek, lásd: pontosan hol ebben a mezőben jelenik meg az alábbi témakörben talál.|
+| **összegzés**      | Ez a Termékváltozat rövid összefoglalása. A hosszabb 100 karakternél. Tegye **nem** összefoglalója az ajánlat csak a Termékváltozat.  Az összegzés megjelenik az Azure piactéren. A képek, lásd: pontosan hol ebben a mezőben jelenik meg az alábbi témakörben talál.|
 | **Leírás**  | Ez a Termékváltozat rövid leírása. 3000 karakternél hosszabb. Írja le az ajánlatra, de csak a Termékváltozat. Az azure Marketplace-en és az Azure Portalon megjelennek. Az Azure Portalon, hozzáfűzi az ajánlatot a piactéren lapon meghatározott leíró Marketplace leírása.  Ugyanaz, mint a Termékváltozat összefoglaló lehet. A képek, lásd: pontosan hol ebben a mezőben jelenik meg az alábbi témakörben talál.|
 | **Ez a Termékváltozat elrejtése** | Az alapértelmezett beállítás, amely folyamatosan **nem**. |
 
@@ -90,7 +90,7 @@ A következő táblázat ismerteti a célja, tartalom, és a mezők területen f
 
 ## <a name="sku-content"></a>Termékváltozat-tartalma
 
-Edge-modul lemezképek alatt adja meg az adatokat, hogy fel kell töltenie az IoT Edge-modul.
+A **Edge-modul lemezképek**, adja meg az adatokat, hogy fel kell töltenie az IoT Edge-modul.
 
 Ossza meg velünk a hozzáférést a [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) (ACR), amely tartalmazza az IoT Edge modul képen, hogy azt töltse fel, és azt igazolja. Miután közzé van téve, az IoT Edge-modul lesznek másolva, és elosztott egy az Azure piactér által üzemeltetett nyilvános container registry használatával.
 

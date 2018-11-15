@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 100ea0147bf56242ba15bee39e4bda1b65af27da
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 31f4c64296c180ac441f2fb691514a4b9fb35a57
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390091"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687197"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Oktatóanyag: Azure Active Directory-integráció a helyszíni SharePoint
 
@@ -130,7 +130,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 6. Az a **helyszíni SharePoint-konfiguráció** területén kattintson **SharePoint konfigurálása a helyszíni** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító** származó a **gyors útmutató szakaszban.** A **egyszeri bejelentkezési szolgáltatás URL-cím**, az érték a következő mintának: `https://login.microsoftonline.com/_my_directory_id_/wsfed` 
 
     > [!Note]
-    > _my_directory_id_ a bérlő azonosítója az Azure Ad-előfizetés társadminisztrátora.
+    > _my_directory_id_ a bérlő azonosítója, az Azure Ad-előfizetés.
 
     ![A SharePoint helyszíni konfigurálása](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_configure.png)
 

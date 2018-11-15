@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8d5e29b89d65bc8777feac0c496b3253bc2a6763
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 42b0a2440fa459fa31a7d6e137d124883646c205
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278990"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686010"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-azure-portal"></a>Linux-alapú fürtök létrehozása a HDInsight az Azure portal használatával
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -65,7 +65,7 @@ Az Azure Portalon a tulajdonságait a legtöbb tesz elérhetővé. Azure Resourc
 
     * Kattintson a **Tovább** gombra.
 
-4. A **biztonsági és hálózatkezelési**, a megadott legördülő menüben virtuális hálózathoz is csatlakoztathatja a fürtjét. Válassza ki a Azure-beli virtuális hálózathoz és az alhálózatot, ha el szeretné helyezni a fürt egy virtuális hálózatban. HDInsight használatával egy virtuális hálózathoz, beleértve a virtuális hálózathoz megadott konfigurációs követelményekkel kapcsolatos információkat lásd: [HDInsight kiterjesztése képességek az Azure Virtual Network használatával](hdinsight-extend-hadoop-virtual-network.md). Ha használni szeretné a **vállalati biztonsági csomag**, is követheti az itt leírt utasításokat: [HDInsight fürt konfigurálása a vállalati biztonsági csomaggal az Azure Active Directory Domain Services](https://docs.microsoft.com/en-us/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds).
+4. A **biztonsági és hálózatkezelési**, a megadott legördülő menüben virtuális hálózathoz is csatlakoztathatja a fürtjét. Válassza ki a Azure-beli virtuális hálózathoz és az alhálózatot, ha el szeretné helyezni a fürt egy virtuális hálózatban. HDInsight használatával egy virtuális hálózathoz, beleértve a virtuális hálózathoz megadott konfigurációs követelményekkel kapcsolatos információkat lásd: [HDInsight kiterjesztése képességek az Azure Virtual Network használatával](hdinsight-extend-hadoop-virtual-network.md). Ha használni szeretné a **vállalati biztonsági csomag**, is követheti az itt leírt utasításokat: [HDInsight fürt konfigurálása a vállalati biztonsági csomaggal az Azure Active Directory Domain Services](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds).
 
 5. A **tárolási**, adja meg, hogy az Azure Storage (WASB) vagy a Data Lake Storage az alapértelmezett tárolóként. Tekintse meg az alábbi táblázatban további információt.
 

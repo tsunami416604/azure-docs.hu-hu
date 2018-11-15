@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 11/6/2018
 ms.author: diberry
-ms.openlocfilehash: d9040965a0cfaf022bf4cc582cb2aeaa34d04849
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: bcb19ebdcf6d4ca1c01612f815700fbbc0dd2fda
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252445"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567723"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c"></a>Rövid útmutató: Tudásbázis létrehozása a QnA Makerben a C# használatával
 
@@ -32,7 +32,7 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 * Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. A kulcs lekéréséhez válassza az irányítópulton az **Erőforrás-kezelés** területen lévő **Kulcsok** lehetőséget. 
 
 > [!NOTE] 
-> A teljes megoldásfájlok az [**Azure-Samples/cognitive-services-qnamaker-csharp** GitHub-adattárból](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/quickstarts/create-and-publish-knowledge-base) érhetők el.
+> A teljes megoldásfájlok az [**Azure-Samples/cognitive-services-qnamaker-csharp** GitHub-adattárból](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp) érhetők el.
 
 ## <a name="create-a-knowledge-base-project"></a>Tudásbázisprojekt létrehozása
 
@@ -112,7 +112,7 @@ Ismételje a hívást, amíg nem sikerül vagy meg nem hiúsul:
 
 ## <a name="add-createkb-method"></a>CreateKB metódus hozzáadása
 
-A következő metódus létrehozza a tudásbázist, és megismétli az állapotellenőrzést.  A _létrehozás_ **műveletazonosítót** a rendszer a POST válasz **Hely** fejlécmezőjében adja vissza, majd a GET kérésben az útvonal részeként használja. Mivel a tudásbázis létrehozása eltarthat egy ideig, előfordulhat, hogy többször is meg kell ismételnie az állapot-ellenőrző hívásokat, amíg az állapot sikeresnek vagy sikertelennek nem bizonyul. Ha a művelet sikeres, a tudásbázis azonosítóját adja vissza a **resourceLocation** változóban. 
+A következő metódus létrehozza a tudásbázist, és megismétli az állapotellenőrzést.  A _létrehozás_ **műveletazonosítót** a rendszer a POST-válasz **Hely** fejlécmezőjében adja vissza, majd a GET-kérésben az útvonal részeként használja. Mivel a tudásbázis létrehozása eltarthat egy ideig, előfordulhat, hogy többször is meg kell ismételnie az állapot-ellenőrző hívásokat, amíg az állapot sikeresnek vagy sikertelennek nem bizonyul. Ha a művelet sikeres, a tudásbázis azonosítóját adja vissza a **resourceLocation** változóban. 
 
 [!code-csharp[Add CreateKB method](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=176-237 "Add CreateKB method")]
 

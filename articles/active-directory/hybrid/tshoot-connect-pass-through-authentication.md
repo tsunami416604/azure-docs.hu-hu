@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d4f44deac1e8833af064e0abea4e65c5ca2b2f93
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6172195a9914d841e480cd7ebbf9566616911378
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314250"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686194"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Az Azure Active Directory átmenő hitelesítés hibaelhárítása
 
@@ -125,7 +125,7 @@ A telepítés kapcsolódó hibák ellenőrizze az Azure AD Connect-naplókat, **
 
 A hitelesítési ügynök kapcsolatos hibákat, nyissa meg az Eseménynapló alkalmazást a kiszolgálón, és ellenőrizze a **alkalmazás és szolgáltatás Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin**.
 
-Részletes elemzés céljából a "Munkamenet" napló engedélyezése. Ez a napló engedélyezve van a normál működés; során az a hitelesítési ügynök nem futnak csak a hibaelhárításhoz használható. A napló tartalmát csak láthatók, miután a naplót újra le van tiltva.
+Részletes elemzés engedélyezze a "Munkamenet" log (kattintson a jobb gombbal az Eseménynapló alkalmazásban ez a beállítás található). Ez a napló engedélyezve van a normál működés; során az a hitelesítési ügynök nem futnak csak a hibaelhárításhoz használható. A napló tartalmát csak láthatók, miután a naplót újra le van tiltva.
 
 ### <a name="detailed-trace-logs"></a>Részletes nyomkövetési naplók
 

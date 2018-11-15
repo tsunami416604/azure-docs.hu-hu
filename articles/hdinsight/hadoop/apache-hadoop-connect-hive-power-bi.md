@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: b094df367d4396533d368b9fdbcb4b78ec1673de
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: e6711a5595c6b7c6caaff97f4c1996817be1abce
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008895"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634549"
 ---
-# <a name="visualize-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>A Microsoft Power BI ODBC segítségével az Azure HDInsight Hive-adatok vizualizálása
+# <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>A Microsoft Power BI ODBC segítségével az Azure HDInsight az Apache Hive-adatok megjelenítése
 
-Ismerje meg, hogyan csatlakozhat Azure HDInsight ODBC segítségével a Microsoft Power BI és a Hive-adatok megjelenítése. 
+Ismerje meg, hogyan csatlakozhat Azure HDInsight ODBC segítségével a Microsoft Power BI és az Apache Hive-adatok megjelenítése. 
 
 >[!IMPORTANT]
 > Kihasználhatja a Hive ODBC-illesztőprogram importálása a Power BI Desktop általános ODBC-összekötő használatával. Azonban nem ajánlott a Hive-lekérdezési motor nem interaktív természeténél BI számítási feladatokhoz. [HDInsight interaktív lekérdezés összekötője](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md) és [HDInsight Spark-összekötő](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) a teljesítményük jobb döntéseket.
@@ -40,7 +40,7 @@ Mielőtt végrehajtaná ezt a cikket, a következőkkel kell rendelkeznie:
 
 ## <a name="create-hive-odbc-data-source"></a>Hive ODBC-adatforrás létrehozása
 
-Lásd: [létrehozása Hive ODBC-adatforrás](apache-hadoop-connect-excel-hive-odbc-driver.md#create-hive-odbc-data-source).
+Lásd: [létrehozása Hive ODBC-adatforrás](apache-hadoop-connect-excel-hive-odbc-driver.md#create-apache-hive-odbc-data-source).
 
 ## <a name="load-data-from-hdinsight"></a>A HDInsight adatok betöltése
 

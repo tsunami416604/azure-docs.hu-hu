@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: e140ca46a18fcab2194adb213d723ab67d40b0a8
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: c94d29f16c011a9ff9951d064d7496d3a87f70ef
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615160"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636305"
 ---
 # <a name="egress-and-endpoints"></a>Kimenő forgalom és a végpontok
 
@@ -76,13 +76,13 @@ Az alábbi szakaszok az esemény formátumok minden az eseménytípusok ismertet
   "eventTime": "2018-04-17T17:41:54.9400177Z",
   "dataVersion": "1",
   "metadataVersion": "1",
-  "topic": "/subscriptions/yourTopicName"
+  "topic": "/subscriptions/YOUR_TOPIC_NAME"
 }
 ```
 
-| Egyéni attribútum neve | Csere erre |
+| Érték | Csere erre |
 | --- | --- |
-| yourTopicName | Az egyéni témakör neve |
+| YOUR_TOPIC_NAME | Az egyéni témakör neve |
 
 ### <a name="udfcustom"></a>UdfCustom
 
@@ -107,13 +107,13 @@ Az alábbi szakaszok az esemény formátumok minden az eseménytípusok ismertet
   "eventTime": "2018-10-02T06:50:15.198Z",
   "dataVersion": "1.0",
   "metadataVersion": "1",
-  "topic": "/subscriptions/yourTopicName"
+  "topic": "/subscriptions/YOUR_TOPIC_NAME"
 }
 ```
 
-| Egyéni attribútum neve | Csere erre |
+| Érték | Csere erre |
 | --- | --- |
-| yourTopicName | Az egyéni témakör neve |
+| YOUR_TOPIC_NAME | Az egyéni témakör neve |
 
 ### <a name="sensorchange"></a>SensorChange
 
@@ -142,13 +142,13 @@ Az alábbi szakaszok az esemény formátumok minden az eseménytípusok ismertet
   "eventTime": "2018-04-17T17:46:18.5452993Z",
   "dataVersion": "1",
   "metadataVersion": "1",
-  "topic": "/subscriptions/yourTopicName"
+  "topic": "/subscriptions/YOUR_TOPIC_NAME"
 }
 ```
 
-| Egyéni attribútum neve | Csere erre |
+| Érték | Csere erre |
 | --- | --- |
-| yourTopicName | Az egyéni témakör neve |
+| YOUR_TOPIC_NAME | Az egyéni témakör neve |
 
 ### <a name="spacechange"></a>SpaceChange
 
@@ -177,13 +177,13 @@ Az alábbi szakaszok az esemény formátumok minden az eseménytípusok ismertet
   "eventTime": "2018-10-02T06:50:20.128Z",
   "dataVersion": "1.0",
   "metadataVersion": "1",
-  "topic": "/subscriptions/yourTopicName"
+  "topic": "/subscriptions/YOUR_TOPIC_NAME"
 }
 ```
 
-| Egyéni attribútum neve | Csere erre |
+| Érték | Csere erre |
 | --- | --- |
-| yourTopicName | Az egyéni témakör neve |
+| YOUR_TOPIC_NAME | Az egyéni témakör neve |
 
 ### <a name="devicemessage"></a>DeviceMessage
 
@@ -211,18 +211,18 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
       "SpaceChange",
       "TopologyOperation"
     ],
-    "connectionString": "Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourPrimaryKey",
-    "secondaryConnectionString": "Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourSecondaryKey",
-    "path": "yourTopicName"
+    "connectionString": "Endpoint=sb://YOUR_NAMESPACE.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=YOUR_PRIMARY_KEY",
+    "secondaryConnectionString": "Endpoint=sb://YOUR_NAMESPACE.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=YOUR_SECONDARY_KEY",
+    "path": "YOUR_TOPIC_NAME"
   }
   ```
 
-    | Egyéni attribútum neve | Csere erre |
+    | Érték | Csere erre |
     | --- | --- |
-    | yourNamespace | A névtér a végpont |
-    | yourPrimaryKey | Hitelesítéshez használt elsődleges kapcsolati karakterlánc |
-    | yourSecondaryKey | Hitelesítéshez használt másodlagos kapcsolati karakterlánc |
-    | yourTopicName | Az egyéni témakör neve |
+    | YOUR_NAMESPACE | A névtér a végpont |
+    | YOUR_PRIMARY_KEY | Hitelesítéshez használt elsődleges kapcsolati karakterlánc |
+    | YOUR_SECONDARY_KEY | Hitelesítéshez használt másodlagos kapcsolati karakterlánc |
+    | YOUR_TOPIC_NAME | Az egyéni témakör neve |
 
 - Event Grid-esemény típusú útvonal **SensorChange**, **SpaceChange**, és **TopologyOperation**:
 
@@ -234,17 +234,17 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
       "SpaceChange",
       "TopologyOperation"
     ],
-    "connectionString": "yourPrimaryKey",
-    "secondaryConnectionString": "yourSecondaryKey",
-    "path": "yourTopicName.westus-1.eventgrid.azure.net"
+    "connectionString": "YOUR_PRIMARY_KEY",
+    "secondaryConnectionString": "YOUR_SECONDARY_KEY",
+    "path": "YOUR_TOPIC_NAME.westus-1.eventgrid.azure.net"
   }
   ```
 
-    | Egyéni attribútum neve | Csere erre |
+    | Érték | Csere erre |
     | --- | --- |
-    | yourPrimaryKey | Hitelesítéshez használt elsődleges kapcsolati karakterlánc|
-    | yourSecondaryKey | Hitelesítéshez használt másodlagos kapcsolati karakterlánc |
-    | yourTopicName | Az egyéni témakör neve |
+    | YOUR_PRIMARY_KEY | Hitelesítéshez használt elsődleges kapcsolati karakterlánc|
+    | YOUR_SECONDARY_KEY | Hitelesítéshez használt másodlagos kapcsolati karakterlánc |
+    | YOUR_TOPIC_NAME | Az egyéni témakör neve |
 
 - Az Event Hubs eseménytípusok útvonal **SensorChange**, **SpaceChange**, és **TopologyOperation**:
 
@@ -256,18 +256,18 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
       "SpaceChange",
       "TopologyOperation"
     ],
-    "connectionString": "Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourPrimaryKey",
-    "secondaryConnectionString": "Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourSecondaryKey",
-    "path": "yourEventHubName"
+    "connectionString": "Endpoint=sb://YOUR_NAMESPACE.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=YOUR_PRIMARY_KEY",
+    "secondaryConnectionString": "Endpoint=sb://YOUR_NAMESPACE.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=YOUR_SECONDARY_KEY",
+    "path": "YOUR_EVENT_HUB_NAME"
   }
   ```
 
-    | Egyéni attribútum neve | Csere erre |
+    | Érték | Csere erre |
     | --- | --- |
-    | yourNamespace | A névtér a végpont |
-    | yourPrimaryKey | Hitelesítéshez használt elsődleges kapcsolati karakterlánc |
-    | yourSecondaryKey | Hitelesítéshez használt másodlagos kapcsolati karakterlánc |
-    | yourEventHubName | Az eseményközpont neve |
+    | YOUR_NAMESPACE | A névtér a végpont |
+    | YOUR_PRIMARY_KEY | Hitelesítéshez használt elsődleges kapcsolati karakterlánc |
+    | YOUR_SECONDARY_KEY | Hitelesítéshez használt másodlagos kapcsolati karakterlánc |
+    | YOUR_EVENT_HUB_NAME | Az eseményközpont neve |
 
 - Az Event Hubs esemény típusa útvonal **DeviceMessage**. Felvételét `EntityPath` a a **connectionString** kötelező:
 
@@ -277,18 +277,18 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
     "eventTypes": [
       "DeviceMessage"
     ],
-    "connectionString": "Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourPrimaryKey;EntityPath=yourEventHubName",
-    "secondaryConnectionString": "Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourSecondaryKey;EntityPath=yourEventHubName",
-    "path": "yourEventHubName"
+    "connectionString": "Endpoint=sb://YOUR_NAMESPACE.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=YOUR_PRIMARY_KEY;EntityPath=YOUR_EVENT_HUB_NAME",
+    "secondaryConnectionString": "Endpoint=sb://YOUR_NAMESPACE.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=YOUR_SECONDARY_KEY;EntityPath=YOUR_EVENT_HUB_NAME",
+    "path": "YOUR_EVENT_HUB_NAME"
   }
   ```
 
-    | Egyéni attribútum neve | Csere erre |
+    | Érték | Csere erre |
     | --- | --- |
-    | yourNamespace | A névtér a végpont |
-    | yourPrimaryKey | Hitelesítéshez használt elsődleges kapcsolati karakterlánc |
-    | yourSecondaryKey | Hitelesítéshez használt másodlagos kapcsolati karakterlánc |
-    | yourEventHubName | Az eseményközpont neve |
+    | YOUR_NAMESPACE | A névtér a végpont |
+    | YOUR_PRIMARY_KEY | Hitelesítéshez használt elsődleges kapcsolati karakterlánc |
+    | YOUR_SECONDARY_KEY | Hitelesítéshez használt másodlagos kapcsolati karakterlánc |
+    | YOUR_EVENT_HUB_NAME | Az eseményközpont neve |
 
 > [!NOTE]  
 > Új végpont a létrehozás után is igénybe vehet legfeljebb 5 10 percre elindításához a fogadott események a végponton.

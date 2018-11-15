@@ -3,18 +3,18 @@ title: A Custom Vision üzembe helyezése egy Azure IoT Edge-eszközön | Micros
 description: Megtudhatja, hogyan futtathat számítógépes látástechnológiai modellt tárolóként a Custom Vision és az IoT Edge használatával.
 services: iot-edge
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 11/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a3bd7cf5e7c29ee44d696c0a27566b1a73436794
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
-ms.translationtype: HT
+ms.openlocfilehash: a8f72c62393f6ba470c31a55668382ae0beb290e
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50749776"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566482"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Oktatóanyag: Képosztályozás végrehajtása a peremhálózaton a Custom Vision Service használatával
 

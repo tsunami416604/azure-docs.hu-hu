@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: 1d38b563e2a272acdbaa4ea0c2a169a04e798d12
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
+ms.openlocfilehash: e03d913e1887bceb9267207e3a9abea93ab6d000
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649397"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568030"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: gyakori kérdések
 
@@ -113,7 +113,7 @@ A.-->
 A. Ha a rendszerhibajelző LED világít, az azt jelzi, hogy a rendszer állapota nem kifogástalan. A további lépésekért [forduljon a Microsoft ügyfélszolgálatához](data-box-disk-contact-microsoft-support.md).
 
 ### <a name="q-i-cant-access-the-data-box-unlock-password-in-the-azure-portal-why-would-this-be"></a>K. Nem férek hozzá a Data Box zárolásfeloldási jelszavához az Azure Portalon. Mi lehet ennek az oka?
-A. Ha nem fér hozzá a Data Box zárolásfeloldási jelszavához az Azure Portalon, ellenőrizze az előfizetése és a tárfiókja jogosultságait. Győződjön meg arról, hogy közreműködői vagy tulajdonosi jogosultságokkal rendelkezik az erőforráscsoport szintjén. Ha nem, akkor is rendelkeznie kell legalább a Data Box-kezelői szerepkör jogosultságaival a hozzáférési hitelesítő adatok megtekintéséhez.
+A. Ha nem fér hozzá a Data Box zárolásfeloldási jelszavához az Azure Portalon, ellenőrizze az előfizetése és a tárfiókja jogosultságait. Győződjön meg arról, hogy közreműködői vagy tulajdonosi jogosultságokkal rendelkezik az erőforráscsoport szintjén. Ha nem, majd van szüksége, hogy legalább Data Box-operátor szerepkör engedély a hozzáférési hitelesítő adatok megtekintéséhez.
 
 ## <a name="track-status"></a>Állapot nyomon követése
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: ea1e3ca76f779f442c9d22478ea93de3d5ab83f2
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
-ms.translationtype: HT
+ms.openlocfilehash: 95f2947a30499ce563d5943dfa423ee89a172f47
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43088106"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614521"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Adatok növekményes betöltése az SQL Server több táblájából egy Azure SQL-adatbázisba
 Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be egy helyszíni SQL Server több táblájából egy Azure SQL Database-be.    
@@ -279,7 +279,7 @@ Mialatt adatokat helyez át egy magánhálózaton (helyszínen) lévő adattárb
    ![Saját üzemeltetésű integrációs modul neve](./media/tutorial-incremental-copy-multiple-tables-portal/self-hosted-ir-name.png)
 1. Kattintson a **Kattintson ide a számítógépen történő expressz telepítés indításához** elemre az **1. lehetőség: Expressz telepítés** szakaszban. 
 
-   ![Kattintás az Expressz telepítés hivatkozásra](./media/tutorial-incremental-copy-multiple-tables-portal/click-exress-setup.png)
+   ![Kattintás az Expressz telepítés hivatkozásra](./media/tutorial-incremental-copy-multiple-tables-portal/click-express-setup.png)
 1. Az **Integrációs modul (Saját üzemeltetésű) – Expressz telepítés** ablakban kattintson a **Bezárás** elemre. 
 
    ![Integrációs modul telepítése – sikeres](./media/tutorial-incremental-copy-multiple-tables-portal/integration-runtime-setup-successful.png)
@@ -512,7 +512,7 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
         | Name (Név) | Típus | Érték | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
-        | TableName | Sztring | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
+        | TableName | Karakterlánc | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![Tárolt eljárási tevékenység – tárolt eljárás beállításai](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
 1. A bal oldali panelen kattintson a **Publish** (Közzététel) elemre. Ez a művelet közzéteszi a Data Factory szolgáltatásban a létrehozott entitásokat. 

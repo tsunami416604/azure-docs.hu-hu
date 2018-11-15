@@ -1,5 +1,5 @@
 ---
-title: Hitelesítés és engedélyezés az Azure App Service testreszabása |} A Microsoft Docs
+title: Speciális hitelesítés és engedélyezés az Azure App Service használatának |} A Microsoft Docs
 description: Bemutatja, hogyan testre szabhatja a hitelesítés és engedélyezés az App Service-ben, és felhasználói jogcímek és különböző jogkivonatokat.
 services: app-service
 documentationcenter: ''
@@ -11,18 +11,18 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 11/08/2018
 ms.author: cephalin
-ms.openlocfilehash: 629a76ab5610625e14780d7b5c57d3979c2224c9
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: e1109ec8cc98c7e5fc72d7f56ade19968b0056cc
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344170"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685327"
 ---
-# <a name="customize-authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service testreszabása
+# <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service speciális használata
 
-Ez a cikk bemutatja, hogyan szabhatja testre [hitelesítés és engedélyezés az App Service-ben](app-service-authentication-overview.md), és az identitások kezelésére az alkalmazásból. 
+Ez a cikk bemutatja, hogyan szabhatja testre a beépített [hitelesítés és engedélyezés az App Service-ben](app-service-authentication-overview.md), és az identitások kezelésére az alkalmazásból. 
 
 Gyorsan használatba, tekintse meg az alábbi oktatóanyagok egyikét:
 
@@ -58,6 +58,48 @@ Amikor a felhasználó a hivatkozásra kattint, a megfelelő bejelentkezési old
 
 ```HTML
 <a href="/.auth/login/<provider>?post_login_redirect_url=/Home/Index">Log in</a>
+```
+
+## <a name="validate-tokens-from-providers"></a>-Szolgáltatóktól származó jogkivonatokat ellenőrzése
+
+Az adott ügyfél által vezérelt bejelentkezés, az alkalmazás manuális jelentkezik be a felhasználót, hogy a szolgáltató, és ezután elküldi a hitelesítési jogkivonat az App Service-ellenőrzés céljából (lásd: [hitelesítési folyamat](app-service-authentication-overview.md#authentication-flow)). Ez maga érvényesítési ténylegesen nem adja meg a kívánt alkalmazás-erőforrások elérését, de egy ellenőrzést kap egy munkamenet-jogkivonatot használó alkalmazás-erőforrások eléréséhez. 
+
+A szolgáltató jogkivonat érvényesítéséhez, App Service-alkalmazás először konfigurálni kell a kívánt szolgáltatójával. Futásidőben, a hitelesítési jogkivonat lekérése a szolgáltató, miután közzé a jogkivonat `/.auth/login/<provider>` ellenőrzés céljából. Példa: 
+
+```
+POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
+Content-Type: application/json
+
+{"id_token":"<token>","access_token":"<token>"}
+```
+
+A token formátuma kissé a szolgáltató megfelelően változik. Az alábbi táblázat a részletekért lásd:
+
+| Szolgáltató érték | A kérelem törzsében | Megjegyzések |
+|-|-|-|
+| `aad` | `{"access_token":"<access_token>"}` | |
+| `microsoftaccount` | `{"access_token":"<token>"}` | A `expires_in` tulajdonság nem kötelező. <br/>A jogkivonat az élő szolgáltatások kérésekor mindig kérése a `wl.basic` hatókör. |
+| `google` | `{"id_token":"<id_token>"}` | A `authorization_code` tulajdonság nem kötelező. Adja meg, amikor azt is társulhatnak a `redirect_uri` tulajdonság. |
+| `facebook`| `{"access_token":"<user_access_token>"}` | Használjon érvényes [felhasználói jogkivonat](https://developers.facebook.com/docs/facebook-login/access-tokens) Facebook szolgáltatásból. |
+| `twitter` | `{"access_token":"<access_token>", "access_token_secret":"<acces_token_secret>"}` | |
+| | | |
+
+Ha a szolgáltató token ellenőrzése sikeresen befejeződött, az API-t adja vissza a egy `authenticationToken` a kéréstörzsben, azaz a munkamenet-azonosító. 
+
+```json
+{
+    "authenticationToken": "...",
+    "user": {
+        "userId": "sid:..."
+    }
+}
+```
+
+Ha a munkamenet-jogkivonat, érhető el védett alkalmazás-erőforrások hozzáadása a `X-ZUMO-AUTH` fejléc a HTTP-kérelmekre. Példa: 
+
+```
+GET https://<appname>.azurewebsites.net/api/products/1
+X-ZUMO-AUTH: <authenticationToken_value>
 ```
 
 ## <a name="sign-out-of-a-session"></a>Jelentkezzen ki a munkamenet
@@ -119,7 +161,7 @@ Az alkalmazás további részleteket a hitelesített felhasználó is beszerezhe
 
 A kiszolgálói kódból a szolgáltatóhoz tartozó jogkivonatok vannak elhelyezte a kérelem fejlécét, így könnyen elérheti őket. Az alábbi táblázat a lehetséges token fejléc neve:
 
-| | |
+| Szolgáltató | A fejlécnevek |
 |-|-|
 | Azure Active Directory | `X-MS-TOKEN-AAD-ID-TOKEN` <br/> `X-MS-TOKEN-AAD-ACCESS-TOKEN` <br/> `X-MS-TOKEN-AAD-EXPIRES-ON`  <br/> `X-MS-TOKEN-AAD-REFRESH-TOKEN` |
 | Facebook-jogkivonat | `X-MS-TOKEN-FACEBOOK-ACCESS-TOKEN` <br/> `X-MS-TOKEN-FACEBOOK-EXPIRES-ON` |

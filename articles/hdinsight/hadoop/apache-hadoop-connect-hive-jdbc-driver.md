@@ -1,6 +1,6 @@
 ---
-title: Lekérdezés Hive, a JDBC-illesztőprogram – Azure HDInsight segítségével
-description: A Java-alkalmazás JDBC-illesztőprogram segítségével a HDInsight hadoop Hive-lekérdezések elküldéséhez. Programozott módon, és az SQuirrel SQL-ügyfél csatlakoztatása.
+title: Az Apache Hive-lekérdezés a JDBC-illesztőprogram – Azure HDInsight segítségével
+description: A Java-alkalmazás JDBC-illesztőprogram segítségével Hadoop on HDInsight az Apache Hive-lekérdezések elküldéséhez. Programozott módon, és az SQuirrel SQL-ügyfél csatlakoztatása.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,18 +9,18 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: hrasheed
-ms.openlocfilehash: d47d6abe3adaf76b67b88cffd53b0b46258931c8
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 577f36f53bfad79af968a4c34f4b6ab0b49527c7
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014414"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633444"
 ---
-# <a name="query-hive-through-the-jdbc-driver-in-hdinsight"></a>Lekérdezés Hive a HDInsight a JDBC-illesztőprogram segítségével
+# <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Lekérdezés az Apache Hive a HDInsight a JDBC-illesztőprogram segítségével
 
 [!INCLUDE [ODBC-JDBC-selector](../../../includes/hdinsight-selector-odbc-jdbc.md)]
 
-Ismerje meg, hogyan használhatja a JDBC-illesztővel Java-alkalmazás az Azure HDInsight hadoop Hive-lekérdezések elküldéséhez. A jelen dokumentumban lévő információk programozott módon, és az SQuirrel SQL-ügyfél mutatja be.
+Ismerje meg, hogyan használható a JDBC-illesztővel Java-alkalmazás az Azure HDInsight az Apache Hadoop Apache Hive-lekérdezések elküldéséhez. A jelen dokumentumban lévő információk programozott módon, és az SQuirrel SQL-ügyfél mutatja be.
 
 További információ a Hive JDBC-kapcsolaton: [HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDBCInterface).
 
@@ -111,7 +111,7 @@ SQuirreL SQL JDBC ügyfél, amely távolról futtathat Hive-lekérdezéseket a H
 
         Cserélje le a **CLUSTERNAME** kifejezést a HDInsight-fürt nevére.
 
-    * **Felhasználónév**: a HDInsight-fürthöz a fürt bejelentkezési fiók nevét. Az alapértelmezett érték `admin`.
+    * **Felhasználónév**: a HDInsight-fürthöz a fürt bejelentkezési fiók nevét. A mező alapértelmezett értéke: `admin`.
 
     * **Jelszó**: a fürt bejelentkezési fiókjának jelszavát.
 

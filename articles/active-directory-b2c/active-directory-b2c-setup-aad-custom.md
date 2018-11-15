@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 820fd904ac4ab983f4bd9858f3cf1ecff147876e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 2a4519484c3319ca73bef2862db4d279ba117c4f
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386620"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636730"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Állítsa be a bejelentkezést egy Azure Active Directory-fiókot az Azure Active Directory B2C-vel egyéni szabályzatok használatával 
 
@@ -31,20 +31,19 @@ Hajtsa végre a [az Azure Active Directory B2C-vel egyéni szabályzatok – els
 
 Ahhoz, hogy jelentkezzen be egy meghatározott felhasználók számára az Azure AD a szervezeten belül, kell regisztrálni egy alkalmazást a szervezeti Azure AD-bérlővel.
 
->[!NOTE]
->`Contoso.com` a szervezeti használt Azure AD-bérlő és `fabrikamb2c.onmicrosoft.com` használja a következő utasítások az Azure AD B2C-bérlő.
-
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Győződjön meg arról, hogy használja a könyvtárat, amely tartalmazza a szervezeti Azure AD-bérlő (contoso.com) kattintva a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
 3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **alkalmazásregisztrációk**.
 4. Válassza az **Új alkalmazás regisztrálása** elemet.
 5. Adja meg az alkalmazás nevét. Például: `Azure AD B2C App`.
 6. Az a **alkalmazástípus**válassza `Web app / API`.
-7. A a **bejelentkezési URL-**, adja meg a következő URL-cím csupa kisbetűvel, ahol `your-tenant` váltja fel az Azure AD B2C-bérlő (fabrikamb2c.onmicrosoft.com) nevére:
+7. Az a **bejelentkezési URL-**, adja meg a következő URL-cím csupa kisbetűvel, ahol `your-B2C-tenant-name` helyére az Azure AD B2C-bérlő neve:
 
     ```
-    https://yourtenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp
+    https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
     ```
+
+    Például: `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
 
 8. Kattintson a **Create** (Létrehozás) gombra. Másolás a **Alkalmazásazonosító** későbbi felhasználás céljából.
 9. Válassza ki az alkalmazást, és válassza **beállítások**.
@@ -85,7 +84,7 @@ Meghatározhatja az Azure AD egy jogcímszolgáltatótól, az Azure AD-hozzáad�
           <Protocol Name="OpenIdConnect"/>
           <OutputTokenFormat>JWT</OutputTokenFormat>
           <Metadata>
-            <Item Key="METADATA">https://login.windows.net/your-tenant/.well-known/openid-configuration</Item>
+            <Item Key="METADATA">https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration</Item>
             <Item Key="ProviderName">https://sts.windows.net/00000000-0000-0000-0000-000000000000/</Item>
             <Item Key="client_id">00000000-0000-0000-0000-000000000000</Item>
             <Item Key="IdTokenAudience">00000000-0000-0000-0000-000000000000</Item>
@@ -119,7 +118,7 @@ Meghatározhatja az Azure AD egy jogcímszolgáltatótól, az Azure AD-hozzáad�
     </ClaimsProvider>
     ```
 
-4. Alatt a **ClaimsProvider** elem, frissítse az értéket a **tartomány** egyedi értéket, hogy megkülönböztesse a más identitásszolgáltatókkal is használható.
+4. Alatt a **ClaimsProvider** elem, frissítse az értéket a **tartomány** egyedi értéket, hogy megkülönböztesse a más identitásszolgáltatókkal is használható. Például: `Contoso`. Ne helyezzen egy `.com` végén található a tartomány beállításban.
 5. Alatt a **ClaimsProvider** elem, frissítse az értéket a **DisplayName** , egy rövid nevet a jogcímszolgáltató. Ez az érték jelenleg nem használja.
 
 ### <a name="update-the-technical-profile"></a>A technikai profil frissítése
@@ -130,7 +129,7 @@ Egy token beszerzése az Azure AD-végpontról, adja meg a protokoll, amely az A
 2. Frissítse az értéket a **DisplayName**. Ez az érték a Bejelentkezés gombra a bejelentkezési képernyőn jelennek meg.
 3. Frissítse az értéket a **leírás**.
 4. Azure ad-ben az OpenID Connect protokollt használja, ezért ügyeljen arra, hogy az érték **protokoll** van `OpenIdConnect`.
-5. Állítsa a **METAADATOK** való `https://login.windows.net/your-tenant/.well-known/openid-configuration`, ahol `your-tenant` van az Azure AD-bérlő neve (contoso.com).
+5. Értékét állítsa be a **METAADATOK** való `https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration`, ahol `your-AD-tenant-name` az Azure AD-bérlő neve van. Például: `https://login.windows.net/fabrikam.onmicrosoft.com/.well-known/openid-configuration`
 6. Nyissa meg a böngészőt, és nyissa meg a **METAADATOK** imént frissített, keresse meg az URL-címet a **kibocsátó** objektumot, másolja és illessze be az értéket értéke **ProviderName** az XML-fájlban.
 8. Állítsa be **client_id** és **IdTokenAudience** való az alkalmazás regisztrációja Alkalmazásazonosítója.
 9. A **CryptograhicKeys**, frissítse az értéket a **StorageReferenceId** meghatározott házirend kulcshoz. Például: `ContosoAppSecret`.
@@ -158,7 +157,7 @@ Ezen a ponton az identitásszolgáltató be lett állítva, de nem érhető el a
 A **hiányzik a ClaimsProviderSelection** elem ehhez hasonló regisztrálási-regisztrálási vagy bejelentkezési képernyőn egy identitás szolgáltató a gombhoz. Ha hozzáad egy **hiányzik a ClaimsProviderSelection** elem az Azure ad-ben, egy új gomb megjelenik-e, amikor egy felhasználó hajtanak végre az oldalon.
 
 1. Keresse meg a **OrchestrationStep** , amely tartalmazza az elem `Order="1"` az Ön által létrehozott felhasználói interakciósorozat.
-2. A **ClaimsProviderSelects**, adja hozzá a következő elemet. Állítsa az értékét **TargetClaimsExchangeId** egy megfelelő értéket, például a `ContosoExchange`:
+2. A **ClaimsProviderSelections**, adja hozzá a következő elemet. Állítsa az értékét **TargetClaimsExchangeId** egy megfelelő értéket, például a `ContosoExchange`:
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="ContosoExchange" />

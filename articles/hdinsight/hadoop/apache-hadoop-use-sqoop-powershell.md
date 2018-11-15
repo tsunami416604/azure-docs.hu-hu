@@ -1,6 +1,6 @@
 ---
-title: Sqoop-feladatok futtatása az Azure HDInsight és a PowerShell használatával
-description: Megtudhatja, hogyan használhatja az Azure Powershellt egy munkaállomásról futtatása Sqoop-importálás és exportálása egy Hadoop-fürtöt és a egy Azure SQL database között.
+title: Az Apache Sqoop-feladatok futtatása a PowerShell és az Azure HDInsight használatával
+description: Megtudhatja, hogyan használhatja az Azure Powershellt egy munkaállomásról futtatása az Apache Sqoop-importálás és exportálása az Apache Hadoop-fürt és a egy Azure SQL database között.
 ms.reviewer: jasonh
 services: hdinsight
 author: hrasheed-msft
@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 34c857ceef385e2089937b64d4f88dd434a347dd
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 23dae8a6f0651ee6b753c4b29112eb733103b9e1
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010660"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51631444"
 ---
-# <a name="run-sqoop-jobs-by-using-azure-powershell-for-hadoop-in-hdinsight"></a>Sqoop-feladatok futtatása a HDInsight Hadoop az Azure PowerShell használatával
+# <a name="run-apache-sqoop-jobs-by-using-azure-powershell-for-apache-hadoop-in-hdinsight"></a>Az Apache Sqoop-feladatok futtatása HDInsight az Apache Hadoophoz készült Azure PowerShell használatával
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Útmutató az Azure HDInsight importálása és exportálása egy HDInsight-fürt és a egy Azure SQL database vagy SQL Server-adatbázis közötti Sqoop-feladatok futtatása az Azure PowerShell használatával.
+Megtudhatja, hogyan használhatja az Azure Powershellt az Apache Sqoop-feladatok futtatása az Azure HDInsight egy HDInsight-fürt és a egy Azure SQL database vagy SQL Server-adatbázis közötti exportálására és importálásra.
 
 > [!NOTE]
 > Bár ebben a cikkben ismertetett mindkettővel egy Windows-alapú vagy Linux-alapú HDInsight-fürt, csak a Windows ügyfél működnek. Egyéb módszerek kiválasztásához, ez a cikk tetején lapon választómezőt használja. 

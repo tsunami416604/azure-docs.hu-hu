@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/16/2017
-ms.openlocfilehash: 73b594aaabd814108dfce813b53a4ea865336e63
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: a9d3b92b9cb3334c8c52a9127a2fab92d187e3d9
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985063"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687435"
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>Az Azure Stream Analytics az IoT Edge-ben (előzetes verzió)
 
@@ -71,13 +71,17 @@ Egy storage-tárolóba szükség ahhoz, hogy exportálja az ASA összeállított
 
 1. Az Azure Portalról hozzon létre egy új "Stream Analytics-feladat". [Hozzon létre egy új ASA feladatot a közvetlen hivatkozás](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob).
 
-2. A létrehozás képernyőn válassza ki a **Edge** , **üzemeltetési környezet** (lásd a következő képen látható) ![feladat létrehozása](media/stream-analytics-edge/ASAEdge_create.png)
+2. A létrehozás képernyőn válassza ki a **Edge** , **üzemeltetési környezet** (lásd a következő képen látható)
+
+   ![Feladat létrehozása](media/stream-analytics-edge/ASAEdge_create.png)
 3. Feladat definíciója
     1. **Adja meg a bemeneti Stream(s)**. Adja meg a feladat egy vagy több bemeneti streamekhez.
     2. Adja meg a referenciaadatok (nem kötelező).
     3. **Adja meg a kimeneti Stream(s)**. Adja meg a feladat egy vagy több kimeneti adatfolyamokat. 
     4. **Lekérdezés meghatározása**. Adja meg az ASA-lekérdezést a felhőben, a beágyazott-szerkesztő használatával. A fordítóprogram automatikusan ellenőrzi a szintaxist, az ASA edge engedélyezve van. A lekérdezés teszteléséhez a mintaadatok feltöltése. 
+
 4. Állítsa be a storage-tároló információkat a **IoT Edge-beállítások** menü.
+
 5. Nem kötelező beállítások megadása
     1. **Események rendezése**. A portálon konfigurálhatja a soron kívüli out házirend. Dokumentáció áll rendelkezésre [Itt](https://msdn.microsoft.com/library/azure/mt674682.aspx?f=255&MSPPError=-2147217396).
     2. **Területi beállítás**. Állítsa be a internalization formátumban.
@@ -181,20 +185,27 @@ Jelenleg a, az egyetlen támogatott vstup datového proudu és a stream kimenett
 
 
 ##### <a name="reference-data"></a>Referenciaadat
-Referenciaadatok (más néven egy keresési táblázat) egy olyan véges adatokat, amely statikus vagy lassan jellegű módosítása. A keresés végrehajtásához vagy korrelációját, ha az adatfolyamban szolgál. Győződjön meg arról, hogy az Azure Stream Analytics-feladat a referenciaadatok, az általában használhat egy [referencia-adatok csatlakozzon](https://msdn.microsoft.com/library/azure/dn949258.aspx) a lekérdezésben. További információkért lásd: a [ASA dokumentációjában az referenciaadatok](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-use-reference-data).
+Referenciaadatok (más néven egy keresési táblázat) egy olyan véges adatokat, amely statikus vagy lassan jellegű módosítása. A keresés végrehajtásához vagy korrelációját, ha az adatfolyamban szolgál. Győződjön meg arról, hogy az Azure Stream Analytics-feladat a referenciaadatok, az általában használhat egy [referencia-adatok CSATLAKOZZON](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) a lekérdezésben. További információkért lásd: a [a referenciaadatok a Stream Analytics keresések](stream-analytics-use-reference-data.md).
 
-Referenciaadatok használata az ASA az Iot Edge-ben, kövesse az alábbi lépéseket: 
-1. Hozzon létre egy új, a feladat bemeneti
+Csak a helyi referenciaadatok használata támogatott. Amikor egy feladat IoT Edge-eszköz üzembe, referenciaadatok betölti a felhasználó által megadott elérési útról.
+
+Létrehoz egy feladatot az Edge-ben a referenciaadatok:
+
+1. Hozzon létre egy új bemeneti a feladatnak.
+
 2. Válasszon **referenciaadatok** , a **forrástípus**.
-3. Állítsa be a fájl elérési útját. A fájl elérési útjának kell lennie egy **abszolút** az eszközön a fájl elérési útja ![hivatkozhat adatok létrehozása](media/stream-analytics-edge/ReferenceData.png)
-4. Engedélyezése **megosztott meghajtók** a Docker-konfigurációját, és ellenőrizze, hogy a meghajtó engedélyezve van a telepítés megkezdése előtt.
 
-További információkért lásd: [Docker Windows az itt található dokumentáció](https://docs.docker.com/docker-for-windows/#shared-drives).
+3. Rendelkezik egy referencia-adatfájl készen áll az eszközön. Az egy Windows-tárolók helyezze a referencia-adatfájl a helyi meghajtón, és megoszthatja a helyi meghajtón a Docker-tárolót. Linux-tárolók hozzon létre egy Docker-kötetet, és töltse fel az adatok fájlt a köteten.
 
-> [!Note]
-> Jelenleg csak a helyi referenciaadatok használata támogatott.
+4. Állítsa be a fájl elérési útját. Egy windows-eszköz az abszolút elérési utat használja. Egy Linux rendszerű eszköz használata az elérési út a kötet.
 
+![Az Azure Stream Analytics-feladat az IoT Edge-ben új referenciaadat-bemenetek](./media/stream-analytics-edge/ReferenceDataNewInput.png)
 
+A referenciaadatok IoT Edge-frissítés központi telepítés által aktiválódik. Aktivált, miután az ASA-modul a futó feladat leállítása nélkül választja ki a frissített adatokat.
+
+A referenciaadatok frissítése két módja van:
+* Frissítés referencia adatelérési útvonalán az ASA-feladat az Azure Portalról.
+* Az IoT Edge üzemelő példány frissítése.
 
 
 ## <a name="license-and-third-party-notices"></a>Licenc és a harmadik felekkel kapcsolatos közlemények

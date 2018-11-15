@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/07/2018
 ms.author: dobett
-ms.openlocfilehash: 35b9f07b0aa8ee50b4f0f6500f86ea7c6eed4823
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
-ms.translationtype: HT
+ms.openlocfilehash: 5000fc64eb14687f653656e7dafa147bba8689bc
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362041"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515454"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-python"></a>Rövid útmutató: Telemetria küldése egy eszközről IoT Hubra, és a telemetria olvasása a háttéralkalmazással (Python)
 
@@ -49,7 +49,7 @@ Töltse le a Python-mintaprojektet a https://github.com/Azure-Samples/azure-iot-
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
-[!INCLUDE [iot-hub-quickstarts-create-hub](../../includes/iot-hub-quickstarts-create-hub.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Eszköz regisztrálása
 
@@ -57,7 +57,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 1. Futtassa az alábbi parancsokat az Azure Cloud Shellben az IoT Hub CLI-bővítmény hozzáadásához és az eszközidentitás létrehozásához. 
 
-    **YourIoTHubName** : az alábbi helyőrző helyére írja be az IoT Hubjához választott nevet.
+    **YourIoTHubName**: A helyőrző helyére írja be az IoT Hubjához választott nevet.
 
     **MyPythonDevice**: Ezt a nevet kapja a regisztrált eszköz. A MyPythonDevice nevet használja a bemutatott módon. Ha úgy dönt, hogy eszközének egy másik nevet választ, akkor az egész cikkben azt a nevet kell használnia, és a mintaalkalmazások futtatása előtt frissítenie kell bennük az eszköznevet.
 
@@ -68,13 +68,13 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 1. Futtassa az alábbi parancsokat az Azure Cloud Shellben az imént regisztrált eszköz _eszközkapcsolati sztringjének_ lekéréséhez:
 
-    **YourIoTHubName** : az alábbi helyőrző helyére írja be az IoT Hubjához választott nevet.
+    **YourIoTHubName**: A helyőrző helyére írja be az IoT Hubjához választott nevet.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyPythonDevice --output table
     ```
 
-    Jegyezze fel az eszközkapcsolati sztringet, amely a következőképpen néz ki:
+    Jegyezze fel az eszköz kapcsolati sztringjét, amely a következőképpen néz ki:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
 

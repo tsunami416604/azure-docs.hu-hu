@@ -1,7 +1,6 @@
 ---
-title: 'Példa: Nyelvfelismerés a Text Analytics REST API használatával'
-titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan ismerheti fel a nyelvet a Text Analytics REST API használatával.
+title: A Text Analytics REST API (Microsoft vonatkozó Cognitive Services az Azure-ban) útmutató nyelvfelismerés |} A Microsoft Docs
+description: Hogyan észlelje a nyelvet a Text Analytics REST API használatával a Microsoft Cognitive Services, Azure-ban az bemutató oktatóanyag.
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
@@ -10,18 +9,21 @@ ms.component: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: fa71e4ce2e5cb5967bb583c7314072830de08051
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
-ms.translationtype: HT
+ms.openlocfilehash: 460dfb168894d28d5fbc5e5585a6054917127931
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604552"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633564"
 ---
 # <a name="example-how-to-detect-language-in-text-analytics"></a>Példa: Hogyan ismerhető fel a nyelv a Text Analytics-ben
 
 A [Nyelvfelismerés API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) minden dokumentumra kiértékeli a szöveges bemenetet és visszaadja a nyelv azonosítót az elemzés erősségét jelző pontszámmal együtt. A Text Analytics 120 nyelv felismerésére képes.
 
 Ez a funkció véletlen szöveget gyűjtő tartalom áruházak számára hasznos, amikor a nyelv ismeretlen. Az analízis eredményei elemezhetők annak meghatározására, hogy milyen nyelvet használ a bemeneti dokumentum. A válasz visszaad egy pontszámot is, amely tükrözi a modell (0 és 1 közötti értékű) megbízhatóságát.
+
+> [!TIP]
+> Szövegelemzés is biztosít egy Linux-alapú Docker tároló rendszerképének nyelvfelismerés, így [telepítheti és futtathatja a Text Analytics tároló](text-analytics-how-to-install-containers.md) közel az adatokat.
 
 ## <a name="preparation"></a>Előkészítés
 
@@ -62,7 +64,7 @@ A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytic
 
 + Hozzon létre egy **POST** kérést. Nézze meg az API-dokumentációban ezt a kérést: [Nyelvfelismerés API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
 
-+ Állítsa be a HTTP-végpontot a nyelvfelismeréshez. Tartalmaznia kell a `/languages` erőforrást: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`
++ Állítsa be a HTTP-végpontot nyelvfelismerés, Szövegelemzés erőforrás használata az Azure- vagy egy példányosított [Szövegelemzés tároló](text-analytics-how-to-install-containers.md). Tartalmaznia kell a `/languages` erőforrást: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`
 
 + A kérés fejlécet állítsa be úgy, hogy tartalmazza a Text Analytics műveletekhez a hozzáférési kulcsot. További információkért lásd: [Végpontok és hozzáférési kulcsok megkeresése](text-analytics-how-to-access-key.md).
 

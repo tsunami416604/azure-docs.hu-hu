@@ -1,5 +1,5 @@
 ---
-title: Az Apache Sqoop-feladatok futtatása az Azure HDInsight (Hadoop)
+title: Az Apache Sqoop-feladatok futtatása az Azure HDInsight (Apache Hadoop)
 description: Megtudhatja, hogyan használhatja az Azure Powershellt egy munkaállomásról futtatása Sqoop-importálás és exportálása egy Hadoop-fürt és a egy Azure SQL database között.
 ms.reviewer: jasonh
 services: hdinsight
@@ -9,21 +9,21 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: c02fca7ba1ee5b7a93e54b4898290f0b84d88304
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 1571480540baedd5910c4153caf23e0687d48922
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622448"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684987"
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>A Sqoop használata a HDInsight Hadoop-keretrendszerrel
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Ismerje meg, a Sqoop használata a HDInsight importálása és exportálása a HDInsight-fürt és az Azure SQL database vagy SQL Server-adatbázis között.
+Útmutató a HDInsight az Apache Sqoop használatával importálása és exportálása a HDInsight-fürt és az Azure SQL database vagy SQL Server-adatbázis között.
 
-Bár Hadoop feldolgozásának strukturálatlan és félig strukturált adatok, naplók és a fájlokat, például kézenfekvő lehet a is lehet szükség, amely a relációs adatbázisokban tárolt strukturált adatok feldolgozása.
+Bár az Apache Hadoop feldolgozásának strukturálatlan és félig strukturált adatok, naplók és a fájlokat, például kézenfekvő lehet a is lehet szükség, amely a relációs adatbázisokban tárolt strukturált adatok feldolgozása.
 
-[Sqoop][sqoop-user-guide-1.4.4] az eszköz a Hadoop-fürtök és a relációs adatbázisok közötti adattovábbításra. Adatokat importálhat egy relációsadatbázis-kezelő rendszerének (RDBMS), például SQL Server, MySQL és a Hadoop elosztott fájlrendszer (HDFS), az Oracle, az adatok átalakítása a Hadoop MapReduce- vagy Hive-, és majd exportálja az adatokat egy RDBMS be újra, használhatja azt. Ebben az oktatóanyagban egy SQL Server-adatbázist használ a relációs adatbázis.
+[Az Apache Sqoop] [ sqoop-user-guide-1.4.4] eszközt úgy tervezték, Hadoop-fürtök és a relációs adatbázisok közötti adatátvitelhez. Adatokat importálhat egy relációsadatbázis-kezelő rendszerének (RDBMS), például SQL Server, MySQL és a Hadoop elosztott fájlrendszer (HDFS), az Oracle, az adatok átalakítása a Hadoop MapReduce- vagy Hive-, és majd exportálja az adatokat egy RDBMS be újra, használhatja azt. Ebben az oktatóanyagban egy SQL Server-adatbázist használ a relációs adatbázis.
 
 A HDInsight-fürtökön támogatott verziói a Sqoop, lásd: [a HDInsight által biztosított fürtverziók újdonságai?][hdinsight-versions]
 
@@ -90,7 +90,7 @@ Ha a fürt és az SQL-adatbázis létrehozásához, tekintse meg az Azure PowerS
         
         |Name (Név)|Érték|
         |----|-----|
-        | Alapértelmezett tárfióknév | &lt;CluterName > tárolásához |
+        | Alapértelmezett tárfióknév | &lt;ClusterName > tárolásához |
         | Az Azure SQL database-kiszolgálónév | &lt;ClusterName > dbserver |
         | Az Azure SQL-adatbázis neve | &lt;ClusterName > db |
      
@@ -102,7 +102,7 @@ Ha úgy dönt, hogy a meglévő Azure SQL database vagy a Microsoft SQL Server h
 * **Az Azure SQL database**: konfigurálnia kell egy tűzfalszabályt az Azure SQL-kiszolgáló engedélyezze a hozzáférést a munkaállomáson. Egy Azure SQL-adatbázis létrehozása, és a tűzfal konfigurálásával kapcsolatos útmutatásért lásd: [első lépései az Azure SQL database-t használó][sqldatabase-get-started]. 
   
   > [!NOTE]
-  > Alapértelmezés szerint az Azure SQL database lehetővé teszi, hogy Azure-szolgáltatások, például Azure HDInsight érkező kapcsolatokat. Ez a tűzfal beállítás le van tiltva, ha szüksége engedélyezi azt az Azure Portalról. Utasítások az Azure SQL-adatbázis létrehozása és tűzfalszabályainak konfigurálása, lásd: [létrehozása és konfigurálása az SQL Database][sqldatabase-create-configue].
+  > Alapértelmezés szerint az Azure SQL database lehetővé teszi, hogy Azure-szolgáltatások, például Azure HDInsight érkező kapcsolatokat. Ez a tűzfal beállítás le van tiltva, ha szüksége engedélyezi azt az Azure Portalról. Utasítások az Azure SQL-adatbázis létrehozása és tűzfalszabályainak konfigurálása, lásd: [létrehozása és konfigurálása az SQL Database][sqldatabase-create-configure].
   > 
   > 
 * **Az SQL Server**: a HDInsight-fürt esetén az azonos virtuális hálózaton az Azure-ban, SQL Server segítségével a lépéseket ebben a cikkben adatok importálása és exportálása az SQL Server-adatbázis.
@@ -636,7 +636,7 @@ Get-AzureRmHDInsightJobOutput `
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
 
 [sqldatabase-get-started]: ../../sql-database/sql-database-get-started.md
-[sqldatabase-create-configue]: ../../sql-database/sql-database-get-started.md
+[sqldatabase-create-configure]: ../../sql-database/sql-database-get-started.md
 
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
 [powershell-install]: /powershell/azureps-cmdlets-docs

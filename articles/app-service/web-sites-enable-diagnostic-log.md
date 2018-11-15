@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 31ce23bf6249ef21a2c9fe515b78cdd6ebea9b9c
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 8a58f8722b41944a7be02254e0f00682575c1bbb
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614379"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636968"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Az Azure App Service web Apps-alkalmazások diagnosztikai célú naplózásának engedélyezése
 ## <a name="overview"></a>Áttekintés
@@ -159,7 +159,9 @@ Szűrés konkrét naplófájlokból típusok, például a HTTP, használja a **�
 
 ## <a name="understandlogs"></a> Hogyan: megismerheti a diagnosztikai naplók
 ### <a name="application-diagnostics-logs"></a>Application diagnostics-naplók
-Az Application diagnostics adatait tárolja egy megadott formátumban, a .NET-alkalmazásokban, attól függően, hogy naplókat a file system vagy a blob Storage tárolja. Az Alap az adatkészlethez tartozó tárolt összes három tárolási típusok közötti – a dátum és idő az esemény történt, a Folyamatazonosítója, amely az eseményt, az esemény típusa (információk, figyelmeztetés, hiba) és az eseményüzenet előállított kérelemegysége megegyezik.
+Az Application diagnostics adatait tárolja egy megadott formátumban, a .NET-alkalmazásokban, attól függően, hogy naplókat a file system vagy a blob Storage tárolja. 
+
+A alapkészlete, tárolt adatok esetében azonos mindkét tárolási típusok – a dátum és idő az esemény történt, az eseményt, az esemény típusa (információk, figyelmeztetés, hiba) és az eseményüzenet előállított ID procesu. Naplók tárolásához a fájlrendszer használata akkor hasznos, ha egy probléma elhárításához, mert a naplófájlok frissítés közel azonnali közvetlen hozzáférésre van szüksége. A BLOB storage archiválási célú használata azért, mert a fájlok gyorsítótárba kerülnek, és a storage-tárolót egy ütemezés szerint, majd kiürített.
 
 **Fájlrendszer**
 
@@ -195,7 +197,7 @@ A blob tárolt adatokat ehhez hasonlóan néz ki az alábbi példához:
     2014-01-30T16:36:52,Error,mywebapp,6ee38a,635266966128818593,0,3096,9,An error occurred
 
 > [!NOTE]
-> A napló az első sor az oszlopfejléceket tartalmaz, ebben a példában határozzák meg.
+> ASP.NET Core, a naplózás használatával valósítható meg a [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) szolgáltató a szolgáltatói betétek további naplófájlok a blobtárolóba. További információkért lásd: [ASP.NET Core-naplózás az Azure-ban](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#logging-in-azure).
 >
 >
 

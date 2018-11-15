@@ -1,5 +1,5 @@
 ---
-title: Az Apache Hive – Azure HDInsight a Beeline használata
+title: Az Apache Hive – Azure HDInsight az Apache a Beeline használata
 description: Ismerje meg, hogyan használhatja a Beeline-ügyfél és a Hadoop Hive-lekérdezések futtatása a HDInsight. A beeline használata a hiveserver2-n keresztül JDBC egy segédprogramot.
 services: hdinsight
 author: hrasheed-msft
@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1edf0a33db7df2435be55d5a9b36276e2702bd69
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1516c1a2802046b526688de703b565513789851b
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013921"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633267"
 ---
-# <a name="use-the-beeline-client-with-apache-hive"></a>A Beeline-kliens használata az Apache Hive
+# <a name="use-the-apache-beeline-client-with-apache-hive"></a>Az Apache Hive az Apache a Beeline-ügyfél használata
 
-Ismerje meg, hogyan használható [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) a HDInsight Hive-lekérdezések futtatásához.
+Ismerje meg, hogyan használható [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) HDInsight az Apache Hive-lekérdezések futtatásához.
 
 A beeline egy Hive-ügyfél, amely része az átjárócsomópontokkal a HDInsight-fürt. A beeline JDBC hiveserver2-n keresztül, a HDInsight-fürtön lévő üzemeltetett szolgáltatásként való kapcsolódáshoz használ. A Beeline használatával távoli elérése a Hive a HDInsight az interneten keresztül. Az alábbi példák megadják a leggyakrabban használt kapcsolati karakterláncok Beeline a HDInsight segítségével kapcsolódhat:
 

@@ -1,6 +1,6 @@
 ---
-title: Hadoop a Pig használata a HDInsight – Azure PowerShell használatával
-description: Ismerje meg, hogyan lehet elküldeni egy Hadoop-fürtöt az Azure PowerShell használatával HDInsight Pig-feladatok.
+title: Az Apache Pig használata a HDInsight – Azure PowerShell használatával
+description: Ismerje meg, hogyan lehet elküldeni egy Apache Hadoop-fürtöt az Azure PowerShell használatával HDInsight Apache Pig-feladatok.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: e50c551381a065e8651ab7970ef9cf18c6c3a765
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1e9f6778f12f4f6260bfc20c3a78f7929f13405b
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011017"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634532"
 ---
-# <a name="use-azure-powershell-to-run-pig-jobs-with-hdinsight"></a>A HDInsight Pig-feladatok futtatása az Azure PowerShell használatával
+# <a name="use-azure-powershell-to-run-apache-pig-jobs-with-hdinsight"></a>A HDInsight Apache Pig-feladatok futtatása az Azure PowerShell használatával
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-Ez a dokumentum azt szemlélteti, a Hadoop HDInsight-fürtön a Pig-feladatok elküldése az Azure PowerShell-lel. A Pig lehetővé teszi a modellek adatátalakításokat írni MapReduce-feladatok (a Pig latin betűs) nyelv használatával helyett leképezése, és csökkentheti a funkciók.
+Ez a dokumentum az Azure PowerShell használata egy HDInsight-fürtön az Apache Hadoop Apache Pig-feladatok elküldése példát tartalmaz. A Pig lehetővé teszi a modellek adatátalakításokat írni MapReduce-feladatok (a Pig latin betűs) nyelv használatával helyett leképezése, és csökkentheti a funkciók.
 
 > [!NOTE]
 > Ez a dokumentum nem biztosít a Pig Latin utasításokkal a példákban használt mire részletes leírását. A Pig Latin ebben a példában használt kapcsolatos információkért lásd: [a Pig használata a hadooppal a HDInsight](hdinsight-use-pig.md).

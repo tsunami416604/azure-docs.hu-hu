@@ -1,6 +1,6 @@
 ---
 title: Kapcsolódás az Azure HDInsighthoz a Data Lake Tools for Visual Studio használatával
-description: A cikk azt ismerteti, hogyan telepíthető és használható a Data Lake Tools for Visual Studio a Hadoop-fürtök csatlakoztatásához az Azure HDInsightban, majd Hive-lekérdezések futtatásához.
+description: Megtudhatja, hogyan kell telepíteni, és az Apache Hadoop fürtök csatlakoztatásához az Azure HDInsight a Data Lake Tools for Visual Studio használatával és majd a Hive-lekérdezések futtatásához.
 keywords: hadoop-eszközök,hive-lekérdezés,visual studio,visual studio hadoop
 services: hdinsight
 author: hrasheed-msft
@@ -10,16 +10,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive, hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 281c3744dc311fdced20f810e0a9f2b233076472
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 670de3f61047bcc8b168863f5981e41084225ec4
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247143"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634668"
 ---
-# <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-hive-queries"></a>Kapcsolódás az Azure HDInsighthoz és Hive-lekérdezések futtatása a Data Lake Tools for Visual Studio használatával
+# <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>A Data Lake Tools for Visual Studio használatával csatlakozhat az Azure HDInsight és az Apache Hive-lekérdezések futtatása
 
-A cikk azt ismerteti, hogyan használhatók a Data Lake Tools for Visual Studio (más néven Azure Data Lake and Stream Analytics Tools for Visual Studio) Hadoop-fürtök [Azure HDInsightbeli](../hdinsight-hadoop-introduction.md) csatlakoztatásához, illetve Hive-lekérdezések elküldéséhez. 
+Ismerje meg, hogyan csatlakozhat a Data Lake Tools for Visual Studio (más néven Azure Data Lake and Stream Analytics Tools for Visual Studio) az Apache Hadoop-fürtök [Azure HDInsight](../hdinsight-hadoop-introduction.md) és Hive-lekérdezések elküldéséhez. 
 
 További információ a HDInsight használatáról: [A HDInsight bemutatása](../hdinsight-hadoop-introduction.md) és [HDInsight – első lépések](apache-hadoop-linux-tutorial-get-started.md). 
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Digital Twins-terek eseményeinek rögzítése | Microsoft Docs
+title: Az Azure digitális Twins területről események rögzítése |} A Microsoft Docs
 description: Megtudhatja, hogy a jelen oktatóanyagban lévő lépésekkel hogyan kaphat értesítéseket a tereitől az Azure Digital Twins a Logic Appsszel való integrálása révén.
 services: digital-twins
 author: dsk-2015
@@ -7,24 +7,26 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: dkshir
-ms.openlocfilehash: 91dd16938efbd1e24419352f66e3238646a77e8a
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
-ms.translationtype: HT
+ms.openlocfilehash: 994c864f04980dc963f9e7c4eb99b33382ad17e4
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49323284"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614905"
 ---
-# <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-using-logic-apps"></a>Oktatóanyag: Értesítések fogadása az Azure Digital Twins-terektől a Logic Apps használatával
+# <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Oktatóanyag: Értesítések fogadása az Azure digitális Twins tárolóhelyek Logic Apps használatával
 
-Miután üzembe helyezte az Azure Digital Twins-példányt, kiépítette a tereket, és egyéni függvényeket implementált adott feltételek monitorozására, e-mailben értesítheti az irodai rendszergazdát, ha a monitorozott események bekövetkeznek. 
+Miután az Azure digitális Twins-példány üzembe helyezése, a tárolóhelyek üzembe helyezése, és adott feltételek figyelése egyéni funkciók megvalósításához, értesítheti az e-mailen keresztül office felügyeleti, ha a figyelt események történnek. 
 
-Az [első oktatóanyagban](tutorial-facilities-setup.md) egy képzeletbeli épület térbeli diagramját konfigurálta, amelynek egyik helyiségében mozgás-, széndioxid- és hőmérséklet-érzékelők voltak. A [második oktatóanyagban](tutorial-facilities-udf.md) üzembe helyezte a diagramot és egy egyéni, úgynevezett felhasználó által meghatározott függvényt az érzékelőadatok értékeinek monitorozására, és értesítések aktiválására, ha egy helyiség üres, és a hőmérséklet és a szén-dioxid szintje az elfogadható tartományba esik. Ez az oktatóanyag bemutatja, hogyan integrálhatja ezeket az értesítéseket az Azure Logic Appsszel és küldhet e-mailt, amint egy ilyen helyiség elérhetővé válik. Az irodai rendszergazda ezekkel az információkkal segíthet a munkatársaknak lefoglalni a legmegfelelőbb tárgyalótermet. 
+A [első oktatóanyaga](tutorial-facilities-setup.md), konfigurálta a térbeli grafikonon egy képzeletbeli épület. Egy hely az épület a mozgásban lévő adatoknak egyaránt, szén-dioxid-és hőmérséklet érzékelők tartalmazza. A [a második oktatóanyagban](tutorial-facilities-udf.md), Ön által üzembe helyezett, a graph és a egy felhasználó által definiált függvény ezeket az értékeket érzékelő figyelése, és ha észlelnek a helyiségben üres, és a hőmérséklet és szén-dioxid-eseményindító értesítések egy kényelmes címtartományba tartoznak. 
+
+Ez az oktatóanyag bemutatja, hogyan integrálhatja ezeket az értesítéseket az Azure Logic Appsszel és küldhet e-mailt, amint egy ilyen helyiség elérhetővé válik. Az irodai rendszergazda ezekkel az információkkal segíthet a munkatársaknak lefoglalni a legmegfelelőbb tárgyalótermet. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Események integrálása az Event Griddel
-> * Eseményértesítések küldése a Logic Appsszel
+> * Események integrálása az Azure Event Griddel.
+> * Értesítse a Logic Apps-események.
     
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,36 +34,36 @@ Ez az oktatóanyag feltételezi, hogy már [konfigurálta](tutorial-facilities-s
 - Egy [Azure-fiók](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Egy futó Digital Twins-példány.
 - A munkavégzéshez használt gépre letöltött és kicsomagolt [Digital Twins C#-minták](https://github.com/Azure-Samples/digital-twins-samples-csharp).
-- A [.NET Core SDK 2.1.403-as vagy újabb](https://www.microsoft.com/net/download) verziója a fejlesztői gépen a minta futtatására. A `dotnet --version` parancs futtatásával ellenőrizze, hogy a megfelelő verzió van-e telepítve. 
+- [.NET core SDK 2.1.403 verzió vagy újabb](https://www.microsoft.com/net/download) a fejlesztői gépen, a minta futtatásához. Futtatás `dotnet --version` , győződjön meg arról, hogy telepítve van-e a megfelelő verziót. 
 - Office 365-fiók értesítési e-mailek küldéséhez.
 
 ## <a name="integrate-events-with-event-grid"></a>Események integrálása az Event Griddel 
-Ebben a részben egy [Event Gridet](../event-grid/overview.md) helyezünk üzembe a Digital Twins-példány eseményeinek gyűjtésére és átirányítására egy [eseménykezelő](../event-grid/event-handlers.md), például a Logic Apps számára.
+Ebben a szakaszban a beállítása [Event Grid](../event-grid/overview.md) események gyűjtésére az Azure digitális Twins-példány, és átirányítja őket, hogy egy [eseménykezelő](../event-grid/event-handlers.md) például a Logic Apps.
 
-### <a name="create-event-grid-topic"></a>Event Grid-témakör létrehozása
-Az [Event Grid-témakörök](../event-grid/concepts.md#topics) interfészként szolgálnak a felhasználó által meghatározott függvény által létrehozott események átirányításához. 
+### <a name="create-an-event-grid-topic"></a>Hozzon létre egy event grid-témakör
+Egy [event grid-témakör](../event-grid/concepts.md#topics) irányíthatja a felhasználó által definiált függvény által létrehozott eseményeket felületet biztosít. 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. A bal oldali navigációs panelen kattintson az **Erőforrás létrehozása** elemre. 
+1. A bal oldali panelen válassza ki a **erőforrás létrehozása**. 
 
-1. Keressen rá és válassza az **Event Grid-témakör** elemet. Kattintson a **Create** (Létrehozás) gombra.
+1. Keressen rá és válassza az **Event Grid-témakör** elemet. Kattintson a **Létrehozás** gombra.
 
-1. Adja meg az Event Grid-témakör **nevét**, és válassza ki az **előfizetést**. Válassza ki a Digital Twins-példányhoz használt vagy létrehozott **erőforráscsoportot**, valamint a **helyet**. Kattintson a **Create** (Létrehozás) gombra. 
+1. Adja meg az Event Grid-témakör **nevét**, és válassza ki az **előfizetést**. Válassza ki a **erőforráscsoport** használt vagy a digitális Twins példány létrehozott és a **hely**. Kattintson a **Létrehozás** gombra. 
 
-    ![Event Grid-témakör létrehozása](./media/tutorial-facilities-events/create-event-grid-topic.png)
+    ![Hozzon létre egy event grid-témakör](./media/tutorial-facilities-events/create-event-grid-topic.png)
 
-1. Lépjen az Event Grid-témakörre az erőforráscsoportban, kattintson az **Áttekintés** elemre, és másolja a **Téma végpontja** értékét egy ideiglenes fájlba. Erre az URL-címre a következő részben lesz szükség. 
+1. Keresse meg az erőforráscsoportból, válassza ki az event grid-témakör **áttekintése**, és másolja az értéket a **téma végpontja** egy ideiglenes fájlba. Az URL-cím a következő szakaszban lesz szüksége. 
 
-1. Kattintson a **Hozzáférési kulcsok** elemre, és másolja az **1. kulcsot** és a **2. kulcsot** egy ideiglenes fájlba. Ezekre az értékekre a végpont létrehozásához lesz szükség a következő részben.
+1. Válassza ki **hozzáférési kulcsok**, és másolja át **kulcs 1** és **kulcs 2** egy ideiglenes fájlba. Szüksége lesz ezekre az értékekre a következő szakaszban a végpont létrehozásához.
 
     ![Event Grid-kulcsok](./media/tutorial-facilities-events/event-grid-keys.png)
 
-### <a name="create-an-endpoint-for-the-event-grid-topic"></a>Végpont létrehozása az Event Grid-témakörhöz
+### <a name="create-an-endpoint-for-the-event-grid-topic"></a>Az event grid-témakör a végpont létrehozása
 
-1. A parancsablakban ellenőrizze, hogy a Digital Twins-minta **_occupancy-quickstart\src_** mappájában van-e.
+1. A parancssori ablakba, ellenőrizze, hogy használja-e a **foglaltsága-quickstart\src** a digitális Twins minta mappát.
 
-1. Nyissa meg az **_actions\createEndpoints.yaml_** fájlt a Visual Studio Code szerkesztőjében. Győződjön meg róla, hogy tartalmazza az alábbiakat:
+1. Nyissa meg a fájlt **actions\createEndpoints.yaml** a Visual Studio Code szerkesztőben. Győződjön meg róla, hogy tartalmazza az alábbiakat:
 
     ```yaml
     - type: EventGrid
@@ -79,10 +81,10 @@ Az [Event Grid-témakörök](../event-grid/concepts.md#topics) interfészként s
 
 1. Cserélje le a `Secondary_connection_string_for_your_Event_Grid` helyőrzőt a **2. kulcs** értékére.
 
-1. Cserélje le az `Event_Grid_Topic_Path` helyőrzőt az Event Grid-témakör elérési útjára. Az elérési utat a *https://* előtag és a záró erőforrás-útvonalak a **témakörvégpont** URL-címéből való eltávolításával kapja meg. Ennek a következő formátumhoz hasonlónak kell lennie: **yourEventGridName.yourLocation.eventgrid.azure.net**. 
+1. Cserélje le az `Event_Grid_Topic_Path` helyőrzőt az Event Grid-témakör elérési útjára. Az elérési út lekérése eltávolításával **https://** és a záró erőforrás az elérési út a **téma végpontja** URL-CÍMÉT. Ennek a következő formátumhoz hasonlónak kell lennie: *yourEventGridName.yourLocation.eventgrid.azure.net*. 
 
     > [!IMPORTANT]
-    > Az értékeket idézőjelek nélkül adja meg. A *YAML*-fájlban minden kettőspont után egy szóköz karaktert kell írni. A *YAML*-fájl tartalmának érvényességét bármely online YAML-ellenőrző eszközzel ellenőrizheti, például [ezzel az eszközzel](https://onlineyamltools.com/validate-yaml).
+    > Az értékeket idézőjelek nélkül adja meg. Ellenőrizze, hogy van legalább egy szóköz karakter után a kettőspont a YAML-fájlt. Minden online YAML-érvényesítő használatával is ellenőrizheti a YAML-fájl tartalmának [ezzel az eszközzel](https://onlineyamltools.com/validate-yaml).
 
 1. Mentse és zárja be a fájlt. Futtassa a következő parancsot a parancsablakban, és jelentkezzen be, amikor a rendszer kéri. 
 
@@ -90,43 +92,45 @@ Az [Event Grid-témakörök](../event-grid/concepts.md#topics) interfészként s
     dotnet run CreateEndpoints
     ```
 
-   A parancs létrehozza az Event Grid végpontját. 
+   Ez a parancs a végpont az Event Gridhez hoz létre. 
 
    ![Az Event Grid végpontjai](./media/tutorial-facilities-events/dotnet-create-endpoints.png)
 
 
-## <a name="notify-events-with-logic-app"></a>Eseményértesítések küldése a Logic Appsszel
-Az [Azure Logic Apps](../logic-apps/logic-apps-overview.md) szolgáltatással automatizált feladatokat hozhat létre a más szolgáltatásokból kapott eseményekhez. Ebben a szakaszban beállítjuk, hogy a Logic Apps értesítő e-maileket hozzon létre a térérzékelőkről átirányított eseményekhez egy [Event Grid-témakör](../event-grid/overview.md) segítségével.
+## <a name="notify-events-with-logic-apps"></a>A Logic Apps események értesítése
+Használhatja a [Azure Logic Apps](../logic-apps/logic-apps-overview.md) szolgáltatás más szolgáltatások fogadott események automatizált feladatok létrehozása. Ebben a szakaszban beállíthatja a Logic Apps e-mail-értesítések segítségével. a térbeli érzékelők átirányítani események létrehozása egy [event grid-témakör](../event-grid/overview.md).
 
-1. Az [Azure Portal](https://portal.azure.com) bal oldali navigációs paneljén kattintson az **Erőforrás létrehozása** gombra.
+1. A bal oldali panelen, a [az Azure portal](https://portal.azure.com)válassza **erőforrás létrehozása**.
 
-1. Keressen és válasszon ki egy új **Logic Apps**-erőforrást. Kattintson a **Create** (Létrehozás) gombra.
+1. Keressen és válasszon ki egy új **Logic Apps**-erőforrást. Kattintson a **Létrehozás** gombra.
 
-1. Adja meg a logikai alkalmazás **nevét**, majd válassza ki az **előfizetést**, az **erőforráscsoportot** és a **helyet**. Kattintson a **Create** (Létrehozás) gombra.
+1. Adjon meg egy **neve** a logikai alkalmazás-erőforrást, majd válassza ki a **előfizetés**, **erőforráscsoport**, és **hely**. Kattintson a **Létrehozás** gombra.
 
-    ![Logikai alkalmazás létrehozása](./media/tutorial-facilities-events/create-logic-app.png)
+    ![A Logic Apps-erőforrások létrehozása](./media/tutorial-facilities-events/create-logic-app.png)
 
-1. Miután üzembe helyezte, nyissa meg a logikai alkalmazást, majd a **Logikaialkalmazás-tervező** panelt. 
+1. Nyissa meg a Logic Apps-erőforrások telepítése, és nyissa meg a **Logikaialkalmazás-Tervező** ablaktáblán. 
 
-1. Válassza az **Event Grid-esemény bekövetkezésekor** triggert. Amikor a rendszer kéri, **jelentkezzen be** a bérlőre az Azure-fiókjával. Amikor a rendszer kéri, erősítse meg az Event Gridhez való **hozzáférés engedélyezését**. Kattintson a **Folytatás** gombra.
+1. Válassza az **Event Grid-esemény bekövetkezésekor** triggert. Jelentkezzen be a bérlő az Azure-fiókkal amikor a rendszer kéri. Válassza ki **hozzáférést** az Event Grid-erőforrás, amikor a rendszer kéri. Válassza a **Folytatás** elemet.
 
-1. Az **Erőforrás-esemény bekövetkezésekor (előzetes verzió)** ablakban: 
-    1. Válassza ki az Event Grid létrehozásához előzőleg használt **előfizetést**.
+1. Az a **(előzetes verzió) erőforrás-esemény bekövetkezésekor** ablakban: 
+   
+   a. Válassza ki a **előfizetés** az event grid-témakör létrehozásához használt.
 
-    1. Válassza a **Microsoft.EventGrid.Topics** lehetőséget az **erőforrás típusaként**.
+   b. Válassza ki **Microsoft.EventGrid.Topics** a **erőforrástípus**.
 
-    1. Az **Erőforrás neve** mezőben válassza ki az Event Grid-erőforrást a legördülő listából.
+   c. Az Event Grid erőforrás válassza a legördülő listából a **erőforrásnév**.
 
-    ![Logikai alkalmazás létrehozása](./media/tutorial-facilities-events/logic-app-resource-event.png)
+   ![Logic App Designerben panel](./media/tutorial-facilities-events/logic-app-resource-event.png)
 
-1. Kattintson az **Új lépés** gombra.
+1. Válassza ki a **új lépés** gombra.
 
-1. A **Művelet kiválasztása** ablakban:
-    1. Keressen a *json elemzés* kifejezésre, és válassza a **JSON elemzése** műveletet.
+1. Az a **válasszon ki egy műveletet** ablakban:
+    
+   a. Keressen a **json elemzés** kifejezésre, és válassza a **JSON elemzése** műveletet.
 
-    1. Kattintson a **Tartalom** mezőbe, és válassza a **Törzs** lehetőséget a **Dinamikus tartalom** listából.
+   b. Az a **tartalom** mezőben válassza **törzs** származó a **dinamikus tartalom** listája.
 
-    1. Kattintson a **Séma létrehozása hasznosadat-minta használatával** elemre. Illessze be az alábbi JSON formátumú hasznos adatot, majd kattintson a **Kész** gombra.
+   c. Válassza ki **adattartalom létrehozni a sémát használja minta**. Illessze be a következő JSON-adattartalom, és válassza ki **kész**.
 
         ```JSON
         {
@@ -146,57 +150,59 @@ Az [Azure Logic Apps](../logic-apps/logic-apps-overview.md) szolgáltatással au
         }
         ```
     
-    Ebben a hasznos adatban fiktív értékek szerepelnek. A logikai alkalmazás ennek a hasznosadat-mintának a használatával hozza létre a **sémát**.
+    Ebben a hasznos adatban fiktív értékek szerepelnek. A Logic Apps a hasznosadat-minta alapján hoz létre egy *séma*.
     
-    ![Logikai alkalmazás, JSON elemzése az Event Grid számára](./media/tutorial-facilities-events/logic-app-parse-json.png)
+    ![Logic Apps – JSON elemzése ablak az Event Gridhez](./media/tutorial-facilities-events/logic-app-parse-json.png)
 
-1. Kattintson az **Új lépés** gombra.
+1. Válassza ki a **új lépés** gombra.
 
-1. A **Művelet kiválasztása** ablakban:
-    1. Keressen rá a **Feltételvezérlő** lehetőségre a **műveletek** listájában, és válassza ki. 
+1. Az a **válasszon ki egy műveletet** ablakban:
 
-    1. Kattintson az első **Érték választása** szövegmezőbe, és válassza az **eventType** lehetőséget a **Dinamikus tartalom** listából a **JSON elemzése** ablakban.
+   a. Keresse és jelölje ki **feltétel vezérlő** származó a **műveletek** listája. 
 
-    1. Kattintson a második **Érték választása** mezőbe, és válassza az *UdfCustom* lehetőséget.
+   b. Az első **válasszon egy értéket** szövegbeviteli mezőben válasszon ki **eventType** származó a **dinamikus tartalom** listázása a **JSON elemzése** ablak.
 
-    ![Logikai alkalmazás, JSON elemzése az Event Grid számára](./media/tutorial-facilities-events/logic-app-condition.png)
+   c. A második **válasszon egy értéket** szöveget adja meg **UdfCustom**.
 
-1. A **Ha igaz** ablakban:
-    1. Kattintson a **Művelet hozzáadása** elemre, és válassza az *Office 365 Outlook* lehetőséget.
+   ![Kijelölt feltétel](./media/tutorial-facilities-events/logic-app-condition.png)
 
-    1. A **Műveletek** listában válassza az **E-mail küldése** lehetőséget. Kattintson a **Bejelentkezés** gombra, és adja meg az e-mail-fiókja hitelesítő adatait. Amikor a rendszer kéri, kattintson a **Hozzáférés engedélyezése** elemre.
+1. Az a **ha igaz** ablakban:
+   
+   a. Válassza ki **művelet hozzáadása**, és válassza ki **Office 365 Outlook**.
 
-    1. A **Címzett** mezőben adja meg az e-mail-azonosítóját az értesítések fogadásához. A **Tárgy** mezőbe írja be a *Digital Twins notification for poor air quality in space* szöveget, majd válassza a **TopologyObjectId** lehetőséget a **JSON elemzése** **Dinamikus tartalom** listájában.
+   b. Az a **műveletek** listáról válassza ki **e-mail küldése**. Válassza ki **jelentkezzen be a** és az e-mail-fiók hitelesítő adataival. Válassza ki **hozzáférést** amikor a rendszer kéri.
 
-    1. Ugyanebben az ablakban, a **Törzs** részben adjon meg a következőhöz hasonló szöveget: *Poor air quality detected in a room, and temperature needs to be adjusted*. Ha kívánja, adjon meg további részleteket a **Dinamikus tartalom** lista elemeivel az alábbiak szerint.
+   c. A **Címzett** mezőben adja meg az e-mail-azonosítóját az értesítések fogadásához. A **tulajdonos**, írja be a szöveget **digitális Twins értesítési területen a gyenge légi minőségi**. Válassza ki **TopologyObjectId** származó a **dinamikus tartalom** listázása **JSON elemzése**.
 
-    ![Logikai alkalmazás, e-mail küldése](./media/tutorial-facilities-events/logic-app-send-email.png)
+   d. A **törzs** ugyanabban az ablakban írja be a szöveget ehhez hasonló: **gyenge légi minőségi szoba észlelt, és hőmérséklet kell módosítani**. Nyugodtan dolgoznak ki az elemet a **dinamikus tartalom** listája.
 
-1. Kattintson a **Logikaialkalmazás-tervező** panel tetején a **Mentés** gombra.
+   ![Logic Apps "E-mail küldése" beállításokat](./media/tutorial-facilities-events/logic-app-send-email.png)
 
-1. Az érzékelőadatok szimulálásához lépjen egy parancsablakban a Digital Twins-minta **_device-connectivity_** mappájára, és futtassa a `dotnet run` parancsot.
+1. Válassza ki a **mentése** gombot a felső részén a **Logikaialkalmazás-Tervező** ablaktáblán.
 
-Néhány perc múlva a logikai alkalmazás elkezdi küldeni az értesítő e-maileket. 
+1. Ügyeljen arra, hogy navigáljon az érzékelőktől kapott adatok szimulálása a **eszközkapcsolattal** mappát a digitális Twins minta egy parancsablakot, és futó `dotnet run`.
 
-   ![Logikai alkalmazás, e-mail küldése](./media/tutorial-facilities-events/logic-app-notification.png)
+Néhány perc alatt akkor el kell e-mail értesítések fogadása a Logic Apps-erőforrásból. 
 
-Az e-mailek küldésének leállításához lépjen a portálon a **Logikai alkalmazásra**, és nyissa meg az **Áttekintés** panelt. Kattintson a **Letiltás** lehetőségre.
+   ![E-mailes értesítés](./media/tutorial-facilities-events/logic-app-notification.png)
+
+E-mailek leállítását, nyissa meg a Logic Apps-erőforrások a portálon, és válassza ki a **áttekintése** ablaktáblán. Válassza ki **letiltása**.
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha most be szeretné fejezni az Azure Digital Twins megismerését, nyugodtan törölje az ebben az oktatóanyagban létrehozott erőforrásokat:
+Ha azt szeretné, ezen a ponton felfedezése az Azure digitális Twins leállítására, nyugodtan ebben az oktatóanyagban létrehozott erőforrások törléséhez:
 
-1. Az [Azure Portal](http://portal.azure.com) bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, válassza ki a Digital Twins-erőforráscsoportot, és **törölje**.
-2. Szükség esetén a mintaalkalmazásokat is törölheti a munkavégzéshez használt gépről. 
+1. A bal oldali menüben lévő a [az Azure portal](http://portal.azure.com), jelölje be **összes erőforrás**, a digitális Twins erőforráscsoportot, válassza ki és **törlése**.
+2. Ha szükséges, törölje a munkahelyi számítógépen mintaalkalmazásból. 
 
 
 ## <a name="next-steps"></a>További lépések
 
-A következő oktatóanyagból megtudhatja, hogyan jelenítheti meg az érzékelők adatait, elemezheti a trendeket és veheti észre a rendellenességeket. 
+Ismerje meg, hogyan jelenítheti meg az érzékelő adatokat, trendeket és azonosíthatja a rendellenességeket elemzése, lépjen a következő oktatóanyaggal: 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Az Azure Digital Twins-terek eseményeinek vizualizációja és elemzése a Time Series Insights használatával](tutorial-facilities-analyze.md)
 
-Ha folytatja, részletesebben megismerheti az Azure Digital Twins térbeliintelligencia-diagramjait és objektummodelljeit. 
+Emellett többet is megtudhat a térbeli intelligencia gráfok és az Azure digitális Twins objektummodellt: 
 > [!div class="nextstepaction"]
 > [A Digital Twins-objektummodellek és a térbeliintelligencia-diagram ismertetése](concepts-objectmodel-spatialgraph.md)

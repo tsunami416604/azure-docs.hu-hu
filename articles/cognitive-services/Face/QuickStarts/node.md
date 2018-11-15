@@ -1,47 +1,35 @@
 ---
-title: 'Rövid útmutató: Arcfelismerés egy képen a REST API és a Node.js használatával'
+title: 'Gyors útmutató: Az Azure REST API és a Node.js egy olyan rendszerképre az arcok észlelése'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban arcokat fog felismerni egy képről a Face API segítségével és a Node.js használatával a Cognitive Servicesben.
+description: Ebben a rövid, használatával az Azure Face REST API a node.js-szel arcok észlelése a képet.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
-ms.date: 06/08/2018
+ms.date: 11/09/2018
 ms.author: pafarley
-ms.openlocfilehash: b5258f1c465732df257a7db85e828effff200ee0
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.openlocfilehash: 76747f7e9f1a95ee14ee570dcc29b42f98c26838
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954098"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51577988"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-nodejs"></a>Rövid útmutató: Arcfelismerés egy képen a REST API és a Node.js használatával
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Gyors útmutató: Arcok észlelése, a képet, a Face REST API és a Node.js használatával
 
-Ebben a rövid útmutatóban emberi arcokat fog felismerni egy képen a Face API segítségével.
+Ebben a rövid, használatával az Azure Face REST API a node.js-szel emberi arcok észlelése a képet.
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A minta futtatásához előfizetési kulcs szükséges. Ingyenes próba előfizetési kulcsot itt szerezhet: [A Cognitive Services kipróbálása](https://azure.microsoft.com/try/cognitive-services/?api=face-api).
+- A Face API előfizetési kulcs. Megjelenik a származó ingyenes próba-előfizetését kulcsok [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Másik lehetőségként kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face API szolgáltatás és a kulcs beszerzése.
 
-## <a name="face---detect-request"></a>Face - Detect kérés
+## <a name="create-the-nodejs-script"></a>A Node.js-parancsprogram létrehozása
 
-A [Face - Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) metódussal arcokat ismerhet fel a képeken, és többek között a következő arcattribútumokat adhatja vissza:
-
-* Arcazonosító: Számos Face API-forgatókönyvben használt egyedi azonosító.
-* Arcot jelölő téglalap: A képen az arc helyét jelző „bal oldalon, felül, szélesség és hosszúság” érték.
-* Jellegzetes pontok: 27 pontból álló jellegzetes pontok egy tömbje, amely az arcösszetevők fontos részeire mutat.
-* Az arcattribútumok közé tartozik az életkor, a nem, a mosoly intenzitása, a fejtartás és az arcszőrzet.
-
-A minta futtatásához az alábbi lépéseket kell végrehajtania:
-
-1. Másolja az alábbi kódot egy szerkesztőbe.
-1. A `<Subscription Key>` helyére írja be az érvényes előfizetési kulcsot.
-1. Ha szükséges, változtassa meg az `uriBase` értékét arra a helyre, ahonnan az előfizetési kulcsot beszerezte.
-1. Az `imageUri` elem értékét beállíthatja az elemezni kívánt kép elérési útjára.
-1. Mentse a fájlt `.js` kiterjesztéssel.
-1. Nyissa meg a Node.js-parancssort, és futtassa a fájlt (például: `node myfile.js`).
+A következő kódot a Face API-t, és a egy rendszerképből face attribútum adatok lekérése. Először másolja be a kódot egy szövegszerkesztőbe&mdash;kell hajtania néhány módosítást, mielőtt is futtatható legyen.
 
 ```nodejs
 'use strict';
@@ -88,9 +76,29 @@ request.post(options, (error, response, body) => {
 });
 ```
 
-## <a name="face---detect-response"></a>Face - Detect válasz
+### <a name="subscription-key"></a>Előfizetői azonosító
+Cserélje le `<Subscription Key>` az Arcfelismerés érvényes előfizetési kulccsal végzett.
 
-A rendszer JSON formátumban adja vissza a sikeres választ, például:
+### <a name="face-endpoint-url"></a>Face végpont URL-címe
+
+Az URL-cím `https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect` azt jelzi, hogy a lekérdezés Azure Face végpontot. Szüksége lesz az URL-címet, a régiót, amelyben (kivéve, ha már megfelelő) felel meg az előfizetési kulcs megfelelő első részét módosíthatja.
+
+### <a name="url-query-string"></a>URL-cím lekérdezési karakterlánc
+
+A `returnFaceAttributes` mező határozza meg, melyik face attribútumok lekéréséhez. Előfordulhat, hogy módosítani kívánja ezt a karakterláncot, a felhasználás céljának függően.
+
+### <a name="image-source-url"></a>Forrás URL-címe
+A `imageUrl` bemeneteként használni kívánt lemezkép jelzi. Módosíthatja ezt a képet az elemezni kívánt mutasson.
+
+## <a name="save-and-run-the-script"></a>Mentse és futtassa a parancsfájlt
+
+Miután végzett a módosításokat, mentse a fájlt egy JavaScript (.js) parancsfájlt. Ezután nyisson meg egy parancssort, és futtassa azt a `node` parancsot.
+
+```
+node myfile.js
+```
+
+Megtekintheti az arcfelismerési adatokat JSON-adatok a konzolablakban jelenik meg. Példa:
 
 ```json
 [
@@ -273,7 +281,7 @@ A rendszer JSON formátumban adja vissza a sikeres választ, például:
 
 ## <a name="next-steps"></a>További lépések
 
-Felfedezheti a Face API-kat, amelyek a képeken emberi arcok felismerésére, az arcok téglalapba foglalására és attribútumok, például életkor és nem visszaadására használhatók.
+Ez a rövid útmutatóban okkal készítette el a cURL-parancsot, amely meghívja ezt az Azure Face API a képet arcok észlelése és attribútumaik. Ezután megkezdheti a Face API dokumentációja további.
 
 > [!div class="nextstepaction"]
-> [Face API-k](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+> [Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

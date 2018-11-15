@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: rimman
-ms.openlocfilehash: ece1c123cad8403358dcc3b3626bf4b2cd756e25
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 943cd79237290cd91d56cc1c51f5d773cdb16634
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629098"
+ms.locfileid: "51636390"
 ---
 # <a name="how-to-use-azure-cosmos-db-change-feed-with-azure-functions"></a>Azure Cosmos DB változáscsatorna az Azure Functions használatával
 
@@ -41,7 +41,7 @@ Az Azure Functions a változáscsatorna módosítások folyamatosan, az alapért
 
 A dokumentum több módosítást, amely az új módosítások lekérdezésének eseményindító tartott ugyanolyan időköz kap, ha a dokumentumot, és nem a köztes legújabb verziójának kaphat.
 
-Ha szeretné az 5 másodpercnél rövidebb a változáscsatorna lekérdezésére, például minden második, akkor is konfigurálja a lekérdezési idő "feedPollDelay", lásd: [a teljes konfiguráció](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations?view=azure-dotnet#Microsoft_Azure_Documents_Client_ConnectionPolicy_PreferredLocations). Az alapértelmezett 5000-es érték ezredmásodpercben van definiálva. Ciklikus lekérdezés esetében lehetséges kevesebb mint 1 másodperc, de nem javasolt, mert több Processzor-memória indul.
+Ha szeretne lekérdezni az 5 másodpercnél rövidebb csatorna módosítása, például minden második, meg is konfigurálja a lekérdezési idő "feedPollDelay", lásd: [a teljes konfiguráció](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations?view=azure-dotnet#Microsoft_Azure_Documents_Client_ConnectionPolicy_PreferredLocations). Az alapértelmezett 5000-es érték ezredmásodpercben van definiálva. Ciklikus lekérdezés esetében lehetséges kevesebb mint 1 másodperc, de nem javasolt, mert több Processzor-memória indul.
 
 ### <a name="can-multiple-azure-functions-read-one-containers-change-feed"></a>Olvashatja a több Azure Functions egy tároló módosítási hírcsatorna?
 

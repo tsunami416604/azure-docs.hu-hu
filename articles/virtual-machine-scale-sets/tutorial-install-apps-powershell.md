@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2018
+ms.date: 11/08/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 6cbc7779cc437db5dbe5f406ff5f5c1f9205a0a9
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 75ab381d481e51483db5661fe2f6d473f21670fc
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470183"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514791"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-azure-powershell"></a>Oktatóanyag: Alkalmazások telepítése virtuálisgép-méretezési csoportokban az Azure PowerShell-lel
 Ha alkalmazásokat szeretne futtatni egy méretezési csoport virtuálisgép-példányán, először telepítenie kell az alkalmazás összetevőit és szükséges fájljait. Egy korábbi oktatóanyagból megtudhatta, hogyan hozhat létre és használhat egyéni virtuálisgép-rendszerképeket a virtuálisgép-példányok üzembe helyezéséhez. Ez az egyéni rendszerkép tartalmazott manuális alkalmazástelepítéseket és -konfigurációkat. Az egyes virtuálisgép-példányok üzembe helyezése után lehetősége van az alkalmazások méretezési csoportokon történő telepítésének automatizálására, vagy egy a méretezési csoporton már futó alkalmazás frissítésére. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -41,13 +41,13 @@ Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanya
 ## <a name="what-is-the-azure-custom-script-extension"></a>Mi az egyéni Azure-szkriptek bővítménye?
 Az egyéni szkriptek bővítménye szkripteket tölt le és futtat az Azure-beli virtuális gépeken. A bővítmény az üzembe helyezést követő konfiguráció, szoftvertelepítés, illetve bármely konfigurációs/felügyeleti feladat végrehajtása során hasznos. A szkriptek az Azure Storage-ből vagy a GitHubról tölthetők le, illetve megadhatók az Azure Portalon a bővítmény futásidejében.
 
-Az egyéni szkriptek bővítménye az Azure Resource Manager-sablonokkal van integrálva, és az Azure CLI -vel, az Azure PowerShell-lel, az Azure Portallal vagy a REST API-val együtt is használható. További információ: [Az egyéni szkriptbővítmény áttekintése](../virtual-machines/windows/extensions-customscript.md).
+Az egyéni szkriptek futtatására szolgáló bővítmény integrálható az Azure Resource Manager-sablonok. Is használható az Azure CLI, Azure PowerShell-lel, az Azure portal vagy a REST API-t. További információ: [Az egyéni szkriptbővítmény áttekintése](../virtual-machines/windows/extensions-customscript.md).
 
 Az egyéni szkriptbővítmény működés közben való megtekintéséhez hozzon létre egy méretezési csoportot, amely telepíti az IIS-webkiszolgálót, és a méretezési csoport virtuálisgép-példányának gazdagépnevét adja vissza. Az egyéni szkriptbővítmény definíciója letölt egy mintaszkriptet a GitHubról, telepíti a szükséges csomagokat, majd kiírja a virtuálisgép-példány gazdagépnevét egy alap HTML-oldalra.
 
 
 ## <a name="create-a-scale-set"></a>Méretezési csoport létrehozása
-Most hozzon létre egy virtuálisgép-méretezési csoportot a [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) paranccsal. A forgalom az egyes virtuális gépek közötti elosztása érdekében a parancs egy terheléselosztót is létrehoz. A terheléselosztó szabályai elosztják a 80-as TCP-porton érkező forgalmat, valamint lehetővé teszik a távoli asztali forgalmat a 3389-es, valamint a PowerShell távoli eljáráshívásokat az 5985-ös TCP-porton. Amikor a rendszer erre kéri, adja meg használni kívánt rendszergazdai hitelesítő adatait a méretezési csoportban lévő virtuálisgép-példányokhoz:
+Most hozzon létre egy virtuálisgép-méretezési csoportot a [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) paranccsal. A forgalom az egyes virtuális gépek közötti elosztása érdekében a parancs egy terheléselosztót is létrehoz. A load balancer a 80-as porton a forgalom elosztását szabályokat tartalmaz. Azt is lehetővé teszi a távoli asztali forgalmat a 3389-es TCP-porton és a PowerShell távoli eljáráshívást az 5985-ös TCP-port. Amikor a rendszer kéri, a saját rendszergazdai hitelesítő adatokkal, a Virtuálisgép-példányokhoz állíthatja be a méretezési csoportba:
 
 ```azurepowershell-interactive
 New-AzureRmVmss `
@@ -101,8 +101,60 @@ Update-AzureRmVmss `
 A méretezési csoport összes virtuálisgép-példánya a GitHubról tölti le és futtatja a szkriptet. Egy összetettebb példában több alkalmazás-összetevő és fájl is telepíthető. A méretezési csoport vertikális felskálázása esetén az új virtuálisgép-példányok automatikusan alkalmazzák az egyéni szkriptek bővítményének definícióját, és telepítik a szükséges alkalmazást.
 
 
+## <a name="allow-traffic-to-application"></a>Forgalom engedélyezése az alkalmazáshoz
+
+Ahhoz, hogy az alapszintű webalkalmazás a hozzáférést, hozzon létre egy hálózati biztonsági csoport [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.compute/new-azurermnetworksecurityruleconfig) és [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.compute/new-azurermnetworksecuritygroup). További információkért lásd: [Azure-beli virtuálisgép-méretezési csoportok hálózatkezelése](virtual-machine-scale-sets-networking.md).
+
+```azurepowershell-interactive
+# Get information about the scale set
+$vmss = Get-AzureRmVmss `
+            -ResourceGroupName "myResourceGroup" `
+            -VMScaleSetName "myScaleSet"
+
+#Create a rule to allow traffic over port 80
+$nsgFrontendRule = New-AzureRmNetworkSecurityRuleConfig `
+  -Name myFrontendNSGRule `
+  -Protocol Tcp `
+  -Direction Inbound `
+  -Priority 200 `
+  -SourceAddressPrefix * `
+  -SourcePortRange * `
+  -DestinationAddressPrefix * `
+  -DestinationPortRange 80 `
+  -Access Allow
+
+#Create a network security group and associate it with the rule
+$nsgFrontend = New-AzureRmNetworkSecurityGroup `
+  -ResourceGroupName  "myResourceGroup" `
+  -Location EastUS `
+  -Name myFrontendNSG `
+  -SecurityRules $nsgFrontendRule
+
+$vnet = Get-AzureRmVirtualNetwork `
+  -ResourceGroupName  "myResourceGroup" `
+  -Name myVnet
+
+$frontendSubnet = $vnet.Subnets[0]
+
+$frontendSubnetConfig = Set-AzureRmVirtualNetworkSubnetConfig `
+  -VirtualNetwork $vnet `
+  -Name mySubnet `
+  -AddressPrefix $frontendSubnet.AddressPrefix `
+  -NetworkSecurityGroup $nsgFrontend
+
+Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
+
+# Update the scale set and apply the Custom Script Extension to the VM instances
+Update-AzureRmVmss `
+    -ResourceGroupName "myResourceGroup" `
+    -Name "myScaleSet" `
+    -VirtualMachineScaleSet $vmss
+```
+
+
+
 ## <a name="test-your-scale-set"></a>Méretezési csoport tesztelése
-Ha működés közben szeretné megtekinteni a webkiszolgálót, kérje le a terheléselosztó nyilvános IP-címét a [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) paranccsal. A következő példa a *myResourceGroup* erőforráscsoportban létrehozott IP-címet kéri le:
+Szeretné látni működés közben a webkiszolgáló, a terheléselosztó a nyilvános IP-címének lekéréséhez [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). Az alábbi példa megjeleníti a létrehozott IP-címet a *myResourceGroup* erőforráscsoportot:
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroup" | Select IpAddress
@@ -127,19 +179,15 @@ $customConfigv2 = @{
 }
 ```
 
-Alkalmazza újra az egyéni szkriptbővítmény konfigurációját a méretezési csoport virtuálisgép-példányain az [Add-AzureRmVmssExtension](/powershell/module/AzureRM.Compute/Add-AzureRmVmssExtension) paranccsal. Az alkalmazás frissített verziója a *customConfigv2* definíció használatával alkalmazható:
+Frissítse az egyéni Szkriptbővítmény konfigurációját a méretezési csoportban lévő Virtuálisgép-példányok. Az alkalmazás frissített verziója a *customConfigv2* definíció használatával alkalmazható:
 
 ```azurepowershell-interactive
-# Reapply the Custom Script Extension to install the updated website
-$vmss = Add-AzureRmVmssExtension `
-  -VirtualMachineScaleSet $vmss `
-  -Name "customScript" `
-  -Publisher "Microsoft.Compute" `
-  -Type "CustomScriptExtension" `
-  -TypeHandlerVersion 1.9 `
-  -Setting $customConfigv2
-
-# Update the scale set and reapply the Custom Script Extension to the VM instances
+$vmss = Get-AzureRmVmss `
+          -ResourceGroupName "myResourceGroup" `
+          -VMScaleSetName "myScaleSet"
+ 
+$vmss.VirtualMachineProfile.ExtensionProfile[0].Extensions[0].Settings = $customConfigv2
+ 
 Update-AzureRmVmss `
   -ResourceGroupName "myResourceGroup" `
   -Name "myScaleSet" `

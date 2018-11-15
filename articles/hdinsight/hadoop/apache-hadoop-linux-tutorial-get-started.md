@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A Hadoop és a Hive Azure HDInsightban való használatának első lépései Resource Manager-sablonnal '
+title: 'Gyors útmutató: Az Apache Hadoop és a Resource Manager-sablon használatával Azure HDInsight az Apache Hive első lépések '
 description: Ismerje meg, hogyan hozhat létre HDInsight-fürtöket, és hogyan kérdezhet le adatokat a Hive segítségével.
 keywords: hadoop első lépések, hadoop linux, hadoop rövid útmutató, hive első lépések, hive rövid útmutató
 services: hdinsight
@@ -10,16 +10,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017,mvc
 ms.topic: quickstart
 ms.date: 05/07/2018
-ms.openlocfilehash: cf5992615f021a986aeb3145f01b27a3b565a17b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: cc726156273591215e5a311065ae2fe6dd87402c
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014380"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634439"
 ---
-# <a name="quickstart-get-started-with-hadoop-and-hive-in-azure-hdinsight-using-resource-manager-template"></a>Gyors útmutató: A Hadoop és a Hive Azure HDInsightban való használatának első lépései Resource Manager-sablonnal
+# <a name="quickstart-get-started-with-apache-hadoop-and-apache-hive-in-azure-hdinsight-using-resource-manager-template"></a>Gyors útmutató: Az Apache Hadoop és a Resource Manager-sablon használatával Azure HDInsight az Apache Hive első lépések
 
-Ebben a cikkben megtanulhatja, hogyan hozhat létre [Hadoop](http://hadoop.apache.org/)-fürtöket a HDInsightban Resource Manager-sablonok használatával, és hogyan futtathat Hive-feladatokat a HDInsightban. A legtöbb Hadoop-feladat kötegelt feladat. Létrehoz fog hozni egy fürtöt, futtat néhány feladatot, majd törölni fogja a fürtöt. Ebben a cikkben mind a három feladatot elvégzi.
+Ebből a cikkből megismerheti, hogyan hozhat létre [Apache Hadoop](http://hadoop.apache.org/) a Resource Manager-sablon használatával, és a HDInsight Hive-feladatok futtatásával HDInsight-fürtök. A legtöbb Hadoop-feladat kötegelt feladat. Létrehoz fog hozni egy fürtöt, futtat néhány feladatot, majd törölni fogja a fürtöt. Ebben a cikkben mind a három feladatot elvégzi.
 
 Ebben a rövid útmutatóban egy HDInsight Hadoop-fürtöt fog létrehozni egy Azure Resource Manager-sablon használatával. Az [Azure Portal](apache-hadoop-linux-create-cluster-get-started-portal.md) használatával is létrehozhat fürtöket.
 

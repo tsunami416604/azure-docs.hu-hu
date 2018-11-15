@@ -1,6 +1,6 @@
 ---
 title: Python-streamelési HDInsight – Azure MapReduce feladatok fejlesztése
-description: Megtudhatja, hogyan használható a Python MapReduce-feladatok továbbítását. Hadoop-MapReduce a egy olyan streamelési API a más nyelveken írt biztosít.
+description: Megtudhatja, hogyan használható a Python MapReduce-feladatok továbbítását. Az Apache Hadoop MapReduce a egy olyan streamelési API biztosít más nyelveken írt.
 services: hdinsight
 keyword: mapreduce python,python map reduce,python mapreduce
 author: hrasheed-msft
@@ -10,20 +10,20 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5ed61eb05d0aa4360e042097d6b8c632c17ea59c
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: d6a9de293d62ec6f25bd3a665d5ced5a1ac671ae
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008725"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634022"
 ---
 # <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>Python-streamelés HDInsight MapReduce-programok fejlesztése
 
-Megtudhatja, hogyan használható a Python MapReduce műveletek továbbítását. Hadoop MapReduce, amely lehetővé teszi, hogy térkép írása, és csökkentse a függvényeket más nyelveken biztosít egy olyan streamelési API. A jelen dokumentumban leírt lépések végrehajtása a térkép, és csökkentheti a Pythonban összetevők.
+Megtudhatja, hogyan használható a Python MapReduce műveletek továbbítását. Az Apache Hadoop MapReduce, amely lehetővé teszi, hogy térkép írása, és csökkentse a függvényeket más nyelveken biztosít egy olyan streamelési API. A jelen dokumentumban leírt lépések végrehajtása a térkép, és csökkentheti a Pythonban összetevők.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Linux-alapú Hadooppal a HDInsight-fürtön
+* Egy Linux-alapú Apache Hadoop HDInsight-fürtön
 
   > [!IMPORTANT]
   > A dokumentum lépéseinek elvégzéséhez egy Linux-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).

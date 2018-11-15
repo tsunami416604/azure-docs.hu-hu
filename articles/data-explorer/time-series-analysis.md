@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 49aa1226de53a1d8f13e0f4f1e79f37f6bfa21ee
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 53ef96b561ccaa1480125f2c509381e980084b7a
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300489"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636688"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Az Azure Data Explorer idősoros elemzés
 
@@ -57,10 +57,10 @@ demo_make_series1
 | render timechart 
 ```
 
-- Használja a [ `make-series` ](https://docs.microsoft.com/azure/kusto/query/make-seriesoperator) operátor létre egy három idősorozat, ahol:
+- Használja a [ `make-series` ](/azure/kusto/query/make-seriesoperator) operátor létre egy három idősorozat, ahol:
     - `num=count()`: time series forgalom
     - `range(min_t, max_t, 1h)`: a time series jön létre a következő időtartományban: (a tábla rekordjait legrégebbi és a legújabb időbélyegeket) 1 óra bins
-    - `default=0`: Adja meg a hiányzó bins hozhat létre a rendszeres time series kitöltés módszert. Alternatív megoldásként [ `series_fill_const()` ](https://docs.microsoft.com/azure/kusto/query/series-fill-constfunction), [ `series_fill_forward()` ](https://docs.microsoft.com/azure/kusto/query/series-fill-forwardfunction), [ `series_fill_backward()` ](https://docs.microsoft.com/azure/kusto/query/series-fill-backwardfunction) és [ `series_fill_linear()` ](https://docs.microsoft.com/azure/kusto/query/series-fill-linearfunction) módosítások
+    - `default=0`: Adja meg a hiányzó bins hozhat létre a rendszeres time series kitöltés módszert. Alternatív megoldásként [ `series_fill_const()` ](/azure/kusto/query/series-fill-constfunction), [ `series_fill_forward()` ](/azure/kusto/query/series-fill-forwardfunction), [ `series_fill_backward()` ](/azure/kusto/query/series-fill-backwardfunction) és [ `series_fill_linear()` ](/azure/kusto/query/series-fill-linearfunction) módosítások
     - `byOsVer`: az operációs rendszer által partíció
 - A tényleges idősorozat-adatok struktúrát az összesített érték minden egyes alkalommal bin / numerikus tömbje. Használjuk a `render timechart` Vizualizáció céljából.
 
@@ -71,14 +71,14 @@ A fenti táblázatban három partíció van. Létrehozhatunk egy külön idősor
 ## <a name="time-series-analysis-functions"></a>Time series elemzési funkciók
 
 Ebben a szakaszban azt feldolgozási funkciók jellemző sorozat kell végrehajtani.
-A time series készletét létrehozása után ADX támogatja az egyre nagyobb számban elérhető függvények feldolgozására és elemzésére azokat, amelyek megtalálhatók a [sorozat dokumentációja idő](https://docs.microsoft.com/azure/kusto/query/machine-learning-and-tsa). Néhány reprezentatív funkciók feldolgozásához és elemzéséhez a time series bemutatunk néhányat.
+A time series készletét létrehozása után ADX támogatja az egyre nagyobb számban elérhető függvények feldolgozására és elemzésére azokat, amelyek megtalálhatók a [sorozat dokumentációja idő](/azure/kusto/query/machine-learning-and-tsa). Néhány reprezentatív funkciók feldolgozásához és elemzéséhez a time series bemutatunk néhányat.
 
 ### <a name="filtering"></a>Szűrés
 
 Szűrés egy gyakori eljárás a jel feldolgozási és hasznos idősorozat-feldolgozási feladatokat (például zajos jel smooth, észlelés módosításához).
 - Nincsenek két általános szűrési funkciók:
-    - [`series_fir()`](https://docs.microsoft.com/azure/kusto/query/series-firfunction): RÉSZÉHEZ szűrő alkalmazásával. A mozgó átlag és az üzleti differenciálás a idősorozat címváltozásának felderítését a egyszerű kiszámításához használt.
-    - [`series_iir()`](https://docs.microsoft.com/azure/kusto/query/series-iirfunction): IIR szűrő alkalmazásával. Exponenciális simítás és sum összesítő használható.
+    - [`series_fir()`](/azure/kusto/query/series-firfunction): RÉSZÉHEZ szűrő alkalmazásával. A mozgó átlag és az üzleti differenciálás a idősorozat címváltozásának felderítését a egyszerű kiszámításához használt.
+    - [`series_iir()`](/azure/kusto/query/series-iirfunction): IIR szűrő alkalmazásával. Exponenciális simítás és sum összesítő használható.
 - `Extend` az idősorozat, adja hozzá az új mozgó átlag sorozatát állítsa 5 dobozok mérete (nevű *ma_num*) a lekérdezés:
 
 ```kusto
@@ -95,8 +95,8 @@ demo_make_series1
 ### <a name="regression-analysis"></a>Regressziós elemzést
 
 Támogatja a ADX szegmentált becsült alakulását az idősor lineáris regressziós elemzést.
-- Használat [series_fit_line()](https://docs.microsoft.com/azure/kusto/query/series-fit-linefunction) megfelelően a legjobb sor a time Series általános trendjét észleléséhez.
-- Használat [series_fit_2lines()](https://docs.microsoft.com/azure/kusto/query/series-fit-2linesfunction) trend változások, az alaptervhez képest, amelyek hasznosak a figyelési forgatókönyvek az észleléséhez.
+- Használat [series_fit_line()](/azure/kusto/query/series-fit-linefunction) megfelelően a legjobb sor a time Series általános trendjét észleléséhez.
+- Használat [series_fit_2lines()](/azure/kusto/query/series-fit-2linesfunction) trend változások, az alaptervhez képest, amelyek hasznosak a figyelési forgatókönyvek az észleléséhez.
 
 Példa `series_fit_line()` és `series_fit_2lines()` függvények a time series lekérdezés:
 
@@ -128,8 +128,9 @@ demo_series3
 
 ![Time series szezonalitás](media/time-series-analysis/time-series-seasonality.png)
 
-- Használat [series_periods_detect()](https://docs.microsoft.com/azure/kusto/query/series-periods-detectfunction) automatikusan észlelni az időszakok idősorozatban található. 
-- Használat [series_periods_validate()](https://docs.microsoft.com/azure/kusto/query/series-periods-validatefunction) Ha tudjuk, hogy egy metrika kell rendelkeznie az adott különböző megismétlésével, és győződjön meg arról, hogy azok léteznek szeretnénk.
+- Használat [series_periods_detect()](/azure/kusto/query/series-periods-detectfunction) automatikusan észlelni az időszakok idősorozatban található. 
+- Használat [series_periods_validate()](/azure/kusto/query/series-periods-validatefunction) Ha tudjuk, hogy egy metrika kell rendelkeznie az adott különböző megismétlésével, és győződjön meg arról, hogy azok léteznek szeretnénk.
+
 > [!NOTE]
 > Ha még nem léteznek a megadott különböző időszakok anomáliát
 
@@ -150,7 +151,7 @@ A függvény a napi és heti szezonalitás észleli. A napi kisebb, mint a heti 
 
 ### <a name="element-wise-functions"></a>Element-Wise funkciók
 
-Egy time Series aritmetikai és logikai műveleteket végezheti el. Használatával [series_subtract()](https://docs.microsoft.com/azure/kusto/query/series-subtractfunction) lehet egy maradék idősorozat, amely, az eredeti nyers metrika- és a egy visszametszéses közötti különbség kiszámítása, és keresse meg a fennmaradó jel protokollmegvalósításokat:
+Egy time Series aritmetikai és logikai műveleteket végezheti el. Használatával [series_subtract()](/azure/kusto/query/series-subtractfunction) lehet egy maradék idősorozat, amely, az eredeti nyers metrika- és a egy visszametszéses közötti különbség kiszámítása, és keresse meg a fennmaradó jel protokollmegvalósításokat:
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -165,7 +166,9 @@ demo_make_series1
 
 ![Time series műveletek](media/time-series-analysis/time-series-operations.png)
 
-Kék: eredeti idősorozat Red: a time series zöld Görbített: maradék idősorozat
+- Kék: eredeti idősorozat
+- Piros: a time series Görbített
+- Zöld: maradék idősorozat
 
 ## <a name="time-series-workflow-at-scale"></a>Time series munkafolyamat ipari méretekben
 
@@ -255,6 +258,6 @@ demo_many_series1
 |   | Hely 15 | -3207352159611332166 | 1151 | -102743.910227889 |
 |   | Hely 13 | -3207352159611332166 | 1249 | -86303.2334644601 |
 
-Kevesebb mint két perc alatt ADX észlelt két rendellenes idősorozat (összesen: 23115) amely olvasási száma hirtelen eldobva.
+Kevesebb mint két perc alatt ADX elemzett több mint 20 000 idősorozat, és azt észlelte, amelyben az olvasási száma hirtelen eldobott két rendellenes idősorozat.
 
 Speciális képességek ADX gyors teljesítményt kombinálva adja meg a idősoros elemzés egyedi és hatékony megoldást.

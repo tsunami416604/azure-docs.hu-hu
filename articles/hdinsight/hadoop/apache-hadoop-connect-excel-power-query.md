@@ -1,5 +1,5 @@
 ---
-title: Az Excel összekapcsolása a Hadooppal a Power Query – Azure HDInsight segítségével
+title: Excel csatlakoztatása a Power Query – Azure HDInsight az Apache Hadoop
 description: Ismerje meg, hogyan üzleti intelligencia összetevők előnyeit, és használja a Power Query az Excel programhoz Hadoop on HDInsight tárolt adatok elérését.
 services: hdinsight
 author: hrasheed-msft
@@ -9,15 +9,15 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 7335e4370d25b7cc404d93ad6f2c9ff524d928e0
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: dc287325b3ef0fc951dab127e0def5f4023534ca
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016301"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632492"
 ---
-# <a name="connect-excel-to-hadoop-by-using-power-query"></a>Az Excel összekapcsolása a Hadooppal a Power Query használatával
-A Microsoft big-data megoldás egyik fontos szolgáltatása az integrációt a Microsoft üzleti intelligenciára épülő (BI) összetevők az Azure HDInsight Hadoop-fürtök. Egy elsődleges példája az Excel összekapcsolása a az Azure Storage-fiókot, amely tartalmazza az adatokat a Hadoop-fürt társított az Excel-bővítmény a Microsoft Power Query használatával lehetővé teszi. Ez a cikk ismerteti, hogyan beállítása és használata a Power Query használatával adatokat lekérdezni a HDInsight felügyelt Hadoop-fürt társított.
+# <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Az Apache hadoop Excel csatlakoztatása a Power Query használatával
+A Microsoft big-data megoldás egyik fontos szolgáltatása az integrációt a Microsoft üzleti intelligenciára épülő (BI) összetevők az Azure HDInsight az Apache Hadoop-fürtök. Egy elsődleges példája az Excel összekapcsolása a az Azure Storage-fiókot, amely tartalmazza az adatokat a Hadoop-fürt társított az Excel-bővítmény a Microsoft Power Query használatával lehetővé teszi. Ez a cikk ismerteti, hogyan beállítása és használata a Power Query használatával adatokat lekérdezni a HDInsight felügyelt Hadoop-fürt társított.
 
 ### <a name="prerequisites"></a>Előfeltételek
 Ez a cikk elkezdéséhez a következőkkel kell rendelkeznie:

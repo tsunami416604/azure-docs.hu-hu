@@ -9,19 +9,19 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: 02a77ef9589a42a6f33087ba7e22efc3144a8f2c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a995f99f7baa8d6f9476f852aa47ce239c921a50
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973558"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634464"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>A vállalati biztonsági csomaggal HDInsight-fürtök kezelése
 Ismerje meg, a felhasználók és a HDInsight vállalati biztonsági csomag (ESP) és az ESP-fürtök kezelése a szerepkörök.
 
 ## <a name="use-vscode-to-link-to-domain-joined-cluster"></a>VSCode használata egy tartományhoz csatlakozó fürthöz való kapcsolódáshoz
 
-Hivatkozás egy normál fürt kezelése az Ambari felhasználónév használatával is, is hivatkozásra a biztonsági hadoop-fürt használatával: tartomány felhasználónév (például: user1@contoso.com).
+Most egy normál fürt hivatkozás használatával felügyelt Apache Ambari felhasználónév, is hivatkozásra a biztonsági Apache Hadoop-fürt használatával: tartomány felhasználónév (például: user1@contoso.com).
 1. Nyissa meg a parancskatalógust kiválasztásával **CTRL + SHIFT + P**, majd adja meg **HDInsight: egy fürtöt**.
 
    ![hivatkozás fürt parancs](./media/apache-domain-joined-manage/link-cluster-command.png)

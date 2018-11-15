@@ -1,6 +1,6 @@
 ---
-title: Azure VPN gatewayek való csatlakozás VPN eszközkonfigurációk partneri |} Microsoft Docs
-description: Ez a cikk áttekintést partner VPN eszközkonfigurációk Azure VPN gatewayek való kapcsolódáshoz.
+title: Az Azure VPN Gateway átjárókhoz csatlakozik a VPN-eszközök konfigurációjának partneri |} A Microsoft Docs
+description: Ez a cikk az Azure VPN Gateway átjárókhoz csatlakozik partner VPN-eszközök konfigurációjának áttekintését.
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
@@ -15,49 +15,49 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.openlocfilehash: dd9ca3937d688170798c42fce45dbcd7711773d1
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 901de2ac3d80b3ee529d89a22afae7e823437b9b
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31599611"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685208"
 ---
-# <a name="overview-of-partner-vpn-device-configurations"></a>Partner VPN eszközkonfigurációk áttekintése
-Ez a cikk áttekintést konfigurálása a helyszíni VPN-eszközök Azure VPN gatewayek való kapcsolódáshoz. A minta Azure-beli virtuális hálózat és a VPN-átjáró telepítési használt bemutatják a különböző helyszíni VPN eszközkonfigurációk ugyanazokkal a paraméterekkel használatával csatlakoznak.
+# <a name="overview-of-partner-vpn-device-configurations"></a>Partner VPN-eszközök konfigurációjának áttekintése
+Ez a cikk az Azure VPN Gateway átjárókhoz csatlakozik a helyszíni VPN-eszközök konfigurálásának áttekintése. A példa az Azure virtual network, és VPN-átjáró telepítőjének megmutatjuk, hogyan lehet csatlakozni másik helyszíni VPN-eszközök konfigurációjának azonos paraméterekkel használja.
 
 ## <a name="device-requirements"></a>Eszközkövetelmények
-Azure VPN gatewayek szabványos IPsec/IKE protokoll csomagok használja a helyek (közötti S2S) VPN-alagutat. IPsec/IKE-paraméterek és az Azure VPN gatewayek titkosítási algoritmusok listájáért lásd: [kapcsolatos VPN-eszközök](vpn-gateway-about-vpn-devices.md). Azt is megadhatja a pontos algoritmusok és egy adott kapcsolat kulcs szintjeiről a [titkosítási követelményekkel kapcsolatos](vpn-gateway-about-compliance-crypto.md).
+Az Azure VPN-átjárók használata szabványos IPsec/IKE protokoll programcsomagok site-to-site (S2S) VPN-alagutat. IPsec/IKE-paraméterek és az Azure VPN gatewayek titkosítási algoritmusok listájáért lásd: [tudnivalók a VPN-eszközök](vpn-gateway-about-vpn-devices.md). Azt is beállíthatja a pontos algoritmusokat és kulcserősségeket egy adott kapcsolathoz tartozó leírtak szerint [információ a kriptográfiai követelményekről](vpn-gateway-about-compliance-crypto.md).
 
-## <a name ="singletunnel"></a>Egy VPN-alagút
-A minta az első konfigurálása az Azure VPN gateway és egy helyszíni VPN-eszköz között egyetlen S2S VPN-alagúton áll. Konfigurálhatja a [Border Gateway Protocol (BGP) a VPN-alagúton keresztül](#bgp).
+## <a name ="singletunnel"></a>Egyetlen VPN-alagút
+A minta első konfiguráció áll egyetlen S2S VPN-alagút az Azure VPN gateway és a egy helyszíni VPN-eszköz között. Igény szerint konfigurálható a [Border Gateway Protocol (BGP) a VPN-alagúton keresztül](#bgp).
 
-![Egyetlen S2S VPN-alagúton ábrája](./media/vpn-gateway-3rdparty-device-config-overview/singletunnel.png)
+![Egyetlen S2S VPN-alagút ábrája](./media/vpn-gateway-3rdparty-device-config-overview/singletunnel.png)
 
-Egy VPN-alagúton beállítása lépésenkénti útmutatót lásd: [webhelyek kapcsolat beállítása](vpn-gateway-howto-site-to-site-resource-manager-portal.md). A következő szakaszok kell megadni a mintakonfiguráció kapcsolat paramétereit, és adjon meg egy PowerShell-parancsfájl segítségével hozzákezdhet.
+Állítsa be a VPN-alagút egyetlen lépésenkénti útmutatójáért lásd: [hely – hely kapcsolat konfigurálása](vpn-gateway-howto-site-to-site-resource-manager-portal.md). A következő szakaszok adja meg a minta konfigurációs kapcsolat paramétereit, és adjon meg egy PowerShell-parancsprogram induláshoz.
 
 ### <a name="connection-parameters"></a>Kapcsolódási paraméterek
-Ez a szakasz a példákat a korábbi szakaszokban ismertetett paramétereket tartalmazza.
+Ez a szakasz tartalmazza a példák a korábbi szakaszokban ismertetett paramétereket.
 
 | **A paraméter**                | **Érték**                    |
 | ---                          | ---                          |
-| Virtuális hálózati címelőtagokat        | 10.11.0.0/16<br>10.12.0.0/16 |
-| Az Azure VPN gateway IP-címet         | Az Azure VPN Gateway IP         |
+| Virtuális hálózat címelőtagjainak        | 10.11.0.0/16<br>10.12.0.0/16 |
+| Az Azure VPN gateway-IP         | Az Azure VPN-átjáró IP         |
 | A helyszíni címelőtagokat | 10.51.0.0/16<br>10.52.0.0/16 |
-| A helyszíni VPN-eszköz IP-címet    | A helyszíni VPN-eszköz IP-címet    |
-| * A virtuális hálózati BGP ASN                | 65010                        |
-| * Az azure BGP-Társgép IP-           | 10.12.255.30                 |
-| * A helyszíni BGP ASN         | 65050                        |
-| * A helyszíni BGP-Társgép IP-     | 10.52.255.254                |
+| A helyszíni VPN-eszköz IP    | A helyszíni VPN-eszköz IP    |
+| * A virtuális hálózat BGP ASN-je                | 65010                        |
+| * Az azure BGP társ IP-Címét           | 10.12.255.30                 |
+| * A helyszíni BGP ASN-je         | 65050                        |
+| * A helyszíni BGP-Társgép IP     | 10.52.255.254                |
 
-\* Nem kötelező paraméter BGP csak.
+\* Nem kötelező paraméter a BGP csak.
 
-### <a name="sample-powershell-script"></a>PowerShell-parancsfájlpélda
-Ez a témakör egy minta parancsfájlt az első lépésekhez. Részletes útmutatásért lásd: [S2S VPN-kapcsolat létrehozásához a PowerShell használatával](vpn-gateway-create-site-to-site-rm-powershell.md).
+### <a name="sample-powershell-script"></a>PowerShell-parancsprogram
+Ez a témakör egy mintaszkriptet a kezdéshez. Részletes útmutatásért lásd: [S2S VPN-kapcsolat létrehozása a PowerShell használatával](vpn-gateway-create-site-to-site-rm-powershell.md).
 
 ```powershell
 # Declare your variables
 
-$Sub1          = "Replace_With_Your_Subcription_Name"
+$Sub1          = "Replace_With_Your_Subscription_Name"
 $RG1           = "TestRG1"
 $Location1     = "East US 2"
 $VNetName1     = "TestVNet1"
@@ -117,18 +117,18 @@ $lng5gw  = Get-AzureRmLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG
 New-AzureRmVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $False
 ```
 
-### <a name ="policybased"></a>(Választható) Egyéni IPsec/IKE-házirend használata UsePolicyBasedTrafficSelectors
-Ha a VPN-eszközök nem támogatják az any közöttiként forgalom választók, például az útválasztó-alapú vagy VTI-alapú konfigurációk esetén az egyéni IPsec/IKE-házirend létrehozása a [UsePolicyBasedTrafficSelectors](vpn-gateway-connect-multiple-policybased-rm-ps.md) lehetőséget.
+### <a name ="policybased"></a>(Nem kötelező) UsePolicyBasedTrafficSelectors egyéni IPsec/IKE-házirend használata
+Ha a VPN-eszközök nem támogatják a – bármely forgalomválasztóinak útválasztó-alapú vagy VTI-alapú konfigurációk esetén például hozzon létre egy egyéni IPsec/IKE-házirendet a a [UsePolicyBasedTrafficSelectors](vpn-gateway-connect-multiple-policybased-rm-ps.md) lehetőséget.
 
 > [!IMPORTANT]
-> Az IPsec/IKE engedélyezésére vonatkozó házirendet kell létrehoznia a **UsePolicyBasedTrafficSelectors** beállítást a kapcsolathoz.
+> Létre kell hoznia egy IPsec/IKE-házirend engedélyezése a **UsePolicyBasedTrafficSelectors** beállítást a kapcsolat.
 
 
-A parancsfájlpéldát házirendet hoz létre IPsec/IKE a következő algoritmusokat és a Paraméterek:
-* IKEv2: AES256, SHA384 DHGroup24
-* IPsec: AES256, SHA1, PFS24, SA élettartama 7,200 másodperc, és 20,480,000 KB (20 GB)
+A példaszkript egy IPsec/IKE-házirendet hoz létre a következő algoritmusokat és paramétereket:
+* Az IKEv2: AES256, SHA384, DHGroup24
+* IPsec: AES256, SHA1, PFS24, SA élettartama 7,200 másodperc és 20,480,000 KB (20 GB)
 
-A parancsfájl az IPsec/IKE házirend vonatkozik, és lehetővé teszi, hogy a **UsePolicyBasedTrafficSelectors** beállítást a kapcsolathoz.
+A parancsfájl az IPsec/IKE-szabályzat vonatkozik, és lehetővé teszi, hogy a **UsePolicyBasedTrafficSelectors** beállítást a kapcsolat.
 
 ```powershell
 $ipsecpolicy5 = New-AzureRmIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA1 -PfsGroup PFS24 -SALifeTimeSeconds 7200 -SADataSizeKilobytes 20480000
@@ -139,21 +139,21 @@ $lng5gw  = Get-AzureRmLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG
 New-AzureRmVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $False -IpsecPolicies $ipsecpolicy5 -UsePolicyBasedTrafficSelectors $True
 ```
 
-### <a name ="bgp"></a>(Választható) A BGP S2S VPN-kapcsolat használata
-Az S2S VPN-kapcsolat létrehozásakor is használhat [a VPN Gateway a BGP](vpn-gateway-bgp-resource-manager-ps.md). Ez a megközelítés azzal két különbségek:
+### <a name ="bgp"></a>(Nem kötelező) A BGP használata az S2S VPN-kapcsolat
+Az S2S VPN-kapcsolat létrehozásakor is használhat [a VPN Gateway a BGP](vpn-gateway-bgp-resource-manager-ps.md). Ennek a megközelítésnek vannak, két eltéréssel:
 
-* A helyszíni címelőtagokat egyetlen fogadó cím is lehet. A helyszíni BGP társ IP-cím van megadva az alábbiak szerint:
+* A helyszíni címelőtagokat lehet egyetlen gazdagépcímét. A helyszíni BGP-társ IP-címét az alábbiak szerint van megadva:
 
     ```powershell
     New-AzureRmLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG1 -Location $Location1 -GatewayIpAddress $LNGIP5 -AddressPrefix $LNGPrefix50 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP5
     ```
 
-* A kapcsolat létrehozásakor meg kell adni a **- EnableBGP** $true lehetőséget:
+* A kapcsolat létrehozásakor meg kell állítani a **- enablebgp paramétert** $true lehetőséget:
 
     ```powershell
     New-AzureRmVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
     ```
 
 ## <a name="next-steps"></a>További lépések
-Aktív-aktív VPN-átjárók beállítása lépésenkénti útmutatót lásd: [aktív-aktív VPN-átjárók a létesítmények közötti és VNet – VNet kapcsolatokhoz konfigurálása](vpn-gateway-activeactive-rm-powershell.md).
+Állítsa be az aktív-aktív VPN-átjárók lépésenkénti útmutatójáért lásd: [konfigurálása létesítmények közötti és VNet – VNet kapcsolat aktív-aktív VPN-átjárók](vpn-gateway-activeactive-rm-powershell.md).
 

@@ -1,5 +1,5 @@
 ---
-title: A Hadoop Hive és a távoli asztal használata a HDInsight – Azure
+title: Az Apache Hive és a távoli asztal használata a HDInsight – Azure
 description: Ismerje meg, hogyan csatlakozhat a HDInsight Hadoop-fürtöt a távoli asztal használatával, és futtassa a Hive-lekérdezéseket a Hive-parancssori felület használatával.
 services: hdinsight
 author: hrasheed-msft
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 32fb2bc9514b911d0a1ce295eee651e4b6b6388a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 03eb5958e1c447ec1239289538906a0cb3e4b30d
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015077"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634209"
 ---
-# <a name="use-hive-with-hadoop-on-hdinsight-with-remote-desktop"></a>A Hive használata a Hadooppal a HDInsight a távoli asztallal
+# <a name="use-apache-hive-with-apache-hadoop-on-hdinsight-with-remote-desktop"></a>Az Apache Hive használata a távoli asztalon keresztül a HDInsight az Apache Hadoop
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
 Ebben a cikkben, fog megtudhatja, hogyan csatlakozhat egy HDInsight-fürtöt a távoli asztal használatával, és futtassa a Hive-lekérdezések a Hive-parancssori felület (CLI) használatával.

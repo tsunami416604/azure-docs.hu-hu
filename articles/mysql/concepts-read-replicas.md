@@ -7,13 +7,13 @@ ms.author: andrela
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/30/2018
-ms.openlocfilehash: b4e79723072a19f2637bea16d0534cb85588e9e3
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.date: 11/13/2018
+ms.openlocfilehash: 82f80fc1342f0c76cb880b020dcd835a23635b0a
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412448"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632560"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Olvassa el a replikákat az Azure Database for MySQL-hez
 
@@ -60,12 +60,15 @@ Replikakiszolgáló használatával server ugyanezzel a konfigurációval a mast
 - Biztonsági másolat megőrzési idejének
 - Biztonsági mentési adatredundáns tárolási mód
 - MySQL-motor verziója
+- Tűzfalszabályok
 
 Replika létrehozása után módosíthatja a tarifacsomagot (kivéve a, illetve onnan alapszintű), számítási generáció, virtuális magok, tárolási és alkalmazástól függetlenül a fölérendelt kiszolgáló a biztonsági másolatok.
 
 ### <a name="master-server-configuration"></a>Fő kiszolgálókonfiguráció
 
-Ha egy fő kiszolgálókonfiguráció (például. virtuális maggal és tárolás) frissüljön, a replikák konfigurációs frissíteni kell, egyenlő vagy nagyobb értékre. E nélkül az adatbázisreplika-kiszolgáló nem tud lépést tartani a fő végrehajtott módosítások, és emiatt leállhat. 
+Ha egy fő kiszolgálókonfiguráció (például. virtuális maggal és tárolás) frissüljön, a replikák konfigurációs frissíteni kell, egyenlő vagy nagyobb értékre. E nélkül az adatbázisreplika-kiszolgáló nem tud lépést tartani a fő végrehajtott módosítások, és emiatt leállhat.
+
+Új tűzfalszabályok a fölérendelt kiszolgáló hozzáadott egy adatbázisreplika-kiszolgáló létrehozása után nem lesznek replikálva a replika. A replika-e új tűzfalszabályt is frissíteni kell.
 
 ### <a name="deleting-the-master-server"></a>A fölérendelt kiszolgáló törlése
 
@@ -87,7 +90,4 @@ A fölérendelt kiszolgáló a felhasználók a olvasható replikák replikáló
 ## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [létrehozása és kezelése az Azure portal használatával olvasható replikák](howto-read-replicas-portal.md)
-
-<!--
-- Learn how to [create and manage read replicas using the Azure CLI](howto-read-replicas-using-cli.md)
--->
+- Ismerje meg, hogyan [létrehozása és kezelése az Azure CLI használatával olvasható replikák](howto-read-replicas-cli.md)

@@ -1,5 +1,5 @@
 ---
-title: Bevezetés a Hadoop-biztonság, a vállalati biztonsági csomaggal
+title: Bevezetés az Apache Hadoop-biztonság, a vállalati biztonsági csomag
 description: Ismerje meg, hogy a vállalati biztonsági csomag hogyan támogatja a vállalati biztonság négy alappillérét.
 services: hdinsight
 ms.service: hdinsight
@@ -9,20 +9,20 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: a1b4565d4875b60ce36d74f8c99e4c7d79999c36
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 270227204af9cf50f0244b8aa11ebf9aa8cdc3ce
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578263"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51631999"
 ---
-# <a name="an-introduction-to-hadoop-security-with-enterprise-security-package"></a>Bevezetés a Hadoop-biztonság, a vállalati biztonsági csomaggal
+# <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>Bevezetés az Apache Hadoop-biztonság, a vállalati biztonsági csomag
 
-Múltbeli időpont, az Azure HDInsight támogatott csak egyetlen felhasználó: helyi rendszergazdaként. Ez remekül működött a kisebb alkalmazásfejlesztő csapatoknál vagy részlegeknél. Mivel a Hadoop-alapú számítási feladatok nagyobb népszerűségre tettek a vállalati szektorban, szükség van a nagyvállalati szintű szolgáltatásokat, például az Active Directory-alapú hitelesítéshez, többfelhasználós támogatja, és a szerepköralapú hozzáférés-vezérlés egyre inkább fontosabbá váltak. 
+Múltbeli időpont, az Azure HDInsight támogatott csak egyetlen felhasználó: helyi rendszergazdaként. Ez remekül működött a kisebb alkalmazásfejlesztő csapatoknál vagy részlegeknél. Ahogy az Apache Hadoop-alapú számítási feladatok nagyobb népszerűségre tettek a vállalati szektorban, szükség van a nagyvállalati szintű szolgáltatásokat, például az Active Directory-alapú hitelesítéshez, többfelhasználós támogatja, és a szerepköralapú hozzáférés-vezérlés egyre inkább fontosabbá váltak. 
 
 Létrehozhat egy HDInsight-fürtöt a vállalati biztonsági csomag (ESP), amely egy Active Directory-tartományhoz csatlakozik. Konfigurálhatja a vállalati alkalmazottak, akik hitelesíthetnek az Azure Active Directoryban való bejelentkezéshez a HDInsight-fürt listáját. Egyetlen a vállalaton kívülre jelentkezzen be, vagy a HDInsight-fürt eléréséhez. 
 
-A vállalati rendszergazda konfigurálhatja szerepköralapú hozzáférés-vezérlés (RBAC) a Hive-biztonság használatával [Apache Ranger](http://hortonworks.com/apache/ranger/). RBAC konfigurálása korlátozza az adatok elérése csak akkor szükséges. Végül a rendszergazda naplózhatja az alkalmazottak és bármely változtatást a hozzáférés-vezérlési házirendeket adatelérési. A rendszergazda egy magas szintű a vállalati erőforrásokat, majd érheti el.
+A vállalati rendszergazda konfigurálhatja szerepköralapú hozzáférés-vezérlés (RBAC) az Apache Hive-biztonsághoz használatával [Apache Ranger](http://hortonworks.com/apache/ranger/). RBAC konfigurálása korlátozza az adatok elérése csak akkor szükséges. Végül a rendszergazda naplózhatja az alkalmazottak és bármely változtatást a hozzáférés-vezérlési házirendeket adatelérési. A rendszergazda egy magas szintű a vállalati erőforrásokat, majd érheti el.
 
 > [!NOTE]
 > Az Oozie engedélyezve van a ESP-fürtökön. Hozzáférhet az Oozie webes felület, engedélyezze a felhasználók [tunneling](../hdinsight-linux-ambari-ssh-tunnel.md).

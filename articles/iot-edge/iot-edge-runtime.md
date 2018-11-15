@@ -8,12 +8,12 @@ ms.date: 08/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9894df3bed50059dc28ed6308c96990178cf44ef
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 05c97d21e9acf1bb49418e3a7d0ccf1657f84435
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624979"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685191"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Az Azure IoT Edge-futtatókörnyezet és architektúrájának ismertetése
 
@@ -73,7 +73,7 @@ Egy üzenet jelenik meg, hogy regisztráljon egy visszahívást, amelyet a megad
    await client.SetInputMessageHandlerAsync(“input1”, messageProcessor, userContext);
    ```
 
-A ModuleClient osztály és a kommunikációs módszer kapcsolatos további információkért tekintse meg az API-referencia elsődleges SDK nyelv: [ C# ](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C és Python](https://docs.microsoft.com/en-us/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device._module_client?view=azure-java-stable), vagy [Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
+A ModuleClient osztály és a kommunikációs módszer kapcsolatos további információkért tekintse meg az API-referencia elsődleges SDK nyelv: [ C# ](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C és Python](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device._module_client?view=azure-java-stable), vagy [Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
 
 A megoldás fejlesztő feladata a szabályok, amelyek meghatározzák, hogyan Edge hubot továbbítja moduljai közötti üzenetek megadására. Útválasztási szabályok meghatározva a felhőben, és leküldte a az Edge hub az ikereszközön. Ugyanazt a szintaxist, az IoT Hub útvonalakat az Azure IoT Edge moduljai közötti útvonalak meghatározására szolgál. 
 

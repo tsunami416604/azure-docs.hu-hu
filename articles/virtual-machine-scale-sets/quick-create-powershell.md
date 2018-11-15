@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/27/18
+ms.date: 11/08/18
 ms.author: zarhoads
-ms.openlocfilehash: 6f37a9cb486f7d40506928e751e189843af69528
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 7c24375cd86700b3b4125447e1aa6dbc7507d8ba
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467480"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515811"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-azure-powershell"></a>Rövid útmutató: Virtuálisgép-méretezési csoport létrehozása az Azure PowerShell használatával
-A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A méretezési csoportban lévő virtuális gépek számát beállíthatja manuálisan, de automatikus méretezési szabályokat is megadhat az erőforrás-használat (például processzorhasználat, memóriaigény vagy hálózati forgalom) alapján. Egy Azure-terheléselosztó ezután elosztja a forgalmat a méretezési csoportban lévő virtuálisgép-példányok között. Ebben a rövid útmutatóban egy virtuálisgép-méretezési csoportot hozunk létre, és üzembe helyezünk egy mintaalkalmazást az Azure PowerShell-lel.
+Egy virtuálisgép-méretezési csoportot üzembe helyezheti és kezelheti az azonos, automatikus méretezést végző virtuális gépekről teszi lehetővé. A méretezési csoportban lévő virtuális gépek számát beállíthatja manuálisan, de automatikus méretezési szabályokat is megadhat az erőforrás-használat (például processzorhasználat, memóriaigény vagy hálózati forgalom) alapján. Egy Azure-terheléselosztó ezután elosztja a forgalmat a méretezési csoportban lévő virtuálisgép-példányok között. Ebben a rövid útmutatóban egy virtuálisgép-méretezési csoportot hozunk létre, és üzembe helyezünk egy mintaalkalmazást az Azure PowerShell-lel.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 6.0.0-s vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 6.0.0-s vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja PowerShell, is futtatni szeretné `Connect-AzureRmAccount` kapcsolat létrehozása az Azure-ral.
 
 
 ## <a name="create-a-scale-set"></a>Méretezési csoport létrehozása
-Hozzon létre egy virtuálisgép-méretezési csoportot a [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) paranccsal. A következő példa létrehoz egy *myScaleSet* nevű méretezési csoportot, amely a *Windows Server 2016 Datacenter* platformrendszerképet használja. A rendszer automatikusan létrehozza az Azure-beli hálózati erőforrásokat a virtuális hálózathoz, a nyilvános IP-címhez és a terheléselosztóhoz. Amikor a rendszer erre kéri, adja meg használni kívánt rendszergazdai hitelesítő adatait a méretezési csoportban lévő virtuálisgép-példányokhoz:
+Hozzon létre egy virtuálisgép-méretezési csoportot a [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) paranccsal. A következő példa létrehoz egy *myScaleSet* nevű méretezési csoportot, amely a *Windows Server 2016 Datacenter* platformrendszerképet használja. A rendszer automatikusan létrehozza az Azure-beli hálózati erőforrásokat a virtuális hálózathoz, a nyilvános IP-címhez és a terheléselosztóhoz. Amikor a rendszer kéri, a saját rendszergazdai hitelesítő adatokkal, a Virtuálisgép-példányokhoz állíthatja be a méretezési csoportba:
 
 ```azurepowershell-interactive
 New-AzureRmVmss `
@@ -83,9 +83,58 @@ Update-AzureRmVmss `
     -VirtualMachineScaleSet $vmss
 ```
 
+## <a name="allow-traffic-to-application"></a>Forgalom engedélyezése az alkalmazáshoz
+
+ Ahhoz, hogy az alapszintű webalkalmazás a hozzáférést, hozzon létre egy hálózati biztonsági csoport [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.compute/new-azurermnetworksecurityruleconfig) és [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.compute/new-azurermnetworksecuritygroup). További információkért lásd: [Azure-beli virtuálisgép-méretezési csoportok hálózatkezelése](virtual-machine-scale-sets-networking.md).
+
+ ```azurepowershell-interactive
+ # Get information about the scale set
+ $vmss = Get-AzureRmVmss `
+             -ResourceGroupName "myResourceGroup" `
+             -VMScaleSetName "myScaleSet"
+
+ #Create a rule to allow traffic over port 80
+ $nsgFrontendRule = New-AzureRmNetworkSecurityRuleConfig `
+   -Name myFrontendNSGRule `
+   -Protocol Tcp `
+   -Direction Inbound `
+   -Priority 200 `
+   -SourceAddressPrefix * `
+   -SourcePortRange * `
+   -DestinationAddressPrefix * `
+   -DestinationPortRange 80 `
+   -Access Allow
+
+ #Create a network security group and associate it with the rule
+ $nsgFrontend = New-AzureRmNetworkSecurityGroup `
+   -ResourceGroupName  "myResourceGroup" `
+   -Location EastUS `
+   -Name myFrontendNSG `
+   -SecurityRules $nsgFrontendRule
+
+ $vnet = Get-AzureRmVirtualNetwork `
+   -ResourceGroupName  "myResourceGroup" `
+   -Name myVnet
+
+ $frontendSubnet = $vnet.Subnets[0]
+
+ $frontendSubnetConfig = Set-AzureRmVirtualNetworkSubnetConfig `
+   -VirtualNetwork $vnet `
+   -Name mySubnet `
+   -AddressPrefix $frontendSubnet.AddressPrefix `
+   -NetworkSecurityGroup $nsgFrontend
+
+ Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
+
+ # Update the scale set and apply the Custom Script Extension to the VM instances
+ Update-AzureRmVmss `
+     -ResourceGroupName "myResourceGroup" `
+     -Name "myScaleSet" `
+     -VirtualMachineScaleSet $vmss
+ ```
 
 ## <a name="test-your-scale-set"></a>Méretezési csoport tesztelése
-Ha ellenőrizni szeretné, hogyan működik a méretezési csoport, lépjen egy böngészőben a mintául szolgáló webalkalmazáshoz. Kérje le a terheléselosztó nyilvános IP-címét a [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) paranccsal. A következő példa a *myResourceGroup* erőforráscsoportban létrehozott IP-címet kéri le:
+Ha ellenőrizni szeretné, hogyan működik a méretezési csoport, lépjen egy böngészőben a mintául szolgáló webalkalmazáshoz. A terheléselosztó a nyilvános IP-címének lekéréséhez [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). Az alábbi példa megjeleníti a létrehozott IP-címet a *myResourceGroup* erőforráscsoportot:
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroup" | Select IpAddress

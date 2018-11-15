@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: 423661b8a459abf0b3028da92d6fd3ec885bb2c9
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 5f74ee390ac327a9e697d3dc67da4ea604b64d69
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025022"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686892"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Az Azure Functions Java fejlesztői útmutatója
 
@@ -24,11 +24,13 @@ ms.locfileid: "50025022"
 
 ## <a name="programming-model"></a>A programozási modell 
 
-Az Azure-függvény egy állapot nélküli osztály módszer, amelynek dolgozza fel a bemenetet és kimenetet kell lennie. Bár a metódusok írhat, a függvény nem függhet az osztály minden szolgáltatáspéldány-mezők. Az összes funkció módszer rendelkeznie kell egy `public` elérhetősége.
+A fogalmait [eseményindítók és kötések](functions-triggers-bindings.md) alapvető fontosságú, az Azure Functionsben. Eseményindítók egy kód végrehajtásának indítása. Kötések lehetővé teszik, adja át az adatokat, és a egy függvényt, az adatokat egyéni adat-hozzáférési kód írása nélkül adja vissza.
+
+Egy függvény dolgozza fel a bemeneti és kimeneti előállításához állapotmentes metódus kell lennie. A függvény nem szabad függenie az osztály példánya mezőket. A függvény az összes módszer lehet `public` és jegyzet metódust @FunctionName egyedinek kell lennie, mivel a metódus nevét határozza meg a bejegyzést egy függvényhez.
 
 ## <a name="folder-structure"></a>gyökérmappa-szerkezetében
 
-A mappastruktúra a Java-projektek a következőhöz hasonlóan néz ki:
+A mappastruktúra az Azure-függvény Java-projekt itt látható:
 
 ```
 FunctionsProject
@@ -60,14 +62,12 @@ Egynél több függvényt helyezheti a projektben. Kerülje a functions üzembe 
 
  Az Azure functions, például HTTP-kérést, egy időzítő vagy egy frissítést a data-triggerek által kerül meghívásra. A függvénynek szüksége van, az eseményindító és a egy vagy több kimeneti előállításához bemenetet feldolgozni.
 
-Használja a Java-jegyzetek szerepel a [com.microsoft.azure.functions.annotation.*](/java/api/com.microsoft.azure.functions.annotation) csomag bemeneti és kimeneti kötést létrehozni a módszereket. A mintakód a jegyzetek használatával érhető el a [Java referenciadokumentumok](/java/api/com.microsoft.azure.functions.annotation) minden jegyzet és az Azure Functions kötés referencia dokumentációját, például az egyik az [HTTP-eseményindítók](/azure/azure-functions/functions-bindings-http-webhook).
-
-Trigger bemeneteinek és kimeneteinek is lehet definiálni az [function.json](/azure/azure-functions/functions-reference#function-code) keresztül jegyzetek helyett a függvény. Használatával `function.json` helyett ezzel a módszerrel jegyzetek nem ajánlott.
+Használja a Java-jegyzetek szerepel a [com.microsoft.azure.functions.annotation.*](/java/api/com.microsoft.azure.functions.annotation) csomag bemeneti és kimeneti kötést létrehozni a módszereket. További információ: [Java referenciadokumentumok](/java/api/com.microsoft.azure.functions.annotation).
 
 > [!IMPORTANT] 
 > Konfigurálnia kell az Azure Storage-fiókot a [local.settings.json](/azure/azure-functions/functions-run-local#local-settings-file) helyi futtatását az Azure Storage-Blob, üzenetsor vagy tábla eseményindítókat.
 
-Jegyzetek használatával. példa:
+Példa:
 
 ```java
 public class Function {
@@ -79,24 +79,12 @@ public class Function {
 }
 ```
 
-Ugyanannak a függvénynek írt jegyzetek nélkül:
-
-```java
-package com.example;
-
-public class MyClass {
-    public static String echo(String in) {
-        return in;
-    }
-}
-```
-
-az ehhez tartozó `function.json`:
+Itt látható a létrehozott megfelelő `function.json` által a [azure-functions-maven-bővítménnyel](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-maven-plugin):
 
 ```json
 {
   "scriptFile": "azure-functions-example.jar",
-  "entryPoint": "com.example.MyClass.echo",
+  "entryPoint": "com.example.Function.echo",
   "bindings": [
     {
       "type": "httpTrigger",
@@ -117,113 +105,113 @@ az ehhez tartozó `function.json`:
 
 ## <a name="jdk-runtime-availability-and-support"></a>JDK futásidejű rendelkezésre állásával és támogatásával 
 
-Töltse le és használja a [Azul Zulu Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) segítségével a [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) helyi függvény Java-alkalmazások fejlesztéséhez. Segítségével Windows, Linux és MacOS rendszeren érhető el és [az Azure-támogatás](https://support.microsoft.com/en-us/help/4026305/sql-contact-microsoft-azure-support) érhető el a fejlesztés során észlelt problémákat olyan [minősített támogatási csomag](https://azure.microsoft.com/support/plans/).
+Töltse le és használja a [Azul Zulu Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) segítségével a [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) helyi függvény Java-alkalmazások fejlesztéséhez. Segítségével Windows, Linux és MacOS rendszeren érhetők el. [Az Azure-támogatás](https://support.microsoft.com/en-us/help/4026305/sql-contact-microsoft-azure-support) érhető el egy [minősített támogatási csomag](https://azure.microsoft.com/support/plans/).
 
 ## <a name="third-party-libraries"></a>Külső gyártó kódtárait 
 
-Az Azure Functions támogatja a külső gyártótól származó kódtárakat. Alapértelmezés szerint az összes függősége a projekt megadott `pom.xml` fájl automatikusan kötegelve fog során a `mvn package` cél. Nincs megadva függőségeként-tárak a `pom.xml` fájlt, helyezze el őket egy `lib` könyvtárat a gyökérkönyvtár a függvény. Függőségeket helyezi el a `lib` directory hozzáadódik a rendszer osztálybetöltő futásidőben.
+Az Azure Functions támogatja a külső gyártótól származó kódtárakat. Alapértelmezés szerint az összes függősége a projekt megadott `pom.xml` fájl automatikusan kötegelve fog során a [ `mvn package` ](https://github.com/Microsoft/azure-maven-plugins/blob/master/azure-functions-maven-plugin/README.md#azure-functionspackage) cél. Nincs megadva függőségeként-tárak a `pom.xml` fájlt, helyezze el őket egy `lib` könyvtárat a gyökérkönyvtár a függvény. Függőségeket helyezi el a `lib` directory hozzáadódik a rendszer osztálybetöltő futásidőben.
 
-A `com.microsoft.azure.functions:azure-functions-java-library` függőségi alapértelmezés szerint az osztályútvonal lemezén, és nem kell szerepelnie a `lib` könyvtár.
+A `com.microsoft.azure.functions:azure-functions-java-library` függőségi alapértelmezés szerint az osztályútvonal lemezén, és nem kell szerepelnie a `lib` könyvtár. Emellett a függőségek felsorolt [Itt](https://github.com/Azure/azure-functions-java-worker/wiki/Azure-Java-Functions-Worker-Dependencies) hozzáadódnak az osztályútvonal által [azure-functions-java-feldolgozó](https://github.com/Azure/azure-functions-java-worker).
 
 ## <a name="data-type-support"></a>Adattípus-támogatás
 
-A bemeneti és kimeneti adatait, beleértve a natív típusai; is használhat bármilyen típusú adatokat Java nyelven a Java és a meghatározott specializált Azure típusainak testre szabott `azure-functions-java-library` csomagot. Az Azure Functions runtime megkísérli a kód által kért típus érkezett a bemeneti típusra konvertál.
-
-### <a name="strings"></a>Sztringek
-
-Fog leadott függvény átadott értékek karakterláncok, ha a megfelelő bemeneti paraméter típusa, a függvény típusú `String`. 
+Egyszerű régi Java-objektumok (POJOs) is használhatja, meghatározott típusú `azure-functions-java-library` vagy karakterlánc, egész szám, amely a bemeneti/kimeneti kötések kötése például primitív adattípusokat.
 
 ### <a name="plain-old-java-objects-pojos"></a>Egyszerű régi Java-objektumok (POJOs)
 
-Ha a függvény a bemeneti aláírás vár, hogy a Java-típus JSON-formátumú karakterláncot a Java-típusok adja le. Az átalakításhoz adja át, JSON, és a Java-típusok használata teszi lehetővé.
-
-A függvények bemenetei között meg kell azonos módon pojo-vá típusok `public` elérhetősége, a függvény módszernek a van használva. Nem kell deklarálnia pojo-vá osztály mezők `public`. Ha például egy JSON-karakterlánc `{ "x": 3 }` a következő típusú pojo-vá alakítandó képes:
-
-```Java
-public class MyData {
-    private int x;
-}
-```
+Az bemeneti adatok átalakításához pojo-vá, [azure-functions-java-feldolgozó](https://github.com/Azure/azure-functions-java-worker) használ [gson](https://github.com/google/gson) könyvtár. A függvények bemenetei között meg kell használni pojo-vá típusok `public`.
 
 ### <a name="binary-data"></a>Bináris adatok
 
-A bináris adatok jelenik meg egy `byte[]` az Azure functions-kódjában. Bináris bemeneti vagy kimeneti kötés az funkciók beállításával a `dataType` mezőbe, a function.json `binary`:
-
-```json
- {
-  "scriptFile": "azure-functions-example.jar",
-  "entryPoint": "com.example.MyClass.echo",
-  "bindings": [
-    {
-      "type": "blob",
-      "name": "content",
-      "direction": "in",
-      "dataType": "binary",
-      "path": "container/myfile.bin",
-      "connection": "ExampleStorageAccount"
-    },
-  ]
-}
-```
-
-Ezután használhatja a függvény kódját:
+Bináris bemeneti vagy kimeneti való kötés `byte[]` beállításával a `dataType` mezőbe, a function.json `binary`:
 
 ```java
-// Class definition and imports are omitted here
-public static String echoLength(byte[] content) {
-}
+   @FunctionName("BlobTrigger")
+    @StorageAccount("AzureWebJobsStorage")
+     public void blobTrigger(
+        @BlobTrigger(name = "content", path = "myblob/{fileName}", dataType = "binary") byte[] content,
+        @BindingName("fileName") String fileName,
+        final ExecutionContext context
+    ) {
+        context.getLogger().info("Java Blob trigger function processed a blob.\n Name: " + fileName + "\n Size: " + content.length + " Bytes");
+    }
 ```
 
-Üres értékeket lehet `null` , a functions argumentumként, de javasolt módja a használandó az üres értékek lehetséges foglalkozik `Optional<T>`.
+Használat `Optional<T>` Ha null értéket vár
 
+## <a name="bindings"></a>Kötések
 
-## <a name="function-method-overloading"></a>Függvény metódus terhelve
+Bemeneti és kimeneti kötései deklaratív módszert a kódon belül az adatokhoz való csatlakozáshoz adja meg. Egy függvény több bemeneti és a kimeneti kötés.
 
-Jogosult a túlterhelési függvény módszerek ugyanazzal a névvel, de különböző típusú. Például rendelkezhet mindkét `String echo(String s)` és `String echo(MyType s)` osztályban. Az Azure Functions úgy dönt, hogy melyik módszert követve indíthatók el a bemeneti típus alapján (a HTTP-bemenet, MIME-típus `text/plain` vezet `String` közben `application/json` jelöli `MyType`).
-
-## <a name="inputs"></a>Bemenetek
-
-Bemeneti az Azure Functions két kategóriába oszthatók: egy a trigger bemenete a másik pedig a további adatokat. Bár ezek eltérnek a `function.json`, a használat értéke megegyezik a Java-kódban. Vegyük a következő kódrészlet például:
+### <a name="example-input-binding"></a>Példa bemeneti kötést
 
 ```java
 package com.example;
 
 import com.microsoft.azure.functions.annotation.*;
 
-public class MyClass {
+public class Function {
     @FunctionName("echo")
     public static String echo(
-        @HttpTrigger(name = "req", methods = { "put" }, authLevel = AuthorizationLevel.ANONYMOUS, route = "items/{id}") String in,
-        @TableInput(name = "item", tableName = "items", partitionKey = "Example", rowKey = "{id}", connection = "AzureWebJobsStorage") MyObject obj
+        @HttpTrigger(name = "req", methods = { "put" }, authLevel = AuthorizationLevel.ANONYMOUS, route = "items/{id}") String inputReq,
+        @TableInput(name = "item", tableName = "items", partitionKey = "Example", rowKey = "{id}", connection = "AzureWebJobsStorage") TestInputData inputData
+        @TableOutput(name = "myOutputTable", tableName = "Person", connection = "AzureWebJobsStorage") OutputBinding<Person> testOutputData,
     ) {
-        return "Hello, " + in + " and " + obj.getKey() + ".";
+        testOutputData.setValue(new Person(httpbody + "Partition", httpbody + "Row", httpbody + "Name"));
+        return "Hello, " + inputReq + " and " + inputData.getKey() + ".";
     }
 
-    public static class MyObject {
+    public static class TestInputData {
         public String getKey() { return this.RowKey; }
         private String RowKey;
     }
+    public static class Person {
+        public String PartitionKey;
+        public String RowKey;
+        public String Name;
+
+        public Person(String p, String r, String n) {
+            this.PartitionKey = p;
+            this.RowKey = r;
+            this.Name = n;
+        }
+    }
 }
 ```
 
-Ez a funkció akkor aktiválódik, ha a HTTP-kérelemre a függvény által átadott `String in`. Egy bejegyzés veszi át az Azure Table Storage URL-útvonal azonosító alapján, és finomhangolásokat rendelkezésre áll-e, `obj` függvény törzsében.
+Ez a függvény meghívása HTTP-kérést. 
+- HTTP-kérések forgalma átadott a `String` argumentuma `inputReq`
+- Egy bejegyzés az Azure Table Storage-ból beolvasott, és mint átadott `TestInputData` a argumentum `inputData`.
 
-## <a name="outputs"></a>Kimenetek
+Bemenetek kötegelt fogadásához kell kötni `String[]`, `POJO[]`, `List<String>` vagy `List<POJO>`.
 
-Kimenetek mind a visszaadott érték, vagy a kimeneti paraméterek jelöl. Ha csak egyetlen kimeneti, a visszaadott értékének használata ajánlott. Több kimeneteket meg kell használni a kimeneti paraméterek.
+```java
+@FunctionName("ProcessIotMessages")
+    public void processIotMessages(
+        @EventHubTrigger(name = "message", eventHubName = "%AzureWebJobsEventHubPath%", connection = "AzureWebJobsEventHubSender", cardinality = Cardinality.MANY) List<TestEventData> messages,
+        final ExecutionContext context)
+    {
+        context.getLogger().info("Java Event Hub trigger received messages. Batch size: " + messages.size());
+    }
+    
+    public class TestEventData {
+    public String id;
+}
 
-Visszatérési értéke legegyszerűbb formája a kimeneti, csak a bármilyen típusú értéket adja vissza, és az Azure Functions runtime megpróbálja átrendezésére, térjen vissza a tényleges típus (például egy HTTP-választ).  Alkalmazhat semmilyen kimenet jegyzetek a függvény metódus (a jegyzet neve tulajdonságához azt kell $return) a visszaadott érték kimenet meghatározására.
+```
 
-Termék, a több kimeneti értéket használja `OutputBinding<T>` típusa a `azure-functions-java-library` csomagot. Győződjön meg arról, HTTP-választ és a egy üzenetet le egy várólistába is kell, ha írási hasonló:
+Ez a függvény minden alkalommal, amikor nincs új adat a konfigurált eseményközpont lekérdezi aktiválódik. Mint a `cardinality` értékre van állítva `MANY`, függvény kap egy üzenetköteget az event hubs. Az event hubs EventData alakulnak át `TestEventData` függvény végrehajtására.
 
-Például egy blob tartalma függvény másolása sikerült adható meg az alábbi kódot. `@StorageAccount` jegyzet itt szolgál, hogy mindkét kapcsolati tulajdonság duplikálásához `@BlobTrigger` és `@BlobOutput`.
+### <a name="example-output-binding"></a>Példa kimeneti kötése
+
+A visszaadott érték egy kimeneti kötést hozhasson létre `$return` 
 
 ```java
 package com.example;
 
 import com.microsoft.azure.functions.annotation.*;
 
-public class MyClass {
+public class Function {
     @FunctionName("copy")
     @StorageAccount("AzureWebJobsStorage")
     @BlobOutput(name = "$return", path = "samples-output-java/{name}")
@@ -233,25 +221,57 @@ public class MyClass {
 }
 ```
 
-Használjon `OutputBinding<byte[]`> kimeneti (paraméter); értékének bináris ellenőrizze a visszaadott értékeket használja `byte[]`.
+Ha több kimeneti kötést, a visszaadott értékének használata csak az egyik.
 
-## <a name="specialized-types"></a>Speciális típusok
+Több kimeneti érték küldeni, használja a `OutputBinding<T>` meghatározott a `azure-functions-java-library` csomagot. 
 
-Néha egy függvény részletes bemenetek és kimenetek felett. Speciális típusa az `azure-functions-java-core` csomag áll rendelkezésre, hogy a kérelem kezelésére, és testre szabni a visszaadott HTTP-trigger állapota:
+```java
+@FunctionName("QueueOutputPOJOList")
+    public HttpResponseMessage QueueOutputPOJOList(@HttpTrigger(name = "req", methods = { HttpMethod.GET,
+            HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            @QueueOutput(name = "itemsOut", queueName = "test-output-java-pojo", connection = "AzureWebJobsStorage") OutputBinding<List<TestData>> itemsOut, 
+            final ExecutionContext context) {
+        context.getLogger().info("Java HTTP trigger processed a request.");
+       
+        String query = request.getQueryParameters().get("queueMessageId");
+        String queueMessageId = request.getBody().orElse(query);
+        itemsOut.setValue(new ArrayList<TestData>());
+        if (queueMessageId != null) {
+            TestData testData1 = new TestData();
+            testData1.id = "msg1"+queueMessageId;
+            TestData testData2 = new TestData();
+            testData2.id = "msg2"+queueMessageId;
+
+            itemsOut.getValue().add(testData1);
+            itemsOut.getValue().add(testData2);
+
+            return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + queueMessageId).build();
+        } else {
+            return request.createResponseBuilder(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Did not find expected items in CosmosDB input list").build();
+        }
+    }
+
+     public static class TestData {
+        public String id;
+    }
+```
+
+Egy Törzsparaméterei van meghívott függvény felett, és több érték írja az Azure Queue
+
+## <a name="httprequestmessage-and-httpresponsemessage"></a>A HttpRequestMessage és HttpResponseMessage
+
+ A HttpRequestMessage és HttpResponseMessage típusait `azure-functions-java-library` HttpTrigger függvények segítő típusa
 
 | Speciális típusa      |       Cél        | Tipikus használati                  |
 | --------------------- | :-----------------: | ------------------------------ |
 | `HttpRequestMessage<T>`  |    HTTP-trigger     | Első módszer, fejlécek és lekérdezések |
-| `HttpResponseMessage<T>` | HTTP-kimeneti kötése | 200-as eltérő állapotot adott vissza   |
+| `HttpResponseMessage` | HTTP-kimeneti kötése | 200-as eltérő állapotot adott vissza   |
 
-> [!NOTE] 
-> Is `@BindingName` jegyzet HTTP-fejlécek és lekérdezéseket. Ha például `@BindingName("name") String query` módszert használ, a HTTP-kérelmek fejléceinek és a lekérdezéseket, és adja át ezt az értéket a metódus. Ha például `query` lesz `"test"` Ha a kérelem URL-cím `http://example.org/api/echo?name=test`.
+## <a name="metadata"></a>Metaadatok
 
-### <a name="metadata"></a>Metaadatok
+Néhány eseményindítók küldése [metaadat-trigger](/azure/azure-functions/functions-triggers-bindings#trigger-metadata-properties) bemeneti adatokkal együtt. Használhatja a jegyzet `@BindingName` kötődni a metaadat-trigger
 
-Metaadatok származik a különböző források, például HTTP-fejléceket, HTTP-lekérdezések és [metaadat-trigger](/azure/azure-functions/functions-triggers-bindings#trigger-metadata-properties). Használja a `@BindingName` jegyzet együtt a metaadatok nevének értékét.
-
-Ha például a `queryValue` a következő kódot a kódrészlet lesz `"test"` Ha a kért URL-címe `http://{example.host}/api/metadata?name=test`.
 
 ```Java
 package com.example;
@@ -260,7 +280,7 @@ import java.util.Optional;
 import com.microsoft.azure.functions.annotation.*;
 
 
-public class MyClass {
+public class Function {
     @FunctionName("metadata")
     public static String metadata(
         @HttpTrigger(name = "req", methods = { "get", "post" }, authLevel = AuthorizationLevel.ANONYMOUS) Optional<String> body,
@@ -270,16 +290,34 @@ public class MyClass {
     }
 }
 ```
+A fenti példában a `queryValue` van kötve a lekérdezési sztring paramétereként `name` a HTTP URL-cím kérése `http://{example.host}/api/metadata?name=test`. Az alábbiakban a kötés egy másik példa `Id` üzenetsor eseményindító metaadataiból
+
+```java
+ @FunctionName("QueueTriggerMetadata")
+    public void QueueTriggerMetadata(
+        @QueueTrigger(name = "message", queueName = "test-input-java-metadata", connection = "AzureWebJobsStorage") String message,@BindingName("Id") String metadataId,
+        @QueueOutput(name = "output", queueName = "test-output-java-metadata", connection = "AzureWebJobsStorage") OutputBinding<TestData> output,
+        final ExecutionContext context
+    ) {
+        context.getLogger().info("Java Queue trigger function processed a message: " + message + " whith metadaId:" + metadataId );
+        TestData testData = new TestData();
+        testData.id = metadataId;
+        output.setValue(testData);
+    }
+```
+
+> [!NOTE]
+> A jegyzet a megadott meg kell felelnie a metaadat-tulajdonságot
 
 ## <a name="execution-context"></a>Végrehajtási környezet
 
-Az Azure Functions végrehajtási környezetben keresztül kommunikálhat a `ExecutionContext` meghatározott objektum a `azure-functions-java-library` csomagot. Használja a `ExecutionContext` objektum használata a hívási adatokat, és a functions runtime adatait a kódban.
+`ExecutionContext` meghatározott a `azure-functions-java-library` a functions futtatókörnyezete kommunikálni segítő metódust tartalmaz.
 
-### <a name="custom-logging"></a>Egyéni naplózás
+### <a name="logger"></a>Naplózó
 
-A Functions runtime naplózó hozzáférést keresztül érhető el a `ExecutionContext` objektum. A naplózó vannak kötve, az Azure monitor, és lehetővé teszi, hogy jelző figyelmeztetéseket és hibákat észlelt függvény végrehajtása során.
+Használat `getLogger` meghatározott `ExecutionContext` naplók írni a függvénykódot.
 
-Az alábbi példakód figyelmeztető üzenetet rögzít, amikor a fogadott kérelem törzse üres.
+Példa:
 
 ```java
 
@@ -298,7 +336,9 @@ public class Function {
 
 ## <a name="view-logs-and-trace"></a>Naplók megtekintése és nyomkövetés
 
-Az Azure CLI-stream Java-, standard és a hibanaplózás, valamint egyéb alkalmazásnaplózás is használhatja. Először is konfiguráljon függvény alkalmazását az Azure CLI-vel alkalmazásnaplózás írni:
+Az Azure CLI-stream Java stdout és stderr naplózás, valamint egyéb alkalmazásnaplózás is használhatja. 
+
+Az Azure CLI használatával az alkalmazásnaplózást írási függvény alkalmazását konfigurálja:
 
 ```azurecli-interactive
 az webapp log config --name functionname --resource-group myResourceGroup --application-logging true
@@ -321,26 +361,22 @@ Fájlrendszer naplózása az Azure Portal vagy Azure CLI-vel a parancs futtatás
 
 ## <a name="environment-variables"></a>Környezeti változók
 
-Titkos adatok, például a kulcsok vagy tokenek biztonsági okokból a forráskód kívül tartani. Gombok használata és a tokeneket a függvény kódját a környezeti változók elolvasásával.
+A függvények [Alkalmazásbeállítások](https://docs.microsoft.com/en-us/azure/azure-functions/functions-app-settings), például a szolgáltatás kapcsolati karakterláncok, ki vannak téve környezeti változókként végrehajtása során. Ezeket a beállításokat a, elérheti `System.getenv("AzureWebJobsStorage")`
 
-Környezeti változókat beállítani, amikor az Azure Functions futtatása helyileg, dönthet úgy adja hozzá ezeket a változókat a local.settings.json fájlhoz. Ha egy nem szerepel a Functions-projekt gyökérkönyvtárát, létrehozhat egyet. Íme, mi a fájl hasonlóan kell kinéznie:
+Példa:
 
-```xml
-{
-  "IsEncrypted": false,
-  "Values": {
-    "AzureWebJobsStorage": "",
-    "AzureWebJobsDashboard": ""
-  }
+Adjon hozzá [Alkalmazásbeállítás](https://docs.microsoft.com/en-us/azure/azure-functions/functions-how-to-use-azure-function-app-settings) neve testAppSetting és érték testAppSettingValue az
+
+```java
+
+public class Function {
+    public String echo(@HttpTrigger(name = "req", methods = {"post"}, authLevel = AuthorizationLevel.ANONYMOUS) String req, ExecutionContext context) {
+        context.getLogger().info("testAppSetting "+ System.getenv("testAppSettingValue"));
+        return String.format(req);
+    }
 }
+
 ```
-
-Minden egyes kulcs / érték-hozzárendelését a `values` térkép lesz elérhető futásidőben környezeti változóban, elérhető meghívásával `System.getenv("<keyname>")`, például `System.getenv("AzureWebJobsStorage")`. Hozzáadásával további kulcs / érték párok elfogadta és ajánlott eljárás.
-
-> [!NOTE]
-> Ha ez a módszer van, kell arra a local.settings.json hozzáadása fájlt a tárház figyelmen kívül fájlt, így azt nem véglegesített.
-
-Most ezeket a környezeti változókat függően a kóddal bejelentkezhet ugyanazzal a kulccsal beállítása / érték párok, a függvény alkalmazás beállításai az Azure Portalra, hogy a kód év működjön telepítésekor tesztelés helyileg és amikor az Azure-bA.
 
 ## <a name="next-steps"></a>További lépések
 

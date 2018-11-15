@@ -1,6 +1,6 @@
 ---
-title: A HDInsight Hadoop a Pig használata
-description: Ismerje meg, hogyan lehet a Pig használata a Hadooppal a HDInsight.
+title: Az Apache Pig használata a HDInsight
+description: Ismerje meg, hogyan lehet a Pig használata a HDInsight az Apache Hadoop.
 services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,18 +9,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 921f4747dcaf9ad302c37930ca09903e345bfdb0
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6a1247048907d81b3c9db644bcdb7b5e5eee5fba
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016420"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633631"
 ---
-# <a name="use-pig-with-hadoop-on-hdinsight"></a>A Pig használata a HDInsight Hadoop-keretrendszerrel
+# <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel
 
 Ismerje meg, hogyan használható [Apache Pig](http://pig.apache.org/) a HDInsight.
 
-A Pig az programok hoz létre Hadoop néven eljárási nyelv használatával platform *Pig Latin*. A Pig alternatívája a Java létrehozásához *MapReduce* megoldásokat, és az Azure HDInsight része. Az alábbi táblázat segítségével felderítése a különféle módokon, amely a Pig-alapú HDInsight használható:
+Az Apache Pig az Apache Hadoop néven eljárási nyelv használatával programok hoz platform *Pig Latin*. A Pig alternatívája a Java létrehozásához *MapReduce* megoldásokat, és az Azure HDInsight része. Az alábbi táblázat segítségével felderítése a különféle módokon, amely a Pig-alapú HDInsight használható:
 
 | **Ezzel** Ha azt szeretné... | ...an **interaktív** rendszerhéj | ...**kötegelt** feldolgozása | .. során ez **fürt operációs rendszerének** | ...from ez **ügyfél operációs rendszer** |
 |:--- |:---:|:---:|:--- |:--- |

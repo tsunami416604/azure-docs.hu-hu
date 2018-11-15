@@ -1,6 +1,6 @@
 ---
-title: Hadoop a Pig használata a távoli asztalon keresztül a HDInsight – Azure
-description: Ismerje meg, a Pig parancs használata a távoli asztali kapcsolatáról Pig Latin utasításokkal futtatnia a HDInsight egy Windows-alapú Hadoop-fürtöt.
+title: Az Apache Pig használata a távoli asztalon keresztül a HDInsight – Azure
+description: Ismerje meg, a Pig parancs használata a távoli asztali kapcsolatáról Apache Pig Latin utasításokkal futtatnia a HDInsight egy Windows-alapú Apache Hadoop-fürtöt.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3a7dff2c44b7cc8ccd921d2371666cb19acffbb8
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 9ab3c5399263e301760b7822488fe00145149d2a
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007229"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633342"
 ---
-# <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>A Pig-feladatok futtatása a távoli asztali kapcsolat
+# <a name="run-apache-pig-jobs-from-a-remote-desktop-connection"></a>A távoli asztali kapcsolat Apache Pig-feladatok futtatása
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-Ez a dokumentum egy forgatókönyv biztosít a Pig paranccsal futtassa a Pig Latin utasításokkal egy távoli asztali kapcsolaton keresztül egy Windows-alapú HDInsight-fürthöz. A Pig Latin adatátalakítások, azok MapReduce-alkalmazások létrehozása helyett leképezéséhez, és csökkentheti a functions teszi lehetővé.
+Ez a dokumentum egy forgatókönyv biztosít az Apache Pig paranccsal futtassa a Pig Latin utasításokkal egy távoli asztali kapcsolaton keresztül egy Windows-alapú HDInsight-fürthöz. A Pig Latin adatátalakítások, azok MapReduce-alkalmazások létrehozása helyett leképezéséhez, és csökkentheti a functions teszi lehetővé.
 
 > [!IMPORTANT]
 > A távoli asztal csak akkor használható a Windows operációs rendszert használó HDInsight-fürtökön. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -58,7 +58,7 @@ A távoli asztal engedélyezése a HDInsight-fürt, majd csatlakozhat az utasít
 
     <table>
     <tr>
-    <th>Utasítás</th><th>Funkció</th>
+    <th>Utasítás</th><th>Művelet</th>
     </tr>
     <tr>
     <td>FILTEREDLEVELS = szűrő szintek LOGLEVEL szerint nem null;</td><td>A naplózási szint megadásához null értéket tartalmazó sorok eltávolítja, és tárolja az eredményeket FILTEREDLEVELS.</td>

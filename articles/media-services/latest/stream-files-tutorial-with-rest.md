@@ -1,5 +1,5 @@
 ---
-title: Feltöltés, kódolás és streamelés az Azure Media Serviceszel | Microsoft Docs
+title: Feltöltése, kódolása és streamelése az Azure Media Services – REST |} A Microsoft Docs
 description: Az oktatóanyag lépéseit követve megtudhatja, hogyan tölthet fel egy fájlt, végezheti el egy videó kódolását, és streamelheti tartalmait az Azure Media Serviceszel REST használatával.
 services: media-services
 documentationcenter: ''
@@ -10,20 +10,20 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/16/2018
+ms.date: 11/11/2018
 ms.author: juliako
-ms.openlocfilehash: e49b450ef2c731e9ddbafa0c8366d9eae29dc5ef
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
-ms.translationtype: HT
+ms.openlocfilehash: 67a0b6ced771519bd97934f8914ba420ee3119ce
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377431"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615772"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-with-rest"></a>Oktatóanyag: Videók feltöltése, kódolása és streamelése REST használatával
 
-Az oktatóanyag bemutatja, hogyan tölthet fel, kódolhat és streamelhet videofájlokat az Azure Media Serviceszel.
+Az Azure Media Services lehetővé teszi a médiafájlok kódolandó, hogy a böngészők és eszközök széles lejátszhatók. Például előfordulhat, hogy az Apple HLS vagy MPEG DASH formátumában szeretné streamelni a tartalmakat. A streamelés előtt érdemes kódolni a jó minőségű digitális médiafájlokat. Kódolással kapcsolatos útmutatásért tekintse meg [a kódolás fogalmát](encoding-concept.md) ismertető cikket.
 
-A Media Services lehetővé teszi, hogy a médiafájlokat olyan formátumokká kódolja, amelyeket számos különféle böngészőben és eszközön le lehet játszani. Például előfordulhat, hogy az Apple HLS vagy MPEG DASH formátumában szeretné streamelni a tartalmakat. A streamelés előtt érdemes kódolni a jó minőségű digitális médiafájlokat. Kódolással kapcsolatos útmutatásért tekintse meg [a kódolás fogalmát](encoding-concept.md) ismertető cikket.
+Ez az oktatóanyag bemutatja, hogyan feltöltése, kódolása és videofájlok streamelése az Azure Media Services REST használatával. 
 
 ![Videó lejátszása](./media/stream-files-tutorial-with-api/final-video.png)
 
@@ -42,6 +42,14 @@ Ez az oktatóanyag a következőket mutatja be:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+- Telepítse és a parancssori Felületet helyileg használja, ez a cikk az Azure CLI 2.0-s vagy újabb verziójára van szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
+
+    Jelenleg nem minden [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) parancsok működnek az Azure Cloud shellben. Javasoljuk, hogy a parancssori Felületet helyileg használja.
+
+- [A Media Services-fiók létrehozása](create-account-cli-how-to.md).
+
+    Ügyeljen arra, hogy ne felejtse el az értékeket, amelyeket meg az erőforráscsoport-nevet és a Media Services-fiók neve
+
 - Telepítse a [Postman](https://www.getpostman.com/) REST-ügyfelet, hogy végrehajtsa az AMS REST oktatóanyagok egy részében látható REST API-kat. 
 
     A **Postmant** használjuk, de bármely egyéb REST-eszköz is megfelelő. Egyéb alternatívák: **Visual Studio Code** REST beépülő modullal vagy **Telerik Fiddler**. 
@@ -53,10 +61,6 @@ Klónozzon egy GitHub-adattárat, amely tartalmazza a Postman-gyűjtemény és -
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-rest-postman.git
  ```
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -316,7 +320,7 @@ Ebben a szakaszban egy HLS-streamelési URL-címet hozunk létre. Az URL-címek 
 
 2. A StreamingEndpoint gazdaneve. Ebben az esetben a név „amsaccount-usw22.streaming.media.azure.net”.
 
-    A gazdanév lekéréséhez a következő GET műveletet használhatja:
+    A hostname lekéréséhez használhatja a következő művelet:
     
     ```
     https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amsaccount/streamingEndpoints/default?api-version={{api-version}}
@@ -352,11 +356,11 @@ Egy erőforrás törléséhez válassza a „Delete ...” (Törlés) műveletet
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az erőforráscsoportban lévő egyik erőforrásra sem, beleértve a jelen oktatóanyagban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott erőforráscsoportot. Ehhez használhatja a **CloudShell** eszközt.
+Ha már nincs szüksége az erőforráscsoportban lévő egyik erőforrásra sem, beleértve a jelen oktatóanyagban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott erőforráscsoportot.  
 
-Hajtsa végre az alábbi parancsot a **CloudShellben**:
+Hajtsa végre a következő CLI-parancsot:
 
-```azurecli-interactive
+```azurecli
 az group delete --name amsResourceGroup
 ```
 

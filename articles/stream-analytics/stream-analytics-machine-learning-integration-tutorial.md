@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/16/2018
-ms.openlocfilehash: 5468117fe117623b2e03fdf8ec451a9a0151e3dd
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 2169c3a41991b0b49a4324c16ea079f5943fad0b
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979165"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685752"
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Hangulatelemzés végrehajtása az Azure Stream Analytics és az Azure Machine Learning használatával
 Ez a cikk bemutatja, hogyan gyorsan beállíthat egy egyszerű Azure Stream Analytics-feladatot, amely integrálható az Azure Machine Learning. Segítségével elemzési modell Machine Learning vélemények a Cortana Intelligence-katalógusban a streamadatok szöveg elemzése, és döntse el, valós idejű értelmezhetőségi pontszámot. A Cortana Intelligence Suite használatával teszi lehetővé a feladatnak a róluk szóló véleményeket elemzési modellek létrehozásához jainak részleteivel kellene bajlódnia.
@@ -199,9 +199,9 @@ Stream Analytics egy deklaratív, SQL-alapú lekérdezést használ a bemeneti a
 
 3. Adja meg a következő lekérdezést:
 
-    ```
+    ```SQL
     WITH sentiment AS (  
-    SELECT text, sentiment(text) as result 
+    SELECT text, sentiment1(text) as result 
     FROM datainput  
     )  
 

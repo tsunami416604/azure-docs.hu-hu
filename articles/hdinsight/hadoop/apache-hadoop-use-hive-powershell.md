@@ -1,6 +1,6 @@
 ---
-title: A Hadoop Hive használata a HDInsight – Azure PowerShell használatával
-description: A Hadoop Hive-lekérdezések futtatása a HDInsight a PowerShell használatával.
+title: Apache Hive használata a HDInsight – Azure PowerShell használatával
+description: Az Apache Hadoop Hive-lekérdezések futtatása a HDInsight a PowerShell használatával.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,24 +9,24 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: e02f6b17dff93ce2df1f06ad9681e3086c35300c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d29199c5e1534e3f98fbdbb73799840cf9c9e75f
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257867"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633111"
 ---
-# <a name="run-hive-queries-using-powershell"></a>Hive-lekérdezések futtatásához PowerShell-lel
+# <a name="run-apache-hive-queries-using-powershell"></a>PowerShell-lel, az Apache Hive-lekérdezések futtatása
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Ez a dokumentum azt szemlélteti, az Azure PowerShell használatával az Azure-erőforráscsoport módban való a Hadoop Hive-lekérdezések futtatása HDInsight-fürtön.
+Ez a dokumentum azt szemlélteti, az Azure PowerShell használata az Azure-erőforráscsoport módban az az Apache Hadoop Hive-lekérdezések futtatása HDInsight-fürtön.
 
 > [!NOTE]
 > Ez a dokumentum nem biztosít a hiveql a példákban használt mire részletes leírását. Az ebben a példában használt HiveQL kapcsolatos tudnivalókat lásd: [Hive használata a Hadooppal a HDInsight](hdinsight-use-hive.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Linux-alapú Hadooppal a HDInsight-fürt verziója 3.4-es vagy nagyobb.
+* Egy Linux-alapú Apache Hadoop a HDInsight-fürt verziója 3.4-es vagy nagyobb.
 
   > [!IMPORTANT]
   > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).

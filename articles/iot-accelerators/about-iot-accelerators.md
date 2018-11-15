@@ -3,24 +3,24 @@ title: Az Azure IoT-megoldásgyorsítók bemutatása | Microsoft Docs
 description: Megismerheti az Azure IoT-megoldásgyorsítókat. Az IoT-megoldásgyorsítók teljes körű, átfogó, üzembe helyezésre kész IoT-megoldások.
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/24/2018
+ms.date: 11/09/2018
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 7020d8a1756702d8c2b1998eef5a3fc64809ca5e
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
-ms.translationtype: HT
+ms.openlocfilehash: aac079feefde53ff30cbeab942ee0443c113cdc8
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308112"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345113"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Mik az Azure IoT-megoldásgyorsítók?
 
-A felhőalapú IoT-megoldások általában egyéni kódokat és számos felhőszolgáltatást használnak az eszközkapcsolatok kezeléséhez, az adatok feldolgozásához, elemzéséhez és bemutatásához.
+A felhőalapú IoT-megoldások általában használja egyéni kód és a cloud services kezeléséhez eszközkapcsolat, az adatfeldolgozás és elemzési és bemutató.
 
-Az IoT-megoldásgyorsítók az IoT-megoldások teljes körű, átfogó, üzembe helyezésre kész gyűjteményei, amelyek olyan gyakori IoT-forgatókönyveket valósítanak meg, mint a távoli monitorozás, a csatlakoztatott gyár, a prediktív karbantartás és az eszközszimuláció. A megoldásgyorsítók üzembe helyezésekor az üzemelő példány magában foglalja az összes szükséges felhőalapú szolgáltatást és minden szükséges alkalmazáskódot.
+Az IoT-megoldásgyorsítók olyan általános IoT-forgatókönyveket megvalósító teljes, üzembe kész IoT-megoldások. A forgatókönyvek között megtalálható a távoli megfigyelés, a csatlakoztatott gyár, a prediktív karbantartási és a eszközszimuláció. A megoldásgyorsítók üzembe helyezésekor az üzemelő példány magában foglalja az összes szükséges felhőalapú szolgáltatást és minden szükséges alkalmazáskódot.
 
 A megoldásgyorsítók az Ön saját IoT-megoldásainak kiindulópontjaiként szolgálnak. Az összes megoldásgyorsító forráskódja nyílt, és elérhető a GitHubban. A megoldásgyorsítókat letöltheti és saját igényei szerint testre szabhatja.
 
@@ -34,7 +34,7 @@ Jelenleg négy megoldásgyorsítót helyezhet üzembe:
 
 ### <a name="remote-monitoring"></a>Távoli monitorozás
 
-Ezt a megoldásgyorsítót a távoli eszközök telemetriájának összegyűjtéséhez, illetve az eszközök kezeléséhez használhatja. A példaeszközök közé tartoznak az ügyfelei telephelyein felszerelt hűtőrendszerek vagy a távoli szivattyútelepeken üzembe helyezett szelepek.
+Ez a megoldásgyorsító használja a távoli eszközök telemetriai adatok összegyűjtése, és vezérelheti őket. A példaeszközök közé tartoznak az ügyfelei telephelyein felszerelt hűtőrendszerek vagy a távoli szivattyútelepeken üzembe helyezett szelepek.
 
 A távoli monitorozási irányítópultot használhatja a csatlakoztatott eszközök telemetriájának megtekintéséhez, új eszközök létrehozásához vagy a csatlakoztatott eszközök belső vezérlőprogramjának frissítéséhez is:
 
@@ -58,7 +58,7 @@ A prediktív karbantartási irányítópult a következő prediktív karbantart�
 
 ### <a name="device-simulation"></a>Eszközszimuláció
 
-Ezt a megoldásgyorsítót több, valósághű telemetriát előállító szimulált eszköz futtatására használhatja. Ez a megoldásgyorsító más megoldásgyorsítók viselkedésének vagy saját IoT-megoldásainak tesztelésére is használható.
+Ez a megoldásgyorsító használatával futtassa a szimulált eszközök hoznak létre valószerű telemetriai adatokat. Ez a megoldásgyorsító más megoldásgyorsítók viselkedésének vagy saját IoT-megoldásainak tesztelésére is használható.
 
 Az eszközszimulációs webalkalmazás a következő szimulációk konfigurálására és futtatására használható:
 
@@ -93,7 +93,7 @@ A megoldásgyorsítókat a [Microsoft Azure IoT-megoldásgyorsítók](https://ww
 
 A távoli monitorozási megoldásgyorsítót a következő konfigurációkban helyezheti üzembe:
 
-* **Standard:** Bővített infrastruktúra üzembe helyezése éles környezet fejlesztéséhez. Az Azure Container Service üzembe helyezi a mikroszolgáltatásokat több Azure-beli virtuális gépen. A Kubernetes koordinálja az egyes mikroszolgáltatásokat üzemeltető Docker-tárolókat.
+* **Standard:** Bővített infrastruktúra üzembe helyezése éles környezet fejlesztéséhez. Az Azure Container Service üzembe helyezi a mikroszolgáltatásokat több Azure-beli virtuális gépek. A Kubernetes koordinálja az egyes mikroszolgáltatásokat üzemeltető Docker-tárolókat.
 * **Alapszintű**: Csökkentett költségű verzió bemutató célokra vagy az üzembe helyezés teszteléséhez. Mindegyik mikroszolgáltatás üzembe helyezhető egy Azure-beli virtuális gépen.
 * **Helyi:** Helyi gépen történő üzembe helyezés tesztelés és fejlesztés céljából. Ez a módszer egy helyi Docker-tárolóban helyezi üzembe a mikroszolgáltatásokat, és csatlakozik az IoT Hub, Azure Cosmos DB és Azure Storage szolgáltatásokhoz a felhőben.
 

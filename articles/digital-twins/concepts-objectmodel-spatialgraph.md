@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 11/13/2018
 ms.author: alinast
-ms.openlocfilehash: de1ead165e1db3f78591f093edcc33781b9f4c78
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 95f01c9338afbf2ab5381001e4ab480185cedaeb
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624182"
+ms.locfileid: "51636883"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Digitális Twins objektum modellek és térbeli intelligencia graph ismertetése
 
@@ -79,13 +79,13 @@ Ha telepít egy digitális Twins szolgáltatás az előfizetésében, a gyökér
 A digitális Twins telepítése után a [az Azure portal](https://portal.azure.com), a [Swagger](https://swagger.io/tools/swagger-ui/) URL-címét a felügyeleti API-k automatikusan jön létre. Az Azure Portalon, megjelenik a **áttekintése** formátuma a következő szakaszt.
 
 ```plaintext
-https://yourInstanceName.yourLocation.azuresmartspaces.net/management/swagger
+https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Egyéni attribútum neve | Csere erre |
+| Name (Név) | Csere erre |
 | --- | --- |
-| **Példánynév** | A digitális Twins-példány nevét |
-| **yourLocation** | Melyik kiszolgáló régióban lévő üzemeltetett a példány |
+| YOUR_INSTANCE_NAME | A digitális Twins-példány nevét |
+| YOUR_LOCATION | Melyik kiszolgáló régióban lévő üzemeltetett a példány |
 
  A teljes URL-cím formátuma a kép jelenik meg.
 

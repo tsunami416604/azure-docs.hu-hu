@@ -1,6 +1,6 @@
 ---
-title: Python UDF az Apache Hive és Pig-alapú – Azure HDInsight
-description: Ismerje meg a Python felhasználói definiált függvények (UDF) a Hive és a Pig használata a HDInsight, a Hadoop-technológiák az Azure-ban.
+title: Az Apache Hive- és Apache Pig - az Azure HDInsight UDF Python
+description: Ismerje meg a Python felhasználói definiált függvények (UDF) az Apache Hive-és Apache Pig használata a HDInsight, az Apache Hadoop-technológiák az Azure-ban.
 services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 6227b9517da3dacb18b4f9653a7012ef9ab5a4a7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 021ec3919e061010265ff3a2f30fde0ffb59e7b0
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232273"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632611"
 ---
-# <a name="use-python-user-defined-functions-udf-with-hive-and-pig-in-hdinsight"></a>Használható Python felhasználói függvények (UDF) a Hive és a Piggel a HDInsight
+# <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Használható Python felhasználói függvények (UDF) az Apache Hive és a HDInsight Apache Pig
 
-Ismerje meg, hogyan használható a Python felhasználó által definiált függvények (UDF) az Apache Hive és a Hadoop on Azure HDInsight Pig.
+Ismerje meg, hogyan használható a Python felhasználó által definiált függvények (UDF) az Apache Hive- és Apache Hadoop on Azure HDInsight az Apache Pig.
 
 ## <a name="python"></a>Python a HDInsight
 

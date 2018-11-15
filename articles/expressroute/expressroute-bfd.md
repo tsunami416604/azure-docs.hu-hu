@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 8/17/2018
 ms.author: rambala
-ms.openlocfilehash: 97ac49ff5cc50621fd902f77c2543a428c7e8bae
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 6d941bf810a45e8808f83c4df701a856f664c7ef
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384752"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51631659"
 ---
 # <a name="configure-bfd-over-expressroute"></a>BFD konfigurálása expressroute-on keresztül
 
@@ -67,7 +67,7 @@ Az alábbiakban látható egy példa konfiguráció látható előtelepítési k
 
 ## <a name="bfd-timer-negotiation"></a>BFD időzítő egyeztetése
 
-Közötti BFD kapcsolatba szaktársakkal a két társaknak lassabb határozza meg, az átviteli sebességet. Msee BFD átviteli/fogadása időközök 300 ezredmásodpercben vannak állítva. A magasabb értékek beállításával kényszerítheti a hosszabb; intervallumok de nem rövidebb.
+Közötti BFD kapcsolatba szaktársakkal a két társaknak lassabb határozza meg, az átviteli sebességet. Msee BFD átviteli/fogadása időközök 300 ezredmásodpercben vannak állítva. Bizonyos esetekben az időköz: 750 ezredmásodperc magasabb értékét. A magasabb értékek beállításával kényszerítheti a hosszabb; intervallumok de nem rövidebb.
 
 >[!NOTE]
 >Ha konfigurálta a georedundáns ExpressRoute privát társviszony-létesítési Kapcsolatcsoportok, vagy használja a helyek közötti IPSec VPN kapcsolatot tartalékként az ExpressRoute privát társviszony-létesítés; a privát társviszony-létesítésen keresztül BFD engedélyezése segít gyorsabb ExpressRoute-kapcsolat hibát követő feladatátvétel. 

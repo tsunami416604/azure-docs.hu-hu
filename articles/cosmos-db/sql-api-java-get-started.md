@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: sngun
-ms.openlocfilehash: 0cf42245981afb44415b9709be9d45c44255f295
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 158bfedc8c0eb7d49c72d40cda08588d7377d17d
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417514"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636849"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL-oktatóanyag: SQL API Java-konzolalkalmazás létrehozása
 
@@ -91,7 +91,7 @@ Az Azure Portalon lépjen a Azure Cosmos DB-fiókra, majd kattintson a **Kulcsok
 ![Képernyőfelvétel a NoSQL-oktatóanyagban a Java konzolalkalmazás létrehozásához használt Azure Portalról. Megjelenít egy Azure Cosmos DB-fiókot, amelyen az ACTIVE központ, az Azure Cosmos DB-fiók panelén lévő KEYS gomb, valamint a Kulcsok panelen lévő URI, PRIMARY KEY és SECONDARY KEY értékek vannak kiemelve][keys]
 
 ## <a name="step-4-create-a-database"></a>4. lépés: Adatbázis létrehozása
-Az Azure Cosmos [DB-adatbázis](sql-api-resources.md#databases) a **DocumentClient** osztály [createDatabase](/java/api/com.microsoft.azure.documentdb._document_client.createdatabase) metódusának használatával hozható létre. Az adatbázis a JSON-dokumentumtároló gyűjtemények között particionált logikai tárolója.
+Az Azure Cosmos [DB-adatbázis](databases-containers-items.md#azure-cosmos-databases) a **DocumentClient** osztály [createDatabase](/java/api/com.microsoft.azure.documentdb._document_client.createdatabase) metódusának használatával hozható létre. Az adatbázis a JSON-dokumentumtároló gyűjtemények között particionált logikai tárolója.
 
     Database database = new Database();
     database.setId("familydb");
@@ -103,7 +103,7 @@ Az Azure Cosmos [DB-adatbázis](sql-api-resources.md#databases) a **DocumentClie
 > 
 > 
 
-Egy [gyűjtemény](sql-api-resources.md#collections) a **DocumentClient** osztály [createCollection](/java/api/com.microsoft.azure.documentdb._document_client.createcollection) metódusával hozható létre. A gyűjtemény egy JSON-dokumentumokat és a kapcsolódó JavaScript-alkalmazáslogikát tartalmazó tároló.
+Egy gyűjtemény használatával hozható létre a [createCollection](/java/api/com.microsoft.azure.documentdb._document_client.createcollection) módszere a **DocumentClient** osztály. A gyűjtemény egy JSON-dokumentumokat és a kapcsolódó JavaScript-alkalmazáslogikát tartalmazó tároló.
 
 
     DocumentCollection collectionInfo = new DocumentCollection();
@@ -117,7 +117,7 @@ Egy [gyűjtemény](sql-api-resources.md#collections) a **DocumentClient** osztá
     this.client.createCollection("/dbs/familydb", collectionInfo, requestOptions);
 
 ## <a id="CreateDoc"></a>6. lépés: JSON-dokumentumok létrehozása
-A [dokumentumok](sql-api-resources.md#documents) a **DocumentClient** osztály [createDocument](/java/api/com.microsoft.azure.documentdb._document_client.createdocument) metódusával hozhatók létre. A dokumentumok a felhasználó által megadott (tetszőleges) JSON-tartalmak. Most már beilleszthetünk egy vagy több dokumentumot. Ha van olyan adat, amelyet szeretne az adatbázisban tárolni, az Azure Cosmos DB [adatmigrálási eszközével](import-data.md) adatokat importálhat az adatbázisba.
+A dokumentum használatával hozható létre a [Documentclient](/java/api/com.microsoft.azure.documentdb._document_client.createdocument) módszere a **DocumentClient** osztály. A dokumentumok a felhasználó által megadott (tetszőleges) JSON-tartalmak. Most már beilleszthetünk egy vagy több dokumentumot. Ha van olyan adat, amelyet szeretne az adatbázisban tárolni, az Azure Cosmos DB [adatmigrálási eszközével](import-data.md) adatokat importálhat az adatbázisba.
 
     // Insert your Java objects as documents 
     Family andersenFamily = new Family();

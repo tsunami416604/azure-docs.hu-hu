@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: alinast
-ms.openlocfilehash: 33190472215e7a02b94951a73054ebe3e1994e54
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 6a757dca48dc3ff41adfe6f8802fad40e7a4ca81
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623910"
+ms.locfileid: "51636832"
 ---
 # <a name="how-to-use-user-defined-functions-in-azure-digital-twins"></a>Felhasználó által definiált függvények használata az Azure digitális Twins
 
@@ -44,7 +44,7 @@ Matchers graph-objektumok, amelyek meghatározzák, milyen felhasználó által 
 A következő példa megfeleltetőben megadott bármely érzékelő telemetriai esemény az IGAZ értéket ad vissza `"Temperature"` adatok típusú értékként. A felhasználó által definiált függvény több matchers hozhat létre:
 
 ```plaintext
-POST yourManagementApiUrl/matchers
+POST YOUR_MANAGEMENT_API_URL/matchers
 {
   "Name": "Temperature Matcher",
   "Conditions": [
@@ -59,7 +59,7 @@ POST yourManagementApiUrl/matchers
 }
 ```
 
-| Az érték | Csere erre |
+| Érték | Csere erre |
 | --- | --- |
 | YOUR_SPACE_IDENTIFIER | Melyik kiszolgáló régióban lévő üzemeltetett a példány |
 
@@ -72,20 +72,20 @@ A matchers létrehozása után töltse fel a függvény kódrészlet az alábbi 
 > - A szervezetnek többrészes:
 >   - Az első rész az UDF szükséges metaadatokat szól.
 >   - A második része a JavaScript számítási logika.
-> - Az a **userDefinedBoundary** szakaszban, cserélje le a **SpaceId** és **Machers** értékeket.
+> - Az a **USER_DEFINED_BOUNDARY** szakaszban, cserélje le a **SpaceId** és **Machers** értékeket.
 
 ```plaintext
-POST yourManagementApiUrl/userdefinedfunctions with Content-Type: multipart/form-data; boundary="userDefinedBoundary"
+POST YOUR_MANAGEMENT_API_URL/userdefinedfunctions with Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"
 ```
 
 | Paraméter értéke | Csere erre |
 | --- | --- |
-| *userDefinedBoundary* | A többrészes tartalom határcsoport neve |
+| *USER_DEFINED_BOUNDARY* | A többrészes tartalom határcsoport neve |
 
 ### <a name="body"></a>Törzs
 
 ```plaintext
---userDefinedBoundary
+--USER_DEFINED_BOUNDARY
 Content-Type: application/json; charset=utf-8
 Content-Disposition: form-data; name="metadata"
 
@@ -95,7 +95,7 @@ Content-Disposition: form-data; name="metadata"
   "Description": "The contents of this udf will be executed when matched against incoming telemetry.",
   "Matchers": ["YOUR_MATCHER_IDENTIFIER"]
 }
---userDefinedBoundary
+--USER_DEFINED_BOUNDARY
 Content-Disposition: form-data; name="contents"; filename="userDefinedFunction.js"
 Content-Type: text/javascript
 
@@ -103,10 +103,10 @@ function process(telemetry, executionContext) {
   // Code goes here.
 }
 
---userDefinedBoundary--
+--USER_DEFINED_BOUNDARY--
 ```
 
-| Az érték | Csere erre |
+| Érték | Csere erre |
 | --- | --- |
 | YOUR_SPACE_IDENTIFIER | Hely azonosítója  |
 | YOUR_MATCHER_IDENTIFIER | A használni kívánt megfeleltetőben megadott azonosítója |
@@ -189,7 +189,7 @@ A felhasználó által definiált függvény alatt szeretné futtatni a szerepk�
 1. A szerepkörök lekérdezését, és az UDF hozzárendelni kívánt szerepkört Azonosítójának lekéréséhez. Adja át azt, hogy **RoleId**:
 
     ```plaintext
-    GET yourManagementApiUrl/system/roles
+    GET YOUR_MANAGEMENT_API_URL/system/roles
     ```
 
 1. **ObjectId** lesz a korábban létrehozott UDF-azonosító.
@@ -197,17 +197,17 @@ A felhasználó által definiált függvény alatt szeretné futtatni a szerepk�
 1. Másolja a visszaadott `spacePaths` értéket. Az alábbi kódot, amely használni:
 
     ```plaintext
-    GET yourManagementApiUrl/spaces?name=yourSpaceName&includes=fullpath
+    GET YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
     ```
 
     | Paraméter értéke | Csere erre |
     | --- | --- |
-    | *yourSpaceName* | A használni kívánt terület neve |
+    | *YOUR_SPACE_NAME* | A használni kívánt terület neve |
 
 1. Illessze be a visszaadott `spacePaths` be érték **elérési út** UDF szerepkör-hozzárendelés létrehozásához:
 
     ```plaintext
-    POST yourManagementApiUrl/roleassignments
+    POST YOUR_MANAGEMENT_API_URL/roleassignments
     {
       "RoleId": "YOUR_DESIRED_ROLE_IDENTIFIER",
       "ObjectId": "YOUR_USER_DEFINED_FUNCTION_ID",

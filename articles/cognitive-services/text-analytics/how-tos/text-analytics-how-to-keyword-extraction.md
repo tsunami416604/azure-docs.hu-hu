@@ -1,7 +1,6 @@
 ---
-title: 'Példa: Hogyan nyerhetők ki a kulcsszavak a Text Analytics használatával'
-titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan nyerhetők ki a kulcsszavak a Text Analytics REST API használatával.
+title: Útmutató a kulcsfontosságú kifejezések kinyerése a Text Analytics REST API (Microsoft vonatkozó Cognitive Services az Azure-ban) |} A Microsoft Docs
+description: Hogyan kinyerheti a kulcsfontosságú kifejezéseket, a Text Analytics REST API használatával a Microsoft Cognitive Services, Azure-ban az bemutató oktatóanyag.
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
@@ -10,12 +9,12 @@ ms.component: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 62c078a8a72cd0a3633b7dd5fda1545f01067dbc
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
-ms.translationtype: HT
+ms.openlocfilehash: d38886d40a92d5e75f5d0b6b189dbf7c067e1635
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605487"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632390"
 ---
 # <a name="example-how-to-extract-key-phrases-in-text-analytics"></a>Példa: Hogyan nyerhetők ki a kulcsszavak a Text Analytics használatával
 
@@ -24,6 +23,9 @@ A [Key Phrase Extraction API](https://westus.dev.cognitive.microsoft.com/docs/se
 Ez a funkció akkor hasznos, ha szeretné gyorsan azonosítani a dokumentum gyűjtemény fő témáit. Például „Az étel finom, a személyzet nagyszerű volt” bemeneti szövegre a szolgáltatás visszaadja a fő kulcsszavakat: „étel” és „nagyszerű személyzet”.
 
 Jelenleg a Key Phrase Extraction az angol, német, spanyol és japán nyelvet támogatja. Más nyelvek előzetes verzióban érhetők el. További információk: [Támogatott nyelvek](../text-analytics-supported-languages.md).
+
+> [!TIP]
+> Szövegelemzés is biztosít a Linux-alapú Docker tároló rendszerképének kulcsszókeresés, így [telepítheti és futtathatja a Text Analytics tároló](text-analytics-how-to-install-containers.md) közel az adatokat.
 
 ## <a name="preparation"></a>Előkészítés
 
@@ -71,7 +73,7 @@ A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytic
 
 + Hozzon létre egy **POST** kérést. Nézze meg az API-dokumentációban ezt a kérést: [Key Phrases API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)
 
-+ Állítsa be a kulcsszókereséshez a HTTP-végpontot. Tartalmaznia kell a `/keyphrases` erőforrást: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
++ Állítsa be a HTTP-végpontot Text Analytics erőforrás használata az Azure- vagy egy példányosított kulcsszókeresés [Szövegelemzés tároló](text-analytics-how-to-install-containers.md). Tartalmaznia kell a `/keyPhrases` erőforrást: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
 
 + A kérés fejlécet állítsa be úgy, hogy tartalmazza a Text Analytics műveletekhez a hozzáférési kulcsot. További információkért lásd: [Végpontok és hozzáférési kulcsok megkeresése](text-analytics-how-to-access-key.md).
 

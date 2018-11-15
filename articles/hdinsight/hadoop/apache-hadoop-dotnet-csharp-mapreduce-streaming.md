@@ -1,6 +1,6 @@
 ---
 title: C# használata a HDInsight - Azure hadoop MapReduce
-description: Ismerje meg, hogyan használhatja a C# az Azure HDInsight Hadoop MapReduce-megoldásokat hozhat létre.
+description: Ismerje meg, hogyan használható C# Azure HDInsight az Apache Hadoop MapReduce-megoldásokat hozhat létre.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,21 +9,21 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4cf68ba16cf19a20686f323832ccd7e7d1b543bb
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a5f6f09ee6c8504b64cad7ef5313501a65907a90
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010949"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632594"
 ---
-# <a name="use-c-with-mapreduce-streaming-on-hadoop-in-hdinsight"></a>C# használata MapReduce a hadoop együttes használata a HDInsight streaming
+# <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Használat C# streamelési HDInsight az Apache hadoop MapReduce-
 
 Ismerje meg, hogyan használhatja a C# MapReduce megoldás létrehozása a HDInsight.
 
 > [!IMPORTANT]
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight összetevők verziószámozása](../hdinsight-component-versioning.md).
 
-Hadoop streamelési egy segédprogram, amely lehetővé teszi, hogy egy parancsfájl vagy végrehajtható fájl használatával MapReduce-feladatok futtatásához. Ebben a példában a .NET szolgál a teljesítményleképező és nyomáscsökkentő word-count megoldások megvalósításához.
+Az Apache Hadoop streamelési egy segédprogram, amely lehetővé teszi, hogy egy parancsfájl vagy végrehajtható fájl használatával MapReduce-feladatok futtatásához. Ebben a példában a .NET szolgál a teljesítményleképező és nyomáscsökkentő word-count megoldások megvalósításához.
 
 ## <a name="net-on-hdinsight"></a>A HDInsight .NET
 

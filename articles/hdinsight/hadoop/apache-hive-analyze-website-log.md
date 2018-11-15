@@ -1,6 +1,6 @@
 ---
-title: Webhelynapló elemzése – Azure HDInsight a Hadoop Hive használata
-description: Ismerje meg, hogyan használható a Hive a HDInsight a webhelyek naplóinak elemzése. Naplófájl használata egy HDInsight-táblához bemenetként fog, és az adatok lekérdezése a HiveQL használatával.
+title: Webhelynapló elemzése – Azure HDInsight az Apache Hadoop Hive használata
+description: Ismerje meg, hogyan használhatja az Apache Hive a HDInsight webhelynaplók elemzése. Naplófájl használata egy HDInsight-táblához bemenetként fog, és az adatok lekérdezése a HiveQL használatával.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 05/17/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: c0a15bacd3aaf97a3caa54ee8bf70a9c4cf54663
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4f4067c73cac4597da3099212c9c04c2544a0b2d
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233597"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634345"
 ---
-# <a name="use-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>A Hive használata a HDInsight Windows-alapú webhelyek naplóinak elemzése
+# <a name="use-apache-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>Az Apache Hive használata a HDInsight Windows-alapú webhelyek naplóinak elemzése
 Útmutató a HDInsight HiveQL használva webhelyek naplóinak elemzése. A webhelynapló elemzése használható hasonló tevékenységek alapján közönségét szegmentálhatja, kategorizálhatja a webhely látogatói demográfiai által, és tudja meg a tartalmat, megtekintése, a websites származnak, és így tovább.
 
 > [!IMPORTANT]

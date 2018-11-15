@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 160cc4fb3ccdabfd76e228c447ad179b3616d195
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: ad04b229e4c6ace3f87ba6e800c0a7c82eb76d92
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231100"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633954"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Hogyan telepítse és konfigurálja az SAP HANA (nagyméretű példányok) az Azure-ban
 
@@ -170,7 +170,7 @@ A HANA/log/biztonsági mentési mennyiségi nem várt adatbázis biztonsági má
 
 Megadott tároló mellett további tárolási kapacitása 1 TB-os lépésekben vásárolhat. A további tárhely is hozzáadhatók új kötetek egy nagyméretű HANA-példányt.
 
-Bevezetés az SAP HANA az Azure service management, során az ügyfél és adja meg felhasználói Azonosítóját (UID) a sidadm felhasználói és sapsys csoport azonosítója (CSOPORTAZONOSÍTÓ) csoport (például: 1000,500) az SAP HANA-rendszer a telepítés során ezeket ugyanazokat az értékeket kell használnia. Mivel egységen több HANA-példányok üzembe helyezéséhez, kötetek (minden példány egy set) több készletétől kap. Ennek eredményeképpen üzembe helyezéskor meg kell határoznia a következőket:
+Bevezetés az SAP HANA az Azure service management, során az ügyfél és adja meg felhasználói Azonosítóját (UID) a sidadm felhasználói és sapsys csoport azonosítója (CSOPORTAZONOSÍTÓ) csoport (például: 1000,500). Az SAP HANA-rendszer a telepítés során ezeket ugyanazokat az értékeket kell használnia. Mivel egységen több HANA-példányok üzembe helyezéséhez, kötetek (minden példány egy set) több készletétől kap. Ennek eredményeképpen üzembe helyezéskor meg kell határoznia a következőket:
 
 - A különböző HANA-példányok (sidadm abból származó) biztonsági azonosítója.
 - A memória méretét a különböző HANA-példányokhoz. A memória méretét példányonként az egyes egyedi kötet határozza meg a kötetek méretét.

@@ -1,6 +1,6 @@
 ---
-title: A Hadoop Hive használata a HDInsight - Azure a curl használatával
-description: Ismerje meg, hogyan lehet távolról a Curl használatával HDInsight Pig-feladatok elküldése.
+title: Az Apache Hadoop Hive használata a HDInsight - Azure a curl használatával
+description: Ismerje meg, hogyan lehet távolról a Curl használatával HDInsight Apache Pig-feladatok elküldése.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: ac17c299656cc8134141284e0b31bdf568c0e3e0
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: cff24991263ece54c143e5da8a3eb2a9e5b4af18
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016947"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634498"
 ---
-# <a name="run-hive-queries-with-hadoop-in-hdinsight-using-rest"></a>Hive-lekérdezések futtatása a REST használatával HDInsight Hadoop-keretrendszerrel
+# <a name="run-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Hive-lekérdezések futtatásához az Apache hadooppal a HDInsight REST használatával
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Ismerje meg, hogyan használhatja a WebHCat REST API és a Hadoop Hive-lekérdezések futtatásához az Azure HDInsight-fürtön.
+Ismerje meg, a WebHCat REST API használatával az Apache Hadoop Hive-lekérdezések futtatásához az Azure HDInsight-fürtön.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

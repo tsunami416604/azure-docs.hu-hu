@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: ea806a1004cf268fb7da75fa45013bdbaf882d86
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ce1e82971f10541bf3a67d46b48c5fc93b5432b4
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227501"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687078"
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>Telepítheti és használhatja Presto HDInsight Hadoop-fürtök
 
 Ebből a dokumentumból megismerheti, hogyan Presto telepítése HDInsight Hadoop-fürtökön Parancsfájlműveletekkel használatával. Azt is megtudhatja, hogyan Airpal telepítése egy meglévő Presto HDInsight-fürtön.
 
-HDInsight az Apache Hadoop-fürtök buborék Presto kérelem is kínál. További információkért lásd: [harmadik féltől származó alkalmazások telepítése Azure HDInsight](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apps-install-applications)
+HDInsight az Apache Hadoop-fürtök buborék Presto kérelem is kínál. További információkért lásd: [harmadik féltől származó alkalmazások telepítése Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-apps-install-applications)
 
 > [!IMPORTANT]
 > A jelen dokumentumban leírt lépések szükséges egy **HDInsight 3.5-ös Hadoop-fürt** , Linux rendszert használ. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight-verziók](hdinsight-component-versioning.md).

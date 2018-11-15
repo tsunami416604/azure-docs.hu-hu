@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 6729a0e3ccbb96dc178925bbab4cfbf8189c4a14
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: ebbb12a6454a093ad0ac3b3cc30eb489eeef21ec
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278259"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687214"
 ---
 # <a name="optimize-hive-queries-in-azure-hdinsight"></a>Az Azure HDInsight Hive-lekérdezések optimalizálása
 
@@ -72,7 +72,7 @@ Particionálási szempontokat:
 
 * **Nem a partíció szerint** -particionálás csak néhány értékekkel rendelkező oszlopokon néhány partíciók okozhat. Például a nemek particionálás csak hoz létre (Férfi és női) hozható létre, így csak a késés csökkentése fele legfeljebb két partíció.
 * **Hajtsa végre a partíció nem keresztül** – vagyis a több partíciót hoz létre egy egyedi értéket (például a felhasználói azonosító) tartalmazó oszlopon okoz. Partíció keresztül hatására nagy terhelés a fürt namenode, mert a sok címtárat kezelni.
-* **Kerülje az adatok torzulása** – a particionálókulcs megérik válassza az, hogy az összes partíció még akkor is, méretét. Például a particionálás *állapot* oszlop előfordulhat, hogy döntés az adatok eloszlása. Mivel érdekelnek a populáció elemeit szinte 30 x, hogy a Vermont, particionáló mérete a potenciálisan torzítja és a teljesítmény változhat visszaesés.
+* **Kerülje az adatok torzulása** – a particionálókulcs megérik válassza az, hogy az összes partíció még akkor is, méretét. Például a particionálás *állapot* oszlop előfordulhat, hogy döntés az adatok eloszlása. Mivel érdekelnek a populáció elemeit szinte 30 x, hogy a Vermont, a partíció méretét a potenciálisan torzítja és a teljesítmény változhat visszaesés.
 
 A partíciós tábla létrehozásához használja a *particionált által* záradékot:
 

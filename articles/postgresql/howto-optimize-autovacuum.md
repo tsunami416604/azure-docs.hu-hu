@@ -7,12 +7,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 91f24bf90f3e1a8a0c383a5820c6816748090807
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 3f35779337082b7280398bd13ef870c74f3ec082
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629102"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685990"
 ---
 # <a name="optimizing-autovacuum-on-azure-database-for-postgresql-server"></a>Optimalizálás autovacuum, Azure database for PostgreSQL-kiszolgáló 
 Ez a cikk ismerteti, hogyan lehet hatékonyan optimalizálása autovacuum, Azure database for postgresql-hez.
@@ -50,7 +50,7 @@ autovacuum_vacuum_cost_limit|Értékét adja meg költség korlát, amely haszn�
 autovacuum_vacuum_cost_delay|Adja meg a költségek késleltetési érték, amely használható automatikus VÁKUUM operations. Ha meg van adva a -1, a rendszeres vacuum_cost_delay érték használható. Az alapértelmezett érték: 20 ezredmásodperc. Ez a paraméter csak akkor állítható be, a postgresql.conf fájlban vagy a kiszolgáló parancssorból. A beállítás módosításával a table storage paraméter felülbírálható egyedi táblák.|20 ms
 autovacuum_nap_time|Adja meg a minimális késleltetési autovacuum közötti bármely adott adatbázist futtat. Mindegyik ciklikus a démon megvizsgálja az adatbázist, és problémák VÁKUUM és elemzés parancsok szükség szerint az adott adatbázisban lévő táblák. A késleltetés idejének mérése másodpercben történik, és az alapértelmezett érték egy perc (1 perc). Ez a paraméter csak akkor állítható be, a postgresql.conf fájlban vagy a kiszolgáló parancssorból.|15 s
 autovacuum_max_workers|Megadja a autovacuum folyamatok, egyidejűleg futó (nem a autovacuum indítója) maximális száma. Az alapértelmezett érték három. Ez a paraméter csak akkor állítható kiszolgáló indításakor.|3
-A fenti konfigurációk az Azure portal vagy Azure parancssori felület használatával frissíthetők.
+A fenti beállítások felülbírálhatja az egyedi táblák table storage paraméterek módosítása.  
 
 ## <a name="autovacuum-cost"></a>Autovacuum költség
 Az alábbiakban a "" futtatásával járó költségek vákuumos műveletet:

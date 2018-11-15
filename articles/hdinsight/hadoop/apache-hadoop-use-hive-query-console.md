@@ -1,6 +1,6 @@
 ---
-title: A Hadoop Hive használata a lekérdezés-konzolban, a HDInsight – Azure
-description: Útmutató a webes Lekérdezéskonzol használata a Hive-lekérdezések futtatásához egy HDInsight Hadoop-fürtöt a böngészőben.
+title: Az Apache Hive használata a lekérdezés-konzolban, a HDInsight - Azure
+description: Útmutató a webes Lekérdezéskonzol használata az Apache Hive-lekérdezések futtatásához egy HDInsight Hadoop-fürtöt a böngészőben.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4083ceca8c9181c8acb1a90e782cb5bca981e684
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: da270792c8987ff43c422c5b03eb8b789b8bda5e
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013964"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634590"
 ---
-# <a name="run-hive-queries-using-the-query-console"></a>A Lekérdezéskonzol használata Hive-lekérdezések futtatása
+# <a name="run-apache-hive-queries-using-the-query-console"></a>A Lekérdezéskonzol használata az Apache Hive-lekérdezések futtatása
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Ebből a cikkből megtudhatja, a HDInsight Lekérdezéskonzol használata a Hive-lekérdezések futtatásához egy HDInsight Hadoop-fürtöt a böngészőben.
+Ebből a cikkből megtudhatja, Apache Hive-lekérdezések futtatásához egy HDInsight Hadoop-fürtöt a böngészőben a HDInsight Lekérdezéskonzol használata.
 
 > [!IMPORTANT]
 > A HDInsight Lekérdezéskonzol csak akkor használható a Windows-alapú HDInsight-fürtökön. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).

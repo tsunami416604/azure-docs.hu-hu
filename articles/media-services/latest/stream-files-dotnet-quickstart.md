@@ -11,14 +11,14 @@ ms.service: media-services
 ms.workload: media
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/16/2018
+ms.date: 11/11/2018
 ms.author: juliako
-ms.openlocfilehash: 92321b5e919f6703cb481d88f312a20fc7c62826
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
-ms.translationtype: HT
+ms.openlocfilehash: fc8fc1af51332df032e864c84791791a38bc8601
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49375462"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612220"
 ---
 # <a name="quickstart-stream-video-files---net"></a>Rövid útmutató: Videofájlok streamelése – .NET
 
@@ -33,7 +33,12 @@ A rövid útmutató végére képes lesz videók streamelésére.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nincs telepítve a Visual Studio, szerezze be a [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)-et.
+- Ha nincs telepítve a Visual Studio, szerezze be a [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)-et.
+- Telepítse és a parancssori Felületet helyileg használja, ez a cikk az Azure CLI 2.0-s vagy újabb verziójára van szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
+
+    Jelenleg nem minden [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) parancsok működnek az Azure Cloud shellben. Javasoljuk, hogy a parancssori Felületet helyileg használja.
+
+- [A Media Services-fiók létrehozása](create-account-cli-how-to.md).
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
@@ -56,14 +61,6 @@ A minta a következő műveleteket hajtja végre:
 7. Streamelési URL-címeket épít fel.
 
 A minta egyes funkcióinak leírásáért vizsgálja meg a kódot, és tekintse meg az [ebben a forrásfájlban](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) található megjegyzéseket.
-
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
-
-Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -93,11 +90,11 @@ Az Azure Media Player használható tesztelésre, az éles környezetben való h
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az erőforráscsoportjában lévő egyik erőforrásra sem, beleértve a jelen rövid útmutatóban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott teljes erőforráscsoportot. Ehhez használhatja a **CloudShell** eszközt.
+Ha már nincs szüksége az erőforráscsoportjában lévő egyik erőforrásra sem, beleértve a jelen rövid útmutatóban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott teljes erőforráscsoportot.
 
-Hajtsa végre az alábbi parancsot a **CloudShellben**:
+Hajtsa végre a következő CLI-parancsot:
 
-```azurecli-interactive
+```azurecli
 az group delete --name amsResourceGroup
 ```
 

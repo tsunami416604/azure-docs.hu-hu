@@ -1,6 +1,6 @@
 ---
-title: MapReduce használata a és a Curl a HDInsight - Azure Hadoop-keretrendszerrel
-description: Ismerje meg, hogyan lehet távolról futtatni a Curl használatával HDInsight és a Hadoop MapReduce-feladatok.
+title: MapReduce használata és az Apache hadooppal a HDInsight - Azure Curl
+description: Ismerje meg, hogyan lehet távolról futtatni a Curl használatával HDInsight az Apache Hadoop MapReduce-feladatok.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 496b7dacdb30507fe5eb2d4d7c5602003a944269
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: afa9b57d9c0e2acf81b5307273ac038e92073655
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010898"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632294"
 ---
-# <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-rest"></a>És a Hadoop MapReduce-feladatok futtatása HDInsight REST használatával
+# <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Az Apache Hadoop MapReduce feladatok futtatása HDInsight REST használatával
 
-Ismerje meg, a WebHCat REST API használata egy HDInsight-fürtön hadoop MapReduce-feladatok futtatásához. A curl használatával mutatja be, hogyan használhatja a HDInsight MapReduce-feladatok futtatása a nyers HTTP-kérések használatával szolgál.
+Ismerje meg, a WebHCat REST API használata egy HDInsight-fürtön az Apache hadoop MapReduce-feladatok futtatásához. A curl használatával mutatja be, hogyan használhatja a HDInsight MapReduce-feladatok futtatása a nyers HTTP-kérések használatával szolgál.
 
 > [!NOTE]
 > Ha már ismeri a Linux-alapú Hadoop-kiszolgálókat használ, de még nem ismeri a HDInsight, tekintse meg a [amit tudni akart a Linux-based Hadoop on HDInsight](../hdinsight-hadoop-linux-information.md) dokumentumot.

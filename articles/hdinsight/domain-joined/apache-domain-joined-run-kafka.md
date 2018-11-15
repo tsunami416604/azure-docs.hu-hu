@@ -1,5 +1,5 @@
 ---
-title: Kafka-házirendek konfigurálása a HDInsightban az Enterprise Security Package csomaggal – Azure
+title: A vállalati biztonsági csomaggal – Azure HDInsight az Apache Kafka-szabályzatok konfigurálása
 description: Megtudhatja, hogyan konfigurálhat Apache Ranger-házirendeket a Kafkához az Azure HDInsightban az Enterprise Security Package csomaggal.
 services: hdinsight
 ms.service: hdinsight
@@ -8,16 +8,16 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 48cfba6f62d75470efd27e3a4cdcb995e716798b
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
-ms.translationtype: HT
+ms.openlocfilehash: aa6702ccf00faa3d63d5458cfbd77ac15fbfbeaa
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037141"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633048"
 ---
-# <a name="tutorial-configure-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Oktatóanyag: Kafka-házirendek konfigurálása a HDInsightban az Enterprise Security Package csomaggal (Előzetes verzió)
+# <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Oktatóanyag: Az Apache Kafka-házirendek konfigurálása a HDInsight vállalati biztonsági csomaggal (előzetes verzió)
 
-Megtudhatja, hogyan konfigurálhat Apache Ranger-házirendeket az Enterprise Security Package- (ESP-) alapú Kafka-fürtökön. Az ESP-fürtök egy tartományhoz csatlakoznak, lehetővé téve a felhasználók számára a tartományi hitelesítő adatokkal való hitelesítést. Ebben az oktatóanyagban két Ranger-házirendet hoz létre, amelyek korlátozzák a hozzáférést a `sales*` és `marketingspend` témakörökhöz.
+Megtudhatja, hogyan konfigurálhatja a vállalati biztonsági csomag (ESP) az Apache Kafka-fürtök az Apache Ranger-házirendet. Az ESP-fürtök egy tartományhoz csatlakoznak, lehetővé téve a felhasználók számára a tartományi hitelesítő adatokkal való hitelesítést. Ebben az oktatóanyagban két Ranger-házirendet hoz létre, amelyek korlátozzák a hozzáférést a `sales*` és `marketingspend` témakörökhöz.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

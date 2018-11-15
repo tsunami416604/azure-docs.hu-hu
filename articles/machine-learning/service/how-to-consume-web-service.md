@@ -9,18 +9,18 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: larryfr
 ms.date: 10/30/2018
-ms.openlocfilehash: 0ad39048a6b175a30ac7c5cdc346d0858c3719ef
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 75faf344c64dc330a98b836a8852b42531645c49
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621870"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685174"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Az Azure Machine Learning-modellek webszolgáltatásként üzembe helyezett felhasználása
 
 REST API-t üzembe helyezése az Azure Machine Learning-modellek webszolgáltatásként hoz létre. Adatokat küldeni az API-t, és a modell által visszaadott az előrejelzést kapni. Ebből a dokumentumból megtudhatja, hogyan hozhat létre webes szolgáltatást használó ügyfelek C#, Go, a Java és Python.
 
-Webszolgáltatás-rendszerképet egy Azure-Tárolópéldányon, az Azure Kubernetes Service-ben vagy a Project Brainwave (mező programmable gate arrays) központi telepítésekor jön létre. A regisztrált modellek és a pontozófájlt lemezképek jönnek létre. Egy webes szolgáltatás eléréséhez használt URI-ja használatával lehet beolvasni a [Azure Machine Learning SDK](https://docs.microsoft.com/en-us/python/api/overview/azure/ml/intro?view=azure-ml-py). Ha engedélyezve van a hitelesítés, az SDK-t is használhatja a hitelesítési kulcsok beolvasása.
+Webszolgáltatás-rendszerképet egy Azure-Tárolópéldányon, az Azure Kubernetes Service-ben vagy a Project Brainwave (mező programmable gate arrays) központi telepítésekor jön létre. A regisztrált modellek és a pontozófájlt lemezképek jönnek létre. Egy webes szolgáltatás eléréséhez használt URI-ja használatával lehet beolvasni a [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Ha engedélyezve van a hitelesítés, az SDK-t is használhatja a hitelesítési kulcsok beolvasása.
 
 Az általános munkafolyamatát, amikor egy Machine Learning webszolgáltatás használó ügyfél létrehozása a következő:
 
@@ -33,7 +33,7 @@ Az általános munkafolyamatát, amikor egy Machine Learning webszolgáltatás h
 > [!NOTE]
 > Az Azure Machine Learning SDK kéri le a webes adatait. Ez a Python SDK-t. A webes szolgáltatások adatainak beolvasásához használatos, miközben használhatja bármilyen nyelven létrehozni az ügyfelet a szolgáltatás.
 
-A kapcsolat webalkalmazás adatait az Azure Machine Learning SDK használatával lekérhetők. A [azureml.core.Webservice](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) osztály egy ügyfél létrehozásához szükséges információkat biztosít. A következő `Webservice` tulajdonságok, amelyek hasznosak lehetnek, amikor egy ügyfélalkalmazás létrehozása:
+A kapcsolat webalkalmazás adatait az Azure Machine Learning SDK használatával lekérhetők. A [azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) osztály egy ügyfél létrehozásához szükséges információkat biztosít. A következő `Webservice` tulajdonságok, amelyek hasznosak lehetnek, amikor egy ügyfélalkalmazás létrehozása:
 
 * `auth_enabled` – Ha engedélyezve van a hitelesítés, `True`; ellenkező esetben `False`.
 * `scoring_uri` – A REST API-cím.
@@ -51,7 +51,7 @@ Az üzembe helyezett webszolgáltatások ezen információk lekérése egy háro
     print(service.scoring_uri)
     ```
 
-* Használhat `Webservice.list` kérdezheti le az üzembe helyezett webszolgáltatások munkaterületét modellek esetén. Visszaadott adatok leszűkítése szűrőt is hozzáadhat. További információ a szűrhetik, lásd: a [Webservice.list](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#list) referenciák dokumentációiba.
+* Használhat `Webservice.list` kérdezheti le az üzembe helyezett webszolgáltatások munkaterületét modellek esetén. Visszaadott adatok leszűkítése szűrőt is hozzáadhat. További információ a szűrhetik, lásd: a [Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#list) referenciák dokumentációiba.
 
     ```python
     services = Webservice.list(ws)
@@ -82,7 +82,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Ha a kulcs újragenerálása van szüksége, használja a [ `service.regen_key` ](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#regen-key).
+> Ha a kulcs újragenerálása van szüksége, használja a [ `service.regen_key` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#regen-key).
 
 ## <a name="request-data"></a>Kérelem adatai
 

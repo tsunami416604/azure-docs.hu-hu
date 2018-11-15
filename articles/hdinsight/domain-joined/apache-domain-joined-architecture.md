@@ -9,12 +9,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 8d344adc367eb9b93e52d9423a2ab4dda657b298
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 35768aed3509d6ec5b73c64c7a8a6b132957ace1
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115539"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632730"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>A HDInsight vállalati biztonsági csomag használata
 
@@ -24,11 +24,11 @@ Sok vállalat áthelyezett olyan modellre, ahol fürtök informatikai csapatok f
 
 HDInsight a legnépszerűbb identitásszolgáltatóra, az Active Directory – az olyan felügyelt módon támaszkodik. A HDInsight integrálásával [Azure Active Directory Domain Services (Azure AD DS)](../../active-directory-domain-services/active-directory-ds-overview.md), a fürtök a tartományi hitelesítő adataival érheti. 
 
-A virtuális gépek (VM) a HDInsight tartományhoz csatlakoztatva, a megadott tartományban. Tehát a HDInsight futó összes szolgáltatás (Ambari, Hive-kiszolgáló, Ranger, Spark thrift kiszolgáló és mások) zökkenőmentesen használható a hitelesített felhasználó. A rendszergazdák majd erős engedélyezési házirendek használatával létrehozhatja az Apache Ranger szerepköralapú hozzáférés-vezérlést biztosít a fürtben lévő erőforrásokat.
+A virtuális gépek (VM) a HDInsight tartományhoz csatlakoztatva, a megadott tartományban. Így a HDInsight (az Apache Ambari, Apache Hive-kiszolgáló, az Apache Ranger, Apache Spark thrift-kiszolgáló és mások) futó összes szolgáltatás zökkenőmentesen működik a hitelesített felhasználó számára. A rendszergazdák majd erős engedélyezési házirendek használatával létrehozhatja az Apache Ranger szerepköralapú hozzáférés-vezérlést biztosít a fürtben lévő erőforrásokat.
 
 ## <a name="integrate-hdinsight-with-active-directory"></a>A HDInsight és az Active Directory integrálása
 
-A Kerberos hitelesítési és biztonsági Hadoop nyílt forráskódú támaszkodik. HDInsight-fürtcsomópontok vállalati biztonsági csomag (ESP), ezért az Azure Active Directory tartományi szolgáltatások által felügyelt tartományhoz csatlakoznak. A Kerberos biztonsági konfigurálva van a Hadoop-összetevők a fürtön. 
+A Kerberos hitelesítési és biztonsági nyílt forráskódú Apache Hadoop támaszkodik. HDInsight-fürtcsomópontok vállalati biztonsági csomag (ESP), ezért az Azure Active Directory tartományi szolgáltatások által felügyelt tartományhoz csatlakoznak. A Kerberos biztonsági konfigurálva van a Hadoop-összetevők a fürtön. 
 
 Automatikusan jönnek létre a következő műveleteket:
 - egy egyszerű szolgáltatást az egyes Hadoop-összetevők 

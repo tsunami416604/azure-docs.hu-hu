@@ -3,29 +3,31 @@ title: Azure IoT Edge C# oktatóanyag | Microsoft Docs
 description: Az oktatóanyag bemutatja, hogyan hozhat létre IoT Edge-modult C#-kóddal, és hogyan helyezheti üzembe egy peremhálózati eszközön.
 services: iot-edge
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ec8cd52d8a91c76033d52f9b49ee84dde98eada2
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: 4c20ab78ba4da44d4746ef6f68674fe494392347
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156765"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633988"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>Oktatóanyag: C#-alapú IoT Edge-modul fejlesztése és üzembe helyezése szimulált eszközön
 
 Az Azure IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. Az Azure IoT Edge üzembe helyezése szimulált eszközön [Windows](quickstart.md) vagy [Linux](quickstart-linux.md) rendszeren című rövid útmutatóban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:    
 
 > [!div class="checklist"]
-> * A .NET core 2.0 SDK-n alapuló IoT Edge-modul létrehozása a Visual Studio Code-dal.
+> * A Visual Studio Code használatával hozzon létre egy IoT Edge-modul, amely a .NET Core SDK 2.1-es alapul.
 > * Docker-rendszerkép létrehozása és közzététele a regisztrációs adatbázisba a Visual Studio Code és a Docker használatával.
 > * A modul üzembe helyezése az IoT Edge-eszközön.
 > * A létrejött adatok megtekintése.
 
+>[!NOTE]
+>Is [fejlesztése, hibakeresése és üzembe helyezése IoT Edge-modulok Visual Studio 2017](how-to-visual-studio-develop-csharp-module.md).
 
 Az ebben az oktatóanyagban létrehozott IoT Edge-modul szűri az eszköze által létrehozott hőmérsékletadatokat. Csak akkor küld felfelé irányuló üzeneteket, amikor a hőmérséklet egy megadott küszöbérték felett van. Ez a fajta peremhálózati elemzés a felhőbe küldött és ott tárolt adatok mennyiségének csökkentésére használható. 
 

@@ -1,5 +1,5 @@
 ---
-title: A HDInsight - Azure példák Hadoop MapReduce futtatása
+title: Az Apache Hadoop MapReduce-példák futhatnak a HDInsight – Azure
 description: Ismerkedés a jar-fájlt is tartalmaz HDInsight MapReduce-minták használatával. Csatlakozzon a fürthöz SSH használatával, és a Hadoop paranccsal minta feladatok futtatásához.
 keywords: Példa jar hadoop, hadoop példák jar, hadoop mapreduce-példák, mapreduce-példák
 services: hdinsight
@@ -10,18 +10,18 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 37ba412d9463ccf4cdd18c842910c3c6f5349ef2
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 283171fa00837a8a7b4e0a13d7bca5645cf63a83
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007094"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633065"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Futtassa a szerepel a HDInsight MapReduce-példák
 
 [!INCLUDE [samples-selector](../../../includes/hdinsight-run-samples-selector.md)]
 
-Ismerje meg, hogyan futtathat Hadoop on HDInsight tartalmazza a MapReduce példák.
+Ismerje meg, hogyan futtathat a mellékelt HDInsight az Apache Hadoop MapReduce példák.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

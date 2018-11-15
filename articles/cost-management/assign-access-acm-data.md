@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: a62ecd0201d6b29686abc186ee69f3d26dc5ca4e
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: e32e281509da32d4816c9e137a462553891c82f1
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516234"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686143"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Cost Management adataihoz való hozzáférés hozzárendelése
 
-A felhasználók többsége számára az Azure portal és a Nagyvállalati portálon megadott engedélyek kombinációját az Azure Cost Management adataihoz való hozzáférés egy felhasználó szintjét határozza meg. Ez a cikk bemutatja, ha a Cost Management adataihoz való hozzáférés hozzárendelése. Az engedélyek kombinációját hozzá van rendelve, miután a felhasználói nézetek adatokat a Cost Management alapján a hatókör, hogy ők is hozzáférhetnek, és az Azure Portalon válassza a hatókörön.
+A felhasználók többsége számára az Azure portal és a Nagyvállalati portálon megadott engedélyek kombinációját az Azure Cost Management adataihoz való hozzáférés egy felhasználó szintjét határozza meg. Ez a cikk végigvezeti a Cost Management adataihoz való hozzáférés hozzárendelése. Az engedélyek kombinációját hozzá van rendelve, miután a felhasználói nézetek adatokat a Cost Management alapján a hatókör, hogy ők is hozzáférhetnek, és az Azure Portalon válassza a hatókörön.
 
 Adja meg az adatok összevonása, és a költségadatok való hozzáférésének a hatókör, amely a felhasználó kiválaszt Cost Management használja. Hatókörök használatakor a felhasználók ne válassza ki őket. Ehelyett, válassza ki a nagyobb hatókör, amely gyermek hatókörök visszaállítás akár, és ezután azok szűrő válassza ki, amit szeretnének megtekintéséhez. Adatok összevonása fontos tudni, mert vannak, akik nem rendelkezik hozzáféréssel, annak egy szülőhatóköréhez gyermek hatókörök összegző akár.
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/20/2018
 ms.author: dobett
-ms.openlocfilehash: 475fda79d3f5d844b494f1b0ae5eab8eba5ed8bc
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
-ms.translationtype: HT
+ms.openlocfilehash: c8ef958b2f39a9271b9fa344f61329d48eccdee4
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363563"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514741"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Rövid útmutató: IoT Hubhoz csatlakozó eszköz vezérlése (.NET)
 
@@ -26,6 +26,7 @@ Az IoT Hub olyan Azure-szolgáltatás, amely lehetővé teszi nagy mennyiségű 
 Ez a rövid útmutató két előre megírt .NET-alkalmazást használ:
 
 * Egy szimulálteszköz-alkalmazás, amely válaszol a háttéralkalmazásokból meghívott közvetlen metódusokra. A közvetlen metódusok meghívásának fogadásához ez az alkalmazás az IoT Hubon található eszközspecifikus végponthoz csatlakozik.
+
 * Egy háttéralkalmazás, amely meghívja a közvetlen metódusokat a szimulált eszközre. A közvetlen metódus egy eszközre való meghívásához ez az alkalmazás az IoT Hubon található szolgáltatásoldali végponthoz csatlakozik.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -50,7 +51,7 @@ Ha még nem tette meg, töltse le a C#-mintaprojektet a https://github.com/Azure
 
 Ha már elvégezte a [Rövid útmutató: Telemetria küldése egy eszközről IoT Hubra](quickstart-send-telemetry-dotnet.md) című előző útmutatót, kihagyhatja ezt a lépést.
 
-[!INCLUDE [iot-hub-quickstarts-create-hub](../../includes/iot-hub-quickstarts-create-hub.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Eszköz regisztrálása
 
@@ -60,21 +61,25 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 1. Futtassa az alábbi parancsokat az Azure Cloud Shellben az IoT Hub CLI-bővítmény hozzáadásához és az eszközidentitás létrehozásához. 
 
-   **YourIoTHubName**: A helyőrző helyére írja be az IoT Hubjához választott nevet.
+   **YourIoTHubName** : alább a helyőrzőt cserélje le az IoT hub számára is választott nevét.
 
    **MyDotnetDevice**: Ezt a nevet kapja a regisztrált eszköz. A MyDotnetDevice nevet használja a bemutatott módon. Ha úgy dönt, hogy eszközének egy másik nevet választ, akkor az egész cikkben azt a nevet kell használnia, és a mintaalkalmazások futtatása előtt frissítenie kell bennük az eszköznevet.
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDotnetDevice
+    az iot hub device-identity create \
+      --hub-name YourIoTHubName --device-id MyDotnetDevice
     ```
 
 2. Futtassa az alábbi parancsokat az Azure Cloud Shellben az imént regisztrált eszköz _eszközkapcsolati sztringjének_ lekéréséhez:
 
-   **YourIoTHubName**: A helyőrző helyére írja be az IoT Hubjához választott nevet.
+   **YourIoTHubName** : alább a helyőrzőt cserélje le a nevet az IoT hub coose.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDotnetDevice --output table
+    az iot hub device-identity show-connection-string \
+      --hub-name YourIoTHubName \
+      --device-id MyDotnetDevice 
+      --output table
     ```
 
     Jegyezze fel az eszköz kapcsolati sztringjét, amely a következőképpen néz ki:
@@ -121,7 +126,7 @@ A szimulálteszköz-alkalmazás az IoT Hubon található eszközspecifikus végp
 
     A következő képernyőképen az a kimenet látható, amikor a szimulálteszköz-alkalmazás telemetriát küld az IoT Hubnak:
 
-    ![A szimulált eszköz futtatása](media/quickstart-control-device-dotnet/SimulatedDevice-1.png)
+    ![A szimulált eszköz futtatása](./media/quickstart-control-device-dotnet/SimulatedDevice-1.png)
 
 ## <a name="call-the-direct-method"></a>A közvetlen metódus meghívása
 
@@ -147,11 +152,11 @@ A háttéralkalmazás az IoT Hubon található szolgáltatásoldali végponthoz 
 
     A következő képernyőképen az a kimenet látható, amelyben az alkalmazás közvetlen metódust hív meg az eszközre, és megkapja a nyugtázást:
 
-    ![A háttéralkalmazás futtatása](media/quickstart-control-device-dotnet/BackEndApplication.png)
+    ![A háttéralkalmazás futtatása](./media/quickstart-control-device-dotnet/BackEndApplication.png)
 
     A háttéralkalmazás futtatása után megjelenik egy üzenet a szimulált eszközt futtató konzolablakban, és megváltozik az üzenetküldések gyakorisága:
 
-    ![Változás a szimulált ügyfélben](media/quickstart-control-device-dotnet/SimulatedDevice-2.png)
+    ![Változás a szimulált ügyfélben](./media/quickstart-control-device-dotnet/SimulatedDevice-2.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -159,7 +164,7 @@ A háttéralkalmazás az IoT Hubon található szolgáltatásoldali végponthoz 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban közvetlen metódust hívott meg egy eszközre egy háttéralkalmazásból, és válaszolt a közvetlenmetódus-hívásra egy szimulálteszköz-alkalmazásban.
+Ebben a rövid útmutatóban egy közvetlen metódust hívott az eszközön egy háttér-alkalmazásból, és a közvetlen metódus meghívása egy szimulált eszközalkalmazástól az válaszolt.
 
 Ha szeretné megtudni, hogy hogyan irányíthatók az eszközről felhőbe irányuló üzenetek különböző felhőbeli célokhoz, folytassa a következő oktatóanyaggal.
 

@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/9/2018
-ms.openlocfilehash: f0727d7ad415c718c01361cba8e8822a43298f66
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 8b92191b60f8eb7e3c63f465926b434e205ef1b4
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300727"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684748"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>A HDInsight-fürt konfigurálása a vállalati biztonsági csomaggal az Azure Active Directory Domain Services használatával
 
@@ -22,7 +22,7 @@ Vállalati biztonsági csomag (ESP) fürtök többfelhasználós hozzáférést 
 Ebből a cikkből elsajátíthatja egy HDInsight-fürt konfigurálása ESP az Azure Active Directory Domain Services (Azure AD DS) használatával.
 
 >[!NOTE]
->ESP általánosan elérhető a HDI 3.6 a Spark, interaktív és Hadoop. A HBase és a Kafka fürttípusok ESP az előzetes verzióban.
+>ESP általánosan elérhető a HDI 3.6 a Spark, interaktív és Apache Hadoop. A HBase és a Kafka fürttípusok ESP az előzetes verzióban.
 
 ## <a name="enable-azure-ad-ds"></a>Engedélyezze az Azure AD-DS-ben
 
@@ -66,7 +66,7 @@ A felügyelt identitás létrehozása és a megfelelő szerepkört kap, után az
 ## <a name="networking-considerations"></a>Hálózati megfontolások
 
 > [!NOTE]
-> Az Azure AD-Tartományi telepíteni kell egy Azure Resource Manager (ARM) alapú virtuális hálózatban. A klasszikus virtuális hálózatok nem támogatottak az Azure AD-DS-ben. Tekintse meg [engedélyezése az Active Directory Domain Servicest az Azure portal használatával](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-getting-started-network) további részletekért.
+> Az Azure AD-Tartományi telepíteni kell egy Azure Resource Manager (ARM) alapú virtuális hálózatban. A klasszikus virtuális hálózatok nem támogatottak az Azure AD-DS-ben. Tekintse meg [engedélyezése az Active Directory Domain Servicest az Azure portal használatával](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-network) további részletekért.
 
 Miután engedélyezte az Azure AD-Tartományi, egy helyi tartomány neve szolgáltatás (DNS) kiszolgáló fut, az AD virtuális gépeken (VM). Az Azure AD-Tartományi Virtual Network (VNET) ezen egyéni DNS-kiszolgálók használatára konfigurálja. Keresse meg a megfelelő IP-címeket, válasszon **tulajdonságok** alatt a **kezelés** alatt felsorolt kategória és tekintse meg az IP-címek **IP-cím virtuális hálózaton**.
 

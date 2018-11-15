@@ -1,6 +1,6 @@
 ---
-title: HDInsight .NET SDK - az Azure használatával Hive-lekérdezések futtatása
-description: Ismerje meg, hogyan lehet elküldeni a HDInsight .NET SDK használata Azure HDInsight Hadoop, Hadoop-feladatokat.
+title: HDInsight .NET SDK-t – az Azure az Apache Hive-lekérdezések futtatása
+description: Útmutató a HDInsight .NET SDK használata Azure HDInsight az Apache Hadoop Apache Hadoop-feladatok elküldése.
 ms.reviewer: jasonh
 services: hdinsight
 author: hrasheed-msft
@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5cababaa7c808969e6e24a70581f54639f269621
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 790cc11e3d4cf1d0260b1099efd82bdddec85785
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016012"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634566"
 ---
-# <a name="run-hive-queries-using-hdinsight-net-sdk"></a>HDInsight .NET SDK használatával Hive-lekérdezések futtatása
+# <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>HDInsight .NET SDK használatával, az Apache Hive-lekérdezések futtatása
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Útmutató a HDInsight .NET SDK használatával Hive-lekérdezések elküldéséhez. C# program írása elküldeni a Hive-lekérdezést futtathat Hive-táblák listázásához, és megjeleníti az eredményeket.
+Ismerje meg, hogyan lehet elküldeni az Apache Hive-lekérdezéseket a HDInsight .NET SDK használatával. C# program írása elküldeni a Hive-lekérdezést futtathat Hive-táblák listázásához, és megjeleníti az eredményeket.
 
 > [!NOTE]
 > A jelen cikkben ismertetett lépések egy Windows ügyfél kell elvégezni. Információ a Hive használata a Linux, OS X or Unix-ügyfél használatával a cikk tetején látható lapon választómezőt használja.
@@ -27,7 +27,7 @@ ms.locfileid: "51016012"
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk elkezdéséhez a következőkkel kell rendelkeznie:
 
-* **A HDInsight Hadoop-fürt**. Lásd: [HDInsight Linux-alapú Hadoop használatának első lépései](apache-hadoop-linux-tutorial-get-started.md).
+* **A HDInsight Apache Hadoop-fürt**. Lásd: [HDInsight Linux-alapú Hadoop használatának első lépései](apache-hadoop-linux-tutorial-get-started.md).
 
     > [!WARNING]
     > 2017. szeptember 15. a HDInsight .NET SDK vracející Hive lekérdezés eredményeit az Azure Storage-fiókok csak támogatja. Ebben a példában egy HDInsight-fürtöt, amely az Azure Data Lake Store használja elsődleges tárolóként használja, ha nem lehet lekérdezni a keresési eredmények a .NET SDK használatával.

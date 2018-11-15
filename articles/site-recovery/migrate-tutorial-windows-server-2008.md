@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.date: 09/22/2018
 ms.author: bsiva
 ms.custom: MVC
-ms.openlocfilehash: 68a1367eec5392036797612e631a438b076b2cfc
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: 1f537a381bbd595e519aaeb4cadb5b9be4657b6b
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210465"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566567"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 rendszert futtató kiszolgálók migrálása az Azure-ba
 
@@ -71,7 +71,7 @@ Ez az oktatóanyag a továbbiakban a Windows Server 2008 vagy 2008 R2 rendszert 
 
 - Előfordulhat, hogy nem lehet RDP-n keresztül csatlakozni a 32 bites operációs rendszert futtató Windows Server 2008 SP2-kiszolgálókhoz közvetlenül az Azure-ba történő feladatátvétel vagy feladatátvételi teszt után. Indítsa újra a feladatátvételen átesett virtuális gépet az Azure Portalról, és próbáljon újracsatlakozni. Ha még mindig nem lehet csatlakozni, ellenőrizze, hogy a kiszolgáló beállítása engedélyezi-e a távoli asztali kapcsolatokat, és győződjön meg arról is, hogy nincsenek érvényben olyan tűzfalszabályok vagy hálózati biztonsági csoportok, amelyek blokkolhatják a kapcsolatot. 
   > [!TIP]
-  > A kiszolgálók migrálása előtt feltétlenül javasolt egy feladatátvételi teszt futtatása. Győződjön meg arról, hogy minden egyes migrálásra váró kiszolgálón legalább egy sikeres feladatátvételi tesztet sikerült végrehajtani. A feladatátvételi teszt részeként csatlakozzon a tesztelt, feladatátvételen átesett számítógéphez, és győződjön meg arról, hogy minden az elvárt módon működik.
+  > A kiszolgálók migrálása előtt feltétlenül javasolt egy feladatátvételi teszt futtatása. Győződjön meg arról, hogy legalább egy sikeres feladatátvételi teszt végzett áttelepíteni kívánt minden egyes kiszolgálón. A feladatátvételi teszt részeként csatlakozzon a tesztelt, feladatátvételen átesett számítógéphez, és győződjön meg arról, hogy minden az elvárt módon működik.
   >
   >A feladatátvételi teszt zavart nem okozó művelet, amely virtuális gépek egy tetszőleges, elkülönített hálózatban való létrehozásával nyújt segítséget a migrálás teszteléséhez. A feladatátvételi művelettel ellentétben a feladatátvételi teszt során az adatreplikáció tovább folytatódik. A migrálás megkezdése előtt tetszőleges számú feladatátvételi teszt hajtható végre. 
   >
@@ -154,7 +154,10 @@ Futtasson egy feladatátvételt a migrálni kívánt gépen.
 2. A **Feladatátvétel** területen válassza ki a **Helyreállítási pontot** a feladatok átvételéhez. Válassza a legutóbbi helyreállítási pontot.
 3. Válassza a **Gép leállítása a feladatátvétel megkezdése előtt** lehetőséget. A Site Recovery megkísérli leállítani a kiszolgálót a feladatátvétel indítása előtt. A feladatátvételi akkor is folytatódik, ha a leállítás meghiúsul. A feladatátvételi folyamatot a **Feladatok** lapon követheti nyomon.
 4. Ellenőrizze, hogy az Azure-beli virtuális gép a várt módon jelenik-e meg az Azure-ban.
-5. A **Replikált elemek** listában kattintson a jobb gombbal a virtuális gépre, majd kattintson a **Migrálás befejezése** parancsra. Ez befejezi a migrálási folyamatot, valamint leállítja a virtuális gép replikálását és a virtuális gép Site Recovery-számlázását.
+5. A **Replikált elemek** listában kattintson a jobb gombbal a virtuális gépre, majd kattintson a **Migrálás befejezése** parancsra. Ez a következőket teszi:
+
+    - Befejezi a migrálási folyamatot, az AWS virtuális gép replikálását, és leállítja a virtuális gép Site Recovery-számlázását.
+    - Ezzel a lépéssel törli azokat a replikációs adatokat. Azzal nem törli az áttelepített virtuális gépeket.
 
    ![Az áttelepítés befejezése](media/migrate-tutorial-windows-server-2008/complete-migration.png)
 

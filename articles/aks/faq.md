@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: iainfou
-ms.openlocfilehash: 1e101e308ec350e9900c1347da730ca02b16c7bb
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 55f32c403da179a0b7babc2172a80c2168cfab17
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377466"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636917"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>– Azure Kubernetes Service (AKS) kapcsolatos gyakori kérdések
 
@@ -46,6 +46,8 @@ Igen, az Azure automatikusan alkalmazza a biztonsági javítások éjszakai üte
 - Manuálisan keresztül az Azure portal vagy az Azure parancssori felület.
 - Az AKS-fürt frissítésével. Fürt frissítése automatikusan [Ez a három csomópontunk, és a csomópont kiürítési][cordon-drain], majd hálózatra a legújabb Ubuntu-rendszerképet és a egy új biztonsági javítást vagy egy Kubernetes-alverzió készítsen biztonsági másolatot minden csomóponton. További információkért lásd: [AKS-fürt frissítése][aks-upgrade].
 - Használatával [Kured](https://github.com/weaveworks/kured), egy nyílt forráskódú újraindítás démon a Kubernetes esetében. Kured fut, mint egy [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) , és figyeli a-fájljának jelenlétét, arról, hogy a számítógép újraindítása nem szükséges minden egyes csomópont. Az operációs rendszer-újraindítások felügyelt ugyanazzal a fürtön [Ez a három csomópontunk, és a kiürítési folyamat] [ cordon-drain] mint a fürtfrissítések.
+
+Kured használatával kapcsolatos további információkért lásd: [biztonsági és a kernel-frissítések alkalmazása a csomópontok az aks-ben][node-updates-kured].
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>Két erőforráscsoport miért jönnek létre az aks-sel?
 
@@ -97,6 +99,7 @@ A egy szolgáltatásiszint-szerződés (SLA) a szolgáltató vállalja, hogy meg
 [virtual-kubelet]: virtual-kubelet.md
 [aks-advanced-networking]: ./configure-advanced-networking.md
 [aks-rbac-aad]: ./aad-integration.md
+[node-updates-kured]: node-updates-kured.md
 
 <!-- LINKS - external -->
 
@@ -105,3 +108,4 @@ A egy szolgáltatásiszint-szerződés (SLA) a szolgáltató vállalja, hogy meg
 [hexadite]: https://github.com/Hexadite/acs-keyvault-agent
 [admission-controllers]: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
 [keyvault-flexvolume]: https://github.com/Azure/kubernetes-keyvault-flexvol
+

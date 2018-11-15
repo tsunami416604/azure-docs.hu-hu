@@ -2,19 +2,19 @@
 title: Az Azure Machine Learning üzembe helyezése az Azure IoT Edge használatával | Microsoft Docs
 description: Az oktatóanyagban egy Azure Machine Learning-példányt helyezünk üzembe modulként egy peremhálózati eszközre.
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 59ce51ba4b015c7236df9e20416832e877dd26c6
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
-ms.translationtype: HT
+ms.openlocfilehash: 692dce4c3fcb31bcfbffbba06e5a69722b5fb5fa
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748374"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566111"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Oktatóanyag: Az Azure Machine Learning üzembe helyezése IoT Edge-modulként (előzetes verzió)
 

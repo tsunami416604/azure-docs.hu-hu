@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d445a4673245b4c6d1986d099113beba79d136bb
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e3f08b80b891ad277794ae5a07c3662dab2f2c16
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315244"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687452"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyakori kérdések
 
@@ -46,7 +46,7 @@ Az alábbiakban az alkalmazásokat, amelyek elküldheti ezeket a paramétereket 
 | -- | -- |
 | Hozzáférési panel | https://myapps.microsoft.com/contoso.com |
 | Webes Outlook | https://outlook.office365.com/contoso.com |
-| Office 365 portál | https://portal.office.com?domain_hint=contoso.com |
+| Az Office 365-portálokon | https://portal.office.com?domain_hint=contoso.com, https://www.office.com?domain_hint=contoso.com |
 
 Emellett a felhasználók kapnak-e egy csendes bejelentkezési felület Ha kérelmet küld a bejelentkezési kérelmek ábráját végpontok az Azure AD -, https://login.microsoftonline.com/contoso.com/<..> vagy https://login.microsoftonline.com/<tenant_ID>/<..> – helyett az Azure AD közös végpont – vagyis https://login.microsoftonline.com/common/<...>. Az alábbiakban az alkalmazásokat, amelyek az ilyen típusú bejelentkezési kérelmek nem teljes listája.
 

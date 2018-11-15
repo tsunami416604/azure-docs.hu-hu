@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: e002f99cc16721b78d85284105ce22ee7d1eb9a3
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: HT
+ms.openlocfilehash: 45d299e2d5e1f9c9c454e6b2f77df7cdf8295e5f
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574827"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568709"
 ---
 # <a name="quickstart-build-a-mongodb-api-xamarinforms-app-with-net-and-the-azure-portal"></a>Rövid útmutató: MongoDB API Xamarin.Forms-alkalmazás létrehozása a .NET-tel az Azure Portalon
 
@@ -79,7 +79,7 @@ Ha nem szeretné a gitet használni, [a projektet ZIP-fájlként is letöltheti]
 
 Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-string) szakaszra.
 
-Az alábbi kódrészletek mind az src/TaskList.Core/Services/MongoService.cs útvonalon található `MongoService` osztályból származnak.
+Az alábbi kódrészletek a rendszer az összes átveszi a `MongoService` osztályhoz, a következő elérési úton található: src/TaskList.Core/Services/MongoService.cs.
 
 * Inicializálja a Mongo Clientet.
     ```cs

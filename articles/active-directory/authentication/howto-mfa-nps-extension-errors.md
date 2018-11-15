@@ -5,21 +5,21 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 11/13/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 58bb3ae39ecd5631508ca1d09bf1d9d8f4d75063
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 3820aae1e926e51ffa88fabc94e3572b286162de
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036665"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634226"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication az NPS-bővítményének hibaüzenetek feloldása
 
-Ha az Azure multi-factor Authentication NPS-bővítményéhez hibákat észlel, ez a cikk segítségével gyorsabban megoldáshoz. 
+Ha az Azure multi-factor Authentication NPS-bővítményéhez hibákat észlel, ez a cikk segítségével gyorsabban megoldáshoz. Az NPS-bővítmény naplók az eseménynaplóban alatt találhatók **egyéni nézetek** > **kiszolgálói szerepkörök** > **hálózati házirend- és elérési szolgáltatások** a a kiszolgáló, amelyen telepítve van-e az NPS bővítményével.
 
 ## <a name="troubleshooting-steps-for-common-errors"></a>Gyakori hibák hibaelhárítási lépéseket
 
@@ -36,9 +36,6 @@ Ha az Azure multi-factor Authentication NPS-bővítményéhez hibákat észlel, 
 | **REQUEST_MISSING_CODE** | Győződjön meg arról, hogy a titkosítási protokollt a hálózati házirend- és NAS-kiszolgálók közötti támogatja-e a másodlagos hitelesítési módszert használ. **A PAP** a felhőben, az Azure MFA hitelesítési módszereket támogatja: telefonhívás, egyirányú SMS, mobilalkalmazásbeli értesítés és mobilalkalmazásbeli ellenőrző kód. **CHAPv2** és **EAP** telefonhívás- és mobilalkalmazás-értesítés támogatja. |
 | **USERNAME_CANONICALIZATION_ERROR** | Ellenőrizze, hogy a felhasználó szerepel a helyszíni Active Directory-példánynak, valamint, hogy a hálózati házirend-kiszolgáló szolgáltatást a jogosult a könyvtár eléréséhez. Erdők közötti bizalmi kapcsolatok, használatakor [forduljon az ügyfélszolgálathoz](#contact-microsoft-support) további segítségért. |
 
-
-   
-
 ### <a name="alternate-login-id-errors"></a>Alternatív bejelentkezési azonosító hibák
 
 | Hibakód | Hibaüzenet | Hibaelhárítási lépések |
@@ -46,7 +43,6 @@ Ha az Azure multi-factor Authentication NPS-bővítményéhez hibákat észlel, 
 | **ALTERNATE_LOGIN_ID_ERROR** | Chyba: userObjectSid-címkeresés sikertelen volt | Győződjön meg arról, hogy a felhasználó létezik-e a helyszíni Active Directory-példányában. Erdők közötti bizalmi kapcsolatok, használatakor [forduljon az ügyfélszolgálathoz](#contact-microsoft-support) további segítségért. |
 | **ALTERNATE_LOGIN_ID_ERROR** | Hiba: Nem sikerült keresési alternatív LoginId | Győződjön meg arról, hogy LDAP_ALTERNATE_LOGINID_ATTRIBUTE értékre van állítva egy [érvényes active directory-attribútumot](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx). <br><br> Ha LDAP_FORCE_GLOBAL_CATALOG True értékre van állítva, vagy LDAP_LOOKUP_FORESTS egy nem üres érték van beállítva, győződjön meg arról, hogy konfigurálta a globális katalógus és, hogy a AlternateLoginId attribútumot ad hozzá. <br><br> LDAP_LOOKUP_FORESTS egy nem üres érték van beállítva, győződjön meg arról, hogy helyesen szerepel-e az értéket. Ha egynél több erdő neve, a neveket pontosvesszővel elválasztva, szóközt nem kell elválasztva. <br><br> Ha ezek a lépések nem oldják meg a problémát, [forduljon az ügyfélszolgálathoz](#contact-microsoft-support) további segítséget itt találhat. |
 | **ALTERNATE_LOGIN_ID_ERROR** | Chyba: Alternatív LoginId érték üres | Győződjön meg arról, hogy a felhasználó a AlternateLoginId attribútum van konfigurálva. |
-
 
 ## <a name="errors-your-users-may-encounter"></a>A felhasználók előfordulhatnak hibák
 
@@ -69,7 +65,7 @@ Ha az Azure multi-factor Authentication NPS-bővítményéhez hibákat észlel, 
 
 Egyes esetekben a felhasználók lehet, hogy üzenetek beolvasása a multi-factor Authentication használatát, mert a hitelesítési kérelem sikertelen volt. Ezek a hibák a konfiguráció a termék nem, de a szándékos figyelmeztetések vannak elmagyarázza, hogy miért a hitelesítési kérelem megtagadva.
 
-| Hibakód | Hibaüzenet | Ajánlott lépések | 
+| Hibakód | Hibaüzenet | Javasolt lépések | 
 | ---------- | ------------- | ----------------- |
 | **OathCodeIncorrect** | Hibás kódot entered\OATH kód helytelen | Nem hiba, a felhasználó sikeres megadott kód helytelen. | Az a felhasználó hibás kódot adott meg. Rendelkezik, azokat újra egy új kódot kér, vagy jelentkezzen be újra. | 
 | **SMSAuthFailedMaxAllowedCodeRetryReached** | Elérte a maximális megengedett kódot újrapróbálkozási | A felhasználó az ellenőrző kérdés túl sokszor sikertelen volt. A beállítások attól függően, előfordulhat, hogy szükségük lehet a rendszergazdája mostantól feloldva.  |
@@ -97,7 +93,7 @@ Ha az egyik ezeket a hibákat észlel, azt javasoljuk, hogy Ön [forduljon az ü
 
 ### <a name="troubleshoot-user-accounts"></a>Felhasználói fiókok hibáinak elhárítása
 
-Ha a felhasználók [problémákat tapasztal a kétlépéses ellenőrzéssel](../user-help/multi-factor-authentication-end-user-troubleshoot.md), Súgó őket saját diagnosztizálhatja a problémákat. 
+Ha a felhasználók [problémákat tapasztal a kétlépéses ellenőrzéssel](../user-help/multi-factor-authentication-end-user-troubleshoot.md), Súgó őket saját diagnosztizálhatja a problémákat.
 
 ### <a name="contact-microsoft-support"></a>Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
 
@@ -131,5 +127,3 @@ Támogatási diagnosztikai hibakeresési naplók összegyűjtése, használja a 
 
 5. Nyissa meg a Beállításszerkesztőt, és keresse meg a HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa set **VERBOSE_LOG** való **false (hamis)**
 6. Zip-a C:\NPS mappa tartalmát, és csatolja a tömörített fájlt a támogatási esetet.
-
-

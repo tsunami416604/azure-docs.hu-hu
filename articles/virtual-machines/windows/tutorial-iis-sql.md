@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – SQL&#47;IIS&#47;.NET vermet futtató virtuális gépek létrehozása az Azure-ban | Microsoft Docs
+title: Oktatóanyag – hozzon létre virtuális gépeken futó SQL, IIS, .NET verem az Azure-ban |} A Microsoft Docs
 description: Ez az oktatóanyag bemutatja, hogyan telepítheti az Azure SQL, IIS, .NET vermet Windows rendszerű virtuális gépeken az Azure-ban.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 02/27/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 357a81ef3ab23a1e06b88f083c2fcdc35b27853d
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 4909edf6e434e626e89409f01ae0f5fbca5bf442
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49464910"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515488"
 ---
-# <a name="tutorial-install-the-sql47iis47net-stack-in-a-windows-vm-with-azure-powershell"></a>Oktatóanyag: Az SQL&#47;IIS&#47;.NET verem telepítése Windows rendszerű virtuális gépeken az Azure PowerShell használatával
+# <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>Oktatóanyag: Telepítse az SQL, IIS, .NET verem egy Windows-beli virtuális gépen az Azure PowerShell használatával
 
-Ebben az oktatóanyagban egy SQL&#47;IIS&#47;.NET vermet fogunk telepíteni az Azure PowerShell-lel. Ez a verem két, Windows Server 2016-alapú virtuális gépből áll, amelyek közül az egyiken az IIS és a .NET, a másikon pedig az SQL Server fut.
+Ebben az oktatóanyagban egy SQL, IIS, .NET telepítjük stack az Azure PowerShell-lel. Ez a verem két, Windows Server 2016-alapú virtuális gépből áll, amelyek közül az egyiken az IIS és a .NET, a másikon pedig az SQL Server fut.
 
 > [!div class="checklist"]
 > * Virtuális gép létrehozása 
@@ -57,7 +57,7 @@ New-AzureRmVm `
     -OpenPorts 80,3389 
 ```
 
-Telepítse az IIS-t és a .NET-keretrendszert az egyéni szkriptbővítmény segítségével.
+Az IIS és az egyéni szkriptek futtatására szolgáló bővítmény a használatával a .NET-keretrendszer telepítése a [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) parancsmagot.
 
 ```azurepowershell-interactive
 Set-AzureRmVMExtension `

@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.reviewer: sgilley
 author: hning86
 ms.author: haining
-ms.date: 09/24/2018
-ms.openlocfilehash: e8ebfbfe1d12af892208f67e67c69f25631acb28
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.date: 11/09/2018
+ms.openlocfilehash: fff08131af277b20034ad23c354b70e73ae32f2e
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158839"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578280"
 ---
 # <a name="quickstart-use-python-to-get-started-with-azure-machine-learning"></a>Rövid útmutató: A Python használata az Azure Machine Learning szolgáltatással való ismerkedéshez
 
@@ -39,6 +39,9 @@ A következő Azure-erőforrásokat a rendszer automatikusan hozzáadja a munkat
 - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
+>[!NOTE]
+> Ebben a cikkben kód teszteltük az Azure Machine Learning SDK verziója 0.1.74 
+
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 
@@ -57,28 +60,31 @@ Azt javasoljuk, hogy az SDK telepítése előtt először hozzon létre egy elk�
 
 Nyisson meg egy parancssori ablakot. Ezután hozzon létre egy új Conda-környezetet `myenv` néven, a Python 3.6-os verziójával.
 
-```sh
+```shell
 conda create -n myenv -y Python=3.6
 ```
 
 Aktiválja a környezetet.
 
-  ```sh
+  ```shell
   conda activate myenv
   ```
 
 ### <a name="install-the-sdk"></a>Az SDK telepítése
 
-Az aktivált conda-környezetben telepítse az SDK-t. Ez a kód telepíti a Machine Learning SDK alapvető összetevőit. A Jupyter-notebook-kiszolgálót is telepíti a `myenv` Conda-környezetben. A telepítés befejezése **körülbelül négy percet** vesz igénybe.
+Az aktivált conda-környezetben telepítse az SDK-t. Az alábbi parancs telepíti a Machine Learning SDK alapvető összetevői. A Jupyter-notebook-kiszolgálót is telepíti a `myenv` Conda-környezetben. A telepítés befejezéséhez, a gép konfigurációjától függően néhány percet vesz igénybe.
 
-```sh
+```shell
+# install the base SDK and Jupyter Notebook
 pip install azureml-sdk[notebooks]
 ```
+
+
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
 A Jupyter-notebook indításához írja be ezt a parancsot.
-```sh
+```shell
 jupyter notebook
 ```
 
@@ -86,10 +92,7 @@ A böngészőablakban hozzon létre egy új notebookot az alapértelmezett `Pyth
 
 Az SDK-verzió megjelenítéséhez írja be a következő Python-kódot egy notebookcellába, és hajtsa végre a kódot.
 
-```python
-import azureml.core
-print(azureml.core.VERSION)
-```
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=import)]
 
 Hozzon létre egy új Azure-erőforráscsoportot és egy új munkaterületet.
 
@@ -98,10 +101,10 @@ Keresse meg az `<azure-subscription-id>` értékét [a Microsoft Azure Portalon 
 ```python
 from azureml.core import Workspace
 ws = Workspace.create(name='myworkspace',
-                      subscription_id='<azure-subscription-id>',
+                      subscription_id='<azure-subscription-id>',    
                       resource_group='myresourcegroup',
                       create_resource_group=True,
-                      location='eastus2' # or other supported Azure region
+                      location='eastus2' # or other supported Azure region  
                      )
 ```
 
@@ -109,9 +112,8 @@ Előfordulhat, hogy a fenti kód végrehajtása megnyit egy új böngészőablak
 
 A munkaterület részleteinek (például társított tárolás, tárolóregisztrációs adatbázis és Key Vault-tároló) megtekintéséhez adja meg a következő kódot.
 
-```python
-ws.get_details()
-```
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=getDetails)]
+
 
 ## <a name="write-a-configuration-file"></a>Konfigurációs fájl írása
 
@@ -119,14 +121,8 @@ A munkaterület adatait mentse el egy konfigurációs fájlban az aktuális kön
 
 Ezzel a munkaterület-konfigurációs fájl megkönnyíti a munkaterület újbóli betöltését, ha később is szüksége lesz rá. A munkaterületet az ugyanabban a könyvtárban vagy alkönyvtárban lévő egyéb notebookokkal és szkriptekkel együtt is betöltheti. 
 
-```python
-# Create the configuration file.
-ws.write_config()
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=writeConfig)]
 
-# Use this code to load the workspace from 
-# other scripts and notebooks in this directory.
-# ws = Workspace.from_config()
-```
 
 A `write_config()` API-hívás létrehozza a konfigurációs fájlt az aktuális könyvtárban. A `config.json` fájl a következő szkriptet tartalmazza.
 
@@ -142,24 +138,8 @@ A `write_config()` API-hívás létrehozza a konfigurációs fájlt az aktuális
 
 Írjon olyan kódot, amely az alapszintű SDK API-kat használja a kísérleti futtatások nyomon követéséhez.
 
-```python
-from azureml.core import Experiment
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=useWs)]
 
-# create a new experiment
-exp = Experiment(workspace=ws, name='myexp')
-
-# start a run
-run = exp.start_logging()
-
-# log a number
-run.log('my magic number', 42)
-
-# log a list (Fibonacci numbers)
-run.log_list('my list', [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]) 
-
-# finish the run
-run.complete()
-```
 
 ## <a name="view-logged-results"></a>A naplózott eredmények megtekintése
 A futtatás végeztével áttekintheti a próbafuttatást az Azure Portalon. A következő kód használatával nyomtassa ki a legutóbbi futtatás eredményeinek URL-címét.
@@ -178,9 +158,8 @@ A hivatkozás segítségével a böngészőjében megtekintheti a naplózott ér
 
 Ha nem tervezi használni az itt létrehozott erőforrásokat, törölje őket, nehogy többletköltségekkel kelljen számolnia.
 
-```python
-ws.delete(delete_dependent_resources=True)
-```
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=delete)]
+
 
 ## <a name="next-steps"></a>További lépések
 
@@ -192,10 +171,34 @@ A Machine Learning-oktatóanyagokkal való használathoz szüksége lesz még n�
 1. A parancssori ablakban használja a `Ctrl`+`C` billentyűkombinációt a jegyzetfüzet-kiszolgáló leállításához.
 1. Telepítse a további csomagokat.
 
-    ```sh
+    ```shell
     conda install -y cython matplotlib scikit-learn pandas numpy
     pip install azureml-sdk[automl]
+
+    # install run history widget
+    jupyter nbextension install --py --user azureml.train.widgets
+
+    # enable run history widget
+    jupyter nbextension enable --py --user azureml.train.widgets
     ```
+
+    Különböző "plusz" kulcsszó használatával további összetevők az SDK telepítése.
+
+    ```shell
+    # install the base SDK and auto ml components
+    pip install azureml-sdk[automl]
+
+    # install the base SDK and model explainability component
+    pip install azureml-sdk[explain]
+
+    # install the base SDK and experimental components
+    pip install azureml-sdk[contrib]
+
+    # install the base SDK and automl components in Azure Databricks environment
+    # read more at: https://github.com/Azure/MachineLearningNotebooks/tree/master/databricks
+    pip install azureml-sdk[databricks]
+    ```
+
 
 Miután telepítette ezeket a csomagokat, kövesse a modellek betanításával és üzembe helyezésével kapcsolatos oktatóanyagokat. 
 

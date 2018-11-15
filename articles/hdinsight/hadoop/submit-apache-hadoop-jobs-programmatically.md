@@ -1,6 +1,6 @@
 ---
-title: Hadoop-feladatok elküldése a HDInsightban
-description: Útmutató az Azure HDInsight Hadoop-feladatok elküldése.
+title: A HDInsight Apache Hadoop-feladatok elküldése
+description: Útmutató az Azure HDInsight az Apache Hadoop-feladatok elküldéséhez.
 ms.reviewer: jasonh
 services: hdinsight
 ms.author: hrasheed
@@ -9,18 +9,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 9a764814028c1858139e2439c674c176d4e754ba
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 633a5c26711b7ef9f891455c6712b77238fd3a62
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009140"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51631966"
 ---
 # <a name="submit-hadoop-jobs-in-hdinsight"></a>Hadoop-feladatok elküldése a HDInsightban
 
-Az Azure HDInsight Hadoop-feladatokat küldhet a HDInsight, a curl vagy az Azure PowerShell a Microsoft .NET SDK használatával.
+Az Azure HDInsight az Apache Hadoop-feladatok küldhet a HDInsight, a curl vagy az Azure PowerShell a Microsoft .NET SDK használatával.
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>További források
 
 - **.NET SDK-VAL**:
 

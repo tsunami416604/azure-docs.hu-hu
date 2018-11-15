@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ced100f0bdd20841648ca84dfcab1847bdcd3096
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: d7097886b746c225bb420f9a96e2b7ef5c95c913
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362483"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684739"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Nyomon követheti a felhasználói viselkedés az Azure Active Directory B2C az Application Insights használatával
 
@@ -31,7 +31,7 @@ Azure Active Directory (Azure AD) B2C-vel együtt az Azure Application Insights 
 
 ## <a name="how-it-works"></a>Működés
 
-Az Azure AD B2C az identitás-kezelőfelületi keretrendszer magában foglalja a szolgáltató `Handler="Web.TPEngine.Providers.UserJourneyContextProvider, Web.TPEngine, Version=1.0.0.0`. A kialakítási kulcsot a megadott Azure AD B2C használatával közvetlenül az Application Insights küld eseményadatokat.
+Az Azure AD B2C az identitás-kezelőfelületi keretrendszer magában foglalja a szolgáltató `Handler="Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0`. A kialakítási kulcsot a megadott Azure AD B2C használatával közvetlenül az Application Insights küld eseményadatokat.
 
 A technikai profil a szolgáltató használ egy esemény az Azure AD B2C-ből meghatározására. A profil megadja az esemény, a jogcímeket, které jsou zaznamenány és a kialakítási kulcs neve. Az esemény közzétételéhez majd hozzáadja a technikai profil egy `orchestration step`, vagy mint egy `validation technical profile` egy egyéni felhasználói interakciósorozatban szereplő.
 

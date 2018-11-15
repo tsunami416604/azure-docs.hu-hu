@@ -1,6 +1,6 @@
 ---
-title: Az SSH egy HDInsight-fürtön – Azure Hadoop a Pig használata
-description: Ismerje meg, hogyan csatlakozhat egy Linux-alapú Hadoop-fürtöt, az SSH és a Pig parancs futása Pig Latin utasításokkal majd használja, vagy egy batch-feladatot.
+title: Az Apache Pig használata egy HDInsight-fürtön – Azure SSH-n keresztül
+description: Ismerje meg, hogyan csatlakozhat egy Linux-alapú Apache Hadoop-fürtöt, az SSH és a Pig parancs futása Pig Latin utasításokkal majd használja, vagy egy batch-feladat.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1deb44fecad6c120dd1e8f82cec36bff6353fc0b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6bcd2d299d3816c17265eef658ff1f01409828a1
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51003880"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632222"
 ---
-# <a name="run-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>A Pig-parancsot (SSH) rendelkező Linux-alapú fürt Pig-feladatok futtatása
+# <a name="run-apache-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>A Pig-parancsot (SSH) rendelkező Linux-alapú fürt Apache Pig-feladatok futtatása
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-Ismerje meg, interaktív módon futtatása a HDInsight-fürthöz az SSH-kapcsolatot a Pig-feladatokhoz. A Pig Latin programozási nyelv lehetővé teszi átalakítások használhatók, amelyek érvényesek a bemeneti adatokat és létrehozza a kívánt kimeneti ismertetik.
+Ismerje meg, hogyan interaktív módon futtathat Apache Pig-feladatok az SSH-kapcsolatot a HDInsight-fürt. A Pig Latin programozási nyelv lehetővé teszi átalakítások használhatók, amelyek érvényesek a bemeneti adatokat és létrehozza a kívánt kimeneti ismertetik.
 
 > [!IMPORTANT]
 > A jelen dokumentumban leírt lépések a Linux-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).

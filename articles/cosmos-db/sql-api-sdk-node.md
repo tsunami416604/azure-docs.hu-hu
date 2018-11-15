@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/24/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0dc7daebe91199cc6c54ac5e3a2d8f43e1592a73
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: b5ba00376e40b92a217bddd5b27c53dbe30c3cf3
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282424"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687503"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Node.js SDK-t az SQL API-hoz: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ ms.locfileid: "51282424"
 * Különböző elgépelte javításai
 
 ### <a name="2.0.4"/>2.0.4-es</a>
-* Javításokat, írja be a 2.0.3 bevezetett defenition probléma
+* Javítások írja be a definíció probléma 2.0.3 rendszerben bevezetett
 
 ### <a name="2.0.3"/>2.0.3</a>
 * Távolítsa el `big-integer` függőség
@@ -153,7 +153,7 @@ ms.locfileid: "51282424"
 * Kijavított RangePartitionResolver.resolveForRead hiba, ahol ez volt nem visszaadó hivatkozások a hibás concat eredmények miatt.
 
 ### <a name="1.5.5"/>1.5.5</a>
-* Rögzített hashParitionResolver resolveForRead(): Ha nincs megadva partíciós kulcs lett kivétel a kivétel, minden regisztrált hivatkozások listájának visszaadása helyett.
+* Rögzített hashPartitionResolver resolveForRead(): Ha nincs megadva partíciós kulcs lett kivétel a kivétel, minden regisztrált hivatkozások listájának visszaadása helyett.
 
 ### <a name="1.5.4"/>1.5.4</a>
 * Javítva [#100](https://github.com/Azure/azure-documentdb-node/issues/100) – HTTPS ügynök dedikált: az Azure Cosmos DB célokra globális ügynök módosítása. Használja a dedikált ügynököt az összes a lib kérelmek.

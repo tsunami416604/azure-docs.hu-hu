@@ -2,19 +2,19 @@
 title: Oktatóanyag – ASA-feladatok üzembe helyezése Azure IoT Edge-eszközökön | Microsoft Docs
 description: Az oktatóanyagban egy Azure Stream Analytics-példányt helyezünk üzembe modulként egy IoT Edge-eszközre.
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: b85fe520bf29d10bb3dac1246349abbdadaf6df3
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: 2188e21cfd29ac8ac2d44878819ee62a3e2d555e
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158737"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566941"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>Oktatóanyag: Az Azure Stream Analytics üzembe helyezése IoT Edge-modulként (előzetes verzió)
 

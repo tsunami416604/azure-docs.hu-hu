@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/14/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: dce9d4d5d1f2e3e50cabb86ee0d8d14b2fce2923
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: f0c627c1b0ab5f551ed71c3c30eb1dccc6c930a3
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230029"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686347"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Az Azure Stackben a MySQL erőforrás-szolgáltató üzembe helyezése
 
@@ -45,7 +45,7 @@ Nincsenek számos előfeltételt kell lennie a helyen, az Azure Stack MySQL erő
 
     | Azure Stack minimális verziója | MySQL-RP-verzió|
     | --- | --- |
-    | Verzió 1804 (1.0.180513.1)|[MySQL-RP 1.1.24.0 verzió](https://aka.ms/azurestackmysqlrp1804) |
+    | Verzió 1808 (1.1808.0.97)|[MySQL-RP 1.1.30.0 verzió](https://aka.ms/azurestackmysqlrp11300) |
     |     |     |
 
 * Ellenőrizze, hogy adatközpont integrációja Előfeltételek teljesülését:
@@ -90,7 +90,7 @@ Ezeket a paramétereket a parancssorból is megadhat. Ha nem, vagy ha minden par
 | **VMLocalCredential** | A MySQL erőforrás-szolgáltató virtuális Gépet, a helyi rendszergazdai fiók hitelesítő adatait. | _Szükséges_ |
 | **PrivilegedEndpoint** | Az IP-cím vagy a kiemelt végponthoz DNS-nevét. |  _Szükséges_ |
 | **AzureEnvironment** | Az Azure-környezethez az Azure Stack üzembe helyezéséhez használt szolgáltatás-rendszergazdai fiókot. Kizárólag az Azure AD központi telepítések esetén szükséges. Támogatott környezeti nevek **AzureCloud**, **AzureUSGovernment**, vagy a China Azure AD-ben való használatakor **AzureChinaCloud**. | AzureCloud |
-| **DependencyFilesLocalPath** | A csak integrált rendszerek a tanúsítvány .pfx fájlját ebben a könyvtárban kell elhelyezni. Kapcsolat nélküli környezetben, töltse le a [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) ebben a könyvtárban. Szükség esetén egy Windows Update MSU csomag itt másolhatja. | _Nem kötelező_ (_kötelező_ integrált rendszerek vagy kapcsolat nélküli környezetben) |
+| **DependencyFilesLocalPath** | A csak integrált rendszerek a tanúsítvány .pfx fájlját ebben a könyvtárban kell elhelyezni. Töltse le a leválasztott enviroments [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) ebben a könyvtárban. Szükség esetén egy Windows Update MSU csomag itt másolhatja. | _Nem kötelező_ (_kötelező_ integrált rendszerek vagy kapcsolat nélküli környezetben) |
 | **DefaultSSLCertificatePassword** | A .pfx tanúsítvány jelszava. | _Szükséges_ |
 | **MaxRetryCount** | Többször ismételje meg minden művelet, ha sikertelen egy kívánt száma.| 2 |
 | **RetryDuration** | Az időkorlát között eltelő időt másodpercben mérve. | 120 |
@@ -105,8 +105,8 @@ Minden manuális konfigurációs megszüntetésére, az erőforrás-szolgáltat�
 ```powershell
 # Install the AzureRM.Bootstrapper module, set the profile and install the AzureStack module
 Install-Module -Name AzureRm.BootStrapper -Force
-Use-AzureRmProfile -Profile 2017-03-09-profile
-Install-Module -Name AzureStack -RequiredVersion 1.4.0
+Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
+Install-Module -Name AzureStack -RequiredVersion 1.5.0
 
 # Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"  
