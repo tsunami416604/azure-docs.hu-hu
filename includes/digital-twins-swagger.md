@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/13/2018
 ms.author: adgera
 ms.custom: include file
-ms.openlocfilehash: beae54dc36225dd26b4eb1d1a8f89d1005a33e93
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: fa99fa3b6ae9e809718121787cc986d02bcf824b
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626337"
+ms.locfileid: "51678191"
 ---
 > [!TIP]
 > A Swagger szakmai bemutatóhoz biztosítunk az API-funkció bemutatásához beállítása.
@@ -22,10 +22,10 @@ ms.locfileid: "51626337"
 A saját létrehozott felügyeleti API Swagger-dokumentációját a érhető el:
 
 ```plaintext
-https://yourInstanceName.yourLocation.azuresmartspaces.net/management/swagger
+https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Egyedi név | Csere erre |
+| Name (Név) | Csere erre |
 | --- | --- |
-| Példánynév | Az Azure digitális Twins-példány nevét |
-| yourLocation | Melyik kiszolgáló régióban lévő üzemeltetett a példány |
+| YOUR_INSTANCE_NAME | Az Azure digitális Twins-példány nevét |
+| YOUR_LOCATION | Melyik kiszolgáló régióban lévő üzemeltetett a példány |

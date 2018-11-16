@@ -13,15 +13,15 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 09/24/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 82cd29cf1a635d1cd613d289a5d8db6ef54ee661
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
-ms.translationtype: HT
+ms.openlocfilehash: 0afa4f85f443789d1ce7e79d0708967e308a4683
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49398748"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623199"
 ---
 # <a name="what-is-azure-active-directory-monitoring-preview"></a>Mit jelent az Azure Active Directory monitorozása? (előzetes verzió)
 
@@ -32,7 +32,6 @@ A naplókat jelenleg a következő helyekre irányíthatja:
 - Egy Azure-tárfiók.
 - Egy Azure-eseményközpontba, amelyen keresztül integrálhatja őket a Splunk- és Sumologic-példányokba.
 - Egy Azure Log Analytics-munkaterületre, ahol elemezheti az adatokat, irányítópultokat készíthet, és riasztásokat hozhat létre a specifikus eseményekhez.
-
 
 ## <a name="diagnostic-settings-configuration"></a>Diagnosztikai beállítások konfigurálása
 
@@ -53,7 +52,7 @@ Ha egy Azure-tárfiókba irányítja a naplókat, ott az [adatmegőrzési szabá
 
 ## <a name="stream-logs-to-event-hub"></a>Naplók streamelése egy eseményközpontba
 
-Ha egy Azure-eseményközpontba irányítja a naplókat, olyan külső SIEM-eszközökkel integrálhatja őket, mint a Sumologic és a Splunk. Az integráció révén az Azure AD-tevékenységnaplók adatait a SIEM megoldás által kezelt egyéb adatokkal kombinálhatja, így részletesebb megállapításokat kaphat a környezetről. További információ [a naplók eseményközpontokba való streameléséről](tutorial-azure-monitor-stream-logs-to-event-hub.md).
+Ha egy Azure-eseményközpontba irányítja a naplókat, olyan külső SIEM-eszközökkel integrálhatja őket, mint a Sumologic és a Splunk. Ez az integráció lehetővé teszi, hogy kombinálhatja az Azure ad-ben tevékenységnapló adatainak más adatokkal kezeli a siem-nek, a környezet részletesebb betekintést biztosít. További információ [a naplók eseményközpontokba való streameléséről](tutorial-azure-monitor-stream-logs-to-event-hub.md).
 
 ## <a name="send-logs-to-log-analytics"></a>Naplók küldése a Log Analyticsbe
 

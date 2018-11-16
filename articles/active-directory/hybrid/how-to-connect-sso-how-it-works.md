@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 83a36c81ad88ccb37fe4a258f895b1e1cbe9299f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6f93d7c4b76d635a221c2711ce9d4ef0de2286f6
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311016"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687401"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: részletes technikai bemutatása
 
@@ -79,8 +79,8 @@ Egy natív ügyfél bejelentkezési folyamata a következőképpen történik:
 
 1. A felhasználó megpróbál hozzáférni egy natív alkalmazást (például az Outlook ügyfélprogram) tartományhoz csatlakoztatott vállalati eszköz a vállalati hálózaton belül.
 2. Ha a felhasználó még nem jelentkezett be, a natív alkalmazás az eszköz Windows-munkamenetből kérdezi le a felhasználó felhasználóneve.
-3. Az alkalmazás a felhasználónév küld az Azure ad-hez, és kéri le a bérlője WS-Trust MEX végpont.
-4. Az alkalmazás ezután lekérdezi a WS-Trust MEX végpontot annak ellenőrzéséhez, hogy integrált hitelesítés végpont érhető el.
+3. Az alkalmazás a felhasználónév küld az Azure ad-hez, és kéri le a bérlője WS-Trust MEX végpont. A WS-Trust végpont kizárólag a közvetlen egyszeri bejelentkezés szolgáltatás használja, és nem a WS-Trust protokollal általános megvalósítását az Azure ad-ben.
+4. Az alkalmazás ezután lekérdezi a WS-Trust MEX végpontot annak ellenőrzéséhez, hogy integrált hitelesítés végpont érhető el. Az integrált hitelesítési végpontja kizárólag a közvetlen egyszeri bejelentkezés funkció használják.
 5. Ha a 4. lépés sikeres, a Kerberos kihívást jelenik meg.
 6. Ha az alkalmazás nem sikerült beolvasni a Kerberos-jegy, továbbítja, akár az Azure AD integrált hitelesítési végpontja.
 7. Azure ad-ben a Kerberos-jegy visszafejti, majd érvényesíti azt.

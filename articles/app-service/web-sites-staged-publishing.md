@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: ea9167404034911a0e917374fbdb9962da1578d5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b5a06cff653007568b4ab2b44624b6314413f8a6
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257833"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636067"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Állítsa be átmeneti környezeteket az Azure App Service-ben
 <a name="Overview"></a>
 
-A web app, webalkalmazás, Linux, a mobil háttérrendszer és az API-alkalmazás telepítésekor [App Service-ben](https://go.microsoft.com/fwlink/?LinkId=529714), helyezhet üzembe egy külön üzembe helyezési pont helyett az alapértelmezett éles tárolóhelyre való futtatáskor a **Standard** vagy **prémium** App Service-csomag szint. Üzembe helyezési pontok valójában élő alkalmazások saját állomásnevekkel. Alkalmazás tartalmát és a konfigurációs elemek felcserélhetők két üzembe helyezési tárhely, többek között az üzemelési között. Üzembehelyezési pont, az alkalmazás üzembe helyezése a következő előnyökkel jár:
+A web app, webalkalmazás, Linux, a mobil háttérrendszer és az API-alkalmazás telepítésekor [App Service-ben](https://go.microsoft.com/fwlink/?LinkId=529714), helyezhet üzembe egy külön üzembe helyezési pont helyett az alapértelmezett éles tárolóhelyre való futtatáskor a **Standard**, **Prémium**, vagy **elkülönített** App Service-csomag szint. Üzembe helyezési pontok valójában élő alkalmazások saját állomásnevekkel. Alkalmazás tartalmát és a konfigurációs elemek felcserélhetők két üzembe helyezési tárhely, többek között az üzemelési között. Üzembehelyezési pont, az alkalmazás üzembe helyezése a következő előnyökkel jár:
 
 * Egy átmeneti üzembe helyezési pont az alkalmazások változásairól sikeressége az üzemelési előtt ellenőrizheti.
 * Alkalmazások üzembe helyezése egy tárhely először és sikeressége az éles környezetbe biztosítja, hogy a összes példányát a tárolóhely, mielőtt éles környezetben a felcserélés folyamatban vannak bemelegíteni. Ez nem jár állásidővel, az alkalmazás központi telepítésekor. A forgalom átirányítása zökkenőmentesen, és nincsenek kérelmek eldobásakor felcserélési művelet eredményeként. A teljes munkafolyamat konfigurálásával automatizálható [automatikus felcserélés](#Auto-Swap) , ha nincs szükség a felcserélés előtti ellenőrzés.
@@ -36,7 +36,7 @@ Minden App Service-csomag szint támogatja az üzembe helyezési pontok eltérő
 <a name="Add"></a>
 
 ## <a name="add-a-deployment-slot"></a>Üzembehelyezési pont hozzáadása
-Az alkalmazásnak futnia kell a **Standard** vagy **prémium** szint ahhoz, hogy több üzembe helyezési pontok engedélyezése.
+Az alkalmazásnak futnia kell a **Standard**, **prémium szintű**, vagy **elkülönített* szint ahhoz, hogy több üzembe helyezési pontok engedélyezése.
 
 1. Az a [az Azure Portal](https://portal.azure.com/), nyissa meg az alkalmazás [erőforráspanel](../azure-resource-manager/resource-group-portal.md#manage-resources).
 2. Válassza ki a **üzembe helyezési pontok** lehetőséget, majd kattintson a **tárhely felvétele**.
@@ -44,7 +44,7 @@ Az alkalmazásnak futnia kell a **Standard** vagy **prémium** szint ahhoz, hogy
     ![Adjon hozzá egy új üzembe helyezési pont][QGAddNewDeploymentSlot]
    
    > [!NOTE]
-   > Ha az alkalmazás még nem szerepel a **Standard** vagy **prémium** szint, kapni fog egy üzenet jelzi, a támogatott szintek engedélyezésének a szakaszos közzétételt. Ezen a ponton rendelkezik-e a kívánt **frissítése** , és keresse meg a **méretezési** lapon az alkalmazás a folytatás előtt.
+   > Ha az alkalmazás még nem szerepel a **Standard**, **prémium**, vagy **elkülönített* szint, kapni fog egy üzenet jelzi, a támogatott szintek engedélyezésének a szakaszos közzétételt. Ezen a ponton rendelkezik-e a kívánt **frissítése** , és keresse meg a **méretezési** lapon az alkalmazás a folytatás előtt.
    > 
    > 
 3. Az a **tárhely felvétele** panelen nevezze el a tárolóhely, és válassza ki, hogy egy másik meglévő üzembe helyezési pont az alkalmazáskonfigurációt klónozásához. Kattintson a pipa jelre a folytatáshoz.

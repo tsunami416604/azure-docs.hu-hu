@@ -1,3 +1,16 @@
+---
+author: clemensv
+ms.service: service-bus-relay
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: clemensv
+ms.openlocfilehash: 13ac2ec0569dc79791eca9efb2bd51e7b76ddd05
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572218"
+---
 1. Jelentkezzen be az [Azure Portalra][Azure portal].
 2. A bal oldali menüben válassza az **+ Erőforrás létrehozása** elemet. Ezt követően válassza az **Integration** > **Relay** lehetőséget. Ha nem látja a **Relay** elemet a listában, válassza az **Összes megjelenítése** lehetőséget a jobb felső sarokban. 
 3. A **Névtér létrehozása** alatt adja meg a névtér nevét. A rendszer azonnal ellenőrzi, hogy a név elérhető-e.

@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 11/13/2018
 ms.author: danlep
-ms.openlocfilehash: a26b766c18ea2b14796af796abe7f36aa4fc1c66
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: de543798702137905ee5243c6ca8e502152f9c44
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854949"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634379"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR-feladatok hivatkozás: YAML
 
@@ -112,7 +112,7 @@ steps:
       [property]: [value]
 ```
 
-A `build` lépés típusát a következő paramétereket támogatja:
+A `build` lépés típusát a következő táblázatban a következő paramétereket támogatja. A `build` lépés típusát is támogatja az összes build beállításának a [docker build](https://docs.docker.com/engine/reference/commandline/build/) parancsot, mint például `--build-arg` buildelés változók beállítása.
 
 | Paraméter | Leírás | Optional |
 | --------- | ----------- | :-------: |
@@ -122,7 +122,7 @@ A `build` lépés típusát a következő paramétereket támogatja:
 
 ### <a name="properties-build"></a>Tulajdonságok: létrehozása
 
-A `build` lépés típusát támogatja ezeket a tulajdonságokat a részletei a következő tulajdonságokat a [feladat lépés tulajdonságai](#task-step-properties) című szakaszát.
+A `build` lépés az alábbi tulajdonságokat támogatja. Ezeket a tulajdonságokat az információk a [feladat lépés tulajdonságai](#task-step-properties) című szakaszát.
 
 | | | |
 | -------- | ---- | -------- |

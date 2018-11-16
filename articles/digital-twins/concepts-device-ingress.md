@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 11/13/2018
 ms.author: alinast
-ms.openlocfilehash: c15ce88bbd55becaf30098f2e3302d2e65bc11d2
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 9ce2f65af89e186a3cd32bd2900b5444fb556b08
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625725"
+ms.locfileid: "51636713"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Eszközkapcsolatok és bemenő telemetriaadatok
 
@@ -37,21 +37,25 @@ A következő szakaszokban megismerheti az IoT Hub eszköz kapcsolati karakterl�
 
 ## <a name="get-the-iot-hub-device-connection-string-from-the-management-api"></a>Az IoT Hub eszköz kapcsolati karakterláncának lekérése a felügyeleti API-ból
 
+[!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
+
 Tegye meg az eszköz API-t egy GET hívást egy `includes=ConnectionString` paramétert az IoT Hub eszköz kapcsolati karakterláncának beolvasása. Az eszköz szűrheti a GUID Azonosítóját vagy a Hardverazonosító, az adott eszköz.
 
 ```plaintext
-https://yourManagementApiUrl/api/v1.0/devices/yourDeviceGuid?includes=ConnectionString
+YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_GUID?includes=ConnectionString
 ```
+
+| Paraméter | Csere erre |
+| --- | --- |
+| *YOUR_DEVICE_GUID* | Az eszköz azonosítója |
 
 ```plaintext
-https://yourManagementApiUrl/api/v1.0/devices?hardwareIds=yourDeviceHardwareId&includes=ConnectionString
+YOUR_MANAGEMENT_API_URL/devices?hardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=ConnectionString
 ```
 
-| Egyéni attribútum neve | Csere erre |
+| Paraméter értéke | Csere erre |
 | --- | --- |
-| **yourManagementApiUrl** | A felügyeleti API teljes URL-címe |
-| **yourDeviceGuid** | Az eszköz azonosítója |
-| **yourDeviceHardwareId** | Az eszköz hardveres azonosítója |
+| *YOUR_DEVICE_HARDWARE_ID* | Az eszköz hardveres azonosítója |
 
 A válasz hasznos adatban, másolja ki az eszköz **connectionString** tulajdonság. Akkor használja az Azure IoT eszközoldali SDK-val adatokat küldeni a digitális Twins hívásakor.
 

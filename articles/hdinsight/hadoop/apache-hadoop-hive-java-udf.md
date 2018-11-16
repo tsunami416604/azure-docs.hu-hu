@@ -1,6 +1,6 @@
 ---
-title: Java felhasználói függvény (UDF) a Hive a HDInsight - az Azure használatával
-description: Ismerje meg, hogyan hozhat létre egy Java-alapú felhasználói függvény (UDF), amely Hive-val működik. Ebben a példában UDF alakít egy szöveges karakterláncot kisbetűssé tábláját.
+title: Java felhasználói függvény (UDF) az Apache Hive a HDInsight – Azure
+description: Ismerje meg, hogyan hozhat létre egy Java-alapú felhasználói függvény (UDF), amely az Apache Hive együttműködve. Ebben a példában UDF alakít egy szöveges karakterláncot kisbetűssé tábláját.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3d8f1d75b8e61bd611f58ed953a8357fb4a47c78
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 562320b49f92d9ebb0c74c06e27fab63681955be
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006243"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634073"
 ---
-# <a name="use-a-java-udf-with-hive-in-hdinsight"></a>A Java használata a HDInsight Hive-val UDF
+# <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Használja a Java UDF-ben az Apache Hive a HDInsight
 
-Ismerje meg, hogyan hozhat létre egy Java-alapú felhasználói függvény (UDF), amely Hive-val működik. Ebben a példában a Java UDF alakítja minden-kisbetűs karakterek szöveges karakterláncot tartalmazó táblát.
+Ismerje meg, hogyan hozhat létre egy Java-alapú felhasználói függvény (UDF), amely az Apache Hive együttműködve. Ebben a példában a Java UDF alakítja minden-kisbetűs karakterek szöveges karakterláncot tartalmazó táblát.
 
 ## <a name="requirements"></a>Követelmények
 

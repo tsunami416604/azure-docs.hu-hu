@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4960ee485ac8c6b233eacc569cdac6748481887d
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 50e252b7dbd20d5330f8117eaa45ccf52303f277
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50746428"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51678190"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Az Azure Premium Storage: Nagy teljesítményű rendszer tervezése
 
@@ -32,8 +32,8 @@ Ez a cikk segít a válasz a következő gyakori kérdésekre az Azure Premium S
 Adtunk ezeket az irányelveket kifejezetten a Premium Storage számára, mert a prémium szintű Storage futó számítási feladatok magas teljesítmény-és nagybetűket. Példák adtunk meg, ahol szükséges. Is alkalmazhat az egyes ezeket az irányelveket, Standard szintű Storage-lemezekkel IaaS virtuális gépeken futó alkalmazások.
 
 > [!NOTE]
-> Egyes esetekben egy teljesítményprobléma tűnik ténylegesen hálózati szűk keresztmetszeteket. Ezekben a helyzetekben, optimalizálja a [hálózati teljesítményt](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md).
-> Biztosítania kell, a virtuális gép támogatja a gyorsított hálózatkezeléssel. Ha igen, engedélyezheti azt mindkét központi telepítés után is [windows](../articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) és [linux](../articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms) virtuális gépeket.
+> Egyes esetekben egy lemez teljesítményprobléma tűnik ténylegesen hálózati szűk keresztmetszeteket. Ezekben a helyzetekben, optimalizálja a [hálózati teljesítményt](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md).
+> Ha a virtuális gép támogatja a gyorsított hálózatkezelés, győződjön meg arról, hogy engedélyezve van. Ha nincs engedélyezve, engedélyezheti a már üzembe helyezett virtuális gépeken is [Windows](../articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) és [Linux](../articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
 
 Mielőtt elkezdené, ha új prémium szintű Storage, először olvassa el a [Premium Storage: nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../articles/virtual-machines/windows/premium-storage.md) és [Azure Storage méretezhetőségi és Teljesítménycéljai](../articles/storage/common/storage-scalability-targets.md)cikkeket.
 
@@ -227,7 +227,7 @@ Az Azure Premium Storage általánosan elérhető nyolc adatlemez-méretet és a
 
 | Prémium szintű lemezek típusa  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-| Lemezméret           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1024 giB (1 TiB)    | A 2048 giB (2 Tib-ra)    | 4095 giB (4 TiB)    | 8192 giB (8 TiB)    | 16384 giB (16 TiB)    | 32 767 giB (32 GiB)    |
+| Lemezméret           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1024 GiB (1 TiB)    | 2048 GiB (2 TiB)    | 4095 GiB (4 TiB)    | 8192 GiB (8 TiB)    | 16384 giB (16 TiB)    | 32 767 giB (32 GiB)    |
 | IOPS-érték lemezenként       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500              | 15 000              | 20,000              |
 | Adattovábbítás lemezenként | 25 MiB másodpercenként  | 50 MiB másodpercenként  | 100 MiB másodpercenként |125 MiB másodpercenként | Másodpercenként 150 MiB | 200 MiB másodpercenként | 250 MiB másodpercenként | 250 MiB másodpercenként | 480 MiB másodpercenként | 750 MiB másodpercenként | 750 MiB másodpercenként |
 

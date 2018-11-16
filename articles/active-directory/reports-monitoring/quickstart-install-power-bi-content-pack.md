@@ -12,15 +12,15 @@ ms.component: report-monitor
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 07/23/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ba2784663a585aebb82ee149be3b54e73920f6dd
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
-ms.translationtype: HT
+ms.openlocfilehash: cd5da2a3c5fa3d9cd67715493eb649926badb694
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816650"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622534"
 ---
 # <a name="quickstart-install-azure-active-directory-power-bi-content-pack"></a>Rövid útmutató: Az Azure Active Directory Power BI-tartalomcsomag telepítése
 
@@ -29,7 +29,7 @@ ms.locfileid: "48816650"
 |Az Azure AD Power BI-tartalomcsomag jelenleg az Azure AD Graph API-jaival kéri le az adatokat az Azure AD-bérlőről. Ezért a tartalomcsomagban elérhető adatok, valamint a [jelentéskészítési Microsoft Graph API-k](concept-reporting-api.md) által lekért adatok között lehet némi eltérés. |
 |  |
 
-Az Azure Active Directoryhoz készült Power BI-tartalomcsomaggal részletesebb betekintést nyerhet az Active Directory-címtárában folyó tevékenységekbe. Az előre összeállított tartalomcsomag letöltésével jelentést készíthet a címtárban zajló tevékenységekről a Power BI gazdag vizualizációs képességeivel. Emellett létrehozhat saját irányítópultot is, és könnyedén megoszthatja szervezete bármely tagjával. 
+Az Azure Active Directory (Azure AD) a Power BI-tartalomcsomag teszi lehetővé a környezet a jelentési adatok vizualizálásához. Az előre összeállított tartalomcsomag letöltésével jelentést készíthet a címtárban zajló tevékenységekről a Power BI gazdag vizualizációs képességeivel. Emellett létrehozhat saját irányítópultot is, és könnyedén megoszthatja szervezete bármely tagjával. 
 
 Ebből a rövid útmutatóból elsajátíthatja a tartalomcsomag telepítését.
 

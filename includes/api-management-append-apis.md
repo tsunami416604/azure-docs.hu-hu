@@ -1,3 +1,16 @@
+---
+author: vladvino
+ms.service: api-management
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: vlvinogr
+ms.openlocfilehash: 2bfa356deeede1c16bd5a464ea7081132a67faf6
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572206"
+---
 ## <a name="append-other-apis"></a>Egyéb API-k hozzáfűzése
 
 Az API-k tartalmazhatnak különböző szolgáltatások által elérhetővé tett API-kat, beleértve az OpenAPI-specifikációt, egy SOAP API-t, valamint az Azure App Service, az Azure Function App, az Azure Logic Apps és az Azure Service Fabric API Apps funkcióját.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: a91e14afa8325e75507b2f65cd9d71ab38df4524
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 780799103708483fb0092c7a4c15bfaa3269c073
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235241"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636476"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>Egyéni lemezkép készítése egy virtuális Gépről
 
@@ -47,7 +47,7 @@ Egy egyéni lemezkép készítése egy üzembe helyezett virtuális Gépet, és 
 
     ![Egyéni lemezkép létrehozása](./media/devtest-lab-create-template/create-custom-image-blade.png)
 
-1. Válassza ki, hogy a sysprep a virtuális gépen futtattuk. Ha a sysprep nem futott le a virtuális gépen, adja meg, hogy a sysprep futtatása a virtuális gép létrehozásakor az egyéni rendszerképpel.
+1. Válassza ki, hogy a sysprep a virtuális gépen futtattuk. Ha a sysprep nem futott le a virtuális gépen, adja meg, hogy az egyéni rendszerkép létrehozásakor a virtuális gépen kell futtatni a sysprep.
 
 1. Válassza ki **OK** amikor befejeződött az egyéni rendszerkép létrehozására.
 

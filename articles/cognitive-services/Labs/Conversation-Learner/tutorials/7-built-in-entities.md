@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 2dbbf2a47cdc4240e5b0ba38658a4cb8d5307ff8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: cdd9ad16096c85db21829840b2bfd7acaced5942
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260057"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683501"
 ---
 # <a name="how-to-add-pre-built-entities"></a>Előre összeállított entitások hozzáadása
 Ez az oktatóanyag bemutatja, hogyan "beépített" entitásokat ad hozzá a Beszélgetéstanuló modell.
@@ -44,27 +44,28 @@ Előre összeállított entitások ismeri fel az általános típusú entitások
 
 1. Kattintson az entitásokat, majd az új entitás.
 2. Kattintson a legördülő EntityType, és válassza a datetimev2.
-    - Programozható és Negatable beállítások le vannak tiltva, mert előre hozhat létre entitásokat nem vonatkoznak.
+    - Programozható és Negatable beállítások le vannak tiltva, mert az előre összeállított entitások nem vonatkoznak.
 3. Kattintson a Létrehozás gombra.
 
-![](../media/tutorial7_entities.PNG)
+![](../media/tutorial7_entities_a.PNG)
 
 ### <a name="create-two-actions"></a>Hozzon létre két műveletet
 
-1. Kattintson a műveletek, majd az új művelet
-2. A válasz, írja be "a dátum az $luis-datetimev2".
-3. Kattintson a Létrehozás gombra.
+1. Kattintson a műveletek, majd az új művelet.
+1. A válasz, írja be "a dátum az $builtin-datetimev2".
+1. Az entitások szükséges, adja meg "$builtin-datetimev2".
+1. Kattintson a Létrehozás gombra.
 
-![](../media/tutorial7_actions.PNG)
+![](../media/tutorial7_actions_a.PNG)
 
 Ezután hozzon létre a második műveletet:
 
 1. Kattintson a műveletek, majd új műveletet egy másik művelet létrehozása.
-3. A válasz írja be a "Mi az a dátum?".
-4. Adja meg "a luis-datetimev2" kizárásának entitásokat.
-4. Kattintson a Létrehozás gombra
+1. A válasz írja be a "Mi az a dátum?".
+1. Az entitások kizárásához adja meg "$builtin-datetimev2".
+1. Kattintson a Létrehozás gombra.
 
-![](../media/tutorial7_actions2.PNG)
+![](../media/tutorial7_actions2_a.PNG)
 
 Most már két műveletet.
 
@@ -75,11 +76,11 @@ Most már két műveletet.
 3. Kattintson a pontszám műveletek, és válassza a "Mi az a dátum?"
 2. Adja meg a "ma". 
     - Figyelje meg még ma van megjelölve, és megjelenik a második sorban, mivel ez egy előre elkészített entitás, és nem szerkeszthető.
-5. Kattintson a pontszám műveletek
+5. Kattintson a pontszám műveletek.
     - Figyelje meg, hogy most már a dátum entitás memória szakaszban jelenik meg. 
     - Ha az egérmutatót a dátumot, a LUIS, amely használható által biztosított további adatokat fog látni, és további kezelhetők a kódban. 
-6. Válassza "a dátum az $luis-datetimev2".
-7. Kattintson a kész tanítás
+6. Válassza "a dátum az $builtin-datetimev2".
+7. Kattintson a tanítási kész gombra.
 
 ## <a name="next-steps"></a>További lépések
 

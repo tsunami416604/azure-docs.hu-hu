@@ -1,6 +1,6 @@
 ---
-title: A curl használatával, a HDInsight - Azure Hadoop Sqoop használata
-description: Ismerje meg, hogyan lehet távolról a Curl használatával HDInsight Sqoop-feladatok elküldése.
+title: Az Apache Sqoop használata a HDInsight - Azure Curl
+description: Ismerje meg, hogyan lehet távolról a Curl használatával HDInsight az Apache Sqoop-feladatok elküldése.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: fd05ee18ccad7e689f9679df2bbf80dc19e39368
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 4b565252c78bfe2194530d840651a57df2686728
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010439"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633173"
 ---
-# <a name="run-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>Sqoop-feladatok futtatása a curl használatával HDInsight a Hadoop-keretrendszerrel
+# <a name="run-apache-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>Az Apache Sqoop-feladatok futtatása a curl használatával HDInsight a Hadoop-keretrendszerrel
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Ismerje meg, hogyan Sqoop-feladatok futtatása a HDInsight Hadoop-fürtön a Curl használatával.
+Ismerje meg, hogyan lehet Apache Hadoop-fürt a HDInsight Apache Sqoop-feladatok futtatása a Curl használatával.
 
 A curl használatával mutatja be, hogyan használhatja a HDInsight nyers HTTP-kérelmek futtatásához, figyelése, és kérje le az eredményeket, a Sqoop feladatok használatával szolgál. Ez a módszer a WebHCat REST API-val (korábbi nevén templeton eszközön keresztül végzett) a HDInsight-fürt által biztosított.
 
@@ -100,7 +100,7 @@ A jelen cikkben ismertetett lépések elvégzéséhez a következőkre lesz szü
 * Tömeges exportálása – a Linux-alapú HDInsight, a Sqoop-összekötő segítségével a Microsoft SQL Server vagy az Azure SQL Database-adatok exportálása jelenleg nem támogatja a tömeges beszúrás.
 * Kötegelés – a Linux-alapú HDInsight használatakor a `-batch` Beszúrások végrehajtásakor váltson, Sqoop több beszúrás helyett a beszúrási műveletek kötegelése hajt végre.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Ahogyan ebben a dokumentumban, is használhatja a nyers HTTP-kérelmek futtatásához, figyelése és a Sqoop feladatok eredményeinek megtekintéséhez a HDInsight-fürtön.
 
 A cikk ezt használja a REST-felület további információkért lásd: a <a href="https://sqoop.apache.org/docs/1.99.3/RESTAPI.html" target="_blank">Sqoop REST API-útmutató</a>.

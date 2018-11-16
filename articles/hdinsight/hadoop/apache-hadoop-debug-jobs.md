@@ -1,5 +1,5 @@
 ---
-title: 'A HDInsight hadoop-keretrendszer hibakeresése: megtekinthetők a naplófájlok és a hibaüzenetek – Azure értelmezése '
+title: 'A HDInsight Apache hadoop-keretrendszer hibakeresése: megtekinthetők a naplófájlok és a hibaüzenetek – Azure értelmezése '
 description: További tudnivalók a hibaüzenetek kaphat, ha a PowerShell használatával HDInsight felügyelete és helyreállítása lépéseket.
 services: hdinsight
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 7600ff1a11435ee079fef80ecfa5ad88de1b4750
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 1589a5c1cab5a37322249762c840620d9ba4fc7e
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569022"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634634"
 ---
 # <a name="analyze-hadoop-logs"></a>Hadoop-naplók elemzése
 
-Minden egyes Azure HDInsight Hadoop-fürtöt az alapértelmezett fájlrendszerként használt Azure storage-fiókkal rendelkezik. A storage-fiókot az alapértelmezett tárfiók neve. Fürt használja az Azure Table storage és a Blob storage az alapértelmezett tárfiókot a naplók tárolásához.  Az alapértelmezett tárfiókot, a fürt számára, lásd: [kezelése Hadoop-fürtök a HDInsight](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account). A naplók megőrzése a tárfiókban, a fürt törlése után is.
+Minden egyes Azure HDInsight az Apache Hadoop-fürtöt az alapértelmezett fájlrendszerként használt Azure storage-fiókkal rendelkezik. A storage-fiókot az alapértelmezett tárfiók neve. Fürt használja az Azure Table storage és a Blob storage az alapértelmezett tárfiókot a naplók tárolásához.  Az alapértelmezett tárfiókot, a fürt számára, lásd: [kezelése Hadoop-fürtök a HDInsight](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account). A naplók megőrzése a tárfiókban, a fürt törlése után is.
 
 ## <a name="logs-written-to-azure-tables"></a>Azure-beli táblák írt naplók
 
@@ -315,4 +315,4 @@ Bizonyos hibaüzenetek sikerült is látható az Azure Portalon kezelheti a HDIn
 
 * [Ambari-nézetek használata a HDInsight a Tez-feladatok hibakereséséhez](../hdinsight-debug-ambari-tez-view.md)
 * [Halomürítések engedélyezése a Linux-alapú HDInsight a Hadoop-szolgáltatásokhoz](../hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-* [HDInsight-fürtök kezelése az Ambari webes felhasználói felület használatával](../hdinsight-hadoop-manage-ambari.md)
+* [HDInsight-fürtök kezelése az Ambari webes felületével](../hdinsight-hadoop-manage-ambari.md)
