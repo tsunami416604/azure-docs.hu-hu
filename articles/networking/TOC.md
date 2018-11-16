@@ -35,7 +35,7 @@
 # Útmutató
 ## Internetkapcsolat
 ### [Nyilvános kiszolgálók hálózati terheléselosztása](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Nyilvános kiszolgálók alkalmazásterhelés-elosztása](../application-gateway/application-gateway-create-gateway-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [Nyilvános kiszolgálók alkalmazásterhelés-elosztása](../application-gateway/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Webalkalmazások védelme](../application-gateway/application-gateway-web-application-firewall-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Helyek közötti forgalomelosztás](../traffic-manager/traffic-manager-configure-geographic-routing-method.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ## Belső kapcsolatok

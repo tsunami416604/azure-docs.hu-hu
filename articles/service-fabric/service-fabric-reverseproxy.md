@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 04f233384ad0d02cb5b7056df1e5fdfc74b9bec8
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: cdda1a06f32e712df71ec815f190f6346bebc135
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344625"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711463"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Az Azure Service Fabric fordított proxy
 Az Azure Service Fabric épített fordított proxy segítségével Service Fabric-fürtön futó mikroszolgáltatásokat felderítése és kommunikálni más szolgáltatásokkal, amelyek http-végpontokat.
@@ -161,7 +161,7 @@ Tárolók Docker Compose belül futó Service Fabric-szolgáltatások igényelne
 ## <a name="next-steps"></a>További lépések
 * [Állítsa be, és a fordított proxy konfigurálása egy fürtön](service-fabric-reverseproxy-setup.md).
 * [A fordított proxy-továbbítást a biztonságos HTTP-szolgáltatás beállítása](service-fabric-reverseproxy-configure-secure-communication.md)
-* [Diagose fordított proxy események](service-fabric-reverse-proxy-diagnostics.md)
+* [Fordított proxy események diagnosztizálása](service-fabric-reverse-proxy-diagnostics.md)
 * Tekintse meg a szolgáltatások közötti HTTP-kommunikációt egy példát egy [mintaprojektet a Githubon](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
 * [A Reliable Services-táveléréssel kezdeményezett távoli eljáráshívások](service-fabric-reliable-services-communication-remoting.md)
 * [A Reliable Services OWIN használó webes API](service-fabric-reliable-services-communication-webapi.md)

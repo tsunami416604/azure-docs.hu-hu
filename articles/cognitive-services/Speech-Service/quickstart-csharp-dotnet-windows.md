@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/05/2018
 ms.author: wolfma
-ms.openlocfilehash: 2dd001ebebd5cdf90d7d0b8163a85a5f83c855f6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 502f59c88808480f26e6ea5a6d2c5b362c78869b
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281294"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683498"
 ---
 # <a name="quickstart-recognize-and-transcribe-speech-using-the-speech-sdk-and-net-framework-windows"></a>Rövid útmutató: Beszéd felismerése és szöveggé konvertálása a Speech SDK és a .NET Framework (Windows) használatával
 
@@ -23,7 +23,7 @@ ms.locfileid: "51281294"
 
 Ezt az útmutatót követve egy diktálási konzolalkalmazást hozhat létre a Windows-hoz készült .NET-keretrendszer és a Speech SDK használatával. Ha elkészült, a számítógép mikrofonjával valós időben konvertálhat át beszédet szöveggé.
 
-Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amelyhez engedélyezve van a Microsoft Speech szolgáltatás. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started) egy előfizetői azonosító beszerzéséhez.
+Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amelyhez engedélyezve van a Microsoft Speech szolgáltatás. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started) egy előfizetői azonosító beszerzéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
