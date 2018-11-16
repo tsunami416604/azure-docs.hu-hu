@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c17c14b015531bf3f978ac30b013c80ad5be779e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 210e8a80d19f84058a059a3cfe34a14e037507db
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006515"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712364"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalizálhatja a környezetet a System Center Operations Manager állapotának ellenőrzése (előzetes verzió) megoldás
 
@@ -212,7 +212,7 @@ Minden javaslat, hogy miért fontos vonatkozó útmutatást tartalmaz. Ez az út
 
 ## <a name="use-health-check-focus-area-recommendations"></a>Használat állapotának ellenőrzése fókusz területre vonatkozó javaslatok
 
-A health ellenőrzési megoldás a Log Analytics használata előtt rendelkeznie kell a telepített megoldás. További megoldások telepítéséről lásd: [management megoldás telepítése](../monitoring/monitoring-solutions.md). Azt követően, javaslatok összegzését a System Center Operations Manager állapotának ellenőrzése csempe használatával megtekintheti a **áttekintése** oldalán a munkaterület az Azure Portalon.
+A health ellenőrzési megoldás a Log Analytics használata előtt rendelkeznie kell a telepített megoldás. További megoldások telepítéséről lásd: [management megoldás telepítése](../azure-monitor/insights/solutions.md). Azt követően, javaslatok összegzését a System Center Operations Manager állapotának ellenőrzése csempe használatával megtekintheti a **áttekintése** oldalán a munkaterület az Azure Portalon.
 
 Az összesített megfelelőségi értékeléseket az infrastruktúrát, és a-feltárás javaslatok megtekintése.
 

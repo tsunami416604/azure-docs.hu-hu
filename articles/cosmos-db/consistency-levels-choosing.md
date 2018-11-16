@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: mjbrown
-ms.openlocfilehash: 9234a57bdec3dfd7a1ccdba00b90a5c853dc1c5a
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f51673e628798f2c92e4ef7cf9327f4d5c6e5370
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960959"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51704682"
 ---
 # <a name="choose-the-right-consistency-level-for-your-application"></a>Az alkalmazás a megfelelő konzisztenciaszint kiválasztása
 
@@ -52,7 +52,7 @@ A gyakorlatban erősebb konzisztenciagaranciákat kaphat. Olvasási művelet és
 
 * A fennmaradó három konzisztenciaszintek a frissesség ablak nagymértékben függ a számítási feladat. Ha nincs írási művelet az adatbázison, az olvasási művelete például **végleges**, **munkamenet**, vagy **konzisztens előtag** konzisztenciaszintek valószínű, hogy eddig is számtalan előnyét ugyanazokat az eredményeket, erős konzisztenciaszintre olvasási művelet.
 
-A Cosmos DB-fiók egy eltérő az erős konzisztencia konzisztenciaszint van beállítva, ha annak a valószínűsége annak, hogy az ügyfelek erős kaphat, és a számítási feladatokhoz konzisztens olvasás alapján, a valószínűségi korlátozott frissesség (PBS) metrika. Ez a metrika az Azure Portalon érhető el, további tudnivalókért lásd: [PBS metrika használata](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric) cikk.
+A Cosmos DB-fiók egy eltérő az erős konzisztencia konzisztenciaszint van beállítva, ha annak a valószínűsége annak, hogy az ügyfelek erős kaphat, és a számítási feladatokhoz konzisztens olvasás alapján, a valószínűségi korlátozott frissesség (PBS) metrika. Ez a metrika az Azure Portalon érhető el, további tudnivalókért lásd: [probabilistically korlátozott frissesség metrika figyelése](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
 
 Valószínűségi korlátozott frissesség látható, hogyan végleges a végleges konzisztenciát. Ez a metrika abba, hogy milyen gyakran kap egy erősebb konzisztencia a konzisztencia szintjét, amely a jelenleg konfigurált a Cosmos DB-fiók, mint biztosít. Más szóval tekintse meg az első erősen konzisztens olvasási, írási kombinációja (ezredmásodpercekben mért) valószínűségét, és olvasási régió.
 
@@ -63,4 +63,4 @@ További információ az az alábbi cikkeket:
 * [Cosmos DB API-k közötti megfeleltetés konzisztencia](consistency-levels-across-apis.md)
 * [Kompromisszumot kínál a különböző konzisztenciaszintet rendelkezésre állás és teljesítmény](consistency-levels-tradeoffs.md)
 * [A munkamenet-azonosító, az alkalmazás kezelése](how-to-manage-consistency.md#utilize-session-tokens)
-* [A Probabilistically korlátozott frissesség (PBS) metrika figyelése](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)
+* [A figyelő a probabilistically korlátozott frissesség metrika](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)

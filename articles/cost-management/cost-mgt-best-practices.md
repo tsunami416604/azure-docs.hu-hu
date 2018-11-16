@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 43a682568708ab0286328cf3e483ddc3d5cf9dd8
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 8958d2cde9f40aa1a7370894614a54bbd604bce7
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515352"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706330"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Az Azure Cost Managementbe a felhőbe való befektetéséből optimalizálása
 
@@ -26,12 +26,12 @@ Az Azure Cost Management segít azon eszközök tervezése, elemzése, és csök
 A Cost management egy szervezeti probléma, és lehet egy folyamatban lévő eljárás, amely előtt a felhőbeli erőforrások előzetesen pénzt kezdődik. Sikeres végrehajtása Költségkezelés, és optimalizálhatja a költségeket, a szervezet kell:
 
 - Készüljön fel a siker érdekében a megfelelő eszközökkel
-- A költségek kiszolgálófelügyeletért
+- A költségek elszámolással
 - Optimalizálhatja a költségeket a megfelelő művelet végrehajtása
 
 Három fő csoportra, az alábbi, úgy kell beállítani, győződjön meg arról, hogy sikeresen kezelheti költségeit a szervezetben.
 
-- **Pénzügyi** -engedélyezéséért felelős személyek budge kéréseket a szervezeten belül a felhő költségeit az előrejelzések alapján. Azok a megfelelő számlázási kell fizetnie, és rendelje hozzá költségek különböző csapatokkal együttműködve elszámoltathatóság.
+- **Pénzügyi** -költségvetési kérelmek jóváhagyása a szervezeten belül felelős személyek alapján a felhő költségeit, előrejelzéseket. Azok a megfelelő számlázási kell fizetnie, és rendelje hozzá költségek különböző csapatokkal együttműködve elszámoltathatóság.
 - **Kezelők** – üzleti döntéshozók a szervezet, amely a felhő költségeit, a költségkeret-beállítási eredmények legjobb keresése ismernie kell.
 - **Alkalmazásokért felelős csapatok** – a mérnökök folyamatosan, a felhőerőforrások kezelése a szervezet igényeinek szolgáltatások fejlesztésébe. Ezek a csoportok a rugalmasságot, amelyekkel értéket termelhet a legtöbb azok meghatározott költségvetések kell.
 
@@ -46,7 +46,7 @@ Használja a szervezet Költségkezelés felhőbeli siker érdekében helyezze a
 - Milyen üzleti problémák léptek megoldására?
 - Milyen használati minták tegye várható az erőforrásaim?
 
-A válaszok segítségével válassza ki az ajánlat, amely az Ön számára megfelelő. Az infrastruktúra használatát, és hogyan használható az Azure hatékonyságának maximalizálása érdekében határozzák meg.
+A válaszok segítségével válassza ki az ajánlatok, amelyek az Ön számára megfelelő. Az infrastruktúra használatát, és hogyan használható az Azure hatékonyságának maximalizálása érdekében határozzák meg.
 
 #### <a name="visibility"></a>Láthatóság
 
@@ -62,7 +62,7 @@ ACT a kiadások csökkentése érdekében. A legtöbbet hozhatja ki a tervezési
 
 #### <a name="iteration"></a>Iteráció
 
-A szervezet minden tagja a költség-kezelés életciklusának kell végezhetnek. Ahhoz, hogy részt vesz a költségek optimalizálása érdekében rendszeresen van szükség. Szigorú iteratív erről a folyamatról, és, hogy a szervezet felelős felhőalapú cégirányítási kulcs bérlője.
+A szervezet minden tagja a költség-kezelés életciklusának kell végezhetnek. Az érintett töltheti a költségek optimalizálása érdekében van szükség. Szigorú iteratív erről a folyamatról, és, hogy a szervezet felelős felhőalapú irányítási kulcsfontosságú alapelve.
 
 ![Kulcsfontosságú alapelvek](./media/cost-mgt-best-practices/principles.png)
 
@@ -105,7 +105,7 @@ A különböző lehetőségekkel kapcsolatos további tudnivalókért látogasso
 
 ## <a name="estimate-the-cost-of-your-solution"></a>A megoldás kiszámítása
 
-Semmilyen infrastruktúra üzembe helyezése, előtt mérje fel, mekkora a megoldás díjait. Az értékelés segít a szervezet a számítási feladat előzetes díj költségvetés létrehozása. Ezután használhatja költségvetés idővel becslésére a kezdeti felmérést érvényességét. És összehasonlíthatja a tényleges költség az üzembe helyezett megoldás.
+Semmilyen infrastruktúra üzembe helyezése, előtt mérje fel, mekkora a megoldás díjait. Az értékelés segít a szervezet a számítási feladat előzetes díj költségvetés létrehozása. Ezután használhatja költségvetési idővel becslésére a kezdeti felmérést érvényességét. És összehasonlíthatja a tényleges költség az üzembe helyezett megoldás.
 
 ### <a name="azure-pricing-calculator"></a>Azure díjkalkulátor
 
@@ -125,7 +125,7 @@ Hogyan a szervezet költségek időbeli alakulásával tisztában megtartása. A
 
 ### <a name="organize-and-tag-your-resources"></a>Rendszerezése és megjelölése az erőforrások
 
-Költség szem előtt az erőforrások rendszerezéséhez. Az előfizetések és -erőforráscsoportok létrehozása, gondolja át a kapcsolódó költségek felelős csapatok. Ellenőrizze, hogy a szervezet a jelentéskészítési tartja szem előtt. Az előfizetések és -erőforráscsoportok adja meg a helyes gyűjtők rendszerezése és attribútum költségeit a szervezetben. Címkék segítségével attribútum költség tartalmaznak. A címkék szűrőként is használhatja. És használhatja őket a csoportosítási szempont, ha az adatok elemzéséhez, és vizsgálja meg a költségek. Nagyvállalati szerződéssel rendelkező ügyfelek is létrehozhat részlegek, és helyezze őket-előfizetések. Költség-alapú szervezet az Azure-ban teszi lehetővé, az érintett személyeket a szervezetben csapatuk kiadások csökkentése a kiszolgálófelügyeletért.
+Költség szem előtt az erőforrások rendszerezéséhez. Az előfizetések és -erőforráscsoportok létrehozása, gondolja át a kapcsolódó költségek felelős csapatok. Ellenőrizze, hogy a szervezet a jelentéskészítési tartja szem előtt. Az előfizetések és -erőforráscsoportok adja meg a helyes gyűjtők rendszerezése és attribútum költségeit a szervezetben. Címkék segítségével attribútum költség tartalmaznak. A címkék szűrőként is használhatja. És használhatja őket a csoportosítási szempont, ha az adatok elemzéséhez, és vizsgálja meg a költségek. Nagyvállalati szerződéssel rendelkező ügyfelek szervezeti egységek létrehozása és helyezze őket-előfizetések is. Költség-alapú szervezet az Azure-ban teszi lehetővé, az érintett személyeket a szervezetben csapatuk kiadások csökkentése a kiszolgálófelügyeletért.
 
 ### <a name="use-cost-analysis"></a>Használja a költségek elemzése
 
@@ -157,7 +157,7 @@ Használja a következő módokon optimalizálhatja a költségeket.
 
 ### <a name="cut-out-waste"></a>Vágja ki a veszteség
 
-Miután telepítette az Azure-ban az infrastruktúra, fontos, hogy használatban van. Kezdjen el takarékoskodni azonnal a legegyszerűbb módja, hogy tekintse át az erőforrásokat, és távolítsa el azokat, amelyek nincsenek használatban. Itt meg kell határoznia az erőforrások lehető leghatékonyabb használ.
+Miután telepítette az Azure-ban az infrastruktúra, fontos, hogy használatban van. Kezdjen el takarékoskodni azonnal a legegyszerűbb módja, hogy tekintse át az erőforrásokat, és távolítsa el azokat, amelyek nincsenek használatban. Itt ellenőrizze, ha az erőforrások lehető leghatékonyabb vannak használatban.
 
 #### <a name="azure-advisor"></a>Azure Advisor
 
@@ -177,7 +177,7 @@ Az Azure rendelkezik számos kedvezményeket, amellyel a szervezet előnyeit, p�
 
 #### <a name="azure-reservations"></a>Az Azure-foglalások
 
-Azure foglalások lehetővé teszik, hogy akkor fizessen elő a az egyéves vagy hároméves virtuális gép vagy SQL-adatbázis a számítási kapacitást. Előre kell fizetnie kedvezményt szeretne kapni a használt erőforrások tehetőek. Az Azure-foglalások jelentősen csökkentheti a virtuális gép vagy SQL-adatbázis számítási költségeket – akár 72 % a használatalapú fizetéssel – egyéves vagy hároméves előzetes kötelezettségvállalás. foglalások számlázási engedményt adja meg, és a virtuális gépek vagy az SQL Database-adatbázisok futási állapotát nem befolyásolják.
+Azure foglalások engedélyezése, hogy fizessen elő az egyéves vagy hároméves virtuális gép vagy SQL-adatbázis a számítási kapacitást. Előre kell fizetnie kedvezményt szeretne kapni a használt erőforrások tehetőek. Az Azure-foglalások jelentősen csökkentheti a virtuális gép vagy SQL-adatbázis számítási költségeket – akár 72 %-a – egyéves vagy hároméves előzetes kötelezettségvállalás, használatalapú fizetéssel. foglalások számlázási engedményt adja meg, és a virtuális gépek vagy az SQL Database-adatbázisok futási állapotát nem befolyásolják.
 
 További információkért lásd: [Mik az Azure-foglalásokat?](../billing/billing-save-compute-costs-reservations.md).
 

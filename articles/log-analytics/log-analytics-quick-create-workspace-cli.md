@@ -15,12 +15,12 @@ ms.topic: conceptal
 ms.date: 10/02/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 2d3d48db5a1eb329d854d1c062d23dfaf63ad9fa
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: cef080707d6745459f27450c2c66f4aa2ea50ec7
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963132"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51710681"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Log Analytics-munkaterület létrehozásához Azure CLI 2.0 használatával
 
@@ -131,4 +131,4 @@ Most, hogy a munkaterület érhető el, figyelési telemetriai adatok gyűjtés�
 * Ahhoz, hogy az adatok gyűjtését az Azure-erőforrásokat az Azure Diagnostics vagy az Azure storage, lásd: [gyűjtése az Azure naplói és a Log Analytics használati metrikái](log-analytics-azure-storage.md).  
 * Adjon hozzá [System Center Operations Manager alkalmazást adatforrásként](log-analytics-om-agents.md) adatokat gyűjteni az Operations Manager felügyeleti csoportnak jelentő ügynökök és a Log Analytics-munkaterületen tárolja.  
 * Csatlakozás [Configuration Manager](log-analytics-sccm.md) számítógépek, amelyek tagjai a hierarchiában lévő gyűjtemények importálása.  
-* Tekintse át a [felügyeleti megoldások](../monitoring/monitoring-solutions.md) érhető el, és hogyan lehet hozzáadni vagy megoldás eltávolítása a munkaterületről.
+* Tekintse át a [felügyeleti megoldások](../azure-monitor/insights/solutions.md) érhető el, és hogyan lehet hozzáadni vagy megoldás eltávolítása a munkaterületről.

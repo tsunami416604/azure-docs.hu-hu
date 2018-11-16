@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: v-gedod
-ms.openlocfilehash: 0956e88bd293b62935f5c8e2b9ef2d30466af8e4
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
-ms.translationtype: HT
+ms.openlocfilehash: 77b8f956ca2a6985121cb5dbfebc2755fa73a35c
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456609"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685973"
 ---
 # <a name="quickstart-bing-visual-search-sdk-node"></a>Rövid útmutató: Bing Visual Search SDK Node 
 
@@ -32,7 +32,9 @@ A kódforgatókönyvek dokumentációja az alábbi címsorok alatt található:
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
 
-* Futtassa az `npm install Microsoft.Azure.CognitiveServices.Search.VisualSearch` parancsot.
+Beállítása egy konzolalkalmazást, a Bing Visual Search SDK használatával:
+* Futtassa a `npm install ms-rest-azure` parancsot.
+* Futtassa az `npm install azure-cognitiveservices-search-visualSearch` parancsot.
 
 <a name="client"></a>
 ## <a name="visual-search-client"></a>Visual Search-ügyfél

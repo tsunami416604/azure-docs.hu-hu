@@ -6,14 +6,14 @@ author: trinadhk
 manager: shreeshd
 ms.service: backup
 ms.topic: conceptual
-ms.date: 11/1/2018
+ms.date: 11/14/2018
 ms.author: trinadhk
-ms.openlocfilehash: cf06fc9c12493e208832596a27b479dc9dfea942
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: de7c00717349a1c814c5a13508adb11879aa10a5
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011323"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51704647"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Szerepköralapú hozzáférés-vezérlés használata kezelheti az Azure Backup helyreállítási pontok
 Az Azure Szerepköralapú hozzáférés-vezérlés (RBAC) részletes hozzáférés-vezérlést biztosít az Azure-hoz. Az RBAC használata lehetővé teszi, hogy elkülönítse a kötelességeket a csapaton belül, valamint csak olyan mértékű hozzáférést biztosítson, amelyre a felhasználóknak a feladataik elvégzéséhez szüksége van.
@@ -36,12 +36,12 @@ Az alábbi táblázat a biztonsági mentés felügyeleti műveletek és a művel
 
 | Ügynökfelügyeleti művelet | Minimálisan szükséges RBAC-szerepkör | Hatókör szükséges |
 | --- | --- | --- |
-| Recovery Services-tároló létrehozása | Közreműködő | A tároló tartalmazó erőforráscsoportot |
+| Helyreállítási tár létrehozása | Közreműködő | A tároló tartalmazó erőforráscsoportot |
 | Azure virtuális gépek biztonsági mentésének engedélyezése | Biztonsági mentési operátor | A tároló tartalmazó erőforráscsoportot |
 | | Virtuális gépek közreműködője | VM-erőforrás |
 | Igény szerinti biztonsági mentést a virtuális gép | Biztonsági mentési operátor | Helyreállítási tár erőforrás |
 | Virtuális gép visszaállítása | Biztonsági mentési operátor | Recovery Services-tároló |
-| | Virtuális gépek közreműködője | Az erőforráscsoport, amelyben virtuális gép lesz üzembe helyezve. |
+| | Közreműködő | Az erőforráscsoport, amelyben virtuális gép lesz üzembe helyezve. |
 | | Virtuális gépek közreműködője | Forrás virtuális gép, amelyről biztonsági másolatot készített |
 | Nem felügyelt lemezek virtuális gép biztonsági másolatának visszaállítása | Biztonsági mentési operátor | Helyreállítási tár erőforrás |
 | | Virtuális gépek közreműködője | Forrás virtuális gép, amelyről biztonsági másolatot készített |

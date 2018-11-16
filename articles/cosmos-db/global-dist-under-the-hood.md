@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 463c74638b0e50348b8c9454334b7457e7b570e6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 418a98e0b5eeed6bc5b94ca78b8636116620b614
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283886"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705412"
 ---
 # <a name="azure-cosmos-db-global-distribution---under-the-hood"></a>Az Azure Cosmos DB globális terjesztésének – technikai részletek
 
@@ -81,5 +81,5 @@ A Cosmos DB öt konzisztenciamodell szemantikáját leírt [Itt](consistency-lev
 Ezután megtudhatja, hogyan globális terjesztés konfigurálása a következő cikkek segítségével:
 
 * [A többkiszolgálós ügyfelek konfigurálása](how-to-manage-database-account.md#configure-clients-for-multi-homing)
-* [Hogyan régiók hozzáadása/eltávolítása az adatbázisból](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+* [Régiók hozzáadása vagy eltávolítása az Azure Cosmos DB-fiókból](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [Egy egyéni ütközésfeloldási házirend SQL API-fiókok létrehozása](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 57ffb30296e5dbede11e23c40041c42e00444c4c
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 13748bf23ee70bfa77e15e7112b450637a231742
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686994"
+ms.locfileid: "51710715"
 ---
 # <a name="link-partner-id-to-your-azure-accounts"></a>Az Azure-fiókokhoz való hivatkozás Partnerazonosítóra
 
@@ -124,7 +124,7 @@ Csatlakozzon a beszélgetéshez a [Microsoft Partnerközösségéhez](https://ak
 
 **A partner Partnerazonosítóját kapcsolhatja ki?**
 
-A fiók a fiókpartner-szervezet ügyfél erőforrás kezelő felhasználói kapcsolat a partnerazonosító Társítását.
+Bármely felhasználó számára az ügyfél Azure-erőforrások kezelését a partnerszervezet kapcsolat a partnerazonosító Társítását ahhoz a fiókhoz.
 
 **Miután Partnerazonosító össze van kapcsolva, akkor módosítható?**
 

@@ -10,12 +10,12 @@ ms.author: tedway
 author: tedway
 ms.date: 05/07/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 344423ea9943e04dc5f02ebee0903d179be90bbd
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 83c5a788f85fcc47c221f5c8f9e6944c4448fbf9
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887581"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712126"
 ---
 # <a name="azure-machine-learning-hardware-acceleration-package"></a>Az Azure Machine Learning hardveres gyorsítás csomag
 
@@ -32,7 +32,7 @@ Az Azure Machine Learning hardveres gyorsítás csomag egy Python pip telepíthe
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+1. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://aka.ms/AMLfree) a virtuális gép létrehozásának megkezdése előtt.
 
 1. Egy Azure Machine Learning Modellkezelés-fiók. A fiók létrehozásával kapcsolatos további információkért lásd: a [Azure Machine Learning gyors üzembe helyezés és a Workbench telepítési](../desktop-workbench/quickstart-installation.md) dokumentumot. 
 

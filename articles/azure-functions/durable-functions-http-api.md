@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 11/15/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4c5f99ed9d20076e3e25ebca261253e576572786
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 6d4a6b7aa2ad236fba6a8ea0b01578b4843d11f3
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354257"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712925"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) HTTP API-k
 
@@ -95,6 +95,7 @@ Minden HTTP API-k megvalósítva a végezze el a bővítményt a következő par
 | createdTimeFrom  | Lekérdezési sztring    | Nem kötelező paraméter. Megadása esetén a visszaadott, vagy a megadott időbélyegnél ISO8601 létrehozott példányok listájának szűrése.|
 | createdTimeTo    | Lekérdezési sztring    | Nem kötelező paraméter. Megadása esetén a visszaadott, vagy a megadott időbélyegnél ISO8601 létrehozott példányok listájának szűrése.|
 | runtimeStatus    | Lekérdezési sztring    | Nem kötelező paraméter. Megadása esetén a visszaadott-példányok listájának alapján szűri a futásidejű állapot. Lehetséges futásidejű állapot értékek listáját, olvassa el a [példányok lekérdezése](durable-functions-instance-management.md) témakör. |
+| felső    | Lekérdezési sztring    | Nem kötelező paraméter. Megadása esetén oldalak ossza fel a lekérdezés eredményeit, és korlátozza az eredmények száma oldalanként maximális számát. |
 
 `systemKey` az Azure Functions-állomás által automatikusan létrehozott van egy engedélyezési kulcsot. Kifejezetten hozzáférést biztosít a tartós feladat bővítmény API-k és azonos módon felügyelhetők [más hitelesítési kulcsok](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). Fedezze fel a legegyszerűbb módszer a `systemKey` érték használatával a `CreateCheckStatusResponse` API azt korábban említettük.
 
@@ -291,6 +292,26 @@ GET /runtime/webhooks/durableTask/instances/?taskHub={taskHub}&connection={conne
 > [!NOTE]
 > Ez a művelet teljesítményigényesek lehetnek Azure tárolási i/o-tekintetében van-e nagy mennyiségű a példányok táblában lévő sorokat. Példány táblán további részletek találhatók a [teljesítményt és méretet (az Azure Functions) Durable Functions](https://docs.microsoft.com/azure/azure-functions/durable-functions-perf-and-scale#instances-table) dokumentációját.
 > 
+
+#### <a name="request-with-paging"></a>Lapozófájl-kérést
+
+Beállíthatja a `top` paraméter oldalak ossza fel a lekérdezés eredményeit.
+
+A Functions 1.0 a kérés formátuma a következőképpen történik:
+
+```http
+GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&top={top}
+```
+
+A Functions 2.0 formátum ugyanazokat egy némileg különböző URL-előtagot azonban paraméterekkel rendelkezik: 
+
+```http
+GET /runtime/webhooks/durableTask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&top={top}
+```
+
+Ha létezik a következő oldalon, a válasz fejléce a folytatási kód adja vissza.  A fejléc neve `x-ms-continuation-token`.
+
+Ha a folytatási token értékét állítja be a következő kérés fejlécében, beszerezheti a következő lapra.  Ez a kulcs a kérelem fejlécében `x-ms-continuation-token`.
 
 
 ### <a name="raise-event"></a>Esemény előléptetése

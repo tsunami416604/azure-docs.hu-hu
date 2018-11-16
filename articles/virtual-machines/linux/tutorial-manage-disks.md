@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/30/2018
+ms.date: 11/14/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 04fad24b17d7f74211deae53c0d044f2049660f2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 69ffd2dd4df8ca0a64036f7a96c88d5c83353211
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978318"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685378"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>Oktatóanyag – Azure-lemezek kezelése az Azure CLI használatával
 
@@ -36,9 +36,6 @@ Az Azure-beli virtuális gépek (VM-ek) lemezeket használnak az operációs ren
 > * Lemezek átméretezése
 > * Lemez-pillanatképek
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 ## <a name="default-azure-disks"></a>Alapértelmezett Azure-lemezek
 
@@ -48,35 +45,15 @@ Egy Azure-beli virtuális gép létrehozásakor a rendszer két lemezt automatik
 
 **Ideiglenes lemez** – Az ideiglenes lemezek olyan tartós állapotú meghajtót (SSD-t) használnak, amely ugyanazon az Azure-gazdagépen található, mint a virtuális gép. Az ideiglenes lemezek nagy teljesítményűek és olyan műveletekhez használhatók, mint például az ideiglenes adatfeldolgozás. Ha azonban a virtuális gépet egy új gazdagépre költöztetik, az ideiglenes lemezen tárolt adatokat a rendszer eltávolítja. Az ideiglenes lemez méretét a virtuális gép mérete határozza meg. Az ideiglenes lemezek a */dev/sdb* címkét kapják, a csatlakoztatási pontjuk pedig */mnt*.
 
-### <a name="temporary-disk-sizes"></a>Ideiglenes lemezek méretei
-
-| Típus | Gyakori méretek | Ideiglenes lemez max. mérete (GiB) |
-|----|----|----|
-| [Általános célú](sizes-general.md) | A, B és D sorozat | 1600 |
-| [Számításra optimalizált](sizes-compute.md) | F sorozat | 576 |
-| [Memóriaoptimalizált](sizes-memory.md) | D, E, G és M sorozat | 6144 |
-| [Tárolásra optimalizált](sizes-storage.md) | L sorozat | 5630 |
-| [GPU](sizes-gpu.md) | N sorozat | 1440 |
-| [Nagy teljesítmény](sizes-hpc.md) | A és H sorozat | 2000 |
 
 ## <a name="azure-data-disks"></a>Azure-adatlemezek
 
-Alkalmazások telepítéséhez és adatok tárolásához további adatlemezek adhatók hozzá. Az adatlemezeket akkor érdemes használni, ha tartós és rugalmas adattárolásra van szükség. Az egyes adatlemezek kapacitása maximum 4 TB lehet. A virtuális gép mérete határozza meg, hány adatlemez csatolható a virtuális géphez. A virtuális gépek minden vCPU-jához két adatlemez csatolható.
+Alkalmazások telepítéséhez és adatok tárolásához további adatlemezek adhatók hozzá. Az adatlemezeket akkor érdemes használni, ha tartós és rugalmas adattárolásra van szükség. Az egyes adatlemezek kapacitása maximum 4 TB lehet. A virtuális gép mérete határozza meg, hány adatlemez csatolható a virtuális géphez. A virtuális gépek minden vCPU-jához négy adatlemez csatolható.
 
-### <a name="max-data-disks-per-vm"></a>Adatlemezek max. száma virtuális gépenként
-
-| Típus | Virtuális gép mérete | Adatlemezek max. száma virtuális gépenként |
-|----|----|----|
-| [Általános célú](sizes-general.md) | A, B és D sorozat | 64 |
-| [Számításra optimalizált](sizes-compute.md) | F sorozat | 64 |
-| [Memóriaoptimalizált](../virtual-machines-windows-sizes-memory.md) | D, E és G sorozat | 64 |
-| [Tárolásra optimalizált](../virtual-machines-windows-sizes-storage.md) | L sorozat | 64 |
-| [GPU](sizes-gpu.md) | N sorozat | 64 |
-| [Nagy teljesítmény](sizes-hpc.md) | A és H sorozat | 64 |
 
 ## <a name="vm-disk-types"></a>Virtuálisgép-lemezek típusai
 
-Az Azure két lemeztípust kínál.
+Az Azure biztosít két lemeztípus használható, standard és prémium szintű.
 
 ### <a name="standard-disk"></a>Standard lemez
 
@@ -88,13 +65,20 @@ A prémium lemezek SSD-alapú, nagy teljesítményű, kis késleltetésű lemeze
 
 ### <a name="premium-disk-performance"></a>Prémium szintű lemezek teljesítménye
 
-|Prémium szintű tárolólemezek típusai | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Lemezméret (felfelé kerekítés) | 32 GB | 64 GB | 128 GB | 512 GB | 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) |
-| Lemezenkénti maximális IOPS-érték | 120 | 240 | 500 | 2300 | 5000 | 7500 | 7500 |
-Adattovábbítás lemezenként | 25 MB/s | 50 MB/s | 100 MB/s | 150 MB/s | 200 MB/s | 250 MB/s | 250 MB/s |
+|Prémium szintű tárolólemezek típusai | P4 | P6 | P10 | P20 | P30 | P40 | P50 | P60 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Lemezméret (felfelé kerekítés) | 32 GiB | 64 GiB | 128 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB)
+| Lemezenkénti maximális IOPS-érték | 120 | 240 | 500 | 2300 | 5000 | 7500 | 7500 | 12 500 |
+Adattovábbítás lemezenként | 25 MB/s | 50 MB/s | 100 MB/s | 150 MB/s | 200 MB/s | 250 MB/s | 250 MB/s | 480 MB/s |
 
 Míg a fenti táblázatban a lemezenkénti maximális IOPS-érték látható, nagyobb teljesítmény is elérhető több adatlemez összevonásával. Például egy Standard_GS5 virtuális gép esetében maximálisan 80 000 IOPS érhető el. A virtuális gépenkénti maximális IOPS-értékkel kapcsolatos részletes információkért lásd a [Linux rendszerű virtuális gépek méreteit](sizes.md) ismertető cikket.
+
+
+## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
+
+Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
+
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon is elindíthatja a [https://shell.azure.com/powershell](https://shell.azure.com/bash) cím megnyitásával. A **Másolás** kiválasztásával másolja és illessze be a kódrészleteket a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 ## <a name="create-and-attach-disks"></a>Lemezek létrehozása és csatolása
 
@@ -116,7 +100,6 @@ az vm create \
   --name myVM \
   --image UbuntuLTS \
   --size Standard_DS2_v2 \
-  --admin-username azureuser \
   --generate-ssh-keys \
   --data-disk-sizes-gb 128 128
 ```
@@ -139,7 +122,6 @@ az vm disk attach \
 
 Miután hozzácsatolt egy lemezt a virtuális géphez, az operációs rendszert konfigurálni kell a lemez használatához. A következő példa bemutatja, hogyan konfigurálhatja manuálisan a lemezt. Ez a folyamat is automatizálható a cloud-init használatával, amelyet egy [későbbi oktatóanyag](./tutorial-automate-vm-deployment.md) mutat be.
 
-### <a name="manual-configuration"></a>Manuális konfigurálás
 
 Hozzon léte egy SSH-kapcsolatot a virtuális géppel. Cserélje le a példában szereplő IP-címet a virtuális gép nyilvános IP-címére.
 
@@ -204,42 +186,10 @@ Most, hogy a lemez konfigurálva lett, zárja be az SSH-munkamenetet.
 exit
 ```
 
-## <a name="resize-vm-disk"></a>Virtuálisgép-lemez átméretezése
 
-A virtuális gépek üzembe helyezését követően az operációsrendszer-lemez vagy bármely más csatolt lemez mérete növelhető. A lemez méretét akkor érdemes növelni, ha több tárhelyre vagy nagyobb teljesítményre (például P10, P20 vagy P30) van szükség. A lemezek mérete nem csökkenthető.
+## <a name="snapshot-a-disk"></a>Lemez pillanatképének elkészítése
 
-A lemez méretének növelése előtt szükség van a lemez azonosítójára vagy nevére. Az [az disk list](/cli/azure/disk#az-disk-list) paranccsal listázhatja az összes lemezt az erőforráscsoportban. Jegyezze fel az átméretezni kívánt lemez nevét.
-
-```azurecli-interactive
-az disk list \
-    --resource-group myResourceGroupDisk \
-    --query '[*].{Name:name,Gb:diskSizeGb,Tier:accountType}' \
-    --output table
-```
-
-A virtuális gépet fel kell szabadítani. Az [az vm deallocate](/cli/azure/vm#az-vm-deallocate) paranccsal állíthatja le és szabadíthatja fel a virtuális gépet.
-
-```azurecli-interactive
-az vm deallocate --resource-group myResourceGroupDisk --name myVM
-```
-
-A lemezt az [az disk update](/cli/azure/vm/disk#az-vm-disk-update) paranccsal méretezheti át. Ez a példa a *myDataDisk* nevű lemezt méretezi át 1 terabájtra.
-
-```azurecli-interactive
-az disk update --name myDataDisk --resource-group myResourceGroupDisk --size-gb 1023
-```
-
-Az átméretezés befejeztével indítsa el a virtuális gépet.
-
-```azurecli-interactive
-az vm start --resource-group myResourceGroupDisk --name myVM
-```
-
-Ha az operációsrendszer-lemezt méretezi át, a partíció automatikusan kibővül. Ha adatlemezt méretez át, az aktuális partíciókat a virtuális gép operációs rendszerében kell bővíteni.
-
-## <a name="snapshot-azure-disks"></a>Pillanatképek készítése Azure-lemezekről
-
-A lemezpillanatképek létrehozása során az Azure egy csak olvasható, adott időponthoz kötött másolatot hoz létre a lemezről. Az Azure-beli virtuális gépekről készült pillanatképek akkor lehetnek hasznosak, ha a virtuális gépek állapotának gyors mentésére van szükség a konfiguráció módosítása előtt. Amennyiben a konfiguráció módosítása végül nem a várt eredményt hozza, a virtuális gép állapota visszaállítható a pillanatképből. Ha a virtuális gép egynél több lemezzel rendelkezik, az egyes lemezekről egymástól független pillanatképek készülnek. Alkalmazáskonzisztens biztonsági másolatok készítéséhez érdemes lehet leállítania a virtuális gépet a lemezpillanatképek készítése előtt. Másik megoldásként használhatja az [Azure Backup szolgáltatást](/azure/backup/) is, amelynek segítségével automatikus biztonsági mentést végezhet, miközben a virtuális gép fut.
+A lemezpillanatképek létrehozása során az Azure egy csak olvasható, adott időponthoz kötött másolatot hoz létre a lemezről. Az Azure-beli virtuális gépekről készült pillanatképek akkor lehetnek hasznosak, ha a virtuális gépek állapotának gyors mentésére van szükség a konfiguráció módosítása előtt. Egy probléma vagy hiba esetén virtuális gép állítható vissza egy pillanatképet. Ha a virtuális gép egynél több lemezzel rendelkezik, az egyes lemezekről egymástól független pillanatképek készülnek. Alkalmazáskonzisztens biztonsági másolatok készítéséhez érdemes lehet leállítania a virtuális gépet a lemezpillanatképek készítése előtt. Másik megoldásként használhatja az [Azure Backup szolgáltatást](/azure/backup/) is, amelynek segítségével automatikus biztonsági mentést végezhet, miközben a virtuális gép fut.
 
 ### <a name="create-snapshot"></a>Pillanatkép készítése
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: de464cfeca01e492139e8bf9679d8f9876eedda6
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 14a33a6480cdb2dbc19b912d51eebda386c55d75
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625623"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713163"
 ---
 # <a name="manage-workspaces"></a>Munkaterületek kezelése
 
@@ -241,5 +241,5 @@ Az új adatforgalmi díjcsomag megjelenik az OMS-portál menüszalagján a webhe
 ## <a name="next-steps"></a>További lépések
 * Lásd: [Log Analytics-ügynök – áttekintés](log-analytics-agent-overview.md) gyűjthet velük adatokat az adatközpontban vagy egyéb felhőalapú környezetben lévő számítógépekről.
 * Az adatgyűjtés Azure-beli virtuális gépekről való konfigurálásáról lásd: [Adatgyűjtés Azure-beli virtuális gépekről](log-analytics-quick-collect-azurevm.md).  
-* A funkciók hozzáadásával és az adatgyűjtéssel kapcsolatban lásd: [Add Log Analytics solutions from the Solutions Gallery](../monitoring/monitoring-solutions.md) (Log Analytics-megoldások hozzáadása a megoldástárból).
+* A funkciók hozzáadásával és az adatgyűjtéssel kapcsolatban lásd: [Add Log Analytics solutions from the Solutions Gallery](../azure-monitor/insights/solutions.md) (Log Analytics-megoldások hozzáadása a megoldástárból).
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: bd72b93d31a25a6aa848fc08a7db4d9d0fcece9f
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ed91c60393badcde1d3f31c86b1e4381788db17b
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010745"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712092"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Gyűjtsön információt a DNS-infrastruktúra, a DNS Analytics előzetes verziójának megoldással kapcsolatos
 
@@ -58,7 +58,7 @@ A megoldás gyűjti DNS-leltár- és DNS-esemény kapcsolatos adatokat a DNS-kis
 A megoldás konfigurálásához kövesse az alábbi adatokat:
 
 - Rendelkeznie kell egy [Windows](log-analytics-agent-windows.md) vagy [az Operations Manager](log-analytics-om-agents.md) ügynököt mindegyik figyelni kívánt DNS-kiszolgálón.
-- A DNS Analytics megoldás a Log Analytics-munkaterületet is hozzáadhat a [Azure Marketplace-en](https://aka.ms/dnsanalyticsazuremarketplace). Is használhatja a leírt folyamatot [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../monitoring/monitoring-solutions.md).
+- A DNS Analytics megoldás a Log Analytics-munkaterületet is hozzáadhat a [Azure Marketplace-en](https://aka.ms/dnsanalyticsazuremarketplace). Is használhatja a leírt folyamatot [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../azure-monitor/insights/solutions.md).
 
 A megoldás elindult, nincs szükség további konfigurációs adatok gyűjtése. A következő konfiguráció használatával azonban adatgyűjtés testreszabása.
 
@@ -95,7 +95,7 @@ Miután a megoldást a munkaterülethez hozzáadott, tartalmazza a Log Analytics
 
 ![DNS Analytics tile](./media/log-analytics-dns/dns-tile.png)
 
-### <a name="solution-dashboard"></a>Megoldások irányítópultja
+### <a name="solution-dashboard"></a>A megoldás irányítópultja
 
 A megoldás irányítópultján különböző funkcióhoz a megoldás összefoglaló információit jeleníti meg. A részletes nézet a törvényszéki elemzés és diagnosztika mutató hivatkozásokat is tartalmaz. Alapértelmezés szerint az elmúlt hét napban megjelennek az adatok. A dátum és idő tartomány használatával módosíthatja a **dátum és idő kiválasztása vezérlőelem**, ahogy az alábbi képen látható:
 

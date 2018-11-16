@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/08/2018
+ms.date: 11/15/2018
 ms.author: sethm
 ms.reviewer: xiaofmao
-ms.openlocfilehash: ec84c87e047d6426d24ef339d1247c6cb53954dd
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 17326fa60160e084d4c30347b1a765d1f80d01f5
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299419"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711531"
 ---
 # <a name="quota-types-in-azure-stack"></a>Az Azure Stackben kvótatípusok
 
@@ -33,8 +33,10 @@ ms.locfileid: "51299419"
 | --- | --- | --- |
 | Virtuális gépek maximális száma | 50 | Egy előfizetést hozhat létre ezen a helyen lévő virtuális gépek maximális számát. |
 | Virtuálisgép-magok maximális száma | 100 | Egy előfizetést hozhat létre ezen a helyen lévő magok maximális számának (például egy a3-as virtuális gép rendelkezik négy magot). |
-| Maximális száma a rendelkezésre állási csoportok | 10 | Ezen a helyen létrehozott rendelkezésre állási csoportok maximális száma. |
-| Maximális száma virtuálisgép-méretezési csoportok | 100 | Ezen a helyen létrehozott virtuális gép méretezési csoportok maximális száma. |
+| A rendelkezésre állási csoportok maximális száma | 10 | Ezen a helyen létrehozott rendelkezésre állási csoportok maximális száma. |
+| A virtuálisgép-méretezési csoport maximális száma | 100 | Ezen a helyen létrehozott virtuális gép méretezési csoportok maximális száma. |
+| Maximális kapacitás (GB) standard szintű felügyelt lemez | 2048 | A standard szintű managed disks ezen a helyen létrehozott maximális kapacitását. |
+| Maximális kapacitás (GB) prémium szintű felügyelt lemez | 2048 | A prémium szintű maximális kapacitását a felügyelt lemezek, ezen a helyen létrehozott. |
 
 ## <a name="storage-quota-types"></a>Tárolási kvóta típusa 
 | **Elem** | **Alapértelmezett érték** | **Leírás** |
@@ -50,11 +52,11 @@ ms.locfileid: "51299419"
 | **Elem** | **Alapértelmezett érték** | **Leírás** |
 | --- | --- | --- |
 | Maximális nyilvános IP-címek |50 |Egy előfizetést hozhat létre ezen a helyen nyilvános IP-címek maximális számát. |
-| Virtuális hálózatok maximális száma |50 |Ezen a helyen előfizetést hozhat létre virtuális hálózatok maximális száma. |
-| Max. virtuális hálózati átjárók |1 |Virtuális hálózati átjárók (VPN-átjárók), amely egy előfizetést hozhat létre ezen a helyen maximális számát. |
-| Hálózati kapcsolatok maximális száma |2 |A maximális hálózati kapcsolatok száma (point-to-point vagy site-to-site), amely egy előfizetést hozhat létre ezen a helyen az összes virtuális hálózati átjáró között. |
+| Maximális virtuális hálózatok |50 |Ezen a helyen előfizetést hozhat létre virtuális hálózatok maximális száma. |
+| Maximális virtuális hálózati átjárók |1 |Virtuális hálózati átjárók (VPN-átjárók), amely egy előfizetést hozhat létre ezen a helyen maximális számát. |
+| Maximális hálózati kapcsolatok |2 |A maximális hálózati kapcsolatok száma (point-to-point vagy site-to-site), amely egy előfizetést hozhat létre ezen a helyen az összes virtuális hálózati átjáró között. |
 | Maximális terheléselosztók |50 |Egy előfizetést hozhat létre ezen a helyen terheléselosztók maximális számát. |
-| Hálózati adapterek maximális száma |100 |A hálózati adapterek számára olyan előfizetést hozhat létre ezen a helyen maximális számát. |
+| Maximális hálózati adapterek |100 |A hálózati adapterek számára olyan előfizetést hozhat létre ezen a helyen maximális számát. |
 | Maximális hálózati biztonsági csoportok |50 |Egy előfizetést hozhat létre ezen a helyen hálózati biztonsági csoportok maximális száma. |
 
 ## <a name="view-an-existing-quota"></a>Egy meglévő kvóta megtekintése

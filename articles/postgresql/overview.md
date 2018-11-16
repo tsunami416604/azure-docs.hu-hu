@@ -9,17 +9,17 @@ editor: jasonwhowell
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 06/15/2018
-ms.openlocfilehash: 86a8b824479173024b1a14bb8612073ffbfac468
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
-ms.translationtype: HT
+ms.date: 11/14/2018
+ms.openlocfilehash: c1e90e9e39bb9ff698b2e53a2b7cf02340e1111f
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092157"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685854"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Mi az Azure Database for PostgreSQL?
 
-Az Azure Database for PostgreSQL egy fejlesztőknek készült relációsadatbázis-szolgáltatás a Microsoft-felhőben, amely a nyílt forráskódú [PostgreSQL](https://www.postgresql.org/) adatbázismotor közösségi verzióján alapul. Az Azure Database for PostgreSQL a következőket nyújtja:
+Azure Database for PostgreSQL relációsadatbázis-szolgáltatás a Microsoft-felhőben a nyílt forráskódú közösségi verzióján alapuló fejlesztők számára készült [PostgreSQL](https://www.postgresql.org/) adatbázismotor, 9,5 9.6 és 10-es verziói. Az Azure Database for PostgreSQL a következőket nyújtja:
 
 - Beépített magas rendelkezésre állás további költség nélkül
 - Kiszámítható teljesítmény, használatalapú díjszabással
@@ -40,7 +40,7 @@ Több Azure CLI-mintát talál itt:
 - [Azure CLI-minták az Azure Database for PostgreSQL szolgáltatáshoz](./sample-scripts-azure-cli.md)
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Teljesítmény módosítása és skálázása másodperceken belül
-Az Azure Database for PostgreSQL szolgáltatás három tarifacsomagot kínál: Alapszintű, Általános célú és Memóriahasználatra optimalizált. Az egyes szintek különböző erőforrásokat és képességeket kínálnak az adatbázisok számítási feladatainak támogatásához. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor szüksége van rájuk. A részleteket a [tarifacsomagok](concepts-pricing-tiers.md) leírása tartalmazza.
+Az Azure Database for PostgreSQL szolgáltatás három tarifacsomagot kínál: Alapszintű, Általános célú és Memóriahasználatra optimalizált. Az egyes szintek különböző erőforrásokat és képességeket kínálnak az adatbázisok számítási feladatainak támogatásához. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor szüksége van rájuk. Lásd: [Tarifacsomagok](concepts-pricing-tiers.md) részleteiről.
 
 ## <a name="monitoring-and-alerting"></a>Figyelés és riasztás
 Hogyan lehet megállapítani, hogy mikor van szükség fel- vagy leskálázásra? Használja az Azure beépített monitorozó és riasztási eszközeit. Ezek az eszközök lehetővé teszik az aktuális vagy becsült teljesítményigényeken vagy tárolási szükségleteken alapuló fel- vagy leskálázás hatásainak gyors kiértékelését. A részleteket a [riasztások](howto-alert-on-metric.md) leírása tartalmazza.

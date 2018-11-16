@@ -2,25 +2,21 @@
 title: Az Azure AD-alkalmazásproxy-összekötők ismertetése |} A Microsoft Docs
 description: Az Azure AD-alkalmazásproxy összekötőit alapjait ismerteti.
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/17/2018
+ms.date: 11/15/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.custom: it-pro
-ms.openlocfilehash: 62738cda8ce37ec7ca50e1e3f285dc71a37113f7
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 66fb98c166c8a0f4cec9f3b7e7be73fce6466b50
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036037"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713112"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Az Azure AD-alkalmazásproxy-összekötők ismertetése
 
@@ -32,7 +28,23 @@ Az összekötők olyan egyszerűsített ügynökök, amelyek a helyszínen talá
 
 ## <a name="requirements-and-deployment"></a>Követelmények és üzembe helyezés
 
-Az alkalmazásproxy sikeres üzembe helyezéséhez legalább egy összekötő szükséges, de azt javasoljuk, hogy két vagy több, nagyobb rugalmasság. Telepítse a Windows Server 2012 R2 vagy 2016 gépen. Az összekötő képesnek kell lennie az alkalmazásproxy-szolgáltatás, valamint a helyszíni alkalmazások közzétett folytatott kommunikációhoz. Az alkalmazásproxy is szükséges a TLS 1.2 az alapul szolgáló operációs rendszeren. A TLS 1.2-es, kövesse a lépéseket a [engedélyezze a TLS 1.2-es](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#enable-tls-12-for-azure-ad-connect). Bár a tartalom az Azure AD Connect, ez az eljárás megegyezik a .NET-ügyfelek.
+Az alkalmazásproxy sikeres üzembe helyezéséhez legalább egy összekötő szükséges, de azt javasoljuk, hogy két vagy több, nagyobb rugalmasság. Telepítse a Windows Server 2012 R2 vagy 2016 gépen. Az összekötő képesnek kell lennie az alkalmazásproxy-szolgáltatás, valamint a helyszíni alkalmazások közzétett folytatott kommunikációhoz. 
+
+### <a name="windows-server"></a>Windows server
+A Windows Server 2012 R2 rendszerű kiszolgáló van szüksége, vagy később is telepíthető, amely az Application Proxy connector. Csatlakozás az Azure-ban az alkalmazásproxy-szolgáltatásokat, és közzéteszi a helyszíni alkalmazások kell a kiszolgálót.
+
+A windows server a TLS 1.2 engedélyezve van az alkalmazásproxy-összekötő telepítése előtt rendelkeznie kell. 1.5.612.0 régebbi verziót a meglévő összekötők továbbra is a korábbi verziói a TLS további értesítésig működni fog. A TLS 1.2 engedélyezése:
+
+1. Állítsa be a következő beállításkulcsokat:
+    
+    ```
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319] "SchUseStrongCrypto"=dword:00000001
+    ```
+
+2. Indítsa újra a kiszolgálót
+
 
 Az összekötő kiszolgáló hálózati követelményeivel kapcsolatos további információkért lásd: [alkalmazásproxy – első lépések, és telepítheti az összekötőt](application-proxy-enable.md).
 

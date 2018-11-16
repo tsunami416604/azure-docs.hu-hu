@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e1f33551c02562bbd8b7cc6a4187f7135a06c60f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 5ec4ba5f51837e879ba5106c40d466dafb571825
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961942"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711803"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>A kapacitásra és teljesítményre megoldással (előzetes verzió) a Hyper-V virtuális gép kapacitásának megtervezése
 
@@ -64,7 +64,7 @@ Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott �
 
 Hajtsa végre a következő lépéseket a kapacitás és teljesítmény megoldás hozzáadása a munkaterülethez.
 
-- Adja hozzá a kapacitás és teljesítmény megoldás a Log Analytics-munkaterülethez ismertetett folyamatot [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../monitoring/monitoring-solutions.md).
+- Adja hozzá a kapacitás és teljesítmény megoldás a Log Analytics-munkaterülethez ismertetett folyamatot [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../azure-monitor/insights/solutions.md).
 
 ## <a name="management-packs"></a>Felügyeleti csomagok
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: 0f17cf7f2ef655f482b08b5c7163c0d85be77ce5
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 3de1939ec4004c2709fb0e366fb492462cf2d216
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068698"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51710766"
 ---
 # <a name="azure-monitor-overview"></a>Az Azure Monitor áttekintése
 
@@ -67,7 +67,7 @@ Az Azure Monitor naplózási adatokat gyűjt a bármely REST-ügyfél használat
 
 
 ## <a name="insights"></a>Insights
-Monitorozási adatok csak akkor hasznos, ha, növelheti a betekintést a számítási környezet a műveletet. Az Azure Monitor számos funkciókat és eszközöket, amelyek az alkalmazások és más erőforrások függenek ezek értékes betekintést nyújtson tartalmazza. [Figyelési megoldások](../monitoring/monitoring-solutions.md) és a szolgáltatások, például a [Application Insights](../application-insights/app-insights-overview.md) és Container Insights nyújt betekintést az alkalmazás és az adott Azure-szolgáltatások különböző aspektusait. 
+Monitorozási adatok csak akkor hasznos, ha, növelheti a betekintést a számítási környezet a műveletet. Az Azure Monitor számos funkciókat és eszközöket, amelyek az alkalmazások és más erőforrások függenek ezek értékes betekintést nyújtson tartalmazza. [Figyelési megoldások](../azure-monitor/insights/solutions.md) és a szolgáltatások, például a [Application Insights](../application-insights/app-insights-overview.md) és Container Insights nyújt betekintést az alkalmazás és az adott Azure-szolgáltatások különböző aspektusait. 
 
 ### <a name="application-insights"></a>Application Insights
 [Az Application Insights](../application-insights/app-insights-overview.md) figyeli a rendelkezésre állási, teljesítmény és a webalkalmazások használatának a felhőben vagy a helyszínen tárolva van-e. A hatékony elemzési platform, a Log Analytics nyújt betekintést az alkalmazás-műveletek és hibák diagnosztizálása egy felhasználó jelenti azokat várakozás nélkül a modul. Application Insights kapcsolódási pontok számos különböző fejlesztői eszközöket tartalmaz, és integrálja a Visual Studiót, DevOps-folyamataiba támogatásához.
@@ -86,9 +86,9 @@ Az Azure Monitor VM insights az Azure-beli virtuális gépek (VM) ipari méretek
 ![VM Insights](media/overview/vm-insights.png)
 
 ### <a name="monitoring-solutions"></a>Monitorozási megoldások
-[Figyelési megoldások](../monitoring/monitoring-solutions.md) az Azure monitorban, amelyeket a csomagolt logika, amelyek elemzéseket nyújtanak egy adott alkalmazás vagy szolgáltatás esetében. Gyűjtenek adatokat a Log Analytics-be más figyelési adatokat, valamint [lekérdezések](../log-analytics/log-analytics-queries.md) elemzéshez és [nézetek](../log-analytics/log-analytics-view-designer.md) a vizualizációt. Figyelési megoldások [a Microsoft](../monitoring/monitoring-solutions-inventory.md) és partnerek számára a különböző Azure-szolgáltatások és más alkalmazások figyelésére.
+[Figyelési megoldások](../azure-monitor/insights/solutions.md) az Azure monitorban, amelyeket a csomagolt logika, amelyek elemzéseket nyújtanak egy adott alkalmazás vagy szolgáltatás esetében. Gyűjtenek adatokat a Log Analytics-be más figyelési adatokat, valamint [lekérdezések](../log-analytics/log-analytics-queries.md) elemzéshez és [nézetek](../log-analytics/log-analytics-view-designer.md) a vizualizációt. Figyelési megoldások [a Microsoft](../azure-monitor/insights/solutions-inventory.md) és partnerek számára a különböző Azure-szolgáltatások és más alkalmazások figyelésére.
 
-![Monitorozási megoldások](../monitoring/media/monitoring-solutions/overview.png)
+![Monitorozási megoldások](media/overview/solutions-overview.png)
 
 ## <a name="responding-to-critical-situations"></a>Válaszadás a kritikus fontosságú helyzetek
 Mellett lehetővé teszi, hogy a monitorozási adatok interaktív elemzéséhez, egy hatékony monitorozási megoldást proaktív módon reagál a gyűjtött adatok között azonosított kritikus feltételek képesnek kell lennie. Ez sikerült kell küldése a szöveg- vagy e-mail rendszergazda egy probléma kivizsgálásának felelős. Vagy, elindíthat egy automatizált folyamattal, amely megpróbálja hibaállapot kijavítása érdekében.

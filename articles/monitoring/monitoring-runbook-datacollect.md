@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 7ef7f6548cd3dd838889fd51ff0521428bbbc2aa
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f9acdacfad25a2154a23055dce136984177242e0
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282679"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713010"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Adatgyűjtés, a Log Analytics az Azure Automation-runbook
 Számos különféle forrásból például gyűjthet adatokat a Log Analytics jelentős mennyiségű [adatforrások](../log-analytics/log-analytics-data-sources.md) ügynökökön és is [adatokat gyűjteni az Azure-ból](../log-analytics/log-analytics-azure-storage.md).  Vannak olyan forgatókönyvek ellenére, hogy hol kell gyűjtenie az adatokat, amely nem érhető el standard források segítségével.  Ezekben az esetekben használhatja a [HTTP-adatgyűjtő API](../log-analytics/log-analytics-data-collector-api.md) használatával írhat adatokat a Log Analyticsbe bármely REST API-ügyfélből.  Egy általános módszer az adatgyűjtést az Azure Automation runbook használ.   
@@ -213,7 +213,7 @@ Minden alkalommal, amikor egy runbook elindult, [létrejön egy feladat](../auto
 
 ## <a name="next-steps"></a>További lépések
 - Használat [adatforrásnézet-tervezőből](../log-analytics/log-analytics-view-designer.md) a Log Analytics-adattárban gyűjtött adatok megjelenítésének nézet létrehozásához.
-- A runbook a csomag egy [felügyeleti megoldás](monitoring-solutions-creating.md) az ügyfelek számára terjeszteni.
+- A runbook a csomag egy [felügyeleti megoldás](../azure-monitor/insights/solutions-creating.md) az ügyfelek számára terjeszteni.
 - Tudjon meg többet [Log Analytics](https://docs.microsoft.com/azure/log-analytics/).
 - Tudjon meg többet [Azure Automation](https://docs.microsoft.com/azure/automation/).
 - Tudjon meg többet a [HTTP-adatgyűjtő API](../log-analytics/log-analytics-data-collector-api.md).

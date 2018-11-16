@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: 8aa79d66801ff30fedc725913696d5cfa3c9626f
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 0cdc0b69405d726a7a661fb3e204e4f3ff8e50a5
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282827"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713197"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Az Azure Monitor által gyűjtött adatok figyelése
 [Az Azure Monitor](../azure-monitor/overview.md) egy szolgáltatás, amellyel figyelheti az alkalmazások és az erőforrások támaszkodnak. Figyelt erőforrások központi az alábbi függvényre van telemetriai és egyéb adatok tárolására. A cikk ismerteti, hogyan az adatok tárolásának és az Azure Monitor által használt teljes leírását.
@@ -140,7 +140,7 @@ A log Analytics adatokat gyűjthet, különböző forrásokból is Azure-ban és
 - [Tevékenységnaplók](../log-analytics/log-analytics-activity.md) az Azure-erőforrások, amelyek tartalmazzák az információkat a konfigurációjukról és egészségügyi és [diagnosztikai naplók](../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) termék működésével kapcsolatos információkat tartalmaznak, amelyek.
 - Az ügynökök [Windows](../log-analytics/log-analytics-windows-agent.md) és [Linux](../log-analytics/log-analytics-quick-collect-linux-computer.md) virtuális gépeket, amelyek a vendég operációs rendszer és alkalmazások a következők szerint a Log Analytics számára küldött telemetriai adatokra [adatforrások](../log-analytics/log-analytics-data-sources.md) , konfigurálja.
 - Alkalmazásadatok által gyűjtött [Application Insights](https://docs.microsoft.com/azure/application-insights/).
-- Az adatok egy adott alkalmazás vagy szolgáltatás betekintést nyújtó [figyelési megoldások](../monitoring/monitoring-solutions.md) vagy szolgáltatások, például a Container Insights, a virtuális gép Insights vagy a csoport Insights erőforrás.
+- Az adatok egy adott alkalmazás vagy szolgáltatás betekintést nyújtó [figyelési megoldások](../monitoring/../azure-monitor/insights/solutions.md) vagy szolgáltatások, például a Container Insights, a virtuális gép Insights vagy a csoport Insights erőforrás.
 - Biztonsági adatok által gyűjtött [az Azure Security Center](https://docs.microsoft.com/azure/security-center/).
 - [Metrikák](#metrics) Azure-erőforrásokból. Ez lehetővé teszi, hogy a 93 napnál hosszabb mérőszámokat tárol, és más naplózási adatokat elemezhet.
 - Telemetria írt [Azure Storage](../log-analytics/log-analytics-azure-storage-iis-table.md).

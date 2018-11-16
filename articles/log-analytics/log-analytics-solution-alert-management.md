@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: bba008bc6d1214aa4b2ca7cc609586a3d18159fd
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 534c47e1c3189258617505808f7a8c7b2e3a3c6e
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613613"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711038"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Az Azure Log Analytics felügyeleti megoldás riasztás
 
@@ -36,7 +36,7 @@ A megoldás együttműködik a Log Analytics-tárházban típussal rendelkező r
 - A System Center Operations Manager riasztásaihoz [az Operations Manager felügyeleti csoport csatlakozni a Log Analytics-munkaterület](log-analytics-om-agents.md).  A System Center Operations Managerben létrehozott riasztásokat is importálja a Log Analytics.  
 
 ## <a name="configuration"></a>Konfiguráció
-Adja hozzá a riasztási felügyeleti megoldás a Log Analytics-munkaterülethez ismertetett folyamatot [megoldások hozzáadása](../monitoring/monitoring-solutions.md). Nincs szükség további konfigurációra.
+Adja hozzá a riasztási felügyeleti megoldás a Log Analytics-munkaterülethez ismertetett folyamatot [megoldások hozzáadása](../azure-monitor/insights/solutions.md). Nincs szükség további konfigurációra.
 
 ## <a name="management-packs"></a>Felügyeleti csomagok
 Ha a System Center Operations Manager felügyeleti csoportban a Log Analytics-munkaterülethez van csatlakoztatva, majd a következő felügyeleti csomagokat telepíti a System Center Operations Manager a megoldás hozzáadásakor.  Nincs, konfigurációs vagy karbantartási szükséges felügyeleti csomagok.

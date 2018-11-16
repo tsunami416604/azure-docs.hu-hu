@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: fab4bcb62d15be11ab0a588b7a58447f05b4466a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 84c54ece905d0a3d68779e498a5bb66f555c08d5
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014669"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712874"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Összegyűjtheti és elemezheti a Log Analytics az Azure-Tevékenységnaplók
 
@@ -67,7 +67,7 @@ Ellentétben a legtöbb más Log Analytics-megoldások nem az adatgyűjtés a Te
 
 A következő lépésekkel konfigurálja az Activity Log Analytics megoldást, a munkaterületek.
 
-1. Engedélyezze az Activity Log Analytics megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) felületéről vagy a [Log Analytics-megoldások hozzáadása a megoldástárból](../monitoring/monitoring-solutions.md) című témakörben leírt eljárást követve.
+1. Engedélyezze az Activity Log Analytics megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) felületéről vagy a [Log Analytics-megoldások hozzáadása a megoldástárból](../azure-monitor/insights/solutions.md) című témakörben leírt eljárást követve.
 2. Tevékenységnaplók az Ugrás a Log Analytics-munkaterület konfigurálása.
     1. Az Azure Portalon válassza ki a munkaterületet, és kattintson a **Azure tevékenységnapló**.
     2. Az egyes előfizetésekhez kattintson az előfizetés nevét.  

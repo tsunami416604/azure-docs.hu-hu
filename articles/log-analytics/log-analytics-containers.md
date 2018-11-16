@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 575b3ec5e729b325cad216ae463063acbb68f20b
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 6f4f2f6a7999b2d26e198a11bb7cee27991a775b
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685939"
+ms.locfileid: "51711956"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Figyelés a Log Analytics megoldásra
 
@@ -36,7 +36,7 @@ A megoldás bemutatja, hogy mely tárolók fut, milyen tárolórendszerkép futn
 - Service Fabric
 - Red Hat OpenShift
 
-Ha érdekli az üzembe helyezett munkaterhelések teljesítményének figyelése a Kubernetes-környezetben üzemeltetett Azure Kubernetes Service (AKS), lásd: [figyelő Azure Kubernetes Service](../monitoring/monitoring-container-insights-overview.md). A Tárolómonitorozási megoldás nem tartalmazza az adott platform figyelésének támogatását.  
+Ha érdekli az üzembe helyezett munkaterhelések teljesítményének figyelése a Kubernetes-környezetben üzemeltetett Azure Kubernetes Service (AKS), lásd: [figyelő Azure Kubernetes Service](../azure-monitor/insights/container-insights-overview.md). A Tárolómonitorozási megoldás nem tartalmazza az adott platform figyelésének támogatását.  
 
 Az alábbi ábrán látható, különböző tároló gazdagépek és az ügynökök a Log Analytics használatával kapcsolatai.
 
@@ -97,7 +97,7 @@ Az alábbi táblázat ismerteti a Docker vezénylési és az operációs rendsze
 ## <a name="installing-and-configuring-the-solution"></a>A megoldás telepítése és konfigurálása
 A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi információkat.
 
-1. A Tárolómonitorozási megoldás hozzáadása a Log Analytics-munkaterületet [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) vagy leírt folyamatot követve [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../monitoring/monitoring-solutions.md).
+1. A Tárolómonitorozási megoldás hozzáadása a Log Analytics-munkaterületet [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) vagy leírt folyamatot követve [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../azure-monitor/insights/solutions.md).
 
 2. Telepítse, és a Docker és a egy Log Analytics-ügynököket a használata. Az operációs rendszer és a Docker orchestrator alapján, használhatja az alábbi módszerek konfigurálása az ügynök.
   - Önálló gazdagépek:

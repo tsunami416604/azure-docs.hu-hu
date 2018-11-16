@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 78ffa42bcf57b7163afc13b2550abdbae240ef00
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: cf27864d691fe2fe13c9483348fb2abed121874d
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729238"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713503"
 ---
 # <a name="show-search-results-on-the-map"></a>A térképen a keresési eredmények megjelenítése
 
@@ -31,7 +31,7 @@ Az első kódblokkot egy térkép-objektumot hoz létre, és az ügyfélszolgál
 
 A második kódblokkot használja a [Azure Maps intelligens keresési API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) hasznos helyekre vezető útvonalak keresése. Intelligens keresést API intelligens bemenetek bármilyen kombinációját képes kezelni. Az intelligens keresés szolgáltatástól kapott válasz majd szűrőtulajdonság GeoJSON formátumú használatával a [getGeoJsonSearchResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonsearchresponse?view=azure-iot-typescript-latest#geojsonsearchresponse) metódust. A PIN-kódok ezután hozzáadódnak a hasznos helyekhez a térképen megjeleníthető leképezés.
 
-A legutóbbi kódblokkot segítségével állítja be a kamera esik, a térkép a térkép [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) tulajdonság.
+A legutóbbi kódblokkot segítségével állítja be a kamera esik, a térkép a térkép [setCameraBounds](/javascript/api/azure-maps-control/atlas.map#setcamerabounds-cameraboundsoptions-) tulajdonság.
 
 ## <a name="make-a-search-request-via-xmlhttprequest"></a>Keresés keresztül XMLHttpRequest kérést
 
@@ -44,7 +44,7 @@ A második kódblokk keresési eredmények réteget ad hozzá a térképen. A ke
 
 A harmadik kódblokkot küld egy [XMLHttpRequest](https://xhr.spec.whatwg.org/) való [Azure Maps intelligens keresés API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) a pont hasznos hely kereséséhez. Intelligens keresést API intelligens bemenetek bármilyen kombinációját képes kezelni.
 
-A legutóbbi kódblokkot elemzi a választ, és beállítja a a térkép segítségével állítja be a térkép kamera határán [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) az eredmény PIN-kód megjelenítéséhez.
+A legutóbbi kódblokkot elemzi a választ, és beállítja a a térkép segítségével állítja be a térkép kamera határán [setCameraBounds](/javascript/api/azure-maps-control/atlas.map#setcamerabounds-cameraboundsoptions-) az eredmény PIN-kód megjelenítéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -62,6 +62,6 @@ A teljes hitelesítésikód-példák a következő cikkekben talál:
 
 > [!div class="nextstepaction"]
 > [Koordináta információinak lekérése](./map-get-information-from-coordinate.md)
-
+<!-- Comment added to suppress false positive warning -->
 > [!div class="nextstepaction"]
 > [Útvonal megjelenítése a-b](./map-route.md)

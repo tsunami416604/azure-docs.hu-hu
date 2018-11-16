@@ -10,12 +10,12 @@ author: raymondlaghaeian
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: efaaa196220213877283040120d6c2eeed86dbf3
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 1d029a2ab214ba85932dad022e4c3cb862b8688a
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346320"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712993"
 ---
 # <a name="how-to-deploy-models-from-azure-machine-learning-service-to-azure-kubernetes-service"></a>Az Azure Kubernetes Service az Azure Machine Learning szolgáltatásból származó modellek üzembe helyezése
 
@@ -25,7 +25,7 @@ Az aks üzembe helyezéséhez biztosít, automatikus méretezést, naplózás, a
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+- Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLfree), mielőtt hozzákezd.
 
 - Egy Azure Machine Learning szolgáltatás munkaterületén, a parancsprogramok, és az Azure Machine Learning SDK-t tartalmazó Python telepítve van egy helyi könyvtárba. Ezekről az előfeltételekről használatával beszerzéséről a [a fejlesztési környezet konfigurálása](how-to-configure-environment.md) dokumentumot.
 

@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: ramkris
-ms.openlocfilehash: 26479ade27b18e817d7ad03d70d27b0cef687e8d
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 62395ff5370a057ca1888dd135b83be9d6f34f8d
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269411"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51707180"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Gyorsítsa fel a big data-elemzés az Azure Cosmos DB-összekötő az Apache Spark használatával
  
-Az Apache Spark az Azure Cosmos DB-összekötő lehetővé teszi, hogy az Azure Cosmos DB egy bemeneti vagy kimeneti for Apache Spark-feladatok kell lennie. Csatlakozás [Spark](http://spark.apache.org/) való [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) gyorsítja megítélnie gyors ütemben data science kapcsolatos problémák megoldásához. Azure Cosmos DB segítségével gyorsan továbbra is fennáll, illetve adatokat kérdezhet le. Az összekötő hatékonyan az Azure Cosmos DB által kezelt natív indexeket használja. Az indexek engedélyezi a frissíthető oszlopok elemzési és szűrés a gyorsan változó, globálisan elosztott adatokon leküldéses legördülő predikátum végrehajtásakor. Az ilyen típusú adatok között lehet Internet of Things (IoT) adatok adatelemzési és analitikai feladatokhoz.
+Az Apache Spark és az Azure Cosmos DB közötti összekötő lehetővé teszi, hogy az Azure Cosmos DB legyen az Apache Spark-feladatok bemenete vagy kimenete. Csatlakozás [Spark](http://spark.apache.org/) való [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) gyorsítja megítélnie gyors ütemben data science kapcsolatos problémák megoldásához. Azure Cosmos DB segítségével gyorsan továbbra is fennáll, illetve adatokat kérdezhet le. Az összekötő hatékonyan használja az Azure Cosmos DB által felügyelt natív indexeket. Az indexek lehetővé teszik a frissíthető oszlopok használatát, amikor elemzéseket és leküldéses predikátumszűréseket végez gyorsan változó, globálisan elosztott adatokon. Az ilyen típusú adatok között lehet Internet of Things (IoT) adatok adatelemzési és analitikai feladatokhoz.
 
 ## <a name="connector-components"></a>Összekötő-összetevők
 
@@ -83,7 +83,7 @@ Futtassa az alábbi lépéseket a csatlakozás a Spark az Azure Cosmos DB pyDocu
 
 6. Az a **jegyzetfüzet létrehozása** párbeszédpanelen adjon meg egy felhasználóbarát nevet, és válassza a **Python** nyelve. A legördülő listából válassza ki a korábban létrehozott fürt, és válassza ki **létrehozás**.  
 
-7. A Futtatás néhány Spark lekérdezések futtatása a repülés mintaadatok üzemeltetett "doctorwho" az Azure Cosmos DB-fiókot. (Ezt a fiókot a nyilvánosan elérhető-e.) A [azure-cosmos DB-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub-adattárat üzemelteti a notebook HTML-verziójában. A tárház fájljainak letöltése, és váltson `\samples\Documentation_Samples\Read_Batch_PyDocumentDB.html`. A notebook importálása az Azure Databricks-fiókjába, és futtathatja. Az alábbi szakasz részletesen ismertetjük a kódblokkok funkcióit mutatja be.
+7. A Futtatás néhány Spark lekérdezések futtatása a repülés mintaadatok üzemeltetett "doctorwho" az Azure Cosmos DB-fiókot. Ez egy nyilvánosan elérhető-e. A [azure-cosmos DB-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub-tárház gazdagépek a [Read_Batch_PyDocumentDB](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Read_Batch_PyDocumentDB.ipynb) notebookot. A notebook importálása az Azure Databricks-fiókjába, és futtathatja. Az alábbi szakasz részletesen ismertetjük a kódblokkok funkcióit mutatja be.
 
 A következő kódrészletet bemutatja, hogyan importálhatja a pyDocumentDB SDK-t, és a egy lekérdezés futtatása a Spark környezet. A kódtöredék feljegyzett a pyDocumentDB SDK tartalmazza az Azure Cosmos DB-fiókhoz való csatlakozáshoz szükséges kapcsolati paraméterek. Importálja a szükséges kódtárak, és konfigurálja a főkulcs és a gazdagép, az Azure Cosmos DB-ügyfél (pydocumentdb.document_client) létrehozása.
 
@@ -209,7 +209,7 @@ Ez a cikk bemutatja, hogy a Spark-összekötő Java SDK-t a következő esetekbe
 
 ### <a name="read-twitter-data-from-azure-cosmos-db"></a>Twitter-adatok olvasása az Azure Cosmos DB-ből
  
-Ebben a szakaszban a Spark lekérdezéseket futtat a Twitter-adatok kötegelt olvasása az Azure Cosmos DB-ből. A [azure-cosmos DB-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub-adattárat üzemelteti a notebook HTML-verziójában. A tárház fájljainak letöltéséhez, és nyissa meg `\samples\Documentation_Samples\Read_Batch_Twitter_Data.html`. A notebook importálása az Azure Databricks-fiókjába, és frissítse a fiók URI-t, a főkulcs, adatbázis és gyűjtemény neve. A jegyzetfüzet futtatásához, vagy hozzon létre a következő:
+Ebben a szakaszban a Spark lekérdezéseket futtat a Twitter-adatok kötegelt olvasása az Azure Cosmos DB-ből. A [azure-cosmos DB-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub-tárház gazdagépek a [Read_Batch_Twitter_Data](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Read_Batch_Twitter_Data.ipynb) notebookot. A notebook importálása az Azure Databricks-fiókjába, és frissítse a fiók URI-t, a főkulcs, adatbázis és gyűjtemény neve. A jegyzetfüzet futtatásához, vagy hozzon létre a következő:
 
 1. Nyissa meg az Azure Databricks-fiókját, és válassza ki **munkaterület** > **létrehozás** > **Notebook**. 
 
@@ -268,7 +268,7 @@ A forgatókönyvtől függően különféle konfigurációs értékeket kell has
 
 ### <a name="read-twitter-data-that-is-streaming-to-azure-cosmos-db"></a>Az Azure Cosmos DB a streamelési olvasási Twitter-adatok
 
-Ebben a szakaszban a Spark lekérdezéseket futtat egy módosítási hírcsatorna streamelési Twitter-adatok olvasásához. Bár ebben a szakaszban futtassa a lekérdezéseket, ellenőrizze, hogy a Twitter-hírcsatornáján alkalmazás fut, és adatokat az Azure Cosmos DB szivattyúzó. A [azure-cosmos DB-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub-adattárat üzemelteti a notebook HTML-verziójában. A tárház fájljainak letöltése, és váltson `\samples\Documentation_Samples\Read_Stream_Twitter_Data.html`. A notebook importálása az Azure Databricks-fiókjába, és frissítse a fiók URI-t, a főkulcs, adatbázis és gyűjtemény neve. A jegyzetfüzet futtatásához, vagy hozzon létre a következő:
+Ebben a szakaszban a Spark lekérdezéseket futtat egy módosítási hírcsatorna streamelési Twitter-adatok olvasásához. Bár ebben a szakaszban futtassa a lekérdezéseket, ellenőrizze, hogy a Twitter-hírcsatornáján alkalmazás fut, és adatokat az Azure Cosmos DB szivattyúzó. A [azure-cosmos DB-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub-tárház gazdagépek a [Read_Stream_Twitter_Data](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Read_Stream_Twitter_Data.scala) notebookot. A notebook importálása az Azure Databricks-fiókjába, és frissítse a fiók URI-t, a főkulcs, adatbázis és gyűjtemény neve. A jegyzetfüzet futtatásához, vagy hozzon létre a következő:
 
 1. Nyissa meg az Azure Databricks-fiókját, és válassza ki **munkaterület** > **létrehozás** > **Notebook**.  
 
@@ -335,7 +335,7 @@ Java SDK-t az alábbi kapcsolati beállításokat támogatja:
 
 ### <a name="write-twitter-data-to-azure-cosmos-db"></a>Twitter-adatok írni az Azure Cosmos DB-hez 
 
-Ebben a szakaszban a Spark lekérdezéseket futtat a Twitter-adatok kötegelt írni az új gyűjtemény ugyanabban az adatbázisban. A [azure-cosmos DB-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub-adattárat üzemelteti a notebook HTML-verziójában. A tárház fájljainak letöltése, és váltson `\samples\Documentation_Samples\Write_Batch_Twitter_Data.html`. A notebook importálása az Azure Databricks-fiókjába, és frissítse a fiók URI-t, a főkulcs, adatbázis és gyűjtemény neve. A jegyzetfüzet futtatásához, vagy hozzon létre a következő:
+Ebben a szakaszban a Spark lekérdezéseket futtat a Twitter-adatok kötegelt írni az új gyűjtemény ugyanabban az adatbázisban. A [azure-cosmos DB-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub-tárház gazdagépek a [Write_Batch_Twitter_Data](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Write_Batch_Twitter_Data.ipynb) notebookot. A notebook importálása az Azure Databricks-fiókjába, és frissítse a fiók URI-t, a főkulcs, adatbázis és gyűjtemény neve. A jegyzetfüzet futtatásához, vagy hozzon létre a következő:
 
 1. Nyissa meg az Azure Databricks-fiókját, és válassza ki **munkaterület** > **létrehozás** > **Notebook**.  
 
@@ -428,7 +428,7 @@ A Java SDK konfigurációs leképezés a következő értékeket támogatja:
 
 ### <a name="write-twitter-data-that-is-streaming-to-azure-cosmos-db"></a>Az Azure Cosmos DB az adatfolyam-, Twitter-adatok írása 
 
-Ebben a szakaszban a Spark lekérdezéseket futtat egy módosítási hírcsatorna streamelési ugyanabban az adatbázisban egy új gyűjteményt a Twitter-adatok írására. A [azure-cosmos DB-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub-adattárat üzemelteti a notebook HTML-verziójában. A tárház fájljainak letöltése, és váltson `\samples\Documentation_Samples\Write_Stream_Twitter_Data.html`. A notebook importálása az Azure Databricks-fiókjába, és frissítse a fiók URI-t, a főkulcs, adatbázis és gyűjtemény neve. A jegyzetfüzet futtatásához, vagy hozzon létre a következő:
+Ebben a szakaszban a Spark lekérdezéseket futtat egy módosítási hírcsatorna streamelési ugyanabban az adatbázisban egy új gyűjteményt a Twitter-adatok írására. A [azure-cosmos DB-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub-tárház gazdagépek a [Write_Stream_Twitter_Data](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Write_Stream_Data.scala) notebookot. A notebook importálása az Azure Databricks-fiókjába, és frissítse a fiók URI-t, a főkulcs, adatbázis és gyűjtemény neve. A jegyzetfüzet futtatásához, vagy hozzon létre a következő:
 
 1. Nyissa meg az Azure Databricks-fiókját, és válassza ki **munkaterület** > **létrehozás** > **Notebook**.  
 

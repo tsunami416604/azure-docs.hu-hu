@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: a4d62dd0bc984ce80324b405ddd0dcb625694b21
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 0f0bee419fdb119fcd99f0e72cc61ddf20f6253a
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612573"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712942"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>A Log Analytics-riasztások kiterjesztése az Azure-riasztások
 Nemrég, amíg az Azure Log Analytics a saját riasztási funkcióval rendelkezik, amely sikerült proaktívan kaphat értesítést a Log Analytics-adatok alapuló feltételek tartalmazza. A Microsoft Operations Management Suite portál riasztási szabályok felügyelt. A riasztások új kezelőfelülete mostantól integrálva van riasztási között különböző szolgáltatások, Microsoft Azure-ban. Érhető el **riasztások** alatt az Azure Monitor az Azure Portalon, és támogatja a vizsgálati naplók, metrikák, a riasztások és a Log Analytics és az Azure Application Insights-naplók. 
@@ -55,7 +55,7 @@ Ha egy meglévő riasztást szerkesztheti, vagy hozzon létre egy új riasztás 
 > Győződjön meg arról, hogy az egyéni felhasználók számára, akik hozzáadása vagy szerkesztése a riasztások rendelt engedélyek megfelelően hozzárendeli az Azure-ban. Szeretné megtudni, hogy milyen engedélyeket kell biztosítania, lásd: [engedélyek az Azure Monitor és a riasztások](monitoring-roles-permissions-security.md).  
 > 
 
-Hozzon létre a riasztások továbbra is a [Log Analytics API](../log-analytics/log-analytics-api-alerts.md) és [Log Analytics-erőforrás sablon](../monitoring/monitoring-solutions-resources-searches-alerts.md). Ha így tesz, meg kell adnia Műveletcsoportok.
+Hozzon létre a riasztások továbbra is a [Log Analytics API](../log-analytics/log-analytics-api-alerts.md) és [Log Analytics-erőforrás sablon](../azure-monitor/insights/solutions-resources-searches-alerts.md). Ha így tesz, meg kell adnia Műveletcsoportok.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: a4689093508c3287e60da9d4668393e71211fbdd
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 0dbf8a44007fbba39f6ac4c20e375a6d13ac9021
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405702"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711072"
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>JSON-blobok indexelése az Azure Search blob indexelőjével
 Ez a cikk bemutatja, hogyan konfigurálhatja az Azure Search blob indexelőjével strukturálatlan tartalom használatával nyerhetők JSON-blobok, az Azure Blob storage-ban.
@@ -24,11 +24,8 @@ Az Azure Blob storage-ban JSON-blobok jellemzően egyetlen JSON-dokumentumok és
 | JSON-dokumentumok | parsingMode | Leírás | Rendelkezésre állás |
 |--------------|-------------|--------------|--------------|
 | Egy blob egy | `json` | Elemzi a JSON-blobok, a szöveg egy olyan adattömb. Egyes JSON-blobok az Azure Search egyetlen dokumentum válik. | Általánosan elérhető a [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) és [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) API-k. |
-| Több blobonkénti | `jsonArray` | Elemzi a blobban, ahol a tömb egyes elemei lesz-e egy külön Azure Search-dokumentum egy JSON-tömböt.  | Előzetes verzióban elérhető a [REST api-version =`2017-11-11-Preview` ](search-api-2017-11-11-preview.md) és [.NET SDK előzetes](https://aka.ms/search-sdk-preview). |
+| Több blobonkénti | `jsonArray` | Elemzi a blobban, ahol a tömb egyes elemei lesz-e egy külön Azure Search-dokumentum egy JSON-tömböt.  | Általánosan elérhető a [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) és [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) API-k. |
 
-> [!Note]
-> Előzetes API-k tesztelési és értékelési célokra szolgálnak, és nem éles környezetekben használható.
->
 
 ## <a name="setting-up-json-indexing"></a>JSON-indexelő beállítása
 JSON-blobok indexelése a hasonló a normál dokumentumot kivonás a közös Háromrészes munkafolyamat az Azure Search szolgáltatásban az összes indexelőre.
@@ -103,9 +100,9 @@ Egy teljes körűen kérés a következő lehet:
 
 Feljegyzett, mező-leképezések nem szükségesek. Megadott index "szöveg", "datePublished, és a"címkék"mezőbe, a blob indexelő is kikövetkeztetni a megfelelő leképezés leképezése a kérelemben szereplő mező nélkül.
 
-## <a name="how-to-parse-json-arrays-preview"></a>Hogyan kell elemezni a JSON-tömb (előzetes verzió)
+## <a name="how-to-parse-json-arrays"></a>Hogyan kell elemezni a JSON-tömbök
 
-Másik megoldásként kérheti a JSON-tömb az előzetes verziójú szolgáltatásra. Ez a funkció akkor hasznos, ha a blobok tartalmazzák egy *JSON-objektumok tömbje*, és azt szeretné, hogy minden elem egy külön Azure Search-dokumentum lesz. Például adja meg a következő JSON-blobját, fel lehet tölteni az Azure Search-index három külön dokumentumot, az egyes "id" és "szöveg" mezőkkel.  
+Másik megoldásként kérheti a JSON-tömb funkció. Ez a funkció akkor hasznos, ha a blobok tartalmazzák egy *JSON-objektumok tömbje*, és azt szeretné, hogy minden elem egy külön Azure Search-dokumentum lesz. Például adja meg a következő JSON-blobját, fel lehet tölteni az Azure Search-index három külön dokumentumot, az egyes "id" és "szöveg" mezőkkel.  
 
     [
         { "id" : "1", "text" : "example 1" },
@@ -115,9 +112,9 @@ Másik megoldásként kérheti a JSON-tömb az előzetes verziójú szolgáltat�
 
 ### <a name="indexer-definition-for-a-json-array"></a>Az indexelő definíciója egy JSON-tömb
 
-Az indexelő kérelem egy JSON-tömb, használja az előzetes verziójú API és a `jsonArray` elemzőt. Ezek a JSON-blobok indexelése csak két tömb-specifikus követelmények vonatkoznak.
+Az indexelő kérelem egy JSON-tömb, használja a `jsonArray` elemzőt. Ezek a JSON-blobok indexelése csak két tömb-specifikus követelmények vonatkoznak.
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11-Preview
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 

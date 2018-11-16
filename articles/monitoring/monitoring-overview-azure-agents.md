@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: d07a89163d10026851dc26812ac248d92d6d5e8a
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: eb8356b659647ec73be121f8a05ab5e1e8d5837f
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684171"
+ms.locfileid: "51710141"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Az Azure monitorozási ügynökök 
 A Microsoft Azure több módszert is biztosít a különböző típusú adatok gyűjtésére a Microsoft Windows és az Azure, a helyi adatközpontban vagy egyéb felhőszolgáltatók üzemeltetett Linux rendszerű virtuális gépek. Három különböző típusa érhető el a virtuális gép figyelése ügynökök a következők:
@@ -60,7 +60,7 @@ Speciális monitorozás kell több mint gyűjtenek, metrikák és naplók egy r�
 A Log Analytics-ügynököket kell használni, ha meg szeretné:
 
 * Többféle forrásból, mind az Azure, a más felhőszolgáltatók és a helyszíni erőforrásokhoz történő adatgyűjtést. 
-* Az Azure Monitor figyelési megoldások például valamelyik [-beli virtuális gépek az Azure Monitor](../monitoring/monitoring-vminsights-overview.md?toc=%2fazure%2fmonitoring%2ftoc.json), [-tárolókhoz az Azure Monitor](../monitoring/monitoring-container-insights-overview.md?toc=%2fazure%2fmonitoring%2ftoc.json)stb.  
+* Az Azure Monitor figyelési megoldások például valamelyik [-beli virtuális gépek az Azure Monitor](../monitoring/../azure-monitor/insights/vminsights-overview.md?toc=%2fazure%2fmonitoring%2ftoc.json), [-tárolókhoz az Azure Monitor](../monitoring/../azure-monitor/insights/container-insights-overview.md?toc=%2fazure%2fmonitoring%2ftoc.json)stb.  
 * Használjon egy más az Azure management szolgáltatás például [az Azure Security Center](../security-center/security-center-intro.md), [Azure Automation](../automation/automation-intro.md)stb.
 
 Korábban, a több Azure-szolgáltatások kötegelve is a *Operations Management Suite*, és ennek eredményeképpen a Log Analytics-ügynököket közösen használja többek között az Azure Security Center és Azure Automation szolgáltatásokat.  Ez magában foglalja a kínálnak, továbbítása az Azure-beli virtuális életciklusuk átfogó felügyeleti funkciók teljes készletét.  Néhány példa ennek a következők:
@@ -71,7 +71,7 @@ Korábban, a több Azure-szolgáltatások kötegelve is a *Operations Management
 * Azure-szolgáltatások például [Application Insights](https://docs.microsoft.com/azure/application-insights/) és [az Azure Security Center](https://docs.microsoft.com/azure/security-center/), amelyek natív módon tárolja az adatokat közvetlenül a Log Analytics.  
 
 ## <a name="dependency-agent"></a>Függőségi ügynök
-A függőségi ügynök fejlesztette ki a Service Map megoldást, amely eredetileg kívülről a Microsoft részeként. [A Service Map](../monitoring/monitoring-service-map.md) és [-beli virtuális gépek az Azure Monitor](monitoring-vminsights-overview.md) használatához a függőségi ügynököt Windows és Linux rendszerű virtuális gépek és a Log Analytics-ügynök felderített összegyűjti az adatokat a virtuális futó folyamatok integrálható gép és a külső folyamatok függőségeit. Azt tárolja ezeket az adatokat a Log Analytics elérhetővé, és a felderített összekapcsolt összetevőket.
+A függőségi ügynök fejlesztette ki a Service Map megoldást, amely eredetileg kívülről a Microsoft részeként. [A Service Map](../monitoring/monitoring-service-map.md) és [-beli virtuális gépek az Azure Monitor](../azure-monitor/insights/vminsights-overview.md) használatához a függőségi ügynököt Windows és Linux rendszerű virtuális gépek és a Log Analytics-ügynök felderített összegyűjti az adatokat a virtuális futó folyamatok integrálható gép és a külső folyamatok függőségeit. Azt tárolja ezeket az adatokat a Log Analytics elérhetővé, és a felderített összekapcsolt összetevőket.
 
 Ezeket az ügynököket a virtuális gép figyelése valamilyen kombinációját szükség lehet. Az ügynökök is telepíthető egymás mellett az Azure-bővítmény, azonban a Linux, a Log Analytics-ügynököket *kell* telepíthető telepítési ellenkező esetben az első sikertelen lesz. 
 

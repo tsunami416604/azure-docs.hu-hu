@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/9/2018
+ms.date: 11/15/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 02805f676a5ea9edbfa619c625bb11e94e16c12e
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
-ms.translationtype: HT
+ms.openlocfilehash: 1d7c880a56c79d516c3904c3f532eb7006f0b68c
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299996"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705837"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon
 
@@ -97,46 +97,36 @@ Hozzon létre egy másik alhálózatot, amelynek a neve **Jump-SN**, a címtarto
 
 Most hozza létre a helyettesítő és a számítási feladatokat futtató virtuális gépeket, és helyezze el őket a megfelelő alhálózatokon.
 
-1. Az Azure Portal kezdőlapján kattintson a **Minden szolgáltatás** elemre.
-2. A **Compute** területen kattintson a **Virtuális gépek** elemre.
-3. Kattintson a **Hozzáadás** > **Windows Server** > **Windows Server 2016 Datacenter** >  **Létrehozás** elemre.
+1. Az Azure Portalon kattintson az **Erőforrás létrehozása** gombra.
+2. Kattintson a **számítási** majd **Windows Server 2016 Datacenter** a kiemelt lista.
+3. Adja meg a következő értékeket a virtuális gép számára:
 
-**Alapvető beállítások**
+    - *Test-Keretrendszer-RG* az erőforráscsoportnak.
+    - *SRV-Jump* – a virtuális gép neve.
+    - A rendszergazda felhasználóneve: *azureuser*.
+    - A jelszó *Azure123456!* .
 
-1. A **Név** mezőbe írja be a következőt: **Srv-Jump**.
-5. Adjon meg egy felhasználónevet és jelszót.
-6. Az **Előfizetés** beállításnál válassza ki az előfizetését.
-7. Az **Erőforráscsoport** területen kattintson a **Meglévő használata** > **Test-FW-RG** elemre.
-8. A **Hely** elemnél válassza a korábban használt helyet.
-9. Kattintson az **OK** gombra.
+4. A **bejövőport-szabályok**, a **nyilvános bejövő portok**, kattintson a **lehetővé teszi a kiválasztott portok**.
+5. A **bejövő portok kiválasztása**válassza **RDP (3389-es)**.
 
-**Méret**
-
-1. Válasszon egy Windows Servert futtató teszt virtuális géphez megfelelő méretet. Például **B2ms** (8 GB RAM, 16 GB tárterület).
-2. Kattintson a **Kiválasztás** gombra.
-
-**Beállítások**
-
-1. A **Hálózat** területen a **Virtuális hálózat** mezőnél válassza a **Test-FW-VN** lehetőséget.
-2. Az **Alhálózat** mezőnél válassza a **Jump-SN** lehetőséget.
-3. A **Nyilvános bejövő portok kiválasztása** mezőnél válassza az **RDP (3389)** lehetőséget. 
-
-    Érdemes korlátoznia a hozzáférést a nyilvános IP-címhez, azonban a 3389-es portot nyissa meg, hogy egy távoli asztalt csatlakoztatni lehessen a helyettesítő kiszolgálóhoz. 
-2. Hagyja meg az egyéb alapértelmezett beállításokat, és kattintson az **OK** gombra.
-
-**összegzés**
-
-Tekintse át az összefoglalást, majd kattintson a **Létrehozás** gombra. Ez eltarthat pár percig.
+6. Elfogadhatja az alapértelmezett beállításokat, és kattintson a **tovább: lemezek**.
+7. Fogadja el a lemez alapértelmezett beállításokat, és kattintson a **tovább: hálózatkezelés**.
+8. Győződjön meg arról, hogy **Test-Keretrendszer-VN** a kiválasztott virtuális hálózat és az alhálózat van **Jump-SN**.
+9. A **nyilvános IP-cím**, kattintson a **új létrehozása**.
+10. Típus **Srv-Jump-PIP** a nyilvános IP-cím neve, majd kattintson a **OK**.
+11. Elfogadhatja az alapértelmezett beállításokat, és kattintson a **tovább: felügyeleti**.
+12. Kattintson a **ki** a rendszerindítási diagnosztika letiltásához. Elfogadhatja az alapértelmezett beállításokat, és kattintson a **felülvizsgálat + létrehozása**.
+13. Tekintse át a beállításokat az Összegzés lapon, és kattintson **létrehozás**.
 
 Ugyanezt az eljárást megismételve hozzon létre egy virtuális gépet **Srv-Work** néven.
 
-Az Srv-Work virtuális gép **beállításainak** konfigurálásához használja a következő táblázatban lévő információkat: A többi beállítás ugyanaz, mint az Srv-Jump virtuális gép esetében.
+Az alábbi táblázatban az információk segítségével konfigurálhatja az Srv-munkahelyi virtuális gép. A többi beállítás ugyanaz, mint az Srv-Jump virtuális gép esetében.
 
 |Beállítás  |Érték  |
 |---------|---------|
 |Alhálózat|Workload-SN|
 |Nyilvános IP-cím|None|
-|Nyilvános bejövő portok kiválasztása|Nincsenek nyilvános bejövő portok|
+|Nyilvános bejövő portok|None|
 
 ## <a name="deploy-the-firewall"></a>A tűzfal üzembe helyezése
 

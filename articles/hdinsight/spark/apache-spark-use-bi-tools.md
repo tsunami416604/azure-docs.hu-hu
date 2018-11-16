@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: Apache Spark-adatok elemzése Power BI használatával az Azure HDInsightban '
-description: HDInsight-fürtökben tárolt Spark-adatok vizualizációja a Microsoft Power BI használatával
+description: A Microsoft Power BI segítségével ábrázolhatja az Apache Spark-adatait tárolja a HDInsight-fürtök
 services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.openlocfilehash: 341346b290fc3dab94773f75f2269cc147e71b82
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: dcd28d8e33045f4c0324f964a854e98dfe004321
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252462"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712415"
 ---
-# <a name="tutorial-analyze-spark-data-using-power-bi-in-hdinsight"></a>Oktatóanyag: Spark-adatok elemzése Power BI használatával a HDInsightban 
+# <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Oktatóanyag: Power BI használata a HDInsight az Apache Spark-adatok elemzése 
 
 Ismerkedjen meg az Azure HDInsight Apache Spark-fürtjeiben tárolt adatok a Microsoft Power BI használatával való vizualizációjával.
 
@@ -78,7 +78,7 @@ A Spark használatba vételének első lépései a csatlakozás a fürthöz a Po
     ![Adatok lekérése a Power BI Desktopba a HDInsight Apache Sparkból](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Adatok lekérése a Power BI-ba az Apache Spark BI-ból")
 
 
-2. A keresőmezőbe írja be a `Spark` kifejezést, válassza az **Azure HDInsight Spark (bétaverzió)** elemet, majd kattintson a **Csatlakozás** elemre.
+2. Adja meg `Spark` jelölje be a keresőmezőbe, **Azure HDInsight Spark**, és kattintson a **Connect**.
 
     ![Adatok lekérése a Power BI-ba az Apache Spark BI-ból](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Adatok lekérése a Power BI-ba az Apache Spark BI-ból")
 

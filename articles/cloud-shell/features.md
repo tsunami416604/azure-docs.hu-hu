@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: juluk
-ms.openlocfilehash: 9a6f7aeea799787becf0bb99cdfa08bed4e9d355
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 63cd7935a649973ae72e074d546f48c7d316e388
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867459"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706738"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkciók és eszközök az Azure Cloud Shell
 
@@ -64,7 +64,7 @@ A cloud Shell nyílt forráskódú eszközök, például a Terraform, az Ansible
 |Szövegszerkesztő           |VIM<br> a nano<br> emacs<br> Kód       |
 |Verziókövetés         |git                    |
 |Eszközök létrehozása            |Győződjön meg arról<br> Maven<br> npm<br> a pip         |
-|Containers             |[Docker CLI](https://github.com/docker/cli)/[a Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS PARANCSSORI FELÜLETTEL](https://github.com/dcos/dcos-cli)         |
+|Containers             |[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS PARANCSSORI FELÜLETTEL](https://github.com/dcos/dcos-cli)         |
 |Adatbázisok              |MySQL-ügyfél<br> PostgreSql-ügyfél<br> [Az Sqlcmd segédprogram](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
 |Egyéb                  |iPython ügyfél<br> [A cloud Foundry parancssori felület](https://github.com/cloudfoundry/cli)<br> [A Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Az Ansible](https://www.ansible.com/microsoft-azure)<br> [A Chef InSpec](https://www.chef.io/inspec/)|
 

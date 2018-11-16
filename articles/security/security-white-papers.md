@@ -12,20 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/10/2018
+ms.date: 11/15/2018
 ms.author: tomsh
-ms.openlocfilehash: 9ecdc0b7d2d21962dbfc7c14e9fff3fd969dd018
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 5feedcd750841be159a7cf4a31f408aec2fffd38
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721092"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712976"
 ---
 # <a name="azure-security-white-papers"></a>Az Azure Security-tanulmányok
 | | |
 |-|-|
 |[Bevezetés&nbsp;való&nbsp;Azure&nbsp;biztonsági](azure-security.md)|Azt ismerteti, hogy az ügyfél és a Microsoft operations perspektívából az Azure-ban végrehajtott biztonsági vezérlők gyűjteménye. Biztosít egy átfogó az ügyfelek által használt biztonsági vezérlő érhető el az Azure-ral.|
 |[Ajánlott biztonsági eljárások az Azure-megoldások](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions)|Használatára, amikor Ön tervezése, telepítése és a felhőalapú megoldások kezelése az Azure ajánlott biztonsági eljárások gyűjteménye.|
+|[Az Azure-ban a biztonságos alkalmazások fejlesztése](abstract-develop-secure-apps.md)|Általános útmutató a biztonsági kérdések és is mindegyik fázisban, a szoftverek fejlesztési életciklus során megfontolandó a felhőalapú alkalmazások fejlesztésének szabályozza.|
 |[Fejlett fenyegetésészlelés](azure-threat-detection.md)|Útmutatók az Azure-on keresztül, megközelíti a veszélyforrások elleni biztonsági értékelések, diagnosztikai és elemzési felé. Ismerteti, hogyan a Microsoft használja az advanced threat detection mechanizmusok védik a platformot. Is bemutatja, hogyan Microsoft tartalmazza a nyilvános irányuló funkciók és szolgáltatások ezek a mechanizmusok.|
 |[Az Azure data encryption inaktív](azure-security-encryption-atrest.md)|Az adatok védelme a tárolt Azure-ban és a különböző összetevők vesz részt a data protection megvalósítás összpontosít. Ellenőrzi, és a hátrányai a különböző kulcskezelés védelmi megközelítés.|
 |[Azure-naplózás](azure-log-audit.md)|Ismerteti az generálása, összegyűjtése és az Azure-ban üzemeltetett szolgáltatások biztonsági naplóinak elemzéséhez. Ezek a naplók segíthetnek a biztonsági betekintést nyerhet az Azure-környezetek. |

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: 7a3545e3fdf37f33db4c3b77be6cf6d5db0f6aef
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e44d267fcc9986c5e215fc4844f49b28918a3111
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973575"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711922"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Az Azure Monitor az adatok megjelenítése
 Ez a cikk az Azure Monitor-ban tárolt adatok megjelenítése a választható módszerek összegzését tartalmazza. Ez magában foglalja [mérőszámok az Azure-metrikagyűjtéshez áruházban](../monitoring/monitoring-data-collection.md#metrics) és [adatok Log Analytics naplóbeli](../monitoring/monitoring-data-collection.md#logs). 
@@ -50,7 +50,7 @@ Vizualizációk, például diagramokat és ábrákat segíthet a problémák ré
 - Korlátozott környezetfüggő részletezése.
 
 ## <a name="azure-monitor-views"></a>Az Azure Monitor-nézetek
-[Az Azure monitorban nézetek](../log-analytics/log-analytics-view-designer.md) hozhat létre egyéni vizualizációkat az Log Analytics szolgáltatásban tárolt naplóadatokért. Által használt [figyelési megoldások](../monitoring/monitoring-solutions.md) a gyűjtött adatok.
+[Az Azure monitorban nézetek](../log-analytics/log-analytics-view-designer.md) hozhat létre egyéni vizualizációkat az Log Analytics szolgáltatásban tárolt naplóadatokért. Által használt [figyelési megoldások](../azure-monitor/insights/solutions.md) a gyűjtött adatok.
 
 ![Nézet](media/visualizations/view.png)
 

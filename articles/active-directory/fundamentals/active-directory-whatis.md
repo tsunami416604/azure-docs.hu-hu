@@ -1,82 +1,103 @@
 ---
-title: Mi az az Azure Active Directory (Azure AD)? | Microsoft Docs
-description: Ismerje meg, hogy az Azure Active Directory használatával hogyan terjesztheti ki meglévő helyszíni identitásait a felhőbe, és hogyan fejleszthet az Azure AD-vel integrált alkalmazásokat.
+title: Az Azure Active Directory – áttekintés |} A Microsoft Docs
+description: További információ az Azure Active Directoryban, beleértve a szükséges terminológia célközönség, licencelés alapjai és társított szolgáltatások.
 services: active-directory
 author: eross-msft
 manager: mtillman
-ms.author: lizross
-ms.assetid: 498820c4-9ebe-42be-bda2-ecf38cc514ca
 ms.service: active-directory
-ms.component: fundamentals
-ms.workload: identity
 ms.topic: overview
-ms.date: 09/13/2018
-ms.custom: it-pro
-ms.openlocfilehash: 406baeac60c7c0cdf5f74876e5fc29ea23d3d6f6
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.date: 11/13/2018
+ms.author: lizross
+ms.openlocfilehash: 1b1561ed8470c39b13def72774e253db28bf58d8
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957547"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686585"
 ---
-# <a name="what-is-azure-active-directory"></a>Mi az az Azure Active Directory?
-Az Azure Active Directory (Azure AD) a Microsoft több-bérlős, felhőalapú címtár és identitáskezelési szolgáltatása. Az Azure AD egyetlen megoldásban egyesíti az alapvető címtárszolgáltatásokat, az alkalmazáshozzáférés-felügyeletet és az identitás védelmet, egy szabványalapú platform, amely segít a fejlesztőknek, hogy központi szabályzatokon és szabályokon alapuló hozzáférés-vezérléssel bővíthessék alkalmazásaikat.
+# <a name="what-is-azure-active-directory"></a>Mi az az Azure Active Directory? 
+Az Azure Active Directory (Azure AD) a Microsoft felhőalapú identitás- és hozzáférés felügyeleti szolgáltatása. Az Azure AD segítségével az alkalmazottak bejelentkezhet és elérheti az erőforrásokat:
 
-![Az Azure AD Connect-verem](./media/active-directory-whatis/Azure_Active_Directory.png)
+- Külső erőforrások, például a Microsoft Office 365, az Azure Portalon, és több ezer más SaaS-alkalmazásokhoz.
 
-## <a name="benefits-of-azure-ad"></a>Az Azure AD előnyei
-Az Azure AD segítségével:
+- Belső erőforrásokat, például a vállalati hálózat és az intranetes, és olyan felhőalkalmazások, a saját szervezet által fejlesztett alkalmazások.
 
--   A vállalat minden egyes felhasználójához létrehozhat és kezelhet egy-egy identitást, így a felhasználók, csoportok és eszközök folyamatosan szinkronizálva lesznek az [Azure AD Connecttel](../connect/active-directory-aadconnect.md).
+Használhatja a különböző [Microsoft Cloud for Enterprise Architects sorozat](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources#identity) poszterek jobb megértése érdekében az Azure-ban, az Azure AD identity alapszolgáltatások és az Office 365.
 
--   Egyszeri bejelentkezéses hozzáférést biztosíthat alkalmazásaihoz (például több ezer előre integrált SaaS-alkalmazáshoz), illetve sokkal biztonságosabb távelérést biztosíthat helyszíni SaaS-alkalmazásokhoz az [Azure AD Application Proxyval](../manage-apps/application-proxy.md).
+## <a name="who-uses-azure-ad"></a>Ki használja az Azure ad-ben?
+Az Azure AD célközönsége:
 
--   A [Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md) házirend alapú szabályok kikényszerítésével fokozhatja az alkalmazás-hozzáférés biztonságát a helyszíni és a felhőalkalmazásokban is.
+- **IT rendszergazdák.** INFORMATIKAI rendszergazdaként az Azure AD segítségével szabályozhatja a hozzáférést az alkalmazások és az alkalmazás-erőforrások, az üzleti követelmények alapján. Az Azure AD használatával például többtényezős hitelesítés megkövetelése, ha fontos a szervezeti erőforrások elérése. Emellett az Azure AD segítségével között a meglévő Windows Server AD és a felhőalapú alkalmazások, beleértve az Office 365 felhasználók létrehozásának automatizálása. Végül az Azure AD biztosítja a hatékony eszközöket automatikusan a felhasználói identitások és a hitelesítő adatok védelme érdekében, illetve a hozzáférési cégirányítási követelmények kielégítése céljából. Első lépésként regisztráljon egy [30 napos ingyenes Azure Active Directory Premium próbaverzió](https://azure.microsoft.com/trial/get-started-active-directory/).
 
--   [Új jelszó önkiszolgáló kérésével](../user-help/user-help-reset-password.md), valamint a [MyApps portálról](../user-help/active-directory-saas-access-panel-introduction.md) indított csoport- és alkalmazás-hozzáférési kérelmekkel fokozhatja a felhasználói termelékenységet.
+- **Alkalmazásfejlesztőknek.** Alkalmazásfejlesztőként Azure ad-ben megtalálható a szabványokon alapuló megközelítés egyszeri bejelentkezés (SSO) hozzáadása az alkalmazáshoz, lehetővé téve, hogy a felhasználó meglévő hitelesítő adatok használata. Azure ad-ben is biztosít az API-k, amelyek segítségével hozhat létre személyre szabott Alkalmazásfunkciók meglévő szervezeti adatok felhasználásával. Első lépésként regisztráljon egy [30 napos ingyenes Azure Active Directory Premium próbaverzió](https://azure.microsoft.com/trial/get-started-active-directory/). További információ is megtekinthető [Azure Active Directory fejlesztők számára](../develop/index.yml).
 
--   Kihasználhatja az egész világra kiterjedő, nagyvállalati szintű, felhőalapú identitás- és hozzáférés-kezelési megoldás [magas rendelkezésre állásából és megbízhatóságából](https://docs.microsoft.com/azure/architecture/checklist/availability) fakadó előnyöket.
+- **A Microsoft 365, Office 365, Azure vagy a Dynamics CRM Online-előfizetők számára.** Előfizetőként már használja az Azure ad-ben. Minden Microsoft 365, az Office 365, Azure és a Dynamics CRM Online bérlő automatikusan az Azure AD-bérlő. Azonnal elkezdheti az integrált felhőbeli alkalmazásokhoz való hozzáférés kezelésére.
 
-## <a name="who-uses-azure-ad"></a>Ki használja az Azure AD-t
-Az Azure AD IT rendszergazdák, alkalmazásfejlesztők és az Office 365, Azure és a Dynamics CRM Online felhasználói számára készült.
+## <a name="what-are-the-azure-ad-licenses"></a>Mik az Azure AD-licenceket?
+Microsoft Online üzleti szolgáltatásokat, például Office 365 vagy a Microsoft Azure, Azure AD bejelentkezési és az identity protection segítségével igényelnek. Ezért ha előfizet bármely Microsoft Online üzleti, automatikusan kap az ingyenes funkciókat a hozzáférést az Azure ad-ben.
 
-- **IT rendszergazdák.** Az Azure AD egy biztonságosabb megoldást kínál a szervezetek számára, amely a hatékonyabb identitáskezelést és egyszeri bejelentkezéses (SSO) hozzáférést biztosít [felhőalapú SaaS-alkalmazások](../saas-apps/tutorial-list.md) és helyszíni alkalmazások ezreihez. Ezeken az alkalmazásokon keresztül is felhőalapú alkalmazásbiztonságot, zökkenőmentes hozzáférést, továbbfejlesztett együttműködést és automatizált identitás-életciklust valósíthat meg a felhasználók számára, így növelhető a biztonság és a megfelelőség.
+Az Azure AD-implementáció javítása érdekében is hozzáadhat fizetős képességek az alapszintű Azure Active Directory, prémium P1 vagy P2 licenccel. Fizetős licencek az Azure AD épülnek a meglévő ingyenes directory önkiszolgáló jellegű, fejlett monitorozás, biztonsági jelentések készítése és biztonságos hozzáférést biztosít a mobil munkaerő számára.
 
-    Emellett az [Azure AD Connecttel](../connect/active-directory-aadconnect-get-started-express.md) integrálhatja az Azure AD-t a meglévő Windows Server Active Directoryval, így a szervezet már kiépített helyszíni identitáskezelő rendszereivel felügyelheti a felhőalapú SaaS-alkalmazások elérését.
+>[!Note]
+>Az ezen licencek díjszabási lehetőségek, lásd: [Azure Active Directory díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/active-directory/).<br><br>Az Azure Active Directory Prémium P1 és Prémium P2, valamint az Azure Active Directory Alapszintű kiadás használata Kínában jelenleg nem támogatott. Az Azure AD díjszabással kapcsolatos további információkért forduljon a [Azure Active Directory-fórumon](https://azure.microsoft.com/support/community/?product=active-directory).
 
-- **Alkalmazásfejlesztőknek.** Az Azure AD-használatával az alkalmazások létrehozására összpontosíthat, mivel egy globálisan szervezetek milliói által használt identitáskezelő megoldást integrálhat fejlesztéseibe.
+- **Az Azure Active Directory ingyenes.** Felhasználók és csoportok kezelése, a helyszíni címtár-szinkronizálás, alapszintű jelentések és egyszeri bejelentkezést biztosít az Azure, Office 365-höz és számos népszerű SaaS-alkalmazásokhoz.
 
-- **Office 365-, Azure- és Dynamics CRM Online-ügyfeleknek.** Ön már használja az Azure AD-t. Minden Office 365-, Azure- és Dynamics CRM Online-bérlő valójában Azure AD-bérlő, így Ön akár most azonnal elkezdheti a felhasználók integrált felhőbeli alkalmazásokhoz való hozzáférésének felügyeletét.
+- **Alapszintű Azure Active Directory.** Az ingyenes szolgáltatások alapszintű cloud-központú alkalmazás eléréséhez, Csoportalapú hozzáférés-kezelést, önkiszolgáló jelszó-visszaállítást a felhőalapú alkalmazások és az Azure AD-alkalmazásproxy, tesz közzé, amellyel a helyszíni webalkalmazásokat az Azure AD-vel is nyújt.
 
-## <a name="how-reliable-is-azure-ad"></a>Mennyire megbízható az Azure AD?
-Az Azure AD-t több-bérlős, földrajzilag elosztott és nagy rendelkezésre állású kialakításának köszönhetően kritikus fontosságú üzleti célokra is megbízhatóan használható. Azure AD a világ különböző pontjain 28 adatközpontban fut automatikus feladatátvétellel. Ez azt jelenti, hogy még ha egy adatközpont le is áll, a címtár adatok másolatai legalább két másik területileg elosztott adatközpontban megvannak és azonnal elérhetők.
+- **P1 prémium szintű Azure Active Directory.** Az ingyenes és alapszintű funkciók mellett P1 is lehetővé teszi, hogy a hibrid felhasználók elérésére mind a helyszíni és felhőbeli erőforrásokhoz. Emellett támogatja a speciális felügyeleti, például a dinamikus csoportok, önkiszolgáló csoportfelügyelet, a Microsoft Identity Manager (egy a helyszíni identitás- és hozzáférés felügyeleti csomag) és a felhőalapú késleltetve visszaírt képességek, amelyek lehetővé teszik önkiszolgáló jelszó-visszaállítást a a helyszíni felhasználók.
 
-A szolgáltatói szerződésekről a [szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/) oldalán tájékozódhat bővebben.
+- **P2 prémium szintű Azure Active Directory.** Kívül, az ingyenes, alapszintű és a P1, P2 is kínál [Azure Active Directory Identity Protection](../identity-protection/enable.md) segítségével biztosítja a kockázatalapú feltételes hozzáférés az alkalmazások és a kritikus vállalati adatokat és [Privileged Identity Felügyeleti](../privileged-identity-management/pim-getting-started.md) felderíteni, korlátozása és a rendszergazdák és azok erőforrásokhoz való hozzáférésének figyelése és szükség esetén – igény hozzáférést biztosítani.
 
-## <a name="choose-an-edition"></a>Kiadás kiválasztása
-Az összes üzleti Microsoft Online-szolgáltatás az Azure AD-t alkalmazza a bejelentkezési és egyéb identitásokkal kapcsolatos igényekhez. Bármely üzleti Microsoft Online-szolgáltatás (például az Office 365 vagy a Microsoft Azure) előfizetőjeként az Azure AD összes ingyenes szolgáltatásához automatikusan hozzáférést kap. Az Azure Active Directory ingyenes kiadása lehetővé teszi a felhasználók és csoportok kezelését, a helyi címtárakkal való szinkronizálást, valamint az egyszeri bejelentkezés használatát az Azure-ban, az Office 365-ben és olyan népszerű SaaS-alkalmazások ezreiben, mint a Salesforce, a Workday, a Concur, a DocuSign, a Google Apps, a Box, a ServiceNow és a Dropbox. 
+- **"Használatalapú fizetés" funkció licenceket.** A szolgáltatás további licenceket, például az Azure Active Directory üzleti és ügyfél közötti (B2C) is kaphat. B2C segítségével biztosíthat identitás- és hozzáférés-kezelés az ügyfelek által használt alkalmazások számára. További információkért lásd: [Azure Active Directory B2C dokumentációja](../../active-directory-b2c/index.yml).
 
-Az Azure AD-implementációt fizetős képességekkel is kibővítheti, ha az Azure Active Directory Alapszintű, Prémium P1 és Prémium P2 kiadására frissít. Az Azure AD fizetős kiadásai a meglévő ingyenes címtárra épülnek, és különféle nagyvállalati képességeket biztosítanak az önkiszolgáló ügyintézéstől, a fejlett monitorozáson, a biztonsági jelentéseken és a Multi-Factor Authentication (MFA) hitelesítésen át a mobil munkaerő számára a biztonságos hozzáférés biztosításáig.
+Az Azure ad-hez Azure-előfizetéssel való társításáról szóló további információkért lásd: [hogyan: társítsa Azure-előfizetés hozzáadása az Azure Active Directory vagy](active-directory-how-subscriptions-associated-directory.md) és licencek hozzárendelése a felhasználók kapcsolatos további információkért lásd: [Hogyan: rendelje hozzá, vagy távolítsa el az Azure Active Directory-licenceket](license-users-groups.md).
 
-> [!NOTE]
-> Ezeknek a kiadásoknak az árképzésével kapcsolatban lásd az [Azure Active Directory díjszabását](https://azure.microsoft.com/pricing/details/active-directory/). Az Azure Active Directory Prémium P1 és Prémium P2, valamint az Azure Active Directory Alapszintű kiadás használata Kínában jelenleg nem támogatott. Az Azure Active Directory díjszabásával kapcsolatos további információért tekintse meg az Azure Active Directoryval foglalkozó fórumot.
+## <a name="terminology"></a>Terminológia
+Jobb megértése érdekében az Azure AD és a hozzá tartozó dokumentáció, tekintse át az alábbi feltételek.
 
-- **Alapszintű Azure Active Directory.** A felhőközpontú igényekkel rendelkező, feladatorientált felhasználóknak szánt kiadás felhőalapú alkalmazás-hozzáférési és önkiszolgáló identitáskezelési megoldásokat kínál. Az Alapszintű kiadás különböző hatékonyságnövelő és költségcsökkentő funkciókat biztosít, többek között csoportalapú hozzáférés-kezelést és önkiszolgáló jelszó-visszaállítást felhőalkalmazásokhoz, valamint az Azure Active Directory Application Proxy szolgáltatást, amellyel helyszíni környezetben futó webes alkalmazások tehetők közzé az Azure AD-val – mindezt nagyvállalati, 99,9%-os garantált szolgáltatási szinten vállalt rendelkezésre állás mellett.
+|Kifejezés vagy fogalom|Leírás|
+|---------------|-----------|
+|Azure-előfizetés| Használja az Azure cloud services kell fizetnie. Több előfizetéssel is rendelkezik, és vannak kapcsolva hitelkártya.|
+|Azure-bérlő| Egy dedikált és megbízható Azure AD példányát, amely automatikusan létrejön, amikor egy szervezet előfizet a Microsoft felhőalapú szolgáltatás előfizetésre, például a Microsoft Azure, Microsoft Intune vagy Office 365-höz. Az Azure-bérlő egyetlen szervezet jelöli.|
+|Egybérlős alkalmazás| Az Azure a bérlők, dedikált környezetben más szolgáltatások eléréséhez egybérlős minősülnek.|
+|Több-bérlős| Az Azure bérlők számára, hogy megosztott környezetben, más szolgáltatások eléréséhez több vállalat között, több-bérlős minősülnek.|
+|Azure AD-címtár|Minden Azure-bérlő rendelkezik egy dedikált és megbízható Azure AD-címtárban. Az Azure AD-címtár tartalmazza a bérlő felhasználók, csoportok és alkalmazások, és hajtsa végre az identitás és hozzáférés-kezelési funkciók bérlői erőforrások szolgál.|
+|Azure AD-fiók | Az identitás létrehozása az Azure AD-n keresztül, vagy egy másik Microsoft felhőszolgáltatáshoz, például az Office 365. Identitások a következők: Azure AD-ben tárolt és felhőszolgáltatás-előfizetés a szervezet számára is elérhető. Ez a fiók néven is ismert munkahelyi vagy iskolai fiókkal.|
+|Egyéni tartomány|Minden új Azure AD-címtár is tartalmaz egy kezdeti tartománynevet domainname.onmicrosoft.com. Emellett a kezdeti neve, azt is megteheti neveket, többek között a nevek, üzleti és a felhasználók, illetve használhat a szervezet erőforrásaihoz, a listához eléréséhez használja a szervezet tartományához. Egyéni tartománynevek hozzáadása segítségével hozhat létre, amely számára is felismerhetők a felhasználók számára, például felhasználóneveket alain@contoso.com.|
+|Fiókadminisztrátor|A hagyományos előfizetés-rendszergazda szerepkör elméleti szinten az előfizetés számlázási tulajdonosa. Ez a szerepkör hozzáféréssel rendelkezik a [Azure Account Center](https://account.azure.com/Subscriptions) , és lehetővé teszi, hogy a fiók az összes előfizetés kezelése. További információkért lásd: [klasszikus előfizetés rendszergazdai szerepköröket, az Azure RBAC-szerepkörök és az Azure AD-rendszergazdai szerepköröket](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
+|Szolgáltatás-rendszergazda|A hagyományos előfizetés-rendszergazda szerepkör lehetővé teszi, hogy az összes Azure-erőforrások kezelése, beleértve a hozzáférést. Ez a szerepkör rendelkezik egy előfizetésre a tulajdonosi szerepkörrel felruházott felhasználó a megfelelő hozzáférést. További információkért lásd: [klasszikus előfizetés rendszergazdai szerepköröket, az Azure RBAC-szerepkörök és az Azure AD-rendszergazdai szerepköröket](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
+|Tulajdonos|Ez a szerepkör segítségével minden Azure-erőforrások kezelése, beleértve a hozzáférést. Ez a szerepkör egy újabb engedélyezési rendszer nevű szerepkör alapú hozzáférés-vezérlés (RBAC) az Azure-erőforrások részletes hozzáférés-vezérlést biztosító épül. További információkért lásd: [klasszikus előfizetés rendszergazdai szerepköröket, az Azure RBAC-szerepkörök és az Azure AD-rendszergazdai szerepköröket](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
+|Globális Azure AD-rendszergazda|A rendszergazdai szerepkör van automatikusan hozzárendelt, akinél létrehozni az Azure AD-bérlővel. Globális rendszergazdák hajthatják végre, minden, a felügyeleti funkciók az Azure ad-hez, és vonhat össze az Azure AD, például az Exchange Online, SharePoint Online és Skype vállalati online szolgáltatásokat. Több globális rendszergazda is használhat, de csak a globális rendszergazdák (beleértve a más globális rendszergazdákat hozzárendelése) rendszergazdai szerepkörök hozzárendelése a felhasználókhoz.<br><br>**Megjegyzés**<br>A rendszergazda szerepkör nevezzük a globális rendszergazda az Azure Portalon, de nevezzük **vállalati rendszergazda** a Microsoft Graph API, Azure AD Graph API és az Azure AD PowerShell.<br><br>Különböző rendszergazdai szerepkörökkel kapcsolatos további információkért lásd: [rendszergazdája szerepkör engedélyei az Azure Active Directoryban](../users-groups-roles/directory-assign-admin-roles.md).|
+|Microsoft-fiók (más néven, MSA)|Személyes fiók, amely biztosít hozzáférést a végfelhasználóra irányuló Microsoft termékekhez, és a felhőalapú szolgáltatások, például az Outlook, OneDrive, Xbox LIVE- vagy Office 365-höz. A Microsoft-fiók létrehozása és a Microsoft fogyasztói identitás-fiókrendszer a Microsoft által futtatott tárolja.|
 
-- **P1 prémium szintű Azure Active Directory.** A komolyabb identitás- és hozzáférés-kezelési igényekkel rendelkező szervezeteknek szánt prémium szintű Azure Active Directory funkciókban gazdag, nagyvállalati szintű identitáskezelési képességeket kínál, és lehetővé teszi a hibrid felhasználók számára a helyszíni és a felhőalapú képességek gördülékeny elérését. A kiadás minden szükséges képességgel ellátja a hibrid környezetben dolgozó infomunkásokat és identitáskezelő adminisztrátorokat, legyen szó az alkalmazásokhoz való hozzáférésről, önkiszolgáló identitás- és hozzáférés-kezelési (IAM) funkciókról, az identitások védelméről vagy a felhő biztonságáról. Támogatja az olyan speciális felügyeleti és delegálási erőforrásokat, mint a dinamikus csoportok és az önkiszolgáló csoportkezelés. Tartalmazza a Microsoft Identity Managert (ez egy helyszíni identitás- és hozzáférés-felügyeleti csomag), és felhőalapú visszaírási képességeivel különféle megoldásokat biztosít, például az új jelszavak önkiszolgáló igénylését a helyszíni felhasználók számára.
+## <a name="what-features-work-in-azure-ad"></a>Milyen szolgáltatások akkor működnek az Azure ad-ben?
+Miután kiválasztotta az Azure AD-licencre, vagy azok egy részét a következő szolgáltatások elérését jelenik meg a szervezet számára:
 
-- **P2 prémium szintű Azure Active Directory.** Ez a felhasználók és rendszergazdák továbbfejlesztett védelme köré tervezett új ajánlat a P1 prémium szintű Azure AD valamennyi funkciójához adja hozzá az Identity Protection és a Privileged Identity Management megoldásokat. Az Azure Active Directory Identity Protection jelek milliárdjain alapuló kockázatalapú feltételes hozzáférést biztosít az alkalmazásokhoz és a kritikus vállalati adatokhoz. Az Azure Active Directory Privileged Identity Management pedig lehetővé teszi az emelt szintű fiókok felügyeletét és védelmét, így felderítheti, korlátozhatja és monitorozhatja a rendszergazdákat és azok az erőforrásokhoz való hozzáférését, és igény szerinti hozzáférést biztosíthat.  
+|Kategória|Leírás|
+|-------|-----------|
+|Alkalmazáskezelés|Az alkalmazásproxyval, felhőbeli és helyszíni alkalmazások felügyelete egyszeri bejelentkezés, a saját alkalmazások portál (más néven a hozzáférési panel) és a szoftver-szoftverszolgáltatások (SaaS) alkalmazásokat. További információkért lásd: [biztonságos távoli elérést biztosíthat a helyszíni alkalmazások](../manage-apps/application-proxy.md) és [Alkalmazáskezelés dokumentáció](../manage-apps/index.yml).|
+|Hitelesítés|Kezelheti az Azure Active Directory önkiszolgáló jelszó-visszaállítási, többtényezős hitelesítés, egyéni letiltott jelszavak lista és intelligens zárolás. További információkért lásd: [dokumentáció az Azure AD-hitelesítés](../authentication/index.yml).|
+|Vállalatközi (B2B)|A vendég felhasználók és a külső partnerek kezelése irányítást a saját vállalati adatokat. További információkért lásd: [Azure Active Directory B2B-dokumentáció](../b2b/index.yml).|
+|Üzleti és ügyfél közötti (B2C)|Testre szabhatja és vezérlési felhasználói regisztrálás módja, jelentkezzen be, és profiljuk kezelését, az alkalmazások használatakor. További információkért lásd: [Azure Active Directory B2C dokumentációja](../../active-directory-b2c/index.yml).|
+|Feltételes hozzáférés|A felhőbeli alkalmazásokhoz való hozzáférés kezelése. További információkért lásd: [Azure AD feltételes hozzáférés dokumentációjának](../conditional-access/index.yml).|
+|Azure Active Directory fejlesztők számára|Jelentkezzen be az összes Microsoft-identitások, a Microsoft Graph, más Microsoft APIs vagy egyéni API-k hívásához tokenekhez alkalmazásokat készíthet. További információkért lásd: [Microsoft identitásplatformja (az Azure vonatkozó Active Directory fejlesztők számára)](../develop/index.yml).|
+|Eszközfelügyelet|Kezelheti, hogyan a felhőbeli vagy helyszíni eszközök vállalati adatok eléréséhez. További információkért lásd: [Azure AD Device Management dokumentációja](../devices/index.yml).|
+|Tartományi szolgáltatások|Azure virtuális gépek tartományhoz csatlakoztatására tartományvezérlő nélkül. További információkért lásd: [az Azure AD Domain Services – dokumentáció](../../active-directory-domain-services/index.yml).|
+|Vállalati felhasználók|A licenc-hozzárendelés, az alkalmazásokhoz való hozzáférés kezelése, és állítsa be a delegáltakat, csoportok és rendszergazdai szerepkörök használatával. További információkért lásd: [Azure Active Directory felhasználói felügyeleti dokumentáció](../users-groups-roles/index.yml).|
+|Hibrid identitás|Azure Active Directory Connect és a Connect Health használatával egyetlen felhasználói identitást biztosíthat a hitelesítés és engedélyezés az összes erőforráshoz, függetlenül helyétől (felhőbeli vagy helyszíni). További információkért lásd: [hibrid identitáskezelési dokumentáció](../hybrid/index.yml).|
+|Identitáskezelés|A szervezet identitás alkalmazott, üzleti partner, szállító, szolgáltatás és alkalmazás-hozzáférés-vezérlés kezelése. A hozzáférési felülvizsgálatok is elvégezheti. További információkért lásd: [az Azure AD identity cégirányítási dokumentáció](../governance/identity-governance-overview.md) és [az Azure AD hozzáférési felülvizsgálatok](../governance/access-reviews-overview.md).|
+|Identitásvédelem|Észleli a potenciális biztonsági réseket, hogy ez hatással lenne a szervezet identitásait, válaszolni a gyanús tevékenységeket szabályzatok konfigurálását és majd hajtsa végre a megfelelő műveletet a problémák megoldásához. További információkért lásd: [Azure AD Identity Protection](../identity-protection/index.yml).|
+|Azure-erőforrások felügyelt identitásai|Az Azure-szolgáltatások automatikusan felügyelt identitást biztosít az Azure ad-ben, amely bármely Azure AD által támogatott hitelesítési szolgáltatás, beleértve a Key Vault hitelesítheti. További információkért lásd: [Mi az Azure-erőforrások felügyelt identitások?](../managed-identities-azure-resources/overview.md).|
+|Privileged identity management (PIM)|Kezelheti, irányíthatja, és figyelheti a hozzáférést a szervezeten belül. Ez a szolgáltatás biztosít hozzáférést az Azure AD-erőforrások Azure-erőforrások és más Microsoft Online szolgáltatásaihoz, például az Office 365 vagy az Intune. További információkért lásd: [Azure AD Privileged Identity Management](../privileged-identity-management/index.yml).|
+|Jelentések és monitorozás|Betekintést nyerhet a biztonsági és használati minták a környezetben. További információkért lásd: [Azure Active Directory-jelentések és figyelés](../reports-monitoring/index.yml).|
 
-> [!NOTE]
-> Az Azure Active Directory számos funkciója használatalapú kiadásokban is elérhetők:<ul><li>**Azure Active Directory B2C.** Identitás- és hozzáférés-kezelő megoldás a fogyasztók számára elérhető alkalmazásokhoz. További információk: [Azure Active Directory B2C](https://azure.microsoft.com/documentation/services/active-directory-b2c/).</li><li>**Azure Multi-Factor Authentication.** Felhasználónként vagy hitelesítés szolgáltatónként használható. További információk: [Mi az Azure Multi-Factor Authentication?](../authentication/multi-factor-authentication.md)
-
-## <a name="as-an-admin-how-do-i-get-started"></a>Rendszergazdaként hogyan kezdhetek hozzá?
-Regisztráljon az ingyenes 30 napos próbaverzióra és máris üzembe helyezheti első felhőalapú megoldását, lásd: [Prémium szintű Azure Active Directory próbaverzió](https://azure.microsoft.com/trial/get-started-active-directory/).
-
-## <a name="as-a-developer-how-do-i-get-started"></a>Fejlesztőként hogyan kezdhetek hozzá?
-Regisztráljon az ingyenes 30 napos próbaverzióra, és kezdje el alkalmazásait integrálni az Azure AD-be, lásd: [Prémium szintű Azure Active Directory próbaverzió](https://azure.microsoft.com/trial/get-started-active-directory/). További információ található még az Azure Active Directory [Fejlesztői útmutatójában](../develop/v1-overview.md) is.
 
 ## <a name="next-steps"></a>További lépések
-- [További információk az Azure-identitáskezelés és -hozzáféréskezelés alapjairól](identity-fundamentals.md).
+- [Regisztráljon az Azure Active Directory Premium](active-directory-get-started-premium.md)
 
-- [Az Azure AD integrálása a Windows Server Active directory szolgáltatással](../hybrid/how-to-connect-install-express.md).
+- [Az Azure Active Directory Azure-előfizetés társítása](active-directory-how-subscriptions-associated-directory.md)
+
+- [Azure Active Directory eléréséhez és a egy új bérlő létrehozása](active-directory-access-create-new-tenant.md)
+
+- [Az Azure Active Directory Premium P2 a szolgáltatás telepítési ellenőrzőlista](active-directory-deployment-checklist-p2.md)

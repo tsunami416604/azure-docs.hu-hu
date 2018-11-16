@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 11/13/2018
 ms.author: alkohli
-ms.openlocfilehash: e99a3a7db7a934a8a72695c38ab952786579a640
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 60186ee6aa614c83691c9ce4ab9d8124fd5925fd
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232206"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685956"
 ---
 # <a name="what-is-azure-data-box-edge-preview"></a>Mi az Azure Data Box Edge (előzetes verzió)? 
 
@@ -84,7 +84,7 @@ A Data Box Edge fizikai eszköz az alábbi funkciókkal rendelkezik:
 | Memory (Memória)| 64 GB RAM|
 | Lemezek| 8 NVMe SSD meghajtó, a lemezek mindegyike 1,6 TB-os <br> A rendszer működése leáll, ha az NVMe SSD meghajtók valamelyike meghibásodik. |
 | Helyi tárolási kapacitás| 12,8 TB teljes kapacitás|
-| Hálózati illesztők| 2 db 1 GbE sávszélességű illesztő – 1 a kezeléshez, a felhasználó által nem konfigurálható, a kezdeti beállításhoz való. A másik adatillesztő a felhasználó által is konfigurálható, alapértelmezés szerint DHCP. <br>2 db 25 GbE sávszélességű illesztő – 10 GbE sávszélességű illesztőként is üzemelnek. Az adatillesztők a felhasználó által megadott konfigurációja DHCP (alapértelmezett) vagy statikus lehet. <br> 2 db 25 GbE sávszélességű illesztő – Az adatillesztők a felhasználó által megadott konfigurációja DHCP (alapértelmezett) vagy statikus lehet.|
+| Hálózati illesztők| 2 db 1 GbE sávszélességű illesztő – 1 a kezeléshez, a felhasználó által nem konfigurálható, a kezdeti beállításhoz való. A többi felület felhasználó által konfigurálható, az adatátvitelhez használható, és a DHCP alapértelmezés szerint. <br>2 db 25 GbE sávszélességű illesztő – 10 GbE sávszélességű illesztőként is üzemelnek. Az adatillesztők a felhasználó által megadott konfigurációja DHCP (alapértelmezett) vagy statikus lehet. <br> 2 db 25 GbE sávszélességű illesztő – Az adatillesztők a felhasználó által megadott konfigurációja DHCP (alapértelmezett) vagy statikus lehet.|
 
 ## <a name="components"></a>Összetevők
 

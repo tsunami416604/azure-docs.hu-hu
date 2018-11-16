@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: e9f082b795325349001b5231304588e5297a1443
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: fe1557a6f9e5fd4e463af254fa1dd52726e73024
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960718"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713044"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>A Log Analytics az Azure diagnosztikai naplók Stream
 
@@ -96,7 +96,7 @@ A `--resource-group` argumentum csak akkor kötelező, ha `--workspace` nem egy 
 
 ## <a name="how-do-i-query-the-data-in-log-analytics"></a>Hogyan kérdezhet le a az adatokat a Log Analytics?
 
-A naplók keresése panel a portálon vagy a Log Analytics részét képező Advanced Analytics élmény, a diagnosztikai naplók lekérdezheti a AzureDiagnostics táblában a naplókezelési megoldás részeként. Vannak még [számos olyan megoldást az Azure-erőforrások](../monitoring/monitoring-solutions.md) azonnali betekintést a naplóadatok a Log analyticsbe küld be is telepítheti.
+A naplók keresése panel a portálon vagy a Log Analytics részét képező Advanced Analytics élmény, a diagnosztikai naplók lekérdezheti a AzureDiagnostics táblában a naplókezelési megoldás részeként. Vannak még [számos olyan megoldást az Azure-erőforrások](../azure-monitor/insights/solutions.md) azonnali betekintést a naplóadatok a Log analyticsbe küld be is telepítheti.
 
 ## <a name="next-steps"></a>További lépések
 

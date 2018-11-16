@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 07/17/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 65f740e23b68727bdffa4a966518b1581fb5b0a6
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: a3c5c26f43fddf5d23df3bee0b0511e865b7e71b
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604365"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705922"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Gyors útmutató: Letiltja a hozzáférést, az Azure Active Directory feltételes hozzáférés a munkamenet kockázata észlelésekor  
 
@@ -38,7 +38,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-Ebben az oktatóanyagban a forgatókönyv végrehajtásához szükséges:
+Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 - **Hozzáférés az Azure AD Premium P2 kiadás** – amíg feltételes hozzáférés az Azure AD Premium P1 képesség, mivel ez a rövid útmutató példahelyzet Identity Protection egy P2 kiadás kell. 
 
@@ -81,7 +81,7 @@ Ez a szakasz bemutatja, hogyan hozhat létre a feltételes hozzáférési szabá
 
 **A feltételes hozzáférési szabályzat konfigurálása:**
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) globális rendszergazdai, biztonsági rendszergazdai vagy feltételes hozzáférési rendszergazdájaként.
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com) globális, biztonsági vagy feltételes hozzáférés rendszergazdájaként.
 
 2. Az Azure Portalon, a bal oldali navigációs sávon kattintson **Azure Active Directory**. 
 
@@ -168,7 +168,7 @@ Ez a szakasz bemutatja, hogyan hozhat létre a feltételes hozzáférési szabá
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Egy szimulált bejelentkezési kiértékelése
 
-Most, hogy a feltételes hozzáférési szabályzat van beállítva, érdemes tudni, hogy a várt módon működik-e azt. Első lépésként, a feltételes hozzáférés használata a **mi történik, ha házirend eszközzel** egy jelentkezzen be a tesztfelhasználó szimulálásához. A szimuláció becslése a hatás bejelentkezési ebben a szabályzatok a, és a szimuláció jelentést hoz létre.  
+Most, hogy konfigurálta a feltételes hozzáférési szabályzatot, érdemes ellenőriznie, hogy a várt módon működik-e. Első lépésként, a feltételes hozzáférés használata a **mi történik, ha házirend eszközzel** egy jelentkezzen be a tesztfelhasználó szimulálásához. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést.  
 
 Futtatásakor a **mi történik, ha a házirend-eszköz** ebben a forgatókönyvben a **közepes kockázati szint hozzáférésének blokkolása** alatt kell szerepelnie **érvényes szabályzatok**. 
 
@@ -193,7 +193,7 @@ Futtatásakor a **mi történik, ha a házirend-eszköz** ebben a forgatókönyv
 3. Kattintson a **mi történik, ha**.
 
 
-## <a name="test-your-conditional-access-policy"></a>A feltételes hozzáférési házirend tesztelése
+## <a name="test-your-conditional-access-policy"></a>A feltételes hozzáférési szabályzat tesztelése
 
 Az előző szakaszban megtanulhatta egy szimulált bejelentkezési kiértékelése. A szimuláció mellett is érdemes tesztelnie győződjön meg arról, hogy az elvárt módon működik, a feltételes hozzáférési szabályzatot. 
 
@@ -212,7 +212,7 @@ Ha már nincs rá szükség, törölje a tesztfelhasználó számára, a Tor-bö
 
     ![Multi-Factor Authentication](./media/app-sign-in-risk/33.png)
 
-- Eltávolítja a Tor böngésző útmutatásért lásd: [eltávolítása](https://tb-manual.torproject.org/en-US/uninstalling.html).
+- Eltávolítja a Tor böngésző útmutatásért lásd: [eltávolítása](https://tb-manual.torproject.org/uninstalling/).
 
 ## <a name="next-steps"></a>További lépések
 

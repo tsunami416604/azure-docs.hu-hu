@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: tutorial
 ms.date: 11/05/2018
 ms.author: pafarley
-ms.openlocfilehash: a5763d3e250ec7641dafff89b2eadeec2a7d7b02
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
-ms.translationtype: HT
+ms.openlocfilehash: 5319584d892c261dcc6290703e9ca6518640cc94
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616299"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685480"
 ---
 # <a name="tutorial-create-a-wpf-app-to-display-face-data-in-an-image"></a>Oktatóanyag: Az arcfelismerés adatok megjelenítéséhez a képet a WPF-alkalmazás létrehozása
 
@@ -123,7 +123,7 @@ Futtassa az alkalmazást, és keressen egy képet, amelyen egy arc látható. V�
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megismerte az alapvető folyamat a Face szolgáltatás .NET SDK-t, és létrehozott egy alkalmazást, és alkalmas keretet biztosítanak az arcok a képen. Következő lépésként lásd: How to a képet az arcfelismerés részleteit kapcsolatos további arcokat észleli.
+Ebben az oktatóanyagban megismerte az alapvető folyamat a Face szolgáltatás .NET SDK-t, és létrehozott egy alkalmazást, és alkalmas keretet biztosítanak az arcok a képen. Ezután további információ az arcfelismerés részleteit.
 
 > [!div class="nextstepaction"]
 > [Arcok észlelése egy képen](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)

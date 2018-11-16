@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 07/23/2018
+ms.date: 11/14/2018
 ms.author: spelluru
-ms.openlocfilehash: 710d157dcf4c6d060e59bcfbb69455e2ddc91bdd
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: 49d5761e3e37e1265938d1f1b27324de667a13ca
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450130"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51707095"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Oktatóanyag: Tesztkörnyezet használatának nyomon követése az Azure Lab Services szolgáltatásban
 Az oktatóanyag bemutatja, hogyan követheti nyomon a tesztkörnyezet létrehozója/tulajdonosa a tesztkörnyezet használatát.
@@ -44,23 +44,19 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 ## <a name="view-the-usage-of-vms-in-the-lab"></a>A tesztkörnyezetben lévő virtuális gépek használati adatainak megtekintése 
 
 1. Válassza a **Virtuális gépek** lehetőséget a bal oldali menüben. 
-2. Győződjön meg róla, hogy látható a virtuális gépek állapota és az eddigi üzemórák mennyisége. Az Ön által a diákok virtuális gépein töltött idő nem számít az utolsó oszlopban megjelenített használati időbe. 
+2. Győződjön meg róla, hogy látható a virtuális gépek állapota és az eddigi üzemórák mennyisége. A virtuális gépek nem számítanak bele a használati idő az utolsó oszlopban látható egy diák töltött idő. 
 
     ![Virtuálisgép-használat](../media/tutorial-track-usage/vm-usage.png)
 
 ## <a name="manage-student-vms"></a>Diákok virtuális gépeinek felügyelete 
-Ha az egér mutatóját valamelyik virtuális gép fölé viszi a listában, a következő műveletek vezérlőelemei jelennek meg: 
+Virtuális gép egy sorra a listában, vigye az egérmutatót, mivel vezérlők a következő feladatokat végezheti el (ahogyan az előző szakaszban az ábrán látható) jelenik meg: 
 
 - Kapcsolódás virtuális géphez
 - Virtuális gép elindítása
 - Virtuális gép leállítása
 - Virtuális gép törlése
 
-![Virtuális gép vezérlői](../media/tutorial-track-usage/vm-controls.png) 
-
 
 
 ## <a name="next-steps"></a>További lépések
-Az oktatóanyag bemutatta, hogyan tekintheti meg a tesztkörnyezetre regisztrált felhasználókat, miként követheti nyomon a tesztkörnyezetben lévő virtuális gépek használatát, valamint felügyelheti ezeket a virtuális gépeket.
-
-Az osztálytermi tesztkörnyezetekkel kapcsolatos további információkért lásd [az útmutatók](how-to-manage-lab-accounts.md) megfelelő témaköreit.
+Osztályterem-tesztkörnyezetek kapcsolatos további információkért tekintse meg a cikkeket [útmutató végigvezeti a](how-to-manage-lab-accounts.md).

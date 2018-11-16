@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 10/24/2018
-ms.openlocfilehash: c51df7aeef136fee42b061cd422cc62d67f33e96
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 31b09818f901ecf957364ae77fd8c6e636b04342
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258918"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712143"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről Azure SQL Database felügyelt példány T-SQL különbségek
 
@@ -427,7 +427,7 @@ A következő változók, functions és a nézetek különböző eredményeket a
 
 Minden felügyelt példány rendelkezik az Azure prémium szintű lemez terület számára lefoglalt 35 TB tárterület, és egyes adatbázisfájlok külön fizikai lemezen kerül. Adatlemez-méretet 128 GB-os, 256 GB, 512 GB, 1 TB vagy 4 TB-os lehet. Nem használt területet a lemezen nem számítunk fel díjat, de az Azure prémium szintű lemezméretek teljes összege legfeljebb 35 TB. Bizonyos esetekben egy felügyelt példányt, amely nem kell 8 TB összesen meghaladhatja a 35 TB-os az Azure a belső töredezettség miatt a tárhely mérete korlátozza.
 
-Például a felügyelt példány lehet egy 1,2 TB-os fájlt, amely el van helyezve a 4 TB-os lemez méretét és 248 fájlokat 1 GB-os modulok mérete, amely külön 128 GB-os lemezeken vannak elhelyezve. Ebben a példában:
+Például a felügyelt példány lehet egy fájl 1,2 TB méretű, amely el van helyezve, és 4 TB-os lemezt 248 fájlok minden 1 GB méretű, amely külön 128 GB-os lemezeken vannak elhelyezve. Ebben a példában:
 
 - a teljes lemezméret: x 4 1 TB + 248 x 128 GB = 35 TB.
 - a példányon adatbázisok teljes lefoglalt terület: x 1.2 1 TB + 248 x 1 GB = 1,4 TB.

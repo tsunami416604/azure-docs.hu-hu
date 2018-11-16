@@ -9,16 +9,16 @@ ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
-ms.openlocfilehash: 97350c90ab4ce9c3623a293c3a6637edc65ced08
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 2e5c0e479d5564a48048b9fa9c67ad8870122601
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345470"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706058"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX és az Azure Machine Learning: hozzon létre és együttműködésre AI-modellek üzembe helyezése
 
-A [nyissa meg a Neurális hálózat Exchange](http://onnx.ai) (ONNX) formátuma nyílt szabvány, amely a machine learning-modellek jelző. ONNX által támogatott egy [partnerek közösségi](http://onnx.ai/supported-tools), beleértve a Microsoft, akik kompatibilis keretrendszerek és eszközök létrehozása. Microsoft elkötelezett a nyílt forráskódú és együttműködésre AI, így az adatelemzők és fejlesztők is:
+A [nyissa meg a Neurális hálózat Exchange](https://onnx.ai) (ONNX) formátuma nyílt szabvány, amely a machine learning-modellek jelző. ONNX által támogatott egy [partnerek közösségi](https://onnx.ai/supported-tools), beleértve a Microsoft, akik kompatibilis keretrendszerek és eszközök létrehozása. Microsoft elkötelezett a nyílt forráskódú és együttműködésre AI, így az adatelemzők és fejlesztők is:
 
 + A választott eszközükön keretrendszer használatával modellek létrehozása és betanítása
 + Modellek platformok közötti integráció minimális munkahelyi üzembe helyezése
@@ -207,6 +207,6 @@ Ezeket a notebookokat lekérése:
 ## <a name="more-info"></a>További információ
 
 További információ az ONNX vagy járulnak hozzá a projekthez:
-+ [Az ONNX-projekt webhelyének](http://onnx.ai)
++ [Az ONNX-projekt webhelyének](https://onnx.ai)
 
 + [Az ONNX-kódját a Githubon](https://github.com/onnx/onnx)

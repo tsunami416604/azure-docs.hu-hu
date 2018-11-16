@@ -9,12 +9,12 @@ ms.reviewer: sgilley
 author: hning86
 ms.author: haining
 ms.date: 11/09/2018
-ms.openlocfilehash: fff08131af277b20034ad23c354b70e73ae32f2e
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 6258717e5c068c910ad9faac3b03f13df8030487
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578280"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51710647"
 ---
 # <a name="quickstart-use-python-to-get-started-with-azure-machine-learning"></a>Rövid útmutató: A Python használata az Azure Machine Learning szolgáltatással való ismerkedéshez
 
@@ -42,7 +42,7 @@ A következő Azure-erőforrásokat a rendszer automatikusan hozzáadja a munkat
 >[!NOTE]
 > Ebben a cikkben kód teszteltük az Azure Machine Learning SDK verziója 0.1.74 
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://aka.ms/AMLfree) a virtuális gép létrehozásának megkezdése előtt.
 
 
 ## <a name="install-the-sdk"></a>Az SDK telepítése

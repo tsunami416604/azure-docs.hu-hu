@@ -6,14 +6,14 @@ author: seguler
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 10/23/2018
+ms.date: 11/14/2018
 ms.author: seguler
-ms.openlocfilehash: d3f6f2c9a1ca5016eb9a6597ba32dc1471f77cb4
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
-ms.translationtype: HT
+ms.openlocfilehash: 2939bd5c7b32cc9fe05326ee72dbb7367a72ef7f
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038324"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711157"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Go használatával
 
@@ -21,17 +21,20 @@ A rövid útmutató azt ismerteti, hogyan használható a Go programnyelv blokkb
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A gyorsútmutató elvégzéséhez: 
-* telepítse a [Go 1.8-as vagy újabb verzióját](https://golang.org/dl/);
-* töltse le és telepítse a [Go-hoz készült Azure Storage Blob SDK-t](https://github.com/azure/azure-storage-blob-go/) a `go get -u github.com/Azure/azure-storage-blob-go/azblob` paranccsal. 
+[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-> [!NOTE]
-> Győződjön meg arról, hogy az Azure nagybetűvel szerepeljen az URL-címben. Ellenkező esetben az írásmóddal kapcsolatos importálási hibák fordulhatnak elő az SDK használatakor. Az Azure szót az importálási utasításokban is nagybetűvel kell megadni.
+Győződjön meg arról, hogy telepítve van a következő további Előfeltételek:
+ 
+* [Go 1.8-as vagy újabb](https://golang.org/dl/)
+* [A Góhoz készült Azure Storage Blob SDK](https://github.com/azure/azure-storage-blob-go/), a következő paranccsal:
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+    ```
+    go get -u github.com/Azure/azure-storage-blob-go/azblob
+    ``` 
 
-[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
-
+    > [!NOTE]
+    > Győződjön meg arról, hogy nagybetűvel `Azure` elkerülése érdekében esetben az írásmóddal kapcsolatos importálási hibák fordulhatnak elő, az SDK-val való használatakor az URL-címben. Is nagybetűvel `Azure` szót az importálási utasításokban.
+    
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
 A rövid útmutatóban használt [mintaalkalmazás](https://github.com/Azure-Samples/storage-blobs-go-quickstart.git) egy egyszerű Go-alkalmazás.  
 

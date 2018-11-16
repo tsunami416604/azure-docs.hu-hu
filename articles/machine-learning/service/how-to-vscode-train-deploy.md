@@ -9,12 +9,12 @@ ms.author: jmartens
 author: j-martens
 ms.reviewer: jmartens
 ms.date: 10/1/2018
-ms.openlocfilehash: 6372aada8c3d380f8d3cefb0479e45bbd7c63898
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 38a7a4e80542551057b230e9d0217d1cecbc5c42
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945246"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51710307"
 ---
 # <a name="vs-code-tools-for-ai-train-and-deploy-ml-models-from-vs-code"></a>A VS Code Tools for AI: Train és gépi Tanulási modellek a VS Code telepítése
 Ebben a cikkben, megtudhatja, hogyan használható a **VS Code Tools for AI** betanítása és üzembe helyezése a gépi tanulási és deep learning-modellek Azure Machine Learning szolgáltatás a VS Code-bővítmény.
@@ -29,7 +29,7 @@ Az intranetes és ezek a modellek tesztelési és éles igényeinek.
 
 + Rendelkezik a [Azure Machine Learning SDK telepítve van a Pythonhoz készült](how-to-vscode-tools.md) VS Code használatával.
 
-+ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
++ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://aka.ms/AMLfree) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="create-and-manage-compute-targets"></a>Létrehozni és kezelni a számítási célnak
 

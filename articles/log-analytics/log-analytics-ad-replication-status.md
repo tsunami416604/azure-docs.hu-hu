@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 08d17566faa61c5dcac01a49f99f0f39eb280946
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3092e8edf16e271826aef95575d92749b29f8b56
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009742"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711514"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>A Log Analytics használatával az Active Directory-replikációs állapotának figyelése
 
@@ -34,7 +34,7 @@ Az AD Replication Status megoldáscsomag rendszeresen figyeli az Active Director
 A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi információkat.
 
 * Ügynököket kell telepítenie a tartományvezérlőkön, amelyek ki kell értékelni a tartomány tagjai. Vagy tag kiszolgálón telepíti az ügynökök és az ügynökök AD replikációs adatokat küldeni a Log Analytics konfigurálnia kell. Windows-számítógépek csatlakoztatása a Log Analytics ismertetése: [a Log Analyticshez való csatlakozáshoz Windows számítógépek](log-analytics-windows-agent.md). Ha a tartományvezérlő már a Log Analyticshez való csatlakozáshoz, olvassa el a kívánt meglévő System Center Operations Manager környezet része [Operations Manager csatlakoztatása a Log Analytics](log-analytics-om-agents.md).
-* Az Active Directory replikációs állapota megoldás hozzáadása a Log Analytics-munkaterülethez ismertetett folyamatot [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../monitoring/monitoring-solutions.md).  Nincs szükség további konfigurációra.
+* Az Active Directory replikációs állapota megoldás hozzáadása a Log Analytics-munkaterülethez ismertetett folyamatot [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../azure-monitor/insights/solutions.md).  Nincs szükség további konfigurációra.
 
 ## <a name="ad-replication-status-data-collection-details"></a>AD replikációs állapot adatok gyűjtemény részletei
 Az alábbi táblázatban látható adatok gyűjtési módszerek és egyéb hogyan adatgyűjtés az AD Replication Status részleteit.

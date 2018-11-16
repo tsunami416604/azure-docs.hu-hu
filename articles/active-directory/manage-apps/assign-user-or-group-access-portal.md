@@ -2,25 +2,21 @@
 title: Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazást az Azure Active Directoryban |} A Microsoft Docs
 description: Vállalati alkalmazás hozzárendelése egy felhasználóhoz vagy csoporthoz, az Azure Active Directory kiválasztása
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/05/2018
+ms.date: 11/15/2018
 ms.author: barbkess
 ms.reviewer: luleon
-ms.openlocfilehash: ee0b14123e193f219e403d2608368c27f953013d
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: b6b7408b4efe4c3271ea2ddeb63a499bee670976
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037974"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711310"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Egy felhasználó vagy csoport hozzárendelése az Azure Active Directory vállalati alkalmazás
 Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazást, a vállalati alkalmazások kezelésére a megfelelő engedélyekkel kell rendelkeznie, és a címtár globális rendszergazdának kell lennie.
@@ -32,7 +28,7 @@ Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazást, a v
 > A Microsoft Applications (például az Office 365-alkalmazások) a PowerShell használatával felhasználók hozzárendelése egy vállalati alkalmazást.
 
 
-## <a name="how-do-i-assign-user-access-to-an-enterprise-app-in-the-azure-portal"></a>Hogyan oszthatok ki a felhasználói hozzáférés a vállalati alkalmazásokat az Azure Portalon?
+## <a name="assign-a-user-to-an-app---portal"></a>Felhasználó hozzárendelése alkalmazáshoz – portál
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
 2. Válassza ki **minden szolgáltatás**, a szövegmezőbe írja be az Azure Active Directory, és válassza **Enter**.
 3. Válassza ki **vállalati alkalmazások**.
@@ -51,7 +47,25 @@ Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazást, a v
 10. Az a **hozzárendelés hozzáadása** panelen válassza ki **szerepkör**. Ezután a a **Szerepkörválasztás** panelen válassza ki a megfelelő szerepkört a kiválasztott felhasználókra vagy csoportokra vonatkoznak, és válassza ki a **OK** gombra a panel alján.
 11. Az a **hozzárendelés hozzáadása** panelen válassza ki a **hozzárendelése** gombra a panel alján. A hozzárendelt felhasználók vagy csoportok rendelkezik a kijelölt szerepkört a vállalati alkalmazás által meghatározott engedélyekkel.
 
-## <a name="how-do-i-assign-a-user-to-an-enterprise-app-using-powershell"></a>Hogyan oszthatok ki egy felhasználó egy vállalati alkalmazáshoz a PowerShell használatával?
+## <a name="allow-all-users-to-access-an-app---portal"></a>Engedélyezése minden felhasználó számára a hozzáférést egy alkalmazáshoz – portál
+Minden felhasználó egy alkalmazáshoz való hozzáférés engedélyezése:
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
+2. Válassza ki **minden szolgáltatás**, a szövegmezőbe írja be az Azure Active Directory, és válassza **Enter**.
+3. Válassza ki **vállalati alkalmazások**.
+4. Az a **vállalati alkalmazások** panelen válassza ki **minden alkalmazás**. Ez felsorolja az alkalmazásokat, kezelheti.
+5. Az a **nagyvállalati alkalmazások – minden alkalmazás** panelen jelöljön ki egy alkalmazást.
+6. Az a ***appname*** panelen válassza ki **tulajdonságok**.
+7. Az a  ***appname* -tulajdonságok** panelen adja meg a **kell felhasználó-hozzárendelés?** beállítást **nem**. 
+
+A **kell felhasználó-hozzárendelés?** lehetőséget:
+
+- Nem érinti-e egy alkalmazás az alkalmazás-hozzáférési panel jelenik meg. Az alkalmazás a hozzáférési panel megjelenítéséhez, hozzá kell rendelni egy megfelelő felhasználót vagy csoportot az alkalmazás.
+- Csak a felhőbeli alkalmazásokkal, az SAML egyszeri bejelentkezésre konfigurált funkciók, és a helyszíni alkalmazások konfigurálása az alkalmazásproxy használatával. Lásd: [egyszeri bejelentkezési alkalmazások](what-is-single-sign-on.md).
+- Megköveteli, hogy felhasználók beleegyezik abba, hogy egy alkalmazás. Rendszergazdai jóváhagyás minden felhasználó számára biztosíthat.  Lásd: [konfigurálása a módon végfelhasználók beleegyezik abba, hogy egy alkalmazás](configure-user-consent.md).
+
+
+## <a name="assign-a-user-to-an-app---powershell"></a>Felhasználó hozzárendelése alkalmazáshoz – PowerShell
 
 1. Nyisson meg egy rendszergazda jogú Windows PowerShell-parancssort.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Standard Load Balancer létrehozása és felügyelete – Azure Portal | Microsoft Docs'
+title: 'Oktatóanyag: terhelésének elosztása az internetes forgalmat a virtuális gépek – az Azure portal |} A Microsoft Docs'
 description: Ez a rövid útmutató ismerteti, hogyan hozhat létre és felügyelhet egy Standard Load Balancert az Azure Portalon.
 services: load-balancer
 documentationcenter: na
@@ -17,16 +17,16 @@ ms.workload: infrastructure-services
 ms.date: 08/20/18
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7c3e5c0cc8297ba60925d36d667e0b72a5072553
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
-ms.translationtype: HT
+ms.openlocfilehash: ef021a89cb1cba5a3240ade5ba67141940413cdc
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380046"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687309"
 ---
-# <a name="tutorial-create-and-manage-standard-load-balancer-using-the-azure-portal"></a>Oktatóanyag: Standard Load Balancer létrehozása és felügyelete az Azure Portallal
+# <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Oktatóanyag: A terheléselosztását internetes forgalmat a virtuális gépekhez az Azure portal használatával
 
-A terheléselosztás magasabb szintű rendelkezésre állást és méretezést biztosít, mivel a bejövő kérelmeket több virtuális gép között osztja szét. Ebben az oktatóanyagban megismerkedhet az Azure Standard Load Balancer különböző összetevőivel, amelyek elosztják a forgalmat, és gondoskodnak a magas rendelkezésre állásról. Az alábbiak végrehajtásának módját ismerheti meg:
+A terheléselosztás magasabb szintű rendelkezésre állást és méretezést biztosít, mivel a bejövő kérelmeket több virtuális gép között osztja szét. Ebben az oktatóanyagban elsajátíthatja az Azure Standard Load Balancer különböző összetevőivel, amelyek internetes forgalmat a virtuális gépek és a magas rendelkezésre állást biztosító kapcsolatban. Az alábbiak végrehajtásának módját ismerheti meg:
 
 
 > [!div class="checklist"]

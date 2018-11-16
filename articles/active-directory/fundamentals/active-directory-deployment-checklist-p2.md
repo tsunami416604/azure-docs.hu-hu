@@ -10,35 +10,35 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: ''
-ms.openlocfilehash: 7931cd8a6f8b3de826e8dd563a837f80fc15d88a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 86561cd835a36282ca1b38638ab4372c6b360617
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315118"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705651"
 ---
 # <a name="azure-active-directory-premium-p2-licensing-feature-checklist"></a>Az Azure Active Directory Premium P2 licencelési szolgáltatás ellenőrzőlista
 
-Azt is tűnhet üzembe helyezése az Azure Active Directory (Azure AD) a szervezet számára, és tárolja biztonságos helyen. Ez a cikk néhány gyakori feladatot azonosítja, hogy ügyfeleink hasznos 30 nap, 90 nap folyamán végrehajtásához vagy után növelése érdekében a biztonsági állapotáról. Még akkor is, a szervezeteknek, akik már telepítették az Azure AD az alábbi ellenőrzőlista használatával biztosíthatja a azok kihozhatják a legtöbbet hozhassa ki a befektetés.
+Azt is kezdünk, üzembe helyezése az Azure Active Directory (Azure AD) a szervezet számára, és tárolja biztonságos helyen. Ez a cikk néhány gyakori feladatot, amely hasznos ügyfelek azonosítja. Ügyfelek általában hajtsa végre ezeket a feladatokat 30 napig, 90 napig, vagy túl folyamán javíthatja azok biztonsági állapotáról. Még akkor is, a szervezeteknek, akik már telepítették az Azure AD használatával ezzel az ellenőrzőlistával ellenőrizze, hogy a legtöbbet hozhassa ki a befektetési jutnak.
 
 Egy jól megtervezett és végrehajtott identitás-infrastruktúra előkészíti az biztonságosabb hozzáférés a termelékenység számítási feladatok és az adatok csak a hitelesített felhasználók és eszközök számára.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az útmutató feltételezi, hogy az Azure AD Premium P2 licenccel, Enterprise Mobility + Security E5, Microsoft 365 E5 csomag vagy egy azzal egyenértékű licenc-csomagot.
+Ez az útmutató feltételezi, hogy az Azure AD Premium P2 licenccel, Enterprise Mobility + Security E5, Microsoft 365 E5 csomag vagy egy hasonló licenc-csomagot.
 
 [Az Azure AD licencelése](https://azure.microsoft.com/pricing/details/active-directory/)
 
-[A Microsoft 365 nagyvállalati verzió](https://www.microsoft.com/licensing/product-licensing/microsoft-365-enterprise.aspx)
+[A Microsoft 365 nagyvállalati verzió](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
 
-[Enterprise Mobility + Security](https://www.microsoft.com/licensing/product-licensing/enterprise-mobility-security.aspx)
+[Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
 
 ## <a name="plan-and-deploy-day-1-30"></a>Tervezése és üzembe helyezése: 1 – 30 nap
 
 - Egynél több globális rendszergazda (break-vészhelyzeti fiók) kijelölése
    - [A válságkezelési-hozzáférési rendszergazdai fiókok kezelése az Azure ad-ben](../users-groups-roles/directory-emergency-access.md)
 - Kapcsolja be az Azure AD Privileged Identity Management (PIM) jelentések megtekintése
-   - [A PIM használatának megkezdése](../privileged-identity-management/pim-getting-started.md)
+   - [Ismerkedés a PIM-mel](../privileged-identity-management/pim-getting-started.md)
 - Ahol lehetséges, használja a nem globális rendszergazdai szerepkört.
    - [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](../users-groups-roles/directory-assign-admin-roles.md)
 - Hitelesítés

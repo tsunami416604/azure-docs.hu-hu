@@ -9,12 +9,12 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: b004abb3959bbfe36fc200bf762114f88f3d2ead
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 3c07f39a6c6c4ce244ba49a26617b3e645c57acb
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345046"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51710375"
 ---
 # <a name="deploy-web-services-to-azure-container-instances"></a>Webszolgáltatások üzembe helyezése az Azure Container Instances szolgáltatásban 
 
@@ -28,7 +28,7 @@ Ez a cikk bemutatja a modell üzembe helyezése az aci-ban három különböző 
 * Üzembe helyezés a regisztrált modell használatával `Webservice.deploy_from_model()`
 * A lemezkép használatával regisztrált modell üzembe helyezése `Webservice.deploy_from_image()`
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://aka.ms/AMLfree) a virtuális gép létrehozásának megkezdése előtt.
 
 
 ## <a name="prerequisites"></a>Előfeltételek

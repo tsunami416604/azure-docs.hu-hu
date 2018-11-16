@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 2e59286822d49abeea522b5346ba531408559a7b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 554159f0eb22f2aaa1e45e69de7741f8764be0b3
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014822"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711854"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights-összekötő felügyeleti megoldás (előzetes verzió)
 
@@ -57,7 +57,7 @@ Ellentétben a legtöbb más Log Analytics-megoldások adatok nem lesznek gyűjt
 
 ## <a name="configuration"></a>Konfiguráció
 
-1. Engedélyezze az Azure Web Apps Analytics megoldás a a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview) vagy leírt folyamatot követve [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../monitoring/monitoring-solutions.md).
+1. Engedélyezze az Azure Web Apps Analytics megoldás a a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview) vagy leírt folyamatot követve [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../azure-monitor/insights/solutions.md).
 2. Keresse fel az [Azure Portalt](https://portal.azure.com). Válassza ki **minden szolgáltatás** Application Insights megnyitásához. Ezután keresse meg az Application Insights. 
 3. A **előfizetések**, válasszon ki egy előfizetést, amely rendelkezik az Application Insights-erőforrást, majd a **neve**, válassza ki egy vagy több alkalmazás.
 4. Kattintson a **Save** (Mentés) gombra.
@@ -160,7 +160,7 @@ Mintavételezés csak a bejegyzések száma összesen az alkalmazás által lét
 
 A megoldás a következő telemetriai típusú adatokat fogad a csatlakoztatott Application Insights-alkalmazások:
 
-- Elérhetőség
+- Rendelkezésre állás
 - Kivételek
 - Kérelmek
 - Lapmegtekintések – a munkaterület fogadni a lapmegtekintések, konfigurálnia kell az alkalmazásokat, adatokat gyűjthet. További információkat lásd: [Oldalmegtekintések](../application-insights/app-insights-api-custom-events-metrics.md#page-views).
@@ -176,7 +176,7 @@ Egy rekord egy *típus* , *ApplicationInsights* jön létre az egyes bemeneti ad
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Type (Típus) | ApplicationInsights |
+| Típus | ApplicationInsights |
 | ClientIP |   |
 | TimeGenerated | A rekord létrehozásának időpontja |
 | Alkalmazásazonosító | Az Application Insights-alkalmazás kialakítási kulcs |
@@ -202,7 +202,7 @@ Egy rekord egy *típus* , *ApplicationInsights* jön létre az egyes bemeneti ad
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| TelemetryType | Elérhetőség |
+| TelemetryType | Rendelkezésre állás |
 | AvailabilityTestName | A webes teszt neve |
 | AvailabilityRunLocation | Http-kérelem földrajzi forrása |
 | AvailabilityResult | Azt jelzi, hogy a webes teszt a sikeres művelet |
@@ -225,7 +225,7 @@ Egy rekord egy *típus* , *ApplicationInsights* jön létre az egyes bemeneti ad
 
 ### <a name="exception-specific-fields"></a>Kivétel-specifikus mezők
 
-| Type (Típus) | ApplicationInsights |
+| Típus | ApplicationInsights |
 | --- | --- |
 | TelemetryType | Kivétel |
 | ExceptionType | A kivétel típusa |
@@ -244,8 +244,8 @@ Egy rekord egy *típus* , *ApplicationInsights* jön létre az egyes bemeneti ad
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Type (Típus) | ApplicationInsights |
-| TelemetryType | Kérelem |
+| Típus | ApplicationInsights |
+| TelemetryType | Kérés |
 | ResponseCode | Az ügyfélnek küldött HTTP-válasz |
 | RequestSuccess | Azt jelzi, hogy sikeres vagy sikertelen. IGAZ vagy hamis. |
 | Kérelemazonosító: | Egyedi azonosítására szolgál a kérelem azonosítója |

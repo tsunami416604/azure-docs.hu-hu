@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: fbbdc4a67cd6f2e7d74031f7acc584bf0004bea4
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
-ms.translationtype: HT
+ms.openlocfilehash: 43cf9f5ec0f9c265efa0e59eadbf6c9bbe4f7c3f
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085376"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51682879"
 ---
 # <a name="advanced-resource-graph-queries"></a>Speciális Resource Graph-lekérdezések
 
@@ -72,7 +72,7 @@ Search-AzureRmGraph -Query "project tags | summarize buildschema(tags)"
 ## <a name="vm-regex"></a>Reguláris kifejezésekkel egyező virtuális gépek
 
 Ez a lekérdezés olyan virtuális gépeket keres, amelyek egyeznek egy [reguláris kifejezéssel](/dotnet/standard/base-types/regular-expression-language-quick-reference) (más néven _regex-szel_).
-A **matches regex @** kifejezéssel tudjuk definiálni a reguláris kifejezést, amely esetünkben a következő: **^Contoso(.*)[0-9]+$**. A reguláris kifejezés definíciójának magyarázata:
+A **blobnévelőtagjaként @** lehetővé teszi számunkra, hogy adja meg a következő reguláris kifejezésre megfelelően, amely `^Contoso(.*)[0-9]+$`. A reguláris kifejezés definíciójának magyarázata:
 
 - `^` – Az egyezésnek a sztring elején kell kezdődnie.
 - `Contoso` – A kis- és nagybetűket megkülönböztető sztring.

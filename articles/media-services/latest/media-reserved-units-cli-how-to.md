@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/11/2018
 ms.author: juliako
-ms.openlocfilehash: db1915f23c33b5cc0d504f8fcc21b9533228247f
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: dd587e5fc2082d1e496fbc05d5b25cf6692413bc
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634396"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713061"
 ---
 # <a name="scaling-media-processing"></a>Skálázás médiafeldolgozás
 
-Az Azure Media Services lehetővé teszi, hogy méretezhető médiafeldolgozás a fiókjában, mivel kezeli az Media szolgáltatás számára fenntartott egységek (helyet). Részletes ismertetőt talál [médiafeldolgozás skálázás](../previous/media-services-scale-media-processing-overview.md). Ez a cikk bemutatja, hogyan [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) méretezése a helyet.
+Az Azure Media Services lehetővé teszi, hogy méretezhető médiafeldolgozás a fiókjában, mivel kezeli az Media szolgáltatás számára fenntartott egységek (helyet). Részletes ismertetőt talál [médiafeldolgozás skálázás](../previous/media-services-scale-media-processing-overview.md). 
 
-> [!IMPORTANT]
-> Tekintse át a ismertetett szempontok [ebben a szakaszban](#considerations).  
-> 
->
+Ez a cikk bemutatja, hogyan [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) méretezése a helyet.
+
+> [!NOTE]
+> A hangelemzés és videó elemzési feladatokat a Media Services v3 által aktivált vagy a Video Indexer azt javasoljuk 10 S3 szintű helyet a fiók kiépítése. <br/>Ha több mint 10 S3-helyet, nyisson meg egy támogatási jegyet a a [az Azure portal](https://portal.azure.com/).
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
@@ -44,11 +44,6 @@ A következő [az ams-fiók legutóbbi](https://docs.microsoft.com/cli/azure/ams
 ```azurecli
 az account set mru -n amsaccount -g amsResourceGroup --count 10 --type S3
 ```
-
-## <a name="considerations"></a>Megfontolandó szempontok
-
-- A hangelemzés és videó elemzési feladatokat a Media Services v3 által aktivált vagy a Video Indexer azt javasoljuk 10 S3 szintű helyet a fiók kiépítése.
-- Ha több mint 10 S3-helyet, nyisson meg egy támogatási jegyet a a [az Azure portal](https://portal.azure.com/).
 
 ## <a name="billing"></a>Számlázás
 

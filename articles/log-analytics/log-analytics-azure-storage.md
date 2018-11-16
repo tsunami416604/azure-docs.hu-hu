@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: f9cc3033c476afe389cb52d3468facb9168fb920
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: d7359c4c151d93dcd40bd475e865c76399ff5355
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006532"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711776"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Naplók gyűjtése az Azure service és a Log Analytics használati metrikái
 
@@ -32,28 +32,28 @@ Naplók és mérőszámok az Azure-szolgáltatásokhoz gyűjt négy különböz�
 4. Parancsfájlok, összegyűjtése és majd ezeket az adatokat a Log analyticsbe (üres az alábbi táblázatban és -szolgáltatásokhoz, amelyek nem szerepelnek a listán)
 
 
-| Szolgáltatás                 | Erőforrás típusa                           | Naplók        | Metrikák     | Megoldás |
+| Szolgáltatás                 | Erőforrás típusa                           | Logs        | Mérőszámok     | Megoldás |
 | --- | --- | --- | --- | --- |
 | Alkalmazásátjárók    | Microsoft.Network/applicationGateways   | Diagnosztika | Diagnosztika | [Az Azure Application Gateway Analytics](log-analytics-azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-log-analytics) |
 | Az Application insights    |                                         | Összekötő   | Összekötő   | [Application Insights-összekötő](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) (előzetes verzió) |
 | Automation-fiókok     | Microsoft.Automation/AutomationAccounts | Diagnosztika |             | [További információ](../automation/automation-manage-send-joblogs-log-analytics.md)|
 | Batch-fiókok          | Microsoft.Batch/batchAccounts           | Diagnosztika | Diagnosztika | |
-| Klasszikus a cloud services  |                                         | Tárhely     |             | [További információ](log-analytics-azure-storage-iis-table.md) |
-| Cognitive Services      | Microsoft.CognitiveServices/accounts    |             | Diagnosztika | |
+| Klasszikus a cloud services  |                                         | Storage     |             | [További információ](log-analytics-azure-storage-iis-table.md) |
+| Kognitív szolgáltatások      | Microsoft.CognitiveServices/accounts    |             | Diagnosztika | |
 | A Data Lake analytics     | Microsoft.DataLakeAnalytics/accounts    | Diagnosztika |             | |
 | A Data Lake store         | Microsoft.DataLakeStore/accounts        | Diagnosztika |             | |
-| Eseményközpont-névtér     | Microsoft.EventHub/namespaces           | Diagnosztika | Diagnosztika | |
+| Event Hubs-névtér     | Microsoft.EventHub/namespaces           | Diagnosztika | Diagnosztika | |
 | IoT Hubok                | Microsoft.Devices/IotHubs               |             | Diagnosztika | |
 | Key Vault               | Microsoft.KeyVault/vaults               | Diagnosztika |             | [KeyVault Analytics](log-analytics-azure-key-vault.md) |
 | Terheléselosztók          | Microsoft.Network/loadBalancers         | Diagnosztika |             |  |
 | Logic Apps              | Microsoft.Logic/workflows <br> Microsoft.Logic/integrationAccounts | Diagnosztika | Diagnosztika | |
-| Hálózati biztonsági csoportok | Microsoft.Network/networksecuritygroups | Diagnosztika |             | [Azure-beli hálózati biztonsági csoport Analytics](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) |
+| Network Security Groups (Hálózati biztonsági csoportok) | Microsoft.Network/networksecuritygroups | Diagnosztika |             | [Azure-beli hálózati biztonsági csoport Analytics](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) |
 | Helyreállítási tárak         | Microsoft.RecoveryServices/vaults       |             |             | [Az Azure Recovery Services-Analytics (előzetes verzió)](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 | Szolgáltatások keresése         | Microsoft.Search/searchServices         | Diagnosztika | Diagnosztika | |
 | Service Bus-névtér   | Microsoft.ServiceBus/namespaces         | Diagnosztika | Diagnosztika | [Service Bus-elemzés (előzetes verzió)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
-| Service Fabric          |                                         | Tárhely     |             | [Service Fabric-elemzés (előzetes verzió)](../service-fabric/service-fabric-diagnostics-oms-setup.md) |
+| Service Fabric          |                                         | Storage     |             | [Service Fabric-elemzés (előzetes verzió)](../service-fabric/service-fabric-diagnostics-oms-setup.md) |
 | SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | Diagnosztika | [Az Azure SQL Analytics (előzetes verzió)](log-analytics-azure-sql.md) |
-| Tárhely                 |                                         |             | Parancsprogramok használata      | [Az Azure Storage Analytics (előzetes verzió)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution) |
+| Storage                 |                                         |             | Szkript      | [Az Azure Storage Analytics (előzetes verzió)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution) |
 | Virtuális gépek        | Microsoft.Compute/virtualMachines       | Mellék   | Mellék <br> Diagnosztika  | |
 | Virtuális gépek méretezési csoportjai | Microsoft.Compute/virtualMachines <br> Microsoft.Compute/virtualMachineScaleSets/virtualMachines |             | Diagnosztika | |
 | Webkiszolgálófarmok        | Microsoft.Web/serverfarms               |             | Diagnosztika | |
@@ -80,7 +80,7 @@ Azure-erőforrások, amelyek támogatják a [az Azure monitor](../azure-monitor/
 * A rendelkezésre álló metrikák részleteit, tekintse meg a [az Azure monitorban támogatott mérőszámok](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
 * A részletes naplók, tekintse meg [szolgáltatások és a séma támogatja a diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md).
 
-### <a name="enable-diagnostics-with-powershell"></a>A diagnosztika engedélyezése a PowerShell-lel
+### <a name="enable-diagnostics-with-powershell"></a>Diagnosztika engedélyezése a PowerShell-lel
 Van szüksége a 2016. November (v2.3.0), vagy újabb kiadását [Azure PowerShell-lel](/powershell/azure/overview).
 
 A következő PowerShell-példa bemutatja, hogyan használható [Set-azurermdiagnosticsetting parancshoz](/powershell/module/azurerm.insights/set-azurermdiagnosticsetting) ahhoz, hogy a hálózati biztonsági csoport diagnosztikai. Ugyanezzel a módszerrel együttműködik az összes támogatott erőforrás - beállítása `$resourceId` , az erőforrás diagnosztikai számára engedélyezni szeretné az erőforrás-azonosítója.
@@ -130,7 +130,7 @@ Belül az egyes erőforrások naplóinak gyűjtéséhez is lehet küldeni a napl
 
 A log Analytics használatával Ez a megközelítés az alábbi erőforrások és a naplók az Azure storage-ból a diagnosztikai adatok gyűjtéséhez:
 
-| Erőforrás | Naplók |
+| Erőforrás | Logs |
 | --- | --- |
 | Service Fabric |ETWEvent <br> Működési események <br> Reliable Actors-események <br> Reliable Services-esemény |
 | Virtuális gépek |Linux Syslog <br> Windows-esemény <br> IIS-napló <br> Windows ETWEvent |
@@ -158,5 +158,5 @@ Az Azure-sablon szerepel [példák az Azure Automationnel](https://azure.microso
 ## <a name="next-steps"></a>További lépések
 
 * [A blob storage használata az IIS és a table storage-események](log-analytics-azure-storage-iis-table.md) , olvassa el a naplókat az Azure-szolgáltatások, a table storage vagy az IIS-napló írása blobtárolókba írási diagnosztika.
-* [Megoldások engedélyezése](../monitoring/monitoring-solutions.md) nyújt betekintést az adatokat.
+* [Megoldások engedélyezése](../azure-monitor/insights/solutions.md) nyújt betekintést az adatokat.
 * [Keresési lekérdezéseket használnak](log-analytics-queries.md) az adatok elemzéséhez.

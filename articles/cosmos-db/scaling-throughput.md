@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: d29f01c7f953ed211b429e41b844a01c67e41054
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 597d94ce7be077dda6571048b560c9414ceb35ff
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282375"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705242"
 ---
 # <a name="scaling-throughput-in-azure-cosmos-db"></a>Az Azure Cosmos DB méretezési átviteli sebesség
 
@@ -23,7 +23,7 @@ Az Azure Cosmos DB kiosztott átviteli sebesség jelenik meg kérelem egység/m�
 
 Telepíthet egy Cosmos-tároló vagy egy Cosmos-adatbázis a RUs. Egy tároló kiosztott Kérelemegységek adott tárolón végrehajtott műveletek kizárólag érhető el. Az adatbázisok kiosztott Kérelemegységek (kivéve a kizárólag kiosztott Kérelemegységek tartalmazó összes tárolót) adatbázison belüli összes tárolók között vannak megosztva.
 
-Az átviteli sebesség rugalmasan méretezést, növelheti vagy csökkentheti a kiosztott RU/s bármikor. További információkért lásd: [útmutató kiépítése átviteli](set-throughput.md) és rugalmasan skálázható Cosmos-tárolók és adatbázisok. Globálisan méretezéshez az átviteli sebesség, akkor is régiók hozzáadása vagy eltávolítása a Cosmos-fiókjában bármikor. További információkért lásd: [útmutató régiók hozzáadása vagy eltávolítása a Cosmos-fiókjába](how-to-manage-database-account.md#addremove-regions-from-your-database-account). Közel valós idejű eléréséhez helyzetekben fontos több régióban társít egy Cosmos-fiók és [magas rendelkezésre állású](high-availability.md) szerte a világon.
+Az átviteli sebesség rugalmasan méretezést, növelheti vagy csökkentheti a kiosztott RU/s bármikor. További információkért lásd: [útmutató kiépítése átviteli](set-throughput.md) és rugalmasan skálázható Cosmos-tárolók és adatbázisok. Globálisan méretezéshez az átviteli sebesség, akkor is régiók hozzáadása vagy eltávolítása a Cosmos-fiókjában bármikor. További információkért lásd: [hozzáadása vagy eltávolítása régiók az Azure Cosmos DB-fiókból](how-to-manage-database-account.md#addremove-regions-from-your-database-account). Közel valós idejű eléréséhez helyzetekben fontos több régióban társít egy Cosmos-fiók és [magas rendelkezésre állású](high-availability.md) szerte a világon.
 
 ## <a name="how-provisioned-throughput-is-distributed-across-regions"></a>Hogyan régió között oszlanak meg kiosztott átviteli sebesség
 

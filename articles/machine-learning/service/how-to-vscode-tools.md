@@ -9,12 +9,12 @@ ms.author: jmartens
 author: j-martens
 ms.reviewer: jmartens
 ms.date: 10/1/2018
-ms.openlocfilehash: a2f37cffb37ce7008c3e372763784240e0d4250b
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: a298a49c5bdf28b30da05c1b6296fc211ec14c1d
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945552"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713146"
 ---
 # <a name="vs-code-tools-for-ai-get-started-with-azure-machine-learning-from-visual-studio-code"></a>A VS Code Tools for AI: Ismerkedés az Azure Machine Learning Visual Studio Code-ból
 
@@ -28,7 +28,7 @@ Használja a Tools for AI-bővítmény a Visual Studio code-ban az Azure Machine
 
 + [Telepítse a Python 3.5-ös vagy újabb](https://www.anaconda.com/download/).
 
-+ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
++ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://aka.ms/AMLfree) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="install-vs-code-tools-for-ai-extension"></a>Mesterséges Intelligencia kiterjesztése a VS Code Tools telepítése
 
@@ -40,7 +40,7 @@ Dolgozunk az Azure Machine Learning, a VS Code alakítsa át a Python ide-vel ke
 
 1. Indítsa el a VS Code.
 
-1. Egy böngészőben keresse fel: http://aka.ms/vscodetoolsforai. 
+1. Egy böngészőben keresse fel: https://aka.ms/vscodetoolsforai. 
 
 1. A weblapon kattintson **telepítése**. 
 

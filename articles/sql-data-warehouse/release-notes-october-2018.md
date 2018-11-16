@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 11/11/2018
+ms.date: 11/14/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: 82f55c87c54fa5197a2bd5c24ea3863da1700c7b
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 1edac9f7eac1f47974f4c94f3cae5bb3451f92fd
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51579716"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705378"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-october-2018"></a>Mi az új Azure SQL Data warehouse? 2018. október
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek 2018. október.
@@ -32,7 +32,7 @@ Speciális hangolási Azure SQL Data warehouse-hoz (az SQL DW) csak van további
 2.  Táblaelosztással – hogy mikor replikálja a táblák adatáthelyezés csökkentheti és növelheti a számítási feladatok teljesítményére. 
 3.  A TempDB – megértése, ha csökkenteni a versengést a tempdb osztályokat és erőforrás konfigurálása.
 
-Van egy ugyanakkor szorosabb integrációt, az adatraktárak mérőszámait [Azure Monitor](https://azure.microsoft.com/blog/enhanced-capabilities-to-monitor-manage-and-integrate-sql-data-warehouse-in-the-azure-portal/) többek között egy továbbfejlesztett testre szabható figyelés diagramra a közel valós idejű metrikák áttekintés paneljén. Már nem kell hagyja az adatokat az adatraktár áttekintés panelen használat, figyelés vagy ellenőrzése és data warehouse javaslatok alkalmazása az Azure Monitor-metrikák eléréséhez. Emellett nincsenek új metrikák elérhető, például a TempDB-adatbázisának és adaptív gyorsítótár-kihasználtság kiegészíteni, a teljesítménnyel kapcsolatos javaslatok.
+Van egy ugyanakkor szorosabb integrációt, az adatraktárak mérőszámait [Azure Monitor](https://azure.microsoft.com/blog/enhanced-capabilities-to-monitor-manage-and-integrate-sql-data-warehouse-in-the-azure-portal/) többek között egy továbbfejlesztett testre szabható figyelés diagramra a közel valós idejű metrikák áttekintés paneljén. Ezentúl nem kell elhagynia az adattárház áttekintő paneljét ahhoz, hogy lássa az Azure Monitor metrikáit a használat monitorozásakor, illetve az adattárházra vonatkozó ajánlások ellenőrzésekor és alkalmazásakor. Emellett nincsenek új metrikák elérhető, például a TempDB-adatbázisának és adaptív gyorsítótár-kihasználtság kiegészíteni, a teljesítménnyel kapcsolatos javaslatok.
 
 ## <a name="advanced-tuning-with-integrated-advisors"></a>Speciális integrált tanácsadók finomhangolás
 Speciális hangolási Azure SQL Data warehouse-hoz (az SQL DW) csak van további data warehouse javaslatok és metrikákkal és a portál áttekintése panel, amely az integrált megoldást nyújt az Azure Advisor és az Azure Monitor újratervezése egyszerűbb.
@@ -41,7 +41,7 @@ Speciális hangolási Azure SQL Data warehouse-hoz (az SQL DW) csak van további
 Az Azure SQL Data Warehouse a gyorsított adatbázis helyreállítási (ADR) már nyilvános előzetes verzióban érhető el. Automatikus központi telepítési szabály egy új SQL Server-motor, amely jelentősen csökkenti az adatbázis-elérhetőségi, különösen a hosszú ideig futó tranzakció, a jelenléte szerint teljesen újratervezése másolatot a jelenlegi helyreállítási folyamatot az alapoktól. Automatikus központi telepítési szabály elsődleges előnyei a következők: a gyors és következetes adatbázis-helyreállítás és azonnali tranzakció visszaállítása.
 
 ## <a name="azure-monitor-diagnostics-logs"></a>Az Azure Monitor-diagnosztikai naplók
-Az SQL Data warehouse-ba (az SQL DW) most már lehetővé teszi a bővített elemzéseket kaphat elemzési számítási feladatok közvetlenül az Azure Monitor-diagnosztikai naplók integrálásával. Ez a lehetőség lehetővé teszi a fejlesztők számára, hogy a lekérdezés-optimalizálási vagy a kapacitás felügyeleti elemzi a számítási feladatok viselkedését egy hosszú időn keresztül és megalapozottabb döntéseket hozhat. Most már bevezettük a egy külső naplózási folyamatot [diagnosztikai naplók az Azure Monitor](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json#logs) , amely az adatraktár-számítási feladat további betekintést nyújtson. Egyetlen kattintással gomb, most már áll konfigurálhatja a diagnosztikai naplók hibaelhárítási lehetőségek használatával előzmény lekérdezési teljesítményre [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-queries). Az Azure Monitor-diagnosztikai naplók testre szabható megőrzési időtartamú támogatási menti a naplókat a tárfiókhoz tartozó naplózási célokra, teszi, hogy a naplók streamelése az event hubs segítségével közel valós idejű telemetriai insights és a Log Analytics használatával naplók elemzéséhez a [lekérdezések naplózását](). Diagnosztikai naplók telemetriai nézetek az egyenértékű a leggyakrabban használt teljesítménnyel kapcsolatos hibaelhárítás a DMV-vel az SQL Data Warehouse adattárházzal állnak. A kezdeti kiadás engedélyeztük a következő rendszer dinamikus felügyeleti nézetek nézeteket:
+Az SQL Data warehouse-ba (az SQL DW) most már lehetővé teszi a bővített elemzéseket kaphat elemzési számítási feladatok közvetlenül az Azure Monitor-diagnosztikai naplók integrálásával. Ez a lehetőség lehetővé teszi a fejlesztők számára, hogy a lekérdezés-optimalizálási vagy a kapacitás felügyeleti elemzi a számítási feladatok viselkedését egy hosszú időn keresztül és megalapozottabb döntéseket hozhat. Most már bevezettük a egy külső naplózási folyamatot [diagnosztikai naplók az Azure Monitor](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json#logs) , amely az adatraktár-számítási feladat további betekintést nyújtson. Egyetlen kattintással gomb, most már áll konfigurálhatja a diagnosztikai naplók hibaelhárítási lehetőségek használatával előzmény lekérdezési teljesítményre [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-queries). Az Azure Monitor-diagnosztikai naplók testre szabható megőrzési időtartamú támogatási menti a naplókat a tárfiókhoz tartozó naplózási célokra, teszi, hogy a naplók streamelése az event hubs segítségével közel valós idejű telemetriai insights és a Log Analytics használatával naplók elemzéséhez a [lekérdezések naplózását](). A diagnosztikai naplók az adattárház olyan telemetriai nézeteiből állnak, amelyek egyenértékűek az SQL Data Warehouse teljesítményproblémáinak elhárításához leggyakrabban használt DMV lekérdezésekkel. A kezdeti kiadás engedélyeztük a következő rendszer dinamikus felügyeleti nézetek nézeteket:
 
 - [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql)
 - [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql)
@@ -49,11 +49,8 @@ Az SQL Data warehouse-ba (az SQL DW) most már lehetővé teszi a bővített ele
 - [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql)
 - [sys.dm_pdw_sql_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql)
 
-## <a name="instant-data-movement"></a>Azonnali Adatáthelyezés 
-Shuffle, mellett azonnali Adatáthelyezés most kiterjeszti szórási és particionálhatja a move.
-
-## <a name="scale-up-column-store-columnstore-metadata-memory-management-sql-server"></a>Vertikális Felskálázási oszlop Store: Oszlopcentrikus metaadatok memóriakezelés (SQL Server)
-Oszlop metaadatainak tárolása optimalizált memória-kezelés 
+## <a name="columnstore-memory-management"></a>Oszloptár memóriájának kezelése
+Tömörített oszlop store sorcsoportok száma növekszik, a memóriára van szükség ezen naplóbájtot belső oszlop szegmens metaadatainak kezelése növekszik.  Ennek eredményeképpen a lekérdezési teljesítmény és az egyes Oszlopcentrikus dinamikus felügyeleti nézetekkel (DMV-kkel) ellen végrehajtott lekérdezések csökkentheti.  Fejlesztések ezekben az esetekben jobb kiszolgálást és teljesítményt az ilyen lekérdezések vezető belső metaadatait méretének optimalizálása érdekében ebben a kiadásban hajtott végre. 
 
 ## <a name="azure-data-lake-storage-gen2-integration-ga"></a>Az Azure Data Lake Storage Gen2-integráció (elérhetővé tétel GA)
 Az Azure SQL Data Warehouse (az SQL DW) natív integráció az Azure Data Lake Storage Gen2 most már rendelkezik. Ügyfeleink most már betöltheti az adatokat az SQL DW ABFS külső táblák használatával. Ez a funkció lehetővé teszi, hogy az ügyfelek számára, hogy a data Lake tárolók a Data Lake Storage Gen2 integrálása. 

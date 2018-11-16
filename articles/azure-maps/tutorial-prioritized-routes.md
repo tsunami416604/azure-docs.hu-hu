@@ -3,18 +3,18 @@ title: Több útvonal az Azure Maps használatával | Microsoft Docs
 description: Útvonalak keresése különböző utazási módokhoz az Azure Maps használatával
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/29/2018
+ms.date: 11/14/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 67b68489f2e06b9149f842f293a769fa7f688be0
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 0a278eb1612ec9573c4d12611ccce2d1b5b971bc
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412703"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705278"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Útvonalak keresése különböző utazási módokhoz az Azure Maps használatával
 
@@ -291,12 +291,7 @@ Az oktatóanyag kódmintáját itt érheti el:
 
 [A minta megtekintése élőben](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)
 
-További információ az Azure Maps lefedettségéről és képességeiről:
+A következő oktatóanyag azt ismerteti, az Azure Maps használatával egy egyszerű store kereső létrehozásának folyamatán.
 
 > [!div class="nextstepaction"]
-> [Nagyítási szintek és csemperács](zoom-levels-and-tile-grid.md)
-
-További példakódok és az interaktív kódolási felület bemutatása:
-
-> [!div class="nextstepaction"]
-> [A térkép vezérlőelem használata](how-to-use-map-control.md)
+> [Az Azure Maps store lokátorok létrehozásához](./tutorial-create-store-locator.md)

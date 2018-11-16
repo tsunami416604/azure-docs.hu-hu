@@ -1,41 +1,41 @@
 ---
-title: Azure rövid útmutató – Blob létrehozása objektumtárban a Java Storage SDK V7 használatával | Microsoft Docs
-description: Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre egy objektumtárban (Blob Storage-fiókban). Majd a Storage Javához készült ügyféloldali kódtára segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
+title: Blob létrehozása az Azure Storage-ban a Storage SDK-t a Java 7-es verziója |} A Microsoft Docs
+description: Létre fog hozni egy tárfiókot és egy tárolót egy objektumtárban (Blobtárban). Ezután használja az Azure Storage ügyféloldali kódtára a Java 7-es verziója feltölt egy blobot az Azure Storage, letölt egy blobot, és a tárolóban lévő blobok listázása.
 services: storage
 author: roygara
 ms.custom: mvc
 ms.service: storage
-ms.topic: quickstart
-ms.date: 10/23/2018
+ms.topic: conceptual
+ms.date: 11/14/2018
 ms.author: rogarana
-ms.openlocfilehash: 8aa56d8363fe96d58d6fb12f163f468e37dd0462
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: HT
+ms.openlocfilehash: 342b19927d290f5ff519d3fae5b84bcfa2b9d9cf
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961857"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711752"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-java-sdk-v7"></a>Rövid útmutató: Blobok feltöltése, letöltése és listázása a Java SDK V7 használatával
+# <a name="how-to-upload-download-and-list-blobs-using-java-sdk-v7"></a>Hogyan feltöltése, letöltése és a Java SDK 7-es verzióját használó blobok listázása
 
-A gyorsútmutató azt ismerteti, hogyan használható a Java blokkblobok feltöltésére, letöltésére és listázására egy, az Azure Blob Storage-ben található tárolóban.
+Ez az útmutató elsajátíthatja, hogyan használható a Java feltöltése, letöltése és listázása az Azure Blob storage tárolóban a blokkblobok használatát támogatják.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A gyorsútmutató elvégzéséhez:
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
+Az Azure storage-fiókot is létrehozhat a [az Azure portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM). A fiók létrehozásával kapcsolatos útmutatóért lásd a [tárfiók létrehozását](../common/storage-quickstart-create-account.md) ismertető szakaszt.
+
+Győződjön meg arról, hogy a következő előfeltételek vonatkoznak:
 
 * Telepítsen egy Maven-integrációval rendelkező IDE-t.
 
 * Másik lehetőségként telepítse és konfigurálja a Mavent a parancssorból való működésre.
 
-Ez az útmutató az [Eclipse-et](http://www.eclipse.org/downloads/) használja az „Eclipse IDE for Java Developers” konfigurációval.
-
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-
-[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
+Ez az útmutató használ [Eclipse](http://www.eclipse.org/downloads/) az "Eclipse IDE for Java Developers" konfigurációval.
 
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
 
-A gyorsútmutatóban használt [mintaalkalmazás](https://github.com/Azure-Samples/storage-blobs-java-quickstart) egy egyszerű konzolalkalmazás.  
+A [mintaalkalmazás](https://github.com/Azure-Samples/storage-blobs-java-quickstart) egy egyszerű Konzolalkalmazás.  
 
 A [git](https://git-scm.com/) használatával töltse le az alkalmazás egy másolatát a fejlesztői környezetbe. 
 
@@ -130,9 +130,7 @@ container.createIfNotExists(BlobContainerPublicAccessType.CONTAINER, new BlobReq
 
 ### <a name="upload-blobs-to-the-container"></a>Blobok feltöltése a tárolóba
 
-A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblobokat. A leggyakrabban használt elemek a blokkblobok, és ez a gyorsútmutató is ezeket használja. 
-
-Egy fájl adott blobba való feltöltéséhez szerezze be a blob céltárolón belüli hivatkozását. Ha megszerezte a blobhivatkozást, adatokat a [CloudBlockBlob.Upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload#com_microsoft_azure_storage_blob__cloud_block_blob_upload_final_InputStream_final_long) használatával tölthet fel rá. Ez az eljárás létrehozza a blobot, ha az még nem létezett, és felülírja, ha már igen.
+Feltölthet egy fájlt egy blokkblobba, kérje le egy hivatkozást a blob céltárolón. Ha megszerezte a blobhivatkozást, adatokat a [CloudBlockBlob.Upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload#com_microsoft_azure_storage_blob__cloud_block_blob_upload_final_InputStream_final_long) használatával tölthet fel rá. Ez az eljárás létrehozza a blobot, ha az még nem létezett, és felülírja, ha már igen.
 
 A mintakód létrehoz egy, a fel- és letöltéshez használatos helyi fájlt, és úgy tárolja, hogy az **source** néven és a blob nevével elnevezve legyen feltöltve a **blob** helyre. A következő példa feltölti a fájlt a **quickstartcontainer** nevű tárolóba.
 
@@ -184,7 +182,7 @@ blob.downloadToFile(downloadedFile.getAbsolutePath());
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az ebben a gyorsútmutatóban feltöltött blobokra, a teljes tárolót törölheti a [CloudBlobContainer.DeleteIfExists](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.deleteifexists#com_microsoft_azure_storage_blob__cloud_blob_container_deleteIfExists) paranccsal. Ez a metódus a tárolóban található fájlokat is törli.
+Ha már nincs szüksége a feltöltött blobok, akkor a teljes tárolót törölheti [CloudBlobContainer.DeleteIfExists](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.deleteifexists#com_microsoft_azure_storage_blob__cloud_blob_container_deleteIfExists). Ez a metódus a tárolóban található fájlokat is törli.
 
 ```java
 try {
@@ -205,7 +203,7 @@ sourceFile.deleteOnExit();
 
 ## <a name="next-steps"></a>További lépések
 
-Ennek a gyorsútmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között a Java használatával. Ha bővebb információra van szüksége a Java használatával kapcsolatban, lépjen tovább a GitHub-forráskódadattárba.
+Ebben a cikkben megtanulta, hogyan vihetők át fájlok egy helyi lemez és a Java használatával Azure Blob storage között. Ha bővebb információra van szüksége a Java használatával kapcsolatban, lépjen tovább a GitHub-forráskódadattárba.
 
 > [!div class="nextstepaction"]
 > [A Javához készült Azure Storage SDK](https://github.com/azure/azure-storage-java) 

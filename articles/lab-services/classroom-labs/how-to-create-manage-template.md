@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 11/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 3ecbef3b3063ceb413b852f8000b44a85d28d08e
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 8bd64aaa51faf968c0c7ae374daad3de4ca3a343
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142433"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706857"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Létrehozása és kezelése az Azure Lab Services osztályterem-sablonból
 A tesztkörnyezet sablonja egy alapszintű virtuálisgép-rendszerkép, amelyből az összes felhasználó virtuális gépe létrejön. Úgy állítsa be a virtuálisgép-sablont, hogy az pontosan aszerint legyen konfigurálva, amit a tesztkörnyezet felhasználóinak biztosítani kíván. A sablonhoz megadhat egy nevet és egy leírást, amely a tesztkörnyezet felhasználói számára jelenik meg. Ezt követően a sablont a Virtuálisgép-sablon példányainak a labor számára elérhetővé tehet közzé. Amikor közzétesz egy sablont, az Azure Lab Services létrehozza a virtuális gépeket a tesztkörnyezetben a sablon használatával. A folyamat során létrehozott virtuális gépek száma megegyezik a tesztkörnyezet felhasználóinak maximális számával, amelyet a tesztkörnyezet használati szabályzatában állíthat be. A virtuális gépek konfigurációja megegyezik a sablonéval.
@@ -88,16 +88,14 @@ Először állítsa be, és a sablon közzététele osztályterem-tesztkörnyeze
 ## <a name="set-up-a-template-after-creating-a-lab"></a>Labor létrehozása után a sablon beállítása 
 Sablon is beállítása, a labor létrehozása után.   
 
-### <a name="set-template-title-and-description"></a>Set-sablon nevét és leírását
-1. A **Sablon** szakaszban válassza a sablonhoz tartozó **Szerkesztés** (ceruza ikon) elemet. 
-2. A **Felhasználói nézet** ablakban adja meg a sablon **címét**.
-3. Adja meg a sablon **leírását**.
-4. Kattintson a **Mentés** gombra.
+## <a name="set-or-update-template-title-and-description"></a>Állítsa be, vagy frissítse a sablon nevét és leírását
+Az alábbi lépéseket követve cím és leírás, először állítsa be, és később frissíteni. 
 
-    ![Az osztályterem-tesztkörnyezet leírása](../media/how-to-manage-classroom-labs/lab-description.png)
+1. Az a **sablon** részben, vigye az egérmutatót **neve** -sablon vagy **leírás** a sablon, és jelölje ki. 
+2. Adja meg a **új nevet** vagy **új leírást** a sablont, majd nyomja le az **ENTER**.
 
-### <a name="set-up-the-template-vm"></a>Virtuálisgép-sablon beállítása
- A virtuálisgép-sablonhoz csatlakozva telepítse a szükséges szoftvereket, mielőtt elérhetővé tenné a sablont a diákok számára. 
+## <a name="set-up-or-update-a-template-vm"></a>Állítsa be, vagy egy Virtuálisgép-sablon frissítéséhez
+ A virtuálisgép-sablonhoz csatlakozva telepítse a szükséges szoftvereket, mielőtt elérhetővé tenné a sablont a diákok számára. Kövesse az alábbi lépéseket egy sablont, virtuális gép beállításához először, vagy frissítse a virtuális Gépet. 
 
 1. Várja meg, amíg elkészül a virtuálisgép-sablon. Ha elkészült, elérhetővé válik a **Start** gomb. A virtuális gép elindításához kattintson a **Start** gombra.
 
@@ -112,7 +110,7 @@ Sablon is beállítása, a labor létrehozása után.
     ![A virtuálisgép-sablon leállítása](../media/tutorial-setup-classroom-lab/stop-template-vm.png)
 
 
-## <a name="publish-the-template"></a>A sablon közzététele 
+## <a name="publish-the-template-vm"></a>A virtuálisgép-sablon közzététele
 Ha a labor létrehozása közben nem tesz közzé a sablont, később is közzéteheti. A közzététel előtt érdemes a sablont, virtuális gép kapcsolódni, és frissítse olyan szoftvert. Amikor közzétesz egy sablont, az Azure Lab Services létrehozza a virtuális gépeket a tesztkörnyezetben a sablon használatával. A folyamat során létrehozott virtuális gépek száma megegyezik a tesztkörnyezet felhasználóinak maximális számával, amelyet a tesztkörnyezet használati szabályzatában állíthat be. A virtuális gépek konfigurációja megegyezik a sablonéval. 
 
 1. A **Sablon** szakaszban válassza a **Közzététel** lehetőséget. 
@@ -125,7 +123,7 @@ Ha a labor létrehozása közben nem tesz közzé a sablont, később is közzé
 4. Váltson a **Virtuális gépek** lapra, és ellenőrizze, hogy vannak-e ott **Nem hozzárendelt** állapotú virtuális gépek. Ezek a virtuális gépek még nincsenek diákokhoz rendelve. 
 
     ![Virtual machines (Virtuális gépek)](../media/tutorial-setup-classroom-lab/virtual-machines.png)
-5. Várja meg, amíg befejeződik a virtuális gépek létrehozása. **Leállított** állapotban kell lenniük. Ezen a lapon indíthatja el a virtuális gépeket, csatlakozhat hozzájuk, leállíthatja, valamint törölheti őket. A virtuális gépeket elindíthatja ezen a lapon, vagy engedheti, hogy a diákjai indítsák el őket. 
+5. Várja meg, amíg befejeződik a virtuális gépek létrehozása. **Leállított** állapotban kell lenniük. Ezen a lapon indíthatja el a virtuális gépeket, csatlakozhat hozzájuk, leállíthatja, valamint törölheti őket. Ezen a lapon elindíthatja őket, vagy lehetővé teszik a diákjai, indítsa el a virtuális gépeket. 
 
     ![Leállított állapotban levő virtuális gépek](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
@@ -147,7 +145,9 @@ A sablon a közzététel után továbbra is csatlakozhat a virtuális gép sablo
     ![Sikeres közzététel](../media/how-to-create-manage-template/republish-success.png)
 
 ## <a name="next-steps"></a>További lépések
-Kezdje meg egy tesztkörnyezet létrehozását az Azure Lab Services használatával:
+Lásd az alábbi cikkeket:
 
-- [Osztályterem-tesztkörnyezet beállítása](how-to-manage-classroom-labs.md)
-- [Tesztkörnyezet beállítása](../tutorial-create-custom-lab.md)
+- [Rendszergazdaként hozzon létre, és tesztkörnyezetfiókok kezelése](how-to-manage-lab-accounts.md)
+- [Labortulajdonosként hozzon létre és laborok kezelése](how-to-manage-classroom-labs.md)
+- [Labortulajdonosként konfigurálása, és a egy lab használatának szabályozása](how-to-configure-student-usage.md)
+- [Labor felhasználóként osztályterem-tesztkörnyezetek elérése](how-to-use-classroom-lab.md)

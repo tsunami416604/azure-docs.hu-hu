@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/28/2018
-ms.author: cherylmc
-ms.openlocfilehash: 24cb21e81d2b4385423512ae58de2d6c0f94b93b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.date: 11/15/2018
+ms.author: mialdrid
+ms.openlocfilehash: 3e597e4f8be0af6e42f8ccc09c058cda619764a7
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251900"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713435"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute-előfeltételek és ellenőrzőlista
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, ellenőriznie kell az alábbi szakaszokban felsorolt követelmények teljesülését.
@@ -37,8 +37,8 @@ Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltat
 
 ## <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
 * **Redundáns kapcsolat**: az Ön és a szolgáltató közötti fizikai kapcsolatra nem vonatkoznak redundanciakövetelmények. A Microsoft nem követeli meg, hogy redundáns BGP-munkamenetek legyenek beállítva a Microsoft útválasztói és a társviszony-létesítési útválasztók között, még akkor sem, ha csak [egy fizikai kapcsolattal rendelkezik a felhőalapú adatforgalomhoz](expressroute-faqs.md#onep2plink).
-* **Útválasztás**: attól függően, hogy hogyan csatlakozik a Microsoft Cloudhoz, Önnek vagy a szolgáltatójának BGP-munkameneteket kell beállítania és kezelnie az [útválasztási tartományokhoz](expressroute-circuit-peerings.md). Egyes Ethernet-kapcsolatszolgáltatók vagy felhőalapú adatcsere-szolgáltatók a BGP-felügyeletet értéknövelt szolgáltatásként kínálhatják.
-* **NAT**: A Microsoft csak nyilvános IP-címeket fogad el a Microsoft társviszony-létesítésen keresztül. Ha privát IP-címeket használ a helyszíni hálózatban, Önnek vagy a szolgáltatónak [a NAT használatával](expressroute-nat.md) le kell fordítania a privát IP-címeket nyilvános IP-címekre.
+* **Útválasztás**: attól függően, hogy a Microsoft Cloud csatlakozik, akkor vagy a szolgáltató kell beállítása és kezelése a BGP-munkamenetet [útválasztási tartományok](expressroute-circuit-peerings.md). Egyes Ethernet-kapcsolatszolgáltatók vagy felhőalapú adatcsere-szolgáltatókon kínálhatják BGP-felügyeletet egy értéknövelt szolgáltatásként.
+* **NAT**: A Microsoft csak nyilvános IP-címeket fogad el a Microsoft társviszony-létesítésen keresztül. Ha a helyszíni hálózat privát IP-címeket használ, Önnek vagy a szolgáltatónak kell a nyilvános IP-címek a privát IP-címek fordítása [a NAT használatával](expressroute-nat.md).
 * **QoS**: A Skype Vállalati verzió különböző szolgáltatásokat tartalmaz (például hang, videó, szöveg), amelyek különböző QoS-kezelést igényelnek. Önnek és a szolgáltatónak teljesítenie kell a [QoS-követelményeket](expressroute-qos.md).
 * **Hálózati biztonság**: fontolja meg a [hálózati biztonság](../best-practices-network-security.md) használatát, amikor ExpressRoute-on keresztül csatlakozik a Microsoft Cloudhoz.
 

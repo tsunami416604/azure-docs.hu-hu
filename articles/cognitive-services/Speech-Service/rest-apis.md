@@ -1,317 +1,63 @@
 ---
-title: Beszédfelismerési szolgáltatás REST API-k
-description: A beszédfelismerési szolgáltatás REST API-k referenciája.
+title: Beszédfelismerési szolgáltatás REST API-k – beszédszolgáltatás
+titleSuffix: Azure Cognitive Services
+description: Ismerje meg, hogy a hang-szöveg és a szöveg-hang transzformációs REST API-k használata. Ebben a cikkben megismerkedhet engedélyezési beállítások, a lekérdezési beállítások, struktúra kérést és választ kapnak.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 11/13/2018
 ms.author: erhopf
-ms.openlocfilehash: a8aa2600c8f3bcbc9d2ebc7f55ac0d2f038d8ecd
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 5522b076fdf3d4e339f5e170679f389259ff1359
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566618"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713129"
 ---
 # <a name="speech-service-rest-apis"></a>Beszédfelismerési szolgáltatás REST API-k
 
-A REST API-k az Azure Cognitive Services beszéd szolgáltatás hasonlóak az API-k által biztosított a [Bing Speech API](https://docs.microsoft.com/azure/cognitive-services/Speech). A végpontok a végpontokat, a Bing Speech-szolgáltatás által használt eltérnek. Regionális végpontok érhetők el, és a egy előfizetési kulcsot, amely megfelel a végpontot használja kell használnia.
-
-## <a name="speech-to-text"></a>Diktálás
-
-A végpontok a Speech to Text REST API az alábbi táblázatban láthatók. Használja az egyik, amely megfelel az előfizetés régiót.
-
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
-
-> [!NOTE]
-> Ha testre szabta az akusztikai modell vagy a nyelvi modell, vagy a írásmódja, használja az egyéni végpontra.
-
-Az API-t csak rövid beszédet támogat. Kérelmek legfeljebb 10 másodpercet, hang és tartalmazhat az elmúlt 14 másodperc teljes legfeljebb. A REST API-t csak végső eredményt, nem átmeneti vagy részleges eredményt adja vissza. A beszédfelismerési szolgáltatás is rendelkezik egy [beszédátírási batch](batch-transcription.md) API, amely hosszabb hang is lefényképezze.
-
-
-### <a name="query-parameters"></a>Lekérdezési paraméterek
-
-Az alábbi paramétereket a lekérdezési karakterláncban a REST-kérés szerepelhet.
-
-|Paraméter neve|Kötelező/választható|Jelentés|
-|-|-|-|
-|`language`|Szükséges|A nyelvet, hogy a azonosítóját. Lásd: [támogatott nyelvek](language-support.md#speech-to-text).|
-|`format`|Optional<br>alapértelmezett érték: `simple`|Eredményformátum, `simple` vagy `detailed`. Egyszerű eredmények tartalmazzák a `RecognitionStatus`, `DisplayText`, `Offset`, és időtartama. Részletes eredmények tartalmazzák a több jelöltek megbízhatósági értékeket és a négy különböző értük felelősséget.|
-|`profanity`|Optional<br>alapértelmezett érték: `masked`|A felismerési eredményeket cenzúrázása kezelésének módját. Előfordulhat, hogy `masked` (cenzúrázása cseréli csillagok), `removed` (eltávolítja az összes cenzúrázása), vagy `raw` (tartalmazza a vulgáris).
-
-### <a name="request-headers"></a>Kérelemfejlécek
-
-A következő mezőket a HTTP-kérés fejlécében érkeznek.
-
-|Fejléc|Jelentés|
-|------|-------|
-|`Ocp-Apim-Subscription-Key`|A beszédfelismerési szolgáltatás előfizetési kulcs. Vagy a fejléc vagy `Authorization` meg kell adni.|
-|`Authorization`|Egy engedélyezési jogkivonatot előzi meg a word `Bearer`. Vagy a fejléc vagy `Ocp-Apim-Subscription-Key` meg kell adni. Lásd: [hitelesítési](#authentication).|
-|`Content-type`|A formátum és hang adatok kodek ismerteti. Jelenleg ez az érték lehet `audio/wav; codec=audio/pcm; samplerate=16000`.|
-|`Transfer-Encoding`|Választható. Adja meg, ha meg kell `chunked` hang adatok több kisebb tömbökre egyetlen fájl helyett a küldésének engedélyezéséhez.|
-|`Expect`|Ha használja a darabolásos átvitel, küldjön `Expect: 100-continue`. A beszédfelismerési szolgáltatás nyugtázza a kiindulási kérelemhez, és további adatokat várja.|
-|`Accept`|Választható. Ha meg van adva, tartalmaznia kell `application/json`, ahogy a beszédfelismerési szolgáltatás JSON formátumban eredményeket biztosít. (Bizonyos webes kérés keretrendszereket, adjon meg egy nem kompatibilis alapértelmezett értéket, ha nincs megadva, így az mindig célszerű tartalmazzák `Accept`.)|
-
-### <a name="audio-format"></a>Formát zvuku
-
-Hang küldése a HTTP törzsében `POST` kérelmet. A jelen táblázatban lévő formátumok valamelyikében kell lennie:
-
-| Formátum | Kodek | Átviteli sebesség | Mintavételi frekvencia |
-|--------|-------|---------|-------------|
-| WAV | A PCM | 16-bit | 16 kHz, mono |
-| OGG | OPUS | 16-bit | 16 kHz, mono |
-
->[!NOTE]
->A fenti formátumok REST API-t és a WebSocket a Speech Service-ben támogatottak. A [beszéd SDK](/index.yml) jelenleg csak támogatja a WAV PCM kodekkel formázása.
-
-### <a name="chunked-transfer"></a>Darabolásos átvitel
-
-Darabolásos átvitel (`Transfer-Encoding: chunked`) segít minimálisra csökkenteni a felismerés késés, mert lehetővé teszi a beszédfelismerési szolgáltatás feldolgozza a hangfájl folyamatban átvitel közben. A REST API-t nem biztosít részleges vagy köztes eredményeket. Ez a beállítás kizárólag növelni a válaszkészséget a funkcionalitást.
-
-A következő kód azt ábrázolja, hogyan küldhet hang tömbökben. Csak az első adatrészletben kell tartalmaznia a hangfájl fejléc. `request` egy HTTPWebRequest objektumot a megfelelő REST-végponthoz csatlakozik. `audioFile` a hangfájl lemezen út.
-
-```csharp
-using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
-{
-
-    /*
-    * Open a request stream and write 1024 byte chunks in the stream one at a time.
-    */
-    byte[] buffer = null;
-    int bytesRead = 0;
-    using (Stream requestStream = request.GetRequestStream())
-    {
-        /*
-        * Read 1024 raw bytes from the input audio file.
-        */
-        buffer = new Byte[checked((uint)Math.Min(1024, (int)fs.Length))];
-        while ((bytesRead = fs.Read(buffer, 0, buffer.Length)) != 0)
-        {
-            requestStream.Write(buffer, 0, bytesRead);
-        }
-
-        // Flush
-        requestStream.Flush();
-    }
-}
-```
-
-### <a name="example-request"></a>Példakérelem
-
-Egy tipikus kérelem a következő:
-
-```HTTP
-POST speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
-Accept: application/json;text/xml
-Content-Type: audio/wav; codec="audio/pcm"; samplerate=16000
-Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
-Host: westus.stt.speech.microsoft.com
-Transfer-Encoding: chunked
-Expect: 100-continue
-```
-
-### <a name="http-status"></a>HTTP-állapot
-
-A HTTP-állapot, a válasz azt jelzi, hogy a sikeres vagy gyakori hibaállapotok.
-
-HTTP-kód|Jelentés|Lehetséges ok
--|-|-|
-100|Folytatás|A kezdeti kérés elfogadva. Folytassa a többi adatot küld. (Használja a darabolásos átviteli.)
-200|OK|A kérelem sikeres volt. a választörzs mérete a JSON-objektum.
-400|Hibás kérés|Nyelvkód nem biztosított, vagy nem támogatott nyelvet; hangfájl érvénytelen.
-401|Nem engedélyezett|Az előfizetői vagy engedélyezési jogkivonat érvénytelen a megadott régióban, vagy érvénytelen végpont.
-403|Tiltott|Hiányzik az előfizetési kulcs vagy engedélyezési jogkivonat.
-
-### <a name="json-response"></a>JSON-válasz
-
-Eredmények a rendszer JSON formátumban adja vissza. A lekérdezési paraméterek függően egy `simple` vagy `detailed` visszaadott formátum.
-
-#### <a name="the-simple-format"></a>A `simple` formátuma 
-
-Ez a formátum a következő legfelső szintű mezőket tartalmazza.
-
-|Mező neve|Tartalom|
-|-|-|
-|`RecognitionStatus`|Állapot, mint például `Success` sikeres felismeréséhez. Ez [tábla](rest-apis.md#recognitionstatus).|
-|`DisplayText`|A felismert szöveget után nagybetűk, írásjelek, más néven Inverz szöveg normalizálási (átalakítása a kimondott szöveg rövidebb űrlapok, például a 200-as "kétszáz" vagy "Dr. János""orvos Smith"), és a vulgáris maszkolási. Jelenleg csak a sikeres.|
-|`Offset`|Az idő (100 nanoszekundumos egységek), amelyen a felismert speech az audio-adatfolyam kezdődik.|
-|`Duration`|Az időtartam (100 nanoszekundumos egység) a felismert beszéd, a hang adatfolyamban.|
-
-#### <a name="the-detailed-format"></a>A `detailed` formátuma 
-
-Ez a formátum a következő legfelső szintű mezőket tartalmazza.
-
-|Mező neve|Tartalom|
-|-|-|
-|`RecognitionStatus`|Állapot, mint például `Success` sikeres felismeréséhez. Ez [tábla](rest-apis.md#recognition-status).|
-|`Offset`|Az idő (100 nanoszekundumos egységek), amelyen a felismert speech az audio-adatfolyam kezdődik.|
-|`Duration`|Az időtartam (100 nanoszekundumos egység) a felismert beszéd, a hang adatfolyamban.|
-|`NBest`|Alternatív értelmezéseket a azonos beszéd, a legkisebb valószínűséggel nagy valószínűséggel a rangsorolt listáját. Tekintse meg a [NBest leírás](rest-apis.md#nbest).|
-
-#### <a name="nbest"></a>NBest
-
-A `NBest` mező az alternatív értelmezéseket a azonos beszéd, ahol az a legvalószínűbb valószínűleg legalább listája. Az első bejegyzés ugyanaz, mint a fő felismerés eredményét. Mindegyik bejegyzés a következő mezőket tartalmazzák:
-
-|Mező neve|Tartalom|
-|-|-|
-|`Confidence`|A megbízhatósági pontszám a bejegyzés a 0,0 (nincs megbízhatóság) 1.0-s (teljes megbízhatósági)
-|`Lexical`|A felismert szöveget lexikai formájában: a tényleges szavak ismerhető fel.
-|`ITN`|Inverz szöveg normalizált ("kanonikus") formájában a felismert szöveget, phone számok, rövidítések ("orvos smith", "dr smith") és egyéb átalakítások alkalmazza.
-|`MaskedITN`| A vulgáris maszkolási alkalmazza, ha a rendszer kéri fel űrlapján.
-|`Display`| A megjelenítési formája a felismert szöveget, írásjelek és a nagybetűk hozzáadva.
-
-#### <a name="recognitionstatus"></a>RecognitionStatus
-
-A `RecognitionStatus` mező a következő értékeket tartalmazhat.
-
-|Állapotérték|Leírás
-|-|-|
-| `Success` | A beszédfelismerést sikeres volt, és a megjelenő mezőben szerepel. |
-| `NoMatch` | Beszéd az audio-adatfolyam észlelt, de nincs szó azoktól a Célnyelv sem felel meg is. Általában azt jelenti, a beszédfelismerési nyelv, a felhasználó van, és beszéljen egy másik nyelven. |
-| `InitialSilenceTimeout` | A hang stream elején szereplő csak csend, és a szolgáltatás, beszédfelismerés várakozás túllépte az időkorlátot. |
-| `BabbleTimeout` | A hang stream elején szereplő csak zaj, és a szolgáltatás, beszédfelismerés várakozás túllépte az időkorlátot. |
-| `Error` | A beszédfelismerést szolgáltatás belső hibába ütközött, és nem lehetett folytatni. Próbálja meg újra, ha lehetséges. |
-
-> [!NOTE]
-> Ha a hanganyag csak káromkodás tartalmaz, és a `profanity` lekérdezési paraméter értéke `remove`, a szolgáltatás nem ad vissza egy beszéd eredményt.
-
-### <a name="sample-responses"></a>Minta válaszok
-
-Az alábbiakban található a tipikus választ `simple` felismerése.
-
-```json
-{
-  "RecognitionStatus": "Success",
-  "DisplayText": "Remind me to buy 5 pencils.",
-  "Offset": "1236645672289",
-  "Duration": "1236645672289"
-}
-```
-
-Az alábbiakban található a tipikus választ `detailed` felismerése.
-
-```json
-{
-  "RecognitionStatus": "Success",
-  "Offset": "1236645672289",
-  "Duration": "1236645672289",
-  "NBest": [
-      {
-        "Confidence" : "0.87",
-        "Lexical" : "remind me to buy five pencils",
-        "ITN" : "remind me to buy 5 pencils",
-        "MaskedITN" : "remind me to buy 5 pencils",
-        "Display" : "Remind me to buy 5 pencils.",
-      },
-      {
-        "Confidence" : "0.54",
-        "Lexical" : "rewind me to buy five pencils",
-        "ITN" : "rewind me to buy 5 pencils",
-        "MaskedITN" : "rewind me to buy 5 pencils",
-        "Display" : "Rewind me to buy 5 pencils.",
-      }
-  ]
-}
-```
-
-## <a name="text-to-speech"></a>Szövegfelolvasás
-
-Az alábbiakban a Speech service Text to Speech API a REST-végpontokat. A végpont, amely megfelel az előfizetés régiót használni.
-
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
-
-A beszédfelismerési szolgáltatás mellett a Bing Speech által támogatott 16-Khz kimenet 24-KHz hangkimeneti támogatja. Négy 24-KHz kimeneti formátumok érhetők el használatra a `X-Microsoft-OutputFormat` HTTP-fejléc, mivel két 24-KHz beszédhangot, `Jessa24kRUS` és `Guy24kRUS`.
-
-Területi beállítás | Nyelv   | Nem | A felhasználónév-leképezés
--------|------------|--------|------------
-hu-HU  | Amerikai angol | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Jessa24kRUS)"
-hu-HU  | Amerikai angol | Férfi   | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Guy24kRUS)"
-
-Rendelkezésre álló beszédhangot teljes listája megtalálható [támogatott nyelvek](language-support.md#text-to-speech).
-
-### <a name="request-headers"></a>Kérelemfejlécek
-
-A következő mezőket a HTTP-kérés fejlécében érkeznek.
-
-|Fejléc|Jelentés|
-|------|-------|
-|`Authorization`|Egy engedélyezési jogkivonatot előzi meg a word `Bearer`. Kötelező. Lásd: [hitelesítési](#authentication).|
-|`Content-Type`|A bemeneti tartalomtípus: `application/ssml+xml`.|
-|`X-Microsoft-OutputFormat`|A kimeneti audio formátum. Lásd a következő táblázatot.|
-|`User-Agent`|Alkalmazás neve. Szükséges; 255-nél kevesebb karaktert kell tartalmaznia.|
-
-A rendelkezésre álló hangkimeneti formátumok (`X-Microsoft-OutputFormat`) egy átviteli sebesség és a egy kódolást.
-
-|||
-|-|-|
-`raw-16khz-16bit-mono-pcm`         | `raw-8khz-8bit-mono-mulaw`
-`riff-8khz-8bit-mono-mulaw`     | `riff-16khz-16bit-mono-pcm`
-`audio-16khz-128kbitrate-mono-mp3` | `audio-16khz-64kbitrate-mono-mp3`
-`audio-16khz-32kbitrate-mono-mp3`  | `raw-24khz-16bit-mono-pcm`
-`riff-24khz-16bit-mono-pcm`        | `audio-24khz-160kbitrate-mono-mp3`
-`audio-24khz-96kbitrate-mono-mp3`  | `audio-24khz-48kbitrate-mono-mp3`
-
-> [!NOTE]
-> Ha a kiválasztott hang- és kimeneti formátum különböző átviteli sebességet, a hanganyag szükség szerint módosítva a felbontása. Azonban nem támogatja a 24khz beszédhangot `audio-16khz-16kbps-mono-siren` és `riff-16khz-16kbps-mono-siren` kimeneti formátumot.
-
-### <a name="request-body"></a>A kérés törzse
-
-A szöveg beszéddé alakítandó legyen elküldve, a szervezet egy HTTP `POST` kérheti a vagy egyszerű szöveg (ASCII vagy UTF-8) vagy [Speech összefoglaló Markup Language](speech-synthesis-markup.md) (SSML) formátum (UTF-8). Egyszerű szöveges kérelmeket a szolgáltatás alapértelmezett beszédfelismerési és nyelvi használja. SSML, használjon egy másik küldése.
-
-### <a name="sample-request"></a>Mintakérelem
-
-A következő HTTP-kérelem válassza ki a hang-SSML szervezet használ. A szervezetnek kell nem lehet hosszabb, mint 1000 karakter.
-
-```xml
-POST /cognitiveservices/v1 HTTP/1.1
-
-X-Microsoft-OutputFormat: raw-16khz-16bit-mono-pcm
-Content-Type: application/ssml+xml
-Host: westus.tts.speech.microsoft.com
-Content-Length: 225
-Authorization: Bearer [Base64 access_token]
-
-<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
-    name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>
-        Microsoft Speech Service Text-to-Speech API
-</voice></speak>
-```
-
-### <a name="http-response"></a>HTTP-válasz
-
-A HTTP-állapot, a válasz azt jelzi, hogy a sikeres vagy gyakori hibaállapotok.
-
-HTTP-kód|Jelentés|Lehetséges ok
--|-|-|
-200|OK|A kérelem sikeres volt. a választörzs hangfájl mérete.
-400 |Hibás kérelem |Egy kötelező paraméter hiányzik, üres vagy null értékű. Másik lehetőségként átadott vagy egy kötelező vagy választható paraméter értéke érvénytelen. Egy gyakori probléma egy fejlécet, amely túl hosszú.
-401|Nem engedélyezett |A kérelem nem engedélyezett. Ellenőrizze, hogy az előfizetési kulcs, vagy a jogkivonat érvényes, és a megfelelő régióban.
-413|Kérelem az entitás túl nagy|A SSML bemeneti adat 1024 karakternél hosszabb.
-429|Túl sok kérelem|Túllépte a kvótát, vagy engedélyezett az előfizetéséhez kérelmek száma.
-502|Hibás átjáró | Hálózati vagy kiszolgálóoldali probléma. Érvénytelen fejlécek is jelezhet.
-
-Ha a HTTP-állapot `200 OK`, a válasz törzse tartalmazza a kért formátumban hangfájl. Ez a fájl átvitele vagy puffer vagy újabb lejátszás vagy egyéb felhasználás fájlba mentése lejátszhatók.
+Alternatív megoldásként a [beszéd SDK](speech-sdk.md), a Speech Service lehetővé teszi a hang-szöveg és a egy REST API-készletet az szöveg-hang transzformációs alakíthatja át. Minden elérhető végpontot nem egy régió tartozik. Az alkalmazás egy előfizetési kulcsot szeretné használni a végpont szükséges.
+
+A REST API-k használatával, mielőtt megismerése:
+* A hang-szöveg transzformációs kérelmek, a REST API használatával csak hang 10 másodperces tartalmazhat.
+* A hang-szöveg transzformációs REST API-t csak végső eredményt adja vissza. Részleges eredményeket nem tartozik.
+* A szöveg-hang transzformációs REST API-t igényel engedélyeztetési fejléc. Ez azt jelenti, hogy a szolgáltatás eléréséhez egy jogkivonatcsere végrehajtásához szükséges. További információért lásd: [Hitelesítés](#authentication).
 
 ## <a name="authentication"></a>Hitelesítés
 
-Egy kérést küld a beszédfelismerési szolgáltatás REST API-t igényel, vagy egy előfizetési kulcsot, vagy egy hozzáférési jogkivonatot. Általánosságban véve a legegyszerűbb közvetlenül küldhet az előfizetési kulcsot. A beszédfelismerési szolgáltatás, majd szerzi be a hozzáférési jogkivonatot. Válaszidő minimalizálása érdekében érdemes inkább egy hozzáférési jogkivonatot.
+Vagy a hang-szöveg transzformációs vagy szöveg-hang transzformációs REST API minden kérelemhez szükséges engedélyeztetési fejléc. Ez a táblázat mutatja be, hogy mely fejlécek az egyes szolgáltatások támogatottak:
 
-Egy token beszerzéséhez az előfizetési kulcs egy regionális Speech Service jelenleg `issueToken` végponton, az alábbi táblázatban látható módon. A végpont, amely megfelel az előfizetés régiót használni.
+| Támogatott engedélyezési fejléceket | Speech-to-text | Text-to-speech |
+|------------------------|----------------|----------------|
+| OCP-Apim-Subscription-Key | Igen | Nem |
+| Engedélyezési: tulajdonosi | Igen | Igen |
+
+Használatakor a `Ocp-Apim-Subscription-Key` fejléc, már csak számára meg kell adnia az előfizetési kulcs. Példa:
+
+```
+'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
+```
+
+Használatakor a `Authorization: Bearer` fejléc, Ön szükséges kérheti a `issueToken` végpont. Ebben a kérelemben cserél az előfizetési kulcs hozzáférési jogkivonat helyeként, 10 percig érvényes. A következő néhány szakaszban fog elsajátíthatja egy token beszerzéséhez, -tokennel, és frissítse a jogkivonatot.
+
+### <a name="how-to-get-an-access-token"></a>Hozzáférési jogkivonat beszerzése
+
+A hozzáférési jogkivonatot kapjon kell kérheti a `issueToken` végpont használatával a `Ocp-Apim-Subscription-Key` és az előfizetési kulcs.
+
+Ezek a régiók és végpontok támogatottak:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-token-service.md)]
 
-Minden hozzáférési jogkivonatot a 10 percig érvényes. Egy új jogkivonatot bármikor szerezheti be. Igény szerint szerezheti be a jogkivonat minden Speech REST API-kérelem előtt. A hálózati forgalom és a késés minimalizálása érdekében javasoljuk hogy ugyanezt a tokent kilenc perc.
+Ezek a minták segítségével hozzon létre a hozzáférési jogkivonat kérése.
 
-A következő szakaszok bemutatják egy token beszerzése és hogyan használható a kérelemben.
+#### <a name="http-sample"></a>HTTP-minta
 
-### <a name="get-a-token-http"></a>Egy token beszerzéséhez: HTTP
+Ebben a példában egy egyszerű HTTP-kérelem egy token beszerzéséhez. Cserélje le `YOUR_SUBSCRIPTION_KEY` az Speech Service előfizetési kulccsal végzett. Ha az előfizetés nem, az USA nyugati régiójában, cserélje le a `Host` saját régiójában gazdagép nevű fejléc.
 
-Az alábbi példa a minta egy token beszerzése a HTTP-kérelem. Cserélje le `YOUR_SUBSCRIPTION_KEY` az Speech service előfizetési kulccsal végzett. Ha az előfizetés nem, az USA nyugati régiójában, cserélje le a `Host` saját régiójában gazdagép nevű fejléc.
-
-```
+```http
 POST /sts/v1.0/issueToken HTTP/1.1
 Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 Host: westus.api.cognitive.microsoft.com
@@ -319,11 +65,11 @@ Content-type: application/x-www-form-urlencoded
 Content-Length: 0
 ```
 
-A kérés adott válasz törzse a hozzáférési jogkivonat Java webes jogkivonat (JWT) formátumú.
+A válasz törzse tartalmazza a hozzáférési jogkivonat Java webes jogkivonat (JWT) formátumú.
 
-### <a name="get-a-token-powershell"></a>Egy token beszerzéséhez: PowerShell
+#### <a name="powershell-sample"></a>PowerShell-minta
 
-A következő Windows PowerShell-parancsfájl mutatja be a hozzáférési jogkivonat beszerzése. Cserélje le `YOUR_SUBSCRIPTION_KEY` az Speech service előfizetési kulccsal végzett. Az előfizetés nem, az USA nyugati régiójában, az állomás nevét a megadott URI-nak megfelelően módosítja.
+Ebben a példában egy egyszerű PowerShell-parancsfájlt, hogy hozzáférési jogkivonatot kapjon. Cserélje le `YOUR_SUBSCRIPTION_KEY` az Speech Service előfizetési kulccsal végzett. Ellenőrizze, hogy a helyes-e a végpontot használja a régiót, amelyben megegyezik az előfizetés. Ebben a példában az USA nyugati RÉGIÓJA van beállítva.
 
 ```Powershell
 $FetchTokenHeader = @{
@@ -340,24 +86,21 @@ $OAuthToken
 
 ```
 
-### <a name="get-a-token-curl"></a>Egy token beszerzéséhez: cURL
+#### <a name="curl-sample"></a>a cURL-minta
 
-a cURL egy Linux (és a Linux Windows alrendszere) elérhető parancssori eszköz. A következő cURL-parancs bemutatja, hogyan hozzáférési jogkivonat beszerzésére. Cserélje le `YOUR_SUBSCRIPTION_KEY` az Speech service előfizetési kulccsal végzett. Az előfizetés nem, az USA nyugati régiójában, az állomás nevét a megadott URI-nak megfelelően módosítja.
+a cURL egy Linux (és a Linux Windows alrendszere) elérhető parancssori eszköz. A cURL-parancs bemutatja, hogyan hozzáférési jogkivonatot kapjon. Cserélje le `YOUR_SUBSCRIPTION_KEY` az Speech Service előfizetési kulccsal végzett. Ellenőrizze, hogy a helyes-e a végpontot használja a régiót, amelyben megegyezik az előfizetés. Ebben a példában az USA nyugati RÉGIÓJA van beállítva.
 
-> [!NOTE]
-> A parancs az olvashatóság érdekében több sorban jelenik meg, de egy sorba egy shell-parancssorba írja be.
-
-```
+```cli
 curl -v -X POST
- "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken"
- -H "Content-type: application/x-www-form-urlencoded"
- -H "Content-Length: 0"
+ "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
+ -H "Content-type: application/x-www-form-urlencoded" \
+ -H "Content-Length: 0" \
  -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
 
-### <a name="get-a-token-c"></a>Egy token beszerzéséhez: C#
+#### <a name="c-sample"></a>C#-minta
 
-Az alábbi C# osztály mutatja be a hozzáférési jogkivonat beszerzése. Át a az Speech service előfizetési kulcs, ha az osztály példányosítania. Ha az előfizetés nem szerepel az USA nyugati régiója, módosítsa a gazdagép nevét `FetchTokenUri` megfelelően.
+Ez C# osztály mutatja be a hozzáférési jogkivonat beszerzése. Át a az Speech Service előfizetési kulcs, ha az osztály példányosítania. Ha az előfizetés nem szerepel az USA nyugati régiója, az értékének módosítása `FetchTokenUri` a régióban, az előfizetés megfelelően.
 
 ```cs
 /*
@@ -396,11 +139,13 @@ public class Authentication
 }
 ```
 
-### <a name="use-a-token"></a>Egy token
+### <a name="how-to-use-an-access-token"></a>Hozzáférési token használatával
 
-Szeretne használni egy tokent a REST API-kérelem, adja meg azt a a `Authorization` fejléc a következő szót `Bearer`. Íme egy minta szöveg, amely tartalmazza a tokent Speech REST-kérelemre. Helyettesítse be a tényleges token `YOUR_ACCESS_TOKEN`. A helyes állomásnevet használja a `Host` fejléc.
+A hozzáférési jogkivonatot kell küldeni a service-t a `Authorization: Bearer <TOKEN>` fejléc. Minden hozzáférési jogkivonatot a 10 percig érvényes. Bármikor megtekintheti az új jogkivonatot, azonban a hálózati forgalom és a késés minimalizálása érdekében azt javasoljuk, ugyanezt a tokent kilenc percig.
 
-```xml
+Íme egy példa HTTP-kérelem a szöveg-hang transzformációs REST API:
+
+```http
 POST /cognitiveservices/v1 HTTP/1.1
 Authorization: Bearer YOUR_ACCESS_TOKEN
 Host: westus.tts.speech.microsoft.com
@@ -414,11 +159,9 @@ Connection: Keep-Alive
 </voice></speak>
 ```
 
-### <a name="renew-authorization"></a>Engedély megújítása
+### <a name="how-to-renew-an-access-token-using-c"></a>Hozzáférési token használatával megújításaC#
 
-Az engedélyezési jogkivonatot 10 perc múlva lejár. Az engedély megújítása szerint egy új token beszerzése után járjon le. Tegyük fel kilenc perc elteltével szerezhet be egy új jogkivonatot.
-
-Az alábbi C#-kódot az osztály korábban bemutatott protokollkompatibilitását. A `Authentication` osztály automatikusan kap egy új hozzáférési jogkivonat kilenc percenként egy időzítő segítségével. Ez a megközelítés biztosítja, hogy érvényes token mindig elérhető legyen a program futása közben.
+Ez C# kódja az osztály korábban bemutatott protokollkompatibilitását. A `Authentication` osztály automatikusan megkap egy új hozzáférési jogkivonat kilenc percenként egy időzítő segítségével. Ez a megközelítés biztosítja, hogy érvényes token mindig elérhető legyen a program futása közben.
 
 > [!NOTE]
 > Időzítő helyett, ha a legutóbbi jogkivonat lett lekérve időbélyeg is tárolhatja. Ezután kérhet egy újat csak akkor, ha hamarosan lejár. Ez a megközelítés elkerülhető, hogy új jogkivonatok feleslegesen kér, és lehetnek megfelelőbbek programok, amelyek ritkán beszédalapú kéréseket.
@@ -426,9 +169,6 @@ Az alábbi C#-kódot az osztály korábban bemutatott protokollkompatibilitásá
 Ahogy korábban is, győződjön meg arról, hogy a `FetchTokenUri` értéke megegyezik az előfizetés régiót. Az előfizetési kulcs akkor át, ha az osztály példányosítania.
 
 ```cs
-/*
-    * This class demonstrates how to maintain a valid access token.
-    */
 public class Authentication
 {
     public static readonly string FetchTokenUri =
@@ -500,6 +240,268 @@ public class Authentication
     }
 }
 ```
+
+## <a name="speech-to-text-api"></a>Hang-szöveg transzformációs API
+
+A hang-szöveg transzformációs REST API-t csak rövid kimondott szöveget támogat. Kérelmek tartalmazhat teljes időtartama: 14 másodperc hanganyagra legfeljebb 10 másodperc. A REST API-t csak a végső eredmények, nem részleges vagy köztes eredményeket adja vissza.
+
+Küldenek, hosszabb hang esetében az alkalmazás követelmény, fontolja meg a [beszéd SDK](speech-sdk.md) vagy [beszédátírási batch](batch-transcription.md).
+
+### <a name="regions-and-endpoints"></a>Régiók és végpontok
+
+Ezekben a régiókban támogatottak hang-szöveg transzformációs beszédátírási a REST API használatával. Győződjön meg arról, hogy a végpontot, amely megfelel az előfizetés régiót választja.
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
+
+### <a name="query-parameters"></a>Lekérdezési paraméterek
+
+Ezeket a paramétereket a lekérdezési karakterláncban a REST-kérés szerepelhet.
+
+| Paraméter | Leírás | Kötelező / választható |
+|-----------|-------------|---------------------|
+| `language` | A felismert használja a beszélt nyelv azonosítja. Lásd: [támogatott nyelvek](language-support.md#speech-to-text). | Szükséges |
+| `format` | Megadja a eredményformátum. Elfogadott értékek a következők `simple` és `detailed`. Egyszerű eredmények tartalmazzák a `RecognitionStatus`, `DisplayText`, `Offset`, és `Duration`. Részletes válaszok megbízhatósági értékeket és a négy különböző reprezentációinak több eredmények belefoglalása. Az alapértelmezett beállítás `simple`. | Optional |
+| `profanity` | Adja meg a felismerési eredményeket cenzúrázása kezelése. Elfogadott értékek a következők `masked`, csillag, amely lecseréli cenzúrázása `removed`, amely minden cenzúrázása az eredményt, távolítsa el vagy `raw`, amely tartalmazza a vulgáris, az eredmény. Az alapértelmezett beállítás `masked`. | Optional |
+
+### <a name="request-headers"></a>Kérelemfejlécek
+
+Ez a táblázat felsorolja a szükséges és választható fejlécek a hang-szöveg transzformációs kéréseket.
+
+|Fejléc| Leírás | Kötelező / választható |
+|------|-------------|---------------------|
+| `Ocp-Apim-Subscription-Key` | Az előfizetési kulcs beszédszolgáltatás. | Vagy a fejléc vagy `Authorization` megadása kötelező. |
+| `Authorization` | Egy engedélyezési jogkivonatot előzi meg a word `Bearer`. További információért lásd: [Hitelesítés](#authentication). | Vagy a fejléc vagy `Ocp-Apim-Subscription-Key` megadása kötelező. |
+| `Content-type` | A formátum és a megadott hang adatok kodek ismerteti. Elfogadott értékek a következők `audio/wav; codec=audio/pcm; samplerate=16000` és `audio/ogg; codec=audio/pcm; samplerate=16000`. | Szükséges |
+| `Transfer-Encoding` | Megadja, hogy darabolt hang adatot küld, ahelyett, hogy egyetlen fájlt. Csak akkor használja ezt a fejlécet, ha hang adatokat. | Optional |
+| `Expect` | Ha használja a darabolásos átvitel, küldjön `Expect: 100-continue`. A beszédfelismerési szolgáltatás nyugtázza a kiindulási kérelemhez, és további adatokat várja.| Szükséges darabolt hang adatot küldenek. |
+| `Accept` | Ha meg van adva, kell lennie `application/json`. A beszédfelismerési szolgáltatás JSON-eredményeket biztosít. Bizonyos webes kérés keretrendszereket, adjon meg egy nem kompatibilis alapértelmezett értéket, ha nincs megadva, így az mindig célszerű tartalmazzák `Accept`. | Nem kötelező, de ajánlott. |
+
+### <a name="audio-formats"></a>Hangformátumok
+
+Hang küldése a HTTP törzsében `POST` kérelmet. A jelen táblázatban lévő formátumok valamelyikében kell lennie:
+
+| Formátum | Kodek | Átviteli sebesség | Mintavételi frekvencia |
+|--------|-------|---------|-------------|
+| WAV | A PCM | 16-bit | 16 kHz, mono |
+| OGG | OPUS | 16-bit | 16 kHz, mono |
+
+>[!NOTE]
+>A fenti formátumok REST API-t és a WebSocket a Speech Service-ben támogatottak. A [beszéd SDK](/index.yml) jelenleg csak támogatja a WAV PCM kodekkel formázása.
+
+### <a name="sample-request"></a>Mintakérelem
+
+Ez az általános HTTP-kérés. Az alábbi mintát is tartalmaz, a gazdagépnév és a kötelező fejlécet. Fontos megjegyezni, hogy a szolgáltatás emellett arra számít hívásaiból, amely nem érhető el ebben a példában. Leírtak szerint korábban darabolás ajánlott, azonban nem kötelező.
+
+```HTTP
+POST speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
+Accept: application/json;text/xml
+Content-Type: audio/wav; codec=audio/pcm; samplerate=16000
+Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
+Host: westus.stt.speech.microsoft.com
+Transfer-Encoding: chunked
+Expect: 100-continue
+```
+
+### <a name="http-status-codes"></a>HTTP-állapotkódok
+
+A HTTP-állapotkód: minden válasz azt jelzi, hogy a sikeres vagy gyakori hibák.
+
+| HTTP-állapotkód | Leírás | Lehetséges ok |
+|------------------|-------------|-----------------|
+| 100 | Folytatás | A kezdeti kérés elfogadva. Folytassa a többi adatot küld. (Használja a darabolásos átviteli.) |
+| 200 | OK | A kérelem sikeres volt. a választörzs mérete a JSON-objektum. |
+| 400 | Hibás kérés | Nyelvkód nem biztosított, vagy nem támogatott nyelvet; hangfájl érvénytelen. |
+| 401 | Nem engedélyezett | Az előfizetői vagy engedélyezési jogkivonat érvénytelen a megadott régióban, vagy érvénytelen végpont. |
+| 403 | Tiltott | Hiányzik az előfizetési kulcs vagy engedélyezési jogkivonat. |
+
+### <a name="chunked-transfer"></a>Darabolásos átvitel
+
+Darabolásos átvitel (`Transfer-Encoding: chunked`) segít minimálisra csökkenteni a felismerés késés, mert lehetővé teszi a beszédfelismerési szolgáltatás feldolgozza a hangfájl folyamatban átvitel közben. A REST API-t nem biztosít részleges vagy köztes eredményeket. Ez a beállítás kizárólag növelni a válaszkészséget a funkcionalitást.
+
+A mintakód bemutatja, hogyan hang tömbökben küldése. Csak az első adatrészletben kell tartalmaznia a hangfájl fejléc. `request` egy HTTPWebRequest objektumot a megfelelő REST-végponthoz csatlakozik. `audioFile` a hangfájl lemezen út.
+
+```csharp
+using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
+{
+
+    /*
+    * Open a request stream and write 1024 byte chunks in the stream one at a time.
+    */
+    byte[] buffer = null;
+    int bytesRead = 0;
+    using (Stream requestStream = request.GetRequestStream())
+    {
+        /*
+        * Read 1024 raw bytes from the input audio file.
+        */
+        buffer = new Byte[checked((uint)Math.Min(1024, (int)fs.Length))];
+        while ((bytesRead = fs.Read(buffer, 0, buffer.Length)) != 0)
+        {
+            requestStream.Write(buffer, 0, bytesRead);
+        }
+
+        // Flush
+        requestStream.Flush();
+    }
+}
+```
+
+### <a name="response-parameters"></a>Válasz paraméterek
+
+Eredményei JSON-fájlként. A `simple` formátum tartalmazza ezeket a legfelső szintű mezőket.
+
+| Paraméter | Leírás  |
+|-----------|--------------|
+|`RecognitionStatus`|Állapot, mint például `Success` sikeres felismeréséhez. Lásd a következő táblázatot.|
+|`DisplayText`|A felismert szöveget után nagybetűk, írásjelek, más néven Inverz szöveg normalizálási (átalakítása a kimondott szöveg rövidebb űrlapok, például a 200-as "kétszáz" vagy "Dr. János""orvos Smith"), és a vulgáris maszkolási. Jelenleg csak a sikeres.|
+|`Offset`|Az idő (100 nanoszekundumos egységek), amelyen a felismert speech az audio-adatfolyam kezdődik.|
+|`Duration`|Az időtartam (100 nanoszekundumos egység) a felismert beszéd, a hang adatfolyamban.|
+
+A `RecognitionStatus` mező tartalmazza ezeket az értékeket:
+
+| status | Leírás |
+|--------|-------------|
+| `Success` | Sikeres volt-e a felismerés és az `DisplayText` mező szerepel. |
+| `NoMatch` | Beszéd az audio-adatfolyam észlelt, de nincs szó azoktól a Célnyelv sem felel meg is. Általában azt jelenti, a beszédfelismerési nyelv, a felhasználó van, és beszéljen egy másik nyelven. |
+| `InitialSilenceTimeout` | A hang stream elején szereplő csak csend, és a szolgáltatás, beszédfelismerés várakozás túllépte az időkorlátot. |
+| `BabbleTimeout` | A hang stream elején szereplő csak zaj, és a szolgáltatás, beszédfelismerés várakozás túllépte az időkorlátot. |
+| `Error` | A beszédfelismerést szolgáltatás belső hibába ütközött, és nem lehetett folytatni. Próbálja meg újra, ha lehetséges. |
+
+> [!NOTE]
+> Ha a hanganyag csak káromkodás tartalmaz, és a `profanity` lekérdezési paraméter értéke `remove`, a szolgáltatás nem ad vissza egy beszéd eredményt.
+
+A `detailed` formátuma azonos adatokat tartalmaz a `simple` formájában, valamint a `NBest`, alternatív értelmezéseket a speech recognition ugyanaz az eredmény listáját. Ezeket az eredményeket a legnagyobb valószínűséggel sorrendje valószínűleg legalább az első bejegyzés ugyanaz, mint a fő felismerés eredményét.  Használatakor a `detailed` formátumban, `DisplayText` verzióként `Display` az egyes eredményez a `NBest` listája.
+
+Az egyes objektumok a `NBest` lista a következőket tartalmazza:
+
+| Paraméter | Leírás |
+|-----------|-------------|
+| `Confidence` | A megbízhatósági pontszám a bejegyzés a 0,0 (nincs megbízhatóság) 1.0-s (teljes megbízhatósági) |
+| `Lexical` | A felismert szöveget lexikai formájában: a tényleges szavak ismerhető fel. |
+| `ITN` | Inverz szöveg normalizált ("kanonikus") formájában a felismert szöveget, phone számok, rövidítések ("orvos smith", "dr smith") és egyéb átalakítások alkalmazza. |
+| `MaskedITN` | A vulgáris maszkolási alkalmazza, ha a rendszer kéri fel űrlapján. |
+| `Display` | A megjelenítési formája a felismert szöveget, írásjelek és a nagybetűk hozzáadva. Ez a paraméter megegyezik a `DisplayText` feltéve ha formátum beállítása `simple`. |
+
+### <a name="sample-responses"></a>Minta válaszok
+
+Ez a jellemző választ `simple` felismerése.
+
+```json
+{
+  "RecognitionStatus": "Success",
+  "DisplayText": "Remind me to buy 5 pencils.",
+  "Offset": "1236645672289",
+  "Duration": "1236645672289"
+}
+```
+
+Ez a jellemző választ `detailed` felismerése.
+
+```json
+{
+  "RecognitionStatus": "Success",
+  "Offset": "1236645672289",
+  "Duration": "1236645672289",
+  "NBest": [
+      {
+        "Confidence" : "0.87",
+        "Lexical" : "remind me to buy five pencils",
+        "ITN" : "remind me to buy 5 pencils",
+        "MaskedITN" : "remind me to buy 5 pencils",
+        "Display" : "Remind me to buy 5 pencils.",
+      },
+      {
+        "Confidence" : "0.54",
+        "Lexical" : "rewind me to buy five pencils",
+        "ITN" : "rewind me to buy 5 pencils",
+        "MaskedITN" : "rewind me to buy 5 pencils",
+        "Display" : "Rewind me to buy 5 pencils.",
+      }
+  ]
+}
+```
+
+## <a name="text-to-speech-api"></a>Szöveg-hang transzformációs API
+
+Ezekben a régiókban támogatottak, a szöveg-hang transzformációs a REST API használatával. Győződjön meg arról, hogy a végpontot, amely megfelel az előfizetés régiót választja.
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
+
+A beszédfelismerési szolgáltatás 24-KHz hang kimenetet, és a Bing Speech által is támogatott 16-Khz kimenetek támogatja. Négy 24-KHz kimeneti formátumok és két 24-KHz beszédhangot támogatottak.
+
+### <a name="voices"></a>Hangok
+
+| Területi beállítás | Nyelv   | Nem | Társítás |
+|--------|------------|--------|---------|
+| hu-HU  | Amerikai angol | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Jessa24kRUS)" |
+| hu-HU  | Amerikai angol | Férfi   | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Guy24kRUS)" |
+
+Rendelkezésre álló beszédhangot teljes listáját lásd: [támogatott nyelvek](language-support.md#text-to-speech).
+
+### <a name="request-headers"></a>Kérelemfejlécek
+
+Ez a táblázat felsorolja a szükséges és választható fejlécek a hang-szöveg transzformációs kéréseket.
+
+| Fejléc | Leírás | Kötelező / választható |
+|--------|-------------|---------------------|
+| `Authorization` | Egy engedélyezési jogkivonatot előzi meg a word `Bearer`. További információkért lásd: [hitelesítési](#authentication). | Szükséges |
+| `Content-Type` | A megadott szöveg a tartalom típusát határozza meg. Elfogadott érték: `application/ssml+xml`. | Szükséges |
+| `X-Microsoft-OutputFormat` | A hangkimeneti formátum meghatározása. Elfogadott értékek teljes listáját lásd: [hang kimenetek](#audio-outputs). | Szükséges |
+| `User-Agent` | Az alkalmazás neve. Legfeljebb 255 karakter hosszú lehet. | Szükséges |
+
+### <a name="audio-outputs"></a>Hang kimenetek
+
+Ez a lista az egyes kérelmek, a küldött támogatott hangformátumok a `X-Microsoft-OutputFormat` fejléc. Minden egyes magában foglalja egy átviteli sebesség és a kódolási típusként.
+
+|||
+|-|-|
+| `raw-16khz-16bit-mono-pcm` | `raw-8khz-8bit-mono-mulaw` |
+| `riff-8khz-8bit-mono-mulaw` | `riff-16khz-16bit-mono-pcm` |
+| `audio-16khz-128kbitrate-mono-mp3` | `audio-16khz-64kbitrate-mono-mp3` |
+| `audio-16khz-32kbitrate-mono-mp3`  | `raw-24khz-16bit-mono-pcm` |
+| `riff-24khz-16bit-mono-pcm`        | `audio-24khz-160kbitrate-mono-mp3` |
+| `audio-24khz-96kbitrate-mono-mp3`  | `audio-24khz-48kbitrate-mono-mp3` |
+
+> [!NOTE]
+> Ha a kiválasztott hang- és kimeneti formátum különböző átviteli sebességet, a hanganyag szükség szerint módosítva a felbontása. Azonban nem támogatja a 24khz beszédhangot `audio-16khz-16kbps-mono-siren` és `riff-16khz-16kbps-mono-siren` kimeneti formátumot.
+
+### <a name="request-body"></a>A kérés törzse
+
+Egy olyan HTTP törzseként One-time passcode `POST` kérelmet. Egyszerű szöveg (ASCII vagy UTF-8) lehet vagy [Speech összefoglaló Markup Language](speech-synthesis-markup.md) (SSML) formátum (UTF-8). Egyszerű szöveges kéréseket a Speech Service alapértelmezett beszédfelismerési és nyelvi használja. SSML is megadhat a beszédfelismerési és nyelvi.
+
+### <a name="sample-request"></a>Mintakérelem
+
+A HTTP-kérelem SSML beszédfelismerési és nyelvi megadásához használja. A szervezet legfeljebb 1000 karakter.
+
+```http
+POST /cognitiveservices/v1 HTTP/1.1
+
+X-Microsoft-OutputFormat: raw-16khz-16bit-mono-pcm
+Content-Type: application/ssml+xml
+Host: westus.tts.speech.microsoft.com
+Content-Length: 225
+Authorization: Bearer [Base64 access_token]
+
+<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
+    name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>
+        Microsoft Speech Service Text-to-Speech API
+</voice></speak>
+```
+
+### <a name="http-status-codes"></a>HTTP-állapotkódok
+
+A HTTP-állapotkód: minden válasz azt jelzi, hogy a sikeres vagy gyakori hibák.
+
+| HTTP-állapotkód | Leírás | Lehetséges ok |
+|------------------|-------------|-----------------|
+| 200 | OK | A kérelem sikeres volt. a választörzs hangfájl mérete. |
+| 400 | Hibás kérelem | Egy kötelező paraméter hiányzik, üres vagy null értékű. Másik lehetőségként átadott vagy egy kötelező vagy választható paraméter értéke érvénytelen. Egy gyakori probléma egy fejlécet, amely túl hosszú. |
+| 401 | Nem engedélyezett | A kérelem nem engedélyezett. Ellenőrizze, hogy az előfizetési kulcs, vagy a jogkivonat érvényes, és a megfelelő régióban. |
+| 413 | Kérelem az entitás túl nagy | A SSML bemeneti adat 1024 karakternél hosszabb. |
+| 429 | Túl sok kérelem | Túllépte a kvótát, vagy engedélyezett az előfizetéséhez kérelmek száma. |
+| 502 | Hibás átjáró | Hálózati vagy kiszolgálóoldali probléma. Érvénytelen fejlécek is jelezhet. |
+
+Ha a HTTP-állapot `200 OK`, a válasz törzse tartalmazza a kért formátumban hangfájl. Ez a fájl átvitele, a puffer mentett, vagy egy fájlba menti, lejátszhatók.
 
 ## <a name="next-steps"></a>További lépések
 

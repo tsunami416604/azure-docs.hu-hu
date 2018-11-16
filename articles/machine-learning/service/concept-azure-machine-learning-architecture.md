@@ -9,12 +9,12 @@ ms.author: haining
 author: hning86
 ms.reviewer: larryfr
 ms.date: 10/24/2018
-ms.openlocfilehash: 95f74b23b9d0c89966347f066041b23f64f3b82c
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 0acf41cc0a2673ba665d1815b493df928fa4507d
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210686"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706806"
 ---
 # <a name="how-the-azure-machine-learning-service-works-architecture-and-concepts"></a>Az Azure Machine Learning szolgáltatás működése: architektúra és fogalmak
 
@@ -156,9 +156,9 @@ Kísérlet egy adott parancsfájlból származó számos futtatások csoportja. 
 
 Egy kísérlet használatának példájáért lásd a [a rövid útmutató: Ismerkedés az Azure Machine Learning szolgáltatás](quickstart-get-started.md) dokumentum.
 
-## <a name="pipelines"></a>Folyamatok
+## <a name="pipeline"></a>Folyamat
 
-A folyamatok létrehozásához és kezeléséhez a munkafolyamatok, amelyek összefűzheti a használt gépi tanulási fázisait. Például egy folyamatot tartalmazhat adat-előkészítés, modell betanítása, modell-üzembehelyezés és következtetési fázisait. Az egyes fázisok is magában foglalja a több lépésből, amelyek mindegyike a különböző számítási célnak beavatkozás nélkül futtatható.
+Machine learning-folyamatokat hozhat létre és kezelhet a munkafolyamatok, amelyek összefűzheti a használt gépi tanulási fázisait. Például egy folyamatot tartalmazhat adat-előkészítés, modell betanítása, modell-üzembehelyezés és következtetési fázisait. Az egyes fázisok is magában foglalja a több lépésből, amelyek mindegyike a különböző számítási célnak beavatkozás nélkül futtatható.
 
 Machine learning-folyamatokat ezzel a szolgáltatással kapcsolatban tekintse meg a cikket [folyamatok és az Azure Machine Learning](concept-ml-pipelines.md).
 

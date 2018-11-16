@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 09/20/2018
+ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: c2ed79673af3563ae62f516057a174770cda99e9
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 9d26c1d923294a149a57ef28ca03e77dfc2e1c87
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427862"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711905"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Szolgáltatási hírek és karbantartási kezelése a karbantartási ütemezések használatával
 
@@ -27,7 +27,7 @@ Minden újonnan létrehozott Azure SQL Data Warehouse példányok lesz egy rends
 
 Az egyes karbantartási időszakok 3-8 óra is lehet. Karbantartási az időtartamon belül bármikor fordulhat elő. Egy rövid kapcsolat megszakadása, a szolgáltatás telepíti az új kódot az adattárház számíthat. 
 
-A funkció előzetes verzióban az elsődleges és másodlagos windows különálló nap tartományokon belül azonosítható. Az ütemezett karbantartási időszakok belül minden karbantartási művelet befejeződik. Nincs karbantartás előzetes értesítés nélkül a megadott karbantartási időszakon kívül kerül sor. Ha az adattárháza szüneteltetve van egy ütemezett karbantartás során, azt a felfüggesztési művelet során frissülnek.  
+A funkció használatához szüksége lesz egy elsődleges és másodlagos ablakot különálló nap-címtartományok azonosításához. Az ütemezett karbantartási időszakok belül minden karbantartási művelet befejeződik. Nincs karbantartás előzetes értesítés nélkül a megadott karbantartási időszakon kívül kerül sor. Ha az adattárháza szüneteltetve van egy ütemezett karbantartás során, azt a felfüggesztési művelet során frissülnek.  
 
 
 ## <a name="alerts-and-monitoring"></a>Riasztások és figyelés

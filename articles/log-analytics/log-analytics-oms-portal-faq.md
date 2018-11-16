@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 442371ffc63e32906d9faafc3b803bb5e6386905
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 9aa90c5a99da70aa0803aad4894e928a422b8fcf
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283444"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712245"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>OMS-portálon való váltás az Azure portálon a Log Analytics felhasználók kapcsolatos gyakori kérdések
 A log Analytics kezdetben a saját Portalt használta az OMS-portál nevű felügyelje a konfigurációt, és elemezheti az összegyűjtött adatokat.  Ezen a portálon az összes funkció át lett helyezve az Azure Portalra, továbbra is ki kell alakítani.
@@ -82,7 +82,7 @@ A legtöbb csatlakoztatott adatforrás-beállítások kezelése a a a **speciál
 | Linux-kiszolgálók   | **Speciális beállítások** a munkaterület menüje. |
 | Azure Storage     | **Speciális beállítások** a munkaterület menüje. |
 | System Center     | **Speciális beállítások** a munkaterület menüje. |
-| Office 365        | Tekintse meg a [Office 365-kezelési megoldásra vonatkozó dokumentáció](../monitoring/monitoring-solution-office-365.md) konfigurációját. |
+| Office 365        | Tekintse meg a [Office 365-kezelési megoldásra vonatkozó dokumentáció](../azure-monitor/insights/solution-office-365.md) konfigurációját. |
 | Windows-telemetria | A megoldás a beállítások menüben. Lásd: [Windows Analytics az Azure Portalon](/windows/deployment/update/windows-analytics-azure-portal) konfigurációját. |
 | ITSM-összekötő    | Lásd: [csatlakozás ITSM termékekkel/szolgáltatásokkal rendelkező informatikai szolgáltatásfelügyeleti összekötő](../log-analytics/log-analytics-itsmc-connections.md) vonatkozó utasításokat az ITSM-szolgáltatás csatlakoztatása a Log Analytics használatával. |
 
@@ -107,7 +107,7 @@ A legtöbb adat beállításainak kezelése a a a **speciális beállítások** 
 A megoldások kezelése az **megoldások** a munkaterület menüje. 
 
 ## <a name="how-do-i-install-and-remove-management-solutions"></a>Hogyan telepítése és eltávolítása a felügyeleti megoldások?
-Az OMS-portálon az eszközfelügyeleti megoldások telepítéséhez kövesse a megoldástárban, és eltávolítja azokat **beállítások**. Az Azure Portalon [felügyeleti megoldások telepítése](../monitoring/monitoring-solutions.md#install-a-management-solution) az Azure Marketplace-ről. [Távolítsa el a megoldások](../monitoring/monitoring-solutions.md#remove-a-management-solution) telepített megoldások listájából.
+Az OMS-portálon az eszközfelügyeleti megoldások telepítéséhez kövesse a megoldástárban, és eltávolítja azokat **beállítások**. Az Azure Portalon [felügyeleti megoldások telepítése](../azure-monitor/insights/solutions.md#install-a-management-solution) az Azure Marketplace-ről. [Távolítsa el a megoldások](../azure-monitor/insights/solutions.md#remove-a-management-solution) telepített megoldások listájából.
 
 ## <a name="how-do-i-create-and-manage-alerts"></a>Hogyan hozzon létre és kezelheti a riasztásokat?
 Riasztási szabályok alapján a Log Analytics-lekérdezések már kezelhetők a [egységes felhasználói élményt riasztási](../monitoring-and-diagnostics/alert-metric.md). Lásd: [bővítése a riasztások a Log Analytics az Azure Alerts](../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md) konfigurálása és riasztások használatával az Azure Portalon.
@@ -126,5 +126,5 @@ Korlátozott ideig továbbra is elérheti a portálon keresztül az URL-címet, 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Keresse meg és telepítse a felügyeleti megoldások](../monitoring/monitoring-solutions.md) az Azure portal használatával.
+- [Keresse meg és telepítse a felügyeleti megoldások](../azure-monitor/insights/solutions.md) az Azure portal használatával.
 - Ismerje meg [az Azure Portal Naplókeresési](log-analytics-log-search-portals.md).

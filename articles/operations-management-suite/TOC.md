@@ -28,8 +28,8 @@
 ### [Webes alapkonfiguráció-felmérés](../security-center/security-center-customize-os-security-config.md)
 
 ## Megoldások használata
-### [Felügyeleti megoldások](../monitoring/monitoring-solutions.md)
-### [Célmegoldások](../monitoring/monitoring-solution-targeting.md)
+### [Felügyeleti megoldások](../azure-monitor/insights/solutions.md)
+### [Célmegoldások](../azure-monitor/insights/solution-targeting.md)
 ### Betekintés és elemzés
 #### [AD-elemzés](../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [AD-replikáció állapota](../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
@@ -57,12 +57,12 @@
 #### [Kártevőirtók felmérése](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 ## Megoldások létrehozása
-### [Tervezés és felépítés](../monitoring/monitoring-solutions-creating.md)
-### [Megoldásfájl](../monitoring/monitoring-solutions-solution-file.md)
-### [Automation-erőforrások](../monitoring/monitoring-solutions-resources-automation.md)
-### [Naplókeresések és riasztások](../monitoring/monitoring-solutions-resources-searches-alerts.md)
-### [Nézetek](../monitoring/monitoring-solutions-resources-views.md)
-### [Ajánlott eljárások](../monitoring/monitoring-solutions-best-practices.md)
+### [Tervezés és felépítés](../azure-monitor/insights/solutions-creating.md)
+### [Megoldásfájl](../azure-monitor/insights/solutions-solution-file.md)
+### [Automation-erőforrások](../azure-monitor/insights/solutions-resources-automation.md)
+### [Naplókeresések és riasztások](../azure-monitor/insights/solutions-resources-searches-alerts.md)
+### [Nézetek](../azure-monitor/insights/solutions-resources-views.md)
+### [Ajánlott eljárások](../azure-monitor/insights/solutions-best-practices.md)
 
 ## Felügyeleti forgatókönyvek
 ### [Elemzési adatok gyűjtése a runbookból](../monitoring/monitoring-runbook-datacollect.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)

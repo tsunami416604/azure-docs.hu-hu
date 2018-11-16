@@ -2,8 +2,7 @@
 title: Windows Azure N-sorozatú GPU illesztőinek |} A Microsoft Docs
 description: Az N sorozatú virtuális gépek Windows Server vagy a Windows Azure-ban futó NVIDIA GPU-illesztők beállítása
 services: virtual-machines-windows
-documentationcenter: ''
-author: dlepow
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
-ms.author: danlep
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4d259c7f9a139b3c31d96e75d588c7be162189c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 551d9da51abaeddfd22c72748a552ba0ae155de6
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033257"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51707011"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Telepítse az NVIDIA GPU-illesztőprogramokat N-sorozatú virtuális gépeken futó Windows 
 
@@ -51,13 +50,13 @@ A GPU-Eszközállapot lekérdezéséhez futtathatja az [nvidia-smi](https://deve
 
 1. Nyisson meg egy parancssort, és módosítsa a **C:\Program Files\NVIDIA Corporation\NVSMI** könyvtár.
 
-2. Futtassa az `nvidia-smi` parancsot. Ha az illesztőprogram telepítve van a következőhöz hasonló kimenetet fog látni. Vegye figyelembe, hogy **GPU-Util** látható **0 %-os** , kivéve, ha a virtuális gép jelenleg fut egy GPU számítási feladatot. Az illesztőprogram verziója és a GPU-részletek látható eltérő lehet.
+2. Futtassa az `nvidia-smi` parancsot. Ha az illesztőprogram telepítve van, látni fogja a következőhöz hasonló kimenetet. A **GPU-Util** látható **0 %-os** , kivéve, ha a virtuális gép jelenleg fut egy GPU számítási feladatot. Az illesztőprogram verziója és a GPU-részletek látható eltérő lehet.
 
 ![NVIDIA eszköz állapota](./media/n-series-driver-setup/smi.png)  
 
 ## <a name="rdma-network-connectivity"></a>RDMA hálózati kapcsolat
 
-RDMA hálózati kapcsolat RDMA-kompatibilis az N sorozatú virtuális gépek például NC24r helyezze üzembe, ugyanazon rendelkezésre állási csoportban vagy egy Virtuálisgép-méretezési csoport egyetlen elhelyezési csoport engedélyezhető. A HpcVmDrivers bővítmény telepítéséhez a Windows hálózati eszközillesztőket, amelyek lehetővé teszik az RDMA-kapcsolattal hozzá kell adni. A Virtuálisgép-bővítmény egy RDMA-kompatibilis N-sorozatú virtuális gépek hozzáadásához használja [Azure PowerShell-lel](/powershell/azure/overview) parancsmagok az Azure Resource Manager.
+RDMA-kompatibilis, az N sorozatú virtuális gépek például helyezze üzembe az azonos rendelkezésre állási csoportban vagy a virtuális gép méretezési csoport egyetlen elhelyezési csoport NC24r RDMA hálózati kapcsolat is engedélyezhetők. A HpcVmDrivers bővítmény telepítéséhez a Windows hálózati eszközillesztőket, amelyek lehetővé teszik az RDMA-kapcsolattal hozzá kell adni. A Virtuálisgép-bővítmény egy RDMA-kompatibilis N-sorozatú virtuális gépek hozzáadásához használja [Azure PowerShell-lel](/powershell/azure/overview) parancsmagok az Azure Resource Manager.
 
 Telepítse a legújabb verziót 1.1-es HpcVMDrivers futtatására szolgáló bővítmény egy meglévő RDMA-kompatibilis virtuális gép az USA nyugati régiójában myVM nevű:
   ```PowerShell

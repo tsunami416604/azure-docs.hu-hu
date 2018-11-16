@@ -2,24 +2,24 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: virtual-machines-windows
-author: dlepow
+author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 11/08/2018
-ms.author: danlep
+ms.date: 11/14/2018
+ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 6b6c7ce5589920f3101a13ab0ed6b7877f9cbca8
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: e1885e1b420f5dfda146dd72b831ccfe4989e446
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51333760"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51707368"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>Támogatott operációs rendszerek és illesztőprogramok
 
 ### <a name="nvidia-tesla-cuda-drivers"></a>Az NVIDIA Tesla (CUDA) illesztőprogramok
 
-A hálózati vezérlő, NCv2, az NCv3 és ND sorozatú virtuális gépek (NV-sorozat nem kötelező) az NVIDIA Tesla (CUDA) illesztőprogramok csak az alábbi táblázatban felsorolt operációs rendszerek támogatottak. Illesztőprogram letöltési hivatkozásai a rendszer az aktuális időpontjában aktuálisak. A legújabb illesztőprogramokért látogasson el az [NVIDIA](http://www.nvidia.com/) webhelyére.
+Az NVIDIA Tesla (CUDA) illesztőprogramjait NC, NCv2, az NCv3, ND és NDv2-sorozat virtuális gépei (NV-sorozat nem kötelező) csak az alábbi táblázatban felsorolt operációs rendszerek támogatottak. Illesztőprogram letöltési hivatkozásai a rendszer az aktuális időpontjában aktuálisak. A legújabb illesztőprogramokért látogasson el az [NVIDIA](http://www.nvidia.com/) webhelyére.
 
 > [!TIP]
 > A Windows Server virtuális gép manuális CUDA illesztőprogram telepítése helyett, üzembe helyezése Azure-beli [adatelemző virtuális gép](../articles/machine-learning/data-science-virtual-machine/overview.md) kép. A DSVM-kiadások, a Windows Server 2016-hoz a telepítés előtti NVIDIA CUDA illesztőprogramokat, a CUDA részletes Neurális hálózati könyvtár és egyéb eszközökkel.

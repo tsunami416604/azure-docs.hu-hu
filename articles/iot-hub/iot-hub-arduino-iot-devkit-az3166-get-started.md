@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 08/27/2018
 ms.author: rangv
-ms.openlocfilehash: 55901d6f3bcbf5511b6921939fdcba03972efed3
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: d6cbd2992968a57cfba99117e9f1fc1ab9b5b5b3
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182841"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711837"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Csatlakozás az Azure IoT Hub IoT DevKit AZ3166
 
@@ -195,7 +195,7 @@ Most már minden készen állunk előkészítése és a fejlesztési környezet 
 1. Kattintson az új ablakban megnyitott projekt `F1` nyissa meg a parancskatalógus, írja be és válassza ki a **IoT Workbench: Felhő**, majd válassza **Azure kiépítése**. Kövesse a részletes útmutató az Azure IoT Hub provisioning és az eszköz létrehozásának befejezéséhez.
     ![Felhő üzembe helyezése](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/cloud-provision.png)
 
-1. Kattintson a `F1` nyissa meg a parancskatalógus, írja be és válassza ki a **IoT Workbench: eszköz**, majd **konfigurációs beállítások > IoT Hub eszköz kapcsolati karakterláncának válassza**.
+1. Kattintson a `F1` nyissa meg a parancskatalógus, írja be és válassza ki a **IoT Workbench: eszköz**, majd válassza ki **konfigurációs beállítások > konfigurációs eszköz kapcsolati karakterláncának > Válasszon IoT Hub eszköz kapcsolati karakterláncának**.
 
 1. A fejlesztői készlet, tartsa lenyomva a **gombra A**, push és kiadása a **alaphelyzetbe** gombra, majd engedje **gombra A**. A fejlesztői készlet konfigurációs módra vált, és menti azokat a kapcsolati karakterláncot.
     ![Kapcsolati karakterlánc](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/connection-string.png)

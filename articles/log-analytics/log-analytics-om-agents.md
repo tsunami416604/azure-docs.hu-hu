@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c8bba283a0c3fde75966ae123023e50d497abd5a
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: ebd5c06b8174c9838a398e97439671e4d3f4c518
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687554"
+ms.locfileid: "51713486"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Az Operations Manager csatlakoztatása a Log Analyticshez
 A meglévő befektetéseit a [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) és kiterjesztett képességek használata a Log Analytics, az Operations Manager integrálása a Log Analytics-munkaterületre. Így kiaknázhatja a Log Analytics lehetőségeit, miközben továbbra is használhatja az Operations Managert a következőkre:
@@ -331,6 +331,6 @@ A jövőben, ha azt tervezi, hogy a felügyeleti csoport egy Log Analytics-munka
 * A felügyeleti csoporton alkalmazott legújabb kumulatív frissítésben. Az Operations Manager 2012 esetében a forrásmappa a ` %ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups`, a 2012 R2 esetében pedig a `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`.
 
 ## <a name="next-steps"></a>További lépések
-A funkciók hozzáadásával és az adatgyűjtéssel kapcsolatban lásd: [Add Log Analytics solutions from the Solutions Gallery](../monitoring/monitoring-solutions.md) (Log Analytics-megoldások hozzáadása a megoldástárból).
+A funkciók hozzáadásával és az adatgyűjtéssel kapcsolatban lásd: [Add Log Analytics solutions from the Solutions Gallery](../azure-monitor/insights/solutions.md) (Log Analytics-megoldások hozzáadása a megoldástárból).
 
 

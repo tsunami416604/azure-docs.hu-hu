@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/02/2018
+ms.date: 11/13/2018
 ms.author: lyrana
-ms.openlocfilehash: f85ab05e785ea559962490b43e75b196d1602159
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 4ea4479d77e06940bed50859341952ffbcbbda46
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016216"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711055"
 ---
 # <a name="connect-and-authenticate-to-apis"></a>Csatlakozás és hitelesítés API-k
 
@@ -35,39 +35,18 @@ A Windows Azure-hitelesítési tár az Active Directory-jogkivonatok beszerzés�
 
 ## <a name="call-digital-twins-from-a-middle-tier-web-api"></a>Digitális Twins hívása a középső rétegbeli webes API-k
 
-Amikor a fejlesztők számára a digitális Twins megoldások tervezhet, azokat általában hozzon létre egy középső rétegű alkalmazás vagy API-t. Az alkalmazás- vagy API ekkor meghívja a digitális Twins API aktiválásához. A felhasználók először hitelesíthetők a középső rétegbeli alkalmazás, és majd egy a-meghatalmazásos token folyamat hívására alsóbb rétegbeli szolgál. Az a-meghatalmazásos folyamat szervezését kapcsolatos útmutatásért lásd: [ezt oldal](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). Emellett megtekintheti Kódminták [ezt oldal](https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapi-onbehalfof/).
+Amikor a fejlesztők számára a digitális Twins megoldások tervezhet, azokat általában hozzon létre egy középső rétegű alkalmazás vagy API-t. Az alkalmazás- vagy API ekkor meghívja a digitális Twins API aktiválásához. Támogatja a szabványos webes megoldás architektúrája, győződjön meg arról, hogy felhasználók első:
 
+1. A középső rétegbeli alkalmazás hitelesítése
 
-## <a name="test-with-the-postman-client"></a>Tesztelése a Postman-ügyféllel
+1. Az OAuth 2.0-alapú meghatalmazásos jogkivonat-hitelesítés során igényelve
 
-Elsajátíthatja a használatát a digitális Twins API-kkal, mint például a Postman ügyfél használhatja egy API-környezet. Postman segítségével gyorsan létrehozhatja az összetett HTTP-kérelmekre. A következő lépésekkel a Postman felhasználói felületén belül digitális Twins meghívásához szükséges Azure AD-token beszerzése.
+1. A megszerzett jogkivonattal majd használt a hitelesítéshez, vagy az On-meghatalmazásos folyamat aktiválásához további használó API-jainak hívására
 
-
-1. Lépjen a https://www.getpostman.com/ letölteni az alkalmazást.
-1. Kövesse a [ebben a rövid útmutatóban](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) létrehozása az Azure AD-alkalmazást. Vagy használhat egy létező regisztráció. 
-1. A **szükséges engedélyek**, adja meg az "Azure digitális Twins", és válassza ki **delegált engedélyek**. Válassza ki **engedélyek megadása**.
-1. Nyissa meg az alkalmazásjegyzékben, és állítsa be **oauth2AllowImplicitFlow** igaz értékre.
-1. A válasz URL-cím konfigurálása [ https://www.getpostman.com/oauth2/callback ](https://www.getpostman.com/oauth2/callback).
-1. Válassza ki a **engedélyezési** lapon jelölje be **OAuth 2.0**, majd válassza ki **új hozzáférési Token letöltése**.
-
-    |**Mező**  |**Érték** |
-    |---------|---------|
-    | Engedélyezési típus | Implicit |
-    | Visszahívási URL | [https://www.getpostman.com/oauth2/callback](https://www.getpostman.com/oauth2/callback) |
-    | Hitelesítési URL-cím | https://login.microsoftonline.com/<Your Azure AD Tenant e.g. Contoso>.onmicrosoft.com/oauth2/Authorize?Resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0 |
-    | Ügyfél-azonosító | Az Alkalmazásazonosítót használni létrehozott vagy a 2. lépésben azt egy megváltozott célra az Azure AD-alkalmazás. |
-    | Hatókör | Hagyja üresen. |
-    | Állapot | Hagyja üresen. |
-    | Ügyfél-hitelesítés | Alapszintű hitelesítési fejléc küldése. |
-
-1. Válassza ki **jogkivonat kérelmezéséhez**.
-
-    >[!NOTE]
-    >Ha a hibaüzenetet kapja, "OAuth 2 nem lehet befejezni a", megpróbálkozhat a következőkkel:
-    > * Postman, zárja be és nyissa meg újra, és próbálkozzon újra.
-   
-1. Görgessen lefelé, és válassza ki **használható jogkivonat**.
+Az a-meghatalmazásos folyamat szervezését kapcsolatos útmutatásért lásd: [OAuth 2.0-alapú meghatalmazásos folyamat](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). A Kódminták is megtekintheti [alsóbb rétegbeli webes API-k hívása](https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapi-onbehalfof/).
 
 ## <a name="next-steps"></a>További lépések
+
+Az OAuth 2.0 típusú implicit engedélyezés folyamat használata az Azure digitális Twins tesztelése és konfigurálása, hogy olvassa el a [Postman konfigurálása](./how-to-configure-postman.md).
 
 Az Azure digitális Twins biztonságával kapcsolatban, olvassa el [létrehozása és kezelése a szerepkör-hozzárendelések](./security-create-manage-role-assignments.md).

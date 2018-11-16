@@ -12,6 +12,8 @@
 | Alkalmazásarchitektúra |32 bites |32 bites |32 bites vagy 64 bites |32 bites vagy 64 bites |32 bites vagy 64 bites |32 bites vagy 64 bites |
 | Webes szoftvercsatornák példányonként<sup>7</sup> |5 |35 |350 |Korlátlan |Korlátlan |Korlátlan |
 | Egyidejű [ladicího programu kapcsolatok](../articles/app-service/web-sites-dotnet-troubleshoot-visual-studio.md) alkalmazásonként |1 |1 |1 |5 |5 |5 |
+| App Service-tanúsítványok száma előfizetésenként<sup>10</sup>| Nem támogatott | Nem támogatott |10 |10 |10 |10 |
+| Egyéni tartományok alkalmazásonként</a> |0 (csak azurewebsites.net altartomány)|500 |500 |500 |500 |500 |
 | Egyéni tartomány [SSL-támogatás](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |Nem támogatott. A helyettesítő tanúsítvány *. azurewebsites.net alapértelmezés szerint elérhető.|Nem támogatott. A helyettesítő tanúsítvány *. azurewebsites.net alapértelmezés szerint elérhető.|Korlátlan számú SNI SSL-kapcsolatok |Korlátlan számú SNI SSL és 1 IP SSL-kapcsolatot tartalmaz |Korlátlan számú SNI SSL és 1 IP SSL-kapcsolatot tartalmaz | Korlátlan számú SNI SSL és 1 IP SSL-kapcsolatot tartalmaz|
 | Integrált Load Balancer | |X |X |X |X |X<sup>9</sup> |
 | [Always On](../articles/app-service/web-sites-configure.md) | | |X |X |X |X |
@@ -21,15 +23,15 @@
 | [Az Azure Scheduler](https://azure.microsoft.com/services/scheduler/) támogatása | |X |X |X |X |X |
 | [Végpontmonitoring](../articles/app-service/web-sites-monitor.md) | | |X |X |X |X |
 | [Átmeneti pontok szolgálnak](../articles/app-service/web-sites-staged-publishing.md) | | | |5 |20 |20 |
-| Egyéni tartományok alkalmazásonként</a> |0 (csak azurewebsites.net altartomány)|500 |500 |500 |500 |500 |
-| SLA | |  |99,9% |99.95%|99.95%|99.95%|
+| SLA | |  |99,9% |99.95%|99.95%|99.95%|  
 
-<sup>1</sup>alkalmazások és a tárolási kvótákat van egy App Service-csomag hacsak másként nem jelezzük.  
-<sup>2</sup>alkalmazásokat, amelyek az ezeken a gépeken üzemeltetheti tényleges számát a tevékenység az alkalmazások, a gép példány és a megfelelő erőforrás-használat méretétől függ.  
-<sup>3</sup>dedikált példányok különböző méretű lehet. Lásd: [App Service díjszabását](https://azure.microsoft.com/pricing/details/app-service/) további részletekért.  
-<sup>4</sup>példányszám kérésre.
-<sup>5</sup>az App Service-csomag a megadott tárolási kapacitása az összes alkalmazása tekintetében a teljes tartalom mérete. További tárolási lehetőségek érhetők el a [App Service Environment-környezet](../articles/app-service/environment/app-service-web-configure-an-app-service-environment.md#storage)  
-<sup>6</sup>ezek előrébb által (a példány mérete és példányok) dedikált példányokon fizikai erőforrásokat.  
-<sup>7</sup>Ha egy alkalmazás két példányok alapszintű csomag, 350 egyidejű kapcsolatok az egyes a két példánnyal rendelkezik.  
-<sup>8</sup>egyéni végrehajtható fájlok és/vagy parancsprogramok futtatása igény szerint, ütemezve vagy folyamatosan, az App Service háttérfeladatként. A folyamatos WebJobs-végrehajtáshoz folyamatos üzem szükséges. Az ütemezett WebJobs-végrehajtás csak az Azure Scheduler Ingyenes vagy Standard rétegével használható. Webjobs-feladatok, amely képes futni az App Service-példányok száma nem előre definiált korlátozott, de gyakorlati korlátai, mi az alkalmazáskód próbál végezni függenek.   
-<sup>9</sup>app Service izolált változatában elérhető lehetővé teszi a belső terheléselosztás terheléselosztásos (ILB) rendelkező Azure Load Balancer, ami azt jelenti, hogy nincs nyilvános kapcsolat az internetről. Ezért a belső terheléselosztású izolált App Service egyes funkcióit csak olyan gépekről lehet elérni, amelyek közvetlen hozzáféréssel rendelkeznek az ILB-hálózat végpontjához.
+<sup>1</sup> alkalmazások és a tárolási kvótákat van egy App Service-csomag hacsak másként nem jelezzük.  
+<sup>2</sup> alkalmazásokat, amelyek az ezeken a gépeken üzemeltetheti tényleges számát a tevékenység az alkalmazások, a gép példány és a megfelelő erőforrás-használat méretétől függ.  
+<sup>3</sup> dedikált példányok különböző méretű lehet. Lásd: [App Service díjszabását](https://azure.microsoft.com/pricing/details/app-service/) további részletekért.  
+<sup>4</sup> példányszám kérésre.  
+<sup>5</sup> az App Service-csomag a megadott tárolási kapacitása az összes alkalmazása tekintetében a teljes tartalom mérete.  
+<sup>6</sup> ezek előrébb által (a példány mérete és példányok) dedikált példányokon fizikai erőforrásokat.  
+<sup>7</sup> Ha egy alkalmazás két példányok alapszintű csomag, 350 egyidejű kapcsolatok az egyes a két példánnyal rendelkezik.  
+<sup>8</sup> egyéni végrehajtható fájlok és/vagy parancsprogramok futtatása igény szerint, ütemezve vagy folyamatosan, az App Service háttérfeladatként. A folyamatos WebJobs-végrehajtáshoz folyamatos üzem szükséges. Az ütemezett WebJobs-végrehajtás csak az Azure Scheduler Ingyenes vagy Standard rétegével használható. Webjobs-feladatok, amely képes futni az App Service-példányok száma nem előre definiált korlátozott, de gyakorlati korlátai, mi az alkalmazáskód próbál végezni függenek.  
+<sup>9</sup> app Service izolált változatában elérhető lehetővé teszi a belső terheléselosztás terheléselosztásos (ILB) rendelkező Azure Load Balancer, ami azt jelenti, hogy nincs nyilvános kapcsolat az internetről. Ezért a belső terheléselosztású izolált App Service egyes funkcióit csak olyan gépekről lehet elérni, amelyek közvetlen hozzáféréssel rendelkeznek az ILB-hálózat végpontjához.  
+<sup>10</sup> az App Service-tanúsítvány kvóta korlátja előfizetésenként legfeljebb 200 támogatási kérelmet keresztül növelhető.  

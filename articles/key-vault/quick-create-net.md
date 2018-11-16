@@ -1,6 +1,6 @@
 ---
 title: 'Rövid útmutató: Titkos kulcs beállítása és lekérése az Azure Key Vaultból Node-webalkalmazások használatával | Microsoft Docs'
-description: 'Rövid útmutató: Titkos kulcs beállítása és lekérése az Azure Key Vaultból Node-webalkalmazások használatával'
+description: 'Rövid útmutató: Titkos kulcs beállítása és lekérése az Azure Key Vaultból .NET-webalkalmazások használatával'
 services: key-vault
 author: prashanthyv
 manager: sumedhb
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 4f7955c013ce7f45ebe6db8bb23eeec92303876e
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: a53130dcc489764ce9284f15b8de0de37e0827e5
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230931"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686670"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>Rövid útmutató: Titkos kulcs beállítása és lekérése az Azure Key Vaultból .NET-webalkalmazások használatával
 
@@ -175,7 +175,6 @@ Az alkalmazás futtatásakor meg kell jelennie a titkos kulcs lekért értékén
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure Key Vault kezdőlapja](https://azure.microsoft.com/services/key-vault/)
-* [Az Azure Key Vault dokumentációja](https://docs.microsoft.com/azure/key-vault/)
+* [További tudnivalók a Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)
 * [Azure SDK for .NET](https://github.com/Azure/azure-sdk-for-net)
 * [Azure REST API-referencia](https://docs.microsoft.com/rest/api/keyvault/)

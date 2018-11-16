@@ -2,22 +2,22 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: virtual-machines-windows, virtual-machines-linux
-author: dlepow
+author: cynthn
 ms.service: multiple
 ms.topic: include
-ms.date: 10/23/2018
-ms.author: danlep;azcspmt;jonbeck
+ms.date: 11/14/2018
+ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 4fde34338d5606a1f431ff4b7f7074d9cd472e90
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: b6df4ada1aa13e20c7ad52d2b58cdf9c783f9e24
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50035491"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51716195"
 ---
 GPU-optimalizált virtuális gépek méretek a következők specializált virtuális gépek egy vagy több NVIDIA gpu-k használatával érhető el. Ezeket a méreteket képi megjelenítés, nagy számítási igényű és magas grafikai igényű számítási feladatokhoz tervezték. Ez a cikk ismerteti a száma, és a GPU-k, vcpu-k, az adatlemezeket és a hálózati adapter típusa. Tároló átviteli sebesség és a hálózati sávszélesség is szerepelnek az ennél a csoportosításnál méreteire vonatkoztatva. 
 
-* **Hálózati vezérlő, NCv2, az NCv3 és ND** méretek nagy számítási és hálózatigényű alkalmazásokra és algoritmusokra vannak optimalizálva. Néhány példa a CUDA - és OpenCL-alapú alkalmazásokat és szimulációkat, mesterséges Intelligencia és a Deep Learning. Az NCv3 sorozat a nagy teljesítményű számítási feladatokhoz, amely NVIDIA Tesla V100 GPU összpontosít.  Az ND sorozat a Deep Learning képzési és következtetéses forgatókönyveihez lett kialakítva. NVIDIA Tesla P40 GPU-val van felszerelve.
+* **Hálózati vezérlő, NCv2, az NCv3, ND és NDv2** méretek nagy számítási és hálózatigényű alkalmazásokra és algoritmusokra vannak optimalizálva. Néhány példa a CUDA - és OpenCL-alapú alkalmazásokat és szimulációkat, mesterséges Intelligencia és a Deep Learning. Az NCv3 sorozat a nagy teljesítményű számítási feladatokhoz, amely NVIDIA Tesla V100 GPU összpontosít.  Az ND sorozat a Deep Learning képzési és következtetéses forgatókönyveihez lett kialakítva. NVIDIA Tesla P40 GPU-val van felszerelve.
 * **NV és NVv2** méretek a távoli képi megjelenítés, streamelési, játék, kódolási és VDI-forgatókönyvekhez OpenGL, DirectX és hasonló keretrendszereket használó kialakítva és optimalizálva.  Ezek a virtuális gépek az NVIDIA Tesla M60 GPU élvezik.
 
 
@@ -87,13 +87,33 @@ Az NCv3 sorozatú virtuális gépek működteti [NVIDIA Tesla V100](http://www.n
 
 *RDMA-kompatibilis
 
+## <a name="ndv2-series-preview"></a>NDv2 sorozat (előzetes verzió)
+
+
+A Premium Storage: támogatott
+
+Prémium szintű Storage gyorsítótárazási: támogatott
+
+Infiniband: Nem támogatott.
+
+
+NDv2 sorozatú virtuális gép egy újdonága a HPC, mesterséges Intelligencia és machine learning-munkaterhelések igényeinek megfelelően kialakított GPU-család. 8 összekapcsolt NVIDIA Tesla V100 NVLINK GPUt és 40 Intel Skylake magot tartalmaznak, ehhez 672 GiB rendszermemória párosul. Az NDv2-példányok kitűnő FP32- és FP64-teljesítmény nyújtanak egyebek között a Cuda, a TensorFlow, a Pytorch, a Caffe keretrendszereket használó HPC és AI számítási feladatokhoz.
+
+[Regisztráljon, és hozzáférhet ezek a gépek előzetes verzió ideje alatt](https://aka.ms/ndv2signup).
+<br>
+
+
+| Méret              | vCPU | GPU              | Memory (Memória)  | Hálózati adapterek (max) | Legfeljebb Lemezméret           | Legfeljebb az adatlemezeket (egyenként 1023 GB) | Maximális sávszélesség | 
+|-------------------|-------------|-------------------|--------|------------------|---------|------------|--------------------------|--------------------|--------------------------------|-----------------------------------------|-----------------------|------------|
+| Standard_ND40s_v2 | 40     | 8 V100 (NVlilnk) | 672 GB | 8          | Ideiglenes 1344 / 2948XIO | 32    | 24,000 MB/s             | 
+
 ## <a name="nd-series"></a>ND sorozat
 
 A Premium Storage: támogatott
 
 Prémium szintű Storage gyorsítótárazási: támogatott
 
-Az ND sorozatú virtuális gépek a GPU-család mesterséges Intelligencia és a Deep Learning számítási feladatokhoz készült új mellett. Kiváló teljesítmény tanuláshoz és következtetésekhez kínálnak. ND példányok működteti [NVIDIA Tesla P40](http://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) gpu-kkal. Ezek a példányok remek teljesítményt egyszeres pontosságú lebegőpontos műveletekhez, AI a Microsoft Cognitive Toolkit, TensorFlow, Caffe és más keretrendszerekhez biztosítanak. Az ND sorozat jóval nagyobb GPU-memóriával rendelkezik (24 GB), így jelentősen nagyobb neurálishálózat-modellekhez is alkalmazható. Az NC sorozathoz hasonlóan az ND sorozat távoli közvetlen memória, egy másodlagos alacsony késleltetésű, nagy átviteli sebességű hálózati konfigurációval kínál és InfiniBand-kapcsolattal nagy méretű betanítási feladatokat futtathatnak több gpu-k futtatásához.
+Az ND sorozatú virtuális gépek, és a mesterséges Intelligencia, Deep Learning számítási feladatokhoz készült a GPU-termékcsalád új mellett. Kiváló teljesítmény tanuláshoz és következtetésekhez kínálnak. ND példányok működteti [NVIDIA Tesla P40](http://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) gpu-kkal. Ezek a példányok remek teljesítményt egyszeres pontosságú lebegőpontos műveletekhez, AI a Microsoft Cognitive Toolkit, TensorFlow, Caffe és más keretrendszerekhez biztosítanak. Az ND sorozat jóval nagyobb GPU-memóriával rendelkezik (24 GB), így jelentősen nagyobb neurálishálózat-modellekhez is alkalmazható. Az NC sorozathoz hasonlóan az ND sorozat távoli közvetlen memória, egy másodlagos alacsony késleltetésű, nagy átviteli sebességű hálózati konfigurációval kínál és InfiniBand-kapcsolattal nagy méretű betanítási feladatokat futtathatnak több gpu-k futtatásához.
 
 > [!IMPORTANT]
 > Ez virtuálisgépméret-családhoz tartozó vCPU-(mag-) kvóta az előfizetésben régiónként kezdetben értéke 0. [Egy vCPU-kvóta növelésére](../articles/azure-supportability/resource-manager-core-quotas-request.md) a termékcsalád az az [elérhető régióban](https://azure.microsoft.com/regions/services/).

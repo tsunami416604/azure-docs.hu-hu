@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: d3a7ddcd4a95660264bdf9609f54af39a05c97b3
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
-ms.translationtype: HT
+ms.openlocfilehash: 13422434e6392ec7681ec4478533c45a84f40c9a
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741028"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706976"
 ---
 # <a name="tutorial-migrate-your-data-to-azure-cosmos-db-mongodb-api-account"></a>Oktatóanyag: Adatok migrálása az Azure Cosmos DB MongoDB API-fiókba
 
@@ -36,13 +36,13 @@ Mielőtt az adatokat a MongoDB API-fiókba migrálná, győződjön meg arról, 
 
 1. Hozza létre előzetesen és skálázza a gyűjteményeket:
         
-    * Az Azure Cosmos DB alapértelmezés szerint másodpercenként 1000 kérelemegység (RU/s) sebességgel hoz létre egy új MongoDB-gyűjteményt. Még a mongoimport vagy a mongorestore eszköz használatával végzett migrálás indítása előtt hozza létre előre az összes gyűjteményt az [Azure Portalról](https://portal.azure.com) vagy a MongoDB-illesztőprogramokról és -eszközökről. Ha az adatméret nagyobb 10 GB-nál, mindenképpen [particionált gyűjteményt](partition-data.md) hozzon létre egy megfelelő szegmenskulccsal.
+   * Az Azure Cosmos DB alapértelmezés szerint másodpercenként 1000 kérelemegység (RU/s) sebességgel hoz létre egy új MongoDB-gyűjteményt. Még a mongoimport vagy a mongorestore eszköz használatával végzett migrálás indítása előtt hozza létre előre az összes gyűjteményt az [Azure Portalról](https://portal.azure.com) vagy a MongoDB-illesztőprogramokról és -eszközökről. Ha az adatméret nagyobb 10 GB-nál, mindenképpen [particionált gyűjteményt](partition-data.md) hozzon létre egy megfelelő szegmenskulccsal. MongoDB javasolja a gyűjtemények az Entitásadatok tárolásához. Az Azure Cosmos database szintjén összehasonlítható méretét és üzembe helyezése átviteli entites is mellé.
 
-    * Az [Azure Portalon](https://portal.azure.com) a migrálás idejére növelje a gyűjtemény átviteli sebességét 1000 RU/s értékről egypartíciós gyűjtemény és 2500 RU/s értékről horizontálisan particionált gyűjtemény esetében. Nagyobb átviteli sebesség beállításakor nincs szükség a sebesség korlátozására, és gyorsabban végezhet a migrálással. Költségtakarékossági okokból a migrálás után érdemes azonnal csökkentenie az átviteli sebességet.
+   * Az a [az Azure portal](https://portal.azure.com), növeléséhez a gyűjtemény egyetlen különálló partíciós gyűjteménybe 1000 kérelemegység/s és a egy gyűjteményt, és az áttelepítés időtartama 2500 kérelemegység/s. Nagyobb átviteli sebesség beállításakor nincs szükség a sebesség korlátozására, és gyorsabban végezhet a migrálással. Költségtakarékossági okokból a migrálás után érdemes azonnal csökkentenie az átviteli sebességet.
 
-    * Az RU/s érték gyűjteményszinten való megadásán kívül beállíthat egy RU/s értéket gyűjtemények egy készletéhez is a szülő adatbázis szintjén. Ehhez arra van szükség, hogy előre létrehozza az adatbázist és a gyűjteményeket, valamint minden gyűjteményhez meghatározzon egy szegmenskulcsot.
+   * Az RU/s érték gyűjteményszinten való megadásán kívül beállíthat egy RU/s értéket gyűjtemények egy készletéhez is a szülő adatbázis szintjén. Ehhez arra van szükség, hogy előre létrehozza az adatbázist és a gyűjteményeket, valamint minden gyűjteményhez meghatározzon egy szegmenskulcsot.
 
-    * Horizontálisan particionált gyűjtemények létrehozásához használhatja kedvenc eszközét, illesztőprogramját vagy SDK-ját is. Ebben a példában a Mongo-felület segítségével hozunk létre egy horizontálisan particionált gyűjteményt:
+   * Horizontálisan particionált gyűjtemények létrehozásához használhatja kedvenc eszközét, illesztőprogramját vagy SDK-ját is. Ebben a példában a Mongo-felület segítségével hozunk létre egy horizontálisan particionált gyűjteményt:
 
         ```bash
         db.runCommand( { shardCollection: "admin.people", key: { region: "hashed" } } )

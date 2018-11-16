@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 11/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 87ca7c10095f12c82137b6287fbb895c97676062
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 561e672436c38cd0b3e637b794662483fc630676
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49459040"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706721"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-using-azure-data-factory"></a>Adatok másolása és az Azure SQL Database felügyelt példányába Azure Data Factory használatával
 
@@ -115,7 +115,7 @@ Adatok másolása Azure blobból vagy az Azure SQL Database felügyelt példány
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot az adatkészlet értékre kell állítani: **SqlServerTable** | Igen |
-| tableName |A tábla vagy nézet a database-példányban, amelyre a társított szolgáltatás neve hivatkozik. | Igen |
+| tableName |A tábla vagy nézet a database-példányban, amelyre a társított szolgáltatás neve hivatkozik. | Nincs forrás, a fogadó Igen |
 
 **Példa**
 
@@ -155,7 +155,6 @@ Adatok másolása az Azure SQL Database felügyelt példányába, állítsa be a
 
 - Ha a **sqlReaderQuery** van megadva a SqlSource, a másolási tevékenység fut ez a lekérdezés a felügyelt példány forrás, az adatok beolvasásához. Másik lehetőségként megadhat egy tárolt eljárást megadásával a **sqlReaderStoredProcedureName** és **storedProcedureParameters** (Ha a tárolt eljárás paraméter szükséges).
 - Ha "sqlReaderQuery" vagy "sqlReaderStoredProcedureName" tulajdonság nincs megadva, a az adatkészlet JSON "struktúra" szakaszban megadott oszlopok segítségével lekérdezést (`select column1, column2 from mytable`) a felügyelt példány futtatásához. Ha az adatkészlet definíciója nem rendelkezik a "szerkezet", az összes oszlop ki van jelölve, a táblából.
-- Ha használ **sqlReaderStoredProcedureName**, továbbra is meg kell adnia egy helyőrző **tableName** tulajdonságot az adatkészlet JSON.
 
 **Példa: SQL-lekérdezés használatával**
 
@@ -491,7 +490,7 @@ Példatípust az adatok a/az Azure SQL Database felügyelt példányába, a köv
 | Datetimeoffset |DateTimeOffset |
 | tizedes tört |tizedes tört |
 | A FILESTREAM attribútum (varbinary(max)) |Byte] |
-| lebegőpontos |Dupla |
+| Lebegőpontos |Dupla |
 | image |Byte] |
 | int |Int32 |
 | költséget takaríthat meg |tizedes tört |

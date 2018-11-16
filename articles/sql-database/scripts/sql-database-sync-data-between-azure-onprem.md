@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: f9f8677b6aa34e4c6f1120e12cf1488f2b266a2d
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
-ms.translationtype: HT
+ms.openlocfilehash: d7e8d41d3136513e1bce466f1b3e8ecf43c42a01
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239764"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687268"
 ---
 # <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>A PowerShell használata egy Azure-beli SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz
 
@@ -389,14 +389,18 @@ Az [Azure SQL Database PowerShell-szkriptekben](../sql-database-powershell-sampl
 
 További információ az SQL Data Syncről:
 
--   [Több felhőalapú és helyszíni adatbázis közötti adatszinkronizálás az Azure SQL Data Synckel](../sql-database-sync-data.md)
--   [Az Azure SQL Data Sync beállítása](../sql-database-get-started-sql-data-sync.md)
--   [Ajánlott eljárások az Azure SQL Data Synchez](../sql-database-best-practices-data-sync.md)
--   [Az Azure SQL Data Sync monitorozása a Log Analytics használatával](../sql-database-sync-monitor-oms.md)
--   [Az Azure SQL Data Synckel hibaelhárítása](../sql-database-troubleshoot-data-sync.md)
-
--   Teljes PowerShell-példák az SQL Data Sync konfigurálásáról:
-    -   [A PowerShell használata több Azure SQL Database-adatbázis közötti szinkronizáláshoz](sql-database-sync-data-between-sql-databases.md)
+-   Áttekintés – [szinkronizálja az adatokat több felhőalapú és helyszíni adatbázis között az Azure SQL Data Sync szolgáltatással](../sql-database-sync-data.md)
+-   Data Sync beállítása
+    - A portálban – [oktatóanyag: a helyszíni adatokat az Azure SQL Database és SQL Server között, az SQL Data Sync beállítása](../sql-database-get-started-sql-data-sync.md)
+    - A PowerShell-lel
+        -  [A PowerShell használata több Azure SQL Database-adatbázis közötti szinkronizáláshoz](sql-database-sync-data-between-sql-databases.md)
+-   Adatok szinkronizálása az ügynök - [adatok szinkronizálása az Azure SQL Data Sync ügynök](../sql-database-data-sync-agent.md)
+-   Ajánlott eljárások – [ajánlott eljárások az Azure SQL Data Sync](../sql-database-best-practices-data-sync.md)
+-   A figyelő - [a Log Analytics használatával az SQL Data Sync monitorozása](../sql-database-sync-monitor-oms.md)
+-   Hibaelhárítás – [az Azure SQL Data Sync szolgáltatással kapcsolatos problémák elhárítása](../sql-database-troubleshoot-data-sync.md)
+-   Szinkronizálási sémájának frissítéséhez
+    -   A Transact-SQL - [az Azure SQL Data Sync sémamódosítások-replikáció automatizálása](../sql-database-update-sync-schema.md)
+    -   PowerShell-lel – [használja a Powershellt, a meglévő szinkronizálási csoport szinkronizálási sémájának frissítéséhez](sql-database-sync-update-schema.md)
 
 További információ az SQL Database-ről:
 

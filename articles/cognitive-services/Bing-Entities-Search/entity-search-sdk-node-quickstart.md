@@ -10,12 +10,12 @@ ms.component: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/12/2018
 ms.author: v-gedod
-ms.openlocfilehash: 1f2a5f6a1473cde40928ada6e30f6bd9b780543d
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
-ms.translationtype: HT
+ms.openlocfilehash: 69bcca7871d9bf4bebf64c0c0ae1b54cd8408927
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814882"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684120"
 ---
 # <a name="quickstart-bing-entity-search-sdk-with-node"></a>Rövid útmutató: Bing Entity Search SDK csomóponttal
 
@@ -24,7 +24,9 @@ A Bing Entity Search SDK a REST API funkcióit biztosítja az entitáslekérdez�
 A [C# Bing Entity Search SDK-minták forráskódja](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js) elérhető a GitHubon.
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
 
-Ha a Bing Entity Search SDK-val szeretne beállítani egy konzolalkalmazást, futtassa a fejlesztési környezetben a következőt: `npm install azure-cognitiveservices-entitysearch`.
+A Bing Entity Search SDK használatával egy konzolalkalmazást beállítása:
+* Futtatás `npm install ms-rest-azure` a fejlesztési környezetben.
+* Futtatás `npm install azure-cognitiveservices-entitysearch` a fejlesztési környezetben.
 
 ## <a name="entity-search-client"></a>Entity Search-ügyfél
 A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a *Keresés* területen kérheti le. Hozza létre a `CognitiveServicesCredentials` egy példányát:

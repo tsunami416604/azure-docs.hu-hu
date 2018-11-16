@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: e3944defa24437fdddf8b61189034d330f89dd4c
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ae34cc869dfb286a5a60f59fdab8733f611a6ec7
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011952"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712160"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Wire Data 2.0 (előzetes verzió) megoldás a Log Analyticsben
 
@@ -31,7 +31,7 @@ ms.locfileid: "51011952"
 Mellett a Log Analytics-ügynököket a Wire Data megoldást használja a Microsoft függőségi ügynökök telepítése a számítógépeken az informatikai infrastruktúra. A függőségi ügynökök monitorozzák a számítógépek által fogadott és küldött adatokat az [OSI-modell](https://en.wikipedia.org/wiki/OSI_model) szerinti 2. és 3. szintű hálózatokon, beleértve a különböző alkalmazott protokollokat és portokat. Az adatok ezután ügynökök használatával lesznek továbbítva a Log Analyticsbe.  
 
 >[!NOTE]
->Ha a Service Map már üzembe helyezte, vagy a Service Map használatát fontolgatja, vagy [-beli virtuális gépek az Azure Monitor](../monitoring/monitoring-vminsights-overview.md), van egy új kapcsolat metrikák adatkészlet összegyűjtése és a Log Analytics, amely hasonló információt szolgáltat az átviteli adatok tárolása.
+>Ha a Service Map már üzembe helyezte, vagy a Service Map használatát fontolgatja, vagy [-beli virtuális gépek az Azure Monitor](../azure-monitor/insights/vminsights-overview.md), van egy új kapcsolat metrikák adatkészlet összegyűjtése és a Log Analytics, amely hasonló információt szolgáltat az átviteli adatok tárolása.
 
 Alapértelmezés szerint a Log Analytics a processzor, a memória, a lemezek és a hálózat teljesítményadatait naplózza a Windows és Linux beépített számlálóival, valamint további, szabadon megadható teljesítményszámlálók segítségével. A hálózati és egyéb adatok gyűjtése valós időben történik az egyes ügynökökre vonatkozóan, beleértve a számítógép által használt alhálózatokat és alkalmazásszintű protokollokat.  A Wire Data a hálózati adatokat az alkalmazások szintjén kezeli, nem a TCP átviteli réteg szintjén.  A megoldás nem veszi figyelembe az önálló ACK-kat és SYN-eket.  Ha a kézfogás befejeződött, onnantól a kapcsolat élőnek számít és Csatlakoztatva jelölést kap. A kapcsolat addig marad élő, amíg mindkét oldal egyetért a szoftvercsatorna nyitva tartásában, és az adatok átvitele oda-vissza lehetséges.  Ha bármelyik oldal bezárja a kapcsolatot, a kapcsolat Leválasztva jelölést kap.  Ezért csak sikeresen elküldött csomagok által használt sávszélességet veszi számításba, az újraküldött vagy sikertelenül elküldött csomagok nem lesznek jelentve.
 
@@ -94,7 +94,7 @@ Az alábbi táblázat a függőségi ügynök által támogatott operációs ren
 #### <a name="windows-server"></a>Windows Server
 
 - Windows Server 2016
-- Windows Server 2012 R2
+- Windows Server 2012 R2
 - Windows Server 2012
 - Windows Server 2008 R2 SP1
 
@@ -103,7 +103,7 @@ Az alábbi táblázat a függőségi ügynök által támogatott operációs ren
 - Windows 10
 - Windows 8.1
 - Windows 8
-- Windows 7 rendszeren
+- Windows 7
 
 #### <a name="red-hat-enterprise-linux-centos-linux-and-oracle-linux-with-rhel-kernel"></a>Red Hat Enterprise Linux, CentOS Linux és Oracle Linux (RHEL Kernellel)
 
@@ -197,7 +197,7 @@ Az alábbi táblázat a függőségi ügynök által támogatott operációs ren
 
 A Wire Data megoldásnak a munkaterületekhez való konfigurálásához végezze el az alábbi lépéseket:
 
-1. Engedélyezze az Activity Log Analytics megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) felületéről vagy a [Log Analytics-megoldások hozzáadása a megoldástárból](../monitoring/monitoring-solutions.md) című témakörben leírt eljárást követve.
+1. Engedélyezze az Activity Log Analytics megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) felületéről vagy a [Log Analytics-megoldások hozzáadása a megoldástárból](../azure-monitor/insights/solutions.md) című témakörben leírt eljárást követve.
 2. Telepítse a függőségi ügynököt az összes olyan számítógépen, amelyről adatokat kíván gyűjteni. A függőségi ügynök képesek a közvetlen szomszédaikkal való kapcsolatok monitorozására, így lehetséges, hogy nem kell minden egyes számítógépre ügynököt telepíteni.
 
 > [!NOTE]
@@ -222,7 +222,7 @@ A parancssorból való telepítéshez a következő táblában leírt paraméter
 
 InstallDependencyAgent-Windows.exe /?
 
-| **Flag** | **Leírás** |
+| **Jelző** | **Leírás** |
 | --- | --- |
 | <code>/?</code> | A parancssori kapcsolók listájának lekérése. |
 | <code>/S</code> | Beavatkozás nélküli telepítés a felhasználónak szóló üzenetek nélkül. |
@@ -247,7 +247,7 @@ A telepítésjelzők listájának megtekintéséhez futtassa a `-help` jelzővel
 InstallDependencyAgent-Linux64.bin -help
 ```
 
-| **Flag** | **Leírás** |
+| **Jelző** | **Leírás** |
 | --- | --- |
 | <code>-help</code> | A parancssori kapcsolók listájának lekérése. |
 | <code>-s</code> | Beavatkozás nélküli telepítés a felhasználónak szóló üzenetek nélkül. |
@@ -287,7 +287,7 @@ wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDepende
 sh InstallDependencyAgent-Linux64.bin -s
 ```
 
-### <a name="desired-state-configuration"></a>Szabványos állapotkonfiguráció
+### <a name="desired-state-configuration"></a>Célállapot-konfiguráló
 
 A függőségi ügynök Desired State Configuration segítségével történő telepítéséhez használhatja az xPSDesiredStateConfiguration modult és egy, az alábbihoz hasonló kódrészletet:
 
@@ -373,7 +373,7 @@ A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi i
 
 - A Wire Data megoldás a Windows Server 2012 R2, Windows 8.1 és újabb operációs rendszert futtató számítógépekről gyűjt adatokat.
 - A Microsoft .NET-keretrendszer 4.0-s vagy újabb verziójával kell rendelkeznie azoknak a számítógépeknek, amelyekről átviteli adatokat szeretne gyűjteni.
-- A Log Analytics-munkaterülethez adja hozzá a Wire Data megoldást. Ehhez kövesse a [Log Analytics-megoldások hozzáadása a megoldástárból](../monitoring/monitoring-solutions.md) című témakörben leírt eljárást. Nincs szükség további konfigurációra.
+- A Log Analytics-munkaterülethez adja hozzá a Wire Data megoldást. Ehhez kövesse a [Log Analytics-megoldások hozzáadása a megoldástárból](../azure-monitor/insights/solutions.md) című témakörben leírt eljárást. Nincs szükség további konfigurációra.
 - Egy adott megoldás átviteli adatainak megtekintéséhez már rendelkeznie kell a megoldással a munkaterületen.
 
 Miután telepítette az ügynököket és telepíti a megoldást, a munkaterületen megjelenik a Wire Data 2.0 csempéje.
@@ -384,7 +384,7 @@ Miután telepítette az ügynököket és telepíti a megoldást, a munkaterüle
 
 Az Azure Portalon a Log Analytics-munkaterület **Áttekintés** területén kattintson a **Wire Data 2.0** csempére az Átviteli adatok irányítópult megnyitásához. Az irányítópulton az alábbi táblázatban felsorolt panelek találhatók. Minden panelen legfeljebb 10 olyan elem jelenik meg, amely megfelel a panel hatóköri és időtartományi kritériumainak. A panel alján található **Az összes megtekintése** elemre vagy a panel fejlécére kattintva az összes rekordot megjelenítő keresést végezhet a naplóban.
 
-| **Blade** | **Leírás** |
+| **Panel** | **Leírás** |
 | --- | --- |
 | Hálózati forgalmat rögzítő ügynökök | A hálózati forgalmat rögzítő ügynökök számát és a forgalmat rögzítő első 10 számítógép listáját jeleníti meg. Kattintson a számra a következőre vonatkozó naplókeresés futtatásához: <code>Type:WireData &#124; measure Sum(TotalBytes) by Computer &#124; top 500000</code>. Kattintson a listában található egyik számítógépre egy olyan naplókeresés futtatásához, amely a rögzített bájtok számát adja vissza. |
 | Helyi alhálózatok | Az ügynök által felderített helyi alhálózatok számát mutatja.  Kattintson a számra a következőre vonatkozó naplókeresés futtatásához: <code>Type:WireData &#124; Measure Sum(TotalBytes) by LocalSubnet</code>. Ez az alhálózatokat és az egyes alhálózatokon átküldött bájtok számát jeleníti meg. Kattintson a listában található alhálózatra egy olyan naplókeresés futtatásához, amely az alhálózaton küldött bájtok teljes számát adja vissza. |
@@ -420,7 +420,7 @@ A bemeneti adatok minden típusához létrejön egy _WireData_ típusú rekord. 
 
 | Tulajdonság | Leírás |
 |---|---|
-| Számítógép | A számítógép neve, ahol az adatgyűjtés történt |
+| Computer | A számítógép neve, ahol az adatgyűjtés történt |
 | TimeGenerated | A rekord létrehozásának időpontja |
 | LocalIP | A helyi számítógép IP-címe |
 | SessionState | Csatlakoztatva vagy leválasztva |

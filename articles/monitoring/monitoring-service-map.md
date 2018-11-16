@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 0f3bc7302bc28a9bef288e5e5e0b9b891a08b8dd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ea804899b04dad88ceeac14793d226cca47fc5c1
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252921"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713248"
 ---
 # <a name="using-service-map-solution-in-azure"></a>A Service Map megoldást használ az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. A Service Map, megtekintheti a kiszolgálók ahogyan Ön gondol rájuk: rendszerekként, amelyek kritikus fontosságú szolgáltatások biztosításához. A Service Map megmutatja a kiszolgálók, a folyamatok, a bejövő és kimenő kapcsolat késési kapcsolatokat, és portok között, bármely TCP-kapcsolattal összekötött architektúrában, semmilyen beállítást nem szükséges ügynököt telepíteni.
@@ -27,7 +27,7 @@ A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket 
 Ez a cikk bevezetése és használata a Service Map részleteit ismerteti. A Service Map és bevezetési ügynökök konfigurálásával kapcsolatos további információkért lásd: [konfigurálása a Service Map megoldás az Azure-ban]( monitoring-service-map-configure.md).
 
 >[!NOTE]
->Ha már telepítette a Service Map, most is megtekintheti a maps az Azure monitorban a virtuális gépek esetében kiegészítő szolgáltatást a virtuális gép állapotának és teljesítményének figyeléséhez tartalmaz. További tudnivalókért lásd: [virtuális gépek – áttekintés az Azure Monitor](monitoring-vminsights-overview.md).
+>Ha már telepítette a Service Map, most is megtekintheti a maps az Azure monitorban a virtuális gépek esetében kiegészítő szolgáltatást a virtuális gép állapotának és teljesítményének figyeléséhez tartalmaz. További tudnivalókért lásd: [virtuális gépek – áttekintés az Azure Monitor](../azure-monitor/insights/vminsights-overview.md).
 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba

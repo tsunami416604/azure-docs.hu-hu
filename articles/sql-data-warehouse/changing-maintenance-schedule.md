@@ -7,22 +7,22 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 10/07/2018
+ms.date: 10/15018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 428b9970471c9365812639e251810c571698a574
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 75384aed8c354cf2d549d92cdb75f87038f33ab8
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49425956"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713265"
 ---
 # <a name="change-a-maintenance-schedule"></a>Karbantartási ütemezés módosítása 
 
 ## <a name="portal"></a>Portál
 Karbantartási ütemezés frissíthetők vagy bármikor módosítható. Ha a kiválasztott példány egy aktív karbantartási folyamata alatt tartózkodnak, a rendszer menti a beállításokat. Akkor lesz aktívvá válik a következő azonosított karbantartási időszak során. [További](https://docs.microsoft.com/azure/service-health/resource-health-overview) egy aktív karbantartási események során az adatraktár figyelésével kapcsolatos. 
 
-Az Azure karbantartási ütemezések előzetes verzióban érhető el, amelyek két karbantartási időszakok választja egy 7 napos időszakban. Az egyes karbantartási időszakok 3-8 óra is lehet. Karbantartási is egy karbantartási időszakban bármikor előfordulhatnak, de nem megy végbe, előzetes értesítés nélkül idő időszakon kívül. A kapcsolat rövid adatvesztést is, a szolgáltatás telepíti az új kódot az adattárház lesz tapasztalható. 
+Karbantartási ütemezések használ, ki kell választania a két karbantartási időszakok egy 7 napos időszakban. Az egyes karbantartási időszakok 3-8 óra is lehet. Karbantartási is egy karbantartási időszakban bármikor előfordulhatnak, de nem megy végbe, előzetes értesítés nélkül idő időszakon kívül. A kapcsolat rövid adatvesztést is, a szolgáltatás telepíti az új kódot az adattárház lesz tapasztalható. 
 
 ## <a name="identifying-the-primary-and-secondary-windows"></a>Az elsődleges és másodlagos windows azonosítása
 

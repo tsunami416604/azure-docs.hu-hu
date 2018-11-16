@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: f84eda2269df0bbe7186a2f1a9abb9c594b75455
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: fbe286313bce9b735665b134a5ea18ba4995548b
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245069"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712262"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>Rövid útmutató: Az Azure Data Box Disk üzembe helyezése az Azure Portal használatával (előzetes verzió)
 
@@ -67,7 +67,7 @@ Ez a lépés nagyjából 5 percet vesz igénybe.
 
     1. Az Azure Portalon lépjen az **Általános > Eszköz adatai** menüpontra, és kérje le a hozzáférési kulcsot.
     2. Töltse le és csomagolja ki a megfelelő operációs rendszerhez tartozó Data Box Disk zárolását feloldó eszközt az adatok a meghajtókra való másolásához használt számítógépen. 
-    3. Futtassa a Data Box Disk lemezzárolás-feloldó eszközt és adja meg a hozzáférési kulcsot. Új lemezek behelyezésekor futtassa újra a zárolást feloldó eszközt, és adja meg a hozzáférési kulcsot. **Ne használja a BitLocker párbeszédpanelt vagy a BitLocker kulcsot a lemez zárolásának feloldására.** További információt a lemezek feloldásával kapcsolatban a [Lemez feloldása Windows-ügyfélen]() vagy a [Lemez feloldása Linux-ügyfélen]() című szakaszban talál.
+    3. Futtassa a Data Box Disk lemezzárolás-feloldó eszközt és adja meg a hozzáférési kulcsot. Új lemezek behelyezésekor futtassa újra a zárolást feloldó eszközt, és adja meg a hozzáférési kulcsot. **Ne használja a BitLocker párbeszédpanelt vagy a BitLocker kulcsot a lemez zárolásának feloldására.** További tájékoztatást a lemez zárolásának feloldásához lépjen a [zárolásának feloldása a lemezek a Windows ügyfél](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client) vagy [Linux-ügyfél a lemez zárolásának feloldásához](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client).
     4. A meghajtóhoz rendelt betűjelet az eszköz mutatja. Jegyezze fel az egyes meghajtók betűjelét. Ezt majd a következő lépésekben fogjuk felhasználni.
 
 ## <a name="copy-data-and-validate"></a>Adatok másolása és ellenőrzés
@@ -85,7 +85,6 @@ A művelet végrehajtásának időtartama az adatok mennyiségétől függ.
 2. (Nem kötelező) Javasoljuk, hogy a másolás után a *DataBoxDiskImport* mappában elérhető `DataBoxDiskValidation.cmd` futtatásával hozzon létre ellenőrzőösszegeket az ellenőrzéshez. Az adatok mennyiségétől függően ez a lépés némi időt vehet igénybe. 
 3. Válassza le a meghajtót. 
 
-
 ## <a name="ship-to-azure"></a>Elküldés az Azure-nak
 
 Ez a lépés kb. 5–7 percet vesz igénybe.
@@ -94,7 +93,6 @@ Ez a lépés kb. 5–7 percet vesz igénybe.
 2. Adja fel a lezárt csomagot a futárszolgálatnál.  
 
 A Data Box Disk szolgáltatás egy e-mail-értesítést küld, és frissíti a rendelés állapotát az Azure Portalon.
-
 
 ## <a name="verify-your-data"></a>Az adatok ellenőrzése
 
@@ -126,5 +124,3 @@ Ebben a rövid útmutatóban egy Azure Data Box Disk-meghajtót helyezett üzemb
 
 > [!div class="nextstepaction"]
 > [A Data Box Disk az Azure Portal használatával történő kezelése](data-box-portal-ui-admin.md)
-
-

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 11/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 6f9b85ec4821ff2454970136b3c8af2cb0f92154
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: c672634e79cbc0850edfe7f7fbdb0a880d5cf0d8
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140823"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51707129"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Az Azure Lab Services tesztkörnyezetfiókok kezelése 
 Az Azure Lab Services tesztkörnyezetfiók az osztályterem-tesztkörnyezetek például felügyelt tesztkörnyezetek tárolója. A rendszergazda állítja be az Azure Lab Services tesztkörnyezetfiók és labortulajdonosok labs hozhat létre a fiók számára hozzáférést biztosít. Ez a cikk bemutatja, hogyan tesztkörnyezetfiók létrehozása, megtekintheti az összes tesztkörnyezetfiókok, vagy törölheti a labor.
@@ -114,7 +114,9 @@ Kövesse az utasításokat az előző szakaszban a labor-fiókban a labs listáj
 
 
 ## <a name="next-steps"></a>További lépések
-Kezdje meg egy tesztkörnyezet létrehozását az Azure Lab Services használatával:
+Lásd az alábbi cikkeket:
 
-- [Osztályterem-tesztkörnyezet beállítása](tutorial-setup-classroom-lab.md)
-- [Tesztkörnyezet beállítása](../tutorial-create-custom-lab.md)
+- [Labortulajdonosként hozzon létre és laborok kezelése](how-to-manage-classroom-labs.md)
+- [Labortulajdonosként állítsa be, és a sablonok közzététele](how-to-create-manage-template.md)
+- [Labortulajdonosként konfigurálása, és a egy lab használatának szabályozása](how-to-configure-student-usage.md)
+- [Labor felhasználóként osztályterem-tesztkörnyezetek elérése](how-to-use-classroom-lab.md)

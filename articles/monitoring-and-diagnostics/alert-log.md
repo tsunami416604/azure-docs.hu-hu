@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f7122c6147af2ed1af1f3b5e08458fd73f9aef6d
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 74b9673d7ef9dedbcc34682d4707103e696bece3
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279102"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711701"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure Monitor használatával riasztások  
 
@@ -132,7 +132,7 @@ Ezért az alábbi szakasz részletekkel szolgálnak Naplóriasztásokra vonatkoz
 ### <a name="azure-resource-template-for-log-analytics"></a>A Log Analytics az Azure Resource-sablon
 Riasztások a Log Analytics, amely a rendszeres időközönkénti mentett keresést futtat riasztási szabályok hozzák létre. Ha a lekérdezés egyeztetés eredményei adott feltételeknek, létrejön egy riasztásbejegyzés, és a egy vagy több műveletek futnak. 
 
-Mentett keresés és a Log analytics-riasztásokkal Log Analytics Resource-sablon dokumentációja a Log Analytics szakaszában érhetők el. További tudnivalókért tekintse meg, [hozzáadása a Log Analytics mentett keresések és a riasztások](../monitoring/monitoring-solutions-resources-searches-alerts.md); mely szemléltető példák, valamint a séma részleteit tartalmazza.
+Mentett keresés és a Log analytics-riasztásokkal Log Analytics Resource-sablon dokumentációja a Log Analytics szakaszában érhetők el. További tudnivalókért tekintse meg, [hozzáadása a Log Analytics mentett keresések és a riasztások](../azure-monitor/insights/solutions-resources-searches-alerts.md); mely szemléltető példák, valamint a séma részleteit tartalmazza.
 
 ### <a name="azure-resource-template-for-application-insights"></a>Az Application Insights az Azure Resource-sablon
 Az Application Insights-erőforrások riasztás van valamilyen `Microsoft.Insights/scheduledQueryRules/`. Az erőforrástípus további információkért lásd: [Azure Monitor - ütemezett lekérdezési szabály API-referencia](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).

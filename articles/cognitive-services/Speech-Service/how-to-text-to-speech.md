@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: erhopf
-ms.openlocfilehash: 162b690d4b371cfe76738cd83ce484a3062d139f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 16b7de909ce57a7f8d3cea54a59996dc6f0a6ba0
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469917"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712007"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Használja a "Szöveg-beszéd átalakítás" Speech Service-ben
 
@@ -92,7 +92,7 @@ Ha hiba történik, az alábbi állapotkódok használja. A válasz törzse a hi
 429|Túl sok kérelem|Túllépte a kvótát, vagy engedélyezett az előfizetéséhez kérelmek száma.
 |502|Hibás átjáró    | Hálózati vagy kiszolgálóoldali probléma. Érvénytelen fejlécek is jelezhet.
 
-A szöveg Speech REST API további információkért lásd: [REST API-k](rest-apis.md#text-to-speech).
+A szöveg Speech REST API további információkért lásd: [REST API-k](rest-apis.md#text-to-speech-api).
 
 ## <a name="next-steps"></a>További lépések
 

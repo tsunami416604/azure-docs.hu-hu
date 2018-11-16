@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: a38532d7a411080feb637549288bdad036a11153
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 78d081fe3ba2bfa4b598dfb0cc62c03d66d3d356
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011051"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712313"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
 
@@ -103,7 +103,7 @@ A Network Performance Monitor szintetikus tranzakciók használatával a forrás
 
 ### <a name="configure-the-solution"></a>A megoldás konfigurálása 
 
-1. A Network Performance Monitor megoldás hozzáadása a munkaterületet a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). A leírt folyamatot is használható [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../monitoring/monitoring-solutions.md). 
+1. A Network Performance Monitor megoldás hozzáadása a munkaterületet a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). A leírt folyamatot is használható [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../azure-monitor/insights/solutions.md). 
 2. Nyissa meg a Log Analytics-munkaterületet, és válassza ki a **áttekintése** csempére. 
 3. Válassza ki a **Network Performance Monitor** üzenettel csempe *megoldás további konfigurálást igényel*.
 
@@ -253,7 +253,7 @@ A topológia a gráfon látható 3. rétegbeli topológia, és nem tartalmazza 2
 
 Összes adat, amely grafikusan közzétett keretében a Network Performance Monitor-irányítópult és a részletezés oldal is érhető el natív módon [Log Analytics keresési](log-analytics-queries.md). Az adatok interaktív elemzéseket végezhet a tárházban, és vesse össze a különböző forrásokból származó adatok. Emellett egyéni riasztások és nézetek létrehozása és az adatok exportálása az Excel, a Power bi-ban vagy a megosztható hivatkozás. A **gyakori lekérdezések** tartalmaz néhány hasznos lekérdezést, amely kiindulási pontként használhatja a saját lekérdezéseket és jelentéseket hozhat létre az irányítópulton. 
 
-## <a name="alerts"></a>Értesítések
+## <a name="alerts"></a>Riasztások
 
 A Network Performance Monitor riasztási képességeit használja [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts).
 

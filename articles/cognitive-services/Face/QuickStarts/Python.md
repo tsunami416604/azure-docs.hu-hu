@@ -10,18 +10,18 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 11/09/2018
 ms.author: pafarley
-ms.openlocfilehash: 6e6f5b61f3e5e99d08e377bd5a78398a05fb4321
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
-ms.translationtype: HT
+ms.openlocfilehash: d2a98226895bbe5996785ca4726f20df9b98ffdd
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51577890"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683610"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Gyors útmutató: Arcok észlelése, a képet, a Face REST API és a Python használatával
 
 Ebben a rövid, használatával az Azure Face REST API a Pythonnal emberi arcok észlelése a képet. A parancsfájl az arcok körül keretek készíti és szélt a kép nem és életkor információkat.
 
-![Egy férfiról és egy nőről, arcokat és korának, nemét jelenik meg a kép körül téglalap rendelkező](../media/labelled-faces-python.png)
+![Egy férfiról és egy nőről, arcokat és korának, nemét jelenik meg a kép körül téglalap rendelkező](../images/labelled-faces-python.png)
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 

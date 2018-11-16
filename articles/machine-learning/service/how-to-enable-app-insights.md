@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
 ms.date: 10/01/2018
-ms.openlocfilehash: 285486d5fe641d49ee21d7340b62f83d75862553
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 71dc7c0dbb2400802235da4f1bb952c7863a1862
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578298"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713214"
 ---
 # <a name="monitor-your-azure-machine-learning-models-in-production-with-application-insights"></a>Az Azure Machine Learning-modellek éles környezetben az Application Insights figyelése
 
@@ -30,7 +30,7 @@ Ebből a cikkből elsajátíthatja az Azure Application Insights beállítása a
 
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+* Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLfree), mielőtt hozzákezd.
 * Egy helyi könyvtárba, amely tartalmazza a parancsfájlokat, és az Azure Machine Learning SDK telepítve van a Pythonhoz készült Azure Machine Learning munkaterület. Ismerje meg, hogyan tehet szert az Előfeltételek, lásd: [a fejlesztési környezet konfigurálása](how-to-configure-environment.md).
 * Egy betanított gépi tanulási modellt az Azure Kubernetes Service (AKS) üzembe helyezni. Ha még nincs fiókja, tekintse meg a [Train kép osztályozási modell](tutorial-train-models-with-aml.md) oktatóanyag.
 * Egy [AKS-fürt](how-to-deploy-to-aks.md).
