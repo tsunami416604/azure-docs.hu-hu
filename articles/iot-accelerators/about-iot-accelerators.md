@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: aac079feefde53ff30cbeab942ee0443c113cdc8
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 6fed0c5e3f24fbcefec427cf56a625d1d8d7aba2
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345113"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824540"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Mik az Azure IoT-megoldásgyorsítók?
 
@@ -50,7 +50,7 @@ A csatlakoztatott gyár irányítópultjának használatával a következő ipar
 
 ### <a name="predictive-maintenance"></a>Prediktív karbantartás
 
-Ezt a megoldásgyorsítót a távoli eszközök meghibásodásának előrejelzéséhez használhatja, hogy a várt meghibásodás előtt elvégezhesse a karbantartást. Ez a megoldásgyorsító gépi tanulási algoritmusokkal vizsgálja az eszköz telemetriai adatait, és előrejelzi a meghibásodást. A példaeszközök lehetnek például repülőgép-hajtóművek vagy liftek.
+Ez a megoldásgyorsító használatával előre jelezni, amikor egy távoli eszközön várható sikertelen lesz, így is végrehajthasson karbantartás előtt az eszközt nem sikerül. Ez a megoldásgyorsító gépi tanulási algoritmusokkal vizsgálja az eszköz telemetriai adatait, és előrejelzi a meghibásodást. A példaeszközök lehetnek például repülőgép-hajtóművek vagy liftek.
 
 A prediktív karbantartási irányítópult a következő prediktív karbantartási elemzések megtekintésére használható:
 
@@ -97,7 +97,7 @@ A távoli monitorozási megoldásgyorsítót a következő konfigurációkban he
 * **Alapszintű**: Csökkentett költségű verzió bemutató célokra vagy az üzembe helyezés teszteléséhez. Mindegyik mikroszolgáltatás üzembe helyezhető egy Azure-beli virtuális gépen.
 * **Helyi:** Helyi gépen történő üzembe helyezés tesztelés és fejlesztés céljából. Ez a módszer egy helyi Docker-tárolóban helyezi üzembe a mikroszolgáltatásokat, és csatlakozik az IoT Hub, Azure Cosmos DB és Azure Storage szolgáltatásokhoz a felhőben.
 
-A megoldásgyorsítók futtatásának költsége az [alapul szolgáló Azure-szolgáltatások árának](https://azure.microsoft.com/pricing) összesített értékével egyenlő. Az igénybe vett Azure-szolgáltatások részleteit az üzembehelyezési beállítások kiválasztásakor tekintheti meg.
+Megoldásgyorsítók költségének a kombinált [költsége a mögöttes Azure-szolgáltatásokat futtató](https://azure.microsoft.com/pricing). Az igénybe vett Azure-szolgáltatások részleteit az üzembehelyezési beállítások kiválasztásakor tekintheti meg.
 
 ## <a name="next-steps"></a>További lépések
 

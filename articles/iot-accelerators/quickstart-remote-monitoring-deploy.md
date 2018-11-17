@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/26/2018
+ms.date: 11/08/2018
 ms.author: dobett
-ms.openlocfilehash: 365c6e41db865edf8384ca1f82210d9471808f94
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
-ms.translationtype: HT
+ms.openlocfilehash: 4071770a74d205570cee082d9af0c0fb7c77e203
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140857"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824778"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Rövid útmutató: Távoli felhőalapú monitorozási megoldás kipróbálása
 
@@ -32,7 +32,7 @@ Amikor üzembe helyezi a megoldásgyorsítót az Azure-előfizetéshez, néhány
 
 Jelentkezzen be az [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) webhelyen az Azure-fiók hitelesítő adataival.
 
-Kattintson a **Kipróbálom most** elemre a **Távoli monitorozás** csempén.
+Kattintson a **távoli megfigyelés** csempére. Az a **távoli megfigyelés** kattintson **próbálja ki most**:
 
 ![Távoli monitorozás kiválasztása](./media/quickstart-remote-monitoring-deploy/remotemonitoring.png)
 
@@ -40,9 +40,10 @@ A **Megoldás létrehozása (Távoli monitorozás)** lapon válassza ki az **Ala
 
 Válassza a **.NET** nyelvet. A Java és a .NET implementáció azonos funkciókat tartalmaz.
 
-Adjon meg egy egyedi **megoldásnevet** a távoli monitorozási megoldásgyorsítóhoz. Ebben a rövid útmutatóban a **contoso-rm2** nevet használjuk.
+Adjon meg egy egyedi **megoldásnevet** a távoli monitorozási megoldásgyorsítóhoz. Ebben a rövid útmutatóban a miénk hívjuk **contoso-rm**.
 
-Válassza ki a megoldásgyorsító üzembe helyezéséhez használni kívánt **Előfizetést** és **Régiót**. Általában az Önhöz legközelebbi régiót érdemes választani. Ebben a rövid útmutatóban a **Visual Studio Enterprise** előfizetést és a **Nyugat-Európa** régiót választjuk. Mindehhez [globális rendszergazdának vagy felhasználónak](iot-accelerators-permissions.md) kell lennie az előfizetésben.
+Válassza ki a megoldásgyorsító üzembe helyezéséhez használni kívánt **Előfizetést** és **Régiót**. Általában az Önhöz legközelebbi régiót érdemes választani. Ebben a rövid útmutatóban használjuk **USA keleti Régiójában**.
+Választhat **Visual Studio Enterprise**, kell lennie, de egy [globális rendszergazda vagy felhasználó](iot-accelerators-permissions.md) ennek a végrehajtására.
 
 Kattintson a **Megoldás létrehozása** gombra az üzembe helyezés elkezdéséhez. A folyamat legalább öt percig tart:
 

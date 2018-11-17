@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: tutorial
 ms.date: 11/12/2018
 ms.author: pafarley
-ms.openlocfilehash: 4378d04d8909ecb0cd77c3196b74ecd51eb19638
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 92344943d2ec19f6730387221974a001e6a2045a
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686228"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852894"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Oktatóanyag: Android-alkalmazás készítése képeken lévő arcok észleléséhez és bekeretezéséhez
 
@@ -92,11 +92,7 @@ Ezután helyezze be a következő kódot a **MainActivity** osztályhoz, fent a 
 
 [!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=17-27)]
 
-Le kell cserélnie `<Subscription Key>` az előfizetési kulccsal végzett. Továbbá cserélje le `<API endpoint>` -a a Face API végpontra, a megfelelő régióazonosító használata a kulcshoz. Ingyenes próba-előfizetését kulcsokat hoz létre a a **westus** régióban. Egy példa API-végpont értékét a következő lesz:
-
-```java
-apiEndpoint = "https://westus.api.cognitive.microsoft.com/face/v1.0";
-```
+Le kell cserélnie `<Subscription Key>` az előfizetési kulccsal végzett. Továbbá cserélje le `<API endpoint>` a Face API végpontra, használja a megfelelő régióazonosító kulcs (lásd a [Face API-dokumentumok](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) minden régióban végpontok listáját). Ingyenes próba-előfizetését kulcsokat hoz létre a a **westus** régióban.
 
 A **Project** (Projekt) panelen bontsa ki az **app** elemet, majd a **manifests** elemet, és nyissa meg az *AndroidManifest.xml* fájlt. Illessze be a következő elemet a `manifest` elem közvetlen gyermekeként:
 

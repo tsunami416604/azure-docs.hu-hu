@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: overview
 ms.date: 07/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: c54f5c5fba31933a6dd9f98d1ecfb6d03a3ad9be
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: HT
+ms.openlocfilehash: 28f80dc71afd7d4865763561682ce54de1b118ab
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003747"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852197"
 ---
 # <a name="choose-between-azure-services-that-deliver-messages"></a>Az üzenetkézbesítő Azure-szolgáltatás kiválasztása
 
@@ -21,7 +21,7 @@ Az Azure három olyan szolgáltatást kínál, amely segít kézbesíteni az ese
 
 * [Event Grid](/azure/event-grid/)
 * [Event Hubs](/azure/event-hubs/)
-* [Service Bus](/azure/service-bus-messaging/)
+* [Szolgáltatásbusz](/azure/service-bus-messaging/)
 
 Annak ellenére, hogy valamelyest hasonlítanak egymásra, minden szolgáltatás adott forgatókönyvekhez készült. Ez a cikk a szolgáltatások közötti különbséget ismerteti, és segít az alkalmazásához megfelelő szolgáltatás kiválasztásában. Az üzenetkezelési szolgáltatások sok esetben kiegészítik egymást és együtt használhatók.
 
@@ -55,11 +55,13 @@ Az Event Grid egy háttérbeli eseménykezelési sík, amely lehetővé teszi az
 
 Az Event Grid nagymértékben integrálva van az Azure-szolgáltatásokkal, és külső szolgáltatásokkal is integrálható. Egyszerűsíti az eseményfelhasználást és csökkenti a költségeket, mivel szükségtelenné teszi az állandó lekérdezést. Az Event Grid hatékonyan és megbízhatóan irányítja át az eseményeket az Azure-beli azon kívüli erőforrásokról. Az eseményeket elosztja a regisztrált előfizetői végpontok között. Az eseményüzenet tartalmazza azokat az információkat, amelyekre szüksége van, hogy reagálhasson a szolgáltatások és alkalmazások változásaira. Az Event Grid nem adatfolyamat, és nem kézbesíti magát a frissített objektumot.
 
+Event Grid-események, amelyek nem lett elküldve a végpont kézbesítetlen levelek kezelése támogatja.
+
 A következő jellemzőkkel rendelkezik:
 
 * dinamikusan skálázható
 * alacsony költség
-* kiszolgáló nélküli
+* serverless
 * legalább egyszeri kézbesítés
 
 ### <a name="event-hubs"></a>Event Hubs

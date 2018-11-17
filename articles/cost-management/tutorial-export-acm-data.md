@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 7f93a225db845840545b761d812f5a8a81f76f91
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
-ms.translationtype: HT
+ms.openlocfilehash: e671c75b1ceee0e42b3af9ddc149edf2f3b0040c
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913563"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822364"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Oktatóanyag: Exportált adatok létrehozása és kezelése
 
-Ha elolvasta a Költségelemzés című oktatóanyagot, akkor ismeri a Cost Management-adatok manuális letöltésének módját. Azonban létrehozhat egy naponta ismétlődő feladatot, amely mindennap automatikusan exportálja a Cost Management-adatokat az Azure Storage-ba. Az exportált adatok CSV formátumúak, és a Cost Management által gyűjtött összes adatot tartalmazzák. Ezt követően az Azure Storage-beli exportált adatokat külső rendszerekkel is használhatja, illetve saját egyéni adataival kombinálhatja őket. Az exportált adatokat külső rendszerben, például egy irányítópulton vagy egyéb pénzügyi rendszerben is használhatja.
+Ha elolvasta a Költségelemzés című oktatóanyagot, akkor ismeri a Cost Management-adatok manuális letöltésének módját. Az ismétlődő feladatokat, amelyek automatikusan exportálja a Cost Management adataihoz az Azure storage-napi, heti vagy havi időközönként is létrehozhat. Az exportált adatok CSV formátumúak, és a Cost Management által gyűjtött összes adatot tartalmazzák. Ezt követően az Azure Storage-beli exportált adatokat külső rendszerekkel is használhatja, illetve saját egyéni adataival kombinálhatja őket. Az exportált adatokat külső rendszerben, például egy irányítópulton vagy egyéb pénzügyi rendszerben is használhatja.
 
 Az oktatóanyagban szereplő példák bemutatják, hogyan exportálhatja a Cost Management-adatokat, majd hogyan ellenőrizheti, hogy az adatok exportálása sikeres volt-e.
 
@@ -48,11 +48,17 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 Cost Management + Számlázás &gt; Cost Management &gt; válasszon ki egy előfizetést vagy egy előfizetésben szereplő erőforráscsoportot &gt; Exportálás &gt; **Hozzáadás**.
 
-Adjon meg egy nevet az exportálási feladathoz, és adja meg az előfizetést, az Azure Storage-fiókot, a tárolót és a fájltároló mappát vagy blobtárolót, majd kattintson a **Létrehozás** parancsra.
+Adjon meg egy nevet az exportálás, és válassza a "Hónap elejétől számított költségek naponta exportálása" lehetőséget. Kattintson a **Tovább** gombra.
 
-![Új exportálási feladat](./media/tutorial-export-acm-data/new-export01.png)
+![Új exportálási: exportálása típusa](./media/tutorial-export-acm-data/basics_exports.png)
 
-Az új exportálási feladat megjelenik az exportálási feladatok listájában. Alapértelmezés szerint az új exportálási feladatok engedélyezve vannak, és napi rendszerességgel futnak. Ha szeretne letiltani vagy törölni egy ütemezett exportálási feladatot, kattintson a lista bármelyik elemére, majd a **Letiltás** vagy a **Törlés** parancsra.
+Adja meg az Azure storage-fiók előfizetést, majd válassza ki a tárfiókját.  Adja meg a storage-tárolót és a könyvtár elérési útja, adja meg az exportfájl ugorhat.  Kattintson a **Tovább** gombra.
+
+![Új exportálási: storage](./media/tutorial-export-acm-data/storage_exports.png)
+
+Az Exportálás részleteiért tekintse át, és kattintson a **létrehozás**.
+
+Az új exportálási feladat megjelenik az exportálási feladatok listájában. Új exportálási alapértelmezés szerint engedélyezve vannak. Ha szeretne letiltani vagy törölni egy ütemezett exportálási feladatot, kattintson a lista bármelyik elemére, majd a **Letiltás** vagy a **Törlés** parancsra.
 
 Kezdetben egy-két óra is eltelhet az exportálási feladat lefutásáig. Azonban négy órát is igénybe vehet, mire az adatok megjelennek az exportált fájlokban.
 

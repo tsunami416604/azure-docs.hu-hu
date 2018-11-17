@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: tutorial
 ms.date: 11/05/2018
 ms.author: pafarley
-ms.openlocfilehash: 5319584d892c261dcc6290703e9ca6518640cc94
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 8db2437b7f78271aee131cf5b4dfd9f06f744c66
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685480"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852673"
 ---
 # <a name="tutorial-create-a-wpf-app-to-display-face-data-in-an-image"></a>Oktatóanyag: Az arcfelismerés adatok megjelenítéséhez a képet a WPF-alkalmazás létrehozása
 
@@ -67,7 +67,7 @@ Nyissa meg *MainWindow.xaml.cs* , és adja hozzá az ügyfél könyvtár névter
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=1-12)]
 
-Ezután helyezze be a következő kódot a **MainWindow** osztály. Ez létrehoz egy **FaceClient** példány használatával az előfizetési kulcsot, amelynek meg kell adnia a saját maga. Meg kell adnia a régió karakterláncot `faceEndpoint` a megfelelő régióba az előfizetéshez.
+Ezután helyezze be a következő kódot a **MainWindow** osztály. Ez létrehoz egy **FaceClient** példány használatával az előfizetési kulcsot, amelynek meg kell adnia a saját maga. Meg kell adnia a régió karakterláncot `faceEndpoint` a megfelelő régióba az előfizetéséhez (lásd: a [Face API-dokumentumok](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) minden régióban végpontok listáját).
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=18-46)]
 

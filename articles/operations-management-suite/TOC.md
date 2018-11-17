@@ -42,9 +42,9 @@
 #### [Office 365](oms-solution-office-365.md)
 #### [Service Fabric-elemzés](../log-analytics/log-analytics-service-fabric.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### Szolgáltatástérkép
-##### [Használat](../monitoring/monitoring-service-map.md)
-##### [Konfigurálás](../monitoring/monitoring-service-map-configure.md)
-##### [Integrálás az Operations Managerrel](../monitoring/monitoring-service-map-scom.md)
+##### [Használat](../azure-monitor/insights/service-map.md)
+##### [Konfigurálás](../azure-monitor/insights/service-map-configure.md)
+##### [Integrálás az Operations Managerrel](../azure-monitor/insights/service-map-scom.md)
 #### [SQL-elemzés](../log-analytics/log-analytics-sql-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Surface Hub](../log-analytics/log-analytics-surface-hubs.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Frissítési elemzés](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics?f=255&MSPPError=-2147217396)
@@ -65,7 +65,7 @@
 ### [Ajánlott eljárások](../azure-monitor/insights/solutions-best-practices.md)
 
 ## Felügyeleti forgatókönyvek
-### [Elemzési adatok gyűjtése a runbookból](../monitoring/monitoring-runbook-datacollect.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+### [Elemzési adatok gyűjtése a runbookból](../azure-monitor/platform/runbook-datacollect.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 # További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)

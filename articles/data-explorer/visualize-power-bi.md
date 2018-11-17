@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: fc2d96c4dc8184ba26001fd77732ce7c45253d5a
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
-ms.translationtype: HT
+ms.openlocfilehash: c04c9d9618cfc507ebdba170e0697aeaeecb1e99
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393712"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854101"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>Az Azure Data Explorerből származó adatok megjelenítése a Power BI használatával
 
@@ -34,11 +34,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az Azure- és Power BI-előfizetések mellett a következőkre lesz szüksége az oktatóanyag elvégzéséhez:
 
-* [Egy tesztfürt és egy adatbázis](create-cluster-database-portal.md)
+* [Egy tesztfürt és -adatbázis](create-cluster-database-portal.md)
 
-* [A StormEvents mintaadatok](ingest-sample-data.md)
+* [A StormEvents mintaadatok](ingest-sample-data.md). [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
-* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (kattintson az **INGYENES LETÖLTÉSHEZ**)
+* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (válasszon **ingyenes letöltés**)
 
 ## <a name="render-visuals-in-azure-data-explorer"></a>Vizualizációk renderelése az Azure Data Explorerben
 
@@ -82,17 +82,17 @@ Ideje a Power BI-ra váltanunk, azonban érdemes észben tartania, hogy számos 
 
 Most már csatlakozhat az Azure Data Explorerhez a Power BI Desktopból.
 
-1. A Power BI Desktopban válassza az **Adatok lekérése**, majd a **Továbbiak** lehetőséget.
+1. A Power BI desktopban a **kezdőlap** lapon jelölje be **adatok lekérése** majd **további**.
 
     ![Adatok lekérése](media/visualize-power-bi/get-data-more.png)
 
-1. Keresse meg a *Kusto* elemet, válassza az **Azure Kusto (bétaverzió)** lehetőséget, majd pedig a **Csatlakozás** elemet.
+1. Keresse meg *Azure adatkezelő*válassza **Azure Data Explorer (bétaverzió)**, majd **Connect**.
 
     ![Adatok keresése és lekérése](media/visualize-power-bi/search-get-data.png)
 
 1. Az **Összekötő előnézete** képernyőn válassza a **Folytatás** lehetőséget.
 
-1. A **Kusto** képernyőn adja meg a tesztfürt és az adatbázis nevét. A fürtnek a következő formátumban kell lennie: `https://<ClusterName>.<Region>.kusto.windows.net`. A tábla nevének írja be a *StormEvents* kifejezést. A többi beállítást hagyja az alapértelmezett értékükön, majd válassza az **OK** lehetőséget.
+1. A következő képernyőn adja meg a teszt-fürt és az adatbázis nevét. A fürtnek a következő formátumban kell lennie: `https://<ClusterName>.<Region>.kusto.windows.net`. A tábla nevének írja be a *StormEvents* kifejezést. A többi beállítást hagyja az alapértelmezett értékükön, majd válassza az **OK** lehetőséget.
 
     ![Fürt-, adatbázis- és táblázatbeállítások](media/visualize-power-bi/cluster-database-table.png)
 

@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: hning86
 ms.author: haining
 ms.reviewer: sgilley
-ms.date: 09/24/2018
-ms.openlocfilehash: 1887004b2a83ca5778ccb29cf996bcf2720ce3b8
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.date: 11/16/2018
+ms.openlocfilehash: 221bca6cb11d488e38417280e16b5caa9133bd46
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711412"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853489"
 ---
 # <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>1. oktatóanyag: Képbesorolási modell betanítása az Azure Machine Learning szolgáltatással
 
@@ -42,7 +42,7 @@ Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
 >[!NOTE]
-> Az oktatóanyag tesztelése az Azure Machine Learning SDK 0.168-as verziójával történt. 
+> Ez az oktatóanyag az Azure Machine Learning SDK verziója 0.1.74 tesztelés 
 
 ## <a name="set-up-your-development-environment"></a>A fejlesztési környezet beállítása
 
@@ -93,41 +93,44 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="create-remote-compute-target"></a>Távoli számítógépcél létrehozása
 
-Az Azure Batch AI egy felügyelt szolgáltatás, amely lehetővé teszi az adatelemzők számára, hogy gépi tanulási modelleket tanítsanak be az Azure-beli virtuális gépek fürtjein, beleértve a GPU-támogatással rendelkező virtuális gépeket.  Ebben az oktatóanyagban egy Azure Batch AI-fürtöt fog létrehozni betanítási környezetként. Ez a kód létrehoz Önnek egy fürtöt, ha még nem létezik a munkaterületén. 
+Az Azure az Azure Machine Learning felügyelt számítási egy felügyelt szolgáltatás, amely lehetővé teszi az adatszakértők, az Azure virtuális gépek, beleértve a virtuális gépek a GPU-támogatással rendelkező fürtökön gépi tanulási modelleket taníthat be.  Ez az oktatóanyag-fürtöt hoz létre az Azure által felügyelt számítási a képzési környezet. Ez a kód létrehoz Önnek egy fürtöt, ha még nem létezik a munkaterületén. 
 
  **A fürt létrehozása körülbelül 5 percet vesz igénybe.** Ha a fürt már szerepel a munkaterületben, akkor a létrehozási folyamat kimarad, és a kód a meglévő fürtöt használja.
 
 
 ```python
-from azureml.core.compute import ComputeTarget, BatchAiCompute
-from azureml.core.compute_target import ComputeTargetException
+from azureml.core.compute import BatchAiCompute
+from azureml.core.compute import ComputeTarget
+import os
 
 # choose a name for your cluster
-batchai_cluster_name = "traincluster"
+batchai_cluster_name = os.environ.get("BATCHAI_CLUSTER_NAME", ws.name + "gpu")
+cluster_min_nodes = os.environ.get("BATCHAI_CLUSTER_MIN_NODES", 1)
+cluster_max_nodes = os.environ.get("BATCHAI_CLUSTER_MAX_NODES", 3)
+vm_size = os.environ.get("BATCHAI_CLUSTER_SKU", "STANDARD_NC6")
+autoscale_enabled = os.environ.get("BATCHAI_CLUSTER_AUTOSCALE_ENABLED", True)
 
-try:
-    # look for the existing cluster by name
-    compute_target = ComputeTarget(workspace=ws, name=batchai_cluster_name)
-    if type(compute_target) is BatchAiCompute:
-        print('found compute target {}, just use it.'.format(batchai_cluster_name))
-    else:
-        print('{} exists but it is not a Batch AI cluster. Please choose a different name.'.format(batchai_cluster_name))
-except ComputeTargetException:
+
+if batchai_cluster_name in ws.compute_targets:
+    compute_target = ws.compute_targets[batchai_cluster_name]
+    if compute_target and type(compute_target) is BatchAiCompute:
+        print('found compute target. just use it. ' + batchai_cluster_name)
+else:
     print('creating a new compute target...')
-    compute_config = BatchAiCompute.provisioning_configuration(vm_size="STANDARD_D2_V2", # small CPU-based VM
-                                                                #vm_priority='lowpriority', # optional
-                                                                autoscale_enabled=True,
-                                                                cluster_min_nodes=0, 
-                                                                cluster_max_nodes=4)
+    provisioning_config = BatchAiCompute.provisioning_configuration(vm_size = vm_size, # NC6 is GPU-enabled
+                                                                vm_priority = 'lowpriority', # optional
+                                                                autoscale_enabled = autoscale_enabled,
+                                                                cluster_min_nodes = cluster_min_nodes, 
+                                                                cluster_max_nodes = cluster_max_nodes)
 
     # create the cluster
-    compute_target = ComputeTarget.create(ws, batchai_cluster_name, compute_config)
+    compute_target = ComputeTarget.create(ws, batchai_cluster_name, provisioning_config)
     
     # can poll for a minimum number of nodes and for a specific timeout. 
-    # if no min node count is provided it uses the scale settings for the cluster
+    # if no min node count is provided it will use the scale settings for the cluster
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
     
-    # Use the 'status' property to get a detailed status for the current cluster. 
+     # For a more detailed view of current BatchAI cluster status, use the 'status' property    
     print(compute_target.status.serialize())
 ```
 
@@ -143,7 +146,7 @@ A modell betanítása előtt értelmeznie kell a betanításhoz használni kív�
 
 ### <a name="download-the-mnist-dataset"></a>Az MNIST-adathalmaz letöltése
 
-Töltse le az MNIST-adathalmazt, és mentse a fájlokat egy helyi `data` könyvtárba.  A rendszer a betanításhoz és a teszteléshez is használható képeket és címkéket tölt le.  
+Töltse le az MNIST-adathalmazt, és mentse a fájlokat egy helyi `data` könyvtárba.  A rendszer a betanításhoz és a teszteléshez is használható képeket és címkéket tölt le.
 
 
 ```python
@@ -160,7 +163,7 @@ urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ub
 
 ### <a name="display-some-sample-images"></a>Mintaképek megjelenítése
 
-Töltse be a tömörített fájlokat `numpy` tömbökbe. Ezután a `matplotlib` használatával ábrázoljon 30 véletlenszerű képet az adathalmazból, felettük a hozzájuk tartozó címkével. Vegye figyelembe, hogy ehhez a lépéshez egy `load_data` függvény szükséges, amely az `util.py` fájlban található. Ezt a fájlt a mintamappa tartalmazza. Ügyeljen rá, hogy ezzel a notebookkal egy mappába helyezze. A `load_data` függvény numpy-tömbökbe elemzi a tömörített fájlokat.
+Töltse be a tömörített fájlokat `numpy` tömbökbe. Ezután a `matplotlib` használatával ábrázoljon 30 véletlenszerű képet az adathalmazból, felettük a hozzájuk tartozó címkével. Megjegyzés: Ez a lépés szükséges egy `load_data` -függvény, amely tartalmaz egy `util.py` fájlt. Ezt a fájlt a mintamappa tartalmazza. Ügyeljen rá, hogy ezzel a notebookkal egy mappába helyezze. A `load_data` függvény egyszerűen elemzi a tömörített fájlok numpy tömbök be.
 
 
 
@@ -209,9 +212,9 @@ ds.upload(src_dir='./data', target_path='mnist', overwrite=True, show_progress=T
 ```
 Most már a modell betanításának megkezdéséhez szükséges összes előfeltétellel rendelkezik. 
 
-## <a name="train-a-model-locally"></a>Modell helyi betanítása
+## <a name="train-a-local-model"></a>Egy helyi modell betanítása
 
-Ebben a szakaszban egy, a scikit-learnből származó egyszerű logisztikai regressziós modellt taníthat be helyileg.
+Scikit használó egyszerű logisztikai regressziós modell betanításához – ismerje meg, helyileg.
 
 **A helyi betanítás egy-két percig tarthat** a számítógép konfigurációjától függően.
 
@@ -243,7 +246,7 @@ Most kiterjesztheti ezt az egyszerű modellt egy más regularizációs arányú 
 E gyakorlat céljából küldje el a feladatot a korábban beállított távoli betanítási fürtnek.  A feladat elküldésének menete:
 * Könyvtár létrehozása
 * Betanító szkript létrehozása
-* Becslő létrehozása
+* Hozzon létre egy estimator objektumot
 * Feladat küldése 
 
 ### <a name="create-a-directory"></a>Könyvtár létrehozása
@@ -314,11 +317,10 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 
 Figyelje meg, hogyan kéri le a szkript az adatokat, és menti a modelleket:
 
-+ A betanító szkript beolvas egy argumentumot az adatokat tartalmazó könyvtár megtalálásához.  Amikor később elküldi a feladatot, az adattárban a következő argumentumra kell mutatnia: `parser.add_argument('--data-folder', type = str, dest = 'data_folder', help = 'data directory mounting point')`
-
++ A betanító szkript beolvas egy argumentumot az adatokat tartalmazó könyvtár megtalálásához.  Amikor később elküldi a feladatot, az adattárban a következő argumentumra kell mutatnia: `parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')`
     
 + A betanítási szkript egy outputs (kimenetek) nevű könyvtárba menti a modellt. <br/>
-`joblib.dump(value = clf, filename = 'outputs/sklearn_mnist_model.pkl')`<br/>
+`joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`<br/>
 Az ebbe a könyvtárba írt összes fájl automatikusan fel lesz töltve a munkaterületére. Az oktatóanyag későbbi részében ebből a könyvtárból férhet majd hozzá a modelljéhez.
 
 A rendszer a betanítási szkript alapján hivatkozik a `utils.py` fájlra az adathalmaz megfelelő betöltéséhez.  Másolja ezt a szkriptet a szkriptmappába, hogy a betanítási szkripttel együtt elérhető legyen a távoli erőforráson.
@@ -341,7 +343,7 @@ A futtatás elküldése egy becslőobjektummal történik.  A becslő létrehoz�
 * A betanítási szkript szükséges paraméterei 
 * A betanításhoz szükséges Python-csomagok
 
-Az oktatóanyagban ez a cél a Batch AI-fürt. A projektkönyvtárban található összes fájl fel lesz töltve a fürtcsomópontokra végrehajtás céljából. A data_folder érték az adattárra van állítva (`ds.as_mount()`).
+Az oktatóanyagban ez a cél a Batch AI-fürt. A parancsfájl mappában lévő összes fájlt a rendszer feltölti a fürtcsomópontokon a végrehajtáshoz. A data_folder érték az adattárra van állítva (`ds.as_mount()`).
 
 ```python
 from azureml.train.estimator import Estimator
@@ -423,7 +425,7 @@ A kimenet azt mutatja, hogy a távoli modell pontossága valamivel nagyobb, mint
 
 `{'regularization rate': 0.8, 'accuracy': 0.9204}`
 
-Az üzembe helyezési oktatóanyagban részletesebben megismerheti ezt a modellt.
+A következő oktatóanyagban a ebben a modellben, részletesen ismerje meg.
 
 ## <a name="register-model"></a>Modell regisztrálása
 

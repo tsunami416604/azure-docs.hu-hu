@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 11/09/2018
 ms.author: pafarley
-ms.openlocfilehash: a9e3b4713e11b5f01ea8343471aa33a327210338
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: b6c05382a3a40aa9157fd64a7f0192c58e79b0ee
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578042"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853778"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>Gyors útmutató: Arcok észlelése, a képet, a Face REST API és a cURL használatával
 
@@ -40,7 +40,7 @@ Cserélje le `<Subscription Key>` az Arcfelismerés érvényes előfizetési kul
 
 ### <a name="face-endpoint-url"></a>Face végpont URL-címe
 
-Az URL-cím `https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect` azt jelzi, hogy a lekérdezés Azure Face végpontot. Szüksége lesz az URL-címet, a régiót, amelyben (kivéve, ha már megfelelő) felel meg az előfizetési kulcs megfelelő első részét módosíthatja.
+Az URL-cím `https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect` azt jelzi, hogy a lekérdezés Azure Face végpontot. Előfordulhat, hogy módosítania az URL-címet, a régiót, amelyben felel meg az előfizetési kulcs megfelelő első része (lásd a [Face API-dokumentumok](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) minden régióban végpontok listáját).
 
 ### <a name="url-query-string"></a>URL-cím lekérdezési karakterlánc
 

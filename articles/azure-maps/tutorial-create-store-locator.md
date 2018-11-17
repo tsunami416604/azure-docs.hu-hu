@@ -3,18 +3,18 @@ title: Az Azure Maps store lokátorok létrehozásához |} A Microsoft Docs
 description: Egy tároló-lokátor létrehozása az Azure Maps használatával.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/14/2018
+ms.date: 11/15/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7ee75b88863173a169d02b9e6b7a5ac1b0950578
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
-ms.translationtype: HT
+ms.openlocfilehash: 9f77beb8c51fb3a06045183433907e1c634fb45d
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51708142"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820273"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Egy tároló-lokátor létrehozása az Azure Maps használatával
 
@@ -943,6 +943,12 @@ Ebben az oktatóanyagban megismerheti, hogyan alapszintű store lokátorok létr
 * Adja hozzá a támogatási egy lekérdezési karakterláncot adjon meg egy kezdeti keresett érték. Ha ezt a beállítást a tároló lokátort a, felhasználók könyvjelző formájában elmentheti és megoszthatja a kereséseket. Azt is, hogy ezen a lapon egy másik lapon keresések át egyszerű módszert kínál.  
 * A tároló lokátort, üzembe helyezése egy [Azure App Service Web Appsban](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html). 
 * Store az adatok egy adatbázisban, és keresse meg a közeli helyeket. További tudnivalókért tekintse meg a [SQL Server térbeli adattípusok áttekintése](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017) és [térbeli adatok lekérdezése a legközelebbi szomszéd](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017).
+
+Az oktatóanyag kódmintáját itt érheti el:
+
+> [Egy tároló-lokátor létrehozása az Azure Maps használatával](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)
+
+[A minta megtekintése élőben](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
 
 További információ az Azure Maps lefedettségéről és képességeiről:
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial
-ms.openlocfilehash: 65dc420b6832b7b0a4cf14d63203d4c66e2a4254
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 6b8bf4a0bc6b5e5e9b9ad7f91ba409aaf922e8e9
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993595"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822235"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-cím-típusok és lefoglalási módszerek az Azure-ban
 
@@ -75,7 +75,7 @@ A standard termékváltozatú nyilvános IP-címek jellemzői:
 
 - Csak a statikus kiosztási módszerrel oszthatók ki.
 - Alapértelmezés szerint biztonságosak és zártak a bejövő forgalommal szemben. Az engedélyezett bejövő forgalmat kifejezetten engedélyeznie kell egy [hálózati biztonsági csoporttal](security-overview.md#network-security-groups).
-- Hálózati adapterekhez vagy nyilvános standard terheléselosztókhoz rendelhetők hozzá. További információ az Azure standard terheléselosztókról: [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Hozzárendelt hálózati adapterek, nyilvános standard load Balancer terheléselosztók, az Application Gateway átjárók vagy VPN-átjárókkal. További információ az Azure standard terheléselosztókról: [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Alapértelmezés szerint zónaredundánsak. Létrehozhatóak zónásan, és garantálhatóak adott rendelkezésre állási zónákban. További információ a rendelkezésre állási zónákról: [A rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [A Standard Load Balancer és a rendelkezésre állási zónák](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 > [!NOTE]
@@ -132,8 +132,8 @@ A következő táblázat bemutatja azokat a konkrét tulajdonságokat, amelyekke
 | --- | --- | --- | --- |
 | Virtuális gép |Hálózati illesztő |Igen |Igen |
 | Internetkapcsolattal rendelkező terheléselosztó |Előtér-konfiguráció |Igen |Igen |
-| VPN-átjáró |Átjáró IP-konfigurációja |Igen |Nem |
-| Alkalmazásátjáró |Előtér-konfiguráció |Igen |Nem |
+| VPN-átjáró |Átjáró IP-konfigurációja |Igen |Igen |
+| Alkalmazásátjáró |Előtér-konfiguráció |Igen |Igen |
 
 ## <a name="private-ip-addresses"></a>Magánhálózati IP-címek
 A magánhálózati IP-címek segítségével az Azure-erőforrások képesek a helyszíni vagy a [virtuális hálózaton](virtual-networks-overview.md) lévő erőforrásokkal VPN-átjárón vagy ExpressRoute-kapcsolatcsoporton keresztül kommunikálni az internetről elérhető IP-címek használata nélkül is.

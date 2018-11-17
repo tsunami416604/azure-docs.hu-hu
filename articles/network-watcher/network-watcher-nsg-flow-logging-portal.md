@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: f010bebcf1130b3061c60987ffbd4e706a030773
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
-ms.translationtype: HT
+ms.openlocfilehash: 2ec2ac6508dfbf0c1a42f72dc393fa8b841ab877
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41919780"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822466"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Oktatóanyag: Virtuális gép bejövő és kimenő hálózati forgalmának naplózása az Azure Portal használatával
 
@@ -36,6 +36,9 @@ A hálózati biztonsági csoportok (NSG-k) lehetővé teszik a virtuális gépek
 > * Naplózott adatok megtekintése
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
+> [!NOTE] 
+> Flow 2-es naplók verzió csak érhetők el az USA nyugati középső régiójában. Beállítási lehetőségek érhetők el az Azure portal és a REST API használatával. 2-es verzió engedélyezése egy nem támogatott régióban naplókat eredményez a tárfiókba mentett 1-es naplók.
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
@@ -100,8 +103,9 @@ Az NSG-folyamatnaplózáshoz a **Microsoft.insights** szolgáltató szükséges.
 
 6. A hálózati biztonsági csoportok közül válassza a **myVm-nsg** nevű csoportot.
 7. A **Folyamatnaplók beállításai** területen válassza a **Be** lehetőséget.
-8. Válassza ki a 3. lépésben létrehozott Storage-fiókot.
-9. A **Megőrzés (nap)** beállítást állítsa 5 értékre, majd válassza a **Mentés** lehetőséget.
+8. A flow naplózási verziónak a kiválasztása. 2. verzió folyamat munkamenet-statisztika (bájtok és csomagok) tartalmaz egy. ![A folyamat-naplók verziónak a kiválasztása](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
+9. Válassza ki a 3. lépésben létrehozott Storage-fiókot.
+10. A **Megőrzés (nap)** beállítást állítsa 5 értékre, majd válassza a **Mentés** lehetőséget.
 
 ## <a name="download-flow-log"></a>Folyamatnapló letöltése
 
@@ -126,6 +130,7 @@ Az NSG-folyamatnaplózáshoz a **Microsoft.insights** szolgáltató szükséges.
 
 Az alábbi json-fájl egy példa arra, mi látható majd a PT1H.json fájlban az egyes folyamatok esetén, amelyekhez adatokat naplóz a rendszer:
 
+### <a name="version-1-flow-log-event"></a>1. verziójának flow naplózási esemény
 ```json
 {
     "time": "2018-05-01T15:00:02.1713710Z",
@@ -135,29 +140,83 @@ Az alábbi json-fájl egy példa arra, mi látható majd a PT1H.json fájlban az
     "operationName": "NetworkSecurityGroupFlowEvents",
     "properties": {
         "Version": 1,
-        "flows": [{
-            "rule": "UserRule_default-allow-rdp",
-            "flows": [{
-                "mac": "000D3A170C69",
-                "flowTuples": ["1525186745,192.168.1.4,10.0.0.4,55960,3389,T,I,A"]
-            }]
-        }]
+        "flows": [
+            {
+                "rule": "UserRule_default-allow-rdp",
+                "flows": [
+                    {
+                        "mac": "000D3A170C69",
+                        "flowTuples": [
+                            "1525186745,192.168.1.4,10.0.0.4,55960,3389,T,I,A"
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 }
 ```
+### <a name="version-2-flow-log-event"></a>2. verzió flow naplózási esemény
+```json
+{
+    "time": "2018-11-13T12:00:35.3899262Z",
+    "systemId": "a0fca5ce-022c-47b1-9735-89943b42f2fa",
+    "category": "NetworkSecurityGroupFlowEvent",
+    "resourceId": "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000000/RESOURCEGROUPS/FABRIKAMRG/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/FABRIAKMVM1-NSG",
+    "operationName": "NetworkSecurityGroupFlowEvents",
+    "properties": {
+        "Version": 2,
+        "flows": [
+            {
+                "rule": "DefaultRule_DenyAllInBound",
+                "flows": [
+                    {
+                        "mac": "000D3AF87856",
+                        "flowTuples": [
+                            "1542110402,94.102.49.190,10.5.16.4,28746,443,U,I,D,B,,,,",
+                            "1542110424,176.119.4.10,10.5.16.4,56509,59336,T,I,D,B,,,,",
+                            "1542110432,167.99.86.8,10.5.16.4,48495,8088,T,I,D,B,,,,"
+                        ]
+                    }
+                ]
+            },
+            {
+                "rule": "DefaultRule_AllowInternetOutBound",
+                "flows": [
+                    {
+                        "mac": "000D3AF87856",
+                        "flowTuples": [
+                            "1542110377,10.5.16.4,13.67.143.118,59831,443,T,O,A,B,,,,",
+                            "1542110379,10.5.16.4,13.67.143.117,59932,443,T,O,A,E,1,66,1,66",
+                            "1542110379,10.5.16.4,13.67.143.115,44931,443,T,O,A,C,30,16978,24,14008",
+                            "1542110406,10.5.16.4,40.71.12.225,59929,443,T,O,A,E,15,8489,12,7054"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
+
 
 A **mac** érték az előző kimenetben azon hálózati adapter MAC-címét jelöli, amely a virtuális gép létrehozásakor lett létrehozva. A **flowTuples** vesszővel tagolt adatai a következők:
 
 | Példaadatok | Az adatok jelentése   | Magyarázat                                                                              |
 | ---          | ---                    | ---                                                                                      |
-| 1525186745   | Időbélyeg             | Az az időpont, amikor a forgalom jelentkezett, UNIX EPOCH formátumban. Az előzőben példában látható dátum átalakítva: 2018. május 1. 14:59:05 GMT.                                                                                    |
-| 192.168.1.4  | Forrás IP-címe      | A forrás IP-cím, ahonnan a forgalom érkezett.
-| 10.0.0.4     | Cél IP-cím | A cél IP-cím, ahová a forgalom tartott. A 10.0.0.4 a [Virtuális gép létrehozása](#create-a-vm) szakaszban létrehozott virtuális gép magánhálózati IP-címe.                                                                                 |
-| 55960        | Forrásport            | A forrásport, ahonnan a forgalom érkezett.                                           |
-| 3389         | Célport       | A célport, ahová a forgalom tartott. Mivel a forgalom a 3389-es porthoz tartott, a naplófájl **UserRule_default-allow-rdp** nevű szabálya dolgozta fel.                                                |
+| 1542110377   | Időbélyeg             | Az az időpont, amikor a forgalom jelentkezett, UNIX EPOCH formátumban. Az előzőben példában látható dátum átalakítva: 2018. május 1. 14:59:05 GMT.                                                                                    |
+| 10.0.0.4  | Forrás IP-címe      | A forrás IP-cím, ahonnan a forgalom érkezett. A 10.0.0.4 a [Virtuális gép létrehozása](#create-a-vm) szakaszban létrehozott virtuális gép magánhálózati IP-címe.
+| 13.67.143.118     | Cél IP-cím | A cél IP-cím, ahová a forgalom tartott.                                                                                  |
+| 44931        | Forrásport            | A forrásport, ahonnan a forgalom érkezett.                                           |
+| 443         | Célport       | A célport, ahová a forgalom tartott. Mivel a rendszer felé irányuló 443-as porton, a szabály nevű **UserRule_default-allow-rdp**, a log fájl feldolgozása a folyamatot.                                                |
 | T            | Protokoll               | Azt jelöli, hogy a forgalom protokollja TCP (T) vagy UDP (U) volt-e.                                  |
-| I            | Irány              | Azt jelöli, hogy a forgalom bejövő (I) vagy kimenő (O) volt-e.                                     |
-| A            | Műveletek                 | Azt jelöli, hogy a forgalom engedélyezve (A) vagy elutasítva (D) lett-e.                                           |
+| O            | Irány              | Azt jelöli, hogy a forgalom bejövő (I) vagy kimenő (O) volt-e.                                     |
+| A            | Műveletek                 | Azt jelöli, hogy a forgalom engedélyezve (A) vagy elutasítva (D) lett-e.  
+| C            | A folyamat állapota **csak 2 verzió** | A folyamat állapotát rögzíti. Lehetséges állapotok a következők **B**: kezdje, ha egy folyamat jön létre. Statisztikák nem biztosított. **C**: egy folyamatban lévő folyamat folytatása. Statisztika 5 perces időközönként állnak rendelkezésre. **E**: záró, amikor a folyamat megszakadt. Statisztika állnak rendelkezésre. |
+| 30 | – Küldött csomagok forrás és a cél **csak verzió 2** | Legutóbbi frissítés óta küldeni a forrás célhelyre TCP vagy UDP-csomagok teljes száma. |
+| 16978 | Bájt lett elküldve – a forrás és a cél **csak verzió 2** | A legutóbbi frissítés óta küldeni a forrás célhelyre TCP vagy UDP-csomag bájtok száma. Csomag bájt közé tartozik, a csomag fejlécének és adattartalmának bontása. | 
+| 24 | – Küldött csomagok forrás-cél **csak verzió 2** | Legutóbbi frissítés óta forrás célhelyre küldött TCP vagy UDP-csomagok teljes száma. |
+| 14008| Bájt lett elküldve – a forrás-cél **csak verzió 2** | A TCP és UDP-csomag által küldött bájtok cél forrás legutóbbi frissítés óta teljes száma. Csomag bájt közé tartozik a csomag fejlécének és adattartalmának bontása.| |
 
 ## <a name="next-steps"></a>További lépések
 

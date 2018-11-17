@@ -6,15 +6,15 @@ manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 07/19/2018
+ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 6e92ef276d270fcc4c351fb89c699c8addd74632
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.openlocfilehash: b54f7601f66bd115b7ceb937e2c0ebf8ca8eb01e
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222149"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821061"
 ---
 # <a name="tutorial-configure-and-manage-devices-connected-to-your-monitoring-solution"></a>Oktatóanyag: A monitorozási megoldáshoz csatlakoztatott eszközök konfigurálása és kezelése
 
@@ -63,7 +63,7 @@ A részletes diagnosztikai adatok megtekintéséhez görgessen lefelé a **Devic
 
 ## <a name="act-on-a-device"></a>Műveletek elvégzése egy eszközön
 
-Ha tesztelni szeretné, hogy a szimulált motoreszköz megfelelő választ ad-e az irányítópult által kezdeményezett műveletekre, futtassa a **FirmwareUpdate** metódust. Ha egy műveletet szeretne végrehajtani egy eszközön egy metódus futtatásával, válassza ki az eszközt az eszközök listájából, majd válassza a **Jobs** (Feladatok) lehetőséget. Ha több eszközön is szeretne műveleteket végezni, egyszerre több eszközt is kiválaszthat. A **feladatok** paneljén válassza a **Run method** (Metódus futtatása) lehetőséget. Az **Engine** (Motor) eszközmodell három metódust határoz meg: **FirmwareUpdate**, **FillTank** és **EmptyTank**:
+Ha tesztelni szeretné, hogy a szimulált motoreszköz megfelelő választ ad-e az irányítópult által kezdeményezett műveletekre, futtassa a **FirmwareUpdate** metódust. Ha egy műveletet szeretne végrehajtani egy eszközön egy metódus futtatásával, válassza ki az eszközt az eszközök listájából, majd válassza a **Jobs** (Feladatok) lehetőséget. Ha több eszközön is szeretne műveleteket végezni, egyszerre több eszközt is kiválaszthat. Az a **feladatok** panelen kattintson **módszerek**. Az **Engine** (Motor) eszközmodell három metódust határoz meg: **FirmwareUpdate**, **FillTank** és **EmptyTank**:
 
 [![Motorokhoz kapcsolódó metódusok](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-expanded.png#lightbox)
 
@@ -81,7 +81,7 @@ Ha az **eszközök** lapján több különböző típusú eszközt választ ki, 
 
 ## <a name="reconfigure-a-device"></a>Eszköz újrakonfigurálása
 
-Ha tesztelni szeretné, hogy a motor konfigurációs tulajdonságai frissíthetők-e, válassza ki a motort az **eszközök** lapján található eszközlistából. Ezután kattintson a **Jobs** (Feladatok) gombra, majd válassza a **Reconfigure** (Újrakonfigurálás) lehetőséget. A feladatok paneljén a kiválasztott eszköz frissíthető tulajdonságértékei láthatók:
+Ha tesztelni szeretné, hogy a motor konfigurációs tulajdonságai frissíthetők-e, válassza ki a motort az **eszközök** lapján található eszközlistából. Kattintson a **feladatok**, és válassza a **tulajdonságok**. A feladatok paneljén a kiválasztott eszköz frissíthető tulajdonságértékei láthatók:
 
 [![Eszköz újrakonfigurálása](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-expanded.png#lightbox)
 

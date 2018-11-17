@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 9c2d460d3c8cfb4aac6e09eeb26ac23c98f82b24
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.openlocfilehash: f2b3296385cd11fc37d15b536ea02773802bdba1
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341616"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854237"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-go-in-computer-vision"></a>Rövid útmutató: Miniatűr létrehozása a REST API és Go használatával a Computer Visionben
 
@@ -38,7 +38,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
     1. Ha szükséges, cserélje le az `uriBase` értéket azon Azure-régió [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) metódusának végponti URL-címére, ahol az előfizetői azonosítókat beszerezte.
     1. Ha szeretné, cserélje le az `imageUrl` értéket annak a képnek az URL-címére, amelyhez miniatűrt szeretne létrehozni.
 1. Mentse a kódot fájlként `.go` kiterjesztéssel. Például: `get-thumbnail.go`.
-1. Nyisson meg egy parancssort.
+1. Nyisson meg egy parancsablakot.
 1. A parancssorban futtassa a `go build` parancsot a fájl csomagjának lefordításához. Például: `go build get-thumbnail.go`.
 1. Amikor a rendszer erre kéri, futtassa a fordított csomagot. Például: `get-thumbnail`.
 
@@ -63,7 +63,7 @@ func main() {
     // from the West US region, replace "westcentralus" in the URL
     // below with "westus".
     //
-    // Free trial subscription keys are generated in the West Central US region.
+    // Free trial subscription keys are generated in the "westus" region.
     // If you use a free trial subscription key, you shouldn't need to change
     // this region.
     const uriBase =

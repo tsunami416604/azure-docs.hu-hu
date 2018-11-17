@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 2b653c57aafd9e457855390f4f9955d9d387ed20
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.openlocfilehash: 21ff210ad46b4add2d3f639d8e68bf2784f5acd8
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344183"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852435"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-javascript-in-computer-vision"></a>Rövid útmutató: Kézzel írt szöveg kinyerése a REST API és a JavaScript használatával a Computer Vision szolgáltatásban
 
@@ -39,7 +39,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
     1. Cserélje le a `subscriptionKey` értéket az előfizetői azonosítóra.
     1. Szükség esetén cserélje le az `uriBase` értékét azon [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) metódus végpontjának URL-címére, amely az előfizetési kulcsokat tartalmazó Azure-régióból származik.
     1. Ha szeretné, cserélje le az `inputImage` vezérlő `value` értékét egy másik olyan kép URL-címére, amelyből kézzel írt szöveget szeretne kinyerni.
-1. Mentse a kódot fájlként `.html` kiterjesztéssel. Például: `get-handwriting.html`.
+1. Mentse a kódot egy `.html` kiterjesztésű fájlként. Például: `get-handwriting.html`.
 1. Nyisson meg egy böngészőablakot.
 1. A böngészőben húzza a fájlt a böngészőablakba.
 1. Amikor megjelenik a weblap, kattintson a **Kép felolvasása** gombra.
@@ -67,7 +67,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
         // from the West US region, replace "westcentralus" in the URL
         // below with "westus".
         //
-        // Free trial subscription keys are generated in the West Central US region.
+        // Free trial subscription keys are generated in the "westus" region.
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
         var uriBase =

@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: f8ba4709f8263119dd5134040797f085ee8239ff
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.openlocfilehash: 4594d84c411994b4157b2fa51ed5d6d24088380d
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339472"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852333"
 ---
 # <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>Rövid útmutató: Tartománymodell használata a REST és a Python használatával a Computer Visionben
 
@@ -29,7 +29,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A minta helyi futtatásához rendelkeznie kell a [Pythonnal](https://www.python.org/downloads/).
+- A [Pythonnak](https://www.python.org/downloads/) telepítve kell lennie, ha a mintát helyben szeretné futtatni.
 - Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Az előfizetői azonosító beszerzéséhez lásd az [előfizetői azonosítók beszerzéséről](../Vision-API-How-to-Topics/HowToSubscribe.md) szóló témakört.
 
 ## <a name="create-and-run-the-landmarks-sample"></a>A nevezetességminta létrehozása és futtatása
@@ -41,9 +41,9 @@ A nevezetességminta létrehozásához és futtatásához az alábbi lépéseket
     1. Cserélje le a `subscription_key` értéket az előfizetői azonosítóra.
     1. Ha szükséges, cserélje le az `vision_base_url` értéket azon Azure-régió Computer Vision-erőforrás metódusának végponti URL-címére, ahol az előfizetői azonosítókat beszerezte.
     1. Ha szeretné, cserélje le az `image_url` értéket annak a képnek az URL-címére, amelyen nevezetességeket szeretne azonosítani.
-1. Mentse a kódot fájlként `.py` kiterjesztéssel. Például: `get-landmarks.py`.
-1. Nyisson meg egy parancssort.
-1. Amikor a rendszer kéri, a `python` paranccsal futtassa a mintát. Például: `python get-landmarks.py`.
+1. Mentse a kódot egy `.py` kiterjesztésű fájlként. Például: `get-landmarks.py`.
+1. Nyisson meg egy parancsablakot.
+1. A parancssoron használja a `python` parancsot a minta futtatására. Például: `python get-landmarks.py`.
 
 ```python
 import requests
@@ -61,7 +61,7 @@ assert subscription_key
 # subscription keys. For example, if you got your subscription keys from
 # westus, replace "westcentralus" in the URI below with "westus".
 #
-# Free trial subscription keys are generated in the westcentralus region.
+# Free trial subscription keys are generated in the "westus" region.
 # If you use a free trial subscription key, you shouldn't need to change
 # this region.
 vision_base_url = "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/"
@@ -95,7 +95,7 @@ _ = plt.title(landmark_name, size="x-large", y=-0.1)
 
 ## <a name="examine-the-response-for-the-landmarks-sample"></a>A nevezetességminta válaszainak vizsgálata
 
-A rendszer JSON formátumban adja vissza a sikeres választ. A mintaweblap elemzi és megjeleníti a sikeres választ a parancssorban, a következő példához hasonló módon:
+A rendszer JSON formátumban adja vissza a sikeres választ. A mintawebhely kielemez és megjelenít egy sikeres, az alábbihoz hasonló választ a parancsablakban:
 
 ```json
 {
@@ -125,9 +125,9 @@ A nevezetességminta létrehozásához és futtatásához az alábbi lépéseket
     1. Cserélje le a `subscription_key` értéket az előfizetői azonosítóra.
     1. Ha szükséges, cserélje le az `vision_base_url` értéket azon Azure-régió Computer Vision-erőforrás metódusának végponti URL-címére, ahol az előfizetői azonosítókat beszerezte.
     1. Ha szeretné, cserélje le az `image_url` értéket annak a képnek az URL-címére, amelyen hírességeket szeretne azonosítani.
-1. Mentse a kódot fájlként `.py` kiterjesztéssel. Például: `get-celebrities.py`.
-1. Nyisson meg egy parancssort.
-1. Amikor a rendszer kéri, a `python` paranccsal futtassa a mintát. Például: `python get-celebrities.py`.
+1. Mentse a kódot egy `.py` kiterjesztésű fájlként. Például: `get-celebrities.py`.
+1. Nyisson meg egy parancsablakot.
+1. A parancssoron használja a `python` parancsot a minta futtatására. Például: `python get-celebrities.py`.
 
 ```python
 import requests
@@ -172,7 +172,7 @@ _ = plt.title(celebrity_name, size="x-large", y=-0.1)
 
 ## <a name="examine-the-response-for-the-celebrities-sample"></a>A hírességminta válaszainak vizsgálata
 
-A rendszer JSON formátumban adja vissza a sikeres választ. A mintaweblap elemzi és megjeleníti a sikeres választ a parancssorban, a következő példához hasonló módon:
+A rendszer JSON formátumban adja vissza a sikeres választ. A mintawebhely kielemez és megjelenít egy sikeres, az alábbihoz hasonló választ a parancsablakban:
 
 
 ```json

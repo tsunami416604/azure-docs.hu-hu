@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/13/2017
+ms.date: 11/15/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7f14151224a9e2baa74183696c92bca06695bf4f
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
-ms.translationtype: HT
+ms.openlocfilehash: 5d53250ebdc14b7b6631e2f419b5b24ac98f3038
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380148"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853738"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Oktatóanyag: Alkalmazás üzembe helyezése Service Fabric-fürtön CI/CD használatával
 
@@ -94,23 +94,23 @@ Az Azure DevOps kiadási folyamata olyan munkafolyamatot ír le, amely egy alkal
 
 Nyisson meg egy webböngészőt, és keresse meg az új projektet a következő helyen: [https://&lt;myaccount&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting).
 
-Válassza a **Build and release** (Build és kiadás) lapot, majd a **Builds** (Buildek) és a **New pipeline** (Új folyamat) lehetőséget.
+Válassza ki a **folyamatok** lapot, majd **buildek**, majd kattintson a **új adatcsatorna**.
 
 ![Új folyamat][new-pipeline]
 
-Válassza ki forrásként az **Azure DevOps Git** lehetőséget, a **Voting** (Szavazás) projektet, a **Voting** (Szavazás) adattárat és a **master** alapértelmezett ágat vagy a manuális és ütemezett buildeket.  Ezután kattintson a **Continue** (Folytatás) gombra.
+Válassza ki **Azure Git-Adattárakkal** forrásaként, **Voting** csapatprojekt, **Voting** adattárat, és **fő** manuális alapértelmezett ág és ütemezett buildek.  Ezután kattintson a **Continue** (Folytatás) gombra.
+
+![Tárház kiválasztása][select-repo]
 
 A **Select a template** (Sablon kiválasztása) területen válassza az **Azure Service Fabric application** (Azure Service Fabric-alkalmazás) sablont, majd kattintson az **Apply** (Alkalmaz) gombra.
 
 ![Buildsablon kiválasztása][select-build-template]
 
-A **Tasks** (Feladatok) között az **Agent queue** (Ügynöküzenetsor) megfelelőjeként adja meg a következőt: „Hosted VS2017”.
+A **feladatok**, adja meg a "Hosted VS2017" a **ügynökkészlet**.
 
 ![Feladatok kiválasztása][save-and-queue]
 
-A **Triggers** (Eseményindítók) lehetőségnél engedélyezze a folyamatos integrációt az **Enable continuous integration** (Folyamatos integráció engedélyezése) bejelölésével. A **Branch filters** (Ágszűrők) területen kattintson az **+ Add** (+ Hozzáadás) elemre, és az alapértelmezés szerint a **Branch specification** (Ágspecifikáció) **master** lesz. Válassza ki a **Save and queue** (Mentés és üzenetsorba helyezés) elemet a build manuális elindításához.
-
-A **Save build pipeline and queue dialog** (A buildfolyamat és az üzenetsor párbeszédpanelének mentése) menüben kattintson a **Save & queue** (Mentés és üzenetsorba helyezés) elemre.
+A **Triggers** (Eseményindítók) lehetőségnél engedélyezze a folyamatos integrációt az **Enable continuous integration** (Folyamatos integráció engedélyezése) bejelölésével. Belül **szűrők ágban**, a **specifikáció ágban** alapértelmezés szerint a **fő**. Válassza ki a **Save and queue** (Mentés és üzenetsorba helyezés) elemet a build manuális elindításához.
 
 ![Eseményindítók kiválasztása][save-and-queue2]
 
@@ -118,7 +118,7 @@ A buildek leküldés vagy bejelentkezés hatására is aktiválódnak. A build f
 
 ### <a name="create-a-release-pipeline"></a>Kiadási folyamat létrehozása
 
-Válassza ki a **Build & Release** (Build és kiadás) lapot, majd a **Releases** (Kiadások) és a **+ New pipeline** (+ Új folyamat) lehetőséget.  A **Select a template** (Sablon kiválasztása) területen válassza ki az **Azure Service Fabric Deployment** (Üzembe helyezés az Azure Service Fabric használatával) sablont a listából, majd kattintson az **Apply** (Alkalmaz) gombra.
+Válassza ki a **folyamatok** lapot, majd **kiadásokban**, majd **+ új adatcsatorna**.  A **Select a template** (Sablon kiválasztása) területen válassza ki az **Azure Service Fabric Deployment** (Üzembe helyezés az Azure Service Fabric használatával) sablont a listából, majd kattintson az **Apply** (Alkalmaz) gombra.
 
 ![Kiadási sablon kiválasztása][select-release-template]
 
@@ -198,6 +198,7 @@ Folytassa a következő oktatóanyaggal:
 [push-git-repo]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishGitRepo.png
 [publish-code]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishCode.png
 [new-pipeline]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/NewPipeline.png
+[select-repo]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SelectRepo.png
 [select-build-template]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SelectBuildTemplate.png
 [save-and-queue]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SaveAndQueue.png
 [save-and-queue2]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SaveAndQueue2.png
