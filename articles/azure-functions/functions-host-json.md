@@ -10,18 +10,18 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: d794648d3af086263ccffc782f3f3fdf6456eacc
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 8d5403ab91323cea44e31c4ef99c33b387229ef0
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013377"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820426"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>az Azure Functions – Host.JSON referencia 2.x  
 
 > [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
 > * [1-es verzió](functions-host-json-v1.md)
-> * [2. verzió](functions-host-json.md)
+> * [2-es verzió](functions-host-json.md)
 
 A *host.json* metaadatait tartalmazó fájl tartalmaz, amelyek befolyásolják a függvényalkalmazás a függvények globális konfigurációs beállításokat. Ez a cikk felsorolja az v2 modul rendelkezésre álló beállításokat.  
 
@@ -69,7 +69,7 @@ Az alábbi minta *host.json* fájlok a megadott összes lehetséges lehetősége
           "default": "None"
         },
         "applicationInsights": {
-            "sampling": {
+            "samplingSettings": {
               "isEnabled": true,
               "maxTelemetryItemsPerSecond" : 5
             }
@@ -152,7 +152,7 @@ A konfigurációs beállítások [gazdagép állapotfigyelőjét](https://github
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|engedélyezve|igaz|Itt adhatja meg, hogy engedélyezve van-e a szolgáltatás. | 
+|engedélyezve|true|Itt adhatja meg, hogy engedélyezve van-e a szolgáltatás. | 
 |healthCheckInterval|10 másodperc|A háttérben történő rendszeres egészségügyi közötti időintervallum ellenőrzi. | 
 |healthCheckWindow|2 perc|Egy változó időablakban együtt használható a `healthCheckThreshold` beállítás.| 
 |healthCheckThreshold|6|Az állapot-ellenőrzés maximálisan megengedett számú meghiúsulhat a rendszer kezdeményezi a gazdagép újraindítása előtt.| 
@@ -184,8 +184,8 @@ A függvényalkalmazás, beleértve az Application Insights naplózási viselked
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Határozza meg, milyen szintű fájl naplózás engedélyezve van.  Lehetőségek a következők `never`, `always`, `debugOnly`. |
-|LogLevel|–|A szűrés az alkalmazás a Functions naplókategória definiáló objektum. Verzió 2.x követi az ASP.NET Core-elrendezés log kategóriához szűrésre. Ez lehetővé teszi az egyes funkciók naplózási szűrő. További információkért lásd: [napló szűrése](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) az ASP.NET Core dokumentációjában. |
-|applicationInsights|–| A [applicationInsights](#applicationinsights) beállítás. |
+|LogLevel|n/a|A szűrés az alkalmazás a Functions naplókategória definiáló objektum. Verzió 2.x követi az ASP.NET Core-elrendezés log kategóriához szűrésre. Ez lehetővé teszi az egyes funkciók naplózási szűrő. További információkért lásd: [napló szűrése](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) az ASP.NET Core dokumentációjában. |
+|applicationInsights|n/a| A [applicationInsights](#applicationinsights) beállítás. |
 
 ## <a name="queues"></a>üzenetsorok
 
@@ -221,9 +221,9 @@ Egyszeres zárolási viselkedés konfigurációs beállításait. További infor
 |listenerLockPeriod|00:01:00|Az időszak elvégzett figyelő zárolások számára.| 
 |listenerLockRecoveryPollingInterval|00:01:00|A figyelő zárolási helyreállításhoz használt, ha egy figyelő nem zárolható indításkor időtartam alatt.| 
 |lockAcquisitionTimeout|00:01:00|Legfeljebb ennyi idő a modul megpróbálja zárolni.| 
-|lockAcquisitionPollingInterval|–|A zárolás adatolvasási kísérletek közötti időköz.| 
+|lockAcquisitionPollingInterval|n/a|A zárolás adatolvasási kísérletek közötti időköz.| 
 
-## <a name="version"></a>verzió:
+## <a name="version"></a>version
 
 A verzió-karakterlánc `"version": "2.0"` a v2 futtatókörnyezetre függvényalkalmazás megadása kötelező.
 

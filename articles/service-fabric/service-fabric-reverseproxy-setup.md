@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 07/27/201
 ms.author: v-jamebr
-ms.openlocfilehash: c590c9d1ccbbb84a76ba09021a97464ec85c5784
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 2f84550c83c646b44f4a59c3ae506df7c18d1555
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506268"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852979"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Állítsa be, és az Azure Service Fabric fordított proxy konfigurálása
 Fordított proxy egy nem kötelező az Azure Service Fabric-szolgáltatás, amely segít a Service Fabric-fürtön futó mikroszolgáltatásokat felderítése és kommunikálni más szolgáltatásokkal, amelyek http-végpontokat. További tudnivalókért lásd: [fordított proxy az Azure Service Fabric](service-fabric-reverseproxy.md). Ez a cikk bemutatja, hogyan állíthatja be, és a fürtben a fordított proxy konfigurálása. 
@@ -231,7 +231,7 @@ A következő lépések bemutatják, hogy fordított proxy használatával a be�
 
    További információk konfigurálása és kezelése egy önálló fürtöt, valamint a fordított proxy védelmére szolgáló tanúsítványok konfigurálásával kapcsolatos további részleteket a tanúsítványok kapcsolatban lásd: [X509 ügyféltanúsítvány-alapú biztonsági](./service-fabric-windows-cluster-x509-security.md).
 
-Miután módosította a fordított proxy engedélyezése ClusterConfig.json fájl, kövesse a [a fürt konfigurációjának frissítése](./service-fabric-cluster-upgrade-windows-server.md#upgrade-the-cluster-configuration) paranccsal küldje le a módosításokat a fürthöz.
+Miután módosította a fordított proxy engedélyezése ClusterConfig.json fájl, kövesse a [a fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md) paranccsal küldje le a módosításokat a fürthöz.
 
 
 ## <a name="expose-reverse-proxy-on-a-public-port-through-azure-load-balancer"></a>Tegye elérhetővé az Azure Load Balanceren keresztül nyilvános port fordított proxy
@@ -332,7 +332,7 @@ Az értékét állítsa például **DefaultHttpRequestTimeout** , a kérelem id�
    }
    ``` 
 
-Azure fürtök hálóbeállítások frissítésével kapcsolatos további információkért lásd: [testre szabhatja a Resource Manager-sablonok használatával fürtök beállításait](./service-fabric-cluster-fabric-settings.md#customize-cluster-settings-using-resource-manager-templates). Az önálló fürtök esetén lásd: [fürtbeállításokhoz az önálló fürtök testreszabása](./service-fabric-cluster-fabric-settings.md#customize-cluster-settings-for-standalone-clusters). 
+Azure fürtök hálóbeállítások frissítésével kapcsolatos további információkért lásd: [testre szabhatja a Resource Manager-sablonok használatával fürtök beállításait](service-fabric-cluster-config-upgrade-azure.md). Az önálló fürtök esetén lásd: [fürtbeállításokhoz az önálló fürtök testreszabása](service-fabric-cluster-config-upgrade-windows-server.md). 
 
 Több hálóbeállítások szolgálnak a fordított proxy és a szolgáltatások közötti biztonságos kommunikáció érdekében. Ezek a beállítások kapcsolatos részletes információkért lásd: [Csatlakozás biztonságos szolgáltatás, amely a fordított proxy](service-fabric-reverseproxy-configure-secure-communication.md).
 

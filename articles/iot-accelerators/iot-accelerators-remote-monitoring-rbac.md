@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
-ms.openlocfilehash: a56cb92dc8870bf3fff6de0b1d5d907a0898c216
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 56fbb5d45e55e63ae887d915367cfc649e531095
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364295"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820222"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>A távoli figyelési megoldásgyorsító a szerepköralapú hozzáférés-vezérlés konfigurálása
 
@@ -23,29 +23,33 @@ Ez a cikk ismerteti a szerepköralapú hozzáférés-vezérlés konfigurálása 
 
 Ha először telepíti a távoli figyelési megoldás, vannak-e két szerepkör: **rendszergazdai** és **csak olvasható**.
 
-A felhasználói a **rendszergazdai** szerepkör a megoldás teljes körű hozzáféréssel rendelkezik. A felhasználó a **csak olvasható** szerepkör nem hajtható végre az alábbi műveletek bármelyikét:
+A felhasználói a **rendszergazdai** szerepkör a megoldáshoz, többek között a következő engedélyeket az alábbi teljes hozzáféréssel rendelkezik. A felhasználó a **csak olvasható** szerepkör csak lesz hozzáférése a megoldás megtekintéséhez.
 
-- Riasztás frissítése
-- Riasztás törlése
-- Eszközök létrehozása
-- Eszközök frissítése
-- Eszközök törlése
-- Eszközcsoportok létrehozása
-- Az eszközcsoportok frissítése
-- Az eszközcsoportok törlése
-- Szabályok létrehozása
-- Frissítési szabályok
-- Szabályok törlése
-- Feladatok létrehozása
-- A frissítéskezelés SIM
+| Engedély            | Adminisztratív körzet | Csak olvasási engedély |
+|----------------       |-------|-----------|
+| Megoldás megtekintése         | Igen   | Igen       |
+| Riasztás frissítése         | Igen   | Nem        |
+| Riasztás törlése         | Igen   | Nem        |
+| Eszközök létrehozása        | Igen   | Nem        |
+| Eszközök frissítése        | Igen   | Nem        |
+| Eszközök törlése        | Igen   | Nem        |
+| Eszközcsoportok létrehozása  | Igen   | Nem        |
+| Az eszközcsoportok frissítése  | Igen   | Nem        |
+| Az eszközcsoportok törlése  | Igen   | Nem        |
+| Szabályok létrehozása          | Igen   | Nem        |
+| Frissítési szabályok          | Igen   | Nem        |
+| Szabályok törlése          | Igen   | Nem        |
+| Feladatok létrehozása           | Igen   | Nem        |
+| A frissítéskezelés SIM | Igen   | Nem        |
 
-A távoli figyelési megoldás központi telepítését végző személy automatikusan hozzá lesz rendelve a **rendszergazdai** szerepkör és a egy Azure Active Directory-alkalmazás tulajdonosa. Alkalmazás tulajdonosként, szerepköröket rendelhetnek más felhasználók az Azure Portalon.
+Alapértelmezés szerint a rendszer automatikusan hozzárendel a felhasználó, aki üzembe helyezte a megoldást a **rendszergazdai** szerepkör és a egy Azure Active Directory-alkalmazás tulajdonosa. Alkalmazás tulajdonosként, szerepköröket rendelhetnek más felhasználók az Azure Portalon keresztül. Ha azt szeretné, ha a megoldás a szerepköröket egy másik felhasználó, akkor is meg kell application tulajdonosként az Azure Portalon.
 
-Ha azt szeretné, ha a megoldás a szerepköröket egy másik felhasználó, akkor is meg kell application tulajdonosként az Azure Portalon.
+> [!NOTE]
+> A felhasználó, aki üzembe helyezte a megoldást, a **csak személy** ki láthatja után azonnal annak lett létrehozva. Megadását mások eléréséhez egy csak olvasható, rendszergazda vagy egy egyéni szerepkört, tekintse meg a következő útmutatások alatt a felhasználók hozzáadásához és eltávolításához, az alkalmazás megtekintéséhez.
 
 ## <a name="add-or-remove-users"></a>Felhasználók hozzáadása vagy eltávolítása
 
-Az Azure portal használatával adja hozzá, vagy távolítsa el a felhasználók a távoli figyelési megoldás. Az alábbi lépések az a [Azure Active Directory vállalati alkalmazás](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application) , amely a távoli figyelési megoldás üzembe helyezésekor létrejött az Ön számára.
+Egy Azure Active Directory-alkalmazás tulajdonosa, mint az Azure portal használatával adja hozzá, vagy távolítsa el a felhasználó egy szerepkörhöz a távoli figyelési megoldás. Az alábbi lépések az a [Azure Active Directory vállalati alkalmazás](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application) , amely a távoli figyelési megoldás üzembe helyezésekor létrejött.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 

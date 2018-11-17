@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 13748bf23ee70bfa77e15e7112b450637a231742
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: HT
+ms.openlocfilehash: 342e182466d2fe704c5ee188e35dece0abaeea02
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710715"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823095"
 ---
 # <a name="link-partner-id-to-your-azure-accounts"></a>Az Azure-fiókokhoz való hivatkozás Partnerazonosítóra
 
@@ -43,7 +43,7 @@ Ha az ügyfél-erőforrásokhoz való hozzáférés, használatával az Azure po
 
 2. Jelentkezzen be az Azure portálra.
 
-3. Adja meg a Microsoft-partnerazonosítóját. A partner-azonosító a [Microsoft Partner Network(MPN)](https://partner.microsoft.com/) a szervezet azonosítója.
+3. Adja meg a Microsoft-partnerazonosítóját. A partner-azonosító a [Microsoft Partner Network (MPN)](https://partner.microsoft.com/) a szervezet azonosítója.
 
   ![Hivatkozás Partnerazonosítóra bemutató képernyőkép](./media/billing-link-partner-id/link-partner-ID.PNG)
 

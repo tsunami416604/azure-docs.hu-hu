@@ -1,10 +1,11 @@
 ---
-title: '6. lépés: A Machine Learning webszolgáltatás eléréséhez |} Microsoft Docs'
-description: 'A prediktív megoldás bemutatóért Develop 6. lépés: egy aktív Azure Machine Learning Web service eléréséhez.'
+title: '6. lépés: A Machine Learning webszolgáltatás eléréséhez |} A Microsoft Docs'
+description: 'A fejlesztés egy prediktív megoldás bemutatója 6. lépés: egy aktív Azure Machine Learning Web service eléréséhez.'
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
-ms.author: yahajiza
+ms.custom: (previous ms.author yahajiza)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 6a65c89a-40ab-4673-8dd8-8eee0a150e3b
@@ -15,16 +16,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: be63a04d0fe71039b19eb6bc0678a319f622a811
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: abb94165d08a9f4e45924d71ed11a088d662339e
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836704"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822157"
 ---
 # <a name="walkthrough-step-6-access-the-azure-machine-learning-web-service"></a>Az útmutató 6. lépése: Hozzáférés az Azure Machine Learning webszolgáltatáshoz
 
-Ez a forgatókönyv utolsó lépését az [az Azure Machine Learning a prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md)
+Ez a forgatókönyv utolsó lépésében a [az Azure Machine Learning prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md)
 
 1. [Machine Learning-munkaterület létrehozása](walkthrough-1-create-ml-workspace.md)
 2. [Meglévő adatok feltöltése](walkthrough-2-upload-data.md)
@@ -34,20 +35,20 @@ Ez a forgatókönyv utolsó lépését az [az Azure Machine Learning a prediktí
 6. **Hozzáférés a webszolgáltatáshoz**
 
 - - -
-A forgatókönyv az előző lépésben helyeztünk üzembe egy webszolgáltatás, amelyet a jóváírás kockázat előrejelzési modellt használ. Most felhasználók képesek adatokat küldeni és fogadni az eredményeket. 
+Ez az útmutató az előző lépésben üzembe helyeztünk egy webszolgáltatás, amelyet a kredit kockázati előrejelzési modellt használ. Most, a felhasználók adatokat küldeni és fogadni az eredményeket. 
 
-A webszolgáltatás egy Azure webes szolgáltatás, amely kaphat, és térjen vissza az adatokat, és REST API-k az alábbi két módszer egyikével:  
+A Web service egy Azure-alapú webes szolgáltatás, amely képes fogadni, és REST API-k használatával a két módszer egyikével adatokat adja vissza:  
 
-* **Kérelem/válasz** – a felhasználó küld egy vagy több sornyi adatot jóváírás a szolgáltatás egy HTTP protokoll használatával, és a szolgáltatás válaszol, az eredmények egy vagy több készletet.
-* **Kötegelt végrehajtás** – a felhasználó tárolja egy vagy több sort jóváírás adatok az Azure blob-, és ezután elküldi a blob helyére a szolgáltatás. A szolgáltatás az adatok a sorokat a bemeneti BLOB pontszámaihoz, tárolja az eredményeket egy másik blob és tároló URL-CÍMÉT adja vissza.  
+* **Kérés/válasz** – a felhasználó egy vagy több sornyi adatot követel küld a szolgáltatás egy HTTP-protokoll használatával, és a szolgáltatás válasza az eredményeket egy vagy több csoportjára.
+* **Kötegelt végrehajtás** – a felhasználó tárolja egy vagy több adatsor kredit az Azure-ban blob-, és ezután elküldi a szolgáltatásnak a blob helyére. A szolgáltatás az adatok a sorok pontszámmodell a bemeneti BLOB tárolja az eredményeket egy másik blob és URL-címét, hogy a tároló adja vissza.  
 
-A leggyorsabb és legegyszerűbb módja a klasszikus webes szolgáltatás eléréséhez keresztül történik a [Azure ML kérés-válasz szolgáltatás webalkalmazás](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/) vagy [Azure ML kötegelt végrehajtási szolgáltatás Web App sablon](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/).
+Klasszikus webszolgáltatás eléréséhez a leggyorsabb és legegyszerűbb módja van a [Azure ML kérés-válasz szolgáltatás webalkalmazás](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/) vagy [Azure ML kötegelt végrehajtási szolgáltatás webalkalmazás-sablon](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/).
 
-Ezeket a webes alkalmazás sablonokat hozhat létre egy egyéni webalkalmazást, hogy ismeri a webszolgáltatás bemeneti adatokat, és mi ad vissza. Mindössze annyit kell tennie a webszolgáltatás és az adatok eléréséhez, és a sablon elvégzi a többit, azaz.
+A webalkalmazás-sablonokat hozhat létre egyéni webalkalmazásokat, hogy ismeri a webszolgáltatás bemeneti adatokat és milyen adja vissza. Ehhez szüksége, adja meg a webszolgáltatás és az adatokhoz való hozzáférés, és a sablon végzi.
 
-A webes alkalmazás sablonok használatával kapcsolatos további információkért lásd: [egy Azure Machine Learning Web service web app sablonnal felhasználásához](consume-web-service-with-web-app-template.md).
+A webalkalmazás-sablonokat, további tájékoztatást lásd: [egy Azure Machine Learning Web service a webalkalmazás-sablonok felhasználása](consume-web-service-with-web-app-template.md).
 
-Is létrehozhat egy egyéni alkalmazást az előírt, R, C# és Python programozási nyelvek starter kód használatával webes szolgáltatás eléréséhez.
+Hozzáférés a webszolgáltatáshoz, R, a megadott alapszintű kód segítségével egyéni alkalmazásokat is fejleszthet C#, és a Python programozási nyelveket.
 
-A teljes részletei [hogyan kell használni az Azure Machine Learning Web service](consume-web-services.md).
+A részleteket annak [használata az Azure Machine Learning Web service](consume-web-services.md).
 

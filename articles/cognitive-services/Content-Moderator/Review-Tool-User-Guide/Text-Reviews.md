@@ -1,6 +1,6 @@
 ---
-title: Tekintse át az Azure Content moderátor szöveg |} Microsoft Docs
-description: 'Útmutató: tekintse át a szöveges tartalom moderátor megtekintéséhez a pontszám és címkék észlelte. A adatokat a megállapításához használja a tartalom megfelelő-e.'
+title: Tekintse át az Azure Content Moderator szöveg |} A Microsoft Docs
+description: Megtudhatja, hogyan tekintse át a szöveg a Content Moderator, a pontszám és címkék észlelt. Kiszűrni az adatokat használja, hogy megfelelő-e tartalmat.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,27 +9,27 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: sajagtap
-ms.openlocfilehash: cb8774395b7374677e8de3b80630a2d4abf490f9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 60a8d03a6562c9a66c2f6781ebbc330c989b343e
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346962"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852095"
 ---
 # <a name="review-text"></a>Szöveg felülvizsgálata
 
-Tekintse át a szöveg pontszámok használatával Azure tartalom moderátor használható, és címkék észlelte. Az információ használatával határozhatja meg, hogy-e megfelelő tartalom. 
+Tekintse át a szöveges értékeket használatával az Azure Content Moderator használható, és címkék észlelt. Az információ használatával határozhatja meg, hogy-e megfelelő tartalom. 
 
 ## <a name="select-or-enter-the-text-to-review"></a>Válassza ki vagy írja be a szöveget áttekintése
 
-A tartalom moderátor, válassza ki a **próbálja** fülre. Ezután válassza ki a **szöveg** nyissa meg a szöveg moderálás kezdőképernyőn lehetőséget. Adja meg a szöveget, vagy küldje el az Automatikus szöveg moderálás alapértelmezett szöveg. Megadhat egy legfeljebb 1024 karakter hosszú lehet.
+A Content Moderator, válassza ki a **próbálja** fülre. Ezután válassza ki a **szöveg** szöveg moderálása kezdőképernyőjén nyissa meg a beállítást. Adja meg a szöveg, vagy küldje el az alapértelmezett mintaszöveget automatizált szövegmoderálás számára. Megadhat egy legfeljebb 1024 karakter.
 
 ## <a name="get-ready-to-review-results"></a>Felkészülés az eredmények áttekintése
 
-A felülvizsgálati eszköz először meghívja a szöveg moderálás API. Szöveg értékelést, majd a észlelt címkék használatával létrehozott. A felülvizsgálati eszköz megfelel a csapata figyelmet a pontszám modell eredményeinek.
+A felülvizsgálati eszköz először a moderálási API-hívás. Ezt követően hozza azt létre szövegekre vonatkozó vélemények észlelt a címkék használatával. A felülvizsgálati eszköz megfelel a pontszám modell eredményeinek a csapata figyelmet.
 
-## <a name="review-text-results"></a>Szöveg eredményeinek áttekintése
+## <a name="review-text-results"></a>Szöveg eredmények áttekintése
 
-A windows részletes adatok jelennek meg. Eredmények tartalmazzák a észlelt címkék és a szöveg moderálás API által visszaadott eredményobjektumokban tárolt feltételeket. A címke kiválasztása állapot átváltása, válassza ki a címke. Előfordulhat, hogy hozott létre egyéni címkéket is dolgozhat.
+A windows részletes eredmények jelennek meg. Eredmények tartalmazzák a észlelt címkéket és a moderálási API által visszaadott feltételeket. Váltsa át egy címke kijelölési állapotát, jelölje be a címke. Előfordulhat, hogy már létrehozott egyéni címkéket is együttműködik.
 
-![Szöveg eredményeinek áttekintése](images/3-review-text-2.png)
+![A felülvizsgálati eszköz ábrázoló képernyőkép megjelölt szöveget a Chrome böngésző ablakában](../images/reviewresults_text.png)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: e603ef749dbe66eda1c235b62c5155c4af6dc9db
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3540d68491d6f2c8282aa1ef0b385300aaa190cf
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955146"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822483"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>Hálózati biztonsági csoport Flow naplók konfigurálása az Azure CLI-vel
 
@@ -32,6 +32,9 @@ ms.locfileid: "46955146"
 Hálózati biztonsági csoportok folyamatnaplóit érhetők el a Network Watcher, amely lehetővé teszi a bejövő és kimenő IP-forgalom hálózati biztonsági csoport használatával kapcsolatos információk megtekintéséhez. A folyamat-naplók json formátumban íródtak, és a kimenő és bejövő folyamatok megjelenítése / szabály történik, a hálózati Adapterhez, a folyamat vonatkozik, a folyamat (a forrás és cél IP-cím, forrás és a cél-Port, protokoll), 5-ször több információt, és ha a forgalom engedélyezett vagy tiltott.
 
 Ebben a cikkben szereplő lépések végrehajtásához kell [telepítse az Azure parancssori felület Mac, Linux és Windows (CLI)](/cli/azure/install-azure-cli).
+
+> [!NOTE] 
+> Flow 2-es naplók verzió csak érhetők el az USA nyugati középső régiójában. Beállítási lehetőségek érhetők el az Azure Portal és a REST API-t. 2-es verzió engedélyezése egy nem támogatott régióban naplókat eredményez 1-es verziójú naplókat, a storage-fiókhoz használt kimeneti adattípus.
 
 ## <a name="register-insights-provider"></a>Insights-szolgáltató regisztrálása
 

@@ -4,7 +4,8 @@ description: A powershellel hozhat létre több Machine Learning-modellek és we
 services: machine-learning
 documentationcenter: ''
 author: hning86
-ms.author: haining
+ms.custom: (previous ms.author haining)
+ms.author: amlstudiodocs
 manager: mwinkle
 editor: cgronlun
 ms.assetid: 1076b8eb-5a0d-4ac5-8601-8654d9be229f
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
-ms.openlocfilehash: dcf4e9fa9435d8f20784b20f3873d408adb78c20
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e7ed548ac0561c023a6287b8d70f19c4d0e4ef3e
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469826"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820545"
 ---
 # <a name="create-many-machine-learning-models-and-web-service-endpoints-from-one-experiment-using-powershell"></a>Több Machine Learning-modellek és webszolgáltatás-végpont létrehozása egy kísérletből a PowerShell használatával
 Íme a machine learning gyakran okoz problémát: szeretne létrehozni, amelyek ugyanabban a munkafolyamatban képzés és az azonos algoritmust használja számos modellt. De azt szeretné, hogy különböző képzési adathalmazok alapján bemenetként. Ez a cikk bemutatja, hogyan ipari méretekben az Azure Machine Learning Studióban ehhez csupán egyetlen kísérletben használatával.

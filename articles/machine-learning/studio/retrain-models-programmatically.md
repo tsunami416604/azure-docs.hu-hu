@@ -1,10 +1,11 @@
 ---
-title: Machine Learning modellek szoftveres újratanítása |} Microsoft Docs
-description: Megtudhatja, hogyan programozott módon modell működik, és frissíti a az újonnan betanított modell használatára az Azure Machine Learning webszolgáltatás.
+title: Machine Learning-modellek újbóli betanítása |} A Microsoft Docs
+description: Ismerje meg, hogyan programozott módon modellek szoftveres átképezése és frissíteni a webszolgáltatást a újonnan betanított modell használata az Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
-ms.author: yahajiza
+ms.custom: (previous ms.author yahajiza)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 7ae4f977-e6bf-4d04-9dde-28a66ce7b664
@@ -15,131 +16,131 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: b2090b39991363ee2a5b2e12945d97dc0fa9f2b2
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: e6be52dbfbe6f5d51589f3a3738013dedeee6bdd
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835504"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824761"
 ---
 # <a name="retrain-machine-learning-models-programmatically"></a>Azure Machine Learning-modellek szoftveres átképezése
-Ebben a bemutatóban, megtudhatja, hogyan való programozott módon működik az Azure Machine Learning webszolgáltatás C# és a Machine Learning kötegelt végrehajtási szolgáltatás használatával.
+Ebben a forgatókönyvben megtudhatja, hogyan programozott újratanítás PowerShell az Azure Machine Learning Web Service használatával történő C# és a Machine Learning Batch Execution service.
 
-A modell rendelkezik retrained, a következő forgatókönyvek a prediktív webszolgáltatás a modell frissítése megjelenni:
+Ha a modell rendelkezik retrained, a következő forgatókönyvek bemutatják, hogyan a prediktív webszolgáltatásait a modell frissítése:
 
-* Ha a Machine Learning webszolgáltatások portálon klasszikus webszolgáltatás központi telepítése, lásd: [egy klasszikus webszolgáltatás újratanítása](retrain-a-classic-web-service.md). 
-* Ha egy új webszolgáltatás-bővítmény központi telepítése, lásd: [egy új webszolgáltatás-bővítmény, a Machine Learning Management-parancsmagok használatával újratanítása](retrain-new-web-service-using-powershell.md).
+* Ha telepítette a Machine Learning Web Services portálon klasszikus webszolgáltatás, lásd: [klasszikus webszolgáltatás újratanítása](retrain-a-classic-web-service.md). 
+* Ha egy új webszolgáltatás üzembe helyezte, lásd: [a Machine Learning-kezelési parancsmagok használatával új webszolgáltatás újratanítása](retrain-new-web-service-using-powershell.md).
 
-A megőrzési folyamat áttekintését lásd: [a gépi tanulási modellek újratanítása](retrain-machine-learning-model.md).
+A megőrzési folyamat áttekintését lásd: [egy gépi tanulási modellek szoftveres Átképezése](retrain-machine-learning-model.md).
 
-Ha el szeretné indítani a meglévő új Azure Resource Manager-alapú webes szolgáltatással, lásd: [meglévő prediktív webszolgáltatás újratanítása](retrain-existing-resource-manager-based-web-service.md).
+Ha el szeretné indítani a meglévő új Azure Resource Manager-alapú webes szolgáltatáshoz, talál [meglévő prediktív webszolgáltatás újratanítása](retrain-existing-resource-manager-based-web-service.md).
 
-## <a name="create-a-training-experiment"></a>Hozzon létre egy tanítási kísérletet
-Ehhez a példához használandó "minta 5: vonat, tesztelési, Evaluate bináris osztályozási: felnőtt Dataset" a Microsoft Azure Machine Learning minták. 
+## <a name="create-a-training-experiment"></a>Betanítási kísérlet létrehozása
+Ebben a példában használandó "5 minta: Train, tesztelési, kiértékelése a bináris osztályozás: felnőtt adatkészlet" a Microsoft Azure Machine Learning-minták. 
 
 A kísérlet létrehozása:
 
-1. Jelentkezzen be a Microsoft Azure gép Learning Studio. 
-2. Kattintson a jobb alsó sarkában az irányítópulton, **új**.
-3. Válassza ki a Microsoft Samples minta 5.
-4. Nevezze át a kísérletet a kísérlet vászon tetején jelölje ki a kísérlet neve "minta 5: vonat, tesztelési, Evaluate bináris osztályozási: felnőtt Dataset".
-5. Típus nyilvántartásba modell.
-6. Kattintson a kísérletvászon alján **futtatása**.
+1. Jelentkezzen be a Microsoft Azure Machine Learning Studióba. 
+2. Kattintson a jobb alsó sarokban az irányítópult **új**.
+3. Jelölje ki a Microsoft Samples minta 5.
+4. Nevezze át a kísérletet a kísérlet vászon tetején válassza a kísérlet neve "5. példa: a bináris osztályozási Train, tesztelési, Evaluate: felnőtt adatkészlet".
+5. Írja be a modell népszámlálási.
+6. A kísérlet vászon alján kattintson **futtatása**.
 7. Kattintson a **Set Up webszolgáltatás** válassza **webszolgáltatás Átképezési**. 
 
-Az alábbiakban látható a kezdeti kísérlet.
+Az alábbiakban látható a kezdeti kísérletet.
    
    ![Kezdeti kísérlet.][2]
 
 
-## <a name="create-a-predictive-experiment-and-publish-as-a-web-service"></a>A prediktív kísérletté létrehozása és egy webszolgáltatás közzététele
+## <a name="create-a-predictive-experiment-and-publish-as-a-web-service"></a>Egy prediktív kísérletet létrehozása és közzététele webszolgáltatásként
 Ezután hozzon létre egy Predicative kísérletet.
 
-1. A kísérlet vászon alján kattintson **webes szolgáltatások beállítása** válassza **prediktív webszolgáltatás**. Ez a modell menti modell betanítását, és hozzáadja a webes szolgáltatás bemeneti és kimeneti modulok. 
+1. A kísérlet vászon alján kattintson **webszolgáltatás beállítása** válassza **prediktív webszolgáltatás**. Ez a modell menti a betanított modell, és hozzáadja a webes szolgáltatás bemeneti és kimeneti modulok. 
 2. Kattintson a **Run** (Futtatás) parancsra. 
-3. Miután a kísérlet futása befejeződött, kattintson **webes szolgáltatás telepítése [klasszikus]** vagy **[Új] webes szolgáltatás telepítése**.
+3. A kísérlet befejezését követően, miután kattintson **Web Service telepítése [klasszikus]** vagy **[Új] Web Service telepítése**.
 
 > [!NOTE] 
-> Egy új webszolgáltatás-bővítmény telepítése, megfelelő engedélyekkel kell rendelkeznie, amelyhez az előfizetést, a webszolgáltatás telepítése. További információ: [kezelése az Azure Machine Learning webszolgáltatások portál használatával egy webszolgáltatás-bővítmény](manage-new-webservice.md). 
+> Egy új webszolgáltatás üzembe helyezéséhez rendelkeznie megfelelő engedélyekkel, amelyhez az előfizetésben, a web Service szolgáltatásának telepítése. További információ: [egy webszolgáltatás, az Azure Machine Learning Web Services portál használata kezelheti](manage-new-webservice.md). 
 
-## <a name="deploy-the-training-experiment-as-a-training-web-service"></a>A tanítási kísérletet egy képzési webszolgáltatás telepítése
-A betanított modell működik, a tanítási kísérletet Retraining webszolgáltatásként létrehozott kell telepítenie. A webszolgáltatás kell egy *webes szolgáltatás kimeneti* modul csatlakozik a *[tanítási modell] [ train-model]* modul kell tudnia mutatni az új betanítása modellek.
+## <a name="deploy-the-training-experiment-as-a-training-web-service"></a>A betanítási kísérlet üzembe webszolgáltatásként, amely képzés
+Újratanítás PowerShell a betanított modell, a tanítási kísérlet Retraining webszolgáltatásként létrehozott kell telepíteni. A webszolgáltatás szüksége van egy *webes szolgáltatás kimeneti* csatlakoztatott a *[tanítási modell] [ train-model]* modult kell tudnia mutatni új betanított modellek.
 
-1. Térjen vissza a tanítási kísérletet, a kísérletek ikonra a bal oldali ablaktáblán kattintson, majd a nyilvántartásba modell nevű kísérlet.  
-2. A keresési kísérlet elemek keresési mezőbe írja be a webes szolgáltatás. 
-3. Húzza a *webszolgáltatás bemenetét* modult a kísérletvászonra, és kösse a kimenetét a *Clean Missing Data* modul.  Ez biztosítja, hogy a megőrzési adatot ugyanúgy, mint az eredeti tanítási adatokat dolgoz fel.
-4. Húzza a két *webszolgáltatás kimeneti* modulok a kísérlet vászonra. Csatlakoztassa a kimenetét a *tanítási modell* modul egy és kimenetét a *modell kiértékelése* modul a másikra. A webes szolgáltatás kimenetét **tanítási modell** biztosítanak számunkra az új betanított modell. A kimeneti csatolva **modell kiértékelése** modult kimenetneve, vagyis a teljesítményeredmények visszaadása.
+1. Térjen vissza a tanítási kísérlet, a kísérletek ikonra a bal oldali ablaktáblán kattintson, majd kattintson a kísérlet népszámlálási modell nevű.  
+2. A kísérlet elemek keresése a keresőmezőbe írja be a webszolgáltatást. 
+3. Húzza a *webes bemenet* modult alakzatot a kísérletet, és a kimenetét, hogy csatlakozzon a *Clean Missing Data* modul.  Ez biztosítja, hogy a megőrzési adatok ugyanúgy, mint az eredeti betanítási adatok feldolgozása.
+4. Húzza a két *webszolgáltatás kimeneti* modulok a kísérlet vászonra. Csatlakozzon a kimenetét a *tanítási modell* kimenetét és a egy modult a *Evaluate Model* modult, a másik. A web service kimenete **tanítási modell** biztosít számunkra az új betanított modell. A kimenet csatolt **Evaluate Model** adja vissza az adott modul kimeneti, azaz a teljesítményt.
 5. Kattintson a **Run** (Futtatás) parancsra. 
 
-Ezután telepítenie kell a tanítási kísérletet egy webszolgáltatás, amely létrehozza a modell betanítását és modell kiértékelésének eredménye. Ennek megvalósítása érdekében a következő műveletek készletét függenek e dolgozik egy klasszikus webszolgáltatás-bővítmény vagy egy új webszolgáltatás-bővítmény.  
+Ezután telepítenie kell a tanítási kísérlet webes szolgáltatás, amely a betanított modell és a modell kiértékelésének eredménye hoz létre. Ehhez a következő műveletkészletet függenek az e dolgozik egy klasszikus webszolgáltatásról vagy új webszolgáltatásként.  
 
 **Klasszikus webszolgáltatás**
 
-A kísérlet vászon alján kattintson **webes szolgáltatások beállítása** válassza **webes szolgáltatás telepítése [klasszikus]**. A webszolgáltatás **irányítópult** jelenik meg, amely az API-kulcsot és az API súgólap a kötegelt végrehajtás. Csak a kötegelt végrehajtási módszer betanított modellek létrehozásakor használható.
+A kísérlet vászon alján kattintson **webszolgáltatás beállítása** válassza **Web Service telepítése [klasszikus]**. A Web Service **irányítópult** kötegelt végrehajtáshoz az API-kulcsot és az API help oldal jelenik meg. Csak a kötegelt végrehajtási módszer betanított modellek létrehozására használható.
 
 **Új webszolgáltatás**
 
-A kísérlet vászon alján kattintson **webes szolgáltatások beállítása** válassza **[Új] webes szolgáltatás telepítése**. A webes szolgáltatás Azure Machine Learning webszolgáltatások portál megnyitja a telepítés webszolgáltatás oldalát. Adjon meg egy nevet a webszolgáltatáshoz és támogatási csomag kiválasztása, majd kattintson **telepítés**. Csak a kötegelt végrehajtási módszer használható betanított modellek létrehozásához
+A kísérlet vászon alján kattintson **webszolgáltatás beállítása** válassza **[Új] Web Service telepítése**. A webes szolgáltatás az Azure Machine Learning webszolgáltatások portál megnyitja az üzembe helyezés webszolgáltatás oldalát. Adjon meg egy nevet a webszolgáltatás és a egy támogatási csomag kiválasztása, majd kattintson **telepítés**. Csak a kötegelt végrehajtási módszer használható betanított modellek létrehozása
 
-Mindkét esetben után kísérlet befejeződött, az eredményül kapott munkafolyamat kell hasonlítania:
+Mindkét esetben kísérlet befejeztével fut, az eredményül kapott munkafolyamat kell hasonlítania:
 
-![Eredményül kapott munkafolyamat futtatása után.][4]
+![Eredményül kapott a munkafolyamat futtatása után.][4]
 
 
 
-## <a name="retrain-the-model-with-new-data-using-bes"></a>A modell újratanítása BES használatával új adatokkal
-Ehhez a példához segítségével végzi a C# a megőrzési alkalmazás létrehozása. A Python vagy R mintakód segítségével ennek a feladatnak.
+## <a name="retrain-the-model-with-new-data-using-bes"></a>Újratanítás PowerShell a modell új adatokkal, BES használatával
+Ebben a példában használja C# a megőrzési alkalmazás létrehozásához. Ennek a feladatnak is használhatja a Python vagy R mintakódot.
 
 Az Átképezési API-k meghívásához:
 
-1. Hozzon létre egy C# konzolalkalmazást a Visual Studio: **új** > **projekt** > **Visual C#** > **klasszikus Windows asztal** > **Konzolalkalmazás (.NET-keretrendszer)**.
-2. Jelentkezzen be a Machine Learning webszolgáltatás portálra.
-3. Ha egy klasszikus webszolgáltatás dolgozik, kattintson a **klasszikus webszolgáltatások**.
-   1. Kattintson a webszolgáltatás dolgozik.
+1. Hozzon létre egy C# konzolalkalmazást a Visual Studióban: **új** > **projekt** > **Visual C#** > **Windows Klasszikus asztal** > **Console App (.NET Framework)**.
+2. Jelentkezzen be a Machine Learning Web Service portálhoz.
+3. Ha a klasszikus webszolgáltatás dolgozik, kattintson a **klasszikus webszolgáltatások**.
+   1. Kattintson a web service dolgozik.
    2. Kattintson az alapértelmezett végpont.
-   3. Kattintson a **felhasználásához**.
-   4. Alján a **felhasználás** lap a **mintakód** kattintson **kötegelt**.
+   3. Kattintson a **felhasználása**.
+   4. Alsó részén a **felhasználás** lap a **mintakód** területén kattintson **Batch**.
    5. Folytassa az eljárás 5. lépés.
-4. Ha egy új webszolgáltatás-bővítmény dolgozik, kattintson a **webszolgáltatások**.
-   1. Kattintson a webszolgáltatás dolgozik.
-   2. Kattintson a **felhasználásához**.
-   3. At a felhasználás alján lap a **mintakód** kattintson **kötegelt**.
-5. A kötegelt végrehajtás C# mintakód másolja és illessze be a Program.cs fájl meggyőződött arról, hogy a névtér nem módosulnak.
+4. Ha egy új webszolgáltatás dolgozik, kattintson a **webszolgáltatások**.
+   1. Kattintson a web service dolgozik.
+   2. Kattintson a **felhasználása**.
+   3. At a felhasználás alján lap a **mintakód** területén kattintson **Batch**.
+5. Másolja a minta C# kötegelt végrehajtáshoz a kódot, és illessze be a Program.cs fájl gondoskodik róla, hogy a névtér helye változatlan marad.
 
-A Megjegyzések a Microsoft.AspNet.WebApi.Client Nuget-csomag hozzáadása A hivatkozás Microsoft.WindowsAzure.Storage.dll hozzáadásához először meg kell az ügyféloldali kódtár a Microsoft Azure storage szolgáltatásainak telepítéséhez. További információkért lásd: [Windows tárolószolgáltatások](https://www.nuget.org/packages/WindowsAzure.Storage).
+Adja hozzá a Microsoft.AspNet.WebApi.Client Nuget-csomagot a megjegyzések megadott módon. Microsoft.WindowsAzure.Storage.dll mutató hivatkozás hozzáadásához először meg kell telepítenie az ügyféloldali kódtár a Microsoft Azure storage-szolgáltatásokban. További információkért lásd: [Windows tárolószolgáltatások](https://www.nuget.org/packages/WindowsAzure.Storage).
 
-### <a name="update-the-apikey-declaration"></a>Frissítés a apikey nyilatkozat
-Keresse meg a **apikey** nyilatkozatot.
+### <a name="update-the-apikey-declaration"></a>Frissítés a apikey tulajdonsággal végzett tesztelése nyilatkozat
+Keresse meg a **apikey tulajdonsággal végzett tesztelése** nyilatkozatot.
 
     const string apiKey = "abc123"; // Replace this with the API key for the web service
 
-Az a **alapvető fogyasztási adatai** szakasza a **felhasználás** lapon keresse meg az elsődleges kulcsot, és másolja a **apikey** nyilatkozatot.
+Az a **alapvető fogyasztási adatai** szakaszában a **felhasználás** lapon, keresse meg az elsődleges kulcsot, és másolja a **apikey tulajdonsággal végzett tesztelése** nyilatkozatot.
 
-### <a name="update-the-azure-storage-information"></a>Az Azure Storage-adatainak módosítása
-A BES mintakód feltölt egy fájlt egy helyi meghajtó (például "C:\temp\CensusIpnput.csv") az Azure Storage, folyamatokat engedélyez, és kiírja az eredményeket vissza az Azure Storage.  
+### <a name="update-the-azure-storage-information"></a>Az Azure Storage-adatok frissítése
+A BES-mintakód feltölt egy fájlt egy helyi meghajítóról (például "C:\temp\CensusIpnput.csv") az Azure Storage, feldolgozza őket, majd az eredmények visszaírja az Azure Storage.  
 
-Ennek a feladatnak le kell kérni a Tárfiók nevét, a kulcs és a tároló adatait a tárfiók a klasszikus Azure portál és a frissítés megfelelő értékeket a kódban. 
+Ennek a feladatnak, le kell kérnie a Storage-fiók nevét, a kulcs és a tároló adatait a tárfiók a klasszikus Azure portál és a frissítés megfelelő értékeket a kódban. 
 
 1. Jelentkezzen be a klasszikus Azure portálon.
-2. A bal oldali oszlopban kattintson **tárolási**.
-3. Storage-fiókok a listában válassza ki a retrained modell tárolásához.
-4. Kattintson a lap alján **elérési kulcsok kezelése**.
-5. Másolja ki és mentse a **elsődleges elérési kulcsot** és a párbeszédpanel bezárásához. 
+2. A bal oldali navigációs oszlopban kattintson **tárolási**.
+3. Storage-fiókok listájából válassza ki a retrained modell tárolásához.
+4. Kattintson a lap alján **hozzáférési kulcsok kezelése**.
+5. Másolja ki és mentse a **elsődleges elérési kulcs** és a párbeszédpanel bezárásához. 
 6. Kattintson a lap tetején **tárolók**.
 7. Jelöljön ki egy meglévő tárolót, vagy hozzon létre egy újat, és mentse a nevét.
 
-Keresse meg a *StorageAccountName*, *StorageAccountKey*, és *StorageContainerName* deklarációk és az Azure-portálról mentett értékeinek frissítéséhez.
+Keresse meg a *StorageAccountName*, *StorageAccountKey*, és *StorageContainerName* nyilatkozatok és frissítése az Azure Portalról mentett értékekkel.
 
     const string StorageAccountName = "mystorageacct"; // Replace this with your Azure Storage Account name
     const string StorageAccountKey = "a_storage_account_key"; // Replace this with your Azure Storage Key
     const string StorageContainerName = "mycontainer"; // Replace this with your Azure Storage Container name
 
-Emellett győződjön meg a bemeneti fájl érhető el a kódban megadott helyen. 
+Is biztosítania kell a kódban megadott helyen a bemeneti fájl érhető el. 
 
 ### <a name="specify-the-output-location"></a>Adja meg a kimeneti helyet
-A kimeneti helyen a kérelem hasznos, megadásakor a kiterjesztést a fájl megadott *RelativeLocation* ilearner kell megadni. 
+A kimeneti helyet a kérelem hasznos adatainak megadásakor a kiterjesztést a fájl megadott *RelativeLocation* ilearner kell megadni. 
 
-Tekintse meg a következő példát:
+Lásd a következő példát:
 
     Outputs = new Dictionary<string, AzureBlobDataReference>() {
         {
@@ -152,7 +153,7 @@ Tekintse meg a következő példát:
         },
 
 > [!NOTE]
-> A kimeneti helyek nevének ebben a bemutatóban a webes szolgáltatás kimeneti modulok hozzá sorrendjében eltérő lehet. A tanítási kísérletet két kimenettel állít be, mert az eredmények tartalmazzák a Tartózkodásihely-adatok tárolási helyezni őket.  
+> A kimeneti helyek nevének Ez az útmutató a webes szolgáltatás kimeneti modulok hozzá sorrendje alapján eltérő lehet. Mivel ez a két kimenetek betanítási kísérlet állít be, az eredmények tartalmazzák a tárolási hely adatainak őket.  
 > 
 > 
 
@@ -161,18 +162,18 @@ Tekintse meg a következő példát:
 4. ábra: A kimeneti Átképezési.
 
 ## <a name="evaluate-the-retraining-results"></a>Megőrzési eredmények értékelése
-Az alkalmazás futtatásakor a parancs kimenete az értékelés eredményét eléréséhez szükséges URL-cím és a SAS tokent.
+Az alkalmazás futtatásakor a kimenete tartalmazza az értékelési eredmények eléréséhez szükséges URL-CÍMÉT és a SAS jogkivonat.
 
-A teljesítmény eredmények retrained modell kombinálásával láthatók a *BaseLocation*, *RelativeLocation*, és *SasBlobToken* a kimeneti eredmények a *output2* (az előző megőrzési kimeneti ábrának megfelelően), és be a teljes URL-CÍMÉT a böngésző címsorába.  
+Megtekintheti a retrained modell teljesítmény eredményeinek kombinálásával a *BaseLocation*, *RelativeLocation*, és *SasBlobToken* a kimenetieredményei*output2* (ahogyan az az előző megőrzési kimeneti képen látható), és illessze be a teljes URL-CÍMÉT a böngésző címsorába.  
 
-Vizsgálja meg az eredményeket a meghatározásához, hogy az újonnan betanított modell végez elégséges helyettesítse a meglévőt.
+Vizsgálja meg az eredményeket megállapítani, hogy az újonnan betanított modell végrehajt elég jól lecserélheti a meglévőt.
 
-Másolás a *BaseLocation*, *RelativeLocation*, és *SasBlobToken* a kimeneti eredmények használhatja azokat a megőrzési során.
+Másolás a *BaseLocation*, *RelativeLocation*, és *SasBlobToken* a kimeneti eredmények között használhatja őket a megőrzési folyamat során.
 
 ## <a name="next-steps"></a>További lépések
-Ha telepítette a prediktív webszolgáltatás kattintva **webes szolgáltatás telepítése [klasszikus]**, lásd: [egy klasszikus webszolgáltatás újratanítása](retrain-a-classic-web-service.md).
+Ha telepítette a prediktív webszolgáltatás kattintva **Web Service telepítése [klasszikus]**, lásd: [klasszikus webszolgáltatás újratanítása](retrain-a-classic-web-service.md).
 
-Ha telepítette a prediktív webszolgáltatás kattintva **[Új] webes szolgáltatás telepítése**, lásd: [egy új webszolgáltatás-bővítmény, a Machine Learning Management-parancsmagok használatával újratanítása](retrain-new-web-service-using-powershell.md).
+Ha telepítette a prediktív webszolgáltatás kattintva **[Új] Web Service telepítése**, lásd: [a Machine Learning-kezelési parancsmagok használatával új webszolgáltatás újratanítása](retrain-new-web-service-using-powershell.md).
 
 <!-- Retrain a New web service using the Machine Learning Management REST API -->
 

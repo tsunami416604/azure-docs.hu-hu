@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: mbullwin
-ms.openlocfilehash: e88d38e6d95459cc1c41adecee6b7ece659eac99
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 1a031ede814a963f25f1a3a3fc9725d9e5670a8e
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957242"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824642"
 ---
 # <a name="monitor-azure-web-app-performance"></a>Azure-webapp teljesítményének figyelése
 Az [Azure Portalon](https://portal.azure.com) beállíthat alkalmazásteljesítmény-figyelést [Azure-webappjaihoz](../app-service/app-service-web-overview.md). Az [Azure Application Insights](app-insights-overview.md) úgy alakítja ki az alkalmazást, hogy telemetriát küldjön tevékenységeiről az Application Insights szolgáltatásnak, amely tárolja és elemzi azokat. Itt metrikus diagramok és keresőeszközök segítségével diagnosztizálhat problémákat, javíthatja a teljesítményt, és felmérheti a használatot.
@@ -101,7 +101,7 @@ Ha telepít egy SDK-t alkalmazásába, az Application Insights részletesebb tel
 * [Futtassa a profilkészítőt a működő alkalmazásán.](app-insights-profiler.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) – az Azure Functions figyelése az Application Insights segítségével
 * [Engedélyezze az Azure Diagnostics](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md) Application Insightsba való küldését.
-* [Figyelje a szolgáltatások állapotával kapcsolatos mérőszámokat](../monitoring/monitoring-data-collection.md), így meggyőződhet róla, hogy szolgáltatása elérhető és válaszkész.
+* [Figyelje a szolgáltatások állapotával kapcsolatos mérőszámokat](../azure-monitor/platform/data-collection.md), így meggyőződhet róla, hogy szolgáltatása elérhető és válaszkész.
 * [Riasztási értesítéseket kaphat](../monitoring-and-diagnostics/monitoring-overview-alerts.md), ha működési események történnek vagy a mérőszámok átlépnek egy küszöbértéket.
 * Az [Application Insights JavaScript-alkalmazásokhoz és weblapokhoz](app-insights-javascript.md) való használatával ügyféltelemetriát kaphat azoktól a böngészőktől, amelyek ellátogatnak egy weblapra.
 * [Állítson be rendelkezésre állási webes teszteket](app-insights-monitor-web-app-availability.md), így riasztást kaphat, ha webhelye nem működik.

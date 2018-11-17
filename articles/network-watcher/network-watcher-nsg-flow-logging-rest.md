@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 003335aad0452e7a2dbfff49ed29a6b99b5d54d2
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 30f20e2671b4428f08c38eeb93ec90f0b745eea6
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089629"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51819117"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Hálózati biztonsági csoport beállítása Folyamatnaplók REST API használatával
 
@@ -30,6 +30,9 @@ ms.locfileid: "39089629"
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 
 Hálózati biztonsági csoportok folyamatnaplóit érhetők el a Network Watcher, amely lehetővé teszi a bejövő és kimenő IP-forgalom hálózati biztonsági csoport használatával kapcsolatos információk megtekintéséhez. A folyamat-naplók json formátumban íródtak, és a kimenő és bejövő folyamatok megjelenítése / szabály történik, a hálózati Adapterhez, a folyamat vonatkozik, a folyamat (a forrás és cél IP-cím, forrás és a cél-Port, protokoll), 5-ször több információt, és ha a forgalom engedélyezett vagy tiltott.
+
+> [!NOTE] 
+> Flow 2-es naplók verzió csak érhetők el az USA nyugati középső régiójában. Beállítási lehetőségek érhetők el az Azure Portal és a REST API-t. 2-es verzió engedélyezése egy nem támogatott régióban naplókat eredményez 1-es verziójú naplókat, a storage-fiókhoz használt kimeneti adattípus.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -46,7 +49,7 @@ Ebben a cikkben ismertetett forgatókönyv bemutatja, hogyan engedélyezheti, ti
 
 Ebben a forgatókönyvben tartalma:
 
-* Forgalmi naplók engedélyezése
+* Forgalmi naplók (2-es verzió) engedélyezése
 * Tiltsa le a folyamat-Naplók
 * Folyamat-naplók állapot lekérdezése
 
@@ -69,7 +72,7 @@ armclient post "https://management.azure.com//subscriptions/${subscriptionId}/pr
 
 ## <a name="enable-network-security-group-flow-logs"></a>Engedélyezze a hálózati biztonsági csoport folyamatnaplóit
 
-A parancs a folyamat-naplók engedélyezésére az alábbi példában látható:
+A parancsot a flow 2-es naplók verzió engedélyezéséhez az alábbi példában látható. Az 1. verziójának "1" cserélje le a "verziójú" mező:
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -86,7 +89,11 @@ $requestBody = @"
     'retentionPolicy' : {
             days: 5,
             enabled: true
-        }
+        },
+    'format': {
+        'type': 'JSON',
+        'version': 2
+    }
     }
 }
 "@
@@ -105,6 +112,10 @@ Az előző példából származó visszaadott válasz a következőképpen tört
     "retentionPolicy": {
       "days": 5,
       "enabled": true
+    },
+    "format": {
+    "type": "JSON",
+    "version": 2
     }
   }
 }
@@ -129,7 +140,11 @@ $requestBody = @"
     'retentionPolicy' : {
             days: 5,
             enabled: true
-        }
+        },
+    'format': {
+        'type': 'JSON',
+        'version': 2
+    }
     }
 }
 "@
@@ -148,6 +163,10 @@ Az előző példából származó visszaadott válasz a következőképpen tört
     "retentionPolicy": {
       "days": 5,
       "enabled": true
+    },
+    "format": {
+    "type": "JSON",
+    "version": 2
     }
   }
 }
@@ -182,6 +201,10 @@ Az alábbiakban látható egy példa a visszaadott válasz:
    "retentionPolicy": {
       "days": 5,
       "enabled": true
+    },
+    "format": {
+    "type": "JSON",
+    "version": 2
     }
   }
 }

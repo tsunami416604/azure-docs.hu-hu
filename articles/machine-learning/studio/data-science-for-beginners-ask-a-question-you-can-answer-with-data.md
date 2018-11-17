@@ -1,11 +1,12 @@
 ---
-title: Kérje meg a kérdés adatok választ ad-adatok tudományos problémák - Azure Machine Learning |} Microsoft Docs
-description: Megtudhatja, hogyan állítson össze egy éles adatok tudományos kérdést Adattudomány kezdőknek videó 3. Besorolás és regressziós kérdések összehasonlítását tartalmazza.
-keywords: adatok tudományos problémák tudományos kérdésekre, állítson össze kérdéseket, a regressziós kérdések, a besorolás kérdéseket, éles kérdés
+title: Kérje meg a kérdés adatok segítségével választ kaphat - adatok adatelemzési kapcsolatos problémák – az Azure Machine Learning |} A Microsoft Docs
+description: Megtudhatja, hogyan határozhatja meg az adatelemzés kezdőknek videó 3 éles data science kérdés. Besorolási és regressziós kérdések összehasonlítását tartalmazza.
+keywords: Data science problémák, data science kérdése van, állítson össze a kérdéseket, regressziós kérdések, besorolási kérdése van, éles kérdés
 services: machine-learning
 documentationcenter: na
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cjgronlund
 ms.assetid: 5b9501e3-9964-417a-8ffc-8913103da77b
@@ -16,87 +17,87 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 2078f7e84522a40cf6fcf6dff860d24307084467
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 34d47c284b06a59f738d7a56071b9227d204cc2f
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833801"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821059"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Adatokkal megválaszolható kérdések megfogalmazása
-## <a name="video-3-data-science-for-beginners-series"></a>3. Videó: Adattudomány kezdők sorozat
-Megtudhatja, hogyan állítson össze egy adatok tudományos probléma Adattudomány videó 3 kezdőknek fel kérdést az. Ez a videó besorolási és regressziós algoritmus kérdések összehasonlítását tartalmazza.
+## <a name="video-3-data-science-for-beginners-series"></a>3. Videó: Az adatelemzés kezdőknek sorozat
+Megtudhatja, hogyan határozhatja meg a data science probléma, az adatelemzés kezdőknek videó 3 kérdést. Ez a videó besorolási és regressziós algoritmus kérdések összehasonlítását tartalmazza.
 
-Ahhoz, hogy minél hatékonyabb működtetését az adatsorozat, tekintse meg azokat. [Ugrás a videók listája](#other-videos-in-this-series)
+A lehető leghatékonyabban a sorozat, tekintse meg az összes. [Nyissa meg a videók listájában](#other-videos-in-this-series)
 <br>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Data-science-for-beginners-Ask-a-question-you-can-answer-with-data/player]
 >
 >
 
-## <a name="other-videos-in-this-series"></a>A sorozat többi videók
-*Adattudomány kezdőknek* van egy gyors Bevezetés a adattudomány az öt rövid videók.
+## <a name="other-videos-in-this-series"></a>Ez a sorozat egyéb videók
+*Adatelemzés kezdőknek* egy gyors bevezetőt az öt rövid videóban a rendszer.
 
-* 1. Videó: [az 5 kérdésekre adatok tudományos válaszok](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 perc 14 másodperc)*
-* 2. Videó: [adattudomány készen áll az adatok?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 perc 56 másodperc)*
-* 3. Videó: Tegyen fel kérdést a válasz adatokkal
-* 4. Videó: [választ egyszerű modell előrejelzése](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 perc 42 másodperc)*
-* 5. Videó: [mások munkahelyi adattudomány ehhez másolja](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 perc 18 másodperc)*
+* 1. Videó: [az 5 kérdés adatelemzés választ ad](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 perc 14 mp)*
+* 2. Videó: [adatelemzési készen áll az adatok?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 perc 56 másodperc)*
+* 3. Videó: Tegyen fel kérdést, az adatok a válasz
+* 4. Videó: [egy egyszerű modellel válasz előrejelzése](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 perc 42 másodperc)*
+* 5. Videó: [más emberek munkájának lemásolása az adatelemzéshez való másolása](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 perc 18 másodperc)*
 
-## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>A Beszélgetés szövegének: Tegyen fel kérdést a válasz adatokkal
-Üdvözöljük a harmadik videó az adatsorozat "Adattudomány kezdőknek."  
+## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>A szövegben: Tegyen fel kérdést, az adatok a válasz
+Üdvözli az a sorozat harmadik videó "Adatelemzés kezdőknek."  
 
-Ez egy, a tippek fog kapni olyan vonatkozókat egy kérdést, a válasz adatokkal.
+Ezt az eszközt a kap néhány tipp a-kérdések megfogalmazása adatokkal kidolgozásában.
 
-Kaphat további kívül ezt a videót, ha először tekintse meg a sorozat két korábbi videók: "a 5 kérdések adattudomány meg tudja válaszolni" és "adattudomány készen áll-e az adatok?"
+Kaphat további ki ezt a videót, ha először tekintse meg az oktatóanyag-sorozatban a két korábbi videók: "az 5 kérdések adatelemző meg tudja válaszolni" és "Az adatelemzés készen áll az adatok?"
 
-## <a name="ask-a-sharp-question"></a>Éles kérdés
-Túlmutatnak tárgyalt hogyan adattudomány során a rendszer (más néven a kategóriák vagy címkék) nevek és számok használatával megjósolható választ a kérdésére. Nem lehet egyszerűen bármelyik kérdés; azonban kell lennie egy *éles kérdést.*
+## <a name="ask-a-sharp-question"></a>Éles kérdés feltevése
+Beszéltünk hogyan adatelemzés során a rendszer egy kérdésre adott válasz előrejelzése (más néven kategóriákat vagy címkéket) nevek és számok használatával. Nem lehet egyszerűen bármelyik kérdés; azonban kell egy *éles kérdést.*
 
-Bizonytalan kérdés nem kell egy vagy több válaszolni. Egy éles kérdést kell.
+Országról kérdés nem rendelkezik egy vagy több vet fel. Éles kérdést kell.
 
-Tegyük fel, a egy genie, akik bármely tegye fel kérdését kételyei vannak válaszolni fog magic lámpa talált. De mischievous genie, és ezután lesz igyekezzen a válasz bizonytalan és zavaró, ezután a számítógépnél kaphat. PIN-kód számára egy kérdést, így záródó, hogy ő nem súgó, de meghatározzák a szeretné megnézni kívánt.
+Tegyük fel, hogy megtalálta, egy-egy genie, akik bármely tegye fel kérdését valósághűen mutathatja be válaszolni fog magic lamp. De mischievous genie, és ő lesz próbál győződjön meg arról, a válasz országról és zavarosnak, ahogy azt a nyelvet a lenti listában kaphat. Szeretne egy kérdést, hogy ő nem segít, de állapítható meg, hogy meg szeretné tudni, hogy így záródó rögzíteni neki.
 
-Ha kérdése bizonytalan, például a "Mi zajlik, megtörténjen-e a saját készlet?", a genie előfordulhat, hogy fogadja a hívást, "az ár változik". Ez egy truthful választ, de nincs nagyon hasznos.
+Ha a kérdés feltevése országról, például a "Mi történik meg a készlet?", a genie előfordulhat, hogy választ, "az árat fog módosítása". Ez egy truthful választ, de az nem nagyon hasznos.
 
-De volt-e kérdés éles, például a "Mi a készlet pénztári ár jövő héten?", a genie nem súgó de adjon meg egy adott fogadja a hívást, és előre jelezni eladási árat.
+De ha voltak-e éles kérdése, mint például a "Mi a készlet eladási ár lesz jövő héten?", a genie nem, de ez adjon meg egy adott választ, és előre jelezni egy eladási ár.
 
-## <a name="examples-of-your-answer-target-data"></a>A válasz példái: célalkalmazás adatok
-Amennyiben az a kérdés állítson össze, ellenőrizze, hogy fel kell-e a válasz példák az adatokon.
+## <a name="examples-of-your-answer-target-data"></a>A válasz-példákat: célalkalmazás adatok
+Után, a kérdés megfogalmazásához, ellenőrizze, hogy rendelkezik-e a válasz-példákat az adatokban.
 
-Ha a kérdés "Mi a készlet pénztári ár lesz jövő héten?" Ezután azt kell ellenőrizze, hogy az adatok a árfolyam előzmények tartalmaz.
+Ha a kérdést a "Mi a készlet eladási ár lesz a jövő héten?" Ezután van, hogy az adatok a tőzsdei árfolyam előzményeit tartalmazza.
 
-Ha a kérdés "mely car a saját járműflotta érintetlen először sikertelen?" Ezután azt kell győződjön meg arról, hogy az adatok előző hibákkal kapcsolatos információkat tartalmaz.
+Ha a kérdést a "sikertelen először melyik az a flotta autó fog?" Ezután van, hogy az adatok korábbi hibák adatait tartalmazza.
 
-![Cél adatok - példák a válasz. Állítson össze egy adatok tudományos kérdést.](./media/data-science-for-beginners-ask-a-question-you-can-answer-with-data/target-data.png)
+![A céloznia adatok számára, a válasz-példákat. Állítson össze egy data science kérdést.](./media/data-science-for-beginners-ask-a-question-you-can-answer-with-data/target-data.png)
 
-Ezekben a példákban válaszok target nevezzük. Egy célja mi keressük előre jelezni jövőbeli adatpontok kapcsolatos egy kategóriát vagy egy szám.
+Ezekben a példákban válasz a cél nevezzük. A cél, mit szeretne előre jelezni jövőbeli adatpontok kapcsolatos egy kategóriát, vagy egy szám-e.
 
-Ha még nem rendelkezik target adatokat, szüksége lesz néhány eléréséhez. Ön nem fog tudni anélkül, hogy a kérdése megválaszolásában.
+Ha nem rendelkezik a célként megadott adatokat, akkor be kell szereznie néhány. Azonosra, e nélkül a kérdése megválaszolásában.
 
 ## <a name="reformulate-your-question"></a>A kérdés újraszövegezése
-Egyes esetekben is megjegyzések átfogalmazása lekérni egy hasznosabb választ a kérdésére.
+Egyes esetekben is megjegyzések átfogalmazása beolvasni egy több hasznos választ kérdésére.
 
-A kérdéssel "az adatok pont A vagy B?" a kategória (vagy a név vagy címke) valamit előrejelzi. Fogadja a hívást, hogy használjuk a *osztályozó algoritmus*.
+"Az ezen adatok pont A vagy B?" kérdésre előrejelzi, kategória (vagy a neve vagy címkéje) valamit. Fogadja a hívást, hogy használjuk egy *osztályozó algoritmus*.
 
-A kérdés "Mennyi?" vagy "Hány?" egy meghatározott előrejelzi. Fogadja a hívást a használjuk a *regressziós algoritmus*.
+A kérdés "Mennyi?" vagy a "Hány?" előrejelzi egy adott mennyiség. Fogadja a hívást a használjuk egy *regresszió algoritmus*.
 
-Hogyan azt alakíthatja át ezek megtekintéséhez vizsgáljuk meg a kérdéssel, "mely hírek szövegegység a legtöbb érdekesnek ezzel az olvasóval?" Kéri sok lehetőségek – az egyetlen választási előrejelzése azaz "Nem ezt A vagy B vagy C vagy D?" - és egy osztályozó algoritmus használna.
+Ha szeretné látni, hogyan tudjuk alakíthatja át ezeket, nézzük meg a kérdést, az "melyik hírek történetet is a legjobban érdekli az olvasó?" Kéri számos lehetőségek – az egyetlen választási előrejelzése más szóval "Az ezen A vagy B vagy C vagy D?" - és a egy osztályozó algoritmus használna.
 
-De előfordulhat, hogy ez a kérdés könnyebben választ, ha azt megjegyzések átfogalmazása "hogyan érdekes van ezen a listán, hogy az olvasó minden szövegegység?" Minden cikk biztosíthat most egy numerikus pontszám, és majd könnyedén azonosíthatja a legmagasabb pontozási cikk. Ez az egy fogalmazza regressziós kérdés azokat a besorolási kérdés vagy mennyi?
+De lehet, hogy ezt a kérdést könnyebben válaszolniuk, ha azt megjegyzések átfogalmazása "hogyan érdekes, minden egyes történetet ezen a listán, ez az olvasó?" Minden egyes cikk biztosíthat most egy numerikus pontszámot, és ezután könnyedén azonosíthatja a legmagasabb pontozási cikket. Ez az egy regressziós kérdés be a besorolási kérdését átfogalmazni vagy IP-címek fenntartási?
 
-![A kérdés újraszövegezése. Besorolási kérdést vagy regressziós kérdést.](./media/data-science-for-beginners-ask-a-question-you-can-answer-with-data/classification-question-vs-regression-question.png)
+![A kérdés újraszövegezése. Besorolási kérdés és regressziós kérdést.](./media/data-science-for-beginners-ask-a-question-you-can-answer-with-data/classification-question-vs-regression-question.png)
 
-Hogyan kérdése az algoritmus a clue elfogadtatni tudhatja meg választ.
+Hogyan tegye fel kérdése, mely algoritmus egy valami tudhatja meg válaszként.
 
-Látni fogja, hogy az egyes algoritmusok - mint a hírek szövegegység példánkban - családok szorosan kapcsolódnak. A kérdés, az algoritmus, amely felkínálja a leghasznosabb válasz használatára is újraszövegezése.
+Látni fogja, hogy az egyes algoritmusok – mint a hírek történetet példában - családok szorosan kapcsolódnak. Felteheti az algoritmus, amely felkínálja a leghasznosabb választ is újraszövegezése.
 
-De, legfontosabb kérje meg, hogy éles kérdés - adatokkal meg tudja válaszolni a kérdést. És ellenőrizze, hogy rendelkezik a megfelelő adatokat fogadja a hívást.
+De, legfontosabb kérje meg, hogy éles kérdést: – a kérdést, hogy meg tudja válaszolni, adatokkal. És ellenőrizze, hogy rendelkezik a megfelelő adatokat, hogy fogadja a hívást.
 
-Néhány alapelvei egy kérdezzen adatokkal meg tudja válaszolni túlmutatnak tárgyalt.
+Beszéltünk alapelveivel kérdéseket tehet fel az adatok a válasz.
 
-Mindenképpen tekintse meg az "Adatok tudományos a kezdők" a Microsoft Azure Machine Learning más videók.
+Mindenképpen tekintse meg a "Data Science a kezdők" a Microsoft Azure Machine Learning más videókat.
 
 ## <a name="next-steps"></a>További lépések
-* [Próbálja meg egy első adatok tudományos kísérletben a Machine Learning Studio](create-experiment.md)
-* [A Microsoft Azure Machine Learning bemutatása beolvasása](what-is-machine-learning.md)
+* [Egy első adatelemzési kísérlet a Machine Learning Studio kipróbálása](create-experiment.md)
+* [Bevezetés a gépi tanulás a Microsoft Azure](what-is-machine-learning.md)

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/31/2018
+ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 80799eb716e77a4dec02a2daf028c35589c75da0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b14a98ce22979182ec27ba5dc849f9535fa2b387
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235275"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824302"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows virtuális gép aktiválással kapcsolatos problémák elhárítása
 
@@ -29,7 +29,7 @@ Ha gondja van az Azure Windows virtuális gép (VM), amely egy egyéni lemezkép
 Az Azure különböző végpontok használ a KMS-aktiváláshoz függően a felhő régió, ahol a virtuális gép található. Ez a hibaelhárítási útmutató használjon a megfelelő KMS-végpontot, amely az Ön régiójában érvényes.
 
 * Az Azure nyilvános felhő-régiók: kms.core.windows.net:1688
-* Az Azure China országos felhőbeli régiók: kms.core.chinacloudapi.cn:1688
+* Az Azure China 21Vianet országos felhőbeli régiók: kms.core.chinacloudapi.cn:1688
 * Azure Germany-országos felhőbeli régiók: kms.core.cloudapi.de:1688
 * Az Azure US Gov országos felhőbeli régiók: kms.core.usgovcloudapi.net:1688
 
@@ -84,8 +84,7 @@ Ez a lépés nem vonatkozik a Windows 2012 vagy Windows 2008 R2. Az Automation v
 3. Győződjön meg arról, hogy a virtuális gép a megfelelő Azure KMS-kiszolgáló használatára van konfigurálva. Ehhez futtassa a következő parancsot:
   
     ```
-    iex “$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms
-    kms.core.windows.net:1688
+    iex "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
     A parancs kell visszaadnia: kulcskezelő szolgáltatás gépnév sikeresen beállítva kms.core.windows.net:1688.
 

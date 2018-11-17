@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 03c6d45cb3a20244ddbb9c0aec693f7802a95b22
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 19de4164f8d5049d72c3dd5c0a04b7ba4cee7065
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976358"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821140"
 ---
 # <a name="how-to-monitor-azure-redis-cache"></a>Az Azure Redis Cache figyelése
 Használja az Azure Redis Cache [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) biztosít a cache-példány figyelése számos lehetőség közül választhat. Meg is metrikákat tekinthet meg, rögzítheti a kezdőpulton mérőszámdiagramok, testre szabhatja a dátum- és időtartományt figyelési diagramok, hozzáadása és metrikák eltávolítása a diagramok és riasztásokat állíthat be adott feltételek teljesülése esetén. Ezek az eszközök lehetővé teszik az Azure Redis Cache-példány állapotának figyelése és gyorsítótárazó alkalmazásainak kezeléséhez nyújt segítséget.
@@ -61,7 +61,7 @@ Az Azure Monitor használatával metrikák további információkért lásd: [Mi
 <a name="how-to-view-metrics-and-customize-chart"></a>
 <a name="enable-cache-diagnostics"></a>
 ## <a name="export-cache-metrics"></a>Gyorsítótár-metrikák exportálása
-Alapértelmezés szerint a gyorsítótár-metrikák az Azure monitorban vannak [30 napig](../monitoring/monitoring-data-collection.md#metrics) majd törli. A gyorsítótár-metrikák 30 napnál hosszabb ideig megőrizni, akkor is [jelöl ki a storage-fiók](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md) , és adja meg egy **megőrzése (nap)** házirendet a gyorsítótár-metrikák. 
+Alapértelmezés szerint a gyorsítótár-metrikák az Azure monitorban vannak [30 napig](../azure-monitor/platform/data-collection.md#metrics) majd törli. A gyorsítótár-metrikák 30 napnál hosszabb ideig megőrizni, akkor is [jelöl ki a storage-fiók](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md) , és adja meg egy **megőrzése (nap)** házirendet a gyorsítótár-metrikák. 
 
 A storage-fiókját a gyorsítótár-metrikák konfigurálása:
 

@@ -5,7 +5,8 @@ keywords: bevezetés a gépi tanulásba, prediktív modellezés, mi az a gépi t
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 ms.assetid: a4a32a06-dbed-4727-a857-c10da774ce66
 ms.service: machine-learning
 ms.component: studio
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/02/2017
-ms.openlocfilehash: 77ae05c240dbb099528d7224a936d90416366816
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c3c373e917d597613ee3bdc58bb7cf7979645594
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247772"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824004"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Az Azure Machine Learning szolgáltatásra vonatkozó gyakori kérdések (GYIK): Számlázás, képességek, korlátozások és támogatás
 Az alábbiakban néhány gyakori kérdést (GYIK) és azok válaszait olvashatja az Azure Machine Learning szolgáltatással kapcsolatban, amely egy, a webszolgáltatásokon keresztül végrehajtott prediktív modellezést és a megoldások üzembe helyezését célzó felhőalapú szolgáltatás. Ezek a gyakori kérdések a szolgáltatás használatával kapcsolatos kérdéseket fedik le, beleértve a számlázási modell, a képességek, a korlátozások és a támogatás témaköreit.

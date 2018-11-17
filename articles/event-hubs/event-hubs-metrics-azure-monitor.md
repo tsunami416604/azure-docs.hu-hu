@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 02336d9f4d041d4c8d5ba973cf8802692ddad914
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: c59cb8277bee13a83d0bf17c26deef1b8fc8d3e6
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946011"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822843"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor-preview"></a>Az Azure Event Hubs-metrikák az Azure Monitor (előzetes verzió)
 
@@ -29,7 +29,7 @@ Az Azure Monitor egységes felhasználói felületet biztosít a különböző A
 
 ## <a name="access-metrics"></a>Access-metrikák
 
-Az Azure Monitor hozzáférés metrikák több módot is biztosít. Mindkét hozzáférési metrikák keresztül is a [az Azure portal](https://portal.azure.com), vagy használja az Azure Monitor API-k (REST és .NET) és elemzési megoldásokkal, például az Operation Management Suite és az Event Hubs. További információkért lásd: [figyelési adatokat gyűjtött az Azure Monitor](../monitoring/monitoring-data-collection.md).
+Az Azure Monitor hozzáférés metrikák több módot is biztosít. Mindkét hozzáférési metrikák keresztül is a [az Azure portal](https://portal.azure.com), vagy használja az Azure Monitor API-k (REST és .NET) és elemzési megoldásokkal, például az Operation Management Suite és az Event Hubs. További információkért lásd: [figyelési adatokat gyűjtött az Azure Monitor](../azure-monitor/platform/data-collection.md).
 
 Alapértelmezés szerint engedélyezve vannak a metrikákat, és elérheti az utolsó 30 nap adatait. Ha szeretne egy hosszabb ideig megőrizni az adatokat, úgy archiválhatók metrikák adatai egy Azure Storage-fiókhoz. Ennek a konfigurációja a [diagnosztikai beállítások](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) az Azure monitorban.
 

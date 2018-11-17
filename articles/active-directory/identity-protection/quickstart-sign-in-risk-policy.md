@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 6879822e8451e6170bf17fff4ab66b672f711a93
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 09528aab5f694aa017f9f16e2675d3c36c1bead3
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632387"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822142"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>Gyors útmutató: Letiltja a hozzáférést, az Azure Active Directory Identity Protection egy munkamenet kockázati észlelésekor  
 
@@ -38,7 +38,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-Ebben az oktatóanyagban a forgatókönyv végrehajtásához szükséges:
+Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 - **Hozzáférés az Azure AD Premium P2 kiadás** – Azure AD Identity Protection az Azure AD Premium P2 szolgáltatása. 
 
@@ -109,7 +109,7 @@ Ez a szakasz bemutatja, hogyan hozhat létre a szükséges bejelentkezési kock�
 14. A szabályzat lapján kattintson a **mentése**.  
 
 
-## <a name="test-your-conditional-access-policy"></a>A feltételes hozzáférési házirend tesztelése
+## <a name="test-your-conditional-access-policy"></a>A feltételes hozzáférési szabályzat tesztelése
 
 Ha tesztelni szeretné a szabályzatot, próbálja meg, jelentkezzen be a [az Azure portal](https://portal.azure.com) , **Alan Charon** a Tor böngészővel. A bejelentkezési kísérlet a feltételes hozzáférési szabályzat által le kell tiltani.
 
@@ -122,6 +122,6 @@ Ha már nincs rá szükség, törölje a tesztfelhasználó számára, a Tor bö
 
 - Ha nem ismeri az Azure AD-felhasználó törlése, lásd: [hozzáadása vagy törlése a felhasználók](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
 
-- Eltávolítja a Tor böngésző útmutatásért lásd: [eltávolítása](https://tb-manual.torproject.org/en-US/uninstalling.html).
+- Eltávolítja a Tor böngésző útmutatásért lásd: [eltávolítása](https://tb-manual.torproject.org/uninstalling/).
 
 

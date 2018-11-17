@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: ae033b944e93fe90392af9b17de883d791d3e4dc
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 521bf044f280b91f668d42d760ba2a726b555f12
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958595"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822670"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Webalkalmazások és szolgáltatások részletes diagnosztikája az Application Insights szolgáltatással
 ## <a name="why-do-i-need-application-insights"></a>Miért kell Application Insights?
@@ -82,7 +82,7 @@ Az adatok a fő kategóriák a következők:
 ## <a name="case-study-real-madrid-fc"></a>Esettanulmány: Real Madrid F.C.
 A web service a [Real Madrid labdarúgó Club](http://www.realmadrid.com/) mintegy 450 millió rajongóhoz szolgál a világ különböző pontjain. Ventilátorok eléréséhez egyaránt webböngészők és a Club a mobile apps segítségével. Ventilátorok is nemcsak jegyek foglalható le, de is elérheti az adatokat és videoklipeket eredmények, a lejátszók és a közelgő játékokat. Azokat a keresési szűrőket például célok számú pontozunk. Közösségi média mutató hivatkozásokat is vannak. A felhasználói élmény magas személyre szabott, és végezhetnek ventilátorok szolgál, amely kétirányú kommunikációt.
 
-A megoldás [a szolgáltatások és alkalmazások a Microsoft Azure egy rendszer](https://www.microsoft.com/en-us/enterprise/microsoftcloud/realmadrid.aspx). Méretezhetőség azt a fő követelmény: forgalom változó, és elérheti a nagyon nagy mennyiségű során, és egyezés körül.
+A megoldás [a szolgáltatások és alkalmazások a Microsoft Azure egy rendszer](https://www.microsoft.com/inculture/sports/real-madrid/). Méretezhetőség azt a fő követelmény: forgalom változó, és elérheti a nagyon nagy mennyiségű során, és egyezés körül.
 
 A Real Madrid, elengedhetetlen, hogy a rendszer teljesítményének figyelése. Az Azure Application Insights nyújt átfogó képet a rendszer egy megbízható és magas szintű szolgáltatást biztosítva. 
 

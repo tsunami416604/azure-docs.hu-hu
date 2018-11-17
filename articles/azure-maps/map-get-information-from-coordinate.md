@@ -3,18 +3,18 @@ title: Az Azure Maps koordináta információkat jelenít meg |} A Microsoft Doc
 description: Hogyan egy címet kapcsolatos információk megjelenítéséhez a térképen, amikor a felhasználó kiválaszt egy koordinátája
 author: jingjing-z
 ms.author: jinzh
-ms.date: 09/08/2018
+ms.date: 11/15/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: bf44437f4d0b60a5d56c2be29418b7132346da2e
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: ada579af44d1d0b4ea08a8ae9eadbec386e44f08
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732294"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823010"
 ---
 # <a name="get-information-from-a-coordinate"></a>Koordináta információinak lekérése
 
@@ -24,33 +24,33 @@ Győződjön meg arról, fordított cím keresés két módon lehet. Egyik móds
 
 ## <a name="make-a-reverse-search-request-via-service-module"></a>Indítson egy fordított keresési szolgáltatás modulon keresztül
 
-<iframe height='500' scrolling='no' title='(Szolgáltatásmodul) koordináta információinak lekérése' src='//codepen.io/azuremaps/embed/ejEYMZ/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/ejEYMZ/'>(Szolgáltatásmodul) koordináta információinak lekérése</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='(Szolgáltatásmodul) koordináta információinak lekérése' src='//codepen.io/azuremaps/embed/ejEYMZ/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/ejEYMZ/'>(Szolgáltatásmodul) koordináta információinak lekérése</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Az első kódblokkot egy térkép-objektumot hoz létre. Látható [térkép létrehozásához](./map-create.md) útmutatást.
 
-A sort a második kódblokkot a szolgáltatási ügyfél példányosítja.
+A vonal jelzi a második kódblokkot egy ügyfél szolgáltatás példányosítja.
 
-A harmadik kódblokkot mutató frissíti az egérmutatót stílusát.
+A harmadik kódblokkot mutató frissíti az egérmutatót a stílus és [előugró](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) objektum. Látható [egy előugró ablak hozzáadása a térképen](./map-add-popup.md) útmutatást.
 
-A negyedik kódblokk létrehoz egy előugró ablak az [nyissa meg a](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open). Látható [egy előugró ablak hozzáadása a térképen](./map-add-popup.md) útmutatást.
+A negyedik kódblokkot hozzáad egy [eseményfigyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) az egérrel rákattint. Egy kattintásra esetén azt a koordináták a való kattintás pont egy keresési lekérdezést hoz létre. Ezután használja a térkép [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.search?view=azure-iot-typescript-latest#getsearchaddressreverse) lekérdezni a koordináták a cím végponthoz.
 
-A legutóbbi kódblokkot [hozzáad egy Eseményfigyelőt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addeventlistener) az egérrel rákattint. Egy kattintásra esetén, hoz létre egy keresési lekérdezést az való kattintás pont fordítani. Akkor használja a térkép [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.search?view=azure-iot-typescript-latest#getsearchaddressreverse) végpont lekérdezni a fordítani a címet.
+Sikeres válasz, a cím való kattintás helyéhez gyűjti, és meghatározza az előugró ablak tartalmát és pozícióját keresztül [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) függvény az előugró osztály.
 
-Sikeres válasz, a cím való kattintás helyéhez gyűjti, és meghatározza az előugró ablak tartalmát és pozícióját keresztül [setPopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setpopupoptions) függvény az előugró osztály.
+A módosítás a kurzor, egy előugró objektum és a kattintás esemény összes jönnek létre a térkép [terhelés eseményfigyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) biztosításához térkép terhelések teljes előtt a koordináták adatait.
 
 ## <a name="make-a-reverse-search-request-via-xmlhttprequest"></a>Fordított keresési keresztül XMLHttpRequest kérést
 
 <iframe height='500' scrolling='no' title='Koordináta információinak lekérése' src='//codepen.io/azuremaps/embed/ddXzoB/?height=516&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/ddXzoB/'>koordináta információinak lekérése</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Az első kódblokkot egy térkép-objektumot hoz létre. Látható [térkép létrehozásához](./map-create.md) útmutatást.
+A fenti kód első kódblokkot egy térkép-objektumot hoz létre. Látható [térkép létrehozásához](./map-create.md) útmutatást.
 
-A második kódblokkot mutató frissíti az egérmutatót stílusát.
+A második kódblokkot mutató frissíti az egérmutatót a stílus és [előugró](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) objektum. Látható [egy előugró ablak hozzáadása a térképen](./map-add-popup.md) útmutatást.
 
-A harmadik kódblokkot létrehoz egy előugró ablak az [nyissa meg a](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open). Látható [egy előugró ablak hozzáadása a térképen](./map-add-popup.md) útmutatást.
+A harmadik kódblokkot hozzáad egy Eseményfigyelőt, a kattintások. A kattintásra esetén küld egy [XMLHttpRequest](https://xhr.spec.whatwg.org/) való [Azure Maps fordított cím Search API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) -lekérdezéshez való kattintás koordinátái címét. Sikeres válasz, a cím való kattintás helyéhez gyűjti, és meghatározza az előugró ablak tartalmát és pozícióját keresztül [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) függvény az előugró osztály.
 
-Az utolsó kódblokkot hozzáad egy Eseményfigyelőt, a kattintások. A kattintásra esetén küld egy [XMLHttpRequest](https://xhr.spec.whatwg.org/) való [Azure Maps fordított cím Search API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse). Sikeres válasz, a cím való kattintás helyéhez gyűjti, és meghatározza az előugró ablak tartalmát és pozícióját keresztül [setPopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setpopupoptions) függvény az előugró osztály
+A módosítás a kurzor, egy előugró objektum és a kattintás esemény összes jönnek létre a térkép [terhelés eseményfigyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) biztosításához térkép terhelések teljes előtt a koordináták adatait.
 
 ## <a name="next-steps"></a>További lépések
 

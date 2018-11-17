@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: e44d267fcc9986c5e215fc4844f49b28918a3111
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: HT
+ms.openlocfilehash: 2fff332665652516e4ac25c4eb1a4612c15e2412
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711922"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824676"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Az Azure Monitor az adatok megjelenítése
-Ez a cikk az Azure Monitor-ban tárolt adatok megjelenítése a választható módszerek összegzését tartalmazza. Ez magában foglalja [mérőszámok az Azure-metrikagyűjtéshez áruházban](../monitoring/monitoring-data-collection.md#metrics) és [adatok Log Analytics naplóbeli](../monitoring/monitoring-data-collection.md#logs). 
+Ez a cikk az Azure Monitor-ban tárolt adatok megjelenítése a választható módszerek összegzését tartalmazza. Ez magában foglalja [mérőszámok az Azure-metrikagyűjtéshez áruházban](../azure-monitor/platform/data-collection.md#metrics) és [adatok Log Analytics naplóbeli](../azure-monitor/platform/data-collection.md#logs). 
 
 Vizualizációk, például diagramokat és ábrákat segíthet a problémák részletezés és a minták azonosítása monitorozási adatok elemzése. Attól függően, a használt eszköz Vizualizációk megoszthatók más felhasználókkal belüli és kívüli a szervezet is előfordulhat.
 
@@ -138,7 +138,7 @@ Bármely REST-ügyfél, amely lehetővé teszi, hogy a saját egyéni webhelyek 
 
 
 ## <a name="next-steps"></a>További lépések
-- További információ a [Azure Monitor által gyűjtött adatok](../monitoring/monitoring-data-collection.md).
+- További információ a [Azure Monitor által gyűjtött adatok](../azure-monitor/platform/data-collection.md).
 - Ismerje meg [Azure-irányítópultok](../azure-portal/azure-portal-dashboards.md).
 - Ismerje meg [nézetek az Azure Monitor](../log-analytics/log-analytics-view-designer.md).
 - Ismerje meg [az Application Insights-munkafüzetek](../application-insights/app-insights-usage-workbooks.md).

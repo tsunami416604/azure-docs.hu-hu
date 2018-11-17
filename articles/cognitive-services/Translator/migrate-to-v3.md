@@ -10,16 +10,19 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: e0654d6a4696e6f02939cad51a715412fdcfb61a
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 2f0b2984bf2390a9af0b824495b84c71d04aeac2
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645234"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852843"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 V3 áttelepítése
 
-A Microsoft Translator csapat kiadott 3-as verziójú (V3), a Translator Text API. Ebben a kiadásban új funkciók, a elavult módszerek és a egy új formátum küld és fogad adatokat a Microsoft Translator szolgáltatás tartalmaz. Ez a dokumentum módosítása alkalmazások általi használatát a v3-as információkat szolgáltat. V2 2018. április 30. elavulttá válik, és a 2019. április 30. ezt megszüntetjük.
+> [!NOTE]
+> V2 elavulttá 2018. április 30., és a 2019. április 30. ezt megszüntetjük.
+
+A Microsoft Translator csapat kiadott 3-as verziójú (V3), a Translator Text API. Ebben a kiadásban új funkciók, a elavult módszerek és a egy új formátum küld és fogad adatokat a Microsoft Translator szolgáltatás tartalmaz. Ez a dokumentum módosítása alkalmazások általi használatát a v3-as információkat szolgáltat. 
 
 Ez a dokumentum végén, hogy további hasznos hivatkozásokat tartalmaz.
 

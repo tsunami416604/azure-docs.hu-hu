@@ -1,10 +1,11 @@
 ---
-title: A Machine Learning webszolgáltatásba az Excelből felhasználása |} Microsoft Docs
-description: Az Azure Machine Learning webszolgáltatásba az Excelből felhasználása
+title: Excel-fájlból egy Machine Learning webszolgáltatás felhasználása |} A Microsoft Docs
+description: Excel-fájlból az Azure Machine Learning webszolgáltatás használata
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
-ms.author: yahajiza
+ms.custom: (previous ms.author yahajiza)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 3f3cdd2f-1816-487e-ab78-530e01e9788f
@@ -15,61 +16,61 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 2/1/2018
-ms.openlocfilehash: 14621e50a397bc1f1922a4c8fae638d6b42ab8ba
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 88150763d7deeda2e4fcba896df56d012d58cd1d
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837065"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821956"
 ---
 # <a name="consuming-an-azure-machine-learning-web-service-from-excel"></a>Azure Machine Learning webszolgáltatások használata az Excel programból
- Az Azure Machine Learning Studio megkönnyíti a webes szolgáltatások hívja közvetlenül az Excelből kód írása nélkül.
+ Az Azure Machine Learning Studio megkönnyíti a webszolgáltatások meghívása közvetlenül az Excelből, kód írása nélkül.
 
-Ha az Excel 2013 (vagy újabb verzió) vagy az Excel Online, akkor azt javasoljuk, hogy használja-e az Excel [Excel-bővítmény](excel-add-in-for-web-services.md).
+Ha az Excel 2013-as (vagy újabb verzió) vagy az Excel online-ban, akkor azt javasoljuk, hogy az Excel használatával [Excel-bővítmény](excel-add-in-for-web-services.md).
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="steps"></a>Lépések
-A webszolgáltatás közzététele. [Ezen a lapon](walkthrough-5-publish-web-service.md) ismerteti, hogyan teheti meg. Az Excel-munkafüzet szolgáltatás jelenleg csak egy egyetlen kimeneti (Ez azt jelenti, hogy egy pontozási egycímkés) rendelkező kérelem/válasz szolgáltatásokat támogatott. 
+Webszolgáltatás közzététele. [Ezen a lapon](walkthrough-5-publish-web-service.md) azt ismerteti, hogyan teheti meg. Az Excel-munkafüzet funkció jelenleg csak egy egyetlen kimeneti (azaz egy pontozó egycímkés) kérés/válasz szolgáltatások esetében támogatott. 
 
-Miután egy webszolgáltatás, kattintson a a **WEBSZOLGÁLTATÁSOK** bal oldalán a studio szakaszt, és válassza ki a webszolgáltatás számára, Excel felhasználását.
+Ha már rendelkezik egy webszolgáltatás, kattintson a a **WEBSZOLGÁLTATÁSOK** bal oldalán a studio szakaszt, és válassza ki a web service által az Excelből.
 
 **Klasszikus webszolgáltatás**
 
-1. Az a **IRÁNYÍTÓPULT** lap a webkiszolgáló egy sort a **kérelem/válasz** szolgáltatás. Ha ez a szolgáltatás egyetlen kimeneti rendelkezett, láthatja a **töltse le az Excel-munkafüzet** sorhoz hivatkozásra.
+1. Az a **IRÁNYÍTÓPULT** lapon, a web service van egy sort a **KÉRÉS/válasz** szolgáltatás. Ha ezt a szolgáltatást egy kimeneti, megjelenik a **Excel-munkafüzet letöltése** hivatkozás abban a sorban.
    
     ![][1]
-2. Kattintson a **töltse le az Excel-munkafüzet**.
+2. Kattintson a **Excel-munkafüzet letöltése**.
 
 **Új webszolgáltatás**
 
-1. Válassza az Azure Machine Learning webszolgáltatás portál **felhasználás**.
-2. A felhasználás lapon a a **webes szolgáltatás felhasználásához beállításai** területen kattintson az Excel ikonra.
+1. Az Azure Machine Learning Web Service-portálon válassza **felhasználás**.
+2. A felhasználás az oldalon a a **webes szolgáltatás adathasználati beállítások** területén kattintson az Excel ikon.
 
-**A munkafüzet használatát**
+**A munkafüzet használatának**
 
 1. Nyissa meg a munkafüzetet.
-2. Biztonsági figyelmeztetés jelenik meg; Kattintson a **szerkesztésének engedélyezése** gombra.
+2. Biztonsági figyelmeztetés jelenik meg; Kattintson a **Szerkesztés engedélyezése** gombra.
    
     ![][2]
-3. Biztonsági figyelmeztetés jelenik meg. Kattintson a **tartalom engedélyezése** gombra a makrók futtatását a munkalapon.
+3. Biztonsági figyelmeztetés jelenik meg. Kattintson a **tartalom engedélyezése** gomb makrók futtatását a munkalapon.
    
     ![][3]
-4. Ha makrók engedélyezve vannak, egy tábla jön létre. Oszlopok kék is szükséges az RRS webszolgáltatás bemeneteként vagy **paraméterek**. Vegye figyelembe a RR-EKET szolgáltatás kimeneti **ELŐREJELZETT ÉRTÉKEKET** zöld. Minden oszlop egy adott sor kitöltődnek, ha a munkafüzet automatikusan a pontozási API-t és a pontozott eredményeit jeleníti meg.
+4. Ha makrók engedélyezve vannak, egy tábla jön létre. Oszlopok kék is szükséges bemenetként az RRS webes szolgáltatás, vagy **paraméterek**. Vegye figyelembe a kimenet az RRS szolgáltatás **előre JELZETT értékek** zöld színnel. Amikor egy adott sorának az összes oszlop ki vannak töltve, a munkafüzet automatikusan a pontozási API- és a pontozott eredményeit jeleníti meg.
    
     ![][4]
-5. Pontozásához egynél több sorban, a második sor adatok és az előre jelzett értékek kitöltés előállítása. Több sort is beillesztheti egyszerre.
+5. Pontszámot rendelni az egynél több sorral, adja meg a második sor az adatok és az előre jelzett értékek előállítása. Több sor egyszerre is beillesztheti.
 
-Segítségével (diagramokat, energiagazdálkodási térkép, formázási, stb.) az Excel-szolgáltatások egyikét sem az előre jelzett értékek az adatok megjelenítése érdekében.    
+Használhatja az Excel-szolgáltatások (diagramokat, a power mappel, feltételes formázás, stb.) az előre jelzett értékek segítségével jelenítheti meg az adatokat.    
 
 ## <a name="sharing-your-workbook"></a>A munkafüzet megosztása
-A makrók működjön az API-kulcs a táblázat részének kell lennie. Ez azt jelenti, hogy ossza meg a munkafüzet csak a megbízható entitások/személyeknek.
+A makrók működjön az API-kulcsot a számolótábla részét kell lennie. Ez azt jelenti, hogy ossza meg a munkafüzetet csak a megbízható entitások/szolgáltatásra.
 
 ## <a name="automatic-updates"></a>Automatikus frissítések
 Az RRS kezdeményezték a két ezekben a helyzetekben:
 
-1. Először egy sor tartalma az összes annak **paraméterek**
-2. Amikor bármelyik a **paraméterek** kellett az összes sor változásairól a **paraméterek** megadott.
+1. Először a sor nullértékkel rendelkezik, tartalom mindegyikét a **paraméterek**
+2. Bármikor, bármely a **paraméterek** kellett az összes sor változásai a **paraméterek** megadott.
 
 [1]: ./media/consuming-from-excel/excellink.png
 [2]: ./media/consuming-from-excel/enableeditting.png

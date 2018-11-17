@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: b3c652baa515035fc91d2a5f7f962685b673a25e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0801e3a0e9217ab0855d09df8a054926b488d759
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013326"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821548"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Az AMQP 1.0-s verziójában az Azure Service Bus és Event Hubs protokoll – útmutató
 
@@ -210,7 +210,7 @@ Bármely vlastnost alkalmazása szükséges határozza meg kell feleltetni AMQP 
 
 #### <a name="header"></a>header
 
-| Mező neve | Használat | API neve |
+| Mezőnév | Használat | API neve |
 | --- | --- | --- |
 | tartós |- |- |
 | prioritás |- |- |
@@ -218,9 +218,9 @@ Bármely vlastnost alkalmazása szükséges határozza meg kell feleltetni AMQP 
 | első-beszerző |- |- |
 | kézbesítések-száma |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeliveryCount) |
 
-#### <a name="properties"></a>tulajdonságok
+#### <a name="properties"></a>properties
 
-| Mező neve | Használat | API neve |
+| Mezőnév | Használat | API neve |
 | --- | --- | --- |
 | üzenetazonosító |Ez az üzenet alkalmazás által meghatározott, a szabad formátumú azonosítója. Duplikáltelem-észlelési használja. |[Üzenetazonosító](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) |
 | felhasználói azonosító |Alkalmazás által meghatározott felhasználói azonosító, a Service Bus nem értelmezi. |Nem a Service Bus API-n keresztül érhető el. |
@@ -258,7 +258,7 @@ A műveletek-azonosító szerint vannak csoportosítva `txn-id`.
 
 A tranzakciós műveletek, az ügyfél funkcionál a `transaction controller` , amely szabályozza a műveleteket, együtt kell csoportosítani. Service Bus szolgáltatás funkcionál, a `transactional resource` és munkát elvégzi a kérésének megfelelően a `transaction controller`.
 
-Az ügyfél és a szolgáltatás keresztül kommunikálnak a `control link` , az ügyfél létrehozott. A `declare` és `discharge` üzenetek lefoglalni, és a tranzakciók elvégzéséhez, illetve a vezérlőelem-kapcsolaton keresztül a vezérlő által küldött (tranzakciós feladatainak határait nem képviselnek). A tényleges Küldés/fogadás nem történik meg erre a hivatkozásra. Minden tranzakciós műveletet kért explicit módon van a kívánt azonosított `txn-id` , és ezért fordulhat elő, a kapcsolat bármelyik hivatkozásra. Ha a vezérlési kapcsolat le van zárva, bár léteznek a létrehozást nem kibocsátott tranzakciók, majd az összes ilyen tranzakció azonnal vissza legyen állítva, és a rajtuk további tranzakciós feladatainak végrehajtására tett kísérletet eredményezi, hogy sikertelen lesz. Vezérlő hivatkozásra üzeneteket nem lehet rendezni előtti.
+Az ügyfél és a szolgáltatás keresztül kommunikálnak a `control link` , az ügyfél létrehozott. A `declare` és `discharge` üzenetek lefoglalni, és a tranzakciók elvégzéséhez, illetve a vezérlőelem-kapcsolaton keresztül a vezérlő által küldött (tranzakciós feladatainak határait nem képviselnek). A tényleges küldése/fogadása küldje erre a hivatkozásra nem történik meg. Minden tranzakciós műveletet kért explicit módon van a kívánt azonosított `txn-id` , és ezért fordulhat elő, a kapcsolat bármelyik hivatkozásra. Ha a vezérlési kapcsolat le van zárva, bár léteznek a létrehozást nem kibocsátott tranzakciók, majd az összes ilyen tranzakció azonnal vissza legyen állítva, és a rajtuk további tranzakciós feladatainak végrehajtására tett kísérletet eredményezi, hogy sikertelen lesz. Vezérlő hivatkozásra üzeneteket nem lehet rendezni előtti.
 
 Minden kapcsolat kezdeményezése a saját vezérlő hivatkozás tudják kezdő és záró tranzakciók rendelkezik. A szolgáltatás határozza meg egy speciális cél, amely úgy működik, mint egy `coordinator`. Az ügyfél/vezérlő a cél vezérlő hivatkozást hoz létre. Vezérlő hivatkozás egy entitás határán kívül, azt jelenti, egyazon vezérlő kapcsolat kezdeményezéséhez és teljesíti a tranzakciók több entitás esetében használható.
 
@@ -359,10 +359,10 @@ A protokoll hitelesítési módok egy kérés/válasz az exchange felügyeleti s
 
 A kérelemüzenet a következő alkalmazás tulajdonságokkal rendelkezik:
 
-| Jelmagyarázat | Választható | Érték típusa | Érték tartalma |
+| Kulcs | Optional | Érték típusa | Érték tartalma |
 | --- | --- | --- | --- |
 | művelet |Nem |sztring |**PUT-token** |
-| típus |Nem |sztring |A token használatát típusa. |
+| type |Nem |sztring |A token használatát típusa. |
 | név |Nem |sztring |A "célközönség", amely a token vonatkozik. |
 | lejárat |Igen |időbélyeg |A jogkivonat lejárati idejét. |
 
@@ -378,7 +378,7 @@ Jogkivonatok ruháznak jogokat. A Service Bus három alapvető jogokat ismer: "K
 
 A válaszüzenet rendelkezik a következő *alkalmazástulajdonságok* értékek
 
-| Jelmagyarázat | Választható | Érték típusa | Érték tartalma |
+| Kulcs | Optional | Érték típusa | Érték tartalma |
 | --- | --- | --- | --- |
 | állapotkód |Nem |int |HTTP-válaszkód **[RFC2616]**. |
 | állapot – leírás |Igen |sztring |Az állapot leírása. |

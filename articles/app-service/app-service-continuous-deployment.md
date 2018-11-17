@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: bd440e0ef017e2bf116e80ad049883e2338efddb
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 9dead2c8801340a736b6f67010a85f3dd34fbe85
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298947"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820258"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Folyamatos üzembe helyezés az Azure App Service-ben
 Ez a cikk bemutatja, hogyan konfigurálhatja a folyamatos üzembe helyezés [Azure App Service](app-service-web-overview.md). Az App Service lehetővé teszi, hogy a BitBucket, GitHub, a folyamatos üzembe helyezés és [Azure DevOps-szolgáltatásokkal](https://www.visualstudio.com/team-services/) kiindulásként a a legújabb frissítéseket a meglévő adattárból az egyik szolgáltatásba.
@@ -152,5 +152,5 @@ A bal oldali menüben kattintson a **üzembe helyezési központ** > **GitHub** 
 [A Git dokumentációja]: http://git-scm.com/documentation
 
 [Adattár létrehozása (GitHub)]: https://help.github.com/articles/create-a-repo
-[Adattár létrehozása (BitBucket)]: https://confluence.atlassian.com/display/BITBUCKET/Create+an+Account+and+a+Git+Repo
+[Adattár létrehozása (BitBucket)]: https://confluence.atlassian.com/get-started-with-bitbucket/create-a-repository-861178559.html
 [Ismerkedés az Azure DevOps-szolgáltatásokkal]: https://www.visualstudio.com/docs/vsts-tfs-overview

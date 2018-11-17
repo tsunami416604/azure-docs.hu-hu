@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 833c469f70b60eb0a95e65af17956030eed6ee0b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f49ec56c3e891aff5c603af58a36a303f9d14de8
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446038"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821531"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>Oktatóanyag: Azure Active Directory-integráció a FishEye/tégelyt Kantega SSO-val
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása a FishEye/tégelyt Kantega SSO-val, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Kantega SSO FishEye/tégelyt egyszeri bejelentkezés az előfizetés engedélyezve van
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az Azure AD-be a FishEye/tégelyt Kantega SSO-integráció konfigurálásához, 
 
 **A FishEye/tégelyt Kantega SSO hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 

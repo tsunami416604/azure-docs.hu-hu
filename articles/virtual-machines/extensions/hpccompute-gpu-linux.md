@@ -12,40 +12,38 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/20/2018
+ms.date: 11/15/2018
 ms.author: roiyz
-ms.openlocfilehash: 307bdb5fa7a5d14a77c71d0ea40634a55d8507b6
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 8883111387bea4a78e81123f95201ed4826dcb1c
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056700"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820341"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>NVIDIA GPU illesztőprogramjának-bővítmény linuxhoz
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a bővítmény Linux N-sorozat virtuális gépei NVIDIA GPU-illesztők telepítése. A Virtuálisgép-család függően a bővítmény telepítését CUDA vagy GRID illesztőprogramok. NVIDIA telepítésekor illesztőprogramokat a bővítmény használatával Ön elfogadja, és elfogadja a NVIDIA végfelhasználói licencszerződés feltételeit. A telepítés során a virtuális gép újraindulhat az illesztőprogramot a telepítés végrehajtásához.
+Ez a bővítmény Linux N-sorozat virtuális gépei NVIDIA GPU-illesztők telepítése. A Virtuálisgép-család függően a bővítmény telepítését CUDA vagy GRID illesztőprogramok. NVIDIA telepítésekor illesztőprogramokat a bővítmény használatával Ön elfogadja, és elfogadja a használati a [NVIDIA végfelhasználói licencszerződés](https://go.microsoft.com/fwlink/?linkid=874330). A telepítés során a virtuális gép újraindulhat az illesztőprogramot a telepítés végrehajtásához.
 
 Egy bővítmény is érhető el az NVIDIA GPU-illesztők telepítése [Windows N-sorozat virtuális gépei](hpccompute-gpu-windows.md).
-
-NVIDIA végfelhasználói licencszerződés feltételeit itt találhatók – https://go.microsoft.com/fwlink/?linkid=874330
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-Ez a bővítmény a következő nyílt forráskódú támogatja:
+Ez a bővítmény a következő operációs rendszer disztribúciókhoz függően az adott operációsrendszer-verzió támogatja az illesztőprogramokat támogatja.
 
 | Disztribúció | Verzió |
 |---|---|
-| Linux: Ubuntu | 16.04 LTS |
-| Linux: Red Hat Enterprise Linux | 7.3, 7.4 |
-| Linux: CentOS | 7.3, 7.4 |
+| Linux: Ubuntu | 16.04 LTS, 18.04 LTS |
+| Linux: Red Hat Enterprise Linux | 7.3, 7.4, 7.5 |
+| Linux: CentOS | 7.3, 7.4, 7.5 |
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
-A Microsoft Azure-bővítmény esetében az NVIDIA GPU-illesztők szükséges, hogy a céloldali virtuális gép csatlakozik az internethez, és rendelkezik hozzáféréssel.
+A Microsoft Azure-bővítmény esetében az NVIDIA GPU-illesztők szükséges, hogy a cél virtuális gép csatlakozik az internethez, és rendelkezik hozzáféréssel.
 
 ## <a name="extension-schema"></a>Bővítményséma
 
@@ -63,7 +61,7 @@ A következő JSON a bővítmény sémáját jeleníti meg.
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverLinux",
-    "typeHandlerVersion": "1.1",
+    "typeHandlerVersion": "1.2",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -71,14 +69,24 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 }
 ```
 
-### <a name="property-values"></a>Tulajdonságok értékei
+### <a name="properties"></a>Tulajdonságok
 
 | Name (Név) | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | dátum |
 | publisher | Microsoft.HpcCompute | sztring |
 | type | NvidiaGpuDriverLinux | sztring |
-| typeHandlerVersion | 1.1 | int |
+| typeHandlerVersion | 1.2 | int |
+
+### <a name="settings"></a>Beállítások
+
+Minden beállítás nem kötelező. Az alapértelmezett viselkedést, hogy a kernel nem frissíthető, ha nem illesztőprogram telepítéséhez szükséges, telepítse a legújabb támogatott illesztőprogram és a CUDA toolkit (ha létezik).
+
+| Name (Név) | Leírás | Alapértelmezett érték | Érvényes értékek | Adattípus |
+| ---- | ---- | ---- | ---- | ---- |
+| updateOS | Frissítse a kernel akkor is, ha az illesztőprogram telepítéséhez nem szükséges | false | IGAZ, hamis | logikai |
+| driverVersion | NV: Rács illesztőprogram verziója<br> NC/ND: CUDA eszközkészlet verziója. A legújabb illesztőprogramokat a kiválasztott CUDA automatikusan települnek. | legújabb | GRID: "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | sztring |
+| installCUDA | Telepítse a CUDA eszközkészlet. Csak akkor érvényes, a hálózati vezérlő/ND sorozatú virtuális gépek. | true | IGAZ, hamis | logikai |
 
 
 ## <a name="deployment"></a>Környezet
@@ -104,7 +112,7 @@ Az alábbi példa azt feltételezi, hogy a bővítményt a virtuális gép típu
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverLinux",
-    "typeHandlerVersion": "1.1",
+    "typeHandlerVersion": "1.2",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -122,12 +130,14 @@ Set-AzureRmVMExtension
     -Publisher "Microsoft.HpcCompute" `
     -ExtensionName "NvidiaGpuDriverLinux" `
     -ExtensionType "NvidiaGpuDriverLinux" `
-    -TypeHandlerVersion 1.1 `
+    -TypeHandlerVersion 1.2 `
     -SettingString '{ `
     }'
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
+
+Az alábbi példa a fenti Azure Resource Manager és a PowerShell-példák tükrözi, és is hozzáadja az egyéni beállítások nem alapértelmezett illesztőprogram telepítéséhez például. Pontosabban frissíti az operációs rendszer kernelén, és egy adott CUDA eszközkészlet verzió illesztőprogram telepíti.
 
 ```azurecli
 az vm extension set `
@@ -135,8 +145,10 @@ az vm extension set `
   --vm-name myVM `
   --name NvidiaGpuDriverLinux `
   --publisher Microsoft.HpcCompute `
-  --version 1.1 `
+  --version 1.2 `
   --settings '{ `
+    "updateOS": true, `
+    "driverVersion": "9.1.85", `
   }'
 ```
 
@@ -165,13 +177,12 @@ Bővítmény végrehajtás kimenetének a rendszer naplózza a következő fájl
 | Kilépési kód | Jelentés | A művelet lehetséges |
 | :---: | --- | --- |
 | 0 | A művelet sikeres |
-| 1 | Helytelen-bővítmény használatát. | Forduljon az ügyfélszolgálathoz a végrehajtási napló kimenetét. |
-| 10 | Linux Integration Services, a Hyper-V és az Azure nem érhető el, illetve telepített. | Ellenőrizze a kimenetét lspci. |
-| 11 | NVIDIA GPU nem található a Virtuálisgép-méretet. | Használja a [virtuális gép mérete és az operációs rendszer támogatott](../linux/n-series-driver-setup.md). |
+| 1 | A bővítmény helytelen használat | Végrehajtási kimeneti naplóban |
+| 10 | A Hyper-V és az Azure nem érhető el, illetve telepített Linux integrációs szolgáltatások | Ellenőrzés kimenetét lspci |
+| 11 | NVIDIA GPU nem található a virtuális gép mérete | Használja a [támogatja a virtuális gép mérete és az operációs rendszer](../linux/n-series-driver-setup.md) |
 | 12 | Kép az ajánlat nem támogatott |
 | 13 | Virtuálisgép-méret nem támogatott | Használja az N sorozatú virtuális gépek üzembe helyezése |
-| 14 | A művelet sikertelen | |
-| 21 | Ubuntu rendszeren nem sikerült frissíteni a | "Sudo apt-get frissítése" négyzet kimeneti |
+| 14 | A művelet sikertelen | Végrehajtási kimeneti naplóban |
 
 
 ### <a name="support"></a>Támogatás

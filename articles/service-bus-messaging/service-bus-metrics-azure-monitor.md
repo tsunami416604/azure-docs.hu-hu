@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: f02fa8ff80915c23f70db09a1dee393010795132
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 1627e6bc5290277329633aa086d0fdbbbb12d971
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277443"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821293"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Az Azure Service Bus-metrikák az Azure Monitor (előzetes verzió)
 
@@ -27,7 +27,7 @@ Az Azure Monitor egységes felhasználói felületet biztosít a különböző A
 
 ## <a name="access-metrics"></a>Access-metrikák
 
-Az Azure Monitor hozzáférés metrikák több módot is biztosít. Mindkét hozzáférési metrikák keresztül is a [az Azure portal](https://portal.azure.com), vagy használja az Azure Monitor API-k (REST és .NET) és az elemzési megoldások, például a Log Analytics és az Event Hubs. További információkért lásd: [figyelési adatokat gyűjtött az Azure Monitor](../monitoring/monitoring-data-collection.md).
+Az Azure Monitor hozzáférés metrikák több módot is biztosít. Mindkét hozzáférési metrikák keresztül is a [az Azure portal](https://portal.azure.com), vagy használja az Azure Monitor API-k (REST és .NET) és az elemzési megoldások, például a Log Analytics és az Event Hubs. További információkért lásd: [figyelési adatokat gyűjtött az Azure Monitor](../azure-monitor/platform/data-collection.md).
 
 Alapértelmezés szerint engedélyezve vannak a metrikákat, és elérheti az utolsó 30 nap adatait. Ha szeretne egy hosszabb ideig megőrizni az adatokat, úgy archiválhatók metrikák adatai egy Azure Storage-fiókhoz. Ez az érték van konfigurálva a [diagnosztikai beállítások](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) az Azure monitorban.
 

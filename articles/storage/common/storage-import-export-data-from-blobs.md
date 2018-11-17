@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 60a92e35f1408d944e8091be4945c53abe3791d1
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
+ms.openlocfilehash: faf8852df8b50c43affe32ede0f1e96d0bb80d3d
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50754052"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821242"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Adatok exportálása az Azure Blob storage-ból az Azure Import/Export szolgáltatás használata
 Ebben a cikkben részletes útmutatás az Azure Import/Export szolgáltatás használatával nagy mennyiségű adat biztonságosan exportálása az Azure Blob storage-ból. A szolgáltatás megköveteli, hogy az Azure-adatközpontba üres meghajtókon szállításra. A szolgáltatás adatokat exportál a tárfiók a meghajtók, és vissza a meghajtók majd tartalmaz.

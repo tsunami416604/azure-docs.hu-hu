@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 8b12e3cdc53b926f660e12b7cf4b79a8cb6f40c2
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 25e70b3a685f3b777a74c4cc6bf0e56dd37741a7
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960157"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821514"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Az Azure virtuális Gépen RDP általános hiba elhárítása
 
@@ -65,7 +65,7 @@ Ez a probléma megoldásához [készítsen biztonsági másolatot az operációs
 
 ### <a name="serial-console"></a>Soros konzol
 
-#### <a name="step-1-turn-on-remote-desktop"></a>1. lépés: Távoli asztali bekapcsolása
+#### <a name="step-1-open-cmd-instance-in-serial-console"></a>1. lépés: Open CMD-példány a soros konzol
 
 1. Hozzáférés a [soros konzol](serial-console-windows.md) kiválasztásával **támogatás és hibaelhárítás** > **soros konzol (előzetes verzió)**. A szolgáltatás engedélyezve van a virtuális gépen, a virtuális gép sikeresen csatlakoztathatja.
 

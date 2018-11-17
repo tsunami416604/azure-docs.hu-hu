@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 152632c55fc21d2b49f6dfd8ae734833ea870898
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: d55ff92fcac2d52cd12ae82a7c11f83824b3a201
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978366"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824693"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-virtual-machine-scale-set-with-application-insights-profiler"></a>Egy Azure virtuális gép vagy virtuálisgép-méretezési csoportot az Application Insights Profiler futó webalkalmazások profil
 Ezek a szolgáltatások az Application Insights profiler is telepítheti:
@@ -27,17 +27,34 @@ Ezek a szolgáltatások az Application Insights profiler is telepítheti:
 * [Service Fabric](app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 ## <a name="deploy-profiler-on-a-virtual-machine-or-scale-set"></a>Profiler egy virtuális gép üzembe helyezése vagy a méretezési csoport
-Ezen a lapon végigvezeti Önt a lépéseket szükség az Application Insights profiler az Azure virtuális Gépen vagy Azure virtuálisgép-méretezési csoport beolvasásához beállítása. Application Insights Profiler telepítve van a Windows Azure Diagnostics bővítményt a virtuális gépek. Az App Insights SDK-t az alkalmazások profilok a virtuális gépen futó webalkalmazásokhoz készült, és futtassa a profilkészítőt a bővítmény konfigurálása kell.
+Ezen a lapon végigvezeti Önt a lépéseket szükség az Application Insights profiler az Azure virtuális Gépen vagy Azure virtuálisgép-méretezési csoport beolvasásához beállítása. Application Insights Profiler telepítve van a Windows Azure Diagnostics bővítményt a virtuális gépek. A bővítmény kell úgy kell beállítani, futtassa a profilkészítőt, és az App Insights SDK-t kell elkészíteni az alkalmazásba.
 
 1. Adja hozzá az application Insights SDK-t, a [ASP.Net-alkalmazás](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net) vagy rendszeres [.NET-alkalmazás.](https://docs.microsoft.com/azure/application-insights/app-insights-windows-services?toc=/azure/azure-monitor/toc.json) Meg kell kell kérelem telemetria küldése az Application Insights lásd profilra a kérelmek.
 1. Telepítse a Windows Azure Diagnostics bővítményt a virtuális Gépen. Teljes Resource Manager sablon példákért lásd:  
     * [Virtuális gép](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachine.json)
     * [Virtuálisgép-méretezési csoportot](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachineScaleSet.json)
+    
+    A kulcs része a ApplicationInsightsProfilerSink a WadCfg a. Ebben a szakaszban kell tudniuk WAD adatokat küldeni a Rendszerállapotkulcsot a profiler engedélyezéséhez adja hozzá egy másik fogadó.
+    ```json
+      "SinksConfig": {
+        "Sink": [
+          {
+            "name": "ApplicationInsightsSink",
+            "ApplicationInsights": "85f73556-b1ba-46de-9534-606e08c6120f"
+          },
+          {
+            "name": "MyApplicationInsightsProfilerSink",
+            "ApplicationInsightsProfiler": "85f73556-b1ba-46de-9534-606e08c6120f"
+          }
+        ]
+      },
+    ```
+
 1. Helyezze üzembe a módosított környezetben üzemelő példány definíciója.  
 
-   A módosítások alkalmazásához általában magában foglalja egy teljes körű sablonalapú telepítés vagy a felhő alapú szolgáltatás közzététele a PowerShell-parancsmagok vagy a Visual Studio.  
+   A alkalmazni a módosításokat, általában magában foglalja egy teljes körű sablonalapú telepítés vagy a PowerShell-parancsmagok vagy a Visual Studio közzététel-alapú felhőszolgáltatás.  
 
-   A következő powershell-parancsok egy alternatív módszer meglévő virtuális gépek csak az Azure Diagnostics bővítmény érintő:  
+   A következő powershell-parancsok egy alternatív módszer meglévő virtuális gépek csak az Azure Diagnostics bővítmény érintő. Egyszerűen adja hozzá a Config a Get-AzureRmVMDiagnosticsExtension parancs által visszaadott a fentieknek megfelelően a ProfilerSink. Ezután adja meg a frissített konfiguráció a Set-AzureRmVMDiagnosticsExcension parancsot.
 
     ```powershell
     $ConfigFilePath = [IO.Path]::GetTempFileName()
@@ -48,7 +65,7 @@ Ezen a lapon végigvezeti Önt a lépéseket szükség az Application Insights p
     Set-AzureRmVMDiagnosticsExtension -ResourceGroupName "MyRG" -VMName "MyVM" -DiagnosticsConfigurationPath $ConfigFilePath
     ```
 
-1. Ha az importálni kívánt alkalmazást futtató [IIS](https://www.microsoft.com/web/downloads/platform.aspx), engedélyezze a `IIS Http Tracing` Windows-szolgáltatást az alábbiak szerint:  
+1. Ha az importálni kívánt alkalmazást futtató [IIS](https://www.microsoft.com/web/downloads/platform.aspx), engedélyezze a `IIS Http Tracing` Windows-szolgáltatás.
 
    a. Állítsa be a környezeti távoli elérését, és használja a [hozzáadása Windows-szolgáltatások]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) ablakban, vagy futtassa a következő parancsot a PowerShellben (rendszergazdaként):  
 
@@ -64,7 +81,7 @@ Ezen a lapon végigvezeti Önt a lépéseket szükség az Application Insights p
 1. Az alkalmazás üzembe helyezéséhez.
 
 ## <a name="can-profiler-run-on-on-premises-servers"></a>A profiler futhatnak a helyszíni kiszolgálók?
-Nem tervezzük a helyszíni kiszolgálók általi támogatása hatóságuknál Insights Profiler van. 
+Nem tervezzük a helyszíni kiszolgálók általi támogatása Application Insights Profiler van.
 
 ## <a name="next-steps"></a>További lépések
 

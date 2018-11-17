@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/17/2018
+ms.date: 11/15/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e06b9ff2134c0bd1fb1ee8515827e9e8c06a3108
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 9c7a1ec33f82239a5b95e9bf116fe35694d9df36
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008470"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852860"
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Hajtsa végre az erőforrások közötti naplókeresések a Log Analyticsben  
 
@@ -101,6 +101,36 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 | where UpdateState == "Needed"
 | summarize dcount(Computer) by Classification
 ```
+
+## <a name="using-cross-resource-query-for-multiple-resources"></a>Erőforrások közötti lekérdezéssel több erőforrás
+Erőforrások közötti lekérdezések korrelációját, ha több Log Analytics és az Application Insights-erőforrások adatainak használatakor a lekérdezés összetett és nehezen fenntartható válhat. Támaszkodjon [függvények a Log Analytics](query-language/functions.md) hatókörére a lekérdezés erőforrásokat, amely egyszerűbbé teszi a lekérdezés szerkezete a lekérdezés logikai elkülönítése. A következő példa bemutatja, hogyan figyelheti több Application Insights-erőforrást, és jelenítheti meg a sikertelen kérelmek száma alkalmazásnév szerint. 
+
+Hozzon létre egy lekérdezést, például a következőképpen, hogy az Application Insights-erőforrások a következő hatókörre hivatkozik. A `withsource= SourceApp` parancs hozzáad egy oszlopot, amely az alkalmazás nevét jelöli meg a napló küldött. [A lekérdezés Mentés másként funkció](query-language/functions.md#create-a-function) az aliasszal _applicationsScoping_.
+
+```Kusto
+// crossResource function that scopes my Application Insights resources
+union withsource= SourceApp
+app('Contoso-app1').requests, 
+app('Contoso-app2').requests,
+app('Contoso-app3').requests,
+app('Contoso-app4').requests,
+app('Contoso-app5').requests
+```
+
+
+
+Mostantól [ezzel a funkcióval](query-language/functions.md#use-a-function) a következő erőforrások közötti lekérdezésben. A függvény aliasa _applicationsScoping_ kérelmek táblázat unióját adja vissza a meghatározott alkalmazások. A lekérdezés és a sikertelen kérelmek szűrése elérhetővé, és a trendek alkalmazás. A _elemezni_ operátor használata nem kötelező ebben a példában. Az alkalmazás nevét a bontja ki _SourceApp_ tulajdonság.
+
+```Kusto
+applicationsScoping 
+| where timestamp > ago(12h)
+| where success == 'False'
+| parse SourceApp with * '(' applicationName ')' * 
+| summarize count() by applicationName, bin(timestamp, 1h) 
+| sort by count_ desc 
+| render timechart
+```
+![idődiagramját](media/log-analytics-cross-workspace-search/chart.png)
 
 ## <a name="next-steps"></a>További lépések
 

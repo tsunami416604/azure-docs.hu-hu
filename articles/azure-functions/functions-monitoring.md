@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: glenga
-ms.openlocfilehash: e317a9c3cea800e05fbf3d2df73c124d2e7ffd23
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 9bb703f822a9b9cafe8318bfb7f7cc64c3854868
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457663"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853659"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
@@ -193,7 +193,7 @@ A függvény kódját a naplók ír, a kategória-e "Függvény".
 
 ### <a name="log-levels"></a>Naplózási szintek
 
-Az Azure functions naplózó is tartalmaz egy *naplózási szintjének* minden napló a. [LogLevel](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.loglevel#Microsoft_Extensions_Logging_LogLevel) enumeráció, és az egész kód azt jelzi, hogy relatív fontosságát:
+Az Azure functions naplózó is tartalmaz egy *naplózási szintjének* minden napló a. [LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel) enumeráció, és az egész kód azt jelzi, hogy relatív fontosságát:
 
 |LogLevel    |Kód|
 |------------|---|

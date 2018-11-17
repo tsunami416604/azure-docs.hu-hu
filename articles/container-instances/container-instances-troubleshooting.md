@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 41e3f38817abbdd0cab9ab2c72d39cb6f3f69531
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 062308622e3170a4eb8f75a96300f04f683a90e7
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978178"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820358"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Az Azure Container Instances szolgáltatásban gyakori problémáinak elhárítása
 
@@ -205,6 +205,9 @@ Ez a hiba azt jelzi, hogy a régióban, amelyben telepíteni kívánt nagy terhe
 ## <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>Nem lehet alapul szolgáló Docker API-t kapcsolódás vagy futtassa emelt szintű tároló
 
 Az Azure Container Instances nem az alapul szolgáló infrastruktúra, amely futtatja a tárolócsoportok közvetlen hozzáférést biztosít. Ez magában foglalja a Docker API-nak a tároló-gazdagépen futó és a futó tárolók emelt szintű hozzáférés. Ha a Docker-interakció van szüksége, ellenőrizze a [REST dokumentációja](https://aka.ms/aci/rest) megtekintéséhez az ACI API támogatja. Ha valami hiányzik, a vonatkozó kérelem küldése a [ACI visszajelzés – fórumok](https://aka.ms/aci/feedback).
+
+## <a name="ips-may-not-be-accessible-due-to-mismatched-ports"></a>IP-címek nem lehet érhető el, mert eltérő portok
+Az Azure Container Instances jelenleg nem támogatja reguláris docker-konfigurációval, például a leképezési port azonban ez a javítás tervbe van véve. Ha úgy találja, IP-címek nem érhetők el, ha úgy gondolja, hogy legyen, győződjön meg arról, konfigurálta a tároló rendszerképének elérhetővé teszi az a tárolócsoportot ugyanazokat a portokat figyeli a `ports` tulajdonság.
 
 ## <a name="next-steps"></a>További lépések
 Ismerje meg, hogyan [beolvasni a tároló naplóinak és események](container-instances-get-logs.md) hibakeresése a tárolók segítségével.

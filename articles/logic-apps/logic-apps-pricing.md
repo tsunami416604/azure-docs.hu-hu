@@ -7,34 +7,38 @@ ms.suite: logic-apps
 author: kevinlam1
 ms.author: klam
 ms.reviewer: estfan, LADocs
+manager: carmonm
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
-ms.date: 09/24/2018
-ms.openlocfilehash: 5f9147035c07bbe4fb3f38b74025015e70dd87b3
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/16/2018
+ms.openlocfilehash: 04fb86f9b8f8be2c013f9bd7449dd5a4b2bcf90c
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159562"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854118"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Az Azure Logic Apps díjszabási modell
 
-Hozzon létre, és automatizált méretezhető integrációs a munkafolyamatok futtatásához a felhőben az Azure Logic Apps. Az alábbiakban a Logic Apps számlázási és díjszabás működését részleteit. 
+Hozzon létre, és automatizált munkafolyamatokat, amely az Azure Logic Apps használata esetén skálázhatja a felhőben futtatni. Az alábbiakban a Logic Apps számlázási és díjszabás működését részleteit. 
 
 <a name="consumption-pricing"></a>
 
 ## <a name="consumption-pricing-model"></a>Használatalapú díjszabási modellje
 
-Új logic Apps, amely a nyilvános vagy "globális" Logic Apps szolgáltatás használatával hoz létre akkor csak azért fizet, használja. Ezek a logic apps használata egy fogyasztásalapú tervet és díjszabási modell, ami azt jelenti, hogy a logikai alkalmazás által végzett minden művelet-végrehajtások díjkötelesek. A logic app-definíciójának minden lépése a műveletet, például a triggereket, vezérlőelem a folyamat lépései, beépített műveletek hívásainak és összekötők hívásainak. További információkért lásd: [Logic Apps díjszabási](https://azure.microsoft.com/pricing/details/logic-apps).
+Új logic Apps, amely a nyilvános vagy "globális" Logic Apps szolgáltatásban akkor csak azért fizet, használja. Ezek a logic apps fogyasztásalapú terv és díjszabási modell használata. A logikai alkalmazás definíciójában minden lépése egy műveletet. Műveletek közé tartoznak az eseményindító, minden vezérlő a folyamat lépései, beépített műveleteket és összekötő hívások. A Logic Apps-mérőszámai minden művelet, amely a logikai alkalmazás futtatását.  
+További információkért lásd: [Logic Apps díjszabási](https://azure.microsoft.com/pricing/details/logic-apps).
 
 <a name="fixed-pricing"></a>
 
 ## <a name="fixed-pricing-model"></a>Rögzített díjszabási modell
 
-> [!NOTE]
-> Az integrációs service-környezet *privát előzetes verzió*. Hozzáférés igényléséhez [itt csatlakozni a kérelem létrehozása](https://aka.ms/iseprivatepreview).
+Új logic Apps, amely futtatható egy [ *integrációs szolgáltatás környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), fix havi díja fizet ISE címkével standard szintű összekötők és a beépített műveletek. Az ISE-ben is biztosítja, hogy az Azure virtuális hálózatban lévő erőforrások eléréséhez elszigetelt logikai alkalmazások létrehozása és futtatása.  
 
-Létrehozott egy új logikai alkalmazásokhoz egy [ *integrációs szolgáltatás környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), amely egy privát elkülönül a Logic Apps-példány dedikált erőforrásokat használ, fizet a fix havi díja beépített műveletek és a standard szintű ISE címkével összekötők. Az ISE-ben egy vállalati összekötő díjmentes, míg további vállalati összekötők vannak a vállalati használati díj alapján tartalmaz. További információkért lásd: [Logic Apps díjszabási](https://azure.microsoft.com/pricing/details/logic-apps).
+Az ISE-ben tartalmaz egy ingyenes vállalati összekötőt, amely a kívánt számú kapcsolatot foglal magában. További vállalati összekötők díjkötelesek használata a vállalati használati díj alapján. 
+
+> [!NOTE]
+> Az integrációs service-környezet *privát előzetes verzió*. Hozzáférés igényléséhez [itt csatlakozni a kérelem létrehozása](https://aka.ms/iseprivatepreview). További információkért lásd: [Logic Apps díjszabási](https://azure.microsoft.com/pricing/details/logic-apps).
 
 <a name="triggers"></a>
 
@@ -42,7 +46,7 @@ Létrehozott egy új logikai alkalmazásokhoz egy [ *integrációs szolgáltatá
 
 Eseményindítók olyan speciális művelet, hozzon létre egy logikaialkalmazás-példányt egy meghatározott esemény. Eseményindítók különböző módokon, amelyek befolyásolják a logikai alkalmazás milyen forgalmi díjas jár el.
 
-* **Lekérdezési eseményindító** – Ez az eseményindító folyamatosan ellenőrzi a végpont létrehozásához egy logikaialkalmazás-példányt, és elindítja a munkafolyamatot a feltételeknek megfelelő üzenetek. Minden lekérdezési kérelem-végrehajtási számít, és forgalmi díjas, még akkor is, ha nincs logikaialkalmazás-példányt jön létre. Adja meg a lekérdezési időköz, állítsa be – a Logic App Designerben az eseményindító.
+* **Lekérdezési eseményindító** – Ez az eseményindító folyamatosan ellenőrzi a végpont létrehozásához egy logikaialkalmazás-példányt, és elindítja a munkafolyamatot a feltételeknek megfelelő üzenetek. Logic Apps még ha nincs logikaialkalmazás-példányt jön létre, mert egy mérőszámai egyes lekérdezési kérelmek. Adja meg a lekérdezési időköz, állítsa be – a Logic App Designerben az eseményindító.
 
   [!INCLUDE [logic-apps-polling-trigger-non-standard-metering](../../includes/logic-apps-polling-trigger-non-standard-metering.md)]
 
@@ -50,24 +54,28 @@ Eseményindítók olyan speciális művelet, hozzon létre egy logikaialkalmazá
 
 * **Ismétlődési trigger** – Ez az eseményindító létrehoz egy logikaialkalmazás-példányt, amely beállította az eseményindító-ismétlődési időköze alapján. Például beállíthat egy ismétlődési eseményindítót, amely három naponta fut, vagy egy összetettebb ütemezés szerint.
 
-Eseményindító-végrehajtások a logikai alkalmazás áttekintése panelen a Triggerelőzmények szakaszában találhatja meg.
-
 ## <a name="actions"></a>Műveletek
 
-Beépített műveletek, például a műveleteket, amelyeket hívja fel a HTTP, az Azure Functions vagy az API Management, és azt is szabályozzák, a folyamat lépései natív műveleteket, amelyek rendelkeznek a megfelelő típusú mérjük. Műveletek, [összekötők](https://docs.microsoft.com/connectors) az "ApiConnection" típusa lehet. Ezeket az összekötőket besorolt standard vagy enterprise összekötők, amelyek mérjük, valamint saját alapján [díjszabás][pricing]. Vállalati összekötők *előzetes* standard összekötők díjkötelesek.
+A Logic Apps beépített műveleteket mérőszámai natív műveletként használható. Például beépített műveletek függvényhívásokat tartalmazzák, az Azure Functions vagy az API Management és az ellenőrzési folyamat lépései például ciklusok és feltételek hívásait HTTP-n keresztül 
+- mindegyik a saját művelet típusa. Műveletek, [összekötők](https://docs.microsoft.com/connectors) az "ApiConnection" típusa lehet. Ezeket az összekötőket besorolt standard vagy enterprise összekötők, amelyek mérjük, valamint saját alapján [díjszabás][pricing]. Vállalati összekötők *előzetes* standard összekötők díjkötelesek.
 
-Az összes sikeres és sikertelen feldolgozásokat is beleértve futtatási műveletek számoljuk és forgalmi díjas, műveletvégrehajtások. Műveleteket, amelyeket a rendszer kihagyja, miatt teljesítetlen feltételeket vagy műveleteket, amelyeket nem futnak, mert a logikai alkalmazás befejezését, mielőtt befejeződött, műveletvégrehajtások nem számít. Letiltva a logic apps nem hozható létre új példányokat, így azokat nem kell fizetnie, amikor le van tiltva.
+Logic Apps-mérőszámok az összes sikeres és sikertelen műveletek futtatására, műveletvégrehajtások. A Logic Apps nem mérni ezeket a műveleteket: 
+
+* Műveletek beolvasása teljesítetlen feltételek miatt kihagyva
+* Műveleteket, amelyeket nem futtatható, mert a logikai alkalmazás a befejezés előtt leállt
+
+Letiltva a logic apps nem kell fizetnie során le van tiltva, mert nem hozhatnak létre új példányokat.
 
 > [!NOTE]
 > Miután letiltja az egy logikai alkalmazást, a jelenleg futó példányok eltarthat egy ideig, mielőtt teljes mértékben meggátolni.
 
-Hurkok belül futó műveleteket a hurok minden ciklusonként bájtjai számítanak. Ha például egyetlen művelettel egy "mindegyikre" hurkot, amely 10-elemek listáját dolgozza fel a listaelemek (10) számát megszorozva a hurok (1) a műveletek számát plusz egy, az iteráció megkezdése a akkor számít. Tehát ebben a példában a számítás (10 * 1) + 1, 11, műveletvégrehajtások eredményez.
+Hurkok belül futó művelettel a Logic Apps minden műveletet a hurok ciklusonként számít. Tegyük fel például, egy "mindegyikre" hurkot, amely a folyamatok listáját. Logic Apps-mérőszámok, hogy a szám és lista a ciklus a művelet elemei a hurok műveletek számát, és hozzáadja a művelet, amely elindítja a ciklus. 10-elemek listáját, a számítás: (10 * 1) + 1, 11, műveletvégrehajtások eredményez.
 
 ## <a name="integration-account-usage"></a>Integrációs fiók használata
 
-Használati fogyasztásalapú tartalmaz egy [integrációs fiók](logic-apps-enterprise-integration-create-integration-account.md) , ismerje meg, fejlesztheti és tesztelheti a [B2B/EDI](logic-apps-enterprise-integration-b2b.md) és [XML-feldolgozás](logic-apps-enterprise-integration-xml.md) nélkül a Logic Apps funkciói További költség. Használhat egy integrációs fiók / régió és áruházbeli specifikus legfeljebb [összetevők számú](../logic-apps/logic-apps-limits-and-config.md), például a kereskedelmi EDI-partnerek és szerződések, térképek, sémák, szerelvényeket, tanúsítványok és kötegkonfigurációk.
+Érvényes használati fogyasztásalapú [integrációs fiókok](logic-apps-enterprise-integration-create-integration-account.md) , ismerje meg, fejlesztheti és tesztelheti a [B2B/EDI](logic-apps-enterprise-integration-b2b.md) és [XML-feldolgozás](logic-apps-enterprise-integration-xml.md) nélkül a Logic Apps funkciói További költség. Egy integrációs fiók lehet régiónként. Minden integrációs fiók adott is tárolhatja [összetevők számú](../logic-apps/logic-apps-limits-and-config.md), többek között a kereskedelmi partnerek, szerződések, térképeket, sémákat, szerelvényeket, tanúsítványok, kötegkonfigurációk és így tovább.
 
-A Logic Apps is kínál az alapszintű és standard szintű integrációs fiók támogatott Logic Apps SLA-val. Alapszintű integrációs fiók is használhatja, ha szeretné használni, csak a kezelési üzenetet, vagy olyan kisméretű vállalkozások partner, amely a kereskedelmi partneri kapcsolatban áll azzal a nagyobb üzleti entitásban szerepét. Standard szintű integrációs fiókok összetettebb B2B-kapcsolatokat támogatja, és növelje a felügyelt entitások számát. További információkért lásd: [az Azure díjszabása](https://azure.microsoft.com/pricing/details/logic-apps).
+A Logic Apps is kínál az alapszintű és standard szintű integrációs fiók támogatott Logic Apps SLA-val. Alapszintű integrációs fiók segítségével használhatja, ha csak szeretné, üzenetkezelés vagy olyan kisméretű vállalkozások partner, amely a kereskedelmi partneri kapcsolatban áll azzal a nagyobb üzleti entitásban szerepét. Standard szintű integrációs fiókok összetettebb B2B kapcsolatokat támogatja, és kezelheti entitások számának növelése. További információkért lásd: [az Azure díjszabása](https://azure.microsoft.com/pricing/details/logic-apps).
 
 ## <a name="next-steps"></a>További lépések
 

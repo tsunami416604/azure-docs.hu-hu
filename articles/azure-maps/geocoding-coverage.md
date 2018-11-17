@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d7c1eaa26edef830ca156eef943fcb256d737d77
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 3ab0edf4483763c1048b7026175ddce821624ac0
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989877"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821106"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Az Azure Maps geokódolás lefedettsége
 
@@ -104,7 +104,7 @@ Az Azure Maps hely keresése, ha a keresési szolgáltatás a keresési kifejez�
 | Japán                                               |                 |                |              |      ✓     |          ✓         |
 | Kiribati                                            |                 |                |              |      ✓     |          ✓         |
 | Laosz                                                |                 |                |              |      ✓     |          ✓         |
-| Makao                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Makaó                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Malajzia                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Mikronézia |                 |                |              |      ✓     |          ✓         |
 | Mongólia                                            |                 |                |              |      ✓     |          ✓         |
@@ -152,10 +152,10 @@ Az Azure Maps hely keresése, ha a keresési szolgáltatás a keresési kifejez�
 | Belgium                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Bosznia-Hercegovina                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Bulgária                                            |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Belerus|                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Belarusz|                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Horvátország                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Ciprus                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Csehország                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Cseh Köztársaság                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Dánia                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Észtország                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Feröer-szigetek                                       |                 |                |              |      ✓     |          ✓         |

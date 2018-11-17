@@ -4,7 +4,8 @@ description: Erőforrások üzembe helyezéséhez és webszolgáltatások felhas
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
-ms.author: yahajiza
+ms.custom: (previous ms.author yahajiza)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 47635376-d1f4-4ea4-a6af-bd1f99f69a69
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 321edd134fd2ac6b03ad6d3117944f0f59c24669
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 7c84956f9a22d8924fef53af8f27b730ee24017e
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42054678"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823588"
 ---
 # <a name="azure-machine-learning-web-services-deployment-and-consumption"></a>Azure Machine Learning webszolgáltatások: telepítés és használat
 Az Azure Machine Learning segítségével telepítheti a machine-learning munkafolyamatok és a modellek webszolgáltatásként. Ezekhez a webszolgáltatásokhoz majd használható alkalmazások, a gépi tanulási modellek hívja meg az interneten-t az előrejelzések valós időben vagy kötegelt módban. Mivel a webes szolgáltatások RESTful, meghívhatja azokat a különböző programozási nyelvekhez és platformokhoz, mint például a .NET, a Java, és az alkalmazások, például az Excel.

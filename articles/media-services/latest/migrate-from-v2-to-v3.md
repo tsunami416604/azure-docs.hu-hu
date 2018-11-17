@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 11/07/2018
+ms.date: 11/15/2018
 ms.author: juliako
-ms.openlocfilehash: 8c3ff4af3b556614d0b2179dceed6cabd9cbabff
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 41ad4b26247fa8037de01ff956921146a2238abc
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616010"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823379"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Migrálási útmutató segítséget nyújt a Media Services v2 áthelyezését v3
 
@@ -65,9 +65,7 @@ Ha rendelkezik egy fejlett még ma a videószolgáltatás a [örökölt Media Se
 * A következő entitásokat is átnevezése
     * JobOutput váltja fel a feladat, és a feladat részeként.
     * StreamingLocator kereső váltja fel.
-    * Videókhoz csatorna váltja fel.
-        
-        LiveEvents számlázási élő csatorna mérőszámok alapul. További információkért lásd: [élő streamelés – áttekintés](live-streaming-overview.md#billing) és [díjszabás](https://azure.microsoft.com/pricing/details/media-services/).
+    * Videókhoz csatorna váltja fel.<br/>LiveEvents számlázási élő csatorna mérőszámok alapul. További információkért lásd: [élő streamelés – áttekintés](live-streaming-overview.md#billing) és [díjszabás](https://azure.microsoft.com/pricing/details/media-services/).
     * LiveOutput Program váltja fel.
 * LiveOutputs nem kell explicit módon kell elindítani, a létrehozás indítása és leállítása, ha törli. Programok dolgoztam eltérően a v2 API-k, kellett arra, hogy létrehozása után indítható.
 
@@ -75,10 +73,7 @@ Ha rendelkezik egy fejlett még ma a videószolgáltatás a [örökölt Media Se
 
 A v3 API rendelkezik a következő szolgáltatás garanciát a v2 API hiányosságok pótlásában. A hiányosságok folyamatban.
 
-* A [prémium szintű kódoló](../previous/media-services-premium-workflow-encoder-formats.md) és az örökölt [elemzési médiafeldolgozók](../previous/media-services-analytics-overview.md) (az Azure Media Services Indexer 2 előzetes verzió, Face Redactor stb.) nem érhetők el a v3-n keresztül.
-
-    Ügyfelek, akik a Media Indexer 1 vagy 2 előzetes migrálni szeretne azonnal használható a készletet a v3 API AudioAnalyzer.  Az új beállításkészlet további funkciókat, mint a régebbi Media Indexer 1 vagy 2-es tartalmazza. 
-
+* A [prémium szintű kódoló](../previous/media-services-premium-workflow-encoder-formats.md) és az örökölt [elemzési médiafeldolgozók](../previous/media-services-analytics-overview.md) (az Azure Media Services Indexer 2 előzetes verzió, Face Redactor stb.) nem érhetők el a v3-n keresztül.<br/>Ügyfelek, akik a Media Indexer 1 vagy 2 előzetes migrálni szeretne azonnal használható a készletet a v3 API AudioAnalyzer.  Az új beállításkészlet további funkciókat, mint a régebbi Media Indexer 1 vagy 2-es tartalmazza. 
 * Számos, a Media Encoder Standard v2 API-k speciális funkciója jelenleg nem állnak rendelkezésre a v3-as, például:
     * Kivágás (az igény szerinti és élő forgatókönyv)
     * Eszközeinek vágása
@@ -103,13 +98,12 @@ Az alábbi táblázat a v2 és v3 szabhatják kódjának különbségeiről.
 ## <a name="known-issues"></a>Ismert problémák
 
 * Az Azure portal jelenleg nem használható v3-erőforrások kezeléséhez. Használja a [REST API-val](https://aka.ms/ams-v3-rest-sdk), CLI-t, vagy valamelyik támogatott SDK-k.
-* Még ma a Media szolgáltatás számára fenntartott egységek csak kezelhetők a Media Services v2 API-val. További információkért lásd: [médiafeldolgozás skálázás](../previous/media-services-scale-media-processing-overview.md).
+* Kell rendelkezni a Media szolgáltatás számára fenntartott egységek (helyet) a fiókban az egyidejűség és a feladatok, különösen azokról, videó vagy hang Analysis teljesítményének szabályozása érdekében. További információért lásd a [médiafeldolgozás skálázását](../previous/media-services-scale-media-processing-overview.md) ismertető cikket. Helyet használata kezelheti [CLI 2.0-t a Media Services v3](media-reserved-units-cli-how-to.md)révén a [az Azure portal](../previous/media-services-portal-scale-media-processing.md), vagy használja a[ v2 API-k](../previous/media-services-dotnet-encoding-units.md). Kiépítés helyet, akár az a Media Services v2 és v3 kell API-k.
 * A Media Services entitások API nem tudja kezelni a v2 API v3-as hoztak létre.  
 * A v3 API-kon keresztül a v2 API-kkal létrehozott entitások kezelése nem ajánlott. Példák, amelyek az entitásokat a két verziója nem kompatibilis a különbségek a következők:   
     * Feladatok és a v2-ben létrehozott feladatok nem jelennek meg a v3-as, azok nem kapcsolódnak egy-egy átalakítási. A javaslat, hogy váltson át a v3-as átalakítások és feladatok. A viszonylag rövid időtartammal kellene a figyelő a megszakít v2 feladatok a váltás során lesz.
-    * Csatornákon és programokon a v2 létrehozott (amely leképezett LiveEvents és LiveOutputs v3) nem tudja folytatni a v3-as felügyelt. A javaslat, hogy váltson át a v3-as LiveEvents és LiveOutputs, egy kényelmes csatorna leállítás.
-    
-        Jelenleg nem tudja áttelepíteni, folyamatosan futó csatornák.  
+    * Csatornákon és programokon a v2 létrehozott (amely leképezett LiveEvents és LiveOutputs v3) nem tudja folytatni a v3-as felügyelt. A javaslat, hogy váltson át a v3-as LiveEvents és LiveOutputs, egy kényelmes csatorna leállítás.<br/>Jelenleg nem tudja áttelepíteni, folyamatosan futó csatornák.  
+
 > [!NOTE]
 > Lássa el könyvjelzővel ezt a cikket, és tartsa a frissítések keresése.
 

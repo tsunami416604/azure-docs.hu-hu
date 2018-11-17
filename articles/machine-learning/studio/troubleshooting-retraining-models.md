@@ -1,10 +1,11 @@
 ---
-title: Az Azure Machine Learning klasszikus webszolgáltatás átképezési hibaelhárítása |} Microsoft Docs
-description: Határozza meg és javítsa ki a gyakori problémák közben, amikor az Azure Machine Learning webszolgáltatás van mind a modellben.
+title: Az Azure Machine Learning klasszikus webszolgáltatás átképezési hibaelhárítása |} A Microsoft Docs
+description: Azonosítsa és javítsa ki a gyakori problémák észlelt.%12%0, ha meg vannak átképezési a modell egy Azure Machine Learning Web Service számára.
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
-ms.author: yahajiza
+ms.custom: (previous ms.author yahajiza)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 75cac53c-185c-437d-863a-5d66d871921e
@@ -15,92 +16,92 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
-ms.openlocfilehash: 989bf010320501050a37fbf2f0799f50a5a3e2ba
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 2afbeef4a9c79a5d5c57718ff0bfbebc9b063f7a
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835773"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820477"
 ---
 # <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-classic-web-service"></a>Az Azure Machine Learning klasszikus webszolgáltatás átképezési hibaelhárítása
 ## <a name="retraining-overview"></a>Megőrzési áttekintése
-Egy prediktív kísérletté pontozási webszolgáltatásként központi telepítésekor a rendszer egy olyan statikus modell. Amint az elérhetővé válik az új adatok, vagy ha a fogyasztó API rendelkezik saját adataikat, a modellnek támogatnia kell a retrained lehet. 
+Amikor telepít egy prediktív kísérletet pontozási webszolgáltatásként, egy statikus modellt. Az új adatok válnak elérhetővé, vagy ha a fogyasztói API-rendelkezik saját adataikat, a modell kell lennie retrained. 
 
-A megőrzési folyamat egy klasszikus webszolgáltatás részletes útmutatást lásd: [újratanítása Machine Learning modellek szoftveres](retrain-models-programmatically.md).
+Klasszikus webszolgáltatás megőrzési folyamat részletes útmutatást lásd: [Retrain Machine Learning modellek programozott módon](retrain-models-programmatically.md).
 
 ## <a name="retraining-process"></a>Megőrzési folyamat
-Ha a webszolgáltatás újratanítása van szüksége, hozzá kell adnia néhány további eleme:
+Ha a webszolgáltatás újratanítása van szüksége, hozzá kell adnia néhány további információt:
 
-* A tanítási kísérletet alapján telepített webes szolgáltatás. A kísérlet rendelkeznie kell egy **webes szolgáltatás kimeneti** modul kimenetével csatlakoztatva a **tanítási modell** modul.  
+* A betanítási kísérlet alapján telepített webes szolgáltatás. Rendelkeznie kell a kísérletet a **webes szolgáltatás kimeneti** modul kimenete csatlakozik a **tanítási modell** modul.  
   
-    ![A webes szolgáltatás kimeneti csatolása a tanítási modell.][image1]
-* A pontozási webszolgáltatás hozzáadott új végpont.  A végpont programozott módon, a újratanítása Machine Learning modellek szoftveres hivatkozott mintakód is hozzáadhat a témakör vagy az Azure Machine Learning webszolgáltatások portálon keresztül.
+    ![A web service kimeneti csatolása a tanítási modell.][image1]
+* A pontozási webszolgáltatás hozzáadott új végpont.  A végpont programozott módon azzal a mintakóddal, a Machine Learning modellek szoftveres Átképezése hivatkozott programozott módon is hozzáadhat a témakör vagy az Azure Machine Learning webszolgáltatások portálján.
 
-A minta C#-kódban a képzés webszolgáltatás API súgó oldalról segítségével majd modell működik. Kiértékelték az eredményeket, és elégedett őket, miután a betanított modell használatával a hozzáadott új végpont webszolgáltatás pontozási frissítenie.
+Ezután használhatja a minta C# API súgóoldalt a betanítási webszolgáltatás újratanítása modell a kódot. Rendelkezik értékeli ki az eredményeket, és a velük teljesültek, frissítse a betanított modell pontozási webszolgáltatás a hozzáadott új végpont használatával.
 
-A hely minden a helyére a fő lépéseken, a modell újratanítása érdekében el kell végeznie a következők:
+A hely minden a helyére a fő lépések szükségesek a modell újratanítása a következők:
 
-1. A képzési webszolgáltatás hívására: A tekintendő, amely számára a kötegelt végrehajtási szolgáltatás (BES), nem a kérelem válasz szolgáltatás (RR-EKET). Az API Súgó oldalon példakód C# segítségével a hívást. 
-2. Az értékek keresése a *BaseLocation*, *RelativeLocation*, és *SasBlobToken*: ezeket az értékeket a rendszer adja vissza a kimenet a képzés webes szolgáltatás hívása. 
-   ![a kimenet a megőrzési minta és az BaseLocation RelativeLocation és SasBlobToken értékeket jelenít meg.][image6]
-3. A pontozási webszolgáltatásból a hozzáadott végpont frissítéséhez az új betanított modell: a felvett újonnan betanított modell pontozási modell a tanítási webszolgáltatás új végpont használatával programozott módon, a Machine Learning újratanítása modellek megadott mintakód frissítéséhez.
+1. Az oktatási webes szolgáltatás hívása: A hívás nem, a Batch Execution Service (BES), nem a Request Response Service (RRS). Használhatja a minta C# kódot az API help oldalon a híváshoz. 
+2. Keresse meg a tartozó értékeket a *BaseLocation*, *RelativeLocation*, és *SasBlobToken*: ezeket az értékeket a rendszer adja vissza a kimenetben a betanítási webszolgáltatás hívás. 
+   ![a kimenet a megőrzési minta és a BaseLocation RelativeLocation és SasBlobToken értékek megjelenítése.][image6]
+3. A hozzáadott a pontozási webszolgáltatás-végpont frissítése az új betanított modell: azzal a mintakóddal, programozott módon, a Machine Learning modellek szoftveres Átképezése megadott frissítése az új végpont a pontozási modelljével az újonnan betanított modell hozzáadott a Képzési webszolgáltatás.
 
-## <a name="common-obstacles"></a>Közös akadályok
-### <a name="check-to-see-if-you-have-the-correct-patch-url"></a>Ellenőrizze, hogy rendelkezik-e a megfelelő javítás URL-címe
-A javítás URL-címet használ a pontozási webszolgáltatás hozzáadott új pontozási végponthoz társított egy kell lennie. Számos módon a javítás URL-cím beszerzése:
+## <a name="common-obstacles"></a>Gyakori akadályai
+### <a name="check-to-see-if-you-have-the-correct-patch-url"></a>Ellenőrizze, hogy van-e a megfelelő JAVÍTÁSI URL-címe
+A JAVÍTÁSI URL-címet használ a pontozási webszolgáltatás hozzáadott új pontozási végponthoz társított egy kell lennie. Számos módon a JAVÍTÁSI URL-cím:
 
 **1. lehetőség: programozottan**
 
-A megfelelő javítás URL-cím beolvasása:
+A megfelelő JAVÍTÁSI URL-Címének lekéréséhez:
 
-1. Futtassa a [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) példakód.
-2. AddEndpoint kimenetében található a *HelpLocation* értékét, és másolja az URL-címet.
+1. Futtassa a [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) mintakódot.
+2. Az AddEndpoint kimenetében található a *HelpLocation* értékét, és másolja az URL-címet.
    
-   ![A addEndpoint minta kimenet HelpLocation.][image2]
-3. Illessze be az URL-címet egy böngészőben nyissa meg a webszolgáltatás súgóhivatkozások az olyan.
-4. Kattintson a **frissítés erőforrás** jelenítse meg a javítás Súgó hivatkozásra.
+   ![A kimenetben addEndpoint minta HelpLocation.][image2]
+3. Illessze be az URL-címet egy böngészőben nyissa meg egy lapot, amely biztosítja a webszolgáltatás súgóhivatkozások.
+4. Kattintson a **erőforrás frissítése** nyissa meg a patch Súgó hivatkozásra.
 
-**2. lehetőség: A portál használatához az Azure Machine Learning webszolgáltatások**
+**2. lehetőség: Az Azure Machine Learning Web Services portál használata**
 
 1. Jelentkezzen be a [Azure Machine Learning webszolgáltatások](https://services.azureml.net/) portálon.
 2. Kattintson a **webszolgáltatások** vagy **klasszikus webszolgáltatások** tetején.
-4. A pontozási webszolgáltatás dolgozunk kattintson (az alapértelmezett nevet: a webszolgáltatás nem módosítható, ha azt lejár "[pontozás Exp.]").
+4. Kattintson a pontozási webszolgáltatás dolgozik (Ha nem módosítja az alapértelmezett nevet, a webszolgáltatás, azt megszűnik az "[pontozás Exp.]").
 5. Kattintson a **+ új**.
 6. A végpont hozzáadása után kattintson a végpont neve.
-7. A a **javítás** URL-t, kattintson a **API súgó** javítási súgó lapjának megnyitásához.
+7. Alatt a **javítás** URL-CÍMÉT, kattintson a **API Help** nyissa meg a javítási segítséget.
 
 > [!NOTE]
-> Ha hozzáadta a végpont a képzés webszolgáltatás helyett a prediktív webszolgáltatás, kapni fog a következő hiba kattintva a **frissítés erőforrás** hivatkozás: "Elnézést kérünk, de ez a funkció nem nem támogatott vagy nem érhető el Ebben a környezetben. Ez a webszolgáltatás nem frissíthető erőforrással rendelkezik. Azt a kényelmetlenségért elnézését kérjük és a munkafolyamat javítása dolgozik."
+> Ha a végpont a betanítási Web Service helyett a prediktív webszolgáltatás hozzáadta, a következő hibaüzenetet kap, kattintva a **erőforrás frissítése** hivatkozás: "hiba, de ez a funkció nem támogatott vagy nem érhető el Ebben a környezetben. A webszolgáltatás nem rendelkezik nem frissíthető erőforrásokkal. Hogy kérünk az okozott kellemetlenségekért, és dolgozunk azon, hogy ez a munkafolyamat javítására."
 > 
 > 
 
-A javítás súgólap a javítás URL-címet tartalmaz kell használnia, és segítségével neki példakódot tartalmaz.
+A PATCH súgóoldalt tartalmazza, a JAVÍTÁSI URL-címet kell használnia, és segítségével meghívására mintakódot biztosít.
 
-![Javítás URL-címe.][image5]
+![Javítási URL-címe.][image5]
 
-### <a name="check-to-see-that-you-are-updating-the-correct-scoring-endpoint"></a>Ellenőrizze, hogy a helyes pontozási végpont frissítése
-* A javítás nem a képzés webszolgáltatás: A javítási műveletet kell végrehajtani a pontozási webszolgáltatáson.
-* A javítás nem az alapértelmezett végpont a webszolgáltatás: az új pontozási webes végpontot, amelyhez hozzáadta a a javítási műveletet kell végrehajtani.
+### <a name="check-to-see-that-you-are-updating-the-correct-scoring-endpoint"></a>Ellenőrizze, hogy a megfelelő pontozási végpont frissítése
+* A képzési webszolgáltatás javítás nem: A javítási műveletet kell végrehajtani a pontozási webszolgáltatásban.
+* Az alapértelmezett végpont a web service a javítás nem: A javítási műveletet kell végrehajtani az új pontozási webszolgáltatás végpontja hozzáadott a.
 
-Ellenőrizheti, hogy melyik webes szolgáltatás, a Web Services portál felkeresésével megtalálható a végpont. 
+Ellenőrizheti, hogy melyik webes szolgáltatás, a végpont a Web Services portál meglátogatása szerint be van kapcsolva. 
 
 > [!NOTE]
-> Győződjön meg arról, hogy a végpont a prediktív webszolgáltatás, nem a képzés webszolgáltatás kíván hozzáadni. Ha megfelelően telepítette, a képzési és a prediktív webszolgáltatás, megtekintheti az felsorolt két külön webszolgáltatások. A prediktív webszolgáltatás "[prediktív exp.]" kell végződnie.
+> Győződjön meg arról, hogy a végpont a prediktív webszolgáltatás, nem a betanítási webszolgáltatás ad hozzá. Ha megfelelően telepítette, egy tanítási és a egy prediktív webszolgáltatás, megtekintheti az felsorolt két külön webszolgáltatást. A prediktív webszolgáltatás "[prediktív exp.]" kell végződnie.
 > 
 > 
 
 1. Jelentkezzen be a [Azure Machine Learning webszolgáltatások](https://services.azureml.net/) portálon.
-2. Kattintson a **webszolgáltatások** vagy **klasszikus webszolgáltatások**.
-3. Válassza ki a prediktív webszolgáltatás.
-4. Győződjön meg arról, hogy az új végpont a webszolgáltatás lett hozzáadva.
+2. Kattintson a **webszolgáltatások** vagy **a klasszikus webszolgáltatások**.
+3. Válassza ki a prediktív webszolgáltatásait.
+4. Az új végpont hozzáadásának ellenőrzéséhez a webszolgáltatást.
 
-### <a name="check-that-your-workspace-is-in-the-same-region-as-the-web-service"></a>Ellenőrizze, hogy a munkaterület ugyanabban a régióban, mint amelyen a webszolgáltatás
-1. Jelentkezzen be [Learning Studio a gép](https://studio.azureml.net/).
-2. A lap tetején kattintson a legördülő listából válassza ki a munkaterület.
+### <a name="check-that-your-workspace-is-in-the-same-region-as-the-web-service"></a>Ellenőrizze, hogy a munkaterület a web service ugyanabban a régióban
+1. Jelentkezzen be a [Machine Learning Studióba](https://studio.azureml.net/).
+2. A képernyő felső részén kattintson a legördülő listából válassza ki a munkaterületeket.
 
    ![Machine learning régió felhasználói felületén.][image4]
 
-3. Győződjön meg arról, hogy a munkaterület megtalálható a régió.
+3. Ellenőrizze a régiót, amelyben a munkaterület megtalálható.
 
 <!-- Image Links -->
 

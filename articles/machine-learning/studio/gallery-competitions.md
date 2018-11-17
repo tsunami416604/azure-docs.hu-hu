@@ -4,7 +4,8 @@ description: Fedezze fel az Azure AI katalógusban versenyekről.
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
-ms.author: yahajiza
+ms.custom: (previous ms.author yahajiza)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: ef74f411-bce4-4b02-aa34-902fc8d7b519
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: bfc2f40231b5e28ffa3721eef70311da8dcb6da9
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: f9967888d4078e97a0087794ab0e260744ffe0d7
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51343668"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824030"
 ---
 # <a name="discover-competitions-in-the-azure-ai-gallery"></a>Fedezze fel az Azure AI katalógusban versenyek
 

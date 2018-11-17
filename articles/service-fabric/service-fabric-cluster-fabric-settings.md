@@ -12,77 +12,23 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/08/2018
+ms.date: 11/13/2018
 ms.author: aljo
-ms.openlocfilehash: 7a80693090b92db55ad2feed52fdbb2a455e3c39
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 3186d580918d7451317ae58cac270556509c6e3e
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884493"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854339"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállítások testre szabása
-Ez a cikk ismerteti, hogyan szabhatja testre a különböző hálóbeállítások a Service Fabric-fürt számára. A fürtök az Azure-ban üzemeltetett, testre szabhatja a beállításokat a [az Azure portal](https://portal.azure.com) vagy Azure Resource Manager-sablon használatával. Az önálló fürtök esetén a beállítások a ClusterConfig.json fájl frissítése és a fürtön lévő konfigurációs frissítés végrehajtása testre. 
+Ez a cikk ismerteti a Service Fabric-fürtöt, amely testre szabható a különböző fabric beállításait. A fürtök az Azure-ban üzemeltetett, testre szabhatja a beállításokat a [az Azure portal](https://portal.azure.com) vagy Azure Resource Manager-sablon használatával. További információkért lásd: [egy Azure-fürtön konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md). Az önálló fürtök esetén, testre szabható beállítások frissítése a *ClusterConfig.json* fájl- és a egy konfigurálási frissítse a fürtön. További információkért lásd: [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
 
-> [!NOTE]
-> Nem minden beállítás a portálon érhetők el. Abban az esetben az alábbiakban egy beállítás nem érhető el a portálon keresztül testre szabhatja azt egy Azure Resource Manager-sablon használatával.
-> 
-
-## <a name="description-of-the-different-upgrade-policies"></a>A különböző frissítési szabályzatok leírása
+Nincsenek három különböző frissítési szabályzat:
 
 - **A dinamikus** – egy dinamikus konfiguráció módosításainak, bármely Service Fabric folyamatokhoz vagy a szolgáltatás gazdagép folyamatainak folyamat újraindítása nem váltják ki. 
 - **Statikus** – statikus konfiguráció módosításainak hatására a Service Fabric csomópont újraindítása annak érdekében, hogy a módosítás felhasználását. A csomópontok a szolgáltatás újraindul.
 - **NotAllowed** – ezek a beállítások nem módosíthatók. Ezek a beállítások megköveteli, hogy a fürt semmisíteni módosítása, és létrehoztunk egy új fürtöt. 
-
-## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Testre szabhatja a Resource Manager-sablonok használatával fürtbeállítások
-Az alábbi lépéseket egy új beállítás hozzáadása megjelenítése *MaxDiskQuotaInMB* , a *diagnosztikai* szakaszban az Azure Resource Explorer használatával.
-
-1. Nyissa meg a következőt: https://resources.azure.com
-2. Keresse meg az előfizetés által bővítése **előfizetések** -> **\<előfizetését >** -> **resourceGroups**  ->   **\<Az erőforráscsoport >** -> **szolgáltatók** -> **Microsoft.ServiceFabric**  ->  **fürtök** -> **\<saját fürt neve >**
-3. A jobb felső sarokban, válassza ki **olvasási/írási.**
-4. Válassza ki **szerkesztése** és frissítheti a `fabricSettings` JSON-elem és a egy új elem hozzáadása:
-
-```json
-      {
-        "name": "Diagnostics",
-        "parameters": [
-          {
-            "name": "MaxDiskQuotaInMB",
-            "value": "65536"
-          }
-        ]
-      }
-```
-
-A következő módokon az Azure Resource Manager fürt beállítások is testre:
-
-- Használja a [az Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template) exportálhatja, és a Resource Manager-sablon frissítéséhez.
-- Használat [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell) exportálhatja, és a Resource Manager-sablon frissítéséhez.
-- Használja a [Azure CLI-vel](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli) exportálhatja, és a Resource Manager-sablon frissítéséhez.
-- Az Azure RM PowerShell [Set-AzureRmServiceFabricSetting](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/Set-AzureRmServiceFabricSetting) és [Remove-AzureRmServiceFabricSetting](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/Remove-AzureRmServiceFabricSetting) parancsok a beállítás módosításához közvetlenül.
-- Az Azure CLI-vel [az sf cluster beállítás](https://docs.microsoft.com/cli/azure/sf/cluster/setting) parancsok a beállítás módosításához közvetlenül.
-
-## <a name="customize-cluster-settings-for-standalone-clusters"></a>Fürt beállítások önálló fürtök személyre szabása
-Önálló fürtök úgy vannak konfigurálva, a ClusterConfig.json fájlon keresztül. További tudnivalókért lásd: [egy különálló Windows-fürt konfigurációs beállításainak](./service-fabric-cluster-manifest.md).
-
-Hozzáadása, frissítése vagy távolítsa el a beállításokat a `fabricSettings` szakaszba a [fürt tulajdonságai](./service-fabric-cluster-manifest.md#cluster-properties) ClusterConfig.json szakaszát. 
-
-Például a következő JSON ad hozzá egy új beállítás *MaxDiskQuotaInMB* , a *diagnosztikai* szakaszba `fabricSettings`:
-
-```json
-      {
-        "name": "Diagnostics",
-        "parameters": [
-          {
-            "name": "MaxDiskQuotaInMB",
-            "value": "65536"
-          }
-        ]
-      }
-```
-
-Miután módosította a beállításokat a ClusterConfig.json fájlban, kövesse az [a fürt konfigurációjának frissítése](./service-fabric-cluster-upgrade-windows-server.md#upgrade-the-cluster-configuration) kívánja alkalmazni a fürtön. 
-
 
 A következő fabric testreszabható, beállítások szakasz szerint vannak rendezve.
 
@@ -176,13 +122,13 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |AppDiagnosticStoreAccessRequiresImpersonation |Bool, alapértelmezett érték az IGAZ | Dinamikus |E megszemélyesítést akkor fér hozzá a diagnosztikai tárolja az alkalmazás nevében szükség. |
 |AppEtwTraceDeletionAgeInDays |Int, alapértelmezett érték 3 | Dinamikus |Ennyi nap elteltével töröljük a régi tartalmazó alkalmazás ETW-nyomkövetések ETL-fájlok. |
 |ApplicationLogsFormatVersion |int, alapértelmezett érték 0 | Dinamikus |Alkalmazás verzióját naplók formátuma. Támogatott értékei a következők: 0 és 1. 1-es verzió fut, 0 az ETW-esemény rekordjára további mezőket tartalmaz. |
-|ClusterId |Sztring | Dinamikus |A fürt egyedi azonosítója. Ez a fürt létrehozásakor jön létre. |
-|ConsumerInstances |Sztring | Dinamikus |A közvetlen gyorsítótár-ELÉRÉS fogyasztói példányok listáját. |
+|ClusterId |Karakterlánc | Dinamikus |A fürt egyedi azonosítója. Ez a fürt létrehozásakor jön létre. |
+|ConsumerInstances |Karakterlánc | Dinamikus |A közvetlen gyorsítótár-ELÉRÉS fogyasztói példányok listáját. |
 |DiskFullSafetySpaceInMB |Int, alapértelmezett érték az 1024 | Dinamikus |Fennmaradó szabad lemezterület (MB) megvédeni a közvetlen gyorsítótár-ELÉRÉS használja. |
 |EnableCircularTraceSession |Bool, alapértelmezett érték a False (hamis) | Statikus |A jelző azt jelzi, hogy használják-e körkörös nyomkövetési munkamenetek. |
 |EnableTelemetry |Bool, alapértelmezett érték az IGAZ | Dinamikus |Ez történik, engedélyezni vagy letiltani a telemetriai adatokat. |
 |MaxDiskQuotaInMB |Int, az alapértelmezett érték 65536 értékű | Dinamikus |Disková kvóta v MB-ot a Windows Fabric naplófájlokat. |
-|ProducerInstances |Sztring | Dinamikus |A közvetlen gyorsítótár-ELÉRÉS előállító példányok listáját. |
+|ProducerInstances |Karakterlánc | Dinamikus |A közvetlen gyorsítótár-ELÉRÉS előállító példányok listáját. |
 
 ## <a name="dnsservice"></a>Nincs
 | **A paraméter** | **Megengedett értékek** |**Szabályzat frissítése**| **Útmutató vagy rövid leírása** |
@@ -501,7 +447,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 ## <a name="performancecounterlocalstore"></a>PerformanceCounterLocalStore
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
-|Számlálók |Sztring | Dinamikus |Gyűjtendő teljesítményszámlálókat vesszővel tagolt listája. |
+|Számlálók |Karakterlánc | Dinamikus |Gyűjtendő teljesítményszámlálókat vesszővel tagolt listája. |
 |IsEnabled |Bool, alapértelmezett érték az IGAZ | Dinamikus |Jelző azt jelzi, hogy engedélyezve van-e a helyi csomóponton számláló teljesítménygyűjtés. |
 |MaxCounterBinaryFileSizeInMB |int, alapértelmezett értéke 1 | Dinamikus |Maximális mérete (MB) számláló teljesítménye bináris fájl esetében. |
 |NewCounterBinaryFileCreationIntervalInMinutes |Int, alapértelmezett érték 10 | Dinamikus |Maximális időköz (másodperc) után, amely egy új teljesítmény számláló bináris fájl jön létre. |
@@ -799,10 +745,10 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 | --- | --- | --- | --- |
 |ContainerNetworkName|sztring, alapértelmezett érték a ""| Statikus |A hálózat nevét, amikor a tároló hálózat beállítása.|
 |ContainerNetworkSetup|bool, alapértelmezett érték a hamis| Statikus |Hozza létre a tároló hálózatot kell-e.|
-|FabricDataRoot |Sztring | Nem engedélyezett |A Service Fabric-adatok gyökérkönyvtára. Alapértelmezett Azure d:\svcfab érték |
-|FabricLogRoot |Sztring | Nem engedélyezett |Service fabric log gyökérkönyvtára. Ez az, ahol SF naplók és nyomkövetések kerülnek. |
+|FabricDataRoot |Karakterlánc | Nem engedélyezett |A Service Fabric-adatok gyökérkönyvtára. Alapértelmezett Azure d:\svcfab érték |
+|FabricLogRoot |Karakterlánc | Nem engedélyezett |Service fabric log gyökérkönyvtára. Ez az, ahol SF naplók és nyomkövetések kerülnek. |
 |NodesToBeRemoved|sztring, alapértelmezett érték a ""| Dinamikus |A csomópontok, amely konfigurációs frissítés részeként el kell távolítani. (Csak az önálló verziója telepítéseinek)|
-|ServiceRunAsAccountName |Sztring | Nem engedélyezett |A fiók neve, a fabric host szolgáltatás futtatására. |
+|ServiceRunAsAccountName |Karakterlánc | Nem engedélyezett |A fiók neve, a fabric host szolgáltatás futtatására. |
 |SkipContainerNetworkResetOnReboot|bool, alapértelmezett érték a hamis|Nem engedélyezett|Hogy elmaradjon-e visszaállítása folyamatban; tároló hálózati újraindításkor.|
 |SkipFirewallConfiguration |Bool, alapértelmezett érték a False (hamis) | Nem engedélyezett |Itt adhatja meg, ha a tűzfal beállításainak meg kell adnia, a rendszer, vagy nem. Ez vonatkozik, csak akkor, ha a windows tűzfalat használja. Ha külső gyártótól származó tűzfalak használ, majd nyissa meg a portokat, a rendszer és alkalmazások általi használatát |
 
@@ -867,7 +813,4 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |X509StoreName | sztring, alapértelmezett érték a "Saját"|Dinamikus|Az UpgradeService X509StoreName. |
 
 ## <a name="next-steps"></a>További lépések
-Olvassa el az alábbi cikkek kezelő további tájékoztatást:
-
-[Adja hozzá, vihetők át, távolítsa el a tanúsítványokat az Azure-fürthöz ](service-fabric-cluster-security-update-certs-azure.md) 
-
+További információkért lásd: [egy Azure-fürtön konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md) és [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).

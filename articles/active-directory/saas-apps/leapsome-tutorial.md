@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: jeedes
-ms.openlocfilehash: e55d161b7c95118736f4443c3fed0312418feee7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 898d7cf6cdded08cd09c4b1f1f845473af1650a3
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441935"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824003"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-leapsome"></a>Oktatóanyag: Azure Active Directory-integráció az Leapsome
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Leapsome az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Leapsome egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az Azure AD integrálása a Leapsome konfigurálásához hozzá kell Leapsome a 
 
 **Leapsome hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -134,7 +134,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     | kép | Az alkalmazott kép URL-címe | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
 
     > [!Note]
-    > A kép attribútum értéke nem valódi. Frissítse ezt az értéket tényleges kép URL-címe. Az e érték névjegy beolvasása [Leapsome ügyfél-támogatási csapatának](mailto:support@leapsome.com).
+    > A kép attribútum értéke nem valódi. Frissítse ezt az értéket tényleges kép URL-címe. Az e érték névjegy beolvasása [Leapsome ügyfél-támogatási csapatának](mailto:support@leapsome.com).
     
     a. Kattintson a **attribútum hozzáadása** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
@@ -176,7 +176,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     b. Másolás a **bejelentkezési URL-címe (a felhasználók itt pont indítsa el a bejelentkezési)** értékét, és illessze be azt a **bejelentkezési URL-** szövegmezőjébe **Leapsome tartomány és URL-címek** szakaszban az Azure Portalon.
 
-    c. Másolás a **válasz URL-cím (recieves válasz identitásszolgáltatótól származó)** értékét, és illessze be azt a **válasz URL-cím** szövegmezőjébe **Leapsome tartomány és URL-címek** szakaszban az Azure Portalon.
+    c. Másolás a **válasz URL-cím (válasz fogadása identitásszolgáltatótól származó)** értékét, és illessze be azt a **válasz URL-cím** szövegmezőjébe **Leapsome tartomány és URL-címek** szakaszban az Azure Portalon.
 
     d. Az a **Egyszeri bejelentkezési URL-címe (identitásszolgáltató által rendelkezésre bocsátott)** szövegmezőjébe illessze be az értéket, **SAML egyszeri bejelentkezési szolgáltatás URL-cím**, az Azure Portalról másolt.
 
@@ -218,7 +218,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-leapsome-test-user"></a>Leapsome tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű Leapsome hoz létre. Együttműködve [Leapsome ügyfél-támogatási csapatának](mailto:support@leapsome.com) hozzáadása a felhasználók vagy a tartományban kell lennie a Leapsome platform szerepel az engedélyezési listán. Ha a tartomány a csapata által hozzáadott, a Leapsome platform automatikusan kiépítve felhasználók. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
+Ebben a szakaszban egy felhasználói Britta Simon nevű Leapsome hoz létre. Együttműködve [Leapsome ügyfél-támogatási csapatának](mailto:support@leapsome.com) hozzáadása a felhasználók vagy a tartományban kell lennie a Leapsome platform szerepel az engedélyezési listán. Ha a tartomány a csapata által hozzáadott, a Leapsome platform automatikusan kiépítve felhasználók. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -250,7 +250,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

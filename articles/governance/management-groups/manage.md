@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: rithorn
-ms.openlocfilehash: a3de0df8fde3b271b7ba9bb9aab01dbcd5c3bf08
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 627ef0123f05e768dd8a83c197b25da7f161a37c
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991221"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852996"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Az erőforrások kezelése a felügyeleti csoportokkal
 
@@ -207,7 +207,7 @@ Milyen engedélyek megtekintéséhez, rendelkezik, válassza ki a felügyeleti c
 
 ### <a name="move-subscriptions-in-powershell"></a>Helyezze át az előfizetések a PowerShellben
 
-Helyezze át az előfizetést a PowerShell, az Add-AzureRmManagementGroupSubscription parancsot használhatja.  
+Helyezze át az előfizetést a PowerShell, a New-AzureRmManagementGroupSubscription parancsot használhatja.  
 
 ```azurepowershell-interactive
 New-AzureRmManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
@@ -277,7 +277,7 @@ az account management-group update --name 'Contoso' --parent 'Contoso Tenant'
 Felügyeleti csoportok kapcsolatos további információkért lásd:
 
 - [Az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](overview.md)
-- [Az Azure-erőforrások rendszerezése felügyeleti csoportok létrehozása](create.md)
+- [Felügyeleti csoportok létrehozása az Azure-erőforrások rendszerezéséhez](create.md)
 - [Az Azure Powershell-modul telepítése](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups)
-- [Tekintse át a REST API-specifikációja](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
+- [A REST API-specifikáció áttekintése](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
 - [Az Azure CLI-bővítmény telepítése](/cli/azure/extension?view=azure-cli-latest#az-extension-list-available)

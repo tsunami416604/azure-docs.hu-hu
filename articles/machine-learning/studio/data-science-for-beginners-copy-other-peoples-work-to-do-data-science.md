@@ -1,11 +1,12 @@
 ---
-title: Példák a Copy mások adatok tudományos – Azure Machine Learning |} Microsoft Docs
-description: 'Üzleti titkot adatok tudományos: mások munkavégzésre meg. Machine learning példák az Azure Eszközintelligencia-katalógus beolvasása sikertelen.'
-keywords: adatok tudományos példák, a machine learning példában csoportosítási algoritmus csoportosítási algoritmus – példa
+title: Másolja a mások data science példák – az Azure Machine Learning |} A Microsoft Docs
+description: 'Adatelemzési titokról: mások az Ön helyett ezt a munkát. Machine learning példák le az Azure AI-katalógusban.'
+keywords: adatok tudományos példák, machine learning például fürtözési algoritmust, fürtözési algoritmust példa
 services: machine-learning
 documentationcenter: na
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cjgronlund
 ms.assetid: ec2be823-c325-4ad8-b8b2-3e664f1a44b4
@@ -16,86 +17,86 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2018
-ms.openlocfilehash: 84c6f4a1cedc0a04ee820f1de60f51e653f28425
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 66af7e21943fb82826717ffef6e6ed153f1f5dd7
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833879"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823520"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Más emberek munkájának lemásolása az adatelemzéshez
-## <a name="video-5-data-science-for-beginners-series"></a>5. Videó: Adattudomány kezdők sorozat
-A kereskedelmi titkok tudományos adatok egyik munkavégzésre, mások kezd. A csoportosítási algoritmus példa található Azure Eszközintelligencia-katalógus saját gépi tanulási kísérlet esetén használandó.
+## <a name="video-5-data-science-for-beginners-series"></a>5. Videó: Az adatelemzés kezdőknek sorozat
+A kereskedelmi titkok, az adatelemzés egyik hamarosan más személyeknek az Ön helyett ezt a munkát. Az Azure AI-katalógusban a saját machine learning-kísérlet használandó fürtözési algoritmust példát talál.
 
 > [!IMPORTANT]
-> **A Cortana Intelligence Gallery** át lett nevezve **Azure Eszközintelligencia-katalógus**. Ennek eredményeképpen szöveget és a képeket a a beszélgetés szövegében eltérőek lehetnek kissé a című videót, amely a korábbi nevét használja.
+> **Cortana Intelligence Gallery** átnevezte **Azure AI-katalógusban**. Ennek eredményeképpen szöveget és képeket átiratban szereplő eltérhetnek kissé a videót, amely a korábbi nevet használja.
 >
 
-Ahhoz, hogy minél hatékonyabb működtetését az adatsorozat, tekintse meg azokat. [Ugrás a videók listája](#other-videos-in-this-series)
+A lehető leghatékonyabban a sorozat, tekintse meg az összes. [Nyissa meg a videók listájában](#other-videos-in-this-series)
 <br>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/data-science-for-beginners-series-copy-other-peoples-work-to-do-data-science/player]
 >
 >
 
-## <a name="other-videos-in-this-series"></a>A sorozat többi videók
-*Adattudomány kezdőknek* van egy gyors Bevezetés a adattudomány az öt rövid videók.
+## <a name="other-videos-in-this-series"></a>Ez a sorozat egyéb videók
+*Adatelemzés kezdőknek* egy gyors bevezetőt az öt rövid videóban a rendszer.
 
-* 1. Videó: [az 5 kérdésekre adatok tudományos válaszok](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 perc 14 másodperc)*
-* 2. Videó: [adattudomány készen áll az adatok?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 perc 56 másodperc)*
-* 3. Videó: [tegyen fel kérdést a válasz adatokkal](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 perc 17 másodperc)*
-* 4. Videó: [választ egyszerű modell előrejelzése](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 perc 42 másodperc)*
-* Videó 5: Mások feladatuk adattudomány másolása
+* 1. Videó: [az 5 kérdés adatelemzés választ ad](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 perc 14 mp)*
+* 2. Videó: [adatelemzési készen áll az adatok?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 perc 56 másodperc)*
+* 3. Videó: [tegyen fel kérdést az adatok a válasz](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 perc 17 másodperc)*
+* 4. Videó: [egy egyszerű modellel válasz előrejelzése](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 perc 42 másodperc)*
+* Videó: 5: Más emberek munkájának lemásolása az adatelemzéshez való másolása
 
-## <a name="transcript-copy-other-peoples-work-to-do-data-science"></a>Beszélgetés szövegének: Mások feladatuk adattudomány másolása
-Üdvözöljük az adatsorozat ötödik videó "Adattudomány kezdőknek."
+## <a name="transcript-copy-other-peoples-work-to-do-data-science"></a>A szövegben: Más emberek munkájának lemásolása az adatelemzéshez való másolása
+Üdvözli az a sorozat ötödik videó "Adatelemzés kezdőknek."
 
-Ezt a telepítést egy helyen található példákat is kölcsönkap a kiindulási pontként a saját munkaterület ismerheti. Akkor lehet, hogy a legtöbbet hozhatja ki ezt a videót, ha először tekintse meg a sorozat korábbi videók.
+Ezt az eszközt azt is kölcsönzött a kiindulási pontként a saját munkájához található példák egy hely ismerheti. Előfordulhat, hogy a legtöbbet hozhassa ki ezt a videót, ha először tekintse meg az oktatóanyag-sorozatban a korábbi videókat.
 
-A kereskedelmi titkok tudományos adatok egyik munkavégzésre, mások kezd.
+A kereskedelmi titkok, az adatelemzés egyik hamarosan más személyeknek az Ön helyett ezt a munkát.
 
-## <a name="find-examples-in-the-azure-ai-gallery"></a>Példák keresése a Azure Eszközintelligencia-katalógus
+## <a name="find-examples-in-the-azure-ai-gallery"></a>Példák keresése az Azure AI-katalógusban
 
-A Microsoftnál nevű felhő alapú szolgáltatás [Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning-studio/) még szabad próbálja Üdvözöljük. Biztosítja a munkaterület különböző gépi tanulási algoritmusok kísérletezhet és azokat, ha a megoldás alakít ki van, egy webszolgáltatás indítása.
+A Microsoft rendelkezik egy felhőalapú szolgáltatás nevű [Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning-studio/) , hogy nyugodtan meghívhatjuk ingyenesen kipróbálható. Is tartalmaz a munkaterület kísérletezhet a különböző gépi tanulási algoritmusok és azokat, ha a megoldás dolgozott ki van, webszolgáltatásként is elindíthatja.
 
-Ez a szolgáltatás része valamilyen hívása a  **[Azure Eszközintelligencia-katalógus](https://gallery.cortanaintelligence.com/)**. Erőforrások, például az Azure Machine Learning kísérleteket, vagy személyek beépített és mások számára közzétett modellek gyűjteményét tartalmazza. Ezek a kísérletek nagyszerű módját kihasználhatják a gondolat és a rögzített munka, másokat pedig saját megoldásokkal a kezdéshez. Mindenki rajta Tallózás Üdvözöljük.
+Ez a szolgáltatás részeként valami nevű a  **[Azure AI-katalógusban](https://gallery.cortanaintelligence.com/)**. Erőforrások, köztük az Azure Machine Learning-kísérletek, vagy a modellek, amelyek személyek beépített és mások számára is viszonyított gyűjteményét tartalmazza. Ezek a kísérletek módon egy nagyszerű gondolkodási és mások számára a saját megoldások a kezdéshez bonyolult feladatát. Mindenki az Üdvözöljük, böngésszen.
 
 ![Azure AI katalógus](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 
-Ha **kísérletek** a lap tetején megjelenik egy a leginkább a gyűjtemény legutóbbi és népszerű kísérletek száma. Fennmaradó kísérletek lépéseit kattintva kereshet **összes tallózása** a képernyő tetején, és nem adhat meg keresési feltételeket, és válassza a keresési szűrőket.
+Ha rákattint **kísérletek** a képernyő felső részén látni fog egy a legtöbb a katalógus legutóbbi és a legnépszerűbb kísérletek száma. Kereshet további részének kísérletek kattintva **összes tallózása** a képernyő tetején, és nem adhat meg keresési feltételeket, és válassza a keresési szűrőket.
 
-## <a name="find-and-use-a-clustering-algorithm-example"></a>Megkeresheti, egy csoportosítási algoritmus – példa
-Igen, például Tételezzük fel meg szeretné tekinteni a fürtszolgáltatás működését, például úgy keres **"fürtszolgáltatási ismétlés"** kísérletek.
+## <a name="find-and-use-a-clustering-algorithm-example"></a>Keresse meg és a egy csoportosítási algoritmus példa
+Így például tegyük meg szeretné tekinteni a fürtszolgáltatás működésével, például így keres **"csoportosulása ismétlés"** kísérletek.
 
 ![Fürtszolgáltatás kísérletek keresése](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/search-for-clustering-experiments.png)
 
-Ez a gyűjtemény valaki hozzájáruló érdekes egy.
+Íme egy érdekes, amelyik valaki hozzájárult a katalógusban.
 
 ![Fürtszolgáltatás kísérlet](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/clustering-experiment.png)
 
-Kattintson a kísérletet, és le egy weblap, amelyen a közreműködői volt, valamint néhány, az eredmények munkáját ismerteti.
+Kattintson a kísérletet, és megjelenik egy weblap, amelyen a munkát, a közreműködő volt, valamint egyes, az eredmények ismerteti.
 
 ![Fürtszolgáltatás kísérlet leírását tartalmazó lapon](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/clustering-experiment-description-page.png)
 
 Figyelje meg, amely szerint a hivatkozás **Megnyitás a Studióban**.
 
-![Nyissa meg a Studio használatával gomb](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/open-in-studio.png)
+![Megnyitás a Studióban gomb](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/open-in-studio.png)
 
-A gombra és tart me jobbra **Azure Machine Learning Studio**. Másolat készítése a kísérletet, és hozzáadja a saját munkaterületen. Ez magában foglalja a közreműködői adatkészlet tevékenységük, az összes feldolgozása összes a algoritmust, amelyet használni őket, és hogyan azok mentett eredményeit.
+Ide kattintva meg, amely és tart velem a megfelelő **Azure Machine Learning Studio**. Ez másolatot készít a kísérletet, és hozzáadja a saját munkaterületen. Ez magában foglalja a közreműködői adatkészlet, a feldolgozást, amely került, az összes az algoritmusok használják, és hogyan menteni azokat az eredményeket meg.
 
-![Nyissa meg egy gyűjtemény kísérletben a Machine Learning Studióban - csoportosítási algoritmus – példa](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cluster-experiment-open-in-studio.png)
+![A katalógus kísérlet megnyitásához a Machine Learning Studio - csoportosítási algoritmus példa](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cluster-experiment-open-in-studio.png)
 
-És most már van egy kiindulási pont. I cserélje ki a saját adataikat, illetve használhat saját tökéletesítse a modell. Ez ad a futó Kezdés, továbbá a me létrehozásához, biztosan tudja, mit csinál személyek a munkát.
+És most már van egy kiindulási pont. Is cserélhetők fel, a saját adataikat, és hajtsa végre a saját a modell finomhangolása. Ezáltal me egy Futtatás kezdete, és lehetővé teszi számomra, akik igazán ismeri a mit tesznek a munkahelyi épülnek.
 
-## <a name="find-experiments-that-demonstrate-machine-learning-techniques"></a>Kísérleteket, amely a machine learning technikák bemutatása
-Nincsenek más benne a [Azure Eszközintelligencia-katalógus](https://gallery.cortanaintelligence.com) , amely hozzájárult, lettek kifejezetten adattudomány az új felhasználók – útmutató példákat. Például van egy kísérlet a gyűjteményben, amely bemutatja, hogyan kezelje a hiányzó értékeket ([hiányzó értékek kezelésére vonatkozó metódusokat](https://gallery.cortanaintelligence.com/Experiment/Methods-for-handling-missing-values-1)). Útmutatást nyújt a 15 különböző módon, hogy az üres értékeket, és az egyes módszerek és használati esetek előnyei beszél.
+## <a name="find-experiments-that-demonstrate-machine-learning-techniques"></a>Bemutatják a machine learning-módszerekkel kísérletek keresése
+Vannak más, a kísérletek a [Azure AI-katalógusban](https://gallery.cortanaintelligence.com) , amely kifejezetten az új, az adatelemzés számára gyakorlati példákat biztosítanak is biztosított. Például van egy kísérlet a katalógus, amely bemutatja, hogyan legyen kezelve a hiányzó értékeket ([hiányzó kezelésére vonatkozó metódusokat](https://gallery.cortanaintelligence.com/Experiment/Methods-for-handling-missing-values-1)). Üres értékek helyettesítik 15 különböző módokon végigvezeti, és Ryan crawcour az egyes módszerek és a használati esetek előnyeivel.
 
-![Gyűjteményelem kísérletek nyissa meg a Machine Learning Studio - hiányzó értékek módszerei](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/experiment-methods-for-handling-missing-values.png)
+![Katalógus kísérletek nyissa meg a Machine Learning Studio - módszerek a hiányzó értékek](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/experiment-methods-for-handling-missing-values.png)
 
-[AI Azure katalógusában](https://gallery.cortanaintelligence.com) egy olyan hely, használhatja a saját megoldások kiindulási pontként működő kísérleteket.
+[Az Azure AI-katalógusban](https://gallery.cortanaintelligence.com) olyan hely, használhatja a saját megoldások kiindulási pontként működő kísérleteket szeretne keresni.
 
-Mindenképpen tekintse meg az "Adatok tudományos a kezdők" a Microsoft Azure Machine Learning más videók.
+Mindenképpen tekintse meg a "Data Science a kezdők" a Microsoft Azure Machine Learning más videókat.
 
 ## <a name="next-steps"></a>További lépések
-* [Próbálja meg az első adatok tudományos kísérlet Azure Machine Learning segítségével](create-experiment.md)
-* [A Microsoft Azure Machine Learning bemutatása beolvasása](what-is-machine-learning.md)
+* [Az első adatelemzési kísérlet az Azure Machine Learning kipróbálása](create-experiment.md)
+* [Bevezetés a gépi tanulás a Microsoft Azure](what-is-machine-learning.md)

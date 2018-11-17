@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: 26500f3e557a27046edc5c833b8c8d88ae266e68
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: e1d4f9f5c91900216398dd651d238fc3fa305234
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408999"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823928"
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Az Azure Cosmos DB diagnosztikai naplózás
 
@@ -29,9 +29,9 @@ Az alábbi képen látható a különböző elérhető az Azure naplói:
 
 ![Különböző Azure-naplók](./media/logging/azurelogging.png)
 
-Az ábrán a **számítási erőforrások** képviseli, amelyhez a Microsoft a vendég operációs rendszer érheti el az Azure-erőforrások. Például az Azure Virtual Machines, a virtuális gép méretezési csoportokat, az Azure Container Service, és így tovább, számít a számítási erőforrások. A számítási erőforrások készítése a tevékenységnaplókat, diagnosztikai naplók és Alkalmazásnaplókat. További tudnivalókért tekintse meg a [figyelési adatok az Azure-ban forrásai](../monitoring/monitoring-data-sources.md#) cikk.
+Az ábrán a **számítási erőforrások** képviseli, amelyhez a Microsoft a vendég operációs rendszer érheti el az Azure-erőforrások. Például az Azure Virtual Machines, a virtuális gép méretezési csoportokat, az Azure Container Service, és így tovább, számít a számítási erőforrások. A számítási erőforrások készítése a tevékenységnaplókat, diagnosztikai naplók és Alkalmazásnaplókat. További tudnivalókért tekintse meg a [figyelési adatok az Azure-ban forrásai](../azure-monitor/platform/data-sources.md#) cikk.
 
-A **nem – számítási erőforrásokat** erőforrást, amelyben érheti el az alapul szolgáló operációs rendszer és az ügyfelek közvetlenül az erőforrás. Például a hálózati biztonsági csoportok, a Logic Apps és így tovább. Az Azure Cosmos DB egy olyan nem számítási erőforrás. Naplók nem számítási erőforrások megtekintése a tevékenységnaplóban, vagy engedélyezze a diagnosztikai naplók a portálon. További tudnivalókért tekintse meg a [adatforrásokat az Azure monitorban](../monitoring/monitoring-data-sources.md) cikk.
+A **nem – számítási erőforrásokat** erőforrást, amelyben érheti el az alapul szolgáló operációs rendszer és az ügyfelek közvetlenül az erőforrás. Például a hálózati biztonsági csoportok, a Logic Apps és így tovább. Az Azure Cosmos DB egy olyan nem számítási erőforrás. Naplók nem számítási erőforrások megtekintése a tevékenységnaplóban, vagy engedélyezze a diagnosztikai naplók a portálon. További tudnivalókért tekintse meg a [adatforrásokat az Azure monitorban](../azure-monitor/platform/data-sources.md) cikk.
 
 A tevékenységnapló előfizetés szintjén a műveletek az Azure Cosmos DB rögzíti. Műveletek, mint a listkeys műveletének, az írási DatabaseAccounts és egyéb a rendszer naplózza. Diagnosztikai naplók adja meg a részletes naplózást, és lehetővé teszi, hogy a naplófájl (létrehozás, Olvasás, lekérdezés és stb) DataPlaneRequests és MongoRequests.
 
@@ -361,7 +361,7 @@ A naplók megtekintéséhez előtt ellenőrizze, és tekintse meg, ha a Log Anal
 ![A log Analytics az Azure Portalon](./media/logging/azure-portal.png)
 
 >[!NOTE]
->OMS-munkaterülete mostantól Log Analytics-munkaterületek nevezik.  
+>Az OMS-munkaterületeket mostantól Log Analytics-munkaterületeknek nevezzük.  
 
 Ha a következő üzenet jelenik meg a a **Log Analytics-munkaterület** oldalon, a munkaterület rendszertábla az új nyelv használatára. Az új lekérdezési nyelvre való frissítése. További információkért lásd: [Azure Log Analytics-munkaterület frissítése új naplókeresésre](../log-analytics/log-analytics-log-search-upgrade.md). 
 

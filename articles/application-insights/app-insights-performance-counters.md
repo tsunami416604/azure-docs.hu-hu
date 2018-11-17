@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: e5915f18799386ae92019073fb50dac96da107ea
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 92cbd3570d48bf12d603f68593465aafed62985c
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960106"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852316"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Az Application Insights rendszerteljesítmény-számlálók
 Windows széles körének biztosít [teljesítményszámlálók](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters) például a Processzor foglaltsága, memória, lemez és hálózat használatának. Emellett megadhatja a saját. [Az Application Insights](app-insights-overview.md) megjelenítheti a teljesítményszámlálók az alkalmazás futásának IIS alatt egy helyi gazdagépen vagy virtuális gép, amely rendszergazdai hozzáféréssel rendelkezik. A diagramok jelzik az élő alkalmazás számára elérhető erőforrásokat, és segíthet azonosítani kiegyensúlyozatlan terhelés server-példányok között.
@@ -96,7 +96,7 @@ Vagy megteheti ugyanezt teszi az létrehozott egyéni metrikák:
 ## <a name="performance-counters-in-analytics"></a>Teljesítményszámlálók az Analyticsben
 Itt megkeresheti, és a teljesítmény számláló jelentések megjelenítéséhez [Analytics](app-insights-analytics.md).
 
-A **performanceCounters** sémát tesz elérhetővé a `category`, `counter` nevét, és `instance` minden teljesítményszámláló neve.  A telemetria minden alkalmazáshoz akkor ll csak az adott alkalmazáshoz számlálókat látható. Például hogy milyen számlálók érhetők el: 
+A **performanceCounters** sémát tesz elérhetővé a `category`, `counter` nevét, és `instance` minden teljesítményszámláló neve.  A telemetria minden alkalmazáshoz csak az adott alkalmazáshoz számlálókat megjelenik. Például hogy milyen számlálók érhetők el: 
 
 ![Az Application Insights Analytics teljesítményszámlálók](./media/app-insights-performance-counters/analytics-performance-counters.png)
 

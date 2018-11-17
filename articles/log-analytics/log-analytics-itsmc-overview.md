@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 526ba73858322ee41f649a338f22226da6af33e7
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c5b05b4ce33222ee9dd84950066b3bd36ea315de
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964059"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824863"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Csatlakozás az Azure ITSM-eszközeit IT Service Management-összekötő használatával
 
@@ -157,13 +157,13 @@ Az irányítópult összekötő állapotát, amely a kapcsolatok problémák ele
 
 Emellett az incidenseket, szemben az érintett számítógépek, a Service Map megoldás belül szinkronizált jelenítheti meg.
 
-A Service Map automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Lehetővé teszi, hogy a kiszolgálók megtekintéséhez, ahogyan Ön gondol rájuk: rendszerekként, amelyek kritikus fontosságú szolgáltatások biztosításához. A Service Map megmutatja a kapcsolatokat kiszolgálók, folyamatok és portok között, bármely TCP-kapcsolattal összekötött architektúrában semmilyen beállítást nem szükséges ügynököt telepíteni. [További információk](../monitoring/monitoring-service-map.md).
+A Service Map automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Lehetővé teszi, hogy a kiszolgálók megtekintéséhez, ahogyan Ön gondol rájuk: rendszerekként, amelyek kritikus fontosságú szolgáltatások biztosításához. A Service Map megmutatja a kapcsolatokat kiszolgálók, folyamatok és portok között, bármely TCP-kapcsolattal összekötött architektúrában semmilyen beállítást nem szükséges ügynököt telepíteni. [További információk](../azure-monitor/insights/service-map.md).
 
 Ha a Service Map megoldást használja, az ügyfélszolgálati elemek létrehozása az ITSM-megoldások az alábbi példában látható módon tekintheti meg:
 
 ![Log Analytics képernyő](media/log-analytics-itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-További információ: [Service Map](../monitoring/monitoring-service-map.md)
+További információ: [Service Map](../azure-monitor/insights/service-map.md)
 
 
 ## <a name="additional-information"></a>További információ

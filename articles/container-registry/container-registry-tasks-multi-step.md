@@ -5,23 +5,23 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 11/15/2018
 ms.author: danlep
-ms.openlocfilehash: 4492e05339c72c371eb2c935d0397b469440c4f6
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: b2b6da1739aa97f69f5744905564f638309a587f
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632692"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854322"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Többlépéses buildelési, tesztelési és patch feladatok futtatása az ACR-feladatokban
 
-Több lépésből álló feladatokat kiterjesztheti a egyetlen build és a leküldéses képesség ACR feladatokat több lépésből álló, több container alapú munkafolyamatokkal. Többlépéses feladatok segítségével és leküldéses számos olyan rendszerkép található, sorozat- vagy párhuzamosan, és ezeket a képeket futtató parancsok belül egyetlen feladat futtatása. Minden lépés meghatároz egy tárolórendszerképet hozhat létre, vagy küldje le a műveletet, és a is megadhatja, hogy a tároló végrehajtásának. A többlépéses feladat minden lépése tárolót használja a végrehajtási környezetet.
+Több lépésből álló feladatokat kiterjesztheti a egyetlen build és a leküldéses képesség ACR feladatokat több lépésből álló, több container alapú munkafolyamatokkal. Többlépéses feladatok használatával és leküldéses számos olyan rendszerkép található, sorozat- vagy párhuzamosan. Ezután futtassa ezeket a képeket parancsokként belül egy adott feladat futtatása. Minden lépés meghatároz egy tárolórendszerképet hozhat létre, vagy küldje le a műveletet, és a is megadhatja, hogy a tároló végrehajtásának. A többlépéses feladat minden lépése tárolót használja a végrehajtási környezetet.
 
 > [!IMPORTANT]
 > Ha korábban már létrehozott feladatokat az előzetes verzióban az `az acr build-task` paranccsal, azokat a feladatokat újra létre kell hoznia az [az acr task][az-acr-task] paranccsal.
 
-Például futtathatja egy feladatot, amely automatizálja az alábbi lépésekkel:
+Például futtathatja egy feladatot a lépéseket, amelyeket a következő logikai automatizálása:
 
 1. A webes alkalmazás rendszerkép összeállítása
 1. A webalkalmazás tárolójának futtatása
@@ -37,11 +37,11 @@ Minden lépést az Azure-feladatkiszervezést a munkát az Azure számítási er
 
 ## <a name="common-task-scenarios"></a>Általános tevékenység-forgatókönyvek
 
-Többlépéses feladatok lehetővé teszik a következőkhöz hasonló forgatókönyveket:
+Többlépéses feladatok például a következő logikai forgatókönyvek megvalósítását teszik lehetővé:
 
 * Címkét, és leküldéses egy vagy több tároló-lemezképet, sorozat- vagy párhuzamosan.
 * Futtassa, és rögzítheti egység teszt- és kód lefedettség eredményeket.
-* Futtassa, és funkcionális tesztek rögzítése. ACR-feladatok több tárolót futtató, a közöttük kérelmek sorozatának végrehajtása támogatja.
+* Futtassa, és funkcionális tesztek rögzítése. ACR feladatok támogatja egynél több tároló futó kérelmek közöttük sorozatának végrehajtása.
 * Feladatalapú végrehajtása, beleértve egy tároló-rendszerkép összeállítását az előkészítő/utólagos lépések végrehajtása.
 * A kedvenc telepítési motor a célkörnyezetben, egy vagy több tárolók üzembe helyezése.
 
@@ -176,5 +176,5 @@ Többlépéses feladatok referenciái és a példákat itt találja:
 
 <!-- LINKS - Internal -->
 [az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-run]: /cli/azure/acr/run#az-acr-run
-[az-acr-task]: /cli/azure/acr#az-acr-task
+[az-acr-run]: /cli/azure/acr#az-acr-run
+[az-acr-task]: /cli/azure/acr/task

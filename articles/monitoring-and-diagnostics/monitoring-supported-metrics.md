@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 5f6140b582b2412a164593bd2aa99bfbde5fb688
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0bb79c9d85e56308d9872baeb10868be8eaf7a5a
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964186"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824914"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Az Azure monitorban támogatott mérőszámok
 Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagramkészítési őket a portálon, a hozzájuk férni a REST API-n keresztül vagy a lekérdezési őket több módot nyújt a PowerShell vagy parancssori felület használatával. Alább érhető el minden metrika teljes listáját jelenleg az Azure Monitor metrika folyamattal. Más metrikák elérhető a portálon vagy az örökölt API-k használatával lehet. Az alábbi listán csak a metrikák elérhető az Azure Monitor konszolidált metrika folyamat használatával tartalmazza. És -lekérdezés számára, ezek a metrikák, használja a [2018-01-01-es api-verzió](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -819,7 +819,7 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |IsEngineAnsweringQuery|Életben tartási|Darabszám|Átlag|Megerősítést jelölőnégyzet azt jelzi, hogy a fürt respondes lekérdezések|Nincs dimenzió|
 |IngestCommandOriginalSizeInMb|Adatbetöltési kötet (megabájtban)|Darabszám|Összes|A fürthöz (megabájtban) a feldolgozott adatok teljes mennyisége|Nincs dimenzió|
 |EventAgeSeconds|Adatbetöltési késés (másodpercben)|másodperc|Átlag|A betöltési idő másodpercben a fürthöz a forrás (pl. üzenet jelenik meg az EventHub)|Nincs dimenzió|
-|EventRecievedFromEventHub|(Az Event Hubs) feldolgozott események|Darabszám|Összes|Ha az Event Hubs fürtjét a fürt által feldolgozott események száma|Nincs dimenzió|
+|EventReceivedFromEventHub|(Az Event Hubs) feldolgozott események|Darabszám|Összes|Ha az Event Hubs fürtjét a fürt által feldolgozott események száma|Nincs dimenzió|
 |IngestionResult|Adatbetöltési eredménye|Darabszám|Darabszám|Az Adatbetöltési műveletek száma|IngestionResultDetails|
 |EngineCPU|CPU|Százalék|Átlag|CPU-kihasználtsága|Nincs dimenzió|
 
@@ -1570,6 +1570,6 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |MemoryPercentage|Memóriahasználat (%)|Százalék|Átlag|Memóriahasználat (%)|Példány|
 
 ## <a name="next-steps"></a>További lépések
-* [További információ a metrikák az Azure monitorban](../monitoring/monitoring-data-collection.md)
+* [További információ a metrikák az Azure monitorban](../azure-monitor/platform/data-collection.md)
 * [Riasztások létrehozása metrikákhoz](monitoring-overview-alerts.md)
 * [A storage, az Event Hubs vagy a Log Analytics metrikák exportálása](monitoring-overview-of-diagnostic-logs.md)

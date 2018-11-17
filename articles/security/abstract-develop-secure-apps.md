@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2018
+ms.date: 11/16/2018
 ms.author: terrylan
-ms.openlocfilehash: 8d2964c5b0cd0a19273b4ee1e18c8be727850454
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 04e4085715993560fee5b73cf4ae546cb58e2e5e
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715623"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853217"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Az Azure-ban a biztonságos alkalmazások fejlesztése
 ## <a name="abstract"></a>Absztrakt
@@ -27,4 +27,4 @@ Ez a tanulmány a biztonsági kérdéseket és a vezérlőket is mindegyik fázi
 
 Ez a tanulmány az célja, hogy egy erőforrás szoftver tervezők, fejlesztők számára, és a tesztelőknek minden szintjén, hogy hozhat létre és biztonságos Azure-megoldások üzembe helyezése.
 
-[A tanulmány letöltése](https://acomportal.azure.net/files/resourcefiles/develop-secure-applications-on-azure/Develop%20secure%20applications%20on%20Azure.pdf)
+[A tanulmány letöltése](https://azure.microsoft.com/mediahandler/files/resourcefiles/develop-secure-applications-on-azure/Develop%20secure%20applications%20on%20Azure.pdf)

@@ -1,10 +1,11 @@
 ---
-title: 3. lépés:, Hozzon létre egy új gépi tanulási kísérlet |} Microsoft Docs
-description: 'A prediktív megoldás bemutatóért Develop 3. lépés: az Azure Machine Learning Studióban hozzon létre egy új tanítási kísérletet.'
+title: '3. lépés: Hozzon létre egy új Machine Learning-kísérlet |} A Microsoft Docs'
+description: 'A fejlesztés egy prediktív megoldás bemutatója 3. lépés: új betanítási kísérlet létrehozása az Azure Machine Learning Studióban.'
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 660e3c27-55ef-4c33-a4e9-dff4d1224630
@@ -15,15 +16,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 95000f9fb57b95bf1edcda9abfba3668b5f5b523
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 2fdeab83d1e668fbbb68155c1695ffb40d71c15b
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835739"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824438"
 ---
 # <a name="walkthrough-step-3-create-a-new-azure-machine-learning-experiment"></a>Az útmutató 3. lépése: Új Azure Machine Learning-kísérlet létrehozása
-Ez a forgatókönyv harmadik lépése az [az Azure Machine Learning a prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md)
+Ez a forgatókönyv harmadik lépésében a [az Azure Machine Learning prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md)
 
 1. [Machine Learning-munkaterület létrehozása](walkthrough-1-create-ml-workspace.md)
 2. [Meglévő adatok feltöltése](walkthrough-2-upload-data.md)
@@ -33,106 +34,106 @@ Ez a forgatókönyv harmadik lépése az [az Azure Machine Learning a prediktív
 6. [Hozzáférés a webszolgáltatáshoz](walkthrough-6-access-web-service.md)
 
 - - -
-A forgatókönyv a következő lépés, ha a kísérlet a Machine Learning Studióban az adatkészlet jelenleg feltöltött használó.  
+Ez az útmutató a következő lépés, ha kísérlet a Machine Learning Studióban, amely az adatkészlet, hogy a feltöltött használja.  
 
-1. A Studióban kattintson **+ új** az ablak alján.
+1. A Studióban, kattintson a **+ új** az ablak alján.
 2. Válassza ki **kísérlet**, majd válassza az "Üres kísérlet". 
 
     ![Új kísérlet létrehozása][0]
 
 2. Válassza ki a kísérlet alapértelmezett nevét a vászon tetején, és módosítsa valami értelmesebbre.
 
-    ![Nevezze át a kísérlet][5]
+    ![Kísérlet átnevezése][5]
    
    > [!TIP]
-   > Tanácsos töltse ki **összegzés** és **leírás** a kísérleti fázisú funkciókat a a **tulajdonságok** ablaktáblán. Ezeket a tulajdonságokat arra, hogy a dokumentum a kísérletet, hogy bárki, aki ellenőrzi, hogy az azt később megértse a célok és módszert biztosítanak.
+   > Meg kell adni egy célszerű **összegzése** és **leírás** a kísérlet a a **tulajdonságok** ablaktáblán. Ezek a tulajdonságok lehetővé teszik, dokumentálni a kísérletet, így bárki, aki később úgy tűnik, hogy tisztában van a célok és módszertanokon az esélye.
    > 
    > ![Kísérlet tulajdonságai][6]
    > 
-3. Bontsa ki a modulpalettán bal oldalán a kísérletvászonra, **mentett adatkészletek**.
-4. Az adatkészlet alapján létrehozott található **saját adatkészletek** és a vászonra húzva. A név beírásával is tájékozódhat az adatkészletet a **keresési** a paletta fölött.  
+3. A modulpaletta bal oldalán a kísérletvászonra, bontsa ki **mentett adatkészletek**.
+4. Keresse meg az adatkészlet alapján létrehozott **saját adatkészletek** , és húzza a vászonra. Az adatkészlet keresse meg a név megadásával a **keresési** a paletta fölött.  
 
-    ![Az adatkészlet hozzáadása a kísérlet][7]
+    ![Adja hozzá az adathalmazt a kísérletvászonra][7]
 
-## <a name="prepare-the-data"></a>Adatok előkészítése
-Megtekintheti az első 100 sor az adatok és néhány statisztikai adatok a teljes adatkészlet: kattintson a kimeneti portra, az adatkészlet (a kis kör a lap alján), és válassza ki **Visualize**.  
+## <a name="prepare-the-data"></a>Az adatok előkészítése
+Az első 100 sor az adatok és a teljes adatkészlet néhány statisztikai adatot is megtekintheti: kattintson a kimeneti portra, az adatkészlet (a kis kör alul), és válassza ki **Visualize**.  
 
-Az adatfájl nem kapott oszlopának fejlécére kattintva rendezhető, mert Studio általános fejlécére kattintva rendezhető nyújtott (Oszlop1, Col2, *stb*). Jó fejlécek nem alapvető fontosságú a modell létrehozása, de azok egyszerűbb legyen az adatokat a kísérletben. Is ha azt végül közzéteheti a egy webszolgáltatás-bővítmény, a fejlécére kattintva rendezhető azonosításához az oszlopok a felhasználónak a szolgáltatás.  
+Az adatfájl nem kapott oszlopfejléceket, mert Studio biztosított általános fejlécek (Col1, Col2, *stb.*). Jó fejlécek nem alapvető fontosságú a modell létrehozásához, de azok egyszerűbb legyen az adatok a kísérletben. Is a web service-ben a ebben a modellben végül közzétételekor a fejlécek segít azonosítani az oszlopokat a felhasználónak a szolgáltatás.  
 
-Azt is hozzáadhat oszlopának fejlécére kattintva rendezhető, használja a [szerkesztése metaadatok] [ edit-metadata] modul.
-Használja a [szerkesztése metaadatok] [ edit-metadata] modul módosítása a DataSet adatkészlet társított metaadatokat. Ebben az esetben használjuk az oszlopfejlécek további rövid nevét. 
+Oszlopfejlécek segítségével hozzáadhatja a [metaadatainak szerkesztése] [ edit-metadata] modul.
+Használja a [metaadatainak szerkesztése] [ edit-metadata] modult, módosítsa az adatkészlet társított metaadatokat. Ebben az esetben azt biztosítása érdekében használjuk az oszlopfejlécek további rövid neve. 
 
-Használandó [szerkesztése metaadatok][edit-metadata], először (ebben az esetben az összes azokat.) a módosítandó oszlopok megadásához Ezt követően adja meg az ilyen oszlopokat (ebben az esetben az oszlopfejlécek módosítása.) kell elvégezni a műveletet
+Használandó [metaadatainak szerkesztése][edit-metadata], először megadott oszlopok módosítása (ebben az esetben az összes.) Ezután adja meg a műveletet úgy, hogy hajtható végre ezek az oszlopok (ebben az esetben az oszlopfejlécek módosítása.)
 
-1. A modulpalettán, írja be az "metaadatok" a a **keresési** mezőbe. A [szerkesztése metaadatok] [ edit-metadata] modul listájában jelenik meg.
+1. A modulpaletta, írja be "metaadatok" a **keresési** mezőbe. A [metaadatainak szerkesztése] [ edit-metadata] modul listájában jelenik meg.
 
-2. Kattintással és húzással vigye a [szerkesztése metaadatok] [ edit-metadata] modult a vászonra, és helyezze a korábban hozzáadott adatkészlet alatt.
+2. Kattintással és húzással vigye a [metaadatainak szerkesztése] [ edit-metadata] modult a vászonra és engedje el a korábban hozzáadott adatkészlet alatt.
 
-3. A DataSet adatkészletben, hogy csatlakozzon a [metaadatok szerkesztése][edit-metadata]: kattintson a kimeneti portra, az adatkészlet (DataSet alján a kis kör), húzza a bemeneti portját a [szerkesztése metaadatok] [ edit-metadata] (a felső részén a modul a kis kör), az oszlopfejlécen. A DataSet adatkészlet és a modul csatlakoztatva tartani akkor is, ha Ön Navigálás vagy a vásznon.
+3. Az adatkészlet csatlakoztatása a [metaadatainak szerkesztése][edit-metadata]: kattintson a kimeneti portra, az adatkészlet (a kis kör alján, az adatkészlet), és húzza át a bemeneti portjával [metaadatainak szerkesztése] [ edit-metadata] (a felső részén a modul a kis kör), majd engedje el az egér gombját. Az adatkészlet és a modul is csatlakoztatott, még akkor is, ha áthelyezi vagy a vásznon.
    
-   A kísérlet most hasonlóan kell kinéznie ezt:  
+   A kísérlet kell kinéznie ehhez hasonló:  
    
    ![Szerkesztés metaadatok hozzáadása][1]
    
-   A piros felkiáltójel azt jelenti, hogy jelenleg még nem ez a modul tulajdonságainak még. Igazolnia kell végeznie, hogy a Tovább gombra.
+   A vörös felkiáltójelből azt jelzi, hogy azt még nem állítsa be a tulajdonságokat a modul még. Azt fogjuk tenni.
    
    > [!TIP]
-   > A modulokhoz megjegyzéseket adhat. Ehhez kattintson duplán a kívánt modulra, majd gépelje be a megjegyzés szövegét. Így egyetlen pillantással felmérheti, hogy mire szolgál az adott modul a kísérletben. Ebben az esetben kattintson duplán a [szerkesztése metaadatok] [ edit-metadata] modul és a Megjegyzés "Add oszlopának fejlécére kattintva rendezhető" típusú. Kattintson a bárhol máshol a vásznon, a szöveg bezárásához. A megjegyzés megjelenítéséhez kattintson a lefelé mutató nyílra a modul.
+   > A modulokhoz megjegyzéseket adhat. Ehhez kattintson duplán a kívánt modulra, majd gépelje be a megjegyzés szövegét. Így egyetlen pillantással felmérheti, hogy mire szolgál az adott modul a kísérletben. Ebben az esetben kattintson duplán a [metaadatainak szerkesztése] [ edit-metadata] modul, és írja be az "Add oszlopok fejléceit" Megjegyzés. Kattintson bármely más gombra kattintva zárja be a szövegmezőbe a vásznon. A megjegyzés megjelenítéséhez kattintson a lefelé mutató nyílra az modulban.
    > 
    > ![Megjegyzés hozzáadása a metaadatok modul szerkesztése][8]
    > 
-4. Válassza ki [szerkesztése metaadatok][edit-metadata], majd a a **tulajdonságok** panelen a vászontól jobbra kattintson **Oszlopválasztás**.
+4. Válassza ki [metaadatainak szerkesztése][edit-metadata], majd a a **tulajdonságok** panelen a vászontól jobbra kattintson **Oszlopválasztás indítása**.
 
-5. Az a **egy oszlopot válasszon ki** párbeszédpanelen válassza ki az összes sort **elérhető oszlopok** kattintson > helyezze el őket a **kijelölt oszlopok**.
+5. Az a **oszlopok kijelölése** párbeszédpanelen válassza ki az összes sort **elérhető oszlopok** kattintson > áthelyezni őket **kijelölt oszlopok**.
    A párbeszédpanel kell kinéznie:
 
-   ![Az összes kijelölt oszlopok Oszlopválasztó][2]
+   ![Oszlopválasztó az összes kijelölt oszlop.][2]
 
-6. Kattintson a **OK** pipára.
+6. Kattintson a **OK** pipa jelre.
 
-7. Vissza a **tulajdonságok** ablaktáblán keresse meg a **új oszlopnevek** paraméter. Ebben a mezőben adja meg az adatkészlet, egymástól vesszővel és az oszlopok sorrendjét 21 oszlopok neveinek listáját. Ezt úgy szerezheti be az oszlopok nevét a dataset dokumentációs a UCI webhelyen, vagy a kényelem másolja és illessze be az alábbi listában:  
+7. Térjen vissza a **tulajdonságok** ablaktáblán keresse meg a **új oszlopnevek** paraméter. Ebben a mezőben adja meg az adatkészlet, egymástól elválasztva és az oszlopok sorrendjét a 21-én oszlopok neveinek listáját. Az adatkészlet-dokumentáció a UCI webhelyen is kaphat oszlopainak neveit, vagy a kényelem másolja és illessze be az alábbi lista:  
    
        Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
    
    A Tulajdonságok panelen így néz ki:
    
-   ![A Szerkesztés metaadatok tulajdonságai][3]
+   ![A Szerkesztés metaadatokat tulajdonságai][3]
 
 > [!TIP]
-> Ha szeretné ellenőrizni a oszlopának fejlécére kattintva rendezhető, futtassa a kísérletet (kattintson **futtatása** a kísérletvászon alatt). Amikor futása (zöld pipa jelenik meg [szerkesztése metaadatok][edit-metadata]), kattintson a kimeneti portra, a [metaadatok szerkesztése] [ edit-metadata] modul, és válassza ki **Visualize**. Bármely modul kimenete az adatok a kísérlet állapotának megtekintéséhez azonos módon tekintheti meg.
+> Ha szeretné ellenőrizni az oszlopfejléceket, futtassa a kísérletet (kattintson **futtatása** a kísérletvászon alatt). Amikor lejáratot követően újrainduljon (egy zöld pipa jelenik meg a [metaadatainak szerkesztése][edit-metadata]), a kimeneti portjára, kattintson a [metaadatainak szerkesztése] [ edit-metadata] modul Válassza ki **Visualize**. Bármely modul kimenetét az adatokat a kísérlet állapotának megtekintéséhez megegyező módon tekintheti meg.
 > 
 > 
 
 ## <a name="create-training-and-test-datasets"></a>Képzés és az adatkészletek
-Igazolnia kell, és az egyes tesztek bizonyos adatok a modell betanításához.
-Így a következő lépésben a kísérlet, azt a dataset felosztása két külön adatkészletek: egy a képzési tekinthetők, és egy tesztelési azt.
+Néhány adatot a modell betanítását és ki egyes van szükségünk.
+Így a következő lépésben a kísérlet, hogy az adatkészlet felosztása két külön adatkészletet: egyet, és a egy vizsgálja, hogy az a modell betanításához.
 
 Ehhez használjuk a [Split Data] [ split] modul.  
 
-1. Keresés a [Split Data] [ split] modult a vászonra húzva, és kösse össze a [szerkesztése metaadatok] [ edit-metadata] modul.
+1. Keresse meg a [Split Data] [ split] modult, húzza a vászonra, és kösse össze a [metaadatainak szerkesztése] [ edit-metadata] modul.
 
-2. Alapértelmezés szerint a megosztási arány érték 0,5 és a **Randomized vegyes** paraméter értéke. Ez azt jelenti, hogy az adatok véletlen fél kimeneti az egyik porton keresztül a [Split Data] [ split] modul, és az egyéb fele. Beállíthatja, hogy ezeket a paramétereket, valamint a **véletlenszerű kezdőérték** paraméter, módosíthatja a felosztás modell betanítására és tesztelésére adatok között. Ebben a példában azt hagyja azokat-van.
+2. Alapértelmezés szerint a megosztási arány a 0.5-ös és a **Randomized split** paraméter értéke. Azt jelenti, hogy az adatok véletlen felében kimeneti az egyik porton keresztül a [Split Data] [ split] modul, és a segítségével a másik fele. Beállíthatja, hogy ezeket a paramétereket, valamint a **véletlenszerű kezdőérték** paramétert, módosíthatja a felosztás betanítására és tesztelésére az adatok között. Ebben a példában hagyjuk azokat-van.
    
    > [!TIP]
-   > A tulajdonság **az első kimeneti adatkészletnél a sorok** meghatározza, hogy mekkora az adatok kimenetét a *bal oldali* kimeneti port. Például 0,7 állítja be a készlethez, majd 70 %-át az adatokat esetén a bal oldali porton keresztül kimeneti – 30 % a jobb oldali porton keresztül.  
+   > A tulajdonság **az első kimeneti adatkészletnél a sorok** meghatározza, hogy mekkora az adatok kimenetét a *bal oldali* kimeneti port. Például ha 0,7 beállította az arányt, 70 %-a az adatok akkor kimeneti a bal oldali port és a megfelelő port 30 %-os.  
    > 
    > 
 
-3. Kattintson duplán a [Split Data] [ split] modul, és adja meg a megjegyzést, "képzési/tesztelési adatok felosztása 50 %". 
+3. Kattintson duplán a [Split Data] [ split] modul, és adja meg a megjegyzést, "képzési tesztelési adatok felosztása 50 %-a". 
 
-A kimenetének is használhatók a [Split Data] [ split] modul azonban azt hasonló, de most használata mellett dönt a bal oldali kimeneti betanítási adatok, és a jobb oldali kimeneti, tesztelési adatokat.  
+Használhatjuk a kimeneteinek a [Split Data] [ split] modul azonban azt hasonló, de most válassza a bal oldali kimeneti használatára, mert a betanítási adatok, és jobb kimeneti például tesztelési adatokat.  
 
-Ahogyan az a [előző lépésben](walkthrough-2-upload-data.md), alacsony, magas hitelkockázat misclassifying költsége ötször magasabb, mint egy alacsony hitelkockázat, nagy misclassifying költségét. Ez a fiók, azt létrehozni, amely tükrözi a költség függvény új adatkészlet. Új adatkészlet egyes magas kockázatú példa replikálja a rendszer ötször, amíg alacsony kockázat példákban a rendszer nem replikálja.   
+Említetteknek megfelelően az [előző lépésben](walkthrough-2-upload-data.md), egy alacsony, magas hitelkockázat misclassifying költsége ötször magasabb, mint egy nagy, alacsony hitelkockázat misclassifying költsége. Ez a fiók, az általunk létrehozott egy új adatkészlet, amely tükrözi a költségek függvény. Az új adatkészletre, az egyes magas kockázatú példa replikálja a rendszer ötször, míg egyes alacsony kockázat a példában a rendszer nem replikálja.   
 
-A replikáció tehetünk ennek R-kód használatával:  
+A replikálás elvégezhető az R-kód használatával:  
 
-1. Keresse meg, és húzza a [R-parancsfájl végrehajtása] [ execute-r-script] modul a kísérlet vászonra. 
+1. Keresse meg és húzza a [R-szkript végrehajtása] [ execute-r-script] modul a kísérlet vászonra. 
 
-2. A bal oldali kimeneti portjára csatlakozzon a [Split Data] [ split] első bemeneti portját ("Dataset1") modult a [R-parancsfájl végrehajtása] [ execute-r-script] modul.
+2. A bal oldali kimeneti portjára, csatlakozzon a [Split Data] [ split] modul az első bemeneti porthoz ("Dataset1"), a [R-szkript végrehajtása] [ execute-r-script] modul.
 
-3. Kattintson duplán a [R-parancsfájl végrehajtása] [ execute-r-script] modul, és írja be a Megjegyzés "Set költség helyesbítése".
+3. Kattintson duplán a [R-szkript végrehajtása] [ execute-r-script] modul, és adja meg a megjegyzést, "Költségeket az adatelosztást Set".
 
-4. Az a **tulajdonságok** panelen, törölje az alapértelmezett szöveget a **R-parancsfájl** paraméter, és írja be ezt a parancsfájlt:
+4. Az a **tulajdonságok** panelen, törölje az alapértelmezett szöveget a **R-szkript** paraméter, és adja meg ezt a parancsfájlt:
    
        dataset1 <- maml.mapInputPort(1)
        data.set<-dataset1[dataset1[,21]==1,]
@@ -140,30 +141,30 @@ A replikáció tehetünk ennek R-kód használatával:
        for (i in 1:5) data.set<-rbind(data.set,pos)
        maml.mapOutputPort("data.set")
 
-    ![Az R-parancsfájl végrehajtása modul R-parancsfájl][9]
+    ![R-szkript az R-szkript végrehajtása modul][9]
 
-Igazolnia kell a replikálási műveletet minden egyes kimenetéhez tegye a [Split Data] [ split] modul, hogy a képzés és tesztelési adatokat ugyanazon költség módosítása. Ennek a legegyszerűbb módja másolásával az [R-parancsfájl végrehajtása] [ execute-r-script] most végzett modul, és csatlakozik a másik kimeneti portját a [Split Data] [ split] modul.
+Az egyes kimenetének azonos replikációs művelethez szükséges a [Split Data] [ split] modul, hogy a képzés és tesztelési adatokat az azonos költség illesztését. Ennek legegyszerűbb módja a másolásával a [R-szkript végrehajtása] [ execute-r-script] modul épp most módosította, és csatlakozik a másik kimeneti portjára, a [Split Data] [ split] modul.
 
-1. Kattintson a jobb gombbal a [R-parancsfájl végrehajtása] [ execute-r-script] modul, és válassza ki **másolási**.
+1. Kattintson a jobb gombbal a [R-szkript végrehajtása] [ execute-r-script] modul, és válassza ki **másolási**.
 
-2. Kattintson a jobb gombbal a kísérletvászonra, és válassza ki **Beillesztés**.
+2. Kattintson a jobb gombbal a kísérletvászonra, és válassza ki **beillesztési**.
 
-3. Új modul húzzon egy helyen, és csatlakoztassa a jobb oldali kimeneti portját a [Split Data] [ split] modul az első bemeneti porthoz ezen új [R-parancsfájl végrehajtása] [ execute-r-script] modul. 
+3. Az új modulba húzza a helyére, és a jobb oldali kimeneti portjára, majd csatlakozzon a [Split Data] [ split] első bemeneti portjával Ez új modul [R-szkript végrehajtása] [ execute-r-script] modul. 
 
 4. Kattintson a vászon alján **futtatása**. 
 
 > [!TIP]
-> Az R-parancsfájl végrehajtása modul másolatát tartalmazza ugyanazt a parancsfájlt, az eredeti modulként. Másolja és illessze be egy modult a vásznon, a másolat megőrzi az eredeti összes tulajdonságát.  
+> Az R-szkript végrehajtása modul másolatát tartalmazza ugyanazt a parancsprogramot, mint az eredeti modul. Másolja és illessze be egy modult a vásznon, a Másolás megőrzi az eredeti összes tulajdonságát.  
 > 
 > 
 
-A kísérletben most már a következőhöz hasonló:
+A kísérletet most alábbihoz hasonlóan jelenik meg:
 
-![Vegyes modul, és az R parancsfájlok hozzáadása][4]
+![Split modul és R-szkriptek hozzáadása][4]
 
-Az R parancsfájlok használata a kísérleti további információkért lásd: [kiterjesztése az r kísérletbe](extend-your-experiment-with-r.md).
+A kísérletek R-parancsfájlokkal további információkért lásd: [kísérlet kiterjesztése az R](extend-your-experiment-with-r.md).
 
-**Következő: [tanítási és a modell kiértékelése](walkthrough-4-train-and-evaluate-models.md)**
+**A következő: [Train a modellek és kiértékelése](walkthrough-4-train-and-evaluate-models.md)**
 
 [0]: ./media/walkthrough-3-create-new-experiment/create-new-experiment.png
 [5]: ./media/walkthrough-3-create-new-experiment/rename-experiment.png

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: cb230dad22e6b0d67a4d6a589e9fba00560a9264
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: HT
+ms.openlocfilehash: ebbedb38256c997f39e30e27aa29139dc2496fd1
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715537"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51819253"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Adatok gyűjtése részletei felügyeleti megoldások az Azure-ban
 Ez a cikk tartalma [felügyeleti megoldások](solutions.md) elérhető a Microsoft mutató hivatkozásokat tartalmaz a részletes dokumentációt.  A módszer és a Log analyticsbe adatok gyűjtésének gyakorisága információkat is biztosít.  Használhatja az információkat ebben a cikkben, azonosíthatja a különféle elérhető megoldások és más felügyeleti megoldásokkal data flow és a kapcsolat követelményeinek megismeréséhez. 
@@ -66,7 +66,7 @@ Magyarázat az oszlopok a következők:
 | [Az Office 365 Analytics (előzetes verzió)](solution-office-365.md) |Windows | | | | | |az értesítés |
 | **Felügyeleti megoldások** | **Platform** | **A Microsoft-figyelőügynököt** | **Operations Manager-ügynök** | **Azure Storage** | **Az Operations Manager szükséges?** | **A felügyeleti csoport Operations Manager-ügynök adatok küldött** | **Gyűjtés gyakorisága** |
 | [Service Fabric-elemzés](../../service-fabric/service-fabric-diagnostics-oms-setup.md) |Windows | | |&#8226; | | |5 perc |
-| [Szolgáltatástérkép](../../monitoring/monitoring-service-map.md) | Windows és Linux | &#8226; | &#8226; |  |  |  | 15 másodperc |
+| [Szolgáltatástérkép](../../azure-monitor/insights/service-map.md) | Windows és Linux | &#8226; | &#8226; |  |  |  | 15 másodperc |
 | [SQL-elemzés](../../log-analytics/log-analytics-sql-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 nap |
 | [SurfaceHub](../../log-analytics/log-analytics-surface-hubs.md) |Windows |&#8226; | | | | |a beérkezéskor |
 | [A System Center Operations Manager Assessment (előzetes verzió)](../../log-analytics/log-analytics-scom-assessment.md) | Windows | &#8226; | &#8226; |  |  | &#8226; | hét napja |

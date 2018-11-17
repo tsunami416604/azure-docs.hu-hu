@@ -1,5 +1,5 @@
 ---
-title: Az ügynök ellenőrzésének az eredménye az Azure az Update Management ismertetése
+title: A Windows ügynök ellenőrzésének az eredménye az Azure az Update Management ismertetése
 description: Ismerje meg, az Update Management ügynökkel kapcsolatos problémák elhárítása.
 services: automation
 author: georgewallace
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 20323afe79ad3de1e3dfccd4752c4f7e28d22266
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 33ae9160cd173ae594407220390c4dab1806fa94
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095371"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824132"
 ---
-# <a name="understand-the-agent-check-results-in-update-management"></a>Az ügynök ellenőrzésének az eredménye az Update Management ismertetése
+# <a name="understand-the-windows-agent-check-results-in-update-management"></a>A Windows ügynök ellenőrzésének az eredménye az Update Management ismertetése
 
 Előfordulhat, hogy a nem Azure-beli gép nem látható, számos oka lehet **készen** az Update Management. Az Update Management ellenőrizheti az határozza meg a hibát kiváltó problémát hibrid feldolgozó ügynök állapotát. Ez a cikk ismerteti a hibaelhárító futtatása az Azure Portalról, és a kapcsolat nélküli üzemmódban.
 
@@ -47,10 +47,6 @@ Az operációs rendszer ellenőrzés ellenőrzi, hogy ha a hibrid Runbook-feldol
 |---------|---------|
 |A Windows Server 2008, Windows Server 2008 R2 RTM    | Támogatja az értékelések csak frissíteni.         |
 |A Windows Server 2008 R2 SP1 és újabb verziók     |.NET-keretrendszer 4.5.1-es vagy újabb verzió szükséges. ([Töltse le a .NET-keretrendszer](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0-s vagy újabb szükség. ([Töltse le a WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Windows PowerShell 5.1 megbízhatóság növelése érdekében ajánlott.  ([Töltse le a WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616))        |
-|CentOS 6 (x86/x64) és 7 (x64)      | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz. "Yum" besorolásalapú javítás szükséges, amely CentOS nem rendelkezik beépített biztonsági adatokat adja vissza.         |
-|Red Hat Enterprise 6 (x86/x64) és 7 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
-|SUSE Linux Enterprise Server 11 (x86/x64) és 12 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
-|Ubuntu 14.04 LTS, 16.04 LTS és 18.04 LTS (x86/x64)      |A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.         |
 
 ### <a name="net-451"></a>.NET 4.5.1
 

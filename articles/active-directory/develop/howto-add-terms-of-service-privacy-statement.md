@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 2195a43665f99e8388b13fc6dc3e528496bd3901
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: b1276ab227f4bf65483fb2cdec57c759573bc7c5
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242687"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853591"
 ---
 # <a name="terms-of-service-and-privacy-statement-for-registered-azure-active-directory-apps"></a>A regisztrált az Azure Active Directory-alkalmazások és az adatvédelmi nyilatkozat feltételeit
 
@@ -64,10 +64,10 @@ Amikor készen áll a szolgáltatás és az adatvédelmi nyilatkozat feltételei
 
 Ha regisztrálta az alkalmazást az Azure Portalon, kövesse az alábbi lépéseket.
 
-1. Jelentkezzen be az  [Azure Portalra](https://portal.azure.com/).
-2. Keresse meg a **Alkalmazásregisztrációk** szakaszt, és válassza ki az alkalmazást.
-3. Nyissa meg a **tulajdonságok** szakaszában.
-4. Töltse ki a **feltételek az URL-címe** és **adatvédelmi nyilatkozatának URL-címe** mezőket.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+2. Keresse meg a **Alkalmazásregisztrációk** szakaszt, és válassza ki az alkalmazást.
+3. Nyissa meg a **tulajdonságok** szakaszában.
+4. Töltse ki a **feltételek az URL-címe** és **adatvédelmi nyilatkozatának URL-címe** mezőket.
 5. Mentse a módosításokat.
 
     ![Alkalmazás Tulajdonságok szakaszában feltételeket és adatvédelmi nyilatkozat URL-címek](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
@@ -76,9 +76,9 @@ Ha regisztrálta az alkalmazást az Azure Portalon, kövesse az alábbi lépése
 
 Ha alkalmazását az alkalmazásregisztrációs portálon vagy a fejlesztői központban regisztrált, kövesse az alábbi lépéseket.
 
-1. Jelentkezzen be a [alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/).
-2. Válassza ki az alkalmazást, és görgessen a **profil** szakaszban.
-3. Töltse ki a **feltételek az URL-címe** és **adatvédelmi nyilatkozatának URL-címe** mezőket.
+1. Jelentkezzen be a [alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/).
+2. Válassza ki az alkalmazást, és görgessen a **profil** szakaszban.
+3. Töltse ki a **feltételek az URL-címe** és **adatvédelmi nyilatkozatának URL-címe** mezőket.
 4. Mentse a módosításokat.
 
     ![Alkalmazás profil szakaszában feltételeket és adatvédelmi nyilatkozat URL-címek](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)

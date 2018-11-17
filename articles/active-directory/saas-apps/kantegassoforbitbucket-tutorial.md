@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: a81ea48937927e13141642d70093bc322196b2cc
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6dee106d688d9f9a6ebc6dc26caa6a46db3f6850
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434992"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823894"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bitbucket"></a>Oktatóanyag: Azure Active Directory-integráció a Bitbucket Kantega SSO-val
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása a Bitbucket Kantega SSO-val, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Kantega egyszeri bejelentkezés, bitbucket-alapú egyszeri bejelentkezés az előfizetés engedélyezve van.
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Adja meg a Bitbucket Kantega SSO integrálása az Azure AD, szüksége Kantega e
 
 **A Bitbucket Kantega SSO hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 

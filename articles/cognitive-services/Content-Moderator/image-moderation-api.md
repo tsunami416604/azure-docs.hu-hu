@@ -10,16 +10,16 @@ ms.component: content-moderator
 ms.topic: conceptual
 ms.date: 01/20/2018
 ms.author: sajagtap
-ms.openlocfilehash: 6c5fed78c67f974a2af11efd133e9a79ec52124b
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 044aa9a127aa8130340719147314961ddb38167a
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219651"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852707"
 ---
 # <a name="image-moderation"></a>Képmoderálás
 
-Használja a Content Moderator a gépi támogatású képmoderálás és [emberi vizsgálóeszköz](Review-Tool-User-Guide/human-in-the-loop.md) képek a felnőtt és szexuális tartalom mérsékelt. Szöveges tartalom kiszűrhető a szöveg kinyerése és arcok észlelése. Megfelelő lemezképek egyéni listájával, és további műveleteket végrehajtania.
+Használja a Content Moderator a gépi támogatású képmoderálás és [emberi hurok vizsgálóeszköz](Review-Tool-User-Guide/human-in-the-loop.md) képek a felnőtt és szexuális tartalom mérsékelt. Szöveges tartalom kiszűrhető a szöveg kinyerése és arcok észlelése. Megfelelő lemezképek egyéni listájával, és további műveleteket végrehajtania.
 
 ## <a name="evaluating-for-adult-and-racy-content"></a>A felnőtt és szexuális tartalom kiértékelése
 
@@ -36,8 +36,8 @@ A **Evaluate** művelet 0 és 1 közötti konfidencia-pontszám adja vissza. Eme
 
 > [!NOTE]
 
-> - `isImageAdultClassified` a rendszerkép található, előfordulhat, hogy figyelembe kell venni, nyíltan explicit vagy bizonyos esetekben felnőtt lehetséges jelenléte jelöli.
-> - `isImageRacyClassified` a rendszerkép található, előfordulhat, hogy figyelembe kell venni, nyíltan kétértelmű vagy bizonyos esetekben érett lehetséges jelenléte jelöli.
+> - Az `isImageAdultClassified` az olyan képek esetleges előfordulását jelzi, amelyek bizonyos esetekben szexuálisan explicit vagy felnőtt tartalomnak minősülhetnek.
+> - Az `isImageRacyClassified` az olyan képek esetleges előfordulását jelzi, amelyek bizonyos esetekben szexuális utalásokat tartalmazó vagy felnőtt tartalomnak minősülhetnek.
 > - A pontszámok 0 és 1 között. Minél nagyobb a pontszám, annál nagyobb a modell becslése, hogy a kategóriához lehet alkalmazni. Ebben az előzetes verzióban manuálisan kódolt kimenetek helyett egy statisztikai modellt használ. Azt javasoljuk, hogy a saját határozza meg, hogyan az egyes kategóriák az igényeinek megfelelően igazítja a tartalmat a teszteléshez.
 > - A logikai értékek a következők: IGAZ vagy hamis attól függően, a belső pontszám küszöbértékeket. Ügyfelek fel kell mérnie, hogy e használja ezt az értéket, vagy hozza meg, a tartalom házirendek alapján egyedi küszöbértékeket.
 >
@@ -107,7 +107,7 @@ Számos online Közösség Miután a felhasználók képeket vagy egyéb típus�
 Ahelyett, hogy ugyanazt a lemezképet többször moderálása, hozzáadja a sértő képek a listán szereplő letiltott tartalom. Ezzel a módszerrel a tartalom-jóváhagyás rendszer összeveti az egyedi listákkal bejövő lemezképek hasonlítja össze, és leállítja a további feldolgozás.
 
 > [!NOTE]
-> A maximális korlát **5 kép listák** az egyes lista **nem haladhatja meg a 10 000 lemezképek**.
+> A maximális korlát **5 képlista**, amelyek egyenként **nem haladhatják meg a 10 000 képet**.
 >
 
 A Content Moderator biztosít teljes [Image List felügyeleti API](try-image-list-api.md) műveletekkel egyéni rendszerképek listájának kezeléséhez. Kezdje a [kép sorolja fel API-konzol](try-image-list-api.md) , és a REST API-Kódminták. Emellett olvassa el a [kép lista .NET – rövid útmutató](image-lists-quickstart-dotnet.md) Ha ismeri a Visual Studio és C#.
@@ -140,11 +140,11 @@ Példa kivonat:
     ....
     }
 
-## <a name="human-review-tool"></a>Emberi vizsgálóeszköz
+## <a name="human-review-tool"></a>Emberi felülvizsgálati eszköz
 
 További precízebb, használja a Content Moderator [vizsgálóeszköz](Review-Tool-User-Guide/human-in-the-loop.md) és annak API-t a az emberi moderátorok vonatkozó felülvizsgálat tartalmának és a moderálás eredmények surface. Tekintse át a számítógéphez hozzárendelt címkék ezeket, és erősítse meg a végső döntéshozatal.
 
-![Az emberi moderátorok kép áttekintése](images/moderation-reviews-quickstart-dotnet.PNG)
+![Képek felülvizsgálata emberi moderátorok által](images/moderation-reviews-quickstart-dotnet.PNG)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -15,16 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: mareat
-ms.openlocfilehash: e375476536e7fe150e3aabcae7cee942deac02d5
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 9e408b45f47cb86191628916124611735f374d9e
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42054526"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51819034"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Kezelheti és elemezheti a hálózati biztonsági csoportok folyamatnaplóit a Network Watcher és a Grafana használatával
 
 [Hálózati biztonsági csoport (NSG) folyamatnaplóit](network-watcher-nsg-flow-logging-overview.md) információkkal, amelyek segítségével megismerheti a bejövő és kimenő IP-forgalom hálózati adapteren. A folyamat-naplók megjelenítése a kimenő és bejövő forgalom az egy NSG-szabály alapon történik, a hálózati Adaptert a folyamat vonatkozik, a folyamat (a forrás és cél IP-cím, forrás és a cél-Port, protokoll), 5-ször több információt, és ha a forgalom engedélyezett vagy tiltott.
+
+> [!Warning]  
+> Az alábbi lépéseket a flow 1-es naplók verzió együttműködve. További információkért lásd: [csoportforgalom naplózása a hálózati biztonsági csoportok bemutatása](network-watcher-nsg-flow-logging-overview.md). Az alábbi utasítások nem fog működni a naplófájlokat, módosítás nélküli 2. verzióban.
 
 Számos NSG-k csoportforgalom naplózása engedélyezve van a használhat a hálózaton. A naplózási adatok mennyisége segítségével elemezheti és a naplók hasznosításához nehézkes. Ez a cikk központilag kezelheti az alábbi NSG-Folyamatnaplók grafanával, egy nyílt forráskódú eszköz, az ElasticSearch, egy elosztott keresési és elemzési motorjára és Logstash, amely egy nyílt forráskódú kiszolgálóoldali adatfeldolgozó folyamat függőségábrázolás megoldást kínál.  
 

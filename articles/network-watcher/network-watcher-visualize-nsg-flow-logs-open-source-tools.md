@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 6debfaed28be2b5dee5e24a443b791f75f7bea8f
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 10f76ea58b859611483c99c2f4accec607bc2939
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634192"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822908"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Nyílt forráskódú eszközök használatával az Azure Network Watcher NSG forgalmi naplók megjelenítése
 
 Hálózati biztonsági csoportok folyamatnaplóit, adja meg, amelyek segítségével adatokat bejövő és kimenő IP-forgalmat a hálózati biztonsági csoportok ismertetése. A folyamat-naplók egy szabály alapján, a hálózati Adapterhez, a folyamat vonatkozik, 5 rekord információja (forrás és a cél IP-Címek használatához forrás és a cél-Port, protokoll), és ha a forgalom engedélyezett vagy tiltott bejövő és kimenő folyamatok megjelenítése.
 
 A folyamat-naplók manuális elemzése és következtetések levonásához nehéz lehet. Vannak azonban számos olyan nyílt forráskódú eszközöket, amelyek segítségével az adatok vizualizációjához. Ez a cikk nyújt megoldást jelenítheti meg ezeket a naplókat az Elastic Stacket, ami lehetővé teszi, hogy gyorsan index, és megjelenítheti a folyamat használatával jelentkezik be a Kibana irányítópultját.
+
+> [!Warning]  
+> Az alábbi lépéseket a flow 1-es naplók verzió együttműködve. További információkért lásd: [csoportforgalom naplózása a hálózati biztonsági csoportok bemutatása](network-watcher-nsg-flow-logging-overview.md). Az alábbi utasítások nem fog működni a naplófájlokat, módosítás nélküli 2. verzióban.
 
 ## <a name="scenario"></a>Forgatókönyv
 

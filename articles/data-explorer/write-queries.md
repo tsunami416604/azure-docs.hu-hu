@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 952d8801c189322161bbf8b795676af48b92c29f
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 71e39c6430231ae8d175f9c09a9059c3da4c9a1e
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394337"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854254"
 ---
 # <a name="write-queries-for-azure-data-explorer"></a>Az Azure Data Explorer lekérdezéseket írni
 
@@ -28,7 +28,7 @@ A lekérdezések a cikkben szereplő kétféleképpen futtathatja:
 
 - Egy saját fürtöt, amely tartalmazza a StormEvents mintaadatok. További információkért lásd: [a rövid útmutató: Azure Data Explorer fürt és -adatbázis létrehozása](create-cluster-database-portal.md) és [mintaadatok betöltése az Azure Data Explorer](ingest-sample-data.md).
 
-A StormEvents minta adatkészlet Időjárással kapcsolatos adatokat tartalmaz a [környezeti információkat National Központjaiként](https://www.ncdc.noaa.gov/stormevents/).
+[!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
 ## <a name="overview-of-the-query-language"></a>A lekérdezési nyelv áttekintése
 
@@ -97,7 +97,7 @@ StormEvents | take 5
 > [!TIP]
 > Nincs garancia arra, hogy mely rekordok lesznek visszaadva, kivéve, ha a forrásadatok van rendezve.
 
-### <a name="project"></a>project
+### <a name="project"></a>Projekt
 
 [**projekt**](https://docs.microsoft.com/azure/kusto/query/projectoperator): oszlopok kiválasztása.
 
@@ -147,7 +147,7 @@ StormEvents
 
 ### <a name="top"></a>felső
 
-[**felső**](https://docs.microsoft.com/azure/kusto/query/topoperator): az első függvény *N* rekordok a megadott oszlopok alapján rendezi.
+[**felső**](https://docs.microsoft.com/azure/kusto/query/topoperator): az első függvény *N* rekordok a megadott oszlopok alapján rendezi.
 
 A következő lekérdezés ugyanazokat az eredményeket, fent egy kisebb operátorral adja vissza.
 
@@ -473,7 +473,7 @@ MyTrace
 | project resourceName ,totalSlices , sliceNumber , lockTime , releaseTime , previousLockTime
 ```
 
-## <a name="time-series-analysis"></a>Idősoros elemzés
+## <a name="time-series-analysis"></a>Idősorozat-elemzések
 
 ### <a name="make-series"></a>Gyártmány-sorozat
 
@@ -570,7 +570,7 @@ StormEvents
 
 ### <a name="dcounthll"></a>dcount_hll()
 
-[**dcount_hll()**](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction): kiszámítja a **dcount** HyperLogLog eredményekből (által generált [ **hll** ](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction) vagy [ **hll_merge**](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction).
+[**dcount_hll()**](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction): kiszámítja a **dcount** HyperLogLog eredményekből (által generált [**hll** ](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction)   vagy [**hll_merge**](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction).
 
 A következő lekérdezést a HLL algoritmust használja a count létrehozásához.
 
@@ -632,7 +632,7 @@ FloodDataSet
 
 ### <a name="percentiles"></a>percentiles()
 
-[**percentiles()**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction): ad vissza a megadott becsült [ **legközelebbi rang PERCENTILIS** ](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction) a lakosság kifejezés által meghatározott. Pontossága attól függ, hogy a régióban a PERCENTILIS sokaságát sűrűsége. Csak abban a környezetben, az összesítés belül használható [ **összefoglalója**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator).
+[**percentiles()**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction): ad vissza a megadott becsült [**legközelebbi rang PERCENTILIS**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction) a lakosság kifejezés által meghatározott. Pontossága attól függ, hogy a régióban a PERCENTILIS sokaságát sűrűsége. Csak abban a környezetben, az összesítés belül használható [**összefoglalója**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator).
 
 A következő lekérdezést. percentilisei storm időtartamának számítja ki.
 
@@ -685,7 +685,7 @@ LightningStorms
 
 ### <a name="join"></a>csatlakozás
 
-[**Csatlakozás**](https://docs.microsoft.com/azure/kusto/query/joinoperator): az új tábla kialakításához egyező értékek, az egyes táblákból a megadott oszlopoknak alapján két tábla sorainak egyesítése. Kusto széles skáláját illesztési típust támogat: **fullouter**, **belső**, **innerunique**, **leftanti**, **leftantisemi** , **leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter** , **rightsemi**.
+[**Csatlakozás**](https://docs.microsoft.com/azure/kusto/query/joinoperator): az új tábla kialakításához egyező értékek, az egyes táblákból a megadott oszlopoknak alapján két tábla sorainak egyesítése. Kusto széles skáláját illesztési típust támogat: **fullouter**, **belső**, **innerunique**, **leftanti**, **leftantisemi **, **leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter **, **rightsemi**.
 
 Az alábbi példa két tábla belső illesztést csatlakozik.
 
@@ -842,7 +842,7 @@ range _day from _start to _end step 1d
 
 ### <a name="newactivitymetrics-plugin"></a>new_activity_metrics beépülő modul
 
-[**new_activity_metrics beépülő modul**](https://docs.microsoft.com/azure/kusto/query/new-activity-metrics-plugin): kiszámítja az új felhasználói kohorsz a következő hasznos tevékenységi metrikák (értékek eltérők száma, új értékeket, megtartási aránya és lemorzsolódási rátához darabszáma). Ez a beépülő modul koncepciójuk hasonló [ **activity_metrics beépülő modul**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin), azonban az új felhasználók összpontosít.
+[**new_activity_metrics beépülő modul**](https://docs.microsoft.com/azure/kusto/query/new-activity-metrics-plugin): kiszámítja az új felhasználói kohorsz a következő hasznos tevékenységi metrikák (értékek eltérők száma, új értékeket, megtartási aránya és lemorzsolódási rátához darabszáma). Ez a beépülő modul koncepciójuk hasonló [**activity_metrics beépülő modul**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin), azonban az új felhasználók összpontosít.
 
 A következő lekérdezést egy megőrzési és adatváltozás aránya egy over-hét hét ablak kiszámítja az új felhasználók kohorsz (az első héten a érkező felhasználók).
 
@@ -902,7 +902,7 @@ StormEvents
 
 [**funnel_sequence_completion beépülő modul**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-completion-plugin): számítja ki a tölcsér, befejezett feladatütemezési lépések belül különböző időszakokra.
 
-A következő lekérdezés ellenőrzi a feladatütemezés, a befejezési tölcsér: `Hail -> Tornado -> Thunderstorm -> Wind` az egy órás, négy óra és a egy nap "teljes" időtartama (`[1h, 4h, 1d]`).
+A következő lekérdezés ellenőrzi a feladatütemezés, a befejezési tölcsér: `Hail -> Tornado -> Thunderstorm -> Wind` az egy órás, négy óra és a egy nap "teljes" időtartama (`[1h, 4h, 1d]`).
 
 **\[**[**Kattintson a lekérdezés futtatásához**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12QTYvCMBCG74L/YW6tkIV2XT9g8SjsnlvwICKhM9JAOqlJqrj4402CW0RIIB/PPLwzmjwcnZfWwwZQevKqo/yzKFYfRRnW7Hs60ZEhxjdi/UZcFaO5VuqPAjhfLvD/w9F5IG7iM95YdqrJ99mPVDoTkNXGskSTju3ASNZ5Y7t43wVhdhj9PVll0L1aylbAV9glJqyKldsLsXfTyR3oIvUQAsNpYCY95jg2puuDUhnOt71yBukXBVRxCnVoTjwnIlLX4rUzAUlf3/pEPYViDDd7AOyqowFQAQAA)**\]**
 
@@ -918,7 +918,7 @@ StormEvents
 
 ## <a name="functions"></a>Functions
 
-Ez a szakasz ismertet [ **funkciók**](https://docs.microsoft.com/azure/kusto/query/functions): újrafelhasználható, amelyek a kiszolgálón tárolt lekérdezések. Lekérdezések és egyéb funkciók (rekurzív funkciók nem támogatottak) funkciókat is hivatkozhat.
+Ez a szakasz ismertet [ **funkciók**](https://docs.microsoft.com/azure/kusto/query/functions): újrafelhasználható, amelyek a kiszolgálón tárolt lekérdezések. Lekérdezések és egyéb funkciók (rekurzív funkciók nem támogatottak) funkciókat is hivatkozhat.
 
 > [!NOTE]
 > A csak olvasható súgófürtben függvények nem hozhatók létre. Ez a rész a saját tesztfürt használja.

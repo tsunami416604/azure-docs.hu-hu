@@ -1,6 +1,6 @@
 ---
-title: Csoportok és a tartalom moderátor API subteams |} Microsoft Docs
-description: Útmutató a csoportok és subteams használni a tartalom moderátor API kognitív szolgáltatásokhoz.
+title: Csoportok és alcsoportok a Content Moderator API |} A Microsoft Docs
+description: Ismerje meg, csoportok és alcsoportok a Content Moderator API használata a Cognitive Services számára.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,55 +9,55 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: sajagtap
-ms.openlocfilehash: 161c7cd8bac07d5ffc138297d98a40317a8d88fc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6e1fc08af1062ae8962ba33c6df980182175264b
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346978"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852146"
 ---
-# <a name="team-and-subteams"></a>Csoport és Subteams #
+# <a name="team-and-subteams"></a>Csoportok és alcsoportok #
 
-Tartalom moderátor használata előtt létre kell hoznia egy csoportnak. Sign up és a csoport neve, a csapat lesz az alapértelmezett csapat. A felülvizsgálati eszköz csak akkor egy csoportot. Több subteams is létrehozhat. Subteams hasznosak eszkalációs csapatok vagy a megjelölt kategóriákat a tartalom megtekintésével dedikált csoportok létrehozása. Például érdemes lehet felnőtt tartalom küldése egy másik csoport további ellenőrzésre.
+A Content Moderator használata előtt létre kell hoznia egy csapatot. Bejelentkezés beállítása és a csoport neve, a csapat lesz az alapértelmezett csoport. Legfeljebb egy csapat a felülvizsgálati eszközben. Több alcsoportok is létrehozhat. Alcsoportok hasznosak eszkalációs csapatok vagy a megjelölt kategóriákat a tartalom megtekintésével számára kijelölt csoportok létrehozása. Például érdemes lehet küldje el a felnőtt tartalmat egy másik csapat további véleményezésre.
 
-Ez a témakör azt ismerteti, hogyan subteams létrehozásához, és gyorsan hozzárendelése az értékelést menet közben. Használhat azonban [munkafolyamatok](workflows.md) hozzárendelni a megadott feltételek alapján értékelést.
+Ez a témakör bemutatja, hogyan alcsoportok létrehozása, és gyorsan hozzárendelése az értékelések menet közben. Használhatja azonban [munkafolyamatok](workflows.md) hozzárendelni a megadott feltételek alapján felülvizsgálatok.
 
-## <a name="go-to-the-teams-setting"></a>Ugrás a csoportok beállítása ##
+## <a name="go-to-the-teams-setting"></a>Nyissa meg a csapatok beállítás ##
 
-Első lépésként a csapaton létrehozásával, válassza ki a **csapatok** a beállítások lehetőséget.
+Ismerkedés a csapaton létrehozásával, válassza ki a **csapatok** a beállítások lehetőséget.
 
-![Team beállításai](images/0-teams-1.png)
+![Team-beállítások](images/0-teams-1.png)
 
-## <a name="create-subteams"></a>Subteams létrehozása ##
+## <a name="create-subteams"></a>Alcsoportok létrehozása ##
 
-Az alapértelmezett csoport tartalmazza az összes lehetséges véleményező; subteams az alapértelmezett csapat részhalmaza. Nem rendelhet valaki a csapaton Ha nincsenek alapértelmezett csapat így ellenőrzőket bármely az alapértelmezett csapatának most kell. A meghívott felhasználó gombra a csoport oldalon.
+Az alapértelmezett csoport tartalmazza az összes lehetséges véleményező; alcsoportok az alapértelmezett csapat részhalmaza. Nem rendelhet valaki a csapaton, ha azok még nem az alapértelmezett csapat, így most már bármilyen felülvizsgálók hozzáadása az alapértelmezett csapat kell. A meghívás gombra a csapatoldalon.
 
-![Meghívott felhasználóknak](images/invite-users.png)
+![Felhasználó meghívása](images/invite-users.png)
 
-### <a name="1-create-a-subteam"></a>1. Hozzon létre egy alcsoportok.
-Görgessen le a csapat lap a csapaton részt. A csapaton hozzáadása gombra. 
+### <a name="1-create-a-subteam"></a>1. Hozzon létre egy csapaton.
+Görgessen le a csapatoldalon a csapaton szakaszra. Alcsoportok hozzáadása gombra. 
 
 ![Alcsoportok hozzáadása](images/1-teams-1.png)
 
-### <a name="2-name-your-subteam"></a>2. Nevezze el a csapaton.
-Adja meg a csapaton nevét a párbeszédpanelen, majd kattintson a Mentés gombra.
+### <a name="2-name-your-subteam"></a>2. Adjon nevet a csapaton.
+A párbeszédpanelen adja meg a csapaton nevét, majd kattintson a Mentés gombra.
 
 ![Alcsoportok neve](images/1-Teams-2.PNG)
 
-### <a name="3-assign-members-from-your-default-team"></a>3. Az alapértelmezett csapat tagok hozzárendelhetők.
-A tag hozzáadása gombra kattintva az alapértelmezett csapat tagjai hozzárendelése egy vagy több subteams. A meglévő felhasználók csak egy alcsoportok adhat hozzá. Az új felhasználók, akik nem a felülvizsgálati eszköz hozzáadása, hívhat meg azokat a csapat beállítások lapon a "Meghívása" gombra kattintva.
+### <a name="3-assign-members-from-your-default-team"></a>3. Az alapértelmezett csoport tagjai hozzárendelését.
+A tag hozzáadása gombra az alapértelmezett csoport tagok hozzárendelése egy vagy több alcsoportok. A meglévő felhasználók csak a csapaton adhat hozzá. Új felhasználók, akik nem tagjai a felülvizsgálati eszköz hozzáadásához, felkínáljuk számukra a Team-beállítások lapon a "Meghívás" gomb használatával.
 
-![Alcsoportok tagjainak hozzárendeléséhez](images/1-Teams-3.PNG)
+![Alcsoportok tagok hozzárendelése](images/1-Teams-3.PNG)
 
-## <a name="assign-reviews-to-your-subteams"></a>A subteams értékelést hozzárendelése ##
+## <a name="assign-reviews-to-your-subteams"></a>Értékelések hozzárendelése az alcsoportok ##
 
-A létrehozott subteams követően és hozzárendelt csoport tagjainak kép hozzárendelése indítható, és a szöveg ellenőrzi, hogy az adott subteams. Ehhez a felülvizsgálati ablakból.
-Ha azt szeretné, egyéni lemezkép hozzárendelése egy alcsoportok, kattintson a három pont, a kép jobb felső sarkában, helyezze át, válassza ki és a csapaton.
+A létrehozott alcsoportok után és hozzárendelt csoport tagjainak lemezkép hozzárendelése indítható, és ezek alcsoportok felülvizsgálat szöveg. Ez történik, a felülvizsgálat ablakból.
+Ha azt szeretné, egyéni lemezkép hozzárendelése a csapaton, a kép jobb felső sarkában a három pontot ábrázoló gombra, válassza ki a lépés, és válassza ki a csapaton.
 
 ![Kép felülvizsgálat subteam hozzárendelése](images/3-review-image-subteam-1.png)
 
-## <a name="switch-between-subteams-to-review-assigned-content"></a>Váltás a subteams hozzárendelt tartalom áttekintése ##
+## <a name="switch-between-subteams-to-review-assigned-content"></a>Váltás a alcsoportok hozzárendelt tartalom áttekintése ##
 
-Ha egy vagy több subteams tagja, ezek a felülvizsgálati eszközök irányítópultról subteams között válthat. Összes függőben lévő a csapaton tartozó értékelést az aktuális megtekintéséhez válassza a alcsoportok válassza ki a lemezkép lapot.
+Ha Ön egy vagy több alcsoportok tagja, ezek a felülvizsgálati eszköz irányítópultján alcsoportok között válthat. Az összes függőben lévő értékelések a csapaton tartozó aktuális megtekintéséhez válassza a lemezkép lapon válassza a csapaton.
 
-![Váltás a subteams](images/3-review-image-subteam-2.png)
+![Alcsoportok közötti váltás](images/3-review-image-subteam-2.png)

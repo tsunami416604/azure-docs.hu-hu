@@ -1,85 +1,86 @@
 ---
-title: Megtekintése és törlése az adatok Azure AI gyűjteményből |} Microsoft Docs
-description: Exportálni, és a terméken belüli felhasználói adatok törlése az illesztő vagy AI gyűjtemény Catalog API Azure AI gyűjteményből. Ez a cikk bemutatja, hogyan.
+title: Megtekintheti, és az adatok törlése az Azure AI katalógus |} A Microsoft Docs
+description: Exportálhatja, és a terméken belüli felhasználói adatok törlése az Azure AI-katalógusban a felület vagy a AI katalógus katalógus API használatával. Ez a cikk bemutatja, hogyan.
 services: machine-learning
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: cgronlun
 ms.reviewer: jmartens, mldocs
 ms.service: machine-learning
 ms.component: studio
 ms.topic: conceptual
 ms.date: 05/25/2018
-ms.openlocfilehash: bc6ffa912d7914c8662dbde623e04947540ac149
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 557896dd31f9a8acfe1ca630142be25a1d8cd5b8
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655156"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820579"
 ---
-# <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Megtekintése és törlése a terméken belüli felhasználói adatok Azure AI gyűjteményből
+# <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Megtekintheti és terméken belüli felhasználói adatok törlése az Azure AI-katalógusban
 
-Megtekintheti és a terméken belüli felhasználói adatok törlése az illesztő vagy AI gyűjtemény Catalog API Azure AI gyűjteményből. Ez a cikk azt ismerteti, hogyan.
+Megtekintheti, és a terméken belüli felhasználói adatok törlése az Azure AI-katalógusban a felület vagy a AI katalógus katalógus API használatával. Ez a cikk bemutatja, hogyan.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="view-your-data-in-ai-gallery-with-the-ui"></a>Megtekintheti az adatokat a felhasználói felületen Eszközintelligencia-katalógus
+## <a name="view-your-data-in-ai-gallery-with-the-ui"></a>Adatok megtekintése az AI-katalógusban a felhasználói felületen keresztül
 
-Az Azure Eszközintelligencia-katalógus webhelyen felhasználói felületén keresztül közzétett cikkek tekintheti meg. Felhasználók megtekinthetik a nyilvános és a nem felsorolt megoldások, projektek, kísérletek és egyéb közzétett elemeket:
+Az Azure AI-katalógusban webhelyen felhasználói felületén keresztül közzétett cikkek megtekintéséhez. Felhasználók megtekinthetik a nyilvános és a fel nem sorolt megoldások, a projektek, a kísérletek és a más közzétett elemeket:
 
-1.  Jelentkezzen be a [Azure AI gyűjtemény](https://gallery.azure.ai/).
-2.  Kattintson a jobb felső sarokban, majd a fiók nevét a profilszerkesztési lap betöltése a profilkép.
-3.  A profilszerkesztési lap a gyűjteményébe, beleértve a listában nem szereplő bejegyzések közzétett összes elemek megjelenítése.
+1.  Jelentkezzen be a [Azure AI katalógus](https://gallery.azure.ai/).
+2.  Kattintson a jobb felső sarokban, majd a fiók nevét a profillapján betölteni a profilképét.
+3.  A profil lapra a katalógusban, beleértve a listán nem szereplő bejegyzések közzétett összes elemet jeleníti meg.
 
-## <a name="use-the-ai-gallery-catalog-api-to-view-your-data"></a>Az Eszközintelligencia gyűjtemény katalógus API használatával megtekintheti az adatokat
+## <a name="use-the-ai-gallery-catalog-api-to-view-your-data"></a>Az AI katalógus katalógus API használatával az adatok megtekintése
 
-Programozott módon megtekintheti az Eszközintelligencia gyűjteménye katalógus API-n keresztül, elérhető a gyűjtött adatok https://catalog.cortanaanalytics.com/entities. Adatok megtekintéséhez van szüksége a szerző azonosítóját. A katalógus API-n keresztül fel nem sorolt entitások megtekintéséhez olyan hozzáférési jogkivonatot kell.
+Programozott módon megtekintheti a AI-katalógus katalógus API-címen elérhető gyűjtött https://catalog.cortanaanalytics.com/entities. Adatok megtekintéséhez van szüksége a szerző azonosítóját. A katalógus API-n keresztül fel nem sorolt entitások megtekintéséhez, szüksége van egy hozzáférési jogkivonatot.
 
 Katalógus válaszokat a rendszer JSON formátumban adja vissza.
 
-### <a name="get-an-author-id"></a>Az Szerző azonosítót
-A Szerző azonosítója az Azure Eszközintelligencia-katalógus való közzétételkor használatos e-mail cím alapul. Nem módosítja:
+### <a name="get-an-author-id"></a>Szerző azonosító beszerzése
+A szerző azonosító az Azure AI-katalógusban való közzétételkor használt e-mail-cím alapján. Nem módosítja:
 
-1.  Jelentkezzen be [Azure AI gyűjtemény](https://gallery.azure.ai/).
-2.  Kattintson a jobb felső sarokban, majd a fiók nevét a profilszerkesztési lap betöltése a profilkép.
-3.  Címsor URL-CÍMÉT jeleníti meg a alfanumerikus azonosító következő `authorId=`. Például ha az URL-címe: `https://gallery.cortanaintelligence.com/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+1.  Jelentkezzen be a [Azure AI katalógus](https://gallery.azure.ai/).
+2.  Kattintson a jobb felső sarokban, majd a fiók nevét a profillapján betölteni a profilképét.
+3.  Az URL-címet a címsorba jeleníti meg a alfanumerikus azonosító következő `authorId=`. Például ha az URL-címe: `https://gallery.cortanaintelligence.com/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
         
     Szerző azonosítója: `99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
 
 ### <a name="get-your-access-token"></a>A hozzáférési jogkivonat beszerzése
 
-Szüksége van egy jogkivonatot a katalógus API-n keresztül fel nem sorolt entitások megtekintéséhez. Egy hozzáférési jogkivonat nélküli felhasználók továbbra is megtekinthetik nyilvános entitásokat és más felhasználó adatait.
+Szüksége lesz egy hozzáférési jogkivonatot a katalógus API-n keresztül fel nem sorolt entitások megtekintéséhez. Egy hozzáférési jogkivonat nélküli felhasználók továbbra is megtekinthetik állami szervek és egyéb felhasználói adatok.
 
-Ahhoz, hogy olyan hozzáférési jogkivonatot, meg kell megvizsgálniuk a `DataLabAccessToken` a böngésző hajt végre a katalógus API bejelentkezett HTTP-kérések fejléc:
+Vizsgálhatja meg a szükséges hozzáférési jogkivonatot kapjon a `DataLabAccessToken` bejelentkeztek a katalógus API megkönnyíti a böngésző HTTP-kérelem fejléce:
 
-1.  Jelentkezzen be a [Azure AI gyűjtemény](https://gallery.azure.ai/).
-2.  Kattintson a jobb felső sarokban, majd a fiók nevét a profilszerkesztési lap betöltése a profilkép.
-3.  A böngésző fejlesztői eszközök ablaktábla megnyitása F12 billentyű megnyomásával, válassza ki a hálózati lapot, és frissítse az oldalt. 
-4. A karakterlánc-kérések szűrése *katalógus* a szűrő szövegmezőbe írja be.
-5.  A kérelem URL-címet `https://catalog.cortanaanalytics.com/entities`, GET kérés található, és válassza ki a *fejlécek* fülre. Görgessen le a *Request típusú fejlécekkel együtt* szakasz.
-6.  A fejléc alatt `DataLabAccessToken` alfanumerikus lexikális eleme. Az adatok biztonsága érdekében, ne ossza meg ezt a tokent.
+1.  Jelentkezzen be a [Azure AI katalógus](https://gallery.azure.ai/).
+2.  Kattintson a jobb felső sarokban, majd a fiók nevét a profillapján betölteni a profilképét.
+3.  Nyissa meg a böngésző fejlesztői eszközök ablak F12 billentyű lenyomásával, válassza ki a hálózat lapot, és frissítse az oldalt. 
+4. A karakterlánc a kérelmek szűrése *katalógus* a szűrő szövegmezőbe írja be.
+5.  Az URL-címre intézett kérésekben `https://catalog.cortanaanalytics.com/entities`, keressen egy GET kéréssel, majd válassza ki a *fejlécek* fülre. Görgessen le a *Request típusú fejlécekkel együtt* szakaszban.
+6.  A fejléc alatt `DataLabAccessToken` az alfanumerikus biztonsági jogkivonat van. Az adatok biztonsága érdekében, ne ossza meg ezt a tokent.
 
 ### <a name="view-user-information"></a>Felhasználói adatok megtekintése
-Az előző lépésben kapott Szerző Azonosítóját használja, tekintse meg a felhasználói profil tartományvezérlőkkel történő lecserélésével `[AuthorId]` az alábbi URL-cím:
+A szerző azonosító, az előző lépésben kapott használatával információk megtekintése a felhasználói profil lecserélésével `[AuthorId]` az alábbi URL-cím:
 
     https://catalog.cortanaanalytics.com/users/[AuthorID]
 
-Például az URL-cím kérésére:
+Ha például a URL kérelmet:
     
     https://catalog.cortanaanalytics.com/users/99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA
 
-Visszaadja a választ, mint:
+Például adja vissza a választ:
 
     {"entities_count":9,"contribution_score":86.351575190956922,"scored_at":"2018-05-07T14:30:25.9305671+00:00","contributed_at":"2018-05-07T14:26:55.0381756+00:00","created_at":"2017-12-15T00:49:15.6733094+00:00","updated_at":"2017-12-15T00:49:15.6733094+00:00","name":"First Last","slugs":["First-Last"],"tenant_id":"14b2744cf8d6418c87ffddc3f3127242","community_id":"9502630827244d60a1214f250e3bbca7","id":"99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA","_links":{"self":"https://catalog.azureml.net/tenants/14b2744cf8d6418c87ffddc3f3127242/communities/9502630827244d60a1214f250e3bbca7/users/99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA"},"etag":"\"2100d185-0000-0000-0000-5af063010000\""}
 
 
-### <a name="view-public-entities"></a>Nézet nyilvános entitások
+### <a name="view-public-entities"></a>Nyilvános entitások megtekintése
 
-A katalógus API-t az Azure Eszközintelligencia-katalógus, amely közvetlenül is megtekintheti a közzétett entitásokat kapcsolatos információkat tárolja a [AI gyűjtemény webhely](https://gallery.azure.ai/). 
+A katalógus API-t az Azure AI-katalógus, amely közvetlenül is megtekintheti a közzétett entitásokkal kapcsolatos információkat tárolja a [AI-katalógusban webhely](https://gallery.azure.ai/). 
 
-A közzétett entitások megtekintéséhez keresse fel a következő URL-címet, cseréje `[AuthorId]` beolvasott Szerző azonosítójú [az Szerző azonosítót](#get-an-author-ID) felett.
+A közzétett entitások megtekintéséhez látogasson el a következő URL-címet, és cserélje le `[AuthorId]` beszerzett Szerző azonosítójú [egy szerző Azonosítójának lekéréséhez](#get-an-author-ID) felett.
 
     https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'
 
@@ -87,13 +88,13 @@ Példa:
 
     https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA'
 
-### <a name="view-unlisted-and-public-entities"></a>Fel nem sorolt és nyilvános entitások megtekintése
+### <a name="view-unlisted-and-public-entities"></a>Nyilvános és a fel nem sorolt entitások megtekintéséhez
 
-Ez a lekérdezés csak nyilvános entitások jeleníti meg. Megtekintheti az összes az entitások, beleértve a listában nem szereplő is, adja meg a hozzáférési tokent az előző szakaszban beszerzett.
+Ez a lekérdezés csak nyilvános entitásokat jeleníti meg. Minden az entitásokkal, többek között a listán nem szereplő eszközök megtekintéséhez adja meg a hozzáférési jogkivonat érkezett az előző szakaszban.
 
-1.  Hasonló eszköz használatával [Postman](https://www.getpostman.com), hozzon létre egy HTTP GET kérést a katalógus URL-CÍMÉT, a [be a hozzáférési token](#get-your-access-token).
-2.  Hozzon létre egy HTTP-kérés fejlécének nevű `DataLabAccessToken`, az érték a hozzáférési jogkivonat.
-3.  A HTTP-kérelem küldése.
+1.  Hasonló eszköz használatával [Postman](https://www.getpostman.com), hozzon létre egy HTTP GET kérést, az alkalmazáskatalógus URL-címre leírtak [a hozzáférési jogkivonat lekérése](#get-your-access-token).
+2.  Hozzon létre egy HTTP-kérelem fejléce nevű `DataLabAccessToken`, értékre van állítva, a hozzáférési jogkivonatot.
+3.  A HTTP-kérelem elküldéséhez.
 
 > [!TIP]
-> Fel nem sorolt entitások nem jelennek meg a válaszok a katalógus API, ha a felhasználó esetleg érvénytelen, vagy a hozzáférési token lejárt. Jelentkezzen ki az Azure Eszközintelligencia-katalógus, és ismételje meg a a [be a hozzáférési token](#get-your-access-token) a token megújításához. 
+> Listán nem szereplő entitások nem jelennek meg a válaszokat a katalógus API-ból, ha a felhasználó előfordulhat, hogy érvénytelen, vagy a hozzáférési jogkivonat lejárt. Jelentkezzen ki az Azure AI-katalógusban, és ismételje meg a a [a hozzáférési jogkivonat lekérése](#get-your-access-token) a jogkivonat megújításához. 

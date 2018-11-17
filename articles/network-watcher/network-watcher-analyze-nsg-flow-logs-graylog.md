@@ -15,18 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
-ms.openlocfilehash: 3030fdcec95d91b75974465ad30f707837263367
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 08d3d59d20ea80065e8f0238f90579bb268c3723
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414777"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823044"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Kezelheti és elemezheti a hálózati biztonsági csoport folyamatnaplóit az Azure Network Watcher és a Graylog használatával
 
 [Hálózati biztonsági csoport folyamatnaplóit](network-watcher-nsg-flow-logging-overview.md) segítségével megismerheti a bejövő és kimenő IP-forgalom az Azure hálózati adapterek információkat tartalmaznak. Forgalmi naplók megjelenítése a kimenő és bejövő forgalom az egy hálózati biztonsági csoport a szabály alapon történik, a hálózati adaptert a folyamat vonatkozik, 5-ször több információt (forrás és cél IP-cím, forrás és a cél-Port, protokoll) a folyamatot, és ha engedélyezett vagy tiltott a forgalom .
 
 Számos hálózati biztonsági csoportok csoportforgalom naplózása engedélyezve van az a hálózat lehet. Számos hálózati biztonsági csoportok csoportforgalom naplózása engedélyezve van a teszik nehézkes elemezheti és a naplók hasznosításához. Ez a cikk a hálózati biztonsági csoport folyamatnaplóit Graylog, egy nyílt forráskódú log management és az elemző eszköz és a Logstash, egy nyílt forráskódú kiszolgálóoldali adatfeldolgozó folyamat segítségével központilag kezelheti a megoldást kínál.
+
+> [!Warning]
+> Az alábbi lépéseket a flow 1-es naplók verzió együttműködve. További információkért lásd: [csoportforgalom naplózása a hálózati biztonsági csoportok bemutatása](network-watcher-nsg-flow-logging-overview.md). Az alábbi utasítások nem fog működni a naplófájlokat, módosítás nélküli 2. verzióban.
 
 ## <a name="scenario"></a>Forgatókönyv
 

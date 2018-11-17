@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directoryval Netsuite konfigurálása |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Netsuite között.
+title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directoryval Netsuite OneWorld konfigurálása |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Netsuite OneWorld között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: e14f74f3dd6d49b882dedcb2ae01029a50a459a3
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 81e590297283a8fe88d9257e201259056a3e3744
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346746"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823851"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Netsuite konfigurálása
 
-Ez az oktatóanyag célja, a lépéseket kell elvégeznie a Netsuite és az Azure AD automatikus kiépítésének és megszüntetésének felhasználói fiókok Azure AD-ből Netsuite mutatni.
+Ez az oktatóanyag célja, a lépéseket kell elvégeznie a Netsuite OneWorld és az Azure AD automatikus kiépítésének és megszüntetésének felhasználói fiókok Azure AD-ből Netsuite mutatni.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy Ön már rendelkezik a következőkkel:
 
 *   Azure Active directory-bérlő.
-*   Egy Netsuite egyszeri bejelentkezéses engedélyezett előfizetéssel.
-*   Egy felhasználói fiókot a Netsuite csapat rendszergazdai jogosultságokkal rendelkezik.
+*   Netsuite OneWorld előfizetés. Vegye figyelembe, hogy a felhasználók automatikus átadása jelenleg csak az NetSuite OneWorld támogatott.
+*   Egy felhasználói fiókot a Netsuite rendszergazdai jogosultságokkal.
 
-## <a name="assigning-users-to-netsuite"></a>Felhasználók hozzárendelése Netsuite
+## <a name="assigning-users-to-netsuite-oneworld"></a>Felhasználók hozzárendelése Netsuite OneWorld
 
 Az Azure Active Directory "-hozzárendelések" nevű fogalma használatával határozza meg, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Felhasználók automatikus fióklétesítés kontextusában csak a felhasználók és csoportok rendelt "" az Azure AD-alkalmazáshoz való szinkronizálódnak.
 
@@ -41,7 +41,7 @@ A kiépítési szolgáltatás engedélyezése és konfigurálása, mielőtt szü
 
 [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-netsuite"></a>Felhasználók hozzárendelése Netsuite fontos tippek
+### <a name="important-tips-for-assigning-users-to-netsuite-oneworld"></a>Felhasználók hozzárendelése Netsuite OneWorld fontos tippek
 
 *   Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve Netsuite az üzembe helyezési konfiguráció tesztelése. További felhasználók és csoportok később is rendelhető.
 

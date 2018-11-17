@@ -10,23 +10,23 @@ ms.component: content-moderator
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: 79fe761bc6d8bb9561701fd11b06b010bf3454f6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 259919f3b7cb0b614450c94f876cff933a5e01e8
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260006"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852690"
 ---
 # <a name="quickstart-get-familiar-with-content-moderator"></a>Gyors útmutató: Ismerkedjen meg a Content Moderator
 
-Ebben a rövid útmutatóban a használandó kód írása nélkül a Content Moderator alapvető funkciói kipróbálásához az online Content Moderator felülvizsgálati eszközben. Ha szeretné ezt a szolgáltatást integrálja az alkalmazás időnél gyorsabban van szüksége, tekintse meg a lévő többi rövid útmutató a [további lépések](#next-steps) szakaszban.
+Ez a rövid útmutatóban az online Content Moderator felülvizsgálati eszköz használandó kód írása nélkül a Content Moderator alapvető funkciói kipróbálásához. Ha szeretné ezt a szolgáltatást integrálja az alkalmazás időnél gyorsabban van szüksége, tekintse meg a lévő többi rövid útmutató a [további lépések](#next-steps) szakaszban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Egy webes böngésző
 
 ## <a name="set-up-the-review-tool"></a>Állítsa be a felülvizsgálati eszköz
-A Content Moderator felülvizsgálati eszköz egy webalapú eszköz, amely lehetővé teszi, hogy az emberi teszik a felülvizsgálók számára a cognitive Services-szolgáltatás támogatási döntések meghozatalában. Ebben az útmutatóban mindenképpen haladjon végig a rövid folyamat beállítása után a vizsgálóeszközt, így láthatja a Content Moderator szolgáltatás működésével. Nyissa meg a [Content Moderator felülvizsgálati eszközben](https://contentmoderator.cognitive.microsoft.com/) webhelyről, és regisztráljon.
+A Content Moderator felülvizsgálati eszköz egy webalapú eszköz, amely lehetővé teszi, hogy az emberi teszik a felülvizsgálók számára a cognitive Services-szolgáltatás támogatási döntések meghozatalában. Ebben az útmutatóban mindenképpen haladjon végig a rövid folyamat beállítása után a vizsgálóeszközt, így láthatja a Content Moderator szolgáltatás működésével. Nyissa meg a [Content Moderator felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) webhelyről, és regisztráljon.
 
 ![Tartalom Moderator kezdőlapja](images/homepage.PNG)
 
@@ -54,11 +54,11 @@ Tekintse át a moderálás alkalmazott címkéket. Láthatja, hogy mely címkék
 
 A projektben akkor vagy a csapatától módosíthatja ezekkel a címkékkel vagy igény szerint további címkék hozzáadására. Fogjuk ezeket a módosításokat a elküldését a **tovább** gombra. Az üzleti alkalmazás meghívja a Moderator API-kat, mert a címkézett tartalom várólistára helyezését itt, készen áll arra, át kell néznie az emberi ellenőrző csapat. Nagy mennyiségű tartalmat, ezzel a megközelítéssel gyorsan áttekintheti.
 
-A Content Moderator felülvizsgálati eszközben használt ezen a ponton a Content Moderator szolgáltatás teheti példák. Ezt követően akár többet is megtudhat a vizsgálóeszközt és integrálják őket, a szoftver projekt áttekintéséhez API-val kapcsolatban, vagy továbbléphet a a [további lépések](#next-steps) részből megtudhatja, hogyan használható a moderálási API-k magukat az alkalmazásban.
+A Content Moderator felülvizsgálati eszköz ezen a ponton rendelkezik használt példák a Content Moderator szolgáltatás teheti. Ezt követően akár többet is megtudhat a vizsgálóeszközt és integrálják őket, a szoftver projekt áttekintéséhez API-val kapcsolatban, vagy továbbléphet a a [további lépések](#next-steps) részből megtudhatja, hogyan használható a moderálási API-k magukat az alkalmazásban.
 
 ## <a name="learn-more-about-the-review-tool"></a>További információ a felülvizsgálati eszköz
 
-A Content Moderator tekintse át eszköz használatával kapcsolatos további tudnivalókért tekintse meg a [emberi hurok](Review-Tool-User-Guide/human-in-the-loop.md) útmutatót, és tekintse meg a tekintse át eszköz API-k megtudhatja, hogyan finomhangolása az emberi ellenőrző élmény:
+A Content Moderator, tekintse át az eszközzel kapcsolatos további tudnivalókért tekintse meg a [vizsgálóeszköz](Review-Tool-User-Guide/human-in-the-loop.md) útmutatót, és tekintse meg a felülvizsgálati eszköz API-k segítségével megtudhatja, hogyan finomhangolása az emberi ellenőrző élmény:
 - A [feladat API](try-review-api-job.md) a tartalmat a moderálási API-k használatával, és értékelések készít a felülvizsgálati eszközben. 
 - A [felülvizsgálati API](try-review-api-review.md) közvetlenül hoz létre kép, szöveg vagy videót felülvizsgálatok emberi moderátorok a tartalom ellenőrzése nélkül. 
 - A [munkafolyamat API](try-review-api-workflow.md) hoz létre, frissítését és az egyéni munkafolyamatokat, amely a csapat létrehozza részleteit.

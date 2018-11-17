@@ -14,12 +14,12 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 41b5383dd319f2cb6fad4316e963f86dd7a4bc61
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 128eff5f628a0a4bf9f67e988ab7d3e2f22ed767
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036608"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823741"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Hogyan lehet a Twilio használata Hanghívási és SMS-funkciókhoz Ruby nyelven
 Ez az útmutató bemutatja, hogyan hajthat végre gyakori programozási feladatokat, a Twilio API-t szolgáltatással az Azure-ban. Az ismertetett forgatókönyvek között megtalálható, így a telefonhívás, és a egy rövid üzenetet szolgáltatást (SMS) üzenetet küld. A Twilio és az alkalmazások használata hanghívási és SMS további információkért lásd: a [lépések](#NextSteps) szakaszban.
@@ -146,7 +146,7 @@ Ha Ön nyílt felfelé `http://yourdomain.cloudapp.net/make_call` egy böngész�
 
 A harmadik paraméter (`url`) Twilio kéri, hogy mi a teendő, ha van csatlakoztatva van a hívás útmutatást kaphat az URL-cím. Ebben az esetben mi egy URL-cím beállítása (`http://yourdomain.cloudapp.net`), amely egy egyszerű TwiML dokumentumot ad vissza, és használja a `<Say>` néhány szöveg-hang transzformációs és a hívási fogadó személy legyen például "Hello alfaja" művelet.
 
-## <a id="howto_recieve_sms"></a>Útmutató: az SMS-üzenet fogadása
+## <a id="howto_receive_sms"></a>Útmutató: az SMS-üzenet fogadása
 Az előző példában azt kezdeményezett egy **kimenő** telefonhívás. Ez alkalommal, használja a telefonszámot, amelyet a Twilio megadott során regisztrációs folyamatot egy **bejövő** SMS-üzenet.
 
 Először is, jelentkezzen be a [Twilio-irányítópult][twilio_account]. Kattintson a "Számok" a felső navigációs, és kattintson a a Twilio-szám van megadva. Látni fogja a két URL-címeket, amelyeket konfigurálhat. Egy hang-kérelem URL-CÍMÉT és a egy SMS kérelem URL-címe. Ezek a Twilio-hívások, ha telefonos hívást kezdeményez vagy SMS elküldenék a szám URL-címeket. Az URL-címeket "webhook" is nevezik.

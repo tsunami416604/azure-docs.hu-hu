@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: bebe9b6565d618cb773de0379122a17bf7f70403
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: a096bd2f23910eb2eb3bc4aa36e34400ccfbb701
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914294"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853404"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: fordítása
 
@@ -84,6 +84,11 @@ A kérelem lekérdezési karakterláncot az átadott paraméterek a következők
     <td>toScript</td>
     <td>*Nem kötelező paraméter*.<br/>Adja meg a szkript a lefordított szöveg.</td>
   </tr>
+  <tr>
+    <td>AllowFallback</td>
+    <td>*Nem kötelező paraméter*.<br/>Itt adhatja meg, hogy a szolgáltatás engedélyezett egy általános rendszer álljon, ha egy egyéni rendszer nem létezik. Lehetséges értékek a következők: `true` (alapértelmezés) vagy `false`.<br/><br/>`AllowFallback=false` Megadja, hogy a fordítás csak tanított rendszerek kell használnia a `category` a kérés által megadott. Ha nyelvet X és Y nyelv fordítását igényel láncolási keresztül pivot nyelv E, majd minden a rendszer a lánc (X -> E és E -> Y) kell lennie az egyéni és azonos kategóriába tartoznak. Ha a rendszer nem található az adott kategóriával rendelkezik, a kérelem 400 állapotkódot ad vissza. `AllowFallback=true` Itt adhatja meg, hogy a szolgáltatás engedélyezett egy általános rendszer álljon, ha egy egyéni rendszer nem létezik.
+</td>
+  </tr>
 </table> 
 
 Kérelemfejlécek a következők:
@@ -106,6 +111,11 @@ Kérelemfejlécek a következők:
   <tr>
     <td>X-ClientTraceId</td>
     <td>*Választható*.<br/>Egy ügyfél által létrehozott GUID egyedi azonosítására szolgál a kérelmet. Kihagyhatja ezt a fejlécet, ha a lekérdezési karakterláncban nevű lekérdezési paraméter használatával adja meg a nyomkövetési azonosító `ClientTraceId`.</td>
+  </tr>
+  <tr>
+    <td>X-MT-rendszer</td>
+    <td>*Választható*.<br/>Meghatározza a rendszer minden kért fordításhoz "to" nyelv fordítását használt. Az érték karakterláncok vesszővel tagolt listája. Mindegyik sztring egy típusát jelzi:<br/><ul><li>Egyéni - kérés tartalmaz egy egyéni rendszert, és legalább egy egyéni rendszer fordítási során lett megadva.</li><li>Csapat – minden más kérelemhez</li></ul>
+</td>
   </tr>
 </table> 
 
@@ -186,6 +196,10 @@ Az alábbi táblázat a lehetséges HTTP-állapotkódok, amely egy kérés adja 
   <tr>
     <td>403</td>
     <td>A kérelem nem engedélyezett. Tekintse meg a részletes hibaüzenetet. Ez gyakran azt jelenti, hogy a próba-előfizetéshez biztosított összes ingyenes fordítások használtak.</td>
+  </tr>
+  <tr>
+    <td>408</td>
+    <td>A kérelem nem teljesíthető, mert egy erőforrás hiányzik. Tekintse meg a részletes hibaüzenetet. Egyéni használatakor `category`, ez gyakran azt jelenti, hogy az egyéni fordítási rendszer még nem érhető el a kérelmek kiszolgálását. A kérelem várakozási idő (pl. 10 perc) után meg kell ismételni.</td>
   </tr>
   <tr>
     <td>429</td>

@@ -4,7 +4,8 @@ description: Gyors üzembe helyezési szerzői egyéni R-modulok az Azure Machin
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 6cbc628a-7e60-42ce-9f90-20aaea7ba630
@@ -15,12 +16,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
-ms.openlocfilehash: 1a578e8cc05b42d05a8dfb31c0baeefb4822e3e5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b920f0ae3acd253c0f1f698ae4415e5b759ef762
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261110"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51819338"
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>Egyéni R-modul létrehozása az Azure Machine Learningben
 Ez a témakör azt ismerteti, hogyan hozhat létre, és a egy egyéni R modult az Azure Machine Learning üzembe helyezése. Ismerteti, milyen egyéni R-modulok és fájlokat adhat meg hozzájuk. Azt mutatja be, hogyan hozható létre a fájlokat, a modulok meghatározásához és a Machine Learning-munkaterület központi telepítés a modul regisztrálása. Az elemek és attribútumok az egyéni modult definíciójában használt majd ismerteti részletesen. Kiegészítő funkciók és a fájlok és több kimenetek használata is tárgyalja. 
@@ -132,7 +133,7 @@ Egy modul eredmények determinisztikus vagy nondeterministic.* * alapértelmezé
 Nincsenek funkciók, amelyek determinált, például RAND vagy függvény, amely az aktuális dátum vagy idő értéket ad vissza. Ha a modul egy determinált függvényt használja, megadhatja, a modul nem determinisztikus a beállításával a választható **isDeterministic** attribútumot **hamis**. Ez az adatblokkok, hogy a modul akkor fut újra, amikor a kísérlet fut, akkor is, ha a modul bemeneti és a paraméterek nem változtak. 
 
 ### <a name="language-definition"></a>Nyelvi definíciója
-A **nyelvi** elem az XML-definíciós fájlban adja meg a modul egyéni nyelvi szolgál. R jelenleg az egyetlen támogatott nyelv. Értékét a **sourceFile** attribútum tartalmazza a függvény hívása a modul futtatásakor az R-fájl nevének kell lennie. Ezt a fájlt a zip-csomagját részének kell lennie. Értékét a **entryPoint** attribútum neve, a hívott függvényt, és meg kell egyeznie a forrás fájlban meghatározott érvénytelen függvény.
+A **nyelvi** elem az XML-definíciós fájlban adja meg a modul egyéni nyelvi szolgál. Jelenleg az R az egyetlen támogatott nyelv. Értékét a **sourceFile** attribútum tartalmazza a függvény hívása a modul futtatásakor az R-fájl nevének kell lennie. Ezt a fájlt a zip-csomagját részének kell lennie. Értékét a **entryPoint** attribútum neve, a hívott függvényt, és meg kell egyeznie a forrás fájlban meghatározott érvénytelen függvény.
 
     <Language name="R" sourceFile="CustomAddRows.R" entryPoint="CustomAddRows" />
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: 58e913aa2b4a89a573f6d901803979e662c27af2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 39c72dde6bcfec2879efd05a1769ad443c9ffd2f
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954041"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823962"
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>Azure Redis Cache konfigurálása
 Ez a témakör ismerteti az Azure Redis Cache-példány érhető el a konfigurációkat. Ez a témakör azt is tartalmazza, az alapértelmezett Redis kiszolgáló konfigurálása az Azure Redis Cache-példányokban.
@@ -353,7 +353,7 @@ Kattintson a **riasztási szabályok** konfigurálása a Redis Cache-metrikák a
 
 ### <a name="diagnostics"></a>Diagnosztika
 
-Alapértelmezés szerint a gyorsítótár-metrikák az Azure monitorban vannak [30 napig](../monitoring/monitoring-data-collection.md#metrics) majd törli. A gyorsítótár-metrikák 30 napnál hosszabb ideig megőrizni, kattintson a **diagnosztikai** való [konfigurálása a tárfiók](cache-how-to-monitor.md#export-cache-metrics) fogja tárolni a gyorsítótár-diagnosztikát.
+Alapértelmezés szerint a gyorsítótár-metrikák az Azure monitorban vannak [30 napig](../azure-monitor/platform/data-collection.md#metrics) majd törli. A gyorsítótár-metrikák 30 napnál hosszabb ideig megőrizni, kattintson a **diagnosztikai** való [konfigurálása a tárfiók](cache-how-to-monitor.md#export-cache-metrics) fogja tárolni a gyorsítótár-diagnosztikát.
 
 >[!NOTE]
 >A gyorsítótár-metrikák tárolóba archiválás, mellett is [azok streamelésére az Eseményközpontok felé, vagy küldje el azokat a Log Analytics](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md).

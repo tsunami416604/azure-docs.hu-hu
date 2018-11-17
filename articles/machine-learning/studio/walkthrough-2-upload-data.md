@@ -1,10 +1,11 @@
 ---
-title: '2. lépés: A gépi tanulási kísérlet az adatok feltöltése |} Microsoft Docs'
-description: 'A Develop egy prediktív megoldás útmutató 2. lépés: feltöltés nyilvános adatok tárolása az Azure Machine Learning Studio.'
+title: '2. lépés: Adatok feltöltése egy Machine Learning-kísérletbe |} A Microsoft Docs'
+description: 'A fejlesztés egy prediktív megoldás bemutatója 2. lépés: feltöltés nyilvános adatok tárolása az Azure Machine Learning studióba.'
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 9f4bc52e-9919-4dea-90ea-5cf7cc506d85
@@ -15,15 +16,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: dfa6ae8011da0299c270035b8b781d70a8e80119
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: b320f7cfcad9a61d67c5785596744f5851313a1a
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835790"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824659"
 ---
 # <a name="walkthrough-step-2-upload-existing-data-into-an-azure-machine-learning-experiment"></a>Az útmutató 2. lépése: A meglévő adatok feltöltése egy Azure Machine Learning-kísérletbe
-Ez a forgatókönyv, a második lépése az [az Azure Machine Learning a prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md)
+Ez az útmutató második lépése a [az Azure Machine Learning prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md)
 
 1. [Machine Learning-munkaterület létrehozása](walkthrough-1-create-ml-workspace.md)
 2. **Meglévő adatok feltöltése**
@@ -33,27 +34,27 @@ Ez a forgatókönyv, a második lépése az [az Azure Machine Learning a predikt
 6. [Hozzáférés a webszolgáltatáshoz](walkthrough-6-access-web-service.md)
 
 - - -
-A hitelkockázat kiszámításához a prediktív modell elkészítéséhez kell képzése és majd a modell teszteléséhez használjuk adatokat. Ennél a bemutatónál az "UCI Statlog (német jóváírás adatok) adatkészlet" fogjuk használni a Egyediségi Irvine Machine Learning tárházból. Megtalálja itt:  
+A hitelkockázat kiszámításához prediktív modellek fejlesztése, betanítására és tesztelésére a modell segítségével adatokat kell. Ebben a bemutatóban a "UCI Statlog (német adatokból) Data Set" fogjuk használni a UC Irvine Machine Learning-adattárból. Található itt:  
 <a href="http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
 
-Nevű fájlban található fogjuk használni **german.data**. Töltse le a fájlt a helyi merevlemez-meghajtóról.  
+A fájlt használjuk **german.data**. Töltse le a fájlt a merevlemez-meghajtóról.  
 
-A **german.data** dataset 20 változók sorokat tartalmaz-jóváírási 1000 múltbeli kérelmező esetében. 20 változókhoz határoz meg az adatkészlet számos funkciót (a *szolgáltatás vektoros*), amely lehetővé teszi azonosító jellemzőinek minden jóváírás kérelmező. Minden egyes sorban egy további oszlopot a kérelmező számított hitelkockázat, a magas kockázatú alacsony hitelkockázat és 300 azonosítottak 700 kérelmezők jelöli.
+A **german.data** adatkészlet a 1000 elmúlt kérelmezők számára ajánlatbeli kreditek 20 változók sort tartalmaz. Ezeket a változókat 20 jelölik az adatkészlet bizonyos funkcióit (a *funkció vektor*), amely lehetővé teszi azonosító jellemzőinek minden kredit kérelmezőnek. Minden egyes sorban egy további oszlopot a kérelmező számított hitelkockázat, a 700 kérelmezők azonosította az eseményt alacsony hitelkockázat és 300 másodperc, a magas kockázatú jelöli.
 
-A UCI webhely ezeket az adatokat a szolgáltatás vektor attribútumait ismerteti. Ez magában foglalja az információkat, jóváírás előzmények, állapota és a személyes adatokat. Az egyes kérelmező bináris minősítést volt adott, amely azt jelzi, hogy azok az alacsony vagy magas kockázatú követel. 
+A szolgáltatás vektor ezen adatok jellemzőit ismerteti, a UCI webhelyén. Ez magában foglalja a pénzügyi adatokat, kreditelőzmények, állapota és személyes adatokat. Az egyes kérelmező bináris minősítést lett adott, amely azt jelzi, hogy azok egy alacsony és magas kockázati kreditet. 
 
-Ezeket az adatokat fogjuk használni egy prediktív elemzési modell betanításához. Ha azt végzett, a modell fogadja el a szolgáltatás vektor egy új egyedi, és hogy nem magas vagy alacsony hitelkockázat előrejelzése kell lennie.  
+Betanítunk egy prediktív elemzési modellt használjuk ezeket az adatokat. Ha végzett, a modell fogadja el a szolgáltatás vektor egy új egyedi, és hogy ő-e a kis vagy nagy hitelkockázat előrejelzése képesnek kell lennie.  
 
-Íme egy érdekes formája. Leírja, hogy az adatkészlet a UCI webhelyen akkor említi, mi azt költségek, ha egy személy hitelkockázat misclassify azt.
-A modell magas hitelkockázat előrejelzi a ténylegesen alacsony hitelkockázat rendszer, ha a modell tett egy téves besorolás.
-A fordított téves besorolás ötször költségesebb, a pénzügyi intézménynél, de: Ha a modell egy alacsony hitelkockázat előrejelzi mások számára ténylegesen hitelkockázati kockázatot jelent.
+Íme egy érdekes twist. A UCI webhelyen az adatkészlet leírása említi, amit Ha azt egy személy hitelkockázatáról misclassify költségei.
+Ha a modell magas hitelkockázat előrejelzi a személy ténylegesen alacsony hitelkockázat, a modell által végrehajtott egy téves besorolás.
+A fordított téves besorolás ötször költségesebb, a pénzügyi intézmény, de: Ha a modell egy alacsony hitelkockázat előrejelzi a személy ténylegesen magas hitelkockázat.
 
-Igen azt szeretnénk, a modell betanításához, úgy, hogy ez utóbbi típusú téves besorolás költségét ötször magasabb, mint a más módon misclassifying.
-Egy egyszerű Ez a kísérletben modell betanításakor módja (ötször) azokra a bejegyzésekre, amelyek megfelelnek egy magas hitelkockázat rendelkező bármely személy másolásával. Ezt követően a modell misclassifies valaki alacsony hitelkockázat, ha azok ténylegesen nagy kockázatot jelent, ha a modell elvégzi, hogy ugyanazon téves besorolás ötször, egyszer minden ismétlődő. Ez növeli a hiba, a képzési eredmények költségét.
+Ezért szeretnénk a modell betanítását, úgy, hogy a költség, ez utóbbi típusú téves besorolás ötször magasabb, mint a más módon misclassifying.
+A legegyszerűbb megoldás ehhez a kísérletben a modell tanítása esetén (ötször) tételekhez valaki nagy hitelkockázat-képviselő másolásával. Ezután ha a modell misclassifies valaki alacsony hitelkockázat, ha ténylegesen magas kockázatú, a modell elvégzi, hogy ugyanazon téves besorolás ötször, egyszer minden ismétlődő. Ez növeli a hiba a betanítási eredmények költsége.
 
 
-## <a name="convert-the-dataset-format"></a>Alakítsa át a dataset formátumban
-Az eredeti adathalmazból egy üres elválasztott formátumot használja. A Machine Learning Studio jobban működik egy vesszővel tagolt (CSV) fájl, így a dataset nem fogja átalakítás azáltal, hogy szóközök vesszővel válassza el egymástól.  
+## <a name="convert-the-dataset-format"></a>Az adatkészlet formátum konvertálása
+Az eredeti adathalmazból egy üres tagolt formátumot használja. A Machine Learning Studio jobban működik egy vesszővel tagolt (CSV) fájl, így azt fogjuk konvertálja az adatkészlet és cserélje le a tárolóhelyek vesszővel válassza el egymástól.  
 
 Számos módon konvertálni az adatokat. Egyik módja a következő Windows PowerShell-parancs használatával:   
 
@@ -63,44 +64,44 @@ Egy másik módja a Unix csökkentésének parancs használatával:
 
     sed 's/ /,/g' german.data > german.csv  
 
-Mindkét esetben létrehoztunk egy nevű fájlt egy vesszővel tagolt verziója **german.csv** , hogy a kísérletben is használhatók.
+Mindkét esetben hoztunk létre egy nevű fájlban lévő adatokat egy vesszővel tagolt verziója **german.csv** , használhatjuk a kísérletben.
 
-## <a name="upload-the-dataset-to-machine-learning-studio"></a>Töltse fel az adatkészletet a Machine Learning Studio
-Miután az adatok CSV formátumban lett konvertálva, igazolnia kell a Machine Learning Studióhoz töltse fel azt. 
+## <a name="upload-the-dataset-to-machine-learning-studio"></a>Töltse fel az adatkészlet Machine Learning Studióban
+Miután az adatok CSV formátumban lett konvertálva, töltse fel a Machine Learning studióba kell. 
 
-1. Nyissa meg a Machine Learning Studio kezdőlap ([https://studio.azureml.net](https://studio.azureml.net)). 
+1. Nyissa meg a Machine Learning Studio kezdőlapját ([https://studio.azureml.net](https://studio.azureml.net)). 
 
-2. A menü ![menü][1] a az ablak bal felső sarkában kattintson **Azure Machine Learning**, jelölje be **Studio**, és jelentkezzen be.
+2. Kattintson a menü ![menü][1] az ablak bal felső sarkában kattintson **Azure Machine Learning**, jelölje be **Studio**, és jelentkezzen be.
 
 3. Kattintson a **+ új** az ablak alján.
 
-4. Válassza ki **DATASET**.
+4. Válassza ki **ADATKÉSZLET**.
 
 5. Válassza ki **helyi FÁJLBÓL**.
 
-    ![A DataSet adatkészlet hozzáadása a helyi fájlból][2]
+    ![Adatkészlet hozzáadása egy helyi fájlból][2]
 
-6. Az a **töltse fel az új adatkészlet** párbeszédpanel, kattintson a **Tallózás** , és keresse a **german.csv** létrehozott fájlt.
+6. Az a **töltse fel egy új adatkészlet** párbeszédpanelen kattintson a **Tallózás** , és keresse meg a **german.csv** létrehozott fájlt.
 
-7. Adja meg az adatkészlet nevét. Ennél a bemutatónál neki "UCI német hitelkártya adatok".
+7. Adja meg az adatkészlet nevét. Ebben a bemutatóban meghívására "UCI német hitelkártya adatok".
 
-8. Adattípus, válassza ki a **fejléc nélküli általános CSV-fájlt (. nh.csv)**.
+8. Adattípus kiválasztása **fejléc nélküli általános CSV-fájl (. nh.csv)**.
 
-9. Ha azt szeretné, adjon meg egy leírást.
+9. Ha szeretné, adjon meg egy leírást.
 
-10. Kattintson a **OK** pipára.  
+10. Kattintson a **OK** pipa jelre.  
 
-    ![A dataset feltöltése][3]
+    ![Töltse fel az adatkészlet][3]
 
-Ez feltölti az adatokat is használhatók. a kísérlet a dataset modulba.
+Ez feltölti az adatokat az adatkészlet a modul, amely használhatók, egy kísérlet során.
 
-Studio kattintva feltöltött adathalmazok kezelheti a **ADATKÉSZLETEK** fülre, és a Studio ablak bal oldalán.
+Adatkészleteket, amelyek az Ön által feltöltött Studio kattintva kezelheti a **ADATKÉSZLETEK** fülre, és a Studio ablak bal oldalán.
 
 ![Adatkészletek kezelése][4]
 
-Más típusú adatok kísérlet történő importálásával kapcsolatos további információkért lásd: [a betanítási adatok importálása az Azure Machine Learning Studio](import-data.md).
+Más típusú adatok importálása egy kísérlet kapcsolatos további információkért lásd: [a betanítási adatok importálása az Azure Machine Learning studióba](import-data.md).
 
-**Következő: [új kísérlet létrehozása](walkthrough-3-create-new-experiment.md)**
+**A következő: [új kísérlet létrehozása](walkthrough-3-create-new-experiment.md)**
 
 [1]: media/walkthrough-2-upload-data/menu.png
 [2]: media/walkthrough-2-upload-data/add-dataset.png

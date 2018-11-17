@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 0c85b65e9b6eabcb5c74e1d178c0f26235cdf624
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 4c6765e54dc881c35e344f111e82721be0852052
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961823"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823758"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream Azure monitorozási adatok felhasználásra egy eseményközpontba egy külső eszközzel
 
@@ -71,7 +71,7 @@ Az Azure-tevékenységnapló adatok küldése az Event Hubs-névtér, beállíth
 
 Azure-erőforrás szolgáltat két típusú monitorozási adatait:
 1. [Erőforrás-diagnosztikai naplók](./monitoring-overview-of-diagnostic-logs.md)
-2. [Metrikák](../monitoring/monitoring-data-collection.md)
+2. [Metrikák](../azure-monitor/platform/data-collection.md)
 
 Mindkét típusú adatokat egy eseményközpontba egy erőforrás diagnosztikai beállításának érkeznek. [Ezt az útmutatót](./monitoring-stream-diagnostic-logs-to-event-hubs.md) állíthat be egy adott erőforrás az erőforrás diagnosztikai beállítást. Állítsa be, minden egyes erőforrás, amelyről el szeretné naplók gyűjtése az erőforrások diagnosztikai beállítása.
 

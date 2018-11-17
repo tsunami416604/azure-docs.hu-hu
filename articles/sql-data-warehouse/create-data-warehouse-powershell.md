@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 08/01/2018
+ms.date: 11/15/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: ecde7cb3662fc80e7968acfcac99bc8f28e8b15b
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 60bd7cc2084ce64477cf89a5fd28d9a505fbfbfb
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287573"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852639"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Rövid útmutató: Létrehozása és lekérdezése az Azure SQL data warehouse az Azure PowerShell használatával
 
@@ -31,24 +31,24 @@ Az oktatóanyaghoz az Azure PowerShell-modul 5.1.1-es vagy újabb verziója szü
 >
 >
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure-előfizetésbe az [Add-AzureRmAccount](/powershell/module/azurerm.profile/add-azurermaccount) parancs használatával, és kövesse a képernyőn megjelenő útmutatásokat.
+Az Azure-előfizetés használatával jelentkezzen be a [Add-AzureRmAccount](/powershell/module/azurerm.profile/add-azurermaccount) paranccsal, és kövesse a képernyőn megjelenő utasításokat.
 
 ```powershell
 Add-AzureRmAccount
 ```
 
-A használt előfizetés megtekintéséhez futtassa a [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription) parancsot.
+Tekintse meg, hogy melyik előfizetéssel használja, futtassa [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription).
 
 ```powershell
 Get-AzureRmSubscription
 ```
 
-Ha nem az alapértelmezett előfizetést kívánja használni, futtassa a [Select-AzureRmSubscription](/powershell/module/azurerm.profile/select-azurermsubscription) parancsot.
+Ha szeretne egy másik előfizetést, mint az alapértelmezett, futtassa [Set-AzureRmContext](/powershell/module/azurerm.profile/set-azurermcontext).
 
 ```powershell
-Select-AzureRmSubscription -SubscriptionName "MySubscription"
+Set-AzureRmContext -SubscriptionName "MySubscription"
 ```
 
 
@@ -60,10 +60,10 @@ Ebben a rövid útmutatóban a szkriptekben használt változókat határozhat m
 # The data center and resource name for your resources
 $resourcegroupname = "myResourceGroup"
 $location = "WestEurope"
-# The logical server name: Use a random value or replace with your own value (do not capitalize)
+# The logical server name: Use a random value or replace with your own value (don't capitalize)
 $servername = "server-$(Get-Random)"
-# Set an admin login and password for your database
-# The login information for the server
+# Set an admin name and password for your database
+# The sign-in information for the server
 $adminlogin = "ServerAdmin"
 $password = "ChangeYourAdminPassword1"
 # The ip address range that you want to allow to access your server - change as appropriate
@@ -82,7 +82,7 @@ New-AzureRmResourceGroup -Name $resourcegroupname -Location $location
 ```
 ## <a name="create-a-logical-server"></a>Hozzon létre egy logikai kiszolgálót
 
-Hozzon létre egy [Azure SQL logikai kiszolgáló](../sql-database/sql-database-logical-servers.md) használatával a [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) parancsot. A logikai kiszolgálók adatbázisok egy csoportját tartalmazzák, amelyeket a rendszer egy csoportként kezel. A következő példában létrehozunk egy véletlenszerűen elnevezett kiszolgálót az erőforráscsoportban egy `ServerAdmin` nevű és `ChangeYourAdminPassword1` jelszavú rendszergazdai bejelentkezéssel. Igény szerint cserélje le ezeket az előre meghatározott értékeket.
+Hozzon létre egy [Azure SQL logikai kiszolgáló](../sql-database/sql-database-logical-servers.md) használatával a [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) parancsot. A logikai kiszolgálók adatbázisok egy csoportját tartalmazzák, amelyeket a rendszer egy csoportként kezel. A következő példában létrehozunk egy véletlenszerűen elnevezett kiszolgálót az erőforráscsoportban nevű rendszergazda felhasználó `ServerAdmin` jelszóval `ChangeYourAdminPassword1`. Igény szerint cserélje le ezeket az előre meghatározott értékeket.
 
 ```powershell
 New-AzureRmSqlServer -ResourceGroupName $resourcegroupname `
@@ -102,7 +102,7 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 ```
 
 > [!NOTE]
-> SQL Database és az SQL Data Warehouse az 1433-as porton keresztül kommunikálnak. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem tud csatlakozni az Azure SQL Serverhez, kivéve, ha az informatikai részleg megnyitja az 1433-as porton.
+> SQL Database és az SQL Data Warehouse az 1433-as porton keresztül kommunikálnak. Csatlakozás a vállalati hálózaton belülről próbál, ha a hálózati tűzfal előfordulhat, hogy nem engedélyezett a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem tud csatlakozni az Azure SQL Serverhez, kivéve, ha az informatikai részleg megnyitja az 1433-as porton.
 >
 
 
@@ -122,15 +122,15 @@ New-AzureRmSqlDatabase `
 
 A szükséges paraméterek a következők:
 
-* **RequestedServiceObjectiveName**: mennyisége [adattárházegységek](what-is-a-data-warehouse-unit-dwu-cdwu.md) kért. Ez a mennyiség növelése növeli a számítási költségeket. A támogatott értékek listáját lásd: [memória- és egyidejűségi korlátok](memory-and-concurrency-limits.md).
-* **DatabaseName**: A létrehozandó SQL Data Warehouse neve.
+* **RequestedServiceObjectiveName**: mennyisége [adattárházegységek](what-is-a-data-warehouse-unit-dwu-cdwu.md) , a kért. Ez a mennyiség növelése növeli a számítási költségeket. A támogatott értékek listáját lásd: [memória- és egyidejűségi korlátok](memory-and-concurrency-limits.md).
+* **DatabaseName**: az éppen létrehozandó SQL Data Warehouse neve.
 * **Kiszolgálónév**: a kiszolgáló, a létrehozásához használt nevét.
-* **ResourceGroupName**: A használt erőforráscsoport. Az előfizetésben elérhető erőforráscsoportok kereséséhez használja a Get-AzureResource parancsot.
+* **ResourceGroupName**: erőforráscsoportot használ. Az előfizetésben elérhető erőforráscsoportok kereséséhez használja a Get-AzureResource parancsot.
 * **Edition**: Egy SQL Data Warehouse létrehozásához a „DataWarehouse” értéket kell megadni.
 
 A választható paraméterek a következők:
 
-- **CollationName**: Ha nincs megadva, az alapértelmezett rendezés: SQL_Latin1_General_CP1_CI_AS. Az adatbázisok rendezése nem módosítható.
+- **CollationName**: Ha nincs megadva, az alapértelmezett rendezés: SQL_Latin1_General_CP1_CI_AS. Rendezés nem módosítható az adatbázisok.
 - **MaxSizeBytes**: Alapértelmezés szerint az adatbázisok maximális mérete 10 GB.
 
 A paraméterbeállításokkal további információkért lásd: [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase).
@@ -141,7 +141,7 @@ A paraméterbeállításokkal további információkért lásd: [New-AzureRmSqlD
 A gyűjtemény részét képező többi rövid útmutató erre a rövid útmutatóra épül. 
 
 > [!TIP]
-> Ha azt tervezi, hogy az ezt követő rövid útmutatókkal dolgozik tovább, akkor ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a munkát, akkor a következő lépésekkel törölheti az Azure Portalon a rövid útmutatóhoz létrehozott összes erőforrást.
+> Ha azt tervezi, hogy a rövid útmutató későbbi oktatóanyagokkal dolgozik tovább, ne törölje az erőforrásokat létrehozott ebben a rövid útmutatóban. Ha nem szeretné folytatni, használja az alábbi lépéseket az Azure Portalon a rövid útmutatóhoz létrehozott összes erőforrást törli.
 >
 
 ```powershell
@@ -150,6 +150,6 @@ Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>További lépések
 
-Az eddigiekben létrehozott egy adattárházat, hozzá egy tűzfalszabályt, csatlakozott hozzá, és futtatott néhány lekérdezést. Ha bővebb információra van szüksége az Azure SQL Data Warehouse-zal kapcsolatban, folytassa az adatok betöltésével foglalkozó oktatóanyaggal.
+Sikeresen létrehozott egy adattárházat, és létrehozott egy tűzfalszabályt, csatlakozott az data warehouse-ba, és futtatott néhány lekérdezést. Ha bővebb információra van szüksége az Azure SQL Data Warehouse-zal kapcsolatban, folytassa az adatok betöltésével foglalkozó oktatóanyaggal.
 > [!div class="nextstepaction"]
 >[Adatok betöltése az SQL Data Warehouse-okba](load-data-from-azure-blob-storage-using-polybase.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: b01dafcda9ed8fe14e3f0d50daf25bae1658faee
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: e5b2f071370ec6551e05960c708e2b83918d83ff
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282628"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821378"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Az Azure monitorozási adatok felhasználásához
 
@@ -46,6 +46,6 @@ Az Azure platformon keresztül azt is összevonhatja az Azure Monitor, egyetlen 
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudjon meg többet [Azure Monitor-metrikák](../monitoring/monitoring-data-collection.md)
+- Tudjon meg többet [Azure Monitor-metrikák](../azure-monitor/platform/data-collection.md)
 - Tudjon meg többet [az Azure-tevékenységnapló](monitoring-overview-activity-logs.md)
 - Tudjon meg többet [Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)

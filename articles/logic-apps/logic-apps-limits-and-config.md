@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 10/11/2018
-ms.openlocfilehash: f4d8030918804dc30437aae34de87615ce7e82b5
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.date: 11/16/2018
+ms.openlocfilehash: 62235c0c06621169997cc4ad16816c0a4d638e78
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346700"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853829"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Korlátozások és konfigurációs adatokat az Azure Logic Apps
 
@@ -323,9 +323,10 @@ Minden logikai alkalmazás egy régióban használja ugyanazokat a tartományoka
 
 ### <a name="managed-connectors"></a>A felügyelt összekötők
 
-A hívások támogatására, amely [a Microsoft által felügyelt összekötők](../connectors/apis-list.md) márka, állítsa be a tűzfalbeállításokat, így ezen kimenő IP-címek tartoznak a régiók, ahol a logic apps létezik alapján.
+A hívások támogatására, amely [a Microsoft által felügyelt összekötők](../connectors/apis-list.md) márka, állítsa be a tűzfalbeállításokat, így tartalmazzák az összes kimenő IP-címet a régiókat, ahol a logic apps létezik a megadott. A [Azure Government](/azure-government/documentation-government-welcome) és [Azure China 21Vianet](/azure/china/china-welcome), összekötők fenntartott IP-cím nem érhető el.
 
 > [!IMPORTANT]
+> 
 > Ha rendelkezik meglévő konfigurációk, frissítse őket **2018. szeptember 1. előtt a lehető leghamarabb** , ezek közé tartozik, és a régiók, ahol a logic apps létezik-e a listában szereplő IP-címekkel egyező. 
 > 
 > A Logic Apps nem támogatja az Azure storage-fiókok tűzfalon keresztül közvetlenül csatlakozik. Ezek a tárfiókok eléréséhez mindkét módszerhez itt: 

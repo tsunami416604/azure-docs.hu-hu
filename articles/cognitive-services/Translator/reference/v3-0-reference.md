@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 243ee16f8de8add8283581c8c03a37594797864b
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6f679536d69f700fd6678eb3bbbb869e42439cde
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430034"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853353"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API 3.0-s verzió
 
@@ -135,6 +135,7 @@ A hibakód egy 6 jegyű számot csoportba foglalása 3 számjegyből HTTP-állap
 | 403000| A művelet nem engedélyezett.|
 | 403001| A művelet nem engedélyezett, mert az előfizetés túllépte az ingyenes kvótát.|
 | 405000| Kérelmi metódus nem támogatott a kért erőforrás.|
+| 408001| A kért egyéni fordítási rendszer még nem érhető el. Próbálkozzon újra néhány perc múlva.|
 | 415000| A Content-Type fejléc nem található vagy érvénytelen.|
 | 429000, 429001, 429002| A kiszolgáló elutasította a kérelmet, mert az ügyfél túl sok kérelmet küld. Kérelmek szabályozása elkerülése érdekében gyakoriságának csökkentése.|
 | 500 000 összeget| Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse be a dátum/idő hiba, kérjen azonosító X-RequestId: válaszfejléc, és a kérelem fejlécében X-ClientTraceId ügyfél-azonosítója.|

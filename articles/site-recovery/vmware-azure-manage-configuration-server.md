@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/11/2018
 ms.author: raynew
-ms.openlocfilehash: e8f41ef44adbd72e8ab16329d5fec94c08df2fe7
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 8096f1b5b29c0445d8bae85fb56e2735469184d4
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568454"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823945"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>A VMware virtuális gépek vészhelyreállítására használt konfigurációs kiszolgáló kezelése
 
@@ -222,9 +222,16 @@ Konfigurációs kiszolgáló központi telepítése előtt a 2016. május eseté
 2. Megjelenik a lejárati dátum **konfigurációs kiszolgáló állapota**.
 3. Válassza ki **tanúsítványok megújítása**.
 
-## <a name="update-windows-licence"></a>Windows-engedély frissítése
+## <a name="refresh-configuration-server"></a>Konfigurációs kiszolgáló frissítése
 
-Az OVF-sablonját a megadott engedély egy értékelési engedély 180 napig érvényes. A zavartalan használat aktiválnia kell a Windows határidődátumával engedéllyel rendelkező.
+1. Az Azure Portalon lépjen **Recovery Services-tároló** > **kezelés** > **Site Recovery-infrastruktúra**  >   **A VMware és fizikai gépek** > **konfigurációs kiszolgálók**
+2. Kattintson a frissíteni kívánt konfigurációs kiszolgálón.
+3. A kiválasztott konfigurációs kiszolgáló részleteit tartalmazó panelen kattintson a **további** > **kiszolgáló frissítése**.
+4. A feladat előrehaladásának figyeléséhez **Recovery Services-tároló** > **figyelés** > **Site Recovery-feladatok**.
+
+## <a name="update-windows-license"></a>Windows-licenc frissítése
+
+Az OVF-sablonnal biztosított licencet egy próbalicencre 180 napig érvényes. A zavartalan használat aktiválnia kell a Windows határidődátumával licenccel.
 
 ## <a name="failback-requirements"></a>Feladat-visszavételre vonatkozó követelmények
 

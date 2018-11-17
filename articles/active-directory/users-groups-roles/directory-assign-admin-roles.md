@@ -14,12 +14,12 @@ ms.date: 10/26/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 8c5da669d490bf295c4066854ac1173bcc79ad5e
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 0c8fe0759e115288e9f8cc2ea313f6dc3dc89b6b
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686126"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854005"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Az Azure Active Directory rendszergazdája szerepkör engedélyei
 
@@ -179,11 +179,6 @@ Az alábbi táblázatok ismertetik az Azure Active Directory minden egyes szerep
 ### <a name="application-administrator"></a>Alkalmazás-rendszergazda
 Az alkalmazásregisztrációkkal és a vállalati alkalmazásokkal kapcsolatos összes létrehozási és felügyeleti jogosultsággal rendelkezik.
 
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
-
 | **Műveletek** | **Leírás** |
 | --- | --- |
 | Microsoft.aad.Directory/Applications/Audience/Update | Az applications.audience tulajdonság frissítése az Azure Active Directoryban. |
@@ -223,11 +218,6 @@ Az alkalmazásregisztrációkkal és a vállalati alkalmazásokkal kapcsolatos �
 ### <a name="application-developer"></a>Alkalmazásfejlesztő
 Hozhat létre alkalmazást az alkalmazásregisztrációk független a "felhasználók regisztrálhatnak alkalmazásokat" beállítás.
 
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
-
 | **Műveletek** | **Leírás** |
 | --- | --- |
 | microsoft.aad.directory/applications/createAsOwner | Application objektumok létrehozása az Azure Active Directoryban. Létrehozót első tulajdonosként kerül, és a létrehozott objektum beleszámít a létrehozó 250 létrehozott objektumos kvótáját. |
@@ -237,11 +227,6 @@ Hozhat létre alkalmazást az alkalmazásregisztrációk független a "felhaszn�
 
 ### <a name="billing-administrator"></a>Számlázási adminisztrátor
 Számlázással kapcsolatos általános feladatokat hajthat végre, például frissítheti a fizetési adatokat.
-
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
 
   > [!NOTE]
   > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
@@ -263,11 +248,6 @@ Számlázással kapcsolatos általános feladatokat hajthat végre, például fr
 Elérheti és kezelheti az asztali felügyeleti eszközöket és szolgáltatásokat, beleértve az Intune-ban.
 
   > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
-
-  > [!NOTE]
   > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
   >
   >
@@ -283,11 +263,6 @@ Elérheti és kezelheti az asztali felügyeleti eszközöket és szolgáltatáso
 
 ### <a name="cloud-application-administrator"></a>Felhőalkalmazás-rendszergazda
 Az Application Proxy kivételével az alkalmazásregisztrációkkal és a vállalati alkalmazásokkal kapcsolatos összes létrehozási és felügyeleti jogosultsággal rendelkezik.
-
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
 
 | **Műveletek** | **Leírás** |
 | --- | --- |
@@ -327,11 +302,6 @@ Az Application Proxy kivételével az alkalmazásregisztrációkkal és a válla
 ### <a name="cloud-device-administrator"></a>Felhőbeli Eszközrendszergazda
 Teljes körű jogosultság az eszközök Azure AD-beli kezelésére.
 
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
-
 | **Műveletek** | **Leírás** |
 | --- | --- |
 | Microsoft.aad.Directory/Devices/DELETE | A Device objektumok törlése az Azure Active Directoryban. |
@@ -344,11 +314,6 @@ Teljes körű jogosultság az eszközök Azure AD-beli kezelésére.
 
 ### <a name="company-administrator"></a>Céges rendszergazda
 Az Azure AD-identitásokat használó Azure AD- és Microsoft-szolgáltatásokkal kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
-
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a szerepkört.
-  >
-  >
 
   > [!NOTE]
   > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
@@ -411,11 +376,6 @@ Az Azure AD-identitásokat használó Azure AD- és Microsoft-szolgáltatásokka
 Megtekintheti és kezelheti a megfelelőségi konfigurációt és jelentéseket az Azure AD-ban és az Office 365-ben.
 
   > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
-
-  > [!NOTE]
   > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
   >
   >
@@ -435,11 +395,6 @@ Megtekintheti és kezelheti a megfelelőségi konfigurációt és jelentéseket 
 ### <a name="conditional-access-administrator"></a>Feltételes hozzáférésű rendszergazda
 A feltételes hozzáférési lehetőségekkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
-
 | **Műveletek** | **Leírás** |
 | --- | --- |
 | microsoft.aad.directory/policies/conditionalAccess/basic/read | A policies.conditionalAccess tulajdonság olvasása az Azure Active Directoryban. |
@@ -452,11 +407,6 @@ A feltételes hozzáférési lehetőségekkel kapcsolatos összes felügyeleti j
 
 ### <a name="crm-service-administrator"></a>CRM-szolgáltatásadminisztrátor
 A Dynamics 365 termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
-
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
 
   > [!NOTE]
   > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
@@ -476,11 +426,6 @@ A Dynamics 365 termékkel kapcsolatos összes felügyeleti jogosultsággal rende
 Jóváhagyhatja a szervezeti ügyféladatok elérésére vonatkozó Microsoft-támogatási kérelmeket.
 
   > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
-
-  > [!NOTE]
   > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
   >
   >
@@ -493,11 +438,6 @@ Jóváhagyhatja a szervezeti ügyféladatok elérésére vonatkozó Microsoft-t�
 ### <a name="device-administrators"></a>Eszközadminisztrátorok
 Ezen szerepkör tagjai a helyi Rendszergazdák csoport, az Azure AD-hez csatlakoztatott eszközök kerülnek.
 
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
-
 | **Műveletek** | **Leírás** |
 | --- | --- |
 | microsoft.aad.directory/groupSettings/basic/read | A GroupSetting objektumok alapvető tulajdonságainak olvasása az Azure Active Directoryban. |
@@ -505,11 +445,6 @@ Ezen szerepkör tagjai a helyi Rendszergazdák csoport, az Azure AD-hez csatlako
 
 ### <a name="directory-readers"></a>Directory-olvasók
 Alapszintű directory információkat olvashatja. Az alkalmazásokhoz való hozzáférés biztosítása, nem javasolt a felhasználók számára.
-
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a szerepkört.
-  >
-  >
 
 | **Műveletek** | **Leírás** |
 | --- | --- |
@@ -570,11 +505,6 @@ Alapszintű directory információkat olvashatja. Az alkalmazásokhoz való hozz
 ### <a name="directory-synchronization-accounts"></a>Címtár-szinkronizálási fiókok
 Csak Azure AD Connect szolgáltatást használják.
 
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a szerepkört.
-  >
-  >
-
 | **Műveletek** | **Leírás** |
 | --- | --- |
 | microsoft.aad.directory/organization/dirSync/update | Az organization.dirSync tulajdonság frissítése az Azure Active Directoryban. |
@@ -604,11 +534,6 @@ Csak Azure AD Connect szolgáltatást használják.
 ### <a name="directory-writers"></a>Directory-írók
 Olvasás, és alapszintű directory adatokat írnak a. Az alkalmazásokhoz való hozzáférés biztosítása, nem javasolt a felhasználók számára.
 
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
-
 | **Műveletek** | **Leírás** |
 | --- | --- |
 | Microsoft.aad.Directory/groups/Create | Group objektumok létrehozása az Azure Active Directoryban. |
@@ -630,11 +555,6 @@ Olvasás, és alapszintű directory adatokat írnak a. Az alkalmazásokhoz való
 
 ### <a name="exchange-service-administrator"></a>Exchange-szolgáltatások rendszergazdája
 Az Exchange termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
-
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
 
   > [!NOTE]
   > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
@@ -659,11 +579,6 @@ Az Exchange termékkel kapcsolatos összes felügyeleti jogosultsággal rendelke
 ### <a name="guest-inviter"></a>Vendég meghívója
 A tagok vendégmeghívási jogosultágát szabályozó beállítástól függetlenül meghívhat vendégeket.
 
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a szerepkört.
-  >
-  >
-
 | **Műveletek** | **Leírás** |
 | --- | --- |
 | microsoft.aad.directory/users/appRoleAssignments/read | A users.appRoleAssignments tulajdonság olvasása az Azure Active Directoryban. |
@@ -682,11 +597,6 @@ A tagok vendégmeghívási jogosultágát szabályozó beállítástól függetl
 ### <a name="helpdesk-administrator"></a>Ügyfélszolgálati adminisztrátor
 Alaphelyzetbe állíthatja a nem rendszergazdák és a segélyszolgálat rendszergazdák jelszavát.
 
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
-
 | **Műveletek** | **Leírás** |
 | --- | --- |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | Az összes felhasználófrissítési jogkivonat érvénytelenítése az Azure Active Directoryban. |
@@ -699,11 +609,6 @@ Alaphelyzetbe állíthatja a nem rendszergazdák és a segélyszolgálat rendsze
 
 ### <a name="information-protection-administrator"></a>Information Protection-rendszergazda
 Az Azure Information Protection termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
-
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
 
   > [!NOTE]
   > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
@@ -720,11 +625,6 @@ Az Azure Information Protection termékkel kapcsolatos összes felügyeleti jogo
 
 ### <a name="intune-service-administrator"></a>Intune szolgáltatás rendszergazdája
 Az Intune termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
-
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
 
   > [!NOTE]
   > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
@@ -761,11 +661,6 @@ Az Intune termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezi
 ### <a name="license-administrator"></a>Speciális licencadminisztrátor
 A felhasználók és csoportok terméklicencek kezelheti.
 
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
-
 | **Műveletek** | **Leírás** |
 | --- | --- |
 | microsoft.aad.directory/users/assignLicense | Felhasználók licenceinek kezelése az Azure Active Directoryban. |
@@ -776,11 +671,6 @@ A felhasználók és csoportok terméklicencek kezelheti.
 
 ### <a name="lync-service-administrator"></a>Lync-szolgáltatások rendszergazdája
 A Skype Vállalati verzió termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
-
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
 
   > [!NOTE]
   > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
@@ -800,11 +690,6 @@ A Skype Vállalati verzió termékkel kapcsolatos összes felügyeleti jogosults
 Csak a szervezet Office 365 Üzenetközpontbeli üzeneteit és frissítéseit olvashatja. 
 
   > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
-
-  > [!NOTE]
   > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
   >
   >
@@ -816,11 +701,6 @@ Csak a szervezet Office 365 Üzenetközpontbeli üzeneteit és frissítéseit ol
 
 ### <a name="partner-tier1-support"></a>1. szintű partnertámogatás
 Ne használjon – általános használatra nem alkalmas.
-
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
 
   > [!NOTE]
   > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
@@ -853,11 +733,6 @@ Ne használjon – általános használatra nem alkalmas.
 
 ### <a name="partner-tier2-support"></a>2. szintű partnertámogatás
 Ne használjon – általános használatra nem alkalmas.
-
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
 
   > [!NOTE]
   > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
@@ -895,11 +770,6 @@ Ne használjon – általános használatra nem alkalmas.
 A Power BI termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
-
-  > [!NOTE]
   > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
   >
   >
@@ -917,11 +787,6 @@ A Power BI termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkez
 Az Azure AD szerepkör-hozzárendelések és a Privileged Identity Management minden aspektusát felügyelheti.
 
   > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
-
-  > [!NOTE]
   > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
   >
   >
@@ -933,11 +798,6 @@ Az Azure AD szerepkör-hozzárendelések és a Privileged Identity Management mi
 
 ### <a name="reports-reader"></a>Jelentésolvasó
 Megtekintheti a bejelentkezési és a naplózási jelentéseket.
-
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
 
   > [!NOTE]
   > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
@@ -954,11 +814,6 @@ Megtekintheti a bejelentkezési és a naplózási jelentéseket.
 
 ### <a name="security-administrator"></a>Biztonsági rendszergazda
 Olvassa el a biztonsági adatokat és jelentéseket, és beállíthatja az Azure AD-konfiguráció és az Office 365.
-
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
 
   > [!NOTE]
   > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
@@ -988,11 +843,6 @@ Olvassa el a biztonsági adatokat és jelentéseket, és beállíthatja az Azure
 Megtekintheti a biztonsági információkat és jelentéseket az Azure AD-ban és az Office 365-ben.
 
   > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
-
-  > [!NOTE]
   > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
   >
   >
@@ -1012,11 +862,6 @@ Megtekintheti a biztonsági információkat és jelentéseket az Azure AD-ban é
 Megtekintheti a szolgáltatásállapot-adatokat, és kezelheti a támogatási jegyeket.
 
   > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
-
-  > [!NOTE]
   > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
   >
   >
@@ -1031,11 +876,6 @@ Megtekintheti a szolgáltatásállapot-adatokat, és kezelheti a támogatási je
 
 ### <a name="sharepoint-service-administrator"></a>SharePoint szolgáltatás-rendszergazda
 A SharePoint-szolgáltatásokkal kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
-
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
 
   > [!NOTE]
   > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
@@ -1061,11 +901,6 @@ A SharePoint-szolgáltatásokkal kapcsolatos összes felügyeleti jogosultságga
 Kezelheti a Microsoft Teams szolgáltatás hívási és értekezletfunkcióit.
 
   > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
-
-  > [!NOTE]
   > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
   >
   >
@@ -1084,11 +919,6 @@ Kezelheti a Microsoft Teams szolgáltatás hívási és értekezletfunkcióit.
 Speciális eszközökkel háríthatja el a Teams szolgáltatásban fellépő kommunikációs problémákat.
 
   > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
-
-  > [!NOTE]
   > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
   >
   >
@@ -1104,11 +934,6 @@ Speciális eszközökkel háríthatja el a Teams szolgáltatásban fellépő kom
 Alapszintű eszközökkel háríthatja el a Teams szolgáltatásban fellépő kommunikációs problémákat.
 
   > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
-
-  > [!NOTE]
   > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
   >
   >
@@ -1122,11 +947,6 @@ Alapszintű eszközökkel háríthatja el a Teams szolgáltatásban fellépő ko
 
 ### <a name="teams-service-administrator"></a>Csapatok szolgáltatás-rendszergazdája
 Kezelheti a Microsoft Teams szolgáltatást.
-
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
 
   > [!NOTE]
   > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
@@ -1152,11 +972,6 @@ Kezelheti a Microsoft Teams szolgáltatást.
 
 ### <a name="user-account-administrator"></a>Felhasználóifiók-adminisztrátor
 A felhasználókkal és a csoportokkal kapcsolatos összes felügyeleti rendelkezik, beleértve a korlátozott rendszergazdák jelszavának alaphelyzetbe állítását is.
-
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
 
 | **Műveletek** | **Leírás** |
 | --- | --- |

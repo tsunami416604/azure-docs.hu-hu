@@ -1,11 +1,12 @@
 ---
-title: PowerShell-modul a Machine Learning |} Microsoft Docs
-description: Az Azure Machine Learning PowerShell-modulja nyilvános előzetes verzióban érhető el. PowerShell segítségével munkaterületek, kísérleteket, a webszolgáltatások és több létrehozása és kezelése.
+title: Machine Learning PowerShell-modulja |} A Microsoft Docs
+description: Az Azure Machine Learning PowerShell-modulja nyilvános előzetes verzióban érhető el. PowerShell használatával létrehozni és kezelni a munkaterületek, kísérletek, webszolgáltatások és több.
 keywords: kísérlet,lineáris regresszió,machine learning-algoritmusok,machine learning-oktatóanyag,prediktív modellezési technikák,adatelemzési kísérlet
 services: machine-learning
 documentationcenter: ''
 author: hning86
-ms.author: haining
+ms.custom: (previous ms.author haining)
+ms.author: amlstudiodocs
 manager: mwinkle
 editor: cgronlun
 ms.assetid: a9001cc2-3aa0-47e1-b175-1f76408ba1d1
@@ -16,25 +17,25 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.openlocfilehash: 6ecd2d9a1519cd89058385ad1e40aee9b3fc9082
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: c46b99de8a93c54246d52a3cb369fd926e7c60cd
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835695"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822041"
 ---
 # <a name="powershell-module-for-microsoft-azure-machine-learning"></a>A Microsoft Azure Machine Learning PowerShell-modulja
-Az Azure Machine Learning PowerShell-modul, amely lehetővé teszi a Windows PowerShell segítségével kezelje munkaterületek, kísérletek, adatkészleteket, klasszikus webszolgáltatások és további hatékony eszköz.
+Az Azure Machine Learning PowerShell-modulja egy olyan hatékony eszköz, amely lehetővé teszi, hogy a munkaterületek, kísérletek, adatkészletek, a klasszikus webszolgáltatások és további kezelése Windows PowerShell használatával.
 
-A dokumentációjában tekintheti meg és töltse le a modult, valamint a teljes forráskód a [ https://aka.ms/amlps ](https://aka.ms/amlps). 
+A dokumentációban tekintheti meg és töltse le a modult, a teljes forráskóddal együtt [ https://aka.ms/amlps ](https://aka.ms/amlps). 
 
 > [!NOTE]
-> Az Azure Machine Learning PowerShell modult jelenleg csak előzetes módban működik. A modul továbbfejlesztett és a próbaidőszak alatt kibontva továbbra is. Nyomon követheti a a [Cortana Intelligence és a Machine Learning Blog](https://blogs.technet.microsoft.com/machinelearning/) hírek és információ.
+> Az Azure Machine Learning PowerShell-modul jelenleg előzetes módban van. A modul fejlesztjük és bővítjük az előzetes verzió ideje alatt továbbra is. Tartsa szemmel az [Cortana Intelligence and Machine Learning blogon](https://blogs.technet.microsoft.com/machinelearning/) hírek és információ.
 
 ## <a name="what-is-the-machine-learning-powershell-module"></a>Mi a Machine Learning PowerShell-modulja?
-A Machine Learning PowerShell-modulja a. A NET-alapú DLL-modult, amely lehetővé teszi, hogy teljes mértékben felügyelhesse a Windows PowerShell Azure Machine Learning munkaterületek, kísérleteket, adatkészleteket, klasszikus webszolgáltatások és klasszikus webszolgáltatás-végpontok. 
+A Machine Learning PowerShell-modulja egy. NET-alapú DLL-modul, amely lehetővé teszi, hogy teljes mértékben az Azure Machine Learning-munkaterületek, kísérletek, adatkészletek, a klasszikus webszolgáltatások és klasszikus webszolgáltatás-végpontok kezelése a Windows PowerShellben. 
 
-A modul, valamint letöltheti a teljes forráskód tartalmazó szabályszerűen elkülönített [C# API réteg](https://github.com/hning86/azuremlps/blob/master/code/AzureMLSDK.cs). A dll-Fájlnak a saját .NET projekt hivatkozik, és kezelése az Azure Machine Learning keresztül .NET-kódot. Emellett a dll-fájl, amely közvetlenül a kedvenc ügyfélről is használhat, alapul szolgáló REST API-k függ.
+A modullal együtt letöltheti a teljes forráskódot tartalmazó szabályszerűen elválasztott [ C# API-réteget](https://github.com/hning86/azuremlps/blob/master/code/AzureMLSDK.cs). A DLL-re hivatkozhat a saját .NET-projektjéből, és kezelheti az Azure Machine Learning .NET-kódon keresztül. Emellett a dll-fájlt, amelyet közvetlenül a kedvenc ügyfeléből is használhat, alapul szolgáló REST API-k függ.
 
 ## <a name="what-can-i-do-with-the-powershell-module"></a>Mire használhatom a PowerShell-modult?
 Íme néhány példa a PowerShell-modullal elvégezhető feladatokra. Az alábbi funkciókkal és számos más funkcióval kapcsolatban tekintse meg a [teljes dokumentációt](https://aka.ms/amlps).
@@ -43,7 +44,7 @@ A modul, valamint letöltheti a teljes forráskód tartalmazó szabályszerűen 
 * Kísérleti diagramot jelölő JSON-fájlok exportálása és importálása ([Export-AmlExperimentGraph](https://github.com/hning86/azuremlps#export-amlexperimentgraph) és [Import-AmlExperimentGraph](https://github.com/hning86/azuremlps#import-amlexperimentgraph))
 * Kísérlet futtatása ([Start-AmlExperiment](https://github.com/hning86/azuremlps#start-amlexperiment))
 * Webszolgáltatás létrehozása prediktív kísérletből ([New-AmlWebService](https://github.com/hning86/azuremlps#new-amlwebservice))
-* Hozzon létre egy végpontot a közzétett webes szolgáltatás ([Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint))
+* A végpont létrehozása egy közzétett webszolgáltatáson ([Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint))
 * RRS és/vagy BES webszolgáltatás-végpont meghívása ([Invoke-AmlWebServiceRRSEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) és [Invoke-AmlWebServicBESEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint))
 
 Az alábbi gyors példában meglévő kísérlet futtatását mutatjuk be a PowerShell használatával:
@@ -53,14 +54,14 @@ Az alábbi gyors példában meglévő kísérlet futtatását mutatjuk be a Powe
         #Run the Experiment
         Start-AmlExperiment -ExperimentId $exp.ExperimentId 
 
-Részletesebb használati eset, lásd: Ez a cikk a általában a kért feladat automatizálása a PowerShell-modul segítségével: [létrehozása számos Machine Learning modellek és webes Szolgáltatásvégpontok PowerShell-lel egy kísérlet](create-models-and-endpoints-with-powershell.md).
+Részletesebb használati esetek, lásd: Ez a cikk egy gyakran lekért feladat automatizálása a PowerShell-modul használatával: [számos Machine Learning-modellek és webszolgáltatás service végpontok létrehozása egy kísérletből PowerShell-lel](create-models-and-endpoints-with-powershell.md).
 
 ## <a name="how-do-i-get-started"></a>Hogyan kezdhetek hozzá?
-A Machine Learning PowerShell használatának megkezdéséhez töltse le a [kiadási csomagot](https://github.com/hning86/azuremlps/releases) a GitHubról, majd kövesse a [telepítési utasításokat](https://github.com/hning86/azuremlps/blob/master/README.md). Az utasítások azt ismertetik, hogyan feloldása a letöltött/unzipped dll-fájlt, és importálja azt a PowerShell környezetben. A parancsmagok többsége számára meg kell adni a munkaterület azonosítóját, a munkaterület engedélyezési jogkivonatát, valamint azt az Azure-régiót, amelyben a munkaterület megtalálható. A legegyszerűbben úgy adja meg az alapértelmezett config.json fájl keresztül történik. Az utasításokat is bemutatják, hogyan konfigurálhatja ezt a fájlt. 
+A Machine Learning PowerShell használatának megkezdéséhez töltse le a [kiadási csomagot](https://github.com/hning86/azuremlps/releases) a GitHubról, majd kövesse a [telepítési utasításokat](https://github.com/hning86/azuremlps/blob/master/README.md). Az útmutató azt ismerteti, hogy feloldása a letöltött/kicsomagolt DLL zárolását, és importálja azt a PowerShell-környezet. A parancsmagok többsége számára meg kell adni a munkaterület azonosítóját, a munkaterület engedélyezési jogkivonatát, valamint azt az Azure-régiót, amelyben a munkaterület megtalálható. Adja meg a legegyszerűbb módja egy alapértelmezett config.json fájl keresztül történik. Az utasításokat is bemutatják, hogyan konfigurálhatja ezt a fájlt. 
 
-Ha azt szeretné, átmásolhatja a git fa módosításához a kódot, és hogy helyileg Visual Studio.
+Ha azt szeretné, a git fát klónozhat módosítsa a kódot, és fordítsa le helyben a Visual Studióval.
 
 ## <a name="next-steps"></a>További lépések
-A PowerShell modul teljes dokumentációjában található [ https://aka.ms/amlps ](https://aka.ms/amlps). 
+A következő PowerShell-modul szóló teljes dokumentációt annak [ https://aka.ms/amlps ](https://aka.ms/amlps). 
 
-Kiterjesztett példát a modul használata valós forgatókönyv esetében, tekintse meg a részletes használati eset [létrehozása számos Machine Learning modellek és webes Szolgáltatásvégpontok PowerShell-lel egy kísérlet](create-models-and-endpoints-with-powershell.md).
+A modul használata a való életből vett forgatókönyv kiterjesztett példát, tekintse meg a részletes használati eset [számos Machine Learning-modellek és webszolgáltatás service végpontok létrehozása egy kísérletből PowerShell-lel](create-models-and-endpoints-with-powershell.md).

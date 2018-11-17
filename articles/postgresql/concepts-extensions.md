@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 11/12/2018
-ms.openlocfilehash: 43db0e66c05b6b5c3331d3fba3e4db363d61c9f8
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 195a54ab65573a24911169b7dc42de7637ad60f9
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624352"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823809"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql"></a>PostgreSQL-bővítmények az Azure Database for postgresql-hez
 PostgreSQL lehetővé teszi az adatbázis-bővítményekkel funkcióinak bővítése érdekében. Bővítmények lehetővé teszik több kapcsolódó SQL objektumok együtt kötegelést betöltve, vagy eltávolítja az adatbázisból, egyetlen paranccsal egyetlen csomagban. Után az adatbázis betöltése, bővítmények működhet, mint a beépített funkciók. A PostgreSQL-bővítmények további információkért lásd: [csomagolási kapcsolódó objektumot egy bővítmény](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
@@ -89,6 +89,7 @@ Az alábbi táblázatok sorolják fel a standard szintű PostgreSQL-bővítmény
 | [pgstattuple](https://www.postgresql.org/docs/9.6/static/pgstattuple.html) | Arra szolgál, hogy tuple szintű statisztika megjelenítése. |
 | [postgres\_fdw](https://www.postgresql.org/docs/9.6/static/postgres-fdw.html) | A data-idegen burkoló külső PostgreSQL-kiszolgálót a tárolt adatok elérésére használt. |
 | [hypopg](https://hypopg.readthedocs.io/en/latest/) | Elméleti indexekhez nem követelnek CPU vagy a lemez létrehozása módszert biztosít. |
+| [dblink](https://www.postgresql.org/docs/current/dblink.html) | A modul, amely támogatja a többi PostgreSQL adatbázis-kapcsolatok egy adatbázis-munkameneten belül. |
 
 
 ### <a name="postgis-extensions"></a>PostGIS bővítmények

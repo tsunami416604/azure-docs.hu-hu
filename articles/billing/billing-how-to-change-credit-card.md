@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 68f987daff5bc0ef81c248f6f5e75aaf1318b025
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 6a302c611b7c71dd8bc8c472330b79ea21504770
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395491"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824625"
 ---
 # <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>Hozzáadása, frissítése vagy hitelkártya vagy bankkártya eltávolítása az Azure-hoz
 
-Az Account Center webhelyen új hitelkártya hozzáadásához, frissítse a meglévő bankkártyák, vagy törölje a nem használt hitelkártya. Kell [felhasználóifiók-adminisztrátor](billing-subscription-transfer.md#whoisaa) módosítások végrehajtásához.
+Az Account Center webhelyen új hitelkártya hozzáadásához, frissítse a meglévő bankkártyák, vagy törölje a nem használt hitelkártya. Kell egy [felhasználóifiók-adminisztrátor](billing-subscription-transfer.md#whoisaa) módosítások végrehajtásához.
 
 **Váltson át a számla ellenében szeretné?** Lásd: [Azure előfizetések fizetése számla](billing-how-to-pay-by-invoice.md).
  
@@ -40,7 +40,7 @@ Az Account Center webhelyen új hitelkártya hozzáadásához, frissítse a megl
 1. Jelölje be "+", adjon hozzá egy kártyát.
 
     ![Képernyőkép a Szerkesztés lehetőség mellett a fizetési módot.](./media/billing-how-to-change-credit-card/editcard_new.png)
-1. Adja meg a jóváírás vagy a kártyaadatokon tartozik.
+1. Adja meg a hitel- vagy bankkártya adatait.
 1. Kattintson a **Mentés** gombra. 
 
 Miután hozzáadta a hitelkártya hibaüzenetet kap, ha [Azure-előfizetés elutasított bankkártya](billing-credit-card-fails-during-azure-sign-up.md).

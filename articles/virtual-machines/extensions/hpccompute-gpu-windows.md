@@ -12,24 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/20/2018
+ms.date: 11/15/2018
 ms.author: roiyz
-ms.openlocfilehash: f7c7877768e2dc06e73f8c91016edd521151a11c
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 85ac478bf753d5bb0aed96eca538e48525354eff
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42061396"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823792"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>NVIDIA GPU illesztőprogramjának Windows-bővítmény
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a bővítmény NVIDIA GPU-illesztők telepíti a Windows N-sorozat virtuális gépei. A Virtuálisgép-család függően a bővítmény telepítését CUDA vagy GRID illesztőprogramok. NVIDIA telepítésekor illesztőprogramokat a bővítmény használatával Ön elfogadja, és elfogadja a NVIDIA végfelhasználói licencszerződés feltételeit. A telepítés során a virtuális gép újraindulhat az illesztőprogramot a telepítés végrehajtásához.
+Ez a bővítmény NVIDIA GPU-illesztők telepíti a Windows N-sorozat virtuális gépei. A Virtuálisgép-család függően a bővítmény telepítését CUDA vagy GRID illesztőprogramok. NVIDIA telepítésekor illesztőprogramokat a bővítmény használatával Ön elfogadja, és elfogadja a használati a [NVIDIA végfelhasználói licencszerződés](https://go.microsoft.com/fwlink/?linkid=874330). A telepítés során a virtuális gép újraindulhat az illesztőprogramot a telepítés végrehajtásához.
 
 Egy bővítmény is érhető el az NVIDIA GPU-illesztők telepítése [Linux N-sorozat virtuális gépei](hpccompute-gpu-linux.md).
-
-NVIDIA végfelhasználói licencszerződés feltételeit itt találhatók – https://go.microsoft.com/fwlink/?linkid=874330
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,7 +43,7 @@ Ez a bővítmény a következő nyílt forráskódú támogatja:
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
-A Microsoft Azure-bővítmény esetében az NVIDIA GPU-illesztők szükséges, hogy a céloldali virtuális gép csatlakozik az internethez, és rendelkezik hozzáféréssel.
+A Microsoft Azure-bővítmény esetében az NVIDIA GPU-illesztők szükséges, hogy a cél virtuális gép csatlakozik az internethez, és rendelkezik hozzáféréssel.
 
 ## <a name="extension-schema"></a>Bővítményséma
 
@@ -71,7 +69,7 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 }
 ```
 
-### <a name="property-values"></a>Tulajdonságok értékei
+### <a name="properties"></a>Tulajdonságok
 
 | Name (Név) | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
@@ -80,6 +78,14 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 | type | NvidiaGpuDriverWindows | sztring |
 | typeHandlerVersion | 1.2 | int |
 
+### <a name="settings"></a>Beállítások
+
+Minden beállítás nem kötelező. Az alapértelmezett viselkedés van telepítse a legújabb támogatott illesztőprogram, amennyiben alkalmazhatók.
+
+| Name (Név) | Leírás | Alapértelmezett érték | Érvényes értékek | Adattípus |
+| ---- | ---- | ---- | ---- | ---- |
+| driverVersion | NV: Rács illesztőprogram verziója<br> NC/ND: CUDA-illesztőprogram verziója | legújabb | GRID: "391.81", "391.58", "391.03"<br> CUDA: "398.75", "397.44", "390.85" | sztring |
+| installGridND | Az ND sorozatú virtuális gépek rács illesztőprogram telepítése | false | IGAZ, hamis | logikai |
 
 ## <a name="deployment"></a>Környezet
 
@@ -129,6 +135,8 @@ Set-AzureRmVMExtension
 
 ### <a name="azure-cli"></a>Azure CLI
 
+Az alábbi példa a fenti ARM és a PowerShell-példa tükrözi, és is hozzáadja az egyéni beállítások nem alapértelmezett illesztőprogram telepítéséhez például. Pontosabban telepít egy adott rács illesztőprogram még akkor is, ha az ND sorozatú virtuális gép kiépítése folyamatban van.
+
 ```azurecli
 az vm extension set `
   --resource-group myResourceGroup `
@@ -137,6 +145,8 @@ az vm extension set `
   --publisher Microsoft.HpcCompute `
   --version 1.2 `
   --settings '{ `
+    "driverVersion": "391.03",
+    "installGridND": true
   }'
 ```
 

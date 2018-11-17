@@ -1,6 +1,6 @@
 ---
-title: A webszolgáltatás üzembe helyezése több régióba |} Microsoft Docs
-description: (Másolás) egy új webszolgáltatás-bővítmény más régiókban telepítésének lépéseit.
+title: Webszolgáltatás üzembe helyezése több régióban |} A Microsoft Docs
+description: (Másolás) egy új webszolgáltatás más régiókban telepítésének lépéseit.
 services: machine-learning
 documentationcenter: ''
 author: aashishb
@@ -14,40 +14,41 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: aashishb
-ms.openlocfilehash: 78b37f0e7ac554c1823a0607e43718e5a0ac0067
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.custom: (previous ms.author aashishb)
+ms.author: amlstudiodocs
+ms.openlocfilehash: b3b5f8e5c4a1a4baee7b06c9ac2e766fa59996b5
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835134"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820375"
 ---
 # <a name="how-to-deploy-a-web-service-to-multiple-regions"></a>Webszolgáltatás üzembe helyezése több régióban
-Az új Azure Web Services engedélyezi, hogy könnyen telepíthető egy webszolgáltatás-bővítmény több régióba több előfizetések vagy munkaterületek anélkül. 
+Az Azure új webszolgáltatások egyszerűen webszolgáltatás üzembe helyezése több régióban több előfizetéseket vagy munkaterületeket nélkül teszi lehetővé. 
 
-Tarifacsomag az régió adott, ezért meg kell adnia egy számlázási csomagot minden egyes régió, amelyben a webszolgáltatást telepíti.
+Díjszabás szolgáltatásé, ezért meg kell adnia egy számlázási csomagot minden olyan régióhoz, amelyben a webszolgáltatást telepíti.
 
-## <a name="to-create-a-plan-in-another-region"></a>Egy másik régióban terv létrehozásához
-1. Jelentkezzen be a [Microsoft Azure Machine Learning webszolgáltatások](https://services.azureml.net/).
-2. Kattintson a **tervek** menüjét.
-3. A csomagok keresztül nézet lap, kattintson a **új**.
-4. Az a **előfizetés** legördülő menüben válassza ki az előfizetést, amelyben létre kívánja hozni az új tervet.
-5. Az a **régió** legördülő menüben válasszon ki egy régiót az új csomag. A terv beállításait a kiválasztott régióban jelenítse meg a **beállítások megtervezése** lap részében.
-6. Az a **erőforráscsoport** legördülő menüben válassza egy erőforráscsoport, a terv. További információ az erőforráscsoportokkal látható [Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md).
-7. A **neve** írja be a csomag nevét.
-8. A **terv beállítások**, kattintson az új csomag számlázási szintjét.
+## <a name="to-create-a-plan-in-another-region"></a>Terv létrehozásához egy másik régióban
+1. Jelentkezzen be a [Microsoft Azure Machine Learning-webszolgáltatások](https://services.azureml.net/).
+2. Kattintson a **csomagok** menüpont.
+3. A tervek keresztül nézet lap, kattintson **új**.
+4. Az a **előfizetés** legördülő menüben válassza ki az előfizetést, amelyben létre kívánja hozni az új csomag.
+5. Az a **régió** legördülő menüben válassza ki a régiót az új csomag. A kiválasztott régióban megtervezése beállítások jelennek meg a **beállítások megtervezése** lap részében.
+6. Az a **erőforráscsoport** legördülő menüben válassza egy erőforráscsoport, a csomag számára. További információ az erőforráscsoportokkal látható [Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md).
+7. A **csomagnév** írja be a csomag nevét.
+8. A **csomagokkal**, kattintson az új csomag a számlázási szintet.
 9. Kattintson a **Create** (Létrehozás) gombra.
 
-## <a name="deploying-the-web-service-to-another-region"></a>A webszolgáltatás egy másik régióban üzembe helyezni
-1. Kattintson a **webszolgáltatások** menüjét.
-2. Válassza ki a webszolgáltatás új régióban üzembe helyezni.
+## <a name="deploying-the-web-service-to-another-region"></a>A web Service szolgáltatásának telepítése egy másik régióba
+1. Kattintson a **webszolgáltatások** menüpont.
+2. Válassza ki a webszolgáltatás telepítésekor egy új régióban.
 3. Kattintson a **másolási**.
-4. A **webszolgáltatás neve**, adjon meg egy új nevet a webszolgáltatáshoz.
-5. A **szolgáltatásleírás webes**, írja be a webszolgáltatás leírását.
-6. Az a **előfizetés** legördülő menüben válassza ki az előfizetést, amely az új webszolgáltatás legyen elhelyezve.
-7. Az a **erőforráscsoport** legördülő menüben válassza a erőforráscsoport a webszolgáltatáshoz. További információ az erőforráscsoportokkal látható [Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md).
-8. Az a **régió** legördülő menüben válassza ki azt a régiót, amelyben a webszolgáltatás telepítése.
-9. Az a **tárfiók** legördülő menüben válassza ki a megfelelő tárolási fiók, amely a webszolgáltatás tárolja.
-10. Az a **ár terv** legördülő menüben válasszon ki egy tervet a 8. lépésben kiválasztott régióban.
+4. A **webszolgáltatás neve**, írja be a web service új nevét.
+5. A **webalkalmazás-szolgáltatás leírása**, írja be a webszolgáltatás leírását.
+6. Az a **előfizetés** legördülő menüben válassza ki az előfizetést, amelyben létre kívánja hozni az új webszolgáltatásként.
+7. Az a **erőforráscsoport** legördülő menüben válassza egy erőforráscsoport, a webszolgáltatás. További információ az erőforráscsoportokkal látható [Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md).
+8. Az a **régió** legördülő menüben válassza ki a régiót, amelyben a webszolgáltatás üzembe helyezéséhez.
+9. Az a **tárfiók** legördülő menüben válassza ki a storage-fiók, amely a web service tárolja.
+10. Az a **árképzési csomag** legördülő menüben válassza ki azt a csomagot a 8. lépésben kiválasztott régióban.
 11. Kattintson a **másolási**.
 

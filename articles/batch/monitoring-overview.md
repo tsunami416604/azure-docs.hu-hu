@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 885deca5efbd72b3d641c8c94837851340d752b9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3053e136ab08c38d9460d60f64464a17f6f61574
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957829"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824081"
 ---
 # <a name="monitor-batch-solutions"></a>Batch-megoldások monitorozása
 
@@ -34,7 +34,7 @@ Események lekérése a tevékenységnaplót egyik módja, hogy az Azure Portalo
 
 ## <a name="batch-account-level-monitoring"></a>Batch-fiókszintű figyelése
 
-Szolgáltatását használja, amely minden egyes Batch-fiók figyelése [Azure Monitor](../azure-monitor/overview.md). Az Azure Monitor gyűjt [metrikák](../monitoring/monitoring-data-collection.md#metrics) és opcionálisan [diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) a Batch-fiókot, például a készletek, feladatok és tevékenységek szintjén hatókörön belüli erőforrások. Gyűjtése és felhasználása ezeket az adatokat, manuálisan vagy programon keresztül a Batch-fiókban lévő tevékenységek figyelését, és diagnosztizálhatja a problémákat. További információkért lásd: [Batch-metrikák, a riasztások és a naplókat a további diagnosztikai kiértékeléséhez és figyeléséhez](batch-diagnostics.md).
+Szolgáltatását használja, amely minden egyes Batch-fiók figyelése [Azure Monitor](../azure-monitor/overview.md). Az Azure Monitor gyűjt [metrikák](../azure-monitor/platform/data-collection.md#metrics) és opcionálisan [diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) a Batch-fiókot, például a készletek, feladatok és tevékenységek szintjén hatókörön belüli erőforrások. Gyűjtése és felhasználása ezeket az adatokat, manuálisan vagy programon keresztül a Batch-fiókban lévő tevékenységek figyelését, és diagnosztizálhatja a problémákat. További információkért lásd: [Batch-metrikák, a riasztások és a naplókat a további diagnosztikai kiértékeléséhez és figyeléséhez](batch-diagnostics.md).
  
 > [!NOTE]
 > Metrikák érhetők el további konfiguráció nélkül a Batch-fiók alapértelmezés szerint, és a egy 30 napos gördülő előzmények rendelkeznek. Engedélyeznie kell a Batch-fiók diagnosztikai naplózását, és Ön további költségekkel járhat tárolásához, vagy diagnosztikai naplóadatokat feldolgozni. 

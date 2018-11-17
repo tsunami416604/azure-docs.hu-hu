@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: e7622ffcfbaca4f83f0b5233159fc94720148365
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 2caf3d6373e764f5d5538a14a1750f1bfee2871d
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614140"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822279"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Mik azok a Microsoft Azure klasszikus riasztások?
 
@@ -89,7 +89,7 @@ Webhookok lehetővé teszi, hogy automation és a szervizeléshez, például has
 ## <a name="next-steps"></a>További lépések
 Riasztási szabályok, és konfigurálja őket az adatainak beolvasása:
 
-* Tudjon meg többet [metrikák](../monitoring/monitoring-data-collection.md)
+* Tudjon meg többet [metrikák](../azure-monitor/platform/data-collection.md)
 * Konfigurálása [klasszikus metrika riasztások az Azure Portalon keresztül](alert-metric-classic.md)
 * Konfigurálása [metrika riasztások klasszikus PowerShell](alert-metric-classic.md)
 * Konfigurálása [klasszikus metrika riasztások parancssori felület (CLI)](alert-metric-classic.md)

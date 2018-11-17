@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: jeedes
-ms.openlocfilehash: ff9f3186602b9047e53fb78edbf52c2c0d9ee574
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 796ed1cb0fde6b29a931099336fd91e2e931fc29
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423589"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820495"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sedgwick-cms"></a>Oktatóanyag: Azure Active Directory-integráció az Sedgwick tartalomkezelő rendszer
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása Sedgwick CMS, a következő elemek szükségesek:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Sedgwick CMS egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure AD-be Sedgwick CMS integráció konfigurálásához, hozzá kell Sedgwi
 
 **Sedgwick CMS hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -134,7 +134,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/sedgwickcms-tutorial/tutorial_general_400.png)
 
-1. Az egyszeri bejelentkezés konfigurálása **Sedgwick CMS** oldalon kell küldenie a letöltött **metaadatainak XML** való [Sedgwick CMS támogatási csapatának](https://www.sedgwick.com/contact/Pages/contactform.aspx). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+1. Az egyszeri bejelentkezés konfigurálása **Sedgwick CMS** oldalon kell küldenie a letöltött **metaadatainak XML** való [Sedgwick CMS támogatási csapatának](https://www.sedgwick.com/help). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -173,7 +173,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
   
 ### <a name="create-a-sedgwick-cms-test-user"></a>Sedgwick CMS tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű Sedgwick tartalomkezelő rendszer a felhasználó hoz létre. Együttműködve [Sedgwick CMS támogatási csapatának](https://www.sedgwick.com/contact/Pages/contactform.aspx) a felhasználók hozzáadása az Sedgwick CMS-platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.  
+Ebben a szakaszban egy Britta Simon nevű Sedgwick tartalomkezelő rendszer a felhasználó hoz létre. Együttműködve [Sedgwick CMS támogatási csapatának](https://www.sedgwick.com/help) a felhasználók hozzáadása az Sedgwick CMS-platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.  
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -205,7 +205,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -4,7 +4,8 @@ description: Ismerje meg, hogyan programozott módon modellek szoftveres átkép
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
-ms.author: yahajiza
+ms.custom: (previous ms.author yahajiza)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: e36e1961-9e8b-4801-80ef-46d80b140452
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 3de17375670d7697a298023dc79ffc2418cb7e42
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: be4f1e4705d1f8357198f01e2fa6d5aae83159c7
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963762"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820086"
 ---
 # <a name="retrain-a-classic-web-service"></a>Klasszikus webszolgáltatás újratanítása
 A prediktív webszolgáltatás üzembe helyezte az alapértelmezett érték pontozási végpontjához. Alapértelmezett végpontok szinkronban vannak az eredeti tanítási és pontozási kísérletek őrzi meg, és ezért a betanított modell esetében az alapértelmezett végpont nem lehet lecserélni. A webszolgáltatás újratanítása, hozzá kell adnia egy új végpont a webszolgáltatást. 

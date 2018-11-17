@@ -9,23 +9,23 @@ ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
 ms.author: sajagtap
-ms.openlocfilehash: 2e1a912f2d2aa8a6f9b165524351f2a16232537c
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: f1a3a401363866bdd803093e894615d90536f408
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212199"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854220"
 ---
-# <a name="human-in-the-loop"></a>Emberi hurok
+# <a name="review-tool-overview"></a>Tekintse át az eszköz – áttekintés
 
 És a gépek együttműködésekor közösen dolgozhatnak a tartalom-jóváhagyás küldése az a legjobb eredmények elérése érdekében. Gépek hatékonyan bővítésével emberi értékelések, ahol az előrejelzés megbízhatósági vannak eszközkapcsolat és mérsékelni a való világból bármit környezeten belül. Az eredmény az egy hibrid tartalom-jóváhagyás, amely jobb, mint hogy az emberek és a gépek önmagában is működik.
 
-## <a name="how-the-review-tool-helps"></a>Hogyan segít a a felülvizsgálati eszköz ##
+## <a name="what-it-does"></a>Művelet
 
-Az emberi ellenőrző eszközt, ha a gépi támogatású képmoderálás API-kkal együtt használva teszi lehetővé ezen fontos feladatokat a tartalom-jóváhagyás életciklusának viszonyítva.
+Az emberi ellenőrző eszközt, a gépi támogatású képmoderálás API-kkal együtt használva teszi lehetővé ezen fontos feladatokat a tartalom-jóváhagyás életciklusának viszonyítva.
 
 1. Automatizálhatja az alapul szolgáló moderálási API eredményeket az emberi ellenőrzések
-2. Közepes szintű többféle formátumban (szöveg, kép- és) (felülvizsgálati eszköz és API-t) egy eszköz használatával
+2. Egy eszközzel (felülvizsgálati eszköz és API-t) közepes többféle formátumban (szöveges, képi és videó)
 3. Tartalom kategória vagy felhasználói szinten szerint vannak rendezve több felülvizsgálati csapatok tartalom felülvizsgálatok eszkalálása vagy rendelhet hozzá.
 4. Alapértelmezett munkafolyamatok, vagy adja meg az egyéni munkafolyamatok rugalmas szabályokkal és kód írása nélkül.
 5. Adja hozzá az emberi ellenőrző bármely API-t vagy az üzleti folyamat egyszerűen egy olyan összekötő létrehozásával.

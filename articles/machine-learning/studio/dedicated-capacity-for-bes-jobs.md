@@ -1,10 +1,11 @@
 ---
-title: A Machine Learning kötegelt végrehajtási szolgáltatás feladatok kapacitás dedikált |} Microsoft Docs
-description: A gépi tanulási feladatok Azure Batch-szolgáltatások áttekintése.
+title: Dedikált kapacitás a Machine Learning kötegelt végrehajtási szolgáltatás feladatok |} A Microsoft Docs
+description: Machine Learning-feladatok Azure Batch szolgáltatás áttekintése.
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
-ms.author: yahajiza
+ms.custom: (previous ms.author yahajiza)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.service: machine-learning
@@ -14,47 +15,47 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 1e4cf34582e28e00108e280d928eea8a8134699a
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 6a8c89428026a1c491e8a4d26c7d66b99fd2e8cd
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834525"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822636"
 ---
-# <a name="azure-batch-service-for-machine-learning-jobs"></a>A gépi tanulási feladatok az Azure Batch szolgáltatás
+# <a name="azure-batch-service-for-machine-learning-jobs"></a>Machine Learning-feladatok az Azure Batch szolgáltatás
 
-Gépi tanulás Batch-készlet feldolgozása ügyfél által felügyelt méretezési biztosít az Azure Machine Learning kötegelt végrehajtási szolgáltatás. Klasszikus kötegelt feldolgozása gépi tanulás kerül sor, több-bérlős környezetben, amely korlátozza az egyidejűleg futó feladatainak számát akkor is elküldhetik, és a feladatok várólistára első-first out alapon. Ez a bizonytalanság azt jelenti, hogy Ön nem pontosan előre jelezni mikor fog futni a feladat.
+Machine Learning Batch-készlet feldolgozási ügyfél által felügyelt méretezési biztosít az Azure Machine Learning kötegelt végrehajtási szolgáltatás. Klasszikus kötegelt feldolgozása, egy több-bérlős környezet, amely korlátozza az egyidejűleg futó feladatainak számát a sor kerül a machine learning küldhet, és a feladatok sorba állva várják első-az-érkezési idősorrendben történik. Ez a bizonytalanság azt jelenti, hogy Ön nem előre pontosan mikor fog futni a feladat.
 
-Készlet kötegfeldolgozási hozhat létre készleteket, amelyre elküldheti a kötegelt feladatok. Szabályozhatja a készlet méretét, és mely készletbe a feladat elküldése megtörtént. A BES feladat fut, a saját feldolgozási terület előre jelezhető feldolgozás és képes létrehozni a feldolgozási terhelés elküldött megfelelő erőforráskészletek biztosítása.
+Batch-készlet feldolgozási lehetővé teszi, hogy hozhat létre készleteket, amelyre elküldheti a batch-feladatok. Ön szabályozhatja, hogy a készlet méretét, és mely készlethez a feladat elküldésekor. A BES-feladat futtatása a saját feldolgozási területen biztosít, kiszámítható feldolgozási teljesítmény, és lehetővé teszi, amelyek megfelelnek a feldolgozási terhelés számához erőforráskészletek létrehozását.
 
-## <a name="how-to-use-batch-pool-processing"></a>Batch-készlet feldolgozási használata
+## <a name="how-to-use-batch-pool-processing"></a>Feldolgozás Batch-készlet használata
 
-A Batch-készlet feldolgozási konfigurációs már nem érhető el az Azure portálon keresztül. Batch-készlet feldolgozási használatához az alábbiak szükségesek:
+A Batch-készlet feldolgozási konfigurációs jelenleg nem áll rendelkezésre az Azure Portalon keresztül. Batch-készlet feldolgozási használatához tegye a következőket:
 
--   Készlet Batch-fiók létrehozása, és szerezze be a készlet szolgáltatás URL-címe és engedélykulcs CSS hívása
--   Hozzon létre egy új erőforrás-kezelő alapú webszolgáltatás és a számlázási csomag
+-   Batch-készlet-fiók létrehozása és a egy készlet szolgáltatás URL-CÍMÉT és a egy engedélyezési kulcsot a CSS hívása
+-   Hozzon létre egy új Resource Manager-alapú webszolgáltatás és a számlázási csomag
 
-A fiók létrehozásához, hívja a Microsoft ügyfélszolgálata és a támogatási szolgálathoz (CSS), és adja meg az előfizetés-azonosító. CSS Önnel együttműködve helyzetnek megfelelő kapacitásának meghatározásához. CSS ezután konfigurálja a fiókot hozhat létre készleteket maximális számát és a virtuális gépek (VM) elhelyezheti mindegyik készlet maximális számát. A fiók van konfigurálva, ha rendelkezésre állnak a készlet szolgáltatás URL-címe és engedélykulcs.
+A fiók létrehozásához, hívja fel a Microsoft ügyfél- és támogatási (CSS), és adja meg az előfizetés-azonosító. CSS fog dolgozni, hogy az adott forgatókönyvnek megfelelő kapacitásának meghatározásához. CSS ezután konfigurálja a fiókot hozhat létre készleteket maximális számát és a virtuális gépek (VM), amely minden készlet elhelyezheti maximális számát. Ha a fiók már konfigurálva van, rendelkezésre a készlet szolgáltatás URL-CÍMÉT és a egy engedélyezési kulcsot.
 
-A fiók létrehozását követően a készlet szolgáltatás URL-címe és a hitelesítési kulcs használatával készlet felügyeleti műveleteket a Batch-készlet.
+Miután létrehozta a fiókot, a készlet szolgáltatás URL-CÍMÉT és a hitelesítési kulcs használatával készletet a Batch-készlet a műveletek végrehajtása.
 
-![Kötegelt készlet szolgáltatás architektúrája.](./media/dedicated-capacity-for-bes-jobs/pool-architecture.png)
+![Batch-készlet szolgáltatás architektúrája.](./media/dedicated-capacity-for-bes-jobs/pool-architecture.png)
 
-A készlet szolgáltatás URL-címe, amely az Ön számára biztosított CSS-készlet létrehozása művelet hívása készletek létrehozásához. Készletet hoz létre, amikor adja meg, hány virtuális gépek és a swagger.json egy új Resource Manager URL-Machine Learning webszolgáltatáshoz. Ennek a webszolgáltatásnak a számlázási társítás létrehozásához valósul meg. A Batch-készlet szolgáltatás a swagger.json használ a tárolókészlet társítsa egy számlázási csomagot. Futtathatja a BES webszolgáltatás, mindkét alapú új erőforrás-kezelő és a klasszikus, a készlet.
+A készlet szolgáltatás URL-CÍMÉT, amely az Ön számára biztosított CSS-készlet létrehozása művelet meghívásával létrehozott készletek. Egy készlet létrehozásakor meg kell adnia, a virtuális gépek számát és az URL-címét a swagger.json egy új Resource Manager-alapú Machine Learning webszolgáltatás. A webszolgáltatás létrehozására, a számlázási társítás biztosítunk. A Batch-készlet szolgáltatás a megfelelő swagger.json rendelje hozzá a készlethez egy számlázási csomagot használja. Futtatható bármely BES webszolgáltatás, mindkét új Resource Manager-alapú és klasszikus, választja a készleten.
 
-Bármely új Resource Manager-alapú webszolgáltatás, de vegye figyelembe, hogy a feladatokhoz tartozó számlázási terhére-e a szolgáltatáshoz tartozó számlázási csomagot. Érdemes lehet egy webszolgáltatás és az új számlázási csomag kifejezetten a futó feladatok Batch-készlet létrehozásához.
+Olyan új Resource Manager-alapú webes szolgáltatást használ, de vegye figyelembe, hogy az a feladatok díjszabása a szolgáltatáshoz tartozó számlázási csomag vannak terhelve. Érdemes egy webszolgáltatás és az új számlázási csomag kifejezetten a futó feladatok Batch-készlet létrehozásához.
 
-Webszolgáltatások létrehozásával kapcsolatos további információkért lásd: [központi telepítése az Azure Machine Learning webszolgáltatás](publish-a-machine-learning-web-service.md).
+Webszolgáltatások létrehozásával kapcsolatos további információkért lásd: [egy Azure Machine Learning webszolgáltatás üzembe helyezése](publish-a-machine-learning-web-service.md).
 
-Miután létrehozta a készletben, a a kötegelt kérelem URL-cím segítségével a webszolgáltatás BES feladat elküldése. Dönthet úgy, hogy küldje el a készlethez, vagy a klasszikus kötegfeldolgozási. A Batch-készlet feldolgozása a feladat elküldése, a következő paraméter a feladat elküldése kérelemtörzset hozzáadhat:
+Miután létrehozott egy készletet, a kötegelt kérelem URL-cím használatával a webszolgáltatás a BES-feladat elküldése. Kiválaszthatja a készlethez, vagy a klasszikus kötegelt feldolgozásra küldje. A Batch-készlet feldolgozási feladatok elküldéséhez ad hozzá a következő paramétert a feladat beküldése kérelem törzse:
 
-"AzureBatchPoolId": "&lt;azonosító tárolókészlet&gt;"
+"AzureBatchPoolId": "&lt;tárolókészlet azonosítója&gt;"
 
-Ha nem adja hozzá a paramétert, a feladat a klasszikus kötegelt folyamat-környezetében futtatható. A készlet elegendő erőforrás áll rendelkezésre, ha a a feladat futtatása azonnal elindul. A készlet nem rendelkezik szabad erőforrást, ha a feladat várólistára van állítva, amíg egy erőforrás áll rendelkezésre.
+Ha nem adja hozzá a paramétert, a feladat fut, a klasszikus kötegelt folyamat környezetben. A készlet elegendő erőforrás áll rendelkezésre, ha a feladat azonnal el fog indulni. Ha a készlet nem rendelkezik az ingyenes forrásokat, a feladat várólistára van állítva, ameddig egy erőforrás nem érhető el.
 
-Ha talál meg, hogy rendszeresen eléri a készletek kapacitását, és nagyobb kapacitást van szüksége, CSS hívja, és növelje a kvóták képviselője dolgozni.
+Ha azt tapasztalja, hogy rendszeresen eléri a készletek kapacitását, és nagyobb kapacitásra van szüksége, CSS hívja, és növelheti a kvótákat képviselőjét dolgozhat.
 
-Példa egy kérelem:
+Kérelem (példa):
 
 https://ussouthcentral.services.azureml.net/subscriptions/80c77c7674ba4c8c82294c3b2957990c/services/9fe659022c9747e3b9b7b923c3830623/jobs?api-version=2.0
 
@@ -99,17 +100,17 @@ https://ussouthcentral.services.azureml.net/subscriptions/80c77c7674ba4c8c82294c
 
 ## <a name="considerations-when-using-batch-pool-processing"></a>Batch-készlet feldolgozási használatának szempontjai
 
-Batch-készlet feldolgozásakor – a számlázható szolgáltatás pedig, amelyhez Ön társítandó Resource Manageren alapul számlázási csomagot. A készlet fut; számítási órák számát csak számlázása függetlenül a feladatok futnak a készlethez tartozó idő során. Készletet hoz létre, ha kell fizetni az egyes virtuális gépek a készlet számítási órában a készlet nem törlik, még akkor is, ha nincsenek kötegelt feladatok futnak a készletben. A virtuális gépek számlázási akkor kezdődik, amikor a kiépítés után, és leáll, amikor törölve lettek. Használhatja a sémák megtalálható-e a [Machine Learning díjszabás lap](https://azure.microsoft.com/pricing/details/machine-learning/).
+Batch-készlet feldolgozása egy folyamatosan elérhető számlázható szolgáltatás létrejöttét és, társíthatja azt egy Resource Manager-alapú számlázási csomag szükséges. Csak lesznek számlázva a készlet fut; a számítási órák száma feladatok futtatása során a idő készlet függetlenül. Ha létrehoz egy készletet, számlázzuk ki a számítási óra a készletben lévő minden egyes virtuális gép mindaddig, amíg a készlet törlése, még akkor is, ha fut egy feladat sem a batch-készletben. A számlázás a virtuális gépek akkor kezdődik, amikor a kiépítés után, és leáll, amikor törölve lettek. Található a csomagok valamelyikét használhatja a [Machine Learning díjszabását ismertető weblapon](https://azure.microsoft.com/pricing/details/machine-learning/).
 
-Számlázási. példa:
+A számlázás. példa:
 
-Ha a Batch-készlet létrehozása 2 virtuális gépekkel és 24 óra múlva törli azt a számlázási csomag terhelt számítási 48 óra; függetlenül attól, hogy hány feladat futtatná adott időszakban.
+Ha a Batch-készlet létrehozása 2 virtuális gépekkel, és 24 óra múlva törli azt a számlázási csomag terhelt 48 számítási óra; függetlenül attól, hogy hány feladatok futtatná időszak alatt.
 
-Ha a Batch-készlet létrehozása 4 virtuális gépekkel és 12 óra elteltével törölje, a számlázási csomag is számítási terhelést 48 óra.
+Ha a Batch-készlet létrehozása 4 virtuális gépekkel, és 12 óra múlva törli azt, a számlázási csomag egyben terhelést 48 számítási óra.
 
-Azt javasoljuk, hogy a feladatok teljes meghatározásához a feladatállapot lekérdezésére. Ha a feladatok futása befejeződött, hívja meg a készlet átméretezése műveletet a virtuális gépek számának beállítása a tárolókészlet nulla. Ha rövid készlet erőforrások és kell létrehoznia egy új készletet, például egy másik számlázási csomag elleni számlázási törölheti a készlet helyette ha összes feladat futása befejeződött.
+Azt javasoljuk, hogy a meghatározásához, ha a feladatok elvégzése a feladat állapotának lekérdezéséhez. Ha az összes feladat végzett futtatását, hívja meg a készlet átméretezése művelet beállítása a virtuális gépek számát a készletben, nulla. Ha az adatbáziskészlet erőforrásainak rövid, és szeretne létrehozni egy új készletet, például egy másik számlázási csomag elleni számlázási törölheti a készlet inkább ha összes feladat végzett futtatását.
 
 
-| **Használja a kötegelt mikor feldolgozása**    | **Használja a klasszikus kötegfeldolgozási végezhető, ha**  |
+| **Mikor feldolgozás Batch-készlet használata**    | **Klasszikus kötegelt feldolgozási, mikor használja**  |
 |---|---|
-|Nagyszámú feladatok futtatásához szükséges<br>Vagy<br/>A feladatok azonnal elindul tudnia kell<br/>Vagy<br/>Garantált átviteli van szüksége. Például szeretné egy adott időszakon feladatok száma futnak, és szeretné, hogy a számítási erőforrásokat, az igényeknek horizontális.    | Néhány feladatot futtat<br/>És<br/> Nem szükséges azonnal futtatni a feladatot |
+|Futó feladatok nagy számú szüksége<br>Vagy<br/>Érdemes tudni, hogy a feladatok azonnal futtatja-e<br/>Vagy<br/>Garantált átviteli van szüksége. Például hogy kell feladatok számos futtatásához egy megadott időkereten belül, és szeretne horizontális felskálázása a számítási erőforrásokat az igényeknek.    | Néhány feladat futtatásakor<br/>És<br/> A feladatok azonnal nem szükséges |

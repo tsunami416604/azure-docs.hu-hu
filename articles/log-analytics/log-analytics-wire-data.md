@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: ae34cc869dfb286a5a60f59fdab8733f611a6ec7
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: HT
+ms.openlocfilehash: 1fc2bb8fae744bb72f4fb77dc69d11f41d4480e6
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712160"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822354"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Wire Data 2.0 (előzetes verzió) megoldás a Log Analyticsben
 
@@ -60,8 +60,8 @@ A Wire Data a Microsoft függőségi ügynöktől kapja az adatokat. A függős�
 
 | **Csatlakoztatott forrás** | **Támogatott** | **Leírás** |
 | --- | --- | --- |
-| Windows-ügynökök | Igen | A Wire Data adatok elemez és gyűjt a Windows rendszerű ügynökszámítógépekről. <br><br> Mellett a [Log Analytics-ügynököket for Windows](log-analytics-agent-windows.md), Windows-ügynökök a Microsoft Dependency Agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](../monitoring/monitoring-service-map-configure.md#supported-windows-operating-systems) szakaszban. |
-| Linux-ügynökök | Igen | A Wire Data adatokat elemez és gyűjt a Linux rendszerű ügynökszámítógépekről.<br><br> Mellett a [Linuxhoz készült Log Analytics-ügynök](log-analytics-quick-collect-linux-computer.md), Linux-ügynökök a Microsoft Dependency Agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](../monitoring/monitoring-service-map-configure.md#supported-linux-operating-systems) szakaszban. |
+| Windows-ügynökök | Igen | A Wire Data adatok elemez és gyűjt a Windows rendszerű ügynökszámítógépekről. <br><br> Mellett a [Log Analytics-ügynököket for Windows](log-analytics-agent-windows.md), Windows-ügynökök a Microsoft Dependency Agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) szakaszban. |
+| Linux-ügynökök | Igen | A Wire Data adatokat elemez és gyűjt a Linux rendszerű ügynökszámítógépekről.<br><br> Mellett a [Linuxhoz készült Log Analytics-ügynök](log-analytics-quick-collect-linux-computer.md), Linux-ügynökök a Microsoft Dependency Agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) szakaszban. |
 | System Center Operations Manage felügyeleti csoport | Igen | A Wire Data adatokat elemez és gyűjt az olyan Windows- és Linux-ügynököktől, amelyek egy csatlakoztatott [System Center Operations Manager felügyeleti csoporthoz](log-analytics-om-agents.md) tartoznak. <br><br> Ehhez közvetlen kapcsolat szükséges a System Center Operations Manager-ügynökszámítógép és a Log Analytics között. |
 | Azure Storage-fiók | Nem | A Wire Data ügynökszámítógépekről gyűjt adatokat, így az Azure Storage-ből nem tud adatokat gyűjteni. |
 

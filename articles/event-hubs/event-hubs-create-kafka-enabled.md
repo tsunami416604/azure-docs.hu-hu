@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: bahariri
-ms.openlocfilehash: 7ce12f9dcaa15ade95274419f99c13d5915dbaaa
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: b72f6b190aad436398629c67f271020ffd0a8da9
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42061394"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822075"
 ---
 # <a name="create-apache-kafka-enabled-event-hubs"></a>Az Apache Kafka engedélyezve van az event hubs létrehozása
 
@@ -39,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
  
 3. Adjon meg egy egyedi nevet, és engedélyezze a Kafkát a névtéren. Kattintson a **Create** (Létrehozás) gombra.
     
-    ![Névtér létrehozása](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.png)
+    ![Névtér létrehozása](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.jpg)
  
 4. A névtér létrehozását követően a **Beállítások** lap **Megosztott elérési szabályzatok** elemére kattintva kérje le a kapcsolati sztringet.
 
@@ -57,8 +57,8 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Az Event Hubs kapcsolatos további információkért látogasson el ezeket a hivatkozásokat:
 
-* [Stream az Event Hubsba, a Kafka-alkalmazásokból](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-* [További információ az Event Hubs, Kafka for](event-hubs-for-kafka-ecosystem-overview.md)
+* [Streamelés az Event Hubsba a Kafka-alkalmazásokból](event-hubs-quickstart-kafka-enabled-event-hubs.md)
+* [Ismerkedés a Kafkához készült Event Hubs szolgáltatással](event-hubs-for-kafka-ecosystem-overview.md)
 * [Ismerkedés az Event Hubs szolgáltatással](event-hubs-what-is-event-hubs.md)
 
 

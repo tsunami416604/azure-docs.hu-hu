@@ -10,12 +10,12 @@ ms.author: netahw
 author: nhaiby
 ms.date: 05/07/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 97d988332a2c5234cb260cef29f195f0fecfee45
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 73f95280cc02b6f891c4ef67cd11084768d7d282
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994938"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853013"
 ---
 # <a name="build-and-deploy-text-classification-models-with-azure-machine-learning"></a>Létrehozása és üzembe helyezése az Azure Machine Learning szövegbesorolási modellek
 
@@ -436,7 +436,7 @@ Során képzés, szöveg és a felirat oszlopban kell rendelkeznie. Míg csak a 
 
 A következő kódot a minták bemutatják, hogyan folyamat és a modell alapértelmezett paraméterek használatával a modell betanításához. 
 
-Mely paraméterek "text_word_ngrams" megjelenítéséhez használja [get_step_param_names_by_name](https://docs.microsoft.com/python/api/tatk.core.base_text_model.basetextmodel). Ez a függvény visszaad a paraméterek, például kisbetű, input_col, output_col és így tovább. 
+Mely paraméterek "text_word_ngrams" megjelenítéséhez használja [get_step_param_names_by_name](/python/api/msft-tatk/tatk.core.base_text_model.basetextmodel#get-step-param-names-by-name). Ez a függvény visszaad a paraméterek, például kisbetű, input_col, output_col és így tovább. 
 
 ```python
 text_classifier.get_step_param_names_by_name("text_word_ngrams")
@@ -625,7 +625,7 @@ A tesztelési adatkészletnél osztály előrejelzéseket létrehozni a betanít
 </div>
 
 ## <a name="evaluate-model-performance"></a>Modellek teljesítményének elemzése
-A [kiértékelése modul](https://docs.microsoft.com/python/api/tatk.evaluation) kiértékeli a betanított szövegosztályozás a tesztelési adathalmazon pontosságát. A kiértékelés függvényt hoz létre a keveredési mátrix, és a makró-F1 pontszám biztosít.
+A [kiértékelése modul](/python/api/msft-tatk/tatk.evaluation) kiértékeli a betanított szövegosztályozás a tesztelési adathalmazon pontosságát. A kiértékelés függvényt hoz létre a keveredési mátrix, és a makró-F1 pontszám biztosít.
 
 ```python
  text_classifier.evaluate(df_test)          

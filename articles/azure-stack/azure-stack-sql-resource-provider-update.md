@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 11/15/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: d1bb7da3ad3862e5b15f6440b4c607143b3c5b2a
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: ad1a89c69d34dbb48b87a75778e18c9a995f749a
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51683230"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853557"
 ---
 # <a name="update-the-sql-resource-provider"></a>Az SQL erőforrás-szolgáltató frissítése
 
@@ -27,8 +27,8 @@ ms.locfileid: "51683230"
 
 Azure Stack egy új létrehozást való frissítésekor előfordulhat, hogy elérhető egy új SQL erőforrás-szolgáltató. Bár a meglévő adapter továbbra is működik, javasoljuk, hogy frissítse a legújabb buildre minél hamarabb.
 
->[!IMPORTANT]
->A már kiadott sorrendben frissítéseket telepíteni kell. Verziók nem hagyhatja ki. A verziók listáját lásd [üzembe helyezése az erőforrás-szolgáltatóra vonatkozó Előfeltételek](.\azure-stack-sql-resource-provider-deploy.md#prerequisites).
+> [!IMPORTANT]
+> A már kiadott sorrendben frissítéseket telepíteni kell. Verziók nem hagyhatja ki. A verziók listáját lásd [üzembe helyezése az erőforrás-szolgáltatóra vonatkozó Előfeltételek](.\azure-stack-sql-resource-provider-deploy.md#prerequisites).
 
 ## <a name="overview"></a>Áttekintés
 

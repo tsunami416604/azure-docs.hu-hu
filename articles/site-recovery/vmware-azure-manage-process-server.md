@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: d99b5d1fdca39466d5e09ca077329b7ffa8622bc
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: ac317eaa4c7e69e4a01fe932569b999e502bc3cf
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568852"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822432"
 ---
 # <a name="manage-process-servers"></a>Folyamatkiszolgálók kezelése
 
@@ -31,7 +31,41 @@ Frissítse a folyamatkiszolgálót, a helyszínen vagy az Azure-ban (feladat-vis
 > [!NOTE]
   Általában az Azure Gallery-Image használatával folyamatkiszolgáló létrehozása az Azure-ban feladat-visszavétel az alkalmazásában, ha fut a legújabb elérhető verzió. A Site Recovery csapatok kiadás javításokat és rendszeres időközönként fejlesztések, és azt javasoljuk, tartsa naprakészen a folyamatkiszolgálók.
 
+## <a name="balance-the-load-on-process-server"></a>A folyamatkiszolgáló a terhelés kiegyenlítése
 
+Folyamat két kiszolgáló közötti terhelés kiegyenlítése érdekében
+
+1. Navigáljon a **Recovery Services-tároló** > **kezelése** > **Site Recovery-infrastruktúra** > **számára A VMware és fizikai gépek** > **konfigurációs kiszolgálók**.
+2. Kattintson a konfigurációs kiszolgálón, amelyhez a folyamatkiszolgálók regisztrált.
+3. A konfigurációs kiszolgáló regisztrálva folyamatkiszolgálók listája az oldalon érhetők el.
+4. Kattintson a folyamatkiszolgáló, amelyre szeretné módosítani a számítási feladatok.
+
+    ![Terheléselosztási](media/vmware-azure-manage-process-server/LoadBalance.png)
+
+5. Használhatja **terheléselosztás** vagy **kapcsoló** lehetőségek, kövesse az alábbi utasításokat, a követelmény alapján.
+
+### <a name="load-balance"></a>Terheléselosztás
+
+Ez a beállítás keresztül egy vagy több virtuális gépet választhat ki, és átviheti őket egy másik folyamatkiszolgálóra.
+
+1. Kattintson a **terheléselosztása**, folyamat-célkiszolgáló elemet a legördülő menüből válassza a lefelé. Kattintson az **OK** gombra
+
+    ![LoadPS](media/vmware-azure-manage-process-server/LoadPS.PNG)
+
+2. Kattintson a **gépek kijelölése**, válassza ki a virtuális gépeket szeretne áthelyezni a jelenlegi folyamat kiszolgálóról az a folyamat-célkiszolgáló. Átlagos változás részletei jelennek meg minden egyes virtuális gépek ellen.
+3. Kattintson az **OK** gombra. A feladat előrehaladásának figyeléséhez **Recovery Services-tároló** > **figyelés** > **Site Recovery-feladatok**.
+4. A közzététel sikeres befejezését a művelet megfelelően módosítások 15 percet vesz igénybe vagy [frissítse a konfigurációs kiszolgáló](vmware-azure-manage-configuration-server.md#refresh-configuration-server) az azonnali hatállyal.
+
+### <a name="switch"></a>Kapcsoló
+
+Keresztül ezt a beállítást a folyamatkiszolgáló védett teljes munkaterhelés került egy másik folyamatkiszolgálót.
+
+1. Kattintson a **kapcsoló**, válassza ki a cél folyamatkiszolgáló, kattintson a **OK**.
+
+    ![Kapcsoló](media/vmware-azure-manage-process-server/Switch.PNG)
+
+2. A feladat előrehaladásának figyeléséhez **Recovery Services-tároló** > **figyelés** > **Site Recovery-feladatok**.
+3. A közzététel sikeres befejezését a művelet megfelelően módosítások 15 percet vesz igénybe vagy [frissítse a konfigurációs kiszolgáló](vmware-azure-manage-configuration-server.md#refresh-configuration-server) az azonnali hatállyal.
 
 ## <a name="reregister-a-process-server"></a>A folyamatkiszolgáló regisztrálása
 

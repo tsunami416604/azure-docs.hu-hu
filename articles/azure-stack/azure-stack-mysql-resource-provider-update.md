@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 11/15/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 46671a559f4db9aaa798e2c0d8cc668794687a58
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 36d37adff6d45b7d154511c11888aad090c54638
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686330"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853676"
 ---
 # <a name="update-the-mysql-resource-provider"></a>A MySQL erőforrás-szolgáltató frissítése 
 
@@ -27,8 +27,8 @@ ms.locfileid: "51686330"
 
 Azure Stack-buildek frissítésekor előfordulhat, hogy elérhető egy új SQL erőforrás-szolgáltató adapter. A meglévő adapter továbbra is működik, javasoljuk, hogy frissítse a legújabb buildre minél hamarabb. 
 
->[!IMPORTANT]
->A már kiadott sorrendben frissítéseket telepíteni kell. Verziók nem hagyhatja ki. A verziók listáját lásd [üzembe helyezése az erőforrás-szolgáltatóra vonatkozó Előfeltételek](.\azure-stack-mysql-resource-provider-deploy.md#prerequisites).
+> [!IMPORTANT]
+> A már kiadott sorrendben frissítéseket telepíteni kell. Verziók nem hagyhatja ki. A verziók listáját lásd [üzembe helyezése az erőforrás-szolgáltatóra vonatkozó Előfeltételek](.\azure-stack-mysql-resource-provider-deploy.md#prerequisites).
 
 ## <a name="update-the-mysql-resource-provider-adapter-integrated-systems-only"></a>Frissítés a MySQL erőforrás-szolgáltató adapter (csak az integrált rendszerek)
 

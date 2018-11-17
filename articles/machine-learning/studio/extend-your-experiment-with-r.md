@@ -1,10 +1,11 @@
 ---
-title: Kiterjeszti a az R nyelv használatával |} Microsoft Docs
-description: How Azure Machine Learning Studio funkcióit az R nyelv használatával kiterjesztése az R-parancsfájl végrehajtása modul használatával.
+title: Kísérlet kiterjesztése az R |} A Microsoft Docs
+description: Az R nyelv használatával az Azure Machine Learning Studio funkcióinak bővítése R-szkript végrehajtása-modul segítségével hogyan.
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 2c038a45-ba4d-42ea-9a88-e67391ef8c0a
@@ -15,34 +16,34 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 1f05119d94611df2e75afc3a56d9682d1149326c
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 3767d7e48d1760b7b7453b1708118caa305652d9
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834474"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823877"
 ---
 # <a name="extend-your-experiment-with-r"></a>A kísérletek bővítése R-rel
-Azure Machine Learning Studio funkcióit keresztül az R nyelv használatával kiterjesztheti a [R-parancsfájl végrehajtása] [ execute-r-script] modul.
+Az Azure Machine Learning Studio funkciójának keresztül az R nyelv használatával kiterjesztheti a [R-szkript végrehajtása] [ execute-r-script] modul.
 
-Ez a modul több bemeneti adatkészletek fogad, és egyetlen dataset kimenetként eredményez. Az R-parancsfájl beírhatja a **R-parancsfájl** paramétere a [R-parancsfájl végrehajtása] [ execute-r-script] modul.
+Ez a modul több bemeneti adatkészletet fogad, és egyetlen adatkészlet kimenetként eredményez. Beírhatja az R-szkriptet a **R-szkript** paraméterében a [R-szkript végrehajtása] [ execute-r-script] modul.
 
-Minden modul bemeneti portját a következőhöz hasonló kód használatával éri el:
+Minden egyes a modul bemeneti portjával hozzá a következő kód használatával:
 
     dataset1 <- maml.mapInputPort(1)
 
 ## <a name="listing-all-currently-installed-packages"></a>Az összes jelenleg telepített csomagok listázása
-Módosíthatja a telepített csomagok listáját. A jelenleg telepített csomagok listáját található [R csomagok támogatott Azure Machine Learning](https://msdn.microsoft.com/library/azure/mt741980.aspx).
+Módosíthatja a telepített csomagok listáját. A jelenleg telepített csomagok listáját található [R csomagok az Azure Machine Learning által támogatott](https://msdn.microsoft.com/library/azure/mt741980.aspx).
 
-Is kaphat a teljes, a jelenlegi telepített csomagok listáját az alábbi kódot írja be a [R-parancsfájl végrehajtása] [ execute-r-script] modul:
+Emellett megtekintheti a teljes, a jelenlegi telepített csomagok listáját, írja be az alábbi kódot a [R-szkript végrehajtása] [ execute-r-script] modul:
 
     out <- data.frame(installed.packages(,,,fields="Description"))
     maml.mapOutputPort("out")
 
-Ez a csomagok listájában küld kimeneti portját a [R-parancsfájl végrehajtása] [ execute-r-script] modul.
-Tekintse meg a csomag listáját, csatlakoztassa a átalakítás modult például [CSV átalakítása] [ convert-to-csv] a bal oldali kimeneti a [R-parancsfájl végrehajtása] [ execute-r-script] modul, Futtassa a kísérletet, majd kattintson a konverziós modul kimenete, és válassza ki **letöltése**. 
+Ez a csomagok listájában küld a kimeneti portjára, a [R-szkript végrehajtása] [ execute-r-script] modul.
+Tekintse meg a csomag listáját, csatlakoztassa a konverziós modult például [átalakítás fürt megosztott Kötetévé] [ convert-to-csv] a bal oldali-kimenetre a [R-szkript végrehajtása] [ execute-r-script] modult, Futtassa a kísérletet, majd a konverzió a modul kimenetére, és válassza ki **letöltése**. 
 
-![Töltse le a "CSV való átalakítása" modul kimenete](./media/extend-your-experiment-with-r/download-package-list.png)
+![Töltse le a "Konvertálni a fürt megosztott kötetei szolgáltatás" modul kimenete](./media/extend-your-experiment-with-r/download-package-list.png)
 
 
 <!--
@@ -50,12 +51,12 @@ For convenience, here is the [current full list with version numbers in Excel fo
 -->
 
 ## <a name="importing-packages"></a>Csomagok importálása
-Csomagok, amelyek még nincsenek telepítve a következő parancsok segítségével importálhatja a [R-parancsfájl végrehajtása] [ execute-r-script] modul:
+Csomagok, amelyek még nincsenek telepítve a következő parancsok használatával importálhatja a [R-szkript végrehajtása] [ execute-r-script] modul:
 
     install.packages("src/my_favorite_package.zip", lib = ".", repos = NULL, verbose = TRUE)
     success <- library("my_favorite_package", lib.loc = ".", logical.return = TRUE, verbose = TRUE)
 
-Ha a `my_favorite_package.zip` fájl tartalmazza a csomag.
+Ha a `my_favorite_package.zip` fájl tartalmazza a csomagot.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 10/29/2018
-ms.openlocfilehash: 2051f37656b6717c879a24f6e06c31a0ade0b950
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a9738f95ce8a0de750ffa348e167bce3b0e659f6
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012326"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821395"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>A mobilitási szolgáltatás leküldéses telepítési problémák elhárítása
 
@@ -21,6 +21,7 @@ Mobilitási szolgáltatás telepítésének legfontosabb lépése replikálás e
 * Hitelesítő adatok vagy jogosultsági hibák
 * Kapcsolódási hibák
 * Nem támogatott operációs rendszerek
+* VSS telepítési hibák
 
 A replikáció engedélyezése az Azure Site Recovery megpróbálja küldje le a virtuális gép mobilitásiszolgáltatás-ügynök telepíthető. Ennek részeként konfigurációs kiszolgáló megkísérli a virtuális géppel csatlakozhat, és másolja az ügynököt. A sikeres telepítés engedélyezéséhez kövesse az alábbi részletes hibaelhárítási útmutatót.
 
@@ -40,13 +41,10 @@ Ha szeretné módosítani a kiválasztott felhasználói fiók hitelesítő adat
 ## <a name="connectivity-check-errorid-95117--97118"></a>**Kapcsolat-ellenőrzés (ErrorID: 95117 & 97118)**
 
 * Ellenőrizze, hogy pingelni a forrásgép a konfigurációs kiszolgálóról. Ha úgy döntött, hogy kibővíthető folyamatkiszolgáló a replikáció engedélyezése során, ellenőrizze, hogy a forrásgép folyamatkiszolgálóról pingelni.
-  * A forráskiszolgáló gép parancssorból, a Telnet használatával a konfigurációs kiszolgáló pingelése / horizontális felskálázási folyamatkiszolgáló https-port (alapértelmezés: 9443-as), ha vannak-e hálózati kapcsolat hibái vagy tűzfal port hátráltató megtekintéséhez az alább látható módon.
+  * A forráskiszolgáló gép parancssorból, a Telnet használatával a konfigurációs kiszolgáló pingelése / horizontális felskálázási folyamatkiszolgáló a https (135-ös port) megtekintéséhez, ha vannak-e hálózati kapcsolat hibái vagy tűzfal port hátráltató alább látható módon.
 
-     `telnet <CS/ scale-out PS IP address> <port>`
-
-  * Ha nem lehet csatlakozni, engedélyezi a bejövő 9443-as porton a konfigurációs kiszolgáló / horizontális felskálázási folyamatkiszolgáló.
+     `telnet <CS/ scale-out PS IP address> <135>`
   * Szolgáltatás állapotának ellenőrzése **InMage Scout VX Agent – Sentinel/Outpost**. Ha nem fut, indítsa el a szolgáltatást.
-
 * Ezenkívül a **Linux rendszerű virtuális gép**,
   * Ellenőrizze, ha telepítve vannak-e a legfrissebb openssh, openssh-server és openssl csomagokat.
   * Ellenőrizze, és győződjön meg arról, hogy a Secure Shell (SSH) engedélyezve van és fut a 22-es portot.
@@ -95,6 +93,43 @@ Az alábbi cikkekben talál további WMI hibaelhárítási cikkek található.
 Nem támogatott operációs rendszer egy másik Ennek leggyakoribb oka a hiba oka lehet. Győződjön meg arról, a sikeres telepítés a mobilitási szolgáltatást a támogatott operációs rendszer/Kernel verziója.
 
 Ha szeretné megtudni, melyik operációs rendszerek támogatottak az Azure Site Recovery, tekintse meg a [támogatási mátrix dokumentum](vmware-physical-azure-support-matrix.md#replicated-machines).
+
+## <a name="vss-installation-failures"></a>VSS telepítési hibák
+
+Telepíteni a VSS telepíteni a mobilitási ügynök része. Ez a szolgáltatás alkalmazás-konzisztens helyreállítási pontok létrehozása során használatos. VSS-telepítés során fellépő hibák több okok miatt fordulhat elő. A pontos hiba azonosításához tekintse meg **c:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log**. Néhány gyakori hibák és a megoldási lépések ki vannak emelve a következő szakaszt.
+
+### <a name="vss-error--2147023170-0x800706be---exit-code-511"></a>Kilépési kód 511 [0x800706BE] --2147023170 VSS-hiba
+
+A probléma többnyire akkor látható, ha egy víruskereső szoftver blokkolja a műveletek az Azure Site Recovery services. A probléma megoldásához,
+
+1. Említett összes mappákat [Itt](vmware-azure-set-up-source.md#exclude-antivirus-on-the-configuration-server).
+2. Kövesse az útmutatásokat, a Windows a DLL regisztrációját tiltásának feloldásához a hagyományos vírusirtó szolgáltató által közzétett.
+
+### <a name="vss-error-7-0x7---exit-code-511"></a>7 [0x7] - kilépési kód 511 VSS-hiba
+
+Ez a futásidejű hiba, és telepíteni a VSS nincs elég memória oka Győződjön meg arról, ez a művelet sikeres befejezését a lemezterület növelése érdekében.
+
+### <a name="vss-error--2147023824-0x80070430---exit-code-517"></a>Kilépési kód 517 [0x80070430] --2147023824 VSS-hiba
+
+Ez a hiba akkor fordul elő, ha az Azure Site Recovery VSS Provider szolgáltatás [törlésre](https://msdn.microsoft.com/en-us/library/ms838153.aspx). Próbálja ki a VSS manuális telepítése a forrásgépen a következő parancssor futtatásával
+
+`C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
+
+### <a name="vss-error--2147023841-0x8007041f---exit-code-512"></a>VSS-hiba-2147023841 [0x8007041F] - 512. kilépési kód
+
+Ez a hiba akkor fordul elő, ha az Azure Site Recovery VSS Provider szolgáltatás adatbázisa a [zárolva](https://msdn.microsoft.com/en-us/library/ms833798.aspx). Próbálja ki a VSS manuális telepítése a forrásgépen a következő parancssor futtatásával
+
+`C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
+
+### <a name="vss-exit-code-806"></a>VSS kilépési kód 806
+
+Ez a hiba akkor fordul elő, amikor telepítéséhez használt felhasználói fiók nem rendelkezik engedélyekkel CSScript parancs végrehajtása. Adja meg a szükséges engedélyekkel a felhasználói fiók a szkript végrehajtásához, és próbálja megismételni a műveletet.
+
+### <a name="other-vss-errors"></a>Más VSS-hibák
+
+Próbálja ki a VSS-szolgáltató szolgáltatás manuális telepítése a forrásgépen a következő parancssor futtatásával
+
+`C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
 ## <a name="next-steps"></a>További lépések
 

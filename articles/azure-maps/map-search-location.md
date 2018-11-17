@@ -3,18 +3,18 @@ title: Az Azure Maps a keresési eredmények megjelenítése |} A Microsoft Docs
 description: Hogyan hajthat végre keresést az Azure Maps-kérést, majd az eredményeket megjeleníteni a Javascript térképen
 author: jingjing-z
 ms.author: jinzh
-ms.date: 09/07/2018
+ms.date: 11/15/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: cf27864d691fe2fe13c9483348fb2abed121874d
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: HT
+ms.openlocfilehash: 031085b3048d0ffc92dd5a35b4054903088b4858
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713503"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824336"
 ---
 # <a name="show-search-results-on-the-map"></a>A térképen a keresési eredmények megjelenítése
 
@@ -24,27 +24,36 @@ Két módon hely hasznos helyek keresése. Egyik módja egy modul segítségéve
 
 ## <a name="make-a-search-request-via-service-module"></a>Indítson egy keresési szolgáltatás modulon keresztül
 
-<iframe height='500' scrolling='no' title='Keresési eredmény megjelenítése térképen (szolgáltatás modul)' src='//codepen.io/azuremaps/embed/zLdYEB/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/zLdYEB/'>találatok megjelenítése a térképen (Szolgáltatásmodul)</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Keresési eredmény megjelenítése térképen (szolgáltatás modul)' src='//codepen.io/azuremaps/embed/zLdYEB/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/zLdYEB/'>találatok megjelenítése a térképen (Szolgáltatásmodul)</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Az első kódblokkot egy térkép-objektumot hoz létre, és az ügyfélszolgáltatás inicializálja. Látható [térkép létrehozásához](./map-create.md) útmutatást.
+A fenti kóddal az első kódblokkot egy térkép-objektumot hoz létre, és az ügyfélszolgáltatás inicializálja. Látható [térkép létrehozásához](./map-create.md) útmutatást.
 
-A második kódblokkot használja a [Azure Maps intelligens keresési API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) hasznos helyekre vezető útvonalak keresése. Intelligens keresést API intelligens bemenetek bármilyen kombinációját képes kezelni. Az intelligens keresés szolgáltatástól kapott válasz majd szűrőtulajdonság GeoJSON formátumú használatával a [getGeoJsonSearchResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonsearchresponse?view=azure-iot-typescript-latest#geojsonsearchresponse) metódust. A PIN-kódok ezután hozzáadódnak a hasznos helyekhez a térképen megjeleníthető leképezés.
+A második kódblokkot használja a [getSearchFuzzy](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.search?view=azure-iot-typescript-latest#getsearchfuzzy-string--searchgetsearchfuzzyoptionalparams-) metódus az a [modul](https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=1). Lehetővé teszi a szabad formátumú szöveges keresés keresztül végezhető el a [intelligens keresés rest API-t](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) hasznos helyekre vezető útvonalak keresése. Intelligens keresést API intelligens bemenetek bármilyen kombinációját képes kezelni. Az intelligens keresés szolgáltatástól kapott válasz majd szűrőtulajdonság GeoJSON formátumú használatával a [getGeoJsonSearchResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonsearchresponse?view=azure-iot-typescript-latest#geojsonsearchresponse) metódust. 
 
-A legutóbbi kódblokkot segítségével állítja be a kamera esik, a térkép a térkép [setCameraBounds](/javascript/api/azure-maps-control/atlas.map#setcamerabounds-cameraboundsoptions-) tulajdonság.
+A harmadik kódblokkot létrehoz egy objektum használhatja a [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) osztályt, és a keresési eredmények hozzá. A [szimbólum réteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) használja a szöveges vagy ikonjai csomagolni szoftverfrissítésipont-alapú adatok megjelenítése a [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) szimbólumra a térképen.  Egy szimbólum réteg majd jön létre, és az adatforrás hozzáadásakor a szimbólum réteghez, majd a térkép felvett.
+
+A legutóbbi kódblokkot segítségével állítja be a kamera esik, a térkép a térkép [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) tulajdonság.
+
+A keresési kérelmet, az adatforráshoz, és szimbólum réteg és a kamera határokon létrehozott, és állítsa be a térkép belül [eseményfigyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) annak érdekében, hogy az eredmények jelennek meg a térkép teljes betölti követően.
+
 
 ## <a name="make-a-search-request-via-xmlhttprequest"></a>Keresés keresztül XMLHttpRequest kérést
 
-<iframe height='500' scrolling='no' title='Keresési eredmény megjelenítése térképen' src='//codepen.io/azuremaps/embed/KQbaeM/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/KQbaeM/'>Show keresési eredmények a térképen</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Keresési eredmény megjelenítése térképen' src='//codepen.io/azuremaps/embed/KQbaeM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/KQbaeM/'>Show keresési eredmények a térképen</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Az első kódblokkot egy térkép-objektumot hoz létre. Látható [térkép létrehozásához](./map-create.md) útmutatást.
+A fenti kód az első kódblokkot egy térkép-objektumot hoz létre. Látható [térkép létrehozásához](./map-create.md) útmutatást.
 
-A második kódblokk keresési eredmények réteget ad hozzá a térképen. A keresési eredmények réteg megjelenik a keresési eredmények között, mint a térképen rögzíti. PIN-kódok kerülnek használatával [addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addpins).
+A második kódblokkot küld egy [XMLHttpRequest](https://xhr.spec.whatwg.org/) való [Azure Maps intelligens keresés API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) a pont hasznos hely kereséséhez. Az intelligens keresés API intelligens bemenetek bármilyen kombinációját képes kezelni. 
 
-A harmadik kódblokkot küld egy [XMLHttpRequest](https://xhr.spec.whatwg.org/) való [Azure Maps intelligens keresés API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) a pont hasznos hely kereséséhez. Intelligens keresést API intelligens bemenetek bármilyen kombinációját képes kezelni.
+A harmadik kódblokkot elemzi a keresési választ, és tárolja az eredményeket egy tömb határán kiszámításához. Ezután a keresési eredményeket adja vissza.
 
-A legutóbbi kódblokkot elemzi a választ, és beállítja a a térkép segítségével állítja be a térkép kamera határán [setCameraBounds](/javascript/api/azure-maps-control/atlas.map#setcamerabounds-cameraboundsoptions-) az eredmény PIN-kód megjelenítéséhez.
+A negyedik kódblokkot létrehoz egy objektum használhatja a [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) osztályt, és a keresési eredmények hozzá. A [szimbólum réteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) használja a szöveges vagy ikonjai csomagolni szoftverfrissítésipont-alapú adatok megjelenítése a [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) szimbólumra a térképen. Egy szimbólum réteg majd jön létre, és az adatforrás hozzáadásakor a szimbólum réteghez, majd a térkép felvett.
+
+A legutóbbi kódblokkot létrehoz egy [BoundingBox](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.boundingbox?view=azure-iot-typescript-latest) objektumba az eredmények a tömbben, és majd segítségével állítja be a kamera esik, a térkép a térkép [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-). Ezután az eredmények PIN-kód jelennek meg.
+
+A térkép belül vannak beállítva a keresési kérelmet, az adatforráshoz, és szimbólum réteg és a kamera határokon [eseményfigyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) annak érdekében, hogy az eredmények jelennek meg a térkép teljes betölti követően.
 
 ## <a name="next-steps"></a>További lépések
 

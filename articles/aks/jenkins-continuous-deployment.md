@@ -1,46 +1,51 @@
 ---
-title: A Jenkins folyamatos üzembe helyezés az Azure Kubernetes Service (AKS)
-description: A jenkins üzembe helyezése és frissítése az Azure Kubernetes Service (AKS) tárolóalapú alkalmazás folyamatos üzembe helyezés folyamat automatizálása
+title: Oktatóanyag – Azure Kubernetes Service (AKS) a jenkins-szel való üzembe helyezés a Githubról
+description: Állítsa be a Jenkins folyamatos integrációs (CI) a GitHub és a folyamatos készregyártás (CD) az Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
 ms.service: container-service
+author: iainfoulds
+ms.author: iainfou
 ms.topic: article
 ms.date: 09/27/2018
-ms.author: iainfou
-ms.openlocfilehash: 5417e59f15ffcf48cc2af27044355d2bb5c9edaf
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: d252e275280ed2a5c2129f6b228e9989a33b37fd
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087695"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853625"
 ---
-# <a name="create-a-continuous-deployment-pipeline-with-jenkins-and-azure-kubernetes-service-aks"></a>Folyamatos üzembe helyezési folyamat létrehozása a Jenkins és az Azure Kubernetes Service (AKS)
+# <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>Oktatóanyag: Üzembe helyezés a Githubról, az Azure Kubernetes Service (AKS) a Jenkins folyamatos integrációs és üzembe helyezés
 
-Gyorsan központilag telepíthetők legyenek az alkalmazások az Azure Kubernetes Service (AKS), gyakran használhat egy folyamatos integrációs és folyamatos készregyártás (CI/CD) platform. CI/CD platform, egy kód véglegesítésére is új build aktiválása a tároló, amely a frissített alkalmazás üzembe szolgál majd. Ebben a cikkben használatával a Jenkins CI/CD-platformként hozhat létre, és küldje le a tárolórendszerképek az Azure Container Registry (ACR), és ezután futtassa ezeket az alkalmazásokat az aks-ben. Az alábbiak végrehajtásának módját ismerheti meg:
+Ebben az oktatóanyagban egy mintaalkalmazást a Githubról történő üzembe helyez egy [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes) fürt folyamatos integrációs (CI) és a Jenkins folyamatos készregyártás (CD) beállítása. Így amikor frissítse az alkalmazást a Githubról, hogy a véglegesítéseket Jenkins automatikusan fut egy új tárolót hozhat létre, leküldi a tárolórendszerképek az Azure Container Registry (ACR), és ezután futtatja az alkalmazást az aks-ben. 
+
+Ez az oktatóanyag ezen feladatok fogja végrehajtani:
 
 > [!div class="checklist"]
-> * AKS-fürt minta az Azure vote-alkalmazás üzembe helyezése
-> * Egy alapszintű Jenkins-példány létrehozása
-> * A Jenkins használatához az ACR-REL és hitelesítő adatainak konfigurálása
-> * Hozzon létre egy Jenkins létrehozási feladatot és az automatizált buildekig GitHub-webhook
-> * Az aks-ben a GitHub code véglegesítéseket alapján egy alkalmazás frissítése a CI/CD-folyamat tesztelése
+> * Az AKS-fürt üzembe helyezése az Azure vote mintaalkalmazást.
+> * Hozzon létre egy alapszintű Jenkins-projektet.
+> * Állítsa be a Jenkins használatához az ACR-REL és hitelesítő adatait.
+> * Hozzon létre egy Jenkins létrehozási feladatot és a GitHub-webhook az automatizált buildekig.
+> * Tesztelje a CI/CD-folyamat az aks-ben a GitHub code véglegesítéseket alapján egy alkalmazás frissítéséhez.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="prerequisites"></a>Előfeltételek
 
-Ebben a cikkben szereplő lépések végrehajtásához a következő elemeket kell.
+Az oktatóanyag elvégzéséhez szüksége ezeket az elemeket:
 
 - Kubernetes, a Git, a CI/CD-ről és a tároló lemezképek alapvető ismeretekkel
 
-- Egy [AKS-fürt] [ aks-quickstart] és `kubectl` konfigurálva a [AKS-fürt hitelesítő adatait][aks-credentials].
-- Egy [Azure Container Registry (ACR) beállításjegyzék][acr-quickstart], az ACR bejelentkezési kiszolgáló nevét, és az AKS-fürtöt úgy [hitelesítés az ACR-beállításjegyzékbe a] [ acr-authentication].
+- Egy [AKS-fürt] [ aks-quickstart] és `kubectl` konfigurálva a [AKS-fürt hitelesítő adatait][aks-credentials]
+
+- Egy [Azure Container Registry (ACR) beállításjegyzék][acr-quickstart], az ACR bejelentkezési kiszolgáló nevét, és az AKS-fürtöt úgy [hitelesítés az ACR-beállításjegyzékbe][acr-authentication]
 
 - Az Azure CLI 2.0.46 verzió vagy újabb telepítése és konfigurálása. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
-- [A docker telepítve] [ docker-install] a fejlesztői rendszeren.
-- Egy GitHub-fiók [Githubhoz használt személyes hozzáférési tokent][git-access-token], és a Git-ügyfél telepítve van a fejlesztői rendszeren.
+
+- [A docker telepítve] [ docker-install] a fejlesztői rendszerhez
+
+- Egy GitHub-fiók [Githubhoz használt személyes hozzáférési tokent][git-access-token], és a Git-ügyfél telepítve van a fejlesztői rendszerhez
 
 - A saját Jenkins-példány helyett ezt a mintát a Jenkins üzembe helyezésére parancsfájlalapú ad meg, ha a Jenkins-példány igények [Docker telepített és konfigurált] [ docker-install] és [kubectl][kubectl-install].
 
-## <a name="prepare-the-application"></a>Az alkalmazás előkészítése
+## <a name="prepare-your-app"></a>Az alkalmazás előkészítése
 
 Ebben a cikkben egy minta Azure vote alkalmazást, amely tartalmazza az egy vagy több podok és a egy második pod Redis üzemeltető ideiglenes adattárolásra üzemeltetett webes felületet használhat. Mielőtt automatikus központi telepítés integrálása a Jenkins és az AKS először manuális előkészítése és központi telepítése az Azure vote alkalmazást, az AKS-fürt. A manuális üzembe helyezés az alkalmazás első verziója, és lehetővé teszi, hogy az alkalmazást működés közben láthatja.
 
