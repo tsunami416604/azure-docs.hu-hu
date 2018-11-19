@@ -1,11 +1,12 @@
 ---
-title: A Machine Learning webszolgáltatásba használják az web app sablon |} Microsoft Docs
-description: Azure piactér web app sablon segítségével az Azure Machine Learning a prediktív webszolgáltatás felhasználását.
-keywords: a gépi tanulás webszolgáltatás, operationalization, REST API-t
+title: Machine Learning webszolgáltatások használata webalkalmazás-sablonok használatával |} A Microsoft Docs
+description: Az Azure Marketplace-en webalkalmazás-sablonok segítségével az Azure Machine Learning prediktív webszolgáltatás felhasználása.
+keywords: webszolgáltatás, operacionalizálás, REST API-t, a machine learning
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
-ms.author: yahajiza
+ms.custom: (previous ms.author yahajiza)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: e0d71683-61b9-4675-8df5-09ddc2f0d92d
@@ -16,55 +17,55 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 03729a5b94b355869367e7f356e299f9afe38f75
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 56c4e5956790ac61a6ae608d61aa61e7dc2e6975
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834998"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823724"
 ---
-# <a name="consume-an-azure-machine-learning-web-service-by-using-a-web-app-template"></a>Használhat fel az Azure Machine Learning webszolgáltatás web app sablon segítségével
+# <a name="consume-an-azure-machine-learning-web-service-by-using-a-web-app-template"></a>Az Azure Machine Learning webszolgáltatás felhasználhatják a webalkalmazás-sablonok használatával
 
-A prediktív modellezése, és a telepítése egy Azure webes szolgáltatás használatával:
+A prediktív modellek fejlesztése, és helyezze üzembe, az Azure web service használatával:
 - Az Azure Machine Learning Studióban.
 - Eszközök, például az R vagy Python. 
 
-Ezt követően a operationalized modell egy REST API használatával végezheti el.
+Ezt követően a szolgáltatáscsomagot modell elérheti, ha egy REST API-val.
 
-Számos módja a REST API-t használnak, és a webes szolgáltatás. Például írhat egy alkalmazást a C#, R vagy Python hozta létre a webszolgáltatás üzembe helyezésekor mintakód használatával. (A mintakód is elérhető a [Machine Learning webszolgáltatások portal](https://services.azureml.net/quickstart) vagy a webes szolgáltatás irányítópultján a Machine Learning Studióban.) Vagy a minta Microsoft Excel-munkafüzet hozott létre az Ön egyszerre is használhatja.
+Nincsenek számos módon a REST API felhasználására, és a hozzáférés a webszolgáltatáshoz. Ha például írhat egy alkalmazást C#, R vagy Python használatával, a webszolgáltatás üzembe helyezésekor kapott mintakódot. (A mintakód megtalálható a [Machine Learning webszolgáltatások portálján](https://services.azureml.net/quickstart) vagy a Machine Learning Studio webszolgáltatási irányítópultján található.) Vagy egy időben az Ön számára létrehozott Microsoft Excel-munkafüzetmintát is használhatja.
 
-A leggyorsabb és legegyszerűbb módja a webes szolgáltatás eléréséhez keresztül elérhető a web app sablon, de a [Azure piactér](https://azure.microsoft.com/marketplace/web-applications/all/).
+A leggyorsabb és legegyszerűbb módszert kínálja a webszolgáltatás elérésére keresztül a webalkalmazás-sablonokat érhető el, de a [Azure Marketplace-en](https://azure.microsoft.com/marketplace/web-applications/all/).
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
-## <a name="azure-machine-learning-web-app-templates"></a>Az Azure Machine Learning web app sablonok
-A webes alkalmazás sablonok érhető el az Azure piactéren hozhat létre egy egyéni webalkalmazást, hogy ismeri a webszolgáltatás bemeneti adatok és a kívánt eredmény elérése érdekében. Mindössze annyit kell tennie hozzáférést a webes alkalmazás a webszolgáltatás és az adatokat, és a sablon elvégzi a többit, azaz.
+## <a name="azure-machine-learning-web-app-templates"></a>Azure Machine Learning web app-sablonok
+A webalkalmazás-sablonokat elérhető az Azure piactéren, hogy ismeri a webszolgáltatás bemeneti adatokat és várt eredmény egyéni webalkalmazásokat hozhat létre. Mást nem kell tennie a webes alkalmazás hozzáférést adhat a webszolgáltatás és az adatokat, és a sablon végzi.
 
-Két sablonok érhetők el:
+A két sablon érhetők el:
 
-* [Az Azure ML kérés-válasz szolgáltatás Web App-sablon](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/)
-* [Azure ML kötegelt végrehajtási szolgáltatás Web App-sablon](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/)
+* [Az Azure Machine Learning-kérés-válasz szolgáltatás webalkalmazás-sablon](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/)
+* [Az Azure ML kötegelt végrehajtási szolgáltatás webalkalmazás-sablon](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/)
 
-Minden sablon az ASP.NET mintaalkalmazás API URI használatával hozza létre és a kulcs a webszolgáltatáshoz. A sablon az Azure-bA majd központilag telepíti az alkalmazást, mert a webhelyet. 
+Mindegyik sablon az API URI használatával hoz létre egy ASP.NET-mintaalkalmazás és kulcsával a webszolgáltatást. A sablon majd üzembe helyezi az alkalmazást, mint egy webhelyet az Azure-bA. 
 
-A kérés-válasz szolgáltatás (RR-EKET) sablon létrehoz egy webalkalmazást, amelyek segítségével egyetlen sornyi adatot küldeni a webszolgáltatás számára, hogy egyetlen eredmény. A kötegelt végrehajtási szolgáltatás (BES) sablon létrehoz egy webalkalmazást, amelyek segítségével az adatok több lekéréséhez sorok küldése.
+A kérés-válasz szolgáltatás (RRS) sablont hoz létre egy webalkalmazást, amely segítségével egyetlen sor az adatok küldése a web Service egyszeri eredmény. A Batch Execution Service (BES) sablont hoz létre egy webalkalmazást, amely segítségével az adatok több eredményt sorok számát küldése.
 
-Ezek a sablonok használatához nem kódolás szükséges. Csak akkor adja meg, az API-kulcsot és URI, és a sablon épít fel az alkalmazást.
+Ezekkel a sablonokkal kódolása nem szükséges. Csak akkor adja meg, az API-kulcsát és URI-t, és a sablon hozza létre az alkalmazás az Ön számára.
 
-Az API-kulcsot, és az adott webszolgáltatás kérelmi URI:
+Az API-kulcs beszerzése és a kérés URI-ja egy webszolgáltatás:
 
-1. Az a [Web Services portál](https://services.azureml.net/quickstart), jelölje be **webszolgáltatások** tetején. Klasszikus webszolgáltatáshoz, válassza ki vagy **klasszikus webszolgáltatások**.
+1. Az a [Web Services portál](https://services.azureml.net/quickstart)válassza **webszolgáltatások** tetején. Vagy válasszon ki egy klasszikus webszolgáltatás **klasszikus webszolgáltatások**.
 2. Válassza ki a webszolgáltatás, amelyet el szeretne érni.
-3. Klasszikus webszolgáltatáshoz válassza ki a használni kívánt végpont.
+3. A klasszikus webszolgáltatások válassza ki a végpont, amelyet el szeretne érni.
 4. Válassza ki **felhasználás** tetején.
-5. Az elsődleges vagy másodlagos kulcsot másolja ki és mentse azt.
-6. Ha egy RR-EKET sablont hoz létre, másolja a **kérés-válasz** URI és mentse azt. Ha BES sablont készít, akkor másolja a **kötegelt kérelmekben** URI és mentse azt.
+5. Másolja az elsődleges vagy másodlagos kulcsot, és mentse.
+6. Ha egy RRS-sablont hoz létre, másolja a **kérés-válasz** URI-t, és mentse. A BES-sablont hoz létre, másolja a **kérések** URI-t, és mentse.
 
 
-## <a name="how-to-use-the-request-response-service-template"></a>A kérés-válasz Szolgáltatássablon használata
-Kövesse az alábbi lépéseket ahhoz, hogy a RR-EKET web app sablon használható az alábbi ábrán is látható.
+## <a name="how-to-use-the-request-response-service-template"></a>A kérés-válasz szolgáltatás sablon használata
+Kövesse az alábbi lépéseket az RRS webalkalmazás-sablon, használatához, az alábbi ábrán látható módon.
 
-![Folyamat RR-EKET webes sablon használata][image1]
+![Folyamat RRS webes sablon használata][image1]
 
 
 <!--    ![API Key][image3] -->
@@ -76,57 +77,57 @@ Kövesse az alábbi lépéseket ahhoz, hogy a RR-EKET web app sablon használhat
     ![Request URI][image4] -->
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki **új**, és adja meg **Azure ML kérés-válasz szolgáltatás webalkalmazás**, majd válassza ki **létrehozása**. 
-3. Az a **létrehozása** panelen:
+2. Válassza ki **új**, keresése és kiválasztása **Azure ML kérés-válasz szolgáltatás webalkalmazás**, majd válassza ki **létrehozás**. 
+3. Az a **létrehozás** panelen:
    
-   * Adjon meg egy egyedi nevet a webalkalmazás. A webalkalmazás URL-CÍMÉT a nevét, majd lesz **. azurewebsites.net**. Példa: **http://carprediction.azurewebsites.net**.
-   * Válassza ki az Azure-előfizetés és az alatt a webszolgáltatás fut. szolgáltatások.
+   * Adjon meg egy egyedi nevet a webalkalmazás. A web app URL-címe lesz a nevét, majd **. azurewebsites.net**. Például **http://carprediction.azurewebsites.net**.
+   * Válassza ki az Azure-előfizetés és a szolgáltatások, amelyek alapján a webszolgáltatás fut.
    * Kattintson a **Létrehozás** gombra.
      
    ![Webalkalmazás létrehozása][image5]
 
-4. Ha Azure webalkalmazás telepítése befejeződött, válassza ki a **URL-cím** az Azure-ban a webalkalmazás-beállítások lapon, vagy adja meg az URL-címet egy webböngészőben. Adja meg például **http://carprediction.azurewebsites.net**.
-5. Amikor első alkalommal futtatja a webalkalmazást, akkor a kéri a **API Post URL-címe** és **API-kulcs**. Adja meg a korábban mentett értékeket (URI és API-kulcsát, illetve kérés). Válassza ki **nyújt**.
+4. Ha az Azure webalkalmazás telepítése befejeződött, válassza ki a **URL-cím** az Azure-ban a webalkalmazás-beállítások lapon, vagy adja meg az URL-CÍMÉT egy webböngészőben. Adja meg például **http://carprediction.azurewebsites.net**.
+5. Amikor a webalkalmazás első alkalommal futtatja, a kéri a **API Post URL-Címének** és **API-kulcs**. Adja meg a korábban mentett értékeket (URI-t és az API-kulcsát, illetve kérés). Válassza ki **elküldése**.
      
-   ![Adja meg a post URI és API-kulcsát][image6]
+   ![Adja meg a post URI és az API-kulcsát][image6]
 
-6. A webes alkalmazás megjelenik a **Web App konfigurációs** az aktuális webes szolgáltatás beállításait tartalmazó lapra. Itt módosíthatja a beállításokat, amelyek a webalkalmazás számára.
+6. A webes alkalmazás megjelenik a **webalkalmazás konfigurációjának** az aktuális webes szolgáltatás beállításait tartalmazó oldalt. Itt módosíthatja a beállításait, a webes alkalmazás által használt.
    
    > [!NOTE]
-   > Itt a szolgáltatás beállításainak módosítása csak akkor változik meg azokat a webalkalmazás. Ez az alapértelmezett beállításokat, a webszolgáltatás nem változik. Például, ha a szöveget **leírás** itt nem módosítja a webes szolgáltatás irányítópultján a Machine Learning Studióban látható leírás.
+   > Ide a beállítások módosítása csak módosítja őket a webalkalmazás számára. Ez az alapértelmezett beállításokat, a webszolgáltatás nem változik. Például, ha a szöveg módosítása **leírás** itt nem módosítja a Machine Learning Studio webszolgáltatási irányítópultján jelenik meg a leírást.
    > 
    > 
    
-    Amikor elkészült, válassza ki a **módosítások mentése**, majd válassza ki **Ugrás a kezdőlapra**.
+    Ha elkészült, válassza ki a **módosítások mentése**, majd válassza ki **lépjen a kezdőlapra**.
 
-7. A kezdőlapról a webszolgáltatás küldendő értékeket adhat meg. Válassza ki **Submit** amikor elkészült, és az eredményt adja vissza.
+7. A kezdőlapon a webszolgáltatás küldendő értékeket adhat meg. Válassza ki **küldés** amikor elkészült, és az eredményt visszaad.
 
-Ha vissza szeretne a **konfigurációs** lap megnyitásához válassza a **setting.aspx** a webes alkalmazás lapján. Például Ugrás **http://carprediction.azurewebsites.net/setting.aspx**. Írja be újra az API-kulcsot kéri. Meg kell, hogy a lap eléréséhez, és frissítse a beállításokat.
+Ha azt szeretné, hogy térjen vissza a **konfigurációs** lapon kattintson a **setting.aspx** a webalkalmazás oldalán. Ha például nyissa meg **http://carprediction.azurewebsites.net/setting.aspx**. Azt az API-kulcsot újra meg kell adnia. Az oldal eléréséhez, és frissítse a beállításokat, amelyek van szüksége.
 
-Állítsa le, indítsa újra, vagy törölje a webalkalmazást, mint bármely más webalkalmazás az Azure portálon. Mindaddig, amíg fut, keresse meg a kezdőkönyvtár címét, és adja meg új értékeket.
+Állítsa le, indítsa újra, vagy törölje a webalkalmazást, mint bármely más webes alkalmazást az Azure Portalon. Mindaddig, amíg fut, tallózással keresse meg az otthoni URL-címet, és adja meg az új értékeket.
 
-## <a name="how-to-use-the-batch-execution-service-template"></a>A kötegelt végrehajtási Szolgáltatássablon használata
-A BES web app-sablon az RRS-sablonként ugyanúgy használhatja. A különbség, hogy segítségével a létrehozott webalkalmazás küldje el az adatok több sort, és több eredményeket.
+## <a name="how-to-use-the-batch-execution-service-template"></a>A kötegelt végrehajtási szolgáltatás sablon használata
+A BES webalkalmazás-sablon ugyanúgy az RRS-sablonként is használhatja. A különbség az, hogy a létrehozott webalkalmazás több sornyi adatot nyújt, és több eredményeket használhatja.
 
-A bemeneti értékek egy kötegelt végrehajtási webszolgáltatáshoz Azure Storage vagy a helyi fájl származhatnak. Az eredményeket egy az Azure storage-tároló tárolja. Így kell egy Azure storage-tárolót, amely a webes alkalmazás visszaadja az eredmények tárolásához. Szükség kész állapotba hozásához a bemeneti adatok.
+A bemeneti értékek a kötegelt végrehajtási webszolgáltatáshoz Azure Storage vagy a helyi fájl származhatnak. Az eredmények tárolása az Azure storage-tárolókat. Tehát szüksége lesz egy Azure storage-tároló, amely tárolja az eredményeket, amely a web app adja vissza. Emellett szüksége, a bemeneti adatok készen álljon.
 
 ![Folyamat BES webes sablon használata][image2]
 
-1. A BES webalkalmazás, mint az RRS-sablon létrehozása az eljárást kell követnie. Ebben az esetben lépjen, de [Azure ML kötegelt végrehajtási szolgáltatás Web App sablon](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/) a BES sablon megnyitásához az Azure piactéren. Válassza ki **webalkalmazás létrehozása**.
+1. Kövesse ugyanazt az eljárást a BES webalkalmazás, mint az RRS-sablon létrehozásához. Azonban ebben az esetben ugorjon [Azure ML kötegelt végrehajtási szolgáltatás webalkalmazás-sablon](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/) a BES sablon megnyitásához az Azure piactéren. Válassza ki **webes alkalmazás létrehozása**.
 
-2. Adja meg a tárolt eredményt, írja be a cél tároló adatokat a webes alkalmazás kezdőlapján. Is megadhatja, ha a webes alkalmazás kérheti le a bemeneti értékek: egy helyi fájlban vagy egy Azure storage tárolóban.
-   Válassza ki **nyújt**.
+2. Adja meg, ahol az eredményeket tárolni szeretné, adja meg a cél tároló információkat a webalkalmazás kezdőlapján. Is adja meg, ahol a webalkalmazás beszerezheti a bemeneti értékek: helyi fájlból vagy egy Azure storage-tárolóba.
+   Válassza ki **elküldése**.
    
    ![Szolgáltatás adatai][image7]
 
-A web app egy lapon feladat állapotát jeleníti meg. A feladat befejeződött, az eredményeket az Azure Blob storage helyének nyílik meg. Lehetősége is van, az eredményeket egy helyi fájl letöltése.
+A web app feladat állapotát tartalmazó oldalt jelenít meg. A feladat befejeződött, az eredményeket az Azure Blob storage helyének kap. Lehetősége is van, az eredmények letöltése egy helyi fájlba.
 
 ## <a name="for-more-information"></a>További tudnivalók
-További részletek:
+További információ:
 
-* Tekintse meg a Machine Learning Studio, a gépi tanulási kísérlet létrehozása [az első kísérlet létrehozása az Azure Machine Learning Studióban](create-experiment.md).
-* A gépi tanulási kísérlet egy webszolgáltatás telepítése tudnivalókat [központi telepítése az Azure Machine Learning webszolgáltatás](publish-a-machine-learning-web-service.md).
-* A webes szolgáltatás más módon lásd [hogyan kell használni az Azure Machine Learning webszolgáltatás](consume-web-services.md).
+* Tekintse meg a machine learning-kísérlet létrehozása a Machine Learning Studióban [az első kísérlet létrehozása az Azure Machine Learning Studióban](create-experiment.md).
+* A machine learning-kísérlet webszolgáltatásként üzembe helyezése, olvassa el [egy Azure Machine Learning webszolgáltatás üzembe helyezése](publish-a-machine-learning-web-service.md).
+* Tekintse meg a hozzáférés a webszolgáltatáshoz való egyéb módon [használata az Azure Machine Learning webszolgáltatás](consume-web-services.md).
 
 [image1]: media/consume-web-service-with-web-app-template/rrs-web-template-flow.png
 [image2]: media/consume-web-service-with-web-app-template/bes-web-template-flow.png

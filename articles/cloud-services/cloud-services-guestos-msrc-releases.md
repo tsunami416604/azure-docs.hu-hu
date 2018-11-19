@@ -11,17 +11,52 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/12/2018
+ms.date: 11/15/2018
 ms.author: raiye
-ms.openlocfilehash: 19f9584c86993942e949716e14d2190fc5b31ce0
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: c2ff5d79c59a08c6ed808312027dc69aee910224
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578773"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854271"
 ---
 # <a name="azure-guest-os"></a>Azure Guest OS
 Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure vendég operációs rendszerre alkalmazott frissítések. Ez a cikk meghatározni, ha az adott frissítés alkalmazza a vendég operációs rendszer keresése. Frissítések mindig átviszi az adott [termékcsalád] [ family-explain] azokat a jelentek meg.
+
+## <a name="november-2018-guest-os"></a>A 2018. november a vendég operációs rendszer
+
+>[!NOTE]
+>A November vendég operációs rendszer jelenleg tesszük elérhetővé a Cloud Service virtuális gépeken, az automatikus frissítések vannak beállítva. A bevezetés befejezésekor ebben a verzióban lesz elérhető a manuális frissítést keresztül az Azure portal és a konfigurációs fájlok. A November vendég operációs rendszer a következő javításokat tartalmazza. Ez a lista a változhat.
+
+| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| --- | --- | --- | --- | --- |
+| 18-11-rel | [4466536] | Internet Explorer | 2,80, 3.67, 4.60 | 2018. november 13. |
+| 18-11-rel | [4467694] | Flash | 3.67, 4.60, 5,25 | 2018. november 13. |
+| 18-11-rel | [4467106] | Windows biztonsági | 2,80 | 2018. november 13. |
+| 18-11-rel | [4467678] | Windows biztonsági | 3.67 | 2018. november 13. |
+| 18-11-rel | [4467703] | Windows biztonsági | 4.60 | 2018. november 13. |
+| 18-11-rel | [4467691] | A Windows 10 biztonsági | 5,25 | 2018. november 13. |
+| – | [3173426] | Karbantartási frissítését | 3.67 | 2016. július 12-én |
+| – | [4465659] | Karbantartási frissítését | 5,25 | 2018. november 13. |
+| – | [4462923] | Október nem – a biztonság összegzése | 2,80 | 2018. október 9. |
+| – | [4462929] | Október nem – a biztonság összegzése | 3.67 | 2018. október 9. |
+| – | [4462926] | Október nem – a biztonság összegzése | 4.60 | 2018. október 9. |
+| – | [3109976] | Alkalmazás/compat shims | 4.60 | 2016. április 12. |
+| – | [4457037] | Alkalmazás/compat shims | 4.60| 2018. június 12. |
+
+[4466536]: http://support.microsoft.com/kb/4466536
+[4467694]: http://support.microsoft.com/kb/4467694
+[4467106]: http://support.microsoft.com/kb/4467106
+[4467678]: http://support.microsoft.com/kb/4467678
+[4467703]: http://support.microsoft.com/kb/4467703
+[4467691]: http://support.microsoft.com/kb/4467691
+[3173426]: http://support.microsoft.com/kb/3173426
+[4465659]: http://support.microsoft.com/kb/4465659
+[4462923]: http://support.microsoft.com/kb/4462923
+[4462929]: http://support.microsoft.com/kb/4462929
+[4462926]: http://support.microsoft.com/kb/4462926
+[3109976]: http://support.microsoft.com/kb/3109976
+[4457037]: http://support.microsoft.com/kb/4457037
 
 ## <a name="october-2018-guest-os"></a>2018. október vendég operációs rendszer
 

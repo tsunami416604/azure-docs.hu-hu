@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: 3de1939ec4004c2709fb0e366fb492462cf2d216
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: HT
+ms.openlocfilehash: 6a3e33fe74199f0b9c02c6924d5e5e41b37f385c
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710766"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820970"
 ---
 # <a name="azure-monitor-overview"></a>Az Azure Monitor áttekintése
 
@@ -27,14 +27,14 @@ Az Azure Monitor a lehető legnagyobbra növeli a az alkalmazások teljesítmén
 > [!VIDEO https://www.youtube.com/embed/_hGff5bVtkM]
 
 ## <a name="overview"></a>Áttekintés
-Az alábbi ábrán egy magas szintű áttekintést nyújt az Azure Monitor. A diagram közepén olyan metrikák és naplók, amely az adatokat használja az Azure Monitor két alapvető típusú adattárakban. A bal oldali vannak a [adatforrásokat, telemetriai adatok gyűjtése a különböző erőforrások figyelt](../monitoring/monitoring-data-sources.md) , és töltse fel a [adattárak](../monitoring/monitoring-data-collection.md). A jobb oldalon a különböző függvényeket, amely az Azure Monitor az elemzés, például a gyűjtött adatok hajt végre, riasztó és a külső rendszerekkel streamelési vannak.
+Az alábbi ábrán egy magas szintű áttekintést nyújt az Azure Monitor. A diagram közepén olyan metrikák és naplók, amely az adatokat használja az Azure Monitor két alapvető típusú adattárakban. A bal oldali vannak a [adatforrásokat, telemetriai adatok gyűjtése a különböző erőforrások figyelt](../azure-monitor/platform/data-sources.md) , és töltse fel a [adattárak](../azure-monitor/platform/data-collection.md). A jobb oldalon a különböző függvényeket, amely az Azure Monitor az elemzés, például a gyűjtött adatok hajt végre, riasztó és a külső rendszerekkel streamelési vannak.
 
 
 ![Az Azure Monitor áttekintése](media/overview/overview.png)
 
 
 ## <a name="monitoring-data-platform"></a>Figyelési adatplatform
-Az Azure Monitor által gyűjtött összes adat illeszkedik a két alapvető típusok, [metrikák és naplók](../monitoring/monitoring-data-collection.md). [Metrikák](../monitoring/monitoring-data-collection.md#metrics) időben bizonyos elemeit a rendszer egy adott időpontban leíró numerikus érték. Azok a könnyen használható, és képes a közel valós idejű feldolgozásához. [Naplók](../monitoring/monitoring-data-collection.md#logs) tartalmazhat különböző típusú adatokkal rendelkező különböző tulajdonságokat az egyes rekordok vannak rendezve. Telemetriai adatokat – például az események és nyomok formájában tárolja naplók emellett teljesítményadatokká úgy, hogy azt az összes kombinálható is elemzés céljából.
+Az Azure Monitor által gyűjtött összes adat illeszkedik a két alapvető típusok, [metrikák és naplók](../azure-monitor/platform/data-collection.md). [Metrikák](../azure-monitor/platform/data-collection.md#metrics) időben bizonyos elemeit a rendszer egy adott időpontban leíró numerikus érték. Azok a könnyen használható, és képes a közel valós idejű feldolgozásához. [Naplók](../azure-monitor/platform/data-collection.md#logs) tartalmazhat különböző típusú adatokkal rendelkező különböző tulajdonságokat az egyes rekordok vannak rendezve. Telemetriai adatokat – például az események és nyomok formájában tárolja naplók emellett teljesítményadatokká úgy, hogy azt az összes kombinálható is elemzés céljából.
 
 Sok Azure-erőforrások látni fogja az áttekintő oldala az Azure Portalon az Azure Monitor jobb által gyűjtött adatokat. Például rendelkezik egy pillantást bármelyik virtuális gépet, és látni fogja a teljesítmény-mérőszámok megjelenítése több diagramot. Kattintson bármelyik, nyissa meg az adatokat a gráfok [metrika explorer](../monitoring-and-diagnostics/monitoring-metric-charts.md) az Azure Portalon, amely lehetővé teszi, hogy idővel több mérőszámok értékeit diagram.  A diagramok megjelenítése interaktív módon, vagy egy irányítópultot, megtekintheti őket más vizualizációkat rögzítheti őket.
 
@@ -145,6 +145,6 @@ Több API-t írási és olvasási metrikákat és naplókat, és az Azure Monito
 ## <a name="next-steps"></a>További lépések
 További információk:
 
-* [Metrikák és naplók](../monitoring/monitoring-data-collection.md) az Azure Monitor által összegyűjtött adatokat.
-* [Adatforrások](../monitoring/monitoring-data-sources.md) számára az alkalmazás összetevői hogyan telemetriai adatokat küldhet.
+* [Metrikák és naplók](../azure-monitor/platform/data-collection.md) az Azure Monitor által összegyűjtött adatokat.
+* [Adatforrások](../azure-monitor/platform/data-sources.md) számára az alkalmazás összetevői hogyan telemetriai adatokat küldhet.
 * [Log Analytics](../log-analytics/log-analytics-queries.md) összegyűjtött adatok elemzéséhez.
