@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 0fca20f4f714e586281a32e57fe6129b262f5fa5
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
-ms.translationtype: HT
+ms.openlocfilehash: 9778911d56f55ea83b542d6fbe5c31b646d85d2d
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248489"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976468"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Bevezetés az Azure Table Storage és az Azure Cosmos DB Table API Pythonnal való használatával
 
@@ -32,7 +32,7 @@ Ez a minta az [Azure Cosmos DB Table SDK Pythonhoz](https://pypi.python.org/pypi
 * Entitások beszúrása és lekérdezése
 * Entitások módosítása
 
-A minta forgatókönyveinek végrehajtása közben érdemes megtekinteni a [Pythonhoz készült Azure Cosmos DB SDK API-referenciáját](https://azure.github.io/azure-cosmosdb-python/).
+A minta forgatókönyveinek végrehajtása közben érdemes megtekinteni a [Pythonhoz készült Azure Cosmos DB SDK API-referenciáját](https://docs.microsoft.com/en-us/python/api/overview/azure/cosmosdb?view=azure-python).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -222,7 +222,7 @@ table_service.delete_table('tasktable')
 ## <a name="next-steps"></a>További lépések
 
 * [A Table API-val történő fejlesztéshez kapcsolódó gyakori kérdések](https://docs.microsoft.com/azure/cosmos-db/faq#develop-with-the-table-api)
-* [Az Azure Cosmos DB SDK Pythonhoz API-referenciája](https://azure.github.io/azure-cosmosdb-python/)
+* [Az Azure Cosmos DB SDK Pythonhoz API-referenciája](https://docs.microsoft.com/en-us/python/api/overview/azure/cosmosdb?view=azure-python)
 * [Python fejlesztői központ](https://azure.microsoft.com/develop/python/)
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, több platformon futó alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 * [A Python használata a Visual Studióban (Windows)](https://docs.microsoft.com/visualstudio/python/overview-of-python-tools-for-visual-studio)

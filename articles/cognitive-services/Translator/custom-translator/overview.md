@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: overview
-ms.openlocfilehash: b7cba2959bead5eeed72a87219c70f896b5a48b8
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 76e6bc006ff6049b631409a3515628fbd169f713
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51682962"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976978"
 ---
 # <a name="what-is-custom-translator-preview"></a>Mi a Custom Translator (előzetes verzió)?
 
@@ -32,7 +32,7 @@ Egyéni a fordítót hozhat létre egyéni fordítási rendszer, és később el
 |---------|---------|
 |[Neurális gépi fordítás technológia hajtják végre](https://blogs.msdn.microsoft.com/translation/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  A fordítás javítása egyéni a fordítót által biztosított Neurális gépi fordítás (NMT) kihasználásával.       |
 |[Hozhat létre rendszereket, hogy ismeri az üzleti terminológiája](what-are-parallel-documents.md)     |  Testre szabhatja, és a párhuzamos dokumentumok, megismerheti a saját üzleti és az iparágban használt terminológiát használ fordítási rendszerek készítése.       |
-|[Készítsen modelleket szótár segítségével](what-is-dictionary.md)     |   Ha nem rendelkezik a tanítási adathalmazt, betaníthatja a modell csak szótár adatokat.       |
+|[Egy szótár segítségével készítsen modelleket](what-is-dictionary.md)     |   Ha nem rendelkezik a tanítási adathalmazt, betaníthatja a modell csak szótár adatokat.       |
 |[Együttműködés másokkal a](how-to-manage-settings.md#share-your-workspace)     |   Együttműködhet a csapatával a munkahelyi más személyekkel való megosztásával.     |
 |[Az egyéni fordítási modellben eléréséhez](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)     |  Az egyéni fordítási modellben bármikor a meglévő alkalmazások / programokat a Microsoft Translator Text API V3-n keresztül.       |
 

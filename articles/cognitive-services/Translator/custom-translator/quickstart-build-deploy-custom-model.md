@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: quickstart
-ms.openlocfilehash: 949fb2487c3ca519c1d7022c1434d0a029ed20bb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: cb713ac53b399d8ba79d003ee6d948bb5af5220b
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626549"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975772"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Gyors útmutató: Elkészítheti, telepítheti, és egyéni modellt alkalmaznak a fordítás
 
@@ -26,7 +26,7 @@ Ebben a cikkben részletes útmutatást nyújt az egyéni a fordítót a fordít
 
 2. Az Azure Portalon a Translator Text API-előfizetés. A Translator Text API előfizetési kulcs egyéni a fordítót a munkaterületek társítani kell. Lásd: [hogyan regisztrálhat a Translator Text API](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
 
-3. Ha a fentiek mindegyikét, jelentkezzen be a [egyéni a fordítót](https://portal.customtranslator.azure.ai) portálon. Egyszer az egyéni a fordítót portálon lépjen a beállítások lapot, ahol hozzárendelheti a munkaterület az a Microsoft Translator Text API-előfizetési kulcs. 
+3. Ha a fentiek mindegyikét, jelentkezzen be a [egyéni a fordítót](https://portal.customtranslator.azure.ai) portálon. Egyszer az egyéni a fordítót portálon lépjen a beállítások lapot, ahol hozzárendelheti a munkaterület az a Microsoft Translator Text API-előfizetési kulcs.
 
 ## <a name="create-a-project"></a>Projekt létrehozása
 
@@ -49,11 +49,11 @@ Dokumentumok feltöltésekor válassza ki a dokumentum típusa (képzés, hangol
 
 A szükséges dokumentumok feltöltésekor a rendszer a következő lépés esetén a modell létrehozásához.
 
-Válassza ki a létrehozott projekt. Látni fogja a dokumentumokat Ön által feltöltött, amely egy nyelvi pár megoszthatja a projekthez. Válassza ki a dokumentumok, amelyeket szeretne a modell tartalmazza. Választhat [képzési](training-and-model.md#training-dataset-for-custom-translator), [hangolása](training-and-model.md#tuning-dataset-for-custom-translator), és [tesztelése](training-and-model.md#testing-dataset-for-custom-translator) adatokat, vagy válassza ki, csak a betanítási adatok, és lehetővé teszik egyéni a fordítót automatikusan finomhangolási és teszteli a modell csoportjainak.
+Válassza ki a létrehozott projekt. Látni fogja a dokumentumokat Ön által feltöltött, amely egy nyelvi pár megoszthatja a projekthez. Válassza ki a dokumentumok, amelyeket szeretne a modell tartalmazza. Választhat [képzési](training-and-model.md#training-dataset-for-custom-translator), [hangolása](training-and-model.md#tuning-dataset-for-custom-translator), és [tesztelés](training-and-model.md#testing-dataset-for-custom-translator) adatokat, vagy válassza ki, csak a betanítási adatok, és lehetővé teszik egyéni a fordítót automatikusan finomhangolási és teszteli a modell csoportjainak.
 
 ![Modell létrehozása](media/quickstart/ct-how-to-train.png)
 
-Ha ezzel végzett, válassza a kívánt dokumentumokat, kattintson a modell létrehozásához, és indítsa el a tanítási modell létrehozása gombra. Láthatja, hogy a képzés és részleteit, szakképzett, a modellek lapon minden modell állapotát.
+Amikor elkészült, válassza a kívánt dokumentumokat, kattintson a modell létrehozásához, és indítsa el a tanítási modell létrehozása gombra. Láthatja, hogy a képzés és részleteit, hogy betanított, a modellek lapon minden modell állapotát.
 
 További részletekért látogasson el [létrehoz egy modellt](how-to-train-model.md).
 

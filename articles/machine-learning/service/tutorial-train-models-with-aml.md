@@ -9,12 +9,12 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 11/16/2018
-ms.openlocfilehash: 221bca6cb11d488e38417280e16b5caa9133bd46
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 6b3cc7d90557525666ffe3b5024dc617e12f6ce6
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853489"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977267"
 ---
 # <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>1. oktatóanyag: Képbesorolási modell betanítása az Azure Machine Learning szolgáltatással
 
@@ -93,7 +93,7 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="create-remote-compute-target"></a>Távoli számítógépcél létrehozása
 
-Az Azure az Azure Machine Learning felügyelt számítási egy felügyelt szolgáltatás, amely lehetővé teszi az adatszakértők, az Azure virtuális gépek, beleértve a virtuális gépek a GPU-támogatással rendelkező fürtökön gépi tanulási modelleket taníthat be.  Ez az oktatóanyag-fürtöt hoz létre az Azure által felügyelt számítási a képzési környezet. Ez a kód létrehoz Önnek egy fürtöt, ha még nem létezik a munkaterületén. 
+Az Azure Machine Learning felügyelt számítási egy felügyelt szolgáltatás, amely lehetővé teszi az adatszakértők, az Azure virtuális gépek, beleértve a virtuális gépek a GPU-támogatással rendelkező fürtökön gépi tanulási modelleket taníthat be.  Ez az oktatóanyag-fürtöt hoz létre az Azure által felügyelt számítási a képzési környezet. Ez a kód létrehoz Önnek egy fürtöt, ha még nem létezik a munkaterületén. 
 
  **A fürt létrehozása körülbelül 5 percet vesz igénybe.** Ha a fürt már szerepel a munkaterületben, akkor a létrehozási folyamat kimarad, és a kód a meglévő fürtöt használja.
 

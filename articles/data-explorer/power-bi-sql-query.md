@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: fb9b919621174f38520ab5365d4a67abc8095631
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 4eb6fdd5b5a78f0afb00265ebd957231464a9083
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854799"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977284"
 ---
 # <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Gyors útmutató: Az Azure Data Explorer-összekötő használata a Power bi az adatok megjelenítése
 
@@ -53,7 +53,7 @@ Először csatlakozik az Azure Data Explorer súgófürtben, majd származó ada
     |---|---|---|
     | Kiszolgáló | *help.kusto.Windows.NET* | A súgófürtben URL-CÍMÉT (nélkül *https://*). Egyéb fürtök esetében az URL-cím szerepel az űrlap  *\<ClusterName\>.\< Régió\>. kusto.windows.net*. |
     | Adatbázis | *Példák* | A minta a fürtön futó adatbázis, amelyhez csatlakozik. |
-    | Adatkapcsolati mód | *Importálás* | Meghatározza, hogy a Power BI importálta az adatokat, vagy közvetlenül csatlakozik az adatforráshoz. |
+    | Adatkapcsolati mód | *Importálás* | Meghatározza, hogy a Power BI importálta az adatokat, vagy közvetlenül csatlakozik az adatforráshoz. Mindkét módszerhez ezzel az összekötővel. |
     | Parancs időkorlátja | Hagyja üresen | Mennyi ideig a lekérdezés előtt fut, egy időtúllépési hibát jelez. |
     | SQL-utasítás | A lekérdezés a táblázat alatti másolása | Az SQL-utasítást, amely az Azure Data Explorer azt jelenti, hogy egy natív lekérdezés. |
     | Egyéb beállítások | Hagyja az alapértelmezett értékek | Azure Data Explorer fürtök beállítások nem vonatkoznak. |

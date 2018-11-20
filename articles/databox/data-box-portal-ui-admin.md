@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 08/28/2018
 ms.author: alkohli
-ms.openlocfilehash: f0849bf82acfd6bc72cd35fb1fc18bdb8aac2282
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: f4ea5e282e9b915cffeac7daff07f5934be1a424
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51819187"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51974989"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk-preview"></a>A Data Box Disk (előzetes verzió) kezelése az Azure Portal segítségével
 
