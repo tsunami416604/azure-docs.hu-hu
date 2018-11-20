@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
-ms.openlocfilehash: 40bee31b7880a323a48e92912ee323c43c3a97da
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 0772dbb1aaa6b00994bd653c19b006114377dc5f
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634755"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165458"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Oktatóanyag: A Java EE-alapú és a Postgres-webalkalmazás létrehozása az Azure-ban
 
@@ -51,13 +51,38 @@ git clone https://github.com/Azure-Samples/wildfly-petstore-quickstart.git
 
 A Maven POM frissítse az App Service a kívánt nevére és erőforráscsoportjára csoportot. Ezeket az értékeket fogja elhelyezte a Azure beépülő modult, amely a további _pom.xml_ fájlt. Nem kell előzetesen létre az App Service-csomag vagy a példány. A Maven bővítménnyel hoz létre az erőforráscsoportot és az App Service-ben, ha azt nem létezik.
 
+Akkor is görgessen le a `<plugins>` szakaszában _pom.xml_ vizsgálhatja meg az Azure beépülő modul. A szakaszban a `<plugin>` konfigurációját a a _pom.xml_ esetében az azure-webapp-maven-beépülő modul tartalmaznia kell a következő konfigurációt:
+
+```xml
+      <!--*************************************************-->
+      <!-- Deploy to WildFly in App Service Linux           -->
+      <!--*************************************************-->
+ 
+      <plugin>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure-webapp-maven-plugin</artifactId>
+        <version>1.5.0</version>
+        <configuration>
+ 
+          <!-- Web App information -->
+          <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
+          <appServicePlanName>${WEBAPP_PLAN_NAME}</appServicePlanName>
+          <appName>${WEBAPP_NAME}</appName>
+          <region>${REGION}</region>
+ 
+          <!-- Java Runtime Stack for Web App on Linux-->
+          <linuxRuntime>wildfly 14-jre8</linuxRuntime>
+ 
+        </configuration>
+      </plugin>
+```
+
 A helyőrzőket cserélje le a kívánt erőforrás nevét:
 ```xml
 <azure.plugin.appname>YOUR_APP_NAME</azure.plugin.appname>
 <azure.plugin.resourcegroup>YOUR_RESOURCE_GROUP</azure.plugin.resourcegroup>
 ```
 
-Akkor is görgessen le a `<plugins>` szakaszában _pom.xml_ vizsgálhatja meg az Azure beépülő modul.
 
 ## <a name="build-and-deploy-the-application"></a>Az alkalmazás létrehozása és üzembe helyezése
 

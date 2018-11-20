@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2018
+ms.date: 11/19/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 19206163a07964b564300bbed1fed45973c8fc74
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: e86ff4ebf91d0c0b691caf429d9489bf769f16af
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311065"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975192"
 ---
 # <a name="azure-stack-registration"></a>Azure Stack-regisztráció
 Regisztrálhat az Azure Stack Development Kit (ASDK) telepítése az Azure marketplace-elemek letöltése az Azure-ból, és megkezdheti a Microsoft kereskedelmi adatok beállítása. Regisztráció teljes Azure Stack-funkciók, többek között a piactér tartalomtípus-gyűjtési támogatásához szükséges. Regisztrációs ajánlott, mivel lehetővé teszi, hogy tesztelje fontos Azure Stack-funkciók, például a Marketplace-en tartalomtípus-gyűjtési és használati jelentések készítése. Miután regisztrálta Azure Stack, az Azure kereskedelmi jelentett használati. Láthatja a regisztráció során használt előfizetés alatt. Azonban ASDK felhasználók nem számítunk fel díjat minden használati jelentést.
@@ -50,7 +50,7 @@ Kövesse az alábbi lépéseket a ASDK regisztrálni az Azure-ral.
     ```PowerShell  
     # Add the Azure cloud subscription environment name. 
     # Supported environment names are AzureCloud, AzureChinaCloud or AzureUSGovernment depending which Azure subscription you are using.
-    Add-AzureRmAccount -EnvironmentName "AzureCloud"
+    Add-AzureRmAccount -EnvironmentName "<environment name>"
 
     # Register the Azure Stack resource provider in your Azure subscription
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
@@ -62,17 +62,98 @@ Kövesse az alábbi lépéseket a ASDK regisztrálni az Azure-ral.
     $AzureContext = Get-AzureRmContext
     $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the credentials to access the privileged endpoint."
     $RegistrationName = "<unique-registration-name>"
-    $UsageReporting = $true # Set to $false if using the Capacity Billing model
     Set-AzsRegistration `
     -PrivilegedEndpointCredential $CloudAdminCred `
     -PrivilegedEndpoint AzS-ERCS01 `
     -BillingModel Development `
     -RegistrationName $RegistrationName `
-    -UsageReportingEnabled:$UsageReporting
+    -UsageReportingEnabled:$true
     ```
 3. Miután a parancsfájl futása befejeződött, megjelenik ez az üzenet: **környezete már regisztrálva van, és aktiválta a megadott paraméterekkel.**
 
     ![A környezet már regisztrálva van](media/asdk-register/1.PNG)
+
+
+## <a name="register-in-disconnected-environments"></a>Regisztrálja a kapcsolat nélküli környezetben
+Ha regisztrál az Azure Stack kapcsolat nélküli környezetben (az internet-hozzáférés nélküli), szerezze be egy regisztrációs tokent az Azure Stack-környezet, majd ezt a jogkivonatot egy számítógépen, amely Azure-ban regisztrálja, és hozzon létre egy aktiválási képes kapcsolódni kell az erőforrás ASDK környezete számára.
+ 
+ > [!IMPORTANT]
+ > Mielőtt regisztrálja az Azure Stack használatával ezeket az utasításokat, győződjön meg arról, hogy az Azure Stack PowerShell telepítése és az Azure Stack eszközök letöltött leírtak szerint a [üzembe helyezés utáni konfigurációs](asdk-post-deploy.md) cikk mindkét a ASDK gazdagépen számítógép és a számítógép csatlakozik az Azure és a regisztráció internet-hozzáféréssel rendelkező.
+
+### <a name="get-a-registration-token-from-the-azure-stack-environment"></a>Szerezze be egy regisztrációs tokent az Azure Stack-környezet
+A ASDK gazdaszámítógépen indítsa el a Powershellt rendszergazdaként, és keresse meg a **regisztrációs** mappájában a **AzureStack-Tools-master** jön létre, amikor az Azure Stack eszközök letöltött könyvtár. A következő PowerShell-parancsok segítségével importálhatja a **RegisterWithAzure.psm1** modult, majd a **Get-AzsRegistrationToken** parancsmagot, hogy a regisztrációs jogkivonat lekérése:  
+
+   ```PowerShell  
+   Import-Module .\RegisterWithAzure.psm1
+   $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the credentials to access the privileged endpoint."
+   $FilePathForRegistrationToken = $env:SystemDrive\RegistrationToken.txt
+   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential $CloudAdminCred `
+   -UsageReportingEnabled:$false `
+   -PrivilegedEndpoint AzS-ERCS01 `
+   -BillingModel Development `
+   -MarketplaceSyndicationEnabled:$false `
+   -TokenOutputFilePath $FilePathForRegistrationToken
+   ```
+Alapértelmezés szerint a regisztrációs jogkivonat menti a rendszer a megadott fájl *$FilePathForRegistrationToken* paraméter. A fájl elérési útja vagy fájlnév szabadon módosíthatja.
+
+A regisztrációs jogkivonat használatra mentse az internethez csatlakozó számítógépen. $FilePathForRegistrationToken átmásolhatja a fájlt vagy a szöveget.
+
+### <a name="connect-to-azure-and-register"></a>Csatlakozás az Azure és a regisztráció
+Az internethez csatlakoztatott számítógépen indítsa el a Powershellt rendszergazdaként, és keresse meg a **regisztrációs** mappájában a **AzureStack-Tools-master** jön létre, amikor a letöltött az Azure directory A verem eszközök. A következő PowerShell-parancsok segítségével importálhatja a **RegisterWithAzure.psm1** modult, majd a **Register-AzsEnvironment** parancsmaggal regisztrálhatja az Azure-ral azáltal, hogy a regisztrációs jogkivonatot, az imént létrehozott, és egyedi regisztrációs nevét:  
+
+  ```PowerShell  
+  $registrationToken = "<your registration token>"
+  $RegistrationName = "<unique registration name>"
+  Register-AzsEnvironment -RegistrationToken $registrationToken `
+  -RegistrationName $RegistrationName
+  ```
+
+Másik lehetőségként használhatja a **Get-tartalom** parancsmagot, hogy a regisztrációs jogkivonatot tartalmazó fájlra mutat:
+
+  ```PowerShell  
+  $registrationToken = Get-Content -Path '<path>\<registration token file>'
+  Register-AzsEnvironment -RegistrationToken $registrationToken `
+  -RegistrationName $RegistrationName
+  ```
+
+A regisztrációs jogkivonatot, és a regisztrációs erőforrás neve a későbbiekben takaríthat meg.
+
+### <a name="retrieve-an-activation-key-from-the-azure-registration-resource"></a>Az Azure-regisztráció erőforrás-aktiválási kulcs lekérése
+
+Az internetkapcsolattal rendelkező számítógép továbbra is használja, kérje le egy aktiválási kulcsot hozott létre, amikor az Azure-ban regisztrált regisztrációs erőforrásból.
+
+Az aktiválási kulcs lekéréséhez futtassa a következő PowerShell-parancsokat pedig a ugyanazon egyedi regisztrációs regisztrálásakor az Azure-ral az előző lépésben megadott név értéket:  
+
+  ```Powershell
+  $RegistrationResourceName = "<unique-registration-name>"
+  $KeyOutputFilePath = "$env:SystemDrive\ActivationKey.txt"
+  $ActivationKey = Get-AzsActivationKey -RegistrationName $RegistrationResourceName `
+  -KeyOutputFilePath $KeyOutputFilePath
+  ```
+
+Az aktiválási kulcsot a rendszer menti a megadott fájl *$KeyOutputFilePath*. A fájl elérési útja vagy fájlnév szabadon módosíthatja.
+
+### <a name="create-an-activation-resource-in-azure-stack"></a>Hozzon létre egy aktiválási erőforrást az Azure Stackben
+
+Az Azure Stack-környezet térjen vissza a fájl- vagy szöveget az aktiválási kulcs alapján létrehozott **Get-AzsActivationKey**. Futtassa a következő PowerShell-parancsokat az aktiválási erőforrás létrehozásához az Azure Stack a aktiválási kulccsal:   
+
+  ```Powershell
+  $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the credentials to access the privileged endpoint."
+  $ActivationKey = "<activation key>"
+  New-AzsActivationResource -PrivilegedEndpointCredential $CloudAdminCred `
+  -PrivilegedEndpoint AzS-ERCS01 `
+  -ActivationKey $ActivationKey
+  ```
+
+Másik lehetőségként használhatja a **Get-tartalom** parancsmagot, hogy a regisztrációs jogkivonatot tartalmazó fájlra mutat:
+
+  ```Powershell
+  $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the credentials to access the privileged endpoint."
+  $ActivationKey = Get-Content -Path '<path>\<Activation Key File>'
+  New-AzsActivationResource -PrivilegedEndpointCredential $CloudAdminCred `
+  -PrivilegedEndpoint AzS-ERCS01 `
+  -ActivationKey $ActivationKey
+  ```
 
 ## <a name="verify-the-registration-was-successful"></a>Ellenőrizze a regisztráció sikeres volt
 Kövesse az alábbi lépéseket, győződjön meg arról, hogy sikeres volt-e a ASDK regisztráció az Azure-ral.
