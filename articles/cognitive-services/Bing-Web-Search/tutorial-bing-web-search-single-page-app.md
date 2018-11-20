@@ -3,19 +3,19 @@ title: 'Oktatóanyag: Egyoldalas webalkalmazás létrehozása – Bing Web Searc
 titleSuffix: Azure Cognitive Services
 description: Ez az egyoldalas alkalmazás bemutatja, hogyan használható a Bing Web Search API a releváns keresési eredmények lekérésére, feldolgozására és megjelenítésére egy egyoldalas alkalmazásban.
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: tutorial
 ms.date: 09/12/2018
-ms.author: erhopf
-ms.openlocfilehash: 670f02cbd8e994664e7c4edd75940ff43f9616b6
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: b94e6f70d4a28dc59ddaa62cfad55c6c8383b761
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126479"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161922"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Oktatóanyag: Egyoldalas alkalmazás létrehozása a Bing Web Search API használatával
 

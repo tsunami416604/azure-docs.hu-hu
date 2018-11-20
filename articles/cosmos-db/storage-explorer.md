@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: jejiang
-ms.openlocfilehash: 1e18db960b9e07ae412d0c41c4544ef6bb35977c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4a50809c48ba03b7a12689d905e704d3f820ca8a
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261160"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162466"
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>Azure Cosmos DB kezelése az Azure Storage Explorerben
 
@@ -152,7 +152,7 @@ Ha a jobb gombbal kattint egy előfizetésre az Explorer panelen, gyorsan végre
 - Kattintson a **Törlés** gombra a kijelölt dokumentum törléséhez.
 
 #### <a name="query-for-documents"></a>Dokumentumok lekérdezése
-- Szerkessze a dokumentumszűrőt egy [SQL-lekérdezés](sql-api-sql-query.md) beírásával, majd kattintson az **Alkalmaz** gombra.
+- Szerkessze a dokumentumszűrőt egy [SQL-lekérdezés](how-to-sql-query.md) beírásával, majd kattintson az **Alkalmaz** gombra.
 
     ![Dokumentumszűrő](./media/storage-explorer/document-filter.png)
 

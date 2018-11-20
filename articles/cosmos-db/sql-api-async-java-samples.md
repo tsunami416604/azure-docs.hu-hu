@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: sample
 ms.date: 06/18/2018
 ms.author: sngun
-ms.openlocfilehash: 02e60b3899280afde2927d40ad54cb514bf0fa0e
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
-ms.translationtype: HT
+ms.openlocfilehash: 9e2deb2a3cbd66db7d7abe03bb5ea8e1574f817b
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43246731"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161980"
 ---
 # <a name="azure-cosmos-db-async-java-examples-for-the-sql-api"></a>Azure Cosmos DB: Aszinkron Java-példák az SQL API-hoz
 
@@ -147,7 +147,7 @@ A [DocumentQuerySamples](https://github.com/Azure/azure-cosmosdb-java/blob/maste
 | [Egyszerű dokumentumlekérdezés végrehajtása, és az eredmények szűrése](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java#L318-L368) | |
 | [Rendezés alapján végzett, több partícióra kiterjedő dokumentumlekérdezés végrehajtása](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java#L410-L457) | [FeedOptions.setEnableCrossPartitionQuery](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb._feed_options.setenablecrosspartitionquery) |
 
-További információ a lekérdezések írásáról: [SQL-lekérdezés az Azure Cosmos DB-ben](sql-api-sql-query.md).
+További információ a lekérdezések írásáról: [SQL-lekérdezés az Azure Cosmos DB-ben](how-to-sql-query.md).
 
 ## <a name="offer-examples"></a>Ajánlatpéldák
 Az [OfferCRUDAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/OfferCRUDAsyncAPITest.java) fájl mutatja a következő feladatok elvégzési módját:

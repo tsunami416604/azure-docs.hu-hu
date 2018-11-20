@@ -3,25 +3,25 @@ title: 'Rövid útmutató: Bing Video Search, Python'
 titlesuffix: Azure Cognitive Services
 description: Információk és kódminták segítségével ismerkedhet meg a Bing Video Search API használatának első lépéseivel.
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
 ms.topic: quickstart
 ms.date: 9/21/2017
-ms.author: v-jerkin
-ms.openlocfilehash: 797eb476aa3386949b08efb957edf48a97e40d6b
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: ccc27481289ffc686e3e480685ba421c762e3718
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220014"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161079"
 ---
 # <a name="quickstart-bing-video-search-api-with-python"></a>Rövid útmutató: Bing Video Search API Python használatával
 
 Ez az útmutató bemutatja, hogyan használható a Microsoft Cognitive Services részét képező Bing Video Search API az Azure-on. Az API-k technikai részleteit az [API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) című részben tekintheti meg.
 
-Ezt a példát futtathatja Jupyter-notebookként a [MyBinderen](https://mybinder.org), az indítás Binder-jelvényére kattintva. 
+Ezt a példát futtathatja Jupyter-notebookként a [MyBinderen](https://mybinder.org), az indítás Binder-jelvényére kattintva: 
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingVideoSearchAPI.ipynb)
 

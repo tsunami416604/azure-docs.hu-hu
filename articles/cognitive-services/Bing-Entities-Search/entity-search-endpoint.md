@@ -3,19 +3,19 @@ title: A Bing Entity Search végpontok
 titlesuffix: Azure Cognitive Services
 description: Az Entity Search API-végpont összefoglalása.
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
 ms.topic: conceptual
 ms.date: 12/04/2017
-ms.author: v-jaswel
-ms.openlocfilehash: b1b89cbacf43df544261847d4e3fae396a52f423
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.author: aahi
+ms.openlocfilehash: 578791c8beb34b08b28037977147d41db83f4a4d
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816276"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164915"
 ---
 # <a name="entity-search-endpoints"></a>Végpontok entitás keresése
 A **Entity Search API** egy végpontot tartalmaz.
@@ -29,7 +29,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/entities
 ```
 
 A következő URL-paraméter szükség:
-- mkt. A piacon, honnan származnak az eredményeket. 
+- mkt. A piac, ahonnan az eredmények származnak. 
 - VÁLASZOK. Az entitás keresési lekérdezés.
 
 ## <a name="next-steps"></a>További lépések

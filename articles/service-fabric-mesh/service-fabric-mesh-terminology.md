@@ -9,12 +9,12 @@ ms.date: 07/12/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 925d97658a299bea983b16ae6b507159ef0e9e62
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: f72490169149d247a43e2760815d757c3606f1b3
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979131"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163724"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Service Fabric-háló terminológiája
 
@@ -32,7 +32,7 @@ Az Azure Service Fabric Mesh egy teljes körűen felügyelt szolgáltatás, amel
 
 **Alkalmazás**: alkalmazás A Service Fabric-háló üzembe helyezés, a verziókezelés és a egy háló alkalmazás teljes élettartama egysége. Mindegyik alkalmazáspéldány életciklusának egymástól függetlenül is felügyelhetők.  Alkalmazások egy vagy több szolgáltatás kódcsomagok és beállítások állnak. Egy alkalmazás használatával az Azure Resource modell (RM) séma van megadva.  Szolgáltatások, az alkalmazás-erőforrás az erőforrás-kezelő sablon tulajdonságait ismerteti.  Az alkalmazás által hivatkozott hálózatok és az alkalmazás által használt köteteket.  Egy alkalmazás létrehozásakor az alkalmazás, szolgáltatás(ok), hálózati és kötet(ek) modellezése eltér a Service Fabric erőforrás modell használatával.
 
-**Szolgáltatás**: egy alkalmazásban egy szolgáltatás jelöli a mikroszolgáltatások és a egy teljes és a különálló funkciót látnak el. Mindegyik szolgáltatás egy vagy több, minden a tároló rendszerképét a kódcsomag társított futtatásához szükséges leíró kódcsomagok tevődik össze.  A szolgáltatások az alkalmazások számát felfelé és lefelé skálázhatók.
+**Szolgáltatás**: egy alkalmazásban egy szolgáltatás jelöli a mikroszolgáltatások és a egy teljes és a különálló funkciót látnak el. Mindegyik szolgáltatás egy vagy több, minden a tároló rendszerképét a kódcsomag társított futtatásához szükséges leíró kódcsomagok tevődik össze.  Az alkalmazások service replikák száma és skálázhatók.
 
 **Kódcsomag**: kódcsomagok írja le, minden a tároló rendszerképét a kódcsomag, beleértve a következőket társított futtatásához szükséges:
 
@@ -86,4 +86,4 @@ A következő táblázat ismerteti a különböző alkalmazás-modellek és azok
 
 A Service Fabric Meshsel kapcsolatos további információkért olvassa el a [Service Fabric Mesh áttekintésével](service-fabric-mesh-overview.md) foglalkozó cikket.
 
-Választ találhat [gyakori kérdésekre](service-fabric-mesh-faq.md).
+Válaszok a [gyakori kérdésekre](service-fabric-mesh-faq.md).

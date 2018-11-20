@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3f0f087c98f2b6594ab7e841f92ffac7ffe4003e
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: a7666ada6c4535010297415eac8b0bd9e5226d9e
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809910"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51974467"
 ---
 <a name="retrieve-operations"></a>Műveletek beolvasása
 ===================
@@ -40,10 +40,10 @@ Olvassa be az ajánlat vagy lekérni egy adott művelet a megadott műveletazono
 
 |  **Name (Név)**          |      **Leírás**                                                                                           | **Adattípus** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
-|  publisherId       |  Például a közzétevő azonosítója `Contoso`                                                                   |  Sztring       |
-|  OfferId           |  Ajánlat azonosítója                                                                                              |  Sztring       |
+|  publisherId       |  Például a közzétevő azonosítója `Contoso`                                                                   |  Karakterlánc       |
+|  OfferId           |  Ajánlat azonosítója                                                                                              |  Karakterlánc       |
 |  operationId       |  GUID azonosítója, amely egyedileg azonosítja az ajánlatot a műveletet. Az operationId lehet beolvasni az API-val, és is adja vissza minden olyan hosszú ideig futó művelet esetén a válasz HTTP-fejléchez például a [közzététel ajánlat](./cloud-partner-portal-api-publish-offer.md) API-t.  |   GUID   |
-|  filteredStatus    | Szűrés állapot szerint használt opcionális lekérdezési paraméter (például `running`) az API által visszaadott a gyűjteményen.  |   Sztring |
+|  filteredStatus    | Szűrés állapot szerint használt opcionális lekérdezési paraméter (például `running`) az API által visszaadott a gyűjteményen.  |   Karakterlánc |
 |  API-verzió       | API legújabb verziója                                                                                           |    Dátum      |
 |  |  |  |
 
@@ -189,7 +189,7 @@ Olvassa be az ajánlat vagy lekérni egy adott művelet a megadott műveletazono
 |  submissionType              | Az ajánlat például jelentett művelet típusa `Publish/GGoLive`      |
 |  createdDateTime             | A művelet létrehozásakor, a dátum-idő (UTC)                                                       |
 |  lastActionDateTime          | A művelet végeztével a rendszer az utolsó frissítés, a dátum-idő (UTC)                                       |
-|  status                      | A művelet állapotának vagy "nem indult el | fut | sikertelen | Befejezett`. Only one operation can have status `futtatása "egyszerre. |
+|  status                      | A művelet állapotának vagy `not started` \| `running` \| `failed` \| `completed`. Csak egy művelet lehet állapot `running` egyszerre. |
 |  error                       | Sikertelen műveletek hibaüzenet                                                               |
 |  |  |
 

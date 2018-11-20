@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: e87cd3742a5dcd52c3a447bb66ea9089c18d5aee
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: e8608782c71f8afc2ae32b16077cb26b5dcc6849
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214681"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976185"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Mesterséges Intelligencia használatával monitorozásának és hibaelhárításának intelligens elemzési adatbázis-teljesítmény
 
@@ -41,7 +41,7 @@ Intelligent Insights egy egyedi képesség az Azure beépített intelligenciáva
 
 Intelligent Insights összehasonlítja az adatbázis feladata az elmúlt hét nap alapkonfiguráció számítási feladatok az elmúlt órában a elemzi az adatbázis teljesítményét. Adatbázis-tevékenységprofil lekérdezések az adatbázis teljesítményét, például: ismétlődő és a legnagyobb lekérdezések a legjelentősebb minősül tevődik össze. Mivel minden adatbázis egyedi struktúra, adatok, használati, és alkalmazás alapján, minden egyes számítási feladatok alapterv, amely akkor jön létre, csak az egyedi egy egyedi példányára. Intelligent Insights, a számítási feladatok alapkonfiguráció független is abszolút működési küszöbérték figyeli, és észleli a hibákat túlzott várakoznia, kritikus kivételeket és lekérdezési parameterizations teljesítményt befolyásoló problémák.
 
-Miután egy teljesítményprobléma teljesítménycsökkenés több megfigyelt metrikák a mesterséges intelligencia használatával észlel, elemzési történik. Az intelligens adatforgalmáról mi történik az adatbázis egy diagnosztikai napló jön létre. Intelligent Insights megkönnyíti az adatbázis teljesítményét a probléma megoldásáig az első megjelenés nyomon. Minden egyes azt észlelte, hogy probléma van és nyomon követni a életciklus kezdeti probléma észlelése és a teljesítmény fokozása ellenőrzése annak befejezését. Frissítések a diagnosztikai naplóban találhatók 15 percenként.
+Miután egy teljesítményprobléma teljesítménycsökkenés több megfigyelt metrikák a mesterséges intelligencia használatával észlel, elemzési történik. Az intelligens adatforgalmáról mi történik az adatbázis egy diagnosztikai napló jön létre. Intelligent Insights megkönnyíti az adatbázis teljesítményét a probléma megoldásáig az első megjelenés nyomon. Minden egyes azt észlelte, hogy probléma van és nyomon követni a életciklus kezdeti probléma észlelése és a teljesítmény fokozása ellenőrzése annak befejezését.
 
 ![Adatbázis teljesítménye az árelemzési munkafolyamat](./media/sql-database-intelligent-insights/intelligent-insights-concept.png)
 

@@ -1,0 +1,99 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 22a2a5d0a275b4eeb9ddea88741abdef9745a539
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52167037"
+documentType: LandingData
+title: Az Azure SQL Database - speciális biztonsági
+metadata:
+  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
+  title: Az Azure SQL Database - speciális biztonsági
+  meta.description: Learn about the Advanced security capabilities of Azure SQL Database.
+  services: sql-database
+  author: jovanpop-msft
+  manager: craigg
+  ms.service: sql-database
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: overview
+  ms.date: 11/11/2018
+  ms.author: jovanpop-msft
+sections:
+- items:
+  - type: paragraph
+    text: Az Azure SQL Database továbbfejlesztett beépített biztonsági funkciókat, amelyek az adatbázisok védelméhez.
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - title: Áttekintés
+      href: /azure/sql-database/sql-database-security-overview
+      html: <p>Az Azure SQL Database fejlett biztonsági funkciókat, amelyek segítségével biztonságosabbá teheti az adatok egy készletét nyújtja.</p>
+    - title: Fenyegetések észlelése
+      href: /azure/sql-database/sql-database-threat-detection
+      html: <p>Az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek felismerését.</p>
+    - title: Sebezhetőségi felmérés
+      href: /azure/sql-database/sql-vulnerability-assessment
+      html: <p>A biztonságirés-értékelési lehetővé teszi a felderítése, nyomon követheti és szervizelheti az adatbázis biztonsági réseinek.</p>
+    - title: Titkosítás olyan rest
+      href: /azure/sql-database/transparent-data-encryption-azure-sql
+      html: <p>Transzparens adattitkosítás (TDE) biztosítja, hogy az információk az adatbázisok transzparens módon titkosítva legyenek.</p>
+    - title: Adatfelderítés és besorolás
+      href: /azure/sql-database/sql-database-data-discovery-and-classification
+      html: <p>Adatfelderítés és besorolás lehetővé teszi, hogy a felderítése, besorolása, címkézése és az adatbázisokban a bizalmas adatok védelmének.</p>
+    - title: Azure Active Directory
+      href: /azure/sql-database/sql-database-aad-authentication
+      html: <p>Az Azure SQL Database lehetővé teszi az Azure Active Directoryban (Azure AD) identitás használatával kapcsolódni az adatbázishoz.</p>
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: 'Beállítása és kezelése a biztonsági funkciókat az Azure SQL Database az Azure Portalon, az Azure CLI vagy a PowerShell használatával:'
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/portal.svg
+      title: Az Azure Portal
+    - image:
+        src: media/index/cli.svg
+      title: Azure CLI
+    - image:
+        src: media/index/logo_powershell.svg
+      title: PowerShell
+    rows:
+    - title: A telepítő a Fenyegetésészlelés az önálló adatbázis
+      values:
+      - href: /azure/sql-database/sql-database-threat-detection#set-up-threat-detection-for-your-database-in-the-azure-portal
+      - href: 
+      - href: /azure/sql-database/scripts/sql-database-auditing-and-threat-detection-powershell
+    - title: A felügyelt példány Fenyegetésészlelési funkciójának beállítása
+      values:
+      - href: /azure/sql-database/sql-database-managed-instance-threat-detection#set-up-threat-detection-for-your-managed-instance-in-the-azure-portal
+      - href: 
+      - href: 
+    - title: Az önálló adatbázis tűzfalszabályok beállítása
+      values:
+      - href: /azure/sql-database/sql-database-firewall-configure#manage-firewall-rules-using-the-azure-portal
+      - href: /azure/sql-database/sql-database-firewall-configure#manage-firewall-rules-using-azure-cli
+      - href: /azure/sql-database/sql-database-firewall-configure#manage-firewall-rules-using-azure-powershell
+    - title: Biztonságirés-értékelés szabályok kezelése
+      values:
+      - href: 
+      - href: 
+      - href: /azure/sql-database/sql-vulnerability-assessment#manage-vulnerability-assessments-using-azure-powershell
+- title: További erőforrások
+  items:
+  - type: paragraph
+    text: Az Azure SQL Database biztosít további beépített funkcióit, hogy az adatbázisok biztonságának javítása érdekében.
+  - type: list
+    style: ordered
+    items:
+    - html: Veszélyforrások elleni védelem a <a href="/azure/sql-database/sql-database-managed-instance-threat-detection">felügyelt példányok</a> és <a href="/azure/sql-database/sql-database-threat-detection">adatbázisok</a> észleli az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek.
+    - html: A naplózás <a href="/azure/sql-database/sql-database-managed-instance-auditing">felügyelt példányok</a> és <a href="/azure/sql-database/sql-database-auditing">adatbázisok</a> nyomon követi az adatbázisok eseményeit és felvezeti ezeket egy naplófájlba, az Azure storage-fiókot, OMS-munkaterület vagy az Event Hubs.
+    - html: <a href="/azure/sql-database/sql-database-firewall-configure">Tűzfalszabályok</a> az önálló adatbázisok lehetővé teszi, hogy controll milyen IP címek hozzáférhet az adatbázisban.
+    - html: <a href="/azure/sql-database/sql-database-managed-instance-vnet-configuration">VNet-integráció</a> a felügyelt példány lehetővé teszi, hogy az adatbázisok helyezi a saját privát címterét.
+    - html: <a href="/azure/sql-database/sql-database-always-encrypted">Mindig titkosított</a> védelmet biztosít a kiszolgálón, az inaktív bizalmas adatok ügyfél és kiszolgáló közötti mozgás során, és az adatok használata közben, biztosítva, hogy bizalmas adatok soha nem jelenik meg, mint belül az adatbázis-rendszer egyszerű szövegként.
+    - html: <a href="/azure/sql-database/sql-database-dynamic-data-masking-get-started">Dinamikus adatmaszkolás</a> által meghatározhatóvá a bizalmas adatok felfedéséhez az alkalmazásrétegre gyakorolt minimális hatás mellett, így segít megakadályozni az bizalmas adatokhoz való jogosulatlan hozzáférést.

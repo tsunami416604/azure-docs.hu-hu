@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/19/2018
+ms.date: 11/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fbb57753117f3c60010fe910616b8d0af5178360
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 31d794aa1dccddc8018e9413c9743a0abe13f4ac
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434823"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52160195"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Az Azure Automationben az Azure PowerShell-modulok frissítése
 
@@ -61,9 +61,9 @@ Ezeket az Azure PowerShell-modulok a parancsmagok használata a runbookokban, sz
 
 Ahogy említettük, a **frissítés az Azure-modulok** gomb nem érhető el a szuverén felhőkben, mert csak érhető el a globális Azure-felhőben. Ez az az oka, hogy az a PowerShell-galériából, az Azure PowerShell-modulok legújabb verziója esetleg nem fog a jelenleg telepített ezek a felhők erőforrás-kezelő szolgáltatásokat.
 
-A modulok frissítése továbbra is végezhető importálásával a [Update-AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) runbook az Automation-fiókját, és azt futtatja.
+A modulok frissítése továbbra is végezhető importálásával a [Update-AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) runbook az Automation-fiókját, és azt futtatja. Ez a forgatókönyv segítségével frissítheti az Azure-modulok, de még nem feltétlenül kompatibilis a mi van üzembe helyezése az Azure-környezet. Győződjön meg, hogy a megfelelő verzió szükséges az egyes modulok, győződjön meg arról, hogy az Azure Automation továbbra is kezelheti az erőforrásokat kell. Az Azure Automation nem kezelheti, és nyomon követheti a telepített szolgáltatások verzióit.
 
-Használja a `AzureRmEnvironment` paraméter a megfelelő környezet átadása a runbookot.  Elfogadható értékek a következők **AzureCloud**, **AzureChinaCloud**, **AzureGermanCloud**, és **AzureUSGovernmentCloud**. Ha nem ad egy értéket ehhez a paraméterhez, a runbook alapértelmezés szerint az Azure nyilvános felhőbe **AzureCloud**.
+Használja a `AzureRmEnvironment` paraméter a megfelelő környezet átadása a runbookot.  Elfogadható értékek a következők **AzureCloud**, **AzureChinaCloud**, **AzureGermanCloud**, és **AzureUSGovernmentCloud**. Ezek az értékek használatával szerezhető `Get-AzureRmEnvironment | select Name`. Ha nem ad egy értéket ehhez a paraméterhez, a runbook alapértelmezés szerint az Azure nyilvános felhőbe **AzureCloud**
 
 Ha szeretné egy adott Azure PowerShell modul verziója helyett a legújabb elérhető használata a PowerShell-galériából, át ezeket a verziókat a választható `ModuleVersionOverrides` paraméterében a **Update-AzureModule** runbook. Példák: a [Update-AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) runbook. Az Azure PowerShell-modulokat, amelyek nem szerepelnek a `ModuleVersionOverrides` paraméter frissülnek a legújabb verziója a PowerShell-galériából. Ha semmi átadott a `ModuleVersionOverrides` paraméter, minden modul frissülnek a legújabb verziója a PowerShell-galériából, a azaz viselkedését a **frissítés az Azure-modulok** gombra.
 

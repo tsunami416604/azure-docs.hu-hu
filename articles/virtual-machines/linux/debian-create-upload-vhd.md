@@ -1,6 +1,6 @@
 ---
-title: Az Azure-ban Debian Linux virtuális merevlemez előkészítése |} Microsoft Docs
-description: Útmutató a Debian 7 & központi telepítési 8 VHD-fájlok létrehozása az Azure-ban.
+title: Az Azure-ban Debian Linux rendszerű virtuális merevlemez előkészítése |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre a központi telepítés Debian VHD lemezképek az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
@@ -13,28 +13,28 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 11/13/2018
 ms.author: szark
-ms.openlocfilehash: f8e98ae823d03dae475efca48a4ce32f27317882
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: ce2b9811baffea85cfa9a542fb5f93652daf39c8
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30908843"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976450"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Debian-alapú VHD előkészítése Azure-beli használatra
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a szakasz azt feltételezi, hogy már telepítette a Debian Linux operációs rendszer ISO-fájlból le: a [Debian webhely](https://www.debian.org/distrib/) egy virtuális merevlemezre. Több különféle eszköz található .vhd fájlok; létrehozása Hyper-V csak egy példaként szolgál. A Hyper-v-vel utasításokért lásd: [a Hyper-V szerepkör telepítése és konfigurálása a virtuális gépek](https://technet.microsoft.com/library/hh846766.aspx).
+Ez a szakasz azt feltételezi, hogy már telepítette a Debian Linux operációs rendszer ISO-fájlból származó letöltött a [Debian webhely](https://www.debian.org/distrib/) egy virtuális merevlemezre. Több eszköz létezik; .vhd-fájlok létrehozása A Hyper-V csak egy példa. Hyper-v-T használó utasításokért lásd: [a Hyper-V szerepkör telepítése és konfigurálása a virtuális gép](https://technet.microsoft.com/library/hh846766.aspx).
 
-## <a name="installation-notes"></a>A telepítéssel kapcsolatos megjegyzések
-* Is lásd: [általános Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes) kapcsolatos további információkat az Azure Linux előkészítése.
-* Az újabb VHDX formátum nem támogatott az Azure-ban. A lemez VHD formátumú Hyper-V kezelőjével konvertálhatja vagy a **convert-vhd** parancsmag.
-* A Linux rendszer telepítésekor LVM (gyakran sok telepítés alapértelmezett), hanem szabványos partíciók használata ajánlott. LVM neve ütközik a klónozott virtuális gépek, így elkerülhető, különösen akkor, ha egy operációsrendszer-lemez legalább egyszer meg kell hibaelhárítási egy másik virtuális géphez csatlakoztatható. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Ha előnyben részesített adatlemezek használható.
-* Ne konfiguráljon egy swap partíciót az operációsrendszer-lemezképet. Az Azure Linux ügynök beállítható úgy, hogy az ideiglenes erőforrás lemezen a lapozófájl létrehozásához. További információk a megtalálhatók az alábbi lépéseket.
-* Minden, az Azure virtuális merevlemez rendelkeznie kell egy virtuális mérete 1MB igazodik. Virtuális merevlemez egy nyers lemezen történő átalakítása meg kell győződnie arról, hogy a nyers lemez mérete 1MB átalakítás előtti többszöröse. Lásd: [Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes) további információt.
+## <a name="installation-notes"></a>Telepítési jegyzetek
+* Lásd még: [általános Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes) kapcsolatos további tippek Linux előkészítése az Azure-hoz.
+* Az újabb VHDX formátum nem támogatott az Azure-ban. A lemez konvertálása Hyper-V kezelője segítségével VHD formátumú, vagy a **convert-vhd** parancsmagot.
+* A Linux rendszer telepítésekor LVM (gyakran sok telepítés alapértelmezett), hanem szabványos partíciók használata ajánlott. LVM neve nem felel meg a klónozott virtuális gépeket, így elkerülhető, különösen akkor, ha minden eddiginél kell operációsrendszer-lemezt egy másik virtuális Géphez van csatlakoztatva a hibaelhárításhoz. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) adatlemezekre is használható, ha az előnyben részesített.
+* Az operációsrendszer-lemez nem konfigurál egy lapozó partíciót. Az Azure Linux-ügynök beállítható úgy, hogy hozzon létre egy ideiglenes erőforrás lemezen a lapozófájl. További információ található a következő lépéseket.
+* Az Azure-ban minden virtuális merevlemezek rendelkeznie kell egy virtuális méret 1 MB igazítva. Nyers lemezről történő konvertáláskor a virtuális merevlemez, ha biztosítania kell, hogy a nyers lemez mérete nagyobb-e az átalakítás előtt 1MB többszöröse. További információkért lásd: [Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes).
 
-## <a name="use-azure-manage-to-create-debian-vhds"></a>Debian VHD-k létrehozásához használja a Azure-kezelése
-Eszközök is elérhetők generálásához. az Azure-ba, Debian virtuális merevlemezeket, mint a [azure-kezelése](https://github.com/credativ/azure-manage) parancsfájl [credativ](http://www.credativ.com/). Ez az az ajánlott módszer, és teljesen új lemezkép létrehozása. Például létrehozásához futtassa az alábbi parancsokat letöltése Debian 8 virtuális merevlemez azure-kezelése (és függőségeinek) és a azure_build_image parancsprogrammal:
+## <a name="use-azure-manage-to-create-debian-vhds"></a>Használja a Debian virtuális merevlemezek létrehozása az Azure-kezelése
+Eszközök is elérhetők az Azure-hoz, a Debian virtuális merevlemezek létrehozásának például a [azure-kezelése](https://github.com/credativ/azure-manage) parancsfájlokat [Credativ](http://www.credativ.com/). Ez a teljesen új lemezkép létrehozása és az ajánlott eljárás. Például hozhat létre egy Debian 8 virtuális merevlemez futtassa a következő parancsok töltse le a `azure-manage` segédprogram (és a függőségek), és futtassa a `azure_build_image` parancsfájlt:
 
     # sudo apt-get update
     # sudo apt-get install git qemu-utils mbr kpartx debootstrap
@@ -50,49 +50,63 @@ Eszközök is elérhetők generálásához. az Azure-ba, Debian virtuális merev
 
 ## <a name="manually-prepare-a-debian-vhd"></a>Manuálisan a Debian virtuális merevlemez előkészítése
 1. A Hyper-V kezelőjében válassza ki a virtuális gépet.
-2. Kattintson a **Connect** nyissa meg a konzol ablakot a virtuális gép számára.
-3. A vonal megjegyzésbe **deb cdrom** a `/etc/apt/source.list` Ha úgy konfigurálja a virtuális gép ISO-fájl alapján.
-4. Szerkessze a `/etc/default/grub` fájlt, és módosítsa a **GRUB_CMDLINE_LINUX** paraméter a következő kiegészítő rendszermag paramétereket tartalmazza az Azure.
+2. Kattintson a **Connect** , nyisson meg egy konzolablakot, a virtuális gép.
+3. Ha az operációs rendszert egy ISO használatával telepítette, majd tegye megjegyzésbe minden olyan sor vonatkozó "`deb cdrom`" a `/etc/apt/source.list`.
+
+4. Szerkessze a `/etc/default/grub` fájlt, és módosítsa a **GRUB_CMDLINE_LINUX** paramétert a következő további kernel paramétereket tartalmazzák az Azure-hoz.
    
-        GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200 earlyprintk=ttyS0,115200 rootdelay=30"
-5. Építse újra a lárvajárat, majd futtassa:
-   
+        GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200n8 earlyprintk=ttyS0,115200"
+
+5. Építse újra a grub-hibát, és futtassa:
+
         # sudo update-grub
-6. Vegye fel a Debian tartozó Azure adattárak /etc/apt/sources.list Debian 7 vagy 8:
-   
-    **Debian 7.x "Wheezy"**
-   
-        deb http://debian-archive.trafficmanager.net/debian wheezy-backports main
-        deb-src http://debian-archive.trafficmanager.net/debian wheezy-backports main
-        deb http://debian-archive.trafficmanager.net/debian-azure wheezy main
-        deb-src http://debian-archive.trafficmanager.net/debian-azure wheezy main
+
+6. Adja hozzá a Debian Azure tárházak /etc/apt/sources.list Debian 8 és 9:
 
     **Debian 8.x "Jessie"**
 
+        deb http://debian-archive.trafficmanager.net/debian jessie main
+        deb-src http://debian-archive.trafficmanager.net/debian jessie main
+        deb http://debian-archive.trafficmanager.net/debian-security jessie/updates main
+        deb-src http://debian-archive.trafficmanager.net/debian-security jessie/updates
+        deb http://debian-archive.trafficmanager.net/debian jessie-updates main
+        deb-src http://debian-archive.trafficmanager.net/debian jessie-updates main
         deb http://debian-archive.trafficmanager.net/debian jessie-backports main
         deb-src http://debian-archive.trafficmanager.net/debian jessie-backports main
-        deb http://debian-archive.trafficmanager.net/debian-azure jessie main
-        deb-src http://debian-archive.trafficmanager.net/debian-azure jessie main
+
+    **Debian 9.x "Stretch"**
+
+        deb http://debian-archive.trafficmanager.net/debian stretch main
+        deb-src http://debian-archive.trafficmanager.net/debian stretch main
+        deb http://debian-archive.trafficmanager.net/debian-security stretch/updates main
+        deb-src http://debian-archive.trafficmanager.net/debian-security stretch/updates main
+        deb http://debian-archive.trafficmanager.net/debian stretch-updates main
+        deb-src http://debian-archive.trafficmanager.net/debian stretch-updates main
+        deb http://debian-archive.trafficmanager.net/debian stretch-backports main
+        deb-src http://debian-archive.trafficmanager.net/debian stretch-backports main
 
 
-1. Az Azure Linux ügynök telepítése:
+7. Az Azure Linux-ügynök telepítése:
    
         # sudo apt-get update
         # sudo apt-get install waagent
-2. Debian 7 a wheezy backports tárházból 3.16-alapú kernel futtatásához szükség. Először létre kell hoznia a következő tartalommal /etc/apt/preferences.d/linux.pref nevű fájlba:
+
+8. A Debian 9 + ajánlott az új Debian felhőalapú kernel használata virtuális gépek az Azure-ban való használatra. Az új rendszermag telepítéséhez először létre kell hoznia a következő tartalommal /etc/apt/preferences.d/linux.pref nevű fájlba:
    
-        Package: linux-image-amd64 initramfs-tools
-        Pin: release n=wheezy-backports
+        Package: linux-* initramfs-tools
+        Pin: release n=stretch-backports
         Pin-Priority: 500
    
-    Ezután futtassa "sudo apt get telepítése linux-lemezkép-amd64" az új kernel telepítéséhez.
-3. A virtuális gép kiosztásának megszüntetése és előkészíti az Azure-on történő üzembe helyezéséhez, és futtassa:
+    Futtassa "sudo apt-get install linux-lemezkép-felhő-amd64" az új Debian felhőalapú kernel telepítéséhez.
+
+9. A virtuális gép megszüntetése és kiépítése az Azure előkészítése, és futtassa:
    
         # sudo waagent –force -deprovision
         # export HISTSIZE=0
         # logout
-4. Kattintson a **művelet** -> leállítási le a Hyper-V kezelőjében. A Linux virtuális merevlemez az Azure-bA feltölteni kívánt készen áll.
+
+10. Kattintson a **művelet** -> Leállítás le a Hyper-V kezelőjében. A Linux rendszerű VHD-t most már készen áll a tölthető fel az Azure-bA.
 
 ## <a name="next-steps"></a>További lépések
-Most már készen áll a Debian virtuális merevlemez segítségével új virtuális gépek létrehozása az Azure-ban. Ha az első alkalommal, hogy van-e a .vhd fájl feltöltése az Azure, lásd: [Linux virtuális gép létrehozása az egyéni lemezről](upload-vhd.md#option-1-upload-a-vhd).
+Most már készen áll a Debian virtuális merevlemez használatával hozzon létre új virtuális gépek az Azure-ban. Ha ez az első alkalommal, hogy a .vhd fájlt videófájl az Azure-ba, tekintse meg a [egy Linux virtuális gép létrehozása egy egyéni lemezről](upload-vhd.md#option-1-upload-a-vhd).
 

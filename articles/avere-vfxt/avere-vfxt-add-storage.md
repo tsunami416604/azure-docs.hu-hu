@@ -6,14 +6,14 @@ ms.service: avere-vfxt
 ms.topic: procedural
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: aba023667094fb00647861fb2dd300eda64e4897
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: cd868996066110c8d0457b177e60523886912dd8
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634181"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163171"
 ---
-# <a name="configure-storage"></a>Tárolás konfigurálása
+# <a name="configure-storage"></a>A tárolás konfigurálása
 
 Ebben a lépésben beállítja a háttérrendszer tárolórendszer vFXT-fürthöz tartozó.
 
@@ -48,15 +48,20 @@ Az alábbi lépéseket egy NAS core filer hozzáadása:
 
 1. Avere a Vezérlőpulton kattintson a **beállítások** a felső fülön.
 
-2. Kattintson a **Core Filer** > **kezelése Core kiemelik** a bal oldalon.
+1. Kattintson a **Core Filer** > **kezelése Core kiemelik** a bal oldalon.
 
-3. Kattintson a **Create** (Létrehozás) gombra.
+1. Kattintson a **Create** (Létrehozás) gombra.
 
-   ![Lapjának képernyőképe, a bővítmény új core filer core filer nevét és a teljes tartománynév](media/avere-vfxt-add-core-filer.png)
+   ![Lapjának képernyőképe, a bővítmény új core filer a kurzorral a Létrehozás gomb](media/avere-vfxt-add-core-filer-start.png)
+
+1. Töltse ki a varázsló a szükséges adatokat: 
 
    * Adjon nevet a core filer.
    * Adjon meg egy teljesen minősített tartománynevét (FQDN), ha elérhető. Ellenkező esetben adja meg az IP-címet vagy állomásnevet, amelyet a core filer.
    * Válassza ki a filer osztály a listából. Ha nem tudja biztosan, válassza a **más**.
+
+     ![Lapjának képernyőképe, a bővítmény új core filer core filer nevét és a teljes tartománynév](media/avere-vfxt-add-core-filer.png)
+  
    * Kattintson a **tovább** , és válassza ki a gyorsítótár-szabályzatot. 
    * Kattintson a **Filer hozzáadása**.
    * Részletesebb információkért, tekintse meg [hozzáadása egy új NAS alapvető filer](http://library.averesystems.com/ops_guide/4_7/new_core_filer_nas.html) a Avere a fürt beállítások útmutatója.
@@ -110,7 +115,7 @@ A fürt létrehozását követően a Blob storage hozzáadásához kövesse az a
 
 1. Nyissa meg a Avere Vezérlőpultot, a fürt számára. Kattintson a **beállítások**, majd nyissa meg **fürt** > **Felhőhöz tartozó hitelesítő adatok** a bal oldali navigációs ablaktáblán. Kattintson a Felhőhöz tartozó hitelesítő adatok lap **hitelesítő adatok hozzáadása**.
 
-   ![A hitelesítő adatok hozzáadása gombra a Felhőhöz tartozó hitelesítő adatok lapon](media/avere-vfxt-new-credential-button.png)
+   ![A hitelesítő adatok hozzáadása gombra a Felhőhöz tartozó hitelesítő adatok konfigurálása lap](media/avere-vfxt-new-credential-button.png)
 
 1. Töltse ki a felhő alapvető filer a hitelesítő adatok létrehozása a következő információkat: 
 

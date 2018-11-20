@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: bc21e06b704bfe3d25132092efbbf23f342acb14
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 0f5eee20b0487fb5fce82047f40d137effb87ead
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634048"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164424"
 ---
 # <a name="enable-support-uploads"></a>Támogatási feltöltések engedélyezése
 
@@ -24,18 +24,21 @@ Kövesse az alábbi lépéseket a Avere Vezérlőpult támogatás aktiválásáh
 1. Keresse meg a **beállítások** a felső fülön.
 1. Kattintson a **támogatási** a bal oldali hivatkozásra, és fogadja el az adatvédelmi nyilatkozatát.
 
-   ![Képernyőkép: Ellenőrizze az adatvédelmi szabályzat elfogadása](media/avere-vfxt-privacy-policy.png)
+   ![Képernyőfelvétel: a Avere Vezérlőpulton, és a megerősítés gombra az előugró ablakban fogadja el az adatvédelmi szabályzatot](media/avere-vfxt-privacy-policy.png)
+
 1. Kattintson a háromszögre balra **Customer Info** a szakasz kibontásához.
+1. Kattintson a **Revalidate feltöltési információk** gombra.
 1. Állítsa be a fürt támogatási nevét **egyedi fürtnév** – ellenőrizze, hogy a fürt a támogató személyzet egyedileg azonosítja.
 1. Jelölje be a **statisztikák figyelése**, **általános információkat feltöltése**, és **összeomlási adatokat feltölteni**.
-1. Kattintson a **ellenőrzése feltöltési információk** gombra.
 1. Kattintson a **elküldése**.
+
+   ![Képernyőkép, amely tartalmazza a customer info szakaszban támogatási beállítások oldal befejeződött](media/avere-vfxt-support-info.png)
+
 1. Kattintson a háromszögre balra **biztonságos proaktív támogatási (Szervizcsomagok)** a szakasz kibontásához.
 1. Jelölje be a **Szervizcsomagok hivatkozás engedélyezése**.
 1. Kattintson a **elküldése**.
 
-   ![Támogatás engedélyezéséhez szükséges összes lépést tartalmazó képernyőképe](media/avere-vfxt-support-info-steps.png)
-
+   ![Befejezett proaktív támogatja biztonságos szakaszban támogatási beállítások oldalon tartalmazó képernyőképe](media/avere-vfxt-support-sps.png)
 
 ## <a name="next-steps"></a>További lépések
 

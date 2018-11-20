@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: sujayt
-ms.openlocfilehash: 77c445920041653ffb72d31e1dcfe4c368fb6642
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 37db2dd5908b231b9f04a5c009052d91724f6333
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915925"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976248"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Hálózatkezelés az Azure-bA replikációs kapcsolatban
 
@@ -60,10 +60,9 @@ Ha egy IP-alapú tűzfalproxyt vagy NSG-szabályokat használ a kimenő kapcsola
 - Összes IP-címtartományokat, amelyek megfelelnek a forrásrégióban tárfiókokba
     - Hozzon létre egy [tárolási szolgáltatáscímke](../virtual-network/security-overview.md#service-tags) a forrásrégióban az NSG-szabály alapján.
     - Ezek a címek lehetővé teszik, úgy, hogy az adatokat a virtuális gépről a gyorsítótárfiókba írhatók.
-- Az összes IP-címtartományokat, amelyek megfelelnek az Office 365 [hitelesítés és identitás IP V4 végpontok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
-    - Hozzáadja az új címeket az Office 365-címtartományokhoz a jövőben, ha szeretne létrehozni új NSG-szabályokat.
+- Hozzon létre egy [Azure Active Directory (AAD) szolgáltatáscímke](../virtual-network/security-overview.md#service-tags) alapú Hálózatibiztonságicsoport-szabály engedélyezi a hozzáférést az aad-hez tartozó összes IP-címek számára
+    - Hozzáadja az új címeket az Azure Active Directory (AAD) a jövőben, ha szeretne létrehozni új NSG-szabályokat.
 - Site Recovery szolgáltatás végpont IP-címek – elérhető egy [XML-fájl](https://aka.ms/site-recovery-public-ips) , és a célhely függnek.
--  Is [töltse le és használja ezt a parancsfájlt](https://aka.ms/nsg-rule-script), az NSG-t a szükséges szabályok automatikus létrehozásához.
 - Azt javasoljuk, hogy a szükséges NSG-szabályok létrehozása egy teszt NSG-t, és ellenőrizze, hogy nincsenek-e problémák a szabályokat az NSG-t éles létrehozása előtt.
 
 

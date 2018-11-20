@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: sngun
-ms.openlocfilehash: d7188270ff5b1edd3b5e396be0cd5fd22e6123c4
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: d85cada87a6934921bf2775f12c016a88d9fbe9e
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37855506"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164016"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Az Azure Cosmos DB dátumok használata
 Az Azure Cosmos DB séma rugalmasságát és a gazdag indexelési natív lehetőségeket kínál [JSON](http://www.json.org) adatmodellt. Az összes Azure Cosmos DB-erőforrásokat, például adatbázisok, tárolók, dokumentumok és tárolt eljárások modellezése és tárolása JSON-dokumentumok formájában. A hordozható visszatérhetnek követelmény, JSON-t (és az Azure Cosmos DB) támogatja a alapvető típusok csak egy kis készletét: karakterlánc, szám, logikai érték, tömböt, objektum és Null. JSON azonban rendkívül rugalmas, és lehetővé teszi a fejlesztők és a keretrendszereket, amelyek ezeket a primitívek használatával, és objektumokat vagy tömbök összeállítása azokat összetettebb típusokra. 
@@ -68,7 +68,7 @@ A dátum/idő értékek gyakoriak a lekérdezések. Például a tegnap óta lét
     collection.IndexingPolicy = new IndexingPolicy(new RangeIndex(DataType.String) { Precision = -1 });
     await client.CreateDocumentCollectionAsync("/dbs/orderdb", collection);
 
-Az indexelő a házirendek konfigurálásával kapcsolatos többet is megtudhat [Azure Cosmos DB-indexelő házirendek](indexing-policies.md).
+Az indexelő a házirendek konfigurálásával kapcsolatos többet is megtudhat [Azure Cosmos DB-indexelő házirendek](index-policy.md).
 
 ## <a name="querying-datetimes-in-linq"></a>A LINQ időpontok lekérdezése
 Az SQL .NET SDK-val automatikusan támogatja a LINQ-n keresztül az Azure Cosmos DB-ben tárolt adatok lekérdezésére. Például a következő kódrészlet azt mutatja be egy LINQ-lekérdezést, hogy az elmúlt három napban teljesített szűrők megrendelések.
@@ -79,11 +79,11 @@ Az SQL .NET SDK-val automatikusan támogatja a LINQ-n keresztül az Azure Cosmos
     // Translated to the following SQL statement and executed on Azure Cosmos DB
     SELECT * FROM root WHERE (root["ShipDate"] >= "2016-12-18T21:55:03.45569Z")
 
-További információ az Azure Cosmos DB SQL lekérdezési nyelvet és a LINQ szolgáltatójának [lekérdezése a Cosmos DB](sql-api-sql-query.md).
+További információ az Azure Cosmos DB SQL lekérdezési nyelvet és a LINQ szolgáltatójának [lekérdezése a Cosmos DB](how-to-sql-query.md).
 
 Ebben a cikkben azt keresi, hogyan lehet tárolni, Tárgymutató és időpontok az Azure Cosmos DB lekérdezése.
 
 ## <a name="next-steps"></a>További lépések
 * Töltse le és futtassa a [Kódminták a Githubon](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)
-* Tudjon meg többet [SQL-lekérdezések](sql-api-sql-query.md)
-* Tudjon meg többet [Azure Cosmos DB-indexelő házirendek](indexing-policies.md)
+* Tudjon meg többet [SQL-lekérdezések](how-to-sql-query.md)
+* Tudjon meg többet [Azure Cosmos DB-indexelő házirendek](index-policy.md)

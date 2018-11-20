@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9aae08aa5906f341a890ac15e30d2863109d83a2
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: b0fc10099f1388169146d90efcd7c20dcbe8df27
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140008"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164948"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profil élő Azure-webalkalmazások az Application insights segítségével
 
@@ -31,18 +31,18 @@ Profiler engedélyezése webes alkalmazásokhoz, kövesse az alábbi utasításo
 * [Virtuális gépek](app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 
-Application Insights Profiler telepítve van az Application Insights-webhelybővítményt. A site-bővítmény telepítése és konfigurálása, hogy a profilok beolvasása az Azure Web Apps kell. Akkor is, ha a forráskódot is szerepelnek az App Insights SDK egy webalkalmazás üzembe helyezett, kövesse az alábbi lépéseket a profiler engedélyezéséhez.
+Application Insights Profiler az App Services modul részeként előre telepítve van, de a bekapcsolásához és get-profilok az Azure Web Apps kell. Akkor is, ha a forráskódot is szerepelnek az App Insights SDK egy webalkalmazás üzembe helyezett, kövesse az alábbi lépéseket a profiler engedélyezéséhez.
 
 1. Nyissa meg a **App Services** panel az Azure Portalon.
 1. Navigáljon a **beállítások > figyelés** ablaktáblán.
 
    ![Az App Insights engedélyezése az App Services portálon](./media/app-insights-profiler/AppInsights-AppServices.png)
 
-1. Lehet, kövesse az utasításokat a panelen hozzon létre egy új erőforrást, vagy válasszon egy meglévő App Insights-erőforrás a webes alkalmazás figyelésére. Fogadja el az összes alapértelmezett beállításokat. **Kódszintű diagnosztika** alapértelmezés szerint be van kapcsolva, és lehetővé teszi, hogy a Profiler.
+1. Lehet, kövesse az utasításokat a panelen hozzon létre egy új erőforrást, vagy válasszon egy meglévő App Insights-erőforrás a webes alkalmazás figyelésére. Ügyeljen arra, hogy a Profiler van **a**.
 
    ![App Insights-webhelybővítményt hozzáadása][Enablement UI]
 
-1. Profiler az App Insights-webhelybővítményt a most már telepítve van, és engedélyezve van az App Services Alkalmazásbeállítás használatával.
+1. Profiler engedélyezve van az App Services Alkalmazásbeállítás használatával.
 
     ![A Profiler Alkalmazásbeállítás][profiler-app-setting]
 

@@ -14,17 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 8ca04fef8a17c43c9d1f761e36d8da7f1e07d4d5
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f3684a1fa22982b62992db28cccd88d67738bc94
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283580"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161701"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Version History (Az Azure AD Connect Health verzióelőzményei)
 Az Azure Active Directory-csapat rendszeresen frissíti az Azure AD Connect Health új szolgáltatásait és funkcióit. Ez a cikk felsorolja és kiadott funkciókról.
-Az Azure AD Connect Health szinkronizálási szolgáltatás integrálva van az Azure AD Connect-telepítésre. Tudjon meg többet [az Azure AD Connect verziókiadások előzményei](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history)
+Az Azure AD Connect Health szinkronizálási szolgáltatás integrálva van az Azure AD Connect-telepítésre. Tudjon meg többet [az Azure AD Connect verziókiadások előzményei](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history) szavazhat a visszajelzés funkciót, [Connnect egészségügyi User Voice-csatorna](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)
 
+## <a name="november-2018"></a>A 2018. november
+**Általánosan elérhető új funkciók:** 
+* Az Azure AD Connect Health for Sync - diagnosztizálásához és elhárításához a duplikált attribútummal szinkronizálási hibák a portálról
+
+**Ügynök frissítése:** 
+*  Az Azure AD Connect Health agent for AD DS (3.1.24.0 verzió) 
+1. Transport Layer Security (TLS) protokoll 1.2-es verziójában megfelelőségi és végrehajtás
+2. Globális katalógus riasztási zaj csökkentésére
+3. Health ügynök regisztrációs hibajavítások
+
+*   Az Azure AD Connect Health agent for AD FS (3.1.24.0 verzió)
+1. Transport Layer Security (TLS) protokoll 1.2-es verziójában megfelelőségi és végrehajtás
+2. A Test-ADFSRequestToken honosított operációs rendszer támogatása
+3. Az ügynök disgnostic EventHandler zárolási problémát megoldotta
+4. Health ügynök regisztrációs hibajavítások
 
 ## <a name="august-2018"></a>2018. augusztus 
 *  Az Azure AD Connect Health agent for Sync (3.1.7.0 verzió), amely az Azure AD Connect verziója 1.1.880.0    

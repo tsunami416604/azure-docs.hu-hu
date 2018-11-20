@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 12e3cf028b4812abd43dd2b6f23190fa6b75157a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
-ms.translationtype: HT
+ms.openlocfilehash: 717a0234f0155229597c6fc4fe70a7868a536975
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242290"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52160733"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 
@@ -50,7 +50,7 @@ Globálisan elosztott adatbázis-szolgáltatásként az Azure Cosmos DB segíts�
 
 * **Gyors válaszidejű és alapvető fontosságú alkalmazásokat hozhat létre**
     * Az Azure Cosmos DB az esetek 99%-ában alacsony végpontok közötti késést tud biztosítani az ügyfeleinek. 
-    * Egy átlagos 1 kB-os elem esetében a Cosmos DB – ugyanabban az Azure-régióban – az esetek 99%-ában garantálja az olvasások 10 ezredmásodperc alatti, illetve az indexelt írások 15 ezredmásodperc alatti végpontok közötti késését. A késések átlagértékei lényegesen alacsonyabbak ennél (5 ezredmásodperc alattiak).
+    * Egy átlagos 1 KB-os elem esetében a Cosmos DB garantálja a végpontok közötti késés olvasások 10 ezredmásodperc alatti és az indexelt írások az esetek 99 ugyanazon Azure-régióban található 10 ezredmásodperc alatti. A késések átlagértékei lényegesen alacsonyabbak ennél (5 ezredmásodperc alattiak).
 
 * **Always On rendelkezésre állás**
     * 99,99%-os rendelkezésre állású SLA minden egyrégiós adatbázisfiókhoz, valamint 99,999%-os olvasási rendelkezésre állás minden többrégiós adatbázisfiókhoz.
@@ -79,9 +79,9 @@ Az Azure Cosmos DB a hagyományos relációs és a nem relációs adatbázisok l
 | --- | --- | --- | --- |
 | Globális terjesztés | Nem | Nem | Igen, kulcsrakész terjesztés 30-nál is több régióban, többkiszolgálós API-kkal|
 | Horizontális skálázhatóság | Nem | Igen | Igen, a tárolás és átviteli sebesség függetlenül skálázható | 
-| Késési garancia | Nem | Igen | Igen, az esetek 99%-ában az olvasások 10 ezredmásodperc, az írások 15 ezredmásodperc alatt | 
+| Késési garancia | Nem | Igen | Igen, az olvasási 99 %-át < 10 ms, az írások < 10 ms | 
 | Magas rendelkezésre állás | Nem | Igen | Igen, az Azure Cosmos DB mindig elérhető, jól meghatározott PACELC kompromisszumokkal rendelkezik, valamint automatikus és kézi feladatátvételi beállításokat is lehetővé tesz|
-| Adatmodell és API | Relációs és SQL | Többmodelles és OSS API | Többmodelles és SQL, valamint OSS API (továbbiak hamarosan elérhetőek) |
+| Adatmodell és API | Relációs és SQL | Többmodelles és OSS API | Többmodelles és SQL, valamint OSS API |
 | SLA-k | Igen | Nem | Igen, késésre, átviteli sebességre, konzisztenciára, rendelkezésre állásra vonatkozó átfogó SLA-k |
 
 ## <a name="solutions-that-benefit-from-azure-cosmos-db"></a>Az Azure Cosmos DB előnyeit kihasználó megoldások

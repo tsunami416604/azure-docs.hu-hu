@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: d29199c5e1534e3f98fbdbb73799840cf9c9e75f
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 4927c76c1bb6be6c27d2e559e6d1292008b3643b
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633111"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162333"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>PowerShell-lel, az Apache Hive-lekérdezések futtatása
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -59,7 +59,7 @@ A következő lépések bemutatják, hogyan használja ezeket a parancsmagokat f
 
         .\hivejob.ps1
 
-    A parancsfájl futtatásakor kéri, adja meg a fürt a fürt neve és a HTTPS/rendszergazdai fiók hitelesítő adatait. Előfordulhat, hogy is kérni, jelentkezzen be az Azure-előfizetéshez.
+    A parancsfájl futtatásakor kéri, adja meg a fürt neve és a HTTPS-/ fürt rendszergazdai hitelesítő adataival. Előfordulhat, hogy is kérni, jelentkezzen be az Azure-előfizetéshez.
 
 3. A feladat befejezése után, akkor hasonló információt ad vissza a következő szöveget:
 

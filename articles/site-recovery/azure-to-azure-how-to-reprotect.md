@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: caef9a93e7d388ab55939876b7cc8344ce6370d0
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f890fc6e854f1d56d396c56ddfd8cc5a0481282f
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012513"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976944"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Ismételt védelem sikertelen volt az Azure virtuális gépen az elsődleges régióba
 
@@ -46,7 +46,7 @@ Ha Ön [átadja a feladatokat](site-recovery-failover.md) Azure virtuális gépe
 
 Testre szabhatja a következő tulajdonságokat a cél VMe ismételt védelem során.
 
-![Testre szab](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
+![Testreszabás](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
 
 |Tulajdonság |Megjegyzések  |
 |---------|---------|
@@ -83,4 +83,4 @@ Ha az ismételt védelmi feladat indít el, és a cél virtuális gép és a lem
 
 ## <a name="next-steps"></a>További lépések
 
-Miután a virtuális gép védett, feladatátvevő is kezdeményezhető. A feladatátvétel leállítja a virtuális Gépet a másodlagos régióban és hoz létre, és az elsődleges régióban, néhány kisebb üzemkimaradás indul el a virtuális gép. Ennek megfelelően válassza ki egy időpontot, és, hogy a feladatátvételi teszt futtatásához javasoljuk, de az elsődleges hely teljes feladatátvételt kezdeményez. [További](site-recovery-failover.md) feladatátvételi kapcsolatban.
+Miután a virtuális gép védett, feladatátvevő is kezdeményezhető. A feladatátvétel leállítja a virtuális Gépet a másodlagos régióban és hoz létre, és az elsődleges régióban, néhány kisebb üzemkimaradás indul el a virtuális gép. Javasoljuk, hogy ennek megfelelően válassza ki egy időpontot, és a feladatátvételi teszt futtatása előtt az elsődleges hely teljes feladatátvételt kezdeményez. [További](site-recovery-failover.md) feladatátvételi kapcsolatban.

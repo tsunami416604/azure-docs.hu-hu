@@ -1,25 +1,18 @@
 ---
 title: ExpressRoute-kapcsolatcsoportok módosítása klasszikusról Resource Manager-alapúra | Microsoft Docs
 description: Ez az oldal a klasszikus és a Resource Manager-alapú üzemi modellek áthidalásához szükséges ismeretek áttekintését tartalmazza.
-documentationcenter: na
 services: expressroute
 author: ganesr
-manager: carmonm
-editor: ''
-ms.assetid: bdf01217-1a98-4ec0-a08e-d84fd37f78af
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: ganesr
-ms.openlocfilehash: 7f8386b518ada850fc03e23c5cae3b159b3b213e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 6b9ac7408f83677ed9898dc37fc234b9b9a6386f
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22710065"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977029"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>ExpressRoute-kapcsolatcsoportok áthelyezése a klasszikusból a Resource Manager-alapú üzemi modellbe
 Ez a cikk azt tekinti át, hogy az Azure ExpressRoute-kapcsolatcsoportok hogyan helyezhetők át a klasszikusból az Azure Resource Manager-alapú üzemi modellbe.
@@ -64,7 +57,7 @@ Az ExpressRoute-kapcsolatcsoportokon a következő klasszikus műveletek támoga
 * Virtuális hálózati kapcsolatok létrehozása/frissítése/lekérése/törlése klasszikus virtuális hálózatokkal
 * Virtuális hálózati kapcsolatok hitelesítéseinek létrehozása/frissítése/lekérése/törlése előfizetések közötti kapcsolatokhoz
 
-A következő műveleteket nem hajthatja végre, ha az **allowClassicOperations** TRUE értékre van állítva:
+Azonban, hogy amikor **allowClassicOperations** az igaz értékre van állítva, nem hajtható végre a következő műveleteket:
 
 * Border Gateway Protocol- (BGP-) társviszonyok létrehozása/frissítése/lekérése/törlése Azure privát, Azure nyilvános és Microsoft társviszony-létesítéshez
 * ExpressRoute-kapcsolatcsoportok törlése
@@ -97,7 +90,7 @@ Ez a szakasz az ExpressRoute-kapcsolatcsoportok esetében nem támogatott művel
 ## <a name="configuration"></a>Konfiguráció
 Kövesse az [ExpressRoute-kapcsolatcsoportok áthelyezése a klasszikusból a Resource Manager-alapú üzemi modellbe](expressroute-howto-move-arm.md) című szakaszban ismertetett utasításokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [ExpressRoute-kapcsolatcsoporthoz kapcsolt virtuális hálózatok áttelepítése a klasszikusból az Azure Resource Manager-alapú modellbe](expressroute-migration-classic-resource-manager.md)
 * További információkért lásd: [ExpressRoute-kapcsolatcsoportok kiépítési munkafolyamatai és kapcsolatcsoport-állapotok](expressroute-workflows.md).
 * Az ExpressRoute-kapcsolat konfigurálása:

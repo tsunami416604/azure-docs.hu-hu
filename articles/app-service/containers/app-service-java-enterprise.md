@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: 6613def8891109e3a0ddf818111898a893a8035d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: a6d50e6f405294bf8e91018dd4d7b6008cd49ada
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629134"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161873"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>A linuxon futó App Service-ben a Java Enterprise útmutatója
 
@@ -27,17 +27,18 @@ Ez az útmutató főbb fogalmakat és utasításokat a Java vállalati fejleszt�
 
 ## <a name="scale-with-app-service"></a>Méretezés App Service-ben 
 
-A linuxon futó App Service-ben WildFly kiszolgáló önálló módban, nem tartományi konfigurációban futtatja. 
+A linuxon futó App Service-ben WildFly kiszolgáló önálló módban, nem tartományi konfigurációban futtatja. Horizontális felskálázás az App Service-csomag, az egyes WildFly példányok önálló kiszolgálóként van konfigurálva.
 
- Az alkalmazás méretezése vízszintesen vagy függőlegesen a [szabályok méretezése](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-autoscale-get-started?toc=%2Fazure%2Fapp-service%2Fcontainers%2Ftoc.json) , illetve [a példányszám növelése](https://docs.microsoft.com/azure/app-service/web-sites-scale?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+ Az alkalmazás méretezése vízszintesen vagy függőlegesen a [szabályok méretezése](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-autoscale-get-started?toc=%2Fazure%2Fapp-service%2Fcontainers%2Ftoc.json) , illetve [a példányszám növelése](https://docs.microsoft.com/azure/app-service/web-sites-scale?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json). 
 
 ## <a name="customize-application-server-configuration"></a>Alkalmazás-kiszolgálókonfiguráció testreszabása
 
-Fejlesztők is írhatnak egy indítási Bash-szkript végrehajtására a saját alkalmazás esetében például szükség további konfigurálásra:
+Webes alkalmazás példányai állapot nélküli, így minden egyes új példány indítása kell konfigurálni az alkalmazás számára szükséges Wildfly konfiguráció támogatásához indításakor.
+Írhat egy indítási Bash-szkript a WildFly parancssori felület meghívásához:
 
-- Adatforrások
-- Üzenetkezelési szolgáltatók konfigurálása
-- Más modulok és dependnecies hozzáadása a Wildfly kiszolgáló konfigurációját.
+- Adatforrás létrehozása
+- Üzenetkezelési-szolgáltatók konfigurálása
+- Más modulok és a függőségek hozzáadása a Wildfly kiszolgáló konfigurációját.
 
  A parancsfájl Wildfly működik-e, de az alkalmazás indítása előtt lefut. A parancsfájlt kell használnia a [JBOSS CLI](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface) volat z `/opt/jboss/wildfly/bin/jboss-cli.sh` bármely konfigurációs vagy a kiszolgáló újraindítása után szükséges változtatásokat a kiszolgáló konfigurálása. 
 
@@ -51,7 +52,7 @@ Töltse fel az indítási parancsfájl `/home/site/deployments/tools` App Servic
 
 Állítsa be a **indítási parancsfájl** mezőben az Azure Portalon, az indítási parancsfájl helyét például `/home/site/deployments/tools/your-startup-script.sh`.
 
-Használjon [Alkalmazásbeállítások](/azure/app-service/web-sites-configure#application-settings) környezeti változók beállítása a szkriptben. Ezek a beállítások érhetők el az indítási szkript környezetet, és kapcsolati karakterláncok és egyéb titkok verziókövetés kívül.
+Adja meg [Alkalmazásbeállítások](/azure/app-service/web-sites-configure#application-settings) átadandó környezeti változók a parancsfájl az alkalmazás konfigurációjában. Alkalmazásbeállítások tartsa meg a kapcsolati karakterláncok és egyéb titkok verziókövetés kívül az alkalmazás konfigurálásához szükséges.
 
 ## <a name="modules-and-dependencies"></a>Modulok és a függőségek
 

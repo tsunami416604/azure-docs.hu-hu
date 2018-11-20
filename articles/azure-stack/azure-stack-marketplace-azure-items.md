@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/15/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: c3c5e904d8e933c09754e13ccb22d6c16d0a37eb
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 229c0a6afee893a4a8eb5cd62a1d25266ee8fc3e
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713469"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977182"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Elérhető az Azure Stackhez az Azure piactéren elemek
 
@@ -203,7 +203,7 @@ A Microsoft Azure Stackhez az Azure piactér következő virtuális gépek és a
 | ![RabbitMQ fürt](media/azure-stack-marketplace-azure-items/rabbitmq.png) | [RabbitMQ fürt](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.rabbitmq-cluster) | RabbitMQ egy üzenetközvetítő az alkalmazások egy common platform küldhet és fogadhat üzeneteket és a egy biztonságos helyen élő mindaddig, amíg kap üzeneteket. Ez a megoldás kialakításához arra az egy egyetlen logikai közvetítő RabbitMQ fürtben több csomóponton üzembe több virtuális gép használja. **Ez a megoldássablon Debian 8 és egyéni parancsfájl is Linux 2.0-s verziója igényel.** | Bitnami |
 | ![Helyreállítási környezet: dash](media/azure-stack-marketplace-azure-items/redash.png) | [Helyreállítási környezet: dash](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redash) | Nyílt forráskódú Adatvizualizációk és együttműködési platformot. | Bitnami |
 | ![Redis](media/azure-stack-marketplace-azure-items/redis.png) | [Redis](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redis) | Hatékony nyílt forráskódú kulcs-érték tároló. | Bitnami |
-| ![Redis Cache a magas rendelkezésre állás](media/azure-stack-marketplace-azure-items/redis.png) | [Redis Cache a magas rendelkezésre állás](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.production-redis) | Hatékony nyílt forráskódú kulcs-érték tároló. **Ez a megoldássablon 1807 vagy újabb verzióját kell az Azure Stack igényel, és a Linux 2.0-s verziója is szükséges Debian 8 és egyéni parancsfájl.** | Bitnami |
+| ![Redis Cache a magas rendelkezésre állás](media/azure-stack-marketplace-azure-items/redis.png) | [Redis Cache a magas rendelkezésre állás](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redis-cluster) | Hatékony nyílt forráskódú kulcs-érték tároló. **Ez a megoldássablon 1807 vagy újabb verzióját kell az Azure Stack igényel, és a Linux 2.0-s verziója is szükséges Debian 8 és egyéni parancsfájl.** | Bitnami |
 | ![Redmine](media/azure-stack-marketplace-azure-items/redmine.png) | [Redmine](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redmine) | Hatékony project management webalkalmazás | Bitnami |
 | ![Redmine + Agilis](media/azure-stack-marketplace-azure-items/redmineagile.png) | [Redmine+Agile](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redmineplusagile) | Előre konfigurált Agilis beépülő modullal projektmenedzsment-alkalmazás. | Bitnami |
 | ![ReportServer Közösség](media/azure-stack-marketplace-azure-items/reportserver.png) | [ReportServer Közösség](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.reportserver) | Nyílt forráskódú üzleti adatelemzési platform. | Bitnami |
@@ -250,5 +250,5 @@ A Microsoft Azure Stackhez az Azure piactér következő virtuális gépek és a
 | ![A PT Application Firewall](media/azure-stack-marketplace-azure-items/pt.png) | [A PT Application Firewall](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | A PT Application Firewall észleli az ismert és ismeretlen biztonsági réseket, és megakadályozza a támadásokat a webalkalmazások. **Mindkét PT Piactéri termékek letöltése.** | Pozitív technológiák |
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet vállalati segítségével automatizálhatja az Azure Stack-infrastruktúra teljes életciklusát. **Mindkét Puppet Piactéri termékek letöltése.** | Puppet |
 | ![Gyors helyreállítás beszúrása](media/azure-stack-marketplace-azure-items/quest.png) | [Tanúsítványmegújítási gyors helyreállítási Core](https://azuremarketplace.microsoft.com/marketplace/apps/quest.rapid-recovery-core-vm) | Az adatvédelem speciális gyors helyreállítási egyesíti a biztonsági mentését, a replikációs és a egy könnyen használható szoftveres megoldás helyreállítását. | Tanúsítványmegújítási szoftver |
-| ![SUSE Manager 3.1 Proxy (saját)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.1 Proxy (saját)](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSE-Manager) | Legjobb minőségű nyílt forráskódú infrastruktúra-felügyelettel. | SUSE |
+| ![SUSE Manager 3.1 Proxy (saját)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.1 Proxy (saját)](https://azuremarketplace.microsoft.com/marketplace/apps/suse.suse-manager-proxy-byos?tab=Overview) | Legjobb minőségű nyílt forráskódú infrastruktúra-felügyelettel. | SUSE |
 | ![ZeroDown szoftver BCaaS](media/azure-stack-marketplace-azure-items/zerodown.png) | [Üzletmenet-folytonossági ZeroDown szoftverfrissítési szolgáltatásként](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.bcaasforazure) | ZeroDown® szoftver technológia biztosítja az üzletmenet-folytonossági keresztül a vállalati adatok folyamatos hozzáférést rendelkező cégek (BCaaS) szolgáltatást™ architektúra, védelmet nyújtó alkalmazások és a tranzakció, ha hálózati kimaradásokat történik, amely a szokásos a vállalati cripple. | ZeroDown szoftver |

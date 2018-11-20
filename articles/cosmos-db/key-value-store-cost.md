@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos-adatbázis egy kulcs-érték tárolóként – költség áttekintése |} Microsoft Docs
-description: További tudnivalók az alacsony költségű Azure Cosmos DB használatával egy kulcs-érték tárolóként.
+title: Egy kulcs-érték tárolóként – költségek áttekintése az Azure Cosmos DB |} A Microsoft Docs
+description: További információ az alacsony költségű, mint egy kulcsérték-tárolóba az Azure Cosmos DB használatával.
 keywords: kulcs-érték tároló
 services: cosmos-db
 author: SnehaGunda
@@ -11,35 +11,35 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: bcbe4afe5ca5abf9a709f5abbcdffa474c44702c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 09abc89c8e4cc8b0ee79200739722fc62d1ece4b
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34612122"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163200"
 ---
-# <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure Cosmos-adatbázis egy kulcs-érték tárolóként – költség áttekintése
+# <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Az Azure Cosmos DB egy kulcs-érték tárolóként – költségek áttekintése
 
-Azure Cosmos-adatbázis egy olyan globálisan elosztott, több modellre adatbázis szolgáltatás magas rendelkezésre állású, nagy méretű alkalmazások könnyen készítéséhez. Alapértelmezés szerint Azure Cosmos DB automatikusan elvégzi az ingests, hatékony összes adatot. Ez lehetővé teszi, hogy gyors és egységes [SQL](sql-api-sql-query.md) (és [JavaScript](programming.md)) az adatok bármilyen lekérdezések. 
+Az Azure Cosmos DB egy globálisan elosztott, többmodelles adatbázis-szolgáltatás magas rendelkezésre állású, nagy méretű alkalmazások létrehozását, egyszerűen a. Alapértelmezés szerint az Azure Cosmos DB automatikusan indexeli az összes adatot, feltölti, hatékony. Ez lehetővé teszi a gyors és következetes [SQL](how-to-sql-query.md) (és [JavaScript](programming.md)) bármilyen típusú adatot-lekérdezéseket. 
 
-Ez a cikk ismerteti a Azure Cosmos DB költségét egyszerű írásra, és olvasási műveleteket, ha egy kulcs-érték tárolóként szolgál. Az írási műveletek közé tartozik a beszúrások, cserél, törléseket és dokumentumok upserts. Egy 99,99 % biztosítása mellett összes egyetlen régión fiók és minden több területi fiókok laza konzisztencia, 99.999 % SLA-elérhetőséget olvasni elérhetőségét a fiókokhoz több területi adatbázis Azure Cosmos DB ajánlatok garantált < 10-ms késleltetés az beolvassa és < 15-ms késleltetés (indexelt) esetében: a 99th PERCENTILIS, írja. 
+Ez a cikk ismerteti az Azure Cosmos DB költsége egyszerű írási és olvasási műveletek, ha használatban van egy kulcs/érték tároló. Az írási műveletnek számítanak többek között Beszúrások, cserél, törlése és a dokumentumok upserts. Mellett kínál 99,99 %-os rendelkezésre állási SLA minden egyrégiós és minden többrégiós fiókok Könnyített konzisztenciáját, és 99,999 %-os olvasási rendelkezésre állás minden többrégiós adatbázisfiókhoz, Azure Cosmos DB-ajánlatok garantált < 10 ms késést olvassa be és < 15 ms késést (indexelt), az írási műveleteknél a 99. percentilis. 
 
-## <a name="why-we-use-request-units-rus"></a>Miért kérelem egységek (RUs) használjuk.
+## <a name="why-we-use-request-units-rus"></a>Miért kérelemegység (RU) használjuk.
 
-Azure Cosmos DB teljesítmény mennyisége alapján kiosztott [kérelem egységek](request-units.md) (RU) a partíció. A kiépítés második részletességű és értékesítik RUs/mp ([való nem keverendő össze a óránkénti számlázási](https://azure.microsoft.com/pricing/details/cosmos-db/)). A pénznem, amely leegyszerűsíti az alkalmazáshoz szükséges átviteli kiépítési RUs kell tekinteni. Az ügyfelek nem olvasható megkülönböztetése gondol írási és olvasási kapacitásegység kell. RUs egyetlen pénznem modelljét hoz létre a hatékonyság a kiosztott kapacitást olvasási és írási műveletek közötti megosztásához. Ez a kiosztott kapacitást modell lehetővé teszi, hogy a szolgáltatás segítségével garantált alacsony késéssel és magas rendelkezésre állású következetes és kiszámítható teljesítményt biztosít. Végezetül modell átviteli RU használjuk, de minden kiosztott RU is rendelkezik egy meghatározott mennyiségű erőforrást (memória, mag). RU/mp nincs csak iops-érték.
+Az Azure Cosmos DB-teljesítmény mennyisége alapján üzembe helyezett [kérelemegység](request-units.md) (RU) a partíció. A kiépítés egy második granularitási és megvásárlása esetén a kérelemegység/s ([, nem tévesztendő össze az óradíjas](https://azure.microsoft.com/pricing/details/cosmos-db/)). Fenntartott egységek kell tekinteni, amely leegyszerűsíti az átviteli sebességgel az alkalmazás üzembe helyezése egy pénznemet. Ügyfeleinknek nem kell gondolja át, hogy olvasási megkülönböztetése és a kapacitásegységek írása. Az egyetlen pénznem modell kérelemegységet hoz létre, növelhető a hatékonyság a kiépített lemezkapacitás olvasási és írási közötti megosztásához. A kiosztott kapacitást modell lehetővé teszi, hogy a szolgáltatás kiszámítható és következetes teljesítményű, garantáltan alacsony késéssel és magas rendelkezésre állást biztosít. Végül modell átviteli RU használjuk, de minden kiosztott RU is rendelkezik egy meghatározott mennyiségű erőforrás (memória, Core). RU/s nem csak az iops-t.
 
-Globálisan elosztott adatbázis rendszerként Cosmos DB a csak az Azure-szolgáltatás, amely egy SLA-t a késés, az átviteli sebesség és a magas rendelkezésre állású mellett konzisztencia. Az átviteli sebesség kiépítése a Cosmos-adatbázis adatbázis-fiókjához társított régió alkalmazható. Olvasási műveleteknél a Cosmos DB kínál több, jól meghatározott [konzisztenciaszintek](consistency-levels.md) is választhat. 
+Cosmos DB egy globálisan elosztott adatbázisrendszerként lesz a csak az Azure szolgáltatást biztosító SLA-t a késés, átviteli sebesség és a konzisztencia magas rendelkezésre állás mellett. Az üzembe helyezi az átviteli sebesség a Cosmos DB-adatbázisfiókhoz társított régiók mindegyikében alkalmazza. Az olvasási, Cosmos DB több jól definiált kínál [konzisztenciaszintek](consistency-levels.md) a közül választhat. 
 
-Az alábbi táblázat a RUs száma hajtsa végre az olvasási és írási tranzakciót dokumentum méretének 1 KB és 100 KB szükséges.
+Az alábbi táblázat a fenntartott egységek számát hajtsa végre az olvasási és írási tranzakciók 1 KB-os és 100 Tudásbázis dokumentum mérete alapján szükséges.
 
 |Elem mérete|1 olvasása|1 írási|
 |-------------|------|-------|
-|1 KB|1 RU|5 RUs|
-|100 KB|10 RUs|50 RUs|
+|1 KB|1 RU|5 Kérelemegységet|
+|100 KB|10 RU|50 kérelemegység|
 
-## <a name="cost-of-reads-and-writes"></a>Olvasási és írási költsége
+## <a name="cost-of-reads-and-writes"></a>Olvasási és írási költség
 
-Ha 1000 RU/mp, 3,6 m RU/óra és a rendszer a díjak költsége $0.08 az óra (a az amerikai és európai). 1 KB méretű dokumentum, ez azt jelenti, hogy használatba vehetné 3.6-m olvasási vagy 0.72-m ír (3,6 m RU / 5) a létesített átviteli sebesség használatával. Normalizálva millió olvasási és írási, a költség lenne $0,022 /m olvasási ($0.08 / 3,6) és a $0.111/ m írja a ($0.08 / 0,72). Egy millió válik minimális, az alábbi táblázatban látható módon.
+Ha üzembe helyezi az 1000 RU/s, 3.6-os m Kérelemegység/óra és fogja a összegek költségét 0,08 óra (az Egyesült Államok és Európa). Egy 1 KB-os mérete a dokumentumhoz, ez azt jelenti, hogy felhasználhatja 3.6-m olvasási 0,72-m ír (3.6-os m Kérelemegység / 5) használatával a kiosztott átviteli sebesség. 1 millió olvasási és írási normalizálva, a díj a következő lesz $0,022 /m olvasási (0,08 / 3.6-os) és 0.111 $/ millió ír (0,08 / 0,72). A költség / millió válik minimális, az alábbi táblázatban látható módon.
 
 |Elem mérete|1-m olvasása|1-m írási|
 |-------------|-------|--------|
@@ -47,9 +47,9 @@ Ha 1000 RU/mp, 3,6 m RU/óra és a rendszer a díjak költsége $0.08 az óra (a
 |100 KB|$0.222|$1.111|
 
 
-A legtöbb alapvető blob vagy objektum tárolók szolgáltatások költség $0,40 / millió olvasási tranzakció és $5 millió írási tranzakciónként. Ha optimálisan használja, Cosmos DB 98 %-kal (1 KB-os tranzakciókhoz) ezek más megoldásokat olcsóbbak lehet.
+A legtöbb a alapszintű blobot vagy objektum tárolók szolgáltatások ingyenesen 0,40 $ / millió olvasási tranzakciós és 5 $ / millió írási tranzakció. Ha használta az optimális, Cosmos DB lehet akár 98 %-kal olcsóbb, mint a más megoldások (az 1 KB-os tranzakció).
 
 ## <a name="next-steps"></a>További lépések
 
-Kövessen bennünket az új cikkek az Azure Cosmos DB az erőforrás-kiépítés optimalizálásához. Addig nyugodtan használja a [RU Számológép](https://www.documentdb.com/capacityplanner).
+Kövessen bennünket az új cikkek az Azure Cosmos DB erőforrás-kiépítés optimalizálásához. Addig nyugodtan használhatja az [RU Számológép](https://www.documentdb.com/capacityplanner).
 

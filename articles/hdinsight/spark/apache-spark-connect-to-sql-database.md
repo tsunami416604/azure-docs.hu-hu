@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: b8494150a060e02145eab3674bdd2dd62cdda225
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 1ae06fe9cc459d86bdd46d9b033a726339493dc5
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277290"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164770"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>HDInsight Spark-fürt használatával olvasása és írása az adatok Azure SQL Database-adatbázishoz
 
@@ -36,15 +36,10 @@ ms.locfileid: "51277290"
 
 Először hozzon létre egy, a Spark-fürthöz tartozó Jupyter notebookot. Az ebben a cikkben használt kódrészleteket futtatni a notebookot fog használni. 
 
-1. Az a [az Azure portal](https://portal.azure.com/), nyissa meg a fürtöt. 
+1. Az a [az Azure portal](https://portal.azure.com/), nyissa meg a fürtöt.
+1. Válassza ki **Jupyter notebook** alá **fürt irányítópultjai** jobb oldalán.  Ha nem lát **fürt irányítópultjai**, kattintson a **áttekintése** a panelen a bal oldali menüből. Ha a rendszer felkéri rá, adja meg a fürthöz tartozó rendszergazdai hitelesítő adatokat.
 
-1. Az a **Gyorshivatkozások** területén kattintson **fürt irányítópultjai** megnyitásához a **fürt irányítópultjai** megtekintése.  Ha nem lát **Gyorshivatkozások**, kattintson a **áttekintése** a panelen a bal oldali menüből.
-
-    ![A Spark fürt irányítópultja](./media/apache-spark-connect-to-sql-database/hdinsight-cluster-dashboard-on-spark.png "Spark fürt irányítópultja") 
-
-1. Kattintson a **Jupyter Notebook**. Ha a rendszer felkéri rá, adja meg a fürthöz tartozó rendszergazdai hitelesítő adatokat.
-
-    ![A Jupyter notebook Spark](./media/apache-spark-connect-to-sql-database/hdinsight-jupyter-notebook-on-spark.png "Spark a Jupyter notebook")
+    ![A Jupyter notebook Spark](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Spark a Jupyter notebook")
    
    > [!NOTE]
    > A Jupyter notebook Spark-fürtön nyissa meg a következő URL-címet a böngészőben is hozzáférhet. Cserélje le a **CLUSTERNAME** elemet a fürt nevére:

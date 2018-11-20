@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 8d13d6df1b168183e3794bf357ad86bfcfd77057
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: cc6af421551ba8ca973c15455daebf58c317d6f5
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567910"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976485"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 frissítése
 
@@ -84,7 +84,11 @@ Ez a frissítés az Azure Stack a következő fejlesztéseket tartalmazza:
 
 ### <a name="changes"></a>Módosítások
 
-Nincs.
+<!-- 2635202 - IS, ASDK -->
+- A biztonsági mentési infrastruktúra-szolgáltatás helyezi át a [nyilvános infrastruktúra-hálózaton](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-infrastructure-network) , a [nyilvános VIP-hálózat](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-vip-network). Győződjön meg arról, a szolgáltatás hozzáfér a biztonsági mentési tárhelyet a nyilvános VIP hálózatra ügyfeleknek kell.  
+
+> [!IMPORTANT]  
+> Ha nem engedélyezi a fájlkiszolgálóra a nyilvános VIP hálózatra érkező kapcsolatok tűzfal, a módosítás hatására infrastruktúra a biztonsági mentés sikertelen, és a "53-as hiba a hálózati elérési út nem található." Ez a használhatatlanná tévő változást, amely rendelkezik nem elfogadható megkerülő megoldás. Ügyfeleink visszajelzései alapján a Microsoft visszaáll a módosítás a gyorsjavítást. Tekintse át a [közzététele a frissítési lépéseket tartalmazó szakaszában](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-update-1809#post-update-steps) 1809 számára elérhető gyorsjavítások további tájékoztatást. Ha a gyorsjavítás áll rendelkezésre, ügyeljen arra, hogy csak akkor, ha a hálózati szabályzatok nem teszik lehetővé a nyilvános VIP-hálózat eléréséhez infrastruktúra feladatában 1809 való frissítése után alkalmazza azt. a 1811 Ez a változás az összes rendszeren lépnek érvénybe. Ha a 1809 alkalmazza a gyorsjavítás nincs nincs további teendője.  
 
 ### <a name="common-vulnerabilities-and-exposures"></a>Common Vulnerabilities and Exposures
 

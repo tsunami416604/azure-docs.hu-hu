@@ -5,20 +5,20 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 09/21/2018
+ms.date: 10/19/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5c3b8d350b69996e2bbff4958dd0a3600c1b7518
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: a66fd2528d28bb90ec5e6fe77b487d4e634b0c00
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566081"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163588"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Oktatóanyag: Adatok tárolása a peremhálózaton SQL Server-adatbázisokkal
 
-Az Azure IoT Edge és az SQL Server segítségével adatokat tárolhat és kérdezhet le a peremhálózaton. Az Azure IoT Edge beépített, alapszintű tárolási szolgáltatásokkal rendelkezik, amelyek elvégzik az üzenetek gyorsítótárazását, ha az eszköz offline állapotba kerül, majd a kapcsolat helyreállását követően továbbítják azokat. Szüksége lehet azonban ennél fejlettebb tárolási képességekre is, például az adatok helyi lekérdezéséhez. Helyi adatbázisok használatával az IoT Edge-eszközök összetettebb számítási tevékenységek végrehajtására képesek anélkül, hogy ehhez állandó IoT Hub-kapcsolatra lenne szükségük. A helyszíni technikusok például akkor is helyben megtekinthetik az érzékelők által az utóbbi napokban gyűjtött adatokat, ha azokat a rendszer csak havonta egyszer tölti fel a felhőbe a Machine Learning-modell javítása céljából.
+Az Azure IoT Edge és az SQL Server segítségével adatokat tárolhat és kérdezhet le a peremhálózaton. Az Azure IoT Edge rendelkezik alapszintű tárolási képességeinek gyorsítótárazzák az üzeneteket, ha egy eszköz offline állapotba kerül, és majd továbbítják őket, amikor a kapcsolat helyreállt. Szüksége lehet azonban ennél fejlettebb tárolási képességekre is, például az adatok helyi lekérdezéséhez. Helyi adatbázisok használatával az IoT Edge-eszközök összetettebb számítási tevékenységek végrehajtására képesek anélkül, hogy ehhez állandó IoT Hub-kapcsolatra lenne szükségük. Például egy gépen érzékelő tölt fel adatokat a felhőbe a jelentéskészítés és a egy machine learning modul javítása havonta egyszer. Ha a gépen egy technikusnak működik, hozzáférhet az elmúlt néhány napban helyileg az érzékelők adatstreamének felhasználásával.
 
 A jelen cikk az SQL Server-adatbázisok IoT Edge-eszközön történő üzembe helyezésének utasításait tartalmazza. Az IoT Edge-eszközön futó Azure Functions-függvények elvégzik a bejövő adatok rendszerezését, majd elküldik azokat az adatbázisnak. A cikkben szereplő lépések a tárolókban üzemeltetett egyéb adatbázisokra (például MySQL vagy PostgreSQL) is alkalmazhatók.
 
@@ -45,26 +45,37 @@ Felhőerőforrások:
 Fejlesztési erőforrások:
 
 * [Visual Studio Code](https://code.visualstudio.com/). 
-* [C#-bővítmény a Visual Studio Code-hoz (szolgáltató: OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp). 
-* [Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)-bővítmény a Visual Studio Code-hoz. 
+* [C#(szolgáltató: omnisharp) Visual Studio Code-bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp). 
+* [Azure IoT Edge-bővítmény a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge). 
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download). 
 * [Docker CE](https://docs.docker.com/install/). 
 
 ## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
-Ebben az oktatóanyagban a VS Code-hoz készült Azure IoT Edge bővítménnyel épít fel egy modult és hoz létre egy **tárolórendszerképet** a fájlokból. Ezután ezt a rendszerképet leküldi a rendszerképeit tároló és felügyelő **beállításjegyzékbe**. Végül üzembe helyezi a rendszerképet a beállításjegyzékből az IoT Edge-eszközön való futtatáshoz.  
 
-Ehhez az oktatóanyaghoz bármilyen Docker-kompatibilis beállításjegyzéket használhat. A felhőben elérhető két népszerű Docker-beállításjegyzékszolgáltatás az [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) és a [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). Ez az oktatóanyag az Azure Container Registryt használja. 
+Ebben az oktatóanyagban használhatja az Azure IoT Edge-bővítmény a Visual Studio Code fel egy modult, és hozzon létre egy **tárolórendszerkép** a fájlokból. Ezután ezt a rendszerképet leküldi a rendszerképeit tároló és felügyelő **beállításjegyzékbe**. Végül üzembe helyezi a rendszerképet a beállításjegyzékből az IoT Edge-eszközön való futtatáshoz.  
+
+Minden olyan Docker-kompatibilis beállításjegyzéket a tárolólemezképek tárolására használható. Két népszerű Docker beállításjegyzék szolgáltatások [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) és [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). Ez az oktatóanyag az Azure Container Registryt használja. 
 
 1. Az [Azure Portalon](https://portal.azure.com) válassza az **Erőforrás létrehozása** > **Tárolók** > **Container Registry** elemet.
 
-    ![tárolóregisztrációs adatbázis létrehozása](./media/tutorial-deploy-function/create-container-registry.png)
+    ![Tároló-beállításjegyzék létrehozása](./media/tutorial-deploy-function/create-container-registry.png)
 
-2. Nevezze el a regisztrációs adatbázist, és válasszon ki egy előfizetést.
-3. Azt javasoljuk, hogy az erőforráscsoport esetében használja az IoT Hubot tartalmazó erőforráscsoport nevét. Ha az összes erőforrást egy csoportban tartja, együtt kezelheti azokat. A teszteléshez használt erőforráscsoport törlése például az adott csoportban található összes teszterőforrást is törli. 
-4. A termékváltozat beállítása legyen **Alapszintű**, a **Rendszergazdai felhasználó** beállítást pedig állítsa **Engedélyezés** értékre. 
-5. Kattintson a **Create** (Létrehozás) gombra.
-6. Miután létrejött a tárolóregisztrációs adatbázis, keresse meg, és válassza a **Hozzáférési kulcsok** elemet. 
-7. Másolja a **Bejelentkezési kiszolgáló**, a **Felhasználónév** és a **Jelszó** értékeit. Ezeket az értékeket az oktatóanyag későbbi részében fogja használni. 
+2. Adja meg a következő értékeket a tárolóregisztrációs adatbázis létrehozásához:
+
+   | Mező | Érték | 
+   | ----- | ----- |
+   | Beállításjegyzék neve | Egyedi nevet adjon meg. |
+   | Előfizetés | A legördülő listából válasszon egy előfizetést. |
+   | Erőforráscsoport | Javasoljuk, hogy az IoT Edge rövid útmutatók és oktatóanyagok során elkészített erőforráscsoportot használja minden teszterőforráshoz. Például: **IoTEdgeResources**. |
+   | Hely | Válassza ki az Önhöz legközelebb eső helyet. |
+   | Rendszergazdai felhasználó | Állítsa **Engedélyezés** értékre. |
+   | SKU | Válassza az **Alapszintű** lehetőséget. | 
+
+5. Kattintson a **Létrehozás** gombra.
+
+6. Miután létrejött a tárolóregisztrációs adatbázis, keresse meg, majd válassza a **Hozzáférési kulcsok** elemet. 
+
+7. Másolja a **Bejelentkezési kiszolgáló**, a **Felhasználónév** és a **Jelszó** értékeit. A tároló-beállításjegyzékbe való hozzáférés biztosításához az oktatóanyag későbbi részében használja ezeket az értékeket. 
 
 ## <a name="create-a-function-project"></a>Függvényprojekt létrehozása
 
@@ -73,113 +84,143 @@ Ahhoz, hogy adatokat küldhessen egy adatbázisba, egy olyan modulra van szüks�
 A következő lépések azt mutatják be, hogyan hozhat létre IoT Edge-függvényt a Visual Studio Code és az Azure IoT Edge bővítmény használatával.
 
 1. Nyissa meg a Visual Studio Code-ot.
-2. A VS Code integrált termináljának megnyitásához válassza a **View** (Nézet)  > **Terminal** (Terminál) elemet.
-3. A **View (Nézet)** > **Command Palette (Parancskatalógus)** elem kiválasztásával nyissa meg a VS Code parancskatalógusát.
-4. A parancskatalógusban írja be és futtassa az **Azure: Sign in** (Azure: bejelentkezés) parancsot, és az utasításokat követve jelentkezzen be Azure-fiókjába. Ha már be van jelentkezve, ezt a lépést kihagyhatja.
+
+2. A **View (Nézet)** > **Command Palette (Parancskatalógus)** elem kiválasztásával nyissa meg a VS Code parancskatalógusát.
+
 3. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: új IoT Edge-megoldás) parancsot. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához: 
-   1. Válassza ki azt a mappát, ahol a megoldást létre szeretné hozni. 
-   2. Adja meg a megoldás nevét, vagy fogadja el az alapértelmezett **EdgeSolution** nevet.
-   3. Modulsablonként válassza az **Azure Functions - C#** lehetőséget. 
-   4. A modulnak adja az **sqlFunction** nevet. 
-   5. Adja meg az előző szakaszban létrehozott Azure Container Registryt az első modul rendszerképadattáraként. Cserélje le a **localhost:5000** értéket a bejelentkezési kiszolgáló kimásolt értékére. A sztring végső változata a következőképpen néz ki: **\<regisztrációs adatbázis neve\>.azurecr.io/sqlFunction**.
 
-4. A VS Code-ablak betölti az IoT Edge-megoldás munkaterületét. A munkaterületen egy **modules** és egy **.vscode** mappa, valamint egy üzembehelyezési jegyzéksablonfájl található. Nyissa meg a **modules** > **sqlFunction** > **EdgeHubTrigger-Csharp** > **run.csx** fájlt.
+   | Mező | Érték |
+   | ----- | ----- |
+   | Select folder (Mappa kiválasztása) | Válassza ki azt a helyet a fejlesztői gépen, ahol a VS Code létre fogja hozni a megoldásfájlokat. |
+   | Provide a solution name (Megoldásnév megadása) | Adjon meg egy leíró nevet a megoldáshoz, például **SqlSolution**, vagy fogadja el az alapértelmezett. |
+   | Select module template (Modulsablon kiválasztása) | Válasszon **az Azure Functions - C#** . |
+   | Provide a module name (Modulnév megadása) | A modulnak adja az **sqlFunction** nevet. |
+   | Provide Docker image repository for the module (Docker-rendszerkép adattárának megadása a modulhoz) | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tárolórendszerkép előre fel van töltve az előző lépésből. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. Néz ki a végső karakterláncban \<beállításjegyzék neve\>.azurecr.io/sqlFunction. |
 
-5. Cserélje le a fájl tartalmát a következő kódra:
+   A VS Code-ablak betölti az IoT Edge-megoldás munkaterületét: egy \.vscode mappát, egy modules mappát, egy üzembe helyezési jegyzéksablonfájlt. és egy \.env fájlt. 
+   
+4. Minden alkalommal, amikor létrehoz egy új IoT Edge-megoldást, a VS Code megadását kéri a beállításjegyzék hitelesítő adatait a \.env fájlt. Ezt a fájlt a git-figyelmen kívül hagyja, és az IoT Edge-bővítmény segítségével később az IoT Edge-eszköz beállításjegyzék hozzáférést biztosítanak. Nyissa meg a \.env fájlt. 
+
+5. Az .env fájlban adja meg az IoT Edge-futtatókörnyezet számára a regisztrációs adatbázis hitelesítő adatait, hogy az hozzáférhessen a modulrendszerképekhez. Keresse meg a **CONTAINER_REGISTRY_USERNAME** és a **CONTAINER_REGISTRY_PASSWORD** szakaszt, és szúrja be a hitelesítő adatait az egyenlőségjel után: 
+
+   ```env
+   CONTAINER_REGISTRY_USERNAME_yourregistry=<username>
+   CONTAINER_REGISTRY_PASSWORD_yourregistry=<password>
+   ```
+
+6. Mentse az .env fájlt.
+
+7. A VS Code Explorerben nyissa meg a **modulok** > **sqlFunction** > **sqlFunction.cs**.
+
+8. Cserélje le a fájl tartalmát a következő kódra:
 
    ```csharp
-   #r "Microsoft.Azure.Devices.Client"
-   #r "Newtonsoft.Json"
-   #r "System.Data.SqlClient"
-
+   using System;
+   using System.Collections.Generic;
    using System.IO;
+   using System.Text;
+   using System.Threading.Tasks;
    using Microsoft.Azure.Devices.Client;
+   using Microsoft.Azure.WebJobs;
+   using Microsoft.Azure.WebJobs.Extensions.EdgeHub;
+   using Microsoft.Azure.WebJobs.Host;
+   using Microsoft.Extensions.Logging;
    using Newtonsoft.Json;
    using Sql = System.Data.SqlClient;
-   using System.Threading.Tasks;
 
-   // Filter messages based on the temperature value in the body of the message and the temperature threshold value.
-   public static async Task Run(Message messageReceived, IAsyncCollector<Message> output, TraceWriter log)
+   namespace Functions.Samples
    {
-       const int temperatureThreshold = 25;
-       byte[] messageBytes = messageReceived.GetBytes();
-       var messageString = System.Text.Encoding.UTF8.GetString(messageBytes);
-
-       if (!string.IsNullOrEmpty(messageString))
+       public static class sqlFunction
        {
-           // Get the body of the message and deserialize it
-           var messageBody = JsonConvert.DeserializeObject<MessageBody>(messageString);
-
-           //Store the data in SQL db
-           const string str = "<sql connection string>";
-           using (Sql.SqlConnection conn = new Sql.SqlConnection(str))
+           [FunctionName("sqlFunction")]
+           public static async Task FilterMessageAndSendMessage(
+               [EdgeHubTrigger("input1")] Message messageReceived,
+               [EdgeHub(OutputName = "output1")] IAsyncCollector<Message> output,
+               ILogger logger)
            {
-           conn.Open();
-           var insertMachineTemperature = "INSERT INTO MeasurementsDB.dbo.TemperatureMeasurements VALUES (CONVERT(DATETIME2,'" + messageBody.timeCreated + "', 127), 'machine', " + messageBody.machine.temperature + ");";
-           var insertAmbientTemperature = "INSERT INTO MeasurementsDB.dbo.TemperatureMeasurements VALUES (CONVERT(DATETIME2,'" + messageBody.timeCreated + "', 127), 'ambient', " + messageBody.ambient.temperature + ");"; 
-               using (Sql.SqlCommand cmd = new Sql.SqlCommand(insertMachineTemperature + "\n" + insertAmbientTemperature, conn))
-               {
-               //Execute the command and log the # rows affected.
-               var rows = await cmd.ExecuteNonQueryAsync();
-               log.Info($"{rows} rows were updated");
-               }
-           }
+               const int temperatureThreshold = 20;
+               byte[] messageBytes = messageReceived.GetBytes();
+               var messageString = System.Text.Encoding.UTF8.GetString(messageBytes);
 
-           if (messageBody != null && messageBody.machine.temperature > temperatureThreshold)
-           {
-               // Send the message to the output as the temperature value is greater than the threshold
-               var filteredMessage = new Message(messageBytes);
-               // Copy the properties of the original message into the new Message object
-               foreach (KeyValuePair<string, string> prop in messageReceived.Properties)
+               if (!string.IsNullOrEmpty(messageString))
                {
-                   filteredMessage.Properties.Add(prop.Key, prop.Value);
+                   logger.LogInformation("Info: Received one non-empty message");
+                   // Get the body of the message and deserialize it.
+                   var messageBody = JsonConvert.DeserializeObject<MessageBody>(messageString);
+
+                   //Store the data in SQL db
+                   const string str = "<sql connection string>";
+                   using (Sql.SqlConnection conn = new Sql.SqlConnection(str))
+                   {
+                       conn.Open();
+                       var insertMachineTemperature = "INSERT INTO MeasurementsDB.dbo.TemperatureMeasurements VALUES (CONVERT(DATETIME2,'" + messageBody.timeCreated + "', 127), 'machine', " + messageBody.machine.temperature + ");";
+                       var insertAmbientTemperature = "INSERT INTO MeasurementsDB.dbo.TemperatureMeasurements VALUES (CONVERT(DATETIME2,'" + messageBody.timeCreated + "', 127), 'ambient', " + messageBody.ambient.temperature + ");"; 
+                       using (Sql.SqlCommand cmd = new Sql.SqlCommand(insertMachineTemperature + "\n" + insertAmbientTemperature, conn))
+                       {
+                           //Execute the command and log the # rows affected.
+                           var rows = await cmd.ExecuteNonQueryAsync();
+                           log.Info($"{rows} rows were updated");
+                       }
+                   }
+
+                   if (messageBody != null && messageBody.machine.temperature > temperatureThreshold)
+                   {
+                       // Send the message to the output as the temperature value is greater than the threashold.
+                       var filteredMessage = new Message(messageBytes);
+                       // Copy the properties of the original message into the new Message object.
+                       foreach (KeyValuePair<string, string> prop in messageReceived.Properties)
+                       {filteredMessage.Properties.Add(prop.Key, prop.Value);}
+                       // Add a new property to the message to indicate it is an alert.
+                       filteredMessage.Properties.Add("MessageType", "Alert");
+                       // Send the message.       
+                       await output.AddAsync(filteredMessage);
+                       logger.LogInformation("Info: Received and transferred a message with temperature above the threshold");
+                   }
                }
-               // Add a new property to the message to indicate it is an alert
-               filteredMessage.Properties.Add("MessageType", "Alert");
-               // Send the message        
-               await output.AddAsync(filteredMessage);
-               log.Info("Received and transferred a message with temperature above the threshold");
            }
        }
-   }
-
-   //Define the expected schema for the body of incoming messages
-   class MessageBody
-   {
-       public Machine machine {get;set;}
-       public Ambient ambient {get; set;}
-       public string timeCreated {get; set;}
-   }
-   class Machine
-   {
-      public double temperature {get; set;}
-      public double pressure {get; set;}         
-   }
-   class Ambient
-   {
-      public double temperature {get; set;}
-      public int humidity {get; set;}         
+       //Define the expected schema for the body of incoming messages.
+       class MessageBody
+       {
+           public Machine machine {get; set;}
+           public Ambient ambient {get; set;}
+           public string timeCreated {get; set;}
+       }
+       class Machine
+       {
+           public double temperature {get; set;}
+           public double pressure {get; set;}         
+       }
+       class Ambient
+       {
+           public double temperature {get; set;}
+           public int humidity {get; set;}         
+       }
    }
    ```
 
-6. A 24. sorban cserélje le az **\<sql connection string\>** (SQL-kapcsolati sztring) értékét az alábbi sztringre. A **Data Source** (Adatforrás) tulajdonság az SQL Server-tároló nevére hivatkozik, amelyet **SQL** néven fog létrehozni a következő szakaszban. 
+6. 35 sorban cserélje le a karakterlánc **\<sql-kapcsolati sztring\>** a következő karakterlánccal. A **adatforrás** tulajdonság hivatkozik, az SQL Server tároló név, amely hoz létre a nevű **SQL** a következő szakaszban. 
 
-   ```C#
+   ```csharp
    Data Source=tcp:sql,1433;Initial Catalog=MeasurementsDB;User Id=SA;Password=Strong!Passw0rd;TrustServerCertificate=False;Connection Timeout=30;
    ```
 
-7. Mentse a **run.csx** fájlt. 
+7. Mentse a **sqlFunction.cs** fájlt. 
 
 ## <a name="add-a-sql-server-container"></a>SQL Server-tároló hozzáadása
 
-Az IoT Edge-futtatókörnyezet által az IoT Edge-eszközön telepítendő modulokat az [üzembehelyezési jegyzékfájl](module-composition.md) határozza meg. Az előző szakaszban hozzáadta az egyéni Functions-modul létrehozásához tartozó kódot, a rendszer azonban már létrehozta az SQL Server-modult. Utasítsa az IoT Edge-futtatókörnyezetet ennek belefoglalására, majd végezze el a konfigurálást az eszközön. 
+Az IoT Edge-futtatókörnyezet által az IoT Edge-eszközön telepítendő modulokat az [üzembehelyezési jegyzékfájl](module-composition.md) határozza meg. A kód egy egyéni függvénymodul az előző szakaszban győződjön meg arról, hogy a megadott, de az SQL Server-modult már épül. Utasítsa az IoT Edge-futtatókörnyezetet ennek belefoglalására, majd végezze el a konfigurálást az eszközön. 
 
 1. A Visual Studio Code Explorerben nyissa meg a **deployment.template.json** fájlt. 
-2. Keresse meg a **moduleContent.$edgeAgent.properties.desired.modules** szakaszt. A listában a következő két modulnak kell szerepelnie: a szimulált adatokat előállító **tempSensor** modulnak és a saját **sqlFunction** moduljának.
+
+2. Keresse meg a **modulok** szakaszban. A listában a következő két modulnak kell szerepelnie: a szimulált adatokat előállító **tempSensor** modulnak és a saját **sqlFunction** moduljának.
+
 3. Ha Windows-tárolókat használ, módosítsa az **sqlFunction.settings.image** szakaszt.
-    ```json
-    "image": "${MODULES.sqlFunction.windows-amd64}"
-    ```
+
+   ```json
+   "image": "${MODULES.sqlFunction.windows-amd64}"
+   ```
+
 4. Adja hozzá a következő kódot egy harmadik modul deklarálásához. Adjon hozzá egy vesszőt az sqlFunction szakasz után, és szúrja be a következőt:
 
    ```json
@@ -195,7 +236,7 @@ Az IoT Edge-futtatókörnyezet által az IoT Edge-eszközön telepítendő modul
    }
    ```
 
-   Ha nem lenne egyértelmű a JSON-elem hozzáadása, itt láthat egy példát. ![SQL Server-tároló hozzáadása](./media/tutorial-store-data-sql-server/view_json_sql.png)
+   ![SQL Server-tároló hozzáadása](./media/tutorial-store-data-sql-server/view_json_sql.png)
 
 5. Az IoT Edge-eszközön lévő Docker-tárolók típusától függően az alábbi kóddal frissítse az **sql.settings** paramétereit:
 
@@ -222,44 +263,46 @@ Az IoT Edge-futtatókörnyezet által az IoT Edge-eszközön telepítendő modul
 
 Az előző szakaszokban egyetlen modullal hozott létre megoldást, majd hozzáadott egy másik modult az üzembehelyezési jegyzéksablonfájlhoz. Most létre kell hoznia a megoldást és a modulok tárolórendszerképeit, majd le kell küldenie a rendszerképeket a tárolóregisztrációs adatbázisba. 
 
-1. Az .env fájlban adja meg az IoT Edge-futtatókörnyezet számára a regisztrációs adatbázis hitelesítő adatait, hogy az hozzáférhessen a modulrendszerképekhez. Keresse meg a **CONTAINER_REGISTRY_USERNAME** és a **CONTAINER_REGISTRY_PASSWORD** szakaszt, és szúrja be a hitelesítő adatait az egyenlőségjel után: 
-
-   ```env
-   CONTAINER_REGISTRY_USERNAME_yourContainerReg=<username>
-   CONTAINER_REGISTRY_PASSWORD_yourContainerReg=<password>
-   ```
-
-2. Mentse az .env fájlt.
-3. Jelentkezzen be a tárolóregisztrációs adatbázisba a Visual Studio Code felületén, hogy le tudja küldeni a rendszerképeket a regisztrációs adatbázisba. Használja ugyanazokat a hitelesítő adatokat, mint amelyeket az .env fájlhoz hozzáadott. Az integrált terminálon írja be a következő parancsot:
+1. Jelentkezzen be a tárolóregisztrációs adatbázisba a Visual Studio Code felületén, hogy le tudja küldeni a rendszerképeket a regisztrációs adatbázisba. Használja ugyanazokat a hitelesítő adatokat, mint amelyeket az .env fájlhoz hozzáadott. Az integrált terminálon írja be a következő parancsot:
 
     ```csh/sh
     docker login -u <ACR username> <ACR login server>
     ```
-    A rendszer a jelszó megadását fogja kérni. Illessze be a jelszót a parancssorba, majd nyomja le az **Enter** billentyűt.
+    
+    A jelszó megadását kéri. Illessze be a parancssort (a biztonság, jelszó rejtett), majd nyomja le a jelszó **Enter**. 
 
     ```csh/sh
     Password: <paste in the ACR password and press enter>
     Login Succeeded
     ```
 
-4. A VS Code Explorerben kattintson a jobb gombbal a **deployment.template.json** fájlra, és válassza a **Build and Push IoT Edge solution** (IoT Edge-megoldás összeállítása és leküldése) lehetőséget. 
+2. A VS Code Explorerben kattintson a jobb gombbal a **deployment.template.json** fájlra, és válassza a **Build and Push IoT Edge solution** (IoT Edge-megoldás összeállítása és leküldése) lehetőséget. 
+
+Amikor a megoldás összeállítására utasítja a Visual Studio Code-ot, az elsőként lekéri az adatokat az üzembehelyezési sablonból, és létrehoz egy deployment.json nevű fájlt egy új **config** nevű mappában. Ezután futtatja a következő két parancsot az integrált terminálon: `docker build` és `docker push`. Ez a két parancs a kód felépítéséhez, a modul tárolóba, és majd továbbítsa a kód a tárolóregisztrációs adatbázisba, a megoldás inicializálásakor megadott. 
 
 ## <a name="deploy-the-solution-to-a-device"></a>A megoldás üzembe helyezése egy eszközön
 
 Az IoT Hub felületén keresztül modulokat állíthat be egy eszközön, de az IoT Hubhoz és az eszközökhöz a Visual Studio Code felületén keresztül is hozzáférhet. Ebben a szakaszban az IoT Hubhoz való hozzáférést fogja beállítani, majd a VS Code használatával üzembe fogja helyezni a megoldást az IoT Edge-eszközön. 
 
 1. A VS Code parancskatalógusában válassza ki az **Azure IoT Hub: Select IoT Hub** (Azure IoT Hub: IoT Hub kiválasztása) parancsot.
+
 2. Az utasításokat követve jelentkezzen be Azure-fiókjába. 
+
 3. A parancskatalógusban válassza ki saját Azure-előfizetését, majd IoT Hubját. 
+
 4. A VS Code Explorerben bontsa ki az **Azure IoT Hub Devices** (Azure IoT Hub-eszközök) szakaszt. 
+
 5. Kattintson a jobb gombbal az üzembe helyezés céleszközére, majd válassza a **Create deployment for a single device** (Üzemelő példány létrehozása egyetlen eszközhöz) lehetőséget. 
+
+   ![Üzemelő példány létrehozása egyetlen eszközhöz](./media/tutorial-store-data-sql-server/create-deployment.png)
+
 6. A fájlkezelőben keresse meg a megoldás **config** mappáját, és jelölje ki a **deployment.json** fájlt. Kattintson a **Select Edge Deployment Manifest** (Edge üzembehelyezési jegyzék kiválasztása) elemre. 
 
-Ha a telepítés sikeres, a VS Code egy üzenetben erősíti meg azt a kimenetben. Azt is ellenőrizheti, hogy üzemel-e az összes modul az eszközön. 
+Ha a telepítés sikeres, a VS Code egy üzenetben erősíti meg azt a kimenetben. 
 
-Futtassa az alábbi parancsot az IoT Edge-eszközön a modulok állapotának megtekintéséhez. Ennek futtatása eltarthat néhány percig.
+Azt is ellenőrizheti, hogy üzemel-e az összes modul az eszközön. Futtassa az alábbi parancsot az IoT Edge-eszközön a modulok állapotának megtekintéséhez. Ennek futtatása eltarthat néhány percig.
 
-   ```PowerShell
+   ```cmd/sh
    iotedge list
    ```
 
@@ -269,7 +312,7 @@ Ha alkalmazza az üzembehelyezési jegyzékfájlt az eszközön, akkor három fu
 
 Ez a szakasz az SQL-adatbázis beállítását mutatja be a hőmérsékletadatok mentéséhez. 
 
-1. Szintén egy parancssorból létesítsen kapcsolatot az adatbázissal. 
+1. A parancssori eszköz csatlakozhat az adatbázishoz. 
    * Windows-tárolók:
    
       ```cmd
@@ -279,7 +322,7 @@ Ez a szakasz az SQL-adatbázis beállítását mutatja be a hőmérsékletadatok
    * Linux-tárolók: 
 
       ```bash
-      docker exec -it sql bash
+      sudo docker exec -it sql bash
       ```
 
 2. Nyissa meg az SQL-parancssori eszközt.

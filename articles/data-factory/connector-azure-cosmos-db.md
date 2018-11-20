@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 11/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 9a75ae8645503366a490dbc0ea65d2fdc73d7c61
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: c10a933f371bfc84b863413134f2fdf5ff9c0e34
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167290"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161837"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Cosmos DB-ből az Azure Data Factory használatával
 
@@ -182,8 +182,11 @@ A következő tulajdonságok támogatottak a másolási tevékenység **forrás*
 |:--- |:--- |:--- |
 | type | A **típus** értékre kell állítani a másolási tevékenység fogadó tulajdonságát **DocumentDbCollectionSink**. |Igen |
 | WriteBehavior |Ismerteti, hogyan lehet adatokat írni az Azure Cosmos DB-hez. Megengedett értékek: **beszúrása** és **upsert**.<br/><br/>Viselkedését **upsert** , hogy cserélje le a dokumentumot, ha egy dokumentum ugyanazzal az azonosítóval már létezik; egyéb esetben helyezze be a dokumentum.<br /><br />**Megjegyzés:**: Data Factory automatikusan létrehozza a dokumentum Azonosítóját, ha nem ad meg Azonosítót vagy az eredeti dokumentum vagy oszlop-hozzárendelés. Ez azt jelenti, hogy gondoskodnia kell arról, hogy a **upsert** a várt módon működik, a dokumentum rendelkezik azonosítóval. |Nem<br />(az alapértelmezett érték **beszúrása**) |
-| WriteBatchSize | Adat-előállító használ a [Azure Cosmos DB tömeges végrehajtó könyvtár](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) adatokat írni az Azure Cosmos DB-hez. A **writeBatchSize** tulajdonság, amely a kódtár a Microsoft biztosít dokumentumok méretét szabályozza. Próbálja meg az értékét növelje **writeBatchSize** teljesítmény javítása érdekében. |Nem<br />(az alapértelmezett érték **10 000**) |
+| WriteBatchSize | Adat-előállító használ a [Azure Cosmos DB tömeges végrehajtó könyvtár](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) adatokat írni az Azure Cosmos DB-hez. A **writeBatchSize** tulajdonság, amely a kódtár a Microsoft biztosít dokumentumok méretét szabályozza. Próbálja meg az értékét növelje **writeBatchSize** jobb teljesítmény és az érték csökkentésével, ha a dokumentumot a rendszer nagy méretezés – lásd az alábbi tippeket. |Nem<br />(az alapértelmezett érték **10 000**) |
 | nestingSeparator |Egy speciális karaktert a **forrás** oszlopnevet, amely azt jelzi, hogy a beágyazott dokumentum van szükség. <br/><br/>Ha például `Name.First` a kimeneti adatkészlet struktúra hoz létre az Azure Cosmos DB-ben a következő JSON-struktúrát mikor a dokumentum a **nestedSeparator** van **.** (pont): `"Name": {"First": "[value maps to this column from source]"}`  |Nem<br />(az alapértelmezett érték **.** (pont)) |
+
+>[!TIP]
+>A cosmos DB korlátozza az egyetlen kérés mérete 2MB. A képlet egy kérés mérete = egyetlen dokumentum mérete * kötegméret írása. Ha eléri hiba üzenettel **"Request mérete túl nagy."** , **csökkentheti a `writeBatchSize` érték** másolási fogadó konfigurációban.
 
 **Példa**
 

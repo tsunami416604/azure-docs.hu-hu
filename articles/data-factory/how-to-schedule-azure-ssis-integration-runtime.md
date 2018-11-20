@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: f83715d2a382db271686210d9df285c255c09216
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 7e93e83f7594d30d223d37454e09943beba6d3ce
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113994"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976730"
 ---
 # <a name="how-to-start-and-stop-the-azure-ssis-integration-runtime-on-a-schedule"></a>Elindítása és leállítása az Azure-SSIS integrációs modul egy ütemezés szerint
 Ez a cikk ismerteti a indítása és leállítása az Azure SSIS integrációs modul (IR) az Azure Automation és az Azure Data Factory használatával ütemezheti. Fut (SQL Server Integration Services) Azure-SSIS integrációs modul (IR) van társítva költsége. Ezért általában szeretné futtatni az integrációs modul csak akkor, amikor szüksége van az SSIS-csomagok futtatása az Azure-ban, és az integrációs modul leállításához, ha már nincs szükség. Használhatja a Data Factory felhasználói felületén vagy az Azure PowerShell-lel [manuális elindításához, vagy egy Azure SSIS integrációs modul leállításához](manage-azure-ssis-integration-runtime.md)).
@@ -38,7 +38,7 @@ Ebben a cikkben leírt magas szintű lépései a következők:
 Ha már egy Azure SSIS integrációs modul még nincs kiépítve, építi ki található utasításokat követve a [oktatóanyag](tutorial-create-azure-ssis-runtime-portal.md). 
 
 ## <a name="create-and-test-an-azure-automation-runbook"></a>Hozzon létre, és a egy Azure Automation-runbook tesztelése
-Ebben a szakaszban a következő lépéseket fogja végrehajtani: 
+Ebben a szakaszban az alábbi lépéseket fogja végrehajtani: 
 
 1. Hozzon létre egy Azure Automation-fiókot.
 2. PowerShell-runbook létrehozása az Azure Automation-fiókban. A PowerShell-parancsfájlt a runbookhoz társított elindul vagy leáll egy Azure SSIS integrációs modul a parancsot, adja meg, ha a művelet paraméter alapján. 
@@ -347,7 +347,7 @@ Miután hoz létre, és a folyamat teszteléséhez, ütemezési eseményindító
     6. Kattintson a jobb gombbal az SSIS-csomag, és válassza ki **jelentések** -> **szabványos jelentések** -> **az összes végrehajtás**. 
     7. Győződjön meg arról, hogy futtatta-e az SSIS-csomag. 
 
-        ![Ellenőrizze az SSIS-csomag futtatása](./media/how-to-schedule-azure-ssis-integration-runtime/verfiy-ssis-package-run.png)
+        ![Ellenőrizze az SSIS-csomag futtatása](./media/how-to-schedule-azure-ssis-integration-runtime/verify-ssis-package-run.png)
 
 ### <a name="schedule-the-pipeline"></a>A folyamat rendszeres 
 Most, hogy a folyamat meg a várt módon működik, létrehozhat egy olyan eseményindítót Ez a folyamat jelenleg egy megadott kiadása ütemben történik. Egy folyamat és ütemezési eseményindító társításával kapcsolatos részletekért lásd: [ütemezés a folyamat aktiválása](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule).

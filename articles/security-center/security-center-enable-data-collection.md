@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: d88a59d3b9a39a42120b302fd8e7989c968db952
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: f6a818e0f628924342ddd50322bb54bf1d1d6079
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624777"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976658"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Az adatgyűjtést az Azure Security Centerben
 A Security Center adatokat gyűjt az Azure-beli virtuális gépek (VM) és a nem Azure-beli számítógépekről a biztonsági rések és fenyegetések monitorozásához. Az adatgyűjtés a Microsoft Monitoring Agent segítségével történik, amely a biztonsághoz kapcsolódó különböző konfigurációkat és eseménynaplókat olvas be a gépről, és elemzés céljából átmásolja az adatokat az Ön munkaterületére. Az ilyen adatok többek között: operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép nevét, az IP-címeket, és bejelentkezett felhasználó. A Microsoft Monitoring Agent az összeomlási memóriaképeket is átmásolja a munkaterülethez.
@@ -48,7 +48,7 @@ Ha az Automatikus kiépítés be kapcsolva, a Security Center létrehozza a Micr
 
 A Microsoft Monitoring Agent automatikus kiépítésének engedélyezése:
 1. A Security Center főmenüjében válassza **biztonsági házirend**.
-2. Válassza ki az előfizetést.
+2. Kattintson a **beállításainak szerkesztése** a beállítások oszlop a listában a kívánt előfizetés.
 
   ![Előfizetés kiválasztása][7]
 
@@ -135,7 +135,7 @@ Egy meglévő Log Analytics-munkaterület kiválasztása:
 
     a.  A Security Center főmenüjében válassza **biztonsági házirend**.
      
-    b.  Válassza ki a kívánt munkaterületet, ahol csatlakoztassa az ügynököt kíván.
+    b.  Válassza ki a kívánt munkaterületet, amelyben szeretné az ügynököt csatlakoztatja kattintva **beállításainak szerkesztése** a beállítások oszlop a listában a kívánt előfizetés.
         ![Válassza ki a munkaterület][8] c. Állítsa a tarifacsomagot.
         ![Válasszon tarifacsomagot][9] 
    

@@ -9,13 +9,13 @@ ms.author: cforbe
 author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 09/24/2018
-ms.openlocfilehash: f6f669bd9ab45ba3800722eb3bcdba88f2e72f5e
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.date: 11/20/2018
+ms.openlocfilehash: 72a6e7fdc8bd5887782ab23d29812bed792fd53f
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710239"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164591"
 ---
 # <a name="prepare-data-for-modeling-with-azure-machine-learning"></a>Adatok előkészítése az Azure Machine Learning modellezés
  
@@ -25,15 +25,18 @@ Az adatok a Python használatával készítheti elő a [az Azure Machine Learnin
 
 ## <a name="azure-machine-learning-data-prep-sdk"></a>Az Azure Machine Learning, Data Prep SDK
 
-Az Azure Machine Learning Data Prep SDK egy Python-kódtár, amely számos gyakori adatok előfeldolgozási eszközöket tartalmazza. Bővíti Ezenkívül speciális funkciók, például az automatikus funkciófejlesztési és az átalakítások példák származtatva. Az SDK-t a core-funkciók például Pandas és PySpark népszerű kódtárak hasonló, de nagyobb rugalmasságot biztosít. Pandas akkor általában a leghasznosabb, a kisebb adatkészletek (< 2 – 5 GB), mielőtt kapacitás-memóriakorlátozások hatása a teljesítményre. Ezzel szemben a PySpark általánosan big-data alkalmazások, de egy terhelést, amely kis adatkészletek sokkal lassabbá használatának végzi.
+A [az Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk) egy Python-kódtár, amely tartalmazza:
++ Számos gyakori előfeldolgozási Adateszközök
++ Példák származó automatizált funkciófejlesztési és átalakítások
 
-Az SDK a következőket kínálja:
+Az SDK hasonlít a core-funkciók a népszerű kódtárak például **Pandas** és **PySpark**, még a nagyobb rugalmasságot biztosít. Pandas akkor általában a leghasznosabb, a kisebb adatkészletek (< 2 – 5 GB), mielőtt kapacitás-memóriakorlátozások hatása a teljesítményre. Ezzel szemben a PySpark általánosan big-data alkalmazások, de egy terhelést, amely kis adatkészletek sokkal lassabbá használatának végzi.
 
+Az Azure Machine Learning Data Prep SDK a következőket kínálja:
 - Kényelmi célokat szolgál, ha kisméretű adatkészletekkel dolgozik, és használhatóságára vonatkozóan
-- Modern, big-data alkalmazások
-- Lehetővé teszi mindkét használati esetek ugyanazt a kódot méretezhetőség
 
-Az alábbi példák kiemelnek néhány, az SDK egyedi funkciója.
+- Modern, big-data alkalmazások
+
+- Lehetővé teszi mindkét használati esetek ugyanazt a kódot méretezhetőség
 
 ### <a name="install-the-sdk"></a>Az SDK telepítése
 
@@ -49,7 +52,16 @@ A következő kód használatával a csomag importálása.
 import azureml.dataprep as dprep
 ```
 
-### <a name="automatic-file-type-detection"></a>A fájlok automatikus adattípus észlelése
+### <a name="examples-and-reference"></a>Példák és referencia
+
+A modulok és az SDK funkcióit kapcsolatos további információkért tekintse meg a [Data Prep SDK referenciadokumentumok](https://aka.ms/data-prep-sdk).
+
+Az alábbi példák kiemelnek néhány egyedi funkcióját az SDK-t, beleértve:
++ A fájlok automatikus adattípus észlelése
++ Automatizált funkciófejlesztési
++ Összefoglaló statisztikák
+
+#### <a name="automatic-file-type-detection"></a>A fájlok automatikus adattípus észlelése
 
 Használja a `smart_read_file()` függvény használatával töltse be az adatokat a fájl típusa megadása nélkül. Ez a függvény automatikusan felismeri és elemzi a fájl típusa.
 
@@ -57,7 +69,7 @@ Használja a `smart_read_file()` függvény használatával töltse be az adatok
 dataflow = dprep.smart_read_file(path="<your-file-path>")
 ```
 
-### <a name="automated-feature-engineering"></a>Automatizált funkciófejlesztési
+#### <a name="automated-feature-engineering"></a>Automatizált funkciófejlesztési
 
 Az SDK segítségével felosztása és azokból származtatott oszlopok is példa tanuláshoz és következtetésekhez funkciófejlesztési automatizálásához. Fel, hogy egy mezőt az adatfolyam-objektum nevű `datetime` értékkel `2018-09-15 14:30:00`.
 
@@ -77,7 +89,7 @@ new_dataflow = dataflow.derive_column_by_example(
     )
 ```
 
-### <a name="summary-statistics"></a>Összefoglaló statisztikák
+#### <a name="summary-statistics"></a>Összefoglaló statisztikák
 
 Létrehozhat egy adatfolyam-egyetlen sor kód rövid összefoglaló statisztikáit. Ez a módszer kényelmesen megtudhatja, hogy az adatokat, és hogyan oszlik.
 

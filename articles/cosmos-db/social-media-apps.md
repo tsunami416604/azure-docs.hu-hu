@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: maquaran
-ms.openlocfilehash: a65ec0a92b8fc245c77ce67c80c1202f73a3ec66
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 6c2911ac65b95ea0a705944fdd8fb9288af28498
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711871"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165679"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Közösségi tartalom az Azure Cosmos DB használatával
 
@@ -100,7 +100,7 @@ Adatcsatornák létrehozása a következő annyit, amelyet egy adott relevancia 
         {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
     ]
 
-A "legutóbbi" stream-létrehozási dátuma szerint rendezve bejegyzések lehet. Vagy lehet-e az elmúlt 24 órában további kedvelések hozzászólásokat "legkeresettebb" adatfolyam. Akkor is Megvalósíthat egy egyéni stream minden egyes felhasználó követőinek és érdeklődése, így például logika alapján. A bejegyzések listájának továbbra is lenne. Gyorsan, hogyan hozhat létre a listák, de az olvasási teljesítmény akadálytalan marad. Ha e listák valamelyikébe szerez be, egyetlen lekérdezést kiadni Cosmos DB használatával a [OPERÁTORBAN](sql-api-sql-query.md#WhereClause) egyszerre bejegyzések lapjain beolvasásához.
+A "legutóbbi" stream-létrehozási dátuma szerint rendezve bejegyzések lehet. Vagy lehet-e az elmúlt 24 órában további kedvelések hozzászólásokat "legkeresettebb" adatfolyam. Akkor is Megvalósíthat egy egyéni stream minden egyes felhasználó követőinek és érdeklődése, így például logika alapján. A bejegyzések listájának továbbra is lenne. Gyorsan, hogyan hozhat létre a listák, de az olvasási teljesítmény akadálytalan marad. Ha e listák valamelyikébe szerez be, egyetlen lekérdezést kiadni Cosmos DB használatával a [OPERÁTORBAN](how-to-sql-query.md#WhereClause) egyszerre bejegyzések lapjain beolvasásához.
 
 Használja a hírcsatorna adatfolyamok sikerült beépített [Azure App Services](https://azure.microsoft.com/services/app-service/) háttér-folyamatok: [Webjobs](../app-service/web-sites-create-web-jobs.md). Bejegyzés létrehozása után a háttérben történő feldolgozás használatával is elindítható [Azure Storage](https://azure.microsoft.com/services/storage/) [üzenetsorok](../storage/queues/storage-dotnet-how-to-use-queues.md) és a Webjobs használatával aktivált a [Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)végrehajtási, a Propagálás közzététele a saját egyéni logika alapján Streamek belül.
 

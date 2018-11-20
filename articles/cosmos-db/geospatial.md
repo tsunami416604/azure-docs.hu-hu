@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: sngun
-ms.openlocfilehash: 6ad59f14a0ade305bc9b1f9f125c21e9bdc39c0d
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0bd91eba80aba340619f5aa76d5bc19894a3510f
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961908"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163078"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Térinformatikai és GeoJSON helyadatok használata az Azure Cosmos DB SQL API-fiók
 
@@ -151,7 +151,7 @@ Ha nem rendelkezik a szélességi és hosszúsági adatokat, de a fizikai címek
 Most, hogy készített egy pillantást a földrajzi adatok beszúrása, vessünk egy pillantást az Azure Cosmos DB SQL és a LINQ használatával az adatok lekérdezésére.
 
 ### <a name="spatial-sql-built-in-functions"></a>Térbeli SQL beépített függvények
-Az Azure Cosmos DB a következő nyissa meg a földrajzi Consortium (OGC) beépített függvények támogatja a térinformatikai lekérdezéséhez. A beépített függvény az SQL-nyelv, minden további információkért lásd: [Azure Cosmos DB lekérdezése](sql-api-sql-query.md).
+Az Azure Cosmos DB a következő nyissa meg a földrajzi Consortium (OGC) beépített függvények támogatja a térinformatikai lekérdezéséhez. A beépített függvény az SQL-nyelv, minden további információkért lásd: [Azure Cosmos DB lekérdezése](how-to-sql-query.md).
 
 <table>
 <tr>
@@ -392,6 +392,6 @@ Most, hogy megtanulhatta, hogyan kezdheti el a földrajzi támogatásával az Az
 
 * A kódírás a [térinformatikai .NET platformra írt kódmintái a Githubon](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)
 * Ismerkedés a térinformatikai lekérdezések a [Azure Cosmos DB Query Playground](http://www.documentdb.com/sql/demo#geospatial)
-* Tudjon meg többet [Azure Cosmos DB-lekérdezés](sql-api-sql-query.md)
+* Tudjon meg többet [Azure Cosmos DB-lekérdezés](how-to-sql-query.md)
 * Tudjon meg többet [Azure Cosmos DB-indexelő házirendek](indexing-policies.md)
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6013c0a1b404336ad7cca21edafb7adec5c7f7ca
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: fa6e70fe58e5066fcf308425a4c0d104c072a756
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978842"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164303"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Engedélyezése és megtekintése az Application Insights Profiler kapcsolatos problémák elhárítása
 
@@ -46,9 +46,6 @@ A profiler ír nyomkövetési üzenetek és egyéni eseményeket az application 
 
 1. Ha a időszakban kérelmek a profiler futott, akkor győződjön meg arról, hogy a profiler engedélyezve van az alkalmazás részeként kéréseket kezeli. Néha alkalmazások több összetevőből áll, de a Profiler engedélyezve van csak bizonyos, nem az összes, az összetevőket. Az Application Insights Profiler konfigurálása lapján megtekintheti az összetevőket, amelyek már feltöltött nyomkövetéseket.
 
-### <a name="net-core-21-bug"></a>.NET core 2.1-es hiba
-A profiler-ügynök, amely megakadályozza, hogy átveszi a futó ASP.NET Core 2.1-es alkalmazások nyomkövetések feltöltése programhiba van. Azt is dolgozunk a javítást, és fog rendelkezni, készen áll hamarosan. Ez a hiba javítása az október végétől telepíti.
-
 ### <a name="other-things-to-check"></a>Más ellenőrizze az alábbiakat:
 * Az alkalmazás fut, a .NET-keretrendszer 4.6.
 * Ha a webalkalmazás egy ASP.NET Core-alkalmazást, futnia kell, hogy legalább az ASP.NET Core 2.0.
@@ -69,10 +66,11 @@ A portál támogatási jegyet is küldhet. Győződjön meg arról, a korreláci
 ## <a name="troubleshooting-profiler-on-app-services"></a>Profiler az App Services hibaelhárítása
 ### <a name="for-the-profiler-to-work-properly"></a>A Profilkészítő megfelelő működéséhez:
 * A web app service-csomagot kell lennie az alapszintű csomag vagy újabb verziója.
-* A webes alkalmazás telepítve van az App Services (2.6.5) az Application Insights kiterjesztéssel kell rendelkeznie.
+* A webalkalmazás rendelkeznie kell Application Insights engedélyezését.
 * A webalkalmazás kell rendelkeznie a **állítani az APPINSIGHTS_INSTRUMENTATIONKEY** alkalmazásbeállítást az azonos kialakítási kulcsot, amelyet az Application Insights SDK konfigurálva.
 * A webalkalmazás kell rendelkeznie a **APPINSIGHTS_PROFILERFEATURE_VERSION** Alkalmazásbeállítás meghatározása, és a 1.0.0.
-* A **ApplicationInsightsProfiler2** webjobs-feladat kell futnia. A webjobs-feladat ellenőrizheti a [Kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/), és nyissa meg a **WebJobs-irányítópulttal** az Eszközök menüben. Mint ApplicationInsightsProfiler2 hivatkozásra kattintva az alábbi képernyőképeken látható, a webjobs-feladatot, beleértve a napló részletes információkat tekinthet meg.
+* A webalkalmazás kell rendelkeznie a **DiagnosticServices_EXTENSION_VERSION** Alkalmazásbeállítás definiálva, és állítsa az értékét KB. 3.
+* A **ApplicationInsightsProfiler3** webjobs-feladat kell futnia. A webjobs-feladat ellenőrizheti a [Kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/), és nyissa meg a **WebJobs-irányítópulttal** az Eszközök menüben. Mint ApplicationInsightsProfiler2 hivatkozásra kattintva az alábbi képernyőképeken látható, a webjobs-feladatot, beleértve a napló részletes információkat tekinthet meg.
 
     Itt van szüksége a webjobs-feladat részleteinek megtekintéséhez kattintson a hivatkozásra: 
 
@@ -91,11 +89,7 @@ Profiler konfigurálásakor a webalkalmazás-beállítások végrehajtott friss�
 1. Állítsa be **Always On** való **a**.
 1. Adja hozzá a **állítani az APPINSIGHTS_INSTRUMENTATIONKEY** beállítást, és állítsa az értékét a azonos kialakítási kulcsot, az SDK által használt alkalmazás.
 1. Adja hozzá a **APPINSIGHTS_PROFILERFEATURE_VERSION** Alkalmazásbeállítás, és állítsa be az 1.0.0-s.
-1. Nyissa meg **speciális eszközök**.
-1. Válassza ki **Go** a Kudu-webhely megnyitásához.
-1. Válassza ki a Kudu webhelyen **Webhelybővítményekkel**.
-1. Telepítés **az Application Insights** az Azure Web Apps katalógusából.
-1. Indítsa újra a webalkalmazást.
+1. Adja hozzá a **DiagnosticServices_EXTENSION_VERSION** Alkalmazásbeállítás, és adja meg kb. 3.
 
 ### <a name="too-many-active-profiling-sessions"></a>Túl sok aktív profilkészítési munkamenetek
 

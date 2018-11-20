@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 4c56a1164a589af5d325d1378f331a7d0ee138b7
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 55d4f53a23c92bb96934e84c0400bc182bc3d87e
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956442"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976808"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Első lépésekhez készült útmutató Azure-fejlesztőknek
 
@@ -92,7 +92,7 @@ Aggódni ki felépítésére és kezelésére, a kód futtatásához egy egész 
 
 Az Azure Service Fabric egy elosztott rendszerplatform, amellyel egyszerűen készíthet, csomagolását, üzembe helyezése és kezelése a skálázható és megbízható mikroszolgáltatások a. Kiépítés, az üzembe helyezés, figyelés, frissítés/javítása is biztosít átfogó alkalmazásfelügyeleti képességeket, és törölni a telepített alkalmazások. Gépek egy megosztott készletén futó, alkalmazások is kezdhetik, és akár több ezer gépet szükség szerint méretezheti.
 
-A Service Fabric támogatja a WebAPI az Open Web Interface .NET (OWIN) és az ASP.NET Core. SDK-kat biztosít a Linux, a .NET Core és a Java-szolgáltatások létrehozásához. A Service Fabric kapcsolatos további információkért tekintse meg a [Service Fabric képzési](https://azure.microsoft.com/documentation/learning-paths/service-fabric/).
+A Service Fabric támogatja a WebAPI az Open Web Interface .NET (OWIN) és az ASP.NET Core. SDK-kat biztosít a Linux, a .NET Core és a Java-szolgáltatások létrehozásához. A Service Fabric kapcsolatos további információkért tekintse meg a [Service Fabric-dokumentáció](https://docs.microsoft.com/en-us/azure/service-fabric/).
 
 >**Mikor érdemes használni:** Service Fabric akkor hasznos, amikor az alkalmazás létrehozása vagy egy meglévő alkalmazás használatához a mikroszolgáltatási architektúrát újraírását. A Service Fabric használja, amikor szüksége van további felett, vagy közvetlen hozzáférést, az alapul szolgáló infrastruktúra.
 

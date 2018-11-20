@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 378baad0735238dc0921e5e78e2a27b3ae907e19
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 611cd0878e88d2e1c0a988f73b57e391c5a8551d
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627543"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975907"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Egyéni a fordítót Hub munkaterületet és projektek áttelepítése
 
@@ -134,6 +134,19 @@ Ha azt szeretné, hogy a projektek, betanítások és dokumentumok. áttelepít�
 
 >[!Note]
 >Migrálás csak a nyelvi párok, ahol NMT nyelvek létezik-e a támogatott. Ellenőrizze a listája jelenleg [támogatott nyelvek NMT](https://www.microsoft.com/translator/business/languages/). A nyelvi párok, ahol NMT nyelvek nem létezik, a adat központból átkerül egyéni a fordítót, de betanítások nem tudja elvégezni az adott nyelv párok.
+
+## <a name="custom-translator-versus-hub"></a>Eseményközpont és egyéni fordító
+
+Ez a tábla között a Microsoft Translator Hub és az egyéni a fordítót a szolgáltatásokat hasonlítja össze.
+
+|   | Eseményközpont | Custom Translator |
+|:-----|:----:|:----:|
+|Testreszabás funkció állapota   | Általános rendelkezésre állás  | Előzetes verzió |
+| Text API-verzió  | 2. verzió    | V3  |
+| SMT testreszabása | Igen   | Nem |
+| NMT testreszabása | Nem    | Igen |
+| Új egyesített Speech services testreszabása | Nem    | Igen |
+| Nincs nyomkövetés | Igen | Igen |
 
 ## <a name="next-steps"></a>További lépések
 

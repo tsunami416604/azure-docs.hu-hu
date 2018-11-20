@@ -1,6 +1,6 @@
 ---
-title: Az Azure mintaalkalmazás DMZ-k való használatra |} Microsoft Docs
-description: Telepíti az egyszerű webes alkalmazást DMZ létrehozása után forgalom folyamata forgatókönyvek tesztelése
+title: A DMZ-k segítségével az Azure mintaalkalmazás |} A Microsoft Docs
+description: Forgalom folyamat-forgatókönyvekhez teszteléséhez DMZ létrehozása után az egyszerű webes alkalmazás üzembe helyezése
 services: virtual-network
 documentationcenter: na
 author: tracsman
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: 8506238e41c5d9dac8d76d729d4919b30a0528b9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a0f1313f8b22aba0a153563bd804435c3ef53f2
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23883795"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52159865"
 ---
-# <a name="sample-application-for-use-with-dmzs"></a>Mintaalkalmazás DMZ-k való használatra
-[A biztonsági határ bevált gyakorlatok laphoz való visszatéréshez][HOME]
+# <a name="sample-application-for-use-with-dmzs"></a>A mintaalkalmazás a DMZ-k segítségével
+[Térjen vissza a biztonsági határ ajánlott eljárások lap][HOME]
 
-A PowerShell-parancsfájlok helyi futtathatja a kiszolgálókon IIS01 és AppVM01 telepítsen és konfiguráljon egy egyszerű webalkalmazást fog megjelenni a tartalmat a háttér-kiszolgálófiók AppVM01 az előtér-kiszolgálóról IIS01 html-lapot.
+A PowerShell-parancsfájlok helyi telepítéséhez, és állítsa be egy egyszerű webalkalmazást, amely megjeleníti a tartalom a háttér-AppVM01 kiszolgálóról az előtér-kiszolgálóról IIS01 HTML-lapok IIS01 és AppVM01 kiszolgálókon futtatható.
 
-Ez az alkalmazás egy egyszerű tesztelési környezetben biztosít számos DMZ példája és milyen módosításokat a végpontok, a NSG-k, a UDR és a tűzfalon a szabályok hatással lehet a forgalom.
+Ez az alkalmazás egy egyszerű tesztelési környezetben kínál számos, a DMZ-példák, és hogyan módosításokat a végpontokat, a NSG-k, az udr-t és a tűzfal a szabályok hatással lehet a forgalom adatfolyamait.
 
-## <a name="firewall-rule-to-allow-icmp"></a>Tűzfalszabály ICMP engedélyezése
-Ez egyszerű PowerShell utasítás bármely Windows virtuális gépen, amely engedélyezi az ICMP (pingelések) forgalmat is futtatható. A tűzfal frissítés lehetővé teszi, hogy könnyebben tesztelés és hibaelhárítás céljából, azzal, hogy a ping protokoll lehetővé az áthaladás, a windows tűzfal (a legtöbb Linux disztribúciókkal ICMP alapértelmezés szerint be van).
+## <a name="firewall-rule-to-allow-icmp"></a>Tűzfalszabályt, amely engedélyezi az ICMP Használatát
+Ez egyszerű PowerShell-utasítással ICMP (pingelések) forgalom engedélyezésére bármely Windows virtuális gépen futtatható. A tűzfal frissítés lehetővé teszi, hogy a könnyebb tesztelés és hibaelhárítás azáltal, hogy a pingelés protokoll a windows tűzfal (a legtöbb Linux-disztribúciók ICMP alapértelmezés szerint be van kapcsolva) áthaladását.
 
 ```PowerShell
 # Turn On ICMPv4
@@ -37,18 +37,18 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
     -Protocol ICMPv4 -Enabled True -Profile Any -Action Allow
 ```
 
-A következő parancsfájlokat használ, a tűzfal szabály hozzáadása esetén az első utasításban.
+Használja az alábbi parancsfájlok, a tűzfal szabály hozzáadás-e az első utasítás.
 
-## <a name="iis01---web-application-installation-script"></a>IIS01 - webes alkalmazás telepítési parancsfájlt
-A rendszer ezt a parancsfájlt:
+## <a name="iis01---web-application-installation-script"></a>IIS01 – webes alkalmazás telepítési parancsfájlt
+Ezt a szkriptet fogja végrehajtani:
 
-1. Nyissa meg a IMCPv4 (Ping) a helyi kiszolgáló windows tűzfalon könnyebb teszteléshez
+1. Nyissa meg a IMCPv4 (Ping), a helyi kiszolgáló windows tűzfalon, a könnyebb tesztelés
 2. Telepítse az IIS és a .net keretrendszer legalább 4.5
-3. Hozzon létre egy ASP.NET-weblap és a Web.config fájlban
-4. A fájlhozzáférés könnyebben alapértelmezett alkalmazáskészlet módosítása
-5. A névtelen felhasználó beállítása a rendszergazdai fiókot és jelszót
+3. Hozzon létre egy ASP.NET-weblap és a egy Web.config fájlban
+4. A fájlhozzáférés könnyebbé tenni az alapértelmezett alkalmazáskészlet módosítása
+5. A rendszergazdai fiókot és jelszót a névtelen felhasználó beállítása
 
-A PowerShell parancsfájl fusson helyileg RDP IIS01 be kellett közben.
+Ez a PowerShell-szkript helyileg kell futtatni RDP IIS01 be kellett közben.
 
 ```PowerShell
 # IIS Server Post Build Config Script
@@ -132,8 +132,8 @@ A PowerShell parancsfájl fusson helyileg RDP IIS01 be kellett közben.
     $MainPage | Out-File -FilePath "C:\inetpub\wwwroot\Home.aspx" -Encoding ascii
     $WebConfig | Out-File -FilePath "C:\inetpub\wwwroot\Web.config" -Encoding ascii
 
-# Set App Pool to Clasic Pipeline to remote file access will work easier
-    Write-Host "Updaing IIS Settings" -ForegroundColor Cyan
+# Set App Pool to Classic Pipeline to remote file access will work easier
+    Write-Host "Updating IIS Settings" -ForegroundColor Cyan
     c:\windows\system32\inetsrv\appcmd.exe set app "Default Web Site/" /applicationPool:".NET v4.5 Classic"
     c:\windows\system32\inetsrv\appcmd.exe set config "Default Web Site/" /section:system.webServer/security/authentication/anonymousAuthentication /userName:$theAdmin /password:$thePassword /commit:apphost
 
@@ -147,20 +147,20 @@ A PowerShell parancsfájl fusson helyileg RDP IIS01 be kellett közben.
 ```
 
 ## <a name="appvm01---file-server-installation-script"></a>AppVM01 - kiszolgáló telepítési parancsfájlját
-Ezt a parancsfájlt hoz létre a háttérkiszolgálók egyszerű alkalmazás. A rendszer ezt a parancsfájlt:
+Ez a szkript állítja be a háttéralkalmazás az egyszerű alkalmazáshoz. Ezt a szkriptet fogja végrehajtani:
 
-1. Nyissa meg a IMCPv4 könnyebb tesztelési a tűzfalon (Ping)
+1. Nyissa meg a IMCPv4 (Ping), a tűzfalon a könnyebb tesztelés
 2. Hozzon létre egy könyvtárat a webhelyhez
-3. Hozzon létre egy szövegfájlt, hogy távolról hozzáférést a weblap által
-4. A könyvtár- és engedélyezi a hozzáférést a névtelen hozzáférés engedélyeinek beállítása
-5. Kapcsolja ki az Internet Explorer fokozott biztonsági engedélyezi a könnyebb böngészés erről a kiszolgálóról 
+3. Hozzon létre egy szövegfájlt, távolról a weblap által érhetők el
+4. A könyvtár- és a névtelen hozzáférés engedélyezése az engedélyek beállítása
+5. Kapcsolja ki az Internet Explorer – fokozott biztonsági, hogy könnyebben böngészés erről a kiszolgálóról 
 
 > [!IMPORTANT]
-> **Az ajánlott eljárás**: Soha ne kapcsolja ki az Internet Explorer fokozott biztonsági egy üzemi kiszolgálón, valamint célszerű általában rossz webböngészéshez egy éles kiszolgálóról. A névtelen hozzáféréshez fájlmegosztások megnyitása is hibás ötlet, de kész itt az egyszerűség érdekében.
+> **Ajánlott eljárás**: Soha ne kapcsolja ki az Internet Explorer fokozott biztonsági éles kiszolgálón, valamint célszerű általában egy rossz böngészik az éles kiszolgálón. Nyissa meg a névtelen hozzáférés fájlmegosztásokat is egy rossz ötlete, de kész itt az egyszerűség kedvéért.
 > 
 > 
 
-A PowerShell parancsfájl fusson helyileg RDP AppVM01 be kellett közben. PowerShell annak biztosítása érdekében a sikeres végrehajtáshoz rendszergazdaként kell futtatni.
+Ez a PowerShell-szkript helyileg kell futtatni RDP AppVM01 be kellett közben. PowerShell az annak biztosítása érdekében a sikeres végrehajtást rendszergazdaként kell futtatni.
 
 ```PowerShell
 # AppVM01 Server Post Build Config Script
@@ -193,13 +193,13 @@ A PowerShell parancsfájl fusson helyileg RDP AppVM01 be kellett közben. PowerS
     Write-Host
 ```
 
-## <a name="dns01---dns-server-installation-script"></a>DNS01 - DNS-kiszolgáló telepítési parancsfájlt
-Nem szerepel a DNS-kiszolgáló beállítása a mintaalkalmazás parancsprogram van. Ha a tűzfalszabályok, NSG-t vagy UDR vizsgálata kell lennie, a DNS-forgalom, kell a DNS01 kiszolgálót manuálisan kell beállítani. A hálózati konfigurációs XML-fájl és a Resource Manager-sablon mindkét példákat tartalmaz DNS01 az elsődleges DNS-kiszolgáló és a nyilvános DNS-kiszolgálóként, 3. szintet, a biztonsági mentési DNS-kiszolgáló által üzemeltetett. A szint 3 DNS-kiszolgáló volna a tényleges nem helyi adatforgalomhoz használt DNS-kiszolgálóra, és DNS01 nem állítania, nem helyi hálózati DNS lépne.
+## <a name="dns01---dns-server-installation-script"></a>DNS01 – DNS-kiszolgáló telepítési szkript
+Ez a mintaalkalmazás a DNS-kiszolgáló beállítása nincs parancsprogramja van. Tesztelés a tűzfalszabályok, NSG-t vagy udr-t kell tartalmaznia a DNS-forgalom, ha a DNS01 kiszolgálónak kell manuálisan beállítani. A hálózati konfigurációs xml-fájl és a Resource Manager-sablon mindkét példákat tartalmaz DNS01 az elsődleges DNS-kiszolgáló és a nyilvános DNS-kiszolgáló, Level 3, a biztonsági mentési DNS-kiszolgáló által üzemeltetett. A szintjét 3 DNS-kiszolgáló lenne a tényleges DNS-kiszolgáló nem helyi forgalomhoz használt, és a DNS01 nem beállítása nincs helyi hálózat DNS fel.
 
-## <a name="next-steps"></a>Következő lépések
-* A IIS01 parancsfájl futtatása az IIS-kiszolgálón
-* AppVM01 fájlkiszolgáló parancsprogrammal
-* Keresse meg a nyilvános IP-cím a IIS01 a build ellenőrzése
+## <a name="next-steps"></a>További lépések
+* IIS-kiszolgálón történő IIS01 parancsprogrammal
+* AppVM01 a fájlkiszolgáló-parancsfájl futtatása
+* Tallózással keresse meg a nyilvános IP-cím a IIS01 a build ellenőrzése
 
 <!--Link References-->
 [HOME]: ../best-practices-network-security.md

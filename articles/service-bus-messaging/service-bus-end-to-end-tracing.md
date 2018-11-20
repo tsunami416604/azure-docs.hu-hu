@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: lmolkova
-ms.openlocfilehash: 770d8950e25431e1edc496e0710cf199b45e5847
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 4584104e9c9833b5f3f586581dd5a58f420fe0bd
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283835"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165339"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Elosztott nyomkövetést és korrelációs révén a Service Bus-üzenetkezelés
 
@@ -155,27 +155,27 @@ A következő finomhangolt műveletek teljes listáját:
 
 | Művelet neve | A nyomon követett API | Konkrét tartalom tulajdonságait|
 |----------------|-------------|---------|
-| Microsoft.Azure.ServiceBus.Send | [MessageSender.SendAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.sendasync) | IList<Message> üzenetek - küldött üzenetek listája |
-| Microsoft.Azure.ServiceBus.ScheduleMessage | [MessageSender.ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.schedulemessageasync) | Üzenet-üzenet - üzenet feldolgozása folyamatban<br/>DateTimeOffset ScheduleEnqueueTimeUtc - ütemezett üzenet eltolása<br/>hosszú SequenceNumber - ("Stop" eseménytartalom) ütemezett üzenet sorszáma |
-| Microsoft.Azure.ServiceBus.Cancel | [MessageSender.CancelScheduledMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.cancelscheduledmessageasync) | hosszú SequenceNumber - megszakítandó te üzenet sorszáma | 
-| Microsoft.Azure.ServiceBus.Receive | [MessageReceiver.ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) |int RequestedMessageCount - sikerült kapott üzenetek maximális száma.<br/>IList<Message> állapotüzenetek – fogadott üzenetek ("Stop" eseménytartalom) listája |
-| Microsoft.Azure.ServiceBus.Peek | [MessageReceiver.PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync) | int FromSequenceNumber – a kiindulási pont, amelyből egy üzenetköteget Tallózás.<br/>int RequestedMessageCount - beolvasandó üzenetek számát.<br/>IList<Message> üzenetek - (eseménytartalom "Stop"). a fogadott üzenetek listája |
-| Microsoft.Azure.ServiceBus.ReceiveDeferred | [MessageReceiver.ReceiveDeferredMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receivedeferredmessageasync) | IEnumerable<long> SequenceNumbers – a fogadása a feladatütemezési számokat tartalmazó lista.<br/>IList<Message> üzenetek - (eseménytartalom "Stop"). a fogadott üzenetek listája |
-| Microsoft.Azure.ServiceBus.Complete | [MessageReceiver.CompleteAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.completeasync) | IList<string> LockTokens – hajtsa végre a megfelelő üzenetek zárolási jogkivonatok tartalmazó lista.|
-| Microsoft.Azure.ServiceBus.Abandon | [MessageReceiver.AbandonAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.abandonasync) | LockToken - megfelelő a feloldandó zárolású üzenet zárolási jogkivonata karakterlánc. |
-| Microsoft.Azure.ServiceBus.Defer | [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) | LockToken - megfelelő késleltetendő üzenet zárolási jogkivonata karakterlánc. | 
-| Microsoft.Azure.ServiceBus.DeadLetter | [MessageReceiver.DeadLetterAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deadletterasync) | LockToken - kézbesítetlen levelek megfelelő üzenet zárolási jogkivonata karakterlánc. | 
-| Microsoft.Azure.ServiceBus.RenewLock | [MessageReceiver.RenewLockAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync) | LockToken - megfelelő üzenet zárolásának megújítása zárolási jogkivonata karakterlánc.<br/>Dátum és idő LockedUntilUtc – új zárolási jogkivonat lejárati dátuma és ideje UTC formátumban. ("Stop" eseménytartalom)|
-| Microsoft.Azure.ServiceBus.Process | A megadott üzenetet kezelő lambda függvény [IReceiverClient.RegisterMessageHandler](/dotnet/api/microsoft.azure.servicebus.core.ireceiverclient.registermessagehandler) | Üzenet-üzenet - üzenet feldolgozása folyamatban. |
-| Microsoft.Azure.ServiceBus.ProcessSession | Üzenet munkamenet kezelő lambda függvény a megadott [IQueueClient.RegisterSessionHandler](/dotnet/api/microsoft.azure.servicebus.iqueueclient.registersessionhandler) | Üzenet-üzenet - üzenet feldolgozása folyamatban.<br/>IMessageSession munkamenet - munkamenet feldolgozása folyamatban |
-| Microsoft.Azure.ServiceBus.AddRule | [SubscriptionClient.AddRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.addruleasync) | RuleDescription szabály - a szabály leírása, amely biztosítja a szabály hozzáadásához. |
-| Microsoft.Azure.ServiceBus.RemoveRule | [SubscriptionClient.RemoveRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.removeruleasync) | karakterlánc RuleName - eltávolítása a szabály nevét. |
-| Microsoft.Azure.ServiceBus.GetRules | [SubscriptionClient.GetRulesAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.getrulesasync) | IEnumerable<RuleDescription> az előfizetéshez tartozó összes szabályok szabályokat. (Csak "Stop" tartalom) |
-| Microsoft.Azure.ServiceBus.AcceptMessageSession | [ISessionClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.azure.servicebus.isessionclient.acceptmessagesessionasync) | a karakterlánc-munkamenet-azonosító – a munkamenet-azonosító szerepel az üzeneteket. |
-| Microsoft.Azure.ServiceBus.GetSessionState | [IMessageSession.GetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.getstateasync) | a karakterlánc-munkamenet-azonosító – a munkamenet-azonosító szerepel az üzeneteket.<br/>byte [] állapot – a munkamenet-állapot (eseménytartalom "Stop") |
-| Microsoft.Azure.ServiceBus.SetSessionState | [IMessageSession.SetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.setstateasync) | a karakterlánc-munkamenet-azonosító – a munkamenet-azonosító szerepel az üzeneteket.<br/>byte [] állapot – a munkamenet-állapot |
-| Microsoft.Azure.ServiceBus.RenewSessionLock | [IMessageSession.RenewSessionLockAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.renewsessionlockasync) | a karakterlánc-munkamenet-azonosító – a munkamenet-azonosító szerepel az üzeneteket. |
-| Microsoft.Azure.ServiceBus.Exception | bármelyik meghatározhatóak API| Kivétel kivétel - kivétel példány |
+| Microsoft.Azure.ServiceBus.Send | [MessageSender.SendAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.sendasync) | `IList<Message> Messages` -Küldött üzenetek listája |
+| Microsoft.Azure.ServiceBus.ScheduleMessage | [MessageSender.ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.schedulemessageasync) | `Message Message` -Üzenet feldolgozása folyamatban<br/>`DateTimeOffset ScheduleEnqueueTimeUtc` – Ütemezett üzenet eltolása<br/>`long SequenceNumber` – Ütemezett üzenet sorszáma (eseménytartalom "Stop") |
+| Microsoft.Azure.ServiceBus.Cancel | [MessageSender.CancelScheduledMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.cancelscheduledmessageasync) | `long SequenceNumber` – Te üzenet sorszáma kell lennie | 
+| Microsoft.Azure.ServiceBus.Receive | [MessageReceiver.ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) | `int RequestedMessageCount` – A kapott sikerült üzenetek maximális száma.<br/>`IList<Message> Messages` -(Eseménytartalom "Stop"). a fogadott üzenetek listája |
+| Microsoft.Azure.ServiceBus.Peek | [MessageReceiver.PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync) | `int FromSequenceNumber` – A kiindulási pont, amelyből egy üzenetköteget Tallózás.<br/>`int RequestedMessageCount` – A beolvasandó üzenetek száma.<br/>`IList<Message> Messages` -(Eseménytartalom "Stop"). a fogadott üzenetek listája |
+| Microsoft.Azure.ServiceBus.ReceiveDeferred | [MessageReceiver.ReceiveDeferredMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receivedeferredmessageasync) | `IEnumerable<long> SequenceNumbers` -A fogadása a feladatütemezési számokat tartalmazó lista.<br/>`IList<Message> Messages` -(Eseménytartalom "Stop"). a fogadott üzenetek listája |
+| Microsoft.Azure.ServiceBus.Complete | [MessageReceiver.CompleteAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.completeasync) | `IList<string> LockTokens` – A végrehajtásához a megfelelő üzenetek zárolási jogkivonatok tartalmazó lista.|
+| Microsoft.Azure.ServiceBus.Abandon | [MessageReceiver.AbandonAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.abandonasync) | `string LockToken` – A megfelelő a feloldandó zárolású üzenet zárolási jogkivonata. |
+| Microsoft.Azure.ServiceBus.Defer | [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) | `string LockToken` – A megfelelő késleltetendő üzenet zárolási jogkivonata. | 
+| Microsoft.Azure.ServiceBus.DeadLetter | [MessageReceiver.DeadLetterAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deadletterasync) | `string LockToken` – A kézbesítetlen levelek megfelelő üzenet zárolási jogkivonata. | 
+| Microsoft.Azure.ServiceBus.RenewLock | [MessageReceiver.RenewLockAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync) | `string LockToken` – A megfelelő üzenet zárolásának megújítása zárolási jogkivonat.<br/>`DateTime LockedUntilUtc` -Új zárolási jogkivonat lejárati dátuma és ideje UTC formátumban. ("Stop" eseménytartalom)|
+| Microsoft.Azure.ServiceBus.Process | A megadott üzenetet kezelő lambda függvény [IReceiverClient.RegisterMessageHandler](/dotnet/api/microsoft.azure.servicebus.core.ireceiverclient.registermessagehandler) | `Message Message` -Üzenet feldolgozása folyamatban. |
+| Microsoft.Azure.ServiceBus.ProcessSession | Üzenet munkamenet kezelő lambda függvény a megadott [IQueueClient.RegisterSessionHandler](/dotnet/api/microsoft.azure.servicebus.iqueueclient.registersessionhandler) | `Message Message` -Üzenet feldolgozása folyamatban.<br/>`IMessageSession Session` -Munkamenet feldolgozása folyamatban |
+| Microsoft.Azure.ServiceBus.AddRule | [SubscriptionClient.AddRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.addruleasync) | `RuleDescription Rule` -A szabály leírása, amely biztosítja a szabály hozzáadásához. |
+| Microsoft.Azure.ServiceBus.RemoveRule | [SubscriptionClient.RemoveRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.removeruleasync) | `string RuleName` -A szabály eltávolításához nevét. |
+| Microsoft.Azure.ServiceBus.GetRules | [SubscriptionClient.GetRulesAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.getrulesasync) | `IEnumerable<RuleDescription> Rules` -Az előfizetéshez tartozó összes szabályok. (Csak "Stop" tartalom) |
+| Microsoft.Azure.ServiceBus.AcceptMessageSession | [ISessionClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.azure.servicebus.isessionclient.acceptmessagesessionasync) | `string SessionId` – A munkamenet-azonosító szerepel az üzeneteket. |
+| Microsoft.Azure.ServiceBus.GetSessionState | [IMessageSession.GetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.getstateasync) | `string SessionId` – A munkamenet-azonosító szerepel az üzeneteket.<br/>`byte [] State` -Munkamenet állapot (eseménytartalom "Stop") |
+| Microsoft.Azure.ServiceBus.SetSessionState | [IMessageSession.SetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.setstateasync) | `string SessionId` – A munkamenet-azonosító szerepel az üzeneteket.<br/>`byte [] State` -Munkamenet állapot |
+| Microsoft.Azure.ServiceBus.RenewSessionLock | [IMessageSession.RenewSessionLockAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.renewsessionlockasync) | `string SessionId` – A munkamenet-azonosító szerepel az üzeneteket. |
+| Microsoft.Azure.ServiceBus.Exception | bármelyik meghatározhatóak API| `Exception Exception` -Kivétel példány |
 
 Minden esemény elérheti `Activity.Current` , amely tartalmazza az aktuális műveleti környezet.
 

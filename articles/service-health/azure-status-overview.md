@@ -1,9 +1,9 @@
 ---
-title: Az Azure állapotának áttekintése |} Microsoft Docs
-description: Azure-szolgáltatások állapotának globális megtekintésében.
+title: Az Azure állapota – áttekintés |} A Microsoft Docs
+description: Az Azure-szolgáltatások állapotának globális nézet.
 services: Azure status
 documentationcenter: ''
-author: shawntabrizi
+author: stephbaron
 manager: ''
 editor: ''
 ms.assetid: ''
@@ -12,33 +12,33 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Supportability
-ms.date: 03/27/2018
-ms.author: shtabriz
-ms.openlocfilehash: 6bb67fa17ace2e662091c6b66a774baf9d7d8bfd
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 11/16/2018
+ms.author: stbaron
+ms.openlocfilehash: feca839062c9d629cef8239a9763414fe4ed2092
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32181820"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975056"
 ---
 # <a name="azure-status"></a>Az Azure állapota
-[Az Azure állapot](https://azure.microsoft.com/status/) tesz lehetővé az Azure-szolgáltatások állapotának globális nézetét. Azure állapotú szolgáltatás rendelkezésre állása friss információkat kaphat. Mindenki hozzáfér az Azure állapot, valamint a nézet az összes szolgáltatás, amely jelenthetik-e a szolgáltatás állapotát. 
+[Az Azure állapota](https://azure.microsoft.com/status/) biztosít az Azure-szolgáltatások állapotának globális nézet készítése. Az Azure állapota a szolgáltatás rendelkezésre állására Press információkat szerezhet. Mindenki hozzáférhet az Azure állapota, és jelenthetik nézetben minden szolgáltatás, amely a szolgáltatás állapotát. 
 
-![Az Azure állapot lap](./media/azure-status-overview/azure-status.PNG)
+![Azure állapotlapján](./media/azure-status-overview/azure-status.PNG)
 
 ## <a name="azure-status-updates"></a>Az Azure állapotának frissítése
-Az Azure állapot lap valós idejű lekérdezi frissíteni, mivel a Azure-szolgáltatások módosítás állapotát. Ha nyitva hagyja az Azure állapot lap, szabályozhatja a sebesség, amellyel a lap új adatokkal frissül. A lap tetején látható az oldal utolsó frissítésekor.
+Az Azure állapotlapján frissül, és valós időben, a módosítás Azure-szolgáltatások állapotát. Ha nyitva hagyja az Azure állapotlapján, szabályozhatja a sebesség, amellyel az oldal frissül az új adatokkal. A képernyő felső részén láthatja a legutóbbi, a lap frissítése megtörtént.
 
-![Az Azure állapot frissítése](./media/azure-status-overview/update.PNG)
+![Frissítés az Azure állapota](./media/azure-status-overview/update.PNG)
 
 ## <a name="azure-status-history"></a>Az Azure állapotelőzményei
-Az Azure állapot lap mindig a legújabb állapottal kapcsolatos adatok jeleníti meg, amíg régebbi események használatával megtekintheti a [Azure Előzmények lapon](https://azure.microsoft.com/status/history/).
+Az Azure állapotlapján mindig a legfrissebb állapotinformációkat szerepelnek, régebbi események használatával megtekintheti a [Azure állapotlapján előzmények](https://azure.microsoft.com/status/history/).
 
-Nincs látható események fel az elmúlt 90 napra beleértve egy előzetes alapvető ok, a megoldás és a következő lépések az Azure-bA.
+Ott tekintheti események mentése és az elmúlt 90 nap, beleértve egy előzetes alapvető ok elkülönítési, elhárítási és következő lépések az Azure-hoz.
 
 ## <a name="rss-feed"></a>RSS-hírcsatorna
-Az Azure állapot is biztosít [RSS-hírcsatorna](https://azure.microsoft.com/status/feed/) előfizetni, Azure-szolgáltatások állapotának módosításait.
+Az Azure állapota is biztosít [RSS-hírcsatorna](https://azure.microsoft.com/status/feed/) iratkozhat fel Azure-szolgáltatások állapotának változásáról.
 
 # <a name="next-steps"></a>További lépések
-* Ismerje meg, hogyan férhetnek a személyre szabott nézetet az Azure health használata az [szolgáltatásának állapota](./service-health-overview.md).
-* Ismerje meg, hogyan férhetnek részletesebb megjelenítéséhez, az adott Azure-erőforrások állapotának [Resource Health](./resource-health-overview.md).
+* Ismerje meg, hogyan kezdheti egy személyre szabott nézetet, az Azure állapota [Service Health](./service-health-overview.md).
+* Ismerje meg, hogyan kezdheti egy részletesebb nézet az adott Azure-erőforrások állapotáról [Resource Health](./resource-health-overview.md).

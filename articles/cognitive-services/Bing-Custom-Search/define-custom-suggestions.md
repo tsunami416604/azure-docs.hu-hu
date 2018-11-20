@@ -3,19 +3,19 @@ title: Adja meg az egyéni automatikus kiegészítés javaslatok – Bing egyén
 titlesuffix: Azure Cognitive Services
 description: Ismerteti, hogyan lehet egyéni automatikus kiegészítés vonatkozó egyéni javaslatok konfigurálása
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: maheshb
-ms.openlocfilehash: 6d7ee4ef1a84b644a7075e24c0760ea46b407754
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: d8d3e954dde23ebf6d19607b61df87cd79703b56
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465542"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163286"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>Az egyéni automatikus kiegészítés felhasználói beállítása
 

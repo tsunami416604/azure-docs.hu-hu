@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1a031ede814a963f25f1a3a3fc9725d9e5670a8e
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 17a0b36fffb14f423aba3dd02b5b42d44933309c
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824642"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165390"
 ---
 # <a name="monitor-azure-web-app-performance"></a>Azure-webapp teljesítményének figyelése
 Az [Azure Portalon](https://portal.azure.com) beállíthat alkalmazásteljesítmény-figyelést [Azure-webappjaihoz](../app-service/app-service-web-overview.md). Az [Azure Application Insights](app-insights-overview.md) úgy alakítja ki az alkalmazást, hogy telemetriát küldjön tevékenységeiről az Application Insights szolgáltatásnak, amely tárolja és elemzi azokat. Itt metrikus diagramok és keresőeszközök segítségével diagnosztizálhat problémákat, javíthatja a teljesítményt, és felmérheti a használatot.
@@ -43,9 +43,9 @@ Ha már futtat egy webappot az Azure-ban, a kéréseket és a hibák gyakoriság
 
     ![Webapp kialakítása](./media/app-insights-azure-web-apps/create-resource.png)
 
-2. Válassza ki az erőforrás létrehozása után **ellenőrizze és frissítse a webalkalmazáshoz tartozó Application Insights bővítményt** meggyőződni arról, hogy a bővítmény naprakész.
+2. Adjon meg, melyik erőforrást kell használnia, kiválaszthatja, hogyan szeretné az application insights a platformonként az alkalmazás adatainak gyűjtéséről.
 
-     ![Ellenőrizze és frissítse a site-bővítmény](./media/app-insights-azure-web-apps/check-and-update.png)
+    ![Válassza a beállítások platformonként](./media/app-insights-azure-web-apps/choose-options.png)
 
 3. **Alakítsa ki webappját** az Application Insights telepítése után.
 
@@ -64,7 +64,7 @@ Később igény szerint felépítheti az alkalmazást az Application Insights se
 
 *Hogyan távolíthatom el az Application Insightst vagy válthatok másik erőforrás küldésére?*
 
-* Nyissa meg a webapp kezelőpaneljét az Azure-ban, és a Fejlesztőeszközök területen nyissa meg a **Bővítmények** panelt. Törölje az Application Insights bővítményt. Ezután a Figyelés területen válassza az Application Insights elemet, és hozza létre vagy válassza ki a kívánt erőforrást.
+* Az Azure-ban nyissa meg a webalkalmazás panelére vezérlő, és nyissa meg a beállítások **Application Insights**. Kapcsolhatja ki az Application Insights gombra kattintva **letiltása** tetején, vagy válasszon ki egy új erőforrás a **módosítsa az erőforrás** szakaszban.
 
 ## <a name="build-the-app-with-application-insights"></a>Az alkalmazás építése az Application Insights segítségével
 Ha telepít egy SDK-t alkalmazásába, az Application Insights részletesebb telemetriát biztosít. Például gyűjthet nyomkövetési naplókat, [egyéni telemetriát írhat](app-insights-api-custom-events-metrics.md), és részletesebb, kivételjelentéseket kaphat.

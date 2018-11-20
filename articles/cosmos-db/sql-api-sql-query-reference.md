@@ -10,21 +10,21 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/19/2018
 ms.author: laviswa
-ms.openlocfilehash: 4492324b174c97325f40110b7500d5b0e99a926b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: dbd3d4e34df3bf918c831a3d9c74de8a9015b50e
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623944"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163605"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Az Azure Cosmos DB SQL-szintaxis referenciája
 
-Az Azure Cosmos DB támogatja a dokumentumok egy jól ismert SQL (Structured Query Language) lekérdezés nyelvtani például hierarchikus JSON-dokumentumokon végzett explicit séma vagy másodlagos indexek létrehozása nélkül. Ez a cikk az SQL-lekérdezési nyelvi szintaxis, amely kompatibilis az SQL API-fiókok dokumentációját. Példa SQL-lekérdezések leírását lásd: [SQL-lekérdezéseket a Cosmos DB](sql-api-sql-query.md).  
+Az Azure Cosmos DB támogatja a dokumentumok egy jól ismert SQL (Structured Query Language) lekérdezés nyelvtani például hierarchikus JSON-dokumentumokon végzett explicit séma vagy másodlagos indexek létrehozása nélkül. Ez a cikk az SQL-lekérdezési nyelvi szintaxis, amely kompatibilis az SQL API-fiókok dokumentációját. Példa SQL-lekérdezések leírását lásd: [SQL-lekérdezéseket a Cosmos DB](how-to-sql-query.md).  
   
 Látogasson el a [Query Playground](http://www.documentdb.com/sql/demo) ahol Cosmos DB kipróbálása és az adatkészletet az SQL-lekérdezések futtatásához.  
   
 ## <a name="select-query"></a>SELECT-lekérdezésben  
-Minden egyes lekérdezés SELECT záradékában és választható FROM áll és a WHERE záradék ANSI SQL előírások szerint. Általában az egyes lekérdezésekhez a forrás a FROM záradékban számbavétele megtörtént. Ezután a WHERE záradékban a szűrő alkalmazása a forrás a JSON-dokumentumok részhalmazának beolvasásához. Végül a SELECT záradékban szolgál a kért JSON-értékeit a kiválasztási listán. Az ismertető a SELECT utasításokban használt konvencióinak megjelennének a szintaxis konvenciók szakaszban. Példák: [SELECT-lekérdezésben példák](sql-api-sql-query.md#SelectClause)
+Minden egyes lekérdezés SELECT záradékában és választható FROM áll és a WHERE záradék ANSI SQL előírások szerint. Általában az egyes lekérdezésekhez a forrás a FROM záradékban számbavétele megtörtént. Ezután a WHERE záradékban a szűrő alkalmazása a forrás a JSON-dokumentumok részhalmazának beolvasásához. Végül a SELECT záradékban szolgál a kért JSON-értékeit a kiválasztási listán. Az ismertető a SELECT utasításokban használt konvencióinak megjelennének a szintaxis konvenciók szakaszban. Példák: [SELECT-lekérdezésben példák](how-to-sql-query.md#SelectClause)
   
 **Syntax**  
   
@@ -69,7 +69,7 @@ A lekérdezési nyelvet támogatja például a T-SQL stílus megjegyzések
 Az elválasztó karakterek és a megjegyzések nincs semmilyen jelentőséggel a gramatice, amíg azok jogkivonatok külön kell használható. Például: `-1e5` egy egyetlen szám token, ideje van`: – 1 e5` egy mínusz tokent követi számának 1 és azonosító e5.  
 
 ##  <a name="bk_select_query"></a> SELECT záradék  
-A SELECT utasítás záradékai kell következniük, ahogy fent látható. A választható záradékot bármelyike elhagyható. De amikor választható záradékot használják, azok kell megjelennie a helyes sorrendben. Példák: [SELECT-lekérdezésben példák](sql-api-sql-query.md#SelectClause).
+A SELECT utasítás záradékai kell következniük, ahogy fent látható. A választható záradékot bármelyike elhagyható. De amikor választható záradékot használják, azok kell megjelennie a helyes sorrendben. Példák: [SELECT-lekérdezésben példák](how-to-sql-query.md#SelectClause).
 
 **Syntax**  
 
@@ -132,7 +132,7 @@ Mindkét `SELECT <select_list>` és `SELECT *` "szintaktikai cukor", és azt is 
 [SELECT záradék](#bk_select_query)  
   
 ##  <a name="bk_from_clause"></a> FROM záradékban  
-Itt adhatja meg, a forrás vagy a csatlakoztatott források. A FROM záradék nem kötelező, kivéve, ha a forrás van szűrve, vagy előre jelzett költségről később a lekérdezésben. Az ehhez a záradékhoz célja, hogy adja meg az adatforrás, amelyre a lekérdezést kell működnie. A teljes tárolót gyakran a forrás, de ehelyett egy adhat meg a tároló egy részét. Nincs megadva ez a záradék, ha más záradékok továbbra is, ha a FROM záradékban megadott egyetlen dokumentum hajtani. Példák: [záradék PÉLDÁKBÓL](sql-api-sql-query.md#FromClause)
+Itt adhatja meg, a forrás vagy a csatlakoztatott források. A FROM záradék nem kötelező, kivéve, ha a forrás van szűrve, vagy előre jelzett költségről később a lekérdezésben. Az ehhez a záradékhoz célja, hogy adja meg az adatforrás, amelyre a lekérdezést kell működnie. A teljes tárolót gyakran a forrás, de ehelyett egy adhat meg a tároló egy részét. Nincs megadva ez a záradék, ha más záradékok továbbra is, ha a FROM záradékban megadott egyetlen dokumentum hajtani. Példák: [záradék PÉLDÁKBÓL](how-to-sql-query.md#FromClause)
   
 **Syntax**  
   
@@ -216,7 +216,7 @@ Egy tároló-kifejezés lehet tároló hatókörű vagy dokumentum hatókörű:
   
 A jelenlegi kiadásban a Cosmos DB támogatja a belső illesztések. További illesztési képességek érkeznek. 
 
-Belső illesztések egy teljes körű a részt vesz a join készlet keresztszorzatát eredményez. Az N-módon való csatlakozás eredménye egy készletét N-elem rekordokat, ahol a rekord minden egyes érték társítva az aliasnevet a JOIN beállítása a résztvevő, és ez az alias más záradékban való hivatkozással érhető el. Példák: [ILLESZTÉSI kulcsszó példák](sql-api-sql-query.md#Joins)
+Belső illesztések egy teljes körű a részt vesz a join készlet keresztszorzatát eredményez. Az N-módon való csatlakozás eredménye egy készletét N-elem rekordokat, ahol a rekord minden egyes érték társítva az aliasnevet a JOIN beállítása a résztvevő, és ez az alias más záradékban való hivatkozással érhető el. Példák: [ILLESZTÉSI kulcsszó példák](how-to-sql-query.md#Joins)
   
 A kiértékelés a JOIN attól függ, hogy a környezet hatókörét a programban részt vevő készletek:  
   
@@ -311,7 +311,7 @@ Nézzük meg, a FROM záradék a következő: `<from_source1> JOIN <from_source2
  [SELECT záradék](#bk_select_query)  
   
 ##  <a name="bk_where_clause"></a> WHERE záradék  
- Adja meg a keresési feltétel, a lekérdezés által visszaadott dokumentumok számára. Példák: [WHERE záradék példák](sql-api-sql-query.md#WhereClause)
+ Adja meg a keresési feltétel, a lekérdezés által visszaadott dokumentumok számára. Példák: [WHERE záradék példák](how-to-sql-query.md#WhereClause)
   
  **Syntax**  
   
@@ -336,7 +336,7 @@ WHERE <filter_condition>
  Ahhoz, hogy a dokumentum egy kifejezést a megadott kifejezés adja vissza a feltétel igaz értéket kell adnia. Csak az IGAZ logikai értéket eleget tesz a feltételt, semmilyen más érték: nem meghatározott, NULL értékű, false, szám, tömböt vagy objektumot nem teljesítik a feltételt.  
   
 ##  <a name="bk_orderby_clause"></a> ORDER BY záradék  
- Megadja a rendezési sorrendjét a lekérdezés által visszaadott eredményeket. Példák: [ORDER BY záradék példák](sql-api-sql-query.md#OrderByClause)
+ Megadja a rendezési sorrendjét a lekérdezés által visszaadott eredményeket. Példák: [ORDER BY záradék példák](how-to-sql-query.md#OrderByClause)
   
  **Syntax**  
   
@@ -374,7 +374,7 @@ ORDER BY <sort_specification>
  Bár a lekérdezési szintaxis támogatja a több sorrend tulajdonságai, a Cosmos DB lekérdezési modul támogatja a rendezést, csak egyetlen tulajdonság, és csak elleni tulajdonság neve (nem számított tulajdonságokhoz). Rendezés is megköveteli, hogy az indexelési házirendet egy tulajdonság és a megadott típus, a maximális pontosság tartományindexszel tartalmazza-e. Tekintse meg a további részletekért indexelési házirend dokumentációját.  
   
 ##  <a name="bk_scalar_expressions"></a> Skaláris kifejezések  
- Egy skaláris kifejezés szimbólumok és egyetlen értéket beszerzése kiértékelése operátorok kombinációja. Egyszerű kifejezések állandók, tulajdonság hivatkozik, tömb elem hivatkozásokat, alias hivatkozik, vagy lehet függvényhívások. Egyszerű kifejezések operátorok használatával összetett kifejezések egyesíthetők. Példák: [skaláris kifejezések példák](sql-api-sql-query.md#scalar-expressions)
+ Egy skaláris kifejezés szimbólumok és egyetlen értéket beszerzése kiértékelése operátorok kombinációja. Egyszerű kifejezések állandók, tulajdonság hivatkozik, tömb elem hivatkozásokat, alias hivatkozik, vagy lehet függvényhívások. Egyszerű kifejezések operátorok használatával összetett kifejezések egyesíthetők. Példák: [skaláris kifejezések példák](how-to-sql-query.md#scalar-expressions)
   
  További információ az értékeket, amelyek esetében előfordulhat, hogy a skaláris kifejezés: [állandók](#bk_constants) szakaszban.  
   
@@ -2905,6 +2905,6 @@ SELECT ST_ISVALIDDETAILED({
   
 ## <a name="next-steps"></a>További lépések  
 
-- [SQL-szintaxis és a Cosmos DB SQL-lekérdezés](sql-api-sql-query.md)
+- [SQL-szintaxis és a Cosmos DB SQL-lekérdezés](how-to-sql-query.md)
 
 - [Cosmos DB-dokumentáció](https://docs.microsoft.com/azure/cosmos-db/)  

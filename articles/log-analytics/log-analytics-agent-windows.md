@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 11/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 4e99656319f543fb40d8509cb4ae9e1c25cfc75b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: ef95351c961b4fe2937e59179780326dea2309b1
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622482"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975703"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows-számítógépek csatlakoztatása a Log Analytics szolgáltatás az Azure-ban
 
@@ -46,10 +46,29 @@ A Windowshoz készült Microsoft Monitoring Agent telepítése előtt szüksége
 4. Válassza ki a **Csatlakoztatott források**, majd a **Windowsos kiszolgálók** elemet.   
 5. Másolja és illessze be a kedvenc szerkesztőjébe a **munkaterület-Azonosítót** és **elsődleges kulcs**.    
    
-## <a name="install-the-agent-using-setup-wizard"></a>Ügynök telepítése varázsló használatával
-Az alábbi lépéseket telepítése és konfigurálása az ügynök a Log Analytics az Azure és az Azure Government felhőben a számítógépre a Microsoft Monitoring Agent a telepítővarázsló segítségével.  
+## <a name="configure-agent-to-use-tls-12"></a>Használja a TLS 1.2-ügynök konfigurálása
+Történő használatának beállítása a [a TLS 1.2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) protokoll a Windows-ügynök és a Log Analytics szolgáltatás közötti kommunikációhoz, hajtsa végre az alábbi lépéseket ahhoz, hogy a virtuális gépen az ügynök telepítése előtt, vagy később.   
 
-1. A Log Analytics rendszeréből munkaterületén, a **Windows kiszolgálók** lapot nyit meg, ha a korábbi, válassza ki a megfelelő **Windows-ügynök letöltése** verziójú, a processzor architektúrájától függően a Windows operációs rendszer.   
+1. Keresse meg a következő beállításkulcsot: **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
+2. Hozzon létre egy alkulcs alatt **protokollok** a TLS 1.2 **HKLM\System\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2**
+3. Hozzon létre egy **ügyfél** alkulcs a TLS 1.2 protokoll a korábban létrehozott verzió alkulcs alatt. Ha például **HKLM\System\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client**.
+4. A következő DWORD-érték létrehozása **HKLM\System\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client**:
+
+    * **Engedélyezett** [érték = 1]
+    * **DisabledByDefault** [érték = 0]  
+
+Konfigurálja a .NET-keretrendszer 4.6, vagy később biztonságos titkosítás, mivel alapértelmezés szerint azt le van tiltva. A [erős titkosítás](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto) biztonságosabb, mint például a TLS 1.2-es protokollt használ, és blokkol, amelyek nem biztonságos protokollokkal. 
+
+1. Keresse meg a következő beállításkulcsot: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft.NETFramework\v4.0.30319**.  
+2. Hozzon létre a DWORD értékét **SchUseStrongCrypto** értékkel rendelkező kulcs alatt **1**.  
+3. Keresse meg a következő beállításkulcsot: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft.NETFramework\v4.0.30319**.  
+4. Hozzon létre a DWORD értékét **SchUseStrongCrypto** értékkel rendelkező kulcs alatt **1**. 
+5. A rendszer a beállítások érvénybe léptetéséhez indítsa újra. 
+
+## <a name="install-the-agent-using-setup-wizard"></a>Ügynök telepítése varázsló használatával
+Az alábbi lépéseket telepítése és konfigurálása az ügynök a Log Analytics az Azure és az Azure Government felhőben a számítógépre a Microsoft Monitoring Agent a telepítővarázsló segítségével. Ha azt szeretné, hogyan konfigurálja az ügynököt, hogy a System Center Operations Manager felügyeleti csoport jelentés is, lásd: [az ügynök telepítővarázslójával az Operations Manager-ügynök telepítése](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-manually#to-deploy-the-operations-manager-agent-with-the-agent-setup-wizard).
+
+1. A Log Analytics-munkaterület az a **Windows kiszolgálók** lapot nyit meg, ha a korábbi, válassza ki a megfelelő **Windows-ügynök letöltése** verziójú, a processzor architektúrájától függően a Windows operációs rendszer.   
 2. Futtassa a telepítőt, és telepítse az ügynököt a számítógépre.
 2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra.
 3. A **Licencfeltételek** oldalon olvassa el és fogadja el a licencet, majd kattintson az **Elfogadom** gombra.
@@ -76,7 +95,7 @@ Az alábbi táblázat a Log Analytics az ügynök, beleértve az Automation DSC 
 |---------------------------------------|--------------|
 | NOAPM=1                               | Nem kötelező paraméter. Az ügynök nélkül .NET alkalmazásteljesítmény-figyelési telepíti.|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = konfigurálása az ügynök számára, hogy egy munkaterületet                |
-|OPINSIGHTS_WORKSPACE_ID                | Munkaterület-azonosítót (guid) a munkaterület hozzáadása                    |
+|OPINSIGHTS_WORKSPACE_ID                | Munkaterület-Azonosítót (guid) a munkaterület hozzáadása                    |
 |OPINSIGHTS_WORKSPACE_KEY               | Kezdetben a munkaterület-hitelesítésre használható munkaterület kulcsa |
 |OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE  | Adja meg a felhőalapú környezet, amelyben a munkaterületen található <br> 0 = az azure kereskedelmi felhőben (alapértelmezett) <br> 1 = az azure Government |
 |OPINSIGHTS_PROXY_URL               | URI-t a proxy használata |
@@ -87,13 +106,13 @@ Az alábbi táblázat a Log Analytics az ügynök, beleértve az Automation DSC 
 2. Csendes telepítse az ügynököt, és konfigurálja azt, hogy az Azure kereskedelmi felhőben munkaterület mappájában kibontotta a telepítési fájlokat, írja be: 
    
      ```dos
-    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID=<your workspace id> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
+    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID=<your workspace ID> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
     ```
 
    vagy az ügynök számára, hogy az Azure US Government felhő konfigurálásához írja be: 
 
      ```dos
-    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID=<your workspace id> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
+    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID=<your workspace ID> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
     ```
 
 ## <a name="install-the-agent-using-dsc-in-azure-automation"></a>Ügynök telepítése az Azure Automation DSC használatával

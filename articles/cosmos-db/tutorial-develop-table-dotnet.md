@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 12/18/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: c41873d8f87a9a1203cefa37f99098f23e7aab92
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
-ms.translationtype: HT
+ms.openlocfilehash: e198a85d1c04cbc437ad23dadfa3005a72eaa2ce
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239005"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161633"
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: Fejlesztés a Table API-val .NET-keretrendszerben
 
@@ -293,7 +293,7 @@ foreach (CustomerEntity entity in table.ExecuteQuery(emailQuery))
 }
 ```
 
-Az Azure Cosmos DB ugyanazokat a lekérdezési funkciókat támogatja a Table API esetében, mint az Azure Table Storage. Az Azure Cosmos DB a rendezést, az összesítéseket, a földrajzi lekérdezéseket, a hierarchiát és számos különféle beépített funkciót is támogat. A további funkciók egy jövőbeli szolgáltatásfrissítésben kerülnek a Table API-ba. Az [Azure Cosmos DB lekérdezéssel](sql-api-sql-query.md) kapcsolatos szakaszában megtalálja a képességek áttekintését. 
+Az Azure Cosmos DB ugyanazokat a lekérdezési funkciókat támogatja a Table API esetében, mint az Azure Table Storage. Az Azure Cosmos DB a rendezést, az összesítéseket, a földrajzi lekérdezéseket, a hierarchiát és számos különféle beépített funkciót is támogat. Az [Azure Cosmos DB lekérdezéssel](how-to-sql-query.md) kapcsolatos szakaszában megtalálja a képességek áttekintését. 
 
 ## <a name="replace-an-entity"></a>Entitás cseréje
 Ha frissíteni kíván egy entitást, kérje le a Table szolgáltatásból, módosítsa az entitásobjektumot, majd mentse a módosításokat a Table szolgáltatásba. A következő kód egy meglévő ügyfél telefonszámát módosítja. 

@@ -14,29 +14,34 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: magoedte
-ms.openlocfilehash: a2219de6dfae9e17be1595d224c597fb31e00cae
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 4893141ec199d21e09bfa2b6a790473d983acd32
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715458"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165407"
 ---
 # <a name="how-to-onboard-azure-monitor-for-containers-preview"></a>Hogyan előkészítése az Azure Monitor tárolók (előzetes verzió) 
 Ez a cikk bemutatja, hogyan állítható be az Azure Monitor for containers szolgáltatásban üzembe helyezett Kubernetes-környezetben és lévő üzemeltetett számítási feladatok teljesítményének figyeléséhez [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/).
 
+Új központi telepítéséhez a következő támogatott módszerek használatával az AKS-tárolókhoz az Azure Monitor engedélyezhető:
+
+* Az Azure Portalról, vagy az Azure CLI-vel felügyelt Kubernetes-fürt üzembe helyezése
+* Létrehozása egy Kubernetes fürt használatával [Terraform és az AKS](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md)
+
+Egy figyelési is engedélyezheti, vagy több meglévő AKS-fürtök az Azure Portalról, vagy az Azure CLI használatával. 
+
 ## <a name="prerequisites"></a>Előfeltételek 
 Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
-- Egy új vagy meglévő AKS-fürtöt.
-- A Linux-verzió tárolóalapú Log Analytics-ügynököket a microsoft / oms:ciprod04202018 vagy újabb. A verziószám képviseli egy dátumot a következő formátumban: *mmddyyyy*. Az ügynök automatikusan telepítve van a szolgáltatás az előkészítés során. 
 - Egy Log Analytics-munkaterület. Létrehozhat, engedélyezze a monitorozást az új AKS-fürt, vagy lehetővé teszik az előkészítési folyamatot, hozzon létre egy alapértelmezett munkaterületet az AKS-fürt előfizetés alapértelmezett az erőforráscsoportban. Ha úgy döntött, hogy saját maga létrehozni, azt a létrehozhat [Azure Resource Manager](../../log-analytics/log-analytics-template-workspace-configuration.md)segítségével, [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), vagy a [az Azure portal](../../log-analytics/log-analytics-quick-create-workspace.md).
-- A Log Analytics közreműködő szerepkört, a figyelési szint. A Log Analytics-munkaterülethez való hozzáférésének kapcsolatos további információkért lásd: [munkaterületeinek kezeléséhez](../../log-analytics/log-analytics-manage-access.md).
+- Ön engedélyezése-tárolók monitorozása a Log Analytics közreműködő szerepkör tagja. A Log Analytics-munkaterülethez való hozzáférésének kapcsolatos további információkért lásd: [munkaterületeinek kezeléséhez](../../log-analytics/log-analytics-manage-access.md).
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 ## <a name="components"></a>Összetevők 
 
-A teljesítmény monitorozását teszi lehetővé a teljesítmény- és esemény-adatokat gyűjti össze a fürt összes csomópontja Linux rendszeren tárolóalapú Log Analytics-ügynököket támaszkodik. Az ügynök automatikus telepítése és regisztrálása a megadott Log Analytics-munkaterület-, miután engedélyezte a tárolók figyelését. 
+A teljesítmény monitorozását teszi lehetővé a teljesítmény- és esemény-adatokat gyűjti össze a fürt összes csomópontja Linux rendszeren tárolóalapú Log Analytics-ügynököket támaszkodik. Az ügynök automatikus telepítése és regisztrálása a megadott Log Analytics-munkaterület-, miután engedélyezte az Azure Monitor for containers szolgáltatásban. A telepített verzió: microsoft / oms:ciprod04202018 vagy újabb, és a dátum a következő formátumban: *mmddyyyy*. 
 
 >[!NOTE] 
 >Ha már telepített egy AKS-fürtöt, akkor engedélyeznie figyelése Azure CLI vagy a megadott Azure Resource Manager-sablon használatával, ahogyan az a cikk későbbi részében is. Nem használhat `kubectl` frissítése, törlése, telepítse újra vagy telepítheti az ügynököt. A sablon kell telepíteni szeretné ugyanabban az erőforráscsoportban a fürttel."
@@ -45,13 +50,15 @@ A teljesítmény monitorozását teszi lehetővé a teljesítmény- és esemény
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
 ## <a name="enable-monitoring-for-a-new-cluster"></a>Engedélyezze a monitorozást az új fürt
-A telepítés során engedélyezheti a figyelését egy új AKS-fürtöt az Azure Portalon vagy az Azure CLI használatával. Kövesse a cikk rövid [Azure Kubernetes Service (AKS)-fürt üzembe helyezése](../../aks/kubernetes-walkthrough-portal.md) szeretné engedélyezni a portálról, ha. Az a **figyelés** lapon a a **figyelés engedélyezése** beállításnál válassza **Igen**, majd válassza ki egy meglévő Log Analytics-munkaterületet, vagy hozzon létre egy újat. 
+A telepítés során engedélyezheti egy új AKS-fürtöt az Azure Portalon, az Azure CLI-vel, vagy a terraform használatával figyelését.  Kövesse a cikk rövid [Azure Kubernetes Service (AKS)-fürt üzembe helyezése](../../aks/kubernetes-walkthrough-portal.md) szeretné engedélyezni a portálról, ha. Az a **figyelés** lapon a a **figyelés engedélyezése** beállításnál válassza **Igen**, majd válassza ki egy meglévő Log Analytics-munkaterületet, vagy hozzon létre egy újat. 
 
 Egy új Azure CLI használatával létrehozott AKS-fürt figyelése engedélyezéséhez kövesse a lépés a rövid útmutató a cikkben a szakaszában [létrehozása AKS-fürt](../../aks/kubernetes-walkthrough.md#create-aks-cluster).  
 
 >[!NOTE]
 >Ha az Azure CLI-vel, akkor először helyi telepítése és használata a parancssori felület. Az Azure CLI 2.0.43 verzióját kell futtatnia vagy újabb. A verzió azonosításához futtassa `az --version`. Ha telepíteni vagy frissíteni szeretné az Azure CLI, lásd: kell [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 >
+
+Ha Ön [Terraform használatával egy AKS-fürt üzembe helyezése](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md), is engedélyezheti az Azure Monitor tárolók többek között az argumentum [ **addon_profile** ](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) és megadása**oms_agent**.  
 
 Miután engedélyezte a figyelés, és minden konfigurációs feladat sikeresen befejeződött, a teljesítmény, a fürt két módon figyelheti:
 

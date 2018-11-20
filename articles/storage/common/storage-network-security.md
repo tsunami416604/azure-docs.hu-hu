@@ -5,355 +5,428 @@ services: storage
 author: cbrooksmsft
 ms.service: storage
 ms.topic: article
-ms.date: 10/25/2017
+ms.date: 10/30/2018
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: 51404c35b42d1c98116e74b5b7a47afe05b7d2a9
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: f9f38b11aa333eed9c5f524cc5c6c9e727fede15
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300557"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164897"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
-Az Azure Storage lehetővé teszi, hogy a tárfiókok meghatározott engedélyezett hálózatok biztonságos többrétegű biztonsági modellt biztosít.  Ha a hálózati szabályok vannak beállítva, csak az engedélyezett hálózatok alkalmazások férhetnek hozzá egy tárfiókot.  Egy engedélyezett hálózatról hívásakor az alkalmazások továbbra is megfelelő jogosultságokkal (egy érvényes hozzáférési kulcs vagy SAS-token) a tárfiók eléréséhez szükséges.
+
+Az Azure Storage egy többrétegű biztonsági modellt biztosít. Ez a modell lehetővé teszi, hogy a tárfiókok egy adott csoportjának támogatott hálózatok biztonságos. Ha a hálózati szabályok vannak beállítva, csak a megadott készlet hálózatok összefoglaló adatokat kéri alkalmazások férhetnek hozzá egy tárfiókot.
+
+Egy alkalmazás, amely hozzáfér a storage-fiók, a hálózati szabályok akkor vannak érvényben, amikor a kérést a megfelelő engedély szükséges. Az Azure Active Directory (AD) hitelesítő adatait (blobok és üzenetsorok) támogatott engedélyezési (előzetes verzió) egy érvényes tárelérési kulccsal vagy SAS-jogkivonatát.
 
 > [!IMPORTANT]
-> Ne tudják bekapcsolni a tűzfalszabályok a tárfiók letiltja a hozzáférést adataihoz, más Azure-szolgáltatásokból származó bejövő kérelmek.  Ez magában foglalja a portálról, írása, naplók, stb.  Azure-szolgáltatások a virtuális hálózaton belül működő számára hozzáférés engedélyezhető azáltal, hogy az alhálózat, a szolgáltatás példánya.  Nem működik a virtuális hálózaton belüli Azure-szolgáltatásokkal a tűzfal blokkolja.  Forgatókönyvek csak korlátozott számú keresztül engedélyezhető a [kivételek](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) alább ismertetett mechanizmus.  A portál eléréséhez kell ehhez a gépről megbízható modulokon belül (IP vagy virtuális hálózat), amely meg van adva.
+> Alapértelmezés szerint ne tudják bekapcsolni a tűzfalszabályok a tárfiók beérkező adatok blokkolja, kivéve, ha a kérések származhatnak olyan szolgáltatás, amely egy Azure virtuális hálózaton (VNet) belül. Blokkolt közé tartoznak az egyéb Azure-szolgáltatások, a naplózás és mérőszámok szolgáltatások, az Azure Portalról, és így tovább.
 >
+> Az Azure-szolgáltatások, amelyek azáltal, hogy az alhálózat, a szolgáltatáspéldány virtuális hálózaton belüli működnie hozzáférést biztosíthat. Korlátozott számú keresztül forgatókönyvek engedélyezése a [kivételek](#exceptions) az alábbi szakaszban ismertetett mechanizmus. Az Azure portal eléréséhez kell egy gépen belül a megbízható (IP vagy virtuális hálózatok közötti) beállításával lehet.
 
 ## <a name="scenarios"></a>Forgatókönyvek
-Storage-fiókok (beleértve az internetes forgalmat) minden hálózati forgalmat hozzáférését, alapértelmezés szerint konfigurálható.  Is lehet hozzáférést biztosítani a forgalom az adott Azure-beli virtuális hálózatok, amely lehetővé teszi az alkalmazások biztonságos hálózati határt hozhat létre.  Hozzáférés is adható a nyilvános internetes IP-címtartományok, adott interneten vagy a helyi ügyfelektől érkező kapcsolatokat engedélyezi.
 
-Az összes hálózati protokollok, az Azure storage, beleértve a REST és az SMB hálózati szabályok életbe lépnek.  Az adatokat az eszközök, mint az Azure Portalon, a Storage Explorerben és AZCopy igényel explicit hálózati szabályok hozzáférés biztosítása, ha a hálózati szabályok vannak érvényben.
+Alapértelmezés szerint konfigurálja a storage-fiókok (beleértve az internetes forgalmat) minden hálózati forgalmat hozzáférését. Majd hozzáférést biztosítani a forgalom az adott virtuális hálózatok. Ez a konfiguráció lehetővé teszi az alkalmazások biztonságos hálózati határt hozhat létre. Is is hozzáférést biztosít a nyilvános internetes IP-címtartományok, adott interneten vagy a helyi ügyfelektől érkező kapcsolatokat engedélyezi.
 
-A hálózati szabályok alkalmazhatók a meglévő tárfiókok, vagy új Storage-fiókok létrehozása közben is alkalmazható.
+Az összes hálózati protokollok, az Azure storage, beleértve a REST és az SMB hálózati szabályok életbe lépnek. Elérni az adatokat, például az Azure portal, a Storage Explorer és az AZCopy explicit hálózati szabályok szükségesek.
 
-Hálózati szabályok érvényesek, ha azok irányuló kérések tartatni.  SAS-tokeneket, amelyek egy adott IP-cím szolgáltatáshoz hozzáférést szolgálják a **korlát** a hozzáférési jogkivonat a jogosult azonban nem új hozzáférés biztosítása mellett konfigurált hálózati szabályok ehhez. 
+Hálózati szabályokat alkalmazhat a meglévő tárfiókok, vagy ha új storage-fiókokat hozhat létre.
 
-Virtuálisgép-lemez forgalom (ideértve a csatlakoztatást és műveletek leválasztásához és lemez i/o) **nem** hálózati szabályok által érintett.  A lapblobok REST hozzáférést a hálózati szabályok védik.
+Hálózati szabályok érvényesek, ha azok irányuló kérések van kényszerítve. SAS-tokeneket, amelyek egy adott IP-cím hozzáférést korlátozza a hozzáférést a token tulajdonosának szolgálja, de új hozzáférést nem konfigurált hálózati szabályok mellett.
 
-Klasszikus tárfiókokat **nem** támogatja a tűzfalak és virtuális hálózatok.
+Virtuális gép mely (ideértve a csatlakoztatást és válassza le a műveletek és a lemez IO) a hálózati szabályok nem érinti. A lapblobok REST hozzáférést a hálózati szabályok védik.
 
-Biztonsági mentés és visszaállítás a virtuális gépek nem felügyelt lemezek használata a storage-fiókok a alkalmazni a hálózati szabályok kivétel létrehozása leírtak szerint keresztül támogatott a [kivételek](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) című szakaszát.  Végezze el a tűzfalkivételek nem vonatkoznak a Managed Disks már kezeli az Azure.
+Klasszikus tárfiókok nem támogatják a tűzfalak és virtuális hálózatok.
+
+A storage-fiókok nem felügyelt lemez is használható a biztonsági mentési és helyreállítási virtuális gépeken alkalmazott kivételt hoz létre a hálózati szabályok. Ez a folyamat leírása itt található a [kivételek](#exceptions) című szakaszát. Tűzfalkivételek nem alkalmazhatók a felügyelt lemezekkel rendelkező, mivel már felügyeli őket az Azure.
 
 ## <a name="change-the-default-network-access-rule"></a>Módosítsa az alapértelmezett hálózati hozzáférési szabályt
-Alapértelmezés szerint a tárfiókok bármely hálózati ügyfelek kapcsolatokat fogadjon.  A kiválasztott hálózatok való hozzáférés korlátozásához, először módosítania kell az alapértelmezett művelet.
+
+Alapértelmezés szerint a tárfiókok bármely hálózati ügyfelek kapcsolatokat fogadjon. A kiválasztott hálózatok való hozzáférés korlátozásához, először módosítania kell az alapértelmezett művelet.
 
 > [!WARNING]
-> A hálózati szabályok módosítása hatással lehet a Kapcsolódás az Azure Storage lehetővé teszi az alkalmazások.  Beállítást az alapértelmezett hálózati szabály **megtagadása** blokkolja az összes hozzáférni az adatokhoz, kivéve, ha adott hálózati szabályok *megadásának* hozzáférést is érvényesek.  Győződjön meg arról, hozzáférést minden olyan engedélyezett hálózatok, hálózati szabályok segítségével, hogy megtagadja a hozzáférést az alapértelmezett szabály módosítása előtt.
->
+> A hálózati szabályok módosítása hatással lehet a Kapcsolódás az Azure Storage lehetővé teszi az alkalmazások. Beállítás az alapértelmezett hálózati szabály **megtagadása** blokkolja az összes az adatokhoz való hozzáférés, kivéve, ha az adott hálózati szabályok **biztosítson** hozzáférést is alkalmazza a rendszer. Győződjön meg arról, hozzáférést minden olyan engedélyezett hálózatok, hálózati szabályok segítségével, hogy megtagadja a hozzáférést az alapértelmezett szabály módosítása előtt.
+
+### <a name="managing-default-network-access-rules"></a>Alapértelmezett hálózati hozzáférési szabályok kezelése
+
+Alapértelmezett hálózati hozzáférési szabályok storage-fiókok az Azure portal, PowerShell vagy CLIv2 segítségével kezelheti.
 
 #### <a name="azure-portal"></a>Azure Portal
-1. Keresse meg a védeni kívánt tárfiókot.  
 
-2. Kattintson a beállítások menü nevű **tűzfalak és virtuális hálózatok**.
-3. Alapértelmezés szerint engedélyezi a hozzáférést, válassza a "Kijelölt hálózatok" hozzáférés engedélyezéséhez.  Ahhoz, hogy minden hálózati forgalmat, hogy engedélyezze a hozzáférést minden hálózatból válassza.
-4. Kattintson a *mentése* alkalmazza a módosításokat.
+1. Nyissa meg a védeni kívánt tárfiókot.
+
+1. Kattintson a beállítások menü nevű **tűzfalak és virtuális hálózatok**.
+
+1. Alapértelmezés szerint engedélyezi a hozzáférést, válassza a hozzáférés engedélyezéséhez **kiválasztott hálózatok**. Ahhoz, hogy minden hálózati forgalmat, dönt, hogy engedélyezze a hozzáférést **minden hálózatból elérhető**.
+
+1. Kattintson a **mentése** alkalmazza a módosításokat.
 
 #### <a name="powershell"></a>PowerShell
-1. Telepítse a legújabb [Azure PowerShell-lel](/powershell/azure/install-azurerm-ps) és [bejelentkezési](/powershell/azure/authenticate-azureps).
 
-2. Az alapértelmezett szabályt, a tárfiók állapota megjelenítéséhez.
-```PowerShell
-(Get-AzureRmStorageAccountNetworkRuleSet  -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").DefaultAction
-``` 
+1. Telepítse a [Azure PowerShell-lel](/powershell/azure/install-azurerm-ps) és [jelentkezzen be a](/powershell/azure/authenticate-azureps).
 
-3. Állítsa be az alapértelmezett szabályt, alapértelmezés szerint nem engedélyezi a hálózati hozzáférést.  
-```PowerShell
-Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Deny
-```    
+1. Az alapértelmezett szabályt, a tárfiók állapota megjelenítéséhez.
 
-4. Állítsa be az alapértelmezett szabályt, alapértelmezés szerint hálózati hozzáférés engedélyezéséhez.
-```PowerShell
-Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Allow
-```    
+    ```PowerShell
+    (Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").DefaultAction
+    ```
+
+1. Állítsa be az alapértelmezett szabályt, alapértelmezés szerint nem engedélyezi a hálózati hozzáférést.
+
+    ```PowerShell
+    Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Deny
+    ```
+
+1. Állítsa be az alapértelmezett szabályt, alapértelmezés szerint hálózati hozzáférés engedélyezéséhez.
+
+    ```PowerShell
+    Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Allow
+    ```
 
 #### <a name="cliv2"></a>CLIv2
-1. [Az Azure CLI telepítése](/cli/azure/install-azure-cli) és [bejelentkezési](/cli/azure/authenticate-azure-cli).
-2. Az alapértelmezett szabályt, a tárfiók állapota megjelenítéséhez.
-```azurecli
-az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.defaultAction
-```
 
-3. Állítsa be az alapértelmezett szabályt, alapértelmezés szerint nem engedélyezi a hálózati hozzáférést.  
-```azurecli
-az storage account update --name "mystorageaccount" --resource-group "myresourcegroup" --default-action Deny
-```
+1. Telepítse a [Azure CLI-vel](/cli/azure/install-azure-cli) és [jelentkezzen be a](/cli/azure/authenticate-azure-cli).
 
-4. Állítsa be az alapértelmezett szabályt, alapértelmezés szerint hálózati hozzáférés engedélyezéséhez.
-```azurecli
-az storage account update --name "mystorageaccount" --resource-group "myresourcegroup" --default-action Allow
-```
+1. Az alapértelmezett szabályt, a tárfiók állapota megjelenítéséhez.
+
+    ```azurecli
+    az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.defaultAction
+    ```
+
+1. Állítsa be az alapértelmezett szabályt, alapértelmezés szerint nem engedélyezi a hálózati hozzáférést.
+
+    ```azurecli
+    az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --default-action Deny
+    ```
+
+1. Állítsa be az alapértelmezett szabályt, alapértelmezés szerint hálózati hozzáférés engedélyezéséhez.
+
+    ```azurecli
+    az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --default-action Allow
+    ```
 
 ## <a name="grant-access-from-a-virtual-network"></a>Egy virtuális hálózathoz való hozzáférés engedélyezése
-Storage-fiókok beállítható úgy, hogy a hozzáférés engedélyezése csak az adott Azure virtuális hálózatok. 
 
-Engedélyezésével egy [szolgáltatásvégpont](/azure/virtual-network/virtual-network-service-endpoints-overview) az Azure Storage a virtuális hálózaton belül, a forgalom biztosítva van az optimális útvonal az Azure Storage szolgáltatásba. Minden egyes kérelemmel is továbbítja az identitások, a virtuális hálózatot és alhálózatot.  A rendszergazdák ezt követően konfigurálhatja a hálózati szabályokat a tárfiók, amelyek lehetővé teszik a virtuális hálózatban lévő adott alhálózatokhoz érkező kérelmek.  Az ügyfelek kapnak a szabályokban a hálózaton keresztüli hozzáférés továbbra is az adatok a Storage-fiók a engedélyezési követelmények teljesítéséhez.
+Beállíthatja, hogy engedélyezi a hozzáférést csak adott virtuális hálózatok a storage-fiókokat.
 
-Minden tárfiók legfeljebb 100, amely összekapcsolható a virtuális hálózati szabályok támogathat [IP-hálózati szabályok](#grant-access-from-an-internet-ip-range).
+Engedélyezze a [szolgáltatásvégpont](/azure/virtual-network/virtual-network-service-endpoints-overview) az Azure Storage a virtuális hálózaton belül. Ezt a végpontot egy vezető optimális útvonalat biztosít a forgalom az Azure Storage szolgáltatást. Minden egyes kérelemmel is továbbítja az identitások, a virtuális hálózatot és alhálózatot. A rendszergazdák konfigurálhatják majd hálózati szabályokat a tárfiók, amelyek lehetővé teszik a kérelmek fogadását az adott alhálózatok a virtuális hálózaton. Az ügyfelek kapnak a szabályokban a hálózaton keresztüli hozzáférés továbbra is az adatok a storage-fiók a engedélyezési követelmények teljesítéséhez.
 
-### <a name="available-virtual-network-regions"></a>Virtuális hálózati régióban.
-Általánosságban elmondható végpontok közötti virtuális hálózatok és a szolgáltatáspéldány ugyanazon Azure-régióban működik.  A Szolgáltatásvégpontok az Azure Storage használata esetén ez a hatókör kibővült a [párosított régióra](/azure/best-practices-availability-paired-regions).  Ez lehetővé teszi folytonosságát egy regionális feladatátvétel, valamint a példányok írásvédett georedundáns tárolás (RA-GRS) való zavartalan hozzáférés biztosítása során.  Hálózati szabályok, amelyek hozzáférést biztosítanak a virtuális hálózatról egy storage-fiókhoz is hozzáférést tetszőleges RA-GRS-példányra.
+Minden tárfióknak támogatja a legfeljebb 100 virtuális hálózati szabályok, amelyek kombinálható [IP-hálózati szabályok](#grant-access-from-an-internet-ip-range).
 
-Vészhelyreállítás tervezése egy regionális kimaradás során, ha a párosított régióban található virtuális hálózatok előre kell kiépítenie. Az Azure Storage-Szolgáltatásvégpontok engedélyezni kell, és hozzáférés biztosítása a ezeket a másodlagos virtuális hálózatokat a hálózati szabályok kell alkalmazni a georedundáns tárolás fiókok.
+### <a name="available-virtual-network-regions"></a>Rendelkezésre álló virtuális hálózati régióban
+
+Általánosságban elmondható végpontok közötti virtuális hálózatok és a szolgáltatáspéldány ugyanazon Azure-régióban működik. Az Azure Storage a Szolgáltatásvégpontok használatakor ebben a hatókörben tartalmazza növekedésével a [párosított régióra](/azure/best-practices-availability-paired-regions). A Szolgáltatásvégpontok folytonosságát egy regionális feladatátvétel és az írásvédett georedundáns tárolás (RA-GRS) példányok való hozzáférés során. Hálózati szabályok, amelyek hozzáférést biztosítanak a virtuális hálózatról egy storage-fiókhoz is hozzáférést tetszőleges RA-GRS-példányra.
+
+Vészhelyreállítás tervezése egy regionális kimaradás során, amikor kell létrehoznia a virtuális hálózatok a párosított régióban előre. Engedélyezze a szolgáltatásvégpontokat az Azure Storage-, hálózati szabályokkal hozzáférést biztosít az ezeket a másodlagos virtuális hálózatokat. Ezután alkalmazza ezeket a szabályokat a georedundáns tárolás fiókokhoz.
 
 > [!NOTE]
-> A Szolgáltatásvégpontok nem vonatkoznak a forgalmat a virtuális hálózat és a kijelölt régiópárra a régión kívül.  Hálózati szabályokat ad hozzáférést a virtuális hálózatok, Storage-fiókok csak akkor alkalmazható, az elsődleges régióban a Storage-fiók vagy a kijelölt párosított régióban található virtuális hálózatok esetében.
->
+> A Szolgáltatásvégpontok forgalmat a virtuális hálózat és a kijelölt régiópárra a régión kívül nem vonatkoznak. Storage-fiókok storage-fiók az elsődleges régióban, vagy a kijelölt párosított régióban való hozzáférés biztosítása a virtuális hálózatok hálózati szabályok csak alkalmazhat.
 
 ### <a name="required-permissions"></a>Szükséges engedélyek
-Annak érdekében, hogy a alkalmazni egy virtuális hálózati szabályt egy tárfiókot, a felhasználó engedéllyel kell rendelkeznie *alhálózathoz csatlakozzon szolgáltatás* az alhálózatokra.  Ez az engedély szerepel a *Tárfiók-közreműködő* beépített szerepkör és egyéni szerepkör-definíciók is hozzáadhatók.
 
-Storage-fiók és a virtuális hálózatok hozzáférést **előfordulhat, hogy** eltérő előfizetésben, de ezen előfizetések ugyanahhoz az Azure Active Directory-bérlőhöz részének kell lennie.
+Egy virtuális hálózati szabályt alkalmazni egy tárfiókot, a felhasználó a hozzáadott alhálózatokra vonatkozó megfelelő engedélyekkel kell rendelkeznie. Az engedély szükséges *alhálózathoz csatlakozzon szolgáltatás* és szerepel a *Tárfiók-közreműködő* beépített szerepkör. Azt is hozzáadhat egyéni szerepkör-definíciók.
+
+Storage-fiók és a virtuális hálózatok biztosított hozzáférés lehet különböző előfizetésben található, de ezen előfizetések kell lennie az Azure AD-bérlőhöz tartozik.
 
 ### <a name="managing-virtual-network-rules"></a>A virtuális hálózati szabályok kezelése
-Storage-fiókok virtuális hálózati szabályok az Azure portal, PowerShell vagy CLIv2 felügyelhető.
+
+Virtuális hálózati szabályok tárfiókok az Azure portal, PowerShell vagy CLIv2 keresztül kezelheti.
 
 #### <a name="azure-portal"></a>Azure Portal
-1. Keresse meg a védeni kívánt tárfiókot.  
-2. Kattintson a beállítások menü nevű **tűzfalak és virtuális hálózatok**.
-3. Győződjön meg arról, hogy úgy döntött, hogy engedélyezze a hozzáférést a "Kijelölt hálózatok".
-4. Hozzáférést biztosít egy virtuális hálózathoz, az új hálózati szabály az "A virtuális hálózatok" kattintson a "Meglévő hozzáadása" Válasszon egy meglévő virtuális hálózatot és alhálózatot, majd kattintson *Hozzáadás*.  Hozzon létre egy új virtuális hálózatot, és hozzáférés biztosítása, kattintson a *új hozzáadása*, adja meg az új virtuális hálózat létrehozása, és kattintson a szükséges információk *létrehozás*.
 
-> [!NOTE]
-> Ha az Azure Storage-szolgáltatásvégpont nincs korábban konfigurálva a kiválasztott virtuális hálózat és alhálózatok, akkor ez a művelet részeként konfigurálható.
->
+1. Nyissa meg a védeni kívánt tárfiókot.
 
-5. Egy virtuális hálózat vagy alhálózat szabály eltávolításához kattintson a "...", a virtuális hálózat vagy az alhálózat a helyi menü megnyitásához, majd kattintson a "Remove".
-6. Kattintson a *mentése* alkalmazza a módosításokat.
+1. Kattintson a beállítások menü nevű **tűzfalak és virtuális hálózatok**.
+
+1. Ellenőrizze, hogy engedélyezze a hozzáférést a kiválasztott **kiválasztott hálózatok**.
+
+1. Hozzáférést egy új hálózati szabályt, a virtuális hálózat alatt **virtuális hálózatok**, kattintson a **meglévő virtuális hálózat hozzáadása**válassza **virtuális hálózatok** és **Alhálózatok** lehetőségeket, és kattintson **Hozzáadás**. Hozzon létre egy új virtuális hálózatot, és hozzáférés biztosítása, kattintson a **hozzáadása új virtuális hálózat**. Adja meg az új virtuális hálózat létrehozása, és kattintson a szükséges információk **létrehozás**.
+
+    > [!NOTE]
+    > Ha az Azure Storage-szolgáltatásvégpontot korábban nem volt beállítva a kiválasztott virtuális hálózat és alhálózatok, konfigurálhatja a művelet részeként.
+
+1. Egy virtuális hálózat vagy alhálózat szabály eltávolításához kattintson **...**  nyissa meg a virtuális hálózat vagy alhálózat helyi menüjére, majd kattintson a **eltávolítása**.
+
+1. Kattintson a **mentése** alkalmazza a módosításokat.
 
 #### <a name="powershell"></a>PowerShell
-1. Telepítse a legújabb [Azure PowerShell-lel](/powershell/azure/install-azurerm-ps) és [bejelentkezési](/powershell/azure/authenticate-azureps).
-2. A virtuális hálózati szabályok listája
-```PowerShell
-(Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").VirtualNetworkRules
-```
 
-3. Szolgáltatásvégpont engedélyezése egy meglévő virtuális hálózatot és alhálózatot az Azure Storage-hoz
-```PowerShell
-Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet"  -AddressPrefix "10.1.1.0/24" -ServiceEndpoint "Microsoft.Storage" | Set-AzureRmVirtualNetwork
-```
+1. Telepítse a [Azure PowerShell-lel](/powershell/azure/install-azurerm-ps) és [jelentkezzen be a](/powershell/azure/authenticate-azureps).
 
-4. Hálózati szabály hozzáadása egy virtuális hálózatot és alhálózatot.  
-```PowerShell
-$subnet = Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet"
-Add-AzureRmStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id   
-```    
+1. A virtuális hálózati szabályok listája.
 
-5. Egy hálózati szabály eltávolítása egy virtuális hálózatot és alhálózatot.  
-```PowerShell
-$subnet = Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet"
-Remove-AzureRmStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id   
-```    
+    ```PowerShell
+    (Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").VirtualNetworkRules
+    ```
+
+1. Szolgáltatásvégpont engedélyezése az Azure Storage egy meglévő virtuális hálózatot és alhálózatot az.
+
+    ```PowerShell
+    Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.0.0.0/24" -ServiceEndpoint "Microsoft.Storage" | Set-AzureRmVirtualNetwork
+    ```
+
+1. Adjon hozzá egy virtuális hálózatot és alhálózatot a hálózati szabályt.
+
+    ```PowerShell
+    $subnet = Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet"
+    Add-AzureRmStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id
+    ```
+
+1. Távolítsa el a virtuális hálózatot és alhálózatot a hálózati szabályt.
+
+    ```PowerShell
+    $subnet = Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet"
+    Remove-AzureRmStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id
+    ```
 
 > [!IMPORTANT]
-> Ügyeljen arra, hogy [adja meg az alapértelmezett szabályt](#change-the-default-network-access-rule) letiltva, vagy a hálózati szabályok nem lesz hatása.
->
+> Ügyeljen arra, hogy [adja meg az alapértelmezett szabályt](#change-the-default-network-access-rule) való **megtagadása**, vagy a hálózati szabályok nem befolyásolják.
 
 #### <a name="cliv2"></a>CLIv2
-1. [Az Azure CLI telepítése](/cli/azure/install-azure-cli) és [bejelentkezési](/cli/azure/authenticate-azure-cli).
-2. A virtuális hálózati szabályok listája
-```azurecli
-az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query virtualNetworkRules
-```
 
-2. Szolgáltatásvégpont engedélyezése egy meglévő virtuális hálózatot és alhálózatot az Azure Storage-hoz
-```azurecli
-az network vnet subnet update --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --service-endpoints "Microsoft.Storage"
-```
+1. Telepítse a [Azure CLI-vel](/cli/azure/install-azure-cli) és [jelentkezzen be a](/cli/azure/authenticate-azure-cli).
 
-3. Hálózati szabály hozzáadása egy virtuális hálózatot és alhálózatot.  
-```azurecli
-subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
-az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
-```
+1. A virtuális hálózati szabályok listája.
 
-4. Egy hálózati szabály eltávolítása egy virtuális hálózatot és alhálózatot. 
-```azurecli
-subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
-az storage account network-rule remove --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
-```
+    ```azurecli
+    az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query virtualNetworkRules
+    ```
+
+1. Szolgáltatásvégpont engedélyezése az Azure Storage egy meglévő virtuális hálózatot és alhálózatot az.
+
+    ```azurecli
+    az network vnet subnet update --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --service-endpoints "Microsoft.Storage"
+    ```
+
+1. Adjon hozzá egy virtuális hálózatot és alhálózatot a hálózati szabályt.
+
+    ```azurecli
+    $subnetid=(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
+    az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
+    ```
+
+1. Távolítsa el a virtuális hálózatot és alhálózatot a hálózati szabályt.
+
+    ```azurecli
+    $subnetid=(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
+    az storage account network-rule remove --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
+    ```
 
 > [!IMPORTANT]
-> Ügyeljen arra, hogy [adja meg az alapértelmezett szabályt](#change-the-default-network-access-rule) letiltva, vagy a hálózati szabályok nem lesz hatása.
->
+> Ügyeljen arra, hogy [adja meg az alapértelmezett szabályt](#change-the-default-network-access-rule) való **megtagadása**, vagy a hálózati szabályok nem befolyásolják.
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>Hozzáférést biztosít egy internetes IP-címtartomány
-Tárfiókok beállíthatók úgy, hogy engedélyezi a hozzáférést a nyilvános internetről adott IP-címtartományok.  Ez a konfiguráció lehetővé teszi, hogy bizonyos internetes szolgáltatások és a helyszíni hálózatokkal való hozzáférést kell biztosítani, míg az általános internetes forgalom le van tiltva.
 
-Megengedett címtartományok interneten adatokkal együtt adható meg [CIDR-jelölés](https://tools.ietf.org/html/rfc4632) formájában *16.17.18.0/24* vagy az egyes IP címek például *16.17.18.19* .
+Konfigurálhatja a storage-fiókok hozzáférést adott nyilvános internetről IP-címtartományok. Ez a konfiguráció bizonyos internetes szolgáltatásokhoz való hozzáférést és a helyszíni hálózatokkal és általános internetes forgalmat blokkol.
 
-> [!NOTE]
-> Kis címtartományok használatával "/ 31" vagy "/ 32" előtag méretei nem támogatottak.  Ezek a tartományok egyedi IP-cím szabályok használatával kell konfigurálni.
->
+Adja meg az engedélyezett internetes használatával címtartományok [CIDR-jelölés](https://tools.ietf.org/html/rfc4632) formájában *16.17.18.0/24* vagy az egyes IP címek például *16.17.18.19*.
 
-Csak engedélyezett IP-hálózati szabályok **nyilvános interneten** IP-címeket.  IP-címtartományok, magánhálózatok számára fenntartott (ahogyan az az [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) IP-szabályok nem engedélyezettek.  Magánhálózatokat közé tartozik a címek kezdődő *10.\** , *172.16.\**   -  *172.31.\**, és *192.168.\** .
+   > [!NOTE]
+   > Kis címtartományok használatával "/ 31" vagy "/ 32" előtag méretei nem támogatottak. Ezek a tartományok egyedi IP-cím szabályok használatával kell konfigurálni.
 
-> [!NOTE]
-> IP-hálózati szabályok nem lesz hatása a az azonos Azure-régióban a Storage-fiók érkező kérelmek esetén.  Használat [virtuális hálózati szabályok](#grant-access-from-a-virtual-network) ugyanabban a régióban kérelem engedélyezéséhez.
->
+Csak engedélyezett IP-hálózati szabályok **nyilvános interneten** IP-címeket. IP-címtartományok, magánhálózatok számára fenntartott (ahogyan az az [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) az IP-szabályok nem engedélyezett. Magánhálózatokat közé tartozik a címek kezdődő _10.*_, _172.16. *_ - _172.31. *_, és _192.168. *_.
+
+   > [!NOTE]
+   > IP-hálózati szabályok nem befolyásolják a az azonos Azure-régióban a storage-fiók érkező kérelmek esetén. Használat [virtuális hálózati szabályok](#grant-access-from-a-virtual-network) ugyanabban a régióban kérelem engedélyezéséhez.
 
 Jelenleg csak az IPV4-cím támogatott.
 
-Minden tárfiók legfeljebb 100 kombinálható IP hálózati szabályokat támogathat [virtuális hálózati szabályok](#grant-access-from-a-virtual-network).
+Minden tárfióknak támogatja a legfeljebb 100 IP hálózati szabályok, amelyek kombinálható [virtuális hálózati szabályok](#grant-access-from-a-virtual-network).
 
 ### <a name="configuring-access-from-on-premises-networks"></a>Hozzáférés a helyszíni hálózatok konfigurálása
-Annak érdekében, hogy a hozzáférést a helyszíni hálózat egy IP-hálózati szabállyal a tárfiókhoz, meg kell adnia az internetkapcsolattal rendelkező, a hálózat által használt IP-címeket.  Segítségért forduljon a rendszergazdához.
 
-Ha a hálózat csatlakozik az Azure-hálózat használatával [ExpressRoute](/azure/expressroute/expressroute-introduction), minden egyes Kapcsolatcsoportok úgy van konfigurálva, két nyilvános IP-címekkel rendelkező, a Microsoft Edge Microsoft Serviceshez hasonlóan az Azure Storage használatával valócsatlakozáshozhasznált[Azure nyilvános társviszony-létesítés](/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains).  Ahhoz, hogy a kapcsolatcsoport az Azure Storage-kommunikációt, a nyilvános IP-címeit a Kapcsolatcsoportok IP-hálózati szabályokat kell létrehozni.  Annak érdekében, hogy az ExpressRoute-kapcsolatcsoport nyilvános IP-címek keresése [nyisson egy támogatási jegyet az expressroute-tal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az Azure Portalon keresztül.
+Való hozzáférés biztosítása a helyszíni hálózat egy IP-hálózati szabállyal a tárfiókhoz, meg kell adnia az internetkapcsolattal rendelkező, a hálózat által használt IP-címek. Segítségért forduljon a rendszergazdához.
 
+Használhat [ExpressRoute](/azure/expressroute/expressroute-introduction) , a hálózat csatlakoztatása az Azure-hálózatot. Itt minden kapcsolatnak két nyilvános IP-cím van beállítva. A Microsoft Edge tekinthet meg, és a használata [Azure nyilvános társviszony-létesítés](/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains) hasonlóan az Azure Storage a Microsoft Serviceshez való csatlakozáshoz. Engedélyezi a kommunikációt az Azure Storage, a nyilvános IP-címét a Kapcsolatcsoportok IP hálózati szabályokat létrehozni. Az ExpressRoute-kapcsolatcsoport nyilvános IP-címek keresése [nyisson egy támogatási jegyet az expressroute-tal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az Azure Portalon keresztül.
 
 ### <a name="managing-ip-network-rules"></a>IP-hálózati szabályok kezelése
-IP-hálózati szabályok storage-fiókok az Azure portal, PowerShell vagy CLIv2 felügyelhető.
+
+Storage-fiókok az Azure Portalon, a PowerShell vagy a CLIv2 IP-hálózati szabályok is kezelheti.
 
 #### <a name="azure-portal"></a>Azure Portal
-1. Keresse meg a védeni kívánt tárfiókot.  
-2. Kattintson a beállítások menü nevű **tűzfalak és virtuális hálózatok**.
-3. Győződjön meg arról, hogy úgy döntött, hogy engedélyezze a hozzáférést a "Kijelölt hálózatok".
-4. Adja meg az IP-címtartomány egy internetes hozzáférést, adja meg az IP-címet vagy címtartományt a tűzfalat, címtartomány (CIDR formátumban).
-5. Az IP-hálózati szabály eltávolításához kattintson a Kuka ikonra a hálózati szabály mellett.
-6. Kattintson a *mentése* alkalmazza a módosításokat.
+
+1. Nyissa meg a védeni kívánt tárfiókot.
+
+1. Kattintson a beállítások menü nevű **tűzfalak és virtuális hálózatok**.
+
+1. Ellenőrizze, hogy engedélyezze a hozzáférést a kiválasztott **kiválasztott hálózatok**.
+
+1. Adja meg az IP-címtartomány egy internetes hozzáférést, adja meg az IP-cím vagy a címtartomány (CIDR formátumban) alatt **tűzfal** > **címtartomány**.
+
+1. Az IP-hálózati szabály eltávolításához kattintson a Kuka ikonra a címtartomány mellett.
+
+1. Kattintson a **mentése** alkalmazza a módosításokat.
 
 #### <a name="powershell"></a>PowerShell
-1. Telepítse a legújabb [Azure PowerShell-lel](/powershell/azure/install-azurerm-ps) és [bejelentkezési](/powershell/azure/authenticate-azureps).
-2. IP-hálózati szabályok listája.
-```PowerShell
-(Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").IPRules
-```
 
-3. Adja hozzá az egyes IP-cím hálózati szabályt.  
-```PowerShell
-Add-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.19" 
-``` 
+1. Telepítse a [Azure PowerShell-lel](/powershell/azure/install-azurerm-ps) és [jelentkezzen be a](/powershell/azure/authenticate-azureps).
 
-4. Adjon hozzá egy IP-címtartomány hálózati szabályt.  
-```PowerShell
-Add-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.0/24" 
-```    
+1. IP-hálózati szabályok listája.
 
-5. Távolítsa el az egyes IP-cím hálózati szabályt. 
-```PowerShell
-Remove-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.19"  
-```
+    ```PowerShell
+    (Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").IPRules
+    ```
 
-6. Távolítsa el az IP-címtartomány hálózati szabályt.  
-```PowerShell
-Remove-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.0/24"  
-```    
+1. Adja hozzá az egyes IP-cím hálózati szabályt.
+
+    ```PowerShell
+    Add-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.19"
+    ```
+
+1. Adjon hozzá egy IP-címtartomány hálózati szabályt.
+
+    ```PowerShell
+    Add-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.0/24"
+    ```
+
+1. Távolítsa el az egyes IP-cím hálózati szabályt.
+
+    ```PowerShell
+    Remove-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.19"
+    ```
+
+1. Távolítsa el az IP-címtartomány hálózati szabályt.
+
+    ```PowerShell
+    Remove-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.0/24"
+    ```
 
 > [!IMPORTANT]
-> Ügyeljen arra, hogy [adja meg az alapértelmezett szabályt](#change-the-default-network-access-rule) letiltva, vagy a hálózati szabályok nem lesz hatása.
->
+> Ügyeljen arra, hogy [adja meg az alapértelmezett szabályt](#change-the-default-network-access-rule) való **megtagadása**, vagy a hálózati szabályok nem befolyásolják.
 
 #### <a name="cliv2"></a>CLIv2
-1. [Az Azure CLI telepítése](/cli/azure/install-azure-cli) és [bejelentkezési](/cli/azure/authenticate-azure-cli).
-2. IP-hálózati szabályok listája
-```azurecli
-az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query ipRules
-```
 
-3. Adja hozzá az egyes IP-cím hálózati szabályt.
-```azurecli
-az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --ip-address "16.17.18.19"
-```
+1. Telepítse a [Azure CLI-vel](/cli/azure/install-azure-cli) és [jelentkezzen be a](/cli/azure/authenticate-azure-cli).
 
-4. Adjon hozzá egy IP-címtartomány hálózati szabályt.  
-```azurecli
-az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --ip-address "16.17.18.0/24"
-```
+1. IP-hálózati szabályok listája.
 
-5. Távolítsa el az egyes IP-cím hálózati szabályt.  
-```azurecli
-az storage account network-rule remove --resource-group "myresourcegroup" --account-name "mystorageaccount" --ip-address "16.17.18.19"
-```
+    ```azurecli
+    az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query ipRules
+    ```
 
-6. Távolítsa el az IP-címtartomány hálózati szabályt.  
-```azurecli
-az storage account network-rule remove --resource-group "myresourcegroup" --account-name "mystorageaccount" --ip-address "16.17.18.0/24"
-```
+1. Adja hozzá az egyes IP-cím hálózati szabályt.
+
+    ```azurecli
+    az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --ip-address "16.17.18.19"
+    ```
+
+1. Adjon hozzá egy IP-címtartomány hálózati szabályt.
+
+    ```azurecli
+    az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --ip-address "16.17.18.0/24"
+    ```
+
+1. Távolítsa el az egyes IP-cím hálózati szabályt.
+
+    ```azurecli
+    az storage account network-rule remove --resource-group "myresourcegroup" --account-name "mystorageaccount" --ip-address "16.17.18.19"
+    ```
+
+1. Távolítsa el az IP-címtartomány hálózati szabályt.
+
+    ```azurecli
+    az storage account network-rule remove --resource-group "myresourcegroup" --account-name "mystorageaccount" --ip-address "16.17.18.0/24"
+    ```
 
 > [!IMPORTANT]
-> Ügyeljen arra, hogy [adja meg az alapértelmezett szabályt](#change-the-default-network-access-rule) letiltva, vagy a hálózati szabályok nem lesz hatása.
->
+> Ügyeljen arra, hogy [adja meg az alapértelmezett szabályt](#change-the-default-network-access-rule) való **megtagadása**, vagy a hálózati szabályok nem befolyásolják.
 
 ## <a name="exceptions"></a>Kivételek
-A hálózati szabályok engedélyezheti a biztonságos hálózati konfigurációja a legtöbb forgatókönyvhöz, bár vannak bizonyos esetekben, ahol kivételek rendelkeznie kell a teljes funkció engedélyezéséhez.  Storage-fiókok is konfigurálhatók, kivételek, a megbízható Microsoft-szolgáltatások és a Storage analytics adatokhoz való hozzáférést.
+
+A hálózati szabályok engedélyezheti a biztonságos hálózati konfigurációja a legtöbb forgatókönyvhöz. Vannak azonban bizonyos esetekben, ahol kivételek rendelkeznie kell a összes funkciójának engedélyezése. Kivételek, a megbízható Microsoft-szolgáltatások és a storage analytics adatokhoz való hozzáférést a storage-fiókok segítségével konfigurálhat.
 
 ### <a name="trusted-microsoft-services"></a>Megbízható Microsoft-szolgáltatások
-Bizonyos Microsoft-szolgáltatások, amelyek a Storage-fiókok kezelése, amelyek nem adható hozzáférés hálózati jogcímszabályai hálózatokról működnek. 
 
-Ahhoz, hogy az ilyen típusú szolgáltatást, hogy helyesen működik, engedélyezheti, hogy a megbízható Microsoft-szolgáltatások megkerülése a hálózati szabályok készletét. Ezek a szolgáltatások fogja használni a tárfiók eléréséhez erős hitelesítés.
+Bizonyos Microsoft-szolgáltatások, amelyek a storage-fiókok kezelése, amelyek nem adható hozzáférés hálózati jogcímszabályai hálózatokról működnek.
 
-Ha a "Megbízható Microsoft-szolgáltatások" kivétel engedélyezve van, a következő szolgáltatások (az előfizetés regisztrálásakor) a Storage-fiók hozzáféréssel rendelkeznek:
+Az ilyen típusú szolgáltatás munkahelyi helyesen érdekében lehetővé teszi a megbízható Microsoft-szolgáltatások megkerülése a hálózati szabályok készletét. Ezek a szolgáltatások fogja használni a tárfiók eléréséhez erős hitelesítés.
+
+Ha engedélyezi a **engedélyezése a Microsoft-szolgáltatások megbízható...**  kivétel, a következő szolgáltatásokat (ha regisztrált az előfizetésben), a storage-fiók hozzáféréssel rendelkeznek:
 
 |Szolgáltatás|Erőforrás-szolgáltató neve|Cél|
 |:------|:---------------------|:------|
-|Azure Backup|Microsoft.Backup|Hajtsa végre a biztonsági mentéshez és helyreállításhoz, a nem felügyelt lemezek az iaas-beli virtuális gépeken. (nem felügyelt lemezek esetén szükséges). [További információk](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup).|
-|Azure DevTest Labs|Microsoft.DevTestLab|Egyéni rendszerkép létrehozása és az összetevő telepítését.  [További információk](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-overview).|
-|Azure Event Grid|Microsoft.EventGrid|A Blob Storage esemény-közzététel engedélyezése.  [További információk](https://docs.microsoft.com/azure/event-grid/overview).|
-|Azure Event Hubs|Microsoft.EventHub|Az Event Hubs Capture adatok archiválása.  [További](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview).|
-|Azure-hálózatok|Microsoft.Networking|Store és a hálózati forgalom naplóinak elemzése.  [További információk](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview).|
-|Azure Monitor|Microsoft.Insights| Lehetővé teszi, hogy a figyelési adatok biztonságos storage-fiókba írásos [további](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks).|
+|Azure Backup|Microsoft.Backup|Futtassa a biztonsági mentéshez és helyreállításhoz, a nem felügyelt lemezek az iaas-beli virtuális gépeken. (nem felügyelt lemezek esetén szükséges). [További információk](/azure/backup/backup-introduction-to-azure-backup).|
+|Azure DevTest Labs|Microsoft.DevTestLab|Egyéni rendszerkép létrehozása és az összetevő telepítését. [További információk](/azure/devtest-lab/devtest-lab-overview).|
+|Azure Event Grid|Microsoft.EventGrid|A Blob Storage esemény-közzététel engedélyezése. [További információk](/azure/event-grid/overview).|
+|Azure Event Hubs|Microsoft.EventHub|Az Event Hubs Capture adatok archiválása. [További](/azure/event-hubs/event-hubs-capture-overview).|
+|Azure-hálózatok|Microsoft.Networking|Store és a hálózati forgalom naplóinak elemzése. [További információk](/azure/network-watcher/network-watcher-packet-capture-overview).|
+|Azure Monitor|Microsoft.Insights|Lehetővé teszi, hogy a figyelési adatok biztonságos storage-fiókba írásos [további](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks).|
 |
 
-
 ### <a name="storage-analytics-data-access"></a>Storage analytics-adatok elérése
-Bizonyos esetekben a diagnosztikai naplók és mérőszámok olvasási hozzáférést szükség a a hálózathatáron kívül.  A hálózati szabályok alóli kivételek is megadható, hogy a tárolási fiók naplófájlok, tabulky metrik vagy mindkettő írásvédett. [További tudnivalók a storage analytics használata.](/azure/storage/storage-analytics)
+
+Bizonyos esetekben a diagnosztikai naplók és mérőszámok olvasási hozzáférést szükség a a hálózathatáron kívül. Meg lehet adni a kivételeket úgy, hogy a hálózati szabályokat, hogy a storage-fiók naplófájlok vagy tabulky metrik írásvédett. [További tudnivalók a storage analytics használata.](/azure/storage/storage-analytics)
 
 ### <a name="managing-exceptions"></a>Kivételek kezelése
-Hálózati kivételeit, annak az Azure portal, PowerShell vagy Azure CLI-vel kezelhető v2.
+
+Hálózati kivételeit, annak az Azure portal, PowerShell vagy az Azure CLI segítségével is kezelheti v2.
 
 #### <a name="azure-portal"></a>Azure Portal
-1. Keresse meg a védeni kívánt tárfiókot.  
-2. Kattintson a beállítások menü nevű **tűzfalak és virtuális hálózatok**.
-3. Győződjön meg arról, hogy úgy döntött, hogy engedélyezze a hozzáférést a "Kijelölt hálózatok".
-4. A kivételek válassza ki a kivételek kíván biztosítani.
-5. Kattintson a *mentése* alkalmazza a módosításokat.
+
+1. Nyissa meg a védeni kívánt tárfiókot.
+
+1. Kattintson a beállítások menü nevű **tűzfalak és virtuális hálózatok**.
+
+1. Ellenőrizze, hogy engedélyezze a hozzáférést a kiválasztott **kiválasztott hálózatok**.
+
+1. A **kivételek**, válassza ki a kivételek kíván biztosítani.
+
+1. Kattintson a **mentése** alkalmazza a módosításokat.
 
 #### <a name="powershell"></a>PowerShell
-1. Telepítse a legújabb [Azure PowerShell-lel](/powershell/azure/install-azurerm-ps) és [bejelentkezési](/powershell/azure/authenticate-azureps).
-2. A storage-fiók hálózati szabályok esetében a kivételek jelennek meg.
-```PowerShell
-(Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount").Bypass
-```
 
-3. A storage-fiók hálózati szabályok alóli kivételek konfigurálása.
-```PowerShell
-Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount"  -Bypass AzureServices,Metrics,Logging
-```
+1. Telepítse a [Azure PowerShell-lel](/powershell/azure/install-azurerm-ps) és [jelentkezzen be a](/powershell/azure/authenticate-azureps).
 
-4. Távolítsa el a storage-fiók hálózati szabályok alóli kivételek.
-```PowerShell
-Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount"  -Bypass None
-```
+1. A storage-fiók hálózati szabályok esetében a kivételek jelennek meg.
+
+    ```PowerShell
+    (Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount").Bypass
+    ```
+
+1. A storage-fiók hálózati szabályok alóli kivételek konfigurálása.
+
+    ```PowerShell
+    Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -Bypass AzureServices,Metrics,Logging
+    ```
+
+1. Távolítsa el a storage-fiók hálózati szabályok alóli kivételek.
+
+    ```PowerShell
+    Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -Bypass None
+    ```
 
 > [!IMPORTANT]
-> Ügyeljen arra, hogy [adja meg az alapértelmezett szabályt](#change-the-default-network-access-rule) letiltva, vagy a kivételek eltávolítása nem lesz hatása.
->
+> Ügyeljen arra, hogy [adja meg az alapértelmezett szabályt](#change-the-default-network-access-rule) való **megtagadása**, vagy távolítsa el a kivételek nem befolyásolják.
 
 #### <a name="cliv2"></a>CLIv2
-1. [Az Azure CLI telepítése](/cli/azure/install-azure-cli) és [bejelentkezési](/cli/azure/authenticate-azure-cli).
-2. A storage-fiók hálózati szabályok esetében a kivételek jelennek meg.
-```azurecli
-az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.bypass
-```
 
-3. A storage-fiók hálózati szabályok alóli kivételek konfigurálása.
-```azurecli
-az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --bypass Logging Metrics AzureServices
-```
+1. Telepítse a [Azure CLI-vel](/cli/azure/install-azure-cli) és [jelentkezzen be a](/cli/azure/authenticate-azure-cli).
 
-4. Távolítsa el a storage-fiók hálózati szabályok alóli kivételek.
-```azurecli
-az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --bypass None
-```
+1. A storage-fiók hálózati szabályok esetében a kivételek jelennek meg.
+
+    ```azurecli
+    az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.bypass
+    ```
+
+1. A storage-fiók hálózati szabályok alóli kivételek konfigurálása.
+
+    ```azurecli
+    az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --bypass Logging Metrics AzureServices
+    ```
+
+1. Távolítsa el a storage-fiók hálózati szabályok alóli kivételek.
+
+    ```azurecli
+    az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --bypass None
+    ```
 
 > [!IMPORTANT]
-> Ügyeljen arra, hogy [adja meg az alapértelmezett szabályt](#change-the-default-network-access-rule) letiltva, vagy a kivételek eltávolítása nem lesz hatása.
->
+> Ügyeljen arra, hogy [adja meg az alapértelmezett szabályt](#change-the-default-network-access-rule) való **megtagadása**, vagy távolítsa el a kivételek nem befolyásolják.
 
 ## <a name="next-steps"></a>További lépések
-További információ az Azure hálózati Szolgáltatásvégpontok [Szolgáltatásvégpontok](/azure/virtual-network/virtual-network-service-endpoints-overview).
+
+További információ az Azure hálózati Szolgáltatásvégpontok [Szolgáltatásvégpontokat](/azure/virtual-network/virtual-network-service-endpoints-overview).
 
 Tájékozódjon részletesebben az Azure Storage biztonsági [Azure Storage biztonsági útmutatóját](storage-security-guide.md).

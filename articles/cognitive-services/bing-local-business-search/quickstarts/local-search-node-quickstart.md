@@ -10,12 +10,12 @@ ms.component: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 16f5b0fc94964a143f56191b1e4a99dc48891110
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 547073342038b90bd540f24895eb1a29a42a08c7
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852350"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976162"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Gyors útmutató: Egy lekérdezést küld a helyi vállalati keresési Bing-API a Node.js használata
 
@@ -51,12 +51,12 @@ let https = require('https');
 let subscriptionKey = 'your-access-key';
 
 let host = 'api.cognitive.microsoft.com/bing';
-let path = '/v7.0/search';
+let path = '/v7.0/localbusinesses/search';
 
 let mkt = 'en-US';
 let q = 'hotel in Bellevue';
 
-let params = '?q=' + encodeURI(q) + "&appid=" + accessKey + "&mkt=" + mkt;
+let params = '?q=' + encodeURI(q) + "&mkt=" + mkt;
 
 let response_handler = function (response) {
     let body = '';

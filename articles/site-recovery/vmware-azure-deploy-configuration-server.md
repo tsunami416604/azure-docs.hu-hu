@@ -1,20 +1,21 @@
 ---
 title: Az Azure Site Recovery VMware-vészhelyreállításhoz használt konfigurációs kiszolgáló üzembe helyezése |} A Microsoft Docs
-description: Ez a cikk ismerteti az Azure-bA az Azure Site Recovery VMware-vészhelyreállítási konfigurációs kiszolgáló telepítése
-author: rayne-wiselman
-manager: carmonm
+description: Ez a cikk bemutatja, hogyan helyezhet üzembe egy konfigurációs kiszolgáló VMware-vészhelyreállításhoz az Azure Site Recoveryvel
+services: site-recovery
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/29/2018
-ms.author: raynew
-ms.openlocfilehash: 516edd922d6ead9a71f81c3b9b777b15f1fb28ae
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 11/18/2018
+ms.author: ramamill
+ms.openlocfilehash: 8b67947412055d0c0b9f39cb49961e435393cec9
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233157"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162602"
 ---
-# <a name="deploy-a-configuration-server-for-vmware-disaster-recovery-to-azure"></a>Konfigurációs kiszolgáló üzembe helyezése VMware-vészhelyreállításhoz az Azure-bA
+# <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 
 Egy helyszíni konfigurációs kiszolgálót telepít, használatakor [Azure Site Recovery](site-recovery-overview.md) vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-bA. A konfigurációs kiszolgáló koordináták kommunikációhoz között a helyszíni VMware és az Azure. Azt is felügyeli az adatreplikációt. Ez a cikk végigvezeti a konfigurációs kiszolgáló telepítése, ha VMware virtuális gépeket replikál az Azure-bA szükséges lépéseket. [Kövesse az ebben a cikkben](physical-azure-set-up-source.md) Ha kell állítani a konfigurációs kiszolgálót fizikai kiszolgáló replikációjához.
 

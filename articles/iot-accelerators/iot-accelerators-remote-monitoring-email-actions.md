@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 484cdccef3198f45c08210c9d8fd41f66e6c867d
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 08e80a9baa4c6841b6d88d1c5f2ba69992ffa7ef
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51828336"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977060"
 ---
 # <a name="add-an-email-action"></a>E-mail-művelet hozzáadása
 
 E-mail műveletek segítségével ellenőrizze, hogy ne maradjon le riasztásokat. E-mail-művelet adhat hozzá, a meglévő szabályokat, vagy ha létrehoz egy új szabályt.
 
-[!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
+Ez az útmutató a lépések elvégzéséhez, a távoli figyelési megoldásgyorsító telepített példányát az Azure-előfizetésben kell.
 
 Hozzon létre vagy módosítsa egy szabályt, rendelkeznie kell egy [ **rendszergazdai**, vagy rendelkezik megfelelő engedélyekkel a](iot-accelerators-remote-monitoring-rbac.md).
 

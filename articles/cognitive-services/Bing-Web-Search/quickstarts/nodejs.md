@@ -3,19 +3,19 @@ title: 'Rövid útmutató: Keresés a Node.js használatával – Bing Web Searc
 titleSuffix: Azure Cognitive Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre első Bing Web Search API-hívását a Node.js használatával, majd hogyan fogadhatja a JSON-választ.
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 9/26/2018
-ms.author: erhopf
-ms.openlocfilehash: debaa63adeb97063d0ea42e1da36352dc2c9c4e7
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: 80d527baa5d919290bc80c65745bcaaf6ef5639d
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405856"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164354"
 ---
 # <a name="quickstart-use-nodejs-to-call-the-bing-web-search-api"></a>Rövid útmutató: A Bing Web Search API meghívása a Node.js segítségével  
 

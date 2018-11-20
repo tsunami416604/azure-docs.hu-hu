@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 17029f51be9fed8fc36c5f919ece84acbf0461d9
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 9c614d18b96c182fa166a4bc43fb1bb2f8d5d6f5
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42060811"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976731"
 ---
 # <a name="dcos-agent-pools-for-azure-container-service"></a>Az Azure Container Service DC/OS-ügynökkészletek
 Az Azure Container Service DC/OS fürtök ügynökcsomópontok két készleteket, a nyilvános készlet és a egy privát készletet tartalmaz. Egy alkalmazás vagy a készlethez, ez hatással lenne a kisegítő lehetőségek között a gépek a container service-ben is telepíthető. A gépek lehetnek közzétéve az interneten (nyilvános) vagy tartani a belső (magánhálózati). Ez a cikk rövid áttekintést ad meg, miért azonban nyilvános és privát.
@@ -37,7 +37,7 @@ Az Azure Container Service DC/OS-ügynökkészletek módon jönnek létre:
 A privát készlet és a nyilvános készlet is az Azure-beli virtuálisgép-méretezési csoportok. Ezen készletek átméretezhető üzembe helyezés után.
 
 ## <a name="use-agent-pools"></a>Használja az ügynökkészletek
-Alapértelmezés szerint **Marathon** bármely új alkalmazást helyez üzembe a *privát* ügynökcsomóponttal. Az alkalmazás számára explicit módon telepíteni kívánt a *nyilvános* csomópontok az alkalmazás létrehozása során. Válassza ki a **nem kötelező** lapra, és adja meg **slave_public** számára a **elfogadott erőforrás-szerepkörökkel** értéket. Ez a folyamat dokumentált [Itt](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) és a a [DC/OS](https://dcos.io/docs/1.7/administration/installing/custom/create-public-agent/) dokumentációját.
+Alapértelmezés szerint **Marathon** bármely új alkalmazást helyez üzembe a *privát* ügynökcsomóponttal. Az alkalmazás számára explicit módon telepíteni kívánt a *nyilvános* csomópontok az alkalmazás létrehozása során. Válassza ki a **nem kötelező** lapra, és adja meg **slave_public** számára a **elfogadott erőforrás-szerepkörökkel** értéket. Ez a folyamat dokumentált [Itt](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) és a a [DC/OS](https://docs.mesosphere.com/1.7/administration/installing/oss/custom/create-public-agent/) dokumentációját.
 
 ## <a name="next-steps"></a>További lépések
 * Tudjon meg többet [a DC/OS-tárolók kezelése](container-service-mesos-marathon-ui.md).

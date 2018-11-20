@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 765a10a336b908d399f46b2248aab3903c594d24
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 1039cde45824491bcc82f324c05e4819e66355e0
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628545"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975992"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Helyezze át az adatok Azure Data Factory használatával az ODBC-adattárak
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -49,7 +49,7 @@ Egy folyamatot egy másolási tevékenységgel, amely helyez át adatokat egy OD
 
 A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: folyamat létrehozása a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával.
 
--Folyamatok létrehozására is használhatja az alábbi eszközöket: **az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon **, **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
+-Folyamatok létrehozására is használhatja az alábbi eszközöket: **az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon** , **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
 
 Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani: 
 
@@ -355,33 +355,6 @@ Fogadó-adatkészlet oszlopaihoz forrásadatkészlet leképezés oszlopai kapcso
 
 ## <a name="repeatable-read-from-relational-sources"></a>A relációs források megismételhető olvasása
 Amikor adatmásolásra, relációs adatokat tárol, ismételhetőség tartsa szem előtt, nem kívánt eredmények elkerülése érdekében. Az Azure Data Factoryben futtathatja a szelet manuálisan. Beállíthatja az újrapróbálkozási szabályzat egy adatkészlethez, úgy, hogy a szelet akkor fut újra, ha hiba történik. Ha a szelet akkor fut újra, vagy módon, győződjön meg arról, hogy ugyanazokat az adatokat olvasható függetlenül attól, hogy hány alkalommal fut egy szeletet, kell. Lásd: [olvasni a relációs források Repeatable](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
-
-## <a name="ge-historian-store"></a>A GE történész tároló
-Az ODBC-társított szolgáltatást, amely létrehoz egy [GE Proficy történész (most már a GE történész)](http://www.geautomation.com/products/proficy-historian) adatok tárolására az Azure data factory, az alábbi példában látható módon:
-
-```json
-{
-    "name": "HistorianLinkedService",
-    "properties":
-    {
-        "type": "OnPremisesOdbc",
-        "typeProperties":
-        {
-            "connectionString": "DSN=<name of the GE Historian store>;",
-            "gatewayName": "<gateway name>",
-            "authenticationType": "Basic",
-            "userName": "<user name>",
-            "password": "<password>"
-        }
-    }
-}
-```
-
-Telepítse az adatkezelési átjáró a helyszíni gépen, és regisztrálja az átjárót a portálon. Az átjáró a helyszíni számítógépre telepített a GE történész készült ODBC-illesztő használatával csatlakozni a GE történész data store. Ha ezt még nem telepítette az átjárót tartalmazó számítógépen, ezért telepítse az illesztőprogram. Lásd: [kapcsolat engedélyezése](#enabling-connectivity) című szakasz részletezi.
-
-Mielőtt használná a GE történész tároló a Data Factory-megoldás, győződjön meg arról, hogy az átjáró képes kapcsolódni az adattárhoz, a következő szakaszban található utasításokat követve.
-
-Olvassa el a cikk részletes áttekintést az elejétől ODBC-adatok használatával tárolja a másolási műveletek forrásadattárakból.  
 
 ## <a name="troubleshoot-connectivity-issues"></a>Kapcsolódási problémák elhárításához
 A kapcsolati hibák elhárításához, használja a **diagnosztikai** lapján **Data Management Gateway Configuration Manager**.

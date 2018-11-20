@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8243d1e297fa778d4fa27f8365d9bb0a935d21e5
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: d5216a4a21fbbded4a10429c658f4842db225657
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387996"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161718"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB .NET Core SDK-t az SQL API-hoz: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -189,12 +189,12 @@ Az Azure Cosmos DB .NET Core SDK legújabb verziójában funkcióparitás rendel
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 
-* Összesítés lekérdezések (száma, MIN, MAX, SUM és átlagos) támogatása. Lásd: [összesítési támogatási](sql-api-sql-query.md#Aggregates).
+* Összesítés lekérdezések (száma, MIN, MAX, SUM és átlagos) támogatása. Lásd: [összesítési támogatási](how-to-sql-query.md#Aggregates).
 * Süllyesztett minimálisan 2500 RU/s 10,100 RU/s a particionált gyűjtemények átviteli sebességet.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 
-Az Azure Cosmos DB .NET Core SDK lehetővé teszi, hogy hozhat létre gyors és platformfüggetlen [ASP.NET Core](https://www.asp.net/core) és [.NET Core](https://www.microsoft.com/net/core#windows) Windows, Mac és Linux rendszereken futó alkalmazások. Az Azure Cosmos DB .NET Core SDK legújabb kiadása teljesen van [Xamarin](https://www.xamarin.com) kompatibilis és használható iOS, Android és Mono (Linux) készített alkalmazások fejlesztésére.  
+Az Azure Cosmos DB .NET Core SDK lehetővé teszi, hogy hozhat létre gyors és platformfüggetlen [ASP.NET Core](https://www.asp.net/core) és [.NET Core](https://www.microsoft.com/net/core#windows) Windows, Mac és Linux rendszereken futó alkalmazások. Az Azure Cosmos DB .NET Core SDK legújabb kiadása teljesen van [Xamarin](https://www.xamarin.com) kompatibilis és használható iOS, Android és Mono (Linux) készített alkalmazások fejlesztésére.  
 
 ### <a name="a-name010-preview010-preview"></a><a name="0.1.0-preview"/>0.1.0-Preview
 

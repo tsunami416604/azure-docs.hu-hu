@@ -4,15 +4,15 @@ description: Ez a cikk gyakori kérdésekre foglalja össze, amikor, vészhelyre
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 10/29/2018
+ms.date: 11/19/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: c261dd083fed8b9c4a0f3846157c666cbb52083c
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 248b2a748088330f91b3cc76564d5d8743f04411
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636815"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162483"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
@@ -47,14 +47,20 @@ Ha Ön olyan előfizetés rendszergazdája, akkor a replikációs szükséges en
 ## <a name="on-premises"></a>Helyszíni követelmények
 
 ### <a name="what-do-i-need-on-premises"></a>Mire van szükségem helyszíni?
-A helyszíni Site Recovery-összetevőit egyetlen VMware virtuális gépeken telepített kell. Legalább egy ESXi-gazdagépen VMware-infrastruktúrára is szüksége, és azt javasoljuk, hogy a vCenter-kiszolgáló. Ezenkívül egy vagy több VMware virtuális gépek replikálásához szüksége. [További](vmware-azure-architecture.md) VMware-ből az Azure-architektúra kapcsolatban.
 
-A helyszíni konfigurációs kiszolgálón is üzembe helyezhetők az alábbi két módszer közül
+A helyszíni lesz szüksége:
+- Site Recovery-összetevőkhöz, egyetlen VMware virtuális Gépeken telepíthető.
+- VMware-infrastruktúrára, legalább egy ESXi-gazdagépen, és a egy vCenter-kiszolgáló javasoljuk.
+- Egy vagy több VMware virtuális gépek replikálásához.
 
-1. Helyezze üzembe azt a Virtuálisgép-sablont, amely rendelkezik a konfigurációs kiszolgáló előre telepítve van. [Itt olvashat](vmware-azure-tutorial.md#download-the-vm-template).
-2. Helyezze üzembe azt egy Windows Server 2016 gépen tetszőleges telepítővel. [Itt olvashat](physical-azure-disaster-recovery.md#set-up-the-source-environment).
+[További](vmware-azure-architecture.md) VMware-ből az Azure-architektúra kapcsolatban.
 
-Az első lépések a konfigurációs kiszolgáló a saját Windows Server-gépek, a védelem engedélyezése a védelmi cél történő telepítésének lépésein áruházakból **az Azure-bA > nem virtualizált/egyéb**.
+A helyszíni konfigurációs kiszolgálót a következőképpen telepíthető:
+
+- A konfigurációs kiszolgáló VMware virtuális gépként üzembe helyezése használatát javasoljuk az OVA sablon előre telepítve van a konfigurációs kiszolgálóval.
+- Ha bármilyen okból nem egy sablont használ, manuálisan is beállítása a konfigurációs kiszolgálón. [További információk](physical-azure-disaster-recovery.md#set-up-the-source-environment).
+
+
 
 ### <a name="where-do-on-premises-vms-replicate-to"></a>Ha ehhez a helyszíni virtuális gépek replikálása?
 Az Azure storage replikálja az adatokat. Feladatátvétel futtatásakor a Site Recovery automatikusan létrehozza az Azure virtuális gépek a tárfiókból.

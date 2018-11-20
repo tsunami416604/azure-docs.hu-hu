@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 05/22/2017
 ms.author: rafats
-ms.openlocfilehash: f71a7ad538e22359a2a0dd9c2e3f6c4448ee5a2d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 5d1e86630ff9143a75e5b0502a64c7661cc2822c
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232393"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161080"
 ---
 # <a name="introduction-to-azure-cosmos-db-sql-api"></a>Alapvető ismeretek az Azure Cosmos DB: SQL API felületéről
 
@@ -24,7 +24,7 @@ Az [Azure Cosmos DB](introduction.md) a Microsoft globálisan elosztott, többmo
 
 ![Azure SQL API](./media/sql-api-introduction/cosmosdb-sql-api.png) 
 
-Az SQL API-val az Azure Cosmos DB az [SQL-lekérdezési képességek](sql-api-sql-query.md) gazdag és ismerős skáláját nyújtja, és egységesen rövid késleltetéssel kezeli a séma nélküli JSON-adatokat. A cikkben áttekintést kap az Azure Cosmos DB SQL API-járól, és megtudhatja, hogyan tárolhat vele nagyméretű JSON-adatköteteket, kérdezheti le őket ezredmásodperces nagyságrendű késleltetéssel, és hogyan fejlesztheti tovább könnyedén a sémát. 
+Az SQL API-val az Azure Cosmos DB az [SQL-lekérdezési képességek](how-to-sql-query.md) gazdag és ismerős skáláját nyújtja, és egységesen rövid késleltetéssel kezeli a séma nélküli JSON-adatokat. A cikkben áttekintést kap az Azure Cosmos DB SQL API-járól, és megtudhatja, hogyan tárolhat vele nagyméretű JSON-adatköteteket, kérdezheti le őket ezredmásodperces nagyságrendű késleltetéssel, és hogyan fejlesztheti tovább könnyedén a sémát. 
 
 ## <a name="what-capabilities-and-key-features-does-azure-cosmos-db-offer"></a>Milyen lehetőségeket és fő összetevőket kínál a Azure Cosmos DB?
 Az Azure Cosmos DB az SQL API-n keresztül az alábbi főbb képességeket és előnyöket kínálja:
@@ -34,7 +34,7 @@ Az Azure Cosmos DB az SQL API-n keresztül az alábbi főbb képességeket és e
 
 * **Többrégiós replikáció:** Az Azure Cosmos DB transzparensen replikálja az adatait az Azure Cosmos DB-fiókjához társított összes régióba, lehetővé téve a globális adathozzáférést igénylő alkalmazások fejlesztését, és kompromisszumot kínál a konzisztencia, a rendelkezésre állás és a teljesítmény között, a megfelelő garanciákkal. Az Azure Cosmos DB transzparens regionális feladatátvételt biztosít a többkiszolgálós API-k segítségével, valamint világszerte rugalmasan méretezhető teljesítményt és tárolókapacitást nyújt. További információ: [Globális adatterjesztés az Azure Cosmos DB-vel](distribute-data-globally.md).
 
-* **Eseti lekérdezések a megszokott SQL-szintaxissal:** Heterogén JSON-dokumentumokat tárolhat, és a már ismerős SQL-szintaxis használatával kérdezheti le ezeket. Az Azure Cosmos DB az egyidejűséget támogató, zárolásmentes, naplószerkezetű indexelési technológiát alkalmaz a dokumentumok teljes tartalmának indexeléséhez. Ez részletes, valós idejű lekérdezéseket tesz lehetővé sémamutatók, másodlagos indexek vagy nézetek megadása nélkül. További információk: [Az Azure Cosmos DB lekérdezése](sql-api-sql-query.md). 
+* **Eseti lekérdezések a megszokott SQL-szintaxissal:** Heterogén JSON-dokumentumokat tárolhat, és a már ismerős SQL-szintaxis használatával kérdezheti le ezeket. Az Azure Cosmos DB az egyidejűséget támogató, zárolásmentes, naplószerkezetű indexelési technológiát alkalmaz a dokumentumok teljes tartalmának indexeléséhez. Ez részletes, valós idejű lekérdezéseket tesz lehetővé sémamutatók, másodlagos indexek vagy nézetek megadása nélkül. További információk: [Az Azure Cosmos DB lekérdezése](how-to-sql-query.md). 
 * **JavaScript végrehajtása az adatbázison belül:** Az alkalmazáslogikát tárolt eljárások, eseményindítók és a felhasználó által megadott függvények formájában is leírhatja standard JavaScript használatával. Ez lehetővé teszi, hogy az alkalmazáslogika anélkül használja az adatokat, hogy az alkalmazás és az adatbázis-séma közötti eltérések miatt kellene aggódni. Az SQL API a JavaScript-alkalmazáslogika teljes tranzakciós végrehajtását biztosítja közvetlenül az adatbázis motorjában. A JavaScript szoros integrációja lehetővé teszi az INSERT, REPLACE, DELETE és SELECT műveletek elkülönített tranzakcióként történő végrehajtását a JavaScript-programból. További információk: [SQL kiszolgálóoldali programozása](programming.md).
 
 * **Aprólékosan beállítható konzisztenciaszintek:** Öt jól meghatározott konzisztenciaszint közül választhat a konzisztencia és a teljesítmény közötti optimális kompromisszum elérése érdekében. A lekérdezések és olvasási műveletek esetében az Azure Cosmos DB öt különböző konzisztenciaszintet kínál: erős, kötött elavulás, munkamenet, konzisztens előtag és végleges. Ezek a részletes, jól meghatározott konzisztenciaszintek lehetővé teszik, hogy ésszerű kompromisszumot alakítson ki a konzisztencia, a rendelkezésre állás és a késleltetés között. További információk: [A rendelkezésre állás és a teljesítmény maximalizálása a konzisztenciaszintek használatával](consistency-levels.md).

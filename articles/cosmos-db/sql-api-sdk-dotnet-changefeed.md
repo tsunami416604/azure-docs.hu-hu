@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: a57e7ccedd0c3b776a39c6750a3d5b4b5cc41d88
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 67cddf5eb3f675337afbb7e620bd135383f20960
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685446"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976077"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET módosítási hírcsatorna processzor SDK: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -43,8 +43,15 @@ ms.locfileid: "51685446"
 
 ### <a name="v2-builds"></a>v2 buildek
 
+### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
+* Támogatás hozzáadva a folytatási token partíciónként megőrizni egyéni tároló használatával.
+  * Például egy egyéni bérleti lehetnek Azure Cosmos DB a bérletek gyűjteményének egyéni módon particionálva.
+  * Egyéni címbérlet-tárolók új bővíthetőség pont ChangeFeedProcessor.WithLeaseStoreManager(ILeaseStoreManager) és ILeaseStoreManager nyilvános felületet használhat.
+  * A ILeaseManager felület refactored be több szerepkör-adapterrel.
+* Kompatibilitástörő változás kisebb: eltávolított bővíthetőség ChangeFeedProcessorBuilder.WithLeaseManager(ILeaseManager) mutasson, ChangeFeedProcessor.WithLeaseStoreManager(ILeaseStoreManager) használja helyette.
+
 ### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2.
-* Rögzített feloszthatja a bérletek gyűjteményének particionálva van, ha a feldolgozás során jelentkező probléma. A probléma nem törli az a bérletek gyűjteményének szűnt partíciók bérleteket vezethet. Ebben a kiadásban a problémát megoldottuk.
+* Ebben a kiadásban elhárítottunk egy hibát, amely során a figyelt gyűjtemény split feldolgozása és a egy particionált a bérletek gyűjteményének használatával történik. A címbérlet split partíció feldolgozásakor a bérletet, ehhez a partícióhoz tartozó nem törölhetők. Ebben a kiadásban a problémát megoldottuk.
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 * Rögzített Estimator számítási többszörös főkiszolgáló-fiókok és az új munkamenet-jogkivonat formátuma.

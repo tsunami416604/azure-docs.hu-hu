@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b8a9973738ac28a686488a816da0f7da5fe2ac3e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0865c8b88788387eff173443d190658cc6488946
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238522"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976859"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Nagyméretű adatkészletek folyamatot a Data Factory és a Batch használatával
 > [!NOTE]
@@ -41,7 +41,7 @@ A Batch szolgáltatással Azure számítási erőforrásokat határoz meg az alk
 * [A Batch alapjai](../../batch/batch-technical-overview.md)
 * [A Batch funkcióinak áttekintése](../../batch/batch-api-basics.md)
 
-Szükség esetén a Batch kapcsolatos további információkért lásd: [tanulási útvonalterv a Batchhez](https://azure.microsoft.com/documentation/learning-paths/batch/).
+Szükség esetén a Batch kapcsolatos további információkért lásd: [a Batch documentatnion](https://docs.microsoft.com/en-us/azure/batch/).
 
 ## <a name="why-azure-data-factory"></a>Miért érdemes az Azure Data Factoryt választani?
 A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása. A Data Factory segítségével felügyelt adatfolyamatokat állíthat össze, amelyek az adatok áthelyezése a helyszíni és felhőbeli adattárolókból egy központi adattárban való létrehozásához. Ilyen például, az Azure Blob storage. A Data Factory használatával feldolgozhatók és átalakíthatók adatok például az Azure HDInsight és az Azure Machine Learning services használatával. Adatfolyamatok ütemezett módon (például óránként, naponta, és hetente) futtatását is ütemezheti. Akkor is folyamatok figyelése és felügyelete a ránézésre azonosíthatja a problémákat, és hajtsa végre műveletet.
@@ -51,7 +51,7 @@ A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amellyel elők
 * [Data Factory bemutatása](data-factory-introduction.md)
 * [Az első adatfolyamat kiépítése](data-factory-build-your-first-pipeline.md)   
 
-Szükség esetén a Data Factory kapcsolatos további információkért lásd: [a Data Factory képzési terv](https://azure.microsoft.com/documentation/learning-paths/data-factory/).
+Szükség esetén a Data Factory kapcsolatos további információkért lásd: [a Data Factory-dokumentáció](https://docs.microsoft.com/en-us/rest/api/datafactory/v1/data-factory-data-factory).
 
 ## <a name="data-factory-and-batch-together"></a>A Data Factory és a Batch együtt
 A Data Factory beépített tevékenységeket magában foglalja. Ha például a másolási tevékenység van elvégezni adatok másolása vagy áthelyezése egy forrásadattárból egy céladattárba. A Hive-tevékenység segítségével az Azure-on Hadoop-fürtök (HDInsight) használatával adatokat feldolgozni. Támogatott Adatátalakítási tevékenységek listáját lásd: [adat-átalakítási tevékenységeket](data-factory-data-transformation-activities.md).

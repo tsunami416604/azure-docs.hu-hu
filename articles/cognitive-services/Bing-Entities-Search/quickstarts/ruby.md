@@ -3,23 +3,23 @@ title: 'Rövid útmutató: Bing Entity Search API, Ruby'
 titlesuffix: Azure Cognitive Services
 description: Információk és kódminták segítségével ismerkedhet meg a Bing Entity Search API használatának első lépéseivel.
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
 ms.topic: quickstart
 ms.date: 11/28/2017
-ms.author: v-jaswel
-ms.openlocfilehash: 7e2b3fa520c17bb85fa04ca12bb762ce8f370371
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: 0fe7e1c80b4da9f2629157dad1d283d76ac99afa
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814457"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162916"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-ruby"></a>Rövid útmutató a Bing Entity Search API és a Ruby használatához
 
-Ez a cikk bemutatja, hogyan használhatja a [Bing Entity Search](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) API-t a Rubyval.
+Ez a cikk bemutatja, hogyan használható a [a Bing Entity Search](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) API Ruby használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
