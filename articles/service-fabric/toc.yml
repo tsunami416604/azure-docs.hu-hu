@@ -239,12 +239,16 @@ items:
       items:
       - name: Csomóponttípusok és virtuálisgép-méretezési csoportok
         href: service-fabric-cluster-nodetypes.md
+      - name: Azure-beli fürtök frissítése
+        href: service-fabric-cluster-upgrade.md
       - name: Méretezés
         href: service-fabric-cluster-scaling.md
       - name: Fürthálózatminták
         href: service-fabric-patterns-networking.md
     - name: Önálló fürtök
       items:
+      - name: Önálló fürtök frissítése
+        href: service-fabric-cluster-upgrade-standalone.md
       - name: Méretezés
         href: service-fabric-cluster-scaling-standalone.md
     - name: Fürterőforrás-kezelő
@@ -585,19 +589,27 @@ items:
         - name: Virtuálisgép-méretezési csoport csomópontalapú horizontális felskálázása
           href: virtual-machine-scale-set-scale-node-type-scale-out.md
       - name: Frissítés
-        href: service-fabric-cluster-upgrade.md
-      - name: Hozzáférés-vezérlés beállítása
-        href: service-fabric-cluster-security-roles.md
-      - name: Port megnyitása a terheléselosztóban
-        href: create-load-balancer-rule.md
-      - name: Fürttanúsítvány módosítása köznapi névre
-        href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
-      - name: Fürttanúsítványok manuális váltása
-        href: service-fabric-cluster-rollover-cert-cn.md
-      - name: Fürttanúsítványok kezelése
-        href: service-fabric-cluster-security-update-certs-azure.md
-      - name: Csatlakozás távolról fürtcsomópontbeli virtuális géphez
-        href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
+        items:
+        - name: A Service Fabric-verzió frissítése
+          href: service-fabric-cluster-upgrade-version-azure.md
+        - name: Fürtkonfiguráció frissítése
+          href: service-fabric-cluster-config-upgrade-azure.md
+        - name: Fürtcsomópontok javítása (Windows)
+          href: service-fabric-patch-orchestration-application.md
+        - name: Fürtcsomópontok javítása (Linux)
+          href: service-fabric-patch-orchestration-application-linux.md
+        - name: Hozzáférés-vezérlés beállítása
+          href: service-fabric-cluster-security-roles.md
+        - name: Port megnyitása a terheléselosztóban
+          href: create-load-balancer-rule.md
+        - name: Fürttanúsítvány módosítása köznapi névre
+          href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
+        - name: Fürttanúsítványok manuális váltása
+          href: service-fabric-cluster-rollover-cert-cn.md
+        - name: Fürttanúsítványok kezelése
+          href: service-fabric-cluster-security-update-certs-azure.md
+        - name: Csatlakozás távolról fürtcsomópontbeli virtuális géphez
+          href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
     - name: Önálló fürtök
       items:
       - name: Létrehozás
@@ -612,20 +624,22 @@ items:
           href: service-fabric-cluster-standalone-package-contents.md
       - name: Méretezés
         href: service-fabric-cluster-windows-server-add-remove-nodes.md
-      - name: Hozzáférés-vezérlés beállítása
-        href: service-fabric-cluster-security-roles.md
-      - name: Konfigurálás
-        href: service-fabric-cluster-manifest.md
       - name: Frissítés
-        href: service-fabric-cluster-upgrade-windows-server.md
+        items:
+        - name: A Service Fabric-verzió frissítése
+          href: service-fabric-cluster-upgrade-windows-server.md
+        - name: Fürtkonfiguráció frissítése
+          href: service-fabric-cluster-config-upgrade-windows-server.md
+        - name: Konfigurációs beállítások
+          href: service-fabric-cluster-manifest.md
+        - name: Hozzáférés-vezérlés beállítása
+          href: service-fabric-cluster-security-roles.md
+        - name: Fürtcsomópontok javítása (Windows)
+          href: service-fabric-patch-orchestration-application.md
     - name: Fürt ábrázolása
       href: service-fabric-visualizing-your-cluster.md
     - name: Csatlakozás biztonságos fürthöz
       href: service-fabric-connect-to-secure-cluster.md
-    - name: Fürtcsomópontok javítása (Windows)
-      href: service-fabric-patch-orchestration-application.md
-    - name: Fürtcsomópontok javítása (Linux)
-      href: service-fabric-patch-orchestration-application-linux.md
   - name: Megfigyelés és diagnosztika
     items:
     - name: Alkalmazások figyelése
@@ -767,9 +781,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: Videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: 810c04b2d6b2b5e7a8db64e21c10225ccddcb117
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 98ca5a1cbf5298931c14d6c696119d0c98893072
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634277"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853642"
