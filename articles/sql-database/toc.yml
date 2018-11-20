@@ -143,7 +143,7 @@ items:
     items:
     - name: Felügyelt példányok
       href: sql-database-managed-instance-index.yml
-    - name: Mi az a felügyelt példány
+    - name: Áttekintés
       href: sql-database-managed-instance.md
     - name: Erőforráskorlátok
       href: sql-database-managed-instance-resource-limits.md
@@ -163,15 +163,15 @@ items:
       href: sql-database-managed-instance-transact-sql-information.md
     - name: Tranzakciós replikáció
       href: replication-with-sql-database-managed-instance.md
-  - name: Az üzletmenet folytonossága
+  - name: Szolgáltatásként nyújtott platform
     items:
+    - name: Szolgáltatásként nyújtott platform
+      href: sql-database-paas.yml
     - name: Az üzletmenet folytonossága
       href: sql-database-business-continuity.md
     - name: Magas rendelkezésre állás
       href: sql-database-high-availability.md
-    - name: Felgyorsított adatbázis-helyreállítás
-      href: sql-database-accelerated-database-recovery.md
-    - name: Adatbázisok biztonsági mentése
+    - name: Automatikus biztonsági mentések
       href: sql-database-automated-backups.md
     - name: Biztonsági mentés hosszú távú megőrzése
       items:
@@ -193,6 +193,8 @@ items:
       items:
       - name: Helyreállítás adatbázisokkal
         href: sql-database-recovery-using-backups.md
+      - name: Felgyorsított adatbázis-helyreállítás
+        href: sql-database-accelerated-database-recovery.md
       - name: Szolgáltatáskimaradási helyreállítási útmutató
         href: sql-database-disaster-recovery.md
       - name: Helyreállítási gyakorlatok
@@ -208,6 +210,8 @@ items:
   - name: Biztonság
     items:
     - name: Biztonság
+      href: sql-database-security-index.yml
+    - name: Áttekintés
       href: sql-database-security-overview.md
     - name: Fejlett fenyegetésvédelem
       items:
@@ -648,9 +652,9 @@ items:
     href: /azure/architecture/
   - name: Ügyfelek történetei
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 90ce805e96458e83315cd5f7c9e60b3585f7313d
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 12add5f8ee32ce3c5207a604ef7cad821d5e5a4e
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854288"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165263"

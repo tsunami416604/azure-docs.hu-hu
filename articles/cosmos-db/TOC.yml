@@ -86,10 +86,12 @@ items:
       href: high-availability.md
     - name: Kiosztott átviteli sebesség globális méretezése
       href: scaling-throughput.md
-    - name: Ütközésfeloldási szabályzatok
+    - name: Ütközéstípusok és -feloldási szabályzatok
       href: conflict-resolution-policies.md
     - name: Globális terjesztés – technikai részletek
       href: global-dist-under-the-hood.md
+    - name: Régiónkénti jelenlét
+      href: regional-presence.md
   - name: Particionálás
     items:
     - name: Áttekintés
@@ -150,6 +152,10 @@ items:
       href: vnet-service-endpoint.md
     - name: Key Vault-támogatás
       href: access-secrets-from-keyvault.md
+  - name: Alkalmasság vállalati használatra
+    items:
+    - name: Megfelelőség
+      href: compliance.md
   - name: Előre fizetés fenntartott kapacitásért
     href: cosmos-db-reserved-capacity.md
   - name: Biztonsági mentés és visszaállítás
@@ -160,8 +166,6 @@ items:
     items:
     - name: Bevezetés
       href: sql-api-introduction.md
-    - name: SQL-lekérdezések írása
-      href: sql-api-sql-query.md
     - name: Dokumentumadatok modellezése
       href: modeling-data.md
     - name: Oktatóanyagok
@@ -437,6 +441,8 @@ items:
       href: how-to-create-container.md
     - name: Tároló lekérdezése
       href: how-to-query-container.md
+    - name: Adatok lekérdezése SQL-lekérdezések használatával
+      href: how-to-sql-query.md
   - name: Indexelés
     items:
     - name: Indexelés konfigurálása
@@ -567,9 +573,9 @@ items:
       href: use-cases.md
     - name: Közösségimédia-alkalmazások
       href: social-media-apps.md
-ms.openlocfilehash: 9a9aed84f75d9db93ec02bbfa681412dd1fa97da
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 39b551b12f80a54a8c374e0ac0980c8c746ef3b3
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706388"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162507"

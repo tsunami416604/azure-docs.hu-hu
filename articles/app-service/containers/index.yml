@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: df0b0e945550cbab34f409da9499efdd446be85a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0c706130cfa60e0710373b2214e6834789a1b484
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46947302"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52160919"
 documentType: LandingData
 title: A Linux rendszeren futó App Service dokumentációja
 metadata:
@@ -41,7 +41,7 @@ sections:
     - image:
         src: https://docs.microsoft.com/azure/app-service/media/index/logo_java.svg
       text: Java
-      href: https://docs.microsoft.com/azure/azure-toolkit-for-intellij-hello-world-web-app-linux?toc=/azure/app-service/containers/toc.json
+      href: https://docs.microsoft.com/azure/app-service/containers/quickstart-java
     - image:
         src: https://docs.microsoft.com/azure/app-service/media/index/logo_python.svg
       text: Python
@@ -98,7 +98,7 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: Hozzon létre egy alkalmazást a <a href="/azure/app-service/containers/tutorial-dotnetcore-sqldb-app">.NET Core és az Azure SQL Database</a> vagy a <a href="/azure/app-service/containers/tutorial-nodejs-mongodb-app">Node.js és a MongoDB</a> használatával
+    - html: Hozzon létre egy alkalmazást a <a href="/azure/app-service/containers/tutorial-dotnetcore-sqldb-app">.NET Core és az Azure SQL Database</a>, a <a href="/azure/app-service/containers/tutorial-java-enterprise-postgresql-app">Java Enterpise és a PostgreSQL</a> vagy a <a href="/azure/app-service/containers/tutorial-nodejs-mongodb-app">Node.js és a MongoDB</a> használatával
     - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">Meglévő egyéni tartomány kapcsolása az alkalmazáshoz </a>
     - html: <a href="/azure/app-service/app-service-web-tutorial-custom-SSL">Meglévő SSL-tanúsítvány kötése az alkalmazáshoz</a>
     - html: <a href="/azure/cdn/cdn-add-to-web-app">CDN hozzáadása az alkalmazáshoz</a>
