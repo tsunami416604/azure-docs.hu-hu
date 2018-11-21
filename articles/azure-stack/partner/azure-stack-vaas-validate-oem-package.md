@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/19/2018
+ms.date: 11/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: bcfc4cb65c94e34e9f6056ada53726f88489fefb
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 8268a6b04d7ddbb35821999142d3a33bdd2bedcc
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646651"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261802"
 ---
 # <a name="validate-oem-packages"></a>OEM-csomagok érvényesítése
 
@@ -58,22 +58,17 @@ Amikor létrehozza a **csomag** munkafolyamat a VaaS portálon, meg kell adnia a
 
 #### <a name="option-1-generating-an-account-sas-url"></a>1. lehetőség: A fiók SAS URL-cím generálása
 
-1. [!INCLUDE [azure-stack-vaas-sas-step_navigate](includes/azure-stack-vaas-sas-step_navigate.md)]
+1. Az a [az Azure portal](https://portal.azure.com/)nyissa meg a tárfiók, és keresse meg a .zip a csomagot tartalmazó
 
-1. Válassza ki **Blob** a **engedélyezett szolgáltatások beállítások**. Kapcsolja ki a fennmaradó beállításokat.
+2. Válassza ki **SAS létrehozása** a helyi menüből
 
-1. Válassza ki **tároló** és **objektum** a **engedélyezett erőforrástípusok**. Kapcsolja ki a fennmaradó beállításokat.
+3. Válassza ki **olvasási** a **engedélyek**
 
-1. Válassza ki **olvasási** és **lista** a **engedélyezett jogosultságok**. Kapcsolja ki a fennmaradó beállításokat.
+4. Állítsa be **kezdési idő** az aktuális idő és **befejezési idő** legalább 48 órát a **kezdési idő**. Ha a rendszer más teszteket ugyanaz a csomag kell futtatja, érdemes növelni **befejezési idő** hosszán át a tesztelést. Bármely keresztül után VaaS ütemezett vizsgálatok **befejezési idő** sikertelen és a egy új SAS fog kell létrehozni.
 
-1. Állítsa be **kezdési idő** az aktuális idő és **befejezési idő** az aktuális időponthoz képest 1 óra.
+5. Válassza ki **készítése a blob SAS-jogkivonat és URL-címe**
 
-1. [!INCLUDE [azure-stack-vaas-sas-step_generate](includes/azure-stack-vaas-sas-step_generate.md)]
-    Itt látható, hogyan jelenjenek meg a következő formátumban: `https://storageaccountname.blob.core.windows.net/?sv=2016-05-31&ss=b&srt=co&sp=rl&se=2017-05-11T21:41:05Z&st=2017-05-11T13:41:05Z&spr=https`
-
-1. A létrehozott SAS URL-címe tartalmazza a csomag tároló módosítása `{containername}`, és a blob nevét, a csomagot, `{mypackage.zip}`, az alábbiak szerint:  `https://storageaccountname.blob.core.windows.net/{containername}/{mypackage.zip}?sv=2016-05-31&ss=b&srt=co&sp=rl&se=2017-05-11T21:41:05Z&st=2017-05-11T13:41:05Z&spr=https`
-
-    Használja ezt az értéket, egy új indításakor **csomag** munkafolyamat a VaaS portálon.
+Használja **a Blob SAS URL-cím** mikor indítása egy új **csomag** munkafolyamat a VaaS portálon.
 
 #### <a name="option-2-using-public-read-container"></a>2. lehetőség: A nyilvános olvasási tároló használatával
 

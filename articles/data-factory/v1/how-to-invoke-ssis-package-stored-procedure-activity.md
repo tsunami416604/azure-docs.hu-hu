@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: fe2b509b62884c1cea554bc8dc5df25489205264
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: eb9d35b132a0aa3f0702604444f8a760bf66cf9a
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966956"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275581"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Egy tárolt eljárási tevékenység használatával az Azure Data Factory SSIS-csomagok meghívásához
 Ez a cikk bemutatja, hogyan kell elindítani az SSIS-csomag az Azure Data Factory-folyamatot egy tárolt eljárási tevékenység használatával. 
@@ -115,7 +115,7 @@ A kimeneti adatkészlet egy helyőrző adatkészletet, amely a folyamat ütemez�
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Tárolt eljárási tevékenység rendelkező folyamat létrehozása 
 Ebben a lépésben létrehoz egy folyamatot egy tárolt eljárási tevékenység a. A tevékenység futtatása az SSIS-csomag sp_executesql tárolt eljárást hív meg. 
 
-1. A bal oldali ablaktáblán kattintson a **... Továbbiak**, majd az **Új adatcsatorna** elemre.
+1. A bal oldali ablaktáblán kattintson a **... Továbbiak**, majd az **Új adatcsatorna elemre.
 2. Másolja a következő JSON-kódrészletre a JSON-szerkesztőbe: 
 
     > [!IMPORTANT]
@@ -236,7 +236,7 @@ Hozzon létre egy társított szolgáltatást, az Azure SQL-adatbázis üzemelte
 ### <a name="create-an-output-dataset"></a>Kimeneti adatkészlet létrehozása
 A kimeneti adatkészlet egy helyőrző adatkészletet, amely a folyamat ütemezését. Figyelje meg, hogy a frequency értéke Hour és interval értéke 1. Ezért a folyamat fut, miután egy órán belül a folyamat kezdési és befejezési időpontja. 
 
-1. Hozzon létre egy OuputDataset.json fájlt az alábbi tartalommal: 
+1. Hozzon létre egy OutputDataset.json fájlt az alábbi tartalommal: 
     
     ```json
     {
