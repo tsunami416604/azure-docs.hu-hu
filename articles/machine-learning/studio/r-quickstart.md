@@ -4,8 +4,8 @@ description: Az R programozási oktatóanyag segítségével gyorsan az R nyelv-
 keywords: a rövid útmutató, az r nyelv, az r programozási nyelv, az r programozási oktatóanyag
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: 32e1d321d745ac80a857b75910619b02b7521ca7
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 028672a9bb0fb1aa256083a0422cc1c565977250
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822806"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265321"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>Bevezető oktatóprogram az Azure Machine Learning rendszerrel használt R programozási nyelvbe
 

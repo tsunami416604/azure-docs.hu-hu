@@ -10,16 +10,16 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 91db32b7056a0cf211e6293a891d58e0239ca499
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: f8092c7a05935dcb2ca176bee2c5820b50f3c814
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237585"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263553"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Betölteni, és az Azure Machine Learning adatokat olvasni.
 
-Használja a [az Azure Machine Learning Data Prep SDK](https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py) különböző típusú bemeneti adatok betöltéséhez. 
+Használja a [az Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk) különböző típusú bemeneti adatok betöltéséhez. 
 
 Annak érdekében, hogy az adatok betöltése, adja meg az adattípus fájl és a paraméterek
 
@@ -149,11 +149,11 @@ dataflow.head(5)
 Példa a kimenetre:
 ||1. oszlop|Column2|Column3|4. oszlopig|Column5|Column6|Column7|Column8|
 |------|------|------|-----|------|-----|-------|----|-----|
-|0|Hoba|Vas, IVB|60000000.0|Sikeres keresés|1920.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |-19.58333|17.91667|
-|1|Cabo York|Vas, IIIAB|58200000.0|Sikeres keresés|1818.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |76.13333|-64.93333|
-|2|Campo del Cielo|Vas, IAB-felügyeleti csoport|50000000.0|Sikeres keresés|1576.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |-27.46667|-60.58333|
-|3|Diablo kanyon|Vas, IAB-felügyeleti csoport|30000000.0|Sikeres keresés|1891.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |35.05000|-111.03333|
-|4|Armanty|Vas, IIIE|28000000.0|Sikeres keresés|1898.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |47.00000|88.00000|
+|0|Hoba|Vas, IVB|60000000.0|Található|1920.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |-19.58333|17.91667|
+|1|Cabo York|Vas, IIIAB|58200000.0|Található|1818.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |76.13333|-64.93333|
+|2|Campo del Cielo|Vas, IAB-felügyeleti csoport|50000000.0|Található|1576.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |-27.46667|-60.58333|
+|3|Diablo kanyon|Vas, IAB-felügyeleti csoport|30000000.0|Található|1891.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |35.05000|-111.03333|
+|4|Armanty|Vas, IIIE|28000000.0|Található|1898.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |47.00000|88.00000|
 
 Az első lap, az Excel-fájlt töltött. Ugyanaz az eredmény explicit módon kívánja betölteni a lap nevének megadásával érheti el. Ha azt szeretné, a második lap betöltése helyett, megadhatja annak neve argumentumként. Példa:
 ```python
@@ -194,13 +194,13 @@ dataflow.head(5)
 ```
 
 Példa a kimenetre:
-||010000|99999|HAMIS NORVÉGIA|NEM|NO_1|ENRS|Column7|Column8|Column9|
+||010000|99999|HAMIS NORVÉGIA|NO|NO_1|ENRS|Column7|Column8|Column9|
 |------|------|------|-----|------|-----|-------|----|-----|----|
-|0|010003|99999|HAMIS NORVÉGIA|NEM|NEM|ENSO||||
-|1|010010|99999|JAN MAYEN|NEM|JN|ENJA|+70933|-008667|+00090|
-|2|010013|99999|ROST|NEM|NEM|||||
-|3|010014|99999|SOERSTOKKEN|NEM|NEM|ENSO|+59783|+005350|+00500|
-|4|010015|99999|BRINGELAND|NEM|NEM|ENBL|+61383|+005867|+03270|
+|0|010003|99999|HAMIS NORVÉGIA|NO|NO|ENSO||||
+|1|010010|99999|JAN MAYEN|NO|JN|ENJA|+70933|-008667|+00090|
+|2|010013|99999|ROST|NO|NO|||||
+|3|010014|99999|SOERSTOKKEN|NO|NO|ENSO|+59783|+005350|+00500|
+|4|010015|99999|BRINGELAND|NO|NO|ENBL|+61383|+005867|+03270|
 
 
 Ha a fájlok a fejlécek, érdemes az első sor gyökérkönyvtárral adatokat. Átadásával `PromoteHeadersMode.NONE` a fejléc kulcsszó argumentum fejléc észlelési elkerüléséhez és a megfelelő adatokat. Példa:
@@ -217,12 +217,12 @@ Példa a kimenetre:
 
 ||1. oszlop|Column2|Column3|4. oszlopig|Column5|Column6|Column7|Column8|Column9|
 |------|------|------|-----|------|-----|-------|----|-----|----|
-|0|010000|99999|HAMIS NORVÉGIA|NEM|NO_1|ENRS|Column7|Column8|Column9|
-|1|010003|99999|HAMIS NORVÉGIA|NEM|NEM|ENSO||||
-|2|010010|99999|JAN MAYEN|NEM|JN|ENJA|+70933|-008667|+00090|
-|3|010013|99999|ROST|NEM|NEM|||||
-|4|010014|99999|SOERSTOKKEN|NEM|NEM|ENSO|+59783|+005350|+00500|
-|5|010015|99999|BRINGELAND|NEM|NEM|ENBL|+61383|+005867|+03270|
+|0|010000|99999|HAMIS NORVÉGIA|NO|NO_1|ENRS|Column7|Column8|Column9|
+|1|010003|99999|HAMIS NORVÉGIA|NO|NO|ENSO||||
+|2|010010|99999|JAN MAYEN|NO|JN|ENJA|+70933|-008667|+00090|
+|3|010013|99999|ROST|NO|NO|||||
+|4|010014|99999|SOERSTOKKEN|NO|NO|ENSO|+59783|+005350|+00500|
+|5|010015|99999|BRINGELAND|NO|NO|ENBL|+61383|+005867|+03270|
 
 ## <a name="use-sql-data"></a>SQL-adatok használata
 Az Azure Machine Learning Data Prep SDK is betölthet adatokat az SQL Server-kiszolgálók. Jelenleg csak a Microsoft SQL Server támogatott.
@@ -343,7 +343,7 @@ dataflow = dprep.read_csv(path = DataLakeDataSource(path='adl://dpreptestfiles.a
 dataflow.to_pandas_dataframe().head()
 ```
 
-||FMID|MarketName|Honlap|Utca.|city|Megye|
+||FMID|MarketName|Webhely|Utca.|city|Megye|
 |----|------|-----|----|----|----|----|
 |0|1012063|A piaci társítása – Danville Kaledónia gazdák|https://sites.google.com/site/caledoniafarmers... ||Danville|Kaledónia|
 |1|1011871|Stearns Homestead gazdálkodók ' piaci|http://Stearnshomestead.com |6975 ridge közúti|Parma|Cuyahoga|

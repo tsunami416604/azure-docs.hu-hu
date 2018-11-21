@@ -11,11 +11,11 @@ ms.custom: include file
 ms.date: 09/27/2018
 ms.author: diberry
 ms.openlocfilehash: c3081dc89740e4b97f773265ad598112e77af65f
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
-ms.translationtype: HT
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48019053"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52266866"
 ---
 A **Program.cs** tetején cserélje le az önálló _using_ utasítást a következő sorokkal, hogy felvegye a szükséges függőségeket a projektbe:
 

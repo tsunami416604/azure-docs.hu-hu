@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: b64a35f6b7422b1e24812c1041305dab2ebad6c0
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 6d05323eb08a69ef4b76dbbf35217d80b9b2dc3c
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578497"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261071"
 ---
 # <a name="determine-your-publishing-option"></a>A közzétételi lehetőség meghatározása
 Az Ön által választott az ajánlat közzétételi lehetőség közvetlenül kapcsolódik a jogosultsági követelményeknek és a piactér GTM előnyeit. Ami még fontosabb a közzététel lehetőséget és ajánlat írja be a Cloud Partner portálra a választott határozza meg, hogyan működjön együtt a marketplace-ajánlat felhasználók.
@@ -64,26 +64,18 @@ Azure Marketplace-en és/vagy az appsource-ban, ahol az ajánlat megjelenik, meg
 
 Közzétételi lehetőségekről differenciált vásárlói engagement, miközben ajánlat potenciális ügyfelek megosztása a hozzáférést és [piaci megjelenést előnyökkel](https://partner.microsoft.com/en-US/reach-customers/gtm). Három lehetséges közzétételi beállítások használatával a Cloud Partner portálra, a marketplace-ajánlat létrehozása előtt válasszon ki. Vegye figyelembe a hívások-az-műveletet, amely a közzétételi lehetőség felel meg:
 
-**Lista** – egyszerű listája az alkalmazás vagy szolgáltatás, amely lehetővé teszi a marketplace-felhasználót, hogy el az eszközt az ügyfél-n keresztül kapcsolódni a **kapcsolatfelvételi** hívás-művelet.
+| **Közzétételi lehetőség**    | **Leírás**  |
+| :------------------- | :-------------------|
+| **List** | Egyszerű listája az alkalmazás vagy szolgáltatás, amely lehetővé teszi a marketplace-felhasználót, hogy el az eszközt az ügyfél-n keresztül kapcsolódni a **kapcsolatfelvételi** hívás-művelet. |
+| **Próbaverzió** | Médiaindexelés, és automatikus üzembe helyezés, az alkalmazás próbaverziója, leendő felhasználók általi a SaaS, IaaS, vagy a Microsoft az alkalmazáson belüli felhasználói élményt költségek nélkül vásárolnak előtt korlátozott ideig-piactér használatával. A hívások-az-művelet a próbaverziós közzétételi lehetőség használt kiadásokhoz: **ingyenes próba** vagy **Test Drive**. |
+| **Transact** | Az alkalmazás az Azure-on fut, és bővítheti erőforrásai közvetlenül az ügyfél Azure-előfizetésben helyezi az ügyfél választja ki a Get, most művelet meghívása során. A szoftverlicencdíjakat igény szerint is vásárolt és keresztül az ügyfél választott fizetési eszközt és kifejezések díjszabása, és Ön kiválaszthatja, időkorlátos hozzáférést nyújtani a **a szoftver ingyenes próbaverziója** (csak érhető el az Azure-hoz Marketplace-en.) |
 
-**Próbaverziós** – médiaindexelés, és automatikus üzembe helyezés, az alkalmazás próbaverziója, leendő felhasználók általi a SaaS, IaaS, vagy a Microsoft az alkalmazáson belüli felhasználói élményt költségek nélkül vásárolnak előtt korlátozott ideig használható Marketplace-en. A hívások-az-művelet a próbaverziós közzétételi lehetőség használt kiadásokhoz: **ingyenes próba** vagy **Test Drive**.
-
-**Transact** – az alkalmazás az Azure-on fut, és bővítheti erőforrásai közvetlenül az ügyfél Azure-előfizetésben helyezi az ügyfél választja ki a Get, most művelet meghívása során. A szoftverlicencdíjakat igény szerint is vásárolt és keresztül az ügyfél választott fizetési eszközt és kifejezések díjszabása, és Ön kiválaszthatja, időkorlátos hozzáférést nyújtani a **a szoftver ingyenes próbaverziója** (csak érhető el az Azure-hoz Marketplace-en.) 
-
-## <a name="select-an-offer-type"></a>Válassza ki az ajánlat típusát
-
-Kiválasztotta a közzétételi lehetőség, válassza ki, amely jelenleg az ajánlatot a rendszer készen áll. 
-
-Az ajánlat közzétételi objektumot fog létrehozását, közzétételét és kezelheti a Cloud Partner portálra el. Az ajánlat felépítését, többek között a metaadatok, összetevők és egyéb tartalmak bemutatására az ajánlatot a piactéren az ajánlat típusát határozza meg.
-
-Mielőtt létrehozhatna egy ajánlatot, ki kell választania egy ajánlat típusát. Az ajánlat típusát a típusú megoldás, alkalmazás, vagy a szolgáltatási ajánlat, amely a közzétenni kívánt, valamint Microsoft-termékek és szolgáltatások igazítást felel meg. 
-
-Egyetlen ajánlattípusra konfigurálható eltérően a Cloud Partner portálra ahhoz, hogy különböző közzétételi beállítások, a hívások műveletet, a kiépítés, vagy díjszabása. A közzétételi beállítások és az ajánlat típusú konfigurációs is igazítása az ajánlat jogosult-e és technikai követelményeket. 
-
-Ügyeljen arra, hogy tekintse át a kirakat és típusának megfelelőségi feltételek ezen ajánlat [útmutató Közzétevőknek](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) és a műszaki követelményeket közzététele az ajánlat létrehozása előtt.
+>[!Note]
+>A Transact-közzétételi lehetőség használatakor a fontos megérteni a díjszabás, Számlázás, számlázás és küldenie jóváhagyásra cége kifizetési szempontok ajánlat típusának kiválasztása és az ajánlat létrehozása előtt. Tekintse át a [Piactéri számlázási és kereskedelmi szempontok a cikk további](./marketplace-commercial-transaction-capabilities-and-considerations.md).
 
 ## <a name="next-steps"></a>További lépések
 
+*   Ha közzétételi lehetőség használata mellett dönt, hogy készen áll [válassza ki](./publisher-guide-by-offer-type.md) kulcsindexet felkínálandó ajánlat.
 *   Tekintse át a jogosult-e a kijelölés és a konfiguráció az Ön ajánlatát véglegesítéséhez ajánlat típushoz című által a közzétételi beállítások.
 *   Tekintse át a közzétételi minták storefront-példák hogyan megoldását képez le egy ajánlat típusát és a konfiguráció alapján.
 *   Jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com) hozhat létre és konfigurálja az ajánlatát.

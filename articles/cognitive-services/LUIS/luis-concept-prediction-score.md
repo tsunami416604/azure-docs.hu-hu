@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: diberry
-ms.openlocfilehash: 7cc3b6fd5865689df57258dcb2088bbef47b9a90
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: e1582da9a8fea4137d40b3a3855ead467dbbb548
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637961"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264386"
 ---
 # <a name="prediction-score"></a>Előrejelzési pontszám
 Előrejelzési pontszámot rendelkezik a LUIS-előrejelzési eredményeket megbízhatósági mértékét jelzi. 
@@ -62,7 +62,7 @@ Ha egy másik alkalmazásban ugyanannak a modellnek a vonat, és a pontszámok n
 A csevegőrobot szükség van egy adott LUIS pontszám bizalom a megjelölésű jelzi, ha Ehelyett használjon a felső két szándék pontszám különbsége. Ezáltal rugalmasan képzési-változások. 
 
 ## <a name="punctuation"></a>Absztrakt
-Absztrakt egy külön jogkivonatot a LUIS. Az utterance (kifejezés), amely egy időszak végén, és a egy utterance (kifejezés), amely nem tartalmaz két külön kimondott szöveg, és előfordulhat, hogy két különböző előrejelzés beolvasása. Győződjön meg arról, hogy a modell absztrakt vagy kezeli a a [példa utterances](luis-concept-utterance.md) (kellene és írásjelek nélkül) vagy a a [könnyebben figyelmen kívül a speciális szintaxissal írásjelek patterns}(luis-concept-patterns.md): `I am applying for the {Job} position[.]`
+Absztrakt egy külön jogkivonatot a LUIS. Az utterance (kifejezés), amely egy időszak végén, és a egy utterance (kifejezés), amely nem tartalmaz két külön kimondott szöveg, és előfordulhat, hogy két különböző előrejelzés beolvasása. Győződjön meg arról, hogy a modell absztrakt vagy kezeli a a [példa utterances](luis-concept-utterance.md) (kellene és írásjelek nélkül) vagy a a [minták](luis-concept-patterns.md) figyelmen kívül a speciális szintaxissal írásjelek könnyebben: `I am applying for the {Job} position[.]`
 
 ## <a name="next-steps"></a>További lépések
 

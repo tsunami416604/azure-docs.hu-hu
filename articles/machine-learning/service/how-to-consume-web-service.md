@@ -9,18 +9,18 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: larryfr
 ms.date: 10/30/2018
-ms.openlocfilehash: 75faf344c64dc330a98b836a8852b42531645c49
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 58c1b53a4b97aad7b916e593fd4d6b52b51b7a52
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685174"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262899"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Az Azure Machine Learning-modellek webszolgáltatásként üzembe helyezett felhasználása
 
 REST API-t üzembe helyezése az Azure Machine Learning-modellek webszolgáltatásként hoz létre. Adatokat küldeni az API-t, és a modell által visszaadott az előrejelzést kapni. Ebből a dokumentumból megtudhatja, hogyan hozhat létre webes szolgáltatást használó ügyfelek C#, Go, a Java és Python.
 
-Webszolgáltatás-rendszerképet egy Azure-Tárolópéldányon, az Azure Kubernetes Service-ben vagy a Project Brainwave (mező programmable gate arrays) központi telepítésekor jön létre. A regisztrált modellek és a pontozófájlt lemezképek jönnek létre. Egy webes szolgáltatás eléréséhez használt URI-ja használatával lehet beolvasni a [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Ha engedélyezve van a hitelesítés, az SDK-t is használhatja a hitelesítési kulcsok beolvasása.
+Webszolgáltatás-rendszerképet egy Azure-Tárolópéldányon, az Azure Kubernetes Service-ben vagy a Project Brainwave (mező programmable gate arrays) központi telepítésekor jön létre. A regisztrált modellek és a pontozófájlt lemezképek jönnek létre. Egy webes szolgáltatás eléréséhez használt URI-ja használatával lehet beolvasni a [Azure Machine Learning SDK](https://aka.ms/aml-sdk). Ha engedélyezve van a hitelesítés, az SDK-t is használhatja a hitelesítési kulcsok beolvasása.
 
 Az általános munkafolyamatát, amikor egy Machine Learning webszolgáltatás használó ügyfél létrehozása a következő:
 

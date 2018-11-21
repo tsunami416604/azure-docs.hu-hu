@@ -1,6 +1,6 @@
 ---
-title: Az Application Insights éles környezetben az Azure Machine Learning szolgáltatás engedélyezése
-description: Ismerje meg, hogyan állíthatja be az Application Insights az Azure Machine Learning szolgáltatás Azure Kubernetes Service-ben való üzembe helyezéshez
+title: Az Application Insights az Azure Machine Learning szolgáltatás engedélyezése
+description: Ismerje meg, hogyan állíthatja be az Application Insights az Azure Machine Learning szolgáltatás használatával telepített szolgáltatások
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,14 +9,14 @@ ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
 ms.date: 10/01/2018
-ms.openlocfilehash: 71dc7c0dbb2400802235da4f1bb952c7863a1862
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 9e0f07e744aaf5f1c35666b40285937dce6dd4de
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713214"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275054"
 ---
-# <a name="monitor-your-azure-machine-learning-models-in-production-with-application-insights"></a>Az Azure Machine Learning-modellek éles környezetben az Application Insights figyelése
+# <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Az Application insights szolgáltatással az Azure Machine Learning-modellek figyelése
 
 Ebből a cikkből elsajátíthatja az Azure Application Insights beállítása az Azure Machine Learning szolgáltatás. Az Application Insights lehetővé teszi, hogy figyelése:
 * Kérelem értékek, válaszidők és hibaarányok.
@@ -32,14 +32,53 @@ Ebből a cikkből elsajátíthatja az Azure Application Insights beállítása a
 ## <a name="prerequisites"></a>Előfeltételek
 * Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLfree), mielőtt hozzákezd.
 * Egy helyi könyvtárba, amely tartalmazza a parancsfájlokat, és az Azure Machine Learning SDK telepítve van a Pythonhoz készült Azure Machine Learning munkaterület. Ismerje meg, hogyan tehet szert az Előfeltételek, lásd: [a fejlesztési környezet konfigurálása](how-to-configure-environment.md).
-* Egy betanított gépi tanulási modellt az Azure Kubernetes Service (AKS) üzembe helyezni. Ha még nincs fiókja, tekintse meg a [Train kép osztályozási modell](tutorial-train-models-with-aml.md) oktatóanyag.
-* Egy [AKS-fürt](how-to-deploy-to-aks.md).
+* Egy betanított gépi tanulási modellt az Azure Kubernetes Service (AKS) vagy az Azure Container Instance (aci) Szolgáltatásban üzembe helyezhető. Ha még nincs fiókja, tekintse meg a [Train kép osztályozási modell](tutorial-train-models-with-aml.md) oktatóanyag.
 
+
+## <a name="enable-and-disable-from-the-sdk"></a>Engedélyezheti vagy letilthatja az SDK-ból
+
+### <a name="update-a-deployed-service"></a>Telepített szolgáltatások frissítésével
+1. A munkaterület a szolgáltatás azonosítására. Az érték `ws` a munkaterület neve.
+
+    ```python
+    from azureml.core.webservice import Webservice
+    aks_service= Webservice(ws, "my-service-name")
+    ```
+2. Frissítse a szolgáltatást, és engedélyezze az Application Insights. 
+
+    ```python
+    aks_service.update(enable_app_insights=True)
+    ```
+
+### <a name="log-custom-traces-in-your-service"></a>A szolgáltatási egyéni nyomkövetési naplók
+Ha azt szeretné, hogy egyéni nyomkövetési naplók, kövesse a normál telepítés folyamata [AKS](how-to-deploy-to-aks.md) vagy [ACI](how-to-deploy-to-aci.md) . Ezután:
+
+1. Frissítse a pontozófájl nyomtatási utasítások hozzáadásával.
+    
+    ```python
+    print ("model initialized" + time.strftime("%H:%M:%S"))
+    ```
+
+2. A szolgáltatás konfigurációjának frissítése.
+    
+    ```python
+    config = Webservice.deploy_configuration(enable_app_insights=True)
+    ```
+
+3. Állítson össze egy rendszerképet, és telepítenie a [AKS](how-to-deploy-to-aks.md) vagy [ACI](how-to-deploy-to-aci.md).  
+
+### <a name="disable-tracking-in-python"></a>Tiltsa le a Pythonban nyomon követése
+
+Az Application Insights letiltásához használja a következő kódot:
+
+```python 
+## replace <service_name> with the name of the web service
+<service_name>.update(enable_app_insights=False)
+```
+    
 ## <a name="enable-and-disable-in-the-portal"></a>Engedélyezheti vagy letilthatja a portálon
 
 Engedélyezheti és letilthatja az Application Insights az Azure Portalon.
-
-### <a name="enable"></a>Bekapcsolás
 
 1. Az a [az Azure portal](https://portal.azure.com), nyissa meg a munkaterületet.
 
@@ -68,47 +107,7 @@ Engedélyezheti és letilthatja az Application Insights az Azure Portalon.
    [![Diagnosztika engedélyezése az üres jelölőnégyzet](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
 
 1. Válassza ki **frissítés** alkalmazza a módosításokat a képernyő alján. 
-
-## <a name="enable-and-disable-from-the-sdk"></a>Engedélyezheti vagy letilthatja az SDK-ból
-
-### <a name="update-a-deployed-service"></a>Telepített szolgáltatások frissítésével
-1. A munkaterület a szolgáltatás azonosítására. Az érték `ws` a munkaterület neve.
-
-    ```python
-    aks_service= Webservice(ws, "my-service-name")
-    ```
-2. Frissítse a szolgáltatást, és engedélyezze az Application Insights. 
-
-    ```python
-    aks_service.update(enable_app_insights=True)
-    ```
-
-### <a name="log-custom-traces-in-your-service"></a>A szolgáltatási egyéni nyomkövetési naplók
-Ha azt szeretné, hogy egyéni nyomkövetési naplók, kövesse a [szabványos telepítési folyamat az aks-ben](how-to-deploy-to-aks.md). Ezután:
-
-1. Frissítse a pontozófájl nyomtatási utasítások hozzáadásával.
-    
-    ```python
-    print ("model initialized" + time.strftime("%H:%M:%S"))
-    ```
-
-2. Az AKS-konfigurációjának frissítése.
-    
-    ```python
-    aks_config = AksWebservice.deploy_configuration(enable_app_insights=True)
-    ```
-
-3. [A rendszerkép létrehozásához és üzembe helyezni a](how-to-deploy-to-aks.md).  
-
-### <a name="disable-tracking-in-python"></a>Tiltsa le a Pythonban nyomon követése
-
-Az Application Insights letiltásához használja a következő kódot:
-
-```python 
-## replace <service_name> with the name of the web service
-<service_name>.update(enable_app_insights=False)
-```
-    
+ 
 
 ## <a name="evaluate-data"></a>Adatok kiértékelése
 A szolgáltatás adatainak az Application Insights-fiók, az Azure Machine Learning szolgáltatás ugyanabban az erőforráscsoportban találhatók.

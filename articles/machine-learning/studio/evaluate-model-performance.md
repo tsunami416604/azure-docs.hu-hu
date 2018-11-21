@@ -3,8 +3,8 @@ title: A Machine Learning modellek teljesítményének kiértékelése |} A Micr
 description: Ismerteti az Azure Machine Learning modellek teljesítményének elemzése.
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 14fb1772b138946639796ddf71f3dc56fe677d82
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 98704f00c6b086772d9e0440ace79c3ca713f13a
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823656"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261600"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning"></a>A modellek teljesítményének kiértékelése az Azure Machine Learning rendszerben
 Ez a cikk bemutatja, hogyan lehet egy modellt az Azure Machine Learning Studióban teljesítményét értékeli, és amely röviden elmagyarázza, a metrikák elérhető ez a feladat biztosít. Három gyakori felügyelt tanítás forgatókönyvek jelennek meg: 

@@ -1,6 +1,6 @@
 ---
-title: Azure Application Insights Docker alkalmazások figyelésének |} Microsoft Docs
-description: Docker teljesítményszámlálói, eseményeket és kivételeket is megjeleníthetők az Application Insights együtt a telemetriai adatok indexelése alkalmazásokból.
+title: Az Azure Application Insights Docker-alkalmazások monitorozása |} A Microsoft Docs
+description: Docker gyűjthető teljesítményszámlálókhoz, eseményekről és kivételeket is jelenjenek meg, az Application Insights, valamint a telemetriát a tárolóalapú alkalmazások.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -11,119 +11,96 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/14/2017
+ms.date: 11/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 53ade76b9dbdc27df90da1f7e197464816529d1d
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 4df6780fa61c1ed32279d882f383097dc0287716
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295761"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275915"
 ---
-# <a name="monitor-docker-applications-in-application-insights"></a>Az Application Insightsban Docker-alkalmazások figyelése
-A teljesítményszámlálók életciklus-események és a teljesítmény [Docker](https://www.docker.com/) tárolók is forrásadatok az Application insights szolgáltatással. Telepítse a [Application Insights](https://hub.docker.com/r/microsoft/applicationinsights/) lemezkép a gazdagép és a tároló teljesítményszámlálók megjeleníti a gazdagép, valamint a többi képet.
+# <a name="monitor-docker-applications-in-application-insights"></a>Docker-alkalmazások figyelése az Application insights szolgáltatásban
 
-Docker az egyszerűsített tárolók teljes összes függőségekkel rendelkező alkalmazások terjesztése. Ezek fogja futtatni, a gazdagépen, amelyen egy Docker-motorhoz.
+Életciklus-események és a teljesítmény származó teljesítményszámlálók [Docker](https://www.docker.com/) tárolók ábrázolható is kell Application Insights. Telepítse a [Application Insights](https://hub.docker.com/r/microsoft/applicationinsights/) lemezkép a gazdagép és a egy tárolóban teljesítményszámlálók megjeleníti a gazdagép, valamint a további rendszerképeket.
 
-Futtatásakor a [Application Insights kép](https://hub.docker.com/r/microsoft/applicationinsights/) a Docker állomáson ilyen előnyt beolvasása:
+A docker használatával akkor terjesztheti az alkalmazásokat a kisméretű tárolók teljes függőségeit. Kiszámíthatja, minden olyan gazdagépen, amelyen a Docker-motor.
 
-* Életciklus telemetriai adatainak fut az összes tároló a gazdagép - indítása, leállítása, és így tovább.
-* A tárolók teljesítményszámlálók. Processzor, memória, hálózati használati és több.
-* Ha Ön [Javához készült Application Insights SDK telepítve](app-insights-java-live.md) a tárolókban lévő futó alkalmazások, az alkalmazások telemetriai adatok azonosítása a tároló és a fogadó számítógép további tulajdonságainak rendelkeznek. Így például ha egy alkalmazás több gazdagépen fut, könnyen szűrheti az alkalmazás telemetriai állomás.
+Futtatásakor a [Application Insights-lemezkép](https://hub.docker.com/r/microsoft/applicationinsights/) a Docker-gazdagép, ezeket az előnyöket kap:
 
-![Példa](./media/app-insights-docker/00.png)
-
-## <a name="set-up-your-application-insights-resource"></a>Az Application Insights-erőforrás beállítása
-1. Jelentkezzen be a [Microsoft Azure-portálon](https://azure.com) , és nyissa meg az Application Insights-erőforrást az alkalmazáshoz; vagy [hozzon létre egy újat](app-insights-create-new-resource.md). 
-   
-    *Erőforrás-érdemes használni?* Ha az alkalmazások, a gazdagépen futó fejlesztett valaki más, akkor kell [hozzon létre egy új Application Insights-erőforrást](app-insights-create-new-resource.md). Ez az megtekintése, és ahol a telemetriai adatok elemzése. (Válassza ki az alkalmazás típusa az "általános".)
-   
-    De ha Ön az alkalmazásokat a fejlesztői, majd Reméljük, hogy [Application Insights SDK hozzáadott](app-insights-java-live.md) hozzájuk. Ha minden valóban az egyetlen üzleti alkalmazások összetevői, akkor előfordulhat, hogy konfigurálja az összes telemetriai adatokat küldhet egy erőforrást, és azt ismertetjük, hogy ugyanaz az erőforrás a Docker életciklust és a teljesítmény adatok megjelenítéséhez. 
-   
-    Harmadik forgatókönyv, hogy az alkalmazások a legtöbb kidolgozott, de külön erőforrások használata a telemetriai adatok megjelenítéséhez. Ebben az esetben akkor valószínűleg is szeretné a Docker adatokat külön erőforrás létrehozása. 
-2. Adja hozzá a Docker csempe: válasszon **vegye fel a csempe**, húzza a Docker csempe a gyűjteményből, és kattintson a **végzett**. 
-   
-    ![Példa](./media/app-insights-docker/03.png)
+* Kapcsolatos futó összes tároló életciklus-telemetria a gazdagép - indítása, leállítása, és így tovább.
+* Teljesítményszámlálók a az összes tárolót. CPU, memória, hálózati használati és egyéb.
+* Ha Ön [Javához készült Application Insights SDK telepítése](app-insights-java-live.md) az alkalmazásokat, a tárolókban futó, ezek az alkalmazások összes telemetriai adat azonosítása a tároló és a gazdagépcsoport gép további tulajdonságokat is rendelkezik. Így például ha egynél több gazdagépen futó példánya, könnyen szűrheti az alkalmazás telemetriai adatainak a gazdagép által.
 
 > [!NOTE]
-> Az Áttekintés ablaktábláján az Application Insightsban zárolva van, és nem engedélyezi a csempék felvételéhez a gyűjteményből. Továbbra is hozzáadhat a Docker csempe a Azure irányítópult felületen keresztül a fent leírt módon.
+> Ez a megoldás elavult. További információ a meglévő befektetéseit,-tárolók monitorozása a javasoljuk a kivételkor [-tárolókhoz az Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview).
 
-3. Kattintson a **Essentials** legördülő lista és a rendszerállapot-kulcs másolása. Ezzel, hogy az SDK helyét a telemetriai adatokat küldhet.
+## <a name="set-up-your-application-insights-resource"></a>Az Application Insights-erőforrás beállítása
 
-    ![Példa](./media/app-insights-docker/02-props.png)
+1. Jelentkezzen be a [Microsoft Azure-portálon](https://azure.com) , és nyissa meg az alkalmazás; Application Insights-erőforrás vagy [hozzon létre egy új](app-insights-create-new-resource.md). 
+   
+    *Melyik erőforrást kell használnom?* Ha valaki más által kifejlesztett az alkalmazásokat, amelyek a gazdagép futtat, akkor kell [hozzon létre egy új Application Insights-erőforrást](app-insights-create-new-resource.md). Ez a, melyen megtekintheti és elemezheti a telemetriát. (Válasszon "Általános" az alkalmazástípushoz.)
+   
+    De ha az alkalmazások a fejlesztők, akkor Reméljük, hogy [hozzáadja az Application Insights SDK](app-insights-java-live.md) hozzájuk. Ha az összes valóban egyetlen üzleti alkalmazások összetevői, akkor előfordulhat, hogy konfigurálja azokat, hogy telemetriát küldjön egy erőforrás, és ugyanazt az erőforrást fog használni a Docker-életciklus-kezelés és a teljesítmény adatok megjelenítése. 
+   
+    Harmadik forgatókönyv, hogy az alkalmazások többségét fejlesztett, de külön erőforrásokat használ a telemetriai adatok megjelenítéséhez. Ebben az esetben, valószínűleg is szeretne létrehozni a Docker-adatok külön erőforrást.
 
-Tartsa böngészőablakot lesz szüksége, akkor lesz térjen vissza úgy, hogy hamarosan nézze meg a telemetriai adatokat.
+2. Kattintson a **Essentials** listából, és másolja a kialakítási kulcsot. Ezzel, hogy az SDK-t, hova küldhetők a telemetriai adatokat.
 
-## <a name="run-the-application-insights-monitor-on-your-host"></a>A gazdagépen az Application Insights-figyelő futtatása
-Most, hogy telepítve vannak-e valahol telemetriai adatok megjelenítéséhez, a tárolóalapú alkalmazást, amely gyűjt, és elküldi a állíthat be.
+Tartsa kényelmes, a böngészőablakot, mivel meg fogja térjen vissza a, hogy hamarosan tekintse meg a telemetriai adatok.
 
-1. A Docker-állomással lépnek kapcsolatba. 
-2. Szerkesztheti a instrumentation be ezt a parancsot, és futtassa azt:
+## <a name="run-the-application-insights-monitor-on-your-host"></a>A gazdagépen az Application Insights-figyelőjének futtatása
+
+Most, hogy valahol a telemetriai adatok megjelenítéséhez konfiguráltunk, beállíthat a tárolóalapú alkalmazást, amely összegyűjti és elküldi azt.
+
+1. Csatlakozhat a Docker-gazdagép.
+2. A kialakítási kulcsot szerkesztése be ezt a parancsot, és futtassa azt:
    
    ```
    
    docker run -v /var/run/docker.sock:/docker.sock -d microsoft/applicationinsights ikey=000000-1111-2222-3333-444444444
    ```
 
-Csak egy Application Insights-lemezkép szükség a Docker állomásonként. Ha az alkalmazás több Docker gazdagépen van telepítve, majd ismételje meg a parancs minden gazdagépen.
+Csak egy Application Insights-rendszerképet egy Docker-gazdagép megadása kötelező. Ha több Docker gazdagépen helyezi üzembe az alkalmazást, majd ismételje meg a parancsot minden gazdagépen.
 
 ## <a name="update-your-app"></a>Az alkalmazás frissítése
-Ha az alkalmazást a rendszer tagolva a [Javához készült Application Insights SDK](app-insights-java-get-started.md), adja meg a következő sort a ApplicationInsights.xml fájlba a projekt alatt a `<TelemetryInitializers>` elem:
+Ha az alkalmazás olyan van felszerelve a [Javához készült Application Insights SDK](app-insights-java-get-started.md), alatt adja hozzá a következő sort az ApplicationInsights.xml fájl a projektben a `<TelemetryInitializers>` elem:
 
 ```xml
 
     <Add type="com.microsoft.applicationinsights.extensibility.initializer.docker.DockerContextInitializer"/> 
 ```
 
-Minden az alkalmazásból küldött telemetriai elem hozzáadása Docker információkat, például a tároló és az állomás azonosítója.
+Minden az alkalmazásból küldött telemetriai elem hozzáadása a Docker adatokat, például a tároló és az állomás azonosítóját.
 
 ## <a name="view-your-telemetry"></a>A telemetria megtekintése
-Térjen vissza az Application Insights-erőforrást az Azure portálon.
+Lépjen vissza az Application Insights-erőforrást az Azure Portalon.
 
-Kattintson a Docker csempén.
+Kattintson végig a Docker-csempét.
 
-A Docker alkalmazásból érkező adatok hamarosan megjelenik, különösen akkor, ha más tárolók futó a Docker-motorhoz.
-
-Íme néhány a nézetek kaphat.
-
-### <a name="perf-counters-by-host-activity-by-image"></a>Állomás, kép tevékenység teljesítményszámlálói
-![Példa](./media/app-insights-docker/10.png)
-
-![Példa](./media/app-insights-docker/11.png)
-
-Kattintson a további részletek gazdagép- vagy képfájl nevére.
-
-A nézet testreszabásához kattintson bármelyik olyan diagram, a rács fejléc, vagy adja hozzá a diagram. 
-
-[További információ a metrikaböngésző](app-insights-metrics-explorer.md).
+A Docker alkalmazásból érkező adatok hamarosan megjelenik, különösen akkor, ha más tárolókat a Docker-motor futó rendelkezik.
 
 ### <a name="docker-container-events"></a>Docker-tároló események
 ![Példa](./media/app-insights-docker/13.png)
 
-Vizsgálja meg az egyes események, kattintson a [keresési](app-insights-diagnostic-search.md). Keresés és szűrés kívánt események kereséséhez. Kattintson azon események segítségével további információkhoz juthat.
+Egyéni események vizsgálata, kattintson a [keresési](app-insights-diagnostic-search.md). Keresés és szűrés a kívánt események kereséséhez. Kattintson valamely eseményre további részleteket.
 
-### <a name="exceptions-by-container-name"></a>Kivételek tároló neve
+### <a name="exceptions-by-container-name"></a>Kivételek a tároló neve
 ![Példa](./media/app-insights-docker/14.png)
 
-### <a name="docker-context-added-to-app-telemetry"></a>Docker környezet hozzá lett adva, az alkalmazás telemetriai adat
-AI SDK-t és Docker környezetben növelést tagolva az alkalmazásból küldött telemetriai kérelem:
-
-![Példa](./media/app-insights-docker/16.png)
-
-Processzor és memória teljesítményszámlálókat, dúsított, majd Docker-tároló neve szerint csoportosítva:
-
-![Példa](./media/app-insights-docker/15.png)
+### <a name="docker-context-added-to-app-telemetry"></a>Hozzáadott alkalmazás telemetriai adatainak docker-környezetben
+Az SDK-t, mesterséges Intelligencia révén utasított alkalmazás által küldött kérelmek telemetriai adatai renderelésre van Docker környezeti információkat.
 
 ## <a name="q--a"></a>Kérdések és válaszok
-*Mit nem az Application Insights engedi, hogy nem jelenik meg a Docker?*
+*Mi nem Application Insights engedi, hogy nem jelenik meg a Dockert?*
 
-* Részletes információkat a tároló és a lemezkép teljesítményszámlálók.
-* Integrálják a tároló és az alkalmazás adatokat egy irányítópulton.
-* [Telemetriai adatok exportálása](app-insights-export-telemetry.md) adatbázis, a Power bi-ban vagy más irányítópult további elemzés céljából.
+* Tároló- és képfájlok alapján teljesítményszámlálók részletes áttekintését.
+* Integrálja a tároló és az alkalmazás adatokat egyetlen irányítópulton.
+* [Telemetria exportálása](app-insights-export-telemetry.md) adatbázis, a Power bi-ban vagy más olyan irányítópultot további elemzés céljából.
 
-*Hogyan szerezhetek telemetriai magát az alkalmazásból?*
+*Hogyan kaphatok telemetriai magát az alkalmazásból?*
 
-* Telepítse az Application Insights SDK az alkalmazásban. Megtudhatja, hogyan lehet a: [Java-webalkalmazások](app-insights-java-get-started.md), [Windows webalkalmazások](app-insights-asp-net.md).
+* Az Application Insights SDK telepítése az alkalmazásban. Ismerje meg, hogyan lehet a: [Java-webalkalmazások](app-insights-java-get-started.md), [Windows webes alkalmazások](app-insights-asp-net.md).
 
 ## <a name="video"></a>Videó
 
@@ -131,6 +108,6 @@ Processzor és memória teljesítményszámlálókat, dúsított, majd Docker-t�
 
 ## <a name="next-steps"></a>További lépések
 
-* [Javához készült Application insights szolgáltatással](app-insights-java-get-started.md)
-* [A Node.js Application insights szolgáltatással](app-insights-nodejs.md)
-* [Az ASP.NET Application insights szolgáltatással](app-insights-asp-net.md)
+* [A Javához készült Application Insights](app-insights-java-get-started.md)
+* [NODE.js-hez készült Application Insights](app-insights-nodejs.md)
+* [Az Application Insights az ASP.NET-hez](app-insights-asp-net.md)

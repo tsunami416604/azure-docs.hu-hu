@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/04/2018
+ms.date: 11/20/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7ed7291333e7baa764b09e66aa5cfaedc77072fb
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 9358f280efb847bdce802cc3a20e64710ffc3214
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028253"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275384"
 ---
 # <a name="available-skus-for-hli"></a>Rendelkezésre álló termékváltozatok HLI
 
@@ -31,16 +31,16 @@ SAP HANA az Azure-ban (nagyméretű példányok) szolgáltatás több konfigurá
 | --- | --- | --- | --- | --- |
 | Az OLAP-optimalizálva: SAP BW, BW/4hana-t<br /> vagy az SAP HANA általános OLAP számítási feladatokhoz | SAP HANA az Azure S72<br /> – 2 x Intel® Xeon® Processor E7-8890 v3<br /> 36 processzormagot és 72 CPU szálak |  768 GB |  3 TB | Elérhető |
 | --- | SAP HANA az Azure S144<br /> – 4 x Intel® Xeon® Processor E7-8890 v3<br /> 72 processzormagot és 144 CPU szálak |  1,5 TB |  6 TB | Többé nem érhető el |
-| --- | SAP HANA az Azure S192<br /> – 4 x Intel® Xeon® Processor E7-8890 v4<br /> 96 processzormagot és 192 CPU szálak |  2.0-S TB |  8 TB | Elérhető |
-| --- | SAP HANA az Azure S384<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 processzormagot és 384 CPU szálak |  4.0 TB |  16 TB | Elérhető |
+| --- | SAP HANA az Azure S192<br /> – 4 x Intel® Xeon® Processor E7-8890 v4<br /> 96 processzormagot és 192 CPU szálak |  2.0-S TB |  8 TB | Elérhető |
+| --- | SAP HANA az Azure S384<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 processzormagot és 384 CPU szálak |  4.0 TB |  16 TB | Elérhető |
 | OLTP-hez optimalizálva: SAP Business Suite<br /> az SAP HANA vagy az S/4hana-t (OLTP),<br /> általános OLTP | SAP HANA az Azure S72m<br /> – 2 x Intel® Xeon® Processor E7-8890 v3<br /> 36 processzormagot és 72 CPU szálak |  1,5 TB |  6 TB | Elérhető |
 |---| SAP HANA az Azure S144m<br /> – 4 x Intel® Xeon® Processor E7-8890 v3<br /> 72 processzormagot és 144 CPU szálak |  3.0 TB |  12 TB | Többé nem érhető el |
-|---| SAP HANA az Azure S192m<br /> – 4 x Intel® Xeon® Processor E7-8890 v4<br /> 96 processzormagot és 192 CPU szálak  |  4.0 TB |  16 TB | Elérhető |
-|---| SAP HANA az Azure S384m<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 processzormagot és 384 CPU szálak |  6.0 TB |  18 TB | Elérhető |
-|---| SAP HANA az Azure S384xm<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 processzormagot és 384 CPU szálak |  8.0 TB |  22 TB |  Elérhető |
-|---| SAP HANA az Azure S576m<br /> – 12 x Intel® Xeon® Processor E7-8890 v4<br /> 288 processzormagot és 576 CPU szálak |  12.0-S TB |  28 TB | Elérhető |
-|---| SAP HANA az Azure S768m<br /> – 16 x Intel® Xeon® Processor E7-8890 v4<br /> 384 processzormagot és 768 CPU szálak |  16,0 TB |  36 TB | Elérhető |
-|---| SAP HANA az Azure S960m<br /> – 20 x Intel® Xeon® Processor E7-8890 v4<br /> 480 processzormagot és 960 CPU szálak |  20.0 TB |  46 TB | Elérhető |
+|---| SAP HANA az Azure S192m<br /> – 4 x Intel® Xeon® Processor E7-8890 v4<br /> 96 processzormagot és 192 CPU szálak  |  4.0 TB |  16 TB | Elérhető |
+|---| SAP HANA az Azure S384m<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 processzormagot és 384 CPU szálak |  6.0 TB |  18 TB | Elérhető |
+|---| SAP HANA az Azure S384xm<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 processzormagot és 384 CPU szálak |  8.0 TB |  22 TB |  Elérhető |
+|---| SAP HANA az Azure S576m<br /> – 12 x Intel® Xeon® Processor E7-8890 v4<br /> 288 processzormagot és 576 CPU szálak |  12.0-S TB |  28 TB | Elérhető |
+|---| SAP HANA az Azure S768m<br /> – 16 x Intel® Xeon® Processor E7-8890 v4<br /> 384 processzormagot és 768 CPU szálak |  16,0 TB |  36 TB | Elérhető |
+|---| SAP HANA az Azure S960m<br /> – 20 x Intel® Xeon® Processor E7-8890 v4<br /> 480 processzormagot és 960 CPU szálak |  20.0 TB |  46 TB | Elérhető |
 
 
 A SAP HANA TDIv5 SAP specifikus méretezése és ügyfél-specifikus projektek, amely kiszolgálókonfigurációk, amelyek nem szerepelnek az igazolt vezethet teszi lehetővé:
@@ -50,13 +50,17 @@ A SAP HANA TDIv5 SAP specifikus méretezése és ügyfél-specifikus projektek, 
 
 Sok esetben ügyfél-specifikus kiszolgáló konfigurációkról biztosítunk több memóriát az SAP-minősítéssel rendelkező kiszolgáló egységeket. SAP dolgozik, az ügyfelek rendelkeznek SAP-támogatás és a saját specifikus méretű kiszolgálókonfigurációk tanúsítása lehetőségét. Az Azure-ban a következő HANA nagyméretű példányok standard termékváltozatok érhetők el, és a Microsoft ár a ilyen TDIv5 specifikus méretezési projektek listája.
 
+| SKU|CPU | Memory (Memória) | Storage | Rendelkezésre állás |
+| ---| --- | --- | --- | --- |
+| S96 | SAP HANA az Azure S96<br /> – 4 x Intel® Xeon® Processor E7-8890 v4<br /> 48 processzormag és a szálak. CPU 96. |  768 TB |  3 TB | Elérhető |
+
 
 | Eredeti Termékváltozat, amely lehet <br /> a kiterjesztett memória | CPU | Memory (Memória) | Storage | Rendelkezésre állás |
 | --- | --- | --- | --- | --- |
 | S192m kiterjeszthető | SAP HANA az Azure S192xm<br /> – 4 x Intel® Xeon® Processor E7-8890 v4<br /> 96 processzormagot és 192 CPU szálak |  6.0 TB |  16 TB | Elérhető |
-| S384xm kiterjeszthető | SAP HANA az Azure S384xxm<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 processzormagot és 384 CPU szálak |  12.0-S TB |  28 TB | Elérhető |
-| S576m kiterjeszthető | SAP HANA az Azure S576xm<br /> – 12 x Intel® Xeon® Processor E7-8890 v4<br /> 288 processzormagot és 576 CPU szálak |  18.0 TB |  41 TB | Elérhető |
-| S768m kiterjeszthető | SAP HANA az Azure S768xm<br /> – 16 x Intel® Xeon® Processor E7-8890 v4<br /> 384 processzormagot és 768 CPU szálak |  24,0 TB |  56 TB | Elérhető |
+| S384xm kiterjeszthető | SAP HANA az Azure S384xxm<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 processzormagot és 384 CPU szálak |  12.0-S TB |  28 TB | Elérhető |
+| S576m kiterjeszthető | SAP HANA az Azure S576xm<br /> – 12 x Intel® Xeon® Processor E7-8890 v4<br /> 288 processzormagot és 576 CPU szálak |  18.0 TB |  41 TB | Elérhető |
+| S768m kiterjeszthető | SAP HANA az Azure S768xm<br /> – 16 x Intel® Xeon® Processor E7-8890 v4<br /> 384 processzormagot és 768 CPU szálak |  24,0 TB |  56 TB | Elérhető |
 
 - CPU-magok = Processzormagok nem – a hyper-threaded vonatkozóan a processzorok, a kiszolgáló egység összege.
 - Szálak CPU = Processzormagok többszálú vonatkozóan a kiszolgáló egység a processzor által biztosított számítási szálak összege. A legtöbb egységek használata a Hyper-Threading technológiát alapértelmezés szerint vannak konfigurálva.
@@ -67,7 +71,7 @@ A kiválasztott konfigurációkkal a számítási feladatok, a Processzor-erőfo
 
 A hardver, az ajánlatok, kivéve a projektek, a specifikus méretezési egység alap olyan SAP HANA TDI-tanúsítvánnyal. Hardver két különböző osztályú oszthatja be a termékváltozatok:
 
-- S72, S72m, S144, S144m, S192, S192m és S192xm, amely a "Type I osztály" nevezik, SKU-k.
+- S72, S72m, S96, S144, S144m, S192, S192m és S192xm, amely a "Type I osztály" nevezik, SKU-k.
 - S384, S384m, S384xm, S384xxm, S576m, S576xm S768m, S768xm és S960m nevezzük, amely a "Type II osztály" termékváltozatok.
 
 Egy teljes HANA nagyméretű szolgáltatáspéldányban kizárólag egyetlen ügyfél számára nem lefoglalt&#39;s használja. Emiatt a számítási és tárolási erőforrások, valamint az Azure-ban telepített hálózati háló keresztül csatlakozik a rackszekrények vonatkozik. Nagyméretű HANA-példány infrastruktúrát, mint például az Azure, helyez üzembe különböző ügyfél &quot;bérlők&quot; , amelyek elkülönülnek egymástól a következő három szinten:

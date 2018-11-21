@@ -4,8 +4,8 @@ description: Útmutató az Azure Machine Learning Studióban betanítási adatok
 keywords: adatok, adatok, adatforrások, betanítási adatok importálása
 services: machine-learning
 documentationcenter: ''
-author: deguhath
-ms.custom: (previous ms.author deguhath)
+author: ericlicoding
+ms.custom: (previous ms.author=deguhath, author=deguhath)
 ms.author: amlstudiodocs
 manager: jhubbard
 editor: cgronlun
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: c5e36f449521c341ef08ec30dd2a4cce18323805
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: cb024f757772ec22adcf4513c422d41628ab7360
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822619"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265151"
 ---
 # <a name="import-your-data-into-azure-machine-learning-studio-from-another-experiment"></a>Adatok importálása az Azure Machine Learning Studióba egy másik kísérletből
 

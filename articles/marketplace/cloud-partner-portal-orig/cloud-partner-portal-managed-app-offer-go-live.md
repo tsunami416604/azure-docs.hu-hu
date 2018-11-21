@@ -1,5 +1,5 @@
 ---
-title: CÍM |} A Microsoft Docs
+title: Az ajánlat az Azure Marketplace-en élő Azure-alkalmazások |} A Microsoft Docs
 description: .
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 11/15/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 643b7d674de3d51f98b69d6f0659478c9893e3b1
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 18a8e6ae8ab3bd4299c6a014f938e73a2a021492
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809894"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263588"
 ---
 <a name="make-your-azure-application-offer-live-on-azure-marketplace"></a>Az ajánlat az Azure Marketplace-en élő Azure-alkalmazások 
 ===========================================================
@@ -33,19 +33,22 @@ Lehetővé teszik\'s nyissa meg a folyamat segít jobban megérteni, hogy mi tö
 <a name="publishing-process"></a>Közzétételi folyamat 
 ------------------
 
-A gombra kattint \"közzététel\" szerkesztő lapján a közzétételi folyamat elindításához.
+A gombra kattint \"közzététel\" alatt a **szerkesztő** fülre, és a közzétételi folyamat elindításához.
 
 ![Nyissa meg az élő feladatütemezési 1 kínálnak – közzététel](./media/cloud-partner-portal-publish-managed-app/newOffer_managedApp_publish.png)
 
-Az állapot lapon látni fogja a közzétételi lépéseket, és jelenleg melyik lépésnél az ajánlatot.
+Alatt a **állapot** lapon látni fogja a közzétételi lépéseket és melyik lépésnél az ajánlatot.
 
 ![Nyissa meg az élő feladatütemezési 2 - ajánlat munkafolyamat](./media/cloud-partner-portal-publish-managed-app/newOffer_managedApp_workflow.png)
 
-A közzétételi folyamat bármely mozzanata is is jelentkezzen be és a minden kínál fülre kattintva bármely az ajánlatok a legfrissebb állapotának megtekintéséhez. Az ajánlat közvetlenül az állapot kattintson, és a részletek megtekintéséhez, ahol az ajánlatot a közzétételi folyamat.
+A közzétételi folyamat bármely mozzanata is jelentkezzen be, és kattintson a **összes kínál** lapon bármely az ajánlatok a legfrissebb állapotának megtekintéséhez. Az ajánlat közvetlenül az állapot kattintson, és a részletek megtekintéséhez, ahol az ajánlatot a közzétételi folyamat.
 
-Lehetővé teszik\'s útmutató a közzétételi lépéseket minden egyes ismertetjük, hogy mi történik, ha az egyes lépések, és mennyi ideig kell becsülni az egyes lépések vesz igénybe.
+> [!WARNING]
+> Ha az ügyfél használati megnevezése nem engedélyezett, a következő hibaüzenetet kap a közzétételi folyamat során: "Azure-partneri ügyfél használati tesznek elérhetővé; ilyenek hiányzik egy vagy több Azure Resource Manager-sablonok. Megoldásához adja hozzá a nyomon követési GUID mainTemplate.json csomagok a következő csomag számára az Azure Resource Manager-sablon: servicenow. További részletekért lásd: http://aka.ms/customerusageattribution. " 
 
-### <a name="validate-pre-requisites-1-day"></a>Előfeltételek ellenőrzése (\<1 nap) 
+Nézzük végig az egyes közzétételi lépéseket, és arról, mi történik, ha az egyes lépések, és hogy mennyi ideig kell becslései szerint minden egyes lépést tart.
+
+### <a name="validate-prerequisites-1-day"></a>Az előfeltételek ellenőrzését (\<1 nap) 
 
 Amikor rákattint \"közzététel\", az automatikus ellenőrzés történik, győződjön meg arról, hogy\'ve kitölti az ajánlat az összes kötelező mezőt. Ha a rendszer nem kitölti a mezőket, egy figyelmeztetés fog megjelenni a mező melletti és pontosan feltöltéséről, majd kattintson a kell \'közzététel\' újra.
 
@@ -59,7 +62,7 @@ Ebben a lépésben, ahol számos tesztet, az Azure Application package megfelel-
 
 Mivel ez a lépés több napig is eltarthat, akkor is jelentkezzen ki a Cloud Partner portálra. Küldünk e-mailben értesítést, ha hiba történik. Ha minden rendben halad, sikeres, a folyamat automatikusan áthelyezi a kiépítési lépéssel.
 
-### <a name="packaging-and-lead-generation-registration-1-hour"></a>Formátumokat támogató csomagolási és Érdeklődők generálása regisztrációs (\<1 óra) 
+### <a name="packaging-and-lead-generation-registration-1-hour"></a>Csomagolására és Érdeklődők generálása regisztrációs (\<1 óra) 
 
 Ebben a szakaszban azt vannak összefűzhet a technikai és marketinganyagokat tartalom mi lesz a termék webhelyén.
 

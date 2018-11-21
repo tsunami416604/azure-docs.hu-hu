@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: aff3ce4bc290f6e4ad2fb11a586372862d0c1462
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 751c2df42ee8e4ace22fe94e1fef8d734ab81c3c
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240732"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275666"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Runbook-kimenet és üzenetek az Azure Automationben
 A legtöbb Azure Automation-runbookok rendelkezik valamilyen kimenetet, például egy hibaüzenet a felhasználó számára, vagy egy összetett objektumot egy másik munkafolyamat számára készült. Windows PowerShell biztosít [több adatfolyam](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) , elküldheti a kimenetet egy parancsfájl vagy a munkafolyamat. Az egyes ezekbe az adatfolyamokba eltérően működik az Azure Automation, és a követendő ajánlott eljárások használata minden egyes runbook létrehozásakor.
@@ -64,13 +64,17 @@ Workflow Test-Runbook
 
 A kimeneti adatfolyamba, a runbook-feladat a következő lesz:
 
-    Output inside of function
-    Output outside of function
+```output
+Output inside of function
+Output outside of function
+```
 
 A runbook feladatának részletes adatfolyama a következő lesz:
 
-    Verbose outside of function
-    Verbose inside of function
+```output
+Verbose outside of function
+Verbose inside of function
+```
 
 A runbook közzétételt követően, és mielőtt elkezdené, is engedélyezni kell a részletes eredményének részletes adatfolyam a runbook beállításaiban naplózást.
 

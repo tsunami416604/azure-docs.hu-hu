@@ -3,8 +3,8 @@ title: Machine Learning webszolgáltatások naplózása |} A Microsoft Docs
 description: Ismerje meg a Machine Learning webszolgáltatások naplózásának engedélyezése. Naplózás nyújt további információt talál az API-k hibaelhárítása.
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.custom: (previous ms.author yahajiza)
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
-ms.openlocfilehash: acca5e25079ae092df73c5b890186d593a858a5d
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 693c619945dc791cf5350909a26adb1e507614c2
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51818913"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261225"
 ---
 # <a name="enable-logging-for-machine-learning-web-services"></a>A naplózás engedélyezése a Machine Learning webszolgáltatásokhoz
 Ez a dokumentum információt nyújt a Machine Learning web Services naplózási képesség. Naplózás további információt, csak egy hiba száma és a egy üzenet, amely segíthet a hívásokat a Machine Learning API-k hibaelhárítása tartalmaz.  

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e2a931b14719775ac3d901591b6424d9c9e9ee10
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 88df62b6e8c4eb519c51d82763634cf7d6d14418
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625827"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262652"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics – gyakori kérdések
 A Microsoft FAQ a Microsoft Azure Log Analytics kapcsolatos gyakori kérdések listáját. Ha a Log Analytics szolgáltatásról további kérdése van, lépjen a [fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) és felteheti kérdéseit. Egy kérdést gyakran ismételt, amikor hozzáadjuk ehhez a cikkhez, hogy gyorsan és könnyen megtalálhatók.
@@ -37,7 +37,7 @@ V: azok ugyanaz. [A log Analytics az Azure Monitor szolgáltatásban integráci�
 V: naplóbeli keresés jelenleg továbbra is elérhető, az OMS-portálon, és a név alatt az Azure Portalon **naplók (klasszikus)**. Az OMS-portálon a 2019. január 15 hivatalosan megszűnik. Az Azure Portalon a klasszikus naplók élményt fokozatosan megszűnik, és az új naplók felület helyett. 
 
 ### <a name="q-can-i-still-use-advanced-analytics-portal"></a>K. Továbbra is használható a speciális analitika portálon? 
-Az új naplók az Azure Portal felhasználói felület alapul a [Advanced Analytics-portál](https://portal.loganalytics.io/), de továbbra is elérhető az Azure Portalon kívül. Az ütemterv kivonása a külső portál hamarosan fogjuk bejelenteni.
+Az új naplók az Azure Portal felhasználói felület a speciális analitikai portálon alapul, de továbbra is elérhető az Azure Portalon kívül. Az ütemterv kivonása a külső portál hamarosan fogjuk bejelenteni.
 
 ### <a name="q-why-cant-i-see-query-explorer-and-save-buttons-in-the-new-logs-experience"></a>K. Miért nem lásd: a Query Explorer és gombok mentse az új naplók funkció?
 
@@ -71,7 +71,7 @@ V: a munkaterület az Azure-ban hozzárendelt Azure-engedélyeket kell rendelkez
 V: adatforrásnézet-tervezőből csak naplók rendelkező közreműködői engedélyekkel rendelkező vagy újabb verziója érhető el.
 
 ### <a name="q-can-i-still-use-the-analytics-portal-outside-of-azure"></a>K. Továbbra is használható az Azure-on kívül Analytics-portálon?
-A. Igen, a naplók lapon, az Azure-ban és a [bővített analitika portál](https://portal.loganalytics.io) ugyanazt a kódot alapulnak. A log Analytics az Azure monitorban több egységes felügyeleti élmény érdekében szolgáltatásként való integráció. Továbbra is hozzáférhet az URL-Analytics-portálon: https://portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}.
+A. Igen, a naplók oldalán, az Azure és a bővített analitika portál ugyanazt a kódot alapulnak. A log Analytics az Azure monitorban több egységes felügyeleti élmény érdekében szolgáltatásként való integráció. Továbbra is hozzáférhet az URL-Analytics-portálon: https://portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}.
 
 
 

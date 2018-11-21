@@ -3,7 +3,7 @@ title: Felhasználói adatokat az Azure Security Center vizsgálat található |
 description: " Ismerje meg, hogyan kezelheti a felhasználói adatokat az Azure Security Center vizsgálati funkciójáról található. "
 services: operations-management-suite
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/23/2018
-ms.author: terrylan
-ms.openlocfilehash: d3b5f0ee4aa656fa66d577aa40f66fc98dff148d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 11/20/2018
+ms.author: rkarlin
+ms.openlocfilehash: d9bf3618b32ce7c5ba7a300a929428dd0614743d
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301650"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276244"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Az Azure Security Center vizsgálat található felhasználói adatok kezelése
 Ez a cikk az Azure Security Center vizsgálati funkciójáról található felhasználói adatok kezelése ismertetése. Vizsgálat adatok tárolása [Azure Log Analytics](../log-analytics/log-analytics-overview.md) és a Security Centerben elérhető. Felhasználói adatok kezelése lehetőség törölje vagy exportálhat adatokat.
@@ -58,3 +58,4 @@ A Security Center felhasználói szerepkörrel a tulajdonos, közreműködő, va
 
 ## <a name="next-steps"></a>További lépések
 Felhasználói adatok kezelésével kapcsolatos további információkért lásd: [felhasználói adatokat az Azure Security Centerben](security-center-privacy.md).
+Személyes adatokat a Log Analytics törlésével kapcsolatos további tudnivalókért lásd: [és törlése a személyes adatok exportálása](../log-analytics/log-analytics-personal-data-mgmt.md#how-to-export-and-delete-private-data).

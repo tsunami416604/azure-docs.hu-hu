@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 11/21/2018
 ms.author: jingwang
-ms.openlocfilehash: ec0fc11ac2caf421f331a8fe72f1dacdf6b8a702
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 1e561a59ebe503e0088362087dbda4d7d89fee4c
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42312163"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275686"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Adatok másolása az és Oracle az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -65,11 +65,46 @@ Az Oracle-beli társított szolgáltatás a következő tulajdonságok támogato
 >[!TIP]
 >Ha eléri hiba üzenettel "ORA-01025: UPI paraméter engedélyezett tartományon kívül esik" és az Oracle-verzió 8i, adjon hozzá `WireProtocolMode=1` a kapcsolati karakterláncot, és próbálkozzon újra.
 
-Ahhoz, hogy az Oracle kapcsolati titkosítást, két lehetősége van:
+**Oracle kapcsolati titkosításának**, két lehetősége van:
 
-1.  Oracle-kiszolgáló oldalán, nyissa meg az Oracle speciális biztonsági (OAS), és adja meg a titkosítási beállításokat, támogatja a háromszoros DES-titkosítás (3DES) és Advanced Encryption Standard (AES), tekintse meg a részletek [Itt](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759). Az ADF Oracle-összekötő automatikusan egyezteti OAS Oracle-kapcsolat létesítéséhez konfigurálja egy használandó titkosítási módszer.
+1.  Használandó **háromszoros DES-titkosítás (3DES) és Advanced Encryption Standard (AES)**, Oracle-kiszolgáló oldalán, nyissa meg az Oracle speciális biztonsági (OAS), és a titkosítási beállításainak konfigurálása, tekintse meg a részleteket [Itt](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759). Az ADF Oracle-összekötő automatikusan egyezteti OAS Oracle-kapcsolat létesítéséhez konfigurálja egy használandó titkosítási módszer.
 
-2.  Ügyféloldalon, hozzáadhat `EncryptionMethod=1` a kapcsolati karakterláncban. Ez a beállítás használja az SSL/TLS titkosítási módszert. Ennek kell az SSL titkosítási beállításainak letiltása OAS Oracle kiszolgálóoldali titkosítás ütközés elkerülése érdekében.
+2.  Használandó **SSL**, kövesse az alábbi lépéseket:
+
+    1.  SSL-tanúsítvány adatainak beolvasása. A DER kódolású tanúsítvány adatainak az SSL-tanúsítványt, és mentse a kimeneti (---tanúsítvány megkezdése Tanúsítvány---End) szöveges fájlból.
+
+        ```
+        openssl x509 -inform DER -in [Full Path to the DER Certificate including the name of the DER Certificate] -text
+        ```
+
+        **Példa:** kinyerheti az információkat cert DERcert.cer; ezt követően mentse a kimeneti cert.txt
+
+        ```
+        openssl x509 -inform DER -in DERcert.cer -text
+        Output:
+        -----BEGIN CERTIFICATE-----
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        XXXXXXXXX
+        -----END CERTIFICATE-----
+        ```
+    
+    2.  A keystore vagy truststore hozhat létre. A következő parancsot a truststore fájlt hoz létre, vagy a PKCS-12 formátumú jelszó nélkül.
+
+        ```
+        openssl pkcs12 -in [Path to the file created in the previous step] -out [Path and name of TrustStore] -passout pass:[Keystore PWD] -nokeys -export
+        ```
+
+        **Példa:** MyTrustStoreFile nevű jelszóval PKCS12 trustsotre fájl létrehozása
+
+        ```
+        openssl pkcs12 -in cert.txt -out MyTrustStoreFile -passout pass:ThePWD -nokeys -export  
+        ```
+
+    3.  A helyi IR a gép, például a C:\MyTrustStoreFile truststore fájlt a hely.
+    4.  Az ADF, az Oracle kapcsolati karakterlánc konfigurálása `EncryptionMethod=1` és a megfelelő `TrustStore` / `TrustStorePassword`értéket, pl. `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;EncryptionMethod=1;TrustStore=C:\\MyTrustStoreFile;TrustStorePassword=<trust_store_password>`.
 
 **Példa**
 
@@ -219,25 +254,25 @@ Oracle és a másolt adatok, Data Factory-közbenső adattípusok a következő 
 |:--- |:--- |
 | BFILE |Byte] |
 | BLOB |Byte]<br/>(csak támogatott Oracle 10g vagy újabb) |
-| CHAR |Sztring |
-| CLOB |Sztring |
+| CHAR |Karakterlánc |
+| CLOB |Karakterlánc |
 | DATE |DateTime |
 | LEBEGŐPONTOS |Tizedes tört, karakterlánc (Ha a pontosság > 28) |
 | EGÉSZ SZÁM |Tizedes tört, karakterlánc (Ha a pontosság > 28) |
-| HOSSZÚ |Sztring |
+| HOSSZÚ |Karakterlánc |
 | MENNYI IDEIG NYERS |Byte] |
-| NCHAR |Sztring |
-| NCLOB |Sztring |
+| NCHAR |Karakterlánc |
+| NCLOB |Karakterlánc |
 | SZÁM |Tizedes tört, karakterlánc (Ha a pontosság > 28) |
-| NVARCHAR2 |Sztring |
+| NVARCHAR2 |Karakterlánc |
 | RAW |Byte] |
-| }, ROWID |Sztring |
+| }, ROWID |Karakterlánc |
 | IDŐBÉLYEG |DateTime |
-| A HELYI IDŐZÓNA IDŐBÉLYEG |Sztring |
-| AZ IDŐZÓNA IDŐBÉLYEG |Sztring |
+| A HELYI IDŐZÓNA IDŐBÉLYEG |Karakterlánc |
+| AZ IDŐZÓNA IDŐBÉLYEG |Karakterlánc |
 | ELŐJEL NÉLKÜLI EGÉSZ SZÁM |Szám |
-| VARCHAR2 |Sztring |
-| XML |Sztring |
+| VARCHAR2 |Karakterlánc |
+| XML |Karakterlánc |
 
 > [!NOTE]
 > Az adattípusok IDŐKÖZ év TO hónap és nap TO IDŐKÖZ második nem támogatottak.

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/22/2017
+ms.date: 11/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 083cb4eb84746f4a61b51f3573a0bf66110fe1ee
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 4cfd3c38631778373e99872fd305d8316cdadb75
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435048"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52274738"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>A feltételes hozzáférés az Azure-felügyelet elérésének kezelése
 
@@ -32,7 +32,7 @@ Az Azure felügyeleti szabályzat létrehozásához válassza **a Microsoft Azur
 
 ![Feltételes hozzáférés az Azure felügyeleti szolgáltatásaihoz](./media/conditional-access-azure-management/conditional-access-azure-mgmt.png)
 
-A szabályzatot hoz létre, és az Azure PowerShell Service Management API-k összes az Azure felügyeleti végpontok, beleértve a klasszikus Azure portál, az Azure portal, Azure Resource Manager-szolgáltató, klasszikus vonatkozik.
+A szabályzatot hoz létre, és az Azure PowerShell Service Management API-k összes az Azure felügyeleti végpontok, beleértve a klasszikus Azure portál, az Azure portal, Azure Resource Manager-szolgáltató, klasszikus vonatkozik. Vegye figyelembe, hogy a szabályzat vonatkozik, az Azure PowerShell, amely az Azure Resource Manager API-hívások. Nem alkalmazható a [az Azure AD PowerShell](/powershell/azure/active-directory/install-adv2), amely meghívja a Microsoft Graph.
 
 > [!CAUTION]
 > Győződjön meg arról, hogy megismerni a feltételes hozzáférési szabályzat beállítása az Azure felügyeleti való hozzáférés kezelése előtt működik. Ellenőrizze, hogy nem hoz létre, amelyek letilthatják a portálon a saját hozzáférési feltételek.

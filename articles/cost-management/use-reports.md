@@ -8,20 +8,20 @@ ms.author: banders
 ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
-manager: dougeby
+manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 8267401a0dade0ca7cfb1dbf69d2fdfd6786f1df
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: efb199a9e97a6e80cc24dfe32f6477b4c7abf89a
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976786"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276023"
 ---
-# <a name="use-cloudyn-reports"></a>A Cloudyn-jelentések használata
+# <a name="use-cloudyn-reports"></a>A Cloudyn jelentéseinek használata
 
 Ez a cikk ismerteti a Cloudyn-jelentések, amelyek szerepelnek a Cloudyn portálon célját. Azt is ismerteti, hogyan hatékonyan használhatja a jelentéseket. A legtöbb jelentések intuitív, és rendelkezik egy egységes megjelenés és működés. A legtöbb művelet elvégezhető egy jelentésben, műveletek végezhetők az egyéb jelentésekben. A Cloudyn jelentésekben, beleértve az testreszabásához, és mentse vagy ütemezett jelentéseket, használatáról lásd [ismertetése költségjelentéseket](understanding-cost-reports.md).
 
-Az Azure Cost Management hasonló funkciókat kínál a Cloudyn. Az Azure Cost Management natív Azure cost management megoldás is. Segít a költségek elemzése, hozzon létre és kezelhetők költségvetése exportálhat adatokat, és tekintse át és optimalizálási ajánlásoknak pénzt takaríthat meg. További információkért lásd: [Azure Cost Management](overview-cost-mgt.md).
+Az Azure Cost Management a Cloudynhez hasonló funkcionalitást kínál. Az Azure Cost Management egy natív Azure költségkezelő megoldás. Segít kezelni a költségvetéseket, exportálni az adatokat, valamint áttekinteni és végrehajtani az optimalizálási javaslatokat pénzmegtakarítás céljából. További információ: [Azure Cost Management](overview-cost-mgt.md).
 
 ## <a name="report-types"></a>Jelentéstípusok
 

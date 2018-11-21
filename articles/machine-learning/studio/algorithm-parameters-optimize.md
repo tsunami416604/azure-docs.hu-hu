@@ -3,8 +3,8 @@ title: Az Azure Machine Learning termékben használt algoritmusok optimalizál�
 description: Válassza ki az optimális paraméter beállítása az Azure Machine Learning algoritmus ismerteti.
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 0be0aec3f14dfc4d32327c64a54faaa4e039a93c
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: c5445833d9f0e003304af3a1f60fb82a372898bf
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822449"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261819"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning"></a>Az Azure Machine Learning termékben használt algoritmusok optimalizálására paraméterek kiválasztása
 A témakör az megfelelő hiperparaméter beállítása az Azure Machine Learning algoritmus kiválasztása. A legtöbb gépi tanulási algoritmusok meg a paraméterek beállításához. Amikor egy modell betanításához e paraméterek értékének megadására van szükség. A betanított modell hatékonyságát a modell paraméterek, választott függ. Az optimális paraméterek készletét folyamata más néven *kijelölés modell*.

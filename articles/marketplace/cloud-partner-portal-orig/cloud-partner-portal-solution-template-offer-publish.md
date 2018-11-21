@@ -1,6 +1,6 @@
 ---
-title: A Megoldássablon közzététele |} A Microsoft Docs
-description: Megoldás sablon közzététele az Azure Marketplace-en.
+title: Egy Azure-megoldás-sablont tesz közzé |} A Microsoft Docs
+description: A Megoldássablon közzététele az Azure Marketplace-en.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
 author: dan-wesley
@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 11/15/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c7c7912860568aea497e327f29a1b7b71b8f5e87
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 333eebfa1bae919c43164572c63f2de4f7251fe0
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345589"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261617"
 ---
 # <a name="publish-a-solution-template-to-azure-marketplace"></a>Egy megoldás-sablont tesz közzé az Azure Marketplace-en
 
@@ -31,31 +31,22 @@ Azure Marketplace-en megoldássablon listázása a következő műszaki és nem 
 
 ### <a name="technical"></a>Műszaki
 
-- [Megismerheti az Azure Resource Manager-sablonok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
-
+- [Megismerheti az Azure Resource Manager-sablonok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates).
 - Az Azure gyorsindítási sablonok:
-
     - [Azure gyors üzembe helyezés sablon dokumentációja](https://azure.microsoft.com/documentation/templates/)
-
     - [Azure rövid útmutató dokumentációját a Githubon](https://github.com/azure/azure-quickstart-templates)
-
  - [Azure portal felhasználói felületet fájl létrehozása](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)
+ - Engedélyezése [ügyfél használati tesznek elérhetővé; ilyenek](./../azure-partner-customer-usage-attribution.md) érdekében a szoftverek központi telepítései ügyfél az Azure használatának nyomon követése az Azure-ban.
 
 ### <a name="non-technical-business-requirements"></a>Nem technikai jellegű (üzleti követelmények)
 
--   A vállalatnak (vagy az leányvállalatának) egy értékesítési, az Azure piactér által támogatott országban kell működnie.
-
--   A termék úgy, hogy az Azure piactér által támogatott számlázási modellek kompatibilis licenccel kell rendelkezniük.
-
--   Ön felelős műszaki támogatást az ügyfeleknek, üzletileg ésszerű módon elérhetővé tétele e ingyenes, fizetős vagy közösségi támogatásán keresztül.
-
--   Ön felelős a szoftver- és külső függőségek licencelése.
-
--   Adja meg a tartalmat, amely megfelel az Azure Marketplace-en és az Azure felügyeleti portálon való megjelentetéséhez ajánlat feltételeit.
-
--   Fogadja el az Azure piactér részvételi szabályzatának és a kiadói szerződés feltételeit.
-
--   El kell fogadnia a használati feltételeket, a Microsoft adatvédelmi nyilatkozatát és a Microsoft Azure Certified Program Agreement feltételeit.
+- A vállalatnak (vagy az leányvállalatának) egy értékesítési, az Azure piactér által támogatott országban kell működnie.
+- A termék úgy, hogy az Azure piactér által támogatott számlázási modellek kompatibilis licenccel kell rendelkezniük.
+- Ön felelős műszaki támogatást az ügyfeleknek, üzletileg ésszerű módon elérhetővé tétele e ingyenes, fizetős vagy közösségi támogatásán keresztül.
+- Ön felelős a szoftver- és külső függőségek licencelése.
+- Adja meg a tartalmat, amely megfelel az Azure Marketplace-en és az Azure Portalon való megjelentetéséhez ajánlat feltételeit.
+- Fogadja el az Azure piactér részvételi szabályzatának és a kiadói szerződés feltételeit.
+- El kell fogadnia a használati feltételeket, a Microsoft adatvédelmi nyilatkozatát és a Microsoft Azure Certified Program Agreement feltételeit.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -101,7 +92,7 @@ Minden egyes nézet tartalmazza a kérik a mezők halmaza alapján. Szükséges,
 
     **Ajánlat azonosítója**
 
-     Közzétevő-profilon belül az ajánlat egyedi azonosítója. Ez az azonosító látható termék URL-címek, ARM-sablonokat, és számlázási jelentéseket. Csak kisbetűs alfanumerikus karaktereket és kötőjeleket (-) használhatja. Az azonosító nem végződhet kötőjellel, és legfeljebb 50 karakter hosszú lehet. 
+     Közzétevő-profilon belül az ajánlat egyedi azonosítója. Ez az azonosító látható termék URL-címeket, az Azure Resource Manager-sablonok, és számlázási jelenti. Csak kisbetűs alfanumerikus karaktereket és kötőjeleket (-) használhatja. Az azonosító nem végződhet kötőjellel, és legfeljebb 50 karakter hosszú lehet. 
     >[!Note]
     >Ez a mező zárolva van, amikor egy ajánlatot élesíti.
 
@@ -128,7 +119,7 @@ az ajánlatban.
 
     ![Új Termékváltozat](./media/cloud-partner-portal-publish-managed-app/newOffer_skus.png)
 
-    SKU-azonosítója az ajánlat belül termékváltozat egyedi azonosító. Ez az azonosító látható termék URL-címek, ARM-sablonokat, és számlázási jelentéseket. A Termékváltozat azonosítója:
+    SKU-azonosítója az ajánlat belül termékváltozat egyedi azonosító. Az azonosító a termék URL-címeiben, a Resource Manager-sablonokban és a számlázási jelentésekben látható. A Termékváltozat azonosítója:
     - Legfeljebb egy legfeljebb 50 karakter hosszú lehet.
     - Csak lehet a kisbetűs alfanumerikus karaktereket és kötőjeleket (-).
     - Az azonosító nem végződhet kötőjellel.
@@ -146,14 +137,10 @@ az ajánlatban.
 Adja meg a következő SKU-beállításokat.
 
 - **Cím** -termékváltozat címét. Ez a cím a katalógusban, az elem jelenik meg.
-
 - **Összefoglaló** – egy rövid a termékváltozat összefoglaló leírását. (Legfeljebb 100 karakterből állhat.)
-
 - **Leírás** – egy részletes leírást a termékváltozat.
-
 - **Termékváltozatának típusa** – egy legördülő lista ezekkel az értékekkel: "A felügyelt alkalmazás (előzetes verzió)" és "Sablon". A jelen esetben válassza ki a **Megoldássablon**.
-
-- **A felhő rendelkezésre állási** -helyét, a Termékváltozat. Az alapértelmezett érték a nyilvános Azure.
+- **A felhő rendelkezésre állási** -helyét, a Termékváltozat. Az alapértelmezett érték **nyilvános Azure**.
 
 ### <a name="package-details"></a>Csomag részletei
 
@@ -162,11 +149,8 @@ Miután elvégezte a Termékváltozat-beállításokat, adja meg a következő c
 ![Csomag részletei](./media/cloud-partner-portal-publish-managed-app/newOffer_newsku_ST_package.png)
 
 - **Aktuális verzió** – a csomagot, amely a feltölteni kívánt verzióját. Verzió címkéket az űrlap X.Y.Z, ha X, Y és Z egész számoknak kell lennie.
-
 - **Csomagfájl** – Ez a csomag tartalmazza a következő fájlokat, amelyek .zip-fájlként lesznek mentve.
-
     -   MainTemplate.json – a központi telepítési sablon fájlt, a megoldás/alkalmazások üzembe helyezésére, és a megoldáshoz megadott erőforrások létrehozásához használt. További információkért lásd: [hogyan hozhat létre a központi telepítési sablon fájlok](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)
-
     -   createUIDefinition.json – Ez a fájl létrehozásához a felhasználói felület ezen megoldás alkalmazása kialakítási használják az Azure Portalon. További információkért lásd: [létrehozása az Azure portal felhasználói felületet a felügyelt alkalmazás](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)
 
     >[!IMPORTANT]
@@ -174,7 +158,7 @@ Miután elvégezte a Termékváltozat-beállításokat, adja meg a következő c
 
 ## <a name="to-configure-the-marketplace"></a>A Marketplace-en konfigurálása
 
-Konfigurálja a mezőket, amelyek az ajánlat jelennek meg a Marketplace-en nézete segítségével [Azure Marketplace-en](https://azuremarketplace.microsoft.com) és a [az Azure Portal](https://portal.azure.com/).
+Konfigurálja a mezőket, amelyek az ajánlat jelennek meg a Marketplace-en nézete segítségével [Azure Marketplace-en](https://azuremarketplace.microsoft.com) és a [az Azure portal](https://portal.azure.com/).
 
 ### <a name="preview-subscription-ids"></a>Előfizetés azonosítókat előzetes verzió
 
@@ -182,7 +166,7 @@ Az Azure előfizetés azonosítókat, amelyeket meg szeretne hozzáférése az a
 
 ### <a name="suggested-categories"></a>Javasolt kategóriák
 
-A megadott listáról, hogy az ajánlat társítható legjobb legfeljebb 5 kategóriák kiválasztása A kiválasztott kategóriákra lesz használható az ajánlat leképezése elérhető termékkategóriák [Azure Marketplace-en](https://azuremarketplace.microsoft.com) és [az Azure Portal](https://portal.azure.com/).
+A megadott listáról, hogy az ajánlat társítható legjobb legfeljebb öt kategóriák kiválasztása A kiválasztott kategóriákra lesz használható az ajánlat leképezése elérhető termékkategóriák [Azure Marketplace-en](https://azuremarketplace.microsoft.com) és [az Azure Portal](https://portal.azure.com/).
 
 Az alábbi példák bemutatják a Piactérrel kapcsolatos információkat az Azure Marketplace-en és az Azure Portalon.
 
@@ -215,11 +199,11 @@ Kövesse a Cloud Partner portálra feltöltött emblémák:
 -   Az Azure Portal a témák színei fehér, és fekete. Ne használja ezeket a színeket, a emblémák háttérszíne. Használjon színt, amely biztosítja, a emblémák neves az Azure Portalon. Javasoljuk az egyszerű alapszínek használatát.
 
     >[!Note] 
-    >Ha használ áttetsző háttérrel, majd győződjön meg arról, hogy a emblémák szöveg nem fehér, fekete vagy a kék.
+    >Ha használ áttetsző háttérrel, majd győződjön meg arról, hogy a emblémák szöveg nem fehér, fekete, vagy a kék.
 
 -   Ne használjon színátmenetes hátteret az emblémában.
 
--   Szöveg elkerüli az embléma. Ez magában foglalja az Ön vállalatát vagy márkanév. Az embléma megjelenését és működését kell lennie *egybesimított* és átmenetekhez kerülendő.
+-   Szöveg elkerüli az embléma. Ez az útmutató a vállalati vagy márkanév tartalmazza. Az embléma megjelenését és működését kell lennie *egybesimított* és átmenetekhez kerülendő.
 
 -   Az embléma nem archiválhatók.
 

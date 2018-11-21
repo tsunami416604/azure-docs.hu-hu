@@ -3,7 +3,7 @@ title: Az Azure AI-katalógusban iparág-specifikus megoldások |} A Microsoft D
 description: Fedezze fel az iparági megoldásokat az Azure AI-katalógusban.
 services: machine-learning
 documentationcenter: ''
-author: garyericson
+author: ericlicoding
 manager: jhubbard
 editor: cgronlun
 ms.assetid: fd2ecf9a-ff76-4a0f-8d68-7f762249648c
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.custom: (previous ms.author garye)
+ms.custom: (previous ms.author=garye, author=garyericson)
 ms.author: amlstudiodocs
-ms.openlocfilehash: a042455f8077335c202cfa6a4c72840235054007
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 77963a7b4daaba1a1b1d05e67046972b0ab2ca6e
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820562"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261768"
 ---
 # <a name="discover-industry-specific-solutions-in-the-azure-ai-gallery"></a>Fedezze fel az iparág-specifikus megoldások az Azure AI-katalógusban
 

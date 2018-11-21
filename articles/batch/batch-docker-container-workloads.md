@@ -8,14 +8,14 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.workload: na
-ms.date: 10/24/2018
+ms.date: 11/19/2018
 ms.author: danlep
-ms.openlocfilehash: 458b0f7bbf581c7f2490a8122f351dac612b4ff0
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 1d915482a3a8b1f6416b50ab52de997a9d33294f
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155620"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262431"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Az Azure Batch tárolóalkalmazások futtatásához
 
@@ -25,7 +25,7 @@ A tároló fogalmakat és hogyan hozhat létre egy Batch-készlet és a feladat 
 
 ## <a name="why-use-containers"></a>Miért érdemes használni a tárolók?
 
-Tárolók használatával környezet és alkalmazások futtatását a függőségek kezelése nélkül futtathat a Batch-feladatok egyszerű módot kínál. Tárolók üzembe alkalmazások könnyű, hordozható, önellátó egységek több eltérő környezetben futtatható. Például készíthet és a egy tároló helyi tesztelése, majd töltse fel a tárolórendszerképet a regisztrációs adatbázisba, az Azure-ban vagy máshol. A tároló üzembe helyezési modell biztosítja, hogy a futtatókörnyezet az alkalmazás mindig megfelelően telepítve és konfigurálva van az alkalmazás üzemeltetése bárhol. Tárolóalapú feladatok Batch szolgáltatásban is kihasználhatják az működő feladatokat, beleértve az alkalmazáscsomagokat és erőforrásfájlok és a kimeneti fájlokat felügyeleti funkcióit. 
+Tárolók használatával környezet és alkalmazások futtatását a függőségek kezelése nélkül futtathat a Batch-feladatok egyszerű módot kínál. Tárolók üzembe alkalmazások könnyű, hordozható, önellátó egységek több eltérő környezetben futtatható. Például készíthet, és a egy tároló helyi tesztelése, majd töltse fel a tárolórendszerképet a regisztrációs adatbázisba, az Azure-ban vagy máshol. A tároló üzembe helyezési modell biztosítja, hogy a futtatókörnyezet az alkalmazás mindig megfelelően telepítve és konfigurálva van az alkalmazás üzemeltetése bárhol. Tárolóalapú feladatok Batch szolgáltatásban is kihasználhatják az működő feladatokat, beleértve az alkalmazáscsomagokat és erőforrásfájlok és a kimeneti fájlokat felügyeleti funkcióit. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -74,7 +74,7 @@ Ezek a lemezképek használata az Azure Batch-készletek csak támogatottak. Szo
 
 * Előre telepített NVIDIA GPU-illesztőprogramokat, N-sorozatú Azure virtuális gépeken a központi telepítés lehetséges egyszerűsítési módjai
 
-* Képek vagy anélkül előre telepített RDMA drivers; illesztőprogramok engedélyezése készlet csomópontok elérik az Azure RDMA hálózati telepítésekor az RDMA-kompatibilis Virtuálisgép-méretek  
+* A választott képek vagy anélkül előre telepített RDMA-illesztőprogramokat. Ezeket az illesztőprogramokat lehetővé teszik a készlet csomópontok elérik az Azure RDMA hálózati az RDMA-kompatibilis Virtuálisgép-méretek telepítésekor. 
 
 A Linux-disztribúció, amely kompatibilis a Batch-Csel egyikén Docker futó virtuális gépekről egyéni rendszerképeket is létrehozhat. Ha a saját egyéni Linux-rendszerképek megadását választja, tekintse meg a található [felügyelt egyéni lemezképek használatával hozzon létre egy virtuálisgép-készletek](batch-custom-images.md).
 
@@ -222,41 +222,62 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 ...
 ```
 
-
 ## <a name="container-settings-for-the-task"></a>A feladat tároló beállításai
 
-Tároló-feladatok futtatása a számítási csomópontokon, meg kell adnia tároló-specifikus beállítások, például a tároló futtatásához lehetőségekről, a rendszerképek és a beállításjegyzék.
+Tároló feladat futtatása egy tároló-kompatibilis készlet, adja meg a tároló-specifikus beállításokat. A beállítások tartalmazzák a lemezképet használja, a beállításjegyzék és a tároló futtatási beállításai.
 
-Használja a `ContainerSettings` tároló-specifikus beállítások konfigurálása a feladat osztályok tulajdonságát. Ezek a beállítások határozzák meg a [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) osztály.
+* Használja a `ContainerSettings` tároló-specifikus beállítások konfigurálása a feladat osztályok tulajdonságát. Ezek a beállítások határozzák meg a [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) osztály.
 
-Ha futtatja a feladatokat a tárolórendszerképek az [felhőbeli tevékenység](/dotnet/api/microsoft.azure.batch.cloudtask) és [feladatkezelői tevékenység](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask) tároló igénylése. Azonban a [kezdő tevékenység](/dotnet/api/microsoft.azure.batch.starttask), [feladat-előkészítési tevékenység](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask), és [feladatkiadási tevékenység](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask) nem igénylik a tároló beállításait (azaz futtathatják a tároló környezeten belül, vagy közvetlenül a csomóponton).
+* Ha futtatja a feladatokat a tárolórendszerképek az [felhőbeli tevékenység](/dotnet/api/microsoft.azure.batch.cloudtask) és [feladatkezelői tevékenység](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask) tároló igénylése. Azonban a [kezdő tevékenység](/dotnet/api/microsoft.azure.batch.starttask), [feladat-előkészítési tevékenység](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask), és [feladatkiadási tevékenység](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask) nem igénylik a tároló beállításait (azaz futtathatják a tároló környezeten belül, vagy közvetlenül a csomóponton).
 
-A választható [ContainerRunOptions](/dotnet/api/microsoft.azure.batch.taskcontainersettings.containerrunoptions) további argumentumok vannak a `docker create` parancsot, hogy a feladat fut-e a tároló létrehozása.
+### <a name="container-task-command-line"></a>Tároló tevékenység parancssora
+
+A tároló a feladat futtatásakor a Batch automatikusan használja a [docker létrehozása](https://docs.docker.com/engine/reference/commandline/create/) paranccsal hozzon létre egy tárolót a tevékenység megadott rendszerkép használatával. A Batch a feladat végrehajtása a tárolóban majd szabályozza. 
+
+Működő Batch-tevékenységek esetén állítsa a parancssor egy tároló tevékenységhez. A Batch automatikusan létrehozza a tárolót, mert a parancssor csak megadja a parancsot vagy a tárolóban futtatott parancsok.
+
+Ha a tároló rendszerképét, egy Batch-feladat konfigurálva van egy [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#exec-form-entrypoint-example) parancsfájl, beállíthatja a parancssorban, vagy használja az alapértelmezett belépési pont vagy felülírni: 
+
+* Az alapértelmezett belépési PONTJÁT a tárolórendszerkép használatához állítsa a tevékenység parancssora üres karakterláncot `""`.
+
+* Bírálja felül az alapértelmezett belépési pont, vagy ha a kép egy belépési pont nem rendelkezik beállítani a parancssor a tároló megfelelő például `/app/myapp` vagy `/bin/sh -c python myscript.py`.
+
+Nem kötelező [ContainerRunOptions](/dotnet/api/microsoft.azure.batch.taskcontainersettings.containerrunoptions) adja át további argumentumok a `docker create` parancsot, hogy a Batch hozhat létre és futtathat a tárolót használja. Például a tároló beállítása egy működő könyvtárba, állítsa be a `--workdir <directory>` lehetőséget. Tekintse meg a [docker létrehozása](https://docs.docker.com/engine/reference/commandline/create/) további beállítások referenciája.
 
 ### <a name="container-task-working-directory"></a>Tároló tevékenység munkakönyvtárának
 
-Az Azure Batch tároló tevékenység parancssorának egy működő könyvtárba, amely nagyon hasonlít egy normál (nem tároló) a feladat beállítja a Batch a környezetet a tárolóban hajtja végre:
+Egy Batch-tároló feladatot futtatják egy működő könyvtárba, amely nagyon hasonlít egy normál (nem tároló) a feladat beállítja a Batch a könyvtár a tárolóban. Vegye figyelembe, hogy a munkakönyvtárban eltér a [WORKDIR](https://docs.docker.com/engine/reference/builder/#workdir) , ha a kép-, vagy az alapértelmezett tároló munkakönyvtár (`C:\` egy Windows-tárolón vagy `/` egy Linux-tárolón). 
 
-* Az alábbi könyvtárak rekurzív a `AZ_BATCH_NODE_ROOT_DIR` (az Azure Batch-könyvtár a csomóponton gyökér) vannak leképezve a tárolóba
+Egy Batch-tároló tevékenységhez:
+
+* Az alábbi könyvtárak rekurzív a `AZ_BATCH_NODE_ROOT_DIR` a gazdagépen csomópont (a legfelső szintű az Azure Batch-könyvtárak) vannak leképezve a tárolóba
 * Az összes környezeti változók vannak leképezve a tárolóba
-* Az alkalmazás munkakönyvtár értéke ugyanaz, mint a rendszeres feladatként, így használhatja a szolgáltatások, például az alkalmazáscsomagokat és az erőforrások fájljainak
+* A tevékenység munkakönyvtárának `AZ_BATCH_TASK_WORKING_DIR` a csomóponton ugyanaz, mint a rendszeres feladat beállítása és a tárolóba leképezve. 
 
-Batch módosítja az alapértelmezett munkakönyvtár a tárolóban, mert a tipikus tároló munkakönyvtárból különböző helyen futtatja a tevékenységet (például `c:\` alapértelmezés szerint a Windows-tárolók vagy `/` Linux vagy egy másik könyvtárat, ha a tároló rendszerképét konfigurálva). Győződjön meg arról, hogy a tárolóalkalmazások megfelelően Batch környezetében futnak, tegye a következők egyikét: 
+Leképezések lehetővé teszik, nem tároló tevékenységként ugyanolyan módon a tároló feladatok használni. Például az alkalmazáscsomagok segítségével alkalmazások telepítésére, erőforrás fájlok eléréséhez az Azure Storage-ból, feladat környezeti beállítások használata és a feladat kimeneti fájlok maradnak, miután a tároló leáll.
 
-* Győződjön meg arról, hogy a tevékenység parancssora (vagy a tároló munkakönyvtár) határozza meg az abszolút elérési út, ha már nincs konfigurálva a a módszerrel.
+### <a name="troubleshoot-container-tasks"></a>Tároló tevékenységek hibáinak elhárítása
 
-* A feladat containersettings beállítást a tároló futtatási beállításai a állítson be egy munkakönyvtárba. Például: `--workdir /app`.
+Ha a tárolót a feladat nem fut a várt módon, szüksége lehet a tárolórendszerkép WORKDIR vagy a belépési pont konfigurációjával kapcsolatos információk. A konfiguráció megtekintéséhez futtassa a [vizsgálja meg a docker-rendszerkép](https://docs.docker.com/engine/reference/commandline/image_inspect/) parancsot. 
 
-Az alábbi Python a Docker Hubból kéri le egy Ubuntu tárolóban futó alapszintű parancssor látható. Itt a `--rm` tároló működtethető, lehetőség eltávolítja a tárolót, a feladat befejezése után.
+Szükség esetén módosítsa a beállításokat a tároló feladat rendszerkép alapján:
+
+* Adja meg a tevékenység parancssora abszolút elérési utat. A kép alapértelmezett belépési pont az a tevékenység parancssorának használata esetén győződjön meg arról, hogy abszolút elérési út van beállítva.
+
+* A feladat tároló futtatási beállításai módosítsa megfelelően a WORKDIR az ábrán a munkakönyvtár. Ha például `--workdir /app`.
+
+## <a name="container-task-examples"></a>Tároló feladat példák
+
+Az alábbi Python egy tárolóban, a Docker Hubból kéri le egy fiktív lemezképből létrehozott futó alapszintű parancssor látható. Itt a `--rm` tároló beállítással eltávolítja a tárolót, a feladat befejezése után, és a `--workdir` beállítás határozza meg, egy működő könyvtárba. A parancssor felülbírálja a tároló belépési pont egy egyszerű felület parancs, amely egy kis fájlt a tevékenység munkakönyvtárának ír a gazdagépen. 
 
 ```python
 task_id = 'sampletask'
 task_container_settings = batch.models.TaskContainerSettings(
-    image_name='ubuntu', 
-    container_run_options='--rm')
+    image_name='myimage', 
+    container_run_options='--rm --workdir /')
 task = batch.models.TaskAddParameter(
     id=task_id,
-    command_line='/bin/echo hello',
+    command_line='/bin/sh -c \"echo \'hello world\' > $AZ_BATCH_TASK_WORKING_DIR/output.txt\"',
     container_settings=task_container_settings
 )
 
@@ -267,11 +288,11 @@ Az alábbi C#-példa egy felhőbeli tevékenység alapszintű tárolóbeállít�
 ```csharp
 // Simple container task command
 
-string cmdLine = "c:\myApp.exe";
+string cmdLine = "c:\\app\\myApp.exe";
 
 TaskContainerSettings cmdContainerSettings = new TaskContainerSettings (
-    imageName: "tensorflow/tensorflow:latest-gpu",
-    containerRunOptions: "--rm --read-only"
+    imageName: "myimage",
+    containerRunOptions: "--rm --workdir c:\\app"
     );
 
 CloudTask containerTask = new CloudTask (
@@ -287,6 +308,6 @@ CloudTask containerTask = new CloudTask (
 
 * További információk a telepítésével és a Docker CE használata Linux rendszeren: a [Docker](https://docs.docker.com/engine/installation/) dokumentációját.
 
-* Egyéni rendszerképek használatával további információkért lásd: [felügyelt egyéni lemezképek használatával hozzon létre egy virtuálisgép-készletek ](batch-custom-images.md).
+* Egyéni rendszerképek használatával további információkért lásd: [felügyelt egyéni lemezképek használatával hozzon létre egy virtuálisgép-készletek](batch-custom-images.md).
 
 * Tudjon meg többet a [Moby projekt](https://mobyproject.org/), olyan keretrendszer, tárolóalapú rendszer.

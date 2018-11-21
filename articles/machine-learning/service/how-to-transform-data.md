@@ -10,16 +10,16 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 06e7d227511a9b651a905df3172f59a191acce01
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 76b417d1592671006d3d5cfa2363e306e4db48fd
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945671"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263035"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Adatok átalakítása a az Azure Machine Learning Data Prep SDK segítségével
 
-A [az Azure Machine Learning Data Prep SDK](https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py) megtisztíthatja az adatait különböző átalakítás módszert kínál. Ezek a metódusok révén egyszerűen oszlopok hozzáadása, szűrje ki a nem kívánt sorokra vagy oszlopokra és imputálására a hiányzó értékeket.
+A [az Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk) megtisztíthatja az adatait különböző átalakítás módszert kínál. Ezek a metódusok révén egyszerűen oszlopok hozzáadása, szűrje ki a nem kívánt sorokra vagy oszlopokra és imputálására a hiányzó értékeket.
 
 Jelenleg nincsenek módszer a következő feladatokhoz:
 - [Az autorefresh tulajdonság oszlop hozzáadása](#column)
@@ -347,7 +347,7 @@ df
 
 Az SDK-csomagja tartalmazza a módszerek `Dataflow.drop_columns` és `Dataflow.filter` lehetővé teszi, hogy szűrje ki a sorok vagy oszlopok.
 
-### <a name="initial-setup"></a>Kezdeti telepítés
+### <a name="initial-setup"></a>Kezdeti beállítás
 ```
 import azureml.dataprep as dprep
 from datetime import datetime

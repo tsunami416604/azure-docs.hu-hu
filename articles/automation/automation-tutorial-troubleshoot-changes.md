@@ -11,12 +11,12 @@ ms.date: 11/01/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 1865fcf47510bbaae82f98ccad85993a85ffc1ab
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: HT
+ms.openlocfilehash: 92e3935167f5665ee8cda164a8fe9b1cfcc39f73
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959137"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275598"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>A környezet változásainak hibaelhárítása
 
@@ -72,7 +72,7 @@ Ha lekérdezések futtatásával szeretne keresni a naplókban, kattintson a **L
 A rendszer a változáskövetési adatokat a **ConfigurationChange** típus alatt tárolja.
 A következő Log Analytics-mintalekérdezés az összes leállított Windows-szolgáltatást adja vissza.
 
-```
+```loganalytics
 ConfigurationChange
 | where ConfigChangeType == "WindowsServices" and SvcState == "Stopped"
 ```

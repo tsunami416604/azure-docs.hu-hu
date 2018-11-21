@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 580dd5bf6a7e905927189f4b1ae42ab49a1cbc80
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: b7a2f9350633be5ec0cb8d5a7c6e7cc5048f956a
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730715"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276005"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -212,7 +212,7 @@ A metódus adja vissza egy szótár, amely összekapcsolja az egyéni tevékenys
         foreach (LinkedService ls in linkedServices)
             logger.Write("linkedService.Name {0}", ls.Name);
     
-        // get the first Azure Storate linked service from linkedServices object
+        // get the first Azure Storage linked service from linkedServices object
         // using First method instead of Single since we are using the same
         // Azure Storage linked service for input and output.
         inputLinkedService = linkedServices.First(
@@ -358,7 +358,7 @@ A metódus adja vissza egy szótár, amely összekapcsolja az egyéni tevékenys
     }
     ```
 
-    A GetFolderPath metódus az az elérési utat a mappához, amely az adatkészlet ad vissza, és a GetFileName metódust a blob/fájl, amely az adatkészlet nevét adja vissza. Ha Ön havefolderPath változókban például {Year}, {Month}, {Day} stb., a metódus adja vissza a karakterláncot, mert a modul értékek lecserélése nélkül. Lásd: [kiterjesztett tulajdonságok hozzáférés](#access-extended-properties) című szakasz részletezi a fér hozzá a SliceStart, SliceEnd stb.    
+    A GetFolderPath metódus az az elérési utat a mappához, amely az adatkészlet ad vissza, és a GetFileName metódust a blob/fájl, amely az adatkészlet nevét adja vissza. Ha folderPath meghatározása a változókban például {Year}, {Month}, {Day} stb., a metódus adja vissza a karakterláncot, mert a modul értékek lecserélése nélkül. Lásd: [kiterjesztett tulajdonságok hozzáférés](#access-extended-properties) című szakasz részletezi a fér hozzá a SliceStart, SliceEnd stb.    
 
     ```JSON
     "name": "InputDataset",
@@ -640,7 +640,7 @@ Ebben a lépésben adatkészleteket hoz létre, bemeneti és kimeneti adatokat k
    ![Kimeneti szeletek](./media/data-factory-use-custom-activities/OutputSlices.png)
 4. Győződjön meg arról, hogy a kimeneti fájlok jönnek létre a a blob storage-ban a **adftutorial** tároló.
 
-   ![egyéni tevékenység kimenete][image-data-factory-ouput-from-custom-activity]
+   ![egyéni tevékenység kimenete][image-data-factory-output-from-custom-activity]
 5. Ha megnyitja a kimeneti fájl, a következő kimenethez hasonló kimenetnek kell megjelennie:
 
     ```
@@ -1063,6 +1063,6 @@ A [Azure Data Factory – helyi környezetben](https://github.com/gbrueckl/Azure
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [hivewalkthrough]: data-factory-data-transformation-activities.md
 
-[image-data-factory-ouput-from-custom-activity]: ./media/data-factory-use-custom-activities/OutputFilesFromCustomActivity.png
+[image-data-factory-output-from-custom-activity]: ./media/data-factory-use-custom-activities/OutputFilesFromCustomActivity.png
 
 [image-data-factory-download-logs-from-custom-activity]: ./media/data-factory-use-custom-activities/DownloadLogsFromCustomActivity.png

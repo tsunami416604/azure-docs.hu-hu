@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 9489d6e8780a30c5c54ee307d6c45c4bc2eb0e5d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: fa72765e02592b72efb09320958a0aa244ae8b08
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419282"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265287"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Azure HDInsight – biztonság és a fejlesztési és üzemeltetési eljárások helyszíni Apache Hadoop-fürtök áttelepítése
 
@@ -24,7 +24,7 @@ Ez a cikk az Azure HDInsight rendszerben javaslatok a biztonsági és a fejleszt
 
 A vállalati biztonsági csomag (ESP) támogatja az Active Directory-alapú hitelesítés, a több felhasználó támogatása és a szerepköralapú hozzáférés-vezérlés. A választott ESP beállítással a HDInsight-fürt az Active Directory-tartományhoz csatlakozik, és a vállalati rendszergazda konfigurálhatja a szerepköralapú hozzáférés-vezérlés (RBAC) Hive-biztonsághoz az Apache Ranger segítségével. A rendszergazda is naplózhatja az alkalmazottak és bármely változtatást a hozzáférés-vezérlési házirendeket adatelérési.
 
-ESP funkciókat jelenleg előzetes verzióban és csak a következő fürttípusokat elérhető: az Apache Hadoop, az Apache Spark, az Apache HBase, Apache Kafka és az Apache interaktív lekérdezés.
+ESP érhető el a következő fürttípusokat: az Apache Hadoop, az Apache Spark, az Apache HBase, Apache Kafka és az interaktív lekérdezések (Hive LLAP). 
 
 Használja az alábbi lépéseket a tartományhoz csatlakoztatott HDInsight-fürt üzembe helyezéséhez:
 

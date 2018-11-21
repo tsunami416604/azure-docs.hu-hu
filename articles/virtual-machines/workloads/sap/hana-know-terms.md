@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/04/2018
+ms.date: 11/20/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d8197e3695da8869806e44775f601d95b17fcb2
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 902c4c94cc7366af342816e9b4776af603711c8b
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028407"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275439"
 ---
 # <a name="know-the-terms"></a>A használati tudja
 
@@ -39,7 +39,7 @@ Több közös definíciók széles körben használják az architektúra és üz
    Tartományi felhasználókat a helyszíni tartomány elérheti a kiszolgálók és szolgáltatások futtatása a virtuális gépeken (például adatbázis-kezelő szolgáltatások). Virtuális gépek közötti kommunikációt és a névfeloldás üzembe helyezte a helyszínen és az Azure által telepített virtuális gépek lehetséges. Ebben a forgatókönyvben jellemző, amelyben a legtöbb SAP-eszközök vannak üzembe helyezve módja. További információkért lásd: [megtervezése és kialakítása az Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) és [virtuális hálózat létrehozása helyek közötti kapcsolattal az Azure portal használatával](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 - **Bérlő**: HANA nagyméretű szolgáltatáspéldányban telepített ügyfél lekérdezi izolált be egy *bérlő.* Egy bérlő van különítve a hálózati, tárolási és számítási rétegben, a többi bérlőtől. A különböző bérlők rendelt tárolási és számítási egységek nem tekintse meg egymással, és nem kommunikálnak egymással, nagyméretű HANA-példány stamp szint. Egy ügyfél lehet váltani, más bérlők üzemelő rendelkezik. Ezután még nem folyik kommunikáció bérlők HANA nagyméretű példányok stamp szint között.
 - **Termékváltozat kategória**: A nagyméretű HANA-példányt, a következő két kategória SKU-k érhetők el:
-    - **I. osztály típus**: S72, S72m, S144, S144m, S192, S192m és S192xm
+    - **I. osztály típus**: S72, S72m, S96, S144, S144m, S192, S192m és S192xm
     - **Írja be a II osztály**: S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm és S960m
 
 

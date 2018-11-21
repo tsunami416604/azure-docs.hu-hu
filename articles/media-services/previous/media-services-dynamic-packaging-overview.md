@@ -1,59 +1,58 @@
 ---
-title: Az Azure Media Services dinamikus becsomagolás áttekintése |} Microsoft Docs
-description: A témakör által biztosított és a dinamikus becsomagolás áttekintése.
+title: Az Azure Media Services dinamikus becsomagolást áttekintő |} A Microsoft Docs
+description: A témakör nyújt és a dinamikus csomagolás áttekintése.
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
-ms.assetid: 0d9e4f54-5daa-45c1-bfaa-cf09ca89b812
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 11/15/2018
 ms.author: juliako
-ms.openlocfilehash: 8f05015da1f66331413086c0e27c25cd5da75f5c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: eccb141101e4d402fcc79fe5dd433f2fc3382e27
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788388"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263842"
 ---
 # <a name="dynamic-packaging"></a>Dinamikus csomagolás
-## <a name="overview"></a>Áttekintés
-Microsoft Azure Media Services segítségével kézbesítése sok media forrás fájlformátumokat, media adatfolyam-továbbítási formátumokba, és a tartalomvédelem formátumokat számos különböző ügyfél technológiák (például iOS, XBOX, a Silverlight, a Windows 8). Ezek az ügyfelek ismertetése különböző protokollok, például iOS igényel-e egy HTTP-Live Streaming (HLS) V4 formátum, és a Silverlight- és Xbox igényelnek, Smooth Streaming. Ha rendelkezik egy adaptív sávszélességű (többféle sávszélességű) készletét MP4 (ISO talál médiafájlok 14496-12) vagy egy adaptív sávszélességű Smooth Streaming-fájlsorozattá osztja ki az ügyfelek, MPEG DASH, HLS vagy Smooth Streaming megértéséhez kívánt, a Media Services dinamikus becsomagolás kell venni.
 
-A dinamikus csomagolás szükség, ha egy eszköz, amely tartalmazza az adaptív sávszélességű MP4-vagy adaptív sávszélességű Smooth Streaming-fájlsorozattá. Ezt követően a jegyzék vagy töredék kérelem, az Igényalapú Streamelési megadott formátumnak megfelelően kiszolgáló biztosítja az adatfolyam kapni a kiválasztott protokollal. Így elég egyetlen tárolási formátumban tárolni a fájlokat (és kifizetni a tárhelyüket), a Media Services szolgáltatás elkészíti és kiszolgálja az ügyféltől érkező kérésnek megfelelő választ.
+A Microsoft Azure Media Services is használhatók, hogy sok adatforrás fájl médiaformátumok, adatfolyam-továbbítási formátumokba, media, és a content protection-ügyfél technológiák széles formátumok (például iOS, az XBOX, a Silverlight, a Windows 8). Ezek az ügyfelek ismerje meg a különböző protokollok, például az IOS-es szükséges egy HTTP Live Streaming (HLS) V4 formátumban, és a Silverlight és az Xbox igényelnek, Smooth Streaming. Ha rendelkezik egy adaptív sávszélességű (többszörös sávszélességű MP4) készletét MP4 (ISO alap 14496-12) médiafájlok vagy egy adaptív sávszélességű Smooth Streaming-fájlsorozattá kiszolgálása ügyfeleknek, hogy MPEG-DASH, HLS vagy Smooth Streaming ismertetése kívánt, érdemes előnyeit adathordozó A dinamikus csomagolás szolgáltatásokat.
+
+A dinamikus csomagolás használatával szüksége, hozzon létre egy objektumot, amely egy adaptív sávszélességű MP4-fájlokat vagy Smooth Streaming-fájlsorozattá készletét tartalmazza. Ezt követően a jegyzék vagy töredékrész kérelem, az Igényalapú Streamelési megadott formátumnak megfelelően kiszolgáló biztosítja, hogy Önnek a streamet a kiválasztott protokollal. Így elég egyetlen tárolási formátumban tárolni a fájlokat (és kifizetni a tárhelyüket), a Media Services szolgáltatás elkészíti és kiszolgálja az ügyféltől érkező kérésnek megfelelő választ.
 
 Az alábbi ábrán látható, a hagyományos kódolás és a statikus csomagolás munkafolyamat.
 
 ![Statikus kódolás](./media/media-services-dynamic-packaging-overview/media-services-static-packaging.png)
 
-Az alábbi ábrán látható, a dinamikus becsomagolás munkafolyamat.
+Az alábbi ábrán látható, a dinamikus csomagolás munkafolyamat.
 
-![Dinamikus kódolás](./media/media-services-dynamic-packaging-overview/media-services-dynamic-packaging.png)
+![A dinamikus kódolás](./media/media-services-dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
-
-## <a name="common-scenario"></a>Egy gyakori alaphelyzete
-1. Töltse fel a bemeneti fájl (néven mezzazine-fájlt). Például H.264, MP4 vagy WMV (a támogatott formátumok listája: [formátumokat támogatja a Media Encoder Standard](media-services-media-encoder-standard-formats.md).
-2. Kódolja a mezzanine fájl H.264 MP4 adaptív sávszélességű részhalmazához.
+## <a name="common-scenario"></a>Gyakori forgatókönyv
+1. Töltse fel egy bemeneti fájlt (úgynevezett mezzanine-fájlt). Ha például H.264, MP4 vagy WMV (a támogatott formátumok listáját lásd: [a Media Encoder Standard által támogatott formátumok](media-services-media-encoder-standard-formats.md).
+2. Kódolja a mezzanine-fájlt a H.264 MP4 adaptív sávszélességű csoportok.
 3. Tegye közzé az adategységet, amely tartalmazza az adaptív sávszélességű MP4 típusú beállításkészlettel az On-Demand-kereső létrehozásával.
-4. Az adatfolyam-továbbítási URL-címek elérését, és a tartalmak felépítéséhez.
+4. A streamelési URL-címek elérését, és a tartalmak streamelésére hozhat létre.
 
-## <a name="preparing-assets-for-dynamic-streaming"></a>Dinamikus streaming eszközök előkészítése
-Az eszköz előkészítése dinamikus streaming két lehetőség közül választhat:
+## <a name="preparing-assets-for-dynamic-streaming"></a>A dinamikus streamelési eszközök előkészítése
+A dinamikus streamelési az eszköz előkészítése az alábbi lehetőségek állnak rendelkezésére:
 
-1. [Töltse fel a fő fájlt](media-services-dotnet-upload-files.md).
-2. [Használja a Media Encoder Standard encoder H.264 MP4 adaptív sávszélességű készlet feladatvégrehajtás](media-services-dotnet-encode-with-media-encoder-standard.md).
-3. [A tartalmak](media-services-deliver-content-overview.md).
+- [Feltölthet egy fő fájlt](media-services-dotnet-upload-files.md).
+- [A Media Encoder standard szintű encoder használatával adatkészletből H.264 MP4 adaptív sávszélességű hoznak létre](media-services-dotnet-encode-with-media-encoder-standard.md).
+- [A tartalom Stream](media-services-deliver-content-overview.md).
 
-## <a id="unsupported_formats"></a>Dinamikus becsomagolás által nem támogatott
-A következő forrás formátumok nem támogatja a dinamikus csomagolás.
+## <a name="audio-codecs-supported-by-dynamic-packaging"></a>A dinamikus becsomagolás által támogatott hangkodekek
 
-* Dolby digitális mp4-fájlokat.
-* Dolby digitális zökkenőmentes fájlokat.
+A dinamikus csomagolás MP4-fájlok (vagy Smooth Streaming-fájlok) kódolású hangot tartalmazó támogatja. a [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1, v2 az AAC-HE), [Dolby digitális Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (Enhanced AC-3 vagy E-AC3), vagy [ DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29) (DTS Express, DTS LBR, DTS HD, veszteségmentes DTS HD).
+
+> [!Note]
+> A dinamikus csomagolás nepodporuje tartalmazó fájlokat [Dolby digitális](https://en.wikipedia.org/wiki/Dolby_Digital) (nem örökölt kodekkel) (AC3) hang.
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -5,7 +5,7 @@ keywords: Hitelkártyás, számla letöltése, azure-számlát, azure-használat
 services: billing
 documentationcenter: ''
 author: genlin
-manager: tonguyen
+manager: adpick
 editor: ''
 tags: billing
 ms.service: billing
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: f0cdfef50c07674a08766933f2f7edfc946462a4
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 9067162c6f1bd95b0a1c25bef17836b19ecf6946
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395015"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276109"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Töltse le, vagy az Azure számlázási számlázási és napi használati adatok megtekintése
 Letöltheti a számlát a [az Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) vagy e-mailben küldött nincs. A napi használati adatok letöltése, lépjen a [Azure Account Center](https://account.azure.com/Subscriptions). Csak egyes szerepkörök hitelkártyás és használati adatokat, például a fiók rendszergazdája engedélye. További információ a számlázási információhoz való hozzáférésről: [Az Azure-beli számlázáshoz való hozzáférés kezelése szerepkörök használatával](billing-manage-access.md).
@@ -100,15 +100,15 @@ A napi használati adatokra vonatkozó további információért lásd: [Microso
 
 ## <a name="noinvoice"></a> Miért nem látom számla alapján az előző elszámolási időszakban?
 
-Számla nem látható több oka lehet:
+Számos oka lehet annak, hogy nem jelenik meg számla:
 
-- Az előfizetés, amely nem lehet szükség van egy havi kreditösszeg erejéig, vagy ha egy ingyenes próbaverzióra. Számla csak akkor hozza létre, amikor akikkel költséget takaríthat meg.
+- Nem haladta meg az előfizetésében foglalt jóváírás havi keretét vagy ingyenes próbaverziót használ. A rendszer csak tartozás esetén állít ki számlát.
 
-- Az Azure-ra előfizetett nap 30 napon belül.
+- 30 napnál kevesebb telt el az Azure-előfizetés életbe lépése óta.
 
-- A számla még nincs létrehozva. Várjon, amíg a számlázási időszak végéig.
+- A rendszer még nem hozta létre a számlát. Várja meg a számlázási időszak végét.
 
-- Ha Ön nem a fiók rendszergazdája, a régebbi számlák nem lehet elérhető.
+- Ha nem Ön a fiókadminisztrátor, akkor előfordulhat, hogy a régebbi számlákhoz nem fér hozzá.
 
 ## <a name="need-help-contact-support"></a>Segítség Forduljon az ügyfélszolgálathoz.
 Ha további kérdése van, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.

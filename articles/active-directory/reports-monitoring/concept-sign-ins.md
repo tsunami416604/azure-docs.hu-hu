@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ae962cba5e3d08661eb1c93edfc2feb221a9367e
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: d3705267520087e098e3e2bcc55e677935dc6097
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623782"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275333"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -57,6 +57,9 @@ A felhasználói bejelentkezésekre biztosítja az alábbi kérdésekre kaphat v
 A bejelentkezések jelentés kiválasztásával érheti **bejelentkezések** a a **tevékenység** szakaszában a **Azure Active Directory** paneljén a [AzurePortalon](https://portal.azure.com).
 
 ![Bejelentkezési tevékenység](./media/concept-sign-ins/61.png "Sign-in activity")
+
+> [!IMPORTANT]
+> A bejelentkezések jelentés csak megjeleníti az **interaktív** bejelentkezések, amely, bejelentkezési, ahol a felhasználó manuálisan jelentkezik be felhasználónevével és jelszavával. A nem interaktív bejelentkezési, például a szolgáltatások közötti hitelesítés, a bejelentkezési jelentésben nem jelennek meg. 
 
 A bejelentkezési napló alapértelmezett listanézete az alábbi adatokat jeleníti meg:
 

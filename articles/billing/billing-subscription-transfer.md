@@ -5,7 +5,7 @@ keywords: átviteli előfizetés azure-előfizetéssel, azure, azure-előfizeté
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jlian
+manager: adpick
 editor: ''
 tags: billing,top-support-issue
 ms.assetid: c8ecdc1e-c9c5-468c-a024-94ae41e64702
@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7e9b5d1a84417cf6e6264211ea6e542ab712f9fe
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 66ad7c4eb07946daa278589e4a1a819f12315270
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47422600"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276365"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Azure-előfizetés tulajdonjogának átruházása másik fiókra
 
@@ -110,9 +110,9 @@ A vállalati rendszergazda előfizetések regisztrációs belül is tulajdonjog�
 
 ### <a name="whoisaa"></a> Az előfizetés Fiókadminisztrátori fiókjával az számára?
 
-A fiók rendszergazdája az a személy, aki regisztrált vagy az Azure-előfizetést vásárolt. Engedélyezett-e hozzáférni a [Account Center](https://account.azure.com/Subscriptions) és -előfizetések létrehozása, előfizetések megszakítja, módosítsa az előfizetéshez tartozó számlázási vagy a szolgáltatás-rendszergazda módosíthatja, különböző felügyeleti feladatok elvégzésére. Ha nem biztos ki a fiókadminisztrátor az előfizetéshez tartozó, a következő lépések használatával találja meg.
+A fiók rendszergazdája az a személy, aki regisztrált vagy az Azure-előfizetést vásárolt. Engedélyezett-e hozzáférni a [Account Center](https://account.azure.com/Subscriptions) és -előfizetések létrehozása, előfizetések megszakítja, módosítsa az előfizetéshez tartozó számlázási vagy a szolgáltatás-rendszergazda módosíthatja, különböző felügyeleti feladatok elvégzésére. Ha nem biztos benne, hogy az adott előfizetésnek ki a fiókadminisztrátora, az alábbi lépésekkel kiderítheti.
 
-1. Látogasson el a [az Azure portal előfizetés oldalán](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Nyissa meg [az Azure Portal Előfizetések oldalát](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 1. Válassza ki az előfizetést, gombra, majd keresse meg a kívánt **beállítások**.
 1. Válassza ki **tulajdonságok**. Az előfizetés fiókadminisztrátori fiókjával jelenik meg a **Fiókadminisztrátor** mezőbe.
 

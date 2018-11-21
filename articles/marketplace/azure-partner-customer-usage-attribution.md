@@ -12,26 +12,27 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: 3a1c5341e391c8be1af42eea940fbf147b88e7c8
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 1ae10fb749e671f7a8b5ca48e652711d7dcf98c8
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685701"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262601"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure-partneri ügyfél használati megnevezése
 
-Partnerként szoftverek az Azure a megoldások Azure-összetevőket kell, vagy közvetlenül az Azure-infrastruktúra üzembe van szükségük. Ügyfelek, akik egy partnermegoldás üzembe helyezését, és a saját Azure-erőforrások kiépítése nehéz értékes információkhoz juthat a központi telepítés állapotát, és optika kaphat a Azure növekedési gyakorolt hatást. Amikor hozzáad egy magasabb szintű láthatóság, igazodnak a Microsoft értékesítői csapatok, és a Microsoft partner programok kreditet kaphat.   
+Partnerként szoftverek az Azure a megoldások Azure-összetevőket kell, vagy közvetlenül az Azure-infrastruktúra üzembe van szükségük. Ügyfelek, akik egy partnermegoldás üzembe helyezését, és a saját Azure-erőforrások kiépítése nehéz értékes információkhoz juthat a központi telepítés állapotát, és optika kaphat a Azure növekedési gyakorolt hatást. Amikor hozzáad egy magasabb szintű láthatóság, igazodnak a Microsoft értékesítői csapatok, és a Microsoft partner programok kreditet kaphat. 
 
 A Microsoft kínál egy metódust elősegítik a partnerek jobban ügyfél központi telepítését a szoftver az Azure használatának nyomon követése az Azure-ban. Az új módszer, amellyel a központi telepítés az Azure-szolgáltatások Azure Resource Managert használja.
 
 A Microsoft-partnerként bármely Azure-erőforrások, amelyek az ügyfél nevében üzembe Azure-használat is társíthat. A társítás használatával az Azure piactéren, a rövid útmutató tárház, privát GitHub-adattárak és személyes customer engagement is alkotnak. Ahhoz, hogy nyomon követése, két megközelítés érhetők el:
 
 - Az Azure Resource Manager-sablonok: Resource Manager-sablonok vagy megoldássablonok a partner szoftverek futtatását az Azure-szolgáltatások üzembe helyezéséhez. Partnerek hozhat létre egy Resource Manager-sablon infrastruktúráját és konfigurációját az Azure-megoldás meghatározásához. A Resource Manager-sablon lehetővé teszi, hogy Ön és ügyfelei teljes életciklusa során a megoldás üzembe helyezéséhez. Biztos lehet benne, hogy az erőforrások telepítése konzisztens lesz. 
-
 - Az Azure Resource Manager API-k: Partnerek segítségével meghívhatja a Resource Manager API-k, közvetlenül a Resource Manager-sablon üzembe helyezése vagy az API-hívások közvetlen kiosztása az Azure-szolgáltatások létrehozásához. 
+
+Az összes szükséges ügyfél-használati tesznek elérhetővé; ilyenek [megoldássablonok](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md) közzé az Azure piactéren. 
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager-sablonok használata
 

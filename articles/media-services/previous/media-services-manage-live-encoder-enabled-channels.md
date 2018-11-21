@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: ada5f55cf356ca79efb7cb45c76a4812804400c5
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 13edef4c02aff167316ccae2755a6ec1b58e2e89
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222063"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262618"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Többszörös átviteli sebességű streamek létrehozása az Azure Media Services élő streamelési funkciójával
 
@@ -268,8 +268,8 @@ Ha igaz értékű, ez a beállítás konfigurálása az élő kódoló egy befut
 Választható. A Media Services eszköz a befutókép tartalmazó objektum azonosítóját adja meg. Alapértelmezett értéke null. 
 
 
->[!NOTE] 
->Mielőtt létrehozná a csatornát, a következő korlátozások a befutókép fel kell tölteni egy dedikált eszközként (más fájlokat az adategység kell lennie). Ez a rendszerkép csak akkor lehetséges, ha az élő kódoló szúr be egy lappal egy ad megszakítás miatt, vagy explicit módon a beszúrása egy befutó lett jelzést szolgál. Az élő kódoló úgy is megtehetik állóképek módba során bizonyos hibakörülményeket – például ha a bemeneti jel elvész. Jelenleg nincs lehetőség egyéni rendszerkép használatával, ha az élő kódoló ilyen bemeneti jel elveszett állapotba kerül. Ennek a funkciónak szavazhat [Itt](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/10190457-define-custom-slate-image-on-a-live-encoder-channel).
+> [!NOTE] 
+> Mielőtt létrehozná a csatornát, a következő korlátozások a befutókép fel kell tölteni egy dedikált eszközként (más fájlokat az adategység kell lennie). Ez a rendszerkép csak akkor lehetséges, ha az élő kódoló szúr be egy lappal egy ad megszakítás miatt, vagy explicit módon a beszúrása egy befutó lett jelzést szolgál. Jelenleg nincs lehetőség egyéni rendszerkép használatával, ha az élő kódoló ilyen bemeneti jel elveszett állapotba kerül. Ennek a funkciónak szavazhat [Itt](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/10190457-define-custom-slate-image-on-a-live-encoder-channel).
 
 
 * Egyszerre legfeljebb 1920 × 1080 képpont névfeloldási.

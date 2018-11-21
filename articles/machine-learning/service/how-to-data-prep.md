@@ -10,18 +10,18 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 11/20/2018
-ms.openlocfilehash: 72a6e7fdc8bd5887782ab23d29812bed792fd53f
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 08510961616d2be8eac9b6a19063d5f0d613321f
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164591"
+ms.locfileid: "52263298"
 ---
 # <a name="prepare-data-for-modeling-with-azure-machine-learning"></a>Adatok előkészítése az Azure Machine Learning modellezés
  
 Ebben a cikkben megismerkedhet a használati esetek és az Azure Machine Learning Data Prep SDK egyedi funkcióját. Adat-előkészítés a machine learning-munkafolyamat legfontosabb részét képezi. Valós adatoknak gyakran megszakad, inkonzisztens vagy nem lehet a betanítási adatok jelentős Címellenőrzés és -átalakítási nélkül használható. Hibák és rendellenességeket a nyers adatokat, és új funkciók, amely a problémát próbál megoldani, a pontosság növekszik.
 
-Az adatok a Python használatával készítheti elő a [az Azure Machine Learning Data Prep SDK](https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py).
+Az adatok a Python használatával készítheti elő a [az Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk).
 
 ## <a name="azure-machine-learning-data-prep-sdk"></a>Az Azure Machine Learning, Data Prep SDK
 

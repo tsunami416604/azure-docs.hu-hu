@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: tamram
-ms.openlocfilehash: d47878502816a0a61829859cc166c125448a2850
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 31804932cd4176cd55af752a7c1d05ae0a5f0cdf
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710885"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52260767"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-nodejs-sdk-v2"></a>Hogyan feltöltése, letöltése és használata a Node.js SDK v2 blobok listázása
 
@@ -124,7 +124,7 @@ const listContainers = async () => {
 };
 ```
 
-A csoportok mérete a [ListContainersOptions](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice.listcontaineroptions?view=azure-node-latest) függvénnyel konfigurálható. A *listContainersSegmented* függvény [ContainerResult](/nodejs/api/azure-storage/blobresult) példányok tömbjeként adja vissza a blobmetaadatokat. Az eredményeket a rendszer 5000 növekményes kötegekben (szegmensekben) adja vissza. Ha egy tároló több, mint 5000 blobot tartalmaz, akkor az eredmények egy *continuationToken* értéket is tartalmaznak. A blobtárolóban szereplő további szegmensek listázásához továbbíthatja a folytatási jogkivonatot a *listContainersSegment* függvénybe második argumentumként.
+A csoportok mérete a [ListContainersOptions](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice.listcontaineroptions?view=azure-node-latest) függvénnyel konfigurálható. A *listContainersSegmented* függvény [ContainerResult](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice.containerresult?view=azure-node-latest) példányok tömbjeként adja vissza a blobmetaadatokat. Az eredményeket a rendszer 5000 növekményes kötegekben (szegmensekben) adja vissza. Ha egy tároló több, mint 5000 blobot tartalmaz, akkor az eredmények egy *continuationToken* értéket is tartalmaznak. A blobtárolóban szereplő további szegmensek listázásához továbbíthatja a folytatási jogkivonatot a *listContainersSegment* függvénybe második argumentumként.
 
 ### <a name="create-a-container"></a>Tároló létrehozása
 
@@ -167,7 +167,7 @@ const uploadString = async (containerName, blobName, text) => {
 ```
 ### <a name="upload-a-local-file"></a>Helyi fájl feltöltése
 
-Az *uploadLocalFile* függvény a [createBlockBlobFromLocalFile](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromLocalFile) metódust használja a fájlrendszer egy fájljának a blobtárolóba való feltöltésére és írására (vagy felülírására). 
+Az *uploadLocalFile* függvény a [createBlockBlobFromLocalFile](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromlocalfile-string--string--string--errororresult-blobresult--) metódust használja a fájlrendszer egy fájljának a blobtárolóba való feltöltésére és írására (vagy felülírására). 
 
 ```javascript
 const uploadLocalFile = async (containerName, filePath) => {
@@ -184,11 +184,11 @@ const uploadLocalFile = async (containerName, filePath) => {
     });
 };
 ```
-A tartalmak blobokba való feltöltéséhez egyéb megközelítések is elérhetők, például a [text](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromText) és a [streams](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromStream) használata. Ha ellenőrizni szeretné, hogy a fájl feltöltődött-e a blobtárolóba, használhatja az [Azure Storage Explorert](https://azure.microsoft.com/features/storage-explorer/) a fiókban szereplő adatok megtekintéséhez.
+A tartalmak blobokba való feltöltéséhez egyéb megközelítések is elérhetők, például a [text](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromtext-string--string--string---buffer--errororresult-blobresult--) és a [streams](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromstream-string--string--stream-readable--number--errororresult-blobresult--) használata. Ha ellenőrizni szeretné, hogy a fájl feltöltődött-e a blobtárolóba, használhatja az [Azure Storage Explorert](https://azure.microsoft.com/features/storage-explorer/) a fiókban szereplő adatok megtekintéséhez.
 
 ### <a name="list-the-blobs"></a>A blobok listázása
 
-A *listBlobs* függvény meghívja a [listBlobsSegmented](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromText) metódust, amely egy tároló blobmetaadatainak listáját adja vissza. 
+A *listBlobs* függvény meghívja a [listBlobsSegmented](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#listblobssegmented-string--continuationtoken--errororresult-listblobsresult--) metódust, amely egy tároló blobmetaadatainak listáját adja vissza. 
 
 ```javascript
 const listBlobs = async (containerName) => {
@@ -228,7 +228,7 @@ Az itt látható implementáció módosítja a forrást, és a blob tartalmát s
 
 ### <a name="delete-a-blob"></a>Blob törlése
 
-A *deleteBlob* függvény meghívja a [deleteBlobIfExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_deleteBlobIfExists) függvényt. Ahogy a neve is mutatja, ez a függvény nem ad vissza hibát, ha a blob már törölve van.
+A *deleteBlob* függvény meghívja a [deleteBlobIfExists](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#deleteblobifexists-string--string--errororresult-boolean--) függvényt. Ahogy a neve is mutatja, ez a függvény nem ad vissza hibát, ha a blob már törölve van.
 
 ```javascript
 const deleteBlob = async (containerName, blobName) => {

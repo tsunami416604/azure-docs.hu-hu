@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: AzurePortal
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 11/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7520b79baa43a60373ca60e15abf76b351f57d02
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: d9afc62b4ab5d5d83394dcaaacf85a7642a2ba22
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51975652"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52260596"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Azure-erőforrások rendszerezése címkékkel
 
@@ -272,8 +272,6 @@ REST API-műveleteket, lásd: [Azure Billing – REST API-referencia](/rest/api/
 
 ## <a name="next-steps"></a>További lépések
 
+* Nem minden erőforrástípus támogatja a címkék. Ha alkalmazhat egy címkét egy erőforrástípus megállapításához lásd: [címkézése Azure-erőforrások támogatása](tag-support.md).
 * Testreszabott házirendek használatával alkalmazhat korlátozások és konvenciói előfizetését. Egy Ön által meghatározott szabályzat szükség lehet, hogy az összes erőforrásnak rendelkeznie kell egy értéket egy adott címkét. További információkért lásd: [Mi az Azure Policy?](../azure-policy/azure-policy-introduction.md)
-* Az Azure PowerShell-lel erőforrások telepítésekor bemutatását lásd: [az Azure PowerShell az Azure Resource Manager](powershell-azure-resource-manager.md).
-* Bevezetés az Azure CLI használatával az erőforrások telepítésekor, lásd: [Mac, Linux és Windows az Azure Resource Manager az Azure CLI használatával](xplat-cli-azure-resource-manager.md).
 * Bevezetés a portál használatával, lásd: [az Azure-erőforrások kezelése az Azure portal használatával](resource-group-portal.md).  
-* Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.

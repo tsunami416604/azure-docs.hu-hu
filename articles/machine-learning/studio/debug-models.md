@@ -3,8 +3,8 @@ title: Az Azure Machine Learningben a modell hibáinak keresése |} A Microsoft 
 description: Hogyan lehet hibákat keresni a tanítási és pontszám modelleket az Azure Machine Learning modulok által előállított hibák.
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.openlocfilehash: 3a0cb9e3533f89088f0fa7199143522888a09632
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: fd81ff0ade0267d052862beed9d84649a7721ee9
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823146"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263689"
 ---
 # <a name="debug-your-model-in-azure-machine-learning"></a>A modell hibáinak keresése az Azure Machine Learning rendszerben
 

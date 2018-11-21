@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 888b9a256a68b77b91145bb3ccfeea820c97ccfa
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: f610a221dca296561fefab65a6c40b52a5dd292a
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515374"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275836"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Fejlesztés az Azure Functions Visual Studio használatával  
 
@@ -83,7 +83,7 @@ A projekt sablont hoz létre egy C#-projektben, telepíti a `Microsoft.NET.Sdk.F
 * **Local.Settings.JSON**: megőrzi a függvények helyi futtatás során használt beállításokat. Az Azure nem használja ezeket a beállításokat, azokat a [Azure Functions Core Tools](functions-run-local.md). Ez a fájl használatával adja meg a funkciók számára szükséges változókat alkalmazás beállításait. Egy új elem hozzáadása a **értékek** tömb minden egyes kapcsolathoz, a functions-kötéseket a projekt által igényelt. További információkért lásd: [helyi beállításfájl](functions-run-local.md#local-settings-file) az Azure Functions Core Tools cikkben.
 
     >[!IMPORTANT]
-    >Mivel a local.settings.json fájlban a titkos kulcsokat is tartalmazhatnak, a projekt forrásvezérlőből kell zárni. A **Másolás a kimeneti könyvtár** ezt a fájlt mindig kell beállítása **másolás, ha újabb**. 
+    >Mivel a local.settings.json fájlban a titkos kulcsokat is tartalmazhatnak, a projekt forrásvezérlőből kell zárni. A **Copy to Output Directory** ezt a fájlt mindig kell beállítása **másolás, ha újabb**. 
 
 További információkért lásd: [funkciók hordozhatóosztálytár-projektjének](functions-dotnet-class-library.md#functions-class-library-project).
 

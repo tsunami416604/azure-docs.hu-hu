@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 020923a76c94b10165e95bb4c5950419595dff0b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d2aea370d7de063805eb584cd7d90395ca725b4c
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252343"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275487"
 ---
 # <a name="starting-a-runbook-in-azure-automation"></a>Runbook elindítása az Azure Automationben
 Az alábbi táblázat segítségével meghatározhatja, hogy a metódus elindít egy runbookot, amely a leginkább megfelelő, az adott forgatókönyv az Azure automationben. Ez a cikk a runbook elindítása az Azure Portallal és a Windows PowerShell-lel részleteket tartalmaz. A többi módszer a részletei is szerepelnek az egyéb dokumentáció, amely az alábbi hivatkozásokra kattintva érheti el.
@@ -43,13 +43,13 @@ Az alábbi képen egy runbook életciklusának részletes részletes folyamatát
 ## <a name="starting-a-runbook-with-windows-powershell"></a>Runbook indítása a Windows PowerShell-lel
 Használhatja a [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) runbook indítása a Windows PowerShell-lel. Az alábbi példakód egy Test-Runbook nevű runbook elindul.
 
-```
+```azurepowershell-interactive
 Start-AzureRmAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -ResourceGroupName "ResourceGroup01"
 ```
 
 Start-AzureRmAutomationRunbook visszaad egy feladatobjektumot, amely segítségével nyomon követheti az állapotát, a runbook indítását követően. Ezután használhatja a feladatobjektum és a [Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob) a feladat állapotának megállapításához és [Get-AzureRmAutomationJobOutput](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput) lekérheti annak kimenetét. Az alábbi példakód egy Test-Runbook, megvárja, amíg a befejeződött, majd megjeleníti annak kimenetét nevű runbook elindul.
 
-```
+```azurepowershell-interactive
 $runbookName = "Test-Runbook"
 $ResourceGroup = "ResourceGroup01"
 $AutomationAcct = "MyAutomationAccount"
@@ -68,7 +68,7 @@ Get-AzureRmAutomationJobOutput –AutomationAccountName $AutomationAcct -Id $job
 
 Ha a runbookhoz paraméterek szükségesek, akkor meg kell adnia azokat egy [kivonattábla](https://technet.microsoft.com/library/hh847780.aspx) amelyben a kivonattábla kulcsa megegyezik a paraméter nevével, és az értéke a paraméter értéke. Az alábbi példa bemutatja, hogyan két karakterlánc paraméterei nevű Keresztnév és Vezetéknév, egy RepeatCount nevű egész és egy Show nevű logikai paraméterrel rendelkező runbook indítása. A paraméterek további információkért lásd: [Runbook paraméterek](#Runbook-parameters) alatt.
 
-```
+```azurepowershell-interactive
 $params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
 Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -ResourceGroupName "ResourceGroup01" –Parameters $params
 ```
@@ -83,7 +83,7 @@ Ha a paraméter adattípusa [objektum], akkor használhatja a következő JSON f
 
 Vegye figyelembe a következő teszt runbook, amely egy felhasználó nevű paramétert fogad el.
 
-```
+```powershell
 Workflow Test-Parameters
 {
    param (
@@ -101,13 +101,13 @@ Workflow Test-Parameters
 
 A következő szöveg használható a user paraméterhez.
 
-```
+```json
 {FirstName:'Joe',LastName:'Smith',RepeatCount:'2',Show:'True'}
 ```
 
 Ez a következő kimenetet eredményezi:
 
-```
+```output
 Joe
 Smith
 Joe
@@ -119,7 +119,7 @@ Ha a paraméter egy tömb, például [array] vagy [string []], használhatja a k
 
 Tesztrunbook a következő nevű paraméter elfogadja *felhasználói*.
 
-```
+```powershell
 Workflow Test-Parameters
 {
    param (
@@ -136,13 +136,13 @@ Workflow Test-Parameters
 
 A következő szöveg használható a user paraméterhez.
 
-```
+```input
 ["Joe","Smith",2,true]
 ```
 
 Ez a következő kimenetet eredményezi:
 
-```
+```output
 Joe
 Smith
 Joe
@@ -154,7 +154,7 @@ Ha a paraméter adattípusa **PSCredential**, akkor megadhatja, hogy egy Azure A
 
 Vegye figyelembe a következő teszt runbook, amely elfogadja a hitelesítő adatok nevű paramétert.
 
-```
+```powershell
 Workflow Test-Parameters
 {
    param (
@@ -166,13 +166,13 @@ Workflow Test-Parameters
 
 A következő szöveg használható a felhasználói paraméter feltéve, hogy létezik egy nevű hitelesítőeszköz *saját hitelesítő adat*.
 
-```
+```input
 My Credential
 ```
 
 Feltéve, hogy a hitelesítő adatokat felhasználónév *jsmith*, ez a következő kimenetet eredményezi:
 
-```
+```output
 jsmith
 ```
 

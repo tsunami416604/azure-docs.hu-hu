@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 2d17f4471383be623cb40276ec1e51257bf3fbce
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 7835674536c43fcb694ad8eaeb18aebb89de5fad
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740374"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262074"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Irányítás az Azure DevTest Labs-infrastruktúra - erőforrások
 Ez a cikk foglalkozik az igazítási és erőforrások kezelését a DevTest Labs a szervezeten belül. 
@@ -35,7 +35,7 @@ Mielőtt egy szervezet elkezdi használni az Azure általános alkalmazásfejles
 - Az egymástól a fejlesztési és éles környezetekben szükséges szegmentálást? 
 - Milyen vezérlők jelennek meg, a stabilitás és növekedés a hosszú távú könnyű?
 
-A **először ajánlott gyakorlat** , hogy tekintse át a szervezet Azure besorolás, ahol a részlegek között éles és a fejlesztői előfizetésekhez foglaltaknak. Az alábbi ábrán a javasolt besorolás lehetővé teszi, hogy egy logikai el a fejlesztési-tesztelési és éles környezetekben. Ezzel a módszerrel egy szervezet bevezethet számlázási kódok minden környezethez külön-külön társított költségek nyomon követéséhez. További információkért lásd: [előíró előfizetés-irányítás](/architecture/cloud-adoption/appendix/azure-scaffold). Emellett használhatja [Azure címkék](../azure-resource-manager/resource-group-using-tags.md) nyomon követésre, és a számlázás szempontjából erőforrások rendezéséhez.
+A **először ajánlott gyakorlat** , hogy tekintse át a szervezet Azure besorolás, ahol a részlegek között éles és a fejlesztői előfizetésekhez foglaltaknak. Az alábbi ábrán a javasolt besorolás lehetővé teszi, hogy egy logikai el a fejlesztési-tesztelési és éles környezetekben. Ezzel a módszerrel egy szervezet bevezethet számlázási kódok minden környezethez külön-külön társított költségek nyomon követéséhez. További információkért lásd: [előíró előfizetés-irányítás](/azure/architecture/cloud-adoption/appendix/azure-scaffold). Emellett használhatja [Azure címkék](../azure-resource-manager/resource-group-using-tags.md) nyomon követésre, és a számlázás szempontjából erőforrások rendezéséhez.
 
 A **második ajánlott gyakorlat** engedélyezése a DevTest-előfizetés az Azure Enterprise Portalon. Lehetővé teszi a szervezetek, amelyek nem érhetők el általában az Azure enterprise előfizetéssel az ügyfél operációs rendszereket futtató. Ezután használja a nagyvállalati szoftverek, amelyen csak azért kell fizetnie a számítási és nem licenceléssel kapcsolatos ne aggódjon. Biztosítja, hogy a kijelölt szolgáltatások, beleértve a gyűjtemény lemezképei iaas, például a Microsoft SQL Server, a számlázás használatalapú csak alapul. Az Azure DevTest-előfizetéssel kapcsolatos információk találhatók [Itt](https://azure.microsoft.com/offers/ms-azr-0148p/) az ügyfelek a nagyvállalati szerződés (EA) és [Itt](https://azure.microsoft.com/offers/ms-azr-0023p/) Használatalapú ügyfelek számára.
 

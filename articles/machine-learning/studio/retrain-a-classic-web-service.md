@@ -3,8 +3,8 @@ title: Klasszikus webszolgáltatás újratanítása |} A Microsoft Docs
 description: Ismerje meg, hogyan programozott módon modellek szoftveres átképezése és frissíteni a webszolgáltatást a újonnan betanított modell használata az Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.custom: (previous ms.author yahajiza)
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: be4f1e4705d1f8357198f01e2fa6d5aae83159c7
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: bd8fb59390bc54e5819183d13f16a557d62ec7ce
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820086"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52260749"
 ---
 # <a name="retrain-a-classic-web-service"></a>Klasszikus webszolgáltatás újratanítása
 A prediktív webszolgáltatás üzembe helyezte az alapértelmezett érték pontozási végpontjához. Alapértelmezett végpontok szinkronban vannak az eredeti tanítási és pontozási kísérletek őrzi meg, és ezért a betanított modell esetében az alapértelmezett végpont nem lehet lecserélni. A webszolgáltatás újratanítása, hozzá kell adnia egy új végpont a webszolgáltatást. 

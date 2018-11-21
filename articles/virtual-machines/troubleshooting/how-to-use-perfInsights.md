@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 29af7ad8b582682189320185c460597af53cf6d8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: cb414abcbbf2db7b7cd6a3d724e50010beeef647
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243913"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275735"
 ---
 # <a name="how-to-use-perfinsights"></a>A PerfInsights használata
 
@@ -204,7 +204,7 @@ A PerfInsights eszköz futtatásához kövesse az alábbi lépéseket:
     cd <the path of PerfInsights folder>
     PerfInsights
     ```
-    ![Képernyőkép a PerfInsights commandline kimeneti](media/how-to-use-perfInsights/PerfInsightsCommandline.png)
+    ![Képernyőkép a PerfInsights parancssori kimenet](media/how-to-use-perfInsights/PerfInsightsCommandline.png)
     
     Az alapszintű futtató PerfInsights forgatókönyvek szintaxisa:
     

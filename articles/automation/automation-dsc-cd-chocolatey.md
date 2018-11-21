@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f685b584b701d2772ec5b3915facb97f0d15658a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4172afc3adf23a05384fec0413465cf491af3a79
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259173"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275299"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Példa: Való Automation konfigurációs és a chocolatey-t használó virtuális gépek folyamatos üzembe helyezés
 
@@ -64,8 +64,10 @@ Ha Ön még nem indul el egy Resource Manager-sablonnal, ez is OK. Számos Power
 
 Jelenleg egy hitelesített (`Connect-AzureRmAccount`) PowerShell-parancssorból: (is igénybe vehet néhány percet, amíg a lekéréses kiszolgálón be van állítva)
 
-    New-AzureRmResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
-    New-AzureRmAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT
+```azurepowershell-interactive
+New-AzureRmResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
+New-AzureRmAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT
+```
 
 Az automation-fiók elérhetősége (más néven helye) valamelyikébe helyezheti: USA keleti RÉGIÓJA 2, USA déli középső Régiója, USA beli államigazgatás – Virginia, Nyugat-Európa, Délkelet-Ázsia, kelet-japán, közép-India és Délkelet-Ausztrália, közép-Kanada, Észak-Európa.
 

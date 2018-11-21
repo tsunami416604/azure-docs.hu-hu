@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 83fff9fa322431983c1d385705ae235a8e818570
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 80b0523f8442e30e6af329263be454fa545933d6
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237264"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275282"
 ---
 # <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>Az Orchestrator-ről az Azure Automation szolgáltatásban (bétaverzió)
 A Runbookok [System Center Orchestrator](https://technet.microsoft.com/library/hh237242.aspx) közben az Azure Automation runbookjai Windows Powershellen alapulnak kifejezetten az Orchestrator számára írt integrációs csomag alapulnak.  [Grafikus runbookok](automation-runbook-types.md#graphical-runbooks) az Azure Automationben rendelkezik egy hasonló megjelenési az Orchestrator runbookjai az eszközök, a PowerShell parancsmagok és a gyermek runbookok jelölő tevékenységeik.
@@ -79,7 +79,9 @@ Következő egy Orchestrator-runbook konvertálja és importálja azt az Azure A
 ### <a name="using-runbook-converter"></a>Runbook Converter használatával
 A szintaxist a **ConvertFrom-SCORunbook** a következő:
 
-    ConvertFrom-SCORunbook -RunbookPath <string> -Module <string[]> -OutputFolder <string>
+```powershell
+ConvertFrom-SCORunbook -RunbookPath <string> -Module <string[]> -OutputFolder <string>
+```
 
 * RunbookPath - exportálási átalakítani a runbookokat tartalmazó fájl elérési útját.
 * Modul - vesszővel tagolt a runbookok tevékenységeket tartalmazó integrációs modulok listáját.
@@ -87,8 +89,9 @@ A szintaxist a **ConvertFrom-SCORunbook** a következő:
 
 A következő példaparancs a runbookok nevű exportálási fájlba konvertálja **MyRunbooks.ois_export**.  Ezek a runbookok használata az Active Directory és a Data Protection Manager integrációs csomagokat.
 
-    ConvertFrom-SCORunbook -RunbookPath "c:\runbooks\MyRunbooks.ois_export" -Module c:\ip\SystemCenter_IntegrationModule_ActiveDirectory.zip,c:\ip\SystemCenter_IntegrationModule_DPM.zip -OutputFolder "c:\runbooks"
-
+```powershell
+ConvertFrom-SCORunbook -RunbookPath "c:\runbooks\MyRunbooks.ois_export" -Module c:\ip\SystemCenter_IntegrationModule_ActiveDirectory.zip,c:\ip\SystemCenter_IntegrationModule_DPM.zip -OutputFolder "c:\runbooks"
+```
 
 ### <a name="log-files"></a>Naplófájlok
 A Runbook átalakító a következő naplófájlokat hoz létre a konvertált runbook ugyanazon a helyen.  Ha a fájlok már léteznek, majd azok felülírja az utolsó átalakítás származó adatokkal.

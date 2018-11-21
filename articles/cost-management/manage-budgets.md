@@ -8,14 +8,14 @@ ms.author: banders
 ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: cost-management
-manager: dougeby
+manager: vitavor
 ms.custom: ''
-ms.openlocfilehash: bbd232c819a11de691c4d3c3209273b064eddf62
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 92236547e2100ab57f4ec6b4953f6c61ec87892d
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963432"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275504"
 ---
 # <a name="manage-budgets"></a>Költségvetések kezelése
 
@@ -27,7 +27,7 @@ Hozzárendelt költségvetése alapján, a költségvetés felhasznált aránya 
 
 Költségvetés szóló jelentésekben megtekintheti a hozzárendelt költségvetést. Felhasználók megtekinthetik, ha a költségkeret-beállítási keresztül, alatt, vagy a használat idővel rendelkező névértéken. Ha bejelöli **mezők megjelenítése/elrejtése** költség, a költségvetés, a összesített költségeit vagy a teljes fennmaradó is megtekintheti a költségvetés jelentés tetején.
 
-Az Azure Cost Management hasonló funkciókat kínál a Cloudyn. Az Azure Cost Management natív Azure cost management megoldás is. Segít a költségek elemzése, hozzon létre és kezelhetők költségvetése exportálhat adatokat, és tekintse át és optimalizálási ajánlásoknak pénzt takaríthat meg. A Cost Management költségvetése kapcsolatos további információkért lásd: [létrehozása és kezelése költségvetése](tutorial-acm-create-budgets.md).
+Az Azure Cost Management a Cloudynhez hasonló funkcionalitást kínál. Az Azure Cost Management egy natív Azure költségkezelő megoldás. Segít kezelni a költségvetéseket, exportálni az adatokat, valamint áttekinteni és végrehajtani az optimalizálási javaslatokat pénzmegtakarítás céljából. A Cost Management költségvetése kapcsolatos további információkért lásd: [létrehozása és kezelése költségvetése](tutorial-acm-create-budgets.md).
 
 ## <a name="create-budgets"></a>Hozzon létre költségvetése
 

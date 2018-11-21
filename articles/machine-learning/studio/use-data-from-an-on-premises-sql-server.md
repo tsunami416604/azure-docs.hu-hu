@@ -3,8 +3,8 @@ title: A helyszíni SQL Server használata az Azure Machine Learning |} A Micros
 description: Az Azure Machine Learning a fejlett elemzéseket végezzenek egy helyszíni SQL Server-adatbázis adatait használják.
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
-ms.openlocfilehash: 9d2c37afebc389f2cfef01cd9fad56ef6ce863ca
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 83ec812f18e7e47f30db79a6d665d60fae9e0e5d
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823078"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263213"
 ---
 # <a name="perform-advanced-analytics-with-azure-machine-learning-using-data-from-an-on-premises-sql-server-database"></a>Bővített analitika az Azure Machine Learning használatával egy helyszíni SQL Server-adatbázisból származó adatokkal
 

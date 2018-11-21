@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8f3185a2c7633ba0cb5a9b266bcddf023d3c36e1
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 1680a7d9fae9f8b8c04383c9f199e4c2ec8b8dfe
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166452"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275231"
 ---
 # <a name="my-first-powershell-runbook"></a>Az első PowerShell-forgatókönyvem
 
@@ -75,7 +75,7 @@ A létrehozott runbook még mindig Piszkozat módban van. Üzemi környezetben v
 4. El szeretné indítani a runbookot, tehát kattintson **Start** majd **Ok** a Runbook indítása lap megnyitásakor.
 5. A feladat oldalát a létrehozott runbook-feladat számára van nyitva. Zárja be ezt a panelt, de ebben az esetben, nyitva hagyja, így megtekintheti a feladat előrehaladását.
 6. A feladat állapota a **feladat összegzése** és megegyezik-e az állapot, a tesztelt, amikor a runbook vonatkozott.<br><br> ![Feladat összegzése](media/automation-first-runbook-textual-powershell/job-pane-status-blade-jobsummary.png)<br>  
-7. Egyszer a runbook állapota látható *befejezve*alatt **áttekintése** kattintson **kimeneti**. A Kimenet panel megnyílik, és láthatja a *Hello World*.<br><br> ![Feladat kimenete](media/automation-first-runbook-textual-powershell/job-pane-status-blade-outputtile.png)<br> 
+7. Egyszer a runbook állapota látható *befejezve*alatt **áttekintése** kattintson **kimeneti**. A Kimenet panel megnyílik, és láthatja a *Hello World*.<br><br> ![Job Output](media/automation-first-runbook-textual-powershell/job-pane-status-blade-outputtile.png) (Feladat kimenete)<br> 
 8. A kimeneti oldal bezárásához.
 9. A forgatókönyv-feladathoz tartozó Streamek panel megnyitásához kattintson **Az összes napló** lehetőségre. A kimeneti streamben csak a *Hello World* eredményt látja, de itt megjelenhetnek egyéb streamek is egy runbook-feladatból, mint például a Részletes vagy a Hiba, ha a forgatókönyv ezekbe ír.<br><br> ![Minden napló](media/automation-first-runbook-textual-powershell/job-pane-status-blade-alllogstile.png)<br>   
 10. Zárja be a Streamek lapon és a feladat oldalát a MyFirstRunbook-PowerShell lapra való visszatéréshez.
@@ -116,7 +116,7 @@ Most, hogy a runbook hitelesíti az Azure-előfizetéshez, erőforrások is keze
 
 1. Miután *Connect-AzureRmAccount*, típus *Start-AzureRmVM-Name 'VMName' - ResourceGroupName 'NameofResourceGroup'* biztosítása és az erőforráscsoport nevét a virtuális gép elindításához.  
    
-   ```
+   ```powershell
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
    Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID `
    -ApplicationID $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
@@ -131,7 +131,7 @@ A runbook jelenleg elindítja a virtuális gépet, hogy Ön szoftveresen kötöt
 
 1. Paraméterek hozzáadása *VMName* és *ResourceGroupName* a runbookhoz, és használja ezeket a változókat a **Start-AzureRmVM** parancsmag az alábbi példában látható módon.
 
-   ```
+   ```powershell
    Param(
     [string]$VMName,
     [string]$ResourceGroupName

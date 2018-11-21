@@ -1,92 +1,89 @@
 ---
-title: Online biztonsági mentés és visszaállítás Azure Cosmos DB-vel |} A Microsoft Docs
-description: Útmutató az automatikus biztonsági mentési és visszaállítási egy Azure Cosmos DB-adatbázisban.
-keywords: biztonsági mentés és visszaállítás, az online biztonsági mentés
-services: cosmos-db
+title: Az automatikus, online biztonsági mentés és igény szerinti adatok visszaállítása az Azure Cosmos DB-ben
+description: Ez a cikk azt ismerteti, hogyan automatikus, online biztonsági mentés és igény szerinti adatok visszaállítása az Azure Cosmos DB működik.
 author: kanshiG
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/15/2017
+ms.date: 11/15/2018
 ms.author: govindk
-ms.openlocfilehash: 657b75e5e3bb5c35bb23221235e62298fc797046
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.reviewer: sngun
+ms.openlocfilehash: 39c4a6108f4a5133e2c77904dcd67bf235801956
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902671"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265134"
 ---
-# <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatikus online biztonsági mentés és visszaállítás Azure Cosmos DB-vel
-Az Azure Cosmos DB az összes biztonsági mentések a rendszeres időközönként automatikusan vesz igénybe. Az automatikus biztonsági mentést készít a teljesítmény vagy az adatbázis-műveleteket rendelkezésre állásának befolyásolása nélkül. A biztonsági mentések külön-külön tárolja, egy másik storage szolgáltatásban, és ezeket a biztonsági mentéseket globálisan replikálva vannak a regionális katasztrófa szembeni ellenálló-képesség. Ha véletlenül törli a Cosmos DB-tárolóhoz, és később megkövetelése az adat-helyreállítás szánt forgatókönyvek az automatikus biztonsági mentést.  
+# <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Online biztonsági mentés és igény szerinti adatok visszaállítása az Azure Cosmos DB-ben
 
-Ez a cikk a redundáns adattárolás érdekében és a Cosmos DB-ben rendelkezésre állási rövid összefoglalásképpen kezdődik, és majd a biztonsági mentések ismerteti. 
+Az Azure Cosmos DB az adatok biztonsági másolatait a rendszeres időközönként automatikusan vesz igénybe. Az automatikus biztonsági mentést készít a teljesítmény vagy az adatbázis-művelet rendelkezésre állásának befolyásolása nélkül. A biztonsági mentések külön-külön tárolja, egy tárolási szolgáltatásban, és ezeket a biztonsági mentéseket globálisan replikálva vannak a regionális katasztrófa szembeni ellenálló-képesség. Az automatikus biztonsági mentést akkor esetekben hasznos, ha véletlenül töröl, vagy frissítse az Azure Cosmos-fiók, adatbázis vagy tároló és az újabb megkövetelése az adat-helyreállítás.
 
-## <a name="high-availability-with-cosmos-db---a-recap"></a>A Cosmos DB használatával – egy röviden összefoglaljuk magas rendelkezésre állás
-A cosmos DB tervezték [globálisan elosztott](distribute-data-globally.md) – lehetővé teszi a méretezhető átviteli sebesség mellett szabályzat driven feladatátvételi és átlátható többkiszolgálós API-k több Azure-régiók között. Az Azure Cosmos DB-ajánlatok [99,99 %-os SLA szerinti rendelkezésre állásának](https://azure.microsoft.com/support/legal/sla/cosmos-db) minden egyrégiós és többrégiós fiókokat az összes enyhe konzisztencia, valamint 99,999 %-os olvasási rendelkezésre állás minden többrégiós adatbázisfiókhoz. Az Azure Cosmos DB az összes írási művelet előtt az ügyfél bosszankodnak véglegesítésére, helyi lemezekre szerint a kvórum replikák helyi adatközponton belül. A Cosmos DB magas rendelkezésre állású helyi tároló támaszkodik, és nem függ semmilyen külső tárolási technológiákat. Emellett ha a fiókot is egynél több Azure-régióhoz tartozik, az írási a rendszer replikálja más régióban. Az adatátviteli és hozzáférési adatok méretezni alacsony késéssel, rendelkezhet, az olvasási régióban az adatbázis-fiókjához társított, tetszés szerint. Több replika tartósan megőrzi a minden olvasási régióban az (replikált) adatokat.  
+## <a name="automatic-and-online-backups"></a>Az automatikus és online biztonsági mentések tiltása
 
-Ahogyan az alábbi ábrán, van-e egy Cosmos DB-tárolók [horizontálisan particionált](partition-data.md). Az alábbi ábrán egy kör "Partíció" helyén, és mindegyik partíció egy replikakészlethez keresztül magas rendelkezésre állású legyen. Ez az a helyi terjesztési belül (az X tengely kimaradásával) egyetlen Azure-régióban. További mindegyik partíció (az annak megfelelő replikakészlethez) van majd globálisan elosztott (például az az ábrán is látható a három régiókban – USA keleti RÉGIÓJA, USA nyugati RÉGIÓJA és közép-India) az adatbázis-fiókjához társított több régióban. A "partíció"beállítása van egy globálisan elosztott entitást alkotó minden régióban (az Y tengely kimaradásával) az adatok több példányát. Az adatbázisfiókhoz társított régiók prioritást rendelhet, és a Cosmos DB transzparens módon átadja a következő régiónak, katasztrófa esetén. Manuálisan is szimulálhatja a feladatátvételt, az alkalmazás-végpontok rendelkezésre állásának teszteléséhez.  
+Az Azure Cosmos DB nem csak az adatokat, de az adatok biztonsági mentését is a magas redundáns és rugalmas regionális katasztrófák. Az automatikus biztonsági másolatok jelenleg négy óránként megnyílik, és bármikor idő a legújabb két biztonsági másolatai. Ha véletlenül törölt vagy az adatok sérültek, forduljon [az Azure-támogatás](https://azure.microsoft.com/support/options/) nyolc órán belül, hogy az Azure Cosmos DB-csapatunk segíthet helyreállítja az adatokat a biztonsági mentésekből.
 
-Az alábbi ábrán a magas fokú redundancia a Cosmos DB használatával.
+A biztonsági mentések teljesítményére vagy az alkalmazás rendelkezésre állásának befolyásolása nélkül kerül. Az Azure Cosmos DB hajt végre, minden további kiosztott átviteli kapacitás (RU) használó vagy a teljesítmény és az adatbázis rendelkezésre állásának befolyásolása nélkül az adatok biztonsági mentése a háttérben.
 
-![Magas fokú redundancia Cosmos DB-vel](./media/online-backup-and-restore/redundancy.png)
-
-![Magas fokú redundancia Cosmos DB-vel](./media/online-backup-and-restore/global-distribution.png)
-
-## <a name="full-automatic-online-backups"></a>Teljes körű, automatikus, online biztonsági mentések
-Hoppá a törölt saját tároló vagy az adatbázis! A Cosmos DB használatával nem csak az adatokat, de az adatok biztonsági mentését is hatékonyan redundáns és rugalmas regionális katasztrófák. A automatikus biztonsági mentése jelenleg körülbelül négy óránként megnyílik, és a legújabb két biztonsági mentést mindig vannak tárolva. Ha az adatok véletlenül eldobott vagy sérült állapotba kerül, lépjen kapcsolatba [az Azure-támogatás](https://azure.microsoft.com/support/options/) nyolc órán belül. 
-
-A biztonsági mentések teljesítményére vagy az adatbázis-műveleteket rendelkezésre állásának befolyásolása nélkül kerül. A cosmos DB a háttérben vesz igénybe a biztonsági mentés felhasználásához a fenntartott egységek és a teljesítményt érintő nélkül, és az adatbázis rendelkezésre állásának befolyásolása nélkül. 
-
-A Cosmos dB-ben tárolt adatokat, ellentétben az automatikus biztonsági mentést az Azure Blob Storage szolgáltatás vannak tárolva. Az alacsony késés és hatékony feltöltési biztosításához a pillanatképet a biztonsági másolat egy példányát az Azure Blob storage-ban és a Cosmos DB-fiókot, az aktuális írási régióba ugyanabban a régióban töltenek fel. Regionális katasztrófa szembeni ellenálló-képesség egy másik régióba georedundáns tárolás (GRS) keresztül minden egyes pillanatképet a biztonsági mentési adatok Azure Blob Storage-ban újra replikálja. Az alábbi ábrán látható, hogy a teljes Cosmos DB-tárolóhoz (az összes három elsődleges partíció USA nyugati RÉGIÓJA, az ebben a példában) van biztonsági mentése egy távoli Azure Blob Storage-fiókot az USA nyugati Régiójában és a GRS replikálja az USA keleti RÉGIÓJA. 
-
-Az alábbi ábrán a rendszeres teljes biztonsági mentést az összes Cosmos DB-entitások GRS Azure Storage-ban.
+Az Azure Cosmos DB tárolja az Azure Blob Storage-automatikus biztonsági mentést, míg a tényleges adatok helyben Azure Cosmos DB. Garantálja az alacsony késés, az a biztonsági mentési pillanatképet az Azure Blob storage-ban és az aktuális írási régióba (vagy egy írási régiót, ha több főkiszolgálós konfigurációt) ugyanabban a régióban tárolja a Cosmos DB-adatbázisfiók. A regionális katasztrófa elleni rugalmasság érdekében minden pillanatképet a biztonsági mentési adatok Azure Blob storage-ban újra replikálása a georedundáns tárolás (GRS) egy másik régióban. A régió, amelyre a biztonsági mentés a rendszer replikálja a forrásrégióban és a regionális párokból érdemes a forrásrégióban társított alapul. További tudnivalókért tekintse meg a [Azure-régióra, georedundáns értékpárok listáját](../best-practices-availability-paired-regions.md) cikk. Ez a biztonsági másolat nem érhetők el közvetlenül. Az Azure Cosmos DB fogja használni a biztonsági mentés, csak akkor, ha egy biztonsági mentési visszaállítás kezdeményezhető.
+A következő kép bemutatja, hogyan egy Azure Cosmos-tárolóhoz, az összes három elsődleges erőforrás partíciót az USA nyugati RÉGIÓJA az USA nyugati Régiójában egy távoli Azure Blob Storage-fiók biztonsági mentésének és replikálja az USA keleti régiója:
 
 ![Rendszeres teljes biztonsági mentést az összes Cosmos DB-entitások GRS Azure Storage-ban](./media/online-backup-and-restore/automatic-backup.png)
 
+## <a name="options-to-manage-your-own-backups"></a>Lehetőség a saját biztonsági másolatainak kezelése
+
+A Azure Cosmos DB SQL API-fiókok esetében is létrehozhat saját biztonsági másolatokat készítenie a következő megközelítések egyikének használatával:
+
+* Használat [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) adatok rendszeres időközönként áthelyezése egy tetszőleges Storage.
+
+* Az Azure Cosmos dB-ben [módosításcsatornáját](change-feed.md) adatokat rendszeres időközönként olvassa a teljes biztonsági mentéseket, valamint a növekményes változásokat és az tárolóban tárolja.
+
 ## <a name="backup-retention-period"></a>Biztonsági másolat megőrzési idejének
-A fentiekben ismertetettek szerint az Azure Cosmos DB pillanatképeket készít az adatok négy óránként a partíció szintjén. Egy adott időpontban csak az utolsó két pillanatfelvételek megmaradnak. Azonban ha a tárolót, illetve az adatbázis törlődik, Azure Cosmos DB összes törölt partícióra belül az adott tároló adatbázis meglévő pillanatképeinek 30 napig őrzi meg.
 
-Az SQL API-hoz Ha meg szeretné tartani a saját pillanatképek megteheti az alábbi lehetőségek használatával:
+Az Azure Cosmos DB az adatok pillanatképeket készít négy óránként. Egy adott időpontban csak az utolsó két pillanatfelvételek megmaradnak. Azonban, ha a tároló vagy az adatbázis törölve van, az Azure Cosmos DB egy adott tároló adatbázis vagy a meglévő pillanatképeket 30 napig őrzi meg.
 
-* Az Exportálás a JSON kapcsoló használata az Azure Cosmos DB-ben [adatáttelepítési eszközét](import-data.md#export-to-json-file) további biztonsági mentések ütemezéséhez.
+## <a name="restoring-data-from-online-backups"></a>Adatok online biztonsági másolatokból való visszaállítással
 
-* Használat [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) adatok rendszeres időközönként áthelyezése.
+Véletlen törlés és az adatok módosítását az alábbi esetek egyikében fordulhat elő:  
 
-* Az Azure Cosmos dB-ben [módosításcsatornáját](change-feed.md) rendszeres időközönként a teljes biztonsági mentéshez, és külön-külön léptetési adatolvasási és a blob cél. 
+* A teljes Azure-Cosmos-fiókot törölték
 
-* Online biztonsági mentések kezeléséhez, az adatokat rendszeres időközönként olvasni módosítási hírcsatorna és a egy másik gyűjteménybe való írás késleltetés. Ez biztosítja, nem rendelkezik az adatok helyreállítását, és azonnal tekintse meg a probléma adatait. 
+* Egy vagy több Azure-Cosmos-adatbázis törlése
 
-> [!NOTE]
-> Ha Ön "Kiépítése átviteli több adatbázis szintjén tárolók" – Ne feledje, a visszaállítás teljes adatbázis fiók szintjén történik. Ön Emellett ellenőrizze bizalommal a segélyszolgálatnak 8 órán belül, ha véletlenül törli a tárolót. Adatok nem állítható vissza, ha 8 órán belül nem forduljon az ügyfélszolgálathoz.
+* Egy vagy több Azure-Cosmos-tárolók törlése
 
-## <a name="restoring-a-database-from-an-online-backup"></a>Adatbázis visszaállítása az online biztonsági mentés
+* Az Azure Cosmos elemek (például dokumentumok) egy tárolóból vannak törölték vagy módosították. Ebben az esetben általában "adatsérülés" néven.
 
-Ha véletlenül törli az adatbázis vagy -tároló, [küldjön egy támogatási jegyet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) vagy [hívja meg az Azure-támogatás](https://azure.microsoft.com/support/options/) az adatok biztonsági másolatból történő visszaállítását a legutóbbi automatikus. Az Azure-támogatás érhető el a kiválasztott csomagok, például csak a Standard, fejlesztői, a támogatás nem érhető el az alapszintű csomaggal. Különböző támogatási csomagok kapcsolatos további információkért lásd: [Azure-támogatási csomagok](https://azure.microsoft.com/support/plans/) lapot. 
+* Egy megosztott ajánlat adatbázis vagy egy megosztott ajánlat adatbázison belül tárolók törlése vagy sérült állapotba kerül
 
-Ha az adatbázis visszaállításához (tartalmazza az esetekben, ahol a rendszer törli-e a tárolóban lévő dokumentumok) adatok sérülése probléma miatt, tekintse meg kell [adatsérülés kezelése](#handling-data-corruption) további lépéseket a sérült adatok elkerülése érdekében szükség szerint felülírják a meglévő biztonsági másolatok. Egy adott vissza kell állítani a biztonsági mentési pillanatkép a Cosmos DB van szükség, hogy az adatok a biztonsági mentési ciklust, hogy a pillanatkép idejére elérhető volt.
+Az Azure Cosmos DB is helyreállíthatja az adatokat a fenti forgatókönyvekben. A visszaállítási folyamat mindig létrehoz egy új Azure Cosmos-fiókot a visszaállított adatok tárolásához. Az új fiók neve nincs megadva, ha lesz a formátum `<Azure_Cosmos_account_original_name>-restored1`. Az utolsó számjegy értéke akkor növekszik, visszaállítás több próbálkozás is. Egy előre létrehozott Azure Cosmos-fiók nem állítható vissza adatokat.
 
-> [!NOTE]
-> Csak kifejezett felhasználói kérések a gyűjtemények és adatbázisok állíthatók vissza. Az ügyfél felelőssége, hogy a tároló vagy az adatbázis törlése után azonnal az adatok megbízhatóan. Ha nem törli a visszaállított adatbázisokat vagy gyűjteményeket, azok költséget számítunk fel kérelemegység, a storage és a kimenő forgalom.
+Egy Azure Cosmos-fiók törlése esetén azt állíthatja vissza az adatok egy fiókba, ezzel a névvel, feltéve, hogy a fiók neve nem szerepel a használatát. Ezekben az esetekben javasoljuk, hogy nem hozza létre újra a fiókot törlés után mert nemcsak megakadályozza, hogy ugyanazt a nevet a visszaállított adatok, de révén felderítése nehezebb visszaállítása a megfelelő fiókot is. 
 
-## <a name="handling-data-corruption"></a>Adatsérülés kezelése
+Egy Azure Cosmos-adatbázis törlése esetén visszaállíthatja a teljes adatbázis vagy a tárolókra, hogy az adatbázis egy részét. Egyben lehetővé teszi a tárolók kiválasztása adatbázis között, és visszaállíthatja őket, és a visszaállított adatok el van helyezve, az új Azure Cosmos-fiókhoz az összes.
 
-Az Azure Cosmos DB megőrzi az adatbázis-fiókot minden partíció utolsó két biztonsági mentéseit. Ez a modell jól működik, ha egy tárolót (gyűjteményt dokumentumok, gráf, tábla), vagy egy adatbázis véletlenül törölt, mivel a legutóbbi verziók egyikével állíthatók vissza. Azonban abban az esetben, amikor a felhasználók vezethet be olyan adatok sérülés, lehet, hogy az Azure Cosmos DB nélkül is működőképesek maradhatnak az adatsérülés, és lehetséges, hogy a sérülés előfordulhat, hogy rendelkezik felülírja a meglévő biztonsági másolatok. 
+Egy vagy több elemet egy tárolón belül véletlenül törölt vagy módosított (az adatok sérülése eset), meg kell adnia történő helyreállításához szükséges időt. Ebben az esetben a legfontosabb jellemzője, ideje. Mivel a tároló élő, a biztonsági mentés még fut, így ha a megőrzési időszak (az alapértelmezett érték nyolc óra) után vár felülírják-e a biztonsági másolatokat. Esetén törölhet az adatok már nem tárolódik, mivel azok nem felül a biztonsági mentési ciklust. A törölt adatbázisok vagy tárolók másolatok 30 napig.
 
-Amint sérülés észlel, a felhasználó törölje a sérült tárolót (gyűjteményt/graph vagy tábla), hogy a biztonsági mentések felülírásra kerüljön a sérült adatok védettek. És a legfontosabb Support kapcsolatba, és egy jegyet az adott kérelem súlyossága 2 előléptetése. 
+Ha Ön oszthatnak ki átviteli kapacitásokat az adatbázis szintjén (azt jelenti, ahol tárolók készletét megosztja a kiosztott átviteli sebesség), a biztonsági mentési és helyreállítási folyamatokat ebben az esetben fordulhat elő, a teljes adatbázis szintjén, és nem az egyes tárolók szintjén. Ezekben az esetekben állítsa vissza a tárolókban kiválasztásával lehetőség nem.
 
-Az alábbi ábrán a véletlen törlés és a tárolóban lévő adatok frissítése az Azure Portalon keresztül container(collection/graph/table) visszaállításhoz a támogatási kérelem létrehozása
+## <a name="migrating-data-to-the-original-account"></a>Adatok áttelepítése az eredeti fiók
 
-![Állítsa vissza a garanciafeltételeknek frissítési tárolója, vagy törölje az adatokat a Cosmos DB-ben](./media/online-backup-and-restore/backup-restore-support.png)
+Az adatok visszaállítása elsődleges célja, hogy törli vagy véletlenül módosítása adatok helyreállítását módon. Ezért azt javasoljuk, először győződjön meg arról, mit sebességhez tartalmaz, a helyreállított adatok tartalmának vizsgálata. Ezután térjen vissza az elsődleges fióknak az adatok áttelepítése működik. Bár a visszaállított fiókot használja, mint a Microsoft-fiók, akkor sem ajánlott beállítás ha termelési számítási feladatokhoz.  
 
-Amikor a visszaállítás történik az ilyen helyzetekben - adatainak visszaállítása egy másik fiókba (utótagja a "-vissza") és a tároló. A visszaállítás nem történik meg, hogy egy alkalommal adja meg a vásárlói adatok érvényesítése és szükség szerint az adatok áthelyezéséhez. A visszaállított tároló-e ugyanabban a régióban, illetve azonos indexelési szabályzatok. Felhasználó, aki előfizetés rendszergazdája vagy társfelügyeletű láthatja a visszaállított fiók.
+Vissza az eredeti Azure-Cosmos-fiók migrálni az adatokat különböző módjai a következők:
 
+* Használatával [Cosmos DB az adatok áttelepítési eszköz](import-data.md)
+* Használatával [az Azure Data Factory]( ../data-factory/connector-azure-cosmos-db.md)
+* Használatával [módosításcsatornáját](change-feed.md) Azure Cosmos DB-ben 
+* Egyéni kód írása
 
-> [!NOTE]
-> Ha az adatok rögzítésére sérülés, vagy távolítsa el őket, kérjük vegye figyelembe a csak tesztelésre, hamarosan ahogyan az a tevékenység visszaállítani, tárolók vagy adatbázis ára extra – kiosztott átviteli sebesség alapján. 
+Törölje a visszaállított fiókok, amint elkészült migrálása, mert azok fog további költségekkel.
+
 ## <a name="next-steps"></a>További lépések
 
-Az adatbázis több adatközpontban replikációt, tekintse meg [terjesztheti az adatait globálisan Cosmos DB-vel](distribute-data-globally.md). 
+Ezután megismerheti a adatainak visszaállítása egy Azure Cosmos-fiók, és ismerje meg, hogyan telepíthet át adatokat egy Azure Cosmos-fiókhoz
 
-A fájl forduljon az Azure ügyfélszolgálatához [jegyet az Azure Portalról](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+* Győződjön meg arról, a visszaállítási kérelem, az Azure ügyfélszolgálatától a [jegyet az Azure Portalról](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+* [Adatok visszaállítása egy Azure Cosmos-fiók](how-to-backup-and-restore.md)
+* [Cosmos DB használatát a módosítási hírcsatornáról](change-feed.md) adatok áthelyezése az Azure Cosmos DB-hez.
+* [Azure Data Factory használata](../data-factory/connector-azure-cosmos-db.md) adatok áthelyezése az Azure Cosmos DB-hez.
 

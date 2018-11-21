@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0ca8e1081b514d5569c84a6364d55e8f49bee533
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 0d31fc0ecb06727aa44d31d832b0bfd5145b7c7d
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238999"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262092"
 ---
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>Orvosbiológiai entitásfelismerés csoportos adatelemzési folyamat (TDSP) sablon használatával
 
@@ -174,7 +174,7 @@ Word2Vec beágyazás felügyeletlen tanulási algoritmus, amely egy Neurális h�
 
 ![Kihagyás Gram modell](./media/scenario-tdsp-biomedical-recognition/skip-gram.png)
 
-A modell hierarchikus Softmax és negatív mintavételt használ a teljesítmény optimalizálása érdekében. (H-SoftMax) hierarchikus SoftMax egy bináris fák adatközpontoknak előállításához. H-SoftMax lényegében lecseréli az egybesimított SoftMax réteg egy hierarchikus réteget, amely a szavakat, amikor elhagyja rendelkezik. Ez lehetővé teszi számunkra, hogy felbontani sorozatát valószínűségi számításoknál, amely velünk a kapcsolatot a költséges normalizálási kiszámításához keresztül minden szó nem menti azokat egy word valószínűségét kiszámítása. Mivel egy elosztott terhelésű bináris fa egy log2 mélysége (|} V |}) (V a a szöveg Szóhasználati), csak azt kell kiértékelése legfeljebb log2 (|} V |}) Szerezzen be egy szót végső valószínűségét csomópontokat. A környezet c adott word w valószínűségét majd egyszerűen a a valószínűségek megfelelő farmkonfiguráció jobb és bal rendre bekapcsolja a Levélcsomópont okozó körülményekről. Mi a Huffman-fa adatkészlet szó gyakorisága alapján annak érdekében, hogy szavakra gyakoribb rövidebb reprezentációinak hozhat létre. További információkért lásd: [ezt a hivatkozást](http://sebastianruder.com/word-embeddings-softmax/).
+A modell hierarchikus Softmax és negatív mintavételt használ a teljesítmény optimalizálása érdekében. (H-SoftMax) hierarchikus SoftMax egy bináris fák adatközpontoknak előállításához. H-SoftMax lényegében lecseréli az egybesimított SoftMax réteg egy hierarchikus réteget, amely a szavakat, amikor elhagyja rendelkezik. Ez lehetővé teszi számunkra, hogy felbontani sorozatát valószínűségi számításoknál, amely velünk a kapcsolatot a költséges normalizálási kiszámításához keresztül minden szó nem menti azokat egy word valószínűségét kiszámítása. Mivel egy elosztott terhelésű bináris fa egy log2 mélysége (|} V |}) (V a a szöveg Szóhasználati), csak azt kell kiértékelése legfeljebb log2 (|} V |}) Szerezzen be egy szót végső valószínűségét csomópontokat. A környezet c adott word w valószínűségét majd egyszerűen a a valószínűségek megfelelő farmkonfiguráció jobb és bal rendre bekapcsolja a Levélcsomópont okozó körülményekről. Mi a Huffman-fa adatkészlet szó gyakorisága alapján annak érdekében, hogy szavakra gyakoribb rövidebb reprezentációinak hozhat létre. További információkért lásd: [ezt a hivatkozást](http://ruder.io/word-embeddings-softmax/).
 Származó lemezkép [Itt](https://ahmedhanibrahim.wordpress.com/2017/04/25/thesis-tutorials-i-understanding-word2vec-for-word-embedding-i/).
 
 ##### <a name="visualization"></a>Megjelenítés

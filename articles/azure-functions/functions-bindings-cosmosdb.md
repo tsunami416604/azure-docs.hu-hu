@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 6f3b568fb23de51990f96a86cdc2b1814afe4530
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3d4c9e974f92f26b93900318c01dc8a659d8edbe
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249916"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276210"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Az Azure Functions az Azure Cosmos DB-kötéseket 1.x
 
 > [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
 > * [1-es verzió](functions-bindings-cosmosdb.md)
-> * [2. verzió](functions-bindings-cosmosdb-v2.md)
+> * [2-es verzió](functions-bindings-cosmosdb-v2.md)
 
 Ez a cikk azt ismerteti, hogyan használható a [Azure Cosmos DB](..\cosmos-db\serverless-computing-database.md) kötések az Azure Functions szolgáltatásban. Az Azure Functions támogatja a-trigger, bemeneti és kimeneti kötések az Azure Cosmos DB.
 
@@ -1103,9 +1103,9 @@ A következő JavaScript-kódot:
 
 <a name="infsharp"></a>
 
-### <a name="input---f-examples"></a>Bemenet - F #-példák
+### <a name="input---f-examples"></a>Bemenet - F# példák
 
-Az alábbi példa bemutatja a Cosmos DB bemeneti kötéssel egy *function.json* fájl és a egy [F #-függvény](functions-reference-fsharp.md) , amely a kötés használja. A függvény beolvassa az egyetlen dokumentum, és frissíti a dokumentum szöveges érték.
+Az alábbi példa bemutatja a Cosmos DB bemeneti kötéssel egy *function.json* fájl és a egy [ F# függvény](functions-reference-fsharp.md) , amely a kötés használja. A függvény beolvassa az egyetlen dokumentum, és frissíti a dokumentum szöveges érték.
 
 Itt van a kötési adatait a *function.json* fájlt:
 
@@ -1123,7 +1123,7 @@ Itt van a kötési adatait a *function.json* fájlt:
 
 A [konfigurációs](#input---configuration) szakasz mutatja be ezeket a tulajdonságokat.
 
-Az F #-kód itt látható:
+Íme a F# kódot:
 
 ```fsharp
     (* Change input document contents using Azure Cosmos DB input binding *)
@@ -1147,7 +1147,7 @@ Ebben a példában van szükség egy `project.json` fájlt, amely meghatározza 
 }
 ```
 
-Hozzáadása egy `project.json` fájlt [F # csomagkezelés](functions-reference-fsharp.md#package).
+Hozzáadása egy `project.json` fájlt [ F# felügyeleti csomag](functions-reference-fsharp.md#package).
 
 ## <a name="input---attributes"></a>Bemenet - attribútumok
 
@@ -1175,7 +1175,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 
 ## <a name="input---usage"></a>Bemenet - használat
 
-C# és az F #-függvények a függvény kilép sikeresen, ha a bemeneti dokumentum nevű bemeneti paraméterek keresztül végzett módosítások automatikusan megmaradnak. 
+A C# és F# funkciók, ha a függvény kilép sikeres, a bemeneti dokumentum nevű bemeneti keresztül végzett módosítások automatikusan megmaradnak a paramétereket. 
 
 JavaScript-függvények, a frissítések nem automatikusan történik függvény kilépéskor. Ehelyett használjon `context.bindings.<documentName>In` és `context.bindings.<documentName>Out` frissítéséhez. Tekintse meg a [JavaScript példa](#input---javascript-example).
 
@@ -1196,7 +1196,7 @@ Lásd még a [bemeneti példa](#input---c-examples) használó `DocumentClient`.
 
 [Hagyja ki a kimeneti példa](#output---attributes)
 
-### <a name="ouput---c-examples"></a>Kimeneti - példák C#
+### <a name="output---c-examples"></a>Kimenete – C# példák
 
 Ez a szakasz tartalmazza az alábbi példák:
 
@@ -1477,9 +1477,9 @@ A következő JavaScript-kódot:
 
 [Hagyja ki a kimeneti példa](#output---attributes)
 
-### <a name="output---f-examples"></a>Kimenet – F #-példák
+### <a name="output---f-examples"></a>Kimenete – F# példák
 
-Az alábbi példa bemutatja egy Azure Cosmos DB kimeneti kötésének az egy *function.json* fájl és a egy [F #-függvény](functions-reference-fsharp.md) , amely a kötés használja. A függvény egy bemeneti várólista-kötést használja egy üzenetsor, amely megkapja a JSON a következő formátumban:
+Az alábbi példa bemutatja egy Azure Cosmos DB kimeneti kötésének az egy *function.json* fájl és a egy [ F# függvény](functions-reference-fsharp.md) , amely a kötés használja. A függvény egy bemeneti várólista-kötést használja egy üzenetsor, amely megkapja a JSON a következő formátumban:
 
 ```json
 {
@@ -1515,7 +1515,7 @@ Itt van a kötési adatait a *function.json* fájlt:
 ```
 A [konfigurációs](#output---configuration) szakasz mutatja be ezeket a tulajdonságokat.
 
-Az F #-kód itt látható:
+Íme a F# kódot:
 
 ```fsharp
     open FSharp.Interop.Dynamic
@@ -1553,7 +1553,7 @@ Ebben a példában van szükség egy `project.json` fájlt, amely meghatározza 
 }
 ```
 
-Hozzáadása egy `project.json` fájlt [F # csomagkezelés](functions-reference-fsharp.md#package).
+Hozzáadása egy `project.json` fájlt [ F# felügyeleti csomag](functions-reference-fsharp.md#package).
 
 ## <a name="output---attributes"></a>Kimenet – attribútumok
 

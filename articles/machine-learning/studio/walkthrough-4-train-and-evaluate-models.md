@@ -3,8 +3,8 @@ title: '4. lépés: Betanítása és kiértékelése a prediktív elemzési mode
 description: 'A fejlesztés egy prediktív megoldás bemutatója 4. lépés: Train, pontszám, és az Azure Machine Learning Studio több modell kiértékelése.'
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 069e2f4d2cb6ae1e9890610bbace5298c62eee75
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: d0277db665259d485c5a5a06f0013f3c0d6a177c
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821021"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261785"
 ---
 # <a name="walkthrough-step-4-train-and-evaluate-the-predictive-analytic-models"></a>Az útmutató 4. lépése: A prediktív elemzési modellek betanítása és kiértékelése
 Ez a témakör ismerteti a forgatókönyv negyedik lépésében [az Azure Machine Learning prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md)

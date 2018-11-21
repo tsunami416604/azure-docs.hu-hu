@@ -2,7 +2,7 @@
 title: Azure vállalati költségek nézet hibaelhárítása |} A Microsoft Docs
 description: Megtudhatja, hogyan lehetséges, hogy az Azure Portalon szervezeti költség nézetekkel kapcsolatos problémák megoldásához.
 author: rthorn17
-manager: rithorn
+manager: adpick
 editor: ''
 ms.assetid: ''
 ms.service: billing
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/22/2017
 ms.author: cwatson
-ms.openlocfilehash: 853307f24574e6cea5841bcace815fea2bbcf2c8
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: be74714667c2fed57a797a972ddcd7949cae5933
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47390664"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52274670"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>Vállalati költségek nézet hibaelhárítása 
 

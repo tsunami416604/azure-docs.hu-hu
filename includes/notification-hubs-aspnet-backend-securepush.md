@@ -1,6 +1,19 @@
-## <a name="webapi-project"></a>WebAPI projekt
-1. A Visual Studióban nyissa meg a **AppBackend** a projekt a **felhasználók értesítése** oktatóanyag.
-2. Notifications.cs, cserélje le a teljes **értesítések** osztály a következő kóddal. Ne felejtse el a helyőrzőket cserélje le a kapcsolati karakterlánc (teljes hozzáférés) az értesítési központot, és a központ nevét. Ezt úgy szerezheti be ezeket az értékeket a [Azure-portálon](http://portal.azure.com). Ez a modul most a különböző biztonságos értesítések küldendő jelöli. A megvalósítás az értesítések tárolódnak adatbázis; Az egyszerűség kedvéért ebben az esetben tároljuk őket a memóriában.
+---
+author: spelluru
+ms.service: service-bus
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: spelluru
+ms.openlocfilehash: b8cf4217ca6c80be998b92e71c3ba29c4f68bce2
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52270373"
+---
+## <a name="webapi-project"></a>WebAPI-projekt
+1. A Visual Studióban nyissa meg a **AppBackend** a létrehozott projekt a **– felhasználók értesítése** oktatóanyag.
+2. Cserélje le az egész Notifications.cs **értesítések** osztályban az alábbi kódra. Győződjön meg arról, cserélje le a helyőrzőket az értesítési központot, és a központ neve (a teljes hozzáférés) kapcsolati karakterláncra. Szerezheti be ezeket az értéteket a [az Azure portal](http://portal.azure.com). Ez a modul mostantól jelöli a különböző biztonságos értesítéseket küld el. Egy teljes körű megvalósítás az értesítéseket fog tárolja egy adatbázisban; Az egyszerűség kedvéért ebben az esetben tároljuk őket a memóriában.
    
         public class Notification
         {
@@ -40,7 +53,7 @@
             }
         }
 
-1. NotificationsController.cs, cserélje le a kódot a **NotificationsController** osztály definícióját a következő kóddal. Ez az összetevő valósítja meg az értesítés biztonságosan beolvasása az eszköz olyan módon, és is lehetővé teszi a (a jelen oktatóanyag céljából) való biztonságos leküldéses az eszközökön. Vegye figyelembe, hogy az értesítési központnak küldött, amikor csak értesítést fog kapni, a nyers azonosítójú az értesítés (és nem tényleges üzenet):
+1. A notificationscontroller.cs fájlhoz, cserélje le a kódot a **NotificationsController** osztálydefiníciót az alábbi kódra. Ez az összetevő valósítja meg az eszköz biztonságos beolvasni az értesítést úgy, és azt is lehetővé teszi (a jelen oktatóanyagban), az eszközök biztonságos leküldést indíthassanak. Vegye figyelembe, hogy amikor az értesítési központ az értesítést küld, azt csak nyers értesítés küldése azonosítójú értesítés (és nem tényleges üzenet):
    
        public NotificationsController()
        {
@@ -75,8 +88,8 @@
         }
 
 
-Vegye figyelembe, hogy a `Post` metódus most nem küld egy bejelentési értesítést. Az értesítés-azonosítója és a nem bizalmas tartalmat tartalmazó nyers értesítést küld. Emellett győződjön meg arról, a küldési művelet, amelynek nincs konfigurálva az értesítési központ, a hitelesítő adatokat, azok hibákat eredményez a platformok megtételére.
+Vegye figyelembe, hogy a `Post` metódus már nem küld egy bejelentési értesítést. Csak az értesítés azonosítója és a nem bizalmas tartalmat tartalmazó nyers értesítést küld. Ügyeljen arra, hogy hozzá megjegyzéseket a küldési művelet a platformokhoz, amelyhez nem rendelkezik hitelesítő adatai az értesítési központ konfigurálva, hogy hibákat eredményez.
 
-1. Most azt újra telepíti ezt a webalkalmazást az Azure-webhely annak érdekében, hogy minden eszköz érhető el. Kattintson jobb gombbal az **AppBackend** projektre, és válassza a **Publish** (Közzététel) lehetőséget.
-2. A közzétételi célként válassza az Azure webhelyén. Jelentkezzen be az Azure-fiókjával, és válassza ki a meglévő vagy új webhely létrehozása, és jegyezze fel a a **URL-címre** tulajdonságot a **kapcsolat** fülre. Az oktatóanyag további részében erre az URL-címre fogunk hivatkozni a *háttérrendszer végpontjaként*. Kattintson a **Publish** (Közzététel) gombra.
+1. Most már azt fogja újra az alkalmazást üzembe helyezni egy Azure-webhelyen annak érdekében, hogy minden eszközről elérhető. Kattintson jobb gombbal az **AppBackend** projektre, és válassza a **Publish** (Közzététel) lehetőséget.
+2. A közzétételi célként válassza ki Azure-webhelyen. Jelentkezzen be az Azure-fiókjával, és válassza ki egy meglévő vagy új webhely, és jegyezze fel a a **cél URL-címe** tulajdonságot a **kapcsolat** fülre. Az oktatóanyag további részében erre az URL-címre fogunk hivatkozni a *háttérrendszer végpontjaként*. Kattintson a **Publish** (Közzététel) gombra.
 

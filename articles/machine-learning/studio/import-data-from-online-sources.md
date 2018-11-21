@@ -4,8 +4,8 @@ description: Hogyan lehet importálni a betanítási adatok Azure Machine Learni
 keywords: adatok, az adatok formátuma, adattípusok, adatforrások, betanítási adatok importálása
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: f48bb2e81114793c1c28227aacebaeedce693d63
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 6412d431b0258d681d8d9bd8cb3a88798a0d81cd
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820936"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262893"
 ---
 # <a name="import-data-into-azure-machine-learning-studio-from-various-online-data-sources-with-the-import-data-module"></a>Adatok importálása az Azure Machine Learning Studióba különböző online adatforrásokból az Adatok importálása modullal
 Ez a cikk bemutatja a támogatási online adatok importálása különböző forrásokból, és ezekből a forrásokból származó adatok áthelyezése az Azure Machine Learning-kísérletbe szükséges információkat.

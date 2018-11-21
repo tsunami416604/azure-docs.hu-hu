@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 68488788f73c9662b5d1eaa3b670f2120941defc
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: e2326f56ad367f744bc7895bc8c4bfd6f32d0310
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616486"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264879"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Az Azure Monitor riasztások hibaelhárítása  
 ## <a name="overview"></a>Áttekintés
@@ -61,7 +61,7 @@ Mivel a parancs tartalmazza *... összegzés szempontja* és a két változót (
 
 ![Több értékkel rendelkező metrika mérési lekérdezés végrehajtása](./media/monitor-alerts-unified/LogMMQuery.png)
 
-Mivel "Összesített esetén" $table – az adatok van alapján vannak rendezve, $table oszlopot (ahogy (piros); majd azt a csoportot, és keresse meg a mező "Összesített esetén" típusú (vagyis) $table – például: availabilityResults egy diagram/entitás (a legyenek kiemelve a narancssárga) is figyelembe veszi a értékei. Az entitás/érték diagram – riasztási szolgáltatás ellenőrzi (a bemutatott zöld) előforduló három egymás utáni incidensek mely a riasztás első aktiválódik a "availabilityResults" érték. Hasonlóképpen ha három egymás utáni incidensek - $table semmilyen más érték a egy másik riasztási értesítés akkor aktiválódik, ugyanazon; a riasztási szolgáltatás automatikusan rendezési egy diagram/entitás (ahogy narancssárga) szereplő értékek időpontig.
+Mivel "Összesített esetén" $table – az adatok van alapján vannak rendezve, $table oszlopot (ahogy (piros); majd azt a csoportot, és keresse meg a mező "Összesített esetén" típusú (vagyis) $table – például: availabilityResults egy diagram/entitás (a legyenek kiemelve a narancssárga) is figyelembe veszi a értékei. Az entitás/érték diagram – riasztási szolgáltatás ellenőrzi (a bemutatott zöld) előforduló három egymás utáni incidensek mely a riasztás első aktiválódik a "availabilityResults" érték. Hasonlóképpen ha három egymás utáni incidensek - $table semmilyen más érték a egy másik riasztási értesítés akkor aktiválódik, ugyanarra a dologra; a riasztási szolgáltatás automatikusan rendezési egy diagram/entitás (ahogy narancssárga) szereplő értékek időpontig.
 
 Most tegyük fel, metrikamérési riasztási szabály módosítva lett, és a lekérdezés: `search *| summarize AggregatedValue = count() by bin(timestamp, 1h)` többi előtt, beleértve a riasztási logika három egymás utáni incidensek esetén is ugyanaz, mint a fennmaradó a config. "Aggregate során" lehetőség alapértelmezés szerint ebben az esetben lesz: időbélyeg. Mivel csak egy érték van megadva, a lekérdezés szempontja... timestamp (vagyis); hasonló végrehajtási végén a korábbi példában a kimeneti lenne, az alábbi ábra szemlélteti. 
 
