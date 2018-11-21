@@ -336,7 +336,7 @@ items:
     - name: Tartománycsomagok
       href: ../desktop-workbench/reference-python-package-overview.md
       items:
-      - name: Számítógépes látástechnológiai csomag
+      - name: A számítógépes látástechnológiai csomag elavult
         items:
         - name: Csomag telepítése
           href: https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision
@@ -350,7 +350,7 @@ items:
             href: ../desktop-workbench/how-to-build-deploy-image-similarity-models.md
           - name: Modell pontosságának javítása
             href: ../desktop-workbench/how-to-improve-accuracy-for-computer-vision-models.md
-      - name: Előrejelzési csomag
+      - name: Az előrejelzési csomag elavult
         items:
         - name: Áttekintés és telepítés
           href: https://docs.microsoft.com/python/api/overview/azure-machine-learning/forecasting-overview
@@ -360,7 +360,7 @@ items:
         href: reference-fpga-package-overview.md
       - name: Szövegelemzési csomag
         items:
-        - name: Áttekintés és telepítés
+        - name: Az áttekintés és telepítés elavult
           href: https://docs.microsoft.com/python/api/overview/azure-machine-learning/textanalytics
         - name: Szövegbesorolási modellek létrehozása és üzembe helyezése
           href: ../desktop-workbench/how-to-build-deploy-text-classification-models.md
@@ -368,9 +368,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: Régi problémák
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 71dc3f256a2d145dbb645feb7f309f5c760bf20a
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 14ba5fa2b31c6695737b3250521d0904c950cf30
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163979"
+ms.locfileid: "52264896"

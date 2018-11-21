@@ -13,17 +13,28 @@ items:
     items:
     - name: Adatok streamelése – Event Hubs
       href: ingest-data-event-hub.md
+    - name: Adatok streamelése – Kafka
+      href: ingest-data-kafka.md
     - name: Adatok kötegelése – Python
       href: python-ingest-data.md
-    expanded: true
+    - name: Adatok kötegelése – Node SDK
+      href: node-ingest-data.md
+    - name: Adatok kötegelése – .Net Standard SDK
+      href: net-standard-ingest-data.md
   - name: Adatok lekérdezése
     items:
     - name: Webes felhasználói felület
       href: web-query-data.md
     - name: Python
       href: python-query-data.md
-    expanded: true
-  expanded: true
+  - name: Adatok vizualizációja
+    items:
+    - name: Power BI – összekötő
+      href: power-bi-connector.md
+    - name: Power BI – importált lekérdezés
+      href: power-bi-imported-query.md
+    - name: Power BI – SQL-lekérdezés
+      href: power-bi-sql-query.md
 - name: Oktatóanyagok
   items:
   - name: Adatok megjelenítése – Power BI
@@ -31,17 +42,25 @@ items:
 - name: Alapelvek
   items:
   - name: Az adatbetöltés áttekintése
+    displayName: pipelines, connectors, plugins, Python, .NET, Java, Node, REST
     href: ingest-data-overview.md
+  - name: Idősorozat-elemzések
+    href: time-series-analysis.md
+  expanded: true
 - name: Útmutatók
   items:
   - name: Lekérdezések írása
     href: write-queries.md
   - name: Mintaadatok betöltése
     href: ingest-sample-data.md
+  - name: Adat törlése
+    href: delete-data.md
   - name: Adatbázis-engedélyek kezelése
     href: manage-database-permissions.md
   - name: Fürt állapotának ellenőrzése
     href: check-cluster-health.md
+  - name: Fürtök skálázásának kezelése
+    href: manage-cluster-scaling.md
   - name: Hibaelhárítás
     items:
     - name: Fürt létrehozása
@@ -52,11 +71,39 @@ items:
       href: troubleshoot-database-table.md
 - name: Referencia
   items:
-  - name: Nyelvi referencia
-    href: https://aka.ms/kustolangref
-ms.openlocfilehash: 6373afdadf9d3916cb8e10be976d141ba55177cf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+  - name: Lekérdezés nyelve
+    href: /azure/kusto/query/
+  - name: Felügyeleti parancsok
+    href: /azure/kusto/management/
+  - name: API-k
+    href: /azure/kusto/api/
+  - name: Eszközök
+    href: /azure/kusto/tools/
+  - name: Alapelvek
+    href: /azure/kusto/concepts/
+- name: További források
+  items:
+  - name: Blog
+    href: https://azure.microsoft.com/blog/tag/azure-data-explorer/
+  - name: Fórumok
+    items:
+    - name: Stack Overflow
+      href: https://stackoverflow.com/questions/tagged/azure-data-explorer
+    - name: Microsoft Tech Community
+      href: https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto
+    - name: MSDN-fórum
+      href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto
+  - name: Termékkel kapcsolatos visszajelzés
+    href: http://aka.ms/adefeedback
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/data-explorer/
+  - name: Költségbecslő
+    href: http://aka.ms/adecostestimator
+  - name: Szolgáltatási hírek
+    href: https://azure.microsoft.com/updates/?product=data-explorer
+ms.openlocfilehash: 70314ad2038e61583ea2d3cccad40062d423856b
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964939"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276261"

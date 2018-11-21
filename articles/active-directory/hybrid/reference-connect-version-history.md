@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1f74538deab38db536bfcdc6d0f703d455039d51
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b42dc0f86a70feb06b32a20c7cbdd513920f65d6
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235904"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263521"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect: Verziókiadások
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
@@ -36,6 +36,17 @@ Lépések az Azure AD Connect frissítése | Különböző módszerekkel [friss�
 Szükséges engedélyek | Tekintse meg a frissítés alkalmazásához szükséges engedélyek [fiókok és engedélyek](reference-connect-accounts-permissions.md#upgrade).
 
 Letöltés |} [Töltse le az Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
+
+
+## <a name="12670"></a>1.2.67.0
+
+### <a name="release-status"></a>Kiadási állapot 
+
+11/19/2018:, amely a letölthető
+
+### <a name="fixed-issues"></a>Hibák kijavítva:
+
+Ez a gyorsjavítás build regresszió az javítja az előző build ahol Jelszóvisszaíró sikertelen lesz, amikor egy ad hozzá tartományvezérlőt a Windows Server 2008/R2 használatával.
 
 ## <a name="12650"></a>1.2.65.0 
 

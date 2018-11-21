@@ -100,12 +100,10 @@ items:
       href: ecommerce-retail-catalog-moderation.md
     - name: Videók és átiratok moderálása
       href: video-transcript-moderation-review-tutorial-dotnet.md
-- name: Példák
-  items:
-  - name: .NET SDK-minták
-    href: samples-dotnet.md
-  - name: REST API-minták C# nyelven
-    href: samples-rest.md
+  - name: Fiókadatok exportálása vagy törlése
+    href: ./export-delete-data.md
+  - name: Azure webinárium-sorozat
+    href: https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html
 - name: Referencia
   items:
   - name: Content Moderator API
@@ -122,29 +120,33 @@ items:
       href: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator
 - name: További források
   items:
+  - name: Példák
+    items:
+    - name: .NET SDK-minták
+      href: samples-dotnet.md
+    - name: REST API-minták C# nyelven
+      href: samples-rest.md
+    - name: Egyéb Azure-minták
+      href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=content+moderator
   - name: GYIK
     href: FAQs.md
-  - name: Nyelvi és régiós támogatás
-    href: language-support.md
-  - name: Régiónkénti rendelkezésre állás
-    href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Díjszabás és korlátok
     href: https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator
-  - name: Fiókadatok exportálása vagy törlése
-    href: ./export-delete-data.md
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/559960-content-moderator
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
   - name: Tudásbázis
     href: https://cognitive.uservoice.com/knowledgebase/topics/132073-content-moderator
+  - name: Nyelvi támogatás
+    href: language-support.md
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
+  - name: Régiónkénti rendelkezésre állás
+    href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
-  - name: Igény szerinti webinárium
-    href: https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html
-ms.openlocfilehash: 69f3e50614340b610438cdae1cac20e263d0f618
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+    href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
+ms.openlocfilehash: f7072fef1d0dea42d20f5cdd5a98dd5c7c20713f
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852214"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276414"

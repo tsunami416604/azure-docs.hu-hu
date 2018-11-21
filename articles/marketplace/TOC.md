@@ -5,7 +5,6 @@
 ### [Hogyan válhat közzétevővé a Marketplace-en](./become-publisher.md)  
 #### [Microsoft-fiók létrehozása](./guidelines.md)
 #### [Regisztrálás a fejlesztői központban](./register-dev-center.md) 
-#### [Számlázási lehetőségek az Azure Marketplace-en](./billing-options-azure-marketplace.md)  
 #### [Az Azure-partnererőforrások ügyfelek általi használatának nyomon követése](./azure-partner-customer-usage-attribution.md)
 #### [Érdeklődők kezelése a felhőbeli piactérhez](./lead-management-for-cloud-marketplace.md)
 
@@ -13,7 +12,7 @@
 
 ### [A megoldás közzétételi beállításának meghatározása](./determine-your-listing-type.md)  
 
-### Közzétételi útmutató ajánlattípusok szerint 
+### [Közzétételi útmutató ajánlattípusok szerint](./publisher-guide-by-offer-type.md)
 #### [Virtuális gépek](./marketplace-virtual-machines.md)
 #### [Azure-alkalmazások: Megoldássablonok](./marketplace-solution-templates.md)
 #### [Azure-alkalmazások: Felügyelt alkalmazások](./marketplace-managed-apps.md)
@@ -27,6 +26,8 @@
 ### [Vállalatfejlesztés a piactéren](./grow-your-business-with-azure-marketplace.md)  
 #### [Előnyben részesített megoldások](./preferred-solutions.md) 
 #### [Marketplace-tartalmak érvényesítése](./marketplace-criteria-content-validation.md)
+#### [Személyes ajánlatok](./private-offers.md)
+#### [Marketplace ‎Kereskedelmi tranzakcióval kapcsolatos képességek és szempontok](./marketplace-commercial-transaction-capabilities-and-considerations.md)
 
 ### [Azure Marketplace- és AppSource-támogatás](./support-azure-marketplace.md)  
 
@@ -34,6 +35,16 @@
 <!-- Following section is for Cloud Partner Portal (CPP). -->
 
 # [Felhőpartnerportál](./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md) 
+
+## [A portál bemutatása](./cloud-partner-portal/portal-tour/cpp-portal-tour.md)
+### [Navigálás a portálon](./cloud-partner-portal/portal-tour/cpp-portal-navigation.md)
+### [Új ajánlat menü](./cloud-partner-portal/portal-tour/cpp-new-offer-menu.md)
+### [Minden ajánlat oldal](./cloud-partner-portal/portal-tour/cpp-all-offers-page.md)
+### [Jóváhagyások oldal](./cloud-partner-portal/portal-tour/cpp-approvals-page.md)
+### [Minden közzétevő oldal](./cloud-partner-portal/portal-tour/cpp-all-publishers-page.md)
+### [Felhasználók oldal](./cloud-partner-portal/portal-tour/cpp-users-page.md)
+### [Naplózási előzmények oldal](./cloud-partner-portal/portal-tour/cpp-history-page.md)
+### [Megállapítások oldal](./cloud-partner-portal/portal-tour/cpp-insights-page.md)
 
 ## A portál kezelése
 ### [Fiók regisztrálása a Fejlesztői központban](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)

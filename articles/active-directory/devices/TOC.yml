@@ -18,13 +18,18 @@ items:
   - name: Az Azure AD-csatlakozás konfigurálása a Windows 10 első futtatásakor
     href: azuread-joined-devices-frx.md
   expanded: false
+- name: Alapelvek
+  items:
+  - name: Egyszeri bejelentkezés a helyszíni erőforrásokba
+    href: azuread-join-sso.md
+  expanded: false
 - name: Útmutatók
   items:
   - name: Eszközök kezelése az Azure Portalon
     href: device-management-azure-portal.md
   - name: Elavult eszközök kezelése
     href: manage-stale-devices.md
-  - name: Az Azure AD-csatlakozás megtervezése
+  - name: Az Azure AD-csatlakozás implementálásának megtervezése
     href: azureadjoin-plan.md
   - name: A hibrid Azure AD-csatlakozás implementálásának megtervezése
     href: hybrid-azuread-join-plan.md
@@ -65,9 +70,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-active-directory
   - name: Videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: aa3be36e660c1e0a68446166d3ec90a8a24fa3e8
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 54f55af14658fa02999d7f134937fcd357d83d75
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092321"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276495"
