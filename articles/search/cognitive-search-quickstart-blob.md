@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 23a62197d20901347be247d331e21d076bcf9e83
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: bc88ca63f14c5480210455abcf403771b6a4c232
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288033"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264126"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Rövid útmutató: Kognitív keresési folyamat létrehozása képességek és mintaadatok használatával
 
@@ -33,9 +33,16 @@ A kognitív keresést a következő régiókban létrehozott Azure Search-szolg�
 * USA nyugati középső régiója
 * USA déli középső régiója
 * USA keleti régiója
+* USA 2. keleti régiója
+* USA nyugati régiója, 2.
+* Közép-Kanada
 * Nyugat-Európa
+* Az Egyesült Királyság déli régiója
 * Észak-Európa
+* Dél-Brazília
 * Délkelet-Ázsia
+* Közép-India
+* Kelet-Ausztrália
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 

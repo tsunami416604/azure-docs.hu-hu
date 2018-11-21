@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: f0e5b9d6e873cad1a997bda2ee286c92ad3818d3
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: HT
+ms.openlocfilehash: 3ffc361421f57b405c284742b662a833b178f9da
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959460"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52260323"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Azure IoT Central-alkalmazás létrehozása
 
@@ -60,4 +60,4 @@ Egy új Azure IoT Central-alkalmazás létrehozásának megkezdéséhez válassz
 Ebben a rövid útmutatóban létrehozott egy IoT Central-alkalmazást. A következő javasolt lépés:
 
 > [!div class="nextstepaction"]
-> [Ismerkedés az IoT Centrallal](#overview-iot-central-tour)
+> [Ismerkedés az IoT Centrallal](https://docs.microsoft.com/azure/iot-central/overview-iot-central-tour)

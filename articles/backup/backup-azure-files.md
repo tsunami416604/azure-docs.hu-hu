@@ -8,12 +8,12 @@ ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 09bddd1c1d9589dbba0acf319ba43ea54c0c737b
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.openlocfilehash: 14a6e295eebcc3a7cb3f190a09afd65b0e959d7e
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221455"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265338"
 ---
 # <a name="back-up-azure-file-shares"></a>Azure-fájlmegosztások biztonsági mentése
 Ez a cikk azt ismerteti, hogyan használhatja az Azure Portalt az [Azure-fájlmegosztások](../storage/files/storage-files-introduction.md) biztonsági mentésére és visszaállítására.
@@ -31,7 +31,7 @@ Ebből az útmutatóból a következőket tanulhatja meg:
 Mielőtt biztonsági mentést készít egy Azure-fájlmegosztásról, győződjön meg arról, hogy az a [támogatott tárfióktípusok](backup-azure-files.md#limitations-for-azure-file-share-backup-during-preview) közé tartozik. Ennek ellenőrzését követően biztosíthatja a fájlmegosztások védelmét.
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Az Azure-fájlmegosztás biztonsági mentésének korlátozásai az előzetes verzióban
-Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban érhető el. Az Azure-fájlmegosztások nem támogatják az alábbi biztonsági mentési forgatókönyveket:
+Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban érhető el. Azure-fájlmegosztások az általános célú v1 és az általános célú v2-tárfiókok támogatottak. Az Azure-fájlmegosztások nem támogatják az alábbi biztonsági mentési forgatókönyveket:
 - A tárfiókokban lévő Azure-fájlmegosztások védelme nem biztosítható [írásvédett georedundáns tárolás](../storage/common/storage-redundancy-grs.md) (RA-GRS) replikációval*.
 - Nem biztosítható az Azure-fájlmegosztások védelme olyan tárfiókokban, amelyeken engedélyezve vannak a virtuális hálózatok vagy a tűzfal.
 - Az Azure Files szolgáltatás Azure Backup használatával történő védelméhez nem áll rendelkezésre PowerShell vagy parancssori felület.
@@ -39,10 +39,11 @@ Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban é
 - Az igény szerinti biztonsági mentések maximális száma naponta négy.
 - Használjon [erőforrászárat](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) a tárfiókon, hogy megelőzze a helyreállítási tárban lévő biztonsági másolatok véletlen törlését.
 - Ne törölje az Azure Backuppal létrehozott pillanatképeket. A pillanatképek törlése helyreállítási pontok elvesztését és/vagy visszaállítási hibákat eredményezhet.
+- Ne törölje az Azure Backup által védett fájlmegosztások. Az aktuális megoldáshoz fog törölni a fájlmegosztás törlése után az Azure Backup által készített minden pillanatkép, és ezért elveszíti az összes visszaállítási pont
 
 \*A tárfiókokban lévő Azure-fájlmegosztások [írásvédett georedundáns tárolás](../storage/common/storage-redundancy-grs.md) (RA-GRS) replikáció esetén GRS-ként működnek és GRS-díjszabás szerint lesznek számlázva.
 
-A [zónaredundáns tárolás](../storage/common/storage-redundancy-zrs.md) (ZRS) replikációjú tárfiókokban lévő Azure-fájlmegosztások jelenleg csak az USA középső régiójában (CUS), az USA 2. keleti régiójában (EUS2), Észak-Európában (NE), Délkelet-Ázsiában (SEA) és Nyugat-Európában (WE) érhetők el.
+A Storage-fiókok az Azure-fájlmegosztások biztonsági mentési [zónaredundáns tárolás](../storage/common/storage-redundancy-zrs.md) (ZRS) replikációs érhető el jelenleg csak központi velünk a Kapcsolatot (CUS), East US (EUS), USA keleti RÉGIÓJA 2 (EUS2), északi Európa (NE), Ausztrália Ázsia (SEA), Nyugat-Európa (WE) és az USA nyugati RÉGIÓJA 2 (WUS2).
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>Azure-fájlmegosztások biztonsági mentésének konfigurálása
 A helyreállítási tárak tartalmazzák az összes biztonsági mentési adatot. Ez az oktatóanyag feltételezi, hogy már létrehozott egy Azure-fájlmegosztást. Az Azure-fájlmegosztás biztonsági mentése:

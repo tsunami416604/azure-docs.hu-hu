@@ -1,5 +1,16 @@
-
-
+---
+author: spelluru
+ms.service: service-bus
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: spelluru
+ms.openlocfilehash: 6c424f1ac77e70b8f1fd561ad5134ec86f652fa6
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52270345"
+---
 A leküldéses értesítések küldése általában olyan háttérszolgáltatásokon keresztül történik egy kompatibilis könyvtár használatával, mint a Mobile Apps vagy az ASP.NET. Ha a háttérszolgáltatáshoz nem érhető el kódtár, az értesítések küldéséhez használhatja közvetlenül a REST API-t is.
 
 Az alábbi listában egyéb oktatóprogramok találhatók, amelyek az értesítések küldésével kapcsolatosak:

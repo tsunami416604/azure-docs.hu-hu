@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 1b1faa8b90476350975b80c4701618ccf4cde680
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 24a957260e3e3f161ce9e2e61b746f9b052e784d
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165356"
+ms.locfileid: "52264369"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-projects"></a>A CI/CD-folyamat létrehozása a php-hez az Azure DevOps Projects segítségével
 
@@ -36,7 +36,7 @@ Ha nem rendelkezik Azure-előfizetéssel, beszerezheti az egyik ingyenes kereszt
 
 1. Jelentkezzen be a [Microsoft Azure Portalra](https://portal.azure.com).
 
-1. A bal oldali panelen válassza ki a **erőforrás létrehozása** ikonra, majd ezután keressen **DevOps Projects**.  
+1. A bal oldali panelen válassza ki a **erőforrás létrehozása** ikonra, és keressen a **DevOps Projects**.  
 
 3. Kattintson a **Létrehozás** gombra.
 

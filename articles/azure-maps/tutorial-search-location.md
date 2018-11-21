@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e879e096fb990e4567b43b1938909449820edd42
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: c6513c3a92fdf509d9e81d76d1b3547048b2fd8d
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412720"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262057"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Közeli hasznos helyek keresése az Azure Maps használatával
 
@@ -178,7 +178,7 @@ Ez a szakasz bemutatja, hogyan használható a Maps Search API egy hasznos hely 
      client = new atlas.service.Client(atlas.getSubscriptionKey());
     ```
 
-2. Ezután adja hozzá a következő szkriptblokkot a keresőlekérdezés felépítéséhez. A kódrészlet a Search Service alapszintű Fuzzy Search Service (Intelligens keresés) keresési API-ját használja. A Fuzzy Search Service a legtöbb nem teljes egyezésű bemeneti adat, például címek, helyek vagy hasznos helyek (POI) kezelésére is képes. Ez a kód a közeli benzinkutakra keres rá egy megadott sugarú körön belül. A választ ezután GeoJSON formátumba szegmentálja és hozzáadja az adatforráshoz, amely következtében az adatok automatikusan megjelennek a térképen a szimbólumrétegen keresztül. A szkript utolsó része a térkép kameranézetét állítja be az eredmények határolókeretével, a térkép [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) tulajdonságával. A kód egy kitöltést is hozzáad, amely a szimbólumikonok képpontméreteit hivatott kompenzálni, mivel a határolókeret számítása a koordináták alapján történik. 
+2. Ezután adja hozzá a következő szkriptblokkot a keresőlekérdezés felépítéséhez. A kódrészlet a Search Service alapszintű Fuzzy Search Service (Intelligens keresés) keresési API-ját használja. A Fuzzy Search Service a legtöbb nem teljes egyezésű bemeneti adat, például címek, helyek vagy hasznos helyek (POI) kezelésére is képes. Ez a kód a közeli benzinkutakra keres rá egy megadott sugarú körön belül. A választ ezután GeoJSON formátumba szegmentálja és hozzáadja az adatforráshoz, amely következtében az adatok automatikusan megjelennek a térképen a szimbólumrétegen keresztül. A szkript utolsó része a térkép kameranézetét állítja be az eredmények határolókeretével, a térkép [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) tulajdonságával. A kód egy kitöltést is hozzáad, amely a szimbólumikonok képpontméreteit hivatott kompenzálni, mivel a határolókeret számítása a koordináták alapján történik. 
  
    ```JavaScript
    //Execute a POI search query then add the results to the map.
