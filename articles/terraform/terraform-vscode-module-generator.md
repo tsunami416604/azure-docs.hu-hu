@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: v-mavick
 ms.topic: tutorial
 ms.date: 11/08/2018
-ms.openlocfilehash: 9ef27166e84192dec81fd8f8da508785342ffefc
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 15ef4795544044427805e21f7a8e98646c9cf9bd
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288016"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284335"
 ---
 # <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>A Terraform alap sablon létrehozása az Azure-ban Yeoman használatával
 
@@ -227,7 +227,7 @@ Ezek az elemek összes előre telepített, a Cloud Shellben.
 
 ### <a name="start-a-cloud-shell-session"></a>Indítsa el a Cloud Shell-munkamenetek
 
-1. Indítson el egy Azure Cloud Shell-munkamenetet keresztül vagy a [az Azure portal](https:/portal.azure.com/), [shell.azure.com](https://shell.azure.com), vagy a [Azure-mobilalkalmazás](https://azure.microsoft.com/features/azure-portal/mobile-app/).
+1. Indítson el egy Azure Cloud Shell-munkamenetet keresztül vagy a [az Azure portal](https://portal.azure.com/), [shell.azure.com](https://shell.azure.com), vagy a [Azure-mobilalkalmazás](https://azure.microsoft.com/features/azure-portal/mobile-app/).
 
 1. **Üdvözli az Azure Cloud Shell** lap megnyitásakor. Válassza ki **(Linux) Bash**. (PowerShell nem támogatott.)
 

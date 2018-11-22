@@ -10,23 +10,23 @@ ms.component: text-analytics
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: a5223b026705cef5abbcd0be6f64cf0c98fd0930
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
-ms.translationtype: HT
+ms.openlocfilehash: 59469b6c27ceb0ed96659198edd6ddbca12685e2
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309025"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283961"
 ---
 # <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>Rövid útmutató: A Text Analytics Cognitive Services meghívása C# használatával
 <a name="HOLTop"></a>
 
-Ebből a cikkből megtudhatja, hogyan észlelheti a nyelvet, elemezhet hangulatot és nyerhet ki kulcskifejezéseket a [Text Analytics API-kkal](//go.microsoft.com/fwlink/?LinkID=759711) a C# használatával. A kód .Net Core-alkalmazásban való használatra lett tervezve, és minimálisan hivatkozik külső kódtárakra, ezért Linux vagy MacOS rendszeren is futtatható.
+Ez a cikk bemutatja, hogyan nyelv felismerése, vélemények elemzése és kinyerheti a kulcsfontosságú kifejezéseket, használja a [Text Analytics API-k](//go.microsoft.com/fwlink/?LinkID=759711) a C#. A kód .Net Core-alkalmazásban való használatra lett tervezve, és minimálisan hivatkozik külső kódtárakra, ezért Linux vagy MacOS rendszeren is futtatható.
 
 Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.microsoft.com/fwlink/?LinkID=759346).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy **Text Analytics API-t** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. A rövid útmutató elvégzéséhez használhatja a **havonta 5000 tranzakciót tartalmazó ingyenes szintet**.
+[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 A regisztráció során létrejött [végponttal és hozzáférési kulccsal](../How-tos/text-analytics-how-to-access-key.md) is rendelkeznie kell. 
 

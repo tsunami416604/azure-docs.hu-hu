@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/18/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 055877e32abb322c3519bd18a080ecfc397085a8
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: cff6d38867ef8ecaf1435fd4c4cc22fe63d70575
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161514"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283246"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása
 
@@ -64,7 +64,7 @@ Site Recovery számára a várt módon működik meg kell módosítania a replik
 > [!NOTE]
 > A Site Recovery nem támogatja hitelesítési proxy használatával hálózati kapcsolatának vezérlésére.
 
-  
+
 
 ### <a name="outbound-connectivity-for-urls"></a>Kimenő kapcsolat URL-címek esetén
 
@@ -144,7 +144,15 @@ A Site Recovery létrehozza a célrégióra vonatkozó alapértelmezett beállí
     - **Cél virtuális hálózat**: Az a hálózat a célrégióban, ahol a virtuális gépek találhatók a feladatátvétel után.
       Alapértelmezés szerint a Site Recovery létrehoz egy „asr” utótaggal rendelkező új virtuális hálózatot (és alhálózatokat) a célrégióban.
     - **Gyorsítótár tárfiókjai**: A Site Recovery tárfiókot használ a forrásrégióban. A forrás virtuális gépekre vonatkozó módosítások ebbe a fiókba érkeznek a célhelyre történő replikáció előtt.
+      >[!NOTE]
+      >Ha engedélyezve van a tűzfal tárfiókot használ, ügyeljen arra, hogy "A megbízható Microsoft-szolgáltatások engedélyezése". [Részletek](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)
+      >
+
     - **Cél tárfiókok (ha a forrás virtuális gép nem használ felügyelt lemezeket)**: Alapértelmezés szerint a Site Recovery új tárfiókot hoz létre a célrégióban a forrás virtuális gép tárfiókjának tükrözéséhez.
+      >[!NOTE]
+      >Ha engedélyezve van a tűzfal-forrás vagy cél tárfiókot használ, ügyeljen arra, hogy "A megbízható Microsoft-szolgáltatások engedélyezése". [Részletek](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)
+      >
+
     - **Replika felügyelt lemezek (ha a forrás virtuális gép felügyelt lemezeket használ)**: Alapértelmezés szerint a Site Recovery replika felügyelt lemezeket hoz létre a célrégióban a forrás virtuális gép felügyelt lemezeinek azokkal azonos tártípusban (standard vagy prémium) való tükrözéséhez.
     - **Cél rendelkezésre állási csoportok**: Alapértelmezés szerint a Site Recovery létrehoz egy új rendelkezésre állási csoportot a célrégióban az „asr” utótaggal. Rendelkezésre állási csoportot csak vehet fel, ha a virtuális gépek egy csoport részei a forrásrégióban.
 

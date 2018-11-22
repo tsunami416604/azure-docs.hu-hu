@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 77d5d6fa9b9494c934f850d5b82a0328cead67b9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 7ba8671942b0676fb920b051b7d1a0aa75c3eed6
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245171"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284693"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Node.js segítségével
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -70,7 +70,7 @@ var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 ```
 
 ## <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB-kapcsolat hozzáadása
-Azure Cosmos DB-kapcsolat hozzáadásához hozzon létre egy **TableService** objektumot, és adja meg fiókjának nevét, elsődleges kulcsát és végpontját. A Cosmos DB-fiók ezen értékeit az Azure Portal **Beállítások** > **Kapcsolati sztring** területéről másolhatja ki. Például:
+Azure Cosmos DB-kapcsolat hozzáadásához hozzon létre egy **TableService** objektumot, és adja meg fiókjának nevét, elsődleges kulcsát és végpontját. A Cosmos DB-fiók ezen értékeit az Azure Portal **Beállítások** > **Kapcsolati sztring** területéről másolhatja ki. Példa:
 
 ```nodejs
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
@@ -200,7 +200,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 > Alapértelmezés szerint az entitások frissítésének folyamata nem ellenőrzi, hogy a frissített adatok módosultak-e egy korábbi folyamat során. Egyidejű frissítések támogatásához:
 >
 > 1. Kérje le a frissíteni kívánt objektum ETagjét. A rendszer ezt az entitásokhoz kapcsolódó műveletekre adott `response` részeként adja vissza, és a következőn keresztül kérhető le: `response['.metadata'].etag`.
-> 2. Amikor frissíti az entitásokat, adja hozzá a korábban lekért ETag-információt az új entitáshoz. Például:
+> 2. Amikor frissíti az entitásokat, adja hozzá a korábban lekért ETag-információt az új entitáshoz. Példa:
 >
 >       entity2['.metadata'].etag = currentEtag;
 > 3. Hajtsa végre a frissítést. Ha az entitás módosult az ETag értékének lekérése óta (például az alkalmazás egy másik példányáról van szó), egy `error` elem jelenik meg, amely szerint a kérésben meghatározott frissítési feltétel nem teljesült.
@@ -394,9 +394,11 @@ var host = tableSvc.host;
 
 Vegye figyelembe, hogy a gazdagép adatait is meg kell adnia, mivel szükség van rájuk, ha az SAS tulajdonosa megkísérel hozzáférni a táblához.
 
-Ezután az ügyfélalkalmazás az SAS-t használja a **TableServiceWithSAS** metódussal, hogy műveleteket hajtson végre a táblán. A következő példa csatlakozik a táblához, és végrehajt egy lekérdezést.
+Ezután az ügyfélalkalmazás az SAS-t használja a **TableServiceWithSAS** metódussal, hogy műveleteket hajtson végre a táblán. A következő példa csatlakozik a táblához, és végrehajt egy lekérdezést. Lásd: [használatával a közös hozzáférésű jogosultságkódot](../storage/common/storage-dotnet-shared-access-signature-part-1.md#examples-of-sas-uris) tableSAS formátumban ismertető cikket. 
 
 ```nodejs
+// Note in the following command, host is in the format: `https://<your_storage_account_name>.table.core.windows.net` and the tableSAS is in the format: `sv=2018-03-28&si=saspolicy&tn=mytable&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D`;
+
 var sharedTableService = azure.createTableServiceWithSas(host, tableSAS);
 var query = azure.TableQuery()
   .where('PartitionKey eq ?', 'hometasks');
