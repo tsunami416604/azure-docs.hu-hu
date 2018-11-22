@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: ''
-ms.openlocfilehash: 5eb398cf981edbcfe9b98ee89c3dd4e12b3f758f
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 84ccd411fd93004a4d3de50e8f4e844f77635421
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615493"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284353"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Az Azure SQL Database megfigyelése az Azure SQL Analytics (előzetes verzió)
 
@@ -32,9 +32,7 @@ A megoldással gyűjtött metrikák használatával létrehozhat egyéni figyel�
 
 A gyakorlati áttekintése az Azure SQL Analytics megoldás használatával és a jellemző használati forgatókönyvei: a beágyazott videót:
 
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
->
+[!VIDEO https://youtu.be/GK2Hl21aZqQ]
 
 ## <a name="connected-sources"></a>Összekapcsolt források
 
