@@ -2,7 +2,7 @@
 title: Mi a mi Ha eszközt az Azure Active Directory feltételes hozzáférés?
 description: Ismerje meg, hogyan képes megérteni a feltételes hozzáférési szabályzatokat a hatását a környezetben.
 services: active-directory
-keywords: feltételes hozzáférés az alkalmazásokhoz, az Azure AD feltételes hozzáférés, biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési szabályzatok
+keywords: feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-vel, biztonságos hozzáférés a vállalati erőforrásokhoz, feltételes hozzáférési szabályzatok
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 11/20/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: d9bdc35e732a84920800424a260610fd6f068c94
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 3bc7dd8103bed9a5a04566d08a1daec0708a59c4
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626090"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52285033"
 ---
 # <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Mi a mi Ha eszközt az Azure Active Directory feltételes hozzáférés?
 
@@ -32,7 +32,7 @@ Ez a cikk bemutatja, hogyan használhatja ezt az eszközt a feltételes hozzáf�
 
 ## <a name="what-it-is"></a>Mi ez?
 
-A **feltételes hozzáférés Lehetőségelemzési házirend eszközzel** lehetővé teszi, hogy a feltételes hozzáférési szabályzatokat az adott környezet hatásának megismerése. Helyett a teszt több bejelentkezések kézi végrehajtásával a szabályzatok vezetői Ez az eszköz lehetővé teszi egy szimulált jelentkezzen be egy felhasználó kiértékeléséhez. A szimuláció becslése a hatás bejelentkezési ebben a szabályzatok a, és a szimuláció jelentést hoz létre. A jelentés nem tartalmazza csak alkalmazott feltételes hozzáférési szabályzatok is [klasszikus szabályzatok](policy-migration.md#classic-policies) ha vannak ilyenek.    
+A **feltételes hozzáférés Lehetőségelemzési házirend eszközzel** lehetővé teszi, hogy a feltételes hozzáférési szabályzatokat az adott környezet hatásának megismerése. Helyett a teszt több bejelentkezések kézi végrehajtásával a szabályzatok vezetői Ez az eszköz lehetővé teszi egy szimulált jelentkezzen be egy felhasználó kiértékeléséhez. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést. A jelentés nem tartalmazza csak alkalmazott feltételes hozzáférési szabályzatok is [klasszikus szabályzatok](policy-migration.md#classic-policies) ha vannak ilyenek.    
 
 A mi Ha eszközök azt is lehetővé teszi a gyors határozza meg a szabályzatokban, amelyek egy adott felhasználó a alkalmazni. Használhatja a információkat, például ha a probléma elhárításához van szüksége.  
 
@@ -51,9 +51,6 @@ A következő lépésben a szimuláció futtatása, amely kiértékeli a beáll�
 
 Az értékelés befejeződött, amikor az eszköz szabályzat érintett jelentést hoz létre.
 
-
-> [!NOTE]
-> A mi jelenleg, ha az eszköz nem támogatja a beágyazott csoportokat. Ha egy felhasználó tagja egy csoportnak, és a csoport tagja egy másik csoportra, amely használatban van egy feltételes hozzáférési szabályzatot, akkor a Mi történik, ha eszköz nem megfelelően jelennek meg, hogy a szabályzat hatásának a felhasználó számára. 
 
 
 ## <a name="running-the-tool"></a>Az eszköz futtatása
@@ -127,6 +124,6 @@ A házirendekben, amelyek nem érvényesek a felhasználói listán is, és is m
 
 - Ha azt szeretné tudni, hogyan lehet feltételes hozzáférési szabályzat konfigurálása, lásd: [többtényezős hitelesítés megkövetelése az Azure Active Directory feltételes hozzáférés az adott alkalmazások](app-based-mfa.md).
 
-- Ha készen áll a környezetre vonatkozó feltételes hozzáférési szabályzatok konfigurálására, tekintse meg a [ajánlott eljárások az Azure Active Directory feltételes hozzáférés](best-practices.md). 
+- Ha kész feltételes hozzáférési szabályzatokat konfigurálni a környezetében, tekintse át [az Azure Active Directory feltételes hozzáféréssel kapcsolatos ajánlott eljárásait](best-practices.md). 
 
 - Ha azt szeretné, hogy klasszikus szabályzatok migrálása, lásd: [az Azure Portalon klasszikus szabályzatok Migrálása](policy-migration.md)  

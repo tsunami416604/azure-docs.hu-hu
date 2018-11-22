@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: da681500ccff24e6e9bfa6b7bb9e5a14a725f158
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 8e00674f331a56be9abe6f2356aa88d7dcf1d0b0
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279634"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52282384"
 ---
 # <a name="whats-new-for-authentication"></a>Újdonságok a hitelesítéshez? 
 
@@ -56,7 +56,7 @@ Nincs, jelenleg ütemezve.
 
 Ha az alkalmazás újból felhasználja a jogkivonatok lekérésére, több erőforrás-engedélyezési kódokat, javasoljuk, hogy a kód használatával egy frissítési jogkivonat lekérése, és a frissítési jogkivonat használatával más erőforrások kiegészítő jogkivonatok beszerzéséhez. Engedélyezési kód csak egyszer használhatók fel, de frissítési biztonsági jogkivonat használható többször több erőforrást. Minden olyan új alkalmazás, amely megpróbálja újból felhasználhatja a hitelesítési kódot az OAuth hitelesítésikód-folyamata során invalid_grant hiba lép fel.
 
-További információ a frissítési biztonsági jogkivonat: [frissítése a hozzáférési jogkivonatok](v1-protocols-oauth-code.md#refreshing-the-access-tokens).
+További információ a frissítési biztonsági jogkivonat: [frissítése a hozzáférési jogkivonatok](v1-protocols-oauth-code.md#refreshing-the-access-tokens).  Ha adal-t vagy az MSAL használatával, ez kezeli az Ön számára a szalagtár - cserélje le az "AcquireTokenByAuthorizationCodeAsync" a "AcquireTokenSilentAsync" második példányát. 
 
 ## <a name="may-2018"></a>2018. május
 

@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: db8fc0b6926930521f11285dc56c886c10c42fc2
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: d371ead3280bca5239a9ee6bf2c4275414141fb4
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649312"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284370"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding – gyakori kérdések
 
@@ -60,6 +60,16 @@ A Cortana előre elkészített alkalmazásokat is elavult 2017-ben. Már nem tá
 
 ## <a name="luis-endpoint"></a>A LUIS-végpont
 
+### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Végpont a lekérdezés váratlan eredményt adott vissza. Mit tegyek?
+
+Váratlan lekérdezési előrejelzési eredményeket a közzétett modell állapotának alapulnak. Javítsa ki a modellt, akkor előfordulhat, hogy módosítania kell a modellt, hogy betanításához, és tegye közzé újra. 
+
+A modell javításának kezdődik [aktív tanulás](luis-how-to-review-endoint-utt.md).
+
+Eltávolíthatja a nem determinisztikus képzési frissítésével a [alkalmazás verziója beállítások API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) összes betanítási adatok használatához. 
+
+Tekintse át a [ajánlott eljárások](luis-concept-best-practices.md) más tippeket. 
+
 ### <a name="why-does-luis-add-spaces-to-the-query-around-or-in-the-middle-of-words"></a>Miért nem LUIS szóközöket a lekérdezésbe felvenni kívánt körül vagy közepén szavak?
 A LUIS [tokenizes](luis-glossary.md#token) az utterance (kifejezés) alapján a [kulturális környezet](luis-language-support.md#tokenization). Az eredeti és tokenekre értéke is érhetők el [adatkinyerés](luis-concept-data-extraction.md#tokenized-entity-returned).
 
@@ -67,7 +77,7 @@ A LUIS [tokenizes](luis-glossary.md#token) az utterance (kifejezés) alapján a 
 [A végpont kulcs létrehozása](luis-how-to-azure-subscription.md#create-luis-endpoint-key) az Azure-ban a [szolgáltatás](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) szintjét. [A kulcs hozzárendelése](luis-how-to-manage-keys.md#assign-endpoint-key) a a **[kulcsokat és a végpontok](luis-how-to-manage-keys.md)** lapot. Nincs a művelet nem megfelelő API-t. Ezután a végpontot kell módosítania a HTTP-kérelem [használja az új végpont kulcs](luis-concept-keys.md#use-endpoint-key-in-query).
 
 ### <a name="how-do-i-interpret-luis-scores"></a>Mi a LUIS pontszámok?
-A rendszer függetlenül annak értéke a legmagasabb pontozási leképezést kell használnia. Ha például 0.5-ös (kevesebb mint 50 %) alatti nem feltétlenül jelenti, hogy a LUIS alacsony megbízhatósági rendelkezik. További betanítási adatok biztosítása révén növelheti a pontszám a legvalószínűbb leképezés.
+A rendszer függetlenül annak értéke a legmagasabb pontozási leképezést kell használnia. Ha például 0.5-ös (kevesebb mint 50 %) alatti nem feltétlenül jelenti, hogy a LUIS alacsony megbízhatósági rendelkezik. Növelheti az adatok segíthetnek további képzés biztosítása a [pontszám](luis-concept-prediction-score.md) a legvalószínűbb leképezés.
 
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>Miért nem látom, hogy a végpont a találatok saját alkalmazás-irányítópult?
 Az alkalmazás-irányítópult a teljes végpont a találatok rendszeres időközönként frissülnek, de a metrikák az Azure Portalon, a LUIS végponti kulcs társított gyakran frissülnek.

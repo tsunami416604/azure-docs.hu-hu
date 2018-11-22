@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 642fc66bff763105e9d5463886474703a9a50781
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: fa1fa65315f38d0ce2900b738b70ca3718b0c00e
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376703"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52285101"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Azure Automationben
 
@@ -78,7 +78,7 @@ Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Autom
    Itt kéri:
    - Adja meg a **cél erőforráscsoport nevét**. Ezek az értékek az erőforráscsoportok nevei, amelyek a megoldás által felügyelendő virtuális gépeket tartalmazzák. Adjon meg egynél több nevet, és külön az egyes egy vesszőt (értékek nem számítanak különbözőnek) használatával. Helyettesítő karaktert is használhat, ha az előfizetés összes erőforráscsoportjában lévő virtuális gépeket szeretné megadni. Ez az érték a tárolódik a **External_Start_ResourceGroupNames** és **External_Stop_ResourceGroupNames** változókat.
    - Adja meg a **VM kizárási lista (karakterlánc)**. Ez az érték egy vagy több virtuális gépet a célként megadott erőforráscsoportja nevét. Adjon meg egynél több nevet, és külön az egyes egy vesszőt (értékek nem számítanak különbözőnek) használatával. Helyettesítő karakterek használatával támogatott. Ez az érték a tárolódik a **External_ExcludeVMNames** változó.
-   - Válassza ki a **ütemezés**. Ismétlődő dátum és idő és a célként megadott erőforráscsoport a virtuális gépek leállítási értéke. Alapértelmezés szerint az ütemezés van konfigurálva 30 perc múlva. Egy másik régió kiválasztásával nem érhető el. Az ütemezést, hogy az adott időzóna beállítása után a megoldás konfigurálásáról: [az indítási és leállítási ütemezés módosítása](#modify-the-startup-and-shutdown-schedule).
+   - Válassza ki a **ütemezés**. Ismétlődő dátum és idő és a célként megadott erőforráscsoport a virtuális gépek leállítási értéke. Alapértelmezés szerint az ütemezés van konfigurálva 30 perc múlva. Egy másik régió kiválasztásával nem érhető el. Az ütemezést, hogy az adott időzóna beállítása után a megoldás konfigurálásáról: [az indítási és leállítási ütemezés módosítása](#modify-the-startup-and-shutdown-schedules).
    - Fogadásához **E-mail-értesítések** a műveletcsoport, fogadja el alapértékként a **Igen** , és adjon meg egy érvényes e-mail címet. Ha **nem** egy későbbi időpontban döntse el, hogy szeretne email értesítéseket kapni, frissítheti, de a [műveletcsoport](../monitoring-and-diagnostics/monitoring-action-groups.md) létrehozott az érvényes e-mail címeket vesszővel elválasztva. Akkor is engedélyeznie kell a következő riasztási szabályok:
 
      - AutoStop_VM_Child
@@ -217,16 +217,16 @@ Az összes környezetekben a **External_Start_ResourceGroupNames**, **External_S
 
 ### <a name="schedules"></a>Ütemezések
 
-A következő táblázat felsorolja az egyes az Automation-fiókban létrehozott ütemezése. Módosítsa azokat, vagy hozzon létre saját egyéni ütemezéseket. Alapértelmezés szerint minden ütemezés le vannak tiltva az alábbiakat kivéve **Scheduled_StartVM** és **Scheduled_StopVM**.
+A következő táblázat felsorolja az egyes az Automation-fiókban létrehozott ütemezése. Módosítsa azokat, vagy hozzon létre saját egyéni ütemezéseket. Alapértelmezés szerint minden ütemezés le vannak tiltva az alábbiakat kivéve **Scheduled_StartVM** és **Scheduled_StopVM**.
 
 Az ütemezést, mert előfordulhat, hogy hozzon létre egymást átfedő ütemezés műveletek, ez ne engedélyezze. Célszerű meghatározni, melyik optimalizálást szeretné végrehajtani, és ennek megfelelően módosítsa. Tekintse meg a további magyarázat az Áttekintés szakaszban szereplő példakörnyezetek.
 
 |Ütemezés neve | Gyakoriság | Leírás|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | 8 óránként | Futtatja a AutoStop_CreateAlert_Parent runbookot 8 óránként, ami viszont a Virtuálisgép-alapú értékei External_Start_ResourceGroupNames External_Stop_ResourceGroupNames és External_ExcludeVMNames az Azure Automation változó leállítja. Megadhatja azt is megteheti, a virtuális gépek vesszővel elválasztott listáját a VMList paraméter használatával.|
-|Scheduled_StopVM | Felhasználó által megadott, naponta | A Scheduled_Parent runbookot futtat egy s parametrem _leállítása_ minden nap, a megadott időpontban. Automatikusan leállítja a virtuális gépeket, amelyek megfelelnek a szabályokat, eszközintelligencia változók határozzák meg. A kapcsolódó ütemezés engedélyezése **ütemezett-StartVM**.|
-|Scheduled_StartVM | Felhasználó által megadott, naponta | A Scheduled_Parent runbookot futtat egy s parametrem _Start_ minden nap, a megadott időpontban. Minden virtuális gépre, amelyek megfelelnek a szabályok határozzák meg a megfelelő változók automatikusan elindul. A kapcsolódó ütemezés engedélyezése **ütemezett-StopVM**.|
-|Az előkészített StopVM | 1:00-kor (UTC), minden pénteken | A Sequenced_Parent runbookot futtat egy s parametrem _leállítása_ minden pénteken, a megadott időpontban. Egymás után (növekvő) leállítja a címkével ellátott összes virtuális gép **SequenceStop** határozzák meg a megfelelő változókat. A címkeértékeket és az eszközintelligencia változók további információkért tekintse meg a Runbookok szakaszt. A kapcsolódó ütemezés engedélyezése **Sequenced-StartVM**.|
+|Scheduled_StopVM | Felhasználó által megadott, naponta | A Scheduled_Parent runbookot futtat egy s parametrem _leállítása_ minden nap, a megadott időpontban. Automatikusan leállítja a virtuális gépeket, amelyek megfelelnek a szabályokat, eszközintelligencia változók határozzák meg. A kapcsolódó ütemezés engedélyezése **ütemezett-StartVM**.|
+|Scheduled_StartVM | Felhasználó által megadott, naponta | A Scheduled_Parent runbookot futtat egy s parametrem _Start_ minden nap, a megadott időpontban. Minden virtuális gépre, amelyek megfelelnek a szabályok határozzák meg a megfelelő változók automatikusan elindul. A kapcsolódó ütemezés engedélyezése **ütemezett-StopVM**.|
+|Az előkészített StopVM | 1:00-kor (UTC), minden pénteken | A Sequenced_Parent runbookot futtat egy s parametrem _leállítása_ minden pénteken, a megadott időpontban. Egymás után (növekvő) leállítja a címkével ellátott összes virtuális gép **SequenceStop** határozzák meg a megfelelő változókat. A címkeértékeket és az eszközintelligencia változók további információkért tekintse meg a Runbookok szakaszt. A kapcsolódó ütemezés engedélyezése **Sequenced-StartVM**.|
 |Az előkészített StartVM | 1:00 Órakor (UTC), minden hétfőn | A Sequenced_Parent runbookot futtat egy s parametrem _Start_ minden hétfőn, a megadott időpontban. Egymás után minden virtuális gép (csökkenő) kezdődik, egy címke **SequenceStart** határozzák meg a megfelelő változókat. A címkeértékeket és az eszközintelligencia változók további információkért tekintse meg a Runbookok szakaszt. A kapcsolódó ütemezés engedélyezése **Sequenced-StopVM**.|
 
 ## <a name="log-analytics-records"></a>Log Analytics-rekordok

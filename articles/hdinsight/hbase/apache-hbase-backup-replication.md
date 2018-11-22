@@ -1,5 +1,5 @@
 ---
-title: Állítsa be a HBase és a Phoenix biztonsági mentésének és replikációjának – Azure HDInsight
+title: Az Apache HBase- és Apache Phoenix biztonsági mentésének és replikációjának – Azure HDInsight beállítása
 description: Biztonsági mentés és replikáció a HBase és a Phoenix beállítása.
 services: hdinsight
 author: ashishthaps
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 0dfb1cf5ce16e9aa30bb7f9fcc43bd24ccb90d76
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 00402b7ba6004d382693d5f6f82c1108a254fba8
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042219"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283570"
 ---
-# <a name="set-up-backup-and-replication-for-hbase-and-phoenix-on-hdinsight"></a>Biztonsági mentés és replikáció a HBase és a HDInsight Phoenix beállítása
+# <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>Állítsa be a biztonsági mentés és replikáció a Apache HBase és a HDInsight az Apache Phoenixhez
 
-A HBase számos megközelítés az adatvesztéssel szembeni esetlegesen korán támogatja:
+Az Apache HBase számos megközelítés az adatvesztéssel szembeni esetlegesen korán támogatja:
 
 * Másolás a `hbase` mappa
 * Exportálja majd importálja
@@ -101,7 +101,7 @@ A cél címe az alábbi három részből áll:
 
     <destinationAddress> = <ZooKeeperQuorum>:<Port>:<ZnodeParent>
 
-* `<ZooKeeperQuorum>` például az ZooKeeper-csomópontok, vesszővel tagolt listája:
+* `<ZooKeeperQuorum>` például az Apache ZooKeeper-csomópontok, vesszővel tagolt listája:
 
     zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net
 
@@ -109,7 +109,7 @@ A cél címe az alábbi három részből áll:
 
     zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net:2181:/hbase-unsecure
 
-Lásd: [manuálisan a ZooKeeper kvórum listájának összeállítása](#manually-collect-the-zookeeper-quorum-list) ebben a cikkben részletes tájékoztatás a HDInsight-fürthöz tartozó értékek lekérésére.
+Lásd: [manuálisan gyűjtése az Apache ZooKeeper kvórum lista](#manually-collect-the-apache-zookeeper-quorum-list) ebben a cikkben részletes tájékoztatás a HDInsight-fürthöz tartozó értékek lekérésére.
 
 A CopyTable segédprogram paraméterek használatával adja meg az időtartományt, másolja, és adja meg a részhalmazát oszlopcsaláddal egy tábla másolása sort is támogatja. Paraméterek CopyTable által támogatott teljes listájának megtekintéséhez futtassa paraméterek nélkül CopyTable:
 
@@ -120,7 +120,7 @@ CopyTable megvizsgálja a teljes tábla tartalmat, amely a céltábla át leszne
 > [!NOTE]
 > Automatizálhatja a táblák közötti másolását, tekintse meg a `hdi_copy_table.sh` szkriptet a [Azure HBase Utils](https://github.com/Azure/hbase-utils/tree/master/replication) tárházban a Githubon.
 
-### <a name="manually-collect-the-zookeeper-quorum-list"></a>A ZooKeeper kvórum lista manuálisan gyűjtése
+### <a name="manually-collect-the-apache-zookeeper-quorum-list"></a>Az Apache ZooKeeper kvórum lista manuálisan gyűjtése
 
 Ha mindkét HDInsight-fürt ugyanazon a virtuális hálózaton, korábban leírt, belső állomásnév-feloldás automatikusan sor kerül. HDInsight-fürtök két külön virtuális hálózat VPN-átjáró köti, CopyTable használatához szüksége lesz biztosítják a gazdagép és a Zookeeper-csomópontok a kvórum az IP-címét.
 
@@ -201,8 +201,8 @@ A replikálás beállítása az általános lépések a következők:
 5. Meglévő adatokat másol a forrástáblákból a céltáblákba.
 6. Replikáció automatikusan átmásolja az új adatok módosításait a forrástáblákból a céltáblákba.
 
-A HDInsight a replikáció engedélyezéséhez a futó forrás HDInsight-fürt Szkriptműveletet vonatkozik. A replikálást, a fürtben, vagy a virtuális hálózatba tartozó Azure Resource Management-sablonok használatával létrehozott minta fürtökön replikációs kísérletezhet bemutatóért lásd: [konfigurálása HBase-replikálás](apache-hbase-replication.md). A cikk Phoenix-metaadatok replikálást utasításokat is tartalmaz.
+A HDInsight a replikáció engedélyezéséhez a futó forrás HDInsight-fürt Szkriptműveletet vonatkozik. A replikálást, a fürtben, vagy a virtuális hálózatba tartozó Azure Resource Management-sablonok használatával létrehozott minta fürtökön replikációs kísérletezhet bemutatóért lásd: [konfigurálása az Apache HBase-replikálás](apache-hbase-replication.md). A cikk Phoenix-metaadatok replikálást utasításokat is tartalmaz.
 
 ## <a name="next-steps"></a>További lépések
 
-* [HBase-replikáció konfigurálása](apache-hbase-replication.md)
+* [Az Apache HBase-replikálás konfigurálása](apache-hbase-replication.md)

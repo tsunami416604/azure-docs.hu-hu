@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9358f280efb847bdce802cc3a20e64710ffc3214
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 1f7bd4bc74e63e3b4dd25a7185ce3641712538f1
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275384"
+ms.locfileid: "52284387"
 ---
 # <a name="available-skus-for-hli"></a>Rendelkezésre álló termékváltozatok HLI
 
@@ -52,7 +52,7 @@ Sok esetben ügyfél-specifikus kiszolgáló konfigurációkról biztosítunk t�
 
 | SKU|CPU | Memory (Memória) | Storage | Rendelkezésre állás |
 | ---| --- | --- | --- | --- |
-| S96 | SAP HANA az Azure S96<br /> – 4 x Intel® Xeon® Processor E7-8890 v4<br /> 48 processzormag és a szálak. CPU 96. |  768 TB |  3 TB | Elérhető |
+| S96 | SAP HANA az Azure S96<br /> – 2-Intel® Xeon® Processor E7-8890 v4<br /> 48 processzormag és a szálak. CPU 96. |  768 TB |  3 TB | Elérhető |
 
 
 | Eredeti Termékváltozat, amely lehet <br /> a kiterjesztett memória | CPU | Memory (Memória) | Storage | Rendelkezésre állás |

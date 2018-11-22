@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 11/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: 99bac69d096095f660e2624194b72e1390c6fc22
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: a4bb423dc5eddde0fd2d2b9b4f263ab39dbd801f
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275564"
+ms.locfileid: "52284982"
 ---
 # <a name="tag-support-for-azure-resources"></a>Az Azure-erőforrások címkék támogatása
 Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resource-group-using-tags.md).
@@ -193,7 +193,6 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
 | DataBoxEdgeDevices | Igen | 
-| DataBoxEdgeDevices/checkNameAvailability | Nem | 
 
 ## <a name="data-catalog"></a>Data Catalog
 | Erőforrás típusa | Támogatja a címkék |
@@ -451,8 +450,8 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 ## <a name="resources"></a>További források
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
-| resourceGroups | Nem | 
-| előfizetés/resourceGroups | Nem | 
+| resourceGroups | Igen | 
+| előfizetés/resourceGroups | Igen | 
 
 ## <a name="scheduler"></a>Scheduler
 | Erőforrás típusa | Támogatja a címkék |

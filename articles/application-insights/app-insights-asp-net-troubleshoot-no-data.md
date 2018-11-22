@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 47cf32a57fc4a2d0e20a9f2c242db1f3dec96fe5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8bc4c0617ebf9b400260a217462abbcc439ae440
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228538"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284676"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Adathiány hibaelhárítása – Application Insights .NET-hez
 ## <a name="some-of-my-telemetry-is-missing"></a>Láthatók a telemetriai adatok némelyike hiányzik
@@ -175,8 +175,14 @@ Ha az alkalmazás nagy mennyiségű adatot küld el, és használja az Applicati
 
 Bármikor letilthatja azt, de ez nem ajánlott. Mintavételi célja, hogy a kapcsolódó telemetriai adatokat megfelelően továbbítani, diagnosztikai célokra. 
 
-## <a name="client-ip-address-is-0000"></a>Ügyfél IP-cím 0.0.0.0 
-A 2018 február azt [bejelentett](https://blogs.msdn.microsoft.com/applicationinsights-status/2018/02/01/all-octets-of-ip-address-will-be-set-to-zero/) , hogy az ügyfél IP-cím naplózása eltávolítottuk. Ez nincs hatással a földrajzi helyet.
+## <a name="client-ip-address-is-0000"></a>Ügyfél IP-cím 0.0.0.0
+
+5 2018 február bejelentettük, hogy az ügyfél IP-cím naplózása eltávolítottuk. Ez nincs hatással a földrajzi helyet.
+
+> [!NOTE]
+> Ha az első 3 bájt IP-cím van szüksége, használhat egy [telemetriainicializálót](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer) vlastní atribut hozzáadásához.
+> Ez nincs hatással a 2018. február 5. előtt összegyűjtött adatokra.
+
 
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>Nem megfelelő földrajzi adatokat a felhasználó telemetria
 Az városa, régió és ország dimenziók IP-címek vannak származtatva, és nem minden esetben pontosak. Ezen IP-címek hely elsőként feldolgozva, és a 0.0.0.0 kell tárolni, majd módosítani.

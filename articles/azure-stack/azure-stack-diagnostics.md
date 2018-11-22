@@ -7,15 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 11/20/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: f9a7ae76f2d52b3439bfb33f306e164bb81549eb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: ef8a01228ff31afa78f469b2ad80b864fc9d3497
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623978"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283452"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack-diagnosztikai eszközök
 
@@ -70,13 +70,14 @@ if($s)
     Remove-PSSession $s
 }
 ```
-- A paraméterek **OutputSharePath** és **OutputShareCredential** egy felhasználó által megadott a naplók tárolására szolgáló helyre.
-- A **FromDate** és **ToDate** paraméterek használhatók naplók összegyűjtése egy adott időszakban. Ezek a paraméterek nincsenek megadva, ha vannak összegyűjtött naplók az elmúlt 4 óra alapértelmezés szerint.
+
 
 
 ### <a name="to-run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system"></a>Get-AzureStackLog futtatásához az Azure Stack Development Kit (ASDK) rendszeren
-1. Jelentkezzen be, **AzureStack\CloudAdmin** a gazdagépen.
-2. Nyisson meg egy PowerShell-ablakot rendszergazdaként.
+Ezeket a lépéseket használatával futtassa a Get-AzureStackLog ASDK gazdaszámítógépen.
+
+1. Jelentkezzen be, **AzureStack\CloudAdmin** ASDK a gazdagépen.
+2. Nyisson meg egy új PowerShell-ablakot rendszergazdaként.
 3. Futtassa a **Get-AzureStackLog** PowerShell-parancsmagot.
 
 **Példák:**
@@ -107,7 +108,10 @@ if($s)
 
 ### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>A paraméter szempontok ASDK és integrált rendszereket
 
-- Ha a **FromDate** és **ToDate** paraméter nincs megadva, a naplók alapértelmezés szerint az elmúlt 4 órán keresztül gyűjtött.
+- A paraméterek **OutputSharePath** és **OutputShareCredential** egy felhasználó által megadott a naplók tárolására szolgáló helyre.
+
+- A **FromDate** és **ToDate** paraméterek használhatók naplók összegyűjtése egy adott időszakban. Ezek a paraméterek nincsenek megadva, ha vannak összegyűjtött naplók az elmúlt 4 óra alapértelmezés szerint.
+
 - Használja a **FilterByNode** paraméter naplók szűrése a számítógép neve szerint. Példa:
 
     ```powershell

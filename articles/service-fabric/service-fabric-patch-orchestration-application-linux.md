@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 0aadb5964b5fe08b02397588dd9b2695fb4db4ce
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 27650605601a24e11d63e56343535c35c8b72f5d
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746717"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52285152"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>A Linux operációs rendszer a Service Fabric-fürtben
 
@@ -147,7 +147,7 @@ A patch orchestration app viselkedését konfigurálhatja az igényeinek. Alkalm
 
 1. Készítse elő a fürt befejező az előfeltételként felsorolt lépéseket.
 2. A patch orchestration alkalmazás például a többi Service Fabric-alkalmazást üzembe helyezése. Az alkalmazás a PowerShell vagy az Azure Service Fabric parancssori felület segítségével telepíthet. Kövesse a [PowerShell-lel telepítés és eltávolítás alkalmazások](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications) vagy [alkalmazás üzembe helyezése az Azure Service Fabric parancssori felület használatával](https://docs.microsoft.com/azure/service-fabric/scripts/cli-deploy-application)
-3. Az alkalmazás konfigurálása a központi telepítés alkalmával, át kell adnia a `ApplicationParamater` , a `New-ServiceFabricApplication` parancsmag vagy a parancsfájlokat. Az Ön kényelme érdekében a powershell (Deploy.ps1) és (Deploy.sh) bash-szkriptek megadott együtt az alkalmazás. A parancsprogram használata:
+3. Az alkalmazás konfigurálása a központi telepítés alkalmával, át kell adnia a `ApplicationParameter` , a `New-ServiceFabricApplication` parancsmag vagy a parancsfájlokat. Az Ön kényelme érdekében a powershell (Deploy.ps1) és (Deploy.sh) bash-szkriptek megadott együtt az alkalmazás. A parancsprogram használata:
 
     - Csatlakozhat a Service Fabric-fürtön.
     - Hajtsa végre az üzembe helyezés parancsfájlt. Lehetősége van átadni az alkalmazás paraméter a parancsfájlt. például:.\Deploy.ps1 - ApplicationParameter @{UpdateFrequency = "Naponta, 11:00:00"} vagy./Deploy.sh "{\"UpdateFrequency\":\"naponta, 11:00:00\"}" 

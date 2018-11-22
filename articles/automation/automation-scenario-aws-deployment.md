@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5133a3d724a362a3d022e0dfd29f798a509c4743
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 804ac964949c947baf5285b3ec591b3d28263f4d
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275469"
+ms.locfileid: "52282737"
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Az Azure Automation-forgatókönyv – az AWS virtuális gép kiépítése
 Ebből a cikkből megtudhatja, hogyan használhatók az Azure Automation és az Amazon Web Service (AWS) előfizetésben virtuális gép kiépítése, és nevezze el a virtuális gép adott – amely AWS, a virtuális gép "címkézés" hivatkozik.
@@ -25,7 +25,7 @@ Ez a cikk az alkalmazásában szüksége lesz egy Azure Automation-fiókot és a
 ## <a name="deploy-amazon-web-services-powershell-module"></a>Az Amazon Web Services PowerShell-modul üzembe helyezése
 A virtuális gép kiépítése a runbook feladatának elvégzéséhez az AWS PowerShell-modult használja. A következő lépésekkel adja hozzá a modul az Automation-fiókhoz, amelynek része az AWS-előfizetés hitelesítő adataival.  
 
-1. Nyissa meg a webböngészőjét, és keresse meg a [PowerShell-galériából](http://www.powershellgallery.com/packages/AWSPowerShell/) , majd kattintson a a **üzembe helyezés az Azure Automation gomb**.<br><br> ![AWS – PS modul importálása](./media/automation-scenario-aws-deployment/powershell-gallery-download-awsmodule.png)
+1. Nyissa meg a webböngészőjét, és keresse meg a [PowerShell-galériából](https://www.powershellgallery.com/packages/AWSPowerShell/) , majd kattintson a a **üzembe helyezés az Azure Automation gomb**.<br><br> ![AWS – PS modul importálása](./media/automation-scenario-aws-deployment/powershell-gallery-download-awsmodule.png)
 2. Ekkor megnyílik az Azure bejelentkezési oldal és a hitelesítés után, fogja lesz irányítva, az Azure portal és a következő oldal jelenik meg:<br><br> ![A modul oldal importálása](./media/automation-scenario-aws-deployment/deploy-aws-powershell-module-parameters.png)
 3. Válassza ki az Automation-fiók használhatja, és kattintson a **OK** üzembe helyezésének megkezdéséhez.
 
@@ -60,7 +60,7 @@ Az AWS PowerShell-modul üzembe helyezése után most már hozhat létre egy run
     > 
     > * A forgatókönyv az alapértelmezett paraméterértékeket számát tartalmazza. Az összes alapértelmezett értékeit értékelheti ki, és szükség esetén frissítse.
     > * Ha a tárolt AWS hitelesítő adatait, mint más néven hitelesítőadat-eszköz **AWScred**, akkor frissítenie kell a parancsfájl sor 57 ennek megfelelően.  
-    > * Az AWS CLI-parancsokkal a PowerShellben, különösen a Ez a példa runbook használatakor meg kell adnia az AWS régiót. Ellenkező esetben a parancsmagok sikertelen. Az AWS-témakör megtekintése [adja meg az AWS-régió](http://docs.aws.amazon.com/powershell/latest/userguide/pstools-installing-specifying-region.html) az AWS eszközök PowerShell dokumentum további tájékoztatást talál.  
+    > * Az AWS CLI-parancsokkal a PowerShellben, különösen a Ez a példa runbook használatakor meg kell adnia az AWS régiót. Ellenkező esetben a parancsmagok sikertelen. Az AWS-témakör megtekintése [adja meg az AWS-régió](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-installing-specifying-region.html) az AWS eszközök PowerShell dokumentum további tájékoztatást talál.  
     >
 
 7. A rendszerképnevek listájának lekéréséhez az AWS-előfizetésből, indítsa el a PowerShell ISE-ben, és az AWS PowerShell-modul importálása. AWS hitelesítő lecserélésével **Get-AutomationPSCredential** az ISE környezetben **AWScred = Get-Credential**. Ez a hitelesítő adatokat kér, és megadhatja a **elérési kulcs Azonosítóját** felhasználónév és a **titkos elérési kulcsát** a jelszót. Lásd az alábbi példát:  

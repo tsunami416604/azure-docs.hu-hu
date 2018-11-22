@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: fea0a0dfd2e138fa4f33f4f489be74f5038b4ca6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 50f8fea04da3b1e414917a6404cb3f6e838bf716
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244525"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284812"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Gépek előkészítése kezelésre, az Azure Automation állapot konfigurációja
 
@@ -42,7 +42,7 @@ Az Azure Automation-konfiguráló szolgáltatása könnyen előkészítheti az A
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Az a [az Azure portal](http://portal.azure.com/), kattintson a **Tallózás** -> **virtuális gépek (klasszikus)**. Válassza ki az előkészíteni kívánt Windows virtuális gép. A virtuális gép irányítópult paneljén kattintson **minden beállítás** -> **bővítmények** -> **Hozzáadás** -> **Azure Az Automation DSC** -> **létrehozása**.
+Az a [az Azure portal](https://portal.azure.com/), kattintson a **Tallózás** -> **virtuális gépek (klasszikus)**. Válassza ki az előkészíteni kívánt Windows virtuális gép. A virtuális gép irányítópult paneljén kattintson **minden beállítás** -> **bővítmények** -> **Hozzáadás** -> **Azure Az Automation DSC** -> **létrehozása**.
 Adja meg a [PowerShell DSC helyi Configuration Manager értékek](/powershell/dsc/metaconfig4) hozzárendelése a virtuális gép a használati eset, az Automation-fiók regisztrációs kulcs és regisztrációs URL-címe és opcionálisan egy csomópont-konfiguráció szükséges.
 
 ![A DSC Azure Virtuálisgép-bővítmények](./media/automation-dsc-onboarding/DSC_Onboarding_1.png)
@@ -132,7 +132,7 @@ Ha a gép nem rendelkezik a PowerShell desired state bővítmény telepítve van
 
 A **regisztrációs**, adja meg a [PowerShell DSC helyi Configuration Manager értékek](/powershell/dsc/metaconfig4) hozzárendelése a virtuális gép a használati eset, és szükség esetén a csomópont-konfiguráció szükséges.
 
-![](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
+![Előkészítés](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
 

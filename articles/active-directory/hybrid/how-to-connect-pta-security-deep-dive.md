@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7a787535d6e6e216df27c8cf7448fa584e85ef2b
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: c0729fd4c6d5e387b38c310a708505c3395ea41f
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312458"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284880"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Az Azure Active Directory átmenő hitelesítés a biztonság részletes bemutatása
 
@@ -209,7 +209,7 @@ Az automatikus frissítés hitelesítési ügynök:
 ## <a name="next-steps"></a>További lépések
 - [Aktuális korlátozások](how-to-connect-pta-current-limitations.md): ismerje meg, melyik forgatókönyvek is támogatottak, és melyek nem.
 - [Gyors üzembe helyezési](how-to-connect-pta-quick-start.md): első lépésekhez az Azure AD átmenő hitelesítés.
-- [Az AD FS át az átmenő hitelesítés](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) – egy részletes útmutató, amellyel áttelepíteni az átmenő hitelesítés az Active Directory összevonási szolgáltatások (vagy más összevonási technológiákkal).
+- [Az AD FS át az átmenő hitelesítés](https://aka.ms/adfstoptadpdownload) – egy részletes útmutató, amellyel áttelepíteni az átmenő hitelesítés az Active Directory összevonási szolgáltatások (vagy más összevonási technológiákkal).
 - [Az intelligens zárolási](../authentication/howto-password-smart-lockout.md): az intelligens zárolás funkciót konfigurálhatja a bérlő felhasználói fiókok védelmét.
 - [Hogyan működik](how-to-connect-pta-how-it-works.md): kapcsolatos alapismereteket tartalmazza az Azure AD átmenő hitelesítés működéséről.
 - [Gyakori kérdések](how-to-connect-pta-faq.md): választ találhat a gyakori kérdésekre.

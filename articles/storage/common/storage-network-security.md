@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: f9f38b11aa333eed9c5f524cc5c6c9e727fede15
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: cfa0a91e74dba7a17b03a76dd70fc09a264decf8
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164897"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284591"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 
@@ -348,6 +348,7 @@ Ha engedélyezi a **engedélyezése a Microsoft-szolgáltatások megbízható...
 |Szolgáltatás|Erőforrás-szolgáltató neve|Cél|
 |:------|:---------------------|:------|
 |Azure Backup|Microsoft.Backup|Futtassa a biztonsági mentéshez és helyreállításhoz, a nem felügyelt lemezek az iaas-beli virtuális gépeken. (nem felügyelt lemezek esetén szükséges). [További információk](/azure/backup/backup-introduction-to-azure-backup).|
+|Azure Site Recovery|Microsoft.SiteRecovery |Vészhelyreállítás konfigurálása az Azure IaaS virtuális gépek replikációjának engedélyezése. Ez azért szükséges, ha a tűzfal engedélyezve van a gyorsítótár tárfiókja vagy a forrás tárfiókban vagy a célként megadott tárfiók használata.  [További információk](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication).|
 |Azure DevTest Labs|Microsoft.DevTestLab|Egyéni rendszerkép létrehozása és az összetevő telepítését. [További információk](/azure/devtest-lab/devtest-lab-overview).|
 |Azure Event Grid|Microsoft.EventGrid|A Blob Storage esemény-közzététel engedélyezése. [További információk](/azure/event-grid/overview).|
 |Azure Event Hubs|Microsoft.EventHub|Az Event Hubs Capture adatok archiválása. [További](/azure/event-hubs/event-hubs-capture-overview).|

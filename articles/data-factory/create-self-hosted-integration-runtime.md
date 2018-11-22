@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: cae81bd2b856ae0fb4a648c03cbec1f87f222902
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 0f48d65d1b3e6d1f608d85cff3a24ef379caa9cf
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038468"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284829"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Létrehozhat és konfigurálhat egy saját üzemeltetésű integrációs modul
 Az integrációs modul (IR) a számítási infrastruktúra, amellyel Azure Data Factory adatintegrációs képességeket biztosítja különböző hálózati környezetekben. Integrációs modul kapcsolatos részletekért lásd: [Integration runtime áttekintése](concepts-integration-runtime.md).
@@ -127,7 +127,7 @@ Több csomópont társíthatja a saját üzemeltetésű integrációs modul szof
 
 Ha alacsony a rendelkezésre álló memóriát a saját üzemeltetésű integrációs modul és a CPU-használata túl magas, új csomópont hozzáadása segít a horizontális felskálázást a terhelés gépek között. Ha a tevékenység sikertelen, mert éppen időtúllépés, vagy mert a saját üzemeltetésű integrációs modul csomópontja kapcsolat nélküli üzemmódban, ha egy csomópont hozzáadása az átjáró nyújt segítséget.
 
-#### <a name="scale-up"></a>Felskálázás
+#### <a name="scale-up"></a>Vertikális felskálázás
 
 A rendelkezésre álló memória és a Processzor nem használhatók jól, de az egyidejű feladatok végrehajtásának hamarosan eléri a korlátot, érdemes a vertikális felskálázáshoz, amely képes futni a csomóponton egyidejű feladatok számának növelése. Érdemes azt is, amikor a tevékenységek időtúllépésekbe ütközzenek, mert a saját üzemeltetésű integrációs modul túl van terhelve vertikális. Ahogy az az alábbi képen is látható, növelheti a maximális kapacitás egy csomópont:  
 
@@ -153,7 +153,7 @@ A tizenkét perces bevezető és a funkció bemutatójáért tekintse meg a köv
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Hybrid-data-movement-across-multiple-Azure-Data-Factories/player]
 
-### <a name="terminology"></a>Szakkifejezések
+### <a name="terminology"></a>Terminológia
 
 - **Integrációs modul megosztott**: az eredeti saját üzemeltetésű integrációs modul, amely a fizikai infrastruktúra fut-e.  
 - **Integrációs modul társított**: az integrációs modul egy másik hivatkozó megosztott IR. Ez egy logikai integrációs modul és a egy másik saját üzemeltetésű integrációs modul (megosztott)-infrastruktúrát használja.
@@ -176,7 +176,7 @@ A tizenkét perces bevezető és a funkció bemutatójáért tekintse meg a köv
 
    ![Mezők nevét és az erőforrás-azonosítóhoz](media\create-self-hosted-integration-runtime\6_create-linkedIR_3.png)
 
-### <a name="monitoring"></a>Monitoring 
+### <a name="monitoring"></a>Figyelés 
 
 - **Megosztott integrációs modul**
 
@@ -198,7 +198,9 @@ A tizenkét perces bevezető és a funkció bemutatójáért tekintse meg a köv
 
 * Az Azure PowerShell-verzió, amely támogatja ezt a szolgáltatást a 6.6.0 vagy újabb (AzureRM.DataFactoryV2, 0.5.7 vagy újabb).
 
-* Engedélyt adni a felhasználónak a tulajdonosi szerepkör vagy az örökölt tulajdonosi szerepkör a data factoryban, ahol a megosztott integrációs modul létezik. 
+* Engedélyt adni a felhasználónak a tulajdonosi szerepkör vagy az örökölt tulajdonosi szerepkör a data factoryban, ahol a megosztott integrációs modul létezik.
+
+* Csak a Data Factoryt az Azure Active Directory ugyanazon bérlőn belüli megosztási szolgáltatás működik.
 
 * Az Active Directory [vendégfelhasználók](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews), a keresési funkciókat (az összes adat-előállítók listázása a keresési kulcsszó használatával) a felhasználói felületen [nem működik](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#SearchLimits). Mindaddig, amíg a vendégfelhasználót a data Factory a tulajdonos, meg is oszthatják az integrációs modul nélkül a keresési funkciókat közvetlenül írja be az MSI a data Factory, amellyel az integrációs modul kell osztható meg, de a **engedély hozzárendelése** szövegmező és kiválasztásával **Hozzáadás** az Azure Data Factory felhasználói felületén. 
 

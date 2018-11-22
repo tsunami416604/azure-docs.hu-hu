@@ -16,12 +16,12 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: bd75ecde75d0f22dc66f047cd063dd85807f6f33
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: aec12e6dc7d331b2610546d0b0c92fa6ce0789ee
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304441"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284523"
 ---
 # <a name="manage-access-for-external-users-using-rbac"></a>A külső felhasználók számára az RBAC használatával-hozzáférés kezelése
 
@@ -45,7 +45,7 @@ Az Azure Portalról után jelentkezzen be rendszergazdaként, válassza ki "az e
 ![az Azure portal előfizetés paneljén](./media/role-assignments-external-users/0.png) alapértelmezés szerint a rendszergazda felhasználó megvásárolta az Azure-előfizetéssel, ha a felhasználó fog megjelenni **Fiókadminisztrátor**, ez az előfizetés szerepkör alatt. Az Azure-előfizetési szerepkörökhöz kapcsolatos további információkért lásd: [hozzáadása vagy módosítása az Azure-előfizetés rendszergazdái](../billing/billing-add-change-azure-subscription-administrator.md).
 
 Ebben a példában a felhasználó "alflanigan@outlook.com" van a **tulajdonos** az "ingyenes próbaverzió" előfizetést, az AAD bérlői "Alapértelmezett bérlőt Azure". Mivel ez a felhasználó kezdeti Microsoft Account "Outlook" az Azure-előfizetés létrehozója (a Microsoft Account = az Outlook, élő stb.) az alapértelmezett tartomány nevét, ezen a bérlőn hozzáadott összes többi felhasználó számára lesz **"\@ alflaniganuoutlook.onmicrosoft.com"**. A kialakításból fakadóan az új tartomány szintaxisa a következő bármik lehetnek, a felhasználó, aki létrehozta a bérlő nevét felhasználónevét és tartományát, és vegye fel a bővítmény megfelelő **". onmicrosoft.com"**.
-Ezenkívül felhasználók is után kell bejelentkeznie a bérlőben lévő egyéni tartománynév hozzáadása és ellenőrzi az új bérlőhöz. Az Azure Active Directory-bérlő egyéni tartománynév ellenőrzése További információkért lásd: [egyéni tartománynév hozzáadása a címtárhoz](/active-directory/active-directory-add-domain).
+Ezenkívül felhasználók is után kell bejelentkeznie a bérlőben lévő egyéni tartománynév hozzáadása és ellenőrzi az új bérlőhöz. Az Azure Active Directory-bérlő egyéni tartománynév ellenőrzése További információkért lásd: [egyéni tartománynév hozzáadása a címtárhoz](../active-directory/fundamentals/add-custom-domain.md).
 
 Ebben a példában a "Alapértelmezett bérlőt Azure" könyvtárban található csak azok a felhasználók, a tartomány nevét "\@alflanigan.onmicrosoft.com".
 
@@ -85,7 +85,7 @@ Ugyanakkor a Vendég a címtárban, a külső felhasználó kezelheti az Azure-e
 
 ![az azure active Directoryval az Azure Portalra korlátozott hozzáférés](./media/role-assignments-external-users/9.png)
 
-Az Azure Active Directory és az Azure-előfizetés nem rendelkezik a szülő-gyermek kapcsolat például a más Azure-erőforrások (például: virtuális gépek, virtuális hálózatok, webalkalmazások, tárolás stb.) az Azure-előfizetéssel rendelkezik. Minden az utóbbi létrehozott, felügyelt, és egy Azure-előfizetéshez számlázzuk, míg a egy Azure-előfizetést egy Azure-címtárhoz a hozzáférés kezelésére szolgál. További információkért lásd: [módját az Azure-előfizetések kapcsolata az Azure AD](/active-directory/active-directory-how-subscriptions-associated-directory).
+Az Azure Active Directory és az Azure-előfizetés nem rendelkezik a szülő-gyermek kapcsolat például a más Azure-erőforrások (például: virtuális gépek, virtuális hálózatok, webalkalmazások, tárolás stb.) az Azure-előfizetéssel rendelkezik. Minden az utóbbi létrehozott, felügyelt, és egy Azure-előfizetéshez számlázzuk, míg a egy Azure-előfizetést egy Azure-címtárhoz a hozzáférés kezelésére szolgál. További információkért lásd: [módját az Azure-előfizetések kapcsolata az Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 Az összes a beépített RBAC-szerepkörök **tulajdonosa** és **közreműködői** kínálnak a teljes felügyeleti erőforrásokhoz való teljes hozzáférés a környezetben, a különbség az, hogy egy munkatárs nem hozható létre, és új RBAC-szerepkörök törlése . A beépített szerepkörök, például **virtuális gépek Közreműködője** csak az erőforrásokat, függetlenül attól, hogy a név által jelzett összes felügyeleti hozzáférést nyújtanak a **erőforráscsoport** az éppen létrehozott.
 

@@ -8,12 +8,12 @@ ms.date: 09/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: eb44d6b0a4ea69d92f91af7ce1d6b19deff4e753
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 3ab775d57ba188930cc66b0fa1655307e9a78179
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567026"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284642"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Megismerheti a kiterjesztett offline funkcióit az IoT Edge-eszközök, a modulok és a gyermek eszközökön (előzetes verzió)
 
@@ -48,7 +48,7 @@ Az alábbi példa bemutatja, hogyan egy IoT Edge-forgatókönyvet a kapcsolat n�
 
 A jelen cikkben ismertetett kiterjesztett offline lehetőségek állnak rendelkezésére [IoT Edge 1.0.4-es verzió vagy újabb](https://github.com/Azure/azure-iotedge/releases). Korábbi verziók esetében az offline funkciók egy részét. Meglévő IoT Edge kiterjesztett offline képességeiről nem rendelkező eszközök úgy módosítja a futtatókörnyezet verziója nem frissíthető, de egy új IoT Edge eszközidentitással ezek a szolgáltatások eléréséhez a rendszer újra kell konfigurálni. 
 
-Offline kiterjesztett technikai támogatás érhető el minden olyan régióban, ahol az IoT Hub elérhető, kivéve az USA keleti Régiójában és Nyugat-Európa. 
+A kapcsolat nélküli kiterjesztett technikai támogatás érhető el minden olyan régióban, ahol az IoT Hub érhető el, **kivételével** USA keleti RÉGIÓJA.
 
 Csak az Edge IoT-eszközök gyermek eszközöket adhat hozzá. 
 
@@ -65,6 +65,19 @@ Gyermek eszközök bármely nem peremhálózati eszköz, a egy IoT-központban r
    ![Gyermek eszközöket kezelheti az IoT Edge-eszköz részleteit tartalmazó oldalra](./media/offline-capabilities/manage-child-devices.png)
 
 Szülő eszközök több gyermek eszköz rendelkezhet, de egy gyermek eszköz legfeljebb egy szülő.
+
+### <a name="specifying-dns-servers"></a>DNS-kiszolgálók megadása 
+
+Robusztusság javítása érdekében javasoljuk, adja meg a környezetében használt DNS-kiszolgáló címei. Például a Linux, a frissítés **/etc/docker/daemon.json** (szüksége lehet létrehozni a fájlt) a következők:
+
+```
+{
+    "dns": [“1.1.1.1”]
+}
+```
+
+Ha a helyi DNS-kiszolgálót használ, cserélje le a 1.1.1.1 a helyi DNS-kiszolgáló IP-címét. Indítsa újra a docker-szolgáltatást, a módosítások érvénybe léptetéséhez.
+
 
 ## <a name="optional-offline-settings"></a>Nem kötelező offline beállítások
 

@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: erhopf
-ms.openlocfilehash: c1eeee35869f29170a7f15b1d9e2c1ee69a6314d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: fa4563b84eb0882832a89ccc98396ff487f51b48
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622516"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284761"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Nyelvéhez és régiójához támogatása Beszédszolgáltatási API Használatába
 
@@ -70,7 +70,6 @@ ar-SA | arab (Szaúd-Arábia) | Férfi | "A Microsoft Server beszéd szöveg Spe
 bg-BG | bolgár | Férfi | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (bg-BG, Ivan)"
 CA-ES | Katalán | Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (ca-ES, HerenaRUS)"
 cs-CZ | cseh | Férfi | "A Microsoft Server hang-szöveg, beszédfelismerés, beszédfelismerési (cs-CZ, Jakub)"
-cs-CZ | cseh | Férfi | "A Microsoft Server hang-szöveg, beszédfelismerés, beszédfelismerési (cs-CZ, Vit)"
 da-DK | dán | Nő | "A Microsoft Server beszéd szöveg Speech Voice (da-DK, HelleRUS)"
 Németország-AT | német (Ausztria) | Férfi | "A Microsoft Server beszéd szöveg Speech Voice (Németország-AT, Michael)"
 Németország – CH | német (Svájc) | Férfi | "A Microsoft Server beszéd szöveg Speech Voice (Németország-CH, Karsten)"
@@ -86,7 +85,6 @@ en-GB | Angol (Egyesült Királyság) | Nő | "A Microsoft Server beszéd szöve
 | | |Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-GB, HazelRUS)"
 | | |Férfi | "A Microsoft Server beszéd szöveg Speech Voice (en-GB, George, Apollo)"
 en-IE | angol (Írország) |Férfi | "A Microsoft Server beszéd szöveg Speech Voice (en-IE, Sean)"
-en-IE | angol (Írország) |Férfi | "A Microsoft Server beszéd szöveg Speech Voice (en-IE, Shaun)"
 en-IN | Angol (India) | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-IN, Heera, Apollo)"
 | | |Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-IN, PriyaRUS)"
 | | |Férfi | "A Microsoft Server beszéd szöveg Speech Voice (en-IN, Ravi, Apollo)"
@@ -153,10 +151,10 @@ zh-TW | kínai (tajvani)|Nő | "A Microsoft Server beszéd szöveg Speech Voice 
 
 ### <a name="customization"></a>Testreszabás
 
-Hangalapú testreszabási amerikai angol (en-US), kontinens kínai (zh-CN) és olasz (it-IT) érhető el.
+Hangalapú testreszabási az Amerikai angol (en-US) kontinens kínai (zh-CN), francia (fr-FR), német (de-DE) és olasz (it-IT) érhető el.
 
 > [!NOTE]
-> Olasz hangalapú képzési egy be, mint 2000 utterances kezdődik. Angol nyelvű kínai kétnyelvű modellek is támogatottak egy kezdeti be, mint 2000 kimondott szöveg.
+> Francia, német, olasz és hang képzési elindítja egy adatkészlet 2000 + kimondott szöveg. Angol nyelvű kínai kétnyelvű modellek is támogatottak egy kezdeti be, mint 2000 kimondott szöveg.
 
 ## <a name="speech-translation"></a>Beszédfordítás
 

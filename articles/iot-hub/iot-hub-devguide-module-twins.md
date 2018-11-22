@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 1b76bfded6562f61a0a9f4a870a18a1fff71bc6a
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 9c82ad04b22a29f4a548b79b9b46a08d46de24ca
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309736"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284313"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Ismertetése és használati ikermodulokkal az IoT hubon
 
@@ -327,7 +327,7 @@ Ezek az információk segítségével megőrizheti a frissítéseket, amelyek ob
 ## <a name="optimistic-concurrency"></a>Optimista párhuzamosság
 
 Címkék, szükséges, és jelentett tulajdonságokként minden támogatási optimista egyidejűséget.
-A címkék rendelkezik egy ETag megfelelően [RFC7232]()https://tools.ietf.org/html/rfc7232, amely JSON-reprezentációval a címke jelöli. Feltételes frissítési műveleteket a megoldás háttérrendszere az ETag használatával biztosítani a konzisztenciát.
+A címkék rendelkezik egy ETag megfelelően [RFC7232](https://tools.ietf.org/html/rfc7232), amely JSON-reprezentációval a címke jelöli. Feltételes frissítési műveleteket a megoldás háttérrendszere az ETag használatával biztosítani a konzisztenciát.
 
 Ikermodul kívánt, és jelentett tulajdonságokként ETag nem rendelkezik, de van egy `$version` érték, amely garantáltan növekményes. Hasonlóképpen, az ETag címke, a verzió segítségével a frissítési fél konzisztenciájuk frissítések. Például egy modul alkalmazás a jelentett tulajdonságok vagy kívánt tulajdonság a megoldás háttérrendszeréhez.
 

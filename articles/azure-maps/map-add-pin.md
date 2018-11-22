@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 92d80d9a4d39a3f21539e5e6e498fc52df213a19
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: c56ac35f49c364b7b0f2ad26b82b178411419414
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248812"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52282685"
 ---
 # <a name="add-symbols-and-markers-to-a-map"></a>Adja hozzá a szimbólumok és jelölők térképre
 
@@ -51,7 +51,7 @@ A fenti kód az első kódblokkot egy térkép-objektumot hoz létre. Látható 
 
 Egy beosztásokhoz tömbjét van definiálva a második kódblokkot, és a egy [MultiPoint](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.multipoint?view=azure-iot-typescript-latest) objektum létrehozása. Egy adatforrás-objektum majd jön létre használatával a [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) osztály és a MultiPoint objektumot adnak hozzá az adatforrást.
 
-A [buborék réteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest) csomagolni szoftverfrissítésipont-alapú adatok rendereli a [adatforrás](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) , a térképen kör alakú. A legutóbbi kódblokkot egy buborék réteget hoz létre, és hozzáadja azt a térképen. Tekintse meg a buborék réteg tulajdonságainak [BubblerLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.bubblelayeroptions?view=azure-iot-typescript-latest).
+A [buborék réteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest) csomagolni szoftverfrissítésipont-alapú adatok rendereli a [adatforrás](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) , a térképen kör alakú. A legutóbbi kódblokkot egy buborék réteget hoz létre, és hozzáadja azt a térképen. Tekintse meg a buborék réteg tulajdonságainak [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions).
 
 Létrehozza és belül a térképhez hozzáadni a MultiPoint-objektumot, az adatforrás és a buborékok réteg a [eseményfigyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) függvény használatával győződjön meg arról, hogy a kör megjelenik-e után teljes betölti a térképen.
 
@@ -64,9 +64,9 @@ A fenti kód bemutatja, hogyan jelenítheti meg és címke adatait a térképen.
 
 A második kódblokkot, létrehoz egy [pont](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) objektum. Ezután létrehoz egy objektum használhatja a [adatforrás](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) osztályt, és a pontot ad hozzá az adatforrást.
 
-A [buborék réteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest) csomagolni szoftverfrissítésipont-alapú adatok rendereli a [adatforrás](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) , a térképen kör alakú. A harmadik kódblokkot egy buborék réteget hoz létre, és hozzáadja azt a térképen. Tekintse meg a buborék réteg tulajdonságainak [BubblerLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.bubblelayeroptions?view=azure-iot-typescript-latest).
+A [buborék réteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest) csomagolni szoftverfrissítésipont-alapú adatok rendereli a [adatforrás](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) , a térképen kör alakú. A harmadik kódblokkot egy buborék réteget hoz létre, és hozzáadja azt a térképen. Tekintse meg a buborék réteg tulajdonságainak [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions).
 
-A [szimbólum réteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) használja a szöveges vagy ikonjai csomagolni szoftverfrissítésipont-alapú adatok megjelenítése a [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) szimbólumra a térképen. A legutóbbi kódblokkot hoz létre, és hozzáadja egy szimbólum réteg jeleníti meg az a szöveg címkéje a buborék a térképen. Tekintse meg a szimbólum réteg tulajdonságainak [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.symbollayeroptions?view=azure-iot-typescript-latest).
+A [szimbólum réteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) használja a szöveges vagy ikonjai csomagolni szoftverfrissítésipont-alapú adatok megjelenítése a [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) szimbólumra a térképen. A legutóbbi kódblokkot hoz létre, és hozzáadja egy szimbólum réteg jeleníti meg az a szöveg címkéje a buborék a térképen. Tekintse meg a szimbólum réteg tulajdonságainak [SymbolLayerOptions](/javascript/api/azure-maps-control/atlas.symbollayeroptions).
 
 Az adatforrás és a Rétegek létrehozásakor és a térkép belül a [eseményfigyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) biztosítására, hogy az adatok után teljes betölti a térkép megjelenik-e.
 

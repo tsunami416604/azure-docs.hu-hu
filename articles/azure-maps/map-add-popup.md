@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0be10c155398133887fadb1fe9954068f3afb9d9
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: f56e15e12bc176e6b6837e144494599ea4fb5403
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568114"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52282532"
 ---
 # <a name="add-a-popup-to-the-map"></a>A térkép egy előugró ablak hozzáadása
 
@@ -33,7 +33,7 @@ A második kódblokkot létrehoz egy objektum használhatja a [DataSource](https
 
 A [szimbólum réteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) használja a szöveges vagy ikonjai csomagolni szoftverfrissítésipont-alapú adatok megjelenítése a [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) szimbólumra a térképen.  A harmadik kódblokkot egy szimbólum réteg jön létre. Az adatforrás fel van véve a szimbólum réteghez, majd a térkép felvett.
 
-A negyedik kódblokkot létrehoz egy [előugró objektum](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) keresztül `new atlas.Popup()`. Előugró ablak tulajdonságok, mint például a pozíció és pixelOffset részét képező [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.popupoptions?view=azure-iot-typescript-latest). Előugró ablak a konstruktorban, vagy keresztül határozhatók PopupOptions [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) függvény az előugró osztály. A `mouseover` majd jön létre a szimbólum réteg eseményfigyelő.
+A negyedik kódblokkot létrehoz egy [előugró objektum](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) keresztül `new atlas.Popup()`. Előugró ablak tulajdonságok, mint például a pozíció és pixelOffset részét képező [PopupOptions](/javascript/api/azure-maps-control/atlas.popupoptions). Előugró ablak a konstruktorban, vagy keresztül határozhatók PopupOptions [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) függvény az előugró osztály. A `mouseover` majd jön létre a szimbólum réteg eseményfigyelő.
 
 A legutóbbi kódblokkot által aktivált függvény létrehozása a `mouseover` eseményfigyelő. Azt állítja be a tartalmát és tulajdonságait – előugró, és hozzáadja az előugró objektum a térképen.
 

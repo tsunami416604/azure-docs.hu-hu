@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ca19ce2cca314950adc40bbf065dec80e7fa3e1f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a518d00a50c0fc6ec83626852f30f739d64b18ea
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227926"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283292"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure Automation forgatókönyv- és katalógusok
 Ahelyett, hogy a saját forgatókönyveit és moduljait létrehozása az Azure Automationben, számos forgatókönyv esetében, amely már a Microsoft és a Közösség által készített érheti el.  Ezekben a forgatókönyvekben, módosítás nélkül használhatja, vagy kiindulási pontként használhatja őket, és az adott igények szerint szerkesztheti őket.
@@ -68,7 +68,7 @@ A Microsoft javasolja, hogy a runbookok a Runbook-katalógus, amely úgy gondolj
 * Automation frissíti a katalógus óránként egyszer, így azonnal hozzájárulások nem jelenik meg.
 
 ## <a name="modules-in-powershell-gallery"></a>A PowerShell-galériában modulok
-PowerShell-modulok a runbookokban használható parancsmagokat tartalmaznak, és a meglévő telepítheti az Azure Automation-modulok elérhetők a [PowerShell-galériából](http://www.powershellgallery.com).  Indítsa el a katalógus az Azure Portalról, és telepítse őket közvetlenül az Azure Automationbe, vagy letöltheti a fájlokat, és telepítse őket manuálisan.  
+PowerShell-modulok a runbookokban használható parancsmagokat tartalmaznak, és a meglévő telepítheti az Azure Automation-modulok elérhetők a [PowerShell-galériából](https://www.powershellgallery.com).  Indítsa el a katalógus az Azure Portalról, és telepítse őket közvetlenül az Azure Automationbe, vagy letöltheti a fájlokat, és telepítse őket manuálisan.  
 
 ### <a name="to-import-a-module-from-the-automation-module-gallery-with-the-azure-portal"></a>Modul importálása az Automation-modul katalógusból az Azure portal használatával
 1. Az Azure Portalon nyissa meg az Automation-fiókját.

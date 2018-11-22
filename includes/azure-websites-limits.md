@@ -1,3 +1,16 @@
+---
+author: rothja
+ms.service: billing
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: jroth
+ms.openlocfilehash: 515aeac3531a45080824df126ad674353f70cdb8
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52279677"
+---
 | Erőforrás | Ingyenes | Közös | Alapszintű | Standard | Prémium szintű (v2) | Izolált </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Webes, mobil-, és API apps](https://azure.microsoft.com/services/app-service/) kiszolgálónként [App Service-csomag](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)<sup>1</sup> |10 |100 |Korlátlan számú<sup>2</sup> |Korlátlan számú<sup>2</sup> |Korlátlan számú<sup>2</sup> |Korlátlan számú<sup>2</sup>|

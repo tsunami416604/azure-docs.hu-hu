@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4172afc3adf23a05384fec0413465cf491af3a79
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: d3957038410e7a7d80e1ac710f0c227047b636a7
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275299"
+ms.locfileid: "52284795"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Példa: Való Automation konfigurációs és a chocolatey-t használó virtuális gépek folyamatos üzembe helyezés
 
@@ -34,14 +34,14 @@ Miután mindkét alapvető eljárás érvényesítve van, egy rövid lépés aut
 ## <a name="component-overview"></a>Összetevő áttekintése
 
 Például a kezelők csomag [apt-get paranccsal](https://en.wikipedia.org/wiki/Advanced_Packaging_Tool) Linux világszerte, de nem nagy részét a Windows világ viszonylag jól ismert.
-[Chocolatey](https://chocolatey.org/) ilyen egy dolog, és házigazdája, Scott Hanselman [blog](http://www.hanselman.com/blog/IsTheWindowsUserReadyForAptget.aspx) témakörről van egy nagyszerű bemutatása. Legnépszerűbb helyezés a Chocolatey lehetővé teszi a csomagok egy központi tárházban a csomagok telepítése a parancssor használata Windows rendszerben. Hozhat létre és kezelheti a saját tárház, és a chocolatey-t, Ön által kijelölt tárházak tetszőleges számú csomagok lehet telepíteni.
+[Chocolatey](https://chocolatey.org/) ilyen egy dolog, és házigazdája, Scott Hanselman [blog](https://www.hanselman.com/blog/IsTheWindowsUserReadyForAptget.aspx) témakörről van egy nagyszerű bemutatása. Legnépszerűbb helyezés a Chocolatey lehetővé teszi a csomagok egy központi tárházban a csomagok telepítése a parancssor használata Windows rendszerben. Hozhat létre és kezelheti a saját tárház, és a chocolatey-t, Ön által kijelölt tárházak tetszőleges számú csomagok lehet telepíteni.
 
 Desired State Configuration (DSC) ([áttekintése](/powershell/dsc/overview)) egy PowerShell-eszköz, amely lehetővé teszi, hogy a konfigurációt, amelyet egy gép deklarálható. Ha például mondhatjuk, "a chocolatey-t telepíteni kívánt, telepített IIS-t szeretnék, szeretném a 80-as port megnyitása, szeretném 1.0.0-s verziójának webhelyem, telepítve van." A DSC helyi Configuration Manager (LCM) valósítja meg, hogy ez a konfiguráció. A DSC lekéréses kiszolgálón tárolja a gépek konfigurációi gyűjteményéből. Az LCM Konfigurálása az összes olyan számítógépen ellenőrzi rendszeres időközönként, ha annak konfigurációja megegyezik-e a tárolt konfiguráció. Állapotát, vagy próbálja meg a gép vissza beemelése a tárolt konfigurációs ciklustól. A lekérési kiszolgálón egy gép vagy gépek lépnek a módosított konfigurációs ciklustól okozhat a tárolt konfiguráció szerkesztheti.
 
 Az Azure Automation egy olyan felügyelt szolgáltatás, amely lehetővé teszi a runbookok, csomópontok, hitelesítő adatok, erőforrások és -adategységeket, mint az ütemezés és a globális változók különféle feladatainak automatizálása a Microsoft Azure-ban.
 Azure Automation állapot konfiguráció kibővíti a PowerShell DSC eszközök automation funkció. Itt van egy nagyszerű [áttekintése](automation-dsc-overview.md).
 
-A DSC-erőforrás egy modul mutatnak, amelyek az adott képesség, például a hálózat, az Active Directory vagy az SQL Server kezelésére. A Chocolatey DSC-erőforrás képes egy (többek között) NuGet-kiszolgáló eléréséhez, -csomagok letöltése, csomagok telepítéséhez és így tovább. Sok más DSC-erőforrás a a [PowerShell-galériából](http://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title).
+A DSC-erőforrás egy modul mutatnak, amelyek az adott képesség, például a hálózat, az Active Directory vagy az SQL Server kezelésére. A Chocolatey DSC-erőforrás képes egy (többek között) NuGet-kiszolgáló eléréséhez, -csomagok letöltése, csomagok telepítéséhez és így tovább. Sok más DSC-erőforrás a a [PowerShell-galériából](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title).
 Ezeket a modulokat az Azure Automation állapota konfigurációs lekéréses kiszolgálón telepíteni (Ön által), így azok a konfigurációk által használható.
 
 Resource Manager-sablonok, az infrastruktúra - többek között a hálózatok, alhálózatok, hálózati biztonság létrehozása deklaratív módszert biztosítanak, és betölteni útválasztás, a terheléselosztók, hálózati adapterek, virtuális gépek és így tovább. Íme egy [cikk](../azure-resource-manager/resource-manager-deployment-model.md) , amely összehasonlítja a Resource Manager üzemi modell (deklaratív) az Azure szolgáltatásfelügyelet (ASM vagy klasszikus) üzemi modellel (imperatív), és ismerteti az alapvető erőforrás-szolgáltatók, a számítási, tárolási és a hálózat.
@@ -179,7 +179,7 @@ Ezen lépések eredménye az új csomópont-konfiguráció "ISVBoxConfig.isvbox"
 ## <a name="step-5-creating-and-maintaining-package-metadata"></a>5. lépés: Létrehozása és karbantartása csomagok metaadatai
 
 Minden csomag mindössze a csomagtárház szüksége lesz egy nuspec, amely azt ismerteti.
-Adott nuspec kell összeállítani, és a NuGet-kiszolgálón tárolt. Ennek menetét [Itt](http://docs.nuget.org/create/creating-and-publishing-a-package). NuGet-kiszolgálóként MyGet.org is használhatja. Értékesíteni ezt a szolgáltatást, de rendelkezik alapszintű Termékváltozatát, amely ingyenes. NuGet.org címen találja a saját NuGet-kiszolgáló a saját csomagok telepítésével kapcsolatban.
+Adott nuspec kell összeállítani, és a NuGet-kiszolgálón tárolt. Ennek menetét [Itt](https://docs.nuget.org/create/creating-and-publishing-a-package). NuGet-kiszolgálóként MyGet.org is használhatja. Értékesíteni ezt a szolgáltatást, de rendelkezik alapszintű Termékváltozatát, amely ingyenes. NuGet.org címen találja a saját NuGet-kiszolgáló a saját csomagok telepítésével kapcsolatban.
 
 ## <a name="step-6-tying-it-all-together"></a>6. lépés: Minden egy helyen összeköthető
 

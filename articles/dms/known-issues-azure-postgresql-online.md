@@ -11,19 +11,19 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/22/2018
-ms.openlocfilehash: e30ffe2dd79d55e856ef297608745b60578cf7e7
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: b83c889e72acb320c308c3ad5ee6243e715fd523
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46131300"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52282876"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Ismert problémák és a migrálás korlátozások az online migrálást az Azure-adatbázis PostgreSQL-hez
 
 Ismert problémák és korlátozások online migrálást a PostgreSQL az Azure Database for postgresql-hez társított a következő szakaszokban ismertetett. 
 
 ## <a name="online-migration-configuration"></a>Online migrálás konfiguráció
-- A PostgreSQL-kiszolgáló forrás 9.5.11, 9.6.7 vagy 10.3 verzióját kell futtatniuk vagy újabb. További információkért tekintse meg a cikket [PostgreSQL-adatbázis verziója támogatott](1.2.%09https:/docs.microsoft.com/azure/postgresql/concepts-supported-versions).
+- A PostgreSQL-kiszolgáló forrás 9.5.11, 9.6.7 vagy 10.3 verzióját kell futtatniuk vagy újabb. További információkért tekintse meg a cikket [PostgreSQL-adatbázis verziója támogatott](../postgresql/concepts-supported-versions.md).
 - Csak ugyanazon verzió az áttelepítés támogatott. Például az Azure Database for postgresql-hez 9.6.7 PostgreSQL 9.5.11 áttelepítése nem támogatott.
 - A logikai replikáció engedélyezéséhez a **PostgreSQL postgresql.conf forrás** fájlt, állítsa be a következő paraméterekkel:
     - **wal_level** logikai =
@@ -66,7 +66,7 @@ Ismert problémák és korlátozások online migrálást a PostgreSQL az Azure D
     
     ```
 
-    Futtassa a drop külső kulcs (amely a második oszlop) a lekérdezés eredményei.
+    Futtassa a ’drop foreign key’-t (ez a második oszlop) a lekérdezési eredményben.
 
 - A séma a célhelyen, Azure Database for PostgreSQL kell nem tartozhat eseményindító. Használja az alábbi letiltása a céladatbázisban eseményindítók:
 

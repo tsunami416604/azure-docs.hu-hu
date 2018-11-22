@@ -9,16 +9,50 @@ author: hning86
 ms.author: haining
 ms.reviewer: j-martens
 ms.date: 10/24/2018
-ms.openlocfilehash: 5ceb47f437f736829d0be10a856fe787fab944b0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 52c8eed7f8b5a65ef13215e677d52f44cb95fd64
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261582"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284999"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
 Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások. 
+
+## <a name="2018-11-20"></a>2018-11-20
+
+### <a name="azure-machine-learning-sdk-for-python-v0180"></a>Az Azure Machine Learning SDK for Python v0.1.80
+
++ **Használhatatlanná tévő változásai** 
+  * *azureml.train.widget* névtér át lett helyezve *azureml.train*.
+  * *azureml.core.compute.AmlCompute* helyteleníti *azureml.core.compute.BatchAICompute*. Az utóbbi osztály törlődni fog a következő kiadásokban.
+### <a name="azure-machine-learning-data-prep-sdk-v051"></a>Az Azure Machine Learning adat-előkészítési SDK v0.5.1 
+További információ a Data Prep SDK olvasásával [docs hivatkozhat](https://aka.ms/data-prep-sdk).
++ **Új funkciók**
+   * Létrehozott egy új Adatelőkészítés CLI hajtsa végre az Adatelőkészítés-csomagok és az adatkészlet vagy adatfolyam adatok profiljának megtekintése
+   * Újratervezett SetColumnType API használhatóság javítása érdekében
+   * Átnevezett smart_read_file auto_read_file
+   * Mostantól tartalmazza a Adatprofil döntés és értékek
+   * A rétegzett mintavételi is minta
+   * CSV-fájlokat tartalmazó zip-fájlokat is olvashat
+   * Is felosztása row-wise véletlenszerű Split-adatkészletek (pl. teszt – train-készlet)
+   * Az összes oszlop adattípusok vagy érheti el egy adatfolyam-adatprofil .dtypes meghívásával
+   * A sorok számát vagy érheti el egy adatfolyam-adatprofil .row_count meghívásával
+
++ **Hibajavítások**
+   * Mennyi ideig dupla átalakítás rögzített 
+   * Rögzített vyhodnocení után bármely oszlop hozzáadása 
+   * FuzzyGrouping, ahol azt szeretné nem csoportok egyes esetekben képes észlelni kijavítva
+   * Több oszlopot rendezési sorrend figyelembe veszi a rögzített rendezési funkció
+   * Rögzített méretű és/vagy kifejezések hogyan Pandas kezeli őket hasonlónak kell lennie
+   * Rögzített olvasásakor dbfs elérési útja
+   * Hibaüzenetek a könnyebb érthetőség érdekében 
+   * Most már nem akkor, ha az AML-jogkivonat használatával távoli számítási cél olvasó
+   * Most már nem meghiúsul, a Linux-dsvm-hez
+   * Most már nem összeomlik, ha nem sztring típusú értékek a következők az olyan predikátumokban karakterlánc
+   * Most már kezeli a helyességi feltétel hibákat, amikor adatfolyamot megfelelően kell-e sikertelen
+   * Most már támogatja az Azure databricks szolgáltatásban dbutils csatlakoztatott tárolási helyek
 
 ## <a name="2018-11-05"></a>2018-11-05
 

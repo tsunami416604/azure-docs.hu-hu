@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: a8b2070b6f5b10cb60c6658aefc8cc90331ecfd9
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 3416d257a23e94460199a1ddfe63302ff55ad5a5
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409356"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52285050"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>A Windows operációs rendszer a Service Fabric-fürtben
 
@@ -167,7 +167,7 @@ A patch orchestration app viselkedését konfigurálhatja az igényeinek. Alkalm
 
 1. Fejezze be a fürt előkészítése az összes előfeltételként felsorolt lépéseket.
 2. A patch orchestration alkalmazás például a többi Service Fabric-alkalmazást üzembe helyezése. PowerShell használatával telepítheti az alkalmazást. Kövesse a [PowerShell-lel telepítés és eltávolítás alkalmazások](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications).
-3. Az alkalmazás konfigurálása a központi telepítés alkalmával, át kell adnia a `ApplicationParamater` , a `New-ServiceFabricApplication` parancsmagot. Az Ön kényelme érdekében megadtuk a parancsfájl Deploy.ps1 együtt az alkalmazás. A parancsprogram használata:
+3. Az alkalmazás konfigurálása a központi telepítés alkalmával, át kell adnia a `ApplicationParameter` , a `New-ServiceFabricApplication` parancsmagot. Az Ön kényelme érdekében megadtuk a parancsfájl Deploy.ps1 együtt az alkalmazás. A parancsprogram használata:
 
     - Csatlakozás a Service Fabric-fürt használatával `Connect-ServiceFabricCluster`.
     - Hajtsa végre a megfelelő PowerShell parancsfájlt Deploy.ps1 `ApplicationParameter` értéket.

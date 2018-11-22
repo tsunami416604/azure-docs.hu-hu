@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: efe04b19188d7324c3f86565610040b8eaa97c43
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 18e668249c50ffbc1020aa12455fdfb87dcb8a24
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855391"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52282549"
 ---
 # <a name="message-deferral"></a>Üzenetek halasztása
 
@@ -40,7 +40,6 @@ Egy késleltetett üzenetet lekéréséhez tulajdonosától feladata megjegyzés
 
 Ha nem lehet feldolgozni egy üzenetet, mert az üzenet egy adott erőforrás átmenetileg nem érhető el, de üzenet feldolgozása nem summarily felfüggesztésére vonatkozó, egy üzenetet elhelyezése az ügyféloldali néhány percet módja ne felejtse el a  **SequenceNumber** a egy [ütemezett üzenet](message-sequencing.md) bizonylatok néhány perc múlva, és újra a késleltetett üzenet beolvasása, az ütemezett üzenet érkezésekor. Ha üzenetkezelőként függ, hogy a művelet egy adatbázis, és átmenetileg nem érhető el, hogy az adatbázis, azt kell nem késleltetési, hanem inkább az üzenetek fogadása felfüggesztése funkciót azonban teljesen, amíg az adatbázis újból elérhető lesz.
 
-Üzenetek késleltetésének nincs hatással az üzenetek lejáratkor, azaz a késleltetett üzenet továbbra is a kezdetben ütemezett időpontban lejár és majd át a kézbesítetlen levelek várólistájára vonatkozik, ha így vannak konfigurálva.
 
 ## <a name="next-steps"></a>További lépések
 

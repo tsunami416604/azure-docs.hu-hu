@@ -10,12 +10,12 @@ ms.author: mattcon
 author: matthewconners
 ms.date: 07/13/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 06613ed1eac43ebe865666f85235de74903b1d5c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d3fac7c6d0a2274813c6ba6d96d8014d6452d28f
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953598"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284897"
 ---
 # <a name="build-and-deploy-forecasting-models-with-azure-machine-learning"></a>Hozhat létre, és az Azure Machine Learning előrejelzési modellek üzembe helyezése
 
@@ -109,7 +109,7 @@ print('imports done')
 
 ## <a name="load-data-and-explore"></a>Adatok betöltése és megismerése
 
-Ez a kódrészlet ebben az esetben egy nyers adatkészlet kezdve tipikus folyamatát mutatja be a [Dominick a kifinomultabb élelmiszerek származó adatok](https://research.chicagobooth.edu/kilts/marketing-databases/dominicks).  A kényelmi funkciót is használhatja [load_dominicks_oj_data](https://docs.microsoft.com/python/api/ftk.data.dominicks_oj.load_dominicks_oj_data).
+Ez a kódrészlet ebben az esetben egy nyers adatkészlet kezdve tipikus folyamatát mutatja be a [Dominick a kifinomultabb élelmiszerek származó adatok](https://research.chicagobooth.edu/kilts/marketing-databases/dominicks).  A kényelmi funkciót is használhatja [load_dominicks_oj_data](/python/api/azuremlftk/ftk.data.dominicks_oj.load_dominicks_oj_data).
 
 
 ```python
@@ -340,7 +340,7 @@ print('{} time series in the data frame.'.format(nseries))
 
 Az adatok körülbelül 250 különböző kombinációit tároló és a egy adatkeretben márka tartalmazza. Minden kombinációja határozza meg a saját idősorozat, az értékesítés. 
 
-Használhatja a [TimeSeriesDataFrame](https://docs.microsoft.com/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest) osztály egyetlen struktúra használata több sorozat kényelmesen modellezésére a _időfelbontási szint_. A időfelbontási szint szerint van megadva a `store` és `brand` oszlopokat.
+Használhatja a [TimeSeriesDataFrame](/python/api/azuremlftk/ftk.time_series_data_frame.timeseriesdataframe) osztály egyetlen struktúra használata több sorozat kényelmesen modellezésére a _időfelbontási szint_. A időfelbontási szint szerint van megadva a `store` és `brand` oszlopokat.
 
 A különbség a között _időfelbontási szint_ és _csoport_ , hogy időfelbontási szint mindig fizikailag kifejező, a való világból bármit, amíg a csoport nem kell lennie. A csomag belső függvények csoport használatával az idősorozatban egyetlen modell létrehozása, ha a felhasználó úgy véli, hogy ez a csoportosítás javítja a modell teljesítményét. Alapértelmezés szerint tulajdonoscsoportja időfelbontási szint egyenlőnek kell lennie, és egyetlen modellben minden egyes időfelbontási szint lett tervezve. 
 
@@ -500,10 +500,7 @@ whole_tsdf.loc[pd.IndexSlice['1990-06':'1990-09', 2, 'dominicks'], ['Quantity']]
   </tbody>
 </table>
 
-
-
-A [TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#ts-report) függvény a time series adatok keret átfogó jelentést hoz létre. A jelentés egy általános leírása és is idősorozat-adatok az adott statisztika tartalmazza. 
-
+A [TimeSeriesDataFrame.ts_report](/python/api/azuremlftk/ftk.time_series_data_frame.timeseriesdataframe#ts-report) függvény a time series adatok keret átfogó jelentést hoz létre. A jelentés egy általános leírása és is idősorozat-adatok az adott statisztika tartalmazza. 
 
 ```python
 whole_tsdf.ts_report()
@@ -889,14 +886,14 @@ whole_tsdf.head()
 
 ## <a name="preprocess-data-and-impute-missing-values"></a>Az adatok előfeldolgozása és a hiányzó értékeket imputálására
 
-Indítsa el az adatok gyakorlókészlethez és a egy csoportot az tesztelési halmazra a [last_n_periods_split](https://docs.microsoft.com/python/api/ftk.ts_utils?view=azure-ml-py-latest) segédprogram függvény. A létrejövő set tesztelés tartalmazza minden egyes utolsó 40 észrevételeit. 
+Indítsa el az adatok gyakorlókészlethez és a egy csoportot az tesztelési halmazra a [last_n_periods_split](/python/api/azuremlftk/ftk.ts_utils#last-n-periods-split) segédprogram függvény. A létrejövő set tesztelés tartalmazza minden egyes utolsó 40 észrevételeit. 
 
 
 ```python
 train_tsdf, test_tsdf = last_n_periods_split(whole_tsdf, 40)
 ```
 
-Alapszintű time series modellek összefüggő idősorozat van szükség. Ellenőrizze, hogy rendszeres, ami azt jelenti, hogy rendelkeznek-e egy rendszeres időközönként, használja a mintavétel ideje index az adatsorozat-a [check_regularity_by_grain](https://docs.microsoft.com/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#check-regularity-by-grain) függvény.
+Alapszintű time series modellek összefüggő idősorozat van szükség. Ellenőrizze, hogy rendszeres, ami azt jelenti, hogy rendelkeznek-e egy rendszeres időközönként, használja a mintavétel ideje index az adatsorozat-a [check_regularity_by_grain](/python/api/azuremlftk/ftk.time_series_data_frame.timeseriesdataframe#check-regularity-by-grain) függvény.
 
 
 ```python
@@ -971,7 +968,7 @@ print(ts_regularity[ts_regularity['regular'] == False])
     [213 rows x 2 columns]
     
 
-Láthatja, hogy a sorozat (213 kívüli 249) többsége szabálytalan. Egy [imputálási átalakító](https://docs.microsoft.com/python/api/ftk.transforms.ts_imputer.timeseriesimputer?view=azure-ml-py-latest) értékesítési mennyiség értékek a hiányzó szükséges. Többféleképpen imputálási, amíg az az alábbi mintakód egy lineáris interpolációs használ.
+Láthatja, hogy a sorozat (213 kívüli 249) többsége szabálytalan. Egy [imputálási átalakító](/python/api/azuremlftk/ftk.transforms.time_series_imputer.timeseriesimputer) értékesítési mennyiség értékek a hiányzó szükséges. Többféleképpen imputálási, amíg az az alábbi mintakód egy lineáris interpolációs használ.
 
 
 ```python
@@ -1037,8 +1034,7 @@ arima_model = Arima(oj_series_freq, arima_order)
 
 ### <a name="combine-multiple-models"></a>Több modell egyesítése
 
-A [ForecasterUnion](https://docs.microsoft.com/python/api/ftk.models.forecaster_union?view=azure-ml-py-latest) estimator lehetővé teszi, hogy több estimators egyesítése, és ezeket egyetlen sor kód segítségével a laphoz/előrejelzésével.
-
+A [ForecasterUnion](/python/api/azuremlftk/ftk.models.forecaster_union.forecasterunion) estimator lehetővé teszi, hogy több estimators egyesítése, és ezeket egyetlen sor kód segítségével a laphoz/előrejelzésével.
 
 ```python
 forecaster_union = ForecasterUnion(
@@ -1251,7 +1247,7 @@ print(train_feature_tsdf.head())
 
  **RegressionForecaster**
 
-A [RegressionForecaster](https://docs.microsoft.com/python/api/ftk.models.regression_forecaster.regressionforecaster?view=azure-ml-py-latest) függvény sklearn regressziós estimators burkolja, így azok a TimeSeriesDataFrame kell képezni. A burkolt forecaster is beteszi mindegyik csoportnál a case tárolóban levő ugyanannak a modellnek. A forecaster tudhat meg egy modellt a sorozat, amely hasonló tekintik, és együtt összevonhatják egy csoportjánál. Adatsorozat-csoport egy modellt gyakran hosszabb adatsorozat adatainak fejlesztésére használja rövid adatsorozathoz előrejelzéseket. Ezek bármely más modellek az erőforrástárban, amelyek támogatják a regressziós modellek helyettesítheti. 
+A [RegressionForecaster](/python/api/azuremlftk/ftk.models.regression_forecaster.regressionforecaster) függvény sklearn regressziós estimators burkolja, így azok a TimeSeriesDataFrame kell képezni. A burkolt forecaster is beteszi mindegyik csoportnál a case tárolóban levő ugyanannak a modellnek. A forecaster tudhat meg egy modellt a sorozat, amely hasonló tekintik, és együtt összevonhatják egy csoportjánál. Adatsorozat-csoport egy modellt gyakran hosszabb adatsorozat adatainak fejlesztésére használja rövid adatsorozathoz előrejelzéseket. Ezek bármely más modellek az erőforrástárban, amelyek támogatják a regressziós modellek helyettesítheti. 
 
 
 ```python
@@ -1369,13 +1365,13 @@ Néhány gépi tanulási modelleket képes kihasználni az új funkciók és az 
 
 ### <a name="cross-validation-parameter-and-model-sweeping"></a>Keresztellenőrzési, a paraméter és a modell kezdik    
 
-A csomag néhány hagyományos machine learning-függvény egy előrejelzési alkalmazáshoz alkalmazkodik.  [RollingOriginValidator](https://docs.microsoft.com/python/api/ftk.model_selection.cross_validation.rollingoriginvalidator?view=azure-ml-py-latest) kereszt-ellenőrzési ideiglenesen, does mi lenne, és nem lenne ismert előrejelzési keretrendszer lehetőségekből. 
+A csomag néhány hagyományos machine learning-függvény egy előrejelzési alkalmazáshoz alkalmazkodik.  [RollingOriginValidator](/python/api/azuremlftk/ftk.model_selection.cross_validation.rollingoriginvalidator) kereszt-ellenőrzési ideiglenesen, does mi lenne, és nem lenne ismert előrejelzési keretrendszer lehetőségekből. 
 
 Az alábbi ábra az egyes szögletes egy idő pontról adatokat jelöli. A kék négyzetes betanítási képviseli, és narancssárga négyzetes képviseli minden egyes modellrészek tesztelése. Tesztelési adatok későbbinek kell lennie az idő pontokról a legnagyobb képzési idő pont. Ellenkező esetben jövőbeli adatkezelési kiszivárgott való betanítási adatok, így a minta értékelés érvénytelenné válik. 
 ![PNG](./media/how-to-build-deploy-forecast-models/cv_figure.PNG)
 
 **A paraméter kezdik**  
-A [TSGridSearchCV](https://docs.microsoft.com/python/api/ftk.model_selection.search.tsgridsearchcv?view=azure-ml-py-latest) osztály teljes körűen keresztül megadott paraméterértékek keres, és használja `RollingOriginValidator` paraméter teljesítmény kiértékelése a legmegfelelőbb paraméterek megtalálása érdekében.
+A [TSGridSearchCV](/python/api/azuremlftk/ftk.model_selection.search.tsgridsearchcv) osztály teljes körűen keresztül megadott paraméterértékek keres, és használja `RollingOriginValidator` paraméter teljesítmény kiértékelése a legmegfelelőbb paraméterek megtalálása érdekében.
 
 
 ```python
@@ -1647,7 +1643,7 @@ aml_deployment.deploy()
 
 ### <a name="score-the-web-service"></a>A web service pontszám
 
-Pontszám egy kisméretű adatkészlet, használja a [pontszám](https://docs.microsoft.com/python/api/ftk.operationalization.deployment.amlwebservice) elküldeni egy webszolgáltatás metódust hívja fel az összes adatot.
+Pontszám egy kisméretű adatkészlet, használja a [pontszám](/python/api/azuremlftk/ftk.operationalization.forecast_web_service.forecastwebservice#score) elküldeni egy webszolgáltatás metódust hívja fel az összes adatot.
 
 
 ```python
@@ -1668,8 +1664,7 @@ aml_web_service = aml_deployment.get_deployment()
 results = aml_web_service.score(score_context=score_context)
 ```
 
-Egy nagy méretű adathalmazt pontszám, használja a [párhuzamos pontozási](https://docs.microsoft.com/python/api/ftk.operationalization.deployment.amlwebservice) mód elküldése több webszolgáltatás meghívja,-adatok egy csoporthoz.
-
+Egy nagy méretű adathalmazt pontszám, használja a [párhuzamos pontozási](/python/api/azuremlftk/ftk.operationalization.forecast_web_service.forecastwebservice#score-parallel) mód elküldése több webszolgáltatás meghívja,-adatok egy csoporthoz.
 
 ```python
 results = aml_web_service.score(score_context=score_context, method='parallel')

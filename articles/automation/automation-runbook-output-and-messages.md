@@ -9,15 +9,15 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 751c2df42ee8e4ace22fe94e1fef8d734ab81c3c
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 9602b8ff4d0df15b030626d5e2cfeca9bcc2bd5d
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275666"
+ms.locfileid: "52284114"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Runbook-kimenet és üzenetek az Azure Automationben
-A legtöbb Azure Automation-runbookok rendelkezik valamilyen kimenetet, például egy hibaüzenet a felhasználó számára, vagy egy összetett objektumot egy másik munkafolyamat számára készült. Windows PowerShell biztosít [több adatfolyam](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) , elküldheti a kimenetet egy parancsfájl vagy a munkafolyamat. Az egyes ezekbe az adatfolyamokba eltérően működik az Azure Automation, és a követendő ajánlott eljárások használata minden egyes runbook létrehozásakor.
+A legtöbb Azure Automation-runbookok rendelkezik valamilyen kimenetet, például egy hibaüzenet a felhasználó számára, vagy egy összetett objektumot egy másik munkafolyamat számára készült. Windows PowerShell biztosít [több adatfolyam](https://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) , elküldheti a kimenetet egy parancsfájl vagy a munkafolyamat. Az egyes ezekbe az adatfolyamokba eltérően működik az Azure Automation, és a követendő ajánlott eljárások használata minden egyes runbook létrehozásakor.
 
 A következő táblázat nyújt rövid leírását tartalmazza minden egyes a Streamek és a felhasználók viselkedését az Azure Portalon is, ha egy közzétett runbookban fut, és ha [runbook tesztelése](automation-testing-runbook.md). További részleteket az egyes adatfolyamokkal az ezt követő szakaszokban találhatók.
 
@@ -135,7 +135,7 @@ Write-Error –Message "This is an error message that will stop the runbook beca
 ```
 
 ### <a name="verbose-stream"></a>Részletes adatfolyam
-A részletes üzenet-adatfolyam a runbook-művelettel kapcsolatos általános információkat van. Mivel a [hibakeresési Stream](#Debug) nem érhető el egy runbookot, részletes üzeneteket kell használni a hibakeresési adatokat. Alapértelmezés szerint a közzétett runbookok részletes üzenetek nem tárolja a feladatelőzményekben. Részletes üzenetek tárolásához, konfigurálja a konfigurálás lapot, az Azure Portalon a runbook közzétett runbookok részletes rekordok naplózása. A legtöbb esetben érdemes megtartani az alapértelmezett beállítás, amely nem naplózza a megfelelő teljesítmény biztosítása érdekében a runbook részletes rekordjait. Kapcsolja be ezt a beállítást csak hibakeresési egy runbook vagy hibák elhárítása.
+A részletes üzenet-adatfolyam a runbook-művelettel kapcsolatos általános információkat van. Mivel a [hibakeresési Stream](#debug-stream) nem érhető el egy runbookot, részletes üzeneteket kell használni a hibakeresési adatokat. Alapértelmezés szerint a közzétett runbookok részletes üzenetek nem tárolja a feladatelőzményekben. Részletes üzenetek tárolásához, konfigurálja a konfigurálás lapot, az Azure Portalon a runbook közzétett runbookok részletes rekordok naplózása. A legtöbb esetben érdemes megtartani az alapértelmezett beállítás, amely nem naplózza a megfelelő teljesítmény biztosítása érdekében a runbook részletes rekordjait. Kapcsolja be ezt a beállítást csak hibakeresési egy runbook vagy hibák elhárítása.
 
 Amikor [runbook tesztelése](automation-testing-runbook.md), részletes üzenetek nem jelennek meg, akkor is, ha a runbook a részletes rekordok naplózására van beállítva. Miközben részletes üzenetek megjelenítése [runbook tesztelése](automation-testing-runbook.md), először be kell állítania a $VerbosePreference változó tovább. A változó beállítása részletes üzenetek megjelennek a Tesztkimenet ablaktáblán az Azure Portal.
 

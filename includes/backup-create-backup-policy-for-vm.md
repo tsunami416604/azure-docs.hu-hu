@@ -1,3 +1,16 @@
+---
+author: rayne-wiselman
+ms.service: backup
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: raynew
+ms.openlocfilehash: e62771096bc59bc05879ce7b7e2da19f050b27b0
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52279679"
+---
 ## <a name="defining-a-backup-policy"></a>Biztonsági mentési házirend meghatározása
 A biztonsági mentési házirend egy mátrixot határoz meg ahhoz, hogy mikor készüljön pillanatkép az adatokról, és mennyi ideig őrizze meg a rendszer a pillanatképeket. Virtuális gépek biztonsági mentéséről szóló házirend meghatározása esetén *naponta egyszer* indíthat el biztonsági mentési feladatot. Az újonnan létrehozott házirendek a tárolón érvényesülnek. A biztonsági mentési házirendek felülete a következőképpen néz ki:
 
