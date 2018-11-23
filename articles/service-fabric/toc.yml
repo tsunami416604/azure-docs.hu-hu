@@ -285,22 +285,23 @@ items:
     items:
     - name: Monitorozás áttekintése
       href: service-fabric-diagnostics-overview.md
+    - name: Alkalmazások monitorozása
+      href: service-fabric-diagnostics-event-generation-app.md
     - name: Fürtmonitorozás
-      href: service-fabric-diagnostics-event-generation-infra.md
       items:
+      - name: A fürtmonitorozás áttekintése
+        href: service-fabric-diagnostics-event-generation-infra.md
       - name: Service Fabric-események
         href: service-fabric-diagnostics-events.md
       - name: Az EventStore áttekintése
         href: service-fabric-diagnostics-eventstore.md
       - name: A Reliable Services eseményei
         href: service-fabric-reliable-services-diagnostics.md
-      - name: A Reliable Actors eseményei
-        href: service-fabric-reliable-actors-diagnostics.md
       - name: Megfigyelő szolgáltatás távelérésének lehetővé tétele
         href: service-fabric-reliable-serviceremoting-diagnostics.md
-    - name: Alkalmazásnaplózás
-      href: service-fabric-diagnostics-event-generation-app.md
-    - name: Teljesítmény-mérőszámok
+      - name: A Reliable Actors eseményei
+        href: service-fabric-reliable-actors-diagnostics.md
+    - name: Infrastruktúrák monitorozása
       href: service-fabric-diagnostics-event-generation-perf.md
     - name: Állapotmodell áttekintése
       href: service-fabric-health-introduction.md
@@ -642,33 +643,35 @@ items:
       href: service-fabric-connect-to-secure-cluster.md
   - name: Megfigyelés és diagnosztika
     items:
+    - name: Gyakori forgatókönyvek diagnosztizálása
+      href: service-fabric-diagnostics-common-scenarios.md
     - name: Alkalmazások figyelése
       items:
-      - name: Elemzés az Application Insights segítségével
-        href: service-fabric-diagnostics-event-analysis-appinsights.md
       - name: Naplózás hozzáadása az alkalmazáshoz
         href: service-fabric-how-to-diagnostics-log.md
-      - name: Események összesítése az EventFlow segítségével
+      - name: Elemzés az Application Insights segítségével
+        href: service-fabric-diagnostics-event-analysis-appinsights.md
+      - name: Naplók összesítése az EventFlow segítségével
         href: service-fabric-diagnostics-event-aggregation-eventflow.md
       - name: Tárolók figyelése
         href: service-fabric-diagnostics-oms-containers.md
     - name: Fürtök monitorozása
       items:
+      - name: A Log Analytics konfigurálása fürtesemények gyűjtésére
+        href: service-fabric-diagnostics-oms-setup.md
+      - name: Fürtmonitorozás a Log Analytics segítségével
+        href: service-fabric-diagnostics-event-analysis-oms.md
       - name: EventStore API-k lekérdezése
         href: service-fabric-diagnostics-eventstore-query.md
-      - name: Windows Azure Diagnostics
+      - name: A WAD-ügynök testreszabása
         href: service-fabric-diagnostics-event-aggregation-wad.md
-      - name: Linux Azure Diagnostics
+      - name: Az LAD-ügynök testreszabása
         href: service-fabric-diagnostics-event-aggregation-lad.md
-      - name: A Log Analytics beállítása
-        href: service-fabric-diagnostics-oms-setup.md
-      - name: Figyelés a Log Analytics használatával
-        href: service-fabric-diagnostics-event-analysis-oms.md
     - name: Infrastruktúra monitorozása
       items:
-      - name: Teljesítménymonitorozás a Log Analytics-ügynökkel
+      - name: Teljesítményszámlálók gyűjtése a Log Analytics-ügynökkel
         href: service-fabric-diagnostics-oms-agent.md
-      - name: Teljesítményfigyelés WAD használatával
+      - name: Teljesítményszámlálók gyűjtése a WAD-vel
         href: service-fabric-diagnostics-perf-wad.md
     - name: Az állapot monitorozása
       items:
@@ -682,8 +685,6 @@ items:
       href: service-fabric-reverse-proxy-diagnostics.md
     - name: A helyi fürt hibaelhárítása
       href: service-fabric-troubleshoot-local-cluster-setup.md
-    - name: Gyakori forgatókönyvek diagnosztizálása
-      href: service-fabric-diagnostics-common-scenarios.md
   - name: Ajánlott eljárások
     items:
     - name: Termelési készenlét ellenőrzőlistája
@@ -781,9 +782,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: Videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: 98ca5a1cbf5298931c14d6c696119d0c98893072
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 320399b277b7b6aa05b128994f68058455353e7b
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853642"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291504"
