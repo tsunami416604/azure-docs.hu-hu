@@ -10,13 +10,13 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: e0edd31027480df3592b46a4c1246462611da26e
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
-ms.translationtype: HT
+ms.date: 11/21/2018
+ms.openlocfilehash: f0e76dff32038ba53dbdf7f869f5a04e75316e12
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265329"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290705"
 ---
 # <a name="azure-database-for-mysql-use-nodejs-to-connect-and-query-data"></a>A MySQL-hez készült Azure-adatbázis: Csatlakozás és adatlekérdezés a Node.js használatával
 Ez a rövid útmutató ismerteti, hogyan használható a [Node.js](https://nodejs.org/) a MySQL-hez készült Azure-adatbázishoz való csatlakozáshoz Windows, Ubuntu Linux és Mac platformról. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. Ez a témakör azt feltételezi, hogy a Node.js használata terén rendelkezik fejlesztési tapasztalatokkal, de az Azure Database for MySQL használatában még járatlan.
@@ -28,24 +28,24 @@ Ebben a rövid útmutatóban a következő útmutatók valamelyikében létrehoz
 
 Emellett a következőket kell elvégezni:
 - Telepítse a [Node.js](https://nodejs.org)-futtatókörnyezetet.
-- Telepítse a [mysql2](https://www.npmjs.com/package/mysql2)-csomagot a MySQL-hez való csatlakozáshoz a Node.js-alkalmazásból. 
+- Telepítés [mysql](https://www.npmjs.com/package/mysql) csomag csatlakozni a MySQL-hez a Node.js-alkalmazás. 
 
 ## <a name="install-nodejs-and-the-mysql-connector"></a>A Node.js és a MySQL-összekötő telepítése
-A Node.js telepítéséhez kövesse a megfelelő szakaszban leírt utasításokat a platformtól függően. Az npm használatával telepítse a mysql2 csomagot és annak függőségeit a projektmappába.
+A Node.js telepítéséhez kövesse a megfelelő szakaszban leírt utasításokat a platformtól függően. Az npm használatával telepítse a mysql-csomagot és annak függőségeit a projektmappába.
 
 ### <a name="windows"></a>**Windows**
 1. Látogasson el a [Node.js letöltési oldalára](https://nodejs.org/en/download/), majd válassza ki a kívánt Windows-telepítési lehetőséget.
 2. Hozzon létre egy helyi projektmappát, például: `nodejsmysql`. 
 3. Nyissa meg a parancssort, és lépjen be a projektmappába, például: `cd c:\nodejsmysql\`
-4. A mysql2 könyvár a projektmappába telepítéséhez futtassa az NPM eszközt.
+4. Futtassa az NPM eszközt telepíteni a mysql-könyvtár a projektmappába.
 
    ```cmd
    cd c:\nodejsmysql\
-   "C:\Program Files\nodejs\npm" install mysql2
+   "C:\Program Files\nodejs\npm" install mysql
    "C:\Program Files\nodejs\npm" list
    ```
 
-5. Ellenőrizze a telepítést. Ehhez ellenőrizze az `npm list` kimeneti szövegét az `mysql2@1.3.5` esetében.
+5. Ellenőrizze a telepítés ellenőrzése a `npm list` kimeneti szövegét. Új javítások kiadásakor a verziószám változhat.
 
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
 1. A **Node.js** és az **npm**, a Node.js csomagkezelőjének telepítéséhez futtassa a következő parancsokat.
@@ -54,15 +54,15 @@ A Node.js telepítéséhez kövesse a megfelelő szakaszban leírt utasításoka
    sudo apt-get install -y nodejs npm
    ```
 
-2. Futtassa az alábbi parancsokat a `mysqlnodejs` projektmappa létrehozásához, és telepítse a mysql2 csomagot ebbe a mappába.
+2. Futtassa az alábbi parancsokat a projektmappa létrehozásához `mysqlnodejs` , és telepítse a mysql-csomagot ebbe a mappába.
 
    ```bash
    mkdir nodejsmysql
    cd nodejsmysql
-   npm install --save mysql2
+   npm install --save mysql
    npm list
    ```
-3. Ellenőrizze a telepítést. Ehhez ellenőrizze az npm list kimeneti szövegét az `mysql2@1.3.5` esetében.
+3. Ellenőrizze a telepítés úgy npm list kimeneti szöveg. Új javítások kiadásakor a verziószám változhat.
 
 ### <a name="mac-os"></a>**Mac OS**
 1. A **brew**, egy Mac OS X-szel és a **Node.js**-vel kompatibilis, egyszerűen használható csomagkezelő telepítéséhez adja meg a következő parancsokat.
@@ -71,21 +71,21 @@ A Node.js telepítéséhez kövesse a megfelelő szakaszban leírt utasításoka
    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
    brew install node
    ```
-2. Futtassa az alábbi parancsokat a `mysqlnodejs` projektmappa létrehozásához, és telepítse a mysql2 csomagot ebbe a mappába.
+2. Futtassa az alábbi parancsokat a projektmappa létrehozásához `mysqlnodejs` , és telepítse a mysql-csomagot ebbe a mappába.
 
    ```bash
    mkdir nodejsmysql
    cd nodejsmysql
-   npm install --save mysql2
+   npm install --save mysql
    npm list
    ```
 
-3. Ellenőrizze a telepítést. Ehhez ellenőrizze az `npm list` kimeneti szövegét az `mysql2@1.3.6` esetében. Új javítások kiadásakor a verziószám változhat.
+3. Ellenőrizze a telepítés ellenőrzése a `npm list` kimeneti szövegét. Új javítások kiadásakor a verziószám változhat.
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szükséges kapcsolatadatokat. Ehhez szükség lesz a teljes kiszolgálónévre és bejelentkezési hitelesítő adatokra.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
 3. Kattintson a kiszolgálónévre.
 4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
@@ -105,7 +105,7 @@ A [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-conne
 Cserélje le a `host`, `user`, `password` és `database` paramétert azokkal az értékekkel, amelyeket a kiszolgáló és az adatbázis létrehozásakor adott meg.
 
 ```javascript
-const mysql = require('mysql2');
+const mysql = require('mysql');
 
 var config =
 {
@@ -172,7 +172,7 @@ A [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-conne
 Cserélje le a `host`, `user`, `password` és `database` paramétert azokkal az értékekkel, amelyeket a kiszolgáló és az adatbázis létrehozásakor adott meg.
 
 ```javascript
-const mysql = require('mysql2');
+const mysql = require('mysql');
 
 var config =
 {
@@ -224,7 +224,7 @@ A [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-conne
 Cserélje le a `host`, `user`, `password` és `database` paramétert azokkal az értékekkel, amelyeket a kiszolgáló és az adatbázis létrehozásakor adott meg.
 
 ```javascript
-const mysql = require('mysql2');
+const mysql = require('mysql');
 
 var config =
 {
@@ -272,7 +272,7 @@ A [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-conne
 Cserélje le a `host`, `user`, `password` és `database` paramétert azokkal az értékekkel, amelyeket a kiszolgáló és az adatbázis létrehozásakor adott meg.
 
 ```javascript
-const mysql = require('mysql2');
+const mysql = require('mysql');
 
 var config =
 {

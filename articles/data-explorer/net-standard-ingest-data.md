@@ -8,16 +8,16 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/18/2018
-ms.openlocfilehash: b0e8c4dabea6aeae8d93d64d97b598ec97b2d18a
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: e734f11fb3f6a833b8c080deb57b9153c6c12dde
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52277012"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290688"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Gyors útmutató: Kiolvasni az adatokat az Azure SDK-val Data Explorer .NET Standard (előzetes verzió)
 
-Az Azure Data Explorer (ADX) az adatok gyors és hatékonyan méretezhető exploration szolgáltatás napló és a telemetriai adatok. ADX két ügyfélkódtárakat biztosít a .NET Standard: egy [könyvtár betöltési](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) és [egy könyvtára](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard). Ezekkel a kódtárakkal adatokat tölthet be egy fürtbe, illetve adatokat kérdezhet le a kódból. Ebben a rövid útmutatóban először létrehoz egy táblát és egy adatleképezést egy tesztfürtben. Ezután sorba helyezi a fürtbe való betöltést, és ellenőrzi az eredményeket.
+Az Azure Data Explorer (ADX) az adatok gyors és hatékonyan méretezhető exploration szolgáltatás napló és a telemetriai adatok. ADX két ügyfélkódtárakat biztosít a .NET Standard: egy [könyvtár betöltési](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) és [egy könyvtára](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard). Ezekkel a kódtárakkal adatokat tölthet be egy fürtbe, illetve adatokat kérdezhet le a kódból. Ebben a rövid útmutatóban először létrehoz egy táblát és egy adatleképezést egy tesztfürtben. A fürt egy feldolgozó várólistára és ellenőrzik az eredményeket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -75,14 +75,14 @@ var kustoConnectionStringBuilder =
 
 ## <a name="set-source-file-information"></a>A forrásfájl adatainak beállítása
 
-Állítsa be a forrás adatfájl konstansok. Ez a példa egy Azure Blob Storage-ban üzemeltetett mintafájlt használ. A **StormEvents** mintaadatkészlet a [környezeti adatok nemzeti központjaiból](https://www.ncdc.noaa.gov/stormevents/) származó, időjárással kapcsolatos adatokat tartalmaz.
+Állítsa be a forrásfájl elérési útja. Ez a példa egy Azure Blob Storage-ban üzemeltetett mintafájlt használ. A **StormEvents** mintaadatkészlet a [környezeti adatok nemzeti központjaiból](https://www.ncdc.noaa.gov/stormevents/) származó, időjárással kapcsolatos adatokat tartalmaz.
 
 ```csharp
 var blobPath = "https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
 ```
 
 ## <a name="create-a-table-on-your-test-cluster"></a>Tábla létrehozása a tesztfürtön
-Hozzon létre egy táblát, amely megfelel a `StormEvents.csv` fájlban szereplő adatok sémájának. Amikor ez a kód fut, a következőhöz hasonló üzenetet ad vissza: *A bejelentkezéshez webböngészőben nyissa meg a https://microsoft.com/devicelogin oldalt, és írja be az F3W4VWZDM kódot a hitelesítéshez*. Kövesse a bejelentkezési lépéseket, majd térjen vissza a következő kódblokk futtatásához. A kapcsolatot létrehozó későbbi kódblokkokhoz ismét be kell jelentkeznie.
+Hozzon létre egy táblát nevű `StormEvents` , amely megfelel a séma az adatok a `StormEvents.csv` fájlt.
 
 ```csharp
 var table = "StormEvents";
@@ -122,7 +122,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 
 ## <a name="define-ingestion-mapping"></a>Adatbetöltési leképezés meghatározása
 
-Leképezheti a bejövő CSV-adatokat a tábla létrehozásakor használt oszlopnevekre és adattípusokra.
+Képezze le a bejövő CSV-adatokat az oszlopok neveit, a tábla létrehozásakor használt.
 Üzembe helyezése egy [CSV oszlop fájlleképezési objektumot](/azure/kusto/management/tables#create-ingestion-mapping) az adott táblához
 
 ```csharp
@@ -193,12 +193,12 @@ using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestConn
 
 ## <a name="validate-data-was-ingested-into-the-table"></a>Ellenőrizze a táblába betöltött adatok volt
 
-Várjon, amíg a sorban álló bevitelt a betöltés ütemezése és az adatok betöltése az ADX öt-tíz percet. Ezután futtassa a következő kódot a StormEvents-táblában lévő rekordok számának lekérdezéséhez.
+Várjon, amíg a sorban álló bevitelt a betöltés ütemezése és az adatok betöltése az ADX öt-tíz percet. Ezután futtassa a következő kódot a `StormEvents`-táblában lévő rekordok számának lekérdezéséhez.
 
 ```csharp
 using (var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoConnectionStringBuilder))
 {
-    var query = "StormEvents | count";
+    var query = $"{table} | count";
 
     var results = cslQueryProvider.ExecuteQuery<long>(query);
     Console.WriteLine(results.Single());
@@ -224,7 +224,7 @@ Futtassa a következő parancsot az elmúlt négy órában végzett összes bet�
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha el szeretné végezni a többi rövid útmutatót és oktatóanyagot, őrizze meg a létrehozott erőforrásokat. Ha nem szeretné, futtassa a következő parancsot az adatbázisban a StormEvents-tábla felesleges elemeinek eltávolításához.
+Ha el szeretné végezni a többi rövid útmutatót és oktatóanyagot, őrizze meg a létrehozott erőforrásokat. Ha nem szeretné, futtassa a következő parancsot az adatbázisban a `StormEvents`-tábla felesleges elemeinek eltávolításához.
 
 ```Kusto
 .drop table StormEvents

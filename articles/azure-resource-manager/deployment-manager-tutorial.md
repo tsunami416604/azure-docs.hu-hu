@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/08/2018
+ms.date: 11/21/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 70a7829c14997287ed130b0b4300c7f5aa0f3a30
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: af586656889919ed9b3407f2c41253dfadddc742
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345572"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291249"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Oktatóanyag: Az Azure Deployment Manager Resource Manager-sablonokkal való használata (privát előzetes verzió)
 
@@ -50,12 +50,12 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 * Némi gyakorlat az [Azure Resource Manager-sablonok](./resource-group-overview.md) kialakításában.
 * Az Azure Deployment Manager privát előzetes verzióban érhető el. Az Azure Deployment Manager használatára való regisztrációhoz töltse ki a [regisztrációs űrlapot](https://aka.ms/admsignup). 
 * Azure PowerShell. További információért lásd [az Azure PowerShell használatának első lépéseit](https://docs.microsoft.com/powershell/azure/get-started-azureps).
-* Deployment Manager-parancsmagok. Az előzetes verziójú parancsmagok telepítéséhez a PowerShellGet legújabb verziójára lesz szüksége. A legújabb verzió beszerzéséről lásd [a PowerShellGet telepítését](/powershell/gallery/installing-psget) ismertető cikket. A PowerShellGet telepítése után zárja be a PowerShell-ablakot. Nyisson meg egy új PowerShell-ablakot, és futtassa a következő parancsot:
+* Deployment Manager-parancsmagok. Az előzetes verziójú parancsmagok telepítéséhez a PowerShellGet legújabb verziójára lesz szüksége. A legújabb verzió beszerzéséről lásd [a PowerShellGet telepítését](/powershell/gallery/installing-psget) ismertető cikket. A PowerShellGet telepítése után zárja be a PowerShell-ablakot. Nyisson meg egy új emelt szintű PowerShell-ablakot, és használja a következő parancsot:
 
     ```powershell
     Install-Module -Name AzureRM.DeploymentManager -AllowPrerelease
     ```
-* [Microsoft Azure Storage Explorer](https://go.microsoft.com/fwlink/?LinkId=708343&clcid=0x409). Az Azure Storage Explorer használata nem kötelező, de megkönnyíti a dolgokat.
+* [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/). Az Azure Storage Explorer használata nem kötelező, de megkönnyíti a dolgokat.
 
 ## <a name="understand-the-scenario"></a>A forgatókönyv megismerése
 
@@ -145,10 +145,10 @@ Az oktatóanyag későbbi részében üzembe helyezünk egy bevezetést. Az üze
 Létre kell hoznia egy felhasználó által hozzárendelt felügyelt identitást, és konfigurálnia az előfizetése hozzáférés-vezérlését.
 
 > [!IMPORTANT]
-> A felhasználó által hozzárendelt felügyelt identitás helyének meg kell egyeznie a [bevezetés](#create-the-rollout-template) helyével. A Deployment Manager-erőforrások, a bevezetést is beleértve, csak az USA középső és 2. keleti régiójában hozhatók létre.
+> A felhasználó által hozzárendelt felügyelt identitás helyének meg kell egyeznie a [bevezetés](#create-the-rollout-template) helyével. A Deployment Manager-erőforrások, a bevezetést is beleértve, csak az USA középső és 2. keleti régiójában hozhatók létre. Ez azonban csak igaz a Deployment Manager erőforrásokat (például a szolgáltatás topológia, szolgáltatások, szolgáltatási egységek, bevezetési és lépéseket). A célerőforrások is üzembe helyezhetők az összes támogatott Azure-régiót. Ebben az oktatóanyagban például a Deployment Manager erőforrásai települnek USA középső RÉGIÓJA, de a szolgáltatások vannak telepítve, az USA keleti RÉGIÓJA és USA nyugati RÉGIÓJA. Ez a korlátozás a későbbiekben fel fogja oldani.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Hozzon létre egy [felhasználó által hozzárendelt felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md).
+2. Hozzon létre egy [felhasználó által hozzárendelt felügyelt identitást](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. A portál bal oldali menüjében válassza az **Előfizetések** lehetőséget, majd válassza ki az előfizetést.
 4. Válassza a **Hozzáférés-vezérlés (IAM)**, majd a **Hozzáadás** lehetőséget.
 5. Adja meg vagy válassza ki a következő értékeket:
@@ -211,7 +211,7 @@ Hozzon létre egy paraméterfájlt, amely a topológiasablonnal használható.
     - **azureResourceLocation**: Ha nem ismerné az Azure-helyeket, ebben az oktatóanyagban használja a **centralus** helyet.
     - **artifactSourceSASLocation**: Adja meg annak a gyökérkönyvtárnak (a blobtárolónak) az SAS URI-ját, amely a szolgáltatási egység sablonját és paramétereit tárolja az üzembe helyezéshez.  Lásd: [Az összetevők előkészítése](#prepare-the-artifacts).
     - **templateArtifactRoot**: Hacsak nem módosítja az összetevők mappastruktúráját, használja a **templates/1.0.0.0** értéket az oktatóanyagban.
-    - **targetScriptionID**: Adja meg az Azure-előfizetése azonosítóját.
+    - **targetScriptionID**: Adja meg az Azure-előfizetés azonosítóját.
 
 > [!IMPORTANT]
 > A topológiasablon és a bevezetési sablon egyes paraméterei közösek. Ezeknek a paramétereknek egyező értékekkel kell rendelkezniük. Ezek a paraméterek a következők: **namePrefix**, **azureResourceLocation** és **artifactSourceSASLocation** (ebben az oktatóanyagban mindkét összetevőforrás ugyanazt a tárfiókot használja).
@@ -242,7 +242,7 @@ A változók szakasz definiálja az erőforrások nevét. Győződjön meg arró
 
 A gyökérszinten három erőforrás van definiálva: egy összetevőforrás, egy lépcső és egy bevezetés.
 
-Az összetevőforrás definíciója egyezik a topológiasablonban megadott definícióval.  További információ: [A szolgáltatástopológia-sablon létrehozása](#create-the-service-topology-tempate).
+Az összetevőforrás definíciója egyezik a topológiasablonban megadott definícióval.  További információ: [A szolgáltatástopológia-sablon létrehozása](#create-the-service-topology-template).
 
 Az alábbi képernyőképen a várakozási lépcső definíciója látható:
 
@@ -310,7 +310,7 @@ A sablonok az Azure PowerShell használatával telepíthetők.
 
     Az erőforrások megjelenítéséhez be kell jelölnie a **Rejtett típusok megjelenítése** jelölőnégyzetet.
 
-3. Helyezze üzembe a bevezetési sablont:
+3. <a id="deploy-the-rollout-template"></a>A bevezetési sablon üzembe helyezéséhez:
 
     ```azurepowershell-interactive
     # Create the rollout
@@ -325,7 +325,7 @@ A sablonok az Azure PowerShell használatával telepíthetők.
 
     ```azurepowershell-interactive
     # Get the rollout status
-    $rolloutname = "<Enter the Rollout Name>"
+    $rolloutname = "<Enter the Rollout Name>" # "adm0925Rollout" is the rollout name used in this tutorial
     Get-AzureRmDeploymentManagerRollout `
         -ResourceGroupName $resourceGroupName `
         -Name $rolloutName
@@ -365,7 +365,7 @@ Ha új verzió (1.0.0.1) érhető el a webalkalmazáshoz, az alábbi eljárássa
 
 1. Nyissa meg a CreateADMRollout.Parameters.json fájlt.
 2. Frissítse a **binaryArtifactRoot** paramétert a **binaries/1.0.0.1** értékre.
-3. Helyezze újra üzembe a bevezetést [a sablonok üzembe helyezését](#deploy-the-templates) ismertető szakasz utasításai szerint.
+3. Helyezze újra üzembe a bevezetést [a sablonok üzembe helyezését](#deploy-the-rollout-template) ismertető szakasz utasításai szerint.
 4. Ellenőrizze a telepítést [a vonatkozó szakaszban](#verify-the-deployment) foglaltak szerint. A weblap most az 1.0.0.1-es verziót mutatja.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

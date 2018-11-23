@@ -4,58 +4,56 @@ items:
 - name: Áttekintés
   items:
   - name: Mi az a Video Indexer?
-    href: ../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json
+    href: video-indexer-overview.md
 - name: Gyors útmutatók
   items:
   - name: Bevezetés
-    href: ../../cognitive-services/video-indexer/video-indexer-get-started.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json
+    href: video-indexer-get-started.md
   expanded: true
 - name: Oktatóanyagok
   items:
   - name: A Video Indexer API használata
-    href: ../../cognitive-services/video-indexer/video-indexer-use-apis.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json
+    href: video-indexer-use-apis.md
 - name: Alapelvek
-  href: ../../cognitive-services/video-indexer/video-indexer-concepts.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json
+  href: video-indexer-concepts.md
   items:
   - name: A VI és az AMS előzetes beállításainak összehasonlítása
     href: compare-video-indexer-with-media-services-presets.md
 - name: Útmutatók
   items:
   - name: Migrálás az 1-esről a 2-es verzióra
-    href: ../../cognitive-services/video-indexer/migrate-from-v1-to-v2.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json
+    href: migrate-from-v1-to-v2.md
   - name: Csatlakozás az Azure szolgáltatáshoz
-    href: ../../cognitive-services/video-indexer/connect-to-azure.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json
+    href: connect-to-azure.md
   - name: Az Azure-hoz csatlakoztatott fiók kezelése
-    href: ../../cognitive-services/video-indexer/manage-account-connected-to-azure.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json
+    href: manage-account-connected-to-azure.md
   - name: Videók feltöltése és indexálása az API használatával
-    href: ../../cognitive-services/video-indexer/upload-index-videos.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json
+    href: upload-index-videos.md
   - name: A Video Indexer kimenetének vizsgálata
-    href: ../../cognitive-services/video-indexer/video-indexer-output-json-v2.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json
+    href: video-indexer-output-json-v2.md
   - name: Pontos időpontok keresése videókban
-    href: ../../cognitive-services/video-indexer/video-indexer-search.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json
+    href: video-indexer-search.md
   - name: Video Indexer-elemzések megtekintése és szerkesztése
-    href: ../../cognitive-services/video-indexer/video-indexer-view-edit.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json
+    href: video-indexer-view-edit.md
   - name: Videóelemzések létrehozása meglévő videókból
-    href: ../../cognitive-services/video-indexer/video-indexer-create-new.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json
+    href: video-indexer-create-new.md
   - name: Widgetek beágyazása az alkalmazásba
-    href: ../../cognitive-services/video-indexer/video-indexer-embed-widgets.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json
+    href: video-indexer-embed-widgets.md
 - name: Referencia
   items:
   - name: Video Indexer API
     href: https://api-portal.videoindexer.ai/
 - name: További források
   items:
-  - name: Díjszabás
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/598144-video-indexer
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
   - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
-ms.openlocfilehash: c12301abac85fd4faf8a393c9f7a6bf8ff7276b6
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+    href: https://azure.microsoft.com/roadmap/?category=web-mobile
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/media-services/
+  - name: Régiónkénti rendelkezésre állás
+    href: https://azure.microsoft.com/regions/services/
+ms.openlocfilehash: 0936678c29ac4ab4e89bcacd746bbcbb88e22c21
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380284"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290807"

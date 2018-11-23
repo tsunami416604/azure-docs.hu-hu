@@ -6,17 +6,17 @@ author: cephalin
 manager: erikre
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: nodejs
+ms.devlang: php
 ms.topic: tutorial
-ms.date: 11/28/2017
+ms.date: 11/15/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 9dbdcc9eb09ff137b32225e83e42ec5baca39396
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
-ms.translationtype: HT
+ms.openlocfilehash: 91beef3076005fc7b95b1ffd208be238e23a7b8b
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024545"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291487"
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure-app-service-on-linux"></a>PHP- és MySQL-webalkalmazás létrehozása Linuxon futó Azure App Service-ben
 
@@ -161,21 +161,21 @@ Ebben a lépésben egy MySQL-adatbázist hoz létre az [Azure Database for MySQL
 
 Hozzon létre egy kiszolgálót az Azure Database for MySQL szolgáltatásban az [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) paranccsal.
 
-Az alábbi parancsban a _&lt;mysql_server_name>_ helyőrzőt cserélje le a MySQL-kiszolgáló nevére (érvényes karakterek: `a-z`, `0-9` és `-`). Ez a név része a MySQL-kiszolgáló állomásnevének (`<mysql_server_name>.database.windows.net`), és globálisan egyedinek kell lennie.
+Az alábbi parancsban írjon egy egyedi kiszolgálónevet a *\<mysql_server_name>*, egy felhasználónevet az *\<admin_user>*, valamint egy jelszót az *\<admin_password>* helyőrző helyére. A kiszolgálónév a MySQL-végpont (`https://<mysql_server_name>.mysql.database.azure.com`) részét képezi majd, így egyedi kiszolgálónévnek kell lennie a teljes Azure-ban.
 
 ```azurecli-interactive
-az mysql server create --name <mysql_server_name> --resource-group myResourceGroup --location "North Europe" --admin-user adminuser --admin-password My5up3r$tr0ngPa$w0rd!
+az mysql server create --resource-group myResourceGroup --name <mysql_server_name> --location "West Europe" --admin-user <admin_user> --admin-password <admin_password> --sku-name B_Gen5_1
 ```
 
 A MySQL-kiszolgáló létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg:
 
 ```json
 {
-  "administratorLogin": "adminuser",
+  "administratorLogin": "<admin_user>",
   "administratorLoginPassword": null,
-  "fullyQualifiedDomainName": "<mysql_server_name>.database.windows.net",
+  "fullyQualifiedDomainName": "<mysql_server_name>.mysql.database.azure.com",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/<mysql_server_name>",
-  "location": "northeurope",
+  "location": "westeurope",
   "name": "<mysql_server_name>",
   "resourceGroup": "myResourceGroup",
   ...
@@ -194,15 +194,19 @@ az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_n
 > Még szigorúbb tűzfalszabályt is megadhat, ha [csak azokat a kimenő IP-címeket használja, amelyeket alkalmazása használ](../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
 >
 
-### <a name="connect-to-production-mysql-server-locally"></a>Helyi csatlakozás éles MySQL-kiszolgálóhoz
+Ahhoz, hogy engedélyezze a helyi számítógépről történő hozzáférést, futtassa újra a parancsot a Cloud Shellben, és a *\<your_ip_address>* helyére írja be a [helyi IPv4 IP-címet](http://www.whatsmyip.org/).
 
-A terminálablakban csatlakozzon az Azure-ban található MySQL-kiszolgálóhoz. A _&lt;mysql_server_name>_ helyőrzőnél használja a korábban megadott értéket.
-
-```bash
-mysql -u adminuser@<mysql_server_name> -h <mysql_server_name>.database.windows.net -P 3306 -p
+```azurecli-interactive
+az mysql server firewall-rule create --name AllowLocalClient --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address=<your_ip_address> --end-ip-address=<your_ip_address>
 ```
 
-Amikor a rendszer jelszót kér, használja a _$tr0ngPa$w0rd!_ jelszót, amelyet az adatbázis-kiszolgáló létrehozásakor adott meg.
+### <a name="connect-to-production-mysql-server-locally"></a>Helyi csatlakozás éles MySQL-kiszolgálóhoz
+
+A terminálablakban csatlakozzon az Azure-ban található MySQL-kiszolgálóhoz. Használja a korábban megadott értéket  _&lt;admin_user >_ és  _&lt;mysql_server_name >_. Amikor a rendszer jelszót kér, használja azt a jelszót, amelyet az adatbázis létrehozásakor adott meg az Azure-ban.
+
+```bash
+mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.azure.com -P 3306 -p
+```
 
 ### <a name="create-a-production-database"></a>Éles adatbázis létrehozása
 
@@ -343,7 +347,7 @@ Az App Service-ben a környezeti változókat _alkalmazásbeállításként_ adh
 Az alábbi parancs a `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` és `DB_PASSWORD` alkalmazásbeállítást konfigurálja. Cserélje le az _&lt;appname>_ és a _&lt;mysql_server_name>_ helyőrzőt.
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DB_HOST="<mysql_server_name>.database.windows.net" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql_server_name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
+az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DB_HOST="<mysql_server_name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql_server_name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
 ```
 
 A beállítások eléréséhez a PHP [getenv](http://php.net/manual/en/function.getenv.php) metódust használhatja. A Laravel-kód egy [env](https://laravel.com/docs/5.4/helpers#method-env) burkolót használ a PHP `getenv` helyett. A _config/database.php_ fájlban található MySQL-konfiguráció például az alábbi kódhoz hasonlít:

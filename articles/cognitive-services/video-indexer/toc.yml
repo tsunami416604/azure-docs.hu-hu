@@ -3,36 +3,36 @@ items:
 - name: Áttekintés
   items:
   - name: Mi az a Video Indexer?
-    href: video-indexer-overview.md
+    href: ../../media-services/video-indexer/video-indexer-overview.md
   - name: Alapelvek
-    href: video-indexer-concepts.md
+    href: ../../media-services/video-indexer/video-indexer-concepts.md
 - name: Gyors útmutatók
   items:
   - name: Bevezetés
-    href: video-indexer-get-started.md
+    href: ../../media-services/video-indexer/video-indexer-get-started.md
   expanded: true
 - name: Útmutatók
   items:
   - name: Migrálás az 1-esről a 2-es verzióra
-    href: migrate-from-v1-to-v2.md
+    href: ../../media-services/video-indexer/migrate-from-v1-to-v2.md
   - name: Csatlakozás az Azure szolgáltatáshoz
-    href: connect-to-azure.md
+    href: ../../media-services/video-indexer/connect-to-azure.md
   - name: Az Azure-hoz csatlakoztatott fiók kezelése
-    href: manage-account-connected-to-azure.md
+    href: ../../media-services/video-indexer/manage-account-connected-to-azure.md
   - name: A Video Indexer API használata
-    href: video-indexer-use-apis.md
+    href: ../../media-services/video-indexer/video-indexer-use-apis.md
   - name: Videók feltöltése és indexálása az API használatával
-    href: upload-index-videos.md
+    href: ../../media-services/video-indexer/upload-index-videos.md
   - name: A Video Indexer kimenetének vizsgálata
-    href: video-indexer-output-json-v2.md
+    href: ../../media-services/video-indexer/video-indexer-output-json-v2.md
   - name: Pontos időpontok keresése videókban
-    href: video-indexer-search.md
+    href: ../../media-services/video-indexer/video-indexer-search.md
   - name: Video Indexer-elemzések megtekintése és szerkesztése
-    href: video-indexer-view-edit.md
+    href: ../../media-services/video-indexer/video-indexer-view-edit.md
   - name: Videóelemzések létrehozása meglévő videókból
-    href: video-indexer-create-new.md
+    href: ../../media-services/video-indexer/video-indexer-create-new.md
   - name: Widgetek beágyazása az alkalmazásba
-    href: video-indexer-embed-widgets.md
+    href: ../../media-services/video-indexer/video-indexer-embed-widgets.md
 - name: Referencia
   items:
   - name: Video Indexer API
@@ -47,9 +47,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
   - name: Azure-ütemterv
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
-ms.openlocfilehash: 893802d670b2fe5fe63caa3f55107ef178792a9c
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 5283cc39c64c31d6b9014043bf37e066cef582a7
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42744238"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290756"
