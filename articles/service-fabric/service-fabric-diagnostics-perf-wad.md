@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/26/2018
+ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: bc86ef5a32e08bc00b5a2fa53dccb8d6313f167b
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 0675e06564fcacf5f7d14ef6986762f36df18b1b
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230985"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290322"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>A Windows Azure Diagnostics bővítményt az alkalmazásteljesítmény-figyelés
 
@@ -106,6 +106,89 @@ Teljesítményszámlálók adatainak összegyűjtése a WAD-n keresztül, akkor 
 
  A számláló a mintavételi gyakoriság igényeknek megfelelően módosíthatók. A formátum akkor `PT<time><unit>`, ha azt szeretné, hogy másodpercenként gyűjtött számláló, majd kell beállítania a `"sampleRate": "PT15S"`.
 
+ Teljesítményszámlálók, amelyek többféle kivitelűek lehetnek praktikus során gyűjtött teljesítményszámlálók folyamatonként tömbjét gyűjtése az ARM-sablon változókat is használhat. Az az alábbi a példában a processzor és szemétgyűjtő idő folyamatonként dátumok gyűjtése, és ezután 2 teljesítményszámlálók a maguk a csomópontok minden használatával változókat. 
+
+ ```json
+"variables": {
+  "copy": [
+      {
+        "name": "processorTimeCounters",
+        "count": "[length(parameters('monitoredProcesses'))]",
+        "input": {
+          "counterSpecifier": "\\Process([parameters('monitoredProcesses')[copyIndex('processorTimeCounters')]])\\% Processor Time",
+          "sampleRate": "PT1M",
+          "unit": "Percent",
+          "sinks": "applicationInsights",
+          "annotation": [
+            {
+              "displayName": "[concat(parameters('monitoredProcesses')[copyIndex('processorTimeCounters')],' Processor Time')]",
+              "locale": "en-us"
+            }
+          ]
+        }
+      },
+      {
+        "name": "gcTimeCounters",
+        "count": "[length(parameters('monitoredProcesses'))]",
+        "input": {
+          "counterSpecifier": "\\.NET CLR Memory([parameters('monitoredProcesses')[copyIndex('gcTimeCounters')]])\\% Time in GC",
+          "sampleRate": "PT1M",
+          "unit": "Percent",
+          "sinks": "applicationInsights",
+          "annotation": [
+            {
+              "displayName": "[concat(parameters('monitoredProcesses')[copyIndex('gcTimeCounters')],' Time in GC')]",
+              "locale": "en-us"
+            }
+          ]
+        }
+      }
+    ],
+    "machineCounters": [
+      {
+        "counterSpecifier": "\\Memory\\Available Bytes",
+        "sampleRate": "PT1M",
+        "unit": "KB",
+        "sinks": "applicationInsights",
+        "annotation": [
+          {
+            "displayName": "Memory Available Kb",
+            "locale": "en-us"
+          }
+        ]
+      },
+      {
+        "counterSpecifier": "\\Memory\\% Committed Bytes In Use",
+        "sampleRate": "PT15S",
+        "unit": "percent",
+        "annotation": [
+          {
+            "displayName": "Memory usage",
+            "locale": "en-us"
+          }
+        ]
+      }
+    ]
+  }
+....
+"WadCfg": {
+    "DiagnosticMonitorConfiguration": {
+      "overallQuotaInMB": "50000",
+      "Metrics": {
+        "metricAggregation": [
+          {
+            "scheduledTransferPeriod": "PT1M"
+          }
+        ],
+        "resourceId": "[resourceId('Microsoft.Compute/virtualMachineScaleSets', variables('vmNodeTypeApp2Name'))]"
+      },
+      "PerformanceCounters": {
+        "scheduledTransferPeriod": "PT1M",
+        "PerformanceCounterConfiguration": "[concat(variables ('processorTimeCounters'), variables('gcTimeCounters'),  variables('machineCounters'))]"
+      },
+....
+```
+
  >[!NOTE]
  >Bár használhatja `*` teljesítményszámlálókat hasonlóképpen nevesített csoportok megadásához számlálókat küldése egy fogadó keresztül (az Application Insightsba) szükséges, hogy azok külön-külön deklarált. 
 
@@ -115,8 +198,9 @@ Teljesítményszámlálók adatainak összegyűjtése a WAD-n keresztül, akkor 
     New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
-5. A frissítés befejeződése után WAD bevezetéséről (közötti 15-45 percet vesz igénybe), érdemes lehet gyűjtése a teljesítményszámlálók, és elküldi azokat a storage-fiókban WADPerformanceCountersTable nevű táblázat a fürthöz társított. Tekintse meg az Application Insights által a teljesítményszámlálók [a Resource Manager-sablon hozzáadása a mesterséges Intelligencia fogadó](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template).
+5. A frissítés befejeződése után jelennek meg (attól függően, hogy-e az első üzembe helyezés és az erőforráscsoport mérete 15-45 perc között vesz igénybe), WAD kell a teljesítményszámlálók gyűjtése és elküldi azokat a tábla neve A fürthöz társított tárfiókban WADPerformanceCountersTable. Tekintse meg az Application Insights által a teljesítményszámlálók [a Resource Manager-sablon hozzáadása a mesterséges Intelligencia fogadó](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template).
 
 ## <a name="next-steps"></a>További lépések
 * A fürt több teljesítményszámlálót gyűjt. Lásd: [teljesítmény-mérőszámok](service-fabric-diagnostics-event-generation-perf.md) listája számlálókat kell gyűjteni.
 * [Használat monitorozása és diagnosztizálása egy Windows virtuális gép és az Azure Resource Manager-sablonokkal](../virtual-machines/windows/extensions-diagnostics-template.md) módosításokat továbbá az `WadCfg`, beleértve a diagnosztikai adatok küldése további tárfiókok konfigurálásáról.
+* Látogasson el a [WadCfg builder](http://azure.github.io/azure-diagnostics-tools/config-builder/) hozhat létre egy teljesen új sablont, és ellenőrizze, hogy a szintaxisa helyes.

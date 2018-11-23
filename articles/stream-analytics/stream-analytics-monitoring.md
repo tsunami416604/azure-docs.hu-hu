@@ -1,57 +1,60 @@
 ---
-title: Azure Stream Analytics a figyelési feladat ismertetése
+title: Feladat figyelése az Azure Stream Analytics ismertetése
 description: Ez a cikk ismerteti az Azure Stream Analytics-feladatok figyelése
 services: stream-analytics
-author: jseb225
-ms.author: jeanb
-manager: kfile
+author: mamccrea
+ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: 4b048705c80b7776ab0ab6823e27659a01eedeb5
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 11/21/2018
+ms.openlocfilehash: 200df7602f94f70f3fb9c62ad81a0710923184c7
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30907450"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291414"
 ---
-# <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>A Stream Analytics-feladat megfigyelés és a lekérdezések figyelése
+# <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Megismerheti a Stream Analytics-feladat figyelése és lekérdezések figyelése
 
-## <a name="introduction-the-monitor-page"></a>Bemutató: A figyelő lapja
-Az Azure portál mindkét surface fontos teljesítménymutatókat, és a lekérdezés és a feladat teljesítmény hibaelhárítása használható. A metrikák megtekintéséhez keresse meg a Stream Analytics-feladat metrikáját szükség, és megtekintheti a **figyelés** szakaszban Áttekintés lap.  
+## <a name="introduction-the-monitor-page"></a>Bemutatása: A figyelő lap
+Az Azure portál mindkét surface fő teljesítménymutatói, figyelése és hibaelhárítása a lekérdezés és a feladat teljesítményét is lehet. Ezek a metrikák megtekintéséhez tallózással keresse meg a Stream Analytics-feladat, a metrikák megjelenítésének iránt, és megtekintheti a **figyelés** szakasz az Áttekintés oldalon.  
 
 ![Figyelési hivatkozás](./media/stream-analytics-monitoring/02-stream-analytics-monitoring-block.png)
 
-Az ablak módon jelenik meg:
+Az ablakban látható módon jelenik meg:
 
 ![Figyelési feladat irányítópult](./media/stream-analytics-monitoring/01-stream-analytics-monitoring.png)  
 
-## <a name="metrics-available-for-stream-analytics"></a>A Stream Analytics elérhető metrikák
+## <a name="metrics-available-for-stream-analytics"></a>Stream Analytics-metrikáit
 | Metrika                 | Meghatározás                               |
 | ---------------------- | ---------------------------------------- |
-| SU százalékos kihasználtsága       | A folyamatos átviteli egység (ek) használata az egy feladathoz hozzárendelt a skála lapot a feladat. Érje ezen mutató 80 %-át, vagy a fenti nincs nagy valószínűséggel, hogy az esemény feldolgozása később, vagy leállt, így a folyamat. |
-| Bemeneti események           | A Stream Analytics-feladat, az események által fogadott adatok mennyisége. Ennek segítségével ellenőrizze, hogy a bemeneti forrás küldött események. |
-| Kimeneti események          | A kimeneti cél események száma a Stream Analytics-feladat által küldött adatok mennyisége. |
-| Soron események    | Lettek dobva, vagy egy módosított Timestamp értéket, az esemény rendelési házirend alapján megadott sorrendje nem fogadott események száma. Ez is negatív hatással lehet a soron of tűrési beállítás konfigurációját. |
-| Adatkonverziós hibák | A Stream Analytics-feladat felmerült adatok átalakítás hibák száma. |
-| Futásidejű hibák         | A lekérdezés feldolgozása (kivéve a választásával dolgozhat fel, az események vagy outputing eredmények során talált hibákat) kapcsolatos hibák száma összesen |
-| Késedelmes bemeneti események      | A forrás, amely vagy el lett dobva vagy időbélyegzőik későn érkező események száma be van állítva, az esemény rendelési házirend konfiguráció késő érkezés tűrési beállítás alapján. |
-| Függvénykérések      | Az Azure Machine Learning-függvény (ha van ilyen) hívások száma. |
-| Sikertelen függvénykérések | Sikertelen Azure Machine Learning függvényhívások (ha van ilyen) száma. |
-| Függvényesemények        | (Ha van ilyen) az Azure Machine Learning-függvény küldött események száma. |
-| Bemeneti esemény bájtokban      | A Stream Analytics-feladat, bájtban által fogadott adatok mennyisége. Ennek segítségével ellenőrizze, hogy a bemeneti forrás küldött események. |
+| Várakozó bemeneti események       | A bemeneti események száma "várakozó. |
+| Adatkonverziós hibák | Nem konvertálható a várt kimeneti sémájának kimeneti események számát. |
+| Korai bemeneti események       | Fogadott korai események száma. |
+| Sikertelen függvénykérések | Nem sikerült az Azure Machine Learning függvényhívások (ha van ilyen) száma. |
+| Függvényesemények        | Az Azure Machine Learning-függvény (ha van ilyen) küldött események száma. |
+| Függvénykérések      | Az Azure Machine Learning-függvény (ha van ilyen)-hívások száma. |
+| A deszerializálás bemeneti hibái       | Nem sikerült deszerializálni események számát.  |
+| Bemeneti esemény bájtokban      | A Stream Analytics-feladatot (bájt) által fogadott adatok mennyisége. Ez használható ellenőrzése, hogy a bemeneti forrás eseményt kap. |
+| Bemeneti események           | A Stream Analytics-feladat, az események száma által fogadott adatok mennyisége. Ez használható ellenőrzése, hogy a bemeneti forrás eseményt kap. |
+| Fogadott bemeneti források       | A bemeneti forrásból érkező események száma. |
+| Késedelmes bemeneti események      | A forrás, amely vagy el lett dobva vagy időbélyegzőik későn érkező események száma be van állítva, késői érkezési tolerancia ablak beállítás esemény rendezése házirend konfigurációja alapján. |
+| Kimenő soron kívüli események    | Fogadott lettek eldobva, vagy egy módosított időbélyeget, az esemény rendezése házirend alapján adott üzemen kívüli események száma. Ez lehet negatív hatással lehet a konfigurációs beállítás Out of rendelés tolerancia ablakban. |
+| Kimeneti események          | A kimeneti tárolóhoz az események száma a Stream Analytics-feladat által küldött adatok mennyisége. |
+| Futásidejű hibák         | Lekérdezés-feldolgozás (kivéve a fürtjét az események vagy outputing eredmények során talált hibákat) kapcsolatos hibák teljes száma |
+| SU százalékos kihasználtsága       | A folyamatos átviteli egység felhasználása a méretezés lapon, a feladat hozzárendelt feladathoz. Ez a kijelző elérhető 80 %-os, vagy a fenti nincs nagy valószínűséggel, hogy az események feldolgozása késhet, vagy megáll. |
+| Vízjel-késleltetés       | A vízjel maximális késleltetés, a feladat összes kimeneti összes partíciójára. |
+
+## <a name="customizing-monitoring-in-the-azure-portal"></a>Figyelés testreszabása az Azure Portalon
+Módosíthatja a diagram, metrika is látható, típusát és időtartomány a diagram szerkesztése beállításaiban. További információkért lásd: [testreszabása figyelése annak](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
+
+  ![Lekérdezési idő figyelése graph](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)  
 
 
-## <a name="customizing-monitoring-in-the-azure-portal"></a>Figyelés testreszabása az Azure-portálon
-Módosíthatja a típusú diagramra, a feltüntetett, metrikákat és időtartománynak a diagram szerkesztése lehetőséget beállításaiban. További információkért lásd: [hogyan testreszabása figyelési](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
-
-  ![Lekérdezési idő figyelése diagramhoz](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)  
-
-
-## <a name="latest-output"></a>Legújabb kimeneti
-Figyelheti a feladat egy másik érdekes adatpont az az idő az utolsó kimenet, a – Áttekintés lapon látható.
-Ezúttal az alkalmazás idő (azaz az időt az esemény adatokból időbélyeg) a feladat a legújabb kimenet.
+## <a name="latest-output"></a>Legújabb kimenet
+A feladat figyeléséhez más érdekes adatpont az az idő az utolsó kimeneti az Áttekintés lapon látható.
+Az idő az az alkalmazás idő (azaz az idő az eseményadatokat időbélyege használatával), a feladat legfrissebb kimenetét.
 
 ## <a name="get-help"></a>Segítségkérés
 További támogatásért keresse fel az [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)

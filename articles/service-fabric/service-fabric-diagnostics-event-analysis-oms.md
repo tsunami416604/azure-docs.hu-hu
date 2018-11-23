@@ -12,27 +12,30 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/29/2018
+ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 6dee895ba9fc024baac0500619b7d6cc62167b6d
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: ed6a709418871ededc8ddfe06b0eb1ab3e4546e1
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404477"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291079"
 ---
 # <a name="event-analysis-and-visualization-with-log-analytics"></a>Esemény elemzése és képi megjelenítés, a Log Analytics használatával
-A log Analytics gyűjti és elemzi az alkalmazások és szolgáltatások a felhőben üzemeltetett származó telemetriai adatok, és segítséget nyújtanak a rendelkezésre állás és teljesítmény maximalizálása elemzésére szolgáló eszközöket biztosít. Ez a cikk ismerteti, hogyan elemezheti és mi történik a fürtön a Log Analytics-lekérdezések futtatása. Az alábbi gyakori kérdések foglalkozik:
+ A log Analytics gyűjti és elemzi az alkalmazások és szolgáltatások a felhőben üzemeltetett származó telemetriai adatok, és segítséget nyújtanak a rendelkezésre állás és teljesítmény maximalizálása elemzésére szolgáló eszközöket biztosít. Ez a cikk ismerteti, hogyan elemezheti és mi történik a fürtön a Log Analytics-lekérdezések futtatása. Az alábbi gyakori kérdések foglalkozik:
 
 * Hogyan háríthatom el a health-események?
 * Honnan tudhatom meg, amikor egy csomópont leáll?
 * Honnan tudhatom, hogy ha saját alkalmazásszolgáltatások elindítani vagy leállítani?
 
-## <a name="log-analytics-workspace"></a>Azure-beli monitorozási munkaterület
+## <a name="log-analytics-workspace"></a>Log Analytics-munkaterület
+
+>[!NOTE] 
+>Diagnosztikai tárfiók alapértelmezés szerint engedélyezve van a fürt létrehozásakor, miközben továbbra is be kell állítania a Log Analytics-munkaterületet a diagnosztikai tárfiók olvasni.
 
 A log Analytics adatokat gyűjt a felügyelt erőforrások, például egy Azure storage-táblába, vagy egy ügynököt, és megőrzi azt egy központi tárházban. Az adatok ezután lehet, elemzés, a riasztás és a Vizualizáció használatos, vagy további exportálását. A log Analytics az eseményeket, teljesítményadatokat vagy bármely más egyéni adatokat támogatja. Tekintse meg [eseményeket a diagnosztikai bővítmény konfigurálásának lépései](service-fabric-diagnostics-event-aggregation-wad.md) és [olvasni a storage-ban az események Log Analytics-munkaterület létrehozásához szükséges lépéseket](service-fabric-diagnostics-oms-setup.md) , hogy az adatok Log Analytics beérkeznek .
 
-Log Analytics által adatok fogadását követően az Azure rendelkezik több *felügyeleti megoldások* , amelyek előre összeállított megoldások figyelheti a bejövő adatokat, testre szabva, hogy számos forgatókönyv. Ezek közé tartozik egy *Service Fabric-elemzés* megoldás és a egy *tárolók* megoldást, amely két dolgokat azok, diagnosztika és figyelés a Service Fabric-fürtök használatakor. Ez a cikk ismerteti, hogyan használható a Service Fabric-elemzés megoldást, amely a munkaterület jön létre.
+Log Analytics által adatok fogadását követően az Azure rendelkezik több *felügyeleti megoldások* , amelyek előre összeállított megoldások vagy figyelheti a bejövő adatokat, testre szabva, hogy számos forgatókönyv operatív irányítópultokat. Ezek közé tartozik egy *Service Fabric-elemzés* megoldás és a egy *tárolók* megoldást, amely két dolgokat azok, diagnosztika és figyelés a Service Fabric-fürtök használatakor. Ez a cikk ismerteti, hogyan használható a Service Fabric-elemzés megoldást, amely a munkaterület jön létre.
 
 ## <a name="access-the-service-fabric-analytics-solution"></a>Hozzáférés a Service Fabric-elemzés megoldás
 
@@ -40,7 +43,7 @@ Log Analytics által adatok fogadását követően az Azure rendelkezik több *f
 
 2. Válassza ki az erőforrást **ServiceFabric\<nameOfOMSWorkspace\>**.
 
-2. Összefoglalva látni fogja az csempék formájában grafikon, a megoldások engedélyezve van, például egy Service Fabric az egyes. Kattintson a **Service Fabric** graph (az alábbi első kép), hogy a Service Fabric-elemzés megoldás (második képen).
+2. A `Summary`, csempék formájában grafikon, látni fogja az egyes, a megoldások engedélyezve van, amelyek közül az egyik a Service fabric. Kattintson a **Service Fabric** graph (az alábbi első kép), hogy a Service Fabric-elemzés megoldás (második képen).
 
     ![A Service Fabric-megoldás](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
@@ -48,12 +51,12 @@ Log Analytics által adatok fogadását követően az Azure rendelkezik több *f
 
 A fenti képen a Service Fabric-elemzés megoldás kezdőlapján. Ez az, hogy mi történik, a fürt egy pillanatképnézet. Ha engedélyezte a diagnosztikai fürt létrehozásakor, láthatja az események 
 
-* [Műveleti csatorna](service-fabric-diagnostics-event-generation-operational.md): magasabb szintű műveletek, amelyek a Service Fabric platformot (rendszer szolgáltatások gyűjteménye) hajt végre.
+* [A Service Fabric-fürthöz kapcsolódó események](service-fabric-diagnostics-event-generation-operational.md)
 * [A Reliable Actors programozási modell események](service-fabric-reliable-actors-diagnostics.md)
 * [A Reliable Services programozási modell események](service-fabric-reliable-services-diagnostics.md)
 
 >[!NOTE]
->A műveleti csatorna mellett részletes rendszeresemények által gyűjtött [a diagnosztikai bővítmény, a konfiguráció frissítésével](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations).
+>A beépített Service Fabric-események, valamint részletesebb rendszeresemények által gyűjtött [a diagnosztikai bővítmény, a konfiguráció frissítésével](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations).
 
 ### <a name="view-service-fabric-events-including-actions-on-nodes"></a>Nézet Service Fabric-események többek között a csomópontokon műveletek
 

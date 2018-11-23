@@ -2,19 +2,18 @@
 title: Kimenő adatait az Azure Stream Analytics ismertetése
 description: Ez a cikk ismerteti az adatok kimeneti beállításai az Azure Stream Analytics, mint a Power BI elemzési eredmények érhető el.
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/22/2018
-ms.openlocfilehash: 2ef599fe704b184e82de2d704753e3fb4a274a2a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/21/2018
+ms.openlocfilehash: 1502277276489d1977540018f2a22681ad48d8a7
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257799"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291470"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Kimenő adatait az Azure Stream Analytics ismertetése
 Ez a cikk bemutatja a kimenetek elérhető az Azure Stream Analytics-feladat különböző típusú. Kimenetek segítségével tárolhatja, és a Stream Analytics-feladat eredményének mentése. A kimeneti adatokat használja, végezhet további üzleti elemzés és az adattárház az adatokat. 
@@ -70,8 +69,8 @@ Engedély megújítása **leállítása** a feladat > Nyissa meg a Data Lake Sto
 | Kimeneti alias |A lekérdezés kimenete ehhez az adatbázishoz a lekérdezésekben használt rövid név. |
 | Adatbázis | Ahol a kimeneti küld az adatbázis neve. |
 | Kiszolgálónév | Az SQL Database-kiszolgáló neve. |
-| Felhasználónév | A felhasználónév, amely hozzáfér a írni az adatbázisba. |
-| Jelszó | A jelszó az adatbázishoz való csatlakozáshoz |
+| Felhasználónév | A felhasználónév, amely hozzáfér a írni az adatbázisba. Stream Analytics csak az SQL-hitelesítést támogatja. |
+| Jelszó | A jelszó az adatbázishoz való csatlakozáshoz. |
 | Tábla | A tábla neve, ahol a kimeneti íródik. A tábla neve a kis-és nagybetűket, és ez a tábla sémája pontosan a kívánt mezőket és azok típusát, a feladat kimenetének által generált egyeznie kell. |
 
 > [!NOTE]

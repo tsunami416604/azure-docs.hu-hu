@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 9/11/2018
+ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 68374cd1675f76555ff313b42e35bdf2aed96874
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 88b956fbe283dd39dfc51d6127b32b6f031e8b85
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408081"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291130"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>Fürt Log Analytics beállítása
 
@@ -72,7 +72,7 @@ A fiókkal most már megjelenik-e, a storage-fiók részeként jelentkezik be a 
 A Service Fabric-elemzés megoldás hozzáadott egy Log Analytics-munkaterületen, amely most már megfelelően csatlakozik-e a fürt platformot és alkalmazást naplótábláját. Ugyanúgy adhat hozzá további források a munkaterületre.
 
 
-## <a name="deploy-log-analytics-by-using-a-resource-manager-template"></a>Log Analytics üzembe helyezése Resource Manager-sablon használatával
+## <a name="deploy-log-analytics-with-azure-resource-manager"></a>A Log Analytics és Azure Resource Manager üzembe helyezése
 
 Egy fürtöt egy Resource Manager-sablon használatával történő telepítésekor a sablon létrehoz egy új Log Analytics-munkaterületet, a Service Fabric megoldást ad hozzá a munkaterülethez, és konfigurálja, hogy a megfelelő tárolási táblákból származó adatokat olvasni.
 
@@ -93,7 +93,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "<resourceGroupName>" -Tem
 
 Az Azure Resource Manager azt észleli, hogy ez a parancs egy meglévő erőforrás frissítése. Csak feldolgozza a módosításokat a vezetői a meglévő központi telepítési sablont és a megadott új sablon között.
 
-## <a name="deploy-log-analytics-by-using-azure-powershell"></a>Log Analytics üzembe helyezése Azure PowerShell-lel
+## <a name="deploy-log-analytics-with-azure-powershell"></a>Az Azure PowerShell használatával Log Analytics üzembe helyezése
 
 A Log Analytics-erőforrás PowerShell használatával is telepítheti a `New-AzureRmOperationalInsightsWorkspace` parancsot. Ezt a módszert használja, győződjön meg arról, hogy telepítve van-e [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.1.1). Ez a szkript használatával hozzon létre egy új Log Analytics-munkaterületet, és hozzá tud adni a Service Fabric megoldást: 
 

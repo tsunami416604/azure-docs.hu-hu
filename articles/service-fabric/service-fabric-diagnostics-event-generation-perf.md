@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/16/2018
+ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 1e6ea5d6ae321a0443631ec928912611a68346c6
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 843feb83b8202d3ef8e2c6c8c60cb9b509048530
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408013"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290773"
 ---
 # <a name="performance-metrics"></a>Teljesítmény-mérőszámok
 
@@ -31,6 +31,7 @@ A gépek a fürtben fontolja meg a következő teljesítményszámlálók adatai
 
 | Teljesítményszámláló-kategóriája | Számláló neve |
 | --- | --- |
+| Logikai lemez | Logikai lemez – szabad terület |
 | Fizikai lemez (lemezenként) | Átl. Olvasási Lemezvárólista hossza |
 | Fizikai lemez (lemezenként) | Átl. Írási Lemezvárólista hossza |
 | Fizikai lemez (lemezenként) | Átl. Lemez mp/Olvasás |
@@ -49,6 +50,9 @@ A gépek a fürtben fontolja meg a következő teljesítményszámlálók adatai
 | Folyamat (szolgáltatásonként) | Virtuális memória |
 | Folyamat (szolgáltatásonként) | Pracovní Sada |
 | Folyamat (szolgáltatásonként) | Munkakészlet – magán |
+| Hálózati Interface(all-instances) | Bájt recd |
+| Hálózati Interface(all-instances) | Küldött bájtok |
+| Hálózati Interface(all-instances) | Összes bájt |
 | Hálózati Interface(all-instances) | Kimeneti várólista hossza |
 | Hálózati Interface(all-instances) | Elvetett kimenő csomagok |
 | Hálózati Interface(all-instances) | Az elvetett fogadott csomagok |
@@ -65,6 +69,8 @@ Az alábbi számlálókat gyűjtése, ha a fürtön helyezi üzembe a .NET-szolg
 | .NET CLR memória (szolgáltatásonként) | # Összesen előjegyzett memória kihasználtsága |
 | .NET CLR memória (szolgáltatásonként) | # Összes lefoglalt bájtok |
 | .NET CLR memória (szolgáltatásonként) | Bájtok száma az összes halommemória |
+| .NET CLR memória (szolgáltatásonként) | Nagy objektumok halommemóriájának mérete |
+| .NET CLR memória (szolgáltatásonként) | # Globális Katalógus kezeli |
 | .NET CLR memória (szolgáltatásonként) | # Generációs gyűjtemények 0 |
 | .NET CLR memória (szolgáltatásonként) | # Generációs gyűjtemények 1 |
 | .NET CLR memória (szolgáltatásonként) | # Generációs gyűjtemények 2 |
@@ -76,7 +82,7 @@ A Service Fabric hoz létre egyéni teljesítményszámlálók jelentős mennyis
 
 Az alkalmazások telepíti, akkor a fürthöz, ha használja a Reliable Actors, adja hozzá a countes `Service Fabric Actor` és `Service Fabric Actor Method` kategóriák (lásd: [Service Fabric Reliable Actors diagnosztikai](service-fabric-reliable-actors-diagnostics.md)).
 
-A Reliable Services használatakor, hasonlóan van `Service Fabric Service` és `Service Fabric Service Method` származó teljesítményszámlálók kell gyűjtése teljesítményszámláló-kategóriák. 
+A Reliable Services vagy a szolgáltatás távelérésének lehetővé tétele, hogy hasonló módon van-e `Service Fabric Service` és `Service Fabric Service Method` kategóriák, hogy meg kell gyűjteni számlálókat, lásd: számláló [figyelés szolgáltatás távelérésének lehetővé tétele a](service-fabric-reliable-serviceremoting-diagnostics.md) és [megbízható teljesítményszámlálók Services](service-fabric-reliable-services-diagnostics.md#performance-counters). 
 
 A Reliable Collections használata, ha ajánlott felvenni a `Avg. Transaction ms/Commit` származó a `Service Fabric Transactional Replicator` a véglegesítés átlagos késés tranzakció metrikánként gyűjtéséhez.
 

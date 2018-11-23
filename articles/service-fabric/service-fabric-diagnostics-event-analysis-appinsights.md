@@ -12,22 +12,24 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/04/2018
+ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: aedbc5925a6e101299170843abef79ef6125eafe
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: f9c7a70eae4c49173b3e11b7fbfa901f7e5b89d6
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230420"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291045"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Esemény elemzése és vizualizációs az Application insights segítségével
 
-A Microsoft Azure Application Insights egy bővíthető platform az alkalmazások monitorozásához és diagnosztizálásához. Egy hatékony elemzési és eszköz, a testreszabható irányítópult megnyitásához és vizualizációkat tartalmaz, és további beállításokat, beleértve az automatizált riasztások. Esetén a javasolt platform figyelés és diagnosztika a Service Fabric-alkalmazások és szolgáltatások. Ez a cikk segít az alábbi gyakori kérdések
+Az Azure Monitor az Application Insights része egy bővíthető platform az alkalmazások monitorozásához és diagnosztizálásához. Egy hatékony elemzési és eszköz, a testreszabható irányítópult megnyitásához és vizualizációkat tartalmaz, és további beállításokat, beleértve az automatizált riasztások. A Service Fabric Application Insights-integráció tartalmaz eszközöket a Visual Studio és az Azure portal, valamint a Service Fabric adott mérőszámok, átfogó-a-beépített naplózási biztosítása érdekében. Bár sok naplók automatikusan létrehozza és az Application Insights használatával gyűjtött, azt javasoljuk, hogy további olyan egyéni naplózási részletesebb diagnosztikai környezetet biztosít az alkalmazások.
 
-* Hogyan tudhatom eseményeit saját alkalmazások és szolgáltatások összegyűjtési telemetriai belül
-* Hogyan háríthatom alkalmazásom, különösen az egymással való kommunikációhoz szolgáltatások
-* Hogyan kaphatok metrikák hogyan saját szolgáltatások hajt végre, például, a lapbetöltési idő, a HTTP-kérések
+Ez a cikk segít, oldja meg a következő gyakori kérdésekre:
+
+* Hogyan tudhatom eseményeit saját alkalmazások és szolgáltatások összegyűjtési telemetriai belül?
+* Hogyan háríthatom alkalmazásom, különösen az egymással való kommunikációhoz szolgáltatások?
+* Hogyan kaphatok metrikák hogyan saját szolgáltatások hajt végre, például, a lapbetöltési idő, a HTTP-kérések?
 
 Ez a cikk az a célja, hogy bemutatják, hogyan elemezheti és elhárítása az Application Insights belül. Ha szeretné, hogyan állíthatja be, és az Application Insights beállítása a Service Fabric, tekintse meg ezt [oktatóanyag](service-fabric-tutorial-monitoring-aspnet.md).
 
@@ -110,7 +112,7 @@ Ha az események összesítése az eventflow segítségével használ, ügyeljen
 
 Javasoljuk, hogy együtt használja eventflow segítségével WAD összesítési megoldások, mivel lehetővé teszik a több moduláris megközelítés diagnosztikát és a figyelés, azaz ha meg szeretné változtatni a kimenetek az eventflow segítségével, nem igényel a tényleges rendszerállapot nem változik csak egy egyszerű módosítása a konfigurációs fájlban. Ha azonban úgy dönt, hogy az Application Insights-be, és valószínűleg nem módosíthatja egy másik platformon, akkor események összevonása, és elküldi azokat az Application Insights új Application Insights SDK-bA kell kinéznie. Ez azt jelenti, hogy többé nem lesz eventflow segítségével, hogy adatokat küldjön az Application Insights konfigurálása, de ehelyett a ApplicationInsight Service Fabric NuGet csomag telepíti. A csomag részletei találhatók [Itt](https://github.com/Microsoft/ApplicationInsights-ServiceFabric).
 
-[Mikroszolgáltatások és tárolók támogatása az Application Insights](https://azure.microsoft.com/blog/app-insights-microservices/) mutatja, hogy néhány vannak szerkesztett (jelenleg még mindig beta) új szolgáltatásait, amelyek lehetővé teszik több-az-beépített figyelési lehetőségek az Application insights segítségével. Ezek közé tartozik a függőségi követési (a szolgáltatások és alkalmazások egy fürt és a köztük folyó kommunikációt az Alkalmazástérkép létrehozásakor használt), és az Ön szolgáltatásainak (segít jobban be a problémát a munkafolyamata felügyelő a bejövő nyomok jobb korreláció az alkalmazás vagy a szolgáltatás).
+[Mikroszolgáltatások és tárolók támogatása az Application Insights](https://azure.microsoft.com/blog/app-insights-microservices/) mutatja, hogy néhány vannak szerkesztett (jelenleg még mindig beta) új szolgáltatásait, amelyek lehetővé teszik több-az-beépített figyelési lehetőségek az Application insights segítségével. Ezek közé tartozik a függőségi követési (a szolgáltatások és alkalmazások egy fürt és a köztük folyó kommunikációt az Alkalmazástérkép létrehozásakor használt), és az Ön szolgáltatásainak (segít jobban be a problémát a munkafolyamata felügyelő a bejövő nyomok jobb korreláció egy alkalmazás vagy a szolgáltatás).
 
 Ha fejleszt, a .NET-ben, és valószínűleg használják majd néhány Service Fabric programozási modellek, és nem használható az Application Insights a platform jelenítenek meg, és esemény- és naplózási adatok elemzésére szolgáló, majd azt javasoljuk, hogy az Application Insights-n keresztül halad A monitorozási és diagnosztikai munkafolyamatként útvonal SDK-t. Olvasási [ez](../application-insights/app-insights-asp-net-more.md) és [ez](../application-insights/app-insights-asp-net-trace-logs.md) való ismerkedés az Application Insights segítségével begyűjtheti és megjelenítheti a naplókat.
 

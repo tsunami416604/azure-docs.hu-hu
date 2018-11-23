@@ -7,13 +7,13 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/11/2018
-ms.openlocfilehash: 4209ce8d15bf53381825e8bb3e47f0a16366a436
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 11/21/2018
+ms.openlocfilehash: 5124e06296962f1b673c77bfe318ff48d7fb11aa
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49346881"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291323"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Az Azure Stream Analytics kimenetek hibaelhárítása
 
@@ -29,7 +29,7 @@ Ezen a lapon a kimenő kapcsolatok és hibaelhárítása, és oldja meg, hogyan 
       - Ha a feladat egy Eseményközpontba, ellenőrizze, hogy van-e az üzenet törzse *Null*.
       
     - Ha az Adatátalakítási hibák > 0 nagyobb és emelkedik, a következő okai lehetnek:
-      - A feladat nem tudja deszerializálni az eseményeket.
+      - A cél fogadó sémája nem felel meg a kimeneti esemény. 
       - Az esemény sémája nem egyeznek a meghatározott vagy a várt séma a lekérdezésben az események.
       - Az egyes mezőit a adattípusokat az lehet, hogy nem egyezik meg elvárásainak.
       

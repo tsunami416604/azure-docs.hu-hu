@@ -9,12 +9,12 @@ author: hning86
 ms.author: haining
 ms.reviewer: j-martens
 ms.date: 10/24/2018
-ms.openlocfilehash: 52c8eed7f8b5a65ef13215e677d52f44cb95fd64
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 6007a7e32e168ada529feb6aa24b8d572671d835
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284999"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291340"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
@@ -25,9 +25,11 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
 ### <a name="azure-machine-learning-sdk-for-python-v0180"></a>Az Azure Machine Learning SDK for Python v0.1.80
 
 + **Használhatatlanná tévő változásai** 
-  * *azureml.train.widget* névtér át lett helyezve *azureml.train*.
-  * *azureml.core.compute.AmlCompute* helyteleníti *azureml.core.compute.BatchAICompute*. Az utóbbi osztály törlődni fog a következő kiadásokban.
+  * *azureml.train.widgets* névtér át lett helyezve *azureml.widgets*.
+  * *azureml.core.compute.AmlCompute* a következő osztályok - helyteleníti *azureml.core.compute.BatchAICompute* és *azureml.core.compute.DSVMCompute*. Az utóbbi osztály törlődni fog a következő kiadásokban. A AmlCompute osztály mostantól könnyebben definícióval rendelkezik egyszerűen egy vm_size és a max_nodes van szüksége, és automatikus méretezése a max_nodes 0-tól a fürthöz, amikor a rendszer elküld egy feladatot. A [mintafüzetek] (https://github.com/Azure/MachineLearningNotebooks/tree/master/training) frissítve lett-e ezzel az információval, és kell példákkal szemlélteti, hogyan használható ez a. Reméljük, mint például az egyszerűsítés és a egy későbbi kiadásban lesz több izgalmas funkciók számos!
+
 ### <a name="azure-machine-learning-data-prep-sdk-v051"></a>Az Azure Machine Learning adat-előkészítési SDK v0.5.1 
+
 További információ a Data Prep SDK olvasásával [docs hivatkozhat](https://aka.ms/data-prep-sdk).
 + **Új funkciók**
    * Létrehozott egy új Adatelőkészítés CLI hajtsa végre az Adatelőkészítés-csomagok és az adatkészlet vagy adatfolyam adatok profiljának megtekintése

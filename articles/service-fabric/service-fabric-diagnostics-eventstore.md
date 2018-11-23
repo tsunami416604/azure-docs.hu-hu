@@ -1,9 +1,9 @@
 ---
-title: Az Azure Service Fabric esemény Store |} Microsoft Docs
+title: Az Azure Service Fabric esemény Store |} A Microsoft Docs
 description: További tudnivalók az Azure Service Fabric EventStore
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -12,46 +12,49 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/25/2018
-ms.author: dekapur
-ms.openlocfilehash: 1d235d5a75975c8d58cad1bbde0f16df2b1b3e7a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.date: 11/21/2018
+ms.author: srrengar
+ms.openlocfilehash: cd58e24a51b153d6bf217f7d32a82e882183ed73
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206516"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290671"
 ---
-# <a name="eventstore-service-overview"></a>EventStore szolgáltatás áttekintése
-
->[!NOTE]
->Től Service Fabric 6.2 verziót. a EventStore API-k jelenleg csak Azure-on futó Windows-fürtök előzetes verzióját. Ez a funkció a Linux, valamint az önálló fürtök eljárás dolgozunk.
+# <a name="eventstore-service-overview"></a>Az EventStore szolgáltatás áttekintése
 
 ## <a name="overview"></a>Áttekintés
 
-6.2 verziójában bevezetett, a EventStore szolgáltatás beállítás figyelési a Service Fabric, amely a fürt vagy egy munkaterhelés állapotának megértését időben megoldást kínál. A EventStore szolgáltatást, hogy hívások API-k segítségével a Service Fabric-események közzététele. Ezen EventStore API-k lehetővé teszik a fürt közvetlenül diagnosztikai adatok eléréséhez a fürt egyetlen entitás lekérdezése, és segítségével használható:
-* Fejlesztési vagy tesztelési problémák diagnosztizálása, vagy ha-t használja egy felügyeleti folyamatot
-* Győződjön meg arról, hogy a fürt készítésének felügyeleti műveletek feldolgozott megfelelően a fürt
+6.2 verziójában bevezetett, a EventStore szolgáltatás az figyelési lehetőség, a Service Fabricben, amely lehetővé teszi, hogy a fürt vagy az adott számítási feladatok állapotának megjelenítése az idő. Az EventStore szolgáltatás a Service Fabric-események API-k (REST-végpontokat keresztül vagy az ügyféloldali kódtár keresztül elérhető) egy készlete-n keresztül tesz elérhetővé. Az EventStore API-k lehetővé teszik, hogy a közvetlenül a diagnosztikai adatok gyorsan minden entitás, a fürtben a fürt lekérdezése, és segítségével használható:
 
-Elérhető a EventStore események teljes listájának megtekintéséhez lásd: [Service Fabric események](service-fabric-diagnostics-event-generation-operational.md).
+* Fejlesztési vagy tesztelési időben diagnosztizálhatja a problémákat, vagy ahol a monitorozási folyamatban használni lehet, hogy
+* Győződjön meg arról, hogy felügyeleti műveleteket a fürtön készítésének feldolgozott megfelelően a fürt
 
-A EventStore szolgáltatás által biztosított minden entitáshoz és a fürt entitástípus események lehet lekérdezni. Ez azt jelenti, hogy lekérdezhető az események a következő szinten;
-* Fürt: fürt összes szintű események
-* Csomópontok: minden csomópont szintű események
-* Csomópont: események alapján egy csomópont jellemző `nodeName`
-* Alkalmazások: az összes alkalmazás szintű események
-* Alkalmazás: események egy alkalmazáshoz
-* Szolgáltatások: a fürt összes szolgáltatás eseményeinek
-* Szolgáltatás: egy adott szolgáltatás eseményeinek
+Az EventStore elérhető események teljes listáját lásd: [Service Fabric-események](service-fabric-diagnostics-event-generation-operational.md).
+
+>[!NOTE]
+>Kezdődően a Service Fabric verziója 6.2. az EventStore API-k jelenleg csak Azure-on futó Windows-fürtök előzetes verzióban érhető el. Ez a funkció a Linux, valamint az önálló fürtök portolása dolgozunk.
+
+Az EventStore szolgáltatás eseményeket, amelyek elérhetők minden entitáshoz és a fürt entitástípus lehet lekérdezni. Ez azt jelenti, hogy a következő szinteken; események lekérdezhető
+* Fürt: fürt összes események
+* Csomópont: az összes csomópont szintű eseményeket
+* Csomópont: az egyik csomóponton alapján adott események `nodeName`
+* Alkalmazások: az összes alkalmazásszintű események
+* Alkalmazás: események és a egy alkalmazáshoz
+* Szolgáltatások: a fürtök összes szolgáltatásra eseményei
+* Szolgáltatás: egy adott szolgáltatás eseményeit
 * Partíciók: az összes partíció események
-* Partíció: egy adott partícióra eseményeinek
+* Partíció: egy adott partícióra események
 * Replikák: az összes replika események / -példányok
-* A replika: események az adott replika / példány
+* A replika: események egy meghatározott replikáról / példány
 
 
-A EventStore szolgáltatás is van lehetősége, a fürt események összefüggéseket. Előfordulhat, hogy van hatással, egymástól különböző entitások az egy időben írt események megtekintésével a EventStore szolgáltatás nem tudja csatolni ezek az események segítségével azonosíthatja a tevékenységek a fürt okait. Például ha a saját alkalmazásai legyen, ez egy mesterségesen előidézett módosítások nélkül nem kifogástalan, a EventStore történik a további események is nézze meg a platform által elérhetővé tett és tudott összefüggéseket a egy `NodeDown` esemény. Ez segít a gyorsabb tárhelyhiba-észlelés és gyökérszintű analysis okoz.
+Az EventStore szolgáltatás is van lehetősége, a fürtben lévő események korrelációját. Megnézzük az eseményeket, amelyek egy időben a különböző entitások, amely hatással lehetett egymással készültek, az EventStore szolgáltatás nem tudja csatolni ezeket az eseményeket a fürtben lévő tevékenységek okainak azonosítása érdekében. Például ha egy, az alkalmazások a nem megfelelő állapotú, ez egy mesterségesen előidézett módosítása nélkül történik, az EventStore lesz az eseményeket is tekintse meg a platform által elérhetővé tett funkciót pedig hathatósabb sikerült Ez az egy `NodeDown` esemény. Ez segít a gyorsabb, hibaészlelés, és az alapvető okok elemzése.
 
-Első lépésként a EventStore szolgáltatás használatával, lásd: [lekérdezés EventStore API-khoz, fürthöz kapcsolódó események](service-fabric-diagnostics-eventstore-query.md).
+Azt javasoljuk, hogy az EventStore gyors elemzés céljából, valamint hogy a pillanatkép kiindulópont annak megértéséhez, hogy a fürt működik, és dolog történik Ha a várt.
+
+Ismerkedés az EventStore szolgáltatás használatával, lásd: [lekérdezés EventStore API-k a fürthöz kapcsolódó események](service-fabric-diagnostics-eventstore-query.md).
 
 ## <a name="next-steps"></a>További lépések
-* Figyelés és a Service Fabric - diagnosztika áttekintése [megfigyelési és diagnosztikai a Service Fabric](service-fabric-diagnostics-overview.md)
-* További tudnivalók a figyelés a fürt- [figyelési a fürt és a platform](service-fabric-diagnostics-event-generation-infra.md).
+* Figyelés és diagnosztika felderítése a Service Fabric - áttekintése [Monitorozás és diagnosztika a Service Fabrichez](service-fabric-diagnostics-overview.md)
+* A fürt monitorozásával kapcsolatos további információkért – [figyelése a fürt és a platform](service-fabric-diagnostics-event-generation-infra.md).

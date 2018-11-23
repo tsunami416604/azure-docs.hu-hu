@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: 67cddf5eb3f675337afbb7e620bd135383f20960
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 611f7ccf9ef701bf589a8f9450f8f02695357224
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976077"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291181"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET módosítási hírcsatorna processzor SDK: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -46,9 +46,9 @@ ms.locfileid: "51976077"
 ### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
 * Támogatás hozzáadva a folytatási token partíciónként megőrizni egyéni tároló használatával.
   * Például egy egyéni bérleti lehetnek Azure Cosmos DB a bérletek gyűjteményének egyéni módon particionálva.
-  * Egyéni címbérlet-tárolók új bővíthetőség pont ChangeFeedProcessor.WithLeaseStoreManager(ILeaseStoreManager) és ILeaseStoreManager nyilvános felületet használhat.
+  * Egyéni címbérlet-tárolók új bővíthetőség pont ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager) és ILeaseStoreManager nyilvános felületet használhat.
   * A ILeaseManager felület refactored be több szerepkör-adapterrel.
-* Kompatibilitástörő változás kisebb: eltávolított bővíthetőség ChangeFeedProcessorBuilder.WithLeaseManager(ILeaseManager) mutasson, ChangeFeedProcessor.WithLeaseStoreManager(ILeaseStoreManager) használja helyette.
+* Kompatibilitástörő változás kisebb: eltávolított bővíthetőség ChangeFeedProcessorBuilder.WithLeaseManager(ILeaseManager) mutasson, ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager) használja helyette.
 
 ### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2.
 * Ebben a kiadásban elhárítottunk egy hibát, amely során a figyelt gyűjtemény split feldolgozása és a egy particionált a bérletek gyűjteményének használatával történik. A címbérlet split partíció feldolgozásakor a bérletet, ehhez a partícióhoz tartozó nem törölhetők. Ebben a kiadásban a problémát megoldottuk.

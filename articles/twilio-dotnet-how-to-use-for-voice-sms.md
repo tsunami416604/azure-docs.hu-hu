@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/24/2015
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: cde668fdeda7e484585a457a46fc5c25ce6ea6ae
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 5b39094ef081aadc813849399ebebc0c2e8a666d
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310538"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291295"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>Hogyan lehet a Twilio használata hanghívási és SMS-funkciókhoz az Azure-ból
 Ez az útmutató bemutatja, hogyan hajthat végre gyakori programozási feladatokat, a Twilio API-t szolgáltatással az Azure-ban. Az ismertetett forgatókönyvek között megtalálható, így a telefonhívás, és a egy rövid üzenetet szolgáltatást (SMS) üzenetet küld. A Twilio és az alkalmazások használata hanghívási és SMS további információkért lásd: a [további lépések](#NextSteps) szakaszban.
@@ -29,9 +29,7 @@ A Twilio jövőjének vállalati kommunikáció, így a fejlesztők hang, a VoIP
 
 **A twilio használata Hanghívási** lehetővé teszi, hogy telefonhívásokat fogadja, és az alkalmazások. **A Twilio SMS** lehetővé teszi az alkalmazások számára az SMS-üzenetek küldése és fogadása. **A Twilio-ügyfél** lehetővé teszi bármely telefonon, táblagépen vagy böngészőben VoIP hívásait, és támogatja a WebRTC.
 
-## <a id="Pricing"></a>A Twilio-díjszabás és ajánlatok küldésére
-Az Azure-ügyfelek kap egy [a különleges ajánlat](http://www.twilio.com/azure): díjtalan 10 USD kredit Twilio, a Twilio-fiók frissítésekor. A Twilio-Kredit bármely Twilio-használati (10 USD kredit egyenértékű, akár 1000 SMS-üzenetek küldése vagy fogadása legfeljebb 1000 bejövő hangalapú perc, a telefon száma és az üzenet vagy hívás cél helyétől függően) is alkalmazható. A Twilio-kredit beváltásához, és látogasson el [ahoy.twilio.com/azure](http://ahoy.twilio.com/azure).
-
+## <a id="Pricing"></a>A Twilio-díjszabás
 A Twilio szolgáltatás használatalapú fizetést biztosító. Nincsenek díjak sincsenek beállítás, és a fiókot bármikor bezárhatja. További információt talál [Twilio díjszabás](http://www.twilio.com/voice/pricing).
 
 ## <a id="Concepts"></a>Fogalmak

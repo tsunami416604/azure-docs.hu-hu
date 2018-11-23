@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 804ac964949c947baf5285b3ec591b3d28263f4d
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 8a5b34cd92f3afd166d5d67ca445c99a52c684e2
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282737"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290892"
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Az Azure Automation-forgatókönyv – az AWS virtuális gép kiépítése
 Ebből a cikkből megtudhatja, hogyan használhatók az Azure Automation és az Amazon Web Service (AWS) előfizetésben virtuális gép kiépítése, és nevezze el a virtuális gép adott – amely AWS, a virtuális gép "címkézés" hivatkozik.
@@ -41,7 +41,7 @@ A virtuális gép kiépítése a runbook feladatának elvégzéséhez az AWS Pow
 Az AWS PowerShell-modul üzembe helyezése után most már hozhat létre egy runbookot, az AWS-ben a PowerShell-szkripttel virtuális gép üzembe helyezésének automatizálása. Az alábbi lépések bemutatják, hogyan használhatja az Azure Automationben natív PowerShell-szkript.  
 
 > [!NOTE]
-> További beállítások és a szkript vonatkozó információkat talál a [PowerShell-galériából](https://www.powershellgallery.com/packages/New-AwsVM/DisplayScript).
+> További beállítások és a szkript vonatkozó információkat talál a [PowerShell-galériából](https://www.powershellgallery.com/packages/New-AwsVM/).
 > 
 
 1. New-AwsVM PowerShell-szkript letöltése a PowerShell-galériából, egy PowerShell-munkamenetet, és írja be a következőket:<br>
