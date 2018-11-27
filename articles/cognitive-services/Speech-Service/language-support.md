@@ -88,7 +88,7 @@ en-IE | angol (Írország) |Férfi | "A Microsoft Server beszéd szöveg Speech 
 en-IN | Angol (India) | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-IN, Heera, Apollo)"
 | | |Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-IN, PriyaRUS)"
 | | |Férfi | "A Microsoft Server beszéd szöveg Speech Voice (en-IN, Ravi, Apollo)"
-hu-HU | Angol (Egyesült Államok) |Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-US, ZiraRUS)"
+en-US | Angol (Egyesült Államok) |Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-US, ZiraRUS)"
 | | |Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-US, JessaRUS)"
 | | |Férfi | "A Microsoft Server beszéd szöveg Speech Voice (en-US, BenjaminRUS)"
 | | |Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Jessa24kRUS)"
