@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Analytics lapok kivonása |} Microsoft Docs
-description: Ez a témakör bemutatja, hogyan kivonása az Azure media analytics lapokat.
+title: Az Azure Media Analytics arcok szereplők |} A Microsoft Docs
+description: Ez a témakör bemutatja, hogyan szereplők az Azure media analytics arcokat.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,46 +14,47 @@ ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako;
 ms.openlocfilehash: 910cc246aa19e19b109fc660682c6b2dc239cbb7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "33789382"
 ---
-# <a name="redact-faces-with-azure-media-analytics"></a>Az Azure Media Analytics lapok kivonása
+# <a name="redact-faces-with-azure-media-analytics"></a>Az Azure Media Analytics arcok szereplők
 ## <a name="overview"></a>Áttekintés
-**Az Azure Media Redactor** van egy [Azure Médiaelemzés használatával](media-services-analytics-overview.md) media processzor (MP), amely a felhőben méretezhető arcfelismerési kivonási nyújt. Arcfelismerési kivonási lehetővé teszi, hogy a videó ahhoz, hogy a kijelölt személyeket felületei életlenítés módosíthatja. Érdemes lehet nyilvános biztonsági és hírek media helyzetekben használhatja a tapasztalt kivonási szolgáltatás. Több lapokat tartalmazó felvételei, néhány perc múlva a kivonás a manuálisan órát is igénybe vehet, de ezzel a szolgáltatással a tapasztalt kivonási folyamat néhány egyszerű lépésben szükséges. További információkért lásd: [ez](https://azure.microsoft.com/blog/azure-media-redactor/) blog.
+**Az Azure Media Redactor** van egy [Azure Media Analytics](media-services-analytics-overview.md) médiafeldolgozót. (pont) által kínált méretezhető arcszerkesztés a felhőben. Arcszerkesztés lehetővé teszi, hogy a videó módosíthatja annak érdekében, hogy arcának elmossa. Előfordulhat, hogy szeretné használni a face kivonási szolgáltatás közbiztonsági megfontolásokból és sajtóbeli híradásoknál. Néhány perc alatt több arcokat tartalmazó képanyag manuálisan szereplők órát is igénybe vehet, de ezzel a szolgáltatással a face kivonási folyamat néhány egyszerű lépéssel van szükség. További információkért lásd: [ez](https://azure.microsoft.com/blog/azure-media-redactor/) blog.
 
-Ez a cikk részletezi kapcsolatos **Azure Media Redactor** és a .NET-keretrendszerhez készült Media Services SDK-val való használatát ismerteti.
+Ez a cikk kapcsolatos részleteket nyújt **Azure Media Redactor** , és bemutatja, hogyan használja a Media Services SDK a .NET-hez.
 
-## <a name="face-redaction-modes"></a>Arcfelismerési kivonási módok
-Arcfelismerést kivonási működik található videó lapok észlelésére és nyomon követni a tapasztalt objektum mindkét előre és hátra időben, ugyanabból is homályos, a más szögek is. Az automatizált kivonási folyamata bonyolult, és nem nem mindig által előállított 100 %-a kívánt kimeneti, ezért Media Analytics tartalmazza a több módon módosítani a végső kimenetet.
+## <a name="face-redaction-modes"></a>Face kivonási módok
+Arcfelismerési kivonási működik, arcokat található videó és előre és visszafelé időben, a face objektum mindkét nyomon követésére, hogy az azonos egyes is homályosan, a többi szögek is. Az automatikus kivonási folyamat túl összetett, és nem nem mindig a termék 100 %-a kívánt kimenetet, ezért a Media Analytics biztosítja a végső kimenet módosítása többféleképpen.
 
-Mellett a teljesen automatikus mód nincs két-hozzáférési munkafolyamat, amely lehetővé teszi, hogy a kijelölés/inaktiválása-selection a tényleges lapok keresztül azonosítók listáját. Ellenőrizze a keret módosításának a felügyeleti csomag egy tetszőleges is, használja a metaadatfájl JSON formátumban. Ez a munkafolyamat oszlik **elemzés** és **Redact** módot. A két mód, amely mindkét feladat fut egy feladat; egyetlen menetben kombinálva Ebben a módban nevezik **kombinált**.
+Egy teljesen automatikus mód kívül a rendszer két – pass munkafolyamat, amely lehetővé teszi, hogy a kijelölés/kivonási-selection található téglalapot keresztül azonosítók listáját. Is, hogy a keret módosítását a felügyeleti csomag egy tetszőleges JSON formátumban metaadatok fájlt használ. Ez a munkafolyamat van felosztva, amelyek **elemzés** és **Redact** módokat. Kombinálhatja a két mód, amely mindkét feladat fut egy feladat; egyetlen menetben Ez az üzemmód nevezik **kombinált**.
 
 ### <a name="combined-mode"></a>Kombinált mód
-Ezzel létrehozza a kivont mp4 automatikusan szükséges bemeneti manuális nélkül.
+Ez hoz létre egy kivonatosan mp4 automatikusan szükséges bemeneti manuális nélkül.
 
 | Fázis | Fájlnév | Megjegyzések |
 | --- | --- | --- |
-| Bemeneti eszköz |foo.bar |Videó WMV, MOV vagy MP4 formátumban |
-| Bemeneti config |Konfigurációs feladat az adott néven beállítás |{"version": "1.0', a"beállítások": {"mode":"kombinált"}} |
-| Kimeneti eszköz |foo_redacted.mp4 |Az alkalmazott fellazítja videó |
+| Bemeneti objektuma |foo.bar |A videó WMV, MOV vagy MP4 formátumban |
+| A bemeneti config |Feladat konfigurációs készlet |{'version':'1.0 ', "beállítások": {"mód": "kombinált"}} |
+| Kimeneti adategység |foo_redacted.mp4 |Videókat a alkalmazni felismerhetetlenné |
 
-#### <a name="input-example"></a>Bemeneti. példa:
+#### <a name="input-example"></a>A bemeneti. példa:
 [Ez a videó megtekintése](http://ampdemo.azureedge.net/?url=http%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fed99001d-72ee-4f91-9fc0-cd530d0adbbc%2FDancing.mp4)
 
 #### <a name="output-example"></a>Példa a kimenetre:
 [Ez a videó megtekintése](http://ampdemo.azureedge.net/?url=http%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc6608001-e5da-429b-9ec8-d69d8f3bfc79%2Fdance_redacted.mp4)
 
 ### <a name="analyze-mode"></a>Mód elemzése
-A **elemzése** fázis a két-fázis munkafolyamat videó bemenetből fogad adatokat, és arcfelismerési helyek JSON fájlt hoz létre, és jpg lemezképek az egyes észlelt arcfelismerési.
+A **elemzése** pass a két-pass munkafolyamat vesz igénybe egy videó bemeneti hoz létre egy JSON-fájlt, a face helyek és a jpg-lemezképek az egyes észlelhető oldallal.
 
 | Fázis | Fájlnév | Megjegyzések |
 | --- | --- | --- |
-| Bemeneti eszköz |foo.bar |Videó WMV, MPV vagy MP4 formátumban |
-| Bemeneti config |Konfigurációs feladat az adott néven beállítás |{"version": "1.0', a"beállítások": {"mode":"elemezni"}} |
-| Kimeneti eszköz |foo_annotations.json |A jegyzet adatok arcfelismerési helyek JSON formátumban. Ez a felhasználó módosítása a mezőkbe határolókeret fellazítja szerkeszthető. Lásd az alábbi minta. |
-| Kimeneti eszköz |foo_thumb%06d.jpg [foo_thumb000001.jpg, foo_thumb000002.jpg] |Az egyes levágott jpg arc, ahol a számot jelzi a felületen címkeazonosító észlelt |
+| Bemeneti objektuma |foo.bar |A videó WMV, MPV vagy MP4 formátumban |
+| A bemeneti config |Feladat konfigurációs készlet |{"verziójú": "1.0',"beállítások": {'mód':"elemzése"}} |
+| Kimeneti adategység |foo_annotations.json |Jegyzet adatok face helyek JSON formátumban. Ez a felhasználó módosíthatja a mezők határoló felismerhetetlenné szerkeszthetik. Tekintse meg az alábbi mintát. |
+| Kimeneti adategység |foo_thumb%06d.jpg [foo_thumb000001.jpg, foo_thumb000002.jpg] |Az egyes körülvágva jpg észlelhető oldallal, ahol a szám azt jelzi a címkeazonosító, a face |
 
 #### <a name="output-example"></a>Példa a kimenetre:
 
@@ -106,23 +107,23 @@ A **elemzése** fázis a két-fázis munkafolyamat videó bemenetből fogad adat
     … truncated
 ```
 
-### <a name="redact-mode"></a>Mód kivonása
-A második fázis a munkafolyamat bemenetei, egyetlen eszköz kombinálni kell nagyobb számú vesz igénybe.
+### <a name="redact-mode"></a>Kivonás mód
+A második fázis, a munkafolyamat-bemenet, amely egyetlen eszköz kombinálni kell nagyobb számú vesz igénybe.
 
-Ez magában foglalja a azonosítók lehetőséget, az eredeti video-, és a jegyzetek JSON listáját. Ebben a módban a jegyzetek a segítségével a bemeneti videóhoz a fellazítja.
+Ez magában foglalja a elmossa azonosítók, az eredeti videó és a jegyzetek JSON listáját. Ebben a módban a jegyzetek a alkalmazni a a bemeneti videó felismerhetetlenné használ.
 
-Az elemzési fázis kimenete nem tartalmazza az eredeti videó. A videó kell a Redact mód tevékenység bemeneti objektumba feltölthetők és az elsődleges fájl választotta.
+Az elemzési fázis kimenete nem tartalmazza az eredeti videó. A videó a Redact mód tevékenység bemeneti objektuma feltölti és az elsődleges fájllal kiválasztott van szükség.
 
 | Fázis | Fájlnév | Megjegyzések |
 | --- | --- | --- |
-| Bemeneti eszköz |foo.bar |Videó WMV, MPV vagy MP4 formátumban. Ugyanaz, mint 1. lépés videó. |
-| Bemeneti eszköz |foo_annotations.json |első lépése, opcionális módosításokkal jegyzetek metaadatfájl. |
-| Bemeneti eszköz |foo_IDList.txt (nem kötelező) |Választható új sor tagolt arcfelismerési kivonás azonosítók listája. Ha üresen hagyja a mezőt, ez minden életleníti. |
-| Bemeneti config |Konfigurációs feladat az adott néven beállítás |{"version": "1.0', a"beállítások": {"mode":"Kihagyás"}} |
-| Kimeneti eszköz |foo_redacted.mp4 |Videó fellazítja alkalmazott jegyzetek alapján |
+| Bemeneti objektuma |foo.bar |A videó WMV, MPV vagy MP4 formátumban. Ugyanaz, mint 1. lépés videó. |
+| Bemeneti objektuma |foo_annotations.json |jegyzetek választható módosításokkal, fázis származó metaadatfájl. |
+| Bemeneti objektuma |foo_IDList.txt (nem kötelező) |Választható új sor elválasztott face szereplők azonosítóinak listája. Ha üresen hagyja, ez az összes arcok életleníti. |
+| A bemeneti config |Feladat konfigurációs készlet |{"verziójú": "1.0',"beállítások": {'mód':"szereplők"}} |
+| Kimeneti adategység |foo_redacted.mp4 |Videókat a alkalmazni felismerhetetlenné magyarázó jelek alapján |
 
 #### <a name="example-output"></a>Példa a kimenetre
-Ez a kiválasztott egy azonosítójú egy IDList kimenetét.
+Ez az egy kiválasztott egy azonosítójú IDList kimenete.
 
 [Ez a videó megtekintése](http://ampdemo.azureedge.net/?url=http%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fad6e24a2-4f9c-46ee-9fa7-bf05e20d19ac%2Fdance_redacted1.mp4)
 
@@ -132,13 +133,13 @@ Példa foo_IDList.txt
      2
      3
 
-## <a name="blur-types"></a>Életlenítés típusok
+## <a name="blur-types"></a>Elmossa típusok
 
-A a **kombinált** vagy **Redact** mód közül választhat a bemeneti JSON-konfigurációs keresztül 5 különböző életlenítés módot: **alacsony**, **Med**, **Magas**, **mezőben**, és **fekete**. Alapértelmezés szerint **Med** szolgál.
+Az a **kombinált** vagy **Redact** üzemmódban, 5 különböző életlenítés módban közül választhat a bemeneti JSON-konfigurációs keresztül: **alacsony**, **Med**, **Magas**, **Box**, és **fekete**. Alapértelmezés szerint **Med** szolgál.
 
-A életlenítés típusú mintában találja.
+Megtalálhatja a életlenítés típusú mintákat.
 
-### <a name="example-json"></a>JSON-NÁ. példa:
+### <a name="example-json"></a>JSON. példa:
 
 ```json
     {'version':'1.0', 'options': {'Mode': 'Combined', 'BlurType': 'High'}}
@@ -164,18 +165,18 @@ A életlenítés típusú mintában találja.
 
 ![Fekete](./media/media-services-face-redaction/blur5.png)
 
-## <a name="elements-of-the-output-json-file"></a>A kimeneti JSON-fájl elemeinek
+## <a name="elements-of-the-output-json-file"></a>A kimenet JSON-fájl elemeinek
 
-A kivonási MP magas pontosság arcfelismerési hely észleli és nyomon követése, mely legfeljebb 64 emberi lapok észlelheti a képkockák. Elülső lapok nyújtanak a legjobb eredmények elérése érdekében, közben ügyféloldali lapok és a kis (legfeljebb 24 x 24 képpont) lapok kihívást.
+A kivonás felügyeleti csomag biztosít nagy pontosságú arcfelismeréssel és nyomon követése, mely képes akár 64 emberi arcok észlelése egy videó keret. Elülső arcok a legjobb eredmények elérése érdekében adja meg, a kiszolgálóoldali arcok közben és kis arcok (kisebb vagy egyenlő 24 x 24 képpont) kihívást.
 
 [!INCLUDE [media-services-analytics-output-json](../../../includes/media-services-analytics-output-json.md)]
 
 ## <a name="net-sample-code"></a>.NET mintakód
 
-A következő program bemutatja hogyan:
+A következő program mutat be, hogyan:
 
-1. Hozzon létre egy eszközt, és adathordozó-fájl feltöltése az objektumba.
-2. Hozzon létre egy feladatot a tapasztalt kivonási tevékenységek, a következő json-készletet tartalmazó konfigurációs fájl alapján: 
+1. Hozzon létre egy objektumot, és a egy médiafájlt feltöltése az objektumba.
+2. Hozzon létre egy feladatot a következő json-készletet tartalmazó konfigurációs fájl alapján face kivonási feladatokkal: 
 
     ```json
             {
@@ -186,7 +187,7 @@ A következő program bemutatja hogyan:
             }
     ```
 
-3. A kimeneti JSON-fájlok letöltésére. 
+3. Töltse le a kimeneti JSON-fájlokat. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
@@ -370,7 +371,7 @@ namespace FaceRedaction
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
-[Azure Media Services elemző áttekintése](media-services-analytics-overview.md)
+[Az Azure Media Services analitikai funkcióinak áttekintése](media-services-analytics-overview.md)
 
 [Az Azure Médiaelemzés bemutatók](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
