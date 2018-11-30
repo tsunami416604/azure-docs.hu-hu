@@ -9,22 +9,22 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: eac44d3b8daae27afec8aa24f4767bdb5dbf991a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: a730f6ccba9f935855b233ca804a8180aa7f504b
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239559"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52580570"
 ---
-# <a name="tutorial-build-a-spark-machine-learning-application-in-hdinsight"></a>Oktatóanyag: Egy Spark Machine Learning-alkalmazás létrehozása a HDInsightban 
+# <a name="tutorial-build-an-apache-spark-machine-learning-application-in-hdinsight"></a>Oktatóanyag: Az Apache Spark machine learning-alkalmazás a HDInsight létrehozása 
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre a Jupyter notebookkal egy Apache Spark Machine Learning-alkalmazást az Azure HDInsightban. 
+Ebben az oktatóanyagban elsajátíthatja, hogyan használhatja a [Jupyter Notebook](https://jupyter.org/) hozhat létre egy [Apache Spark](https://spark.apache.org/) machine learning-alkalmazás az Azure HDInsight. 
 
 Az [MLib](https://spark.apache.org/docs/1.1.0/mllib-guide.html) a Spark skálázható Machine Learning-kódtára, amely gyakori tanulási algoritmusokat és segédeszközöket tartalmaz, beleértve a besorolást, regressziót, fürtözést, együttműködési szűrést, dimenziócsökkentést, valamint mögöttes optimalizálási primitíveket.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
-> * Egy Spark Machine Learning-alkalmazás fejlesztése
+> * Az Apache Spark machine learning-alkalmazás fejlesztése
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
@@ -190,7 +190,7 @@ A HDInsight-alapú Apache Spark-fürtök Anaconda-kódtárakat tartalmaznak. Eze
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
-* Egy Spark Machine Learning-alkalmazás fejlesztése
+* Az Apache Spark machine learning-alkalmazás fejlesztése
 
 A következő oktatóanyag azt mutatja be, hogyan használhatja az IntelliJ IDEA-t Spark-feladatokhoz. 
 

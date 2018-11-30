@@ -1,5 +1,5 @@
 ---
-title: Az Azure Policy használata szabályzatok a vállalati megfelelőség kikényszerítése érdekében történő létrehozásához és kezeléséhez
+title: Az Azure Policy használatával kényszeríteni a megfelelőségi szabályzatok létrehozása és kezelése
 description: Az Azure Policy szabványok kikényszerítésére, előírt megfelelőségi és naplózási követelmények teljesítésére, költségek szabályozására, a konzisztens biztonság és teljesítmény fenntartására és az egész vállalatra kiterjedő tervezési alapelvek meghatározására használható.
 services: azure-policy
 author: DCtheGeek
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: a7495ca1153fa6b84902423ee79c69f24316cb40
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 6ee7a4190248c8c18f747ee579aadc04a136696b
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980957"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583080"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Szabályzatok létrehozása és kezelése a megfelelőség kikényszerítése céljából
 
@@ -44,11 +44,11 @@ A megfelelőség Azure Policy használatával történő kikényszerítésének 
 
    ![Szabályzatdefiníció hozzárendelése](../media/create-and-manage/select-assign-policy.png)
 
-1. A **Szabályzat hozzárendelése** oldalon a **Hatókör** kiválasztásához kattintson a három pontra, majd válasszon ki egy felügyeleti csoportot vagy egy előfizetést. Egy erőforráscsoportot is kijelölhet. A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve.  Ezután kattintson a **Kiválasztás** gombra a **Hatókör** oldal alján.
+1. A **Szabályzat hozzárendelése** oldalon a **Hatókör** kiválasztásához kattintson a három pontra, majd válasszon felügyeleti csoportot vagy előfizetést. Ha szeretne, válasszon erőforráscsoportot. A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve.  Ezután kattintson a **Kiválasztás** gombra a **Hatókör** oldal alján.
 
    Ebben a példában a **Contoso** előfizetést használjuk. Saját előfizetése ettől eltérhet.
 
-1. Az erőforrások a **hatókör** alapján zárhatók ki.  A **Kizárások** egy szinttel alacsonyabban kezdődnek, mint a **hatókör** szintje. A **Kizárások** megadása nem kötelező, ezért most hagyja üresen a mezőt.
+1. Az erőforrások kizárhatóak a **Hatókör** alapján.  A **Kizárások** alacsonyabb szinten kezdődnek, mint a **Hatókör** szintje. A **Kizárások** nem kötelezőek, ezért egyelőre hagyja őket üresen.
 
 1. Kattintson a **Szabályzatdefiníció** melletti három pontra az elérhető definíciók listájának megjelenítéséhez. A szabályzatdefiníció **Típus** tulajdonságát szűrheti *Beépített* érték alapján az összes megtekintéséhez és a leírásaik elolvasásához.
 
@@ -58,7 +58,7 @@ A megfelelőség Azure Policy használatával történő kikényszerítésének 
 
 1. A **Hozzárendelés neve** mező automatikusan kitöltődik a kiválasztott szabályzat nevével, de megadhat más nevet is. Ebben a példában tartsa meg *Az SQL Server 12.0-s verziójának megkövetelése* nevet. Ha szeretné hozzáadhat egy **Leírást**. A leírás a szabályzat-hozzárendeléssel kapcsolatos információkat adja meg.  A **Hozzárendelte** mező kitöltése automatikus az éppen bejelentkezett felhasználó alapján. Ennek a mezőnek a kitöltése nem kötelező, tehát megadhatók egyedi értékek.
 
-1. Hagyja bejelöletlenül a **Felügyelt identitás létrehozása** mezőt. Ezt _kötelező_ bejelölni, ha a hozzárendelt szabályzat vagy kezdeményezés [deployIfNotExists](../concepts/effects.md#deployifnotexists) hatású szabályzatot tartalmaz. Mivel az ebben az oktatóanyagban használt szabályzat ilyet nem tartalmaz, hagyja üresen a mezőt. További információkért lásd a [felügyelt identitásokat](../../../active-directory/managed-identities-azure-resources/overview.md) és a [szervizelési biztonsági működését](../how-to/remediate-resources.md#how-remediation-security-works).
+1. A **Felügyelt identitás létrehozása** jelölőnégyzetet hagyja üresen. Ezt _kötelező_ bejelölni, ha a hozzárendelt szabályzat vagy kezdeményezés [deployIfNotExists](../concepts/effects.md#deployifnotexists) hatású szabályzatot tartalmaz. Mivel az ebben az oktatóanyagban használt szabályzat ilyet nem tartalmaz, hagyja üresen a mezőt. További információkat a [felügyelt identitásokkal](../../../active-directory/managed-identities-azure-resources/overview.md) és [a szervizelési biztonság működésével](../how-to/remediate-resources.md#how-remediation-security-works) kapcsolatos cikkben találhat.
 
 1. Kattintson a **Hozzárendelés** gombra.
 
@@ -383,7 +383,7 @@ A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat 
    - Leírás: Ez a kezdeményezési hozzárendelés ennek a szabályzatdefiníció-csoportnak a kikényszerítésére lett létrehozva.
    - Hozzárendelte: A kitöltése automatikus az éppen bejelentkezett felhasználó alapján. Ennek a mezőnek a kitöltése nem kötelező, tehát megadhatók egyedi értékek.
 
-1. Hagyja bejelöletlenül a **Felügyelt identitás létrehozása** mezőt. Ezt _kötelező_ bejelölni, ha a hozzárendelt szabályzat vagy kezdeményezés [deployIfNotExists](../concepts/effects.md#deployifnotexists) hatású szabályzatot tartalmaz. Mivel az ebben az oktatóanyagban használt szabályzat ilyet nem tartalmaz, hagyja üresen a mezőt. További információkért lásd a [felügyelt identitásokat](../../../active-directory/managed-identities-azure-resources/overview.md) és a [szervizelési biztonsági működését](../how-to/remediate-resources.md#how-remediation-security-works).
+1. A **Felügyelt identitás létrehozása** jelölőnégyzetet hagyja üresen. Ezt _kötelező_ bejelölni, ha a hozzárendelt szabályzat vagy kezdeményezés [deployIfNotExists](../concepts/effects.md#deployifnotexists) hatású szabályzatot tartalmaz. Mivel az ebben az oktatóanyagban használt szabályzat ilyet nem tartalmaz, hagyja üresen a mezőt. További információkat a [felügyelt identitásokkal](../../../active-directory/managed-identities-azure-resources/overview.md) és [a szervizelési biztonság működésével](../how-to/remediate-resources.md#how-remediation-security-works) kapcsolatos cikkben találhat.
 
 1. Kattintson a **Hozzárendelés** gombra.
 

@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.openlocfilehash: 529dc37187f6709ecfa93bf3a6d71f053ba49103
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: d83c04946b67dd25bae306c2fa41a0864287bfc8
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008963"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499309"
 ---
-# <a name="tutorial-create-a-scala-maven-application-for-spark-in-hdinsight-using-intellij"></a>Oktatóanyag: Scala Maven-alkalmazás létrehozása a Spark in HDInsight számára, az IntelliJ használatával
+# <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Oktatóanyag: A Scala Maven-alkalmazást létrehozni az Apache Spark on HDInsight az IntelliJ-vel
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre Scalában írt Spark-alkalmazást a Maven és az IntelliJ IDEA használatával. Ez a cikk az Apache Maven buildelési rendszert használja, és egy, a Scala számára írt, az IntelliJ IDEA által biztosított, meglévő Maven archetype-ot használ kiindulási pontként.  A Scala-alkalmazás IntelliJ IDEA-ban történő létrehozása az alábbi lépésekből áll:
+Ebben az oktatóanyagban elsajátíthatja, hogyan hozhat létre egy [Apache Spark](https://spark.apache.org/) írt alkalmazás [Scala](https://www.scala-lang.org/) használatával [Apache Maven](https://maven.apache.org/) integráltuk az IntelliJ IDEA. Ez a cikk az Apache Maven buildelési rendszert használja, és egy, a Scala számára írt, az IntelliJ IDEA által biztosított, meglévő Maven archetype-ot használ kiindulási pontként.  A Scala-alkalmazás IntelliJ IDEA-ban történő létrehozása az alábbi lépésekből áll:
 
 * Buildelési rendszerként a Mavent használja.
 * A Spark-modul függőségeinek feloldásához frissítse a Project Object Model- (POM-) fájlt.
@@ -27,7 +27,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre Scalában írt Spark-alkalmaz
 * Futtassa az alkalmazást a Sparkon a Livy használatával.
 
 > [!NOTE]
-> Az alkalmazások létrehozásának és azok Linux rendszerű HDInsight Spark-fürtöknek való elküldésének megkönnyítésére a HDInsight egy IntelliJ IDEA beépülőmodul-eszközt is biztosít. További információk: [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark-alkalmazások létrehozásához és elküldéséhez](apache-spark-intellij-tool-plugin.md).
+> Az alkalmazások létrehozásának és azok Linux rendszerű HDInsight Spark-fürtöknek való elküldésének megkönnyítésére a HDInsight egy IntelliJ IDEA beépülőmodul-eszközt is biztosít. További információkért lásd: [használata HDInsight-eszközei beépülő moduljának létrehozása és elküldése az Apache Spark-alkalmazások az IntelliJ IDEA](apache-spark-intellij-tool-plugin.md).
 > 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
@@ -183,16 +183,16 @@ A Scala beépülő modul telepítésének lépesei:
        
         ![JAR-fájl létrehozása](./media/apache-spark-create-standalone-application/output.png)
 
-## <a name="run-the-application-on-the-spark-cluster"></a>Az alkalmazás futtatása a Spark-fürtön
+## <a name="run-the-application-on-the-apache-spark-cluster"></a>Futtassa az alkalmazást az Apache Spark-fürt
 Az alkalmazás fürtön történő futtatásához a következő módszereket használhatja:
 
-* **Másolja át az alkalmazás JAR-fájlját abba az Azure Storage-blobba**, amely a fürthöz van társítva. Ehhez az [**AzCopy**](../../storage/common/storage-use-azcopy.md) parancssori segédprogramot használhatja. Az adatok feltöltésére számos egyéb kliens is rendelkezésre áll. További információ: [Upload data for Hadoop jobs in HDInsight](../hdinsight-upload-data.md) (Adatok feltöltése Hadoop-feladatokhoz a HDInsightban).
-* **A Livyt használhatja egy alkalmazásfeladat távoli elküldéséhez** a Spark-fürt számára. A HDInsight-alapú Spark-fürtök tartalmazzák a Livyt, amely elvégzi a REST-végpontok közzétételét, így lehetővé teszi a Spark-feladatok távoli elküldését. További információ: [Submit Spark jobs remotely using Livy with Spark clusters on HDInsight](apache-spark-livy-rest-interface.md) (Spark-feladatok távoli elküldése a Livy használatával, HDInsight-alapú Spark-fürtök esetében).
+* **Másolja át az alkalmazás JAR-fájlját abba az Azure Storage-blobba**, amely a fürthöz van társítva. Ehhez az [**AzCopy**](../../storage/common/storage-use-azcopy.md) parancssori segédprogramot használhatja. Az adatok feltöltésére számos egyéb kliens is rendelkezésre áll. További információk a csatlakoztatásukról annak [Upload data for HDInsight az Apache Hadoop-feladatok](../hdinsight-upload-data.md).
+* **Az Apache Livy használatával távolról egy alkalmazás feladat elküldése** a Spark-fürthöz. A HDInsight-alapú Spark-fürtök tartalmazzák a Livyt, amely elvégzi a REST-végpontok közzétételét, így lehetővé teszi a Spark-feladatok távoli elküldését. További információkért lásd: [távolról segítségével Apache Livy Spark-fürtök HDInsight az Apache Spark elküldése feladatok](apache-spark-livy-rest-interface.md).
 
 ## <a name="next-step"></a>Következő lépés
 
-Ebben a cikkben megismerkedhetett Spark Scala-alkalmazások létrehozásával. Folytassa a következő cikkel, amelyben megtudhatja, hogyan futtathatja ezt az alkalmazást egy HDInsight Spark-fürtön, a Livy használatával.
+Ebben a cikkben megtanulta, hogyan hozhat létre egy Apache Spark scala-alkalmazás. Folytassa a következő cikkel, amelyben megtudhatja, hogyan futtathatja ezt az alkalmazást egy HDInsight Spark-fürtön, a Livy használatával.
 
 > [!div class="nextstepaction"]
->[Feladatok távoli futtatása Spark-fürtön a Livy használatával](./apache-spark-livy-rest-interface.md)
+>[Feladatok távoli futtatása egy Apache Spark-fürtön az Apache Livy használatával](./apache-spark-livy-rest-interface.md)
 

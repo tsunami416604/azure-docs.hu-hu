@@ -7,12 +7,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: dkshir
-ms.openlocfilehash: bd1b53acb619130a84400c49aba0cb2b710ad7e3
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4491ec4661c93570893e5fafd5524715e0773d8c
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616112"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582331"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-and-configure-a-spatial-graph"></a>Oktatóanyag: Az Azure Digital Twins üzembe helyezése és egy térbeli diagram konfigurálása
 
@@ -170,7 +170,11 @@ Mentse és zárja be a provisionSample.yaml fájlt. A következő oktatóanyagga
 Ha azt szeretné, ezen a ponton felfedezése az Azure digitális Twins leállítására, nyugodtan ebben az oktatóanyagban létrehozott erőforrások törléséhez:
 
 1. A bal oldali menüben lévő a [az Azure portal](http://portal.azure.com), jelölje be **összes erőforrás**, a digitális Twins erőforráscsoportot, válassza ki és **törlése**.
-2. Ha szükséges, törölje a mintaalkalmazás a munkahelyi számítógépen. 
+   
+    > [!TIP]
+    > Ha törli a digitális Twins-példány problémajegyek tapasztal, szolgáltatás frissítése lett állítva a javítás. Ismételje meg a példány törlése.
+
+1. Ha szükséges, törölje a mintaalkalmazás a munkahelyi számítógépen. 
 
 
 ## <a name="next-steps"></a>További lépések

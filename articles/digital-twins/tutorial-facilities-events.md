@@ -7,12 +7,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: dkshir
-ms.openlocfilehash: 994c864f04980dc963f9e7c4eb99b33382ad17e4
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: bf41be4a3a4856302a054e5767b3d7b5ba423c60
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614905"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583261"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Oktatóanyag: Értesítések fogadása az Azure digitális Twins tárolóhelyek Logic Apps használatával
 
@@ -194,6 +194,10 @@ E-mailek leállítását, nyissa meg a Logic Apps-erőforrások a portálon, és
 Ha azt szeretné, ezen a ponton felfedezése az Azure digitális Twins leállítására, nyugodtan ebben az oktatóanyagban létrehozott erőforrások törléséhez:
 
 1. A bal oldali menüben lévő a [az Azure portal](http://portal.azure.com), jelölje be **összes erőforrás**, a digitális Twins erőforráscsoportot, válassza ki és **törlése**.
+
+    > [!TIP]
+    > Ha törli a digitális Twins-példány problémajegyek tapasztal, szolgáltatás frissítése lett állítva a javítás. Ismételje meg a példány törlése.
+
 2. Ha szükséges, törölje a munkahelyi számítógépen mintaalkalmazásból. 
 
 

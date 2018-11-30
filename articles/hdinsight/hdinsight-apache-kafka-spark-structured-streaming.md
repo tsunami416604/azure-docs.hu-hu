@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 83e277eceea2df746de6f6e9a33130989e2d874d
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 5f59f14f93b5bfc79c07b096a07ac109be0bedb6
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278361"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499091"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Oktatóanyag: Az Apache Spark strukturált stream használata az Apache Kafkával a HDInsighton
 
-Ez az oktatóanyag bemutatja, hogyan használhatja az Apache Spark strukturált streamet adatok olvasásához és írásához az Apache Kafkával az Azure HDInsighton.
+Ez az oktatóanyag bemutatja, hogyan használható [Apache Spark strukturált Stream](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) olvasása és írása az adatok [Apache Kafka](https://kafka.apache.org/) az Azure HDInsight.
 
 A Spark strukturált stream egy Spark SQL-alapú streamfeldolgozó rendszer. Lehetővé teszi, hogy ugyanúgy fejezze ki a streamszámításokat, mint a kötegelt számításokat a statikus adatok esetében. 
 
@@ -35,11 +35,11 @@ Amikor végzett a dokumentum lépéseivel, ne felejtse el törölni a fürtöket
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A Jupyter-notebookok és a HDInsighton futó Spark használatának ismerete. További információkért lásd [a Spark on HDInsight használatával végzett adatbetöltést és lekérdezésfuttatást ismertető](spark/apache-spark-load-data-run-query.md) dokumentumot.
+* Használatával való ismerkedés során bizonyulhat [Jupyter notebookok](https://jupyter.org/) a Spark on HDInsight. További információkért lásd: a [betölteni az adatokat, és a lekérdezések futtatása HDInsight az Apache Spark](spark/apache-spark-load-data-run-query.md) dokumentumot.
 
 * A [Scala](https://www.scala-lang.org/) programozási nyelv ismerete. Az oktatóanyagban használt kód Scala nyelven van megírva.
 
-* A Kafka-témakörök létrehozásának ismerete. További információkért lásd [a Kafka on HDInsight használatába bevezető](kafka/apache-kafka-get-started.md) dokumentumot.
+* A Kafka-témakörök létrehozásának ismerete. További információkért lásd: a [Apache Kafka on HDInsight rövid](kafka/apache-kafka-get-started.md) dokumentumot.
 
 > [!IMPORTANT]
 > A dokumentum lépéseihez egy olyan Azure-erőforráscsoport szükséges, amely Spark on HDInsight- és Kafka on HDInsight-fürtöt is tartalmaz. Mindkét fürt Azure virtuális hálózatban található, így a Spark-fürt közvetlenül kommunikálhat a Kafka-fürttel.
@@ -48,7 +48,7 @@ Amikor végzett a dokumentum lépéseivel, ne felejtse el törölni a fürtöket
 >
 > A HDInsight a virtuális hálózatokon való használatával kapcsolatos további információért tekintse meg [a HDInsight virtuális hálózattal való kiterjesztését ismertető](hdinsight-extend-hadoop-virtual-network.md) dokumentumot.
 
-## <a name="structured-streaming-with-kafka"></a>Strukturált streamelés a Kafkával
+## <a name="structured-streaming-with-apache-kafka"></a>Strukturált Streamelés az Apache kafka platformmal
 
 A Spark strukturált stream egy, a Spark SQL-motorra épülő streamfeldolgozó rendszer. A strukturált stream használatával ugyanúgy írhat streamelési lekérdezéseket, mint a kötegelt lekérdezések esetében.
 
@@ -205,7 +205,7 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 
 ## <a name="next-steps"></a>További lépések
 
-Az oktatóanyagból megtudta, hogyan használhatja a Spark strukturált streamet adatok írásához és olvasásához a Kafka on HDInsightból. A Storm a Kafkával való használatának megismeréséhez kövesse az alábbi hivatkozást.
+Ebben az oktatóanyagban megtudhatta, hogyan használható [Apache Spark strukturált Stream](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) írható és olvasható adatainak [Apache Kafka](https://kafka.apache.org/) a HDInsight. Ismerje meg, hogyan használható a következő hivatkozás használatával [Apache Storm](https://storm.apache.org/) a Kafka.
 
 > [!div class="nextstepaction"]
-> [Az Apache Storm használata a Kafkával](hdinsight-apache-storm-with-kafka.md)
+> [Apache Storm használható az Apache kafka platformmal](hdinsight-apache-storm-with-kafka.md)

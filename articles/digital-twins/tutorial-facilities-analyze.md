@@ -7,12 +7,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: dkshir
-ms.openlocfilehash: 51f3bcee3a2e5bab8f3592d97f0caa91e8002dd4
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: b7c44184d0a0d8d5a8f1fbd80b053230f2c1ae84
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615980"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582020"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>Oktatóanyag: Megjelenítése és elemzése az Azure digitális Twins tárolóhelyek események a Time Series Insights használatával
 
@@ -160,6 +160,10 @@ Használhatja a [az Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatá
 Ha az Azure digitális Twins felfedezése a túlra le szeretné, nyugodtan törölje az ebben az oktatóanyagban létrehozott erőforrásokat:
 
 1. A bal oldali menüben lévő a [az Azure portal](http://portal.azure.com)válassza **összes erőforrás**, a digitális Twins erőforráscsoportot, majd válassza ki és **törlése**.
+
+    > [!TIP]
+    > Ha törli a digitális Twins-példány problémajegyek tapasztal, szolgáltatás frissítése lett állítva a javítás. Ismételje meg a példány törlése.
+
 2. Ha szükséges, törölje a munkahelyi számítógépen mintaalkalmazásból. 
 
 

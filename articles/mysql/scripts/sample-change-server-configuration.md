@@ -11,12 +11,12 @@ ms.devlang: azure-cli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: 011178f539fcb826e0e6fb60925d740945461ea9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 59d72f36146e691412398220fc9ba51910e65e0b
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952891"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582071"
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-mysql-server-using-azure-cli"></a>Azure Database for MySQL-kiszolgáló konfigurációinak felsorolása és frissítése az Azure CLI-vel
 Ez a CLI-példaszkript felsorolja egy Azure Database for MySQL-kiszolgáló összes elérhető konfigurációs paraméterét és azok engedélyezett értékeit, és beállítja az *innodb_lock_wait_timeout* paramétert egy, az alapértelmezett értéktől eltérő értékre.
@@ -27,7 +27,7 @@ Ha a parancssori felület helyi futtatását választja, akkor ehhez a cikkhez a
 
 ## <a name="sample-script"></a>Példaszkript
 A példaszkriptben szerkessze a kiemelt sorokat, és adja meg bennük saját rendszergazdai felhasználónevét és jelszavát.
-[!code-azurecli-interactive[main](../../../cli_scripts/mysql/change-server-configurations/change-server-configurations.sh?highlight=18-19 "List and update configurations of Azure Database for MySQL.")]
+[!code-azurecli-interactive[main](../../../cli_scripts/mysql/change-server-configurations/change-server-configurations.sh?highlight=15-16 "List and update configurations of Azure Database for MySQL.")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 A következő paranccsal távolítható el az erőforráscsoport és az ahhoz kapcsolódó összes erőforrás a szkript futtatása után. 
@@ -39,10 +39,10 @@ Ez a szkript a következő táblában leírt parancsokat használja:
 | **Parancs** | **Megjegyzések** |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az mysql server create](/cli/azure/mysql/server#az-msql-server-create) | Létrehoz egy MySQL-kiszolgálót, amelyen az adatbázisok futnak. |
-| [az mysql server configuration list](/cli/azure/mysql/server/configuration#az-msql-server-configuration-list) | Felsorolja egy Azure Database for MySQL-kiszolgáló konfigurációit. |
-| [az mysql server configuration set](/cli/azure/mysql/server/configuration#az-msql-server-configuration-set) | Frissíti egy Azure Database for MySQL-kiszolgáló konfigurációját. |
-| [az mysql server configuration show](/cli/azure/mysql/server/configuration#az-msql-server-configuration-show) | Megjeleníti egy Azure Database for MySQL-kiszolgáló konfigurációját. |
+| [az mysql server create](/cli/azure/mysql/server#az-mysql-server-create) | Létrehoz egy MySQL-kiszolgálót, amelyen az adatbázisok futnak. |
+| [az mysql server configuration list](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-list) | Felsorolja egy Azure Database for MySQL-kiszolgáló konfigurációit. |
+| [az mysql server configuration set](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-set) | Frissíti egy Azure Database for MySQL-kiszolgáló konfigurációját. |
+| [az mysql server configuration show](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-show) | Megjeleníti egy Azure Database for MySQL-kiszolgáló konfigurációját. |
 | [az group delete](/cli/azure/group#az-group-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések

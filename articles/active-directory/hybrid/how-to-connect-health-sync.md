@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eebeb8d1f27631e7ecb40072f78d6a04b5152a8f
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 9811c51485ec30e7fe692c52f4e65cefd93e5cb0
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277137"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499072"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Az Azure AD Connect-szinkronizálás megfigyelése az Azure AD Connect Health szolgáltatással
 Az alábbi dokumentáció az Azure AD Connect (szinkronizálási) szolgáltatás Azure AD Connect Health szolgáltatással végzett megfigyelésére vonatkozik.  Az AD FS az Azure AD Connect Health használatával történő megfigyelésére vonatkozó információkat lásd: [Az Azure AD Connect Health használata az AD FS szolgáltatással](how-to-connect-health-adfs.md). Az Active Directory tartományi szolgáltatások az Azure AD Connect Health használatával történő megfigyelésével kapcsolatos információkat pedig a [Using Azure AD Connect Health with AD DS](how-to-connect-health-adds.md) (Az Azure AD Connect Health használata az AD DS szolgáltatással) című témakörben találja.
@@ -62,7 +62,7 @@ Ez a funkció egy tendenciagrafikonon jeleníti meg a kiértékelt és az Azure 
 
 ![Szinkronizálási késések](./media/how-to-connect-health-sync/syncobjectchanges02.png)
 
-## <a name="object-level-synchronization-error-report-preview"></a>Objektum szintű szinkronizálási hibajelentés (Előzetes verzió)
+## <a name="object-level-synchronization-error-report"></a>Objektum szintű szinkronizálási hibajelentés
 Ez a funkció olyan szinkronizálási hibákról készít jelentést, amelyek a Windows Server AD és az Azure AD közötti, Azure AD Connect használatával történő identitásszinkronizálás közben jelentkeznek.
 
 * A jelentésben a szinkronizáló ügyfél (az Azure AD Connect 1.1.281.0 vagy újabb verziói) által rögzített hibák szerepelnek
@@ -74,7 +74,7 @@ Ez a funkció olyan szinkronizálási hibákról készít jelentést, amelyek a 
   * Objektumlista kategóriánként összesített hibákkal
   * A hibákkal kapcsolatos minden adat egy helyen látható
   * Objektumok összehasonlítása ütközési hibák alapján
-  * A hibajelentés letöltése CSV formátumban (egyelőre nem elérhető)
+  * Hibajelentés hibajelentés letöltése
 
 ### <a name="categorization-of-errors"></a>Hibák kategorizálása
 A jelentés az alábbi kategóriák szerint csoportosítja a jelentkező szinkronizálási hibákat:

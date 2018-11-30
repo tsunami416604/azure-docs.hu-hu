@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.openlocfilehash: dcd28d8e33045f4c0324f964a854e98dfe004321
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: e862000df1edc5101c0768f1f96c11953f1485c7
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712415"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583278"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Oktatóanyag: Power BI használata a HDInsight az Apache Spark-adatok elemzése 
 
-Ismerkedjen meg az Azure HDInsight Apache Spark-fürtjeiben tárolt adatok a Microsoft Power BI használatával való vizualizációjával.
+Megtudhatja, hogyan használható [Microsoft Power BI](https://powerbi.microsoft.com/) az adatok megjelenítése egy [Apache Spark](https://spark.apache.org/) fürt [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/).
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -34,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="verify-the-data"></a>Az adatok ellenőrzése
 
-Az [előző oktatóanyagban](apache-spark-load-data-run-query.md) létrehozott Jupyter notebook tartalmazza a `hvac`-tábla létrehozásához szükséges kódot. Ez a tábla a **\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv** fájlban megtalálható összes HDInsight Spark-fürt esetében rendelkezésre álló CSV-fájlon alapul. Az adatok ellenőrzéséhez kövesse az alábbi eljárást.
+A [Jupyter Notebook](https://jupyter.org/) , amelyet a [előző oktatóanyagban](apache-spark-load-data-run-query.md) kód létrehozása egy `hvac` tábla. Ez a tábla a **\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv** fájlban megtalálható összes HDInsight Spark-fürt esetében rendelkezésre álló CSV-fájlon alapul. Az adatok ellenőrzéséhez kövesse az alábbi eljárást.
 
 1. Illessze be a Jupyter notebookból a következő kódot, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt. A kód segítségével a táblák meglétét ellenőrizhetjük.
 
@@ -164,7 +164,7 @@ A Power BI szolgáltatás segítségével jelentéseket és irányítópultokat 
 
 10. A jelentésben kattintson az **Ugrás az irányítópultra** gombra. 
 
-Ezzel rögzítette a vizualizációt az irányítópulton – felvehet további vizualizációkat is a jelentésbe, amelyeket ugyanezen az irányítópulton rögzíthet. További információ a jelentésekről és az irányítópultokról: [Power BI-jelentések](https://powerbi.microsoft.com/documentation/powerbi-service-reports/) és [Power BI-irányítópultok](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/).
+Ezzel rögzítette a vizualizációt az irányítópulton – felvehet további vizualizációkat is a jelentésbe, amelyeket ugyanezen az irányítópulton rögzíthet. Jelentések és irányítópultok kapcsolatos további információkért lásd: [Power BI-jelentések](https://powerbi.microsoft.com/documentation/powerbi-service-reports/) és [Power BI-irányítópultok](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/).
 
 <!--
 ## <a name="tableau"></a>Use Tableau Desktop 
@@ -214,9 +214,9 @@ Ezzel rögzítette a vizualizációt az irányítópulton – felvehet további 
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
-- Spark-adatok vizualizációja a Power BI használatával.
+- Az Apache Spark-adatok Power BI használatával jelenítheti meg.
 
 A következő cikkben megismerkedhet a Sparkban regisztrált adatok olyan BI-elemzési eszközökbe történő áthúzásának lehetőségével, mint például a Power BI. 
 > [!div class="nextstepaction"]
-> [Spark streamelési feladat futtatása](apache-spark-eventhub-streaming.md)
+> [Az Apache Spark streamelési feladat futtatása](apache-spark-eventhub-streaming.md)
 
