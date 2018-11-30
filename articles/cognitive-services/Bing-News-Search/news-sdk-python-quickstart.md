@@ -10,12 +10,12 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 02/14/2018
 ms.author: v-gedod
-ms.openlocfilehash: 8e4343b053835c0fc2219373ad60f96c7b80636a
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.openlocfilehash: 6e029b7e830b6ec157d03d17dc24e65282a9c742
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803341"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316803"
 ---
 # <a name="quickstart-bing-news-search-sdk-with-python"></a>Rövid útmutató: A Bing News Search SDK és a Python használata
 
@@ -24,6 +24,8 @@ A News Search SDK a REST API funkcióit biztosítja az internetes lekérdezések
 A [Python Bing News Search SDK-minták forráskódja](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py) elérhető a GitHubon.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
+A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a **Keresés** területen kérheti le.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+
 Ha még nincs telepítve a Python, telepítse. Az SDK a Python 2.7-es, 3.3-as, 3.4-es, 3.5-ös és 3.6-os verziójával kompatibilis.
 
 A Pythonnal való fejlesztéskor általánosságban javasolt egy [virtuális környezet](https://docs.python.org/3/tutorial/venv.html) használata. Telepítse és inicializálja a virtuális környezetet az új [venv modullal](https://pypi.python.org/pypi/virtualenv). Telepítse a Python 2.7-hez készült virtualenv modult.

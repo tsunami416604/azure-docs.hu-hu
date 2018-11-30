@@ -10,12 +10,12 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: aahi
-ms.openlocfilehash: 7afe19cf0167784a5c8b3e2751ec869a2664935d
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
-ms.translationtype: HT
+ms.openlocfilehash: a2a39049196e19d29d2b4d845b9cf756392013bf
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296617"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315030"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-python"></a>Gyorskonfigurálás: Képek keresése a Bing Image Search SDK és a Python használatával
 
@@ -24,6 +24,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hajthatja végre első képke
 A minta forráskódja, további hibakezeléssel és megjegyzésekkel együtt, elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/image-search-quickstart.py).
 
 ## <a name="prerequisites"></a>Előfeltételek
+A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a **Keresés** területen kérheti le.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 * [Python 2.7 vagy 3.4-es](https://www.python.org/) vagy ennél újabb verzió.
 
@@ -79,7 +80,7 @@ else:
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag Bing Image Search egyoldalas alkalmazáshoz ](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)
+> [Egyoldalas alkalmazás-oktatóanyag a Bing Image Search használatához](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)
 
 ## <a name="see-also"></a>Lásd még
 
@@ -88,4 +89,4 @@ else:
 * [Ingyenes Cognitive Services hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
 * [Python-minták az Azure Cognitive Services SDK-hoz](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)  
 * [Az Azure Cognitive Services dokumentációja](https://docs.microsoft.com/azure/cognitive-services)
-* [A Bing Image Search API referenciaanyaga](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [Bing Image Search API – referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

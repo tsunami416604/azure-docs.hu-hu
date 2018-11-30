@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
-ms.openlocfilehash: 2a441e3cd90eba8fc2b1201671047cfcd9d277a6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 947eb76f84f865135e87803b53fa94e20eecb78c
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277732"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313820"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Oktatóanyag: Az Apache Kafka Producer és Consumer API-k használata
 
-Ismerkedjen meg a Kafka Producer és Consumer API-k a Kafka on HDInsighttal való használatával.
+Ismerkedjen meg az Apache Kafka Producer és Consumer API-k a Kafka on HDInsighttal való használatával.
 
 A Kafka Producer API segítségével az alkalmazások adatstreameket küldhetnek a Kafka-fürtnek. A Kafka Consumer API segítségével az alkalmazások adatstreameket olvashatnak be a fürtből.
 
@@ -56,7 +56,7 @@ Az alábbi környezeti változók állíthatók be a Java és a JDK fejlesztői 
 
 ## <a name="set-up-your-deployment-environment"></a>Az üzembehelyezési környezet beállítása
 
-Az oktatóanyag elvégzéséhez az Apache Kafka on HDInsight 3.6-os verziójára van szükség. A Kafka on HDInsight-fürtök létrehozásával kapcsolatban tekintse meg [a Kafka on HDInsight használatának első lépéseit](apache-kafka-get-started.md) ismertető dokumentumot.
+Az oktatóanyag elvégzéséhez az Apache Kafka on HDInsight 3.6-os verziójára van szükség. Ismerje meg, hogyan hozhat létre egy Kafka HDInsight-fürtön, tekintse meg a [a HDInsight Apache Kafka használatának első lépései](apache-kafka-get-started.md) dokumentumot.
 
 ## <a name="understand-the-code"></a>A kód értelmezése
 
@@ -171,7 +171,7 @@ A [Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/b
         read -p 'Enter your Kafka cluster name:' CLUSTERNAME
         ```
     
-    2. A Kafka közvetítő gazdagépeinek és a Zookeeper-gazdagépek beolvasását az alábbi parancsokkal végezheti el. Ha a rendszer kéri, adja meg a fürt bejelentkezési (rendszergazdai) fiókjának jelszavát.
+    2. A Kafka-közvetítő gazdagépek a gazdagépek és az Apache Zookeeper lekéréséhez használja a következő parancsokat. Ha a rendszer kéri, adja meg a fürt bejelentkezési (rendszergazdai) fiókjának jelszavát.
     
         ```bash
         export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`; \
@@ -227,8 +227,8 @@ A Kafkában tárolt rekordok mentése a partíción belüli fogadásuk sorrendje
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a dokumentumban megismerkedett a Kafka Producer és Consumer API-k a Kafka on HDInsighttal való használatával. Az alábbiak további információt biztosítanak a Kafka használatával kapcsolatban:
+Ebben a dokumentumban megismerkedett az Apache Kafka Producer és Consumer API-k használata a HDInsight alatt futó Kafka. Az alábbiak további információt biztosítanak a Kafka használatával kapcsolatban:
 
-* [Kafka-naplók elemzése](apache-kafka-log-analytics-operations-management.md)
-* [Adatreplikálás Kafka-fürtök között](apache-kafka-mirroring.md)
-* [Kafka Streams API a HDInsighttal](apache-kafka-streams-api.md)
+* [Az Apache Kafka-naplók elemzése](apache-kafka-log-analytics-operations-management.md)
+* [Adatok replikálása Apache Kafka-fürtök között](apache-kafka-mirroring.md)
+* [Az Apache Kafka Streams API a HDInsight](apache-kafka-streams-api.md)

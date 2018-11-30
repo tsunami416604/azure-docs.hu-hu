@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/08/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 75ab381d481e51483db5661fe2f6d473f21670fc
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: a806c83f585ff276d9cbfe7cca63ab15011949bb
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514791"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311398"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-azure-powershell"></a>Oktatóanyag: Alkalmazások telepítése virtuálisgép-méretezési csoportokban az Azure PowerShell-lel
 Ha alkalmazásokat szeretne futtatni egy méretezési csoport virtuálisgép-példányán, először telepítenie kell az alkalmazás összetevőit és szükséges fájljait. Egy korábbi oktatóanyagból megtudhatta, hogyan hozhat létre és használhat egyéni virtuálisgép-rendszerképeket a virtuálisgép-példányok üzembe helyezéséhez. Ez az egyéni rendszerkép tartalmazott manuális alkalmazástelepítéseket és -konfigurációkat. Az egyes virtuálisgép-példányok üzembe helyezése után lehetősége van az alkalmazások méretezési csoportokon történő telepítésének automatizálására, vagy egy a méretezési csoporton már futó alkalmazás frissítésére. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -103,7 +103,7 @@ A méretezési csoport összes virtuálisgép-példánya a GitHubról tölti le 
 
 ## <a name="allow-traffic-to-application"></a>Forgalom engedélyezése az alkalmazáshoz
 
-Ahhoz, hogy az alapszintű webalkalmazás a hozzáférést, hozzon létre egy hálózati biztonsági csoport [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.compute/new-azurermnetworksecurityruleconfig) és [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.compute/new-azurermnetworksecuritygroup). További információkért lásd: [Azure-beli virtuálisgép-méretezési csoportok hálózatkezelése](virtual-machine-scale-sets-networking.md).
+Ahhoz, hogy az alapszintű webalkalmazás a hozzáférést, hozzon létre egy hálózati biztonsági csoport [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) és [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup). További információkért lásd: [Azure-beli virtuálisgép-méretezési csoportok hálózatkezelése](virtual-machine-scale-sets-networking.md).
 
 ```azurepowershell-interactive
 # Get information about the scale set

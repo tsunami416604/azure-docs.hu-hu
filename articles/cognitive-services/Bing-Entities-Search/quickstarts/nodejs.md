@@ -10,12 +10,12 @@ ms.component: bing-entity-search
 ms.topic: quickstart
 ms.date: 11/28/2017
 ms.author: aahi
-ms.openlocfilehash: 03ed9948935aab7348fe66cc43b059107ab96f79
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 80af035d3d3f4c530e417669c2fa9acad39eb355
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52160902"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315987"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-nodejs"></a>Rövid útmutató a Bing Entity Search API és a Node.js használatához
 
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, hogyan használható a [a Bing Entity Search](https://docs.
 
 A kód futtatásához [Node.js 6](https://nodejs.org/en/download/) szükséges.
 
-Rendelkeznie kell egy [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmazza a **Bing Entity Search API-t**. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, vagy beszerezhet egy fizetős előfizetői azonosítót az Azure-irányítópultról.
+Rendelkeznie kell egy [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmazza a **Bing Entity Search API-t**. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, vagy beszerezhet egy fizetős előfizetői azonosítót az Azure-irányítópultról.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="search-entities"></a>Entitások keresése
 

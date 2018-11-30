@@ -10,12 +10,12 @@ ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.topic: get-started-article
 ms.date: 08/18/2016
-ms.openlocfilehash: 07b7cce4b026464ba34296b54c4ae90d6d2b1afa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 5ed15a58e5b709b003e9f45d04c3654f814aefc7
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981161"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334227"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Az Azure Scheduler alapfogalmai, terminológiája és entitásai
 
@@ -75,7 +75,7 @@ Magasabb szinteken a Scheduler-feladatok az alábbi alapszintű összetevőkből
 
 A feladat olyan, a rendszer által biztosított adatokat is tartalmaz, mint a következő ütemezett futás időpontja. A feladat kóddefiníciója egy JavaScript Object Notation (JSON) formátumú objektum, amely a következő elemeket tartalmazza:
 
-| Elem | Kötelező | Leírás | 
+| Elem | Szükséges | Leírás | 
 |---------|----------|-------------| 
 | [**startTime**](#start-time) | Nem | A feladat kezdési ideje időzóna-eltolódással [ISO 8601 formátumban](http://en.wikipedia.org/wiki/ISO_8601) | 
 | [**action**](#action) | Igen | Az elsődleges művelet részletei, amelyek **errorAction** objektumot tartalmazhatnak | 
@@ -239,7 +239,7 @@ Egy feladat akkor ismétlődik, ha annak JSON-definíciója tartalmazza a **recu
 },
 ```
 
-| Tulajdonság | Kötelező | Érték | Leírás | 
+| Tulajdonság | Szükséges | Érték | Leírás | 
 |----------|----------|-------|-------------| 
 | **frequency** | Igen, a **recurrence** használatakor | Percenként, óránként, naponta, hetente, havonta, évente | Az előfordulások közötti időegység | 
 | **interval** | Nem | 1 és 1000 között, a szélsőértékeket is beleértve | Pozitív egész szám, amely a **frequency** gyakoriságérték alapján meghatározza az egyes előfordulások közötti időegységek számát | 
@@ -269,7 +269,7 @@ Arra az esetre, ha a Scheduler-feladat hibába ütközik, beállíthat egy újra
 },
 ```
 
-| Tulajdonság | Kötelező | Érték | Leírás | 
+| Tulajdonság | Szükséges | Érték | Leírás | 
 |----------|----------|-------|-------------| 
 | **retryType** | Igen | **Fixed**, **None** | Azt határozza meg, hogy megad-e egy újrapróbálkozási szabályzatot (**fixed** – rögzített) vagy sem (**none** – nincs). | 
 | **retryInterval** | Nem | PT30S | Megadja az újrapróbálkozások gyakoriságát [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). A minimális érték 15 másodperc, a maximális érték pedig 18 hónap. | 
@@ -301,7 +301,7 @@ Miután elindul egy feladat, a Scheduler megjeleníti annak állapotadatait a **
 * A meghiúsulások száma (ha volt ilyen)
 * A hibák száma (ha volt ilyen)
 
-Például:
+Példa:
 
 ```json
 "status": {
@@ -319,5 +319,5 @@ Például:
 * [Alapfogalmak, terminológia és entitáshierarchia](scheduler-concepts-terms.md)
 * [Komplex ütemezések és speciális ismétlődések létrehozása](scheduler-advanced-complexity.md)
 * [Korlátok, kvóták, alapértékek és hibakódok](scheduler-limits-defaults-errors.md)
-* [Az Azure Scheduler REST API-jának leírása](https://docs.microsoft.com/rest/api/schedule)
+* [Az Azure Scheduler REST API-jának leírása](/rest/api/scheduler)
 * [Az Azure Scheduler PowerShell-parancsmagjainak leírása](scheduler-powershell-reference.md)

@@ -3,19 +3,19 @@ title: 'Rövid útmutató: Bing Spell Check API, Ruby'
 titlesuffix: Azure Cognitive Services
 description: Információ és kódminták segítségével ismerkedhet meg a Bing Spell Check API használatának alapjaival.
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-spell-check
 ms.topic: quickstart
 ms.date: 09/14/2017
-ms.author: v-jaswel
-ms.openlocfilehash: e75b8e8b23bbb8e49cb8d8ec55e42f6ffb204197
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: 9c044dd7404f0d317b4bc8ab39ea949a95573573
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023497"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311789"
 ---
 # <a name="quickstart-for-bing-spell-check-api-with-ruby"></a>Rövid útmutató a Bing Spell Check API és a Ruby használatához 
 
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, hogyan használhatja a [Bing Spell Check API-t](https://azu
 
 A kód futtatásához a [Ruby 2.4-es](https://www.ruby-lang.org/en/downloads/) vagy újabb verziója szükséges.
 
-Rendelkeznie kell egy, a **Bing Spell Check API 7-es verzióját** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/#lang) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, vagy beszerezhet egy fizetős előfizetői azonosítót az Azure-irányítópultról.
+Rendelkeznie kell egy, a **Bing Spell Check API 7-es verzióját** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/#lang) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, vagy beszerezhet egy fizetős előfizetői azonosítót az Azure-irányítópultról. Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="get-spell-check-results"></a>Spell Check-eredmények lekérése
 

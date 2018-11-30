@@ -10,12 +10,12 @@ ms.component: bing-video-search
 ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: aahi
-ms.openlocfilehash: e345c9c2e265478b438af6952f7721d3ecc6103b
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 92805d7f124be32712e9ffceac792f4a028e4901
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165259"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315494"
 ---
 # <a name="quickstart-bing-video-search-api-with-php"></a>Rövid útmutató: Bing Video Search API PHP használatával
 
@@ -27,7 +27,7 @@ Az API-k technikai részleteit az [API-referencia](https://docs.microsoft.com/re
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy **Bing Search API-kat** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, de beszerezhet egy fizetős előfizetői azonosítót is az Azure-irányítópultról.
+Egy **Bing Search API-kat** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, de beszerezhet egy fizetős előfizetői azonosítót is az Azure-irányítópultról.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="bing-video-search"></a>Bing Video Search
 

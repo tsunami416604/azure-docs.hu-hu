@@ -10,12 +10,12 @@ ms.component: bing-entity-search
 ms.topic: quickstart
 ms.date: 11/28/2017
 ms.author: aahi
-ms.openlocfilehash: 0735f8d7a7953e05415f468253d17a8d10ca1b9f
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 7c303516c9b455ce3477c348c59cbc88693e2297
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161346"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313860"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-c"></a>Rövid útmutató a Bing Entity Search API és a C# használatához 
 
@@ -23,9 +23,9 @@ Ez a cikk bemutatja, hogyan használható a [a Bing Entity Search](https://docs.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kód Windowson történő futtatásához [Visual Studio 2017](https://www.visualstudio.com/downloads/) szükséges. (Az ingyenes Community Edition is elegendő.)
+A kód Windowson történő futtatásához [Visual Studio 2017](https://www.visualstudio.com/downloads/) szükséges. (Az ingyenes közösségi kiadása fog működni).
 
-Rendelkeznie kell egy [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmazza a **Bing Entity Search API-t**. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, vagy beszerezhet egy fizetős előfizetői azonosítót az Azure-irányítópultról.
+Rendelkeznie kell egy [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmazza a **Bing Entity Search API-t**. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, vagy beszerezhet egy fizetős előfizetői azonosítót az Azure-irányítópultról.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="search-entities"></a>Entitások keresése
 

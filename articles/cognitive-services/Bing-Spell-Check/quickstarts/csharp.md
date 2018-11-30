@@ -3,27 +3,27 @@ title: 'Rövid útmutató: Bing Spell Check API, C#'
 titlesuffix: Azure Cognitive Services
 description: Információk és kódminták segítségével ismerkedhet meg a Bing Spell Check API használatának első lépéseivel.
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-spell-check
 ms.topic: quickstart
 ms.date: 09/14/2017
-ms.author: v-jaswel
-ms.openlocfilehash: e723bc117cff208ea824dae216b8e8b57f7f26d7
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: fbad56b59664a6c75e6bec911e891145a18b1161
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801454"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315171"
 ---
 # <a name="quickstart-for-bing-spell-check-api-with-c"></a>Rövid útmutató a Bing Spell Check API és a C# használatához
 
-Ez a cikk bemutatja, hogyan használhatja a [Bing Spell Check API-t](https://azure.microsoft.com/services/cognitive-services/spell-check/) a C# segítségével. A Spell Check API visszaadja a fel nem ismert szavak listáját a javasolt cserekifejezésekkel együtt. Általános esetben küld egy szöveget az API-nak, majd végrehajtja a javasolt cseréket a szövegben, vagy megmutatja azokat az alkalmazás felhasználójának, hogy ő dönthesse el, végre szeretné-e hajtani a cserét. Ez a cikk bemutatja, hogyan küldhet el egy olyan kérést, amely a „Hollo, wrld!” szöveget tartalmazza. A javasolt cserekifejezések a „Hello” és a „world” lesznek.
+Ez a cikk bemutatja, hogyan használható a [Bing Spell Check API](https://azure.microsoft.com/services/cognitive-services/spell-check/) a C#. A Spell Check API visszaadja a fel nem ismert szavak listáját a javasolt cserekifejezésekkel együtt. Általános esetben küld egy szöveget az API-nak, majd végrehajtja a javasolt cseréket a szövegben, vagy megmutatja azokat az alkalmazás felhasználójának, hogy ő dönthesse el, végre szeretné-e hajtani a cserét. Ez a cikk bemutatja, hogyan küldhet el egy olyan kérést, amely a „Hollo, wrld!” szöveget tartalmazza. A javasolt cserekifejezés a „Hello” és a „world” lesz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kód Windowson történő futtatásához [Visual Studio 2017](https://www.visualstudio.com/downloads/) szükséges. (Az ingyenes Community Edition is elegendő.)
+A kód Windowson történő futtatásához [Visual Studio 2017](https://www.visualstudio.com/downloads/) szükséges. (Az ingyenes közösségi kiadása fog működni). Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 Rendelkeznie kell egy, a **Bing Spell Check API 7-es verzióját** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/#lang) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, vagy beszerezhet egy fizetős előfizetői azonosítót az Azure-irányítópultról.
 
@@ -222,7 +222,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Bing Spell Check – oktatóanyag](../tutorials/spellcheck.md)
+> [A Bing Spell Check oktatóanyaga](../tutorials/spellcheck.md)
 
 ## <a name="see-also"></a>Lásd még
 

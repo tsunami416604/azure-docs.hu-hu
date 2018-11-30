@@ -13,20 +13,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/02/2018
+ms.date: 11/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2aca42c23cc213d5d7e451105052d5d5d697b77d
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
-ms.translationtype: HT
+ms.openlocfilehash: c8ab6b6e6bab7451de7d975dde644386fd4cb84e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979471"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311534"
 ---
 # <a name="hybrid-identity-and-microsoft-identity-solutions"></a>Hibrid identitáskezelési és Microsoft identitáskezelési megoldások
 A [Microsoft Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) hibrid identitásmegoldásaival szinkronizálhatja helyszíni címtárobjektumait az Azure AD-vel, miközben továbbra is a helyszínen kezelheti a felhasználókat. Amikor megtervezi a helyszíni Windows Server Active Directory és az Azure AD szinkronizálását, elsőként azt kell eldöntenie, hogy felügyelt vagy összevont identitásokat szeretne-e használni. 
 
-- A **felügyelt identitások** olyan felhasználói fiókok és csoportok, amelyek szinkronizálása egy helyszíni Active Directoryból történik, a felhasználók hitelesítését pedig az Azure felügyeli.   
+- **Felügyelt identitások** – egy helyszíni Active Directoryból szinkronizált felhasználói fiókokat és csoportokat, és a felhasználói hitelesítés az Azure által felügyelt.   
 - Az **összevont identitások** nagyobb fokú kontrollt biztosítanak a felhasználók felett, mivel a felhasználók hitelesítése le van választva az Azure-ról, és egy megbízható helyszíni identitásszolgáltató foglalkozik vele. 
 
 A hibrid hitelesítés többféleképpen is konfigurálható. A cég igényeinek leginkább megfelelő identitáskezelési modell kiválasztásakor figyelembe kell vennie az időigényeket, a meglévő infrastruktúrát, a megoldás összetettségét és a felmerülő költségeket. Ezek a tényezők cégenként különbözőek, és idővel változhatnak is, de lehetősége van rugalmasan áttérni egy másik identitáskezelési modellre, ha a követelmények megváltozása ezt szükségszerűvé teszi.
@@ -42,7 +42,7 @@ Bár a felügyelt identitáskezelés a legkönnyebb és leggyorsabb módszer, a 
 A legtöbb cég számára, amelyek csak az Office 365-be, SaaS-alkalmazásokba és más Azure AD-alapú erőforrásokba szeretnék lehetővé tenni a felhasználók bejelentkezését, az alapértelmezett jelszókivonat-szinkronizálási beállítás használata javasolt. Ha ez nem megfelelő megoldás, el kell eldöntenie, hogy átmenő hitelesítést vagy AD FS-t szeretne-e használni.
 
 > [!TIP]
-> A felhasználói jelszavakat a helyszíni Windows Server Active Directory tárolja egy kivonatérték formájában, amely a tényleges felhasználói jelszót jelöli. A kivonatérték egy egyirányú matematikai függvény (a kivonatoló algoritmus) eredménye. Az egyirányú függvény eredménye semmilyen módszerrel nem fejthető vissza a jelszó egyszerű szöveges verziójára. A jelszókivonattal nem lehet a helyszíni hálózatra bejelentkezni. Ha úgy dönt, hogy szinkronizálja a jelszavakat, az Azure AD Connect kinyeri a jelszókivonatokat a helyszíni Active Directoryból, és további biztonsági intézkedéseket alkalmaz rajtuk, mielőtt szinkronizálná őket az Azure AD-vel. A jelszókivonat-szinkronizálás és a jelszóvisszaírás együttes használata lehetővé teszi az új jelszó önkiszolgáló kérését az Azure AD-ben. Egyszeri bejelentkezést (single sign-on, SSO) is engedélyezhet a vállalati hálózathoz kapcsolódó, tartományhoz csatlakozó számítógépeken dolgozó felhasználók számára. Az egyszeri bejelentkezéssel a felhasználóknak csak egy felhasználónevet kell megadniuk a felhőalapú erőforrások biztonságos eléréséhez. 
+> A felhasználói jelszavakat a helyszíni Windows Server Active Directory tárolja egy kivonatérték formájában, amely a tényleges felhasználói jelszót jelöli. A kivonatérték egy egyirányú matematikai függvény (a kivonatoló algoritmus) eredménye. Az egyirányú függvény eredménye semmilyen módszerrel nem fejthető vissza a jelszó egyszerű szöveges verziójára. A jelszókivonattal nem lehet a helyszíni hálózatra bejelentkezni. Amikor választja a jelszókivonatok szinkronizálása, az Azure AD Connect jelszókivonatokat kinyeri a helyszíni Active Directoryból, és a Jelszókivonat feldolgozás előtt, a rendszer szinkronizálja az Azure AD további biztonsági vonatkozik. A jelszókivonat-szinkronizálás és a jelszóvisszaírás együttes használata lehetővé teszi az új jelszó önkiszolgáló kérését az Azure AD-ben. Egyszeri bejelentkezést (single sign-on, SSO) is engedélyezhet a vállalati hálózathoz kapcsolódó, tartományhoz csatlakozó számítógépeken dolgozó felhasználók számára. Az egyszeri bejelentkezéssel a felhasználóknak csak egy felhasználónevet kell megadniuk a felhőalapú erőforrások biztonságos eléréséhez. 
 >
 
 ## <a name="pass-through-authentication"></a>Átmenő hitelesítés

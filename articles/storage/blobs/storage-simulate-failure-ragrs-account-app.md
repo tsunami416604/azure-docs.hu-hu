@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 12/23/2017
 ms.author: tamram
-ms.openlocfilehash: 84ced8a529c2e717dc3e5888466d9a2e1e7e928a
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
-ms.translationtype: HT
+ms.openlocfilehash: 044cc30a418f3c54053a6f4878f97f5c9ea9f9e2
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47180943"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335112"
 ---
 # <a name="tutorial-simulate-a-failure-in-accessing-read-access-redundant-storage"></a>Oktatóanyag: Írásvédett redundáns tárolók elérése során fellépő hiba szimulálása
 
@@ -145,7 +145,7 @@ Egy célgazdagép statikus útvonalának hozzáadásához írja be a következő
  
 Cserélje le a `<destination_ip>` kifejezést a tárfiók IP-címére, illetve a `<gateway_ip>` kifejezést a helyi gazdagép IP-címére. Az alkalmazás folytatásához nyomja le az **egyik billentyűt**.
 
-Miután újra elindult az alkalmazás, az elsődleges végpontra érkező kérések meghiúsulnak. Az alkalmazás ötször próbál meg újracsatlakozni az elsődleges végponthoz. Az öt kísérlet után a másodlagos írásvédett végpontról kéri le a rendszerképet. Miután az alkalmazás 20-szor sikeresen lekéri a rendszerképet a másodlagos végpontról, az alkalmazás megkísérel csatlakozni az elsődleges végponthoz. Ha az elsődleges végpont továbbra sem érhető el, az alkalmazás folytatja a másodlagos végpontból való olvasást. Ez a minta az előző oktatóanyagban ismertetett [áramköri-megszakítós](/azure/architecture/patterns/circuit-breaker.md) minta.
+Miután újra elindult az alkalmazás, az elsődleges végpontra érkező kérések meghiúsulnak. Az alkalmazás ötször próbál meg újracsatlakozni az elsődleges végponthoz. Az öt kísérlet után a másodlagos írásvédett végpontról kéri le a rendszerképet. Miután az alkalmazás 20-szor sikeresen lekéri a rendszerképet a másodlagos végpontról, az alkalmazás megkísérel csatlakozni az elsődleges végponthoz. Ha az elsődleges végpont továbbra sem érhető el, az alkalmazás folytatja a másodlagos végpontból való olvasást. Ez a minta az előző oktatóanyagban ismertetett [áramköri-megszakítós](/azure/architecture/patterns/circuit-breaker) minta.
 
 ### <a name="simulate-primary-endpoint-restoration"></a>Elsődleges végpont visszaállításának szimulálása
 

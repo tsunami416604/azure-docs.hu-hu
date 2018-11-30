@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/12/2018
+ms.date: 11/23/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: cc6af421551ba8ca973c15455daebf58c317d6f5
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 9afce9c6d4ed4d6dc6fbe5bcfcfedc33bdd7cfdf
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976485"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314672"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 frissítése
 
@@ -88,7 +88,7 @@ Ez a frissítés az Azure Stack a következő fejlesztéseket tartalmazza:
 - A biztonsági mentési infrastruktúra-szolgáltatás helyezi át a [nyilvános infrastruktúra-hálózaton](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-infrastructure-network) , a [nyilvános VIP-hálózat](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-vip-network). Győződjön meg arról, a szolgáltatás hozzáfér a biztonsági mentési tárhelyet a nyilvános VIP hálózatra ügyfeleknek kell.  
 
 > [!IMPORTANT]  
-> Ha nem engedélyezi a fájlkiszolgálóra a nyilvános VIP hálózatra érkező kapcsolatok tűzfal, a módosítás hatására infrastruktúra a biztonsági mentés sikertelen, és a "53-as hiba a hálózati elérési út nem található." Ez a használhatatlanná tévő változást, amely rendelkezik nem elfogadható megkerülő megoldás. Ügyfeleink visszajelzései alapján a Microsoft visszaáll a módosítás a gyorsjavítást. Tekintse át a [közzététele a frissítési lépéseket tartalmazó szakaszában](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-update-1809#post-update-steps) 1809 számára elérhető gyorsjavítások további tájékoztatást. Ha a gyorsjavítás áll rendelkezésre, ügyeljen arra, hogy csak akkor, ha a hálózati szabályzatok nem teszik lehetővé a nyilvános VIP-hálózat eléréséhez infrastruktúra feladatában 1809 való frissítése után alkalmazza azt. a 1811 Ez a változás az összes rendszeren lépnek érvénybe. Ha a 1809 alkalmazza a gyorsjavítás nincs nincs további teendője.  
+> Ha nem engedélyezi a fájlkiszolgálóra a nyilvános VIP hálózatra érkező kapcsolatok tűzfal, a módosítás hatására infrastruktúra a biztonsági mentés sikertelen, és a "53-as hiba a hálózati elérési út nem található." Ez a használhatatlanná tévő változást, amely rendelkezik nem elfogadható megkerülő megoldás. Ügyfeleink visszajelzései alapján a Microsoft visszaáll a módosítás a gyorsjavítást. Tekintse át a [közzététele a frissítési lépéseket tartalmazó szakaszában](#post-update-steps) 1809 számára elérhető gyorsjavítások további tájékoztatást. Ha a gyorsjavítás áll rendelkezésre, ügyeljen arra, hogy csak akkor, ha a hálózati szabályzatok nem teszik lehetővé a nyilvános VIP-hálózat eléréséhez infrastruktúra feladatában 1809 való frissítése után alkalmazza azt. a 1811 Ez a változás az összes rendszeren lépnek érvénybe. Ha a 1809 alkalmazza a gyorsjavítás nincs nincs további teendője.  
 
 ### <a name="common-vulnerabilities-and-exposures"></a>Common Vulnerabilities and Exposures
 
@@ -173,7 +173,7 @@ További információ a biztonsági rések, kattintson a fenti hivatkozásokat a
 > Készüljön fel az Azure Stack üzemelő példányához bővítmény gazdagép, amely szerint a következő csomag engedélyezve van. A rendszer a következő útmutató segítségével előkészítése [előkészítése az Azure stack-bővítmény gazdagép](azure-stack-extension-host-prepare.md).
 
 Ez a frissítés telepítése után bármely alkalmazandó gyorsjavítások telepítéséről. További információt a következő cikkeket, megtekintése, valamint a [karbantartási szabályzat](azure-stack-servicing-policy.md).  
-- [KB 4471993 – az Azure Stack gyorsjavítás az Azure Stack gyorsjavítás 1.1809.3.96](https://support.microsoft.com/help/4471993/)  
+- [KB 4477849 – az Azure Stack gyorsjavítás az Azure Stack gyorsjavítás 1.1809.6.102](https://support.microsoft.com/help/4477849/)  
 
 ## <a name="known-issues-post-installation"></a>Ismert problémák (telepítés utáni)
 
@@ -226,7 +226,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
    
   Futtassa a [Test-AzureStack](azure-stack-diagnostic-test.md) parancsmagot, hogy az infrastruktúra-szerepkör példányai állapotának ellenőrzése és egység csomópontok méretezése. Ha nincsenek problémák észlelhetők által [Test-AzureStack](azure-stack-diagnostic-test.md), ezek a riasztások figyelmen kívül hagyhatja. Ha problémát észlel, próbálja meg elindítani a szerepkörpéldány infrastruktúra vagy a csomópont a felügyeleti portálon vagy a PowerShell használatával.
 
-  A probléma a legújabb javított [1809 gyorsjavítás kiadási](https://support.microsoft.com/help/4471993/), ezért ügyeljen arra, hogy a gyorsjavítás telepítése, ha a probléma fennáll. 
+  A probléma a legújabb javított [1809 gyorsjavítás kiadási](https://support.microsoft.com/help/4477849/), ezért ügyeljen arra, hogy a gyorsjavítás telepítése, ha a probléma fennáll. 
 
 <!-- 1264761 - IS ASDK -->  
 - A riasztásokat a **egészségügyi vezérlő** összetevő, amely rendelkezik a következő adatokat:  

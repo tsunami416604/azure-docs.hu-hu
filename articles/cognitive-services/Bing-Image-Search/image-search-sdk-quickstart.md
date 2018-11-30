@@ -10,12 +10,12 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: aahi
-ms.openlocfilehash: edebd1361e39a338672b4249dd159e5c1d4078ce
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
-ms.translationtype: HT
+ms.openlocfilehash: 2df767ef92ca056535e2d70a53a1588c9e89c647
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294152"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316786"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-c"></a>Rövid útmutató: Képek keresése a C# és a Bing Image Search SDK használatával
 
@@ -24,7 +24,6 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hajthatja végre első képke
 A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch).
 
 ## <a name="prerequisites"></a>Előfeltételek
-
 * A [Visual Studio 2017](https://visualstudio.microsoft.com/vs/whatsnew/) bármely kiadása.
 * A [Cognitive Image Search NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch/1.2.0).
 
@@ -32,6 +31,7 @@ A Bing Image Search SDK Visual Studióban való telepítéséhez használja a Vi
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
+Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 

@@ -3,19 +3,19 @@ title: 'Rövid útmutató: Bing News Search API, Ruby'
 titlesuffix: Azure Cognitive Services
 description: Információk és kódminták segítségével ismerkedhet meg a Bing News Search API használatának első lépéseivel.
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 9/21/2017
-ms.author: v-jerkin
-ms.openlocfilehash: c6c004469b86e443dc1fcc04106d0c7b8b749334
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: 714f28166b8d24a5b8a69fe4f76ba1737de56e1d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803817"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315086"
 ---
 # <a name="quickstart-for-bing-news-search-api-with-ruby"></a>Rövid útmutató a Bing News Search API Rubyval való használatához
 
@@ -27,9 +27,9 @@ Az API-k technikai részleteit az [API-referencia](https://docs.microsoft.com/re
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy **Bing Search API-kat** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, de beszerezhet egy fizetős előfizetői azonosítót is az Azure-irányítópultról.
+Egy **Bing Search API-kat** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. A hozzáférési kulcsot biztosítunk az ingyenes próbaverzió aktiválásának kell. Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-## <a name="bing-news-search"></a>Bing News Search
+## <a name="bing-news-search"></a>Bing News search
 
 A [Bing News Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) a Bing keresőmotor hírtalálatait adja vissza.
 
@@ -183,6 +183,6 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 > [!div class="nextstepaction"]
 > [Hírek lapozása](paging-news.md)
-> [Díszítő megjelölések használata szövegkiemeléshez](hit-highlighting.md)
+> [Szöveg kiemelése díszítő jelölőkkel](hit-highlighting.md)
 > [Hírek keresése az interneten](search-the-web.md)  
 > [Kipróbálás](https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/)

@@ -11,12 +11,12 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: 1a7cc7d58975aa0cd5903581610d642193951ec4
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 63add2406b4535747c09299ecc0df6d1b6b47da3
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412466"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315868"
 ---
 # <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-java"></a>Rövid útmutató: Keresési lekérdezések küldése a Bing Image Search REST API és Java használatával
 
@@ -27,6 +27,7 @@ Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolg�
 A minta forráskódja további hibakezeléssel és kódmegjegyzésekkel együtt elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java).
 
 ## <a name="prerequisites"></a>Előfeltételek
+* A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a **Keresés** területen kérheti le.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 * A [Java fejlesztői készlet (JDK) 7-es vagy 8-as verziója](https://aka.ms/azure-jdks)
 

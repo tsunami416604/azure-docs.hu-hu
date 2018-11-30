@@ -3,19 +3,19 @@ title: 'Rövid útmutató: Keresés Java használatával – Bing Web Search API
 titleSuffix: Azure Cognitive Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre első Bing Web Search API-hívását a Java használatával, majd hogyan fogadhatja a JSON-választ.
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
-ms.author: erhopf
-ms.openlocfilehash: 9fc9d35db50305b632f5d9c8bdfa13d28ab97980
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: bd6630f67e151dd2ee1e60654352f3070466899b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412975"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312663"
 ---
 # <a name="quickstart-use-java-to-call-the-bing-web-search-api"></a>Rövid útmutató: A Bing Web Search API meghívása a Java segítségével  
 
@@ -23,8 +23,9 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
-## <a name="prerequisites"></a>Előfeltételek
+Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
+## <a name="prerequisites"></a>Előfeltételek
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
 * [JDK 7 vagy 8](https://aka.ms/azure-jdks)

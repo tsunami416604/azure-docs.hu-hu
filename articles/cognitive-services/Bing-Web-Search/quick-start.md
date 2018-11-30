@@ -11,16 +11,16 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: af32abe1c61c44b14d0f70033aee54aa7eba7c8b
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
-ms.translationtype: HT
+ms.openlocfilehash: 6e4c5a47ea19a4308865de78f3a4c059a9f8ac79
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126241"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312401"
 ---
 # <a name="your-first-bing-search-query"></a>Első Bing-keresési lekérdezés
 
-Ahhoz, hogy elvégezhesse az első hívást, be kell szereznie egy Cognitive Services-előfizetői azonosítót. Az előfizetői azonosító beszerzéséhez lásd [A Cognitive Services kipróbálása](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) témakört.
+Ahhoz, hogy elvégezhesse az első hívást, be kell szereznie egy Cognitive Services-előfizetői azonosítót. Az előfizetői azonosító beszerzéséhez lásd [A Cognitive Services kipróbálása](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) témakört. Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 A webes keresés eredményeinek lekéréséhez egy GET kérelmet kell küldeni a következő végpontra:  
 

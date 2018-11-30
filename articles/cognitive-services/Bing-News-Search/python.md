@@ -10,12 +10,12 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: aahi
-ms.openlocfilehash: 2696401b15ceca86c7e7b7d33e7e7f7887f4b7dc
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 738b139cb2070f2244442311d3670757caac6541
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164337"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308817"
 ---
 # <a name="quickstart-for-bing-news-search-api-with-python"></a>Rövid útmutató a Bing News Search API és a Python használatához
 Ez az útmutató a Bing News Search API meghívásának és a kapott JSON-objektum utófeldolgozásnak egy egyszerű példáját mutatja be. További információ: [A Bing News Search dokumentációja](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference).  
@@ -26,7 +26,7 @@ Ezt a példát futtathatja Jupyter-notebookként a [MyBinderen](https://mybinder
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy **Bing Search API-kat** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, vagy beszerezhet egy fizetős előfizetői azonosítót az Azure-irányítópultról.
+Egy **Bing Search API-kat** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. Az ingyenes Próbaidőszakának aktiválása során megadott hozzáférési kulcs van szüksége.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="running-the-walkthrough"></a>Az útmutató futtatása
 Először állítsa a `subscription_key` értékét a Bing API-szolgáltatáshoz kapott API-kulcsára.

@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 09/21/2018
+ms.date: 11/25/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d5201f3b2a0a3548b1f9eaf4a3f6c6b0fe160d18
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: e64acff180d0faf3dfcfe02abb2d659db62ed788
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567706"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312316"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-and-deploy-to-your-simulated-device"></a>Oktatóanyag: Java-alapú IoT Edge-modul fejlesztése és üzembe helyezése szimulált eszközön
 
@@ -55,16 +55,31 @@ Fejlesztési erőforrások:
 
 
 ## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
-Ebben az oktatóanyagban a VS Code-hoz készült Azure IoT Edge bővítménnyel épít fel egy modult és hoz létre egy **tárolórendszerképet** a fájlokból. Ezután ezt a rendszerképet leküldi a rendszerképeit tároló és felügyelő **beállításjegyzékbe**. Végül üzembe helyezi a rendszerképet a beállításjegyzékből az IoT Edge-eszközön való futtatáshoz.  
 
-Ehhez az oktatóanyaghoz bármilyen Docker-kompatibilis beállításjegyzéket használhat. A Dockerhez a felhőben elérhető két népszerű regisztrációsadatbázis-szolgáltatás az [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) és a [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). Ez az oktatóanyag az Azure Container Registryt használja. 
+Ebben az oktatóanyagban használhatja az Azure IoT Edge-bővítmény a Visual Studio Code fel egy modult, és hozzon létre egy **tárolórendszerkép** a fájlokból. Ezután ezt a rendszerképet leküldi a rendszerképeit tároló és felügyelő **beállításjegyzékbe**. Végül üzembe helyezi a rendszerképet a beállításjegyzékből az IoT Edge-eszközön való futtatáshoz.  
 
-1. Az [Azure Portalon](https://portal.azure.com) válassza az **Erőforrás létrehozása** > **Tárolók** > **Azure Container Registry** elemet.
-2. Nevezze el a beállításjegyzéket, válasszon egy előfizetést, válasszon egy erőforráscsoportot, és állítsa be az **Alapszintű** termékváltozatot. 
-3. Kattintson a **Létrehozás** gombra.
-4. Miután létrejött a tárolóregisztrációs adatbázis, keresse meg, és válassza a **Hozzáférési kulcsok** elemet. 
-5. A **Rendszergazdai felhasználó** beállítást váltsa **Engedélyezés** értékre.
-6. Másolja a **Bejelentkezési kiszolgáló**, a **Felhasználónév** és a **Jelszó** értékeit. Ezeket az értékeket az oktatóanyag későbbi részében fogja használni, amikor közzéteszi a Docker-rendszerképet a regisztrációs adatbázisban, és amikor a regisztrációs adatbázishoz tartozó hitelesítő adatokat ad hozzá az Azure IoT Edge-futtatókörnyezethez. 
+Minden olyan Docker-kompatibilis beállításjegyzéket a tárolólemezképek tárolására használható. Két népszerű Docker beállításjegyzék szolgáltatások [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) és [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). Ez az oktatóanyag az Azure Container Registryt használja. 
+
+Ha még nem rendelkezik egy tároló-beállításjegyzéket, az alábbi lépésekkel hozzon létre egy új Azure-ban:
+
+1. Az [Azure Portalon](https://portal.azure.com) válassza az **Erőforrás létrehozása** > **Tárolók** > **Container Registry** elemet.
+
+2. Adja meg a következő értékeket a tárolóregisztrációs adatbázis létrehozásához:
+
+   | Mező | Érték | 
+   | ----- | ----- |
+   | Beállításjegyzék neve | Egyedi nevet adjon meg. |
+   | Előfizetés | A legördülő listából válasszon egy előfizetést. |
+   | Erőforráscsoport | Javasoljuk, hogy az IoT Edge rövid útmutatók és oktatóanyagok során elkészített erőforráscsoportot használja minden teszterőforráshoz. Például: **IoTEdgeResources**. |
+   | Hely | Válassza ki az Önhöz legközelebb eső helyet. |
+   | Rendszergazdai felhasználó | Állítsa **Engedélyezés** értékre. |
+   | SKU | Válassza az **Alapszintű** lehetőséget. | 
+
+5. Kattintson a **Létrehozás** gombra.
+
+6. Miután létrejött a tárolóregisztrációs adatbázis, keresse meg, majd válassza a **Hozzáférési kulcsok** elemet. 
+
+7. Másolja a **Bejelentkezési kiszolgáló**, a **Felhasználónév** és a **Jelszó** értékeit. A tároló-beállításjegyzékbe való hozzáférés biztosításához az oktatóanyag későbbi részében használja ezeket az értékeket. 
 
 ## <a name="create-an-iot-edge-module-project"></a>IoT Edge-modulprojekt létrehozása
 A következő lépések egy Azure IoT Edge Maven-sabloncsomagon és Azure IoT Java eszközoldali SDK-n alapuló IoT Edge-modulprojektet hoznak létre a Visual Studio Code és az Azure IoT Edge bővítmény használatával.
@@ -75,17 +90,20 @@ Létrehozhat egy Java-megoldást, amelyet a saját kódjával testreszabhat.
 
 1. A Visual Studio Code-ban a VS Code parancskatalógusának megnyitásához válassza a **View (Nézet)** > **Command Palette (Parancskatalógus)** elemet. 
 
-2. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához: 
+2. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. Kövesse a parancskatalógusban található utasításokat a megoldás létrehozásához.
 
-   1. Válassza ki azt a mappát, ahol a megoldást létre szeretné hozni. 
-   2. Adja meg a megoldás nevét, vagy fogadja el az alapértelmezett **EdgeSolution** nevet.
-   3. Válassza a **Java Module** modulsablont. 
-   4. Adja meg a groupId értékét, vagy fogadja el az alapértelmezett **com.edgemodule** értéket.
-   5. Cserélje le az alapértelmezett modulnevet a **JavaModule** névre. 
-   6. Adja meg az előző szakaszban létrehozott Azure Container Registry-adatbázist az első modul rendszerképadattáraként. Cserélje le a **localhost:5000** értéket a bejelentkezési kiszolgáló kimásolt értékére. A sztring végül a következőképpen néz ki: \<tárolóregisztrációs adatbázis neve\>.azurecr.io/javamodule.
-
-
-Ha most először hoz létre Java-modult, a Maven-csomagok letöltése eltarthat pár percig. Ekkor a VS Code-ablak betölti az IoT Edge-megoldás munkaterületét. A megoldás munkaterület öt legfelső szintű összetevőt tartalmaz. Ebben az oktatóanyagban nem fogja szerkeszteni a **\.vscode** mappát vagy a **\.gitignore** fájlt. A **modules** mappa a modul Java-kódját, valamint a modul tárolórendszerképként való összeállítására szolgáló Docker-fájlokat tartalmazza. Az **\.env** fájl a tárolóregisztrációs adatbázis hitelesítő adatait tárolja. A **deployment.template.json** fájl az IoT Edge-futtatókörnyezet által a modulok eszközön való üzembe helyezéséhez használt információkat tartalmazza. 
+   | Mező | Érték |
+   | ----- | ----- |
+   | Select folder (Mappa kiválasztása) | Válassza ki azt a helyet a fejlesztői gépen, ahol a VS Code létre fogja hozni a megoldásfájlokat. |
+   | Provide a solution name (Megoldásnév megadása) | Adjon meg egy leíró nevet a megoldáshoz, vagy fogadja el az alapértelmezett **EdgeSolution**. |
+   | Select module template (Modulsablon kiválasztása) | Válasszon **Java modul**. |
+   | Adjon meg értéket a csoportazonosító | Adja meg a csoport azonosító értéket, vagy fogadja el az alapértelmezett **com.edgemodule**. |
+   | Provide a module name (Modulnév megadása) | A modul neve **JavaModule**. |
+   | Provide Docker image repository for the module (Docker-rendszerkép adattárának megadása a modulhoz) | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tárolórendszerkép előre fel van töltve az előző lépésből. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. A sztring végül a következőképpen néz ki: \<tárolóregisztrációs adatbázis neve\>.azurecr.io/javamodule. |
+ 
+   ![Docker-rendszerkép adattárának megadása](./media/tutorial-java-module/repository.png)
+   
+Ha most először hoz létre Java-modult, a Maven-csomagok letöltése eltarthat pár percig. Ekkor a VS Code-ablak betölti az IoT Edge-megoldás munkaterületét. A megoldás munkaterület öt legfelső szintű összetevőt tartalmaz. A **modules** mappa a modul Java-kódját, valamint a modul tárolórendszerképként való összeállítására szolgáló Docker-fájlokat tartalmazza. Az **\.env** fájl a tárolóregisztrációs adatbázis hitelesítő adatait tárolja. A **deployment.template.json** fájl az IoT Edge-futtatókörnyezet által a modulok eszközön való üzembe helyezéséhez használt információkat tartalmazza. És **deployment.debug.template.json** tárolók a hibakeresési verzió-modulok fájlt. Ebben az oktatóanyagban nem fogja szerkeszteni a **\.vscode** mappát vagy a **\.gitignore** fájlt. 
 
 Ha nem adott meg tárolóregisztrációs adatbázist a megoldás létrehozásakor, de elfogadta az alapértelmezett localhost:5000 értéket, akkor nem lesz \.env fájlja. 
 
@@ -200,6 +218,26 @@ A környezeti fájl tárolja a tárolóregisztrációs adatbázis hitelesítő a
 
 11. Mentse el ezt a fájlt.
 
+12. A VS Code Explorerben az IoT Edge-megoldás munkaterületén nyissa meg a deployment.template.json fájlt. Az **$edgeAgent** a fájlból tudja meg, hogy üzembe kell helyeznie két modult: a **tempSensor** és a **JavaModule** modult. Az IoT Edge az alapértelmezett platform értékre van állítva **amd64** a VS Code állapotsorban, ami azt jelenti, a **JavaModule** a lemezkép verziószámát Linux AMD64-es értékre van állítva. Módosítsa az alapértelmezett platform az állapotsorban **amd64** való **arm32v7** vagy **windows-amd64** , amely az IoT Edge-eszköz architektúra esetén. 
+
+   További információt az üzembehelyezési jegyzékekről az [IoT Edge-modulok használatát, konfigurálását és újrahasznosítását](module-composition.md) ismertető cikkben olvashat.
+
+   A deployment.template.json fájl **registryCredentials** szakasza tartalmazza a Docker regisztrációs adatbázis hitelesítő adatait. A tényleges felhasználónév–jelszó párokat az .env fájl tárolja, amelyet a Git figyelmen kívül hagy.  
+
+13. Adja hozzá a **JavaModule** modul ikerdokumentumát az üzembehelyezési jegyzékhez. Szúrja be a következő JSON-tartalmat a **moduleContent** szakasz alján, az **$edgeHub** modul ikerdokumentuma után: 
+
+   ```json
+       "JavaModule": {
+           "properties.desired":{
+               "TemperatureThreshold":25
+           }
+       }
+   ```
+
+   ![Ikermodul központi telepítési sablon hozzáadása](./media/tutorial-java-module/module-twin.png)
+
+14. Mentse el ezt a fájlt.
+
 ## <a name="build-your-iot-edge-solution"></a>Az IoT Edge-megoldás összeállítása
 
 Az előző szakaszban létrehozott egy IoT Edge-megoldást, és hozzáadott egy kódot a **JavaModule** modulhoz az olyan üzenetek kiszűrésére, ahol a jelentett géphőmérséklet az elfogadható határérték alatt van. Most létre kell hoznia a megoldást tárolórendszerképként, és le kell küldenie a tárolóregisztrációs adatbázisba. 
@@ -211,26 +249,7 @@ Az előző szakaszban létrehozott egy IoT Edge-megoldást, és hozzáadott egy 
    ```
    Használja az első szakaszban az Azure Container Registry-adatbázisból kimásolt felhasználónevet, jelszót és bejelentkezési kiszolgálót. Vagy le is kérheti ezeket az értékeket az Azure Portalon a tárolóregisztrációs adatbázis **Hozzáférési kulcsok** szakaszában.
 
-2. A VS Code Explorerben az IoT Edge-megoldás munkaterületén nyissa meg a deployment.template.json fájlt. Az **$edgeAgent** a fájlból tudja meg, hogy üzembe kell helyeznie két modult: a **tempSensor** és a **JavaModule** modult. A **JavaModule.image** értéke a rendszerkép Linux amd64-es verziójára lett beállítva. Módosítsa a rendszerkép verziószámát az **arm32v7** értékre, ha ez az IoT Edge-eszköz architektúrája. 
-
-   Ellenőrizze, hogy a sablonban a megfelelő modulnév van-e megadva az alapértelmezett **SampleModule** név helyett, amelyet az IoT Edge-megoldás létrehozásakor módosított.
-
-   További információt az üzembehelyezési jegyzékekről az [IoT Edge-modulok használatát, konfigurálását és újrahasznosítását](module-composition.md) ismertető cikkben olvashat.
-
-3. A deployment.template.json fájl **registryCredentials** szakasza tartalmazza a Docker regisztrációs adatbázis hitelesítő adatait. A tényleges felhasználónév–jelszó párokat az .env fájl tárolja, amelyet a Git figyelmen kívül hagy.  
-
-4. Adja hozzá a **JavaModule** modul ikerdokumentumát az üzembehelyezési jegyzékhez. Szúrja be a következő JSON-tartalmat a **moduleContent** szakasz alján, az **$edgeHub** modul ikerdokumentuma után: 
-    ```json
-        "JavaModule": {
-            "properties.desired":{
-                "TemperatureThreshold":25
-            }
-        }
-    ```
-
-4. Mentse el ezt a fájlt.
-
-5. A VS Code Explorerben kattintson a jobb gombbal a deployment.template.json fájlra, és válassza a **Build and Push IoT Edge solution** (IoT Edge-megoldás összeállítása és leküldése) lehetőséget. 
+2. A VS Code Explorerben kattintson a jobb gombbal a deployment.template.json fájlra, és válassza a **Build and Push IoT Edge solution** (IoT Edge-megoldás összeállítása és leküldése) lehetőséget. 
 
 Amikor a megoldás összeállítására utasítja a Visual Studio Code-ot, az elsőként lekéri az adatokat az üzembehelyezési sablonból, és létrehoz egy deployment.json nevű fájlt egy új **config** nevű mappában. Ezután futtatja a következő két parancsot az integrált terminálon: `docker build` és `docker push`. A két parancs létrehozza a kódot, tárolóba helyezi a Java-alkalmazást, majd leküldi a kódot a megoldás inicializálásakor megadott tárolóregisztrációs adatbázisba. 
 

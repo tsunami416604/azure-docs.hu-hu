@@ -10,12 +10,12 @@ ms.component: bing-custom-search
 ms.topic: quickstart
 ms.date: 09/06/2018
 ms.author: scottwhi
-ms.openlocfilehash: 6dc10bc2dedfe99573b5ad646461e66827c6df9e
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
-ms.translationtype: HT
+ms.openlocfilehash: 7ac298ad5c5b93b5dce0ce2dd59ffe541888db88
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320169"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307763"
 ---
 # <a name="quickstart-using-the-bing-custom-search-sdk-with-c"></a>Első lépések: A Bing Custom Search SDK használata C#-pal
 
@@ -27,7 +27,7 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 - Egy használatra kész Custom Search-példány. Lásd: [Az első Bing Custom Search-példánya létrehozása](quick-start.md).  
   
-- Egy előfizetői kulcs. Használhatja az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) aktiválásakor kapott előfizetői azonosítót, vagy egy fizetős előfizetői azonosítót az Azure-irányítópultról (lásd: [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).  
+- Egy előfizetői kulcs. Használhatja az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) aktiválásakor kapott előfizetői azonosítót, vagy egy fizetős előfizetői azonosítót az Azure-irányítópultról (lásd: [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
   
 - Telepített Visual Studio 2017 telepítve. Ha még nincs telepítve, letöltheti az **ingyenes** [Visual Studio 2017 Community Editiont](https://www.visualstudio.com/downloads/).  
   

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a3ca6422bf5335604e561b71db6c75a889a74586
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 0bcff6e0cec234f17b0aaab9828602eb4a194d85
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615755"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334210"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>Oktatóanyag: Az Azure Key Vault integrálása a Resource Manager-sablon üzembehelyezési folyamatába
 
@@ -93,7 +93,7 @@ Key Vault létrehozása:
     * **Key Vault neve**: adjon megy egyedi nevet. 
     * **Bérlőazonosító**: a sablonfüggvény automatikusan lekéri a bérlőazonosítót.  Ne módosítsa az alapértelmezett értéket.
     * **AD felhasználói azonosító**: adja meg Azure AD-felhasználói objektumazonosítóját, amelyet az előző eljárásban kért le.
-    * **Titkos kód neve**: Az alapértelmezett név az **mAdminPassword**. Ha itt módosítja a titkos kód nevét, a virtuális gép üzembe helyezésekor is frissítenie kell.
+    * **Název tajného kódu**: az alapértelmezett név az **vmAdminPassword**. Ha itt módosítja a titkos kód nevét, a virtuális gép üzembe helyezésekor is frissítenie kell.
     * **Titkos kód értéke**: Adja meg a titkos kódot.  A titkos kód a virtuális gépbe való bejelentkezéshez használt jelszó. Javasolt az előző eljárásban létrehozott jelszót használni.
     * **Elfogadom a fenti feltételeket és kikötéseket**: Válassza ki.
 3. Válassza a **Paraméterek szerkesztése** lehetőséget a képernyő felső részén a sablon megtekintéséhez.

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/27/2018
 ms.author: victorh
-ms.openlocfilehash: 781365e32ce5602e9fb99b620e068ddf68de8c44
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: d69bd055c95592961216f5da1efaedc4a642fd63
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854169"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316396"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása hibrid hálózatban az Azure PowerShell használatával
 
@@ -309,9 +309,6 @@ Ezután hozzon létre néhány útvonalat:
 
 - Egy útvonalat a központi átjáró alhálózatától a küllő alhálózatához a tűzfal IP-címén keresztül
 - Egy alapértelmezett útvonalat a küllő alhálózattól a tűzfal IP-címén keresztül
-
-> [!NOTE]
-> Az Azure tűzfal megtanulja a BGP használatával a helyszíni hálózatok. Ebbe beletartozik egy alapértelmezett útvonalat, mely útvonalak internetes forgalmat a helyszíni hálózaton keresztül biztonsági másolatot. Az éles környezet esetében érdemes lehet internetes forgalmat kell küldeni a tűzfalat közvetlenül a az interneten. Hozzáadhat egy felhasználó által meghatározott alapértelmezett útvonalat (0.0.0.0/0) a AzureFirewallSubnet a következő ugrási típusú **Internet**. A helyszíni felé irányuló forgalom, továbbra is kényszerített bújtatással jut származó BGP pontosabban meghatározott útvonalakkal VPN/ExpressRoute-átjárón keresztül.
 
 ```azurepowershell
 #Create a route table

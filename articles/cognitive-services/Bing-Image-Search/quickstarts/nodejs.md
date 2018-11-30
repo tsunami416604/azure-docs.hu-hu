@@ -11,12 +11,12 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: 1584b3e0a1e1c560d42b5f8320d0e15ad6242918
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
-ms.translationtype: HT
+ms.openlocfilehash: 189533e496e90dc072f33c9560275323ba5e62c4
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294594"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312068"
 ---
 # <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-nodejs"></a>Rövid útmutató: Keresési lekérdezések küldése a Bing Image Search REST API és Node.js használatával
 
@@ -32,6 +32,8 @@ A minta forráskódja további hibakezeléssel és kódmegjegyzésekkel együtt 
 
 * A [JavaScript lekérési kódtára](https://github.com/request/request)
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
+
+Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 

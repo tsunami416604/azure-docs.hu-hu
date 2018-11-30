@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: d73284ecf40b2dfcd4954c1ddee82bf92a8931b9
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 3bad68d1a388a5bc8780df633313206afaadcef9
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281795"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422422"
 ---
 # <a name="tutorial-2-identify-common-intents-and-entities"></a>2. oktatóanyag: Gyakori szándékok és entitások azonosítása
 Ebben az oktatóanyagban módosítja az Emberi erőforrások alkalmazást. Előre összeállított szándékokat és entitásokat adhat az oktatóanyagbeli Human Resources (Emberi erőforrások) alkalmazáshoz, így gyorsan hozzáférhet a szándék-előrejelzéshez és az adatok kinyeréséhez. A kimondott szövegeket nem szükséges megcímkézni előre összeállított entitásokkal, mert az entitást a rendszer automatikusan észleli.
@@ -48,7 +48,7 @@ Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforr
 ## <a name="add-prebuilt-intents"></a>Előre összeállított szándékok hozzáadása
 A LUIS számos előre összeállított szándékot biztosít, amelyek segítenek a gyakori felhasználói szándékokban.  
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Válassza az **Add prebuilt intent** (Előre összeállított szándék hozzáadása) lehetőséget. 
 

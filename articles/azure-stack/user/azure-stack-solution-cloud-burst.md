@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 68021d25e3deab1c6551d29b0febd9f07e144b57
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 645a32f56ee2bdc4132377f2d56f61b963104e42
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095338"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334890"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>Oktatóanyag: Több felhőre kiterjedő méretezési megoldások létrehozása az Azure-ral
 
@@ -49,7 +49,7 @@ Ebben az oktatóanyagban egy mintául szolgáló környezet fog létrehozni:
 -   Egy Azure-előfizetés. Szükség esetén hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) megkezdése előtt.
 
 - Az Azure Stackkel integrált rendszereknél vagy az Azure Stack fejlesztői készletének telepítése.
-    - Látja a történő telepítése, Azure Stack [az Azure Stack fejlesztői készletének telepítése](/articles/azure-stack/asdk/asdk-install).
+    - Látja a történő telepítése, Azure Stack [az Azure Stack fejlesztői készletének telepítése](../asdk/asdk-install.md).
     - [https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1) Ez a telepítés néhány órát lehet szükség.
 
 -   Üzembe helyezése [App Service-ben](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) PaaS-szolgáltatások az Azure Stackhez.
@@ -97,7 +97,7 @@ Frissítse a tartomány DNS-zónafájljában. Az Azure AD ellenőrzi, hogy az eg
 Webes alkalmazás üzembe helyezése az Azure és az Azure Stack, hibrid folyamatos integráció és készregyártás (CI/CD) beállítása és automatikus mindkét felhőben, küldje el a módosításokat.
 
 > [!Note]  
-> Az Azure Stack megfelelő képekkel hírcsatorna-futtassa (Windows Server és SQL) és az App Service-környezet szükség. Tekintse át az App Service – dokumentáció "[az App Service-ben az Azure Stack használatának megkezdése előtt](/articles/azure-stack/azure-stack-app-service-before-you-get-started)" szakaszban az Azure Stack-operátorokról.
+> Az Azure Stack megfelelő képekkel hírcsatorna-futtassa (Windows Server és SQL) és az App Service-környezet szükség. Tekintse át az App Service – dokumentáció "[az App Service-ben az Azure Stack használatának megkezdése előtt](../azure-stack-app-service-before-you-get-started.md)" szakaszban az Azure Stack-operátorokról.
 
 ### <a name="add-code-to-visual-studio-team-services-project"></a>Adja hozzá a kódot, a Visual Studio Team Services, Project
 
@@ -259,7 +259,7 @@ Most, hogy létezik a végpont adatait, a vsts-ben az Azure Stack kapcsolat kés
 ## <a name="develop-the-application-build"></a>Fejlesztés a sestavení aplikace
 
 > [!Note]  
-> Az Azure Stack megfelelő képekkel hírcsatorna-futtassa (Windows Server és SQL) és az App Service-környezet szükség. Tekintse át az App Service – dokumentáció "[az App Service-ben az Azure Stack használatának megkezdése előtt](/articles/azure-stack/azure-stack-app-service-before-you-get-started)" szakaszban az Azure Stack-operátorokról.
+> Az Azure Stack megfelelő képekkel hírcsatorna-futtassa (Windows Server és SQL) és az App Service-környezet szükség. Tekintse át az App Service – dokumentáció "[az App Service-ben az Azure Stack használatának megkezdése előtt](../azure-stack-app-service-before-you-get-started.md)" szakaszban az Azure Stack-operátorokról.
 
 Használat [Azure Resource Manager-sablonokat, mint webes](https://azure.microsoft.com/resources/templates/) alkalmazáskód mindkét felhőben való üzembe helyezése a VSTS-ből.
 

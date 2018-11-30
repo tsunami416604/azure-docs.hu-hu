@@ -3,19 +3,19 @@ title: 'Rövid útmutató: Bing News Search API, Java'
 titlesuffix: Azure Cognitive Services
 description: Ezzel a rövid útmutatóval és a kódmintákkal gyorsan megkezdheti a Bing News Search API használatát a Microsoft Cognitive Servicesben az Azure-on.
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 9/21/2017
-ms.author: v-jerkin
-ms.openlocfilehash: f7011ceb51d4fb4a5a92c6aeb56a0c26e7d86388
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: d8ab0e10e8332cf2305185849d6446d679210845
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803630"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316837"
 ---
 # <a name="quickstart-for-bing-news-search-api-with-java"></a>Rövid útmutató a Bing News Search API és a Java használatához
 
@@ -27,7 +27,7 @@ Az API-k technikai részleteit az [API-referencia](https://docs.microsoft.com/re
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy **Bing Search API-kat** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, de beszerezhet egy fizetős előfizetői azonosítót is az Azure-irányítópultról.
+Egy **Bing Search API-kat** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, de beszerezhet egy fizetős előfizetői azonosítót is az Azure-irányítópultról. Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="bing-news-search"></a>Bing News search
 

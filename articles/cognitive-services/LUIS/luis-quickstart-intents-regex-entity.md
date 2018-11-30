@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 82d7e5ab57d9cf12c6917386282182faacb07725
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 5e8345deb629d293d9673819893181e652d5dbb9
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282390"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423415"
 ---
 # <a name="tutorial-3-extract-well-formatted-data"></a>3. oktatóanyag: Helyesen formázott adatok kinyerése
 Ebben az oktatóanyagban módosítja az Emberi erőforrások alkalmazást, hogy konzisztensen formázott adatokat nyerjen ki egy kimondott szövegből a **Reguláris kifejezés** entitás használatával.
@@ -48,7 +48,7 @@ A reguláris kifejezés megfelelő választás az ilyen típusú adatok esetén,
 > * Közzététel
 > * Szándék és entitások lekérése a végpontról
 
-[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>Meglévő alkalmazás használata
 Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű alkalmazással. 
@@ -63,7 +63,7 @@ Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforr
 
 ## <a name="findform-intent"></a>FindForm szándék
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget. 
 
@@ -90,7 +90,7 @@ Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforr
 
     Az alkalmazásban fel lettek véve előre összeállított számentitások az előző oktatóanyagban, ezért minden űrlapszám meg van címkézve. Ez elég lehet az ügyfélalkalmazásához, de a szám nem lesz megcímkézve a szám típusával. Egy új entitás létrehozása a megfelelő névvel lehetővé teszi, hogy az ügyfélalkalmazás megfelelően dolgozza fel az entitást, amikor visszakapja a LUIS-ból.
 
-    [!INCLUDE[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
+    [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
 ## <a name="regular-expression-entity"></a>Reguláriskifejezés-entitás 
 A reguláriskifejezés-entitás, amelyet meg kell feleltetni az űrlapszámnak: `hrf-[0-9]{6}`. Ez a reguláriskifejezés-entitás megfelelteti egymásnak a `hrf-` karaktereket, de figyelmen kívül hagyja, hogy kis- vagy nagybetűvel szerepelnek-e, illetve a kulturális változatokat. Megfelelteti egymásnak a számjegyeket 0-tól 9-ig, pontosan 6 számjegyet.

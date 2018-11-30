@@ -10,12 +10,12 @@ ms.component: bing-video-search
 ms.topic: quickstart
 ms.date: 01/29/2018
 ms.author: rosh
-ms.openlocfilehash: 6cf7a16fa28602e5e3733741db8bfb7296882487
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.openlocfilehash: bf8eece4b5afe34635d80a57cc12c26a8ed157d6
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219940"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314132"
 ---
 # <a name="quickstart-bing-video-search-sdk-with-c"></a>Rövid útmutató: Bing Video Search SDK C# használatával 
 
@@ -24,6 +24,7 @@ A Bing Video Search SDK a REST API funkcióit tartalmazza a webes kérelmekhez �
 A [C# Bing Video Search SDK-minták forráskódja](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVideoSearch) elérhető a GitHubon.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
+A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a **Keresés** területen kérheti le.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 Ha a Bing Video Search SDK-val szeretne beállítani egy konzolalkalmazást, keresse meg a `Manage NuGet Packages` lehetőséget a Visual Studióban, a Megoldáskezelőben.  Vegye fel a `Microsoft.Azure.CognitiveServices.Search.VideoSearch` csomagot.
 

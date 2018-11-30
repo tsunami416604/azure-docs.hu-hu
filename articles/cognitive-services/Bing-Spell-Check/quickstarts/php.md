@@ -10,12 +10,12 @@ ms.component: bing-spell-check
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: aahi
-ms.openlocfilehash: cb72cfa75acd543086dc4743dc1f99a618e60aaa
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 97332b063a649795cffd7ff0bf00829a554d98ac
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161616"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312833"
 ---
 # <a name="quickstart-for-bing-spell-check-api-with-php"></a>Rövid útmutató a Bing Spell Check API és a PHP használatához 
 
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, hogyan használható a [Bing Spell Check API](https://azure
 
 A kód futtatásához [PHP 5.6.x](http://php.net/downloads.php) használata szükséges.
 
-Rendelkeznie kell egy, a **Bing Spell Check API 7-es verzióját** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/#lang) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, vagy beszerezhet egy fizetős előfizetői azonosítót az Azure-irányítópultról.
+Rendelkeznie kell egy, a **Bing Spell Check API 7-es verzióját** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/#lang) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, vagy beszerezhet egy fizetős előfizetői azonosítót az Azure-irányítópultról.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="get-spell-check-results"></a>Spell Check-eredmények lekérése
 

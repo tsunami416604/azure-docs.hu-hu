@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/18/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: cff6d38867ef8ecaf1435fd4c4cc22fe63d70575
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 586e60316ba8bf4f485a151e77015fa3ed104df7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283246"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317415"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása
 
@@ -131,7 +131,7 @@ A Site Recovery lekéri az előfizetéshez és az erőforráscsoporthoz/felhősz
 A Site Recovery létrehozza a célrégióra vonatkozó alapértelmezett beállításokat és replikációs szabályzatot. A beállításokat, szükség szerint módosíthatja.
 
 1. A célra és a replikációra vonatkozó beállítások megtekintéséhez kattintson a **Beállítások** elemre.
-2. Az alapértelmezett célbeállítások felülbírálásához kattintson a **Testreszabás** elemre az **Erőforráscsoport, hálózat, tárolás és rendelkezésre állási készletek** mellett.
+2. Az alapértelmezett célbeállítások felülbírálásához kattintson **Testreszabás** melletti **erőforráscsoport, hálózat, tárolás és rendelkezésre állási**.
 
   ![Beállítások konfigurálása](./media/azure-to-azure-tutorial-enable-replication/settings.png)
 
@@ -154,7 +154,14 @@ A Site Recovery létrehozza a célrégióra vonatkozó alapértelmezett beállí
       >
 
     - **Replika felügyelt lemezek (ha a forrás virtuális gép felügyelt lemezeket használ)**: Alapértelmezés szerint a Site Recovery replika felügyelt lemezeket hoz létre a célrégióban a forrás virtuális gép felügyelt lemezeinek azokkal azonos tártípusban (standard vagy prémium) való tükrözéséhez.
-    - **Cél rendelkezésre állási csoportok**: Alapértelmezés szerint a Site Recovery létrehoz egy új rendelkezésre állási csoportot a célrégióban az „asr” utótaggal. Rendelkezésre állási csoportot csak vehet fel, ha a virtuális gépek egy csoport részei a forrásrégióban.
+    - **Cél rendelkezésre állási csoportok**: alapértelmezés szerint az Azure Site Recovery létrehoz egy új rendelkezésre állási csoportot a célrégióban a virtuális gépek része egy rendelkezésre állási csoportot a forrásrégióban az "asr" utótaggal rendelkező nevű. Rendelkezésre állási csoport létrehozása az Azure Site Recovery már létezik, a rendszer újra.
+    - **Cél rendelkezésre állási zónák**: alapértelmezés szerint a Site Recovery zóna száma azonos a célrégióban a forrás régiójára rendeli, ha a célrégióban támogatja a rendelkezésre állási zónák. 
+
+    A célrégió nem támogatja a rendelkezésre állási zónák használatát, ha a cél virtuális gépek alapértelmezés szerint egyetlen példány van konfigurálva. Ha szükséges, az ilyen virtuális gépek rendelkezésre állási csoportot a célrégióban kell "Testreszabás" gombra kattintva konfigurálhatja.
+
+    >[!NOTE]
+    >A rendelkezésre állási típusa – egyetlen példány, a rendelkezésre állási csoport vagy a rendelkezésre állási zónában, a replikáció engedélyezése után nem módosítható. Tiltsa le majd engedélyezze a rendelkezésre állási típusának módosításához kell.
+    >
 
 4. Replikációs házirend beállításainak testre szabhatja, kattintson a **Testreszabás** melletti **replikációs házirend**, és szükség szerint a következő beállításokat módosíthatja:
 

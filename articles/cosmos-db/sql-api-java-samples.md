@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: sample
 ms.date: 02/08/2018
 ms.author: sngun
-ms.openlocfilehash: ec13a594750132bc016d1383eb4b0a08fdf6114e
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
-ms.translationtype: HT
+ms.openlocfilehash: 00098b02e5f007cfad1076eb3759c424dd9a5d3e
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831829"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52333870"
 ---
 # <a name="azure-cosmos-db-java-examples-for-the-sql-api"></a>Azure Cosmos DB: Java-példák az SQL API-hoz
 
@@ -123,7 +123,7 @@ A [CollectionCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/ma
 | --- | --- |
 | [Index létrehozása és indexelési szabályzat beállítása](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java#L125-L141) | [Index](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._index)<br>[IndexingPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._indexing_policy) |
 
-További információ az indexelésről: [Azure Cosmos DB indexelési szabályzat](indexing-policies.md).
+További információ az indexelésről: [Azure Cosmos DB indexelési szabályzat](index-policy.md).
 
 ## <a name="query-examples"></a>Lekérdezéspéldák
 A [DocumentQuerySamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentQuerySamples.java) fájl mutatja a következő feladatok elvégzési módját:
@@ -133,7 +133,7 @@ A [DocumentQuerySamples](https://github.com/Azure/azure-documentdb-java/blob/mas
 | [Partíciók közötti egyszerű dokumentumlekérdezés végrehajtása](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentQuerySamples.java#L108-L129) | [DocumentClient.queryDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client.querydocuments)<br>[FeedOptions.setEnableCrossPartitionQuery](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._feed_options.setenablecrosspartitionquery) |
 | [Lekérdezés szerinti rendezés](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentQuerySamples.java#L132-L154) | [FeedResponse<T>.getQueryIterator](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._feed_response.getqueryiterator) |
 
-További információ a lekérdezések írásáról: [SQL-lekérdezés az Azure Cosmos DB-ben](sql-api-sql-query.md).
+További információ a lekérdezések írásáról: [SQL-lekérdezés az Azure Cosmos DB-ben](how-to-sql-query.md).
 
 ## <a name="offer-examples"></a>Ajánlatpéldák
 Az [OfferCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/OfferCrudSamples.java) fájl bemutatja, hogyan végezheti el a következő feladatokat:

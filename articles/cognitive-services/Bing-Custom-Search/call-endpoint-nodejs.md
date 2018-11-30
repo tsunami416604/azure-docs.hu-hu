@@ -3,19 +3,19 @@ title: 'Első lépések: Végpont hívása Node.js használatával – Bing Cust
 titlesuffix: Azure Cognitive Services
 description: Ez a rövid útmutató bemutatja, hogyan kérhet le keresési eredményeket egyéni keresési példányokról a Bing Custom Search-végpont Node.js-sel való meghívásával.
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2018
-ms.author: v-brapel
-ms.openlocfilehash: af77b4c06b61cda4fd18d19ac3578129004c4914
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: c0c97dd52f8fc3ff590c86f32f794beeb00f4b05
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167205"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310252"
 ---
 # <a name="quickstart-call-bing-custom-search-endpoint-nodejs"></a>Első lépések: Bing Custom Search-végpont hívása (Node.js)
 
@@ -25,13 +25,13 @@ Ez a rövid útmutató bemutatja, hogyan kérhet le keresési eredményeket egy�
 
 A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
-- Egy használatra kész egyéni keresési példány. Lásd: [Az első Bing Custom Search-példány létrehozása](quick-start.md).
+- Egy használatra kész Custom Search-példány. Lásd: [Az első Bing Custom Search-példánya létrehozása](quick-start.md).
 - Telepített [Node.js](https://www.nodejs.org/).
-- Egy előfizetői azonosító. Használhatja az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) aktiválásakor kapott előfizetői azonosítót, vagy egy fizetős előfizetői azonosítót az Azure-irányítópultról (lásd: [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
+- Egy előfizetői kulcs. Használhatja az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) aktiválásakor kapott előfizetői azonosítót, vagy egy fizetős előfizetői azonosítót az Azure-irányítópultról (lásd: [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).   Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-A minta futtatásához kövesse az alábbi lépéseket:
+A példa futtatásához kövesse az alábbi lépéseket:
 
 1. Hozzon létre egy mappát a kód számára.  
   
@@ -81,6 +81,6 @@ A minta futtatásához kövesse az alábbi lépéseket:
     ``` 
 
 ## <a name="next-steps"></a>További lépések
-- [Az üzemeltetett felhasználói felületi élmény konfigurálása](./hosted-ui.md)
-- [Díszítő megjelölések használata szövegkiemeléshez](./hit-highlighting.md)
-- [Webhelyek lapozása](./page-webpages.md)
+- [Üzemeltetett felhasználói felület konfigurálása](./hosted-ui.md)
+- [Díszítő jelölők használata szövegkiemeléshez](./hit-highlighting.md)
+- [Weboldalak lapozása](./page-webpages.md)

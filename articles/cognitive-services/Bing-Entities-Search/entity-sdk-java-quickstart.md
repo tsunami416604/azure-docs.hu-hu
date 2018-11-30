@@ -10,12 +10,12 @@ ms.component: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/19/2018
 ms.author: v-gedod
-ms.openlocfilehash: eeb8e6e0ac132ef2d927aa2de03817389230191e
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
-ms.translationtype: HT
+ms.openlocfilehash: 291a307d4fd7c0fa723b8b17c13b3ef13cdeb8de
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814491"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316820"
 ---
 # <a name="quickstart-bing-entity-search-sdk-with-java"></a>Rövid útmutató: Bing Entity Search SDK Javával
 
@@ -24,7 +24,9 @@ A Bing Entity Search SDK a REST API funkciót biztosítja az entitáslekérdezé
 A [Java Bing Entity Search SDK-minták forráskódja](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch) elérhető a GitHubon. 
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
-A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a **Keresés** területen kérheti le. Telepítse a Bing Entity Search SDK függőségeit a Maven, a Gradle vagy más függőségkezelési rendszer segítségével. A Maven POM-fájlhoz a következő deklarációra van szükség:
+A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a **Keresés** területen kérheti le.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+
+Telepítse a Bing Entity Search SDK függőségeit a Maven, a Gradle vagy más függőségkezelési rendszer segítségével. A Maven POM-fájlhoz a következő deklarációra van szükség:
 ```
   <dependencies>
     <dependency>
@@ -34,7 +36,7 @@ A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/c
     </dependency>
   </dependencies>
 ```
-## <a name="entity-search-client"></a>Entity Search ügyfél
+## <a name="entity-search-client"></a>Entity Search-ügyfél
 Vegyen fel importálásokat az osztályimplementációhoz.
 ```
 import com.microsoft.azure.cognitiveservices.entitysearch.*;

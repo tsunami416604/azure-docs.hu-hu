@@ -10,16 +10,16 @@ ms.component: bing-spell-check
 ms.topic: quickstart
 ms.date: 06/21/2016
 ms.author: scottwhi
-ms.openlocfilehash: 29ee7cb4ee648d20b425939553ba31cd9ac150f0
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.openlocfilehash: 4af90c0e1ffd6dbadcb31eb6141bc24f746d01f9
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804191"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316412"
 ---
 # <a name="quickstart-your-first-spell-check-request"></a>Rövid útmutató: Az első helyesírás-ellenőrzési kérés
 
-Ahhoz, hogy elvégezhesse az első hívást, be kell szereznie egy Cognitive Services-előfizetői azonosítót. Az előfizetői azonosító beszerzéséhez lásd [A Cognitive Services kipróbálása](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api) témakört.
+A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a **Keresés** területen kérheti le.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 Egy szöveges karakterlánc helyesírási és nyelvtani hibáinak megkereséséhez GET kérést kell küldenie a következő végpontra:  
   

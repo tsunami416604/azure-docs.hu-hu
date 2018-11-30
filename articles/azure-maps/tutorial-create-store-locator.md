@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9f77beb8c51fb3a06045183433907e1c634fb45d
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 7c7891d8a73142c78b1ca80027d685b93a062d06
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820273"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317908"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Egy tároló-lokátor létrehozása az Azure Maps használatával
 
@@ -81,7 +81,7 @@ Az adatok képernyőkép megnézzük, jobban láthatóvá tesszük a következő
 * Néhány további oszlopokat a kávézóban – üzemelő hálózathoz kapcsolódó metaadatokat tartalmaz: egy telefonszám, Wi-Fi elérési pontokról készített és tolószéket kisegítő lehetőségek, valamint a tároló megnyitása és bezárása 24 órás formátumban többször logikai típusú oszlopokat. A saját számára a helyadatok fontosabb metaadatokat tartalmazó oszlopokat hozhat létre.
 
 > [!Note]
-> Az Azure maps gömbös Mercato kivetítés (EPSG:3857) használja.
+> Az Azure Maps rendereli a gömbös Mercator vetületet "EPSG:3857" adatokat, de olvassa be az adatokat a "EPSG:4325", amely a WGS84 datum használja. 
 
 Számos módon tegye elérhetővé az alkalmazáshoz az adatkészletet. Egy megoldás, az adatok betöltéséhez az adatbázisba, és elérhetővé tehettük egy webszolgáltatás, amelyet le az adatokat, és elküldi az eredményeket a felhasználó böngészőjében. Ez a beállítás ideális a nagy adatkészletek vagy adatkészleteket, amelyek gyakran frissülnek. Ez a beállítás azonban jóval több fejlesztési munkát igényel, és magasabb költsége. 
 

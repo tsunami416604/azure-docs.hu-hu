@@ -10,12 +10,12 @@ ms.component: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/15/2018
 ms.author: v-gedod
-ms.openlocfilehash: 908373a216d0b14bb2dd41d3bb740b5582ac3ab1
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
-ms.translationtype: HT
+ms.openlocfilehash: 4e79fdbf465c04075320b71b5471b196e603d046
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814236"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316004"
 ---
 # <a name="quickstart-bing-entity-search-sdk-with-python"></a>Rövid útmutató: A Bing Entity Search SDK a Python használatával
 
@@ -24,6 +24,8 @@ Az Entity Search SDK a REST API funkcióit biztosítja az internetes lekérdezé
 A [Python Bing Entity Search SDK-minták forráskódja](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/entity_search_samples.py) elérhető a GitHubon.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
+A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a **Keresés** területen kérheti le.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+
 Ha még nincs telepítve a Python, telepítse. Az SDK a Python 2.7-es, 3.3-as, 3.4-es, 3.5-ös és 3.6-os verziójával kompatibilis.
 
 A Pythonnal való fejlesztéskor általánosságban javasolt egy [virtuális környezet](https://docs.python.org/3/tutorial/venv.html) használata. Telepítse és inicializálja a virtuális környezetet az új [venv modullal](https://pypi.python.org/pypi/virtualenv). Telepítse a Python 2.7-hez készült virtualenv modult.

@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 11/21/2018
 ms.author: erhopf
-ms.openlocfilehash: fcf913762eb883d299c93e4579c9c81b03739ddb
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 4987a50f7a689b74062154b8427fd7bec8e2e8a6
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290875"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334310"
 ---
 # <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-c"></a>Rövid útmutató: Szöveg átírása a Translator Text REST API használatával (C#)
 
@@ -41,6 +41,12 @@ cd transliterate-sample
 
 Az első parancs két dolgot eredményez. Egy új .NET-konzolalkalmazást hoz létre, és létrehoz egy könyvtárat nevű `transliterate-sample`. A második parancs módosítja a projekt számára a könyvtárba.
 
+Ezt követően kell telepíteni a Json.Net. A projekt könyvtárában futtassa:
+
+```console
+dotnet add package Newtonsoft.Json --version 11.0.2
+```
+
 ## <a name="add-required-namespaces-to-your-project"></a>Adja hozzá a projekthez szükséges névterek
 
 A `dotnet new console` parancsot, amely futtatta korábban létrehozott egy projektet, beleértve a `Program.cs`. Ez a fájl meg, ahová az alkalmazás kódjában fog. Nyissa meg `Program.cs`, és cserélje le a meglévő using utasítások. Ezek az utasítások győződjön meg arról, hogy a minta-alkalmazás létrehozásához és futtatásához szükséges összes típusú hozzáférést.
@@ -52,9 +58,9 @@ using System.Text;
 using Newtonsoft.Json;
 ```
 
-## <a name="create-a-function-to-translate-text"></a>Szöveg lefordítása a függvény létrehozása
+## <a name="create-a-function-to-transliterate-text"></a>Hozzon létre egy függvényt, amely szöveges átírás
 
-Belül a `Program` osztály, hozzon létre egy függvényt, nevű `TransliterateText`. Ez az osztály a fordítás erőforrás meghívása, és nyomtassa ki a konzol eredményt használt kódot magában foglalja.
+Belül a `Program` osztály, hozzon létre egy függvényt, nevű `TransliterateText`. Ez az osztály magában foglalja a Transliterate erőforrás meghívásához használt kódot, és kinyomtatja az eredményt a konzolon.
 
 ```csharp
 static void TransliterateText()
@@ -68,7 +74,7 @@ static void TransliterateText()
 
 ## <a name="set-the-subscription-key-host-name-and-path"></a>Az előfizetési kulcs, állomás neve és elérési útja
 
-Adja hozzá ezeket a sorokat a `TransliterateText` függvény. Láthatja, hogy az a `api-version`, két további paraméterek hozzáfűzött lett a `route`. Ezek a paraméterek segítségével állítsa be a fordítási kimenetek. Ebben a példában a német van beállítva (`de`) és olasz (`it`). Ellenőrizze, hogy frissíti az előfizetési kulcs értékét.
+Adja hozzá ezeket a sorokat a `TransliterateText` függvény. Láthatja, hogy az a `api-version`, két további paraméterek hozzáfűzött lett a `route`. Ezek a paraméterek segítségével állítsa be a beviteli nyelv és a parancsfájlok átbetűzésű. Ebben a példában japán nyelvre van beállítva (`jpan`) és a Latin (`latn`). Ellenőrizze, hogy frissíti az előfizetési kulcs értékét.
 
 ```csharp
 string host = "https://api.cognitive.microsofttranslator.com";
@@ -76,7 +82,7 @@ string route = "/transliterate?api-version=3.0&language=ja&fromScript=jpan&toScr
 string subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
 ```
 
-Következő lépésként hozzon létre, és az JSON-objektumot, amely tartalmazza a fordítandó szöveg. Tartsa szem előtt, az egynél több objektumot továbbíthatja a `body` tömb.
+Következő lépésként hozhat létre, és az JSON-objektumot, amely tartalmazza a kívánt átbetűzés szöveget. Tartsa szem előtt, az egynél több objektumot továbbíthatja a `body` tömb.
 
 ```csharp
 System.Object[] body = new System.Object[] { new { Text = @"こんにちは" } };
@@ -121,7 +127,7 @@ request.Content = new StringContent(requestBody, Encoding.UTF8, "application/jso
 // Add the authorization header
 request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
 
-// Send request to Azure service, get response
+// Send request, get response
 var response = client.SendAsync(request).Result;
 var jsonResponse = response.Content.ReadAsStringAsync().Result;
 
@@ -141,7 +147,7 @@ Console.ReadLine();
 
 ## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
 
-Ennyi az egész, készen áll a szöveg-hang transzformációs mintaalkalmazás futtatásához. A parancssor (vagy a terminál-munkamenetben) lépjen a projektkönyvtárba, majd futtassa:
+Ennyi az egész, készen áll a mintaalkalmazás futtatásához. A parancssor (vagy a terminál-munkamenetben) lépjen a projektkönyvtárba, majd futtassa:
 
 ```console
 dotnet run
@@ -164,7 +170,7 @@ Ellenőrizze, hogy a bizalmas adatok eltávolítása a mintaalkalmazás forrásk
 
 ## <a name="next-steps"></a>További lépések
 
-A GitHubon megismerheti a rövid útmutató és egyebek mintakódját, beleértve az átírást és a nyelvfelismerést is, valamint más Translator Text-projekteket.
+A GitHubon megismerheti a rövid útmutató és egyebek mintakódját, beleértve a fordítást és a nyelvfelismerést is, valamint más Translator Text-projekteket.
 
 > [!div class="nextstepaction"]
 > [A C#-példák megismerése a GitHubon](https://aka.ms/TranslatorGitHub?type=&language=c%23)

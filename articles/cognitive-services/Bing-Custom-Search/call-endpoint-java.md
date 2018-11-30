@@ -3,19 +3,19 @@ title: 'Rövid útmutató: Végpont hívása Java használatával – Bing Custo
 titlesuffix: Azure Cognitive Services
 description: Ez a rövid útmutató bemutatja, hogyan kérhet le keresési eredményeket egyéni keresési példányokról a Bing Custom Search-végpont Javával való meghívásával.
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2018
-ms.author: v-brapel
-ms.openlocfilehash: 99ce1b982296387423ec6e8fdfb592ee9fd32b73
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: 5b4494f7840dd9b32cad88ecda800e4dac9c4d8a
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51974226"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315919"
 ---
 # <a name="quickstart-call-bing-custom-search-endpoint-java"></a>Rövid útmutató: A Bing Custom Search-végpont meghívása (Java)
 
@@ -27,7 +27,7 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 - Egy használatra kész Custom Search-példány. Lásd: [Az első Bing Custom Search-példánya létrehozása](quick-start.md).
 - Telepített [Java](https://www.java.com).
-- Egy előfizetői kulcs. Használhatja az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) aktiválásakor kapott előfizetői azonosítót, vagy egy fizetős előfizetői azonosítót az Azure-irányítópultról (lásd: [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
+- Egy előfizetői kulcs. Használhatja az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) aktiválásakor kapott előfizetői azonosítót, vagy egy fizetős előfizetői azonosítót az Azure-irányítópultról (lásd: [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).   Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="run-the-code"></a>A kód futtatása
 

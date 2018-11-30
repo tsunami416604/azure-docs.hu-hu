@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 11/20/2018
 ms.author: erhopf
-ms.openlocfilehash: da91a7f84aa2860ef495af1cec412e34213d7e41
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 06e294187247636c552dfd4a7d02167eb55be19a
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291232"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334703"
 ---
 # <a name="quickstart-translate-text-with-the-translator-text-rest-api-c"></a>Rövid útmutató: Szöveg lefordítása a Translator Text REST API (C#) használatával
 
@@ -41,6 +41,12 @@ cd translate-sample
 
 Az első parancs két dolgot eredményez. Egy új .NET-konzolalkalmazást hoz létre, és létrehoz egy könyvtárat nevű `translate-sample`. A második parancs módosítja a projekt számára a könyvtárba.
 
+Ezt követően kell telepíteni a Json.Net. A projekt könyvtárában futtassa:
+
+```console
+dotnet add package Newtonsoft.Json --version 11.0.2
+```
+
 ## <a name="add-required-namespaces-to-your-project"></a>Adja hozzá a projekthez szükséges névterek
 
 A `dotnet new console` parancsot, amely futtatta korábban létrehozott egy projektet, beleértve a `Program.cs`. Ez a fájl meg, ahová az alkalmazás kódjában fog. Nyissa meg `Program.cs`, és cserélje le a meglévő using utasítások. Ezek az utasítások győződjön meg arról, hogy a minta-alkalmazás létrehozásához és futtatásához szükséges összes típusú hozzáférést.
@@ -54,7 +60,7 @@ using Newtonsoft.Json;
 
 ## <a name="create-a-function-to-translate-text"></a>Szöveg lefordítása a függvény létrehozása
 
-Belül a `Program` osztály, hozzon létre egy függvényt, nevű `TranslateText`. Ez az osztály a fordítás erőforrás meghívása, és nyomtassa ki a konzol eredményt használt kódot magában foglalja.
+Belül a `Program` osztály, hozzon létre egy függvényt, nevű `TranslateText`. Ez az osztály magában foglalja a fordítás erőforrás meghívásához használt kódot, és kinyomtatja az eredményt a konzolon.
 
 ```csharp
 static void TranslateText()
@@ -121,7 +127,7 @@ request.Content = new StringContent(requestBody, Encoding.UTF8, "application/jso
 // Add the authorization header
 request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
 
-// Send request to Azure service, get response
+// Send request, get response
 var response = client.SendAsync(request).Result;
 var jsonResponse = response.Content.ReadAsStringAsync().Result;
 
@@ -141,7 +147,7 @@ Console.ReadLine();
 
 ## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
 
-Ennyi az egész, készen áll a szöveg-hang transzformációs mintaalkalmazás futtatásához. A parancssor (vagy a terminál-munkamenetben) lépjen a projektkönyvtárba, majd futtassa:
+Ennyi az egész, készen áll a mintaalkalmazás futtatásához. A parancssor (vagy a terminál-munkamenetben) lépjen a projektkönyvtárba, majd futtassa:
 
 ```console
 dotnet run

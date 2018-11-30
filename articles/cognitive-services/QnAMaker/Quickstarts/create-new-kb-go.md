@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: diberry
-ms.openlocfilehash: a1f477dd02e048a3bfb77463c2d9857ee32fb8fb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 06a156ebeee2467cdc756761984b6a069121b665
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235309"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52333275"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-go"></a>Rövid útmutató: Tudásbázis létrehozása a QnA Makerben a Go használatával
 
@@ -72,7 +72,7 @@ Az alábbi függvények hozzáadásával egy HTTP POST-kérés segítségével l
 
 [!code-go[Add the create_kb method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=85-97 "Add the create_kb method")]
 
-Az API egy JSON-választ ad vissza, amely tartalmazza a művelet azonosítóját a **Location** fejlécmezőben. A művelet azonosítója alapján megállapíthatja, hogy a tudásbázis sikeresen létrejött-e. 
+Az API egy JSON-választ ad vissza, amely tartalmazza a művelet azonosítóját. A művelet azonosítója alapján megállapíthatja, hogy a tudásbázis sikeresen létrejött-e. 
 
 ```JSON
 {

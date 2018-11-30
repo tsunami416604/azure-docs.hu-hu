@@ -10,18 +10,19 @@ ms.component: bing-spell-check
 ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
-ms.openlocfilehash: ad09c1d6f9e7cea1150ce1638c723c5c35d66a32
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 3050bc06c30c29efe7ba5294cbbee2aea1a6055b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284438"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311602"
 ---
 # <a name="quickstart-bing-spell-check-sdk-with-c"></a>Rövid útmutató: A Bing Spell Check SDK és a C# használata
 
 A Bing Spell Check SDK tartalmazza a REST API funkcióit a helyesírás-ellenőrzéshez.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
+A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a **Keresés** területen kérheti le.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 Ha a Bing Spell Check SDK-val szeretne beállítani egy konzolalkalmazást, keresse meg a `Manage NuGet Packages` lehetőséget a Visual Studióban, a Megoldáskezelőben. Vegye fel a `Microsoft.Azure.CognitiveServices.Language.SpellCheck` csomagot.
 

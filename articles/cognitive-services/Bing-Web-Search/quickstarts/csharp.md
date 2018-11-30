@@ -3,19 +3,19 @@ title: 'Rövid útmutató: Keresés a C# használatával – Bing Web Search API
 titleSuffix: Azure Cognitive Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre első Bing Web Search API-hívását a C# használatával, majd hogyan fogadhatja a JSON-választ.
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
-ms.author: erhopf
-ms.openlocfilehash: 7f0555a9bb655109ff8786d3a0873d997d715477
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: d868bec1e19ddde556f3c387646c5d7aa898b7d9
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124762"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313486"
 ---
 # <a name="quickstart-use-c-to-call-the-bing-web-search-api"></a>Rövid útmutató: A Bing Web Search API meghívása a C# segítségével  
 
@@ -23,8 +23,9 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
-## <a name="prerequisites"></a>Előfeltételek
+Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
+## <a name="prerequisites"></a>Előfeltételek
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
 * Windows: [Visual Studio 2017](https://www.visualstudio.com/downloads/)

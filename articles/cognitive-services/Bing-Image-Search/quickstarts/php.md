@@ -11,12 +11,12 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 9/07/2018
 ms.author: aahi
-ms.openlocfilehash: ac3de25773249119535ac6f3bd063ff6b9b7831e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
-ms.translationtype: HT
+ms.openlocfilehash: b3143a34590e41d0222b4e4aa6eeda07ee407e45
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295529"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311857"
 ---
 # <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-php"></a>Rövid útmutató: Keresési lekérdezések küldése a Bing Image Search REST API és PHP használatával
 
@@ -31,6 +31,8 @@ A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-se
 * [A PHP 5.6.x-es vagy újabb verziója](http://php.net/downloads.php).
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
+
+Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 

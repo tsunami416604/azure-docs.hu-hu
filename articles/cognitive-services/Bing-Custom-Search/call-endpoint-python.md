@@ -3,19 +3,19 @@ title: 'Rövid útmutató: Végpont meghívása a Python – Bing Custom Search 
 titlesuffix: Azure Cognitive Services
 description: Ez a rövid útmutató bemutatja, hogyan kérhet keresési eredményeket az egyéni keresési példányán, Pythont használva a Bing Custom Search-végpont meghívásához.
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2018
-ms.author: v-brapel
-ms.openlocfilehash: d16b7354b0ef727ba3c670b97105e1bd6f99034e
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: d7977f49a484665f133a119f491bd8986c0b6fc4
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815460"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310719"
 ---
 # <a name="quickstart-call-bing-custom-search-endpoint-python"></a>Rövid útmutató: a Bing Custom Search-végpont meghívása (Python)
 
@@ -25,9 +25,9 @@ Ez a rövid útmutató bemutatja, hogyan kérhet keresési eredményeket az egy�
 
 A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
-- Egy használatra kész egyéni keresési példány. Lásd: [Az első Bing Custom Search-példány létrehozása](quick-start.md).
+- Egy használatra kész Custom Search-példány. Lásd: [Az első Bing Custom Search-példány létrehozása](quick-start.md).
 - Telepített [Python](https://www.python.org/).
-- Előfizetési azonosító. Kaphat egy előfizetési azonosítót az [ingyenes próbaidőszak](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) aktiválásakor, vagy használhat egy díjköteles előfizetési azonosítót az Azure irányítópultján (lásd: [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
+- Előfizetési azonosító. Használhatja az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) aktiválásakor kapott előfizetői azonosítót, vagy egy fizetős előfizetői azonosítót az Azure-irányítópultról (lásd: [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).   Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 
 ## <a name="run-the-code"></a>A kód futtatása
@@ -67,6 +67,6 @@ A példa futtatásához kövesse az alábbi lépéseket:
     ```
 
 ## <a name="next-steps"></a>További lépések
-- [Szolgáltatott felhasználói felületi élmény konfigurálása](./hosted-ui.md)
-- [Dekorációs jelölők használata szöveg kiemelésére](./hit-highlighting.md)
-- [Weblapok lapozása](./page-webpages.md)
+- [Üzemeltetett felhasználói felület konfigurálása](./hosted-ui.md)
+- [Díszítő jelölők használata szövegkiemeléshez](./hit-highlighting.md)
+- [Weboldalak lapozása](./page-webpages.md)

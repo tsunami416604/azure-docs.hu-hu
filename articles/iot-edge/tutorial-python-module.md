@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 09/21/2018
+ms.date: 11/25/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5c05145c550e0d218e009ad33b2a88a2ec0dfd18
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 00e04f4cab11b33dc0d7bf718ac15009c673727f
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566295"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312816"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device"></a>Oktatóanyag: Python-alapú IoT Edge-modul fejlesztése és üzembe helyezése szimulált eszközön
 
@@ -56,16 +56,31 @@ Fejlesztési erőforrások:
 >Ügyeljen arra, hogy a `bin` mappa van a platform elérési útján legyen. Ez általában a `~/.local/` út a UNIX és macOS rendszeren, és `%APPDATA%\Python` a Windows rendszeren.
 
 ## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
-Ebben az oktatóanyagban a VS Code-hoz készült Azure IoT Edge bővítménnyel épít fel egy modult és hoz létre egy **tárolórendszerképet** a fájlokból. Ezután ezt a rendszerképet leküldi a rendszerképeit tároló és felügyelő **beállításjegyzékbe**. Végül üzembe helyezi a rendszerképet a beállításjegyzékből az IoT Edge-eszközön való futtatáshoz.  
 
-Ehhez az oktatóanyaghoz bármilyen Docker-kompatibilis beállításjegyzéket használhat. A Dockerhez a felhőben elérhető két népszerű regisztrációsadatbázis-szolgáltatás az [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) és a [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). Ez az oktatóanyag az Azure Container Registryt használja. 
+Ebben az oktatóanyagban használhatja az Azure IoT Edge-bővítmény a Visual Studio Code fel egy modult, és hozzon létre egy **tárolórendszerkép** a fájlokból. Ezután ezt a rendszerképet leküldi a rendszerképeit tároló és felügyelő **beállításjegyzékbe**. Végül üzembe helyezi a rendszerképet a beállításjegyzékből az IoT Edge-eszközön való futtatáshoz.  
 
-1. Az [Azure Portalon](https://portal.azure.com) válassza az **Erőforrás létrehozása** > **Tárolók** > **Azure Container Registry** elemet.
-2. Nevezze el a beállításjegyzéket, válasszon egy előfizetést, válasszon egy erőforráscsoportot, és állítsa be az **Alapszintű** termékváltozatot. 
-3. Kattintson a **Létrehozás** gombra.
-4. Miután létrejött a tárolóregisztrációs adatbázis, keresse meg, és válassza a **Hozzáférési kulcsok** elemet. 
-5. A **Rendszergazdai felhasználó** beállítást váltsa **Engedélyezés** értékre.
-6. Másolja a **Bejelentkezési kiszolgáló**, a **Felhasználónév** és a **Jelszó** értékeit. Ezeket az értékeket az oktatóanyag későbbi részében fogja használni. 
+Minden olyan Docker-kompatibilis beállításjegyzéket a tárolólemezképek tárolására használható. Két népszerű Docker beállításjegyzék szolgáltatások [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) és [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). Ez az oktatóanyag az Azure Container Registryt használja. 
+
+Ha még nem rendelkezik egy tároló-beállításjegyzéket, az alábbi lépésekkel hozzon létre egy új Azure-ban:
+
+1. Az [Azure Portalon](https://portal.azure.com) válassza az **Erőforrás létrehozása** > **Tárolók** > **Container Registry** elemet.
+
+2. Adja meg a következő értékeket a tárolóregisztrációs adatbázis létrehozásához:
+
+   | Mező | Érték | 
+   | ----- | ----- |
+   | Beállításjegyzék neve | Egyedi nevet adjon meg. |
+   | Előfizetés | A legördülő listából válasszon egy előfizetést. |
+   | Erőforráscsoport | Javasoljuk, hogy az IoT Edge rövid útmutatók és oktatóanyagok során elkészített erőforráscsoportot használja minden teszterőforráshoz. Például: **IoTEdgeResources**. |
+   | Hely | Válassza ki az Önhöz legközelebb eső helyet. |
+   | Rendszergazdai felhasználó | Állítsa **Engedélyezés** értékre. |
+   | SKU | Válassza az **Alapszintű** lehetőséget. | 
+
+5. Kattintson a **Létrehozás** gombra.
+
+6. Miután létrejött a tárolóregisztrációs adatbázis, keresse meg, majd válassza a **Hozzáférési kulcsok** elemet. 
+
+7. Másolja a **Bejelentkezési kiszolgáló**, a **Felhasználónév** és a **Jelszó** értékeit. A tároló-beállításjegyzékbe való hozzáférés biztosításához az oktatóanyag későbbi részében használja ezeket az értékeket. 
 
 ## <a name="create-an-iot-edge-module-project"></a>IoT Edge-modulprojekt létrehozása
 A következő lépésekben létrehozunk egy IoT Edge Python-modult a Visual Studio Code és az Azure IoT Edge bővítmény használatával.
@@ -74,7 +89,7 @@ A következő lépésekben létrehozunk egy IoT Edge Python-modult a Visual Stud
 
 A **cookiecutter** Python-csomag használatával létrehozhat egy Python-megoldássablont, amelyre majd építkezhet. 
 
-1. A Visual Studio Code-ban válassza a **View** > **Integrated Terminal** (Nézet, Integrált terminál) elemet a VS Code integrált terminál megnyitásához.
+1. A Visual Studio Code-ban válassza a **View** (Nézet)  > **Terminal** (Terminál) elemet a VS Code integrált terminál megnyitásához.
 
 2. Az integrált terminálban írja be a következő parancsot a **cookiecutter** telepítéséhez (vagy frissítéséhez), amellyel létrehozhatja az IoT Edge-megoldássablont a VS Code-ban:
 
@@ -82,27 +97,33 @@ A **cookiecutter** Python-csomag használatával létrehozhat egy Python-megold�
     pip install --upgrade --user cookiecutter
     ```
    >[!Note]
-   >Győződjön meg, hogy a cookiecutter telepítési könyvtára a környezet `Path` útvonalán legyen, hogy egy parancssorból meg lehessen hívni. Windows rendszeren általában a PythonVersion helyett `%APPDATA%\Python\PythonVersion\Scripts` értéket adjon meg, ha rendelkezik a Python verziójával.
+   >Győződjön meg, hogy a könyvtár cookiecutteru helyéül annak érdekében, hogy indítsa el a parancssorból lehetővé teszik, hogy a környezet elérési út szerepel. A könyvtár része a telepítési parancsfájl kimenete például `C:\Users\{user}\AppData\Roaming\Python\Python{version}\Scripts`.
+   >
+   >Indítsa újra a Visual Studio Code-útvonalra a módosítások átvételéhez. 
 
 3. A VS Code parancskatalógusának megnyitásához válassza a **View (Nézet)** > **Command Palette (Parancskatalógus)** elemet. 
 
 4. A parancskatalógusban írja be és futtassa az **Azure: Sign in** parancsot, és az utasításokat követve jelentkezzen be az Azure-fiókjába. Ha már be van jelentkezve, ezt a lépést kihagyhatja.
 
-5. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához: 
+5. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. Kövesse a parancskatalógusban található utasításokat a megoldás létrehozásához.
 
-   1. Válassza ki azt a mappát, ahol a megoldást létre szeretné hozni. 
-   2. Adja meg a megoldás nevét, vagy fogadja el az alapértelmezett **EdgeSolution** nevet.
-   3. A modul sablonjaként válassza a **Python-modult**. 
-   4. A modulnak adja a **PythonModule** nevet. 
-   5. Adja meg az előző szakaszban létrehozott Azure Container Registry-adatbázist az első modul rendszerképadattáraként. Cserélje le a **localhost:5000** értéket a bejelentkezési kiszolgáló kimásolt értékére. A sztring végső változata a következőképp néz ki: \<regisztrációs adatbázis neve\>.azurecr.io/pythonmodule.
+   | Mező | Érték |
+   | ----- | ----- |
+   | Select folder (Mappa kiválasztása) | Válassza ki azt a helyet a fejlesztői gépen, ahol a VS Code létre fogja hozni a megoldásfájlokat. |
+   | Provide a solution name (Megoldásnév megadása) | Adjon meg egy leíró nevet a megoldáshoz, vagy fogadja el az alapértelmezett **EdgeSolution**. |
+   | Select module template (Modulsablon kiválasztása) | Válassza a **Python Module** (Python-modul) lehetőséget. |
+   | Provide a module name (Modulnév megadása) | A modulnak adja a **PythonModule** nevet. |
+   | Provide Docker image repository for the module (Docker-rendszerkép adattárának megadása a modulhoz) | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tárolórendszerkép előre fel van töltve az előző lépésből. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. A sztring végső változata a következőképp néz ki: \<regisztrációs adatbázis neve\>.azurecr.io/pythonmodule. |
  
    ![Docker-rendszerkép adattárának megadása](./media/tutorial-python-module/repository.png)
 
-A VS Code-ablak betölti az IoT Edge-megoldás munkaterületét. A megoldás munkaterület öt legfelső szintű összetevőt tartalmaz. Ebben az oktatóanyagban nem szerkeszti a **\.gitignore** fájlt. A **modules** mappa a modul Python-kódját, valamint a modul tárolórendszerképként való összeállítására szolgáló Docker-fájlokat tartalmazza. Az **\.env** fájl a tárolóregisztrációs adatbázis hitelesítő adatait tárolja. A **deployment.template.json** fájl az IoT Edge-futtatókörnyezet által a modulok eszközön való üzembe helyezéséhez használt információkat tartalmazza. 
+A VS Code-ablak betölti az IoT Edge-megoldás munkaterületét. A megoldás munkaterület öt legfelső szintű összetevőt tartalmaz. A **modules** mappa a modul Python-kódját, valamint a modul tárolórendszerképként való összeállítására szolgáló Docker-fájlokat tartalmazza. Az **\.env** fájl a tárolóregisztrációs adatbázis hitelesítő adatait tárolja. A **deployment.template.json** fájl az IoT Edge-futtatókörnyezet által a modulok eszközön való üzembe helyezéséhez használt információkat tartalmazza. És **deployment.debug.template.json** tárolók a hibakeresési verzió-modulok fájlt. Ebben az oktatóanyagban nem fogja szerkeszteni a **\.vscode** mappát vagy a **\.gitignore** fájlt.  
 
 Ha nem adott meg tárolóregisztrációs adatbázist a megoldás létrehozásakor, de elfogadta az alapértelmezett localhost:5000 értéket, akkor nem lesz \.env fájlja. 
 
-   ![Python-megoldás munkaterülete](./media/tutorial-python-module/workspace.png)
+<!--
+   ![Python solution workspace](./media/tutorial-python-module/workspace.png)
+-->
 
 ### <a name="add-your-registry-credentials"></a>A regisztrációs adatbázis hitelesítő adatainak hozzáadása
 
@@ -183,7 +204,27 @@ Mindegyik sablon tartalmaz egy mintakódot is, amely fogadja a **tempSensor** mo
 
 7. Mentse el ezt a fájlt.
 
-## <a name="build-your-iot-edge-solution"></a>Az IoT Edge-megoldás összeállítása
+8. A VS Code Explorerben nyissa meg a **deployment.template.json** fájlt. 
+
+   Az **$edgeAgent** ebből a fájlból tudja meg, hogy két modult kell üzembe helyeznie: az eszközadatokat szimuláló **tempSensor**, valamint a **PythonModule** modult. Az IoT Edge az alapértelmezett platform értékre van állítva **amd64** a VS Code állapotsorban, ami azt jelenti, a **PythonModule** a lemezkép verziószámát Linux AMD64-es értékre van állítva. Módosítsa az alapértelmezett platform az állapotsorban **amd64** való **arm32v7** vagy **windows-amd64** , amely az IoT Edge-eszköz architektúra esetén. További információt az üzembehelyezési jegyzékekről az [IoT Edge-modulok használatát, konfigurálását és újrahasznosítását](module-composition.md) ismertető cikkben olvashat.
+
+   A fájl a regisztrációs adatbázis hitelesítő adatait is tartalmazza. A sablonfájlban a felhasználónév és a jelszó helyén helyőrzők állnak. Az üzembehelyezési jegyzék létrehozásakor a rendszer automatikusan kitölti a mezőket az .env fájlban megadott értékekkel. 
+
+9. Adja hozzá a **PythonModule** modul ikerdokumentumát az üzembehelyezési jegyzékhez. Szúrja be a következő JSON-tartalmat a **moduleContent** szakasz alján, az **$edgeHub** modul ikerdokumentuma után: 
+
+   ```json
+       "PythonModule": {
+           "properties.desired":{
+               "TemperatureThreshold":25
+           }
+       }
+   ```
+
+   ![Ikermodul központi telepítési sablon hozzáadása](./media/tutorial-python-module/module-twin.png)
+
+10. Mentse el ezt a fájlt.
+
+## <a name="build-and-push-your-solution"></a>És a megoldás leküldéses
 
 Az előző szakaszban létrehozott egy IoT Edge-megoldást, és hozzáadott egy kódot a **PythonModule** modulhoz, amely kiszűri az olyan üzeneteket, ahol a jelentett géphőmérséklet az elfogadható küszöbérték alatt van. Most létre kell hoznia a megoldást tárolórendszerképként, és le kell küldenie a tárolóregisztrációs adatbázisba. 
 
@@ -194,24 +235,7 @@ Az előző szakaszban létrehozott egy IoT Edge-megoldást, és hozzáadott egy 
    ```
    Használja az első szakaszban az Azure Container Registry-adatbázisból kimásolt felhasználónevet, jelszót és bejelentkezési kiszolgálót. Vagy le is kérheti ezeket az értékeket az Azure Portalon a tárolóregisztrációs adatbázis **Hozzáférési kulcsok** szakaszában.
 
-2. A VS Code Explorerben az IoT Edge-megoldás munkaterületén nyissa meg a deployment.template.json fájlt. 
-
-   Az **$edgeAgent** ebből a fájlból tudja meg, hogy két modult kell üzembe helyeznie: az eszközadatokat szimuláló **tempSensor**, valamint a **PythonModule** modult. A **PythonModule.image** értéke a rendszerkép Linux amd64-es verziójára lett beállítva. További információt az üzembehelyezési jegyzékekről az [IoT Edge-modulok használatát, konfigurálását és újrahasznosítását](module-composition.md) ismertető cikkben olvashat.
-
-   A fájl a regisztrációs adatbázis hitelesítő adatait is tartalmazza. A sablonfájlban a felhasználónév és a jelszó helyén helyőrzők állnak. Az üzembehelyezési jegyzék létrehozásakor a rendszer automatikusan kitölti a mezőket az .env fájlban megadott értékekkel. 
-
-3. Adja hozzá a **PythonModule** modul ikerdokumentumát az üzembehelyezési jegyzékhez. Szúrja be a következő JSON-tartalmat a **moduleContent** szakasz alján, az **$edgeHub** modul ikerdokumentuma után: 
-    ```json
-        "PythonModule": {
-            "properties.desired":{
-                "TemperatureThreshold":25
-            }
-        }
-    ```
-
-4. Mentse el ezt a fájlt.
-
-5. A VS Code Explorerben kattintson a jobb gombbal a deployment.template.json fájlra, és válassza a **Build and Push IoT Edge solution** (IoT Edge-megoldás összeállítása és leküldése) lehetőséget. 
+2. A VS Code Explorerben kattintson a jobb gombbal a deployment.template.json fájlra, és válassza a **Build and Push IoT Edge solution** (IoT Edge-megoldás összeállítása és leküldése) lehetőséget. 
 
 Amikor a megoldás összeállítására utasítja a Visual Studio Code-ot, az elsőként lekéri az adatokat az üzembehelyezési sablonból, és létrehoz egy deployment.json nevű fájlt egy új **config** nevű mappában. Ezután futtatja a következő két parancsot az integrált terminálon: `docker build` és `docker push`. A két parancs létrehozza a kódot, tárolóba helyezi a Python-kódot, majd leküldi a kódot a megoldás inicializálásakor megadott tárolóregisztrációs adatbázisba. 
 

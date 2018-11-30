@@ -3,20 +3,20 @@ title: 'Rövid útmutató: Keresés a Go használatával – Bing Web Search API
 titleSuffix: Azure Cognitive Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre első Bing Web Search API-hívását a Go használatával, majd hogyan fogadhatja a JSON-választ.
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
-ms.author: erhopf
+ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
-ms.openlocfilehash: 7ce3dd565709567bf75dbbb4ec8f206bba96c195
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: HT
+ms.openlocfilehash: 4191232e45d012d3aec5d056c28e765332073ede
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408677"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310429"
 ---
 # <a name="quickstart-use-go-to-call-the-bing-web-search-api"></a>Rövid útmutató: A Bing Web Search API meghívása a Go segítségével  
 
@@ -24,8 +24,9 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre 10 perc alatt
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]  
 
-## <a name="prerequisites"></a>Előfeltételek
+Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
+## <a name="prerequisites"></a>Előfeltételek
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
 * [A Go bináris fájljai](https://golang.org/dl/)

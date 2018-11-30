@@ -10,12 +10,12 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: aahi
-ms.openlocfilehash: fcef8d29ae7154633e19c118fd03d98d6489df6f
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: a1fda703c74549c351d8eb609819198d7e2856cf
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686568"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311279"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-nodejs"></a>Rövid útmutató: Képek keresése a Bing Image Search SDK és a Node.js használatával
 
@@ -24,6 +24,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hajthatja végre első képke
 A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js).
 
 ## <a name="prerequisites"></a>Előfeltételek
+A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a **Keresés** területen kérheti le.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 * A [Node.js-hez készült Cognitive Services Image Search SDK](https://www.npmjs.com/package/azure-cognitiveservices-imagesearch)
     * Végezze el a telepítést az `npm install azure-cognitiveservices-imagesearch` paranccsal.

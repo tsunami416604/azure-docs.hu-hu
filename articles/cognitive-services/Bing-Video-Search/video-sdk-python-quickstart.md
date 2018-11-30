@@ -10,12 +10,12 @@ ms.component: bing-video-search
 ms.topic: quickstart
 ms.date: 02/15/2018
 ms.author: rosh
-ms.openlocfilehash: 9784894ea9a9deb350171e0d19042eb65644093b
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.openlocfilehash: 2c099f3520b697e8ec2f7ef39c4525298182a697
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225650"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307916"
 ---
 # <a name="quickstart-bing-video-search-sdk-with-python"></a>Rövid útmutató: Bing Video Search SDK Python használatával
 
@@ -25,6 +25,8 @@ A [Python Bing Video Search SDK-minták forráskódja](https://github.com/Azure-
 
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
+A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a **Keresés** területen kérheti le.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+
 Ha még nincs telepítve a Python, telepítse. Az SDK a Python 2.7-es, 3.3-as, 3.4-es, 3.5-ös és 3.6-os verziójával kompatibilis.
 
 A Pythonnal való fejlesztéskor általánosságban javasolt egy [virtuális környezet](https://docs.python.org/3/tutorial/venv.html) használata. Telepítse és inicializálja a virtuális környezetet az új [venv modullal](https://pypi.python.org/pypi/virtualenv). Telepítse a Python 2.7-hez készült virtualenv modult.

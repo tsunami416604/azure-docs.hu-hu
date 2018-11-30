@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 11/11/2018
 ms.author: juliako
-ms.openlocfilehash: d2d648dd02426596e1c070ffd494458c68060085
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: a8d2cf577a6b637e910c283ba8c70d9ea4eedfbb
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613443"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334125"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-using-apis"></a>Oktatóanyag: Videók feltöltése, kódolása és streamelése API-k használatával
 
@@ -74,7 +74,7 @@ A minta a következő műveleteket hajtja végre:
 6. Létrehoz egy StreamingLocatort.
 7. Streamelési URL-címeket épít fel.
 
-### <a name="start-using-media-services-apis-with-net-sdk"></a>A Media Services API-k használatának megkezdése a .NET SDK-val
+### <a name="a-idstartusingdotnet-start-using-media-services-apis-with-net-sdk"></a><a id="start_using_dotnet" />A Media Services API-k használatához a .NET SDK-val
 
 Ha szeretné megkezdeni a Media Services API-k használatát a .NET-tel, létre kell hoznia egy **AzureMediaServicesClient** objektumot. Az objektum létrehozásához meg kell adnia a hitelesítő adatokat, amelyekkel az ügyfél csatlakozhat az Azure-hoz az Azure AD használatával. A cikk elején klónozott kódban a **GetCredentialsAsync** függvény létrehozza a ServiceClientCredentials objektumot a helyi konfigurációs fájlban szereplő hitelesítési adatok alapján. 
 

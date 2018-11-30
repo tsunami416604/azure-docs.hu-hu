@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/20/2018
 ms.author: daveba
-ms.openlocfilehash: 18141e0f58a0b5227c3f5f5c36210017da101780
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 6e8f7f18196eb23900c815048e12d57a238d08f7
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625334"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423056"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Oktatóanyag: Hozzáférés az Azure AD Graph API-hoz egy Windows VM rendszer által hozzárendelt felügyelt identitásával
 
-[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice.md)]
+[!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice.md)]
 
 Ez az oktatóanyag bemutatja, hogyan férhet hozzá a Microsoft Graph API-hoz és kérheti le annak csoporttagságait egy Windows rendszerű virtuális gép (VM) rendszer által hozzárendelt felügyelt identitásával. Az Azure-erőforrások felügyelt identitásainak kezelését automatikusan az Azure végzi, és lehetővé teszi a hitelesítést az Azure AD-hitelesítést támogató szolgáltatásokban anélkül, hogy be kellene szúrnia a hitelesítő adatokat a kódba.  Ebben az oktatóanyagban a virtuális gép identitásának Azure AD-csoportbeli tagságát kérdezi le. A csoportadatokra gyakran szükség van, például engedélyezési döntések során. A virtuális gép felügyelt identitása a háttérben **szolgáltatásnévként** jelenik meg az Azure AD-ben. Mielőtt elvégzi a csoportlekérdezést, adja hozzá a virtuális gép identitását jelölő szolgáltatásnevet egy Azure AD-beli csoporthoz. Ezt megteheti az Azure PowerShell, az Azure AD PowerShell vagy az Azure CLI segítségével is.
 
