@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 2b057a94022077aa210b1e4ebb6122eaf350a40b
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: dd07ed66b630f541ed3e2001dffdebed150bb71a
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457408"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443032"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -53,9 +53,39 @@ A TRAFFIC analytics megvizsgálja a nyers NSG-Folyamatnaplók és a csökkentett
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-Használhatja a traffic analytics az NSG-k, a következő régiók egyikében: USA nyugati középső Régiója, USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA északi középső Régiója, USA déli középső Régiója, USA középső RÉGIÓJA, USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA 2, közép-Kanada, Nyugat-Európa, Észak-Európa, Egyesült Királyság nyugati régiója, Egyesült Királyság déli régiója, kelet-japán, közép-India , Kelet-Ausztrália, Délkelet-Ausztrália és Délkelet-Ázsia. 
+A traffic analytics használhat NSG-k, a következő támogatott régiók egyikében:
 
-A log analytics-munkaterület léteznie kell az USA nyugati középső Régiója, USA keleti RÉGIÓJA, Nyugat-Európa, Dél-Egyesült Királyság, közép-Kanada, kelet-japán, India középső Délkelet-Ausztrália, vagy a Délkelet-ázsiai régióban.
+* Közép-Kanada
+* USA nyugati középső régiója
+* USA keleti régiója
+* USA 2. keleti régiója
+* USA északi középső régiója
+* USA déli középső régiója
+* USA középső régiója
+* USA nyugati régiója
+* USA nyugati régiója, 2.
+* Nyugat-Európa
+* Észak-Európa
+* Dél-Brazília
+* Az Egyesült Királyság nyugati régiója
+* Az Egyesült Királyság déli régiója
+* Kelet-Ausztrália
+* Délkelet-Ausztrália
+* Délkelet-Ázsia
+* Közép-India
+* Dél-India
+* Kelet-Japán 
+
+A Log Analytics-munkaterület léteznie kell a következő régióban:
+* Közép-Kanada
+* USA nyugati középső régiója
+* USA keleti régiója
+* Nyugat-Európa
+* Az Egyesült Királyság déli régiója
+* Délkelet-Ausztrália
+* Délkelet-Ázsia
+* Közép-India
+* Kelet-Japán
 
 ## <a name="prerequisites"></a>Előfeltételek
 

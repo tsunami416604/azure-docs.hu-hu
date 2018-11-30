@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2018
+ms.date: 11/28/2018
 ms.author: celested
 ms.reviewer: hirsin, andret, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, dadobali, negoe
 ms.custom: aaddev
-ms.openlocfilehash: 3e9765bf2c6b746b892f7fbc97ea3124f80d772e
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 6c11062dbae18eed618fe7dde95daa55024d2ddd
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976010"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444851"
 ---
 # <a name="comparing-the-azure-ad-v20-endpoint-with-the-v10-endpoint"></a>Az Azure AD v2.0-végpont az 1.0-s verziójú végponttal összehasonlítása
 
@@ -137,7 +137,7 @@ Az egyes alkalmazások integrálása a v2.0-végpont kívánt, az alkalmazás re
 Alkalmazásregisztrációk, amelyek támogatják a munkahelyi és iskolai fiókokhoz és személyes fiókok az alábbi korlátozásokkal rendelkeznek:
 
 * Az Alkalmazáskulcs csak két használható alkalmazás azonosítója.
-* Az alkalmazás regisztrációját a regisztrációs portálon alkalmazás személyes Microsoft-fiókkal rendelkező felhasználó által regisztrált tudja megtekinteni és felügyelt csak egyetlen developer-fiók használatával. Több fejlesztő között nem lehet megosztani. Ha meg szeretné osztani az alkalmazás regisztrációját a több fejlesztő, akkor az alkalmazást az Alkalmazásregisztrációk (előzetes verzió) szakaszban az Azure Portal használatával hozhat létre.
+* Olyan alkalmazás, amely nem lett regisztrálva a bérlő csak az a fiók, amely regisztrálva, kezelhetők. Nem lehet megosztva-fejlesztőknek szántam. Ez a helyzet a legtöbb alkalmazás, az alkalmazás regisztrációs portál használatával személyes Microsoft-fiókkal regisztrált esetében. Ha meg szeretné osztani az alkalmazás regisztrációját a több fejlesztő, az alkalmazás regisztrálása az egy bérlőt használ a **alkalmazásregisztrációk (előzetes verzió)** szakaszában az Azure Portalon.
 * Az átirányítási URL-cím engedélyezett formátumnak több korlátozások vonatkoznak. Átirányítási URL-CÍMMEL kapcsolatos további információkért lásd: a következő szakaszban.
 
 ### <a name="restrictions-on-redirect-urls"></a>A korlátozások átirányítási URL-címek
@@ -183,7 +183,7 @@ Klienskódtár-támogatásával a v2.0-végpont jelenleg korlátozott. Ha azt sz
 * Egy webalkalmazás létrehozásakor, biztonságosan használható az általánosan elérhető a kiszolgálóoldali közbenső szoftvert a bejelentkezéshez és jogkivonat-ellenőrzéshez. Ezek közé tartozik az OWIN OpenID Connect közbenső szoftvert, az ASP.NET és a Node.js Passport beépülő modult. Használja a Microsoft közbenső kódmintákért tekintse a [bevezetés v2.0](v2-overview.md#getting-started) szakaszban.
 * Ha egy asztali vagy mobil alkalmazást fejleszt, a Microsoft hitelesítési tárak (MSAL) előzetes egyikét használhatja. Ezek a kódtárak vannak egy éles által támogatott előzetes verzióban érhető el, így biztonságosan használhatja őket az éles környezetben. További tudnivalók az előzetes verzió és a rendelkezésre álló kódtárak a feltételek [hitelesítési tárak referencia](reference-v2-libraries.md).
 * A platformon nem fedi le a Microsoft-kódtárak integrálható a v2.0-végpont által közvetlenül üzenetek küldése és fogadása protokoll az alkalmazás kódjában. A 2.0-s OpenID Connectet és az OAuth-protokollok [explicit módon vannak dokumentálva](active-directory-v2-protocols.md) ilyen az integráció végrehajtásához.
-* Végül nyílt forráskódú OpenID Connectet és az OAuth-kódtárak segítségével integrálhatók az a v2.0-végpontra. A v2.0-végpont módosítás nélkül számos nyílt forráskódú protokoll kódtár kompatibilisnek kell lennie. Az ilyen típusú kódtárak rendelkezésre állásának nyelvtől és platformtól függ. A [OpenID Connect](http://openid.net/connect/) és [OAuth 2.0](http://oauth.net/2/) webhelyek népszerű megvalósításokhoz listának a karbantartására. További információkért lásd: [Azure Active Directory v2.0 és hitelesítési kódtárai](reference-v2-libraries.md), és a nyílt forráskódú ügyféloldali függvénytárak és minták a v2.0-végponttal tesztelt listáját.
+* Végül nyílt forráskódú OpenID Connectet és az OAuth-kódtárak segítségével integrálhatók az a v2.0-végpontra. A v2.0-végpont módosítás nélkül számos nyílt forráskódú protokoll kódtár kompatibilisnek kell lennie. Az ilyen típusú kódtárak rendelkezésre állásának nyelvtől és platformtól függ. A [OpenID Connect](https://openid.net/connect/) és [OAuth 2.0](https://oauth.net/2/) webhelyek népszerű megvalósításokhoz listának a karbantartására. További információkért lásd: [Azure Active Directory v2.0 és hitelesítési kódtárai](reference-v2-libraries.md), és a nyílt forráskódú ügyféloldali függvénytárak és minták a v2.0-végponttal tesztelt listáját.
 * Referenciaként a `.well-known` végpont a közös v2.0-végpont `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`. Cserélje le `common` az adatok adott lekérni a bérlő a bérlő Azonosítóját.  
 
 ### <a name="protocol-changes"></a>Protokoll módosítások

@@ -9,23 +9,23 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 066734c88890d5f1a6e42c5350db47d1a398b60a
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f6393d15572eadb376cbd88dc94c3de0fd8fa80b
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277579"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495568"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>A HDInsight Apache Hadoop-architektúra
 
-Az Apache Hadoop két alapvető összetevői: a Hadoop elosztott fájlrendszer (HDFS), tárhelyet biztosít, és még egy másik Resource Negotiator (YARN), amely feldolgozó biztosít. A tárolási és feldolgozási képességek a fürt lesz képes a kívánt adatfeldolgozási végrehajtásához MapReduce programok futtatása.
+[Az Apache Hadoop](https://hadoop.apache.org/) két fő összetevőket tartalmazza: a [Apache Hadoop elosztott fájlrendszer (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) biztosítható a tárolási, és [Apache Hadoop még egy másik Resource Negotiator (YARN)](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) , amely feldolgozási biztosít. A tárolási és feldolgozási képességek, a fürt válik képes a futó [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) hajtsa végre a kívánt adatokat feldolgozó programok.
 
 > [!NOTE]
 > A HDFS nem általában telepítve belül a HDInsight-fürt a tárolást. Ehelyett egy HDFS-kompatibilis felületi rétegen Hadoop-összetevők használják. A tényleges tárterület funkció Azure Storage vagy az Azure Data Lake Store biztosítja. Hadoop a MapReduce-feladatok végrehajtása a HDInsight-fürtön futtatása, mintha egy HDFS jelen volt, és megkövetelik a módosításokat nem támogatja a tárolási igényeinek megfelelően. A HDInsight Hadoop, a storage kihelyezett van, de YARN feldolgozási marad az alapvető fontosságú. További információkért lásd: [Azure HDInsight bemutatása](hadoop/apache-hadoop-introduction.md).
 
 Ez a cikk bemutatja a YARN és a hogyan koordinálja a HDInsight-alkalmazásokat végrehajtását.
 
-## <a name="apache-yarn-basics"></a>Az Apache YARN alapjai 
+## <a name="apache-hadoop-yarn-basics"></a>Az Apache Hadoop YARN alapjai 
 
 YARN szabályozza, és koordinálja a Hadoopban lévő adatok feldolgozása. YARN két alapvető szolgáltatásokat tartalmaz, amelyek futtathatók folyamatok, a fürtben található csomópontok: 
 
@@ -50,5 +50,5 @@ Az összes HDInsight-fürttípusok üzembe, YARN. Az erőforrás-kezelő magas r
 
 ## <a name="next-steps"></a>További lépések
 
-* [A HDInsight a Hadoop MapReduce használata](hadoop/hdinsight-use-mapreduce.md)
+* [A HDInsight az Apache Hadoop MapReduce használata](hadoop/hdinsight-use-mapreduce.md)
 * [Az Azure HDInsight bemutatása](hadoop/apache-hadoop-introduction.md)

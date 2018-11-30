@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 31461e1d316953c2e69d252f1313180c57562dfd
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 194f84d2ce5360aa9ad9f3d771bf24f153ac6f5c
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009191"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496298"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>A HDInsight további tárfiókok hozzáadása
 
 Ismerje meg, hogy parancsfájlműveletekkel további Azure storage-fiókok hozzáadása a HDInsight használatával. A jelen dokumentumban leírt lépések tárfiók hozzáadása egy meglévő Linux-alapú HDInsight-fürtön.
 
 > [!IMPORTANT]
-> A jelen dokumentumban lévő információk további tárhely hozzáadása egy fürt létrehozása után van. Információk a storage-fiókok hozzáadása a fürt létrehozása során: [fürtök beállítása a HDInsight a Hadoop, Spark, Kafka és további](hdinsight-hadoop-provision-linux-clusters.md).
+> A jelen dokumentumban lévő információk további tárhely hozzáadása egy fürt létrehozása után van. Információk a storage-fiókok hozzáadása a fürt létrehozása során: [fürtök beállítása a HDInsight az Apache Hadoop, az Apache Spark, az Apache Kafka és további](hdinsight-hadoop-provision-linux-clusters.md).
 
-## <a name="how-it-works"></a>Működési elv
+## <a name="how-it-works"></a>Működés
 
 Ez a szkript a következő paramétereket fogadja:
 
@@ -43,7 +43,7 @@ A feldolgozás során a szkript a következő műveleteket hajtja végre:
 
 * A storage-fiók hozzáadása a core-site.xml fájlt.
 
-* Leállítja és újraindítja az Oozie, a YARN, MapReduce2 és HDFS szolgáltatásokat. Ezek a szolgáltatások indítása és leállítása lehetővé teszi, hogy az új tárfiókot használni őket.
+* Leállítja és újraindítja a [Apache Oozie](https://oozie.apache.org/), [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), [Apache Hadoop MapReduce2](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html), és [Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) szolgáltatások. Ezek a szolgáltatások indítása és leállítása lehetővé teszi, hogy az új tárfiókot használni őket.
 
 > [!WARNING]
 > A HDInsight-fürt, mint egy másik helyen lévő tárfiókok használata nem támogatott.

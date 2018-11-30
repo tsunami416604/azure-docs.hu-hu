@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: a6752f9127a176eef9fd03e7ffddfa7450772def
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 8d15aeb92911a26a9a42a0449a24e8c0fee4467b
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037662"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497339"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>A linuxon futó App Service-hez Java fejlesztői útmutatója
 
@@ -28,6 +28,10 @@ Ez az útmutató a főbb fogalmakat és a Linux App Service-ben használata Java
 ## <a name="logging-and-debugging-apps"></a>Bejelentkezés és hibakeresés alkalmazások
 
 Teljesítményjelentések készítésére, forgalom Vizualizációk és egészségügyi checkups eeach alkalmazás az Azure Portalon keresztül érhetők el. Tekintse meg a [diagnosztikai áttekintése az Azure App Service](/azure/app-service/app-service-diagnostics) eléréséhez, és ezek a diagnosztikai eszközök használatával kapcsolatban.
+
+## <a name="application-performance-monitoring"></a>Alkalmazásteljesítmény-figyelés
+
+Lásd: [az alkalmazásteljesítmény-figyelés Java-alkalmazások a Linuxon futó Azure App Service-eszközöket](how-to-java-apm-monitoring.md) útmutatókra New Relic és az AppDynamics konfigurálása az App Service Linux rendszeren futó Java alkalmazásokat.
 
 ### <a name="ssh-console-access"></a>SSH hozzáféréséhez a konzolhoz 
 
@@ -124,7 +128,7 @@ Másik lehetőségként konfigurálnia az alkalmazásbeállítást, az App Servi
 </appSettings> 
 ```
 
-## <a name="secure-application"></a>Alkalmazások biztonságossá tételéhez
+## <a name="secure-applications"></a>Alkalmazások védelme
 
 Az App Service Linux rendszeren futó Java-alkalmazások rendelkeznek ugyanazokat a [ajánlott biztonsági eljárások](/azure/security/security-paas-applications-using-app-services) más alkalmazásokként. 
 
@@ -168,7 +172,7 @@ Alkalmazásszintű adatforrások:
 
 1. Adjon hozzá egy `context.xml` fájlt, ha nem létezik a webalkalmazáshoz és adja hozzá a `META-INF` könyvtárát a WAR-fájlt, ha a projekt épül.
 
-2. Ebben a fájlban adja hozzá a `Context` elérési bejegyzés az adatforrás JNDI címre mutat. a
+2. Ebben a fájlban adja hozzá a `Context` elérési bejegyzés az adatforrás JNDI címre mutat.
 
     ```xml
     <Context>
@@ -192,7 +196,7 @@ Alkalmazásszintű adatforrások:
 
 A kiszolgálói szintű közös erőforrások:
 
-1. Másolja ki a tartalmát `/usr/local/tomcat/conf` be `/home/tomcat` az App Service Linux rendszeren az SSH használatával, ha nem rendelkezik olyan konfigurációs van már példány.
+1. Másolja ki a tartalmát `/usr/local/tomcat/conf` be `/home/tomcat/conf` az App Service Linux rendszeren az SSH használatával, ha nem rendelkezik olyan konfigurációs van már példány.
 
 2. Adja hozzá a környezetben, a `server.xml`
 
@@ -231,7 +235,7 @@ A kiszolgálói szintű közös erőforrások:
 
     3. Az SFTP-ügyféllel a helyi bújtatás port csatlakozik és tölt fel a fájlokat, és a `/home/tomcat/lib` mappát.
 
-5. Az App Service Linux alkalmazás újraindítása. Alaphelyzetbe állítja a tomcat `CATALINA_HOME` való `/home/tomcat` , és a frissített konfigurációt és osztályokat.
+5. Az App Service Linux alkalmazás újraindítása. Alaphelyzetbe állítja a tomcat `CATALINA_HOME` való `/home/tomcat/conf` , és a frissített konfigurációt és osztályokat.
 
 ## <a name="docker-containers"></a>Docker-tárolók
 

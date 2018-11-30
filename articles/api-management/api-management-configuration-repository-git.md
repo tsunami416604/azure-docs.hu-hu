@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 97ca4f69f4bf2aa814d51cc17970c1aead8399e8
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e8d0522dc4cc218792569498c149b32b3de652cb
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414403"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443576"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Mentse, és a Git használatával az API Management-szolgáltatás konfigurációjának beállítása
 
@@ -43,6 +43,8 @@ Az alábbi lépéseket a Git használatával az API Management szolgáltatáspé
 5. A módosítások az adattárból a szolgáltatás konfigurációs adatbázis üzembe helyezése
 
 Ez a cikk azt ismerteti, hogyan engedélyezheti és kezelheti a szolgáltatás konfigurációját a git szoftver használatával, és a egy hivatkozást kínál a fájlokat és mappákat a Git-adattárban.
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="access-git-configuration-in-your-service"></a>Git a szolgáltatási konfiguráció
 

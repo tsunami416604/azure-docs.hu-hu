@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4206301296c94bd0d24743854756ac6dd1d712dd
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: c8b54631f0d37e0e90135dd9e23ff85591cead1b
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014329"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495366"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Egy HDInsight-alkalmazás közzététele az Azure Marketplace-en
 Egy Azure HDInsight alkalmazást is telepítheti egy Linux-alapú HDInsight-fürtön. Ebből a cikkből megtudhatja, hogyan HDInsight alkalmazás közzététele az Azure piactéren. Az Azure Marketplace közzétételi kapcsolatos általános információkért lásd: [-ajánlat közzététele az Azure Marketplace-en](../marketplace/marketplace-publishers-guide.md).
@@ -48,7 +48,7 @@ Két lépést is igényel, az alkalmazás-közzététel a piactéren. Először 
 | Mező | Leírás | Lehetséges értékek |
 | --- | --- | --- |
 | types |Azok a fürttípusok, amelyekkel az alkalmazás kompatibilis. |Hadoop, HBase, Storm, Spark (vagy ezek kombinációi) |
-| verziók |Azok a HDInsight-fürttípusok, amelyekkel az alkalmazás kompatibilis. |3.4 |
+| versions |Azok a HDInsight-fürttípusok, amelyekkel az alkalmazás kompatibilis. |3.4 |
 
 ## <a name="application-installation-script"></a>Alkalmazás telepítési parancsfájlt
 Ha az alkalmazás telepítve van egy fürtön (vagy egy meglévő fürthöz, vagy egy új), egy élcsomópontot jön létre. Az alkalmazás telepítési parancsfájlt futtat az élcsomóponthoz.
@@ -102,6 +102,6 @@ Egy HDInsight-alkalmazás közzététele:
 * Ismerje meg, hogyan [HDInsight-alkalmazások telepítése](hdinsight-apps-install-applications.md) a fürtben.
 * Ismerje meg, hogyan [egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) és a HDInsight közzé nem tett HDInsight-alkalmazás üzembe helyezése.
 * Ismerje meg, hogyan [Linux-alapú HDInsight-fürtök testreszabása Szkriptműveletek használatával](hdinsight-hadoop-customize-cluster-linux.md) és további alkalmazásokat. 
-* Ismerje meg, hogyan [HDInsight Linux-alapú Hadoop-fürtök létrehozása az Azure Resource Manager-sablonok használatával](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
+* Ismerje meg, hogyan [HDInsight Linux-alapú Apache Hadoop-fürtök létrehozása az Azure Resource Manager-sablonok használatával](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 * Ismerje meg, hogyan [üres élcsomópontot használni a HDInsight](hdinsight-apps-use-edge-node.md) HDInsight-fürtök elérésére, HDInsight-alkalmazások tesztelése és HDInsight-alkalmazások üzemeltetésére.
 

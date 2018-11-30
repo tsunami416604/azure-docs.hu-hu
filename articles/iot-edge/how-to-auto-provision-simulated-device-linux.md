@@ -8,18 +8,18 @@ ms.date: 10/31/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 703dedc69e491377ce0890610a2882ab95ae6e5a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 61da3b8e139cf5091aec4c1ab835c23fe319ea46
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51565071"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446242"
 ---
 # <a name="create-and-provision-an-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>A Linux rendszerű virtuális gép virtuális TPM-mel az Edge-eszköz létrehozása és kiépítése
 
-Az Azure IoT Edge-eszközök automatikus – helyezhetők a [Device Provisioning Service](../iot-dps/index.yml) ugyanúgy, mint az eszközök, amelyek az edge-kompatibilis nem. Ha még nem ismeri az Automatikus kiépítés folyamatát, tekintse át a [automatikus kiépítés alapfogalmait](../iot-dps/concepts-auto-provisioning.md) a folytatás előtt. 
+Az Azure IoT Edge-eszközökön lehet autoprovisioned használatával a [Device Provisioning Service](../iot-dps/index.yml) ugyanúgy, mint az eszközök, amelyek az edge-kompatibilis nem. Ha még nem ismeri a autoprovisioning folyamatán, tekintse át a [autoprovisioning fogalmak](../iot-dps/concepts-auto-provisioning.md) a folytatás előtt. 
 
-Ez a cikk bemutatja, hogyan tesztelheti automatikus kiépítés szimulált peremhálózati eszközön az alábbi lépéseket követve: 
+Ez a cikk bemutatja, hogyan teszteléséhez autoprovisioning szimulált peremhálózati eszközön az alábbi lépéseket követve: 
 
 * Hozzon létre egy Linux rendszerű virtuális gép (VM) a Hyper-V és a egy szimulált platformmegbízhatósági modul (TPM) a hardveres biztonsági.
 * Hozzon létre egy példányt, IoT Hub Device Provisioning szolgáltatás (DPS).
@@ -35,7 +35,7 @@ A jelen cikkben ismertetett lépések tesztelési célokra szolgálnak.
 
 ## <a name="create-a-linux-virtual-machine-with-a-virtual-tpm"></a>Hozzon létre egy Linux rendszerű virtuális gép virtuális TPM-mel
 
-Ebben a szakaszban, hogy az Automatikus kiépítés hogyan működik az IoT Edge segítségével teszteléshez használhatja egy szimulált TPM-eszköz rendelkező Hyper-v hoz létre egy új Linux rendszerű virtuális gépet. 
+Ebben a szakaszban, hogy a tesztelési autoprovisioning működése az IoT Edge szolgáltatással is használhatja azt egy szimulált TPM-eszköz rendelkező Hyper-v hoz létre egy új Linux rendszerű virtuális gépet. 
 
 ### <a name="create-a-virtual-switch"></a>Virtuális kapcsoló létrehozása
 
@@ -65,7 +65,7 @@ Ha hibába ütközik, az új virtuális kapcsoló létrehozása során, győződ
    2. **A hálózatkezelés konfigurálását**: állítsa **kapcsolat** a virtuális kapcsolóhoz, amely az előző szakaszban létrehozott. 
    3. **Telepítési beállítások**: válasszon **operációs rendszer telepítése rendszerindító lemezkép-fájlból** és keresse meg a helyileg mentett lemezképfájllal.
 
-Az új virtuális gép létrehozása egy nézet percig is eltarthat. 
+Az új virtuális gép létrehozása néhány percig is eltarthat. 
 
 ### <a name="enable-virtual-tpm"></a>Virtuális TPM engedélyezése
 
@@ -105,7 +105,7 @@ Miután a Device Provisioning Service futó, másolja az értékét **azonosít�
 
 A kiépítési adatokat beolvasni a virtuális gép számára, és annak létre egyéni regisztrációt a Device Provisioning Service használatával. 
 
-Amikor létrehoz egy regisztrációs a DPS Szolgáltatásban, lehetősége van deklarálnia egy **Ikereszköz kezdeti állapota**. Az ikereszköz címkék beállíthat csoportosítani az eszközöket a megoldás, mint például a régiót, környezetet, hely vagy eszköz típusa kell tetszőleges metrika szerint. Ezekkel a címkékkel hozhatók létre [automatikus központi telepítések](how-to-deploy-monitor.md). 
+Amikor létrehoz egy regisztrációs a DPS Szolgáltatásban, lehetősége van deklarálnia egy **Ikereszköz kezdeti állapota**. Az ikereszközön, állíthat be címkéket csoportosítani az eszközöket a megoldás, mint például a régiót, környezetet, hely vagy eszköz típusa kell tetszőleges metrika szerint. Ezekkel a címkékkel hozhatók létre [automatikus központi telepítések](how-to-deploy-monitor.md). 
 
 
 1. Az a [az Azure portal](https://portal.azure.com), és keresse meg az IoT Hub Device Provisioning Service-példányhoz. 
@@ -136,7 +136,7 @@ A DPS tudja **azonosító hatóköre** és az eszköz **regisztrációs azonosí
 
 Ahhoz, hogy automatikusan építheti ki az eszközt az IoT Edge-futtatókörnyezet, az azt kell tudnia érnie a TPM-be. 
 
-Az alábbi lépések segítségével TPM hozzáférést. Azt is megteheti, végezheti ugyanarra a dologra letiltásával a systemd beállításait, hogy a *iotedge* szolgáltatás futtatható gyökér szintű. 
+TPM hozzáférést biztosíthat, az IoT Edge-futtatókörnyezet letiltásával a systemd beállításait, hogy a *iotedge* szolgáltatás legfelső szintű jogosultságokkal rendelkezik. Jogosultságainak a szolgáltatás nem szeretné, ha TPM-hozzáférést biztosítania a manuálisan is használhatja az alábbi lépéseket. 
 
 1. A fájl elérési útját a TPM-eszköz hardveres modulra keresése az eszközön, és mentse egy helyi változóhoz. 
 
@@ -180,8 +180,10 @@ Az alábbi lépések segítségével TPM hozzáférést. Azt is megteheti, vége
    A sikeres kimenet az alábbihoz hasonló:
 
    ```output
-   crw------- 1 root iotedge 10, 224 Jul 20 16:27 /dev/tpm0
+   crw-rw---- 1 root iotedge 10, 224 Jul 20 16:27 /dev/tpm0
    ```
+
+   Ha nem látja, hogy megtörtént-e megfelelő engedélyekkel, próbálja meg a gép frissítése udev újraindítása. 
 
 8. Nyissa meg az IoT Edge-futtatókörnyezet felülbírálja a fájlt. 
 
@@ -224,7 +226,7 @@ Ellenőrizze, hogy fut-e az IoT Edge-futtatókörnyezet.
    sudo systemctl status iotedge
    ```
 
-Ha látja, hibák, lehet, hogy a konfigurációs módosítások még nem még életbe lépjenek. Próbálja meg újraindítani az IoT Edge-démon szerezhet. 
+Ha látja, hibák, lehet, hogy a konfigurációs módosítások még nem még életbe lépjenek. Próbálja meg újra újraindítani az IoT Edge-démon. 
 
    ```bash
    sudo systemctl daemon-reload
@@ -234,7 +236,7 @@ Másik lehetőségként újraindítja a virtuális gépet, tekintse meg, ha a m�
 
 ## <a name="verify-successful-installation"></a>A sikeres telepítésének ellenőrzése
 
-Ha a modul sikeresen elindult, megkezdheti az IoT Hub, és tekintse meg, hogy az új eszköz automatikusan hozzáférést kapnak, és készen áll a IoT Edge-modulok futtatása. 
+Ha a modul sikeresen elindult, megkezdheti az IoT Hub, és tekintse meg, hogy az új eszköz automatikusan lett-e kiépítve. Most már az eszköz IoT Edge-modulok futtatása készen áll. 
 
 Az IoT Edge-démon állapotának ellenőrzéséhez.
 
@@ -257,4 +259,4 @@ iotedge list
 
 ## <a name="next-steps"></a>További lépések
 
-A Device Provisioning Service-regisztrációs folyamat állítsa be az Eszközazonosítót és a device twin címkék egyszerre, az új eszköz kiépítése teszi lehetővé. Használhatja ezeket az értékeket az egyes eszközök, illetve eszközfelügyeleti automatikus eszközök csoportjait célozza. Ismerje meg, hogyan [üzembe helyezése és figyelése az IoT Edge-modulok méretezése az Azure portal használatával](how-to-deploy-monitor.md) vagy [Azure CLI használatával](how-to-deploy-monitor-cli.md)
+A Device Provisioning Service-regisztrációs folyamat állítsa be az Eszközazonosítót és a device twin címkék egyszerre, az új eszköz kiépítése teszi lehetővé. Használhatja ezeket az értékeket az egyes eszközök, illetve eszközfelügyeleti automatikus eszközök csoportjait célozza. Ismerje meg, hogyan [üzembe helyezése és figyelése az IoT Edge-modulok méretezése az Azure portal használatával](how-to-deploy-monitor.md) vagy [Azure CLI-vel](how-to-deploy-monitor-cli.md).

@@ -2,25 +2,21 @@
 title: Az Azure Machine Learning automatikus adatok folyamat – Adatlap |} A Microsoft Docs
 description: Nyomtatható Adatlap, amely bemutatja, hogyan állítható be egy automatizált adatfeldolgozási folyamat az Azure Machine Learning webszolgáltatás felé, hogy-e az adatok a helyszínen, streaming, az Azure-ban, vagy egy külső felhőszolgáltatásban.
 services: machine-learning
-documentationcenter: ''
-author: garyericson
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 22674d6b-4491-4805-a3ac-d423611177bb
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: garye
-ms.openlocfilehash: 32c7fca1b56e5426bc422b816279dd0919599f0f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: tdsp
+ms.custom: (previous author=garyericson, ms.author=garye)
+ms.openlocfilehash: 07f7334a98c1220d051ed1be9d04e4e4e86d4dcc
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243999"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444429"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Gyorsreferencia az Azure Machine Learning-előrejelzések automatikus folyamatához
 A **Microsoft Azure Machine Learning automatikus adatok folyamat – adatlap** segít, lépjen a technológia segítségével az adatok a Machine Learning webszolgáltatás, azt is pontozandó által a prediktív elemzés modell.

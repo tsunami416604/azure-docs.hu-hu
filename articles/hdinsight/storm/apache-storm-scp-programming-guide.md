@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: e6025ba2645c284cca87483b48b2d79a9558d574
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 420a1c2ee09f84586f99864878e226df59606f2d
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012530"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496867"
 ---
 # <a name="scp-programming-guide"></a>Szolgáltatáskapcsolódási pont programozási útmutató
 Szolgáltatáskapcsolódási pont platformot hozhat létre valós idejű, megbízható és konzisztens, és nagy teljesítményű adatokat feldolgozó alkalmazást. Be van építve a [Apache Storm](http://storm.incubator.apache.org/) – egy streamfeldolgozó rendszer, a nyílt Forráskódú Közösségek által tervezték. A Storm Nathan Marz által készült, és a nyílt forráskódú lett a Twitteren. A modul [Apache ZooKeeper](http://zookeeper.apache.org/), magas megbízhatóságú engedélyezése egy másik Apache-projecttel elosztott koordinálása és állapot-kezelés. 
@@ -207,7 +207,7 @@ Nem tranzakciós bolt ack támogató, az azt kell explicit módon `Ack()` vagy `
 ### <a name="statestore"></a>Állapottárolója
 `StateStore` metaadat-szolgáltatások, a monoton sorozat mentén hozza. generációs és a várakozási ingyenes koordinációs biztosít. Elosztott feldolgozási magasabb szintű absztrakciók is épülő `StateStore`, beleértve az elosztott zárolásokat, elosztott várólisták, korlátok és tranzakciós szolgáltatások.
 
-Szolgáltatáskapcsolódási pont alkalmazások használhatják a `State` objektum ZooKeeper, különösen a tranzakciós topológia bizonyos információkat is tartalmaz. Ennek tranzakciós spout összeomlik, és indítsa újra, ha a szükséges adatok lekérését ZooKeeper, és indítsa újra a folyamat során.
+Szolgáltatáskapcsolódási pont alkalmazások használhatják a `State` objektum bizonyos információkat is tartalmaz [Apache ZooKeeper](https://zookeeper.apache.org/), különösen a tranzakciós topológia. Ennek tranzakciós spout összeomlik, és indítsa újra, ha a szükséges adatok lekérését ZooKeeper, és indítsa újra a folyamat során.
 
 A `StateStore` főként objektumnak ezen módszerek:
 
@@ -642,9 +642,9 @@ Ez a topológia tartalmaz egy Java-Spout és a egy C\# Bolt. Akkor használja, S
 Ebben a példában megegyezik a HelloWorld lényegében. Az egyetlen különbség, hogy a felhasználói kód lefordított DLL-t, és a topológia elküldésekor SCPHost.exe használatával. Részletes ismertetése "SCP állomás módban" című szakaszában talál.
 
 ## <a name="next-steps"></a>További lépések
-Storm-topológiák SCP-je használatával létrehozott példákért lásd az alábbi dokumentumokat:
+Apache Storm-topológiák SCP-je használatával létrehozott példákért lásd az alábbi dokumentumokat:
 
 * [Az Apache Storm on HDInsight Visual Studio használatával C#-topológiák fejlesztése](apache-storm-develop-csharp-visual-studio-topology.md)
-* [Események feldolgozása az Azure Event hubs Eseményközpontokból a HDInsight alatt futó Stormmal](apache-storm-develop-csharp-event-hub-topology.md)
-* [Járműérzékelő-adatok feldolgozása az Event hubs Eseményközpontokból a HDInsight-alapú Storm segítségével](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/IotExample)
-* [Kinyerése, átalakítás és betöltés (ETL) az Azure Event Hubsból HBase](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample)
+* [Események feldolgozása az Azure Event hubs Eseményközpontokból a HDInsight-alapú Apache Storm](apache-storm-develop-csharp-event-hub-topology.md)
+* [Járműérzékelő-adatok feldolgozása az Event hubs Eseményközpontokból a HDInsight Apache Storm használatával](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/IotExample)
+* [Kinyerés, átalakítás és betöltés (ETL) az Azure Event Hubs, az Apache HBase](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample)

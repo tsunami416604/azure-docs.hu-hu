@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 2f73d9795ba807e5901568507ad2fae5b001c91a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: cf470ad14c27fd36cf60bb540e823b15fc58eded
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161289"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496900"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Az Azure multi-factor Authentication a felhőben a felhasználói beállítások kezelése
 
@@ -54,7 +54,7 @@ Ez a beállítás minden, a felhasználó által létrehozott alkalmazásjelszó
 10. Kattintson a **bezárásához**.
 
 ## <a name="restore-mfa-on-all-remembered-devices-for-a-user"></a>Állítsa vissza a többtényezős hitelesítés a felhasználó az összes korábban megjegyzett eszközökön
-Az Azure multi-factor Authentication szolgáltatás konfigurálható funkcióinak egyike a lehetővé teszi a felhasználók a beállítást, az eszközök megbízhatóként való megjelöléséhez. További információkért lásd: [konfigurálása az Azure multi-factor Authentication szolgáltatás beállításainak](howto-mfa-mfasettings.md#remember-multi-factor-authentication-for-devices-that-users-trust).
+Az Azure multi-factor Authentication szolgáltatás konfigurálható funkcióinak egyike a lehetővé teszi a felhasználók a beállítást, az eszközök megbízhatóként való megjelöléséhez. További információkért lásd: [konfigurálása az Azure multi-factor Authentication szolgáltatás beállításainak](howto-mfa-mfasettings.md#remember-multi-factor-authentication).
 
 Felhasználók választhatják a kétlépéses ellenőrzés egy konfigurálható számú napig az rendszeres eszközökön kívül. Ha egy fiók biztonsága sérül, vagy egy megbízható eszköz elveszik, meg kell lenniük megbízható állapotát eltávolíthatja, és szükséges a kétlépéses ellenőrzés visszakapcsolásához.
 

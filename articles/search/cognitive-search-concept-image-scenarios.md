@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 88e3658216f3eec545d4388ddf2d90cea60995c3
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 5ee821f3d1e81e581f376d4b14b3e8393a8f190c
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166950"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444633"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Hogyan dolgozza fel, és információt nyerhet ki képekből a kognitív keresés forgatókönyvek
 
@@ -65,7 +65,7 @@ Ha a *imageAction* "generateNormalizedImages," értékre van állítva az új *n
 
 | Kép tag       | Leírás                             |
 |--------------------|-----------------------------------------|
-| adatok               | BASE64 kódolású karakterlánc normalizált JPEG formátumú kép.   |
+| adat               | BASE64 kódolású karakterlánc normalizált JPEG formátumú kép.   |
 | Szélesség              | Szélessége a normalizált képen (képpontban). |
 | Magasság             | Magasságát (képpontban) a normalizált képe. |
 | originalWidth      | Normalizálási előtt a kép eredeti szélessége. |
@@ -121,7 +121,6 @@ A következő példa indexmezők létrehoz egy *merged_text* tartalmazó szöveg
   "skills":
   [
     {
-        "name": "OCR skill",
         "description": "Extract text (plain and structured) from image.",
         "@odata.type": "#Microsoft.Skills.Vision.OcrSkill",
         "context": "/document/normalized_images/*",

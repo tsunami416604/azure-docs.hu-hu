@@ -1,6 +1,6 @@
 ---
-title: Az Azure API Management alkalmazássablonok |} Microsoft Docs
-description: Ismerje meg, hogyan szabhatja testre a fejlesztői portálra az Azure API Management az alkalmazás lapok tartalmát.
+title: Az Azure API Management alkalmazássablonok |} A Microsoft Docs
+description: Ismerje meg, hogyan szabhatja testre a fejlesztői portálon az Azure API Management alkalmazás oldalainak tartalmát.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,29 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 40a4d159afff4db78e27f89b448e21b1d94cd378
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0eead6201f737448b4de76476802518a506375da
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23834900"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446234"
 ---
-# <a name="application-templates-in-azure-api-management"></a>Alkalmazássablonok az Azure API Management
-Az Azure API Management lehetővé teszi a tartalom developer portálon lapok használatával konfigurálhatja a tartalom-sablonok testreszabása. Használatával [DotLiquid](http://dotliquidmarkup.org/) szintaxisát és az Ön által választott szerkesztőben, mint [tervezőknek DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), és a megadott készlete honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), [betűkép-erőforrások](api-management-template-resources.md#glyphs), és [vezérlők lapon](api-management-page-controls.md), konfigurálja a tartalmat, a lapok, ahogyan szeretné ezeket a sablonokat használ nagy rugalmasságot biztosítanak.  
+# <a name="application-templates-in-azure-api-management"></a>Az Azure API Management alkalmazássablonok
+Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfigurálása a tartalom-sablonok használatával tartalmának testreszabása. Használatával [DotLiquid](http://dotliquidmarkup.org/) szintaxist és a szerkesztő szerkesztőprogramban, például [DotLiquid tervezők számára](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), és a egy megadott készlete honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), [szimbóluma erőforrások](api-management-template-resources.md#glyphs), és [vezérlők lapon](api-management-page-controls.md), konfigurálhatja a lapok tartalmát, igény szerint ezek a sablonok használatával nagy rugalmasságot biztosít.  
   
- Ebben a szakaszban a sablonok engedélyezi, hogy testre szabhatja a fejlesztői portálra az alkalmazás lapok tartalmát.  
+ Ebben a szakaszban a sablonok lehetővé teszik az alkalmazás a fejlesztői portál oldalainak tartalmát testreszabása.  
   
--   [– Alkalmazáslista](#ProductList)  
+-   [Alkalmazások listája](#ProductList)  
   
 -   [Alkalmazás](#Application)  
   
 > [!NOTE]
->  Minta alapértelmezett sablonok az alábbi dokumentáció szerepelnek, de folyamatos fejlesztéseket miatt változhat. Megtekintheti az élő alapértelmezett sablonok a fejlesztői portálra nyissa meg a kívánt egyéni sablonokat. A sablonok használatának kapcsolatos további információkért lásd: [hogyan szabhatja testre a sablonok segítségével az API Management fejlesztői portálján](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Alapértelmezett mintasablonokat a következő dokumentációban szerepelnek, de módosulhatnak, folyamatos fejlesztései miatt. A fejlesztői portálon az élő alapértelmezett sablont a kívánt egyéni sablonokat lépve tekintheti meg. Sablonok használatának ismertetését lásd: [testreszabása sablonok használatával, az API Management fejlesztői portálon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="ProductList"></a>– Alkalmazáslista  
- A **Alkalmazáslista** sablon lehetővé teszi a fejlesztői portálra az alkalmazás lista lap törzsét testreszabását.  
+##  <a name="ProductList"></a> Alkalmazások listája  
+ A **Alkalmazáslista** a sablon lehetővé teszi, hogy a szervezet az alkalmazás lista oldal a fejlesztői portál testreszabása.  
   
- ![Lista lap Developer portálon alkalmazássablonok](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM lista lap Developer portálon alkalmazássablonok")  
+ ![Alkalmazás lista lap fejlesztői portál sablonjainak](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM alkalmazás lista lap fejlesztői portál sablonjainak")  
   
 ### <a name="default-template"></a>Alapértelmezett sablon  
   
@@ -79,11 +81,11 @@ Az Azure API Management lehetővé teszi a tartalom developer portálon lapok ha
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|Lapozás|[Lapozás](api-management-template-data-model-reference.md#Paging) entitás.|Az alkalmazások gyűjtemény lapozás adatait.|  
-|Alkalmazások|A gyűjtemény [alkalmazás](api-management-template-data-model-reference.md#Application) entitásokat.|Az aktuális felhasználó számára látható alkalmazásokat.|  
-|CategoryName|Karakterlánc|A kategória az alkalmazás.|  
+|Lapozás|[Lapozás](api-management-template-data-model-reference.md#Paging) entitás.|A lapozófájl információ az alkalmazások a gyűjteményhez.|  
+|Alkalmazások|A gyűjtemény [alkalmazás](api-management-template-data-model-reference.md#Application) entitásokat.|Az aktuális felhasználó számára látható alkalmazások.|  
+|Kategórianév|sztring|A kategória az alkalmazás.|  
   
-### <a name="sample-template-data"></a>Mintaadatokat sablon  
+### <a name="sample-template-data"></a>Mintaadatok sablon  
   
 ```json  
 {  
@@ -134,10 +136,10 @@ Az Azure API Management lehetővé teszi a tartalom developer portálon lapok ha
 }  
 ```  
   
-##  <a name="Application"></a>Alkalmazás  
- A **alkalmazás** sablon lehetővé teszi a fejlesztői portálra az alkalmazás lap törzsét testreszabását.  
+##  <a name="Application"></a> Alkalmazás  
+ A **alkalmazás** a sablon lehetővé teszi, hogy a szervezet az alkalmazás oldal, a fejlesztői portál testreszabása.  
   
- ![Alkalmazássablonok lap Developer portálon](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM lap Developer portálon alkalmazássablonok")  
+ ![Alkalmazások lap fejlesztői portál sablonjainak](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM alkalmazás lapon fejlesztői portál sablonjainak")  
   
 ### <a name="default-template"></a>Alapértelmezett sablon  
   
@@ -178,12 +180,12 @@ Az Azure API Management lehetővé teszi a tartalom developer portálon lapok ha
 ```  
   
 ### <a name="controls"></a>Vezérlők  
- A `Application` sablon nem teszi lehetővé a használata [vezérlők lapon](api-management-page-controls.md).  
+ A `Application` sablon nem engedi meg a használatát bármely [vezérlők lapon](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Adatmodell  
  [Alkalmazás](api-management-template-data-model-reference.md#Application) entitás.  
   
-### <a name="sample-template-data"></a>Mintaadatokat sablon  
+### <a name="sample-template-data"></a>Mintaadatok sablon  
   
 ```json  
 {  
@@ -220,5 +222,5 @@ Az Azure API Management lehetővé teszi a tartalom developer portálon lapok ha
 }  
 ```
 
-## <a name="next-steps"></a>Következő lépések
-A sablonok használatának kapcsolatos további információkért lásd: [hogyan szabhatja testre a sablonok segítségével az API Management fejlesztői portálján](api-management-developer-portal-templates.md).
+## <a name="next-steps"></a>További lépések
+Sablonok használatának ismertetését lásd: [testreszabása sablonok használatával, az API Management fejlesztői portálon](api-management-developer-portal-templates.md).

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: cd022677da59588eca910a508b2596aa513eff4b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: c0e502c1627ebe9d63ca43cb46b982bb0639f3d7
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302809"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444724"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Hogyan lehet OAuth 2.0-val az Azure API Management fejlesztői fiókok engedélyezése
 
@@ -30,6 +30,8 @@ Ez az útmutató bemutatja, hogyan konfigurálhatja az API Management szolgálta
 
 > [!NOTE]
 > OAuth 2.0, az Azure Active Directory konfigurálásával kapcsolatos további információkért lásd: a [WebApp-GraphAPI-DotNet] [ WebApp-GraphAPI-DotNet] minta.
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="step1"> </a>Az OAuth 2.0 engedélyezési kiszolgáló konfigurálása az API Management
 

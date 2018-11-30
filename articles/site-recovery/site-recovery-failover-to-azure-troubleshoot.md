@@ -1,18 +1,25 @@
 ---
-title: Feladatátvétel az Azure-bA hibaelhárítása |} A Microsoft Docs
-description: Ez a cikk ismerteti a gyakori hibáinak elhárítása az Azure-bA az Azure Site Recovery a feladatátvétel során.
+title: Hibák az Azure-ba irányuló feladatátvétel hibaelhárítása |} A Microsoft Docs
+description: Ez a cikk ismerteti azokat a módszereket, az Azure-ba irányuló feladatátvétel előforduló gyakori hibák elhárítása
+services: site-recovery
+documentationcenter: ''
 author: ponatara
 manager: abhemraj
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
+ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
-ms.author: ponatara
-ms.openlocfilehash: 420d061b34734c7b5997f5cdd58fe7faaee9cb82
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.tgt_pltfrm: na
+ms.workload: storage-backup-recovery
+ms.date: 11/27/2018
+ms.author: mayg
+ms.openlocfilehash: 1e7486dc646843c473cfb355445e194893934a1a
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236756"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447146"
 ---
 # <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>Az Azure virtuális gép feladatátvétele során előforduló hibák elhárítása
 
@@ -22,7 +29,7 @@ Az Azure-bA egy virtuális gép feladatátvétele közben hibák a következők 
 
 A Site Recovery nem tudta egy nem sikerült létrehozni a feladatátviteli virtuális géphez az Azure-ban. Ez a következő okok egyike miatt fordulhat elő:
 
-* Nem áll rendelkezésre elegendő mag érhető el a virtuális gép létrehozásához: a rendelkezésre álló kvótát ellenőrizheti a előfizetés -> használat + kvóták. Megnyithatja a [új támogatási kérelem](https://aka.ms/getazuresupport) a kvóta növeléséhez.
+* Nem áll rendelkezésre elegendő mag érhető el a virtuális gép létrehozásához: a rendelkezésre álló kvótát ellenőrizheti a előfizetés -> használat + kvóták. Megnyithatja a [új támogatási kérelem](http://aka.ms/getazuresupport) a kvóta növeléséhez.
 
 * A feladatátvételi virtuális gépek ugyanazon rendelkezésre állási csoportban lévő különböző méretcsaládokhoz szeretne. Győződjön meg arról, hogy ugyanabban a rendelkezésre állási csoportban válassza ki az összes virtuális gép ugyanazon virtuálisgépméret-családhoz. Nyissa meg a virtuális gép számítási és hálózati beállításainál módosíthatja a méretét, és próbálkozzon újra a feladatátvételt.
 
@@ -30,7 +37,7 @@ A Site Recovery nem tudta egy nem sikerült létrehozni a feladatátviteli virtu
 
 ## <a name="failover-failed-with-error-id-28092"></a>Hibaazonosító: 28092 feladatátvétel sikertelen
 
-A Site Recovery nem tudta hozzon létre egy hálózati adaptert a sikertelen a feladatátviteli virtuális géphez. Győződjön meg arról, hogy elegendő kvótával a hálózati adapterek létrehozása az előfizetésben elérhető. A rendelkezésre álló kvótát ellenőrizheti a előfizetés -> használat + kvóták. Megnyithatja a [új támogatási kérelem](https://aka.ms/getazuresupport) a kvóta növeléséhez. Ha elegendő kvótával rendelkezik, akkor ez lehet egy átmeneti probléma, próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, ismétlés után sem, majd a dokumentum végén található Megjegyzés írása.  
+A Site Recovery nem tudta hozzon létre egy hálózati adaptert a sikertelen a feladatátviteli virtuális géphez. Győződjön meg arról, hogy elegendő kvótával a hálózati adapterek létrehozása az előfizetésben elérhető. A rendelkezésre álló kvótát ellenőrizheti a előfizetés -> használat + kvóták. Megnyithatja a [új támogatási kérelem](http://aka.ms/getazuresupport) a kvóta növeléséhez. Ha elegendő kvótával rendelkezik, akkor ez lehet egy átmeneti probléma, próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, ismétlés után sem, majd a dokumentum végén található Megjegyzés írása.  
 
 ## <a name="failover-failed-with-error-id-70038"></a>Feladatátvétel sikertelen Hibaazonosító: 70038
 
@@ -38,7 +45,37 @@ A Site Recovery nem tudta egy nem sikerült létrehozni a klasszikus virtuális 
 
 * Például egy virtuális hálózatot a virtuális gépet létrehozni a szükséges erőforrások egyike nem létezik. A virtuális hálózat létrehozása a virtuális gép számítási és hálózati beállításaiban meg vagy módosítsa a beállítást, amely már létezik, és próbálkozzon újra a feladatátvételi virtuális hálózathoz.
 
-## <a name="unable-to-connectrdpssh---vm-connect-button-grayed-out"></a>Nem lehet csatlakozni RDP/SSH - virtuális gép csatlakoztatása gomb szürkén jelenik meg
+## <a name="failover-failed-with-error-id-170010"></a>Hiba azonosítója 170010 feladatátvétel sikertelen
+
+A Site Recovery nem tudta egy nem sikerült létrehozni a feladatátviteli virtuális géphez az Azure-ban. Ez akkor fordulhat elő, mivel hidratálási belső tevékenységeinek indítása sikertelen volt, a helyszíni virtuális gép.
+
+Csatlakozva az Azure-ban minden olyan gép, az Azure-környezethez szükséges néhány illesztőprogramot kell a rendszerindító start állapota és a szolgáltatások, például DHCP autostart állapotban kell lennie. Ebből kifolyólag hidratálási tevékenység, a feladatátvétel időpontjában konvertálja indítási típusát **atapi, intelide, storflt, vmbus és storvsc illesztőprogramok** rendszerindító elindítani. Is átalakítja néhány szolgáltatásokhoz, például DHCP indítási típusa automatikus indítása. Ez a tevékenység sikertelen lehet a környezet konkrét problémák miatt. Manuálisan módosítsa az indítási típust, illesztőprogramok, kövesse az alábbi lépéseket:
+
+1. [Töltse le](http://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1) a no-hidratálási parancsfájlt, és futtassa azt követi. Ez a szkript ellenőrzi, hogy ha a virtuális gép igényel-e a hidratálási.
+
+    `.\Script-no-hydration.ps1`
+
+    A következő eredményt ad, ha hidratálási szükség:
+
+        REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
+
+        This system doesn't meet no-hydration requirement.
+
+    Abban az esetben, ha a virtuális gép nem-hidratálási követelménynek megfelel, a parancsfájl lehetővé teszik az eredmény "a rendszer megfelel-e a követelmény nem-hidratálási". Ebben az esetben illesztőprogramok és a szolgáltatások az Azure által kért állapotban vannak, és a hidratálási virtuális gépen, nem szükséges.
+
+2. A következőképpen futtassa a no-hidratálási-set a parancsfájlt, ha a virtuális gép nem felel meg a no-hidratálási követelménynek.
+
+    `.\Script-no-hydration.ps1 -set`
+    
+    Ez átalakítja az indítási típusaként válassza az illesztőprogramokat, és az eredményt ad alábbi módon:
+    
+        REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0 
+
+        Updating registry:  REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc   start =  0 
+
+        This system is now no-hydration compatible. 
+
+## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Nem lehet csatlakozni RDP/SSH a feladatátviteli virtuális géphez oka az, hogy szürkén jelenik meg a virtuális gépen a csatlakozás gomb
 
 Ha a **Connect** a feladatait átadó virtuális gép az Azure-beli gomb szürkén jelenik meg, és az Express Route vagy helyek közötti VPN-kapcsolaton keresztül, ezt követően nem csatlakozik Azure
 

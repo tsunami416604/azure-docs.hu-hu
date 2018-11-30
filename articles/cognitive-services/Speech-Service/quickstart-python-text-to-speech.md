@@ -1,0 +1,164 @@
+---
+title: 'Gyors útmutató: A konvertálás szöveg-beszéd átalakítás, Python - beszédszolgáltatás'
+titleSuffix: Azure Cognitive Services
+description: Ebből a gyorsútmutatóból megtudhatja, hogyan átalakítandó szöveg-hang transzformációs Python és a szöveg-hang transzformációs REST API használatával. A jelen útmutatóban szereplő minta szöveg van felépítve, beszéd összefoglaló Markup Language (SSML). Ez lehetővé teszi, hogy válassza ki a beszédfelismerési és nyelvi beszédfelismerési válasz. A REST API-t is támogatja egyszerű szöveg (ASCII vagy UTF-8), azonban ha egyszerű szöveges áll rendelkezésre a Speech Service alapértelmezett beszédfelismerési és nyelvi visszahelyezi a választ.
+services: cognitive-services
+author: erhopf
+manager: cgronlun
+ms.service: cognitive-services
+ms.component: speech-service
+ms.topic: conceptual
+ms.date: 11/16/2018
+ms.author: erhopf
+ms.openlocfilehash: 38bcd67dfb6d9b1a1955658872fee7b8b7a14a0c
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447481"
+---
+# <a name="quickstart-convert-text-to-speech-using-python"></a>Gyors útmutató: Konvertálása szöveg-hang transzformációs Python használatával
+
+Ebből a gyorsútmutatóból megtudhatja, hogyan átalakítandó szöveg-hang transzformációs Python és a szöveg-hang transzformációs REST API használatával. Ebben az útmutatóban a kérelem törzsében van strukturálva, [Speech összefoglaló Markup Language (SSML)](speech-synthesis-markup.md), amely lehetővé teszi, hogy a válasz nyelv és válassza ki.
+
+Ez a rövid útmutatóhoz egy [Azure Cognitive Services-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beszédszolgáltatás erőforrással. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](get-started.md) egy előfizetői azonosító beszerzéséhez.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Ehhez a rövid útmutatóhoz a következőkre van szükség:
+
+* Python 2.7.x vagy 3.x
+* [A Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download), vagy kedvenc szövegszerkesztőjével
+* A beszédfelismerési szolgáltatás egy Azure-előfizetés kulcsa
+
+## <a name="create-a-project-and-import-required-modules"></a>Projekt létrehozása és a szükséges modulok importálása
+
+Hozzon létre egy új Python-projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Ezután másolja a következő kódrészletet egy `tts.py` nevű fájlba a projektjében.
+
+```python
+import os, requests, time
+```
+
+> [!NOTE]
+> Ha még nem használta ezeket a modulokat, a program futtatása előtt telepítenie kell őket. A csomagok telepítéséhez futtassa a következő parancsot: `pip install requests`.
+
+Ezek a modulok a speech választ, és a egy időbélyeg fájlba írni, hozza létre a HTTP-kérés és az szöveg-hang transzformációs API segítségével.
+
+## <a name="set-the-subscription-key-and-create-a-prompt-for-tts"></a>Állítsa az előfizetési kulcsot, és hozzon létre egy kérdés Szövegfelolvasás
+
+A következő néhány szakaszban módszerek engedélyezés kezeléséhez, az szöveg-hang transzformációs API-t és érvényesíteni a választ fog létrehozni. Kezdésnek adja hozzá egy kódrészletet, amely biztosítja, hogy ez a minta úgy működik, a Python 2.7.x és 3.x.
+
+```python
+try: input = raw_input
+except NameError: pass
+```
+
+Következő lépésként hozzunk létre egy osztályt. Ez az, ahol elhelyezzük a jogkivonatcsere, és a szöveg-hang transzformációs API meghívására szolgáló módszerek.
+
+```python
+class TextToSpeech(object):
+    def __init__(self, subscription_key):
+        self.subscription_key = subscription_key
+        self.tts = input("What would you like to convert to speech: ")
+        self.timestr = time.strftime("%Y%m%d-%H%M")
+        self.access_token = None
+```
+
+A `subscription_key` az egyedi kulcs, az Azure Portalról. `tts` kéri a felhasználót, adja meg a szöveg, amely a speech lesz átalakítva. A bemeneti karakterláncot,, így nem kell karaktereket escape-karakterrel kell. Végül `timestr` lekérdezi az aktuális időpontot, amely segítségével a fájl neve.
+
+## <a name="get-an-access-token"></a>Hozzáférési jogkivonat lekérése
+
+A szöveg-hang transzformációs REST API egy hozzáférési jogkivonatot a hitelesítéshez szükséges. A hozzáférési jogkivonatot kapjon egy exchange szükség. Ez a minta kicserél egy hozzáférési jogkivonatot a Speech Service előfizetői azonosítóját a `issueToken` végpont.
+
+Ez a példa feltételezi, hogy a beszédfelismerési szolgáltatás előfizetését az USA nyugati régiójában. Ha egy másik régiót használ, módosítsa a `fetch_token_url`. A teljes listát lásd: [régiók](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
+
+Másolja be ezt a kódot a `TextToSpeech` osztály:
+
+```python
+def get_token(self):
+    fetch_token_url = "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken"
+    headers = {
+        'Ocp-Apim-Subscription-Key': self.subscription_key
+    }
+    response = requests.post(fetch_token_url, headers=headers)
+    self.access_token = str(response.text)
+```
+
+> [!NOTE]
+> A hitelesítés további információkért lásd: [hozzáférési jogkivonat beszerzése](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#how-to-get-an-access-token).
+
+## <a name="make-a-request-and-save-the-response"></a>Kérés és a válasz mentése
+
+Ide fog hozhat létre a kérést, és mentse a speech választ. Először be kell a `base_url` és `path`. Ez a példa feltételezi, hogy az USA nyugati RÉGIÓJA végpont használata. Ha az erőforrás egy másik régióba regisztrálva van, ellenőrizze, hogy frissíti a `base_url`. További információkért lásd: [beszédszolgáltatás régiók](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
+
+Következő lépésként hozzá kell a kéréshez szükséges fejlécek. Győződjön meg arról, hogy frissítenie `User-Agent` az erőforrás (az Azure Portalon található), és a készlet nevére `X-Microsoft-OutputFormat` , az előnyben részesített hangkimeneti. Kimeneti formátumok teljes listáját lásd: [hang kimenete](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#audio-outputs).
+
+Ezután hozhat létre a kérelem törzsében Speech összefoglaló Markup Language (SSML) használatával. Ez a példa a struktúrát határozza meg, és használja a `tts` adjon meg a korábban létrehozott.
+
+>[!NOTE]
+> Ebben a példában a `ZiraRUS` hangtípusú. A Microsoft teljes listáját adott beszédhangot/nyelvek, lásd: [nyelvi támogatás](language-support.md).
+> Ha érdekli a saját márkáját egy egyedi, könnyen felismerhető névre hangalapú létrehozása, [létrehozása egyéni hangtípust](how-to-customize-voice-font.md).
+
+Végül paritásadatok egy kérelmet a szolgáltatáshoz. Ha a kérelem sikeres, és egy 200 állapotkódot adott vissza, a beszéd válasz van egy időbélyegzővel fájlba írni.
+
+Másolja be ezt a kódot a `TextToSpeech` osztály:
+
+```python
+def save_audio(self):
+    base_url = 'https://westus.tts.speech.microsoft.com/'
+    path = 'cognitiveservices/v1'
+    constructed_url = base_url + path
+    headers = {
+        'Authorization': 'Bearer ' + self.access_token,
+        'Content-Type': 'application/ssml+xml',
+        'X-Microsoft-OutputFormat': 'riff-24khz-16bit-mono-pcm',
+        'User-Agent': 'YOUR_RESOURCE_NAME',
+        'cache-control': 'no-cache'
+    }
+    body = "<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female' name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>" + self.tts + "</voice></speak>"
+
+    response = requests.post(constructed_url, headers=headers, data=body)
+    if response.status_code == 200:
+        with open('sample-' + self.timestr + '.wav', 'wb') as audio:
+            audio.write(response.content)
+            print("\nStatus code: " + str(response.status_code) + "\nYour TTS is ready for playback.\n")
+    else:
+        print("\nStatus code: " + str(response.status_code) + "\nSomething went wrong. Check your subscription key and headers.\n")
+
+```
+
+## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
+
+Már majdnem kész. Az utolsó lépés, hogy az osztály példányosítható, és a függvényeket.
+
+```python
+if __name__ == "__main__":
+    subscription_key = "YOUR_KEY_HERE"
+    app = TextToSpeech(subscription_key)
+    app.get_token()
+    app.save_audio()
+```
+
+## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
+
+Ennyi az egész, készen áll a szöveg-hang transzformációs mintaalkalmazás futtatásához. A parancssor (vagy a terminál-munkamenetben) lépjen a projektkönyvtárba, majd futtassa:
+
+```console
+python tts.py
+```
+
+Amikor a rendszer kéri, írjon be bármilyen kívánt szöveg-hang transzformációs konvertálása. Ha ez sikeres, a beszéd fájl található a projektmappába. A kedvenc media player használatával lejátszani.
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ellenőrizze, hogy a bizalmas adatok eltávolítása a mintaalkalmazás forráskódja, például a előfizetési kulcsok.
+
+## <a name="next-steps"></a>További lépések
+
+> [!div class="nextstepaction"]
+> [Szöveget beszéddé átalakító API-referencia](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api)
+
+## <a name="see-also"></a>Lásd még
+
+* [Egyéni hangtípust létrehozása](how-to-customize-voice-font.md)
+* [Hozzon létre egy egyéni beszédfelismerési rekord hangalapú minták](record-custom-voice-samples.md)

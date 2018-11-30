@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 3f93f96c6c9fc551b8b66167eab58861b0ac0b52
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ce701c029c63256714452aa13f646af77991cb67
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005954"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496922"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Machine Learning-szolgáltatások az Azure HDInsight-fürt üzembe helyezése
 
@@ -79,9 +79,9 @@ Után végezze el az adatok modellezése a HDInsight fürt Machine Learning-szol
 
     d. A menüelemekért jelenik meg, adja meg a **E** térjen vissza a főmenübe, majd **8** , lépjen ki az admin segédprogramból.
 
-### <a name="long-delays-when-consuming-web-service-on-spark"></a>Hosszú késések felhasználásakor webszolgáltatások Sparkban
+### <a name="long-delays-when-consuming-web-service-on-apache-spark"></a>Hosszú késések használatakor az Apache Spark-webszolgáltatása
 
-Ha hosszú késleltetést tapasztal, amikor egy Spark számítási környezetben mrsdeploy függvényekkel létrehozott webszolgáltatást próbál felhasználni, előfordulhat, hogy hozzá kell adnia néhány hiányzó mappát. A Spark-alkalmazás egy *rserve2* nevű felhasználóhoz tartozik, ha egy mrsdeploy függvényeket használó webszolgáltatásból hívja meg. Megkerülő megoldás a problémára:
+Ha hosszú késleltetést tapasztal, amikor a létrehozott webszolgáltatások használata próbál számítási környezetben mrsdeploy függvényekkel egy Apache Spark, szükség lehet hozzá néhány hiányzó mappát. A Spark-alkalmazás egy *rserve2* nevű felhasználóhoz tartozik, ha egy mrsdeploy függvényeket használó webszolgáltatásból hívja meg. Megkerülő megoldás a problémára:
 
     # Create these required folders for user 'rserve2' in local and hdfs:
 
@@ -139,7 +139,7 @@ Méretezni a számítási csomópontok, először a feldolgozó csomópontok les
 
 ### <a name="step-1-decommission-the-worker-nodes"></a>1. lépés: A feldolgozó csomópontok leszerelése
 
-Machine Learning Services fürtje nem felügyelt YARNON keresztül. Ha a feldolgozó csomópontokat nem szereli, a YARN Resource Manager nem működik, mert nem az erőforrásokat, a kiszolgáló által elvárt módon. Ennek a helyzetnek az elkerülésére javasoljuk a feldolgozó csomópontok leszerelését a számítási csomópontok horizontális felskálázása előtt.
+Machine Learning Services fürtje nem kezelhető [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html). Ha a feldolgozó csomópontokat nem szereli, a YARN Resource Manager nem működik, mert nem az erőforrásokat, a kiszolgáló által elvárt módon. Ennek a helyzetnek az elkerülésére javasoljuk a feldolgozó csomópontok leszerelését a számítási csomópontok horizontális felskálázása előtt.
 
 Kövesse az alábbi lépéseket a feldolgozó csomópontok leszerelése:
 

@@ -9,21 +9,21 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: e132ceb857b05f24664c93729dd43d75b5a19ac2
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1e01a3db2c0ca1f9024afb3faecf677ac4e3131b
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015060"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52494471"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Számítási környezeti beállítások a HDInsight a Machine Learning-szolgáltatások
 
 Machine Learning-szolgáltatások az Azure HDInsight a hívások a számítási környezet beállításával végrehajtásának módját szabályozza. Ez a cikk ismerteti a számára adja meg, hogyan végrehajtási párhuzamosíthatók-e a peremhálózati csomópont vagy a HDInsight-fürt mag között elérhető beállítások.
 
-A fürt élcsomópontjához kényelmes megoldás az R-szkriptek futtatása és a fürthöz való csatlakozáshoz. Az élcsomópont lehetősége van a futó párhuzamos működésű elosztott funkcióit RevoScaleR a Processzormagok száma, a peremhálózati kiszolgáló között. Is futtathatja őket a fürt csomópontjai között használatával a RevoScaleR a Hadoop Mapreduce vagy a Spark számítási környezetek.
+A fürt élcsomópontjához kényelmes megoldás az R-szkriptek futtatása és a fürthöz való csatlakozáshoz. Az élcsomópont lehetősége van a futó párhuzamos működésű elosztott funkcióit RevoScaleR a Processzormagok száma, a peremhálózati kiszolgáló között. Is futtathatja őket a fürt csomópontjai között RevoScaleR a Hadoop Mapreduce használatával, vagy az Apache Spark számítási környezetek.
 
 ## <a name="ml-services-on-azure-hdinsight"></a>Machine Learning-szolgáltatások az Azure HDInsight
-[Machine Learning-szolgáltatások az Azure HDInsight](r-server-overview.md) a legújabb funkciókat kínál az R-alapú elemzés. Egy a HDFS-tárolóban tárolt adatokat képes használni a [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob storage") tárfiók, egy Data Lake store vagy a Linux helyi fájlrendszer. Mivel nyílt forráskódú R, Machine Learning-szolgáltatások beépített, az R-alapú alkalmazásokat hoz létre a 8000-es + nyílt forráskódú R-csomagok is alkalmazható. Is használhatják a rutinokat a [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), a Microsoft big data analytics csomagot, amely a Machine Learning-szolgáltatások részét képezi.  
+[Machine Learning-szolgáltatások az Azure HDInsight](r-server-overview.md) a legújabb funkciókat kínál az R-alapú elemzés. Használhat egy az Apache Hadoop HDFS-tárolóban tárolt adatok a [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob storage") tárfiók, egy Data Lake store vagy a Linux helyi fájlrendszer. Mivel nyílt forráskódú R, Machine Learning-szolgáltatások beépített, az R-alapú alkalmazásokat hoz létre a 8000-es + nyílt forráskódú R-csomagok is alkalmazható. Is használhatják a rutinokat a [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), a Microsoft big data analytics csomagot, amely a Machine Learning-szolgáltatások részét képezi.  
 
 ## <a name="compute-contexts-for-an-edge-node"></a>Számítási környezetek az élcsomópont
 R-szkriptet az élcsomópont a Machine Learning szolgáltatások a fürtben futó általában az R-értelmező belül futtatja, a csomóponton. A kivétel ezeket a lépéseket, amelyek RevoScaleR függvény hívása. A RevoScaleR hívások állíthatja be, hogy a RevoScaleR számítási környezet által meghatározott számítási környezetben futnak.  Ha futtatja az R-szkriptet az élcsomóponthoz, a számítási környezet lehetséges értékei a következők:
@@ -52,7 +52,7 @@ Adja meg a párhuzamos végrehajtási választott három lehetőség közül mel
 - Ismétlődő elemzések gyorsabbak, ha az adatok helyi, és ha az XDF van.
 - Célszerű adatfolyam kis mennyiségű adatot egy szöveges adatforrásból. Nagyobb adatmennyiség esetén átalakíthatja XDF elemzés előtt.
 - Kezelhetetlen nagyon nagy mennyiségű adat válik, másolása, illetve az adatok elemzéséhez az élcsomóponthoz streamelési járó többletterhelést.
-- A Spark, a gyorsabb, mint a Mapreduce a Hadoop elemzés céljából.
+- ApacheSpark a gyorsabb, mint a Mapreduce a Hadoop elemzés céljából.
 
 Adja meg ezeket az alapelveket, az alábbi szakaszok nyújtanak néhány általános szabályokat a legjobb megoldás a számítási környezet kiválasztása.
 
@@ -60,10 +60,10 @@ Adja meg ezeket az alapelveket, az alábbi szakaszok nyújtanak néhány által�
 * Ha elemzéséhez adatmennyiség kicsi, és nem igényel ismételt elemzése, majd, adatfolyamként közvetlenül az analysis rutin használatával *helyi* vagy *localpar*.
 * Ha ismétlődő elemzése szükséges elemzéséhez adatmennyiség kis vagy közepes méretű, majd másolja azt a helyi fájlrendszerben, azok importálása az XDF és elemezheti a testre keresztül *helyi* vagy *localpar*.
 
-### <a name="hadoop-spark"></a>Hadoop Spark
+### <a name="apache-spark"></a>Apache Spark
 * Ha nagy adatmennyiség elemzését, majd importálni kell a Spark DataFrame használatával **RxHiveData** vagy **RxParquetData**, vagy a HDFS-ben XDF (kivéve, ha a tároló a hiba), és elemezheti a Spark számítási a környezet.
 
-### <a name="hadoop-map-reduce"></a>Hadoop Mapreduce
+### <a name="apache-hadoop-map-reduce"></a>Az Apache Hadoop Mapreduce
 * A Mapreduce számítási környezetet használja, ha általánosságban lassabb lesz, mivel a Spark számítási környezet megoldhatatlan hibát tapasztal.  
 
 ## <a name="inline-help-on-rxsetcomputecontext"></a>Beágyazott segítséget rxSetComputeContext
@@ -76,7 +76,7 @@ Emellett olvassa el a [elosztott számítástechnikai áttekintése](https://doc
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben megismerkedett a beállításokat, adja meg, hogyan végrehajtási párhuzamosíthatók-e között a peremhálózati csomópont vagy a HDInsight-fürt magok számára elérhető. Machine Learning-szolgáltatások és a HDInsight-fürtök együttes használatával kapcsolatos további tudnivalókért lásd a következő témaköröket:
 
-* [Hadoop Machine Learning-szolgáltatások áttekintése](r-server-overview.md)
-* [Machine Learning-szolgáltatások Hadoop használatának első lépései](r-server-get-started.md)
+* [Az Apache Hadoophoz készült gépi Tanulási szolgáltatások – áttekintés](r-server-overview.md)
+* [Ismerkedés az Apache Hadoophoz készült gépi Tanulási szolgáltatások](r-server-get-started.md)
 * [A HDInsight Machine Learning-szolgáltatásokhoz az Azure tárolási lehetőségek](r-server-storage.md)
 

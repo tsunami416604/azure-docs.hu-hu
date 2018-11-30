@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 843b03ce33d1897e2e985ac832f883e1fae12960
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: dd876462559ac10fc0463c64413bf11eabbc88a1
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49959043"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443525"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>A virtuális hálózatok az Azure API Management használata
 Az Azure virtuális hálózatok (Vnetek) helyezni, az Azure-erőforrások bármelyikét elérését Ön szabályozza a nem internet routeable hálózat teszi lehetővé. Ezek a hálózatok csatlakozhat a helyszíni hálózatokhoz való kapcsolódásának VPN különböző technológiákat. További információ az Azure-beli virtuális hálózatok Kezdje itt az adatokat további: [Azure Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md).
@@ -27,7 +27,8 @@ Az Azure API Management is üzembe helyezhetők a virtuális hálózaton (VNET),
 
 > [!NOTE]
 > Az Azure API Management támogatja a klasszikus és Azure Resource Manager virtuális hálózatok.
->
+
+[!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,7 +39,6 @@ Ebben a cikkben leírt lépések végrehajtásához rendelkeznie:
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 + APIM-példány. További információkért lásd: [Azure API Management szolgáltatáspéldány létrehozása](get-started-create-service-instance.md).
-+ Virtuális hálózatok közötti kapcsolat csak a prémium és a fejlesztői csomag érhető el. Válthat az ezek a rétegek utasításait követve a [frissítés és skálázás](upgrade-and-scale.md#upgrade-and-scale) témakör.
 
 ## <a name="enable-vpn"> </a>Virtuális hálózatok közötti kapcsolat engedélyezése
 

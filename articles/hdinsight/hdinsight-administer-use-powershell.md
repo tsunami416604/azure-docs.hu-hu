@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/6/2018
 ms.author: tylerfox
-ms.openlocfilehash: 4bf46501a75b9dd5be7ae1b446a0db90c20be559
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 936e53ca328b0f54bfd75e7b3d4f6747b0037669
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235258"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495169"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>A HDInsight Apache Hadoop-fürtök kezelése az Azure PowerShell használatával
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Az Azure PowerShell segítségével szabályozhatja és automatizálhatja az üzembe helyezéséhez és felügyeletéhez a számítási feladatokat az Azure-ban. Ebből a cikkből elsajátíthatja az Azure HDInsight az Apache Hadoop-fürtök kezelése az Azure PowerShell használatával. A HDInsight PowerShell-parancsmagok listáját lásd: [HDInsight parancsmag-referencia](https://msdn.microsoft.com/library/azure/dn479228.aspx).
+Az Azure PowerShell segítségével szabályozhatja és automatizálhatja az üzembe helyezéséhez és felügyeletéhez a számítási feladatokat az Azure-ban. Ebben a cikkben megismerheti, hogyan kezelheti a [Apache Hadoop](https://hadoop.apache.org/) Azure HDInsight-fürtök Azure PowerShell használatával. A HDInsight PowerShell-parancsmagok listáját lásd: [HDInsight parancsmag-referencia](https://msdn.microsoft.com/library/azure/dn479228.aspx).
 
 **Előfeltételek**
 
@@ -80,12 +80,12 @@ A fürtméretezés egy funkció lehetővé teszi, hogy a fürt újbóli létreho
 
 A fürt a HDInsight által támogatott különböző típusú adatok csomópontok számának módosításával hatásai:
 
-* Hadoop
+* Apache Hadoop
 
     Zökkenőmentesen lehet növelni egy Hadoop-fürtöt, amely a folyamatban lévő vagy futó feladatok befolyásolása nélkül fut-e a munkavégző csomópontok számát. Új feladatok is lehet beküldeni, amíg a művelet folyamatban van. A skálázási művelet hibák szabályosan kezeli, úgy, hogy a fürt minden esetben működőképes állapotban marad.
 
     Ha egy Hadoop-fürtöt az adatcsomópontok száma csökkentésével vertikálisan leskálázni, a fürtben a szolgáltatások újra lesz indítva. Szolgáltatások újraindítása hatására az összes futó és a függőben lévő feladatok meghiúsulhatnak, a skálázási művelet befejezése után. A feladatok újból elküldheti, azonban a művelet befejeződése után.
-* HBase
+* Apache HBase
 
     Zökkenőmentesen adja hozzá vagy távolíthat el csomópontokat a HBase-fürt futás közben. Regionális kiszolgáló automatikusan kiegyensúlyozott vannak a skálázási művelet befejezése néhány percen belül. Azonban manuálisan is elosztása a regionális kiszolgálók jelentkezik be a fürt átjárócsomópontjával, és futtassa a következő parancsokat egy parancssorablakból:
 
@@ -95,7 +95,7 @@ A fürt a HDInsight által támogatott különböző típusú adatok csomóponto
     >balancer
     ```
 
-* Storm
+* Apache Storm
 
     Zökkenőmentesen adja hozzá vagy távolít el a Storm-fürt adatcsomópontok futás közben. Azonban a topológia újraegyensúlyozására kell a skálázási művelet a sikeres telepítést követően.
 
@@ -207,25 +207,25 @@ $resourceGroupName = $cluster.ResourceGroup
 
 
 ## <a name="submit-jobs"></a>Feladatok elküldése
-**A MapReduce-feladatok elküldése**
+**Az Apache Hadoop MapReduce-feladatok elküldése**
 
-Lásd: [futtassa a szerepel a HDInsight MapReduce-példák](hadoop/apache-hadoop-run-samples-linux.md).
+Lásd: [futtatása HDInsight tartalmazza az Apache Hadoop MapReduce példák](hadoop/apache-hadoop-run-samples-linux.md).
 
-**A Hive-feladatok**
+**Az Apache Hive-feladatok elküldése**
 
-Lásd: [futtatása Hive-lekérdezések a PowerShell-lel](hadoop/apache-hadoop-use-hive-powershell.md).
+Lásd: [PowerShell használatával futtassa az Apache Hive lekérdezések](hadoop/apache-hadoop-use-hive-powershell.md).
 
-**A Pig-feladatok elküldése**
+**Az Apache Pig-feladatok elküldése**
 
-Lásd: [futtatása Pig-feladatok elvégzése PowerShell-lel](hadoop/apache-hadoop-use-pig-powershell.md).
+Lásd: [futtatása Apache Pig-feladatok PowerShell-lel](hadoop/apache-hadoop-use-pig-powershell.md).
 
-**A Sqoop-feladatok elküldése**
+**Az Apache Sqoop-feladatok elküldése**
 
-Lásd: [Sqoop használata a HDInsight](hadoop/hdinsight-use-sqoop.md).
+Lásd: [Apache Sqoop használata a HDInsight](hadoop/hdinsight-use-sqoop.md).
 
-**Az Oozie-feladatok elküldése**
+**Az Apache Oozie-feladatok elküldése**
 
-Lásd: [megadásához és a munkafolyamat futtatása a HDInsight Hadoop-keretrendszerrel használható Oozie](hdinsight-use-oozie.md).
+Lásd: [használata Apache Oozie megadásához és a munkafolyamat futtatása a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-oozie.md).
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Az Azure Blob storage-adatok feltöltése
 Lásd: [Adatok feltöltése a HDInsightba][hdinsight-upload-data].
@@ -236,7 +236,7 @@ Lásd: [Adatok feltöltése a HDInsightba][hdinsight-upload-data].
 * [Felügyelheti a HDInsight egy parancssori felülettel][hdinsight-admin-cli]
 * [HDInsight-fürtök létrehozása][hdinsight-provision]
 * [Adatok feltöltése a HDInsightba][hdinsight-upload-data]
-* [Programozott módon a Hadoop-feladatok elküldése][hdinsight-submit-jobs]
+* [Programozott módon az Apache Hadoop-feladatok elküldése][hdinsight-submit-jobs]
 * [Azure HDInsight – első lépések][hdinsight-get-started]
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/

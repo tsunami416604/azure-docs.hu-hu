@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 0811f0e115545a37b6c570c436900a8548adae61
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3a65b66619351462fcd9c77c3fb9b935cf99ebcc
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006362"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496457"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Az ML-szolgáltatások használatának első lépései az Azure HDInsightban
 
-Az Azure HDInsight segítségével létrehozhat egy fürtöt az ML-szolgáltatások számára. Ez lehetővé teszi, hogy az R-szkriptek a Spark és a MapReduce eszközökkel elosztott számításokat futtathassanak. A cikkben foglaltakat követve elsajátíthatja az ML-szolgáltatási fürtök létrehozását a HDInsightban, valamint az olyan R-szkriptek futtatását, amelyek a Spark elosztott R-számításokhoz való használatát mutatják be.
+Az Azure HDInsight segítségével létrehozhat egy fürtöt az ML-szolgáltatások számára. Ez a beállítás lehetővé teszi, hogy az R-szkriptek a [Apache Spark](https://spark.apache.org/) és [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) eszközökkel elosztott számításokat futtathassanak. A cikkben foglaltakat követve elsajátíthatja az ML-szolgáltatási fürtök létrehozását a HDInsightban, valamint az olyan R-szkriptek futtatását, amelyek a Spark elosztott R-számításokhoz való használatát mutatják be.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,7 +37,7 @@ Az Azure HDInsight segítségével létrehozhat egy fürtöt az ML-szolgáltatá
 
     * **Fürt neve**: A HDInsight-fürt neve.
     * **Előfizetés**: Válassza ki a használni kívánt előfizetést.
-    * **Fürt bejelentkezési felhasználóneve** és **Fürt bejelentkezési jelszava**: A fürt HTTPS-kapcsolaton keresztüli elérésekor használt bejelentkezési adatok. Ezekkel a hitelesítő adatokkal érheti el az olyan szolgáltatásokat, mint az Ambari webes felület vagy a REST API.
+    * **Fürt bejelentkezési felhasználóneve** és **Fürt bejelentkezési jelszava**: A fürt HTTPS-kapcsolaton keresztüli elérésekor használt bejelentkezési adatok. Ezek a hitelesítő adatok használatával például az Apache Ambari webes felhasználói felületen vagy REST API-szolgáltatások eléréséhez.
     * **SSH-felhasználónév**: A fürt SSH-kapcsolaton keresztüli elérésekor használt bejelentkezési adatok. Alapértelmezés szerint a jelszó megegyezik a fürt bejelentkezési jelszavával.
     * **Erőforráscsoport**: Az az erőforráscsoport, amelyben a fürt létre lesz hozva.
     * **Hely**: Az az Azure-régió, amelyben a fürt létre lesz hozva.

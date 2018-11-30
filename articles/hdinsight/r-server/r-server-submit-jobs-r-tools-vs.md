@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 400cb16e4f4440283a783116c4ee843bc0a7344c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d9d34441f36ea60141ed2659b3e33efdaac94ad3
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248571"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497123"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Feladatok beküldése az R Tools for Visual Studio használatával
 
@@ -64,7 +64,7 @@ RTVS bővíti az R-munkafolyamat eszközök felajánlásával a [R Interaktivní
 
 ## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>Machine Learning-szolgáltatások HDInsight-fürthöz-feladatok elküldése
 
-PuTTY ellátott Windows számítógépre a Microsoft ML Server vagy a Microsoft R ügyfél használata esetén létrehozhat egy számítási környezetet, futtatandó elosztott `RevoScaleR` függvények a helyi ügyfélről a HDInsight-fürthöz. Használat `RxSpark` hozhat létre a számítási környezet, adja meg a felhasználónevet, a Hadoop-fürt élcsomópont, SSH-kapcsolók, és így tovább.
+PuTTY ellátott Windows számítógépre a Microsoft ML Server vagy a Microsoft R ügyfél használata esetén létrehozhat egy számítási környezetet, futtatandó elosztott `RevoScaleR` függvények a helyi ügyfélről a HDInsight-fürthöz. Használat `RxSpark` hozhat létre a számítási környezet, adja meg a felhasználónevet, az Apache Hadoop-fürt élcsomópont, SSH-kapcsolók, és így tovább.
 
 1. Az élcsomópont állomásnév megkereséséhez az Azure-ban a Machine Learning-szolgáltatások HDInsight-fürt panel megnyitásához, majd jelölje ki **Secure Shell (SSH)** az áttekintő panel felső menüjében.
 
@@ -132,7 +132,7 @@ PuTTY ellátott Windows számítógépre a Microsoft ML Server vagy a Microsoft 
 
         ![Másolt fájl](./media/r-server-submit-jobs-r-tools-vs/copied-file.png)
 
-6. Miután végzett, a jelenlegi Spark-környezetet használja, le kell állítania. Több környezet nem futtathatók egyszerre.
+6. Miután végzett, a jelenlegi Apache Spark-környezetet használja, le kell állítania. Több környezet nem futtathatók egyszerre.
 
     ```R
     rxStopEngine(mySparkCluster)

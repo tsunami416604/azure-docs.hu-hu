@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: b4704e9f078b248ef1835babb3b63c378b011c4e
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: bd63e8379051864a19c473779625a925446185f2
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516243"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445021"
 ---
 # <a name="administrator-roles-by-identity-task-in-azure-active-directory"></a>Rendszergazdai szerepkörök az Azure Active Directory identity feladat
 
@@ -107,7 +107,7 @@ Az összes konfiguráció olvasása | Címtárolvasók | Felhasználói szerepk�
 Tevékenység | Legalacsonyabb jogosultsági szintű szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
 Az Azure AD Domain Services-példány létrehozása | Globális rendszergazda | 
-Hajtható végre minden Azure Active Directory Domain Services feladatok | Az Azure AD DC rendszergazdák csoportjának ([dokumentációjában](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-domain#administrative-tasks-you-can-perform-on-a-managed-domain)) | 
+Minden Azure AD tartományi szolgáltatások feladatok végrehajtása | Az Azure AD DC rendszergazdák csoportjának ([dokumentációjában](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-domain#administrative-tasks-you-can-perform-on-a-managed-domain)) | 
 Az összes konfiguráció olvasása | A rendszer Active Directory Tartományi szolgáltatásokat tartalmazó Azure-előfizetés | 
 
 ## <a name="devices"></a>Eszközök
@@ -147,7 +147,7 @@ Licenc hozzárendelése | Felhasználóifiók-adminisztrátor |
 Csoport létrehozása | Felhasználóifiók-adminisztrátor | 
 Létrehozása, frissítése vagy egy csoport vagy alkalmazás hozzáférési felülvizsgálat törlése | Felhasználóifiók-adminisztrátor | 
 Csoport lejáratának kezelése | Felhasználóifiók-adminisztrátor | 
-Csoportbeállítások kezelése | Felhasználóifiók-adminisztrátor | 
+Csoportbeállítások kezelése | Globális rendszergazda | 
 Olvassa el az összes konfigurációs (kivéve a rejtett tagsági) | Címtárolvasók | Felhasználói szerepkör alapértelmezés ([dokumentációjában](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 Rejtett olvasási tagság | A csoporttag | Csoporttulajdonos, jelszókezelő, Exchange-rendszergazda, SharePoint-rendszergazda, Teams-rendszergazda, felhasználóifiók-adminisztrátor
 Olvassa el a rejtett tagsággal rendelkező csoportok tagsága | Ügyfélszolgálati adminisztrátor | Felhasználóifiók-adminisztrátor, rendszergazda csapatok

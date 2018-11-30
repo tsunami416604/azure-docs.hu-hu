@@ -10,16 +10,16 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: cd57e9a90b07447392fbff48017bb29f002ad29e
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 8a180dfada9da92e0b8ed69373a20602b3b0a177
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035951"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495597"
 ---
-# <a name="use-batch-transcription"></a>A batch beszédátírási használata
+# <a name="why-use-batch-transcription"></a>Miért érdemes használni a Batch beszédátírási?
 
-Batch beszédátírási ideális, ha nagy mennyiségű hang storage-ban. A REST API használatával hangfájlok átirányítása a közös hozzáférésű jogosultságkód (SAS) URI-t, és aszinkron módon fogadni az beszédátírás.
+Batch beszédátírási ideális, ha nagy mennyiségű hang storage-ban. A dedikált REST API használatával hangfájlok átirányítása a közös hozzáférésű jogosultságkód (SAS) URI-t, és aszinkron módon fogadni az beszédátírás.
 
 ## <a name="the-batch-transcription-api"></a>A Batch Beszédátírási API
 
@@ -36,16 +36,16 @@ A Batch Beszédátírási API aszinkron hang-szöveg transzformációs átírás
 
 A Batch Beszédátírási API támogatja a következő formátumok:
 
-Name (Név)| Csatorna  |
-----|----------|
-MP3 |   Mono   |   
-MP3 |  Sztereó  | 
-WAV |   Mono   |
-WAV |  Sztereó  |
-Opus|   Mono   |
-Opus|  Sztereó  |
+| Formátum | Kodek | Átviteli sebesség | Mintavételi frekvencia |
+|--------|-------|---------|-------------|
+| WAV | A PCM | 16-bit | 8 vagy 16 kHz, Monó, sztereó |
+| MP3 | A PCM | 16-bit | 8 vagy 16 kHz, Monó, sztereó |
+| OGG | OPUS | 16-bit | 8 vagy 16 kHz, Monó, sztereó |
 
-Sztereó audiostreamek lejátszásával, a batch beszédátírási bontja a bal és jobb csatorna a beszédátírási során. A két JSON-fájlok az eredmény az egyes jönnek létre egyetlen csatornákon. Az utterance (kifejezés) / időbélyegeket köszönhetően a fejlesztő hozzon létre egy rendezett végleges átiratok. A kimenet egy csatorna, beleértve a profanitásszűrőjének és a központozási modell beállításának tulajdonságai a következő JSON-mintában látható:
+> [!NOTE]
+> A Batch Beszédátírási API egy (a szint már fizetőssé) S0 kulcs szükséges. Ingyenes (f0) kulccsal nem működik.
+
+Sztereó audiostreamek lejátszásával, a a Batch API beszédátírási bontja a bal és jobb csatorna a beszédátírási során. A két JSON-fájlok az eredmény az egyes jönnek létre egyetlen csatornákon. Az utterance (kifejezés) / időbélyegeket köszönhetően a fejlesztő hozzon létre egy rendezett végleges átiratok. Az alábbi JSON-minta a kimenet egy csatorna, includuing tulajdonságok beállításához a profanitásszűrőjének és az absztrakt típus látható.
 
 ```json
 {
@@ -62,6 +62,16 @@ Sztereó audiostreamek lejátszásával, a batch beszédátírási bontja a bal 
 
 > [!NOTE]
 > A Batch Beszédátírási API egy REST-szolgáltatás beszédátírás, állapotát és kapcsolódó eredmények kérő használja. Az API bármilyen nyelvet is használhat. Ez a szakasz azt ismerteti, hogyan használja fel az API-t.
+
+### <a name="query-parameters"></a>Lekérdezési paraméterek
+
+Ezeket a paramétereket a lekérdezési karakterláncban a REST-kérés szerepelhet.
+
+| Paraméter | Leírás | Kötelező / választható |
+|-----------|-------------|---------------------|
+| `ProfanityFilterMode` | Adja meg a felismerési eredményeket cenzúrázása kezelése. Elfogadott értékek a következők `none` amely letiltja a vulgáris szűréshez `masked` csillag, amely lecseréli cenzúrázása `removed` amely eltávolítja az összes cenzúrázása az eredményből vagy `tags` ami ad "cenzúrázása" címkék. Az alapértelmezett beállítás `masked`. | Optional |
+| `PunctuationMode` | Adja meg a felismerési eredményeket írásjelek kezelése. Elfogadott értékek a következők `none` ami letiltja az absztrakt, `dictated` explicit írásjelek, amiből `automatic` , amellyel a dekóder írásjelek, kezelése vagy `dictatedandautomatic` írásjelek vagy automatikus azt jelenti, amely során. | Optional |
+
 
 ## <a name="authorization-token"></a>Engedélyezési jogkivonat
 

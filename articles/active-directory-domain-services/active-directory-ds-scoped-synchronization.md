@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: ergreenl
-ms.openlocfilehash: 7726a28e0254f4316759c3d8c74f57db6a9e399e
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 1df9b07d5a0a9e5018fc024038e65723c606ef71
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242194"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442981"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>A felügyelt tartomány Azure AD-ből a hatókörön belüli szinkronizálás konfigurálása
 Ez a cikk bemutatja, hogyan konfigurálása csak adott felhasználói fiókokat, az Azure AD-címtár szinkronizálható az Azure AD tartományi szolgáltatásokkal felügyelt tartományban.
@@ -47,7 +47,12 @@ Az alábbi táblázat segítségével eldöntheti, hogyan használhatja a hatók
 >
 
 
-## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization"></a>Hozzon létre egy új felügyelt tartományt és a Csoportalapú hatókörrel rendelkező szinkronizálásának engedélyezése
+## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-azure-portal"></a>Hozzon létre egy új felügyelt tartományt, és az Azure portal használatával Csoportalapú hatókörrel rendelkező szinkronizálásának engedélyezése
+
+1. Kövesse a [a kezdeti lépések útmutatóban](active-directory-ds-getting-started.md) hozzon létre egy felügyelt tartományt.
+2. Válasszon **hatókörű** az Azure AD tartományi szolgáltatások létrehozása varázsló a szinkronizálási stílus kiválasztása közben.
+
+## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-powershell"></a>Hozzon létre egy új felügyelt tartományt és a PowerShell-lel Csoportalapú hatókörrel rendelkező szinkronizálásának engedélyezése
 PowerShell használatával hajtsa végre a lépéseket egy készlete. Tekintse meg az utasításokat követve [engedélyezése az Azure Active Directory Domain Services PowerShell-lel](active-directory-ds-enable-using-powershell.md). Néhány cikkben ismertetett lépések kissé módosultak, hogy a hatókörön belüli-szinkronizálás konfigurálásával.
 
 A következő lépéseket a felügyelt tartományra a hatókörön belüli szinkronizálás Csoportalapú konfigurálása:

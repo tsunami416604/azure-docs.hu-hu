@@ -9,17 +9,17 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: tyfox
-ms.openlocfilehash: d5d4c951bb104159730814f9b1b5820cb17f9f1a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4de4674d8a4c2b573df12648739971e460531636
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234782"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495106"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-using-the-azure-classic-cli"></a>A klasszikus Azure CLI-vel HDInsight az Apache Hadoop-fürtök kezelése
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Ismerje meg, hogyan használható a [Azure klasszikus parancssori felület](../cli-install-nodejs.md) Azure HDInsight az Apache Hadoop-fürtök kezeléséhez. A klasszikus parancssori felület implementálva van a node.js-ben. Használható bármilyen platformon, amely támogatja a Node.js-t, beleértve a Windows, Mac és Linux platformokat.
+Ismerje meg, hogyan használható a [Azure klasszikus parancssori felület](../cli-install-nodejs.md) kezeléséhez [Apache Hadoop](https://hadoop.apache.org/) Azure HDInsight-fürtök. A klasszikus parancssori felület implementálva van a node.js-ben. Használható bármilyen platformon, amely támogatja a Node.js-t, beleértve a Windows, Mac és Linux platformokat.
 
 [!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
@@ -74,7 +74,7 @@ azure group delete <Resource Group Name>
 ```
 
 ## <a name="scale-clusters"></a>Fürtök méretezése
-A Hadoop-fürt méretének módosítása:
+Az Apache Hadoop-fürt méretének módosítása:
 
 ```cli
 azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>

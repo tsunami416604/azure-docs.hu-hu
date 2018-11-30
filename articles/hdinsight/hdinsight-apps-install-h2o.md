@@ -9,20 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 60b80843ce343c667413be55b59d02ac14b349f3
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: d2aeb41c2fcc11c37ec56707932eabcf63e026a0
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037515"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497208"
 ---
 # <a name="install-published-application---h2o-sparkling-water"></a>Közzétett alkalmazás – H2O Sparkling Water telepítése
 
-Ez a cikk bemutatja, hogyan telepítheti és futtathatja a [H20 Sparkling Water](http://www.h2o.ai/) közzé az Azure HDInsight az Apache Hadoop-alkalmazás. A HDInsight-alkalmazásplatform áttekintése és a egy listát az elérhető független szoftverszállító (ISV) közzétett alkalmazások létrehozásáról: [külső gyártótól származó Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md). A saját alkalmazások telepítéséről az [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) című cikk tartalmaz útmutatást.
+Ez a cikk bemutatja, hogyan telepítheti és futtathatja a [H20 Sparkling Water](http://www.h2o.ai/) közzétett [Apache Hadoop](https://hadoop.apache.org/) alkalmazás az Azure HDInsight a. A HDInsight-alkalmazásplatform áttekintése és a egy listát az elérhető független szoftverszállító (ISV) közzétett alkalmazások létrehozásáról: [külső gyártótól származó Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md). A saját alkalmazások telepítéséről az [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) című cikk tartalmaz útmutatást.
 
 ## <a name="about-h2o-sparkling-water"></a>Tudnivalók a H2O Sparkling Water
 
-H2O Sparkling Water egy nyílt forráskódú, teljes mértékben elosztott memóriabeli gépek tanulási platform lineáris méretezhetőség. H2O Sparkling Water lehetővé teszik a gyors, skálázható gépi tanulási algoritmusok H2O a Spark képességeire kombinálhat. Sparkling Water, a felhasználók számítási ösztönözheti a Scala, R és Python a H2O Flow felhasználói felület használatával.
+H2O Sparkling Water egy nyílt forráskódú, teljes mértékben elosztott memóriabeli gépek tanulási platform lineáris méretezhetőség. H2O Sparkling Water lehetővé teszik a gyors, skálázható gépi tanulási algoritmusok H2O lehetőségeinek egyesítése [Apache Spark](https://spark.apache.org/). Sparkling Water, a felhasználók ösztönözheti a számítási [Scala](https://www.scala-lang.org/), R és Python nyelven a H2O Flow felhasználói felület használatával.
 
 H2O Sparkling Water biztosítja:
 
@@ -49,11 +49,11 @@ Telepíti az alkalmazást egy új HDInsight-fürtöt, vagy egy meglévő fürth�
 
 ## <a name="install-the-h2o-sparkling-water-published-application"></a>A közzétett alkalmazás telepítése a H2O Sparkling Water
 
-Ezzel és más elérhető ISV-alkalmazások telepítésének lépésenkénti útmutatójáért olvassa el a [külső gyártótól származó Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md).
+Ezzel és más elérhető ISV-alkalmazások telepítésének lépésenkénti útmutatójáért olvassa el a [külső Apache Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md).
 
 ## <a name="launch-h2o-sparkling-water"></a>Indítsa el a H2O Sparkling Water
 
-1. A telepítés után megkezdheti H2O Sparkling Water (h2o-sparklingwater) a fürtből az Azure Portalon nyissa meg a Jupyter notebookok (`https://<ClusterName>.azurehdinsight.net/jupyter`). Akkor is elérhető Jupyter kiválasztásával **fürt irányítópultja** a fürt panelről a portálon, majd válassza **Jupyter Notebook**. A hitelesítő adatok megadását kéri. Adja meg a fürt Hadoop hitelesítő adatokat a fürt létrehozásakor megadott.
+1. A telepítés után megkezdheti H2O Sparkling Water (h2o-sparklingwater) az Azure Portalon a fürtről megnyitásával [Jupyter notebookok](https://jupyter.org/) (`https://<ClusterName>.azurehdinsight.net/jupyter`). Akkor is elérhető Jupyter kiválasztásával **fürt irányítópultja** a fürt panelről a portálon, majd válassza **Jupyter Notebook**. A hitelesítő adatok megadását kéri. Adja meg a fürt Hadoop hitelesítő adatokat a fürt létrehozásakor megadott.
 
 2. A Jupyter, három mappák látja: H2O-PySparkling-példák, a PySpark példákat és a Scala példákat. Válassza ki a **H2O-PySparkling-példák** mappát.
 

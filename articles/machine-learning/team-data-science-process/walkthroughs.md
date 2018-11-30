@@ -2,25 +2,21 @@
 title: Útmutatók a csoportos adatelemzési folyamat végrehajtása az Azure-ban |} A Microsoft Docs
 description: Hogyan kombinálhatja a felhőalapú és helyszíni eszközök és szolgáltatások munkafolyamat vagy folyamat, intelligens alkalmazások létrehozására.
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: aa63d5a5-25ee-4c4b-9a4c-7553b98d7f6e
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: deguhath
-ms.openlocfilehash: 86024316344ccbce87f48adbc0598c94e61c5e6d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 28586d960bab75704a0aae6e39517ae83a74d60e
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253567"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495893"
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>A csoportos adatelemzési folyamat végrehajtása forgatókönyvek
 
@@ -32,7 +28,6 @@ Ezek **végpontok közötti forgatókönyvek** bizonyos forgatókönyvek esetén
 Az alábbiakban a platformokban mi bemutató példákból adjon meg rövid leírása:
 
 
-- [Az Azure Machine Learning Workbench](walkthroughs-aml-with-tdsp.md) ezen forgatókönyv oktatóanyagaink és példáink segítségével megjelenítése strukturált csapat adatelemzési projektek létrehozása az Azure Machine Learning Workbench és a természetes nyelvi feldolgozás, illetve a besorolást.
 - [HDInsight Spark-útmutatók használatával Pysparkkal és Scalával](walkthroughs-spark.md) ezek a forgatókönyvek használata Pysparkkal és Scalával Azure Spark-fürt a prediktív elemzések.
 - [Hive használatával egy HDInsight Hadoop-forgatókönyvek](walkthroughs-hdinsight-hadoop.md) ezek az útmutatók a Hive használata a HDInsight Hadoop-fürt prediktív elemzések.
 - [U-SQL használatával az Azure Data Lake-forgatókönyvek](walkthroughs-azure-data-lake.md) ezek a forgatókönyvek használata a U-SQL az Azure Data Lake prediktív elemzések.

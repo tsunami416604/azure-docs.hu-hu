@@ -9,22 +9,22 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 4627593e4ab96c63423a7afd6152f3a004bc6c3f
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 349298ba30de5540d5c86c81f483a1bd344dba9c
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042363"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497274"
 ---
-# <a name="use-extended-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Kiterjesztett Spark-Előzménykiszolgáló használatával hibakeresése és diagnosztizálása a Spark-alkalmazások
+# <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>A kiterjesztett Apache Spark-Előzménykiszolgáló használatával hibakeresése és diagnosztizálása az Apache Spark-alkalmazások
 
-Ez a cikk ismerteti, hogyan használja bővített Spark-Előzménykiszolgáló hibakeresése és diagnosztizálása a befejezett és futó Spark-alkalmazások. A bővítmény magában foglalja az adatok lapon és a graph és diagnosztikai lapon. Az a **adatok** lapon felhasználók ellenőrizheti a bemeneti és kimeneti adatokat a Spark-feladat. Az a **Graph** lapon felhasználók ellenőrizheti, flow és a feladat ábra visszajátszani az adatokat. Az a **diagnosztikai** lap felhasználói az itt található **adatok tevékenységdiagramon**, **Időeltérési** és **végrehajtó Használatelemzést**.
+Ez a cikk ismerteti, hogyan használja az Apache Spark-Előzménykiszolgáló hibakeresése és diagnosztizálása a befejezett és futó Spark-alkalmazások, kiterjesztett. A bővítmény magában foglalja az adatok lapon és a graph és diagnosztikai lapon. Az a **adatok** lapon felhasználók ellenőrizheti a bemeneti és kimeneti adatokat a Spark-feladat. Az a **Graph** lapon felhasználók ellenőrizheti, flow és a feladat ábra visszajátszani az adatokat. Az a **diagnosztikai** lap felhasználói az itt található **adatok tevékenységdiagramon**, **Időeltérési** és **végrehajtó Használatelemzést**.
 
-## <a name="get-access-to-spark-history-server"></a>Hozzáférhet a Spark-Előzménykiszolgáló
+## <a name="get-access-to-apache-spark-history-server"></a>Az Apache Spark-Előzménykiszolgáló eléréséhez
 
-Spark-Előzménykiszolgáló a webes felhasználói felület a befejezett és futó Spark-alkalmazások. 
+Az Apache Spark-Előzménykiszolgáló a webes felhasználói felület a befejezett és futó Spark-alkalmazások. 
 
-### <a name="open-the-spark-history-server-web-ui-from-azure-portal"></a>Nyissa meg a Spark előzmények kiszolgáló webes felhasználói felület az Azure Portalról
+### <a name="open-the-apache-spark-history-server-web-ui-from-azure-portal"></a>Nyissa meg a Apache Spark előzmények kiszolgáló webes felhasználói felület az Azure Portalról
 
 1. Az a [az Azure portal](https://portal.azure.com/), nyissa meg a Spark-fürtön. További információkért lásd: [fürtök listázása és megjelenítése](../hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
 2. A **Gyorshivatkozások**, kattintson a **fürt irányítópultja**, és kattintson a **Spark-Előzménykiszolgáló**. Amikor a rendszer kéri, adja meg a rendszergazdai hitelesítő adatokat a Spark-fürtön. 
@@ -87,7 +87,7 @@ Válassza ki a feladat azonosítója, majd kattintson a **adatok** beolvasni az 
     ![Graph-visszajelzés](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
 
-## <a name="graph-tab-in-spark-history-server"></a>A Spark-Előzménykiszolgáló Graph lap
+## <a name="graph-tab-in-apache-spark-history-server"></a>Az Apache Spark-Előzménykiszolgáló Graph lap
 Válassza ki a feladat azonosítója, majd kattintson a **Graph** beolvasni a feladat Grafikonnézet az Eszközök menü.
 
 + A feladat áttekintése a generált feladatgrafikon ellenőrzéséhez. 
@@ -158,7 +158,7 @@ Válassza ki a feladat azonosítója, majd kattintson a **Graph** beolvasni a fe
     ![Graph-visszajelzés](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
 
-## <a name="diagnosis-tab-in-spark-history-server"></a>A Spark-Előzménykiszolgáló Diagnosztika lap
+## <a name="diagnosis-tab-in-apache-spark-history-server"></a>Az Apache Spark-Előzménykiszolgáló Diagnosztika lap
 Válassza ki a feladat azonosítója, majd kattintson a **diagnosztikai** az Eszközök menü a nézet diagnosztikai feladatot. A Diagnosztika lapot tartalmaz **adatok tevékenységdiagramon**, **Időeltérési**, és **végrehajtó Használatelemzést**.
     
 + Ellenőrizze a **adatok tevékenységdiagramon**, **Időeltérési**, és **végrehajtó Használatelemzést** lapok rendre kiválasztásával.
@@ -326,8 +326,8 @@ Ha szeretné frissíteni, hogy a gyorsjavítás, használja a parancsfájlt, ami
 
 ## <a name="next-steps"></a>További lépések
 
-* [A HDInsight Spark-fürt erőforrásainak kezelése](apache-spark-resource-manager.md)
-* [A Spark beállításainak konfigurálása](apache-spark-settings.md)
+* [A HDInsight Apache Spark-fürt erőforrásainak kezelése](apache-spark-resource-manager.md)
+* [Az Apache Spark beállításainak konfigurálása](apache-spark-settings.md)
 
 
 ## <a name="contact-us"></a>Kapcsolat

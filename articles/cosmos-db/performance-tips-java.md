@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: sngun
-ms.openlocfilehash: c6c63b7b66114a8c35986b443bda78442b8edd7a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f0792e220b27ec564c124f610d0616d0873e2d68
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237740"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447002"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Az Azure Cosmos DB és a javát a teljesítménnyel kapcsolatos tippek
 
@@ -81,7 +81,7 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
 
 4. **Particionált gyűjteményeknél végezzen párhuzamos lekérdezések hangolása**
 
-    Az Azure Cosmos DB SQL Java SDK 1.9.0-s verzió vagy újabb támogatási párhuzamos lekérdezések, amelyek lehetővé teszik egy particionált gyűjteménybe a párhuzamos lekérdezés (lásd: [az SDK-k használata](sql-api-partition-data.md#working-with-the-azure-cosmos-db-sdks) és a kapcsolódó [Kódminták](https://github.com/Azure/azure-documentdb-java/tree/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples) számára További információ). Javítja a Lekérdezések késése és az átviteli sebesség soros többszörözi a párhuzamos lekérdezések lettek kialakítva.
+    Az Azure Cosmos DB SQL Java SDK 1.9.0-s verzió vagy újabb támogatási párhuzamos lekérdezések, így lehetővé teszi a párhuzamos particionált gyűjtemény lekérdezése. További információkért lásd: [Kódminták](https://github.com/Azure/azure-documentdb-java/tree/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples) az SDK-k használatával kapcsolatos. Javítja a Lekérdezések késése és az átviteli sebesség soros többszörözi a párhuzamos lekérdezések lettek kialakítva.
 
     (a) ***setMaxDegreeOfParallelism hangolása\:***  párhuzamos lekérdezések munkahelyi több partíció párhuzamosan lekérdezésével. Azonban az egyes particionált gyűjteményt származó adatok letöltődött tárolókonfigurációhoz garanciát a lekérdezést. Ezért, a [setMaxDegreeOfParallelism](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._feed_options.setmaxdegreeofparallelism) , amely rendelkezik a legnagyobb esélyét jövedelmezőbb munkát tesznek lehetővé, a legtöbb nagy teljesítményű lekérdezési partíciók száma a megadott rendszer összes egyéb feltételek változatlanok maradnak. Ha nem ismeri a partíciók számát, setMaxDegreeOfParallelism segítségével állítsa be a magas érték, és a rendszer a minimális (partíciók, felhasználó által megadott bemeneti száma) választja, a párhuzamosság maximális foka. 
 

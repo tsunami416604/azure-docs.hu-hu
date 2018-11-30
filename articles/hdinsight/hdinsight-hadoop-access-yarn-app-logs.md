@@ -9,26 +9,26 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: b7b93ca9c8638451d23a27edeed823e593a95b23
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 62499c35fd71d83f80a60e0511e6a27ce0109275
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035645"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495865"
 ---
-# <a name="access-apache-yarn-application-logs-on-windows-based-hdinsight"></a>Az Apache YARN-alkalmazásnaplók elérése a Windows-alapú HDInsight
-Ez a dokumentum azt ismerteti, hogyan befejezte egy Windows-alapú Hadoop-fürtöt az Azure HDInsight az Apache YARN-alkalmazások számára a naplók elérése
+# <a name="access-apache-hadoop-yarn-application-logs-on-windows-based-hdinsight"></a>Az Apache Hadoop YARN-alkalmazásnaplók elérése a Windows-alapú HDInsight
+Ez a dokumentum ismerteti, hogyan érhető el a naplókat [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) alkalmazásokat, amelyek befejezte egy Windows-alapú Apache hadoop-fürtön az Azure HDInsight
 
 > [!IMPORTANT]
-> Ebben a dokumentumban található információk csak a Windows-alapú HDInsight-fürtök vonatkozik. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement). A Linux-alapú HDInsight-fürtökön eléréséről a YARN naplókat: [hozzáférés az Apache YARN-alkalmazásnaplók a Linux-based Hadoop on HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+> Ebben a dokumentumban található információk csak a Windows-alapú HDInsight-fürtök vonatkozik. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement). A Linux-alapú HDInsight-fürtökön eléréséről a YARN naplókat: [hozzáférés Apache Hadoop YARN-alkalmazásnaplók a HDInsight Linux-alapú Apache hadoop](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 >
 
 
 ### <a name="prerequisites"></a>Előfeltételek
-* Egy Windows-alapú HDInsight-fürt.  Lásd: [létrehozása Windows-alapú Hadoop-fürtök a HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+* Egy Windows-alapú HDInsight-fürt.  Lásd: [létrehozása Windows-alapú Apache Hadoop-fürtök a HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="yarn-timeline-server"></a>YARN idővonal-kiszolgáló
-A <a href="http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">YARN idővonal-kiszolgáló</a> általános információkat biztosít a befejezett alkalmazásokkal, valamint a keretrendszer-specifikus alkalmazással kapcsolatos adatok két különböző felületen. Konkrétan:
+A <a href="http://hadoop.apache.org/docs/r2.4.1/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">Apache Hadoop YARN idővonal-kiszolgáló</a> általános információkat biztosít a befejezett alkalmazásokkal, valamint a keretrendszer-specifikus alkalmazással kapcsolatos adatok két különböző felületen. Konkrétan:
 
 * Tárolásához és lekéréséhez általános alkalmazással kapcsolatos információk a HDInsight-fürtökön lett engedélyezve 3.1.1.374 verziójával vagy újabb.
 * A keretrendszer-specifikus alkalmazás információk összetevője az idővonal-kiszolgáló jelenleg nem áll rendelkezésre a HDInsight-fürtökön.
@@ -53,7 +53,7 @@ A YARN erőforrás-kezelést, ütemezés/alkalmazásfigyelés leválasztásával
 * Egy tárolót a kontextust biztosít a alapvető munkaegysége. 
 * Egy tároló kontextusában van elvégzett munka történik, a tároló lett lefoglalva egyetlen feldolgozó csomóponton. 
 
-További információkért lásd: [YARN fogalmak][YARN-concepts].
+További információkért lásd: [Apache Hadoop YARN fogalmak][YARN-concepts].
 
 Protokoly aplikací (és a társított tároló naplóinak) létfontosságúak a problémás Hadoop-alkalmazások hibakeresése. YARN összegyűjtése, összevonása és az alkalmazás naplók tárolásához nice keretrendszert biztosít a [Log összesítési] [ log-aggregation] funkció. A naplózási összesítési szolgáltatás révén elérésére alkalmazásnaplókat sokkal kiszámíthatóbb, naplók összesíti az összes tárolót a munkavégző csomópont között, és a egy összesített naplófájl száma feldolgozó csomópontonként az alapértelmezett fájlrendszer tárolja őket egy alkalmazás befejezése után. Az alkalmazás felhasználhatja, több száz vagy akár több ezer olyan tárolók, de egyetlen fájlt, egy fájlt az alkalmazás által használt feldolgozó csomópontonkénti eredményez a egyetlen munkavégző csomóponton futó összes tároló naplóinak vannak összesítve. A HDInsight-fürtökön alapértelmezés szerint engedélyezve van a naplózási összesítési (3.0-s verzió vagy újabb verzió), és az összesített naplókat az alapértelmezett tároló, a fürt a következő helyen található:
 

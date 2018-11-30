@@ -10,23 +10,23 @@ ms.custom: hdinsightactive,
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 75ec0e17e9866d2cd3420ff6ecf648bf22a8ae8e
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 035e70eef88d5d5dae08c329017430db25c20464
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277953"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52494827"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-hive-queries-in-azure-hdinsight"></a>Az Apache a Zeppelin használata Azure HDInsight az Apache Hive-lekérdezések futtatásához 
 
-HDInsight interaktív lekérdezési fürtökhöz Apache Zeppelin notebookok, interaktív Hive-lekérdezések futtatásához használhatja például. Ez a cikk, útmutató Apache a Zeppelin használata Azure HDInsight az Apache Hive-lekérdezések futtatásához. 
+HDInsight interaktív lekérdezési fürtökhöz tartalmaznak [Apache Zeppelin](https://zeppelin.apache.org/) notebookok, amelyek segítségével futtassa az interaktív Hive-lekérdezések. Ebből a cikkből megismerheti, hogyan futtathat Apache Zeppelin használatával [Apache Hive](https://hive.apache.org/) lekérdezések az Azure HDInsight. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Mielőtt végrehajtaná ezt a cikket, a következőkkel kell rendelkeznie:
 
 * **HDInsight interaktív lekérdezési fürt**. Lásd: [fürt létrehozása](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster) egy HDInsight-fürt létrehozásához.  Ellenőrizze, hogy válassza ki az interaktív lekérdezés. 
 
-## <a name="create-a-apache-zeppelin-note"></a>Az Apache Zeppelin Megjegyzés létrehozása
+## <a name="create-an-apache-zeppelin-note"></a>Hozzon létre egy Apache Zeppelin Megjegyzés
 
 1. Keresse meg a következő URL-címe:
 
@@ -69,12 +69,12 @@ Mielőtt végrehajtaná ezt a cikket, a következőkkel kell rendelkeznie:
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megtanulta, hogyan HDInsight használata a Power BI adatok vizualizálásához.  További tudnivalókért tekintse meg a következő cikkeket:
+Ebben a cikkben megtanulta, hogyan HDInsight használatával adatok vizualizálásához [Microsoft Power BI](https://powerbi.microsoft.com/).  További tudnivalókért tekintse meg a következő cikkeket:
 
-* [A Microsoft Power BI az Azure HDInsight Hive-adatok vizualizálása](hadoop/apache-hadoop-connect-hive-power-bi.md).
-* [Power BI segítségével az Azure HDInsight adatok interaktív lekérdezéses Hive megjelenítése](./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
+* [Az Apache Hive-adatok vizualizálása a Microsoft Power bi-ban az Azure HDInsight](hadoop/apache-hadoop-connect-hive-power-bi.md).
+* [A Power bi használatával az Azure HDInsight interaktív lekérdezés Apache Hive-adatok megjelenítése](./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
 * [Excel csatlakoztatása a Microsoft Hive ODBC illesztőprogram segítségével a HDInsight](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
-* [Az Excel összekapcsolása a Hadooppal a Power Query használatával](hadoop/apache-hadoop-connect-excel-power-query.md).
-* [Csatlakozás az Azure HDInsight és a Data Lake Tools for Visual Studio használatával Hive-lekérdezések futtatása](hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+* [Excel Power Query használatával csatlakozni az Apache Hadoop](hadoop/apache-hadoop-connect-excel-power-query.md).
+* [Csatlakozás az Azure HDInsight és a Data Lake Tools for Visual Studio használatával, az Apache Hive-lekérdezések futtatása](hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 * [Az Azure HDInsight-eszköz használata a Visual Studio Code](hdinsight-for-vscode.md).
 * [Upload Data to HDInsight](./hdinsight-upload-data.md).

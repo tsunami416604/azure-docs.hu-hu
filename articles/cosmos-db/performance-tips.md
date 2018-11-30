@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: 3e724301d235db49ab9332dedc877d7315460ecc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 91da40613e940b3dd577362273cf14e68d019f26
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256170"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442479"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Teljesítménnyel kapcsolatos tippek az Azure Cosmos DB- és .NET
 
@@ -104,7 +104,7 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
     Az Azure Cosmos DB kérelmek végrehajtott HTTPS/REST átjáró mód használatakor, és vannak kitéve, állomásnév vagy IP-cím alapértelmezett kapcsolathoz megadott korlátot. Szükség lehet beállítani a MaxConnections értéke (100-1000), hogy az ügyféloldali kódtár képes használni az Azure Cosmos DB több egyidejű kapcsolatot. A .NET SDK 1.8.0-as és újabb, az alapértelmezett érték a [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) 50, és módosítsa az értéket, beállíthatja a [Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx)értéke.   
 4. **Particionált gyűjteményeknél végezzen párhuzamos lekérdezések hangolása**
 
-     SQL .NET SDK 1.9.0-s verzió vagy újabb támogatási párhuzamos lekérdezések, amelyek lehetővé teszik egy particionált gyűjteménybe a párhuzamos lekérdezés (lásd: [az SDK-k használata](sql-api-partition-data.md#working-with-the-azure-cosmos-db-sdks) és a kapcsolódó [Kódminták](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) további információ). Javítja a Lekérdezések késése és az átviteli sebesség soros többszörözi a párhuzamos lekérdezések lettek kialakítva. Párhuzamos lekérdezések adja meg, hogy a felhasználók hangolhassa a rájuk vonatkozó követelményeket, a Maxanalyticsunits illeszkedjen a két paramétert: vezérlőelemre, majd a partíciók maximális száma a párhuzamos és (b) MaxBufferedItemCount kérdezhetők le: a száma előzetesen beolvasott eredményeket.
+     SQL .NET SDK 1.9.0-s verzió vagy újabb támogatási párhuzamos lekérdezések, így lehetővé teszi a párhuzamos particionált gyűjtemény lekérdezése. További információkért lásd: [Kódminták](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) az SDK-k használatával kapcsolatos. Javítja a Lekérdezések késése és az átviteli sebesség soros többszörözi a párhuzamos lekérdezések lettek kialakítva. Párhuzamos lekérdezések adja meg, hogy a felhasználók hangolhassa a rájuk vonatkozó követelményeket, a Maxanalyticsunits illeszkedjen a két paramétert: vezérlőelemre, majd a partíciók maximális száma a párhuzamos és (b) MaxBufferedItemCount kérdezhetők le: a száma előzetesen beolvasott eredményeket.
 
     (a) ***hangolása Maxanalyticsunits\:***  párhuzamos lekérdezés működését több partíció párhuzamosan lekérdezésével. Azonban az egyes particionált gyűjtése származó adatok letöltődött tárolókonfigurációhoz garanciát a lekérdezést. Így a Maxanalyticsunits beállítása a partíciók számát rendelkezik jövedelmezőbb munkát tesznek lehetővé a legtöbb nagy teljesítményű lekérdezési maximális esélyét megadott rendszer összes egyéb feltételek változatlanok maradnak. Ha nem ismeri a partíciók száma, beállíthatja a Maxanalyticsunits nagy számú, és a rendszer úgy dönt, mint a Maxanalyticsunits minimális (partíciók, felhasználó által megadott bemeneti száma).
 
@@ -172,7 +172,7 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
     collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), excluded);
     ```
 
-    További információkért lásd: [indexelési szabályzatok az Azure Cosmos DB](indexing-policies.md).
+    További információkért lásd: [indexelési szabályzatok az Azure Cosmos DB](index-policy.md).
 
 ## <a name="throughput"></a>Teljesítmény
 <a id="measure-rus"></a>

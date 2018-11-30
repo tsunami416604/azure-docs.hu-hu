@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: mjbrown
-ms.openlocfilehash: b9a5658c91a44289442f48993118e996bf2691c2
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 181a8ad7291a8e8a0aa2a8373985c8747bd4569b
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164047"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446823"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db"></a>Az Azure Cosmos DB globális terjesztési
 
@@ -22,7 +22,7 @@ A napjaink alkalmazásai válaszidejű, és mindig online szükséges. Alacsony 
 
 Az Azure Cosmos DB egy alapvető Azure-szolgáltatás, amely az összes elérhető [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/) alapértelmezés szerint. A Microsoft Azure-beli adatközpontok a világ különböző pontjain régiókban 54 + működik, és tovább bővíti az ügyfelek növekvő igényeknek regionális jelenlétét. Amikor létrehoz egy Azure Cosmos-fiókot, döntse el szeretné helyezni a vásárlásom. A Microsoft működtet, az Azure Cosmos DB szolgáltatás 24/7, így Ön az alkalmazásokra koncentrálhat.
 
-Beállíthatja, hogy az adatbázisok, globálisan elosztott, és elérhető legyen bármelyik Azure-régiót. Csökkentheti a késést, helyezze az adatok közelebb, ahol a felhasználók is. A szükséges régiók kiválasztása attól függ, hogy a globális jelenlétét, az alkalmazás- és hol találhatók a felhasználók számára. Az Azure Cosmos DB transzparensen replikálja az adatokat a fiókon belül a fiókjához társított összes régióba a fiókjához társított összes régióba. A globálisan elosztott Azure Cosmos-adatbázis és a tárolók, amelyek az alkalmazás olvashat és írhat a helyi egyetlen rendszerképet biztosít. Az Azure Cosmos DB adja hozzá, vagy távolítsa el a bármikor a fiókjához társított régiók. Az alkalmazás nem kell szüneteltetve vagy újratelepítése hozzáadni vagy eltávolítani egy régiót. Továbbra is magas rendelkezésre állású folyamatosan miatt, amely a szolgáltatás biztosít a többkiszolgálós képességekkel.
+Beállíthatja, hogy az adatbázisok, globálisan elosztott, és elérhető legyen bármelyik Azure-régiót. Csökkentheti a késést, helyezze az adatok közelebb, ahol a felhasználók is. A szükséges régiók kiválasztása attól függ, hogy a globális jelenlétét, az alkalmazás- és hol találhatók a felhasználók számára. Az Azure Cosmos DB transzparensen replikálja az adatokat a fiókon belül a fiókjához társított összes régióba. A globálisan elosztott Azure Cosmos-adatbázis és a tárolók, amelyek az alkalmazás olvashat és írhat a helyi egyetlen rendszerképet biztosít. Az Azure Cosmos DB adja hozzá, vagy távolítsa el a bármikor a fiókjához társított régiók. Az alkalmazás nem kell szüneteltetve vagy újratelepítése hozzáadni vagy eltávolítani egy régiót. Továbbra is magas rendelkezésre állású folyamatosan miatt, amely a szolgáltatás biztosít a többkiszolgálós képességekkel.
 
 ## <a name="key-benefits-of-global-distribution"></a>Fő előnyei a globális terjesztés
 

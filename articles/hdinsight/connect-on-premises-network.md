@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: d8ab61d99b617f21557b6f1ef476418e25bcee55
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1d5a6dc6db3eaa46f6f2bd9944af7aefe759fbc7
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016930"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496121"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>A HDInsight csatlakoztatása a helyszíni hálózathoz
 
@@ -321,12 +321,12 @@ A virtuális hálózaton keresztül, közvetlenül kapcsolódhat a HDInsight, ha
     az network nic list --resource-group <resourcegroupname> --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-2. Annak megállapításához, a port, amelyet egy szolgáltatás érhető el, tekintse meg a [HDInsight Hadoop-szolgáltatások által használt portok](./hdinsight-hadoop-port-settings-for-services.md) dokumentumot.
+2. Annak megállapításához, a port, amelyet egy szolgáltatás érhető el, tekintse meg a [HDInsight az Apache Hadoop-szolgáltatások által használt portok](./hdinsight-hadoop-port-settings-for-services.md) dokumentumot.
 
     > [!IMPORTANT]
     > Néhány az átjárócsomópontokkal üzemeltetett szolgáltatásokra: csak az egyik csomóponton aktív egyszerre. Ha az egyik fő csomópont egy szolgáltatás eléréséhez meg, és akkor sem jár sikerrel, váltson a fő csomópontot.
     >
-    > Például az Ambari csak akkor aktív, az egyik fő csomópont egyszerre. Ha a 404-es hibát ad vissza, próbálja ki fér hozzá az Ambari az egyik fő csomópont, majd futó a fő csomópontot.
+    > Például az Apache Ambari csak akkor aktív, az egyik fő csomópont egyszerre. Ha a 404-es hibát ad vissza, próbálja ki fér hozzá az Ambari az egyik fő csomópont, majd futó a fő csomópontot.
 
 ## <a name="next-steps"></a>További lépések
 

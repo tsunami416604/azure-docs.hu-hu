@@ -1,25 +1,21 @@
 ---
 title: Platformok és eszközök adatelemzéshez team projects – Azure |} A Microsoft Docs
 description: Elemenként mutatja be, és a csoportos adatelemzési folyamat a szabványosításával vállalatok számára rendelkezésre álló adatok és analitika forrásokat ismerteti.
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: deguhath
-ms.openlocfilehash: 5cfe86414473f352673f39850a34f8ef265c91f5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 5df2cbabeb704453d71a0ac1db14c618dae352d2
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258901"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446449"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformok és eszközök a adatelemzési projektek
 
@@ -152,4 +148,4 @@ A következő paranccsal bash Git telepítéséhez (CentOS) Linuxos gépeken:
 
 Teljes, végpontok közötti forgatókönyvek, amelyek bemutatják, a folyamat összes lépését **meghatározott forgatókönyvek** is rendelkezésre állnak. Felsorolt, és a miniatűr leírásokat tartalmazó társított a [példa forgatókönyvek](walkthroughs.md) témakör. Ezek bemutatják, hogyan kombinálhatja a felhőbeli, helyszíni eszközöket és szolgáltatásokat, munkafolyamat vagy folyamat, intelligens alkalmazások létrehozására. 
 
-Példák a csoportos adatelemzési folyamat a lépések végrehajtása, amelyek használják az Azure Machine Learning Studióban az [az Azure ML](https://aka.ms/datascienceprocess) képzési terv.
+Példák a csoportos adatelemzési folyamat a lépések végrehajtása, amelyek használják az Azure Machine Learning Studióban az [az Azure ML](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) képzési terv.

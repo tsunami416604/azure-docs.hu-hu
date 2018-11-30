@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: jroth
-ms.openlocfilehash: a748532de7e8b8e910e335b67a693c4470861bf1
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: b19cf9cd4b67479d811a590cb80a618680f3b3d5
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003559"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496484"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Az SQL Server Azure virtuális gépek díjszabási útmutatóját
 
@@ -90,6 +90,9 @@ SQL Server 2017 Azure virtuális gép létrehozása egy használatalapú / haszn
 >
 >Nem tartalmazza a további SQL Server licencelési költségeit, Web, Standard és Enterprise kiadások. A legpontosabb díjszabási becslés lekéréséhez válassza ki az operációs rendszer és az SQL Server-kiadást díjszabási oldalán [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) vagy [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
+> [!NOTE]
+> Mostantól a licencelési modell módosítható használatától használatalapú-kiszolgálónként – hozott licences (BYOL), és biztonsági másolatot. További információkért lásd: [SQL virtuális gép licencelési modelljét módosítása](virtual-machines-windows-sql-ahb.md). 
+
 ## <a id="byol"></a> Hozott licences (BYOL)
 
 **Saját SQL Server licence keretében**, más néven **BYOL**, az azt jelenti, hogy egy Azure virtuális Gépen a frissítési garanciával rendelkező SQL Server egy meglévő mennyiségi licenc használatával. SQL Server virtuális gép használatával BYOL csak díjak a virtuális gép futtatásával járó költségeket, a nem SQL Server-licenc, tekintve, hogy már vásárolt licencek és a frissítési garanciával rendelkező mennyiségi licencelési program keretében.
@@ -123,7 +126,9 @@ Hozzon létre egy SQL Server 2017 Azure virtuális Gépet egy bring-your-saját 
 > Ossza meg velünk 10 napon belül az SQL Server-licencek számát használ az Azure-ban. Az előző képek mutató utasításokat ehhez rendelkeznie.
 
 > [!NOTE]
-> Nem alkalmas módosítása egy használatalapú másodpercenkénti saját licenc használata az SQL Server rendszerű virtuális gép licencelési modelljét. Jelen esetben létre kell hoznia egy új BYOL virtuális gépet, majd az új virtuális gépre kell telepítenie az adatbázisokat.
+> Mostantól a licencelési modell módosítható használatától használatalapú-kiszolgálónként – hozott licences (BYOL), és biztonsági másolatot. További információkért lásd: [SQL virtuális gép licencelési modelljét módosítása](virtual-machines-windows-sql-ahb.md). 
+
+
 
 ## <a name="reduce-costs"></a>Csökkentheti a költségeket
 

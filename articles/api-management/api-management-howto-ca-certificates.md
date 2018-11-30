@@ -13,18 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 9d3399ba6ee724d91117486744ad1431f53edbce
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: b05713fd8acb49b25dba04781c1049c9f05115fb
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053423"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444690"
 ---
 # <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>Egyéni Hitelesítésszolgáltatói tanúsítvány hozzáadása az Azure API Management szolgáltatásban
 
 Az Azure API Management lehetővé teszi, hogy a CA-tanúsítványok telepítése a megbízható legfelső szintű és a köztes tanúsítványtárolókban található a gépen. Ez a funkció kell használni, ha a szolgáltatások egyéni CA-tanúsítvány szükséges.
 
 A cikk bemutatja, hogyan kezelheti a CA-tanúsítványok az Azure API Management-példányok az Azure Portalon.
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="step1"> </a>Egy hitelesítésszolgáltató-tanúsítvány feltöltése
 

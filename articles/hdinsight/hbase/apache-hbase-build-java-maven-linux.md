@@ -3,24 +3,24 @@ title: Java HBase ügyfél – Azure HDInsight
 description: Ismerje meg, az Apache Maven használata Java-alapú Apache HBase-alkalmazás létrehozása, majd telepítse az Azure HDInsight HBase.
 services: hdinsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/30/2018
-ms.author: hrasheed
-ms.openlocfilehash: 677714487aac6e25a0505cce978792c76bb1cee4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.date: 11/27/2018
+ms.openlocfilehash: 721e37349b406705a2cdfb52c64b5796cb590d78
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016080"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445651"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Az Apache HBase Java-alkalmazások
 
 Ismerje meg, hogyan hozhat létre egy [Apache HBase](http://hbase.apache.org/) alkalmazás Java-környezetben. Az Azure HDInsight HBase majd használni az alkalmazást.
 
-A lépéseket, a jelen dokumentum-használat [Maven](http://maven.apache.org/) hozhat létre, és a projekt buildjének elkészítéséhez. Maven egy szoftverfrissítési projektmenedzsment és a szövegértést eszköz, amely lehetővé teszi, hogy a szoftver, a dokumentáció és a Java-projektek jelentéseket hozhat létre.
+A lépéseket, a jelen dokumentum-használat [Apache Maven](https://maven.apache.org/) hozhat létre, és a projekt buildjének elkészítéséhez. Maven egy szoftverfrissítési projektmenedzsment és a szövegértést eszköz, amely lehetővé teszi, hogy a szoftver, a dokumentáció és a Java-projektek jelentéseket hozhat létre.
 
 > [!NOTE]
 > A jelen dokumentumban leírt lépések legutóbb tesztelt a HDInsight 3.6-ot.
@@ -35,9 +35,9 @@ A lépéseket, a jelen dokumentum-használat [Maven](http://maven.apache.org/) h
     > [!NOTE]
     > A HDInsight 3.5-ös és újabb Java 8 van szükség. HDInsight korábbi verzióiban a Java 7 van szükség.
 
-* [Maven 3](http://maven.apache.org/)
+* [Apache Maven](https://maven.apache.org/)
 
-* [Egy Linux-alapú Azure HDInsight-fürtöt, a hbase-ben](apache-hbase-tutorial-get-started-linux.md#create-hbase-cluster)
+* [Az Apache HBase egy Linux-alapú Azure HDInsight-fürt](apache-hbase-tutorial-get-started-linux.md#create-apache-hbase-cluster)
 
 ## <a name="create-the-project"></a>A projekt létrehozása
 
@@ -59,7 +59,7 @@ A lépéseket, a jelen dokumentum-használat [Maven](http://maven.apache.org/) h
    * **pom.xml**: A projekt Hálózatiobjektum-modellt ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) tartalmazza a projekt felépítéséhez használt információkat és a konfiguráció részleteit.
    * **src**: A címtár, amely tartalmazza a **main/java/com/microsoft/példák** könyvtárat, ahol az alkalmazást hoz létre.
 
-3. Törölje a `src/test/java/com/microsoft/examples/apptest.java` fájlt. Nem használható ebben a példában.
+3. Törölje a `src/test/java/com/microsoft/examples/apptest.java` fájlt. Ebben a példában nincs használatban.
 
 ## <a name="update-the-project-object-model"></a>Frissítse a projekt Hálózatiobjektum-modellje
 
@@ -81,9 +81,9 @@ A lépéseket, a jelen dokumentum-használat [Maven](http://maven.apache.org/) h
     Ez a szakasz azt jelzi, hogy kell-e a projekt **hbase-ügyfél** és **phoenix-core** összetevőket. A fordítás során a függőségeket a alapértelmezett Maven tárházból letöltődnek. Használhatja a [Maven központi tárházban keresési](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) további információ a függőség.
 
    > [!IMPORTANT]
-   > A hbase-ügyfél verziószáma a HBase a HDInsight-fürt a megadott verziójának egyeznie kell. A következő táblázat segítségével keresse meg a megfelelő verziószámot.
+   > A hbase-ügyfél verziószáma meg kell egyeznie az Apache HBase a HDInsight-fürt a megadott verzióját. A következő táblázat segítségével keresse meg a megfelelő verziószámot.
 
-   | HDInsight-fürt verziója | HBase-verzió használata |
+   | HDInsight-fürt verziója | Az Apache HBase verziója |
    | --- | --- |
    | 3.2 |0.98.4-hadoop2 |
    | 3.3-as, 3.4-es, 3.5-ös és 3.6-os |1.1.2 |
@@ -363,7 +363,7 @@ A lépéseket, a jelen dokumentum-használat [Maven](http://maven.apache.org/) h
 
 ## <a name="upload-the-jar-and-run-jobs-ssh"></a>Töltse fel a fájlt, és futtasson feladatokat (SSH)
 
-Az alábbi lépések az `scp` fájlt másolja az elsődleges átjárócsomóponthoz, a HBase a HDInsight-fürtön. A `ssh` parancs majd segítségével csatlakozhat a fürthöz, és a példa futtatása közvetlenül a központi csomóponton.
+Az alábbi lépések az `scp` fájlt másolja az elsődleges átjárócsomóponthoz, az Apache HBase a HDInsight-fürtön. A `ssh` parancs majd segítségével csatlakozhat a fürthöz, és a példa futtatása közvetlenül a központi csomóponton.
 
 1. A fürt fájlt tölthet fel, használja a következő parancsot:
 
@@ -412,7 +412,7 @@ Az alábbi lépések az `scp` fájlt másolja az elsődleges átjárócsomópont
 
 ## <a name="upload-the-jar-and-run-jobs-powershell"></a>Töltse fel a fájlt, és futtasson feladatokat (PowerShell)
 
-Az alábbi lépéseket az Azure PowerShell használatával fájlt tölthet fel az alapértelmezett tároló, a HBase-fürtnek. HDInsight-parancsmagokat szolgálnak majd a példák távolról futtatni.
+Az alábbi lépéseket az Azure PowerShell használatával töltse fel a JAR az Apache HBase-fürtnek az alapértelmezett tároló. HDInsight-parancsmagokat szolgálnak majd a példák távolról futtatni.
 
 1. Miután telepítése és konfigurálása az Azure PowerShell-lel, hozzon létre egy fájlt `hbase-runner.psm1`. A fájl tartalma legyen a következő szöveg:
 
@@ -644,7 +644,7 @@ Az alábbi lépéseket az Azure PowerShell használatával fájlt tölthet fel a
 
     Cserélje le a `hdinsightclustername` elemet a fürt nevére. Amikor a rendszer kéri, adja meg a fürt bejelentkezési (rendszergazdai) nevet és jelszót.
 
-    Ez a parancs létrehoz egy tábla **személyek** a HBase a HDInsight-fürtön. Ez a parancs nem jeleníti meg a kimenetet a konzolablakban.
+    Ez a parancs létrehoz egy tábla **személyek** a HBase a HDInsight-fürtön. Ez a parancs nem jelenik meg semmilyen kimenetet a konzolablakban.
 
 6. Keresse meg a táblázat, használja a következő parancsot:
 
@@ -671,7 +671,7 @@ Használja a `-showErr` paraméter megtekintéséhez a normál hiba (STDERR), am
 
 ## <a name="delete-the-table"></a>A tábla törlése
 
-Amikor elkészült, a példában, használja a következő törli a **személyek** ebben a példában használt táblák:
+Ha elkészült, a példában, használja a következő törli a **személyek** ebben a példában használt táblák:
 
 __Az egy `ssh` munkamenet__:
 
@@ -683,4 +683,4 @@ __Az Azure PowerShell-lel__:
 
 ## <a name="next-steps"></a>További lépések
 
-[SQuirreL SQL használata a hbase-ben](apache-hbase-phoenix-squirrel-linux.md)
+[Az Apache HBase SQuirreL SQL használata](apache-hbase-phoenix-squirrel-linux.md)

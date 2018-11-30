@@ -8,16 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 3ab0edf4483763c1048b7026175ddce821624ac0
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 664d52a96f1e724502f82f5f72567f87c74e716b
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821106"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444256"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Az Azure Maps geokódolás lefedettsége
 
 Az Azure Maps hely keresése, ha a keresési szolgáltatás a keresési kifejezéseket lép, és adja vissza a szélességi és hosszúsági koordinátákat a geokódolás nevű folyamat. A Maps azonban nem rendelkezik azonos szintű információkat és az összes régió és ország pontossága. Ez a cikk segítségével határozhatja meg, milyen típusú helyeket megbízhatóan kereshet az egyes régiókban. 
+
+A geocode országban el közúti adatok lefedettsége és a geokódolás pontosságát a geokódolási szolgáltatás függ. Az alábbi kategorizálási szolgálnak az egyes országok adja meg a geokódolás támogatási szint.
+* **Cím pontok** -címek adatok feloldható legyen a szélesség/hosszúság koordináta a cím csomagonkénti (tulajdonság határához) belül. Más néven "Tetőn használt" pontos. Ez az a legmagasabb szintű rendelkezésre álló címek pontossága. 
+* **Számok House** -címek vannak interpolált való tartozó házszám szélességi és hosszúsági koordinátákkal koordináta.
+* **Utca szint** -címek hozzárendelve az utca, amely tartalmazza a címet a szélességi és hosszúsági koordinátákkal koordinátáját. A házszámát nem dolgozható fel.
+* **Város szint** -hely városnevet támogatottak.
 
 ## <a name="americas"></a>Amerika
 
@@ -52,6 +58,7 @@ Az Azure Maps hely keresése, ha a keresési szolgáltatás a keresési kifejez�
 | Guadeloupe|                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Guam                                                |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Guatemala                                           |                 |                |       ✓      |      ✓     |          ✓         |
+| Guyana        |                |             |           |      ✓     |                 |
 | Haiti                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Honduras                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Jamaica                                             |                 |                |       ✓      |      ✓     |          ✓         |
@@ -101,6 +108,7 @@ Az Azure Maps hely keresése, ha a keresési szolgáltatás a keresési kifejez�
 | Heard-sziget és McDonald-szigetek                   |                 |                |              |      ✓     |          ✓         |
 | Hongkong KKT                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indonézia                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| India       |        ✓        |        ✓       |       ✓      |      ✓     |                   |
 | Japán                                               |                 |                |              |      ✓     |          ✓         |
 | Kiribati                                            |                 |                |              |      ✓     |          ✓         |
 | Laosz                                                |                 |                |              |      ✓     |          ✓         |

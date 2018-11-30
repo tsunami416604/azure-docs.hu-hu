@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 40f3f56c15956a93176a753f7c66f66df1b8f5f4
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: f8f7d43d4b42f5236c6c8d25c88314043053b0cc
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515726"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445710"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rövid útmutató – Költségek feltérképezése és elemzése a Költségelemzés szolgáltatás használatával
 
@@ -84,17 +84,17 @@ Emellett a **napi** nézet használatával az egyes napok költségeit is megtek
 
 ![Napi nézet](./media/quick-acm-cost-analysis/daily-view.png)
 
-A **Csoportosítás** használatával csoportkategóriák közül választhat, és módosítja, mely adatok jelenjenek meg a felső összes költség terület diagramjában. A csoportosítás használatával gyorsan áttekintheti költségei milyen erőforrástípusok szerinti kategóriákra bonthatók. Íme egy példa az elmúlt havi Azure-szolgáltatási költségeket bemutató nézetről.
+A **Csoportosítás** használatával csoportkategóriák közül választhat, és módosítja, mely adatok jelenjenek meg a felső összes költség terület diagramjában. A csoportosítás megfigyelhessük, hogyan költségeit kategorizálta gyakori erőforrás- és használati tulajdonságai, például az erőforráscsoport vagy erőforrás-címkék teszi lehetővé. Címkék szerint kell csoportosítani, válassza ki a címke kulcs szerint kell csoportosítani kívánt, és láthatja, hogy minden egyes, amely a címke értéke az erőforrások, amelyekre vonatkozóan nincs engedélyezve a alkalmazni a címkét egy extra szegmens szerinti bontásban költségeket. Vegye figyelembe a Cost Management csak a dátum, a címkék közvetlenül az erőforrás érvényesek az erőforráscímkék támogatja. Erőforráscímkék csoport jelenleg nem támogatottak. Íme egy példa az elmúlt havi Azure-szolgáltatási költségeket bemutató nézetről.
 
 ![Csoportosított napi halmozott költségek megtekintése](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
-A felső összes költség nézet alatt található kimutatásdiagramok különböző csoportosítási és szűrési kategóriák nézeteit jelenítik meg. Ha kiválasztja valamelyik csoportosítási kategóriát, az összes költség teljes adatkészlete a nézet alsó részére kerül. Íme egy példa az erőforráscsoportokhoz.
+Kimutatásdiagramok a fő diagram megjelenítése különböző csoportosítások, amelyek egy szélesebb körű képet az általános költségek a kijelölt időszak és a szűrők alapján. Válasszon egy tulajdonságot vagy címke minden dimenzió összesített költségeit megtekintésére. Teljes nézet adatok teljes készlete áll a képernyő alján kibontásával a **adatok** navigációs menüben, vagy válassza **exportálása > CSV letöltése** a képernyő tetején. Íme egy példa az erőforráscsoportokra vonatkozó adatok fiókot.
 
 ![A jelenlegi nézet összes adata](./media/quick-acm-cost-analysis/full-data-set.png)
 
-Az előző képen az erőforráscsoportok nevei olvashatóak. Az egyes erőforrások címkéi nem érhetőek el egyik költségelemzési nézet, szűrési feltétel vagy csoportosítás használatával sem.
+Az előző képen az erőforráscsoportok nevei olvashatóak. Címke megtekintéséhez a teljes költség / címke szerint csoportosíthatja, amíg nem érhető el cost analysis nézetek megtekintése az erőforrás vagy erőforráscsoport összes címkéjét.
 
-Ha a költségeket egy adott attribútum szerint csoportosítja, csökkenő sorrendben megjelenik a tíz legfontosabb költségelem. Ha tíznél több ilyen csoport van, akkor a kilenc legfontosabb költségelem mellett megjelenik egy **Egyéb** csoport is, amelyben az összes többi csoport együttesen szerepel.
+Ha a költségeket egy adott attribútum szerint csoportosítja, csökkenő sorrendben megjelenik a tíz legfontosabb költségelem. Ha tíznél több ilyen csoport van, akkor a kilenc legfontosabb költségelem mellett megjelenik egy **Egyéb** csoport is, amelyben az összes többi csoport együttesen szerepel. Csoportosítás címkék szerint, amikor is megjelenhetnek egy **Untagged** csoportot ehhez a költségeket, amelyek nem rendelkeznek a alkalmazni a címkekulcs. **Címkézetlen** mindig utolsó, akkor is, ha nincsenek további címkézetlen költségek, mint a címkézett költségek. Ha legalább 10 címkeértékeket, címkézetlen költségek része lesz **mások**.
 
 A *Klasszikus* típusba sorolt (Azure Service Management vagy ASM rendszerű) virtuális gépek, hálózatkezelési és tárolási erőforrások megosztások nem osztanak meg részletes számlázási adatokat. Ezek a költségek csoportosításakor a **Klasszikus szolgáltatások** csoportba kerülnek.
 

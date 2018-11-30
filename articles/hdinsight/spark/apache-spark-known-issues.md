@@ -9,19 +9,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: c364f9d06d29a601dfb9598bb568e7a6218d0a6f
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 8c3e3fa6dee41725c95be6f820440f6be50c53e6
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013802"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496486"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight-fürt az Apache Spark ismert problémái
 
 Ez a dokumentum nyomon követi az összes ismert problémák a HDInsight Spark nyilvános előzetes verzió.  
 
-## <a name="livy-leaks-interactive-session"></a>Livy elveszít interaktív munkamenet
-Az interaktív munkamenet életben a Livy újraindítását követően (az Ambari vagy átjárócsomópontjával 0 virtuális gép újraindítása miatt), az interaktív feladat munkamenet kiszivárgott. Ennek eredményeképpen új feladatok is elakadt elfogadva állapotban.
+## <a name="apache-livy-leaks-interactive-session"></a>Az Apache Livy elveszít interaktív munkamenet
+Amikor [Apache Livy](https://livy.incubator.apache.org/) újraindítja (az [Apache Ambari](https://ambari.apache.org/) vagy átjárócsomópontjával 0 virtuális gép újraindítása miatt) életben egy interaktív munkamenethez, egy interaktív feladat munkamenet kiszivárgott. Ennek eredményeképpen új feladatok is elakadt elfogadva állapotban.
 
 **Megoldás:**
 
@@ -33,7 +33,7 @@ Az alábbi eljárás segítségével orvosolhatja a problémát:
    
         yarn application –list
    
-    Az alapértelmezett feladat nevek lesznek Livy, ha a feladatok a Livyvel interaktív munkamenethez indított nincsenek megadva kifejezett nevek. A Jupyter notebook indította Livy-munkamenet, feladat neve kezdődik remotesparkmagics_ *. 
+    Az alapértelmezett feladat nevek lesznek Livy, ha a feladatok a Livyvel interaktív munkamenethez indított nincsenek megadva kifejezett nevek. A Livy-munkamenet által indított [Jupyter Notebook](https://jupyter.org/), feladat neve kezdődik remotesparkmagics_ *. 
 3. Futtassa a következő parancsot ezen feladatok leállítása. 
    
         yarn application –kill <Application ID>
@@ -111,21 +111,21 @@ Ha Spark-fürt kifogyott az erőforrásokból, a Jupyter notebookot a Spark és 
 ## <a name="see-also"></a>Lásd még
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 
-### <a name="scenarios"></a>Alkalmazási helyzetek
-* [Spark és BI: Interaktív adatelemzés végrehajtása a Spark on HDInsight használatával, BI-eszközökkel](apache-spark-use-bi-tools.md)
-* [Spark és Machine Learning: A Spark on HDInsight használata az épület-hőmérséklet elemzésére HVAC-adatok alapján](apache-spark-ipython-notebook-machine-learning.md)
-* [Spark és Machine Learning: A Spark on HDInsight használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
-* [A webhelynapló elemzése a Spark on HDInsight használatával](apache-spark-custom-library-website-log-analysis.md)
+### <a name="scenarios"></a>Forgatókönyvek
+* [Az Apache Spark és BI: interaktív adatelemzés a Spark on HDInsight használatával, BI-eszközökkel végrehajtása](apache-spark-use-bi-tools.md)
+* [Az Apache Spark és Machine Learning: a Spark on HDInsight HVAC-adatok épület-hőmérséklet elemzésére a használata](apache-spark-ipython-notebook-machine-learning.md)
+* [Az Apache Spark és Machine Learning: használja a Spark on HDInsight az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
+* [A webhelynapló elemzése a HDInsight az Apache Spark használatával](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása
 * [Önálló alkalmazás létrehozása a Scala használatával](apache-spark-create-standalone-application.md)
-* [Feladatok távoli futtatása Spark-fürtön a Livy használatával](apache-spark-livy-rest-interface.md)
+* [Feladatok távoli futtatása egy Apache Spark fürtön a Livy használatával](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Eszközök és bővítmények
 * [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark Scala-alkalmazások létrehozásához és elküldéséhez](apache-spark-intellij-tool-plugin.md)
-* [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark-alkalmazások távoli hibaelhárításához](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Zeppelin notebookok használata Spark-fürttel HDInsighton](apache-spark-zeppelin-notebook.md)
-* [Jupyter notebookokhoz elérhető kernelek a HDInsight Spark-fürtjében](apache-spark-jupyter-notebook-kernels.md)
+* [Az Apache Spark-alkalmazások távoli hibakeresése az IntelliJ IDEA HDInsight-eszközei beépülő használata](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Az Apache Zeppelin notebookok használata a HDInsight Apache Spark-fürt](apache-spark-zeppelin-notebook.md)
+* [Notebookokhoz elérhető kernelek Jupyter a HDInsight az Apache Spark-fürt](apache-spark-jupyter-notebook-kernels.md)
 * [Külső csomagok használata Jupyter notebookokkal](apache-spark-jupyter-notebook-use-external-packages.md)
 * [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](apache-spark-jupyter-notebook-install-locally.md)
 

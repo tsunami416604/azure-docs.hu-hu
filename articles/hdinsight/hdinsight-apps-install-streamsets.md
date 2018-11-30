@@ -9,22 +9,22 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: f963ae53e1396b1ef6279f2bd6502e5ab0cd23a1
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: ac287f2ee50501d703b7d7b79a436ecb5335d1bd
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034557"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497382"
 ---
 # <a name="install-published-application---streamsets-data-collector"></a>Közzétett alkalmazás – StreamSets Data Collector telepítése
 
-Ez a cikk bemutatja, hogyan telepítheti és futtathatja a [StreamSets Data Collector for HDInsight](https://streamsets.com/) közzé az Azure HDInsight az Apache Hadoop-alkalmazás. A HDInsight-alkalmazásplatform áttekintése és a egy listát az elérhető független szoftverszállító (ISV) közzétett alkalmazások létrehozásáról: [külső gyártótól származó Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md). A saját alkalmazások telepítéséről az [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) című cikk tartalmaz útmutatást.
+Ez a cikk bemutatja, hogyan telepítheti és futtathatja a [StreamSets Data Collector for HDInsight](https://streamsets.com/) közzétett [Apache Hadoop](https://hadoop.apache.org/) alkalmazás az Azure HDInsight a. A HDInsight-alkalmazásplatform áttekintése és a egy listát az elérhető független szoftverszállító (ISV) közzétett alkalmazások létrehozásáról: [külső Apache Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md). A saját alkalmazások telepítéséről az [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) című cikk tartalmaz útmutatást.
 
 ## <a name="about-streamsets-data-collector"></a>Tudnivalók a StreamSets Data Collector
 
 A StreamSets Data Collector helyezhető üzembe egy Azure HDInsight-alkalmazás. StreamSets Data Collector egy teljes értékű integrált fejlesztőkörnyezet (IDE), hogy lehetővé teszi, hogy tervezése, tesztelése, üzembe helyezése és felügyelete – bármely betöltési folyamatok biztosít. Ezek a folyamatok tervezhetők stream és kötegelt adatokat, és közé tartozik a stream átalakítások, számos egyéni kódolás nélkül.
 
-StreamSets Data Collector lehetővé teszi számos Big Data-összetevőket, például HDFS, Kafka, Solr, Hive, HBASE és a Kudu használatával hozhat létre adatfolyam-gyűjteményre. Miután a StreamSets Data Collector fut egy biztonsági kiszolgálót, vagy a Hadoop-fürt, a valós idejű monitorozási adatok rendellenességeket és a data flow műveletek kap. A monitorozás tartalmazza, küszöbalapú riasztások, rendellenességek észlelése és automatikus szervizelés hiba rekordok.
+StreamSets Data Collector lehetővé teszi, hogy használjon számos Big Data-összetevőket, például a build adatfolyamok [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html), [Apache Kafka](https://kafka.apache.org/), [Apache Solr](https://lucene.apache.org/solr/), [ Az Apache Hive](https://hive.apache.org/), [Apache HBase](https://hbase.apache.org/), és [Apache Kudu](https://kudu.apache.org/). Miután a StreamSets Data Collector fut egy biztonsági kiszolgálót, vagy a Hadoop-fürt, a valós idejű monitorozási adatok rendellenességeket és a data flow műveletek kap. A monitorozás tartalmazza, küszöbalapú riasztások, rendellenességek észlelése és automatikus szervizelés hiba rekordok.
 
 StreamSets Data Collector célja egy folyamatot, minden egyes fázisában logikailag elkülönítése, így az új üzleti követelmények teljesítésében elvetését az új feldolgozók és összekötők, kódírás nélkül és minimális állásidővel.
 
@@ -46,7 +46,7 @@ Telepíti az alkalmazást egy új HDInsight-fürtöt, vagy egy meglévő fürth�
 
 ## <a name="install-the-streamsets-data-collector-published-application"></a>A közzétett alkalmazás telepítése a StreamSets Data Collector
 
-Ezzel és más elérhető ISV-alkalmazások telepítésének lépésenkénti útmutatójáért olvassa el a [külső gyártótól származó Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md).
+Ezzel és más elérhető ISV-alkalmazások telepítésének lépésenkénti útmutatójáért olvassa el a [külső Apache Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md).
 
 ## <a name="launch-streamsets-data-collector"></a>Indítsa el a StreamSets Data Collector
 

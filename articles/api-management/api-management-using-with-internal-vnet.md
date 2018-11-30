@@ -14,26 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apimpm
-ms.openlocfilehash: 6b6fd7395f7aff303f4950fb07bd0472cf7057a2
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: acaf73c2d981761b0bc57cfccbbf6c6a48e5e0c2
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145740"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446504"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Belső virtuális hálózathoz az Azure API Management szolgáltatás használatával
 Azure virtuális hálózatokkal az Azure API Management API-k nem érhető el az interneten is kezelheti. Számos VPN technológia érhetők el a kapcsolatot. Az API Management egy virtuális hálózaton belül két fő módban telepíthető:
 * Külső
 * Belső
 
-
 Az API Management üzembe helyezi a módban a belső virtuális hálózathoz, ha a szolgáltatás végpontok (átjáró, a fejlesztői portál, az Azure Portalon, közvetlen felügyelet és a Git) már csak jelennek meg, hogy a hozzáférést a virtuális hálózatokon belüli. A Szolgáltatásvégpontok egyike a nyilvános DNS-kiszolgáló van regisztrálva.
 
 Az API Management belső módban, akkor érhető el a következő esetekben:
+
 * Győződjön meg arról, API-kat biztonságosan elérhetik a privát adatközpontban lévő üzemeltetett kívül, harmadik felek által site-to-site- vagy Azure ExpressRoute VPN-kapcsolatok használatával.
 * Engedélyezze a hibrid felhős rendszerekben teszi elérhetővé a felhőalapú API-k és a egy közös átjárón keresztül a helyszíni API-k.
 * Egy átjáró egyetlen végpont használatával több földrajzi helyeken üzemeltetett API-k kezelése. 
 
+[!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -51,7 +52,7 @@ Az API Management szolgáltatás a belső virtuális hálózathoz egy belső ter
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Engedélyezze a virtuális hálózati kapcsolat az Azure portal használatával
 
 1. Tallózással keresse meg az Azure API Management-példány a [az Azure portal](https://portal.azure.com/).
-2. Válassza ki **virtuális hálózati**.
+2. Válassza ki a **Virtuális hálózatot**.
 3. Konfigurálja az API Management-példány üzembe helyezni a virtuális hálózaton belül.
 
     ![Az Azure API Management egy belső virtuális hálózat beállítása menüje][api-management-using-internal-vnet-menu]

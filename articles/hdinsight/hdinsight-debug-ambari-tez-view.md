@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: c85ad59acc8e307de05f41365855f3a9669ac2b5
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 0d2f55538517881ce6cc237885f3bcadfa084520
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034676"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52494958"
 ---
 # <a name="use-apache-ambari-views-to-debug-apache-tez-jobs-on-hdinsight"></a>Az Apache Ambari-nézetek használata a HDInsight Apache Tez-feladatok hibakereséséhez
 
-Az Apache Ambari webes Kezelőfelületen for HDInsight egy Apache Tez megtekintése és használata a Tez-feladatok hibakereséséhez használható tartalmazza. A Tez nézet lehetővé teszi a feladatban egy grafikont a csatlakoztatott elemek megjelenítése, minden egyes cikk részletesen és statisztikák és a naplózási információk lekéréséhez.
+A [Apache Ambari](https://ambari.apache.org/) webes felhasználói Felületet, a HDInsight tartalmaz egy [Apache TEZ](https://tez.apache.org/) megtekintése és használata a Tez-feladatok hibakereséséhez használható. A Tez nézet lehetővé teszi a feladatban egy grafikont a csatlakoztatott elemek megjelenítése, minden egyes cikk részletesen és statisztikák és a naplózási információk lekéréséhez.
 
 > [!IMPORTANT]
 > A dokumentum lépéseinek elvégzéséhez egy Linux-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight összetevők verziószámozása](hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -101,8 +101,8 @@ A következő lépések használatával, amely Tez Hive-lekérdezések futtatás
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megtanulhatta, hogyan használható a Tez nézet, tudjon meg többet [a HDInsight használatával Hive](hadoop/hdinsight-use-hive.md).
+Most, hogy megtanulhatta, hogyan használható az Apache Tez nézet, tudjon meg többet [Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md).
 
-Részletes technikai információ a Tez, tekintse meg a [Tez lapot a Hortonworks](http://hortonworks.com/hadoop/tez/).
+Részletes technikai információkat az Apache Tez, tekintse meg a [Apache Tez lapot a Hortonworks](http://hortonworks.com/hadoop/tez/).
 
-A HDInsight az Ambari használatával további információkért lásd: [kezelése a HDInsight-fürtök az Ambari webes felhasználói felülettel](hdinsight-hadoop-manage-ambari.md)
+Az Apache Ambari használata a HDInsight további információkért lásd: [kezelése a HDInsight-fürtök az Apache Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md)

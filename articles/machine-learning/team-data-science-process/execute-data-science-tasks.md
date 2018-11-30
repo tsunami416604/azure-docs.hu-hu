@@ -1,25 +1,21 @@
 ---
 title: Adatelemzési műveletek – az Azure Machine Learning végrehajtása |} A Microsoft Docs
 description: Hogyan értenie az adatokhoz is végre lehet hajtani egy adatelemzési projektjéhez trackable, szabályozott verziót, és remek.
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: deguhath
-ms.openlocfilehash: 19267429510207129b0229dc55fbd46f12977d5d
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 7e25e2c95f377b1ad40cba24b29ababd0561e32a
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112644"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495686"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Adatelemzési műveletek végrehajtása: feltárás, modellezés és üzembe helyezés
 
@@ -34,7 +30,7 @@ Jellemzően milyen adattudományos feladatokat tartalmazza az adatfeltárás, mo
 
 Adatszakértő hajthat végre feltárására és a egy számos különböző módon reporting: Python (a példában a matplotlib) kódtárak és az elérhető csomagok használatával vagy az r nyelv (ggplot vagy például rácsos). Az adatszakértők ilyen programkódot, bizonyos forgatókönyvek esetén az adatok feltárása az igényei szerint testre szabhatja. Strukturált adatok kezelésére vonatkozó igényeinek különböznek, például szöveg vagy képek strukturálatlan adatok számára. 
 
-Például az Azure Machine Learning Workbench is kínálnak [fejlett adat-előkészítés](../desktop-workbench/tutorial-bikeshare-dataprep.md) adatok konvertálását és feltárásában, beleértve a szolgáltatás létrehozása. A felhasználónak meg kell határoznia az eszközöket, könyvtárakat és csomagok, amelyek a legjobb suite a saját igényeinek megfelelő. 
+Például az Azure Machine Learning szolgáltatás is kínálnak [fejlett adat-előkészítés](../service/how-to-transform-data.md) adatok konvertálását és feltárásában, beleértve a szolgáltatás létrehozása. A felhasználónak meg kell határoznia az eszközöket, könyvtárakat és csomagok, amelyek a legjobb suite a saját igényeinek megfelelő. 
 
 Ebben a fázisban a végén a termék egy olyan adatok feltárása jelentés. A jelentés modellezési használható az adatok viszonylag átfogó képet és értékeléseket, hogy az adatok megfelelő a modellezési lépésben kell biztosítania. A csoportos adatelemzési folyamat (TDSP) parancssori segédeszközöket a félig automatikus feltárása a következő szakaszban tárgyalt modellezés, és jelentéskészítés nyújt szabványos adatfeltárás és modellezés a jelentések. 
 
@@ -90,7 +86,7 @@ Több modell készített, miután általában szüksége lesz egy rendszer a reg
 Nincsenek különböző módszerek és platformok modellek éles üzembe helyezhető. Az alábbiakban néhány lehetőséget:
 
 
-- [Modell-üzembehelyezés az Azure Machine Learningben](../desktop-workbench/model-management-overview.md)
+- [Modell-üzembehelyezés az Azure Machine Learning szolgáltatás](../service/how-to-deploy-and-where.md)
 - [Egy modellt az SQL-kiszolgáló telepítése](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 

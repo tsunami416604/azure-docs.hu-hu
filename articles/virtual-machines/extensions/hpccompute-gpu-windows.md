@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/15/2018
 ms.author: roiyz
-ms.openlocfilehash: 85ac478bf753d5bb0aed96eca538e48525354eff
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: ee74d4520e867604f50c70f2b6449f12ff3bd8b9
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823792"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495976"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>NVIDIA GPU illesztőprogramjának Windows-bővítmény
 
@@ -84,7 +84,7 @@ Minden beállítás nem kötelező. Az alapértelmezett viselkedés van telepít
 
 | Name (Név) | Leírás | Alapértelmezett érték | Érvényes értékek | Adattípus |
 | ---- | ---- | ---- | ---- | ---- |
-| driverVersion | NV: Rács illesztőprogram verziója<br> NC/ND: CUDA-illesztőprogram verziója | legújabb | GRID: "391.81", "391.58", "391.03"<br> CUDA: "398.75", "397.44", "390.85" | sztring |
+| driverVersion | NV: Rács illesztőprogram verziója<br> NC/ND: CUDA-illesztőprogram verziója | legújabb | GRID: "411.81", "391.81", "391.58", "391.03"<br> CUDA: "398.75", "397.44", "390.85" | sztring |
 | installGridND | Az ND sorozatú virtuális gépek rács illesztőprogram telepítése | false | IGAZ, hamis | logikai |
 
 ## <a name="deployment"></a>Környezet

@@ -9,34 +9,27 @@ ms.author: cforbe
 author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 11/20/2018
-ms.openlocfilehash: 08510961616d2be8eac9b6a19063d5f0d613321f
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.date: 11/27/2018
+ms.openlocfilehash: 91d0f3565db484504a67a3b6ae0989b9291cd24f
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263298"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446425"
 ---
 # <a name="prepare-data-for-modeling-with-azure-machine-learning"></a>Adatok előkészítése az Azure Machine Learning modellezés
- 
-Ebben a cikkben megismerkedhet a használati esetek és az Azure Machine Learning Data Prep SDK egyedi funkcióját. Adat-előkészítés a machine learning-munkafolyamat legfontosabb részét képezi. Valós adatoknak gyakran megszakad, inkonzisztens vagy nem lehet a betanítási adatok jelentős Címellenőrzés és -átalakítási nélkül használható. Hibák és rendellenességeket a nyers adatokat, és új funkciók, amely a problémát próbál megoldani, a pontosság növekszik.
+
+Ebben a cikkben megismerkedhet a használati esetek és az Azure Machine Learning Data Prep SDK egyedi funkcióját. Adat-előkészítés a machine learning-munkafolyamat legfontosabb részét képezi. Valós adatoknak gyakran megszakad, inkonzisztens vagy nem lehet a betanítási adatok jelentős Címellenőrzés és -átalakítási nélkül használható. Hibák és rendellenességeket a nyers adatokat, és új funkciók, amely a problémát próbál megoldani, a pontosság növekszik. Az SDK-t tervezték más közös adatok előkészítő kódtárak partnereknek ismerős eszközökön főbb forgatókönyvek megvalósítását előnyöket kínál, és a többi tárak együttműködés karbantartása során.
 
 Az adatok a Python használatával készítheti elő a [az Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk).
 
 ## <a name="azure-machine-learning-data-prep-sdk"></a>Az Azure Machine Learning, Data Prep SDK
 
-A [az Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk) egy Python-kódtár, amely tartalmazza:
-+ Számos gyakori előfeldolgozási Adateszközök
-+ Példák származó automatizált funkciófejlesztési és átalakítások
+A [az Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk) egy Python-kódtár által kínált:
 
-Az SDK hasonlít a core-funkciók a népszerű kódtárak például **Pandas** és **PySpark**, még a nagyobb rugalmasságot biztosít. Pandas akkor általában a leghasznosabb, a kisebb adatkészletek (< 2 – 5 GB), mielőtt kapacitás-memóriakorlátozások hatása a teljesítményre. Ezzel szemben a PySpark általánosan big-data alkalmazások, de egy terhelést, amely kis adatkészletek sokkal lassabbá használatának végzi.
-
-Az Azure Machine Learning Data Prep SDK a következőket kínálja:
-- Kényelmi célokat szolgál, ha kisméretű adatkészletekkel dolgozik, és használhatóságára vonatkozóan
-
-- Modern, big-data alkalmazások
-
-- Lehetővé teszi mindkét használati esetek ugyanazt a kódot méretezhetőség
+* Mentés intelligens időpont-átalakítások, például intelligens csoportosítási, származtatott oszlop szerint példa, automatikus felosztása, az intelligens fájl olvasása és Ragged jobb séma feldolgozása.
+* Egy API, amely együttműködik a kis méretű adatok helyi vagy a felhőben, nagy mennyiségű adat **kódmódosítás nélkül, néhány**.
+* Az adatok feldolgozását, nem pedig a memóriába streamelési megközelítése révén egyetlen gépen hatékonyabb méretezési képességét.
 
 ### <a name="install-the-sdk"></a>Az SDK telepítése
 
@@ -57,9 +50,12 @@ import azureml.dataprep as dprep
 A modulok és az SDK funkcióit kapcsolatos további információkért tekintse meg a [Data Prep SDK referenciadokumentumok](https://aka.ms/data-prep-sdk).
 
 Az alábbi példák kiemelnek néhány egyedi funkcióját az SDK-t, beleértve:
-+ A fájlok automatikus adattípus észlelése
-+ Automatizált funkciófejlesztési
-+ Összefoglaló statisztikák
+
+* A fájlok automatikus adattípus észlelése
+* Intelligens átalakítások
+* Összefoglaló statisztikák
+* Kereszt-környezet funkció
+
 
 #### <a name="automatic-file-type-detection"></a>A fájlok automatikus adattípus észlelése
 
@@ -69,7 +65,7 @@ Használja a `smart_read_file()` függvény használatával töltse be az adatok
 dataflow = dprep.smart_read_file(path="<your-file-path>")
 ```
 
-#### <a name="automated-feature-engineering"></a>Automatizált funkciófejlesztési
+#### <a name="intelligent-transforms"></a>Intelligens átalakítások
 
 Az SDK segítségével felosztása és azokból származtatott oszlopok is példa tanuláshoz és következtetésekhez funkciófejlesztési automatizálásához. Fel, hogy egy mezőt az adatfolyam-objektum nevű `datetime` értékkel `2018-09-15 14:30:00`.
 
@@ -130,6 +126,7 @@ Részletes példákat és minden egyes előkészítési lépés kód megtekinté
 ![Adatok előkészítési folyamatának](./media/concept-data-preparation/data-prep-process.png)
 
 ## <a name="next-steps"></a>További lépések
+
 Tekintse át az [példa notebook](https://github.com/Microsoft/AMLDataPrepDocs/tree/master/tutorials/getting-started/getting-started.ipynb) az adat-előkészítés az Azure Machine Learning Data Prep SDK használatával.
 
 Az Azure Machine Learning Data Prep SDK [referenciadokumentációt](https://docs.microsoft.com/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py).

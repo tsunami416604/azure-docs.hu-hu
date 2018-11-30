@@ -1,6 +1,6 @@
 ---
-title: A termék sablonok az Azure API Management |} Microsoft Docs
-description: Ismerje meg, hogyan szabhatja testre a tartalom az Azure API Management fejlesztői portálján a termék oldalát.
+title: A termék sablonok az Azure API Management |} A Microsoft Docs
+description: Ismerje meg, hogyan szabhatja testre az Azure API Management fejlesztői portálon termék oldalainak tartalmát.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,29 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: dae757231d8f2ff7fcd8e032d941c0fa9f192796
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 14090e21fb7c6ca07fe63220ffd1d44d483ac869
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23835166"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443627"
 ---
-# <a name="product-templates-in-azure-api-management"></a>A termék sablonok az Azure API Management
-Az Azure API Management lehetővé teszi a tartalom developer portálon lapok használatával konfigurálhatja a tartalom-sablonok testreszabása. Használatával [DotLiquid](http://dotliquidmarkup.org/) szintaxisát és az Ön által választott szerkesztőben, mint [tervezőknek DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), és a megadott készlete honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), [betűkép-erőforrások](api-management-template-resources.md#glyphs), és [vezérlők lapon](api-management-page-controls.md), konfigurálja a tartalmat, a lapok, ahogyan szeretné ezeket a sablonokat használ nagy rugalmasságot biztosítanak.  
+# <a name="product-templates-in-azure-api-management"></a>A termék sablonok az Azure API Management szolgáltatásban
+
+Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfigurálása a tartalom-sablonok használatával tartalmának testreszabása. Használatával [DotLiquid](http://dotliquidmarkup.org/) szintaxist és a szerkesztő szerkesztőprogramban, például [DotLiquid tervezők számára](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), és a egy megadott készlete honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), [szimbóluma erőforrások](api-management-template-resources.md#glyphs), és [vezérlők lapon](api-management-page-controls.md), konfigurálhatja a lapok tartalmát, igény szerint ezek a sablonok használatával nagy rugalmasságot biztosít.  
   
- Ebben a szakaszban a sablonok engedélyezi, hogy a tartalom a fejlesztői portálján a termék oldalát testreszabásához.  
+ Ebben a szakaszban a sablonok lehetővé teszik a termék a fejlesztői portál oldalainak tartalmát testreszabása.  
   
 -   [Termékek listáját](#ProductList)  
   
 -   [A termék](#Product)  
   
 > [!NOTE]
->  Minta alapértelmezett sablonok az alábbi dokumentáció szerepelnek, de folyamatos fejlesztéseket miatt változhat. Megtekintheti az élő alapértelmezett sablonok a fejlesztői portálra nyissa meg a kívánt egyéni sablonokat. A sablonok használatának kapcsolatos további információkért lásd: [hogyan szabhatja testre a sablonok segítségével az API Management fejlesztői portálján](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Alapértelmezett mintasablonokat a következő dokumentációban szerepelnek, de módosulhatnak, folyamatos fejlesztései miatt. A fejlesztői portálon az élő alapértelmezett sablont a kívánt egyéni sablonokat lépve tekintheti meg. Sablonok használatának ismertetését lásd: [testreszabása sablonok használatával, az API Management fejlesztői portálon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="ProductList"></a>Termékek listáját  
- A **termékek listáját** sablon lehetővé teszi a fejlesztői portálra a termék lista lap törzsében testreszabását.  
+##  <a name="ProductList"></a> Termékek listáját  
+ A **termékek listáját** a sablon lehetővé teszi, hogy a törzse a termék-lista oldalára, a fejlesztői portál testreszabása.  
   
- ![Termékek listáját](./media/api-management-product-templates/APIM_ProductsListTemplatePage.png "APIM_ProductsListTemplatePage")  
+ ![Termékek listájának](./media/api-management-product-templates/APIM_ProductsListTemplatePage.png "APIM_ProductsListTemplatePage")  
   
 ### <a name="default-template"></a>Alapértelmezett sablon  
   
@@ -71,17 +74,17 @@ Az Azure API Management lehetővé teszi a tartalom developer portálon lapok ha
   
 -   [lapozófájl-vezérlő](api-management-page-controls.md#paging-control)  
   
--   [keresési-vezérlő](api-management-page-controls.md#search-control)  
+-   [Keresés-vezérlő](api-management-page-controls.md#search-control)  
   
 ### <a name="data-model"></a>Adatmodell  
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|Lapozás|[Lapozás](api-management-template-data-model-reference.md#Paging) entitás.|A termékek gyűjtemény lapozás adatait.|  
-|Szűrés|[Szűrés](api-management-template-data-model-reference.md#Filtering) entitás.|A termékek lista lap kapcsolatos információkat.|  
-|Termékek|A gyűjtemény [termék](api-management-template-data-model-reference.md#Product) entitásokat.|A termékek, az aktuális felhasználó számára látható.|  
+|Lapozás|[Lapozás](api-management-template-data-model-reference.md#Paging) entitás.|A termékek gyűjtemény lapozási adatait.|  
+|Szűrés|[Szűrés](api-management-template-data-model-reference.md#Filtering) entitás.|A termékek-lista oldalára kapcsolatos információkat.|  
+|Termékek|A gyűjtemény [termék](api-management-template-data-model-reference.md#Product) entitásokat.|Az aktuális felhasználó számára látható termékeket.|  
   
-### <a name="sample-template-data"></a>Mintaadatokat sablon  
+### <a name="sample-template-data"></a>Mintaadatok sablon  
   
 ```json  
 {  
@@ -119,10 +122,10 @@ Az Azure API Management lehetővé teszi a tartalom developer portálon lapok ha
 }  
 ```  
   
-##  <a name="Product"></a>A termék  
- A **termék** sablon lehetővé teszi a termék oldalát a fejlesztői portálra törzsét testreszabását.  
+##  <a name="Product"></a> A termék  
+ A **termék** a sablon lehetővé teszi, hogy a törzse a termék oldalát a fejlesztői portál testreszabása.  
   
- ![Fejlesztői portál termékoldalára](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
+ ![Fejlesztői portál termékoldalán](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
   
 ### <a name="default-template"></a>Alapértelmezett sablon  
   
@@ -196,25 +199,25 @@ Az Azure API Management lehetővé teszi a tartalom developer portálon lapok ha
 ### <a name="controls"></a>Vezérlők  
  A `Product list` sablon előfordulhat, hogy használja a következő [vezérlők lapon](api-management-page-controls.md).  
   
--   [előfizetés gomb](api-management-page-controls.md#subscribe-button)  
+-   [előfizetés button](api-management-page-controls.md#subscribe-button)  
   
 ### <a name="data-model"></a>Adatmodell  
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|Product|[A termék](api-management-template-data-model-reference.md#Product)|A meghatározott termék.|  
-|IsDeveloperSubscribed|Logikai érték|Hogy az aktuális felhasználó számára a termék elő van fizetve.|  
-|SubscriptionState|Szám|Az előfizetés állapotát. Lehetséges állapota van:<br /><br /> -   `0 - suspended`– az előfizetés le van tiltva, és az előfizető nem hívható meg a termék bármely API-k.<br />-   `1 - active`– az előfizetés nem aktív.<br />-   `2 - expired`– az előfizetés elérte a lejárat és inaktiváltuk.<br />-   `3 - submitted`– az előfizetési kérelem a fejlesztő történt, de még nem jóváhagyták vagy elutasították.<br />-   `4 - rejected`– az előfizetési kérelem rendszergazda meg lett tagadva.<br />-   `5 - cancelled`– az előfizetés a fejlesztői vagy a rendszergazda megszakította.|  
-|Korlátok|A tömb|Ez a tulajdonság elavult, és nem használható.|  
-|DelegatedSubscriptionEnabled|Logikai érték|E [delegálás](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) engedélyezve van ennél az előfizetésnél.|  
-|DelegatedSubscriptionUrl|Karakterlánc|Ha delegálás engedélyezve van, a meghatalmazott előfizetés URL-CÍMÉT.|  
-|IsAgreed|Logikai érték|Ha a termék feltételeket, hogy az aktuális felhasználó elfogadta a feltételeket.|  
-|Előfizetések|A gyűjtemény [előfizetés összegzés](api-management-template-data-model-reference.md#SubscriptionSummary) entitásokat.|A termék az előfizetést.|  
-|API-k|A gyűjtemény [API](api-management-template-data-model-reference.md#API) entitásokat.|Az API-k ennek a terméknek.|  
-|CannotAddBecauseSubscriptionNumberLimitReached|Logikai érték|Az aktuális felhasználónak-e előfizetni tekintetében az előfizetési határértéket a termék jogosult.|  
-|CannotAddBecauseMultipleSubscriptionsNotAllowed|Logikai érték|Az aktuális felhasználónak-e előfizetni tekintetében több előfizetést, vagy nem megengedett a termék jogosult.|  
+|Product|[A termék](api-management-template-data-model-reference.md#Product)|A megadott termék.|  
+|IsDeveloperSubscribed|logikai|Hogy az aktuális felhasználó a termékre elő van fizetve.|  
+|SubscriptionState|szám|Az előfizetés állapotát. Lehetséges állapotok a következők:<br /><br /> -   `0 - suspended` – az előfizetés le van tiltva, és az előfizető nem hívható meg a termék minden API-k.<br />-   `1 - active` – az előfizetés nem aktív.<br />-   `2 - expired` – az előfizetés elérte a lejárati dátum és az inaktiválva lett.<br />-   `3 - submitted` – az előfizetési kérést, fejlesztője által lett végrehajtva, de még nincs jóváhagyták vagy elutasították.<br />-   `4 - rejected` – az előfizetés kérelem el lett utasítva, egy rendszergazda.<br />-   `5 - cancelled` – az előfizetés a fejlesztői vagy a rendszergazda megszakította.|  
+|Korlátok|tömb|Ez a tulajdonság elavult, és nem használható.|  
+|DelegatedSubscriptionEnabled|logikai|E [delegálás](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) ehhez az előfizetéshez engedélyezve van.|  
+|DelegatedSubscriptionUrl|sztring|Ha a delegálás engedélyezve van, a meghatalmazott előfizetés URL-címe.|  
+|IsAgreed|logikai|Ha a termék használati, hogy az aktuális felhasználó elfogadta a feltételeket.|  
+|Előfizetések|A gyűjtemény [előfizetés összefoglalás](api-management-template-data-model-reference.md#SubscriptionSummary) entitásokat.|Az előfizetések a termékhez.|  
+|API-k|A gyűjtemény [API](api-management-template-data-model-reference.md#API) entitásokat.|A termék API-k.|  
+|CannotAddBecauseSubscriptionNumberLimitReached|logikai|Az aktuális felhasználó-e előfizetni az előfizetésre vonatkozó korlát tekintetében a termék jogosult.|  
+|CannotAddBecauseMultipleSubscriptionsNotAllowed|logikai|Az aktuális felhasználó-e jogosult az előfizetés a termékre, vagy nem engedélyezett több előfizetéssel kapcsolatban.|  
   
-### <a name="sample-template-data"></a>Mintaadatokat sablon  
+### <a name="sample-template-data"></a>Mintaadatok sablon  
   
 ```json  
 {  
@@ -258,5 +261,5 @@ Az Azure API Management lehetővé teszi a tartalom developer portálon lapok ha
 }  
 ```
 
-## <a name="next-steps"></a>Következő lépések
-A sablonok használatának kapcsolatos további információkért lásd: [hogyan szabhatja testre a sablonok segítségével az API Management fejlesztői portálján](api-management-developer-portal-templates.md).
+## <a name="next-steps"></a>További lépések
+Sablonok használatának ismertetését lásd: [testreszabása sablonok használatával, az API Management fejlesztői portálon](api-management-developer-portal-templates.md).

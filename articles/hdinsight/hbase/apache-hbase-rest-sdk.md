@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/13/2017
 ms.author: ashishth
-ms.openlocfilehash: af3b87fbe79624143b6c2b7e0a3c50852e532524
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 89c74b0c2144776d3bbc8a87f660b546ad40987f
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042121"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495415"
 ---
-# <a name="use-the-hbase-net-sdk"></a>A HBase .NET SDK használata
+# <a name="use-the-net-sdk-for-apache-hbase"></a>Az Apache HBase a .net SDK használata
 
-[A HBase](apache-hbase-overview.md) az adatokkal való munka két elsődleges lehetőségeket: [Hive-lekérdezések és a HBase REST-alapú API-hívások](apache-hbase-tutorial-get-started-linux.md). Használhatja a közvetlenül a REST API használatával a `curl` parancs vagy egy hasonló eszköz.
+[Az Apache HBase](apache-hbase-overview.md) az adatokkal való munka két elsődleges lehetőségeket: [Apache Hive-lekérdezések és a HBase a RESTful API-hívások](apache-hbase-tutorial-get-started-linux.md). Használhatja a közvetlenül a REST API használatával a `curl` parancs vagy egy hasonló eszköz.
 
 C# és a .NET-alkalmazások a [Microsoft HBase REST Client Library for .NET](https://www.nuget.org/packages/Microsoft.HBase.Client/) a HBase REST API egy ügyfélkönyvtárat biztosít.
 
@@ -37,7 +37,7 @@ var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdins
 client = new HBaseClient(credentials);
 ```
 
-Cserélje le a HDInsight HBase-fürt nevét, és a FELHASZNÁLÓNÉVVEL és JELSZÓVAL CLUSTERNAME a fürt létrehozásakor megadott Hadoop hitelesítő adatokat. Az alapértelmezett Hadoop felhasználónév **rendszergazdai**.
+Cserélje le a HDInsight HBase-fürt nevét, és a FELHASZNÁLÓNÉVVEL és JELSZÓVAL CLUSTERNAME a fürt létrehozásakor megadott Apache Hadoop hitelesítő adatokat. Az alapértelmezett Hadoop felhasználónév **rendszergazdai**.
 
 ## <a name="create-a-new-table"></a>Új tábla létrehozása
 
@@ -113,7 +113,7 @@ set.rows.Add(row);
 await client.StoreCellsAsync("RestSDKTable", set);
 ```
 
-A HBase BigTable, valósít meg, így az adatok formátumát az alábbihoz hasonló:
+A HBase valósít meg [felhőalapú BigTable](https://cloud.google.com/bigtable/), így az adatok formátuma a következőhöz hasonló:
 
 ![Fürt felhasználói szerepkörrel rendelkező felhasználók](./media/apache-hbase-rest-sdk/table.png)
 
@@ -189,4 +189,4 @@ finally
 ## <a name="next-steps"></a>További lépések
 
 * [Ismerkedés a HDInsight az Apache HBase példa](apache-hbase-tutorial-get-started-linux.md)
-* A végpontok közötti alkalmazás létrehozását [a hbase-ben a valós idejű Twitter-vélemények elemzése](../hdinsight-hbase-analyze-twitter-sentiment.md)
+* A végpontok közötti alkalmazás létrehozását [az Apache HBase valós idejű Twitter-vélemények elemzése](../hdinsight-hbase-analyze-twitter-sentiment.md)

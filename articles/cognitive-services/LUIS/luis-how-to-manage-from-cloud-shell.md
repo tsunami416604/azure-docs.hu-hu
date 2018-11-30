@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 42bd8ef95ac1b55e76fe1cf0702b79de91832741
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: aca81bd529fe6151dce7aba6754874355189fc59
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870179"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444384"
 ---
 # <a name="usage-data-for-luis-service-from-azure-cloud-shell"></a>Intelligens HANGFELISMERÉSI szolgáltatás az Azure Cloud Shell a használati adatok
 Az Azure Portalon a LUIS-erőforrásokat a PowerShell-parancsmagok használatával teszi lehetővé. 
@@ -32,7 +32,7 @@ Miután egy tárfiókot és a hitelesítés, a PowerShell-parancsmagok is futtat
 ## <a name="open-cloud-shell"></a>Cloud Shell megnyitása
 Az Azure portal cloud shell használata esetén Ön mindig a legújabb PowerShell-verziót. 
 
-Használja a **Cloud Shell indítása** gombra, és a Cloud shellt, vagy nyisson meg egy böngészőt a [ https://shell.azure.com ](https://shell.azure.com). 
+Használja a **Cloud Shell indítása** gombra, és a Cloud shellt, vagy nyisson meg egy böngészőt a [ https://shell.azure.com ](https://shell.azure.com). Válassza ki a Power Shell környezet. Ha nem rendelkezik Azure Storage-fiókot, szüksége lesz a hozzon létre egyet. 
 
 <a style="cursor:pointer" onclick='javascript:window.open("https://shell.azure.com", "_blank", "toolbar=no,scrollbars=yes,resizable=yes,menubar=no,location=no,status=no")'><image src="https://shell.azure.com/images/launchcloudshell.png" /></a>
 

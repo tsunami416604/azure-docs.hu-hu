@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 2ec8d53b0d8da3a7d643362abf58d3a5d4b42e74
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 27bfd3176ecad847f9bba2a62abd66b55484443b
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42057572"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443015"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Az Azure API Management-szolgáltatáspéldány üzembe helyezése több Azure-régióban
 
@@ -26,11 +26,10 @@ Az Azure API Management támogatja a több régióból álló üzemelő, amely l
 
 Egy új Azure API Management szolgáltatás tartalmaz kezdetben csak az egyik [egység] [ unit] egyetlen Azure-régióban, az elsődleges régióba. További régiók könnyen hozzáadhatók az Azure Portalon keresztül. Az API Management-átjáró kiszolgáló összes régióban telepíti, és hívás forgalmat a rendszer átirányítja a legközelebbi átjáró. Ha egy régió elérhetetlenné válik, a rendszer automatikusan átirányítja a forgalmat tovább legközelebbi átjáróhoz.
 
-> [!IMPORTANT]
-> Többrégiós üzembe helyezés csak érhető el a **[prémium] [ Premium]** szint.
-
 > [!NOTE]
 > Az Azure API Management az API gateway összetevővel régióban replikálja. A szolgáltatás felügyeleti összetevőt csak az elsődleges régióban üzemel. Egy esetleges leállás az elsődleges régióban konfigurációs módosítások alkalmazása az Azure API Management szolgáltatáspéldányt, esetén nem lehet – beleértve a beállítások és szabályzatok frissítéseket.
+
+[!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 
 ## <a name="add-region"> </a>Az API Management-szolgáltatáspéldány üzembe egy új régióban
 

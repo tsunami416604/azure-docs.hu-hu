@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: eb2145d2e7b787bafa0b546449282454f7059999
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 537ae87fa694a8b0e82cb2830dd8ad1f62986093
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283410"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496438"
 ---
-# <a name="tutorial-process-tweets-using-azure-event-hubs-and-spark-in-hdinsight"></a>Oktatóanyag: Folyamat Twitter HDInsight az Azure Event Hubs és a Spark használatával
+# <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Oktatóanyag: Folyamat Twitter HDInsight az Azure Event Hubs és az Apache Spark használatával
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan hozhat létre egy Apache Spark streamelési alkalmazás tweetek küldése az Azure event hub, és hozzon létre egy másik alkalmazás tweetek beolvasására az event hubs. A Spark Stream részletes leírását lásd: [Apache Spark-streamelés – áttekintés](http://spark.apache.org/docs/latest/streaming-programming-guide.html#overview). HDInsight Spark-fürt az Azure-ban az adatfolyam-továbbítási szolgáltatást biztosít.
+Ebben az oktatóanyagban elsajátíthatja, hogyan hozhat létre egy [Apache Spark](https://spark.apache.org/) streaming-alkalmazás tweetek küldése az Azure event hub, és hozhat létre a tweetek beolvasására az event hubs egy másik alkalmazás. A Spark Stream részletes leírását lásd: [Apache Spark-streamelés – áttekintés](http://spark.apache.org/docs/latest/streaming-programming-guide.html#overview). HDInsight Spark-fürt az Azure-ban az adatfolyam-továbbítási szolgáltatást biztosít.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -102,7 +102,7 @@ Az eseményközpont használatával tárolja a tweeteket.
 
 Jupyter notebook létrehozása, és adja neki kell **SendTweetsToEventHub**. 
 
-1. Futtassa a következő kódot a külső Maven-kódtárak hozzáadása:
+1. Futtassa a következő kódot a külső Apache Maven-kódtárak hozzáadása:
 
     ```
     %%configure
@@ -184,7 +184,7 @@ Jupyter notebook létrehozása, és adja neki kell **SendTweetsToEventHub**.
 
 Hozzon létre egy másik Jupyter notebookot, és adja neki kell **ReadTweetsFromEventHub**. 
 
-1. Futtassa a következő kódot a Maven külső osztálykönyvtárak hozzáadásához:
+1. Futtassa a következő kódot az Apache Maven külső osztálykönyvtárak hozzáadásához:
 
     ```
     %%configure -f

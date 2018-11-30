@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 03/07/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: af93ade2a7031aeda5b4108649c59a8d6c1393ce
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
-ms.translationtype: HT
+ms.openlocfilehash: 6720294fe9a3e166d0d6ef8f141e53212ef4b194
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465860"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496799"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Mi az az Azure AD Privileged Identity Management?
 
@@ -73,7 +73,7 @@ A Privileged Identity Management a következő forgatókönyveket támogatja:
 
 - Függőben lévő jóváhagyások (kérelmek) megtekintése
 - Szerepkör-kiterjesztésre irányuló kérelmek jóváhagyása vagy visszautasítása (egyszerre egy és/vagy több)
-- Indoklás fűzése a jóváhagyáshoz/elutasításhoz 
+- Indoklás fűzése a jóváhagyáshoz/elutasításhoz 
 
 **Jogosult szerepkörű felhasználóként a következőkre jogosult:**
 
@@ -81,22 +81,13 @@ A Privileged Identity Management a következő forgatókönyveket támogatja:
 - Az aktiválási kérelem állapotának megtekintése
 - Az aktiválás jóváhagyása után feladatok végrehajtása az Azure AD-ben
 
-## <a name="enable-privileged-identity-management-for-your-directory"></a>A Privileged Identity Management engedélyezése a saját címtárhoz
+## <a name="who-can-do-what-in-pim"></a>Ki teheti Mi a PIM
 
-Az Azure AD Privileged Identity Management használatát az [Azure Portalon](https://portal.azure.com/) lehet megkezdeni.
+Ha Ön az első, aki a PIM használatát tervezi, akkor automatikusan megkapja a [biztonsági rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) és [kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkörökhöz a címtárban.
 
-> [!NOTE]
-> Az Azure AD Privileged Identity Management címtáron való engedélyezéséhez egy globális rendszergazdai jogosultságú vállalati fiók (például @yourdomain.com) szükséges, nem pedig egy Microsoft-fiók (például @outlook.com).
+Az Azure AD-szerepkörök csak egy felhasználót, aki a kiemelt szerepkörű rendszergazda szerepkör kezelheti más rendszergazdák a PIM-hozzárendeléseit. Is [hozzáférés biztosítása más rendszergazdák számára, miközben a PIM kezelése](pim-how-to-give-access-to-pim.md). A globális rendszergazdák, biztonsági rendszergazdák és biztonsági olvasók tekintheti meg az Azure AD szerepkör-hozzárendelések az PIM-ben.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) a címtára globális rendszergazdájaként.
-2. Ha a szervezet több címtárral rendelkezik, akkor kattintson a felhasználónevére az Azure Portal jobb felső sarkában. Válassza ki azt a címtárat, amelyben az Azure AD Privileged Identity Management használatát tervezi.
-3. Válassza a **Minden szolgáltatás** lehetőséget, és a Szűrő szövegmezővel keresse meg az **Azure AD Privileged Identity Management** elemet.
-4. Jelölje be a **Rögzítés az irányítópulton** jelölőnégyzetet, majd kattintson a **Létrehozás** gombra. Megnyílik a Privileged Identity Management alkalmazás.
-
-Ha Ön az első, aki a címtárban az Azure AD Privileged Identity Management alkalmazást használja, akkor az Azure AD-címtárszerepkörökre lépve egy [biztonsági varázsló](pim-security-wizard.md) végigvezeti a hozzárendelés kezdeti lépésein. Ezután automatikusan Ön lesz a címtár első **biztonsági rendszergazdája** és **kiemelt szerepkörű rendszergazdája**.
-
-Az Azure AD-szerepkörök esetében csak egy kiemelt szerepkörű rendszergazda kezelheti más rendszergazdák hozzárendeléseit az Azure AD PIM-ben. Megadhatja [más felhasználóknak a jogosultságot a címtárszerepkörök kezelésére a PIM-ben](pim-how-to-give-access-to-pim.md). A globális rendszergazdák, a biztonsági rendszergazdák és a biztonsági olvasók megtekinthetik az Azure AD-szerepkörök hozzárendeléseit az Azure AD PIM-ben.
-Az Azure RBAC-szerepkörök esetében csak egy előfizetés-rendszergazda, egy erőforrás-tulajdonos vagy egy erőforrások felhasználói hozzáféréseiért felelős rendszergazda felügyelheti más rendszergazdák hozzárendeléseit az Azure AD PIM-ben.  A kiemelt szerepkörű rendszergazdák, a biztonsági rendszergazdák és a biztonsági olvasók alapértelmezés szerint nem rendelkeznek hozzáféréssel az Azure RBAC-szerepkörökhöz való hozzárendelések megtekintéséhez az Azure AD PIM-ben.
+Azure-erőforrások szerepköreihez, csak egy előfizetés-rendszergazda, az erőforrás tulajdonosa vagy a felhasználói hozzáférés rendszergazdája erőforrás kezelhetik a más rendszergazdák a PIM-hozzárendeléseit. Felhasználók, akik a kiemelt szerepkörű rendszergazdák, biztonsági rendszergazdák és a biztonsági olvasók alapértelmezés szerint nem rendelkeznek hozzáféréssel a PIM az Azure-erőforrás szerepkör-hozzárendelések megtekintéséhez.
 
 ## <a name="privileged-identity-management-overview-entry-point"></a>A Privileged Identity Management áttekintése (belépési pont)
 
@@ -186,6 +177,6 @@ Ha a vállalat nem újítja meg a Prémium szintű Azure AD P2-előfizetést, va
 
 ## <a name="next-steps"></a>További lépések
 
+- [Ismerkedés a PIM-mel](pim-getting-started.md)
 - [Előfizetési követelmények a PIM használatához](subscription-requirements.md)
-- [A PIM-ben kezelhető Azure AD-címtárszerepkörök](pim-roles.md)
 - [Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)

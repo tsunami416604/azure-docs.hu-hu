@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 7b8faca82a23875b403d0b51b2e8719549d845fb
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 40af55e48e0097f1ad6cb52a76b78fab40c2074c
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740688"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447180"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure-beli virtuálisgép-méretezési csoportok – gyakori kérdések
 
@@ -371,7 +371,7 @@ A tanúsítvány Base64 kódolású karakterláncként ad emulációjához, kibo
 
 A virtuálisgép-méretezési csoportok és a virtuális gépek tanúsítványokat kell csomagolni, a JSON-objektumok. 
 
-Az application/x-pkcs12 tartalomtípus is támogatja. Application/x-pkcs12 használatával kapcsolatos utasításokért lásd: [PFX-tanúsítványok az Azure Key Vaultban](http://www.rahulpnath.com/blog/pfx-certificate-in-azure-key-vault/).
+Az application/x-pkcs12 tartalomtípus is támogatja. 
  
 Jelenleg nem támogatott .cer fájlokat. Használja a .cer fájl formájában, exportálja őket .pfx tárolókba.
 

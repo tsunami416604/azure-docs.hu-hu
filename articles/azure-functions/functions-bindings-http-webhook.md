@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 333e73af3578cdc363e7ede08ca52207cfd0fdb0
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: a20dec67201cb7d8b7ccd3a7662438f2afabfe63
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248903"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446789"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Az Azure Functions – HTTP-eseményindítók és kötések
 
@@ -157,13 +157,13 @@ public static string Run(CustomObject req, ILogger log)
 }
 
 public class CustomObject {
-     public String name {get; set;}
+     public string name {get; set;}
 }
 ```
 
-### <a name="trigger---f-example"></a>Eseményindító - F #-példa
+### <a name="trigger---f-example"></a>Eseményindító - F# példa
 
-Az alábbi példa bemutatja a trigger kötés egy *function.json* fájl és a egy [F #-függvény](functions-reference-fsharp.md) , amely a kötés használja. A függvény megkeresi egy `name` paraméter a lekérdezési karakterlánc vagy a HTTP-kérelem törzse.
+Az alábbi példa bemutatja a trigger kötés egy *function.json* fájl és a egy [ F# függvény](functions-reference-fsharp.md) , amely a kötés használja. A függvény megkeresi egy `name` paraméter a lekérdezési karakterlánc vagy a HTTP-kérelem törzse.
 
 Íme a *function.json* fájlt:
 
@@ -188,7 +188,7 @@ Az alábbi példa bemutatja a trigger kötés egy *function.json* fájl és a eg
 
 A [konfigurációs](#trigger---configuration) szakasz mutatja be ezeket a tulajdonságokat.
 
-Az F #-kód itt látható:
+Íme a F# kódot:
 
 ```fsharp
 open System.Net
@@ -348,7 +348,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 
 ## <a name="trigger---usage"></a>Eseményindító - használat
 
-A C# és az F # függvény, a bemeneti adatokat lehet az eseményindító típusú deklarálhatnak `HttpRequestMessage` vagy egy egyéni típus. Ha úgy dönt, `HttpRequestMessage`, a kérelem objektum teljes hozzáférést kap. Egyéni írja be a következőt a modul megpróbálja elemezni az objektum tulajdonságainak JSON-kérelem törzse.
+A C# és F# funkciók eszközhöz adhat meg a bemeneti adatokat lehet az eseményindító típusú `HttpRequestMessage` vagy egy egyéni típus. Ha úgy dönt, `HttpRequestMessage`, a kérelem objektum teljes hozzáférést kap. Egyéni írja be a következőt a modul megpróbálja elemezni az objektum tulajdonságainak JSON-kérelem törzse.
 
 A JavaScript-függvények a Functions futtatókörnyezete biztosít, a kérelem törzsében a támogatásikérelem-objektum helyett. További információkért lásd: a [JavaScript eseményindító példa](#trigger---javascript-example).
 
@@ -434,6 +434,45 @@ Alapértelmezés szerint az összes funkció útvonal van fűzve előtagként *a
 }
 ```
 
+### <a name="working-with-client-identities"></a>Ügyfél-azonosító használata
+
+Ha a függvényalkalmazás által használt [App Service-hitelesítés / engedélyezés](../app-service/app-service-authentication-overview.md), információ a hitelesített ügyfelek tekintheti a kódból. Ez az információ érhető el, [a platform által beszúrt kérésfejlécek](../app-service/app-service-authentication-how-to.md#access-user-claims). 
+
+Ezt az információt a kötelező adatokat is olvashatja. Ez a funkció csak az a funkciók 2.x verziójú futtatókörnyezet érhető el. Jelenleg is csak a .NET-es nyelveken érhető el.
+
+A .NET összehangolandó, ez az információ érhető el, egy [ClaimsPrincipal](https://docs.microsoft.com/en-us/dotnet/api/system.security.claims.claimsprincipal?view=netstandard-2.0). A ClaimsPrincipal érhető el az alábbi példában látható módon a kérés környezetének részeként:
+
+```csharp
+using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+
+public static IActionResult Run(HttpRequest req, ILogger log)
+{
+    ClaimsPrincipal identities = req.HttpContext.User;
+    // ...
+    return new OkResult();
+}
+```
+
+A ClaimsPrincipal másik megoldásként egyszerűen lehet része egy további paraméter a függvényaláíráshoz a:
+
+```csharp
+#r "Newtonsoft.Json"
+
+using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using Newtonsoft.Json.Linq;
+
+public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
+{
+    // ...
+    return;
+}
+
+```
+
 ### <a name="authorization-keys"></a>Hitelesítési kulcsok
 
 Functions-kulcsok használata a HTTP-függvény végpontjainak eléréséhez a fejlesztés során nehezebb teszi lehetővé.  Egy normál HTTP-eseményindító ilyen egy API-kulcsot kell a kérelemben szereplő lehet szükség. 
@@ -483,7 +522,7 @@ Névtelen kérések, amelyek nem igénylik a kulcsok engedélyezheti. A főkulcs
 
 Teljes körűen biztonságossá tételéhez a függvény végpontok éles környezetben, érdemes megfontolni megvalósítását függvény alkalmazásszintű biztonság az alábbi lehetőségek közül:
 
-* Kapcsolja be az App Service-hitelesítés / engedélyezés a függvényalkalmazás számára. Az App Service platform lehetővé teszi az Azure Active Directory (AAD) és több külső identitásszolgáltató használatával ügyfelek hitelesítéséhez. Ezzel a Functions egyéni engedélyezési szabályok megvalósításához, és használhatja a felhasználói adatokat a függvénykódban. További tudnivalókért lásd: [hitelesítése és engedélyezése Azure App Service-ben](../app-service/app-service-authentication-overview.md).
+* Kapcsolja be az App Service-hitelesítés / engedélyezés a függvényalkalmazás számára. Az App Service platform lehetővé teszi az Azure Active Directory (AAD) és több külső identitásszolgáltató használatával ügyfelek hitelesítéséhez. Ezzel a Functions egyéni engedélyezési szabályok megvalósításához, és használhatja a felhasználói adatokat a függvénykódban. További tudnivalókért lásd: [hitelesítése és engedélyezése Azure App Service-ben](../app-service/app-service-authentication-overview.md) és [ügyfél identitások használata](#working-with-client-identities).
 
 * Az Azure API Management (APIM) használatával-kérések hitelesítéséhez. APIM API biztonsági beállítások a bejövő kéréseket széles skáláját kínálja. További tudnivalókért lásd: [az API Management a hitelesítési házirendek](../api-management/api-management-authentication-policies.md). Az APIM-helyen konfigurálhatja a függvényalkalmazás csak az IP-címet az APIM-példány érkező kéréseket fogadják. További tudnivalókért lásd: [IP-címkorlátozások](ip-addresses.md#ip-address-restrictions).
 

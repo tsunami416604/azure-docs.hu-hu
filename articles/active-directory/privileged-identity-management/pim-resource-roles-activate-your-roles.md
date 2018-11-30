@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 08/31/2018
+ms.date: 11/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 59bce2c61db5838bb21a29757d4e354311ecffd5
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 249680f60b3c2ee10ff3f3f1eb39d4bf74e57cd9
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666247"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497330"
 ---
 # <a name="activate-my-azure-resource-roles-in-pim"></a>A PIM saját Azure-erőforrás szerepkörök aktiválása
 
@@ -67,9 +67,25 @@ Amikor szüksége van egy Azure-erőforrás szerepkör, aktiválás segítségé
 
 1. Kattintson a **aktiválása**.
 
-    Ha a szerepkör nem igényel jóváhagyási, most már aktiválva van, és a szerepkör megjelenik az aktív szerepkörök listájában. Ha a [a szerepkör megköveteli a jóváhagyási](pim-resource-roles-approval-workflow.md) aktiválni, egy értesítés jelenik meg a böngészőben arról értesíti, a kérelem van függőben lévő jóváhagyási jobb felső sarkában található.
+    Ha a szerepkör nem igényel jóváhagyási, aktiválják, és hozzá az aktív szerepkörök listáját. Ha azt szeretné, a szerepkör azonnal használja, kövesse a következő szakaszban.
+
+    Ha a [a szerepkör megköveteli a jóváhagyási](pim-resource-roles-approval-workflow.md) aktiválni, egy értesítés jelenik meg a böngészőben arról értesíti, a kérelem van függőben lévő jóváhagyási jobb felső sarkában található.
 
     ![Értesítés függőben lévő kérelem](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
+
+## <a name="use-a-role-immediately-after-activation"></a>Olyan szerepkört használjon az aktiválás után azonnal
+
+A PIM szerepkör aktiválásakor a kívánt felügyeleti portál eléréséhez vagy funkciók belül egy adott felügyeleti számítási feladatok végrehajtása előtt legalább 10 percet vesz igénybe. Az engedélyek frissítés kényszerítéséhez használja a **alkalmazás-hozzáférés** lapon a következő lépésben ismertetett módon.
+
+1. Nyissa meg az Azure AD Privileged Identity Management.
+
+1. Kattintson a **alkalmazás-hozzáférés** lapot.
+
+    ![A PIM-alkalmazás-hozzáférés – képernyőkép](./media/pim-resource-roles-activate-your-roles/pim-application-access.png)
+
+1. Kattintson a **Azure-erőforrások** nyissa meg újra a portálon a mutató hivatkozást a **összes erőforrás** lapot.
+
+    Ha erre a hivatkozásra kattint, érvényteleníteni az aktuális token, és kényszerítheti az Azure Portalon, amelyeknek tartalmazniuk kell a frissített engedélyek új token beszerzéséhez.
 
 ## <a name="view-the-status-of-your-requests"></a>A kérések állapotának megtekintése
 
@@ -82,20 +98,6 @@ Megtekintheti a függőben lévő aktiválási kéréseit állapotát.
     ![Az Azure AD-címtárbeli szerepkörök és az Azure-erőforrások szerepköreihez – saját kérések](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
 
 1. Görgessen jobbra megtekintéséhez a **állapot kérése** oszlop.
-
-## <a name="use-a-role-immediately-after-activation"></a>Olyan szerepkört használjon az aktiválás után azonnal
-
-Gyorsítótárazás miatt aktiválások nem történik meg azonnal a frissítés nélkül az Azure Portalon. Ha az késleltetések lehetőségét csökkentheti a szerepkör aktiválása után van szüksége, használhatja a **alkalmazás-hozzáférés** lapot a portálon. Ezen a lapon elérhető alkalmazások azonnal ellenőrizze az új szerepkör-hozzárendeléseket.
-
-1. Nyissa meg az Azure AD Privileged Identity Management.
-
-1. Kattintson a **alkalmazás-hozzáférés** lapot.
-
-    ![A PIM-alkalmazás-hozzáférés – képernyőkép](./media/pim-resource-roles-activate-your-roles/pim-application-access.png)
-
-1. Kattintson a **Azure-erőforrások** , nyissa meg újra a portálon a a **összes erőforrás** lapot.
-
-    Ha erre a hivatkozásra kattint, frissítésének kényszerítése, és a egy új Azure-erőforrás szerepkör-hozzárendelések keresése van.
 
 ## <a name="cancel-a-pending-request"></a>Függőben lévő kérelem megszakítása
 
@@ -110,6 +112,21 @@ Jóváhagyást igénylő szerepkörök aktiválási nincs szükség, ha egy füg
     Ha a Mégse gombra kattint, a kérelem megszakítása A szerepkör aktiválását ismét el küldjön új aktiválási kérelmet.
 
    ![Függőben lévő kérelem megszakítása](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
+
+## <a name="troubleshoot"></a>Hibaelhárítás
+
+### <a name="permissions-not-granted-after-activating-a-role"></a>A szerepkör aktiválása után nem rendelkezik engedélyekkel
+
+A PIM szerepkör aktiválásakor a kívánt felügyeleti portál eléréséhez vagy funkciók belül egy adott felügyeleti számítási feladatok végrehajtása előtt legalább 10 percet vesz igénybe. Az engedélyek frissítés kényszerítéséhez használja a **alkalmazás-hozzáférés** lapon korábban leírt módon [olyan szerepkört használjon az aktiválás után azonnal](#use-a-role-immediately-after-activation).
+
+További hibaelhárítási lépéseket lásd: [emelt szintű engedélyek hibaelhárítása](https://social.technet.microsoft.com/wiki/contents/articles/37568.troubleshooting-elevated-permissions-with-azure-ad-privileged-identity-management.aspx).
+
+### <a name="cannot-activate-a-role-due-to-a-resource-lock"></a>A szerepkör erőforrás-zárolás miatt nem lehet aktiválni.
+
+Ha egy üzenetet kap, hogy egy Azure-erőforrás zárolva van, a szerepkör aktiválásához meg, lehetséges, egy erőforrás hatókörébe tartozó szerepkör-hozzárendelés egy erőforrás-zárolással rendelkezik. Zárolások erőforrásai a váratlan módosítások vagy véletlen törlés elleni védelmét. Egy zárolás is megakadályozza, hogy a PIM az aktiválási időszak végén az erőforrást a szerepkör-hozzárendelés eltávolítása. A PIM nem tud megfelelően működni, a zárolás alkalmazásakor, mivel a PIM megakadályozza, hogy a felhasználók korlátozhatják az erőforrás-szerepköröket. Két módon, hogy meg lehet oldani a problémát:
+
+- Törölheti a zárolást, leírtak szerint [váratlan módosítások megelőzése érdekében zárolhat erőforrásokat](../../azure-resource-manager/resource-group-lock-resources.md).
+- Ha meg szeretné tartani a zárolás, a szerepkör-hozzárendelés véglegesítéséhez, vagy break üvegből fiók használata.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: d72ffd849f9e1e6e661b0e54b7182b02a16c8024
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 3e50bf42076132f69fcb655da61a790fe207b949
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568988"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444409"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-java-modules-for-azure-iot-edge"></a>Fejlesztés és hibakeresés Java-modulok az Azure IoT Edge-hez a Visual Studio Code használatával
 
@@ -64,7 +64,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy IoT Edge-modult a 
 7. Válasszon **Java modul** a megoldás első modul sablonként.
 8. Adja meg a modul nevét. Válassza ki, amely a tárolóregisztrációs adatbázis egyedi nevét. 
 8. Adja meg a groupId értékét, vagy fogadja el az alapértelmezett **com.edgemodule** értéket.
-9. A modul adja meg a lemezképtárból. A VS Code autopopulates a modul neve, így csak kell cserélni **localhost:5000** a saját beállításjegyzék-információkat. Ha tesztelése helyi Docker-tárolójegyzék használja, localhost nem okoz gondot. Ha használja az Azure Container Registry, használja a bejelentkezési kiszolgáló, a beállításjegyzék-beállításai közül. A bejelentkezési kiszolgáló néz  **\<beállításjegyzék neve\>. azurecr.io**. Csak a sztring localhost részét cserélje le, ne törölje a modul nevét.
+9. A modul adja meg a lemezképtárból. A VS Code autopopulates a modul neve, így csak kell cserélni **localhost:5000** a saját beállításjegyzék-információkat. Ha tesztelése helyi Docker-tárolójegyzék használja, localhost nem okoz gondot. Ha használja az Azure Container Registry, használja a bejelentkezési kiszolgáló, a beállításjegyzék-beállításai közül. A bejelentkezési kiszolgáló néz  **\<beállításjegyzék neve\>. azurecr.io**. Csak a sztring localhost részét cserélje le, ne törölje a modul nevét. Néz ki a végső karakterláncban \<beállításjegyzék neve\>.azurecr.io/\<modulename\>.
 
    ![Docker-rendszerkép adattárának megadása](./media/how-to-develop-node-module/repository.png)
 
@@ -79,6 +79,8 @@ A megoldáson belül, akkor három elemet:
    >A környezet fájl csak akkor jön létre, ha a modul adja meg egy lemezképtárban. Ha korábban elfogadta a localhost alapértelmezett tesztelése és hibakeresése helyileg, majd, nem kell környezeti változók deklarálása. 
 
 * A **deployment.template.json** sorolja az új modul és a egy minta **tempSensor** modul, amely szimulálja az adatokat, amelyek a teszteléshez használható. Hogyan az üzembe helyezés jegyzékfájlok munkahelyi kapcsolatos további információkért lásd: [megismerheti, hogyan IoT Edge-modulok használják, konfigurálhatók, és újra felhasználható](module-composition.md).
+* A **deployment.debug.template.json** a modul a hibakeresési verzió a megfelelő tárolót beállításokkal lemezképeket tároló fájlt.
+
 
 ## <a name="develop-your-module"></a>A modul fejlesztése
 
@@ -90,6 +92,14 @@ A Visual Studio Code Java támogatással rendelkezik. Tudjon meg többet [haszn�
 
 ## <a name="launch-and-debug-module-code-without-container"></a>Indítsa el, és a tároló nélkül a modul-kód hibaelhárítása
 Az IoT Edge-Java-modul az Azure IoT-Java eszközoldali SDK függ. Az alapértelmezett modul kódban inicializálása egy **ModuleClient** környezeti beállítások, a bemeneti név, ami azt jelenti, hogy az IoT Edge-Java-modul igényel az indításához, és futtassa a környezeti beállítások, és is szeretne küldeni, vagy az üzenetek a bemeneti csatornákat. Az alapértelmezett Java modul csak egy bemeneti csatorna tartalmaz, és a név **input1**.
+
+### <a name="setup-iot-edge-simulator-for-iot-edge-solution"></a>IoT Edge-szimulátort az IoT Edge-megoldás beállítása
+
+A fejlesztői gépen elindíthatja az IoT Edge-szimulátor helyett az IoT Edge-megoldás futtatásához az IoT Edge biztonsági démon telepítésével. 
+
+1. A device Explorerben bal oldalán kattintson a jobb gombbal a IoT Edge-eszköz azonosítója, válassza a **beállítása IoT Edge-szimulátor** a szimulátor indításához az eszköz kapcsolati karakterlánccal.
+
+2. Láthatja, hogy az IoT Edge-szimulátor sikeresen megtörtént a telepítő az integrált terminálon.
 
 ### <a name="setup-iot-edge-simulator-for-single-module-app"></a>IoT Edge-szimulátor egy modul alkalmazás beállítása
 
@@ -132,7 +142,7 @@ Az IoT Edge-Java-modul az Azure IoT-Java eszközoldali SDK függ. Az alapértelm
 
 ## <a name="build-module-container-for-debugging-and-debug-in-attach-mode"></a>A modul tároló hibakereséshez és a hibakeresési build az attach mód
 
-Az alapértelmezés szerinti megoldás két modult tartalmaz, egy egy szimulált hőmérsékleti érzékelő modul a másik pedig a Java-cső modul. A szimulált hőmérséklet-érzékelő tartja üzenetek küldése az Java cső modul, és az üzenetek vannak eredményez az IoT hubnak. A modul mappában létrehozott nincsenek különböző tároló esetében több Docker-fájlok. Ezeket a fájlokat, amelyek a bővítmény végződhet bármelyike **.debug** hozhat létre a teszteléshez modul. Jelenleg a Java-modulok csak támogatja a linux-amd64- és linux-arm32v7 lévő hibakeresés.
+Az alapértelmezés szerinti megoldás két modult tartalmaz, egy egy szimulált hőmérsékleti érzékelő modul a másik pedig a Java-cső modul. A szimulált hőmérséklet-érzékelő tartja üzenetek küldése az Java cső modul, és az üzenetek vannak eredményez az IoT hubnak. A modul mappában létrehozott nincsenek különböző tároló esetében több Docker-fájlok. Ezeket a fájlokat, amelyek a bővítmény végződhet bármelyike **.debug** hozhat létre a teszteléshez modul. Alapértelmezés szerint **deployment.debug.template.json** a hibakeresési verzió a rendszerkép tartalmazza. Jelenleg a Java-modulok csak támogatja a linux-amd64- és linux-arm32v7 lévő hibakeresés. Az Azure IoT Edge alapértelmezett platform a VS Code állapotsor is kapcsoló.
 
 ### <a name="setup-iot-edge-simulator-for-iot-edge-solution"></a>IoT Edge-szimulátort az IoT Edge-megoldás beállítása
 
@@ -144,12 +154,9 @@ A fejlesztői gépen elindíthatja az IoT Edge-szimulátor helyett az IoT Edge-m
 
 ### <a name="build-and-run-container-for-debugging-and-debug-in-attach-mode"></a>Létrehozásához és futtatásához hibakereséshez és a hibakeresési tároló a csatolása mód
 
-1. A VS Code-ban keresse meg a `deployment.template.json` fájlt. A modul kép URL-címe frissítés hozzáadásával **.debug** vége.
+1. Nyissa meg a `App.java` címet. Ebben a fájlban adja hozzá egy töréspontot.
 
-2. Cserélje le a Java-modul createOptions a **deployment.template.json** az alábbi tartalmat, és mentse a fájlt: 
-    ```json
-    "createOptions":"{\"HostConfig\":{\"PortBindings\":{\"5005/tcp\":[{\"HostPort\":\"5005\"}]}}}"
-    ```
+2. A VS Code Fájlkezelőben válassza ki a `deployment.debug.template.json` fájlt a megoldás a helyi menüben kattintson a **készítése és futtatása az IoT Edge-szimulátorban történő megoldás**. Megnézheti a modul összes tároló-naplók ugyanabban az ablakban. A Docker Explorert, és tekintse meg a tároló állapota is elérheti.
 
 5. Nyissa meg a VS Code hibakeresési nézetet. Válassza ki a hibakeresési konfigurációs fájlt a modul. A hibakeresési beállítás neve legyen hasonló **ModuleName távoli hibakeresés (Java)**.
 

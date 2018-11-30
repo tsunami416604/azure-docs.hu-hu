@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 11/27/2018
 ms.author: tulasim
-ms.openlocfilehash: 2e4a5d9b7ee2a1a88bcfe819be6540385458108f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 28153e71ba6f2336398517454a81cfce39b93956
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622363"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496342"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -25,7 +25,7 @@ ms.locfileid: "51622363"
 
 Összes törlése végleges, beleértve a kérdés és válasz párt, fájlok, URL-címek, egyéni kérdéseket és válaszokat, tudásbázisok vagy Azure-erőforrások. Ellenőrizze, hogy a Tudásbázis a exportálja a **beállítások** oldalhoz, mielőtt bármelyik részét a Tudásbázis törlése. 
 
-### <a name="why-is-my-urlsfiles-is-not-extracting-question-answer-pairs"></a>Miért van a saját URL-címe / fájl(ok) nem van kibontása kérdés-válasz párt?
+### <a name="why-is-my-urlsfiles-not-extracting-question-answer-pairs"></a>Miért van saját URL-címe / fájl (ok) nem kinyerésekor kérdés-válasz párt?
 
 Akkor lehet, hogy a QnA Maker nem válaszokat automatikusan kinyerni néhány kérdést és választ (kérdés-válasz) tartalom érvényes GYIK URL-címekről. Ezekben az esetekben egy .txt fájlban illessze be a szövegét, és tekintse meg, ha az eszköz betöltheti azt. Azt is megteheti, besorolást hozzáadhat tartalmat a Tudásbázis keretében a [QnA Maker portal](https://qnamaker.ai).
 
@@ -41,13 +41,13 @@ Még nem hozott létre egyetlen QnA Maker szolgáltatást az Azure-ban még. Olv
 
 Megosztása a QnA Maker szolgáltatás szintjén működik, vagyis a szolgáltatásban az összes tudásbázisok meg lesz osztva. Olvasási [Itt](./How-To/collaborate-knowledge-base.md) hogyan működhet a Tudásbázis.
 
-### <a name="can-you-share-a-kb-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-kb"></a>Megoszthat-e, amely nem szerepel az azonos AAD-bérlő módosítása egy KB-os közreműködő egy KB-os? 
+### <a name="can-you-share-a-knowledge-base-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-knowledge-base"></a>Megoszthat-e, amely nem szerepel az azonos AAD-bérlő módosítása Tudásbázis közreműködő Tudásbázis? 
 
 Megosztás Azure szerepköralapú hozzáférés-vezérlés (RBAC) alapul. Ha megoszthatja _bármely_ erőforrás egy másik felhasználó az Azure-ban is megoszthatja a QnA Maker.
 
-### <a name="if-you-have-an-app-service-plan-with-5-qnamaker-kbs-can-you-assign-readwrite-rights-to-5-different-users-so-each-of-them-can-access-only-1-qnamaker-kb"></a>Ha egy App Service-csomag az 5 QnAMaker Tudásbázis. Is jogosultságokat rendelhet hozzá olvasási/írási 5 különböző felhasználók így azok férhetnek csak 1 QnAMaker KB-os?
+### <a name="if-you-have-an-app-service-plan-with-5-qnamaker-knowledge-bases-can-you-assign-readwrite-rights-to-5-different-users-so-each-of-them-can-access-only-1-qnamaker-knowledge-base"></a>Ha egy App Service-csomag az 5 QnAMaker tudásbázisok. Is jogosultságokat rendelhet hozzá olvasási/írási 5 különböző felhasználók így azok férhetnek csak 1 QnAMaker Tudásbázis?
 
-Egy teljes QnAMaker szolgáltatással, nem az egyéni Tudásbázis megoszthatja.
+Egy teljes QnAMaker szolgáltatással, nem az egyéni tudásbázisok megoszthatja.
 
 ### <a name="how-can-i-change-the-default-message-when-no-good-match-is-found"></a>Hogyan válthatok az alapértelmezett üzenetet, ha nem jó talál egyezést?
 
@@ -65,8 +65,7 @@ Az alapértelmezett üzenetet a beállításokat az App service része.
 
 ### <a name="why-is-my-sharepoint-link-not-getting-extracted"></a>Miért érdemes a SharePoint-hivatkozás nem első ki kell olvasni?
 
-Az eszköz elemzi csak nyilvános URL-címeket, és jelenleg nem támogatja a hitelesített adatforrások. Azt is megteheti töltse le a fájlt, és a kérdések és válaszok kinyerése a fájlfeltöltés beállítás használatával.
-
+Lásd: [adatforrás-helyek](./Concepts/data-sources-supported.md#data-source-locations) további információt.
 
 ### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>A Tudásbázisban végzett frissítések nem fognak megjelenni közzététele. Mi ennek az oka?
 
@@ -94,9 +93,13 @@ Az app service frissítése, ha a figyelmeztetés ikon mellett a Tudásbázis k�
 
 Frissítse a végpont kulcsokat, ha azt gyanítja, hogy azok biztonsága sérült.
 
-### <a name="can-i-use-the-same-azure-search-resource-for-kbs-using-multiple-languages"></a>Használható Tudásbázis több nyelvet használják az Azure Search ugyanazt az erőforrást?
+### <a name="can-i-use-the-same-azure-search-resource-for-knowledge-bases-using-multiple-languages"></a>Használhatom ugyanazt az Azure Search erőforrást tudásbázisok több nyelv használatával?
 
-Több nyelv és a több Tudásbázis segítségével a felhasználók számára, az egyes nyelvekhez tartozó QnA Maker erőforrás létrehozásához. Ezzel létrehoz egy külön az Azure search szolgáltatás minden nyelvhez. Egy egyetlen az Azure search szolgáltatásban a különböző nyelvi Tudásbázis keverése csökkentett teljesítményű, az eredmények relevancia eredményez.
+Több nyelv és több tudásbázisok szeretné használni, a felhasználók számára, az egyes nyelvekhez tartozó QnA Maker erőforrás létrehozásához. Ezzel létrehoz egy külön az Azure search szolgáltatás minden nyelvhez. Ettől eltérő nyelv tudásbázisok egy egyetlen az Azure search szolgáltatásban keverése csökkentett teljesítményű, az eredmények relevancia eredményez.
+
+### <a name="how-can-i-change-the-name-of-the-azure-search-resource-used-by-qna-maker"></a>Hogyan módosíthatom a QnA Maker által használt Azure Search-erőforrás neve?
+
+Az Azure Search-erőforrás neve a QnA Maker erőforrásnév bizonyos betűk hozzáfűzi a végén a rendszer. Így nehéz különbséget tenni a QnA Maker több keresési erőforrások között. Hozzon létre egy külön Azure Search-szolgáltatás (elnevezési azt a kívánt módon), és csatlakoztassa a kérdések és válaszok szolgáltatást. A lépések hasonlóak a lépéseket kell tennie hogy [frissítése az Azure Search](How-To/upgrade-qnamaker-service.md#upgrade-azure-search-service).
 
 ## <a name="integrate-with-other-services-including-bots"></a>Integráció más szolgáltatásokkal, beleértve a robotok
 

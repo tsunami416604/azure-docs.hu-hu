@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 159d3d1576ab3a38baaba94594b3abf04ef3ad56
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: b1a4354db23cdfdc6201decbb793a3f9a3ad8206
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287982"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496158"
 ---
-# <a name="use-apache-spark-structured-streaming-with-kafka-and-azure-cosmos-db"></a>Használja az Apache Spark strukturált Stream használata a Kafka és az Azure Cosmos DB
+# <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Az Apache Spark strukturált Stream az Apache Kafka és Azure Cosmos DB használata
 
-Ismerje meg, az Apache Spark strukturált Stream használata az Azure HDInsight alapú Apache Kafka-adatok olvasását és majd tárolja az adatokat az Azure Cosmos DB-be.
+Ismerje meg, hogyan használható [Apache Spark](https://spark.apache.org/) [strukturált Stream](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) -ből származó adatok [Apache Kafka](https://kafka.apache.org/) Azure HDInsight, valamint majd store az adatok az Azure Cosmos DB-be.
 
-Az Azure Cosmos DB egy globálisan elosztott, többmodelles adatbázis. Ebben a példában egy SQL API adatbázis modellt használja. További információkért lásd: a [Üdvözli az Azure Cosmos DB](../cosmos-db/introduction.md) dokumentumot.
+[Az Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) egy globálisan elosztott, többmodelles adatbázis. Ebben a példában egy SQL API adatbázis modellt használja. További információkért lásd: a [Üdvözli az Azure Cosmos DB](../cosmos-db/introduction.md) dokumentumot.
 
 A Spark strukturált stream egy Spark SQL-alapú streamfeldolgozó rendszer. Lehetővé teszi, hogy ugyanúgy fejezze ki a streamszámításokat, mint a kötegelt számításokat a statikus adatok esetében. A strukturált Streamelésről további információkért lásd: a [strukturált Streamelés programozási útmutató](https://spark.apache.org/docs/2.2.0/structured-streaming-programming-guide.html) az Apache.org webhelyen.
 
@@ -143,7 +143,7 @@ A dokumentum végpont és az elsődleges kulcsra az alábbi szöveghez hasonlít
 > [!IMPORTANT]
 > A végpont és a kulcs értékeit, mentse a Jupyter notebookok a szükség van rájuk.
 
-## <a name="get-the-kafka-brokers"></a>A Kafka-közvetítők beolvasása
+## <a name="get-the-apache-kafka-brokers"></a>Az Apache Kafka-közvetítőkhöz beolvasása
 
 Ebben a példában a kódot a Kafka-fürt Kafka-közvetítő gazdagépeire csatlakozik. A két Kafka-közvetítő gazdagép címét, használja a következő PowerShell- vagy Bash-példa:
 
@@ -201,12 +201,12 @@ A fájlok feltöltése után válassza ki a __Stream-i taxik-data-az-kafka.ipynb
 
 ## <a name="process-taxi-data-using-spark-structured-streaming"></a>Folyamat i taxik adatainak használata a Spark strukturált Stream
 
-A Jupyter Notebook kezdőlapján válassza ki a __Stream-data-from-Kafka-to-Cosmos-DB.ipynb__ bejegyzés. Kövesse a Notebookban lévő adatok kafka és Spark strukturált Stream használata Azure Cosmos DB-be.
+Az a [Jupyter Notebook](https://jupyter.org/) kezdőlapja, válassza ki a __Stream-data-from-Kafka-to-Cosmos-DB.ipynb__ bejegyzés. Kövesse a Notebookban lévő adatok kafka és Spark strukturált Stream használata Azure Cosmos DB-be.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte a Spark strukturált Stream használata, tekintse meg a következő dokumentumok tudhat meg többet a Spark, Kafka és Azure Cosmos DB használata:
+Most, hogy megtanulhatta, hogyan lehet Apache Spark strukturált Stream használatát, tekintse meg a következő dokumentumok tudhat meg többet az Apache Spark, az Apache Kafka és Azure Cosmos DB használata:
 
-* [Spark streamelés (DStream) használata a Kafkával](hdinsight-apache-spark-with-kafka.md).
-* [A Jupyter Notebook és a Spark on HDInsight használatának első lépései](spark/apache-spark-jupyter-spark-sql.md)
+* [Hogyan használható az Apache Spark Stream (DStream) az Apache kafka platformmal](hdinsight-apache-spark-with-kafka.md).
+* [A Jupyter Notebook és az Apache Spark on HDInsight kipróbálása](spark/apache-spark-jupyter-spark-sql.md)
 * [Üdvözli az Azure Cosmos DB](../cosmos-db/introduction.md)

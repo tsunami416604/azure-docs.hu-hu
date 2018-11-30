@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: d037c4fc65bc32ff183ddc7a8925cd2f51411ea0
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 41b9d295837d377df98208d43c9cd4699f380b86
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034626"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52494390"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>A HDInsight az Apache Hive- és Apache Hadoop használatával Twitter-adatok elemzése
 
-Ismerje meg, hogyan használhatja az Apache Hive folyamat Twitter-adatok. Ez a legtöbb tweeteket egy bizonyos szót tartalmazó küldő Twitter-felhasználók listája.
+Ismerje meg, hogyan használható [Apache Hive](https://hive.apache.org/) folyamat Twitter-adatok. Ez a legtöbb tweeteket egy bizonyos szót tartalmazó küldő Twitter-felhasználók listája.
 
 > [!IMPORTANT]
 > A jelen dokumentumban leírt lépések tesztelt, a HDInsight 3.6-ot.
@@ -37,11 +37,11 @@ Twitter lehetővé teszi, hogy az egyes tweetek adatainak betöltése a JavaScri
 
 3. Adja meg **neve**, **leírás**, **webhely**. Meghatározhat egy URL-címe be a **webhely** mező. Az alábbi táblázat néhány mintaértékeket használhatja:
 
-   | Mező | Value (Díj) |
+   | Mező | Érték |
    |:--- |:--- |
    | Name (Név) |MyHDInsightApp |
    | Leírás |MyHDInsightApp |
-   | Honlap |http://www.myhdinsightapp.com |
+   | Webhely |http://www.myhdinsightapp.com |
 
 4. Ellenőrizze **Igen, elfogadom**, és kattintson a **Twitter-alkalmazás létrehozása**.
 
@@ -182,7 +182,7 @@ Ezeket a parancsokat a fürt összes csomópontja által elérhető helyen táro
 
 ## <a name="run-the-hiveql-job"></a>A HiveQL-feladat futtatása
 
-1. A következő paranccsal hozzon létre egy fájlt, amely a HiveQL utasításokat tartalmazza:
+1. A következő paranccsal hozzon létre egy fájlt tartalmazó [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) utasításokat:
 
    ```bash
    nano twitter.hql
@@ -322,7 +322,7 @@ Ezeket a parancsokat a fürt összes csomópontja által elérhető helyen táro
 
 ## <a name="next-steps"></a>További lépések
 
-Megtanulhatta, hogyan alakíthat át egy strukturálatlan JSON adatkészletek strukturált Hive-táblába való. A HDInsight Hive kapcsolatos további információkért tekintse meg a következő dokumentumokat:
+Megtanulhatta, hogyan alakíthatja az strukturálatlan JSON-adatkészlet egy strukturált [Apache Hive](https://hive.apache.org/) tábla. A HDInsight Hive kapcsolatos további információkért tekintse meg a következő dokumentumokat:
 
 * [HDInsight – első lépések](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [HDInsight használatával repülőjáratok késési adatainak elemzése](hdinsight-analyze-flight-delay-data-linux.md)

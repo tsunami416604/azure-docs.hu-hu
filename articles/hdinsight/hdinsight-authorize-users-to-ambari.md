@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: 4e05d4ff9c090fac0242921e15ef16439d3ed27f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d2e7077e1196ab862d9f610f242fe30dde18ded4
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954449"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496875"
 ---
-# <a name="authorize-users-for-ambari-views"></a>Az Ambari Views használatának engedélyezése felhasználók számára
+# <a name="authorize-users-for-apache-ambari-views"></a>Az Apache Ambari Views használatának engedélyezése a felhasználók
 
-[Vállalati biztonsági csomag (ESP) engedélyezve van a HDInsight-fürtök](./domain-joined/apache-domain-joined-introduction.md) adja meg a nagyvállalati szintű funkciókat, beleértve az Azure Active Directory-alapú hitelesítés. Is [új felhasználók szinkronizálása](hdinsight-sync-aad-users-to-cluster.md) hozzá az Azure AD-csoportokat, amelyek adtak meg a fürthöz való hozzáférés lehetővé teszi adott felhasználók bizonyos műveletek elvégzéséhez. Felhasználók, csoportok és az Ambari az engedélyek használatának ESP HDInsight-fürtök és a standard szintű HDInsight-fürtök esetén támogatott.
+[Vállalati biztonsági csomag (ESP) engedélyezve van a HDInsight-fürtök](./domain-joined/apache-domain-joined-introduction.md) adja meg a nagyvállalati szintű funkciókat, beleértve az Azure Active Directory-alapú hitelesítés. Is [új felhasználók szinkronizálása](hdinsight-sync-aad-users-to-cluster.md) hozzá az Azure AD-csoportokat, amelyek adtak meg a fürthöz való hozzáférés lehetővé teszi adott felhasználók bizonyos műveletek elvégzéséhez. Felhasználók, csoportok és az engedélyek használata [Apache Ambari](https://ambari.apache.org/) ESP HDInsight-fürtök mind a standard szintű HDInsight-fürtök esetén támogatott.
 
-Active Directory-felhasználók a fürtcsomópontok tartományi hitelesítő adataik használatával jelentkezhet be. Tartományi hitelesítő adataik egyéb engedélyezett végpontokban, mint például a Hue, Ambari Views, ODBC, JDBC, PowerShell és REST API-k fürt interakció hitelesítéséhez szolgáltatást is alkalmazhatja.
+Active Directory-felhasználók a fürtcsomópontok tartományi hitelesítő adataik használatával jelentkezhet be. Egyéb engedélyezett végpontokban, például a fürt interakció hitelesítéshez tartományi hitelesítő adataik is használhatják [Hue](http://gethue.com/), Ambari Views, ODBC, JDBC, PowerShell és REST API-k.
 
 > [!WARNING]
 > Ne módosítsa a jelszavát a Linux-alapú HDInsight-fürt Ambari figyelő (hdinsightwatchdog). A jelszó módosítása működésképtelenné válik a parancsfájlműveletekkel vagy a fürt skálázási műveleteket végez.
@@ -29,13 +29,13 @@ Ha még nem tette meg, hajtsa végre a [ezek az utasítások](./domain-joined/ap
 
 ## <a name="access-the-ambari-management-page"></a>Az Ambari felügyeleti lap megnyitása
 
-Beolvasásához a **Ambari lapját** a a [az Ambari webes felhasználói felület](hdinsight-hadoop-manage-ambari.md), keresse meg a **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`**. Adja meg a fürt rendszergazdai felhasználónevet és jelszót, amelyet a fürt létrehozásakor megadott. Az Ambari irányítópultról majd **kezelése az Ambari** alá a **rendszergazdai** menüben:
+Beolvasásához a **Ambari lapját** a a [Apache Ambari webes Kezelőfelületen](hdinsight-hadoop-manage-ambari.md), keresse meg a **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`**. Adja meg a fürt rendszergazdai felhasználónevet és jelszót, amelyet a fürt létrehozásakor megadott. Az Ambari irányítópultról majd **kezelése az Ambari** alá a **rendszergazdai** menüben:
 
 ![Az Ambari kezelése](./media/hdinsight-authorize-users-to-ambari/manage-ambari.png)
 
-## <a name="grant-permissions-to-hive-views"></a>Engedélyek megadása a Hive-nézetek
+## <a name="grant-permissions-to-apache-hive-views"></a>Engedélyek megadása az Apache Hive-nézetek
 
-Az Ambari együttműködik a példányok megtekintése a Hive és a Tez, többek között. Legalább egy Hive-nézet példányok hozzáférést, lépjen a **Ambari lapját**.
+Példányok megtekintése az Ambari tartalmaz [Apache Hive](https://hive.apache.org/) és [Apache TEZ](https://tez.apache.org/), többek között. Legalább egy Hive-nézet példányok hozzáférést, lépjen a **Ambari lapját**.
 
 1. A kezelés lapon, válassza ki a **nézetek** hivatkozásra a **nézetek** a bal oldali menü fejlécének.
 
@@ -72,9 +72,9 @@ Az Ambari együttműködik a példányok megtekintése a Hive és a Tez, többek
 
 Felhasználók hozzáadása közvetlenül egy nézet akkor hasznos, ha szeretné engedélyek hozzárendelése a felhasználói számára, hogy a nézet, de szeretné, hogy egy további engedélyekkel rendelkező csoport tagjának lennie. Csökkentheti az adminisztratív terhelést, lehet egyszerűbb engedélyek hozzárendelése a csoportokhoz.
 
-## <a name="grant-permissions-to-tez-views"></a>Tez nézetekhez engedélyek megadása
+## <a name="grant-permissions-to-apache-tez-views"></a>Az Apache TEZ nézetekhez engedélyek megadása
 
-A példányok Tez megtekintése lehetővé teszik a felhasználók figyelése és az összes Tez-feladatok, a Hive-lekérdezések és a Pig-parancsfájlok által benyújtott hibakereséséhez. Van egy alapértelmezett Tez nézet példányt, amely a fürt létesítése jön létre.
+A [Apache TEZ](https://tez.apache.org/) példányok megtekintése engedélyezése a felhasználók figyelése és az összes Tez-feladatok, által küldött hibakereséséhez [Apache Hive](https://hive.apache.org/) lekérdezések és [Apache Pig](https://pig.apache.org/) parancsfájlokat. Van egy alapértelmezett Tez nézet példányt, amely a fürt létesítése jön létre.
 
 Felhasználók és csoportok hozzárendelése egy Tez nézet példányt, bontsa ki a **TEZ** sor a nézetek lapon korábban leírtak szerint.
 
@@ -136,7 +136,7 @@ Mi az Azure AD tartományi felhasználói "hiveuser2" rendelt hozzá a *fürt fe
 
 ## <a name="next-steps"></a>További lépések
 
-* [ESP a HDInsight Hive-házirendek konfigurálása](./domain-joined/apache-domain-joined-run-hive.md)
+* [ESP a HDInsight az Apache Hive-házirendek konfigurálása](./domain-joined/apache-domain-joined-run-hive.md)
 * [ESP HDInsight-fürtök kezelése](./domain-joined/apache-domain-joined-manage.md)
-* [A Hive-nézet használata a HDInsight Hadoop-keretrendszerrel](hadoop/apache-hadoop-use-hive-ambari-view.md)
+* [Az Apache Hive-nézet használata a HDInsight Apache Hadoop-keretrendszerrel](hadoop/apache-hadoop-use-hive-ambari-view.md)
 * [A fürt az Azure AD-felhasználók szinkronizálása](hdinsight-sync-aad-users-to-cluster.md)

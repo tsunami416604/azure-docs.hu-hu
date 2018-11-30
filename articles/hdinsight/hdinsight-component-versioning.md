@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: fca83090e6713e4360bd19d49c7fd6b9147fd6ea
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 2ae0450be420edeb4ef18d0c9e5ca6e1dacaf50d
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219732"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497013"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok az Apache Hadoop-összetevők és verziók a HDInsight?
 
-További tudnivalók az Apache Hadoop-ökoszisztéma összetevők és verziók a Microsoft Azure HDInsight, valamint a vállalati biztonsági csomag. Emellett ismerje meg a HDInsight Hadoop-összetevők verziók ellenőrzéséhez. 
+További információ a [Apache Hadoop](https://hadoop.apache.org/) ökoszisztéma összetevői és verziói a Microsoft Azure HDInsight, valamint a vállalati biztonsági csomag. Emellett ismerje meg a HDInsight Hadoop-összetevők verziók ellenőrzéséhez. 
 
 Minden egyes HDInsight felhőalapú terjesztése egy verziójának megfelelő Hortonworks Data Platform (HDP) verziószáma.
 
@@ -36,9 +36,9 @@ A HDInsight-fürt verziók-összetevő verzió az alábbi táblázatban láthat�
 | Hortonworks Data Platform |3.0 |2.6 |2.5 |2.4 |2.3 |2.2 |2.1.7 |2.0 |
 | Az Apache Hadoop és YARN |3.1.1 |2.7.3 |2.7.3 |2.7.1 |2.7.1 |2.6.0 |2.4.0 |2.2.0 |
 | Az Apache Tez |0.9.1 |0.7.0 |0.7.0 |0.7.0 |0.7.0 |0.5.2 |0.4.0 |-|
-| Az Apache Pig |0.16.0 |0.16.0 |0.16.0 |0.15.0 |0.15.0 |0.14.0 |0.12.1 |0.12.0 |
+| Apache Pig |0.16.0 |0.16.0 |0.16.0 |0.15.0 |0.15.0 |0.14.0 |0.12.1 |0.12.0 |
 | Az Apache Hive és HCatalog |-|1.2.1 |1.2.1 |1.2.1 |1.2.1 |0.14.0 |0.13.1 |0.12.0 |
-| Az Apache Hive |3.1.0 | 2.1.0 |-|-|-|-|-|-|
+| Apache Hive |3.1.0 | 2.1.0 |-|-|-|-|-|-|
 | Az Apache Tez Hive2 |-| 0.8.4 |-|-|-|-|-|-|
 | Apache Ranger |1.1.0 |0.7.0 |0.6.0 |-|-|-|-|-|
 | Apache HBase |2.0.1 |1.1.2 |1.1.2 |1.1.2 |1.1.1 |0.98.4 |0.98.0 |-|
@@ -47,18 +47,18 @@ A HDInsight-fürt verziók-összetevő verzió az alábbi táblázatban láthat�
 | Az Apache Zookeeper |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.5 |3.4.5 |
 | Apache Storm |1.2.1 |1.1.0 |1.0.1 |0.10.0 |0.10.0 |0.9.3 |0.9.1 |-|
 | Az Apache mahout használatával |-|0.9.0+ |0.9.0+ |0.9.0+ |0.9.0+ |0.9.0 |0.9.0 |-|
-| Az Apache Phoenixhez |5 |4.7.0 |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
+| Apache Phoenix |5 |4.7.0 |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
 | Apache Spark |2.3.1 |2.3.0-át, 2.2.0, 2.1.0 |1.6.2-es verzióján, 2.0-s |1.6.0-s |1.5.2 |1.3.1 (csak Windows) |-|-|
 | Az Apache Livy |0,5 |0.4 |0,3 |0,3 |0.2 |-|-|-|
 | Apache Kafka | 1.1 |1.1-es, 1.0-s, 0.10.1 | 0.10.0 | 0.9.0 |-|-|-|-|
 | Az Apache Ambari | 2.7.0 |2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 |-|-|-|
-| Az Apache Zeppelin | 0.8.0 |0.7.0 |-|-|-|-|-|-|
+| Apache Zeppelin | 0.8.0 |0.7.0 |-|-|-|-|-|-|
 | Mono |4.2.1 |4.2.1 |4.2.1 |3.2.8 |-|-|-|
 | Az Apache csúszka |-| 0.92.0 |-|-|-|-|-|-|
 
 ## <a name="check-for-current-hadoop-component-version-information"></a>Hadoop-összetevő verzióinformációkat aktuális keresése
 
-Társított fürtverziók HDInsight Hadoop-ökoszisztéma összetevő verziók a frissítések HDInsight módosíthatja. Ellenőrizze a Hadoop-összetevők, és ellenőrizze, hogy mely verziói vannak használatban a fürt, az Ambari REST API használata. A **GetComponentInformation** a paranccsal kérdezhető le információ a szolgáltatás-összetevők. További információkért lásd: a [Ambari dokumentáció][ambari-docs].
+Társított fürtverziók HDInsight Hadoop-ökoszisztéma összetevő verziók a frissítések HDInsight módosíthatja. Ellenőrizze a Hadoop-összetevők, és ellenőrizze, hogy mely verziói vannak használatban a fürt, az Ambari REST API használata. A **GetComponentInformation** a paranccsal kérdezhető le információ a szolgáltatás-összetevők. További információkért lásd: a [Apache Ambari dokumentáció][ambari-docs].
 
 Windows-fürtök másik módja, hogy az összetevők verziójának ellenőrzéséhez, hogy jelentkezzen be a fürthöz a távoli asztal használatával, és vizsgálja meg a C:\apps\dist\ könyvtár tartalmát.
 
@@ -117,8 +117,8 @@ Vállalati biztonsági csomag egy nem kötelező, amelyeket hozzáadhat a HDInsi
 
     További információkért lásd:
 
-    - [Hadoop-biztonság használatába a tartományhoz csatlakoztatott HDInsight-fürtök bemutatása](./domain-joined/apache-domain-joined-introduction.md)
-    - [Az Azure tartományhoz csatlakoztatott Hadoop-fürtök tervezése a HDInsight](./domain-joined/apache-domain-joined-architecture.md)
+    - [Apache Hadoop-biztonság használatába a tartományhoz csatlakoztatott HDInsight-fürtök bemutatása](./domain-joined/apache-domain-joined-introduction.md)
+    - [Az Azure-tartományhoz az Apache Hadoop-fürtök tervezése a HDInsight](./domain-joined/apache-domain-joined-architecture.md)
     - [Tartományhoz csatlakoztatott tesztkörnyezet konfigurálása](./domain-joined/apache-domain-joined-configure.md)
     - [Konfigurálja a tartományhoz csatlakoztatott HDInsight-fürtöket az Azure Active Directory Domain Services használatával](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)
 
@@ -129,7 +129,7 @@ Vállalati biztonsági csomag egy nem kötelező, amelyeket hozzáadhat a HDInsi
 
     További információkért lásd:
 
-    - [A tartományhoz csatlakoztatott HDInsight Hive-házirendek konfigurálása](./domain-joined/apache-domain-joined-run-hive.md)
+    - [Az Apache Hive-házirendek konfigurálása a tartományhoz csatlakoztatott HDInsight](./domain-joined/apache-domain-joined-run-hive.md)
 
 - A vizsgálati naplók és a figyelő hozzáfér a konfigurált szabályzatok megtekintése. 
 
@@ -151,7 +151,7 @@ A vállalati biztonsági csomag díjszabással és a szolgáltatásiszint-szerz�
 ## <a name="hdinsight-windows-retirement"></a>A windowsos HDInsight kivonása
 A Microsoft Azure HDInsight 3.3-as verziója lett a HDInsight, a Windows előző verzióját. A kivezetési dátum, a HDInsight, a Windows rendszer 2018. július 31-ig. Ha minden HDInsight-fürtök a Windows 3.3-as vagy korábbi, át kell telepítenie a Linux (HDInsight 3.5-ös vagy újabb verziójú) HDInsight előtt 2018. július 31-ig. A Linux OS-ba való migrálás lehetővé teszi lehetővé a létrehozása vagy a HDInsight-fürtök méretezése megőrzése. A HDInsight 3.3-as, a Windows verzió támogatása 2016. június 27-én lejárt.
 
-A HDInsight 3.4-es verziójú verziótól kezdődően a Microsoft közzétette a Linux operációs rendszer csak a HDInsight. Ennek eredményeképpen a HDInsight-összetevőinek néhány érhető el Linux rendszeren csak. Ezek közé tartozik az Apache Ranger, Kafka, interaktív lekérdezés, Spark, a HDInsight-alkalmazások, és az Azure Data Lake Store fájlrendszer elsődleges. A Linux operációs rendszer csak a HDInsight későbbi kiadásaiban érhetők el. Nem HDInsight, a Windows későbbi verzióiban lesz. 
+A HDInsight 3.4-es verziójú verziótól kezdődően a Microsoft közzétette a Linux operációs rendszer csak a HDInsight. Ennek eredményeképpen a HDInsight-összetevőinek néhány érhető el Linux rendszeren csak. Ezek közé tartozik a [Apache Ranger](https://ranger.apache.org/), [Apache Kafka](https://kafka.apache.org/), interaktív lekérdezés [Apache Spark](https://spark.apache.org/), HDInsight-alkalmazások és az Azure Data Lake Store fájlrendszer elsődleges. A Linux operációs rendszer csak a HDInsight későbbi kiadásaiban érhetők el. Nem HDInsight, a Windows későbbi verzióiban lesz. 
 
 ## <a name="faqs"></a>Gyakori kérdések
 
@@ -264,8 +264,8 @@ Az alábbi táblázatok sorolják fel a HDInsight-fürtök esetében az alapért
 > - Feldolgozó néven *régió* a hbase-fürt típusa.
 
 ## <a name="next-steps"></a>További lépések
-- [A telepítő a Hadoop, Spark- és a HDInsight-fürt](hdinsight-hadoop-provision-linux-clusters.md)
-- [Hadoop on HDInsight az olyan Windows PC-s verziójában](hdinsight-hadoop-windows-tools.md)
+- [A telepítő az Apache Hadoop, Spark- és a HDInsight-fürt](hdinsight-hadoop-provision-linux-clusters.md)
+- [Apache Hadoop on HDInsight, a Windows PC-s verziójában](hdinsight-hadoop-windows-tools.md)
 
 [Supported HDInsight versions]:(#supported-hdinsight-versions)
 

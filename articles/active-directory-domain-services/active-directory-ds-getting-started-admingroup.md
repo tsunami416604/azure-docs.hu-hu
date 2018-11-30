@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/23/2018
+ms.date: 11/27/2018
 ms.author: ergreenl
-ms.openlocfilehash: 0dc4019d2b3f33bfc92d73aeadadc0c64ecaab3b
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: cac1814057b5adbb75d9484b332bd3f8aaa31a18
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158516"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446858"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Engedélyezze az Active Directory Domain Servicest az Azure portal használatával
 
@@ -42,6 +42,22 @@ A varázsló automatikusan létrehozza a felügyeleti csoport az Azure AD-címt�
 
 3. Amikor elkészült, kattintson a **OK** a áthelyezése a **összegzése** lapján.
 
+## <a name="configure-synchronization"></a>A szinkronizálás konfigurálása
+
+Az Azure AD Domain Services lehetővé teszi, hogy minden felhasználó és csoport az Azure ad-ben elérhető vagy teljes szinkronizálását, vagy kiválaszthatja a hatókörön belüli szinkronizálás csak az adott csoportok szinkronizálásához. Ha úgy dönt, hogy a teljes szinkronizálás, akkor lesz **nem** tudni válassza ki a hatókörrel rendelkező szinkronizálási egy későbbi időpontban. Hatókörrel rendelkező szinkronizálási kapcsolatos további információkért látogasson el a [Azure AD tartományi szolgáltatások hatókörrel rendelkező szinkronizálási cikk](active-directory-ds-scoped-synchronization.md).
+
+### <a name="full-synchronization"></a>Teljes szinkronizálás
+
+1. A teljes szinkronizálást, egyszerűen kattintson "OK gombra" a képernyő alján, a teljes már választja.
+    ![Teljes szinkronizálás](./media\active-directory-domain-services-admin-guide\create-sync-all.PNG)
+
+### <a name="scoped-synchronization"></a>Hatókörön belüli szinkronizálás
+
+1. Váltógomb a Szinkronizálás gombra "Lapszintű", és válassza ki a csoportokat oldal jelenik meg. Ez alapján láthatja, milyen csoportokra kell szinkronizálni a felügyelt tartomány már vannak kijelölve.
+    ![Hatókörön belüli szinkronizálás](media\active-directory-domain-services-admin-guide\create-sync-scoped.PNG)
+2. Kattintson a **válassza ki a csoportokat** a felső navigációs sávban. Itt egy csoport kiválasztása az oldalon jelenik meg. Ennek segítségével válassza ki minden olyan további csoportok szinkronizálása az Azure AD tartományi szolgáltatásokra. Ha befejezte, kattintson a **kiválasztása** zárja be a csoport választóra, és adja hozzá ezeket a csoportokat a kijelölt listához.
+    ![Hatókörrel rendelkező szinkronizálási csoportok kiválasztása](media\active-directory-domain-services-admin-guide\create-sync-scoped-groupselect.PNG)
+3. Kattintson a **OK** áthelyezése az összefoglalás lapon.
 
 ## <a name="deploy-your-managed-domain"></a>A felügyelt tartomány üzembe helyezése
 

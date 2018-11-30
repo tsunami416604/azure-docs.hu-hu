@@ -5,17 +5,17 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 09/01/2018
+ms.date: 11/27/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 372670a482ec984fcc9bd9c28ca3a8625e959a77
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 393b90395698c18fdbd4fc8ba4d8bc79bd6287be
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320662"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495181"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication beszerzése
 
@@ -36,7 +36,7 @@ A következő táblázat ismerteti a multi-factor authentication szolgáltatás 
 | Azure Multi-Factor Authentication | A "teljes" verziója más néven, az Azure multi-factor Authentication a képességek richest készletét kínálja. Elérhető további konfigurációs lehetőségeket biztosít a [az Azure portal](https://portal.azure.com), speciális jelentéskészítés és a helyszíni széles körű támogatása és a felhőbeli alkalmazásokhoz. Az Azure multi-factor Authentication csak a [Azure Active Directory Premium](https://www.microsoft.com/cloud-platform/azure-active-directory-features), és is üzembe helyezhetők a felhőben vagy a helyszínen. |
 
 > [!NOTE]
-> Új ügyfeleket már nem vásárolhat Azure multi-factor Authentication kínál hatékony 1-től, 2018 szeptember önálló. A multi-factor authentication továbbra is egy elérhető funkciónak az Azure AD Premium-licencet.
+> Új ügyfeleket már nem vásárolhat Azure multi-factor Authentication kínál hatékony 1-től, 2018 szeptember önálló. A multi-factor authentication továbbra is elérhető az Azure AD Premium-licencet.
 
 ## <a name="feature-comparison-of-versions"></a>Verzió szolgáltatásainak összehasonlítása
 
@@ -63,14 +63,13 @@ Az alábbi táblázat az Azure multi-factor Authentication szolgáltatás külö
 | Egyéni Hívóazonosító a telefonhívásokhoz | | |● |
 | Megbízható IP-címek | | |● |
 | MFA megjegyzése megbízható eszközökön |● |● |● |
-| MFA SDK | | |● (elavult) | 
 | MFA helyszíni alkalmazások | | |● |
 
 ## <a name="how-to-turn-on-azure-multi-factor-authentication-for-azure-ad-administrators"></a>Az Azure AD-rendszergazdák az Azure multi-factor Authentication bekapcsolása
 
 Az Azure AD-bérlő globális rendszergazdai szerepkörrel rendelkező engedélyezheti a kétlépéses ellenőrzést, az Azure AD globális rendszergazdai fiókok további költségek nélkül. Ha Microsoft-Account használ, a multi-factor authentication a Microsoft fiók támogatási cikkben található útmutató segítségével regisztrálhatja [tudnivalók a kétlépéses ellenőrzés](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification). Ha nem használ egy Microsoft-Account, kapcsolja be a többtényezős hitelesítést a globális rendszergazdák, a cikkben található útmutató segítségével [igénylése a kétlépéses ellenőrzés egy felhasználó vagy csoport](howto-mfa-userstates.md).
 
-## <a name="how-to-get-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication beszerzése
+## <a name="how-to-purchase-azure-multi-factor-authentication"></a>Hogyan vásárolhatja meg az Azure multi-factor Authentication
 
 Ha szeretné, hogy az Azure multi-factor Authentication által kínált összes funkcióját, több lehetőség van:
 
@@ -78,14 +77,11 @@ Ha szeretné, hogy az Azure multi-factor Authentication által kínált összes 
 
 Azure multi-factor Authentication, például az Azure Active Directory Premium vagy egy licenc-csomagot, amely tartalmazza az Azure AD Premium-licencek vásárlása, és hozzárendelheti azokat a felhasználókat az Azure Active Directoryban.
 
-Ha ezt a beállítást használja, létre kell hoznia az Azure multi-factor Authentication-szolgáltatót, csak ha is meg kell adnia a kétlépéses ellenőrzést, amelyek nem rendelkeznek licenccel az egyes felhasználók számára. Ellenkező esetben esetén előfordulhat, hogy után kell díjat kétszer.
-
 ### <a name="option-2---mfa-consumption-based-model"></a>2. módszer: MFA fogyasztásalapú díjcsomagban
 
-> [!NOTE]
-> Hatékony 2018. szeptember 1-től. új auth-szolgáltatók többé nem hozható létre. Meglévő hitelesítésszolgáltatók előfordulhat, hogy továbbra is használja, és frissítve. A multi-factor authentication továbbra is egy elérhető funkciónak az Azure AD Premium-licencet.
+Ez a beállítás már nem érhető el az új ügyfelek számára hatékony 2018. szeptember 1.
 
-Hozzon létre Azure multi-factor Authentication-szolgáltatót egy Azure-előfizetésen belül. Az Azure MFA-szolgáltatók a következők: Azure-erőforrások, amelyek a nagyvállalati szerződéssel, Azure-ra vonatkozó pénzügyi kötelezettségvállalás vagy hitelkártyára, mint minden más Azure-erőforrás terhelve. Ezek a szolgáltatók csak a teljes körű Azure-előfizetések, nem korlátozott Azure-előfizetések rendelkezik egy 0 USD költségkeret hozható létre. Korlátozott előfizetések licenceket, például a beállítások 1 aktiválása során jönnek létre.
+Hatékony 2018. szeptember 1-től. új auth-szolgáltatók többé nem hozható létre. Meglévő hitelesítésszolgáltatók előfordulhat, hogy továbbra is használja, és frissítve. A multi-factor authentication továbbra is egy elérhető funkciónak az Azure AD Premium-licencet.
 
 Azure multi-factor Authentication-szolgáltatót használ, ha van elérhető az Azure-előfizetés díjszabása vonatkozik, amely két használati modellekről:
 
