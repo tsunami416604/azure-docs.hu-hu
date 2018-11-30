@@ -1,6 +1,6 @@
 ---
-title: Hogyan kell delegálni a felhasználói regisztráció és a termék-előfizetéshez
-description: Tudnivalók a felhasználói regisztráció és a termék előfizetés harmadik félnek az Azure API Management delegálása.
+title: Annak a felhasználói és termékelőfizetés delegálása
+description: Ismerje meg, hogyan delegálhat felhasználói és termékelőfizetés harmadik félnek az Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,123 +14,125 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: ab5d6c531b08a13d465811d68a07e07e9fb0167c
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: f0050a91ca8ed380c838c96cf1e485a80a0c9297
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109460"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445395"
 ---
-# <a name="how-to-delegate-user-registration-and-product-subscription"></a>Hogyan kell delegálni a felhasználói regisztráció és a termék-előfizetéshez
-Delegálás lehetővé teszi a meglévő webhely használatát fejlesztői bejelentkezési-a/regisztrációs és termékek a fejlesztői portálra beépített funkcióval szemben-előfizetés kezeléséhez. Ez lehetővé teszi, hogy a webhely tulajdonosai a felhasználó adatait, és hajtsa végre az alábbi lépéseket az érvényesítés egy egyedi módon.
+# <a name="how-to-delegate-user-registration-and-product-subscription"></a>Annak a felhasználói és termékelőfizetés delegálása
+Delegálás lehetővé teszi, hogy a meglévő webhely fejlesztői sign-a vagy a regisztráláshoz és a termékekre a fejlesztői portál beépített funkciójával figyelésekor előfizetés kezelésére. Ez lehetővé teszi a felhasználói adatokat, és hajtsa végre az alábbi lépéseket az érvényesítés egyéni módon webhelyét.
 
-## <a name="delegate-signin-up"> </a>Fejlesztői sign in és regisztrációs delegálása
-Delegálása fejlesztői bejelentkezési és regisztrációs meglévő webhelyéhez, szüksége lesz különleges delegálás-végpont létrehozása a webhely, amely különbséglemezként funkcionál az API Management developer portálról kezdeményezett kérelem belépési pontját.
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-A végső munkafolyamat a következők:
+## <a name="delegate-signin-up"> </a>Fejlesztői regisztrációs és regisztráció delegálása
+Fejlesztői be- és a meglévő webhely-előfizetés delegálása, szüksége lesz a helyen, az API Management fejlesztői portálon kezdeményezett kérelem számára belépési-pontként szolgáló speciális delegálási végpont létrehozásához.
 
-1. Fejlesztői gombra kell kattintania a bejelentkezési és regisztrációs hivatkozásra, az API Management fejlesztői portálján
-2. Böngésző átirányítja a delegálás végpont
-3. Delegálás végpont ismét átirányítja a felhasználókat a, vagy megadja a felhasználói Felületet kérni a felhasználói bejelentkezés az előfizetési
-4. A sikeres, a felhasználót a rendszer átirányítja az API Management developer portálon oldalra azok indította el
+A végső munkafolyamat a következő lesz:
 
-Első lépésként most irányíthatja az első telepítés API Management kérelmek delegálás végpontot keresztül. Az API Management publisher portálon, kattintson a **biztonsági** , majd a **delegálás** fülre. Kattintson a "Delegált bejelentkezési és regisztrációs" engedélyezése jelölőnégyzet.
+1. Fejlesztői kattint a bejelentkezési vagy regisztrációs látható kapcsolat hivatkozásra, az API Management fejlesztői portálon
+2. Böngésző átirányítja a delegálási végpont
+3. A delegálási végpont cserébe átirányítja a felhasználót, vagy megadja a felhasználói felület arra kéri a felhasználót az vagy egy előfizetés-kezelő
+4. Sikeres, a rendszer átirányítja a felhasználót vissza az API Management fejlesztői portál oldala ezek a lépések
 
-![Delegálási lapra][api-management-delegation-signin-up]
+Első lépésként hozzunk első beállítása az API Management irányíthatja a kérelmeket a delegálási végpont. Az API Management közzétevői portál, kattintson a **biztonsági** és kattintson a **delegálás** fülre. Kattintson a "Bejelentkezés és regisztráció delegálása" engedélyezése jelölőnégyzet bejelölésével.
 
-* Döntse el, mi a különleges delegálás végpont URL-CÍMÉT a rendszer, majd adja meg a legyen a **delegálás végponti URL-cím** mező. 
-* Delegálás hitelesítési kulcs mezőjében győződjön meg arról, hogy a kérelem valóban származik Azure API Management-ellenőrzés az Ön számára biztosított aláírás kiszámításához használt titkos kulcs megadása Kattintson a **készítése** véletlenszerű előállításához a kulcs akkor API Management gomb.
+![Delegálás lap][api-management-delegation-signin-up]
 
-Most kell létrehoznia a **delegálás végpont**. Van több műveletet végrehajtani:
+* Döntse el, mi a speciális delegálási végpont URL-címe lesz kell, és írja be a a **delegálási végpont URL-címe** mező. 
+* A delegálás-hitelesítési kulcs mező adja meg egy titkos kulcsot, győződjön meg arról, hogy a kérelem valóban érkezik az Azure API Management-ellenőrzés az Ön számára biztosított aláírás kiszámításához használandó. Kattintson a **készítése** gombbal véletlenszerűen hozzon létre egy kulcsot, az API Management rendelkezik.
 
-1. A kérés fogadásához a következő formában:
+Most szeretne létrehozni a **delegálási végpont**. Számos művelet végrehajtásához rendelkezik:
+
+1. Kap egy kérelmet a következő formátumban:
    
-   > *http://www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL forrás lap} & védőérték = {karakterlánc} & sig = {karakterlánc}*
+   > *http://www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL forrás lap} & só = {string} & sig = {string}*
    > 
    > 
    
-    A bejelentkezés paramétereinek lekérdezése / eset regisztráció:
+    Lekérdezési paraméterek a bejelentkezési / eset regisztráció:
    
-   * **a művelet**: delegálás kérés – csak azok milyen típusú azonosítja **SignIn** ebben az esetben
-   * **returnUrl**: a lap, ahol a felhasználó egy bejelentkezési vagy előfizetési hivatkozásra kattint az URL-cím
-   * **védőérték**: biztonsági kivonatát kiszámításához használt különleges védőérték karakterlánc
-   * **SIG**: összehasonlítása a saját használandó számított biztonsági kivonatát számított kivonata
-2. Győződjön meg arról, hogy a kérelem érkezik Azure API Management (nem kötelező, de erősen ajánlott a biztonság)
+   * **a művelet**: azonosítja a delegálás kérelem – csak azok milyen típusú **bejelentkezési** ebben az esetben
+   * **returnUrl**: az URL-címe a lap, ahol a felhasználó egy bejelentkezési vagy regisztrációs hivatkozást kattintottak
+   * **védőérték**: egy speciális védőérték karakterlánc, amellyel biztonsági kivonatok
+   * **SIG**: összehasonlítás a saját használandó számított biztonsági kivonatot kiszámított kivonat
+2. Győződjön meg arról, hogy a kérés érkezik az Azure API Management (nem kötelező, de erősen ajánlott a biztonság)
    
-   * Egy olyan karakterlánc alapján HMAC-SHA512 kivonatának számítási a **returnUrl** és **védőérték** lekérdezési paramétert ([alábbi példakód]):
+   * COMPUTE-HMAC-SHA512 kivonata alapján karakterláncot a **returnUrl** és **védőérték** lekérdezési paramétert ([alábbi példakód]):
      
-     > HMAC (**védőérték** + "\n" + **returnUrl**)
+     > HMAC-val (**védőérték** + "\n" + **returnUrl**)
      > 
      > 
-   * A fenti számított kivonat értékének összehasonlítása a **sig** lekérdezési paraméter. Ha a két kivonatok megegyeznek, lépjen tovább a következő lépés, egyébként visszautasítja a kérelmet.
-3. Győződjön meg arról, hogy fordulnak elő a bejelentkezési/sign up kérelmet: a **művelet** úgy lesz beállítva, lekérdezési paraméter "**SignIn**".
-4. A felhasználó bevezetését a bejelentkezési, regisztrációs vagy a felhasználói felületen
-5. Ha a felhasználó regisztrált kell létrehoznia a megfelelő fiókkal számukra az API Management. [Hozzon létre egy felhasználót] API Management REST API-val. Annak során, győződjön meg arról, hogy állítsa a felhasználói Azonosítóját, ugyanaz a felhasználókhoz tartozó tárolóban van, vagy egy azonosító, akkor is nyomon követésére szolgáló.
-6. Amikor a rendszer sikeresen hitelesíteni a felhasználót:
+   * Hasonlítsa össze a fenti kiszámított kivonat értékéhez a **sig** lekérdezési paraméter. Ha a két kivonatok megegyeznek, léphet tovább a következő lépéssel, ellenkező esetben visszautasítja a kérelmüket.
+3. Győződjön meg arról, hogy kap egy kérelmet a bejelentkezési/sign up: a **művelet** értékre lesz beállítva a lekérdezési paraméter "**bejelentkezési**".
+4. Felhasználói felületének a felhasználók bemutatásához a bejelentkezéshez vagy a regisztráció
+5. Ha a felhasználó regisztrál akkor hozzon létre egy megfelelő fiókot a számukra az API Management szolgáltatásban. [Felhasználó létrehozása] az API Management REST API-val. Ebben, győződjön meg arról, hogy ugyanaz a felhasználó áruházban, vagy egy Azonosítót, amely akkor is nyomon követheti, állítsa a felhasználói azonosító.
+6. Amikor a felhasználó sikeres hitelesítése:
    
-   * [egyszeri bejelentkezéses (SSO) jogkivonatot kérelem] az API Management REST API-n keresztül
-   * egy returnUrl lekérdezési paraméter hozzáfűzése fent API-hívás kapott egyszeri bejelentkezési URL-címe:
+   * [egyszeri bejelentkezéses (SSO) jogkivonat kérése] az API Management REST API-val
+   * lekérdezés returnUrl paraméter hozzáfűzése a fent az API-hívás kapott egyszeri bejelentkezési URL-címe:
      
-     > Például https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
+     > Ha például https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
      > 
      > 
-   * a fenti létrehozott URL-címet átirányítja a felhasználót
+   * a fenti előállított URL-címet átirányítja a felhasználót
 
-Kívül a **SignIn** művelet is végrehajthat felhasználóifiók-kezelés az előző lépések és a következő műveletek egyikével:
+Mellett a **bejelentkezési** művelet is elvégezheti felhasználóifiók-kezelés az előző lépések mentén, és a következő műveletek valamelyikének használatával:
 
 * **ChangePassword**
 * **ChangeProfile**
 * **CloseAccount**
 
-Át kell adnia a következő lekérdezés-paraméterek a fiókkezelési műveletekhez.
+Fiókkezelési műveletek a lekérdezési paraméterek meg kell felelnie.
 
-* **a művelet**: azonosítja (a ChangePassword, ChangeProfile vagy CloseAccount) delegálás kérelem típusa
-* **userId**: a fiók kezeléséhez a felhasználói azonosító
-* **védőérték**: biztonsági kivonatát kiszámításához használt különleges védőérték karakterlánc
-* **SIG**: összehasonlítása a saját használandó számított biztonsági kivonatát számított kivonata
+* **a művelet**: azonosítja, milyen típusú delegálás kérelem (ChangePassword, ChangeProfile vagy CloseAccount)
+* **felhasználói azonosító**: a felhasználói azonosító, a fiók kezelése
+* **védőérték**: egy speciális védőérték karakterlánc, amellyel biztonsági kivonatok
+* **SIG**: összehasonlítás a saját használandó számított biztonsági kivonatot kiszámított kivonat
 
-## <a name="delegate-product-subscription"> </a>A termék-előfizetéshez delegálása
-Termék-előfizetéshez delegálása működik, hasonlóképpen delegálása a felhasználói bejelentkezés/felfelé. A végső munkafolyamata a következőképpen nézne ki:
+## <a name="delegate-product-subscription"> </a>Termék-előfizetés delegálása
+Termék-előfizetés delegálása működik, és hasonlóképpen delegálása felhasználói bejelentkezési/felfelé. A végső munkafolyamat a következő lenne:
 
-1. Fejlesztői termék kiválasztása az API Management developer portálon, és az előfizetés gombra kattint
-2. Böngésző átirányítja a delegálás végpont
-3. Delegálás endpoint szükséges termék előfizetés lépéseket végzi el – ez Öntől, és kérje a számlázási adatokat, további kérdések vagy az információk tárolásának és felhasználói beavatkozást nem igénylő másik lapra irányít át járhat
+1. Fejlesztői termék kiválasztása az API Management fejlesztői portálon, és a feliratkozás gombra kattint
+2. Böngésző átirányítja a delegálási végpont
+3. A delegálási végpont szükséges termék-előfizetés lépést hajt végre – ez Öntől és járhat átirányítása egy másik lapot a számlázási adatokat, további kérdések vagy az információk tárolásának és nem igényelnek felhasználói beavatkozás igénylése
 
-A funkció engedélyezéséhez kattintson a **delegálás** kattintson **delegálja a termék-előfizetéshez**.
+A funkció engedélyezéséhez kattintson a **delegálás** lapon kattintson **termék-előfizetés delegálása**.
 
-Gondoskodnia kell a delegálás végpont a következő műveleteket hajtja végre:
+Győződjön meg, hogy a delegálási végpont a következő műveleteket hajtja végre:
 
-1. A kérés fogadásához a következő formában:
+1. Kap egy kérelmet a következő formátumban:
    
-   > *http://www.yourwebsite.com/apimdelegation?operation={operation}&productId={product előfizetés} & userId = {a felhasználó kérést} & védőérték = {karakterlánc} & sig = {karakterlánc}*
+   > *http://www.yourwebsite.com/apimdelegation?operation={operation}&productId={product előfizetés a riasztásoktól} & userId = {a felhasználó kérést} & só = {string} & sig = {string}*
    > 
    > 
    
-    Lekérdezés-paraméterek a termék-előfizetéshez eset:
+    Lekérdezési paraméterek a termék-előfizetés esethez:
    
-   * **a művelet**: azonosítja a delegálás kérelem milyen típusú legyen. A termék-előfizetéshez tartozó kérelmek érvényes lehetőségek a következők:
-     * "Előfizetés": egy kérelem a felhasználó számára az adott termék előfizetni a megadott azonosító (lásd alább)
-     * "Leiratkozhat": egy kérelem egy felhasználó egy terméket mondhatja
-     * "Megújítása": egy kérelem (például, amely lejár a is) egy előfizetés megújításához
-   * **productId**: a felhasználó azt kérte előfizetni a termék Azonosítóját
-   * **userId**: a felhasználó, akinek a kérelem azonosítója
-   * **védőérték**: biztonsági kivonatát kiszámításához használt különleges védőérték karakterlánc
-   * **SIG**: összehasonlítása a saját használandó számított biztonsági kivonatát számított kivonata
-2. Győződjön meg arról, hogy a kérelem érkezik Azure API Management (nem kötelező, de erősen ajánlott a biztonság)
+   * **a művelet**: azonosítja a delegálás kérelem milyen típusú legyen. Termék-előfizetés kérések az érvényes beállítások a következők:
+     * "Előfizetés": egy kérelmet a felhasználó számára egy adott termék-előfizetés megadott azonosítója (lásd alább)
+     * "Ez az előfizetés lemondása": a felhasználó a termékből leiratkozás irányuló kérelem
+     * "Megújítása": (például, hogy előfordulhat, hogy lehet lejár) előfizetés megújításának kéréséhez
+   * **Termékazonosító**: a felhasználó azt kérte, iratkozzon fel a termék azonosítója
+   * **felhasználói azonosító**: a felhasználó, akinek a kérés azonosítója.
+   * **védőérték**: egy speciális védőérték karakterlánc, amellyel biztonsági kivonatok
+   * **SIG**: összehasonlítás a saját használandó számított biztonsági kivonatot kiszámított kivonat
+2. Győződjön meg arról, hogy a kérés érkezik az Azure API Management (nem kötelező, de erősen ajánlott a biztonság)
    
-   * Egy olyan karakterlánc alapján HMAC-SHA512 számítási a **productId**, ** felhasználói azonosítóját, és **védőérték** lekérdezési paramétert:
+   * COMPUTE-HMAC-SHA512 egy karakterlánc alapján a **productId**, ** userId, és **védőérték** lekérdezési paramétert:
      
-     > HMAC (**védőérték** + "\n" + **productId** + "\n" + **userId**)
+     > HMAC-val (**védőérték** + "\n" + **productId** + "\n" + **userId**)
      > 
      > 
-   * A fenti számított kivonat értékének összehasonlítása a **sig** lekérdezési paraméter. Ha a két kivonatok megegyeznek, lépjen tovább a következő lépés, egyébként visszautasítja a kérelmet.
-3. Hajtsa végre a kért művelet típusa alapján bármely termék feldolgozási **művelet** – például számlázási, további kérdésekre, stb.
-4. Sikeresen előfizetés a felhasználót, hogy a termék a oldalon, az előfizetés a felhasználó által az API Management termékre [a REST API felület meghívásakor termék-előfizetéshez].
+   * Hasonlítsa össze a fenti kiszámított kivonat értékéhez a **sig** lekérdezési paraméter. Ha a két kivonatok megegyeznek, léphet tovább a következő lépéssel, ellenkező esetben visszautasítja a kérelmüket.
+3. Hajtsa végre a kért művelet típusa alapján bármely termék feldolgozási **művelet** – például számlázás, további kérdéseket, és így tovább.
+4. Sikeresen megtörtént a felhasználó feliratkoztatása a saját rendszerében a termék, a Feliratkozás a felhasználó által az API Management-termékhez [a REST API hívásának a termék-előfizetés].
 
-## <a name="delegate-example-code"> </a> Mintakód
-Ezek mintakódok bemutatják, hogyan érvénybe a *delegálás érvényesítési kulcs*, melynek értéke a közzétevő portál delegálás képernyőjén hozzon létre egy HMAC, amit a aláírás érvényesítéséhez, igazolására az átadott érvényességét returnUrl. A termékkód és a felhasználói azonosítóját, enyhe módosítással működik ugyanazt a kódot.
+## <a name="delegate-example-code"> </a> Példakód
+Ezek Kódminták mutatják érvénybe a *delegálás érvényesítési kulcsa*, amelynek beállítása a delegálás képernyőjén a közzétevő portálon hozzon létre egy HMAC-val, majd használt érvényesíteni az aláírást, az átadott érvényességét igazolására returnUrl. Ugyanazt a kódot a productId és a felhasználói azonosító enyhe módosítással működik.
 
-**C#-kódban returnUrl kivonatának létrehozásához**
+**C#kód létrehozásához returnUrl kivonata**
 
 ```csharp
 using System.Security.Cryptography;
@@ -147,7 +149,7 @@ using (var encoder = new HMACSHA512(Convert.FromBase64String(key)))
 }
 ```
 
-**NodeJS kód returnUrl kivonatának létrehozásához**
+**NodeJS-kód készítése returnUrl kivonata**
 
 ```
 var crypto = require('crypto');
@@ -165,7 +167,7 @@ var signature = digest.toString('base64');
 ```
 
 ## <a name="next-steps"></a>További lépések
-Delegálás további információkért tekintse meg a következő videót:
+A delegálás további információkért tekintse meg a következő videót:
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Delegating-User-Authentication-and-Product-Subscription-to-a-3rd-Party-Site/player]
 > 
@@ -173,9 +175,9 @@ Delegálás további információkért tekintse meg a következő videót:
 
 [Delegating developer sign-in and sign-up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
-[egyszeri bejelentkezéses (SSO) jogkivonatot kérelem]: https://docs.microsoft.com/rest/api/apimanagement/User/GenerateSsoUrl
-[Hozzon létre egy felhasználót]: https://docs.microsoft.com/rest/api/apimanagement/user/createorupdate
-[a REST API felület meghívásakor termék-előfizetéshez]: https://docs.microsoft.com/rest/api/apimanagement/productsubscriptions
+[egyszeri bejelentkezéses (SSO) jogkivonat kérése]: https://docs.microsoft.com/rest/api/apimanagement/User/GenerateSsoUrl
+[Felhasználó létrehozása]: https://docs.microsoft.com/rest/api/apimanagement/user/createorupdate
+[a REST API hívásának a termék-előfizetés]: https://docs.microsoft.com/rest/api/apimanagement/productsubscriptions
 [Next steps]: #next-steps
 [alábbi példakód]: #delegate-example-code
 

@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
-ms.openlocfilehash: cdc6e082207b9128be3e3005305510f3ee493850
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 0cb75c1acb731432ed524560698e3355699b2500
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427841"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422082"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>Hogyan lehet E-mail küldése a SendGrid, a Java használatával
 Ez az útmutató bemutatja, hogyan hajthat végre gyakori programozási feladatokat, a SendGrid e-mail szolgáltatással az Azure-ban. A minták Java nyelven íródtak. Az ismertetett forgatókönyvek között megtalálható **hozhat létre, amely e-mailek**, **e-mail-küldési**, **mellékletek hozzáadása**, **ezekkel a szűrőkkel**, és **tulajdonságainak frissítése**. A SendGrid és az e-mailt küld a további információkért lásd: a [további lépések](#next-steps) szakaszban.
@@ -34,13 +34,13 @@ A SendGrid van egy [e-mail felhő alapú szolgáltatás] , amely megbízható bi
 * Továbbítás vásárlói kapcsolatos kérdésekben
 * E-mail-értesítések az alkalmazásból
 
-További információkért lásd: <http://sendgrid.com>.
+További információkért lásd: <https://sendgrid.com>.
 
 ## <a name="create-a-sendgrid-account"></a>A SendGrid-fiók létrehozása
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
 ## <a name="how-to-use-the-javaxmail-libraries"></a>Hogyan: javax.mail könyvtárak
-Szerezze be a javax.mail kódtárakat, például <http://www.oracle.com/technetwork/java/javamail> , és importálja őket a kód. Egy magas szintű, az SMTP használatával történő levélküldéshez a javax.mail kódtár használatával történik, tegye a következőket:
+Szerezze be a javax.mail kódtárakat, például <https://www.oracle.com/technetwork/java/javamail> , és importálja őket a kód. Egy magas szintű, az SMTP használatával történő levélküldéshez a javax.mail kódtár használatával történik, tegye a következőket:
 
 1. Adja meg az SMTP-értékeket, többek között az SMTP-kiszolgáló, amely a SendGrid smtp.sendgrid.net.
 
@@ -184,13 +184,13 @@ Most, hogy megismerte az alapokat, a SendGrid E-mail szolgáltatás, kövesse az
 * A SendGrid API-dokumentáció: <https://sendgrid.com/docs/API_Reference/index.html>
 * A SendGrid a különleges ajánlat Azure-ügyfelek számára: <https://sendgrid.com/windowsazure.html>
 
-[http://sendgrid.com]: https://sendgrid.com
-[http://sendgrid.com/pricing.html]: http://sendgrid.com/pricing.html
+[https://sendgrid.com]: https://sendgrid.com
+[https://sendgrid.com/pricing.html]: https://sendgrid.com/pricing.html
 [http://www.sendgrid.com/azure.html]: https://www.sendgrid.com/windowsazure.html
-[http://sendgrid.com/features]: https://sendgrid.com/features
-[http://www.oracle.com/technetwork/java/javamail]: http://www.oracle.com/technetwork/java/javamail/index.html
+[https://sendgrid.com/features]: https://sendgrid.com/features
+[https://www.oracle.com/technetwork/java/javamail]: https://www.oracle.com/technetwork/java/javamail/index.html
 [Filter Settings]: https://sendgrid.com/docs/API_Reference/Web_API/filter_settings.html
 [SendGrid API documentation]: https://sendgrid.com/docs/API_Reference/index.html
-[http://sendgrid.com/azure.html]: https://sendgrid.com/windowsazure.html
+[https://sendgrid.com/azure.html]: https://sendgrid.com/windowsazure.html
 [e-mail felhő alapú szolgáltatás]: https://sendgrid.com/email-solutions
 [tranzakciós e-mail kézbesítési]: https://sendgrid.com/transactional-email

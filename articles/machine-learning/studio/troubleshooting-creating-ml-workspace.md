@@ -1,6 +1,6 @@
 ---
-title: 'Hibaelhárítás: Hozzon létre, és csatlakozzon a Machine Learning-munkaterület |} A Microsoft Docs'
-description: Megoldások létrehozása és csatlakozás az Azure Machine Learning-munkaterület a gyakori problémák
+title: 'Hibaelhárítás: Hozzon létre, csatlakozás egy Machine Learning Studio-munkaterülethez – Azure |} A Microsoft Docs'
+description: Ez az útmutató egyes megoldások gyakran közben kihívásokat állítja be az Azure Machine Learning Studio-munkaterületek.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,15 +16,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: f86018c78de842717bf387c007fdd4c7cd048ef1
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 5e52abeeef7d40ac5594f4edfa2b80ef553081e4
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265202"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312055"
 ---
-# <a name="troubleshooting-guide-create-and-connect-to-an-machine-learning-workspace"></a>Hibaelhárítási útmutató: Machine Learning-munkaterület létrehozása és kapcsolódás a Machine Learning-munkaterülethez
-Ez az útmutató egyes megoldások gyakran közben kihívásokat állítja be az Azure Machine Learning-munkaterületek.
+# <a name="troubleshooting-guide-create-and-connect-to-an-machine-learning-studio-workspace"></a>Hibaelhárítási útmutató: létrehozás és csatlakozás egy Machine Learning Studio-munkaterülethez
+Ez az útmutató egyes megoldások gyakran közben kihívásokat állítja be az Azure Machine Learning Studio-munkaterületek.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 

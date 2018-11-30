@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: cf3a6fe24082a10db6a5b1267b70435d9e36b720
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 73d2da542c4f7da0933187d800f562de76bfb3e6
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115522"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443508"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Webalkalmazások konfigurálása az Azure App Service-ben
 
@@ -78,6 +78,8 @@ Ebben a szakaszban be a webalkalmazás betölti a Start menüben név-érték p�
 
 Alkalmazásbeállítások mindig titkosított tárolt (titkosított inaktív).
 
+A Key Vault használatával App beállításai feloldható [Key Vault hivatkozik](app-service-key-vault-references.md).
+
 ### <a name="connection-strings"></a>Kapcsolati sztringek
 Kapcsolati karakterláncok társított erőforrások. 
 
@@ -93,6 +95,8 @@ A PHP, Python, Java és a Node-alkalmazások ezeket a beállításokat futásid�
 Például, ha egy MySql-kapcsolati karakterlánc lett nevű `connectionstring1`, azt szeretné, a környezeti változó keresztül érhetők el `MYSQLCONNSTR_connectionString1`.
 
 Kapcsolati karakterláncok mindig titkosított tárolt (titkosított inaktív).
+
+Kapcsolati karakterláncok feloldható a Key Vault használatával [Key Vault hivatkozik](app-service-key-vault-references.md).
 
 ### <a name="default-documents"></a>Alapértelmezett dokumentumok
 Az alapértelmezett dokumentum a weblap, amelyen egy webhely gyökérszintű URL-címen jelenik meg.  A lista első egyeztetési fájlt használja. 

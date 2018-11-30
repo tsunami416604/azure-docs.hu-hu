@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 8eb5a2429db26c987e9a6a40130e25c8034a210b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5f07f462fc33761f7d29944594491a72f283cd31
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011646"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582564"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Az Apache Storm-topológia létrehozása Java nyelven
 
-Ismerje meg, hogyan hozhat létre egy Java-alapú topológia alatt futó Apache stormra. Létrehozhat Storm-topológia, amely megvalósítja a word-count alkalmazások. Maven használatával hozhat létre, és a csomagot a projekthez. Ezt követően megismerheti, hogyan meghatározásához a topológia a fluxus keretrendszer használatával.
+Ismerje meg, hogyan hozhat létre egy Java-alapú topológia [Apache Storm](http://storm.apache.org/). Létrehozhat Storm-topológia, amely megvalósítja a word-count alkalmazások. Használhat [Apache Maven](https://maven.apache.org/) felépítéséhez és becsomagolásához a projektet. Ezt követően megismerheti, hogyan meghatározásához a topológia a fluxus keretrendszer használatával.
 
 Ebben a dokumentumban a lépések elvégzése után telepítheti a topológia az Apache Storm on HDInsight.
 
@@ -30,7 +30,7 @@ Ebben a dokumentumban a lépések elvégzése után telepítheti a topológia az
 
 * [Java fejlesztői készlet (JDK) 8-as verzió](https://aka.ms/azure-jdks)
 
-* [Maven (https://maven.apache.org/download.cgi)](https://maven.apache.org/download.cgi): Maven project rendszert, a Java-projektek.
+* [Az Apache Maven (https://maven.apache.org/download.cgi)](https://maven.apache.org/download.cgi): Maven project rendszert, a Java-projektek.
 
 * Egy szövegszerkesztőben, vagy IDE.
 
@@ -534,7 +534,7 @@ public class WordCountTopology {
 
 ### <a name="configure-logging"></a>Naplózás konfigurálása
 
-A Storm az Apache Log4j használatával naplózza az információkat. Ha nem konfigurálja a naplózást, a topológia diagnosztikai adatokat bocsát ki. Szabályozhatja, hogy mi a naplózására akkor kerül sor, hozzon létre egy fájlt `log4j2.xml` a a `resources` könyvtár. Használja a következő XML-kódot a fájl tartalmát.
+Használja a Storm [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) naplózza az adatokat. Ha nem konfigurálja a naplózást, a topológia diagnosztikai adatokat bocsát ki. Szabályozhatja, hogy mi a naplózására akkor kerül sor, hozzon létre egy fájlt `log4j2.xml` a a `resources` könyvtár. Használja a következő XML-kódot a fájl tartalmát.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -559,7 +559,7 @@ Az XML konfigurálja az új naplózó a `com.microsoft.example` osztály, amely 
 
 A `<Root level="error">` szakaszban konfigurálja a legfelső szintű a naplózási szint (minden nem `com.microsoft.example`) csak a hibák naplózása.
 
-Log4j naplózásának konfigurálásáról további információkért lásd: [ http://logging.apache.org/log4j/2.x/manual/configuration.html ](http://logging.apache.org/log4j/2.x/manual/configuration.html).
+Log4j 2 naplózásának konfigurálásáról további információkért lásd: [ http://logging.apache.org/log4j/2.x/manual/configuration.html ](http://logging.apache.org/log4j/2.x/manual/configuration.html).
 
 > [!NOTE]
 > Storm-verzió: 0.10.0-s és magasabb használata Log4j 2.x. Régebbi verzióit a storm Log4j használt 1.x, amelyet a különböző naplózási konfiguráció. A régebbi konfigurációs információkért lásd: [ http://wiki.apache.org/logging-log4j/Log4jXmlFormat ](http://wiki.apache.org/logging-log4j/Log4jXmlFormat).
@@ -588,7 +588,7 @@ Van egy 5 másodperces időköze kibocsátási szavak és számok között. A **
 
 ## <a name="convert-the-topology-to-flux"></a>A topológia átalakítása fluxus
 
-Fluxus egy olyan új keretrendszer érhető el, a Storm 0.10.0-s vagy újabb, amely lehetővé teszi, hogy külön konfigurációt az implementáció. Az összetevők továbbra is vannak meghatározva a Java, de a topológia van definiálva egy YAML-fájllal. Egy alapértelmezett topológia definíciójának csomagot a projekthez, vagy egy önálló fájlt használja, a topológia elküldésekor. A Storm-topológia elküldésekor környezeti változókat vagy konfigurációs fájlok használatával töltse fel a YAML-topológia definíciójának értékeit.
+[Fluxus](http://storm.apache.org/releases/2.0.0-SNAPSHOT/flux.html) egy új keretrendszer érhető el, a Storm 0.10.0-s vagy újabb, amely lehetővé teszi, hogy külön konfigurációt az implementáció. Az összetevők továbbra is vannak meghatározva a Java, de a topológia van definiálva egy YAML-fájllal. Egy alapértelmezett topológia definíciójának csomagot a projekthez, vagy egy önálló fájlt használja, a topológia elküldésekor. A Storm-topológia elküldésekor környezeti változókat vagy konfigurációs fájlok használatával töltse fel a YAML-topológia definíciójának értékeit.
 
 A YAML-fájl határozza meg a topológia és az adatok az összetevők közötti őket. Megadhat egy YAML-fájlt a jar-fájl részeként, vagy egy külső YAML-fájlt is használhat.
 
@@ -762,23 +762,23 @@ Fluxus további információkért lásd: [fluxus keretrendszer (https://storm.ap
 
     A topológia megkezdéséről kell tapasztalnia, hogy a kibocsátott kötegek közötti idő newtopology.yaml értékének megfelelően módosult. Így láthatja, hogy módosíthatja a konfigurációt keresztül egy YAML-fájlt a topológia újrafordítottuk nélkül.
 
-Ezeket és más szolgáltatások fluxus keretrendszer további információkért lásd: [fluxus (https://storm.apache.org/releases/1.0.6/flux.html)](https://storm.apache.org/releases/1.0.6/flux.html).
+Ezeket és más szolgáltatások fluxus keretrendszer további információkért lásd: [fluxus (http://storm.apache.org/releases/current/flux.html)](http://storm.apache.org/releases/current/flux.html).
 
 ## <a name="trident"></a>A Trident
 
-A Trident egy magas szintű absztrakció, Storm által biztosított. Állapotalapú feldolgozás támogatja. Az elsődleges Trident előnye, hogy azt tud garantálni, hogy a topológia összes üzenetet csak egyszer dolgozza fel. A Trident nélkül, a topológia is csak garantálja, hogy üzenetek feldolgozása során legalább egyszer. Például a beépített összetevők boltok létrehozása helyett használható egyéb különbségek is vannak. Valójában a boltok kevesebb az általános összetevők, például a szűrőket, a leképezések és a functions helyébe lép.
+[A Trident](http://storm.apache.org/releases/current/Trident-API-Overview.html) egy magas szintű absztrakció, Storm által biztosított. Állapotalapú feldolgozás támogatja. Az elsődleges Trident előnye, hogy azt tud garantálni, hogy a topológia összes üzenetet csak egyszer dolgozza fel. A Trident nélkül, a topológia is csak garantálja, hogy üzenetek feldolgozása során legalább egyszer. Például a beépített összetevők boltok létrehozása helyett használható egyéb különbségek is vannak. Valójában a boltok kevesebb az általános összetevők, például a szűrőket, a leképezések és a functions helyébe lép.
 
 Trident alkalmazások Maven projects használatával hozható létre. A cikk korábbi részeiben bemutatott egyszerű lépéseket használhatja – csak a kód nem egyezik. A Trident is (jelenleg) csak akkor használható a fluxus keretrendszer.
 
-A Trident kapcsolatos további információkért lásd: a [Trident API – áttekintés](http://storm.apache.org/documentation/Trident-API-Overview.html).
+A Trident kapcsolatos további információkért lásd: a [Trident API – áttekintés](http://storm.apache.org/releases/current/Trident-API-Overview.html).
 
 ## <a name="next-steps"></a>További lépések
 
-Megtanulhatta, hogyan hozhat létre Storm-topológia a Java használatával. Most megtudhatja, hogyan lehet:
+Megtanulhatta, hogyan lehet az Apache Storm-topológia létrehozása Java használatával. Most megtudhatja, hogyan lehet:
 
 * [Üzembe helyezés és kezelés a HDInsight Apache Storm-topológiák](apache-storm-deploy-monitor-topology.md)
 
 * [Az Apache Storm on HDInsight Visual Studio használatával C#-topológiák fejlesztése](apache-storm-develop-csharp-visual-studio-topology.md)
 
-Annak további példa Storm-topológiák funkcionáló [a HDInsight alatt futó Storm példatopológiái](apache-storm-example-topology.md).
+Annak további példa az Apache Storm-topológiák funkcionáló [a HDInsight Apache Storm példatopológiái](apache-storm-example-topology.md).
 

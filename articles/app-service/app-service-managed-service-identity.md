@@ -9,28 +9,32 @@ ms.service: app-service
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 06/25/2018
+ms.date: 11/20/2018
 ms.author: mahender
-ms.openlocfilehash: fb9b50ecb16bd37d005403a14ea11c6d89f50dfe
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7319dc02d07ef1e100b39dbe138870676578fd69
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983647"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634285"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata az App Service-ben és az Azure Functions
 
 > [!NOTE] 
-> A Linux és a Web App for Containers App Service-ben jelenleg nem támogatja a felügyelt identitások.
+> App Service Linux és a Web App for containers szolgáltatásban felügyelt identitás támogatása jelenleg előzetes verzióban érhető el.
 
 > [!Important] 
 > Az App Service-ben és az Azure Functions felügyelt identitások nem várakozásoknak megfelelően működik, ha az alkalmazás előfizetések/bérlők keresztül telepítik át. Az alkalmazás kell szereznie egy új identitás, amely letiltásával és újbóli engedélyezésével végezhető. Lásd: [eltávolítása az identitás](#remove) alatt. Alsóbb rétegbeli erőforrások is kell rendelkeznie a hozzáférési szabályzatok frissítve az új identitás használatára.
 
 Ez a témakör bemutatja, hogyan hozhat létre egy felügyelt identitás App Service-ben és az Azure Functions-alkalmazások és egyéb erőforrásainak elérésére használatával. Egy felügyelt identitás, az Azure Active Directoryból lehetővé teszi az alkalmazás más AAD által védett erőforrások, például az Azure Key Vault könnyen hozzáférhet. Az identitás az Azure platform kezeli, és nem igényli, üzembe helyezése és titkos kulcsok elforgatása. Az aad-beli felügyelt identitások kapcsolatos további információkért lásd: [felügyelt identitások az Azure-erőforrások](../active-directory/managed-identities-azure-resources/overview.md).
 
-## <a name="creating-an-app-with-an-identity"></a>Az identitást tartalmazó alkalmazás létrehozása
+Alkalmazását kétféle típusú identitások adható meg: 
+- A **rendszer által hozzárendelt identitás** vannak kötve, az alkalmazás és az alkalmazás törlésekor törlődik. Az alkalmazás legfeljebb egy rendszer által hozzárendelt identitás. Rendszer által hozzárendelt identitást támogató szolgáltatás általánosan elérhető Windows-alkalmazások. 
+- A **felhasználó által hozzárendelt identitás** egy önálló Azure-erőforrás, amely hozzárendelheti az alkalmazást. Egy alkalmazás több felhasználó által hozzárendelt identitások is rendelkezhet. Felhasználó által hozzárendelt identitás támogatása egy minden alkalmazástípus az előzetes verzióban érhető el.
 
-Alkalmazás létrehozása egy identitással szükséges állítható be az alkalmazás egy új tulajdonság.
+## <a name="adding-a-system-assigned-identity"></a>A rendszer által hozzárendelt identitás hozzáadása
+
+Alkalmazás létrehozása egy rendszer által hozzárendelt identitással szükséges állítható be az alkalmazás egy új tulajdonság.
 
 ### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
@@ -42,9 +46,9 @@ A portálon egy felügyelt identitás beállításához először létrehoz egy 
 
 3. Válassza ki **identitás**.
 
-4. Kapcsoló **regisztrálása az Azure Active Directory** való **a**. Kattintson a **Save** (Mentés) gombra.
+4. Belül a **rendszerhez rendelt** fülre, váltson **állapot** való **a**. Kattintson a **Save** (Mentés) gombra.
 
-![Az App Service-ben felügyelt identitás](media/app-service-managed-service-identity/msi-blade.png)
+![Az App Service-ben felügyelt identitás](media/app-service-managed-service-identity/msi-blade-system.png)
 
 ### <a name="using-the-azure-cli"></a>Az Azure parancssori felületének használata
 
@@ -94,7 +98,7 @@ Az alábbi lépéseket részletesen bemutatja, hogyan webes alkalmazás létreho
     New-AzureRmWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
     ```
 
-3. Futtassa a `identity assign` paranccsal hozza létre a az alkalmazás identitását:
+3. Futtassa a `Set-AzureRmWebApp -AssignIdentity` paranccsal hozza létre a az alkalmazás identitását:
 
     ```azurepowershell-interactive
     Set-AzureRmWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
@@ -111,7 +115,10 @@ Bármilyen típusú erőforrás `Microsoft.Web/sites` többek között a követk
 }    
 ```
 
-Ez jelzi az Azure hozhat létre és kezelhet az identitást az alkalmazása számára.
+> [!NOTE] 
+> Egy alkalmazás alapértelmezett mind a felhasználó által hozzárendelt identitások rendelkezhet egyszerre. Ebben az esetben a `type` tulajdonság lenne. `SystemAssigned,UserAssigned`
+
+Hozzáadás, a rendszer által hozzárendelt típusát jelzi az Azure hozhat létre és kezelhet az identitást az alkalmazása.
 
 Ha például egy webalkalmazás előfordulhat, hogy a következőhöz hasonló:
 ```json
@@ -139,12 +146,100 @@ Ha például egy webalkalmazás előfordulhat, hogy a következőhöz hasonló:
 A helyen jön létre, amikor a következő további tulajdonságokkal rendelkezik:
 ```json
 "identity": {
+    "type": "SystemAssigned",
     "tenantId": "<TENANTID>",
     "principalId": "<PRINCIPALID>"
 }
 ```
 
 Ahol `<TENANTID>` és `<PRINCIPALID>` cserélése GUID-azonosítói. A tenantId tulajdonság azonosítja milyen AAD-bérlőjéhez tartozik, az identitást. A principalId az identitás az alkalmazás egyedi azonosító. Aad-ben lévő egyszerű szolgáltatás rendelkezik programmal az App Service-ben vagy az Azure Functions-példányra ugyanazzal a névvel.
+
+
+## <a name="adding-a-user-assigned-identity-preview"></a>A felhasználó által hozzárendelt identitás (előzetes verzió) hozzáadása
+
+> [!NOTE] 
+> Felhasználó által hozzárendelt identitások jelenleg előzetes verzióban érhető el. Sovreign felhőkben még nem támogatott.
+
+Alkalmazás létrehozása egy felhasználó által hozzárendelt identitással kell létrehozni az identitást, és hozzáadhatja az erőforrás-azonosító az alkalmazás konfigurációja.
+
+### <a name="using-the-azure-portal"></a>Az Azure Portal használata
+
+> [!NOTE] 
+> A portál kezelőfelületén lesz üzembe helyezve, és előfordulhat, hogy még nem érhető el minden régióban.
+
+Először is szüksége egy felhasználó által hozzárendelt identitás-erőforrás létrehozásához.
+
+1. Hozzon létre egy felügyelt identitás felhasználó által hozzárendelt erőforrást a következők szerint [ezek az utasítások](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity).
+
+2. Alkalmazás létrehozása a portálon, ahogy azt szokásosan tenné. Keresse meg azt a portálon.
+
+3. Függvényalkalmazás használata esetén lépjen **platformfunkciók**. Minden olyan alkalmazás esetében, görgessen le a **beállítások** csoportot a bal oldali navigációs.
+
+4. Válassza ki **identitás**.
+
+5. Belül a **felhasználóhoz (előzetes verzió)** lapra, majd **Hozzáadás**.
+
+6. Keresse meg a korábban létrehozott identitását, és válassza ki azt. Kattintson a **Hozzáadás** parancsra.
+
+![Az App Service-ben felügyelt identitás](media/app-service-managed-service-identity/msi-blade-user.png)
+
+### <a name="using-an-azure-resource-manager-template"></a>Egy Azure Resource Manager-sablon használatával
+
+Az Azure Resource Manager-sablonok segítségével az Azure-erőforrások üzembe helyezésének automatizálása. App Service és Functions történő központi telepítésével kapcsolatos további információkért lásd: [az App Service-erőforrások üzembe helyezésének automatizálása](../app-service/app-service-deploy-complex-application-predictably.md) és [az Azure Functions erőforrások üzembe helyezésének automatizálása](../azure-functions/functions-infrastructure-as-code.md).
+
+Bármilyen típusú erőforrás `Microsoft.Web/sites` az erőforrás-definícióban, többek között a következő kódblokk egy identitással hozható létre cseréje `<RESOURCEID>` a kívánt identitás erőforrás-azonosító:
+```json
+"identity": {
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+        "<RESOURCEID>": {}
+    }
+}    
+```
+
+> [!NOTE] 
+> Egy alkalmazás alapértelmezett mind a felhasználó által hozzárendelt identitások rendelkezhet egyszerre. Ebben az esetben a `type` tulajdonság lenne. `SystemAssigned,UserAssigned`
+
+A felhasználó által hozzárendelt típus hozzáadása és a egy cotells Azure hozhat létre és kezelhet az identitást az alkalmazása.
+
+Ha például egy webalkalmazás előfordulhat, hogy a következőhöz hasonló:
+```json
+{
+    "apiVersion": "2016-08-01",
+    "type": "Microsoft.Web/sites",
+    "name": "[variables('appName')]",
+    "location": "[resourceGroup().location]",
+    "identity": {
+        "type": "UserAssigned"
+    },
+    "properties": {
+        "name": "[variables('appName')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
+        "hostingEnvironment": "",
+        "clientAffinityEnabled": false,
+        "alwaysOn": true
+    },
+    "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
+    ]
+}
+```
+
+A helyen jön létre, amikor a következő további tulajdonságokkal rendelkezik:
+```json
+"identity": {
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+        "<RESOURCEID>": {
+            "principalId": "<PRINCIPALID>",
+            "clientId": "<CLIENTID>"
+        }
+    }
+}
+```
+
+Ahol `<PRINCIPALID>` és `<CLIENTID>` cserélése GUID-azonosítói. A principalId az a-identitás az AAD-felügyelethez használt egyedi azonosító. A clientId az alkalmazás új azonosítóját adja meg a futtatókörnyezet hívások során használandó melyik identitás használt egyedi azonosítója.
+
 
 ## <a name="obtaining-tokens-for-azure-resources"></a>Az Azure-erőforrások jogkivonatok beszerzéséhez
 
@@ -184,11 +279,12 @@ Az alkalmazás felügyelt identitással rendelkezik definiált két környezeti 
 A **MSI_ENDPOINT** egy helyi URL-cím, amelyről az alkalmazás jogkivonatokat kérhetnek. Erőforrás egy token beszerzéséhez hajtsa végre egy HTTP GET kérés ehhez a végponthoz, többek között a következő paraméterekkel:
 
 > [!div class="mx-tdBreakAll"]
-> |Paraméter neve|A|Leírás|
+> |Paraméter neve|Eleme ennek|Leírás|
 > |-----|-----|-----|
 > |erőforrás|Lekérdezés|Az AAD erőforrás URI-t az erőforrás számára, ami egy token beszerzése.|
 > |API-verzió|Lekérdezés|A használt jogkivonat API-verzió. "2017-09-01" jelenleg az egyetlen támogatott verzió.|
 > |titkos kód|Fejléc|A MSI_SECRET környezeti változó értékét.|
+> |ClientID|Lekérdezés|(Nem kötelező) A felhasználó által hozzárendelt identitás használt azonosítója. Ha nincs megadva, a rendszer által hozzárendelt identitás szolgál.|
 
 
 Sikeres 200 OK válasz tartalmaz egy JSON-törzse a következő tulajdonságokkal:
@@ -241,7 +337,7 @@ public static async Task<HttpResponseMessage> GetToken(string resource, string a
 
 <a name="token-js"></a>A node.js-ben:
 ```javascript
-const rp = require('request-promise');
+const rp = require('request-promise');
 const getToken = function(resource, apiver, cb) {
     var options = {
         uri: `${process.env["MSI_ENDPOINT"]}/?resource=${resource}&api-version=${apiver}`,
@@ -265,7 +361,7 @@ $accessToken = $tokenResponse.access_token
 
 ## <a name="remove"></a>Az identitás eltávolítása
 
-Az identitás távolíthatók el a funkció a portal, PowerShell vagy parancssori felület használatával, hogy készült ugyanúgy letiltása. A REST/ARM-sablon protokoll ez történik, a típus "None" értékre állításával:
+A funkció a portal, PowerShell vagy parancssori felület használatával, hogy készült ugyanúgy letiltásával a rendszer által hozzárendelt identitás távolíthatja el. Felhasználó által hozzárendelt identitások külön-külön is távolítható el. Szeretné eltávolítani az identitások, a REST/ARM-sablon protokoll, ez történik, a típus "None" értékre állításával:
 
 ```json
 "identity": {
@@ -273,7 +369,7 @@ Az identitás távolíthatók el a funkció a portal, PowerShell vagy parancssor
 }    
 ```
 
-Ezzel a módszerrel az identitás eltávolításával is törli a rendszerbiztonsági tag az aad-ből. Rendszer által hozzárendelt identitások lesznek automatikusan eltávolítva az aad-ből, ha az alkalmazás-erőforrást törölték.
+Ezzel a módszerrel a rendszer által hozzárendelt identitás eltávolítása is törli azt az aad-ből. Rendszer által hozzárendelt identitások is automatikusan törlődnek az aad-ből, ha az alkalmazás-erőforrást törölték.
 
 > [!NOTE] 
 > Nincs alkalmazás beállítást is be lehet állítani, WEBSITE_DISABLE_MSI, amely csak letiltja a jogkivonat-szolgáltatás. Azonban az identitás elhagyják a helyen, és az eszközök továbbra is megjeleníti a felügyelt identitást, "on" vagy "engedélyezve". Ennek eredményeképpen a beállítás használata nem ajánlott.

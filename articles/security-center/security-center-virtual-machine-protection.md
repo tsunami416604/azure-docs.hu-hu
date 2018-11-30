@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 0bd93e0732b0e822fae68b4ac2cc5e28fb246808
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: d1e7046ed1fc87a85a08b21a48accaaf3b5087b9
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016964"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316650"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>A gépek és az alkalmazások az Azure Security Center védelme
 Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán hoz létre. Javaslatok alkalmazása az Azure-erőforrástípus: virtuális gépek (VM) és a számítógépek, alkalmazások, hálózati, SQL, és az identitás- és hozzáférés.
@@ -63,10 +63,10 @@ A bővítményt a nem monitorozott virtuális gép vagy a számítógépen a má
 
 [A Monitoring Agent állapotproblémái](security-center-troubleshooting-guide.md#mon-agent) szakaszban többet is megtudhat arról, hogy a Security Center miért nem tudja sikeresen monitorozni az automatikus üzembe helyezésre inicializált virtuális gépeket és számítógépeket.
 
-### <a name="recommendations"></a>Ajánlatok
+### <a name="recommendations"></a>Javaslatok
 Ebben a szakaszban rendelkezik minden virtuális gép és számítógép, webes és feldolgozói szerepkörök, az Azure App Service Web Apps és az Azure App Service-környezet, amely a Security Center figyeli vonatkozó javaslatok szerepelnek. Az első oszlop a javaslatokat sorolja fel. A második oszlop az adott javaslat által érintett erőforrások teljes számát jeleníti meg. A harmadik oszlop a probléma súlyosságát mutatja, ahogyan az alábbi képernyőfelvételen látható:
 
-![Ajánlatok][4]
+![Javaslatok][4]
 
 Minden egyes javaslatokra műveleteket hajthat végre kijelölése után. Például, ha kiválasztja **hiányzó rendszerfrissítések**, a virtuális gépek számát és számítógépekre, amelyekről hiányoznak a javításokat, és a hiányzó frissítés súlyosságát jelenik meg, az alábbi képernyőképen látható módon:
 
@@ -75,7 +75,7 @@ Minden egyes javaslatokra műveleteket hajthat végre kijelölése után. Péld�
 **Rendszerfrissítések alkalmazása** rendelkezik grafikus formátumban, a Windows, és egy Linux-kritikus frissítések összegzése. A második részben az alábbi információkat tartalmazó táblázat található:
 
 - **NÉV** – A hiányzó frissítés neve.
-- **VIRTUÁLIS GÉPEK ÉS SZÁMÍTÓGÉPEK SZÁMA**: Azon virtuális gépek és számítógépek teljes száma, amelyek esetében ez a frissítés hiányzik.
+-  **VIRTUÁLIS GÉPEK ÉS SZÁMÍTÓGÉPEK SZÁMA**: Azon virtuális gépek és számítógépek teljes száma, amelyek esetében ez a frissítés hiányzik.
 - **FRISSÍTÉS SÚLYOSSÁGA**: azt ismerteti, hogy az adott javaslat súlyosságát:
 
     - **Kritikus fontosságú**: biztonsági rés fontos erőforrásnál (alkalmazás, virtuális géphez vagy hálózati biztonsági csoport) létezik, és beavatkozást igényel.
@@ -115,7 +115,7 @@ A listában szereplő ikon négy típusa van:
 
 Az egyes javaslatok alatt megjelenő ikonok segít gyorsan azonosítani a virtuális gép és számítógép hagyni a figyelmet, és a javaslat típusát. Szűrje segítségével válassza ki a beállítások ezen a képernyőn láthatja.
 
-![Szűrő][12]
+![Szűrés][12]
 
 Az előző példában egy virtuális gépnél kritikus súlyosságú javaslat az endpoint protection kapcsolatban. További információt szeretne kapni a virtuális gép kiválasztása:
 
@@ -207,7 +207,7 @@ A listában szereplő ikon három típusa van:
 |Számítási erőforrások (eseményközpontból)|5|Event Hub-diagnosztikai naplók engedélyezése|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
 |Számítási erőforrások (a logic apps)|5|A Logic Apps-diagnosztikai naplók engedélyezése|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
 |Gép|30|Biztonsági rések felmérését lehetővé tevő megoldás telepítése a virtuális gépeken|Biztonsági rések felmérését lehetővé tevő megoldás telepítése a virtuális gépeken|
-|Gép|15|Webalkalmazási tűzfal felvétele| Telepítse a webalkalmazási tűzfal (WAF) megoldás a webalkalmazások biztonságossá tételéhez. |
+|Gép|15|Webalkalmazási tűzfal hozzáadása| Telepítse a webalkalmazási tűzfal (WAF) megoldás a webalkalmazások biztonságossá tételéhez. |
 |Gép|30|Biztonsági rések - sebezhetőség-felmérési megoldás által szervizelése|Amelynek a sebezhetőség-felmérési 3. fél megoldás üzembe helyezett virtuális gépek folyamatosan értékelni alatt álló alkalmazás és az operációs rendszer biztonsági rések ellen. Minden alkalommal, amikor kivédeni találhatók, ezek érhetők el további információ az ajánlás része.|
 |Számítási erőforrások (a service fabric)|15|A Service Fabric EncryptAndSign a ClusterProtectionLevel tulajdonsága|Service Fabric egy elsődleges fürttanúsítvány csomópontok közötti kommunikációt három szintje (nincs, bejelentkezési és EncryptAndSign) védelmet biztosít.  Biztosíthatja, hogy a csomópontok közötti üzenetek titkosítva és digitálisan aláírt védelmi szintjének beállítása. |
 |App Service|10|Távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz|Kapcsolja ki a hibakeresési webes alkalmazásokhoz, ha már nincs rá szüksége. Távoli hibakeresés használatához meg kell nyitni a Függvényalkalmazás bejövő portokat.|
@@ -226,7 +226,7 @@ A listában szereplő ikon három típusa van:
 |Gép|30|Biztonsági rések felmérését lehetővé tevő megoldás telepítése a virtuális gépeken|Biztonsági rések felmérését lehetővé tevő megoldás telepítése a virtuális gépeken|
 |App Service|20|A CORS nem teszi lehetővé minden erőforrás eléréséhez a webes alkalmazások|Együttműködhet a webalkalmazás csak a szükséges tartományok engedélyezése. Közötti eredetű erőforrások megosztása (CORS) kell nem teszi lehetővé minden tartománynak a webalkalmazáshoz való hozzáférés.|
 |App Service|20|A CORS nem teszi lehetővé a Függvényalkalmazás eléréséhez minden erőforrás| Lehetővé teszi a funkció alkalmazását interakcióba csak a szükséges tartományok. Közötti eredetű erőforrások megosztása (CORS) kell nem teszi lehetővé minden tartománynak a függvény-alkalmazás elérésére.|
-|Gép|15|Webalkalmazási tűzfal felvétele| Telepítse a webalkalmazási tűzfal (WAF) megoldás a webalkalmazások biztonságossá tételéhez. |
+|Gép|15|Webalkalmazási tűzfal hozzáadása| Telepítse a webalkalmazási tűzfal (WAF) megoldás a webalkalmazások biztonságossá tételéhez. |
 |App Service|10|A legújabb támogatott .NET-keretrendszer-webalkalmazás|Használja a .NET-keretrendszer legújabb verzióját a legújabb biztonsági osztályokkal. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását.|
 |App Service|10|A Java legújabb támogatott verzióját használja a webalkalmazáshoz|Használja a legújabb Java verzióját a legújabb biztonsági osztályokkal. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását.|
 |App Service|10|A PHP legújabb támogatott verzióját használja a webalkalmazáshoz|Használja a legújabb PHP verzióját a legújabb biztonsági osztályokkal. Régebbi osztályok és típusok használata sérülékennyé teheti az alkalmazását.|
@@ -249,7 +249,7 @@ Javaslatok, amelyek vonatkoznak a többi Azure-erőforrásokkal kapcsolatos tov�
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-policies.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
+* [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-azure-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
 

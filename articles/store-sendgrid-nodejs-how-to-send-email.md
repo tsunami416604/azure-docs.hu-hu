@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
-ms.openlocfilehash: 8908a6ceb87e2c0e4c7222e8a8e72fa7ebfa7f82
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: f2d653441598a47986913d525057672eed24b435
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309263"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52421283"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>Hogyan lehet E-mail küldése a SendGrid, a Node.js használatával
 
@@ -131,7 +131,7 @@ sendgrid.send({
 ```
 
 > [!NOTE]
-> Használatakor a **fájlok** tulajdonság, a fájlnak kell lennie keresztül elérhető [fs.readFile](http://nodejs.org/docs/v0.6.7/api/fs.html#fs.readFile). Ha csatolni kívánt fájlt, például egy Blob-tároló Azure Storage-ban üzemeltetett kell másolnia a fájlt helyi tárolóba vagy egy Azure-meghajtó előtt, egy melléklet használatával küldhető a **fájlok** tulajdonság.
+> Használatakor a **fájlok** tulajdonság, a fájlnak kell lennie keresztül elérhető [fs.readFile](https://nodejs.org/docs/v0.6.7/api/fs.html#fs.readFile). Ha csatolni kívánt fájlt, például egy Blob-tároló Azure Storage-ban üzemeltetett kell másolnia a fájlt helyi tárolóba vagy egy Azure-meghajtó előtt, egy melléklet használatával küldhető a **fájlok** tulajdonság.
 > 
 > 
 

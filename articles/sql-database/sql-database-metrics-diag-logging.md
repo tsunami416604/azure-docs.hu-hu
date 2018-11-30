@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 8f66c95202e0ccdef86f9630f7a98c20023a8955
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: b903d0ddbccac8fe4fa8b251d409bd8addebb435
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087746"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425999"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database-metrikák és diagnosztikai naplózás 
 
@@ -101,7 +101,7 @@ A diagnostics telemetriai adatainak streamelésének engedélyezéséhez **Azure
    ![Az SQL Database-diagnosztika konfigurálása](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
 
 > [!NOTE]
-> Napló nem lehet engedélyezni az adatbázis diagnosztikai beállítások. Engedélyezheti a naplózási naplóstreamelés [beállítása az adatbázis naplózási](sql-database-auditing.md#subheading-2), is megtekintheti és [SQL Audit naplók az Azure Log Analytics és az Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
+> Naplók biztonsági naplózás nem lehet engedélyezni az adatbázis-diagnosztika beállításait. Engedélyezheti a naplózási naplóstreamelés [beállítása az adatbázis naplózási](sql-database-auditing.md#subheading-2), is megtekintheti és [SQL Audit naplók az Azure Log Analytics és az Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
 >
 
 > [!TIP]
@@ -182,7 +182,7 @@ A diagnostics telemetriai adatainak streamelésének engedélyezéséhez **felü
 2. Válassza ki **diagnosztikai beállítások**
 3. Válassza ki **diagnosztika bekapcsolása** Ha nincsenek korábbi beállítások létezik, vagy válasszon **beállítás szerkesztése** előző beállításainak módosítása
 
-   ![Diagnosztika engedélyezése a felügyelt példány](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
+   ![Diagnosztika engedélyezése a felügyelt példány](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-enable.png)
 
 4. Írja be a nevét, a beállítás – saját használatra
 5. Válassza ki, melyik erőforrást kell diagnosztikai adatok streamelése a rugalmas készletből: **archiválás tárfiókba**, **egy eseményközpontba Stream**, vagy **Küldés a Log Analyticsnek**
@@ -190,7 +190,7 @@ A diagnostics telemetriai adatainak streamelésének engedélyezéséhez **felü
 7. Jelölje be például a diagnostics telemetriai adatainak a **ResourceUsageStats**
 8. Kattintson a **Mentés** gombra.
 
-   ![Diagnosztika konfigurálása a felügyelt példány](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
+   ![Diagnosztika konfigurálása a felügyelt példány](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
 
 > [!TIP]
 > Ismételje meg a fenti lépéseket minden egyes figyelni kívánt felügyelt példány esetében.
@@ -675,7 +675,7 @@ Tudjon meg többet [adatbázis-wait statisztika](https://docs.microsoft.com/sql/
 |Schema_s|Adatbázis-séma.|
 |Table_s|Az érintett tábla.|
 |IndexName_s|Index neve.|
-|IndexColumns_s|Oszlop neve.|
+|IndexColumns_s|Oszlopnév.|
 |IncludedColumns_s|Az oszlopokat tartalmaz.|
 |EstimatedImpact_s|Becsült hatás automatikus finomhangolási ajánlás JSON.|
 |Event_s|Az automatikus finomhangolási esemény típusa.|

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: 6a3e33fe74199f0b9c02c6924d5e5e41b37f385c
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: d1b7b5baeba88ec0209abff60e9327031afa8b66
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820970"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633775"
 ---
 # <a name="azure-monitor-overview"></a>Az Azure Monitor áttekintése
 
@@ -47,7 +47,7 @@ A Log Analytics lekérdezési nyelv egyszerű naplólekérdezések alkalmas, de 
 ![Logs](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Milyen adatokat gyűjt az Azure Monitor?
-Az Azure Monitor tud adatokat gyűjteni a különböző forrásokból. Az alkalmazások és az alkalmazás, minden operációs és szolgáltatást, így működése attól függ, a platform saját maga le a csomagban az figyelési felfoghatók. Az Azure Monitor gyűjti az adatokat az alábbi szinteken mindegyike:
+Az Azure Monitor tud adatokat gyűjteni a különböző forrásokból. Az alkalmazások és az alkalmazás, a bármely operációs rendszer és a szolgáltatások támaszkodik, lefelé a platform saját maga a csomagban az figyelési felfoghatók. Az Azure Monitor gyűjti az adatokat az alábbi szinteken mindegyike:
 
 - **Alkalmazásfigyelési adatok**: adatok teljesítményéről és a kód funkciójának írt, a platformtól függetlenül.
 - **Vendég operációs rendszerek monitorozási adatai**: az operációs rendszer, amelyen fut az alkalmazás adatait. Ez az Azure, egy másik felhőalapú vagy helyszíni fut. 
@@ -57,7 +57,7 @@ Az Azure Monitor tud adatokat gyűjteni a különböző forrásokból. Az alkalm
 
 Amint hoz létre egy Azure-előfizetés és az erőforrások, például virtuális gépek és webalkalmazások hozzáadása kezdő, az Azure Monitor adatgyűjtés megkezdése.  [A Tevékenységnaplók](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) jegyezze fel, ha erőforrások létrehozásakor vagy módosításakor. [Metrikák](../monitoring-and-diagnostics/monitoring-overview-metrics.md) mondja el, hogyan működik-e az erőforrás és az erőforrásokat, azt használja. 
 
-Kiterjesztheti az adatokat gyűjt be az erőforrások a tényleges művelet [engedélyezi a diagnosztikát](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) és [hozzáadása egy ügynök](../log-analytics/log-analytics-agent-windows.md) számítási erőforrásokra. Ez a belső művelet az erőforrás telemetriai adatok gyűjtésére és konfigurálását lehetővé különböző [adatforrások](../log-analytics/log-analytics-data-sources.md) naplók és mérőszámok gyűjtését a Windows és Linux rendszerű vendég operációs rendszer. 
+Kiterjesztheti az adatokat gyűjt be az erőforrások a tényleges művelet [engedélyezi a diagnosztikát](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) és [hozzáadása egy ügynök](../azure-monitor/platform/agent-windows.md) számítási erőforrásokra. Ez a belső művelet az erőforrás telemetriai adatok gyűjtésére és konfigurálását lehetővé különböző [adatforrások](../azure-monitor/platform/agent-data-sources.md) naplók és mérőszámok gyűjtését a Windows és Linux rendszerű vendég operációs rendszer. 
 
 [Adja hozzá az alkalmazáshoz egy kialakítási csomagot](../application-insights/app-insights-azure-web-apps.md), amely lehetővé teszi az Application Insights részletes információkat az alkalmazásról, beleértve a lapmegtekintések, alkalmazásokra irányuló kérések és kivételek gyűjtésére. Továbbá ellenőrizze az alkalmazás rendelkezésre állásának konfigurálásával egy [rendelkezésre állási teszt](../application-insights/app-insights-monitor-web-app-availability.md) érkező felhasználói forgalom szimulálásához.
 
@@ -86,7 +86,7 @@ Az Azure Monitor VM insights az Azure-beli virtuális gépek (VM) ipari méretek
 ![VM Insights](media/overview/vm-insights.png)
 
 ### <a name="monitoring-solutions"></a>Monitorozási megoldások
-[Figyelési megoldások](../azure-monitor/insights/solutions.md) az Azure monitorban, amelyeket a csomagolt logika, amelyek elemzéseket nyújtanak egy adott alkalmazás vagy szolgáltatás esetében. Gyűjtenek adatokat a Log Analytics-be más figyelési adatokat, valamint [lekérdezések](../log-analytics/log-analytics-queries.md) elemzéshez és [nézetek](../log-analytics/log-analytics-view-designer.md) a vizualizációt. Figyelési megoldások [a Microsoft](../azure-monitor/insights/solutions-inventory.md) és partnerek számára a különböző Azure-szolgáltatások és más alkalmazások figyelésére.
+[Figyelési megoldások](../azure-monitor/insights/solutions.md) az Azure monitorban, amelyeket a csomagolt logika, amelyek elemzéseket nyújtanak egy adott alkalmazás vagy szolgáltatás esetében. Gyűjtenek adatokat a Log Analytics-be más figyelési adatokat, valamint [lekérdezések](../log-analytics/log-analytics-queries.md) elemzéshez és [nézetek](../azure-monitor/platform/view-designer.md) a vizualizációt. Figyelési megoldások [a Microsoft](../azure-monitor/insights/solutions-inventory.md) és partnerek számára a különböző Azure-szolgáltatások és más alkalmazások figyelésére.
 
 ![Monitorozási megoldások](media/overview/solutions-overview.png)
 
@@ -115,7 +115,7 @@ Az automatikus méretezés lehetővé teszi a megfelelő mennyiségű erőforrá
 ![Irányítópult](media/overview/dashboard.png)
 
 ### <a name="views"></a>Nézetek
-[Az Azure monitorban nézetek](../log-analytics/log-analytics-view-designer.md) vizuálisan jelenítik meg a naplóadatok a Log Analyticsben.  Mindegyik nézetről tartalmaz egy adott csempe, amely működéseinek Vizualizációk kombinációját le például sáv- és vonaldiagramokat kritikus fontosságú adatok mellett diagramok.  Figyelési megoldások tartalmaznak nézeteket, amelyek egy adott alkalmazáshoz tartozó adatokat, és az adatok bármely Log Analytics naplóbeli keresés a saját nézeteket is létrehozhat. Az Azure monitorban más elemek, például nézetek Azure-irányítópultok lehet hozzáadni.
+[Az Azure monitorban nézetek](../azure-monitor/platform/view-designer.md) vizuálisan jelenítik meg a naplóadatok a Log Analyticsben.  Mindegyik nézetről tartalmaz egy adott csempe, amely működéseinek Vizualizációk kombinációját le például sáv- és vonaldiagramokat kritikus fontosságú adatok mellett diagramok.  Figyelési megoldások tartalmaznak nézeteket, amelyek egy adott alkalmazáshoz tartozó adatokat, és az adatok bármely Log Analytics naplóbeli keresés a saját nézeteket is létrehozhat. Az Azure monitorban más elemek, például nézetek Azure-irányítópultok lehet hozzáadni.
 
 ![Log Analytics-nézet](media/overview/view.png)
 

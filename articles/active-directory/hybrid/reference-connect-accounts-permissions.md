@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2018
+ms.date: 11/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a3bce69236586bcd0a250c47f1129ac0d94e8b26
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ef8b621b41bb43c46ef728e28d3b312ac49f1da3
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231482"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308783"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Az Azure AD Connect: Fiókok és engedélyek
 
@@ -39,7 +39,10 @@ Az Azure AD Connect 3 fiókokat használ, annak érdekében, hogy az Azure Activ
 
 E három fiókok Azure AD Connect futtatásához használt mellett is szüksége lesz a következő további fiókokat az Azure AD Connect telepítése.  Ezek a következők:
 
-- **Az AD DS vállalati rendszergazdai fiók**: használja az Azure AD Connect telepítése
+- **Helyi rendszergazdai fiók**: A rendszergazda, aki az Azure AD Connectet telepíti, és kik a helyi rendszergazdai engedélyekkel a gépen.
+
+- **Az AD DS vállalati rendszergazdai fiók**: "AD DS-összekötő fiók" létrehozása a fenti használatával.
+
 - **Az Azure AD globális rendszergazdai fiókját**: az Azure AD-összekötő fiók létrehozása és konfigurálása az Azure ad-ben.
 
 - **SQL-rendszergazdai fiók (nem kötelező)**: SQL Server teljes verziójának használatakor az ADSync-adatbázis létrehozásához használt.  Az SQL-kiszolgáló helyi vagy távoli, az Azure AD Connect telepítés lehet.  Ez a fiók lehet ugyanazt a fiókot, a vállalati rendszergazda engedélyezte.  Most kiépítése az adatbázis is lehet az SQL-rendszergazda által sávon kívül végrehajtott és csak utána települ az Azure AD Connect rendszergazdája az adatbázis-tulajdonosi jogosultságok.  Kapcsolatos információkért lásd a [SQL meghatalmazott rendszergazdai engedélyek használatával telepítse az Azure AD Connect](how-to-connect-install-sql-delegation.md)

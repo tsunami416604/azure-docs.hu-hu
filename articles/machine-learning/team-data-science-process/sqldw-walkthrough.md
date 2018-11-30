@@ -2,30 +2,26 @@
 title: 'A csoportos adatelemzési folyamat működés közben: az SQL Data Warehouse |} A Microsoft Docs'
 description: Fejlett analitikai folyamat és technológia, működés közben
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 88ba8e28-0bd7-49fe-8320-5dfa83b65724
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
-ms.author: deguhath
-ms.openlocfilehash: 192af40df3a8bc0545c9c3a86792e7eb8cb31de9
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 87c3b0b597a401041b8bf1b6f3997431d8816e92
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586104"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445707"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>A csoportos adatelemzési folyamat működés közben: az SQL Data Warehouse használatával
 Ez az oktatóanyag azt mutatja be létrehozásának és üzembe helyezésének egy gépi tanulási modellt az SQL Data Warehouse (az SQL DW) egy nyilvánosan elérhető adatkészlethez – a [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészlet. A bináris osztályozási modell összeállított előrejelzi e tipp fizetős útnak és többosztályos osztályozási és regressziós modellek is taglalja, hogy a terjesztési előre fizetett összegek tipp.
 
-Az eljárást követi a [csoportos adatelemzési folyamat (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) munkafolyamat. Bemutatjuk, hogyan állíthatja be az adatelemzési környezetet az adatok betöltése az SQL dw-vel, és hogyan használhatja az SQL DW, vagy egy IPython Notebook Fedezze fel az adatokat és a visszafejtés modell funkciói. Ezután bemutatjuk, hogyan készíthet és helyezhet üzembe az Azure Machine Learning-modell.
+Az eljárást követi a [csoportos adatelemzési folyamat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) munkafolyamat. Bemutatjuk, hogyan állíthatja be az adatelemzési környezetet az adatok betöltése az SQL dw-vel, és hogyan használhatja az SQL DW, vagy egy IPython Notebook Fedezze fel az adatokat és a visszafejtés modell funkciói. Ezután bemutatjuk, hogyan készíthet és helyezhet üzembe az Azure Machine Learning-modell.
 
 ## <a name="dataset"></a>A NYC Taxi lelassítja adatkészlet
 A NYC Taxi útadatok körülbelül 20GB tömörített CSV-fájlok (~ 48GB tömörítetlen) áll, minden egyes út 173 milliónál egyes utak és a díjakat fizetni. Minden egyes út rekord tartalmazza a begyűjtés és dropoff helyek és időpontok, anonimizált feltörés (illesztőprogramok) jogosítvány száma, és a medallion (taxi az egyedi azonosító) számát. Az adatok minden lelassítja ismerteti az év 2013-hoz, és minden hónapban megtalálható a következő két adatkészletet:

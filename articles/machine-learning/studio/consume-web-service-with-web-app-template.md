@@ -1,5 +1,5 @@
 ---
-title: Machine Learning webszolgáltatások használata webalkalmazás-sablonok használatával |} A Microsoft Docs
+title: Webalkalmazás-sablonok – az Azure Machine Learning Studio a Machine Learning webszolgáltatások használata |} A Microsoft Docs
 description: Az Azure Marketplace-en webalkalmazás-sablonok segítségével az Azure Machine Learning prediktív webszolgáltatás felhasználása.
 keywords: webszolgáltatás, operacionalizálás, REST API-t, a machine learning
 services: machine-learning
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 39add830d44cac43e620a4c13d20e282f3d59e47
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 2c0bba4a442b73b82ebc271c3516f65954d6d8a4
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264217"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311568"
 ---
 # <a name="consume-an-azure-machine-learning-web-service-by-using-a-web-app-template"></a>Az Azure Machine Learning webszolgáltatás felhasználhatják a webalkalmazás-sablonok használatával
 
