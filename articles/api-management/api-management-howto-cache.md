@@ -12,16 +12,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/15/2016
+ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 7458ad6e0a864d742f74ce743ce3179594113c00
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
-ms.translationtype: HT
+ms.openlocfilehash: 2c417a0e9a3f50032aa3c97ced57d3249bc7c93a
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
-ms.locfileid: "26127777"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620667"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Gyorsítótárazás hozzáadása az Azure API Management teljesítményének javításához
+
 Az API Management műveleteit konfigurálni lehet a válaszok gyorsítótárazásához. A válaszok gyorsítótárazása jelentősen csökkentheti az API-k késleltetését, sávszélesség-használatát és a webszolgáltatások terhelését olyan adatok esetén, amelyek nem változnak gyakran.
  
 A gyorsítótárazással kapcsolatos részletes információk: [Az API Management gyorsítótárazási házirendjei](api-management-caching-policies.md) és [Egyedi gyorsítótárazás az Azure API Management szolgáltatásban](api-management-sample-cache-by-key.md).
@@ -34,6 +35,11 @@ Ismertetett témák:
 > * Válaszok gyorsítótárazásának hozzáadása az API esetében
 > * A gyorsítótárazás ellenőrzése működés közben
 
+## <a name="availability"></a>Rendelkezésre állás
+
+> [!NOTE]
+> Belső gyorsítótár nem érhető el a a **fogyasztás** az Azure API Management szintjéhez. Is [egy külső Redis cache használata](api-management-howto-cache-external.md) helyette.
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez:
@@ -43,7 +49,7 @@ Az oktatóanyag elvégzéséhez:
 
 ## <a name="caching-policies"> </a>A gyorsítótárazási házirendek hozzáadása
 
-A példában bemutatott gyorsítótárazási házirendek használata esetén a **GetSpeakers** műveletre irányuló első kérés a háttérszolgáltatásból küld vissza választ. Ez a válasz gyorsítótárazva lesz, és egy kulccsal lesz ellátva a megadott fejlécek és lekérdezési karakterlánc paraméterek alapján. A művelet későbbi, egyező paraméterekkel rendelkező hívásai a gyorsítótárazott választ küldik vissza, egészen addig, amíg a gyorsítótárazás időköze le nem jár.
+A példában bemutatott gyorsítótárazási házirendek használata esetén a **GetSpeakers** műveletre irányuló első kérés a háttérszolgáltatásból küld vissza választ. Ez a válasz gyorsítótárazva lesz, és egy kulccsal lesz ellátva a megadott fejlécek és lekérdezési sztring paraméterek alapján. A művelet későbbi, egyező paraméterekkel rendelkező hívásai a gyorsítótárazott választ küldik vissza, egészen addig, amíg a gyorsítótárazás időköze le nem jár.
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 2. Tallózzon az APIM-példányra.
@@ -51,11 +57,11 @@ A példában bemutatott gyorsítótárazási házirendek használata esetén a *
 4. Kattintson a **Demo Conference API** elemre az API-k listájában.
 5. Válassza a **GetSpeakers** lehetőséget.
 6. A képernyő felső részén válassza a **Tervezés** lapot.
-7. A **Bejövő feldolgozás** ablakban kattintson a háromszögre (a ceruza mellett).
+7. Az a **bejövő feldolgozás** területén kattintson a **</>** ikonra.
 
-    ![kódszerkesztő](media/api-management-howto-cache/code-editor.png)
-8. Válassza a **Kódszerkesztő** lehetőséget.
-9. Az **inbound** elemben adja hozzá a következő szabályzatot:
+    ![kódszerkesztő](media/api-management-howto-cache/code-editor.png) 
+
+8. Az **inbound** elemben adja hozzá a következő szabályzatot:
 
         <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
             <vary-by-header>Accept</vary-by-header>
@@ -63,11 +69,14 @@ A példában bemutatott gyorsítótárazási házirendek használata esetén a *
             <vary-by-header>Authorization</vary-by-header>
         </cache-lookup>
 
-10. Az **outbound** elemben adja hozzá a következő szabályzatot:
+9. Az **outbound** elemben adja hozzá a következő szabályzatot:
 
         <cache-store caching-mode="cache-on" duration="20" />
 
     Az **Időtartam** megadja a gyorsítótárazott válaszok lejárati időközét. Ebben a példában az időköz **20** másodperc.
+
+> [!TIP]
+> Ha használ egy külső gyorsítótár leírtak szerint [egy külső Redis cache az Azure API Management használata](api-management-howto-cache-external.md), előfordulhat, hogy szeretne megadni a `cache-preference` a gyorsítótárazási házirendek attribútumát. Lásd: [API Management gyorsítótárazási házirendjei](api-management-caching-policies.md) további részletekért.
 
 ## <a name="test-operation"></a>Művelet meghívása és a gyorsítótárazás tesztelése
 A gyorsítótárazás működés közbeni megtekintéséhez hívja meg a műveletet a fejlesztői portálról.
@@ -82,6 +91,7 @@ A gyorsítótárazás működés közbeni megtekintéséhez hívja meg a művele
 ## <a name="next-steps"></a>Következő lépések
 * További információt a gyorsítótárazási házirendekről az [API Management házirend-referencia][API Management policy reference] oktatóanyag [Gyorsítótárazási házirendek][Caching policies] szakaszában talál.
 * További információ az elemeknek a házirend-kifejezések kulcsával történő gyorsítótárazásáról: [Egyéni gyorsítótárazás az Azure API Management szolgáltatásban](api-management-sample-cache-by-key.md).
+* Külső Redis cache használatával kapcsolatos további információkért lásd: [egy külső Redis cache az Azure API Management használata](api-management-howto-cache-external.md).
 
 [api-management-management-console]: ./media/api-management-howto-cache/api-management-management-console.png
 [api-management-echo-api]: ./media/api-management-howto-cache/api-management-echo-api.png

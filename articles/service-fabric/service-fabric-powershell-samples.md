@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: service-fabric
-ms.date: 04/09/2018
+ms.date: 11/29/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 65f6252ecfa4e5850824fc7aa2e6eca2bdb88692
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: 5d8137b2ca6c47713b7a681090963dd2749dd1f2
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205756"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634047"
 ---
 # <a name="azure-powershell-samples"></a>Azure PowerShell-minták
 
@@ -33,7 +33,6 @@ A következő táblázat a Service Fabric-fürtöket, -alkalmazásokat és -szol
 |-|-|
 | **Fürt létrehozása** ||
 | [Fürt létrehozása (Azure)](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)| Létrehoz egy Azure Service Fabric-fürtöt. |
-|[Tesztfürt létrehozása (Azure)](./scripts/service-fabric-powershell-create-test-cluster.md)| Létrehoz egy három csomópontos Service Fabric-tesztfürtöt az Azure-ban.|
 | **A fürt, a csomópontok és az infrastruktúra kezelése** ||
 | [Alkalmazástanúsítvány hozzáadása](./scripts/service-fabric-powershell-add-application-certificate.md)| Egy X.509-alkalmazástanúsítványt rendel a fürt összes csomópontjához. |
 | [Az RPD-porttartomány frissítése a fürt virtuális gépein](./scripts/service-fabric-powershell-change-rdp-port-range.md)|Módosítja az RPD-porttartományt egy üzembe helyezett fürt csomópontbeli virtuális gépein.|

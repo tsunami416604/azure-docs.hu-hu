@@ -11,12 +11,12 @@ ms.service: automation
 ms.component: change-inventory-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: ad9fc7deb73cdcbcf83cc10b9b28f7d7e4ac7661
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: fa483ea766d1c93256054a5360470edcbef94250
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283791"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635118"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Az Azure- és nem Azure-gépeken telepített szoftverek felderítése
 
@@ -70,7 +70,7 @@ Az **+ Azure-beli virtuális gép hozzáadása** elemre kattintva megnyílik a *
 
 ## <a name="onboard-a-non-azure-machine"></a>Nem Azure-beli gép előkészítése
 
-Nem Azure-beli gépek hozzáadásához telepítse a [Windows-](../log-analytics/log-analytics-agent-windows.md) vagy [Linux](automation-linux-hrw-install.md)-ügynököt, operációs rendszertől függően. Az ügynök telepítése után lépjen az Automation-fiókjára, majd a **KONFIGURÁCIÓKEZELÉS** területen az **Inventory** megoldásra. A **Gépek kezelése** gombra kattintva megjelenik a Log Analytics-munkaterületre jelentő gépek listája, amelyeken a megoldás nincs engedélyezve. Válassza a környezetnek megfelelő beállítást.
+Nem Azure-beli gépek hozzáadásához telepítse a [Windows-](../azure-monitor/platform/agent-windows.md) vagy [Linux](automation-linux-hrw-install.md)-ügynököt, operációs rendszertől függően. Az ügynök telepítése után lépjen az Automation-fiókjára, majd a **KONFIGURÁCIÓKEZELÉS** területen az **Inventory** megoldásra. A **Gépek kezelése** gombra kattintva megjelenik a Log Analytics-munkaterületre jelentő gépek listája, amelyeken a megoldás nincs engedélyezve. Válassza a környezetnek megfelelő beállítást.
 
 * **Engedélyezés az összes elérhető gépen** – Ez a beállítás a megoldást az adott pillanatban a Log Analytics-munkaterületre jelentő összes gépen engedélyezi.
 * **Engedélyezés az összes elérhető és jövőbeli gépen** – Ez a beállítás a megoldást az adott pillanatban a Log Analytics-munkaterületre jelentő összes gépen, majd később a munkaterülethez hozzáadott összes további gépen engedélyezi.

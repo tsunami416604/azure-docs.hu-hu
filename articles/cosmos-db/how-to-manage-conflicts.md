@@ -7,20 +7,20 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: 6b44e08fc1dce489e703bea1cbef2a7e94ae0f2a
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: HT
+ms.openlocfilehash: 83785e532523c3e921b0772ddaa50502b2dc867d
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961029"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633792"
 ---
 # <a name="manage-conflicts-between-regions"></a>Régiók közötti ütközések kezelése
 
-Ha adatütközés lép fel többrégiós írások esetében, az ütközés különböző ütközésfeloldási szabályzatok segítségével oldható fel. A cikk bemutatja, hogyan kezelheti az ütközésfeloldási szabályzatokat különböző nyelvi platformokon.
+Ha adatütközés lép fel többrégiós írások esetében, az ütközés különböző ütközésfeloldási szabályzatok segítségével oldható fel. Ez a cikk bemutatja, hogyan ütközés feloldása házirendek kezelése a platformok eltérő nyelv használatával.
 
 ## <a name="create-a-custom-conflict-resolution-policy"></a>Egyéni ütközésfeloldási szabályzat létrehozása
 
-Ezek a minták bemutatják, hogyan állíthat be egyéni ütközésfeloldási szabályzatot egy tárolóhoz. Az ütközések az ütközéscsatornán jelennek meg.
+Ezek a minták bemutatják, hogyan állíthat be egyéni ütközésfeloldási szabályzatot egy tárolóhoz. Az ütközések a ütközés hírcsatorna jelenik meg.
 
 ### <a id="create-custom-conflict-resolution-policy-dotnet"></a>.NET SDK
 
@@ -83,9 +83,9 @@ manual_collection = {
 manual_collection = client.CreateContainer(database['_self'], collection)
 ```
 
-## <a name="create-a-custom-conflict-resolution-policy-with-stored-procedure"></a>Egyéni ütközésfeloldási szabályzat létrehozása tárolt eljárással
+## <a name="create-a-custom-conflict-resolution-policy-with-a-stored-procedure"></a>Hozzon létre egy egyéni ütközésfeloldási házirend a tárolt eljárás
 
-Ezek a minták bemutatják, hogy az ütközések feloldásához hogyan állíthat be egyéni ütközésfeloldási szabályzatot egy tárolóhoz tárolt eljárás használatával. Ezek az ütközések **nem** jelennek meg az ütközéscsatornában, kivéve, ha hiba történik a tárolt eljárásban.
+Ezek a minták bemutatják, hogy az ütközések feloldásához hogyan állíthat be egyéni ütközésfeloldási szabályzatot egy tárolóhoz tárolt eljárás használatával. Az ütközések nem jelennek meg az ütközést, kivéve, ha hiba van a tárolt eljárás hírcsatorna.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>.NET SDK
 
@@ -102,7 +102,7 @@ DocumentCollection udpCollection = await createClient.CreateDocumentCollectionIf
   });
 ```
 
-A `resolver` tárolt eljárást a tároló létrehozása után kell létrehozni.
+A tároló létrehozása után létre kell hoznia a `resolver` tárolt eljárást.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-java-async"></a>Java Async SDK
 
@@ -114,7 +114,7 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-A `resolver` tárolt eljárást a tároló létrehozása után kell létrehozni.
+A tároló létrehozása után létre kell hoznia a `resolver` tárolt eljárást.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-java-sync"></a>Java Sync SDK
 
@@ -127,7 +127,7 @@ udpCollection.setConflictResolutionPolicy(udpPolicy);
 DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, udpCollection);
 ```
 
-A `resolver` tárolt eljárást a tároló létrehozása után kell létrehozni.
+A tároló létrehozása után létre kell hoznia a `resolver` tárolt eljárást.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
@@ -146,7 +146,7 @@ const { container: udpContainer } = await database.containers.createIfNotExists(
 );
 ```
 
-A `resolver` tárolt eljárást a tároló létrehozása után kell létrehozni.
+A tároló létrehozása után létre kell hoznia a `resolver` tárolt eljárást.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python SDK
 
@@ -154,11 +154,11 @@ A `resolver` tárolt eljárást a tároló létrehozása után kell létrehozni.
 
 ```
 
-A `resolver` tárolt eljárást a tároló létrehozása után kell létrehozni.
+A tároló létrehozása után létre kell hoznia a `resolver` tárolt eljárást.
 
-## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>A legutolsó írót érvényesnek tekintő ütközésfeloldási szabályzat létrehozása
+## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>A wins-utolsó-író ütközésfeloldási házirend létrehozása
 
-Ezek a minták bemutatják, hogyan kell létrehozni egy, a legutolsó írót érvényesnek tekintő ütközésfeloldási szabályzatot. Ha az elérési út nincs beállítva vagy érvénytelen, a rendszer az alapértelmezett `_ts` tulajdonságot használja (az időbélyegmezőt). Az ütközések **nem** jelennek meg az ütközéscsatornában.
+Ezek a minták ismertetik, hogyan állítható be a tároló egy wins-utolsó-író ütközésfeloldási házirend. Ha az elérési útja nincs beállítva, vagy érvénytelen, a rendszer alapértelmezés szerint a `_ts` tulajdonság. Ez a tulajdonság az időbélyegmezőt. Az ütközések a ütközés hírcsatorna nem jelennek meg.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK
 
@@ -210,7 +210,7 @@ const { container: lwwContainer } = await database.containers.createIfNotExists(
 );
 ```
 
-Ha kihagyja a `conflictResolutionPath` tulajdonságot, a rendszer az alapértelmezett `_ts` tulajdonságot használja.
+Ha kihagyja a `conflictResolutionPath` tulajdonság, a rendszer alapértelmezés szerint a `_ts` tulajdonság.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-python"></a>Python SDK
 
@@ -227,7 +227,7 @@ udp_collection = self.try_create_document_collection(create_client, database, ud
 
 ## <a name="read-from-conflict-feed"></a>Olvasás az ütközéscsatornából
 
-Ezek a minták bemutatják, hogyan lehet olvasni egy tároló ütközéscsatornájából. Csak azok az ütközések jelennek meg az ütközéscsatornában, amelyeket nem sikerült automatikusan feloldani.
+Ezek a minták bemutatják, hogyan lehet olvasni egy tároló ütközéscsatornájából. Ütközések jelennek meg az adatcsatorna csak akkor, ha azok nem automatikusan feloldja az ütközést.
 
 ### <a id="read-from-conflict-feed-dotnet"></a>.NET SDK
 
@@ -277,8 +277,8 @@ while conflict:
 
 ## <a name="next-steps"></a>További lépések
 
-Most már készen áll a következő Cosmos DB-fogalmak elsajátítására:
+Ismerje meg a következő Azure Cosmos DB-fogalmak:
 
 * [Particionálás és adatelosztás](partition-data.md)
-* [Indexelés a Cosmos DB-ben](indexing-policies.md)
+* [Az Azure Cosmos DB indexelése](indexing-policies.md)
 

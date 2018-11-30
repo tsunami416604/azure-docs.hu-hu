@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 11/29/2018
 ms.author: anwestg
-ms.openlocfilehash: aa745d827db7633dc9f8601f65fa31dfadbb4076
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: cd16bf400c5a5e5a07c7e2dc459d801e6fc810b9
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614055"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635373"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Az App Service erőforrás-szolgáltató hozzáadása az Azure Stackhez
 
@@ -202,17 +202,17 @@ Az App Service erőforrás-szolgáltató üzembe helyezéséhez kövesse az alá
 
     ![App Service-kezelése](media/azure-stack-app-service-deploy/image12.png)
 
-   >[!IMPORTANT]
-   >Ha Ön üzembe helyezése meglévő virtuális hálózattal és belső IP-cím használatával szeretne csatlakozni a fájlkiszolgáló, hozzá kell adnia egy kimenő biztonsági szabályt. Ez a szabály lehetővé teszi a feldolgozó alhálózat és a fájlkiszolgáló között SMB-forgalom.  Ehhez nyissa meg a WorkersNsg a felügyeleti portálon, és adjon hozzá egy kimenő biztonsági szabályt a következő tulajdonságokkal:<br>
-    >  - Forrás: összes
-    >  - Forrás porttartomány: *
-    >  - Cél: IP-címek
-    >  - Cél IP-címtartomány: IP-címtartományt a fájlkiszolgáló számára
-    >  - Cél porttartomány: 445-ös
-    >  - Protokoll: TCP
-    >  - Művelet: engedélyezése
-    >  - Prioritás: 700
-    >  - Name: Outbound_Allow_SMB445
+    Ha Ön üzembe helyezése meglévő virtuális hálózattal és belső IP-cím használatával szeretne csatlakozni a fájlkiszolgáló, hozzá kell adnia egy kimenő biztonsági szabályt. Ez a szabály lehetővé teszi a feldolgozó alhálózat és a fájlkiszolgáló között SMB-forgalom.  Ehhez nyissa meg a WorkersNsg a felügyeleti portálon, és adjon hozzá egy kimenő biztonsági szabályt a következő tulajdonságokkal:
+
+    - Forrás: összes
+    - Forrás porttartomány: *
+    - Cél: IP-címek
+    - Cél IP-címtartomány: IP-címtartományt a fájlkiszolgáló számára
+    - Cél porttartomány: 445-ös
+    - Protokoll: TCP
+    - Művelet: engedélyezése
+    - Prioritás: 700
+    - Name: Outbound_Allow_SMB445
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>Az Azure Stack App Service kipróbálása
 

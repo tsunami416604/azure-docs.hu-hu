@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 1d7c880a56c79d516c3904c3f532eb7006f0b68c
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: be4cbc7e955e56853809378f98e9733ffe4a20c3
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705837"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633724"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon
 
@@ -40,7 +40,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Tesztelési hálózati környezet beállítása
 > * Tűzfal üzembe helyezése
 > * Alapértelmezett útvonal létrehozása
-> * Alkalmazás konfigurálása a github.com webhelyhez való hozzáférés engedélyezéséhez
+> * Egy alkalmazást, az msn.com való hozzáférés engedélyezése
 > * Hálózatszabály konfigurálása külső DNS-kiszolgálókhoz való hozzáférés engedélyezéséhez
 > * A tűzfal tesztelése
 
@@ -78,7 +78,7 @@ A VNet három alhálózatot fog tartalmazni.
 11. Használja a többi alapértelmezett beállítást, és kattintson a **Létrehozás** elemre.
 
 > [!NOTE]
-> Az AzureFirewallSubnet alhálózat mérete legalább /25.
+> A AzureFirewallSubnet alhálózat minimális mérete/26-os.
 
 ### <a name="create-additional-subnets"></a>További alhálózatok létrehozása
 
@@ -136,7 +136,7 @@ Helyezze üzembe a tűzfalat a virtuális hálózaton.
 2. Kattintson a **Hálózat**, majd a **Kiemelt**, végül az **Összes megtekintése** elemre.
 3. Kattintson a **Tűzfal** > **Létrehozás** parancsra. 
 4. A **Tűzfal létrehozása** oldalon konfigurálja a tűzfalat a következő táblázatban található értékekkel:
-   
+
    |Beállítás  |Érték  |
    |---------|---------|
    |Name (Név)     |Test-FW01|
@@ -146,12 +146,12 @@ Helyezze üzembe a tűzfalat a virtuális hálózaton.
    |Válasszon egy virtuális hálózatot     |**Meglévő használata**: Test-FW-VN|
    |Nyilvános IP-cím     |**Új létrehozása**. A nyilvános IP-címnek standard termékváltozat típusúnak kell lennie.|
 
-2. Kattintson az **Áttekintés + létrehozás** elemre.
-3. Tekintse át az összefoglalást, majd kattintson a **Létrehozás** elemre a tűzfal létrehozásához.
+5. Kattintson az **Áttekintés + létrehozás** elemre.
+6. Tekintse át az összefoglalást, majd kattintson a **Létrehozás** elemre a tűzfal létrehozásához.
 
    Az üzembe helyezés néhány percet vesz igénybe.
-4. Ha az üzembe helyezés elkészült, nyissa meg a **Test-FW-RG** erőforráscsoportot, majd kattintson a **Test-FW01** tűzfalra.
-6. Jegyezze fel a magánhálózati IP-címet. Később, az alapértelmezett útvonal létrehozásakor szükség lesz rá.
+7. Ha az üzembe helyezés elkészült, nyissa meg a **Test-FW-RG** erőforráscsoportot, majd kattintson a **Test-FW01** tűzfalra.
+8. Jegyezze fel a magánhálózati IP-címet. Később, az alapértelmezett útvonal létrehozásakor szükség lesz rá.
 
 ## <a name="create-a-default-route"></a>Alapértelmezett útvonal létrehozása
 
@@ -182,7 +182,7 @@ A **Workload-SN** alhálózatot konfigurálja úgy, hogy a kimenő alapértelmez
 
 ## <a name="configure-an-application-rule"></a>Alkalmazásszabály konfigurálása
 
-Ez az az alkalmazásszabály, amely lehetővé teszi a github.com webhelyhez való kimenő hozzáférést.
+Ez az a alkalmazás szabály, amely lehetővé teszi a kimenő hozzáférést msn.com.
 
 1. Nyissa meg a **Test-FW-RG** erőforráscsoportot, majd kattintson a **Test-FW01** tűzfalra.
 2. A **Test-FW01** oldal **Beállítások** területén kattintson a **Szabályok** elemre.
@@ -194,7 +194,7 @@ Ez az az alkalmazásszabály, amely lehetővé teszi a github.com webhelyhez val
 8. A **szabályok**, **cél teljes tartománynevek**, a **neve**, típus **AllowGH**.
 9. A **Forráscímek** mezőbe írja be a következőt: **10.0.2.0/24**.
 10. A **Protokoll:port** mezőbe írja be a következőt: **http, https**.
-11. A **Cél FQDN** mezőbe írja be a következőt: **github.com**.
+11. A **cél teljes TARTOMÁNYNEVEK**, típus **msn.com**
 12. Kattintson a **Hozzáadás** parancsra.
 
 Az Azure Firewall tartalmaz egy beépített szabálygyűjteményt az infrastruktúra alapértelmezés szerint engedélyezett teljes tartományneveiről. Ezek a teljes tartománynevek csak az adott platformra vonatkoznak, egyéb célra nem használhatók. További információ: [Infrastruktúra FQDN-jei](infrastructure-fqdns.md).
@@ -204,17 +204,17 @@ Az Azure Firewall tartalmaz egy beépített szabálygyűjteményt az infrastrukt
 Ez az a hálózatszabály, amely lehetővé teszi a kimenő hozzáférést két IP-címhez az 53-as porton (DNS).
 
 1. Kattintson a **szabálygyűjtemény hálózati** fülre.
-1. Kattintson a **Hálózati szabálygyűjtemény hozzáadása** elemre.
-2. A **Név** mezőbe írja be a következőt: **Net-Coll01**.
-3. A **Prioritás** mezőbe írja be a következőt: **200**.
-4. A **Művelet** beállításnál válassza az **Engedélyezés** lehetőséget.
+2. Kattintson a **Hálózati szabálygyűjtemény hozzáadása** elemre.
+3. A **Név** mezőbe írja be a következőt: **Net-Coll01**.
+4. A **Prioritás** mezőbe írja be a következőt: **200**.
+5. A **Művelet** beállításnál válassza az **Engedélyezés** lehetőséget.
 
 6. A **Szabályok** területen a **Név** mezőbe írja be a következőt: **AllowDNS**.
-8. A **Protokoll** beállításnál válassza az **UDP** lehetőséget.
-9. A **Forráscímek** mezőbe írja be a következőt: **10.0.2.0/24**.
-10. A Célcímek mezőbe írja be a következőt: **209.244.0.3,209.244.0.4**
-11. A **Célportok** mezőbe írja be a következőt: **53**.
-12. Kattintson a **Hozzáadás** parancsra.
+7. A **Protokoll** beállításnál válassza az **UDP** lehetőséget.
+8. A **Forráscímek** mezőbe írja be a következőt: **10.0.2.0/24**.
+9. A Célcímek mezőbe írja be a következőt: **209.244.0.3,209.244.0.4**
+10. A **Célportok** mezőbe írja be a következőt: **53**.
+11. Kattintson a **Hozzáadás** parancsra.
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>Módosítsa az **Srv-Work** hálózati adapter elsődleges és másodlagos DNS-címét.
 
@@ -235,12 +235,12 @@ Most tesztelje a tűzfalat, hogy meggyőződjön a megfelelő működéséről.
 1. Az Azure Portalon tekintse át az **Srv-Work** virtuális gép hálózati beállításait, és jegyezze fel a gép magánhálózati IP-címét.
 2. Csatlakoztasson egy távoli asztalt az **Srv-Jump** virtuális géphez, majd onnan hozzon létre egy távoli asztali kapcsolatot az **Srv-Work** magánhálózati IP-címéhez.
 
-5. Nyissa meg az Internet Explorert, és navigáljon a következő címre: http://github.com.
-6. Kattintson az **OK** > **Bezárás** gombra a biztonsági riasztások oldalon.
+3. Nyissa meg az Internet Explorert, és navigáljon a következő címre: http://msn.com.
+4. Kattintson az **OK** > **Bezárás** gombra a biztonsági riasztások oldalon.
 
-   Ekkor a GitHub kezdőlapja jelenik meg.
+   Az MSN kezdőlapon megtekintheti.
 
-7. Nyissa meg a következő címet: http://www.msn.com.
+5. Nyissa meg a következő címet: http://www.msn.com.
 
    A tűzfal blokkolja a hozzáférést.
 

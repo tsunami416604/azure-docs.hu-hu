@@ -15,18 +15,18 @@ ms.workload: NA
 ms.date: 09/27/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 12880c3aada46b1656cf37b0cb539292cce930ef
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: a720bb906192731b8b636939e22b13a8e52bbe76
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625708"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632891"
 ---
 # <a name="tutorial-deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Oktatóanyag: Windows-alapú Service Fabric-fürt üzembe helyezése Azure virtuális hálózatban
 
 Ez az oktatóanyag egy sorozat első része. Megismerheti, hogyan helyezhet üzembe Windows rendszert futtató Service Fabric-fürtöt [Azure virtuális hálózatban (VNET)](../virtual-network/virtual-networks-overview.md) és [hálózati biztonsági csoportban](../virtual-network/virtual-networks-nsg.md) a PowerShell és egy sablon használatával. Amikor végzett, a felhőben futó fürttel fog rendelkezni, amelyre alkalmazásokat telepíthet.  Linux-alapú fürt létrehozása Azure CLI használatával: [Biztonságos Linux-fürt létrehozása az Azure-ban](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
-Ez az oktatóanyag egy éles forgatókönyvet ismertet.  Ha gyorsan szeretne egy kis méretű fürtöt létrehozni tesztelés céljából, tekintse meg a [háromcsomópont tesztfürt létrehozásáról](./scripts/service-fabric-powershell-create-test-cluster.md) szóló cikket.
+Ez az oktatóanyag egy éles forgatókönyvet ismertet.  Ha azt szeretné, hozzon létre egy kisebb fürtöt tesztelési célokra, lásd: [egy tesztfürt létrehozása](./scripts/service-fabric-powershell-create-secure-cluster-cert.md).
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
