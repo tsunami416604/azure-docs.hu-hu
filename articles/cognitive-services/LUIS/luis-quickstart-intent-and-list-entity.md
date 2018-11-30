@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 2ce6e7c796faf0c7377a33dabe1e8c05e81fde2f
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: a4e294687b6c3ea2ba6ff8003e7a8f1ac69ea639
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280706"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425071"
 ---
 # <a name="tutorial-4-extract-exact-text-matches"></a>4. oktatóanyag: Pontos szövegegyezések kinyerése
 Ebben az oktatóanyagban megismerheti, hogyan kérheti le az elemek előre meghatározott listájával egyező adatokat. A lista minden eleme tartalmazhatja szinonimák egy listáját. Az Emberi erőforrások alkalmazásban egy alkalmazottat számos kulcsfontosságú információ azonosíthat, például a név, az e-mail-cím, a telefonszám és az USA-beli szövetségi adóazonosító szám. 
@@ -41,7 +41,7 @@ A listaentitás megfelelő választás az ilyen típusú adatok esetén, amikor:
 > * Közzététel
 > * Szándék és entitások lekérése a végpontról
 
-[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>Meglévő alkalmazás használata
 Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű alkalmazással. 
@@ -57,7 +57,7 @@ Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforr
 
 ## <a name="moveemployee-intent"></a>MoveEmployee szándék
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget. 
 
@@ -84,7 +84,7 @@ Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforr
 
     Ne feledje, hogy a number és a datetimeV2 az előző oktatóanyagban hozzá lettek adva, így automatikusan meg lesznek címkézve, ha szerepelnek egy kimondottszöveg-mintában.
 
-    [!INCLUDE[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
+    [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
 ## <a name="employee-list-entity"></a>Alkalmazottlista-entitás
 Most, hogy a **MoveEmployee** szándéknak vannak kimondottszöveg-mintái, a LUIS-nak meg kell értenie, hogy az alkalmazott pontosan micsoda. 

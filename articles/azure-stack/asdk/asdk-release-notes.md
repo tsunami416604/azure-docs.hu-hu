@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: 27dbd4215deef6574622ffcd2c62a64503459258
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: f853bb32f7c452f1b09ca337db2a866bd0890b82
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515760"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427250"
 ---
 # <a name="asdk-release-notes"></a>ASDK kibocsátási megjegyzései  
 Ez a cikk ismerteti fejlesztései, javításokat és ismert problémák az Azure Stack Development Kit (ASDK). Ha nem biztos abban, hogy melyik verziót futtatja, akkor az [ellenőrizhető a portál használatával](.\.\azure-stack-updates.md#determine-the-current-version).
@@ -233,7 +233,7 @@ A build tartalmaz a következő fejlesztések és javítások az Azure Stackhez.
 
 - <!-- ASDK --> **A Virtual Machine Scale Sets katalóguselemek immár beépített**.  Katalóguselemek virtuálisgép-méretezési most már elérhetők a felhasználói és rendszergazdai portálokon őket letöltése nélkül. 
 
-- <!-- IS, ASDK --> **Skálázás virtuálisgép-méretezési**.  A portálon való [méretezése egy virtuálisgép-méretezési csoportban](/azure/azure-stack/azure-stack-compute-add-scalesets.md#scale-a-virtual-machine-scale-set) (VMSS).   
+- <!-- IS, ASDK --> **Skálázás virtuálisgép-méretezési**.  A portálon való [méretezése egy virtuálisgép-méretezési csoportban](../azure-stack-compute-add-scalesets.md#scale-a-virtual-machine-scale-set) (VMSS).   
 
 - <!-- 2489570 | IS ASDK--> **Egyéni IPSec/IKE-házirend konfigurációk támogatása** a [VPN-átjárók az Azure Stackben](/azure/azure-stack/azure-stack-vpn-gateway-about-vpn-gateways).
 

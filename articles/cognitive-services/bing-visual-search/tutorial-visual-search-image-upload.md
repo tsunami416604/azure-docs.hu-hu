@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 2e65313207e2bb29ae269425012cc6c340261ba4
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
-ms.translationtype: HT
+ms.openlocfilehash: b13f2e5c96ba50fc76d7bfae256e5fcc1c8b56ce
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888339"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443457"
 ---
 # <a name="tutorial-breaking-down-bing-visual-search-upload"></a>Oktatóanyag: A Bing Visual Search feltöltési folyamatának lebontása
 
@@ -23,6 +23,15 @@ Ez az oktatóanyag lebontja a kép Bingbe való feltöltésének és a megállap
 
 Ez az oktatóanyag azoknak a fejlesztőknek szól, akik a Bing Visual Search által visszaadott válasz tartalmát szeretnék megvizsgálni. Nem alkalmaz minden használati és megjelenítési követelményt (például nem biztosít hivatkozást a Microsoft adatvédelmi szabályzatához). Az összes használati követelmény megismeréséhez tekintse meg a [Bing használati és megjelenítési követelményeit](./use-and-display-requirements.md).
 
+Ebben az oktatóanyagban szüksége lesz egy előfizetést, S9 árkategória elindításához, ahogyan [Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+
+Előfizetés indítása az Azure Portalon:
+1. Az Azure portál arról, hogy a tetején a szövegmezőben adja meg a "BingSearchV7" `Search resources, services, and docs`.  
+2. Marketplace-en a legördülő listában, válassza a `Bing Search v7`.
+3. Adja meg `Name` az új erőforrás.
+4. Válassza ki `Pay-As-You-Go` előfizetés.
+5. Válassza ki `S9` tarifacsomag.
+6. Kattintson a `Enable` az előfizetés indításához.
 
 ## <a name="where-to-start"></a>Első lépések
 

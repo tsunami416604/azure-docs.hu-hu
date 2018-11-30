@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 05/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: 4cb6e79b563ac0172f93b3a721b79c230a96a1d5
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
-ms.translationtype: HT
+ms.openlocfilehash: 25b01de47767e335d614aa0a8cf32c344c7305d8
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457986"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442846"
 ---
 # <a name="quickstart-bing-visual-search-sdk-c"></a>Rövid útmutató: Bing Visual Search SDK C#
 
@@ -33,8 +33,17 @@ A kódforgatókönyvek a következő kategóriákban vannak dokumentálva:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Visual Studio 2017. Ha szükséges, töltse le az ingyenes közösségi verziót innen: https://www.visualstudio.com/vs/community/.
-* Az SDK-hívások hitelesítéséhez egy Cognitive Services API-kulcs szükséges. Regisztráljon egy [ingyenes próbaverzióra](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7). A próbaverziós kulcs hét napig érvényes, másodpercenként egy hívással. Éles környezeti forgatókönyvekhez [vásároljon hozzáférési kulcsot](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). [Díjszabási információ](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/).
-* .NET Core SDK- és .NET Core 1.1-alapú alkalmazások futtatása. A CORE, a keretrendszer és a futtatókörnyezet innen tölthetők le: https://www.microsoft.com/net/download/.
+* Ebben a rövid, szüksége lesz egy előfizetést, S9 árkategória elindításához, ahogyan [Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+
+Előfizetés indítása az Azure Portalon:
+1. A szövegmezőbe, amely szerint az Azure portal tetején adja meg a "BingSearchV7" `Search resources, services, and docs`.  
+2. Marketplace-en a legördülő listában, válassza a `Bing Search v7`.
+3. Adja meg `Name` az új erőforrás.
+4. Válassza ki `Pay-As-You-Go` előfizetés.
+5. Válassza ki `S9` tarifacsomag.
+6. Kattintson a `Enable` az előfizetés indításához.
+
+* A .NET Core SDK- és .NET Core 1.1-alkalmazások futtatásának képessége. A CORE, a keretrendszer és a futtatókörnyezet innen tölthetők le: https://www.microsoft.com/net/download/.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
 

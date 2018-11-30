@@ -10,16 +10,26 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 26fb74dc122682e915c0f9a517bdee58d6c974db
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 4e08044fbfa36663da2da9ed18adf3249cb59930
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291198"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444142"
 ---
 # <a name="tutorial-visual-search-single-page-web-app"></a>Oktatóanyag: Egyoldalas Visual Search-webalkalmazás
 
 Ez az [Egyoldalas Visual Search-webalkalmazás](tutorial-bing-visual-search-single-page-app.md) című Bing Visual Search-oktatóanyagban ismertetett teljes forráskód. Az alkalmazás futtatásához másolja a forráskódot a Jegyzettömbbe vagy más szövegszerkesztőbe, és mentse `bing-visual-search.html` néven. Ezután nyissa meg a mentett fájlt a Microsoft Edge-ben vagy más népszerű böngészőben.
+## <a name="prerequisites"></a>Előfeltételek
+Ebben a rövid, szüksége lesz egy előfizetést, S9 árkategória elindításához, ahogyan [Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+
+Előfizetés indítása az Azure Portalon:
+1. A szövegmezőbe, amely szerint az Azure portal tetején adja meg a "BingSearchV7" `Search resources, services, and docs`.  
+2. Marketplace-en a legördülő listában, válassza a `Bing Search v7`.
+3. Adja meg `Name` az új erőforrás.
+4. Válassza ki `Pay-As-You-Go` előfizetés.
+5. Válassza ki `S9` tarifacsomag.
+6. Kattintson a `Enable` az előfizetés indításához.
 
 ```html
 <!DOCTYPE html>

@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: ac56475f39f820c2d2af961a1813859ec42b0a46
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
-ms.translationtype: HT
+ms.openlocfilehash: fa84d5a09eab56dc01a6e841323ca11d12886582
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038451"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495511"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával
 
-Ebben az oktatóanyagban egy nyers CSV-adatfájlt fog importálni egy HDInsight-tárolófürtbe, majd átalakítja az adatokat az Azure HDInsight-alapú Apache Hive használatával. Az átalakítást követően pedig betölti az adatokat egy Azure SQL Database-be az Apache Sqoop segítségével. A cikkben nyilvánosan elérhető repülőjárat-adatokat fog használni.
+Ebben az oktatóanyagban egy nyers CSV adatfájl igénybe vehet, importálás egy HDInsight-fürt storage-ba, és akkor átalakítja az adatokat az [Apache Hive](https://hive.apache.org/) az Azure HDInsight. Az adatok átalakítására kerül, ha az adatokat betöltheti egy Azure SQL database-adatbázishoz [Apache Sqoop](http://sqoop.apache.org/). A cikkben nyilvánosan elérhető repülőjárat-adatokat fog használni.
 
 > [!IMPORTANT]
 > A dokumentum lépéseinek elvégzéséhez egy Linux-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely az Azure HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -41,13 +41,13 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Egy Linux-alapú Hadoop-fürt a HDInsighton**. Egy új Linux-alapú HDInsight-fürt létrehozásához lásd [a Hadoop a HDInsight-beli első lépéseit](hadoop/apache-hadoop-linux-tutorial-get-started.md).
+* **Egy Linux-alapú Hadoop-fürt a HDInsighton**. Lásd: [HDInsight az Apache Hadoop használatának első lépései](hadoop/apache-hadoop-linux-tutorial-get-started.md) bemutatjuk, hogyan hozhat létre egy új Linux-alapú HDInsight-fürt számára.
 
 * **Azure SQL Database** Egy Azure SQL Database-t használ céladattárként. Ha még nem rendelkezik SQL-adatbázissal, olvassa el az [Azure SQL Database az Azure Portalon történő létrehozását](../sql-database/sql-database-get-started.md) ismertető cikket.
 
 * **Azure parancssori felület (CLI)**. Ha még nem telepítette az Azure CLI-t, a lépéseket [az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető cikkben találja.
 
-* **Egy SSH-ügyfél**. További információért lásd: [Csatlakozás a HDInsighthoz (Hadoop) SSH-val](hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Egy SSH-ügyfél**. További információkért lásd: [HDInsight (az Apache Hadoop) SSH-val csatlakozhat](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="download-the-flight-data"></a>A repülőjárat-adatok letöltése
 
@@ -102,7 +102,7 @@ Számos különböző módon tölthet fel adatokat egy HDInsight-fürthöz tarto
 
 ## <a name="transform-data-using-a-hive-query"></a>Adatok átalakítása egy Hive-lekérdezéssel
 
-Számos módon futtathat Hive-feladatokat egy HDInsight-fürtön. Ebben a szakaszban a Beeline segítségével fog futtatni egy Hive-feladatot. További információk a Hive-feladatok futtatásának további módjairól: [A Hive használata a HDInsightban](./hadoop/hdinsight-use-hive.md).
+Számos módon futtathat Hive-feladatokat egy HDInsight-fürtön. Ebben a szakaszban használhatja [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline%E2%80%93CommandLineShell) futtathat Hive-feladatokat. Információk az egyéb módszerek egy Hive-feladat futtatása: [az Apache Hive használata a HDInsight](./hadoop/hdinsight-use-hive.md).
 
 A Hive-feladat keretében importálja az adatokat a .csv fájlból egy **Delays** (Késések) nevű Hive-táblába.
 
@@ -269,7 +269,7 @@ Ha már van egy SQL-adatbázisa, le kell kérnie a kiszolgáló nevét. A kiszol
 
 5. A tsql eszközből való kilépéshez írja be az `exit` kifejezést az `1>` parancssorba.
 
-## <a name="export-data-to-sql-database-using-sqoop"></a>Adatok exportálása az SQL Database-be a Sqoop használatával
+## <a name="export-data-to-sql-database-using-apache-sqoop"></a>Adatok exportálása az SQL database az Apache Sqoop használatával
 
 Az előző szakaszok során átmásolta az átalakított adatokat a következő helyre: `/tutorials/flightdelays/output`. Ebben a szakaszban a Sqoop segítségével fogja exportálni az adatokat a „/tutorials/flightdelays/output” helyről az Azure SQL Database-ben létrehozott táblába. 
 
@@ -311,17 +311,17 @@ Az előző szakaszok során átmásolta az átalakított adatokat a következő 
 Ez az oktatóanyag azt mutatta be, hogyan végezheti el az adatok kinyerési, átalakítási és betöltési (ETL-) műveleteit egy Apache Hadoop-fürt a HDInsighton történő használatával. A következő oktatóanyagból megtudhatja, hogyan hozhat létre HDInsight Hadoop-fürtöket igény szerint az Azure Data Factory használatával.
 
 > [!div class="nextstepaction"]
->[Igény szerinti Hadoop-fürtök létrehozása a HDInsightban az Azure Data Factory használatával](hdinsight-hadoop-create-linux-clusters-adf.md)
+>[Az Azure Data Factory használatával HDInsight igény szerinti Apache Hadoop-fürtök létrehozása](hdinsight-hadoop-create-linux-clusters-adf.md)
 
 A HDInsight használatának további módjaival kapcsolatban lásd a következő cikkeket:
 
 * [Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával](../storage/data-lake-storage/tutorial-extract-transform-load-hive.md)
-* [A Hive használata a HDInsightban][hdinsight-use-hive]
-* [A Pig használata a HDInsightban][hdinsight-use-pig]
-* [Java MapReduce-programok fejlesztése a Hadoophoz a HDInsightban][hdinsight-develop-mapreduce]
+* [Az Apache Hive használata a HDInsight][hdinsight-use-hive]
+* [Az Apache Pig használata a HDInsight][hdinsight-use-pig]
+* [Java MapReduce programok fejlesztése a HDInsight Apache hadoop][hdinsight-develop-mapreduce]
 * [Python MapReduce-streamprogramok fejlesztése a HDInsightban][hdinsight-develop-streaming]
-* [Az Oozie használata a HDInsightban][hdinsight-use-oozie]
-* [A Sqoop használata a HDInsightban][hdinsight-use-sqoop]
+* [Az Apache Oozie használata a HDInsight][hdinsight-use-oozie]
+* [A HDInsight Apache Sqoop használata][hdinsight-use-sqoop]
 
 
 

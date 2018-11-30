@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 02/28/2018
+ms.date: 11/21/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b468240d1a9aaf0511358433a8beee7e6442e145
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: 4d8a95ee4afc844868cfda78087773a6a37c07c2
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445021"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445429"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Oktatóanyag: CORS-támogatással rendelkező RESTful API üzemeltetése az Azure App Service-ben
 
@@ -175,6 +175,9 @@ az resource update --name web --resource-group myResourceGroup --namespace Micro
 ```
 
 Több ügyfél URL-címét is beállíthatja a `properties.cors.allowedOrigins` (`"['URL1','URL2',...]"`) tulajdonságban. Az összes URL-címet is engedélyezheti a `"['*']"` érték megadásával.
+
+> [!NOTE]
+> Az alkalmazás például a cookie-k vagy a hitelesítési tokenek küldendő hitelesítő adatok szükségesek, ha a böngésző szükség lehet a `ACCESS-CONTROL-ALLOW-CREDENTIALS` a válasz fejléce. Az App Service-ben engedélyezéséhez állítsa `properties.cors.supportCredentials` való `true` a CORS-konfigurációt. Ez nem lehet engedélyezve, ha `allowedOrigins` tartalmaz `'*'`.
 
 ### <a name="test-cors-again"></a>A CORS újbóli tesztelése
 

@@ -3,23 +3,33 @@ title: 'Oktatóanyag: Egyoldalas webalkalmazás készítése – Bing Visual Sea
 titleSuffix: Azure Cognitive Services
 description: Útmutató a Bing Visual Search API egyoldalas webalkalmazásban való használatához.
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 10/04/2017
-ms.author: bking
-ms.openlocfilehash: a63107b86e82bf0bcd89523588414b45e6e21d5a
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: fe7159e88bd70ba8af23909559264fa5f210ef10
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465197"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443891"
 ---
 # <a name="tutorial-visual-search-single-page-web-app"></a>Oktatóanyag: Egyoldalas Visual Search-webalkalmazás
 
 A Bing Visual Search API a Bing.com képeket kereső szolgáltatásában látható képadatokhoz hasonló élményt nyújt. A Visual Search segítségével megadhat egy képet, és olyan információkat kaphat vissza a képpel kapcsolatban, mint a vizuálisan hasonló képek, a vásárlási lehetőségek, a képet tartalmazó weboldalak stb. 
+
+Ebben az oktatóanyagban szüksége lesz egy előfizetést, S9 árkategória elindításához, ahogyan [Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+
+Előfizetés indítása az Azure Portalon:
+1. A szövegmezőbe, amely szerint az Azure portal tetején adja meg a "BingSearchV7" `Search resources, services, and docs`.  
+2. Marketplace-en a legördülő listában, válassza a `Bing Search v7`.
+3. Adja meg `Name` az új erőforrás.
+4. Válassza ki `Pay-As-You-Go` előfizetés.
+5. Válassza ki `S9` tarifacsomag.
+6. Kattintson a `Enable` az előfizetés indításához.
 
 Ez az oktatóanyag kibővíti a Bing Image Search oktatóanyagában használt egyoldalas webalkalmazást (lásd: [Egyoldalas webalkalmazás](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md)). Az oktatóanyag elkezdéséhez a teljes forráskódot itt találja: [Egyoldalas webalkalmazás (forráskód)](../Bing-Image-Search/tutorial-bing-image-search-single-page-app-source.md). Az oktatóanyag végleges forráskódjáért lásd: [Egyoldalas Visual Search-webalkalmazás](tutorial-bing-visual-search-single-page-app-source.md).
 

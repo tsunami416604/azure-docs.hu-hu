@@ -9,12 +9,12 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 06/20/2018
 ms.author: rosh
-ms.openlocfilehash: 66e17c00da898e575bb858dbe16a35d1c44a2780
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.openlocfilehash: 27141c014c9ccdf9d62c9bde5c96bd31abfc025e
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226910"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447095"
 ---
 # <a name="tutorial-bing-visual-search-sdk-image-crop-area-and-results"></a>Oktatóanyag: Bing Visual Search SDK – képkörülvágási terület és eredmények
 A Visual Search SDK lehetővé teszi egy kép adott területének kijelölését, és olyan képek online keresését, amelyek hasonlóak a nagyobb kép körülvágási területéhez.  Ez a példa olyan körülvágási területet határoz meg, amelyen egy több személyt ábrázoló képen látható személy van.  A kód elküldi a körülvágási területet és a nagyobb kép URL-címét, majd visszaadja a Bing Search URL-eket és a keresés során talált hasonló képek URL-jét tartalmazó eredményeket.
@@ -23,7 +23,15 @@ A Visual Search SDK lehetővé teszi egy kép adott területének kijelölését
 
 A kód Windows rendszeren történő futtatásához [Visual Studio 2017](https://www.visualstudio.com/downloads/) szükséges. (Az ingyenes Community Edition is elegendő.)
 
-Egy Bing Search API-kat tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, vagy beszerezhet egy fizetős előfizetői azonosítót az Azure-irányítópultról.
+Ebben az oktatóanyagban szüksége lesz egy előfizetést, S9 árkategória elindításához, ahogyan [Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+
+Előfizetés indítása az Azure Portalon:
+1. Az Azure portál arról, hogy a tetején a szövegmezőben adja meg a "BingSearchV7" `Search resources, services, and docs`.  
+2. Marketplace-en a legördülő listában, válassza a `Bing Search v7`.
+3. Adja meg `Name` az új erőforrás.
+4. Válassza ki `Pay-As-You-Go` előfizetés.
+5. Válassza ki `S9` tarifacsomag.
+6. Kattintson a `Enable` az előfizetés indításához.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
 Ha a Bing Web Search SDK-val szeretne beállítani egy konzolalkalmazást, keresse meg a NuGet-csomagok kezelése lehetőséget a Visual Studio Megoldáskezelőjében. Adja hozzá a Microsoft.Azure.CognitiveServices.Search.VisualSearch csomagot.

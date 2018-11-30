@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: rosh
-ms.openlocfilehash: 06d6bc8e53276b5542210c2843d7221d6fd79c09
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.openlocfilehash: 62780500d29c891182d3869bf0ba3ccdc5e2f715
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386434"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52441061"
 ---
 # <a name="tutorial-bing-visual-search-sdk-imageinsightstoken-and-results"></a>Oktatóanyag: Bing Visual Search SDK – ImageInsightsToken és eredmények
 A Visual Search SDK tartalmaz egy beállítást, amely egy korábbi keresés képeit keresi meg online, és visszaadott eredménye egy `ImageInsightsToken`.  Ez a példa egy `ImageInsightsToken` lekérése után felhasználja a jogkivonatot egy későbbi kereséshez.  A kód elküldi az `ImageInsightsToken` adatot a Bing számára, majd visszaad eredményeket, amelyek tartalmazzák a Bing Search URL-címeket és az online talált hasonló képek URL-címeit.
@@ -24,6 +24,16 @@ A Visual Search SDK tartalmaz egy beállítást, amely egy korábbi keresés ké
 Visual Studio 2017. Ha szükséges, töltse le az ingyenes közösségi verziót innen: https://www.visualstudio.com/vs/community/.
 Az SDK-hívások hitelesítéséhez Cognitive Services API-kulcsra van szükség. Regisztráljon egy ingyenes próbaverzióra. A próbakulcs másodpercenként egy hívással hét napig érvényes. Az éles forgatókönyvekhez vásároljon hozzáférési kulcsot. Lásd még a díjszabási információkat.
 A .NET Core SDK- és .NET Core 1.1-alkalmazások futtatásának képessége. A CORE, a keretrendszer és a futtatókörnyezet innen tölthetők le: https://www.microsoft.com/net/download/.
+
+Ebben az oktatóanyagban szüksége lesz egy előfizetést, S9 árkategória elindításához, ahogyan [Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+
+Előfizetés indítása az Azure Portalon:
+1. Az Azure portál arról, hogy a tetején a szövegmezőben adja meg a "BingSearchV7" `Search resources, services, and docs`.  
+2. Marketplace-en a legördülő listában, válassza a `Bing Search v7`.
+3. Adja meg `Name` az új erőforrás.
+4. Válassza ki `Pay-As-You-Go` előfizetés.
+5. Válassza ki `S9` tarifacsomag.
+6. Kattintson a `Enable` az előfizetés indításához.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
 Ha a Bing Web Search SDK-val szeretne beállítani egy konzolalkalmazást, keresse meg a NuGet-csomagok kezelése lehetőséget a Visual Studio Megoldáskezelőjében. Adja hozzá a következőket:

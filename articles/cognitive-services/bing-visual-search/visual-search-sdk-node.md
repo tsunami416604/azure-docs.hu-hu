@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: v-gedod
-ms.openlocfilehash: 77b8f956ca2a6985121cb5dbfebc2755fa73a35c
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: cca39fb16c47eb13887f6198833dafc64974d301
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685973"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444460"
 ---
 # <a name="quickstart-bing-visual-search-sdk-node"></a>Rövid útmutató: Bing Visual Search SDK Node 
 
@@ -28,7 +28,15 @@ A kódforgatókönyvek dokumentációja az alábbi címsorok alatt található:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az SDK-hívások hitelesítéséhez Cognitive Services API-kulcsra van szükség. Regisztráljon egy [ingyenes próbaverzióra](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7). A próbakulcs másodpercenként egy hívással hét napig érvényes. Az éles forgatókönyvekhez [vásároljon hozzáférési kulcsot](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Lásd még a [díjszabási információkat](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/).
+* Ebben a rövid, szüksége lesz egy előfizetést, S9 árkategória elindításához, ahogyan [Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+
+Előfizetés indítása az Azure Portalon:
+1. A szövegmezőbe, amely szerint az Azure portal tetején adja meg a "BingSearchV7" `Search resources, services, and docs`.  
+2. Marketplace-en a legördülő listában, válassza a `Bing Search v7`.
+3. Adja meg `Name` az új erőforrás.
+4. Válassza ki `Pay-As-You-Go` előfizetés.
+5. Válassza ki `S9` tarifacsomag.
+6. Kattintson a `Enable` az előfizetés indításához.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
 

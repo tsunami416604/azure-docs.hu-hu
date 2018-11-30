@@ -7,18 +7,18 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: 875efddfff9b50ab05665cb8c158467dc46c8d0d
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: 1354faad4abf9a8a4b56414628d39d9a6f90d721
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987432"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426167"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Oktatóanyag: Az Azure Firewall naplóinak és metrikáinak monitorozása
 
 Az Azure Firewall tűzfalnaplókkal monitorozható. Az Azure Firewall-erőforrásokon végzett műveletek tevékenységnaplókkal is naplózhatók. A metrikákkal teljesítményszámlálókat tekinthet meg a portálon. 
 
-Ezen naplók egy része a portálról érhető el. A naplók elküldhetők a [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md), Storage és Event Hubs szolgáltatásokba, és elemezhetők a Log Analyticsben vagy más eszközökben, például az Excelben vagy a Power BI-ban.
+Ezen naplók egy része a portálról érhető el. A naplók elküldhetők a [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md), Storage és Event Hubs szolgáltatásokba, és elemezhetők a Log Analyticsben vagy más eszközökben, például az Excelben vagy a Power BI-ban.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -94,7 +94,7 @@ A tevékenységnaplók adatainak megtekintéséhez és elemzéséhez használja 
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>A hálózati szabályok és alkalmazásszabályok naplóinak megtekintése és elemzése
 
-Az Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) a számlálónapló- és eseménynapló-fájlokat gyűjti. A Log Analytics vizualizációkat és hatékony keresési lehetőségeket is tartalmaz a naplók elemzéséhez.
+Az Azure [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md) a számlálónapló- és eseménynapló-fájlokat gyűjti. A Log Analytics vizualizációkat és hatékony keresési lehetőségeket is tartalmaz a naplók elemzéséhez.
 
 Az Azure Firewall Log Analytics mintalekérdezéseit [az Azure Firewall Log Analytics mintáit](log-analytics-samples.md) ismertető cikkben tekintheti meg.
 
@@ -111,7 +111,7 @@ Nyisson meg egy Azure Firewallt, és a **Monitorozás** területen kattintson a 
 Most, hogy konfigurálta a tűzfalat a naplók gyűjtésére, megtekintheti az adatait a Log Analyticsben.
 
 > [!div class="nextstepaction"]
-> [Hálózatmonitorozási megoldások a Log Analyticsben](../log-analytics/log-analytics-azure-networking-analytics.md)
+> [Hálózatmonitorozási megoldások a Log Analyticsben](../azure-monitor/insights/azure-networking-analytics.md)
 
 [1]: ./media/tutorial-diagnostics/figure1.png
 [2]: ./media/tutorial-diagnostics/figure2.png

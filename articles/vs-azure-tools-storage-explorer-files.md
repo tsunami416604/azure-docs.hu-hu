@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: 536092c1ee50045e6df4e2933c7d6eb0ee7a8b42
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: d039654fc1d652a3997515a12caa48acaac124fe
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429787"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425292"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>A Storage Explorer használata az Azure File Storage szolgáltatással
 
@@ -29,7 +29,7 @@ Az Azure File storage egy felhőalapú fájlmegosztást kínáló, SMB protokoll
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
-- [A Storage Explorer letöltése és telepítése](http://www.storageexplorer.com/)
+- [A Storage Explorer letöltése és telepítése](https://www.storageexplorer.com/)
 
 - [Csatlakozás egy Azure-tárfiókhoz vagy -szolgáltatáshoz](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
 
@@ -259,6 +259,6 @@ A következő lépések bemutatják, hogyan kezelhetők a fájlok (és mappák) 
 
 ## <a name="next-steps"></a>További lépések
 
-- A [Storage Explorer legújabb kibocsátási megjegyzéseinek és videóinak megtekintése](http://www.storageexplorer.com/).
+- A [Storage Explorer legújabb kibocsátási megjegyzéseinek és videóinak megtekintése](https://www.storageexplorer.com/).
 
 - Annak megismerése, hogyan [hozhat létre alkalmazásokat Azure-blobok, -táblák, -üzenetsorok és -fájlok használatával](https://azure.microsoft.com/documentation/services/storage/).

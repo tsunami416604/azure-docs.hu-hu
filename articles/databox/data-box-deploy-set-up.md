@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/17/2018
+ms.date: 11/26/2018
 ms.author: alkohli
-ms.openlocfilehash: c3766713c87dd721f7e4c9a90624192cdb402be9
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
-ms.translationtype: HT
+ms.openlocfilehash: 78e56286e0dec3307c7481a6097c53a1362f57cc
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393830"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427522"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Oktatóanyag: Az Azure Data Box bekábelezése és csatlakoztatása
 
@@ -30,7 +30,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 1. Befejezte [az Azure Data Box rendelését ismertető oktatóanyagot](data-box-deploy-ordered.md).
-2. Megkapta a Data Boxot, és a portálon a megrendelés **Kézbesítve** állapotú. Az aktuális fuvarlevélcímke alatt egy átlátszó zacskó van rögzítve az eszközre, benne egy másik címkével. Őrizze meg ezt a címkét, mivel ezt fogja használni a küldemény visszaküldéséhez.
+2. Megkapta a Data Boxot, és a portálon a megrendelés **Kézbesítve** állapotú. 
+    - Az aktuális fuvarlevélcímke alatt egy átlátszó zacskó van rögzítve az eszközre, benne egy másik címkével. Őrizze meg ezt a címkét, mivel ezt fogja használni a küldemény visszaküldéséhez.
+    - Az eszköz egy csomagolt egyes európai régiókban jelenhet meg. Győződjön meg arról, hogy az eszköz kicsomagolása, és mentse a mezőbe a visszaszállításhoz.
 3. Áttekintette [a Data Box biztonsági útmutatásait](data-box-safety.md).
 4. Kapott egy földelt tápkábelt a 100 TB-os tárolóeszközhöz.
 5. Rendelkezik egy gazdagéppel, amelyen a Data Boxra másolni kívánt adatok találhatók. A gazdaszámítógépen:

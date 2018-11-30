@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 3903f247df0bc9dc4bc27d61b195492c585d7634
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: d3b8d0597f0732a4a3cfab79125a885b2d141c9f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282271"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424700"
 ---
 # <a name="tutorial-5-extract-contextually-related-data"></a>5. oktatóanyag: Szövegkörnyezet szerint kapcsolódó adatok kinyerése
 Ebben az oktatóanyagban kapcsolódó adatrészleteket keresünk szövegkörnyezet alapján. Kapcsolódó lehet például az indulási hely és a cél egy épületből és irodából egy másik épületbe és irodába történő fizikai mozgás során. Munkarendelés létrehozásához mindkét adatrészletre szükség lehet, és az adatrészletek kapcsolódnak egymáshoz.  
@@ -57,7 +57,7 @@ Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforr
 ## <a name="remove-prebuilt-number-entity-from-app"></a>Előre összeállított szám entitás eltávolítása az alkalmazásból
 A teljes kimondott szöveg megjelenítéséhez és a hierarchikus gyermek megjelöléséhez ideiglenesen távolítsa el az előre összeállított szám entitást.
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Válassza az **Entities** (Entitások) elemet a bal oldali menüben.
 
@@ -83,7 +83,7 @@ A teljes kimondott szöveg megjelenítéséhez és a hierarchikus gyermek megjel
 
     A [listaentitással](luis-quickstart-intent-and-list-entity.md) kapcsolatos oktatóanyagban az alkalmazottak név, e-mail-cím, telefonmellék, mobiltelefonszám, vagy USA-beli szövetségi társadalombiztosítási szám alapján vannak kijelölve. Ezeket az alkalmazotti számokat a kimondott szövegekben használja a rendszer. Az előző kimondott szövegpélda különböző módokat tartalmaz az indulási és érkezési hely jelzésére, amelyek félkövér betűvel vannak kiemelve. Néhány kimondott szöveg szándékosan csak érkezési hellyel rendelkezik. Ez segít megérteni a LUIS-nak, hogyan helyezkednek el ezek a helyek a kimondott szövegben, amikor az indulási hely nincs megadva.     
 
-    [!INCLUDE[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
+    [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
 ## <a name="create-a-location-entity"></a>Hely entitás létrehozása
 A LUIS-nak meg kell értenie, hogy a hely pontosan mit jelent. Ez a kimondott szövegben található indulási és érkezési hely címkézésével lehetséges. Ha a kimondott szöveget jogkivonat (nyers) nézetben szeretné megtekinteni, válassza az **Entities View** (Entitások nézet) címkével ellátott, a kimondott szövegek fölötti sávban található kapcsolót. Miután átkapcsolta a kapcsolót, a vezérlő **Tokens View** (Jogkivonatok nézet) címkével lesz ellátva.

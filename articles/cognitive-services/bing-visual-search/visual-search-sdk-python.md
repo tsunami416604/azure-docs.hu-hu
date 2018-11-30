@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: quickstart
 ms.date: 06/11/2018
 ms.author: v-gedod
-ms.openlocfilehash: 935241d5574a59edfa256b74db3a0aeab2f7bf91
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
-ms.translationtype: HT
+ms.openlocfilehash: 9f2a6d9b75ccf704862d169b96ea1a1f2edb9815
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458105"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445684"
 ---
 # <a name="quickstart-bing-visual-search-sdk-python"></a>Rövid útmutató: Bing Visual Search SDK Python
 
@@ -30,7 +30,16 @@ A kódforgatókönyvek dokumentációja az alábbi címsorok alatt található:
 * [Címkék, műveletek és actionType](#tags-actions)
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
-* Az SDK-hívások hitelesítéséhez Cognitive Services API-kulcsra van szükség. Regisztráljon egy [ingyenes próbaverzióra](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7). A próbakulcs másodpercenként 1 hívással hét napig érvényes. Az éles forgatókönyvekhez [vásároljon egy hozzáférési kulcsot](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Lásd még a [díjszabási információkat](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/).
+* Ebben a rövid, szüksége lesz egy előfizetést, S9 árkategória elindításához, ahogyan [Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+
+Előfizetés indítása az Azure Portalon:
+1. A szövegmezőbe, amely szerint az Azure portal tetején adja meg a "BingSearchV7" `Search resources, services, and docs`.  
+2. Marketplace-en a legördülő listában, válassza a `Bing Search v7`.
+3. Adja meg `Name` az új erőforrás.
+4. Válassza ki `Pay-As-You-Go` előfizetés.
+5. Válassza ki `S9` tarifacsomag.
+6. Kattintson a `Enable` az előfizetés indításához.
+ 
 * Ha még nincs telepítve a Python, telepítse. Az SDK a Python 2.7-es, 3.3-as, 3.4-es, 3.5-ös és 3.6-os verziójával kompatibilis.
 * A Pythonnal való fejlesztéskor általánosságban javasolt egy [virtuális környezet](https://docs.python.org/3/tutorial/venv.html) használata. Telepítse és inicializálja a virtuális környezetet az új [venv modullal](https://pypi.python.org/pypi/virtualenv). Telepítse a Python 2.7-hez készült virtualenv modult.
 ```

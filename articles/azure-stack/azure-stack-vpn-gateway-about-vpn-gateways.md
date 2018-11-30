@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/02/2018
 ms.author: sethm
-ms.openlocfilehash: d94b7f7f2f032278f71053e5de8bb2935af01f3f
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 860f1181a84ef87fe0e66c2746b76b800a326354
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300149"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496198"
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>Tudnivalók az Azure Stackhez VPN-átjáró
 
@@ -117,6 +117,10 @@ Az alábbi táblázatban az átjárótípusok és azok becsült összesített á
 *Megjegyzés: (1)* – VPN átviteli sebesség nem egy garantált átviteli létesítmények közötti kapcsolatok az interneten keresztül. Legyen a maximális mérhető teljesítmény.  
 *Megjegyzés (2)* -alagutak maximális száma az összes összes előfizetéshez tartozó Azure Stack üzemelő példányonként.  
 *Megjegyzés (3)* – az alapszintű Termékváltozat esetén a BGP-útválasztás nem támogatott.
+
+>[!NOTE]
+>Csak egy helyek közötti VPN-kapcsolat hozható létre az Azure Stack két telepítése között.  A platform, amely csak egyetlen VPN-kapcsolat az azonos IP-cím lehetővé teszi egy korlátozás miatt nem lehetséges.  Mivel az Azure Stack kihasználja a több-bérlős átjáró, amely az összes VPN-átjárók egyetlen nyilvános IP-cím az Azure Stack rendszerben használja, lehet csak egy VPN-kapcsolatot két Azure Stack rendszerek között.  Ez a korlátozás is vonatkozik csatlakozik egynél több helyek közötti VPN-kapcsolatok bármely VPN-átjáró, amely egyetlen IP-címet használ.  Az Azure Stack nem teszi lehetővé ugyanazon IP-cím használatával hozható létre egynél több helyi hálózati átjáró erőforrás.
+
 
 ## <a name="next-steps"></a>További lépések
 

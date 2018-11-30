@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: f9ec8ff1fbd5f6341d2d949d15d963f8abe15200
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 9496f88a24c92387418d5d9ae23bb7f2eaff2088
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52166911"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444435"
 ---
 # <a name="query-azure-cosmos-db-data-with-sql-queries"></a>Azure Cosmos DB-adatok lekérdezése az SQL-lekérdezésekhez
 
@@ -400,9 +400,18 @@ Az egyoperandusú operátorokat +,-, ~, és nem is támogatottak, és használha
 Bináris- és egyoperandusú operátorok mellett tulajdonság hivatkozásokat is engedélyezettek. Ha például `SELECT * FROM Families f WHERE f.isRegistered` tulajdonságot tartalmazó JSON-elemét adja vissza `isRegistered` ahol a tulajdonság értéke megegyezik a JSON `true` értéket. Egyéb értékek (False (hamis), null, nem definiált, `<number>`, `<string>`, `<object>`, `<array>`használatához és így tovább) vezet, a forrás elem kivételével az eredményből. 
 
 ### <a name="equality-and-comparison-operators"></a>Egyenlőség és összehasonlító operátorok
+
 Az alábbi táblázat egyenlőségi összehasonlítás eredménye minden két JSON-típusok között az SQL API-ban.
 
-| **Op** | **nem definiált** | **Null** | **logikai** | **száma**  |  **Karakterlánc** | **objektum** | **tömb** || **Nem definiált** |} Nem definiált |} Nem definiált |} Nem definiált |} Nem definiált |} Nem definiált |} Nem definiált |} Nem definiált || **Null** |} Nem definiált |} **Ok** |} Nem definiált |} Nem definiált |} Nem definiált |} Nem definiált |} Nem definiált || **Logikai** |} Nem definiált |} Nem definiált |} **Ok** |} Nem definiált |} Nem definiált |} Nem definiált |} Nem definiált || **Szám** |} Nem definiált |} Nem definiált |} Nem definiált |} **Ok** |} Nem definiált |} Nem definiált |} Nem definiált || **Karakterlánc** |} Nem definiált |} Nem definiált |} Nem definiált |} Nem definiált |} **Ok** |} Nem definiált |} Nem definiált || **Objektum** |} Nem definiált |} Nem definiált |} Nem definiált |} Nem definiált |} Nem definiált |} **Ok** |} Nem definiált || **Tömb** |} Nem definiált |} Nem definiált |} Nem definiált |} Nem definiált |} Nem definiált |} Nem definiált |} **Ok** |
+| **Op** | **Nincs definiálva** | **NULL** | **Logikai érték** | **Szám** | **Karakterlánc** | **Object** | **Pole** |
+|---|---|---|---|---|---|---|---|
+| **Nincs definiálva** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan |
+| **NULL** | Meghatározatlan | **oké** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan |
+| **Logikai érték** | Meghatározatlan | Meghatározatlan | **oké** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan |
+| **Szám** | Meghatározatlan | Meghatározatlan | Meghatározatlan | **oké** | Meghatározatlan | Meghatározatlan | Meghatározatlan |
+| **Karakterlánc** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | **oké** | Meghatározatlan | Meghatározatlan |
+| **Object** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | **oké** | Meghatározatlan |
+| **Pole** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | **oké** |
 
 Más összehasonlító operátorok, mint például a >, > =,! =, <, és < =, a következő szabályok érvényesek:
 
@@ -813,11 +822,11 @@ Az alábbi táblázat a támogatott összesítő függvények listáját az SQL 
 
 | Használat | Leírás |
 |-------|-------------|
-| MENNYISÉG | A kifejezésben található elemek számát adja vissza. |
-| ÖSSZEG   | A kifejezésben található értékek összegét adja vissza. |
-| MIN.   | A kifejezés minimumértékét adja vissza. |
-| MAX.   | A kifejezés maximumértékét adja vissza. |
-| ÁTL.   | A kifejezésben található értékek átlagát adja vissza. |
+| COUNT | A kifejezésben található elemek számát adja vissza. |
+| SUM   | A kifejezésben található értékek összegét adja vissza. |
+| MIN   | A kifejezés minimumértékét adja vissza. |
+| MAX   | A kifejezés maximumértékét adja vissza. |
+| AVG   | A kifejezésben található értékek átlagát adja vissza. |
 
 Összesíti az eredményeket egy tömb ismétlés keresztül is elvégezhető. További információkért lásd: [lekérdezések tömb iterációját](#Iteration).
 

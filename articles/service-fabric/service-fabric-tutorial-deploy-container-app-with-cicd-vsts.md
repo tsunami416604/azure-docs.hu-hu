@@ -1,6 +1,6 @@
 ---
 title: Tárolóalkalmazás üzembe helyezése Service Fabric-fürtön CI/CD segítségével
-description: Ez az oktatóanyag bemutatja, hogyan lehet folyamatos integrációt és üzembe helyezést beállítani egy Azure Service Fabric-tárolóalkalmazáshoz a Visual Studio Team Services (VSTS) használatával.
+description: Ebben az oktatóanyagban megismerheti, hogyan állíthat be folyamatos integrációt és üzembe helyezés az Azure Service Fabric-tárolóalkalmazás Visual Studio Azure DevOps használatával.
 services: service-fabric
 documentationcenter: .net
 author: TylerMSFT
@@ -15,23 +15,23 @@ ms.workload: NA
 ms.date: 08/29/2018
 ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: a7cb139da2cdbfb187a62eeadc707f7206de8a34
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 06bc4be6ee485e61523d210b692c3fe2567cc62c
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300193"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443491"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Oktatóanyag: Tárolóalkalmazás üzembe helyezése Service Fabric-fürtön CI/CD használatával
 
-Ez az oktatóanyag, amely egy sorozat második része, azt ismerteti, hogyan lehet folyamatos integrációt és üzembe helyezést beállítani egy Azure Service Fabric-tárolóalkalmazáshoz a Visual Studio Team Services használatával.  Szükség van egy már meglévő Service Fabric-alkalmazásra, így példaként a [Windows-tárolóban lévő .NET-alkalmazás telepítése Azure Service Fabricre](service-fabric-host-app-in-a-container.md) című szakaszban létrehozott alkalmazás szolgál.
+Ez az oktatóanyag egy sorozat második része, és ismerteti, hogyan lehet folyamatos integrációt és üzembe helyezést egy Visual Studio és az Azure DevOps használatával az Azure Service Fabric-tárolóalkalmazás beállítása.  Szükség van egy már meglévő Service Fabric-alkalmazásra, így példaként a [Windows-tárolóban lévő .NET-alkalmazás telepítése Azure Service Fabricre](service-fabric-host-app-in-a-container.md) című szakaszban létrehozott alkalmazás szolgál.
 
 A sorozat második részében az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Forráskezelés hozzáadása a projekthez
-> * Builddefiníció létrehozása a Team Services használatával
-> * Kiadási definíció létrehozása a Team Services használatával
+> * Builddefiníció létrehozása a Visual Studio Team Explorer
+> * Kiadási definíció létrehozása a Visual Studio Team Explorer
 > * Alkalmazás automatikus üzembe helyezése és frissítése
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -43,23 +43,23 @@ Az oktatóanyag elkezdése előtt:
 
 ## <a name="prepare-a-publish-profile"></a>Közzétételi profil előkészítése
 
-Most, hogy [üzembe helyezte a tárolóalkalmazást](service-fabric-host-app-in-a-container.md), minden készen áll a folyamatos integráció beállításához.  Először készítsen elő egy közzétételi profilt az alkalmazáson belül a Team Servicesben végrehajtott üzembe helyezési folyamat számára.  A közzétételi profilt úgy kell konfigurálni, hogy a korábban már létrehozott fürtöt célozza.  Indítsa el a Visual Studiót, és nyisson meg egy már meglévő Service Fabric-alkalmazásprojektet.  A **Megoldáskezelőben** kattintson a jobb gombbal az alkalmazásra, majd válassza a **Publish...** (Közzététel) lehetőséget.
+Most, hogy [üzembe helyezte a tárolóalkalmazást](service-fabric-host-app-in-a-container.md), minden készen áll a folyamatos integráció beállításához.  Először készítsen elő egy közzétételi profilt az alkalmazáson belül az Azure DevOpsban végrehajtott üzembehelyezési folyamat számára.  A közzétételi profilt úgy kell konfigurálni, hogy a korábban már létrehozott fürtöt célozza.  Indítsa el a Visual Studiót, és nyisson meg egy már meglévő Service Fabric-alkalmazásprojektet.  A **Megoldáskezelőben** kattintson a jobb gombbal az alkalmazásra, majd válassza a **Publish...** (Közzététel) lehetőséget.
 
-Az alkalmazásprojektben válasszon ki egy célprofilt a folyamatos integráció munkafolyamata számára. Ilyen lehet például a Cloud.  Adja meg a fürt csatlakozási végpontját.  Jelölje be az **Upgrade the Application** (Alkalmazás frissítése) jelölőnégyzetet, hogy az alkalmazás a Team Servicesben lévő összes üzemelő példány esetében frissüljön.  A **Save** (Mentés) hiperhivatkozásra kattintva mentse a beállításokat a közzétételi profilba, majd kattintson a **Cancel** (Mégse) gombra a párbeszédpanel bezárásához.
+Az alkalmazásprojektben válasszon ki egy célprofilt a folyamatos integráció munkafolyamata számára. Ilyen lehet például a Cloud.  Adja meg a fürt csatlakozási végpontját.  Jelölje be az **Upgrade the Application** (Alkalmazás frissítése) jelölőnégyzetet, hogy az alkalmazás az Azure DevOpsban levő összes üzemelő példány esetében frissüljön.  A **Save** (Mentés) hiperhivatkozásra kattintva mentse a beállításokat a közzétételi profilba, majd kattintson a **Cancel** (Mégse) gombra a párbeszédpanel bezárásához.
 
 ![Leküldéses profil][publish-app-profile]
 
-## <a name="share-your-visual-studio-solution-to-a-new-team-services-git-repo"></a>A Visual Studio-megoldás megosztása egy új Team Services Git-adattárban
+## <a name="share-your-visual-studio-solution-to-a-new-azure-devops-git-repo"></a>A Visual Studio-megoldás megosztása egy új Azure DevOps Git-adattárban
 
-Az alkalmazás forrásfájljait megoszthatja a Team Services egyik csoportprojektjében, és ezáltal buildeket hozhat létre.
+Az Azure DevOps csapata a projekt az alkalmazás forrásfájljait megoszthatja buildeket hozhat létre.
 
 Hozzon létre egy új helyi Git-adattárat a projekthez. Ehhez válassza ki a Visual Studio jobb alsó sarkában található állapotsoron a **Add to Source Control** -> **Git** (Hozzáadás a forráskezelőhöz > Git) elemet.
 
-A **Team Explorer** **Push** (Leküldés) nézetében válassza ki a **Push to Visual Studio Team Services** (Leküldés a Visual Studio Team Services szolgáltatásba) alatt található **Publish Git Repo** (Git-adattár közzététele) gombot.
+A **Team Explorer** **Push** (Leküldés) nézetében válassza ki a **Push to Azure DevOps** (Leküldés Azure DevOps szolgáltatásba) alatt található **Publish Git Repo** (Git-adattár közzététele) gombot.
 
 ![Leküldéses Git-adattár][push-git-repo]
 
-Ellenőrizze az e-mail-címet, és válassza ki a saját fiókját a **Team Services Domain** (Team Services tartomány) legördülő listájából. Adja meg az adattár nevét, majd válassza ki a **Publish repository** (Adattár közzététele) lehetőséget.
+Ellenőrizze az e-maileket, és válassza ki a szervezet a **fiók** listából. Ha még nem rendelkezik egy szervezet beállítása lehet. Adja meg az adattár nevét, majd válassza ki a **Publish repository** (Adattár közzététele) lehetőséget.
 
 ![Leküldéses Git-adattár][publish-code]
 
@@ -67,22 +67,22 @@ Az adattár közzétételével egy új csoportprojekt jön létre a fiókjában 
 
 ## <a name="configure-continuous-delivery-with-vsts"></a>Folyamatos továbbítás konfigurálása a VSTS használatával
 
-A Team Services builddefiníciója egy olyan munkafolyamatot ír le, amely egymás után végrehajtott létrehozási lépések sorozatából áll. Hozzon létre egy builddefiníciót, amely létrehozza a Service Fabric-alkalmazáscsomagot és más összetevőket egy Service Fabric-fürtben való üzembe helyezéshez. További tudnivalók [a Team Services builddefinícióiról](https://www.visualstudio.com/docs/build/define/create). 
+Az Azure DevOps-build definíció ismerteti egy munkafolyamatot, amely egymás után végrehajtott létrehozási lépések készlete áll. Hozzon létre egy builddefiníciót, amely létrehozza a Service Fabric-alkalmazáscsomagot és más összetevőket egy Service Fabric-fürtben való üzembe helyezéshez. További információ az Azure DevOps [builddefinícióiról](https://www.visualstudio.com/docs/build/define/create). 
 
-A Team Services kiadási definíciója olyan munkafolyamatot ír le, amely egy alkalmazáscsomagot telepít egy fürtre. Együttes használatuk esetén a builddefiníció és a kiadási definíció a teljes munkafolyamatot végrehajtja, a forrásfájloktól kezdve a fürtön futó alkalmazásig bezárólag. További tudnivalók a Team Services [kiadási definícióiról](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).
+Az Azure DevOps kiadási definíció ismerteti egy munkafolyamatot, amely egy alkalmazáscsomagot telepít egy fürtre. Együttes használatuk esetén a builddefiníció és a kiadási definíció a teljes munkafolyamatot végrehajtja, a forrásfájloktól kezdve a fürtön futó alkalmazásig bezárólag. További információ az Azure DevOps [kiadási definícióiról](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).
 
 ### <a name="create-a-build-definition"></a>Builddefiníció létrehozása
 
-Nyisson meg egy webböngészőt, és keresse meg az új csoportprojektet a következő helyen: [https://&lt;myaccount&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting).
+Nyissa meg az új csoportprojektet lépve https://dev.azure.com egy webes böngésző és a szervezete számára, válassza az új projekt követ. 
 
-Válassza a **Build and release** (Build és kiadás) lapot, majd a **Builds** (Buildek) és a **New pipeline** (Új folyamat) lehetőséget.
+Válassza ki a **folyamatok** lehetőséget a bal oldali panelen, majd kattintson a **új adatcsatorna**.
 
 >[!NOTE]
 >Ha nem látja a builddefiníciós sablont, ellenőrizze, hogy a **New YAML pipeline creation experience** (Új YAML-folyamat létrehozása) funkció ki van-e kapcsolva. Ez a funkció a DevOps-fiók **Preview Features** (Előzetes verziójú funkciók) szakaszában konfigurálható.
 
 ![Új folyamat][new-pipeline]
 
-Válassza ki forrásként a **VSTS Git** lehetőséget, a **Voting** (Szavazás) csapatprojektet, a **Voting** (Szavazás) adattárat és a **master** alapértelmezett ágat vagy a manuális és ütemezett buildeket.  Ezután kattintson a **Continue** (Folytatás) gombra.
+Válassza ki **Azure Git-Adattárakkal** forrásként, a csapat nevét, a projekt adattár, projektre, és **fő** alapértelmezett ág vagy az ütemezett és manuális épít.  Ezután kattintson a **Continue** (Folytatás) gombra.
 
 A **Select a template** (Sablon kiválasztása) területen válassza az **Azure Service Fabric application with Docker support** (Azure Service Fabric-alkalmazás Docker-támogatással) sablont, majd kattintson az **Apply** (Alkalmaz) gombra.
 
@@ -104,7 +104,7 @@ A **Container Registry Type** (Tárolóregisztrációs adatbázis típusa) alatt
 
 ![A Docker Push rendszerképek kiválasztása][select-push-images]
 
-A **Triggers** (Eseményindítók) lehetőségnél engedélyezze a folyamatos integrációt az **Enable continuous integration** (Folyamatos integráció engedélyezése) bejelölésével. A **Branch filters** (Ágszűrők) területen kattintson az **+ Add** (+ Hozzáadás) elemre, és az alapértelmezés szerint a **Branch specification** (Ágspecifikáció) **master** lesz.
+Alatt a **eseményindítók** fülre, engedélyezze a folyamatos integrációt ellenőrzésével **engedélyezze a folyamatos integrációt**. A **Branch filters** (Ágszűrők) területen kattintson az **+ Add** (+ Hozzáadás) elemre, és az alapértelmezés szerint a **Branch specification** (Ágspecifikáció) **master** lesz.
 
 A build manuális elindításához a **Save build pipeline and queue dialog** (A buildfolyamat és az üzenetsor párbeszédpanelének mentése) menüben kattintson a **Save & queue** (Mentés és üzenetsorba helyezés) elemre.
 
@@ -114,7 +114,7 @@ A buildek leküldés vagy bejelentkezés hatására is aktiválódnak. A build f
 
 ### <a name="create-a-release-definition"></a>Kiadási definíció létrehozása
 
-Válassza ki a **Build & Release** (Build és kiadás) lapot, majd a **Releases** (Kiadások) és a **+ New pipeline** (+ Új folyamat) lehetőséget.  A **Select a template** (Sablon kiválasztása) területen válassza ki az **Azure Service Fabric Deployment** (Üzembe helyezés az Azure Service Fabric használatával) sablont a listából, majd kattintson az **Apply** (Alkalmaz) gombra.
+Válassza ki a **folyamatok** lehetőséget a bal oldali panelen, majd **kiadásokban**, majd **+ új adatcsatorna**.  A **Select a template** (Sablon kiválasztása) területen válassza ki az **Azure Service Fabric Deployment** (Üzembe helyezés az Azure Service Fabric használatával) sablont a listából, majd kattintson az **Apply** (Alkalmaz) gombra.
 
 ![Kiadási sablon kiválasztása][select-release-template]
 
@@ -151,7 +151,7 @@ Győződjön meg arról, hogy az üzembe helyezés sikeres volt, és ellenőrizz
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>Módosítások véglegesítse és leküldése, kiadás indítása
 
-A folyamatos integrációs folyamat működésének ellenőrzéséhez adjon be néhány kódmódosítást a Team Servicesbe.
+A folyamatos integrációs folyamat működésének ellenőrzéséhez adjon be néhány kódmódosítást Azure DevOpsba.
 
 A kód írása közben eszközölt módosításokat a Visual Studio automatikusan követi. A helyi Git-adattár módosításainak véglegesítéséhez válassza ki a függőben lévő módosítások ikonját (![Függőben][pending]), amely a képernyő jobb oldalának alján lévő állapotsávon található.
 
@@ -159,11 +159,11 @@ A Team Explorer **Changes** (Módosítások) nézetében adjon meg egy üzenetet
 
 ![Az összes véglegesítése][changes]
 
-Válassza ki a közzé nem tett változások ikonját az állapotsávon (![Unpublished changes][unpublished-changes]) vagy a Sync (Szinkronizálás) nézetet a Team Explorerben. A **Push** (Leküldés) elem kiválasztásával frissítheti a kódot a Team Services/TFS szolgáltatásban.
+Válassza ki a közzé nem tett változások ikonját az állapotsávon (![Unpublished changes][unpublished-changes]) vagy a Sync (Szinkronizálás) nézetet a Team Explorerben. A **Push** (Leküldés) elem kiválasztásával frissítheti a kódot az Azure DevOps szolgáltatásban.
 
 ![Módosítások leküldése][push]
 
-A Team Services szolgáltatásba leküldött módosítások automatikusan aktiválnak egy buildet.  Ha a builddefiníció sikeresen befejeződött, a kiadás automatikusan létrejön, és elindítja a fürtön az alkalmazás frissítését.
+Az Azure DevOps szolgáltatásba leküldött módosítások automatikusan aktiválnak egy buildet.  Ha a builddefiníció sikeresen befejeződött, a kiadás automatikusan létrejön, és elindítja a fürtön az alkalmazás frissítését.
 
 A build folyamatának ellenőrzéséhez váltson át a Visual Studio **Team Explorer** területének **Builds** (Buildek) lapjára.  Miután meggyőződött arról, hogy a build végrehajtása sikeresen megtörtént, hozza létre a kiadási definíciót, amely telepíti az alkalmazást egy fürtre.
 

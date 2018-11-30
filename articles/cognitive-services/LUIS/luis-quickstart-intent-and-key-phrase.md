@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: d6feb24b1e59aee70204d8438f1a4c51f71d1835
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: fafb6a6cb986b5bcd795c9bac0fadfce2827c667
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281812"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424812"
 ---
 # <a name="tutorial-8-extract-key-phrases-of-utterance"></a>8. oktatóanyag: Kimondott szövegek kulcsszavainak kinyerése
 Ebben az oktatóanyagban az előre összeállított keyPhrase entitást használhatja kulcstémák a kimondott szövegekből történő kinyeréséhez. A kimondott szövegeket nem szükséges megcímkézni előre összeállított entitásokkal. Az entitást a rendszer automatikusan észleli.
@@ -56,7 +56,7 @@ Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforr
 ## <a name="add-keyphrase-entity"></a>keyPhrase entitás hozzáadása 
 A kimondott szöveg témájának kinyeréséhez adja hozzá az előre összeállított keyPhrase entitást.
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Válassza az **Entities** (Entitások) elemet a bal oldali menüben.
 

@@ -3,19 +3,19 @@ title: 'Oktatóanyag: Custom Search-weboldal létrehozása – Bing Custom Searc
 titlesuffix: Azure Cognitive Services
 description: Ez a cikk ismerteti, hogyan konfigurálható és integrálható egy weboldalba egy Custom Search-példány.
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
 ms.topic: tutorial
 ms.date: 10/16/2017
-ms.author: v-brapel
-ms.openlocfilehash: 6d08a36d7a464ccc1904839d6631be0553aacb17
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: d39ec856d628a8a607c6a8ea214f5dd9fbd63a9c
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279211"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427351"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Oktatóanyag: Custom Search-weboldal létrehozása
 
@@ -120,7 +120,7 @@ A Custom Search üzemeltetett felhasználói felületet biztosít, amelyen megje
   
   ![Képernyőkép az üzemeltetett felhasználói felület további beállítási lépéséről](./media/custom-search-hosted-ui-subscription-key.png)
 
-[!INCLUDE[publish or revert](../includes/publish-revert.md)]
+[!INCLUDE [publish or revert](../includes/publish-revert.md)]
 
 <a name="consuminghostedui"></a>
 ## <a name="consuming-hosted-ui"></a>Üzemeltetett felhasználói felületi felhasználása

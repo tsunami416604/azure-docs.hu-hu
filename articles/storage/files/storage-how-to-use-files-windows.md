@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: f1dd07756ca484171a3d662df35493efbe5a5ee7
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: ee6b93c26918b4f70eb23e7055db813f35d3787d
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415613"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445735"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure-fájlmegosztás használata Windowson
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások zökkenőmentesen használhatóak Windowson és Windows Serveren. Ebben a cikkben az Azure-fájlmegosztások Windowson és Windows Serveren való használatának szempontjairól olvashat.
@@ -24,9 +24,9 @@ Azure-fájlmegosztásokat az Azure-beli virtuális gépeken vagy helyszínen fut
 
 | Windows-verzió        | SMB-verzió | Azure-beli virtuális gépeken csatlakoztatható | Helyszínen csatlakoztatható |
 |------------------------|-------------|-----------------------|----------------------|
-| Windows Server 2019 (előzetes verzió)<sup>1</sup> | SMB 3.0 | Igen | Igen |
-| Windows 10<sup>2</sup> | SMB 3.0 | Igen | Igen |
-| Windows Server félévi csatorna<sup>3</sup> | SMB 3.0 | Igen | Igen |
+| A Windows Server 2019    | SMB 3.0 | Igen | Igen |
+| Windows 10<sup>1</sup> | SMB 3.0 | Igen | Igen |
+| A Windows Server félévi csatorna<sup>2</sup> | SMB 3.0 | Igen | Igen |
 | Windows Server 2016    | SMB 3.0     | Igen                   | Igen                  |
 | Windows 8.1            | SMB 3.0     | Igen                   | Igen                  |
 | Windows Server 2012 R2 | SMB 3.0     | Igen                   | Igen                  |
@@ -34,9 +34,8 @@ Azure-fájlmegosztásokat az Azure-beli virtuális gépeken vagy helyszínen fut
 | Windows 7              | SMB 2.1     | Igen                   | Nem                   |
 | Windows Server 2008 R2 | SMB 2.1     | Igen                   | Nem                   |
 
-<sup>1</sup>A Windows Server 2019 előzetes verziója elérhető a [Windows Server Insiders programon](https://insider.windows.com/for-business-getting-started-server/) keresztül. Bár a Windows Server 2019 éles környezetben való használata még nem támogatott, lépjen kapcsolatba velünk, ha a [Windows hibaelhárítási útmutató](storage-troubleshoot-windows-file-connection-problems.md) részben leírtakon kívüli problémát tapasztal az Azure-fájlmegosztásokhoz való csatlakozással kapcsolatban.  
-<sup>2</sup>A Windows 10 1507-es, 1607-es, 1703-as, 1709-es és 1803-as verziói.  
-<sup>3</sup>A Windows Server 1709-es és 1803-as verziói.
+<sup>1</sup>Windows 10, 1507-es, 1607-es, 1703-as, 1709-es, 1803 és 1809 verzió.  
+<sup>2</sup>a Windows Server 1709-es és 1803.
 
 > [!Note]  
 > Javasoljuk, hogy mindig a Windows-verziójához legutóbb kiadott frissítést használja.
