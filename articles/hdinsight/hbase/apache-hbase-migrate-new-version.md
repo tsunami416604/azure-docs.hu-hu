@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 64b3762c40cc2e01944d78c546ebe267503526a7
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 71285ce3b1fb3cc592fc65b4ad96c6783de0c408
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049330"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499298"
 ---
-# <a name="migrate-an-hbase-cluster-to-a-new-version"></a>HBase-fürt áttelepítése új verzióra
+# <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Az Apache HBase-fürt áttelepítése új verzióra
 
-Feladat-alapú fürtök, mint például a Spark és Hadoop-, magától értetődnek frissítése – lásd: [újabb verzióra való frissítése HDInsight-fürt](../hdinsight-upgrade-cluster.md):
+Feladat-alapú fürtök esetében például [Apache Spark](https://spark.apache.org/) és [Apache Hadoop](https://hadoop.apache.org/), egyszerű frissítése – lásd: [újabb verzióra való frissítése HDInsight-fürt](../hdinsight-upgrade-cluster.md):
 
 1. Átmeneti (helyileg tárolt) adatok biztonsági másolatát.
 2. Törölje a meglévő fürtből.
@@ -26,14 +26,14 @@ Feladat-alapú fürtök, mint például a Spark és Hadoop-, magától értetőd
 4. Átmeneti adatok importálása.
 5. Indítsa el a feladatokat, és folytatja a műveletet az új fürtön.
 
-HBase-fürt frissítése néhány további lépés szükséges, ebben a cikkben leírtak szerint.
+Frissítése az [Apache HBase](http://hbase.apache.org/) fürt további lépésekre van szükség, ebben a cikkben leírtak szerint.
 
 > [!NOTE]
 > A frissítés során állásidő minimális, perc sorrendjéről kell lennie. Az üzemszünet kiüríteni a memóriában lévő összes adatot, majd konfigurálja, és indítsa újra az új fürtön a szolgáltatásokat az idő okozza a lépéseket. Az eredmények csomópontok, adatok mennyisége és más változók számától függően változhat.
 
-## <a name="review-hbase-compatibility"></a>Tekintse át a HBase-kompatibilitás
+## <a name="review-apache-hbase-compatibility"></a>Tekintse át az Apache HBase-kompatibilitás
 
-A HBase a frissítés előtt győződjön meg arról, a HBase-verziók a forrás és cél fürtökön kompatibilisek. További információkért lásd: [Hadoop elérhető HDInsight-összetevők és verziók](../hdinsight-component-versioning.md).
+Az Apache HBase a frissítés előtt győződjön meg arról, a HBase-verziók a forrás és cél fürtökön kompatibilisek. További információkért lásd: [Hadoop elérhető HDInsight-összetevők és verziók](../hdinsight-component-versioning.md).
 
 > [!NOTE]
 > Kifejezetten ajánljuk, hogy tekintse át az a verzió-kompatibilitási mátrixot a [HBase könyv](https://hbase.apache.org/book.html#upgrading).
@@ -57,7 +57,7 @@ A HBase a frissítés előtt győződjön meg arról, a HBase-verziók a forrás
 > [!NOTE]
 > A HBase verzió kibocsátási megjegyzésekben használhatatlanná tévő inkompatibilitásokat le kell írni.
 
-## <a name="upgrade-with-same-hbase-major-version"></a>A frissítés ugyanazt a HBase-főverzió
+## <a name="upgrade-with-same-apache-hbase-major-version"></a>A frissítés ugyanazt az Apache HBase-főverzió
 
 A következő forgatókönyv olyan ugyanazzal a verzióval HBase fő 3.6 (mindkettő származnak, az Apache HBase 1.1.2) a HDInsight 3.4-es verzióra. Más verziófrissítések hasonlóak, mindaddig, amíg nincsenek kompatibilitási problémák a forrás és cél között.
 
@@ -187,7 +187,7 @@ A következő forgatókönyv olyan ugyanazzal a verzióval HBase fő 3.6 (mindke
     
 4. Állítsa le a régi HBase-fürt Adatbetöltési.
 5. Győződjön meg arról, hogy a kapott friss adatokat ki van-e ürítve, futtassa újra az előző parancsfájlt.
-6. Jelentkezzen be az Ambari a régi fürtön (https://OLDCLUSTERNAME.azurehdidnsight.net) , és állítsa le a HBase-szolgáltatásokat. Amikor a rendszer kéri, győződjön meg arról, hogy szeretné-e leállítani a szolgáltatásokat, jelölje be a jelölőnégyzetet, a hbase-hez a karbantartási mód bekapcsolása. A csatlakozás és az Ambari további információkért lásd: [kezelése a HDInsight-fürtök az Ambari webes felhasználói felület használatával](../hdinsight-hadoop-manage-ambari.md).
+6. Jelentkezzen be [Apache Ambari](https://ambari.apache.org/) a régi fürtön (https://OLDCLUSTERNAME.azurehdidnsight.net) , és állítsa le a HBase-szolgáltatásokat. Amikor a rendszer kéri, győződjön meg arról, hogy szeretné-e leállítani a szolgáltatásokat, jelölje be a jelölőnégyzetet, a hbase-hez a karbantartási mód bekapcsolása. A csatlakozás és az Ambari további információkért lásd: [kezelése a HDInsight-fürtök az Ambari webes felhasználói felület használatával](../hdinsight-hadoop-manage-ambari.md).
 
     ![Az Ambari kattintson az intézménye lapjára, majd a bal oldali menüben, HBase, majd állítsa le a szolgáltatási műveletek](./media/apache-hbase-migrate-new-version/stop-hbase-services.png)
 
@@ -211,9 +211,9 @@ A következő forgatókönyv olyan ugyanazzal a verzióval HBase fő 3.6 (mindke
 
 ## <a name="next-steps"></a>További lépések
 
-A HBase és a HDInsight-fürtök frissítésével kapcsolatos további információkért tekintse meg a következő cikkeket:
+Tudjon meg többet a [Apache HBase](http://hbase.apache.org/) és a HDInsight-fürtök frissítése, lásd az alábbi cikkeket:
 
 * [Egy HDInsight-fürt frissítése újabb verzióra](../hdinsight-upgrade-cluster.md)
-* [Figyelése és felügyelete az Azure HDInsight az Ambari webes felhasználói felülettel](../hdinsight-hadoop-manage-ambari.md)
-* [Hadoop-összetevők és verziók](../hdinsight-component-versioning.md)
-* [Az Ambari konfigurációk optimalizálása](../hdinsight-changing-configs-via-ambari.md#hbase-optimization-with-the-ambari-web-ui)
+* [Figyelése és felügyelete az Azure HDInsight az Apache Ambari webes felhasználói felület használatával](../hdinsight-hadoop-manage-ambari.md)
+* [Az Apache Hadoop-összetevők és verziók](../hdinsight-component-versioning.md)
+* [Az Apache Ambari konfigurációk optimalizálása](../hdinsight-changing-configs-via-ambari.md#apache-hbase-optimization-with-the-ambari-web-ui)

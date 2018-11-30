@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 62502e946922928b8b4179d38ce9f9ae55f9930d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 308527bce2048921c2af65aa78a12d8ef2c2bed2
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238981"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497790"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
 
@@ -25,7 +25,7 @@ Ismerje meg, hogyan használható a HDInsight- [Azure Virtual Network](../virtua
 
 * HDInsight-adatokhoz való csatlakozásról tárolja egy Azure-beli virtuális hálózathoz.
 
-* Az Apache Hadoop-szolgáltatásokhoz, amelyek nem érhető el nyilvánosan az interneten keresztül közvetlenül hozzáfér. Ha például Kafka API-k vagy a HBase Java API-t.
+* Közvetlen hozzáférés [Apache Hadoop](https://hadoop.apache.org/) szolgáltatásokat, amelyek nem érhető el nyilvánosan az interneten keresztül. Ha például [Apache Kafka](https://kafka.apache.org/) API-k vagy a [Apache HBase](https://hbase.apache.org/) Java API-t.
 
 > [!WARNING]
 > A jelen dokumentumban lévő információk a TCP/IP-hálózati ismeretét igényli. Ha nem ismeri a TCP/IP-hálózat, meg kell partneri valakivel, aki a módosításokat éles hálózati környezetben a végrehajtása előtt.
@@ -171,11 +171,11 @@ A virtuális hálózat és a csatlakoztatott hálózatokon lévő erőforrások 
 
 További információkért lásd: a [virtuális gépek és Szerepkörpéldányok névfeloldása](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentumot.
 
-## <a name="directly-connect-to-hadoop-services"></a>Közvetlenül csatlakozhat a Hadoop-szolgáltatásokhoz
+## <a name="directly-connect-to-apache-hadoop-services"></a>Közvetlenül kapcsolódhat az Apache Hadoop-szolgáltatásokhoz
 
 Csatlakozhat a fürthöz https://CLUSTERNAME.azurehdinsight.net. A cím egy nyilvános IP-címet használja, ami nem feltétlenül érhető el, ha az NSG-k segítségével az internetről bejövő forgalom korlátozása. Emellett a fürt egy virtuális hálózaton üzembe hozzá tud férni a privát végpont használatával https://CLUSTERNAME-int.azurehdinsight.net. Ez a végpont a fürt hozzáférés a virtuális hálózaton belül egy privát IP-cím mutat.
 
-Az Ambari és a más weblapok, a virtuális hálózaton keresztül csatlakozni, használja az alábbi lépéseket:
+Az Apache Ambari és a más weblapok, a virtuális hálózaton keresztül csatlakozni, használja az alábbi lépéseket:
 
 1. A HDInsight-fürtcsomópontok keresheti meg a belső teljesen minősített tartománynevet (FQDN), használja a következő módszerek egyikét:
 
@@ -316,7 +316,7 @@ Ha a hálózat használatát tervezi **virtuális készülék tűzfal** a virtu�
 * 11000-11999
 * 14000-14999
 
-Adott szolgáltatások portok listáját lásd: a [HDInsight Hadoop-szolgáltatások által használt portok](hdinsight-hadoop-port-settings-for-services.md) dokumentumot.
+Adott szolgáltatások portok listáját lásd: a [HDInsight az Apache Hadoop-szolgáltatások által használt portok](hdinsight-hadoop-port-settings-for-services.md) dokumentumot.
 
 A virtuális készülékek vonatkozó tűzfalszabályok további információkért lásd: a [virtuális berendezésre telepítik](../virtual-network/virtual-network-scenario-udr-gw-nva.md) dokumentumot.
 
@@ -660,8 +660,8 @@ Ezek a lépések elvégzése után a teljes tartománynevek (FQDN) használatáv
 ## <a name="next-steps"></a>További lépések
 
 * Konfigurálása a helyszíni hálózat csatlakoztatása a HDInsight egy teljes körű példa: [HDInsight csatlakoztatása a helyszíni hálózathoz](./connect-on-premises-network.md).
-* Az Azure virtuális hálózatok Hbase-fürtök konfigurálásához lásd: [HBase-fürtök létrehozása az Azure virtuális hálózaton található HDInsight](hbase/apache-hbase-provision-vnet.md).
-* HBase-georeplikáció konfigurálása, lásd: [HBase-fürt replikációja az Azure virtuális hálózatok beállítása](hbase/apache-hbase-replication.md).
+* Az Azure virtuális hálózatok az Apache Hbase-fürtök konfigurálásához lásd: [Apache HBase-fürtök létrehozása az Azure virtuális hálózaton található HDInsight](hbase/apache-hbase-provision-vnet.md).
+* Az Apache HBase-georeplikáció konfigurálása, lásd: [Apache HBase-fürt replikációja az Azure virtuális hálózatok beállítása](hbase/apache-hbase-replication.md).
 * Azure virtuális hálózataiban működő további információkért lásd: a [Azure Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md).
 
 * Hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](../virtual-network/security-overview.md).

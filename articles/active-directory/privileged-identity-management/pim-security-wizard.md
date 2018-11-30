@@ -1,6 +1,6 @@
 ---
-title: Adatvédelmi varázsló az PIM-ben – Azure |} A Microsoft Docs
-description: Az Azure AD Privileged Identity Management (PIM) első használatakor megjelenő adatvédelmi varázsló ismerteti.
+title: Az Azure AD szerepkörök biztonsági varázsló a PIM |} A Microsoft Docs
+description: A biztonsági varázsló, amely a konvertálás állandó emelt szintű Azure AD szerepkör-hozzárendelések jogosult az Azure AD Privileged Identity Management (PIM) használatával történő használatával írja le.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,37 +10,63 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 02/27/2017
+ms.date: 11/09/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017
-ms.openlocfilehash: 178a4c5e978075f2a59b22a1cccf462138527964
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: a38f6cac007ec130c860e3a7c5de838cb63b1675
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189079"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497817"
 ---
-# <a name="security-wizard-in-pim"></a>A PIM biztonsági varázsló
-Ha Ön az első, aki a szervezet az Azure Privileged Identity Management (PIM) futtatása, megjelenik egy varázsló segítségével. A varázsló segítségével megismerheti a biztonsági kockázatokat az emelt szintű identitások és a PIM használata a kockázatok csökkentése érdekében. Nem kell módosításokat a varázsló a meglévő szerepkör-hozzárendelés, ha később szeretne.
+# <a name="azure-ad-roles-security-wizard-in-pim"></a>Az Azure AD szerepkörök biztonsági varázsló az PIM-ben
 
-## <a name="what-to-expect"></a>Mi várható?
-A szervezet elindul, miközben a PIM használatával, mielőtt állandó-e az összes szerepkör-hozzárendelések: a felhasználók mindig vannak ezek a szerepkörök akkor is, ha jelenleg nem szükségesek a jogosultságait.  A varázsló az első lépés bemutatja, magas szintű jogosultságokat igénylő szerepkörök listáját, és hogy hány felhasználó van éppen ezeket a szerepköröket. Hogy részletesebben is megtekintheti a felhasználók olvashat bővebben, ha egy adott szerepkörhöz vagy nem több ismeri.
+Ha Ön az első, aki futtatása az Azure AD Privileged Identity Management (PIM) Szolgáltatásának a szervezet számára, megjelenik egy varázsló segítségével. A varázsló segítségével megismerheti a biztonsági kockázatokat az emelt szintű identitások és a PIM használata a kockázatok csökkentése érdekében. Nem kell módosításokat a varázsló a meglévő szerepkör-hozzárendelés, ha később szeretne.
+
+## <a name="wizard-overview"></a>Varázsló – áttekintés
+
+A szervezet elindul, miközben a PIM használatával, mielőtt állandó-e az összes szerepkör-hozzárendelések: a felhasználók mindig vannak ezek a szerepkörök akkor is, ha jelenleg nem szükségesek a jogosultságait. A varázsló az első lépés bemutatja, magas szintű jogosultságokat igénylő szerepkörök listáját, és hogy hány felhasználó van éppen ezeket a szerepköröket. Hogy részletesebben is megtekintheti a felhasználók olvashat bővebben, ha egy adott szerepkörhöz vagy nem több ismeri.
 
 A varázsló második lépése lehetővé teszi a rendszergazda szerepkör-hozzárendelések módosítása.  
 
 > [!WARNING]
-> Fontos, hogy legalább egy globális rendszergazda, és a egy szervezeti fiókkal (nem Microsoft-fiók) több kiemelt szerepkörű rendszergazda. Ha csak egy kiemelt szerepkörű rendszergazda, a szervezet nem lesz képes a PIM kezelése, ha a fiókot törölték.
+> Fontos, hogy legalább egy globális rendszergazda, és több kiemelt szerepkörű rendszergazda egy olyan szervezeti fiókkal (nem Microsoft-fiókkal). Ha csak egy kiemelt szerepkörű rendszergazda, a szervezet nem lesz képes a PIM kezelése, ha a fiókot törölték.
 > Emellett folyamatosan állandó, ha egy felhasználó Microsoft-fiókkal (fiókkal jelentkezzen be a Microsoft szolgáltatásaihoz, például a Skype-hoz és az Outlook.com-ot használnak) szerepkör-hozzárendelések. Ha azt tervezi, többtényezős hitelesítés megkövetelése az aktiváláshoz ahhoz a szerepkörhöz tartozó, hogy a felhasználó lesz zárolva.
-> 
-> 
 
-Miután elvégezte a módosításokat, a varázsló már nem jelennek meg. A következő alkalommal, amikor Ön vagy egy másik kiemelt szerepkörű rendszergazda a PIM használatát tervezi, látni fogja a PIM-irányítópulton.  
+## <a name="run-the-wizard"></a>A varázsló futtatása
 
-* Ha szeretne hozzáadni vagy felhasználók eltávolítása a szerepkörök vagy-hozzárendelések módosítása az állandó jogosulttá, további információk: [hozzáadása vagy egy felhasználói szerepkör eltávolítása](pim-how-to-add-role-to-user.md).
-* Ha szeretné a PIM kezelése hozzáférést biztosít a több felhasználó, további információk: [a PIM kezelése hozzáférés biztosítása](pim-how-to-give-access-to-pim.md).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+
+1. Nyissa meg **az Azure AD Privileged Identity Management**.
+
+1. Kattintson a **Azure AD-szerepkörök** majd **varázsló**.
+
+    ![Az Azure AD-szerepkörök – varázsló](./media/pim-security-wizard/wizard-start.png)
+
+1. Kattintson a **1 felderítési kiemelt szerepköröket**.
+
+1. Tekintse át a megtekintheti, hogy mely felhasználók, állandó és jogosult kiemelt szerepkörök listáját.
+
+    ![Kiemelt szerepkörű felhasználók felderítése](./media/pim-security-wizard/discover-privileged-roles-users.png)
+
+1. Kattintson a **tovább** válassza ki a kívánt jogosult tagok.
+
+    ![Tagok átalakítása jogosulttá](./media/pim-security-wizard/convert-members-eligible.png)
+
+1. Miután kiválasztotta a tagok, kattintson a **tovább**.
+
+    ![Változások áttekintése](./media/pim-security-wizard/review-changes.png)
+
+1. Kattintson a **OK** az állandó hozzárendelés átalakítása jogosult.
+
+    Az átalakítás befejeződése után megjelenik egy értesítés.
+
+    ![Értesítések](./media/pim-security-wizard/notification-completion.png)
+
+Ha szeretne további kiemelt szerepkörök hozzárendeléseit jogosulttá alakításához, ismét futtathatja a varázslót. Ha szeretné használni a PIM felület helyett a varázsló, [PIM az Azure AD-címtárbeli szerepkörök hozzárendelése](pim-how-to-add-role-to-user.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- [A PIM használatának megkezdése](pim-getting-started.md)
 - [A PIM az Azure AD-címtárbeli szerepkörök hozzárendelése](pim-how-to-add-role-to-user.md)
 - [Hozzáférés biztosítása más rendszergazdák számára, miközben a PIM kezelése](pim-how-to-give-access-to-pim.md)

@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.openlocfilehash: d38b4e511defbb50dd5f74ae72e71d3316a57b3c
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 524195372abde91b302ee03c13152f234ef56406
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567128"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498261"
 ---
-# <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>A HDInsight Apache Storm írhat HDFS-be
+# <a name="write-to-apache-hadoop-hdfs-from-apache-storm-on-hdinsight"></a>A HDInsight Apache Storm írhat az Apache Hadoop HDFS-be
 
-Ismerje meg, hogyan adatokat írni az Apache Storm on HDInsight által használt HDFS-kompatibilis tároló alatt futó Storm használható. HDInsight egyaránt használhatja HDFS-kompatibilis tároló Azure Storage és az Azure Data Lake tárolhatja. A Storm biztosít egy [HdfsBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) összetevő található, írja az adatokat a HDFS. Ez a dokumentum információt nyújt a HdfsBolt a írása vagy a tároló típusa. 
+Ismerje meg, hogyan használható [Apache Storm](http://storm.apache.org/) adatokat írni az Apache Storm on HDInsight által használt HDFS-kompatibilis tárolóba. HDInsight egyaránt használhatja HDFS-kompatibilis tároló Azure Storage és az Azure Data Lake tárolhatja. A Storm biztosít egy [HdfsBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) összetevő található, írja az adatokat a HDFS. Ez a dokumentum információt nyújt a HdfsBolt a írása vagy a tároló típusa. 
 
 > [!IMPORTANT]
 > Ebben a dokumentumban használt példatopológiát a HDInsight alatt futó Stormmal összetevők támaszkodik. Megkövetelheti, hogy a módosítás az Azure Data Lake Store más Apache Storm-fürtök együttes használata.
@@ -129,7 +129,7 @@ Ez a YAML határozza meg a következő elemek:
 * `rotationPolicy`: Meghatározza, hogy mikor rotálása fájlokat. Ebben a példában elforgatás nélkül történik.
 * `hdfs-bolt`: Az előző összetevők működését visszafelé használja a konfigurációs paramétereket az `HdfsBolt` osztály.
 
-A fluxus keretrendszer további információkért lásd: [ https://storm.apache.org/releases/1.1.2/flux.html ](https://storm.apache.org/releases/1.1.2/flux.html).
+A fluxus keretrendszer további információkért lásd: [ https://storm.apache.org/releases/current/flux.html ](https://storm.apache.org/releases/current/flux.html).
 
 ## <a name="configure-the-cluster"></a>A fürt konfigurálása
 
@@ -219,5 +219,5 @@ Storm-topológiák futtassa addig, amíg leállt, vagy a fürt törlődik. A top
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megtanulhatta, hogyan használható a Storm írni az Azure Storage és az Azure Data Lake Store, Fedezze fel, más [a HDInsight Storm-példák](apache-storm-example-topology.md).
+Most, hogy megtanulhatta, hogyan használható az Apache Storm írni az Azure Storage és az Azure Data Lake Store, Fedezze fel, más [a HDInsight Apache Storm-példák](apache-storm-example-topology.md).
 

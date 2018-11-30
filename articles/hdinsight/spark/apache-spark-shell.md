@@ -9,20 +9,20 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/09/2018
-ms.openlocfilehash: 5aaf169418962c08f5f45413f53d4c92588a98bd
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: f8c296fddaafb8364cc5e0f07b54d850606322d9
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041482"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581425"
 ---
-# <a name="run-spark-from-the-spark-shell"></a>A Spark-Shell a Spark futtatása
+# <a name="run-apache-spark-from-the-spark-shell"></a>Futtassa az Apache Spark a Spark-Shell
 
-Interaktív Spark Shell biztosít egy REPL (olvasási végrehajtása print-loop) környezet egyszerre egy parancsok futtatása a Spark és az eredmények jelennek meg. Ez a folyamat hasznos fejlesztés és hibakeresés. A Spark egy parancshéj biztosít minden, a támogatott nyelvek: Scala, Python és az r segítségével
+Egy interaktív [Apache Spark](https://spark.apache.org/) rendszerhéj egyszerre egy parancsok futtatása a Spark és az eredmények jelennek meg (olvasási végrehajtása print-loop) REPL környezetet biztosít. Ez a folyamat hasznos fejlesztés és hibakeresés. A Spark egy parancshéj biztosít minden, a támogatott nyelvek: Scala, Python és az r segítségével
 
-## <a name="get-to-a-spark-shell-with-ssh"></a>Az ssh-val egy Spark-Shell elérése
+## <a name="get-to-an-apache-spark-shell-with-ssh"></a>Az Apache Spark-Shell az ssh-val való beolvasása
 
-A HDInsight egy Spark-Shell elérése a fürthöz SSH használatával, az elsődleges átjárócsomóponthoz csatlakozik:
+Az Apache Spark-Shell a HDInsight a fürthöz SSH használatával, az elsődleges átjárócsomóponthoz csatlakozik hozzá:
 
      ssh <sshusername>@<clustername>-ssh.azurehdinsight.net
 
@@ -40,7 +40,7 @@ A fürt teljes SSH-parancs kaphat az Azure Portalról:
 
 SSH használatával csatlakozhat a HDInsight a részletekért lásd: [az SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="run-a-spark-shell"></a>Egy Spark-Shell futtatása
+## <a name="run-an-apache-spark-shell"></a>Az Apache Spark-Shell futtatása
 
 Spark – ismertetése (spark-shell) Scala, Python (pyspark) és az R (sparkR) biztosít. Az SSH-munkamenet, a HDInsight-fürt fő csomópontjának adja meg a következő parancsok egyikét:
 
@@ -69,7 +69,7 @@ A Spark-Shell-parancs (`spark-shell`, `pyspark`, vagy `sparkR`) számos parancss
 
 ## <a name="next-steps"></a>További lépések
 
-- Lásd: [az Azure HDInsight alapú Spark bemutatása](apache-spark-overview.md) áttekintését.
+- Lásd: [Apache Spark on Azure HDInsight Spark bemutatása](apache-spark-overview.md) áttekintését.
 - Lásd: [Apache Spark-fürt létrehozása az Azure HDInsight](apache-spark-jupyter-spark-sql.md) -alapú Spark-fürtök és a sparksql-hez.
-- Lásd: [Mi a Spark strukturált Stream?](apache-spark-streaming-overview.md) alkalmazások írását, amelyek a Spark streamelési adatok dolgozhatók.
+- Lásd: [Mi az Apache Spark strukturált Stream?](apache-spark-streaming-overview.md) alkalmazások írását, amelyek a Spark streamelési adatok dolgozhatók.
 

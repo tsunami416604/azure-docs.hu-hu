@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.openlocfilehash: a1b21afb02cffe608ece8687359a021c84b05e1e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 951292a34f59fd143a7997571513a3c852bbce81
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014295"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497987"
 ---
-# <a name="analyze-application-insights-telemetry-logs-with-spark-on-hdinsight"></a>Az Application Insights-telemetrianaplók elemzése a Spark on HDInsight
+# <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Az Apache Spark on HDInsight az Application Insights-telemetrianaplók elemzése
 
-Ismerje meg, hogyan válassza a Spark on HDInsight Application Insights telemetriai adatok elemzéséhez.
+Ismerje meg, hogyan használható [Apache Spark](https://spark.apache.org/) a HDInsight Application Insights telemetriai adatok elemzéséhez.
 
 [A Visual Studio Application Insights](../../application-insights/app-insights-overview.md) egy elemzési szolgáltatás, amely a webes alkalmazások figyelésére. Az Application Insights által létrehozott telemetriaadatok exportálhatók az Azure Storage. Amint az adatok Azure Storage-ban, HDInsight segítségével elemezhetők.
 
@@ -26,7 +26,7 @@ Ismerje meg, hogyan válassza a Spark on HDInsight Application Insights telemetr
 
 * Egy alkalmazás, amely az Application Insights használatára van konfigurálva.
 
-* Linux-alapú HDInsight-fürt létrehozásának ismerete. További információkért lásd: [hozzon létre a Spark on HDInsight](apache-spark-jupyter-spark-sql.md).
+* Linux-alapú HDInsight-fürt létrehozásának ismerete. További információkért lásd: [HDInsight az Apache Spark létrehozása](apache-spark-jupyter-spark-sql.md).
 
   > [!IMPORTANT]
   > A dokumentum lépéseinek elvégzéséhez egy Linux-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -45,7 +45,7 @@ Az alábbi ábra az ebben a példában a service-architektúra:
 
 ![ábra, amely az Application Insights szolgáltatásból a blob storage, adatátvitel, és a Spark on HDInsight által feldolgozott azt](./media/apache-spark-analyze-application-insight-logs/appinsightshdinsight.png)
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure Storage tárterület
 
 Az Application Insights beállítható úgy, hogy folyamatosan exportálhatja a blobokhoz telemetrikus adatokat. HDInsight el tudja olvasni a blobokban tárolt adatokat. Vannak azonban bizonyos követelményeknek, figyelembe kell venni:
 
@@ -362,14 +362,14 @@ Az Azure Storage-fiók hozzáadásához egy meglévő fürthöz használja talá
 
 ## <a name="next-steps"></a>További lépések
 
-Spark-adatok és az Azure-szolgáltatások használatával további példákért lásd az alábbi dokumentumokat:
+Az Apache Spark-adatok és az Azure-szolgáltatások használatával további példákért lásd az alábbi dokumentumokat:
 
-* [Spark és BI: Interaktív adatelemzés végrehajtása a Spark on HDInsight használatával, BI-eszközökkel](apache-spark-use-bi-tools.md)
-* [Spark és Machine Learning: A Spark on HDInsight használata az épület-hőmérséklet elemzésére HVAC-adatok alapján](apache-spark-ipython-notebook-machine-learning.md)
-* [Spark és Machine Learning: A Spark on HDInsight használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
-* [A webhelynapló elemzése a Spark on HDInsight használatával](apache-spark-custom-library-website-log-analysis.md)
+* [Az Apache Spark és BI: interaktív adatelemzés a Spark on HDInsight használatával, BI-eszközökkel végrehajtása](apache-spark-use-bi-tools.md)
+* [Az Apache Spark és Machine Learning: a Spark on HDInsight HVAC-adatok épület-hőmérséklet elemzésére a használata](apache-spark-ipython-notebook-machine-learning.md)
+* [Az Apache Spark és Machine Learning: használja a Spark on HDInsight az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
+* [A webhelynapló elemzése a HDInsight az Apache Spark használatával](apache-spark-custom-library-website-log-analysis.md)
 
 Információ létrehozása és alkalmazások futtatására a Spark az alábbi dokumentumokban talál:
 
 * [Önálló alkalmazás létrehozása a Scala használatával](apache-spark-create-standalone-application.md)
-* [Feladatok távoli futtatása Spark-fürtön a Livy használatával](apache-spark-livy-rest-interface.md)
+* [Feladatok távoli futtatása egy Apache Spark fürtön a Livy használatával](apache-spark-livy-rest-interface.md)

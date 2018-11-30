@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 560d1c55b159ed817c0b080171862c28ebe73f3e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d0a38defe41ea7c4e0da32cb73cf2bd73fd80950
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952800"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498210"
 ---
 # <a name="create-a-complete-linux-environment-with-the-azure-classic-cli"></a>Teljes Linux-környezet létrehozása a klasszikus Azure CLI-vel
 Ebben a cikkben egy egyszerű hálózati terheléselosztó és a virtuális gépek, amelyek hasznosak a fejlesztési és egyszerű számítástechnika párjai készítünk. A folyamat által parancs parancsot, amíg nincs két működő, biztonságos Linux virtuális gépet, amelyhez csatlakozhat bárhol az interneten azt bemutatására. Majd továbbléphet összetettebb hálózatokhoz és környezeteket.
@@ -54,7 +54,7 @@ azure config mode arm
 
 A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa a paraméter nevek a következők `myResourceGroup`, `mystorageaccount`, és `myVM`.
 
-Hozza létre az erőforráscsoportot. A következő példában létrehozunk egy erőforráscsoportot, nevű `myResourceGroup` a a `westeurope` helye:
+Hozza létre az erőforráscsoportot. A következő példában létrehozunk egy `westeurope` nevű erőforráscsoportot a `myResourceGroup` helyen:
 
 ```azurecli
 azure group create -n myResourceGroup -l westeurope
@@ -279,7 +279,7 @@ azure config mode arm
 A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa a paraméter nevek a következők `myResourceGroup`, `mystorageaccount`, és `myVM`.
 
 ## <a name="create-resource-groups-and-choose-deployment-locations"></a>Erőforráscsoportok létrehozása és központi telepítési helyek kiválasztása
-Azure-erőforráscsoportok logikai telepítési entitások, amelyek tartalmazzák a konfigurációs adatokat és a metaadatok a logikai központi erőforrás-kezelés engedélyezése a rendszer. A következő példában létrehozunk egy erőforráscsoportot, nevű `myResourceGroup` a a `westeurope` helye:
+Azure-erőforráscsoportok logikai telepítési entitások, amelyek tartalmazzák a konfigurációs adatokat és a metaadatok a logikai központi erőforrás-kezelés engedélyezése a rendszer. A következő példában létrehozunk egy `westeurope` nevű erőforráscsoportot a `myResourceGroup` helyen:
 
 ```azurecli
 azure group create --name myResourceGroup --location westeurope

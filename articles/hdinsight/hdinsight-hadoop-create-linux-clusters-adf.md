@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: 76651874951255d9b01efdc6e91892f6852d948d
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 1e55da981daf29aca491c480d58f399bc681fd27
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036376"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499549"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Oktatóanyag: Azure Data Factory használatával HDInsight igény szerinti Apache Hadoop-fürtök létrehozása
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Ebből a cikkből megismerheti, hogyan hozhat létre Apache Hadoop-fürt, igény szerint, az Azure Data Factory használatával az Azure HDInsight. Ezt követően az adatfolyamatok az Azure Data Factory a Hive-feladatok futtatásához, majd törölheti a fürtöt. Ez az oktatóanyag végére elsajátíthatja, hogyan tesztelhetők a big Data típusú adatok feladatfuttatás ahol fürt létrehozását, a feladat futtatása és a fürt törlését végzett ütemezés szerint.
+Ebből a cikkből megismerheti, hogyan hozhat létre egy [Apache Hadoop](https://hadoop.apache.org/) igény szerint, az Azure Data Factory használatával az Azure HDInsight a fürthöz. Ezt követően az adatfolyamatok az Azure Data Factory a Hive-feladatok futtatásához, majd törölheti a fürtöt. Ez az oktatóanyag végére elsajátíthatja, hogyan tesztelhetők a big Data típusú adatok feladatfuttatás ahol fürt létrehozását, a feladat futtatása és a fürt törlését végzett ütemezés szerint.
 
 Ez az oktatóanyag a következő feladatokat mutatja be: 
 
@@ -43,7 +43,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
 
-Ebben a szakaszban hozzon létre egy tárfiókot, amelyet a HDInsight-fürtöt hoz létre, igény szerinti az alapértelmezett tárolóként használt. Ez a tárfiók is tartalmaz a minta HiveQL-parancsfájlt (**hivescript.hql**), amellyel a fürtön futó Hive mintafeladat szimulálásához.
+Ebben a szakaszban hozzon létre egy tárfiókot, amelyet a HDInsight-fürtöt hoz létre, igény szerinti az alapértelmezett tárolóként használt. Ezt a tárfiókot is tartalmaz a minta [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) parancsfájl (**hivescript.hql**) minta szimulálásához használt [Apache Hive](https://hive.apache.org/) feladatot, amely a fürtön.
 
 Ebben a szakaszban egy Azure PowerShell-szkript hozhat létre a tárfiókot, másolja a szükséges fájlokat a storage-fiókon belül használja. Az Azure PowerShell példaszkript ebben a szakaszban a következő feladatokat hajtja végre:
 
@@ -162,7 +162,7 @@ Ez a cikk a Hive-tevékenység, amely egy igény szerinti HDInsight Hadoop-fürt
     
 1. A HDInsight Hadoop-fürt törlődik a feldolgozás befejezése és a beállított időn (timeToLive-beállítást) üresjáratban a fürt után. A következő adatszelet feldolgozásra a timeToLive üresjárati idő érhető el, ha ugyanazon a fürtön segítségével dolgozza fel a szeletet.  
 
-## <a name="create-a-data-factory"></a>data factory létrehozása
+## <a name="create-a-data-factory"></a>Data factory létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
@@ -237,7 +237,7 @@ Ebben a szakaszban két társított szolgáltatást belül az adat-előállító
     | Tulajdonság | Leírás |
     | --- | --- |
     | Name (Név) | Adjon meg egy nevet a HDInsight társított szolgáltatás |
-    | Type (Típus) | Válassza ki **igény szerinti HDInsight** |
+    | Típus | Válassza ki **igény szerinti HDInsight** |
     | Azure Storage társított szolgáltatás | Válassza ki a korábban létrehozott Storage-beli társított szolgáltatást. |
     | Fürttípus | Válassza ki **hadoop** |
     | Élettartam | Adja meg az időtartamot, amelyek esetében szeretne a HDInsight-fürt automatikusan törlést megelőzően érhető el.|
@@ -338,7 +338,7 @@ Másik lehetőségként törölheti a teljes erőforráscsoport ebben az oktató
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megtanulta, hogyan igény szerinti HDInsight-fürt létrehozása, és futtathat Hive-feladatokat az Azure Data Factory használatával. Folytassa a következő artciel megtudhatja, hogyan hozhat létre HDInsight-fürtök egyéni konfigurációval.
+Ebben a cikkben megtanulta, hogyan hozhat létre, igény szerinti HDInsight-fürtöt, és futtassa az Azure Data Factory használatával [Apache Hive](https://hive.apache.org/) feladatok. Folytassa a következő artciel megtudhatja, hogyan hozhat létre HDInsight-fürtök egyéni konfigurációval.
 
 > [!div class="nextstepaction"]
 >[Az Azure HDInsight-fürtök létrehozása egyéni konfiguráció](hdinsight-hadoop-provision-linux-clusters.md)

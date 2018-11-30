@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: andrl
-ms.openlocfilehash: cc4b165b4fa04e22c9c57547df1657a0c6fc4537
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b89830d566b36b0446836d8f32aee5756e2d0991
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51263532"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498428"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Az Azure Cosmos DB particionálási
 
@@ -47,7 +47,6 @@ Ha olyan partíciókulcsot, vegye figyelembe a következő adatokat:
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg [olyan partíciókulcsot](partitioning-overview.md#choose-partitionkey)
 * Ismerje meg [partíciók](partition-data.md)
 * Ismerje meg [kiosztott átviteli sebesség az Azure Cosmos DB-ben](request-units.md)
 * Ismerje meg [az Azure Cosmos DB globális terjesztését](distribute-data-globally.md)

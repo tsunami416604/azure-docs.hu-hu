@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: 1ae06fe9cc459d86bdd46d9b033a726339493dc5
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 603aa8d85d42167accd2a5e71c4ab3e5245f5d07
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164770"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499261"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>HDInsight Spark-fürt használatával olvasása és írása az adatok Azure SQL Database-adatbázishoz
 
-Útmutató Apache Spark-fürt az Azure HDInsight összekapcsolása egy Azure SQL database és olvasni, írni és streamelhet adatokat az SQL database-be. A jelen cikkben lévő utasítások Jupyter notebook használatával a Scala kódrészleteket futtat. Azonban önálló alkalmazás létrehozása a Scala-vagy Python, és hajtsa végre a feladatot. 
+Útmutató Apache Spark-fürt az Azure HDInsight összekapcsolása egy Azure SQL database és olvasni, írni és streamelhet adatokat az SQL database-be. Az utasításokat a jelen cikk használatát egy [Jupyter Notebook](https://jupyter.org/) Scala kódrészletek végrehajtásához. Azonban önálló alkalmazás létrehozása a Scala-vagy Python, és hajtsa végre a feladatot. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,9 +32,9 @@ ms.locfileid: "52164770"
 
 * **SQL Server Management Studio**. Kövesse az utasításokat, [csatlakozás és adatok lekérdezése az SSMS használatával](../../sql-database/sql-database-connect-query-ssms.md).
 
-## <a name="create-a-jupyter-notebook"></a>Jupyter notebook létrehozása
+## <a name="create-a-jupyter-notebook"></a>Jupyter Notebook létrehozása 
 
-Először hozzon létre egy, a Spark-fürthöz tartozó Jupyter notebookot. Az ebben a cikkben használt kódrészleteket futtatni a notebookot fog használni. 
+Először hozzon létre egy [Jupyter Notebook](https://jupyter.org/) a Spark-fürthöz társított. Az ebben a cikkben használt kódrészleteket futtatni a notebookot fog használni. 
 
 1. Az a [az Azure portal](https://portal.azure.com/), nyissa meg a fürtöt.
 1. Válassza ki **Jupyter notebook** alá **fürt irányítópultjai** jobb oldalán.  Ha nem lát **fürt irányítópultjai**, kattintson a **áttekintése** a panelen a bal oldali menüből. Ha a rendszer felkéri rá, adja meg a fürthöz tartozó rendszergazdai hitelesítő adatokat.
@@ -237,4 +237,4 @@ Ebben a szakaszban azt streamelése adattárházba a **hvactable** , hogy már l
 
 * [Data Lake Store az adatok elemzése a HDInsight Spark-fürt használatával](apache-spark-use-with-data-lake-store.md)
 * [Strukturált streamelési események feldolgozása az EventHub használatával](apache-spark-eventhub-structured-streaming.md)
-* [A Spark strukturált Stream használata a Kafka on HDInsight használata](../hdinsight-apache-kafka-spark-structured-streaming.md)
+* [Az Apache Spark strukturált Stream használata a Apache Kafka on HDInsight használata](../hdinsight-apache-kafka-spark-structured-streaming.md)

@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3e792eb9ab2e2902bfc9c84db7c1c344fb0cf67f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 93929df86057b48e132048a0879bc7347402652a
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622346"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497744"
 ---
-# <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>Repülőjáratok késési adatainak elemzése a Hive a HDInsight használatával
-Apache Hadoop MapReduce-feladatok futtatása egy SQL-szerű nevű programozási nyelv révén módszert biztosít az Hive  *[HiveQL][hadoop-hiveql]*, összefoglalójához, amelyért alkalmazható lekérdezésére, és nagy mennyiségű adat elemzésére.
+# <a name="analyze-flight-delay-data-by-using-apache-hive-in-hdinsight"></a>Repülőjáratok késési adatainak elemzése a HDInsight az Apache Hive használatával
+[Az Apache Hive](https://hive.apache.org/) futó módszert biztosít az [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) feladatok egy SQL-szerű programozási nyelv révén nevű *[HiveQL] [ hadoop-hiveql]*, felé összefoglalójához, lekérdezéséhez és nagy mennyiségű adat elemzéséhez is alkalmazható.
 
 > [!IMPORTANT]
-> A jelen dokumentumban leírt lépések egy Windows-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement). A Linux-alapú fürtökkel működik lépéseiért lásd: [repülőjáratok késési adatainak elemzése a Hive a HDInsight (Linux) használatával](hdinsight-analyze-flight-delay-data-linux.md).
+> A jelen dokumentumban leírt lépések egy Windows-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement). A Linux-alapú fürtökkel működik lépéseiért lásd: [repülőjáratok késési adatainak elemzése a HDInsight (Linux) az Apache Hive használatával](hdinsight-analyze-flight-delay-data-linux.md).
 
 Az egyik fő vívmánya, az Azure HDInsight az adatok tárolási és számítási szétválasztását. HDInsight adatokat tároló Azure Blob storage használ. Egy tipikus feladatot három részből áll:
 
@@ -44,7 +44,7 @@ A fő részét az oktatóanyag bemutatja, hogyan egy Windows PowerShell-szkript 
 A függelékben találja az utasításokat repülőjáratok késési adatainak feltöltése, a Hive a lekérdezési karakterlánc létrehozása és feltöltése és az Azure SQL database előkészítése a Sqoop feladatokhoz.
 
 > [!NOTE]
-> A jelen dokumentumban leírt lépések Windows-alapú HDInsight-fürtökre jellemzőek. A Linux-alapú fürtökkel működik lépéseiért lásd: [Hive a HDInsight (Linux) használatával repülőjáratok késési adatainak elemzése](hdinsight-analyze-flight-delay-data-linux.md)
+> A jelen dokumentumban leírt lépések Windows-alapú HDInsight-fürtökre jellemzőek. A Linux-alapú fürtökkel működik lépéseiért lásd: [Apache Hive a HDInsight (Linux) használatával repülőjáratok késési adatainak elemzése](hdinsight-analyze-flight-delay-data-linux.md)
 
 ### <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
@@ -76,7 +76,7 @@ Az alábbi táblázat a jelen oktatóanyagban használt fájlokat listázza:
 
 ## <a name="create-cluster-and-run-hivesqoop-jobs"></a>Fürt létrehozása és a Sqoop és Hive-feladatok futtatása
 Hadoop MapReduce kötegelt feldolgozás. A leginkább költséghatékony módon futtathat Hive-feladatokat, hogy hozzon létre egy fürtöt, a feladat, és törli a feladatot, a feladat befejezése után. A következő szkriptet az egész folyamat magában foglalja.
-Egy HDInsight-fürtöt hoz létre, és Hive-feladatok futtatása a további információkért lásd: [Hadoop-fürtök létrehozása a HDInsight] [ hdinsight-provision] és [Hive használata a HDInsight] [hdinsight-use-hive].
+Egy HDInsight-fürtöt hoz létre, és Hive-feladatok futtatása a további információkért lásd: [Apache Hadoop-fürtök létrehozása a HDInsight] [ hdinsight-provision] és [Apache Hive használata a HDInsight] [hdinsight-use-hive].
 
 **A Hive-lekérdezések futtatásához az Azure PowerShell**
 
@@ -237,10 +237,10 @@ Egy HDInsight-fürtöt hoz létre, és Hive-feladatok futtatása a további info
 - - -
 
 ## <a id="appendix-a"></a>A függelék – feltöltés repülőjáratok késési adatainak az Azure Blob storage
-Az adatfájlban és a HiveQL-parancsfájlt fájlok feltöltése (lásd: [B függelék](#appendix-b)) néhány tervezést igényel. A cél pedig az adatfájlok és a HiveQL tárolásához, egy HDInsight-fürtöt hoz létre, és a Hive-feladat futtatása előtt. Erre két lehetősége van:
+Az adatfájl feltöltése és a [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) parancsfájlok (lásd: [B függelék](#appendix-b)) néhány tervezést igényel. A cél pedig az adatfájlok és a HiveQL tárolásához, egy HDInsight-fürtöt hoz létre, és a Hive-feladat futtatása előtt. Erre két lehetősége van:
 
 * **A HDInsight-fürt által használandó meg alapértelmezett fájlrendszerként azonos Azure Storage-fiókot használni.** A HDInsight-fürt lesz a Tárfiók hozzáférési kulcsát, mert nem kell további módosításokat.
-* **Használja a HDInsight-fürt alapértelmezett fájlrendszerének egy másik Azure Storage-fiókjában.** Ez a helyzet, ha módosítania kell a Windows PowerShell parancsfájl található létrehozásra vonatkozó részét [létre HDInsight-fürt és a Hive és a Sqoop futtathatja feladatait](#runjob) a Storage-fiók kiegészítő tárfiókként. Útmutatásért lásd: [Hadoop-fürtök létrehozása a HDInsight][hdinsight-provision]. A HDInsight-fürt majd tudja, hogy a tárfiók hozzáférési kulcsára.
+* **Használja a HDInsight-fürt alapértelmezett fájlrendszerének egy másik Azure Storage-fiókjában.** Ez a helyzet, ha módosítania kell a Windows PowerShell parancsfájl található létrehozásra vonatkozó részét [létre HDInsight-fürt és az Apache Hive/Sqoop futtathatja feladatait](#runjob) a Storage-fiók kiegészítő tárfiókként. Útmutatásért lásd: [Apache Hadoop-fürtök létrehozása a HDInsight][hdinsight-provision]. A HDInsight-fürt majd tudja, hogy a tárfiók hozzáférési kulcsára.
 
 > [!NOTE]
 > A Blob storage az adatok fájl elérési útja rögzített bekódolni a HiveQL-parancsfájlt. Ennek megfelelően kell frissíteni.
@@ -359,7 +359,7 @@ Az oktatóanyagok/flightdelay/adatok elérési útja az a virtuális mappa hozot
 - - -
 
 ## <a id="appendix-b"></a>B függelék – létrehozása és feltöltése a HiveQL-parancsfájlt
-Az Azure PowerShell használatával egyszerre több HiveQL utasítás egy futni, vagy csomagot egy parancsfájlt a HiveQL-utasítást. Ez a szakasz bemutatja, hogyan hozhat létre egy HiveQL-parancsfájlt, és töltse fel a parancsfájl az Azure Blob storage Azure PowerShell használatával. Hive igényel a HiveQL parancsfájlok az Azure Blob storage-ban kell tárolni.
+Az Azure PowerShell használatával futtathatja a több [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) utasításokat egy időben, vagy csomagot egy parancsfájlt a HiveQL-utasítást. Ez a szakasz bemutatja, hogyan hozhat létre egy HiveQL-parancsfájlt, és töltse fel a parancsfájl az Azure Blob storage Azure PowerShell használatával. Hive igényel a HiveQL parancsfájlok az Azure Blob storage-ban kell tárolni.
 
 A HiveQL-parancsfájlt hajtsa végre a következő lesz:
 
@@ -369,7 +369,7 @@ A HiveQL-parancsfájlt hajtsa végre a következő lesz:
 4. **Hozzon létre az késleltetések tábla**. Hasznos lehet törölni az adatokat további feldolgozás előtt. Ez a lekérdezés egy új táblát hoz létre *késések*, a delays_raw táblából. Vegye figyelembe, hogy nem másolódnak át az ideiglenes oszlopokat (ahogy azt korábban említettük), és hogy a **substring** függvény segítségével távolítsa el az idézőjelek között az adatok közül.
 5. **Az átlagos időjárás késleltetés és a csoportok az eredmények számítási a város nevét.** Ez lesz is az eredményeket a Blob storage. Fontos megjegyezni, hogy a lekérdezés aposztrófot eltávolítja az adatokat, és ki fogja zárni a sorok, értéke **weather_delay** null értékű. Erre akkor szükség, mert a Sqoop, később az oktatóanyagban használt nem kezeli az ezeket az értékeket szabályosan alapértelmezés szerint.
 
-A HiveQL parancsok teljes listájáért lásd: [adatdefiníciós nyelv Hive][hadoop-hiveql]. Minden egyes HiveQL parancs pontosvesszővel kell végződnie.
+A HiveQL parancsok teljes listájáért lásd: [Apache Hive-adatdefiníciós nyelv][hadoop-hiveql]. Minden egyes [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) parancs pontosvesszővel kell végződnie.
 
 **A HiveQL parancsfájl létrehozása**
 
@@ -712,13 +712,13 @@ A HiveQL parancsok teljes listájáért lásd: [adatdefiníciós nyelv Hive][had
 5. Ellenőrizze a parancsprogram kimenete. Győződjön meg arról, hogy a parancsprogram sikeresen lefutott.
 
 ## <a id="nextsteps"></a> Következő lépések
-Most már ismeri a fájl feltöltése az Azure Blob storage-, hogyan töltse fel a Hive-tábla használatával az adatok Azure Blob storage-ból, hogyan futtathat Hive-lekérdezések és Sqoop használatával exportálja az adatokat HDFS-ből az Azure SQL database. További tudnivalókért tekintse meg a következő cikkeket:
+Most már megismerte, hogyan tölthet fel egy fájlt az Azure Blob storage-, hogyan lehet az Apache Hive tábla feltöltése adatokkal az adatok Azure Blob Storage használatával, hogyan futtathat Hive-lekérdezések és adatainak exportálása a Sqoop használata [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) az Azure SQL az adatbázis. További tudnivalókért tekintse meg a következő cikkeket:
 
 * [HDInsight – első lépések][hdinsight-get-started]
-* [A Hive használata a HDInsightban][hdinsight-use-hive]
-* [Az Oozie használata a HDInsightban][hdinsight-use-oozie]
-* [A Sqoop használata a HDInsightban][hdinsight-use-sqoop]
-* [A Pig használata a HDInsightban][hdinsight-use-pig]
+* [Az Apache Hive használata a HDInsight][hdinsight-use-hive]
+* [Az Apache Oozie használata a HDInsight][hdinsight-use-oozie]
+* [A HDInsight Apache Sqoop használata][hdinsight-use-sqoop]
+* [Az Apache Pig használata a HDInsight][hdinsight-use-pig]
 * [Java MapReduce programok fejlesztése a HDInsight][hdinsight-develop-mapreduce]
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/

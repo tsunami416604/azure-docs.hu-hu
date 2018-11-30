@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 11/28/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: bc6d615409f3c2d0f46286d2ad2ba20c32574afd
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: c7e9c841e7a1d73fcdedd99e210eefb1e52bbf3e
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091715"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498760"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Annak eldöntése, mikor érdemes használni az Azure-Blobok, az Azure Files és az Azure-lemezek
 
@@ -42,7 +42,7 @@ Az alábbi táblázat hasonlítja össze az Azure Files az Azure Blobszolgáltat
 |Végpontok|`http://myaccount.blob.core.windows.net/mycontainer/myblob`|`\\myaccount.file.core.windows.net\myshare\myfile.txt`<br /><br /> `http://myaccount.file.core.windows.net/myshare/myfile.txt`|  
 |Könyvtárak|Névtere strukturálatlan|Igaz címtárobjektumok|  
 |Kis-és nagybetűk nevek|Kis- és nagybetűk megkülönböztetése|Kis-és nagybetű nincs megkülönböztetve, de a kis megőrzése|  
-|Kapacitás|Legfeljebb 500 TiB-tárolók|5 TiB fájlmegosztások|  
+|Kapacitás|Legfeljebb 2 PiB fiók korlát |5 TiB fájlmegosztások|  
 |Teljesítmény|Akár 60 per blokkblob MiB/s|Akár 60 jutó MiB/s|  
 |Objektum mérete|Legfeljebb körülbelül 4,75 TiB blokkblob kiszolgálónként|Legfeljebb 1 Tib-ra / fájl|  
 |Számlázott kapacitás|Írt bájtok száma alapján|A fájl mérete alapján|  

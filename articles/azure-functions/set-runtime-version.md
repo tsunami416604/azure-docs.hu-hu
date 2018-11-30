@@ -2,19 +2,18 @@
 title: Az Azure Functions runtime verziók bemutatásához
 description: Az Azure Functions futtatókörnyezet több verzióit támogatja. Ismerje meg, hogyan adja meg az Azure-ban futó függvényalkalmazást a futtatókörnyezet-verzióját.
 services: functions
-documentationcenter: ''
 author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 10/05/2018
+ms.date: 11/26/2018
 ms.author: glenga
-ms.openlocfilehash: 6d89746c0a2d4642e5025789d352803195c0a3b9
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: a0f66f5a1ba64c955fe0669d3ed215ee7c2895c0
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886807"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498399"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Az Azure Functions runtime verziók bemutatásához
 
@@ -37,23 +36,13 @@ Az értékek állítható be a `FUNCTIONS_EXTENSION_VERSION` Alkalmazásbeállí
 
 ## <a name="view-and-update-the-current-runtime-version"></a>Megtekintése és módosítása az aktuális futtatókörnyezet-verzió
 
-A következő eljárással a függvényalkalmazás által jelenleg használt futtatókörnyezet verziójának megtekintéséhez.
+Módosíthatja az Ön által használt futtatókörnyezet verziójának függvényalkalmazást. A parancsban történt használhatatlanná tévő lehetséges, mert csak akkor módosítsa a futtatókörnyezet-verzió előtt létrehozott függvényeinek a függvényalkalmazásban. Bár a futtatókörnyezet verziója határozza meg a `FUNCTIONS_EXTENSION_VERSION` beállításnál kell a módosítás végrehajtása az Azure Portalon, és nem módosítja a beállítást a közvetlenül. Ez azért, mert a portál ellenőrzi a módosításokat, és más kapcsolódó módosítást hajt végre igény szerint.
 
-1. Az a [az Azure portal](https://portal.azure.com), tallózással keresse meg a függvényalkalmazást.
+### <a name="from-the-azure-portal"></a>Az Azure Portalról
 
-1. A **konfigurált szolgáltatások**, válassza a **Alkalmazásbeállítások függvény**.
+[!INCLUDE [Set the runtime version in the portal](../../includes/functions-view-update-version-portal.md)]
 
-    ![Válassza ki a függvényalkalmazás beállításai](./media/set-runtime-version/add-update-app-setting.png)
-
-1. Az a **Alkalmazásbeállítások függvény** lapra, keresse meg a **verze modulu Runtime**. Vegye figyelembe az adott futtatókörnyezet-verzió és a kért főverziója. Az alábbi példában a verzió értéke `~2`.
-
-   ![Válassza ki a függvényalkalmazás beállításai](./media/set-runtime-version/function-app-view-version.png)
-
-1. A függvényalkalmazást, hogy a verzió 1.x futásidejű rögzít, válassza a **~ 1** alatt **verze modulu Runtime**. Ez a kapcsoló le van tiltva, ha az alkalmazás funkciói.
-
-1. Ha módosította a futtatókörnyezet-verzió, lépjen vissza a **áttekintése** lapot, majd **indítsa újra a** , indítsa újra az alkalmazást.  A függvényalkalmazás újraindul, 1.x verzió modulban fut, és a verzió 1.x sablonok függvények létrehozásakor használt.
-
-## <a name="view-and-update-the-runtime-version-using-azure-cli"></a>Megtekintése és módosítása az Azure CLI-vel futtatókörnyezet verziója
+### <a name="view-and-update-the-runtime-version-using-azure-cli"></a>Az Azure parancssori felületen
 
 Akkor is megtekintheti, és állítsa be a `FUNCTIONS_EXTENSION_VERSION` az Azure parancssori felületen.
 

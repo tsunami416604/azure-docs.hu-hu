@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 264e7f3d885535304470c833e228660ba51fefc6
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 83ff526eb0bd0c51822fc52c90b958d50022a834
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312304"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497736"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health – gyakori kérdések
 Ez a cikk az Azure Active Directory (Azure AD) Connect Health szolgáltatással kapcsolatos gyakori kérdések (GYIK) rájuk adott válaszokat tartalmazza. Ezek a gyakori kérdések a szolgáltatás, amely tartalmazza a számlázási modell, képességek, korlátozások és támogatás használatáról terjed ki.
@@ -62,7 +62,7 @@ Példa:
 
 **K: az Azure AD Connect Health-támogatás az Azure Germany Cloud?**
 
-Az Azure AD Connect Health nem támogatott a Németországi Felhőhöz kivételével a [szinkronizálási hibák jelentés funkció](how-to-connect-health-sync.md#object-level-synchronization-error-report-preview). 
+Az Azure AD Connect Health nem támogatott a Németországi Felhőhöz kivételével a [szinkronizálási hibák jelentés funkció](how-to-connect-health-sync.md#object-level-synchronization-error-report). 
 
 | Szerepkörök | Szolgáltatások | Támogatja a német felhőben |
 | ------ | --------------- | --- |
@@ -137,7 +137,7 @@ A health agent regisztrálása a következő lehetséges okok miatt meghiúsulha
 
 **Kérdés vagyok első riasztást kap, hogy "Állapotfigyelő szolgáltatás adatai nem naprakészek." Hogyan háríthatom el a problémát?**
 
-Az Azure AD Connect Health a riasztást állít elő, ha azt nem kap az adatpontok a kiszolgálóról az elmúlt két órában. [További információk](how-to-connect-health-data-freshness.md).
+Az Azure AD Connect Health a riasztást állít elő, ha azt nem kap az adatpontok a kiszolgálóról az elmúlt két órában. [További információ](how-to-connect-health-data-freshness.md).
 
 ## <a name="operations-questions"></a>Műveletek kérdések
 **K: van szükségem a webalkalmazás-proxy kiszolgálók a naplózás engedélyezéséhez?**

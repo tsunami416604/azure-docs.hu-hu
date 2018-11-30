@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/22/2017
 ms.author: maxluk
-ms.openlocfilehash: c3bdad6f1c199dda867370126eb7dcf5c296a12d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 853bf9cfce458e6f112101b1382dd5bfd5df202d
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230427"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499117"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight-fürtök kapacitástervezése
 
@@ -61,7 +61,7 @@ A fürt különböző tárfiókokban kombinációját férhetnek hozzá. Tipikus
 
 ## <a name="choose-a-cluster-type"></a>Fürt típusának kiválasztása
 
-Fürt típusa határozza meg a számítási feladatok futtathatók, például a Hadoop, a Storm, Kafka és Spark a HDInsight-fürt van konfigurálva. Az elérhető fürttípusok részletes ismertetését lásd: [Azure HDInsight bemutatása](hadoop/apache-hadoop-introduction.md#cluster-types-in-hdinsight). Mindegyik fürttípus rendelkezik egy adott központi telepítési topológiában, amely megfelel a követelményeknek és a csomópontok számát.
+Fürt típusa határozza meg a számítási feladatok futnak, például a HDInsight-fürt van konfigurálva [Apache Hadoop](https://hadoop.apache.org/), [Apache Storm](https://storm.apache.org/), [Apache Kafka](https://kafka.apache.org/), vagy [ Az Apache Spark](https://spark.apache.org/). Az elérhető fürttípusok részletes ismertetését lásd: [Azure HDInsight bemutatása](hadoop/apache-hadoop-introduction.md#cluster-types-in-hdinsight). Mindegyik fürttípus rendelkezik egy adott központi telepítési topológiában, amely megfelel a követelményeknek és a csomópontok számát.
 
 ## <a name="choose-the-vm-size-and-type"></a>Válassza ki a virtuális gép méretét és típusát
 
@@ -79,7 +79,7 @@ A virtuális gép méretét és típusát határozza meg a Processzor feldolgoz�
 
 ## <a name="choose-the-cluster-scale"></a>Válassza ki a fürt vertikális
 
-Egy fürthöz méretezés a virtuális gép csomópontjainak mennyiségét határozza meg. Az összes fürt esetében vannak, amelyek egy adott méretezési csomóponttípusok és csomóponttípus, amely támogatja a horizontális felskálázást. A fürt megkövetelhetik például pontosan három ZooKeeper-csomópontok vagy két fő csomópont ingyenes. Feldolgozó csomópontokat, amelyeket a adatfeldolgozási elosztott módon is kihasználhatják a felskálázás, adja hozzá a további feldolgozó csomópontokat.
+Egy fürthöz méretezés a virtuális gép csomópontjainak mennyiségét határozza meg. Az összes fürt esetében vannak, amelyek egy adott méretezési csomóponttípusok és csomóponttípus, amely támogatja a horizontális felskálázást. Ha például egy fürt igényelhetnek pontosan három [Apache ZooKeeper](https://zookeeper.apache.org/) csomópontok vagy két fő csomópont ingyenes. Feldolgozó csomópontokat, amelyeket a adatfeldolgozási elosztott módon is kihasználhatják a felskálázás, adja hozzá a további feldolgozó csomópontokat.
 
 A fürt típusától függően a munkavégző csomópontok számának növelése ad hozzá a számítási kapacitás (például a több mag), de előfordulhat, hogy a feldolgozott adatok tárolása a memóriában támogatásához az egész fürt számára szükséges memória teljes mennyiségétől is hozzáadhat. Csakúgy, mint a kiválasztott virtuális gép méretét és típusát, a fürt megfelelő méretezés kiválasztása általában elérte tapasztalati, szimulált számítási feladatokat vagy a tesztcsoportos lekérdezések használatával.
 
@@ -90,7 +90,7 @@ Ki lehet terjeszteni a terhelés megnövekedett igényeket kell kielégíteni, m
 A fürt élettartama díjkötelesek. Ha csak vannak, hogy kell-e a fürt felfelé és a futó megadott időpontok, [Azure Data Factory segítségével igény szerinti fürtök létrehozása](hdinsight-hadoop-create-linux-clusters-adf.md). PowerShell-parancsfájlok, amelyek kiépítése, és törölje a fürtöt is létrehozhat, és majd ütemezze ezeket a szkripteket használatával [Azure Automation](https://azure.microsoft.com/services/automation/).
 
 > [!NOTE]
-> A fürt törlésekor az alapértelmezett Hive-metaadattár is törlődik. A következő fürt újbóli létrehozásához a metaadattár megőrizni, külső metaadat-tárral, például az Azure-adatbázis vagy Oozie használja.
+> A fürt törlésekor az alapértelmezett Hive-metaadattár is törlődik. A következő fürt újbóli létrehozásához a metaadattár fennáll, használja a külső metaadat-tárral, például az Azure Database vagy [Apache Oozie](https://oozie.apache.org/).
 <!-- see [Using external metadata stores](hdinsight-using-external-metadata-stores.md). -->
 
 ### <a name="isolate-cluster-job-errors"></a>Fürt feladathibák elkülönítése
@@ -109,5 +109,5 @@ Azonban néhány rögzített kvóta korlátozva van, például egy Azure-előfiz
 
 ## <a name="next-steps"></a>További lépések
 
-* [A Hadoop, Spark, Kafka és több HDInsight-fürtök beállítása](hdinsight-hadoop-provision-linux-clusters.md): ismerje meg, hogyan állíthatja be, és a HDInsight Hadoop, Spark, Kafka, interaktív Hive, HBase, Machine Learning-szolgáltatások vagy a Storm-fürtök konfigurálása.
+* [Az Apache Hadoop, Spark, Kafka és több HDInsight-fürtök beállítása](hdinsight-hadoop-provision-linux-clusters.md): ismerje meg, hogyan állíthatja be, és a HDInsight Apache Hadoop, Spark, Kafka, interaktív Hive, HBase, Machine Learning-szolgáltatások vagy a Storm-fürtök konfigurálása.
 * [Fürtteljesítmény monitorozása](hdinsight-key-scenarios-to-monitor.md): További információ a HDInsight-fürthöz, amelyek hatással lehetnek a fürt kapacitásának figyelése főbb forgatókönyvek megvalósítását.

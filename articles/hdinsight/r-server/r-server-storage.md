@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 466cb9ea116030d3f6ee6b41809011dae9acc00b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 578479d43279dc1edb9edd24fd57d6841784166a
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011204"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498137"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure Storage-megoldások Machine Learning-szolgáltatások az Azure HDInsight
 
@@ -26,7 +26,7 @@ Machine Learning szolgáltatások a HDInsight a tárolási megoldások széles m
 
 Lehetősége is van, több Azure storage-fiókok és -tárolót a HDInsight-fürt eléréséhez. Az Azure File storage az kényelmes adatok tárolási lehetőség használatra az élcsomóponton, amely lehetővé teszi, hogy egy, az Azure Storage-fájlmegosztás csatlakoztatása például a Linux-fájlrendszer. De Azure-fájlmegosztások csatlakoztatva van, és bármilyen, amely rendelkezik egy támogatott operációs rendszert, például a Windows vagy Linux rendszert használják. 
 
-Amikor a HDInsight egy Hadoop-fürtöt hoz létre, vagy megadhatja egy **az Azure storage** fiókot vagy egy **Data Lake store**. Ebből a fiókból egy adott tároló tárolja a fájlrendszer, a fürt által létrehozott (például a Hadoop elosztott fájlrendszer). További információkért és útmutatóért lásd:
+Amikor HDInsight egy Apache Hadoop-fürtöt hoz létre, vagy megadhatja egy **az Azure storage** fiókot vagy egy **Data Lake store**. Ebből a fiókból egy adott tároló tárolja a fájlrendszer, a fürt által létrehozott (például a Hadoop elosztott fájlrendszer). További információkért és útmutatóért lásd:
 
 - [Az Azure storage használata a HDInsight](../hdinsight-hadoop-use-blob-storage.md)
 - [Használata Data Lake Store az Azure HDInsight-fürtökkel](../hdinsight-hadoop-use-data-lake-store.md)
@@ -161,7 +161,7 @@ A Data Lake Store-fiók konfigurálása RevoShare címtárhoz, és adja hozzá a
 
 Van egy kényelmes adatok tárolási lehetőség, használatra az élcsomóponti operacionalizáláshoz nevű [Azure Files](https://azure.microsoft.com/services/storage/files/). Lehetővé teszi, hogy egy Azure-tárolófájl-megosztás és a Linux-fájlrendszer csatlakoztatási. Lehet, hogy ezt a beállítást az adatfájlok, R-szkriptek és az esetleg szükséges később, különösen akkor, ha a natív fájlrendszer használatára a HDFS helyett az élcsomóponthoz logikus eredményobjektumok tárolására is praktikus. 
 
-Az Azure Files egyik fő előnye az, hogy a fájlmegosztások csatlakoztatva van-e, és hogy minden, amely rendelkezik egy támogatott operációs rendszer, például a Windows vagy Linux rendszeren használja. Például akkor használható, amelynek Ön vagy valaki a csapata egy másik HDInsight-fürt, egy Azure virtuális Gépen, vagy akár egy helyszíni rendszer szerint. További információ eléréséhez lásd:
+Az Azure Files egyik fő előnye az, hogy a fájlmegosztások csatlakoztatva van-e, és hogy minden, amely rendelkezik egy támogatott operációs rendszer, például a Windows vagy Linux rendszeren használja. Például akkor használható, amelynek Ön vagy valaki a csapata egy másik HDInsight-fürt, egy Azure virtuális Gépen, vagy akár egy helyszíni rendszer szerint. További információkért lásd:
 
 - [Az Azure File Storage használata Linuxszal](../../storage/files/storage-how-to-use-files-linux.md)
 - [A Windows Azure File storage használata](../../storage/files/storage-dotnet-how-to-use-files.md)
@@ -170,6 +170,6 @@ Az Azure Files egyik fő előnye az, hogy a fájlmegosztások csatlakoztatva van
 ## <a name="next-steps"></a>További lépések
 
 * [Machine Learning-szolgáltatások HDInsight-fürt áttekintése](r-server-overview.md)
-* [Machine Learning-szolgáltatások fürt hadoop használatának első lépései](r-server-get-started.md)
+* [Ismerkedés a Machine Learning-szolgáltatások az Apache Hadoop-fürt](r-server-get-started.md)
 * [Számítási környezeti beállítások az ML-szolgáltatások HDInsighton belüli fürtjében](r-server-compute-contexts.md)
 

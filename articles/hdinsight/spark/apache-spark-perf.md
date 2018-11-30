@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 4a7777be01cc15ed5cc4c9c091230afe1ddfa897
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: dc1fe8a3d9a1f0da0a190275b4fbb8bd18fff610
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047442"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499150"
 ---
-# <a name="optimize-spark-jobs"></a>Spark-feladatok optimalizálása
+# <a name="optimize-apache-spark-jobs"></a>Az Apache Spark-feladatok optimalizálása
 
-Ismerje meg, hogyan optimalizálható a Spark-fürt konfigurációja számára az adott számítási feladathoz.  A leggyakoribb kihívás abban áll memóriaprobléma miatt (különösen a nem megfelelő méretű végrehajtóval) nem megfelelő konfigurációkat, hosszú ideig futó műveletek és feladatok, amelyek a Descartes-féle műveletek. Felgyorsíthatja a megfelelő gyorsítótárazási és azáltal, hogy a feladatok [Adateltérés](#optimize-joins-and-shuffles). A legjobb teljesítmény figyelésére, és tekintse át a hosszú ideig futó és erőforrás-igényes Spark feladatvégrehajtások.
+Ismerje meg, hogyan optimalizálható [Apache Spark](https://spark.apache.org/) az adott számítási feladathoz tartozó fürtkonfiguráció.  A leggyakoribb kihívás abban áll memóriaprobléma miatt (különösen a nem megfelelő méretű végrehajtóval) nem megfelelő konfigurációkat, hosszú ideig futó műveletek és feladatok, amelyek a Descartes-féle műveletek. Felgyorsíthatja a megfelelő gyorsítótárazási és azáltal, hogy a feladatok [Adateltérés](#optimize-joins-and-shuffles). A legjobb teljesítmény figyelésére, és tekintse át a hosszú ideig futó és erőforrás-igényes Spark feladatvégrehajtások.
 
 A következő szakaszok ismertetik a Spark-feladat közös optimalizálása és javaslatok.
 
@@ -58,7 +58,7 @@ A legjobb teljesítmény formátuma a parquet eszközökben *snappy tömöríté
 
 Amikor létrehoz egy új Spark-fürtöt, lehetősége van, válassza ki az Azure Blob Storage vagy az Azure Data Lake Store a fürt alapértelmezett tárolóként. Mindkét lehetőség biztosítanak az előnye, hogy a hosszú távú tárolás átmeneti fürtökben, így az adatok nem automatikusan törlődnek a fürt törlésekor. Hozza létre újra egy átmeneti fürtöt, és továbbra is hozzáférhet az adataihoz.
 
-| Store típusa | Fájlrendszer | Gyorsaság | Átmeneti | Használati esetek |
+| Store típusa | Fájlrendszer | Sebesség | Átmeneti | Használati példák |
 | --- | --- | --- | --- | --- |
 | Azure Blob Storage | **wasb:**//url/ | **Standard** | Igen | Átmeneti fürt |
 | Azure Data Lake Store | **Adl:**//url/ | **Gyorsabb** | Igen | Átmeneti fürt |
@@ -94,7 +94,7 @@ Referenciaként a Spark memóriában szerkezetének és néhány kulcsfontosság
 
 ### <a name="spark-memory-considerations"></a>A Spark a memóriával kapcsolatos megfontolások
 
-YARN használja, ha a YARN minden Spark csomópontján az összes tárolót által használt memória maximális összegét szabályozza.  Az alábbi ábrán látható, az objektumok és azok.
+Ha használ [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), majd a YARN minden Spark csomópontján az összes tárolót által használt memória maximális összegét szabályozza.  Az alábbi ábrán látható, az objektumok és azok.
 
 ![YARN Spark memóriájának kezelése](./media/apache-spark-perf/yarn-spark-memory.png)
 
@@ -212,9 +212,9 @@ MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 
 ## <a name="next-steps"></a>További lépések
 
-* [Futó Azure HDInsight Spark-feladatok hibakeresése](apache-spark-job-debugging.md)
-* [A HDInsight Spark-fürt erőforrásainak kezelése](apache-spark-resource-manager.md)
-* [Spark-fürt távoli feladatok elküldéséhez a Spark REST API használatával](apache-spark-livy-rest-interface.md)
-* [A Spark hangolása](https://spark.apache.org/docs/latest/tuning.html)
-* [Valójában finomhangolása a Spark-feladatok úgy működnek](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
+* [Futó Azure HDInsight az Apache Spark-feladatok hibakereséséhez](apache-spark-job-debugging.md)
+* [A HDInsight Apache Spark-fürt erőforrásainak kezelése](apache-spark-resource-manager.md)
+* [Apache Spark-fürt távoli feladatokat küldhessen az Apache Spark REST API használatával](apache-spark-livy-rest-interface.md)
+* [Az Apache Spark hangolása](https://spark.apache.org/docs/latest/tuning.html)
+* [Hogyan ténylegesen finomhangolása az Apache Spark-feladatok úgy működnek](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
 * [Kryo szerializáció](https://github.com/EsotericSoftware/kryo)

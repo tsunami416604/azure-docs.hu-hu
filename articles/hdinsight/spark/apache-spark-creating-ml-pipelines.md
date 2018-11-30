@@ -9,14 +9,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 3cd27438247b801e384b80d96ba288896b4c5aae
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d422b56acd56f87cb855c5e045e3a91666eee571
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234222"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499404"
 ---
-# <a name="create-a-spark-machine-learning-pipeline"></a>Spark Machine Learning-folyamat létrehozása
+# <a name="create-an-apache-spark-machine-learning-pipeline"></a>Hozzon létre egy Apache Spark machine learning-folyamat
 
 Az Apache Spark skálázható gépi tanulási kódtár (MLlib) egy elosztott környezetben modellező képességeket biztosít. A Spark-csomag [ `spark.ml` ](http://spark.apache.org/docs/latest/ml-pipeline.html) DataFrames épülő magas szintű API-k készlete. Ezen API-k segítségével hozhat létre, és gyakorlati gépi tanulási folyamatok finomhangolása.  *A Spark machine learning* az MLlib DataFrame-alapú API, nem a régebbi RDD-alapú folyamat API hivatkozik.
 
@@ -131,4 +131,4 @@ A `model` objektum már használható, hogy előrejelzéseket végezzen. A machi
 
 ## <a name="see-also"></a>Lásd még
 
-* [Adatelemzés a Scala és Spark használata az Azure-ban](../../machine-learning/team-data-science-process/scala-walkthrough.md)
+* [Adatelemzés a Scala és az Apache Spark használatával az Azure-ban](../../machine-learning/team-data-science-process/scala-walkthrough.md)

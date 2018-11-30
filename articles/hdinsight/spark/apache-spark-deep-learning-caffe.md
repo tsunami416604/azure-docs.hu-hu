@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: 71322869eb9272fb59b98a0e21b1f639129572b7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c63e2e3ec922d2cf26603fe19606008b1e8d3f45
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255924"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498175"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Caffe elosztott deep learning az Azure HDInsight Spark használata
 
@@ -22,9 +22,9 @@ ms.locfileid: "51255924"
 
 Deep learning negatív hatással van, a szállítás fejlesszenek healthcare és egyebek. Vállalatok átállniuk, deep learning-megoldani a problémákat, például a [besorolási kép](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/), [beszédfelismerés](http://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html), felismerés objektum és a gépi fordítás. 
 
-Nincsenek [számos népszerű keretrendszereket](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), többek között [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [Tensorflow](https://www.tensorflow.org/), MXNet, Theano, stb. Caffe egyike a leghíresebb nem szimbolikus (imperatív) Neurális hálózat keretrendszereket, és számos készültséget többek között a számítógépes látástechnológiai széles körben használt. Ezenkívül [CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) ötvözi az Apache Spark, ebben az esetben a mély tanulás a caffe használatával egyszerűen is használható egy már meglévő Hadoop-fürtön. Teljes körű megoldást learning mély tanulás a Spark ETL-adatcsatornák, és csökkenti rendszert, és a késleltetés együtt használható.
+Nincsenek [számos népszerű keretrendszereket](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), többek között [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [Tensorflow](https://www.tensorflow.org/), [Apache MXNet](https://mxnet.apache.org/), Theano, stb. [Caffe](http://caffe.berkeleyvision.org/) egyik a leghíresebb nem szimbolikus (imperatív) Neurális hálózat keretrendszereket, és számos készültséget többek között a számítógépes látástechnológiai széles körben használt. Ezenkívül [CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) ötvözi az Apache Spark, ebben az esetben a mély tanulás a caffe használatával egyszerűen is használható egy már meglévő Hadoop-fürtön. Teljes körű megoldást learning mély tanulás a Spark ETL-adatcsatornák, és csökkenti rendszert, és a késleltetés együtt használható.
 
-[HDInsight](https://azure.microsoft.com/services/hdinsight/) Hadoop felhő kínál, amely optimalizált, nyílt forráskódú analitikus fürtöket biztosít a Spark, Hive, Hadoop, HBase, Storm, Kafka és Machine Learning-szolgáltatások. HDInsight 99,9 %-os szolgáltatói szerződés alapját. Ezen big data-technológiák és ISV-alkalmazások mindegyike könnyen üzembe helyezhető, a biztonsággal és figyeléssel kínál a nagyvállalatoknak felügyelt fürtként.
+[HDInsight](https://azure.microsoft.com/services/hdinsight/) Apache Hadoop felhőalapú kínál, amely optimalizált, nyílt forráskódú analitikus fürtöket biztosít az Apache Spark, az Apache Hive, az Apache Hadoop, az Apache HBase, Apache Storm, Apache Kafka és Machine Learning-szolgáltatások. HDInsight 99,9 %-os szolgáltatói szerződés alapját. Ezen big data-technológiák és ISV-alkalmazások mindegyike könnyen üzembe helyezhető, a biztonsággal és figyeléssel kínál a nagyvállalatoknak felügyelt fürtként.
 
 Ez a cikk bemutatja, hogyan telepítheti [Spark Caffe](https://github.com/yahoo/CaffeOnSpark) egy HDInsight-fürt. Ez a cikk is használja a MNIST beépített demót elosztott Deep Learning HDInsight Spark használatával a processzorokat használata megjelenítéséhez.
 
@@ -69,7 +69,7 @@ Első lépésként mindössze futtathatja a parancsprogram-művelet a fürtre k�
 ![Szkriptműveletek függőségek telepítése](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
 
 
-## <a name="step-2-build-caffe-on-spark-for-hdinsight-on-the-head-node"></a>2. lépés: Épülnek Caffe a Spark for HDInsight az átjárócsomóponthoz
+## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>2. lépés: Épülnek Caffe Apache Spark for HDInsight az átjárócsomóponthoz
 
 A második lépéseként, az átjárócsomópont Caffe buildet, és a lefordított tárak a feldolgozó csomópontokat, majd terjesztheti. Ebben a lépésben kell [ssh, az átjárócsomópont](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix). Ezt követően kell követnie a [CaffeOnSpark összeállítása folyamatban](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn). Alább a parancsfájl segítségével CaffeOnSpark készíthet néhány további lépést van. 
 
@@ -294,8 +294,8 @@ Ebben a dokumentációban próbált CaffeOnSpark telepítheti egy egyszerű pél
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Forgatókönyvek
-* [Spark és Machine Learning: A Spark on HDInsight használata az épület-hőmérséklet elemzésére HVAC-adatok alapján](apache-spark-ipython-notebook-machine-learning.md)
-* [Spark és Machine Learning: A Spark on HDInsight használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
+* [Az Apache Spark és Machine Learning: a Spark on HDInsight HVAC-adatok épület-hőmérséklet elemzésére a használata](apache-spark-ipython-notebook-machine-learning.md)
+* [Az Apache Spark és Machine Learning: használja a Spark on HDInsight az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="manage-resources"></a>Erőforrások kezelése
 * [Apache Spark-fürt erőforrásainak kezelése az Azure HDInsightban](apache-spark-resource-manager.md)

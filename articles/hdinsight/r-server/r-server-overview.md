@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 74d8629eb8fc29f3cb572be0b1ccb8b6149ab971
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1f53d87d6de76c0ff6954c9bd38d95e05981d822
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016284"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499470"
 ---
 # <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>Machine Learning-szolgáltatások és a nyílt forráskódú R funkciókat biztosít a HDInsight bemutatása
 
@@ -27,7 +27,7 @@ Microsoft Machine Learning-kiszolgáló telepítési beállításként érhető 
 
 Machine Learning szolgáltatások a HDInsight betölti az Azure Blob vagy a Data Lake storage gyakorlatilag bármilyen méretű adatkészletek a legújabb funkciókat az R-alapú elemzési nyújt. Machine Learning-szolgáltatások fürt nyílt forráskódú R épül, mivel az R-alapú alkalmazásokat fejleszt kihasználhatják a 8000-es + nyílt forráskódú R csomagok. A feladatok az ScaleR, a Microsoft big data analytics csomag is rendelkezésre állnak.
 
-A fürt élcsomópontjához kényelmes megoldás az R-szkriptek futtatása és a fürthöz való csatlakozáshoz. Az élcsomópont lehetősége van a futó párhuzamos működésű elosztott funkcióit ScaleR a Processzormagok száma, a peremhálózati kiszolgáló között. Is futtathatja őket a fürt csomópontjai között ScaleR a Hadoop Mapreduce használatával, vagy a Spark számítási környezetek.
+A fürt élcsomópontjához kényelmes megoldás az R-szkriptek futtatása és a fürthöz való csatlakozáshoz. Az élcsomópont lehetősége van a futó párhuzamos működésű elosztott funkcióit ScaleR a Processzormagok száma, a peremhálózati kiszolgáló között. Is futtathatja őket a fürt csomópontjai között ScaleR a Hadoop Mapreduce vagy az Apache Spark számítási környezetek használatával.
 
 A modellek vagy elemzési eredő előrejelzéseket letölthető a helyszíni használatra. Ezek is is kell üzembe helyezte azt máshol az Azure-ban, különös tekintettel keresztül [Azure Machine Learning Studio](http://studio.azureml.net) [webszolgáltatás](../../machine-learning/studio/publish-a-machine-learning-web-service.md).
 
@@ -114,7 +114,7 @@ Ha rutinokat a ScaleR-erőforrástárból a fürtben csak használja, akkor sem 
 
 Ezekben az esetekben a további csomagok telepíthetők szkriptműveletet a fürt létrehozása után. További információkért lásd: [Machine Learning Services kezelése a HDInsight-fürt](r-server-hdinsight-manage.md).
 
-### <a name="change-hadoop-mapreduce-memory-settings"></a>Hadoop MapReduce memória beállításainak módosítása
+### <a name="change-apache-hadoop-mapreduce-memory-settings"></a>Az Apache Hadoop MapReduce memória beállításainak módosítása
 
 A fürt módosíthatók, ha az egy MapReduce-feladatot a Machine Learning-szolgáltatások rendelkezésre álló memória mennyiségének módosítása. A fürt módosításához használja az Apache Ambari felhasználói felületén, amely a fürt számára az Azure portal paneljén érhető el. A fürt Ambari felhasználói felületén elérésével kapcsolatos útmutatásért lásd: [kezelése a HDInsight-fürtök az Ambari webes kezelőfelületen](../hdinsight-hadoop-manage-ambari.md).
 

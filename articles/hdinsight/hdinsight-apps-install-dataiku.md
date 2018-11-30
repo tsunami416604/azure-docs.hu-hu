@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: feb94f450621e999da01f77f0b5550258377d6c9
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 4ba1e325ec978114016682aaee35be35a20ec028
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038263"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499121"
 ---
 # <a name="install-published-application---dataiku-dds"></a>Közzétett alkalmazás – Dataiku DDS telepítése
 
-Ez a cikk bemutatja, hogyan telepítheti és futtathatja a [Dataiku DDS](https://www.dataiku.com/) közzé az Azure HDInsight az Apache Hadoop-alkalmazás. A HDInsight-alkalmazásplatform áttekintése és a egy listát az elérhető független szoftverszállító (ISV) közzétett alkalmazások létrehozásáról: [külső gyártótól származó Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md). A saját alkalmazások telepítéséről az [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) című cikk tartalmaz útmutatást.
+Ez a cikk bemutatja, hogyan telepítheti és futtathatja a [Dataiku DDS](https://www.dataiku.com/) közzétett [Apache Hadoop](https://hadoop.apache.org/) alkalmazás az Azure HDInsight a. A HDInsight-alkalmazásplatform áttekintése és a egy listát az elérhető független szoftverszállító (ISV) közzétett alkalmazások létrehozásáról: [külső gyártótól származó Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md). A saját alkalmazások telepítéséről az [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) című cikk tartalmaz útmutatást.
 
 ## <a name="about-dataiku-dss"></a>A Dataiku DSS kapcsolatban
 
@@ -26,9 +26,9 @@ A Dataiku [Data Science Studio (DDS)](https://www.dataiku.com/dss/features/conne
 
 DSS segítségével teljes körű elemzési megoldást, megvalósítani, kezdve az adatbetöltés, előkészítése, és a feldolgozási. DSS megoldást is tartalmazhatnak, képzés és alkalmazó gépi tanulási modelleket, megjelenítési és majd modellezést.
 
-DSS HDInsight Hadoop és Spark-fürtök használatával is telepítheti. Telepítheti DSS meglévő futó fürtökön, vagy ha új fürtök létrehozásához. DSS is támogatja az Azure Blob storage összekötőként adat beolvasására vonatkozóan.
+A HDInsight használatával telepítheti a DSS [Apache Hadoop](https://hadoop.apache.org/) vagy [Apache Spark](https://spark.apache.org/) fürtök. Telepítheti DSS meglévő futó fürtökön, vagy ha új fürtök létrehozásához. DSS is támogatja az Azure Blob storage összekötőként adat beolvasására vonatkozóan.
 
-DSS használatával hozhat létre a projektek, majd a MapReduce vagy a Spark-feladatokat hozhat létre. Ezeket a feladatokat, a fürt igény szerint méretezhetők, HDInsight, a MapReduce vagy a Spark normál feladatok végrehajtása.
+DSS segítségével hozhat létre a projektek, amelyek ezután hozhat létre [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) vagy Spark-feladatok. Ezeket a feladatokat, a fürt igény szerint méretezhetők, HDInsight, a MapReduce vagy a Spark normál feladatok végrehajtása.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,7 +40,7 @@ Telepíti az alkalmazást egy új HDInsight-fürtöt, vagy egy meglévő fürth�
 
 ## <a name="install-the-dataiku-dss-published-application"></a>A közzétett alkalmazás telepítése a Dataiku DSS
 
-Ezzel és más elérhető ISV-alkalmazások telepítésének lépésenkénti útmutatójáért olvassa el a [külső gyártótól származó Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md).
+Ezzel és más elérhető ISV-alkalmazások telepítésének lépésenkénti útmutatójáért olvassa el a [külső Apache Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md).
 
 ## <a name="launch-dataiku-dss"></a>Indítsa el a Dataiku DSS
 

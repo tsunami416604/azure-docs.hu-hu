@@ -1,6 +1,6 @@
 ---
-title: Linux ügynök és Virtuálisgép-bővítmények az Azure-ban |} Microsoft Docs
-description: Adja meg az ügynök és a bővítmények áttekintését, és hogyan telepítheti az ügynököt, a Linux virtuális gép a klasszikus telepítési modell használatával.
+title: Linux rendszerű virtuális gép-ügynök és -bővítmények az Azure-ban |} A Microsoft Docs
+description: Biztosítja az ügynök és -bővítmények áttekintése és telepítése az ügynök, a klasszikus üzemi modell használatával egy Linux rendszerű virtuális gépen.
 services: virtual-machines-linux
 documentationcenter: ''
 author: squillace
@@ -17,15 +17,15 @@ ms.workload: infrastructure-services
 ms.date: 03/02/2017
 ms.author: rasquill
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 17a6cea5c10902b0c2b86b481ab2c9f4441a3cc1
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f3a39f97b3f1eee842e4ca620ceb67b4d02fd0a0
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30842244"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498372"
 ---
-# <a name="about-the-virtual-machine-agent-and-extensions-for-linux"></a>A virtuális gép ügynökének és a Linux-bővítmények
+# <a name="about-the-virtual-machine-agent-and-extensions-for-linux"></a>A virtuálisgép-ügynök és a Linux-bővítmények
 > [!IMPORTANT]
-> Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk a klasszikus telepítési modell használatát bemutatja. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Virtuális gép az ügynökök és a bővítmények az erőforrás-kezelő használatával kapcsolatos információkért lásd: [Itt](../extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk ismerteti a klasszikus üzemi modell használatával. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Virtuálisgép-ügynökök és a bővítményeket a Resource Managerrel kapcsolatos információkért lásd: [Itt](../extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-classic-agents-and-extensions](../../../../includes/virtual-machines-common-classic-agents-and-extensions.md)]

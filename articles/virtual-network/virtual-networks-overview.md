@@ -14,19 +14,21 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 8/8/2018
+ms.date: 11/27/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: fe84dfcef2a5dad1c170592f933638b984e16a05
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
-ms.translationtype: HT
+ms.openlocfilehash: 439a3338d5b2104d20e8de99a83fe19c6935a5ac
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717029"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499488"
 ---
 # <a name="what-is-azure-virtual-network"></a>Mi az Azure Virtual Network?
 
-Az Azure Virtual Network számos Azure-erőforrástípus (pl. Azure-beli virtuális gépek) számára teszi lehetővé, hogy biztonságosan kommunikálhassanak egymással, az internettel és a helyszíni hálózatokkal. Az Azure Virtual Network az alábbi fő lehetőségeket nyújtja:
+Az Azure Virtual Network számos Azure-erőforrástípus (pl. Azure-beli virtuális gépek) számára teszi lehetővé, hogy biztonságosan kommunikálhassanak egymással, az internettel és a helyszíni hálózatokkal. Virtuális hálózat hatókörét egy adott régióban; azonban különféle régiókból származó több virtuális hálózat csatlakozhatnak egymáshoz a virtuális hálózatok közötti Társviszony segítségével.
+
+Az Azure Virtual Network az alábbi fő lehetőségeket nyújtja:
 
 ## <a name="isolation-and-segmentation"></a>Elkülönítés és szegmentálás
 

@@ -8,18 +8,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: ashish
-ms.openlocfilehash: 82995f2cc8facac9bef6f8c84c9667775ac81463
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: abb80bb0877f99dfb1623e320078e935f581d833
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038518"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498669"
 ---
-# <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>HDInsight-fürt konfigurációjának optimalizálása az Ambari használatával
+# <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Az Apache Ambari használata a HDInsight-fürt konfigurációjának optimalizálása
 
-HDInsight Apache Hadoop-fürtöket kínál a nagy méretű adatok feldolgozása alkalmazásokhoz. Kezelését, megfigyelését és ezek bonyolult, több csomópontos fürtök optimalizálása kihívást jelenthet. [Az Apache Ambari](http://ambari.apache.org/) egy webes felület, kezelni és megfigyelni a HDInsight Linux-fürtöket.  A Windows-fürtök esetén használja az Ambari [REST API-val](hdinsight-hadoop-manage-ambari-rest-api.md).
+HDInsight biztosít [Apache Hadoop](https://hadoop.apache.org/) nagyméretű adatfeldolgozás alkalmazások esetében. Kezelését, megfigyelését és ezek bonyolult, több csomópontos fürtök optimalizálása kihívást jelenthet. [Az Apache Ambari](http://ambari.apache.org/) egy webes felület, kezelni és megfigyelni a HDInsight Linux-fürtöket.  A Windows-fürtök esetén használja a [az Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md).
 
-Az Ambari webes kezelőfelületen bevezetésért lásd: [kezelése a HDInsight-fürtök az Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md)
+Az Ambari webes kezelőfelületen bevezetésért lásd: [kezelése a HDInsight-fürtök az Apache Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md)
 
 Jelentkezzen be az Ambari, `https://CLUSTERNAME.azurehdidnsight.net` a fürt hitelesítő adataival. A kezdeti képernyőn megjelenik egy áttekintő irányítópult.
 
@@ -59,16 +59,16 @@ A NameNode Java. generace módosítása:
 
     ![Változtatások mentése](./media/hdinsight-changing-configs-via-ambari/save-changes.png)
 
-## <a name="hive-optimization"></a>Hive-optimalizálás
+## <a name="apache-hive-optimization"></a>Az Apache Hive-optimalizálás
 
-A következő szakaszok ismertetik a konfigurációs beállítások teljes Hive teljesítményének optimalizálásához.
+A következő szakaszok ismertetik a konfigurációs beállításokat az Apache Hive teljesítményének optimalizálásához.
 
 1. Hive-konfigurációs paraméterek módosításához válassza **Hive** szolgáltatások oldalsávon.
 1. Keresse meg a **Configs** fülre.
 
 ### <a name="set-the-hive-execution-engine"></a>Állítsa be a Hive-végrehajtó motor
 
-Hive biztosít két végrehajtási motorok: MapReduce és a tezben futtatja. Tez gyorsabb, mint a MapReduce. HDInsight Linux-fürtöket Tez végrehajtómotor alapértelmezett rendelkezik. A végrehajtó motor módosítása:
+Hive biztosít két végrehajtási motorok: [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) és [Apache TEZ](https://tez.apache.org/). Tez gyorsabb, mint a MapReduce. HDInsight Linux-fürtöket Tez végrehajtómotor alapértelmezett rendelkezik. A végrehajtó motor módosítása:
 
 1. A Hive **Configs** fülre, írja be a **végrehajtóprogramja** szót a Szűrő mezőbe.
 
@@ -99,7 +99,7 @@ Ezek a változások Tez-feladatok hatással a kiszolgáló között. Az optimál
 
 ### <a name="tune-reducers"></a>Csökkentő hangolása
 
-ORC és Snappy egyaránt kínál a nagy teljesítményű. Van azonban, Hive előfordulhat, hogy túl kevés csökkentő alapértelmezés szerint szűk keresztmetszetek.
+[Az Apache ORC](https://orc.apache.org/) és [Snappy](https://google.github.io/snappy/) mindkettő lehetővé teszi a nagy teljesítményű. Van azonban, Hive előfordulhat, hogy túl kevés csökkentő alapértelmezés szerint szűk keresztmetszetek.
 
 Tegyük fel például, van egy 50 GB-os bemeneti adatok méretét. 1 GB-os, hogy az adatok ORC Snappy tömörítést formázása. Hive becslése szükség csökkentő száma: (leképező bemenet bájtok száma / `hive.exec.reducers.bytes.per.reducer`).
 
@@ -281,15 +281,15 @@ A Hive-végrehajtó motor optimalizálásához további javaslatok:
 
 | Beállítás | Ajánlott | HDInsight alapértelmezett |
 | -- | -- | -- |
-| `hive.mapjoin.hybridgrace.hashtable` | Igaz értéket a biztonságosabb, lassabb; = FALSE = gyorsabban | hamis |
+| `hive.mapjoin.hybridgrace.hashtable` | Igaz értéket a biztonságosabb, lassabb; = FALSE = gyorsabban | false |
 | `tez.am.resource.memory.mb` | A legtöbb 4 GB-os felső határérték | Automatikusan beállított |
 | `tez.session.am.dag.submit.timeout.secs` | 300+ | 300 |
 | `tez.am.container.idle.release-timeout-min.millis` | 20000+ | 10000 |
 | `tez.am.container.idle.release-timeout-max.millis` | 40000+ | 20000 |
 
-## <a name="pig-optimization"></a>A Pig-optimalizálás
+## <a name="apache-pig-optimization"></a>Az Apache Pig-optimalizálás
 
-A Pig-tulajdonságok is lehet módosítani az Ambari webes Felülettel Pig Lekérdezések finomhangolása. A Pig-tulajdonságokat az Ambari Pig tulajdonságainak módosítása közvetlenül módosítja a `/etc/pig/2.4.2.0-258.0/pig.properties` fájlt.
+[Az Apache Pig](https://pig.apache.org/) tulajdonságai módosíthatók, az Ambari webes Felülettel Pig Lekérdezések finomhangolása. A Pig-tulajdonságokat az Ambari Pig tulajdonságainak módosítása közvetlenül módosítja a `/etc/pig/2.4.2.0-258.0/pig.properties` fájlt.
 
 1. Pig-tulajdonságok módosításához nyissa meg a Pig **Configs** lapra, és ezután bontsa ki a **speciális pig-tulajdonságok** ablaktáblán.
 
@@ -326,7 +326,7 @@ A Pig másolja át az UDF-EK számára szükséges egy elosztott gyorsítótár 
 
 1. Ha engedélyezni szeretné, állítsa be `pig.user.cache.enabled` igaz értékre. Az alapértelmezett érték FALSE (hamis).
 
-1. Állítsa be a kiinduló elérési útját a gyorsítótárazott JAR-fájlok kivételével, állítsa `pig.user.cache.location` az az alapútvonal. Az alapértelmezett érték `/tmp`.
+1. Állítsa be a kiinduló elérési útját a gyorsítótárazott JAR-fájlok kivételével, állítsa `pig.user.cache.location` az az alapútvonal. A mező alapértelmezett értéke: `/tmp`.
 
 
 ### <a name="optimize-performance-with-memory-settings"></a>A memóriabeállításokat teljesítményének optimalizálása
@@ -344,7 +344,7 @@ A Pig ideiglenes fájlt létrehoz a feladat végrehajtása során. Az ideiglenes
 
 * `pig.tmpfilecompression`: Ha az értéke igaz, lehetővé teszi az ideiglenes fájlok tömörítési. Az alapértelmezett értéke FALSE (hamis).
 
-* `pig.tmpfilecompression.codec`: A tömörítési kodek az ideiglenes fájlok tömörítése használandó. A javasolt tömörítési kodek a LZO és a Snappy alacsonyabb CPU-felhasználás.
+* `pig.tmpfilecompression.codec`: A tömörítési kodek az ideiglenes fájlok tömörítése használandó. A javasolt tömörítési kodek [LZO](https://www.oberhumer.com/opensource/lzo/) és alacsonyabb CPU-felhasználás Snappy.
 
 ### <a name="enable-split-combining"></a>Engedélyezze a vegyes csoportba foglalása
 
@@ -361,9 +361,9 @@ A tulajdonság módosításával leképező számát szabályozza `pig.maxCombin
 A számát csökkentő paraméter alapján kiszámítja `pig.exec.reducers.bytes.per.reducer`. Alapértelmezés szerint 1 GB-os, a paraméter adja meg a feldolgozott nyomáscsökkentő bájtok száma. Korlátozza a maximális számát csökkentő, állítsa be a `pig.exec.reducers.max` 999 alapértelmezés szerint a tulajdonság.
 
 
-## <a name="hbase-optimization-with-the-ambari-web-ui"></a>A HBase optimalizálása az Ambari webes Felülettel
+## <a name="apache-hbase-optimization-with-the-ambari-web-ui"></a>Az Apache HBase optimalizálása az Ambari webes Felülettel
 
-A HBase konfigurációs van módosítani a **HBase Configs** fülre. A következő szakaszok ismertetik az egyes HBase teljesítményt befolyásoló fontos konfigurációs beállításai.
+[Az Apache HBase](https://hbase.apache.org/) konfigurációs van módosítani a **HBase Configs** fülre. A következő szakaszok ismertetik az egyes HBase teljesítményt befolyásoló fontos konfigurációs beállításai.
 
 ### <a name="set-hbaseheapsize"></a>HBASE_HEAPSIZE beállítása
 
@@ -453,5 +453,5 @@ A tulajdonság határozza meg kapott helyi foglalási memóriapuffer-használat 
 
 ## <a name="next-steps"></a>További lépések
 
-* [HDInsight-fürtök az Ambari webes felhasználói felületének kezelése](hdinsight-hadoop-manage-ambari.md)
-* [Az Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
+* [Az Apache Ambari webes Felülettel rendelkező HDInsight-fürtök kezelése](hdinsight-hadoop-manage-ambari.md)
+* [Az Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)

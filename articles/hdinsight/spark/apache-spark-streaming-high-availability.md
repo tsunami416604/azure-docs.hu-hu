@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/26/2018
-ms.openlocfilehash: 8f680b60a8f457e1a8619ac044798ff02df15694
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 9898a56991a44f3ac87fde4c34676943b1ab8341
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013649"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581901"
 ---
-# <a name="create-high-availability-spark-streaming-jobs-with-yarn"></a>Magas rendelkezésre állású Spark Streamelési feladatok létrehozása a YARN
+# <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Magas rendelkezésre állás az Apache Spark Streamelési feladatok létrehozása a YARN
 
-Spark Streaming megvalósítását teszi feldolgozása adatfolyamok, skálázható, nagy átviteli sebességű és hibatűrő alkalmazásokat. HDInsight Spark-fürtön a Spark Streamelési alkalmazások csatlakozhat különböző adatforrások, például az Azure Event Hubs, Azure IoT Hub, a Kafka, Flume, Twitter, ZeroMQ, nyers TCP-szoftvercsatornák, vagy egy megfigyelési a HDFS-fájlrendszer, a módosításokat. Spark Streaming támogatja az, hogy egy adott eseményre egyszer dolgozza fel pontosan, még akkor is csomóponthibával garantálunk hibatűrést.
+[Az Apache Spark](https://spark.apache.org/) Streamelési feldolgozása adatfolyamok, skálázható, nagy átviteli sebességű és hibatűrő alkalmazások megvalósítását teszi. Spark Streamelési alkalmazások HDInsight Spark-fürtön csatlakozhat adatforrásokhoz, például az Azure Event Hubs, Azure IoT hubot, számos [Apache Kafka](https://kafka.apache.org/), [Apache Flume](https://flume.apache.org/), Twitter, [ ZeroMQ](http://zeromq.org/), nyers TCP-szoftvercsatornák, vagy egy megfigyelési a [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) fájlrendszer a módosításokat. Spark Streaming támogatja az, hogy egy adott eseményre egyszer dolgozza fel pontosan, még akkor is csomóponthibával garantálunk hibatűrést.
 
 Spark Streaming hoz létre a hosszan futó feladatok, mely során is tudja átalakításokat az adatokhoz, és majd továbbítsa az eredményeket feladatszinten csatlakoztathatók, adatbázisok, az irányítópultok és a konzol. Spark Streaming folyamatok micro-kötegek az adatokat, begyűjtenie az első batch események egy meghatározott idő alatt. Ezután a batch a rendszer küldi a feldolgozás és a kimenet. A Batch időintervallumok általában a másodperc tört vannak meghatározva.
 
@@ -54,7 +54,7 @@ Rdd-k rendelkezik, amely segítséget nyújt a magas rendelkezésre állású é
 
 Hozzon létre egy alkalmazást, minden egyes esemény egyszer (és csak egyszer), fontolja meg az összes, a rendszer pontokat újraindítása után probléma, és hogyan adatok elvesztését elkerülheti. Pontosan-szemantika megkövetelése, hogy bármikor adatvesztés, pedig a üzenetfeldolgozás újraindítható, függetlenül attól, ahol a hiba akkor fordul elő, ha. Lásd: [létrehozása Spark Streamelési feladatok az pontosan – egyszeri esemény feldolgozása](apache-spark-streaming-exactly-once.md).
 
-## <a name="spark-streaming-and-yarn"></a>Spark Streaming és YARN
+## <a name="spark-streaming-and-apache-hadoop-yarn"></a>A Spark Stream és az Apache Hadoop YARN
 
 HDInsight, a fürt munkahelyi koordinálja *még egy másik Resource Negotiator* (YARN). Tervezés magas rendelkezésre állású Spark Streamelési tartalmazza a technikák, a Spark Streaming és YARN-összetevők.  Az alábbiakban látható egy példa konfiguráció látható YARN használatával. 
 
@@ -120,8 +120,8 @@ Illesztőprogramok DStream ellenőrzőpontok helyreállításához:
 
 ## <a name="next-steps"></a>További lépések
 
-* [Spark Streamelés – áttekintés](apache-spark-streaming-overview.md)
-* [A Spark Streamelési feladatok létrehozása pontosan – egyszeri esemény feldolgozása](apache-spark-streaming-exactly-once.md)
-* [Hosszan futó Spark Streamelési feladatok a yarn RENDSZERÉN](http://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/) 
+* [Az Apache Spark Streamelési áttekintése](apache-spark-streaming-overview.md)
+* [Az Apache Spark Streamelési feladatok létrehozása pontosan – egyszeri esemény feldolgozása](apache-spark-streaming-exactly-once.md)
+* [Hosszú ideig futó Apache Spark Streamelési feladatok a yarn RENDSZERÉN](http://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/) 
 * [Strukturált Stream: Tartalék hibatűrő szemantika](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
 * [Diszkretizált Streamek: Egy hibatűrő modellt méretezhető Stream-feldolgozás](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)

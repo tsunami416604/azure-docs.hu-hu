@@ -10,16 +10,16 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: d2181fb22079112c84e3e7c65575b12aa0c867ac
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 900180c9991932f4efaa07f9881e9f3f897cd99e
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006549"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498283"
 ---
 # <a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>A HDInsight-alapú Apache Storm rendszer használatának első lépései Storm Starter-példákkal
 
-Ismerje meg a HDInsight-alapú Apache Storm használatát a Storm Starter-példák segítségével.
+Ismerje meg, hogyan használható [Apache Storm](http://storm.apache.org/) a HDInsight a storm-starter példák segítségével.
 
 Az Apache Storm egy skálázható, hibatűrő, elosztott, valós idejű számítási rendszer az adatstreamek feldolgozására. A Storm on Azure HDInsight segítségével olyan felhőalapú Storm-fürtöket hozhat létre, amelyek valós időben végeznek big data elemzést.
 
@@ -34,7 +34,7 @@ Az Apache Storm egy skálázható, hibatűrő, elosztott, valós idejű számít
 
 * **SSH- és SCP-ismeretek**. További információk: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="create-a-storm-cluster"></a>Storm-fürt létrehozása
+## <a name="create-an-apache-storm-cluster"></a>Az Apache Storm-fürt létrehozása
 
 HDInsight alatt futó Storm-fürt létrehozásához kövesse az alábbi lépéseket:
 
@@ -139,7 +139,7 @@ Kövesse az alábbi lépéseket a topológia a Storm felhasználói felületéve
 
     * **Inaktiválás** – Megszakítja a futó topológiát.
 
-    * **Visszaegyensúlyozás** – Beállítja a topológia párhuzamosságát. A fürtben található csomópontok számának megváltoztatását követően újra ki kell egyensúlyozni a futó topológiákat. Az újraegyensúlyozás beállítja a párhuzamosságot a fürtben található csomópontok számának növekedése/csökkenése kiegyensúlyozása érdekében. További információ: [Understanding the parallelism of a Storm topology](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) (A Storm-topológia párhuzamosságának ismertetése).
+    * **Visszaegyensúlyozás** – Beállítja a topológia párhuzamosságát. A fürtben található csomópontok számának megváltoztatását követően újra ki kell egyensúlyozni a futó topológiákat. Az újraegyensúlyozás beállítja a párhuzamosságot a fürtben található csomópontok számának növekedése/csökkenése kiegyensúlyozása érdekében. További információkért lásd: [ismertetése az Apache Storm-topológia párhuzamosságát](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
 
     * **Törlés** – A Storm-topológia leállítása bizonyos időtúllépést követően.
 
@@ -187,15 +187,15 @@ Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse me
 
 ## <a id="next"></a>Következő lépések
 
-Ebből az Apache Storm-oktatóanyagból megismerhette a Storm HDInsightban való használatának alapjait. A következő szakaszban a [Java-alapú topológiák fejlesztését ismertetjük Maven használatával](apache-storm-develop-java-topology.md).
+Ebből az Apache Storm-oktatóanyagból megismerhette a Storm HDInsightban való használatának alapjait. Következő lépésként megtanulhatja, hogyan [fejlesztés Java-alapú topológiák az Apache Maven segítségével](apache-storm-develop-java-topology.md).
 
 Ha már ismeri a Java-alapú topológiák fejlesztését, akkor tekintse meg a következő dokumentumot: [HDInsighton futó Apache Storm-topológiák üzembe helyezése és kezelése](apache-storm-deploy-monitor-topology-linux.md).
 
-A.NET-fejlesztők C#- vagy hibrid C#/Java-topológiákat hozhatnak létre a Visual Studio használatával. További információk: [C#-topológiák fejlesztése HDInsight alatt futó Apache Stormra a Visual Studio Hadoop-eszközeinek használatával](apache-storm-develop-csharp-visual-studio-topology.md).
+A.NET-fejlesztők C#- vagy hibrid C#/Java-topológiákat hozhatnak létre a Visual Studio használatával. További információkért lásd: [Develop C# alatt futó Apache Hadoop-eszközök használata a Visual Studióhoz készült HDInsight Apache Storm-topológiák](apache-storm-develop-csharp-visual-studio-topology.md).
 
 A HDInsight alatt futó Stormmal használható példatopológiákat az alábbiakban talál:
 
-* [HDInsight alatt futó Storm példatopológiái](apache-storm-example-topology.md)
+* [HDInsight alatt futó Apache Storm példatopológiái](apache-storm-example-topology.md)
 
 [apachestorm]: https://storm.incubator.apache.org
 [stormdocs]: http://storm.incubator.apache.org/documentation/Documentation.html

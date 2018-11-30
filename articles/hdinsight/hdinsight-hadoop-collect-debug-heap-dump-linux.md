@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 966f05fba96cc829c3a11331e2a66609705f6f4f
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 58f4827910d863aef14171574d40e4b3acfc04d9
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037687"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498687"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>A Linux-alapú HDInsight az Apache Hadoop-szolgáltatásokhoz halomürítések engedélyezése
 
@@ -39,7 +39,7 @@ Halomürítések engedélyezése a térkép a és is csökkentheti HDInsight ál
 
 ## <a name="configuration"></a>Halommemória-memóriakép konfigurációs ismertetése
 
-Halomürítések engedélyezve vannak a beállítások átadásával (mellett dönt, más néven vagy paraméterek), a JVM-szolgáltatás indításakor. A legtöbb Hadoop-szolgáltatásokhoz módosíthatja a át ezeket a beállításokat a szolgáltatás elindításához használt PowerShell-parancsfájlt.
+Halomürítések engedélyezve vannak a beállítások átadásával (mellett dönt, más néven vagy paraméterek), a JVM-szolgáltatás indításakor. A legtöbb [Apache Hadoop](https://hadoop.apache.org/) szolgáltatások, módosíthatja a át ezeket a beállításokat a szolgáltatás elindításához használt PowerShell-parancsfájlt.
 
 Minden parancsprogramhoz van egy exportálásának  **\* \_OPTS**, amely tartalmazza a JVM át a beállításokat. Például a **hadoop-env.sh** szkriptet, a sor kezdődő `export HADOOP_NAMENODE_OPTS=` tartalmazza, a NameNode szolgáltatás beállításait.
 
@@ -49,7 +49,7 @@ Képezze le, és csökkentse folyamatok kissé eltérő, mivel ezek a műveletek
 * **mapreduce.admin.reduce.child.java.opts**
 
 > [!NOTE]
-> Javasoljuk az Ambari az Apache Ambari leíró módosítások replikálása a fürtben található csomópontok között, a parancsfájlok és a mapred-site.xml beállítások módosítása. Tekintse meg a [az Ambari használatával](#using-ambari) szakasz lépéseit.
+> Azt javasoljuk, [Apache Ambari](https://ambari.apache.org/) a parancsfájlok és a mapred-site.xml beállítások módosításához Ambari, kezelni a fürtben található csomópontok között replikálja a módosításokat. Tekintse meg a [Apache Ambari használatával](#using-apache-ambari) szakasz lépéseit.
 
 ### <a name="enable-heap-dumps"></a>Halomürítések engedélyezése
 
@@ -70,18 +70,18 @@ A memóriakép-fájl alapértelmezett helye az aktuális munkakönyvtár. Szabá
 
 Például `-XX:HeapDumpPath=/tmp` hatására a memóriaképek könyvtárban kell tárolni.
 
-### <a name="scripts"></a>Parancsprogramok
+### <a name="scripts"></a>Scripts
 
 Egy parancsfájlt is indíthat amikor egy **OutOfMemoryError** történik. Például riasztást kiváltó értesítést, hogy tudja, hogy a hiba történt. Használja a következő parancsfájl eseményindítás egy __OutOfMemoryError__:
 
     -XX:OnOutOfMemoryError=/path/to/script
 
 > [!NOTE]
-> Mivel a Hadoop elosztott rendszerek, minden más használt parancsfájl, amely a szolgáltatás fut a fürt minden csomópontján kell elhelyezni.
+> Mivel az Apache Hadoop elosztott rendszerek, minden más használt parancsfájl, amely a szolgáltatás fut a fürt minden csomópontján kell elhelyezni.
 > 
 > A parancsfájl kell is lehet a szolgáltatás fut, és meg kell adnia a fiók által elérhető helyen végrehajtási engedélyeket. Például előfordulhat, hogy szeretné tárolni a parancsfájlok `/usr/local/bin` és `chmod go+rx /usr/local/bin/filename.sh` adjon olvasási és végrehajtási engedélyeket.
 
-## <a name="using-ambari"></a>Az Ambari használatával
+## <a name="using-apache-ambari"></a>Az Apache Ambari
 
 Szolgáltatás konfigurációjának módosításához használja az alábbi lépéseket:
 

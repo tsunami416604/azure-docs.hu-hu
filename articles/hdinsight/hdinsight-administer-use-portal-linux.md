@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: hrasheed
-ms.openlocfilehash: b96712c3a920a70e121f0a72954680ced2ba96ff
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 77f1d0f9d1f9ad07b977750e7701b660781d63e5
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252292"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499378"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>A HDInsight Apache Hadoop-fürtök kezelése az Azure portal használatával
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Használatával a [az Azure portal][azure-portal], Apache Hadoop-fürtök Azure HDInsight segítségével kezelheti. Információ más eszközök használatával HDInsight Hadoop-fürtök kezelése a fenti lapon választómezőt használja.
+Használatával a [az Azure portal][azure-portal], kezelheti [Apache Hadoop](https://hadoop.apache.org/) Azure HDInsight-fürtök. Információ más eszközök használatával HDInsight Hadoop-fürtök kezelése a fenti lapon választómezőt használja.
 
 **Előfeltétel**
 
@@ -46,7 +46,7 @@ Kövesse az ebben a cikkben, szüksége lesz egy **Azure-előfizetés**. Lásd: 
 ## <a name="create-clusters"></a>Fürtök létrehozása
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-HDInsight együttműködik egy széles számos Hadoop-összetevők. Az ellenőrzött és a támogatott összetevők listáját lásd: [Azure HDInsight Hadoop mely verziója van?](hdinsight-component-versioning.md) Általános fürt létrehozásának információkért lásd: [Hadoop-fürtök létrehozása a HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+HDInsight együttműködik egy széles számos Hadoop-összetevők. Az ellenőrzött és a támogatott összetevők listáját lásd: [Azure HDInsight az Apache Hadoop verziójának van?](hdinsight-component-versioning.md) Általános fürt létrehozásának információkért lásd: [Apache Hadoop-fürtök létrehozása a HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
 ### <a name="access-control-requirements"></a>A hozzáférés-vezérlésre vonatkozó követelmények
 
@@ -89,7 +89,7 @@ Ha a NoRegisteredProviderFound hiba vagy a MissingSubscriptionRegistration hiba�
     * **Gyors üzembe helyezési**: információit jeleníti meg, amely segítséget nyújt a HDInsight használatának megkezdéséhez.
     * **A HDInsight Tools**: segítő információk a HDInsight kapcsolódó eszközök.
 **Beállítások**
-* **Fürt mérete**: Ellenőrizze, növelése és csökkentése a fürt munkavégző csomópontok számát. Lásd:[fürtök méretezése](hdinsight-administer-use-management-portal.md#scale-clusters).
+* **Fürt mérete**: Ellenőrizze, növelése és csökkentése a fürt munkavégző csomópontok számát. Lásd: [fürtök méretezése](hdinsight-administer-use-management-portal.md#scale-clusters).
     * **Magkvóta korlátozásának**: az előfizetésében használt és elérhető maggal megjelenítéséhez.
     * **SSH + fürtbe való bejelentkezésekor**: jeleníti meg az utasításokat követve csatlakozhat a fürthöz Secure Shell (SSH) kapcsolaton keresztül. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 * **Data Lake Store Gen1**: konfigurálása Data Lake Store Gen1 eléréséhez.  Lásd: [a rövid útmutató: a HDInsight-fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
@@ -99,7 +99,7 @@ Ha a NoRegisteredProviderFound hiba vagy a MissingSubscriptionRegistration hiba�
     * **HDInsight-Partner**: a jelenlegi HDInsight-Partner felvétele/eltávolítása.
     * **Tulajdonságok**: megtekintheti a tulajdonságait.
 * **Zárolja**: módosított vagy törölt, adja hozzá a zárolást, hogy a fürt folyamatban van.
-    * **Automation-szkript**: megjelenítési és exportálása az Azure Resource Manager-sablon a fürt számára. Jelenleg csak exportálhatja a függő Azure storage-fiókban. Lásd: [Linux-alapú Hadoop-fürtök a HDInsight az Azure Resource Manager-sablonok használatával](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
+    * **Automation-szkript**: megjelenítési és exportálása az Azure Resource Manager-sablon a fürt számára. Jelenleg csak exportálhatja a függő Azure storage-fiókban. Lásd: [Linux-alapú Apache Hadoop-fürtök a HDInsight az Azure Resource Manager-sablonok használatával](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 **Monitorozás**
 * **Alters**: a riasztások és műveletek kezelése.
     * **Metrikák**: nyomon követheti a fürt metrikákat az Azure Log Analyticsben.
@@ -159,12 +159,12 @@ A fürtméretezés egy funkció lehetővé teszi a fürt újbóli létrehozása 
 
 Az adatcsomópontok száma módosításának hatása az egyes támogatott a HDInsight-fürt eltérő:
 
-* Hadoop
+* Apache Hadoop
 
     Zökkenőmentesen lehet növelni egy Hadoop-fürtöt, amely a folyamatban lévő vagy futó feladatok befolyásolása nélkül fut-e a munkavégző csomópontok számát. Új feladatok is lehet beküldeni, amíg a művelet folyamatban van. A skálázási művelet hibák szabályosan kezeli, úgy, hogy a fürt minden esetben működőképes állapotban marad.
 
     Ha egy Hadoop-fürtöt az adatcsomópontok száma csökkentésével vertikálisan leskálázni, a fürtben a szolgáltatások újra lesz indítva. Ez a viselkedés hatására összes futó és a függőben lévő feladatok meghiúsulhatnak, a skálázási művelet befejezése után. A feladatok újból elküldheti, azonban a művelet befejeződése után.
-* HBase
+* Apache HBase
 
     Zökkenőmentesen adja hozzá vagy távolíthat el csomópontokat a HBase-fürt futás közben. Regionális kiszolgáló automatikusan kiegyensúlyozott vannak a skálázási művelet befejezése néhány percen belül. Azonban, manuálisan is eloszthatja a regionális kiszolgálók jelentkezik be a fürt átjárócsomópontjával, és a egy parancssori ablakot a következő parancsokat futtatni:
 
@@ -176,7 +176,7 @@ Az adatcsomópontok száma módosításának hatása az egyes támogatott a HDIn
 
     A HBase-rendszerhéj használata további információkért lásd: [Ismerkedés a HDInsight Apache HBase-példát](hbase/apache-hbase-tutorial-get-started-linux.md).
 
-* Storm
+* Apache Storm
 
     Zökkenőmentesen adja hozzá vagy távolít el a Storm-fürt adatcsomópontok futás közben. Azonban a skálázási művelet a sikeres telepítést követően szüksége lesz a topológia újraegyensúlyozására.
 
@@ -208,10 +208,10 @@ Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek
 
 Számos módon meg a program a folyamatot:
 
-* Az Azure Data Factory felhasználói. Lásd: [létrehozása igény szerinti Linux-alapú Hadoop-fürtök az Azure Data Factory használatával HDInsight](hdinsight-hadoop-create-linux-clusters-adf.md) létrehozásához igény szerinti HDInsight társított szolgáltatás.
+* Az Azure Data Factory felhasználói. Lásd: [létrehozása igény szerinti Linux-alapú Apache Hadoop-fürtök az Azure Data Factory használatával HDInsight](hdinsight-hadoop-create-linux-clusters-adf.md) létrehozásához igény szerinti HDInsight társított szolgáltatás.
 * Az Azure PowerShell-lel.  Lásd: [repülőjáratok késési adatainak elemzése](hdinsight-analyze-flight-delay-data.md).
 * Klasszikus Azure CLI használatával. Lásd: [kezelése a HDInsight-fürtök használatával a klasszikus Azure CLI](hdinsight-administer-use-command-line.md).
-* HDInsight .NET SDK használata. Lásd: [elküldése Hadoop-feladatok](hadoop/submit-apache-hadoop-jobs-programmatically.md).
+* HDInsight .NET SDK használata. Lásd: [küldje el az Apache Hadoop-feladatok](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 
 Díjszabási információkért lásd: [HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/). Tekintse meg a fürt törlésének a portálról, [fürtök törlése](#delete-clusters)
 
@@ -223,7 +223,7 @@ Egy HDInsight-fürt áthelyezheti egy másik Azure-erőforráscsoportot, vagy eg
 
 Lásd: [újabb verzióra való frissítése HDInsight-fürt](./hdinsight-upgrade-cluster.md).
 
-## <a name="open-the-ambari-web-ui"></a>Nyissa meg az Ambari webes Felülettel
+## <a name="open-the-apache-ambari-web-ui"></a>Nyissa meg az Apache Ambari webes Felülettel
 
 Az Ambari kínál egy intuitív, egyszerűen használható Hadoop felügyeleti webes felhasználói felületen a RESTful API-k által támogatott. Az Ambari lehetővé teszi a rendszergazdák kezelni és megfigyelni a Hadoop-fürtöket.
 
@@ -236,7 +236,7 @@ Az Ambari kínál egy intuitív, egyszerűen használható Hadoop felügyeleti w
 
     ![HDInsight Hadoop Ambari webes felhasználói felület](./media/hdinsight-administer-use-portal-linux/hdinsight-hadoop-ambari-web-ui.png)
 
-További információkért lásd: [kezelése a HDInsight-fürtök az Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md).
+További információkért lásd: [kezelése a HDInsight-fürtök az Apache Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md).
 
 ## <a name="change-passwords"></a>Jelszó módosítása
 Egy HDInsight-fürt két felhasználói fiókot lehet. A HDInsight-fürt felhasználói fiók (más néven) HTTP-felhasználói fiókot) és a létrehozási folyamat során jönnek létre az SSH-felhasználói fiókot. Az Ambari webes felhasználói felület segítségével módosítsa a fürt felhasználói fiókhoz tartozó felhasználónév és jelszó és Parancsfájlműveletek az SSH-felhasználói fiók módosítása
@@ -323,7 +323,7 @@ Az előző képernyőkép szerint van egy __alapértelmezett__ oszlop jelzi, hog
 
 A Data Lake Store-fiókok listájában, kattintson a **Data Lake Store-hozzáférés** az előző képernyőképen látható.
 
-## <a name="run-hive-queries"></a>Hive-lekérdezések futtatása
+## <a name="run-apache-hive-queries"></a>Az Apache Hive-lekérdezések futtatása
 Hive-feladat nem futtatható közvetlenül az Azure Portalról, de használhatja a Hive-nézet az Ambari webes felhasználói Felületet.
 
 **Ambari, Hive-nézet használata a Hive-lekérdezések futtatásához**
@@ -337,7 +337,7 @@ Hive-feladat nem futtatható közvetlenül az Azure Portalról, de használhatja
 4. Adja meg a Hive-lekérdezést **Lekérdezésszerkesztő**, és kattintson a **Execute**.
 
 ## <a name="monitor-jobs"></a>Feladatok figyelése
-Lásd: [kezelése a HDInsight-fürtök az Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md#monitoring).
+Lásd: [kezelése a HDInsight-fürtök az Apache Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md#monitoring).
 
 ## <a name="browse-files"></a>Fájlok tallózása
 Az Azure portal használatával megkeresheti az alapértelmezett tároló tartalmát.
@@ -354,11 +354,11 @@ Az Azure portal használatával megkeresheti az alapértelmezett tároló tartal
 A **használati** szakasz a HDInsight-fürt panelén, a HDInsight segítségével az előfizetéséhez elérhető magok száma, valamint az ehhez a fürthöz, és hogyan vannak lefoglalva számára lefoglalt magok száma információkat jelenít meg a csomópontok a fürtön belül. Lásd: [fürtök listázása és megjelenítése](#list-and-show-clusters).
 
 > [!IMPORTANT]
-> A HDInsight-fürt által nyújtott szolgáltatások figyeléséhez, Ambari Web vagy az Ambari REST API-t kell használnia. Az Ambari használatával kapcsolatos további információkért lásd: [kezelése a HDInsight-fürtök az Ambari használatával](hdinsight-hadoop-manage-ambari.md)
+> A HDInsight-fürt által nyújtott szolgáltatások figyeléséhez, Ambari Web vagy az Ambari REST API-t kell használnia. Az Ambari használatával kapcsolatos további információkért lásd: [kezelése a HDInsight-fürtök az Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 
 ## <a name="connect-to-a-cluster"></a>Csatlakozás fürthöz
 
-* [A Hive használata a HDInsightban](hadoop/apache-hadoop-use-hive-ambari-view.md)
+* [Az Apache Hive használata a HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md)
 * [SSH használata a HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 ## <a name="next-steps"></a>További lépések
@@ -368,13 +368,13 @@ Ebben a cikkben megismerkedett néhány alapvető felügyeleti funkciókat. Tov�
 * [Az Azure PowerShell használatával HDInsight felügyelete](hdinsight-administer-use-powershell.md)
 * [Felügyelheti a HDInsight az Azure klasszikus parancssori felület használatával](hdinsight-administer-use-command-line.md)
 * [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md)
-* [További információ az Ambari webes felhasználói felülettel](hdinsight-hadoop-manage-ambari.md)
-* [Az Ambari REST API használatával](hdinsight-hadoop-manage-ambari-rest-api.md)
-* [Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
-* [A Pig használata a HDInsight](hadoop/hdinsight-use-pig.md)
-* [A HDInsight a Sqoop használata](hadoop/hdinsight-use-sqoop.md)
+* [További információ az Apache Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md)
+* [Az Apache Ambari REST API használatával](hdinsight-hadoop-manage-ambari-rest-api.md)
+* [Az Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
+* [Az Apache Pig használata a HDInsight](hadoop/hdinsight-use-pig.md)
+* [A HDInsight Apache Sqoop használata](hadoop/hdinsight-use-sqoop.md)
 * [Az Azure HDInsight – első lépések](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [Az Azure HDInsight Hadoop verziójának van?](hdinsight-component-versioning.md)
+* [Az Azure HDInsight az Apache Hadoop melyik verzióját van?](hdinsight-component-versioning.md)
 
 [azure-portal]: https://portal.azure.com
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-portal-linux/hdinsight-hadoop-command-line.png "Hadoop parancssor"

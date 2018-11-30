@@ -7,19 +7,19 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 11/14/2018
+ms.date: 11/27/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 9d26c1d923294a149a57ef28ca03e77dfc2e1c87
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: d626fd9b083b9ca2c55c286a1dd806620a639434
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711905"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498016"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Szolgáltatási hírek és karbantartási kezelése a karbantartási ütemezések használatával
 
-Már az Azure SQL Data Warehouse karbantartási ütemezés előzetes verzióban érhető el. Ez a funkció együttműködik a Service Health tervezett karbantartásával kapcsolatos értesítések erőforrás állapotának ellenőrzése figyelése és az Azure SQL Data Warehouse karbantartási Feladatütemező szolgáltatás.
+Karbantartási ütemezések már elérhető az Azure SQL Data Warehouse minden régióban. Ez a funkció együttműködik a Service Health tervezett karbantartásával kapcsolatos értesítések erőforrás állapotának ellenőrzése figyelése és az Azure SQL Data Warehouse karbantartási Feladatütemező szolgáltatás.
 
 Karbantartási ütemezés kiválasztása egy olyan időkeretet, ha az új funkciók, frissítések és javítások fogadásához kényelmes használhatja. Válasszon egy elsődleges és másodlagos karbantartási időszak egy 7 napos időszakon belül. Például egy elsődleges ablakában szombat, 22:00 vasárnapig 01:00 és a egy másodlagos ablakot, szerda 19:00, 22:00. Az SQL Data Warehouse nem tudja végrehajtani a karbantartási az elsődleges karbantartási időszak alatt, ha azt a karbantartás megpróbálja újra a másodlagos karbantartási időszak alatt.
 
@@ -51,6 +51,7 @@ Akkor is, ha a karbantartási ütemezés nem érhető el a kiválasztott régió
 - [További](changing-maintenance-schedule.md) karbantartási ütemezés módosítása.
 - [További](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-usage) létrehozása, megtekintése és riasztások kezelése az Azure Monitor használatával kapcsolatban.
 - [További](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) kapcsolatos naplóriasztási szabály vonatkozó webhook-műveletek.
+- [További](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-action-groups) létrehozása és kezelése a Műveletcsoportok.
 - [További](https://docs.microsoft.com/azure/service-health/service-health-overview) Azure Service Health szolgáltatással kapcsolatos.
 
 

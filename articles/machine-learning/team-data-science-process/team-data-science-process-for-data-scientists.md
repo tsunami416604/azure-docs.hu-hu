@@ -2,25 +2,21 @@
 title: Csoportos adatelemzési folyamat adatszakértők |} A Microsoft Docs
 description: Biztosít egy elemzési számítási feladatok, a csoportos adatelemzési folyamat és az Azure Machine Learning segítségével útmutatóval.
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: deguhath
-ms.openlocfilehash: 80f006c4e8f051c3f744168be114f1c9fb3b1a0f
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: ddf73f15dc7c269ba3bf9a2912c3713fd4e847f2
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092491"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497572"
 ---
 # <a name="team-data-science-process-for-data-scientists"></a>Csoportos adatelemzési folyamat adatszakértők számára
 
@@ -65,7 +61,7 @@ Az elemek használhatja az alábbi táblázatban a saját self-study útmutató.
 | Eredmények megjelenítése a Power BI használatával                                                         | [Power BI](https://powerbi.microsoft.com/guided-learning/)                                                                                     | A Power BI egy Microsoft adatvizualizációs eszközt. Az asztali számítógépek és mobileszközök webes több platformon érhető el. Ebben a cikkben megismerheti, hogyan dolgozhat a megoldást, az eredmények elérése az Azure storage-ból, és hozzon létre vizualizációkat a Power BI használatával létrehozott kimenetét.                                                                                                                                                                                                                                                                                                                             | [A Power bi-ban az oktatóanyag elvégzéséhez.](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) Kapcsolódjon a Power BI egy kísérlet futtatása létrehozott Blob csv-fájlba.                                                                                                                                                                                                                                                                       |
 | A megoldás figyelése                                                                     | [Application Insights](../../application-insights/app-insights-overview.md)                                            | Számos eszköz áll a teljes megoldáshoz figyelésére használhatja. Az Azure Application Insights egyszerűen integrálható a beépített figyelés a megoldásba.                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | [Az alkalmazás figyelése az Application Insights beállítása](https://cmatskas.com/visual-studio-code-integration-with-azure-application-insights/).                                                                                                                                                                                                                                                                                                                  |
 |                                                                                           | [Azure Log Analytics](../../log-analytics/log-analytics-overview.md)                                                   | Az alkalmazás figyelése, hogy integrálni lehessen a DevOps folyamattal. Az Azure Log Analytics rendszer funkciókkal segíti őket üzembe helyezése után, tekintse meg az elemzési megoldások széles skáláját biztosítja.                                                                                                                                                                                                                                                                                                                                                                                                                       | [Az oktatóanyag elvégzéséhez](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-the-Analytics-portal) az Azure Log Analytics használatával.                                                                                                                                                                                                                                                                                                       |
-| Hajtsa végre az alábbi képzési terv                                                               | További projektek kipróbálható                                                                                                                           | Gratulálunk! Ön teljesítette az alábbi képzési terv. Nincs sokkal többet is megtudhat. Egy összetettebb példában fejleszt ügyfelek lemorzsolódásának modell Azure Machine Learning szolgáltatásban. [Próbálja ki itt](../desktop-workbench/scenario-churn-prediction.md).                                                                                                                                                                                                                                                                                                                                           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+| Hajtsa végre az alábbi képzési terv                                                               |                                                                                                                           | Gratulálunk! Ön teljesítette az alábbi képzési terv. Nincs sokkal többet is megtudhat.                                                                                                                                                                                                                                                                                                                                           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 
 ## <a name="next-steps"></a>További lépések
 [Csoportos adatelemzési folyamat fejlesztői műveletek](team-data-science-process-for-devops.md) Ez a cikk bemutatja a fejlesztői műveletek (DevOps) funkciók jellemző Advanced Analytics és a Cognitive Services megoldás implementációja. 

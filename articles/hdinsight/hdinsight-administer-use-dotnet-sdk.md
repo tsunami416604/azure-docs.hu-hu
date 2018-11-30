@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: a7c06d53e3823bd81707608f566f581fa44638fc
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 2371f52591db667498398daa889ebc14708a9674
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037756"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499212"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>A HDInsight Apache Hadoop-fürtök kezelése a .NET SDK-val
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -228,7 +228,7 @@ _hdiManagementClient.Clusters.ConfigureHttpSettings("<Resource Group Name>, <Clu
 Ez a portálon keresztül is elvégezhető. Lásd: [HDInsight felügyelheti az Azure portal használatával][hdinsight-admin-portal].
 
 ## <a name="update-http-user-credentials"></a>A HTTP felhasználói hitelesítő adatok frissítése
-Célszerű ugyanezt az eljárást, mint [Grant/revoke HTTP access](#grant/revoke-access). Ha a fürt a HTTP-hozzáférést kapott, meg kell először visszavonják.  És adja meg a hozzáférés az új HTTP-felhasználónál használt.
+Célszerű ugyanezt az eljárást, mint [Grant/revoke HTTP access](#grant/revoke-access).  Ha a fürt a HTTP-hozzáférést kapott, meg kell először visszavonják.  És adja meg a hozzáférés az új HTTP-felhasználónál használt.
 
 ## <a name="find-the-default-storage-account"></a>Keresse meg az alapértelmezett tárfiókot
 A következő kódrészletet bemutatja, hogyan juthat az alapértelmezett tárfiók neve és a fürt alapértelmezett tárfiókkulcs.
@@ -242,25 +242,25 @@ foreach (var key in results.Configuration.Keys)
 ```
 
 ## <a name="submit-jobs"></a>Feladatok elküldése
-**A MapReduce-feladatok elküldése**
+**Az Apache Hadoop MapReduce-feladatok elküldése**
 
-Lásd: [futtassa a Hadoop MapReduce-minták a HDInsight](hadoop/apache-hadoop-run-samples-linux.md).
+Lásd: [futtassa az Apache Hadoop MapReduce-minták a HDInsight](hadoop/apache-hadoop-run-samples-linux.md).
 
 **Az Apache Hive-feladatok elküldése** 
 
-Lásd: [futtatása Hive-lekérdezések a .NET SDK használatával](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
+Lásd: [.NET SDK használatával futtassa az Apache Hive lekérdezések](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
 
 **Az Apache Pig-feladatok elküldése**
 
-Lásd: [.NET SDK használatával futtassa a Pig-feladatok](hadoop/apache-hadoop-use-pig-dotnet-sdk.md).
+Lásd: [.NET SDK használatával futtassa az Apache Pig-feladatok](hadoop/apache-hadoop-use-pig-dotnet-sdk.md).
 
 **Az Apache Sqoop-feladatok elküldése**
 
-Lásd: [Sqoop használata a HDInsight](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md).
+Lásd: [Apache Sqoop használata a HDInsight](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md).
 
 **Az Apache Oozie-feladatok elküldése**
 
-Lásd: [megadásához és a munkafolyamat futtatása a HDInsight Hadoop-keretrendszerrel használható Oozie](hdinsight-use-oozie-linux-mac.md).
+Lásd: [használata Apache Oozie megadásához és a munkafolyamat futtatása a HDInsight Hadoop-keretrendszerrel](hdinsight-use-oozie-linux-mac.md).
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Az Azure Blob storage-adatok feltöltése
 Lásd: [Adatok feltöltése a HDInsightba][hdinsight-upload-data].

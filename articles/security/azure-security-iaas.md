@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 057c98d4bac87b4e43e5beb8268d3d3bdbe3ec85
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 6033a61351423e65490edfe0b0607f2395c80f86
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364261"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498350"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Ajánlott biztonsági eljárások IaaS számítási feladatokhoz az Azure-ban
 
@@ -41,7 +41,7 @@ Az első lépés a virtuális gépek védelmére, győződjön meg arról, hogy 
 **Ajánlott eljárás**: ellenőrzési Virtuálisgép-hozzáférés.   
 **Részletes**: használata [Azure házirendek](../azure-policy/azure-policy-introduction.md) egyezmények az erőforrások létrehozásához a szervezetben, és létrehozzon testreszabott házirendeket. Ezek a szabályzatok alkalmazása erőforrások, például [erőforráscsoportok](../azure-resource-manager/resource-group-overview.md). Virtuális gépek egy erőforráscsoporthoz tartozó öröklik a rájuk vonatkozó szabályzatoknak.
 
-Ha a szervezet több előfizetéssel rendelkezik, szüksége lehet hatékonyan kezelheti a hozzáférést, a házirendek és a megfelelőségi ezen előfizetések esetében. [Az Azure felügyeleti csoportok](../azure-resource-manager/management-groups-overview.md) adja meg a fenti előfizetések hatókörének szintjét. Előfizetéseinek felügyeleti csoportokba való rendezésére (tárolók), és ezeket a csoportokat a szabályozási feltételek vonatkoznak. A felügyeleti csoporton belül az összes előfizetés automatikusan örökli a alkalmazni a csoport feltételeket. Felügyeleti csoportok lehetővé teszik, nagyvállalati szintű felügyeleti, függetlenül attól, hogy milyen típusú előfizetések lehetséges, hogy a nagy mennyiségű.
+Ha a szervezet több előfizetéssel rendelkezik, szüksége lehet hatékonyan kezelheti a hozzáférést, a házirendek és a megfelelőségi ezen előfizetések esetében. [Az Azure felügyeleti csoportok](../azure-resource-manager/management-groups-overview.md) adja meg a fenti előfizetések hatókörének szintjét. Előfizetéseinek felügyeleti csoportokba való rendezésére (tárolók), és ezeket a csoportokat a szabályozási feltételek vonatkoznak. A felügyeleti csoporton belül az összes előfizetés automatikusan örökli a alkalmazni a csoport feltételeket. A felügyeleti csoportok nagy léptékű, nagyvállalati szintű felügyeletet tesznek lehetővé, függetlenül az előfizetése típusától.
 
 **Ajánlott eljárás**: csökkentheti a telepítő és a virtuális gépek üzembe helyezési változékonyságát.   
 **Részletes**: használata [Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) megerősítése az üzembe helyezési lehetősége, és könnyebben megértéséhez, valamint a környezetében a virtuális gépek leltár-sablonokat.
@@ -51,7 +51,7 @@ Ha a szervezet több előfizetéssel rendelkezik, szüksége lehet hatékonyan k
 
 - [Virtuális gépek Közreműködője](../role-based-access-control/built-in-roles.md#virtual-machine-contributor): kezelheti a virtuális gépek, de nem a virtuális hálózati vagy tárolási fiók, amelyhez csatlakoznak.
 - [Virtuális gépek hagyományos Közreműködője](../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): kezelheti a klasszikus üzemi modellben, de nem a virtuális hálózati vagy tárolási fiók, amelyhez a virtuális gépek csatlakoznak használatával létrehozott virtuális gépek.
-- [Biztonságkezelő](../role-based-access-control/built-in-roles.md#security-manager): biztonsági összetevők, a biztonsági szabályzatok és a virtuális gépek felügyelheti.
+- [Biztonsági rendszergazda](../role-based-access-control/built-in-roles.md#security-admin): A Security Center csak: megtekintheti biztonsági házirendek, biztonsági állapotot, szerkessze a biztonsági szabályzatok, riasztások megtekintése és javaslatok, riasztások és javaslatok elvetése.
 - [DevTest Labs-felhasználó](../role-based-access-control/built-in-roles.md#devtest-labs-user): is mindent megtekinthessen, és csatlakozzon, indítsa el, indítsa újra a és leállíthatja a virtuális gépeket.
 
 Az előfizetés-adminisztrátorok és a társrendszergazdákat módosíthatja ezt a beállítást, így azok egy adott előfizetés összes virtuális gép Rendszergazdák. Győződjön meg arról, hogy az összes előfizetés-adminisztrátorok és jelentkezzen be a gépek bármelyikét társrendszergazdákat megbízik.

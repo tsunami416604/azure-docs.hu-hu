@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 35b80223552181e44beac011f5fb541158466acc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bdb2e355b29306c8a78a3a773269baeee13fc9d1
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255404"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497538"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Machine Learning-szolgáltatások az Azure HDInsight-fürt kezelése
 
@@ -33,7 +33,7 @@ A Machine Learning-szolgáltatások HDInsight-fürt több párhuzamos felhaszná
 
 ![1. párhuzamos felhasználó](./media/r-server-hdinsight-manage/concurrent-users-1.png)
 
-- **Fürt bejelentkezési felhasználóneve**: HTTP-felhasználó a létrehozott HDInsight-fürtöket védő HDInsight-átjárón át történő hitelesítéshez. Ez a HTTP-felhasználó használatos az Ambari, a YARN felhasználói felületének és más felhasználóifelület-összetevőknek az elérésére.
+- **Fürt bejelentkezési felhasználóneve**: HTTP-felhasználó a létrehozott HDInsight-fürtöket védő HDInsight-átjárón át történő hitelesítéshez. A HTTP-felhasználó használatos az Apache Ambari felhasználói felületén, Apache Hadoop YARN felhasználói felületén, valamint más Felhasználóifelület-összetevőknek eléréséhez.
 - **Secure Shell- (SSH-) felhasználónév**: SSH-felhasználó, aki a fürtöt biztonságos felületen keresztül éri el. Ez a felhasználó a Linux rendszerben az összes főcsomópont, munkavégző csomópont és élcsomópont felhasználója. Így Secure Shellt használhat a távoli fürt bármely csomópontjának elérésére.
 
 Az a Machine Learning-szolgáltatások HDInsight-fürt használt R Studio Server Community verziója a mechanizmus során csak Linux-felhasználónevet és jelszót fogad el. Nem támogatja a jogkivonatok átadását. Ezért amikor megpróbálja elérni az R Studio először egy Machine Learning-szolgáltatások-fürtön, kell kétszer bejelentkezni.
@@ -52,7 +52,7 @@ A fürt határcsomópontjához az RStudio fut, mert több lépésből áll itt:
 
 ### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>1. lépés: A létrehozott SSH-felhasználó használata az élcsomópontra való bejelentkezéshez
 
-Kövesse az utasításokat, [HDInsight (Hadoop) SSH-val csatlakozhat](../hdinsight-hadoop-linux-use-ssh-unix.md) az élcsomópont eléréséhez. A Machine Learning-szolgáltatások HDInsight-fürt az élcsomópont címe a következő `CLUSTERNAME-ed-ssh.azurehdinsight.net`.
+Kövesse az utasításokat, [HDInsight (az Apache Hadoop) SSH-val csatlakozhat](../hdinsight-hadoop-linux-use-ssh-unix.md) az élcsomópont eléréséhez. A Machine Learning-szolgáltatások HDInsight-fürt az élcsomópont címe a következő `CLUSTERNAME-ed-ssh.azurehdinsight.net`.
 
 ### <a name="step-2-add-more-linux-users-in-edge-node"></a>2. lépés: További Linux-felhasználók hozzáadása az élcsomópontban
 
@@ -104,7 +104,7 @@ Figyelje meg azt is, hogy az újonnan felvett felhasználók nem rendelkeznek gy
       consoleOutput= TRUE
     )
 
-További információkért tekintse meg a "Használata a Microsoft Machine Learning kiszolgáló Hadoop-ügyfélként" szakaszában [RevoScaleR egy Spark számítási környezet használata](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios)
+További információkért tekintse meg a "Használatával a Microsoft Machine Learning kiszolgáló, az Apache Hadoop-ügyfelének" szakaszában [RevoScaleR egy Apache Spark számítási környezet használata](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios)
 
 ## <a name="use-a-compute-context"></a>Számítási környezet használata
 
@@ -250,7 +250,7 @@ Ha a Spark környezet továbbra is használja, ez a parancs visszaadja azon munk
         nodename
     "wn3-mymlser"
 
-## <a name="access-data-in-hive-and-parquet"></a>Hozzáférés az adatokhoz a Hive és a Parquet eszközökben
+## <a name="access-data-in-apache-hive-and-parquet"></a>Hozzáférés az adatokhoz az Apache Hive és a parquet eszközökben
 
 Machine Learning-szolgáltatások HDInsight a Spark számítási környezet ScaleR-függvényei általi lehetővé teszi az adatok közvetlen elérését a Hive és a parquet eszközökben való használatra. Ezek a képességek az RxHiveData és RxParquetData nevű új ScaleR adatforrás-függvényeken keresztül érhetők el, amelyek a Spark SQL-en keresztül töltenek adatokat közvetlenül a Spark DataFrame-be a ScaleR által végzett elemzéshez.
 

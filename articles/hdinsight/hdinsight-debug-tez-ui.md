@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ecb613dd2f624b9e0910a0ddcdf931f4b266aa96
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: c96e195d425cff640a4961e34305c1af447f6f28
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036580"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499428"
 ---
 # <a name="use-the-apache-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Az Apache Tez felhasználói felület használata a Windows-alapú HDInsight a Tez-feladatok hibakereséséhez
-A Tez felhasználói felület használata a Tez végrehajtómotor Hive-feladatok hibakereséséhez használható. A Tez felhasználói felület megjeleníti a feladat, egy grafikont a csatlakoztatott elemek részletesen az egyes elemeket, és statisztikák és a naplózási információk lekéréséhez.
+A [Apache TEZ](https://tez.apache.org/) felhasználói felület segítségével debug [Apache Hive](https://hive.apache.org/) használata a Tez végrehajtómotor feladatokat. A Tez felhasználói felület megjeleníti a feladat, egy grafikont a csatlakoztatott elemek részletesen az egyes elemeket, és statisztikák és a naplózási információk lekéréséhez.
 
 > [!IMPORTANT]
 > A jelen dokumentumban leírt lépések szükség egy HDInsight-fürt által használt Windows. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -32,7 +32,7 @@ A Tez felhasználói felület használata a Tez végrehajtómotor Hive-feladatok
 * Egy Windows-alapú távoli asztali ügyfél.
 
 ## <a name="understanding-apache-tez"></a>Az Apache Tez ismertetése
-Tez egy bővíthető keretrendszer adatfeldolgozás az Apache Hadoop, és nagyobb sebességre képes, mint a hagyományos MapReduce-feldolgozást kínál. Tez engedélyezéséhez többek között az alábbi szöveget egy Hive-lekérdezés részeként:
+Tez egy bővíthető keretrendszer adatfeldolgozás az Apache Hadoop, és nagyobb sebességre képes, mint a hagyományos biztosít [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) feldolgozása. Tez engedélyezéséhez többek között az alábbi szöveget egy Hive-lekérdezés részeként:
 
     set hive.execution.engine=tez;
 
@@ -134,6 +134,6 @@ Az alábbi lépések segítségével által használt Tez Hive-lekérdezést fut
     ![Feladat részletei](./media/hdinsight-debug-tez-ui/taskdetails.png)
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy megtanulhatta, hogyan használható a Tez nézet, tudjon meg többet [a HDInsight használatával Hive](hadoop/hdinsight-use-hive.md).
+Most, hogy megtanulhatta, hogyan használható a [Apache TEZ](https://tez.apache.org/) megtekintheti, tudjon meg többet [Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md).
 
-Részletes technikai információ a Tez, tekintse meg a [Tez lapot a Hortonworks](http://hortonworks.com/hadoop/tez/).
+Részletes technikai információ a Tez, tekintse meg a [Apache Tez lapot a Hortonworks](http://hortonworks.com/hadoop/tez/).
