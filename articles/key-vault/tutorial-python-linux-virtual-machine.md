@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Azure Key Vault használata az Azure Windows virtuális gép a Pythonban |} A Microsoft Docs
+title: Oktatóanyag – Azure Key Vault használata az Azure Linux rendszerű virtuális gépek Python |} A Microsoft Docs
 description: 'Oktatóanyag: ASP.NET Core-alkalmazások konfigurálása a Key Vault titkos kulcsainak olvasásához'
 services: key-vault
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 26b5b16e3eb016edbe53c3526e51c3aa44f307b5
+ms.openlocfilehash: 5f56022be7968d3be65fd06fef791d859acf14c0
 ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583584"
+ms.locfileid: "52585332"
 ---
-# <a name="tutorial-how-to-use-azure-key-vault-with-azure-windows-virtual-machine-in-python"></a>Oktatóanyag: Hogyan használhatja az Azure Key Vault az Azure Windows virtuális gép a Pythonban
+# <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-python"></a>Oktatóanyag: Hogyan használhatja az Azure Key Vault az Azure Linux virtuális gép a Pythonban
 
 Az Azure Key Vault segít megvédeni a titkos kulcsokat, például az API-kulcsokat, valamint az alkalmazások, szolgáltatások és informatikai erőforrások eléréséhez szükséges adatbázis-kapcsolati sztringeket.
 
@@ -100,13 +100,36 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 ```
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
-Kövesse az alábbi hivatkozásokat a Windows virtuális gép létrehozása
 
-[Azure CLI](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-cli) 
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal.
 
-[PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)
+A következő példa létrehoz egy *myVM* nevű virtuális gépet, és hozzáad egy *azureuser* nevű felhasználói fiókot. A `--generate-ssh-keys` paraméter az SSH-kulcs automatikus létrehozására, és a kulcs alapértelmezett helyére (*~/.ssh*) történő mentésére szolgál. Ha konkrét kulcsokat szeretne használni, használja az `--ssh-key-value` paramétert.
 
-[Portál](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
+```azurecli-interactive
+az vm create \
+  --resource-group myResourceGroup \
+  --name myVM \
+  --image UbuntuLTS \
+  --admin-username azureuser \
+  --generate-ssh-keys
+```
+
+A virtuális gép és a kapcsolódó erőforrások létrehozása csak néhány percet vesz igénybe. A következő kimeneti példa azt mutatja be, hogy a virtuális gép létrehozási művelete sikeres volt.
+
+```
+{
+  "fqdns": "",
+  "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
+  "location": "westus",
+  "macAddress": "00-00-00-00-00-00",
+  "powerState": "VM running",
+  "privateIpAddress": "XX.XX.XX.XX",
+  "publicIpAddress": "XX.XX.XXX.XXX",
+  "resourceGroup": "myResourceGroup"
+}
+```
+
+Vegye észere a saját `publicIpAddress` címét a virtuális gép kimenetében. A következő lépésekben ez a cím használható a virtuális gép eléréséhez.
 
 ## <a name="assign-identity-to-virtual-machine"></a>Identitás hozzárendelése a virtuális gép
 Ebben a lépésben a rendszer a virtuális géphez, az Azure CLI az alábbi parancs futtatásával hozzárendelt identitás létrehozása folyamatban
@@ -142,10 +165,10 @@ Az alábbiakban csupán egy példa fájlt neve "Sample.py". Használ [kérelmek]
 ## <a name="edit-samplepy"></a>Sample.py szerkesztése
 Sample.py nyílt létrehozása a fájl- és másolása után az alábbi kód
 
-```
-The below is a 2 step process. 
-1. Fetch a token from the local MSI endpoint on the VM which in turn fetches a token from Azure Active Directory
-2. Pass the token to Key Vault and fetch your secret 
+Az alábbi, 2. lépés folyamat. 
+1. Jogkivonatot beolvasni a helyi MSI-végpontot a virtuális gépen, amely ezután lekéri egy tokent az Azure Active Directoryból
+2. A jogkivonat átadni a Key Vault és a titkos kód beolvasása 
+
 ```
     # importing the requests library 
     import requests 
@@ -166,14 +189,15 @@ The below is a 2 step process.
     print(kvSecret.json()["value"])
 ```
 
-By running you should see the secret value 
+Futtatásával megtekintheti a titkos érték 
+
 ```
-Python Sample.py
+python Sample.py
 ```
 
-The above code shows you how to do operations with Azure Key Vault in an Azure Windows Virtual Machine. 
+A fenti kód bemutatja, hogyan hajtsa végre a műveleteket az Azure Key Vault az Azure Windows virtuális gépként. 
 
-## Next steps
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)
+> [Az Azure Key Vault REST API-val](https://docs.microsoft.com/rest/api/keyvault/)
