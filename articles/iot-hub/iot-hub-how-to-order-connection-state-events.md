@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: asrastog
-ms.openlocfilehash: df680469541885ab6413800ee3b9806975e34dba
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 77615705ade42a2afcc8e3a9f662b0551a2411fd
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258663"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582452"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Rendelés eszköz az Azure Cosmos DB használatával az Azure IoT Hub kapcsolati események
 
@@ -315,7 +315,7 @@ Láthatja a végrehajtott tárolt eljárás eredményét a Cosmos DB-dokumentumb
 
 ## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
 
-Használata helyett a [az Azure portal](http://portal.azure.com), az IoT Hub lépéseket az Azure CLI használatával is elérheti. További információkért lásd: az Azure CLI-vel oldalak [egy esemény-előfizetés létrehozása](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) és [egy IoT-eszköz létrehozása](https://docs.microsoft.com/cli/azure/iot/device).
+Használata helyett a [az Azure portal](http://portal.azure.com), az IoT Hub lépéseket az Azure CLI használatával is elérheti. További információkért lásd: az Azure CLI-vel oldalak [egy esemény-előfizetés létrehozása](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) és [egy IoT-eszköz létrehozása](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

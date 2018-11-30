@@ -8,20 +8,20 @@ ms.date: 09/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b97a88a36631af1de3c95f0730a9a951b9a3a907
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: cd077c1a552a14582fce48bbe60f56ef08e5a4d7
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569063"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584842"
 ---
-# <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale"></a>Megismerheti az IoT Edge-telepítések egyetlen eszközök vagy ipari méretekben
+# <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Az automatikus központi IoT Edge egy eszközök vagy ipari méretekben ismertetése
 
 Hajtsa végre az Azure IoT Edge-eszközök egy [eszközéletciklusra](../iot-hub/iot-hub-device-management-overview.md) IoT-eszközök más típusú hasonló:
 
-1. IoT Edge-eszközök kiosztása, amely magában foglalja az operációs rendszer eszköz imaging és telepítése a [IoT Edge-futtatókörnyezet](iot-edge-runtime.md).
-2. Az eszközök történő futtatásra vannak konfigurálva [IoT Edge-modulok](iot-edge-modules.md), és majd Health figyeli. 
-3. Végül eszközök eltávolíthatja, ha cserélni vagy elavulttá válnak.  
+1. Új IoT Edge-eszközökön üzembe egy operációs rendszer eszköz imaging és telepítése a [IoT Edge-futtatókörnyezet](iot-edge-runtime.md).
+2. Konfigurálhatja az eszközöket való futtatására [IoT Edge-modulok](iot-edge-modules.md), majd megfigyelheti azok állapotát. 
+3. Végül vonja ki az eszközt, ha cserélni vagy elavulttá válnak.  
 
 Az Azure IoT Edge a modulok futtatása az IoT Edge-eszközökön való konfigurálásához kétféle módszert biztosít: egyet a fejlesztési és a egy adott eszközön gyors ismétlésének (Ez a módszer az Azure IoT Edge-ben használt [oktatóanyagok](tutorial-deploy-function.md)), és a egy kezelésére szolgáló nagy flottáknak IoT Edge-eszközökön. Mindkét ezek a módszerek érhetők el az Azure Portalon, és programozott módon. Csoportok és a egy nagy számú célozza, mely eszközöket szeretné telepíteni a modulok használatával lehet megadni [címkék](../iot-edge/how-to-deploy-monitor.md#identify-devices-using-tags) az ikereszközben. Az alábbi lépéseket a központi telepítést, a tags tulajdonságnak keresztül azonosított Washington állam eszközcsoport beszélni. 
 
@@ -29,16 +29,16 @@ Ez a cikk a konfiguráció koncentrál, és figyelési eszközök, flottái szak
 
 1. Az operátornak határozza meg a központi telepítés a modulokat, valamint a Céleszközök írja le. Minden egyes üzemelő példánynak van a központi telepítési jegyzékfájl, amely tartalmazza ezt az információt. 
 2. Az IoT Hub szolgáltatás az összes megcélzott eszköz konfigurálhatja azokat a kívánt modulok kommunikál. 
-3. Az IoT Hub szolgáltatás állapota lekéri az IoT Edge-eszközökön, és elérhetővé teszi az üzemeltető figyelése a.  Az operátornak láthatja például, amikor egy Edge-eszköz nem történik meg sikeresen, vagy ha egy modul sikertelen futtatás ideje alatt. 
+3. Az IoT Hub szolgáltatás állapota lekéri az IoT Edge-eszközök, és elérhetővé teszi azokat az operátor.  Az operátornak láthatja például, amikor egy Edge-eszköz nem történik meg sikeresen, vagy ha egy modul sikertelen futtatás ideje alatt. 
 4. Bármikor új IoT Edge-eszközök, amelyek megfelelnek a célcsoport-kezelési feltételek a központi telepítés vannak konfigurálva. Például a Washington állam minden IoT Edge-eszközök automatikusan célzó központi telepítés egy új IoT Edge-eszköz konfigurálása kiépítve, és hozzáadja a Washington állam eszköz csoporthoz. 
  
 Ez a cikk ismerteti az egyes összetevők konfigurálása és figyelése a központi telepítés. Létrehozása és frissítése a központi telepítés leírását lásd: [üzembe helyezése és figyelése a nagy mennyiségű IoT Edge-modulok](how-to-deploy-monitor.md).
 
 ## <a name="deployment"></a>Környezet
 
-Az IoT Edge automatikus központi telepítési lemezképek modul futtatása példány célzott az IoT Edge-eszközök IoT Edge rendeli hozzá. Úgy működik, hogy konfigurálása az IoT Edge manifest nasazení megfelelő inicializálási paramétereknek modulok listáját tartalmazza. Központi telepítés rendelhetők (Eszközazonosító alapján) egy eszközre vagy eszközökre (a címkék alapján). IoT Edge-eszköz megkapja a manifest nasazení, miután, letölti és telepíti a modult tárolórendszerképeket a megfelelő tárolót változásokat, és ennek megfelelően konfigurálja őket. Központi telepítés létrehozása után az operátornak figyelheti a központi telepítési állapotának megtekintéséhez, hogy a megcélzott eszközökön helyesen van-e konfigurálva.
+Az IoT Edge automatikus központi telepítési lemezképek modul futtatása példány célzott az IoT Edge-eszközök IoT Edge rendeli hozzá. Úgy működik, hogy konfigurálása az IoT Edge manifest nasazení megfelelő inicializálási paramétereknek modulok listáját tartalmazza. Központi telepítés rendelhetők (Eszközazonosító alapján) egy eszközre vagy eszközökre (a címkék alapján). IoT Edge-eszköz megkapja a manifest nasazení, miután, letölti és telepíti a tárolórendszerképeket a megfelelő tárolót változásokat, és ennek megfelelően konfigurálja őket. Központi telepítés létrehozása után az operátornak figyelheti a központi telepítési állapotának megtekintéséhez, hogy a megcélzott eszközökön helyesen van-e konfigurálva.
 
-Eszközök kell konfigurálni egy telepítést IoT Edge-eszközökön üzembe helyezhető. A következő előfeltételeknek kell az eszközön, mielőtt megkaphatja a központi telepítés:
+Csak az IoT Edge-eszközökön konfigurálható egy központi telepítést. A következő előfeltételeknek kell az eszközön, mielőtt megkaphatja a központi telepítés:
 
 * Az operációs rendszer
 * A felügyeleti rendszer, például Moby vagy a Docker
@@ -52,8 +52,8 @@ Az egyes modulok konfigurációs metaadatok tartalmaznak: 
 
 * Verzió 
 * Típus 
-* Állapot (pl. fut vagy Leállítva) 
-* Indítsa újra a házirend 
+* Állapot (például fut vagy Leállítva) 
+* Újraindítási szabályzat 
 * Kép- és tároló-beállításjegyzék
 * Bemeneti és kimeneti adatok útvonalai 
 
@@ -61,9 +61,9 @@ Ha a modul rendszerképet egy privát tárolójegyzékben található, az IoT Ed
 
 ### <a name="target-condition"></a>Célfeltétel
 
-A célfeltétel a rendszer folyamatosan értékeli a követelményeknek megfelelő új eszközök, vagy távolítsa el az eszközöket, amelyek többé nem az üzembe helyezés élettartama keresztül. A központi telepítés rendszer aktiválhatók, ha a szolgáltatás észleli a célként megadott feltétel tejes. 
+A célfeltétel folyamatosan kiértékelt throughtout az üzembe helyezés élettartama. A követelményeknek megfelelő új eszközök megtalálhatók, és a meglévő eszközöket, amelyek többé nem törlődnek. A központi telepítés akkor aktiválódik, ha a szolgáltatás észleli a célként megadott feltétel tejes. 
 
-Például rendelkezik, egy-egy cél feltétel tags.environment = 'prod'. Az üzembe helyezés indíthat, ha nincsenek tíz éles eszközt. A modulok telepítése sikeresen megtörtént a tíz ezeket az eszközöket. Összes eszköz 10, 10 sikeres válaszok, 0 meghibásodási válaszok és 0 függőben lévő válaszok formájában jelenik meg az IoT Edge-ügynök állapota. Most már hozzáadhat öt további eszközök tags.environment = 'prod'. A szolgáltatás észleli a változást, és az IoT Edge-ügynök állapota 15 összes eszköz, 10 sikeres válaszok, 0 meghibásodási válaszok és 5 függőben lévő válaszok válik az öt új eszközökre való.
+Például rendelkezik, egy-egy cél feltétel tags.environment = 'prod'. Az üzembe helyezés indíthat, ha nincsenek 10 eszközökre. A modulok telepítése sikeresen megtörtént a 10 ezeket az eszközöket. Összes eszköz 10, 10 sikeres válaszok, 0 meghibásodási válaszok és 0 függőben lévő válaszok formájában jelenik meg az IoT Edge-ügynök állapota. Most már hozzáadhat öt további eszközök tags.environment = 'prod'. A szolgáltatás észleli a változást, és az IoT Edge-ügynök állapota 15 összes eszköz, 10 sikeres válaszok, 0 meghibásodási válaszok és 5 függőben lévő válaszok válik az öt új eszközökre való.
 
 A device twins címkéket vagy deviceId bármely logikai feltétel használatával céleszközeinek kiválasztásához. Ha azt szeretné, a feltétel használata a címkék, hozzá kell "címkék":{} szakasz azokat az ikereszköz az azonos szinten tulajdonságai alapján. [További információ az ikereszközök címkék](../iot-hub/iot-hub-devguide-device-twins.md)
 
@@ -78,8 +78,8 @@ Példák a célként megadott feltétel:
 Íme néhány korlátozza, amikor egy célfeltétel hozhat létre:
 
 * Ikereszköz a címkék vagy deviceId célfeltétel csak készíthet.
-* A célfeltétel bármely részének dupla idézőjelek között nem engedélyezett. Használjon szimpla idézőjelek között.
-* Szimpla idézőjelek között a célfeltétel értékeit jelölik. Ezért egy másik egyetlen ajánlattal a szimpla idézőjel kell elkerülésére, ha az eszköz neve része. Például a célfeltétel: operator'sDevice kellene mert deviceId = "operátor" % sDevice ".
+* A célfeltétel bármely részének dupla idézőjelek között nem engedélyezett. Használjon aposztrófot.
+* Szimpla idézőjelek között a célfeltétel értékeit jelölik. Ezért egy másik egyetlen ajánlattal a szimpla idézőjel kell elkerülésére, ha az eszköz neve része. Például, amelyekre az eszköz neve `operator'sDevice`, írási `deviceId='operator''sDevice'`.
 * Számok, betűk és a következő karakterek engedélyezettek, a cél feltételértékeket tartalmaznak: `-:.+%_#*?!(),=@;$`.
 
 ### <a name="priority"></a>Prioritás
@@ -97,7 +97,7 @@ Központi telepítés meghatározásához, hogy életbe léptette-e sikeresen b�
 * **Cél** az IoT Edge-eszközöket, amelyek megfelelnek a feltétel célzó központi mutatja.
 * **Tényleges** jeleníti meg a célzott IoT Edge, amely nem a nagyobb prioritású egy másik telepítés által célzott eszközök.
 * **Kifogástalan állapotú** jeleníti meg az IoT Edge-ben, jelentettek vissza a szolgáltatásnak, hogy a modulok sikeresen telepítették-e. 
-* **Nem megfelelő állapotú** jeleníti meg az IoT Edge eszközöket jelentett vissza a szolgáltatásnak, hogy az egyik vagy a modulok nem telepített sikeresen megtörtént. További vizsgálat céljából a hiba, távolról csatlakozhat, amellyel az eszközöket, és naplófájljainak megtekintéséhez.
+* **Nem megfelelő állapotú** jeleníti meg az IoT Edge eszközöket jelentett vissza a szolgáltatásnak, hogy az egyik vagy a modulok nem telepített sikeresen megtörtént. További vizsgálat céljából a hiba, távoli csatlakozás azokat az eszközöket, és naplófájljainak megtekintéséhez.
 * **Ismeretlen** az IoT Edge eszközöket, amelyek nem jelentettek bármilyen ehhez a központi telepítéshez tartozó állapot látható. További vizsgálat céljából, megtekintheti az adatok és a napló fájljai.
 
 ## <a name="phased-rollout"></a>Fázisokra bontva történő bevezetéséhez 
@@ -115,7 +115,7 @@ Több lépcsőben vezeti be a következő fázisra és lépéseket hajtja végre
 
 ## <a name="rollback"></a>Visszaállítás
 
-Üzemelő példányok is vissza lesz állítva a hibák vagy konfigurációs hibák esetén.  Központi telepítés határozza meg az IoT Edge-eszköz abszolút modul konfigurációját, mert egy további üzembe helyezési is verziókkal kell működnie ugyanarra az eszközre alacsonyabb prioritással akkor is, ha a cél, hogy távolítsa el az összes modult.  
+Üzemelő példányok is lesz állítva, ha hibák vagy konfigurációs hibák kap.  Központi telepítés határozza meg az IoT Edge-eszköz abszolút modul konfigurációját, mert egy további üzembe helyezési is verziókkal kell működnie ugyanarra az eszközre alacsonyabb prioritással akkor is, ha a cél, hogy távolítsa el az összes modult.  
 
 Visszagörgetése hajtsa végre a következő lépéseket: 
 

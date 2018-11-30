@@ -12,20 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2018
+ms.date: 11/28/2018
 ms.author: spelluru
-ms.openlocfilehash: 2c7c2af6903b7c6e2951f15ad74295ae7eb4758d
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 5ca4535afb44238380cb6db55953072598130fae
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821786"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582360"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Az Azure Relay-metrikák az Azure Monitor (előzetes verzió)
-
-Az Azure Relay-metrikák biztosít az Azure-előfizetésében erőforrások állapotát. A metrikai adatok széles skáláját felmérheti a Relay-erőforrás, nem csak a névterek szintjén, hanem az entitások szintjén általános állapotát. A statisztikai lehet fontos, mert ezek segítségével figyelheti az Azure Relay állapotát. Metrikák is segít kiváltó problémák elhárítása anélkül, hogy forduljon az Azure ügyfélszolgálatához.
+Az Azure Relay-metrikák teszik lehetővé az Azure-előfizetésében erőforrások állapotát. A metrikai adatok széles skáláját felmérheti a Relay-erőforrás, nem csak a névterek szintjén, hanem az entitások szintjén általános állapotát. A statisztikai lehet fontos, mert ezek segítségével figyelheti az Azure Relay állapotát. Metrikák is segít kiváltó problémák elhárítása anélkül, hogy forduljon az Azure ügyfélszolgálatához.
 
 Az Azure Monitor egységes felhasználói felületet biztosít a különböző Azure-szolgáltatások figyelésére. További információkért lásd: [a Microsoft Azure figyelés](../monitoring-and-diagnostics/monitoring-overview.md) és a [lekérése az Azure Monitor-metrikák .NET-tel](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) mintát a Githubon.
+
+> [!IMPORTANT]
+> Ez a cikk csak az Azure Relay, nem a WCF Relay hibrid kapcsolatok szolgáltatását vonatkozik. 
 
 ## <a name="access-metrics"></a>Access-metrikák
 
@@ -39,7 +41,7 @@ Az idő függvényében segítségével figyelheti a mérőszámokat a [az Azure
 
 ![][1]
 
-Metrikák a névtér keresztül közvetlenül is elérheti. Ehhez válassza ki a névteret, és kattintson a **metrikák (Peview)**. 
+Metrikák a névtér keresztül közvetlenül is elérheti. Ehhez válassza ki a névteret, és kattintson a **metrikák (előnézet)**. 
 
 Dimenziók támogató metrikákhoz a kívánt dimenzió értékkel kell szűrni.
 

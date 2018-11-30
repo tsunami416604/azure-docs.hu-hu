@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: c5b05b4ce33222ee9dd84950066b3bd36ea315de
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: cab78d09038b8ab00c318b3ce615d99139e9b005
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824863"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634030"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Csatlakozás az Azure ITSM-eszközeit IT Service Management-összekötő használatával
 
@@ -84,10 +84,10 @@ Kapcsolat létrehozásához szüksége lesz az ITSM-eszközhöz, hogy a kapcsola
 
 Az ITSM-termék csatlakozik, attól függően használja az alábbi lépéseket:
 
-- [A System Center Service Manager (SCSM)](log-analytics-itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
-- [ServiceNow](log-analytics-itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
-- [Provance](log-analytics-itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
-- [Cherwell](log-analytics-itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
+- [A System Center Service Manager (SCSM)](../azure-monitor/platform/itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
+- [ServiceNow](../azure-monitor/platform/itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
+- [Provance](../azure-monitor/platform/itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
+- [Cherwell](../azure-monitor/platform/itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
 
 Ha rendelkezik elő lett készítve az ITSM-eszközeit, az alábbi lépésekkel kapcsolat létrehozása:
 
@@ -100,7 +100,7 @@ Ha rendelkezik elő lett készítve az ITSM-eszközeit, az alábbi lépésekkel 
 
     ![ITSM-kapcsolat hozzáadása](media/log-analytics-itsmc-overview/add-new-itsm-connection.png)
 
-4.  Adja meg a kapcsolati beállításokat leírtak szerint [ITSMC kapcsolat beállítása az ITSM-termékekkel/szolgáltatásokkal cikkébe](log-analytics-itsmc-connections.md).
+4.  Adja meg a kapcsolati beállításokat leírtak szerint [ITSMC kapcsolat beállítása az ITSM-termékekkel/szolgáltatásokkal cikkébe](../azure-monitor/platform/itsmc-connections.md).
 
     > [!NOTE]
 
@@ -291,7 +291,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
     - Ellenőrizze, helyes megadása a felhasználónév, jelszó, ügyfél-azonosító és titkos Ügyfélkód az egyes kapcsolatok.  
     - Ellenőrizze, hogy az a megfelelő ITSM-termékben hozhatja létre a kapcsolatot, hogy megfelelő jogosultságokkal.  
  - A Service Manager-kapcsolatok esetén  
-    - Győződjön meg arról, hogy a webalkalmazás sikeresen telepítve lesz, és a hibrid kapcsolat jön létre. A helyszíni Service Manager géppel sikeresen létrejött a kapcsolat ellenőrzéséhez keresse fel a webes alkalmazás URL-CÍMÉT, így a dokumentációban leírt módon a [hibrid kapcsolat](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).  
+    - Győződjön meg arról, hogy a webalkalmazás sikeresen telepítve lesz, és a hibrid kapcsolat jön létre. A helyszíni Service Manager géppel sikeresen létrejött a kapcsolat ellenőrzéséhez keresse fel a webes alkalmazás URL-CÍMÉT, így a dokumentációban leírt módon a [hibrid kapcsolat](../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection).  
 
 2.  Ha ServiceNow adatait nem első szinkronizálva van a Log Analyticsbe, győződjön meg arról, hogy a ServiceNow-példány nem alszik. ServiceNow fejlesztési példányok néha lépjen alvó állapotba üresjáratban hosszabb ideig. Ellenkező esetben jelentse a problémát.
 3.  Ha a Log Analytics-riasztásokkal aktiválódik, de a munka elemek nem jönnek létre az ITSM-termékben vagy konfigurációelemek nem létrehozott/kapcsolódó munkaelemek vagy egyéb általános információkat, tekintse meg a következő helyeken:
@@ -301,7 +301,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>A Service Manager webes alkalmazás üzembe helyezési hibáinak elhárítása
 1.  Webes alkalmazás üzembe helyezése bármely problémái esetén győződjön meg arról, hogy a megfelelő engedélyekkel az előfizetésben már említettük, hozzon létre és helyezhet üzembe erőforrásokat.
 2.  Ha egy **"Objektumhivatkozás nincs beállítva az objektum-példányra"** hibát a futtatásakor a [parancsfájl](log-analytics-itsmc-service-manager-script.md), győződjön meg arról, hogy a megadott értékek alapján **felhasználói konfiguráció** szakasz .
-3.  Ha nem sikerült létrehozni a service bus relay-névteret, győződjön meg arról, hogy a szükséges erőforrás-szolgáltató regisztrálva van az előfizetésben. Ha nem regisztrált, manuálisan service bus relay-névtér létrehozása az Azure Portalról. Is létrehozhat, miközben [a hibrid kapcsolat létrehozása](log-analytics-itsmc-connections.md#configure-the-hybrid-connection) az Azure Portalról.
+3.  Ha nem sikerült létrehozni a service bus relay-névteret, győződjön meg arról, hogy a szükséges erőforrás-szolgáltató regisztrálva van az előfizetésben. Ha nem regisztrált, manuálisan service bus relay-névtér létrehozása az Azure Portalról. Is létrehozhat, miközben [a hibrid kapcsolat létrehozása](../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection) az Azure Portalról.
 
 
 ## <a name="contact-us"></a>Kapcsolat
@@ -309,4 +309,4 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 Bármely lekérdezések vagy az IT Service Management-összekötő visszajelzésnek, írjon nekünk az [ omsitsmfeedback@microsoft.com ](mailto:omsitsmfeedback@microsoft.com).
 
 ## <a name="next-steps"></a>További lépések
-[ITSM-termékekkel/szolgáltatásokkal felvétele az IT Service Management-összekötő](log-analytics-itsmc-connections.md).
+[ITSM-termékekkel/szolgáltatásokkal felvétele az IT Service Management-összekötő](../azure-monitor/platform/itsmc-connections.md).

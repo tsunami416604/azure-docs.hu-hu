@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7430e57ceaec8a280c17f1276d503919a9703182
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7e648d6d3bd8d8ac14fb3f9723f4667c1cc33ac6
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228895"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620183"
 ---
 <a name="saas-application-technical-publishing-guide"></a>SaaS-alkalmazás műszaki közzétételi útmutató
 ===========================================
@@ -32,7 +32,7 @@ Más Marketplace-ajánlatok áttekintéséhez tekintse meg a [Marketplace közz�
 <a name="what-are-pre-requisites-for-publishing-a-saas-app"></a>Mik azok a SaaS-alkalmazás-közzététel Előfeltételek?
 -------------------------------------------------
 
-Közzétételi portál a portálon, amely lehetővé teszi több személy közösen dolgozzon fel az ajánlat közzétételi szerepköralapú hozzáférést biztosít. További információkért lásd: [felhasználók kezelése](./cloud-partner-portal-manage-users.md). 
+A [Cloud Partner Portalon](https://cloudpartner.azure.com) a portálon, amely lehetővé teszi több személy közösen dolgozzon fel az ajánlat közzétételi szerepköralapú hozzáférést biztosít. További információkért lásd: [felhasználók kezelése](./cloud-partner-portal-manage-users.md). 
 
 Mielőtt egy ajánlatot a kiadó nevében tehetők közzé fiókra, egyéni felhasználók számára az egyik *tulajdonosa* szerepkör szükséges ahhoz, hogy elfogadja a [használati feltételek](https://azure.microsoft.com/support/legal/website-terms-of-use/), [Microsoft PrivacyStatement](https://www.microsoft.com/privacystatement/default.aspx), és [a Microsoft Azure Certified ProgramAgreement](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
 
@@ -58,7 +58,7 @@ Az SaaS-alkalmazás az ajánlat az alábbi táblázatban ismertetett öt szakasz
 
 ### <a name="creating-a-new-offer"></a>Egy új ajánlat létrehozása
 
-Bejelentkezés után a Cloud Partner portálra, válassza ki a **új ajánlat** elemet a bal oldali menüsáv, és megjelenik egy menü elérhető ajánlatok. Az alábbi képen egy példa ezeket az ajánlatokat:
+A bejelentkezés után a [Cloud Partner Portalon](https://cloudpartner.azure.com), jelölje be a **új ajánlat** elemet a bal oldali menüsáv, és megjelenik egy menü elérhető ajánlatok. Az alábbi képen egy példa ezeket az ajánlatokat:
 
 ![Új SaaS-ajánlat](media/cpp-creating-saas-offers/saas-new-offer.png)
 
@@ -154,7 +154,7 @@ A következő táblázat ismerteti a Marketing mezőket:
 
 | **Az ajánlat mezők** | **Leírás**                                                                                                          |
 |------------------| ------------------------------------------------------------------------------------------------------------------------ |
-| Emblémát            | Ha Ön egy **értékesítheti Azure-on keresztül** SaaS-alkalmazás, adjon meg az összes embléma rendszerkép. Ha csak egy listát, mindössze 2 emblémák szükség. A Cloud Partner portálra feltöltött összes emblémát kell használnia az alábbi irányelveket:     <br/> -Tarthatja számát az elsődleges és másodlagos színt az embléma alacsony. Az Azure arculata egyszerű színpalettát használ.     <br/> -Kerülje a fekete, az embléma háttérszíne fehér. Az Azure Portal a témák színei fekete-fehér. Ehelyett használja az egyes szín, amely biztosítja, az embléma neves az Azure Portalon. Javasoljuk az egyszerű alapszínek használatát. Ha áttetsző háttérrel használ, akkor ügyeljen arra, hogy az embléma és a szöveg nem lesznek fekete, a fehér vagy a kék.     <br/> – Háttér átmenetének ne használja az embléma.     <br/> -Elkerüli a szöveg, még akkor is a vállalat vagy a márkanév, az embléma. Az embléma megjelenését és működését "egyszerű" kell lennie, és kerülje átmenetekhez.    <br/> – A emblémakép nem kell nyújtani.                   |
+| Emblémát            | Ha Ön egy **értékesítheti Azure-on keresztül** SaaS-alkalmazás, adjon meg az összes embléma rendszerkép. Ha csak egy listát, mindössze 2 emblémák szükség. A feltöltött összes emblémát a [Cloud Partner portálra](https://cloudpartner.azure.com) kell használnia az alábbi irányelveket:     <br/> -Tarthatja számát az elsődleges és másodlagos színt az embléma alacsony. Az Azure arculata egyszerű színpalettát használ.     <br/> -Kerülje a fekete, az embléma háttérszíne fehér. Az Azure Portal a témák színei fekete-fehér. Ehelyett használja az egyes szín, amely biztosítja, az embléma neves az Azure Portalon. Javasoljuk az egyszerű alapszínek használatát. Ha áttetsző háttérrel használ, akkor ügyeljen arra, hogy az embléma és a szöveg nem lesznek fekete, a fehér vagy a kék.     <br/> – Háttér átmenetének ne használja az embléma.     <br/> -Elkerüli a szöveg, még akkor is a vállalat vagy a márkanév, az embléma. Az embléma megjelenését és működését "egyszerű" kell lennie, és kerülje átmenetekhez.    <br/> – A emblémakép nem kell nyújtani.                   |
 | Videók           | Az Ön ajánlatát a videók hivatkozások hozzáadását teszi lehetővé. YouTube-on és/vagy Vimeo videók, az ügyfelek számára láthatók és az ajánlat mutató hivatkozásokat is használhatja. Emellett adja meg a 1280 x 720 képpont méretű png-kép a videó egy miniatűr képére kell. Legfeljebb négy videót ajánlat / rendelkezhet. |
 | Dokumentumok        | Marketing dokumentumok hozzáadása az ajánlat lehetővé teszi. Minden dokumentum PDF formátumban kell megadni, és legfeljebb három dokumentumok ajánlat rendelkezhet.                                                                                                                                                      |
 | Képernyőképek      | Az ajánlat pillanatképeiért hozzáadását teszi lehetővé. Nincs legfeljebb öt képernyőképek ajánlat / adható hozzá. A maximális képméret 1280 x 720 képpont.                                                                                                                                             |

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 14a33a6480cdb2dbc19b912d51eebda386c55d75
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: d291a46eaac0f5e4023d343f700448d029765098
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713163"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634880"
 ---
 # <a name="manage-workspaces"></a>Munkaterületek kezelése
 
@@ -52,7 +52,7 @@ Felhasználás szempontjából javasoljuk, hogy a lehető legkevesebb munkaterü
 * Felügyelt szolgáltatást kínál, és az egyes felügyelt ügyfelek naplóelemzési adatait külön kell tárolnia a többi ügyfél adataitól.
 * Több ügyfelet is kezel, és azt szeretné, hogy minden ügyfél / szervezeti egység / üzleti csoportok lássák a saját adatok, de nem más tagjaitól származó adatokat.
 
-Ha az adatgyűjtéshez Windows-ügynököket használ, [konfigurálhatja úgy az egyes ügynököket, hogy egy vagy több munkaterületnek küldjenek jelentést](log-analytics-agent-windows.md).
+Ha az adatgyűjtéshez Windows-ügynököket használ, [konfigurálhatja úgy az egyes ügynököket, hogy egy vagy több munkaterületnek küldjenek jelentést](../azure-monitor/platform/agent-windows.md).
 
 A System Center Operations Manager használata esetén az Operations Manager egyes felügyeleti csoportjai csak egy munkaterülethez csatlakoztathatók. Telepítheti a Microsoft Monitoring Agentet az Operations Manager által felügyelt számítógépekre, és beállíthatja az ügynököt úgy, hogy az Operations Managernek és egy másik Log Analytics-munkaterületnek is küldjön jelentést.
 
@@ -239,7 +239,7 @@ Az új adatforgalmi díjcsomag megjelenik az OMS-portál menüszalagján a webhe
 ![OMS menüszalag](./media/log-analytics-manage-access/data-plan-changed.png)
 
 ## <a name="next-steps"></a>További lépések
-* Lásd: [Log Analytics-ügynök – áttekintés](log-analytics-agent-overview.md) gyűjthet velük adatokat az adatközpontban vagy egyéb felhőalapú környezetben lévő számítógépekről.
+* Lásd: [Log Analytics-ügynök – áttekintés](../azure-monitor/platform/log-analytics-agent.md) gyűjthet velük adatokat az adatközpontban vagy egyéb felhőalapú környezetben lévő számítógépekről.
 * Az adatgyűjtés Azure-beli virtuális gépekről való konfigurálásáról lásd: [Adatgyűjtés Azure-beli virtuális gépekről](log-analytics-quick-collect-azurevm.md).  
 * A funkciók hozzáadásával és az adatgyűjtéssel kapcsolatban lásd: [Add Log Analytics solutions from the Solutions Gallery](../azure-monitor/insights/solutions.md) (Log Analytics-megoldások hozzáadása a megoldástárból).
 

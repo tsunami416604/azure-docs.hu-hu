@@ -12,15 +12,15 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.topic: article
-ms.date: 10/09/2018
+ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4362a6b936c52319f6f6fc625370733f3c84e361
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 74b2cea8e3adfb6689d4ac7049e7892f8f0ecf4a
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158856"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582632"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect-topológiák
 Ez a cikk ismerteti a különböző helyszíni és Azure Active Directory (Azure AD) topológiákat, amelyek az Azure AD Connect-szinkronizálást használ, a főbb integrációs megoldása. Ez a cikk is támogatott, és nem támogatott konfigurációkat tartalmaz.
@@ -84,7 +84,9 @@ További információk a [az alapértelmezett konfiguráció ismertetése](conce
 
 Egynél több Azure AD Connect szinkronizálási kiszolgáló csatlakozik egy Azure AD-bérlő nem támogatott. Kivételt jelentenek ez alól használatát egy [átmeneti kiszolgáló](#staging-server).
 
-### <a name="multiple-forests-separate-topologies"></a>Több erdő, külön topológiák
+Ebben a topológiában az alábbihoz, amely eltér **több szinkronizálási kiszolgálót** kapcsolódik, egyetlen Azure AD bérlő nem támogatott.
+
+### <a name="multiple-forests-single-sync-server-users-are-represented-in-only-one-directory"></a>Több erdő, egyetlen szinkronizálási kiszolgálóval, a felhasználók csak egy címtárban szerepelnek
 ![A felhasználók csak egyszer jelölő címtárak összességében lehetőség](./media/plan-connect-topologies/MultiForestUsersOnce.png)
 
 ![Több erdő, és külön topológiák ábrázolása](./media/plan-connect-topologies/MultiForestSeparateTopologies.png)

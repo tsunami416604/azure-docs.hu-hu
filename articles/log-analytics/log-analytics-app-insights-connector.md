@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 554159f0eb22f2aaa1e45e69de7741f8764be0b3
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 0e083668231d63a2bed669bc5d1a42a977d4b5e0
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711854"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635509"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights-összekötő felügyeleti megoldás (előzetes verzió)
 
@@ -44,7 +44,7 @@ Ellentétben a legtöbb más Log Analytics-megoldások adatok nem lesznek gyűjt
 
 | Összekapcsolt forrás | Támogatott | Leírás |
 | --- | --- | --- |
-| [Windows-ügynökök](log-analytics-agent-windows.md) | Nem | Windows-ügynököktől a megoldás nem gyűjt adatokat. |
+| [Windows-ügynökök](../azure-monitor/platform/agent-windows.md) | Nem | Windows-ügynököktől a megoldás nem gyűjt adatokat. |
 | [Linux-ügynökök](log-analytics-quick-collect-linux-computer.md) | Nem | A megoldás a Linux-ügynökök nem gyűjt adatokat. |
 | [Az SCOM felügyeleti csoport](log-analytics-om-agents.md) | Nem | A megoldás az ügynökök a csatlakoztatott SCOM felügyeleti csoport nem gyűjt adatokat. |
 | [Azure Storage-fiók](log-analytics-azure-storage.md) | Nem | A megoldás nem az Azure storage-ból nem gyűjteményadatokat. |

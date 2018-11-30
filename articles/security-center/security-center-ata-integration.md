@@ -3,7 +3,7 @@ title: Csatlakozás a Microsoft Advanced Threat Analytics az Azure Security Cent
 description: Ismerje meg, hogy az Azure Security Center hogyan integrálható a Microsoft Advanced Threat Analytics.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 5d80bf91-16c3-40b3-82fc-e0805e6708db
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/05/2018
-ms.author: yurid
-ms.openlocfilehash: 6129c83e33d046c2fc9ce1724a27efce5efdfa0e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/29/2018
+ms.author: rkarlin
+ms.openlocfilehash: bcd9b006c5451cb2d251cd5ff9e6ae5e0bd17f3c
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258799"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634013"
 ---
 # <a name="connecting-microsoft-advanced-threat-analytics-to-azure-security-center"></a>Csatlakozás a Microsoft Advanced Threat Analytics az Azure Security centerhez
 Ebből a dokumentumból megismerheti, hogy a Microsoft Advanced Threat Analytics és az Azure Security Center közötti integráció beállítása.
 
 ## <a name="why-add-advanced-threat-analytics-data"></a>Miért az Advanced Threat Analytics-adatok hozzáadása?
-[Advanced Threat Analytics (ATA)](https://docs.microsoft.com/advanced-threat-analytics/what-is-ata) egy helyszíni platform, amely segít a gyanús felhasználói viselkedés észlelését. Ha csatlakoztatva van, Ön megtekintheti a Security Center ATA által észlelt gyanús tevékenységeket. Ez az integráció lehetővé teszi a megtekintése, összehasonlítása és a hibrid felhőalapú számítási feladatokhoz, a Security Center összes biztonsági riasztások vizsgálata. 
+[Advanced Threat Analytics (ATA)](https://docs.microsoft.com/advanced-threat-analytics/what-is-ata) egy helyszíni platform, amely segít a gyanús felhasználói viselkedés észlelését. Ha csatlakoztatva van, Ön megtekintheti a Security Center ATA által észlelt gyanús tevékenységeket. Ez az integráció lehetővé teszi a megtekintése, összehasonlítása és a hibrid felhőalapú számítási feladatokhoz, a Security Center összes biztonsági riasztások vizsgálata.
 
 ## <a name="how-do-i-configure-this-integration"></a>Hogyan konfigurálhatom ezt az integrációt?
 Feltételezve, hogy már rendelkezik az ATA telepítve van, és megfelelően működik a helyszíni, kövesse az alábbi lépéseket az integráció konfigurálásához:
@@ -46,7 +46,7 @@ Feltételezve, hogy már rendelkezik az ATA telepítve van, és megfelelően mű
 8. A **Advanced Threat Analytics**, kattintson a **hozzáadása**.
 
     ![ATA](./media/security-center-ata-integration/security-center-ata-integration-fig3.png)
-    
+
 9. Ugrás az utolsó lépést, és kattintson a **letöltési ügynök**.
 
     ![ATA](./media/security-center-ata-integration/security-center-ata-integration-fig4.png)
@@ -62,13 +62,13 @@ Feltételezve, hogy már rendelkezik az ATA telepítve van, és megfelelően mű
 12. Ez az ügynök telepítése az ATA-központ. A telepítés során ügyeljen arra, hogy válassza a **az ügynök csatlakoztatása az Azure Log Analyticshez**, és adja meg a *munkaterület-Azonosítót*, és *elsődleges kulcs* igénylésekor.
 
 
-Miután a telepítés befejezéséhez, az integráció befejezése és új riasztásokat a Security Center az ATA által küldött látni fogja a **keresési** eredményt. A megoldás megjelenik a **biztonsági megoldások** lap **csatlakoztatott megoldások**. 
+Miután a telepítés befejezéséhez, az integráció befejezése és új riasztásokat a Security Center az ATA által küldött látni fogja a **keresési** eredményt. A megoldás megjelenik a **biztonsági megoldások** lap **csatlakoztatott megoldások**.
 
 ## <a name="next-steps"></a>További lépések
 Ebben a dokumentumban megismerkedhetett a Security Center a Microsoft ATA csatlakoztatása. A Security Centerrel kapcsolatos további információkért olvassa el a következő cikkeket:
 
 * [Az Azure Active Directory Identity Protection csatlakoztatása az Azure Security Centerhez](security-center-aadip-integration.md)
-* [Biztonsági szabályzatok beállítása az Azure Security Center](security-center-policies.md) – ismerje meg, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és -erőforráscsoportok.
+* [Biztonsági szabályzatok beállítása az Azure Security Center](security-center-azure-policy.md) – ismerje meg, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és -erőforráscsoportok.
 * [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md) – megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
 * [Biztonsági állapotmonitorozás az Azure Security Centerben](security-center-monitoring.md) – Útmutató az Azure-erőforrások állapotának monitorozásához.
 * [Kezelése és válaszadás a biztonsági riasztásokra az Azure Security Center](security-center-managing-and-responding-alerts.md) – ismerje meg, hogyan kezelése és válaszadás a biztonsági riasztásokra.
@@ -76,5 +76,3 @@ Ebben a dokumentumban megismerkedhetett a Security Center a Microsoft ATA csatla
 - [Az Azure Security Center által nyújtott adatbiztonság](security-center-data-security.md) – ismerje meg, hogy az adatokat, és hogyan gondoskodik a védelmükről a Security Centerben.
 * [Azure Security Center FAQ](security-center-faq.md) (Azure Security Center: Gyakran ismételt kérdések) – Válaszok a szolgáltatás használatára vonatkozó gyakori kérdésekre.
 * [Az Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – a legújabb Azure biztonsági hírek és információ.
-
-

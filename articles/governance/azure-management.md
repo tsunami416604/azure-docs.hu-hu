@@ -1,5 +1,5 @@
 ---
-title: Az Azure felügyeleti
+title: Az Azure Management áttekintése
 description: A felügyeleti területeket, az Azure-alkalmazások és erőforrások az Azure felügyeleti eszközökhöz a tartalmakra mutató hivatkozásokat áttekintése.
 author: DCtheGeek
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: governance
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.openlocfilehash: 268526277dc935ccffc30120f2bb170ad3ff3ef1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 180b0cb9f52858d9b0f079ea711fd5ccab738ecf
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978223"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582305"
 ---
 # <a name="management-in-azure"></a>Felügyelet az Azure-ban
 
@@ -43,7 +43,7 @@ Az Azure-ban az irányítás implementálásának feladatát nagyrészt két szo
 
 ## <a name="secure"></a>Biztonságos
 
-Az alkalmazások, erőforrások és adatok biztonságának beletartozik a fenyegetések értékelése, összegyűjtése és biztonsággal kapcsolatos adatok elemzése és annak biztosítása, hogy az alkalmazások és erőforrások kialakítása és konfigurációja biztonságos módon. A biztonsági monitorozással és a fenyegetések elemzésével az [Azure Security Center](../security-center/security-center-intro.md) foglalkozik, amely egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz. Az [Azure biztonsági megoldásait ismertető](../security/azure-security.md) témakör részletesen foglalkozik az Azure biztonsági kérdéseivel, és az Azure-erőforrások biztonságos konfigurálásához is útmutatást nyújt.
+Az alkalmazások, erőforrások és adatok biztonságának beletartozik a fenyegetések értékelése, összegyűjtése és biztonsággal kapcsolatos adatok elemzése és annak biztosítása, hogy az alkalmazások és erőforrások kialakítása és konfigurációja biztonságos módon. Azure Security Center, amely tartalmazza a egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet a hibrid felhőbeli számítási feladatokban által biztosított biztonsági figyelési és kockázati elemzések. Az [Azure biztonsági megoldásait ismertető](../security/azure-security.md) témakör részletesen foglalkozik az Azure biztonsági kérdéseivel, és az Azure-erőforrások biztonságos konfigurálásához is útmutatást nyújt.
 
 ## <a name="protect"></a>Védelem
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 06350d30999cb056babbd001f98a6c3a5fdbac6c
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: cfe2620801f743831f77fb76f344c156676966d3
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576994"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635067"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>API-k védelme az Azure Active Directory és az API Management az OAuth 2.0 használatával
 
@@ -100,8 +100,6 @@ Most, hogy a regisztráció két alkalmazásokat, amelyek az API-t és a fejlesz
 
 > [!NOTE]
 > Ha **Azure Active Directory** nem szerepel az engedélyek más alkalmazásoknak, jelölje be **Hozzáadás** hozzáadhatja a listából.
-> 
-> 
 
 ## <a name="enable-oauth-20-user-authorization-in-the-developer-console"></a>A fejlesztői konzolt az OAuth 2.0-s felhasználói hitelesítés engedélyezése
 
@@ -109,7 +107,7 @@ Ezen a ponton az alkalmazások már létrehozott Azure AD-ben, és megfelelő en
 
 Ebben a példában a fejlesztői konzolt az ügyfélalkalmazás. A következő lépések bemutatják, hogyan ahhoz, hogy a fejlesztői konzolt az OAuth 2.0 felhasználói hitelesítést. 
 
-1. Keresse meg az API Management-példány.
+1. Az Azure-portálon keresse meg az API Management-példány.
 
 2. Válassza ki **OAuth 2.0-s** > **hozzáadása**.
 
@@ -120,6 +118,9 @@ Ebben a példában a fejlesztői konzolt az ügyfélalkalmazás. A következő l
 5. A **engedélyezéstípusok**válassza **engedélyezési kód**.
 
 6. Adja meg a **engedélyezési végpont URL-címe** és **jogkivonat-végpont URL-címe**. Az értékek lekérésére az **végpontok** oldal az Azure AD-bérlőben. Keresse meg a **alkalmazásregisztrációk** lapon újra, és válassza ki **végpontok**.
+
+    >[!NOTE]
+    > Használja a **v1** itt végpontok
 
 7. Másolás a **OAuth 2.0 engedélyezési végpont**, és illessze be azt a **engedélyezési végpont URL-címe** szövegmezőben.
 
@@ -154,6 +155,9 @@ A következő lépés, hogy engedélyezze az OAuth 2.0 felhasználói hitelesít
 5. Kattintson a **Mentés** gombra.
 
 ## <a name="successfully-call-the-api-from-the-developer-portal"></a>Az API sikeresen meghívása a fejlesztői portálról
+
+> [!NOTE]
+> Ez a szakasz nem vonatkozik a **fogyasztás** szint, amely nem támogatja a fejlesztői portál.
 
 Most, hogy az OAuth 2.0-s felhasználói hitelesítés engedélyezve van a `Echo API`, a fejlesztői konzol egy hozzáférési jogkivonatot a felhasználó nevében beszerzi az API meghívása előtt.
 

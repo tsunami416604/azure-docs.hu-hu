@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4e7cc47bddf3663cbc1c8bb5c4470020a84073e4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 11a14bc8b593e5e7d81e9bdbd4ac4ee3b2bbecaa
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441651"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582887"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Az Azure Active Directory B2C: Dinamikus tartalom a felhasználói felület konfigurálása egyéni szabályzatok használatával
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C használatával egyéni házirendek (Azure AD B2C-vel) el lehet küldeni egy lekérdezési karakterlánc paramétert. A HTML-végpontra a paraméter átadásával dinamikusan módosíthatja az oldal tartalmát. Ha például a háttérkép, az Azure AD B2C-vel regisztrálási vagy bejelentkezési lapon, hogy adja át a webes vagy mobilalkalmazás paraméterérték alapján módosíthatja. 
+Azure Active Directory B2C használatával egyéni házirendek (Azure AD B2C-vel) el lehet küldeni egy lekérdezési karakterlánc paramétert. A paraméterek a HTML-végpontnak való átadásával dinamikusan változtathatja az oldal tartalmát. Például megváltoztathatja a háttérképet az Azure AD B2C regisztrációs vagy bejelentkezési oldalán egy olyan paraméter alapján, amelyet a web- vagy mobilalkalmazásából ad át. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk foglalkozik az Azure AD B2C felhasználói felület testreszabása a *dinamikus tartalom* egyéni szabályzatok használatával. Első lépésként lásd [egyéni házirendet a felhasználói felületének testreszabását](active-directory-b2c-ui-customization-custom.md). 
@@ -80,7 +80,7 @@ Ez az útmutató akkor:
 
     ![Webalkalmazás-sablon kiválasztása](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-create-project2.png)
 
-6. Válassza ki **OK** a projekt létrehozásához.
+6. A projekt létrehozásához válassza az **OK** lehetőséget.
 
 ## <a name="step-2-create-mvc-view"></a>2. lépés: Az MVC-nézet létrehozása
 ### <a name="step-21-download-the-b2c-built-in-html5-template"></a>2.1. lépés: A B2C beépített HTML5-sablon letöltése
@@ -178,7 +178,7 @@ Keresse meg a `<img>` elem, amely tartalmazza a `ID` érték *background_backgro
 
 3. Az a **CORS** ablakban, a a **engedélyezett eredetek** tegye a következők egyikét:
 
-    * Adja meg az URL-címe vagy URL-címek, amelyek számára engedélyezni a JavaScript-hívásokat.
+    * Adja meg az URL-címe vagy URL-címek, amelyek számára engedélyezni a JavaScript-hívásokat. Csak kisbetűk használata a beírt URL-címeket kell.
     * Adja meg a csillag (*) adja meg, hogy minden eredettartományból elfogadja a hívásokat.
 
 4. Kattintson a **Mentés** gombra.

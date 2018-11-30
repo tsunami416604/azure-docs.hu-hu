@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dadff0dc501c20ef525fdfb7578cb391f29b3302
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 56a36e61bb9938ceb7e3cdaf2676c24c037b1d16
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264330"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52585731"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS virtuális gépek és a felügyelt és nem felügyelt prémium szintű lemezek – gyakori kérdések
 
@@ -136,6 +136,10 @@ Nem, ha az új lemez jön létre, hogy a blob teljes önálló másolatát ekkor
 **Is átnevezek egy felügyelt vagy nem felügyelt lemez létrehozása után?**
 
 Felügyelt lemezek nem nevezhető át őket. Azonban nem felügyelt lemez is átnevezése, mindaddig, amíg azt nem jelenleg csatlakozik egy virtuális Merevlemezt vagy virtuális Gépet.
+
+**Használható az Azure-lemezek particionálása GBT?**
+
+GBT particionálás csak az adatlemezeket, nem az operációsrendszer-lemezek is használható. Operációsrendszer-lemezek a fő rendszertöltő rekord partíció stílusa kell használnia.
 
 ## <a name="standard-ssd-disks"></a>Standard SSD-lemez
 
@@ -300,7 +304,7 @@ A partíció típusa, amely az Azure támogatja az operációsrendszer-lemez a f
 
 **Mi az a legnagyobb lapblob méretét, amely támogatott?**
 
-A legnagyobb lapblob méretét, amely támogatja az Azure 8 Tib-ra (8,191 GiB). A maximális blog, amikor a virtuális Géphez csatolt adatok vagy operációsrendszer-lemezek mérete 4 Tib-ra (4095 GiB).
+A legnagyobb lapblob méretét, amely támogatja az Azure 8 Tib-ra (8,191 GiB). Maximális lapblob méretét, amikor a virtuális Géphez csatolt adatok vagy operációsrendszer-lemezek 4 Tib-ra (4095 GiB).
 
 **Kell létrehozása, csatlakoztatása, átméretezése és 1 TiB-nál nagyobb lemezek feltöltése az Azure-eszközök új verziójának használatával?**
 

@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/11/2018
 ms.author: robinsh
-ms.openlocfilehash: 2f690e6c930a1a119c9b7bf4b83ec04a564e47c9
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: ca99f9ac36281ecddf41bcc228440adcad90412b
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288747"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582428"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Mi az Azure Internet of Things (IoT)?
 
@@ -113,7 +113,7 @@ Nincsenek több IoT-hez kapcsolódó szolgáltatások az Azure-ban, és lehet ki
 
 5. [**IoT Edge**](/azure/iot-edge/): Ez a szolgáltatás az IoT hubra épül. Az IoT-eszközökön, nem pedig a felhőben lévő adatok elemzéséhez használható. A számítási feladat része az Edge-ben való váltással kevesebb üzenet kell kell küldeni a felhőben. 
 
-6. [**Az Azure digitális Twins**](/azure/azure-digital-twins/): Ez a szolgáltatás lehetővé teszi a fizikai környezet átfogó modelleket hozhat létre. A kapcsolatok és a személyek, szóközöket és eszközök közötti interakciókat modellezheti. Ha például tudja jelezni karbantartási Factory, egy elektromos rács követelményei valós idejű energia elemzéséhez, vagy optimalizálja az Office használatát, a rendelkezésre álló területet.
+6. [**Az Azure digitális Twins**](../digital-twins/index.yml): Ez a szolgáltatás lehetővé teszi a fizikai környezet átfogó modelleket hozhat létre. A kapcsolatok és a személyek, szóközöket és eszközök közötti interakciókat modellezheti. Ha például tudja jelezni karbantartási Factory, egy elektromos rács követelményei valós idejű energia elemzéséhez, vagy optimalizálja az Office használatát, a rendelkezésre álló területet.
 
 7. [**Time Series Insights**](/azure/time-series-insights): Ez a szolgáltatás lehetővé teszi tárolására, megjelenítését és nagy mennyiségű IoT-eszközök által generált idősorozat-adatok lekérdezése. Ezt a szolgáltatást is használhatja az IoT hubbal. 
 

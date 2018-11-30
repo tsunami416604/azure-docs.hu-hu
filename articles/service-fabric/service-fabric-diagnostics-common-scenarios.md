@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 35d1fa5f8963d007b1d8b59ccf0f1dec7abafa09
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 146ea6431516f7b78d23cd4b36aff43110639e83
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402234"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633095"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>A Service Fabric gyakori helyzetek diagnosztizálása
 
@@ -142,6 +142,6 @@ Ellenőrizze a Reliable-teljesítményszámlálók teljes listáját az alábbi 
 * [A mesterséges Intelligencia riasztásokat állíthat be](../application-insights/app-insights-alerts.md) szeretne értesítést kapni a teljesítmény vagy a használati változásai
 * [Intelligens detektálás az Application Insights](../application-insights/app-insights-proactive-diagnostics.md) hajtja végre a proaktív elemzésre a telemetriát küld a mesterséges Intelligencia figyelmezteti a felhasználót, mert ez teljesítményproblémákat okozhat
 * További információ a Log Analytics [riasztási](../log-analytics/log-analytics-alerts.md) , ezzel elősegítve az észlelési és a diagnosztikát.
-* A helyszíni fürtök esetén a Log Analytics-átjárót nyújt (http-továbbítás Proxy), amelyek segítségével adatokat küldeni a Log Analytics. Tudjon meg többet arról, hogy a [internetelérés nélküli számítógépek csatlakoztatása a Log Analytics használata a Log Analytics-átjáró](../log-analytics/log-analytics-oms-gateway.md)
+* A helyszíni fürtök esetén a Log Analytics-átjárót nyújt (http-továbbítás Proxy), amelyek segítségével adatokat küldeni a Log Analytics. Tudjon meg többet arról, hogy a [internetelérés nélküli számítógépek csatlakoztatása a Log Analytics használata a Log Analytics-átjáró](../azure-monitor/platform/gateway.md)
 * Ismerkedjen meg a [naplókeresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkciók a Log Analytics részeként érhető el
 * A Log Analytics és mit kínál részletes áttekintést, olvassa el [Mi az a Log Analytics?](../operations-management-suite/operations-management-suite-overview.md)

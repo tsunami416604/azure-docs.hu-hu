@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a803353b5dacaa56c181cdad0955191d547eb3c4
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 8e1c58f2d60ee95189fb583e032d8748fedb88d4
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092253"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620217"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Frissítések kezelése több gép esetén
 
@@ -50,7 +50,7 @@ Az Update Management a következő operációs rendszereken támogatott:
 
 A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.
 
-Ez a megoldás nem támogatja egy Log Analytics-ügynök Linux rendszerekre, amely több Azure Log Analytics-munkaterületnek való jelentésre van konfigurálva.
+Ez a megoldás nem támogatja a Log Analytics-ügynök Linux rendszerekre, amely több Azure Log Analytics-munkaterületnek való jelentésre van konfigurálva.
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Az Update Management engedélyezése az Azure-beli virtuális gépek
 
@@ -165,7 +165,7 @@ Az a **új frissítéstelepítés** panelen adja meg a következő információk
 Ha elkészült, az ütemezés konfigurálását, válassza ki a **létrehozás** gombra kattintva térjen vissza az állapot-irányítópultra. A **ütemezett** táblázat mutatja a központi telepítési ütemezés létrehozott.
 
 > [!NOTE]
-> Az Update Management támogatja az első gyártótól származó frissítések telepítéséhez, és előre a létesít a javítókészletek letöltése. Ehhez a rendszer a javítani a módosításokat, lásd: [első fél és előtti töltse le a támogatási](automation-update-management.md#firstparty-predownload) megtudhatja, hogyan lehet ezeket a beállításokat a rendszer.
+> Az Update Management a belső frissítések üzembe helyezését és a javítócsomagok előzetes letöltését támogatja. Ehhez a rendszer a javítani a módosításokat, lásd: [első fél és előtti töltse le a támogatási](automation-update-management.md#firstparty-predownload) megtudhatja, hogyan lehet ezeket a beállításokat a rendszer.
 
 ## <a name="view-results-of-an-update-deployment"></a>Frissítéstelepítés eredményeinek megtekintése
 

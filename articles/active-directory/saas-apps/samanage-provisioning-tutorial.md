@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2018
 ms.author: v-wingf-msft
-ms.openlocfilehash: e5a69fa2ee9a8c4baaeb6586627c7a9a3c9ba4a8
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 53b78231dba4f525410f53dc1ae60901c67f043d
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347953"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634506"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Samanage konfigurálása
 
@@ -141,7 +141,7 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
     ![Samanage kiépítése](./media/samanage-provisioning-tutorial/ProvisioningStatus.png)
 
-15. A felhasználók és/vagy a kívánt csoportok definiálása Samanage való kiépítéséhez válassza ki a kívánt értékeket a **hatókör** a a **beállítások** szakaszban.
+15. A felhasználók és/vagy a kívánt csoportok definiálása Samanage való kiépítéséhez válassza ki a kívánt értékeket a **hatókör** a a **beállítások** szakaszban. Kiválasztásakor az **minden felhasználó és csoport szinkronizálása** lehetőséget, vegye figyelembe a korlátozások leírtak szerint a **összekötő korlátozások** szakaszt.
 
     ![Samanage kiépítése](./media/samanage-provisioning-tutorial/ScopeSync.png)
 
@@ -153,6 +153,10 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 Ez a művelet elindítja a kezdeti szinkronizálás, az összes olyan felhasználó és/vagy meghatározott csoportoknak **hatókör** a a **beállítások** szakaszban. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amennyiben az Azure AD létesítési szolgáltatás fut-e több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységgel kapcsolatos jelentés, amely az Azure AD létesítési szolgáltatás a Samanage által végrehajtott összes műveletet ismerteti.
 
 Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
+
+## <a name="connector-limitations"></a>Összekötő-korlátozások
+
+* Ha a **minden felhasználó és csoport szinkronizálása** beállítást, és a egy alapértelmezett értéket van konfigurálva a Samanage **szerepkörök** attribútum, győződjön meg arról, hogy a kívánt értéket a **alapértelmezett érték null esetén (a nem kötelező)** mező a következő formátumban van kifejezve **{"displayName": "szerepkör"}** ahol szerepkör kívánt alapértelmezett értéke.
 
 ## <a name="additional-resources"></a>További források
 

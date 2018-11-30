@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 55bb7242427bf85d10fac0a44e2b2eac3a5181ad
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
-ms.translationtype: HT
+ms.openlocfilehash: 69ac91c0d4231064c1be5a6c3748b0480255d16d
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023000"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635866"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Rövid útmutató: Windows rendszerű számítógépek felvétele az Azure Security Centerbe
 Az Azure-előfizetései felvétele után a Microsoft Monitoring Agent kiépítésével engedélyezheti a Security Centert az Azure-on kívül, például a helyszínen vagy más felhőkben futó erőforrások számára.
@@ -75,7 +75,7 @@ Most telepíteni kell a letöltött fájlt a célszámítógépre.
 
 Ennek végeztével a **Microsoft Monitoring Agent** megjelenik a **Vezérlőpulton**. Áttekintheti a konfigurációt, és ellenőrizheti, hogy az ügynök megfelelően csatlakozik-e.
 
-Az ügynök telepítésével és konfigurálásával kapcsolatos további információkat tekintse meg a [Windows rendszerű számítógépek csatlakoztatását](../log-analytics/log-analytics-agent-windows.md#install-the-agent-using-setup-wizard) ismertető részt.
+Az ügynök telepítésével és konfigurálásával kapcsolatos további információkat tekintse meg a [Windows rendszerű számítógépek csatlakoztatását](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard) ismertető részt.
 
 Mostantól egy helyről felügyelheti az Azure-beli virtuális gépeket és a nem Azure-beli számítógépeket. A **Számítás** területen áttekintheti az összes virtuális gépet, számítógépet és javaslatot. Minden oszlop egy javaslatcsoportot képvisel. A szín a virtuális gép vagy számítógép aktuális biztonsági állapotát jelöli az adott javaslatra vonatkozóan. A Security Center emellett a biztonsági riasztásokban megjeleníti a számítógépekhez tartozó észleléseket is.
 

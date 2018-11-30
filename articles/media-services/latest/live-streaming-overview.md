@@ -1,6 +1,6 @@
 ---
 title: Az Azure Media Services segítségével élő Streamelés áttekintése |} A Microsoft Docs
-description: Ez a témakör nyújt áttekintést élő adatfolyam továbbítása az Azure Media Services v3 használatával.
+description: Ez a cikk nyújt áttekintést élő adatfolyam továbbítása az Azure Media Services v3 használatával.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,153 +11,123 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 11/26/2018
 ms.author: juliako
-ms.openlocfilehash: a4569505cb9a42f6682391a8b06725dea5e539dc
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 634563a2010562e20691abae132dc7540ef8faf2
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344977"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632704"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Élő Stream a az Azure Media Services v3
 
-Ha az Azure Media Services események élő adatfolyamainak továbbítása a következő összetevőket gyakran játszik szerepet:
+Az Azure Media Services lehetővé teszi, hogy az ügyfeleknek az Azure-felhőben lévő események élő közvetítésére. A Media Services élő események streamelése, a következőkre lesz szüksége:  
 
-* Egy kamera, amely az eseményt közvetíti.
-* Egy élő videókódoló, amely átalakítja a jeleket a kamerához (vagy egy másik eszköz, például a hordozható számítógépen) streameket, az élő Streamelési szolgáltatás küldött. A jeleket hirdetési SCTE – 35 és Ad-kötegek is tartalmazhat. 
-* A Media Services élő Streamelési szolgáltatás lehetővé teszi a betöltési, előzetes verzió, csomag, jegyezze fel, titkosítására, és a tartalom az ügyfelek részére, vagy egy CDN-re további terjesztés céljából.
+- Egy kamera, amely az élő esemény rögzítéséhez.
+- Egy élő videókódoló, amely a kamera (vagy egy másik eszközt, például egy laptop) jelek alakítja át, amelyet elküld a Media Services-hírcsatorna hozzájárulás. A közreműködői hírcsatorna hirdetési, például a SCTE – 35 jelölők kapcsolatos jelek is tartalmazhatnak.
+- A Media Services szolgáltatásban, amelyek lehetővé teszik, hogy, összetevők előzetes verzió, csomag, jegyezze fel, titkosítása és az élő esemény szórási, az ügyfelek számára, vagy egy CDN későbbi terjesztés.
 
-Ez a cikk részletes áttekintést nyújt, és fő összetevőit az élő adások online közvetítése a Media Services részt ábrákért tartalmazza.
+Ez a cikk részletes nyújt útmutatást, és diagramokat, a fő összetevőkről az élő adások online közvetítése a Media Services részt tartalmaz.
 
 ## <a name="overview-of-main-components"></a>Fő összetevőinek áttekintése
 
-A Media Services szolgáltatásban a [LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) események feladata a streamelt élő tartalmak feldolgozása. A videókhoz bemeneti végpontot biztosít (betöltési URL-címe), majd adja át a helyszíni élő kódoló. A videókhoz RTMP vagy Smooth Streaming formátumban az élő kódoló a bemeneti élő Streamek fogad, és lehetővé teszi egy vagy több keresztül [Streamvégpontok](https://docs.microsoft.com/rest/api/media/streamingendpoints). A [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) segítségével szabályozható a közzététel, rögzítése és DVR Időablakok beállításai az élő adatfolyam. A videókhoz is biztosít egy előzetes verziójú végpont (előzetes verzió URL-cím), amellyel és ellenőrzéséhez a stream előnézetének a feldolgozás folytatása és a továbbítás előtti. 
+A Media Services igény szerinti vagy élő adatfolyamot továbbítani kell rendelkeznie kell legalább egy [Streamvégpontok](https://docs.microsoft.com/rest/api/media/streamingendpoints). A Media Services-fiók létrehozásakor egy **alapértelmezett** Streamvégpontok bekerül a fiókhoz a **leállítva** állapota. Indítsa el a Streamvégpontok, ahonnan a felhasználóknak a tartalmak streamelésére kell. Használhatja az alapértelmezett **Streamvégpontok**, vagy hozzon létre egy másik testre szabott **Streamvégpontok** a szükséges konfiguráció és a CDN-beállításokkal. Ahhoz, hogy több Streamvégpontok, mindegyiknél célzó különböző CDN és a egy egyedi eszköznév megadása a tartalom továbbításának dönthet. 
 
-A Media Services modullal járulékos konfigurálás **dinamikus csomagolási**, amely lehetővé teszi, hogy előzetes verzió és a tartalom MPEG DASH, HLS, Smooth Streaming adatfolyam-továbbítási formátumokba anélkül manuálisan csomagolni ezekbe a streamformátumokba. Kísérletezhet vissza bármely HLS, DASH vagy Smooth kompatibilis lejátszók. Is [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) a stream kipróbálásához.
+A Media Services szolgáltatásban [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) feldolgozására és feldolgozása az élő videóközvetítési felelősek. Amikor létrehoz egy videókhoz, egy bemeneti végpont jön létre, használhatja élő jelet küld a távoli kódoló. A távoli az élő kódoló küld a hozzájárulás hírcsatorna, amelyek bemeneti végpont használatával vagy a [RTMP](https://en.wikipedia.org/wiki/Real-Time_Messaging_Protocol) vagy [Smooth Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming#Microsoft_Smooth_Streaming) (töredékes-MP4) protokollt.  
 
-A Media Services lehetővé teszi, hogy a tartalom, dinamikusan titkosítja (**a dinamikus titkosítás**) Advanced Encryption Standard (AES-128) vagy a három fő digitális jogkezelési (technológia DRM) felügyeleti rendszerek bármelyike: a Microsoft PlayReady, A Google Widevine, és az Apple fairplay által. Media Services is biztosít a modult az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licenceket az arra jogosult ügyfelek.
+Miután a **videókhoz** fogadása a csatorna közreműködői elindul, használhatja az előzetes verziójú végpont (előzetes verzió URL-cím és ellenőrzéséhez, hogy azért küldtük Önnek, az élő stream további közzététel előtt. Miután ellenőrizte, hogy az előzetes verzió adatfolyam jó, használhatja a videókhoz elérhetővé tenni az élő stream a kézbesítési egy vagy több (előre létrehozott) keresztül **Streamvégpontok**. Ennek érdekében a, hozzon létre egy új [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) a a **videókhoz**. 
 
-Igény szerint is alkalmazhat **dinamikus szűrés**, amely nyomon követi, formátumát, bitsebességre való átkódolása, a játékosok megismerése által küldött meg, hány használható. A Media Services-beillesztését is támogatja.
+A **LiveOutput** objektum olyan, mintha egy felvevő, amely a tényleges és jegyezze fel az élő stream a Media Services-fiók egy adategységbe. A fiók csatlakozik a tárolóba, az eszköz erőforrás által meghatározott Azure Storage-fiókba felvett tartalmát maradnak.  A **LiveOuput** is lehetővé teszi, hogy szabályozza a kimenő élő streamet, például az archív felvétel (például a felhőalapú DVR-Funkciókkal kapacitásának) mennyi az adatfolyam maradjanak néhány tulajdonságát. Az archívum a lemezen egy kör alakú archive "időszak", amely csak a megadott tartalom mennyisége tárolja a **archiveWindowLength** tulajdonságát a **LiveOutput**. Ebben az ablakban kívülre eső tartalom automatikusan törlődik a storage-tárolóból, és nem állítható helyre. Létrehozhat több LiveOutputs (legfeljebb három maximális) egy másik archiválási hosszúságok és beállításokkal videókhoz.  
 
-### <a name="new-live-encoding-improvements"></a>Új, élő kódolási fejlesztései
+A Media Services használatával igénybe veheti **dinamikus csomagolási**, amely lehetővé teszi az élő adatstreameket és előzetes verzió [MPEG DASH, HLS és Smooth Streaming formátumban](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) hírcsatorna a hozzájárulását a hogy küldjön a szolgáltatásnak. A nézők vissza az élő stream továbbítása bármely HLS, DASH vagy Smooth Streaming kompatibilis lejátszók játszhatja le. Használhat [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) a web- vagy mobilalkalmazásokat, hogy a stream bármelyik ezeket a protokollokat.
 
-A következő új fejlesztéseket elkészült, a legújabb kiadásban.
+A Media Services lehetővé teszi, hogy a tartalom, dinamikusan titkosítja (**a dinamikus titkosítás**) Advanced Encryption Standard (AES-128) vagy a három fő digitális jogkezelési (technológia DRM) felügyeleti rendszerek bármelyike: a Microsoft PlayReady, A Google Widevine, és az Apple fairplay által. A Media Services az AES-kulcsok és a DRM-licencek kézbesítéséhez az arra jogosult ügyfelek szolgáltatást is nyújt. A Media Services a tartalom titkosítása a további információkért lásd: [védelme tartalom áttekintése](content-protection-overview.md)
 
-- Új közel valós idejű módban. További információkért lásd: [késés](#latency).
+Igény szerint is alkalmazhatók a dinamikus szűrés, amely nyomon követi, formátum, bitsebességre való átkódolása és bemutató idő windows a játékosok megismerése által küldött száma használható. 
+
+### <a name="new-capabilities-for-live-streaming-in-v3"></a>Az élő streameléshez v3 az új képességek
+
+A a v3 API-k a Media Services előnyökkel jár a következő új funkciók:
+
+- Új közel valós idejű módban. További információkért lásd: [késés](live-event-latency.md).
 - Továbbfejlesztett RMTP-támogatása (fokozott stabilitás és további forráskód kódoló).
-- Biztonságos RTMPS betöltését.
-
-    Amikor létrehoz egy videókhoz, 4 kap betöltési URL-címeket. A 4 betöltési URL-címek olyan majdnem teljesen megegyezik, rendelkezik a azonos streamelési token (alkalmazásazonosító), csak a port száma rész nem egyezik. Az URL-címek kettő elsődleges és tartalék RTMPS számára.   
-- 24 órás átkódolása támogatása. 
-- Továbbfejlesztett támogatást ad jelzés RTMP SCTE35 keresztül.
+- Biztonságos RTMPS betöltését.<br/>Amikor létrehoz egy videókhoz, 4 kap betöltési URL-címeket. A 4 betöltési URL-címek olyan majdnem teljesen megegyezik, rendelkezik a azonos streamelési token (alkalmazásazonosító), csak a port száma rész nem egyezik. Az URL-címek kettő elsődleges és tartalék RTMPS számára.   
+- Akár 24 órát hosszú egy kimeneti adatfolyamba, amely rendelkezik több bitsebességre való átkódolása hírcsatornaelem átkódolása egyféle sávszélességű hozzájárulás a Media Services segítségével élő eseményeket streamelheti. 
 
 ## <a name="liveevent-types"></a>Videókhoz típusok
 
-A [videókhoz](https://docs.microsoft.com/rest/api/media/liveevents) két típus egyike lehet: valós idejű kódolás és a csatlakoztatott. 
-
-### <a name="live-encoding-with-media-services"></a>Valós idejű kódolás a Media Services használatával
-
-![Live encoding](./media/live-streaming/live-encoding.png)
-
-A helyszíni élő kódoló egy egyféle sávszélességű adatfolyamot küld a videókhoz, amelyen engedélyezve van a valós idejű kódolás a Media Services a következő protokoll: RTMP vagy Smooth Streaming (darabolt MP4). Majd elvégzi a videókhoz, valós idejű kódolás a bejövő egyfajta sávszélességű adatfolyamot többféle sávszélességű (adaptív) video-adatfolyamot. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
-
-Az ilyen típusú videókhoz létrehozásakor adja meg a **alapszintű** (LiveEventEncodingType.Basic).
+A [videókhoz](https://docs.microsoft.com/rest/api/media/liveevents) két típus egyike lehet: csatlakoztatott mind az élő kódolás. 
 
 ### <a name="pass-through"></a>Továbbítás
 
 ![az átmenő](./media/live-streaming/pass-through.png)
 
-Az átmenő hosszú ideig futó élő Streamek vagy 24 x 7 lineáris valós idejű kódolás helyszíni élő kódoló használatával van optimalizálva. A helyszíni kódolót küld többszörös átviteli sebességű **RTMP** vagy **Smooth Streaming** (töredékes MP4), amely konfigurálva van a videókhoz való **átmenő** kézbesítési. A **átmenő** kézbesítési akkor, ha a feldolgozott adatfolyamok haladnak keresztül **videókhoz**s további feldolgozás nélkül. 
+A csatlakoztatott videókhoz használatakor támaszkodik a helyszíni élő kódoló készítése több sávszélességű video-adatfolyamot, és küldhet, hogy a hozzájárulását, hírcsatorna a videókhoz (protokollal RTMP vagy töredékes MP4). A videókhoz majd sorozatéhoz keresztül a bejövő video-adatfolyamok további feldolgozás nélkül. Ilyen egy csatlakoztatott videókhoz optimalizált hosszú ideig futó élő eseményeket vagy 24 x 365 lineáris élő adatfolyam. Az ilyen típusú videókhoz létrehozásakor adja meg a None (LiveEventEncodingType.None).
 
-Átmenő LiveEvents 4K megoldási is támogatja, és HEVC halad keresztül való együttes Smooth Streaming betöltési protokollt. 
-
-Az ilyen típusú videókhoz létrehozásakor adja meg a **None** (LiveEventEncodingType.None).
+Elküldheti a hozzájárulás hírcsatorna felbontás akár 4 K, illetve a keret 60 aránya keretek/másodperc H.264/AVC vagy H.265/HEVC videokodekek és AAC (AAC-LC, HE-AACv1 vagy HE-AACv2) hang kodek.  Tekintse meg a [videókhoz-típusok összehasonlítása és korlátozások](live-event-types-comparison.md) további részleteivel.
 
 > [!NOTE]
 > Valamely áteresztő módszer használata a leggazdaságosabb megoldás, ha hosszú időn át több eseményt is közvetít élő adatfolyamként, és már befektetett helyszíni kódolókba. További információt a [díjszabás](https://azure.microsoft.com/pricing/details/media-services/) nyújt.
 > 
 
-## <a name="liveevent-types-comparison"></a>Videókhoz típusok összehasonlítása 
+Egy élő példa a [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
 
-Az alábbi táblázat a videókhoz kétféle funkcióit hasonlítja össze.
+### <a name="live-encoding"></a>Live Encoding  
 
-| Szolgáltatás | Az átmenő videókhoz | Standard videókhoz |
-| --- | --- | --- |
-| Egyféle sávszélességű bemeneti bitsebességekre a felhőben van kódolva. |Nem |Igen |
-| Maximális felbontás, a rétegek száma |4Kp30  |720p, 6 rétegek 30 képkocka/s |
-| A bemeneti protokollok |RTMP, Smooth Streaming |RTMP, Smooth Streaming |
-| Ár |Tekintse meg a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/media-services/) , majd kattintson a "Élő videó" lap |Tekintse meg a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/media-services/) |
-| Maximálisan engedélyezett futási idő |A hét minden napján, 24 órában elérhető |A hét minden napján, 24 órában elérhető |
-| Befutók beillesztésének támogatását |Nem |Igen |
-| API-n keresztül jelzés ad támogatása|Nem |Igen |
-| Ad-n keresztül SCTE35 inband jelzés támogatása|Igen |Igen |
-| Az átmenő CEA 608/708 feliratok |Igen |Igen |
-| Lehetővé teszi a csatorna közreműködői rövid leállások helyreállítása |Igen |Nem (videókhoz elkezdi slating másodperc 6 + bemeneti adatok nélkül)|
-| Nem egységes bemeneti GOPs támogatása |Igen |Nem – bemeneti ki kell javítani. 2 – mp GOPs |
-| Változó keret arány bevitel támogatása |Igen |Nem – bemeneti képkockasebessége kell rögzíteni.<br/>Kisebb módosításokat kívánalmakhoz, például magas mozgásban lévő adatoknak egyaránt jelenetek során. De kódoló nem dobható el, a 10 képkockák másodpercenkénti száma. |
-| Automatikus – gyors, amikor a bevitel videókhoz hírcsatorna elvész. |Nem |Ha nem fut LiveOutput 12 óra elteltével |
+![Live encoding](./media/live-streaming/live-encoding.png)
 
-## <a name="liveevent-states"></a>Videókhoz állapotok 
+Valós idejű kódolás a Media Services használatakor állíthatók be a helyszíni élő kódoló egy egyféle sávszélességű videó elküldeni a hozzájárulás hírcsatorna a videókhoz (RTMP vagy Fragmented-Mp4 protokoll használatával). A videókhoz kódol, hogy a bejövő egyféle sávszélességű adatfolyamot a egy [több sávszélességű video-adatfolyamot](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), elérhetővé tesz a kézbesítési lejátszására protokollok, mint például az MPEG-DASH, HLS és Smooth Streaming-eszközöket. Az ilyen típusú videókhoz létrehozásakor adja meg a kódolási típusként **alapszintű** (LiveEventEncodingType.Basic).
 
-A videókhoz aktuális állapotát. A lehetséges értékek:
+A hírcsatorna legfeljebb 30 képkocka/másodperc, a videó kodek H.264/AVC és AAC keret válthatnak 1080 képpont felbontású hozzájárulás küldése (AAC-LC, HE-AACv1 vagy HE-AACv2) hang kodek. Tekintse meg a [videókhoz-típusok összehasonlítása és korlátozások](live-event-types-comparison.md) további részleteivel.
 
-|Állapot|Leírás|
-|---|---|
-|**Leállítva**| Ez a videókhoz kezdeti állapotát a létrehozása után (kivéve, ha az autostart kiválasztott meg.) Ebben az állapotban nem számlázási akkor fordul elő. Ebben az állapotban a videókhoz tulajdonságai frissíthetők, de a streamelés nem engedélyezett.|
-|**Indítása**| A videókhoz indítása folyamatban van. Ebben az állapotban nem számlázási akkor fordul elő. Ebben az állapotban sem a frissítés, sem a streamelés nem engedélyezett. Ha hiba történik, a videókhoz leállított állapotra adja vissza.|
-|**Fut**| A videókhoz élő Streamek feldolgozására alkalmas állapotban. Azt a használat számlázási most már van. A videókhoz további számlázás elkerülése érdekében le kell állítania.|
-|**Leállítása**| A videókhoz leállítás alatt van. Nincs számlázási ez átmeneti állapot történik. Ebben az állapotban sem a frissítés, sem a streamelés nem engedélyezett.|
-|**Törlése**| A videókhoz törlése folyamatban van. Nincs számlázási ez átmeneti állapot történik. Ebben az állapotban sem a frissítés, sem a streamelés nem engedélyezett.|
+## <a name="liveevent-types-comparison"></a>Videókhoz típusok összehasonlítása
+
+A következő cikkben egy táblát tartalmaz, amely összehasonlítja a két videókhoz típusú szolgáltatások: [összehasonlító](live-event-types-comparison.md).
 
 ## <a name="liveoutput"></a>LiveOutput
 
-A [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) segítségével szabályozható a közzététel, rögzítése és DVR Időablakok beállításai az élő adatfolyam. A videókhoz és LiveOutput kapcsolat hasonlít a hagyományos televíziózáshoz, ahol egy csatornát (videókhoz) tartalmaz egy állandó stream a tartalom és (LiveOutput) programot az adott videókhoz néhány időzített esemény hatókörét.
-Megadhatja, hogy meg szeretné őrizni a felvett tartalmát a LiveOutput vonatkozó beállításával órák számát az **ArchiveWindowLength** tulajdonság. **ArchiveWindowLength** egy ISO 8601 timespan időtartama, az archiválási időszak hossza (digitális videót Recorder vagy DVR). Ez az érték 5 perc és 25 óra közötti lehet. 
+A [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) lehetővé teszi, hogy szabályozza a kimenő élő streamet, mekkora az adatfolyam rögzíti (például a kapacitás a felhőbeli DVR), és -e a nézők megkezdheti a élő streamet például tulajdonságait. Közötti kapcsolat egy **videókhoz** és a hozzá tartozó **LiveOutput**s kapcsolat hasonlít a hagyományos televíziós adás, amelynek során egy csatornát (**videókhoz**) egy videó és a egy felvételt állandó adatfolyam jelöli (**LiveOutput**) egy adott időpont szegmens (például esténként hírek a 18:30:00, 7:00 és 18) hatókörét. Rögzítheti a televízió digitális videót rögzítő (DVR) használatával – az egyenértékű LiveEvents szolgáltatással kezelt ArchiveWindowLength tulajdonságon keresztül. Egy ISO-8601 timespan időtartam (például PTHH:MM:SS), amely meghatározza a DVR kapacitását, és legfeljebb 25 óra legalább 3 percig állítható be.
 
-**ArchiveWindowLength** is engedélyezi az ügyfelek maximális számát is kérhet időbeli az aktuális élő pozíciótól futtassanak. LiveOutputs futtathatja a megadott időn keresztül, de az időszak hossza mögé helyezett tartalmat a rendszer folyamatosan elveti. Ez a tulajdonság azt is meghatározza, mennyi az ügyfél jegyzékfájljai.
 
-Minden egyes LiveOutput társítva van egy [eszköz](https://docs.microsoft.com/rest/api/media/assets), és a egy tárolóba, a Media Services-fiókhoz csatolva az Azure Storage-adatait rögzíti. A LiveOutput közzétételéhez létre kell hoznia egy [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) a társított objektumhoz. Ez a lokátor teszi lehetővé az ügyfeleknek megadható streamelő URL-cím összeállítását.
+> [!NOTE]
+> **LiveOutput**s létrehozás indítása és leállítása, ha törli. Ha töröl a **LiveOutput**, nem törli az alapul szolgáló **eszköz** és a tartalom az eszközben.  
 
-A videókhoz legfeljebb három egyidejűleg zajló LiveOutputs támogatja, így egy bejövő streamből több archívumot is létrehozhat. Ez lehetővé teszi az események különféle részeinek szükség szerinti közzétételét és archiválását. Például az üzleti igény szerint a közvetítést élő lineáris hírcsatorna 24 x 7, de szeretne létrehozni az ügyfeleknek kínált igény szerinti tartalom utólagos megtekintésre a nap folyamán programok "felvételek".  Ebben a forgatókönyvben, először hozzon létre egy elsődleges LiveOutput egy rövid archiválási ablak 1 óra vagy kevesebb, az ügyfelek számára az elsődleges élő adatfolyamként történő tökéletesítéséhez. Hozzon létre egy StreamingLocator ez LiveOutput kívánja, majd közzéteszi az alkalmazás vagy webhely, a "Live" hírcsatorna.  Mivel a hírcsatorna fut, programozott módon létrehozhat egy második egyidejű LiveOutput elején show (vagy biztosít néhány leírók 5 perccel később az azokat.) A második LiveOutput 5 perc után a program vagy az esemény véget ér állítható le, és ezt követően létrehozhat egy új StreamingLocator közzétenni ezt a programot az alkalmazáskatalógusban igény szerinti eszközként.  Megismételheti ezt a folyamatot többször is feldolgozza a más program határok vagy emeli ki, hogy azonnali, igény szerinti megosztani kívánt, miközben a "Live", az első LiveOutput hírcsatorna továbbra is a lineáris hírcsatorna szórási.  Ezenkívül a dinamikus szűrő támogatás vághatja a fő- és tail az archívum a LiveOutput, amely a "átfedés safety" bevezetni, a programok között, és a egy pontosabb elejéről és végéről, a tartalom eléréséhez is igénybe vehet. Archivált tartalmat is küldheti el egy [átalakítása](https://docs.microsoft.com/rest/api/media/transforms) és pontos részklipkészítés keret több kimeneti formátumba, más szolgáltatások szindikálási használható.
+További információkért lásd: [a felhőalapú DVR-Funkciókkal](live-event-cloud-dvr.md).
 
 ## <a name="streamingendpoint"></a>Streamvégpontok
 
-Ha elvégezte a stream és a LiveEvent összekapcsolását, elindíthatja a streamelési eseményt. Ehhez létre kell hoznia egy adategységet, egy LiveOutputot és egy StreamingLocatort. Ezzel archiválja a streamet, és tegye elérhetővé a nézők keresztül a [Streamvégpontok](https://docs.microsoft.com/rest/api/media/streamingendpoints).
+Miután a tárfiókba kerülnek adatfolyam a **videókhoz**, megkezdheti a streamelési eseményt hoz létre egy **eszköz**, **LiveOutput**, és **StreamingLocator** . Ezzel archiválja a streamet, és tegye elérhetővé a nézők keresztül a [Streamvégpontok](https://docs.microsoft.com/rest/api/media/streamingendpoints).
 
 A Media Services-fiók létrehozásakor egy alapértelmezett streamvégpontot a fiókhoz leállítva állapotban van hozzáadva. A tartalom streamelésének megkezdéséhez, és a dinamikus csomagolás és a dinamikus titkosítás kihasználásához, a tartalomstreameléshez használt streamvégpont, ahonnan tartalomstreameléshez rendelkezik, a futó állapotot.
 
+## <a name="a-idbilling-liveevent-states-and-billing"></a><a id="billing" />Videókhoz állapotok és számlázás
+
+A videókhoz kezdődik a számlázás, amint állapotában átkerül **futó**. Le szeretné állítani a számlázás a videókhoz, akkor állítsa le a videókhoz.
+
+Részletes információkért lásd: [állapotok és számlázási](live-event-states-billing.md).
+
 ## <a name="latency"></a>Késés
 
-Ez a szakasz ismerteti a tipikus eredményeket fog látni, a közel valós idejű beállításai és a számos lejátszó használata esetén. Az eredmények függ a CDN és a hálózati késést.
+LiveEvents késéssel kapcsolatos részletes információkért lásd: [késés](live-event-latency.md).
 
-Az új LowLatency funkció használatához állítsa a **StreamOptionsFlag** való **LowLatency** a a videókhoz. A stream működik-e, ha a [Azure Media Player](http://ampdemo.azureedge.net/) (és) bemutató lapon, és módosítsa a lejátszási a használatához a "alacsony késés a heurisztika profil".
+## <a name="live-streaming-workflow"></a>Élő adatfolyam-továbbítási munkafolyamat
 
-### <a name="pass-through-liveevents"></a>Az átmenő LiveEvents
+Az egy élő adatfolyam-továbbítási munkafolyamat lépései a következők:
 
-||2S Képcsoporttal kis késés, engedélyezve van|1s Képcsoporttal kis késés, engedélyezve van|
-|---|---|---|
-|VONAL-és a|10 egység|8S|
-|A natív iOS-lejátszó HLS|14s|10 egység|
-|HLS. A Mixer Player JS|30S|16s|
+1. Hozzon létre egy videókhoz.
+2. Hozzon létre egy új eszköz objektumot.
+3. Hozzon létre egy LiveOutput és az Ön által létrehozott objektum nevét.
+4. Hozzon létre egy adatfolyam-szabályzat és a tartalom kulcsot, ha a tartalmak DRM szeretne.
+5. Ha nem használ DRM, egy Streamelési lokátor létrehozása a beépített, adatfolyam szabályzattípusok.
+6. Az elérési utat a Streamelési házirend visszatéréshez használandó URL-címek (ezek a determinisztikus).
+7. A folyamatos átviteli végponton, az adatfolyam kívánt gazdanevének beszerzése. 
+8. Az URL-címet, a 6. lépés kombinálva a a teljes URL-Címének lekéréséhez 7. lépésben az állomásnevet.
 
-## <a name="billing"></a>Számlázás
-
-A videókhoz kezdődik, számlázási, amint állapotában "Fut" értékre vált. Le szeretné állítani a számlázás a videókhoz, akkor állítsa le a videókhoz.
-
-> [!NOTE]
-> Amikor **LiveEventEncodingType** a a [videókhoz](https://docs.microsoft.com/rest/api/media/liveevents) van beállítva a Basic, a Media Services fog automatikus gyors bármely videókhoz, amelyek továbbra is a "Fut" állapotban van 12 óra után a bemeneti hírcsatorna elvész, és nincsenek nem LiveOutputs futtatását. Azonban továbbra is díjköteles alkalommal a "Fut" állapotban volt a videókhoz.
->
-
-Az alábbi táblázat bemutatja, hogyan videókhoz állapotok leképezése a számlázási mód.
-
-| Videókhoz állapota | Ennyi az egész számlázás? |
-| --- | --- |
-| Indítás |Nem (átmeneti állapot) |
-| Fut |IGEN |
-| Leállítás |Nem (átmeneti állapot) |
-| Leállítva |Nem |
+További információkért lásd: egy [élő streamelési oktatóanyag](stream-live-tutorial-with-api.md) , amely alapján a [élő .NET Core](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live) minta.
 
 ## <a name="next-steps"></a>További lépések
 
-[Élő adatfolyam-továbbítási oktatóanyag](stream-live-tutorial-with-api.md)
+- [Videókhoz típusok összehasonlítása](live-event-types-comparison.md)
+- [Állapotok és számlázás](live-event-states-billing.md)
+- [Késés](live-event-latency.md)

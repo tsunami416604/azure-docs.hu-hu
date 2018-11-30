@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: fa872c184429e69eb46fb4da112c08ee9432f1c4
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 256f36ac56126fc76561a6dbe4281ac4975df6e4
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913988"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632789"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Gyakori kérdések és ismert problémái az Azure-erőforrások felügyelt identitásokból
 
@@ -43,18 +43,33 @@ Nem, felügyelt identitások, az Azure-erőforrások még nem integrált az adal
 
 Az identitás a biztonsági határokat, hogy az erőforrás, amelyhez csatlakoztatva van. A biztonsági határt, a virtuális gép felügyelt identitások Azure-erőforrások számára például engedélyezve van, a virtuális gép. A virtuális gépen futó kód is képes végpont és a kérés tokenek hívja a felügyelt identitások az Azure-erőforrásokhoz. A hasonló élményt más erőforrások, amelyek támogatják a felügyelt identitások az Azure-erőforrásokhoz.
 
+### <a name="what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request"></a>Milyen identitás lesz IMDS alapértelmezett, ha nem adja meg a identitását a kérés?
+
+- Ha engedélyezve van a rendszerhez rendelt identitáshoz felügyelt és nem identitás van megadva a kérelemben, IMDS alapértelmezés szerint a rendszer hozzárendelt felügyelt identitás.
+- Ha a rendszer által hozzárendelt felügyelt identitás nem érhető el, és csak egyetlen felhasználóhoz hozzárendelt felügyelt identitás létezik, IMDS, hogy egyetlen felhasználóhoz hozzárendelt felügyelt identitás alapértelmezés szerint. 
+- Ha nincs engedélyezve a rendszerhez rendelt identitáshoz felügyelt, és több felhasználó által a felügyelt identitásokból hozzárendelt létezik, majd megadja a kérelem egy felügyelt identitás szükség.
+
 ### <a name="should-i-use-the-managed-identities-for-azure-resources-vm-imds-endpoint-or-the-vm-extension-endpoint"></a>Az Azure-erőforrások virtuális gép IMDS endpoint vagy a Virtuálisgép-bővítmény végpont kell használnom a felügyelt identitásokból?
 
 Ha felügyelt identitások használatával az Azure-erőforrások virtuális gépekkel, javasoljuk a felügyelt identitások használatával Azure-erőforrások IMDS végpont. Az Azure Instance Metadata szolgáltatás REST-végpont elérhető-e az Azure Resource Manageren keresztül létrehozott IaaS virtuális gépekre. Felügyelt identitások használatával az Azure-erőforrások keresztül IMDS előnyei a következők:
-
-1. Az összes támogatott Azure IaaS operációs rendszer IMDS keresztül felügyelt identitások használható Azure-erőforrások. 
-2. Már nem kell telepítenie egy bővítmény engedélyezése a felügyelt identitások az Azure-erőforrások a virtuális gépen. 
-3. Az Azure-erőforrások felügyelt identitások által használt tanúsítványok már nem találhatók a virtuális gépen. 
-4. IMDS végpont egy jól ismert nem átirányítható IP-címet, csak érhetőek el a virtuális gép. 
+    - Az összes támogatott Azure IaaS operációs rendszer IMDS keresztül felügyelt identitások használható Azure-erőforrások.
+    - Már nem kell telepítenie egy bővítmény engedélyezése a felügyelt identitások az Azure-erőforrások a virtuális gépen. 
+    - Az Azure-erőforrások felügyelt identitások által használt tanúsítványok már nem találhatók a virtuális gépen.
+    - IMDS végpont egy jól ismert nem átirányítható IP-címet, csak érhetőek el a virtuális gép.
 
 A felügyelt identitásokból Virtuálisgép-bővítmény továbbra is érhető el még ma; használható az Azure-erőforrások azonban előrefelé lesznek érvényben a IMDS végpont használatával. A felügyelt identitások Azure-erőforrások Virtuálisgép-bővítmény a január 2019 elavulttá válik. 
 
 Az Azure Instance Metadata szolgáltatás további információkért lásd: [IMDS dokumentációja](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+
+### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>Felügyelt identitások létrejönnek, automatikusan, ha egy előfizetés áthelyezem egy másik címtárral?
+
+Nem. Ha egy előfizetést másik könyvtárba helyezi át, akkor manuálisan hozza létre őket ismét, és biztosítson számára újra Azure RBAC szerepkör-hozzárendeléseket.
+    - A rendszer adott felügyelt identitások: letiltását és újraengedélyezését.
+    - Felhasználói rendelt felügyelt identitások: törölje, hozza létre újból, és újra csatolja őket a szükséges erőforrásokat (pl. virtuális gépek)
+
+### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>Egy felügyelt identitás használata egy másik címtár bérlőben lévő erőforrások eléréséhez?
+
+Nem. Felügyelt identitások jelenleg nem támogatja cross-directory-forgatókönyvet. 
 
 ### <a name="what-are-the-supported-linux-distributions"></a>Mik azok a támogatott Linux-disztribúciók?
 

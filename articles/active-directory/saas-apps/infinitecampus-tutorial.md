@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 7ce577901530856690754f3db18ba9f40bfb8a51
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 837d18a04a0cd22f29a5cbcb8b06b7e3f5fae255
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019313"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632806"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Oktatóanyag: Azure Active Directory-integráció az végtelen Campus
 
@@ -48,6 +48,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 
 - Ne használja az éles környezetben, csak szükség esetén.
 - Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Legalább kell lennie az Azure Active Directory-rendszergazda, a konfiguráció befejezéséhez.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -110,7 +111,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](common/editconfigure.png)
 
-5. Az a **alapszintű SAML-konfigurációja** szakaszt, ha rendelkezik **szolgáltató metaadatait tartalmazó fájl**, hajtsa végre az alábbi lépéseket:
+5. Az a **alapszintű SAML-konfigurációja** szakaszt, ha rendelkezik **szolgáltató metaadatait tartalmazó fájl** (lépés **11.b**), hajtsa végre az alábbi lépéseket:
 
     a. Kattintson a **metaadatfájl feltöltése**.
 
@@ -124,7 +125,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![image](./media/infinitecampus-tutorial/tutorial_infinitecampus_url.png)
 
-    d. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
+    d. Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címet (a tartományt üzemeltető modell számától függ) a következő minta használatával: `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
     > [!NOTE]
     > Megjelenik a **szolgáltató metaadatait tartalmazó fájl** az oktatóanyag későbbi részében ismertetett végtelen Campus SSO szolgáltató konfigurációja oldalon.
@@ -143,7 +144,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![A tanúsítvány letöltési hivatkozás](./media/infinitecampus-tutorial/tutorial_infinitecampus_certificate.png) 
 
-7. Az a **végtelen Campus beállítása** területén másolja a megfelelő URL-címet a követelmény alapján.
+7. Az a **végtelen Campus beállítása** területén érvényesíthető a fel- vagy az Azure-metaadatokkal fájl/URL-cím használatával a következő értékeket használja.
 
     a. Bejelentkezési URL
 
@@ -169,7 +170,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     a. Válassza ki **engedélyezése SAML egyszeri bejelentkezési**.
 
-    b. Kattintson a **Service Provider metaadatok** kattintva mentheti a **szolgáltató metaadatait tartalmazó fájl** a számítógépen, és töltse fel a **alapszintű SAML-konfigurációja** automatikus szakasz polulate a **azonosító** és **válasz URL-cím** értékeket az Azure Portalon.
+    b. Kattintson a **Service Provider metaadatok** kattintva mentheti a **szolgáltató metaadatait tartalmazó fájl** a számítógépen, és töltse fel a **alapszintű SAML-konfigurációja** automatikus szakasz polulate a **azonosító** és **válasz URL-cím** értékeket az Azure Portalon (lásd 5. lépés).
 
     c. Az a **válassza ki a Identity Provider (IDP) kiszolgáló adatainak beolvasása** szakaszban válassza ki **metaadatok URL-címe** , és illessze be a **alkalmazás összevonási metaadatainak URL-címe** be a szövegmezőbe, és Kattintson a **szinkronizálási**.
 
@@ -179,7 +180,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ez a szakasz célja az, hogy hozzon létre egy _egyetlen_ tesztfelhasználó Britta Simon nevű az Azure Portalon.
 
 1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
@@ -234,8 +235,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a végtelen Campus csempére kattint, meg kell lekérése automatikusan bejelentkezett a végtelen Campus alkalmazásba.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
+Ha a hozzáférési panelen a végtelen Campus csempére kattint, meg kell lekérése automatikusan bejelentkezett a végtelen Campus alkalmazásba. Ha ugyanabból a böngészőből, Azure AD szolgáltatás felügyeletéről végtelen Camnpus alkalmazásba jelentkezik, győződjön meg arról, jelentkezzen be a tesztfelhasználó számára, az Azure AD-be. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>További források
 

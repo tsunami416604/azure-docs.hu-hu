@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 245cbd86ae43560e4e41f4b97350f9a5857e1b25
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: d84596b586ea54dd4a64faf46b32226862d83198
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956622"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584621"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Kezelése előtti és utáni parancsfájlokat (előzetes verzió)
 
@@ -220,8 +220,6 @@ if ($summary.Type -eq "Error")
 ## <a name="known-issues"></a>Ismert problémák
 
 * Nem adhatók át objektum vagy tömb paraméterek előtti és utáni parancsfájlok használata esetén. A runbook sikertelen lesz.
-* Runbookok, amelyek nincsenek közzétéve, választható jelennek meg előtti vagy utáni parancsfájl kiválasztásakor. Csak a közzétett runbookok nem közzétett forgatókönyvek nem hívható, és sikertelen lesz, kell kiválasztani.
-* Egy központi telepítés a hozzáadott számítógépek [dinamikus csoportok (előzetes verzió)](automation-update-management.md#using-dynamic-groups) , jelenleg nem tartozik a **SoftwareUpdateConfigurationRunContext** előtti és utáni parancsfájlokat az átadott paraméter.
 
 ## <a name="next-steps"></a>További lépések
 

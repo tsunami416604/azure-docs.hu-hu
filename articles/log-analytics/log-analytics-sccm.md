@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a5deccbe87bc8de6f6438259c2a43cc4618c24ab
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a4c429b1c54c6bf71175abbc763a178792281a0f
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016704"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633146"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>A Configuration Manager csatlakoztatása a Log Analyticsbe
 A System Center Configuration Manager-környezet szinkronizálási eszköz gyűjtemény adatait az Azure Log Analyticshez csatlakozhat, és ezeket a gyűjteményeket, a Log Analytics és Azure Automation hivatkozhat.  
@@ -57,7 +57,7 @@ A következő eljárásban biztosítson a *közreműködői* szerepkör a Log An
 6. Alatt a **rendelhet hozzáféréseket** legördülő listában válassza ki a korábban létrehozott AD a Configuration Manager alkalmazást, és kattintson **OK**.  
 
 ## <a name="download-and-install-the-agent"></a>Az ügynök letöltése és telepítése
-Tekintse át a [a Log Analytics szolgáltatás az Azure-ban való csatlakozáshoz Windows számítógépek](log-analytics-agent-windows.md) tudni, hogy a következő módszerek a Configuration Manager szolgáltatást futtató számítógépen a Microsoft Monitoring Agent telepítése Szolgáltatáskapcsolódási pont helyrendszerszerepkört.  
+Tekintse át a [a Log Analytics szolgáltatás az Azure-ban való csatlakozáshoz Windows számítógépek](../azure-monitor/platform/agent-windows.md) tudni, hogy a következő módszerek a Configuration Manager szolgáltatást futtató számítógépen a Microsoft Monitoring Agent telepítése Szolgáltatáskapcsolódási pont helyrendszerszerepkört.  
 
 ## <a name="add-a-log-analytics-connection-to-configuration-manager"></a>A Log Analytics-kapcsolat hozzáadása a Configuration Managerhez
 Annak érdekében, hogy a Log Analytics-kapcsolat hozzáadása, rendelkeznie kell a Configuration Manager-környezet egy [szolgáltatáskapcsolati pont](https://technet.microsoft.com/library/mt627781.aspx) online módra konfigurálni.

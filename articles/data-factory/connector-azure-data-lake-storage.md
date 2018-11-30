@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/09/2018
+ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 2fad3ad8bc6e1c0ca87038af6c461d863065fc95
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: ca2591f34a0aba598c12815de684ec6bb8fca929
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345963"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620353"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-preview-using-azure-data-factory-preview"></a>Másolja az adatokat, vagy az Azure Data Lake Storage Gen2 előzetes verzió használata az Azure Data Factory (előzetes verzió)
 
@@ -29,7 +29,7 @@ Bármely támogatott forrásadattárból adatokat másolhatja a Data Lake Storag
 
 Pontosabban az összekötő támogatja:
 
-- Adatok másolása a fiókkulcs használatával.
+- Adatok másolása az Azure-erőforrások hitelesítések fiókkulcs, az egyszerű szolgáltatás vagy a felügyelt identitások használatával.
 - Másolja a fájlokat,- vagy elemzési vagy -fájlok létrehozása [támogatott fájlformátumok és tömörítési kodek](supported-file-formats-and-compression-codecs.md).
 
 >[!TIP]
@@ -49,7 +49,15 @@ A következő szakaszok segítségével határozhatók meg adott Data Factory-en
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-Data Lake Storage Gen2 társított szolgáltatás a következő tulajdonságok támogatottak:
+Az Azure Data Lake Storage Gen2-összekötő a következő hitelesítési típusok támogatása, tekintse meg a megfelelő szakaszban talál:
+
+- [Fiók kulcsos hitelesítés](#account-key-authentication)
+- [Egyszerű szolgáltatás hitelesítése](#service-principal-authentication)
+- [Felügyelt identitások Azure-erőforrások hitelesítéshez](#managed-identity)
+
+### <a name="account-key-authentication"></a>Fiók kulcsos hitelesítés
+
+A storage-fiók kulcsos hitelesítést használ, a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
@@ -62,7 +70,7 @@ Data Lake Storage Gen2 társított szolgáltatás a következő tulajdonságok t
 
 ```json
 {
-    "name": "AzureDataLakeStorageLinkedService",
+    "name": "AzureDataLakeStorageGen2LinkedService",
     "properties": {
         "type": "AzureBlobFS",
         "typeProperties": {
@@ -71,6 +79,95 @@ Data Lake Storage Gen2 társított szolgáltatás a következő tulajdonságok t
                 "type": "SecureString", 
                 "value": "<accountkey>" 
             }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="service-principal-authentication"></a>Egyszerű szolgáltatásnév hitelesítése
+
+Egyszerű szolgáltatásnév hitelesítése használatához kövesse az alábbi lépéseket:
+
+1. Regisztráljon az Azure Active Directoryban (Azure AD) application entitás a következő [regisztrálja az alkalmazást az Azure AD-bérlő](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant). Jegyezze fel a következő értékeket, mert a társított szolgáltatás definiálásához használja:
+
+    - Alkalmazásazonosító
+    - Alkalmazáskulcs
+    - Bérlőazonosító
+
+2. Adja meg a szolgáltatás egyszerű megfelelő engedéllyel az Azure storage-ban.
+
+    - **Forrásként**, az Access (IAM) vezérlőelemet, adja meg legalább **Storage-Blobadatok olvasója** szerepkör.
+    - **Fogadóként**, az Access (IAM) vezérlőelemet, adja meg legalább **Storage-Blobadatok Közreműködője** szerepkör.
+
+Ezek a Tulajdonságok támogatottak társított szolgáltatást:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A type tulajdonságot állítsa **AzureBlobFS**. |Igen |
+| url | A Data Lake Storage Gen2-mintával rendelkező végpontot `https://<accountname>.dfs.core.windows.net`. | Igen | 
+| servicePrincipalId | Adja meg az alkalmazás ügyfél-azonosítót. | Igen |
+| servicePrincipalKey | Adja meg az alkalmazáskulcsot. Jelölje meg a mező egy **SecureString** tárolja biztonságos helyen a Data Factory áttekintése, vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| bérlő | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Az Azure portal jobb felső sarkában az egér viszi, lekéréséhez. | Igen |
+| connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Használhatja az Azure integrációs modul vagy a helyi integrációs modul (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
+
+**Példa**
+
+```json
+{
+    "name": "AzureDataLakeStorageGen2LinkedService",
+    "properties": {
+        "type": "AzureBlobFS",
+        "typeProperties": {
+            "url": "https://<accountname>.dfs.core.windows.net", 
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": {
+                "type": "SecureString",
+                "value": "<service principal key>"
+            },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>" 
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="managed-identity"></a> Felügyelt identitások Azure-erőforrások hitelesítéshez
+
+Adat-előállító társítható egy [-identitás az Azure-erőforrások](data-factory-service-identity.md), amely az adott adat-előállító jelöli. Használhatja a felügyeltszolgáltatás-identitás közvetlenül a Blob storage hitelesítéshez hasonló saját egyszerű szolgáltatás használatával. Lehetővé teszi a kijelölt factory eléréséhez és másolásához adatokhoz, és a Blob storage-bA.
+
+Felügyelt identitások Azure-erőforrások hitelesítés használatához kövesse az alábbi lépéseket:
+
+1. [Beolvasni a data factory-szolgáltatásidentitás](data-factory-service-identity.md#retrieve-service-identity) másolásával "SZOLGÁLTATÁSIDENTITÁS Alkalmazásazonosítója" az előállító együtt létrehozott értékét.
+
+2. Adja meg az Azure storage-felügyelt identitásnak megfelelő jogosultságot. 
+
+    - **Forrásként**, az Access (IAM) vezérlőelemet, adja meg legalább **Storage-Blobadatok olvasója** szerepkör.
+    - **Fogadóként**, az Access (IAM) vezérlőelemet, adja meg legalább **Storage-Blobadatok Közreműködője** szerepkör.
+
+Ezek a Tulajdonságok támogatottak társított szolgáltatást:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | A type tulajdonságot állítsa **AzureBlobFS**. |Igen |
+| url | A Data Lake Storage Gen2-mintával rendelkező végpontot `https://<accountname>.dfs.core.windows.net`. | Igen | 
+| connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Használhatja az Azure integrációs modul vagy a helyi integrációs modul (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
+
+**Példa**
+
+```json
+{
+    "name": "AzureDataLakeStorageGen2LinkedService",
+    "properties": {
+        "type": "AzureBlobFS",
+        "typeProperties": {
+            "url": "https://<accountname>.dfs.core.windows.net", 
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",

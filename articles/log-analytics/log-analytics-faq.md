@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 88df62b6e8c4eb519c51d82763634cf7d6d14418
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 4c31831aedefabc285c92861e9010b242cacf0d7
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262652"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635781"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics – gyakori kérdések
 A Microsoft FAQ a Microsoft Azure Log Analytics kapcsolatos gyakori kérdések listáját. Ha a Log Analytics szolgáltatásról további kérdése van, lépjen a [fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) és felteheti kérdéseit. Egy kérdést gyakran ismételt, amikor hozzáadjuk ehhez a cikkhez, hogy gyorsan és könnyen megtalálhatók.
@@ -160,7 +160,7 @@ A. Nem, akkor nem alkalmas jelenleg tetszőleges táblákat vagy az Azure BLOB s
 
 A. A Log Analytics szolgáltatás Azure épül. Log Analytics IP-címek szerepelnek a [a Microsoft Azure adatközpont IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653).
 
-Szolgáltatás központi telepítések később, a tényleges IP-címek a Log Analytics szolgáltatás módosítani. A DNS-nevek engedélyezése a tűzfalon keresztül vannak dokumentálva [hálózati követelmények](log-analytics-agent-overview.md#network-firewall-requirements).
+Szolgáltatás központi telepítések később, a tényleges IP-címek a Log Analytics szolgáltatás módosítani. A DNS-nevek engedélyezése a tűzfalon keresztül vannak dokumentálva [hálózati követelmények](../azure-monitor/platform/log-analytics-agent.md#network-firewall-requirements).
 
 ### <a name="q-i-use-expressroute-for-connecting-to-azure-does-my-log-analytics-traffic-use-my-expressroute-connection"></a>K. Csatlakozás az Azure-bA ExpressRoute használatával. A Log Analytics-forgalmat használ a saját ExpressRoute-kapcsolat?
 
@@ -198,9 +198,22 @@ A **Azure Log Analytics (OMS)**, felsorolva minden munkaterület eltávolítása
 
 ### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>K: Miért jelenik meg hibaüzenet jelenik meg a saját munkaterület áthelyezése egy Azure-előfizetés másik?
 
-V: Ha az Azure Portalon használ, győződjön meg arról, csak a munkaterület az áthelyezés van kiválasztva. Ne válassza a megoldások – automatikusan áthelyezi a munkaterület áthelyezése után. 
+V: szeretne áthelyezni egy munkaterületet egy másik előfizetést vagy az erőforráscsoport, az Automation-fiókját a munkaterület leválasztása először kell. Ezek a megoldások eltávolítása leválasztása az Automation-fiók szükséges, ha a munkaterülethez lesznek telepítve: frissítéskezelés, változáskövetés vagy virtuális gépek indítása/leállítása munkaidőn kívül el lesznek távolítva. Után ezeket a megoldásokat, az Automation-fiók leválasztása kiválasztásával **társított munkaterületek** a bal oldali panelen az Automation-fiók erőforrás, és kattintson a **munkaterület leválasztása** a menüszalagon.
+ > Eltávolítja a megoldások kell újra kell telepíteni a munkaterületen, és a munkaterület Automation hivatkozásának meg kell állapítani az áthelyezés után.
 
 Győződjön meg arról, mind az Azure-előfizetések az Önnek megfelelő engedélye.
+
+### <a name="q-why-am-i-getting-an-error-when-i-try-to-update-a-savedsearch"></a>K: Miért jelenik meg hiba jelenik meg egy SavedSearch frissíteni?
+
+V: hozzá kell "etag" az API-t, vagy az Azure Resource Manager-sablon tulajdonságainak törzse:
+```
+"properties": {
+   "etag": "*",
+   "query": "SecurityEvent | where TimeGenerated > ago(1h) | where EventID == 4625 | count",
+   "displayName": "An account failed to log on",
+   "category": "Security"
+}
+```
 
 ## <a name="agent-data"></a>Az ügynök adatok
 ### <a name="q-how-much-data-can-i-send-through-the-agent-to-log-analytics-is-there-a-maximum-amount-of-data-per-customer"></a>K. Mennyi adatot lehet küldeni az ügynökön keresztül a Log Analytics? Van egy minden ügyfél adatok maximális mérete?

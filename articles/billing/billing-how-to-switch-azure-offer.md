@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 96aabd9ace1ad9a0fb5aae7848b02284dcd7b7e1
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: c8332ab9bbe22dab71d0b75446b478c424df66fb
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52273555"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582133"
 ---
 # <a name="change-your-azure-pay-as-you-go-subscription-to-a-different-offer"></a>Az Azure használatalapú fizetéses előfizetésre váltani egy másik ajánlatra
 
@@ -114,6 +114,6 @@ Váltson át a nap, a számla alapján az összes ki nem egyenlített díjakat j
 * Telepítse át az erőforrásokat az új előfizetés közvetlenül az is, lásd: [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/resource-group-move-resources.md).
 * Valaki más Azure-előfizetéssel, és minden benne lévő tulajdonjogának átruházása, lásd: [Azure-előfizetés tulajdonjogának átadása](billing-subscription-transfer.md)
 
-## <a name="need-help-contact-support"></a>Segítség Forduljon az ügyfélszolgálathoz.
+## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 
-Ha további kérdése van, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

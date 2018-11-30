@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 91cfa35cd10772da0042566bdd9030f780329f93
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 31070d03711891353823a72ed9c805995d36024b
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415185"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633163"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
@@ -26,7 +26,7 @@ ms.locfileid: "50415185"
 
 Ez a cikk rögzíti a gyakori kérdések (GYIK) kapcsolatos Network Performance monitort (NPM) az Azure-ban
 
-[Network Performance Monitor](/azure/networking/network-monitoring-overview) egy felhőalapú [hibrid hálózatfigyelés](log-analytics-network-performance-monitor-performance-monitor.md) megoldás, amely segítséget nyújt a hálózati infrastruktúrában különböző pont közötti hálózati teljesítmény figyelése. Emellett segítséget nyújt a hálózati kapcsolat figyeléséhez [szolgáltatások és alkalmazások végpontok](log-analytics-network-performance-monitor-service-endpoint.md) és [Azure ExpressRoute teljesítményének megfigyelése](log-analytics-network-performance-monitor-expressroute.md). 
+[Network Performance Monitor](/azure/networking/network-monitoring-overview) egy felhőalapú [hibrid hálózatfigyelés](../azure-monitor/insights/network-performance-monitor-performance-monitor.md) megoldás, amely segítséget nyújt a hálózati infrastruktúrában különböző pont közötti hálózati teljesítmény figyelése. Emellett segítséget nyújt a hálózati kapcsolat figyeléséhez [szolgáltatások és alkalmazások végpontok](../azure-monitor/insights/network-performance-monitor-service-endpoint.md) és [Azure ExpressRoute teljesítményének megfigyelése](../azure-monitor/insights/network-performance-monitor-expressroute.md). 
 
 A Network Performance Monitor észleli a hálózati problémák, például az adatforgalom blackholing, útválasztási hibák és problémák, amelyek a hagyományos hálózati figyelési módszerek nem képes észlelni. A megoldás riasztásokat készít, és értesíti, amikor egy hálózati kapcsolat meghaladja a küszöbértéket. Emellett biztosítja a hálózat teljesítményével kapcsolatos problémák időbeni észlelését és leszűkíti a hiba forrásának helyszínét egy hálózati szegmensre vagy eszközre. 
 
@@ -47,21 +47,21 @@ Képes figyelni a Linux-alapú csomópontokat használó hálózatok jelenleg pr
 A csomópont virtuális gépek, hálózatok figyelése az NPM-megoldást futtatja, a csomópontok legalább 500 MB memória és a egy magot kell rendelkeznie. Nem kell különálló csomópontok használata futtatásához npm-et. A megoldás, amely rendelkezik a rajta futó számítási feladatoktól csomópontján futtathatja. A megoldás a teszi, hogy a monitorozási folyamat leállítása, abban az esetben azt használja, amely több, mint 5 %-ot tartalmaz.
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>Npm-et használja, hogy csatlakozhatok saját csomópontok közvetlen ügynök vagy a System Center Operations Manager használatával?
-A Teljesítményfigyelő és a szolgáltatás Kapcsolatfigyelő képességeket is támogatja a csomópontok [közvetlen ügynökök csatlakoztatott](log-analytics-agent-windows.md) , valamint [szolgáltatást az Operations Manageren keresztül csatlakozó](log-analytics-om-agents.md).
+A Teljesítményfigyelő és a szolgáltatás Kapcsolatfigyelő képességeket is támogatja a csomópontok [közvetlen ügynökök csatlakoztatott](../azure-monitor/platform/agent-windows.md) , valamint [szolgáltatást az Operations Manageren keresztül csatlakozó](log-analytics-om-agents.md).
 
 Az ExpressRoute-figyelő szolgáltatás az Azure-csomópontok csatlakoznia kell a közvetlen ügynökök, csak. Az Operations Manager keresztül vannak csatlakoztatva az Azure csomópontok nem támogatottak. Helyszíni csomópontokat a közvetlen ügynökök, valamint az Operations Manager csatlakoztatott csomópontok ExpressRoute-kapcsolatcsoport figyelésére használhatók.
 
 ### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>Többek között a TCP és az ICMP protokoll figyelésre kell választani?
 Ha a hálózat, Windows server-alapú csomópontokat használ, javasoljuk, TCP figyelési protokollként használhatja, mivel ez nagyobb pontosságot biztosít. 
 
-ICMP használata ajánlott Windows asztali számítógépek vagy Windows-ügyfél operációs rendszer-alapú csomópontokat. Ezen a platformon nem engedélyezi a TCP-adatok nyers szoftvercsatornákon keresztül küldendő melyik az npm segítségével való hálózati topológia felderítése.
+ICMP használata ajánlott Windows asztali számítógépek vagy Windows-ügyfél operációs rendszer-alapú csomópontokat. Ezen a platformon nem engedélyezi a TCP-adatok a nyers sockets, az NPM segítségével hálózati topológia felderítése lesz elküldve.
 
-További részleteket az egyes protokoll relatív előnyeit is megjeleníthet [Itt](log-analytics-network-performance-monitor-performance-monitor.md#choose-the-protocol).
+További részleteket az egyes protokoll relatív előnyeit is megjeleníthet [Itt](../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol).
 
 ### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>Hogyan konfigurálhatok egy csomópont támogatja a figyelésre TCP protokoll használatával?
 A csomópont figyelésre TCP protokoll használatával támogatja: 
 * Győződjön meg arról, hogy a csomópont-platform a Windows Server (2008 SP1 vagy újabb).
-* Futtatás [EnableRules.ps1](https://aka.ms/npmpowershellscript) Powershell-parancsfájl a csomóponton. Lásd: [utasításokat](log-analytics-network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) további részletekért.
+* Futtatás [EnableRules.ps1](https://aka.ms/npmpowershellscript) Powershell-parancsfájl a csomóponton. Lásd: [utasításokat](../azure-monitor/insights/network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) további részletekért.
 
 
 ### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>Hogyan módosíthatom a figyeléshez az NPM által használt TCP-portot?
@@ -126,10 +126,10 @@ Kapcsolatcsoport szintű információkért kövesse az alábbiakban említett le
     | project CircuitName,PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
 
 ### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>Mely régiók támogatottak az NPM Teljesítményfigyelő?
-Az NPM figyelheti egy munkaterületről egy üzemeltetett, a világ bármely részén hálózatok közötti kapcsolat a [támogatott régiók](log-analytics-network-performance-monitor.md#supported-regions)
+Az NPM figyelheti egy munkaterületről egy üzemeltetett, a világ bármely részén hálózatok közötti kapcsolat a [támogatott régiók](../azure-monitor/insights/network-performance-monitor.md#supported-regions)
 
 ### <a name="which-regions-are-supported-for-npms-service-connectivity-monitor"></a>Mely régiók támogatottak az NPM szolgáltatás Kapcsolatfigyelő?
-Az NPM figyelheti csatlakozási szolgáltatások a világ bármely részén egy munkaterületről egy üzemeltetett a [támogatott régiók](log-analytics-network-performance-monitor.md#supported-regions)
+Az NPM figyelheti csatlakozási szolgáltatások a világ bármely részén egy munkaterületről egy üzemeltetett a [támogatott régiók](../azure-monitor/insights/network-performance-monitor.md#supported-regions)
 
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Mely régiók támogatottak az NPM ExpressRoute-figyelő?
 Az NPM figyelheti az ExpressRoute-Kapcsolatcsoportok bármely Azure-régióban található. Való előkészítésre NPM, szüksége lesz a Log Analytics-munkaterület, amely az egyik kell elhelyezni a [támogatott régiók](/azure/expressroute/how-to-npm#regions)
@@ -222,4 +222,4 @@ Npm-et a felhasználói felületen és ezredmásodperc késés számok lefelé k
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a Network Performance Monitor történő hivatkozással [Network Performance Monitor megoldás az Azure-ban](log-analytics-network-performance-monitor.md).
+- További információ a Network Performance Monitor történő hivatkozással [Network Performance Monitor megoldás az Azure-ban](../azure-monitor/insights/network-performance-monitor.md).

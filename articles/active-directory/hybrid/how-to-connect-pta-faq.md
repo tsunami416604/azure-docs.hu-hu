@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2018
+ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 220fc7b2b0ce3a4c5fd943c35952a345379a1b91
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 77872ab809f4375523a91f4ebc9b24f8606e6c94
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284216"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619817"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Az Azure Active Directory átmenő hitelesítés: Gyakori kérdések
 
@@ -34,7 +34,7 @@ Felülvizsgálat [Ez az útmutató](https://docs.microsoft.com/azure/security/az
 
 Az átmenő hitelesítés egy olyan ingyenes szolgáltatás. Nem kell minden fizetős kiadásban az Azure AD használatát.
 
-## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloudhttpwwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>Az átmenő hitelesítés érhető el a [Microsoft Azure Germany cloud](http://www.microsoft.de/cloud-deutschland) és a [Microsoft Azure Government felhőben](https://azure.microsoft.com/features/gov/)?
+## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloudhttpswwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>Az átmenő hitelesítés érhető el a [Microsoft Azure Germany cloud](https://www.microsoft.de/cloud-deutschland) és a [Microsoft Azure Government felhőben](https://azure.microsoft.com/features/gov/)?
 
 Nem. Az átmenő hitelesítés csak akkor használható az Azure AD világszerte elérhető példányával.
 
@@ -44,7 +44,7 @@ Igen. Az összes feltételes hozzáférési képességeit, beleértve az Azure m
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Támogatja az átmenő hitelesítés "A másik azonosító", felhasználónév, "userPrincipalName" helyett?
 
-Igen. Az átmenő hitelesítés támogatja `Alternate ID` a felhasználóneveként, ha az Azure AD Connectben konfigurálva. További információkért lásd: [az Azure AD Connect egyéni telepítési](how-to-connect-install-custom.md). Office 365-höz nem mindegyik alkalmazás támogatja `Alternate ID`. Tekintse meg az adott alkalmazás dokumentációja támogatási nyilatkozattal.
+Igen, támogatja az átmenő hitelesítés `Alternate ID` a felhasználóneveként, ha az Azure AD Connectben konfigurálva. Előfeltételként, az Azure AD Connectnek szüksége van a helyszíni Active Directory szinkronizálása `UserPrincipalName` az Azure AD-attribútum. További információkért lásd: [az Azure AD Connect egyéni telepítési](how-to-connect-install-custom.md). Office 365-höz nem mindegyik alkalmazás támogatja `Alternate ID`. Tekintse meg az adott alkalmazás dokumentációja támogatási nyilatkozattal.
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Jelszókivonat-szinkronizálást, átmenő hitelesítés egy tartalék szerepét?
 
@@ -119,6 +119,10 @@ Ha az Active Directory összevonási szolgáltatások (vagy más összevonási t
 
 Igen. Többerdős környezetben támogatottak, ha vannak az Active Directory-erdők között erdőszintű megbízhatóság, és ha névutótag megfelelően van konfigurálva.
 
+## <a name="does-pass-through-authentication-provide-load-balancing-across-multiple-authentication-agents"></a>Az átmenő hitelesítés nyújt elosztja a több hitelesítési ügynök?
+
+Nem, csak biztosítja több átmenő hitelesítési ügynökök telepítésével [magas rendelkezésre állású](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability). Determinisztikus terheléselosztási között a hitelesítési ügynökök nem biztosítják. Bármely hitelesítési ügynök (véletlenszerű) képes feldolgozni egy adott felhasználó bejelentkezési kérelmet.
+
 ## <a name="how-many-pass-through-authentication-agents-do-i-need-to-install"></a>Átmenő hitelesítés hány ügynök van szükségem telepítéséhez?
 
 Több átmenő hitelesítési ügynökök telepítésével biztosítható [magas rendelkezésre állású](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability). Azonban nem biztosítják a hitelesítési ügynökök közötti terheléselosztás determinisztikus.
@@ -149,6 +153,22 @@ Futtassa újra az Azure AD Connect varázsló, és módosítsa a felhasználói 
 ## <a name="what-happens-when-i-uninstall-a-pass-through-authentication-agent"></a>Mi történik, ha egy átmenő hitelesítési ügynökének eltávolítása?
 
 Ha egy kiszolgálóról távolítja el egy átmenő hitelesítési ügynök, a kiszolgáló bejelentkezési kérelmek fogadását okoz. Ha el szeretné kerülni a felhasználói bejelentkezési funkció a bérlőn, gondoskodjon arról, hogy egy másik hitelesítési ügynök fut egy átmenő hitelesítési ügynökének eltávolítása előtt.
+
+## <a name="i-have-an-older-tenant-that-was-originally-setup-using-ad-fs--we-recently-migrated-to-pta-but-now-are-not-seeing-our-upn-changes-synchronizing-to-azure-ad--why-are-our-upn-changes-not-being-synchronized"></a>Van egy régebbi, amely eredetileg beállítása az AD FS-bérlőt.  A Microsoft nemrég áttelepített ESP, de most már nem jelennek meg az Azure AD szolgáltatással szinkronizál UPN módosításokat.  Miért vannak az UPN változásait nincs szinkronizálva?
+
+V: a következő esetekben a helyszíni egyszerű Felhasználónévvel módosítások előfordulhat, hogy nem a szinkronizálás:
+
+- Az Azure AD-bérlő 2015. június 15. előtt jött létre
+- Először lett összevonva az Azure AD-bérlővel, az AD FS-hitelesítéshez
+- Hogy a felhasználók hitelesítési ESP használatával felügyelt váltott
+
+Ennek oka az, volt letiltása UPN bérlők 2015 június 15. előtt létrehozott alapértelmezett viselkedését.  Ha megszünteti-letiltása UPN módosításokat kell a következő PowerShell-parancsmag futtatásához szüksége:  
+
+`Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers-Enable $True`
+
+2015 június 15. után létrehozott bérlőknek kell UPN módosítások szinkronizálása alapértelmezett viselkedését.   
+
+
 
 ## <a name="next-steps"></a>További lépések
 - [Aktuális korlátozások](how-to-connect-pta-current-limitations.md): ismerje meg, melyik forgatókönyvek is támogatottak, és melyek nem.

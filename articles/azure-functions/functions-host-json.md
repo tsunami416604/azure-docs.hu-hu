@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 8d5403ab91323cea44e31c4ef99c33b387229ef0
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: b429f9dab0411dba599fd696dff3d424916007e0
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820426"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635169"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>az Azure Functions – Host.JSON referencia 2.x  
 
@@ -104,7 +104,7 @@ Konfigurációs beállítás található [Cosmos DB-eseményindítók és köté
 
 ## <a name="durabletask"></a>durableTask
 
-Konfigurációs beállítás található [Durable Functions-kötéseket](durable-functions-bindings.md#host-json).
+Konfigurációs beállítás található [Durable Functions-kötéseket](durable/durable-functions-bindings.md#host-json).
 
 ## <a name="eventhub"></a>eventHub
 

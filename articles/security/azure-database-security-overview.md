@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: 7ead955be3835f4ce3e602fe27a06c00d014195c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 984c74c44cb5149e0c4af83ea8ca4d88e67877ae
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262199"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584774"
 ---
 # <a name="azure-database-security-overview"></a>Azure database biztonságának áttekintése
 
@@ -199,7 +199,7 @@ SQL a speciális veszélyforrások elleni védelem (ATP) egy speciális SQL bizt
 - Hozzáférés potenciálisan káros-alkalmazás 
 - Azure database for PostgreSQL hitelesítő adatok találgatásos támadás 
 
-[Azure Database for MySQL komplex veszélyforrások elleni védelem](/mysql/concepts-data-access-and-security-threat-protection.md) hasonló PostgreSQL speciális Protection védelmet biztosít.  
+[Azure Database for MySQL komplex veszélyforrások elleni védelem](../mysql/concepts-data-access-and-security-threat-protection.md) hasonló PostgreSQL speciális Protection védelmet biztosít.  
 
 ## <a name="centralized-security-management"></a>Központi biztonsági kezelése
 
@@ -220,7 +220,7 @@ A Security Center támogatja a szerepköralapú hozzáférés.
 
 Emellett számítja ki az eredmény az SQL-lekérdezések érzékenységi állíthat be, így a lekérdezéseket, amelyek bizalmas adatokat nyerhet ki az explicit módon naplózhatóvá válik, és az adatok védelme biztosítható. SQL-információvédelem további információkért tekintse meg az Azure SQL Database az Adatfelderítés és besorolás.
 
-Konfigurálható [SQL Information Protection-szabályzatok](/security-center/security-center-info-protection-policy.md) az Azure Security Centerben.
+Konfigurálható [SQL Information Protection-szabályzatok](../security-center/security-center-info-protection-policy.md) az Azure Security Centerben.
 
 ## <a name="azure-marketplace"></a>Azure Piactér
 

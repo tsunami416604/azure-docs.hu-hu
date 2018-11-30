@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 6f4f2f6a7999b2d26e198a11bb7cee27991a775b
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 81728e7963767cd90bf2486a35fbce55043a76f7
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711956"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633469"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Figyelés a Log Analytics megoldásra
 
@@ -126,7 +126,7 @@ Ha már telepítette a Docker, használja a következő beállításokat, a tár
 
 **Az összes Linux tárológazdagép CoreOS kivételével:**
 
-- További információkért és a Linuxhoz készült Log Analytics-ügynök telepítéséhez szükséges lépéseket lásd: [Log Analytics-ügynök – áttekintés](log-analytics-agent-overview.md).
+- További információkért és a Linuxhoz készült Log Analytics-ügynök telepítéséhez szükséges lépéseket lásd: [Log Analytics-ügynök – áttekintés](../azure-monitor/platform/log-analytics-agent.md).
 
 **Minden Linux tároló gazdagéphez CoreOS is beleértve:**
 
@@ -524,9 +524,9 @@ A Docker-démon konfigurációját, használja a Windows-tárolókkal kapcsolato
 
 #### <a name="install-windows-agents"></a>Windows-ügynökök telepítése
 
-Windows és a Hyper-V-tárolók monitorozása engedélyezéséhez telepítse a Microsoft Monitoring Agent (MMA) tárológazdagép Windows számítógépek. A helyszíni környezetben Windows rendszerű számítógépek, lásd: [a Log Analyticshez való csatlakozáshoz Windows számítógépek](log-analytics-agent-windows.md). A virtuális gépek futtatása az Azure-ban csatlakoztathatja őket a Log Analytics használatával az [virtuálisgép-bővítmény](log-analytics-quick-collect-azurevm.md).
+Windows és a Hyper-V-tárolók monitorozása engedélyezéséhez telepítse a Microsoft Monitoring Agent (MMA) tárológazdagép Windows számítógépek. A helyszíni környezetben Windows rendszerű számítógépek, lásd: [a Log Analyticshez való csatlakozáshoz Windows számítógépek](../azure-monitor/platform/agent-windows.md). A virtuális gépek futtatása az Azure-ban csatlakoztathatja őket a Log Analytics használatával az [virtuálisgép-bővítmény](log-analytics-quick-collect-azurevm.md).
 
-A Service Fabricen futó Windows-tárolók figyelése Azonban csak [az Azure-ban futó virtuális gépek](log-analytics-quick-collect-azurevm.md) és [a helyszíni környezetben Windows rendszerű számítógépek](log-analytics-agent-windows.md) Service Fabric jelenleg támogatja.
+A Service Fabricen futó Windows-tárolók figyelése Azonban csak [az Azure-ban futó virtuális gépek](log-analytics-quick-collect-azurevm.md) és [a helyszíni környezetben Windows rendszerű számítógépek](../azure-monitor/platform/agent-windows.md) Service Fabric jelenleg támogatja.
 
 Ellenőrizheti, hogy a a Tárolómonitorozási megoldás megfelelően van-e állítva a Windows. Annak ellenőrzéséhez, hogy a felügyeleti csomag megfelelően lett-e letöltése, keressen *ContainerManagement.xxx*. A fájlok a C:\Program Files\Microsoft Monitoring Agent\Agent\Health State\Management szervizcsomagok mappában kell lennie.
 
@@ -543,7 +543,7 @@ A Tárolómonitorozási megoldás tároló-gazdagépek és -tárolók használat
 A következő ügynök típusú percen át 3 percenként adatokat gyűjti.
 
 - [A Linuxhoz készült log Analytics-ügynök](log-analytics-quick-collect-linux-computer.md)
-- [Windows-ügynök](log-analytics-agent-windows.md)
+- [Windows-ügynök](../azure-monitor/platform/agent-windows.md)
 - [Log Analytics Virtuálisgép-bővítmény](log-analytics-quick-collect-azurevm.md)
 
 

@@ -10,14 +10,14 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 2ba7039fe42e3b5638b99161e12e9888bc852f87
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 67dbf3bdf6631785fc876283847e36349e857a77
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51635015"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634642"
 ---
-# <a name="install-and-run-containers"></a>Telepítse és futtassa a tárolók
+# <a name="install-and-run-containers"></a>Tárolók telepítése és futtatása
 
 Bontás a szoftverek terjesztéséhez, amelyben egy alkalmazás vagy szolgáltatás van csomagolva, egy tárolórendszerképet egy megközelítést. A konfiguráció és az alkalmazás vagy szolgáltatás függőségeinek szerepelnek a tároló rendszerképét. A tároló rendszerképét ezután központilag telepítheti alig vagy egyáltalán nem módosítással üzemeltető tárolón futnak. Tárolók el különítve egymással és az alapjául szolgáló operációs rendszer, tárhely kisebb, mint egy virtuális gépet. A tárolók rövid távú feladatok tárolórendszerképeket a példányt, és távolítja el, amikor már nincs rá szükség.
 
@@ -60,9 +60,6 @@ A következő lépésekkel hozhat létre, és a egy Azure-erőforrás lévő inf
 
 1. Hozzon létre egy Azure-erőforrást az Azure Portalon.  
    Ha azt szeretné, a szöveg felismerése tároló használatára, először létre kell hoznia egy megfelelő számítógépes Látástechnológiai erőforrást az Azure Portalon. További információkért lásd: [a rövid útmutató: a Cognitive Services-fiók létrehozása az Azure Portalon](../cognitive-services-apis-create-account.md).
-
-   > [!IMPORTANT]
-   > A Computer Vision erőforrást kell használnia a F0 tarifacsomag.
 
 1. A végpont URL-cím és egy előfizetési kulcsra az Azure-beli erőforráshoz kaphat.  
    Az Azure-erőforrás létrehozása után a megfelelő szöveg felismerése tároló példányosítása ennek az erőforrásnak a végpont URL-cím és egy előfizetési kulcsra kell használnia. A végpont URL-cím és egy előfizetési kulcsra másolhatja a, a gyors üzembe helyezés és a kulcsok lapok a Computer Vision erőforrás az Azure Portalon.

@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 39b071c258a7aab3f8f0287ef2ce581a8f1b333e
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 5787f72f2bc93c5dff05c6764639a4c46efe1a4f
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623153"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582785"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB és az Azure Functions használatával kiszolgáló nélküli adatbázis-használat
 
@@ -124,7 +124,7 @@ Az Azure Functions lehetővé teszi a munkát, vagy tömör darab logika, amely 
 
 Azure Cosmos DB a kiszolgáló nélküli számítástechnikai architektúra ajánlott adatbázisát a következő okok miatt:
 
-* **Minden az adatok azonnali hozzáférést**: rendelkezik minden egyes értékhez, mert a részletes hozzáférés Azure Cosmos DB [automatikusan indexeli az](indexing-policies.md) alapértelmezés szerint minden adat, és azonnal elérhetővé ezeket az indexeket. Ez azt jelenti, folyamatosan lekérdezheti, módosíthatja, és új elemeket adhat hozzá az adatbázishoz és azonnal hozzáférhet az Azure Functions használatával.
+* **Minden az adatok azonnali hozzáférést**: rendelkezik minden egyes értékhez, mert a részletes hozzáférés Azure Cosmos DB [automatikusan indexeli az](index-policy.md) alapértelmezés szerint minden adat, és azonnal elérhetővé ezeket az indexeket. Ez azt jelenti, folyamatosan lekérdezheti, módosíthatja, és új elemeket adhat hozzá az adatbázishoz és azonnal hozzáférhet az Azure Functions használatával.
 
 * **Séma nélküli**. Azure Cosmos DB a séma nélküli –, így képes kezelni bármilyen adatokat tartalmazó kimenetét az Azure-függvény. Ez a megközelítés "képesek kezelni" teszi magától értetődő, amely különféle funkciókat létrehozása az Azure Cosmos DB az összes kimeneti.
 

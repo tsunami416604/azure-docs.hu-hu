@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 207cc6f114153bebea82bbd996b02f92782b248b
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: bea7f0e88a371474db907dd74f08bd74c0e7c9e1
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275100"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584366"
 ---
 # <a name="submit-a-request-to-pay-azure-subscription-by-invoice"></a>Azure-előfizetés számlás fizetés kéréséhez
 
@@ -50,6 +50,6 @@ A fizetési módot, az Azure-előfizetés által az Azure-támogatási kérést 
 
 Hitelképességét szükséges igényelt kredit mértékének miatt szükséges, ha küldünk követel meg az ellenőrző alkalmazást. Miután elküldi az alkalmazást, az a hitelképesség feldolgozni (5 – 7 nap) is igénybe vehet.
 
-## <a name="need-help-contact-support"></a>Segítség Forduljon az ügyfélszolgálathoz.
+## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 
-Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

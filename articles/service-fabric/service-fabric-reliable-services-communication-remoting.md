@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: ddd78e2fad401add35bc246a64236e2679c33cbc
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: b8abf7a0dc85d20e9075b51b8d42a068cf56846f
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023545"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620523"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Szolgáltatás távelérésének lehetővé tétele a C# Reliable Services szolgáltatással
 
@@ -98,7 +98,7 @@ Szolgáltatási proxy létrehozása egy könnyen használható művelet, így an
 
 ### <a name="service-proxy-factory-lifetime"></a>Szolgáltatási proxy gyári élettartama
 
-[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) proxy példányok különböző távoli eljáráshívás adapterek létrehozó gyár van. Ha a API-val `ServiceProxy.Create` proxy létrehozására a keretrendszer hoz létre egy egyszeres szolgáltatási proxy.
+[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) proxy példányok különböző távoli eljáráshívás adapterek létrehozó gyár van. Ha a API-val `ServiceProxyFactory.CreateServiceProxy` proxy létrehozására a keretrendszer hoz létre egy egyszeres szolgáltatási proxy.
 Akkor hasznos, hozzon létre egyet manuálisan Ha felül kell bírálnia [IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) tulajdonságait.
 Gyári létrehozása drága művelet. A szolgáltatás proxy gyári egy belső gyorsítótár, a kommunikáció ügyfél megőrzi.
 Ajánlott eljárás az, amíg a szolgáltatás proxy gyári gyorsítótárazni.

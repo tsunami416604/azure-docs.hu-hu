@@ -3,7 +3,7 @@ title: Biztonsági riasztások típus szerint az Azure Security Centerben | Micr
 description: Ez a cikk bemutatja az Azure Security Centerben elérhető biztonsági riasztások különböző fajtáit.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: b3e7b4bc-5ee0-4280-ad78-f49998675af1
@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/21/2018
-ms.author: yurid
-ms.openlocfilehash: 0573442568115fc872cc4cf4cf8c369cd635028e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/29/2018
+ms.author: rkarlin
+ms.openlocfilehash: 24c6487ee7ec7d8398f933e29ca51cc9e390f47f
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262114"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633265"
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>Az Azure Security Center biztonsági riasztásainak megismerése
 Ez a cikk segít megismerni az Azure Security Centerben elérhető biztonsági riasztások különböző típusait, valamint a kapcsolódó elemzéseket. A riasztások és incidensek kezelésével kapcsolatos további információkért olvassa el a [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) című cikket.
 
-A speciális észlelések beállításához frissítsen az Azure Security Center Standard verzióra. A 60 napos próbaverzió ingyenes. A frissítéshez a **Biztonsági szabályzat** beállításnál válassza ki a kívánt [tarifacsomagot](security-center-policies.md). További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
+A speciális észlelések beállításához frissítsen az Azure Security Center Standard verzióra. A 60 napos próbaverzió ingyenes. A frissítéshez a **Biztonsági szabályzat** beállításnál válassza ki a kívánt [tarifacsomagot](security-center-azure-policy.md). További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
 
 > [!NOTE]
 > A Security Centernek korlátozott előzetes verzióként kiadott új észlelései naplózott rekordokat használnak egy közös naplózási keretrendszerben a Linux rendszerű gépek rosszindulatú viselkedésének észlelésére. Amennyiben csatlakozni szeretne az előzetes verzióhoz, küldjön [nekünk](mailto:ASC_linuxdetections@microsoft.com) egy e-mailt, amely tartalmazza az előfizetés-azonosítóit.
@@ -48,7 +48,7 @@ Az Azure Security Center a működéselemzéssel azonosítja a feltört erőforr
 A Security Center fejlett elemzési módszerekkel azonosítja a feltört erőforrásokat a virtuális gépek eseménynaplóinak elemzése alapján. Ilyenek például a folyamat-létrehozási események és a bejelentkezési események. Ezenkívül megvizsgálja az összefüggéseket más jelekkel, hogy alátámassza a nagy lépétkű kampányok bizonyítékait.
 
 * **A rendszer gyanús folyamat-végrehajtást észlelt**: A támadók gyakran próbálkoznak ártalmatlan folyamatnak álcázott kártékony kódok futtatásával. Ezek a riasztások jelzik, ha egy folyamat végrehajtására illik az alábbi jellemzők valamelyike:
-    * A rendszer olyan folyamatot hajtott végre, amelyet közismerten ártó célokból szoktak használni. Bár az egyes parancsok ártalmatlannak tűnhetnek, a riasztás értékelése a parancsok összességére vonatkozik.
+    * A rendszer olyan folyamatot hajtott végre, amelyet közismerten ártó célokból szoktak használni. Az egyes parancsok ártalmatlannak jeleníthet meg, amíg a riasztás összességére vonatkozik az alábbi parancsok összesítést.
     * Egy folyamat végrehajtása ismeretlen helyről indult ki.
     * Egy folyamat végrehajtása olyan helyről indult ki, amelyen ismert gyanús fájlokkal osztozik.
     * Egy folyamat végrehajtása gyanús útvonalról történt.
@@ -57,7 +57,7 @@ A Security Center fejlett elemzési módszerekkel azonosítja a feltört erőfor
     * A rendszer gyanús kiterjesztésű folyamatot hajtott végre.
     * A rendszer gyanús kettős kiterjesztésű folyamatot hajtott végre.
     * A rendszer gyanús, a fájlnévben jobbról balra olvasott (RLO) karaktert tartalmazó folyamatot hajtott végre.
-    * A rendszer egy gyakran használt folyamat nevéhez nagyon hasonló, de azzal nem megegyező nevű folyamatot hajtott végre.
+    * Egy folyamat, amelynek a neve hasonló, de más a gyakran futtatott folyamat lett végrehajtva
     * A rendszer egy ismert támadóeszközhöz kapcsolható névvel ellátott folyamatot hajtott végre.
     * A rendszer egy véletlenszerű névvel ellátott folyamatot hajtott végre.
     * A rendszer gyanús kiterjesztésű folyamatot hajtott végre.
@@ -82,7 +82,7 @@ A Security Center fejlett elemzési módszerekkel azonosítja a feltört erőfor
 * **RDP-erőforrás gyanús tevékenysége**: A támadók gyakran az RDP-hez hasonló nyitott felügyeleti portokat vesznek célba találgatásos támadásokkal. Ezek a riasztások gyanús távoli asztali bejelentkezési tevékenységre utalnak, amely a következőket jelentheti:
     * Kísérleteket tettek távoli asztali bejelentkezésre.
     * Kísérleteket tettek távoli asztali bejelentkezésre érvénytelen fiókokon keresztül.
-    * Kísérleteket tettek távoli asztali bejelentkezésre, amelyek egy része sikeres bejelentkezést eredményezett a gépen.
+    * Távoli asztali bejelentkezési kísérletekre került sor, amelyek némelyike tudtak sikeresen jelentkezzen be a gép.
 * **SSH-erőforrás gyanús tevékenység**: A támadók gyakran az SSH-hoz hasonló nyitott felügyeleti portokat vesznek célba találgatásos támadásokkal. Ezek a riasztások gyanús SSH-bejelentkezési tevékenységre utalnak, amely a következőket jelentheti:
     * Sikertelen SSH-bejelentkezési kísérletekre került sor.
     * SSH-bejelentkezési kísérletekre került sor, amelyek egy része sikeres volt.
@@ -96,15 +96,15 @@ A Security Center fejlett elemzési módszerekkel azonosítja a feltört erőfor
 * **Az összes fájl árnyékmásolata törölve lett**: Ez a riasztás azt jelzi, hogy az árnyékmásolatok törölve lettek.
 * **Gyanús fájltörlési parancsok**: Ez a riasztás olyan systeminfo parancskombinációt jelez, amelyet gyakran behatolás utáni öntörlési tevékenységhez használnak.  Bár a *systeminfo.exe* megbízható Windows-eszköznek minősül, az egymás után kétszeri futtatása, majd ezt követően egy törlési parancs használata, ahogy ebben az esetben is történt, igen ritka.
 * **Gyanús fióklétrehozás**: Ez a riasztás azt jelzi, hogy egy meglévő beépített rendszergazdai jogosultságú fiókhoz nagyon hasonló fiókot hoztak létre. Ezzel a technikával a támadók feltűnésmentesen hozhatnak létre rosszindulatú fiókokat.
-* **Gyanús kötet-árnyékmásolati tevékenység**: Ez a riasztás árnyékmásolati törlési tevékenységet jelez az erőforráson. A kötet árnyékmásolata (Volume Shadow Copy, VSC) az adatok pillanatképeit tároló fontos összetevő. Ez a tevékenység általában egy zsarolóprogrammal hozható összefüggésbe, de megbízható tevékenységhez is kapcsolódhat.
+* **Gyanús kötet-árnyékmásolati tevékenység**: Ez a riasztás árnyékmásolati törlési tevékenységet jelez az erőforráson. A kötet árnyékmásolata (Volume Shadow Copy, VSC) az adatok pillanatképeit tároló fontos összetevő. Ezt a tevékenységet, Zsarolóprogrammal társítva, de az is előfordulhat, hogy jogosult.
 * **Windows beállításjegyzék adatmegőrzési metódusa**: Ez a riasztás egy végrehajtható kód megőrzésére tett kísérletet jelez a Windows beállításjegyzékben. A rosszindulatú folyamatok gyakran alkalmaznak ehhez hasonló technikákat, hogy a rendszer újraindítása után is megmaradjanak.
 * **Gyanús új tűzfalszabály**: Ez a riasztás azt jelzi, hogy egy új tűzfalszabály lett hozzáadva a *netsh.exe* segítségével egy gyanús helyen található végrehajtható fájltól érkező forgalom engedélyezése érdekében.
-* **Gyanús XCOPY-végrehajtások**: Ez a riasztás XCOPY-végrehajtások egy sorozatát jelzi, amely arra utalhat, hogy az egyik gépet feltörték, és rosszindulatú programok terjesztésére használták.
-* **Jogi nyilatkozat megjelenésének letiltása a felhasználók bejelentkezésekor**: Ez a riasztás azt jelzi, hogy a felhasználók bejelentkezésekor a jogi nyilatkozat megjelenését vezérlő beállításkulcs megváltozott. Ezt a támadók gyakran alkalmazzák egy gazdagép feltörése után.
+* **Gyanús XCOPY-végrehajtások**: Ez a riasztás azt jelzi, hogy sikerült jelezze, hogy egyik gépet feltörték, és a kártevők használták XCOPY-végrehajtások egy sorozatát.
+* **Jogi nyilatkozat jelenik meg a felhasználók bejelentkezésekor tiltási**: Ez a riasztás azt jelzi, hogy a beállításkulcsot, amely meghatározza, hogy jogi nyilatkozat módosítás megjelenik a felhasználók számára, amikor bejelentkeznek. Ezt a támadók gyakran alkalmazzák egy gazdagép feltörése után.
 * **A rendszer kis- és nagybetűs karakterek rendellenes kombinációját észlelte a parancssorban**: Ez a riasztás kis- és nagybetűs karakterek kombinációjának használatát jelzi a parancssorban. Ezt a technikát a támadók a kis- és nagybetűket megkülönböztető vagy kivonatalapú gépi szabályok elől való elrejtőzésre használják.
 * **Rejtjelezett parancssor**: Ez a riasztás azt jelzi, hogy a rendszer gyanús, rejtjelezésre utaló jeleket észlelt a parancssorban.
 * **Több tartományi fiók lett lekérdezve**: A támadók gyakran kérdeznek le AD-tartományi fiókokat a felhasználók, tartományi rendszergazdai fiókok, tartományvezérlők és a tartományok közötti megbízhatósági kapcsolatok felderítése során. Ez a riasztás azt jelzi, hogy szokatlan mennyiségű, különböző tartományokban található fiókot kérdeztek le rövid időn belül.
-* **Lehetséges helyi felderítési tevékenység**: Ez a riasztás a felderítési tevékenységgel összefüggésbe hozható systeminfo parancsok egy kombinációjának végrehajtását jelzi.  Bár a *systeminfo.exe* megbízható Windows-eszköznek minősül, egymás után kétszer igen ritkán futtatják.
+* **Lehetséges helyi felderítési tevékenység**: Ez a riasztás azt jelzi, hogy végre lett hajtva felderítési tevékenységgel összefüggésbe hozható systeminfo parancsok kombinációját.  Bár a *systeminfo.exe* megbízható Windows-eszköznek minősül, egymás után kétszer igen ritkán futtatják.
 * **Kulcslétrehozó végrehajtható fájl lehetséges futtatása**: Ez a riasztás olyan folyamat végrehajtását jelzi, amelynek neve egy kulcslétrehozó eszközre utal. Ezek az eszközök általában a szoftverlicencelési mechanizmusok kiiktatására szolgálnak, letöltésükkor azonban gyakran más rosszindulatú szoftverek is letöltődhetnek.
 * **Gyanús végrehajtás a rundll32.exe használatával**: Ez a riasztás azt jelzi, hogy a rundll32.exe-t szokatlan névvel ellátott folyamat végrehajtására használták, amely megegyezik a támadók által a feltört gazdagépeken az implantátum első fázisának telepítése során alkalmazott elnevezési sémával.
 * **A HTA és a PowerShell gyanús kombinációja**: Ez a riasztás azt jelzi, hogy egy Microsoft HTML-alkalmazásgazda (HTA) PowerShell-parancsokat indít el. Ezzel a technikával a támadók kártevő PowerShell-szkripteket indíthatnak.
@@ -113,7 +113,7 @@ A Security Center fejlett elemzési módszerekkel azonosítja a feltört erőfor
 * **Egy fiók több gazdagépen is létre lett hozva az elmúlt 24 órában**: Ez a riasztás azt jelzi, hogy ugyanazt a felhasználói fiókot több gazdagépen is megkísérelték létrehozni, amely bizonyíték lehet egy támadó oldalirányú mozgására a hálózaton, egy vagy több hálózati entitás feltörését követően.
 * **Gyanús CACLS-használat a rendszer biztonsági szintjének csökkentése érdekében**: Ez a riasztás a hozzáférésvezérlés-módosítási lista (CACLS) módosítását jelzi. A támadók gyakran használják ezt a technikát arra, hogy teljes körű hozzáférést biztosítsanak a rendszer olyan bináris fájljai számára, mint az ftp.exe, a net.exe, a wscript.exe stb.
 * **Gyanús Kerberos-aranyjegyes támadási paraméterek**: Ez a riasztás egy Kerberos-aranyjegyes támadásnak megfelelő paraméterekkel rendelkező parancssor végrehajtását jelzi. A feltört krbtgt kulcsokkal a támadók bármely felhasználó nevében eljárhatnak.
-* **A WDigest UseLogonCredential beállításkulcs engedélyezése**: Ez a riasztás a beállításkulcs olyan módosítását jelzi, amelynek köszönhetően a bejelentkezési hitelesítő adatokat a rendszer az LSA-memóriában tárolja, ahonnan később begyűjthetők.
+* **A WDigest UseLogonCredential beállításkulcs engedélyezése**: Ez a riasztás azt jelzi, hogy a beállításkulcs megváltozott-e, hogy a bejelentkezési hitelesítő adatait az LSA-memóriában majd memória begyűjtött is egyszerű szövegként kell tárolni.
 * **A Telegram eszköz esetlegesen gyanús használata**: Ez a riasztás a Telegram nevű, ingyenes, felhőalapú azonnali üzenetküldő szolgáltatás telepítését jelzi, amelyet a támadók gyakran arra használnak, hogy rosszindulatú bináris fájlokat vigyenek át számítógépekre, mobiltelefonokra vagy táblagépekre.
 * **Új ASEP létrehozása**: Ez a riasztás egy új ASEP (automatikus indításkiterjesztési pont) létrehozását jelzi, amely révén a parancssorban azonosított névvel ellátott folyamat automatikusan elindul, ezt pedig a támadók saját folyamataik megőrzésére használhatják.
 * **Gyanús Set-ExecutionPolicy- és WinRM-módosítások**: Ez a riasztás olyan konfigurációmódosításokat jelez, amelyek a rosszindulatú ChinaChopper webshell használatával hozhatók összefüggésbe.
@@ -134,7 +134,7 @@ A Security Center fejlett elemzési módszerekkel azonosítja a feltört erőfor
 * **Gyanús parancssori argumentumok**: Ez a riasztás gyanús parancssori argumentumokat jelez, amelyeket a HYDROGEN tevékenységi csoport által használt fordított felülettel (reverse shell) együtt használtak.
 * **Gyanús hitelesítő adatok dokumentumokhoz**: Ez a riasztás egy gyanús, előre kiszámított, általános jelszókivonatot jelez, amelyet a rosszindulatú programok egy fájl végrehajtásához használnak.
 * **Dinamikus PS-szkript konstrukció**: Ez a riasztás egy PowerShell-szkript dinamikus létrehozását jelzi. Ezt a módszert a támadók szkriptek fokozatos felépítésére használják az illetéktelen hálózati behatolást jelző (IDS) rendszerek megkerülése érdekében.
-* **Metasploitra utaló jelek**: Ez a riasztás a Metasploit-keretrendszerhez kapcsolódó tevékenységet jelez, amely számos, támadáshoz használható funkciót és eszközt biztosít.
+* **Metasploit mutatók**: Ez a riasztás a Metasploit-keretrendszer, amely számos funkciót és eszközt biztosít a kapcsolódó tevékenységet jelez.
 * **Gyanús fióktevékenység**: Ez a riasztás egy géphez való csatlakozásra tett kísérletet jelez egy nemrégiben feltört fiók használatával.
 * **Fióklétrehozás**: Ez a riasztás új fiók létrehozását jelzi a gépen.
 
@@ -146,7 +146,7 @@ Az összeomlási memóriaképben található memória elemzése olyan speciális
 
 Amikor a szoftver összeomlik, egy összeomlási memóriakép rögzíti a memória egy részét az összeomlás időpontjában. Az összeomlást okozhatja kártevő, általános alkalmazás vagy rendszerproblémák. Az összeomlási memóriaképben található memóriarész elemzésével a Security Center észlelni tudja az olyan technikákat, amelyekkel a kártevők kihasználják a szoftver biztonsági réseit, hozzáférnek a bizalmas adatokhoz, és a feltört gépen maradnak elrejtőzve. Mindez minimális hatással van a gazdagépek teljesítményére, mivel az elemzést a Security Center háttérrendszere végzi.
 
-* **Kódinjektálás észlelhető**: A kódinjektálás olyan művelet, amely végrehajtható modulokat szúr be a futó folyamatokba vagy szálakba. A kártevők ezt a módszert használják az adatok elérésére, elrejtésére vagy az eltávolítás megakadályozására (vagyis az adatok megőrzésére). Ez a riasztás jelzi, hogy injektált modul szerepel az összeomlási memóriaképben. A megbízható szoftverfejlesztők esetenként nem ártó szándékkal hajtanak végre kódinjektálást, hanem például egy meglévő alkalmazás vagy az operációs rendszer egyik összetevőjének módosítása vagy bővítése érdekében. A kártékony és a nem kártékony injektált modulok megkülönböztetéséhez a Security Center ellenőrzi, hogy az injektált modulra illik-e a gyanús működés profilja. Az ellenőrzés eredménye a riasztás „SIGNATURE” mezőjében látható, és ettől függ a riasztás súlyossági szintje, a riasztás leírása és a hibaelhárítási művelet.
+* **Kódinjektálás észlelhető**: A kódinjektálás olyan művelet, amely végrehajtható modulokat szúr be a futó folyamatokba vagy szálakba. Ezzel a technikával kártevő által adatok elérésére, elrejtésére vagy az Eltávolítás (például adatmegőrzés) megakadályozására szolgál. Ez a riasztás jelzi, hogy injektált modul szerepel az összeomlási memóriaképben. A megbízható szoftverfejlesztők esetenként nem ártó szándékkal hajtanak végre kódinjektálást, hanem például egy meglévő alkalmazás vagy az operációs rendszer egyik összetevőjének módosítása vagy bővítése érdekében. A kártékony és a nem kártékony injektált modulok megkülönböztetéséhez a Security Center ellenőrzi, hogy az injektált modulra illik-e a gyanús működés profilja. Az ellenőrzés eredménye a riasztás „SIGNATURE” mezőjében látható, és ettől függ a riasztás súlyossági szintje, a riasztás leírása és a hibaelhárítási művelet.
 * **Gyanús kódszegmens**: A gyanús kódszegmensre figyelmeztető riasztás azt jelzi, hogy egy kódszegmens nem szabványos módszerrel lett lefoglalva, például reflektív injektálással vagy a process hollowingnak (hamis folyamat) nevezett technikával. A riasztás a jelentett kódszegmens további jellemzőit is feldolgozza, hogy kontextusba helyezze a képességeit és viselkedési mintáit.
 * **Héjkód észlelhető**: A héjkód az a kártékony kód, amely azután fut le, hogy a kártevő a szoftver biztonsági rését kihasználva bejut a rendszerbe. Ez a riasztás azt jelzi, hogy az összeomlási memóriakép elemzése olyan végrehajtható kódot talált, amely a kártékony kódokra jellemző működés jeleit mutatja. Bár előfordulhat, hogy nem rosszindulatú szoftverhez tartozik az adott működés, ez nem jellemző a szokásos szoftverfejlesztési gyakorlatban.
 * **Moduleltérítés észlelhető**: A Windows dinamikus csatolású kódtárai (DLL) teszik lehetővé, hogy a szoftverek használják a Windows közös rendszerfunkcióit. DLL-eltérítés akkor történik, ha a kártevő megváltoztatja a DLL-betöltési sorrendet, hogy kártékony kódot töltsön be a memóriába, ahol tetszőleges kódot lehet végrehajtani. Ez a riasztás azt jelzi, hogy az összeomlási memóriakép elemzése egy hasonló nevű modul betöltését észlelte két különböző elérési útról. Az egyik elérési út a Windows rendszer bináris rendszerfájljainak helyére mutat. A megbízható szoftverfejlesztők esetenként nem ártó szándékkal változtatják meg a DLL-ek betöltési sorrendjét, hanem például a Windows operációs rendszer eszközeinek biztosításához vagy bővítéséhez, illetve a Windows-alkalmazások bővítéséhez. A DLL-betöltési sorrend ártó szándékú és esetleg jóindulatú megváltoztatásának megkülönböztetéséhez a Security Center ellenőrzi, hogy a betöltött modulra illik-e a gyanús működés profilja.
@@ -184,15 +184,15 @@ A Security Center erőforrás-elemzése a PaaS (szolgáltatásként üzemeltetet
 * **Találgatásos támadás SQL hitelesítő adatokkal**: Ez a riasztás akkor aktiválódik, ha rendellenesen magas a különböző hitelesítő adatok használatával történő sikertelen bejelentkezések száma. Bizonyos esetekben a riasztás behatolási teszteket észlel működés közben. Más esetekben a riasztás egy találgatásos támadást észlel.
 
 ## <a name="contextual-information"></a>Környezeti információk
-Vizsgálatok során az elemzőknek további háttér-információra van szükségük ahhoz, hogy megállapíthassák a fenyegetés jellegét és elháríthassák veszélyt.  Ha például hálózati anomáliát észlelnek, de nincsenek tisztában azzal, hogy mi történik a hálózaton vagy a célzott erőforráson, rendkívül nehéz meghatározni a következő lépést. Ennek megkönnyítése érdekében a biztonsági incidensek olyan összetevőket, kapcsolódó eseményeket vagy egyéb információt tartalmazhatnak, amely a vizsgálatot végző személy segítségére lehet. A további elérhető információk eltérhetnek az észlelt fenyegetés típusától, valamint a környezet konfigurációjától függően, és nem minden biztonsági incidens esetében állnak rendelkezésre.
+Vizsgálatok során az elemzőknek további háttér-információra van szükségük ahhoz, hogy megállapíthassák a fenyegetés jellegét és elháríthassák veszélyt.  Ha például hálózati anomáliát észlelnek, de nincsenek tisztában azzal, hogy mi történik a hálózaton vagy a célzott erőforráson, rendkívül nehéz meghatározni a következő lépést. Vizsgálatot végző, a biztonsági incidensek összetevőket, kapcsolódó események és a vizsgáló kapcsolatos tartalmazhat. A további elérhető információk eltérhetnek az észlelt fenyegetés típusától, valamint a környezet konfigurációjától függően, és nem minden biztonsági incidens esetében állnak rendelkezésre.
 
 Ha van további elérhető információ, akkor a biztonsági incidensben, a riasztások listája alatt látható. Ez többek között az alábbi információkat tartalmazhatja:
 
 - Naplótörlési események
 - PNP-eszköz csatlakoztatása ismeretlen eszközről
-- Beavatkozást nem igénylő riasztások
+- Riasztások, amelyek nem hasznosítható
 - Új fiók létrehozása
-- Fájl dekódolása a certutil eszközzel 
+- Fájl dekódolása a certutil eszközzel
 
 ![Szokatlan hozzáférés miatti riasztás](./media/security-center-alerts-type/security-center-alerts-type-fig20.png)
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 04c7b521ad13db9f5ec9573fd1ab966ad1282e8e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 442aa7034c3fec57b3b9394e6b0f46d4dec47849
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954313"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633112"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Hozzáadása, módosítása vagy virtuális hálózati alhálózat törlése
 
@@ -69,7 +69,7 @@ Jelentkezzen be, vagy csatlakozhat az Azure-ban, a fiókot hozzá kell rendelni 
 4. Alhálózatok listájában válassza ki az alhálózatot, beállításait módosítani szeretné. A következő beállításokat módosíthatja:
 
     - **Címtartomány:** nincsenek erőforrások az alhálózaton belül vannak telepítve, ha a címtartomány módosíthatja. Ha erőforrásokat az alhálózat létezik, meg kell vagy az erőforrások áthelyezése egy másik alhálózatot, vagy először törölje azokat az alhálózat. A lépéseket, mozgathat vagy törölhet egy erőforrás az erőforrás változhat. Helyezze át vagy törölje az erőforrást, amely alhálózatokon vannak, olvassa el az egyes erőforrástípusok áthelyezni vagy törölni kívánt dokumentációját. Tekintse meg a függőségeket **címtartomány** 5. lépésében [adjon hozzá egy alhálózatot](#add-a-subnet).
-    - **Felhasználók**: az alhálózathoz való hozzáférést beépített szerepkörökkel vagy saját egyéni szerepkörökkel szabályozhatja. Szerepkörök és a felhasználók férhetnek hozzá az alhálózat hozzárendelése kapcsolatos további információkért lásd: [az Azure-erőforrásokhoz való hozzáférés kezelése szerepkör-hozzárendelés használatával](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access).
+    - **Felhasználók**: az alhálózathoz való hozzáférést beépített szerepkörökkel vagy saját egyéni szerepkörökkel szabályozhatja. Szerepkörök és a felhasználók férhetnek hozzá az alhálózat hozzárendelése kapcsolatos további információkért lásd: [az Azure-erőforrásokhoz való hozzáférés kezelése szerepkör-hozzárendelés használatával](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-role-assignment).
     - **Hálózati biztonsági csoport** és **útvonaltábla**: 5. lépés lásd a [adjon hozzá egy alhálózatot](#add-a-subnet).
     - **Szolgáltatásvégpontokat**: lásd az 5. lépésében Szolgáltatásvégpontok [adjon hozzá egy alhálózatot](#add-a-subnet). Egy meglévő alhálózat szolgáltatásvégpont engedélyezésekor győződjön meg arról, hogy semmilyen kritikus feladat fut-e a az alhálózaton található erőforrásokat. Szolgáltatásvégpontok váltson az alapértelmezett útvonal használatával az alhálózat összes hálózati adapteren útvonalakat a *0.0.0.0/0* -előtag és következő ugrási típusú *Internet*, egy új útvonalat használja a oldja meg a szolgáltatás és a egy következő ugrási típusú előtagok *VirtualNetworkServiceEndpoint*. A váltás során nyitott TCP-kapcsolatokat lehet megszüntetni. A szolgáltatási végpont nem érhető el, amíg adatforgalmakat, hogy a szolgáltatás az összes hálózati adapter frissülnek az új útvonal. További információ az útválasztásról, lásd: [Útválasztás áttekintése](virtual-networks-udr-overview.md).
     - **Alhálózat delegálás:** tekintse meg az 5. lépésében Szolgáltatásvégpontok [adjon hozzá egy alhálózatot](#add-a-subnet). Alhálózat delegálás engedélyezve nulla vagy egynél több delegálásokat módosíthatók. Ha egy erőforrást egy szolgáltatás már telepítve van az alhálózaton, alhálózat delegálás nem távolítható el a szolgáltatás az összes erőforrást eltávolították. Delegálni egy másik szolgáltatás, válassza ki a szolgáltatást, a delegálni szeretne a **szolgáltatások** listája. 

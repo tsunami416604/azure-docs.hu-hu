@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: 1bcdac43eea41a044e920c14310a9f3cd4df793b
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 34d42f9987303c1381584ae4b2991a8f30a67ed5
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285442"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52618959"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>Kimenő SMTP kapcsolati hibák elhárításához, az Azure-ban
 
@@ -44,7 +44,7 @@ Ha egy használatalapú fizetéses vagy Microsoft Partner Network előfizetés k
 > A Microsoft fenntartja a jogot visszavonásához ezt a kivételt, ha megállapította, hogy a szolgáltatási feltételek megsértése történt.
 
 ## <a name="msdn-azure-pass-azure-in-open-education-bizspark-and-free-trial"></a>Az MSDN, Azure Pass, Azure in Open, Education, BizSpark és ingyenes próbaverzió
-Ha az MSDN, Azure Pass, Azure 2017. November 15., az Open, Education, BizSpark vagy ingyenes próbaverzió előfizetésben létrehozott lesz műszaki korlátozások, hogy ezek az előfizetések belül küldött virtuális gépekről, közvetlenül az e-mail-szolgáltatók letiltása az e-mail. A korlátozásokat a visszaélések megelőzése érdekében kell elvégezni. Ez a korlátozás feloldását nincsenek kérelmek fog kapni.
+Ha az Open, Education, BizSpark, Azure sponsorship ajánlattal, Azure tanulók, ingyenes próbaverzió vagy minden Visual Studio-előfizetéssel, 2017. November 15-létrehozta az MSDN, Azure Pass, Azure, akkor műszaki korlátozások, hogy ezek belüli virtuális gépek által küldött letiltása az e-mail előfizetések közvetlenül az e-mail-szolgáltatók. A korlátozásokat a visszaélések megelőzése érdekében kell elvégezni. Ez a korlátozás feloldását nincsenek kérelmek fog kapni.
 
 Ezek a típusok előfizetés használata esetén, hogy javasoljuk, hogy az SMTP-továbbítási szolgáltatások használata ebben a cikkben korábban ismertetett módon.
 

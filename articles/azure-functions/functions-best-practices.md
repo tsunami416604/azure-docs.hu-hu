@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aecd68734999c30f3dc8e7a2ea8c7d5e9cdfacb0
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 78882742549632e7f1f6362f9e3ad0ae0034ffda
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166338"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634676"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>A teljesítmény-és az Azure Functions megbízhatóság
 
@@ -37,7 +37,7 @@ Amikor csak lehetséges, újrabontása nagy funkciók kisebb függvény együtt 
 
 ### <a name="cross-function-communication"></a>Adatbázisközi függvény kommunikáció
 
-[Durable Functions](durable-functions-overview.md) és [Azure Logic Apps](../logic-apps/logic-apps-overview.md) beépített állapotváltásra és több functions közötti kommunikáció kezelését.
+[Durable Functions](durable/durable-functions-overview.md) és [Azure Logic Apps](../logic-apps/logic-apps-overview.md) beépített állapotváltásra és több functions közötti kommunikáció kezelését.
 
 Ha nem használ több függvények integrálása Durable Functions vagy a Logic Apps, általában közötti kommunikáció függvény a storage-üzenetsorok használata ajánlott.  A fő oka, tároló-üzenetsorok olcsóbb, és sokkal egyszerűbb üzembe helyezni. 
 

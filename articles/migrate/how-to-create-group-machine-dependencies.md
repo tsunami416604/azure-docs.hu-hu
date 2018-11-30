@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: raynew
-ms.openlocfilehash: 9ec69b474f72115f2104060b6f55af1992c31517
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 2755cc4e8e0e5a1b2a0e491b00fc73530dd9b958
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51819304"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635679"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Gépek csoportosítása a gépek függőségi leképezés használatával
 
@@ -35,7 +35,7 @@ Kihasználhatja a függőségek képi megjelenítésével, hozzá kell rendelni 
 > A migrálási projekthez tartozó munkaterület nem módosítható.
 
 ### <a name="download-and-install-the-vm-agents"></a>A virtuálisgép-ügynökök letöltése és telepítése
-Miután konfigurál egy munkaterületet, akkor kell töltse le és telepítse az ügynököt minden olyan szeretne értékelni a helyszíni gépen. Ezenkívül, ha internetkapcsolat nélküli gépek, kell letölteni és telepíteni [Log Analytics-átjáró](../log-analytics/log-analytics-oms-gateway.md) rajtuk.
+Miután konfigurál egy munkaterületet, akkor kell töltse le és telepítse az ügynököt minden olyan szeretne értékelni a helyszíni gépen. Ezenkívül, ha internetkapcsolat nélküli gépek, kell letölteni és telepíteni [Log Analytics-átjáró](../azure-monitor/platform/gateway.md) rajtuk.
 
 1. A **áttekintése**, kattintson a **kezelés** > **gépek**, és válassza ki a szükséges gépet.
 2. Az a **függőségek** oszlopot, kattintson a **ügynökök telepítése**.

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d4fba078487f99347804362a888bcc2c33dde1ef
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 4fd36d58574b60e3e6351cba03c68b9217bc703d
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715510"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632466"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Megtervezik és megvalósítják a felügyeleti megoldás az Azure-ban (előzetes verzió)
 > [!NOTE]
@@ -42,16 +42,16 @@ A leggyakrabban használt minta egy felügyeleti megoldás az alábbi ábrán l�
 
 
 ### <a name="data-sources"></a>Adatforrások
-A megoldás tervezésének első lépése annak meghatározása, az adatokat, amelyekre szüksége van a Log Analytics-adattárból.  Előfordulhat, hogy ezeket az adatokat gyűjti össze a [adatforrás](../../log-analytics/log-analytics-data-sources.md) vagy [egy másik megoldás]( solutions.md), vagy a megoldás lehet, hogy kell adnia azt gyűjti.
+A megoldás tervezésének első lépése annak meghatározása, az adatokat, amelyekre szüksége van a Log Analytics-adattárból.  Előfordulhat, hogy ezeket az adatokat gyűjti össze a [adatforrás](../../azure-monitor/platform/agent-data-sources.md) vagy [egy másik megoldás]( solutions.md), vagy a megoldás lehet, hogy kell adnia azt gyűjti.
 
-Adatforrások leírtak szerint a Log Analytics-adattárban gyűjtött számos módon vannak [adatforrásokat a Log Analytics](../../log-analytics/log-analytics-data-sources.md).  Ez magában foglalja a Windows eseménynaplóban az események vagy Syslog által generált teljesítményszámlálók mellett a Windows- és Linux-ügyfelek.  Az Azure-erőforrások Azure Monitor által gyűjtött is gyűjthet adatokat.  
+Adatforrások leírtak szerint a Log Analytics-adattárban gyűjtött számos módon vannak [adatforrásokat a Log Analytics](../../azure-monitor/platform/agent-data-sources.md).  Ez magában foglalja a Windows eseménynaplóban az események vagy Syslog által generált teljesítményszámlálók mellett a Windows- és Linux-ügyfelek.  Az Azure-erőforrások Azure Monitor által gyűjtött is gyűjthet adatokat.  
 
 Nem minden elérhető adatforrások-n keresztül elérhető adatok van szüksége, akkor használhatja a [HTTP-adatgyűjtő API](../../log-analytics/log-analytics-data-collector-api.md) így a használatával írhat adatokat a Log Analytics-tárházba bármely ügyfélnek, amely segítségével meghívhatja a REST API-t.  A leggyakoribb azt jelenti, hogy egyéni adatgyűjtés felügyeleti megoldás az, hogy hozzon létre egy [az Azure Automation runbook](../../automation/automation-runbook-types.md) , amely a szükséges adatokat gyűjti össze az Azure- vagy külső erőforrásokat, és az adatgyűjtő API segítségével írni a adattár.  
 
 ### <a name="log-searches"></a>Naplókeresések
 [Naplókeresések](../../log-analytics/log-analytics-queries.md) kibontása és elemzése a Log Analytics-adattárban lévő adatok használhatók.  Ezek a nézetek és riasztások mellett lehetővé teszi a felhasználónak az ad hoc elemzést az adatok a tárházban szolgálnak.  
 
-Meg kell határozni, hogy úgy gondolja, hogy akkor is hasznos lehet a felhasználónak, akkor is, ha nem használta azokat bármilyen nézeteket és riasztásokat lekérdezéseket.  Ezek őket a mentett keresések, a portálon elérhető lesz, és is hozzáadhatja őket egy [lista a lekérdezés vizualizációs rész](../../log-analytics/log-analytics-view-designer-parts.md#list-of-queries-part) az egyéni nézetben.
+Meg kell határozni, hogy úgy gondolja, hogy akkor is hasznos lehet a felhasználónak, akkor is, ha nem használta azokat bármilyen nézeteket és riasztásokat lekérdezéseket.  Ezek őket a mentett keresések, a portálon elérhető lesz, és is hozzáadhatja őket egy [lista a lekérdezés vizualizációs rész](../../azure-monitor/platform/view-designer-parts.md#list-of-queries-part) az egyéni nézetben.
 
 ### <a name="alerts"></a>Riasztások
 [Riasztások a Log Analyticsben](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) azonosíthatja a problémákat keresztül [naplókereséseket](#log-searches) az adatokban a tárházban.  Vagy a felhasználó értesítése, vagy automatikusan válaszként futtatni a műveletet. Azonosítsa az alkalmazás különböző riasztási feltételeket kell és adathordozófájlba felvenni a megoldás megfelelő riasztási szabályok.
@@ -61,9 +61,9 @@ Ha a probléma esetleg egy automatizált folyamattal javítani kell, majd által
 Ha a megoldáshoz szükséges külső funkciók egy riasztásra adott válaszként, akkor használhat egy [webhook válasza](../../monitoring-and-diagnostics/alert-metric.md).  Ez lehetővé teszi, hogy egy külső webes szolgáltatás adatokat küld a riasztásokból meghívható.
 
 ### <a name="views"></a>Nézetek
-A nézetek a Log Analytics segítségével a Log Analytics-adattárban adatainak megjelenítése.  Egyes megoldások általában fogja tartalmazni a szolgáltatással egyetlen nézetben egy [csempe](../../log-analytics/log-analytics-view-designer-tiles.md) , amely a felhasználó fő irányítópultján jelenik meg.  A nézet tartalmazhat tetszőleges számú [Vizualizáció részek](../../log-analytics/log-analytics-view-designer-parts.md) különböző megjelenítését tartalmazza az összegyűjtött adatokat biztosít a felhasználó számára.
+A nézetek a Log Analytics segítségével a Log Analytics-adattárban adatainak megjelenítése.  Egyes megoldások általában fogja tartalmazni a szolgáltatással egyetlen nézetben egy [csempe](../../azure-monitor/platform/view-designer-tiles.md) , amely a felhasználó fő irányítópultján jelenik meg.  A nézet tartalmazhat tetszőleges számú [Vizualizáció részek](../../azure-monitor/platform/view-designer-parts.md) különböző megjelenítését tartalmazza az összegyűjtött adatokat biztosít a felhasználó számára.
 
-Ön [Az adatforrásnézet-tervezőből segítségével egyéni nézeteket hozhat létre](../../log-analytics/log-analytics-view-designer.md) , amelyek később exportálhatja, hogy a megoldás fájlban.  
+Ön [Az adatforrásnézet-tervezőből segítségével egyéni nézeteket hozhat létre](../../azure-monitor/platform/view-designer.md) , amelyek később exportálhatja, hogy a megoldás fájlban.  
 
 
 ## <a name="create-solution-file"></a>Megoldás-fájl létrehozása

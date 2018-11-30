@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d264160fb3f1c14db3379a314e60efdadb6905b5
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: d9a28ea43e732c53afb75e96f20cb13b9bbb27a6
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210414"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632616"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>Mi az a szerepköralapú hozzáférés-vezérlés (RBAC)?
 
@@ -50,13 +50,14 @@ A szerepköralapú hozzáférés-vezérlés keretében az erőforrások elérés
 
 ### <a name="security-principal"></a>Rendszerbiztonsági tag
 
-A *rendszerbiztonsági tag* egy olyan objektum, amely egy, az Azure-erőforrásokhoz hozzáférést igénylő felhasználót, csoportot vagy szolgáltatásnevet jelöl.
+A *rendszerbiztonsági tag* olyan objektum, amely egy felhasználó, csoport, szolgáltatásnév vagy Azure-erőforrásokhoz való hozzáférést kérő felügyelt identitás jelöli.
 
 ![Szerepkör-hozzárendelések rendszerbiztonsági tagjai](./media/overview/rbac-security-principal.png)
 
 - Felhasználó – Egy Azure Active Directory-profillal rendelkező személy. Más bérlőkön lévő felhasználókhoz is hozzárendelhet szerepköröket. A más vállalatok felhasználóira vonatkozó információkért lásd: [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md).
 - Csoport – Felhasználók az Azure Active Directoryban létrehozott csoportja. Ha egy csoporthoz rendel hozzá egy szerepkört, a csoportban lévő összes felhasználó rendelkezik majd az adott szerepkörrel. 
 - Szolgáltatásnév – Alkalmazások vagy szolgáltatások által adott Azure-erőforrások elérésére használt biztonsági identitás. Úgy képzelhető el, mint egy alkalmazás *felhasználói identitása* (felhasználóneve és jelszava vagy tanúsítványa).
+- Felügyelt identitás – az Azure Active Directoryban, hogy automatikusan által felügyelt Azure-identitás. Általában [felügyelt identitások](../active-directory/managed-identities-azure-resources/overview.md) hitelesítéséhez az Azure-szolgáltatások a hitelesítő adatok kezelése a felhőalkalmazások fejlesztése során.
 
 ### <a name="role-definition"></a>Szerepkör-definíció
 
@@ -83,7 +84,7 @@ Az Azure-ban a hatókörök több szinten határozhatók meg: a [felügyeleti cs
 
 ![Szerepkör-hozzárendelés hatóköre](./media/overview/rbac-scope.png)
 
-Amikor hozzáférést rendel egy szülő hatókörhöz, az engedélyeket azok származtatott hatókörei is öröklik. Például:
+Amikor hozzáférést rendel egy szülő hatókörhöz, az engedélyeket azok származtatott hatókörei is öröklik. Példa:
 
 - Ha [tulajdonosi](built-in-roles.md#owner) szerepkört rendel egy, a felügyeleti csoport hatóköréhez tartozó felhasználóhoz, a felhasználó a felügyeleti csoportban lévő összes előfizetésben mindent felügyelhet.
 - Ha az [Olvasó](built-in-roles.md#reader) szerepkört hozzárendeli egy csoporthoz az előfizetés hatókörében, a csoport tagjai az előfizetésben lévő összes erőforráscsoportot és erőforrást megtekinthetik.
@@ -91,7 +92,7 @@ Amikor hozzáférést rendel egy szülő hatókörhöz, az engedélyeket azok sz
 
 ### <a name="role-assignments"></a>Szerepkör-hozzárendelések
 
-A *szerepkör-hozzárendelés* során egy szerepkör-definíciót rendelünk egy felhasználóhoz, csoporthoz vagy szolgáltatásnévhez egy adott hatókör mellett hozzáférés biztosítása érdekében. A hozzáférés szerepkör-hozzárendelés létrehozásával biztosítható, és a szerepkör-hozzárendelés törlésével vonható vissza.
+A *szerepkör-hozzárendelés* azt a folyamatot, a szerepkör-definíciónak csatolása egy felhasználó, csoport, szolgáltatásnevet vagy felügyelt identitás hozzáférés biztosítása céljából egy adott hatókörben. A hozzáférés szerepkör-hozzárendelés létrehozásával biztosítható, és a szerepkör-hozzárendelés törlésével vonható vissza.
 
 Az alábbi ábrán egy példa látható szerepkör-hozzárendelésre. Ebben a példában a Marketing csoporthoz hozzárendeltük a [Közreműködő](built-in-roles.md#contributor) szerepkört a gyógyszer-értékesítési erőforráscsoportra vonatkozóan. Ez azt jelenti, hogy a Marketing csoportba tartozó felhasználók bármilyen Azure-erőforrást létrehozhatnak és kezelhetnek a gyógyszer-értékesítési erőforráscsoportban. A Marketing felhasználói a gyógyszer-értékesítési erőforráscsoporton kívüli erőforrásokhoz nem rendelkeznek hozzáféréssel, ha nem tagjai másik szerepkör-hozzárendelésnek is.
 
@@ -101,9 +102,7 @@ Szerepkör-hozzárendeléseket az Azure Portal, az Azure CLI, az Azure PowerShel
 
 ## <a name="deny-assignments"></a>Megtagadás-hozzárendelések
 
-Korábban az RBAC csak megengedő, megtagadás nélküli modell volt, de az RBAC jelenleg korlátozott módon támogatja a megtagadás-hozzárendeléseket. A szerepkör-hozzárendelésekhez hasonlóan a *megtagadás-hozzárendelések* megtagadási műveleteket kötnek egy felhasználóhoz, csoporthoz vagy szolgáltatásnévhez egy adott hatókör mellett a hozzáférés megtagadása érdekében. A szerepkör-hozzárendelések az *engedélyezett* műveleteket határozzák meg, míg a megtagadás-hozzárendelések a *nem engedélyezett* műveleteket. Vagyis a megtagadás-hozzárendelések akkor is meggátolják, hogy a felhasználók elvégezzék a megadott műveleteket, ha egy szerepkör-hozzárendelés hozzáférést nyújt azokhoz. A megtagadás-hozzárendelések elsőbbséget élveznek a szerepkör-hozzárendelésekkel szemben.
-
-Jelenleg a megtagadás-hozzárendelések **csak olvashatók**, és csak az Azure állíthatja be azokat. Nem hozhat létre saját megtagadási hozzárendeléseket, azonban listázhatja a megtagadás-hozzárendeléseket, mert ezek hatással lehetnek a hatályos engedélyekre. A megtagadás-hozzárendelésekkel kapcsolatos információk lekéréséhez a `Microsoft.Authorization/denyAssignments/read` engedéllyel kell rendelkeznie, amelyet a legtöbb [beépített szerepkör](built-in-roles.md#owner) tartalmaz. További információkat a [megtagadás-hozzárendeléseket ismertető](deny-assignments.md) cikkben olvashat.
+Korábban az RBAC csak megengedő, megtagadás nélküli modell volt, de az RBAC jelenleg korlátozott módon támogatja a megtagadás-hozzárendeléseket. Szerepkör-hozzárendelés, hasonlóan egy *hozzárendelés megtagadása* rendeli egy sor megtagadási műveletek egy felhasználó, csoport, szolgáltatásnevet vagy felügyelt identitás céljából megtagadja a hozzáférést egy adott hatókörben. Szerepkör-hozzárendelés határozza meg azon műveletek, amelyek *engedélyezett*, míg egy megtagadási hozzárendelés határozza meg azon műveletek, amelyek *nem engedélyezett*. Vagyis a megtagadás-hozzárendelések akkor is meggátolják, hogy a felhasználók elvégezzék a megadott műveleteket, ha egy szerepkör-hozzárendelés hozzáférést nyújt azokhoz. A megtagadás-hozzárendelések elsőbbséget élveznek a szerepkör-hozzárendelésekkel szemben. Jelenleg a megtagadás-hozzárendelések **csak olvashatók**, és csak az Azure állíthatja be azokat. További információkért lásd: [Understand megtagadása hozzárendelések](deny-assignments.md) és [megtekintése az Azure portal használatával hozzárendelések megtagadása](deny-assignments-portal.md).
 
 ## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>Hogyan határozza meg az RBAC, hogy egy felhasználó rendelkezik-e hozzáféréssel egy erőforráshoz?
 

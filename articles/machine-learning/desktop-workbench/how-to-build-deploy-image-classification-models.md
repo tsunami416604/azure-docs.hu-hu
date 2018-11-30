@@ -10,12 +10,12 @@ ms.author: netahw
 author: nhaiby
 ms.date: 04/23/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: f5917cd7a5e4fcc2733765f642ad0958092372c1
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: ab9e04b8a9eb4290891b3c7d55f8262c4ba64d44
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616214"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584046"
 ---
 # <a name="build-and-deploy-image-classification-models-with-azure-machine-learning"></a>Létrehozása és üzembe helyezése az Azure Machine Learning képbesorolási modellek
 
@@ -37,7 +37,7 @@ A számítógép vision tartomány problémák nagy számú kép a fájlbesorol�
 7. Webszolgáltatás üzembe helyezés
 8. Terheléses tesztelés webszolgáltatás
 
-[CNTK](https://www.microsoft.com/cognitive-toolkit/) használja, a deep learning-keretrendszerek képzési helyileg kell elvégezni a GPU-alapú gépek például a ([Deep learning-adatelemzési virtuális gép](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)), és üzembe helyezés az Azure Machine Learning Operacionalizálás CLI használja.
+[CNTK](https://docs.microsoft.com/cognitive-toolkit/) használja, a deep learning-keretrendszerek képzési helyileg kell elvégezni a GPU-alapú gépek például a ([Deep learning-adatelemzési virtuális gép](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)), és üzembe helyezés az Azure Machine Learning Operacionalizálás CLI használja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -175,7 +175,7 @@ display(annotation_ui.ui)
 
 ## <a name="augment-images"></a>Képek bővítésével
 
-A [ `augmentation` modul](https://docs.microsoft.com/python/api/cvtk.augmentation) , mivel megvédi a leírt átalakításokat használja egy adatkészlet-objektum funkciókat biztosít a [imgaug](https://github.com/aleju/imgaug) könyvtár. Kép átalakítások csoportosíthatók az egy folyamatot, ebben az esetben a folyamat minden átalakítások alkalmazott egyszerre minden egyes képe. 
+A [ `augmentation` modul](/python/api/cvtk/cvtk.augmentation.augmentation) , mivel megvédi a leírt átalakításokat használja egy adatkészlet-objektum funkciókat biztosít a [imgaug](https://github.com/aleju/imgaug) könyvtár. Kép átalakítások csoportosíthatók az egy folyamatot, ebben az esetben a folyamat minden átalakítások alkalmazott egyszerre minden egyes képe. 
 
 Ha másik kiegészítését lépéseket hajtjuk végre külön-külön szeretné, vagy másik oly módon, több folyamatot meghatározása és továbbítja őket a *augment_dataset* függvény. További információk és példák a lemezkép kiegészítését, tekintse meg a [imgaug dokumentáció](https://github.com/aleju/imgaug).
 

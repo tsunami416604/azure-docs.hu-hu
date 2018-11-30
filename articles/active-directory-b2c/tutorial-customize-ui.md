@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 11/26/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ee6d7735a2983f642eff82a7dabe036af100e60e
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 588ce454248f0577a52515a4327d1e43013d34a5
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622669"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581799"
 ---
 # <a name="tutorial-customize-the-user-interface-of-your-applications-in-azure-active-directory-b2c"></a>Oktatóanyag: Az alkalmazások az Azure Active Directory B2C a felhasználói felület testreszabása
 
@@ -64,7 +64,7 @@ Bár ebben az oktatóanyagban számos módon tárolhatja a fájlokat, azokat a t
  Egy böngészőben az Azure AD B2C-kód egyéni tartalom betöltése egy házirendben megadott URL-címről a modern és szabványos megközelítést használ. Eltérő eredetű erőforrások megosztása (CORS) lehetővé teszi a korlátozott erőforrások egy weblap más tartományokból a kötelező.
 
 1. Válassza a menüben **CORS**.
-2. A **engedélyezett eredetek**, adja meg `your-tenant-name.b2clogin.com`. Cserélje le `your-tenant-name` az Azure AD B2C-bérlő nevével. Például: `fabrikam.b2clogin.com`.
+2. A **engedélyezett eredetek**, adja meg `https://your-tenant-name.b2clogin.com`. Cserélje le `your-tenant-name` az Azure AD B2C-bérlő nevével. Például: `https://fabrikam.b2clogin.com`. Csak kisbetűk használata a bérlő nevének megadásakor kell.
 3. A **engedélyezett metódusok**, válassza ki mindkét `GET` és `OPTIONS`.
 4. A **engedélyezett fejlécek**, írjon be egy csillagot (*).
 5. A **közzétett fejlécek**, írjon be egy csillagot (*).

@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 93bc3db2b7cf3002efc93f1e8006c5362eddab9f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d60053de98e93d7414b1df3d80aff41ffe1e4756
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959971"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620166"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Engedélyek és jóváhagyás az az Azure Active Directory 1.0-s verziójú végpontján
 
@@ -41,7 +41,7 @@ Az Azure AD kétféle engedélyt határoz meg:
 
 A hatályos engedélyek olyan engedélyek, amelyekkel az alkalmazás rendelkezik, amikor kéréseket küld egy API-nak. 
 
-* Delegált jogosultságok esetén az alkalmazás hatályos engedélyei az alkalmazás számára (hozzájárulással) megadott delegált engedélyek és a jelenleg bejelentkezett felhasználó jogosultságainak legalacsonyabb szintű metszetei. Az alkalmazásnak soha nem lehet több jogosultsága, mint a bejelentkezett felhasználónak. A cégeken belül a bejelentkezett felhasználó jogosultságait szabályzat vagy egy vagy több rendszergazdai szerepkör tagsága határozhatja meg. A rendszergazdai szerepkörökről további információért lásd: [Rendszergazdai szerepkörök hozzárendelése az Azure AD-ben](../users-groups-roles/directory-assign-admin-roles.md).
+* Delegált jogosultságok esetén az alkalmazás hatályos engedélyei az alkalmazás számára (hozzájárulással) megadott delegált engedélyek és a jelenleg bejelentkezett felhasználó jogosultságainak legalacsonyabb szintű metszetei. Az alkalmazásnak soha nem lehet több jogosultsága, mint a bejelentkezett felhasználónak. A cégeken belül a bejelentkezett felhasználó jogosultságait szabályzat vagy egy vagy több rendszergazdai szerepkör tagsága határozhatja meg. Melyik rendszergazda szerepkörök jóváhagyhat delegált engedélyeket kapcsolatban lásd: [rendszergazdája szerepkör engedélyei az Azure ad-ben](../users-groups-roles/directory-assign-admin-roles.md).
     Tegyük fel például, hogy az alkalmazás a `User.ReadWrite.All` delegált engedélyt kapta meg a Microsoft Graphban. Ez az engedély névlegesen ad engedélyt az alkalmazás számára egy cégben lévő összes felhasználó profiljának olvasásához és frissítéséhez. Ha a bejelentkezett felhasználó egy globális rendszergazda, az alkalmazás frissíteni tudja a cégben lévő összes felhasználó profilját. Ha azonban a bejelentkezett felhasználó nem rendszergazdai szerepkörben van, az alkalmazás csak a bejelentkezett felhasználó profilját tudja frissíteni. Nem tudja frissíteni a cégben lévő többi felhasználó profilját, mert az a felhasználó nem rendelkezik ilyen jogosultságokkal, akinek a nevében eljár.
 * Az alkalmazásengedélyek esetén az alkalmazás hatályos engedélyeinek köre az engedély által sugallt jogosultságok teljes szintje. A `User.ReadWrite.All` alkalmazásengedéllyel rendelkező alkalmazás például a cégben lévő összes felhasználó profilját frissítheti.
 

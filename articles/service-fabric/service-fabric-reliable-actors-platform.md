@@ -1,6 +1,6 @@
 ---
-title: A Service Fabric a Reliable Actors |} Microsoft Docs
-description: Útmutatás a Reliable Actors vannak réteges a Reliable Services és a Service Fabric-platformról szolgáltatásának használatához.
+title: A Reliable Actors a Service Fabric |} A Microsoft Docs
+description: Útmutatás a Reliable Actors vannak szintekre épülő a Reliable Services és a Service Fabric platformot szolgáltatásának használatához.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,63 +14,63 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: f8e6ad4b23eeaf46cccac9c8ff9d41f71511129d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bd3a77e1486d4af61539e55f67811221dd971b37
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642852"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582343"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Így használja a Reliable Actors a Service Fabric platformot
-Ez a cikk bemutatja, hogy Reliable Actors működik-e az Azure Service Fabric-platformon. Futtassa a keretrendszer, amely a egy állapotalapú szolgáltatás megvalósítását a Reliable Actors hívása a *szereplő szolgáltatás*. Az aktor szolgáltatás összes életciklusa és a a szereplőket terjesztéséhez üzenet kezeléséhez szükséges összetevőket tartalmazza:
+Ez a cikk bemutatja, hogyan Reliable Actors működnek az Azure Service Fabric-platformon. A Reliable Actors futtatása egy keretrendszer, amely egy állapotalapú reliable Services megvalósítását üzemeltetett nevű a *aktorszolgáltatás*. Aktorszolgáltatás életciklus és a szereplők az elküldési üzenet kezeléséhez szükséges összes összetevőt tartalmazza:
 
-* Az Aktor futásidejű életciklusát, szemétgyűjtés, felügyeli, és egyszálas vezérlésről.
-* Egy szereplő szolgáltatás távoli eljáráshívási figyelő távelérési szereplőkkel hívásainak fogad, és elküldi azokat a kézbesítő útvonalat a megfelelő szereplő példány.
-* Az Aktor Állapotszolgáltató becsomagolja állapotszolgáltatója (például a megbízható gyűjtemények állapotszolgáltató), és egy adapter biztosít szereplő állapotkezelés.
+* Az Actor-futtatókörnyezetben életciklusát, szemétgyűjtés, kezeli, és hozzáférést egyszálas.
+* Egy aktor szolgáltatás távelérésének lehetővé tétele figyelő actors távelérési hívásokat fogadja, és elküldi őket egy, a megfelelő aktor irányíthatja dispatcher.
+* Az Aktor Állapotszolgáltató állapotszolgáltatója (például a Reliable Collections állapotszolgáltató) burkolja, és egy adapter biztosít az aktor állapot-felügyeleti.
 
-Ezek az összetevők együttesen alkotják a megbízható szereplő keretrendszer.
+Ezek az összetevők együttesen alkotják a Reliable Actors keretrendszerben.
 
-## <a name="service-layering"></a>A réteges szolgáltatás
-Mert maga szereplő szolgáltatás egy megbízható szolgáltatás összes a [alkalmazásmodell](service-fabric-application-model.md), életciklusát, [csomagolási](service-fabric-package-apps.md), [telepítési](service-fabric-deploy-remove-applications.md), frissítési és méretezési Reliable Services elveit aktorszolgáltatások ugyanúgy alkalmazni.
+## <a name="service-layering"></a>Rétegezett szolgáltatás
+Mivel az aktorszolgáltatás magát egy megbízható szolgáltatás összes a [alkalmazásmodell](service-fabric-application-model.md), életciklusának [csomagolási](service-fabric-package-apps.md), [üzembe helyezési](service-fabric-deploy-remove-applications.md), frissítés és skálázás fogalmait, a Reliable Szolgáltatások ugyanúgy aktorszolgáltatások a alkalmazni.
 
-![Aktor szolgáltatás réteges][1]
+![Aktor service rétegezése][1]
 
-A fenti ábrán a Service Fabric-alkalmazás-keretrendszerbeli és a felhasználói kód közötti kapcsolatot mutatja be. Kék elemek határoz meg a Reliable Services alkalmazás-keretrendszer, narancssárga megbízható szereplő keretében, és zöld jelenti felhasználói kód.
+A fentebbi ábra bemutatja azokat a kapcsolatot a Service Fabric-alkalmazás-keretrendszerek és a felhasználói kód között. Kék elemek képviselik a Reliable Services alkalmazás-keretrendszer, narancssárga jelöli a Reliable Actors keretrendszerben, és zöld felhasználói kódját jelöli.
 
-A Reliable Services, a szolgáltatás örökli a `StatefulService` osztály. Ez az osztály maga a származó `StatefulServiceBase` (vagy `StatelessService` állapotmentes szolgáltatások). A Reliable Actors az aktor szolgáltatását használja. Az aktor szolgáltatás egy másik megvalósításában a `StatefulServiceBase` a szereplője futtatják szereplő mintát megvalósító osztály. Mivel a szereplő szolgáltatás megvalósítása csak `StatefulServiceBase`, saját szolgáltatás abból származó írhat `ActorService` és valósít meg a szolgáltatásszint-funkciókat az azonos módon történő örökléskor `StatefulService`, például:
+A Reliable Services szolgáltatásban a szolgáltatás örökli a `StatefulService` osztály. Ez az osztály maga a osztályból származtatott `StatefulServiceBase` (vagy `StatelessService` állapotmentes szolgáltatások esetében). Reliable actors az aktor szolgáltatást használja. Aktorszolgáltatás egy másik megvalósítását a `StatefulServiceBase` az aktor minta, ahol egyidejűleg futtatják az actors implementáló osztályt. Mivel az aktorszolgáltatás maga implementációja csak `StatefulServiceBase`, írhat saját szolgáltatás származó `ActorService` és szolgáltatásszintű funkciók megvalósítása örökléskor ugyanúgy ugyanúgy `StatefulService`, például:
 
 * Szolgáltatás biztonsági mentése és visszaállítása.
-* Összes szereplő, például egy áramköri megszakító megosztás funkciót.
-* Távoli eljáráshívások a szereplő maga és a minden egyes szereplő.
+* Megosztott funkció az összes szereplő, például egy áramkör-megszakító.
+* Távoli eljáráshívások az aktorszolgáltatás magát és minden egyes színész.
 
-További információkért lásd: [végrehajtási szolgáltatásiszint-szolgáltatásokat az aktor szolgáltatásban](service-fabric-reliable-actors-using.md).
+További információkért lásd: [szolgáltatásszintű funkciók megvalósítása az aktorszolgáltatás az](service-fabric-reliable-actors-using.md).
 
 ## <a name="application-model"></a>Alkalmazásmodell
-Aktorszolgáltatások Reliable Services, így az alkalmazásmodell megegyezik. Azonban a szereplő keretrendszer build tools készítése alkalmazás modell fájlok meg.
+Aktor szolgáltatásokat Reliable Services, így a az alkalmazásmodell megegyezik. Azonban az aktor keretrendszer build tools gyűjtsön össze néhányat ezekből az alkalmazásfájlok modell az Ön számára.
 
-### <a name="service-manifest"></a>Szolgáltatás jegyzék
-Az aktor framework összeállítási eszközök automatikus létrehozása a szereplő szolgáltatás ServiceManifest.xml fájl tartalmát. Ez a fájl tartalmazza:
+### <a name="service-manifest"></a>Adatszolgáltatási jegyzékfájl
+Az aktor keretrendszer build tools automatikus létrehozása az aktorszolgáltatás ServiceManifest.xml fájl tartalmát. Ez a fájl tartalmazza:
 
-* Aktor szolgáltatás típusa. A következő típusnév jön létre, a aktor projekt neve alapján. Az aktor az adatmegőrzési attribútumok alapján, a HasPersistedState jelző nincs beállítva megfelelően.
-* A kódcsomag.
-* A konfigurációs csomag.
+* Szereplőtípus szolgáltatás. Název typu jön létre az aktor projekt neve alapján. Az aktor az adatmegőrzés attribútum alapján, a HasPersistedState jelző nincs beállítva ennek megfelelően.
+* Kódcsomag.
+* Konfigurációs csomag.
 * Erőforrások és a végpontok.
 
-### <a name="application-manifest"></a>Az alkalmazásjegyzék
-Az aktor framework összeállítási eszközök automatikus létrehozása az aktor szolgáltatás alapértelmezett szolgáltatásdefiníció. A build tools feltöltése az alapértelmezett szolgáltatás tulajdonságai:
+### <a name="application-manifest"></a>Alkalmazásjegyzék
+Az aktor keretrendszer build tools automatikusan létrehoz egy alapértelmezett szolgáltatás definíciója az aktorszolgáltatás. Nástroje sestavení Pro töltse ki az alapértelmezett szolgáltatás tulajdonságai:
 
-* Az adatmegőrzési attribútumot a szereplő replikaszám beállítása határozza meg. Minden alkalommal, amikor az adatmegőrzési attribútumot a szereplő módosul, a replika készlet alapértelmezett szolgáltatásdefinícióban számolás ennek megfelelően.
-* Partícióséma és a tartomány a teljes Int64-címtartománnyal rendelkező egységes Int64 beállítása.
+* Az adatmegőrzés attribútumot az aktor set száma határozza meg. Minden alkalommal, amikor megváltozik az adatmegőrzés attribútumot az aktor, a replika beállítása a alapértelmezett szolgáltatásdefiníció számolás ennek megfelelően.
+* Partícióséma és a tartomány összes Int64 kulcs adathoz egységes Int64 beállítása.
 
-## <a name="service-fabric-partition-concepts-for-actors"></a>A Service Fabric partícióazonosító fogalmak actors
-Aktorszolgáltatások a particionált állapotalapú szolgáltatások. Mindegyik partíció szereplő szolgáltatási szereplője tartalmaz. Partíciók a rendszer automatikusan terjeszt a Service Fabric több csomópont feladatait. Ennek eredményeképpen szereplő példányok terjesztése.
+## <a name="service-fabric-partition-concepts-for-actors"></a>Actors a Service Fabric-partíció fogalmai
+Aktorszolgáltatások a particionált állapotalapú szolgáltatások. Mindegyik partíció az aktor Service actors készletét tartalmazza. Szolgáltatás partícióinak a rendszer automatikusan terjeszt a Service Fabric több csomópont feletti. Ennek eredményeképpen aktorpéldányok oszlanak meg.
 
-![Aktor particionálás és terjesztési][5]
+![Particionálás aktor és terjesztése][5]
 
-Megbízható szolgáltatások különböző partíciós séma és a partíció kulcstartományokkal hozhatja létre. Az aktor szolgáltatás Int64 particionálási sémát a teljes Int64-címtartománnyal rendelkező szereplője van leképezve partíciók használja.
+A Reliable Services partíció kulcstartományokkal és különböző partíciósémák hozható létre. Aktorszolgáltatás actors leképezése partíciók Int64 particionálási sémát használ a teljes Int64 kulcstartományhoz.
 
-### <a name="actor-id"></a>Aktor azonosítója
-Minden, amely jön létre a szolgáltatásban szereplő van társítva, által képviselt egyedi azonosítója a `ActorId` osztály. `ActorId` érték nem átlátszó azonosítója, amely alkalmas szereplője egyenletes elosztása a partíciók közötti véletlenszerű azonosítók létrehozásával:
+### <a name="actor-id"></a>Szereplő azonosítója
+A szolgáltatásban létrehozott minden egyes színész rendelkezik egy egyedi azonosító tartozik, képviseli a `ActorId` osztály. `ActorId` érték nem átlátszó azonosítója, amely használható az actors egyenletes elosztása a szolgáltatáspartíciók véletlenszerű azonosítók létrehozásával:
 
 ```csharp
 ActorProxy.Create<IMyActor>(ActorId.CreateRandom());
@@ -80,7 +80,7 @@ ActorProxyBase.create<MyActor>(MyActor.class, ActorId.newId());
 ```
 
 
-Minden `ActorId` Int64 kivonatolja. Ezért a szereplő szolgáltatás a teljes Int64-tartomány egy Int64 particionálási sémát kell használnia. Azonban használható egyéni értéket egy `ActorID`, beleértve a GUID/UUID-k, karakterláncok és Int64s.
+Minden `ActorId` Int64, ezzel. Ezért az aktorszolgáltatás-Int64 particionálási sémát kell használnia, a teljes Int64 kulcstartományhoz. Azonban egyedi azonosító értékek használható egy `ActorID`, beleértve a GUID-ok/az UUID azonosítók, karakterláncok és Int64s.
 
 ```csharp
 ActorProxy.Create<IMyActor>(new ActorId(Guid.NewGuid()));
@@ -93,15 +93,15 @@ ActorProxyBase.create(MyActor.class, new ActorId("myActorId"));
 ActorProxyBase.create(MyActor.class, new ActorId(1234));
 ```
 
-GUID azonosítók/UUID-k és karakterláncok használata, ha az értékek Int64 számára van kivonatolva. Azonban ha feltétlenül van explicit módon adja meg a Int64 egy `ActorId`, a Int64 felelteti meg közvetlenül egy partíció további kivonatoláshoz nélkül. Ez a módszer, mely partíció a szereplője kerülnek vezérlőre is használhatja.
+GUID-ok/az UUID azonosítók és karakterláncokat használ, az értékek Int64 ezzel a rendszer. Azonban ha, explicit módon adja-e az Int64 egy `ActorId`, az Int64 lesz leképezve közvetlenül egy partíció további kivonatoláshoz nélkül. Ezzel a technikával szabályozhatja, hogy melyik partíciót az actors kerüljenek a is használhatja.
 
 
 ## <a name="next-steps"></a>További lépések
 * [Aktor állapotkezelés](service-fabric-reliable-actors-state-management.md)
-* [Aktor életciklusának és szemétgyűjtési gyűjtése](service-fabric-reliable-actors-lifecycle.md)
-* [Actors API referenciadokumentációt tartalmaz](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Actors-életciklus-kezelés és szemétgyűjtés gyűjtemény](service-fabric-reliable-actors-lifecycle.md)
+* [Aktorok API dokumentációja](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors?redirectedfrom=MSDN&view=azure-dotnet#microsoft_servicefabric_actors)
 * [.NET mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java-példakód](http://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Java-mintakód](http://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

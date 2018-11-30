@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 01603655be9b6051be9b894da4e55338ff4df810
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: e702e1f5eb1816b007317765e4c9a9f88bb99bfd
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262125"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635424"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Az adathasználat elemzése a Log Analyticsben
 
@@ -42,7 +42,12 @@ Ismerje meg részletesen az adatokat, kattintson a felső ikonra vagy a diagramo
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>A vártnál magasabb szintű használatot okozó hibák elhárítása
 A magasabb szintű használatot a következők okozhatják:
 - A vártnál több adatot küld a rendszer a Log Analytics számára
-- A vártnál több csomópont küld adatokat a Log Analytics számára
+- Több csomópont, mint a várt adatokat küldő a Log Analytics vagy az egyes csomópontok a szokásosnál több adatot küldenek
+
+Vessünk egy pillantást, hogy hogyan tudjuk többet is megtudhat ezek mindegyikét. 
+
+> [!NOTE]
+> Egyes mezőit a használati adattípusú, miközben továbbra is a séma már elavult, és azok értékei már fel van töltve. Ezek a **számítógép** valamint Adatbetöltési kapcsolódó mezőket (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**,  **BatchesCapped** és **AverageProcessingTimeMs**.
 
 ### <a name="data-volume"></a>Adatmennyiség 
 Az a **használat és becsült költségek** lapon a *adatbetöltés megoldásonként* küldött adatok teljes mennyiségét, és mekkora küld a rendszer egyes megoldások által látható diagramon. Ez lehetővé teszi, hogy határozza meg a trendeket, például hogy a teljes adathasználat (vagy egy adott megoldás használatának) nő, állandó vagy csökken van hátra. Ennek létrehozásához használt lekérdezés
@@ -60,7 +65,7 @@ Lásd: adatok trendjeit adott adattípusok, például ha az IIS-naplók miatt az
 
 ### <a name="nodes-sending-data"></a>Adatokat küldő csomópontok
 
-A jelentési adatok az elmúlt hónapban a csomópontok számát undersand, használja a
+Szeretné megtudni, a jelentési adatok az elmúlt hónapban a csomópontok számát, használata
 
 `Heartbeat | where TimeGenerated > startofday(ago(31d))
 | summarize dcount(ComputerIP) by bin(TimeGenerated, 1d)    
@@ -69,16 +74,20 @@ A jelentési adatok az elmúlt hónapban a csomópontok számát undersand, hasz
 A számítógép betöltött események száma használja
 
 `union withsource = tt *
-| summarize count() by Computer |sort by count_ nulls last`
+| summarize count() by Computer | sort by count_ nulls last`
 
-Ez a lekérdezés, költséges hajtható végre, mert megtörhetik a cikk folytonosságát használja. Ha azt szeretné, megtekintheti, mely adattípusok sendng az adatokat egy adott számítógép használja:
+Ez a lekérdezés, költséges hajtható végre, mert megtörhetik a cikk folytonosságát használja. A számítógép betöltött számlázható események száma használja 
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| summarize count() by Computer  | sort by count_ nulls last`
+
+Ha meg szeretné tekinteni a számlázható adattípusokat adatot küldenek, adott számítógéphez, használja:
 
 `union withsource = tt *
 | where Computer == "*computer name*"
-| summarize count() by tt |sort by count_ nulls last `
-
-> [!NOTE]
-> Néhány, a használati adatok típusú mezőt közben továbbra is a séma elavultak, értékeik már fel van töltve lesz. Ezek a **számítógép** valamint Adatbetöltési kapcsolódó mezőket (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**,  **BatchesCapped** és **AverageProcessingTimeMs**.
+| where _IsBillable == true 
+| summarize count() by tt | sort by count_ nulls last `
 
 Ezután részletesen áttekintjük az adatforrás egy adott típusú, Íme néhány hasznos példa a lekérdezésekre:
 

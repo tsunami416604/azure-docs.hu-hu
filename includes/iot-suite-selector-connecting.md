@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 218fc33390575a3df96d0b7d7696b3085c38c8f2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e241317231f3c607c373cb8a54e4b5bf6601b8e7
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264446"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620761"
 ---
 > [!div class="op_single_selector"]
 > * [C Windowson](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -56,7 +56,7 @@ Ha a távoli figyelési megoldáshoz a telepítési folyamat befejezését köve
 > [!NOTE]
 > Ha már felvett egy eszközt a megoldásában, kihagyhatja ezt a lépést. Azonban a következő lépésben szükség van az eszköz kapcsolati karakterláncát. Kérheti, hogy az eszköz kapcsolati karakterláncot a [az Azure portal](https://portal.azure.com) vagy a [az iot](https://docs.microsoft.com/cli/azure/iot?view=azure-cli-latest) parancssori eszköz.
 
-A megoldásgyorsító csatlakozni egy eszközhöz, kell azonosítania magát az IoT Hub érvényes hitelesítő adatokkal. A gyakorlati kipróbálásra menteni az eszköz kapcsolati karakterláncának, amely tartalmazza ezeket a hitelesítő adatokat, amikor hozzáadja az eszközt, a megoldás. Az eszköz kapcsolati karakterláncának felvétel az ügyfélalkalmazás az oktatóanyag későbbi részében.
+A megoldásgyorsító csatlakozni egy eszközhöz, kell azonosítania magát az IoT Hub érvényes hitelesítő adatokkal. A gyakorlati kipróbálásra menteni az eszköz kapcsolati karakterláncának, amely tartalmazza ezeket a hitelesítő adatokat, amikor hozzáadja az eszközt a megoldáshoz. Az eszköz kapcsolati karakterláncának felvétel az ügyfélalkalmazás az oktatóanyag későbbi részében.
 
 A távoli figyelési megoldáshoz egy eszköz hozzáadásához kövesse az alábbi lépéseket a **eszközök** lap a megoldásban:
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 69d2d80e40400cc7fa40aeb5a163dce5036905ab
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 451480f5046d5ed8a1bd7262fd8f6a800e66dfc7
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402760"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582496"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>A TRAFFIC analytics – gyakori kérdések
 
@@ -30,7 +30,7 @@ A TRAFFIC analytics a következő előfeltételek szükségesek:
 
 - A Network Watcher előfizetés engedélyezve van.
 - Hálózati biztonsági csoport (NSG) folyamatnaplóit engedélyezve az NSG-t szeretné figyelni.
-- Egy Azure Storage-tárfiók tárolja a nyers flog naplókat.
+- Egy Azure Storage-fiók, nyers forgalmi naplók tárolásához.
 - Az Azure Log Analytics-munkaterületet, az olvasási és írási hozzáférés.
 
 Felhasználói fiók megfelel a traffic analytics engedélyezéséhez a következők egyikét:
@@ -63,7 +63,38 @@ Kimenetet nem jelennek meg, ha lépjen kapcsolatba a megfelelő előfizetés ren
 
 ## <a name="in-which-azure-regions-are-traffic-analytics-available"></a>Melyik Azure-ban régiók érhetők el a traffic analytics?
 
-A traffic analytics használhat NSG-k, a következő támogatott régiók egyikében: USA nyugati középső Régiója, USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA északi középső Régiója, USA déli középső Régiója, USA középső RÉGIÓJA, USA nyugati RÉGIÓJA, 2. nyugati RÉGIÓJA, Nyugat-Európa, Észak-Európa, Egyesült Királyság nyugati régiója, Egyesült Királyság déli régiója, Kelet-Ausztrália, Délkelet-Ausztrália és Délkelet-Ázsia. A Log Analytics-munkaterület léteznie kell az USA nyugati középső Régiója, USA keleti RÉGIÓJA, Nyugat-Európa, Egyesült Királyság déli régiója, Délkelet-Ausztrália, vagy a Délkelet-ázsiai régióban.
+A traffic analytics használhat NSG-k, a következő támogatott régiók egyikében:
+- Közép-Kanada
+- USA nyugati középső régiója
+- USA keleti régiója
+- USA 2. keleti régiója
+- USA északi középső régiója
+- USA déli középső régiója
+- USA középső régiója
+- USA nyugati régiója
+- USA nyugati régiója, 2.
+- Nyugat-Európa
+- Észak-Európa
+- Dél-Brazília
+- Az Egyesült Királyság nyugati régiója
+- Az Egyesült Királyság déli régiója
+- Kelet-Ausztrália
+- Délkelet-Ausztrália 
+- Délkelet-Ázsia
+- Közép-India
+- Dél-India
+- Kelet-Japán
+
+A Log Analytics-munkaterület léteznie kell a következő régióban:
+- Közép-Kanada
+- USA nyugati középső régiója
+- USA keleti régiója
+- Nyugat-Európa
+- Az Egyesült Királyság déli régiója
+- Délkelet-Ausztrália
+- Délkelet-Ázsia 
+- Közép-India
+- Kelet-Japán
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>Az NSG-k engedélyezhető a flow is, mint a saját munkaterület különböző régiókban lehet naplókat?
 
@@ -94,8 +125,8 @@ Válassza ki a támogatott régiók. Ha egy nem támogatott régió, a "Nem tal�
 A flow-naplózás helyes működéséhez regisztrálni kell a Microsoft.Insights szolgáltató. Ha nem biztos abban, hogy a a Microsoft.Insights szolgáltató regisztrálva van az előfizetéshez tartozó, cserélje le a *: xxxxx-xxxxx-xxxxxx-xxxx* a következő parancsot, és a PowerShellben futtassa a következő parancsokat:
 
 ```powershell-interactive
-**Select-AzureRmSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
-**Register-AzureRmResourceProvider** -ProviderNamespace Microsoft.Insights
+**Select-AzureRmSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
+**Register-AzureRmResourceProvider** -ProviderNamespace Microsoft.Insights
 ```
 
 ## <a name="i-have-configured-the-solution-why-am-i-not-seeing-anything-on-the-dashboard"></a>Konfiguráltam az megoldás. Miért nem jelenik meg semmit az irányítópult?

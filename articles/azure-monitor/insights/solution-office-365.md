@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 45d296b8867884a4c40dc10adc1f9aa83d7f9eab
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 14e89d5eab058b9fa42c20811df9c5ac0ceca44a
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715518"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633197"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Az Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -477,7 +477,7 @@ Az Office 365 felügyeleti megoldás részben ismertetett eljárással eltávol�
 
 ## <a name="data-collection"></a>Adatgyűjtés
 ### <a name="supported-agents"></a>Támogatott ügynökök
-Az Office 365-megoldás nem adatlekéréshez bármelyikét a [Log Analytics-ügynökök](../../log-analytics/log-analytics-data-sources.md).  Lekéri az adatokat közvetlenül az Office 365-höz.
+Az Office 365-megoldás nem adatlekéréshez bármelyikét a [Log Analytics-ügynökök](../../azure-monitor/platform/agent-data-sources.md).  Lekéri az adatokat közvetlenül az Office 365-höz.
 
 ### <a name="collection-frequency"></a>A gyűjtés gyakorisága
 Kezdetben gyűjtendő adatokat, több óráig is eltarthat. Miután gyűjtése kezdődik, az Office 365 küld egy [webhook értesítési](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) részletes adatokat a Log Analyticshez való minden alkalommal, amikor létrejön egy rekord. Ez a rekord fogadását követően néhány percen belül a Log Analytics érhető el.
@@ -710,5 +710,5 @@ A következő táblázat a megoldás által összegyűjtött frissítési rekord
 
 ## <a name="next-steps"></a>További lépések
 * A részletes frissítési adatokat a [Log Analytics](../../log-analytics/log-analytics-queries.md) Naplókeresés funkciójával is megtekintheti.
-* [Saját irányítópult létrehozásával](../../log-analytics/log-analytics-dashboards.md) kedvenc Office 365 keresési lekérdezések megjelenítéséhez.
+* [Saját irányítópult létrehozásával](../../azure-monitor/platform/dashboards.md) kedvenc Office 365 keresési lekérdezések megjelenítéséhez.
 * [Riasztások létrehozása](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) proaktívan értesíti a fontos Office 365-tevékenységek.  

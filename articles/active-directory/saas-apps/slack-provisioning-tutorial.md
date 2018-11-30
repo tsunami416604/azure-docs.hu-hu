@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.reviewer: asmalser
-ms.openlocfilehash: 83155e448f350618446fb22bf52e831b1cc8d499
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 74bfd49fd69353e95a275f31fa0bba9e9b558227
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636543"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632925"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Slack konfigurálása
 
@@ -113,6 +113,14 @@ Ez az eredmény a Slack, a hozzárendelt csoport objektumokat a **felhasználók
 
 Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
 
+## <a name="connector-limitations"></a>Összekötő-korlátozások
+
+  * A Slack konfigurálásakor **displayName** attribútumot, vegye figyelembe az alábbi viselkedés tapasztalható: 
+  * Értékek nem teljesen egyedi (pl. 2 felhasználók rendelkezhetnek azonos megjelenített névvel)
+  * Támogatja a nem angol karaktereket, szóközöket, kis-és nagybetűk. 
+  * Engedélyezett központozást, pontokat, aláhúzásjeleket, kötőjeleket, aposztrófok, zárójelek közé (pl. **({[}])**) és elválasztók (pl. **, /;**).
+  * Csak akkor frissíti, ha e két beállítás úgy vannak konfigurálva, a Slack a munkahelyi vagy szervezeti - **engedélyezve van a profil szinkronizálása** és **a felhasználók nem módosíthatják a megjelenített nevük**.
+  * A Slack **felhasználónév** attribútumnak egyedi értékkel, és a 21-én karakter lehet. 
 
 ## <a name="additional-resources"></a>További források
 

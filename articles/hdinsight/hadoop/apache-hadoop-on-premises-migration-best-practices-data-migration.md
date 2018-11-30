@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6b06b8eb8d5e18acd3107ec5cccac79fc7be7edc
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 492087f7eeca8628ac6ac9a9e42f355a9356f1ce
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418177"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584706"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése az Azure HDInsight - adatok áttelepítése – ajánlott eljárások
 
@@ -25,20 +25,12 @@ Ez a cikk az Azure HDInsight az adatáttelepítés javaslatokat biztosít. Ez az
 Két fő lehetőség át a helyszíni adatok Azure-környezet van:
 
 1.  Adatok átvitele a TLS-hálózaton keresztül
-    1.  Interneten keresztül
-    2.  Express Route
-2.  Szállítási adatok
-    1.  Importálási / exportálási szolgáltatás
-        - Belső SATA HDD vagy SSD-k csak
-        - Inaktív (AES-128 / AES-256)
-        - Importálási feladat legfeljebb 10 lemez rendelkezhet.
-        - A végleges verzió & az összes nyilvános régióban érhető el
-    1.  Data Box
-        - Akár 80 TB-nyi adatot Data box
-        - Inaktív (AES-256)
-        - NAS protokollokat használ, illetve támogatja a közös adatok másolása eszközök
-        - Megerősített hardver
-        - A csak az Egyesült Államokban és a nyilvános előzetes verzióban érhető el
+    1. Interneten – keresztül adatokat lehet vinni az Azure storage használatával több eszközt például rendszeres internetkapcsolaton keresztül: Azure Storage Explorer, az AzCopy, az Azure PowerShell-lel és az Azure CLI.  Lásd: [adatok áthelyezése az Azure Storage szolgáltatásba vagy onnan](../../storage/common/storage-moving-data.md) további információt.
+    2. Express Route - ExpressRoute egy Azure-szolgáltatás, amely lehetővé teszi, hogy között Microsoft-adatközpontok és infrastruktúra, amely a helyszínen vagy egy közös elhelyezési létesítményből csatlakozó privát kapcsolatok hozhatók létre. Az ExpressRoute-kapcsolatok nem a nyilvános interneten keresztül, és magasabb szintű biztonságra, megbízhatóságra és a kisebb a késésük, mint a szokásos internetkapcsolatoknál megbízhatóbbak kínálnak az interneten keresztül. További információkért lásd: [létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
+    1. Data Box online adatátvitel – Data Box Edge és a Data Box-átjáró proxyként tárolási átjárók kezelése a hely és az Azure közötti hálózati online adatok átvitel termékek. A Data Box Edge egy helyszíni hálózati eszköz, amely az adatokat az Azure és a helyszín között helyezi át, és az adatok feldolgozásához mesterséges intelligenciát használó peremhálózati számítási megoldást használ. A Data Box Gateway egy tárolóátjáró képességgel rendelkező virtuális berendezés. További információkért lásd: [Azure Data Box dokumentációja – Online átviteli](https://docs.microsoft.com/azure/databox-online/).
+1.  Szállítási adatok offline állapotban
+    1. Importálási / exportálási szolgáltatás – fizikai lemezek küldhet az Azure-ba, és Önnek töltődnek fel. További információkért lásd: [Mi az Azure Import/Export szolgáltatást?](https://docs.microsoft.com/azure/storage/common/storage-import-export-service).
+    1. Adatok offline adatátvitel – Data Box, Data Box-lemezek mezőbe, és a Data Box nehéz eszközök segítséget nagy mennyiségű adat átvitele az Azure-ba, amikor a hálózat nincs lehetőség. Ezeket az offline adatátviteli eszközöket az Ön cége és az Azure-adatközpontok között szállítjuk. Az eszközök AES-titkosítást használnak, amelyek a szállítás közben védik az adatait, a feltöltés után pedig alapos megtisztítási folyamaton esnek át, amelynek során minden adata törölve lesz az eszközről. További információkért lásd: [Azure Data Box dokumentációja – Offline Transfer](https://docs.microsoft.com/azure/databox/).
 
 Az alábbi táblázat a hozzávetőleges adatok átvitel időtartama az adatok mennyisége és a hálózati sávszélesség alapján van. A Data box használja, ha az adatok migrálása várhatóan több mint három hetet igénybe vehet.
 

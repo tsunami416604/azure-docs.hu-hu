@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 11/23/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: ebd5c06b8174c9838a398e97439671e4d3f4c518
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 8b061ad2926110e27524ededb5c33dffa5ea04b6
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713486"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635458"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Az Operations Manager csatlakoztatása a Log Analyticshez
 A meglévő befektetéseit a [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) és kiterjesztett képességek használata a Log Analytics, az Operations Manager integrálása a Log Analytics-munkaterületre. Így kiaknázhatja a Log Analytics lehetőségeit, miközben továbbra is használhatja az Operations Managert a következőkre:
@@ -37,7 +37,7 @@ Az alábbi diagram egy System Center Operations Manager-beli felügyeleti csopor
 
 ![oms-operations-manager-integration-diagram](./media/log-analytics-om-agents/oms-operations-manager-connection.png)
 
-Ha az informatikai biztonsági szabályzatok nem engedélyezik a számítógépek a hálózat csatlakozik az internethez, felügyeleti kiszolgálók beállítható úgy, hogy a konfigurációs adatokat fogad és küld attól függően, a megoldások összegyűjtött adatok Log Analytics-átjárón engedélyezve van. További információkat és lépéseket az Operations Manager felügyeleti csoportban való kommunikációhoz a Log Analytics szolgáltatásnak egy Log Analytics-átjárón keresztül konfigurálásával: [számítógépek csatlakoztatása a Log Analytics használata a Log Analytics-átjáró](log-analytics-oms-gateway.md).  
+Ha az informatikai biztonsági szabályzatok nem engedélyezik a számítógépek a hálózat csatlakozik az internethez, felügyeleti kiszolgálók beállítható úgy, hogy a konfigurációs adatokat fogad és küld attól függően, a megoldások összegyűjtött adatok Log Analytics-átjárón engedélyezve van. További információkat és lépéseket az Operations Manager felügyeleti csoportban való kommunikációhoz a Log Analytics szolgáltatásnak egy Log Analytics-átjárón keresztül konfigurálásával: [számítógépek csatlakoztatása a Log Analytics használata a Log Analytics-átjáró](../azure-monitor/platform/gateway.md).  
 
 ## <a name="prerequisites"></a>Előfeltételek 
 Mielőtt hozzákezdene, tekintse át az alábbi követelményeknek.
@@ -49,10 +49,13 @@ Mielőtt hozzákezdene, tekintse át az alábbi követelményeknek.
 
 >[!NOTE]
 >Útmutató legutóbbi módosításait az Azure API-k megakadályozza, hogy a felhasználók képes arra, hogy sikeresen az első alkalommal között a felügyeleti csoport és a Log Analytics-integráció konfigurálása. Azok a vásárlóknak, akik már integrálva van a felügyeleti csoport a szolgáltatásban nem érinti, kivéve, ha újra kell konfigurálni a meglévő kapcsolatot.  
->Az Operations Manager egyes verzióihoz kiadása egy új felügyeleti csomagot:  
+>Új felügyeleti csomag kiadása az Operations Manager következő verziói esetében:
+>  
 >* Töltse le a felügyeleti csomag a System Center Operations Manager 1801 [Itt](https://www.microsoft.com/download/details.aspx?id=57173)  
 >* Töltse le a felügyeleti csomag a System Center 2016 – Operations Manager [Itt](https://www.microsoft.com/download/details.aspx?id=57172)  
 >* A System Center Operations Manager 2012 R2, töltse le a felügyeleti csomag [Itt](https://www.microsoft.com/download/details.aspx?id=57171)  
+>
+>A felügyeleti csomag frissítés nem alkalmazható a System Center Operations Manager 1807, azaz az 1801-es verziója és a egy teljes állítsa össze a termék egy frissítés kiadása.   
 
 ### <a name="network"></a>Network (Hálózat)
 Az alábbi lista az Operations Management-ügynök, a felügyeleti kiszolgálók és az Operatív konzol a Log Analyticsszel való kommunikációhoz szükséges proxy- és tűzfal-konfigurációját tartalmazza. Az egyes összetevők forgalma kifelé, a hálózatból a Log Analytics szolgáltatásra irányul.   

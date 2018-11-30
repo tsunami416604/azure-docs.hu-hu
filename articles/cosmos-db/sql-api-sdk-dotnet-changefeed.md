@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: 611f7ccf9ef701bf589a8f9450f8f02695357224
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 327873d228fe92a9da495f802c97eb73612caef9
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291181"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632483"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET módosítási hírcsatorna processzor SDK: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -42,6 +42,9 @@ ms.locfileid: "52291181"
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 ### <a name="v2-builds"></a>v2 buildek
+
+### <a name="a-name224224"></a><a name="2.2.4"/>2.2.4
+* Hozzáadott új tulajdonság ChangeFeedProcessorOptions.StartContinuation kiindulási módosítása támogatásához a folytatási kérés hírcsatorna. Ez csak akkor használja, ha a bérletek gyűjteményének üres, vagy a címbérlet nincs beállítva continuationtoken argumentumot használja. A bérletek a bérletek gyűjteményének, amelyek rendelkeznek a continuationtoken argumentumot használja, állítsa be használja a continuationtoken argumentumot használja, és ChangeFeedProcessorOptions.StartContinuation a rendszer figyelmen kívül hagyja.
 
 ### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
 * Támogatás hozzáadva a folytatási token partíciónként megőrizni egyéni tároló használatával.

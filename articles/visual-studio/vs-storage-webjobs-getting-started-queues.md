@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: c3e0bd338c38165d3a372f60e12ff5ddaa05d2a0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 899792be583f3b2e2a16e42472fcdf87bf751893
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248282"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635492"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Ismerkedés az Azure Queue storage és a Visual Studio csatlakoztatott szolgáltatásainak (webjobs-feladat projektek)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -35,45 +35,55 @@ Függvény, amely a WebJobs SDK meghívja az üzenetsori üzenet fogadásakor. h
 ### <a name="string-queue-messages"></a>Karakterlánc-üzenetsorbeli üzenetek esetén
 A következő példában a várólistát tartalmaz egy karakterlánc üzenetet, így **QueueTrigger** egy karakterlánc-paramétert nevű alkalmazott **logMessage** tartalmazó az üzenetsorban található üzenet tartalma. A függvény [log üzenetet ír az irányítópult](#how-to-write-logs).
 
-        public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMessage, TextWriter logger)
-        {
-            logger.WriteLine(logMessage);
-        }
+```csharp
+public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMessage, TextWriter logger)
+{
+    logger.WriteLine(logMessage);
+}
+```
 
 Mellett **karakterlánc**, az lehet, hogy egy bájttömböt egy **CloudQueueMessage** objektumot, vagy egy Ön által meghatározott POCO.
 
 ### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(egyszerű régi CLR-beli objektum](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) várólista-üzenetek
 A következő példában az üzenetsorban található üzenet a JSON-t tartalmaz egy **BlobInformation** objektum, amely tartalmaz egy **BlobName** tulajdonság. Az SDK automatikusan deserializes az objektumot.
 
-        public static void WriteLogPOCO([QueueTrigger("logqueue")] BlobInformation blobInfo, TextWriter logger)
-        {
-            logger.WriteLine("Queue message refers to blob: " + blobInfo.BlobName);
-        }
+```csharp
+public static void WriteLogPOCO([QueueTrigger("logqueue")] BlobInformation blobInfo, TextWriter logger)
+{
+    logger.WriteLine("Queue message refers to blob: " + blobInfo.BlobName);
+}
+```
 
 Az SDK-t használ a [Newtonsoft.Json NuGet-csomag](http://www.nuget.org/packages/Newtonsoft.Json) szerializálható és deszerializálható üzeneteket. Ha üzenetsorbeli üzenetek számára hoz létre egy programot, amely nem használja a WebJobs SDK-val, írhat kódot, amely az SDK szolgáltatás elemezni tudja POCO üzenetsori üzenet létrehozására, az alábbi példához hasonlóan.
 
-        BlobInformation blobInfo = new BlobInformation() { BlobName = "log.txt" };
-        var queueMessage = new CloudQueueMessage(JsonConvert.SerializeObject(blobInfo));
-        logQueue.AddMessage(queueMessage);
+```csharp
+BlobInformation blobInfo = new BlobInformation() { BlobName = "log.txt" };
+var queueMessage = new CloudQueueMessage(JsonConvert.SerializeObject(blobInfo));
+logQueue.AddMessage(queueMessage);
+```
 
 ### <a name="async-functions"></a>Az aszinkron funkciók
 A következő aszinkron függvény [ír az Irányítópulton egy log](#how-to-write-logs).
 
-        public async static Task ProcessQueueMessageAsync([QueueTrigger("logqueue")] string logMessage, TextWriter logger)
-        {
-            await logger.WriteLineAsync(logMessage);
-        }
+```csharp
+public async static Task ProcessQueueMessageAsync([QueueTrigger("logqueue")] string logMessage, TextWriter logger)
+{
+    await logger.WriteLineAsync(logMessage);
+}
+```
 
 Az aszinkron funkciókat is igénybe vehet egy [megszakítás jogkivonat](http://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken), ahogyan az a következő példának, amely egy blobot másol. (Ismertetése a **queueTrigger** helyőrző, tekintse meg a [Blobok](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message) szakaszban.)
 
-        public async static Task ProcessQueueMessageAsyncCancellationToken(
-            [QueueTrigger("blobcopyqueue")] string blobName,
-            [Blob("textblobs/{queueTrigger}",FileAccess.Read)] Stream blobInput,
-            [Blob("textblobs/{queueTrigger}-new",FileAccess.Write)] Stream blobOutput,
-            CancellationToken token)
-        {
-            await blobInput.CopyToAsync(blobOutput, 4096, token);
-        }
+```csharp
+public async static Task ProcessQueueMessageAsyncCancellationToken(
+    [QueueTrigger("blobcopyqueue")] string blobName,
+    [Blob("textblobs/{queueTrigger}",FileAccess.Read)] Stream blobInput,
+    [Blob("textblobs/{queueTrigger}-new",FileAccess.Write)] Stream blobOutput,
+    CancellationToken token)
+{
+    await blobInput.CopyToAsync(blobOutput, 4096, token);
+}
+```
 
 ## <a name="types-the-queuetrigger-attribute-works-with"></a>Együttműködik a QueueTrigger attribútum típusa
 Használhat **QueueTrigger** alábbi típusait:
@@ -109,30 +119,32 @@ Ha az ügyfelek közvetlenül az Azure storage API-t szeretne, hozzáadhatja egy
 
 Az alábbi példa egy INFO napló összes ezeket a metaadatokat ír. A példában logMessage és queueTrigger is tartalmaz az üzenetsorban található üzenet tartalma.
 
-        public static void WriteLog([QueueTrigger("logqueue")] string logMessage,
-            DateTimeOffset expirationTime,
-            DateTimeOffset insertionTime,
-            DateTimeOffset nextVisibleTime,
-            string id,
-            string popReceipt,
-            int dequeueCount,
-            string queueTrigger,
-            CloudStorageAccount cloudStorageAccount,
-            TextWriter logger)
-        {
-            logger.WriteLine(
-                "logMessage={0}\n" +
-            "expirationTime={1}\ninsertionTime={2}\n" +
-                "nextVisibleTime={3}\n" +
-                "id={4}\npopReceipt={5}\ndequeueCount={6}\n" +
-                "queue endpoint={7} queueTrigger={8}",
-                logMessage, expirationTime,
-                insertionTime,
-                nextVisibleTime, id,
-                popReceipt, dequeueCount,
-                cloudStorageAccount.QueueEndpoint,
-                queueTrigger);
-        }
+```csharp
+public static void WriteLog([QueueTrigger("logqueue")] string logMessage,
+    DateTimeOffset expirationTime,
+    DateTimeOffset insertionTime,
+    DateTimeOffset nextVisibleTime,
+    string id,
+    string popReceipt,
+    int dequeueCount,
+    string queueTrigger,
+    CloudStorageAccount cloudStorageAccount,
+    TextWriter logger)
+{
+    logger.WriteLine(
+        "logMessage={0}\n" +
+        "expirationTime={1}\ninsertionTime={2}\n" +
+        "nextVisibleTime={3}\n" +
+        "id={4}\npopReceipt={5}\ndequeueCount={6}\n" +
+        "queue endpoint={7} queueTrigger={8}",
+        logMessage, expirationTime,
+        insertionTime,
+        nextVisibleTime, id,
+        popReceipt, dequeueCount,
+        cloudStorageAccount.QueueEndpoint,
+        queueTrigger);
+}
+```
 
 A következő példakód által írt mintanapló:
 
@@ -151,22 +163,24 @@ Elfogadhatja a függvény, amely egy folyamatos webjobs-feladatot futtat egy **C
 
 Az alábbi példa bemutatja, hogyan ellenőrizheti a függvény közelgő webjobs-feladat leállítására.
 
-    public static void GracefulShutdownDemo(
-                [QueueTrigger("inputqueue")] string inputText,
-                TextWriter logger,
-                CancellationToken token)
+```csharp
+public static void GracefulShutdownDemo(
+            [QueueTrigger("inputqueue")] string inputText,
+            TextWriter logger,
+            CancellationToken token)
+{
+    for (int i = 0; i < 100; i++)
     {
-        for (int i = 0; i < 100; i++)
+        if (token.IsCancellationRequested)
         {
-            if (token.IsCancellationRequested)
-            {
-                logger.WriteLine("Function was cancelled at iteration {0}", i);
-                break;
-            }
-            Thread.Sleep(1000);
-            logger.WriteLine("Normal processing for queue message={0}", inputText);
+            logger.WriteLine("Function was cancelled at iteration {0}", i);
+            break;
         }
+        Thread.Sleep(1000);
+        logger.WriteLine("Normal processing for queue message={0}", inputText);
     }
+}
+```
 
 **Megjegyzés:** az irányítópult nem megfelelően jelenik meg a állapota és kimenete függvények, amelyek le lett állítva.
 
@@ -178,37 +192,43 @@ Függvény, amely létrehoz egy új üzenetsor üzenetet ír, használja a **vá
 ### <a name="string-queue-messages"></a>Karakterlánc-üzenetsorbeli üzenetek esetén
 A következő az aszinkron kódminta az üzenetsorban, az üzenetsorban található üzenet a várólistában "inputqueue" nevű kapott az azonos tartalmú "outputqueue" nevű hoz létre egy új üzenetsor üzenetet. (Aszinkron funkciók használata **IAsyncCollector<T>**  , ahogyan az ebben a szakaszban később.)
 
-        public static void CreateQueueMessage(
-            [QueueTrigger("inputqueue")] string queueMessage,
-            [Queue("outputqueue")] out string outputQueueMessage )
-        {
-            outputQueueMessage = queueMessage;
-        }
+```csharp
+public static void CreateQueueMessage(
+    [QueueTrigger("inputqueue")] string queueMessage,
+    [Queue("outputqueue")] out string outputQueueMessage )
+{
+    outputQueueMessage = queueMessage;
+}
+```
 
 ### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(egyszerű régi CLR-beli objektum](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) várólista-üzenetek
 Amely tartalmazza a karakterláncot, hanem egy POCO üzenetsori üzenet létrehozására, át kell adnia a POCO típus a kimeneti paraméterként a **várólista** attribútumok konstruktorában.
 
-        public static void CreateQueueMessage(
-            [QueueTrigger("inputqueue")] BlobInformation blobInfoInput,
-            [Queue("outputqueue")] out BlobInformation blobInfoOutput )
-        {
-            blobInfoOutput = blobInfoInput;
-        }
+```csharp
+public static void CreateQueueMessage(
+    [QueueTrigger("inputqueue")] BlobInformation blobInfoInput,
+    [Queue("outputqueue")] out BlobInformation blobInfoOutput )
+{
+    blobInfoOutput = blobInfoInput;
+}
+```
 
 Az SDK automatikusan szerializálja a JSON-objektum. Egy üzenetsor-üzenetet mindig létrejön, még akkor is, ha az objektum null értékű.
 
 ### <a name="create-multiple-messages-or-in-async-functions"></a>Hozzon létre több üzenetet, vagy aszinkron funkciók
 Hozzon létre több üzeneteket, győződjön meg arról, a kimeneti várólista paramétertípusa **ICollector<T>**  vagy **IAsyncCollector<T>**, az alábbi példában látható módon.
 
-        public static void CreateQueueMessages(
-            [QueueTrigger("inputqueue")] string queueMessage,
-            [Queue("outputqueue")] ICollector<string> outputQueueMessage,
-            TextWriter logger)
-        {
-            logger.WriteLine("Creating 2 messages in outputqueue");
-            outputQueueMessage.Add(queueMessage + "1");
-            outputQueueMessage.Add(queueMessage + "2");
-        }
+```csharp
+public static void CreateQueueMessages(
+    [QueueTrigger("inputqueue")] string queueMessage,
+    [Queue("outputqueue")] ICollector<string> outputQueueMessage,
+    TextWriter logger)
+{
+    logger.WriteLine("Creating 2 messages in outputqueue");
+    outputQueueMessage.Add(queueMessage + "1");
+    outputQueueMessage.Add(queueMessage + "2");
+}
+```
 
 Azonnal jön létre minden egyes üzenetsor során a **Hozzáadás** módszert hívja meg.
 
@@ -218,7 +238,7 @@ Használhatja a **várólista** attribútum a következő paraméter típusa:
 * **karakterlánc ki** (hoz létre üzenetsori üzenet, ha a paraméter értéke nem null értékű amikor befejeződik a függvény)
 * **ki byte []** (működik, mint az **karakterlánc**)
 * **ki CloudQueueMessage** (működik, mint az **karakterlánc**)
-* **ki POCO** (egy szerializálható típust hoz létre egy üzenetet objektem s hodnotou null, ha a paramétere null értékű, amikor befejeződik a függvény)
+* **ki POCO** (egy szerializálható típust hoz létre egy üzenetet objektem s hodnotou null, ha a paraméter null értékű, amikor befejeződik a függvény)
 * **ICollector**
 * **IAsyncCollector**
 * **CloudQueue** (az üzeneteket, manuálisan használatával közvetlenül az Azure Storage API létrehozása)
@@ -228,15 +248,17 @@ Ha néhány dolgot a függvényben a WebJobs SDK-val attribútum például haszn
 
 Az alábbi példa egy bemeneti üzenetsor vesz igénybe, és egy új üzenetet hoz létre ugyanahhoz a tartalomhoz egy kimeneti várólista. A kimeneti várólista neve kódot a függvény törzsében állítja be.
 
-        public static void CreateQueueMessage(
-            [QueueTrigger("inputqueue")] string queueMessage,
-            IBinder binder)
-        {
-            string outputQueueName = "outputqueue" + DateTime.Now.Month.ToString();
-            QueueAttribute queueAttribute = new QueueAttribute(outputQueueName);
-            CloudQueue outputQueue = binder.Bind<CloudQueue>(queueAttribute);
-            outputQueue.AddMessage(new CloudQueueMessage(queueMessage));
-        }
+```csharp
+public static void CreateQueueMessage(
+    [QueueTrigger("inputqueue")] string queueMessage,
+    IBinder binder)
+{
+    string outputQueueName = "outputqueue" + DateTime.Now.Month.ToString();
+    QueueAttribute queueAttribute = new QueueAttribute(outputQueueName);
+    CloudQueue outputQueue = binder.Bind<CloudQueue>(queueAttribute);
+    outputQueue.AddMessage(new CloudQueueMessage(queueMessage));
+}
+```
 
 A **IBinder** felület is használható a **tábla** és **Blob** attribútumok.
 
@@ -249,13 +271,15 @@ Egy üzenetsor üzenet, amely tartalmazza a karakterláncot **queueTrigger** has
 
 Az alábbi példában **Stream** objektumok olvasása és írása a blobokat. Az üzenetsorban található üzenet a textblobs tárolóban található blobok neve. A blob-egy példányát "– új" hozzáfűzi neve jön létre ugyanabban a tárolóban.
 
-        public static void ProcessQueueMessage(
-            [QueueTrigger("blobcopyqueue")] string blobName,
-            [Blob("textblobs/{queueTrigger}",FileAccess.Read)] Stream blobInput,
-            [Blob("textblobs/{queueTrigger}-new",FileAccess.Write)] Stream blobOutput)
-        {
-            blobInput.CopyTo(blobOutput, 4096);
-        }
+```csharp
+public static void ProcessQueueMessage(
+    [QueueTrigger("blobcopyqueue")] string blobName,
+    [Blob("textblobs/{queueTrigger}",FileAccess.Read)] Stream blobInput,
+    [Blob("textblobs/{queueTrigger}-new",FileAccess.Write)] Stream blobOutput)
+{
+    blobInput.CopyTo(blobOutput, 4096);
+}
+```
 
 A **Blob** attribútum konstruktorban vesz igénybe egy **blobPath** paraméter, amely meghatározza a tároló és blobnév nevét. A helyőrző kapcsolatos további információkért lásd: [az Azure blob storage használata a WebJobs SDK-val](https://github.com/Azure/azure-webjobs-sdk/wiki).
 
@@ -263,31 +287,37 @@ Ha az attribútum decorates egy **Stream** objektumot, egy másik konstruktor pa
 
 Az alábbi példában egy **CloudBlockBlob** egy blobot a törölni kívánt objektum. Az üzenetsorban található üzenet a blob neve.
 
-        public static void DeleteBlob(
-            [QueueTrigger("deleteblobqueue")] string blobName,
-            [Blob("textblobs/{queueTrigger}")] CloudBlockBlob blobToDelete)
-        {
-            blobToDelete.Delete();
-        }
+```csharp
+public static void DeleteBlob(
+    [QueueTrigger("deleteblobqueue")] string blobName,
+    [Blob("textblobs/{queueTrigger}")] CloudBlockBlob blobToDelete)
+{
+    blobToDelete.Delete();
+}
+```
 
 ### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(egyszerű régi CLR-beli objektum](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) várólista-üzenetek
 Egy POCO az üzenetsorban található üzenet JSON-fájlként tárolja, használhatja ezt a nevet az objektum tulajdonságainak helyőrzőket a **várólista** attribútum **blobPath** paraméter. Üzenetsor metaadatai a tulajdonságnevek helyőrzőket is használhatja. Lásd: [várólista vagy üzenetsor üzenetet metaadatok lekérése](#get-queue-or-queue-message-metadata).
 
 Az alábbi példában egy blobot egy másik kiterjesztésű új blob másolja. Az üzenetsorban található üzenet van egy **BlobInformation** , amely tartalmazza az objektum **BlobName** és **BlobNameWithoutExtension** tulajdonságait. A tulajdonságnevek helyőrzőként a blob elérési útja a **Blob** attribútumok.
 
-        public static void CopyBlobPOCO(
-            [QueueTrigger("copyblobqueue")] BlobInformation blobInfo,
-            [Blob("textblobs/{BlobName}", FileAccess.Read)] Stream blobInput,
-            [Blob("textblobs/{BlobNameWithoutExtension}.txt", FileAccess.Write)] Stream blobOutput)
-        {
-            blobInput.CopyTo(blobOutput, 4096);
-        }
+```csharp
+public static void CopyBlobPOCO(
+    [QueueTrigger("copyblobqueue")] BlobInformation blobInfo,
+    [Blob("textblobs/{BlobName}", FileAccess.Read)] Stream blobInput,
+    [Blob("textblobs/{BlobNameWithoutExtension}.txt", FileAccess.Write)] Stream blobOutput)
+{
+    blobInput.CopyTo(blobOutput, 4096);
+}
+```
 
 Az SDK-t használ a [Newtonsoft.Json NuGet-csomag](http://www.nuget.org/packages/Newtonsoft.Json) szerializálható és deszerializálható üzeneteket. Ha üzenetsorbeli üzenetek számára hoz létre egy programot, amely nem használja a WebJobs SDK-val, írhat kódot, amely az SDK szolgáltatás elemezni tudja POCO üzenetsori üzenet létrehozására, az alábbi példához hasonlóan.
 
-        BlobInformation blobInfo = new BlobInformation() { BlobName = "boot.log", BlobNameWithoutExtension = "boot" };
-        var queueMessage = new CloudQueueMessage(JsonConvert.SerializeObject(blobInfo));
-        logQueue.AddMessage(queueMessage);
+```csharp
+BlobInformation blobInfo = new BlobInformation() { BlobName = "boot.log", BlobNameWithoutExtension = "boot" };
+var queueMessage = new CloudQueueMessage(JsonConvert.SerializeObject(blobInfo));
+logQueue.AddMessage(queueMessage);
+```
 
 Ha ehhez néhány dolgot a függvényben előtt kötés egy blob egy objektumhoz van szüksége, az attribútum a függvény törzsében használhatja, ahogyan az [használata a WebJobs SDK-val attribútumok függvény törzsében](#use-webjobs-sdk-attributes-in-the-body-of-a-function).
 
@@ -316,19 +346,21 @@ Az ártalmas üzenetsor neve *{originalqueuename}*-ártalmas. Írhat a naplózá
 
 Az alábbi példában a **CopyBlob** függvény sikertelen lesz, amikor egy üzenetsor-üzenetet, amely nem létezik blob nevét tartalmazza. Ha ez történik, az üzenet átkerül az copyblobqueue üzenetsorból a copyblobqueue-poison várólista. A **ProcessPoisonMessage** majd bejelentkezik az ártalmas üzenetek.
 
-        public static void CopyBlob(
-            [QueueTrigger("copyblobqueue")] string blobName,
-            [Blob("textblobs/{queueTrigger}", FileAccess.Read)] Stream blobInput,
-            [Blob("textblobs/{queueTrigger}-new", FileAccess.Write)] Stream blobOutput)
-        {
-            blobInput.CopyTo(blobOutput, 4096);
-        }
+```csharp
+public static void CopyBlob(
+    [QueueTrigger("copyblobqueue")] string blobName,
+    [Blob("textblobs/{queueTrigger}", FileAccess.Read)] Stream blobInput,
+    [Blob("textblobs/{queueTrigger}-new", FileAccess.Write)] Stream blobOutput)
+{
+    blobInput.CopyTo(blobOutput, 4096);
+}
 
-        public static void ProcessPoisonMessage(
-            [QueueTrigger("copyblobqueue-poison")] string blobName, TextWriter logger)
-        {
-            logger.WriteLine("Failed to copy blob, name=" + blobName);
-        }
+public static void ProcessPoisonMessage(
+    [QueueTrigger("copyblobqueue-poison")] string blobName, TextWriter logger)
+{
+    logger.WriteLine("Failed to copy blob, name=" + blobName);
+}
+```
 
 A következő ábrán ezek a függvények konzolkimenete ártalmas üzenetek feldolgozása során.
 
@@ -337,21 +369,23 @@ A következő ábrán ezek a függvények konzolkimenete ártalmas üzenetek fel
 ### <a name="manual-poison-message-handling"></a>Manuális ártalmas üzenetek kezelése
 Feldolgozási hányszor üzenet lett kiválasztva beszerezheti a hozzáadásával egy **int** nevű paraméter **dequeueCount** a függvényt. Ezután ellenőrizze a függvény kódját eltávolítása onnan száma, és hajtsa végre a saját ártalmas üzenetek kezelése, ha a szám meghaladja a küszöbértéket, az alábbi példában látható módon.
 
-        public static void CopyBlob(
-            [QueueTrigger("copyblobqueue")] string blobName, int dequeueCount,
-            [Blob("textblobs/{queueTrigger}", FileAccess.Read)] Stream blobInput,
-            [Blob("textblobs/{queueTrigger}-new", FileAccess.Write)] Stream blobOutput,
-            TextWriter logger)
-        {
-            if (dequeueCount > 3)
-            {
-                logger.WriteLine("Failed to copy blob, name=" + blobName);
-            }
-            else
-            {
-            blobInput.CopyTo(blobOutput, 4096);
-            }
-        }
+```csharp
+public static void CopyBlob(
+    [QueueTrigger("copyblobqueue")] string blobName, int dequeueCount,
+    [Blob("textblobs/{queueTrigger}", FileAccess.Read)] Stream blobInput,
+    [Blob("textblobs/{queueTrigger}-new", FileAccess.Write)] Stream blobOutput,
+    TextWriter logger)
+{
+    if (dequeueCount > 3)
+    {
+        logger.WriteLine("Failed to copy blob, name=" + blobName);
+    }
+    else
+    {
+        blobInput.CopyTo(blobOutput, 4096);
+    }
+}
+```
 
 ## <a name="how-to-set-configuration-options"></a>Konfigurációs beállításainak megadása
 Használhatja a **JobHostConfiguration** írja be a következő konfigurációs beállításainak megadása:
@@ -363,24 +397,26 @@ Használhatja a **JobHostConfiguration** írja be a következő konfigurációs 
 ### <a name="set-sdk-connection-strings-in-code"></a>SDK-kapcsolati karakterláncok beállítása a code-ban
 Az SDK-t a kapcsolati sztringek beállítása a code-ban lehetővé teszi a saját kapcsolati karakterlánc nevét a konfigurációs fájlok vagy a környezeti változók, használja az alábbi példában látható módon.
 
-        static void Main(string[] args)
-        {
-            var _storageConn = ConfigurationManager
-                .ConnectionStrings["MyStorageConnection"].ConnectionString;
+```csharp
+static void Main(string[] args)
+{
+    var _storageConn = ConfigurationManager
+        .ConnectionStrings["MyStorageConnection"].ConnectionString;
 
-            var _dashboardConn = ConfigurationManager
-                .ConnectionStrings["MyDashboardConnection"].ConnectionString;
+    var _dashboardConn = ConfigurationManager
+        .ConnectionStrings["MyDashboardConnection"].ConnectionString;
 
-            var _serviceBusConn = ConfigurationManager
-                .ConnectionStrings["MyServiceBusConnection"].ConnectionString;
+    var _serviceBusConn = ConfigurationManager
+        .ConnectionStrings["MyServiceBusConnection"].ConnectionString;
 
-            JobHostConfiguration config = new JobHostConfiguration();
-            config.StorageConnectionString = _storageConn;
-            config.DashboardConnectionString = _dashboardConn;
-            config.ServiceBusConnectionString = _serviceBusConn;
-            JobHost host = new JobHost(config);
-            host.RunAndBlock();
-        }
+    JobHostConfiguration config = new JobHostConfiguration();
+    config.StorageConnectionString = _storageConn;
+    config.DashboardConnectionString = _dashboardConn;
+    config.ServiceBusConnectionString = _serviceBusConn;
+    JobHost host = new JobHost(config);
+    host.RunAndBlock();
+}
+```
 
 ### <a name="configure-queuetrigger--settings"></a>QueueTrigger beállításainak konfigurálása
 A várólista-üzenet feldolgozása a következő beállításokat konfigurálhatja:
@@ -391,15 +427,17 @@ A várólista-üzenet feldolgozása a következő beállításokat konfigurálha
 
 Az alábbi példa bemutatja, hogyan konfigurálhatja ezeket a beállításokat:
 
-        static void Main(string[] args)
-        {
-            JobHostConfiguration config = new JobHostConfiguration();
-            config.Queues.BatchSize = 8;
-            config.Queues.MaxDequeueCount = 4;
-            config.Queues.MaxPollingInterval = TimeSpan.FromSeconds(15);
-            JobHost host = new JobHost(config);
-            host.RunAndBlock();
-        }
+```csharp
+static void Main(string[] args)
+{
+    JobHostConfiguration config = new JobHostConfiguration();
+    config.Queues.BatchSize = 8;
+    config.Queues.MaxDequeueCount = 4;
+    config.Queues.MaxPollingInterval = TimeSpan.FromSeconds(15);
+    JobHost host = new JobHost(config);
+    host.RunAndBlock();
+}
+```
 
 ### <a name="set-values-for-webjobs-sdk-constructor-parameters-in-code"></a>Értékek a WebJobs SDK-val konstruktor paraméterek beállítása a code-ban
 Néha szeretne hozzáadni egy üzenetsor neve, a blob nevét vagy a tároló, vagy egy Táblanév rögzítse szoftveresen helyett a kód azt. Például előfordulhat, hogy az üzenetsor nevének megadásához szeretné **QueueTrigger** egy konfigurációs fájlban vagy környezeti változóban.
@@ -408,54 +446,62 @@ Néha szeretne hozzáadni egy üzenetsor neve, a blob nevét vagy a tároló, va
 
 Tegyük fel például, egy üzenetsorba, a tesztelési környezetben logqueuetest és a egy elnevezett logqueueprod éles környezetben használni kívánt. A paraméterfájlokban várólista neve helyett adja meg a nevét, egy bejegyzés szeretné a **appSettings** gyűjteményt, amely a tényleges üzenetsor neve lenne. Ha a **appSettings** kulcs logqueue, a függvény az alábbi példához hasonlóan rákeresve.
 
-        public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
-        {
-            Console.WriteLine(logMessage);
-        }
+```csharp
+public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
+{
+    Console.WriteLine(logMessage);
+}
+```
 
 A **NameResolver** osztály majd sikerült beolvasni az üzenetsor neve, a **appSettings** az alábbi példában látható módon:
 
-        public class QueueNameResolver : INameResolver
-        {
-            public string Resolve(string name)
-            {
-                return ConfigurationManager.AppSettings[name].ToString();
-            }
-        }
+```csharp
+public class QueueNameResolver : INameResolver
+{
+    public string Resolve(string name)
+    {
+        return ConfigurationManager.AppSettings[name].ToString();
+    }
+}
+```
 
 Át kell adnia a **NameResolver** az osztály a **JobHost** objektum a következő példában látható módon.
 
-        static void Main(string[] args)
-        {
-            JobHostConfiguration config = new JobHostConfiguration();
-            config.NameResolver = new QueueNameResolver();
-            JobHost host = new JobHost(config);
-            host.RunAndBlock();
-        }
+```csharp
+static void Main(string[] args)
+{
+    JobHostConfiguration config = new JobHostConfiguration();
+    config.NameResolver = new QueueNameResolver();
+    JobHost host = new JobHost(config);
+    host.RunAndBlock();
+}
+```
 
 **Megjegyzés:** üzenetsor, tábla és a blob nevének elhárulnak minden alkalommal, amikor egy függvényt, de az alkalmazás indításakor csak blob-tároló nevének feloldása. Blobtároló neve nem módosítható, amíg a feladat fut-e.
 
 ## <a name="how-to-trigger-a-function-manually"></a>Hogyan függvény manuális aktiválása
 Egy függvény manuális aktiválásához használhatja az **hívja** vagy **CallAsync** metódust a **JobHost** objektum és a **NoAutomaticTrigger** attribútum a függvény, az alábbi példában látható módon.
 
-        public class Program
-        {
-            static void Main(string[] args)
-            {
-                JobHost host = new JobHost();
-                host.Call(typeof(Program).GetMethod("CreateQueueMessage"), new { value = "Hello world!" });
-            }
+```csharp
+public class Program
+{
+    static void Main(string[] args)
+    {
+        JobHost host = new JobHost();
+        host.Call(typeof(Program).GetMethod("CreateQueueMessage"), new { value = "Hello world!" });
+    }
 
-            [NoAutomaticTrigger]
-            public static void CreateQueueMessage(
-                TextWriter logger,
-                string value,
-                [Queue("outputqueue")] out string message)
-            {
-                message = value;
-                logger.WriteLine("Creating queue message: ", message);
-            }
-        }
+    [NoAutomaticTrigger]
+    public static void CreateQueueMessage(
+        TextWriter logger,
+        string value,
+        [Queue("outputqueue")] out string message)
+    {
+        message = value;
+        logger.WriteLine("Creating queue message: ", message);
+    }
+}
+```
 
 ## <a name="how-to-write-logs"></a>Naplók írása
 Az irányítópult megjeleníti a naplók két helyen lehet: az oldalon, a webjobs-feladat, és a egy adott webjobs-feladat meghíváshoz az oldal.
@@ -476,15 +522,17 @@ Naplózási letilthatja az irányítópult kapcsolati karakterlánc beállítás
 
 Az alábbi példa bemutatja a naplóznak számos módon:
 
-        public static void WriteLog(
-            [QueueTrigger("logqueue")] string logMessage,
-            TextWriter logger)
-        {
-            Console.WriteLine("Console.Write - " + logMessage);
-            Console.Out.WriteLine("Console.Out - " + logMessage);
-            Console.Error.WriteLine("Console.Error - " + logMessage);
-            logger.WriteLine("TextWriter - " + logMessage);
-        }
+```csharp
+public static void WriteLog(
+    [QueueTrigger("logqueue")] string logMessage,
+    TextWriter logger)
+{
+    Console.WriteLine("Console.Write - " + logMessage);
+    Console.Out.WriteLine("Console.Out - " + logMessage);
+    Console.Error.WriteLine("Console.Error - " + logMessage);
+    logger.WriteLine("TextWriter - " + logMessage);
+}
+```
 
 A WebJobs SDK irányítópultján kimenete a **TextWriter** függvény meghívási mikor lépjen az egy adott oldal jelenik meg, és válassza ki az objektum **váltógomb kimeneti**:
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bb7e422e0eb4a71e0f88a911083f8f5d6fb0ef2f
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: d42a9458afa6244e0b6d8e7deb420a8ac49a130f
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092168"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634166"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizálhatja az erőforrások az adatközpontban vagy a felhőben a hibrid Runbook-feldolgozó
 
@@ -95,7 +95,7 @@ Eltávolítja a csoportot, akkor először távolítsa el a hibrid Runbook-feldo
 
 ### <a name="hybrid-worker-role"></a>A hibrid feldolgozói szerepkör
 
-A hibrid Runbook-feldolgozó kapcsolódni és regisztrálni a Log Analytics-szel, az azt a portszámot és az ebben a szakaszban leírt URL-hozzáféréssel kell rendelkeznie. Ez az elérés felül, akkor a [portokat és a Microsoft Monitoring Agent számára a szükséges URL-címek](../log-analytics/log-analytics-agent-windows.md) szeretne csatlakozni a Log Analytics.
+A hibrid Runbook-feldolgozó kapcsolódni és regisztrálni a Log Analytics-szel, az azt a portszámot és az ebben a szakaszban leírt URL-hozzáféréssel kell rendelkeznie. Ez az elérés felül, akkor a [portokat és a Microsoft Monitoring Agent számára a szükséges URL-címek](../azure-monitor/platform/agent-windows.md) szeretne csatlakozni a Log Analytics.
 
 Ha az ügynök és a Log Analytics szolgáltatás közötti kommunikációhoz proxykiszolgálót használ, győződjön meg arról, hogy elérhetők-e a megfelelő erőforrásokat. Ha tűzfal használatával korlátozza az internethez való hozzáférést, konfigurálnia kell a tűzfalat, hogy engedélyezze a hozzáférést. Ha a Log Analytics átjáró proxyként használja, győződjön meg arról, hibrid feldolgozók van konfigurálva. Ehhez az utasításokért lásd: [konfigurálása a Log Analytics-átjáró Automation hibrid feldolgozók](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway#configure-for-automation-hybrid-workers).
 

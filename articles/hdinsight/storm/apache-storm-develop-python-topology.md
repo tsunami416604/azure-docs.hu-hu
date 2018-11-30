@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: b46fa5eb9772a19a5613fc276071167d884f6057
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 04046b4c7c36418b9024a690ad5279f9e34578a5
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008759"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583635"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Python használata a HDInsight Apache Storm-topológiák fejlesztése
 
-Ismerje meg, hogyan hozhat létre egy Python-összetevők használó Apache Storm-topológiák. Az Apache Storm több nyelvet is támogat, még akkor is lehetővé teszi egy topológiában számos nyelvből összetevőket kombinálja. (A Storm 0.10.0-s ismertetése) fluxus keretében könnyedén hozhat létre megoldásokat, amelyek a Python-összetevők használata teszi lehetővé.
+Ismerje meg, hogyan hozhat létre egy [Apache Storm](http://storm.apache.org/) topológiát használó Python-összetevők. Az Apache Storm több nyelvet is támogat, még akkor is lehetővé teszi egy topológiában számos nyelvből összetevőket kombinálja. A [fluxus](http://storm.apache.org/releases/current/flux.html) keretrendszer (a Storm 0.10.0-s ismertetése) lehetővé teszi, hogy könnyedén hozhat létre-et használó Python-összetevők.
 
 > [!IMPORTANT]
 > A jelen dokumentumban lévő információk teszteltünk, a HDInsight 3.6-alapú Storm segítségével. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -32,7 +32,7 @@ Ez a projekt kódját mindig elérhető legyen [ https://github.com/Azure-Sample
 
 * Java JDK 1.8-as vagy újabb
 
-* Maven 3
+* [Az Apache Maven 3](https://maven.apache.org/download.cgi)
 
 * (Nem kötelező) Egy helyi Storm-fejlesztési környezetre. A Storm helyi környezetben csak akkor van szükség, ha helyileg futtatja a topológia. További információkért lásd: [a fejlesztési környezet beállítása](http://storm.apache.org/releases/1.1.2/Setting-up-development-environment.html).
 
@@ -148,5 +148,5 @@ A topológia leállításához használja __Ctrl + C__.
 
 A Python használata a HDInsight egyéb módjaira vonatkozóan az alábbi dokumentumokban talál:
 
-* [Hogyan használható a Python MapReduce-feladatok streameléshez](../hadoop/apache-hadoop-streaming-python.md)
-* [Python felhasználói definiált függvények (UDF) a Pig és a Hive használata](../hadoop/python-udf-hdinsight.md)
+* [Az Apache Hadoop MapReduce-feladatok streameléshez Python használata](../hadoop/apache-hadoop-streaming-python.md)
+* [Python felhasználói definiált függvények (UDF) az Apache Pig- és Apache Hive használata](../hadoop/python-udf-hdinsight.md)

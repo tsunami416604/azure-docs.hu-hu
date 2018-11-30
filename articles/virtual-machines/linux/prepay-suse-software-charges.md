@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2018
 ms.author: yashar
-ms.openlocfilehash: 9c3976a5fa98049de03f2a65b71f1fc927947142
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 44d23cf38eb1dca9ade94c5a8fd0ae495300be44
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307830"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582190"
 ---
 # <a name="prepay-for-suse-software-plans-from-azure-reservations"></a>Fizessen elő az Azure foglalásai közül SUSE szoftvercsomagok – alap
 
@@ -41,7 +41,7 @@ SUSE szoftver tervek az Azure Portalon vásárolhat. A csomag vásárlása:
     |Name (Név)        |Ez a vásárlás neve.|
     |Előfizetés|Ezt a csomagot használt előfizetés. A fizetési módot, az előfizetés fel van töltve a Foglalás az előzetes költségek. Az előfizetés típusa kétféle lehet: nagyvállalati szerződés (ajánlatszám: MS-AZR-0017P) vagy használatalapú fizetéses (ajánlatszám: MS-AZR-0003P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Használatalapú fizetéses előfizetéseknél a díjakat az előfizetéshez tartozó hitelkártyára terheljük vagy a számlafizetési módnak megfelelően számlázzuk.|
     |Hatókör       |A hatókör egy előfizetést vagy több előfizetés (megosztott hatókör) is foglalkozik. Ha ki: <ul><li>SUSE Linux használati ebben az előfizetésben egyetlen előfizetés – a csomag kedvezmény érvényes. </li><li>Közös – a csomag rendszer alkalmazza a kedvezményt SUSE Linux-használatra a számlázási környezeten belül minden előfizetésben. A vállalati ügyfelek a megosztott hatókörrel a regisztráció és előfizetéseken belül a regisztráció (kivéve a fejlesztési és tesztelési előfizetések) magában foglalja. Használatalapú fizetéses ügyfelek számára a megosztott hatókörrel a fiók rendszergazdája által létrehozott összes utólagos elszámolású előfizetések.</li></ul>|
-    |Szoftvercsomag     |Válassza ki a SUSE Linux-csomagot. Segítségre van szüksége az azonosításához, mit kell vásárolnia, lásd: [megismerheti, hogyan kell alkalmazni a SUSE Linux Enterprise szoftvert foglalási kedvezményt](../../billing/billing-understand-suse-reservation-charges.md).|
+    |Szoftvercsomag     |Válassza ki a SUSE Linux-csomagot. Ennek kiválasztásához [a SUSE Linux Enterprise szoftverfoglalási kedvezményét ismertető részben](../../billing/billing-understand-suse-reservation-charges.md) talál további segítséget.|
     |Virtuális gép mérete     |SUSE Linux-díjszabás attól függ, hogy a virtuális gép vcpu-k számát. Válassza ki, a SUSE Linux rendszerű virtuális gépeken vcpu-k számát jelenti.|
     |Időtartam        |Egy vagy három év.|
     |Mennyiség    |A SUSE Linux tervezése vásárol az virtuális gépek száma. A mennyiség a futó kérheti le a számlázási kedvezményt SUSE Linux-példányok számát.|
@@ -56,7 +56,7 @@ Fenntartott VM-példányok, például a SUSE Linux – csomagok rugalmasabbá p�
 
 ## <a name="cancellation-and-exchanges-not-allowed"></a>Megszakítás és cseréje nem engedélyezett
 
-Nem vonhatja vissza, vagy exchange a SUSE-csomag, amelytől vásárolta. Ellenőrizze, hogy a megfelelő csomag vásárlása a használat. Segítségre van szüksége az azonosításához, mit kell vásárolnia, lásd: [megismerheti, hogyan kell alkalmazni a SUSE Linux Enterprise szoftvert foglalási kedvezményt](../../billing/billing-understand-suse-reservation-charges.md).
+A megvásárolt SUSE-csomag nem mondható le és nem cserélhető ki. A használati szokásainak megfelelő csomagot vásárolja meg. Ennek kiválasztásához [a SUSE Linux Enterprise szoftverfoglalási kedvezményét ismertető részben](../../billing/billing-understand-suse-reservation-charges.md) talál további segítséget.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -70,6 +70,6 @@ További tudnivalókért tekintse meg a következő cikkeket:
 - [A használatalapú fizetéses előfizetést foglalás használati adatai](../../billing/billing-understand-reserved-instance-usage.md)
 - [A nagyvállalati beléptetés foglalás használati adatai](../../billing/billing-understand-reserved-instance-usage-ea.md)
 
-## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
+## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 
-Ha további kérdése van, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

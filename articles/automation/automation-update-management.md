@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 11/05/2018
+ms.date: 11/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a2678db223fc26a377de8daa79b85a9b8cda7a02
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: caa1b6f31325cd67aad106f7829bd32a5e7aeb53
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284948"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635815"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -69,7 +69,7 @@ Az alábbi táblázat bemutatja a támogatott operációs rendszerek listáját:
 |Operációs rendszer  |Megjegyzések  |
 |---------|---------|
 |A Windows Server 2008, Windows Server 2008 R2 RTM    | Támogatja az értékelések csak frissíteni.         |
-|A Windows Server 2008 R2 SP1 és újabb verziók     |.NET-keretrendszer 4.5.1-es vagy újabb verzió szükséges. ([Töltse le a .NET-keretrendszer](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0-s vagy újabb szükség. ([Töltse le a WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Windows PowerShell 5.1 megbízhatóság növelése érdekében ajánlott.  ([Töltse le a WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2008 R2 SP1 és újabb verziók (beleértve a Windows Server 2012 és 2016)    |.NET-keretrendszer 4.5.1-es vagy újabb verzió szükséges. ([Töltse le a .NET-keretrendszer](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0-s vagy újabb szükség. ([Töltse le a WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Windows PowerShell 5.1 megbízhatóság növelése érdekében ajánlott.  ([Töltse le a WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616))        |
 |CentOS 6 (x86/x64) és 7 (x64)      | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz. "Yum" besorolásalapú javítás szükséges, amely CentOS nem rendelkezik beépített biztonsági adatokat adja vissza.         |
 |Red Hat Enterprise 6 (x86/x64) és 7 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) és 12 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
@@ -88,7 +88,7 @@ Az alábbi táblázat a nem támogatott operációs rendszerek:
 
 #### <a name="windows"></a>Windows
 
-Windows-ügynökök egy WSUS-kiszolgálóval való kommunikációhoz kell konfigurálni, vagy azok a Microsoft Update hozzáféréssel kell rendelkeznie. A frissítéskezelés a System Center Configuration Managerrel használható. Integrációs forgatókönyvek kapcsolatos további információkért lásd: [integrálása System Center Configuration Managerben az Update Management](oms-solution-updatemgmt-sccmintegration.md#configuration). A [Windows-ügynök](../log-analytics/log-analytics-agent-windows.md) megadása kötelező. Ha Ön egy Azure virtuális gép előkészítése a rendszer automatikusan telepíti az ügynököt.
+Windows-ügynökök egy WSUS-kiszolgálóval való kommunikációhoz kell konfigurálni, vagy azok a Microsoft Update hozzáféréssel kell rendelkeznie. A frissítéskezelés a System Center Configuration Managerrel használható. Integrációs forgatókönyvek kapcsolatos további információkért lásd: [integrálása System Center Configuration Managerben az Update Management](oms-solution-updatemgmt-sccmintegration.md#configuration). A [Windows-ügynök](../azure-monitor/platform/agent-windows.md) megadása kötelező. Ha Ön egy Azure virtuális gép előkészítése a rendszer automatikusan telepíti az ügynököt.
 
 #### <a name="linux"></a>Linux
 
@@ -148,7 +148,7 @@ A Windows-számítógépen tekintse át, ellenőrizze az ügynök kapcsolatot a 
 1. A Vezérlőpulton nyissa meg a **Microsoft Monitoring Agent**. Az a **Azure Log Analytics** fülön az ügynök a következő üzenettel: **a Microsoft Monitoring Agent sikeresen csatlakozott a Log Analytics**.
 2. Nyissa meg a Windows eseménynaplóban. Lépjen a **alkalmazás- és Services Logs\Operations Manager** , és keresse meg az eseményt azonosító 3000 és a forrás-esemény azonosítója 5002 **Service Connector**. Ezek az események azt jelzik, hogy a számítógép regisztrálva van a Log Analytics-munkaterületet, és konfigurációt kap.
 
-Ha az ügynök nem tud kommunikálni a Log Analytics és az ügynök kommunikáljon az internettel egy tűzfalon vagy proxykiszolgálón keresztül van konfigurálva, győződjön meg arról, hogy a tűzfal vagy proxy server megfelelően van-e konfigurálva. Győződjön meg arról, hogy megfelelően van-e konfigurálva a tűzfal vagy proxy-kiszolgáló kezelésével kapcsolatos információkért lásd: [Windows ügynök hálózati konfigurációja](../log-analytics/log-analytics-agent-windows.md) vagy [Linux-ügynök hálózati konfigurációja](../log-analytics/log-analytics-agent-linux.md).
+Ha az ügynök nem tud kommunikálni a Log Analytics és az ügynök kommunikáljon az internettel egy tűzfalon vagy proxykiszolgálón keresztül van konfigurálva, győződjön meg arról, hogy a tűzfal vagy proxy server megfelelően van-e konfigurálva. Győződjön meg arról, hogy megfelelően van-e konfigurálva a tűzfal vagy proxy-kiszolgáló kezelésével kapcsolatos információkért lásd: [Windows ügynök hálózati konfigurációja](../azure-monitor/platform/agent-windows.md) vagy [Linux-ügynök hálózati konfigurációja](../log-analytics/log-analytics-agent-linux.md).
 
 > [!NOTE]
 > Ha Linux rendszerei való kommunikációhoz proxykiszolgáló beállítva, vagy a Log Analytics-átjáró, és máris bevezetési a megoldást, frissítse a *proxy.conf* engedélyeket biztosítson az omiuser csoportnak olvasási engedélyt a fájlhoz használatával a a következő parancsokat:
@@ -583,6 +583,6 @@ Folytassa a következő oktatóanyagban megtudhatja, hogyan kezelheti a frissít
 > [Az Azure Windows rendszerű virtuális gépek frissítéseinek és javításainak kezelése](automation-tutorial-update-management.md)
 
 * Naplókeresés funkciójával [Log Analytics](../log-analytics/log-analytics-log-searches.md) frissítés részletes adatainak megtekintéséhez.
-* [Riasztások létrehozása](../log-analytics/log-analytics-alerts.md) , a számítógépekről hiányzó kritikus frissítések észlelésekor, vagy ha egy számítógép automatikus frissítése letiltott állapotba kerül.
+* [Riasztások létrehozása](../monitoring-and-diagnostics/monitoring-overview-alerts.md) , a számítógépekről hiányzó kritikus frissítések észlelésekor, vagy ha egy számítógép automatikus frissítése letiltott állapotba kerül.
 
 * Hogyan kezelheti az Update Management REST API-val kapcsolatban lásd: [szoftverkonfigurációjáról Update](/rest/api/automation/softwareupdateconfigurations)

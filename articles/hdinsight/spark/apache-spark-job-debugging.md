@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: hrasheed
-ms.openlocfilehash: c1589ab2662c3cfb4485afbd73f3d69d50e3cefd
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6afb54caca572988c566ab7c6325d511e77fbd3e
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013632"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582088"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Futó Azure HDInsight az Apache Spark-feladatok hibakereséséhez
 
-Ebből a cikkből megismerheti, hogyan nyomon követését és a YARN felhasználói felületén, a Spark felhasználói felület és a Spark-Előzménykiszolgáló HDInsight-fürtökön futó Spark-feladatok hibakereséséhez. A Spark-fürt rendelkezésre álló Jegyzetfüzet használata Spark-feladat indítása **Machine learning: élelmiszervizsgálati egészségügyi adatok MLLib segítségével prediktív elemzési**. A következő lépések segítségével nyomon követheti az elküldött megközelítéssel bármilyen más, például egy alkalmazás **spark-submit szkripttel**.
+Ebből a cikkből elsajátíthatja, hogyan nyomon követése és hibakeresése [Apache Spark](https://spark.apache.org/) futó feladatok HDInsight-fürtök használatával a [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) felhasználói felület, a Spark felhasználói felület és a Spark-Előzménykiszolgáló. A Spark-fürt rendelkezésre álló Jegyzetfüzet használata Spark-feladat indítása **Machine learning: élelmiszervizsgálati egészségügyi adatok MLLib segítségével prediktív elemzési**. A következő lépések segítségével nyomon követheti az elküldött megközelítéssel bármilyen más, például egy alkalmazás **spark-submit szkripttel**.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az alábbiakkal kell rendelkeznie:
@@ -83,7 +83,7 @@ A Spark felhasználói felületén részletezhető le a Spark-feladatok, amelyek
      * Scala-verzió
      * A fürthöz társított Eseménynapló könyvtár
      * Az alkalmazás végrehajtó magok száma
-     * Etc.
+     * Stb.
 
 ## <a name="find-information-about-completed-jobs-using-the-spark-history-server"></a>Információ a befejezett feladatok használata a Spark-Előzménykiszolgáló
 Ha egy feladat befejeződött, a feladat információi a Spark-Előzménykiszolgáló a rendszer megőrzi.
@@ -102,24 +102,24 @@ Ha egy feladat befejeződött, a feladat információi a Spark-Előzménykiszolg
 
 ## <a name="see-also"></a>Lásd még
 *  [Apache Spark-fürt erőforrásainak kezelése az Azure HDInsightban](apache-spark-resource-manager.md)
-*  [Kiterjesztett Spark-Előzménykiszolgáló használata Spark-feladatok hibakereséséhez](apache-azure-spark-history-server.md)
+*  [Kiterjesztett Spark-Előzménykiszolgáló használata Apache Spark-feladatok hibakeresése](apache-azure-spark-history-server.md)
 
 ### <a name="for-data-analysts"></a>Az adatelemzők számára
 
-* [Spark és Machine Learning: A Spark on HDInsight használata az épület-hőmérséklet elemzésére HVAC-adatok alapján](apache-spark-ipython-notebook-machine-learning.md)
-* [Spark és Machine Learning: A Spark on HDInsight használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
-* [A webhelynapló elemzése a Spark on HDInsight használatával](apache-spark-custom-library-website-log-analysis.md)
-* [Az Application Insights telemetriai adatainak elemzése a Spark on HDInsight használatával](apache-spark-analyze-application-insight-logs.md)
+* [Az Apache Spark és Machine Learning: a Spark on HDInsight HVAC-adatok épület-hőmérséklet elemzésére a használata](apache-spark-ipython-notebook-machine-learning.md)
+* [Az Apache Spark és Machine Learning: használja a Spark on HDInsight az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
+* [A webhelynapló elemzése a HDInsight az Apache Spark használatával](apache-spark-custom-library-website-log-analysis.md)
+* [Application Insights telemetriai adatainak elemzése Apache Spark on HDInsight használatával](apache-spark-analyze-application-insight-logs.md)
 * [Caffe elosztott deep learning az Azure HDInsight Spark használata](apache-spark-deep-learning-caffe.md)
 
 ### <a name="for-spark-developers"></a>Spark-fejlesztőknek
 
 * [Önálló alkalmazás létrehozása a Scala használatával](apache-spark-create-standalone-application.md)
-* [Feladatok távoli futtatása Spark-fürtön a Livy használatával](apache-spark-livy-rest-interface.md)
+* [Feladatok távoli futtatása egy Apache Spark-fürtön az Apache Livy használatával](apache-spark-livy-rest-interface.md)
 * [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark Scala-alkalmazások létrehozásához és elküldéséhez](apache-spark-intellij-tool-plugin.md)
-* [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark-alkalmazások távoli hibaelhárításához](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Zeppelin notebookok használata Spark-fürttel HDInsighton](apache-spark-zeppelin-notebook.md)
-* [Jupyter notebookokhoz elérhető kernelek a HDInsight Spark-fürtjében](apache-spark-jupyter-notebook-kernels.md)
+* [Az Apache Spark-alkalmazások távoli hibakeresése az IntelliJ IDEA HDInsight-eszközei beépülő használata](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Az Apache Zeppelin notebookok használata a HDInsight Apache Spark-fürt](apache-spark-zeppelin-notebook.md)
+* [Notebookokhoz elérhető kernelek Jupyter a HDInsight az Apache Spark-fürt](apache-spark-jupyter-notebook-kernels.md)
 * [Külső csomagok használata Jupyter notebookokkal](apache-spark-jupyter-notebook-use-external-packages.md)
 * [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](apache-spark-jupyter-notebook-install-locally.md)
 

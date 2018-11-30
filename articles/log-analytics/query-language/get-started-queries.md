@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 0ee34d99c78eb090514385de16cd77d04ddca4e4
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 32e95c9098999305d4c48d5c43fae5ef6d3ac36e
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267698"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619775"
 ---
 # <a name="get-started-with-queries-in-log-analytics"></a>A Log Analytics lekérdezések használatának első lépései
 
@@ -138,7 +138,7 @@ SecurityEvent
 ## <a name="specify-a-time-range"></a>Adjon meg egy időtartományt
 
 ### <a name="time-picker"></a>Időpontválasztó
-A bal felső sarokban, ami azt jelzi, hogy csak az elmúlt 24 órában a rekordok lekérdezésekor a időválasztó van. Ez az összes lekérdezés alkalmazott alapértelmezett időintervallumát. Az elmúlt egy órában csak a rekordok lekéréséhez válassza _utolsó óra_ , és futtassa újra a lekérdezést.
+A időválasztó mellett a Futtatás gombra, és azt jelzi, hogy csak az elmúlt 24 órában a rekordok lekérdezésekor. Ez az összes lekérdezés alkalmazott alapértelmezett időintervallumát. Az elmúlt egy órában csak a rekordok lekéréséhez válassza _utolsó óra_ , és futtassa újra a lekérdezést.
 
 ![Időválasztó](media/get-started-queries/timepicker.png)
 
@@ -226,14 +226,14 @@ Perf
 ### <a name="summarize-by-a-time-column"></a>Összegzés szempontja-idő típusú oszlop
 Eredmények csoportosítása is alapulhat-idő típusú oszlop, vagy egy másik folyamatos értéket. Egyszerűen összefoglalójához `by TimeGenerated` azonban lenne csoportok létrehozása a minden egyetlen ezredmásodperces az időtartományban, hiszen ezek egyedi értékeket. 
 
-Folyamatos értékek alapján csoportok létrehozásához, célszerű a tartomány megszüntetése használatával kezelhető egységekbe **bin**. A következő lekérdezés elemzi *Teljesítményoptimalizált* rekordokat, amelyek a szabad memória (*rendelkezésre álló memória*) egy adott számítógépen. Mindig kiszámítja az átlagos érték minden egyes időtartam Ha 1 óra, az elmúlt 2 napban:
+Folyamatos értékek alapján csoportok létrehozásához, célszerű a tartomány megszüntetése használatával kezelhető egységekbe **bin**. A következő lekérdezés elemzi *Teljesítményoptimalizált* rekordokat, amelyek a szabad memória (*rendelkezésre álló memória*) egy adott számítógépen. Mindig kiszámítja az átlagos érték minden egyes időtartam Ha 1 óra, az elmúlt 7 napban:
 
 ```Kusto
 Perf 
-| where TimeGenerated > ago(2d)
+| where TimeGenerated > ago(7d)
 | where Computer == "ContosoAzADDS2" 
 | where CounterName == "Available MBytes" 
-| summarize count() by bin(TimeGenerated, 1h)
+| summarize avg(CounterValue) by bin(TimeGenerated, 1h)
 ```
 
 Ahhoz, hogy világosabb kimeneti, választja egy idő-diagramon megjeleníthető a rendelkezésre álló memória megjelenítő idővel:

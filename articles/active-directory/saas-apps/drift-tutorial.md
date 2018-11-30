@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 11/29/2018
 ms.author: jeedes
-ms.openlocfilehash: 1904d6a8866a814e9d9c96ffbc65de9ea25daf3b
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: c08b57c41cc43bfa47dee69a75663e7a58ef4c21
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977586"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632840"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-drift"></a>Oktatóanyag: Azure Active Directory-integráció az eltéréseket
 
@@ -148,7 +148,17 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![A tanúsítvány letöltési hivatkozás](./media/drift-tutorial/tutorial_drift_certificate.png) 
 
-8. Az egyszeri bejelentkezés konfigurálása **eltéréseket** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** való [eltéréseket támogatási csapatának](mailto:integrations@drift.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+8. Egy másik böngészőablakban, jelentkezzen be rendszergazdaként eltéréseket.
+
+9. A menüsávon a bal oldali menüjében kattintson a **beállítások ikon** > **Alkalmazásbeállítások** > **hitelesítési** , és hajtsa végre az alábbi lépéseket:
+
+    ![A rendszergazda hivatkozás](./media/drift-tutorial/tutorial_drift_admin.png)
+
+    a. Töltse fel a **összevonási metaadatainak XML** be az Azure Portalról letöltött a **metaadatfájl feltöltése identitásszolgáltató** szövegmezőben.
+
+    b. A metaadat-fájl feltöltése után a többi érték első automatikus automatikusan kitölti az oldalon.
+
+    c. Kattintson a **SAML engedélyezése**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
 

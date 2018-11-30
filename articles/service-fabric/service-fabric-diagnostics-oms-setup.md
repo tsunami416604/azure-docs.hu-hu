@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 88b956fbe283dd39dfc51d6127b32b6f031e8b85
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 2cdc9f780e0d9ddb6e688e53208e5597b000aa56
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291130"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632772"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>Fürt Log Analytics beállítása
 
@@ -128,4 +128,4 @@ Más megoldások hozzáadása is, vagy más módosításokat a Log Analytics-mun
 ## <a name="next-steps"></a>További lépések
 * [A Log Analytics-ügynök telepítésének](service-fabric-diagnostics-oms-agent.md) alakzatot a csomópontok összegyűjtéséhez a teljesítményszámlálókat és a docker-statisztikák és a tárolókhoz naplóinak összegyűjtésére
 * Ismerkedjen meg a [naplókeresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkciók a Log Analytics részeként érhető el
-* [Nézettervező segítségével egyéni nézeteket hozhat létre a Log Analyticsben](../log-analytics/log-analytics-view-designer.md)
+* [Nézettervező segítségével egyéni nézeteket hozhat létre a Log Analyticsben](../azure-monitor/platform/view-designer.md)

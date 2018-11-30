@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: maxluk
-ms.openlocfilehash: 7470783ba3ebac652c83c397ba2bbe683023c657
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 23702c12f5ec538da4b980ed42fe2282dea69409
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041585"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582222"
 ---
-# <a name="overview-of-spark-structured-streaming"></a>A Spark strukturált Stream áttekintése
+# <a name="overview-of-apache-spark-structured-streaming"></a>Az Apache Spark strukturált Stream áttekintése
 
-A Spark strukturált Stream lehetővé teszi a data-adatfolyamok feldolgozására, skálázható, nagy átviteli sebességű és hibatűrő alkalmazások megvalósításához. Strukturált Streamelés a Spark SQL-motor épül, és javítja a származó Spark SQL adatkeretek szerkezeteket és adatkészletek, streamelési lekérdezése ugyanúgy, írhat, kötegelt / volna írni.  
+[Az Apache Spark](https://spark.apache.org/) strukturált Stream lehetővé teszi, hogy a data-adatfolyamok feldolgozására, skálázható, nagy átviteli sebességű és hibatűrő alkalmazások megvalósításához. Strukturált Streamelés a Spark SQL-motor épül, és javítja a származó Spark SQL adatkeretek szerkezeteket és adatkészletek, streamelési lekérdezése ugyanúgy, írhat, kötegelt / volna írni.  
 
-Structured Streaming-alkalmazások HDInsight Spark-fürtökön futó, és a streamelési adatok a Kafka, a TCP szoftvercsatorna (a hibakereséshez), az Azure Storage vagy Azure Data Lake Store csatlakozni. Az utóbbi két lehetőség, külső tárolási szolgáltatások támaszkodik, amely lehetővé teszi, tekintse meg a storage-bA hozzáadott új fájlok és feldolgozása azok tartalmát, mintha továbbítva lettek. 
+Structured Streaming-alkalmazások HDInsight Spark-fürtökön futó, és csatlakozzon a streamadatok [Apache Kafka](https://kafka.apache.org/), egy TCP szoftvercsatorna (a hibakereséshez), az Azure Storage vagy az Azure Data Lake Store. Az utóbbi két lehetőség, külső tárolási szolgáltatások támaszkodik, amely lehetővé teszi, tekintse meg a storage-bA hozzáadott új fájlok és feldolgozása azok tartalmát, mintha továbbítva lettek. 
 
 Strukturált Streamelés óraszáma műveleteket alkalmaz a bemeneti adatok, például a kijelölés, leképezése, összesítési, ablakkezelési és a streamelési DataFrame hivatkozással DataFrames csatlakoztatása hosszan futó lekérdezést hoz létre. Következő lépésként, az eredményeket a file storage (Azure Storage Blobsba vagy a Data Lake Store) vagy minden adattárhoz egyéni kódot (például SQL-adatbázis vagy a Power BI) használatával. Strukturált Streamelés a helyi hibakeresési konzolt, és egy memórián belüli tábla kimeneti is biztosít, így láthatja a létrehozott HDInsight a hibakeresési adatokat. 
 
@@ -105,7 +105,7 @@ Indítsa el a streamelési lekérdezést, és futtassa addig, amíg egy lezáró
 
     val query = streamingOutDF.start()  
 
-### <a name="view-the-results"></a>Az eredmények megtekintése
+### <a name="view-the-results"></a>Eredmények megtekintése
 
 A lekérdezés fut, az azonos SparkSession, míg a sparksql-hez lekérdezést futtathatja a `temps` tábla a lekérdezés eredményeinek tárolására. 
 
@@ -124,7 +124,7 @@ Ez a lekérdezés poskytne eredmények a következőhöz hasonló:
 |{u'start ": u" 2016-07-26T07:00:00.000Z ", u'end"...  |95 |   96.980971 | 99 |
 |{u'start ": u" 2016-07-26T08:00:00.000Z ", u'end"...  |95 |   96.965997 | 99 |  
 
-A Spark strukturált Stream API részleteiért, a bemeneti adatokkal együtt forrásokból, a műveletek és a kimeneti fogadók azt támogatja, lásd: [Spark strukturált Streamelés programozási útmutatója](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html).
+A Spark strukturált Stream API részleteiért, a bemeneti adatokkal együtt forrásokból, a műveletek és a kimeneti fogadók azt támogatja, lásd: [Apache Spark strukturált Streamelés programozási útmutatója](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html).
 
 ## <a name="checkpointing-and-write-ahead-logs"></a>Ellenőrzőpontok létrehozása és előre írási naplók
 
@@ -132,14 +132,14 @@ Rugalmasság és a hibatűrés biztosításához, strukturált Stream támaszkod
 
 ## <a name="deploying-spark-streaming-applications"></a>Spark Streaming-alkalmazások üzembe helyezéséhez
 
-Általában a helyileg egy JAR-fájlba a Spark Streaming-alkalmazás létrehozása, és ezután telepítheti az a Spark on HDInsight a JAR-fájlt másolja a csatlakoztatott és a HDInsight-fürt alapértelmezett tárolója. Az alkalmazás a fürtről, a POST művelettel indítható LIVY REST API-kat. A bejegyzés törzse tartalmazza a JSON-dokumentumot, az elérési utat biztosít a JAR, amelynek fő metódus határozza meg, és az adatfolyam-továbbítási alkalmazást, és szükség esetén az erőforrás-igényű (például végrehajtóval, a memória és magok száma) a feladat fut az osztály neve , és minden olyan konfigurációs beállítást az alkalmazás kódjában igényel.
+Általában a helyileg egy JAR-fájlba a Spark Streaming-alkalmazás létrehozása, és ezután telepítheti az a Spark on HDInsight a JAR-fájlt másolja a csatlakoztatott és a HDInsight-fürt alapértelmezett tárolója. Az alkalmazás megkezdése a [Apache Livy](https://livy.incubator.apache.org/) REST API-k a fürtről, a POST művelettel érhető el. A bejegyzés törzse tartalmazza a JSON-dokumentumot, az elérési utat biztosít a JAR, amelynek fő metódus határozza meg, és az adatfolyam-továbbítási alkalmazást, és szükség esetén az erőforrás-igényű (például végrehajtóval, a memória és magok száma) a feladat fut az osztály neve , és minden olyan konfigurációs beállítást az alkalmazás kódjában igényel.
 
 ![A Spark Streaming-alkalmazás üzembe helyezése](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
 
-Az összes alkalmazás állapotát egy GET kérelmet a LIVY-végpont az is ellenőrizhető. Végül a futó alkalmazás leállíthatja a LIVY végponthoz törlési kérelem elküldése. További információ a LIVY API: [távoli feladatok a LIVYVEL](apache-spark-livy-rest-interface.md)
+Az összes alkalmazás állapotát egy GET kérelmet a LIVY-végpont az is ellenőrizhető. Végül a futó alkalmazás leállíthatja a LIVY végponthoz törlési kérelem elküldése. További információ a LIVY API: [távoli feladatok a LIVYVEL Apache](apache-spark-livy-rest-interface.md)
 
 ## <a name="next-steps"></a>További lépések
 
 * [A HDInsight egy Apache Spark-fürt létrehozása](../hdinsight-hadoop-create-linux-clusters-portal.md)
-* [A Spark strukturált Streamelés programozási útmutatója](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)
-* [Indítsa el a Spark-feladatok a LIVYVEL távolról](apache-spark-livy-rest-interface.md)
+* [Az Apache Spark-Structured Streaming programozási útmutatója](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)
+* [Indítsa el az Apache Spark-feladatok távoli a Apache LIVYVEL](apache-spark-livy-rest-interface.md)

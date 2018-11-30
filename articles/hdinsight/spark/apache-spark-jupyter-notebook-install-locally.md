@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 9bab98d8009704d570dc4b03a97b9cbc5d085b4c
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3cd6ef1716d455c5ac755122b8696dbc43fdf459
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007552"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581867"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter notebook telepítse a számítógépre, és csatlakozzon az Apache Spark on HDInsight
 
-Ebben a cikkben megismerheti, hogyan kell telepíteni a Jupyter notebookot, a (a pythonhoz írt) egyéni Pysparkkal és Spark (a Scala) kernelekkel, a Spark Magic Quadrant és a notebook csatlakozás egy HDInsight-fürtön. Számos, a Jupyter telepítése a helyi számítógépen oka lehet, és áttekinthet néhány problémát is lehet. Ezzel kapcsolatban további információkért lásd: a szakasz [Miért célszerű telepíteni Jupyter a számítógépemen](#why-should-i-install-jupyter-on-my-computer) Ez a cikk végén található.
+Ebben a cikkben megismerheti, hogyan kell telepíteni a Jupyter notebookot, a (a pythonhoz írt) egyéni Pysparkkal és (a Scala) az Apache Spark mag, Spark Magic Quadrant- és a notebook csatlakozás egy HDInsight-fürt. Számos, a Jupyter telepítése a helyi számítógépen oka lehet, és áttekinthet néhány problémát is lehet. Ezzel kapcsolatban további információkért lásd: a szakasz [Miért célszerű telepíteni Jupyter a számítógépemen](#why-should-i-install-jupyter-on-my-computer) Ez a cikk végén található.
 
 Három kulcsfontosságú lépésnek vannak a számítógépen a Jupyter és a Spark Magic Quadrant megismeréséhez.
 
@@ -124,7 +124,7 @@ Ebben a szakaszban konfigurálhatja a Spark Magic Quadrant, amelyet korábban te
     >Ha szeretné frissíteni a jegyzetfüzet-konfigurációt egy másik fürthöz való csatlakozáshoz, frissítse a config.json értékek, az újonnan létrehozott, ahogyan a 3. lépés.
 
 ## <a name="why-should-i-install-jupyter-on-my-computer"></a>Miért érdemes a Jupyter telepítése a számítógépemen?
-Számos miért érdemes a Jupyter telepítése a számítógépre, és hogyan csatlakoztathatja a HDInsight Spark-fürt oka lehet.
+Számos miért érdemes a Jupyter telepítése a számítógépre, és hogyan csatlakoztathatja a HDInsight Apache Spark-fürt oka lehet.
 
 * Annak ellenére, hogy a Jupyter notebookok már elérhetők az Azure HDInsight Spark-fürtön, a Jupyter telepítése a számítógépre, lehetőséget biztosít helyileg a jegyzetfüzetek létrehozása, az alkalmazás futó fürtön történő teszteléséhez és majd töltse fel a notebookok a fürthöz. A notebookok feltöltése a fürthöz, a is feltölti őket a Jupyter notebookot, hogy fut-e, vagy a fürt használatával, vagy mentse őket a fürthöz társított storage-fiókban a /HdiNotebooks mappába. Hogyan notebookok tárolja a fürt további információkért lásd: [Jupyter notebookok tároló](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)?
 * A rendelkezésre álló jegyzetfüzet helyileg, kapcsolódhat a különböző Spark-fürtök, az alkalmazás követelmény alapján.
@@ -140,21 +140,21 @@ Számos miért érdemes a Jupyter telepítése a számítógépre, és hogyan cs
 ## <a name="seealso"></a>Lásd még:
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 
-### <a name="scenarios"></a>Alkalmazási helyzetek
-* [Spark és BI: Interaktív adatelemzés végrehajtása a Spark on HDInsight használatával, BI-eszközökkel](apache-spark-use-bi-tools.md)
-* [Spark és Machine Learning: A Spark on HDInsight használata az épület-hőmérséklet elemzésére HVAC-adatok alapján](apache-spark-ipython-notebook-machine-learning.md)
-* [Spark és Machine Learning: A Spark on HDInsight használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
-* [A webhelynapló elemzése a Spark on HDInsight használatával](apache-spark-custom-library-website-log-analysis.md)
+### <a name="scenarios"></a>Forgatókönyvek
+* [Az Apache Spark és BI: interaktív adatelemzés a Spark on HDInsight használatával, BI-eszközökkel végrehajtása](apache-spark-use-bi-tools.md)
+* [Az Apache Spark és Machine Learning: a Spark on HDInsight HVAC-adatok épület-hőmérséklet elemzésére a használata](apache-spark-ipython-notebook-machine-learning.md)
+* [Az Apache Spark és Machine Learning: használja a Spark on HDInsight az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
+* [A webhelynapló elemzése a HDInsight az Apache Spark használatával](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása
 * [Önálló alkalmazás létrehozása a Scala használatával](apache-spark-create-standalone-application.md)
-* [Feladatok távoli futtatása Spark-fürtön a Livy használatával](apache-spark-livy-rest-interface.md)
+* [Feladatok távoli futtatása egy Apache Spark-fürtön az Apache Livy használatával](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Eszközök és bővítmények
 * [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark Scala-alkalmazások létrehozásához és elküldéséhez](apache-spark-intellij-tool-plugin.md)
-* [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark-alkalmazások távoli hibaelhárításához](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Zeppelin notebookok használata Spark-fürttel HDInsighton](apache-spark-zeppelin-notebook.md)
-* [Jupyter notebookokhoz elérhető kernelek a HDInsight Spark-fürtjében](apache-spark-jupyter-notebook-kernels.md)
+* [Az Apache Spark-alkalmazások távoli hibakeresése az IntelliJ IDEA HDInsight-eszközei beépülő használata](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Az Apache Zeppelin notebookok használata a HDInsight Apache Spark-fürt](apache-spark-zeppelin-notebook.md)
+* [Notebookokhoz elérhető kernelek Jupyter a HDInsight az Apache Spark-fürt](apache-spark-jupyter-notebook-kernels.md)
 * [Külső csomagok használata Jupyter notebookokkal](apache-spark-jupyter-notebook-use-external-packages.md)
 
 ### <a name="manage-resources"></a>Erőforrások kezelése

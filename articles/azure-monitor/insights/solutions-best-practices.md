@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: 03a9aced256b72789ad6d3e01515348fb1ffe129
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: e5011dbaad5e5935f3aa792bd3a3ed2b271f23bc
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715621"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632433"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>Ajánlott eljárások az eszközkezelési megoldások létrehozása az Azure-ban (előzetes verzió)
 > [!NOTE]
@@ -31,7 +31,7 @@ Ez a cikk ismerteti az ajánlott eljárások a [hozzon létre egy felügyeleti m
 - Adatforrások lehet [Resource Manager-sablonnal konfigurált](../../log-analytics/log-analytics-template-workspace-configuration.md), de azok nem szerepelnie kell a megoldásfájlt.  A hiba oka, hogy adatforrások konfigurálása jelenleg nem idempotens, ami azt jelenti, hogy a megoldás felülírhatja a felhasználó munkaterületét a meglévő konfigurációt.<br><br>A megoldás például szükség lehet az alkalmazások eseménynaplójában a figyelmeztetési és eseményeket.  Ha megadja ezt adatforrásként a megoldásában, azzal kockáztatja információs események eltávolítása, ha a felhasználó a saját munkaterületen konfigurált.  Ha tartalmazza az összes eseményt, majd, előfordulhat, hogy kell események gyűjtése a túlzott információkat a felhasználó munkaterületén.
 
 - Ha a megoldáshoz szükséges a standard szintű forrásokból származó adatokat, majd meg kell határozni a előfeltételként.  Állapot a dokumentációban, hogy az ügyfél önállóan kell állítania az adatforrás.  
-- Adjon hozzá egy [Data Flow ellenőrzési](../../log-analytics/log-analytics-view-designer-tiles.md) meg azokat az adatforrásokat, úgy kell konfigurálni a szükséges adatokat gyűjteni a felhasználót a megoldás nézetekhez üzenet.  Ez az üzenet jelenik meg a nézet a csempe a szükséges adatok nem található.
+- Adjon hozzá egy [Data Flow ellenőrzési](../../azure-monitor/platform/view-designer-tiles.md) meg azokat az adatforrásokat, úgy kell konfigurálni a szükséges adatokat gyűjteni a felhasználót a megoldás nézetekhez üzenet.  Ez az üzenet jelenik meg a nézet a csempe a szükséges adatok nem található.
 
 
 ## <a name="runbooks"></a>Runbookok
@@ -40,8 +40,8 @@ Ez a cikk ismerteti az ajánlott eljárások a [hozzon létre egy felügyeleti m
 - Használat [automatizálási változók](../../automation/automation-schedules.md) megadhatja, hogy a felhasználók később módosítani szeretné a megoldáshoz értékeket.  Akkor is, ha a változó tartalmazza a megoldás van konfigurálva, annak értéke továbbra is módosítható.
 
 ## <a name="views"></a>Nézetek
-- Az összes megoldáshoz tartalmaznia kell, hogy a felhasználói portálon jelenik meg egyetlen nézetben.  A nézet tartalmazhat több [Vizualizáció részek](../../log-analytics/log-analytics-view-designer-parts.md) mutatja be az adatokat más-más részhalmazához.
-- Adjon hozzá egy [Data Flow ellenőrzési](../../log-analytics/log-analytics-view-designer-tiles.md) meg azokat az adatforrásokat, úgy kell konfigurálni a szükséges adatokat gyűjteni a felhasználót a megoldás nézetekhez üzenet.
+- Az összes megoldáshoz tartalmaznia kell, hogy a felhasználói portálon jelenik meg egyetlen nézetben.  A nézet tartalmazhat több [Vizualizáció részek](../../azure-monitor/platform/view-designer-parts.md) mutatja be az adatokat más-más részhalmazához.
+- Adjon hozzá egy [Data Flow ellenőrzési](../../azure-monitor/platform/view-designer-tiles.md) meg azokat az adatforrásokat, úgy kell konfigurálni a szükséges adatokat gyűjteni a felhasználót a megoldás nézetekhez üzenet.
 - A megoldás konfigurálása arra [tartalmazhat](solutions-solution-file.md#solution-resource) úgy, hogy a eltávolítja a rendszer, ha a megoldás a rendszer eltávolítja a nézetet.
 
 ## <a name="alerts"></a>Riasztások

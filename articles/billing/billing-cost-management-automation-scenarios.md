@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/13/2018
 ms.author: erikre
-ms.openlocfilehash: 97f6339e5c9532250245a97a81dade12db139e98
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 09ecd46837a12f5f1a8278b1644dc099701bcd00
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227367"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584723"
 ---
 # <a name="billing-and-cost-management-automation-scenarios"></a>Számlázási és a cost management automation forgatókönyvek
 
@@ -46,7 +46,7 @@ Használhatja a számlázás és Költségkezelés számos forgatókönyv eseté
 
 |         API-forgatókönyv        | Számla egyeztetés    | Adatbázisközi díjak    | Költségek optimalizálása    | Költségek nyomon követése    | Mid havi költség    | Riasztások    |
 |:---------------------------:|:-------------------------:|:----------------:|:--------------------:|:----------------:|:------------------:|:---------:|
-| Költségkeret                     |                           |                  |           X          |                  |                    |     X     |
+| Költségvetések                     |                           |                  |           X          |                  |                    |     X     |
 | Piactér                |             X             |         X        |           X          |         X        |          X         |     X     |
 | Árlista                 |             X             |         X        |           X          |         X        |          X         |           |
 | Foglalás javaslatok |                           |                  |           X          |                  |                    |           |
@@ -122,4 +122,4 @@ Ezen API-k biztosítanak a hasonló adatkészletek, de különböző célközön
 
 - További információ az Azure API-k használatával programozott módon juthat az Azure-használat: [Azure Consumption API – áttekintés](billing-consumption-api-overview.md) és [Azure Billing API – áttekintés](billing-usage-rate-card-overview.md).
 - Hasonlítsa össze a számla a részletes napi használatot részletező fájl és a költségkezelési jelentések az Azure Portalon, tekintse meg [Microsoft Azure-hoz kapcsolódó számlák magyarázata](billing-understand-your-bill.md)
-- Ha további kérdése van, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
+- Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

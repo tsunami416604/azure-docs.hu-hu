@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0eb283eda04d4123e0c05d2c48663a5aca88ebc4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 027c8155c84959ca429eb9b093a155ac22aaf324
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249557"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582213"
 ---
-# <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-c"></a>Események feldolgozása az Azure Event Hubsból a Storm on HDInsight (C#)
+# <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Dolgozza fel az Azure Event hubs Eseményközpontokból a HDInsight-alapú Apache Storm (C#)
 
-Ismerje meg, hogyan használható az Apache Storm on HDInsight az Azure Event hubs szolgáltatással. Ez a dokumentum olvasása és írása az adatokat az Event Hubs C# Storm-topológia használja
+Ismerje meg, hogyan használható az Azure Event Hubs a [Apache Storm](http://storm.apache.org/) a HDInsight. Ez a dokumentum olvasása és írása az adatokat az Event Hubs C# Storm-topológia használja
 
 > [!NOTE]
-> Ez a projekt Java verziója: [dolgozza fel az Azure Event Hubsból futó stormmal (Java) HDInsight](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/).
+> Ez a projekt Java verziója: [dolgozza fel az Azure Event Hubsból az Apache Storm on HDInsight (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/).
 
 ## <a name="scpnet"></a>SCP.NET
 
@@ -225,4 +225,4 @@ Ebben a dokumentumban megtanulhatta, hogyan használja a Java Event hub spout é
 
 * [Az Apache Storm on HDInsight Visual Studio használatával C#-topológiák fejlesztése](apache-storm-develop-csharp-visual-studio-topology.md)
 * [Szolgáltatáskapcsolódási pont programozási útmutató](apache-storm-scp-programming-guide.md)
-* [HDInsight alatt futó Storm példatopológiái](apache-storm-example-topology.md)
+* [HDInsight alatt futó Apache Storm példatopológiái](apache-storm-example-topology.md)

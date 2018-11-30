@@ -1,6 +1,6 @@
 ---
 title: Hozzáférés kezelése az RBAC és az Azure Portal használatával | Microsoft Docs
-description: Megismerheti, hogyan kezelheti a felhasználók, csoportok és alkalmazások hozzáférését a szerepköralapú hozzáférés-vezérlés (RBAC) és az Azure Portal segítségével. Ez tartalmazza a hozzáférés felsorolásának, a hozzáférés adásának és a hozzáférés eltávolításának módját.
+description: Ismerje meg, hogyan kezelheti a hozzáférést a felhasználók, csoportok, a szolgáltatásnevek és felügyelt identitások, a szerepköralapú hozzáférés-vezérlés (RBAC) és az Azure portal használatával. Ez tartalmazza a hozzáférés felsorolásának, a hozzáférés adásának és a hozzáférés eltávolításának módját.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,227 +11,153 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/05/2018
+ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1cac4e4cee408e5208d2d5d84f81b8ad7a89f03b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 9f5d48a074f8069e243af5644f86ad3c3d8f559b
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033991"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634863"
 ---
 # <a name="manage-access-using-rbac-and-the-azure-portal"></a>Hozzáférés kezelése az RBAC és az Azure Portal használatával
 
-A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) az erőforrásokhoz való hozzáférés kezelésének a módja az Azure-ban. A cikk bemutatja, hogyan kezelheti a felhasználók, csoportok és alkalmazások hozzáférését az RBAC és az Azure Portal segítségével.
+A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) az erőforrásokhoz való hozzáférés kezelésének a módja az Azure-ban. Ez a cikk bemutatja, hogyan kezelheti a felhasználók, csoportok, a szolgáltatásnevek és RBAC és az Azure portal használatával felügyelt identitások hozzáférését.
 
-## <a name="list-roles"></a>Szerepkörök felsorolása
+## <a name="open-access-control-iam"></a>Nyissa meg a hozzáférés-vezérlés (IAM)
 
-A szerepkör-definíció a szerepkör-hozzárendeléshez használható engedélyek gyűjteménye. Az Azure rendelkezik több mint 70 [beépített szerepkörök](built-in-roles.md). Kövesse az alábbi lépéseket a portálon a szerepkörök listáját.
+A **hozzáférés-vezérlés (IAM)** panel, más néven identitás- és hozzáférés-kezelés alatt a portálon jelenik meg. Megtekintéséhez, vagy kezelheti a hozzáférést a portálon, a szokásos először is, nyissa meg a hatókörben, ahol szeretné megtekinteni, vagy módosítsa a hozzáférés-vezérlés (IAM) paneljén.
 
-1. Az Azure Portalon válassza a **Minden szolgáltatás**, majd az **Előfizetések** elemet.
+1. Az Azure Portalon kattintson a **minden szolgáltatás** , és válassza ki a hatókört vagy megtekinteni vagy kezelni kívánt erőforrást. Kiválaszthatja például **felügyeleti csoportok**, **előfizetések**, **erőforráscsoportok**, vagy egy erőforrást.
 
-1. Válassza ki az előfizetését.
+1. Kattintson az adott erőforrás szeretné megtekinteni vagy kezelni.
 
-1. Válassza a **Hozzáférés-vezérlés (IAM)** elemet.
+1. Kattintson a **hozzáférés-vezérlés (IAM)**.
 
-   ![Szerepkörök lehetőség](./media/role-assignments-portal/list-subscription-access-control.png)
+    Az alábbiakban látható egy példa egy előfizetés hozzáférés-vezérlés (IAM) paneljén.
 
-1. A beépített és egyéni szerepkörök listájának megtekintéséhez válassza a **Szerepkörök** elemet.
+    ![Egy előfizetés hozzáférés-vezérlés (IAM) paneljén](./media/role-assignments-portal/access-control-subscription.png)
 
-   ![Szerepkörök lehetőség](./media/role-assignments-portal/roles-option.png)
+## <a name="view-roles-and-permissions"></a>Szerepkörök és engedélyek megtekintése
 
-   Megtekintheti az egyes szerepkörökhöz rendelt felhasználók és csoportok számát.
+A szerepkör-definíció a szerepkör-hozzárendeléshez használható engedélyek gyűjteménye. Az Azure rendelkezik több mint 70 [beépített szerepkörök](built-in-roles.md). Kövesse az alábbi lépéseket a szerepköröket és engedélyeket, amelyek a felügyeleti síkra végrehajtható megtekintéséhez.
+
+1. Nyissa meg **hozzáférés-vezérlés (IAM)** hatókörre, például a felügyeleti csoportban, előfizetés, erőforráscsoport vagy erőforrás, ahol szeretné megtekinteni a szerepköröket és engedélyeket.
+
+1. Kattintson a **szerepkörök** lapján megtekintheti a beépített és egyéni szerepkörök listáját.
+
+   Láthatja azon ebben a hatókörben található minden egyes szerepkörhöz rendelt felhasználók és csoportok számát.
 
    ![Szerepkörök listája](./media/role-assignments-portal/roles-list.png)
 
-## <a name="list-access"></a>Hozzáférések felsorolása
+1. Kattintson egy egyéni szerepkör megtekintéséhez, aki ezt a szerepkört rendelték, és a szerepkör engedélyeit is megtekintheti.
 
-A hozzáférések kezelésekor szeretné tudni, kinek van hozzáférése, milyen engedélyekkel rendelkezik és milyen szinten. A hozzáférések felsorolásához listázza a szerepkör-hozzárendeléseket. Kövesse az alábbi lépéseket a felhasználók hozzáférését listázása és a lista a különféle hatókörű hozzáférést.
+   ![Szerepkör-hozzárendelések](./media/role-assignments-portal/role-assignments.png)
 
-### <a name="list-role-assignments-for-a-user"></a>Felhasználó szerepkör-hozzárendeléseinek felsorolása
+## <a name="view-role-assignments"></a>Szerepkör-hozzárendelések megtekintése
 
-1. A navigációs listában válassza az **Azure Active Directory** lehetőséget.
+A hozzáférések kezelésekor szeretné tudni, kinek van hozzáférése, milyen engedélyekkel rendelkezik és milyen szinten. A lista hozzáférés egy felhasználó, csoport, szolgáltatásnevet vagy felügyelt identitást megtekintheti a szerepkör-hozzárendeléseket.
 
-1. Válassza a **Felhasználók** lehetőséget a **Minden felhasználó** panel megnyitásához.
+### <a name="view-role-assignments-for-a-single-user"></a>Szerepkör-hozzárendelések megtekintése egy-egy felhasználóhoz
 
-   ![Azure Active Directory – Minden felhasználó panel](./media/role-assignments-portal/aad-all-users.png)
+Kövesse az alábbi lépéseket a hozzáférést egy egyetlen felhasználó, csoport, szolgáltatásnév vagy egy adott hatókörben felügyelt identitás megtekintéséhez.
 
-1. A listából válasszon ki egy egyéni felhasználót.
+1. Nyissa meg **hozzáférés-vezérlés (IAM)** hatókörre, például a felügyeleti csoportban, előfizetés, erőforráscsoport vagy erőforrás, ahol akarja tekinteni a hozzáférési.
 
-1. A **Kezelés** szakaszban válassza az **Azure-erőforrások** lehetőséget.
+1. Kattintson a **hozzáférés ellenőrzése** fülre.
 
-   ![Azure Active Directory-felhasználó Azure-erőforrásai](./media/role-assignments-portal/aad-user-azure-resources.png)
+    ![Hozzáférés - ellenőrzés hozzáférés lap](./media/role-assignments-portal/access-control-check-access.png)
 
-   Az Azure-erőforrások panelen láthatja a szerepkör-hozzárendeléseit a kijelölt felhasználó és a kijelölt előfizetésben. Ez a lista csak szerepkör-hozzárendeléseit olvasási engedéllyel rendelkező erőforrásokat tartalmazza. Például ha a felhasználó is rendelkezik, amely nem olvasható szerepkör-hozzárendeléseket, azokat a szerepkör-hozzárendeléseket nem jelenik a listában.
+1. Az a **található** listájához, válassza ki a hozzáférést az ellenőrizni kívánt rendszerbiztonsági tag típusát.
 
-1. Ha több előfizetéssel rendelkezik, akkor választhatja a **előfizetés** legördülő listából válassza ki egy másik előfizetésben található a szerepkör-hozzárendelések megtekintéséhez.
+1. A keresőmezőbe adjon meg egy karakterláncot megfeleltessen keressen a könyvtárban, a megjelenítendő nevekre, e-mail-címek vagy az objektumazonosítók.
 
-### <a name="list-role-assignments-for-a-resource-group"></a>Erőforráscsoport szerepkör-hozzárendeléseinek felsorolása
+    ![Ellenőrizze a kiválasztási listán hozzáférés](./media/role-assignments-portal/check-access-select.png)
 
-1. A navigációs listában válassza az **Erőforráscsoportok** lehetőséget.
+1. A rendszerbiztonsági tag megnyitásához kattintson a **hozzárendelések** ablaktáblán.
 
-1. Először válasszon ki egy erőforráscsoportot, majd a **Hozzáférés-vezérlés (IAM)** lehetőséget.
+    ![hozzárendelések panelről](./media/role-assignments-portal/check-access-assignments.png)
 
-   A hozzáférés-vezérlés (IAM) paneljén, más néven identitás- és hozzáférés-kezelés megtekintheti, ki férhet hozzá az erőforráscsoporthoz. Látható, hogy egyes szerepkörök hatóköre **erre az erőforrásra** érvényes, míg mások más hatókörökből **(öröklődnek)**. A hozzáférés lehet kifejezetten az erőforráscsoporthoz rendelt, vagy a szülő előfizetés egyik hozzárendeléséből örökölt.
+    A panelen megjelenik a kiválasztott rendszerbiztonsági tag és a hatókör hozzárendelt szerepkörök. Ha bármelyik megtagadása a hatókör-hozzárendelést, vagy az örökölt ebben a hatókörben, azok megjelennek.
 
-   ![Erőforráscsoportok](./media/role-assignments-portal/resource-group-access-control.png)
+### <a name="view-all-role-assignments-at-a-scope"></a>A hatókör összes szerepkör-hozzárendelést megtekintése
 
-### <a name="list-role-assignments-for-a-subscription"></a>Előfizetés szerepkör-hozzárendeléseinek felsorolása
+1. Nyissa meg **hozzáférés-vezérlés (IAM)** hatókörre, például a felügyeleti csoportban, előfizetés, erőforráscsoport vagy erőforrás, ahol akarja tekinteni a hozzáférési.
 
-1. Az Azure Portalon válassza a **Minden szolgáltatás**, majd az **Előfizetések** elemet.
+1. Kattintson a **szerepkör-hozzárendelések** lap (vagy kattintson a **nézet** gombra a hozzárendelések csempére nézet szerepkör) ebben a hatókörben, szerepkör-hozzárendelések megtekintése.
 
-1. Válassza ki az előfizetését.
+   ![Hozzáférés-vezérlés – szerepkör-hozzárendeléseket lapon](./media/role-assignments-portal/access-control-role-assignments.png)
 
-1. Válassza a **Hozzáférés-vezérlés (IAM)** elemet.
+   A szerepkör-hozzárendelések lapon láthatja, kinek van hozzáférése a hatókörben. Látható, hogy egyes szerepkörök hatóköre **erre az erőforrásra** érvényes, míg mások más hatókörökből **(öröklődnek)**. Hozzáférés az erőforráshoz rendelt vagy a szülő hatókörnek egyik hozzárendeléséből örökölt.
 
-    A hozzáférés-vezérlés (IAM) panelen láthatja, ki férhet hozzá ehhez az előfizetéshez, és azok szerepét.
+## <a name="add-a-role-assignment"></a>Szerepkör-hozzárendelés hozzáadása
 
-    ![Egy előfizetés hozzáférés-vezérlés (IAM) paneljén](./media/role-assignments-portal/subscription-access-control.png)
+Az RBAC hozzáférést biztosítani, hogy szerepkör hozzárendelése egy felhasználó, csoport, szolgáltatásnevet vagy felügyelt identitás. Kövesse az alábbi lépéseket a különféle hatókörű hozzáférést.
 
-    Klasszikus előfizetés rendszergazdái és társadminisztrátorai minősülnek tulajdonosoknak az RBAC-modellben.
+### <a name="assign-a-role-at-a-scope"></a>Egy hatókörben szerepkör hozzárendelése
 
-### <a name="list-role-assignments-for-a-management-group"></a>Szerepkör-hozzárendelések lista felügyeleti csoport
+1. Nyissa meg **hozzáférés-vezérlés (IAM)** hatókörre, például a felügyeleti csoportban, előfizetés, erőforráscsoport vagy erőforrás, hol szeretne hozzáférést biztosítani.
 
-1. Az Azure Portalon válassza ki a **minden szolgáltatás** , majd **felügyeleti csoportok**.
+1. Kattintson a **szerepkör-hozzárendelések** fülre kattintva megtekintheti a szerepkör-hozzárendeléseit a hatókörben.
 
-1. Válassza ki a felügyeleti csoportban.
+1. Kattintson a **szerepkör-hozzárendelés hozzáadása** a hozzáadása szerepkör-hozzárendelés panel megnyitásához.
 
-1. Válasszon **(részletek)** a kiválasztott felügyeleti csoport számára.
+   Ha nem rendelkezik engedélyekkel szerepkörök hozzárendeléséhez, a Hozzáadás szerepkör-hozzárendelés beállítás letiltásra kerül.
 
-    ![Felügyeleti csoportok](./media/role-assignments-portal/management-groups-list.png)
-
-1. Válassza a **Hozzáférés-vezérlés (IAM)** elemet.
-
-    A hozzáférés-vezérlés (IAM) panelen láthatja, ki férhet hozzá a felügyeleti csoport és azok szerepét.
-
-    ![Hozzáférés-vezérlés (IAM) paneljén, egy felügyeleti csoport](./media/role-assignments-portal/management-groups-access-control.png)
-
-## <a name="grant-access"></a>Hozzáférés biztosítása
-
-RBAC hozzáférést biztosítani, rendeljen hozzá egy szerepkörhöz. Kövesse az alábbi lépéseket a különféle hatókörű hozzáférést.
-
-### <a name="assign-a-role-at-a-resource-group-scope"></a>Egy erőforrás-csoport hatókörben szerepkör hozzárendelése
-
-1. A navigációs listában válassza az **Erőforráscsoportok** lehetőséget.
-
-1. Válasszon ki egy erőforráscsoportot.
-
-1. Válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget az erőforráscsoporti hatókörben található szerepkör-hozzárendelések aktuális listájának megtekintéséhez.
-
-   ![Hozzáférés-vezérlés (IAM) paneljén erőforráscsoport](./media/role-assignments-portal/grant-resource-group-access-control.png)
-
-1. Kattintson a **Hozzáadás** elemre az **Engedélyek hozzáadása** panel megnyitásához.
-
-   Ha nem rendelkezik a szerepkörök hozzárendeléséhez szükséges engedéllyel, a **Hozzáadás** lehetőség nem jelenik meg.
-
-   ![Engedélyek hozzáadása panel](./media/role-assignments-portal/add-permissions.png)
+   ![Szerepkör-hozzárendelési ablaktáblán hozzáadása](./media/role-assignments-portal/add-role-assignment.png)
 
 1. A **Szerepkör** legördülő listájában válasszon ki egy szerepkört, például a **Virtuális gépek közreműködője** szerepkört.
 
-1. A **Kiválasztás** listában válasszon ki egy felhasználót, csoportot vagy alkalmazást. Ha a listában nem látja a rendszerbiztonsági tagot, írhat a **Kiválasztás** mezőbe megjelenítendő nevek, e-mail-címek és objektumazonosítók a címtárban történő kereséséhez.
+1. Az a **kiválasztása** válasszon ki egy felhasználó, csoport, szolgáltatásnevet vagy felügyelt identitás. Ha a listában nem látja a rendszerbiztonsági tagot, írhat a **Kiválasztás** mezőbe megjelenítendő nevek, e-mail-címek és objektumazonosítók a címtárban történő kereséséhez.
 
-1. Válasszon **mentése** a szerepkör hozzárendelése.
+1. Kattintson a **mentése** a szerepkör hozzárendelése.
 
-   Néhány pillanat múlva a rendszerbiztonsági tagot a rendszer hozzárendeli a szerepkörhöz az erőforráscsoporti hatókörben.
-
-### <a name="assign-a-role-at-a-subscription-scope"></a>Egy előfizetési hatókörben szerepkör hozzárendelése
-
-1. Az Azure Portalon válassza a **Minden szolgáltatás**, majd az **Előfizetések** elemet.
-
-1. Válassza ki az előfizetését.
-
-1. Válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget az előfizetési hatókörben található szerepkör-hozzárendelések aktuális listájának megtekintéséhez.
-
-   ![Egy előfizetés hozzáférés-vezérlés (IAM) paneljén](./media/role-assignments-portal/grant-subscription-access-control.png)
-
-1. Kattintson a **Hozzáadás** elemre az **Engedélyek hozzáadása** panel megnyitásához.
-
-   Ha nem rendelkezik a szerepkörök hozzárendeléséhez szükséges engedéllyel, a **Hozzáadás** lehetőség nem jelenik meg.
-
-   ![Engedélyek hozzáadása panel](./media/role-assignments-portal/add-permissions.png)
-
-1. A **Szerepkör** legördülő listájában válasszon ki egy szerepkört, például a **Virtuális gépek közreműködője** szerepkört.
-
-1. A **Kiválasztás** listában válasszon ki egy felhasználót, csoportot vagy alkalmazást. Ha a listában nem látja a rendszerbiztonsági tagot, írhat a **Kiválasztás** mezőbe megjelenítendő nevek, e-mail-címek és objektumazonosítók a címtárban történő kereséséhez.
-
-1. Válasszon **mentése** a szerepkör hozzárendelése.
-
-   Néhány pillanat múlva a rendszerbiztonsági tagot a rendszer hozzárendeli a szerepkörhöz az előfizetés hatókörében.
+   Néhány pillanat múlva a rendszerbiztonsági tag tartozik a szerepkör a kijelölt hatókörben.
 
 ### <a name="assign-a-user-as-an-administrator-of-a-subscription"></a>Az előfizetés rendszergazda felhasználó hozzárendelése
 
 Ahhoz, hogy a felhasználó az Azure-előfizetés rendszergazdájának, hozzárendelheti azokat a [tulajdonosa](built-in-roles.md#owner) szerepkör az előfizetések szintjén. A tulajdonosi szerepkör a felhasználó teljes hozzáférést biztosít, az összes erőforrást az előfizetésben, beleértve a jogot arra, hogy mások való hozzáférés delegálására. Ezek a lépések ugyanazok, mint bármilyen más szerepkör-hozzárendelés.
 
-1. Az Azure Portalon válassza a **Minden szolgáltatás**, majd az **Előfizetések** elemet.
+1. Az Azure Portalon kattintson a **minden szolgáltatás** , majd **előfizetések**.
 
-1. Válassza ki az előfizetését.
+1. Kattintson arra az előfizetésre, ahol szeretné a hozzáférést.
 
-1. Válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget az előfizetési hatókörben található szerepkör-hozzárendelések aktuális listájának megtekintéséhez.
+1. Kattintson a **hozzáférés-vezérlés (IAM)**.
 
-   ![Egy előfizetés hozzáférés-vezérlés (IAM) paneljén](./media/role-assignments-portal/grant-subscription-access-control.png)
+1. Kattintson a **szerepkör-hozzárendelések** fülre kattintva megtekintheti az előfizetéshez tartozó szerepkör-hozzárendelések.
 
-1. Kattintson a **Hozzáadás** elemre az **Engedélyek hozzáadása** panel megnyitásához.
+1. Kattintson a **szerepkör-hozzárendelés hozzáadása** a hozzáadása szerepkör-hozzárendelés panel megnyitásához.
 
-   Ha nem rendelkezik a szerepkörök hozzárendeléséhez szükséges engedéllyel, a **Hozzáadás** lehetőség nem jelenik meg.
+   Ha nem rendelkezik engedélyekkel szerepkörök hozzárendeléséhez, a Hozzáadás szerepkör-hozzárendelés beállítás letiltásra kerül.
 
-   ![Engedélyek hozzáadása panel](./media/role-assignments-portal/add-permissions.png)
+   ![Szerepkör-hozzárendelési ablaktáblán hozzáadása](./media/role-assignments-portal/add-role-assignment.png)
 
 1. Az a **szerepkör** legördülő listában válassza a **tulajdonosa** szerepkör.
 
 1. Az a **kiválasztása** listában, válasszon ki egy felhasználót. Ha nem látja a felhasználónévre a listában, megadhatja a **kiválasztása** mezőben keressen a könyvtárban, a megjelenített nevek és e-mail-címeket.
 
-1. Válasszon **mentése** a szerepkör hozzárendelése.
+1. Kattintson a **mentése** a szerepkör hozzárendelése.
 
    Néhány pillanat múlva a felhasználó hozzárendelve a tulajdonosi szerepkör az előfizetések szintjén.
 
-### <a name="assign-a-role-at-a-management-group-scope"></a>Egy felügyeleti csoport hatókörű szerepkör hozzárendelése
-
-1. Az Azure Portalon válassza ki a **minden szolgáltatás** , majd **felügyeleti csoportok**.
-
-1. Válassza ki a felügyeleti csoportban.
-
-1. Válasszon **(részletek)** a kiválasztott felügyeleti csoport számára.
-
-    ![Felügyeleti csoportok](./media/role-assignments-portal/management-groups-list.png)
-
-1. Válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget az előfizetési hatókörben található szerepkör-hozzárendelések aktuális listájának megtekintéséhez.
-
-   ![Hozzáférés-vezérlés (IAM) paneljén, egy felügyeleti csoport](./media/role-assignments-portal/grant-management-groups-access-control.png)
-
-1. Kattintson a **Hozzáadás** elemre az **Engedélyek hozzáadása** panel megnyitásához.
-
-   Ha nem rendelkezik a szerepkörök hozzárendeléséhez szükséges engedéllyel, a **Hozzáadás** lehetőség nem jelenik meg.
-
-   ![Engedélyek hozzáadása panel](./media/role-assignments-portal/add-permissions-management-groups.png)
-
-1. Az a **szerepkör** legördülő listában válassza ki a megfelelő szerepkör **felügyeleti csoport közreműködői**.
-
-    Információ a támogatott műveletekről a különböző szerepkörökhöz tartozó felügyeleti csoportok: [az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../governance/management-groups/index.md#management-group-access).
-
-1. A **Kiválasztás** listában válasszon ki egy felhasználót, csoportot vagy alkalmazást. Ha a listában nem látja a rendszerbiztonsági tagot, írhat a **Kiválasztás** mezőbe megjelenítendő nevek, e-mail-címek és objektumazonosítók a címtárban történő kereséséhez.
-
-1. Válasszon **mentése** a szerepkör hozzárendelése.
-
-   Néhány pillanat múlva a rendszerbiztonsági tag szerepköre a a felügyeleti csoport hatókörben.
-
-## <a name="remove-access"></a>Hozzáférés eltávolítása
+## <a name="remove-role-assignments"></a>Szerepkör-hozzárendelések eltávolítása
 
 Az RBAC-ben hozzáférés eltávolításához egy szerepkör-hozzárendelést kell eltávolítania. Kövesse az alábbi lépéseket a hozzáférést.
 
-### <a name="remove-a-role-assignment"></a>Szerepkör-hozzárendelés eltávolítása
+1. Nyissa meg **hozzáférés-vezérlés (IAM)** hatókörben egy, a felügyeleti csoport, előfizetés, erőforráscsoport vagy erőforrás, például, ahol el kívánja távolítani a hozzáférést.
 
-1. Nyissa meg a **hozzáférés-vezérlés (IAM)** paneljén a felügyeleti csoportban, előfizetés, erőforráscsoport vagy erőforrás, amely rendelkezik a szerepkör-hozzárendelés el kívánja távolítani.
+1. Kattintson a **szerepkör-hozzárendelések** fülre kattintva megtekintheti az előfizetéshez tartozó szerepkör-hozzárendelések.
 
 1. A szerepkör-hozzárendelések listájában jelölje be az eltávolítani kívánt szerepkör-hozzárendeléssel rendelkező rendszerbiztonsági tag melletti jelölőnégyzetet.
 
    ![Szerepkör-hozzárendelés eltávolítási üzenete](./media/role-assignments-portal/remove-role-assignment-select.png)
 
-1. Válassza az **Eltávolítás** lehetőséget.
+1. Kattintson a **eltávolítása**.
 
    ![Szerepkör-hozzárendelés eltávolítási üzenete](./media/role-assignments-portal/remove-role-assignment.png)
 
-1. A megjelenő, a szerepkör-hozzárendelés eltávolításáról szóló üzenetben válassza az **Igen** lehetőséget.
+1. A remove szerepkör hozzárendelése megjelenő üzenetben kattintson **Igen**.
 
     Az örökölt szerepkör-hozzárendeléseket nem lehet eltávolítani. Ha örökölt szerepkör-hozzárendelést kell eltávolítania, azt abban a hatókörben kell megtennie, ahol a szerepkör-hozzárendelés létrejött. Az a **hatókör** oszlopban, az **(örökölt)** egy hivatkozást, amellyel a hatókör, amelyekhez ezt a szerepkört hozzá volt rendelve. Lépjen az ott szereplő hatókörhöz a szerepkör-hozzárendelés eltávolításához.
 
@@ -239,7 +165,7 @@ Az RBAC-ben hozzáférés eltávolításához egy szerepkör-hozzárendelést ke
 
 ## <a name="next-steps"></a>További lépések
 
-* [Rövid útmutató: Hozzáférés biztosítása egy felhasználó számára az RBAC és az Azure Portal használatával](quickstart-assign-role-user-portal.md)
+* [Oktatóanyag: Hozzáférést egy felhasználó RBAC és az Azure portal használatával](quickstart-assign-role-user-portal.md)
 * [Oktatóanyag: Hozzáférés biztosítása egy felhasználó számára az RBAC és az Azure PowerShell használatával](tutorial-role-assignments-user-powershell.md)
 * [Beépített szerepkörök](built-in-roles.md)
 * [Az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../azure-resource-manager/management-groups-overview.md)

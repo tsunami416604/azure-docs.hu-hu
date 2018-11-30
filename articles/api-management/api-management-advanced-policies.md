@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 803fa89145d3a38b2df34666754fe8949a74eb53
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a36ad31531e41782f5be457450737a74f476c543
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262335"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584876"
 ---
 # <a name="api-management-advanced-policies"></a>Az API Management speciális szabályzatok
 Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -253,7 +253,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 -   **A házirend-hatókörök:** minden hatókör
 
 ##  <a name="LimitConcurrency"></a> Egyidejűségi korlát
- A `limit-concurrency` szabályzat megakadályozza, hogy a karakterláncon belül lévő házirendek egy adott időben nagyobb, mint a megadott számú kérelem végrehajtása. Követően meghaladja ezt a számot, új kérelem sikertelen lesz azonnal 429 Too Many Requests állapotkód.
+ A `limit-concurrency` szabályzat megakadályozza, hogy a karakterláncon belül lévő házirendek bármikor nagyobb, mint a megadott számú kérelem végrehajtása. Követően meghaladja ezt a számot, új kérelem sikertelen lesz azonnal 429 Too Many Requests állapotkód.
 
 ###  <a name="LimitConcurrencyStatement"></a> Házirendutasítás
 
@@ -649,7 +649,7 @@ status code and media type. If no example or schema found, the content is empty.
 |Attribútum|Leírás|Szükséges|Alapértelmezett|
 |---------------|-----------------|--------------|-------------|
 |mód = "string"|Meghatározza, hogy ez egy új kérelmet, vagy egy másolatot a jelenlegi kérelem. A kimenő mód mód = másolása nem sikerült inicializálni a kérelem törzsében.|Nem|Új|
-|response-variable-name="string"|Környezeti változó, amelyek megkapják a válasz objektum neve. Ha a változó nem létezik, létrejön a szabályzat sikeres végrehajtása után, és keresztül érhető el lesz [ `context.Variable` ](api-management-policy-expressions.md#ContextVariables) gyűjtemény.|Igen|–|
+|response-variable-name="string"|Környezeti változó, amelyek megkapják a válasz objektum neve. Ha a változó nem létezik, a házirend sikeres végrehajtása után létrejön, és keresztül érhető el lesz [ `context.Variable` ](api-management-policy-expressions.md#ContextVariables) gyűjtemény.|Igen|–|
 |timeout="integer"|Az időkorlát másodpercben az URL-cím hívása előtt sikertelen lesz.|Nem|60|
 |hagyja figyelmen kívül – hiba|Ha igaz, és hiba történt a kérés eredményeket:<br /><br /> – Ha a válasz-változóhoz-name tartalmazni fog a null érték lett megadva.<br />– Ha a válasz-változó-neve nincs megadva, az összefüggésben. Kérelem nem fog frissülni.|Nem|false|
 |név|A fejléc kell beállítani a nevét adja meg.|Igen|–|
@@ -876,7 +876,7 @@ Figyeljük meg [tulajdonságok](api-management-howto-properties.md) értékekké
 
 ```xml
 
-<trace source="arbitrary string literal"/>
+<trace source="arbitrary string literal">
     <!-- string expression or literal -->
 </trace>
 

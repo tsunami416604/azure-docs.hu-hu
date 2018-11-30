@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: 3230692208d27ebac073e257266c885b5e03095c
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: b320696a56855baaa4af10177d25dfe9973ee73a
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233633"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635441"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Az Azure Logic Apps összekötői
 
@@ -74,7 +74,7 @@ Az alábbiakban a beépített műveleteket a kimeneti adatok és a formátumok h
 
 |   |   | 
 |---|---| 
-| ![Beépített ikon][data-operations-icon]<br/>**Adatműveletek** | Hajtsa végre az adatokkal műveleteket: <p>- **Compose**: hozzon létre egy egyetlen kimeneti származó több bemenet a különféle fenyegetési típusokat. <br>- **CSV-táblázat létrehozása**: hozzon létre egy vesszővel tagolt (CSV) táblázatot tömbben JSON-objektumok. <br>- **HTML-táblázat létrehozása**: egy HTML-táblázat létrehozása JSON-objektumok a tömbben. <br>- **Tömb szűrése**: hozzon létre egy tömb a megadott feltételeket teljesítő egy másik tömb elemeinek. <br>- **Csatlakozás**: hozzon létre egy karakterláncot egy tömb összes elemét, és azok az elemek elválasztás a megadott elválasztó. <br>- **JSON elemzése**: felhasználóbarát-jogkivonat készítése esetleges a tulajdonságok és azok értékei JSON-tartalom felhasználhassa azokat a tulajdonságokat a munkafolyamatban. <br>- **Válassza ki**: hozzon létre egy tömb JSON-objektumok elemet vagy egy másik tömbben lévő értékek átalakítása és azok az elemek megadott tulajdonságok. | 
+| [![Beépített ikon][data-operations-icon]<br/>**Adatműveletek**][data-operations-doc] | Hajtsa végre az adatokkal műveleteket: <p>- **Compose**: hozzon létre egy egyetlen kimeneti származó több bemenet a különféle fenyegetési típusokat. <br>- **CSV-táblázat létrehozása**: hozzon létre egy vesszővel tagolt (CSV) táblázatot tömbben JSON-objektumok. <br>- **HTML-táblázat létrehozása**: egy HTML-táblázat létrehozása JSON-objektumok a tömbben. <br>- **Tömb szűrése**: hozzon létre egy tömb a megadott feltételeket teljesítő egy másik tömb elemeinek. <br>- **Csatlakozás**: hozzon létre egy karakterláncot egy tömb összes elemét, és azok az elemek elválasztás a megadott elválasztó. <br>- **JSON elemzése**: felhasználóbarát-jogkivonat készítése esetleges a tulajdonságok és azok értékei JSON-tartalom felhasználhassa azokat a tulajdonságokat a munkafolyamatban. <br>- **Válassza ki**: hozzon létre egy tömb JSON-objektumok elemet vagy egy másik tömbben lévő értékek átalakítása és azok az elemek megadott tulajdonságok. | 
 | ![Beépített ikon][date-time-icon]<br/>**Dátum-idő** | Időbélyeggel rendelkező műveletek végrehajtása: <p>- **Hozzáadás időhöz**: a megadott számú egységet ad hozzá egy időbélyegző. <br>- **Időzóna konvertálása**: időbélyeg konvertálása a forrásidőzóna időzónában. <br>- **Aktuális idő**: az aktuális timestamp karakterláncként adja vissza. <br>- **Jövőbeli időpont beolvasása**: az aktuális timestamp plusz a megadott időegység adja vissza. <br>- **Múltbeli időpont beolvasása**: mínusz a megadott időegység az aktuális időbélyeget adja vissza. <br>- **Kivonás időből**: kivonása egy időbélyeg idő egységek számát. |
 | [![Beépített ikon][variables-icon]<br/>**változók**][variables-doc] | Hajtsa végre a műveleti változókkal: <p>- **Hozzáfűzés tömbváltozóhoz**: Insert egy értéket, az utolsó elem a tömbben egy változó tárolja. <br>- **Hozzáfűzni kívánt karakterlánc-változóhoz**: Insert egy értéket egy változó tárolja karakterlánc utolsó karaktereként. <br>- **Változó értékének csökkentése**: csökkentéséhez egy változót egy állandó értékkel. <br>- **Változó értékének növelése**: növelje a változót egy állandó értékkel. <br>- **Változó inicializálása**: hozzon létre egy változót, és az adattípus és a kezdeti érték deklarálja. <br>- **Változó beállítása**: egy másik értéket rendelni egy létező változó. |
 |  |  | 
@@ -193,6 +193,7 @@ Ahhoz, hogy egyéni API-alkalmazások és összekötők bárki használhatja az 
 [switch-doc]: ../logic-apps/logic-apps-control-flow-switch-statement.md "Rendezheti a műveletek az esetekről, melyek rendelt egyedi értékeket. Csak az az eset, amelynek értéke megegyezik az eredmény egy kifejezés, objektumot vagy token futtassa. Ha nincs egyezés, futtassa az alapértelmezett esetben"
 [terminate-doc]: ../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action "Állítsa le a Mégse gombra a logikai alkalmazás egy aktívan futó munkafolyamathoz"
 [until-doc]: ../logic-apps/logic-apps-control-flow-loops.md#until-loop "Ismételje meg a műveleteket, amíg a megadott feltétel teljesül, vagy bizonyos állapota megváltozott"
+[data-operations-doc]: ../logic-apps/logic-apps-perform-data-operations.md "Végezhetnek adatműveleteket, például a tömb szűrése vagy CSV és HTML-táblázat létrehozása"
 [variables-doc]: ../logic-apps/logic-apps-create-variables-store-values.md "Műveletek elvégzését a változókat, például az inicializálás, set, növekmény, csökkentési, és a hozzáfűzni kívánt karakterlánc- vagy tömb változó"
 
 <!--Managed API doc links-->

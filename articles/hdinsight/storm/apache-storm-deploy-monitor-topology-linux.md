@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: 6cb3102206174422a3d8b4a0fb18f989d875e093
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 61f5f0d0b9e88174f82e960eb5d92db99d0cae71
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259054"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582844"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Üzembe helyezés és kezelés az Azure HDInsight az Apache Storm-topológiák 
 
-Ebben a dokumentumban megismerkedhet a kezelése és figyelése a Storm HDInsight-fürtökön futó Storm-topológiák.
+Ebben a dokumentumban megismerkedhet a kezeléséhez és monitorozásához [Apache Storm](http://storm.apache.org/) Storm HDInsight-fürtökön futó topológiákat.
 
 > [!IMPORTANT]
 > A jelen cikkben ismertetett lépések a Linux-alapú Storm on HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement). 
@@ -186,7 +186,7 @@ A hivatkozás kiválasztása a **topológia összegzése** szakasz jelenít meg 
   * **Inaktiválás**: megszakítja a futó topológiát.
   * **Újraegyensúlyozására**: Beállítja a topológia párhuzamosságát. A fürtben található csomópontok számának megváltoztatását követően újra ki kell egyensúlyozni a futó topológiákat. Ez a művelet lehetővé teszi, hogy a topológia párhuzamosságának kompenzálják a fürtben található csomópontok száma nagyobb vagy csökkent.
 
-    További információ: <a href="http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Understanding the parallelism of a Storm topology</a> (A Storm-topológia párhuzamosságának ismertetése).
+    További információkért lásd: <a href="http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">ismertetése az Apache Storm-topológia párhuzamosságát</a>.
   * **Kill**: leállítja a Storm-topológia időtúllépést követően.
 * **Topológiastatisztikák**: a topológia statisztikája. Az oldalon a többieknek időkeretét beállításához használja a hivatkozásokat a **ablak** oszlop.
 * **Spoutok**: A spoutok által a topológia használt. Ebben a szakaszban a hivatkozások segítségével megtekintheti az adott tartalmaz a spoutokkal kapcsolatban további információt.
@@ -208,10 +208,10 @@ Egy a spout kiválasztása a **Spoutok** vagy **boltok** szakaszok megjeleníti 
 
 A Storm felhasználói felülete a REST API-t épül, így hasonló felügyeleti és figyelési funkcióit, a REST API használatával is elvégezheti. A REST API használatával hozhat létre egyéni kezeléséhez és monitorozásához Storm-topológiák.
 
-További információkért lásd: [Storm UI REST API](http://storm.apache.org/releases/current/STORM-UI-REST-API.html). Az alábbi adatokat csak a REST API-val, az Apache Storm on HDInsight.
+További információkért lásd: [Apache Storm UI REST API-val](http://storm.apache.org/releases/current/STORM-UI-REST-API.html). Az alábbi adatokat csak a REST API-val, az Apache Storm on HDInsight.
 
 > [!IMPORTANT]
-> A Storm – REST API-t nem érhető el nyilvánosan az interneten keresztül, és a egy SSH-alagutat a HDInsight-fürt fő csomópontjának használatával érhetők el. Létrehozásával és SSH-alagút használatával kapcsolatos információkért lásd: [használata SSH-bújtatással való eléréséről az Ambari web UI, ResourceManager, JobHistory, NameNode, Oozie és egyéb webes](../hdinsight-linux-ambari-ssh-tunnel.md).
+> A Storm – REST API-t nem érhető el nyilvánosan az interneten keresztül, és a egy SSH-alagutat a HDInsight-fürt fő csomópontjának használatával érhetők el. Létrehozásával és SSH-alagút használatával kapcsolatos információkért lásd: [használata SSH-bújtatással való eléréséről az Apache Ambari web UI, ResourceManager, JobHistory, NameNode, Apache Oozie és egyéb webes](../hdinsight-linux-ambari-ssh-tunnel.md).
 
 ### <a name="base-uri"></a>Alap URI-t
 
@@ -232,10 +232,10 @@ A REST API-kérésnek kell használnia **alapszintű hitelesítés**, így a HDI
 
 ### <a name="return-values"></a>Visszatérési értékek
 
-Lehet, hogy a REST API-tól visszaadott információk csak a fürtön belül használható. Visszaadott Zookeeper-kiszolgáló teljesen minősített tartománynevét (FQDN) például az internetről nem érhető el.
+Lehet, hogy a REST API-tól visszaadott információk csak a fürtön belül használható. Ha például a teljesen minősített tartománynevét (FQDN) a visszaadott [Apache ZooKeeper](https://zookeeper.apache.org/) kiszolgáló nem érhető el az internetről.
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan [fejlesztés Java-alapú topológiák a Maven használatával szeretné](apache-storm-develop-java-topology.md).
+Ismerje meg, hogyan [fejlesztés Java-alapú topológiák az Apache Maven segítségével](apache-storm-develop-java-topology.md).
 
-További példa topológiák listáját lásd: [a HDInsight alatt futó Storm példatopológiái](apache-storm-example-topology.md).
+További példa topológiák listáját lásd: [a HDInsight Apache Storm példatopológiái](apache-storm-example-topology.md).

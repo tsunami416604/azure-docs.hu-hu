@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 11/30/2018
 ms.author: celested
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: 942151c0ce2a3a79dbdce9b90adea721456f920f
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 2f9cefa31b007cae715ff2ea98bccb3112babbef
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288475"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619792"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Az Azure Active Directory hozzájárulási keretrendszer
 
@@ -39,23 +39,29 @@ A következő lépések bemutatják, hogyan beleegyezése élmény az alkalmazá
 
 1. Fel, hogy egy ügyfél webalkalmazást, amely egy erőforrás és az API eléréséhez adott engedélyek kéréséhez szükséges. Megtudhatja, hogyan ehhez a következő szakaszban Ez a konfiguráció, de alapvetően az Azure portal segítségével alkalmazásengedély-kérelmeket deklarálja a konfiguráláskor. Egyéb olyan konfigurációs beállításoknak, például az alkalmazás Azure AD-regisztrációs részét képezik azok:
 
-  ![Egyéb alkalmazások engedélyei](./media/quickstart-v1-integrate-apps-with-azure-ad/requiredpermissions.png)
+    ![Egyéb alkalmazások engedélyei](./media/quickstart-v1-integrate-apps-with-azure-ad/requiredpermissions.png)
 
 1. Vegye figyelembe, hogy az Alkalmazásengedélyek frissítve lett-e, az alkalmazás fut, és egy felhasználó arra készül, hogy első alkalommal használja. Az alkalmazás először szüksége van egy engedélyezési kód beszerzése az Azure AD-ből `/authorize` végpont. Az engedélyezési kód majd egy új hozzáférési beszerezni, és a jogkivonat frissítésére használható.
 
 1. Ha a felhasználó még nem hitelesített, Azure AD `/authorize` végpont kéri a felhasználót, jelentkezzen be.
 
-  ![Felhasználó vagy rendszergazda bejelentkezhet az Azure ad-ben](./media/quickstart-v1-integrate-apps-with-azure-ad/usersignin.png)
+    [Felhasználó vagy rendszergazda bejelentkezhet az Azure ad-ben](./media/quickstart-v1-integrate-apps-with-azure-ad/usersignin.png)
 
 1. Miután a felhasználó jelentkezett be, az Azure AD határozza meg, ha a felhasználónak megjelenítendő egy hozzájárulást kérő lap. Ez a döntés e a felhasználó (vagy a szervezet rendszergazdája) már megadta az alkalmazás jóváhagyásának alapul. Jóváhagyás nem már rendelkezik, ha az Azure AD felkéri a felhasználót a hozzájárulásra, és megjeleníti a működéséhez szükséges engedélyekkel. A beleegyezés párbeszédpanelen megjelenő engedélykészletet egyeznek a kiválasztott azokkal a **delegált engedélyek** az Azure Portalon.
 
-  ![Felhasználói jóváhagyás élmény](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
+    ![Felhasználói jóváhagyás élmény](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
 
 1. Miután a felhasználó engedélyezi a jóváhagyás, az engedélyezési kódot az alkalmazás, amely váltják a hozzáférési jogkivonat beszerzése és a frissítési token vissza küld vissza. Ezzel a folyamattal kapcsolatos további információkért lásd: [webes API-alkalmazás típusa](web-api.md).
 
-1. A rendszergazdák is is beleegyezik az összes felhasználó nevében egy alkalmazás delegált engedélyeit a bérlőben. Rendszergazdai jóváhagyás megakadályozza, hogy a beleegyezés párbeszédpanelen jelenik meg a bérlő összes felhasználója számára, és elvégezhető a [az Azure portal](https://portal.azure.com) a rendszergazdai szerepkörrel rendelkező felhasználók által. Az a **beállítások** az alkalmazást, válassza a lap **szükséges engedélyek** , majd kattintson a a **engedélyeket** gombra.
+1. A rendszergazdák is is beleegyezik az összes felhasználó nevében egy alkalmazás delegált engedélyeit a bérlőben. Rendszergazdai jóváhagyás megakadályozza, hogy a beleegyezés párbeszédpanelen jelenik meg a bérlő összes felhasználója számára, és elvégezhető a [az Azure portal](https://portal.azure.com) a rendszergazdai szerepkörrel rendelkező felhasználók által. Melyik rendszergazda szerepkörök jóváhagyhat delegált engedélyeket kapcsolatban lásd: [rendszergazdája szerepkör engedélyei az Azure ad-ben](../users-groups-roles/directory-assign-admin-roles.md).
 
-  ![Engedélyek megadása az explicit rendszergazdai jóváhagyás](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
+    **Hogy engedélyt adjanak az alkalmazás a delegált engedélyek**
+
+    1. Nyissa meg a **beállítások** oldalon az alkalmazás
+    1. Válassza ki **szükséges engedélyek**.
+    1. Kattintson a **engedélyeket** gombra.
+
+    ![Engedélyek megadása az explicit rendszergazdai jóváhagyás](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
 
   > [!IMPORTANT]
   > Hozzájárulás megadása az explicit használatával a **engedélyeket** gomb ADAL.js használó egyoldalas alkalmazások (SPA) jelenleg szükség. Ellenkező esetben a kérelem sikertelen lesz, amikor a hozzáférési jogkivonatot kér.

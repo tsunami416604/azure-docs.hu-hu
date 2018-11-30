@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 08/27/2018
 ms.author: rangv
-ms.openlocfilehash: d6cbd2992968a57cfba99117e9f1fc1ab9b5b5b3
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 2ece10c43f25ac637a29324f46a88e50d9655431
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711837"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620438"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Csatlakozás az Azure IoT Hub IoT DevKit AZ3166
 
@@ -119,12 +119,12 @@ Tesztelje az érzékelők B gomb megnyomásával. Továbbra is lenyomásával, �
 
 Javasoljuk, hogy [Azure IoT Workbench](https://aka.ms/iot-workbench) fejleszthet a a fejlesztői készlet Visual Studio Code-bővítmény.
 
-Az Azure IoT Workbench IoT-megoldások fejlesztéséhez integrált megoldást nyújt. Mindkét Azure IoT-és egyéb szolgáltatásokkal az eszköz és a felhőbeli fejlesztési nyújt segítséget. A Channel9-videók feliratait kell azt a áttekintését tekintheti meg.
+Az Azure IoT Workbench IoT-megoldások fejlesztéséhez integrált megoldást nyújt. Mindkét Azure IoT-és egyéb szolgáltatásokkal az eszköz és a felhőbeli fejlesztési nyújt segítséget. Ez megtekinthet [Channel 9-videók](https://channel9.msdn.com/Shows/Internet-of-Things-Show/IoT-Workbench-extension-for-VS-Code) kell azt a áttekintését.
 
 Kövesse az alábbi lépéseket a fejlesztési környezet előkészítése a fejlesztői készlet:
 
 1. Töltse le és telepítse [Arduino IDE](https://www.arduino.cc/en/Main/Software). A szükséges eszközlánc biztosít a kódja lefordításának és Arduino kód feltöltése.
-    * **Windows**: használata Windows Installer verziószámát.
+    * **Windows**: használata Windows Installer verziószámát. Ne telepítse az app store áruházból.
     * **macOS**: áthúzása a kinyert **Arduino.app** be `/Applications` mappát.
     * **Ubuntu**: például Unzip mappába `$HOME/Downloads/arduino-1.8.5`
 
@@ -133,15 +133,15 @@ Kövesse az alábbi lépéseket a fejlesztési környezet előkészítése a fej
 3. Keressen **Azure IoT Workbench** a bővítmény Marketplace-en, és telepítse.
     ![Az Azure IoT Workbench telepítése](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-workbench.png) az IoT Workbench együtt más függő bővítmények lesz telepítve.
 
-4. Nyissa meg **fájl > Beállítások > Beállítások** , és adja hozzá az alábbi sorokat, Arduino konfigurálása.
-    * **Windows**:
-
+4. Arduino konfigurálása
+    * **Windows**: A **Windows** nyílt **fájl > preferencia > Beállítások** kattintson a **...**  , és nyissa meg a settings.json, majd adja hozzá az alábbi sorokat, Arduino konfigurálása. 
+      
     ```json
     "arduino.path": "C:\\Program Files (x86)\\Arduino",
     "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
     ```
 
-    * **macOS**:
+    * **macOS**: A **macOS** nyílt **kód > Beállítások > Beállítások** kattintson a **...**  , és nyissa meg a settings.json, majd adja hozzá a következő sorokat Arduino konfigurálása
 
     ```json
     "arduino.path": "/Applications",

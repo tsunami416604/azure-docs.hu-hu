@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 166d52322504e57e01a4bd798252fc956c1a3e44
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3536fb21d50dd54ec71615eba25c2d60fc727f34
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014584"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583295"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Az Azure HDInsight az Apache Spark-fürt erőforrásainak kezelése 
 
-Ismerje meg, hogyan lehet hozzáférni a felületek, például az Ambari felhasználói felületén, a YARN felhasználói felületén és a Spark-Előzménykiszolgáló a Spark-fürthöz társított, és a fürt konfigurációját az optimális teljesítmény hangolása.
+Például azok a felületek elérése [Apache Ambari](https://ambari.apache.org/) felhasználói felületén, [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) felhasználói felület és a Spark-Előzménykiszolgáló társított a [Apache Spark](https://spark.apache.org/) fürt, és hogyan hallgassa meg az optimális teljesítmény érdekében a fürt konfigurációját.
 
 **Előfeltételek:**
 
@@ -26,7 +26,7 @@ Ismerje meg, hogyan lehet hozzáférni a felületek, például az Ambari felhasz
 
 ## <a name="open-the-ambari-web-ui"></a>Nyissa meg az Ambari webes Felülettel
 
-Az Apache Ambari segítségével figyelheti a fürt és a konfigurációs módosítások. További információkért lásd: [kezelése Hadoop-fürtök a HDInsight az Azure portal használatával](../hdinsight-administer-use-portal-linux.md#open-the-ambari-web-ui)
+Az Apache Ambari segítségével figyelheti a fürt és a konfigurációs módosítások. További információkért lásd: [kezelése az Apache Hadoop-fürtök a HDInsight az Azure portal használatával](../hdinsight-administer-use-portal-linux.md#open-the-apache-ambari-web-ui)
 
 ## <a name="open-the-spark-history-server"></a>Nyissa meg a Spark-Előzménykiszolgáló
 
@@ -158,19 +158,19 @@ Indítsa el a Yarn felhasználói felületén, ahogyan az a cikk elején. Fürtm
 
 ### <a name="for-data-analysts"></a>Az adatelemzők számára
 
-* [Spark és Machine Learning: A Spark on HDInsight használata az épület-hőmérséklet elemzésére HVAC-adatok alapján](apache-spark-ipython-notebook-machine-learning.md)
-* [Spark és Machine Learning: A Spark on HDInsight használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
-* [A webhelynapló elemzése a Spark on HDInsight használatával](apache-spark-custom-library-website-log-analysis.md)
-* [Az Application Insights telemetriai adatainak elemzése a Spark on HDInsight használatával](apache-spark-analyze-application-insight-logs.md)
+* [Az Apache Spark és Machine Learning: a Spark on HDInsight HVAC-adatok épület-hőmérséklet elemzésére a használata](apache-spark-ipython-notebook-machine-learning.md)
+* [Az Apache Spark és Machine Learning: használja a Spark on HDInsight az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
+* [A webhelynapló elemzése a HDInsight az Apache Spark használatával](apache-spark-custom-library-website-log-analysis.md)
+* [Application Insights telemetriai adatainak elemzése Apache Spark on HDInsight használatával](apache-spark-analyze-application-insight-logs.md)
 * [Caffe elosztott deep learning az Azure HDInsight Spark használata](apache-spark-deep-learning-caffe.md)
 
-### <a name="for-spark-developers"></a>Spark-fejlesztőknek
+### <a name="for-apache-spark-developers"></a>Az Apache Spark-fejlesztőknek
 
 * [Önálló alkalmazás létrehozása a Scala használatával](apache-spark-create-standalone-application.md)
-* [Feladatok távoli futtatása Spark-fürtön a Livy használatával](apache-spark-livy-rest-interface.md)
+* [Feladatok távoli futtatása egy Apache Spark fürtön a Livy használatával](apache-spark-livy-rest-interface.md)
 * [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark Scala-alkalmazások létrehozásához és elküldéséhez](apache-spark-intellij-tool-plugin.md)
-* [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark-alkalmazások távoli hibaelhárításához](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Zeppelin notebookok használata Spark-fürttel HDInsighton](apache-spark-zeppelin-notebook.md)
-* [Jupyter notebookokhoz elérhető kernelek a HDInsight Spark-fürtjében](apache-spark-jupyter-notebook-kernels.md)
+* [Az Apache Spark-alkalmazások távoli hibakeresése az IntelliJ IDEA HDInsight-eszközei beépülő használata](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Az Apache Zeppelin notebookok használata a HDInsight Apache Spark-fürt](apache-spark-zeppelin-notebook.md)
+* [Notebookokhoz elérhető kernelek Jupyter a HDInsight az Apache Spark-fürt](apache-spark-jupyter-notebook-kernels.md)
 * [Külső csomagok használata Jupyter notebookokkal](apache-spark-jupyter-notebook-use-external-packages.md)
 * [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](apache-spark-jupyter-notebook-install-locally.md)

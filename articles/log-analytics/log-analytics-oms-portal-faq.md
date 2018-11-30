@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 9aa90c5a99da70aa0803aad4894e928a422b8fcf
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 5f5143800c423bdbaac9994b55e500723018dce4
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712245"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634353"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>OMS-portálon való váltás az Azure portálon a Log Analytics felhasználók kapcsolatos gyakori kérdések
 A log Analytics kezdetben a saját Portalt használta az OMS-portál nevű felügyelje a konfigurációt, és elemezheti az összegyűjtött adatokat.  Ezen a portálon az összes funkció át lett helyezve az Azure Portalra, továbbra is ki kell alakítani.
@@ -84,7 +84,7 @@ A legtöbb csatlakoztatott adatforrás-beállítások kezelése a a a **speciál
 | System Center     | **Speciális beállítások** a munkaterület menüje. |
 | Office 365        | Tekintse meg a [Office 365-kezelési megoldásra vonatkozó dokumentáció](../azure-monitor/insights/solution-office-365.md) konfigurációját. |
 | Windows-telemetria | A megoldás a beállítások menüben. Lásd: [Windows Analytics az Azure Portalon](/windows/deployment/update/windows-analytics-azure-portal) konfigurációját. |
-| ITSM-összekötő    | Lásd: [csatlakozás ITSM termékekkel/szolgáltatásokkal rendelkező informatikai szolgáltatásfelügyeleti összekötő](../log-analytics/log-analytics-itsmc-connections.md) vonatkozó utasításokat az ITSM-szolgáltatás csatlakoztatása a Log Analytics használatával. |
+| ITSM-összekötő    | Lásd: [csatlakozás ITSM termékekkel/szolgáltatásokkal rendelkező informatikai szolgáltatásfelügyeleti összekötő](../log-analytics/../azure-monitor/platform/itsmc-connections.md) vonatkozó utasításokat az ITSM-szolgáltatás csatlakoztatása a Log Analytics használatával. |
 
 ### <a name="data"></a>Adatok
 A legtöbb adat beállításainak kezelése a a a **speciális beállítások** a munkaterület menüje. Az alábbi táblázat részletesen lásd ebben a menüben.
@@ -113,7 +113,7 @@ Az OMS-portálon az eszközfelügyeleti megoldások telepítéséhez kövesse a 
 Riasztási szabályok alapján a Log Analytics-lekérdezések már kezelhetők a [egységes felhasználói élményt riasztási](../monitoring-and-diagnostics/alert-metric.md). Lásd: [bővítése a riasztások a Log Analytics az Azure Alerts](../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md) konfigurálása és riasztások használatával az Azure Portalon.
 
 ## <a name="how-do-i-access-my-dashboards"></a>Hogyan érhetem el az irányítópultokat?
-A [saját irányítópult](../log-analytics/log-analytics-dashboards.md) a Log Analytics funkció elavult. Ez a funkció engedélyezett, hogy privát adatforrásnézet-tervezőből részek-gyűjteménnyel rendelkezik, és a beépített Azure-irányítópulton funkcióval helyettesít. Folytathatja az adatok megjelenítése a Log Analytics használatával [adatforrásnézet-tervezőből](../log-analytics/log-analytics-view-designer.md) megosztott nézetekhez. Az ezeket a nézeteket, vagy vizualizációkat is rögzíthet [az egyes lekérdezések](../log-analytics/log-analytics-tutorial-dashboards.md) az Azure-irányítópultok.
+A [saját irányítópult](../log-analytics/../azure-monitor/platform/dashboards.md) a Log Analytics funkció elavult. Ez a funkció engedélyezett, hogy privát adatforrásnézet-tervezőből részek-gyűjteménnyel rendelkezik, és a beépített Azure-irányítópulton funkcióval helyettesít. Folytathatja az adatok megjelenítése a Log Analytics használatával [adatforrásnézet-tervezőből](../log-analytics/../azure-monitor/platform/view-designer.md) megosztott nézetekhez. Az ezeket a nézeteket, vagy vizualizációkat is rögzíthet [az egyes lekérdezések](../log-analytics/log-analytics-tutorial-dashboards.md) az Azure-irányítópultok.
 
 ## <a name="how-do-i-check-my-usage"></a>Hogyan tudom ellenőrizni, a használat?
 Is most már egyszerűen megtekinthető és kezelhető a használat és a Log Analytics költsége kiválasztásával **felhasználás és becsült költségek** a munkaterületén.

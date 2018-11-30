@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/02/2018
+ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 49341b320df98bb08ee4f5c4ee061a51bec29ff2
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: bb8eb4eae192cf0dd3a3555a3b1209705dd83aaf
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686160"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583691"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Oktatóanyag: Létrehozása és kezelése az Azure költségvetése
 
@@ -33,13 +33,15 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Költségvetése minden Azure nagyvállalati szerződéssel rendelkező ügyfelek számára érhetők el. Költségvetések létrehozásához és kezeléséhez olvasási hozzáféréssel kell rendelkeznie egy Azure nagyvállalati szerződéssel rendelkező előfizetéshez. Az EA-előfizetések és -erőforráscsoportok egyes költségvetése hozhat létre. Azonban a nagyvállalati szerződéssel rendelkező fiókok számlázási költségvetése nem hozható létre.
+Költségvetése minden Azure nagyvállalati szerződéssel rendelkező ügyfelek számára érhetők el. Költségvetések megtekintése az Azure nagyvállalati szerződéssel rendelkező előfizetés olvasási hozzáféréssel kell rendelkeznie. Hozhat létre és kezelheti költségvetése közreműködő engedéllyel kell rendelkeznie. Az EA-előfizetések és -erőforráscsoportok egyes költségvetése hozhat létre. Azonban a nagyvállalati szerződéssel rendelkező fiókok számlázási költségvetése nem hozható létre.
 
 A következő Azure-engedélyeket felhasználó és csoport által támogatott költségvetése előfizetésenként:
 
 - Tulajdonos – Költségvetéseket hozhat létre, módosíthat vagy törölhet az előfizetésben.
-- Közreműködő – Létrehozhatja, módosíthatja vagy törölheti a saját költségvetéseit. Módosíthatja a mások által létrehozott költségvetések költségvetési összegét.
-- Olvasó – Megtekintheti azokat a költségvetéseket, amelyekhez engedéllyel rendelkezik.
+- Közreműködő, és a Cost Management közreműködője – létrehozása, módosítása vagy törlése a saját költségvetése. Módosíthatja a mások által létrehozott költségvetések költségvetési összegét.
+- Olvasó és a Cost Management olvasó – megtekintheti a kiadásoktól, amelyek engedéllyel rendelkeznek.
+
+Engedélyek hozzárendelése a Cost Management adataihoz kapcsolatos további információkért lásd: [Cost Management adataihoz való hozzáférés hozzárendelése](assign-access-acm-data.md).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 

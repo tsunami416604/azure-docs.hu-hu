@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/24/2017
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 32ce9cb456e302647e2e09db6ed549cd4795fed7
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f9cdb11bad5d4aa94fdc083a0fc7dc6a2c5787cd
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448390"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635152"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics-adatmodell az Azure biztonsági mentési adatok
 A Log Analytics data model használatával jelentéseket készíthet. Az adatmodellel egyéni lekérdezéseket és irányítópultokat hozhat létre, vagy testre szabhatja az Azure biztonsági mentési adatok, tetszés.
@@ -281,4 +281,4 @@ Ez a táblázat részletesen tároló kapcsolatos mezőket.
 | ResourceType |Szöveg |Erőforrás típusa, amelynek az adatgyűjtés történik. Ha például a tárolók |
 
 ## <a name="next-steps"></a>További lépések
-Megkezdése után tekintse át az adatmodell az Azure Backup-jelentések létrehozása, [irányítópult létrehozása](../log-analytics/log-analytics-dashboards.md) a Log Analyticsben.
+Megkezdése után tekintse át az adatmodell az Azure Backup-jelentések létrehozása, [irányítópult létrehozása](../azure-monitor/platform/dashboards.md) a Log Analyticsben.

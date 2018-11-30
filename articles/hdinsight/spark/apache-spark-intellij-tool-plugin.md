@@ -9,22 +9,22 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: maxluk
-ms.openlocfilehash: ff7cfcd56158bd38d031a29a21247fb9eb6b91f9
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: b2bf79d90c741e09c683e4520b05b31ba2fee1da
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289070"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582768"
 ---
-# <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>IntelliJ-hez készült Azure eszközkészlet használata Spark-alkalmazások egy HDInsight-fürt létrehozása
+# <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>IntelliJ-hez készült Azure eszközkészlet használata egy HDInsight-fürtön az Apache Spark-alkalmazások létrehozása
 
-Az Azure-eszközkészlet használata beépülő modul az IntelliJ-hez írt Scala Spark-alkalmazások fejlesztéséhez, és majd küldheti el ezeket a HDInsight Spark-fürt közvetlenül a az IntelliJ integrált fejlesztőkörnyezetben (IDE). Használhatja a beépülő modul több módon is:
+Az IntelliJ beépülő modul az Azure-eszközkészlet használata fejlesztéséhez [Apache Spark](https://spark.apache.org/) írt alkalmazások [Scala](https://www.scala-lang.org/), majd küldheti el ezeket a HDInsight Spark-fürt közvetlenül a az intellij-vel integrált fejlesztési környezet (IDE). Használhatja a beépülő modul több módon is:
 
 * Fejlesztés, és küldje el a Scala Spark-alkalmazását egy HDInsight Spark-fürtön.
 * Az Azure HDInsight Spark fürterőforrásokat eléréséhez.
 * Fejlesztés és a Scala Spark-alkalmazás helyileg történő futtatása.
 
-A projekt létrehozásához tekintse meg a [Spark-alkalmazások létrehozása az IntelliJ-hez készült Azure-eszközkészlet](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ) videó.
+A projekt létrehozásához tekintse meg a [Apache Spark alkalmazások létrehozása az IntelliJ-hez készült Azure-eszközkészlet](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ) videó.
 
 > [!IMPORTANT]
 > Használhatja ez a beépülő modul létrehozása és elküldése az alkalmazások csak a HDInsight Spark-fürt Linux rendszeren.
@@ -68,7 +68,7 @@ Felhasználói lehetőségek közül választhat [jelentkezzen be Azure-előfize
     ![Egy kibontott fürtnév csomópontok](./media/apache-spark-intellij-tool-plugin/view-explorer-4.png)
 
 ## <a name="link-a-cluster"></a>Egy fürtöt
-Kapcsolat egy normál HDInsight-fürt Ambari felügyelt felhasználónév használatával. Hasonlóképpen, egy tartományhoz csatlakoztatott HDInsight-fürtöt, a kapcsolat a tartomány és felhasználónév, mint például a user1@contoso.com. Livy-Service-fürt is kapcsolhatja.
+Kapcsolat egy normál HDInsight-fürtöt a felügyelt Apache Ambari felhasználónév használatával. Hasonlóképpen, egy tartományhoz csatlakoztatott HDInsight-fürtöt, a kapcsolat a tartomány és felhasználónév, mint például a user1@contoso.com. Livy-Service-fürt is kapcsolhatja.
 
 1. Válassza ki **egy fürtöt** a **Azure Explorer**.
 
@@ -188,7 +188,7 @@ Miután létrehozta a Scala-alkalmazások, elküldheti a fürthöz.
 
     * **Parancssori argumentumok** mező: a hely a fő osztály a felosztás, szükség esetén argumentumok értékeket adhat meg.
 
-    * **JAR-fájlok kivételével hivatkozott** és **hivatkozott fájlok** mezők: adhat meg az elérési utak a hivatkozott JAR-fájlok kivételével, és a fájlok, ha van ilyen. További információ: [Spark-konfigurációja](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) 
+    * **JAR-fájlok kivételével hivatkozott** és **hivatkozott fájlok** mezők: adhat meg az elérési utak a hivatkozott JAR-fájlok kivételével, és a fájlok, ha van ilyen. További információ: [Apache Spark-konfigurációja](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) 
 
       ![A Spark küldésének párbeszédpanelen be jar-fájlok jelentése](./media/apache-spark-intellij-tool-plugin/jar-files-meaning.png)
 
@@ -206,8 +206,8 @@ Miután létrehozta a Scala-alkalmazások, elküldheti a fürthöz.
      ![A Spark küldésének ablak](./media/apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
 
 
-## <a name="debug-spark-applications-locally-or-remotely-on-an-hdinsight-cluster"></a>Hibakeresés Spark-alkalmazások helyben vagy távolról egy HDInsight-fürtön 
-Javasoljuk továbbá egy másik módja a fürtön a Spark-alkalmazás be. Ehhez a paraméterek beállításával a **Futtatás és hibakeresés konfigurációk** IDE. További információkért lásd: [hibakeresés Spark-alkalmazások helyben vagy távolról egy HDInsight-fürtön az Azure-eszközkészlet ssh-n keresztül az IntelliJ-hez](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh).
+## <a name="debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster"></a>Az Apache Spark-alkalmazások hibakeresését helyileg vagy távolról egy HDInsight-fürtön 
+Javasoljuk továbbá egy másik módja a fürtön a Spark-alkalmazás be. Ehhez a paraméterek beállításával a **Futtatás és hibakeresés konfigurációk** IDE. További információkért lásd: [Apache Spark-alkalmazások hibakeresését helyileg vagy távolról egy HDInsight-fürtön az Azure-eszközkészlet ssh-n keresztül az IntelliJ-hez](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh).
 
 
 
@@ -222,8 +222,6 @@ IntelliJ-hez készült Azure-eszközkészlet használatával különféle művel
 1. A jobb oldali ablaktáblán a **Spark-feladat nézet** lap megjeleníti a fürtön futó összes alkalmazást. Válassza ki, amelynek meg szeretné tekinteni a további részleteket az alkalmazás nevét.
 
     ![Alkalmazás adatai](./media/apache-spark-intellij-tool-plugin/view-job-logs.png)
-    >Megjegyzés
-    >
 
 1. Alapszintű futó feladat adatainak megjelenítéséhez vigye a kurzort a feladatgrafikon fölé. A szakaszok graph és minden feladat által létrehozott információk megtekintéséhez válasszon ki egy csomópontot, a feladat ábra a.
 
@@ -352,26 +350,26 @@ Ha javaslata vagy visszajelzés rendelkezik, vagy ha problémákat tapasztal, am
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 
 ### <a name="demo"></a>Bemutató
-* Létrehozás Scala project (videó): [Spark Scala-alkalmazások létrehozása](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
-* Távoli hibakeresés (videó): [távolról a HDInsight-fürtön a Spark-alkalmazások hibakeresése az IntelliJ-hez készült Azure eszközkészlet használata](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
+* Létrehozás Scala project (videó): [létre Apache Spark Scala-alkalmazások](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
+* Távoli hibakeresés (videó): [távolról a HDInsight-fürtön az Apache Spark-alkalmazások hibakeresése az IntelliJ-hez készült Azure eszközkészlet használata](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
 ### <a name="scenarios"></a>Forgatókönyvek
-* [Spark és BI: interaktív adatelemzés végrehajtása a Spark on HDInsight használatával, BI-eszközökkel](apache-spark-use-bi-tools.md)
-* [Spark és Machine Learning: a Spark on HDInsight HVAC-adatok épület-hőmérséklet elemzésére a használata](apache-spark-ipython-notebook-machine-learning.md)
-* [Spark és Machine Learning: A Spark on HDInsight használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
-* [A webhelynapló elemzése a Spark on HDInsight használatával](apache-spark-custom-library-website-log-analysis.md)
+* [Az Apache Spark és BI: interaktív adatelemzés végrehajtása a Spark on HDInsight használatával, BI-eszközökkel](apache-spark-use-bi-tools.md)
+* [Az Apache Spark és Machine Learning: a Spark on HDInsight HVAC-adatok épület-hőmérséklet elemzésére a használata](apache-spark-ipython-notebook-machine-learning.md)
+* [Az Apache Spark és Machine Learning: használja a Spark on HDInsight az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
+* [A webhelynapló elemzése a HDInsight az Apache Spark használatával](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="creating-and-running-applications"></a>Létrehozása és alkalmazások futtatásához
 * [Önálló alkalmazás létrehozása a Scala használatával](apache-spark-create-standalone-application.md)
-* [Feladatok távoli futtatása Spark-fürtön a Livy használatával](apache-spark-livy-rest-interface.md)
+* [Feladatok távoli futtatása egy Apache Spark fürtön a Livy használatával](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Eszközök és bővítmények
-* [VPN-en keresztül távolról Spark-alkalmazások hibakeresése az IntelliJ-hez készült Azure eszközkészlet használata](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Ssh-n keresztül távolról Spark-alkalmazások hibakeresése az IntelliJ-hez készült Azure eszközkészlet használata](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [IntelliJ-hez készült Azure eszközkészlet használata Apache Spark-alkalmazások VPN-en keresztül távolról](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [IntelliJ-hez készült Azure eszközkészlet használata Apache Spark-alkalmazások távolról az ssh-n keresztül](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 * [HDInsight Tools for IntelliJ with hortonworks – tesztkörnyezet használata](../hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
-* [Az Eclipse-hez készült Azure-eszközkészlet HDInsight Tools használata Spark-alkalmazások létrehozásához](apache-spark-eclipse-tool-plugin.md)
-* [Zeppelin notebookok használata Spark-fürttel HDInsighton](apache-spark-zeppelin-notebook.md)
-* [Jupyter notebookokhoz elérhető kernelek a HDInsight Spark-fürtjében](apache-spark-jupyter-notebook-kernels.md)
+* [HDInsight Tools használata az Azure Toolkit for Eclipse Apache Spark-alkalmazások létrehozásához](apache-spark-eclipse-tool-plugin.md)
+* [Az Apache Zeppelin notebookok használata a HDInsight Apache Spark-fürt](apache-spark-zeppelin-notebook.md)
+* [Notebookokhoz elérhető kernelek Jupyter a HDInsight az Apache Spark-fürt](apache-spark-jupyter-notebook-kernels.md)
 * [Külső csomagok használata Jupyter notebookokkal](apache-spark-jupyter-notebook-use-external-packages.md)
 * [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](apache-spark-jupyter-notebook-install-locally.md)
 

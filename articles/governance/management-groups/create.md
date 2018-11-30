@@ -5,17 +5,17 @@ author: rthorn17
 manager: rithorn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2018
+ms.date: 11/20/2018
 ms.author: rithorn
-ms.openlocfilehash: 6a45ffa13ead40b72fd1a0a3c2696a6e6829a4d5
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.topic: conceptual
+ms.openlocfilehash: 699a9b7a371a004213419567d0672f56b5365598
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956408"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620114"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Erőforrás-szervezet és felügyeleti felügyeleti csoportok létrehozása
 
@@ -29,7 +29,7 @@ A felügyeleti csoport a portálon, a PowerShell vagy az Azure CLI használatáv
 
 ### <a name="create-in-portal"></a>A portál létrehozása
 
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Válassza ki **minden szolgáltatás** > **felügyeleti csoportok**.
 
@@ -76,8 +76,8 @@ az account management-group create --name 'Contoso'
 
 A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 
-- [Az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](overview.md)
+- [Felügyeleti csoportok létrehozása az Azure-erőforrások rendszerezéséhez](create.md)
 - [Felügyeleti csoportok módosítása, törlése és kezelése](manage.md)
-- [Az Azure PowerShell-modul telepítése](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups)
-- [A REST API-specifikáció áttekintése](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
-- [Az Azure CLI-bővítmény telepítése](/cli/azure/extension?view=azure-cli-latest#az-extension-list-available)
+- [Tekintse át a felügyeleti csoportok az Azure PowerShell modul](https://aka.ms/mgPSdocs)
+- [Tekintse át a felügyeleti csoportok REST API-ban](https://aka.ms/mgAPIdocs)
+- [Tekintse át a felügyeleti csoportok az Azure CLI-vel](https://aka.ms/mgclidoc)

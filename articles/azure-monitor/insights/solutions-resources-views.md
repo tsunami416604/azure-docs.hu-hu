@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: f00c11881da7624809b1253361c17285666d9ba3
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 97e499612082d0d58cd75bb9f8854b8c4e0f669e
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715477"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635764"
 ---
 # <a name="views-in-management-solutions-preview"></a>Nézetek az eszközkezelési megoldások (előzetes verzió)
 > [!NOTE]
 > Ez az előzetes dokumentum, jelenleg előzetes verzióban elérhető kezelési megoldások létrehozásához. Semmilyen sémát, az alábbiakban a változhat.    
 
 
-[Felügyeleti megoldások](solutions.md) általában egy vagy több nézetek segítségével ábrázolhatja adatait tartalmazza.  Ez a cikk bemutatja, hogyan exportálja által létrehozott nézetre a [adatforrásnézet-tervezőből](../../log-analytics/log-analytics-view-designer.md) és a egy megoldás.  
+[Felügyeleti megoldások](solutions.md) általában egy vagy több nézetek segítségével ábrázolhatja adatait tartalmazza.  Ez a cikk bemutatja, hogyan exportálja által létrehozott nézetre a [adatforrásnézet-tervezőből](../../azure-monitor/platform/view-designer.md) és a egy megoldás.  
 
 > [!NOTE]
 > Ebben a cikkben a minták használata, paraméterek és változók, kötelező vagy közös felügyeleti megoldások és az itt ismertetett [tervezés és felépítés felügyeleti megoldás az Azure-ban](solutions-creating.md)
@@ -37,7 +37,7 @@ ms.locfileid: "51715477"
 Ez a cikk feltételezi, hogy már megismerkedett az [felügyeleti megoldás létrehozása](solutions-creating.md) és a egy megoldás-fájl szerkezete.
 
 ## <a name="overview"></a>Áttekintés
-Nézet tartalmazza a felügyeleti megoldás, hozzon létre egy **erőforrás** a hozzá tartozó a [megoldásfájlt](solutions-creating.md).  A nézet részletes konfigurációs leíró JSON-t pedig jellemzően összetett, ha valami nem, hogy egy tipikus megoldás Szerző tudná manuális létrehozása.  A leggyakrabban használt módszer, ha a nézet használata a [adatforrásnézet-tervezőből](../../log-analytics/log-analytics-view-designer.md), exportálhatja, és a részletes konfigurációs hozzáadása a megoldáshoz.
+Nézet tartalmazza a felügyeleti megoldás, hozzon létre egy **erőforrás** a hozzá tartozó a [megoldásfájlt](solutions-creating.md).  A nézet részletes konfigurációs leíró JSON-t pedig jellemzően összetett, ha valami nem, hogy egy tipikus megoldás Szerző tudná manuális létrehozása.  A leggyakrabban használt módszer, ha a nézet használata a [adatforrásnézet-tervezőből](../../azure-monitor/platform/view-designer.md), exportálhatja, és a részletes konfigurációs hozzáadása a megoldáshoz.
 
 Nézet hozzáadása egy megoldás alapvető lépéseit az alábbiak szerint.  Minden lépés az alábbi szakaszokban részletesen ismertetjük.
 
@@ -46,7 +46,7 @@ Nézet hozzáadása egy megoldás alapvető lépéseit az alábbiak szerint.  Mi
 3. Adja hozzá a részleteinek megtekintése.
 
 ## <a name="export-the-view-to-a-file"></a>A nézet exportálja egy fájlba
-Kövesse az utasításokat, [Log Analytics Nézettervező](../../log-analytics/log-analytics-view-designer.md) nézet exportálása fájlba.  Az exportált fájl azonos JSON formátumban lesznek [elemek, a megoldás fájllal](solutions-solution-file.md).  
+Kövesse az utasításokat, [Log Analytics Nézettervező](../../azure-monitor/platform/view-designer.md) nézet exportálása fájlba.  Az exportált fájl azonos JSON formátumban lesznek [elemek, a megoldás fájllal](solutions-solution-file.md).  
 
 A **erőforrások** elem a nézet fájl lesz típusú erőforrás **Microsoft.OperationalInsights/workspaces** , amely jelzi, hogy a Log Analytics-munkaterületet.  Ez az elem lesz egy alelem típusú **nézetek** , amely a nézet jelöl, és a részletes konfigurációs tartalmaz.  Másolja vágólapra az adatokat, ezt az összetevőt, és másolja a megoldás.
 

@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin, jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: da8eebb2fc6b87b8916e944495679b45aa34dbf2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5283782188eaebe3997b6de31b087da74cf10486
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960328"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620132"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Engedélyek és jóváhagyás az Azure Active Directory v2.0-végpont
 
@@ -64,13 +64,13 @@ Egy alkalmazás leggyakrabban kérelmek ezeket az engedélyeket a hatókörök m
 
 A Microsoft identity platform az engedélyek két típusát támogatja: **delegált engedélyek** és **Alkalmazásengedélyek**.
 
-- **Delegált engedélyek** használják az alkalmazásokat, amelyeket a bejelentkezett felhasználó található. Az ilyen alkalmazások a felhasználó vagy rendszergazda járul hozzá a szükséges engedélyeket, hogy az alkalmazás kéréseket és az alkalmazás-e a célként megadott erőforrás hívása esetén a bejelentkezett felhasználó nevében eljárni delegált engedély. Az egyes delegált engedélyeket is beleegyezés a nem rendszergazda jogosultságú felhasználók, de néhány magasabb jogosultsági szintű engedélyeket igényel [rendszergazdai jóváhagyást](v2-permissions-and-consent.md#admin-restricted-scopes).  
+* **Delegált engedélyek** használják az alkalmazásokat, amelyeket a bejelentkezett felhasználó található. Az ilyen alkalmazások esetében a felhasználó vagy rendszergazda járul hozzá a szükséges engedélyeket, hogy az alkalmazás kéréseket és az alkalmazás-e a célként megadott erőforrás hívása esetén a bejelentkezett felhasználó nevében eljárni delegált engedély. Az egyes delegált engedélyeket is beleegyezés a nem rendszergazda jogosultságú felhasználók, de néhány magasabb jogosultsági szintű engedélyeket igényel [rendszergazdai jóváhagyást](v2-permissions-and-consent.md#admin-restricted-scopes). Melyik rendszergazda szerepkörök jóváhagyhat delegált engedélyeket kapcsolatban lásd: [rendszergazdája szerepkör engedélyei az Azure ad-ben](../users-groups-roles/directory-assign-admin-roles.md).
 
-- **Alkalmazásengedélyek** alkalmazások által használt futtató nincs bejelentkezett felhasználó található, például alkalmazások, amelyek futtatását háttérszolgáltatások vagy démonok.  Alkalmazásengedélyek csak akkor lehet [egy rendszergazda által jóváhagyott](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant). 
+* **Alkalmazásengedélyek** alkalmazások által használt futtató nincs bejelentkezett felhasználó található, például alkalmazások, amelyek futtatását háttérszolgáltatások vagy démonok.  Alkalmazásengedélyek csak akkor lehet [egy rendszergazda által jóváhagyott](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
 _A hatályos engedélyek_ az engedélyek, amelyek a az alkalmazás lesz, amikor a célként megadott erőforrás-kérelem indítására. Fontos megérteni a különbség a delegált és az alkalmazás számára biztosított Alkalmazásengedélyek és a hatályos engedélyek a célként megadott erőforrás hívása esetén.
 
-- A delegált engedélyeket a _hatályos engedélyek_ az alkalmazás a legalacsonyabb jogosultsági szintű metszet (jóváhagyás) n keresztül kiadott az alkalmazás delegált engedélyeit és a jelenleg bejelentkezett felhasználó jogosultságával lesz. Az alkalmazásnak soha nem lehet több jogosultsága, mint a bejelentkezett felhasználónak. A cégeken belül a bejelentkezett felhasználó jogosultságait szabályzat vagy egy vagy több rendszergazdai szerepkör tagsága határozhatja meg. Tudnivalók a rendszergazdai szerepkörökről további információkért lásd: [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
+- A delegált engedélyeket a _hatályos engedélyek_ az alkalmazás a legalacsonyabb jogosultsági szintű metszet (jóváhagyás) n keresztül kiadott az alkalmazás delegált engedélyeit és a jelenleg bejelentkezett felhasználó jogosultságával lesz. Az alkalmazásnak soha nem lehet több jogosultsága, mint a bejelentkezett felhasználónak. A cégeken belül a bejelentkezett felhasználó jogosultságait szabályzat vagy egy vagy több rendszergazdai szerepkör tagsága határozhatja meg. Melyik rendszergazda szerepkörök jóváhagyhat delegált engedélyeket kapcsolatban lásd: [rendszergazdája szerepkör engedélyei az Azure ad-ben](../users-groups-roles/directory-assign-admin-roles.md).
   Tegyük fel például, hogy az alkalmazáshoz kapott a _User.ReadWrite.All_ delegált engedély. Ez az engedély névlegesen ad engedélyt az alkalmazás számára egy cégben lévő összes felhasználó profiljának olvasásához és frissítéséhez. Ha a bejelentkezett felhasználó egy globális rendszergazda, az alkalmazás frissíteni tudja a cégben lévő összes felhasználó profilját. Ha azonban a bejelentkezett felhasználó nem rendszergazdai szerepkörben van, az alkalmazás csak a bejelentkezett felhasználó profilját tudja frissíteni. Nem tudja frissíteni a cégben lévő többi felhasználó profilját, mert az a felhasználó nem rendelkezik ilyen jogosultságokkal, akinek a nevében eljár.
   
 - Az Alkalmazásengedélyek a _hatályos engedélyek_ az alkalmazás lesz a teljes körű szintű jogosultságokat hallgatólagos vonatkozó engedélyeket. Például, ha egy alkalmazást, amely rendelkezik a _User.ReadWrite.All_ alkalmazásnak frissítheti a profilt minden felhasználó a szervezetben. 
@@ -83,7 +83,7 @@ OpenID Connect v2.0 végrehajtására van néhány jól meghatározott hatókör
 
 Ha egy alkalmazás segítségével hajtja végre a bejelentkezési [OpenID Connect](active-directory-v2-protocols.md), azt kell igényelnie a `openid` hatókör. A `openid` hatókör jeleníti meg a munkahelyi fiók hozzájárulást kérő lap, a "Bejelentkezés" engedéllyel, és a személyes Microsoft fiók hozzájárulást kérő lap, a "Saját profil megtekintése és a Microsoft-fiókját használó alkalmazásokhoz és szolgáltatásokhoz való csatlakozás" engedéllyel. Ezzel az engedéllyel, egy alkalmazás akkor fogadhat egy egyedi azonosítót a felhasználó formájában a `sub` jogcím. Azt is hozzáférést biztosít az alkalmazás a UserInfo végpontra. A `openid` hatókör azonosító-jogkivonatokat, ami használható alkalmazás különböző összetevői közötti HTTP-hívások biztonságossá tételéhez beszerzésére használható jogkivonat 2.0-s verziójú végpontján.
 
-### <a name="email"></a>e-mailben
+### <a name="email"></a>e-mail
 
 A `email` hatókör használható a `openid` hatókörrel és a többi. Az alkalmazás-hozzáférés a felhasználó elsődleges e-mail címének formájában nyújt a `email` jogcím. A `email` jogcím szerepel egy token csak akkor, ha e-mail-címmel társítva, a felhasználói fiókkal, amely nem mindig a helyzet. Ha az a `email` hatókör, az alkalmazás fel kell készülnöm kezelésére egy esetet, amelyben a `email` jogcím nem szerepel a jogkivonatban.
 
@@ -93,7 +93,7 @@ A `profile` hatókör használható a `openid` hatókörrel és a többi. Jelent
 
 ### <a name="offlineaccess"></a>offline_access
 
-A [ `offline_access` hatókör](http://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) lehetővé teszi az alkalmazás hozzáférjen az erőforrásokhoz a felhasználó nevében hosszabb ideig. A munkahelyi fiók hozzájárulást kérő lap a hatókör megjelenik az "Az adatok elérése bármikor" engedélyt. A személyes Microsoft fiók hozzájárulást kérő lap jelenik meg a "Saját adatok elérése bármikor" engedéllyel. Amikor egy felhasználó jóváhagyja a `offline_access` hatókör, az alkalmazás frissítési biztonsági jogkivonat kap a v2.0 jogkivonat-végpont. Frissítési jogkivonatok olyan hosszú élettartamú. Az alkalmazás is szerezhet új hozzáférési jogkivonatok jár le a régieket.
+A [ `offline_access` hatókör](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) lehetővé teszi az alkalmazás hozzáférjen az erőforrásokhoz a felhasználó nevében hosszabb ideig. A munkahelyi fiók hozzájárulást kérő lap a hatókör megjelenik az "Az adatok elérése bármikor" engedélyt. A személyes Microsoft fiók hozzájárulást kérő lap jelenik meg a "Saját adatok elérése bármikor" engedéllyel. Amikor egy felhasználó jóváhagyja a `offline_access` hatókör, az alkalmazás frissítési biztonsági jogkivonat kap a v2.0 jogkivonat-végpont. Frissítési jogkivonatok olyan hosszú élettartamú. Az alkalmazás is szerezhet új hozzáférési jogkivonatok jár le a régieket.
 
 Ha az alkalmazás nem kér a `offline_access` hatókör, hogy nem kapja meg frissítési biztonsági jogkivonat. Ez azt jelenti, hogy ha a hozzáférési kód beváltása az [OAuth 2.0 hitelesítési kódfolyamat](active-directory-v2-protocols.md), csak a hozzáférési jogkivonatot kap a `/token` végpont. A hozzáférési jogkivonat érvénytelen, rövid ideig. A hozzáférési jogkivonatot általában egy óra múlva lejár. Biztonsági másolatot at, hogy pont, az alkalmazás kell átirányítja a felhasználót a `/authorize` végpontot, hogy egy új hozzáférési kód lekérése. Az átirányítás, az alkalmazás típusától függően során a felhasználó előfordulhat, hogy szükség írja be újra a hitelesítő adatait, vagy újra járul hozzá az engedélyeket.
 

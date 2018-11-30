@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 03/01/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 53f729e23ced00bd0acb5674308f8c610bff8868
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ce39e3ffce0b7721bde84254c7e5a35ec28465dc
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005376"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583159"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-windows-based-hdinsight"></a>Üzembe helyezés és kezelés a Windows-alapú HDInsight Apache Storm-topológiák
 
-A Storm irányítópultjának lehetővé teszi egyszerű üzembe helyezését, és futtassa az Apache Storm-topológiák a HDInsight-fürthöz a webböngésző használatával. Az irányítópult használatával figyelheti és kezelheti a futó topológiákat. Ha a Visual Studio használata esetén a HDInsight Tools for Visual Studio hasonló funkciók a Visual Studióban adjon meg.
+A [Apache Storm](http://storm.apache.org/) irányítópult lehetővé teszi egyszerű üzembe helyezése és futtatása a HDInsight az Apache Storm-topológiák a fürt a webböngésző használatával. Az irányítópult használatával figyelheti és kezelheti a futó topológiákat. Ha a Visual Studio használata esetén a HDInsight Tools for Visual Studio hasonló funkciók a Visual Studióban adjon meg.
 
 A Storm irányítópultjának és a Storm-szolgáltatások, a HDInsight Tools támaszkodik a Storm REST API, amely segítségével létrehozhatja a saját figyelési és felügyeleti megoldásokat.
 
@@ -88,7 +88,7 @@ A hivatkozás kiválasztása a **topológia összegzése** szakasz jelenít meg 
 
   * **Újraegyensúlyozására**: Beállítja a topológia párhuzamosságát. A fürtben található csomópontok számának megváltoztatását követően újra ki kell egyensúlyozni a futó topológiákat. Ez lehetővé teszi a topológia párhuzamosságának kompenzálják a fürtben található csomópontok száma nagyobb vagy csökkent.
 
-      További információ: [Understanding the parallelism of a Storm topology](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) (A Storm-topológia párhuzamosságának ismertetése).
+      További információkért lásd: [ismertetése az Apache Storm-topológia párhuzamosságát](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
 
   * **Kill**: leállítja a Storm-topológia időtúllépést követően.
 
@@ -118,7 +118,7 @@ Egy a spout kiválasztása a **Spoutok** vagy **boltok** szakaszok megjeleníti 
 
 ## <a name="hdinsight-tools-for-visual-studio"></a>HDInsight Tools for Visual Studio
 
-A HDInsight Tools használható a C# vagy hibrid topológiák a Storm fürthöz való elküldéséhez. Az alábbi lépéseket egy minta alkalmazást kell használni. HDInsight-eszközök segítségével a saját topológiák létrehozásával kapcsolatos információkért lásd: [C#-topológiák fejlesztése a HDInsight Tools for Visual Studio használatával](apache-storm-develop-csharp-visual-studio-topology.md).
+A [HDInsight eszközök](https://azure.microsoft.com/resources/videos/hdinsight-tools-for-visual-studio/) elküldéséhez használható C# vagy hibrid topológiák a Storm-fürt. Az alábbi lépéseket egy minta alkalmazást kell használni. HDInsight-eszközök segítségével a saját topológiák létrehozásával kapcsolatos információkért lásd: [C#-topológiák fejlesztése a HDInsight Tools for Visual Studio használatával](apache-storm-develop-csharp-visual-studio-topology.md).
 
 Az alábbi lépések segítségével üzembe helyezhet egy mintát, a Storm on HDInsight-fürtöt, majd tekintheti meg és kezelheti a topológia.
 
@@ -159,7 +159,7 @@ Az alábbi lépések segítségével üzembe helyezhet egy mintát, a Storm on H
 
 A Storm felhasználói felülete a REST API-t épül, így hasonló felügyeleti és figyelési funkcióit, a REST API használatával is elvégezheti. A REST API használatával hozhat létre egyéni kezeléséhez és monitorozásához Storm-topológiák.
 
-További információkért lásd: [Storm UI REST API](https://github.com/apache/storm/blob/0.9.3-branch/STORM-UI-REST-API.md). Az alábbi adatokat csak a REST API-val, az Apache Storm on HDInsight.
+További információkért lásd: [Apache Storm UI REST API-val](https://github.com/apache/storm/blob/0.9.3-branch/STORM-UI-REST-API.md). Az alábbi adatokat csak a REST API-val, az Apache Storm on HDInsight.
 
 ### <a name="base-uri"></a>Alap URI-t
 
@@ -174,7 +174,7 @@ A REST API-kérésnek kell használnia **alapszintű hitelesítés**, így a HDI
 
 ### <a name="return-values"></a>Visszatérési értékek
 
-Lehet, hogy a REST API-tól visszaadott információk csak a fürt vagy a virtuális gépeket, a fürt azonos Azure virtuális hálózaton belül használható. Ha például a teljesen minősített tartománynevét (FQDN) adja vissza a rendszer a Zookeeper-kiszolgálók nem lehet elérhető az internetről.
+Lehet, hogy a REST API-tól visszaadott információk csak a fürt vagy a virtuális gépeket, a fürt azonos Azure virtuális hálózaton belül használható. Ha például a teljesen minősített tartománynevét (FQDN) adja vissza [Apache ZooKeeper](https://zookeeper.apache.org/) vannak a kiszolgálók nem lehet elérhető az internetről.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -182,9 +182,9 @@ Most, hogy bemutattuk, hogyan helyezhet üzembe és topológiák figyelheti a St
 
 * [A HDInsight Tools for Visual Studio használatával C# topológiák fejlesztése](apache-storm-develop-csharp-visual-studio-topology.md)
 
-* [Maven használata Java-alapú topológiák fejlesztése](apache-storm-develop-java-topology.md)
+* [Az Apache Maven segítségével, a Java-alapú topológiák fejlesztése](apache-storm-develop-java-topology.md)
 
-További példa topológiák listáját lásd: [a HDInsight alatt futó Storm példatopológiái](apache-storm-example-topology.md).
+További példa topológiák listáját lásd: [a HDInsight Apache Storm példatopológiái](apache-storm-example-topology.md).
 
 [hdinsight-dashboard]: ./media/apache-storm-deploy-monitor-topology/dashboard-link.png
 [storm-dashboard-submit]: ./media/apache-storm-deploy-monitor-topology/submit.png

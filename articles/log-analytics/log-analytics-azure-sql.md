@@ -2,25 +2,22 @@
 title: Az Azure SQL Analytics megoldás a Log Analytics Rendszereben |} A Microsoft Docs
 description: Az Azure SQL Analytics megoldás segítségével az Azure SQL-adatbázisok kezelése
 services: log-analytics
-documentationcenter: ''
-author: danimir
-manager: carmonm
-ms.reviewer: carlrab
-ms.assetid: b2712749-1ded-40c4-b211-abc51cc65171
 ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: performance
+ms.custom: ''
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/03/2018
+author: danimir
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 11/26/2018
 ms.author: v-daljep
-ms.component: ''
-ms.openlocfilehash: 84ccd411fd93004a4d3de50e8f4e844f77635421
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 57faa347b2733ebf65757b02ee9395f94776cf10
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284353"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635390"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Az Azure SQL Database megfigyelése az Azure SQL Analytics (előzetes verzió)
 
@@ -32,21 +29,20 @@ A megoldással gyűjtött metrikák használatával létrehozhat egyéni figyel�
 
 A gyakorlati áttekintése az Azure SQL Analytics megoldás használatával és a jellemző használati forgatókönyvei: a beágyazott videót:
 
-[!VIDEO https://youtu.be/GK2Hl21aZqQ]
+>[!VIDEO https://youtu.be/j-NDkN4GIzg]
+>
 
 ## <a name="connected-sources"></a>Összekapcsolt források
 
-Az Azure SQL Analytics egy felhőben csak a megoldást támogató adatfolyamként diagnostics telemetriai adatainak az Azure SQL Database felügyelt példány adatbázisok és rugalmas készletek figyelése.
-
-A megoldás nem használja az ügynökök a Log Analytics szolgáltatáshoz való csatlakozáshoz, mivel a megoldás nem támogatja a helyszíni SQL Server tárolt vagy a virtuális gépek figyelése, az alábbi tábla a kompatibilitási.
+Az Azure SQL Analytics csak egy felhőalapú megoldást támogató adatfolyamként diagnostics telemetriai adatainak az Azure SQL Database-adatbázisok figyelése: egyetlen, összevont és felügyelt példányok adatbázisai. A megoldás nem használja az ügynökök a Log Analytics szolgáltatáshoz való csatlakozáshoz, mivel a megoldás nem támogatja a helyszíni SQL Server tárolt vagy a virtuális gépek figyelése, az alábbi tábla a kompatibilitási.
 
 | Összekapcsolt forrás | Támogatott | Leírás |
 | --- | --- | --- |
-| **[Az Azure Diagnostics](log-analytics-azure-storage.md)** | **Igen** | Az Azure metrika- és naplózási adatok közvetlenül az Azure Log Analytics érkeznek. |
+| [Azure Diagnostics](log-analytics-azure-storage.md) | **Igen** | Az Azure metrika- és naplózási adatok közvetlenül az Azure Log Analytics érkeznek. |
 | [Azure Storage-fiók](log-analytics-azure-storage.md) | Nem | A log Analytics egy storage-fiókból az adatok nem olvashatók. |
-| [Windows-ügynökök](log-analytics-agent-windows.md) | Nem | A megoldás a közvetlen Windows-ügynökök nem használja. |
+| [Windows-ügynökök](../azure-monitor/platform/agent-windows.md) | Nem | A megoldás a közvetlen Windows-ügynökök nem használja. |
 | [Linux-ügynökök](log-analytics-quick-collect-linux-computer.md) | Nem | A megoldás a közvetlen Linux-ügynökök nem használja. |
-| [Az SCOM felügyeleti csoport](log-analytics-om-agents.md) | Nem | A megoldás nem használja az SCOM-ügynöktől a Log Analyticshez való közvetlen kapcsolatot. |
+| [System Center Operations Manager felügyeleti csoport](log-analytics-om-agents.md) | Nem | Közvetlen kapcsolat legyen az Operations Manager-ügynök a Log Analytics szolgáltatáshoz a megoldás nem használja. |
 
 ## <a name="configuration"></a>Konfiguráció
 
@@ -64,9 +60,9 @@ Hajtsa végre az alábbi lépéseket az Azure SQL Analytics megoldás hozzáadá
 
 ### <a name="configure-azure-sql-databases-elastic-pools-and-managed-instances-to-stream-diagnostics-telemetry"></a>Az Azure SQL Database, a rugalmas készletek és a felügyelt példányok stream diagnostics telemetriai adatainak konfigurálása
 
-Miután létrehozta az Azure SQL Analytics megoldás a munkaterületen, annak érdekében, hogy az Azure SQL Database, a felügyelt példányok adatbázisai és a rugalmas készletek, adatbázisok teljesítményének figyelése kell **konfigurálja** ezek közül figyelő az adatfolyam a diagnostics telemetriai adatainak a megoldáshoz történő kívánt erőforrásokat. Ezen az oldalon hajtsa végre a részletes útmutatást:
+Miután létrehozta az Azure SQL Analytics megoldás a munkaterületen található, meg kell **konfigurálja** közvetítése a diagnostics telemetriai adatainak a megoldás a figyelni kívánt erőforrásokat. Az alábbi részletes útmutatás:
 
-- Az Azure-diagnosztika engedélyezése az Azure SQL Database, a felügyelt példányok adatbázisai és a rugalmas készletek az [diagnostics telemetriai adatainak az Azure SQL Analytics adatfolyam](../sql-database/sql-database-metrics-diag-logging.md).
+- Az Azure-diagnosztika engedélyezése az Azure SQL Database [diagnostics telemetriai adatainak az Azure SQL Analytics adatfolyam](../sql-database/sql-database-metrics-diag-logging.md).
 
 A fenti lapot is útmutatás több Azure-előfizetéssel egyetlen Azure SQL Analytics-munkaterületről monitorozásra tekinthesse egyetlen ablaktábla támogatásának engedélyezése.
 
@@ -84,11 +80,11 @@ Az Azure SQL Database-adatbázisok és rugalmas készletek Azure SQL Analytics f
 
 Az irányítópult programban különböző szempontok szerint keresztül figyelt összes adatbázis áttekintését tartalmazza. A programban különböző szempontok szerint működjön engedélyeznie kell megfelelő metrikákat vagy naplókat az SQL-erőforrások Azure Log Analytics-munkaterületre is streamelhetők.
 
-Vegye figyelembe, hogy néhány metrikákat vagy naplókat az Azure Log Analytics nem streameli, ha a megoldás a csempék nem tölti fel figyelési információkat.
+Vegye figyelembe, hogy néhány metrikákat vagy naplókat az Azure Log Analytics nem streameli, ha a csempéket a megoldásban nincsenek feltöltve adattal figyelési információkat.
 
 ### <a name="azure-sql-database-and-elastic-pool-view"></a>Az Azure SQL Database és a rugalmas készlet megtekintése
 
-Az Azure SQL Analytics csempére az Azure SQL Database, és a rugalmas készletek van kijelölve, a figyelési irányítópult látható.
+Miután az Azure SQL Analytics csempére az adatbázishoz ki van jelölve, a figyelési irányítópult látható.
 
 ![Az Azure SQL Analytics áttekintése](./media/log-analytics-azure-sql/azure-sql-sol-overview.png)
 
@@ -100,7 +96,7 @@ Ebben a nézetben minden egyes perspektívát nyújt összefoglaló előfizetés
 
 ### <a name="managed-instance-and-databases-in-managed-instance-view"></a>A felügyelt példánynak és a felügyelt példány adatbázisai megtekintése
 
-Felügyelt példány az Azure SQL Analytics csempére, és a felügyelt példány adatbázisok be van jelölve, a figyelési irányítópult látható.
+Ha az adatbázisok az Azure SQL Analytics csempére van kijelölve, a figyelési irányítópult látható.
 
 ![Az Azure SQL Analytics áttekintése](./media/log-analytics-azure-sql/azure-sql-sol-overview-mi.png)
 
@@ -116,7 +112,7 @@ Az alábbi táblázat ismerteti a perspektívák az irányítópulton, így az A
 
 | Perspektíva | Leírás | Támogatja az SQL Database és a rugalmas készletek | Felügyelt példány támogatása |
 | --- | ------- | ----- | ----- |
-| Erőforrás típusa szerint | Adott összes, a figyelt erőforrások szempontjából. | Igen | Igen | 
+| Erőforrás típusa szerint | Adott összes, a figyelt erőforrások szempontjából. | Igen | Igen |
 | Insights | Hierarchikus Lehatolás biztosít intelligens elemzésekké teljesítményéről. | Igen | Igen |
 | Hibák | Hierarchikus Lehatolás biztosít, és ismételje meg az adatbázisok SQL hibákká. | Igen | Igen |
 | Időtúllépések | Hierarchikus Lehatolás biztosít az SQL-időtúllépések, az adatbázisok történt. | Igen | Nem |
@@ -127,7 +123,7 @@ Az alábbi táblázat ismerteti a perspektívák az irányítópulton, így az A
 
 ### <a name="intelligent-insights-report"></a>Intelligent Insights jelentés
 
-Az Azure SQL Database [Intelligent Insights](../sql-database/sql-database-intelligent-insights.md) lehetővé teszi, hogy tudja, mi történik az Azure SQL Database és a felügyelt példány adatbázisok teljesítményét. Gyűjtött összes Intelligent Insights is formájában jelenik meg, és az elemzések szempontjából keresztül érhetők el.
+Az Azure SQL Database [Intelligent Insights](../sql-database/sql-database-intelligent-insights.md) lehetővé teszi, hogy tudja, mi történik az összes Azure SQL-adatbázisok teljesítményét. Gyűjtött összes Intelligent Insights is formájában jelenik meg, és az elemzések szempontjából keresztül érhetők el.
 
 ![Azure SQL Analytics Insights](./media/log-analytics-azure-sql/azure-sql-sol-insights.png)
 
@@ -147,11 +143,11 @@ A lekérdezés időtartama és a lekérdezés vár perspektívák összehasonlí
 
 ## <a name="permissions"></a>Engedélyek
 
-Az Azure SQL Analytics használatához felhasználók minimális kell biztosítani az Azure-ban az Olvasó szerepkörhöz, lesz. Ez a szerepkör azonban nem engedélyezése a felhasználóknak a lekérdezés szövegének megtekintéséhez, vagy bármilyen automatikus hangolási műveletek végrehajtása. Az Azure-ban, amely lehetővé teszi a megoldás segítségével a lehető legnagyobb mértékben több szabad szerepköröket használják, tulajdonos, közreműködő, SQL-Adatbázisok Közreműködője vagy SQL Server Közreműködője. Érdemes azt is érdemes figyelembe venni, egyéni szerepkörök létrehozása a portálon csak az Azure SQL Analytics használatához szükséges konkrét engedélyeket, és nincs hozzáférése az egyéb erőforrások kezelése.
+Az Azure SQL Analytics használatához a felhasználóknak meg kell az Olvasó szerepkörhöz az Azure-ban, egy minimális engedéllyel kell rendelkezni. Ez a szerepkör azonban nem engedélyezése a felhasználóknak a lekérdezés szövegének megtekintéséhez, vagy bármely automatikus hangolási műveletek végrehajtása. Megengedőbb szerepkörök az Azure-ban, amelyek lehetővé teszik a megoldás segítségével a lehető legnagyobb mértékben a tulajdonos, közreműködő, SQL-Adatbázisok Közreműködője vagy SQL Server Közreműködője. Érdemes azt is érdemes figyelembe venni, egyéni szerepkörök létrehozása a portálon csak az Azure SQL Analytics használatához szükséges konkrét engedélyeket, és nincs hozzáférése az egyéb erőforrások kezelése.
 
 ### <a name="creating-a-custom-role-in-portal"></a>Egyéni szerepkörök létrehozása a portálon
 
-FELISMERVE, hogy az egyes szervezetek kényszerítése szigorú engedély szabályozza az Azure-ban, megtalálja a következő PowerShell-parancsfájl engedélyezése "Az SQL Analytics Alkalmazásfigyelési operátor" az Azure Portalon a minimális olvasási és írási engedélyekkel egyéni szerepkör létrehozása a lehető legnagyobb mértékben az Azure SQL Analytics használatához szükséges.
+FELISMERVE, hogy az egyes szervezetek kényszerítése szigorú engedély szabályozza az Azure-ban, keresse meg a következő PowerShell-parancsfájl engedélyezése "Az SQL Analytics Alkalmazásfigyelési operátor" az Azure Portalon a minimális olvasási és írási engedély szükséges egy egyéni szerepkör létrehozása a lehető legnagyobb mértékben az Azure SQL Analytics használatával.
 
 Cserélje le a "{SubscriptionId}" az az alábbi szkriptet az Azure-előfizetése Azonosítóját, és hajtsa végre a parancsfájl van bejelentkezve: egy tulajdonosi vagy közreműködői szerepkörhöz az Azure-ban.
 
@@ -184,21 +180,21 @@ Az új szerepkör létrehozása után ez a szerepkör hozzárendelése minden fe
 
 ## <a name="analyze-data-and-create-alerts"></a>Adatok elemzése és riasztások létrehozása
 
-Adatok elemzése az Azure SQL Analytics alapján [Log Analytics nyelvi](./query-language/get-started-queries.md) az egyéni lekérdezése és jelentéskészítés. Az elérhető adatokat gyűjtött egyéni lekérdezéséhez az adatbázis-erőforrás leírását megtalálja [metrikák és naplók elérhető](../sql-database/sql-database-metrics-diag-logging.md#metrics-and-logs-available).
+Adatok elemzése az Azure SQL Analytics alapján [Log Analytics nyelvi](./query-language/get-started-queries.md) az egyéni lekérdezése és jelentéskészítés. Egyéni lekérdezéséhez az adatbázis-erőforrás keresése leírását az elérhető adatokat gyűjtött [metrikák és naplók elérhető](../sql-database/sql-database-metrics-diag-logging.md#metrics-and-logs-available).
 
-A megoldás automatikus riasztások teljesül egy feltétel alapján riasztást Log Analytics-lekérdezés írása alapul. Alább néhány példa a Log Analytics-lekérdezések melyik riasztás esetén lehet a telepítő a megoldásban található.
+A megoldás automatikus riasztások teljesül egy feltétel alapján riasztást Log Analytics-lekérdezés írása alapul. Alább néhány példa a Log Analytics-lekérdezések található, mely riasztás esetén beállíthatja a megoldásban.
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>Riasztások létrehozása az Azure SQL Database
 
 Könnyen [riasztásokat hozhat létre](../monitoring-and-diagnostics/alert-metric.md) az Azure SQL Database-erőforrásokat érkező adatokat. Íme néhány hasznos [naplóbeli keresés](log-analytics-queries.md) lekérdezéseket, amelyek egy riasztás használhatja:
 
-*Az Azure SQL Database magas CPU*
+#### <a name="high-cpu-on-azure-sql-database"></a>Az Azure SQL Database magas CPU
 
 ```
-AzureMetrics 
+AzureMetrics
 | where ResourceProvider=="MICROSOFT.SQL"
 | where ResourceId contains "/DATABASES/"
-| where MetricName=="cpu_percent" 
+| where MetricName=="cpu_percent"
 | summarize AggregatedValue = max(Maximum) by bin(TimeGenerated, 5m)
 | render timechart
 ```
@@ -207,13 +203,13 @@ AzureMetrics
 > - Ez a riasztás létrehozása előtti követelmény, a figyelt adatbázisok stream diagnosztikai metrikák ("Összes metrikák" lehetőség) a megoldáshoz.
 > - Cserélje le a MetricName érték cpu_percent dtu_consumption_percent inkább juthat magas DTU-eredményeket.
 
-*Az Azure SQL Database rugalmas készletei magas CPU*
+#### <a name="high-cpu-on-azure-sql-database-elastic-pools"></a>Az Azure SQL Database rugalmas készletei magas CPU
 
 ```
-AzureMetrics 
+AzureMetrics
 | where ResourceProvider=="MICROSOFT.SQL"
 | where ResourceId contains "/ELASTICPOOLS/"
-| where MetricName=="cpu_percent" 
+| where MetricName=="cpu_percent"
 | summarize AggregatedValue = max(Maximum) by bin(TimeGenerated, 5m)
 | render timechart
 ```
@@ -222,7 +218,7 @@ AzureMetrics
 > - Ez a riasztás létrehozása előtti követelmény, a figyelt adatbázisok stream diagnosztikai metrikák ("Összes metrikák" lehetőség) a megoldáshoz.
 > - Cserélje le a MetricName érték cpu_percent dtu_consumption_percent inkább juthat magas DTU-eredményeket.
 
-*Az Azure SQL Database storage átlag felett 95 %-ot az elmúlt 1 óra*
+#### <a name="azure-sql-database-storage-in-average-above-95-in-the-last-1-hr"></a>Az Azure SQL Database storage átlag felett 95 %-ot az elmúlt 1 óra
 
 ```
 let time_range = 1h;
@@ -240,13 +236,13 @@ AzureMetrics
 > - Ez a lekérdezés szükséges egy riasztási szabályt úgy, hogy eltávolítja a lekérdezésből, így jelölve az, hogy létezik-e a feltétel az egyes adatbázisokon Ha léteznek az eredmények (> 0 eredmény) ki a riasztás aktiválódik. A kimenet az adatbázis-erőforrások, amely meghaladja a meghatározott time_range belül a storage_threshold listája.
 > - A kimenet az adatbázis-erőforrások, amely meghaladja a meghatározott time_range belül a storage_threshold listája.
 
-*Az Intelligent insights riasztás*
+#### <a name="alert-on-intelligent-insights"></a>Az Intelligent insights riasztás
 
 ```
 let alert_run_interval = 1h;
 let insights_string = "hitting its CPU limits";
 AzureDiagnostics
-| where Category == "SQLInsights" and status_s == "Active" 
+| where Category == "SQLInsights" and status_s == "Active"
 | where TimeGenerated > ago(alert_run_interval)
 | where rootCauseAnalysis_s contains insights_string
 | distinct ResourceId
@@ -260,33 +256,48 @@ AzureDiagnostics
 
 ```
 AzureDiagnostics
-| where Category == "SQLInsights" and status_s == "Active" 
+| where Category == "SQLInsights" and status_s == "Active"
 | distinct rootCauseAnalysis_s
 ```
 
 ### <a name="creating-alerts-for-managed-instance"></a>Riasztások létrehozása a felügyelt példány
 
-* A felügyelt példány tárolási 90 % felett van
+#### <a name="managed-instance-storage-is-above-90"></a>Felügyelt példány tárolási 90 % felett van
 
 ```
-let storage_percentage_treshold = 90;
+let storage_percentage_threshold = 90;
 AzureDiagnostics
 | where Category =="ResourceUsageStats"
 | summarize (TimeGenerated, calculated_storage_percentage) = arg_max(TimeGenerated, todouble(storage_space_used_mb_s) *100 / todouble (reserved_storage_mb_s))
    by ResourceId
-| where calculated_storage_percentage > storage_percentage_treshold
+| where calculated_storage_percentage > storage_percentage_threshold
 ```
 
 > [!NOTE]
 > - Üzem előtti beállítása után ez a riasztás azért, hogy a figyelt felügyelt példány rendelkezik a streamelési ResourceUsageStats napló engedélyezve van a megoldáshoz.
 > - Ezt a lekérdezést úgy, hogy a rendszer értesíti ki riasztást, ha léteznek eredmények (> 0 eredmény) a lekérdezésből, így jelölve az, hogy létezik-e a feltétel a felügyelt példányon a riasztási szabály szükséges. A kimenet a tárhelyhasználat százalékos aránya a felügyelt példányon.
 
+#### <a name="managed-instance-cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>Felügyelt példány átlagos processzorhasználatot van 95 % fölé az elmúlt 1 óra
+
+```
+let cpu_percentage_threshold = 95;
+let time_threshold = ago(1h);
+AzureDiagnostics
+| where Category == "ResourceUsageStats" and TimeGenerated > time_threshold
+| summarize avg_cpu = max(todouble(avg_cpu_percent_s)) by ResourceId
+| where avg_cpu > cpu_percentage_threshold
+```
+
+> [!NOTE]
+> - Üzem előtti beállítása után ez a riasztás azért, hogy a figyelt felügyelt példány rendelkezik a streamelési ResourceUsageStats napló engedélyezve van a megoldáshoz.
+> - Ezt a lekérdezést úgy, hogy a rendszer értesíti ki riasztást, ha léteznek eredmények (> 0 eredmény) a lekérdezésből, így jelölve az, hogy létezik-e a feltétel a felügyelt példányon a riasztási szabály szükséges. A kimenet a átlagos kihasználtság százalékos processzorhasználatot meghatározott időszakban a felügyelt példányon.
+
 ### <a name="pricing"></a>Díjszabás
 
-Bár a megoldás használata ingyenes, vonatkozik-e az diagnostics telemetriai adatainak fent az adatbetöltés lefoglalva minden hónapban ingyenes egységek felhasználását, lásd: [Log Analytics díjszabása](https://azure.microsoft.com/en-us/pricing/details/monitor). Az adatbetöltés foglalt ingyenes egységek ingyenes figyelés engedélyezése több adatbázis minden hónapban. Vegye figyelembe, hogy a nagyobb számítási feladatok több aktív adatbázisok inaktív adatbázisokat és több adatot képes feldolgozni. Az adathasználat Adatbetöltési a megoldás az OMS-munkaterület kiválasztásával az Azure SQL Analytics, a navigációs menü, és kiválasztja a használat és becsült költségek egyszerűen figyelheti.
+Bár a megoldás használata ingyenes, vonatkozik-e az diagnostics telemetriai adatainak fent az adatbetöltés lefoglalva minden hónapban ingyenes egységek felhasználását, lásd: [Log Analytics díjszabása](https://azure.microsoft.com/en-us/pricing/details/monitor). Az adatbetöltés foglalt ingyenes egységek ingyenes figyelés engedélyezése több adatbázis minden hónapban. Vegye figyelembe, hogy a nagyobb számítási feladatok több aktív adatbázisok betöltési inaktív adatbázisokat és további adatokat. Az adathasználat Adatbetöltési a megoldás az OMS-munkaterület kiválasztásával az Azure SQL Analytics, a navigációs menü, és kiválasztja a használat és becsült költségek egyszerűen figyelheti.
 
 ## <a name="next-steps"></a>További lépések
 
 - Használat [Naplókeresések](log-analytics-queries.md) a Log Analytics az Azure SQL részletes adatainak megtekintéséhez.
-- [Saját irányítópult létrehozásával](log-analytics-dashboards.md) Azure SQL-adatainak megjelenítése.
+- [Saját irányítópult létrehozásával](../azure-monitor/platform/dashboards.md) Azure SQL-adatainak megjelenítése.
 - [Riasztások létrehozása](../monitoring-and-diagnostics/monitoring-overview-alerts.md) amikor adott Azure SQL-események történnek.

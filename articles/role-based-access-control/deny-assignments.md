@@ -11,20 +11,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 8ef3a2ec44c5eff80d3a50a6c56805667e164ba8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fa1a979c01999bd79c45d24e4c7771edaf346dd8
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980168"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632415"
 ---
-# <a name="understand-deny-assignments"></a>Megismerheti hozzárendelés elutasítása
+# <a name="understand-deny-assignments"></a>A megtagadási hozzárendelések ismertetése
 
-Szerepkör-hozzárendelés, hasonlóan egy *hozzárendelés megtagadása* egy sor kötések megtagadási műveletek egy felhasználó, csoport vagy szolgáltatásnév céljából megtagadja a hozzáférést egy adott hatókörben. Egy megtagadási hozzárendelés is rendszerbiztonsági tagok kizárása, és megakadályozza az öröklési gyermek hatókörhöz, amely eltér attól a szerepkör-hozzárendelések. Jelenleg a hozzárendelés elutasítása **csak olvasható** és lze nastavit pouze az Azure-ban. Ez a cikk azt ismerteti, hogyan megtagadása a hozzárendelések vannak definiálva.
+Szerepkör-hozzárendelés, hasonlóan egy *hozzárendelés megtagadása* rendeli egy sor megtagadási műveletek egy felhasználó, csoport vagy szolgáltatásnév céljából megtagadja a hozzáférést egy adott hatókörben. Megtagadási hozzárendelések letiltása a felhasználók számára az adott műveletek végrehajtására, még akkor is, ha a szerepkör-hozzárendelés hozzáférést biztosít számukra. Néhány erőforrás-szolgáltatók az Azure-ban most már tartalmazza a hozzárendelések tiltása. Jelenleg a megtagadás-hozzárendelések **csak olvashatók**, és csak az Azure állíthatja be azokat.
+
+Bizonyos értelemben a hozzárendelések eltérnek szerepkör-hozzárendelések tiltása. Megtagadási hozzárendelések rendszerbiztonsági tagok kizárása, és megakadályozza az öröklési gyermek hatókörhöz. Megtagadási hozzárendelések is alkalmazni kell [hagyományos előfizetés-adminisztrátor](rbac-and-directory-admin-roles.md) hozzárendelések.
+
+Ez a cikk azt ismerteti, hogyan megtagadása a hozzárendelések vannak definiálva.
 
 ## <a name="deny-assignment-properties"></a>Hozzárendelés tulajdonságait megtagadása
 
@@ -33,26 +37,26 @@ Szerepkör-hozzárendelés, hasonlóan egy *hozzárendelés megtagadása* egy so
 > [!div class="mx-tableFixed"]
 > | Tulajdonság | Szükséges | Típus | Leírás |
 > | --- | --- | --- | --- |
-> | `DenyAssignmentName` | Igen | Sztring | A megtagadási hozzárendelés megjelenített neve. Egy adott hatókör egyedi névvel kell rendelkeznie. |
-> | `Description` | Nem | Sztring | A megtagadási hozzárendelés leírása. |
+> | `DenyAssignmentName` | Igen | Karakterlánc | A megtagadási hozzárendelés megjelenített neve. Egy adott hatókör egyedi névvel kell rendelkeznie. |
+> | `Description` | Nem | Karakterlánc | A megtagadási hozzárendelés leírása. |
 > | `Permissions.Actions` | Legalább egy műveletet, vagy egy DataActions | String] | Adja meg a felügyeleti műveleteket, amelyhez a Megtagadás hozzárendelés letiltja a hozzáférést, amelyek tömbje. |
 > | `Permissions.NotActions` | Nem | String] | Adja meg a Megtagadás hozzárendelés kizárása a felügyeleti műveleteket, amelyek tömbje. |
 > | `Permissions.DataActions` | Legalább egy műveletet, vagy egy DataActions | String] | Adja meg, mely adatműveletekre, amelyhez a Megtagadás hozzárendelés letiltja a hozzáférést, amelyek tömbje. |
 > | `Permissions.NotDataActions` | Nem | String] | Adja meg, mely adatműveletekre kell kizárása a Megtagadás hozzárendelésekor karakterláncok tömbje. |
-> | `Scope` | Nem | Sztring | Egy karakterlánc, amely meghatározza azt a hatókört, amely a Megtagadás hozzárendelés vonatkozik. |
+> | `Scope` | Nem | Karakterlánc | Egy karakterlánc, amely meghatározza azt a hatókört, amely a Megtagadás hozzárendelés vonatkozik. |
 > | `DoNotApplyToChildScopes` | Nem | Logikai | Itt adhatja meg, hogy érvényes-e a Megtagadás hozzárendelés gyermek hatókörhöz. Alapértelmezett értéke FALSE (hamis). |
-> | `Principals[i].Id` | Igen | String] | Az Azure AD egyszerű objektumazonosítók (felhasználó, csoport vagy szolgáltatásnév), amelyekre vonatkozik a Megtagadás hozzárendelés tömbje. Állítsa egy üres GUID azonosító `00000000-0000-0000-0000-000000000000` , amelyek mindenki számára. |
-> | `Principals[i].Type` | Nem | String] | Rendszerbiztonsági tagok [i] .id által képviselt objektumtípusok tömbje. Állítsa be `Everyone` , amelyek mindenki számára. |
-> | `ExcludePrincipals[i].Id` | Nem | String] | Az Azure AD egyszerű objektumazonosítók (felhasználó, csoport vagy szolgáltatásnév), amelyre nem vonatkozik a Megtagadás hozzárendelés tömbje. |
+> | `Principals[i].Id` | Igen | String] | Az Azure AD egyszerű objektumazonosítók (felhasználó, csoport, szolgáltatásnevet vagy felügyelt identitás), amelyekre vonatkozik a Megtagadás hozzárendelés tömbje. Állítsa egy üres GUID azonosító `00000000-0000-0000-0000-000000000000` képviselő összes rendszerbiztonsági tag. |
+> | `Principals[i].Type` | Nem | String] | Rendszerbiztonsági tagok [i] .id által képviselt objektumtípusok tömbje. Állítsa be `SystemDefined` képviselő összes rendszerbiztonsági tag. |
+> | `ExcludePrincipals[i].Id` | Nem | String] | Az Azure AD egyszerű objektumazonosítók (felhasználó, csoport, szolgáltatásnevet vagy felügyelt identitás), amelyre nem vonatkozik a Megtagadás hozzárendelés tömbje. |
 > | `ExcludePrincipals[i].Type` | Nem | String] | Objektumtípusok ExcludePrincipals [i] .id által képviselt tömbje. |
 > | `IsSystemProtected` | Nem | Logikai | Itt adhatja meg, hogy ez megtagadása hozzárendelés hozta létre az Azure és a nem szerkeszthető vagy törölhető. Jelenleg az összes elutasítása hozzárendelések a védett rendszer. |
 
-## <a name="everyone-principal"></a>Mindenki rendszerbiztonsági tag
+## <a name="system-defined-principal"></a>A rendszer által definiált egyszerű
 
-A támogatási megtagadása hozzárendelések, a Mindenki egyszerű fejlődéséből. A Mindenki egyszerű jelöli az összes olyan felhasználók, csoportok és az egyszerű szolgáltatások Azure AD-címtárral. Ha az egyszerű szolgáltatásnév azonosítója nem nulla GUID `00000000-0000-0000-0000-000000000000` és a résztvevő típusa `Everyone`, az egyszerű mindenki jelöli. A Mindenki egyszerű kombinálva `ExcludePrincipals` mindenki kivételével az egyes felhasználók. A következő korlátozások vonatkoznak a Mindenki egyszerű:
+A támogatási hozzárendelések megtagadása a **rendszer általi egyszerű** fejlődéséből. Ez az egyszerű felhasználók, csoportok, a szolgáltatásnevek és az Azure AD-címtár felügyelt identitások jelöli. Ha az egyszerű szolgáltatásnév azonosítója nem nulla GUID `00000000-0000-0000-0000-000000000000` és egyszerű típus `SystemDefined`, az egyszerű jelöli az összes rendszerbiztonsági tag. `SystemDefined` kombinálva `ExcludePrincipals` megtagadni az egyes felhasználók kivételével az összes rendszerbiztonsági tagok. `SystemDefined` a következő korlátozások vonatkoznak:
 
 - Csak a felhasznált `Principals` és nem használható `ExcludePrincipals`.
-- `Principals[i].Type` meg kell `Everyone`.
+- `Principals[i].Type` meg kell `SystemDefined`.
 
 ## <a name="next-steps"></a>További lépések
 

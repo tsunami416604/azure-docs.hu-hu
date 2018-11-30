@@ -1,22 +1,22 @@
 ---
 title: Riasztások létrehozása az Azure monitorban dinamikus küszöbértékekkel
 description: Riasztások létrehozása a machine learning-alapú dinamikus küszöbértékekkel
-author: antonfrMSFT
+author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/27/2018
-ms.author: mbullwin
-ms.reviewer: antonfr
+ms.date: 11/29/2018
+ms.author: Yaniv.Lavi
+ms.reviewer: mbullwin
 ms.component: alerts
-ms.openlocfilehash: 1b47e3804d8be36e3c6c8c570fec06f542e8dbf2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: af9f85014ea16dd266c56a71f13b4dce2adccc9a
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233966"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619707"
 ---
-# <a name="alerts-with-dynamic-thresholds-in-azure-monitor-limited-public-preview"></a>Riasztások dinamikus küszöbértékekkel az Azure monitorban (korlátozott nyilvános előzetes verzió)
+# <a name="alerts-with-dynamic-thresholds-in-azure-monitor-limited-private-preview"></a>Riasztások dinamikus küszöbértékekkel az Azure monitorban (korlátozott privát előzetes verzió)
 
 Riasztások dinamikus küszöbértékekkel újdonságként jelentek meg az Azure metrika riasztások az Azure monitorban, amely további metrikák általi korábbi viselkedés automatikusan kiszámítja az alapkonfigurációkat, és felhasználhatja őket a riasztástípusok küszöbértékét, speciális Machine Learning (gépi tanulás) lehetőségeit kihasználva.
 

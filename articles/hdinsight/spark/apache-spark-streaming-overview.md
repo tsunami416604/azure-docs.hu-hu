@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 229c3eff0db4f3689f4e2e3fd457410ecccb8ba7
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 86d64ef0e9abab4368569c2f7c5ccd633660085c
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041522"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583213"
 ---
-# <a name="overview-of-spark-streaming"></a>A Spark Stream áttekintése
+# <a name="overview-of-apache-spark-streaming"></a>Az Apache Spark Stream áttekintése
 
-Spark Streaming nyújt adatfolyam-feldolgozás HDInsight Spark fürtök garantálja, hogy bármely bemeneti esemény feldolgozása pontosan egyszer, még akkor is, ha a csomóponton hiba történik. A Spark Stream egy hosszan futó feladatot, amely megkapja a bemeneti adatok számos forrásból, például az Azure Event Hubs, az Azure IoT Hub, a Kafka, Flume, Twitter, ZeroMQ, nyers TCP-szoftvercsatornák, vagy a figyelés HDFS feladatszinten csatlakoztathatók. Ellentétben a kizárólag eseményvezérelt folyamat egy Spark Stream kötegeli az bemeneti adatok az idő a windows, mint 2 másodperc szelet, és ezután alakítja át az egyes batch-leképezéssel adatok, csökkentheti, csatlakozzon, és bontsa ki az operations. A Spark Stream majd ír az átalakított adatok feladatszinten csatlakoztathatók, adatbázisok, az irányítópultok és a konzol.
+[Az Apache Spark](https://spark.apache.org/) Streamelési biztosít az adatfolyam-feldolgozás HDInsight Spark-fürtökön, adjon meg, hogy bármely esemény garantálunk pontosan egyszeri feldolgozását, még akkor is, ha a csomóponton hiba történik. A Spark Stream egy hosszan futó feladatot, amely a bemeneti adatokat fogad az számos különböző forrásból, például az Azure Event Hubs, az Azure IoT Hub [Apache Kafka](https://kafka.apache.org/), [Apache Flume](https://flume.apache.org/), Twitter, [ZeroMQ ](http://zeromq.org/), nyers TCP-szoftvercsatornák, vagy a figyelésből [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) feladatszinten csatlakoztathatók. Ellentétben a kizárólag eseményvezérelt folyamat egy Spark Stream kötegeli az bemeneti adatok az idő a windows, mint 2 másodperc szelet, és ezután alakítja át az egyes batch-leképezéssel adatok, csökkentheti, csatlakozzon, és bontsa ki az operations. A Spark Stream majd ír az átalakított adatok feladatszinten csatlakoztathatók, adatbázisok, az irányítópultok és a konzol.
 
 ![A Stream feldolgozása a HDInsight és a Spark Streaming](./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png)
 
@@ -86,7 +86,7 @@ Indítsa el az adatfolyam-továbbítási alkalmazást, és futtassa addig, amíg
     ssc.start()            
     ssc.awaitTermination()
 
-További információ az Eseményforrások, átalakítás és kimeneti műveletek támogatja, a Spark Stream API: [Spark Streaming Programming Guide](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html).
+További információ az Eseményforrások, átalakítás és kimeneti műveletek támogatja, a Spark Stream API: [Apache Spark programozási útmutató Streamelési](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html).
 
 A következő mintaalkalmazás az önálló, ezért is futtathatja azt egy [Jupyter Notebook](apache-spark-jupyter-notebook-kernels.md). Ebben a példában egy utánzatként funkcionáló adatforrás az osztály, amely egy számláló és az aktuális idő (MS) értékét öt másodpercenként DummySource hoz létre. Egy új StreamingContext objektumnak egy kötegelési időkö pedig 30 másodperc. Minden alkalommal, amikor egy naplólapot hoznak létre, a streamelési megvizsgálja az RDD előállított, az RDD alakítja át a Spark DataFrame-alkalmazások keresztül az adathalmaz egy ideiglenes táblát hoz létre.
 
@@ -211,10 +211,10 @@ Rugalmasság és a hibatűrés biztosításához, a Spark Streaming szolgáltat�
 
 ![A Spark Streaming-alkalmazás üzembe helyezése](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
 
-Az összes alkalmazás állapotát egy GET kérelmet a LIVY-végpont az is ellenőrizhető. Végül a futó alkalmazás leállíthatja a LIVY végponthoz törlési kérelem elküldése. További információ a LIVY API: [távoli feladatok a LIVYVEL](apache-spark-livy-rest-interface.md)
+Az összes alkalmazás állapotát egy GET kérelmet a LIVY-végpont az is ellenőrizhető. Végül a futó alkalmazás leállíthatja a LIVY végponthoz törlési kérelem elküldése. További információ a LIVY API: [távoli feladatok a LIVYVEL Apache](apache-spark-livy-rest-interface.md)
 
 ## <a name="next-steps"></a>További lépések
 
 * [A HDInsight egy Apache Spark-fürt létrehozása](../hdinsight-hadoop-create-linux-clusters-portal.md)
-* [Spark Streamelés programozási útmutatója](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)
-* [Indítsa el a Spark-feladatok a LIVYVEL távolról](apache-spark-livy-rest-interface.md)
+* [Az Apache Spark Streamelési programozási útmutatója](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)
+* [Indítsa el az Apache Spark-feladatok távoli a Apache LIVYVEL](apache-spark-livy-rest-interface.md)

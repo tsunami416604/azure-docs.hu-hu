@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: 4eb62786522dd1ad7cbf1d5668a4c4493028733c
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 97b33ed76776ae00c109e891b3d91638080ed778
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684341"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632585"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>BGP konfigurálása Azure VPN Gateway PowerShell-lel
 Ez a cikk végigvezeti a BGP engedélyezéséhez a létesítmények közötti Site-to-Site (S2S) VPN-kapcsolat és VNet – VNet kapcsolat a Resource Manager üzemi modell és a PowerShell használatával.
@@ -167,7 +167,7 @@ $BGPPeerIP5 = "10.52.255.254"
 Néhány dolgot a helyi hálózati átjáró paraméterek kapcsolatban vegye figyelembe:
 
 * A helyi hálózati átjárót, a VPN-átjáró lehet az azonos vagy eltérő helyen és erőforráscsoportban. Ez a példa bemutatja azokat a különböző helyek eltérő erőforráscsoportokban.
-* A minimális előtagot kell deklarálnia a helyi hálózati átjáró a BGP-Társgép IP-cím a VPN-eszköz a gazdagép-címét. Ebben az esetben egy tulajdonságot/32 előtag "10.52.255.254/32".
+* Az előtag, kell deklarálnia a helyi hálózati átjáró, a BGP-Társgép IP-cím a VPN-eszköz a gazdagép-címét. Ebben az esetben egy tulajdonságot/32 előtag "10.52.255.254/32".
 * Ne feledje a helyszíni hálózat és az Azure VNet közötti különböző BGP ASN kell használnia. Ha azonos, módosítsa a virtuális hálózat ASN-t, ha a helyszíni VPN-eszköz már használja az ASN-t más BGP-szomszédok társviszonyt szeretne.
 
 Mielőtt folytatja, győződjön meg arról, hogy továbbra is csatlakozik az 1. előfizetéshez.

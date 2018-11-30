@@ -1,6 +1,6 @@
 ---
-title: Eszközök kezelése a Media Services több Tárfiókok között |} Microsoft Docs
-description: Ez a cikk nyújtanak útmutatást a media services eszközök kezelése több tárfiókok között.
+title: Eszközök kezelése a Media Services több tárfiókban |} A Microsoft Docs
+description: Ez a cikk ad útmutatást a media services-eszközök kezelése több tárfiókban.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,36 +13,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2017
 ms.author: juliako
-ms.openlocfilehash: 89d1838eb9fed1751581b026d82b06bc20de4ecc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: aa9386182f521119012ea59fe6b64fb31099169e
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788556"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620268"
 ---
-# <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Eszközök kezelése a Media Services több Tárfiókok között
-A Microsoft Azure Media Services 2.2-es verziótól kezdődően csatolhat több tárfiókot egy Media Services-fiók. Egy Media Services-fiókhoz való csatolására a több tárfiókot a következő előnyöket nyújtja:
+# <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Eszközök kezelése a Media Services több tárfiókban
+A Microsoft Azure Media Services 2.2-es verziótól kezdődően csatlakoztathat több tárfiókot egyetlen Media Services-fiókba. Több tárfiók csatolhat egy Media Services-fiókot az alábbi előnyöket nyújtja:
 
-* Terheléselosztásának az eszközök több tárfiókot.
-* Méretezési Media szolgáltatási tartalom feldolgozása nagy mennyiségű (jelenleg egyetlen tárfiók van maximális legfeljebb 500 TB). 
+* A terheléselosztás az eszközök több tárfiókon keresztül.
+* A tartalom feldolgozása nagy mennyiségű méretezési Media Services-(mivel jelenleg egyetlen tárfiókra 500 TB-os maximális korlát). 
 
-Ez a cikk bemutatja, hogyan kell csatlakoztatni a több tárfiókot a Media Services segítségével [Azure Resource Manager API-k](https://docs.microsoft.com/rest/api/media/mediaservice) és [Powershell](/powershell/module/azurerm.media). Azt is bemutatja, hogyan adhatja meg a különböző storage-fiókok létrehozása a Media Services SDK használatával eszközök esetén. 
+Ez a cikk bemutatja a Media Services fiók használatával több tárfiók csatlakoztatása [Azure Resource Manager API-k](/rest/api/media/operations/azure-media-services-rest-api-reference) és [Powershell](/powershell/module/azurerm.media). Azt is bemutatja, hogyan adja meg a különböző storage-fiókok, adategységek, a Media Services SDK használatával létrehozásakor. 
 
 ## <a name="considerations"></a>Megfontolandó szempontok
-Ha több tárfiókok csatolását a Media Services-fiókkal, a következők érvényesek:
+Több tárfiók csatolásához a Media Services-fiók, a következő szempontokat kell figyelembe venni:
 
-* Egy Media Services-fiókhoz csatolva az összes tárfiók ugyanabba az adatközpontba, a Media Services-fiókkal kell lennie.
-* Jelenleg a tárfiók a megadott Media Services-fiókhoz csatolva van, ha azt nem választható le.
-* Elsődleges tárfiók, a Media Services-fiók létrehozás közbeni jelzett egy. Jelenleg nem módosítható az alapértelmezett tárfiók. 
-* Jelenleg Ha azt szeretné, a ritkán használt adatok tárolási fiók hozzáadása az AMS-fiók, a tárfiók kell Blob típus lehet, és nem elsődleges értékre.
+* Egy Media Services-fiókhoz csatlakoztatott minden tárfiókok ugyanabban az adatközpontban a Media Services-fiókot kell lennie.
+* Jelenleg egy storage-fiókot a megadott Media Services-fiókba való csatolást, nem lehet leválasztani.
+* Elsődleges tárfiók során a Media Services-fiók létrehozáskor megadott. Jelenleg nem módosítható az alapértelmezett tárfiók. 
+* Jelenleg Ha azt szeretné, a ritkán használt adatok tárolási fiók hozzáadása az AMS-fiók, a storage-fiókot kell lennie a Blob típusa és állítsa nem elsődleges.
 
 Egyéb szempontok:
 
-A Media Services értékét használja a **IAssetFile.Name** tulajdonságot, ha az adatfolyam-tartalmak (például http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/ a URL-címek kiépítéséhez streamingParameters.) Emiatt százalék-kódolás nem engedélyezett. A Name tulajdonság értéke nem lehet a következő [százalék kódolás-fenntartott karakterek](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Emellett csak lehet egy "." a fájlnévkiterjesztés.
+A Media Services értékét használja a **IAssetFile.Name** URL-címek létrehozását, a streamelési tartalom (például http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/ tulajdonság streamingParameters.) Ebből kifolyólag százalék-kódolást nem engedélyezett. A Name tulajdonság értéke nem lehet a következő [százalék-kódolás – fenntartott karakterek](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Emellett csak lehet egy "." a fájlnév kiterjesztésével.
 
-## <a name="to-attach-storage-accounts"></a>Tárfiók csatolása  
+## <a name="to-attach-storage-accounts"></a>Csatlakoztassa a storage-fiókok  
 
-Storage-fiókok csatolni az AMS-fiók, használja a [Azure Resource Manager API-k](https://docs.microsoft.com/rest/api/media/mediaservice) és [Powershell](/powershell/module/azurerm.media), a következő példában látható módon:
+Az AMS-fiókját tárfiókok csatolásához használja [Azure Resource Manager API-k](/rest/api/media/operations/azure-media-services-rest-api-reference) és [Powershell](/powershell/module/azurerm.media), az alábbi példában látható módon:
 
     $regionName = "West US"
     $subscriptionId = " xxxxxxxx-xxxx-xxxx-xxxx- xxxxxxxxxxxx "
@@ -60,15 +60,15 @@ Storage-fiókok csatolni az AMS-fiók, használja a [Azure Resource Manager API-
 
 ### <a name="support-for-cool-storage"></a>Ritkán használt adatok tárolási támogatása
 
-Jelenleg Ha azt szeretné, a ritkán használt adatok tárolási fiók hozzáadása az AMS-fiók, a tárfiók kell Blob típus lehet, és nem elsődleges értékre.
+Jelenleg Ha azt szeretné, a ritkán használt adatok tárolási fiók hozzáadása az AMS-fiók, a storage-fiókot kell lennie a Blob típusa és állítsa nem elsődleges.
 
-## <a name="to-manage-media-services-assets-across-multiple-storage-accounts"></a>A Media Services eszközök kezeléséhez több Tárfiókok között
-A következő kódot a Media Services SDK legújabb verzióját használja a következő feladatok végezhetők el:
+## <a name="to-manage-media-services-assets-across-multiple-storage-accounts"></a>A Media Services adategységek felügyelete több Tárfiókban
+A következő kódot a legfrissebb Media Services SDK-t használja a következő feladatokat:
 
-1. Megjeleníti a megadott Media Services-fiókhoz társított összes storage-fiók.
+1. Megjeleníti a megadott Media Services-fiókhoz társított összes tárfiókot.
 2. Az alapértelmezett tárfiók nevének beolvasása.
 3. Hozzon létre egy új eszköz az alapértelmezett tárfiók.
-4. Hozzon létre egy kimeneti eszköz a kódolási feladat a megadott tárfiók.
+4. A kódolási feladat kimeneti adategység létrehozása a megadott tárfiókban.
    
 ```
 using Microsoft.WindowsAzure.MediaServices.Client;

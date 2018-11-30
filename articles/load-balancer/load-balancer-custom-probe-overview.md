@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/04/2018
 ms.author: kumud
-ms.openlocfilehash: 134c7ab8156f3acb558e8b8a2da343961a6aad4e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 58bc0c0669992b8b3884e24c39862f47412b9110
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419333"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584655"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer állapot-mintavételei
 
@@ -201,7 +201,6 @@ Alapszintű nyilvános Load Balancer összegzése a Log Analytics funkciójával
 ## <a name="limitations"></a>Korlátozások
 
 -  HTTPS-vizsgálatok nem támogatják a kölcsönös hitelesítés ügyféltanúsítvánnyal.
--  SDK-t és PowerShell nem támogatja a HTTPS-vizsgálatok jelenleg.
 
 ## <a name="next-steps"></a>További lépések
 

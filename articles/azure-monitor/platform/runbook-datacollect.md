@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 1472e6cf05485b942c93f632c147fcb0b0311c61
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 87ceb682f35626c5bf468afd83a2f4a35901ef2b
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51828498"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632347"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Adatgyűjtés, a Log Analytics az Azure Automation-runbook
-Számos különféle forrásból például gyűjthet adatokat a Log Analytics jelentős mennyiségű [adatforrások](../../log-analytics/log-analytics-data-sources.md) ügynökökön és is [adatokat gyűjteni az Azure-ból](../../log-analytics/log-analytics-azure-storage.md).  Vannak olyan forgatókönyvek ellenére, hogy hol kell gyűjtenie az adatokat, amely nem érhető el standard források segítségével.  Ezekben az esetekben használhatja a [HTTP-adatgyűjtő API](../../log-analytics/log-analytics-data-collector-api.md) használatával írhat adatokat a Log Analyticsbe bármely REST API-ügyfélből.  Egy általános módszer az adatgyűjtést az Azure Automation runbook használ.   
+Számos különféle forrásból például gyűjthet adatokat a Log Analytics jelentős mennyiségű [adatforrások](../../azure-monitor/platform/agent-data-sources.md) ügynökökön és is [adatokat gyűjteni az Azure-ból](../../log-analytics/log-analytics-azure-storage.md).  Vannak olyan forgatókönyvek ellenére, hogy hol kell gyűjtenie az adatokat, amely nem érhető el standard források segítségével.  Ezekben az esetekben használhatja a [HTTP-adatgyűjtő API](../../log-analytics/log-analytics-data-collector-api.md) használatával írhat adatokat a Log Analyticsbe bármely REST API-ügyfélből.  Egy általános módszer az adatgyűjtést az Azure Automation runbook használ.   
 
 Ez az oktatóanyag végigvezeti a folyamat létrehozásához és az adatok írása a Log Analytics az Azure Automation runbook ütemezése.
 
@@ -212,7 +212,7 @@ Minden alkalommal, amikor egy runbook elindult, [létrejön egy feladat](../../a
 
 
 ## <a name="next-steps"></a>További lépések
-- Használat [adatforrásnézet-tervezőből](../../log-analytics/log-analytics-view-designer.md) a Log Analytics-adattárban gyűjtött adatok megjelenítésének nézet létrehozásához.
+- Használat [adatforrásnézet-tervezőből](../../azure-monitor/platform/view-designer.md) a Log Analytics-adattárban gyűjtött adatok megjelenítésének nézet létrehozásához.
 - A runbook a csomag egy [felügyeleti megoldás](../../azure-monitor/insights/solutions-creating.md) az ügyfelek számára terjeszteni.
 - Tudjon meg többet [Log Analytics](https://docs.microsoft.com/azure/log-analytics/).
 - Tudjon meg többet [Azure Automation](https://docs.microsoft.com/azure/automation/).

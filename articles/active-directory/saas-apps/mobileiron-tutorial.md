@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/9/2017
 ms.author: jeedes
-ms.openlocfilehash: 53cec59841fbda49e4e410f069882ea76996f9fb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1b6527207793558c132be4cf004b7d6fdde14a90
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39428291"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584111"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Oktatóanyag: Azure Active Directory-integráció az MobileIron
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 MobileIron az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy MobileIron egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure AD integrálása a MobileIron konfigurálásához hozzá kell MobileIro
 
 **MobileIron hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -106,22 +106,21 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
  
     ![Egyszeri bejelentkezési párbeszédpanel](./media/mobileiron-tutorial/tutorial_mobileiron_samlbase.png)
 
-1. Az a **MobileIron tartomány és URL-címek** területén kövesse az alábbi lépéseket, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
+1. Az a **MobileIron tartomány és URL-címek** területén kövesse az alábbi lépéseket, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
 
     ![MobileIron tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/mobileiron-tutorial/tutorial_mobileiron_url.png)
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://www.mobileiron.com/<key>`
+    1. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://www.mobileiron.com/<key>`
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<host>.mobileiron.com/saml/SSO/alias/<key>`
+    1. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<host>.mobileiron.com/saml/SSO/alias/<key>`
 
-1. Ellenőrizze **speciális URL-beállítások megjelenítése** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+1. Ellenőrizze **speciális URL-beállítások megjelenítése** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
     ![MobileIron tartomány és URL-címek egyszeri bejelentkezés](./media/mobileiron-tutorial/tutorial_mobileiron_url1.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<host>.mobileiron.com/user/login.html`
+    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<host>.mobileiron.com/user/login.html`
     
-    > [!NOTE] 
-    > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. A felügyeleti portálról, az oktatóanyag későbbi részében ismertetett MobileIron kap a kulcs és a gazdagép értékeit.
+    > [!NOTE]  Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. A felügyeleti portálról, az oktatóanyag későbbi részében ismertetett MobileIron kap a kulcs és a gazdagép értékeit.
 
 1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
@@ -174,13 +173,13 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![A felhasználó párbeszédpanel](./media/mobileiron-tutorial/create_aaduser_04.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    1. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
+    1. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    1. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    1. Kattintson a **Create** (Létrehozás) gombra.
   
 ### <a name="create-a-mobileiron-test-user"></a>MobileIron tesztfelhasználó létrehozása
 
@@ -199,13 +198,13 @@ MobileIron, esetén kiépítése a manuális feladat.
 
     ![Egyszeri bejelentkezés konfigurálása felhasználó hozzáadása gomb](./media/mobileiron-tutorial/tutorial_mobileiron_useradd.png)
 
-    a. A **E-mail cím** szöveget adja meg az e-mailt, például a felhasználó brittasimon@contoso.com.
+    1. A **E-mail cím** szöveget adja meg az e-mailt, például a felhasználó brittasimon@contoso.com.
 
-    b. A **Utónév** szöveg Britta például a felhasználó utónevét adja meg.
+    1. A **Utónév** szöveg Britta például a felhasználó utónevét adja meg.
 
-    c. A **Vezetéknév** szöveget adja meg a Simon például a felhasználó vezetékneve.
+    1. A **Vezetéknév** szöveget adja meg a Simon például a felhasználó vezetékneve.
     
-    d. Kattintson a **Done** (Kész) gombra.  
+    1. Kattintson a **Done** (Kész) gombra.  
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -237,7 +236,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

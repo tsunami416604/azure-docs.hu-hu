@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 325da912c8fc4e453df895976df970f8e0f56412
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 6cbcb42ee8c77ff0c8ded966b4f04af8815ca726
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614947"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632993"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Riasztások kiterjesztése a Log Analytics az Azure-riasztások
 A riasztások szolgáltatása az Azure Log Analyticsben váltja fel az Azure-riasztások. Az átállás részeként a riasztásokat, amelyek eredetileg konfigurálták a Log Analytics kiterjesztik az Azure-bA. Ha nem szeretné automatikusan Azure-ba való áthelyezésének várja, is kezdeményezhet a folyamat:
@@ -150,7 +150,7 @@ Ha a POST-kérés sikeres, egy HTTP 200 OK állapota mellett a következő vála
 }
 ```
 
-Ez a válasz azt jelzi, hogy a riasztásokat az Azure Alerts sikeresen bővültek. A verzió tulajdonság értéke csak a rendszer ellenőrzi, hogy a riasztások az Azure-ban fut, és nem állnak kapcsolatban a [Log Analytics Search API](../log-analytics/log-analytics-api-alerts.md). A riasztások ki vannak bővítve az Azure-bA sikeresen, ha bármely e-mail-címek biztosított a POST-kérelmet küldött jelentést. A megadott munkaterület minden riasztás már ütemezett bővíthetők, a POST-kérés adott válasz-e, hogy a kísérlet történt tiltott (a 403-as állapotkód). Hibaüzenetek megtekintéséhez, vagy ha elakadt a folyamat ismertetése, küldhet egy GET kéréssel. Ha hibaüzenet jelenik meg, ezt adja vissza, az összefoglaló információkkal együtt.
+Ez a válasz azt jelzi, hogy a riasztásokat az Azure Alerts sikeresen bővültek. A verzió tulajdonság értéke csak a rendszer ellenőrzi, hogy a riasztások az Azure-ban fut, és nem állnak kapcsolatban a [Log Analytics Search API](../azure-monitor/platform/api-alerts.md). A riasztások ki vannak bővítve az Azure-bA sikeresen, ha bármely e-mail-címek biztosított a POST-kérelmet küldött jelentést. A megadott munkaterület minden riasztás már ütemezett bővíthetők, a POST-kérés adott válasz-e, hogy a kísérlet történt tiltott (a 403-as állapotkód). Hibaüzenetek megtekintéséhez, vagy ha elakadt a folyamat ismertetése, küldhet egy GET kéréssel. Ha hibaüzenet jelenik meg, ezt adja vissza, az összefoglaló információkkal együtt.
 
 ```json
 {

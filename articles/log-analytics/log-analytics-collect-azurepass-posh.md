@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 681f0eeff0d93e6af341d2dddaf7da4475c13d9d
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a9635a7c9bad9079814750dc4be945701ba80451
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007195"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632313"
 ---
 # <a name="configure-collection-of-azure-paas-resource-metrics-with-log-analytics"></a>Az Azure PaaS-erőforrás-metrikák gyűjtésének konfigurálása a Log Analytics használatával
 
@@ -85,4 +85,4 @@ A rendszer bekéri válaszolni, ugyanazokat az információkat, mint a kezdeti k
 
 * Használat [egyéni mezők](log-analytics-custom-fields.md)(így az eseményrekordok elemezni az egyes mezőket.
 
-* Felülvizsgálat [használható egyéni irányítópult létrehozása a Log Analytics](log-analytics-dashboards.md) tudni, hogyan jelenítheti meg a napló keres környezetben megfelelőnek bizonyuló a szervezet számára.
+* Felülvizsgálat [használható egyéni irányítópult létrehozása a Log Analytics](../azure-monitor/platform/dashboards.md) tudni, hogyan jelenítheti meg a napló keres környezetben megfelelőnek bizonyuló a szervezet számára.

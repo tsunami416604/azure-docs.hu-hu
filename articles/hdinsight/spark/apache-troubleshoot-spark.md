@@ -7,22 +7,22 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 835a56413a4274a2be2511278b4dedd7f83c54c3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ab7602f7bae4dfb77a733dd7efe011a29b730377
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016675"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581591"
 ---
-# <a name="troubleshoot-spark-by-using-azure-hdinsight"></a>Az Azure HDInsight Spark hibaelhárítása
+# <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Hibaelhárítás az Apache Spark az Azure HDInsight segítségével
 
-A leggyakoribb problémák és azok megoldásait ismerje meg az Apache Ambari az Apache Spark hasznos adatot használatakor.
+Ismerje meg a leggyakoribb problémák és azok megoldásait az használatakor [Apache Spark](https://spark.apache.org/) hasznos adatot [Apache Ambari](https://ambari.apache.org/).
 
-## <a name="how-do-i-configure-a-spark-application-by-using-ambari-on-clusters"></a>Hogyan konfigurálhatom egy Spark-alkalmazás a fürtök az Ambari használatával?
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-ambari-on-clusters"></a>Egy Apache Spark-alkalmazás konfigurálása az Apache Ambari-fürtökön
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-A konfigurációs értékeket az eljárás végrehajtásához korábban be lett beállítva, a HDInsight. Határozza meg, melyik Spark konfigurációk kell beállítani, és milyen értékeket lásd: [mi okozza a Spark OutofMemoryError Alkalmazáskivétel](#what-causes-a-spark-application-outofmemoryerror-exception). 
+A konfigurációs értékeket az eljárás végrehajtásához korábban be lett beállítva, a HDInsight. Határozza meg, melyik Spark konfigurációk kell beállítani, és milyen értékeket lásd: [mi okozza az Apache Spark-alkalmazás OutofMemoryError kivételt](#what-causes-a-spark-application-outofmemoryerror-exception). 
 
 1. Fürtök listájából válassza ki **Spark2**.
 
@@ -84,14 +84,14 @@ Ezek a változások fürtre kiterjedő, de a Spark-feladat elküldésekor felül
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
-[A HDInsight-fürtökön a Spark-feladat küldése](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[A HDInsight-fürtökön az Apache Spark-feladat küldése](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
-## <a name="how-do-i-configure-a-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Hogyan konfigurálhatom egy Spark-alkalmazás a fürtök Jupyter notebook használatával?
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Egy Apache Spark-alkalmazás konfigurálása a fürtök Jupyter notebook használatával
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. Határozza meg, melyik Spark konfigurációk kell beállítani, és milyen értékeket lásd: [mi okozza a Spark OutofMemoryError Alkalmazáskivétel](#what-causes-a-spark-application-outofmemoryerror-exception).
+1. Határozza meg, melyik Spark konfigurációk kell beállítani, és milyen értékeket lásd: [mi okozza az Apache Spark-alkalmazás OutofMemoryError kivételt](#what-causes-a-spark-application-outofmemoryerror-exception).
 
 2. Az első olyan cellára, a Jupyter notebookot az után a **%% konfigurálása** irányelv, érvényes JSON formátumban adja meg a Spark-konfigurációkat. A tényleges értékek módosítása szükséges:
 
@@ -99,14 +99,14 @@ Ezek a változások fürtre kiterjedő, de a Spark-feladat elküldésekor felül
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
-[A HDInsight-fürtökön a Spark-feladat küldése](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[A HDInsight-fürtökön az Apache Spark-feladat küldése](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
-## <a name="how-do-i-configure-a-spark-application-by-using-livy-on-clusters"></a>Hogyan konfigurálhatom egy Spark-alkalmazás-fürtökön a Livy használatával?
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters"></a>Egy Apache Spark-alkalmazás konfigurálása fürtökön Apache Livy használatával
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. Határozza meg, melyik Spark konfigurációk kell beállítani, és milyen értékeket lásd: [mi okozza a Spark OutofMemoryError Alkalmazáskivétel](#what-causes-a-spark-application-outofmemoryerror-exception). 
+1. Határozza meg, melyik Spark konfigurációk kell beállítani, és milyen értékeket lásd: [mi okozza az Apache Spark-alkalmazás OutofMemoryError kivételt](#what-causes-a-spark-application-outofmemoryerror-exception). 
 
 2. Küldje el a Livy-, Spark-alkalmazás REST-ügyfél, például a cURL használatával. Használjon az alábbihoz hasonló parancsot. A tényleges értékek módosítása szükséges:
 
@@ -116,14 +116,14 @@ Ezek a változások fürtre kiterjedő, de a Spark-feladat elküldésekor felül
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
-[A HDInsight-fürtökön a Spark-feladat küldése](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[A HDInsight-fürtökön az Apache Spark-feladat küldése](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
-## <a name="how-do-i-configure-a-spark-application-by-using-spark-submit-on-clusters"></a>Hogyan konfigurálhatom egy Spark-alkalmazás használatával spark-submit fürtökön?
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-spark-submit-on-clusters"></a>Hogyan konfigurálhatom egy Apache Spark, az alkalmazás a spark-submit fürtökön?
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. Határozza meg, melyik Spark konfigurációk kell beállítani, és milyen értékeket lásd: [mi okozza a Spark OutofMemoryError Alkalmazáskivétel](#what-causes-a-spark-application-outofmemoryerror-exception).
+1. Határozza meg, melyik Spark konfigurációk kell beállítani, és milyen értékeket lásd: [mi okozza az Apache Spark-alkalmazás OutofMemoryError kivételt](#what-causes-a-spark-application-outofmemoryerror-exception).
 
 2. Indítsa el a spark-shell az alábbihoz hasonló parancs használatával. Szükség szerint módosítsa a konfiguráció a tényleges érték: 
 
@@ -133,10 +133,10 @@ Ezek a változások fürtre kiterjedő, de a Spark-feladat elküldésekor felül
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
-[A HDInsight-fürtökön a Spark-feladat küldése](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[A HDInsight-fürtökön az Apache Spark-feladat küldése](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
-## <a name="what-causes-a-spark-application-outofmemoryerror-exception"></a>OutofMemoryError Alkalmazáskivétel mi okozza a Spark?
+## <a name="what-causes-an-apache-spark-application-outofmemoryerror-exception"></a>Az Apache Spark-alkalmazás OutofMemoryError kivételt mi okozza?
 
 ### <a name="detailed-description"></a>Részletes leírás
 
@@ -217,8 +217,8 @@ A kivétel legvalószínűbb oka az, hogy a nem elegendő halommemória a Java v
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
-- [A Spark memória – áttekintés](http://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
-- [Egy HDInsight-fürtön a Spark-alkalmazás hibakeresése](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
+- [Az Apache Spark memória – áttekintés](http://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
+- [Egy HDInsight-fürtön egy Apache Spark-alkalmazás hibakeresése](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
 
 
 ### <a name="see-also"></a>Lásd még:

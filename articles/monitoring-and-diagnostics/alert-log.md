@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 74b9673d7ef9dedbcc34682d4707103e696bece3
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 6e6db7ef2f2de075aea41a29e69b2c674efafa17
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711701"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635356"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure Monitor használatával riasztások  
 
@@ -223,7 +223,7 @@ Ezért a lenti Powershell vagy parancssori felület API segítségével riasztá
 ### <a name="powershell-cli-or-api-for-log-analytics"></a>PowerShell, a parancssori felület vagy a Log Analytics API
 A Log Analytics Alert REST API RESTful és az Azure Resource Manager REST API-n keresztül érhető el. Az API-t az így elérhető lesz egy PowerShell-parancssorból, és kimenete JSON formátumban, hogy a keresési eredmények az eredmények használatával számos különböző módon programozott módon.
 
-Tudjon meg többet [létrehozása és kezelése a REST API-val a Log Analytics riasztási szabályai](../log-analytics/log-analytics-api-alerts.md)köztük az API-t a Powershell elérése példái.
+Tudjon meg többet [létrehozása és kezelése a REST API-val a Log Analytics riasztási szabályai](../azure-monitor/platform/api-alerts.md)köztük az API-t a Powershell elérése példái.
 
 ### <a name="powershell-cli-or-api-for-application-insights"></a>PowerShell, CLI vagy az Application Insights API
 [Az Azure Monitor - ütemezett lekérdezési szabály API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) egy REST API-t, és teljes mértékben kompatibilisek az Azure Resource Manager REST API-val. Ezért azt is használható a Powershell használatával a Resource Manager egy parancsmagjához, valamint az Azure CLI-n keresztül.

@@ -10,27 +10,27 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 9873347683fdfabd93083b44d034a8d9d5bcaeef
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f0b13480c06e154b85300f4a8a2f8a84db04c31b
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297537"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582377"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>A meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure multi-factor Authentication
 
-A hálózati házirend-kiszolgáló (NPS) kiterjesztése az Azure MFA felhőalapú MFA képességek hozzáadása a meglévő kiszolgálók használatával hitelesítési infrastruktúráját. NPS bővítményével is hozzáadhat telefonhívás, szöveges üzenet vagy telefonos alkalmazás ellenőrzés a meglévő hitelesítési folyamat telepítése, konfigurálása és karbantartása az új kiszolgálók nélkül. 
+A hálózati házirend-kiszolgáló (NPS) kiterjesztése az Azure MFA felhőalapú MFA képességek hozzáadása a meglévő kiszolgálók használatával hitelesítési infrastruktúráját. NPS bővítményével is hozzáadhat telefonhívás, szöveges üzenet vagy telefonos alkalmazás ellenőrzés a meglévő hitelesítési folyamat telepítése, konfigurálása és karbantartása az új kiszolgálók nélkül. 
 
 Ez a bővítmény olyan szervezeteknek, amelyek számára védelmet kíván biztosítani a VPN-kapcsolatok az Azure MFA-kiszolgáló üzembe helyezése nélkül lett létrehozva. Az NPS-bővítményének eleget kell tennie az adapter beállításai között, adja meg a hitelesítés második tényezőjét, a RADIUS- és Azure MFA felhőalapú összevont vagy a szinkronizált felhasználók.
 
-Az Azure MFA NPS bővítményével használatakor a hitelesítési folyamat a következő összetevőket tartalmazza: 
+Az Azure MFA NPS bővítményével használatakor a hitelesítési folyamat a következő összetevőket tartalmazza: 
 
-1. **NAS/VPN-kiszolgáló** kéréseket fogad VPN-ügyfelek és a hálózati házirend-kiszolgálók a RADIUS-kérelmeket alakítja azokat. 
-2. **Hálózati házirend-kiszolgáló** a RADIUS-kéréseket az elsődleges hitelesítés végrehajtásához az Active Directory csatlakozik, és minden telepített bővítmények, sikeres befejezés esetén továbbítja.  
-3. **NPS-bővítményének** elindítja a másodlagos hitelesítésre az Azure MFA kérést. Ha a bővítmény megkapja a választ, és ha sikeres az MFA-hitelesítést, a hálózati házirend-kiszolgáló azáltal, hogy a biztonsági jogkivonatokat, amelyek tartalmazzák az MFA-jogcímet a hitelesítési kérelem befejeződött, Azure STS által kiadott.  
+1. **NAS/VPN-kiszolgáló** kéréseket fogad VPN-ügyfelek és a hálózati házirend-kiszolgálók a RADIUS-kérelmeket alakítja azokat. 
+2. **Hálózati házirend-kiszolgáló** a RADIUS-kéréseket az elsődleges hitelesítés végrehajtásához az Active Directory csatlakozik, és minden telepített bővítmények, sikeres befejezés esetén továbbítja.  
+3. **NPS-bővítményének** elindítja a másodlagos hitelesítésre az Azure MFA kérést. Ha a bővítmény megkapja a választ, és ha sikeres az MFA-hitelesítést, a hálózati házirend-kiszolgáló azáltal, hogy a biztonsági jogkivonatokat, amelyek tartalmazzák az MFA-jogcímet a hitelesítési kérelem befejeződött, Azure STS által kiadott.  
 4. **Az Azure MFA** kommunikál az Azure Active Directoryval, a felhasználói adatok beolvasása és a egy ellenőrzési módszert úgy konfigurálva, hogy a felhasználó használja a másodlagos hitelesítést hajt végre.
 
-A következő ábra szemlélteti a magas szintű hitelesítési kérelem folyamat: 
+A következő ábra szemlélteti a magas szintű hitelesítési kérelem folyamat: 
 
 ![Hitelesítési folyamatábrája](./media/howto-mfa-nps-extension/auth-flow.png)
 
@@ -118,7 +118,7 @@ Nincsenek két tényező befolyásolja, hogy mely hitelesítési módszerek érh
 
 Központi telepítésekor az NPS-bővítményt, a tényezők segítségével kiértékelheti, hogy melyik módszer a felhasználók számára érhető el. Ha a RADIUS-ügyfél a PAP FUNKCIÓT támogatja, de az ügyfél UX nem rendelkezik egy ellenőrző kódot a beviteli mezőket, majd telefonhívás- és mobilalkalmazás-értesítés a két módon támogatott.
 
-Is [tiltsa le a nem támogatott hitelesítési módszerek](howto-mfa-mfasettings.md#selectable-verification-methods) az Azure-ban.
+Is [tiltsa le a nem támogatott hitelesítési módszerek](howto-mfa-mfasettings.md#verification-methods) az Azure-ban.
 
 ### <a name="register-users-for-mfa"></a>Regisztrálja a felhasználókat a multi-factor Authentication
 
@@ -212,15 +212,31 @@ Keresse meg az önaláírt tanúsítványt hozott létre a telepítő a tanúsí
 
 Nyissa meg a PowerShell-parancssort, és futtassa a következő parancsokat:
 
-```
+``` PowerShell
 import-module MSOnline
 Connect-MsolService
-Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 
+Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1
 ```
 
 Ezek a parancsok nyomtassa ki minden olyan tanúsítványt, amelyet a bérlő társítása az NPS-bővítményének példányát a PowerShell-munkamenetben. Az ügyféltanúsítvány exportálása a titkos kulcs nélkül "Base-64 kódolású X.509(.cer)" fájlként szerint keresse meg a tanúsítványt, és összehasonlíthatja a lista és a PowerShell.
 
+A következő parancs létrehoz egy .cer formátumú a "C:" meghajtón "npscertificate" nevű fájlt.
+
+``` PowerShell
+import-module MSOnline
+Connect-MsolService
+Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 | select -ExpandProperty "value" | out-file c:\npscertficicate.cer
+```
+
+Ez a parancs futtatása után nyissa meg a C meghajtóhoz, keresse meg a fájlt, és kattintson rá duplán. Nyissa meg a részleteket, és görgessen le a "ujjlenyomata", hasonlítsa össze az ehhez a kiszolgálón telepített tanúsítvány ujjlenyomatával. A tanúsítvány-ujjlenyomatok egyeznie kell.
+
 Érvényes –, és érvényes – addig, amíg az időbélyegek, amelyek emberek számára olvasható formátumban, nyilvánvaló misfits kiszűréséhez, ha a parancs visszaadja az egynél több tanúsítvány is használható.
+
+-------------------------------------------------------------
+
+### <a name="why-cant-i-sign-in"></a>Miért tud tudok bejelentkezni?
+
+Ellenőrizze, hogy a jelszó még nem járt le. Az NPS-bővítményének jelszavak módosítását nem támogatja a bejelentkezési munkafolyamat részeként. További segítségért lépjen kapcsolatba a szervezet informatikai személyzetet tart fenn.
 
 -------------------------------------------------------------
 

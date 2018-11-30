@@ -10,14 +10,14 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 27a4bccfbac73c7c8c902a59fdd4cafe0c420c31
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 1d13e2ccbbc1d5c1bc80dffc260a3759fe378d7d
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634993"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634540"
 ---
-# <a name="install-and-run-containers"></a>Telepítse és futtassa a tárolók
+# <a name="install-and-run-containers"></a>Tárolók telepítése és futtatása
 
 Bontás a szoftverek terjesztéséhez, amelyben egy alkalmazás vagy szolgáltatás van csomagolva, egy tárolórendszerképet egy megközelítést. A konfiguráció és az alkalmazás vagy szolgáltatás függőségeinek szerepelnek a tároló rendszerképét. A tároló rendszerképét ezután központilag telepítheti alig vagy egyáltalán nem módosítással üzemeltető tárolón futnak. Tárolók el különítve egymással és az alapjául szolgáló operációs rendszer, tárhely kisebb, mint egy virtuális gépet. A tárolók rövid távú feladatok tárolórendszerképeket a példányt, és távolítja el, amikor már nincs rá szükség.
 
@@ -58,9 +58,6 @@ A következő lépésekkel hozhat létre, és a egy oldallal erőforrás lévő 
 
 1. Hozzon létre egy Face erőforrást az Azure Portalon.  
    Ha azt szeretné, a Face tároló használatára, először létre kell hoznia egy megfelelő ARC-erőforrást az Azure Portalon. További információkért lásd: [a rövid útmutató: a Cognitive Services-fiók létrehozása az Azure Portalon](../cognitive-services-apis-create-account.md).
-
-   > [!IMPORTANT]
-   > A Face erőforrás tarifacsomagja F0 kell használnia.
 
 1. A végpont URL-cím és egy előfizetési kulcsra az Azure-beli erőforráshoz kaphat.  
    Az Azure-erőforrás létrehozása után a megfelelő Face tároló példányosítása ennek az erőforrásnak a végpont URL-cím és egy előfizetési kulcsra kell használnia. A végpont URL-CÍMÉT és az előfizetési kulcs, a gyors üzembe helyezés és a kulcsok lapok a Face erőforrás az Azure Portalon a másolhatja.

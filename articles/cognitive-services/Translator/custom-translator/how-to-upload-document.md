@@ -9,16 +9,18 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: bb84a3ddfba54c47cdf91aa72889a960722cdbd3
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 3a0adb4b761121334e93f2b8d2d764ff3ab495e2
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627431"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633248"
 ---
 # <a name="upload-a-document"></a>Dokumentum feltöltése
 
 A [egyéni a fordítót](https://portal.customtranslator.azure.ai), a fordítási modelleket taníthat be párhuzamos dokumentumokat feltölthet. [Dokumentumok párhuzamos](what-are-parallel-documents.md) párjai dokumentumok egy fordítását, a másik helyére. A pár egyik dokumentum tartalmaz a Forrásnyelv mondatok és a többi dokumentum tartalmazza ezeket a Célnyelv fordítja mondatokat.
+
+Mielőtt feltöltené a dokumentumok, tekintse át a [dokumentum-formátumok és -elnevezési konvenciót útmutatást](document-formats-naming-convention.md) , győződjön meg arról, hogy a fájl formátuma támogatott egyéni a fordítót.
 
 ## <a name="how-to-upload-document"></a>Dokumentum feltöltése hogyan?
 

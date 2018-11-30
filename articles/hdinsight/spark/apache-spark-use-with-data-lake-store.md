@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: 9fe4b3e49f8e3270f58929a5708a83ab02e2486c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 876a564c3cf5ee4b19d7f2530ecff1ed12bebe63
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255250"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581824"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-store"></a>Data Lake Store az adatok elemzése a HDInsight Spark-fürt használatával
 
-Ebben az oktatóanyagban használja elérhető Jupyter notebookot HDInsight Spark-fürtökkel a futtatásához egy feladatot, amely adatokat olvas be egy Data Lake Store-fiókot.
+Ebben az oktatóanyagban használja [Jupyter Notebook](https://jupyter.org/) egy feladatot, amely adatokat olvas be egy Data Lake Store-fiók futtatása HDInsight Spark-fürtön elérhető.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -61,7 +61,7 @@ Ha során létrehozott egy HDInsight-fürt a Data Lake Store további tárterül
 
 ## <a name="use-an-hdinsight-spark-cluster-with-data-lake-store"></a>Egy HDInsight Spark-fürt használata a Data Lake Store
 
-1. Az [Azure portál](https://portal.azure.com/) kezdőpultján kattintson a Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton). A fürtöt a következő helyről is megkeresheti: **Browse All (Összes tallózása)** > **HDInsight Clusters** (HDInsight-fürtök).
+1. Az a [az Azure Portal](https://portal.azure.com/), kezdőpultján kattintson az Apache Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton). A fürtöt a következő helyről is megkeresheti: **Browse All (Összes tallózása)** > **HDInsight Clusters** (HDInsight-fürtök).
 
 2. A Spark-fürt panelén kattintson a **Quick Links** (Gyorshivatkozások) lehetőségre, majd a **Cluster Dashboard** (Fürt irányítópultja) panelen a **Jupyter Notebook** elemre. Ha a rendszer felkéri rá, adja meg a fürthöz tartozó rendszergazdai hitelesítő adatokat.
 
@@ -115,7 +115,7 @@ Ha során létrehozott egy HDInsight-fürt a Data Lake Store további tárterül
             # Register the data fram as a table to run queries against
             hvacdf.registerTempTable("hvac")
 
-6. Mivel PySpark kernelt használ, most közvetlenül futtathat SQL-lekérdezést az imént létrehozott **hvac** ideiglenes táblán, a `%%sql` funkció használatával. A `%%sql` funkcióval, illetve a PySpark kernellel elérhető egyéb funkciókkal kapcsolatos további információkat [A Spark HDInsight-fürtökkel használt Jupyter notebookokban elérhető kernelek](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic) című részben talál.
+6. Mivel PySpark kernelt használ, most közvetlenül futtathat SQL-lekérdezést az imént létrehozott **hvac** ideiglenes táblán, a `%%sql` funkció használatával. További információ a `%%sql` Magic Quadrant, valamint kernellel a PySpark kernellel elérhető egyéb funkciókkal lásd [használt az Apache Spark HDInsight-fürtök Jupyter notebookokban elérhető kernelek](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 
         %%sql
         SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
@@ -134,5 +134,5 @@ Ha során létrehozott egy HDInsight-fürt a Data Lake Store további tárterül
 ## <a name="next-steps"></a>További lépések
 
 * [Hozzon létre egy különálló Scala Apache Spark-fürtön futó alkalmazás](apache-spark-create-standalone-application.md)
-* [IntelliJ-hez készült Azure-eszközkészlet HDInsight Tools használatával Spark-alkalmazások HDInsight Spark Linux-fürt létrehozása](apache-spark-intellij-tool-plugin.md)
-* [HDInsight Tools használata az Azure Toolkit for Eclipse alkalmazásokat hozhat létre a Spark for HDInsight Spark Linux-fürt](apache-spark-eclipse-tool-plugin.md)
+* [HDInsight Tools használata az IntelliJ-hez készült Azure-eszközkészlet az Apache Spark-alkalmazások HDInsight Spark Linux-fürt létrehozása](apache-spark-intellij-tool-plugin.md)
+* [Az Azure Toolkit for Eclipse Apache Spark-alkalmazások HDInsight Spark Linux-fürt létrehozása HDInsight-eszközök használata](apache-spark-eclipse-tool-plugin.md)

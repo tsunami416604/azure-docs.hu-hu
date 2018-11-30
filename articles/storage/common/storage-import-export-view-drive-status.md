@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 49a2c03664ba39a624871b24c0b86a968a67eddb
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 4a0fcb95ed34ed3d98c6b25b475c0866135897f3
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521523"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584672"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Azure Import/Export-feladatok állapotának megtekintése
 
@@ -23,7 +23,6 @@ Ez a cikk információt nyújt az Azure Import/Export-feladatok a meghajtót, é
 Az importálás állapotának nyomon követése, vagy a feladatok exportálása az Azure Portalról. Kattintson a **Import/Export** fülre. A feladatok listáját az oldalon jelenik meg.
 
 ![Feladat állapotának megtekintése](./media/storage-import-export-service/jobstate.png)
-
 
 ## <a name="view-job-status"></a>Feladat állapotának megtekintése
 
@@ -74,7 +73,7 @@ Importálási/exportálási feladatok feldolgozásához szükséges idő példá
 -  Feladat típusa és az adatok másolását mérete
 -  Egy feladat a lemezek számát. 
 
-Importálási/exportálási szolgáltatás nem rendelkezik SLA-t, de a szolgáltatás nagy hangsúlyt fektet a 7-10 napos lemezek vannak fogadását követően a másolás végrehajtásához. Az Azure Portal webhelyen közzétett állapota REST API-k segítségével nyomon követheti a feladat előrehaladását. Az Állapot paraméter az [listázhatók a feladatok]() API művelet meghívásának biztosít a százalékos másolása folyamatban van.
+Importálási/exportálási szolgáltatás nem rendelkezik SLA-t, de a szolgáltatás nagy hangsúlyt fektet a 7-10 napos lemezek vannak fogadását követően a másolás végrehajtásához. Az Azure Portal webhelyen közzétett állapota REST API-k segítségével nyomon követheti a feladat előrehaladását. Az Állapot paraméter az [listázhatók a feladatok](/previous-versions/azure/dn529083(v=azure.100)) API művelet meghívásának biztosít a százalékos másolása folyamatban van.
 
 
 ## <a name="next-steps"></a>További lépések
@@ -82,4 +81,3 @@ Importálási/exportálási szolgáltatás nem rendelkezik SLA-t, de a szolgált
 * [A WAImportExport eszköz beállítása](storage-import-export-tool-how-to.md)
 * [Adatok áthelyezése az AzCopy parancssori segédprogram](storage-use-azcopy.md)
 * [Az Azure importálási exportálása REST API-minta](https://azure.microsoft.com/documentation/samples/storage-dotnet-import-export-job-management/)
-

@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: b978adcdcc025c24746167ef5ab92aebe94aca8b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 44ed4075af290e3253b3d8f090c289ceba9750a6
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016233"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584179"
 ---
-# <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>HBase-fürt replikációja az Azure virtuális hálózatok beállítása
+# <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Az Apache HBase-fürt replikációja az Azure virtuális hálózatok beállítása
 
-Ismerje meg, hogyan állítható be a HBase-replikáció a virtuális hálózaton belül, vagy az Azure-ban két virtuális hálózat között.
+Ismerje meg, hogyan állítható be [Apache HBase](http://hbase.apache.org/) replikációs egy virtuális hálózaton belül, vagy az Azure-ban két virtuális hálózat között.
 
 Fürt-replikáció az a forrás-küldéses metódussal. HBase-fürtöt a forrás vagy cél, vagy teljesíteni tudja mindkét szerepkört egyszerre. Replikáció az aszinkron. A replikációs célja végső konzisztenciát. Amikor a forrás és a egy oszlopcsalád szerkesztését kap, ha a replikáció engedélyezve van, a Szerkesztés az összes cél fürtök propagálja. Amikor adatok replikálódnak az egyik fürtről a másikra, a forrás fürt és az összes olyan fürtben, amely már használt fel, az adatok nyomon követi, replikációs hurkok elkerülése érdekében.
 
@@ -46,16 +46,16 @@ Az oktatóanyag elindításához Azure-előfizetéssel kell rendelkeznie. Lásd:
 
 Három konfigurációs lehetőségek állnak rendelkezésére:
 
-- Két HBase-fürtökhöz egy Azure virtuális hálózatot.
-- Két HBase-fürtök két különböző virtuális hálózat ugyanabban a régióban.
-- Két HBase-fürtök két különböző virtuális hálózat két különböző régióban (georeplikáció).
+- Két Apache HBase-fürtökhöz egy Azure virtuális hálózatot.
+- Két Apache HBase-fürtök két különböző virtuális hálózat ugyanabban a régióban.
+- Két Apache HBase-fürtök két különböző virtuális hálózat két különböző régióban (georeplikáció).
 
 Ez a cikk foglalkozik: bemutatja a georeplikáció.
 
 Segítséget nyújtanak a környezetek beállítása, hoztunk létre néhány [Azure Resource Manager-sablonok](../../azure-resource-manager/resource-group-overview.md). Ha inkább a környezetek beállítása az egyéb módszerek használatával, lásd:
 
-- [A HDInsight Hadoop-fürtök létrehozása](../hdinsight-hadoop-provision-linux-clusters.md)
-- [HBase-fürtök létrehozása az Azure Virtual Network](apache-hbase-provision-vnet.md)
+- [A HDInsight Apache Hadoop-fürtök létrehozása](../hdinsight-hadoop-provision-linux-clusters.md)
+- [Az Apache HBase-fürtök létrehozása az Azure Virtual Network](apache-hbase-provision-vnet.md)
 
 ### <a name="set-up-two-virtual-networks-in-two-different-regions"></a>Két különböző régiókban lévő két virtuális hálózat beállítása
 
@@ -67,9 +67,9 @@ Egyes változtatható értékek a sablonban:
 
 **1 virtuális hálózat**
 
-| Tulajdonság | Value (Díj) |
+| Tulajdonság | Érték |
 |----------|-------|
-| Földrajzi egység | USA nyugati régiója |
+| Hely | USA nyugati régiója |
 | Virtuális hálózat neve | &lt;ClusterNamePrevix >-vnet1 |
 | Címtér-előtagját | 10.1.0.0/16 |
 | Alhálózat neve | 1. alhálózata |
@@ -84,9 +84,9 @@ Egyes változtatható értékek a sablonban:
 
 **Virtuális hálózat 2**
 
-| Tulajdonság | Value (Díj) |
+| Tulajdonság | Érték |
 |----------|-------|
-| Földrajzi egység | USA keleti régiója |
+| Hely | USA keleti régiója |
 | Virtuális hálózat neve | &lt;ClusterNamePrevix >-vnet2 |
 | Címtér-előtagját | 10.2.0.0/16 |
 | Alhálózat neve | 1. alhálózata |
@@ -256,9 +256,9 @@ A DNS-konfiguráció teszteléséhez a két DNS virtuális gép SSH használatá
 sudo service bind9 status
 ```
 
-## <a name="create-hbase-clusters"></a>HBase-fürtök létrehozása
+## <a name="create-apache-hbase-clusters"></a>Az Apache HBase-fürtök létrehozása
 
-Hozzon létre egy HBase-fürt minden egyes a két virtuális hálózat a következő beállításokkal:
+Hozzon létre egy [Apache HBase](http://hbase.apache.org/) fürtben az egyes a két virtuális hálózat a következő beállításokkal:
 
 - **Erőforráscsoport neve**: használja ugyanazt az erőforráscsoport-nevet a virtuális hálózatok létrehozott.
 - **Fürt típusa**: HBase
@@ -274,7 +274,7 @@ Annak érdekében, hogy a környezet megfelelően van konfigurálva, az átjár�
 
 Ha egy fürt replikálja, meg kell adnia a táblákat, amelyet replikálni szeretne. Ebben a szakaszban a kiindulási fürt adatokat betölteni azt. A következő szakaszban a fürtök közötti replikáció lehetővé teszi.
 
-Hozhat létre egy **névjegyek** táblában és adatok beszúrása a táblázatban, kövesse az utasításokat, [HBase-oktatóanyag: a HDInsight Apache HBase használatának első lépései](apache-hbase-tutorial-get-started-linux.md).
+Hozhat létre egy **névjegyek** táblában és adatok beszúrása a táblázatban, kövesse az utasításokat, [Apache HBase-oktatóanyag: a HDInsight Apache HBase használatának első lépései](apache-hbase-tutorial-get-started-linux.md).
 
 ## <a name="enable-replication"></a>A replikáció engedélyezése
 
@@ -293,7 +293,7 @@ A következő lépések bemutatják, hogyan hívja a parancsfájl parancsfájlm�
   3.  **A fő**: Ellenőrizze, hogy ez van kijelölve. A csomóponttípusok törölje.
   4. **Paraméterek**: A következő minta paraméterek összes meglévő tábla a replikáció engedélyezése, és másolja az összes adat a forrás-fürtről a cél-fürthöz:
 
-          -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
+          -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
     
     >[!note]
     >
@@ -317,7 +317,7 @@ Nem kötelező argumentumok:
 |--src-ambari-user - su, | Adja meg a rendszergazdai felhasználóneve Ambari a kiindulási HBase-fürt. Az alapértelmezett érték **rendszergazdai**. |
 |-du, nyári időszámítás –-ambari-felhasználó | A cél HBase-fürt Ambari rendszergazdai felhasználónevet megadása Az alapértelmezett érték **rendszergazdai**. |
 |-t, a--tábla-lista | Megadja a replikálni kívánt táblák. Például:--tábla-list = "tábla1; table2; Tábl3". Táblák nem ad meg, ha a rendszer replikálja az összes meglévő HBase-táblákat.|
-|-m,--gép | Adja meg a fő csomópont, ahol a parancsfájlművelet fut-e. Az érték kisebb, mint **hn1** vagy **hn0**. Mivel a **hn0** átjárócsomópont általában elfoglaltabb, javasoljuk a **hn1**. Használja ezt a beállítást, ha futtatja a 0 USD parancsfájl szkriptműveletet, a HDInsight-portál vagy az Azure PowerShell-lel.|
+|-m,--gép | Adja meg a fő csomópont, ahol a parancsfájlművelet fut-e. Az érték kisebb, mint **hn0** vagy **hn1** és a választott alapján ez az aktív fő csomópontja. Használja ezt a beállítást, ha futtatja a 0 USD parancsfájl szkriptműveletet, a HDInsight-portál vagy az Azure PowerShell-lel.|
 |-cp, - copydata | Lehetővé teszi a meglévő adatok a táblák, ahol a replikáció engedélyezve van-e az áttelepítés. |
 |-rpm, - replikálás-phoenix-metaadatok | Lehetővé teszi a Phoenix rendszertáblákra replikációt. <br><br>*Használja ezt a beállítást körültekintéssel.* Azt javasoljuk, hogy újra létrehozza a Phoenix táblák replika fürtökön Ez a szkript használata előtt. |
 |-h, – Súgó | Megjeleníti a használati adatokat. |
@@ -332,19 +332,19 @@ Az alábbi listában látható néhány általános használati esetek és param
 
 - **Engedélyezze a replikációt a fürtök közötti összes tábla**. Ez a forgatókönyv nem igényel másolása vagy a táblák a meglévő adatok áttelepítése, és ne használja a Phoenix táblákat. Használja a következő paramétereket:
 
-        -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>  
+        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>  
 
 - **Engedélyezze a replikációt az adott táblák**. Engedélyezze a replikációt table1 table2 és Tábl3, használja a következő paraméterekkel:
 
-        -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"
+        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"
 
 - **Engedélyezze a replikációt az adott táblák, és másolja a meglévő adatok**. Engedélyezze a replikációt table1 table2 és Tábl3, használja a következő paraméterekkel:
 
-        -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata
+        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata
 
 - **Minden tábla a replikáció engedélyezése és a Phoenix metaadatok replikálása forrás célhelyre**. A Phoenix metaadatok replikációs nem tökéletes. Körültekintően használja azt. Használja a következő paramétereket:
 
-        -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta
+        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta
 
 ## <a name="copy-and-migrate-data"></a>Másolja ki és adatok áttelepítése
 
@@ -360,7 +360,7 @@ Az ismertetett eljárást kell követnie is [engedélyezze a replikációt](#ena
 
 A `print_usage()` szakaszában a [parancsfájl](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh) paraméterek részletes leírás.
 
-### <a name="scenarios"></a>Alkalmazási helyzetek
+### <a name="scenarios"></a>Forgatókönyvek
 
 - **Másolja be az adott táblák (Teszt1 test2 és Teszt3) szerkesztett mostanáig minden sort (aktuális időbélyeg)**:
 
@@ -379,28 +379,28 @@ A `print_usage()` szakaszában a [parancsfájl](https://github.com/Azure/hbase-u
 
 Tiltsa le a replikációt, használja a egy másik parancsfájl parancsfájlművelet [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh). Az ismertetett eljárást kell követnie is [engedélyezze a replikációt](#enable-replication) a parancsprogram-művelet meghívásához. Használja a következő paramétereket:
 
-    -m hn1 -s <source cluster DNS name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">  
+    -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">  
 
 A `print_usage()` szakaszában a [parancsfájl](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) rendelkezik paraméterekkel részletes leírását.
 
-### <a name="scenarios"></a>Alkalmazási helyzetek
+### <a name="scenarios"></a>Forgatókönyvek
 
 - **Tiltsa le az összes tábla**:
 
-        -m hn1 -s <source cluster DNS name> -sp Mypassword\!789 -all
+        -m hn1 -s <source hbase cluster name> -sp Mypassword\!789 -all
   vagy
 
-        --src-cluster=<source cluster DNS name> --dst-cluster=<destination cluster DNS name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
+        --src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
 
 - **Tiltsa le a replikációt a megadott táblák (table1 table2 és Tábl3)**:
 
-        -m hn1 -s <source cluster DNS name> -sp <source cluster Ambari password> -t "table1;table2;table3"
+        -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtudhatta, hogyan állíthatja be a HBase-replikáció a virtuális hálózaton belül, vagy két virtuális hálózat között. A HDInsight és a HBase kapcsolatos további információkért tanulmányozza a következő cikkeket:
+Ebben az oktatóanyagban megtudhatta, hogyan állíthat be egy virtuális hálózaton belül, vagy két virtuális hálózat között az Apache HBase-replikálás. A HDInsight és az Apache HBase kapcsolatos további információkért tanulmányozza a következő cikkeket:
 
 * [A HDInsight Apache HBase használatának első lépései](./apache-hbase-tutorial-get-started-linux.md)
-* [HDInsight HBase áttekintése](./apache-hbase-overview.md)
-* [HBase-fürtök létrehozása az Azure Virtual Network](./apache-hbase-provision-vnet.md)
+* [HDInsight az Apache HBase – áttekintés](./apache-hbase-overview.md)
+* [Az Apache HBase-fürtök létrehozása az Azure Virtual Network](./apache-hbase-provision-vnet.md)
 

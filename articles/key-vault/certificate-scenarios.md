@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: bryanla
-ms.openlocfilehash: 4b7192b0c406d2c5df42e3bb3e604f26c56c7bd4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d4d2ce4dcda9ea72d4a33ee363efd3519c2118aa
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235190"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635832"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Ismerkedés a Key Vault-tanúsítványok
 A következő esetekben felvázolják a Key Vault tanúsítvány management szolgáltatás többek között a további lépéseket az első tanúsítvány létrehozásához a key vaultban lévő szükséges elsődleges használatokban.
@@ -51,14 +51,14 @@ Tanúsítványok épülnek fel, a Key Vault-tanúsítvánnyal; egymáshoz kapcso
 
 **3. lépés** – A Contoso-rendszergazda, és a egy Contoso-alkalmazott (Key Vault-felhasználó) függően a CA-tanúsítványok birtokló tanúsítvány beszerzéséhez a rendszergazda vagy közvetlenül a fiók a hitelesítésszolgáltatóhoz.  
 
--   A key vault Hozzáadás hitelesítő adatok a művelet megkezdése [tanúsítványának kibocsátója beállítás](/rest/api/keyvault/setcertificateissuer) erőforrás. A tanúsítvány kiállítója jelöli az Azure Key Vault (KV) CertificateIssuer erőforrásként entitás. A forrás-KV tanúsítvány; kapcsolatos információk megadására szolgál kiállító neve, szolgáltató, hitelesítő adatok és egyéb felügyeleti adatait.
+-   A key vault Hozzáadás hitelesítő adatok a művelet megkezdése [tanúsítványának kibocsátója beállítás](/rest/api/keyvault/setcertificateissuer/setcertificateissuer) erőforrás. A tanúsítvány kiállítója jelöli az Azure Key Vault (KV) CertificateIssuer erőforrásként entitás. A forrás-KV tanúsítvány; kapcsolatos információk megadására szolgál kiállító neve, szolgáltató, hitelesítő adatok és egyéb felügyeleti adatait.
     -   Pl. MyDigiCertIssuer  
         -   Szolgáltató  
         -   Hitelesítő adatok – a Hitelesítésszolgáltatói fiók hitelesítő adatait. Minden CA a saját konkrét adatokat tartalmaz.  
 
      Hitelesítésszolgáltató szolgáltatók fiókok létrehozásával kapcsolatos további információkért tekintse meg a kapcsolódó bejegyzését a [Key Vault blog](https://aka.ms/kvcertsblog).  
 
-**3.1. lépés** - beállítás [tanúsítványt névjegyeket](/rest/api/keyvault/setcertificatecontacts) az értesítésekhez. Ez az az ügyfél a Key Vault-felhasználó számára. A Key Vault nem kényszeríti ki ezt a lépést.  
+**3.1. lépés** - beállítás [tanúsítványt névjegyeket](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts) az értesítésekhez. Ez az az ügyfél a Key Vault-felhasználó számára. A Key Vault nem kényszeríti ki ezt a lépést.  
 
 Megjegyzés: ezt a folyamatot, 3.1. lépés egy olyan egyszeri művelet.  
 
@@ -83,7 +83,7 @@ Megjegyzés: ezt a folyamatot, 3.1. lépés egy olyan egyszeri művelet.
       -   Megújítási információkat - > ex. a lejárat előtt 90 nappal  
 
   - Egy tanúsítvány-létrehozási folyamata általában egy aszinkron folyamat, amely magában foglalja a key vault létrehozása tanúsítványművelet állapotának lekérdezése.  
-[Tanúsítványművelet beolvasása](https://docs.microsoft.com/rest/api/keyvault/getcertificateoperation)  
+[Tanúsítványművelet beolvasása](/rest/api/keyvault/getcertificateoperation/getcertificateoperation)  
       -   Állapot: befejezett, sikertelen, hiba adataival vagy, a visszavont  
       -   A késleltetés hozhat létre, mert a művelet megszakítása kezdeményezhetők. Előfordulhat, hogy a Mégse gombra, vagy nem lehet érvényes.  
 

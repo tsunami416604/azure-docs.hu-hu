@@ -8,14 +8,14 @@ ms.author: hrasheed
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 6c39eb02e9610e0020ab2abe8a192dabf0b768d9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 78d18bfe0f47517067fbb053a2d7e076b15761a7
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241316"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581000"
 ---
-# <a name="create-spark-streaming-jobs-with-exactly-once-event-processing"></a>A Spark Streamelési feladatok létrehozása pontosan – egyszeri esemény feldolgozása
+# <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Az Apache Spark Streamelési feladatok létrehozása pontosan – egyszeri esemény feldolgozása
 
 Stream-feldolgozó alkalmazások többféle hogyan azokat újra feldolgozási üzenetek kezeléséhez néhány hiba után a rendszer hajtsa végre:
 
@@ -25,7 +25,7 @@ Stream-feldolgozó alkalmazások többféle hogyan azokat újra feldolgozási ü
 
 Ez a cikk bemutatja, hogyan konfigurálhatja a Spark Streaming pontosan eléréséhez-egyszeri feldolgozását.
 
-## <a name="exactly-once-semantics-with-spark-streaming"></a>Pontosan-egyszer szemantika a Spark Streaming
+## <a name="exactly-once-semantics-with-apache-spark-streaming"></a>Pontosan-egyszer szemantika az Apache Spark Streaming
 
 Először vegye figyelembe az összes, a rendszer pontokat újraindítása után probléma, és hogyan adatok elvesztését elkerülheti. A Spark Streaming alkalmazás rendelkezik:
 
@@ -41,11 +41,11 @@ Pontosan-szemantika megkövetelése, hogy bármikor adatvesztés, pedig a üzene
 
 A Spark Streaming alkalmazás éppen olvas az események forrása lehet *replayable*. Ez azt jelenti, hogy azokban az esetekben, ahol az üzenet megtörtént, de majd a rendszer nem sikerült, mielőtt az üzenet volt maradnak meg vagy feldolgozott, a forrás kell megadnia ugyanazt az üzenetet újra.
 
-Az Azure-ban az Azure Event Hubs és a Kafka on HDInsight biztosítanak replayable források. Egy másik példa replayable forrás és hibatűrő fájlrendszer, például HDFS, az Azure Storage-blobokkal, vagy az Azure Data Lake Store, ahol az összes adatért tartja, és bármikor, újra olvassa el ebben az esetben az adatok.
+Az Azure-ban, mind az Azure Event Hubs és a [Apache Kafka](https://kafka.apache.org/) HDInsight biztosítson replayable források. Replayable forrás egy másik példa egy olyan és hibatűrő fájlrendszer, például [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html), az Azure Storage-blobokkal, vagy az Azure Data Lake Store, ahol örökre tárolt összes adatot, és bármikor újra olvassa el a teljes egészében az adatokat.
 
 ### <a name="reliable-receivers"></a>Megbízható fogadók
 
-A Spark Streaming, adatforrások, az Event Hubs és a Kafka rendelkezik *megbízható fogadók*, ahol minden egyes fogadó nyomon követi az előrehaladási állapotát a forrás olvasása. A megbízható fogadó továbbra is fennáll az állapotában és hibatűrő tárolási, ZooKeeper belül vagy a Spark Streaming ellenőrzőpontok HDFS írt be. Ha például egy fogadó nem sikerül, és későbbi újraindítását, folytathatja a munkát, ahol abbahagyta.
+A Spark Streaming, adatforrások, az Event Hubs és a Kafka rendelkezik *megbízható fogadók*, ahol minden egyes fogadó nyomon követi az előrehaladási állapotát a forrás olvasása. A megbízható fogadó állapotában és hibatűrő tárolási, belül vagy az továbbra is fennáll. [Apache ZooKeeper](https://zookeeper.apache.org/) vagy a Spark Streaming ellenőrzőpontokat a HDFS-be írni. Ha például egy fogadó nem sikerül, és későbbi újraindítását, folytathatja a munkát, ahol abbahagyta.
 
 ### <a name="use-the-write-ahead-log"></a>Az írási előre bejelentkezési
 
@@ -89,5 +89,5 @@ Egy másik példa, particionált fájlrendszer, mint az Azure Storage-blobok, il
 
 ## <a name="next-steps"></a>További lépések
 
-* [Spark Streamelés – áttekintés](apache-spark-streaming-overview.md)
-* [Magas rendelkezésre állású Spark Streamelési feladatok létrehozása a YARN-ban](apache-spark-streaming-high-availability.md)
+* [Az Apache Spark Streamelési áttekintése](apache-spark-streaming-overview.md)
+* [Az Apache Hadoop YARN magas rendelkezésre állású Apache Spark Streamelési feladatok létrehozása](apache-spark-streaming-high-availability.md)

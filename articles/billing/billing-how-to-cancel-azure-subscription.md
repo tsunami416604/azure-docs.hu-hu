@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: cwatson
-ms.openlocfilehash: dfce0a97812cb958e4fb299d0225b42a7aa8f68f
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: de5fd6e52ab93132920b1c98188cbea92b9900b5
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276300"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584349"
 ---
 # <a name="cancel-your-subscription-for-azure"></a>Az Azure-előfizetés megszüntetése
 
@@ -58,6 +58,6 @@ Ha véletlenül megszakítja a használatalapú fizetéses előfizetést, akkor 
 
 Ha az előfizetés nem használatalapú, forduljon az ügyfélszolgálathoz megszakítás és aktiválja újra előfizetését 90 napon belül.
 
-## <a name="need-help-contact-support"></a>Segítség Forduljon az ügyfélszolgálathoz.
+## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 
-Ha kérdése van, még akkor [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

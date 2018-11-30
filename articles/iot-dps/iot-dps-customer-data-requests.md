@@ -7,12 +7,12 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: d6355926c8fac62b01c36d28265842b1233ce213
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5dd027c886e8102e77ddefe93817daee0e1ec29b
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38666943"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584151"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Vásárlói adatok funkciók összefoglalása
 
@@ -39,9 +39,9 @@ További információkért lásd: [eszközök beléptetésének kezelése](how-t
 
 Lehetőség arra is regisztrációk és regisztrációs bejegyzések REST API-k használatával a törlési műveletek végrehajtásához:
 
-* Regisztrációs információk egy adott eszköz törléséhez használhatja [Eszközregisztráció - Törlés](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollment/delete).
-* Regisztrációs információk az eszközök egy csoportját törléséhez használhatja [eszköz regisztrációs csoport - törlési](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollmentgroup/delete).
-* Kiépített eszközökkel kapcsolatos információk törléséhez használhatja [regisztrációs állapot - törlési regisztrációs állapot](https://docs.microsoft.com/rest/api/iot-dps/registrationstate/deleteregistrationstate).
+* Regisztrációs információk egy adott eszköz törléséhez használhatja [Eszközregisztráció - Törlés](/rest/api/iot-dps/deleteindividualenrollment/deleteindividualenrollment).
+* Regisztrációs információk az eszközök egy csoportját törléséhez használhatja [eszköz regisztrációs csoport - törlési](/rest/api/iot-dps/deleteenrollmentgroup/deleteenrollmentgroup).
+* Kiépített eszközökkel kapcsolatos információk törléséhez használhatja [regisztrációs állapot - törlési regisztrációs állapot](/rest/api/iot-dps/deletedeviceregistrationstate/deletedeviceregistrationstate).
 
 ## <a name="exporting-customer-data"></a>Vásárlói adatok exportálása
 
@@ -53,9 +53,9 @@ Regisztrációk kezeléséről további információkért lásd: [eszközök bel
 
 Lehetőség arra is regisztrációk és a REST API-k használatával regisztrációs rekordok exportálása műveleteinek elvégzéséhez:
 
-* Egy adott eszköz beléptetési információit exportálásához használja [Eszközregisztráció – Get](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollment/get).
-* Szeretné exportálni a regisztrációs információk az eszközök egy csoportját, használhatja a [eszköz regisztrációs csoport - Get](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollmentgroup/get).
-* Már kiépített eszközökkel kapcsolatos információk exportálásához használja [regisztrációs állapot - Get-regisztrációs állapot](https://docs.microsoft.com/rest/api/iot-dps/registrationstate/getregistrationstate).
+* Egy adott eszköz beléptetési információit exportálásához használja [Eszközregisztráció – Get](/rest/api/iot-dps/getindividualenrollment/getindividualenrollment).
+* Szeretné exportálni a regisztrációs információk az eszközök egy csoportját, használhatja a [eszköz regisztrációs csoport - Get](/rest/api/iot-dps/getenrollmentgroup/getenrollmentgroup).
+* Már kiépített eszközökkel kapcsolatos információk exportálásához használja [regisztrációs állapot - Get-regisztrációs állapot](/rest/api/iot-dps/getdeviceregistrationstate/getdeviceregistrationstate).
 
 > [!NOTE]
 > A Microsoft enterprise szolgáltatást használ, a Microsoft néhány információt, a rendszer által létrehozott naplók néven hoz létre. Egyes Device Provisioning Service-rendszer által létrehozott naplókban nincsenek elérhető vagy nem exportálható a bérlői rendszergazdák. Ezek a naplók a műveletek előzményrekordjait a szolgáltatás és az egyes eszközökkel kapcsolatos diagnosztikai adatok képezik.

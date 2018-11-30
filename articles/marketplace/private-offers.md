@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: qianw211
-ms.openlocfilehash: cd94f17c6f8bb8cc5bc09222d4b561eefff6b20c
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 1efe65feaac6e71437958451e8c1a44027495fce
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266955"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620013"
 ---
 # <a name="private-offers"></a>Saját ajánlatok
 
@@ -37,7 +37,7 @@ Saját ajánlatok lehetővé teszik a közzétevők a rugalmasságot és irány�
 
 Saját ajánlatok számára érhető el virtuális gép Azure-alkalmazás (megvalósítva, megoldássablonok vagy felügyelt alkalmazások), és SaaS-alkalmazásokat kínál. Nyilvános ajánlatokat, mint saját ajánlatok is létrehozhatóak és felügyelhetőek keresztül a [Cloud Partner Portalon](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus).  Az ügyfelek is megadható, vagy saját ajánlatok percek alatt hozzáférést visszavonták.
 
-## <a name="creating-private-offers-using-skus-and-plans"></a>SKU-k használatával és a csomagok létrehozása a saját ajánlatok
+## <a name="creating-private-offers-using-skus-and-plans"></a>SKU-k és tervek létrehozása saját kínál
 
 A *nyilvános SKU-k vagy a csomag új vagy meglévő ajánlatok*, közzétevők könnyedén hozhat létre új, privát költségszámítóban új termékváltozatok és tervek létrehozása, és privát megjelölése őket.  [Privát termékváltozatok](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus) és a terveket az ajánlat összetevő, és csak látható és a megcélzott felhasználók által megvásárolható. Privát SKU-k és a tervek is újból felhasználhatja az alaprendszerképek lekéréshez és/vagy egy nyilvános Termékváltozat vagy csomag már közzétett metaadatok kínálnak. Ez a beállítás lehetővé teszi, hogy a kiadók számára hozzon létre egy nyilvános ajánlat több privát változata azonos alaplemezkép több verziójának közzététele és metaadatok nélkül. Virtuális gép és az Azure application, amelyek csak amikor egy privát Termékváltozat alapképet osztanak meg a nyilvános Termékváltozat módosítania kellene az ajánlat alaplemezkép továbbterjeszti alapszintű rendszerkép használata a nyilvános és privát termékváltozatok között.
 

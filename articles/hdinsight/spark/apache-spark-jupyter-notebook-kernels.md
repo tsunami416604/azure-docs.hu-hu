@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: d3694d49256b9844f6e3a76ce83f53be4b42ca48
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ea54419f230a7988a42fd4b85be0d212ee3d14d4
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006090"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582581"
 ---
-# <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>-Kernelek Jupyter notebook az Azure HDInsight Spark-fürtökön 
+# <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>-Kernelek Jupyter notebook az Azure HDInsight az Apache Spark-fürtök 
 
-HDInsight Spark-fürtök az alkalmazásokat kíván tesztelni, használhatja a Spark, a Jupyter notebookkal kernelt biztosítanak. A rendszermag egy olyan program, fut, és a kód értelmezi. A három kernelt a következők:
+HDInsight Spark-fürtökön is használhatja a Jupyter notebookkal a kernelt biztosítanak [Apache Spark](https://spark.apache.org/) az alkalmazások teszteléséhez. A rendszermag egy olyan program, fut, és a kód értelmezi. A három kernelt a következők:
 
 - **PySpark** – Python2 írt alkalmazások esetén
 - **PySpark3** – Python3-ban írt alkalmazások
@@ -82,7 +82,7 @@ Az alábbiakban néhány előnyei az új kernelekkel a Jupyter notebookot HDInsi
    | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |Futtatják a Hive-lekérdezést a kontext sqlContext ellen. Ha a `-o` paramétert, a lekérdezés eredménye a rendszer megőrzi a %% helyi Python-környezetben egy [Pandas](http://pandas.pydata.org/) dataframe. |
    | helyi |`%%local`<br>`a=1` |A következő sorokban minden kód helyileg hajtja végre. Kód akár a kernelt használja függetlenül érvényes Python2-kódot kell lennie. Igen, akkor is, ha a kiválasztott **PySpark3** vagy **Spark** kernelekkel létrehozásakor a notebook használatakor a `%%local` magic egy cellába, a cella csak rendelkeznie kell érvényes Python2-kód... |
    | naplók |`%%logs` |Az aktuális Livy-munkamenet jelenít meg a naplókat. |
-   | törlés |`%%delete -f -s <session number>` |A jelenlegi Livy-végpont egy adott munkamenet törlése. Maga a kernel kezdeményezett munkamenet nem törölhető. |
+   | delete |`%%delete -f -s <session number>` |A jelenlegi Livy-végpont egy adott munkamenet törlése. Maga a kernel kezdeményezett munkamenet nem törölhető. |
    | tisztítás |`%%cleanup -f` |Törli a jelenlegi Livy-végpont gazdanevét a jegyzetfüzet-munkamenet az összes előadáshoz. A kényszerített jelző -f megadása kötelező. |
 
    > [!NOTE]
@@ -135,7 +135,7 @@ Ha a fürt Azure Storage, az alapértelmezett tárfiókot használja, a Jupyter 
 > HDInsight-fürtöket az Azure Data Lake Store az alapértelmezett tárolóként ne tárolja a notebookok társított storage-ban.
 >
 
-A lehetőség notebookok a tárfiókba lesznek mentve, HDFS-kompatibilis. Ha tehát Ön SSH-t a fürt használhatja kezelési parancsok fájlt, az alábbi kódrészletben látható módon:
+A notebookok a tárfiókba lesznek mentve módja kompatibilis [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html). Ha tehát Ön SSH-t a fürt használhatja kezelési parancsok fájlt, az alábbi kódrészletben látható módon:
 
     hdfs dfs -ls /HdiNotebooks                               # List everything at the root directory – everything in this directory is visible to Jupyter from the home page
     hdfs dfs –copyToLocal /HdiNotebooks                    # Download the contents of the HdiNotebooks folder
@@ -153,20 +153,20 @@ Az új kernelekkel fázis fejlődő és idővel részletes lesz. Ez is jelenthet
 ## <a name="seealso"></a>Lásd még:
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 
-### <a name="scenarios"></a>Alkalmazási helyzetek
-* [Spark és BI: Interaktív adatelemzés végrehajtása a Spark on HDInsight használatával, BI-eszközökkel](apache-spark-use-bi-tools.md)
-* [Spark és Machine Learning: A Spark on HDInsight használata az épület-hőmérséklet elemzésére HVAC-adatok alapján](apache-spark-ipython-notebook-machine-learning.md)
-* [Spark és Machine Learning: A Spark on HDInsight használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
-* [A webhelynapló elemzése a Spark on HDInsight használatával](apache-spark-custom-library-website-log-analysis.md)
+### <a name="scenarios"></a>Forgatókönyvek
+* [Az Apache Spark és BI: interaktív adatelemzés a Spark on HDInsight használatával, BI-eszközökkel végrehajtása](apache-spark-use-bi-tools.md)
+* [Az Apache Spark és Machine Learning: a Spark on HDInsight HVAC-adatok épület-hőmérséklet elemzésére a használata](apache-spark-ipython-notebook-machine-learning.md)
+* [Az Apache Spark és Machine Learning: használja a Spark on HDInsight az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
+* [A webhelynapló elemzése a HDInsight az Apache Spark használatával](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása
 * [Önálló alkalmazás létrehozása a Scala használatával](apache-spark-create-standalone-application.md)
-* [Feladatok távoli futtatása Spark-fürtön a Livy használatával](apache-spark-livy-rest-interface.md)
+* [Feladatok távoli futtatása egy Apache Spark fürtön a Livy használatával](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Eszközök és bővítmények
 * [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark Scala-alkalmazások létrehozásához és elküldéséhez](apache-spark-intellij-tool-plugin.md)
-* [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark-alkalmazások távoli hibaelhárításához](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Zeppelin notebookok használata Spark-fürttel HDInsighton](apache-spark-zeppelin-notebook.md)
+* [Az Apache Spark-alkalmazások távoli hibakeresése az IntelliJ IDEA HDInsight-eszközei beépülő használata](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Az Apache Zeppelin notebookok használata a HDInsight Apache Spark-fürt](apache-spark-zeppelin-notebook.md)
 * [Külső csomagok használata Jupyter notebookokkal](apache-spark-jupyter-notebook-use-external-packages.md)
 * [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](apache-spark-jupyter-notebook-install-locally.md)
 

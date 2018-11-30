@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: 2fff332665652516e4ac25c4eb1a4612c15e2412
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 4200accee94840a8a4455308f24a857fd5d7034a
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824676"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632976"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Az Azure Monitor az adatok megjelenítése
 Ez a cikk az Azure Monitor-ban tárolt adatok megjelenítése a választható módszerek összegzését tartalmazza. Ez magában foglalja [mérőszámok az Azure-metrikagyűjtéshez áruházban](../azure-monitor/platform/data-collection.md#metrics) és [adatok Log Analytics naplóbeli](../azure-monitor/platform/data-collection.md#logs). 
@@ -50,7 +50,7 @@ Vizualizációk, például diagramokat és ábrákat segíthet a problémák ré
 - Korlátozott környezetfüggő részletezése.
 
 ## <a name="azure-monitor-views"></a>Az Azure Monitor-nézetek
-[Az Azure monitorban nézetek](../log-analytics/log-analytics-view-designer.md) hozhat létre egyéni vizualizációkat az Log Analytics szolgáltatásban tárolt naplóadatokért. Által használt [figyelési megoldások](../azure-monitor/insights/solutions.md) a gyűjtött adatok.
+[Az Azure monitorban nézetek](../azure-monitor/platform/view-designer.md) hozhat létre egyéni vizualizációkat az Log Analytics szolgáltatásban tárolt naplóadatokért. Által használt [figyelési megoldások](../azure-monitor/insights/solutions.md) a gyűjtött adatok.
 
 ![Nézet](media/visualizations/view.png)
 
@@ -58,7 +58,7 @@ Vizualizációk, például diagramokat és ábrákat segíthet a problémák ré
 - Sokoldalú megjelenítési lehetőségek a Log Analytics-adatok.
 - Exportálása és importálása a át más erőforráscsoportok és előfizetések nézeteket.
 - Integrálja a Log Analytics felügyeleti modell munkaterületek és figyelési megoldásokkal.
-- [Szűrők](../log-analytics/log-analytics-view-designer-filters.md) egyéni paraméterek.
+- [Szűrők](../azure-monitor/platform/view-designer-filters.md) egyéni paraméterek.
 - Interaktív, támogatja a többszintű részletezés-a (nézet, amely egy másik nézetre működéseinek)
 
 ### <a name="limitations"></a>Korlátozások
@@ -140,7 +140,7 @@ Bármely REST-ügyfél, amely lehetővé teszi, hogy a saját egyéni webhelyek 
 ## <a name="next-steps"></a>További lépések
 - További információ a [Azure Monitor által gyűjtött adatok](../azure-monitor/platform/data-collection.md).
 - Ismerje meg [Azure-irányítópultok](../azure-portal/azure-portal-dashboards.md).
-- Ismerje meg [nézetek az Azure Monitor](../log-analytics/log-analytics-view-designer.md).
+- Ismerje meg [nézetek az Azure Monitor](../azure-monitor/platform/view-designer.md).
 - Ismerje meg [az Application Insights-munkafüzetek](../application-insights/app-insights-usage-workbooks.md).
 - Ismerje meg [Teljesítménynapló-adatok importálása a Power BI-bA](../log-analytics/log-analytics-powerbi.md).
 - További információ a [Grafana az Azure Monitor adatforrás-beépülő modul](../monitoring-and-diagnostics/monitor-send-to-grafana.md).

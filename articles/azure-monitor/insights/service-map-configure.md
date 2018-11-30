@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 9885783428b51a71fee8733a9d054e82eca0f2f9
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: cead67bf18dcd0ea7b5c1479588083884dab475f
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51828325"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632959"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurálja a Service Map az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Használhatja a kiszolgálók megtekintéséhez, ahogyan Ön gondol rájuk összekapcsolt rendszerekkel, amelyek kritikus fontosságú szolgáltatásokat. A Service Map megmutatja a kapcsolatokat kiszolgálók, folyamatok és portok között bármely TCP-kapcsolattal összekötött architektúrában semmilyen beállítást nem szükséges, eltérő ügynököt telepíteni.
@@ -133,8 +133,8 @@ A Service Map az adatok lekérése a Microsoft Dependency agent. A függőségi 
 
 | Csatlakoztatott forrás | Támogatott | Leírás |
 |:--|:--|:--|
-| Windows-ügynökök | Igen | A Service Map elemzi, és gyűjti az adatokat Windows-számítógépek. <br><br>Mellett a [Log Analytics-ügynököket for Windows](../../log-analytics/log-analytics-agent-overview.md), Windows-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
-| Linux-ügynökök | Igen | A Service Map elemzi, és a Linux rendszerű számítógépek gyűjti az adatokat. <br><br>Mellett a [Linuxhoz készült Log Analytics-ügynök](../../log-analytics/log-analytics-agent-overview.md), Linux-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
+| Windows-ügynökök | Igen | A Service Map elemzi, és gyűjti az adatokat Windows-számítógépek. <br><br>Mellett a [Log Analytics-ügynököket for Windows](../../azure-monitor/platform/log-analytics-agent.md), Windows-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
+| Linux-ügynökök | Igen | A Service Map elemzi, és a Linux rendszerű számítógépek gyűjti az adatokat. <br><br>Mellett a [Linuxhoz készült Log Analytics-ügynök](../../azure-monitor/platform/log-analytics-agent.md), Linux-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
 | System Center Operations Manage felügyeleti csoport | Igen | A Service Map elemzi, és a egy csatlakoztatott a Windows és Linux-ügynökök gyűjti az adatokat [System Center Operations Manager felügyeleti csoport](../../log-analytics/log-analytics-om-agents.md). <br><br>Ehhez közvetlen kapcsolat szükséges a System Center Operations Manager-ügynökszámítógép és a Log Analytics között. |
 | Azure Storage-fiók | Nem | A Service Map gyűjti az adatokat ügynökszámítógépen, így nem szerepel megjeleníthető adat gyűjtését az Azure Storage-ból származó. |
 
@@ -153,7 +153,7 @@ Ha egy System Center Operations Manager-ügyfél a Log Analytics csatlakozik a f
 - Ha a System Center Operations Manager-ügynökök el tudja érni az internetet a Log Analyticshez való csatlakozáshoz, további konfiguráció nélkül nem szükséges.  
 - Ha a System Center Operations Manager-ügynökök az interneten keresztül nem érhető el a Log Analytics, a Log Analytics-átjáró használata a System Center Operations Manager konfigurálása szüksége.
   
-Ha a Windows vagy Linux rendszerű számítógépek közvetlenül nem tud csatlakozni a szolgáltatáshoz, konfigurálása a Log Analytics-ügynököket a Log Analytics-munkaterület használata az átjáró csatlakozni szeretne. Hogyan telepítheti és konfigurálhatja a Log Analytics-átjáró további információkért lásd: [számítógépek csatlakoztatása a Log Analytics-átjáró Internet-hozzáférés nélküli](../../log-analytics/log-analytics-oms-gateway.md).  
+Ha a Windows vagy Linux rendszerű számítógépek közvetlenül nem tud csatlakozni a szolgáltatáshoz, konfigurálása a Log Analytics-ügynököket a Log Analytics-munkaterület használata az átjáró csatlakozni szeretne. Hogyan telepítheti és konfigurálhatja a Log Analytics-átjáró további információkért lásd: [számítógépek csatlakoztatása a Log Analytics-átjáró Internet-hozzáférés nélküli](../../azure-monitor/platform/gateway.md).  
 
 ### <a name="management-packs"></a>Felügyeleti csomagok
 A Service Map aktiválásakor a Log Analytics-munkaterületen, 300 KB-os felügyeleti csomag munkaterület Windows-kiszolgálók lesznek továbbítva. Ha a System Center Operations Manager ügynököt használ egy [csatlakoztatott felügyeleti csoport](../../log-analytics/log-analytics-om-agents.md), a Service Map felügyeleti csomag telepítése a System Center Operations Managerből. 
@@ -230,7 +230,7 @@ A függőségi ügynök telepítheti manuálisan a Windows-számítógépeken fu
 
 A következő lépések segítségével telepítse a függőségi ügynököt minden olyan Windows-számítógépen:
 
-1.  Az ismertetett módszerek valamelyikét a következő Windows készült Log Analytics-ügynök telepítése [Log Analytics-ügynök – áttekintés](../../log-analytics/log-analytics-agent-overview.md).
+1.  Az ismertetett módszerek valamelyikét a következő Windows készült Log Analytics-ügynök telepítése [Log Analytics-ügynök – áttekintés](../../azure-monitor/platform/log-analytics-agent.md).
 2.  A Windows-ügynök letöltése, és futtassa a következő paranccsal: 
     
     `InstallDependencyAgent-Windows.exe`
@@ -258,7 +258,7 @@ A függőségi ügynök telepítve van a Linux-számítógépeken `InstallDepend
 
 Az alábbi lépések segítségével a függőségi ügynök telepítése minden egyes Linux rendszerű számítógépen:
 
-1.  Az ismertetett módszerek valamelyikét a következő Log Analytics-ügynök telepítése [Log Analytics-ügynök – áttekintés](../../log-analytics/log-analytics-agent-overview.md).
+1.  Az ismertetett módszerek valamelyikét a következő Log Analytics-ügynök telepítése [Log Analytics-ügynök – áttekintés](../../azure-monitor/platform/log-analytics-agent.md).
 2.  A Linux függőségi ügynök telepítése rendszergazdaként a következő parancs futtatásával:
     
     `sh InstallDependencyAgent-Linux64.bin`
@@ -390,7 +390,7 @@ Ha a függőségi ügynök telepítése sikeres volt, de a kiszolgáló a Servic
 
         Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
 
-Jutott el a különféle eseményekre az eredmények között? Az adatok legutóbbi? Ha igen, a Log Analytics-ügynök megfelelően működik és a Log Analytics használatával való kommunikációhoz. Ha nem, ellenőrizze a kiszolgálón az ügynök: [Log Analytics-ügynököket Windows hibaelhárítási](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) vagy [Log Analytics-ügynök Linux hibaelhárítási](../../log-analytics/log-analytics-agent-linux-support.md).
+Jutott el a különféle eseményekre az eredmények között? Az adatok legutóbbi? Ha igen, a Log Analytics-ügynök megfelelően működik és a Log Analytics használatával való kommunikációhoz. Ha nem, ellenőrizze a kiszolgálón az ügynök: [Log Analytics-ügynököket Windows hibaelhárítási](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) vagy [Log Analytics-ügynök Linux hibaelhárítási](../../azure-monitor/platform/agent-linux-troubleshoot.md).
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>Kiszolgáló megjelenik a Szolgáltatástérkép, de nincs folyamatokat
 Ha a kiszolgáló a Service Map, de azt nem rendelkezik folyamat vagy kapcsolati adatokkal, azt jelzi, hogy a függőségi ügynök telepítve és fut, de a kernel-illesztőprogram nem töltődött be. 

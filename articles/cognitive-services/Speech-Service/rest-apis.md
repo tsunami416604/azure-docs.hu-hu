@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: erhopf
-ms.openlocfilehash: 5522b076fdf3d4e339f5e170679f389259ff1359
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: ce9b3df5093d51eac0a151269b486b5f1310700c
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713129"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584859"
 ---
 # <a name="speech-service-rest-apis"></a>Beszédfelismerési szolgáltatás REST API-k
 
@@ -286,7 +286,7 @@ Hang küldése a HTTP törzsében `POST` kérelmet. A jelen táblázatban lévő
 | OGG | OPUS | 16-bit | 16 kHz, mono |
 
 >[!NOTE]
->A fenti formátumok REST API-t és a WebSocket a Speech Service-ben támogatottak. A [beszéd SDK](/index.yml) jelenleg csak támogatja a WAV PCM kodekkel formázása.
+>A fenti formátumok REST API-t és a WebSocket a Speech Service-ben támogatottak. A [beszéd SDK](speech-sdk.md) jelenleg csak támogatja a WAV PCM kodekkel formázása.
 
 ### <a name="sample-request"></a>Mintakérelem
 
@@ -433,8 +433,8 @@ A beszédfelismerési szolgáltatás 24-KHz hang kimenetet, és a Bing Speech á
 
 | Területi beállítás | Nyelv   | Nem | Társítás |
 |--------|------------|--------|---------|
-| hu-HU  | Amerikai angol | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Jessa24kRUS)" |
-| hu-HU  | Amerikai angol | Férfi   | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Guy24kRUS)" |
+| en-US  | Amerikai angol | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Jessa24kRUS)" |
+| en-US  | Amerikai angol | Férfi   | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Guy24kRUS)" |
 
 Rendelkezésre álló beszédhangot teljes listáját lásd: [támogatott nyelvek](language-support.md#text-to-speech).
 

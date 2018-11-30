@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: ea0987eaea8ee558df35ecce6afb5e7bab3ac4de
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 6b4b1b74ace534517157edc20c33236d516205c5
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087626"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635016"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso áttelepítése: a helyszíni számítási feladatok Azure-bA migrálásának értékelése
 
@@ -125,8 +125,8 @@ A Contoso és más felhasználók az értékelés a következő előfeltételekn
 - Legalább két helyszíni VMware virtuális gép, amelyek közül az egyik egy SQL Server-adatbázist futtat.
 - Engedélyek az Azure Migrate-ügynökök telepítéséhez minden virtuális gépen.
 - A virtuális gépeknek közvetlen internetkapcsolattal kell rendelkezniük.  
-        - Az internetes hozzáférést korlátozhatja [a szükséges URL-címekre](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites).  
-        – Ha a virtuális gépek nem rendelkezik internetkapcsolattal, az Azure [Log Analytics-átjáró](../log-analytics/log-analytics-oms-gateway.md) telepíteni kell őket, és az ügynök forgalmat rajta keresztül.
+    - Internet-hozzáférést korlátozhatja a [szükséges URL-címekre](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites).  
+    - Ha a virtuális gépek nem rendelkezik internetkapcsolattal, az Azure [Log Analytics-átjáró](../azure-monitor/platform/gateway.md) telepíteni kell őket, és az ügynök forgalmat rajta keresztül.
 - Az SQL Server-példányt futtató virtuális gép teljes tartományneve az adatbázis-értékeléshez.
 - Az SQL Server virtuális gépen futó Windows tűzfalnak engedélyeznie kell a külső kapcsolatokat a 1433-as (alapértelmezett) TCP-porton. Ez a beállítás lehetővé teszi a Data Migration Assistant való csatlakozáshoz.
 

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: raynew
-ms.openlocfilehash: 352ff105f5cd443fba74e05ebce22c14f08e63a0
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: d79513569b53d2b8958f44fbfac3839c91caaff8
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823673"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634302"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Eszközcsoport-leképezés függőségi csoport pontosítása
 
@@ -39,7 +39,7 @@ Kihasználhatja a függőségek képi megjelenítésével, hozzá kell rendelni 
 > A migrálási projekthez tartozó munkaterület nem módosítható.
 
 ### <a name="download-and-install-the-vm-agents"></a>A virtuálisgép-ügynökök letöltése és telepítése
-Egy csoport függőségek megjelenítéséhez szüksége, töltse le és telepítse az ügynököt minden olyan a csoport tagja a helyi gépen. Ezenkívül, ha internetkapcsolat nélküli gépek, kell letölteni és telepíteni [Log Analytics-átjáró](../log-analytics/log-analytics-oms-gateway.md) rajtuk.
+Egy csoport függőségek megjelenítéséhez szüksége, töltse le és telepítse az ügynököt minden olyan a csoport tagja a helyi gépen. Ezenkívül, ha internetkapcsolat nélküli gépek, kell letölteni és telepíteni [Log Analytics-átjáró](../azure-monitor/platform/gateway.md) rajtuk.
 
 1. A **áttekintése**, kattintson a **kezelés** > **csoportok**, nyissa meg a szükséges csoport.
 2. Gépek, a listában az a **függőségi ügynök** oszlopot, kattintson a **telepítés szükséges** megjelenő arról, hogyan töltse le és telepítse az ügynököket.

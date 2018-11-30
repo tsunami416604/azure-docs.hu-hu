@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 2e14112220eeea1df094ff0c5844429fa3891a9b
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 8337d6b353b6651a2699176813220ed7a7a0f879
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612805"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634795"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Azure-bA az OMS-portálon
 
@@ -84,7 +84,7 @@ Van már nem hozhat létre új munkaterületek az OMS-portálon. Kövesse az út
 Riasztások lett [kiterjeszthetők az Azure Portalon](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Miután ez befejeződött, a riasztásokat a felügyeleti műveletek csak az Azure Portalon érhető el. Meglévő riasztásokat továbbra is megjelennek az OMS-portálon. Ha a riasztásokat programozott a Log Analytics Alert REST API vagy a Log Analytics riasztási Resource-sablon használatával, szüksége Műveletcsoportok használata az API-hívások, Azure Resource Manager-sablonok és PowerShell-parancsok műveletei helyett.
 
 ### <a name="alert-management-solution"></a>Riasztáskezelés megoldás
-Helyett a [felügyeleti megoldás riasztás](log-analytics-solution-alert-management.md), használható [Azure Monitor riasztási felület egyesített](../monitoring-and-diagnostics/monitoring-overview-alerts.md) jelenítheti meg és kezelheti a riasztásokat. Az új felületet is beleértve naplóriasztások az Azure Log Analytics belül több forrásból származó összesíti azokat a riasztásokat. Tekintse meg a riasztások disztribúciók, intelligens csoportok keresztül kapcsolódó riasztások Automatikus csoportosítás előnyeit, és megtekintheti a riasztásokat több előfizetésre kiterjedő gazdag szűrők alkalmazása közben. Ezek a szolgáltatások előzetes verziója 2018. június 4 kezdve érhetők el. A riasztási felügyeleti megoldás nem lesz elérhető az Azure Portalon. 
+Helyett a [felügyeleti megoldás riasztás](../azure-monitor/platform/alert-management-solution.md), használható [Azure Monitor riasztási felület egyesített](../monitoring-and-diagnostics/monitoring-overview-alerts.md) jelenítheti meg és kezelheti a riasztásokat. Az új felületet is beleértve naplóriasztások az Azure Log Analytics belül több forrásból származó összesíti azokat a riasztásokat. Tekintse meg a riasztások disztribúciók, intelligens csoportok keresztül kapcsolódó riasztások Automatikus csoportosítás előnyeit, és megtekintheti a riasztásokat több előfizetésre kiterjedő gazdag szűrők alkalmazása közben. Ezek a szolgáltatások előzetes verziója 2018. június 4 kezdve érhetők el. A riasztási felügyeleti megoldás nem lesz elérhető az Azure Portalon. 
 
 A riasztási felügyeleti megoldások (riasztás típussal rendelkező rekordok) által gyűjtött adatok továbbra is a Log Analytics mindaddig, amíg a megoldás telepítve van-e a munkaterületen. 2018 augusztus kezdődően a munkaterületek, egységes riasztásokban riasztások streamelési engedélyezve lesz, és cserélje le ezt a funkciót. Néhány sémaváltozások várható, és később lesz bejelentve.
 
@@ -98,7 +98,7 @@ A támogatási [erőforrások közötti lekérdezések](log-analytics-cross-work
 
 
 ## <a name="azure-network-security-group-analytics"></a>Azure Network Security Group Analytics
-A [Azure hálózati biztonsági csoport Analytics megoldás](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) fogja írni a nemrégiben megjelent a [Traffic Analytics](https://azure.microsoft.com/blog/traffic-analytics-in-preview/) amelyek felhasználói és alkalmazástevékenységekbe rálátást biztosít a felhőalapú hálózatokhoz. A TRAFFIC Analytics segítségével a szervezet hálózati tevékenység, a biztonságos alkalmazások és adatok naplózása, a számítási feladatok teljesítményének optimalizálása és a megfelelnek. 
+A [Azure hálózati biztonsági csoport Analytics megoldás](../azure-monitor/insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) fogja írni a nemrégiben megjelent a [Traffic Analytics](https://azure.microsoft.com/blog/traffic-analytics-in-preview/) amelyek felhasználói és alkalmazástevékenységekbe rálátást biztosít a felhőalapú hálózatokhoz. A TRAFFIC Analytics segítségével a szervezet hálózati tevékenység, a biztonságos alkalmazások és adatok naplózása, a számítási feladatok teljesítményének optimalizálása és a megfelelnek. 
 
 Ez a megoldás elemzi a hálózati biztonsági csoportok naplóinak és elemezheti a következő.
 

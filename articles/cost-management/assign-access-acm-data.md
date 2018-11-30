@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/09/2018
+ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: ''
-ms.openlocfilehash: 0c34b44bb0dc5458bab842e62a88403db08dc07a
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 3096a79737c816747f36956958f9a16f86b9715d
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275418"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582598"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Cost Management adataihoz való hozzáférés hozzárendelése
 
@@ -42,7 +42,7 @@ Költségadatok megtekintése, a felhasználó kell rendelkeznie legalább olvas
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>A nagyvállalati szerződések portáljának költségek hozzáférésének engedélyezése
 
-A számlázási fiók hatókörében van szükség a **DA költségek megtekintése** beállítás **engedélyezve** az EA-portálon. Minden hatókör szükséges a **AO költségek megtekintése** beállítás **engedélyezve** az EA-portálon.
+A részleg hatókör van szükség a **DA költségek megtekintése** beállítás **engedélyezve** az EA-portálon. Minden hatókör szükséges a **AO költségek megtekintése** beállítás **engedélyezve** az EA-portálon.
 
 Ahhoz, hogy egy lehetőséget:
 
@@ -51,7 +51,7 @@ Ahhoz, hogy egy lehetőséget:
 3. A cost management hatóköröket, amely lehetővé szeretné tenni a hozzáférést, a díj a beállítást **DA költségek megtekintése** és/vagy **AO költségek megtekintése**.  
     ![Regisztrációs lapon, DA és AO nézetének megjelenítése díjak beállításai](./media/assign-access-acm-data/ea-portal-enrollment-tab.png)
 
-Miután díj beállításai engedélyezve vannak, a legtöbb hatókörök is szükség szerepköralapú hozzáférés-vezérlés (RBAC) engedélyt konfigurálni az Azure Portalon.
+Miután a nézet díj beállításai engedélyezve vannak, a legtöbb hatókörök is szükség szerepköralapú hozzáférés-vezérlés (RBAC) engedélyt konfigurálni az Azure Portalon.
 
 ## <a name="enterprise-administrator-role"></a>Vállalati rendszergazdai szerepkör
 
@@ -75,7 +75,7 @@ Az új felhasználó férjenek hozzá az adatokat a Cost Management akár 30 per
 
 ### <a name="assign-department-scope-access"></a>Részleg hozzáférési hatókör hozzárendelése
 
-A részleg hatókör használatához részleg rendszergazdai (DA nézet díjon felül) hozzáférés az EA-portálon. A részleg rendszergazdája hozzáfér a költségek és a egy részleg vagy több szervezeti kapcsolódó használati adatok megtekintéséhez.  A részleg a regisztrációs fiókhoz tartozó összes előfizetésre, a szervezeti egység kapcsolódó szerepel. Ilyenkor az Azure Portalon nem szükséges.
+A részleg hatókör használatához részleg rendszergazdai (DA nézet díjon felül) hozzáférés az EA-portálon. A részleg rendszergazdája hozzáfér a költségek és a egy részleg vagy több szervezeti kapcsolódó használati adatok megtekintéséhez. A részleg a regisztrációs fiókhoz tartozó összes előfizetésre, a szervezeti egység kapcsolódó szerepel. Ilyenkor az Azure Portalon nem szükséges.
 
 1. Jelentkezzen be, a nagyvállalati szerződések portáljának [ https://ea.azure.com ](https://ea.azure.com) vállalati rendszergazdai fiókkal.
 2. Válassza ki **kezelés** a bal oldali panelen.
@@ -89,7 +89,7 @@ A részleg hatókör használatához részleg rendszergazdai (DA nézet díjon f
 
 ## <a name="assign-enrollment-account-scope-access"></a>Regisztráció-fiók hozzáférési hatókör hozzárendelése
 
-A regisztrációs fiók hatókörében használatához fiók tulajdonosa (költségek AO megtekintése) hozzáférést a nagyvállalati szerződéssel rendelkező portálon. A fiók tulajdonosa költségek és a egy regisztrációs fiókhoz társított használati adatokat tekintheti meg. A regisztrációs fiók tartozik a regisztrációhoz az összes Azure-előfizetés szerepel. Ilyenkor az Azure Portalon nem szükséges.
+A regisztrációs fiók hatókörében használatához fiók tulajdonosa (költségek AO megtekintése) hozzáférést a nagyvállalati szerződéssel rendelkező portálon. A fiók tulajdonosa megtekintheti a költségek és a regisztrációs fiókhoz létrehozott előfizetésekhez kapcsolódó használati adatok. Ilyenkor az Azure Portalon nem szükséges.
 
 1. Jelentkezzen be, a nagyvállalati szerződések portáljának [ https://ea.azure.com ](https://ea.azure.com) vállalati rendszergazdai fiókkal.
 2. Válassza ki **kezelés** a bal oldali panelen.
@@ -101,9 +101,11 @@ A regisztrációs fiók hatókörében használatához fiók tulajdonosa (költs
 8. Kattintson a **Hozzáadás** hozhat létre a fiókot.  
     ![Fiók mező hozzáadása](./media/assign-access-acm-data/add-account.png)
 
+A fenti lépések végrehajtását követően a felhasználói fiók lesz az Enterprise Portal regisztrációs fiók és előfizetéseket hozhat létre. A felhasználó hozzáférhessen a költség- és használati adatokat, hozhatnak létre előfizetéseket.
+
 ## <a name="assign-management-group-scope-access"></a>Felügyeleti csoport hozzáférési hatókör hozzárendelése
 
-A felügyeleti csoport hatóköre használatához legalább Cost Management Reader (vagy olvasó) engedéllyel. Az Azure Portalon konfigurál a felügyeleti csoport számára. Rendelkeznie kell legalább közreműködői engedélyt a felügyeleti csoporthoz való hozzáférésének engedélyezésére vonatkozó mások. És akkor is engedélyeznie kell a **AO költségek megtekintése** a nagyvállalati szerződések portáljának beállítását.
+A felügyeleti csoport hatóköre használatához legalább a Cost Management Reader (vagy olvasó) engedéllyel. A felügyeleti csoport engedélyeit az Azure Portalon konfigurálhatja. Engedéllyel kell rendelkeznie legalább a felhasználói hozzáférés rendszergazdája (vagy a tulajdonos) a felügyeleti csoport hozzáférésének engedélyezésére vonatkozó másokkal. És akkor is engedélyeznie kell a **AO költségek megtekintése** a nagyvállalati szerződések portáljának beállítását.
 
 1. Jelentkezzen be az Azure Portalra a [http://portal.azure.com](http://portal.azure.com) webhelyen.
 2. Válassza ki **minden szolgáltatás** az oldalsáv keressen _felügyeleti csoportok_, majd **felügyeleti csoportok**.
@@ -119,7 +121,7 @@ A felügyeleti csoport hatóköre használatához legalább Cost Management Read
 
 ## <a name="assign-subscription-scope-access"></a>Előfizetés hozzáférési hatókör hozzárendelése
 
-Előfizetés használatához legalább Cost Management Reader (vagy olvasó) engedéllyel. Az Azure Portalon konfigurál egy előfizetés számára. Rendelkeznie kell legalább közreműködői engedélye ahhoz az előfizetéshez hozzáférésének engedélyezésére vonatkozó mások. És akkor is engedélyeznie kell a **AO költségek megtekintése** a nagyvállalati szerződések portáljának beállítását.
+Egy előfizetéshez legalább a Cost Management Reader (vagy olvasó) engedély szükséges. Az Azure Portal előfizetés engedélyeket is konfigurálhat. Engedéllyel kell rendelkeznie legalább a felhasználói hozzáférés rendszergazdája (vagy a tulajdonos) az előfizetés hozzáférésének engedélyezésére vonatkozó másokkal. És akkor is engedélyeznie kell a **AO költségek megtekintése** a nagyvállalati szerződések portáljának beállítását.
 
 1. Jelentkezzen be az Azure Portalra a [http://portal.azure.com](http://portal.azure.com) webhelyen.
 2. Válassza ki **minden szolgáltatás** az oldalsáv keressen _előfizetések_, majd **előfizetések**.
@@ -133,7 +135,7 @@ Előfizetés használatához legalább Cost Management Reader (vagy olvasó) eng
 
 ## <a name="assign-resource-group-scope-access"></a>Erőforrás-csoport hozzáférési hatókör hozzárendelése
 
-Egy erőforráscsoport használatához legalább Cost Management Reader (vagy olvasó) engedéllyel. Az Azure Portalon konfigurál egy erőforráscsoportba tartozó engedélyt. Rendelkeznie kell legalább közreműködői engedélye ahhoz az erőforráscsoporthoz hozzáférésének engedélyezésére vonatkozó mások. És akkor is engedélyeznie kell a **AO költségek megtekintése** a nagyvállalati szerződések portáljának beállítását.
+Egy erőforráscsoport használatához legalább a Cost Management Reader (vagy olvasó) engedéllyel. Az Azure Portalon egy erőforráscsoportba tartozó engedélyeket is konfigurálhat. Engedéllyel kell rendelkeznie legalább a felhasználói hozzáférés rendszergazdája (vagy a tulajdonos) hozzáférésének engedélyezésére vonatkozó mások az erőforráscsoportnak. És akkor is engedélyeznie kell a **AO költségek megtekintése** a nagyvállalati szerződések portáljának beállítását.
 
 1. Jelentkezzen be az Azure Portalra a [http://portal.azure.com](http://portal.azure.com) webhelyen.
 2. Válassza ki **minden szolgáltatás** az oldalsáv keressen _erőforráscsoportok_, majd **erőforráscsoportok**.

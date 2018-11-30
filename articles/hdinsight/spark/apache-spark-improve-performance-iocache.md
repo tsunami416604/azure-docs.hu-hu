@@ -7,16 +7,16 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 10/15/2018
-ms.openlocfilehash: 3616183b5ea34b8a14712d2c449de87950443111
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 724e6c57f10fb85b4b91c2236d17a64899953d67
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954505"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581935"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache-preview"></a>Teljesítménynövelés az Apache Spark-alapú számítási feladatokat az Azure HDInsight i/o-Cache (előzetes verzió)
 
-I/o Cache egy gyorsítótárazási szolgáltatás az Azure HDInsight, amely növeli a teljesítményt az Apache Spark-feladatok használata. I/o-gyorsítótár Tez és a Hive számítási feladatokkal, amelyek futtathatók a Spark-fürtökön is használható. I/o-gyorsítótár-RubiX nevű nyílt forráskódú gyorsítótárazási összetevő használja. RubiX egy helyi gyorsítótárat a big data analytics motorok, amely felhőalapú tárolórendszerek származó adatok eléréséhez való használatra. RubiX egyedi osztályneveket használjon a rendszerek, gyorsítótárazás, mert használja Solid-State meghajtók (SSD-kkel) ahelyett, hogy a Foglalás működési memória célokra gyorsítótárazáshoz. Az i/o-gyorsítótár-szolgáltatás elindul, és RubiX metaadat-kiszolgálók kezelése a fürt összes munkavégző csomóponton. Továbbá konfigurálja a fürt összes szolgáltatás transzparens RubiX gyorsítótár használata.
+I/o Cache egy gyorsítótárazási szolgáltatás az Azure HDInsight, amely növeli a teljesítményt az Apache Spark-feladatok használata. I/o-gyorsítótár is képes együttműködni [Apache TEZ](https://tez.apache.org/) és [Apache Hive](https://hive.apache.org/) számítási feladatok, amelyek futtatni a [Apache Spark](https://spark.apache.org/) fürtök. I/o-gyorsítótár-RubiX nevű nyílt forráskódú gyorsítótárazási összetevő használja. RubiX egy helyi gyorsítótárat a big data analytics motorok, amely felhőalapú tárolórendszerek származó adatok eléréséhez való használatra. RubiX egyedi osztályneveket használjon a rendszerek, gyorsítótárazás, mert használja Solid-State meghajtók (SSD-kkel) ahelyett, hogy a Foglalás működési memória célokra gyorsítótárazáshoz. Az i/o-gyorsítótár-szolgáltatás elindul, és RubiX metaadat-kiszolgálók kezelése a fürt összes munkavégző csomóponton. Továbbá konfigurálja a fürt összes szolgáltatás transzparens RubiX gyorsítótár használata.
 
 A legtöbb SSD-k sávszélesség másodpercenként 1-nél több GByte adja meg. A sávszélesség, az operációs rendszer memórián belüli gyorsítótár, szoftverszolgáltatáson nyújt elegendő sávszélesség, a big data számítási feldolgozó motorokkal, például az Apache Spark betölteni. A működési memória maradt elérhető az Apache Spark az erősen memória-függő feladatok, például shuffles feldolgozásához. Kizárólagos használatára, a memória működési lehetővé, hogy az Apache Spark optimális erőforrás-használat elérése érdekében.  
 
@@ -52,7 +52,7 @@ Az Azure HDInsight i/o-gyorsítótár az előzetes verzióban érhető el az ala
   
 Futó Spark feladatok i/o-gyorsítótár engedélyezése után terület lemezhibák kaphat. Ezek a hibák akkor fordul elő, mert a Spark is használja a helyi lemezes tárhelyért adattároláshoz újbóli felosztás műveletek során. Spark elfogy, előfordulhat, hogy a SSD-lemezterületet az i/o-gyorsítótár engedélyezve van, és a Spark-tároló terület csökken. A teljes SSD-lemezterületet fele az i/o-gyorsítótár alapértelmezett által felhasznált lemezterület mennyiségét. A lemezterület-használat i/o-gyorsítótár nem konfigurálható az Ambari. Ha lemezhibák adhatja meg, csökkentse a felhasznált i/o-gyorsítótárhoz SSD terület mennyiségét, és indítsa újra a szolgáltatást. Az i/o-gyorsítótár beállított lemezterület módosításához tegye a következőket:
 
-1. Az Ambari, válassza a **HDFS** szolgáltatást, a bal oldalon.
+1. Az Apache Ambari, válassza a **HDFS** szolgáltatást, a bal oldalon.
 
 1. Válassza ki a **Configs** és **speciális** lapokon.
 
