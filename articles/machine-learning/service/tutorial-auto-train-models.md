@@ -9,12 +9,12 @@ author: nacharya1
 ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 11/21/2018
-ms.openlocfilehash: 76436da1013c6747e9167c006e0d7c5e89ec8d9c
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 0c7431e5b66da721248b2a49c214584bf43e577f
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284744"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498569"
 ---
 # <a name="tutorial-train-a-classification-model-with-automated-machine-learning-in-azure-machine-learning-service"></a>Oktatóanyag: Besorolási modell betanítása automatizált gépi tanulással az Azure Machine Learning szolgáltatásban
 
@@ -41,7 +41,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="get-the-notebook"></a>A notebook beszerzése
 
-Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/03.auto-train-models.ipynb) is elérhető. A `03.auto-train-models.ipynb` notebook az Azure Notebooks szolgáltatásban vagy a saját Jupyter-notebookkiszolgálóján futtatható.
+Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://aka.ms/aml-notebook-tut-03) is elérhető. A `03.auto-train-models.ipynb` notebook az Azure Notebooks szolgáltatásban vagy a saját Jupyter-notebookkiszolgálóján futtatható.
 
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
