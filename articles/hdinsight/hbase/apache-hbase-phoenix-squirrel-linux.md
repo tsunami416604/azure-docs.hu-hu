@@ -9,14 +9,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: hrasheed
-ms.openlocfilehash: c87596099995cbd34a0ee32ec287de81ec741bda
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 4b673423bcf3785b29cc287e025d1ee52bc402f7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008062"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312902"
 ---
-# <a name="use-apache-phoenix-with-linux-based-hbase-clusters-in-hdinsight"></a>Az Apache Phoenix használata a HDInsight Linux-alapú HBase-fürtök
+# <a name="use-apache-phoenix-with-linux-based-apache-hbase-clusters-in-hdinsight"></a>Az Apache HBase Linux-alapú Apache Phoenix használata a HDInsight-fürtök
 Ismerje meg, hogyan használható [Apache Phoenix](http://phoenix.apache.org/) az Azure HDInsight és az SQLLine használata. A Phoenix kapcsolatos további információkért lásd: [Phoenix kevesebb mint 15 perc alatt](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html). A Phoenix szintaxis megtekintéséhez [Phoenix nyelvtani](http://phoenix.apache.org/language/index.html).
 
 > [!NOTE]
@@ -30,13 +30,13 @@ Ismerje meg, hogyan használható [Apache Phoenix](http://phoenix.apache.org/) a
 ### <a name="prerequisites"></a>Előfeltételek
 Az SQLLine használata előtt a következőkkel kell rendelkeznie:
 
-* **A HDInsight HBase-fürtöt**. Hozzon létre egyet, tekintse meg [HDInsight az Apache HBase használatának első lépései](./apache-hbase-tutorial-get-started-linux.md).
+* **A HDInsight Apache HBase-fürtöt**. Hozzon létre egyet, tekintse meg [HDInsight az Apache HBase használatának első lépései](./apache-hbase-tutorial-get-started-linux.md).
 
-HBase-fürt való csatlakozáskor a ZooKeeper-beli virtuális gépek csatlakozni kell. HDInsight-fürtökön három ZooKeeper virtuális gép rendelkezik.
+HBase-fürt való csatlakozáskor kapcsolódnia kell a [Apache ZooKeeper](https://zookeeper.apache.org/) virtuális gépeket. HDInsight-fürtökön három ZooKeeper virtuális gép rendelkezik.
 
 **A ZooKeeper-gazdagép nevének lekérése érdekében**
 
-1. Navigáljon az Ambari megnyitásához **https://\<fürtnév\>. azurehdinsight.net**.
+1. Nyissa meg [Apache Ambari](https://ambari.apache.org/) megkeresve **https://\<fürtnév\>. azurehdinsight.net**.
 2. Jelentkezzen be, adja meg a HTTP (fürt) felhasználónevét és jelszavát.
 3. A bal oldali menüben válassza ki a **ZooKeeper**. Három **ZooKeeper Server** példányok szerepelnek.
 4. Válassza ki az egyik a **ZooKeeper Server** példányok. Az a **összefoglalás** ablaktáblán keresse meg a **állomásnév**. Ez hasonlít *zk1-jdolehb.3lnng4rcvp5uzokyktxs4a5dhd.bx.internal.cloudapp.net*.
@@ -61,16 +61,16 @@ HBase-fürt való csatlakozáskor a ZooKeeper-beli virtuális gépek csatlakozni
 
         !quit
 
-További információkért lásd: a [az SQLLine manuális](http://sqlline.sourceforge.net/#manual) és [Phoenix nyelvtani](http://phoenix.apache.org/language/index.html).
+További információkért lásd: a [az SQLLine manuális](http://sqlline.sourceforge.net/#manual) és [Apache Phoenix nyelvtani](http://phoenix.apache.org/language/index.html).
 
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben megismerkedett az Apache Phoenix használata a HDInsight. További információkért tanulmányozza a következő cikkeket:
 
 * [HDInsight HBase overview][hdinsight-hbase-overview].
-  A HBase egy Apache, nyílt forráskódú nosql-alapú adatbázis, amely véletlenszerű hozzáférést és erős konzisztenciát biztosít a nagy mennyiségű strukturálatlan és félig strukturált adatot hadoop.
-* [Az Azure Virtual Network HBase-fürtök kiépítése][hdinsight-hbase-provision-vnet].
-  Virtuális hálózati integráció, a HBase-fürtök telepíthetők ugyanazon a virtuális hálózaton az alkalmazások, így az alkalmazások közvetlenül kommunikálhatnak a HBase.
-* [A HDInsight HBase-replikálás konfigurálása](apache-hbase-replication.md). Ismerje meg, hogyan hozza létre a HBase-replikáció Azure két adatközpontjában.
+  Az Apache HBase egy Apache, nyílt forráskódú nosql-alapú adatbázis az Apache hadoop, amely véletlenszerű hozzáférést és erős konzisztenciát biztosít a nagy mennyiségű strukturálatlan és félig strukturált adatot.
+* [Az Azure Virtual Network üzembe helyezése az Apache HBase-fürtök][hdinsight-hbase-provision-vnet].
+  Virtuális hálózati integráció, az Apache HBase-fürtök telepíthetők ugyanazon a virtuális hálózaton az alkalmazások, így az alkalmazások közvetlenül kommunikálhatnak a HBase.
+* [Az Apache HBase-replikálás konfigurálása a HDInsight](apache-hbase-replication.md). Ismerje meg, az Apache HBase-replikálás beállítása két Azure-adatközpontok között.
 
 
 [azure-portal]: https://portal.azure.com

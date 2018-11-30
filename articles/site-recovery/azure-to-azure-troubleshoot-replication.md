@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: asgang
-ms.openlocfilehash: 0ac90d8ef29d4293a5eeb5f932687788320c218e
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 22ea3d955fe2910dc99ab4015165008da899d48e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615796"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312850"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-ongoing-replication-issues"></a>Azure – Azure virtuális gép folyamatban lévő replikáció hibáinak elhárítása
 
@@ -29,7 +29,7 @@ HIBA AZONOSÍTÓJA: 153007 </br>
 Az Azure Site Recovery folyamatosan a forrásrégióban replikálja az adatokat a vészhelyreállítási régióban, és 5 percenként összeomlás-konzisztens pontot hoz létre. Ha a Site Recovery nem tudja létrehozni a helyreállítási pontok 60 percig, majd a felhasználó értesítést. Az alábbiakban, amely ezt a hibát eredményezhet az okok:
 
 **1. ok: [magas adatváltozási sebessége a forrás virtuális gépen](#high-data-change-rate-on-the-source-virtal-machine)**    
-**2. ok: [hálózati kapcsolati hiba ](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
+**2. ok: [hálózati kapcsolati hiba ](#Network-connectivity-issue)**
 
 ## <a name="causes-and-solutions"></a>Okait és megoldásait
 
@@ -77,5 +77,10 @@ Ez a beállítás csak akkor lehetséges, ha a lemez adatváltozásának keveseb
 
 ### <a name="Network-connectivity-issue"></a>Hálózati kapcsolati hiba
 
+#### <a name="network-latency-to-cache-storage-account-"></a>Hálózati késés gyorsítótárfiókba:
+ A Site Recovery a replikált adatokat küld a gyorsítótárfiókot, és a probléma akkor fordulhat elő, ha feltöltéséhez a virtuális gépről a gyorsítótárfiókba lassabb a 4 MB 3 mp. Ellenőrizze, hogy van-e bármilyen probléma késés használatával kapcsolatos [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) feltölteni az adatokat a virtuális gépről a gyorsítótárfiókba.<br>
+Ha nagy a késés, ellenőrizze, ha egy hálózati virtuális berendezések segítségével szabályozhatja a virtuális gépek kimenő hálózati forgalmát. A berendezés előfordulhat, hogy leszabályozza, ha a replikációs forgalmat az nva-n keresztül halad. Azt javasoljuk, hogy hoz létre egy hálózati végpontot a virtuális hálózat "Tároló" úgy, hogy a replikálás forgalma nem halad, az nva-n. Tekintse meg [hálózati virtuális berendezés konfigurációjának](https://docs.microsoft.com/en-us/azure/site-recovery/azure-to-azure-about-networking#network-virtual-appliance-configuration)
+
+#### <a name="network-connectivity"></a>Hálózati kapcsolat
 A Site Recovery replikációja, a kimenő kapcsolat az adott URL-címek vagy IP-címtartományok szükség a virtuális gépről. Ha a virtuális gép tűzfal mögött található, vagy használja a hálózati biztonsági csoport (NSG) szabályai kimenő kapcsolat szabályozásához, előfordulhat, hogy között ezek a problémák egyike.</br>
-Tekintse meg [kimenő kapcsolatok esetében a Site Recovery URL-címek](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-troubleshoot-errors?#outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072)
+Tekintse meg [kimenő kapcsolatok esetében a Site Recovery URL-címeinek](https://docs.microsoft.com/en-us/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges) , győződjön meg arról, hogy minden URL-címek vannak csatlakoztatva 

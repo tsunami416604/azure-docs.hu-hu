@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: juliako
-ms.openlocfilehash: 070e405703a0a794266373a19f8e79977c71a17f
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 3af8aec6bb2fe08c4bd1ef65e4f272a6f85af50b
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290846"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427421"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Video- és hangfájlok elemzése
 
@@ -33,7 +33,7 @@ A Media Services a következő beépített analyzer készletek jelenleg támogat
 
 |**Készlet neve**|**Forgatókönyv**|**Részletek**|
 |---|---|---|
-|**AudioAnalyzerPreset**|Hang elemzése|A készlet egy előre meghatározott készletével AI-alapú elemzési műveleteket, köztük a lejegyzés vonatkozik. A készlet jelenleg egyetlen hangsávra tartalom feldolgozását támogatja.<br/>A hang hasznos nyelvét a bemeneti adatok a "nyelvi címke-régió" BCP-47 formátumban is megadhat (például "hu-hu"). Támogatott nyelvek listája a következő, "en-US", "en-GB", "es-ES", "es-MX", "fr-FR", it-IT, ja-JP, pt-BR, zh-CN.|
+|**AudioAnalyzerPreset**|Hang elemzése|A készlet egy előre meghatározott készletével AI-alapú elemzési műveleteket, köztük a lejegyzés vonatkozik. A készlet jelenleg egyetlen hangsávra tartalom feldolgozását támogatja.<br/>A hang hasznos nyelvét a bemeneti adatok a "nyelvi címke-régió" BCP-47 formátumban is megadhat (például "hu-hu"). Támogatott nyelvek listája a következő, "en-US", "en-GB", "es-ES", "es-MX", "fr-FR", it-IT, ja-JP, pt-BR, zh-CN. Nyelvi nincs megadva vagy Null értékű, ha az automatikus nyelvfelismerést alkalmazzák. A nyelv automatikus észlelési szolgáltatás jelenleg támogatja az angol, kínai, francia, német, olasz, japán, spanyol, spanyol és portugál.|
 |**VideoAnalyzerPreset**|Audio- és elemzése|Insights (bőséges metaadatok) kigyűjti a hang- és video, és kiírja egy JSON-formátumú fájlt. Megadhatja, hogy csak szeretné hang információk kinyerése érdekében videofájl feldolgozásakor. További információkért lásd: [elemzés videó](analyze-videos-tutorial-with-api.md).|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset

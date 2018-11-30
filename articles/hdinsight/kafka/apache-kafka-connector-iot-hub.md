@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 8941a7332c19b1a9d5c04abb0e4b03ae83e98016
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 143df8a8c82e84b193bdb48a3d41682fca19156b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260482"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315427"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Használat Apache Kafka on HDInsight az Azure IoT hubbal
 
-Ismerje meg, hogyan használható a [Kafka csatlakoztatása Azure IoT Hub](https://github.com/Azure/toketi-kafka-connect-iothub) Apache Kafka on HDInsight és az Azure IoT Hub közötti összekötő. Ebből a dokumentumból megismerheti, hogyan az IoT Hub-összekötő a fürt egy élcsomópontot-ről futtatva.
+Ismerje meg, hogyan használható a [Apache Kafka csatlakoztatása Azure IoT Hub](https://github.com/Azure/toketi-kafka-connect-iothub) Apache Kafka on HDInsight és az Azure IoT Hub közötti összekötő. Ebből a dokumentumból megismerheti, hogyan az IoT Hub-összekötő a fürt egy élcsomópontot-ről futtatva.
 
-A Kafka-csatlakozás API lehetővé válik, amely folyamatosan Kafka az adatok beolvasását, vagy a Kafkából adatok leküldése egy másik rendszer összekötők. A [Kafka csatlakoztatása Azure IoT Hub](https://github.com/Azure/toketi-kafka-connect-iothub) egy összekötő, amely lekéri az adatokat az Azure IoT hubról, a Kafka. Azt is küldhet adatokat a Kafkából az IoT hubnak. 
+A Kafka-csatlakozás API lehetővé válik, amely folyamatosan Kafka az adatok beolvasását, vagy a Kafkából adatok leküldése egy másik rendszer összekötők. A [Apache Kafka csatlakoztatása Azure IoT Hub](https://github.com/Azure/toketi-kafka-connect-iothub) egy összekötő, amely lekéri az adatokat az Azure IoT hubról, a Kafka. Azt is küldhet adatokat a Kafkából az IoT hubnak. 
 
 Beolvasás az IoT hubról, amikor egy __forrás__ összekötő. Amikor leküldése az IoT Hub, használhatja a __fogadó__ összekötő. Az IoT Hub-összekötő a forrás- és fogadó összekötők biztosít.
 
@@ -84,7 +84,7 @@ A csatlakozás API további információkért lásd: [ https://kafka.apache.org/
 >
 >    Ez a parancs létrehoz egy fájlt `kafka-connect-iothub-assembly_2.11-0.6.jar` a a `target/scala-2.11` könyvtárat a projekthez.
 
-## <a name="configure-kafka"></a>A Kafka konfigurálása
+## <a name="configure-apache-kafka"></a>Az Apache Kafka konfigurálása
 
 Az élcsomóponthoz SSH-kapcsolatot a következő lépések használatával konfigurálja az összekötőt futtató önálló módban Kafka:
 
@@ -111,7 +111,7 @@ Az élcsomóponthoz SSH-kapcsolatot a következő lépések használatával konf
 
     `wn0-kafka.w5ijyohcxt5uvdhhuaz5ra4u5f.ex.internal.cloudapp.net:9092,wn1-kafka.w5ijyohcxt5uvdhhuaz5ra4u5f.ex.internal.cloudapp.net:9092`
 
-4. A Zookeeper-csomópontok-címének lekéréséhez. Több Zookeeper-csomópontok a fürtben, de csak hivatkoznia kell egy vagy két. Két Zookeeper-csomópontok-címének lekéréséhez használja a következő parancsot:
+4. Az Apache Zookeeper-csomópontok-címének lekéréséhez. Több Zookeeper-csomópontok a fürtben, de csak hivatkoznia kell egy vagy két. Két Zookeeper-csomópontok-címének lekéréséhez használja a következő parancsot:
 
     ```bash
     export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
@@ -335,7 +335,7 @@ t.runtime.WorkerSinkTask:262)
     > [!WARNING]
     > Mivel ez egy új SSH-kapcsolatot a `$KAFKABROKERS` információt nem tartalmaz változót. Állítsa be, használja az alábbi módszerek egyikét:
     >
-    > * Első három kövesse a [konfigurálása Kafka](#configure-kafka) szakaszban.
+    > * Első három kövesse a [konfigurálása az Apache Kafka](#configure-apache-kafka) szakaszban.
     > * Használat `echo $KAFKABROKERS` az előző SSH-kapcsolatot értékének lekéréséhez, és cserélje a `$KAFKABROKERS` tényleges értéke alapján a következő parancsban.
 
     ```bash
@@ -367,7 +367,7 @@ A fogadó-összekötő használatával további információkért lásd: [ https
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a dokumentumban megtudhatta, hogyan indítsa el az IoT-összekötő Kafka a HDInsight Kafka-csatlakozás API használatával. Az alábbi hivatkozások segítségével Fedezzen fel más módokat a Kafka használata:
+Ebben a dokumentumban megtudhatta, hogyan indítsa el az IoT-összekötő Kafka a HDInsight az Apache Kafka-csatlakozás API használatával. Az alábbi hivatkozások segítségével Fedezzen fel más módokat a Kafka használata:
 
-* [Az Apache Spark használata a Kafkával a HDInsighton](../hdinsight-apache-spark-with-kafka.md)
-* [Az Apache Storm használata a HDInsighton futó Kafkával](../hdinsight-apache-storm-with-kafka.md)
+* [Az Apache Kafka on HDInsight az Apache Spark használata](../hdinsight-apache-spark-with-kafka.md)
+* [Az Apache Kafka on HDInsight az Apache Storm használata](../hdinsight-apache-storm-with-kafka.md)

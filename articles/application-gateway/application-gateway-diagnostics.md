@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 6/20/2018
 ms.author: amitsriva
-ms.openlocfilehash: 3163d4d61dba958cdf71dd0470b943bba69b0191
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d2f3c2ba6849540f90117ef127e25030ff56b569
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237197"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427165"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Háttérrendszer állapota, diagnosztikai naplók és mérőszámok az Application Gateway számára
 
@@ -95,7 +95,7 @@ Az alábbi kódrészletben látható egy példa a válasz:
 
 ## <a name="diagnostic-logging"></a>Diagnosztikai naplók
 
-Segítségével különböző típusú naplók az Azure-ban felügyelet és hibaelhárítás az application Gateway átjárókkal. Ezen naplók egy része a portálról érhető el. Az összes napló ki kell olvasni az Azure Blob storage-ból, és a különböző eszközök, például a megtekintett [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md), Excel és a Power bi-ban. További információ a különböző típusú naplók az alábbi listából:
+Segítségével különböző típusú naplók az Azure-ban felügyelet és hibaelhárítás az application Gateway átjárókkal. Ezen naplók egy része a portálról érhető el. Az összes napló ki kell olvasni az Azure Blob storage-ból, és a különböző eszközök, például a megtekintett [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md), Excel és a Power bi-ban. További információ a különböző típusú naplók az alábbi listából:
 
 * **Tevékenységnapló**: használhatja [Azure-Tevékenységnaplók](../monitoring-and-diagnostics/insights-debugging-with-events.md) (nevén műveleti naplók és a vizsgálati naplók) minden művelet, amely elküldi az Azure-előfizetéshez, és azok állapotának megtekintése. A tevékenységnaplók bejegyzéseit alapértelmezés szerint gyűjti a rendszer, ezeket az Azure Portalon tekintheti meg.
 * **Hozzáférési napló**: Ez a napló használatával az Application Gateway hozzáférési minták megtekintése és elemzése a fontos információkat, többek között a hívó IP, kért URL-cím, válasz késése, visszatérési kód és bájt be és ki. Egy hozzáférési napló 300 másodpercenként gyűjti. Ez a napló az Application Gateway-példányonként több rekordot tartalmaz. Az Application Gateway-példány segítségével azonosítható a instanceId tulajdonság.
@@ -303,7 +303,7 @@ A tevékenységnaplók adatainak megtekintéséhez és elemzéséhez használja 
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>Megtekintheti és elemezheti a hozzáférést, a teljesítmény és a tűzfalnaplók
 
-Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) a számláló és Eseménynapló fájlokat képes gyűjteni a Blob storage-fiók. A Log Analytics vizualizációkat és hatékony keresési lehetőségeket is tartalmaz a naplók elemzéséhez.
+Azure [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md) a számláló és Eseménynapló fájlokat képes gyűjteni a Blob storage-fiók. A Log Analytics vizualizációkat és hatékony keresési lehetőségeket is tartalmaz a naplók elemzéséhez.
 
 A Storage-fiókjához is csatlakozhat, és lekérheti a hozzáférés- és teljesítménynaplók JSON-naplóbejegyzéseit. A letöltött JSON-fájlokat átalakíthatja CSV-fájlokká, és ezeket megtekintheti az Excelben, Power BI-ban vagy bármely más adatvizualizációs eszközben.
 
@@ -379,7 +379,7 @@ Ismerje meg jobban webhookok, és hogyan használhatja azokat a riasztásokat, a
 
 ## <a name="next-steps"></a>További lépések
 
-* Számláló és eseménynaplóinak megjelenítése használatával [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md).
+* Számláló és eseménynaplóinak megjelenítése használatával [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md).
 * [A Power bi-ban az Azure tevékenységnapló megjelenítése](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) blogbejegyzést.
 * [Megtekintheti és elemezheti a Power BI és egyéb Azure-Tevékenységnaplók](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) blogbejegyzést.
 

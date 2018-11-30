@@ -17,18 +17,18 @@ ms.date: 11/13/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3ecf837af735b97e269eb3fdc01d2e56ec40fb6e
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: be10af7096a11fb27971af9dc28036df4a4b0968
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624505"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423558"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Az Azure Active Directory 2.0-s verzió és az OAuth 2.0 ügyfél-hitelesítési folyamata
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-Használhatja a [OAuth 2.0-ügyfél hitelesítő adatainak megadása](http://tools.ietf.org/html/rfc6749#section-4.4) RFC 6749, más néven megadott *két Egyszárú OAuth*, web-ban üzemeltetett erőforrások eléréséhez az alkalmazás identitását. Az ilyen típusú támogatás általánosan futtatnia kell a háttérben, egy felhasználóval azonnali beavatkozás nélkül kiszolgálók közötti interakció szolgál. Ilyen típusú alkalmazások gyakran nevezik *démonok* vagy *szolgáltatásfiókok*.
+Használhatja a [OAuth 2.0-ügyfél hitelesítő adatainak megadása](https://tools.ietf.org/html/rfc6749#section-4.4) RFC 6749, más néven megadott *két Egyszárú OAuth*, web-ban üzemeltetett erőforrások eléréséhez az alkalmazás identitását. Az ilyen típusú támogatás általánosan futtatnia kell a háttérben, egy felhasználóval azonnali beavatkozás nélkül kiszolgálók közötti interakció szolgál. Ilyen típusú alkalmazások gyakran nevezik *démonok* vagy *szolgáltatásfiókok*.
 
 Az OAuth 2.0 ügyfél-hitelesítő adatok megadása a folyamat lehetővé teszi egy webszolgáltatás (bizalmas ügyfél) a saját hitelesítő adatait, használja a felhasználó megszemélyesítése helyett egy másik webszolgáltatás hívásakor. Ebben a forgatókönyvben az ügyfél nem általában egy középső rétegű webszolgáltatás, démonszolgáltatás vagy webhely. A magasabb szintű megbízhatóságra Azure Active Directory (Azure AD) is lehetővé teszi a hívó szolgáltatás (helyett egy közös titkos kulcsot) egy tanúsítvány használatára, a hitelesítő adatokat.
 

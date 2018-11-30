@@ -1,5 +1,5 @@
 ---
-title: A gépi tanulási modell eredményeinek értelmezése |} A Microsoft Docs
+title: A Machine Learning Studio - Azure modell eredményeinek értelmezése |} A Microsoft Docs
 description: Hogyan választható ki a optimális paraméter használatával, és a vizualizáláshoz pontszám modell kimeneti algoritmus beállítása.
 services: machine-learning
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 7fe481619da217238cc790acac212857566d01f3
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: c06b05989270b4199e5d97ca399a1411b73a702b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264981"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310269"
 ---
-# <a name="interpret-model-results-in-azure-machine-learning"></a>Az Azure Machine Learning modell eredményeinek értelmezése
+# <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Az Azure Machine Learning Studióban modell eredményeinek értelmezése
 Ez a témakör bemutatja, hogyan jelenítheti meg, és az Azure Machine Learning Studióban az előrejelzés eredményét értelmezik. Miután a betanított modell, és végzett előrejelzések felett ("pontozását a modell"), és az előrejelzési eredmények értelmezése szüksége.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]

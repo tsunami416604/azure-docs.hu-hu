@@ -8,16 +8,16 @@ ms.author: hrasheed
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 04/16/2018
-ms.openlocfilehash: dea69e9cfcd3cff24c77698ee4a8ed729a18f087
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 03d7c63d09ddaf64a552a4534612f0f7e9fd249b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011927"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312367"
 ---
-# <a name="quickstart-create-a-kafka-on-hdinsight-cluster"></a>Rövid útmutató: Kafka on HDInsight-fürt létrehozása
+# <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Rövid útmutató: Apache Kafka on HDInsight-fürt létrehozása
 
-A Kafka egy nyílt forráskódú, elosztott adatstreamelési platform. Sokszor használják üzenetközvetítőként, mivel a közzétételi-feliratkozási üzenetsorokhoz hasonló funkciókat kínál. 
+[Az Apache Kafka](https://kafka.apache.org/) egy nyílt forráskódú, elosztott adatstreamelési platform. Sokszor használják üzenetközvetítőként, mivel a közzétételi-feliratkozási üzenetsorokhoz hasonló funkciókat kínál. 
 
 Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre [Apache Kafka](https://kafka.apache.org)-fürtöt egy Azure Resource Manager-sablonnal. Azt is megtudhatja, hogyan küldhet és fogadhat üzeneteket a mellékelt segédprogramokkal a Kafka segítségével.
 
@@ -26,7 +26,7 @@ Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre [Apache Kafka](h
 > [!IMPORTANT]
 > A Kafka API csak az ugyanazon virtuális hálózaton belüli erőforrások számára érhető el. Ebben a rövid útmutatóban közvetlenül éri el a fürtöt SSH-val. Ha más szolgáltatásokat, hálózatokat vagy virtuális gépeket szeretne csatlakoztatni a Kafkához, először létre kell hoznia egy virtuális hálózatot, majd létre kell hoznia a hálózaton belüli erőforrásokat.
 >
-> További információ: [Csatlakozás a Kafkához virtuális hálózattal](apache-kafka-connect-vpn-gateway.md).
+> További információt a [Csatlakozás az Apache Kafkához virtuális hálózattal](apache-kafka-connect-vpn-gateway.md) című dokumentumban találhat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,7 +45,7 @@ Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre [Apache Kafka](h
     >
     > További információ: [SSH használata a HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="create-a-kafka-cluster"></a>Kafka-fürt létrehozása
+## <a name="create-an-apache-kafka-cluster"></a>Apache Kafka-fürt létrehozása
 
 1. Az alábbi képre kattintva megnyithatja a sablont az Azure Portalon.
 
@@ -107,9 +107,9 @@ Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
 ssuhuser@hn0-mykafk:~$
 ```
 
-## <a id="getkafkainfo"></a>A Zookeeper és a közvetítő gazdagép információinak lekérése
+## <a id="getkafkainfo"></a>Az Apache Zookeeper és a közvetítő gazdagép információinak lekérése
 
-A Kafka használata során ismernie kell a *Zookeeper-* és a *Közvetítő* gazdagépeket. A Kafka API és a Kafkában elérhető számos segédprogram használja ezeket a gazdagépeket.
+A Kafka használata során ismernie kell a *Apache Zookeeper* és *Broker* gazdagépek. A Kafka API és a Kafkában elérhető számos segédprogram használja ezeket a gazdagépeket.
 
 Ebben a szakaszban a fürtön lévő Ambari REST API-ból szerzi be a gazdagép információit.
 
@@ -166,7 +166,7 @@ Ebben a szakaszban a fürtön lévő Ambari REST API-ból szerzi be a gazdagép 
    
     `wn1-kafka.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.net:9092,wn0-kafka.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.net:9092`
 
-## <a name="manage-kafka-topics"></a>Kafka-témakörök kezelése
+## <a name="manage-apache-kafka-topics"></a>Apache Kafka-témakörök kezelése
 
 A Kafka *témakörökben* tárolja az adatstreameket. A `kafka-topics.sh` segédprogrammal kezelheti a témaköröket.
 
@@ -192,7 +192,7 @@ A Kafka *témakörökben* tárolja az adatstreameket. A `kafka-topics.sh` segéd
         > [!IMPORTANT] 
         > A Kafka nem észleli a tartalék Azure-tartományokat. Témakörök számára történő partícióreplikák létrehozásakor lehetséges, hogy a Kafka nem a magas rendelkezésre állásnak megfelelően osztja ki a replikákat.
 
-        A magas rendelkezésre állás biztosításához használja a [Kafka vissza-egyensúlyozási eszközét](https://github.com/hdinsight/hdinsight-kafka-tools). Ezt az eszközt egy SSH-kapcsolatból kell futtatni a Kafka-fürt fő csomópontjához.
+        Magas rendelkezésre állás biztosítása érdekében használhatja a [Apache Kafka partíció-újraegyensúlyozó eszközt](https://github.com/hdinsight/hdinsight-kafka-tools). Ezt az eszközt egy SSH-kapcsolatból kell futtatni a Kafka-fürt fő csomópontjához.
 
         A Kafka-adatok lehető legmagasabb rendelkezésre állása érdekében egyensúlyozza újra a témaköre partícióreplikáit a következő esetekben:
 
@@ -254,7 +254,7 @@ Kövesse az alábbi lépéseket a rekordoknak a korábban létrehozott test tém
 
 4. Használja a __Ctrl + C__ billentyűparancsot a fogyasztó leállításához.
 
-Szoftveresen is létrehozhat előállítókat és fogyasztókat. Az API használatára vonatkozó példákért tekintse meg a [Kafka Producer és Consumer API-k HDInsighttal történő használatát](apache-kafka-producer-consumer-api.md) ismertető dokumentumot.
+Szoftveresen is létrehozhat előállítókat és fogyasztókat. Ez az API használatának példájáért lásd a [Apache Kafka Producer és Consumer API-hoz a HDInsight](apache-kafka-producer-consumer-api.md) dokumentum.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -278,5 +278,5 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az Apache Spark használata a Kafkával](../hdinsight-apache-kafka-spark-structured-streaming.md)
+> [Az Apache Spark használata az Apache kafka platformmal](../hdinsight-apache-kafka-spark-structured-streaming.md)
 

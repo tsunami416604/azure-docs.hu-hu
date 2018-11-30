@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: bdcc0510503e48caf70f4f0d91d7602d767ca9ab
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: e060075fbcf6a5083e51b753e119cb5471129a79
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092478"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308473"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Biztonsági mentés és visszaállítás az Azure SQL Data Warehouse
 Ismerje meg a biztonsági mentés és visszaállítás működését az Azure SQL Data Warehouse. Használati adatok adatraktár-helyreállítás pillanatképek, vagy másolja az adattárház egy korábbi visszaállítási pontot az elsődleges régióban. Használja az adatraktár-georedundáns biztonsági másolatokat állíthatja vissza egy másik földrajzi régióban. 
@@ -68,7 +68,7 @@ Az SQL Data Warehouse egy georedundáns biztonsági mentés naponta egyszer elv�
 GEO-biztonsági mentések alapállapotban be van kapcsolva. Ha az adattárház Gen1, is [kikapcsolhatja az újat](/powershell/module/azurerm.sql/set-azurermsqldatabasegeobackuppolicy) Ha szeretné. Nem tilthatók le geo-biztonsági mentések Gen2 a garantált beépített adatvédelem-jébe.
 
 > [!NOTE]
-> Földrajzi – biztonsági másolatok a rövidebb rpo miatt van szükség, ha ez a funkció szavazzon [Itt](https://feedback.azure.com/forums/307516-sql-data-warehouse). Hozhat létre egy felhasználói visszaállítási pontot, és az újonnan létrehozott visszaállítási pontból vissza egy új data warehouse egy másik régióban. Miután visszaállította, az adatraktár online rendelkezik, és akár szüneteltetheti is, hogy határozatlan ideig számítási költségeit. A szüneteltetett adatbázis tárolási díjak pedig az Azure Premium Storage tekintetében. és ezután felfüggesztése. Szüksége van egy aktív másolata, az adatraktárban, folytathatja, amelynek csak néhány percet vehet igénybe.
+> Földrajzi – biztonsági másolatok a rövidebb rpo miatt van szükség, ha ez a funkció szavazzon [Itt](https://feedback.azure.com/forums/307516-sql-data-warehouse). Hozhat létre egy felhasználói visszaállítási pontot, és az újonnan létrehozott visszaállítási pontból vissza egy új data warehouse egy másik régióban. Miután visszaállította, az adatraktár online rendelkezik, és akár szüneteltetheti is, hogy határozatlan ideig számítási költségeit. A szüneteltetett adatbázis tárolási díjak pedig az Azure Premium Storage tekintetében. és ezután felfüggesztése.<!-- should this be removed or is something missing? --> Szüksége van egy aktív másolata, az adatraktárban, folytathatja, amelynek csak néhány percet vehet igénybe.
 >
 
 

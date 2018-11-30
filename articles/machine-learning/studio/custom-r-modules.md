@@ -1,6 +1,6 @@
 ---
-title: Az Azure Machine Learningben egyéni R-modulok készítése |} A Microsoft Docs
-description: Gyors üzembe helyezési szerzői egyéni R-modulok az Azure Machine Learningben.
+title: Adja meg az egyéni R-modulok az Azure Machine Learning Studióban |} A Microsoft Docs
+description: Ez a témakör azt ismerteti, hogyan hozhat létre, és a egy egyéni R modult az Azure Machine Learning üzembe helyezése. Ismerteti, milyen egyéni R-modulok és fájlokat adhat meg hozzájuk. Azt mutatja be, hogyan hozható létre a fájlokat, a modulok meghatározásához és a Machine Learning Studio-munkaterületen üzembe helyezéshez a modul regisztrálása.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,15 +16,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
-ms.openlocfilehash: 812914b3b7746f75aa88cbefda3f7d4b1a591125
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: b8ab22f1567102ed79ccf6e0bf49dbdbc3f42ea9
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263264"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308431"
 ---
-# <a name="author-custom-r-modules-in-azure-machine-learning"></a>Egyéni R-modul létrehozása az Azure Machine Learningben
-Ez a témakör azt ismerteti, hogyan hozhat létre, és a egy egyéni R modult az Azure Machine Learning üzembe helyezése. Ismerteti, milyen egyéni R-modulok és fájlokat adhat meg hozzájuk. Azt mutatja be, hogyan hozható létre a fájlokat, a modulok meghatározásához és a Machine Learning-munkaterület központi telepítés a modul regisztrálása. Az elemek és attribútumok az egyéni modult definíciójában használt majd ismerteti részletesen. Kiegészítő funkciók és a fájlok és több kimenetek használata is tárgyalja. 
+# <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Adja meg az egyéni R-modulok az Azure Machine Learning Studióban
+
+Ez a témakör ismerteti, hogyan hozhat létre, és üzembe helyezése az Azure Machine Learning Studióban, egy egyéni R modult. Ismerteti, milyen egyéni R-modulok és fájlokat adhat meg hozzájuk. Azt mutatja be, hogyan hozható létre a fájlokat, a modulok meghatározásához és a Machine Learning-munkaterület központi telepítés a modul regisztrálása. Az elemek és attribútumok az egyéni modult definíciójában használt majd ismerteti részletesen. Kiegészítő funkciók és a fájlok és több kimenetek használata is tárgyalja. 
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 

@@ -1,6 +1,6 @@
 ---
-title: 'NET # Neurális hálózatok specifikáció nyelvi útmutató – az Azure Machine Learning |} A Microsoft Docs'
-description: 'Szintaxisa a Net # Neurális hálózati specifikációs nyelv használatával Net # Neurális hálózat egyéni modell létrehozása példákkal együtt'
+title: 'NET # Neurális hálózati – az Azure Machine Learning Studióban |} A Microsoft Docs'
+description: 'Szintaxisa a Net # Neurális hálózatok specifikációs nyelv együtt példa bemutatja, hogyan hozhat létre egy egyéni Neurális hálózat modell Net # az Azure Machine Learning Studio használatával.'
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 03/01/2018
-ms.openlocfilehash: 8adb3c78f97311085aec3a5c86a062ec14f53e61
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 3aa364e92dd7ce3742d28ac2b36d9a7f16cbebbf
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263672"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315307"
 ---
-# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning"></a>Útmutató az Azure Machine Learning Net # Neurális hálózati specifikációs nyelvhez
+# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Útmutató az Azure Machine Learning Studio Net # Neurális hálózati specifikációs nyelvhez
 
 NET # nyelv, amely a Neurális hálózat architektúráinak definiálására használatos a Microsoft által kifejlesztett. Net # Neurális hálózat struktúráját használatával lehetővé teszi összetett többek között a Neurális hálózatokat vagy tetszőleges dimenziók, amelyekről ismert, hogy a adatok, például a kép, hang vagy videó learning javítása convolutions meghatározásához.
 

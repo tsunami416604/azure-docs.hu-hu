@@ -8,12 +8,12 @@ ms.workload: identity
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b0827035cc63f40094ab7b9d760c636914c71ec0
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 9d63c35d82a98d816c18dd299a8e0e81baa5bc8d
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634252"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425224"
 ---
 # <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Az Azure AD Connect: ADConnectivityTools PowerShell-referencia
 A következő dokumentáció arról nyújt a ADConnectivityTools.psm1 PowerShell-modult, amely tartalmazza az Azure AD Connecttel kapcsolatos referenciainformációk.
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információk: about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+További információk: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="confirm-forestexists"></a>Győződjön meg róla ForestExists
 
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információk: about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+További információk: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="confirm-functionallevel"></a>Győződjön meg róla FunctionalLevel
 
@@ -227,7 +227,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információk: about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+További információk: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="confirm-networkconnectivity"></a>Győződjön meg róla NetworkConnectivity
 
@@ -308,7 +308,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információk: about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+További információk: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="confirm-targetsarereachable"></a>Győződjön meg róla TargetsAreReachable
 
@@ -370,7 +370,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információk: about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+További információk: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="confirm-validdomains"></a>Győződjön meg róla ValidDomains
 
@@ -459,7 +459,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információk: about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+További információk: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="confirm-validenterpriseadmincredentials"></a>Győződjön meg róla ValidEnterpriseAdminCredentials
 
@@ -507,7 +507,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információk: about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+További információk: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="get-domainfqdndata"></a>Get-DomainFQDNData
 
@@ -588,7 +588,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információk: about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+További információk: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="get-forestfqdn"></a>Get-ForestFQDN
 
@@ -651,7 +651,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információk: about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+További információk: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="start-connectivityvalidation"></a>Start-ConnectivityValidation
 
@@ -726,7 +726,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információk: about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+További információk: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="start-networkconnectivitydiagnosistools"></a>Start-NetworkConnectivityDiagnosisTools
 
@@ -868,4 +868,4 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információk: about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+További információk: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).

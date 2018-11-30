@@ -4,17 +4,16 @@ description: Ez a cikk ismerteti az Azure Stream Analytics használatával az Az
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: 8dc85c55dd67d8acd394d7922e947c91234ef23b
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.date: 11/21/2017
+ms.openlocfilehash: 9bdb012db2e7502d765fd342a636591bbbcb2c6c
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957136"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311738"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Az Azure Cosmos DB Azure Stream Analytics-kimenet  
 Stream Analytics célként [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) JSON-kimenet, az adatok archiválás és kis késleltetésű lekérdezéseket a strukturálatlan JSON-adatok engedélyezése. Ez a dokumentum áttekint néhány ajánlott eljárást a konfiguráció implementálása a.
@@ -26,7 +25,10 @@ Azok számára, aki ismeri az, Cosmos DB, vessen egy pillantást [képzési terv
 > Más Azure Cosmos DB API-k még nem támogatott. Ha pont Azure Stream Analytics az Azure Cosmos DB-fiókokhoz létrehozott más API-kkal, az adatok esetleg nem megfelelően tárolni. 
 
 ## <a name="basics-of-cosmos-db-as-an-output-target"></a>Cosmos DB-kimenet célként alapjai
-A Stream Analytics az Azure Cosmos DB kimeneti adatfolyam-feldolgozási eredményeket, JSON-kimenet a Cosmos DB próbaidőszakában való írása lehetővé teszi. Stream Analytics nem hoz létre gyűjteményeket az adatbázisban, ehelyett határozhat meg kell előre létrehoznia őket. Ez az, hogy az Ön által vezérelt Cosmos DB-gyűjtemények a számlázási költségeket, és úgy, hogy a teljesítmény, a konzisztencia és a kapacitás a gyűjtemények közvetlenül hangolhassa a [Cosmos DB API-k](https://msdn.microsoft.com/library/azure/dn781481.aspx). 
+A Stream Analytics az Azure Cosmos DB kimeneti adatfolyam-feldolgozási eredményeket, JSON-kimenet a Cosmos DB próbaidőszakában való írása lehetővé teszi. Stream Analytics nem hoz létre gyűjteményeket az adatbázisban, ehelyett határozhat meg kell előre létrehoznia őket. Ez az, hogy az Ön által vezérelt Cosmos DB-gyűjtemények a számlázási költségeket, és úgy, hogy a teljesítmény, a konzisztencia és a kapacitás a gyűjtemények közvetlenül hangolhassa a [Cosmos DB API-k](https://msdn.microsoft.com/library/azure/dn781481.aspx).
+
+> [!Note]
+> Hozzá kell adnia 0.0.0.0 az engedélyezett IP-címek listáját, az Azure Cosmos DB tűzfal.
 
 A Cosmos DB adatgyűjtési beállítások némelyike lásd lent.
 

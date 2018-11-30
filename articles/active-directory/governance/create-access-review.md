@@ -14,12 +14,12 @@ ms.component: compliance
 ms.date: 11/15/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: c1ae6e8c67ab42207aea73932bb2e887db727f16
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 5a68657a0aaedb389ccaaacebb890583ab6292ee
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263384"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307848"
 ---
 # <a name="create-an-access-review-of-group-members-or-application-access-with-azure-ad"></a>Az Azure AD-csoport tagjainak vagy alkalmazás-hozzáférés hozzáférési felülvizsgálat létrehozása
 
@@ -77,7 +77,7 @@ Ez a cikk ismerteti, hogyan hozhat létre egy új hozzáférési felülvizsgála
 1. Használja a **a felülvizsgáló nem válaszol** listát használva adhatja meg, mi történik, a felhasználók számára, nem ellenőrzött felülvizsgálója ellenőrzi a felülvizsgálati időszak alatt. Ez a beállítás nem befolyásolja a felhasználók, akik korábban a többi felhasználó által manuálisan. Ha a végső felülvizsgáló döntési megtagadás, akkor a felhasználó hozzáférése törlődni fog.
 
     - **Nincs változás** -hagyja változatlanul a felhasználó hozzáférése
-    - **Távolítsa el a hozzáférést** – felhasználói hozzáférés letiltása
+    - **Hozzáférés eltávolítása** – felhasználói hozzáférés letiltása
     - **Hozzáférés jóváhagyása** – felhasználói hozzáférés jóváhagyása
     - **Ajánlatok elfogadása** – a rendszer elutasítja az ajánlást igénybe, vagy hagyja jóvá a felhasználó a folyamatos hozzáférést
 

@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 1a64e40b13b05fc7f9fdb6f5aa99c8d8cc47c471
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d0d1efcdaab07e77d835319544fc70eb8687702f
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251610"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316344"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-your-azure-web-apps"></a>"502 Hibás átjáró" és "503 a szolgáltatás nem érhető el" az Azure web apps a HTTP-hibáinak elhárítása
 "502 Hibás átjáró" és "503 a szolgáltatás nem érhető el" gyakori hibák a lévő üzemeltetett webalkalmazásban [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Ez a cikk segít a hibák elhárítása.
@@ -74,22 +74,10 @@ További információkért lásd:
 <a name="collect" />
 
 ### <a name="2-collect-data"></a>2. Adatok gyűjtése
-#### <a name="use-the-azure-app-service-support-portal"></a>Az Azure App Service támogatja a portálon
-A Web Apps lehetővé teszi a webes alkalmazás HTTP naplók, eseménynaplókat, folyamat memóriaképek és további megtekintésével kapcsolatos problémák elhárítása biztosít. Mindez az információ támogatási portálunkon címen érheti **http://&lt;az alkalmazás neve >.scm.azurewebsites.net/Support**
+#### <a name="use-the-diagnostics-tool"></a>A diagnosztikai eszközt használhatja
+Az App Service biztosítja egy intelligens és interaktív élmény szükséges konfiguráció nélkül a webalkalmazás háríthatja el. Ha problémákat tapasztal a webalkalmazással, a diagnosztikai eszköz, mi okozza a végigvezeti Önt a megfelelő információk könnyen és gyorsan elhárítása és a probléma megoldásához fog mutatni.
 
-Az Azure App Service támogatja a portal nyújt három külön lap az három lépést, a gyakori hibaelhárítási forgatókönyv támogatásához:
-
-1. Figyelje meg a jelenlegi működése
-2. Diagnosztikai adatok gyűjtése és a beépített elemzők futó elemzése
-3. Problémamegoldás
-
-Ha a probléma most történik, kattintson a **elemzés** > **diagnosztikai** > **diagnosztizálása most** diagnosztikai munkamenet létrehozásához, amely összegyűjti a HTTP-naplókat, az Eseménynapló, a memória kiíratása, a PHP-hibanaplók és a PHP feldolgozni a jelentést.
-
-Az adatok gyűjtése történik, ha azt fogja is elemzést futtat az adatok és biztosít egy HTML-jelentést.
-
-Abban az esetben, ha szeretné letölteni az adatokat, alapértelmezés szerint, azt kellene lennie D:\home\data\DaaS mappában lesz tárolva.
-
-Az Azure App Service-támogatás Portal további információkért lásd: [támogatási Webhelybővítmény Azure websites új frissítések](https://azure.microsoft.com/blog/new-updates-to-support-site-extension-for-azure-websites).
+Az App Service diagnosztikái eléréséhez keresse meg az App Service-alkalmazás vagy az App Service-környezet a [az Azure portal](https://portal.azure.com). A bal oldali navigációs sávján kattintson a **diagnosztizálása és a problémák megoldásához**.
 
 #### <a name="use-the-kudu-debug-console"></a>A Kudu hibakereső konzol használata
 A Web Apps tartalmaz egy hibakeresési konzolt, amely a hibakeresés, felfedezését, fájlok, valamint a környezet kapcsolatos információk lekérése JSON végpontjainak feltöltése is használhat. Ezt nevezzük a *Kudu konzol* vagy a *SCM irányítópultján* webalkalmazása számára.

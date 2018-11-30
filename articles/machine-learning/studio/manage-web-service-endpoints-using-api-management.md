@@ -1,5 +1,5 @@
 ---
-title: Az API Management használatával AzureML webszolgáltatások kezelése |} A Microsoft Docs
+title: Használja az API Management – Azure Machine Learning Studio-webszolgáltatások kezelése |} A Microsoft Docs
 description: Az API Management használatával AzureML webszolgáltatások kezelése bemutató útmutató.
 keywords: a Machine learning, az api management
 services: machine-learning
@@ -17,16 +17,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.openlocfilehash: bc0c8f40c8e2fb75e95e1745b53332aa8e4588ca
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 0a262b2f8716c6d950dc84793a88277f62c3e6a9
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265219"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308239"
 ---
-# <a name="learn-how-to-manage-azureml-web-services-using-api-management"></a>AzureML webszolgáltatások kezelése az API Management használatával
+# <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Az API Management használata az Azure Machine Learning Studio-webszolgáltatások kezelése
 ## <a name="overview"></a>Áttekintés
-Ez az útmutató bemutatja, hogyan gyorsan használatba az API Management az AzureML webszolgáltatások kezelése.
+Ez az útmutató bemutatja, hogyan gyorsan használatba az API Management az Azure Machine Learning Studio-webszolgáltatások kezelésére.
 
 ## <a name="what-is-azure-api-management"></a>Mi az Azure API Management?
 Az Azure API Management egy Azure-szolgáltatás, amellyel a REST API-végpontokat kezelheti a felhasználói hozzáférés-szabályozás és figyelési irányítópult definiálásával. Kattintson a [Itt](https://azure.microsoft.com/services/api-management/) Azure API Management részleteiért. Kattintson a [Itt](../../api-management/api-management-get-started.md) útmutató az első lépések az Azure API Management szolgáltatással. A többi útmutató, amely a jelen útmutató alapján, termékek, a fejlesztői előfizetésekhez és a használati dashboarding további témaköreit, beleértve az értesítési konfiguráció, szint díjszabása, válasz kezelését, felhasználói hitelesítés, ismerteti.

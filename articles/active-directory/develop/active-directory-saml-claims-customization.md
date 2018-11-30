@@ -17,18 +17,18 @@ ms.date: 10/20/2018
 ms.author: celested
 ms.reviewer: luleon, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 4e80f5cb85a53281da9ec50a02d089f46e97dfde
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: afcdb7c64f4431e920f1f1fbce1e1e6d3e4db79c
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466716"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424952"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: a vállalati alkalmazásokhoz SAML-jogkivonatban kiadott jogcímek testreszabása
 
 Még ma az Azure Active Directory (Azure AD) a legtöbb vállalati alkalmazásokat, beleértve az Azure AD-alkalmazásgyűjtemény, valamint a egyéni alkalmazásokat előre integrált alkalmazások támogatja a egyszeri bejelentkezéshez. Amikor egy felhasználó hitelesíti magát egy alkalmazást az SAML 2.0 protokoll használatával az Azure AD-n keresztül, az Azure AD egy tokent az alkalmazást (egy HTTP POST) küld. És ezt követően az alkalmazás ellenőrzi és használja a jogkivonatot a felhasználó nem kér a felhasználónévvel és jelszóval bejelentkezni. Ezek a SAML-jogkivonatok adatokra a "jogcímek" néven felhasználó tartalmaznak.
 
-A *jogcím* arról, hogy identitásszolgáltatót egy felhasználó adatainak bocsátanak ki, hogy a felhasználó számára a tokenen belül van. A [SAML-jogkivonat](http://en.wikipedia.org/wiki/SAML_2.0), ezek az adatok általában az SAML-attribútum utasítás szerepel. Az SAML-tulajdonos alkalmazásnév-azonosító néven a általában jelzi a felhasználó egyedi azonosítója.
+A *jogcím* arról, hogy identitásszolgáltatót egy felhasználó adatainak bocsátanak ki, hogy a felhasználó számára a tokenen belül van. A [SAML-jogkivonat](https://en.wikipedia.org/wiki/SAML_2.0), ezek az adatok általában az SAML-attribútum utasítás szerepel. Az SAML-tulajdonos alkalmazásnév-azonosító néven a általában jelzi a felhasználó egyedi azonosítója.
 
 Alapértelmezés szerint az Azure AD kibocsát egy SAML-jogkivonat az alkalmazáshoz, amely tartalmazza a NameIdentifier jogcím értéke az a felhasználó felhasználónevét (AVAGY egyszerű felhasználónév) az Azure ad-ben. Ez az érték a felhasználó egyedi azonosítására alkalmas. Az SAML-jogkivonat a felhasználó e-mail címét, Utónév és Vezetéknév tartalmazó további jogcímek is tartalmaz.
 

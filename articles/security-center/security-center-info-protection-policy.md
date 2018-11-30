@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: ac4aa3c8aafae24736cc7b48a9ca4e8ba9fd0742
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: e3dfbc4fc4d7ed40ebac7de6fe78398b13eafd58
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125187"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316548"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Testre szabhatja az SQL information protection-szabályzat az Azure Security Centerben (előzetes verzió)
  
@@ -38,7 +38,7 @@ A besorolási mechanizmus alapul, amely a besorolási besorolás - alkotó két 
  
 Information Protection tartalmaz egy beépített címkék és adattípusok, alapértelmezés szerint használt. Ezek testreszabásához testre szabhatja az information protection-szabályzat az Azure Security Centerben.
  
-## <a name="customize-the-information-protection-policy"></a>Az information protection-házirend testreszabása
+## <a name="customize-the-information-protection-policy"></a>Az Information Protection-szabályzat testreszabása
 Az information protection-házirend testreszabása az Azure-bérlőhöz, szüksége lesz [rendszergazdai jogosultságokkal azon a bérlő gyökérszintű felügyeleti csoport](security-center-management-groups.md). 
  
 1. A Security Center főmenüjében válassza **biztonsági házirend**.
@@ -54,7 +54,7 @@ Az information protection-házirend testreszabása az Azure-bérlőhöz, szüks�
 2. Az a **konfigurálása jellemzésére** képernyőn hoz létre, vagy módosíthatja a címke neve és leírása. Beállíthat-e a címke átállításával aktív vagy le van tiltva a **engedélyezve** váltson be- és kikapcsolása. Végül adja hozzá, vagy távolítsa el a címke társított adatok típusai. Adatok felderítése, amely megfelel az, hogy az adattípust automatikusan tartalmazza a társított bizalmassági címkére a besorolási javaslatok.
 3. Kattintson az **OK** gombra.
  
-   ![Bizalmassági címke konfigurálása](./media/security-center-info-protection-policy/config-sensitivity-label.png)
+   ![Érzékenységi címke konfigurálása](./media/security-center-info-protection-policy/config-sensitivity-label.png)
  
 4. Címkék az érzékenységi növekvő sorrendben vannak felsorolva. Címkék között alapján a rangsorolás, húzza a címkék sorrendjét húzással módosíthatja a tábla, vagy használja a **feljebb** és **mozgatása lefelé** gombok a sorrendjének módosításához. 
  
@@ -86,7 +86,7 @@ Ebben a cikkben megismerkedett az Azure Security Centerben egy SQL Information P
 Biztonsági szabályzatok és az Azure Security Center által nyújtott adatbiztonság további információkért lásd a következő cikkeket:
  
 - [Biztonsági szabályzatok áttekintése](security-center-policies-overview.md): biztonsági szabályzatok áttekintést kaphat a Security Centerben
-- [Biztonsági szabályzatok beállítása az Azure Security Center](security-center-policies.md): ismerje meg, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és -erőforráscsoportok
+- [Biztonsági szabályzatok beállítása az Azure Security Center](security-center-azure-policy.md): ismerje meg, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és -erőforráscsoportok
 - [Az Azure Security Center által nyújtott adatbiztonság](security-center-data-security.md): Útmutató a Security Center felügyeli, és gondoskodik az adatok
 
 

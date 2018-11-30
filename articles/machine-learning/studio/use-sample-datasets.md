@@ -1,5 +1,5 @@
 ---
-title: A mintaadatkészletek használata a Machine Learning Studióban |} A Microsoft Docs
+title: Használja a mintaként szolgáló adatkészletét – az Azure Machine Learning Studióban |} A Microsoft Docs
 description: A Machine Learning Studióban szereplő minta modellek használt adatkészletekhez leírása. A kísérletek ezek mintaadatkészletek is használhat.
 services: machine-learning
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.openlocfilehash: 79775e287f398b22866c78fb8bb03c5959246976
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 57d9e1c7b501b67a441dc3490356261fa29ebb7d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262283"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308834"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Az Azure Machine Learning Studió mintaadatkészleteinek használata
 [top]: #machine-learning-sample-datasets

@@ -15,18 +15,23 @@ ms.workload: NA
 ms.date: 9/26/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 0d7c3691b3496da7c178f7dc13b981abdff48d4a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 207dad0386ec53be1e8a860a85fe6670d8542043
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255012"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422643"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Az API Management integrálása a Service Fabric az Azure-ban
 
 Az Azure API Management üzembe helyezése a Service Fabrickel speciális forgatókönyv.  Az API Management akkor hasznos, ha a Service Fabric-háttérszolgáltatásokhoz tartozó útválasztási szabályok széles skálájával szeretne API-kat közzétenni. A felhőalapú alkalmazásokhoz általában előtér-átjáró szükséges, amely egyetlen belépési pontként szolgálhat a felhasználók, eszközök és egyéb alkalmazások számára. A Service Fabricben átjáró lehet bármely, bejövő forgalomra tervezett állapotmentes szolgáltatás, például egy ASP.NET Core-alkalmazás, az Event Hubs, az IoT Hub vagy az Azure API Management.
 
 Ez a cikk bemutatja, hogyan állítható be [Azure API Management](../api-management/api-management-key-concepts.md) a Service Fabric a Service fabric-háttérszolgáltatás forgalom irányítására.  Az oktatóanyag végére rendelkezni fog egy virtuális hálózaton üzembe helyezett API Management szolgáltatással, valamint egy API-művelettel, amely a forgalom állapotmentes háttérszolgáltatásokhoz való irányítására lesz konfigurálva. A Service Fabrickel kapcsolatos Azure API Management-forgatókönyvekre vonatkozó további tudnivalókért tekintse meg az [áttekintő](service-fabric-api-management-overview.md) cikket.
+
+## <a name="availability"></a>Rendelkezésre állás
+
+> [!IMPORTANT]
+> Ez a funkció érhető el a **prémium** és **fejlesztői** szinten az API Management miatt a szükséges virtuális hálózati támogatás.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

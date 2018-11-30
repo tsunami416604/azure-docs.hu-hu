@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 089c623ff2c53a59c60c3fe1a53876c16a5353dd
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 72f85761db08652f0dff7f36fbcb2ef90654e078
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159022"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334397"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Hibaelhárítási & korlátozások az Azure Cloud Shell
 
@@ -70,6 +70,8 @@ Ismert megoldásuk kapcsolatos hibák elhárítása az Azure Cloud Shellben a k�
 - **Feloldási**: zárja be és nyissa meg újra a rendszerhéjat.
 
 ### <a name="troubleshooting-remote-management-of-azure-vms"></a>Hibaelhárítás Azure virtuális gépek távoli felügyelete
+> [!NOTE]
+> Az Azure virtuális gépek rendelkeznie kell egy nyilvános IP-cím elérhető.
 
 - **Részletek**: a Rendszerfelügyeleti webszolgáltatások a Windows tűzfal alapértelmezett beállításai miatt a felhasználó lehet, hogy az alábbi hibát látja: `Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
 - **Feloldási**: futtassa `Enable-AzureRmVMPSRemoting` engedélyezése a PowerShell-táveléréssel a célgépen minden aspektusát.

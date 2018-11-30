@@ -10,12 +10,12 @@ ms.component: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 547073342038b90bd540f24895eb1a29a42a08c7
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: d60f2aca912f279f84710863e5f6ce507de64cb0
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976162"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309174"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Gyors útmutató: Egy lekérdezést küld a helyi vállalati keresési Bing-API a Node.js használata
 
@@ -29,7 +29,7 @@ Ez a példa az alkalmazás helyi érkezett válasz adatait lekérdezi az API-val
 
 * A [kérelem JavaScript kódtár](https://github.com/request/request)
 
-Rendelkeznie kell egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) Bing API-kkal. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. Az ingyenes próbaverzióra által biztosított hozzáférési kulcs használja.
+Rendelkeznie kell egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) Bing API-kkal. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. Az ingyenes próbaverzióra által biztosított hozzáférési kulcs használja.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ##<a name="code-scenario"></a>Kódforgatókönyv
 A következő kód lekéri határozza meg, és elküldi a kérelmet. Implementálására a következő lépésekben kerül sor:

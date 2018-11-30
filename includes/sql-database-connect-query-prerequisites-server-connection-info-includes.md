@@ -4,12 +4,12 @@ ms.service: sql-database
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: genemi
-ms.openlocfilehash: 642f1348032a9e4c3ad8efa63287d8f27c93295a
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: b78d52f23de8d02189f10b32d26e070fb6deea68
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52270344"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52339656"
 ---
 <!-- sql-database-connect-query-prerequisites-server-connection-info-includes.md 
 
@@ -19,10 +19,11 @@ ms.locfileid: "52270344"
 Kérje le az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. A későbbi eljárásokban szüksége lesz a teljes kiszolgálónévre, az adatbázis nevére és a bejelentkezési adatokra.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az új adatbázisra az **SQL-adatbázisok** oldalon. 
-3. Az adatbázis **Áttekintés** oldalán tekintse meg a teljes kiszolgálónevet, amint az az alábbi képen látható. Ha a mutatót a kiszolgáló neve fölé viszi, megjelenik a **Kattintson a másoláshoz** lehetőség.  
 
-   ![server-name](./media/sql-database-connect-query-prerequisites-server-connection-info-includes/server-name.png) 
+1. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az adatbázisra az **SQL-adatbázisok** oldalon.
 
-4. Ha elfelejtette a kiszolgálói bejelentkezési adatait, lépjen az SQL Database-kiszolgáló oldalára, ahol megtekintheti a kiszolgáló rendszergazdájának nevét. Szükség esetén kérjen új jelszót.
+1. Az adatbázis **Áttekintés** oldalán tekintse meg a teljes kiszolgálónevet, amint az az alábbi képen látható. Fölé a **kiszolgálónév** viszi, megjelenik a **kattintson a másoláshoz** lehetőséget.  
 
+   ![server-name](./media/sql-database-connect-query-prerequisites-server-connection-info-includes/server-name.png)
+
+1. Ha elfelejtette a kiszolgálója bejelentkezési adatait, rákattinthat a a **kiszolgálónév** navigálhat a **az SQL server** oldal és a nézet a **kiszolgáló-rendszergazdai** neve. Ha szükséges, válassza ki a **jelszó alaphelyzetbe állítása**.

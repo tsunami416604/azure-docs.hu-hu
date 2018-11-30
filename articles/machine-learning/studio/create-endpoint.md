@@ -1,5 +1,5 @@
 ---
-title: Webszolgáltatás-végpontok létrehozása a Machine Learning |} A Microsoft Docs
+title: A Machine Learning – az Azure Machine Learning Studio webszolgáltatás-végpontok létrehozásával |} A Microsoft Docs
 description: Az Azure Machine Learning webszolgáltatás-végpontok létrehozása
 services: machine-learning
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/04/2016
-ms.openlocfilehash: f046db11bf3c04c9ea15e759b4e0080cab4f71d5
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 266970bec1e61dca808bb6358f2b4580359ee70d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265066"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314013"
 ---
-# <a name="creating-endpoints"></a>Végpontok létrehozása
+# <a name="creating-endpoints"></a>Végpontok létrehozása 
 > [!NOTE]
 >  Ez a témakör ismerteti a technikákat egy **klasszikus** Machine Learning webszolgáltatás.
 > 
@@ -31,7 +31,7 @@ ms.locfileid: "52265066"
 
 Ön előre értékesít az ügyfelek futó webes szolgáltatás létrehozásakor meg kell adnia a betanított modellek minden ügyfélnek, amely továbbra is a kísérletet, amelyről a Web service létrejött van csatolva. Emellett a kísérletvászonra frissítéseket kell alkalmazni szelektív egy végpontot a testreszabások felülírása nélkül.
 
-Ehhez Azure Machine Learning lehetővé teszi, hogy hozzon létre egy üzembe helyezett webszolgáltatáshoz több végpontot. A Web service-ben minden végpont egymástól függetlenül foglalkozik, szabályozva, és felügyelt. Minden végpont egy egyedi URL-cím és a hitelesítési kulcsot az ügyfelek számára terjeszthető.
+Ehhez Azure Machine Learning Studio lehetővé teszi, hogy hozzon létre egy üzembe helyezett webszolgáltatáshoz több végpontot. A Web service-ben minden végpont egymástól függetlenül foglalkozik, szabályozva, és felügyelt. Minden végpont egy egyedi URL-cím és a hitelesítési kulcsot az ügyfelek számára terjeszthető.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: Készen állnak adatai az elemzésre? Adatok értékelés – az Azure Machine Learning |} A Microsoft Docs
+title: Készen állnak adatai az elemzésre? Az adatok kiértékelése – Azure Machine Learning Studióban |} A Microsoft Docs
 description: Négy feltétel az adatokat meg kell felelnie ahhoz, hogy készen áll az adatelemzéshez. Ez a videó rendelkezik konkrét példák nyújtanak segítséget az alapszintű adatok kiértékelése.
 keywords: a vonatkozó adatok adatok kiértékelése, adatok, data feltételek, készen adatok előkészítése
 services: machine-learning
@@ -17,12 +17,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: d762b0b82364293bb8a946dec575ac099dcd9172
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 5e7949edb13bfec72fa7d80d86d2e77214ceaa37
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263239"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316208"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Készen állnak adatai az elemzésre?
 ## <a name="video-2-data-science-for-beginners-series"></a>2. Videó: Az adatelemzés kezdőknek sorozat

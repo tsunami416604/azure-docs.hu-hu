@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/13/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 0dfe096bb3a2a2116ead2423f53a5e44c8f02630
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: c3cf2b703760debb368e26d629ee73f56ce93d39
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567519"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52441253"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-python-modules-for-azure-iot-edge"></a>Fejlesztés és hibakeresés Python-modulok az Azure IoT Edge-hez a Visual Studio Code használatával
 
@@ -66,7 +66,7 @@ Hozzon létre egy IoT Edge-modul az Azure IoT Python SDK-ban a Visual Studio Cod
 
 7. Adja meg a modul nevét. Válassza ki, amely a tárolóregisztrációs adatbázis egyedi nevét. 
 
-8. Adja meg a lemezképtárban a modul nevét. A VS Code autopopulates a modul neve a **localhost:5000**. Cserélje le a saját beállításjegyzék-információkat. Ha használja a helyi Docker-beállításjegyzék tesztelési, majd **localhost** nem okoz gondot. Ha használja az Azure Container Registry, használja a bejelentkezési kiszolgáló, a beállításjegyzék-beállításai közül. A bejelentkezési kiszolgáló néz  **\<beállításjegyzék neve\>. azurecr.io**. Csak a sztring localhost részét cserélje le, ne törölje a modul nevét. 
+8. Adja meg a lemezképtárban a modul nevét. A VS Code autopopulates a modul neve a **localhost:5000**. Cserélje le a saját beállításjegyzék-információkat. Ha használja a helyi Docker-beállításjegyzék tesztelési, majd **localhost** nem okoz gondot. Ha használja az Azure Container Registry, használja a bejelentkezési kiszolgáló, a beállításjegyzék-beállításai közül. A bejelentkezési kiszolgáló néz  **\<beállításjegyzék neve\>. azurecr.io**. Csak a sztring localhost részét cserélje le, ne törölje a modul nevét. Néz ki a végső karakterláncban \<beállításjegyzék neve\>.azurecr.io/\<modulename\>.
 
    ![Docker-rendszerkép adattárának megadása](./media/how-to-develop-c-module/repository.png)
 
@@ -81,6 +81,7 @@ Nincsenek a megoldáson belül a négy elemek:
    > A környezet fájl csak akkor jön létre, ha a modul adja meg egy lemezképtárban. Ha korábban elfogadta a localhost alapértelmezett tesztelése és hibakeresése helyileg, majd, nem kell környezeti változók deklarálása. 
 
 * A **deployment.template.json** sorolja az új modul és a egy minta **tempSensor** modul, amely szimulálja az adatokat, teszteléshez használható. Hogyan az üzembe helyezés jegyzékfájlok munkahelyi kapcsolatos további információkért lásd: [megtudhatja, hogyan telepítési jegyzékek használatával hogyan helyezhet üzembe modulokat, és ezekkel létesíthetnek útvonalat](module-composition.md). 
+* A **deployment.debug.template.json** a modul a hibakeresési verzió a megfelelő tárolót beállításokkal lemezképeket tároló fájlt.
 
 ## <a name="develop-your-module"></a>A modul fejlesztése
 
@@ -92,13 +93,7 @@ Ha már készen áll a saját kód a Python-sablon testre szabása, a [Azure IoT
 
 Minden modul mappában nincsenek különböző tároló esetében több Docker-fájlok. Ezeket a fájlokat, amelyek a bővítmény végződhet bármelyike **.debug** hozhat létre a teszteléshez modul. Python-modulok jelenleg támogatja a csak a Linux-tárolók amd64 hibakeresését. 
 
-1. A VS Code-ban keresse meg a `deployment.template.json` fájlt. A modul kép URL-címe frissítés hozzáadásával **.debug** vége.
-
-2. Cserélje le a Python modul createOptions a **deployment.template.json** az alábbi tartalmat, és mentse a fájlt: 
-    
-    ```json
-    "createOptions": "{\"ExposedPorts\":{\"5678/tcp\":{}},\"HostConfig\":{\"PortBindings\":{\"5678/tcp\":[{\"HostPort\":\"5678\"}]}}}"
-    ```
+1. A VS Code-ban keresse meg a `deployment.debug.template.json` fájlt. Ez a fájl tartalmazza a modul a hibakeresési verzió képek a megfelelő beállítások létrehozása. 
 
 3. Navigáljon a `main.py`, importálás szakasz után adja hozzá az alábbi kód
     
@@ -132,9 +127,9 @@ Minden modul mappában nincsenek különböző tároló esetében több Docker-f
     ```
 
 2. A VS Code parancskatalógus adja meg, és futtassa a parancsot **Azure IoT Edge: Build, és küldje le az IoT Edge megoldás**.
-3. Válassza ki a `deployment.template.json` a megoldás a parancskatalógus a fájlt. 
+3. Válassza ki a `deployment.debug.template.json` a megoldás a parancskatalógus a fájlt. 
 4. Az Azure IoT Hub Device Explorer kattintson a jobb gombbal egy IoT Edge-eszköz. Válassza ki **hozzon létre telepítést az adott eszköz**. 
-5. Nyissa meg a megoldást **config** mappát. Válassza ki a `deployment.json` fájlt. Válasszon **válassza ki a peremhálózati Manifest Nasazení**. 
+5. Nyissa meg a megoldást **config** mappát. Válassza ki a `deployment.debug.amd64.json` fájlt. Válasszon **válassza ki a peremhálózati Manifest Nasazení**. 
 
 Látni fogja az üzembe helyezés a VS Code integrált terminálon egy üzembe helyezési Azonosítóval rendelkező létrehozása sikerült.
 

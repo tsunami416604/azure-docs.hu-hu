@@ -1,5 +1,5 @@
 ---
-title: '3. lépés: Hozzon létre egy új Machine Learning-kísérlet |} A Microsoft Docs'
+title: '3. lépés: Hozzon létre egy új Machine Learning Studio-kísérletet – Azure |} A Microsoft Docs'
 description: 'A fejlesztés egy prediktív megoldás bemutatója 3. lépés: új betanítási kísérlet létrehozása az Azure Machine Learning Studióban.'
 services: machine-learning
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 47126006c96b1bfefe90b030805aac1d6af6c0db
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: a6f12c536cfc18ed0be55ec1755c7fe5179006ba
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262245"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317528"
 ---
-# <a name="walkthrough-step-3-create-a-new-azure-machine-learning-experiment"></a>Az útmutató 3. lépése: Új Azure Machine Learning-kísérlet létrehozása
+# <a name="walkthrough-step-3-create-a-new-azure-machine-learning-studio-experiment"></a>Az útmutató 3. lépés: Hozzon létre egy új Azure Machine Learning Studio-kísérlet
 Ez a forgatókönyv harmadik lépésében a [az Azure Machine Learning prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md)
 
 1. [Machine Learning-munkaterület létrehozása](walkthrough-1-create-ml-workspace.md)

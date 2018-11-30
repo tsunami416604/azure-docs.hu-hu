@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: jdial
-ms.openlocfilehash: 5635998eb72f08ddc665793e77008890b2cdb05d
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: bf7f1f58250d94d821e6ec41266b518d7ebe105b
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42060843"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427556"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>A hálózati biztonsági csoport diagnosztikai naplózás
 
@@ -199,7 +199,7 @@ A szabály számlálót minden egyes szabály alkalmazása az erőforrásokra vo
 ## <a name="view-and-analyze-logs"></a>Naplók megtekintése és elemzése
 
 Diagnosztikai naplóadatokat megtekintése kapcsolatban lásd: [Azure diagnosztikai naplók áttekintése](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ha diagnosztikai adatokat küld:
-- **Log Analytics**: használhatja a [hálózati biztonsági csoport elemzési](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-log-analytics
+- **Log Analytics**: használhatja a [hálózati biztonsági csoport elemzési](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-log-analytics
 ) megoldást kínál a bővített lehetőségeket. A megoldás biztosítja a Vizualizációk az NSG-szabályok, amelyek engedélyezik vagy megtagadják a forgalmat, egy MAC-címét, a hálózati adaptert egy virtuális gépen.
 - **Az Azure Storage-fiók**: adatok írása a PT1H.json fájlt. Annak a:
     - Eseménynapló a következő elérési úton: `insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`

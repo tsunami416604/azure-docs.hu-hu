@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4785f87515663831b1177c6c0958d3d965351797
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 45cf987d9af7b7dd0e8f05056b49ba56835603e7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996570"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313941"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Az Azure Machine Learning – gyakori kérdések
 
@@ -151,7 +151,7 @@ A Workbench adatelőkészítési eszközök jelenleg a következő formátumok A
 Nyilvános előzetes verzió a Workbench adatbetöltést támogatja: 
 - Helyi merevlemez-meghajtóról vagy a csatlakoztatott hálózati tárolási helye
 - Az Azure BLOB vagy az Azure Storage (Azure-előfizetés szükséges)
-- Az Azure SQL-kiszolgáló
+- Azure SQL Server-kiszolgáló
 - Microsoft SQL Server
 
 
@@ -171,4 +171,4 @@ Előzetes verzió termékei és szolgáltatásai közé tartozik a nyílt forrá
 
 **Hogyan kapcsolódnak az Azure Machine Learning a Microsoft Cognitive Toolkit?**
 
-A [Microsoft Cognitive Toolkit](https://www.microsoft.com/cognitive-toolkit/) egyike a számos keretrendszer, az új eszközök és szolgáltatások által támogatott. A Cognitive Toolkit egy egységesített mélytanulási eszközkészlet, amely lehetővé teszi, hogy használják, és kombinálhatja közkedvelt machine learning-modellek, például Feed-Forward Neurális hálózatokat, Konvolúciós hálózatokat, a feladatütemezés-sorozat, és ismétlődő hálózatokat. A Microsoft Cognitive Toolkit további információért látogasson el a [termékdokumentáció](https://docs.microsoft.com/cognitive-toolkit/). 
+A [Microsoft Cognitive Toolkit](https://docs.microsoft.com/cognitive-toolkit/) egyike a számos keretrendszer, az új eszközök és szolgáltatások által támogatott. A Cognitive Toolkit egy egységesített mélytanulási eszközkészlet, amely lehetővé teszi, hogy használják, és kombinálhatja közkedvelt machine learning-modellek, például Feed-Forward Neurális hálózatokat, Konvolúciós hálózatokat, a feladatütemezés-sorozat, és ismétlődő hálózatokat. A Microsoft Cognitive Toolkit további információért látogasson el a [termékdokumentáció](https://docs.microsoft.com/cognitive-toolkit/). 

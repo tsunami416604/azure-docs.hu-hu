@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/01/2018
+ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 6a4e8dbee34402f57d3e697e93d10573aaf10998
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 0daf25b3c7edc69ada57fb3ce2b8dbb7e50e5aed
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212812"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335010"
 ---
 # <a name="application-dashboard"></a>Alkalmazás irányítópult
 Alkalmazás irányítópult lehetővé teszi az alkalmazás egyetlen pillantással figyelésére. A **irányítópult** jelenít meg, amikor megnyit egy alkalmazást az alkalmazás neve kattintva **saját alkalmazások** lapon válassza ki **irányítópult** az ablak tetején. 
@@ -26,15 +26,7 @@ Alkalmazás irányítópult lehetővé teszi az alkalmazás egyetlen pillantáss
 > * Végpont kulcs használata LUIS, LUIS többek között az összes endpoint kérelmek [API](https://aka.ms/luis-endpoint-apis) és robotot
 > * A LUIS alkalmazás másik végponti kulcs használata. Ne használjon egyetlen végpontkulcsának összes alkalmazáshoz. A végpont kulcs rendszer nyomon követi a legfontosabb szintjén, az alkalmazás szintjén nem.  
 
-A **irányítópult** oldal áttekintést nyújt a LUIS-alkalmazás, beleértve az aktuális modell állapot, valamint [végpont](luis-glossary.md#endpoint) használat az idő függvényében. <!--The following image shows the **Dashboard** page.-->
-
-<!-- TBD: Get a working screen shot
-![The Dashboard](./media/luis-how-to-use-dashboard/dashboard.png)
--->
-
-<!-- TBD: IS THIS STILL TRUE?
-At the top of the **Dashboard** page, a contextual notification bar constantly displays notifications to update you on the required or recommended actions appropriate for the current state of your app. It also provides useful tips and alerts as needed. A detailed description of the data reported on the **Dashboard** page follows.
--->
+A **irányítópult** oldal áttekintést nyújt a LUIS-alkalmazás, beleértve az aktuális modell állapot, valamint [végpont](luis-glossary.md#endpoint) használat az idő függvényében. 
   
 ## <a name="app-status"></a>Alkalmazás állapota
 Az irányítópult megjeleníti az alkalmazás-képzési és közzétételi állapota, beleértve a dátum és idő, amikor az alkalmazás történt legutóbbi betanított és a közzétett.  
@@ -49,7 +41,6 @@ Az irányítópult szándék fog vonatkozni, az entitások és az alkalmazás me
 ## <a name="endpoint-hits"></a>Végpont találatok
 Az irányítópult megjeleníti az összes endpoint találatok, amely a LUIS alkalmazás kap, és lehetővé teszi, hogy a megjelenítési eléri egy időtartamon belül, amikor adja meg. Megjelenik a találatok teljes száma, az összeg, használó végpont a találatok egy [végponti kulcs](./luis-concept-keys.md#endpoint-key) és végpontot használó eléri egy [szerzői műveletek kulcs](./luis-concept-keys.md#authoring-key).
 
-<!-- TBD: this image is old but I don't have a new one based on usage -->
 ![Végpont találatok](./media/luis-how-to-use-dashboard/dashboard-endpointhits.png)
 
 > [!NOTE] 

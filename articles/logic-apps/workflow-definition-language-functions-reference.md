@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: a0c7dcf848bfe6e5128117169a48adfbf9483f9b
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 3450a2ba4a0bf4b1f38806ad4aacf5772c13ed9f
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346762"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317789"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Az Azure Logic Apps munkafolyamat-definíciós nyelv-funkciók dokumentációja
 
@@ -1722,7 +1722,7 @@ equals('abc', 'abcd')
 És ezeket az eredményeket adja vissza: 
 
 * Első példa: mindkét értéket egyenértékűek, így a függvény `true`.
-* Második példában: mindkét értéket nem egyenértékű, így a függvény `false`.
+* Második példa: mindkét értéket nem egyenértékű, így a függvény `false`.
 
 <a name="first"></a>
 
@@ -1757,7 +1757,7 @@ first(createArray(0, 1, 2))
 És ezeket az eredményeket adja vissza: 
 
 * Első. példa: `"h"`
-* Második példában: `0`
+* Második példa: `0`
 
 <a name="float"></a>
 

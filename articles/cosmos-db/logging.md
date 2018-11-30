@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: e1d4f9f5c91900216398dd651d238fc3fa305234
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 1c25db0a217d6aff984029a28932242b06096735
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823928"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423229"
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Az Azure Cosmos DB diagnosztikai naplózás
 
@@ -29,7 +29,7 @@ Az alábbi képen látható a különböző elérhető az Azure naplói:
 
 ![Különböző Azure-naplók](./media/logging/azurelogging.png)
 
-Az ábrán a **számítási erőforrások** képviseli, amelyhez a Microsoft a vendég operációs rendszer érheti el az Azure-erőforrások. Például az Azure Virtual Machines, a virtuális gép méretezési csoportokat, az Azure Container Service, és így tovább, számít a számítási erőforrások. A számítási erőforrások készítése a tevékenységnaplókat, diagnosztikai naplók és Alkalmazásnaplókat. További tudnivalókért tekintse meg a [figyelési adatok az Azure-ban forrásai](../azure-monitor/platform/data-sources.md#) cikk.
+Az ábrán a **számítási erőforrások** képviseli, amelyhez a Microsoft a vendég operációs rendszer érheti el az Azure-erőforrások. Például az Azure Virtual Machines, a virtuális gép méretezési csoportokat, az Azure Container Service, és így tovább, számít a számítási erőforrások. A számítási erőforrások készítése a tevékenységnaplókat, diagnosztikai naplók és Alkalmazásnaplókat. További tudnivalókért tekintse meg a [figyelési adatok az Azure-ban forrásai](../azure-monitor/platform/data-sources.md) cikk.
 
 A **nem – számítási erőforrásokat** erőforrást, amelyben érheti el az alapul szolgáló operációs rendszer és az ügyfelek közvetlenül az erőforrás. Például a hálózati biztonsági csoportok, a Logic Apps és így tovább. Az Azure Cosmos DB egy olyan nem számítási erőforrás. Naplók nem számítási erőforrások megtekintése a tevékenységnaplóban, vagy engedélyezze a diagnosztikai naplók a portálon. További tudnivalókért tekintse meg a [adatforrásokat az Azure monitorban](../azure-monitor/platform/data-sources.md) cikk.
 

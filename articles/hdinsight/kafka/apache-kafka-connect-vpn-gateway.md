@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: da98873b133d69d78271494b991b67caea1d5a11
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 7fd201dd7c766880b1ed892abe3900b523d75145
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283070"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307474"
 ---
-# <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Kafka on HDInsight az Azure virtuális hálózaton keresztül kapcsolódni
+# <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Csatlakozás az Apache Kafka on HDInsight egy Azure virtuális hálózaton keresztül
 
-Ismerje meg, hogyan Kafka on HDInsight az Azure virtuális hálózaton keresztül közvetlenül csatlakozhat. Ez a dokumentum csatlakozásról ad információt, a Kafka a következő konfigurációk használatával:
+Ismerje meg, hogyan közvetlenül kapcsolódhat az Apache Kafka on HDInsight az Azure virtuális hálózaton keresztül. Ez a dokumentum csatlakozásról ad információt, a Kafka a következő konfigurációk használatával:
 
 * Egy a helyszíni hálózaton lévő erőforrásokból. Ez a kapcsolat jön létre a helyi hálózaton a VPN-eszközt (szoftveres vagy hardveres) használatával.
 * A fejlesztési környezet egy VPN-szoftverügyfél használatával.
@@ -37,7 +37,7 @@ HDInsight nem engedélyezi a közvetlen kapcsolat, a Kafka, a nyilvános interne
     4. Konfigurálja a DNS-kiszolgáló, az egyes hálózatok közötti továbbítás.
     5. Hozzon létre egy Kafka HDInsight-fürtön a virtuális hálózatban.
 
-    További információkért lásd: a [Kafka csatlakozhat egy helyszíni hálózatról](#on-premises) szakaszban. 
+    További információkért lásd: a [csatlakozás az Apache Kafka egy a helyszíni hálózatból](#on-premises) szakaszban. 
 
 * Egyes gépek csatlakozhat a virtuális hálózathoz egy VPN-átjáró és a VPN-ügyfél. Ez a konfiguráció engedélyezi, hajtsa végre a következő feladatokat:
 
@@ -47,7 +47,7 @@ HDInsight nem engedélyezi a közvetlen kapcsolat, a Kafka, a nyilvános interne
     4. Konfigurálja a Kafka IP hirdetési célból. Ez a konfiguráció lehetővé teszi az ügyfél broker segítségével szeretne csatlakozni, IP-címek tartománynevek helyett.
     5. Töltse le és használja a VPN-ügyfél a fejlesztői rendszeren.
 
-    További információkért lásd: a [Kafka az egy VPN-ügyfél csatlakozhat](#vpnclient) szakaszban.
+    További információkért lásd: a [csatlakozás az Apache Kafka az egy VPN-ügyfél](#vpnclient) szakaszban.
 
     > [!WARNING]
     > Ez a konfiguráció csak a következő korlátozások miatt ajánlott fejlesztési célokra:
@@ -57,7 +57,7 @@ HDInsight nem engedélyezi a közvetlen kapcsolat, a Kafka, a nyilvános interne
 
 A HDInsight segítségével a virtuális hálózat további információkért lásd: [HDInsight kiterjesztése az Azure-beli virtuális hálózatok használatával](../hdinsight-extend-hadoop-virtual-network.md).
 
-## <a id="on-premises"></a> Csatlakozás a Kafkához egy a helyszíni hálózatból
+## <a id="on-premises"></a> Az Apache Kafka csatlakozhat egy helyszíni hálózat
 
 Kafka-fürt, amely kommunikál a helyszíni hálózattal létrehozásához kövesse a [HDInsight csatlakoztatása a helyszíni hálózathoz](./../connect-on-premises-network.md) dokumentumot.
 
@@ -73,7 +73,7 @@ Ezeket a lépéseket hozza létre a következő konfigurációt:
 
 Annak ellenőrzéséhez, hogy a Kafka-ügyfél csatlakozhat a fürthöz a helyszíni, kövesse a [példa: Python-kliens](#python-client) szakaszban.
 
-## <a id="vpnclient"></a> Csatlakozás a Kafka-VPN-ügyfél
+## <a id="vpnclient"></a> Az Apache Kafka kapcsolódhat a VPN-ügyfél
 
 Ebben a szakaszban a lépések segítségével hozzon létre a következő konfigurációt:
 
@@ -237,7 +237,7 @@ Ebben a szakaszban a lépések segítségével hozzon létre a következő konfi
 
 ### <a name="configure-kafka-for-ip-advertising"></a>Kafka IP hirdetés konfigurálása
 
-Alapértelmezés szerint Zookeeper-ügyfelek a Kafka-közvetítőkhöz tartomány nevét adja vissza. Ez a konfiguráció nem működik a VPN szoftver-ügyfél, a névfeloldást a virtuális hálózatban található entitások esetében nem használható. Ehhez a konfigurációhoz a következő lépések segítségével Kafka meghirdetése tartománynevek helyett IP-címek konfigurálása:
+Alapértelmezés szerint az Apache Zookeeper-ügyfelek a Kafka-közvetítőkhöz a tartomány nevét adja vissza. Ez a konfiguráció nem működik a VPN szoftver-ügyfél, a névfeloldást a virtuális hálózatban található entitások esetében nem használható. Ehhez a konfigurációhoz a következő lépések segítségével Kafka meghirdetése tartománynevek helyett IP-címek konfigurálása:
 
 1. Egy böngészőben nyissa meg https://CLUSTERNAME.azurehdinsight.net. Cserélje le __CLUSTERNAME__ a Kafka on HDInsight-fürt nevére.
 
@@ -371,7 +371,7 @@ További információ az Azure Virtual Networkhöz pont – hely VPN-átjáró v
 
 * [Azure PowerShell-lel pont – hely kapcsolat konfigurálása](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
-A HDInsight-beli Kafka használatával kapcsolatos további információk a következő dokumentumokban találhatók:
+Az Apache Kafka on HDInsight további információkért tekintse meg a következő dokumentumokat:
 
-* [A HDInsighton futó Kafka használatának első lépései](apache-kafka-get-started.md)
-* [A HDInsight alatt futó Kafka-tükrözés használata](apache-kafka-mirroring.md)
+* [A HDInsight Apache Kafka használatának első lépései](apache-kafka-get-started.md)
+* [Az Apache Kafka on HDInsight-tükrözés használata](apache-kafka-mirroring.md)

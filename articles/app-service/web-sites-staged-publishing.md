@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: 47b67a6a3475b7f159a14825b168bbf0049db9b8
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: cb7b114836c83338f71c85f59299ecf1dc4613a9
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291147"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317619"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Állítsa be átmeneti környezeteket az Azure App Service-ben
 <a name="Overview"></a>
@@ -169,7 +169,7 @@ Ha hibákat azonosítják a tárolóhelycsere után éles környezetben, végezh
 <a name="Warm-up"></a>
 
 ## <a name="custom-warm-up-before-swap"></a>Egyéni bemelegítési előtt lapozófájl-kapacitás
-Néhány alkalmazás egyéni bemelegítési műveleteket lehet szükség. A `applicationInitialization` konfigurációs elem a Web.config fájlban lehetővé teszi, hogy adja meg az egyéni inicializálási műveletek egy fogadása előtt kell elvégezni. A csereművelet végrehajtásához az egyéni bemelegítési várakozik. Íme egy minta web.config kódrészletet.
+Használata esetén [Auto-Swap](#Auto-Swap), bizonyos alkalmazásokhoz szükség lehet egyéni bemelegítési műveleteket. A `applicationInitialization` konfigurációs elem a Web.config fájlban lehetővé teszi, hogy adja meg az egyéni inicializálási műveletek egy fogadása előtt kell elvégezni. A csereművelet végrehajtásához az egyéni bemelegítési várakozik. Íme egy minta web.config kódrészletet.
 
     <system.webServer>
         <applicationInitialization>

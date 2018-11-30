@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 0376f09d4d7d6c952cbef40751a2729045f68061
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9cfb098fd8e6cb777b6cd968f92b20baabfab705
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255836"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313984"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Fájlintegritási monitorozás az Azure Security Centerben
 Ismerje meg a fájl fájlintegritási Monitorozás (FIM) konfigurálása az Azure Security Centerben, használja ezt a forgatókönyvet.
@@ -205,7 +205,7 @@ FIM letilthatja. FIM az Azure Change Tracking megoldásával követi és azonos�
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan fájl fájlintegritási Monitorozás (FIM) a Security Center használatával. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Biztonsági szabályzatok beállítása](security-center-policies.md) – ismerje meg, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és -erőforráscsoportok.
+* [Biztonsági szabályzatok beállítása](security-center-azure-policy.md) – ismerje meg, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és -erőforráscsoportok.
 * [Biztonsági javaslatok kezelése](security-center-recommendations.md) – megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
 * [Biztonsági állapotfigyelés](security-center-monitoring.md)– útmutató az Azure-erőforrások állapotának monitorozásához.
 * [Kezelése és válaszadás a biztonsági riasztások](security-center-managing-and-responding-alerts.md)– ismerje meg, hogyan kezelése és válaszadás a biztonsági riasztásokra.

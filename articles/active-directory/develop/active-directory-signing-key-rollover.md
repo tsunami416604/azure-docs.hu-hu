@@ -16,18 +16,18 @@ ms.date: 10/20/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: eaaeaf1b37c0d732d8d0009ad5a66f2118674b66
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: e00591338fd09cbba6d97e6affebc9dce2399f7c
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240454"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423762"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Az Azure Active Directory aláírókulcs
 Ez a cikk ismerteti, mit kell tudni az Azure Active Directory (Azure AD) biztonsági jogkivonatok aláírásához használt nyilvános kulcsok. Fontos megjegyezni, hogy a kulcsok váltása rendszeres időközönként, és a egy robotkart sikerült kell leváltani azonnal. Minden alkalmazás, amely az Azure AD használata programozott módon kezelni a kulcshoz kapcsolódó kulcsváltás folyamat vagy rendszeres manuális váltása folyamatot képesnek kell lennie. Tudni, hogyan működnek a kulcsokat, olvassa tovább az alkalmazás a Váltás hatásainak kiértékelését és frissítheti az alkalmazást, vagy időszakos manuális váltása folyamatot kulcsváltás kezelésére, ha szükséges.
 
 ## <a name="overview-of-signing-keys-in-azure-ad"></a>Az Azure Active Directory aláírókulcs áttekintése
-Az Azure AD és az azt használó alkalmazások között megbízhatósági kapcsolat létrehozása iparági szabványokon nyilvános kulcsú titkosítás használ. Gyakorlatilag, ez a következő módon működik: Azure ad-ben, amely egy nyilvános és titkos kulcsból álló párként áll aláíró kulcsot használ. Ha egy felhasználó bejelentkezik az Azure AD hitelesítésre használó alkalmazások, az Azure AD egy biztonsági jogkivonatot, amely tartalmazza a felhasználó adatai hoz létre. A jogkivonat aláírásával rendelkezik Azure AD-bA annak titkos kulcsát, az alkalmazásnak továbbítás előtt. Annak ellenőrzéséhez, hogy a jogkivonat érvényes, és az Azure ad-ből származó, az alkalmazásnak érvényesítenie kell a nyilvános kulccsal, amely tartalmazza a bérlő Azure AD által elérhetővé tett a jogkivonat aláírása [OpenID Connect-felderítési dokumentum](http://openid.net/specs/openid-connect-discovery-1_0.html) vagy SAML / WS-Fed [összevonási metaadatok dokumentuma](azure-ad-federation-metadata.md).
+Az Azure AD és az azt használó alkalmazások között megbízhatósági kapcsolat létrehozása iparági szabványokon nyilvános kulcsú titkosítás használ. Gyakorlatilag, ez a következő módon működik: Azure ad-ben, amely egy nyilvános és titkos kulcsból álló párként áll aláíró kulcsot használ. Ha egy felhasználó bejelentkezik az Azure AD hitelesítésre használó alkalmazások, az Azure AD egy biztonsági jogkivonatot, amely tartalmazza a felhasználó adatai hoz létre. A jogkivonat aláírásával rendelkezik Azure AD-bA annak titkos kulcsát, az alkalmazásnak továbbítás előtt. Annak ellenőrzéséhez, hogy a jogkivonat érvényes, és az Azure ad-ből származó, az alkalmazásnak érvényesítenie kell a nyilvános kulccsal, amely tartalmazza a bérlő Azure AD által elérhetővé tett a jogkivonat aláírása [OpenID Connect-felderítési dokumentum](https://openid.net/specs/openid-connect-discovery-1_0.html) vagy SAML / WS-Fed [összevonási metaadatok dokumentuma](azure-ad-federation-metadata.md).
 
 Biztonsági okokból az Azure AD aláíró kulcs tekercsben rendszeres időközönként, és vészhelyzet esetén sikerült kell leváltani azonnal. Minden olyan alkalmazás, amely integrálható az Azure ad-ben kezelni egy kulcsváltás eseményt, függetlenül attól, hogy milyen gyakran ez akkor fordulhat elő kell készíteni. Ha nem támogatja, és az alkalmazás megpróbálja használni egy lejárt kulcs ellenőrzése a jogkivonat aláírása, a bejelentkezési kérelem sikertelen lesz.
 

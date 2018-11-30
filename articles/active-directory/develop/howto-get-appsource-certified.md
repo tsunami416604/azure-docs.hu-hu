@@ -17,12 +17,12 @@ ms.date: 08/21/2018
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 603da0add9efba4e68088bf0eb6ab919ec9988e2
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 30dff14f322bcd66ea56b4b12843a6293cd95326
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955491"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423796"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>AppSource Certified beszerzése az Azure Active Directory
 
@@ -118,9 +118,9 @@ Az appsource-ban próbaverziója kapcsolatos további információkért lásd: [
 
 ## <a name="get-support"></a>Támogatás kérése
 
-Az Azure AD-integrációhoz használjuk [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource) támogatásához a Közösséggel. 
+Az Azure AD-integrációhoz használjuk [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) támogatásához a Közösséggel. 
 
-Először a Stack overflow-ra tesz fel kérdéseket, és keresse meg a meglévő problémák megtekintéséhez, ha valaki kérte a kérdés előtt erősen ajánlott. Győződjön meg arról, hogy a kérdéseit vagy megjegyzéseit címkével ellátott [ `[azure-active-directory]` és `[appsource]` ](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource).
+Először a Stack overflow-ra tesz fel kérdéseket, és keresse meg a meglévő problémák megtekintéséhez, ha valaki kérte a kérdés előtt erősen ajánlott. Győződjön meg arról, hogy a kérdéseit vagy megjegyzéseit címkével ellátott [ `[azure-active-directory]` és `[appsource]` ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource).
 
 Használja a következő megjegyzéseket visszajelzést, és segítsen finomíthatja és a tartalom formázása.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: e7bb7f0c4cb63390b91012e071589611991a2866
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4bd2b72596912d968ad6fc323ce32e620336d932
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068332"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316990"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>A Windows Defender komplex veszélyforrások elleni védelem az Azure Security Centerrel
 
@@ -99,12 +99,12 @@ A Windows Defender ATP jóindulatú tesztriasztás generálása:
 
 3. A parancs végrehajtása sikeres, ha az Azure Security Center irányítópultjának és a Windows Defender ATP portáljának egy új riasztás megjelenik. Ez a riasztás jelenik meg néhány percet is igénybe vehet.
 
-4. Tekintse át a riasztás a Security Centerben, lépjen a **biztonsági riasztások** >  **gyanús Powershell CommandLine**.
+4. Tekintse át a riasztás a Security Centerben, lépjen a **biztonsági riasztások** >  **gyanús Powershell CommandLine**.
 
 5. A vizsgálat ablakban jelölje ki a hivatkozásra kattintva nyissa meg a Windows Defender ATP portálján.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Biztonsági szabályzatok beállítása az Azure Security Center](security-center-policies.md): ismerje meg, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és -erőforráscsoportok.
+- [Biztonsági szabályzatok beállítása az Azure Security Center](security-center-azure-policy.md): ismerje meg, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és -erőforráscsoportok.
 - [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md): megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
 - [Biztonsági állapotmonitorozás az Azure Security Centerben](security-center-monitoring.md): Útmutató az Azure-erőforrások állapotának monitorozásához.

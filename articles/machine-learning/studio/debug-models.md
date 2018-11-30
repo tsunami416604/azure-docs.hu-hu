@@ -1,6 +1,6 @@
 ---
-title: Az Azure Machine Learningben a modell hibáinak keresése |} A Microsoft Docs
-description: Hogyan lehet hibákat keresni a tanítási és pontszám modelleket az Azure Machine Learning modulok által előállított hibák.
+title: Az Azure Machine Learning Studio a modell hibáinak keresése |} A Microsoft Docs
+description: Hibák hibakeresése tanítási és pontszám modell által előállított modulok az Azure Machine Learning Studióban.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.openlocfilehash: fd81ff0ade0267d052862beed9d84649a7721ee9
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: bb1a3e778dcbcfacbc9e605ebf2d855786d71510
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263689"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312595"
 ---
-# <a name="debug-your-model-in-azure-machine-learning"></a>A modell hibáinak keresése az Azure Machine Learning rendszerben
+# <a name="debug-your-model-in-azure-machine-learning-studio"></a>Az Azure Machine Learning Studio a modell hibáinak keresése
 
 Ez a cikk azt ismerteti, miért vagy a következő két hibák előfordulhat, hogy közben fut egy modellt a lehetséges okok:
 

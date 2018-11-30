@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 20bd2fe8877c635b0f55bb4f904658a595658518
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: adaeb3087fca57a4a868f4525d588e014ff36fcf
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51828321"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335827"
 ---
 # <a name="understand-the-linux-agent-check-results-in-update-management"></a>A Linuxos ügynök ellenőrzésének az eredménye az Update Management ismertetése
 
-Előfordulhat, hogy a gép nem látható, számos oka lehet **készen** az Update Management. Az Update Management ellenőrizheti az határozza meg a hibát kiváltó problémát hibrid feldolgozó ügynök állapotát. Ez a cikk ismerteti a hibaelhárító futtatása az Azure Portalról, és a kapcsolat nélküli üzemmódban.
+Előfordulhat, hogy számos oka lehet az Azure machine nem látható **készen** az Update Management. Az Update Management ellenőrizheti az határozza meg a hibát kiváltó problémát hibrid feldolgozó ügynök állapotát. Ez a cikk ismerteti a hibaelhárító futtatása az Azure Portalról, és a kapcsolat nélküli üzemmódban.
 
 ## <a name="start-the-troubleshooter"></a>Indítsa el a hibaelhárító
 
@@ -54,7 +54,8 @@ Az operációs rendszer ellenőrzés ellenőrzi, hogy ha a hibrid Runbook-feldol
 
 ### <a name="oms-agent"></a>Az OMS-ügynök
 
-Ezen ellenőrzés biztosítja, hogy a Linuxhoz készült OMS-ügynök telepítve van-e. Hogyan kell telepíteni, útmutatásért lásd: [a Linuxhoz készült ügynök telepítése](../../log-analytics/log-analytics-quick-collect-linux-computer.md#install-the-agent-for-linux).
+Ezen ellenőrzés biztosítja, hogy a Linuxhoz készült OMS-ügynök telepítve van-e. Hogyan kell telepíteni, útmutatásért lásd: [a Linuxhoz készült ügynök telepítése](../../log-analytics//log-analytics-quick-collect-linux-computer.md#install-the-agent-for-linux
+).
 
 ### <a name="oms-agent-status"></a>Az OMS-ügynök állapota
 

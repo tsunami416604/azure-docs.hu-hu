@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 92f9732adadc4eb580d89f8a43cf76177450aeb7
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 50edabb395380c8b0185736205834dd65e47317f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160742"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425253"
 ---
 # <a name="password-management-frequently-asked-questions"></a>A jelszókezelés – gyakori kérdések
 
@@ -31,11 +31,11 @@ Ez a GYIK a következő részekre van felosztva:
 * [Jelszókezelési jelentések kapcsolatos kérdések](#password-management-reports)
 * [A jelszóvisszaíró kapcsolatos kérdések](#password-writeback)
 
-## <a name="password-reset-registration"></a>Jelszó alaphelyzetbe állításának regisztrációja
+## <a name="password-reset-registration"></a>Regisztráció új jelszó kéréséhez
 
 * **Kérdés: a felhasználók regisztrálhatják saját jelszó alaphelyzetbe állítása adatait?**
 
-  > **V:** Igen. Mindaddig, amíg engedélyezve van a jelszó-visszaállítás, és rendelkeznek licenccel, a felhasználók ellátogathatnak a jelszó-visszaállítási portál (https://aka.ms/ssprsetup) regisztrálja a hitelesítési adataik. Felhasználók is regisztrálhatja a hozzáférési panelen keresztül (http://myapps.microsoft.com). A hozzáférési panelen keresztül regisztrálásához válassza ki a profilhoz tartozó fotó kiválasztása szükségük **profil**, majd válassza ki a **regisztráljanak a jelszóátállításra** lehetőséget.
+  > **V:** Igen. Mindaddig, amíg engedélyezve van a jelszó-visszaállítás, és rendelkeznek licenccel, a felhasználók ellátogathatnak a jelszó-visszaállítási portál (https://aka.ms/ssprsetup) regisztrálja a hitelesítési adataik. Felhasználók is regisztrálhatja a hozzáférési panelen keresztül (https://myapps.microsoft.com). A hozzáférési panelen keresztül regisztrálásához válassza ki a profilhoz tartozó fotó kiválasztása szükségük **profil**, majd válassza ki a **regisztráljanak a jelszóátállításra** lehetőséget.
   >
   >
 * **K: Ha engedélyezhető a jelszó alaphelyzetbe állítása egy csoport, és úgy dönt, hogy engedélyezze a mindenki saját felhasználók szükséges regisztrálja újra?**
@@ -170,7 +170,7 @@ Ez a GYIK a következő részekre van felosztva:
   >
 * **Kérdés a szabályzat a felhasználók a biztonsági kérdések-visszaállítás konfigurálva, de az Azure-rendszergazdák a Microsoft-eltérően kell konfigurálni.**
 
-  > **V:** Ez az az elvárt működés. A Microsoft érvényesíti a alapértelmezés szerint két-kapu jelszó kérésére vonatkozó szabályzat minden olyan Azure-rendszergazdai szerepkörhöz. Ez megakadályozza, hogy a rendszergazdák biztonsági kérdések használatával. További információ a jelen szabályzatban foglaltak annak a [jelszóházirendek és -korlátozások az Azure Active Directoryban](concept-sspr-policy.md) cikk.
+  > **V:** Ez az az elvárt működés. A Microsoft az új jelszó kérésére vonatkozó erős, alapértelmezett, két kapus szabályzat alkalmazását írja elő minden Azure rendszergazdai szerepkörhöz. Ez megakadályozza, hogy a rendszergazdák biztonsági kérdések használatával. További információ a jelen szabályzatban foglaltak annak a [jelszóházirendek és -korlátozások az Azure Active Directoryban](concept-sspr-policy.md) cikk.
   >
   >
 * **K: Ha a felhasználó több, mint a maximális új jelszó kéréséhez szükséges kérdések száma regisztrálva van, hogyan vannak a biztonsági kérdéseket a kijelölt alaphelyzetbe állítása során?**

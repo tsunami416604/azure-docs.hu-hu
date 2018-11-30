@@ -1,5 +1,5 @@
 ---
-title: Az Azure AI-katalógusban kísérleteket |} A Microsoft Docs
+title: Az Azure AI-katalógusban kísérletek – Azure Machine Learning Studióban |} A Microsoft Docs
 description: Fedezze fel, és megoszthatja a kísérleteket az Azure AI-katalógusban.
 services: machine-learning
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
-ms.openlocfilehash: 43e5cc14ac98b85dd50391380033834cf642b1a9
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 66b5e30a26c57676bdd65b4861d34ca90c0c25af
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264471"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317466"
 ---
 # <a name="discover-experiments-in-azure-ai-gallery"></a>Fedezze fel az Azure AI-katalógusban kísérletek
 
-[Az Azure AI-katalógusban](http://gallery.cortanaintelligence.com) széles körének rendelkezik [kísérletek](https://gallery.cortanaintelligence.com/experiments) a fejlesztett [Azure Machine Learning Studio](https://studio.azureml.net). A gyors proof-of-concept kísérletek, amelyek bemutatják a machine learning-technika, az összetett gépi tanulási problémák teljes mértékben saját fejlesztésű megoldások adott tartomány kísérletek.
+[Az Azure AI-katalógusban](http://gallery.cortanaintelligence.com) különböző [kísérletek](https://gallery.cortanaintelligence.com/experiments) a fejlesztett [Azure Machine Learning Studio](https://studio.azureml.net). A gyors proof-of-concept kísérletek, amelyek bemutatják a machine learning-technika, az összetett gépi tanulási problémák teljes mértékben saját fejlesztésű megoldások adott tartomány kísérletek.
 
 > [!NOTE]
 > Egy ***kísérletezhet*** van a vásznon, a Machine Learning Studio prediktív elemzési modellek létrehozására használhatja. A modell különböző elemzési modulok csatlakoztatásával adatokat hoz létre. Próbálja ki a különböző ötleteket, próbafuttatások tegye, és végül helyezi üzembe a modellt webszolgáltatásként, amely az Azure-ban. Egy egyszerű kísérlet létrehozása példa: [Machine learning-oktatóanyag: az első kísérlet létrehozása az Azure Machine Learning Studióban](create-experiment.md). Prediktív elemzési megoldások létrehozása egy átfogóbb leírását lásd: [forgatókönyv: a hitelkockázat értékelése az Azure Machine Learning a prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md).

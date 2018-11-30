@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
-ms.openlocfilehash: f5be273401fa9fdfdc2c97296f5f2265dbb3c447
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: f36d89fb01e7892ef10576b7f5f0b5fa86d8a21b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042377"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314251"
 ---
-# <a name="phoenix-query-server-rest-sdk"></a>Phoenix-lekérdezéskiszolgáló REST SDK
+# <a name="apache-phoenix-query-server-rest-sdk"></a>Az Apache Phoenix-lekérdezéskiszolgáló REST SDK
 
-[Az Apache Phoenix](http://phoenix.apache.org/) egy nyílt forráskódú, nagy mértékben párhuzamosított alapuló relációs Adatbázisréteg a [HBase](apache-hbase-overview.md). A Phoenix lehetővé teszi, hogy az SQL-szerű lekérdezéseket a hbase-ben az SSH-eszközök segítségével például [az SQLLine](apache-hbase-phoenix-squirrel-linux.md). A Phoenix is biztosít a Phoenix lekérdezés kiszolgáló (PQS), a vékony ügyfelek, amelyek kétféle átviteli módszer támogatja az ügyfél-kommunikációhoz nevű HTTP-kiszolgáló: JSON-t és a Protokollpufferekhez. Protokollpuffereket az olyan alapértelmezett mechanizmus, és JSON-nál több hatékony kommunikációt biztosít.
+[Az Apache Phoenix](http://phoenix.apache.org/) egy nyílt forráskódú, nagy mértékben párhuzamosított alapuló relációs Adatbázisréteg a [Apache HBase](apache-hbase-overview.md). A Phoenix lehetővé teszi, hogy az SQL-szerű lekérdezéseket a hbase-ben az SSH-eszközök segítségével például [az SQLLine](apache-hbase-phoenix-squirrel-linux.md). A Phoenix is biztosít a Phoenix lekérdezés kiszolgáló (PQS), a vékony ügyfelek, amelyek kétféle átviteli módszer támogatja az ügyfél-kommunikációhoz nevű HTTP-kiszolgáló: JSON-t és a Protokollpufferekhez. Protokollpuffereket az olyan alapértelmezett mechanizmus, és JSON-nál több hatékony kommunikációt biztosít.
 
 Ez a cikk ismerteti, hogyan használhatja az PQS REST SDK-t létrehozni a táblákat, upsert sorok, egyenként és tömegesen, és válassza ki az SQL-utasítások használatával adatokat. A példákban a [a Microsoft .NET-illesztő az Apache Phoenix-lekérdezéskiszolgáló](https://www.nuget.org/packages/Microsoft.Phoenix.Client). Ez az SDK épül [Apache kalcit Avatica](https://calcite.apache.org/avatica/) API-k, amely kizárólag a szerializálási formátumot használja Protokollpuffereket.
 
@@ -32,7 +32,7 @@ Az Apache Phoenix-lekérdezéskiszolgáló a Microsoft .NET-illesztőprogram NuG
 
 ## <a name="instantiate-new-phoenixclient-object"></a>Új PhoenixClient objektumpéldányt
 
-A kezdéshez a kódtár használatával hozható létre egy új `PhoenixClient` objektum átadása az `ClusterCredentials` tartalmazó a `Uri` , a fürt és a fürt Hadoop-felhasználónevet és jelszót.
+A kezdéshez a kódtár használatával hozható létre egy új `PhoenixClient` objektum átadása az `ClusterCredentials` tartalmazó a `Uri` a fürt és a fürt Apache Hadoop-felhasználónevet és jelszót.
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net/"), "USERNAME", "PASSWORD");
@@ -540,5 +540,5 @@ FM: 5
 
 ## <a name="next-steps"></a>További lépések 
 
-* [Phoenix a HDInsight](../hdinsight-phoenix-in-hdinsight.md)
-* [A HBase REST SDK-val](apache-hbase-rest-sdk.md)
+* [A HDInsight Apache Phoenixhez](../hdinsight-phoenix-in-hdinsight.md)
+* [Az Apache HBase REST SDK-val](apache-hbase-rest-sdk.md)

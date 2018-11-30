@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2017
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: 5267ce5c50e8a57843f0bc54165289b38013ad91
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2baae0a1932bdcb7fa5e29ac06dd8ae7a7020a30
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986115"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52421844"
 ---
 # <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>Konfigurálja a hálózati konfigurációs fájl használatával virtuális hálózat (klasszikus)
 > [!IMPORTANT]
@@ -44,7 +44,7 @@ PowerShell vagy a klasszikus Azure CLI segítségével exportálhatja a hálóza
     Get-AzureVNetConfig -ExportToFile c:\azure\networkconfig.xml
     ```
 
-### <a name="azure-classic-cli"></a>Az Azure klasszikus parancssori felület
+### <a name="azure-classic-cli"></a>Azure klasszikus parancssori felület
 
 1. [A klasszikus Azure CLI telepítése](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Fejezze be a klasszikus parancssori felület parancssorból a hátralévő lépéseket.
 2. Jelentkezzen be az Azure-bA írja be a `azure login` parancsot.
@@ -132,9 +132,9 @@ PowerShell vagy a klasszikus parancssori felület használatával importálhatja
     Set-AzureVNetConfig  -ConfigurationPath c:\azure\networkconfig.xml
     ```
 
-### <a name="azure-classic-cli"></a>Az Azure klasszikus parancssori felület
+### <a name="azure-classic-cli"></a>Azure klasszikus parancssori felület
 
-1. [A klasszikus Azure CLI telepítése](/cli/azure/install-cli-version-1.0.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Fejezze be a klasszikus parancssori felület parancssorból a hátralévő lépéseket.
+1. [A klasszikus Azure CLI telepítése](/cli/azure/install-classic-cli). Fejezze be a klasszikus parancssori felület parancssorból a hátralévő lépéseket.
 2. Jelentkezzen be az Azure-bA írja be a `azure login` parancsot.
 3. Győződjön meg arról, verziójában asm mód megadásával Ön a `azure config mode asm` parancsot.
 4. Módosítsa a könyvtárat és a fájlnév szükség szerint, az alábbi parancsban majd a parancs futtatásával importálhatja a hálózati konfigurációs fájlt:

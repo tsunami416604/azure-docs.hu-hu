@@ -3,19 +3,19 @@ title: Keresési helyet, a központi felhasználói felületen a Bing egyéni ke
 titlesuffix: Azure Cognitive Services
 description: Ismerteti, hogyan konfigurálhatja a Bing Custom Search tárolt felhasználói felületén.
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
-ms.author: v-brapel
-ms.openlocfilehash: 77845cb60dac707326acdb08b0198f8725a36f62
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.author: aahi
+ms.openlocfilehash: c71597cf540cca67b9558ce28d20ce1d21ae0243
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48813974"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424986"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>A központi felhasználói felület konfigurálása
 
@@ -29,21 +29,21 @@ Központi felhasználói felületen a webalkalmazás konfigurálásához kövess
   
 2. Kattintson egy egyéni keresési példány. Hozzon létre egy példányt, lásd: [az első Bing Custom Search-példány létrehozása](quick-start.md).  
 
-3. Kattintson a **üzemeltetett felhasználói felület** fülre.  
+3. Kattintson a **Hosted UI** (Üzemeltetett felhasználói felület) lapra.  
   
-4. Válasszon egy elrendezést.
+4. Válasszon ki egy elrendezést.
   
   - Keresősáv és az eredményeket (alapértelmezett) &mdash; Ez az elrendezés a hagyományos keresése oldal, a keresőmezőbe, és a keresési eredmények.
   - Csak eredmény &mdash; ebben az elrendezésben csak a keresési eredményeket jeleníti meg. Ez az elrendezés nem jeleníti meg a keresési mezőbe. Meg kell adnia a keresési lekérdezést a lekérdezési paraméter hozzáadásával (& q =\<lekérdezési karakterlánc >) a kérés URL-címét a JavaScript-kódrészletet vagy HTML-végpont hivatkozásra.
   - POP-over &mdash; Ez az elrendezés egy keresőmezőt tartalmaz, és megjeleníti a keresési eredmények között egy mozgó területre.
       
-5. Válassza ki a színtémát. A lehetséges témák a következők: 
+5. Válasszon ki egy színtémát. A lehetséges témák a következők: 
   
   - Klasszikus
   - Sötét
   - Látképéről kék
 
-  Kattintson az egyes témák témát működik a legjobban a webalkalmazással megtekintéséhez. Ha szeretné jobban integrálhatja a webalkalmazással, kattintson a színtémát finomhangolása **testreszabás téma**. Nem minden szín hatással van minden elrendezés téma. Ha módosítani szeretné egy színt, a megfelelő mezőben adja meg a színt HEXADECIMÁLIS RGB-értéke (például #366eb8). Vagy, a color gombra, majd a shade az Önnek legmegfelelőbb. 
+  Kattintson az egyes témák témát működik a legjobban a webalkalmazással megtekintéséhez. Ha a webalkalmazással való jobb integráció érdekében szeretné még részletesebben beállítani a színtémát, kattintson a **Customize theme** (Téma testreszabása) elemre. Nem minden színbeállítás alkalmazható minden elrendezési témára. Ha módosítani szeretné egy színt, a megfelelő mezőben adja meg a szín HEXADECIMÁLIS RGB-értékét (például #366eb8). Vagy, a color gombra, majd a shade az Önnek legmegfelelőbb. 
   
   Miután megváltoztatta egy színt, ismerje meg hogyan a módosítás hatással van az előzetes verzió példa a jobb oldalon. Mindig kattinthat **visszaállítás alapértelmezettre** , hogy a kiválasztott téma alapértelmezett színét.
 
@@ -105,7 +105,7 @@ Központi felhasználói felületen a webalkalmazás konfigurálásához kövess
 > [!NOTE]
 > Az egyéni üzemeltetett felhasználói felületi konfigurációs módosítások, a jobb oldali panelen végzett módosításokat vizuális referenciaként biztosít. A megjelenített keresési eredmények között nem a tényleges eredmények a példány el.
 
-[!INCLUDE[publish or revert](./includes/publish-revert.md)]
+[!INCLUDE [publish or revert](./includes/publish-revert.md)]
 
 ## <a name="consume-custom-ui"></a>Egyéni felhasználói felület használata
 
@@ -143,5 +143,5 @@ További információt, beleértve az egyéni konfiguráció azonosítója, lát
 
 ## <a name="next-steps"></a>További lépések
 
-- [Kiemeli a szöveget decoration jelölők használatával](./hit-highlighting.md)
-- [Oldal weblapok](./page-webpages.md)
+- [Díszítő jelölők használata szövegkiemeléshez](./hit-highlighting.md)
+- [Weboldalak lapozása](./page-webpages.md)

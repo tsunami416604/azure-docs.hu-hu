@@ -15,12 +15,12 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: e6f4e67d09eacadbbf9d74f417357a87ece0a951
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: d098d38c39788dee7f4a3852d07a762b36fd9a4f
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "50238505"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52333751"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Az Azure AD-alkalmazásproxy használatával állítsa be a közzétett alkalmazások egy egyéni kezdőlapja
 
@@ -120,7 +120,7 @@ A kezdőlap URL-cím létrehozása, és frissítse az alkalmazás ezt az érték
     $appnew = New-Object "Microsoft.Open.AzureAD.Model.Application"
     ```
 
-3. A kezdőlap URL-Címének beállítása a kívánt értéket. Az értéknek kell lennie a közzétett alkalmazás altartomány mutató elérési utat. Például, ha módosítja a kezdőlap URL-címe a *https://sharepoint-iddemo.msappproxy.net/* való *https://sharepoint-iddemo.msappproxy.net/hybrid/*,. alkalmazás felhasználóinak lépjen közvetlenül az egyéni kezdőlapja.
+3. A kezdőlap URL-Címének beállítása a kívánt értéket. Az értéknek kell lennie a közzétett alkalmazás altartomány mutató elérési utat. Például, ha módosítja a kezdőlap URL-címe a `https://sharepoint-iddemo.msappproxy.net/` való `https://sharepoint-iddemo.msappproxy.net/hybrid/`,. alkalmazás felhasználóinak lépjen közvetlenül az egyéni kezdőlapja.
 
     ```
     $homepage = "https://sharepoint-iddemo.msappproxy.net/hybrid/"

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 935fef5ea988908787ae04688985606acec41bfd
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: ac58c6b951a03b403375fdc17dcd45f8e624deac
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387277"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311453"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Kiépítés és megszüntetés SaaS-alkalmazásokhoz az Azure Active Directory felhasználói automatizálása
 
@@ -255,7 +255,7 @@ Azonban tudni bejelentkezni a SaaS-alkalmazás az Azure AD B2B-felhasználók, a
 
 ### <a name="does-automatic-user-provisioning-to-saas-apps-work-with-dynamic-groups-in-azure-ad"></a>Nem a felhasználók automatikus átadása SaaS-alkalmazások munkahelyi dinamikus csoportok az Azure AD-ben?
 
-Igen. Ha "szinkronizálás csak a hozzárendelt felhasználók és csoportok" konfigurálva, a kiszolgáló üzembe helyezése az Azure AD felhasználói építhető vagy megszüntetni hozzárendeléseket felhasználók SaaS-alkalmazásban alapul-e a tagjai egy [dinamikus csoport](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule]). Dinamikus csoportok együttműködnek a "minden felhasználó és csoport szinkronizálása" lehetőséget.
+Igen. Ha "szinkronizálás csak a hozzárendelt felhasználók és csoportok" konfigurálva, a kiszolgáló üzembe helyezése az Azure AD felhasználói építhető vagy megszüntetni hozzárendeléseket felhasználók SaaS-alkalmazásban alapul-e a tagjai egy [dinamikus csoport](../users-groups-roles/groups-create-rule.md). Dinamikus csoportok együttműködnek a "minden felhasználó és csoport szinkronizálása" lehetőséget.
 
 Dinamikus csoportok használatáért azonban befolyásolhatja a SaaS-alkalmazásokhoz való üzembe helyezést, az Azure AD-ből teljes körű felhasználói általános teljesítményét. Dinamikus csoportok használata esetén tartsa az alábbi korlátozásokkal és javaslatok szem előtt:
 

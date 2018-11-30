@@ -8,14 +8,14 @@ ms.author: nitinver
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 7/7/2017
-ms.openlocfilehash: e25a2dcaf9b7c820f5d7e0312fb2cb55fc558882
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 771f01f18c5cb54a0458d624a65ec1a69345cadd
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39593899"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317228"
 ---
-# <a name="troubleshoot-hbase-by-using-azure-hdinsight"></a>A HBase hibaelhárítása az Azure HDInsight használatával
+# <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Az Azure HDInsight az Apache HBase hibaelhárítása
 
 A leggyakoribb problémák és azok megoldásait ismerje meg az Apache Ambari az Apache HBase is észleltünk adattartalmakat használatakor.
 
@@ -30,7 +30,7 @@ Lyuk lehet, hogy a kapcsolat nélküli régiókban okozta, így javítsa ki a ho
 Ahhoz, hogy a ki nem osztott régiók vissza a normál állapotban, végezze el az alábbi lépéseket:
 
 1. Jelentkezzen be az SSH segítségével a HDInsight HBase-fürtnek.
-2. A ZooKeeper-rendszerhéj kapcsolódni, futtassa a `hbase zkcli` parancsot.
+2. Az Apache ZooKeeper shell kapcsolódni, futtassa a `hbase zkcli` parancsot.
 3. Futtassa a `rmr /hbase/regions-in-transition` parancsot vagy a `rmr /hbase-unsecure/regions-in-transition` parancsot.
 4. Kilépés a a `hbase zkcli` rendszerhéj, használja a `exit` parancsot.
 5. Nyissa meg az Apache Ambari felhasználói felületén, és indítsa újra az aktív HBase főkiszolgáló.
@@ -46,7 +46,7 @@ Időtúllépési problémák használata esetén egy lehetséges oka a `hbck` pa
 ### <a name="resolution-steps"></a>A megoldás lépései
 
 1. Jelentkezzen be az SSH segítségével a HDInsight HBase-fürtnek.
-2. A ZooKeeper-rendszerhéj kapcsolódni, futtassa a `hbase zkcli` parancsot.
+2. Az Apache ZooKeeper shell kapcsolódni, futtassa a `hbase zkcli` parancsot.
 3. Futtassa a `rmr /hbase/regions-in-transition` vagy a `rmr /hbase-unsecure/regions-in-transition` parancsot.
 4. Kilép a `hbase zkcli` rendszerhéj, használja a `exit` parancsot.
 5. Az Ambari felhasználói felületén indítsa újra az aktív HBase főkiszolgáló szolgáltatást.
@@ -56,7 +56,7 @@ Időtúllépési problémák használata esetén egy lehetséges oka a `hbck` pa
 
 ### <a name="issue"></a>Probléma
 
-A helyi Hadoop elosztott fájlrendszer (HDFS) elakadt csökkentett módban, a HDInsight-fürtön.
+A helyi Apache Hadoop elosztott fájlrendszer (HDFS) elakadt csökkentett módban, a HDInsight-fürtön.
 
 ### <a name="detailed-description"></a>Részletes leírás
 
@@ -211,7 +211,7 @@ A HDInsight-fürt mérete le egy nagyon kevés csomópontot. A csomópontok szá
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-A Phoenix kapcsolódni, meg kell adnia az aktív ZooKeeper-csomópont IP-címét. Győződjön meg arról, hogy a ZooKeeper-szolgáltatást, hogy melyik sqlline.py csatlakozni próbál működik-e.
+Csatlakozás az Apache Phoenix, az aktív Apache ZooKeeper-csomópont IP-címét kell megadnia. Győződjön meg arról, hogy a ZooKeeper-szolgáltatást, hogy melyik sqlline.py csatlakozni próbál működik-e.
 1. Jelentkezzen be a HDInsight-fürthöz SSH használatával.
 2. Írja be a következő parancsot:
                 
@@ -247,7 +247,7 @@ A Phoenix kapcsolódni, meg kell adnia az aktív ZooKeeper-csomópont IP-címét
    ```apache
            ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,,1485464083256.c0568c94033870c517ed36c45da98129. is not online on 10.2.0.5,16020,1489466172189) 
    ```
-6. Az Ambari felhasználói felületén hajtsa végre az alábbi lépéseket a ZooKeeper-csomópontok a HMaster szolgáltatás újraindításához:
+6. Az Apache Ambari felhasználói felületén hajtsa végre az alábbi lépéseket a ZooKeeper-csomópontok a HMaster szolgáltatás újraindításához:
 
     1. Az a **összefoglalás** szakaszában a HBase, lépjen a **HBase** > **aktív HBase főkiszolgáló**. 
     2. Az a **összetevők** szakaszban, a HBase főkiszolgáló szolgáltatás újraindításához.
@@ -331,7 +331,7 @@ Ez az egy ismert probléma az HMaster szolgáltatással. Általános fürt indí
   
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. Az Ambari felhasználói felületén, nyissa meg **HBase** > **Configs**. Az egyéni hbase-site.xml fájlban adja hozzá a következő beállítást: 
+1. Az Apache Ambari felhasználói felületén, nyissa meg **HBase** > **Configs**. Az egyéni hbase-site.xml fájlban adja hozzá a következő beállítást: 
 
    ```apache
    Key: hbase.master.namespace.init.timeout Value: 2400000  
@@ -344,9 +344,9 @@ Ez az egy ismert probléma az HMaster szolgáltatással. Általános fürt indí
 
 ### <a name="issue"></a>Probléma
 
-Egy régiókiszolgálón újraindítást meghiúsul a következő bevált gyakorlatát előfordulhat, hogy nem történik meg. Azt javasoljuk, hogy nagy munkaterhelést tevékenység felfüggesztése, ha azt tervezi, indítsa újra a HBase-régióbeli kiszolgálók. Ha egy alkalmazás továbbra is régióbeli kiszolgálók összekapcsolása, amikor a Shutdown utasítás folyamatban van, az régió server Újraindítási művelet lassabb lesz szerint néhány percig. Azt is célszerű először kiüríti az összes tábla. Hogyan táblák kiüríteni referenciáért lásd: [HDInsight HBase: hogyan növelheti a HBase fürt újraindítás időpontja a táblák kiürítette](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
+Egy régiókiszolgálón újraindítást meghiúsul a következő bevált gyakorlatát előfordulhat, hogy nem történik meg. Azt javasoljuk, hogy nagy munkaterhelést tevékenység felfüggesztése, ha azt tervezi, indítsa újra a HBase-régióbeli kiszolgálók. Ha egy alkalmazás továbbra is régióbeli kiszolgálók összekapcsolása, amikor a Shutdown utasítás folyamatban van, az régió server Újraindítási művelet lassabb lesz szerint néhány percig. Azt is célszerű először kiüríti az összes tábla. Hogyan táblák kiüríteni referenciáért lásd: [HDInsight HBase: hogyan növelheti az Apache HBase fürt újraindítás időpontja a táblák kiürítette](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
 
-Ha kezdeményez az újraindítási műveletet, a HBase-régióbeli kiszolgálók az Ambari felhasználói felületről, azonnal láthatja, hogy a régióbeli kiszolgálók csökkent, de nem azonnal újraindítás. 
+Ha kezdeményez az újraindítási műveletet, a HBase-régióbeli kiszolgálók az Apache Ambari felhasználói felületről, azonnal láthatja, hogy a régióbeli kiszolgálók csökkent, de nem azonnal újraindítás. 
 
 Íme, mi történik a háttérben: 
 

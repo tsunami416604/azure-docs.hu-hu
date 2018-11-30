@@ -1,6 +1,6 @@
 ---
-title: A Machine Learning Studio-munkaterület létrehozása |} A Microsoft Docs
-description: Egy munkaterület létrehozása az Azure Machine Learning Studióban
+title: Hozzon létre egy Azure Machine Learning Studio-munkaterület |} A Microsoft Docs
+description: Azure Machine Learning Studio használatához kell rendelkeznie egy Machine Learning Studio-munkaterület. Ez a munkaterület tartalmazza a kísérletek létrehozásához, kezeléséhez és közzétételéhez szükséges eszközöket.
 services: machine-learning
 author: ericlicoding
 ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
@@ -13,12 +13,12 @@ ms.component: studio
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: c05a7720cf3ac039fc2503221a602e0281738a2c
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 8362468d329f12ad8ebf25c8d205ec7d35ac6c28
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264199"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307219"
 ---
 # <a name="create-and-share-an-azure-machine-learning-workspace"></a>Azure Machine Learning-munkaterület létrehozása és megosztása
 

@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a41b236182c18a83b6c83a38fd8420a013313d56
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d086b958ddca6caded19cc02a790f8091aba993e
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315090"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425168"
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Az Azure AD Connect: Vonatkozó különleges szempontok példányok
 Az Azure ad-ben világszerte példányát a leggyakrabban használt a az Azure AD Connect és az Office 365. De is vannak további példányok, és ezeknek eltérő követelmények URL-címek és más speciális szempontokat kell.
 
 ## <a name="microsoft-cloud-germany"></a>Microsoft Cloud Germany
-A [Microsoft Cloud németországi adatközpontjában](http://www.microsoft.de/cloud-deutschland) egy német megbízott adatkezelő által működtetett szuverén felhő.
+A [Microsoft Cloud németországi adatközpontjában](https://www.microsoft.de/cloud-deutschland) egy német megbízott adatkezelő által működtetett szuverén felhő.
 
 | Nyissa meg a proxykiszolgáló URL-címmel |
 | --- |

@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: conceptual
 ms.date: 4/19/2018
 ms.author: scottwhi
-ms.openlocfilehash: dd55bb78fd385ab12d711e569ca6d5013c48e545
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 4ad1633e4d56e44e3b82f90121a14c6ef6f0b976
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221995"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52441401"
 ---
 # <a name="bing-visual-search-sdk"></a>A Bing Visual Search SDK
 
@@ -32,6 +32,16 @@ Bing vizuális keresés az alábbi ügyfél SDK-kat használhatja, amelyeket sze
     * [Python-kódtárakat](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-cognitiveservices-search-imagesearch) definíciók és a függőségek
 
 SDK-minták az egyes nyelvekhez telepítéséhez és futtatásához a mintákat és lépéseket az SDK használatára vonatkozó Előfeltételek fontos fájljai tartalmazzák.
+
+Ezeket az alkalmazásokat kell elindítani egy előfizetést, S9 árkategória, ahogyan [Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+
+Előfizetés indítása az Azure Portalon:
+1. Az Azure portál arról, hogy a tetején a szövegmezőben adja meg a "BingSearchV7" `Search resources, services, and docs`.  
+2. Marketplace-en a legördülő listában, válassza a `Bing Search v7`.
+3. Adja meg `Name` az új erőforrás.
+4. Válassza ki `Pay-As-You-Go` előfizetés.
+5. Válassza ki `S9` tarifacsomag.
+6. Kattintson a `Enable` az előfizetés indításához.
 
 ### <a name="sdk-tools"></a>SDK-eszközök
 Fedezze fel a Bing Visual Search SDK eszközöket tekintheti meg a Git-Adattárnak: [a Bing vizuális keresési eszközök](https://github.com/Azure-Samples/bing-visualsearch-tools)

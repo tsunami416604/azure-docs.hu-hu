@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 10/12/2018
-ms.openlocfilehash: 9edb85fcaa2c3f9c58cc74c55d52e4dbbf751727
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 5b1768978425d3153f775e20a1a4c44a39794779
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014516"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315954"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Rövid útmutató: Apache Kafka on HDInsight-fürt létrehozása
 
@@ -127,7 +127,7 @@ Egy Apache Kafka on HDInsight-fürt létrehozásához kövesse az alábbi lépé
 
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 
-1. Az Apache Kafka-fürt elsődleges átjárócsomópontjához való csatlakozáshoz használja a következő parancsot. Cserélje le az `sshuser` elemet az SSH-felhasználónévre. Cserélje le a `mykafka` értéket a saját Apache Kafka-fürt nevére
+1. Az Apache Kafka-fürt az elsődleges átjárócsomóponthoz csatlakozik, használja a következő parancsot. Cserélje le az `sshuser` elemet az SSH-felhasználónévre. Cserélje le `mykafka` az Apache Kafkacluster nevét
 
     ```bash
     ssh sshuser@mykafka-ssh.azurehdinsight.net
@@ -161,11 +161,11 @@ Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
 ssuhuser@hn0-mykafk:~$
 ```
 
-## <a id="getkafkainfo"></a>A Zookeeper és a közvetítő gazdagép információinak lekérése
+## <a id="getkafkainfo"></a>Az Apache Zookeeper és a közvetítő gazdagép információinak lekérése
 
-A Kafka használata során ismernie kell a *Zookeeper-* és a *Közvetítő* gazdagépeket. Az Apache Kafka API és a Kafkában elérhető számos segédprogram használja ezeket a gazdagépeket.
+A Kafka használata során ismernie kell a *Apache Zookeeper* és *Broker* gazdagépek. Az Apache Kafka API és a Kafkában elérhető számos segédprogram használja ezeket a gazdagépeket.
 
-Ebben a szakaszban a fürtön lévő Ambari REST API-ból szerzi be a gazdagép információit.
+Ebben a szakaszban a gazdagép adatait az Apache Ambari REST API a fürtön kap.
 
 1. Egy, a fürthöz csatlakozó SSH-kapcsolaton használja a következő parancsot a `jq` segédprogram telepítéséhez. A segédprogram JSON-dokumentumok elemzésére használható, és hasznos a gazdagép adatainak lekéréséhez:
    
@@ -249,7 +249,7 @@ A Kafka *témakörökben* tárolja az adatstreameket. A `kafka-topics.sh` segéd
         > [!IMPORTANT] 
         > Az Apache Kafka nem észleli a tartalék Azure-tartományokat. Témakörök számára történő partícióreplikák létrehozásakor lehetséges, hogy a Kafka nem a magas rendelkezésre állásnak megfelelően osztja ki a replikákat.
 
-        A magas rendelkezésre állás biztosításához használja a [Kafka vissza-egyensúlyozási eszközét](https://github.com/hdinsight/hdinsight-kafka-tools). Ezt az eszközt egy SSH-kapcsolatból kell futtatni az Apache Kafka-fürt főcsomópontjához.
+        Magas rendelkezésre állás biztosítása érdekében használhatja a [Apache Kafka partíció-újraegyensúlyozó eszközt](https://github.com/hdinsight/hdinsight-kafka-tools). Ezt az eszközt egy SSH-kapcsolatból kell futtatni az Apache Kafka-fürt főcsomópontjához.
 
         Az Apache Kafka-adatok lehető legmagasabb rendelkezésre állása érdekében egyensúlyozza újra a témaköre partícióreplikáit a következő esetekben:
 
@@ -311,7 +311,7 @@ Kövesse az alábbi lépéseket a rekordoknak a korábban létrehozott test tém
 
 4. Használja a __Ctrl + C__ billentyűparancsot a fogyasztó leállításához.
 
-Szoftveresen is létrehozhat előállítókat és fogyasztókat. Az API használatára vonatkozó példákért tekintse meg a [Kafka Producer és Consumer API-k HDInsighttal történő használatát](apache-kafka-producer-consumer-api.md) ismertető dokumentumot.
+Szoftveresen is létrehozhat előállítókat és fogyasztókat. Ez az API használatának példájáért lásd a [Apache Kafka Producer és Consumer API-hoz a HDInsight](apache-kafka-producer-consumer-api.md) dokumentum.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -331,5 +331,5 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az Apache Spark használata a Kafkával](../hdinsight-apache-kafka-spark-structured-streaming.md)
+> [Az Apache Spark használata az Apache kafka platformmal](../hdinsight-apache-kafka-spark-structured-streaming.md)
 

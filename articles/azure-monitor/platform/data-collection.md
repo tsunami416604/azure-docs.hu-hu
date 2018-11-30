@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: 7eabe50ed1069a6027d5ec387f0c1dba45feb58e
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 756e1426d417c47210e3b766d9d67ef1a70d2516
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51828542"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334143"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Az Azure Monitor által gyűjtött adatok figyelése
 [Az Azure Monitor](../../azure-monitor/overview.md) egy szolgáltatás, amellyel figyelheti az alkalmazások és az erőforrások támaszkodnak. Figyelt erőforrások központi az alábbi függvényre van telemetriai és egyéb adatok tárolására. A cikk ismerteti, hogyan az adatok tárolásának és az Azure Monitor által használt teljes leírását.
@@ -131,14 +131,14 @@ Naplók különösen hasznosak a különböző forrásokból származó adatok �
 Az Azure Monitor által gyűjtött naplók vannak tárolva a Log Analytics szolgáltatásnak, amely telemetriai és egyéb adatokat gyűjt különböző forrásokból. Olyan elemzési motor, amely betekintést nyerhet az alkalmazások és erőforrások működését, és a egy részletes lekérdezési nyelvet biztosít. Más Azure szolgáltatásokkal – például [az Azure Security Center](../../security-center/security-center-intro.md) annak érdekében, hogy egy közös adatplatformot biztosíthat az Azure felügyeleti tárolják az adataikat a Log Analyticsben.
 
 > [!IMPORTANT]
-> Az Application Insights tároljuk a Log Analytics például más naplóadatok azzal a különbséggel, hogy egy külön partíció tárolja. Ez más Log Analytics-adatok azonos funkciókat támogatja, de kell használnia a [Application Insights-konzol](/application-insights/app-insights-analytics.md) vagy a [Application Insights API](https://dev.applicationinsights.io/) az adatok elérésére. Használhat egy [erőforrások közötti lekérdezési](../../log-analytics/log-analytics-cross-workspace-search.md) alkalmazás adatok és más naplóadatok elemzéséhez.
+> Az Application Insights tároljuk a Log Analytics például más naplóadatok azzal a különbséggel, hogy egy külön partíció tárolja. Ez más Log Analytics-adatok azonos funkciókat támogatja, de kell használnia a [Application Insights-konzol](../../application-insights/app-insights-analytics.md) vagy a [Application Insights API](https://dev.applicationinsights.io/) az adatok elérésére. Használhat egy [erőforrások közötti lekérdezési](../../log-analytics/log-analytics-cross-workspace-search.md) alkalmazás adatok és más naplóadatok elemzéséhez.
 
 
 ### <a name="sources-of-log-data"></a>Naplózási adatok forrásai
 A log Analytics adatokat gyűjthet, különböző forrásokból is Azure-ban és a helyszíni erőforrásokhoz. A Log Analytics szolgáltatásba írt adatok forrásai az alábbiak:
 
 - [Tevékenységnaplók](../../log-analytics/log-analytics-activity.md) az Azure-erőforrások, amelyek tartalmazzák az információkat a konfigurációjukról és egészségügyi és [diagnosztikai naplók](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) termék működésével kapcsolatos információkat tartalmaznak, amelyek.
-- Az ügynökök [Windows](../../log-analytics/log-analytics-windows-agent.md) és [Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) virtuális gépeket, amelyek a vendég operációs rendszer és alkalmazások a következők szerint a Log Analytics számára küldött telemetriai adatokra [adatforrások](../../log-analytics/log-analytics-data-sources.md) , konfigurálja.
+- Az ügynökök [Windows](../../log-analytics/log-analytics-windows-agent.md) és [Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) virtuális gépeket, amelyek a vendég operációs rendszer és alkalmazások a következők szerint a Log Analytics számára küldött telemetriai adatokra [adatforrások](../../azure-monitor/platform/agent-data-sources.md) , konfigurálja.
 - Alkalmazásadatok által gyűjtött [Application Insights](https://docs.microsoft.com/azure/application-insights/).
 - Az adatok egy adott alkalmazás vagy szolgáltatás betekintést nyújtó [figyelési megoldások](../insights/solutions.md) vagy szolgáltatások, például a Container Insights, a virtuális gép Insights vagy a csoport Insights erőforrás.
 - Biztonsági adatok által gyűjtött [az Azure Security Center](https://docs.microsoft.com/azure/security-center/).
@@ -156,7 +156,7 @@ A naplók segítségével elvégezhető feladatok a következők:
 
 - Használja a [Log Analytics lapot](../../log-analytics/query-language/get-started-analytics-portal.md) Teljesítménynapló-adatok elemzése lekérdezéseket írhat az Azure Portalon.  Eredmény jelenik meg a táblázatokat vagy diagramokat való rögzítése egy [Azure irányítópultján](../../azure-portal/azure-portal-dashboards.md).
 - Konfigurálja egy [riasztási szabály](../../monitoring-and-diagnostics/alert-log.md) , amely elküld egy értesítést vagy veszi [művelet automatikus](../../monitoring-and-diagnostics/monitoring-action-groups.md) mikor a a lekérdezés eredménye megfelel-e egy adott eredményt.
-- A munkafolyamat az a Log Analytics-adatok alapján hozhat létre [Logic Apps]().
+- A munkafolyamat az a Log Analytics-adatok alapján hozhat létre [Logic Apps](~/articles/logic-apps/index.yml).
 - A lekérdezés eredményeinek exportálására [Power BI](../../log-analytics/log-analytics-powerbi.md) különböző Vizualizációk használata és megosztása Azure-on kívüli felhasználókkal.
 - Egy parancssorból vagy egy egyéni alkalmazást a metrikaértékek eléréséhez [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/?view=azurermps-6.8.1) vagy [REST API-val](https://dev.loganalytics.io/).
 

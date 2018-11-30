@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: shlo
-ms.openlocfilehash: e437e7b7d5298af325ae2a5e2ba689b417bad022
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e682b3780c26da9cf2398e93adc32cb107127d9c
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002920"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426791"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Keresési tevékenység az Azure Data Factoryban
 
@@ -58,7 +58,7 @@ Name (Név) | Leírás | Típus | Kötelező?
 ---- | ----------- | ---- | --------
 Adatkészlet | Az adatkészlet-hivatkozásban biztosít a kereséshez. A részletek a **adatkészlet tulajdonságai** minden megfelelő összekötő cikk szakaszában talál. | Kulcs/érték pár | Igen
 source | Tartalmazza az adatkészlet-specifikus forrás tulajdonságait, ugyanaz, mint a másolási tevékenység forrása. A részletek a **másolási tevékenység tulajdonságai** szakasz mindegyik megfelelő összekötő a cikkben. | Kulcs/érték pár | Igen
-firstRowOnly | Azt jelzi, hogy csak az első sort vagy minden sort adja vissza. | Logikai | Nem. Az alapértelmezett érték `true`.
+firstRowOnly | Azt jelzi, hogy csak az első sort vagy minden sort adja vissza. | Logikai | Nem. A mező alapértelmezett értéke: `true`.
 
 > [!NOTE]
 
@@ -297,6 +297,15 @@ Az Azure SQL Database-példány tartalmazza az adatokat a Blob storage kell más
     }
 ]
 ```
+
+## <a name="limitations-and-workarounds"></a>Korlátozások és a lehetséges megoldások
+
+Az alábbiakban néhány korlátozást a keresési tevékenység és a javasolt megoldások.
+
+| Korlátozás | Áthidaló megoldás |
+|---|---|
+| A keresési tevékenység legfeljebb 5000 sort, és legfeljebb 2 MB méretű rendelkezik. | Amennyiben a külső folyamat ismétel-e egy belső folyamatot, amely lekéri az adatokat, hogy a sorok maximális száma és mérete nem haladja meg két szinten folyamat tervezése. |
+| | |
 
 ## <a name="next-steps"></a>További lépések
 Tekintse meg a többi Data Factory által támogatott átvitelvezérlési tevékenységek: 

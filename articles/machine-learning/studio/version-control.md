@@ -1,5 +1,5 @@
 ---
-title: Az Azure Machine Learningben ALM |} A Microsoft Docs
+title: Életciklus-kezelés – Azure Machine Learning Studióban |} A Microsoft Docs
 description: Application Lifecycle Management ajánlott eljárások az Azure Machine Learning Studio a alkalmazni
 keywords: ALM, AML, az Azure gépi tanulás, alkalmazás-életciklus kezelése, a verziókövetés
 services: machine-learning
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2016
-ms.openlocfilehash: 0d1851f2449ff8a7c38d9e67398686e586690dcb
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: e0255d43828b49e98494f8f8e9ee998c1af90685
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263797"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307253"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Alkalmazáséletciklus-kezelés az Azure Machine Learning Studióban
 Az Azure Machine Learning Studio egy olyan eszköz, amely a rendszer üzembe helyezte azt az Azure-felhőplatformon a machine learning-kísérletek fejlesztéséhez. Például a Visual Studio IDE, és a méretezhető felhőalapú szolgáltatás Egyesítés egyetlen platformban. Beépítheti a verziókezelés standard Application Lifecycle Management (ALM) eljárásait különböző eszközök automatikus végrehajtás és üzembe helyezés, Azure Machine Learning studióba. Ez a cikk ismerteti az egyes beállítások és módszerek.

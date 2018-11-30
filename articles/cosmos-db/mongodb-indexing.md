@@ -11,12 +11,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: orkostak
-ms.openlocfilehash: a3dadfc4257d43f9df1b93f5d486e5577b7889d6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: ad04976136fc8db04dbe52bf78bea49a9149e5db
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055311"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312697"
 ---
 # <a name="indexing-in-the-azure-cosmos-db-mongodb-api"></a>Indexelés az Azure Cosmos DB: MongoDB API-ban
 
@@ -99,5 +99,5 @@ Az előző parancs minden olyan dokumentumot töröl a ```db.coll``` gyűjtemén
 Egyedi indexek jelenleg csak akkor hozhatók létre, ha a gyűjtemény nem tartalmaz dokumentumokat. A MongoDB népszerű migrálási eszközei az adatok importálása után megpróbálják létrehozni az egyedi indexeket. A probléma megkerülése értekében a felhasználóknak érdemes manuálisan létrehozniuk a megfelelő gyűjteményeket vagy egyedi indexeket ahelyett, hogy a migrálási eszköznek engedélyeznék ezt (a ```mongorestore``` esetében ez a viselkedés a parancssorba illesztett --noIndexRestore jelző használatával érhető el).
 
 ## <a name="next-steps"></a>További lépések
-* [Hogyan indexeli az Azure Cosmos DB az adatokat?](../cosmos-db/indexing-policies.md)
+* [Hogyan indexeli az Azure Cosmos DB az adatokat?](../cosmos-db/index-policy.md)
 * [Adatok automatikus elévülése az Azure Cosmos DB-gyűjteményekben az élettartam használatával](../cosmos-db/time-to-live.md)

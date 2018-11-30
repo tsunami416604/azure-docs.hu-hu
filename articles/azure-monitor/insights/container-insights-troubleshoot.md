@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 555b64a87236f1f3b80497abf9fc7d34fca596a0
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: da35f88550bb7bd1a4543f03936dcd52ddd926d9
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715610"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308359"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers-preview"></a>Hibaelhárítás az Azure Monitor tárolók (előzetes verzió)
 
@@ -99,7 +99,7 @@ Az alábbi táblázat összefoglalja az ismert hibák-tárolókhoz az Azure Moni
 | Hibaüzenetek  | Műveletek |  
 | ---- | --- |  
 | Hibaüzenet `No data for selected filters`  | Ez eltarthat egy ideig, újonnan létrehozott fürtök esetében a figyelési adatok folyamat létrehozásához. Kérjük, várjon legalább 10-15 percet adatok jelenjenek meg a fürt számára. |   
-| Hibaüzenet `Error retrieving data` | Azure Kubenetes Service-fürt beállítását állapotának és teljesítményének figyeléséhez, amíg a kapcsolat jön létre a fürt és az Azure Log Analytics-munkaterület között. Log Analytics-munkaterületet a fürt számára az összes monitorozási adat tárolására szolgál. Ez a hiba akkor fordulhat elő, ha a Log Analytics-munkaterületet törölték, vagy megszakadt. Ellenőrizze, hogy a munkaterület elérhető áttekintésével [hozzáférés kezelése](../../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json#workspace-information). Ha a munkaterület nem található, szüksége lesz ismételt üzembe helyezni a fürt és az Azure Monitor tárolók. Re-üzembe helyezni, kell [letiltása](/container-insights-optout.md?toc=%2fazure%2fmonitoring%2ftoc.json) a fürt megfigyelési és [engedélyezése](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json#enable-monitoring-for-a-new-cluster) újra az Azure Monitor for containers szolgáltatásban. |  
+| Hibaüzenet `Error retrieving data` | Azure Kubenetes Service-fürt beállítását állapotának és teljesítményének figyeléséhez, amíg a kapcsolat jön létre a fürt és az Azure Log Analytics-munkaterület között. Log Analytics-munkaterületet a fürt számára az összes monitorozási adat tárolására szolgál. Ez a hiba akkor fordulhat elő, ha a Log Analytics-munkaterületet törölték, vagy megszakadt. Ellenőrizze, hogy a munkaterület elérhető áttekintésével [hozzáférés kezelése](../../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json#workspace-information). Ha a munkaterület nem található, szüksége lesz ismételt üzembe helyezni a fürt és az Azure Monitor tárolók. Helyreállítási környezet – üzembe helyezni, kell [letiltása](container-insights-optout.md) a fürt figyelése és [engedélyezése](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json#enable-monitoring-for-a-new-cluster) újra-tárolókhoz az Azure Monitor. |  
 | `Error retrieving data` az aks parancssori felületén keresztül-tárolókhoz az Azure Monitor hozzáadása után | Ha a bevezetési használatával `az aks cli`, nagyon ritkán, az Azure Monitor for containers szolgáltatásban nem lehet megfelelően előkészítve. Ellenőrizze, hogy a megoldás előkészítve. Ehhez nyissa meg a Log Analytics-munkaterületet, és a megoldás-e elérhető kiválasztásával **megoldások** a a bal oldali panelen. A probléma megoldásához, szüksége lesz a megoldás újbóli üzembe helyezéséhez utasításokat követve [üzembe helyezése az Azure Monitor for containers szolgáltatásban](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json) |  
 
 A probléma diagnosztizálása érdekében adtunk meg a rendelkezésre álló hibaelhárítási parancsfájl [Itt](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script).  

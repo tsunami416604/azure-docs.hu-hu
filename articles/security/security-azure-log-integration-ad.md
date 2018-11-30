@@ -1,6 +1,6 @@
 ---
-title: Vizsgálati naplóit Azure Active Directory integrálása az Azure napló |} Microsoft Docs
-description: Megtudhatja, hogyan telepítse az Azure napló integrációs szolgáltatást, és integrálhatja a naplók az Azure felügyeleti naplók
+title: Az Azure Active Directory naplóinak integrálása az Azure Log |} A Microsoft Docs
+description: Ismerje meg, hogyan telepítse az Azure Log Integration szolgáltatást, és az Azure-auditnaplók naplóinak integrálása
 services: security
 documentationcenter: na
 author: Barclayn
@@ -15,27 +15,27 @@ ums.workload: na
 ms.date: 06/07/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 07299b960747528dde8dcefc70055442c2150486
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 0b27cd314dd03375b2d2e6ba537cda74e2ec4310
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235991"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313241"
 ---
-# <a name="integrate-azure-active-directory-audit-logs"></a>Integrálása az Azure Active Directory-naplók
+# <a name="integrate-azure-active-directory-audit-logs"></a>Az Azure Active Directory naplóinak integrálása
 
-Az Azure Active Directory (Azure AD) naplózási események segítségével azonosíthatja a privilegizált műveletekhez, hogy megtörtént az Azure Active Directoryban. Láthatja, hogy milyen típusú eseményeket vizsgálatával nyomon követett [Azure Active Directory auditnaplójának jelentési eseményei](/active-directory/active-directory-reporting-audit-events#list-of-audit-report-events.md).
+Az Azure Active Directory (Azure AD) naplózott események segít azonosítani a privilegizált műveletek, amelyek az Azure Active Directoryban történt. Láthatja, hogy milyen típusú eseményeket, amelyek áttekintésével nyomon követheti [Azure Active Directory auditnaplójának jelentési eseményei](../active-directory/reports-monitoring/concept-audit-logs.md).
 
 
 >[!IMPORTANT]
-> Az Azure Naplóelemzés integrációs szolgáltatás 06/01/2019 elavulttá válik. AzLog letöltések 2018 jún 27 letiltásra kerül. Mi a teendő áthelyezése előre tekintse át a feladás egy vagy több útmutatót [integrálható a meglévő SIEM-eszközök használata Azure-figyelő](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Az Azure Log integration szolgáltatás 06/01/2019 elavulttá válik. AzLog letöltések 2018. június 27. letiltásra kerül. Mi a teendő mozgatása előre tekintse át a hozzászólás útmutatást [SIEM-eszközök integrálása az Azure monitor](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
-## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>Azure Active Directory integrálásának lépései naplók
+## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>Azure Active Directory integrálásának lépései auditnaplók
 
 > [!NOTE]
-> A cikkben ismertetett-megkezdése előtt át kell néznie a [Ismerkedés](security-azure-log-integration-get-started.md) a következő cikket, és hajtsa végre a megfelelő lépéseket.
+> Mielőtt megkísérli a jelen cikkben ismertetett lépések, nézze át a [Ismerkedés](security-azure-log-integration-get-started.md) című cikket, és hajtsa végre a megfelelő lépéseket.
 
-1. Nyissa meg a parancssort, és futtassa a parancsot:
+1. Nyissa meg a parancssort, és futtassa a következő parancsot:
 
    ``cd c:\Program Files\Microsoft Azure Log Integration``
 
@@ -43,9 +43,9 @@ Az Azure Active Directory (Azure AD) naplózási események segítségével azon
  
    ``azlog createazureid``
 
-   Ez a parancs kéri az Azure bejelentkezési. A parancs majd hoz létre egy Azure Active Directory szolgáltatás egyszerű az Azure AD-bérlőkkel, amely az Azure-előfizetéseket, amelyben a bejelentkezett felhasználó nem rendszergazda, a társadminisztrátorának vagy a tulajdonos tárolni. A parancs sikertelen lesz, ha a bejelentkezett felhasználó csak a Vendég felhasználó az Azure AD-bérlő. Hitelesítés az Azure-bA az Azure AD segítségével történik. Az Azure AD identity arra, hogy az Azure-előfizetések olvasási hozzáférést egy egyszerű Azure napló integrációs szolgáltatás létrehozásakor létrejön.
+   Ez a parancs az Azure bejelentkezési kéri. A parancs majd létrehoz egy Azure Active Directory egyszerű szolgáltatást az Azure AD-bérlőt, amelyek az Azure-előfizetést, amelyben a bejelentkezett felhasználó a rendszergazda, társ-rendszergazda vagy tulajdonos. A parancs sikertelen lesz, ha a bejelentkezett felhasználó csak az Azure AD-bérlő vendégfelhasználó. Hitelesítés az Azure-bA az Azure AD-n keresztül történik. Az Azure AD-identitásnak, hogy az Azure-előfizetésekből olvasási hozzáférést kap az Azure Log Integration egyszerű szolgáltatás létrehozása hoz létre.
 
-3. A következő parancsot adja meg a bérlő azonosítójával. A parancs futtatásához a bérlői rendszergazda szerepkör tagjának lennie kell.
+3. Futtassa a következő parancsot, adja meg a bérlő azonosítóját. A parancs futtatásához a bérlői rendszergazda szerepkör tagjának lennie kell.
 
    ``Azlog.exe authorizedirectoryreader tenantId``
 
@@ -53,7 +53,7 @@ Az Azure Active Directory (Azure AD) naplózási események segítségével azon
 
    ``AZLOG.exe authorizedirectoryreader ba2c0000-d24b-4f4e-92b1-48c4469999``
 
-4. Ellenőrizze a következő mappák győződjön meg arról, hogy az Azure Active Directory JSON naplófájlok bennük jönnek létre:
+4. Ellenőrizze a következő mappák győződjön meg arról, hogy az Azure Active Directory naplózási log JSON-fájlok jönnek létre számukra:
 
    * **C:\Users\azlog\AzureActiveDirectoryJson**
    * **C:\Users\azlog\AzureActiveDirectoryJsonLD**
@@ -64,16 +64,16 @@ A következő videó bemutatja a cikkben szereplő lépéseket:
 
 
 > [!NOTE]
-> A JSON-fájlokban szereplő információk üzembe a biztonsági információk és eseménykezelő rendszer (SIEM) kapcsolatos tudnivalókat forduljon a SIEM gyártójához.
+> További fejlesztéseket végzünk az adatokat a biztonsági információk és eseménykezelő (SIEM) rendszer JSON-fájljaiban szereplő információk arra vonatkozóan lépjen kapcsolatba a SIEM gyártójával.
 
-Közösségi támogatás érhető el a [Azure napló integrációs MSDN fórumon](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration). Ezen a fórumon lehetővé teszi, hogy a személyek Azure napló integráció közösségi egymással kérdéseket, válaszokat, tippeket és trükkök támogatásához. Ezenkívül az Azure napló integrációs csoport ezen a fórumon figyeli, és amikor azt is segít.
+Közösségi támogatás érhető el a [Azure Log Integration MSDN-fórumában](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration). Ezen a fórumon lehetővé teszi, hogy az Azure Log Integration Közösség támogatására, egymással kérdések, válaszok, tippek és trükkök a tagjai. Emellett az Azure Log Integration csapat ezen a fórumon figyeli, és minden alkalommal, amikor azt is segít.
 
-Is megnyithatja a [támogatási kérelem](../azure-supportability/how-to-create-azure-support-request.md). Válassza ki **napló integrációs** a szolgáltatást, amelynek támogatási kérelmet.
+Megnyithatja a [támogatási kérelem](../azure-supportability/how-to-create-azure-support-request.md). Válassza ki **Naplóintegráció** a kért támogatási szolgáltatással.
 
 ## <a name="next-steps"></a>További lépések
-Azure napló integrációs kapcsolatos további információkért lásd:
+Az Azure Log Integration kapcsolatos további információkért lásd:
 
-* [A Microsoft Azure napló integráció az Azure-naplók](https://www.microsoft.com/download/details.aspx?id=53324): A letöltőközpontból weblap, amely részleteit, rendszerkövetelmények és telepítési utasításokat az Azure napló integráció.
-* [Bevezetés az Azure napló integrációs](security-azure-log-integration-overview.md): Ez a cikk bemutatja a Azure napló integrációs, annak főbb funkcióit és annak működéséről.
-* [Az Azure napló integrációs gyakran ismételt kérdések](security-azure-log-integration-faq.md): Ez a cikk Azure napló integrációs kapcsolatos kérdésekre ad választ.
-* [Az Azure Diagnostics és az Azure új szolgáltatásai naplók](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): Ebben a blogbejegyzésben bemutatja Azure vizsgálati naplók és egyéb szolgáltatásokat, amelyek segítenek betekintést nyerhet az Azure-erőforrások működésére.
+* [A Microsoft Azure Log Integration az Azure-naplók](https://www.microsoft.com/download/details.aspx?id=53324): Töltse le a főoldalon nyújt részleteket, a rendszerkövetelmények és telepítési utasításokat az Azure Log Integration.
+* [Bevezetés az Azure Log Integration](security-azure-log-integration-overview.md): Ez a cikk bemutatja az Azure Log Integration, annak főbb funkcióit és működését.
+* [Az Azure Log Integration – gyakori kérdések](security-azure-log-integration-faq.md): Ez a cikk az Azure Log Integration kapcsolatos kérdésekre ad választ.
+* [Új funkciók az Azure Diagnostics és az Azure-auditnaplók](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): Ebben a blogbejegyzésben bemutatja Azure-auditnaplók és egyéb funkciókat, amelyek segítségével betekintést nyerhet az Azure-erőforrások műveleteit.

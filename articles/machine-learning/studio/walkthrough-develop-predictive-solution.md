@@ -1,5 +1,5 @@
 ---
-title: Prediktív megoldás a hitelkockázat kiszámításához a Machine Learning használatával | Microsoft Docs
+title: Prediktív megoldás a hitelkockázat - Azure Machine Learning Studióban |} A Microsoft Docs
 description: Részletes útmutató, amely azt ismerteti, hogyan hozható létre a hitelkockázat értékelésére szolgáló prediktív elemzési megoldás az Azure Machine Learning Studio eszközben.
 keywords: hitelkockázat, prediktív elemzési megoldás,kockázatértékelés
 services: machine-learning
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/23/2017
-ms.openlocfilehash: 6b8e2a27ceba31d4ee9fd937968d988a229f787a
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: a5dd8432ca79cca8de37f5d64027e0b9c498f3b9
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265083"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311942"
 ---
-# <a name="walkthrough-develop-a-predictive-analytics-solution-for-credit-risk-assessment-in-azure-machine-learning"></a>Részletes útmutató: A hitelkockázat értékelésére szolgáló prediktív elemzési megoldás fejlesztése az Azure Machine Learning Studio használatával
+# <a name="walkthrough-develop-a-predictive-analytics-solution-for-credit-risk-assessment-in-azure-machine-learning-studio"></a>Forgatókönyv: Az Azure Machine Learning Studióban hitelkockázat értékelésére szolgáló prediktív elemzési megoldás fejlesztése
 
 Ebben az útmutatóban a prediktív elemzési megoldások Machine Learning Studióban való fejlesztési folyamatát tekintjük át részleteiben. Egy egyszerű modellt fejlesztünk ki a Machine Learning Studióban, majd üzembe helyezzük azt Azure Machine Learning-webszolgáltatásként, ahol a modell új adatokkal végezhet előrejelzéseket. 
 

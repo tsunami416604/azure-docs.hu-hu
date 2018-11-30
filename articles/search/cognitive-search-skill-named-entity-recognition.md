@@ -8,24 +8,29 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 11/27/2018
 ms.author: luisca
-ms.openlocfilehash: 653a4675d546432eea8478ba6203be1df71ec4f4
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: f9ff3f66f3a73fbaf1a4c2ca280c85f4bde65444
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731393"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442029"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Nevesített entitások felismerése cognitive szakértelem
 
-A **megnevezett entitások felismerése** szakértelem nevesített entitásokhoz kigyűjti a szöveget. Elérhető entitások közé tartozik a típusok `person`, `location`, és `organization`.
+A **megnevezett entitások felismerése** szakértelem nevesített entitásokhoz kigyűjti a szöveget. Elérhető entitások közé tartozik a típusok `person`, `location` és `organization`.
 
 > [!NOTE]
-> A kognitív keresés nyilvános előzetes verzióban érhető el. Képességcsoport végrehajtási, és a lemezkép kinyerése és a normalizálási jelenleg rendelkezésre állnak az ingyenes. Később az ezen funkciók díjszabásáról jelentjük be. 
+> <ul>
+> <li>A kognitív keresés nyilvános előzetes verzióban érhető el. A képességcsoport, a képkinyerés és a normalizálás jelenleg ingyenesen érhető el. Ezeknek a funkcióknak a díjszabását a későbbiekben jelentjük be. </li>
+> <li> Nevesített entitások felismerése szakértelem "elavult" minősülnek, és nem hivatalosan támogatja től február 15., a 2019. Kövesse a felsorolt javaslatokra <a href="cognitive-search-skill-deprecated.md">elavult értesítés keresése kognitív képességekkel</a> migrálása a támogatott műveleteket lap</li>
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.NamedEntityRecognitionSkill
+
+## <a name="data-limits"></a>Adatkorlátok
+Egy rekord maximális mérete 50 000 karakter által mért kell lennie `String.Length`. Ha az adatok tördelésével, mielőtt elküldené a kulcskifejezések információkinyerő van szüksége, fontolja meg a [szöveg felosztása szakértelem](cognitive-search-skill-textsplit.md).
 
 ## <a name="skill-parameters"></a>Ismeretek paraméterek
 
@@ -34,7 +39,7 @@ A paraméterei a kis-és nagybetűket.
 | Paraméter neve     | Leírás |
 |--------------------|-------------|
 | kategóriák    | Ki kell nyerni kategóriákat tömbje.  Lehetséges kategória típusok: `"Person"`, `"Location"`, `"Organization"`. Ha nincs kategória áll rendelkezésre, a rendszer minden adja vissza.|
-|defaultLanguageCode |  A bemeneti szöveg nyelvkódja. A következő nyelvek támogatottak: `ar, cs, da, de, en, es, fi, fr, he, hu, it, ko, pt-br, pt`|
+|defaultLanguageCode |  A bemeneti szöveg nyelvkódja. A következő nyelvek támogatottak: `de, en, es, fr, it`|
 | minimumPrecision  | Egy 0 és 1 közötti szám. Ha a pontosság kisebb, mint ezt az értéket, az entitás nem jelennek meg. Az alapértelmezett érték a 0.|
 
 ## <a name="skill-inputs"></a>Ismeretek bemenetek
@@ -58,7 +63,7 @@ A paraméterei a kis-és nagybetűket.
 ```json
   {
     "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
-    "categories": [ "Person"],
+    "categories": [ "Person", "Location", "Organization"],
     "defaultLanguageCode": "en",
     "inputs": [
       {
@@ -83,7 +88,7 @@ A paraméterei a kis-és nagybetűket.
         "recordId": "1",
         "data":
            {
-             "text": "This is a the loan application for Joe Romero, he is a Microsoft employee who was born in Chile and then moved to Australia… Ana Smith is provided as a reference.",
+             "text": "This is the loan application for Joe Romero, he is a Microsoft employee who was born in Chile and then moved to Australia… Ana Smith is provided as a reference.",
              "languageCode": "en"
            }
       }
@@ -101,32 +106,38 @@ A paraméterei a kis-és nagybetűket.
       "data" : 
       {
         "persons": [ "Joe Romero", "Ana Smith"],
-        "locations": ["Seattle"],
-        "organizations":["Microsoft Corporation"],
+        "locations": ["Chile", "Australia"],
+        "organizations":["Microsoft"],
         "entities":  
         [
           {
             "category":"person",
             "value": "Joe Romero",
-            "offset": 45,
+            "offset": 33,
             "confidence": 0.87
           },
           {
             "category":"person",
             "value": "Ana Smith",
-            "offset": 59,
+            "offset": 124,
             "confidence": 0.87
           },
           {
             "category":"location",
-            "value": "Seattle",
-            "offset": 5,
+            "value": "Chile",
+            "offset": 88,
+            "confidence": 0.99
+          },
+          {
+            "category":"location",
+            "value": "Australia",
+            "offset": 112,
             "confidence": 0.99
           },
           {
             "category":"organization",
-            "value": "Microsoft Corporation",
-            "offset": 120,
+            "value": "Microsoft",
+            "offset": 54,
             "confidence": 0.99
           }
         ]
@@ -138,9 +149,10 @@ A paraméterei a kis-és nagybetűket.
 
 
 ## <a name="error-cases"></a>Hibák esetén
-Ha megad egy nem támogatott nyelvi kódot, vagy ha a tartalom nem egyezik a megadott nyelv, visszatérési hibát, és nincsenek entitások ki kell olvasni.
+A dokumentum a nyelvkód nem támogatott, ha hibát ad vissza, és nincsenek entitások ki kell olvasni.
 
 ## <a name="see-also"></a>Lásd még
 
 + [Előre megadott képesség](cognitive-search-predefined-skills.md)
 + [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)
++ [Entitások felismerése szakértelem](cognitive-search-skill-entity-recognition.md)

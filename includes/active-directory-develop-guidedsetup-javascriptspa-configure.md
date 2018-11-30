@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: b3d46e10facdef26b36c910a5c23b40a415a2894
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 2e65c5f0d6c2d493abcd61bea4077cbdd8ff95fa
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988406"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52331074"
 ---
 ## <a name="register-your-application"></a>Alkalmazás regisztrálása
 
@@ -32,18 +32,18 @@ Többféle módon kell regisztrálni egy alkalmazást. Válassza ki a lehetősé
 1. Jelentkezzen be a [az Azure portal alkalmazásregisztráció (előzetes verzió)](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) kell regisztrálni egy alkalmazást.
 1. Az a **alkalmazás regisztrálása** lap, adja meg az alkalmazás nevét.
 1. A **támogatott fióktípusok**válassza **fiókok minden olyan szervezeti directory és személyes Microsoft-fiókok**.
-1. Amikor végzett, válassza ki a **regisztrálása**.
+1. Miután végzett, válassza a **Regisztrálás** lehetőséget.
 1. Az utasítások a rövid útmutató letöltéséhez, és automatikusan konfigurálja az új alkalmazást, egyetlen kattintással.
 
 ### <a name="option-2-register-your-application-advanced-mode"></a>2. lehetőség: Regisztrálja az alkalmazást (Speciális mód)
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) kell regisztrálni egy alkalmazást.
-1. Ha a fiókja egynél több bérlőhöz hozzáférést biztosít, válassza ki a fiók jobb felső sarokban, majd állítsa be a portál munkamenet a kívánt Azure AD bérlői.
-1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatásra, és válassza ki **alkalmazásregisztrációk (előzetes verzió) > Új regisztrációs**.
+1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
+1. A bal oldali navigációs panelen válassza az **Azure Active Directory** szolgáltatást, majd az **Alkalmazásregisztrációk (előzetes verzió) > Új alkalmazás regisztrálása** lehetőséget.
 1. Ha a **alkalmazás regisztrálása** lap, adja meg az alkalmazás nevét.
 1. A **támogatott fióktípusok**válassza **fiókok minden olyan szervezeti directory és személyes Microsoft-fiókok**.
 1. Alatt a **átirányítási URI-t** szakaszban jelölje be a **webes** platform és az alkalmazás URL-CÍMÉT az értéket a webkiszolgáló alapján állítja be. Tekintse át az utasításokat az alábbi szakaszokban és az átirányítási URL-cím a Visual Studio és a csomópont.
-1. Amikor végzett, válassza ki a **regisztrálása**.
+1. Miután végzett, válassza a **Regisztrálás** lehetőséget.
 1. Az alkalmazás **áttekintése** lapon, jegyezze fel a **Alkalmazásazonosítót (ügyfél)** értéket.
 1. Ez a rövid útmutatóhoz a [Implicit folyamat megadása](../articles/active-directory/develop/v2-oauth2-implicit-grant-flow.md) engedélyezni kell. A regisztrált alkalmazás bal oldali navigációs panelén válassza **hitelesítési**.
 1. A **speciális beállítások**alatt **típusú Implicit engedélyezés**, mindkettő engedélyezéséhez **azonosító-jogkivonatokat** és **hozzáférési jogkivonatokat** jelölőnégyzeteket. Azonosító-jogkivonatokat és hozzáférési tokenek szükség, mivel ez az alkalmazás a felhasználók és a egy API-t kell.
@@ -67,7 +67,8 @@ Többféle módon kell regisztrálni egy alkalmazást. Válassza ki a lehetősé
 
     ```javascript
     var applicationConfig = {
-        clientID: "[Enter the application Id here]",
+        clientID: "Enter_the_Application_Id_here",
+        authority: "https://login.microsoftonline.com/common",
         graphScopes: ["user.read"],
         graphEndpoint: "https://graph.microsoft.com/v1.0/me"
     };

@@ -1,5 +1,5 @@
 ---
-title: Kísérletismétlések kezelése a Machine Learning Studióban |} A Microsoft Docs
+title: Kísérletismétlések kezelése a Machine Learning Studio – Azure |} A Microsoft Docs
 description: Hogyan kísérlet ismétléseinek kezelése az Azure Machine Learning Studióban
 services: machine-learning
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 31fab58a82487d0a5a3d39fd0ac1e907bc5565eb
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: b96ab59db8c4586304a864ee432dbd1c74b25fd6
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262465"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313537"
 ---
 # <a name="manage-experiment-iterations-in-azure-machine-learning-studio"></a>Kísérlet ismétléseinek kezelése az Azure Machine Learning Studióban
 Prediktív elemzési modellek fejlesztése iteratív folyamat - módosítása a különböző függvényeket és paramétereket a kísérlet, az eredmények közelítjük, amíg olyan nem egy betanított, hatékony modellel rendelkezünk. Ez a folyamat kulcs a kísérlet paraméterek és konfigurációkkal különböző ismétlésének nyomon követéséhez.

@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 11/14/2018
 ms.author: rkarlin
-ms.openlocfilehash: 062d3ce75372cd09e617fb984208542a31cb8e4a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f46837751901015fd80d3ecc7a620878cadb3f12
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019157"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317874"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>App Service-ben az Azure Security Center védelme
 Ez a cikk segít az Azure Security Center segítségével történő figyeléséhez és védelméhez az alkalmazások futtatása az App Service.
 
 Az App Service segítségével hozhat létre és üzemeltethet webalkalmazásokat az Ön által választott programozási nyelven infrastruktúra kezelése nélkül is. Az App Service automatikus méretezést és magas rendelkezésre állást kínál, támogatja a Windows és Linux, valamint automatikus telepítéseket a GitHub, Visual Studio Team Services vagy bármely Git-tárház. 
 
-Webes alkalmazások biztonsági réseinek gyakran sérülékenységeket, mert az egy közös és dinamikus felületet szinte minden szervezetnek az interneten. Az App Service futó alkalmazások kérelmek halad át több átjáró üzembe helyezett Azure-adatközpontok a világ minden kérelmet a megfelelő alkalmazás az Útválasztás felelős. 
+Webes alkalmazások biztonsági réseinek gyakran sérülékenységeket, mert az egy közös és dinamikus felületet szinte minden szervezetnek az interneten. Az App Service futó alkalmazások kérelmek halad át több átjáró üzembe helyezett Azure-adatközpontokban világszerte, a megfelelő alkalmazás az egyes kérelmek útválasztás felelős. 
 
 Az Azure Security Center-értékelés és javaslatok futtathatja a próbakörnyezetbe, a virtuális gép vagy igény szerinti példányok lefordítja az App Service-ben futó alkalmazások. Használata révén, amely az Azure rendelkezik felhőszolgáltatóként látható-e, a Security Center elemzi az App Service-ben belső naplók webes alkalmazások gyakori támadásoktól gyakran több cél futó figyelni.
 
@@ -63,7 +63,7 @@ Tiltsa le a figyelés és javaslatok az App Service, ismételje meg a folyamat �
 ## <a name="see-also"></a>Lásd még
 Ebben a cikkben megismerkedhetett az Azure Security Center figyelési funkcióinak használatával. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-policies.md): Ez a cikk bemutatja, hogyan konfigurálhat biztonsági beállításokat az Azure Security Centerben.
+* [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-azure-policy.md): Ez a cikk bemutatja, hogyan konfigurálhat biztonsági beállításokat az Azure Security Centerben.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md): A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Partneri megoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md): Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md): Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.

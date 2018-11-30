@@ -1,5 +1,5 @@
 ---
-title: A Machine Learning Studio képességeit áttekintő diagram | Microsoft Docs
+title: A Machine Learning Studio képességeit – Azure áttekintő diagram |} A Microsoft Docs
 description: A Studio prediktív elemzési kísérletek kifejlesztéséhez, és azok Azure felhőben történő üzembe helyezéséhez való használatát bemutató nyomtatható diagram az Azure Machine Learning Studio képességeiről.
 keywords: machine learning studio,áttekintő diagram,letöltés
 services: machine-learning
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 04/04/2017
-ms.openlocfilehash: 283a37cd708dfd41a7840cef2f4236fd887130bf
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: d972cc9f162e16d5b688919dcdb5b7b06ad90736
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262635"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312463"
 ---
 # <a name="overview-diagram-of-azure-machine-learning-studio-capabilities"></a>Az Azure Machine Learning Studio képességeit áttekintő diagram
 A **Microsoft Azure Machine Learning Studio képességeinek áttekintése** diagram átfogó képet nyújt a Machine Learning Studio prediktív elemzési kísérletek kifejlesztéséhez, és azok Azure felhőben történő üzembe helyezéséhez való használatáról.

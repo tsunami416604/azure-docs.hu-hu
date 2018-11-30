@@ -1,65 +1,66 @@
 ---
 title: Java használata Azure SQL Database-adatbázis lekérdezéséhez | Microsoft Docs
-description: Ez a témakör bemutatja, hogyan használhatja a Javát egy Azure SQL Database-adatbázishoz csatlakozó program létrehozásához, és hogyan hajthat végre lekérdezést Transact-SQL-utasításokkal.
+description: Bemutatja, hogyan használható a Java egy Azure SQL Database-adatbázishoz csatlakozó program létrehozásához, és lekérdezi a T-SQL-utasításokkal.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: ''
 ms.devlang: java
 ms.topic: quickstart
 author: ajlam
 ms.author: andrela
-ms.reviewer: ''
+ms.reviewer: v-masebo
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: 2e8e47e8f2b61105a720c36d5b91a04df094c5d6
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
-ms.translationtype: HT
+ms.date: 11/20/2018
+ms.openlocfilehash: afa975a593fd962050c9f894ec091d7f64579138
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912356"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52332612"
 ---
 # <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>Rövid útmutató: Java használata Azure SQL Database-adatbázis lekérdezéséhez
 
-Ez a rövid útmutató azt ismerteti, hogyan használható a [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) egy Azure SQL Database-adatbázishoz való csatlakozáshoz, és hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni.
+Ez a cikk bemutatja, hogyan használható [Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) csatlakozni egy Azure SQL Database-adatbázishoz. Ezután használhatja a T-SQL-utasítások használatával adatokat lekérdezni.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
+Ez a minta, győződjön meg arról, hogy rendelkezik a következő előfeltételek vonatkoznak:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- A rövid útmutatóhoz használt számítógép nyilvános IP-címére vonatkozó [kiszolgálószintű tűzfalszabály](sql-database-get-started-portal-firewall.md).
+- A [kiszolgálószintű tűzfalszabály](sql-database-get-started-portal-firewall.md) használ a számítógép nyilvános IP-cím
 
-- Telepítette a Javát és az operációs rendszerének megfelelő kapcsolódó szoftvereket.
+- Java-kapcsolódó szoftverek az operációs rendszer telepítve:
 
-    - **MacOS**: Telepítse a Homebrew-t és a Javát, majd telepítse a Mavent. Lásd az [1.2 és 1.3 lépést](https://www.microsoft.com/sql-server/developer-get-started/java/mac/).
-    - **Ubuntu**: Telepítse a Java-fejlesztői készletet, majd telepítse a Mavent. Lásd az [1.2, 1.3 és 1.4 lépést](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/).
-    - **Windows**: Telepítse a Java-fejlesztői készletet, majd a Mavent. Lásd az [1.2 és 1.3 lépést](https://www.microsoft.com/sql-server/developer-get-started/java/windows/).    
+  - **MacOS**, telepítse a homebrew-t és a Java, majd telepítse a Mavent. Lásd az [1.2 és 1.3 lépést](https://www.microsoft.com/sql-server/developer-get-started/java/mac/).
 
-## <a name="sql-server-connection-information"></a>Az SQL-kiszolgáló kapcsolatadatai
+  - **Ubuntu**, telepítheti a javát, a Java Development Kitet, majd telepítse a Mavent. Lásd az [1.2, 1.3 és 1.4 lépést](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/).
+
+  - **Windows**, telepítheti a javát, majd telepítse a Mavent. Lásd az [1.2 és 1.3 lépést](https://www.microsoft.com/sql-server/developer-get-started/java/windows/).
+
+## <a name="get-database-connection"></a>Adatbázis-kapcsolat beolvasása
 
 [!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
 
-## <a name="create-maven-project-and-dependencies"></a>**Maven-projekt és függőségek létrehozása**
-1. A terminálból hozza létre az **sqltest** nevű új Maven-projektet. 
+## <a name="create-the-project"></a>A projekt létrehozása
 
-   ```bash
-   mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=sqltest" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
-   ```
+1. A terminálból hozza létre az *sqltest* nevű új Maven-projektet.
 
-2. Amikor a rendszer kéri, írja be az **Y** karaktert.
-3. Módosítsa a könyvtárat **sqltest** névre, és nyissa meg a ***pom.xml*** fájlt egy tetszőleges szövegszerkesztőben.  Adja hozzá a projekt függőségeihez az **SQL Serverhez készült Microsoft JDBC-illesztőprogram** elemet a következő kóddal:
+    ```bash
+    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=sqltest" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0" --batch-mode
+    ```
 
-   ```xml
-   <dependency>
-       <groupId>com.microsoft.sqlserver</groupId>
-       <artifactId>mssql-jdbc</artifactId>
-       <version>6.4.0.jre8</version>
-   </dependency>
-   ```
+1. Módosítsa a könyvtárat *sqltest* névre, és nyissa meg a *pom.xml* fájlt egy tetszőleges szövegszerkesztőben. Adja hozzá a **Microsoft JDBC-illesztőprogram SQL Serverhez** , a következő kód használatával a projekt függőségeit.
 
-4. A ***pom.xml*** fájlban adja hozzá a következő tulajdonságokat a projekthez.  Ha nincs tulajdonságok szakasz, a függőségek után adhatja hozzá őket.
+    ```xml
+    <dependency>
+        <groupId>com.microsoft.sqlserver</groupId>
+        <artifactId>mssql-jdbc</artifactId>
+        <version>7.0.0.jre8</version>
+    </dependency>
+    ```
+
+1. A *pom.xml* fájlban adja hozzá a következő tulajdonságokat a projekthez. Ha nincs tulajdonságok szakasz, a függőségek után adhatja hozzá őket.
 
    ```xml
    <properties>
@@ -68,82 +69,89 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek a
    </properties>
    ```
 
-5. Mentse és zárja be a ***pom.xml*** fájlt.
+1. Mentse és zárja be a *pom.xml* fájlt.
 
-## <a name="insert-code-to-query-sql-database"></a>Kód beszúrása SQL-adatbázis lekérdezéséhez
+## <a name="add-code-to-query-database"></a>Adja hozzá a kódot az adatbázis lekérdezése
 
-1. A Maven-projektben már rendelkezik egy ***App.java*** nevű fájllal a következő helyen: ..\sqltest\src\main\java\com\sqlsamples\App.java
+1. Már rendelkezik egy nevű fájlt *App.java* a Maven-projektben található:
 
-2. Nyissa meg a fájlt, cserélje le a tartalmát a következő kódra, és adja meg a kiszolgáló és az adatbázis megfelelő adatait, valamint a felhasználót és a jelszót.
+   *.. \sqltest\src\main\java\com\sqldbsamples\App.Java*
 
-   ```java
-   package com.sqldbsamples;
+1. Nyissa meg a fájlt, és cserélje le a tartalmát a következő kódra. Majd adja hozzá a megfelelő értékeket a kiszolgáló, adatbázis, a felhasználó és a jelszavát.
 
-   import java.sql.Connection;
-   import java.sql.Statement;
-   import java.sql.PreparedStatement;
-   import java.sql.ResultSet;
-   import java.sql.DriverManager;
+    ```java
+    package com.sqldbsamples;
 
-   public class App {
+    import java.sql.Connection;
+    import java.sql.Statement;
+    import java.sql.PreparedStatement;
+    import java.sql.ResultSet;
+    import java.sql.DriverManager;
 
-    public static void main(String[] args) {
-    
-        // Connect to database
-           String hostName = "your_server.database.windows.net";
-           String dbName = "your_database";
-           String user = "your_username";
-           String password = "your_password";
-           String url = String.format("jdbc:sqlserver://%s:1433;database=%s;user=%s;password=%s;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
-           Connection connection = null;
+    public class App {
 
-           try {
-                   connection = DriverManager.getConnection(url);
-                   String schema = connection.getSchema();
-                   System.out.println("Successful connection - Schema: " + schema);
+        public static void main(String[] args) {
 
-                   System.out.println("Query data example:");
-                   System.out.println("=========================================");
+            // Connect to database
+            String hostName = "your_server.database.windows.net";
+            String dbName = "your_database";
+            String user = "your_username";
+            String password = "your_password";
+            String url = String.format("jdbc:sqlserver://%s:1433;database=%s;user=%s;password=%s;encrypt=true;"
+                + "hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
+            Connection connection = null;
 
-                   // Create and execute a SELECT SQL statement.
-                   String selectSql = "SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName " 
-                       + "FROM [SalesLT].[ProductCategory] pc "  
-                       + "JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid";
-                
-                   try (Statement statement = connection.createStatement();
-                       ResultSet resultSet = statement.executeQuery(selectSql)) {
+            try {
+                connection = DriverManager.getConnection(url);
+                String schema = connection.getSchema();
+                System.out.println("Successful connection - Schema: " + schema);
 
-                           // Print results from select statement
-                           System.out.println("Top 20 categories:");
-                           while (resultSet.next())
-                           {
-                               System.out.println(resultSet.getString(1) + " "
-                                   + resultSet.getString(2));
-                           }
+                System.out.println("Query data example:");
+                System.out.println("=========================================");
+
+                // Create and execute a SELECT SQL statement.
+                String selectSql = "SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName "
+                    + "FROM [SalesLT].[ProductCategory] pc "  
+                    + "JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid";
+
+                try (Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(selectSql)) {
+
+                    // Print results from select statement
+                    System.out.println("Top 20 categories:");
+                    while (resultSet.next())
+                    {
+                        System.out.println(resultSet.getString(1) + " "
+                            + resultSet.getString(2));
+                    }
                     connection.close();
-                   }                   
-           }
-           catch (Exception e) {
-                   e.printStackTrace();
-           }
-       }
-   }
-   ```
+                }
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    ```
+
+   > [!NOTE]
+   > A példakód az **AdventureWorksLT** mintaadatbázist az Azure SQL.
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-1. Futtassa az alábbi parancsokat a parancssorban:
+1. A parancssorban futtassa a programot.
 
-   ```bash
-   mvn package
-   mvn -q exec:java "-Dexec.mainClass=com.sqldbsamples.App"
-   ```
+    ```bash
+    mvn package -DskipTests
+    mvn -q exec:java "-Dexec.mainClass=com.sqldbsamples.App"
+    ```
 
-2. Győződjön meg arról, hogy a parancssori felület visszaadta az első 20 sort, majd zárja be az alkalmazásablakot.
-
+1. Ellenőrizze az első 20 sort adja vissza, és zárja be az alkalmazásablakot.
 
 ## <a name="next-steps"></a>További lépések
-- [Az első SQL Database-adatbázis megtervezése](sql-database-design-first-database.md)
-- [Microsoft JDBC-illesztőprogram SQL Serverhez](https://github.com/microsoft/mssql-jdbc)
-- [Problémák jelentése/kérdések](https://github.com/microsoft/mssql-jdbc/issues)
 
+- [Az első SQL Database-adatbázis megtervezése](sql-database-design-first-database.md)  
+
+- [Microsoft JDBC-illesztőprogram SQL Serverhez](https://github.com/microsoft/mssql-jdbc)  
+
+- [Problémák jelentése/kérdések](https://github.com/microsoft/mssql-jdbc/issues)  

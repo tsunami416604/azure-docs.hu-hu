@@ -1,6 +1,6 @@
 ---
-title: Hogyan lehet egy Azure Machine Learning Web service |} A Microsoft Docs
-description: Machine learning-szolgáltatás üzembe helyezése után a webes RESTFul szolgáltatás, amely szeretné elérhetővé tenni a kötegelt végrehajtási szolgáltatásként vagy a valós idejű kérés-válasz szolgáltatás képes használni.
+title: Az Azure Machine Learning Studio webszolgáltatás használata |} A Microsoft Docs
+description: Machine learning-szolgáltatás üzembe helyezése az Azure Machine Learning Studióban, után a webes RESTFul szolgáltatás kötegelt végrehajtási szolgáltatásként vagy a valós idejű kérés-válasz szolgáltatás képes használni.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,14 +16,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/02/2017
-ms.openlocfilehash: 0f95ea1de572beb02cd1680864d3fee781e9abc1
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: df837c64cf0e40f3bfc1c596b2950a9d23c74a90
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262822"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309106"
 ---
-# <a name="how-to-consume-an-azure-machine-learning-web-service"></a>Az Azure Machine Learning Web service használata
+# <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>Az Azure Machine Learning Studio webszolgáltatás használata
 
 Miután telepít egy Azure Machine Learning prediktív modellt webszolgáltatásként, egy REST API segítségével küldje el az adatokat és kaphatnak előjelzéseket. Elküldheti az adatok valós idejű és kötegelt módban.
 

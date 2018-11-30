@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b5f36bcce77ad0dac3a6e2e9da39493be6751539
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 4ac036bbb94ae8b009700ff21bad1a117843584c
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985845"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427199"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>2.0-s protokollok – az OAuth 2.0 hitelesítési kódfolyamat
 
@@ -33,7 +33,7 @@ Az OAuth 2.0 hitelesítési kódmegadás alkalmazást, amely egy eszközön a v�
 > [!NOTE]
 > Nem minden Azure Active Directory-forgatókönyvet és funkciót támogatja a v2.0-végpontra. Annak megállapításához, ha a v2.0-végpont használja, olvassa el [v2.0 korlátozások](active-directory-v2-limitations.md).
 
-Az OAuth 2.0 hitelesítési kódfolyamat leírt [, az OAuth 2.0 ismertetőjének 4.1 szakaszában](http://tools.ietf.org/html/rfc6749). A legtöbb alkalmazástípust, beleértve a hitelesítési és engedélyezési végrehajtásához használatos [webes alkalmazások](v2-app-types.md#web-apps) és [natív módon telepített alkalmazások](v2-app-types.md#mobile-and-native-apps). A folyamat lehetővé teszi, hogy az alkalmazások biztonságos beszerezni a v2.0-végpont által védett erőforrások eléréséhez használható access_tokens. 
+Az OAuth 2.0 hitelesítési kódfolyamat leírt [, az OAuth 2.0 ismertetőjének 4.1 szakaszában](https://tools.ietf.org/html/rfc6749). A legtöbb alkalmazástípust, beleértve a hitelesítési és engedélyezési végrehajtásához használatos [webes alkalmazások](v2-app-types.md#web-apps) és [natív módon telepített alkalmazások](v2-app-types.md#mobile-and-native-apps). A folyamat lehetővé teszi, hogy az alkalmazások biztonságos beszerezni a v2.0-végpont által védett erőforrások eléréséhez használható access_tokens. 
 
 ## <a name="protocol-diagram"></a>Protokoll diagramja
 
@@ -69,7 +69,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | redirect_uri          | Ajánlott | Az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat redirect_uri tulajdonsága. Pontosan egyeznie kell a redirect_uris regisztrálta a portálon, kivéve azt az URL-kódolású kell lennie. A natív és mobil alkalmazások esetén az alapértelmezett értéket használjon `https://login.microsoftonline.com/common/oauth2/nativeclient`.   |
 | scope                 | szükséges    | Szóközzel elválasztott listáját [hatókörök](v2-permissions-and-consent.md) , hogy szeretné-e a felhasználót, hogy engedélyt adjanak az.           |
 | response_mode         | Ajánlott | Meghatározza a létrejövő jogkivonat vissza küldhet az alkalmazáshoz használandó módszert. Lehet `query`, `fragment`, vagy `form_post`. `query` a kódot biztosít az átirányítási URI-t a lekérdezési sztring paramétereként. Ha Ön a kért egy azonosító jogkivonat, használja az implicit folyamatot, nem használhatja `query` meghatározott a [OpenID specifikációja](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Ha csak a kódot kért, `query`, `fragment`, vagy `form_post`. `form_post` az átirányítási URI-t a kódot egy HOZZÁSZÓLÁSRA hajtja végre. További információ: [OpenID Connect protokollal](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code).  |
-| state                 | Ajánlott | A kérésben is a token válaszban visszaadott érték. Bármilyen tartalmat, akinél karakterlánc lehet. Egy véletlenszerűen generált egyedi érték jellemzően a [webhelyközi kérések hamisításának megakadályozása támadások](http://tools.ietf.org/html/rfc6749#section-10.12). Az érték is az alkalmazás a felhasználói állapot kapcsolatos információkat is kódolása, előtt a hitelesítési kérelmet, például az oldal vagy voltak a nézet. |
+| state                 | Ajánlott | A kérésben is a token válaszban visszaadott érték. Bármilyen tartalmat, akinél karakterlánc lehet. Egy véletlenszerűen generált egyedi érték jellemzően a [webhelyközi kérések hamisításának megakadályozása támadások](https://tools.ietf.org/html/rfc6749#section-10.12). Az érték is az alkalmazás a felhasználói állapot kapcsolatos információkat is kódolása, előtt a hitelesítési kérelmet, például az oldal vagy voltak a nézet. |
 | parancssor                | választható    | Azt jelzi, hogy milyen típusú felhasználói beavatkozás szükséges. Jelenleg csak érvényes értékei a "bejelentkezés", "none", és a "jóváhagyás". `prompt=login` a felhasználónak meg kell adnia a hitelesítő adataik adott kérelem negating egyszeri bejelentkezéses kényszeríti. `prompt=none` Ellenkező – biztosítja, hogy a felhasználó el minden olyan interaktív kérdés nem egyike. Ha a kérés nem teljesíthető csendes egyszeri bejelentkezéses keresztül, a v2.0-végpont adja vissza egy `interaction_required` hiba. `prompt=consent` Elindítja az OAuth-hozzájárulási párbeszédpanel kéri a felhasználót, hogy az alkalmazás engedélyeket, a felhasználó bejelentkezése után. |
 | login_hint            | választható    | Segítségével előre töltse ki a felhasználónév, e-mail-cím mező a bejelentkezési oldal a felhasználó számára, ha ismeri a kívánt időben felhasználóneve. Alkalmazások gyakran ismételt hitelesítés kellene már kinyert a felhasználónevet egy korábbi bejelentkezési használata során fogja használni ezt a paramétert a `preferred_username` jogcím.                                                                                                                                                                                                                                                                                                    |
 | domain_hint           | választható    | Lehetnek `consumers` vagy `organizations`. Ha tartalmazza, azt kihagyja az e-mail-alapú felderítési folyamat, hogy a felhasználó végighalad a bejelentkezési lapon v2.0 némileg több zökkenőmentes felhasználói élményt vezet. Gyakran alkalmazásokat fogja használni ezt a paramétert ismételt hitelesítés során oly módon, a `tid` a korábbi bejelentkezési. Ha a `tid` jogcím értéke `9188040d-6c67-4c5b-b112-36a304b66dad`, használjon `domain_hint=consumers`. Ellenkező esetben használjon `domain_hint=organizations`.                                                                                                              |

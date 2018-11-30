@@ -3,19 +3,19 @@ title: Adja meg egy egyéni nézet – Bing egyéni keresés
 titlesuffix: Azure Cognitive Services
 description: Ismerteti, hogyan hozhat létre a hely és a függőleges keresési szolgáltatások
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
-ms.author: v-brapel
-ms.openlocfilehash: 5e168608202f81f698221b52315de83e9713feab
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.author: aahi
+ms.openlocfilehash: d45d917d733727eca3286bb6335ce77591f39685
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282923"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427284"
 ---
 # <a name="configure-your-custom-search-experience"></a>Konfigurálja az egyéni keresés
 
@@ -160,7 +160,7 @@ Kövesse az alábbi lépéseket a Bing használatával szeleteket ad hozzá az e
 5.  Kattintson a **Hozzáadás hely** mellett fel szeretne venni az eredményt.
 6.  Kattintson az **OK** gombra.
 
-[!INCLUDE[publish or revert](./includes/publish-revert.md)]
+[!INCLUDE [publish or revert](./includes/publish-revert.md)]
 
 ## <a name="view-statistics"></a>Statisztikák megjelenítése
 

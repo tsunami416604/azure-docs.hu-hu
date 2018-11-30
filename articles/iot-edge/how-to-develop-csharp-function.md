@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 343264f90ecf067786db9c0096625b87b2dbd319
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 40b8dfef3100ff8440165de74fb41f6b36afe37a
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51004408"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315103"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-azure-functions-for-azure-iot-edge"></a>Fejlesztés és hibakeresés az Azure functions az Azure IoT Edge-hez a Visual Studio Code használatával
 
@@ -71,6 +71,7 @@ Nincsenek a megoldáson belül a négy elemek:
    >A környezet fájl csak akkor jön létre, ha a modul adja meg egy lemezképtárban. Ha korábban elfogadta a localhost alapértelmezett tesztelése és hibakeresése helyileg, majd, nem kell környezeti változók deklarálása. 
 
 * A **deployment.template.json** sorolja az új modul és a egy minta **tempSensor** modul, amely szimulálja az adatokat, teszteléshez használható. Hogyan az üzembe helyezés jegyzékfájlok munkahelyi kapcsolatos további információkért lásd: [megtudhatja, hogyan telepítési jegyzékek használatával hogyan helyezhet üzembe modulokat, és ezekkel létesíthetnek útvonalat](module-composition.md).
+* A **deployment.debug.template.json** a modul a hibakeresési verzió a megfelelő tárolót beállításokkal lemezképeket tároló fájlt.
 
 ## <a name="develop-your-module"></a>A modul fejlesztése
 
@@ -79,12 +80,10 @@ Az alapértelmezett a megoldás az Azure-függvény kódjának következő helye
 Ha már készen áll a saját kódját az Azure-függvény-sablon testre szabása, a [Azure IoT Hub SDK-k](../iot-hub/iot-hub-devguide-sdks.md) hozhat létre a modulok a kulcsot kell IoT-megoldások, például a biztonság, a kezelés és a megbízhatóság címmel. 
 
 ## <a name="build-your-module-for-debugging"></a>A hibakeresési modul létrehozása
-1. A hibakeresés, használjon **Dockerfile.amd64.debug** építse újra a docker-rendszerképet, és telepítse újra a biztonsági megoldás. A VS Code Explorerben keresse meg a `deployment.template.json` fájlt. A függvény URL-címe frissítés hozzáadásával `.debug` vége.
-
-    ![Hibakeresési rendszerkép összeállítása](./media/how-to-debug-csharp-function/build-debug-image.png)
-
+1. A hibakeresés, használjon **Dockerfile.amd64.debug** építse újra a docker-rendszerképet, és telepítse újra a biztonsági megoldás. A VS Code Explorerben keresse meg a `deployment.debug.template.json` fájlt.
 2. A megoldás újbóli létrehozása. A VS Code parancskatalógus adja meg, és futtassa a parancsot **Azure IoT Edge: Build IoT Edge solution**.
-3. Az Azure IoT Hub-eszközök Explorerben kattintson a jobb gombbal egy IoT Edge-eszköz azonosítója, és válassza **üzembe helyezés az Edge-eszköz létrehozása**. Válassza ki a `deployment.json` fájlt a `config` mappát. Látni fogja az üzembe helyezés a VS Code integrált terminálon egy üzembe helyezési Azonosítóval rendelkező létrehozása sikerült.
+3. Válassza ki a `deployment.debug.template.json` a megoldás a parancskatalógus a fájlt. 
+4. Az Azure IoT Hub-eszközök Explorerben kattintson a jobb gombbal egy IoT Edge-eszköz azonosítója, és válassza **üzembe helyezés az Edge-eszköz létrehozása**. Válassza ki a `deployment.debug.amd64.json` fájlt a `config` mappát. Látni fogja az üzembe helyezés a VS Code integrált terminálon egy üzembe helyezési Azonosítóval rendelkező létrehozása sikerült.
 
 Ellenőrizze a tároló állapotát, a Docker a VS Code Explorerben vagy futtatja az `docker ps` parancsot a terminálon.
 

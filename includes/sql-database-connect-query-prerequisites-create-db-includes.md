@@ -4,17 +4,19 @@ ms.service: sql-database
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: genemi
-ms.openlocfilehash: 5c97bf4a84496d9ca885d5b1c35df89bdd6d0e2d
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 95a991504b4c3d4c87a0218931df5a6276c67d8f
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52270367"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52339658"
 ---
 <!-- sql-database-connect-query-prerequisites-create-db-includes.md -->
 
 - Azure SQL Database-adatbázis. A következő módszerekkel hozhat létre adatbázist:
 
-   - [DB létrehozása – portál](../articles/sql-database/sql-database-get-started-portal.md)
-   - [DB létrehozása – CLI](../articles/sql-database/sql-database-get-started-cli.md)
-   - [DB létrehozása – PowerShell](../articles/sql-database/sql-database-get-started-powershell.md)
+  - [Portál](../articles/sql-database/sql-database-get-started-portal.md)
+
+  - [Parancssori felület](../articles/sql-database/sql-database-get-started-cli.md)
+
+  - [PowerShell](../articles/sql-database/sql-database-get-started-powershell.md)

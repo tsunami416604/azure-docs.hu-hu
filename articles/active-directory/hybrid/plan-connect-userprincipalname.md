@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: identity
 ms.service: active-Directory
 manager: mtillman
-ms.openlocfilehash: 35f1ed2fbeeea7ff3beffeae91f775c829deedec
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 59df0dc61be1f670f21b94fe24e56a2f040f950e
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637714"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426808"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Az Azure AD UserPrincipalName feltöltése
 
@@ -34,7 +34,7 @@ Ez a cikk a következő kifejezésekkel használja:
 |Alternatív bejelentkezési Azonosítóval|Egy helyszíni attribútuma eltérő UserPrincipalName, például a mail attribútum, a bejelentkezéshez használt.|
 
 ## <a name="what-is-userprincipalname"></a>Mit jelent a UserPrincipalName?
-UserPrincipalName olyan attribútum, amely az internetes szabvány alapján a felhasználó internetes bejelentkezési neve, [RFC 822](http://www.ietf.org/rfc/rfc0822.txt). 
+UserPrincipalName olyan attribútum, amely az internetes szabvány alapján a felhasználó internetes bejelentkezési neve, [RFC 822](https://www.ietf.org/rfc/rfc0822.txt). 
 
 ### <a name="upn-format"></a>Egyszerű felhasználónév formátuma
 Egy egyszerű felhasználónév egy UPN-előtag (a felhasználói fiók nevét) és a egy egyszerű Felhasználónévi utótagot (DNS-tartománynevet) áll. Az előtag csatlakozik az utótag használata a "\@" szimbólumot. Például "valaki\@example.com". Egy egyszerű felhasználónév az összes biztonsági egyszerű objektumok directory erdőn belül egyedinek kell lennie. 

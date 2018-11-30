@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: terrylan
-ms.openlocfilehash: 978ef8087665edb3f0bfaa0bd0a55f4d8ab9a12d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 3640e4affe42986106791cba50f6cbfd97906806
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251508"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308324"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>A biztonságot az Azure Security Center-javaslatok
 Jelentős biztonsági esemény esélyét csökkentheti biztonsági szabályzat konfigurálásával, majd az Azure Security Center által nyújtott ajánlások megvalósítása. Ez a cikk bemutatja, hogyan biztonsági szabályzatok és javaslatok használata a Security Centerben a biztonsági támadások történésekről.
@@ -30,7 +30,7 @@ Jelentős biztonsági esemény esélyét csökkentheti biztonsági szabályzat k
 >
 
 ## <a name="managing-security-recommendations"></a>Biztonsági javaslatok kezelése
-Biztonsági szabályzat határozza meg, az adott előfizetésen vagy erőforráscsoporton belüli erőforrások ajánlott vezérlők. A Security Centerben a vállalat biztonsági követelményeinek megfelelően szabályzatokat definiálhat. További tudnivalókért lásd: [biztonsági szabályzatok beállítása a Security Center](security-center-policies.md).
+Biztonsági szabályzat határozza meg, az adott előfizetésen vagy erőforráscsoporton belüli erőforrások ajánlott vezérlők. A Security Centerben a vállalat biztonsági követelményeinek megfelelően szabályzatokat definiálhat. További tudnivalókért lásd: [biztonsági szabályzatok beállítása a Security Center](security-center-azure-policy.md).
 
 Erőforráscsoportokra vonatkozó biztonsági szabályzatok örökli az előfizetés szintjéről.
 

@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: 809196411df56c7448a9d0f983c17c60d5d3b4ae
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: bd8bfb8775bc9c988bb7484ac25f189c3ff46991
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015417"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317279"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>A HDInsight-beli Apache kafka-naplók elemzése
 
 Ismerje meg, hogyan lehet Apache Kafka on HDInsight által előállított naplók elemzése a Log Analytics használatával.
 
-## <a name="enable-log-analytics-for-kafka"></a>A Kafka a Log Analytics engedélyezése
+## <a name="enable-log-analytics-for-apache-kafka"></a>A Log Analytics-beli Apache kafka engedélyezése
 
 A Log Analytics engedélyezése a HDInsight lépései megegyeznek az összes HDInsight-fürt. Az alábbi hivatkozások segítségével megtudhatja, hogyan hozhat létre és konfigurálja a szükséges szolgáltatások:
 
@@ -74,9 +74,9 @@ A Log Analytics engedélyezése a HDInsight lépései megegyeznek az összes HDI
 
 A Log Analytics további információkért lásd: a [Ismerkedés a Log Analytics-munkaterület](../../log-analytics/log-analytics-get-started.md) dokumentumot.
 
-A Kafka használatáról további információ a következő dokumentumokban talál:
+Apache Kafka használatával kapcsolatos további információkért tekintse meg a következő dokumentumokat:
 
- * [Tükrözött Kafka HDInsight-fürtök között](apache-kafka-mirroring.md)
- * [A HDInsight-beli Kafka méretezhetőségének javítása](apache-kafka-scalability.md)
- * [A Spark Stream (DStreams) a Kafka használata](../hdinsight-apache-spark-with-kafka.md)
- * [Használja a Spark strukturált Stream használata a Kafkával](../hdinsight-apache-kafka-spark-structured-streaming.md)
+ * [Tükrözött Apache Kafka HDInsight-fürtök között](apache-kafka-mirroring.md)
+ * [A kapacitás bővítése érdekében az Apache Kafka on HDInsight](apache-kafka-scalability.md)
+ * [Apache Spark Stream (DStreams) az Apache kafka platformmal](../hdinsight-apache-spark-with-kafka.md)
+ * [Az Apache Spark strukturált Stream az Apache kafka platformmal használata](../hdinsight-apache-kafka-spark-structured-streaming.md)

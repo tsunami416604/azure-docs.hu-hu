@@ -1,6 +1,6 @@
 ---
-title: Az Azure AI-katalógusban gyűjtemények |} A Microsoft Docs
-description: Fedezze fel, és megoszthatja a gyűjtemények az Azure AI-katalógusban.
+title: Az Azure AI-katalógusban gyűjtemények – Azure Machine Learning Studióban |} A Microsoft Docs
+description: Egy gyűjtemény használhatja az Azure AI-katalógusban kísérletek, API-k és más katalóguselemek, amelyek egy bizonyos megoldást vagy fogalmat használ. Csoportosíthatja azokat használni, későbbi felhasználás céljából menteni vagy megosztani.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: e9b1bfd27e82d3ca091fba850b2e4a9b6b8aa61e
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: cc70405655cd07d87ca5b1004b7666d3b45bc649
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263638"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308681"
 ---
 # <a name="discover-and-share-collections-in-azure-ai-gallery"></a>Felfedezheti és megoszthatja a gyűjtemények az Azure AI-katalógusban
 

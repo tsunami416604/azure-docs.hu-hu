@@ -1,5 +1,5 @@
 ---
-title: Az Azure Machine Learning webszolgáltatás paramétereinek használata |} A Microsoft Docs
+title: Az Azure Machine Learning Studio webszolgáltatás-paraméterek használata |} A Microsoft Docs
 description: Hogyan használható az Azure Machine Learning webszolgáltatás-paraméterek a web service elérésekor a modell működésének módosítása céljából.
 services: machine-learning
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: 34ae252ff2c37a6e4e9f90155c4fda79b81e29a2
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 0e8a1a4bb90f935bf3890bd803b9375d10261aa7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264335"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312010"
 ---
-# <a name="use-azure-machine-learning-web-service-parameters"></a>Az Azure Machine Learning webszolgáltatás paramétereinek használata
+# <a name="use-azure-machine-learning-studio-web-service-parameters"></a>Az Azure Machine Learning Studio webszolgáltatás-paraméterek használata
 Az Azure Machine Learning webszolgáltatás tegye közzé konfigurálható paraméterek és modulokat tartalmazó kísérlet jön létre. Bizonyos esetekben előfordulhat, hogy módosítani szeretné a modul viselkedését a webszolgáltatás futtatása közben. *Webalkalmazás-paraméterek* lehetővé teszi, hogy a feladat végrehajtásához. 
 
 Ilyenek például állítsa be a [adatok importálása] [ reader] modul úgy, hogy a felhasználó a közzétett webes szolgáltatás egy másik adatforráshoz adhatja meg a webszolgáltatás eléréséhez. Vagy konfigurálása a [adatok exportálása] [ writer] modul úgy, hogy egy másik célhelyet lehet megadni. Néhány példa szemlélteti tartalmazza a bits számának módosítása a [Szolgáltatáskivonatolás] [ feature-hashing] modul vagy a száma a kívánt funkcióinak a [szűrő-alapú szolgáltatás kiválasztása] [ filter-based-feature-selection] modul. 

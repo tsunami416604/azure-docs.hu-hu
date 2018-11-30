@@ -1,6 +1,6 @@
 ---
-title: A helyszíni SQL Server használata az Azure Machine Learning |} A Microsoft Docs
-description: Az Azure Machine Learning a fejlett elemzéseket végezzenek egy helyszíni SQL Server-adatbázis adatait használják.
+title: A helyszíni SQL Server az Azure Machine Learning studióval |} A Microsoft Docs
+description: Az Azure Machine Learning Studio fejlett elemzéseket végezzenek egy helyszíni SQL Server-adatbázis adatait használják.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,18 +16,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
-ms.openlocfilehash: 83ec812f18e7e47f30db79a6d665d60fae9e0e5d
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: d28c39ef909cffdc1ed907e05b60e61f02353710
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263213"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310956"
 ---
 # <a name="perform-advanced-analytics-with-azure-machine-learning-using-data-from-an-on-premises-sql-server-database"></a>Bővített analitika az Azure Machine Learning használatával egy helyszíni SQL Server-adatbázisból származó adatokkal
 
 Gyakran olyan vállalatok, amelyek a helyszíni adatok használata, ha a méretezési csoport és a gépi tanulási célú számítási feladatokhoz a felhő rugalmasságát. De azok nem szeretné, hogy megszakítja az aktuális üzleti és munkafolyamatok által a helyszíni adatok áthelyezése a felhőbe. Az Azure Machine Learning mostantól támogatja az adatok beolvasása helyszíni SQL Server-adatbázisból, és ezután képzés, és ezeket az adatokat a modell pontozása. Már nem kell manuálisan másolja, és szinkronizálja az adatokat a felhőben és a helyszíni kiszolgáló között. Ehelyett a **adatok importálása** modul az Azure Machine Learning Studióban elolvashatja közvetlenül a helyszíni SQL Server-adatbázisát a tanítási és pontozási feladatok.
 
-Ez a cikk áttekintést a bejövő forgalom a helyszíni SQL server-adatok az Azure Machine Learningbe. Feltételezi, hogy ismeri a munkaterületek, a modulok, az adatkészletek, a kísérletek, például az Azure Machine Learning-fogalmak *stb.*.
+Ez a cikk áttekintést a bejövő forgalom a helyszíni SQL server-adatok Azure Machine Learning studióba. Feltételezi, hogy ismeri a munkaterületek, a modulok, az adatkészletek, a kísérletek, például az Azure Machine Learning-fogalmak *stb.*.
 
 > [!NOTE]
 > Ez a funkció nem érhető el a munkaterületek. További információ a Machine Learning díjszabás és szint: [Azure Machine Learning szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/machine-learning/).

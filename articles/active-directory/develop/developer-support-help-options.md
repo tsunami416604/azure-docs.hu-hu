@@ -17,12 +17,12 @@ ms.date: 10/27/2017
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 9b2ccce4ef6fad4f7710ba2092d67ac5f4e73b71
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 60186d44437a866793b40c9d6f0263235803475f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39602010"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422439"
 ---
 # <a name="support-and-help-options-for-developers"></a>Fejlesztői támogatás és súgó lehetőségei 
 
@@ -67,13 +67,13 @@ Ha nem talál választ a problémára felvétellel, küldje el a Stack Overflow 
 
 |Összetevő/terület  |Címkék  |
 |---------|---------|
-|ADAL-könyvtár |[[adal]](http://stackoverflow.com/questions/tagged/adal)|
-|Az MSAL könyvtár     |[[az msal]](http://stackoverflow.com/questions/tagged/msal)|
-|OWIN közbenső szoftvert  |[[azure-active-directory]](http://stackoverflow.com/questions/tagged/azure-active-directory)|
-|[Az Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  |[[azure-ad-b2b]](http://stackoverflow.com/questions/tagged/azure-ad-b2b)|
-|[Az Azure B2C-vel](https://azure.microsoft.com/services/active-directory-b2c/)  |[[azure-ad-b2c]](http://stackoverflow.com/questions/tagged/azure-ad-b2b)|
-|[A Microsoft Graph API](https://developer.microsoft.com/graph/) |[[a microsoft graph]](http://stackoverflow.com/questions/tagged/microsoft-graph)
-|A hitelesítési vagy engedélyezési kapcsolatos más területeken kapcsolatos témakörök |[[azure-active-directory]](http://stackoverflow.com/questions/tagged/azure-active-directory)
+|ADAL-könyvtár |[[adal]](https://stackoverflow.com/questions/tagged/adal)|
+|Az MSAL könyvtár     |[[az msal]](https://stackoverflow.com/questions/tagged/msal)|
+|OWIN közbenső szoftvert  |[[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory)|
+|[Az Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  |[[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b)|
+|[Az Azure B2C-vel](https://azure.microsoft.com/services/active-directory-b2c/)  |[[azure-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2b)|
+|[Microsoft Graph API](https://developer.microsoft.com/graph/) |[[a microsoft graph]](https://stackoverflow.com/questions/tagged/microsoft-graph)
+|A hitelesítési vagy engedélyezési kapcsolatos más területeken kapcsolatos témakörök |[[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory)
 <br/>
 > [!TIP]
 > A Stack overflow-n a következő bejegyzések tippekkel szolgál az, hogy kérdéseket tartalmaz, és a hozzáadása a forráskódja - ezeket az irányelveket a következő tippek segíthetnek, növelheti annak esélyét segítségével mérheti fel, és gyorsan válaszolni a Közösség tagjai:  

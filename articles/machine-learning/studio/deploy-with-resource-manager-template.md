@@ -1,5 +1,5 @@
 ---
-title: Machine Learning-munkaterület az Azure Resource Manager üzembe helyezése |} A Microsoft Docs
+title: Machine Learning-munkaterület az Azure Resource Manager – Azure Machine Learning Studio üzembe helyezése |} A Microsoft Docs
 description: Hogyan helyezhet üzembe egy munkaterületet az Azure Machine Learning az Azure Resource Manager-sablon használatával
 services: machine-learning
 documentationcenter: ''
@@ -16,15 +16,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 2/05/2018
-ms.openlocfilehash: e02dac0543fc7c59ae7b7d29bab1dfedb8bf737f
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 82a9cfec0efe60e3a0cdf16efa373e68efebee59
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263178"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307980"
 ---
 # <a name="deploy-machine-learning-workspace-using-azure-resource-manager"></a>Machine Learning-munkaterület üzembe helyezése az Azure Resource Manager használatával
-## <a name="introduction"></a>Bevezetés
+
 Az egy Azure Resource Manager központi telepítési sablont, így Ön egy skálázható módon, hogy Ön időt takarít az érvényesítést összekapcsolt összetevők üzembe helyezése és újrapróbálkozási mechanizmus. Az Azure Machine Learning-munkaterületek beállításával kapcsolatban például szeretne konfigurálja egy Azure storage-fiókot, majd üzembe helyezése a munkaterületen. Tegyük fel, így manuálisan munkaterületek több száz. Egyszerűbb a másik lehetőség az Azure Resource Manager-sablon segítségével üzembe helyezése az Azure Machine Learning-munkaterület és minden függőségét. Ez a cikk végigvezeti a részletes folyamat. Az Azure Resource Manager, nagyszerű áttekintése: [Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md).
 
 ## <a name="step-by-step-create-a-machine-learning-workspace"></a>Részletes útmutató: Machine Learning-munkaterület létrehozása

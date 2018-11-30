@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: sujayt
-ms.openlocfilehash: 040ace1eab4062c011ed82a59e7f5bfb789c256b
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 7d11460fd1db5ba92725567a41aaaeab9e752adb
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945739"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308124"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure – Azure virtuális gép replikálási problémák elhárítása
 
@@ -150,28 +150,36 @@ Mivel a SuSE Linux symlinks tanúsítvány listának a karbantartására haszná
 
 A Site Recovery replikációja, a kimenő kapcsolat az adott URL-címek vagy IP-címtartományok szükség a virtuális gépről. Ha a virtuális gép tűzfal mögött található, vagy használja a hálózati biztonsági csoport (NSG) szabályai kimenő kapcsolat szabályozásához, előfordulhat, hogy között ezek a problémák egyike.
 
-### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151037-br"></a>1 probléma: Nem sikerült regisztrálni az Azure virtuális gépet a Site Recovery (151037) </br>
+### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>1 probléma: Nem sikerült regisztrálni az Azure virtuális gépet a Site Recovery (151195) </br>
 - **Lehetséges ok** </br>
-  - NSG-t használ a kimenő hozzáférésének meg a virtuális gép és a szükséges IP-címtartományok nem szerepel az engedélyezési listán a kimenő hozzáféréshez.
-  - Külső gyártótól származó tűzfaleszközöket használ és a szükséges IP címtartományok/URL-címek nem szerepel az engedélyezési listán.
+  - A site recovery végpontok DNS-feloldási hiba miatt nem létesíthető kapcsolat.
+  - Ez gyakran látható ismételt védelem során a virtuális gép feladatátadása, de a DNS-kiszolgáló nem érhető el a DR régióban.
+  
+- **Felbontás**
+   - Ha egyéni DNS használ, akkor ügyeljen arra, hogy a DNS-kiszolgáló érhető el a vész-helyreállítási régióban. Ha egy egyéni DNS nyissa meg a virtuális gép rendelkezik-e > vész-helyreállítási hálózat > DNS-kiszolgálók. Próbálja ki a virtuális gépről a DNS-kiszolgáló eléréséhez. Ha nem érhető el ezt követően testre is elérhető-e a DNS-kiszolgáló feladatátvétele vagy a sor közötti DR hálózati és a DNS-hely létrehozása.
+  
+    ![COM-hiba](./media/azure-to-azure-troubleshoot-errors/custom_dns.png)
+ 
 
+### <a name="issue-2-site-recovery-configuration-failed-151196"></a>2 probléma: A Site Recovery konfigurálása nem sikerült (151196)
+- **Lehetséges ok** </br>
+  - Az Office 365 portál és identitás IP4 végpontok nem létesíthető kapcsolat.
 
 - **Felbontás**
-   - Ha használ tűzfalproxyt szabályozhatja a kimenő hálózati kapcsolatokra a virtuális Gépen, győződjön meg arról, hogy a szükséges URL-címek vagy adatközponti IP-címtartományok szerepel az engedélyezési listán. További információ: [tűzfal-proxy útmutatást](https://aka.ms/a2a-firewall-proxy-guidance).
-   - Ha az NSG-szabályok segítségével szabályozza a kimenő hálózati kapcsolatokra a virtuális Gépen, győződjön meg arról, hogy a szükséges adatközponti IP-címtartományok szerepel az engedélyezési listán. További információ: [hálózati biztonsági csoport útmutató](azure-to-azure-about-networking.md).
-   - Az engedélyezési listára [a szükséges URL-címek](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) vagy a [szükséges IP-címtartományok](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), kövesse a [hálózati dokumentum](azure-to-azure-about-networking.md).
+  - Az Azure Site Recovery-hitelesítéshez szükséges hozzáférés az Office 365 IP-címek tartományát.
+    Ha az Azure hálózati biztonsági csoport (NSG) szabályai, illetve a tűzfal proxy segítségével szabályozza a kimenő hálózati kapcsolatokra a virtuális Gépen, győződjön meg arról, Office 365 IP-tartományokkal való kommunikáció engedélyezése. Hozzon létre egy [Azure Active Directory (AAD) szolgáltatáscímke](../virtual-network/security-overview.md#service-tags) alapú Hálózatibiztonságicsoport-szabály engedélyezi a hozzáférést az aad-hez tartozó összes IP-címek számára
+        - Hozzáadja az új címeket az Azure Active Directory (AAD) a jövőben, ha szeretne létrehozni új NSG-szabályokat.
 
-### <a name="issue-2-site-recovery-configuration-failed-151072"></a>2 probléma: A Site Recovery konfigurálása nem sikerült (151072)
+
+### <a name="issue-3-site-recovery-configuration-failed-151197"></a>3. hiba: A Site Recovery konfigurálása nem sikerült (151197)
 - **Lehetséges ok** </br>
-  - A Site Recovery szolgáltatási végpontjaival nem létesíthető kapcsolat
-
+  - Nem lehet kapcsolatot az Azure Site Recovery szolgáltatási végpontjait.
 
 - **Felbontás**
-   - Ha használ tűzfalproxyt szabályozhatja a kimenő hálózati kapcsolatokra a virtuális Gépen, győződjön meg arról, hogy a szükséges URL-címek vagy adatközponti IP-címtartományok szerepel az engedélyezési listán. További információ: [tűzfal-proxy útmutatást](https://aka.ms/a2a-firewall-proxy-guidance).
-   - Ha az NSG-szabályok segítségével szabályozza a kimenő hálózati kapcsolatokra a virtuális Gépen, győződjön meg arról, hogy a szükséges adatközponti IP-címtartományok szerepel az engedélyezési listán. További információ: [hálózati biztonsági csoport útmutató](https://aka.ms/a2a-nsg-guidance).
-   - Az engedélyezési listára [a szükséges URL-címek](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) vagy a [szükséges IP-címtartományok](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), kövesse a [hálózati dokumentum](site-recovery-azure-to-azure-networking-guidance.md).
+  - Az Azure Site Recovery szükséges hozzáférést [Site Recovery IP-címtartományok](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges) a régiójától függően. Győződjön meg arról, hogy a szükséges ip-címtartományok érhetők el a virtuális gép.
+    
 
-### <a name="issue-3-a2a-replication-failed-when-the-network-traffic-goes-through-on-premise-proxy-server-151072"></a>3. hiba: Az A2A-replikáció sikertelen, ha a hálózati forgalom halad át a helyi proxykiszolgáló (151072)
+### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premise-proxy-server-151072"></a>4. hiba: Az A2A-replikáció sikertelen, ha a hálózati forgalom halad át a helyi proxykiszolgáló (151072)
  - **Lehetséges ok** </br>
    - Érvénytelenek az egyéni proxy beállításait, és az ASR a mobilitási szolgáltatás ügynökének fejeződött nincs automatikus észlelés a proxybeállításokat az Internet Explorer
 

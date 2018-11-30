@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: ff194ef7f5ae609eba5334eb5c66db02d660ab08
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 8a67327497c96cba570d2ddb8c525bf5a60be790
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049631"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308217"
 ---
-# <a name="phoenix-performance-best-practices"></a>A Phoenix teljesítményével kapcsolatos ajánlott eljárások
+# <a name="apache-phoenix-performance-best-practices"></a>Az Apache Phoenix teljesítmény ajánlott eljárások
 
-A leginkább fontos szempont a Phoenix teljesítményét, hogy az alapul szolgáló HBase optimalizálása. A Phoenix a HBase, HBase-műveletek, például a vizsgálatok SQL-lekérdezések alakítja interaktív irányítópultunkat relációs adatmodellekkel hoz létre. A következő tábla sémáját, a kijelölés és az elsődleges kulcsot, és az összes indexek használata a mezők sorrendjét a kialakítás befolyásolja a Phoenix teljesítményét.
+A leginkább fontos szempont a [Apache Phoenix](https://phoenix.apache.org/) teljesítmény optimalizálása az alapul szolgáló [Apache HBase](http://hbase.apache.org/). A Phoenix a HBase, HBase-műveletek, például a vizsgálatok SQL-lekérdezések alakítja interaktív irányítópultunkat relációs adatmodellekkel hoz létre. A következő tábla sémáját, a kijelölés és az elsődleges kulcsot, és az összes indexek használata a mezők sorrendjét a kialakítás befolyásolja a Phoenix teljesítményét.
 
 ## <a name="table-schema-design"></a>Séma Táblatervezés
 
@@ -229,5 +229,5 @@ További információ erről és más beállítások: [Phoenix nyelvtani](http:/
 
 ## <a name="next-steps"></a>További lépések
 
-* [A Phoenix-finomhangolási útmutató](https://phoenix.apache.org/tuning_guide.html)
+* [Az Apache Phoenix-finomhangolási útmutató](https://phoenix.apache.org/tuning_guide.html)
 * [A másodlagos indexek](http://phoenix.apache.org/secondary_indexing.html)

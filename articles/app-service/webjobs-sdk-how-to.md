@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: 3e06dc82baed4043ce490769aa0ec84ab3de8c24
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 2266f63f9689ec4d22659eb4a7c4876e25fa08b1
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577011"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335214"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK használata az eseményvezérelt háttérben történő feldolgozás
 
@@ -462,7 +462,7 @@ Azt javasoljuk, hogy az ASP.NET, kifejlesztett naplózási keretrendszer és a [
 
 ### <a name="log-filtering"></a>Napló szűrése
 
-Minden naplót hoz létre egy `ILogger` példányhoz tartozik egy társított `Category` és `Level`. [LogLevel](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.loglevel#Microsoft_Extensions_Logging_LogLevel) enumeráció, és az egész kód azt jelzi, hogy relatív fontosságát:
+Minden naplót hoz létre egy `ILogger` példányhoz tartozik egy társított `Category` és `Level`. [LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel) enumeráció, és az egész kód azt jelzi, hogy relatív fontosságát:
 
 |LogLevel    |Kód|
 |------------|---|
@@ -474,7 +474,7 @@ Minden naplót hoz létre egy `ILogger` példányhoz tartozik egy társított `C
 |Kritikus    | 5 |
 |None        | 6 |
 
-Minden kategória egy adott egymástól függetlenül szűrésével [LogLevel](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.loglevel). Például előfordulhat, hogy szeretné az összes blob eseményindító feldolgozása azonban csak a naplófájlokban `Error` és minden más magasabb.
+Minden kategória egy adott egymástól függetlenül szűrésével [LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel). Például előfordulhat, hogy szeretné az összes blob eseményindító feldolgozása azonban csak a naplófájlokban `Error` és minden más magasabb.
 
 Könnyebb adja meg a szűrési szabályokat, a WebJobs SDK biztosítja a `LogCategoryFilter` , amelyek átadhatók be számos, a meglévő naplózási-szolgáltatók, például az Application Insights és a konzol.
 

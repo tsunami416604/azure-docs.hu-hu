@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/16/2016
 ms.author: garye
-ms.openlocfilehash: e18e1fb3e97dd9f846ee71be4f0fbb66aeca3d88
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 88f6a27d4092e638403c641d72916ed9d2540708
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238862"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427063"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>Technikai útmutató a Cortana Intelligence Megoldássablon igény szerint az energiaellátás előrejelzése
 ## <a name="overview"></a>**Áttekintés**
@@ -159,14 +159,14 @@ Az Adatgenerátor indul el, miután a folyamat megkezdi az első hidratált, és
 Ez a szakasz ismerteti, hogyan állítható be a Power BI-irányítópulton jelenítheti meg az Azure stream analytics (gyakori elérésű útvonal) valós idejű adatok, valamint az Azure machine learning (ritka elérésű útvonal) származó eredmények előrejelzése.
 
 ### <a name="setup-hot-path-dashboard"></a>Gyakori elérésű útvonal irányítópult beállítása
-A következő lépések végigvezetik hogyan jelenítheti meg a Stream Analytics-feladatok, a megoldás üzembe helyezése során létrehozott valós idejű adatok kimenetét. A [online a Power BI](http://www.powerbi.com/) -fiók szükséges a következő lépésekkel. Ha nincs fiókja, akkor az [hozzon létre egyet](https://powerbi.microsoft.com/pricing).
+A következő lépések végigvezetik hogyan jelenítheti meg a Stream Analytics-feladatok, a megoldás üzembe helyezése során létrehozott valós idejű adatok kimenetét. A [online a Power BI](https://www.powerbi.com/) -fiók szükséges a következő lépésekkel. Ha nincs fiókja, akkor az [hozzon létre egyet](https://powerbi.microsoft.com/pricing).
 
 1. Adja hozzá a Power BI-kimenet az Azure Stream Analytics (ASA).
 
    * Kövesse a kell [Azure Stream Analytics és a Power bi-ban: A valós idejű elemzési irányítópultok a valós idejű streamelési adatok láthatóságának](stream-analytics/stream-analytics-power-bi-dashboard.md) állíthatja be a kimenet az Azure Stream Analytics-feladat, a Power BI-irányítópulton .
    * Keresse meg a stream analytics-feladat a [az Azure portal](https://portal.azure.com). A feladat a névnek kell lennie: YourSolutionName + "streamingjob" + véletlenszerű szám + "asapbi" (azaz demostreamingjob123456asapbi).
    * Adjon hozzá egy Power bi az ASA-feladat kimenetét. Állítsa be a **kimeneti Alias** , **"PBIoutput"**. Állítsa be a **adatkészlet neve** és **táblanév** , **"EnergyStreamData"**. Miután hozzáadta a kimenetet, kattintson a **"Start"** a Stream Analytics-feladat indítása az oldal alján. Érdemes kap egy megerősítő üzenetet (például "kezdő stream analytics-feladat sikeres myteststreamingjob12345asablob").
-2. Jelentkezzen be [online a Power bi-ban](http://www.powerbi.com)
+2. Jelentkezzen be [online a Power bi-ban](https://www.powerbi.com)
 
    * A bal oldali panelen, a saját munkaterületen, az adatkészletek a szakasz egy új adatkészlet megjelenítése a Power bi bal oldali panelen láthatja kell lennie. Ez az az előző lépésben az Azure Stream Analytics leküldve a streamelt adatokat.
    * Győződjön meg arról, hogy a ***Vizualizációk*** panel meg nyitva, és a képernyő jobb oldalán jelenik meg.
@@ -207,7 +207,7 @@ A ritka elérésű útvonal adatfolyamatok alapvető célja az, hogy minden egye
    * Cserélje le a kiugró ablakban **"Kiszolgáló"** és **"Adatbázis"** a saját kiszolgáló és az adatbázis nevét, és kattintson a **"OK"**. A kiszolgáló nevét, győződjön meg arról, adja meg az 1433-as porton (**YourSolutionName.database.windows.net, 1433-as**). Figyelmen kívül hagyhatja a figyelmeztetéseket, a képernyőn megjelenő.
    * A következő kiugró ablakban, a két lehetőség a bal oldali panelen láthatja (**Windows** és **adatbázis**). Kattintson a **"Adatbázis"**, töltse ki a **"Felhasználónév"** és **"Password"** (azt a felhasználónevet és jelszót, amikor először üzembe helyezte a megoldást és létrehozott egy Azure SQL-adatbázis). A ***válassza ki, melyik szintre legyenek érvényesek a beállítások***, ellenőrizze az adatbázis-szintű beállítás. Kattintson a **"Csatlakozás"**.
    * Miután, interaktív van az előző oldalra, zárja be az ablakot. Felskálázás-– kattintson egy üzenet POP **alkalmaz**. Végül kattintson a **mentése** gombra kattintva mentse a módosításokat. A Power BI-fájl most létesített kapcsolat a kiszolgálóval. Ha a Vizualizációk üres, győződjön meg arról, törölje a jelet a választott beállításokat, a Vizualizációk adatok megjelenítése a jelmagyarázat jobb felső sarkában a radír ikonra kattintva. A frissítés gomb használatával új adatokat tükrözik a vizualizációt. Kezdetben csak látható a kezdőérték-adatok a Vizualizációk az adat-előállító 3 óránként ütemezett módon. 3 óra múlva megjelennek a Vizualizációk az adatok frissítésekor új előrejelzéseket láthatja.
-3. (Nem kötelező) A ritka elérésű útvonal irányítópult közzététele [online a Power BI](http://www.powerbi.com/). Vegye figyelembe, hogy ezt a lépést kell egy Power BI-fiók (vagy Office 365-fiókkal).
+3. (Nem kötelező) A ritka elérésű útvonal irányítópult közzététele [online a Power BI](https://www.powerbi.com/). Vegye figyelembe, hogy ezt a lépést kell egy Power BI-fiók (vagy Office 365-fiókkal).
 
    * Kattintson a **"Közzététel"** és néhány másodperc múlva megjelenik egy ablak, "Közzététel a Power BI sikeres!" megjelenítése egy zöld pipának. A következő hivatkozás "A Power bi-ban megnyitott demoprediction.pbix" gombra. Részletes utasításokért lásd: [közzététel a Power BI Desktopból](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
    * Egy új irányítópult létrehozását: kattintson a **+** melletti jelentkezzen a **irányítópultok** szakaszban a bal oldali panelen. Adja meg az új irányítópult nevét "Kereslet-előrejelzés bemutató".

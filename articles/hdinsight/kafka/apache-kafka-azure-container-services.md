@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: aad23f1b50a3156d01ce127270e29368f82d18b3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 569030cc6d72d206411a73703ec0d359e033bef7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014040"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311670"
 ---
-# <a name="use-azure-kubernetes-service-with-kafka-on-hdinsight"></a>Az Azure Kubernetes Service használata a HDInsight alatt futó Kafka
+# <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Az Apache Kafka on HDInsight az Azure Kubernetes Service használata
 
-Ismerje meg, a Kafka HDInsight-fürtön az Azure Kubernetes Service (AKS) használata. A jelen dokumentumban leírt lépések az aks-ben üzemeltetett Node.js-alkalmazás használatával ellenőrizze a kapcsolatot a Kafka. Ez az alkalmazás használ a [kafka-csomópont](https://www.npmjs.com/package/kafka-node) kommunikálni a Kafka-csomagot. Használ [a Socket.IO kódtár](https://socket.io/) a böngészőalapú ügyfél és a háttéralkalmazás az aks-ben üzemeltetett közötti üzenetek eseményvezérelt számára.
+Ismerje meg, hogyan használható az Azure Kubernetes Service (AKS)- [Apache Kafka](https://kafka.apache.org/) HDInsight-fürtön. A jelen dokumentumban leírt lépések az aks-ben üzemeltetett Node.js-alkalmazás használatával ellenőrizze a kapcsolatot a Kafka. Ez az alkalmazás használ a [kafka-csomópont](https://www.npmjs.com/package/kafka-node) kommunikálni a Kafka-csomagot. Használ [a Socket.IO kódtár](https://socket.io/) a böngészőalapú ügyfél és a háttéralkalmazás az aks-ben üzemeltetett közötti üzenetek eseményvezérelt számára.
 
 Az [Apache Kafka](https://kafka.apache.org) egy nyílt forráskódú elosztott streamelési platform streamadatfolyamatok és -alkalmazások létrehozásához. Az Azure Kubernetes Service felügyeli az üzemeltetett Kubernetes környezetet, és gyorsan és egyszerűen üzembe helyezhetők a tárolóalapú alkalmazásokat. Az Azure Virtual Network használatával, a két szolgáltatás is csatlakoztathatja.
 
@@ -93,14 +93,14 @@ Ha Ön még nem rendelkezik egy AKS-fürtöt, egyet a következő dokumentumok s
 
     Az alapértelmezett értéket az összes többi mezőt hagyja, majd válassza a __OK__ konfigurálhatja a társviszony-létesítést.
 
-## <a name="install-kafka-on-hdinsight"></a>A HDInsight Kafka telepítése
+## <a name="install-apache-kafka-on-hdinsight"></a>Telepítse az Apache Kafka HDInsight
 
 A Kafka HDInsight-fürt létrehozásakor a HDInsight a korábban létrehozott virtuális hálózathoz kell csatlakoztatni. Kafka-fürt létrehozásával kapcsolatos további információkért lásd: a [Kafka-fürt létrehozása](apache-kafka-get-started.md) dokumentumot.
 
 > [!IMPORTANT]
 > A fürt létrehozásakor kell használnia a __speciális beállítások__ csatlakozni a virtuális hálózat, HDInsight létrehozott.
 
-## <a name="configure-kafka-ip-advertising"></a>A Kafka IP hirdetés konfigurálása
+## <a name="configure-apache-kafka-ip-advertising"></a>Az Apache Kafka IP hirdetés konfigurálása
 
 A következő lépéseket követve konfigurálja Kafka meghirdetése tartománynevek helyett IP-címek:
 
@@ -152,7 +152,7 @@ A következő lépéseket követve konfigurálja Kafka meghirdetése tartományn
 
 Ezen a ponton a Kafka és az Azure Kubernetes Service szerepelnek, a társviszonyban álló virtuális hálózatba keresztüli kommunikációt. Ez a kapcsolat teszteléséhez használja a következő lépéseket:
 
-1. Egy Kafka-témakört, amely a test-alkalmazás létrehozása. Kafka-témakörök létrehozásával kapcsolatos információkért lásd: a [Kafka-fürt létrehozása](apache-kafka-get-started.md) dokumentumot.
+1. Egy Kafka-témakört, amely a test-alkalmazás létrehozása. Kafka-témakörök létrehozásával kapcsolatos információkért lásd: a [hozzon létre egy Apache Kafka-fürt](apache-kafka-get-started.md) dokumentumot.
 
 2. A mintaalkalmazás letöltése [ https://github.com/Blackmist/Kafka-AKS-Test ](https://github.com/Blackmist/Kafka-AKS-Test).
 
@@ -161,7 +161,7 @@ Ezen a ponton a Kafka és az Azure Kubernetes Service szerepelnek, a társviszon
     * `var topic = 'mytopic'`: A csere `mytopic` a Kafka-témakörbe az alkalmazás által használt nevét.
     * `var brokerHost = '176.16.0.13:9092`: A csere `176.16.0.13` a közvetítő gazdagépek, a fürt egyik belső IP-címét.
 
-        A belső IP-címének a közvetítő gazdagépek (workernodes) a fürtben, tekintse meg a [az Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) dokumentumot. Válasszon ki egy bejegyzést a tartománynév kezdődik, az IP-cím `wn`.
+        A belső IP-címének a közvetítő gazdagépek (workernodes) a fürtben, tekintse meg a [Apache Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) dokumentumot. Válasszon ki egy bejegyzést a tartománynév kezdődik, az IP-cím `wn`.
 
 4. A parancssorból a `src` directory függőségek telepítése és a központi telepítési lemezképet készít a Docker használatával:
 
@@ -224,12 +224,12 @@ Ezen a ponton a Kafka és az Azure Kubernetes Service szerepelnek, a társviszon
 
 A HDInsighton futó Apache Kafka használatának megismeréséhez tekintse meg a következő hivatkozásokat:
 
-* [A HDInsighton futó Kafka használatának első lépései](apache-kafka-get-started.md)
+* [A HDInsight Apache Kafka használatának első lépései](apache-kafka-get-started.md)
 
-* [A MirrorMaker használata a Kafka replikájának HDInsighton való létrehozásához](apache-kafka-mirroring.md)
+* [A MirrorMaker használata a HDInsight az Apache Kafka replikájának létrehozása](apache-kafka-mirroring.md)
 
-* [Az Apache Storm használata a HDInsighton futó Kafkával](../hdinsight-apache-storm-with-kafka.md)
+* [Az Apache Kafka on HDInsight az Apache Storm használata](../hdinsight-apache-storm-with-kafka.md)
 
-* [Az Apache Spark használata a Kafkával a HDInsighton](../hdinsight-apache-spark-with-kafka.md)
+* [Az Apache Kafka on HDInsight az Apache Spark használata](../hdinsight-apache-spark-with-kafka.md)
 
-* [Csatlakozás a Kafkához Azure Virtual Networkön keresztül](apache-kafka-connect-vpn-gateway.md)
+* [Csatlakozás az Apache Kafka az Azure virtuális hálózaton keresztül](apache-kafka-connect-vpn-gateway.md)

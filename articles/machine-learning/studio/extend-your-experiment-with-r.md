@@ -1,5 +1,5 @@
 ---
-title: Kísérlet kiterjesztése az R |} A Microsoft Docs
+title: Kísérlet kiterjesztése az R - Azure Machine Learning Studióban |} A Microsoft Docs
 description: Az R nyelv használatával az Azure Machine Learning Studio funkcióinak bővítése R-szkript végrehajtása-modul segítségével hogyan.
 services: machine-learning
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 30ed2a71fcf00a511802afb5b126829b918615d6
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: df6453f1cf6e8b372239d528067a7258d645518d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263060"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311008"
 ---
-# <a name="extend-your-experiment-with-r"></a>A kísérletek bővítése R-rel
+# <a name="azure-machine-learning-studio-extend-your-experiment-with-r"></a>Az Azure Machine Learning Studio: Kísérlet kiterjesztése az R 
 Az Azure Machine Learning Studio funkciójának keresztül az R nyelv használatával kiterjesztheti a [R-szkript végrehajtása] [ execute-r-script] modul.
 
 Ez a modul több bemeneti adatkészletet fogad, és egyetlen adatkészlet kimenetként eredményez. Beírhatja az R-szkriptet a **R-szkript** paraméterében a [R-szkript végrehajtása] [ execute-r-script] modul.
@@ -33,7 +33,7 @@ Minden egyes a modul bemeneti portjával hozzá a következő kód használatáv
     dataset1 <- maml.mapInputPort(1)
 
 ## <a name="listing-all-currently-installed-packages"></a>Az összes jelenleg telepített csomagok listázása
-Módosíthatja a telepített csomagok listáját. A jelenleg telepített csomagok listáját található [R csomagok az Azure Machine Learning által támogatott](https://msdn.microsoft.com/library/azure/mt741980.aspx).
+Módosíthatja a telepített csomagok listáját. A jelenleg telepített csomagok listáját található [R csomagok az Azure Machine Learning Studio által támogatott](https://msdn.microsoft.com/library/azure/mt741980.aspx).
 
 Emellett megtekintheti a teljes, a jelenlegi telepített csomagok listáját, írja be az alábbi kódot a [R-szkript végrehajtása] [ execute-r-script] modul:
 

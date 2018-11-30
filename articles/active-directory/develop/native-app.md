@@ -16,16 +16,16 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 8879cc331c5d0e8c6aab24e8c6178d96ab23bf9d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8738205aec8e0b00115a185886ca293b2f96033c
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955401"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422371"
 ---
 # <a name="native-apps"></a>A natív alkalmazások
 
-A natív alkalmazások olyan alkalmazások, amelyek egy felhasználó nevében webes API-hívás. Ebben a forgatókönyvben épül az OAuth 2.0 engedélyezési kód engedélyezési típusának nyilvános ügyfél, 4.1 szakaszában leírtak szerint a [OAuth 2.0 ismertetőjének](http://tools.ietf.org/html/rfc6749). A natív alkalmazás az OAuth 2.0 protokoll használatával szerzi be a felhasználó hozzáférési jogkivonatot. Ez a jogkivonat a kérelemben a webes API-t, amely engedélyezi a felhasználó, és adja vissza a kívánt erőforrást elküldi.
+A natív alkalmazások olyan alkalmazások, amelyek egy felhasználó nevében webes API-hívás. Ebben a forgatókönyvben épül az OAuth 2.0 engedélyezési kód engedélyezési típusának nyilvános ügyfél, 4.1 szakaszában leírtak szerint a [OAuth 2.0 ismertetőjének](https://tools.ietf.org/html/rfc6749). A natív alkalmazás az OAuth 2.0 protokoll használatával szerzi be a felhasználó hozzáférési jogkivonatot. Ez a jogkivonat a kérelemben a webes API-t, amely engedélyezi a felhasználó, és adja vissza a kívánt erőforrást elküldi.
 
 ## <a name="diagram"></a>Ábra
 

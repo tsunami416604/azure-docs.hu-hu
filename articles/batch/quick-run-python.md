@@ -2,20 +2,20 @@
 title: Azure rövid útmutató – Batch-feladat futtatása – Python
 description: Batch-feladatok és -tevékenységek gyors futtatása a Batch Python ügyfélkódtárával.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.author: danlep
+ms.date: 11/26/2018
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 424516a4a321227e4e79cfe33d40e8fdca24a779
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
-ms.translationtype: HT
+ms.openlocfilehash: 0ce9d6854f464efdf0ff6eea8644fedc5ad90d1f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815273"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427320"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Rövid útmutató: Az első Batch-feladat futtatása a Python API használatával
 
@@ -55,8 +55,7 @@ A Python fejlesztési környezetében telepítse a szükséges csomagokat a `pip
 pip install -r requirements.txt
 ```
 
-Nyissa meg a `python_quickstart_client.py` fájlt. Frissítse a Batch- és Storage-fiók hitelesítési sztringjét a fiókokhoz beszerzett értékekkel. Például:
-
+Nyissa meg a `config.py` fájlt. Frissítse a Batch- és Storage-fiók hitelesítési sztringjét a fiókokhoz beszerzett értékekkel. Példa:
 
 ```Python
 _BATCH_ACCOUNT_NAME = 'mybatchaccount'
@@ -81,7 +80,7 @@ A szkript futtatása után tekintse át a kódot annak megismerése érdekében,
 A mintaalkalmazás futtatásakor a konzol kimenete az alábbihoz hasonló lesz. A futtatás során szünet jelentkezhet a következőnél a készlet számítási csomópontjainak indításakor: `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...`. A rendszer azonnal a futtatási várólistára helyezi a tevékenységeket, amint az első számítási csomópont fut. A Batch-fiókban található készlet, számítási csomópontok, feladat és tevékenységek monitorozásához lépjen az [Azure Portalon](https://portal.azure.com) a Batch-fiókjába.
 
 ```
-Sample start: 12/4/2017 4:02:54 PM
+Sample start: 11/26/2018 4:02:54 PM
 
 Container [input] created.
 Uploading file taskdata0.txt to container [input]...
@@ -115,7 +114,7 @@ A jelen rövid útmutatóban található Python-alkalmazás a következőket haj
 * Létrehoz egy feladatot és három tevékenységet, amelyek a csomópontokon futnak. Minden tevékenység feldolgoz egy bemeneti fájlt egy Bash felületi parancssor használatával.
 * Megjeleníti a tevékenységek által visszaadott fájlokat.
 
-További részletekért tekintse meg a `python_quickstart_client.py` fájlt és a következő szakaszokat. 
+További részletekért tekintse meg a `python_quickstart_client.py` fájlt és a következő szakaszokat.
 
 ### <a name="preliminaries"></a>Előfeltételek
 
@@ -123,8 +122,8 @@ Az alkalmazás az [azure-storage-blob](https://pypi.python.org/pypi/azure-storag
 
 ```python
 blob_client = azureblob.BlockBlobService(
-    account_name=_STORAGE_ACCOUNT_NAME,
-    account_key=_STORAGE_ACCOUNT_KEY)
+    account_name=config._STORAGE_ACCOUNT_NAME,
+    account_key=config._STORAGE_ACCOUNT_KEY)
 ```
 
 Az alkalmazás a `blob_client` hivatkozás használatával létrehoz egy tárolót a Storage-fiókon, és feltölti az adatfájlokat a tárolóba. A tárolóban lévő fájlokat a rendszer a Batch által később a számítási csomópontra letölthető Batch [ResourceFile](/python/api/azure.batch.models.resourcefile)-objektumként határozza meg.
@@ -142,14 +141,13 @@ input_files = [
 Az alkalmazás létrehoz egy [BatchServiceClient](/python/api/azure.batch.batchserviceclient) objektumot a Batch szolgáltatásban lévő készletek, feladatok és tevékenységek létrehozásához és kezeléséhez. A példákban szereplő Batch-ügyfél megosztott kulcsos hitelesítést használ. A Batch az Azure Active Directory-hitelesítés használatát is támogatja.
 
 ```python
-credentials = batch_auth.SharedKeyCredentials(_BATCH_ACCOUNT_NAME,
-    _BATCH_ACCOUNT_KEY)
+credentials = batch_auth.SharedKeyCredentials(config._BATCH_ACCOUNT_NAME,
+    config._BATCH_ACCOUNT_KEY)
 
 batch_client = batch.BatchServiceClient(
     credentials,
-    base_url=_BATCH_ACCOUNT_URL)
+    base_url=config._BATCH_ACCOUNT_URL)
 ```
-
 
 ### <a name="create-a-pool-of-compute-nodes"></a>Számításicsomópont-készlet létrehozása
 
@@ -170,8 +168,8 @@ new_pool = batch.models.PoolAddParameter(
             version="latest"
             ),
         node_agent_sku_id="batch.node.ubuntu 16.04"),
-    vm_size=_POOL_VM_SIZE,
-    target_dedicated_nodes=_POOL_NODE_COUNT
+    vm_size=config._POOL_VM_SIZE,
+    target_dedicated_nodes=config._POOL_NODE_COUNT
 )
 batch_service_client.pool.add(new_pool)
 ```
@@ -220,7 +218,7 @@ for task in tasks:
     print("Task: {}".format(task.id))
     print("Node: {}".format(node_id))
 
-    stream = batch_service_client.file.get_from_task(job_id, task.id, _STANDARD_OUT_FILE_NAME)
+    stream = batch_service_client.file.get_from_task(job_id, task.id, config._STANDARD_OUT_FILE_NAME)
 
     file_text = _read_stream_as_string(
         stream,

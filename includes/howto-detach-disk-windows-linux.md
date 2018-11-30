@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: cynthn
+ms.openlocfilehash: 343ffb8daf19711d6c2a61b819ece92448146446
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52331071"
+---
 Ha már nincs szüksége egy virtuális géphez csatolt adatlemezre, könnyedén leválaszthatja. Ha leválaszt egy lemezt, azzal eltávolítja azt a virtuális gépről, de nem törli az Azure Storage-fiókból.
 
 Ha ismét használni szeretné a lemezen lévő adatokat, újból csatolhatja ugyanahhoz vagy egy másik virtuális géphez.  
@@ -9,7 +22,7 @@ Ha ismét használni szeretné a lemezen lévő adatokat, újból csatolhatja ug
 ## <a name="find-the-disk"></a>A lemez megkeresése
 Ha nem tudja a lemez nevét, vagy szeretné ellenőrizni a leválasztás előtt, kövesse a következő lépéseket.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Kattintson a **Virtual Machines** lehetőségre, majd válassza ki a megfelelő virtuális gépet.
 

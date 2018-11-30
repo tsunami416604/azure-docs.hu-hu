@@ -1,5 +1,5 @@
 ---
-title: Az Azure AI katalógus Jupyter notebookok |} A Microsoft Docs
+title: Az Azure AI katalógus Jupyter notebookok – Azure Machine Learning Studióban |} A Microsoft Docs
 description: Fedezze fel a Jupyter notebooks az Azure AI-katalógusban.
 services: machine-learning
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 11f14ddec7b863d034c4b200e1fa9b1a13879969
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: efc24f957a4c1288212fed2792d3dd14a49e1a2b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52260646"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307713"
 ---
 # <a name="discover-jupyter-notebooks-in-the-azure-ai-gallery"></a>Az Azure AI katalógus Jupyter-Notebookjait felderítése
 

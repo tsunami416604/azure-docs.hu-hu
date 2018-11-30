@@ -10,30 +10,30 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 76b417d1592671006d3d5cfa2363e306e4db48fd
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 988301f24f710a3e29fad1254d405501166e8a4e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263035"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309793"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Adatok átalakítása a az Azure Machine Learning Data Prep SDK segítségével
 
-A [az Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk) megtisztíthatja az adatait különböző átalakítás módszert kínál. Ezek a metódusok révén egyszerűen oszlopok hozzáadása, szűrje ki a nem kívánt sorokra vagy oszlopokra és imputálására a hiányzó értékeket.
+Ebből a cikkből megtudhatja, különböző módszerekkel, amelyen az adatok betöltése a [az Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk). Funkciók révén egyszerűen oszlopok hozzáadása, szűrje ki a nem kívánt sorokra vagy oszlopokra és imputálására a hiányzó értékeket az SDK-val érhetők el.
 
-Jelenleg nincsenek módszer a következő feladatokhoz:
+Jelenleg nincsenek funkciókat, a következő feladatokat:
+
 - [Az autorefresh tulajdonság oszlop hozzáadása](#column)
 - [Hiányzó imputálására](#impute-missing-values)
 - [Oszlopok származtatása példa](#derive-column-by-example)
 - [Szűrés](#filtering)
 - [Egyéni Python-átalakítások](#custom-python-transforms)
 
-<a name=column>
 ## <a name="add-column-using-an-expression"></a>Az autorefresh tulajdonság oszlop hozzáadása
 
-Az Azure Machine Learning Data Prep SDK tartalmaz `substring` kifejezések alapján számítja ki egy létező oszlopok közötti értéket, és ezután helyezze ezt az értéket egy olyan új oszlop. Ebben a példában azt fogja betölteni az adatokat, majd próbálja meg oszlopok hozzáadása a bemeneti adatokat.
+Az Azure Machine Learning Data Prep SDK tartalmaz `substring` kifejezések alapján számítja ki egy létező oszlopok közötti értéket, és ezután helyezze ezt az értéket egy olyan új oszlop. Ebben a példában betölteni az adatokat, és oszlopok hozzáadása a bemeneti adatokat próbál.
 
-```
+```python
 import azureml.dataprep as dprep
 
 # loading data
@@ -48,10 +48,9 @@ dataflow.head(3)
 |2|10140270|HY329253|07/05/2015. 11:20:00 ÓRAKOR|121XX S ELŐTÉR ELENTÉS MENTÉSE|0486|AKKUMULÁTOR|EGYSZERŰ BELFÖLDI AKKUMULÁTOR|UTCA.|false|true|...|9|53|08B|||2015|07/12/2015 DU. 12:42:46|
 
 
+Használja a `substring(start, length)` előtagot kinyerése a kis számú oszlopot, és a karakterlánc egy új oszlop kifejezése `Case Category`. Átadja a `substring_expression` változót a `expression` paraméter hoz létre egy új számított oszlopot, amely végrehajtja a kifejezés minden egyes rekordján.
 
-Használja a `substring(start, length)` előtagot kinyerése a kis számú oszlopot, és az adatokat egy olyan új oszlop a kifejezésben: eset kategória.
-
-```
+```python
 substring_expression = dprep.col('Case Number').substring(0, 2)
 case_category = dataflow.add_column(new_column_name='Case Category',
                                     prior_column='Case Number',
@@ -67,8 +66,9 @@ case_category.head(3)
 
 
 
-Használja a `substring(start)` csak annyi kinyerése a kis számú oszlopban, majd azt egy numerikus adattípusúra konvertálása és helyezni, egy olyan új oszlop kifejezése: eset azonosítója.
-```
+Használja a `substring(start)` kifejezés csak annyi kinyerése a kis számú oszlopot, és a egy olyan új oszlop létrehozása. Konvertálása a numerikus adatokat típus használatával a `to_number()` függvényt, és adja át a karakterlánc oszlopnév paraméterként.
+
+```python
 substring_expression2 = dprep.col('Case Number').substring(2)
 case_id = dataflow.add_column(new_column_name='Case Id',
                               prior_column='Case Number',
@@ -85,9 +85,9 @@ case_id.head(3)
 
 ## <a name="impute-missing-values"></a>Hiányzó imputálására
 
-Az Azure Machine Learning Data Prep SDK is imputálására megadott oszlopokat a hiányzó értékeket. Ebben a példában fogja betölteni a szélességi és hosszúsági értékeket, és ismételje meg a bemeneti adatokat a hiányzó értékeket imputálására.
+Az SDK-t is imputálására megadott oszlopokat a hiányzó értékeket. Ebben a példában betölteni a szélességi és hosszúsági értékeket, és ismételje meg a bemeneti adatokat a hiányzó értékeket imputálására.
 
-```
+```python
 import azureml.dataprep as dprep
 
 # loading input data
@@ -105,10 +105,11 @@ df.head(5)
 |3|10139885|false|41.902152|-87.754883|
 |4|10140379|false|41.885610|-87.657009|
 
-A harmadik rekord hiányzik a szélességi és hosszúsági értékeket. Ezeket a hiányzó értékeket imputálására, használhatja a `ImputeMissingValuesBuilder` további rögzített programot. Azt is imputálására az vagy egy számított oszlopokat `MIN`, `MAX`, vagy `MEAN` érték vagy egy `CUSTOM` értéket. Amikor `group_by_columns` van megadva, hiányzó imputálni csoport szerint kell `MIN`, `MAX`, és `MEAN` csoportonként számítja ki.
+A harmadik rekord hiányzik a szélességi és hosszúsági értékeket. Ezeket a hiányzó értékeket imputálására, használhatja `ImputeMissingValuesBuilder` további rögzített kifejezés. Azt is imputálására az vagy egy számított oszlopokat `MIN`, `MAX`, `MEAN` érték, vagy egy `CUSTOM` értéket. Amikor `group_by_columns` van megadva, hiányzó imputálni csoport szerint kell `MIN`, `MAX`, és `MEAN` csoportonként számítja ki.
 
-Először is gyorsan ellenőrizheti a `MEAN` szélességi oszlop értéke.
-```
+Ellenőrizze a `MEAN` használatával szélességi oszlop értékét a `summarize()` függvény. Ez a függvény elfogad egy tömb, az oszlopok a `group_by_columns` paraméterrel adja meg az összesítési szinten. A `summary_columns` paramétert fogad el egy `SummaryColumnsValue` hívja. A függvény hívásához szükséges, adja meg az aktuális oszlop nevét, az új számított mező neve és a `SummaryFunction` végrehajtásához.
+
+```python
 df_mean = df.summarize(group_by_columns=['Arrest'],
                        summary_columns=[dprep.SummaryColumnsValue(column_id='Latitude',
                                                                  summary_column_name='Latitude_MEAN',
@@ -121,10 +122,11 @@ df_mean.head(1)
 |-----|-----|----|
 |0|false|41.878961|
 
-A `MEAN` földrajzi szélesség értékét minden rendben, így szélességi imputálására használhatja. A hiányzó hosszúság érték azt fogja imputálására a külső ismeretanyag alapján 42.
+A `MEAN` földrajzi szélesség értéke pontosságú úgy tűnik, használja a `ImputeColumnArguments` függvény imputálására azt. Ez a függvény elfogad egy `column_id` karakterláncot, és a egy `ReplaceValueFunction` határozza meg a impute típusát. A hiányzó hosszúság érték imputálására a 42 külső ismeretanyag alapján.
 
+Imputálására lépéseket összefűzhetők be egy `ImputeMissingValuesBuilder` objektumot, a jelentéskészítő funkció segítségével `impute_missing_values()`. A `impute_columns` paraméterben tömbjét `ImputeColumnArguments` objektumokat. Hívja a `learn()` impute lépéseket tárolására függvényt, és a egy adatfolyam objektum segítségével alkalmazhatja `to_dataflow()`.
 
-```
+```python
 # impute with MEAN
 impute_mean = dprep.ImputeColumnArguments(column_id='Latitude',
                                           impute_function=dprep.ReplaceValueFunction.MEAN)
@@ -152,20 +154,22 @@ df_imputed.head(5)
 |4|10140379|false|41.885610|-87.657009|
 
 Ahogyan az a fenti eredményt, a hiányzó szélességi a volt imputált a `MEAN` értékét `Arrest=='false'` csoport. A hiányzó hosszúsági a 42 volt imputált.
-```
+
+```python
 imputed_longitude = df_imputed.to_pandas_dataframe()['Longitude'][2]
 assert imputed_longitude == 42
 ```
 
 ## <a name="derive-column-by-example"></a>Oszlopok származtatása példa alapján
-A speciális eszközök az Azure Machine Learning Data Prep SDK az egyik oszlopait a kívánt eredmények példáit származtassa lehetővé teszi. Ez lehetővé teszi, adjon meg egy példa az SDK-t, hogy azt generálhat kódot tervezett származtatását eléréséhez.
 
-```
+A speciális eszközök az Azure Machine Learning Data Prep SDK az egyik oszlopait a kívánt eredmények példáit származtassa lehetővé teszi. Ez lehetővé teszi, adjon meg egy példa az SDK-t, hogy azt generálhat kódot a kívánt átalakítási eléréséhez.
+
+```python
 import azureml.dataprep as dprep
 dataflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/BostonWeather.csv')
-df = dataflow.head(10)
-df
+dataflow.head(10)
 ```
+
 ||DATE|REPORTTPYE|HOURLYDRYBULBTEMPF|HOURLYRelativeHumidity|HOURLYWindSpeed|
 |----|----|----|----|----|----|
 |0|1/1/2015 0:54|AZ FM-15|22|50|10|
@@ -179,11 +183,9 @@ df
 |8|1/1/2015 6:54|AZ FM-15|23|50|14|
 |9|1/1/2015 7:00|AZ FM-12|23|50|14|
 
-Amint látható, ez a fájl viszonylag egyszerű. Azonban azt feltételezik, hogy szeretne-e a fájl egy adatkészlet formátumú dátumot és időt amelyeknél csatlakozzon "2018. március 10. |} 2 AM - 4 AM ".
+Tegyük fel, hogy szeretne-e a fájl egy adatkészlet formátumú dátumot és időt amelyeknél csatlakozzon "2018. március 10. |} 2 AM - 4 AM ".
 
-Az adatok a formázásához szükséges alakíthatja át.
-
-```
+```python
 builder = dataflow.builders.derive_column_by_example(source_columns=['DATE'], new_column_name='date_timerange')
 builder.add_example(source_data=df.iloc[1], example_value='Jan 1, 2015 12AM-2AM')
 builder.preview() 
@@ -202,17 +204,14 @@ builder.preview()
 |8|1/1/2015 6:54|2015. január 1. 6: 00 - 8 -kor|
 |9|1/1/2015 7:00|2015. január 1. 6: 00 - 8 -kor|
 
-A fenti kód először létrehoz egy jelentéskészítő származtatott oszlop. Forrásoszlopok megfontolandó tömbjét megadott (`DATE`) és a egy a hozzáadandó új oszlop neve.
+A fenti kód először létrehoz egy jelentéskészítő származtatott oszlop. Forrásoszlopok megfontolandó tömbjét adnia (`DATE`), és fel kell venni az új oszlop nevét. Az első példában látható adja át a második sor (index: 1), és a származtatott oszlopot meg kell adni egy várt értékkel.
 
-Az első példában látható a második sor (index: 1) az átadott és a egy várt értékkel rendelte a származtatott oszlop.
-
-Végül nevű `builder.preview()` és a származtatott oszlop mellett a forrás oszlopban láthatja. A formátum finom úgy tűnik, de ugyanarra az időpontra "2015. január 1." csak látható értékeket.
+Végezetül hívja `builder.preview()` és a származtatott oszlop mellett a forrás oszlopban láthatja. A formátumot a megfelelő úgy tűnik, de csak értékeket látható ugyanazon dátumra "2015. január 1.".
 
 Most adja át a kívánt sorok számát `skip` a felső sort megtekintéséhez kicsit lentebb.
 
 ```
-preview_df = builder.preview(skip=30)
-preview_df
+builder.preview(skip=30)
 ```
 
 ||DATE|date_timerange|
@@ -228,14 +227,11 @@ preview_df
 |38|11/2/2015 4:00|2015. február 1-4 AM – 6: 00|
 |39|11/2/2015 4:54|2015. február 1-4 AM – 6: 00|
 
-Itt láthatja a létrehozott program probléma: a származtatása program választott kizárólag a fent megadott egy példa alapján, elemezni a dátum szerint "Nap/hó/év", azaz nem választható ebben az esetben.
+Itt láthatja a létrehozott program problémáját. A származtatása program elemezni a dátum szerint "Nap/hó/év", azaz nem választható ebben az esetben kizárólag a fent megadott egy példa alapján, választotta. A probléma megoldásához adjon meg egy másik példa használatával a `add_example()` működnek a `builder` változó.
 
-A probléma megoldásához, meg kell adnia egy másik példát.
-
-```
+```python
 builder.add_example(source_data=preview_df.iloc[3], example_value='Jan 2, 2015 12AM-2AM')
-preview_df = builder.preview(skip=30, count=10)
-preview_df
+builder.preview(skip=30, count=10)
 ```
 
 ||DATE|date_timerange|
@@ -251,10 +247,9 @@ preview_df
 |38|1/2/2015 4:00|2015. január 2 4 AM – 6: 00|
 |39|1/2/2015 4:54|2015. január 2 4 AM – 6: 00|
 
+Most már megfelelően kezeli a sorok ","Jan 2, 2015", de ha, tekintse meg a származtatott oszlop további 1/2/2015', látja, hogy értékek végén semmit nem származtatott oszlop. Javításához, meg kell adnia egy másik példa 66 sorhoz.
 
-Most, sorok megfelelően kezeli a "1/2/2015'"Jan 2, 2015", de ha, tekintse meg a származtatott oszlop további, meg is látja, hogy értékeket a végén semmit nem származtatott oszlop. Javításához, meg kell adnia egy másik példa 66 sorhoz.
-
-```
+```python
 builder.add_example(source_data=preview_df.iloc[66], example_value='Jan 29, 2015 8PM-10PM')
 builder.preview(count=10)
 ```
@@ -272,14 +267,13 @@ builder.preview(count=10)
 |8|1/2/2015 4:00|2015. január 2 4 AM – 6: 00|
 |9|1/2/2015 4:54|2015. január 2 4 AM – 6: 00|
 
-Minden rendben, de azt láthatja, hogy éppen nem pontosan mit szerettünk volna. Kell külön dátumát és idejét ' |} "létrehozni a megfelelő formátumban.
+Külön dátumát és idejét ' |} ', hozzáadhat egy másik példát. Ezúttal az előzetes verzióról egy sort ad helyett értékét az oszlop nevét tartalmazó hozhatnak létre a `source_data` paraméter.
 
-Egy másik példa, amely javításához is hozzáadhat. Ezúttal az előzetes verzióról egy sort ad helyett értékét az oszlop nevét tartalmazó hozhatnak létre a `source_data` paraméter.
-
-```
+```python
 builder.add_example(source_data={'DATE': '11/11/2015 0:54'}, example_value='Nov 11, 2015 | 12AM-2AM')
 builder.preview(count=10)
 ```
+
 ||DATE|date_timerange|
 |-----|-----|-----|
 |0|1/1/2015 22:54|None|
@@ -293,12 +287,10 @@ builder.preview(count=10)
 |8|1/2/2015 4:00|None|
 |9|1/2/2015 4:54|None|
 
-Mivel most csak származtatott oszlopban szereplő értéket tartalmazó sorok felel meg pontosan a azt a megadott példák amelyekre egyértelműen kellett negatív hatást.
+Mivel most csak származtatott oszlopban szereplő értéket tartalmazó sorok felel meg pontosan a azt a megadott példák amelyekre egyértelműen kellett negatív hatást. Hívás `list_examples()` a jelentéskészítő objektum aktuális példa származtatási listájának megtekintéséhez.
 
-Nézzük meg a példák:
-```
+```python
 examples = builder.list_examples()
-examples
 ```
 
 | |DATE|Példa|example_id|
@@ -308,11 +300,11 @@ examples
 |2|1/29/2015 20:54|2015. január 29-én du. 8 – 22: 00|-3|
 |3|11/11/2015 0:54|2015. november 11-én \| 12 AM - 2 AM|-4|
 
-Láthatja, hogy inkonzisztens példák biztosítunk. A probléma megoldásához, cserélje le az első három példák helyes méretprofilokat kell (beleértve a "|}" dátum és idő között).
+Ebben az esetben inkonzisztens példák adtak meg. A probléma megoldásához, cserélje le az első három példák helyes méretprofilokat (beleértve a "|}" dátum és idő között).
 
-Azt is érhet el, hogy hibás példák törlése (vagy ad `example_row` a pandas DataFrame vagy ad `example_id` érték) és a felvétel új módosított példák vissza.
+Inkonzisztens példák megoldásához hibás példák törlésével (vagy ad `example_row` a pandas DataFrame vagy ad `example_id` érték) és a felvétel új módosított példák vissza.
 
-```
+```python
 builder.delete_example(example_id=-1)
 builder.delete_example(example_row=examples.iloc[1])
 builder.delete_example(example_row=examples.iloc[2])
@@ -335,12 +327,11 @@ builder.preview()
 | 8 | 1/1/2015 6:54 | 2015. január 1-én \| 6: 00 - 8 -kor|
 | 9 | 1/1/2015 7:00 | 2015. január 1-én \| 6: 00 - 8 -kor|
 
-Most az adatok helyesnek tűnik, és végül meghívhatjuk `to_dataflow()` a szerkesztő a amely adja vissza egy adatfolyamot hozzáadni kívánt származtatott oszlopokat.
+Most az adatok helyesnek tűnik, és hívja `to_dataflow()` a szerkesztő a amely adja vissza egy adatfolyamot hozzáadni kívánt származtatott oszlopokat.
 
-```
+```python
 dataflow = builder.to_dataflow()
 df = dataflow.to_pandas_dataframe()
-df
 ```
 
 ## <a name="filtering"></a>Szűrés
@@ -348,12 +339,14 @@ df
 Az SDK-csomagja tartalmazza a módszerek `Dataflow.drop_columns` és `Dataflow.filter` lehetővé teszi, hogy szűrje ki a sorok vagy oszlopok.
 
 ### <a name="initial-setup"></a>Kezdeti beállítás
-```
+
+```python
 import azureml.dataprep as dprep
 from datetime import datetime
 dataflow = dprep.read_csv(path='https://dprepdata.blob.core.windows.net/demo/green-small/*')
 dataflow.head(5)
 ```
+
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Store_and_fwd_flag|RateCodeID|Pickup_longitude|Pickup_latitude|Dropoff_longitude|Dropoff_latitude|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 |0|None|None|None|None|None|None|None|None|None|None|None|None|None|
@@ -370,10 +363,11 @@ Az oszlopok szűréséhez használja a `Dataflow.drop_columns`. Ez a módszer fe
 
 Ebben a példában `drop_columns` karakterláncok listáját használja. Mindegyik sztring pontosan egyeznie kell az eldobni kívánt oszlop.
 
-``` 
+```python
 dataflow = dataflow.drop_columns(['Store_and_fwd_flag', 'RateCodeID'])
 dataflow.head(5)
 ```
+
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Pickup_longitude|Pickup_latitude|Dropoff_longitude|Dropoff_latitude|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 |0|None|None|None|None|None|None|None|None|None|None|None|
@@ -383,12 +377,14 @@ dataflow.head(5)
 |4|2013-08-01-10:38:35|2013-08-01-10:38:51|0|0|0|0|1|.00|0|0|3.25|
 
 #### <a name="filtering-columns-with-regex"></a>A regex oszlopok szűrése
-Másik lehetőségként használhatja a `ColumnSelector` kifejezés oszlopokat, amelyek megfelelnek egy regex kifejezés. Ebben a példában azt dobja el az oszlopok, amelyek megfelelnek a kifejezésnek `Column*|.*longitude|.*latitude`.
 
-```
+Másik megoldásként használhatja a `ColumnSelector` kifejezés oszlopokat, amelyek megfelelnek egy regex kifejezés. Ebben a példában az oszlopok, amelyek megfelelnek a kifejezésnek drop `Column*|.*longitude|.*latitude`.
+
+```python
 dataflow = dataflow.drop_columns(dprep.ColumnSelector('Column*|.*longitud|.*latitude', True, True))
 dataflow.head(5)
 ```
+
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|
 |0|None|None|None|None|None|None|None|
@@ -403,18 +399,19 @@ Sorok szűrése, használja `DataFlow.filter`. Ez a módszer egy Azure Machine L
 
 ### <a name="filtering-rows-with-simple-expressions"></a>Az egyszerű kifejezések sorok szűrése
 
-Kifejezésszerkesztő `col`, adja meg az oszlop nevét egy karakterlánc-argumentum `col('column_name')` és egyet az alábbi szabványos operátorok együtt >, <>, =, < =, ==,! =, hozhat létre például egy kifejezést `col('Tip_amount') > 0`. Végül adja át a beépített kifejezés be a `Dataflow.filter` függvény.
+Kifejezésszerkesztő `col`, adja meg az oszlop nevét egy karakterlánc-argumentum `col('column_name')`. Ez a kifejezés használata az egyik az alábbi szabványos operátorok >, <>, =, < =, ==,! = hozhat létre például egy kifejezést `col('Tip_amount') > 0`. Végül adja át a beépített kifejezés be a `Dataflow.filter` függvény.
 
 Ebben a példában `dataflow.filter(col('Tip_amount') > 0)` adja vissza egy új adatfolyamot a sorokat, amelyben értékét `Tip_amount` 0-nál nagyobb.
 
 > [!NOTE] 
 > `Tip_amount` numerikus, amely lehetővé teszi számunkra, hogy a többi numerikus értéket összehasonlítja egy kifejezés összeállítása először alakul.
 
-```
+```python
 dataflow = dataflow.to_number(['Tip_amount'])
 dataflow = dataflow.filter(dprep.col('Tip_amount') > 0)
 dataflow.head(5)
 ```
+
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|
 |0|2013-08-01-19:33:28|2013-08-01-19:35:21|5|.00|0,08|0|4.58|
@@ -429,11 +426,12 @@ dataflow.head(5)
 
 Ebben a példában `Dataflow.filter` egy új adatfolyamot a sorokat adja vissza, `'Passenger_count'` kevesebb mint 5 és `'Tolls_amount'` 0-nál nagyobb.
 
-```
+```python
 dataflow = dataflow.to_number(['Passenger_count', 'Tolls_amount'])
 dataflow = dataflow.filter(dprep.f_and(dprep.col('Passenger_count') < 5, dprep.col('Tolls_amount') > 0))
 dataflow.head(5)
 ```
+
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|
 |0|2013-08-08 12:16:00|2013-08-08 12:16:00|1.0|.00|2.25|5.00|19.75|
@@ -447,7 +445,7 @@ Akkor is egynél több Kifejezésszerkesztő hozhat létre egy beágyazott kifej
 > [!NOTE]
 > `lpep_pickup_datetime` és `Lpep_dropoff_datetime` dátum és idő, amely lehetővé teszi számunkra, hogy a többi datetime értéket összehasonlítja egy kifejezés összeállítása először konvertálja.
 
-```
+```python
 dataflow = dataflow.to_datetime(['lpep_pickup_datetime', 'Lpep_dropoff_datetime'], ['%Y-%m-%d %H:%M:%S'])
 dataflow = dataflow.to_number(['Total_amount', 'Trip_distance'])
 mid_2013 = datetime(2013,7,1)
@@ -470,9 +468,9 @@ dataflow.head(5)
 |3|2013-08-25 16:46:51 + 00:00|2013-08-25 17:13:55 + 00:00|2.0|9.66|7.37|5.33|44.20|
 |4|2013-08-25 17:42:11 + 00:00|2013-08-25 18:02:57 + 00:00|1.0|9.60|6.87|5.33|41.20|
 
-## <a name="custom-python-transforms"></a>Egyéni Python-átalakítások 
+## <a name="custom-python-transforms"></a>Egyéni Python-átalakítások
 
-Lesz forgatókönyvek esetén a legegyszerűbb dolog, hogy tegye néhány Python-kód írása. Az SDK biztosít három bővítmény pontokat is használhat.
+Mindig lesz forgatókönyvek végzett átalakítás a legegyszerűbb lehetőség a saját parancsfájl van írásához. Az SDK-t is használhat egyéni Python-szkriptek három bővítmény pontokat biztosít.
 
 - Új parancsfájl oszlop
 - Új parancsfájl-szűrő
@@ -484,13 +482,14 @@ A bővítmények mindegyike a vertikális és horizontális felskálázás modul
 
 Első lépésként bizonyos adatok betöltése az Azure-Blobból.
 
-```
+```python
 import azureml.dataprep as dprep
 col = dprep.col
 
 df = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv', skip_rows=1)
 df.head(5)
 ```
+
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|------|-----|
 |0|ALABAMA|1|101710|Hale megye|10171002158| |
@@ -499,14 +498,15 @@ df.head(5)
 |3|ALABAMA|1|101710|Hale megye|10171000588|2|
 |4|ALABAMA|1|101710|Hale megye|10171000589| |
 
-Trim le az adatkészletet, és végezze el néhány alapszintű átalakításokat.
+Trim le az adatkészlet, és végezze el néhány alapszintű átalakításokat.
 
-```
+```python
 df = df.keep_columns(['stnam', 'leanm10', 'ncessch', 'MAM_MTH00numvalid_1011'])
 df = df.replace_na(columns=['leanm10', 'MAM_MTH00numvalid_1011'], custom_na_list='.')
 df = df.to_number(['ncessch', 'MAM_MTH00numvalid_1011'])
 df.head(5)
 ```
+
 | |stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|
 |0|ALABAMA|Hale megye|1.017100e + 10|None|
@@ -515,9 +515,9 @@ df.head(5)
 |3|ALABAMA|Hale megye|1.017100e + 10|2|
 |4|ALABAMA|Hale megye|1.017100e + 10|None|
 
-Keresse meg a szűrők használatával null értékeket. Először keresse meg az egyes, ezért most adja meg a hiányzó értékeket.
+Keresse meg a következő szűrő használatával null értékeket.
 
-```
+```python
 df.filter(col('MAM_MTH00numvalid_1011').is_null()).head(5)
 ```
 
@@ -531,17 +531,19 @@ df.filter(col('MAM_MTH00numvalid_1011').is_null()).head(5)
 
 ### <a name="transform-partition"></a>Partíció átalakítása
 
-Hasznos pandas függvény használatával az összes null értékeket cserélje le a 0. Ez a kód partíció található, nem az összes, az adatkészlet egyszerre futnak. Azt jelenti, hogy Nagy adatkészleteken, ez a kód párhuzamosan is futtathatók, a modul feldolgozza az adatokat, a partíció szerint partíció.
+Pandas függvény használatával az összes null értékeket cserélje le a 0. Ez a kód partíciónként, nem pedig a teljes adatkészlet egyszerre futni fog. Ez azt jelenti, hogy egy nagyméretű adathalmazon, ez a kód párhuzamosan is futtathatók, a modul feldolgozza az adatokat, a partíció szerint partíció.
 
-```
+A Python-szkriptet meg kell határoznia a hívott függvény `transform()` , amely két argumentumot, `df` és `index`. A `df` argumentum lesz, amely tartalmazza az adatokat a partíció pandas dataframe és a `index` argumentum értéke egy egyedi azonosítót a partíció. Az átalakító függvény a teljes körűen szerkeszthetik az átadott adathalmaz, de dataframe kell visszaadnia. Importálja a Python-szkriptet könyvtárra sem a környezetben, ahol az adatfolyamot fut léteznie kell.
+
+```python
 df = df.transform_partition("""
 def transform(df, index):
     df['MAM_MTH00numvalid_1011'].fillna(0,inplace=True)
     return df
 """)
-h = df.head(5)
-h
+df.head(5)
 ```
+
 ||stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|
 |0|ALABAMA|Hale megye|1.017100e + 10|0.0|
@@ -554,14 +556,16 @@ h
 
 Használhatja a Python-kód, a megyét, és az állapot nevét tartalmazó új oszlop létrehozása, és így kihasználhatja az állapot nevét. Ehhez használja a `new_script_column()` az adatfolyam metódust.
 
-```
+A Python-szkriptet meg kell határoznia a hívott függvény `newvalue()` , amely egy egyetlen argumentumot `row`. A `row` argumentum értéke egy dict (`key`: oszlopnév, `val`: jelenlegi érték) és a rendszer átad a függvény az adatkészlet minden egyes sorára. Ez a funkció az új oszlopban használandó értéket kell visszaadnia. Importálja a Python-szkriptet könyvtárra sem a környezetben, ahol az adatfolyamot fut léteznie kell.
+
+```python
 df = df.new_script_column(new_column_name='county_state', insert_after='leanm10', script="""
 def newvalue(row):
     return row['leanm10'] + ', ' + row['stnam'].title()
 """)
-h = df.head(5)
-h
+df.head(5)
 ```
+
 ||stnam|leanm10|county_state|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|
 |0|ALABAMA|Hale megye|Hale megyét, Alabama|1.017100e + 10|0.0|
@@ -569,18 +573,18 @@ h
 |2|ALABAMA|Hale megye|Hale megyét, Alabama|1.017100e + 10|0.0|
 |3|ALABAMA|Hale megye|Hale megyét, Alabama|1.017100e + 10|2.0|
 |4|ALABAMA|Hale megye|Hale megyét, Alabama|1.017100e + 10|0.0|
+
 ### <a name="new-script-filter"></a>Új parancsfájl-szűrő
 
-Most, hozhat létre egy Python-kifejezést a adatkészletet, csak ha "Hale" nem szerepel az új sorok szűrése `county_state` oszlop. A kifejezés eredménye `True` szeretnénk a sort, ha és `False` eldobni a sor.
+Az adatkészlet csak ahol "Hale" nem szerepel az új sorok szűrése egy Python-kifejezés összeállítása `county_state` oszlop. A kifejezés eredménye `True` szeretnénk a sort, ha és `False` eldobni a sor.
 
-```
+```python
 df = df.new_script_filter("""
 def includerow(row):
     val = row['county_state']
     return 'Hale' not in val
 """)
-h = df.head(5)
-h
+df.head(5)
 ```
 
 ||stnam|leanm10|county_state|ncessch|MAM_MTH00numvalid_1011|

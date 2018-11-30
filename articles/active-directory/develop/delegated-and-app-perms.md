@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: c5a947301b0861ffa09a24da79e04b5e92b2c29e
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: aaed6a6282da61a49698fdcdfefffe949630930a
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44724042"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52421827"
 ---
 # <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>Hogyan ismerhetik fel a delegált és az engedélyek közötti különbségek
 
@@ -30,4 +30,4 @@ ms.locfileid: "44724042"
 - A részletesebben olvashat róluk, megtudhatja, hogyan erőforrás alkalmazásokat közzé [hatókörök](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#scopes) és [alkalmazás-szerepkörök](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#roles) , meghatalmazott manifest ügyfélalkalmazások és Alkalmazásengedélyek, illetve az Azure-ban portál. 
 
 ## <a name="next-steps"></a>További lépések
-[Azure ad stackoverflow-n](http://stackoverflow.com/questions/tagged/azure-active-directory)
+[Azure ad stackoverflow-n](https://stackoverflow.com/questions/tagged/azure-active-directory)

@@ -6,18 +6,18 @@ author: bryanla
 manager: mbaldwin
 services: key-vault
 ms.author: bryanla
-ms.date: 09/05/2018
+ms.date: 11/27/2018
 ms.topic: conceptual
 ms.prod: ''
 ms.service: key-vault
 ms.technology: ''
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: d9fc845316d6e785d8215ac738b893ebc080d911
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1eadea53dda60ef5ac8bbbc3d9e9cfe4b5b373dc
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300970"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423592"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Szolgáltatások közötti hitelesítés az Azure Key Vaultba .NET használatával
 
@@ -183,18 +183,16 @@ A tanúsítvány használata az Azure AD-ba való bejelentkezéshez:
 
 1. Hozzon létre egy [szolgáltatásnév](/azure/azure-resource-manager/resource-group-authenticate-service-principal). 
 
-2. A tanúsítvány központi telepítése vagy a _LocalMachine_ vagy _CurrentUser_ tárolásához. 
+2. A tanúsítvány központi telepítése vagy a *LocalMachine* vagy *CurrentUser* tárolásához. 
 
 3. Nevű környezeti változó értéke **AzureServicesAuthConnectionString** való:
 
     ```
     RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};
-          CertificateStoreLocation={LocalMachine or CurrentUser}
+          CertificateStoreLocation={CertificateStore}
     ```
  
-    Cserélje le _{AppId}_, _{Bérlőazonosító}_, és _{Thumbprint}_ az 1. lépésben létrehozott értékekkel.
-
-    **CertificateStoreLocation** kell lennie, vagy _CurrentUser_ vagy _LocalMachine_a telepítési terv alapján.
+    Cserélje le *{AppId}*, *{Bérlőazonosító}*, és *{Thumbprint}* az 1. lépésben létrehozott értékekkel. Cserélje le *{CertificateStore}* mindkettővel `LocalMachine` vagy `CurrentUser`a telepítési terv alapján.
 
 4. Futtassa az alkalmazást. 
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 69c77896f894201d1419aaef33470a02ac45ff91
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: d044b1ad18df6eee1235e881038bbb9734a999ff
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986288"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317347"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>Gyors útmutató: A felhasználók Bejelentkeztetéséhez és a egy JavaScript-alkalmazását a hozzáférési jogkivonat beszerzése
 
@@ -36,12 +36,12 @@ Ebben a rövid útmutatóban fog megtudhatja, hogyan használhat egy kódmintát
 > #### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
 >
 > 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) kell regisztrálni egy alkalmazást.
-> 1. Ha a fiókja egynél több bérlőhöz hozzáférést biztosít, válassza ki a fiók jobb felső sarokban, majd állítsa be a portál munkamenet a kívánt Azure AD bérlői.
-> 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatásra, és válassza ki **alkalmazásregisztrációk (előzetes verzió) > Új regisztrációs**.
+> 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
+> 1. A bal oldali navigációs panelen válassza az **Azure Active Directory** szolgáltatást, majd az **Alkalmazásregisztrációk (előzetes verzió) > Új alkalmazás regisztrálása** lehetőséget.
 > 1. Ha a **alkalmazás regisztrálása** lap, adja meg az alkalmazás nevét.
 > 1. A **támogatott fióktípusok**válassza **fiókok minden olyan szervezeti directory és személyes Microsoft-fiókok**.
 > 1. Válassza ki a **webes** platform alapján a **átirányítási URI-t** szakaszt, és állítsa az értékét `http://localhost:30662/`.
-> 1. Amikor végzett, válassza ki a **regisztrálása**.  Az alkalmazás **áttekintése** lapon, jegyezze fel a **Alkalmazásazonosítót (ügyfél)** értéket.
+> 1. Miután végzett, válassza a **Regisztrálás** lehetőséget.  Az alkalmazás **áttekintése** lapon, jegyezze fel a **Alkalmazásazonosítót (ügyfél)** értéket.
 > 1. Ez a rövid útmutatóhoz a [Implicit folyamat megadása](v2-oauth2-implicit-grant-flow.md) engedélyezni kell. A regisztrált alkalmazás bal oldali navigációs panelén válassza **hitelesítési**.
 > 1. A **speciális beállítások**alatt **típusú Implicit engedélyezés**, mindkettő engedélyezéséhez **azonosító-jogkivonatokat** és **hozzáférési jogkivonatokat** jelölőnégyzeteket. Azonosító-jogkivonatokat és hozzáférési tokenek szükség, mivel ez az alkalmazás a felhasználók és a egy API-t kell.
 > 1. Kattintson a **Mentés** gombra.
@@ -53,7 +53,7 @@ Ebben a rövid útmutatóban fog megtudhatja, hogyan használhat egy kódmintát
 > > [Ezt a módosítást a számomra]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Már be van állítva](media/quickstart-v2-javascript/green-check.png) az alkalmazás ezekkel az attribútumokkal van konfigurálva.
+> > ![Már konfigurált](media/quickstart-v2-javascript/green-check.png) Az alkalmazása már konfigurálva van ezekkel az attribútumokkal.
 
 #### <a name="step-2-download-the-project"></a>2. lépés: A projekt letöltése
 
@@ -66,7 +66,7 @@ Bontsa ki a zip-fájlt egy helyi mappába, például **C:\Azure-Samples**.
 #### <a name="step-3-configure-your-javascript-app"></a>3. lépés: A JavaScript-alkalmazás konfigurálása
 
 > [!div renderon="docs"]
-> Szerkesztés `index.html` , és cserélje le `Enter_the_Application_Id_here` alatt `applicationConfig` az imént regisztrált alkalmazást, az alkalmazás azonosítójával.
+> Szerkesztés `index.html` és állítsa be a `clientID` és `authority` értékei alapján `applicationConfig`.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > Szerkesztés `index.html` , és cserélje le `applicationConfig` együtt:
@@ -74,13 +74,25 @@ Bontsa ki a zip-fájlt egy helyi mappába, például **C:\Azure-Samples**.
 ```javascript
 var applicationConfig = {
     clientID: "Enter_the_Application_Id_here",
+    authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here",
     graphScopes: ["user.read"],
     graphEndpoint: "https://graph.microsoft.com/v1.0/me"
 };
 ```
+> [!div renderon="docs"]
+>
+> Az elemek magyarázata:
+> - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazáshoz tartozó **Alkalmazás (ügyfél) azonosítója** érték.
+> - `Enter_the_Tenant_Info_Here` – az alábbi lehetőségek egyike lesz:
+>   - Ha az alkalmazás **az adott szervezeti címtárban lévő fiókokat** támogatja, ezt az értéket a **Bérlőazonosítóra** vagy a **Bérlő nevére** cserélje le (például contoso.microsoft.com)
+>   - Ha az alkalmazás **bármely szervezeti címtárban lévő fiókot** támogat, ezt az értéket az `organizations` értékre cserélje le
+>   - Ha az alkalmazás **bármely szervezeti címtárban lévő fiókot és a személyes Microsoft-fiókokat** támogatja, ezt az értéket a `common` értékre cserélje le
+>
+> > [!TIP]
+> > Az **alkalmazás (ügyfél) azonosítója**, a **címtár (bérlő) azonosítója** és a **támogatott fióktípusok** értékét az alkalmazás **Áttekintés** oldalán találja az Azure Portalon.
+
 > [!NOTE]
->Ha [Node.js](https://nodejs.org/en/download/), a *server.js* fájlt a kiszolgáló indítása 30662 porton van konfigurálva.
-> Ha [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), a kódminta *.csproj* fájlt a kiszolgáló indítása 30662 porton van konfigurálva.
+> A kiszolgáló port 30662 figyelésére van konfigurálva a *server.js* fájlt [Node.js](https://nodejs.org/en/download/) projekt és a *.csproj* fájlt [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)projekt.
 >
 
 #### <a name="step-4-run-the-project"></a>4. lépés: A projekt futtatása
@@ -121,7 +133,7 @@ npm install msal
 A rövid útmutató kódját is bemutatja, hogyan inicializálása a tár:
 
 ```javascript
-var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, null, acquireTokenRedirectCallBack, {storeAuthStateInCookie: true, cacheLocation: "localStorage"});
+var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, applicationConfig.authority, acquireTokenRedirectCallBack, {storeAuthStateInCookie: true, cacheLocation: "localStorage"});
 ```
 
 > |Ahol  |  |

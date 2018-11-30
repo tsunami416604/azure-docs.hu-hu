@@ -8,19 +8,19 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.openlocfilehash: 1502277276489d1977540018f2a22681ad48d8a7
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 869941781643d3486506b5a3caed4006019fb3b7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291470"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310041"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Kimenő adatait az Azure Stream Analytics ismertetése
 Ez a cikk bemutatja a kimenetek elérhető az Azure Stream Analytics-feladat különböző típusú. Kimenetek segítségével tárolhatja, és a Stream Analytics-feladat eredményének mentése. A kimeneti adatokat használja, végezhet további üzleti elemzés és az adattárház az adatokat. 
 
 A Stream Analytics-lekérdezés tervez, tekintse meg a kimenethez használt nevére a [be záradék](https://msdn.microsoft.com/azure/stream-analytics/reference/into-azure-stream-analytics). Feladatonként egy egyetlen kimeneti, vagy ha több INTO záradék a lekérdezés megadásával van szüksége a streamelési feladat több kimenetek is használhatja.
 
-Létrehozása, módosítása és tesztelése a Stream Analytics-feladat kimenete, használhatja a [az Azure portal](stream-analytics-quick-create-portal.md#configure-output-to-the-job), [Azure PowerShell-lel](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.Net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [REST API-val](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output), és [a Visual Studio](stream-analytics-quick-create-vs.md).
+Létrehozása, módosítása és tesztelése a Stream Analytics-feladat kimenete, használhatja a [az Azure portal](stream-analytics-quick-create-portal.md#configure-job-output), [Azure PowerShell-lel](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.Net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [REST API-val](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output), és [a Visual Studio](stream-analytics-quick-create-vs.md).
 
 Néhány kimenetek típusok támogatása [particionálás](#partitioning), és [köteg méretek kimeneti](#output-batch-size) eltérőek lehetnek a teljesítmény optimalizálása.
 

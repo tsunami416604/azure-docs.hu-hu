@@ -1,6 +1,6 @@
 ---
-title: Excel-fájlból egy Machine Learning webszolgáltatás felhasználása |} A Microsoft Docs
-description: Excel-fájlból az Azure Machine Learning webszolgáltatás használata
+title: Az Excel - Azure Machine Learning Studio a Machine Learning Studio webszolgáltatás felhasználása |} A Microsoft Docs
+description: Az Azure Machine Learning Studio megkönnyíti a webszolgáltatások meghívása közvetlenül az Excelből, kód írása nélkül.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 2/1/2018
-ms.openlocfilehash: 241f482aa24d45788277813a0f11cde326057222
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 7084e62df3cd4872d90661ad6b94e1ebf7b54d8d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265032"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312743"
 ---
 # <a name="consuming-an-azure-machine-learning-web-service-from-excel"></a>Azure Machine Learning webszolgáltatások használata az Excel programból
  Az Azure Machine Learning Studio megkönnyíti a webszolgáltatások meghívása közvetlenül az Excelből, kód írása nélkül.

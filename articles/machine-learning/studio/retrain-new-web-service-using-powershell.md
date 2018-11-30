@@ -1,5 +1,5 @@
 ---
-title: A PowerShell használatával új Azure Machine Learning webszolgáltatás újratanítása |} A Microsoft Docs
+title: A PowerShell használatával – az Azure új Machine Learning Studio webszolgáltatás újratanítása |} A Microsoft Docs
 description: Ismerje meg, hogyan programozott módon modellek szoftveres átképezése és frissíteni a webszolgáltatást a újonnan betanított modell használata az Azure Machine Learning, a Machine Learning Management PowerShell-parancsmagok használatával.
 services: machine-learning
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 77ae0c9f8af82e238b58945d1427afd6a01173e3
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 59d12ae91f8c75ab0fdd2058057cc8de158897e7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263030"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314184"
 ---
-# <a name="retrain-a-new-resource-manager-based-web-service-using-the-machine-learning-management-powershell-cmdlets"></a>A Machine Learning Management PowerShell-parancsmagok használatával új Resource Manager-alapú webszolgáltatás újratanítása
+# <a name="retrain-a-new-resource-manager-based-web-service-using-the-machine-learning-studio-management-powershell-cmdlets"></a>Új Resource Manager-alapú webszolgáltatás újratanítása a Machine Learning Studio Management PowerShell-parancsmagok használatával
 Ha egy új webszolgáltatás újratanítása, a prediktív webszolgáltatás-definíciójának való hivatkozáshoz az új betanított modell frissítenie.
 
 ## <a name="prerequisites"></a>Előfeltételek

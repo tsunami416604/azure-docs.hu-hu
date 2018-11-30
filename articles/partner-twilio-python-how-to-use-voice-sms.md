@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/19/2015
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 62e7c601b70f3560dcc324c28f10f7d8e00bb9ed
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: f6d144daa165d350c6615f323b25f8860697f2c1
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865331"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422493"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Hogyan lehet a Twilio használata Hanghívási és SMS-funkciókhoz a Pythonban
 Ez az útmutató bemutatja, hogyan hajthat végre gyakori programozási feladatokat, a Twilio API-t szolgáltatással az Azure-ban. Az ismertetett forgatókönyvek között megtalálható, így a telefonhívás, és a egy rövid üzenetet szolgáltatást (SMS) üzenetet küld. A Twilio és az alkalmazások használata hanghívási és SMS további információkért lásd: a [lépések](#NextSteps) szakaszban.
@@ -78,7 +78,7 @@ Amikor készen áll a Twilio-fiók létrehozása, regisztráció: [próbálja me
 Amikor regisztrál egy Twilio-fiók, kap egy fiók biztonsági azonosítója és a egy hitelesítési tokent. Mindkét lesz szükség a Twilio API-hívásokat. Fiókja a jogosulatlan hozzáférés megakadályozása érdekében, hogy a hitelesítési jogkivonat biztonságának megőrzése. A fiók SID azonosítója és a hitelesítési jogkivonat megtekinthető a [Twilio-konzol][twilio_console], a címkével ellátott mezőket **fiók SID** és **hitelesítési JOGKIVONATÁT**, illetve.
 
 ## <a id="create_app"></a>Python-alkalmazás létrehozása
-Egy Python-alkalmazás, amely a Twilio szolgáltatás használja, és az Azure-ban fut-e semmiben nem különbözik bármely egyéb Python-alkalmazás, amely a Twilio szolgáltatás használ. Bár a Twilio szolgáltatás REST-alapú, és nem hívható meg a Python többféle módon, ez a cikk a Twilio-szolgáltatások használata összpontosítanak [Twilio kódtára a Pythonhoz a Githubról][twilio_python]. A Pythonhoz készült a Twilio-könyvtár használatával kapcsolatos további információkért lásd: [ http://readthedocs.org/docs/twilio-python/en/latest/index.html ] [ twilio_lib_docs].
+Egy Python-alkalmazás, amely a Twilio szolgáltatás használja, és az Azure-ban fut-e semmiben nem különbözik bármely egyéb Python-alkalmazás, amely a Twilio szolgáltatás használ. Bár a Twilio szolgáltatás REST-alapú, és nem hívható meg a Python többféle módon, ez a cikk a Twilio-szolgáltatások használata összpontosítanak [Twilio kódtára a Pythonhoz a Githubról][twilio_python]. A Pythonhoz készült a Twilio-könyvtár használatával kapcsolatos további információkért lásd: [ https://readthedocs.org/docs/twilio-python/en/latest/index.html ] [ twilio_lib_docs].
 
 Első, [új Azure Linux virtuális gép beállítás] [azure_vm_setup] való működésre gazdagépként, az új Python-webalkalmazás számára. Ha a virtuális gép fut, tegye elérhetővé alkalmazását egy nyilvános portot, az alább ismertetett kell.
 
@@ -135,7 +135,7 @@ A következő bemutatja, hogyan végezhet. Ez a kód is egy Twilio által biztos
     to_number = "NNNNNNNNNNN"
 
     # Use the Twilio-provided site for the TwiML response.
-    url = "http://twimlets.com/message?"
+    url = "https://twimlets.com/message?"
 
     # The phone message text.
     message = "Hello world."
@@ -174,7 +174,7 @@ A következő példa használatával SMS üzenet küldése a `TwilioRestClient` 
                                      body=message)
 
 ## <a id="howto_provide_twiml_responses"></a>Hogyan: Adja meg a saját webhelyén TwiML válaszok
-Amikor az alkalmazás a Twilio API-hívást kezdeményez, Twilio, küldjön TwiML választ vár egy URL-címet a kérelmet küld. A fenti példában a Twilio-megadott URL-címet használ [ http://twimlets.com/message ] [ twimlet_message_url]. (Amíg TwiML használatra szolgál a Twilio, megtekintheti azt a böngészőben. Kattintson például [ http://twimlets.com/message ] [ twimlet_message_url] megtekintéséhez egy üres `<Response>` elem; másik példaként kattintson [ http://twimlets.com/message?Message%5B0%5D=Hello%20World ] [ twimlet_message_url_hello_world]megtekintéséhez egy `<Response>` elem, amely tartalmazza a `<Say>` elem.)
+Amikor az alkalmazás a Twilio API-hívást kezdeményez, Twilio, küldjön TwiML választ vár egy URL-címet a kérelmet küld. A fenti példában a Twilio-megadott URL-címet használ [ https://twimlets.com/message ] [ twimlet_message_url]. (Amíg TwiML használatra szolgál a Twilio, megtekintheti azt a böngészőben. Kattintson például [ https://twimlets.com/message ] [ twimlet_message_url] megtekintéséhez egy üres `<Response>` elem; másik példaként kattintson [ https://twimlets.com/message?Message%5B0%5D=Hello%20World ] [ twimlet_message_url_hello_world]megtekintéséhez egy `<Response>` elem, amely tartalmazza a `<Say>` elem.)
 
 Így nem kell hagyatkoznia a Twilio-megadott URL-címet, a saját hely által visszaadott HTTP-válaszok is létrehozhat. A hely bármilyen nyelven, amely visszaadja az XML-válaszok; hozhat létre Ez a témakör azt feltételezi, hogy a TwiML létrehozása Python használni.
 
@@ -236,23 +236,23 @@ Most, hogy megismerte a Twilio szolgáltatás alapjait, kövesse az alábbi hiva
 * [Twilio a Githubon][twilio_on_github]
 * [Beszéljen a Twilio-támogatás][twilio_support]
 
-[special_offer]: http://ahoy.twilio.com/azure
+[special_offer]: https://ahoy.twilio.com/azure
 [twilio_python]: https://github.com/twilio/twilio-python
-[twilio_lib_docs]: http://readthedocs.org/docs/twilio-python/en/latest/index.html
+[twilio_lib_docs]: https://readthedocs.org/docs/twilio-python/en/latest/index.html
 [twilio_github_readme]: https://github.com/twilio/twilio-python/blob/master/README.md
 
-[twimlet_message_url]: http://twimlets.com/message
-[twimlet_message_url_hello_world]: http://twimlets.com/message?Message%5B0%5D=Hello%20World
+[twimlet_message_url]: https://twimlets.com/message
+[twimlet_message_url_hello_world]: https://twimlets.com/message?Message%5B0%5D=Hello%20World
 [twiml_reference]: https://www.twilio.com/docs/api/twiml
-[twilio_pricing]: http://www.twilio.com/pricing
+[twilio_pricing]: https://www.twilio.com/pricing
 
 [twilio_libraries]: https://www.twilio.com/docs/libraries
-[twiml]: http://www.twilio.com/docs/api/twiml
-[twilio_api]: http://www.twilio.com/api
+[twiml]: https://www.twilio.com/docs/api/twiml
+[twilio_api]: https://www.twilio.com/api
 [try_twilio]: https://www.twilio.com/try-twilio
 [twilio_console]:  https://www.twilio.com/console
-[twilio_security_guidelines]: http://www.twilio.com/docs/security
-[twilio_howtos]: http://www.twilio.com/docs/howto
+[twilio_security_guidelines]: https://www.twilio.com/docs/security
+[twilio_howtos]: https://www.twilio.com/docs/howto
 [twilio_on_github]: https://github.com/twilio
-[twilio_support]: http://www.twilio.com/help/contact
-[twilio_quickstarts]: http://www.twilio.com/docs/quickstart
+[twilio_support]: https://www.twilio.com/help/contact
+[twilio_quickstarts]: https://www.twilio.com/docs/quickstart

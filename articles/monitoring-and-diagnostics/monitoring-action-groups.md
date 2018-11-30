@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 11/26/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 3ce7c5111fa176bb7fa734f54084b9e14e7afbef
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1b66f40594d0dd578e2e5680fb0d5bb0f82f1241
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016046"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311806"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Az Azure Portalon a műveleti csoportok létrehozása és kezelése
 ## <a name="overview"></a>Áttekintés ##
@@ -76,6 +76,8 @@ Műveletcsoport e-mailes műveletek akár 1000 is lehet. Tekintse meg a [sebess�
 **ITSM** – előfordulhat, hogy legfeljebb 10 műveleti csoport ITSM művelet az ITSM-műveletek egy ITSM-kapcsolatot igényel. Ismerje meg, hogyan hozhat létre egy [ITSM-kapcsolat](../log-analytics/log-analytics-itsmc-overview.md).
 
 **Logikai alkalmazás** – előfordulhat, hogy legfeljebb 10 Logic App-műveletek tartalmaz műveletcsoportot
+
+**Alkalmazás függvény** -műveletek a Functions API-val, amelyhez jelenleg szükség van a függvényalkalmazások v2 "AzureWebJobsSecretStorageType" beállítást "fájlok" az alkalmazás konfigurálásához, olvasható konfigurált alkalmazások esetében a funkcióbillentyűket lásd [ Kulcskezelés a Functions V2 vált]( https://aka.ms/funcsecrets) további információt.
 
 **Runbook** – előfordulhat, hogy legfeljebb 10 Runbook műveleteket tartalmaz egy művelet csoport hivatkozik, amely a [az Azure-előfizetési szolgáltatási korlátok](../azure-subscription-service-limits.md) a korlátok a Runbook is észleltünk adattartalmakat.
 

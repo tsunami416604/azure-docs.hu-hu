@@ -1,9 +1,9 @@
 ---
-title: Az Azure Resource Health áttekintése |} Microsoft Docs
-description: Azure-erőforrás állapotának áttekintése
+title: Az Azure Resource Health áttekintése |} A Microsoft Docs
+description: Az Azure Resource Health áttekintése
 services: Resource health
 documentationcenter: ''
-author: shawntabrizi
+author: stephbaron
 manager: ''
 editor: ''
 ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
@@ -12,92 +12,92 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Supportability
-ms.date: 03/27/2018
-ms.author: shawn.tabrizi
-ms.openlocfilehash: 99e996f182aac774f2e2565d87fd0debaba1b2d1
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.date: 11/16/2018
+ms.author: stbaron
+ms.openlocfilehash: f5e059c4ce375edb50321afb772cce400cb19b92
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30263122"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309429"
 ---
 # <a name="azure-resource-health-overview"></a>Az Azure Resource Health áttekintése
  
-Az Azure Resource Health segít diagnosztizálni és segítségre van szüksége, amikor egy Azure-szolgáltatás a hibát észleli az erőforrások. Figyelmeztet az erőforrások aktuális és korábbi állapotát. És biztosít a problémák mérséklése nyújt segítséget a technikai támogatási szolgálathoz.
+Az Azure Resource Health segítségével diagnosztizálhatja és a támogatás igénylésében, ha egy Azure-szolgáltatási probléma hatással van az erőforrások. Figyelmeztet az erőforrások jelenlegi és korábbi állapotát. És a problémák megoldásához nyújt segítséget a technikai támogatási biztosít.
 
-Mivel [Azure állapot](https://status.azure.com) szolgáltatás problémák, amelyek hatással vannak az Azure-ügyfél széleskörű nyújt tájékoztatást, a Resource Health lehetővé teszi az erőforrások állapotának személyre szabott irányítópultot. Erőforrás állapota jeleníti meg az Azure-szolgáltatások problémák miatt nem érhető el, az elmúlt volt az erőforrások mindig. Majd használata egyszerű is meg tudjon érteni, ha a szolgáltatásiszint-szerződésben garantált megsértettek. 
+Mivel a [Azure állapotlapján](https://status.azure.com) szolgáltatási problémák, amelyek hatással vannak az Azure-ügyfelek széles körét nyújt tájékoztatást, a Resource Health kínál az erőforrások állapotának személyre szabott irányítópult. A Resource Health az Azure-szolgáltatási problémák miatt nem érhető el, az elmúlt volt az erőforrások mindig látható. Ezután használata egyszerű érthető, ha az SLA-t megsértettek. 
 
-## <a name="resource-definition-and-health-assessment"></a>Erőforrás-definíció- és állapot assessment
-Egy erőforrás egy adott példányt az Azure-szolgáltatások: például egy virtuális gépet, a webes alkalmazás vagy egy SQL-adatbázis.
+## <a name="resource-definition-and-health-assessment"></a>Erőforrás-definíció- és egészségügyi értékelés
+Egy erőforrás egy adott példányán, az Azure-szolgáltatások: például egy virtuális gép, egy webalkalmazás vagy egy SQL-adatbázist.
 
-Erőforrás állapota annak ellenőrzéséhez, hogy az erőforrás állapota megfelelő-e a különböző Azure-szolgáltatások kibocsátott jelek támaszkodik. Erőforrás állapota nem kifogástalan, ha az erőforrás állapota elemzi további információt a probléma meghatározásához. A probléma megoldása érdekében tart a Microsoft vagy a műveletekről, amelyek a probléma okának elhárítása is azonosítja. 
+A Resource Health annak ellenőrzéséhez, hogy az erőforrás állapota kifogástalan-e a különböző Azure-szolgáltatások által kibocsátott jelek támaszkodik. Erőforrás állapota nem megfelelő, ha a Resource Health elemzi a további információkat a probléma okának meghatározása. Meghatározza azt is, műveletek, amelyek a probléma megoldása érdekében a Microsoft most vagy a műveleteket, amelyeket az okot a probléma megoldása érdekében. 
 
-Az állapotfigyelő értékelési módját, a további részletekért tekintse át a erőforrástípusok teljes listáját, és ellenőrzi [Azure Resource Health](resource-health-checks-resource-types.md).
+További részleteket az egészségügyi hogyan értékelik, tekintse át a teljes erőforrástípusok és állapot-ellenőrzések [az Azure Resource Health](resource-health-checks-resource-types.md).
 
-## <a name="health-status"></a>Állapot ellenőrzése
-Egy erőforrás állapotának jelenik meg a következő állapotok közül.
+## <a name="health-status"></a>Állapotadatok
+Az erőforrás állapotát, a következő állapotok egyike jelenik meg.
 
 ### <a name="available"></a>Elérhető
-Állapot **elérhető** azt jelenti, hogy a szolgáltatás még nem észleli az erőforrás állapotát befolyásoló eseményeket. Azokban az esetekben, ahol az erőforrás helyreállt nem tervezett leállás az elmúlt 24 órában, tekintse meg a **a közelmúltban ártalmatlanított** értesítést.
+Az állapot **elérhető** azt jelenti, hogy a szolgáltatás még nem észleli más eseményeket, amelyek hatással vannak az erőforrás állapotát. Azokban az esetekben, ahol az erőforrás állt nem tervezett üzemkimaradások az elmúlt 24 órában, tekintse meg a **a közelmúltban Ártalmatlanítva** értesítést.
 
-!["Elérhető" virtuális gép állapotát a "Nemrég ártalmatlanított" értesítést](./media/resource-health-overview/Available.png)
+![A "Nemrégiben megoldódott" értesítés "Elérhető" virtuális gép állapotát](./media/resource-health-overview/Available.png)
 
-### <a name="unavailable"></a>Nem érhető el
-Állapot **nem érhető el** azt jelenti, hogy a szolgáltatás észlelt egy platform folyamatban lévő vagy a nem-platformesemény, amely befolyásolja az erőforrás állapotát.
+### <a name="unavailable"></a>Nem elérhető
+Az állapot **nem érhető el** azt jelenti, hogy a szolgáltatás azt észlelte, egy folyamatban lévő platform vagy platformok közötti esemény, amely hatással van az erőforrás állapotát.
 
 #### <a name="platform-events"></a>Platform-események
-Platform eseményeket váltja ki az Azure infrastruktúra több összetevőt. Ütemezett műveletekhez (például tervezett karbantartás) és a nem várt események (például egy nem tervezett állomás újraindítás) tartalmaznak.
+Az Azure-infrastruktúra több összetevői által aktivált platform eseményeket. Ezek tartalmazzák az ütemezett műveletekhez (például a tervezett karbantartás) és a nem várt események (például egy gazdagép nem tervezett újraindítás).
 
-Erőforrás állapota további részleteket biztosít a esemény és a helyreállítási folyamatot. Lehetővé teszi, hogy forduljon az ügyfélszolgálathoz, még akkor is, ha nincs egy aktív Microsoft támogatja a szerződést.
+A Resource Health további részleteket biztosít az esemény-és a helyreállítási folyamatot. Lehetővé teszi, hogy forduljon az ügyfélszolgálathoz, még akkor is, ha nem rendelkezik egy aktív Microsoft támogatási szerződés.
 
-!["Nem érhető el" platformesemény miatt a virtuális gép állapota](./media/resource-health-overview/Unavailable.png)
+![Platform esemény miatt a virtuális gép állapota "Nem érhető el"](./media/resource-health-overview/Unavailable.png)
 
-#### <a name="non-platform-events"></a>Nem-platform események
-Nem-platform eseményeket váltja ki a felhasználói műveletek. Példák egy virtuális gép leállítása, vagy a Redis gyorsítótár kapcsolatok maximális számának elérése.
+#### <a name="non-platform-events"></a>Nem-platform-események
+Nem-platform eseményeket váltja ki a felhasználók műveleteit. Példa egy virtuális gép leállítása vagy elérése a Redis Cache-gyorsítótárhoz kapcsolatok maximális számát.
 
-![A virtuális gép nem platformesemény miatt "Nem érhető el" állapota](./media/resource-health-overview/Unavailable_NonPlatform.png)
+![Platformok közötti esemény miatt a virtuális gép állapota "Nem érhető el"](./media/resource-health-overview/Unavailable_NonPlatform.png)
 
 ### <a name="unknown"></a>Ismeretlen
-Állapotának **ismeretlen** azt jelzi, hogy az erőforrás állapota több mint 10 percig bővebben még nem kapott. Bár ez az állapot nem egy végleges arra utal, hogy az erőforrás állapotának, egy fontos adatpont a hibaelhárítást is.
+Állapotát **ismeretlen** azt jelzi, hogy a Resource Health még nem kapott ehhez az erőforráshoz információ a több mint 10 percig. Bár ez az állapot nem végleges megjelölése erőforrás állapotát, a hibaelhárítási folyamat fontos adatpontnak.
 
-Ha az erőforrás a várt módon fut, az erőforrás állapotának módosul **elérhető** néhány perc múlva.
+Az erőforrás a vártnak megfelelően működik, ha az erőforrás állapota változik **elérhető** néhány perc múlva.
 
-Ha az erőforrás problémákat tapasztal a **ismeretlen** állapot mérete alapján feltételezhető, hogy a platform esemény érinti az erőforrás.
+Ha az erőforrás-problémákat tapasztal a **ismeretlen** állapot mérete alapján feltételezhető, hogy a platform esemény van hatással az erőforrást.
 
-![A virtuális gép "Ismeretlen" állapota](./media/resource-health-overview/Unknown.png)
+![Virtuális gép "Ismeretlen" állapota](./media/resource-health-overview/Unknown.png)
 
 ### <a name="degraded"></a>Csökkentett teljesítmény
-Állapotának **csökkentett teljesítményű** jelzi, hogy az erőforrás észlelt a teljesítményét, bár ez továbbra is elérhető a használati.
-Különböző erőforrások rendelkezik, ha azok meg, hogy egy erőforrás csökken, mert a saját szempontjai.
+Állapotát **csökkentett teljesítményű** jelzi, hogy az erőforrás észlelt a teljesítményt, bár továbbra is használható a felhasználás.
+Különböző erőforrások rendelkezik saját mikor kell adnia, hogy egy erőforrás csökkentett teljesítményű kritériumait.
 
-![A virtuális gép "Csökkentett teljesítményű" állapota](./media/resource-health-overview/degraded.png)
+![Virtuális gép "Csökkentett teljesítményű" állapota](./media/resource-health-overview/degraded.png)
 
-## <a name="reporting-an-incorrect-status"></a>A nem megfelelő állapotú Reporting
-Ha úgy véli, hogy a jelenlegi állapot nem megfelelő, akkor is ossza meg velünk kiválasztásával **helytelen állapot jelentést**. Azokban az esetekben, ahol egy Azure probléma érinti Önt javasoljuk, hogy forduljon az ügyfélszolgálathoz erőforrás állapotát. 
+## <a name="reporting-an-incorrect-status"></a>Egy nem megfelelő állapotát
+Ha úgy véli, hogy az aktuális állapot-ellenőrzése nem megfelelő, akkor is ossza meg velünk kiválasztásával **helytelen állapot jelentése**. Azokban az esetekben, ahol egy Azure probléma van hatással, azt javasoljuk, hogy forduljon az ügyfélszolgálathoz az erőforrás állapota. 
 
-![Egy helytelen állapotára vonatkozó adatok küldésére mezőbe](./media/resource-health-overview/incorrect-status.png)
+![Egy helytelen állapotára vonatkozó információkat küldjön be](./media/resource-health-overview/incorrect-status.png)
 
 ## <a name="historical-information"></a>Előzményadatok
-14 nappal az előzmények végezheti el a **állapotelőzményeinek** Resource Health szakasza. 
+Legfeljebb 14 napig az állapotelőzmények érheti el a **állapotelőzmények** Resource Health szakaszában. 
 
-![Erőforrás állapota események az elmúlt két hétben](./media/resource-health-overview/history-blade.png)
+![A Resource Health-események az elmúlt két hétben](./media/resource-health-overview/history-blade.png)
 
 ## <a name="getting-started"></a>Első lépések
-Erőforrás állapota megnyitása egy erőforrás:
+A Resource Health megnyitása egy erőforráshoz:
 1.  Jelentkezzen be az Azure portálra.
 2.  Keresse meg az erőforrást.
-3.  Válassza a bal oldali ablaktáblán erőforrás menü **erőforrás állapota**.
+3.  A bal oldali ablaktábláján erőforrás menüben válassza ki a **a Resource health**.
 
-![Megnyitja az erőforrás-kihasználása nézetét erőforrás állapota](./media/resource-health-overview/from-resource-blade.png)
+![A Resource Health megnyitása az erőforrás-nézet](./media/resource-health-overview/from-resource-blade.png)
 
-Emellett Resource Health kiválasztásával **minden szolgáltatás** , és írja be **erőforrás állapota** a Szűrő mezőbe. Az a **súgó + támogatás** ablaktáblán válassza előbb [erőforrás állapota](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/resourceHealth).
+A Resource Health kiválasztásával is elérhető **minden szolgáltatás** , és írja be **a resource health** a szűrő szövegmezőbe. Az a **súgó + támogatás** ablaktáblán válassza előbb [a Resource health](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/resourceHealth).
 
-![Az "Összes szolgáltatások" Resource Health megnyitása](./media/resource-health-overview/FromOtherServices.png)
+![A Resource Health megnyitása a "Minden szolgáltatás"](./media/resource-health-overview/FromOtherServices.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg ezeket az erőforrásokat Resource Health tájékozódhat:
--  [Erőforrástípusok és állapotát ellenőrzi az Azure-erőforrás állapota](resource-health-checks-resource-types.md)
+Tekintse meg az alábbi Resource Health szolgáltatással kapcsolatos további források:
+-  [Erőforrástípusok és állapot-ellenőrzések a az Azure Resource Health](resource-health-checks-resource-types.md)
 -  [Az Azure Resource Health kapcsolatos gyakori kérdések](resource-health-faq.md)
 
 

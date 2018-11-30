@@ -1,6 +1,6 @@
 ---
-title: Azure Machine Learning – gyakori kérdések (GYIK) | Microsoft Docs
-description: 'Azure Machine Learning bevezetés: a zökkenőmentes prediktív modellezést támogató felhőalapú szolgáltatással kapcsolatos számlázásra, képességekre és korlátozásokra vonatkozó GYIK.'
+title: A Machine Learning Studio – gyakori kérdések (GYIK) – Azure |} A Microsoft Docs
+description: 'Az Azure Machine Learning Studio: Gyakori kérdések számlázás, képességek és a zökkenőmentes prediktív modellezést támogató felhőalapú szolgáltatás korlátozásai.'
 keywords: bevezetés a gépi tanulásba, prediktív modellezés, mi az a gépi tanulás
 services: machine-learning
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/02/2017
-ms.openlocfilehash: 9545c9a0cf77274b4ea68dea7a6640453a849093
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: c9c80da55737d0093813b84e33d3d90c5d7d4603
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263426"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309140"
 ---
-# <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Az Azure Machine Learning szolgáltatásra vonatkozó gyakori kérdések (GYIK): Számlázás, képességek, korlátozások és támogatás
+# <a name="azure-machine-learning-studio-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Az Azure Machine Learning Studio – gyakori kérdések: számlázás, képességek, korlátozások és támogatás
 Az alábbiakban néhány gyakori kérdést (GYIK) és azok válaszait olvashatja az Azure Machine Learning szolgáltatással kapcsolatban, amely egy, a webszolgáltatásokon keresztül végrehajtott prediktív modellezést és a megoldások üzembe helyezését célzó felhőalapú szolgáltatás. Ezek a gyakori kérdések a szolgáltatás használatával kapcsolatos kérdéseket fedik le, beleértve a számlázási modell, a képességek, a korlátozások és a támogatás témaköreit.
 
 **Kérdése van, és nem találja meg itt?**
@@ -30,12 +30,6 @@ Az alábbiakban néhány gyakori kérdést (GYIK) és azok válaszait olvashatja
 Az Azure Machine Learning egy közösségi fórummal is rendelkezik az MSDN-en, az adatelemzési közösség tagjai kérdéseket tehetnek fel az Azure Machine Learninggel kapcsolatban. A fórumot az Azure Machine Learning fejlesztőcsapata figyeli. Lépjen az [Azure Machine Learning fórumra](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning), és keresse meg a kívánt válaszokat, vagy tegyen fel egy új kérdést.
 
 ## <a name="general-questions"></a>Általános kérdések
-**Mi az Azure Machine Learning?**
-
-Az Azure Machine Learning egy olyan teljes körűen felügyelt szolgáltatás, amelynek segítségével megtervezheti, tesztelheti, üzembe helyezheti és felügyelheti a felhőalapú prediktív elemzési megoldásokat. Csupán egy böngésző szükséges ahhoz, hogy bejelentkezzen, feltöltse adatait, és azonnal nekiláthasson a gépi tanulási kísérletekhez. Az áthúzással működtethető prediktív modellezés, a modulok széles skálájának és a kezdősablonok gyűjteményének segítségével egyszerűen és gyorsan elvégezhetők az általános gépi tanulási feladatok. További információk: [Az Azure Machine Learning szolgáltatás áttekintése](https://azure.microsoft.com/services/machine-learning/). A gépi tanulás fontosabb szakkifejezéseit és alapfogalmait ismertető bevezetéshez olvassa el az [Azure Machine Learning használatának első lépéseit](what-is-machine-learning.md).
-
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
 **Mi a Machine Learning Studio?**
 
 A Machine Learning Studio egy böngészőn keresztül elérhető munkaterület-környezet. A Machine Learning Studio vizuális összeállítási interfészekkel rendelkező modulok sorát tartalmazza, amelyek lehetővé teszik, hogy egy teljes körű adatelemezési munkafolyamatot építsen egy kísérlet formájában.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 1f83dd64c7f6773ddb8956e6ebbc37b8c55aacec
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 2e072a27087f90bddd3f7c416904758e40c2f6b9
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423871"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425174"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>Oktatóanyag: Az Azure Active Directory-integráció a Facebook, a munkahelyi az
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása a munkahely által Facebook, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - A Facebook egyszeri bejelentkezés munkahelyi előfizetés engedélyezve van
 
 > [!NOTE]
@@ -62,7 +62,7 @@ Konfigurálása az Azure AD integrálása a munkahely által Facebook, hozzá ke
 
 **A Facebook munkahelyi hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -140,7 +140,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
    > [!NOTE] 
    > Az SAML-hitelesítési folyamat részeként a munkahelyi előfordulhat, hogy kihasználhassák a lekérdezési karakterláncok legfeljebb 2,5 kilobájt méretű annak érdekében, hogy az Azure AD át a paramétereket.
 
-1. Az a **céges irányítópult**, nyissa meg a **hitelesítési** lapon.
+1. Az a **felügyeleti Panel**, nyissa meg a **biztonsági** lapot, majd **hitelesítési**.
 
 1. A **SAML-hitelesítés**válassza **egyszeri bejelentkezés csak** a legördülő listából.
 

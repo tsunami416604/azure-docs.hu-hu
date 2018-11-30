@@ -1,5 +1,5 @@
 ---
-title: Az Azure Machine Learning – REST API-hibakódok |} A Microsoft Docs
+title: Az Azure Machine Learning Studio REST API-hibakódok |} A Microsoft Docs
 description: Az ezen hibakódok által az Azure Machine Learning webszolgáltatás-művelet sikerült visszaadni.
 keywords: ''
 services: machine-learning
@@ -17,16 +17,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: 92e85f123cc19d579a86d5cdedfaaf1df8c24e4c
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 274fbced61318a6617b04ea3092e8e2f96a10940
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263233"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314901"
 ---
-# <a name="machine-learning-rest-api-error-codes"></a>A Machine Learning – REST API-hibakódok
+# <a name="machine-learning-studio-rest-api-error-codes"></a>A Machine Learning Studio – REST API-t hibakódok
  
-Az alábbi hibakódok által az Azure Machine Learning webszolgáltatás-művelet sikerült visszaadni.
+Az alábbi hibakódok által az Azure Machine Learning Studio webszolgáltatás-művelet sikerült visszaadni.
  
 ## <a name="badargument-http-status-code-400"></a>BadArgument (HTTP-állapotkód: 400)
  

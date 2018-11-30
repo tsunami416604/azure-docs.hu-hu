@@ -8,12 +8,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 11/05/2018
 ms.author: spelluru
-ms.openlocfilehash: a000c599ecf8287af57aec2f6e9d550bbe61f280
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 8beb372c3fae567b23e51d2776dd9a79d837c657
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279881"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313833"
 ---
 # <a name="service-bus-faq"></a>Service Bus – GYIK
 
@@ -86,7 +86,7 @@ A Service Bus üzenetkezelési szolgáltatások (az üzenetsorok és üzenettém
 Lehetséges a Service Bus-kivételek listáját lásd: [kivételek áttekintése][Exceptions overview].
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>Mi az a közös hozzáférésű Jogosultságkód és nyelveket támogatja az aláírás létrehozásához?
-Közös hozzáférésű Jogosultságkódok olyan hitelesítési mechanizmust, SHA-256 kivonatokkal biztonságos vagy URI-k alapján. További információ a saját aláírásokat létrehozni az csomópont, PHP, Java vagy C\#, tekintse meg a [közös hozzáférési aláírások] [ Shared Access Signatures] cikk.
+Közös hozzáférésű Jogosultságkódok olyan hitelesítési mechanizmust, SHA-256 biztonságos kivonatok vagy URI-k alapján. További információ a saját aláírásokat létrehozni a Node.js, PHP, Java vagy C\#, tekintse meg a [közös hozzáférési aláírások] [ Shared Access Signatures] cikk.
 
 ## <a name="subscription-and-namespace-management"></a>Előfizetés és a névtér-kezelés
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Hogyan migrálhatom a névtér egy másik Azure-előfizetésre?

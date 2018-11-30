@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2018
 ms.author: rkarlin
-ms.openlocfilehash: 16291e4f4915dd6328a2015407fa06dc8f62fba1
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 10ff2118ade13980250608bf4bc238e8ff2f9c64
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011884"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312986"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – gyakori kérdések
 Ez a GYIK az Azure Security Center egy szolgáltatás, amellyel megelőzését, észlelését és háríthatja el a fenyegetéseket átláthatóbbá és a Microsoft Azure-erőforrások kézben kapcsolatos kérdésekre ad választ.
@@ -30,7 +30,7 @@ Ez a GYIK az Azure Security Center egy szolgáltatás, amellyel megelőzését, 
 >
 
 ## <a name="general-questions"></a>Általános kérdések
-### <a name="what-is-azure-security-center"></a>Mi az Azure Security Center?
+### <a name="what-is-azure-security-center"></a>Mi az az Azure Security Center?
 Az Azure Security Center magasabb fokú betekintést és szélesebb körű vezérlést tesz lehetővé az Azure-erőforrások fölött, így segít a fenyegetések megelőzésében, észlelésében és kezelésében. Az ügyfél összes előfizetésére kiterjedő, integrált biztonsági monitorozást és szabályzatkezelést biztosít, megkönnyíti a nehezen észlelhető fenyegetések azonosítását, és számos biztonsági megoldással együttműködik.
 
 ### <a name="how-do-i-get-azure-security-center"></a>Hogyan szerezhetem be az Azure Security Center?
@@ -42,7 +42,7 @@ A Security Center két szinten érhető el:
 
 A **ingyenes szint** biztonsági állapotát az Azure-erőforrások, az alapszintű biztonsági házirend, a biztonsági javaslatok és a integrációs rálátást biztosít a biztonsági termékeket és szolgáltatásokat partnereinktől.
 
-A **Standard szintű** hozzáadja a komplex veszélyforrások elleni képességeket tartalmaz, beleértve a fenyegetésészlelési intelligencia, a viselkedés-elemzés, a rendellenességek észlelése, a biztonsági incidensek és tesznek elérhetővé; ilyenek jelentések fenyegetés. A standard szint 60 napig ingyenesen használható. Válasszák 60 napos időszak letelte után a szolgáltatás használatát, automatikusan megkezdjük a megfelelő díj felszámítását.  Szeretné frissíteni, válassza ki a [Tarifacsomag](https://docs.microsoft.com/azure/security-center/security-center-pricing) a biztonsági szabályzatban.
+A **Standard szintű** hozzáadja a komplex veszélyforrások elleni képességeket tartalmaz, beleértve a fenyegetésészlelési intelligencia, a viselkedés-elemzés, a rendellenességek észlelése, a biztonsági incidensek és tesznek elérhetővé; ilyenek jelentések fenyegetés. A Standard szint az első 60 napban ingyenesen használható. Válasszák 60 napos időszak letelte után a szolgáltatás használatát, automatikusan megkezdjük a megfelelő díj felszámítását.  Szeretné frissíteni, válassza ki a [Tarifacsomag](https://docs.microsoft.com/azure/security-center/security-center-pricing) a biztonsági szabályzatban.
 
 ## <a name="permissions"></a>Engedélyek
 Az Azure Security Center [szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/role-assignments-portal.md) használ, amelynek [beépített szerepköreit](../role-based-access-control/built-in-roles.md) az Azure különböző csoportjaihoz, felhasználóihoz és szolgáltatásaihoz rendelheti.
@@ -137,7 +137,7 @@ Automatikus üzembe helyezés a biztonsági szabályzat az előfizetések ki is 
 
 1. Ha a Standard szintű előfizetése van konfigurálva, nyissa meg a biztonsági szabályzatot az adott előfizetéshez tartozó, és válassza ki a **ingyenes** szint.
 
-   ![Díjcsomag][1]
+   ![Tarifacsomag][1]
 
 2. Ezután kapcsolja ki az Automatikus kiépítés kiválasztásával **ki** a a **biztonsági szabályzat – adatgyűjtés** panelen.
    ![Adatgyűjtés][2]
@@ -167,7 +167,7 @@ A Microsoft Monitoring Agent manuálisan kell telepítenie, így a Security Cent
 
 Az ügynök csatlakozhat bármely meglévő egyéni munkaterületet, vagy a Security Center munkaterület létrehozása. Ha egy egyéni munkaterület nincs engedélyezve van, a "Security" vagy "SecurityCenterFree" megoldások, és a egy megoldást a alkalmazni kell. A alkalmazni, válassza ki az egyéni munkaterületet, vagy az előfizetés, és a tarifacsomag-n keresztül alkalmazza a **biztonsági szabályzat – tarifacsomag** panelen.
 
-   ![Díjcsomag][1]
+   ![Tarifacsomag][1]
 
 A Security Center lehetővé teszi a munkaterületen a kijelölt tarifacsomag alapján a megfelelő megoldást.
 
@@ -250,7 +250,7 @@ Az Azure Security Center meghajtó biztonsági javaslatok és a figyelés az eng
 ### <a name="who-can-modify-a-security-policy"></a>Ki módosíthatja a biztonsági szabályzatot?
 Biztonsági szabályzat módosításához a rendszergazda vagy a tulajdonosának vagy Közreműködőjének előfizetésben kell lennie.
 
-Biztonsági szabályzat konfigurálásával kapcsolatban lásd: [biztonsági szabályzatok beállítása az Azure Security Center](security-center-policies.md).
+Biztonsági szabályzat konfigurálásával kapcsolatban lásd: [biztonsági szabályzatok beállítása az Azure Security Center](security-center-azure-policy.md).
 
 ### <a name="what-is-a-security-recommendation"></a>Mi az a biztonsági javaslatok?
 Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. Ha az azonosított potenciális biztonsági réseket, javaslatok jönnek létre. A javaslatok végigvezetik a szükséges vezérlőt konfigurálásának folyamatán. Példák:
@@ -285,7 +285,7 @@ Az Azure Security Center figyeli a következő Azure-erőforrások:
 * Virtuális gépek (VM) (beleértve a [Cloud Services](../cloud-services/cloud-services-choose-me.md))
 * Azure virtuális hálózatok
 * Azure SQL service
-* Azure Storage-tárfiók neve
+* Azure Storage-fiók
 * Az Azure Web Apps (a [App Service Environment-környezet](../app-service/environment/intro.md))
 * Például a webalkalmazási tűzfal a virtuális gépek és az App Service Environment az Azure-előfizetésében integrált partnermegoldások
 

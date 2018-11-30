@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/24/2016
 ms.author: garye
-ms.openlocfilehash: 3f45f062cabaf31a10f24b01583575f5066bdaaf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 195776cda0005b3a79aa82220660fcc328f6ee98
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231532"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426254"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Cortana Intelligence megoldás sablon forgatókönyve a kereslet-előrejelzés, energia
 ## <a name="executive-summary"></a>Vezetői összefoglaló
@@ -122,7 +122,7 @@ Ez a táblázat is látható, fontos meglehetősen rövid és hosszú távú for
 ### <a name="example-use-case-1-esmart-systems--overload-optimization"></a>Példa használati 1. eset: eSmart rendszerek – a túlterhelési optimalizálása
 A fontos szerepet egy [intelligens](https://en.wikipedia.org/wiki/Smart_grid) dinamikus, folyamatosan optimalizálása, majd állítsa be a változó használati mintákat. Energiafogyasztás befolyásolja rövid távú módosításával, főleg hőmérséklet ingadozások által okozott (*például*, további power vezeték nélkül regisztrálja az állapot vagy a fűtésrendszerek szolgál). Egy időben hosszú távú trendek energiafogyasztás is befolyásol. Ezek közé tartozhatnak szezonalitás hatások, nemzeti ünnepek, hosszú távú használat növekedési és még gazdasági tényezők, például fogyasztói index, az olaj ár és a GDP.
 
-Az ezt a használati esetet [eSmart](http://www.esmartsystems.com/) szeretne telepíteni egy felhőalapú megoldás, amely lehetővé teszi, hogy a magasabb kategóriájú egy túlterhelési helyzet a bármely megadott állomás a rács előrejelzésére. Különösen eSmart szerette volna azonosítani, többek között alállomásokkal, amelyek valószínűleg túlterhelni a következő órán belül, így az azonnali intézkedést elkerüléséhez vagy megoldásához helyzet lehet hozni.
+Az ezt a használati esetet [eSmart](https://www.esmartsystems.com/) szeretne telepíteni egy felhőalapú megoldás, amely lehetővé teszi, hogy a magasabb kategóriájú egy túlterhelési helyzet a bármely megadott állomás a rács előrejelzésére. Különösen eSmart szerette volna azonosítani, többek között alállomásokkal, amelyek valószínűleg túlterhelni a következő órán belül, így az azonnali intézkedést elkerüléséhez vagy megoldásához helyzet lehet hozni.
 
 Pontos és előrejelzési gyors végrehajtása szükséges három prediktív modelleket végrehajtása:
 
@@ -365,7 +365,7 @@ Azt le a modellezési fázis rögzített, és a modellek teljesítményének ell
 Energia kereslet-előrejelzési keretein belül a célja, hogy folyamatos és rendszeres előrejelzések meghívása közben biztosítva, hogy a friss adatok érhető a modellhez és, hogy az adatokat küld vissza a fogyasztó ügyfél.
 
 ### <a name="web-services-deployment"></a>A webes szolgáltatások telepítése
-Az Azure Machine Learning fő üzembe helyezhető építőelem egy webes szolgáltatás. Ez az a leghatékonyabb megoldást választja ahhoz, hogy a felhőben egy prediktív modellt az felhasználását. A Web service magában foglalja a modell, és a értünk egy [RESTful](http://www.restapitutorial.com/) API (Application Programming Interface). Az API-t az alábbi ábrán szemléltetett módon ügyfél kód részeként is használható.
+Az Azure Machine Learning fő üzembe helyezhető építőelem egy webes szolgáltatás. Ez az a leghatékonyabb megoldást választja ahhoz, hogy a felhőben egy prediktív modellt az felhasználását. A Web service magában foglalja a modell, és a értünk egy [RESTful](https://www.restapitutorial.com/) API (Application Programming Interface). Az API-t az alábbi ábrán szemléltetett módon ügyfél kód részeként is használható.
 
 ![We szolgáltatásba, telepítés és használat](media/cortana-analytics-playbook-demand-forecasting-energy/web-service-deployment-and-consumption.png)
 

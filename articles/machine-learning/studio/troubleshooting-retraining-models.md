@@ -1,6 +1,6 @@
 ---
-title: Az Azure Machine Learning klasszikus webszolgáltatás átképezési hibaelhárítása |} A Microsoft Docs
-description: Azonosítsa és javítsa ki a gyakori problémák észlelt.%12%0, ha meg vannak átképezési a modell egy Azure Machine Learning Web Service számára.
+title: A Machine Learning Studio klasszikus webszolgáltatások – Azure átképezési hibaelhárítása |} A Microsoft Docs
+description: Azonosítsa és javítsa ki a gyakori problémák észlelt.%12%0, ha meg vannak átképezési a az Azure Machine Learning Studio webszolgáltatás-modell.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
-ms.openlocfilehash: 49a76729d38662667328632c83e98a1211438a98
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 1105b81d0f8ba80bd76bcdf140fe79b9e8a7102d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261701"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307202"
 ---
-# <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-classic-web-service"></a>Az Azure Machine Learning klasszikus webszolgáltatás átképezési hibaelhárítása
+# <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-studio-classic-web-service"></a>A klasszikus Azure Machine Learning Studio webszolgáltatás átképezési hibaelhárítása
 ## <a name="retraining-overview"></a>Megőrzési áttekintése
 Amikor telepít egy prediktív kísérletet pontozási webszolgáltatásként, egy statikus modellt. Az új adatok válnak elérhetővé, vagy ha a fogyasztói API-rendelkezik saját adataikat, a modell kell lennie retrained. 
 

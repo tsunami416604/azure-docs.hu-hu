@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 8bf87f9d1d1ab6da4b034890f1fbe058199eca41
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 4f86dee539e3cc5a90db828ed11dbd225a00555d
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007136"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334635"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Jelentkezzen be egy Linux rendszerű virtuális gép az Azure-ban az Azure Active Directory-hitelesítés (előzetes verzió)
 
@@ -39,11 +39,11 @@ Nincsenek számos előnnyel jár, jelentkezzen be az Azure-beli, Linux rendszer�
 
 - **Zökkenőmentes együttműködés:** With Role-Based hozzáférés-vezérlés (RBAC), is megadhat, aki bejelentkezhet egy adott virtuális gépre normál felhasználóként vagy rendszergazdai jogosultságokkal. Amikor a felhasználó csatlakozzon, vagy hagyja meg a csapat, frissítheti a virtuális gép megfelelő hozzáférést biztosít az RBAC házirend. Ez a tapasztalat jóval egyszerűbb, mint el kell távolítani a virtuális gépek eltávolítja a felesleges nyilvános SSH-kulcsokat, ha. Amikor az alkalmazottak elhagyják a szervezet és a felhasználói fiók le van tiltva vagy Azure AD-ből eltávolított, már nem rendelkeznek az erőforrásokhoz való hozzáférés.
 
-### <a name="supported-azure-regions-and-linux-distributions"></a>Támogatott Azure-régiók és a Linux-disztribúciók
+## <a name="supported-azure-regions-and-linux-distributions"></a>Támogatott Azure-régiók és a Linux-disztribúciók
 
 A következő Linux-disztribúció jelenleg a szolgáltatás az előzetes verzióban támogatja:
 
-| Terjesztés | Verzió |
+| Disztribúció | Verzió |
 | --- | --- |
 | CentOS | CentOS 6.9 és a CentOS 7.4 |
 | Debian | Debian 9 |

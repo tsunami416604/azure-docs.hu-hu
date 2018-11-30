@@ -10,17 +10,19 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: b4c58a13c8b66add8ebd7e535ecac9d7b0f1075b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1560b8e574b0932e258353648c73f030ef19d314
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032121"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52333496"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>A Batch példa utterances vannak beállítva tesztelése
+
  A LUIS a teljesítmény méréséhez az aktuális betanított modell egy átfogó teszt Batch tesztelés. 
 
 <a name="batch-testing"></a>
+
 ## <a name="import-a-dataset-file-for-batch-testing"></a>Egy batch teszteléséhez adatkészletfájlt importálása
 
 1. Válassza ki **teszt** felső sáv, és adja meg **Batch-tesztelési panel**.
@@ -36,6 +38,7 @@ ms.locfileid: "47032121"
 4. Válassza a **Done** (Kész) lehetőséget. Az adatkészlet fájlt adnak hozzá.
 
 ## <a name="run-rename-export-or-delete-dataset"></a>Futtassa, átnevezése, exportálhatja vagy adatkészlet törlése
+
 Futtassa, átnevezése, exportálhatja vagy törli az adatkészletet, használja a három pontra (***...*** ) gombra az adatkészlet sor végén található.
 
 ![Adatkészlet műveletek](./media/luis-how-to-batch-test/batch-testing-options.png)
@@ -55,7 +58,9 @@ A letölthető adatkészlet ugyanazt a fájlt, amely a feltöltött batch teszte
 |![Készen áll a teszt ikonja](./media/luis-how-to-batch-test/batch-test-result-blue.png)|Teszt készen áll a futásra.|
 
 <a name="access-batch-test-result-details-in-a-visualized-view"></a>
+
 ## <a name="view-batch-test-results"></a>Batch-teszt eredményeinek megtekintése 
+
 Válassza ki a batch-vizsgálati eredmények áttekintéséhez **eredmények megtekintéséhez**.
 
 ![A Batch terhelésiteszt-eredményei](./media/luis-how-to-batch-test/run-test-results.png)
@@ -64,6 +69,7 @@ Válassza ki a batch-vizsgálati eredmények áttekintéséhez **eredmények meg
 
 
 <a name="filter-chart-results-by-intent-or-entity"></a>  
+
 ## <a name="filter-chart-results"></a>Diagram eredmények szűréséhez
 
 A diagram egy adott szándékot vagy egy entitás szűréséhez válassza a leképezés vagy entitás a szűrési jobb oldali panelen. Az adatok és a terjesztési frissítse a grafikon a kijelölés alapján. 
@@ -71,6 +77,7 @@ A diagram egy adott szándékot vagy egy entitás szűréséhez válassza a lek�
 ![A Batch teszi teszteredménye](./media/luis-how-to-batch-test/filter-by-entity.png) 
 
 ## <a name="view-single-point-utterance-data"></a>Pont utterance (kifejezés) adatok megtekintése
+
 A diagram egy adatpontra, az előrejelzési bizonyossággal pontszám mutasson. Válasszon ki egy adatpontot beolvasni a megfelelő utterance (kifejezés) a kimondott szöveg lista az oldal alján. 
 
 ![Kiválasztott utterance (kifejezés)](./media/luis-how-to-batch-test/selected-utterance.png)
@@ -78,7 +85,9 @@ A diagram egy adatpontra, az előrejelzési bizonyossággal pontszám mutasson. 
 
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
+
 ## <a name="view-section-data"></a>A szakasz adatok megtekintése
+
 A négy szakaszt tartalmazó diagram, válassza ki a szakasz nevét, például **hamis pozitív** , a jobb felső sarkában a diagramot. A diagram alatt található összes kimondott szöveg megjelenítése a diagram egy lista alatt. 
 
 ![A szakasz által kiválasztott kimondott szöveg](./media/luis-how-to-batch-test/selected-utterances-by-section.png)

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 7f553300ce87ad24042e4d75b2e6e3742125783b
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 34b2658ef4b25b3d545932ceffd2f3cf8969034e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284625"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309362"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: az Azure AD join implementáció megtervezésébe
 
@@ -62,7 +62,7 @@ A hibrid Azure AD-megvalósítás megtervezése, meg kell ismerkednie az:
 Hibrid Azure AD-csatlakozás lehet, hogy az egyes elsődleges forgatókönyvek, amíg az Azure AD-csatlakozás lehetővé teszi a Windows-és felhőközpontú modell felé történő átmenet. Ha azt tervezi, korszerűsítheti az eszközök felügyelete, és csökkentheti informatikai költségeit eszközzel kapcsolatos, az Azure AD-csatlakozás kiindulási alapként nagyszerű célok elérése érdekében.  
 
  
-Ha összhangba kerüljenek a céljai elérése érdekében érdemes az Azure AD-csatlakozás a a következő feltételeknek:
+Az Azure AD-csatlakozás kell figyelembe vennie, ha az Ön céljaihoz igazítása a következő feltételek:
 
 - A felhasználók vannak bevezetése a Microsoft 365, a hatékonyságnövelő programcsomagot.
 
@@ -95,12 +95,14 @@ Egy összevont környezetben, amely támogatja a WS-Trust, mind a WS-Fed protoko
 
 - **WS-Trust:** ezen protokoll megadása kötelező bejelentkezni egy az Azure AD-csatlakoztatott eszközön. 
 
-Ha az identitásszolgáltató nem támogatja ezeket a protokollokat, az Azure AD-csatlakozás nem natív módon működik. A Windows 10-es 1809 verziótól kezdve a felhasználók bejelentkezhet egy Azure AD-csatlakoztatott eszközre a SAML-alapú identitásszolgáltatóval keresztül egy [jelentkezzen be a Windows 10-es webalkalmazás](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10). 
+Ha az identitásszolgáltató nem támogatja ezeket a protokollokat, az Azure AD-csatlakozás nem natív módon működik. A Windows 10-es 1809 verziótól kezdve a felhasználók bejelentkezhet egy Azure AD-csatlakoztatott eszközre a SAML-alapú identitásszolgáltatóval keresztül [jelentkezzen be a Windows 10-es webalkalmazás](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10). Webes bejelentkezés jelenleg csak előzetes funkció.
 
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>Intelligens kártyák és a Tanúsítványalapú hitelesítés
 
 Intelligens kártyák vagy Tanúsítványalapú hitelesítés nem használható eszközök csatlakoztatása az Azure ad-ben. Intelligens kártyák azonban használható az Azure AD-csatlakoztatott eszközök bejelentkezni, ha az AD FS konfigurálva van.
+
+**Javaslat:** megvalósítása Windows Hello for Business erős, a jelszó nélküli hitelesítés Windows 10 rendszerű eszközökre.
 
 
 ### <a name="user-configuration"></a>Felhasználó konfigurációja
@@ -209,7 +211,9 @@ Az Azure AD-csatlakoztatott eszközök nem támogatják a helyszíni alkalmazás
 
 **Javaslat:** fontolja meg ezek az alkalmazások kivonása és a modern alternatívák áthelyezése.
 
+### <a name="remote-desktop-services"></a>Távoli asztali szolgáltatások
 
+Az Azure AD-csatlakoztatott eszközök távoli asztali kapcsolatot igényel a gazdagépen vagy az Azure AD-hez csatlakoztatott kell vagy hibrid Azure AD-hez. A távoli asztal nem csatlakozó vagy nem Windows-eszközről nem támogatott. További információkért lásd: [távoli az Azure ad Connect csatlakozó számítógépek](https://docs.microsoft.com/en-us/windows/client-management/connect-to-remote-aadj-pc)
 
 
 ## <a name="understand-your-provisioning-options"></a>Az üzembe helyezési lehetőségek ismertetése

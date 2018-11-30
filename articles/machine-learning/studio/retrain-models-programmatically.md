@@ -1,5 +1,5 @@
 ---
-title: Machine Learning-modellek újbóli betanítása |} A Microsoft Docs
+title: Modellek újbóli betanítása Machine Learning Studio – Azure |} A Microsoft Docs
 description: Ismerje meg, hogyan programozott módon modellek szoftveres átképezése és frissíteni a webszolgáltatást a újonnan betanított modell használata az Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
@@ -16,15 +16,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 2dd72446bd1238b7c70535bf848d52909f82d990
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: b38143fe6f1f1cf3e65a2989e1b0a71c28530b2a
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262227"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313385"
 ---
-# <a name="retrain-machine-learning-models-programmatically"></a>Azure Machine Learning-modellek szoftveres átképezése
-Ebben a forgatókönyvben megtudhatja, hogyan programozott újratanítás PowerShell az Azure Machine Learning Web Service használatával történő C# és a Machine Learning Batch Execution service.
+# <a name="retrain-machine-learning-studio-models-programmatically"></a>A Machine Learning Studio-modellek újbóli betanítása
+Ebben a forgatókönyvben megtudhatja, hogyan való programozott újratanítás PowerShell használatával az Azure Machine Learning Studio webes szolgáltatás C# és a Machine Learning Batch Execution service.
 
 Ha a modell rendelkezik retrained, a következő forgatókönyvek bemutatják, hogyan a prediktív webszolgáltatásait a modell frissítése:
 

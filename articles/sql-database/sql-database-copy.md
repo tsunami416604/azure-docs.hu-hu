@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 639795824bf75bb99d34f12d4dfc4e0695341986
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: f3da1a8cef5abc8fd30a0dc7760005ad5fff5446
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868412"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335369"
 ---
 # <a name="copy-an-transactionally-consistent-copy-of-an-azure-sql-database"></a>Egy tranzakciós szempontból konzisztens másolatot készít egy Azure SQL database másolása
 
@@ -26,6 +26,9 @@ Az Azure SQL Database egy meglévő Azure SQL database tranzakciós szempontból
 ## <a name="overview"></a>Áttekintés
 
 Adatbázis-másolat a Másolás kérés időpontjában a forrásadatbázis pillanatképét. Kiválaszthatja, hogy ugyanazon a kiszolgálón vagy egy másik kiszolgálóra, szolgáltatásszintet és számítási mérete vagy a különböző számítási méret ugyanazon a szolgáltatásszinten (kiadás) belül. A Másolás befejezése után egy teljesen működőképes, független adatbázis válik. Ezen a ponton frissítse vagy Visszaléptetés a bármely verzióra. A bejelentkezések, felhasználók és engedélyek egymástól függetlenül is felügyelhetők.  
+
+> [!NOTE]
+> [Adatbázisok biztonsági mentése automatikus](sql-database-automated-backups.md) adatbázis-másolat létrehozásakor használt.
 
 ## <a name="logins-in-the-database-copy"></a>Az adatbázis-másolat a bejelentkezések
 

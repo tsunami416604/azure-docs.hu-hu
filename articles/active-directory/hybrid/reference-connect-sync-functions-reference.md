@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2302061d5a3eaf9ef51543b1304104e2dbe54bd9
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cb6f74a1de3e91868d7b20563a790352486862ee
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312906"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425693"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Az Azure AD Connect szinkronizálása: Functions – referencia
 Az Azure AD Connectben a funkciók a szinkronizálás során egy attribútumérték módosítására szolgálnak.  
@@ -600,7 +600,7 @@ A FormatDateTime függvény segítségével egy karakterláncot egy dátum és i
 * formátum: a formátum konvertálása képviselő karakterláncot.
 
 **Megjegyzés:**  
-A lehetséges értékek a formátum itt található: [felhasználó által megadott dátum/idő-formátumok (Format függvény)](http://msdn2.microsoft.com/library/73ctwf33\(VS.90\).aspx)
+A lehetséges értékek a formátum itt található: [felhasználó által megadott dátum/idő-formátumok (Format függvény)](https://msdn2.microsoft.com/library/73ctwf33\(VS.90\).aspx)
 
 **Példa**  
 
@@ -1013,7 +1013,7 @@ A PadRight függvény jobb-dolgozniuk egy karakterláncot egy megadott Kitöltő
 **Megjegyzés:**
 
 * Ha a karakterlánc hossza kisebb, mint a hossza, majd padCharacter ismételten hozzáfűzi végén (jobb oldali) karakterlánc hossza egyenlő hossza, amíg.
-* padCharacter szóköz karakter lehet, de nem lehet null értékű.
+* PadCharacter szóköz karakter lehet, de nem lehet null értékű.
 * Ha a karakterlánc hossza hossza nagyobb vagy azzal egyenlőnek, karakterlánc visszaadott változatlan marad.
 * Ha a karakterlánc hossza nagyobb vagy egyenlő, hosszra, azonos karakterláncot karakterláncként adja vissza.
 * Ha a karakterlánc hossza kisebb, mint a hossza, majd egy új karakterlánc a kívánt hosszát adja vissza egy padCharacter számokhoz tartalmazó karakterlánc.

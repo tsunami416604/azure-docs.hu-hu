@@ -1,5 +1,5 @@
 ---
-title: What's new in Azure Machine Learning Studióban |} A Microsoft Docs
+title: Mi az új Azure Machine Learning studióban? | Microsoft Docs
 description: Az Azure Machine Learning Studióban elérhető új szolgáltatások.
 services: machine-learning
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/28/2018
-ms.openlocfilehash: 4def0f066f91226b30d09e885a9a39e74e50996d
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: c93bb9a2fa7991df265b4767585d920c137a436d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262508"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311143"
 ---
-# <a name="whats-new-in-azure-machine-learning-studio"></a>What's New in Azure Machine Learning Studióban
+# <a name="whats-new-in-azure-machine-learning-studio"></a>Mi az új Azure Machine Learning studióban?
 
 ## <a name="october-2018"></a>2018. október
 

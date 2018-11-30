@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: fdac7d1fd7fbcea28d6ce8e614e4968f168566ba
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3e1acb714cfc1c059f8d02240c2a6d49be9f4971
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010587"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335282"
 ---
 # <a name="custom-fields-in-log-analytics"></a>A Log Analytics egyéni mezők
 A **egyéni mezők** Log Analytics szolgáltatása lehetővé teszi, hogy a saját kereshető mezők hozzáadásával a Log Analytics meglévő rekordok.  Egyéni mezők automatikusan tölti be más tulajdonságokat ugyanazt a rekordot a kinyert adatokkal.
@@ -81,7 +81,7 @@ A felügyeleti csoportban az összes egyéni mezők listáját megtekintheti a *
 Kétféleképpen egyéni mező eltávolítása.  Az első a **eltávolítása** lehetőséget az egyes mezőkhöz, amikor a teljes lista megtekintése a fent leírtak szerint.  A más módon, hogy egy rekord lekérése, és kattintson a gombra a mező balra.  A menüben a egyéni mező eltávolítása lehetőség lesz.
 
 ## <a name="sample-walkthrough"></a>Mintaútmutató
-A következő szakasz bemutatja egy egyéni mezőt hoz létre teljes példát.  Ebben a példában kibontja a szolgáltatás nevének a Windows-eseményeket, amelyek jelzik a szolgáltatás állapotának módosítása.  Ez a Service Control Manager által létrehozott Windows-számítógépeken a rendszernapló-események támaszkodik.  Ha azt szeretné, kövesse az ebben a példában, kell lennie [rendszernapló információk események gyűjtése a](log-analytics-data-sources-windows-events.md).
+A következő szakasz bemutatja egy egyéni mezőt hoz létre teljes példát.  Ebben a példában kibontja a szolgáltatás nevének a Windows-eseményeket, amelyek jelzik a szolgáltatás állapotának módosítása.  Ez a Service Control Manager által létrehozott Windows-számítógépeken a rendszernapló-események támaszkodik.  Ha azt szeretné, kövesse az ebben a példában, kell lennie [rendszernapló információk események gyűjtése a](../azure-monitor/platform/data-sources-windows-events.md).
 
 Azt adja meg a következő lekérdezés az összes esemény vissza a szolgáltatásvezérlő 7036-esemény azonosítója, amelyre az esemény azt jelzi, hogy a szolgáltatás indítása vagy leállítása rendelkező.
 
@@ -141,5 +141,5 @@ Mi most már használhatja az egyéni mező, mint bármely más rekord tulajdons
 
 ## <a name="next-steps"></a>További lépések
 * Ismerje meg [naplókereséseket](log-analytics-queries.md) építhetők fel lekérdezések egyéni mezők feltétel használatával.
-* A figyelő [egyéni naplófájlok](log-analytics-data-sources-custom-logs.md) , amely elemezni a egyéni mezőkkel.
+* A figyelő [egyéni naplófájlok](../azure-monitor/platform/data-sources-custom-logs.md) , amely elemezni a egyéni mezőkkel.
 

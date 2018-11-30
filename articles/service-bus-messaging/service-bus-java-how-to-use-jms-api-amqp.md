@@ -1,6 +1,6 @@
 ---
 title: Az AMQP 1.0 használata a Java Service Bus API |} A Microsoft Docs
-description: Hogyan használható a Java Message Service (JMS) az Azure Service Bus és az Advanced Message Queuing Protodol AMQP 1.0.
+description: Hogyan használható a Java Message Service (JMS) az Azure Service Bus és az Advanced Message Queuing AMQP protokoll 1.0-s.
 services: service-bus-messaging
 documentationcenter: java
 author: spelluru
@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: spelluru
-ms.openlocfilehash: 9a223c67e0c1f2e71d2953be63924a114e7420af
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: fbd74b227afd2191616100d74c7864eacf015add
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018230"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308070"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>A Service Bus és az AMQP 1.0-t a Java Message Service (JMS) API használata
 A speciális Message Queuing AMQP protokoll 1.0-s egy hatékony, megbízható, alkalmazásszintű üzenetkezelő protokoll, amely nagy teherbírású, többplatformos üzenetkezelési alkalmazások létrehozásához használható.
@@ -66,7 +66,7 @@ queue.QUEUE = queue1
 #### <a name="setup-jndi-context-and-configure-the-connectionfactory"></a>JNDI környezet telepítése és konfigurálása a ConnectionFactory
 
 A **ConnectionString** érhető el a "megosztott hozzáférési szabályzatokat" egy hivatkozott a [az Azure Portal](https://portal.azure.com) alatt **elsődleges kapcsolati karakterlánc**
-```
+```java
 // The connection string builder is the only part of the azure-servicebus SDK library
 // we use in this JMS sample and for the purpose of robustly parsing the Service Bus 
 // connection string. 
@@ -89,7 +89,7 @@ Destination queue = (Destination) context.lookup("QUEUE");
 A használt határozhat meg a célhelyet a Qpid tulajdonságok JNDI szolgáltató bejegyzés van a következő formátumban:
 
 Az előállítói - a cél várólista létrehozása 
-```
+```java
 String queueName = "queueName";
 Destination queue = (Destination) queueName;
 
@@ -103,7 +103,7 @@ MessageProducer producer = session.createProducer(queue);
 ```
 
 A fogyasztók - cél várólista létrehozása 
-```
+```java
 String queueName = "queueName";
 Destination queue = (Destination) queueName;
 
@@ -297,7 +297,7 @@ public class JmsQueueQuickstart {
 ```
 
 ### <a name="run-the-application"></a>Az alkalmazás futtatása
-Adja át a **kapcsolati karakterlánc** származó a megosztott hozzáférést az alkalmazás futtatásához.
+Adja át a **kapcsolati karakterlánc** , a megosztott hozzáférési házirendek az alkalmazás futtatásához.
 Alább van az alkalmazás futtatásával a kimenet a következő formában:
 
 ```
@@ -351,7 +351,7 @@ A következő korlátozások érvényesek a JMS nevezetesen keresztül a Service
 
 Emellett Azure Service Bus bontja a vezérlősík az adatsík a, és ezért nem támogatja a több JMS meg topológia dinamikus funkciók:
 
-| A metódus nem támogatott          | cserélje le                                                                             |
+| A metódus nem támogatott          | Csere erre                                                                             |
 |-----------------------------|------------------------------------------------------------------------------------------|
 | createDurableSubscriber     | Hozzon létre egy témakör-előfizetésben, az üzenet választó portolása                                 |
 | createDurableConsumer       | Hozzon létre egy témakör-előfizetésben, az üzenet választó portolása                                 |

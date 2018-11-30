@@ -4,17 +4,17 @@ description: Ez a cikk végigvezeti az Azure PowerShellhez szükséges Resource 
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 11/27/2018
 ms.topic: quickstart
 ms.service: resource-graph
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 001805aaf87ed6c3481a8ad8378cdc22ef74d274
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
+ms.openlocfilehash: 6bd7ceaeaf0b064ebbd8f069a4741489349bb980
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646388"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427505"
 ---
 # <a name="run-your-first-resource-graph-query-using-azure-powershell"></a>Az első Resource Graph-lekérdezés futtatása az Azure PowerShell használatával
 
@@ -37,9 +37,6 @@ Az Azure Resource Graph modulhoz az alábbi szoftverek szükségesek:
   - A PowerShell Core esetében használja az Azure PowerShell modul **Az** verzióját.
 
   - A Windows PowerShell esetében használja az Azure PowerShell modul **AzureRm** verzióját.
-
-  > [!NOTE]
-  > A modul a Cloud Shellben való telepítése jelenleg nem javasolt.
 
 - PowerShellGet 2.0.1-es vagy újabb verzió. Ha nincs telepítve vagy frissítve, kövesse [ezeket az utasításokat](/powershell/gallery/installing-psget).
 

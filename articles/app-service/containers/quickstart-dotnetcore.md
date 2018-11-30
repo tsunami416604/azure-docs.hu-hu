@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 04/11/2018
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 1345d4c4d349ed2fa5bb95ee35299c77fb391359
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
-ms.translationtype: HT
+ms.openlocfilehash: 5aff783735d38a2707f42efe8a1632bd5aaafc4b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42884985"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316769"
 ---
 # <a name="create-a-net-core-web-app-in-app-service-on-linux"></a>.NET Core-webalkalmazás létrehozása Linuxon futó App Service-ben
 
@@ -66,7 +66,6 @@ Futtassa helyileg az alkalmazást, hogy lássa, hogyan fog kinézni az Azure-ban
 Állítsa vissza a NuGet-csomagokat, és futtassa az alkalmazást.
 
 ```bash
-dotnet restore
 dotnet run
 ```
 

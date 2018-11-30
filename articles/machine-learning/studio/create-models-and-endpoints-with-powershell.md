@@ -1,5 +1,5 @@
 ---
-title: Több modell létrehozása egy kísérletből |} A Microsoft Docs
+title: Több modell létrehozása egy kísérletből – Azure Machine Learning Studióban |} A Microsoft Docs
 description: A powershellel hozhat létre több Machine Learning-modellek és webszolgáltatás Szolgáltatásvégpontok ugyanazt az algoritmust, de a különböző képzési adathalmazok alapján.
 services: machine-learning
 documentationcenter: ''
@@ -16,14 +16,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
-ms.openlocfilehash: c3ba87459c8c24a948683319f6b3ab54436c88e1
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: e1a6eb4f61869c3c6299011c46a5953f93cc7305
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262371"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316565"
 ---
-# <a name="create-many-machine-learning-models-and-web-service-endpoints-from-one-experiment-using-powershell"></a>Több Machine Learning-modellek és webszolgáltatás-végpont létrehozása egy kísérletből a PowerShell használatával
+# <a name="azure-machine-learning-studio-use-powershell-to-create-many-models-and-web-service-endpoints-from-one-experiment"></a>Az Azure Machine Learning Studio: Használja a Powershellt számos modelleket és webes szolgáltatás végpontok létrehozása egy kísérletből
+
 Íme a machine learning gyakran okoz problémát: szeretne létrehozni, amelyek ugyanabban a munkafolyamatban képzés és az azonos algoritmust használja számos modellt. De azt szeretné, hogy különböző képzési adathalmazok alapján bemenetként. Ez a cikk bemutatja, hogyan ipari méretekben az Azure Machine Learning Studióban ehhez csupán egyetlen kísérletben használatával.
 
 Például tegyük fel, a saját egy globális uci kerékpárkölcsönzési névhasználati üzleti. Szeretné az előzményadatok alapján bérleti kereslet előrejelzésére regressziós modell létrehozása. 1000 bérleti helyek rendelkezik világszerte, és egy adatkészletet, mindegyik helyen már összegyűjtött. Fontos szolgáltatások például a dátum, idő, időjárás és a forgalom és az egyes helyekre vonatkozó tartalmazzák.

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: cherylmc
 ms.openlocfilehash: 9d41ab26876d464187466f566bbfafc4861c799d
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51708752"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52333260"
 ---
 # <a name="configure-expressroute-global-reach-using-azure-cli-preview"></a>Konfigurálja az ExpressRoute globális elérhetőség az Azure CLI (előzetes verzió) használatával
 Ez a cikk segít konfigurálása ExpressRoute globális elérhetőségű Azure CLI használatával. További információkért lásd: [ExpressRouteRoute globális elérhetőségű](expressroute-global-reach.md).

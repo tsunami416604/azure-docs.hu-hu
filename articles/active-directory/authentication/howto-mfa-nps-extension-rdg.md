@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 7fb69fd52c03300ee554fd903cba1670f2aa2421
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 10b2b6e67c22efaf1dcab2cfe8abdd42b7576dbc
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318605"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426067"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>A távoli asztali átjáró-infrastruktúra használata a hálózati házirend-kiszolgáló (NPS) bővítmény és az Azure AD integrálása
 
@@ -359,7 +359,7 @@ Hajtsa végre a Speciális beállítások hibaelhárítása, tekintse meg a hál
 
 Ezek leírását naplófájljainak listájáért lásd [értelmezése NPS naplófájlok](https://technet.microsoft.com/library/cc771748.aspx). Ezekben a naplófájlokban lévő bejegyzéseket nehéz értelmezni anélkül, hogy importálná őket egy külön táblázatban vagy az adatbázis is lehet. Több IAS elemzők online megtalálhatja a segítséget nyújtanak a naplófájlok értelmezése. 
 
-Az alábbi képen látható a kimenet egy ilyen letölthető [shareware alkalmazás](http://www.deepsoftware.com/iasviewer). 
+Az alábbi képen látható a kimenet egy ilyen letölthető [shareware alkalmazás](https://www.deepsoftware.com/iasviewer). 
 
 ![Shareware alkalmazás](./media/howto-mfa-nps-extension-rdg/image35.png)
 

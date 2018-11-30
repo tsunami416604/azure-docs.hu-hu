@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 5416c8ada8fcc7f630d68f223b88c50209d14438
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 2713f48ce490aa42b6b1aa4e69a71f8f8053d1fb
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296396"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426204"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Hogyan működik: az Azure AD önkiszolgáló jelszó-visszaállítás
 
@@ -189,7 +189,7 @@ Az összes-vállalatközi (B2B) konfiguráció teljes mértékben támogatottak 
    * **Felhasználók, akik keresztül regisztrálnak** önkiszolgáló: Ha a szervezet, hogy partneri használt a [önkiszolgáló](../users-groups-roles/directory-self-service-signup.md) kerülnek a bérlőt a funkciót, azt, hogy értesítse az e-mail-címével, azok regisztrálva a jelszó alaphelyzetbe állítása.
    * **B2B-felhasználók**: minden olyan új B2B-felhasználók hozta létre az új [Azure AD B2B-funkciói](../active-directory-b2b-what-is-azure-ad-b2b.md) is elérhetik a jelszavaikat az e-mailt, azok regisztrálva a meghívó folyamat során.
 
-Ez a forgatókönyv teszteléséhez nyissa meg http://passwordreset.microsoftonline.com egy partner felhasználók. Ha egy másodlagos vagy hitelesítési e-mail meghatározott rendelkeznek, új jelszó kérésének módja elvárt módon.
+Ez a forgatókönyv teszteléséhez nyissa meg https://passwordreset.microsoftonline.com egy partner felhasználók. Ha egy másodlagos vagy hitelesítési e-mail meghatározott rendelkeznek, új jelszó kérésének módja elvárt módon.
 
 > [!NOTE]
 > Kapott a vendéghozzáférés az Azure AD-bérlőhöz, a Hotmail.com, Outlook.com vagy más személyes e-mail-címeket, például a Microsoft-fiókok, amelyek nem használhatják az Azure AD SSPR. Szükségük van a jelszó átállításának található információk segítségével a [mikor nem jelentkezhet be Microsoft-fiókjába](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikk.

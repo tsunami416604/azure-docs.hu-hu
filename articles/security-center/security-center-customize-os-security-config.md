@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 11/26/2018
 ms.author: rkarlin
-ms.openlocfilehash: 925f45f8d251882cfc8acf4b04902cea45451dd4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 91ee57ccd676d1d5e806e3f22eed3389d0fe5e73
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007255"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334193"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Testre szabhatja az operációs rendszer biztonsági konfigurációival az Azure Security Centerben (előzetes verzió)
 
@@ -32,7 +32,7 @@ Az Azure Security Center biztonsági konfigurációk figyeli egy alkalmazásáva
 A szabályok testreszabásával, szervezetek szabályozhatja, hogy melyik konfigurációs lehetőségek a környezetnek jobban megfelelő. Testre szabott értékelés házirend beállítása, és alkalmazza azt az előfizetés összes érvényes gépeken.
 
 > [!NOTE]
-> - Jelenleg az operációs rendszer biztonsági konfigurációs testre szabhatja a Windows Server 2008, 2008 R2, 2012 és 2012 R2 verziók operációs rendszerek csak érhető el.
+> - Jelenleg az operációs rendszer biztonsági konfigurációs testre szabhatja a Windows Server 2008, 2008 R2, 2012, 2012 R2 és 2016 operációs rendszerek csak érhető el.
 > - A konfigurálás érvényes lesz minden olyan virtuális gépek és a kiválasztott előfizetésben található összes munkaterülethez csatlakoztatott számítógép.
 > - Az operációs rendszer biztonsági konfigurációs testreszabása csak a Security Center standard szinten érhető el.
 >
@@ -60,7 +60,7 @@ Testre szabhatja az alapértelmezett operációs rendszer biztonsági konfigurá
 3.  Az előfizetés testre szeretné szabni a sorban kattintson **beállításainak szerkesztése**.
 
 4. Válassza ki **biztonsági konfigurációk szerkesztése**.  
-    
+
     ![A "Biztonsági konfigurációk szerkesztése" ablak](media/security-center-customize-os-security-config/blade.png)
 
 5. Kövesse a lépéseket letöltése, szerkesztheti, és töltse fel a módosított fájlt.

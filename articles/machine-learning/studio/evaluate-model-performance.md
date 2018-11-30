@@ -1,6 +1,6 @@
 ---
-title: A Machine Learning modellek teljesítményének kiértékelése |} A Microsoft Docs
-description: Ismerteti az Azure Machine Learning modellek teljesítményének elemzése.
+title: Modellek teljesítményének – az Azure Machine Learning Studio elemzése |} A Microsoft Docs
+description: Ez a cikk bemutatja, hogyan lehet egy modellt az Azure Machine Learning Studióban teljesítményét értékeli, és amely röviden elmagyarázza, a metrikák elérhető ez a feladat biztosít.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 98704f00c6b086772d9e0440ace79c3ca713f13a
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: de013f8deb5e64077aad96bd34d64135f981166d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261600"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311495"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning"></a>A modellek teljesítményének kiértékelése az Azure Machine Learning rendszerben
 Ez a cikk bemutatja, hogyan lehet egy modellt az Azure Machine Learning Studióban teljesítményét értékeli, és amely röviden elmagyarázza, a metrikák elérhető ez a feladat biztosít. Három gyakori felügyelt tanítás forgatókönyvek jelennek meg: 
@@ -39,7 +39,7 @@ Az Azure Machine Learning támogatja a modell értékelése keresztül két a f�
 ## <a name="evaluation-vs-cross-validation"></a>Értékelés vs. Keresztellenőrzés
 Kiértékelési és a keresztellenőrzési a modell a teljesítmény méréséhez szokásos módon. Értékelési mérőszámok, vizsgálja meg, vagy más modellek az összehasonlításhoz mindkettő létre.
 
-[Modell értékelése] [ evaluate-model] vár egy pontozott adatkészlet bemeneti (vagy 2 különböző modellek teljesítményének összehasonlítását szeretné esetben 2). Ez azt jelenti, hogy kell-e be a modell használatával a [Train Model] [ train-model] modul és a márka alapján történő néhány adatkészlet használatával a [Score Model] [ score-model]modult, mielőtt kiértékelheti az eredményeket. Az értékelés alapján a pontozott címkék/valószínűség együtt a valódi címkéket, amelyek mindegyike vannak kimenetét a [Score Model] [ score-model] modul.
+[Modell értékelése] [ evaluate-model] vár egy pontozott adatkészlet bemeneti (vagy 2 abban az esetben két különböző modellek teljesítményének összehasonlítását szeretné). Ez azt jelenti, hogy kell-e be a modell használatával a [Train Model] [ train-model] modul és a márka alapján történő néhány adatkészlet használatával a [Score Model] [ score-model]modult, mielőtt kiértékelheti az eredményeket. Az értékelés alapján a pontozott címkék/valószínűség együtt a valódi címkéket, amelyek mindegyike vannak kimenetét a [Score Model] [ score-model] modul.
 
 Azt is megteheti használhatja keresztellenőrzési végrehajtásához egy train-pontszám kiértékelése műveletek (10 modellrész) száma automatikusan a bemeneti adatok különböző alkészleteiben. A bemeneti adatok 10 részei, ahol egy foglalt teszteléséhez, és a többi 9 képzéshez van felosztva. Ez a folyamat ismétlődik 10 alkalommal és átlagolja az értékelési mérőszámok. Ez segít arról, hogy a modell új adatkészletekhez szeretné generalize meghatározása. A [Halmazokra modell] [ cross-validate-model] modul egy kellő modell és néhány megcímkézett adatkészletet, és kiírja a 10 modellrész átlagolt eredmények mellett minden egyes kiértékelési eredményeit.
 
@@ -66,7 +66,7 @@ Csatlakozás a portokat, 1. ábra az alábbiak szerint, és állítsa be a címk
 ### <a name="inspecting-the-evaluation-results"></a>A kiértékelés eredményeinek vizsgálata
 Miután a kísérletet, kattintson a kimeneti portjára, a a [Evaluate Model] [ evaluate-model] modul, és válassza ki *Visualize* az értékelési eredmények megtekintéséhez. A kiértékelés metrikák elérhető regressziós modellek: *Mean Absolute Error*, *Root Mean Absolute Error*, *relatív Absolute Error*,  *Relatív négyzet hiba*, és a *Coefficient of Determination*.
 
-Az előfizetési időszak "error" Itt az előre jelzett érték és a true érték közötti eltérést jelöli. Az abszolút értékét, vagy ez a különbség négyzetes általában számítja ki teljes mértékű hiba rögzítése minden példányára, lehet, hogy az előre jelzett és a true érték közötti különbség bizonyos esetekben negatív. A hiba metrikák mérik a prediktív teljesítmény szempontjából az előrejelzések a valódi értékek középértékét összehasonlítással regressziós modell. Alacsonyabb hibaértékek jelenti azt, hogy a modell a pontos előrejelzések készítése során. Egy általános hiba mérőszám értéke a 0 azt jelenti, hogy a modell tökéletesen megfelel-e az adatokat.
+Az előfizetési időszak "error" Itt az előre jelzett érték és a true érték közötti eltérést jelöli. Az abszolút értékét, vagy ez a különbség négyzetes általában számított hiba teljes mértékű rögzítése minden példányára, lehet, hogy az előre jelzett és a true érték közötti különbség bizonyos esetekben negatív. A hiba metrikák mérik a prediktív teljesítmény szempontjából az előrejelzések a valódi értékek középértékét összehasonlítással regressziós modell. Alacsonyabb hibaértékek jelenti azt, hogy a modell a pontos előrejelzések készítése során. Egy általános hiba a mérőszám értéke nulla, az azt jelenti, hogy a modell tökéletesen megfelel-e az adatokat.
 
 A relatív meghatározása, amely más néven az R-négyzet, is mérési arról, hogy a modell megfelel-e az adatok szabványos módon. Is kell értelmezni az időarány, amíg a módosítás a modell ismertetése. Magasabb szintű ebben az esetben jobb részét, ahol az 1 azt jelzi, hogy tökéletes választás.
 
@@ -75,7 +75,7 @@ A relatív meghatározása, amely más néven az R-négyzet, is mérési arról,
 2. ábra Lineáris regresszió értékelési mérőszámok.
 
 ### <a name="using-cross-validation"></a>Közötti érvényesítése
-Ahogy korábban említettük, végezhet ismételt betanítási, pontozási és értékelések használatával automatikusan a [Halmazokra modell] [ cross-validate-model] modul. Ebben az esetben szüksége egy adatkészletet, egy kellő modell, és a egy [Halmazokra modell] [ cross-validate-model] modul (lásd az alábbi ábrát). Vegye figyelembe, hogy szeretne-e beállítva a címke oszlop *ár* a a [Halmazokra modell] [ cross-validate-model] -modulhoz tartozó tulajdonságok.
+Ahogy korábban említettük, végezhet ismételt betanítási, pontozási és értékelések használatával automatikusan a [Halmazokra modell] [ cross-validate-model] modul. Ebben az esetben szüksége egy adatkészletet, egy kellő modell, és a egy [Halmazokra modell] [ cross-validate-model] modul (lásd az alábbi ábrát). Állítsa a felirat oszlopban kell *ár* a a [Halmazokra modell] [ cross-validate-model] -modulhoz tartozó tulajdonságok.
 
 ![Egy regressziós modell közötti érvényesítése](./media/evaluate-model-performance/3.png)
 
@@ -88,7 +88,7 @@ Miután a kísérletet, vizsgálhatja meg a kiértékelési eredményeket kattin
 4. ábra Kereszt-ellenőrzési eredmények a regressziós modell.
 
 ## <a name="evaluating-a-binary-classification-model"></a>Egy bináris osztályozási modell értékelése
-A bináris osztályozási forgatókönyvekben a célváltozó rendelkezik csak két lehetséges kimenetek, például: {0, 1} vagy {FALSE (hamis), true}, {negatív, pozitív}. Tegyük fel, kapnak egy adatkészlet néhány felnőtt az alkalmazottak demográfiai és alkalmazási változók és, hogy a rendszer felkéri a bevétel szintjét, azokra az értékekre bináris változó előrejelzése {"< = 50K", "> 50K"}. Más szóval a negatív osztály jelöli a személyeket, akik győződjön meg, legfeljebb 50 k évenként, és a pozitív osztály minden alkalmazott jelöli. Hasonlóan a regressziós a forgatókönyvben azt lenne a modell betanítását, bizonyos adatok pontozása és eredmények értékelése. A fő különbség az, a kiválasztott metrikák kiszámítja az Azure Machine Learning és a kimeneti. A bevétel szintű előrejelzési forgatókönyvet mutatja be, ezzel a [felnőtt](http://archive.ics.uci.edu/ml/datasets/Adult) adathalmazt, amelyek az Azure Machine Learning-kísérlet létrehozása és a egy két osztályú logisztikai regressziós modell, egy gyakran használt bináris teljesítményének kiértékelése besorolás.
+A bináris osztályozási forgatókönyvekben a célváltozó rendelkezik csak két lehetséges kimenetek, például: {0, 1} vagy {FALSE (hamis), true}, {negatív, pozitív}. Tegyük fel, kapnak egy adatkészlet néhány felnőtt az alkalmazottak demográfiai és alkalmazási változók és, hogy a rendszer felkéri a bevétel szintjét, azokra az értékekre bináris változó előrejelzése {"< = 50 K", "> 50 K"}. Más szóval a negatív osztály jelöli a személyeket, akik győződjön meg, legfeljebb 50 k évenként, és a pozitív osztály minden alkalmazott jelöli. Hasonlóan a regressziós a forgatókönyvben azt lenne a modell betanítását, bizonyos adatok pontozása és eredmények értékelése. A fő különbség az, a kiválasztott metrikák kiszámítja az Azure Machine Learning és a kimeneti. A bevétel szintű előrejelzési forgatókönyvet mutatja be, ezzel a [felnőtt](http://archive.ics.uci.edu/ml/datasets/Adult) adathalmazt, amelyek az Azure Machine Learning-kísérlet létrehozása és a egy két osztályú logisztikai regressziós modell, egy gyakran használt bináris teljesítményének kiértékelése besorolás.
 
 ### <a name="creating-the-experiment"></a>A kísérlet létrehozása
 Az Azure Machine Learning Studio-munkaterülethez adja hozzá a következő modulok:
@@ -116,7 +116,7 @@ Pontosság egyszerűen az időarány, amíg megfelelően osztályozott példány
 
 6. ábra Bináris osztályozás keveredési mátrixot.
 
-Visszatérve a bevételek besorolása problémát, akkor szeretnénk tehet fel és számos értékelési kérdést, hogy segítsen megérteni a használt besorolás teljesítményét. Nagyon természetes kérdése van: "ki az egyéni felhasználók számára, akikkel a modell meghalad kell megszerzéséhez > 50 ezer (TP + pi), hány sorolták megfelelően (TP)?" Erre a kérdésre választ megnézzük a **pontosság** a modell, amely megfelelően besorolt pozitívok az időarány, amíg: TP/(TP+FP). Egy másik gyakori kérdés az "kívül az összes nagy megszerzéséhez jövedelem az alkalmazottak > 50 ezer (TP + FN), hány volt az osztályozó által igénybe vett besorolása megfelelően (TP)". Ez valójában a **visszahívása**, vagy a valódi pozitív gyakorisága: az osztályozó TP/(TP+FN). Észreveheti, hogy nincs-e egy nyilvánvaló kompromisszum pontosság és a visszahívás közötti. Például adja meg egy viszonylag elosztott terhelésű adatkészletet, besorolás, amely előrejelzi a leginkább pozitív példányok kell magas visszaírási, de sok téves eredményez a negatív példányok annyi meglehetősen alacsony pontossága lenne misclassified. Egy diagram, hogyan változnak a két metrikák megtekintéséhez rákattinthat a kiértékelési eredmények kimeneti oldalon a "PONTOSSÁG/VISSZAÍRÁSI" görbén (7. ábra részét bal felső).
+Visszatérve a bevételek besorolása problémát, akkor szeretnénk tehet fel és számos értékelési kérdést, hogy segítsen megérteni a használt besorolás teljesítményét. Nagyon természetes kérdése van: "ki az egyéni felhasználók számára, akikkel a modell meghalad kell megszerzéséhez > 50 ezer (TP + pi), hány sorolták megfelelően (TP)?" Erre a kérdésre választ megnézzük a **pontosság** a modell, amely megfelelően besorolt pozitívok az időarány, amíg: TP/(TP+FP). Egy másik gyakori kérdés az "kívül az összes nagy megszerzéséhez jövedelem az alkalmazottak > 50 ezer (TP + FN), hány volt az osztályozó által igénybe vett besorolása megfelelően (TP)". Ez valójában a **visszahívása**, vagy a valódi pozitív gyakorisága: az osztályozó TP/(TP+FN). Észreveheti, hogy nincs-e egy nyilvánvaló kompromisszum pontosság és a visszahívás közötti. Például adja meg egy viszonylag elosztott terhelésű adatkészletet, besorolás, amely előrejelzi a leginkább pozitív példányok kell magas visszaírási, de sok téves eredményez a negatív példányok annyi meglehetősen alacsony pontossága lenne misclassified. Egy diagram, hogyan változnak a két metrikák megtekintéséhez rákattinthat a a **PONTOSSÁG/VISSZAÍRÁSI** görbe az értékelés eredmény kimeneti oldalon (7. ábra bal felső része).
 
 ![Bináris osztályozás kiértékelésének eredménye](./media/evaluate-model-performance/7.png)
 

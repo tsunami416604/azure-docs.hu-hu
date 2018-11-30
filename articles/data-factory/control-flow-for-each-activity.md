@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 11/26/2018
 ms.author: shlo
-ms.openlocfilehash: 23f00280a69212b9e623ae1da16a681ca30c9d51
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: e38a0ec39227b0064175c3c39d32bf87970ef9f5
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42055507"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423728"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>ForEach tevékenység az Azure Data Factoryban
 A ForEach tevékenység ismétlődő átvitelvezérlést határoz meg a folyamatban. Ez a tevékenység egy gyűjtemény megismétlésére, valamint egy megadott ciklustevékenység végrehajtására szolgál. E tevékenység ciklusos megvalósítása hasonló a Foreach ciklusos szerkezetéhez a programozási nyelvek esetében.
@@ -72,8 +72,8 @@ A cikk későbbi részében tulajdonságait ismerteti. Az elemek tulajdonság a 
 
 Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
-név | A for-each tevékenység neve. | Sztring | Igen
-type | Meg kell **ForEach** | Sztring | Igen
+név | A for-each tevékenység neve. | Karakterlánc | Igen
+type | Meg kell **ForEach** | Karakterlánc | Igen
 isSequential | Itt adhatja meg, akár a hurok egymás után vagy a párhuzamos végrehajtja.  Legfeljebb 20 ciklus ismétléseinek is végrehajtható egyszerre párhuzamosan). Például, ha rendelkezik egy ForEach tevékenység léptetés keresztül egy másolási tevékenységgel ellátott 10 különböző forrás és fogadó adatkészleteit a **isSequential** értéke HAMIS, minden példány tevékenységében egyszerre. Alapértelmezett érték a False. <br/><br/> Ha "isSequential" hamis értékre van állítva, győződjön meg arról, hogy nincs-e a megfelelő konfigurációs több végrehajtható fájlok futtatását. Ellenkező esetben ez a tulajdonság használandó körültekintően írási ütközések elkerüléséhez. További információkért lásd: [párhuzamos végrehajtása](#parallel-execution) szakaszban. | Logikai | Nem. Alapértelmezett érték a False.
 batchCount | Kötegek száma való párhuzamos végrehajtás száma (ha isSequential hamis értékre van állítva) használható. | Egész szám (legfeljebb 50) | Nem. Alapértelmezett érték 20.
 Elemek | Egy kifejezés, amely megismételhető, egy JSON-tömböt ad vissza. | Kifejezés (amely egy JSON-tömböt ad vissza) | Igen
@@ -572,6 +572,17 @@ Egy ForEach összes ismétlésének kimenetének összegyűjtése kifejezése va
 ]
 
 ```
+
+## <a name="limitations-and-workarounds"></a>Korlátozások és a lehetséges megoldások
+
+Az alábbiakban néhány korlátozást a ForEach tevékenység és a javasolt megoldások.
+
+| Korlátozás | Áthidaló megoldás |
+|---|---|
+| A ForEach ciklus belül egy másik ForEach ciklus (vagy egy Until ciklus) nem ágyazhatók egymásba. | Tervezhet, ahol a külső folyamat és a külső ForEach ciklus ismétel-e a beágyazott hurok-egy belső folyamat két szinten folyamat. |
+| A ForEach tevékenység rendelkezik maximális `batchCount` 50 párhuzamos feldolgozásra, és a egy legfeljebb 100 000 elemet. | Ha a külső folyamat ForEach tevékenysége a ismétel-e egy belső folyamat két szinten folyamat tervezése. |
+| | |
+
 ## <a name="next-steps"></a>További lépések
 Tekintse meg a többi Data Factory által támogatott átvitelvezérlési tevékenységek: 
 

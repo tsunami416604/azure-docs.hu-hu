@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 11/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: a2864ca743adf4ced1418630940146fed21b7fd5
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 89ab5ecb4e1a6a39e785a51c61e1344631b1f394
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625300"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335180"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -109,10 +109,11 @@ Az eredmények megjelenítése a fürt megosztott kötetei szolgáltatás:
 ```
 
 ### <a name="system-requirements"></a>Rendszerkövetelmények
-- A Windows Server 2012 R2 vagy Windows Server 2016 rendszert futtató kiszolgáló:
+- A Windows Server 2012 R2, Windows Server 2016 vagy Windows Server 2019 futtató kiszolgálón:
 
     | Verzió | Támogatott termékváltozatok | Támogatott központi telepítési beállítások |
     |---------|----------------|------------------------------|
+    | A Windows Server 2019 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
     | Windows Server 2016 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
     | Windows Server 2012 R2 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
 
@@ -198,10 +199,10 @@ A Microsoft belső fejlesztésű vírusvédelmi megoldások, a Windows Defender 
 ### <a name="backup-solutions"></a>Biztonsági mentési megoldások
 Például a víruskereső megoldások biztonsági mentési megoldások okozhat a rétegzett fájlok visszahívása. Azt javasoljuk, hogy biztonsági mentése az Azure-fájlmegosztás helyett egy a helyszíni biztonsági mentési termék egy felhőalapú biztonsági mentési megoldás használatával.
 
-Ha egy a helyszíni biztonsági mentési megoldást használ, az adott kiszolgálón a szinkronizálási csoport, amely rendelkezik a felhőbeli rétegezés letiltott az biztonsági mentések kell végezni. A kiszolgálói végpont helye tanúsítványfájljai visszaállításakor visszaállítás beállítást használja. Helyreállított fájlok lesznek szinkronizálva a szinkronizálási csoportban lévő összes végpontokra, és a meglévő fájlok váltja fel a biztonsági másolatból visszaállított verziót.
+Ha egy a helyszíni biztonsági mentési megoldást használ, az adott kiszolgálón a szinkronizálási csoport, amely rendelkezik a felhőbeli rétegezés letiltott az biztonsági mentések kell végezni. A visszaállítás végrehajtásakor a kötet szintű és fájlszintű visszaállítás beállításokat használják. A fájlszintű helyreállítási lehetőség használatával helyreállított fájlok lesznek szinkronizálva a szinkronizálási csoportban lévő összes végpontokra, és a meglévő fájlokat fogja írni a biztonsági mentésből verzió.  Az Azure-fájlmegosztás vagy egyéb kiszolgálói végpontot újabb fájl verzióinak kötetszintű visszaállítás nem helyettesíti.
 
 > [!Note]  
-> Alkalmazásbarát, kötetszintű és az operációs rendszer nélküli (BMR) visszaállítási beállítások pedig váratlan helyzeteket eredményezhet, és jelenleg nem támogatottak. A visszaállítási lehetőségek egy későbbi kiadásban támogatott.
+> Operációs rendszer nélküli (BMR) visszaállítása pedig váratlan helyzeteket eredményezhet, és jelenleg nem támogatott.
 
 ### <a name="encryption-solutions"></a>Titkosítási megoldások
 Titkosítási megoldások támogatása attól függ, hogyan használják azokat. Az Azure File Sync ismert használata:

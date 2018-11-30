@@ -1,6 +1,6 @@
 ---
-title: Adatok importálása online adatforrásokból származó a Machine Learning studióba |} A Microsoft Docs
-description: Hogyan lehet importálni a betanítási adatok Azure Machine Learning Studióba különböző online adatforrásokból származó.
+title: Adatok importálása online adatforrásokból – az Azure Machine Learning studióba |} A Microsoft Docs
+description: Ez a cikk bemutatja a támogatási online adatok importálása különböző forrásokból, és kísérletezzen az Azure Machine Learning studióba ezen forrásokból származó adatok áthelyezéséhez szükséges információkat.
 keywords: adatok, az adatok formátuma, adattípusok, adatforrások, betanítási adatok importálása
 services: machine-learning
 documentationcenter: ''
@@ -17,15 +17,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 6412d431b0258d681d8d9bd8cb3a88798a0d81cd
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 89e2414b32dfb3cc6773d09dcdc3e711e56492ef
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262893"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315022"
 ---
 # <a name="import-data-into-azure-machine-learning-studio-from-various-online-data-sources-with-the-import-data-module"></a>Adatok importálása az Azure Machine Learning Studióba különböző online adatforrásokból az Adatok importálása modullal
-Ez a cikk bemutatja a támogatási online adatok importálása különböző forrásokból, és ezekből a forrásokból származó adatok áthelyezése az Azure Machine Learning-kísérletbe szükséges információkat.
+Ez a cikk bemutatja a támogatási online adatok importálása különböző forrásokból, és kísérletezzen az Azure Machine Learning studióba ezen forrásokból származó adatok áthelyezéséhez szükséges információkat.
 
 > [!NOTE]
 > Ez a cikk általános információkat tartalmaz a [adatok importálása] [ import-data] modul. Részletesebb információ adattípusokat és érheti el, formátumban, a paraméterek és a gyakori kérdéseket lásd a modul a referencia-témakör a [adatok importálása] [ import-data] modul.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 1898926e0488722d18a105697bead18e29e6a35d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 9cd89d861a758d51788dc4180af10882f0144977
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254893"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317364"
 ---
 # <a name="update-os-version-in-azure-security-center"></a>Az Azure Security Centerben az operációs rendszer verziójának frissítése
 Virtuális gépek (VM), a cloud services Azure Security Center javasolni fogja, hogy az operációs rendszer (OS) frissíteni kell, ha van újabb verzió.  Csak a felhőszolgáltatások tárhelyek figyelt éles üzemben futó webes és feldolgozói szerepköröket.
@@ -43,7 +43,7 @@ Ez a cikk bemutatta, hogyan valósíthat meg a Security Center javaslatait "Upda
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-policies.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
+* [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-azure-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
 * [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md) – megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
 * [Biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának monitorozásához.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.

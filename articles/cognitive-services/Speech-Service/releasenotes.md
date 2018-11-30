@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: wolfma
-ms.openlocfilehash: 706f51ae1e2d81e2003f2fcd637def95c7a42f8e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: ff09926d61d64294a4f12ccf959f6685910539f1
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567536"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317891"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
@@ -31,7 +31,7 @@ ms.locfileid: "51567536"
 
 * További ellenőrzés hozzáadva a felismerő konfigurációs és további hozzáadott hibaüzenet jelenik meg.
 * Hangfájl közepén régóta csend jobb kezelése.
-* NuGet-csomagot: .NET-keretrendszer projektek használhatja a AnyCPU konfigurációs megakadályozása.
+* NuGet-csomagot: .NET-keretrendszer projektek esetén ez megakadályozza, hogy használhatja a AnyCPU konfiguráció.
 
 **Hibajavítások**
 

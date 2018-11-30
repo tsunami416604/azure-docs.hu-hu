@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fa1fa65315f38d0ce2900b738b70ca3718b0c00e
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: a664ec3643100f4bf477fbc58070ae966088d3af
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285101"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426050"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Azure Automationben
 
@@ -32,7 +32,7 @@ Az aktuális megoldáshoz a korlátozások a következők:
 - Ez a megoldás érhető el az Azure-ban és AzureGov minden olyan régióban, amely támogatja a Log Analytics-munkaterülettel, egy Azure Automation-fiókot és riasztások. AzureGov régiók jelenleg nem támogatja e-mail funkció.
 
 > [!NOTE]
-> Ha a megoldás a klasszikus virtuális gépeket használ, majd a virtuális gépek kerül feldolgozásra, egymás után felhőalapú szolgáltatás esetében. Párhuzamos feladat feldolgozása továbbra is támogatott különböző felhőszolgáltatások között.
+> Ha a megoldás a klasszikus virtuális gépeket használ, majd a virtuális gépek kerül feldolgozásra, egymás után felhőalapú szolgáltatás esetében. Virtuális gépek továbbra is feldolgozása párhuzamosan történik különböző felhőszolgáltatások között.
 >
 > Az Azure Cloud Solution Provider (az Azure CSP)-előfizetések támogatása csak az Azure Resource Manager modellel, nem az Azure Resource Manager - szolgáltatások nem érhetők el a programban. A indítása és leállítása megoldás futtatásakor hiba jelenhet meg, mert parancsmagok klasszikus erőforrások felügyeletére. CSP kapcsolatos további információkért lásd: [CSP-előfizetésekben elérhető szolgáltatások](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments).
 

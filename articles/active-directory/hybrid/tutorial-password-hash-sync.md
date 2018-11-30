@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f830a27e9caf032443c2b27bdd2f95fa8069bcf2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 4e8a39e16bd67169aac8dd7328338197b604e93f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247279"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426910"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Oktatóanyag: A Jelszókivonat-szinkronizálás (nál) használatával egyetlen AD-erdővel integrálása
 
@@ -224,7 +224,7 @@ Most ellenőrizzük, hogy a felhasználók a helyszíni címtárban szolgáltat�
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Hogy a felhasználók bejelentkezés tesztelése
 
-1.  Keresse meg a [http://myapps.microsoft.com](https://myapps.microsoft.com)
+1.  Keresse meg a [https://myapps.microsoft.com](httpss://myapps.microsoft.com)
 2. Jelentkezzen be az új bérlő létrehozott felhasználói fiókkal.  Kell jelentkezzen be a következő formátumban: (user@domain.onmicrosoft.com). A felhasználó által használt a bejelentkezéshez ugyanazt a jelszót a helyszínen.</br>
 ![Ellenőrizze](media/tutorial-password-hash-sync/verify1.png)</br>
 

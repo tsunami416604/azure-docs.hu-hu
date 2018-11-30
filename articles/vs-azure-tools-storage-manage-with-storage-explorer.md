@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: 20aa1824656ee6eb861f3848d969d678b07e9378
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a540e6c585210f7b1dc36a89eaae7a4b4bf8fc70
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038433"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422728"
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer használatának első lépései
 
@@ -37,11 +37,11 @@ Az Azure Storage Explorer a Windows alábbi verzióit támogatják:
 
 * A Windows 10-es (ajánlott)
 * Windows 8
-* Windows 7 rendszeren
+* Windows 7
 
 Összes verziója a Windows, a .NET-keretrendszer 4.6.2-es vagy újabb verzió szükséges.
 
-[A Storage Explorer letöltése és telepítése](http://www.storageexplorer.com)
+[A Storage Explorer letöltése és telepítése](https://www.storageexplorer.com)
 
 # <a name="macostabmacos"></a>[macOS](#tab/macos)
 
@@ -49,7 +49,7 @@ Az Azure Storage Explorer macOS következő verzióiban támogatott:
 
 * macOS 10.12 "Sierra" és az újabb verziók
 
-[A Storage Explorer letöltése és telepítése](http://www.storageexplorer.com)
+[A Storage Explorer letöltése és telepítése](https://www.storageexplorer.com)
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
@@ -70,7 +70,7 @@ Az alábbi függőségeket és kódtárak futtatható az Azure Storage Explorer 
 
 Az Azure Storage Explorer [kibocsátási megjegyzések](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409) néhány disztribúciók adott lépést tartalmaznak.
 
-[A Storage Explorer letöltése és telepítése](http://www.storageexplorer.com)
+[A Storage Explorer letöltése és telepítése](https://www.storageexplorer.com)
 
 ---
 
@@ -170,7 +170,7 @@ Külső tárfiókok megosztásához az adott fiók tulajdonosának kell előszö
 
 6. Másolás a **tárfióknevet** és **key1**.
 
-    ![Elérési kulcsok][8]
+    ![Elérési kulcs][8]
 
 ### <a name="attach-to-an-external-storage-account"></a>Külső tárfiók csatolása
 

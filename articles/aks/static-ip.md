@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 24b7e03808cb5df9fa4c122ca4c9317f723dac72
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: c6097c96c0211c1efac2c2652eb0ef7d668d6877
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414641"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427046"
 ---
 # <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Az Azure Kubernetes Service (AKS) terheléselosztót statikus nyilvános IP-cím használata
 
@@ -28,7 +28,9 @@ Emellett az Azure CLI 2.0.46-os vagy újabb, telepített és konfigurált verzi�
 
 ## <a name="create-a-static-ip-address"></a>Hozzon létre statikus IP-cím
 
-Amikor az aks-sel használható statikus nyilvános IP-címet hoz létre, az IP-cím erőforrás kell létrehozni a **csomópont** erőforráscsoportot. Az erőforráscsoport nevét az első a [az aks show] [ az-aks-show] parancsot, majd adja hozzá a `--query nodeResourceGroup` lekérdezési paraméter. Az alábbi példa lekéri az AKS-fürt nevét a csomópont erőforráscsoport *myAKSCluster* az erőforráscsoport nevét a *myResourceGroup*:
+Amikor az aks-sel használható statikus nyilvános IP-címet hoz létre, az IP-cím erőforrás létre kell hozni a **csomópont** erőforráscsoportot. Ha azt szeretné, az erőforrások szétválasztásához, [kívül a csomópont erőforráscsoportba tartozó statikus IP-cím](#use-a-static-ip-address-outside-of-the-node-resource-group).
+
+A csomópont erőforráscsoport-név az első a [az aks show] [ az-aks-show] parancsot, majd adja hozzá a `--query nodeResourceGroup` lekérdezési paraméter. Az alábbi példa lekéri az AKS-fürt nevét a csomópont erőforráscsoport *myAKSCluster* az erőforráscsoport nevét a *myResourceGroup*:
 
 ```azurecli
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv

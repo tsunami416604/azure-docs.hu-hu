@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: barclayn
-ms.openlocfilehash: e86d68107278641e40346327fa3a8cb7059b7d71
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 9790cd7c79efa1b64220f9e128de9a3b8eb902c0
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159588"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426944"
 ---
 # <a name="azure-key-vault-logging"></a>Az Azure Key Vault naplózása
 Az Azure Key Vault a legtöbb régióban elérhető. További információ: [A Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/).
@@ -265,7 +265,7 @@ Az alábbi táblázat az operationName műveleteket és a megfelelő REST API-pa
 
 ## <a id="loganalytics"></a>A Log Analytics használata
 
-A Log Analyticsben az Azure Key Vault megoldással áttekintheti az Azure Key Vault AuditEvent-naplókat. További információért és a beállítás módjának ismertetéséért olvassa el [az Azure Key Vault megoldás a Log Analyticsben](../log-analytics/log-analytics-azure-key-vault.md) történő használatát ismertető cikket. Ez a cikk útmutatást biztosít a Log Analytics előzetes verziójában elérhető, korábbi Key Vault megoldásról történő migráláshoz is, amelynek során először a naplókat kellett átirányítani egy Azure Storage-fiókra, majd konfigurálni a Log Analyticset, hogy onnan lehessen olvasni.
+A Log Analyticsben az Azure Key Vault megoldással áttekintheti az Azure Key Vault AuditEvent-naplókat. További információért és a beállítás módjának ismertetéséért olvassa el [az Azure Key Vault megoldás a Log Analyticsben](../azure-monitor/insights/azure-key-vault.md) történő használatát ismertető cikket. Ez a cikk útmutatást biztosít a Log Analytics előzetes verziójában elérhető, korábbi Key Vault megoldásról történő migráláshoz is, amelynek során először a naplókat kellett átirányítani egy Azure Storage-fiókra, majd konfigurálni a Log Analyticset, hogy onnan lehessen olvasni.
 
 ## <a id="next"></a>Következő lépések
 Az Azure Key Vault webalkalmazásban való használatáról a [Use Azure Key Vault from a Web Application](key-vault-use-from-web-application.md) (Az Azure Key Vault webalkalmazással való használata) című témakörben találhat útmutatást.

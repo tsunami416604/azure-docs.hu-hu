@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: d104b5de22281817626f8de0f41029e76e06e3a2
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 5db43c6488a4592eb46d9a0fe9a044dde36fc494
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824812"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423347"
 ---
 # <a name="azure-cosmos-db-global-distribution---under-the-hood"></a>Az Azure Cosmos DB globális terjesztésének – technikai részletek
 
@@ -72,7 +72,7 @@ A konfigurált több írási régióval rendelkező Cosmos-adatbázisok, a rends
 
 A Cosmos-adatbázis egy vagy több írási régiót konfigurál, hogy öt jól definiált konzisztenciamodellekkel közül választhat. Az újonnan hozzáadott engedélyezésének támogatása több írás régiója, az az alábbiakban néhány jelentős aspektusait konzisztenciaszintekről:  
 
-Mivel előtt, a korlátozott frissesség konzisztencia garantálja, hogy olvasások k verzióval vagy t másodperc, a legújabb írási belül lesz, a régiók egyikében. Továbbá korlátozott frissesség konzisztencia az olvasási garantáltan monoton és a konzisztens előtag garanciákkal. A víruskereső vysokou protokoll sebessége korlátozott módon működik, és biztosítja, hogy az előtagok nem gyűlik össze, és az írási ellennyomásának nem rendelkezik a alkalmazni. Előtt, a saját írási műveletek munkamenet konzisztenciára vonatkozó garanciákat monoton olvasási, monoton írás, Olvasás, a következő írási-olvasási és konzisztens előtag világszerte garantálja. Az erős konzisztencia konfigurált adatbázisok esetén a rendszer vált vissza egyetlen belül a partíció-készletek vezető kijelölésével írási régióba. 
+Mivel előtt, a korlátozott frissesség konzisztencia garantálja, hogy olvasások k verzióval vagy t másodperc, a legújabb írási belül lesz, a régiók egyikében. Továbbá korlátozott frissesség konzisztencia az olvasási garantáltan monoton és a konzisztens előtag garanciákkal. A víruskereső vysokou protokoll sebessége korlátozott módon működik, és biztosítja, hogy az előtagok nem gyűlik össze, és az írási ellennyomásának nem rendelkezik a alkalmazni. Előtt, a saját írási műveletek munkamenet konzisztenciára vonatkozó garanciákat monoton olvasási, monoton írás, Olvasás, a következő írási-olvasási és konzisztens előtag világszerte garantálja. Az erős konzisztencia, a előnyeit konfigurált adatbázisok esetén multi-szakértő kezelése (alacsony írási késést, írási magas rendelkezésre állás) nem vonatkozik a szinkron replikáció miatt régiók között elosztva.
 
 A Cosmos DB öt konzisztenciamodell szemantikáját leírt [Itt](consistency-levels.md) és matematikai látható egy magas szintű TLA + leírások segítségével [Itt](https://github.com/Azure/azure-cosmos-tla).
 

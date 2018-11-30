@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
-ms.openlocfilehash: 8315647afec0166b41ce7a75f491077edd56db46
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: fd13cb25fbe3696bf67615ef956f478b7c355547
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036260"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422052"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Azure Blob Storage-erőforrások kezelése a Storage Explorerben
 ## <a name="overview"></a>Áttekintés
 [Az Azure Blob Storage](storage/blobs/storage-dotnet-how-to-use-blobs.md) szolgáltatás nagy mennyiségű strukturálatlan adat, például szöveg vagy bináris adatot, amely segítségével bárhonnan elérhetők HTTP- vagy HTTPS keresztül a világon tárolására használható.
-A Blob Storage egyaránt használható mindenki számára elérhető, nyilvános adatok tárolására és alkalmazásadatok privát jellegű tárolására is. Ebből a cikkből megismerheti, hogyan használhatja a Storage Explorer a blob-tárolók és blobok lesz.
+A Blob Storage segítségével bárki számára nyilvánosan elérhetővé tehet adatokat, vagy privát módon tárolhat alkalmazásadatokat. Ebből a cikkből megismerheti, hogyan használhatja a Storage Explorer a blob-tárolók és blobok lesz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
-* [A Storage Explorer letöltése és telepítése](http://www.storageexplorer.com)
+* [A Storage Explorer letöltése és telepítése](https://www.storageexplorer.com)
 * [Csatlakozás egy Azure-tárfiókhoz vagy -szolgáltatáshoz](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-blob-container"></a>Blobtároló létrehozása
@@ -213,7 +213,7 @@ A következő lépések bemutatják, hogyan kezelheti a blobokat (és mappák) e
      3. Válassza az **Igen** lehetőséget a megerősítési párbeszédpanelen.
 
 ## <a name="next-steps"></a>További lépések
-* A [Storage Explorer legújabb kibocsátási megjegyzéseinek és videóinak megtekintése](http://www.storageexplorer.com).
+* A [Storage Explorer legújabb kibocsátási megjegyzéseinek és videóinak megtekintése](https://www.storageexplorer.com).
 * Annak megismerése, hogyan [hozhat létre alkalmazásokat Azure-blobok, -táblák, -üzenetsorok és -fájlok használatával](https://azure.microsoft.com/documentation/services/storage/).
 
 [0]: ./media/vs-azure-tools-storage-explorer-blobs/blob-containers-create-context-menu.png

@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 36099a49cc9e6c810727606bb73d2669f1e0df79
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 9c5cdf6c2baf4197b693b522848fc1fd04db7abf
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985692"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422510"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>További információ az automatikus SQL-adatbázisok biztonsági mentése
 
@@ -42,7 +42,7 @@ Ezek a biztonsági mentések használhatók:
 
 ## <a name="how-long-are-backups-kept"></a>Mennyi ideig biztonsági mentések őrzi meg
 
-Minden egyes SQL-adatbázis biztonsági mentése tartalmaz egy alapértelmezett megőrzési időtartamot, amely az adatbázis szolgáltatási szintjét alapul, és nem egyezik meg a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md). Az adatbázis biztonsági másolatának megőrzési ideje frissítheti. Lásd: [módosítsa biztonsági mentések megőrzési időszaka](#how-to-change-backup-retention-period) további részletekért.
+Minden egyes SQL-adatbázis rendelkezik, amely attól függ, 7, és 35 nap közötti, egy alapértelmezett biztonsági másolatainak megőrzési ideje a [vásárlási modell és a szolgáltatási rétegben](#pitr-retention-period). Az Azure logikai kiszolgálón (Ez a funkció hamarosan engedélyezve lesz a felügyelt példány) egy adatbázis biztonsági másolatának megőrzési ideje frissítheti. Lásd: [módosítsa biztonsági mentések megőrzési időszaka](#how-to-change-backup-retention-period) további részletekért.
 
 Ha töröl egy adatbázist, az SQL Database biztosítják a biztonsági másolatok olvasásainál, online adatbázis megegyező módon. Például ha törli egy hét napos megőrzési idővel rendelkező alapszintű adatbázis, egy biztonsági másolatot, amely négy napnál régebbi mentése további három nappal.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 3579a17ab28bd39ddad5008e1d0f8f7834237807
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 5936157a46643ff76b5e1cc11d636aa6be9175ff
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281999"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427471"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás megvalósítása
 A cikk ismerteti, hogy az egy felhőalapú Azure Active Directory (Azure AD) példány egy helyszíni Active Directory-példányból származó felhasználói jelszavakat szinkronizálja szükséges információkat.
@@ -54,7 +54,7 @@ További részletekért lásd: [Helyszíni identitások integrálása az Azure A
 >
 
 ## <a name="how-password-hash-synchronization-works"></a>A Jelszókivonat-szinkronizálás működése
-Az Active Directory tartományi szolgáltatások tárolja a jelszavak a tényleges felhasználói jelszó kivonat értéke reprezentációját formájában. A Jelszókivonat értéke egy egyirányú matematikai függvény eredménye (a *kivonatoló algoritmus*). Nincs semmilyen metódus vissza a jelszót egyszerű szöveges verziójának egy egyirányú függvény eredménye. Jelentkezzen be a helyszíni hálózat Jelszókivonat nem használható.
+Az Active Directory tartományi szolgáltatások tárolja a jelszavak a tényleges felhasználói jelszó kivonat értéke reprezentációját formájában. A Jelszókivonat értéke egy egyirányú matematikai függvény eredménye (a *kivonatoló algoritmus*). Az egyirányú függvény eredménye semmilyen módszerrel nem fejthető vissza a jelszó egyszerű szöveges verziójára. A jelszókivonattal nem lehet a helyszíni hálózatra bejelentkezni.
 
 A jelszó szinkronizálása, az Azure AD Connect szinkronizálása a Jelszókivonat kigyűjti a helyszíni Active Directory-példányból. További biztonsági feldolgozási alkalmazza a rendszer a Jelszókivonat előtt, a rendszer szinkronizálja az Azure Active Directory hitelesítési szolgáltatás. Jelszavak szinkronizálódnak, felhasználónkénti alapon és időrendi sorrendben.
 
@@ -80,7 +80,7 @@ Az alábbi részletes Jelszókivonat-szinkronizálás működését ismerteti az
 
 
 1. Két percenként, a jelszó kivonatoló szinkronizálási ügynököt az AD Connect-kiszolgáló kér (az unicodePwd attribútum) tárolt jelszavak kivonatait egy tartományvezérlő, a standard keresztül [MS-DRSR](https://msdn.microsoft.com/library/cc228086.aspx) adatok szinkronizálásához használt replikációs protokoll közötti tartományvezérlők. A szolgáltatás fiók a beszerzése a jelszót a kivonatok Címtárváltozások replikálása és replikálása összes AD jogosultságaitól (alapértelmezés szerint a telepítési) kell rendelkeznie.
-2. Küldés előtt, a tartományvezérlő az MD4 Jelszókivonat titkosítja, amely egy kulcs használatával egy [MD5](http://www.rfc-editor.org/rfc/rfc1321.txt) az RPC munkamenetkulcs és a egy salt kivonatát. Majd elküldi az eredményt a jelszó Jelszókivonat-szinkronizálási ügynök RPC-n keresztül. A tartományvezérlő is továbbítja a védőérték a szinkronizálási ügynöknek a tartományvezérlő replikációs protokoll használatával, így az ügynök tudja majd visszafejteni a boríték.
+2. Küldés előtt, a tartományvezérlő az MD4 Jelszókivonat titkosítja, amely egy kulcs használatával egy [MD5](https://www.rfc-editor.org/rfc/rfc1321.txt) az RPC munkamenetkulcs és a egy salt kivonatát. Majd elküldi az eredményt a jelszó Jelszókivonat-szinkronizálási ügynök RPC-n keresztül. A tartományvezérlő is továbbítja a védőérték a szinkronizálási ügynöknek a tartományvezérlő replikációs protokoll használatával, így az ügynök tudja majd visszafejteni a boríték.
 3.  A jelszó Jelszókivonat-szinkronizálási ügynök, amelyet a titkosított boríték, követően használja [MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx) és a egy vissza az eredeti MD4 formátumára a fogadott adatok visszafejtéséhez kulcs létrehozásához. A jelszó Jelszókivonat-szinkronizálási ügynök pontján sem rendelkezik hozzáféréssel a tiszta szöveges jelszó. A jelszó kivonatoló szinkronizálási ügynök használatát MD5 szigorúan replikációs protokollal kompatibilis-e a tartományvezérlő, és csak használja a helyszínen, a tartományvezérlő és a jelszó Jelszókivonat-szinkronizálási ügynök között.
 4.  A jelszó Jelszókivonat-szinkronizálási ügynök bontja ki a 16 bájtos bináris Jelszókivonat 64 bájt átalakításával első UTF-16 kódolással bináris biztonsági 32 bájtos hexadecimális karakterlánc, majd átalakítja a következő karakterláncot a kivonatot.
 5.  A jelszó Jelszókivonat-szinkronizálási ügynök ad hozzá egy felhasználói Salt érték, egy 10 bájtos hossza Salt érték, a 64 bájtos bináris fokozott védelme érdekében az eredeti Jelszókivonat álló száma.

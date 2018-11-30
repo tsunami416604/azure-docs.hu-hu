@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2018
 ms.author: bwren
-ms.openlocfilehash: f40c8ed7eb6bfae958b3b57c4b7d525963ab9741
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4f7b0f7c1cd08168db3f0f0ffd6cf6c4fa2c604e
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955253"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334550"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>A Log Analytics Data betöltési idő
 Az Azure Log Analytics egy nagy méretű szolgáltatás az Azure monitorban ellátó – több ezer ügyfelünk egyre bővülő ütemben havonta terabájtnyi adatot küld a. Gyakran előfordulnak az adatokat a begyűjtésük után válnak elérhetővé a Log Analytics szükséges idő kapcsolatos kérdésekre. Ez a cikk ismerteti a különböző tényező befolyásolja, a késés.
@@ -40,7 +40,7 @@ A különböző késést, a folyamat részletei az alábbiakban tekintheti át.
 Az ügynökök és felügyeleti megoldásokat különböző stratégiák segítségével adatokat gyűjteni a virtuális gép, amelyek befolyásolhatják a várakozási. Néhány konkrét példa a következők:
 
 - Windows-események, a syslog-események és a teljesítmény-mérőszámokat a rendszer azonnal gyűjti. Linuxos teljesítményszámlálókkal, 30 másodperces időközönként kérdezi le azt.
-- IIS-naplók és egyéni naplók összegyűjtése után időbélyegzőik változik. Az IIS-naplók, ez befolyásolja a [átvitel ütemezése az IIS-kiszolgálón konfigurált](log-analytics-data-sources-iis-logs.md). 
+- IIS-naplók és egyéni naplók összegyűjtése után időbélyegzőik változik. Az IIS-naplók, ez befolyásolja a [átvitel ütemezése az IIS-kiszolgálón konfigurált](../azure-monitor/platform/data-sources-iis-logs.md). 
 - Active Directory replikáció-megoldás a kiértékelés öt naponta, hajt végre, amíg az Active Directory Assessment megoldás hajt végre az Active Directory infrastruktúrával heti értékelése. Az ügynök összegyűjti ezeket a naplókat, csak ha értékelés befejeződött.
 
 ### <a name="agent-upload-frequency"></a>Az ügynök feltöltési gyakoriságának
@@ -61,7 +61,7 @@ Tekintse meg az egyes megoldások annak gyűjtési gyakoriságát dokumentáció
 Ha a rekordok naplózása a Log Analytics-folyamat be vannak töltve, íródtak egy ideiglenes tárolóra annak biztosítása érdekében a bérlők elszigetelésére, és győződjön meg arról, hogy az adatok nem vesznek el. Ez a folyamat általában 5 – 15 másodperc hozzáadja. Egyes felügyeleti megoldások megvalósítása nehezebb algoritmusokat összesített adatokat, és hozzájut, az adatok a streamelés a. Például a hálózati teljesítmény figyelése összesíti a bejövő adatok keresztül 3 perces időközönként, hatékonyan hozzáadása a 3 perces késéssel. Egy másik folyamat, amely hozzáadja a késés az a, amely kezeli az egyéni naplókat. Bizonyos esetekben ez a folyamat néhány percet a késés előfordulhat, hogy hozzá-fájlokból az ügynök által gyűjtött naplók.
 
 ### <a name="new-custom-data-types-provisioning"></a>Kiépítés új egyéni adattípusok
-Az egyéni adatokat egy új típusú létrehozásakor egy [egyéni napló](../log-analytics/log-analytics-data-sources-custom-logs.md) vagy a [adatgyűjtő API](../log-analytics/log-analytics-data-collector-api.md), a rendszer létrehoz egy dedikált storage-tárolóba. Ez az egy egyszeri terhelést, amely csak az első megjelenítési módja, ez az adattípus megy végbe.
+Az egyéni adatokat egy új típusú létrehozásakor egy [egyéni napló](../log-analytics/../azure-monitor/platform/data-sources-custom-logs.md) vagy a [adatgyűjtő API](../log-analytics/log-analytics-data-collector-api.md), a rendszer létrehoz egy dedikált storage-tárolóba. Ez az egy egyszeri terhelést, amely csak az első megjelenítési módja, ez az adattípus megy végbe.
 
 ### <a name="surge-protection"></a>Védelem
 Gondoskodjon arról, hogy nincsenek felhasználói adatok elvesznek, ezért a rendszer az adatok megnövekedésénél beépített védelemmel rendelkezik a Log Analytics kiemelt prioritása az. Ez magában foglalja a pufferek ellenőrizze, hogy még terhelés környezetéről, a rendszer fog tartani működik. Normál terhelés alatt ezek a vezérlők hozzáadása a kevesebb mint egy percet, de a feltételek és a hibák, lehetőség van felvenni jelentős mennyiségű időt, miközben biztosítja az adatok biztonságos-e.

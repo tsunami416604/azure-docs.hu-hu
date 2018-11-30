@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 1f49930449c5ca342159f2a4eca3d7167dfed925
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 765a3a985a2198951ed17292dc376b25adfccc03
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244644"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314800"
 ---
 # <a name="enable-transparent-data-encryption-in-azure-security-center"></a>Az Azure Security Centerben a transzparens adattitkosítás engedélyezése
 Azure Security Center javasolni fogja engedélyezése transzparens adattitkosítási (TDE) az SQL-adatbázisokon Ha TDE már nem engedélyezett. TDE védi az adatokat, és segít a megfelelőségi követelmények teljesítése érdekében az alkalmazás módosítása nélkül az adatbázisban, az azokhoz kapcsolódó biztonsági mentési, és a tranzakciós naplófájlokat az inaktív titkosításával. További tudnivalókért tekintse meg [az Azure SQL Database transzparens adattitkosítási](https://msdn.microsoft.com/library/dn948096).
@@ -51,7 +51,7 @@ Ez a cikk láthatta, hogyan valósíthat meg a Security Center javaslatait "Tran
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-policies.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
+* [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-azure-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
 * [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md) – megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
 * [Biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának monitorozásához.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.

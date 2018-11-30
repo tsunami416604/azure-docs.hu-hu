@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 086399f669b704a0ae2c9f719906e7efa672b5b1
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 1092f5e21eab1e037c360408f17548b544a9e922
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262504"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422796"
 ---
 # <a name="prepare-to-back-up-azure-vms"></a>Felkészülés az Azure virtuális gépek biztonsági mentése
 
@@ -49,13 +49,14 @@ Mielőtt a környezet előkészítése, ügyeljen arra, hogy ezek a korlátozás
 * Linux egyesített kulcs beállítása (LUKS) titkosítással titkosított Linux rendszerű virtuális gépek biztonsági mentésének nem támogatott.
 * Nem ajánlott a fürt megosztott kötetei (CSV) vagy a Scale-Out File Server tartalmazó virtuális gépek biztonsági mentésének. Ha elkészült, a fürt megosztott kötetei szolgáltatás írók hiba várható. A fürt konfigurációját, a pillanatkép-feladat során szereplő összes virtuális gépet is érintő igényelnek. Az Azure Backup nem támogatja a több virtuális gépre kiterjedő konzisztencia.
 * Biztonsági mentési adatokat egy virtuális géphez csatlakoztatott hálózati meghajtók nem tartalmazza.
-* Egy meglévő virtuális gép cseréje a visszaállítás során nem támogatott. Ha megkísérli a virtuális gép visszaállítása, ha a virtuális gép létezik, a visszaállítási művelet sikertelen lesz.
+* **Cserélje le a meglévő** beállítást a **konfiguráció visszaállítása** segít az aktuális virtuális gép a meglévő lemezek cserélje le a kiválasztott helyreállítási pont. Ez a művelet csak elvégezhető, ha az aktuális virtuális gép létezik. 
 * Régiók közötti biztonsági mentése és visszaállítása nem támogatottak.
 * Közben konfigurálása biztonsági mentést, ellenőrizze, hogy a **tűzfalak és virtuális hálózatok** tárfiók-beállítások engedélyezze a hozzáférést minden hálózatból elérhető.
 * A kiválasztott hálózatok után a tárfiók tűzfal- és a virtuális hálózati beállítások konfigurálása, válassza **engedélyezése megbízható Microsoft-szolgáltatások a tárfiók** engedélyezése az Azure Backup szolgáltatásnak a kivételként a korlátozott hálózati tárfiók eléréséhez. Az elemszintű helyreállítás nem támogatott, korlátozott hálózati tárfiókok esetében.
 * Minden nyilvános Azure-régióban lévő virtuális gépek készíthető. (Lásd a [ellenőrzőlista](https://azure.microsoft.com/regions/#services) támogatott régiók.) A régiót, amelyben keres jelenleg nem támogatott, ha ez nem jelenik a legördülő listából válassza ki a tároló létrehozása során.
 * (DC) virtuális gép egy több-DC konfiguráció részét képező támogatott tartományvezérlő visszaállítása csak a Powershellen keresztül. További tudnivalókért lásd: [multi-tartományvezérlő tartományvezérlő visszaállítása](backup-azure-arm-restore-vms.md#restore-domain-controller-vms).
 * Az engedélyezett Írásgyorsító lemez-pillanatképek nem támogatott. Ez a korlátozás blokkolja az Azure Backup szolgáltatás képes-e a virtuális gép összes lemezének alkalmazáskonzisztens pillanatképet végrehajtásához.
+* Az Azure Backup nem támogatja óra automatikus illesztését nyári időszámítás – mentés módosítások mentésére az Azure virtuális Gépen. Ha szükséges, módosítsa a házirendet, a nyári időszámítás – megtakarítási idő módosítása figyelembe vennie.
 * A következő speciális hálózati konfigurációval rendelkező virtuális gépek visszaállítása csak a Powershellen keresztül támogatott. A visszaállítási munkafolyamat a felhasználói felületen keresztül létrehozott virtuális gépek nem fog hálózati konfigurációkról, a visszaállítási művelet befejeződése után. További tudnivalókért lásd: [virtuális gépek visszaállítása speciális hálózati konfigurációval rendelkező](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations).
   * Virtuális gépek terheléselosztó-konfiguráció (belső és külső)
   * Több fenntartott IP-címmel rendelkező virtuális gépek

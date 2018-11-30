@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: 21fa41db2e205a7b17deae6d018308fe6e7ff213
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: fd9094d646b917cf811c28c9770fc2427a404ab4
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006770"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309038"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>A MirrorMaker használata a Kafka on HDInsight az Apache Kafka-témakörökhöz replikáláshoz
 
@@ -25,11 +25,11 @@ Ebben a példában tükrözés segítségével témakörök replikálása a HDIn
 > [!WARNING]
 > Tükrözés nem lehet tekinteni hibatűrés megvalósítása a módszerrel. Az eltolás egy témakörön belül elemekre eltérőek a forrás- és a fürtök közötti, így az ügyfelek nem használhatják a két az felcserélhető.
 >
-> Ha a hibatűrés a témakörök replikálása a fürtön belül kell beállítania. További információkért lásd: [a HDInsight Kafka használatának első lépései](apache-kafka-get-started.md).
+> Ha a hibatűrés a témakörök replikálása a fürtön belül kell beállítania. További információkért lásd: [Apache Kafka on HDInsight – első lépések](apache-kafka-get-started.md).
 
-## <a name="how-kafka-mirroring-works"></a>Hogyan működik a Kafka-tükrözés
+## <a name="how-apache-kafka-mirroring-works"></a>Hogyan működik az Apache Kafka-tükrözés
 
-Tükrözés működik a MirrorMaker eszközzel (az Apache Kafka része) a rekordok témakörei a kiindulási fürt használják, és majd hozzon létre egy helyi példány a célfürtön. Mirrormakerrel használ (legalább) *fogyasztók* , olvassa el a forrás-fürtből, és a egy *előállítói* , amely a helyi (cél) fürt ír.
+Tükrözés works használatával a [Mirrormakerrel](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) eszközzel (az Apache Kafka része) rögzíti a kiindulási fürt témakörei könyvet, majd hozzon létre egy helyi példány a célfürtön. Mirrormakerrel használ (legalább) *fogyasztók* , olvassa el a forrás-fürtből, és a egy *előállítói* , amely a helyi (cél) fürt ír.
 
 A következő ábra szemlélteti a tükrözés folyamat:
 
@@ -56,7 +56,7 @@ Kafka-fürtök különböző hálózatokon között tükrözéséhez van szüks�
 
 A két Azure virtuális hálózatok összekapcsolása további információkért lásd: [VNet – VNet kapcsolat konfigurálása](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
 
-## <a name="create-kafka-clusters"></a>A Kafka-fürtök létrehozása
+## <a name="create-apache-kafka-clusters"></a>Az Apache Kafka-fürtök létrehozása
 
 Bár létrehozhat Azure-beli virtuális hálózathoz, és a Kafka-fürtök manuális, egyszerűbb legyen a használata az Azure Resource Manager-sablon. Az alábbi lépések segítségével Azure-beli virtuális hálózathoz és a két Kafka-fürtök üzembe helyezése az Azure-előfizetéshez.
 
@@ -106,7 +106,7 @@ Bár létrehozhat Azure-beli virtuális hálózathoz, és a Kafka-fürtök manu�
 
     További információk: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. A következő parancsok használatával a Zookeeper-gazdagépet keressen a kiindulási fürt:
+2. A következő parancsok használatával az Apache Zookeeper gazdagépet keressen a kiindulási fürt:
 
     ```bash
     # Install jq if it is not installed
@@ -295,10 +295,10 @@ Mivel a jelen dokumentumban leírt lépések az Azure-erőforráscsoport mindké
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a dokumentumban megismerkedhetett a MirrorMaker használata a Kafka-fürt a replika létrehozásához. Az alábbi hivatkozások segítségével Fedezzen fel más módokat a Kafka használata:
+Ebben a dokumentumban megtudhatta, hogyan használható [Mirrormakerrel](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) a replika létrehozásához egy [Apache Kafka](https://kafka.apache.org/) fürt. Az alábbi hivatkozások segítségével Fedezzen fel más módokat a Kafka használata:
 
 * [Az Apache Kafka Mirrormakerrel dokumentáció](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) cwiki.apache.org címen.
 * [A HDInsight Apache Kafka használatának első lépései](apache-kafka-get-started.md)
-* [Az Apache Spark használata a Kafkával a HDInsighton](../hdinsight-apache-spark-with-kafka.md)
-* [Az Apache Storm használata a HDInsighton futó Kafkával](../hdinsight-apache-storm-with-kafka.md)
-* [Csatlakozás a Kafkához Azure Virtual Networkön keresztül](apache-kafka-connect-vpn-gateway.md)
+* [Az Apache Kafka on HDInsight az Apache Spark használata](../hdinsight-apache-spark-with-kafka.md)
+* [Az Apache Kafka on HDInsight az Apache Storm használata](../hdinsight-apache-storm-with-kafka.md)
+* [Csatlakozás az Apache Kafka az Azure virtuális hálózaton keresztül](apache-kafka-connect-vpn-gateway.md)

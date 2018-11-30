@@ -3,7 +3,7 @@ title: Biztonsági megoldások integrálása az Azure Security Centerbe | Micros
 description: Megtudhatja, hogy az Azure Security Center hogyan integrálható a partnerekkel az Azure-erőforrások általános biztonságának növelése érdekében.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/20/2018
-ms.author: terrylan
-ms.openlocfilehash: 1abf9efb5c0bed205ce5b87b1f055c14a11ce9ec
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.date: 11/26/2018
+ms.author: rkarlin
+ms.openlocfilehash: bbdda5012e6132940d00ae23a6d26469b0216fd0
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245014"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335438"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Biztonsági megoldások integrálása az Azure Security Centerbe
 Ez a dokumentum az Azure Security Centerhez már csatlakoztatott biztonsági megoldások kezelésében és újak hozzáadásában segít.
@@ -47,14 +47,17 @@ Jelenleg a következő integrált biztonsági megoldások érhetők el:
 | Endpoint Protection (Végpontok védelme)               | Platformok                             | Security Center telepítése | Security Center felderítése |
 |-----------------------------------|---------------------------------------|------------------------------|---------------------------|
 | Windows Defender (Microsoft-kártevőirtó)                  | Windows Server 2016                   | Nincs, az operációs rendszerbe van beépítve           | Igen                       |
-| System Center Endpoint Protection (Microsoft-kártevőirtó) | Windows Server 2012 R2, 2012, 2008 R2 | Bővítmény útján                | Igen                       |
+| System Center Endpoint Protection (Microsoft-kártevőirtó) | A Windows Server 2012 R2, 2012, 2008 R2 (lásd az alábbi megjegyzést) | Bővítmény útján                | Igen                       |
 | Trend Micro – Összes verzió         | Windows Server termékcsalád                 | Nem                           | Igen                       |
 | Symantec v12.1.1100+              | Windows Server termékcsalád                 | Nem                           | Igen                       |
 | McAfee v10+                       | Windows Server termékcsalád                 | Nem                           | Igen                       |
 | Kaspersky                         | Windows Server termékcsalád                 | Nem                           | Nem                        |
 | Sophos                            | Windows Server termékcsalád                 | Nem                           | Nem                        |
 
-
+> [!NOTE]
+> System Center Endpoint Protection (SCEP) észlelése a Windows Server 2008 R2 virtuális gépeken szükséges SCEP után a PowerShell 3.0 (vagy egy felső verzió) kell telepíteni.
+>
+>
 
 ## <a name="how-security-solutions-are-integrated"></a>A biztonsági megoldások integrálása
 A Security Centerből üzembe helyezett Azure biztonsági megoldások automatikusan csatlakoztatva vannak. Csatlakoztathat egyéb biztonsági adatforrásokat is, köztük a következőket:

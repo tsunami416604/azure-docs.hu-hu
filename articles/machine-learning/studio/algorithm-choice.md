@@ -1,5 +1,5 @@
 ---
-title: Machine learning-algoritmusok kiválasztása |} A Microsoft Docs
+title: Hogyan választható ki a gépi tanulási algoritmusok – Azure Machine Learning Studióban |} A Microsoft Docs
 description: Hogyan lehet felügyelt és nem felügyelt tanítás Learning az Azure Machine Learning Studio algoritmusok kiválasztása a fürtözés, a besorolási vagy regressziós kísérletekben.
 services: machine-learning
 author: ericlicoding
@@ -13,12 +13,12 @@ ms.service: machine-learning
 ms.component: studio
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 4251bb5c0ad324d65ddcd0ab55476116ab918ab8
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 7ddfb98a884779385cde643e213bebb98b050436
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263486"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312418"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Az Azure Machine Learning Studióban az algoritmusok kiválasztása
 

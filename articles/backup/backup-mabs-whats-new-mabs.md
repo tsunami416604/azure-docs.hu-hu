@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: adigan; kasinh
-ms.openlocfilehash: 8e80d935bac94f3d4b2380799a1aed256828af75
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: e963f675dfe2a57fc19f3169beeb1d7d4066af93
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625878"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315596"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>What's new in Microsoft Azure Backup Server
 
@@ -60,6 +60,7 @@ További információ a telepítési/frissítési lépések MABS keresés [Itt](
 ## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan készíti elő a kiszolgálót, vagy a munkaterhelések védelmének megkezdése:
+- [Ismert problémák a MABS V3](backup-mabs-release-notes-v3.md)
 - [Backup Server számítási feladatainak előkészítése](backup-azure-microsoft-azure-backup.md)
 - [VMware-kiszolgáló biztonsági mentése Backup Server használatával](backup-azure-backup-server-vmware.md)
 - [SQL Server biztonsági mentése Backup Server használatával](backup-azure-sql-mabs.md)

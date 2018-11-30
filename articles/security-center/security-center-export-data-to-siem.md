@@ -1,5 +1,5 @@
 ---
-title: Az Azure biztonsági adatok exportálása SIEM - folyamat konfigurációs [előzetes verzió] |} A Microsoft Docs
+title: Az Azure biztonsági adatok exportálása SIEM - konfigurációhoz folyamat |} A Microsoft Docs
 description: Ez a cikk dokumentálja a Bevezetés az Azure security center naplókat a siem-nek a termék
 services: security-center
 documentationcenter: na
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2018
+ms.date: 11/26/2018
 ms.author: barclayn
-ms.openlocfilehash: aede60a729fe9c0594ded485e189c0b467e34271
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4cc9478197b39198a94ace1cbefab81de3cdb32b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298233"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52306726"
 ---
-# <a name="azure-security-data-export-to-siem--pipeline-configuration-preview"></a>Az Azure biztonsági adatok exportálása SIEM - folyamat konfigurációs [előzetes verzió]
+# <a name="azure-security-data-export-to-siem-pipeline-configuration"></a>Az Azure Security SIEM-folyamat konfigurációs adatok exportálása
 
 Ez a dokumentum az Azure Security Center biztonsági adatok exportálásával egy siem-be részletesen.
 
@@ -37,11 +37,11 @@ A következő szakaszok ismertetik, hogyan konfigurálható egy eseményközpont
 
 ## <a name="what-is-the-azure-security-data-exposed-to-siem"></a>Mi az az Azure biztonsági adatok siem-be közzétett?
 
-Az előzetes verzióban elérhetővé tesszük a [biztonsági riasztásokat.](../security-center/security-center-managing-and-responding-alerts.md) A jövőbeli kiadásokban az adatkészlet, a biztonsági javaslatok azt fogja bővítését.
+Ebben a verzióban elérhetővé tesszük a [biztonsági riasztásokat.](../security-center/security-center-managing-and-responding-alerts.md) A jövőbeli kiadásokban az adatkészlet, a biztonsági javaslatok azt fogja bővítését.
 
-## <a name="how-to-setup-the-pipeline"></a>Hogyan állíthatja be a folyamat? 
+## <a name="how-to-setup-the-pipeline"></a>A folyamat beállítása
 
-### <a name="create-an-event-hub"></a>Eseményközpont létrehozása 
+### <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
 Mielőtt elkezdené, kell [Event Hubs-névtér létrehozása](../event-hubs/event-hubs-create.md). A névtér és Eseményközpont az összes monitorozási adatot célját.
 

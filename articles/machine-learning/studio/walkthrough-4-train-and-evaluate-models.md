@@ -1,5 +1,5 @@
 ---
-title: '4. lépés: Betanítása és kiértékelése a prediktív elemzési modellek |} A Microsoft Docs'
+title: '4. lépés: A prediktív elemzési modellek – az Azure Machine Learning Studio betanítása |} A Microsoft Docs'
 description: 'A fejlesztés egy prediktív megoldás bemutatója 4. lépés: Train, pontszám, és az Azure Machine Learning Studio több modell kiértékelése.'
 services: machine-learning
 documentationcenter: ''
@@ -16,17 +16,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: d0277db665259d485c5a5a06f0013f3c0d6a177c
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 4b4ffcf8e6c886a2f182c844f940e53c24d1efa0
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261785"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313469"
 ---
-# <a name="walkthrough-step-4-train-and-evaluate-the-predictive-analytic-models"></a>Az útmutató 4. lépése: A prediktív elemzési modellek betanítása és kiértékelése
+# <a name="walkthrough-step-4-train-and-evaluate-the-predictive-analytic-models-in-machine-learning-studio"></a>Az útmutató 4. lépés: Betanítása és kiértékelése a Machine Learning Studio prediktív elemzési modellek
 Ez a témakör ismerteti a forgatókönyv negyedik lépésében [az Azure Machine Learning prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md)
 
-1. [Machine Learning-munkaterület létrehozása](walkthrough-1-create-ml-workspace.md)
+1. [A Machine Learning Studio-munkaterület létrehozása](walkthrough-1-create-ml-workspace.md)
 2. [Meglévő adatok feltöltése](walkthrough-2-upload-data.md)
 3. [Új kísérlet létrehozása](walkthrough-3-create-new-experiment.md)
 4. **A modellek betanítása és kiértékelése**
@@ -41,7 +41,7 @@ A kísérletben, ez az útmutató olyan fejlesztést hogy modellek két különb
 Nincsenek azt is választhat a különböző modellek. Elérhető modellek megtekintéséhez bontsa ki a **Machine Learning** a modulpaletta csomópontja majd **modell inicializálása** és a csomópontok alatta. Ez a kísérlet célja, hogy ki kell választania a [Kétosztályos támogató Vektorgép] [ two-class-support-vector-machine] (SVM) és a [két osztályú súlyozott döntési fa] [ two-class-boosted-decision-tree] modulok.    
 
 > [!TIP]
-> Annak eldöntése, mely Machine Learning algoritmus ajánlott megoldani kívánt probléma megfelelő segítséget szeretne kérni, lásd: [algoritmusok kiválasztása a Microsoft Azure Machine Learning](algorithm-choice.md).
+> Annak eldöntése, mely Machine Learning algoritmus ajánlott megoldani kívánt probléma megfelelő segítséget szeretne kérni, lásd: [algoritmusok kiválasztása a Microsoft Azure Machine Learning Studio](algorithm-choice.md).
 > 
 > 
 

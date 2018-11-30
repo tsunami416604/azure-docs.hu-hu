@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: justhu
 ms.custom: aaddev
-ms.openlocfilehash: 8986f18b9f1f2953ad0612679d31996628870cb1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a965cd70e3eba04f278cf432196b9386b537462d
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988223"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424340"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Az Azure Active Directoryban bérlős
 
@@ -29,7 +29,7 @@ Az Azure Active Directory (Azure AD) csoportokba rendezi az objektumok, példáu
 
 ## <a name="who-can-sign-in-to-your-app"></a>Ki jelentkezhet be az alkalmazásba?
 
-Használatával történő alkalmazásfejlesztésbe származik, amikor a fejlesztők megadhatja alkalmazás az egybérlős vagy több-bérlős lehet az alkalmazás regisztrációja során a [az Azure portal](http://portal.azure.com).
+Használatával történő alkalmazásfejlesztésbe származik, amikor a fejlesztők megadhatja alkalmazás az egybérlős vagy több-bérlős lehet az alkalmazás regisztrációja során a [az Azure portal](https://portal.azure.com).
 * Egybérlős alkalmazások csak a bérlő azok volt regisztrálva, más néven a saját bérlőjén érhető el.
 * Több-bérlős alkalmazások a felhasználók a saját bérlőjén és a többi bérlő számára érhetők el.
 

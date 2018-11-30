@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7f34b0015a4a6d7b8c2c23f539cf21232adaec58
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5d5eee525c6f071840d186cb6bd54faf9bf2787b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311100"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310667"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Az Azure AD Connect kapcsolati problémáinak hibaelhárítása
 Ez a cikk azt ismerteti, hogyan működik az Azure AD Connect és az Azure AD közötti kapcsolat és a kapcsolódási problémák elhárítása. Ezek olyan problémák, nagy valószínűséggel olyan környezetben, egy proxykiszolgáló láthatók legyenek.
@@ -46,7 +46,7 @@ Ezen URL-címek a következő táblázat az csatlakozni az Azure AD minden, az a
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |Töltse le a Visszavonási listák segítségével. |
 | \*.verisign.com |HTTP/80 |Töltse le a Visszavonási listák segítségével. |
-| \*. entrust.com |HTTP/80 |Töltse le a Visszavonási listák a multi-factor Authentication segítségével. |
+| \*. entrust.net |HTTP/80 |Töltse le a Visszavonási listák a multi-factor Authentication segítségével. |
 | \*.windows.net |HTTPS/443 |Jelentkezzen be az Azure AD segítségével. |
 | secure.aadcdn.microsoftonline-p.com |HTTPS/443 |A multi-factor Authentication használja. |
 | \*.microsoftonline.com |HTTPS/443 |Segítségével a konfigurálása az Azure AD-címtár és az adatok importálása és exportálása. |

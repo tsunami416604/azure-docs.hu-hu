@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: c7d1665eece966053f52e118bb0d6f7f5ec4cba6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2c7ccd8d2022631e32c240007a782d2382aac518
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957863"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422847"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Útmutató: az ADAL használatával Android alkalmazások közötti SSO engedélyezése
 
@@ -130,7 +130,7 @@ A regisztráció segítségével regisztrálhatja az átirányítási URI-t a [a
 
 #### <a name="step-3-set-up-the-correct-permissions-in-your-application"></a>3. lépés: Az alkalmazás a megfelelő engedélyek beállítása
 
-A közvetítő alkalmazás Android hitelesítő adatok kezelése a különböző alkalmazások az Android operációs rendszer fiókkezelő funkcióját használja. Annak érdekében, hogy a közvetítő használata az Android a alkalmazásjegyzékbe AccountManager fiókokat engedélyekkel kell rendelkeznie. Ezek az engedélyek tárgyalja részletesen ismertetjük a [Google Account Manager itt található dokumentáció](http://developer.android.com/reference/android/accounts/AccountManager.html)
+A közvetítő alkalmazás Android hitelesítő adatok kezelése a különböző alkalmazások az Android operációs rendszer fiókkezelő funkcióját használja. Annak érdekében, hogy a közvetítő használata az Android a alkalmazásjegyzékbe AccountManager fiókokat engedélyekkel kell rendelkeznie. Ezek az engedélyek tárgyalja részletesen ismertetjük a [Google Account Manager itt található dokumentáció](https://developer.android.com/reference/android/accounts/AccountManager.html)
 
 Ezeket az engedélyeket, a következők:
 

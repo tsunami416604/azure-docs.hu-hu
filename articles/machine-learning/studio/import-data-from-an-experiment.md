@@ -1,5 +1,5 @@
 ---
-title: Adatok importálása a Machine Learning studióba egy másik kísérletből |} A Microsoft Docs
+title: Adatok importálása a Machine Learning studióba egy másik kísérletből – Azure |} A Microsoft Docs
 description: Útmutató az Azure Machine Learning Studióban betanítási adatok mentéséhez és vele egy másik kísérlet során.
 keywords: adatok, adatok, adatforrások, betanítási adatok importálása
 services: machine-learning
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: cb024f757772ec22adcf4513c422d41628ab7360
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 098459c3c2c8402a4dbcefd88fd79d0883611053
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265151"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308037"
 ---
 # <a name="import-your-data-into-azure-machine-learning-studio-from-another-experiment"></a>Adatok importálása az Azure Machine Learning Studióba egy másik kísérletből
 

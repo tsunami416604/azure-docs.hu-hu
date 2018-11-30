@@ -17,12 +17,12 @@ ms.date: 08/28/2018
 ms.author: celested
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: bebabad4c7beb27022e12e5d48b77d88fc054fc2
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 0a9ec2e84197729f98fbf90bac53b505a8c99a19
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190115"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427330"
 ---
 # <a name="app-registration-reference"></a>Alkalmazásregisztráció-referencia
 Ez a dokumentum kontextust biztosít a és a különféle funkcióinak leírása megtalálható a [alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/).
@@ -37,7 +37,7 @@ Ez a lista tartalmazza az összes alkalmazás regisztrálása az Azure AD-1.0-s 
 Ez a lista tartalmazza az összes alkalmazás kizárólag a Microsoft-fiókkal való használatra regisztrálva. Nincsenek engedélyezve az Azure Active Directoryval történő használatra. Ez a érheti el olyan alkalmazásokat, amelyek az MSA fejlesztői portálja, a korábban már regisztrált `https://account.live.com/developers/applications`. Minden függvény, amely a korábban végrehajtott `https://account.live.com/developers/applications` most már az új portálon végrehajtható `https://apps.dev.microsoft.com`.
 
 ## <a name="application-secrets"></a>Alkalmazástitkok
-Titkos alkalmazáskulcsok rendszer hitelesítő adatokat, amelyek lehetővé teszik az alkalmazásnak, hogy megbízható [ügyfél-hitelesítés](http://tools.ietf.org/html/rfc6749#section-2.3) az Azure ad-ben. Az OAuth és OpenID Connect, az alkalmazás titkos gyakran nevezik egy `client_secret`. A 2.0-s protokoll, minden olyan alkalmazás, amely fogad egy biztonsági jogkivonatot egy webes címezhető helyen (használatával egy `https` séma) segítségével azonosítja magát a biztonsági jogkivonat beváltása után az Azure AD-alkalmazás titkos kell használnia. Továbbá minden olyan natív ügyfél, amely megkapja a tokenek egy eszközön lesz tiltott egy alkalmazás titkos kulcs az ügyfél-hitelesítés végrehajtásához. Ez megnehezíti a nem biztonságos környezetben titkos kulcsok tárolására.
+Titkos alkalmazáskulcsok rendszer hitelesítő adatokat, amelyek lehetővé teszik az alkalmazásnak, hogy megbízható [ügyfél-hitelesítés](https://tools.ietf.org/html/rfc6749#section-2.3) az Azure ad-ben. Az OAuth és OpenID Connect, az alkalmazás titkos gyakran nevezik egy `client_secret`. A 2.0-s protokoll, minden olyan alkalmazás, amely fogad egy biztonsági jogkivonatot egy webes címezhető helyen (használatával egy `https` séma) segítségével azonosítja magát a biztonsági jogkivonat beváltása után az Azure AD-alkalmazás titkos kell használnia. Továbbá minden olyan natív ügyfél, amely megkapja a tokenek egy eszközön lesz tiltott egy alkalmazás titkos kulcs az ügyfél-hitelesítés végrehajtásához. Ez megnehezíti a nem biztonságos környezetben titkos kulcsok tárolására.
 
 Minden alkalmazás két érvényes titkos alkalmazáskulcsok tartalmazhat egy adott időpontban. Két titkos kódok megőrzése révén az alkalmazás teljes környezetre rendszeres kulcsváltás képességével rendelkezik. Után az alkalmazás egy új titkos kulcsot a teljes migrálás, törölje a régi titkos kulcsot, és egy új beállítására.
 

@@ -11,20 +11,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2018
 ms.author: tomfitz
-ms.openlocfilehash: a5a2300bd0b768b4a29b01e75f9558c4923ac11c
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: eea981800147f24025e01826f7550a95041c107f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395128"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427301"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-private-preview"></a>Biztonságos üzembe helyezési eljárások az Azure Deployment Manager (privát előzetes verzió) engedélyezése
 
 A szolgáltatás számos régióban üzembe helyezheti, és ellenőrizze, hogy az egyes régiókban a várt módon fut, az Azure Deployment Manager segítségével egy szakaszos bevezetést a szolgáltatás koordinálja. Ugyanúgy, mint bármely Azure-telepítéshez, az erőforrásokat a szolgáltatáshoz a határoz meg [Resource Manager-sablonok](resource-group-authoring-templates.md). Miután létrehozta a sablonokat, a Deployment Manager a topológia a szolgáltatáshoz, és hogyan azt kell történni használhatja.
 
-Deployment Manager funkciója a Resource Manager. Üzembe helyezés során a képességekkel bővíti. Használat Deployment Manager, ha rendelkezik olyan összetett szolgáltatás, amelynek számos régióban üzembe helyezni. A Bevezetés a szolgáltatás átmeneti, a lehetséges problémák megtalálhatja előtt az összes régióban van telepítve. Ha már nincs szüksége egy szakaszos bevezetést, a felesleges óvintézkedéseket, használja a standard [központi telepítési beállítások](resource-group-template-deploy-portal.md) a Resource Managerhez. Deployment Manager zökkenőmentesen integrálható az összes meglévő külső eszközökkel, amelyek támogatják a Resource Manager-környezetek, például a folyamatos integrációt és folyamatos készregyártás (CI/CD) ajánlatok. 
+Deployment Manager funkciója a Resource Manager. Üzembe helyezés során a képességekkel bővíti. Használat Deployment Manager, ha rendelkezik olyan összetett szolgáltatás, amelynek számos régióban üzembe helyezni. A szolgáltatás kibocsátásának előkészítésével a régiókban történő üzembe helyezés előtt azonosíthat potenciális problémákat. Ha már nincs szüksége egy szakaszos bevezetést, a felesleges óvintézkedéseket, használja a standard [központi telepítési beállítások](resource-group-template-deploy-portal.md) a Resource Managerhez. Deployment Manager zökkenőmentesen integrálható az összes meglévő külső eszközökkel, amelyek támogatják a Resource Manager-környezetek, például a folyamatos integrációt és folyamatos készregyártás (CI/CD) ajánlatok. 
 
-Az Azure Deployment Manager private preview verzióban van. Az Azure Deployment Manager használatára, végezze el a [bejelentkezési űrlap kitöltése](https://aka.ms/admsignup). Súgó be javítják a szolgáltatást azáltal, hogy [visszajelzés](https://aka.ms/admfeedback).
+Az Azure Deployment Manager privát előzetes verzióban érhető el. Az Azure Deployment Manager használatára, végezze el a [bejelentkezési űrlap kitöltése](https://aka.ms/admsignup). Súgó be javítják a szolgáltatást azáltal, hogy [visszajelzés](https://aka.ms/admfeedback).
 
 Deployment Manager használatához szüksége négy fájlok létrehozásához:
 
@@ -34,6 +34,8 @@ Deployment Manager használatához szüksége négy fájlok létrehozásához:
 * A paraméterfájl bevezetéséhez
 
 A bevezetési sablon üzembe helyezése előtt telepíti a topológia sablont.
+
+Az Azure Deployment Manager REST API-referenciában találhat [Itt](https://docs.microsoft.com/rest/api/deploymentmanager/).
 
 ## <a name="supported-locations"></a>A támogatott helyek
 
@@ -89,7 +91,7 @@ Az alábbi példa bemutatja az összetevő-forrás általános formátumát.
 
 További információkért lásd: [artifactSources sablonreferenciája](/azure/templates/Microsoft.DeploymentManager/artifactSources).
 
-### <a name="service-topology"></a>Szolgáltatás-topológia
+### <a name="service-topology"></a>Szolgáltatástopológia
 
 Az alábbi példa bemutatja a szolgáltatás topológia erőforrás általános formátumát. Azt adja meg az összetevő forrás, amely rendelkezik a sablonokat és paraméterfájlt az erőforrás-azonosítója. A szolgáltatás a topológia összes szolgáltatás-erőforrást tartalmaz. Ahhoz, hogy az összetevő-forrás érhető el, a szolgáltatás topológia függ tőle.
 

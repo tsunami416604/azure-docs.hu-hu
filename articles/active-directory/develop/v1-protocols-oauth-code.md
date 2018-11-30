@@ -16,12 +16,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b7b8ccf7e84239db4eef0914346c453a2f205f91
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c4a18fa022304e7ccfb4503cf2e02650555d6d7b
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237893"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425122"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Az OAuth 2.0 kód engedélyezési folyamatával használatával az Azure Active Directory webes alkalmazásokhoz való hozzáférés engedélyezése
 
@@ -60,7 +60,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | response_type |szükséges |Tartalmaznia kell `code` az engedélyezési kód folyamata. |
 | redirect_uri |Ajánlott |Az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat redirect_uri tulajdonsága. Pontosan egyeznie kell a redirect_uris regisztrálta a portálon, kivéve azt az URL-kódolású kell lennie. A natív és mobil alkalmazások esetén az alapértelmezett értéket használjon `urn:ietf:wg:oauth:2.0:oob`. |
 | response_mode |választható |Meghatározza a létrejövő jogkivonat vissza küldhet az alkalmazáshoz használandó módszert. Lehet `query`, `fragment`, vagy `form_post`. `query` a kódot biztosít az átirányítási URI-t a lekérdezési sztring paramétereként. Ha Ön a kért egy azonosító jogkivonat, használja az implicit folyamatot, nem használhatja `query` meghatározott a [OpenID specifikációja](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Ha csak a kódot kért, `query`, `fragment`, vagy `form_post`. `form_post` az átirányítási URI-t a kódot egy HOZZÁSZÓLÁSRA hajtja végre. Az alapértelmezett érték `query` egy kódot folyamathoz.  |
-| state |Ajánlott |A kérésben is a token válaszban visszaadott érték. Egy véletlenszerűen generált egyedi érték jellemzően a [webhelyközi kérések hamisításának megakadályozása támadások](http://tools.ietf.org/html/rfc6749#section-10.12). Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérelmet, például az oldal vagy voltak a nézet is szolgál. |
+| state |Ajánlott |A kérésben is a token válaszban visszaadott érték. Egy véletlenszerűen generált egyedi érték jellemzően a [webhelyközi kérések hamisításának megakadályozása támadások](https://tools.ietf.org/html/rfc6749#section-10.12). Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérelmet, például az oldal vagy voltak a nézet is szolgál. |
 | erőforrás | Ajánlott |Az Alkalmazásazonosító URI-t a cél a webes API (védett erőforrás). Az Alkalmazásazonosító URI-t, az Azure Portalon kattintson **Azure Active Directory**, kattintson a **alkalmazást az alkalmazásregisztrációk**, nyissa meg az alkalmazás **beállítások** lapon, majd kattintson a  **Tulajdonságok**. Például egy külső erőforrás is lehet `https://graph.microsoft.com`. Ez azért szükséges, egy engedélyezési vagy jogkivonat-kérelmeket. Annak biztosítása érdekében kevesebb hitelesítési kérések helyezze el az engedélyezési kérésben, ha biztosítani szeretné, jóváhagyás a felhasználó. |
 | scope | **figyelmen kívül hagyva** | V1 az Azure AD-alkalmazásokhoz, hatókörök statikusan konfigurálni kell lennie az alkalmazások az Azure portál **beállítások**, **szükséges engedélyek**. |
 | parancssor |választható |A felhasználói beavatkozás szükséges típusát jelzi.<p> Érvényes értékek a következők: <p> *bejelentkezési*: A felhasználó a rendszer kéri, hogy hitelesítse magát újra. <p> *select_account*: kéri a felhasználót, válassza ki a fiókot, hogy az egyszeri bejelentkezés megszakítása. A felhasználó előfordulhat, hogy válasszon egy meglévő bejelentkezett fiókot, adja meg a hitelesítő adataikat a korábban megjegyzett fiók vagy teljesen használt egy másik fiókot. <p> *hozzájárulás*: felhasználói beleegyezés kapott, de frissíteni kell. A felhasználó jóváhagyást kell kérni. <p> *admin_consent*: A rendszergazda a rendszer kéri a szervezetben lévő összes felhasználó nevében jóváhagyást |
@@ -102,7 +102,7 @@ error=access_denied
 
 | Paraméter | Leírás |
 | --- | --- |
-| error |Egy hiba-kód szakaszban az 5.2 meghatározott értékét a [OAuth 2.0 engedélyezési keretrendszer](http://tools.ietf.org/html/rfc6749). A következő táblázat a hibakódok, melyek az Azure AD adja vissza. |
+| error |Egy hiba-kód szakaszban az 5.2 meghatározott értékét a [OAuth 2.0 engedélyezési keretrendszer](https://tools.ietf.org/html/rfc6749). A következő táblázat a hibakódok, melyek az Azure AD adja vissza. |
 | error_description |A hiba részletes leírását. Ez az üzenet nem célja, hogy lehet végfelhasználói rövid. |
 | state |Az állapot értéke nem újra felhasználhatók egy véletlenszerűen generált érték, amely a kérés küldése és webhelyközi kérések hamisításának megakadályozása (CSRF) támadások megelőzése érdekében a válaszban visszaadott. |
 
@@ -175,7 +175,7 @@ A sikeres válasz nézhet ki:
 | Paraméter | Leírás |
 | --- | --- |
 | access_token |A kért [hozzáférési jogkivonat](access-tokens.md) , egy aláírt JSON webes jogkivonat (JWT). Az alkalmazás a jogkivonat használatával hitelesítik magukat a védett erőforráshoz, például a webes API-t. |
-| token_type |Typ tokenu értékét jelöli. Az egyetlen, amely támogatja az Azure ad-ben típus tulajdonosi. További információ a tulajdonosi jogkivonatokat: [OAuth2.0 engedélyezési keretrendszer: tulajdonosi jogkivonat-használat (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt) |
+| token_type |Typ tokenu értékét jelöli. Az egyetlen, amely támogatja az Azure ad-ben típus tulajdonosi. További információ a tulajdonosi jogkivonatokat: [OAuth2.0 engedélyezési keretrendszer: tulajdonosi jogkivonat-használat (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt) |
 | expires_in |Mennyi ideig a hozzáférési jogkivonat érvénytelen (másodpercben). |
 | expires_on |A hozzáférési jogkivonat lejáratának időpontja. A dátum jelenik meg a másodpercek számát, 1970-01-01T0:0:0Z UTC a lejárati időpontig. Ez az érték a gyorsítótárazott jogkivonatok élettartama meghatározására szolgál. |
 | erőforrás |Az Alkalmazásazonosító URI a webes API (védett erőforrás). |
@@ -235,7 +235,7 @@ Az alábbi táblázat a kiállítási végpont által visszaadott HTTP-állapotk
 | temporarily_unavailable |A kiszolgáló nem túlságosan elfoglalt a kérelem kezelése. |Ismételje meg a kérelmet. Az ügyfélalkalmazás megmagyarázhatják a felhasználót, hogy a válasz egy ideiglenes állapot miatt késik. |
 
 ## <a name="use-the-access-token-to-access-the-resource"></a>A hozzáférési jogkivonat használata az erőforrás eléréséhez
-Most, hogy sikeresen szerezte- `access_token`, használhatja a jogkivonatot a kéréseket a webes API-k, többek között a a `Authorization` fejléc. A [RFC 6750](http://www.rfc-editor.org/rfc/rfc6750.txt) specifikáció ismerteti a HTTP-kérések tulajdonosi jogkivonatok segítségével védett erőforrások eléréséhez.
+Most, hogy sikeresen szerezte- `access_token`, használhatja a jogkivonatot a kéréseket a webes API-k, többek között a a `Authorization` fejléc. A [RFC 6750](https://www.rfc-editor.org/rfc/rfc6750.txt) specifikáció ismerteti a HTTP-kérések tulajdonosi jogkivonatok segítségével védett erőforrások eléréséhez.
 
 ### <a name="sample-request"></a>Mintakérelem
 ```
@@ -258,7 +258,7 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 | Paraméter | Leírás |
 | --- | --- |
 | authorization_uri |Az URI (fizikai végpont), az engedélyezési kiszolgálón. Ez az érték is szolgál keresési kulcsként részletes tájékoztatást nyújt a kiszolgáló egyes felderítési végpontokból. <p><p> Az ügyfélnek ellenőriznie kell, hogy az engedélyezési kiszolgáló nem megbízható. Az erőforrások védelme az Azure AD, ha elegendő ahhoz, hogy ellenőrizze, hogy az URL-cím kezdete https://login.microsoftonline.com vagy másik gazdagépnevet, amely támogatja az Azure ad-ben. A bérlő-specifikus erőforrás mindig egy bérlő-specifikus engedélyezési URI-t adja vissza. |
-| error |Egy hiba-kód szakaszban az 5.2 meghatározott értékét a [OAuth 2.0 engedélyezési keretrendszer](http://tools.ietf.org/html/rfc6749). |
+| error |Egy hiba-kód szakaszban az 5.2 meghatározott értékét a [OAuth 2.0 engedélyezési keretrendszer](https://tools.ietf.org/html/rfc6749). |
 | error_description |A hiba részletes leírását. Ez az üzenet nem célja, hogy lehet végfelhasználói rövid. |
 | resource_id |Az erőforrás egyedi azonosítójának beolvasása. Az ügyfélalkalmazás használható ez az azonosító értéket a `resource` paramétert az erőforrás-jogkivonat kérés. <p><p> Lényeges, hogy az ügyfélalkalmazás ellenőrizheti ezt az értéket, előfordulhat, hogy egy rosszindulatú szolgáltatás lehet tudni idéz elő egy **jogosultságszint-az-jogosultságokkal** támadás <p><p> A javasolt stratégiával és a támadás megakadályozására, hogy ellenőrizze, hogy a `resource_id` megegyezik az alapszintű, a webes API URL-címe, amely hozzáfér. Például ha https://service.contoso.com/data hozzáférnek, a `resource_id` htttps://service.contoso.com/ is lehet. Az ügyfélalkalmazás elutasítása kell egy `resource_id` , amely nem ezzel kezdődik az alap URL-címet, ha nincs alternatív megbízhatóan az azonosító ellenőrzése. |
 

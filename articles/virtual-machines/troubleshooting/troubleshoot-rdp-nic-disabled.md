@@ -1,5 +1,5 @@
 ---
-title: A hálózati adapter le van tiltva, nem lehet a távoli asztal az Azure Virtual Machines |} A Microsoft Docs
+title: Nem lehet távoli csatlakozás az Azure Virtual Machines a hálózati adapter le van tiltva, mert |} A Microsoft Docs
 description: Ismerje meg, hogyan háríthatók el a problémát, amely RDP meghiúsul, mert a hálózati adapter le van tiltva, az Azure virtuális Gépen |} A Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 6b14530bd6b4c1b6617cb1d5c88d710a32e5372c
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: f9e4731146409f51d16a8c92c01d07a8ff11a7ea
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634702"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314524"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>A hálózati adapter le van tiltva, nem tudja egy virtuális géphez a távoli asztal
 
-Ez a cikk bemutatja, hogyan, amelyben nem lehet a távoli asztal az Azure Windows Virtual Machines (VM) a hálózati adapter le van tiltva. a probléma megoldása érdekében.
+Ez a cikk bemutatja, hogyan, amelyben nem lehet a távoli asztali kapcsolat az Azure Windows Virtual Machines (VM) a hálózati adapter le van tiltva, ha a probléma megoldása érdekében.
 
 > [!NOTE] 
 > Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti a Resource Manager üzemi modell, amely az új központi telepítéseknél helyett a klasszikus üzemi modell használatát javasoljuk. 
@@ -51,7 +51,7 @@ A virtuális gép a felület engedélyezéséhez használja a soros vezérlőele
 
         netsh interface set interface name="interface Name" admin=enabled
 
-    Például ha a interwork felület "Ethernet 2"-neveket, futtassa a következő parancsot:
+    Például ha a interwork felület "Ethernet 2" nevű, futtassa a következő parancsot:
 
         netsh interface set interface name=""Ethernet 2" admin=enabled
     
@@ -62,8 +62,8 @@ A virtuális gép a felület engedélyezéséhez használja a soros vezérlőele
 
     Nem kell ezen a ponton a virtuális gép újraindítására. A virtuális gép ismét elérhető lesz.
         
-5.  Csatlakozzon a virtuális Géphez, és a probléma megoldódott.
+5.  Csatlakozzon a virtuális Géphez, és tekintse meg, hogy megoldódott-e a probléma.
 
 ## <a name="reset-network-interface"></a>Hálózati adapter alaphelyzetbe állítása
 
-Hálózati adapter alaphelyzetbe állítása, módosítsa az IP-cím, amely az alhálózaton elérhető az Azure portal vagy az Azure PowerShell használatával egy másik IP-címre. További információkért lásd: [hálózati adapter alaphelyzetbe állítása](reset-network-interface.md). 
+Hálózati adapter alaphelyzetbe állítása, váltson egy másik alhálózaton elérhető IP-címet az IP-cím. Ehhez használja az Azure portal vagy Azure PowerShell-lel. További információkért lásd: [hálózati adapter alaphelyzetbe állítása](reset-network-interface.md). 

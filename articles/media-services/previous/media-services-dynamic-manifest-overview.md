@@ -12,19 +12,24 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/06/2018
+ms.date: 11/25/2018
 ms.author: cenkd;juliako
-ms.openlocfilehash: 6060f294820281df3124fb2fc702ece59a006af1
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: e0eaf88117aa3c67f7ffecad2e3811a22449a5f8
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282407"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312969"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Szűrők és dinamikus jegyzékek
+
+> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> * [2-es verzió](media-services-dynamic-manifest-overview.md)
+> * [3-as verzió](../latest/filters-dynamic-manifest-overview.md)
+
 2.17 kiadástól kezdve, a Media Services lehetővé teszi az eszközök szűrőket határozhat meg. Ezeket a szűrőket, amelyek lehetővé teszik az ügyfelek úgy dönteni, hogy többek között a kiszolgálóoldali szabályok: lejátszani egy videót (a teljes videó lejátszása) helyett csak egy részét, vagy adja meg, hogy az ügyfél eszköz képes-e kezelni (hang- és beállításkészletben csak egy részhalmazát összes verzió helyett, amelyek az eszköz társítva). Ez a szűrés az eszközök a gazdafájlon keresztül **dinamikus Manifest**, amelyek létrejönnek a videó továbbításához a felhasználói kérésre megadott szűrő(k) alapján.
 
-Ez a témakör ismerteti a gyakori forgatókönyvek, amelyben szűrők segítségével rendkívül előnyös, ha az ügyfelek, mutató hivatkozásokat talál, amelyek bemutatják, hogyan hozhat létre programozott módon a szűrők lenne.
+Ez a témakör ismerteti a gyakori forgatókönyvek, amelyben szűrők használatával lehet előnyös, ha az ügyfelek, mutató hivatkozásokat talál, amelyek bemutatják, hogyan hozhat létre programozott módon a szűrőket.
 
 ## <a name="overview"></a>Áttekintés
 Az ügyfelek számára (élő eseményeket vagy igény szerinti videó streaming) tartalomtovábbításkor a cél, egy jó minőségű videót biztosításához a különböző eszközökre, különböző hálózati körülmények között. A cél tegye a következők eléréséhez:
@@ -102,7 +107,7 @@ Az eszközintelligencia szűrők két típusa van:
 A globális és helyi szűrőtípusok pontosan azonos tulajdonságokkal rendelkezik. A fő különbség a kettő között, mely forgatókönyvek milyen típusú egy filer megfelelő. Globális szűrők alkalmasak általában eszközprofilok (megjelenítésszűrés), a helyi szűrők és a záró szóközöket egy adott eszköz használható.
 
 ## <a id="scenarios"></a>Gyakori forgatókönyvek
-Mielőtt az ügyfelek számára (élő eseményeket vagy igény szerinti videó streaming) tartalomtovábbításkor célja az, hogy egy kiváló minőségű videó továbbítása különböző eszközökre, különböző hálózati körülmények elhangzik. Emellett a előfordulhat, hogy az eszközök szűrés és a használatával további követelményekkel rendelkezik **dinamikus Manifest**s. A következő szakaszok lehetővé teszik a különböző szűrési forgatókönyv rövid áttekintése.
+Mint említette, mielőtt az ügyfelek számára (élő eseményeket vagy igény szerinti videó streaming) tartalomtovábbításkor célja az, hogy egy kiváló minőségű videó továbbítása különböző eszközökre, különböző hálózati körülmények között. Emellett előfordulhat, hogy rendelkezik egyéb követelmények szűrése az eszközök és a használatával **dinamikus Manifest**s. A következő szakaszok lehetővé teszik a különböző szűrési forgatókönyv rövid áttekintése.
 
 * Adja meg az audio- és verzió, amely bizonyos eszközöket (és nem az összes a beállításkészletben az eszközhöz társított) képes kezelni egy részén alapulhatnak. 
 * Csak egy részét (a teljes videó lejátszása) helyett egy videó lejátszásának.

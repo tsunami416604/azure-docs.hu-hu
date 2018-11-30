@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 49516523abdd927c3ae60235fcd74473689c6856
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 65649c3fdc11d74b5888b26b81ae85e10f2788bd
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48019813"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426876"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Az Azure Active Directory Atlassian Jira és való összefolyás felett rendszergazdai útmutatója
 
@@ -67,9 +67,23 @@ A beépülő modul telepítése előtt, vegye figyelembe a következő informác
 
 A beépülő modul Jira és való összefolyás felett alábbi verzióit támogatja:
 
-* Jira-Core és a szoftver: 6.0 való 7,8
-* Jira ügyfélszolgálat: 3.2 a 3.0-s
+* Jira-Core és a szoftver: 6.0 való 7.12
+* Jira ügyfélszolgálat: 3.0.0-s 3.5.0
+* JIRA 5.2 is támogatja. További részletekért kattintson [Microsoft Azure Active Directory egyszeri bejelentkezés a JIRA 5.2.](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
 * Való összefolyás felett: 5.0-s 5.10
+* Való összefolyás felett: 6.0.1
+* Való összefolyás felett: 6.1.1.
+* Való összefolyás felett: 6.2.1
+* Való összefolyás felett: 6.3.4
+* Való összefolyás felett: 6.4.0
+* Való összefolyás felett: 6.5.0
+* Való összefolyás felett: 6.6.2
+* Való összefolyás felett: 6.7.0
+* Való összefolyás felett: 6.8.1
+* Való összefolyás felett: 6.9.0
+* Való összefolyás felett: 6.10.0
+* Való összefolyás felett: 6.11.0
+* Való összefolyás felett: 6.12.0
 
 ## <a name="installation"></a>Telepítés
 
@@ -79,7 +93,7 @@ A beépülő modul telepítéséhez kövesse az alábbi lépéseket:
 
 2. A Jira/való összefolyás felett felügyeleti konzolon, és válassza ki **bővítmények**.
 
-3. Az Atlassian piactéren keressen **Microsoft SAML SSO beépülő modulja**.
+3. A Microsoft Download Center, töltse le a [Microsoft SAML SSO beépülő modulja a Jira](https://www.microsoft.com/download/details.aspx?id=56506)/ [Microsoft SAML SSO beépülő modulja való összefolyás felett](https://www.microsoft.com/download/details.aspx?id=56503).
 
    A beépülő modul a megfelelő verzióját a keresési eredmények között megjelenik.
 
@@ -171,9 +185,23 @@ Nem. A beépülő modul által támogatott csak a helyszíni verzióit Jira és 
 
 A beépülő modul alábbi verzióit támogatja:
 
-* Jira-Core és a szoftver: 6.0 való 7,8
-* Jira ügyfélszolgálat: 3.2 a 3.0-s
+* Jira-Core és a szoftver: 6.0 való 7.12
+* Jira ügyfélszolgálat: 3.0.0-s 3.5.0
+* JIRA 5.2 is támogatja. További részletekért kattintson [Microsoft Azure Active Directory egyszeri bejelentkezés a JIRA 5.2.](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
 * Való összefolyás felett: 5.0-s 5.10
+* Való összefolyás felett: 6.0.1
+* Való összefolyás felett: 6.1.1.
+* Való összefolyás felett: 6.2.1
+* Való összefolyás felett: 6.3.4
+* Való összefolyás felett: 6.4.0
+* Való összefolyás felett: 6.5.0
+* Való összefolyás felett: 6.6.2
+* Való összefolyás felett: 6.7.0
+* Való összefolyás felett: 6.8.1
+* Való összefolyás felett: 6.9.0
+* Való összefolyás felett: 6.10.0
+* Való összefolyás felett: 6.11.0
+* Való összefolyás felett: 6.12.0
 
 ### <a name="is-the-plug-in-free-or-paid"></a>A beépülő modul ingyenes vagy fizetős?
 

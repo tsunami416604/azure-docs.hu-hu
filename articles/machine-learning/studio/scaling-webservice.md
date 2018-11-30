@@ -1,6 +1,6 @@
 ---
-title: Az Azure Machine Learning webszolgáltatás egyidejűség mértékének növelése érdekében hogyan |} A Microsoft Docs
-description: Egyidejűségi beállítása pedig az Azure Machine Learning webszolgáltatás növelésével további végpontokat hozzáadásával kapcsolatos további információkért.
+title: A Machine Learning Studio webszolgáltatás - Azure méretezése |} A Microsoft Docs
+description: Útmutató az Azure Machine Learning Studio webszolgáltatás-egyidejűség mértékének növelése további végpontokat hozzáadásával.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -17,16 +17,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.openlocfilehash: 6e827c88d840a111ef3bebfb8f2b2f116c02643e
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 3077afc99e7879b14c36e16cdbed8afb3a07bdb3
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264862"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312181"
 ---
 # <a name="scaling-an-azure-machine-learning-web-service-by-adding-additional-endpoints"></a>Az Azure Machine Learning webszolgáltatás skálázása további végpontok hozzáadása
 > [!NOTE]
-> Ez a témakör ismerteti a technikákat egy **klasszikus** Machine Learning webszolgáltatás. 
+> Ez a témakör ismerteti a technikákat egy **klasszikus** Machine Learning webszolgáltatáshoz. 
 > 
 > 
 

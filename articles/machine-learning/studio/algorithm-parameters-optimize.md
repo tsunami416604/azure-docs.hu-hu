@@ -1,6 +1,6 @@
 ---
-title: Az Azure Machine Learning termékben használt algoritmusok optimalizálására |} A Microsoft Docs
-description: Válassza ki az optimális paraméter beállítása az Azure Machine Learning algoritmus ismerteti.
+title: Algoritmusok optimalizálása az Azure Machine Learning Studióban |} A Microsoft Docs
+description: Válassza ki az optimális paraméter beállítása az Azure Machine Learning Studióban az algoritmusok ismerteti.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,14 +16,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: c5445833d9f0e003304af3a1f60fb82a372898bf
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: f4b7ba04f643fc823ca627e279faea31dee9d2a4
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261819"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314712"
 ---
-# <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning"></a>Az Azure Machine Learning termékben használt algoritmusok optimalizálására paraméterek kiválasztása
+# <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio"></a>Válassza ki az Azure Machine Learning Studióban az algoritmusok optimalizálása paraméterekkel
+
 A témakör az megfelelő hiperparaméter beállítása az Azure Machine Learning algoritmus kiválasztása. A legtöbb gépi tanulási algoritmusok meg a paraméterek beállításához. Amikor egy modell betanításához e paraméterek értékének megadására van szükség. A betanított modell hatékonyságát a modell paraméterek, választott függ. Az optimális paraméterek készletét folyamata más néven *kijelölés modell*.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]

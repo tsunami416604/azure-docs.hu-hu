@@ -1,6 +1,6 @@
 ---
-title: Az Azure Machine Learning Web Services portál használata |} A Microsoft Docs
-description: Az Azure Machine Learning-munkaterületek, való hozzáférés kezelése és üzembe helyezése és gépi Tanulási API-webszolgáltatások kezelése
+title: A Machine Learning webszolgáltatások portál – Azure Machine Learning Studióban |} A Microsoft Docs
+description: A Machine Learning új és a klasszikus webszolgáltatások a Microsoft Azure Machine Learning Web Services portál használata kezelheti. A klasszikus webszolgáltatások és új Web services különböző mögöttes technológiák alapján, mivel mindegyikhez rendelkezik némileg eltérő felügyeleti képességeket.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
-ms.openlocfilehash: e21d6e05e3d43bbdcc498c9c4b294269cc3069cd
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 78e776da17e8e068ff45e426795fa5d86a92cc79
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261343"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308664"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-web-services-portal"></a>Az Azure Machine Learning Web Services portálon webszolgáltatás kezelése
 A Machine Learning új és a klasszikus webszolgáltatások a Microsoft Azure Machine Learning Web Services portál használata kezelheti. A klasszikus webszolgáltatások és új Web services különböző mögöttes technológiák alapján, mivel mindegyikhez rendelkezik némileg eltérő felügyeleti képességeket.

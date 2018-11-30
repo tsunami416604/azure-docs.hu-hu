@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 01e8b5c518931411ba6e2d75168de6753bf55260
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 34c11c911b6c2ffbc4d4800cd7203a8d430814fb
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971722"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311245"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Hozzon létre egy virtuális hálózati társviszony - másik üzembe helyezési modellek és -előfizetések
 
@@ -97,7 +97,7 @@ Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Mindk�
 
 ## <a name="cli"></a>Társviszony - létrehozása az Azure CLI
 
-Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Mindkét előfizetés engedéllyel rendelkező fiók használata, használja ugyanazt a fiókot az összes lépést, hagyja ki a lépéseket a naplózás az Azure-ból és a sorok szkript által létrehozott felhasználói szerepkör-hozzárendelések eltávolításához. Cserélje le UserA@azure.com és UserB@azure.com az alábbi parancsfájlok a Felhasználóa és Felhasználób használata a felhasználónevek mindegyikét. A következő lépéseket a klasszikus Azure CLI és az Azure CLI használatával. Csak kiválasztásával kitöltheti a lépéseket követve az Azure Cloud Shell a **próbálja ki** gombot a következő lépésekből áll, vagy telepítse a [klasszikus parancssori felület](/cli/azure/install-cli-version-1.0.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [CLI](/cli/azure/install-azure-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és a parancsok futtatása a helyi számítógépen.
+Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Mindkét előfizetés engedéllyel rendelkező fiók használata, használja ugyanazt a fiókot az összes lépést, hagyja ki a lépéseket a naplózás az Azure-ból és a sorok szkript által létrehozott felhasználói szerepkör-hozzárendelések eltávolításához. Cserélje le UserA@azure.com és UserB@azure.com az alábbi parancsfájlok a Felhasználóa és Felhasználób használata a felhasználónevek mindegyikét. A következő lépéseket a klasszikus Azure CLI és az Azure CLI használatával. Csak kiválasztásával kitöltheti a lépéseket követve az Azure Cloud Shell a **próbálja ki** gombot a következő lépésekből áll, vagy telepítse a [klasszikus parancssori felület](/cli/azure/install-classic-cli) és [CLI](/cli/azure/install-azure-cli) és a parancsok futtatása a helyi számítógépen.
 
 1. A Cloud Shell használata esetén ugorjon a 2, mert a Cloud Shell automatikusan bejelentkezik, az Azure-bA. Nyisson meg egy parancssori munkamenetet, és jelentkezzen be Azure-bA a `azure login` parancsot.
 2. A klasszikus parancssori felület futtatása szolgáltatásfelügyelet módban megadásával a `azure config mode asm` parancsot.
@@ -272,7 +272,7 @@ Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Mindk�
 ## <a name="delete"></a>Erőforrások törlése
 Ez az oktatóanyag befejezése után érdemes törölni, így nem használati díjak merülhetnek fel az oktatóanyagban létrehozott erőforrásokat. Egy erőforráscsoport törlésekor a, amelyek az erőforráscsoportban lévő összes erőforrást is törli.
 
-### <a name="delete-portal"></a>Az Azure Portalon
+### <a name="delete-portal"></a>Azure Portal
 
 1. A portál keresőmezőbe írja be a **myResourceGroupA**. A keresési eredmények között kattintson **myResourceGroupA**.
 2. Az a **myResourceGroupA** panelen kattintson a **törlése** ikonra.
@@ -281,7 +281,7 @@ Ez az oktatóanyag befejezése után érdemes törölni, így nem használati d�
 5. Az a **myVnetB** panelen kattintson a **törlése**.
 6. Kattintson a törlés megerősítéséhez **Igen** a a **virtuális hálózat törlése** mezőbe.
 
-### <a name="delete-cli"></a>Az Azure CLI
+### <a name="delete-cli"></a>Azure CLI
 
 1. Jelentkezzen be az Azure-ban a parancssori felületről törölni a virtuális hálózatot (Resource Manager) a következő paranccsal:
 

@@ -1,6 +1,6 @@
 ---
-title: Az ügyfél változásainak Machine Learning segítségével elemzése |} A Microsoft Docs
-description: Egy integrált modellek elemzéséhez és a vásárlók lemorzsolódásának pontozási való fejlesztésének bemutató esettanulmány
+title: Az Azure Machine Learning Studio elemzésekor vásárlók lemorzsolódásának |} A Microsoft Docs
+description: Esettanulmány fejlődő egy integrált modell és pontozása Azure Machine Learning Studio használatával, a vásárlók lemorzsolódásának elemzésére.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 7c55e35370e2aed67045333eaee7a42c3c69d318
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 0ab398cc87472e3ede361f48f8e755ef294746da
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261173"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314984"
 ---
-# <a name="analyzing-customer-churn-using-azure-machine-learning"></a>Az ügyfél az Azure Machine Learning segítségével változásainak elemzése
+# <a name="analyzing-customer-churn-using-azure-machine-learning-studio"></a>Az ügyfél az Azure Machine Learning Studio használatával változásainak elemzése
 ## <a name="overview"></a>Áttekintés
 Ez a cikk bemutatja egy referenciaimplementációt, egy ügyfél lemorzsolódásának elemzésére szolgáló projekt, amely az Azure Machine Learning segítségével. Ebben a cikkben bemutatjuk, azok alkalmazásfüggőségeit az iparági vásárlók lemorzsolódási problémájának megoldására szolgáló kapcsolódó általános modellekről. Azt is mérheti a Machine Learning segítségével létrehozott modellek pontossága, és felmérheti a további fejlesztésére vonatkozó utasításokat.  
 

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: sngun
-ms.openlocfilehash: 9358e0a712f820671edec518b1cc93ecee5302ad
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: c330171f0c85bce6451b8f342203e2eeeccb3c5a
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162519"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425139"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Az Azure Cosmos DB lekérdezési teljesítmény hangolása
 
@@ -218,7 +218,7 @@ Lásd: [Azure Cosmos DB globális terjesztésének](tutorial-global-distribution
 A szakasz a lekérdezés végrehajtási metrikák azt ismerteti, hogyan kérheti le a kiszolgáló lekérdezések végrehajtási ideje ( `totalExecutionTimeInMs`), hogy meg tudja különböztetni idő a lekérdezés-végrehajtás és az idő a hálózati átvitel során.
 
 ### <a name="indexing-policy"></a>Indexelési szabályzat
-Lásd: [indexelési szabályzat konfigurálása](indexing-policies.md) indexelés elérési utak, bármilyen, és módok és milyen hatással van, a lekérdezés végrehajtása céljából. Alapértelmezés szerint az indexelési házirendet használja kivonatoló indexelő-karakterlánc, amely hatékony egyenlőség lekérdezések esetében, de nem esik lekérdezések/rendezési lekérdezésekkel. Ha karakterláncokat kell lekérdezések, javasoljuk, adja meg a tartomány minden karakterlánc index típusa. 
+Lásd: [indexelési szabályzat konfigurálása](index-policy.md) indexelés elérési utak, bármilyen, és módok és milyen hatással van, a lekérdezés végrehajtása céljából. Alapértelmezés szerint az indexelési házirendet használja kivonatoló indexelő-karakterlánc, amely hatékony egyenlőség lekérdezések esetében, de nem esik lekérdezések/rendezési lekérdezésekkel. Ha karakterláncokat kell lekérdezések, javasoljuk, adja meg a tartomány minden karakterlánc index típusa. 
 
 ## <a name="query-execution-metrics"></a>Lekérdezés-végrehajtási metrikák
 Ezt a nem kötelező úgy szerezheti be a lekérdezések részletes metrikákért `x-ms-documentdb-populatequerymetrics` fejléc (`FeedOptions.PopulateQueryMetrics` a .NET SDK-ban). A visszaadott érték `x-ms-documentdb-query-metrics` azt jelentette a speciális hibaelhárításhoz, a lekérdezés végrehajtása a következő kulcs-érték párokat tartalmaz. 
@@ -276,6 +276,6 @@ Az alábbiakban néhány mintalekérdezést, és a mérőszámok egyes értelmez
 ## <a name="next-steps"></a>További lépések
 * A támogatott SQL-lekérdezési operátorokkal vagy kulcsszavak kapcsolatos további információkért lásd: [SQL-lekérdezés](how-to-sql-query.md). 
 * Kérelemegység kapcsolatos további információkért lásd: [kérelemegységek](request-units.md).
-* Indexelési házirend kapcsolatos további információkért lásd: [indexelési szabályzat](indexing-policies.md) 
+* Indexelési házirend kapcsolatos további információkért lásd: [indexelési szabályzat](index-policy.md) 
 
 

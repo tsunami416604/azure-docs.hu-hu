@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 601169cc62a99438f661adc06ab166b545606edb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: abd64b7d2fa7930f5b6177c7ac037840da34dc18
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624590"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52333581"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Az Azure Active Directory-jelentés adatmegőrzési szabályai
 
@@ -32,7 +32,7 @@ Ebben a cikkben megismerkedhet a különböző tevékenységre vonatkozó jelent
 | Az Azure AD-kiadástól | Gyűjtemény indítása |
 | :--              | :--   |
 | Prémium szintű Azure AD P1 <br /> Prémium szintű Azure AD P2 | Amikor regisztrál egy előfizetést |
-| Azure AD Free | Az első megnyitásakor a [Azure Active Directory panel](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) vagy használja a [reporting API-k](https://aka.ms/aadreports)  |
+| Azure AD Free <br /> Azure AD Basic | Az első megnyitásakor a [Azure Active Directory panel](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) vagy használja a [reporting API-k](https://aka.ms/aadreports)  |
 
 ---
 

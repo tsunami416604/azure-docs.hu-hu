@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: a7f21d0ebebbe2c811470de384cc5ee9a34ab060
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 449fdbceeb0b64d58c589fe5dbde61302ee27afb
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006158"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309208"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Az Azure Security Center hálózati erőforrások védelme
 Az Azure Security Center folyamatosan elemzi a hálózati biztonsági eljárások az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a erősíti, és az erőforrások védelme a szükséges vezérlők konfigurálásának folyamatán hoz létre.
@@ -126,7 +126,7 @@ A topológia e nézetében az első szintű jeleníti meg a virtuális hálózat
 
 A harmadik szinten megjeleníti a virtuális gépek, a korábban leírtakhoz hasonlóan. Kattintson bármely erőforrás további vagy a alkalmazni a szükséges biztonsági rendszabályok / konfigurációk.
 
-## <a name="network-recommendations"></a>Hálózattal kapcsolatos ajánlások
+## <a name="network-recommendations"></a>Hálózatokra vonatkozó javaslatok
 
 |Erőforrás típusa|Biztonsági pontszám|Ajánlás|Leírás|
 |----|----|----|----|
@@ -136,7 +136,7 @@ A harmadik szinten megjeleníti a virtuális gépek, a korábban leírtakhoz has
 |Gép|20|Internetről elérhető végponton keresztüli hozzáférés korlátozása|Az internetkapcsolattal rendelkező virtuális gépek a meglévő hozzáférés korlátozásával, a hálózati biztonsági goups Felvértezni lehetővé teszik a szabályok.|
 |Gép|10|Új generációs tűzfal hozzáadása|Next Generation Firewall (NGFW) megoldás, amelyekkel jobban megvédheti az internetkapcsolattal rendelkező virtuális gépek hozzáadásához.|
 |Gép|5|Hálózati átjáró csak tűzfalon keresztül haladjon a forgalom|A következő generációs tűzfal megoldás a telepítés befejezéséhez a védett internetkapcsolattal rendelkező virtuális gépek forgalmat kell átirányítani csak a következő generációs tűzfal megoldás használatával.|
-|Virtuális hálózat|5|DDoS protection-szabvány engedélyezése|Ezeket a virtuális hálózatokat a nyilvános IP-címek az alkalmazások nem védi a standard szintű DDOS protection szolgáltatás. Lehetővé teszi, hogy csökkenti a hálózat-es és a protokoll támadások engedélyezése javasolt.|
+|VNet|5|DDoS protection-szabvány engedélyezése|Ezeket a virtuális hálózatokat a nyilvános IP-címek az alkalmazások nem védi a standard szintű DDOS protection szolgáltatás. Lehetővé teszi, hogy csökkenti a hálózat-es és a protokoll támadások engedélyezése javasolt.|
 |Gép|10|Új generációs tűzfal hozzáadása|egy Next Generation Firewall (NGFW) megoldás, amelyekkel jobban megvédheti az internetkapcsolattal rendelkező virtuális gépek nn.|
 |Gép|5|Hálózati átjáró csak tűzfalon keresztül haladjon a forgalom|A következő generációs tűzfal megoldás a telepítés befejezéséhez a védett internetkapcsolattal rendelkező virtuális gépek forgalmat kell átirányítani csak a következő generációs tűzfal megoldás használatával.|
 Virtuális hálózat|5|DDoS protection-szabvány engedélyezése|Ezeket a virtuális hálózatokat a nyilvános IP-címekkel rendelkező alkalmazások nem védi a standard szintű DDOS protection szolgáltatás. Lehetővé teszi, hogy csökkenti a hálózat-es és a protokoll támadások engedélyezése javasolt.|
@@ -149,6 +149,6 @@ Javaslatok, amelyek vonatkoznak a többi Azure-erőforrásokkal kapcsolatos tov�
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-policies.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
+* [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-azure-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.

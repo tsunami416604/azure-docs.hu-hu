@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 9402147e2dab7fbf52fc893f339f6f3b8e112377
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 3fd0dfb327e925ecb28a7ca12e03b79c873118dc
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515641"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309344"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Az Azure Active Directory-Eszközfelügyelet – gyakori kérdések
 
@@ -93,6 +93,7 @@ A régebbi verziójú Windows operációs rendszerekről, amelyek a helyszíni A
 
 >[!Note] 
 >A regisztrált eszközök esetében javasoljuk, hogy törlődne az eszközön, győződjön meg arról, hogy a felhasználók nem tudnak hozzáférni az erőforrásokhoz. További információkért lásd: [eszközök regisztrálása az Intune-ban felügyeletre](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
+
 ---
 
 # <a name="azure-ad-join-faq"></a>Az Azure AD Join – gyakori kérdések
@@ -103,6 +104,20 @@ A régebbi verziójú Windows operációs rendszerekről, amelyek a helyszíni A
 - Hibrid Azure AD-csatlakoztatás eszközökhöz ügyeljen arra, hogy az automatikus regisztráció kikapcsolása, így az ütemezett feladat nem regisztrálja újra az eszközt. Ezután nyissa meg a parancssort rendszergazdaként, és írja be `dsregcmd.exe /debug /leave`. Azt is megteheti ezzel a paranccsal futtathatja, a parancsfájl több eszközre történő tömeges elhagyása.
 
 - Az igazi Azure AD-csatlakoztatás eszközök, ellenőrizze, hogy a kapcsolat nélküli helyi rendszergazdai fiók, vagy létrehozhat egy újat, nem kell minden olyan Azure AD felhasználói hitelesítő adatokkal jelentkezhetnek be. Folytassa **beállítások** > **fiókok** > **hozzáférés munkahelyi vagy iskolai**. Válassza ki azt a fiókot, majd kattintson a **Disconnect**. Kövesse az utasításokat, és adja meg a helyi rendszergazdai hitelesítő adatokat, amikor a rendszer kéri. Indítsa újra az eszközt a elhagyásra befejezéséhez.
+
+---
+
+**Kérdés: a felhasználók jelentkezhetnek be, hogy törölték, vagy le van tiltva, az Azure ad-ben az Azure AD-hez csatlakoztatott eszközök? ** 
+ **V:** igen. Windows gyorsítótárazta korábban bejelentkezett felhasználók asztali gyorsan hozzáférhessenek a hálózati kapcsolat nélkül is, hogy be tudjon jelentkezni. Egy eszköz törlésekor vagy le van tiltva, az Azure ad-ben, nem ismert, a Windows-eszköz. Így korábban bejelentkezett felhasználók továbbra is elérhető az asztalon, a gyorsítótárazott bejelentkezés. Azonban amíg az eszköz törli vagy le van tiltva, felhasználók nem férhetnek hozzá olyan eszközalapú feltételes hozzáférés által védett erőforrások. 
+
+Felhasználók, akik még nem már bejelentkezett a nem az eszköz elérésére, mivel nem lett a gyorsítótárazott bejelentkezés nem engedélyezett a számukra. 
+
+---
+
+**K: letiltott vagy törölt felhasználók jelentkezhetnek be az Azure AD-csatlakoztatott eszközök? ** 
+ **V:** Igen, de csak korlátozott ideig. A felhasználó törlésekor vagy le van tiltva, az Azure ad-ben, nem azonnal ismert a Windows-eszközön. Így korábban bejelentkezett felhasználók férhetnek hozzá a gyorsítótárazott bejelentkezés az asztalon. Amint az eszköz tisztában a felhasználói állapot (általában kevesebb mint 4 óra), Windows letiltja a felhasználók hozzáférését az asztalon. Amíg a felhasználó törli vagy le van tiltva, az Azure ad-ben, az összes tokenjeiket visszavonja, így nem tudják elérni erőforrásokat. 
+
+Törölték, vagy letiltott felhasználók, akik korábban még nem bejelentkezett nem eszköz eléréséhez, mivel nem lett a gyorsítótárazott bejelentkezés nem engedélyezett a számukra. 
 
 ---
 

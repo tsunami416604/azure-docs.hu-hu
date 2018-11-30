@@ -1,5 +1,5 @@
 ---
-title: 'Szemléltető ábra: Gépi tanulás alapjai - algoritmus példákkal |} A Microsoft Docs'
+title: 'Szemléltető ábra: Gépi tanulás alapjai - algoritmus példákkal – Azure Machine Learning Studióban |} A Microsoft Docs'
 description: Könnyen érthető áttekintése machine learning alapjai algoritmus példákkal tartalmazza. A letölthető infografika kiterjed a legtöbb machine learning-kérdések.
 keywords: Machine learning alapjait, az algoritmus példákkal gépi tanulással kezdőknek, machine learning kérdések, népszerű algoritmusok, algoritmus szemléltető ábra
 services: machine-learning
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: fcc85b62786cd776034e57d421262b82ecf54975
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: ccbe152901ff7f59548239a1d59e585b8e356c23
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265109"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308002"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Letölthető infografika: a gépi tanulás alapjai algoritmuspéldákkal
 Töltse le a machine learning alapjait kapcsolatos gyakori machine learning kérdésre népszerű algoritmusok könnyen érthető infografika áttekintése. Algoritmus példákkal a machine learning kezdő algoritmusok közül melyiket szeretné használni, és mire használhatók a megismerése érdekében.

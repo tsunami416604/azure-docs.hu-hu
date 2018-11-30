@@ -1,5 +1,5 @@
 ---
-title: Megtekintheti, és az adatok törlése az Azure AI katalógus |} A Microsoft Docs
+title: Megtekintheti, és az adatok törlése az Azure AI katalógus – Azure Machine Learning Studióban |} A Microsoft Docs
 description: Exportálhatja, és a terméken belüli felhasználói adatok törlése az Azure AI-katalógusban a felület vagy a AI katalógus katalógus API használatával. Ez a cikk bemutatja, hogyan.
 services: machine-learning
 author: ericlicoding
@@ -11,12 +11,12 @@ ms.service: machine-learning
 ms.component: studio
 ms.topic: conceptual
 ms.date: 05/25/2018
-ms.openlocfilehash: 472a27fb129f8ed9d4745610bde17fb2b69326c3
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 6603428599a84a265566fb98da0b151ab4962f81
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264828"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314456"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Megtekintheti és terméken belüli felhasználói adatok törlése az Azure AI-katalógusban
 

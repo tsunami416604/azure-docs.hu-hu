@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 23369ac9f6cef74bac045017e8f956470e9a1159
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2827461ee78be8d8976ec23e59d489213eb94e31
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248860"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316021"
 ---
 # <a name="strengthen-your-security-posture-with-azure-security-center"></a>Erősítse meg biztonsági állapotát az Azure Security Centerrel
 Ez a cikk segít erősítse meg biztonsági állapotát. Az Azure Security Center figyelési funkcióknak használatához ellenőrizze, hogy az erőforrások biztonságának, szoros, lehetséges, és a figyelő szabályzatoknak való megfelelőségét.
@@ -27,7 +27,7 @@ Ez a cikk segít erősítse meg biztonsági állapotát. Az Azure Security Cente
 ## <a name="how-do-you-strengthen-your-security-posture"></a>Hogyan erősítse meg biztonsági állapotát?
 Ha a „figyelés” szót halljuk, általában arra gondolunk, hogy elővigyázatosan várjuk, hogy egy adott esemény bekövetkezzen, hogy aztán reagálhassunk a szituációra. Biztonsági helyzetét megerősítése arra utal, hogy a proaktív stratégiát, amely naplózza az erőforrásokat az azonosítani azokat a vállalati szabványoknak vagy ajánlott eljárások nem felel meg.
 
-Ha bekapcsolja az előfizetéshez tartozó erőforrásokra vonatkozó [biztonsági szabályzatokat](security-center-policies.md), a Security Center elvégzi az erőforrások biztonsági elemzését, és azonosítja a potenciális sebezhető pontokat. A hálózati konfigurációval kapcsolatos információk azonnal elérhetők. Azon virtuális gépek és számítógépek számától függően, amelyeken az ügynök telepítve van, a virtuális gépek és a számítógép konfigurációjára (például a biztonsági frissítések állapotára és az operációs rendszer beállításaira) vonatkozó információk összegyűjtésére körülbelül egy órát kell várni. Problémák és erősíti a hálózaton, és javíthatja a kockázat, hogy hogyan teljes listáját megtekintheti a **javaslatok** csempére.
+Ha bekapcsolja az előfizetéshez tartozó erőforrásokra vonatkozó [biztonsági szabályzatokat](security-center-azure-policy.md), a Security Center elvégzi az erőforrások biztonsági elemzését, és azonosítja a potenciális sebezhető pontokat. A hálózati konfigurációval kapcsolatos információk azonnal elérhetők. Azon virtuális gépek és számítógépek számától függően, amelyeken az ügynök telepítve van, a virtuális gépek és a számítógép konfigurációjára (például a biztonsági frissítések állapotára és az operációs rendszer beállításaira) vonatkozó információk összegyűjtésére körülbelül egy órát kell várni. Problémák és erősíti a hálózaton, és javíthatja a kockázat, hogy hogyan teljes listáját megtekintheti a **javaslatok** csempére.
 
 Az erőforrások és az esetleges problémákat, erőforrás-típusonként biztonsági állapotát tekintheti meg:
 
@@ -49,7 +49,7 @@ A javaslatok alkalmazásával kapcsolatban további információkat talál a kö
 ## <a name="see-also"></a>Lásd még
 Ebben a cikkben megismerkedhetett az Azure Security Center figyelési funkcióinak használatával. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-policies.md): Ez a cikk bemutatja, hogyan konfigurálhat biztonsági beállításokat az Azure Security Centerben.
+* [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-azure-policy.md): Ez a cikk bemutatja, hogyan konfigurálhat biztonsági beállításokat az Azure Security Centerben.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md): A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Partneri megoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md): Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md): Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.

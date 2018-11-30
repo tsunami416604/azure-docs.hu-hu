@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: ''
-ms.openlocfilehash: 9569a9da81848c279db6d6d45b7621f84060387b
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0b1209c1d8d92b08d15cfbfd6e323b7bd748e2f5
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958627"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316922"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>A vendég operációs rendszer mérőszámok küldése az Azure Monitor adattárba Windows virtuális gép (klasszikus)
 
@@ -27,7 +27,7 @@ Az ebben a cikkben a folyamat csak a klasszikus virtuális gépeket, a Windows o
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Kell egy [szolgáltatás-rendszergazdaként vagy társ-rendszergazdaként](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator.md) az Azure-előfizetésében. 
+- Kell egy [szolgáltatás-rendszergazdaként vagy társ-rendszergazdaként](../billing/billing-add-change-azure-subscription-administrator.md) az Azure-előfizetésében. 
 
 - Az előfizetés regisztrálva kell lenniük [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#portal). 
 

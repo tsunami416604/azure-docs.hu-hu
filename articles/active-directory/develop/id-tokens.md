@@ -16,12 +16,12 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 35e6cd988a0532221d88b22cdd51fc29d7f17ba9
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: ab2c0f671eaf6147baad24b426c4a527f07e136f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158754"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422405"
 ---
 # <a name="id-tokens"></a>Azonosító jogkivonatok
 
@@ -70,8 +70,8 @@ Megtekintheti a v2.0-minta lexikális elem szerepel az [jwt.ms](https://jwt.ms/#
 |`idp`|Karakterlánc, általában egy STS URI | A jogkivonat alanyát hitelesítő identitásszolgáltatót adja meg. Ez az érték megegyezik a kiállító jogcím értékét, kivéve, ha a felhasználói fiók nem ugyanahhoz a bérlőhöz, a kibocsátó - Vendégek, például. Ha a jogcím nem található, azt jelenti, hogy értékét `iss` is lehet használni.  Személyes fiókok orgnizational környezetben (például egy személyes fiók meghívjuk az Azure AD-bérlő), használja a `idp` jogcím lehet "live.com" és a egy STS URI, amely tartalmazza a Microsoft-fiók bérlő `9188040d-6c67-4c5b-b112-36a304b66dad`. |
 |`nbf` |  int, a UNIX-időbélyege | Az "nbf" (előtte) jogcím azonosítja az idő előtt, amely a JWT kell nem lesznek elfogadva feldolgozásra.|
 |`exp` |  int, a UNIX-időbélyege | Az "exp" (lejárati ideje) jogcím azonosítja a lejárati időt, vagy azt követően, amely a JWT kell nem lesznek elfogadva feldolgozásra.  Fontos megjegyezni, hogy egy erőforrás elutasíthatja a jogkivonatot, valamint - megadott idő előtti Ha például szükség egy az megváltoztatására hitelesítést, vagy a tokenek visszavonása észlelt. |
-| `c_hash`| Karakterlánc |A kód kivonat csak akkor, ha az azonosító jogkivonat, az OAuth 2.0 engedélyezési kóddal kiadott azonosító-jogkivonatokat szerepel. Az engedélyezési kódot hitelességének ellenőrzéséhez használható. További ellenőrzés elvégzésével kapcsolatos információkért lásd: a [OpenID Connect specifikáció](http://openid.net/specs/openid-connect-core-1_0.html). |
-|`at_hash`| Karakterlánc |Jogkivonat kivonata azonosító szerepel a hozzáférési jogkivonatok, csak ha az azonosító jogkivonat kiadott egy OAuth 2.0 hozzáférési jogkivonatban. Hozzáférési jogkivonat hitelességének ellenőrzéséhez használható. További ellenőrzés elvégzésével kapcsolatos információkért lásd: a [OpenID Connect specifikáció](http://openid.net/specs/openid-connect-core-1_0.html). |
+| `c_hash`| Karakterlánc |A kód kivonat csak akkor, ha az azonosító jogkivonat, az OAuth 2.0 engedélyezési kóddal kiadott azonosító-jogkivonatokat szerepel. Az engedélyezési kódot hitelességének ellenőrzéséhez használható. További ellenőrzés elvégzésével kapcsolatos információkért lásd: a [OpenID Connect specifikáció](https://openid.net/specs/openid-connect-core-1_0.html). |
+|`at_hash`| Karakterlánc |Jogkivonat kivonata azonosító szerepel a hozzáférési jogkivonatok, csak ha az azonosító jogkivonat kiadott egy OAuth 2.0 hozzáférési jogkivonatban. Hozzáférési jogkivonat hitelességének ellenőrzéséhez használható. További ellenőrzés elvégzésével kapcsolatos információkért lásd: a [OpenID Connect specifikáció](https://openid.net/specs/openid-connect-core-1_0.html). |
 |`aio` | Átlátszatlan karakterlánc | Egy jogkivonat újrafelhasználásra erőforrásrekord-adatokat az Azure AD által használt belső jogcímet. Figyelmen kívül lehet hagyni.|
 |`preferred_username` | Karakterlánc | Az elsődleges felhasználónév, amely a felhasználó jelöli. Ez lehet egy e-mail-címet, telefonszámot vagy egy általános felhasználónév nélkül egy megadott formátumban. Az érték mutable és idővel változhatnak. Mivel ezekre kapott válaszokon, ez az érték nem használható az engedélyezési döntésekhez. A `profile` hatókör szükséges, ezt a kérelmet kap.|
 |`email` | Karakterlánc | A `email` nincs alapértelmezés szerint az e-mail-címmel rendelkező vendégfiókok.  Az alkalmazás kérheti a e-mail követelés, (amelyek az ugyanazon bérlőről erőforrásként) felügyelt felhasználók használatával a `email` [választható jogcím](active-directory-optional-claims.md).  A v2.0-végpont az alkalmazás is kérheti a `email` OpenID Connect hatókör - nem kell igényelnie a nem kötelező jogcím és a hatóköre a jogcím beolvasásához.  Az e-mail követelés csak a felhasználói profil adatait a megcímezhető mail támogatja. |

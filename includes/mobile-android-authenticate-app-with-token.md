@@ -1,8 +1,20 @@
-
-Az előző példában bemutatta szabványos bejelentkezéshez, ami megköveteli, hogy az ügyfél, mind az identitásszolgáltató, és a háttér-Azure szolgáltatás kapcsolódni az alkalmazás minden indításakor. Ez a módszer nem hatékony, és akkor használati kapcsolatos problémák, ha sok ügyfél próbál meg egyidejűleg indítsa el az alkalmazást. Egy jobb megoldás, a gyorsítótár az engedélyezési jogkivonatot az Azure-szolgáltatás által visszaadott, és próbálja meg használni az első olyan szolgáltató alapú bejelentkezés használata előtt.
+---
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: crdun
+ms.openlocfilehash: deb94cab97bd9a402676cdc5c0239da8d07ed8b2
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52440191"
+---
+Az előző példa bemutatta, szabványos bejelentkezési, ami megköveteli, hogy az ügyfél kapcsolatba az identitásszolgáltató és a háttér Azure-szolgáltatás, az alkalmazás minden indításakor. Ez a módszer nem hatékony, és a használattal kapcsolatos problémák is rendelkezik, ha sok ügyfél próbál indítsa el az alkalmazást egyszerre. Jobb módszer, hogy az engedélyezési jogkivonatra, az Azure-szolgáltatás által visszaadott gyorsítótárazza, és próbálja használni az első olyan szolgáltató alapú bejelentkezés használata előtt.
 
 > [!NOTE]
-> A háttér-függetlenül használja-e ügyfél által felügyelt vagy a szolgáltatás által kezelt hitelesítés az Azure szolgáltatás által kiadott tokennek képes gyorsítótárazni. Ez az oktatóanyag a szolgáltatás által kezelt hitelesítést használ.
+> A háttéralkalmazás függetlenül attól, hogy a hitelesítési ügyfél által felügyelt vagy a szolgáltatás által kezelt Azure-szolgáltatás által kiállított biztonsági jogkivonat képes gyorsítótárazni. Ebben az oktatóanyagban a szolgáltatás által kezelt hitelesítést használ.
 >
 >
 
@@ -35,10 +47,10 @@ Az előző példában bemutatta szabványos bejelentkezéshez, ami megköveteli,
     }
     ```
 
-    Ez a módszer is meg van jelölve személyes beállításokat szabályozó fájlban tárolja a felhasználói Azonosítót és a jogkivonatot. Hogy más alkalmazások az eszközön nincs hozzáférése a jogkivonatot, ez a gyorsítótár a hozzáférést kell védeni. A beállítás ki az alkalmazás elkülönített. Azonban ha valaki hozzáfér az eszközre, akkor lehet, hogy előfordulhat, hogy a jogkivonat gyorsítótára más módon hozzáférést kapnak.
+    Ez a módszer a felhasználói Azonosítót és a jogkivonat titkos megjelölt szabályozó fájlban tárolja. Ez a gyorsítótárhoz való hozzáférést kell védelemmel, úgy, hogy más alkalmazások az eszközön nincs hozzáférése a token. A beállítás: az alkalmazás vendégünk. Azonban ha valaki hozzáfér az eszközhöz, akkor lehet, hogy a jogkivonatok gyorsítótárát más módon hozzáférést is kapnak.
 
    > [!NOTE]
-   > Ha a adatokhoz való hozzáférés a jogkivonatokhoz szigorúan bizalmas minősül, és hozzáférhet az eszközt valaki, további védelmet biztosíthat a titkosítás, a jogkivonatot. Teljesen biztonságos megoldást ebben az oktatóanyagban terjed, és attól függ, a biztonsági követelményeinek.
+   > Ha számít, hogy az adatokhoz való hozzáférés a jogkivonatokhoz szigorúan bizalmas, és valaki hozzáférést nyújthat az eszközt, további védelmet biztosíthat a titkosítás, a jogkivonat. Egy teljesen biztonságos megoldás az túlmutat a jelen oktatóanyag esetében azonban, és a biztonsági követelményeitől függ.
    >
    >
 
@@ -63,7 +75,7 @@ Az előző példában bemutatta szabványos bejelentkezéshez, ami megköveteli,
     }
     ```
 
-5. Az a *ToDoActivity.java* fájlt, cserélje le a `authenticate` és `onActivityResult` módszereket a következő is, amely jogkivonatok gyorsítótárát használja. Módosítsa a bejelentkezés-szolgáltató, ha szeretné használni a Google nem.
+5. Az a *ToDoActivity.java* fájlt, cserélje le a `authenticate` és `onActivityResult` módszereit, valamint a következő is, ami egy token gyorsítótárát használja. Ha használja a Google aktuálistól eltérő fiókkal szeretne a bejelentkezés-szolgáltató módosítása
 
     ```java
     private void authenticate() {
@@ -102,4 +114,4 @@ Az előző példában bemutatta szabványos bejelentkezéshez, ami megköveteli,
     }
     ```
 
-6. Hozhat létre. az alkalmazás és a teszt hitelesítési érvényes fiók használatával. Legalább két alkalommal futtassa. Az első futtatás során jelenít meg bejelentkezni, és hozzon létre a jogkivonatok gyorsítótárát kell kapnia. Ezután minden egyes futtatásához megkísérli betölteni a hitelesítési jogkivonat gyorsítótárában. Ön nem köteles jelentkezzen be.
+6. Az alkalmazás és a teszt hitelesítési érvényes fiók használatával hozhat létre. Legalább kétszer futtatni. Az első futás közben jelentkezzen be, és a token gyorsítótár létrehozása felszólítást kapni. Ezt követően minden egyes futtatásához megkísérli betölteni a hitelesítési jogkivonat gyorsítótárba. Ön nem köteles jelentkezzen be a.

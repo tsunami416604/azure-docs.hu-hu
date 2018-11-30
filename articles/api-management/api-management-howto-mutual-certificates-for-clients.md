@@ -1,6 +1,6 @@
 ---
-title: Biztonságos ügyfél API-k az API Management - Azure API Management tanúsítványhitelesítés |} Microsoft Docs
-description: Megtudhatja, hogyan biztosíthat biztonságos hozzáférést a az ügyféltanúsítványok API-k
+title: Biztonságos API-t az ügyfél Tanúsítványalapú hitelesítés, az API Management – Azure API Management |} A Microsoft Docs
+description: Ismerje meg, hogyan biztonságos hozzáférés az API-t az ügyféltanúsítványok
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,22 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2017
 ms.author: apimpm
-ms.openlocfilehash: 841825923819bdb257e5b5983071d999cca805e9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 3307ea391734828cb83c927e8df8aca79685279a
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26406743"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52441536"
 ---
-# <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Az API Management tanúsítványhitelesítés biztonságossá tétele a ügyfél API-k
+# <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Hogyan teheti biztonságossá az ügyfél API-k az API Management a Tanúsítványalapú hitelesítés
 
-API-kezelés lehetővé teszi a biztonságos hozzáférés a API-k (azaz ügyfél API-kezelés) ügyfél-tanúsítványok használatával. Jelenleg ellenőrizheti a kívánt értékkel ügyféltanúsítvány ujjlenyomata. Ellenőrizheti az ujjlenyomatot, az API Management feltöltött meglévő tanúsítványokkal szemben.  
+Az API Management lehetővé teszi, hogy a biztonságos hozzáférés az API-k (azaz, és az API Management ügyfél) ügyféltanúsítványok használatát. Jelenleg egy kívánt értékkel ügyféltanúsítvány ujjlenyomata ellenőrizheti. Ellenőrizheti az ujjlenyomatot, és az API Management feltöltött meglévő tanúsítványok ellen is.  
 
-További információ a háttér-szolgáltatás, az API-k (azaz API Management háttér-) ügyfél-tanúsítványok használatával biztonságossá tétele: [Tanúsítványalapú hitelesítés biztonságossá tétele a háttér-szolgáltatásaihoz ügyfél használatával](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
+További információ a háttér-szolgáltatáshoz (azaz, API Management háttér-) ügyfél-tanúsítványok használata API-hozzáférés biztonságossá tétele: [ügyfél háttérszolgáltatások biztonságossá Tanúsítványalapú hitelesítés](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="checking-the-expiration-date"></a>A lejárati dátum ellenőrzése
 
-Alább házirendek beállítható úgy, hogy ellenőrizze, hogy ha a tanúsítvány lejárt-e:
+Szabályzatok alábbi beállítható úgy, hogy ellenőrizze, hogy ha a tanúsítvány lejárt:
 
 ```
 <choose>
@@ -42,7 +44,7 @@ Alább házirendek beállítható úgy, hogy ellenőrizze, hogy ha a tanúsítv�
 
 ## <a name="checking-the-issuer-and-subject"></a>A kibocsátó és tulajdonos ellenőrzése
 
-Alább házirendek beállítható úgy, hogy ellenőrizze a kibocsátó és egy ügyfél-tanúsítvány tulajdonosának:
+Szabályzatok alábbi beállítható úgy, hogy ellenőrizze a kibocsátó és a egy ügyfél-tanúsítvány tulajdonosának meg:
 
 ```
 <choose>
@@ -56,7 +58,7 @@ Alább házirendek beállítható úgy, hogy ellenőrizze a kibocsátó és egy 
 
 ## <a name="checking-the-thumbprint"></a>Az ujjlenyomat ellenőrzése
 
-Alább házirendek beállítható úgy, hogy ellenőrizze az ügyféltanúsítvány ujjlenyomata:
+Szabályzatok alábbi beállítható úgy, hogy ellenőrizze az ügyféltanúsítvány ujjlenyomata:
 
 ```
 <choose>
@@ -68,9 +70,9 @@ Alább házirendek beállítható úgy, hogy ellenőrizze az ügyféltanúsítv�
 </choose>
 ```
 
-## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>A tanúsítványokkal szemben ujjlenyomat ellenőrzése fel van töltve az API Management
+## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>Az API Management feltöltött egy ujjlenyomatot tanúsítványokkal szemben ellenőrzése
 
-A következő példa bemutatja, hogyan API Management feltöltött tanúsítványokkal szemben ügyféltanúsítvány ujjlenyomata kereséséhez: 
+Az alábbi példa bemutatja, hogyan ellenőrizheti és az API Management feltöltött tanúsítványok elleni ügyféltanúsítvány ujjlenyomata: 
 
 ```
 <choose>
@@ -85,6 +87,6 @@ A következő példa bemutatja, hogyan API Management feltöltött tanúsítván
 
 ## <a name="next-step"></a>Következő lépés
 
-*  [Tanúsítványalapú hitelesítés biztonságossá tétele a háttér-szolgáltatásaihoz ügyfél használatával](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
-*  [Tanúsítványok feltöltéséről](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates#a-namestep1-aupload-a-client-certificate)
+*  [Hogyan teheti biztonságossá a háttérszolgáltatások ügyfél Tanúsítványalapú hitelesítés](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
+*  [Tanúsítványok feltöltése](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates#a-namestep1-aupload-a-client-certificate)
 

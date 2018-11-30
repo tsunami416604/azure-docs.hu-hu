@@ -1,6 +1,6 @@
 ---
-title: Meglévő prediktív webszolgáltatás újratanítása |} A Microsoft Docs
-description: Ismerje meg, hogyan modellek szoftveres átképezése és frissíteni a webszolgáltatást a újonnan betanított modell használata az Azure Machine Learning.
+title: Meglévő prediktív webszolgáltatás újratanítása – Azure Machine Learning Studióban |} A Microsoft Docs
+description: Ismerje meg, hogyan modellek szoftveres átképezése és frissíteni a webszolgáltatást a újonnan betanított modell használata az Azure Machine Learning Studióban.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
-ms.openlocfilehash: 9fb3ccee9a50fa7758547fffe2573104679aef7e
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 8da3c5d5c79ce52f1f5176a8b3317ce2a0e0bc5f
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263451"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311296"
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>Meglévő prediktív webszolgáltatás újratanítása
 Ez a dokumentum azt ismerteti, hogyan megőrzési az alábbi forgatókönyvet:

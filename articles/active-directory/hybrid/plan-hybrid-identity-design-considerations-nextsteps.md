@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: eb3bd1b2186d323c5b9d10d89bb68c03bd2b84a8
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a36dc0cd8148b8cf58729d2e8d22011e61140b0f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311828"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426329"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Az Azure Active Directory hibrid identitás tervezési szempontok – következő lépések
 Most, hogy végrehajtotta a követelmények meghatározását és megvizsgálta az összes lehetséges a mobileszköz-felügyeleti megoldás, készen áll a következő lépésekkel jobbra, és a szervezet a támogató infrastruktúra üzembe helyezéséhez.
@@ -43,10 +43,10 @@ Elméleti és eljárástervezési, telepítési és felügyeleti tartalmak haszn
 A következő erőforrások figyelés gyakran kapcsolatos legfrissebb hírekhez, és frissíti a mobileszköz-felügyeleti megoldások:
 
 * [A Microsoft nagyvállalati mobilitási blog](https://cloudblogs.microsoft.com/ENTERPRISEMOBILITY/)
-* [A Microsoft a The Cloud blog](http://blogs.technet.com/b/in_the_cloud/)
-* [A Microsoft Intune blogján](http://blogs.technet.com/b/microsoftintune/)
-* [A Microsoft System Center Configuration Manager-blog](http://blogs.technet.com/b/configurationmgr/)
-* [A Microsoft System Center Configuration Manager munkacsoportjának blogján](http://blogs.technet.com/b/configmgrteam/)
+* [A Microsoft a The Cloud blog](https://blogs.technet.com/b/in_the_cloud/)
+* [A Microsoft Intune blogján](https://blogs.technet.com/b/microsoftintune/)
+* [A Microsoft System Center Configuration Manager-blog](https://blogs.technet.com/b/configurationmgr/)
+* [A Microsoft System Center Configuration Manager munkacsoportjának blogján](https://blogs.technet.com/b/configmgrteam/)
 
 ## <a name="see-also"></a>Lásd még
 [Kialakítási szempontok áttekintése](plan-hybrid-identity-design-considerations-overview.md)

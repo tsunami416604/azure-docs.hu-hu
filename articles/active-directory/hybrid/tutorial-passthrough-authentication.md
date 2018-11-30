@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: fed1078b9a4e0ca4d0674db522f73705fa3efd0a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: df4a1ef30997bef6b83e66182404d0e2659a5d51
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254487"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422304"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Oktatóanyag: Az átmenő hitelesítés (ESP) használatával egyetlen AD-erdővel integrálása
 
@@ -249,7 +249,7 @@ Most ellenőrizzük, hogy a felhasználók a helyszíni címtárban szolgáltat�
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Hogy a felhasználók bejelentkezés tesztelése
 
-1.  Keresse meg a [http://myapps.microsoft.com](https://myapps.microsoft.com)
+1.  Keresse meg a [https://myapps.microsoft.com](httpss://myapps.microsoft.com)
 2. Jelentkezzen be az új bérlő létrehozott felhasználói fiókkal.  Kell jelentkezzen be a következő formátumban: (user@domain.onmicrosoft.com). A felhasználó által használt a bejelentkezéshez ugyanazt a jelszót a helyszínen.
 ![Ellenőrizze](media/tutorial-password-hash-sync/verify1.png)
 

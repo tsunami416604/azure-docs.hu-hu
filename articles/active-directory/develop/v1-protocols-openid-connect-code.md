@@ -17,16 +17,16 @@ ms.date: 04/17/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a830527f65cdbd485ef57ea43e4564363f3ca98b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3b60a659700b1e464f4d8f70516a2ceaa0f08b6b
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967761"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423745"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>OpenID Connect és az Azure Active Directory használatával webes alkalmazásokhoz való hozzáférés engedélyezése
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) az OAuth 2.0 protokoll-ra épülő egyszerű személyazonosság rétege. OAuth 2.0 meghatározása beszerzése és használata mechanizmusok [ **hozzáférési jogkivonatokat** ](access-tokens.md) eléréséhez védett erőforrások, de nem határoznak meg, adja meg a azonosító adatok szabványos módszer. Hitelesítés az OAuth 2.0 engedélyezési folyamat bővítményeként OpenID Connect valósítja meg. Információt ad a végfelhasználónak formájában egy [ `id_token` ](id-tokens.md) , amely ellenőrzi a felhasználó identitását, és biztosítja a felhasználóval kapcsolatos főbb profiladatait.
+[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) az OAuth 2.0 protokoll-ra épülő egyszerű személyazonosság rétege. OAuth 2.0 meghatározása beszerzése és használata mechanizmusok [ **hozzáférési jogkivonatokat** ](access-tokens.md) eléréséhez védett erőforrások, de nem határoznak meg, adja meg a azonosító adatok szabványos módszer. Hitelesítés az OAuth 2.0 engedélyezési folyamat bővítményeként OpenID Connect valósítja meg. Információt ad a végfelhasználónak formájában egy [ `id_token` ](id-tokens.md) , amely ellenőrzi a felhasználó identitását, és biztosítja a felhasználóval kapcsolatos főbb profiladatait.
 
 OpenID Connect van, az ajánlott megoldás, ha hoz létre egy webalkalmazást, amely a kiszolgáló által üzemeltetett és a böngészőalapú hozzáférést biztosít.
 
@@ -96,7 +96,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | egyszeri |szükséges |A kérésben, a létrejövő megtalálható az alkalmazás által generált értéket `id_token` jogcímként. Az alkalmazás ezután ellenőrizheti ezt az értéket ismétlésének támadások számának csökkentése érdekében. Az értéke általában egy véletlenszerű, egyedi karakterlánc vagy egy GUID Azonosítót, amelyet a kérés eredetének azonosítására használhatók. |
 | redirect_uri |Ajánlott |Az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat redirect_uri tulajdonsága. Pontosan egyeznie kell a redirect_uris regisztrálta a portálon, kivéve azt az URL-kódolású kell lennie. |
 | response_mode |választható |Meghatározza az eredményül kapott authorization_code küldi vissza az alkalmazáshoz használandó módszert. Támogatott értékei a következők `form_post` a *HTTP post-űrlap* és `fragment` a *URL-cím töredék*. A webes alkalmazásokhoz, javasoljuk `response_mode=form_post` a legbiztonságosabb átvitelét jogkivonatok az alkalmazás biztosításához. Minden olyan folyamatot, beleértve az id_token alapértelmezés `fragment`.|
-| state |Ajánlott |A kérésben a token válaszban visszaadott érték. Bármilyen tartalmat, akinél karakterlánc lehet. Egy véletlenszerűen generált egyedi érték jellemzően a [webhelyközi kérések hamisításának megakadályozása támadások](http://tools.ietf.org/html/rfc6749#section-10.12). Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérelmet, például az oldal vagy voltak a nézet is szolgál. |
+| state |Ajánlott |A kérésben a token válaszban visszaadott érték. Bármilyen tartalmat, akinél karakterlánc lehet. Egy véletlenszerűen generált egyedi érték jellemzően a [webhelyközi kérések hamisításának megakadályozása támadások](https://tools.ietf.org/html/rfc6749#section-10.12). Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérelmet, például az oldal vagy voltak a nézet is szolgál. |
 | parancssor |választható |Azt jelzi, hogy milyen típusú felhasználói beavatkozás szükséges. Jelenleg az egyetlen érvényes értékek a következők "bejelentkezés", "none", és a "jóváhagyás". `prompt=login` a felhasználónak meg kell adnia a hitelesítő adataik adott kérelem negating egyszeri bejelentkezéses kényszeríti. `prompt=none` Ellenkező – biztosítja, hogy a felhasználó el minden olyan interaktív kérdés nem egyike. Ha a kérés nem lehet végrehajtani csendes egyszeri bejelentkezéses keresztül, a végpont hibát ad vissza. `prompt=consent` Eseményindítók az OAuth hozzájárulás párbeszédpanel, amelyen felkéri a felhasználót az alkalmazás számára, a felhasználó bejelentkezése után. |
 | login_hint |választható |Segítségével előre töltse ki a felhasználónév, e-mail-cím mező a bejelentkezési oldal a felhasználó számára, ha ismeri a kívánt időben felhasználóneve. Gyakran alkalmazások újrahitelesítés, hogy már kinyert a felhasználónevet egy előző jelentkezzen be az során használja ezt a paramétert a `preferred_username` jogcím. |
 
@@ -117,7 +117,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 | Paraméter | Leírás |
 | --- | --- |
 | id_token |A `id_token` , amely az alkalmazás kéri. Használhatja a `id_token` ellenőrizze a felhasználó identitását, és a felhasználói munkamenet megkezdéséhez. |
-| state |A kérésben is a token válaszban visszaadott érték. Egy véletlenszerűen generált egyedi érték jellemzően a [webhelyközi kérések hamisításának megakadályozása támadások](http://tools.ietf.org/html/rfc6749#section-10.12). Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérelmet, például az oldal vagy voltak a nézet is szolgál. |
+| state |A kérésben is a token válaszban visszaadott érték. Egy véletlenszerűen generált egyedi érték jellemzően a [webhelyközi kérések hamisításának megakadályozása támadások](https://tools.ietf.org/html/rfc6749#section-10.12). Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérelmet, például az oldal vagy voltak a nézet is szolgál. |
 
 ### <a name="error-response"></a>Hiba történt a válasz
 

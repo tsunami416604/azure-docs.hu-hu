@@ -1,5 +1,17 @@
-
-1. Nyissa meg a projekt az Android Studio.
+---
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: crdun
+ms.openlocfilehash: eded2d6a9f2c270a2b3ccca296277b0a016733fd
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52440210"
+---
+1. Nyissa meg a projekt az Android Studióban.
 
 2. A **Project Explorer** az Android Studióban nyissa meg a `ToDoActivity.java` fájlt, és adja hozzá a következő importálási utasításokat:
 
@@ -47,12 +59,12 @@
     }
     ```
 
-    Ez a kód egy metódust a Google hitelesítést hoz létre. Egy párbeszédpanel megjeleníti a hitelesített felhasználó Azonosítóját. Csak a sikeres hitelesítés lépne.
+    Ez a kód létrehoz egy metódust a Google-hitelesítési folyamat. Egy párbeszédpanel jelenik meg a hitelesített felhasználó azonosítója. Csak a sikeres hitelesítés folytathatja.
 
     > [!NOTE]
-    > Ha eltérő Google identitásszolgáltató használ, módosítsa az értéket, átadott a **bejelentkezési** metódus a következő értékek egyikére: _MicrosoftAccount_, _Facebook_, _Twitter_, vagy _windowsazureactivedirectory_.
+    > Ha eltérő Google identitásszolgáltatót használja, módosítsa a átadott érték a **bejelentkezési** módszer a következő értékek egyikére: _MicrosoftAccount_, _Facebook_, _Twitter_, vagy _windowsazureactivedirectory_.
 
-4. Az a **onCreate** módszer, példányosítja kód után adja hozzá a következő kódsort a `MobileServiceClient` objektum.
+4. Az a **onCreate** metódus, a következő kódsort hozzáadása után a kódot, amely példányosítja az `MobileServiceClient` objektum.
 
     ```java
     authenticate();
@@ -60,7 +72,7 @@
 
     Ez a hívás a hitelesítési folyamat elindul.
 
-5. Helyezze át a többi kód után `authenticate();` a a **onCreate** egy új módszer **createTable** módszert:
+5. Helyezze át a többi kód után `authenticate();` a a **onCreate** egy új módszer **createTable** módszer:
 
     ```java
     private void createTable() {
@@ -80,7 +92,7 @@
     }
     ```
 
-6. Átirányítás works elvárt érdekében adja hozzá a következő szövegrészletet `RedirectUrlActivity` való `AndroidManifest.xml`:
+6. Várt módon átirányító működése érdekében adja hozzá az alábbi kódrészletet `RedirectUrlActivity` való `AndroidManifest.xml`:
 
     ```xml
     <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity">
@@ -94,7 +106,7 @@
     </activity>
     ```
 
-7. Adja hozzá `redirectUriScheme` való `build.gradle` az Android alkalmazás.
+7. Adjon hozzá `redirectUriScheme` való `build.gradle` az Android-alkalmazás.
 
     ```gradle
     android {
@@ -111,7 +123,7 @@
     }
     ```
 
-8. Adja hozzá `com.android.support:customtabs:23.0.1` a függőségeit a a `build.gradle`:
+8. Adjon hozzá `com.android.support:customtabs:23.0.1` , a függőségeket a `build.gradle`:
 
     ```gradle
     dependencies {
@@ -120,9 +132,9 @@
     }
     ```
 
-9. Az a **futtassa** menüben kattintson **-alkalmazás futtatása** el az alkalmazást, és jelentkezzen be a választott identitásszolgáltató számára.
+9. Az a **futtatása** menüben kattintson a **alkalmazás futtatása** elindítani az alkalmazást, és jelentkezzen be a választott identitásszolgáltató.
 
 > [!WARNING]
-> Az URL-séma említett a kis-és nagybetűket. Győződjön meg arról, hogy minden előfordulását `{url_scheme_of_you_app}` nagybetűket.
+> Az említett URL-sémát a kis-és nagybetűket. Ügyeljen arra, hogy minden előfordulását `{url_scheme_of_you_app}` nagybetűket.
 
-Ha Ön sikeresen bejelentkezett, futtasson-e az alkalmazás nem jelenik meg hibaüzenet, és meg tudják lekérdezni a háttér-szolgáltatást, és hogy adatok.
+Sikeresen jelentkezett be, amikor az alkalmazás hiba nélkül kell futnia, és meg kell tudni lekérdezése a háttérszolgáltatás és az adatok frissítéséhez.

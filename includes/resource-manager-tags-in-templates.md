@@ -1,3 +1,16 @@
+---
+author: tfitzmac
+ms.service: azure-resource-manager
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: tomfitz
+ms.openlocfilehash: 5e483ecfcbddfcf5aa7f8a41c1ee75136c86b656
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52440187"
+---
 Ha üzembe helyezés közben szeretne címkével ellátni egy erőforrást, adja hozzá a `tags` elemet ahhoz az erőforráshoz, amelyet éppen üzembe helyez. Adja meg a címke nevét és értékét.
 
 ### <a name="apply-a-literal-value-to-the-tag-name"></a>Szövegkonstansérték alkalmazása a címkenévre
@@ -60,9 +73,9 @@ Megadhat olyan objektumparamétert, amely több címkét tartalmaz, majd alkalma
 }
 ```
 
-### <a name="apply-a-json-string-to-the-tag-name"></a>JSON-karakterlánc alkalmazása a címkenévre
+### <a name="apply-a-json-string-to-the-tag-name"></a>JSON-sztring alkalmazása a címkenévre
 
-Ha több értéket szeretne tárolni egyetlen címkében, alkalmazzon a megfelelő értékeket képviselő JSON-karakterláncot. A teljes JSON-karakterlánc egyetlen címkeként tárolódik, amelynek hossza nem lépheti túl a 256 karaktert. Az alábbi példában egy `CostCenter` nevű címke szerepel, amely egy JSON-karakterlánc számos értékét tartalmazza:  
+Ha több értéket szeretne tárolni egyetlen címkében, alkalmazzon a megfelelő értékeket képviselő JSON-sztringet. A teljes JSON-sztring egyetlen címkeként tárolódik, amelynek hossza nem lépheti túl a 256 karaktert. Az alábbi példában egy `CostCenter` nevű címke szerepel, amely egy JSON-sztring számos értékét tartalmazza:  
 
 ```json
 {

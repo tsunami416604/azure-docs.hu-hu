@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: d4523a9e2d5a5466c1617930d14a8a2d25a0e16f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: d77e5265349db2fc433d2bb9a42140a6a4209ba1
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238777"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317495"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Az Azure Security Centerben a biztonsági konfigurációk javítása
 Az Azure Security Center naponta elemzi az operációs rendszer (OS) a virtuális gépek (VM) és a egy konfigurációjához, amely a teheti a virtuális gépek és számítógépek támadásokkal szemben. Biztonsági rések feloldása, amikor az operációs rendszer konfigurációja nem egyezik a javasolt biztonsági konfigurációs szabályok, és ezek a biztonsági rések megszüntetését elősegítő konfigurációmódosításokat javasolja a Security Center javasolja.
@@ -101,7 +101,7 @@ Ez a cikk bemutatta, hogyan valósíthat meg a Security Center javaslatait "Szer
 A Security Centerrel kapcsolatos további tudnivalókért lásd a következőket:
 
 * Támogatott Windows és Linux rendszerű virtuális gépek listáját lásd: [az Azure Security Center által támogatott platformok](security-center-os-coverage.md).
-* Az Azure-előfizetések és -erőforráscsoportok vonatkozó biztonsági szabályzatok konfigurálásával kapcsolatban lásd: [biztonsági szabályzatok beállítása az Azure Security Center](security-center-policies.md).
+* Az Azure-előfizetések és -erőforráscsoportok vonatkozó biztonsági szabályzatok konfigurálásával kapcsolatban lásd: [biztonsági szabályzatok beállítása az Azure Security Center](security-center-azure-policy.md).
 * Megtudhatja, hogyan javaslatok az Azure-erőforrások védelméhez, tekintse meg [biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md).
 * Az Azure-erőforrások állapotának figyelése kapcsolatban lásd: [biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md).
 * Ismerje meg, hogyan kezelése és válaszadás a biztonsági riasztásokra, lásd: [kezelése és válaszadás a biztonsági riasztásokra az Azure Security Center](security-center-managing-and-responding-alerts.md).

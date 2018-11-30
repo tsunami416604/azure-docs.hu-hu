@@ -1,5 +1,5 @@
 ---
-title: Importálási/exportálási adatok Azure Machine Learning webszolgáltatások használata |} A Microsoft Docs
+title: Importálási/exportálási adatok használata az Azure Machine Learning Studio-webszolgáltatások |} A Microsoft Docs
 description: Ismerje meg, hogy az adatok importálása és exportálása az modulok használata, küldhet és fogadhat adatokat egy webszolgáltatásból.
 services: machine-learning
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 3fa33572e60a43c66eca404e426232f9864a294e
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: ee7d0fb4792983099dc6192de8f85338daee357f
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264641"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52306947"
 ---
-# <a name="deploying-azure-ml-web-services-that-use-data-import-and-data-export-modules"></a>Az Adatok importálása és az Adatok exportálása modult használó Azure ML webszolgáltatások üzembe helyezése
+# <a name="deploy-azure-machine-learning-studio-web-services-that-use-data-import-and-data-export-modules"></a>Adatok importálása és az adatok exportálása modult használó Azure Machine Learning Studio-webszolgáltatások üzembe helyezése
 
 Amikor létrehoz egy prediktív kísérletet, általában hozzáadhat egy webes szolgáltatás bemenet és kimenet. Központi telepítésekor a kísérletet, a fogyasztók küldhet és fogadhat adatokat keresztül bemeneteit és kimeneteit a webszolgáltatásból. Egyes alkalmazások esetében a egy fogyasztó data adatcsatornáról érhető el, vagy már található egy külső adatforrást, például az Azure Blob storage. Ezekben az esetekben nincs szükségük használata a web service bemeneti és kimeneti adatok olvasását és írását. Akkor is, ehelyett a Batch Execution Service (BES) segítségével adatokat olvasni az adatforrás-adatok importálása modullal és írási a pontozási eredményeinek-adatok exportálása modult használó más helyre.
 

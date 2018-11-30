@@ -1,5 +1,5 @@
 ---
-title: Adatok importálása a Machine Learning Studióban |} A Microsoft Docs
+title: Adatok importálása a Machine Learning Studio – Azure |} A Microsoft Docs
 description: Adatok importálása az Azure Machine Learning Studióba különböző adatforrásokból származó adatokat hogyan. Ismerje meg, milyen típusú adatokat és adatformátumok a célnyelven támogatottak.
 keywords: adatok, az adatok formátuma, adattípusok, adatforrások, betanítási adatok importálása
 services: machine-learning
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 733441620d48e99d2f1ef67d1258b7968b026840
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 8f6bc6e1e13de879f81e6fc6f1f447d0c2856ced
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262976"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315256"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>A betanítási adatok importálása az Azure Machine Learning Studióba különböző adatforrásokból
 

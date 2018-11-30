@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 0754b13704810816b1650010a00185031ca41f5d
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f08bf6a65a93c31d76c5b336cc6ef433153d71c4
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297571"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423117"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>A VPN-infrastruktúra integrálása az Azure MFA által a hálózati házirend-kiszolgáló-bővítmény használata az Azure-hoz
 
@@ -438,7 +438,7 @@ Az Azure multi-factor Authentication naplóból egy kapcsolódó esemény itt je
 
 Ehhez az speciális hibaelhárításhoz, tekintse meg a hálózati házirend-kiszolgáló adatbázis formátum naplófájlokat ahol a hálózati házirend-kiszolgáló szolgáltatás telepítve van. A naplófájlok létrejönnek a _%SystemRoot%\System32\Logs_ vesszővel tagolt szöveges fájlok mappába. A naplófájlok ismertetését lásd: [értelmezése NPS naplófájlok](https://technet.microsoft.com/library/cc771748.aspx). 
 
-Ezek a naplófájlok bejegyzései nehéz értelmezni, kivéve, ha egy táblázatot vagy egy adatbázis exportálása. Számos internetes hitelesítési szolgáltatás (IAS) elemzőeszközt online segítséget nyújtanak a naplófájlok értelmezése találja. A kimenet egy ilyen letölthető [shareware alkalmazás](http://www.deepsoftware.com/iasviewer) itt látható: 
+Ezek a naplófájlok bejegyzései nehéz értelmezni, kivéve, ha egy táblázatot vagy egy adatbázis exportálása. Számos internetes hitelesítési szolgáltatás (IAS) elemzőeszközt online segítséget nyújtanak a naplófájlok értelmezése találja. A kimenet egy ilyen letölthető [shareware alkalmazás](https://www.deepsoftware.com/iasviewer) itt látható: 
 
 ![Shareware alkalmazás](./media/howto-mfa-nps-extension-vpn/image49.png)
 

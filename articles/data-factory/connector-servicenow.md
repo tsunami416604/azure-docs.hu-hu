@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása az Azure Data Factory használatával ServiceNow |} Microsoft Docs
-description: 'Útmutató: adatok másolása a ServiceNow támogatott fogadó adattárolókhoz egy Azure Data Factory-folyamat a másolási tevékenység használatával.'
+title: Adatok másolása az Azure Data Factory használatával ServiceNow |} A Microsoft Docs
+description: Megtudhatja, hogyan másolhat adatokat a ServiceNow támogatott fogadó adattárakba az Azure Data Factory-folyamatot egy másolási tevékenység használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,47 +11,47 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/28/2018
+ms.date: 11/23/2018
 ms.author: jingwang
-ms.openlocfilehash: c67f6c14dc396367e0179fe5bdb4663fcb7725da
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 1e0bbfafcda77ca48fb22ad919c5848a7670a102
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045966"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309674"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával ServiceNow
 
-Ez a cikk ismerteti, hogyan használható a másolási tevékenység az Azure Data Factory adatokat másolni a ServiceNow. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+Ez a cikk az Azure Data Factory a másolási tevékenység használatával adatokat másol a ServiceNow módját ismerteti. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
-## <a name="supported-capabilities"></a>Támogatott képességei
+## <a name="supported-capabilities"></a>Támogatott képességek
 
-A ServiceNow adatok bármely támogatott fogadó adattárolóhoz másolhatja. Adattároló források/mosdók, a másolási tevékenység által támogatott listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+Másolhat adatokat a ServiceNow bármely támogatott fogadó adattárba. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
-Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőprogramot tartalmaz, ezért nem szükséges manuálisan kell telepítenie minden olyan illesztőprogram ezt az összekötőt használja.
+Az Azure Data Factory kapcsolat beépített illesztőprogramot tartalmaz, ezért nem kell manuálisan telepítenie az összes illesztőprogram ezzel az összekötővel.
 
 ## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszok részletesen bemutatják való ServiceNow összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
+Az alábbi szakaszok nyújtanak, amelyek meghatározzák az adott Data Factory-entitások a ServiceNow-összekötő-tulajdonságokkal kapcsolatos részletekért.
 
-## <a name="linked-service-properties"></a>A kapcsolódószolgáltatás-tulajdonságok
+## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-A következő tulajdonságok ServiceNow kapcsolódó szolgáltatás támogatottak:
+ServiceNow-beli társított szolgáltatás a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **ServiceNow** | Igen |
-| endpoint | A ServiceNow Server endpoint (`http://<instance>.service-now.com`).  | Igen |
-| authenticationType | A használandó hitelesítési típus. <br/>Két érték engedélyezett: **alapvető**, **OAuth2** | Igen |
-| felhasználónév | A ServiceNow kiszolgáló alapszintű és az OAuth2 hitelesítési való csatlakozáshoz használt felhasználónevet.  | Igen |
-| jelszó | A jelszó, a felhasználónevet Basic és az OAuth2 hitelesítési megfelelő. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
-| clientId | Az OAuth2 hitelesítési ügyfél-azonosító.  | Nem |
-| clientSecret | Az OAuth2 hitelesítési titkos ügyfélkódot. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Nem |
-| useEncryptedEndpoints | Meghatározza, hogy a data source végpontok titkosítása HTTPS használatával. Az alapértelmezett érték: igaz.  | Nem |
-| useHostVerification | Meghatározza, hogy az a számítógép neve a egyeznie kell a gazdagép nevével a kiszolgáló SSL-en keresztüli kapcsolódás esetén a kiszolgáló tanúsítványát. Az alapértelmezett érték: igaz.  | Nem |
-| usePeerVerification | Megadja, hogy a kiszolgáló identitásának ellenőrzése SSL-en keresztüli kapcsolódás esetén. Az alapértelmezett érték: igaz.  | Nem |
+| type | A type tulajdonság értékre kell állítani: **ServiceNow** | Igen |
+| endpoint | A végpont a ServiceNow-kiszolgáló (`http://<instance>.service-now.com`).  | Igen |
+| authenticationType | A használandó hitelesítés típusa. <br/>Engedélyezett értékek a következők: **alapszintű**, **OAuth2** | Igen |
+| felhasználónév | Az alapszintű és az OAuth2-hitelesítéshez a ServiceNow-kiszolgálóhoz való csatlakozáshoz használt felhasználónév.  | Igen |
+| jelszó | A jelszó, a felhasználónevet Basic és OAuth2-hitelesítéshez megfelelő. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| clientId | Az ügyfél-azonosító OAuth2-hitelesítéshez.  | Nem |
+| clientSecret | A titkos ügyfélkulcsot OAuth2-hitelesítéshez. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
+| useEncryptedEndpoints | Megadja, hogy a data source végpontok HTTPS segítségével titkosítja. Az alapértelmezett érték: igaz.  | Nem |
+| useHostVerification | Megadja a kiszolgálói tanúsítvány a kiszolgáló állomásneve megfelelően, ha SSL-kapcsolaton keresztül kapcsolódik az állomás neve kötelező legyen-e. Az alapértelmezett érték: igaz.  | Nem |
+| usePeerVerification | Megadja, hogy ellenőrizze a kiszolgáló identitását, ha SSL-kapcsolaton keresztül kapcsolódik. Az alapértelmezett érték: igaz.  | Nem |
 
 **Példa**
 
@@ -75,9 +75,9 @@ A következő tulajdonságok ServiceNow kapcsolódó szolgáltatás támogatotta
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és meghatározása adatkészletek esetében elérhető tulajdonságok teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a ServiceNow dataset által támogatott tulajdonságokról listáját tartalmazza.
+Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a szakasz a ServiceNow-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatok másolása a ServiceNow, az adatkészlet típus tulajdonságának beállítása **ServiceNowObject**. Nincs ilyen típusú dataset további típusra vonatkozó tulajdonság.
+Adatmásolás ServiceNow, állítsa be a type tulajdonság, az adatkészlet **ServiceNowObject**. Egy adatkészlet ilyen további típus-specifikus tulajdonság nincs.
 
 **Példa**
 
@@ -96,24 +96,25 @@ Adatok másolása a ServiceNow, az adatkészlet típus tulajdonságának beáll�
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Szakaszok és a rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a ServiceNow forrás által támogatott tulajdonságok listáját tartalmazza.
+Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a ServiceNow-forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="servicenow-as-source"></a>A ServiceNow forrásaként
+### <a name="servicenow-as-source"></a>ServiceNow forrásként
 
-Adatok másolása a ServiceNow, állítsa be a forrás típusa a másolási tevékenység **ServiceNowSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakasz:
+Adatok másolása a ServiceNow, állítsa be a forrás típusaként a másolási tevékenység **ServiceNowSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot a másolási tevékenység forrás értékre kell állítani: **ServiceNowSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével adatokat olvasni. Például: `"SELECT * FROM Actual.alm_asset"`. | Igen |
+| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **ServiceNowSource** | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Actual.alm_asset"`. | Igen |
 
-Megadásakor a séma- és oszlop ServiceNow a lekérdezésben, vegye figyelembe a következőket:
+Vegye figyelembe a következőket megadásakor a séma és az oszlopot a ServiceNow lekérdezést, és **tekintse meg [teljesítménnyel kapcsolatos tippek](#performance-tips) a másolási teljesítmény utalás**.
 
-- **Séma:** adja meg a séma szerint `Actual` vagy `Display` ServiceNow a lekérdezésben, vessen egy pillantást azt a paraméterét, amely `sysparm_display_value` igaz vagy hamis értéket, ha hívása [ServiceNow restful API-k](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET). 
-- **Oszlop:** az oszlop nevét, a tényleges érték `Actual` sémája `[columne name]_value`, a megjelenítési érték alatti `Display` sémája `[columne name]_display_value`. Megjegyzés: az oszlop nevét kell a lekérdezésben használt séma leképezés.
+- **Séma:** adja meg a séma szerint `Actual` vagy `Display` a ServiceNow-lekérdezés, tekintse meg, az paraméterként, amely `sysparm_display_value` , IGAZ vagy hamis értéket, ha a hívó [ServiceNow restful API-k](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET). 
+- **Oszlop:** tényleges értéke alapján oszlopneve `Actual` sémája `[columne name]_value`, a megjelenítési érték alatt `Display` sémája `[columne name]_display_value`. Megjegyzés: az oszlop nevét kell a lekérdezésben használt séma térképet.
 
 **Mintalekérdezés:** 
- `SELECT col_value FROM Actual.alm_asset` vagy `SELECT col_display_value FROM Display.alm_asset`
+ `SELECT col_value FROM Actual.alm_asset` vagy 
+`SELECT col_display_value FROM Display.alm_asset`
 
 **Példa**
 
@@ -146,6 +147,17 @@ Megadásakor a séma- és oszlop ServiceNow a lekérdezésben, vegye figyelembe 
     }
 ]
 ```
+## <a name="performance-tips"></a>Teljesítménnyel kapcsolatos tippek
+
+### <a name="schema-to-use"></a>Használandó sémát
+
+ServiceNow 2 különböző sémákkal rendelkezik, az egyik **"Actual"** tényleges adatokat ad vissza, a másik **"Megjeleníteni"** az adatok a megjelenítendő értékeket ad vissza. 
+
+Ha egy szűrőt a lekérdezés, használja a "Actual" séma, amely jobban rendelkezik másolja a teljesítmény. "Actual" séma lekérdezésekor a ServiceNow natív módon támogatja az szűrőt, csak adja vissza a szűrt eredménykészlettel rendelkező, mivel a "Megjelenített" séma lekérdezésekor ADF lekérni az összes adatot, és belsőleg szűrő alkalmazása az adatok beolvasása közben.
+
+### <a name="index"></a>Index
+
+A ServiceNow táblázatindexhez segítségével javíthatja a lekérdezések teljesítményét, tekintse meg [hozzon létre egy táblát indexet](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/table_administration/task/t_CreateCustomIndex.html).
 
 ## <a name="next-steps"></a>További lépések
-Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).
+A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -9,84 +9,84 @@ ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 33ae9160cd173ae594407220390c4dab1806fa94
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 61ff50cda6ec523964ccf8f885f07c39020fbc88
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824132"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335146"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>A Windows ügynök ellenőrzésének az eredménye az Update Management ismertetése
 
-Előfordulhat, hogy a nem Azure-beli gép nem látható, számos oka lehet **készen** az Update Management. Az Update Management ellenőrizheti az határozza meg a hibát kiváltó problémát hibrid feldolgozó ügynök állapotát. Ez a cikk ismerteti a hibaelhárító futtatása az Azure Portalról, és a kapcsolat nélküli üzemmódban.
+Miért nem jelenik meg az Azure-beli gép számos oka lehet egy **készen** állapotát az Azure az Update Management. Az Update Management ellenőrizheti az határozza meg a hibát kiváltó problémát hibrid feldolgozó ügynök állapotát. Ez a cikk ismerteti az Update Management hibaelhárító futtatása az Azure Portalról, és a kapcsolat nélküli üzemmódban.
 
 ## <a name="start-the-troubleshooter"></a>Indítsa el a hibaelhárító
 
-Kattintson a **hibaelhárítás** mellett kapcsolni a **frissítési ügynök készültsége** oszlop a portálon, indítsa el a **hibaelhárítása Windows Update Agent** lap. Ezen a lapon látható az ügynök és a egy hivatkozás, ez a cikk segítséget nyújt a problémák elhárítása a kapcsolatos problémák.
+Az Azure Portalon a **hibaelhárítása Windows Update Agent** lap megjeleníti az ügynökkel kapcsolatos problémák. Az oldalon van ez a cikk segítséget nyújtanak kapcsolatos hibák elhárítása mutató hivatkozást. Ugrás a **hibaelhárítása Windows Update Agent** lapon válassza ki a **hibaelhárítása** hivatkozásra a **frissítési ügynök készültsége** oszlop.
 
-![virtuális gép listáját tartalmazó lapon](../media/update-agent-issues/vm-list.png)
+![Felügyeleti virtuális gépek listájának frissítése](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
-> Az ellenőrzések futtatását van szüksége. Ha a virtuális gép nem fut egy gombra kattintva megnyílik **indítsa el a virtuális Gépet**.
+> Az ügynök állapotának ellenőrzéséhez a virtuális Gépen kell futnia. Ha a virtuális gép nem fut, egy **indítsa el a virtuális Gépet** gomb jelenik meg.
 
-Az a **hibaelhárítása Windows Update Agent** kattintson **ellenőrzések futtatása**, a hibaelhárító elindításához. Használja a hibaelhárító [futtatása paranccsal](../../virtual-machines/windows/run-command.md) parancsfájl futtatása a függőségeket, amelyen az ügynök ellenőrzése a számítógépen. A hibaelhárító befejeződése után az ellenőrzések eredményét adja vissza.
+Az a **hibaelhárítása Windows Update Agent** lapon jelölje be **ellenőrzések futtatásához** a hibaelhárító elindításához. Használja a hibaelhárító [futtatása paranccsal](../../virtual-machines/windows/run-command.md) parancsfájllal ügyfélügynök függőségei ellenőrzése a számítógépen. Ha a hibaelhárító végzett, az ellenőrzések eredményét adja vissza.
 
-![Hibaelhárítás lap](../media/update-agent-issues/troubleshoot-page.png)
+![Windows Update Agent lap hibaelhárítása](../media/update-agent-issues/troubleshoot-page.png)
 
-Amikor végzett, a rendszer visszairányítja az eredményeket az ablakban. A [ellenőrizze szakaszokat](#pre-requisistes-checks) információkat tartalmaz minden ellenőrzés keresi.
+Amikor készen van eredményeit az oldalon jelennek meg. A [ellenőrzi a szakaszok](#prerequisiste-checks) megjelenítése, hogy mit tartalmaz az egyes ellenőrzésekor.
 
-![Az ügynök ellenőrzése lap frissítése](../media/update-agent-issues/update-agent-checks.png)
+![Ellenőrzi a Windows Update Agent hibaelhárítása](../media/update-agent-issues/update-agent-checks.png)
 
 ## <a name="prerequisite-checks"></a>Előfeltétel-ellenőrzések
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-Az operációs rendszer ellenőrzés ellenőrzi, hogy ha a hibrid Runbook-feldolgozót a következő operációs rendszerek egyikét futtatja:
+Az operációs rendszer ellenőrzi a hibrid Runbook-feldolgozó fut-e a következő operációs rendszerek:
 
 |Operációs rendszer  |Megjegyzések  |
 |---------|---------|
-|A Windows Server 2008, Windows Server 2008 R2 RTM    | Támogatja az értékelések csak frissíteni.         |
-|A Windows Server 2008 R2 SP1 és újabb verziók     |.NET-keretrendszer 4.5.1-es vagy újabb verzió szükséges. ([Töltse le a .NET-keretrendszer](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0-s vagy újabb szükség. ([Töltse le a WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Windows PowerShell 5.1 megbízhatóság növelése érdekében ajánlott.  ([Töltse le a WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|A Windows Server 2008 R2 RTM-re, a Windows Server 2008 | Támogatja az értékelések csak frissíteni.         |
+|A Windows Server 2008 R2 SP1 és újabb verziók |.NET-keretrendszer 4.5.1-es vagy újabb verzió szükséges. ([Töltse le a .NET-keretrendszer](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0-s vagy újabb szükség. ([Windows Management Framework 4.0 letöltése](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Windows PowerShell 5.1 megbízhatóság növelése érdekében ajánlott.  ([Töltse le a Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616))        |
 
 ### <a name="net-451"></a>.NET 4.5.1
 
-A .NET-keretrendszer ellenőrzés ellenőrzi, hogy a rendszer rendelkezik-e legalább [.NET-keretrendszer 4.5.1-es](https://www.microsoft.com/download/details.aspx?id=30653) jelen.
+A .NET-keretrendszer ellenőrzi, hogy a rendszer számára legalább [.NET-keretrendszer 4.5.1-es](https://www.microsoft.com/download/details.aspx?id=30653) telepítve.
 
 ### <a name="wmf-51"></a>A WMF 5.1
 
-A WMF-ellenőrzés ellenőrzi, hogy rendelkezik-e a rendszer a Windows Management Framework szükséges verziója. [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) a támogatott legalacsonyabb verziójú. Azt javasoljuk, hogy telepítse [Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616) hibrid Runbook-feldolgozót a megbízhatóság növelése érdekében.
+A WMF ellenőrzi, hogy a rendszer rendelkezik-e a Windows Management Framework (WMF) szükséges verziója. [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) a legkorábbi támogatott verziója. Javasoljuk, hogy telepítse [Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616) a hibrid Runbook-feldolgozó megbízhatóságának növelése érdekében.
 
 ### <a name="tls-12"></a>TLS 1.2
 
-Ez az ellenőrzés határozza meg, ha a TLS 1.2-t használ a kommunikáció titkosítása. A platform által nem támogatott a TLS 1.0-s és, hogy az ügyfelek az Update Management folytatott kommunikációhoz a TLS 1.2 használata ajánlott.
+Ez az ellenőrzés határozza meg, hogy a TLS 1.2-t használ a kommunikáció titkosítása. A TLS 1.0 a platform által már nem támogatott. Azt javasoljuk, hogy az ügyfelek az Update Management kommunikálni TLS 1.2 használatára.
 
 ## <a name="connectivity-checks"></a>Kapcsolat ellenőrzése
 
 ### <a name="registration-endpoint"></a>Regisztrációs végpont
 
-Ez az ellenőrzés határozza meg, ha az ügynök megfelelően kommunikálhat az ügynök szolgáltatással.
+Ez az ellenőrzés határozza meg, hogy az ügynök megfelelően kommunikálhatnak az ügynök szolgáltatással.
 
-Proxy és tűzfal-konfiguráció lehetővé teszi a hibrid Runbook-feldolgozó ügynök a regisztrációs végponttal való kommunikációhoz. Címek és portok megnyitásához listáját lásd: [hálózati hibrid feldolgozók tervezése](../automation-hybrid-runbook-worker.md#network-planning)
+Proxy és tűzfal-konfiguráció lehetővé teszi a hibrid Runbook-feldolgozó ügynök a regisztrációs végponttal való kommunikációhoz. Címek és portok megnyitásához listáját lásd: [hálózati hibrid feldolgozók tervezése](../automation-hybrid-runbook-worker.md#network-planning).
 
 ### <a name="operations-endpoint"></a>Műveletek végpont
 
-Ez az ellenőrzés határozza meg, ha az ügynök megfelelően kommunikál a feladat futásidejű adatok szolgáltatással.
+Ez az ellenőrzés határozza meg, hogy az ügynök megfelelően kommunikálhatnak a feladat modul Data Service.
 
-Proxy és a tűzfal beállításait a hibrid Runbook-feldolgozó ügynök kommunikáljon a feladat modul Data Service lehetővé teszi. Címek és portok megnyitásához listáját lásd: [hálózati hibrid feldolgozók tervezése](../automation-hybrid-runbook-worker.md#network-planning)
+Proxy és a tűzfal beállításait a hibrid Runbook-feldolgozó ügynök kommunikáljon a feladat modul Data Service lehetővé teszi. Címek és portok megnyitásához listáját lásd: [hálózati hibrid feldolgozók tervezése](../automation-hybrid-runbook-worker.md#network-planning).
 
 ## <a name="vm-service-health-checks"></a>Virtuális gép szolgáltatás állapot-ellenőrzések
 
 ### <a name="monitoring-agent-service-status"></a>Monitoring agent szolgáltatás állapota
 
-Ez a vizsgálat ellenőrzi, hogy a Microsoft Monitoring Agent `HealthService` fut a gépen.
+Ez az ellenőrzés határozza meg, hogy `HealthService`, a Microsoft Monitoring Agent fut a gépen.
 
 A szolgáltatás hibaelhárítással kapcsolatos további tudnivalókért lásd: [nem fut a Microsoft Monitoring Agent](hybrid-runbook-worker.md#mma-not-running).
 
-Telepítse újra a Microsoft Monitoring Agent, lásd: [telepítése és konfigurálása a Microsoft Monitoring Agent](/log-analytics/log-analytics-concept-hybrid.md#install-and-configure-agent)
+Telepítse újra a Microsoft Monitoring Agent, lásd: [telepítése és konfigurálása a Microsoft Monitoring Agent](../../log-analytics/log-analytics-quick-collect-windows-computer.md#install-the-agent-for-windows).
 
 ### <a name="monitoring-agent-service-events"></a>Figyelési ügynök eseményei
 
-Ez az ellenőrzés azt határozza meg, hogy voltak bármely `4502` események az Operations Manager jelentkezzen be a gép az elmúlt 24 órában.
+Ez az ellenőrzés határozza meg, hogy bármely `4502` az elmúlt 24 órában a gépen Azure Operations Manager naplójában események jelennek meg.
 
 Ez az esemény kapcsolatos további információkért tekintse meg a [hibaelhárítási útmutató](hybrid-runbook-worker.md#event-4502) ezt az eseményt.
 
@@ -94,11 +94,11 @@ Ez az esemény kapcsolatos további információkért tekintse meg a [hibaelhár
 
 ### <a name="machinekeys-folder-access"></a>MachineKeys mappahozzáférés
 
-A kriptográfiai mappa hozzáférés-ellenőrzés határozza meg, ha a helyi rendszerfiók hozzáfér `C:\ProgramData\Microsoft\Crypto\RSA`
+A titkosítási mappa hozzáférés-ellenőrzés határozza meg, hogy a helyi rendszerfiók hozzáfér C:\ProgramData\Microsoft\Crypto\RSA.
 
 ## <a name="troubleshoot-offline"></a>Kapcsolat nélküli hibaelhárítása
 
-Használhatja a hibaelhárító offline egy hibrid Runbook-feldolgozón a szkript helyi futtatásával. A parancsfájl [hibaelhárítás – WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration) a PowerShell-galériában található. Ez a szkript a kimenetét egy példát a következő példában látható:
+Használhatja a hibaelhárító egy hibrid Runbook-feldolgozón offline a szkript helyi futtatásával. Beszerezheti a parancsfájl [hibaelhárítás – WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration), a PowerShell-galériában. Ez a parancsfájl kimenete az alábbihoz hasonlóan néz ki:
 
 ```output
 RuleId                      : OperatingSystemCheck
@@ -194,4 +194,4 @@ CheckResultMessageArguments : {}
 
 ## <a name="next-steps"></a>További lépések
 
-A hibrid Runbook-feldolgozók további problémák hibaelhárítása: [hibaelhárítás – a hibrid Runbook-feldolgozók](hybrid-runbook-worker.md)
+A hibrid forgatókönyv-feldolgozók használata további problémák hibaelhárítása: [hibaelhárítása a hibrid Runbook-feldolgozók](hybrid-runbook-worker.md).

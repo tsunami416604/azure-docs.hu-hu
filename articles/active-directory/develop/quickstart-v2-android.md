@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/23/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 6eb06a2a4e83c9c293474f1692c2d33d4d0dfb36
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 3e9c46e1315257d619f1624c06441adc08daddb2
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995737"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427012"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rövid útmutató: Felhasználók bejelentkeztetése és a Microsoft Graph API meghívása Android-alkalmazásokból
 
@@ -42,9 +42,9 @@ A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud
 > #### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
 > Az alkalmazása regisztrálásához és az alkalmazás regisztrációs információinak a megoldáshoz való hozzáadásához tegye a következőket:
 > 1. Az alkalmazás regisztrálásához lépjen a [Microsoft alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/portal/register-app).
-> 1. Az **Application Name** (Alkalmazás neve) mezőben nevezze el az alkalmazását.
-> 1. Ügyeljen arra, hogy a **Guided Setup** (Irányított beállítás) jelölőnégyzet ne legyen bejelölve, majd válassza a **Create** (Létrehozás) lehetőséget.
-> 1. Válassza az **Add Platform** (Platform hozzáadása), a **Native Application** (Natív alkalmazás), majd a **Save** (Mentés) elemet.
+> 1. Az **Alkalmazás neve** mezőben nevezze el az alkalmazását.
+> 1. Ügyeljen arra, hogy az **Irányított beállítás** jelölőnégyzet ne legyen bejelölve, majd válassza a **Létrehozás** lehetőséget.
+> 1. Válassza a **Platform hozzáadása**, a **Natív alkalmazás**, majd a **Mentés** lehetőséget.
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>1. lépés: Az alkalmazás konfigurálása
@@ -123,7 +123,7 @@ Az alábbi szakaszok a rövid útmutatóhoz kapcsolódód további információk
 
 ### <a name="msal"></a>MSAL
 
-Az MSAL ([com.microsoft.identity.client](http://javadoc.io/doc/com.microsoft.identity.client/msal)) egy olyan kódtár, amely felhasználók beléptetéséhez és egy Microsoft Azure Active Directory (Azure AD) által védett API-hoz való hozzáféréshez használt jogkivonatok kéréséhez használható. A telepítést a Gradle segítségével végezheti el. Ehhez a **Dependencies** (Függőségek) területen hozzá kell adnia a **Gradle Scripts** > **build.gradle (Module: app)** elemhez a következőket:
+Az MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) egy olyan kódtár, amely felhasználók beléptetéséhez és egy Microsoft Azure Active Directory (Azure AD) által védett API-hoz való hozzáféréshez használt jogkivonatok kéréséhez használható. A telepítést a Gradle segítségével végezheti el. Ehhez a **Dependencies** (Függőségek) területen hozzá kell adnia a **Gradle Scripts** > **build.gradle (Module: app)** elemhez a következőket:
 
 ```gradle  
 implementation 'com.android.volley:volley:1.1.1'

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 58992c80344902674b2b21a71b07925c752911a4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: eb0fa1edaadddfe055f3fc53a6d232e5a1293490
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230944"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424935"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication – gyakran ismételt kérdések
 
@@ -212,7 +212,7 @@ Tanácsolja nekik, hogy az alábbi eljárás segítségével eltávolíthatja a 
 
 A 0x800434D4L hiba akkor fordul elő, amikor megpróbál bejelentkezni egy böngészőn kívüli alkalmazásba, a helyi számítógépen, amely nem működik együtt a kétlépéses ellenőrzést igénylő fiókok telepítve.
 
-Megoldás esetében ez a hiba, hogy rendelkezzen külön felhasználói fiókok rendszergazdai kapcsolatos és a nem rendszergazdai műveletek. Később a rendszergazdai fiókot és a nem rendszergazdai fiókban között postaládák kapcsolat, így bejelentkezhet az Outlookot a nem rendszergazdai fiók használatával. Ez a megoldás kapcsolatos további információkért tekintse meg, hogyan [lehetővé teheti a rendszergazda megnyithatja és megtekintheti a felhasználók postaládáihoz tartalmát](http://help.outlook.com/141/gg709759.aspx?sl=1).
+Megoldás esetében ez a hiba, hogy rendelkezzen külön felhasználói fiókok rendszergazdai kapcsolatos és a nem rendszergazdai műveletek. Később a rendszergazdai fiókot és a nem rendszergazdai fiókban között postaládák kapcsolat, így bejelentkezhet az Outlookot a nem rendszergazdai fiók használatával. Ez a megoldás kapcsolatos további információkért tekintse meg, hogyan [lehetővé teheti a rendszergazda megnyithatja és megtekintheti a felhasználók postaládáihoz tartalmát](https://help.outlook.com/141/gg709759.aspx?sl=1).
 
 ## <a name="next-steps"></a>További lépések
 

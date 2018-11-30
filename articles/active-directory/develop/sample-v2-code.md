@@ -17,12 +17,12 @@ ms.date: 10/26/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4a2cb6fa310cc56b4c5ccb1cb625b88431f70783
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 6b6dd80f649b0c92aacdb5711e88d7710db5f51b
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633852"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424442"
 ---
 # <a name="azure-active-directory-code-samples-v20-endpoint"></a>Az Azure Active Directory-Kódminták (v2.0-végpontra)
 
@@ -73,7 +73,7 @@ A következő példák bemutatják nyilvános ügyfél (asztali és mobil alkalm
 
 Ügyfélalkalmazás | Platform | A folyamat/engedélyezés | A Microsoft Graph hívások | Az ASP.NET Core 2.0-s webes API-hívások
 ------------------ | -------- |  ----------| ---------- | -------------------------
-(WPF) asztali      | ![.NET ÉS A C#](media/sample-v2-code/logo_NET.png) | Interaktív | [DotNet-desktop-msgraph-v2](http://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [DotNet-natív-aspnetcore-v2](https://GitHub.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
+(WPF) asztali      | ![.NET ÉS A C#](media/sample-v2-code/logo_NET.png) | Interaktív | [DotNet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [DotNet-natív-aspnetcore-v2](https://GitHub.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
 Asztal (konzol)   | ![.NET és a C# (asztali verzió)](media/sample-v2-code/logo_NET.png) | Integrált Windows-hitelesítés |[DotNet-iwa-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2)
 Asztal (konzol)   | ![.NET és a C# (asztali verzió)](media/sample-v2-code/logo_NETcore.png) | Felhasználónév/jelszó |[dotnetcore – akár – v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)
 Mobilalkalmazás (UWP)   | ![.NET ÉS A C# (UWP)](media/sample-v2-code/logo_windows.png) | Interaktív |[DotNet-natív-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) |

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 09/27/2018
-ms.openlocfilehash: 06a0f2416ecff9e2f9a21877e26487b56452d0a0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 14e675097a23b50c8ff193c69c377ac8edfb989f
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251321"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317262"
 ---
 # <a name="use-ansible-to-manage-a-linux-virtual-machine-in-azure"></a>Linux rendszerű virtuális gép felügyelete az Azure-ban az Ansible használatával
 Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Az Ansible segítségével ugyanúgy felügyelheti az Azure-beli virtuális gépeket, ahogy azt bármely más erőforrással tenné. Ez a cikk bemutatja, hogyan használhatja az Ansible-forgatókönyveket Linux rendszerű virtuális gépek indítására és leállítására. 
@@ -141,4 +141,4 @@ Ez a szakasz bemutatja, hogy hogyan indíthat el egy felszabadított (leállíto
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"] 
-> [Az Azure-beli dinamikus leltárak kezelése az Ansible használatával](/articles/ansible/ansible-manage-azure-dynamic-inventories)
+> [Az Azure-beli dinamikus leltárak kezelése az Ansible használatával](~/articles/ansible/ansible-manage-azure-dynamic-inventories.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 9b34476d7ac78c03e9b2fc5340de51d9140cf73a
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 2ece5700965018a8a9a98e16a1577309a909b7b7
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821616"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334993"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Hogyan diagram teljesítmény és az Azure Monitor-beli virtuális gépek (előzetes verzió)
 Az Azure Monitor-beli virtuális gépek több fő teljesítménymutatók (KPI-k) segítségével eldöntheti, milyen jól a virtuális gép működik-e a cél teljesítménydiagramok készletét tartalmazza. A diagramok megjelenítése az erőforrás-használatot egy időszakon belül, így azonosíthatja a szűk keresztmetszeteket, a rendellenességeket, vagy váltson át az egyes gépek megtekintése a kiválasztott metrika alapján erőforrás-használat listázása egy perspektíva. Bár vannak számos elemet kell figyelembe venni, amikor foglalkoznak, teljesítmény, a virtuális gépek az Azure Monitor összpontosít az operációs rendszer keresztül a processzor, memória, hálózati adapterek és lemezek, ahogy. Teljesítmény egészíti ki a állapotát a figyelési funkció, és tegye elérhetővé a problémákat, amelyek jelzik, hogy egy lehetséges rendszer összetevő hibája, támogatási finomhangolása és optimalizálási hatékonyság elérése érdekében, vagy támogatja a kapacitástervezés segít.  
@@ -106,7 +106,7 @@ A következő kapacitás kihasználtsága diagramok áll rendelkezésre:
 ## <a name="alerting-and-alert-management"></a>Riasztások és a riasztások kezelése 
 Előre konfigurált riasztási szabályok engedélyezve van az Azure Monitor részeként a virtuális gépek teljesítmény-mérőszámok nem tartalmazzák. Bár vannak [állapotriasztások](vminsights-health.md#alerting-and-alert-management) teljesítményproblémákat észlel az Azure virtuális gép, például a magas CPU-kihasználtság, kevés a rendelkezésre álló memória, lemez I/O, kevés a szabad lemezterület, stb., a megfelelő ezek állapotriasztások csak lesznek alkalmazva a virtuális gépekhez csatlakoztatva a virtuális gépek az Azure Monitor engedélyezve a Log Analytics munkaterületén. 
 
-Azonban előfordulhat, hogy csak gyűjtjük és tároljuk a teljesítmény-mérőszámokat a Log Analytics-munkaterületen van szüksége egy részét. Ha a monitorozási stratégia elemzés vagy riasztás, amely tartalmazza a egyéb teljesítménymutatóiról annak érdekében, hogy hatékonyan értékeli a kapacitás vagy a virtuális gép állapotát, vagy van szüksége rugalmasságra, adja meg a saját riasztási feltételek vagy a logikai van szükség, akkor az konfigurálása [megvizsgálhatjuk a teljesítményszámlálókat gyűjteményét](../../log-analytics/log-analytics-data-sources-performance-counters.md?toc=/azure/azure-monitor/toc.json) a Log Analyticsben és definiálhat [naplóriasztások](../../monitoring-and-diagnostics/alert-log.md?toc=/azure/azure-monitor/toc.json). Amíg a Log Analytics lehetővé teszi, hogy más típusú adatokat tartalmazó összetett elemzéseket végezhet, és adja meg a hosszabb adatmegőrzési tendenciája, metrikák támogatására, másrészt könnyen használható, és képes a közel valós idejű feldolgozásához. Által gyűjtött a [Azure diagnosztikai ügynök](../../virtual-machines/windows/monitor.md) és az így kisebb késéssel és a egy alacsonyabb költségek, a riasztások létrehozása az Azure Monitor metrikák adattárban tárolt.
+Azonban előfordulhat, hogy csak gyűjtjük és tároljuk a teljesítmény-mérőszámokat a Log Analytics-munkaterületen van szüksége egy részét. Ha a monitorozási stratégia elemzés vagy riasztás, amely tartalmazza a egyéb teljesítménymutatóiról annak érdekében, hogy hatékonyan értékeli a kapacitás vagy a virtuális gép állapotát, vagy van szüksége rugalmasságra, adja meg a saját riasztási feltételek vagy a logikai van szükség, akkor az konfigurálása [megvizsgálhatjuk a teljesítményszámlálókat gyűjteményét](../../azure-monitor/platform/data-sources-performance-counters.md?toc=/azure/azure-monitor/toc.json) a Log Analyticsben és definiálhat [naplóriasztások](../../monitoring-and-diagnostics/alert-log.md?toc=/azure/azure-monitor/toc.json). Amíg a Log Analytics lehetővé teszi, hogy más típusú adatokat tartalmazó összetett elemzéseket végezhet, és adja meg a hosszabb adatmegőrzési tendenciája, metrikák támogatására, másrészt könnyen használható, és képes a közel valós idejű feldolgozásához. Által gyűjtött a [Azure diagnosztikai ügynök](../../virtual-machines/windows/monitor.md) és az így kisebb késéssel és a egy alacsonyabb költségek, a riasztások létrehozása az Azure Monitor metrikák adattárban tárolt.
 
 Tekintse át a áttekintése [gyűjteménye, metrikák és naplók az Azure Monitor szolgáltatással](../../azure-monitor/platform/data-collection.md?toc=/azure/azure-monitor/toc.json) így jobban megismerheti az alapvető különbség, és egyéb szempontok gyűjtemény további metrikák és a riasztási szabályok konfigurálása előtt.  
 

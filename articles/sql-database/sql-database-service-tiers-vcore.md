@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: c74d71f0ca8faec587cb36a789ed0328f9b24711
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.date: 11/27/2018
+ms.openlocfilehash: 4d71e54beac6e4816d8bcc9097219b2e7b7cabb7
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954697"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52441859"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>virtuális mag szolgáltatásszintek, Azure Hybrid Benefit és migrálása
 
@@ -41,8 +41,8 @@ Az alábbi táblázat segít a két szintek közötti különbségeket:
 |---|---|---|---|
 |A következőkre alkalmas|A legtöbb üzleti számítási feladathoz. Ajánlatok költségvetés-orientált elosztott és skálázható számítási és tárolási lehetőségek.|Magas I/O-igényű üzleti alkalmazások. Több elkülönített replika használatával ez biztosítja a legmagasabb hibatűrést.|A legtöbb üzleti célú a rugalmasan skálázható a tárolás és olvasási szintű követelmények|
 |Compute|Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag|Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag|Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag|
-|Memory (Memória)|Gen4: 7 GB / mag<br>Gen5: 5.5-ös GB / mag | Gen4: 7 GB / mag<br>Gen5: 5.5-ös GB / mag |Gen4: 7 GB / mag<br>Gen5: 5.5-ös GB / mag|
-|Storage|[Prémium szintű távtároló](../virtual-machines/windows/premium-storage.md),<br/>Önálló adatbázis: 5 GB – 4 TB-ig<br/>Felügyelt példány: 32 GB – 8 TB |Helyi SSD-tárolóval<br/>Önálló adatbázis: 5 GB – 4 TB-ig<br/>Felügyelt példány: 32 GB – 4 TB-ig |Az automatikus növekedési rugalmas, igény szerint tárhelyet. Támogatja az akár 100 TB tárterület és más alkalmazásokhoz. Helyi SSD-tárhely a helyi puffer készlet cache és a helyi adatok tárolását. Az Azure távoli tárhely végső hosszú távú adatok tárolását. |
+|Memory (Memória)|Gen4: 7 GB / mag<br>Gen5: 5.1 GB / mag | Gen4: 7 GB / mag<br>Gen5: 5.1 GB / mag |Gen4: 7 GB / mag<br>Gen5: 5.1 GB / mag|
+|Storage|Használja a [távoli prémium szintű storage](../virtual-machines/windows/premium-storage.md):<br/>Önálló adatbázis: 5 GB – 4 TB-ig<br/>Felügyelt példány: 32 GB – 8 TB |Helyi SSD-alapú tárolást használ:<br/>Önálló adatbázis: 5 GB – 1 TB<br/>Felügyelt példány: 32 GB – 4 TB-ig |Az automatikus növekedési rugalmas, igény szerint tárhelyet. Támogatja az akár 100 TB tárterület és más alkalmazásokhoz. Helyi SSD-tárhely a helyi puffer készlet cache és a helyi adatok tárolását. Az Azure távoli tárhely végső hosszú távú adatok tárolását. |
 |IO-átviteli sebesség (becsült)|Önálló adatbázis: 500 IOPS / virtuális mag a 7000-es maximális iops</br>Felügyelt példány: Függ [fájl méretét](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|A maximális iops-érték 200 000 magonként 5000 IOPS|TBD|
 |Rendelkezésre állás|1 replika, nincs olvasási szintű|3 replika, 1 [olvasási szintű replika](sql-database-read-scale-out.md),<br/>zóna redundáns magas rendelkezésre ÁLLÁS|?|
 |Biztonsági másolatok|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 nap (alapértelmezés szerint 7 nap)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 nap (alapértelmezés szerint 7 nap)|pillanatkép-alapú biztonsági mentés az Azure távoli tároló és a helyreállításokat ezeket a pillanatképeket használni a gyors helyreállítás. A biztonsági mentéseket azonnali, és nincs hatással a számítási i/o-teljesítményét. Visszaállítás nagyon gyors és nem egy adatművelet (véve a perc helyett órák vagy napok) méretét.|

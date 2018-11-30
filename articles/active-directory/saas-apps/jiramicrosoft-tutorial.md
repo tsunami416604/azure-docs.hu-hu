@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 11/22/2018
 ms.author: jeedes
-ms.openlocfilehash: f3f7fc3b837dd4eef9bab8ff34a36329436bad9a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 608269a05ae1ed699954cd301aa03056e089fa8a
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010728"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426101"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft"></a>Oktatóanyag: Azure Active Directory-integráció a Microsoft által a JIRA SAML SSO-val
 
@@ -154,11 +154,26 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](./media/jiramicrosoft-tutorial/addon12.png)
 
-9. A beépülő modul telepítése után megjelenik a **felhasználó telepített** bővítmények szakaszában **kiegészítő szolgáltatás kezelése** szakaszban. Kattintson a **konfigurálása** a új beépülő modul konfigurálásához.
+9. Forgatókönyv futtatása a JIRA fordított proxy forgatókönyv vagy terheléselosztó hajtsa végre az alábbi lépéseket:
+
+    > [!NOTE]
+    > Meg kell lennie a kiszolgáló konfigurálása először az az alábbi utasításokat, és telepítse a beépülő modult.
+
+    a. Alább az attribútum hozzáadása **összekötő** portot a **server.xml** JIRA kiszolgálói alkalmazás fájlt.
+
+    `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
+
+    ![Egyszeri bejelentkezés konfigurálása](./media/jiramicrosoft-tutorial/reverseproxy1.png)
+
+    b. Változás **alap URL-cím** a **rendszerbeállítások** proxy-vagy terheléselosztó megfelelően.
+
+    ![Egyszeri bejelentkezés konfigurálása](./media/jiramicrosoft-tutorial/reverseproxy2.png)
+
+10. A beépülő modul telepítése után megjelenik a **felhasználó telepített** bővítmények szakaszában **kiegészítő szolgáltatás kezelése** szakaszban. Kattintson a **konfigurálása** a új beépülő modul konfigurálásához.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/jiramicrosoft-tutorial/addon13.png)
 
-10. Hajtsa végre a következő lépéseket a konfigurációs lapon:
+11. Hajtsa végre a következő lépéseket a konfigurációs lapon:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/jiramicrosoft-tutorial/addon52.png)
 

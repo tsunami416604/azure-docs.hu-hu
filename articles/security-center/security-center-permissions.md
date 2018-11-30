@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 42220a94eb0d0259b8b410e7343ffbfe09e8bfa5
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: e853ea6d05585fa764ad6e019a3a4390ed840263
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007858"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313439"
 ---
 # <a name="permissions-in-azure-security-center"></a>Engedélyek az Azure Security Centerben
 
@@ -59,7 +59,7 @@ Az alábbi táblázat megjeleníti a szerepköröket, és a műveletek a Securit
 ## <a name="next-steps"></a>További lépések
 Ez a cikk részletesen a Security Center általi RBAC engedélyek hozzárendelése a felhasználókhoz, és az engedélyezett műveletek az egyes szerepkörökhöz meghatározott. Most, hogy már ismeri az előfizetés biztonsági állapotának figyeléséhez szükséges a szerepkör-hozzárendeléseket, szerkesztheti a biztonsági szabályzatokat, és alkalmazhatja a javaslatokat, megtudhatja, hogyan lehet:
 
-- [Biztonsági szabályzatok beállítása a Security Centerben](security-center-policies.md)
+- [Biztonsági szabályzatok beállítása a Security Centerben](security-center-azure-policy.md)
 - [A Security Centerben a biztonsági javaslatok kezelése](security-center-recommendations.md)
 - [Az Azure-erőforrások biztonsági állapotának figyelése](security-center-monitoring.md)
 - [A biztonsági riasztások kezelése és a riasztásokra való válaszadás a Security Centerben](security-center-managing-and-responding-alerts.md)

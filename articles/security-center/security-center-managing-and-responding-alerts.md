@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/3/2018
+ms.date: 11/22/2018
 ms.author: rkarlin
-ms.openlocfilehash: f865a0a609422ae4938a9cccf15d9cd176a9400a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 779efdd509460ac8175b3922097d701edf8b9b68
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227790"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311228"
 ---
 # <a name="managing-and-responding-to-security-alerts-in-azure-security-center"></a>Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben
 Ez a dokumentum segít az Azure Security Center biztonsági riasztások kezelésére és a riasztásokra való válaszadásra szolgáló funkcióinak használatában.
 
 > [!NOTE]
-> A speciális észlelések eléréséhez frissítsen az Azure Security Center Standard verzióra. A 60 napos próbaverzió ingyenes. A frissítéshez a [Biztonsági szabályzat](security-center-policies.md) beállításnál válassza ki a kívánt tarifacsomagot. További információkért lásd: [Az Azure Security Center díjszabása](security-center-pricing.md).
+> A speciális észlelések eléréséhez frissítsen az Azure Security Center Standard verzióra. A 60 napos próbaverzió ingyenes. A frissítéshez a [Biztonsági szabályzat](security-center-azure-policy.md) beállításnál válassza ki a kívánt tarifacsomagot. További információkért lásd: [Az Azure Security Center díjszabása](security-center-pricing.md).
 >
 >
 
@@ -63,6 +63,20 @@ Az oldal alsó részén találhatók az egyes riasztások részletei. Rendezés�
 > [!NOTE]
 > A Security Center által létrehozott riasztások az Azure tevékenységnapló területén is megjelennek. További információk az Azure tevékenységnaplójának eléréséről: [A tevékenységnaplók megtekintése az erőforrásokon végzett műveletek naplózásához](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
 >
+
+
+### <a name="alert-severity"></a>Riasztás fontossága
+
+> [!NOTE]
+> Riasztás súlyossága eltérően megjelenik a portálon és a REST API-t, a különbségeket az alábbi listán jeleztük.
+
+-   **Magas**: nagy a valószínűsége annak, hogy az erőforrás biztonsága sérül. Meg kell megvizsgáljuk azt azonnal. A Security Center megbízható rendelkezik, mindkét az illető ártó szándékkal és a megállapításokat, a riasztás kiadására szolgál. Ha például egy riasztást, amely észleli az ismert kártékony eszköz például a Mimikatz, a hitelesítő adatok ellopását használt gyakori eszköz végrehajtása. 
+-   **Közepes (alacsony, a REST API-ban)**: Ennek oka valószínűleg egy gyanús tevékenységet, amelyek azt jelzik, hogy egy erőforrás biztonsága sérül.
+A Security Center bizalom elemzési vagy keresése a közepes és az illető ártó szándékkal magabiztosan közepes és nagy. Ezek általában lenne, machine learning vagy alapú anomáliadetektálás észleléseket. Ha például egy bejelentkezési kísérlet egy szokatlan helyről.
+-   **Alacsony (információk a REST API-ban)**: Ez egy ártalmatlan pozitív és a egy letiltott támadás lehet. 
+    - A Security Center nem benne, elég, hogy az célja a rosszindulatú és lehet, hogy a tevékenység álcázva. Például a napló törlése egy műveletet, amely akkor fordulhat elő, amikor egy támadó megpróbálja elrejteni a nyomait, de sok esetben egy szokásos műveletet végzi a rendszergazdák.
+    - A Security Center nem általában meg, ha letiltott támadásokkal szemben, kivéve, ha egy érdekes eset, javasoljuk, hogy megvizsgáljuk. 
+-   **Tájékoztató (csendes mód a REST API-ban)**: csak akkor jelenik meg tájékoztatási szintű riasztások, amikor a biztonsági incidensek részleteinek, vagy ha a REST API-t használja egy adott riasztás azonosítóját. Az incidens általában épül fel egy ezek közül néhány jelenhet meg a saját kell csak tájékoztató jellegű, de az egyéb riasztásokat kontextusában lehet közelebbről összefügg riasztások száma. 
 
 ### <a name="filtering-alerts"></a>A riasztások szűrése
 A riasztások dátum, állapot és súlyosság alapján szűrhetők. A riasztások szűrése olyan esetekben lehet hasznos, amikor szűkíteni kell a megjelenített biztonsági riasztások körét. Például olyankor, ha az elmúlt 24 órában történt biztonsági riasztásokat szeretné kezelni, mert egy, a rendszerbe történő lehetséges behatolást vizsgál.

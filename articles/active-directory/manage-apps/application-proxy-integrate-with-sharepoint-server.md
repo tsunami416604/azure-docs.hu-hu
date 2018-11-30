@@ -15,12 +15,12 @@ ms.date: 10/19/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: ad0ab8790c9d66dbba87d466e9661ef8cf33eef3
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 89852e90daa548dc82455cb6317d367b7423ba65
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456898"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425207"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Távoli hozzáférés a Sharepointhoz, az Azure AD-alkalmazásproxy engedélyezése
 
@@ -119,7 +119,7 @@ A legegyszerűbb módja, hogy az SPN-ek beállítása, hogy az SPN-formátumok, 
 1. Keresse meg az egyszerű szolgáltatásnév az a hely másik gépről.
  Ha így tesz, a Kerberos-jegyekhez megfelelő készletét gyorsítótárazza a gépen. Ezeket a jegyeket a célhelyhez vetítéséhez egyszerű Szolgáltatásnevének tartalmaz.
 
-2. Az adott helyhez tartozó egyszerű szolgáltatásnév nevű eszköz használatával kérheti le [Klist](http://web.mit.edu/kerberos/krb5-devel/doc/user/user_commands/klist.html). Egy parancssori ablakban, amely ugyanabban a környezetben, ki fért hozzá a webhelyet a böngészőben a felhasználóként fut-e futtassa a következő parancsot:
+2. Az adott helyhez tartozó egyszerű szolgáltatásnév nevű eszköz használatával kérheti le [Klist](https://web.mit.edu/kerberos/krb5-devel/doc/user/user_commands/klist.html). Egy parancssori ablakban, amely ugyanabban a környezetben, ki fért hozzá a webhelyet a böngészőben a felhasználóként fut-e futtassa a következő parancsot:
 ```
 Klist
 ```

@@ -1,5 +1,5 @@
 ---
-title: '5. lépés: A Machine Learning webszolgáltatás üzembe helyezése |} A Microsoft Docs'
+title: '5. lépés: A Machine Learning Studio-webszolgáltatás üzembe helyezése |} A Microsoft Docs'
 description: 'A fejlesztés egy prediktív megoldás bemutatója 5. lépés: egy prediktív kísérletet a Machine Learning Studióban webszolgáltatásként üzembe helyezése.'
 services: machine-learning
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 2de409d0f12d4ef393901eab78918edd33bc53f9
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 33965270c2be6f70614def79a49f1c4aa1a8fbbc
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263825"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309929"
 ---
-# <a name="walkthrough-step-5-deploy-the-azure-machine-learning-web-service"></a>Az útmutató 5. lépése: Az Azure Machine Learning webszolgáltatás üzembe helyezése
+# <a name="walkthrough-step-5-deploy-the-azure-machine-learning-studio-web-service"></a>Az útmutató 5. lépés: Az Azure Machine Learning Studio webszolgáltatás üzembe helyezése
 Ez a forgatókönyv az minden ötödik lépés a [az Azure Machine Learning prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md)
 
 1. [Machine Learning-munkaterület létrehozása](walkthrough-1-create-ml-workspace.md)

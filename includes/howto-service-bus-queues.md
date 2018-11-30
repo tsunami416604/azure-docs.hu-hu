@@ -1,3 +1,16 @@
+---
+author: spelluru
+ms.service: service-bus-messaging
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: spelluru
+ms.openlocfilehash: d3d33c87dc1adf65a53b71cc4c833e7f4a191670
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52331050"
+---
 ## <a name="what-are-service-bus-queues"></a>Mik azok a Service Bus-üzenetsorok?
 A Service Bus-üzenetsorok **közvetítőalapú üzenettovábbítási** kommunikációs modellt biztosítanak az üzenettovábbításhoz. Üzenetsorok használata esetén az elosztott alkalmazások összetevői nem közvetlenül egymással kommunikálnak, hanem egy közvetítőként szolgáló üzenetsoron keresztül. Az üzenet létrehozója (a küldő) átadja az üzenetet az üzenetsornak, majd folytatja annak feldolgozását. Aszinkron módon az üzenetfogyasztó (a fogadó) kiemeli az üzenetet az üzenetsorból, és feldolgozza azt. A küldőnek nem kell várnia a fogyasztó válaszára a további üzenetek feldolgozásához és kiküldéséhez. Az üzenetsorok **elsőnek be, elsőnek ki (First In, First Out, FIFO)** üzenetküldést biztosítanak egy vagy több versengő fogyasztó számára. Ez azt jelenti, hogy az üzeneteket általában az érzékelők fogadják és dolgozzák fel a sorhoz történő hozzáadásuk sorrendjében, és minden üzenetet csak egy üzenetfogyasztó fogad és dolgoz fel.
 
