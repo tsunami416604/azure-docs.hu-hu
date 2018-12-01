@@ -14,12 +14,12 @@ ms.date: 11/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: adb53bb5722bff2374097626e8a3f1679ca00788
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 0c14055209c6094585e0d1df892fea24a3f3ea55
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633529"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721068"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Az Azure Active Directory a dinamikus tagsági szabályok
 
@@ -352,7 +352,7 @@ A következő eszköz attribútumokat is használható.
  deviceCategory | egy érvényes eszközkategória-név | (device.deviceCategory - eq "BYOD")
  deviceManufacturer | bármilyen karakterlánc típusú értéket | (device.deviceManufacturer - eq "Samsung")
  deviceModel | bármilyen karakterlánc típusú értéket | (device.deviceModel - eq "iPad Air")
- deviceOwnership | Személyes, vállalati, ismeretlen | (device.deviceOwnership - eq "Céges")
+ deviceOwnership | Személyes, munkahelyi, ismeretlen | (device.deviceOwnership - eq "Vállalati")
  Tartománynév | bármilyen karakterlánc típusú értéket | (device.domainName - eq "contoso.com")
  enrollmentProfileName | Az Apple Eszközregisztrációs profilt, vagy a Windows Autopilot-profil neve | (device.enrollmentProfileName - eq "DEP iPhone-OK")
  isRooted | IGAZ, hamis | (device.isRooted - eq true)
@@ -360,6 +360,9 @@ A következő eszköz attribútumokat is használható.
  deviceId | egy érvényes Azure AD-Eszközazonosító | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  objectId | érvényes Azure AD-objektumazonosító |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
  systemLabels | bármilyen karakterlánc megfelelő az Intune eszköz tulajdonságot a Modern munkahely eszközök címkézése | (device.systemLabels-tartalmaz "M365Managed")
+
+> [!Note]  
+> A deviceOwnership eszközök dinamikus csoportok létrehozásakor meg kell értékeként állítsa be a "Céges". Az Intune-beli az eszköz tulajdonosi adatát ki ehelyett a vállalati. Tekintse meg [OwnerTypes](https://docs.microsoft.com/en-us/intune/reports-ref-devices#ownertypes) további részletekért. 
 
 ## <a name="next-steps"></a>További lépések
 

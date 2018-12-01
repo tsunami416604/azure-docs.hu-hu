@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/06/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 716cf9e47cd71d003513066d390f9dccb5c83dcb
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 4a4b9863d8f74592a8d9a700c3dbc850cd867331
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344126"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725556"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-android-application"></a>Az Azure AD B2C: Bejelentkezés egy Android-alkalmazás használatával
 
@@ -40,17 +40,17 @@ A következő lépésben hozzon létre egy alkalmazást a B2C-címtárban. Ez bi
 * Másolja az alkalmazáshoz rendelt **alkalmazásazonosítót**. Ez később lesz szüksége.
 * Állítsa be egy natív ügyfél **átirányítási URI-t** (pl. com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect). Később erre is szüksége lesz.
 
-## <a name="create-your-policies"></a>Szabályzatok létrehozása
+## <a name="create-your-user-flows"></a>A felhasználói folyamatok létrehozása
 
-Az Azure AD B2C-ben a felhasználói élményeket [szabályzatok](active-directory-b2c-reference-policies.md) határozzák meg. Ez az alkalmazás egyetlen identitással kapcsolatos tartalmaz: egy kombinált bejelentkezési és a regisztrációhoz. Szeretne létrehozni a szabályzat leírtak szerint a [házirendek áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). A szabályzat létrehozásakor ügyeljen arra, hogy:
+Az Azure AD B2C felhasználói élményeket által meghatározott egy [felhasználói folyamat](active-directory-b2c-reference-policies.md), azaz az Azure AD működését szabályozó házirendjei. Ez az alkalmazás egyetlen identitással kapcsolatos tartalmaz: egy kombinált bejelentkezési és regisztrációs felhasználói folyamata. Szeretne létrehozni a felhasználói folyamat leírtak szerint a [felhasználói folyamat áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). Ha a felhasználói folyamatot hoz létre, ügyeljen arra, hogy:
 
-* Válassza ki a **megjelenítendő név** a házirend-előfizetési attribútumaként.
-* Az összes szabályzatban válassza ki a **Megjelenített név** és az **Objektumazonosító** alkalmazási jogcímet. Kiválaszthat egyéb jogcímeket is.
-* Az egyes házirendek létrehozása után másolja a házirend **nevét**. A névnek a következő előtaggal kell rendelkeznie: `b2c_1_`.  A szabályzat nevére később még szüksége lesz.
+* Válassza ki a **megjelenítendő név** a felhasználói folyamat előfizetési attribútumaként.
+* Válassza ki a **megjelenítendő név** és **Objektumazonosító** alkalmazásjogcímek minden felhasználó flow-ban. Kiválaszthat egyéb jogcímeket is.
+* Másolás a **neve** az egyes felhasználói folyamatok létrehozása után. A névnek a következő előtaggal kell rendelkeznie: `b2c_1_`.  A felhasználói interakciósorozat neve később szüksége lesz.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-A szabályzat létrehozását követően készen áll az alkalmazás elkészítésére.
+A felhasználói folyamatok létrehozását követően készen áll az alkalmazás elkészítésére.
 
 ## <a name="download-the-sample-code"></a>A mintakód letöltése
 
@@ -69,7 +69,7 @@ A minta a minta által biztosított módosítás [az AppAuth](https://openid.git
 Kommunikációs konfigurálhatja az Azure AD B2C-vel, vagy adja meg a felderítés URI-t vagy az engedélyezési végpont és a jogkivonat-végpont URI-k meghatározásával. Mindkét esetben szüksége lesz a következő információkat:
 
 * Bérlő azonosítója (Példa: contoso.onmicrosoft.com)
-* A házirend nevét (pl. B2C\_1\_SignUpIn)
+* Felhasználói interakciósorozat neve (Példa: B2C\_1\_SignUpIn)
 
 Ha automatikus észleléséhez, az engedélyezési és jogkivonat-végpont URI-k, szüksége lesz az adatok beolvasása a felderítésből URI. A felderítést, és cserélje le a bérlő URI-t hozhat létre\_Azonosítóját és a szabályzat\_az alábbi URL-cím neve:
 

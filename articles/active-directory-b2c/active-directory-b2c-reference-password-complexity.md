@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/16/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b16ac10e10655bbc7e41d9336378228097ca19ff
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 88609f4daac176f082e7f4962d557267946ab98c
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014720"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724434"
 ---
 # <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Az Azure AD B2C: Konfigurálja a bonyolultsági feltételeknek, a jelszót
 
@@ -26,22 +26,21 @@ Az Azure Active Directory B2C (Azure AD B2C-vel) támogatja a bonyolultsági fel
 
 ## <a name="when-password-rules-are-enforced"></a>Amikor jelszó szabályok életbe lépnek
 
-A regisztrációhoz, vagy a jelszó-visszaállítás, a végfelhasználó, amely megfelel a szabályoknak jelszót kell megadnia.  Jelszó-bonyolultsági szabályokat szabályzatonként érvényben vannak.  A regisztráció ideje alatt egy másik szabályzat nyolc karakterből álló karakterláncnak szükséges a regisztrációhoz négyjegyű PIN-kódot egy szabályzat hozzá van lehetőség.  Például használhat egy szabályzatot a különböző jelszavak összetettségére felnőttek, mint a gyermekek számára.
+A regisztrációhoz, vagy a jelszó-visszaállítás, a végfelhasználó, amely megfelel a szabályoknak jelszót kell megadnia.  Jelszó-bonyolultsági szabályokat a rendszer egy felhasználói folyamat érvényesíti.  A regisztráció ideje alatt egy másik felhasználói folyamat nyolc karakterből álló karakterláncnak szükséges a regisztrációhoz négyjegyű PIN-kódot egy felhasználói folyamat lehetőség.  Például használhat egy felhasználói folyamat a különböző jelszavak összetettségére felnőttek, mint a gyermekek számára.
 
 Jelszó bonyolultsága bejelentkezései soha nem lép érvénybe.  Felhasználók bejelentkezései soha nem kéri a jelszó módosítására, mert nem felel meg az aktuális bonyolultsági követelményeknek.
 
-Íme a típusú szabályzatok, ahol konfigurálható a jelszó erőssége:
+Íme a felhasználói folyamatok típusú, ahol konfigurálható a jelszó erőssége:
 
-* Regisztrálási vagy bejelentkezési szabályzat
-* Jelszó-visszaállítási házirend
+* Regisztrálási vagy bejelentkezési felhasználói folyamata
+* Jelszó alaphelyzetbe állítása felhasználói folyamat
 * Egyéni szabályzat ([jelszóösszetettség konfigurálása egyéni házirendek](active-directory-b2c-reference-password-complexity-custom.md))
 
 ## <a name="how-to-configure-password-complexity"></a>Jelszó bonyolultsága konfigurálása
 
-1. Nyissa meg **regisztrálási vagy bejelentkezési szabályzatok**.
-2. Válasszon ki egy szabályzatot, és kattintson a **szerkesztése**.
-3. Nyissa meg **jelszóösszetettség**.
-4. Módosítsa ezt a házirend számára, a jelszó erőssége **egyszerű**, **erős**, vagy **egyéni**.
+1. Nyissa meg **felhasználókövetési adatai**.
+2. Válassza ki a felhasználói folyamat, és kattintson a **tulajdonságok**.
+3. A **jelszóösszetettség**, módosítsa a jelszó erőssége ezen felhasználói folyamat **egyszerű**, **erős**, vagy **egyéni**.
 
 ### <a name="comparison-chart"></a>Összehasonlítási táblázata
 

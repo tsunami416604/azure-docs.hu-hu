@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 569efa7fbbd111937f00ba3b1e28219c163e2221
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7bd84b42cfa61d199d70e02345f9229a45fd7704
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958159"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726168"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation futtató fiókok kezelése
 
@@ -358,11 +358,11 @@ A tanúsítvány megújításához tegye a következőket:
 
 Szabályozhatja, hogy az automation-erőforrásokon, az Azure Automationben célzó, a Futtatás mint fiók alapértelmezés szerint az előfizetés közreműködői jogokat kapnak. Mi a Futtatás mint szolgáltatásnév mindent korlátozni kell, ha távolítsa el a fiókot a közreműködő szerepkört az előfizetés, és közreműködője hozzáadása az erőforráscsoportok szeretne megadni.
 
-Az Azure Portalon válassza ki a **előfizetések** , és válassza ki az előfizetést, az Automation-fiók. Válassza ki **hozzáférés-vezérlés (IAM)** , és keresse meg az Automation-fiókhoz tartozó egyszerű szolgáltatásról (tűnik \<AutomationAccountName\>_unique azonosítója). Válassza ki a fiókot, és kattintson a **eltávolítása** eltávolítja az előfizetésből.
+Az Azure Portalon válassza ki a **előfizetések** , és válassza ki az előfizetést, az Automation-fiók. Válassza ki **hozzáférés-vezérlés (IAM)** majd válassza ki a **szerepkör-hozzárendelések** fülre. Keresse meg az Automation-fiókhoz tartozó egyszerű szolgáltatásról (tűnik \<AutomationAccountName\>_unique azonosítója). Válassza ki a fiókot, és kattintson a **eltávolítása** eltávolítja az előfizetésből.
 
 ![Előfizetés közreműködő](media/manage-runas-account/automation-account-remove-subscription.png)
 
-Az egyszerű szolgáltatás hozzáadása egy erőforráscsoportot, válassza ki az erőforráscsoportot az Azure Portalon, és válassza a **hozzáférés-vezérlés (IAM)**. Válassza ki **Hozzáadás**, ekkor megnyílik a **engedélyek hozzáadása** lapot. A **szerepkör**válassza **közreműködői**. Az a **kiválasztása** szöveg mezőbe írja be az egyszerű szolgáltatás a Futtatás mint fiók nevét, majd válassza ki a listából. Kattintson a **Mentés** gombra a módosítások mentéséhez. Hajtsa végre ezeket a lépéseket az erőforráscsoportoknál, szeretne adni az Azure Automation futtató szolgáltatásnév hozzáférhessen a.
+Az egyszerű szolgáltatás hozzáadása egy erőforráscsoportot, válassza ki az erőforráscsoportot az Azure Portalon, és válassza a **hozzáférés-vezérlés (IAM)**. Válassza ki **szerepkör-hozzárendelés hozzáadása**, ekkor megnyílik a **szerepkör-hozzárendelés hozzáadása** lapot. A **szerepkör**válassza **közreműködői**. Az a **kiválasztása** szöveg mezőbe írja be az egyszerű szolgáltatás a Futtatás mint fiók nevét, majd válassza ki a listából. Kattintson a **Mentés** gombra a módosítások mentéséhez. Hajtsa végre ezeket a lépéseket az erőforráscsoportoknál, szeretne adni az Azure Automation futtató szolgáltatásnév hozzáférhessen a.
 
 ## <a name="misconfiguration"></a>Hibás konfiguráció
 

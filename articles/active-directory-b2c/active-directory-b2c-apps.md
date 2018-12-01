@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7671a0a99e12463fcce5ff33fbcba7e8677dde05
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 91102b9fe57b2291ce1d1678b71b3a8b0b834864
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006194"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721969"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Az Active Directory B2C-ben használható alkalmazások típusok
 
@@ -26,7 +26,7 @@ Minden Azure AD B2C-t használó alkalmazást regisztrálni kell a [Azure AD B2C
 * Egy **Alkalmazásazonosító** , amely egyedileg azonosítja az alkalmazást.
 * A **válasz URL-cím** , amely közvetlen válaszokhoz az alkalmazáshoz használható.
 
-Az Azure AD B2C-nek küldött kérések meghatároznak egy **szabályzatot** is. A szabályzatok vezérlik az Azure AD működését. A végpontok segítségével ezenfelül testre szabható felhasználói élmények is létrehozhatók. Gyakran használt szabályzatok például a következők: regisztráció, bejelentkezés, profilmódosítás és így tovább. Ha nincs tisztában a szabályzatokkal, a folytatás előtt olvasson utána az Azure AD B2C [bővíthető szabályzat-keretrendszernek](active-directory-b2c-reference-policies.md).
+Itt adhatja meg az egyes Azure AD B2C-nek küldött kérések egy **felhasználói folyamat**, azaz egy szabályzatot, amely az Azure AD működését vezérli. A végpontok segítségével ezenfelül testre szabható felhasználói élmények is létrehozhatók. Felhasználói folyamatok beállítása a gyakran használt szabályzatok, beleértve a regisztrációt, bejelentkezést és profilmódosítás készletét biztosítunk. De a saját egyéni szabályzatait is létrehozhat. Ha nincs tisztában a szabályzatokkal, a folytatás előtt olvasson utána az Azure AD B2C [bővíthető szabályzat-keretrendszernek](active-directory-b2c-reference-policies.md).
 
 Az alkalmazások közötti interakció minden esetben hasonló felső szintű mintát követ:
 

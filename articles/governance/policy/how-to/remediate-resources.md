@@ -8,12 +8,12 @@ ms.date: 09/25/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: adba2322bce5f0884cba51078e65feeaeaf193d9
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 5b503c1a96d0c0a5ce3d14e98622040116873045
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392693"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724655"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Az Azure Policy segítségével a nem megfelelő erőforrások szervizelése
 
@@ -123,7 +123,7 @@ A hozzárendelés felügyelt identitás ad hozzá egy szerepkörhöz, kövesse a
 
 1. Keresse meg az erőforrás vagy az erőforrások szülőtároló (erőforráscsoport, előfizetés, a felügyeleti csoport), manuálisan kell hozzáadni a szerepkör-definíció igénylő.
 
-1. Kattintson a **hozzáférés-vezérlés (IAM)** az erőforrás lapon hivatkozásra, és kattintson a **+ Hozzáadás** felső részén a hozzáférés-vezérlő lapját.
+1. Kattintson a **hozzáférés-vezérlés (IAM)** az erőforrás lapon hivatkozásra, és kattintson a **+ szerepkör-hozzárendelés hozzáadása** felső részén a hozzáférés-vezérlő lapját.
 
 1. Válassza ki a megfelelő szerepkör, amely megfelel egy **roleDefinitionIds** a szabályzat-definíció. Hagyja **rendelhet hozzáféréseket** "Azure AD felhasználói, csoport vagy alkalmazás" az alapértelmezett értékre. Az a **kiválasztása** mezőbe illessze be, vagy írja be a korábban található hozzárendelés erőforrás-azonosító részét. Ha a keresés befejeződött, kattintson az objektumra, ugyanazzal a névvel, válassza ki az azonosítója, és kattintson a **mentése**.
 

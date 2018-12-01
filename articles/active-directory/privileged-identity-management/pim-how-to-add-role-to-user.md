@@ -12,12 +12,12 @@ ms.workload: identity
 ms.component: pim
 ms.date: 10/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 5f0b5d1695603a7cd2a3c7ac1dbc484e44257d88
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 2b099e1377536b46229b75f25d04ab2c1beb5c11
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249611"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724944"
 ---
 # <a name="assign-azure-ad-directory-roles-in-pim"></a>A PIM az Azure AD-címtárbeli szerepkörök hozzárendelése
 
@@ -125,13 +125,15 @@ Kövesse az alábbi lépéseket a felhasználói hozzáférés rendszergazdája 
 
 1. Válassza ki az előfizetését.
 
-1. Válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget az előfizetési hatókörben található szerepkör-hozzárendelések aktuális listájának megtekintéséhez.
+1. Válassza a **Hozzáférés-vezérlés (IAM)** elemet.
+
+1. Válasszon **szerepkör-hozzárendelések** szerepkör-hozzárendelések az előfizetések szintjén aktuális listájának megtekintéséhez.
 
    ![Egy előfizetés hozzáférés-vezérlés (IAM) paneljén](./media/pim-how-to-add-role-to-user/ms-pim-access-control.png)
 
 1. Ellenőrizze, hogy a **MS-PIM** egyszerű szolgáltatás a **felhasználói hozzáférés rendszergazdája** szerepkör.
 
-1. Ha nem, válassza a **Hozzáadás** megnyitásához a **engedélyek hozzáadása** ablaktáblán.
+1. Ha nem, válassza a **szerepkör-hozzárendelés hozzáadása** megnyitásához a **szerepkör-hozzárendelés hozzáadása** ablaktáblán.
 
 1. Az a **szerepkör** legördülő listában válassza a **felhasználói hozzáférés rendszergazdája** szerepkör.
 

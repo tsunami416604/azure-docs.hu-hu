@@ -9,15 +9,15 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 9/24/2018
+ms.date: 11/29/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75b5fd2f586a9122aa1248ba88d7ceab59b13215
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 5b67f6bbb9ef2a8ee6bd42c89de56a0ff5a3024d
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269292"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724162"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Python SDK SQL API-hoz: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -51,10 +51,28 @@ ms.locfileid: "48269292"
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
+### <a name="a-name302302"></a><a name="3.0.2"/>3.0.2-es
+* Támogatás hozzáadva a MultiPolygon datatype
+* Hibajavítás munkamenetben olvassa el az újrapróbálkozási szabályzat
+* Hibajavítás base 64 karakterláncok dekódolás közben helytelen kitöltési hibák
+
+### <a name="a-name301301"></a><a name="3.0.1"/>3.0.1-es
+* Hibajavítás a LocationCache
+* Hibajavítás végpont újrapróbálkozási logika
+* Rögzített dokumentációja
+
 ### <a name="a-name300300"></a><a name="3.0.0"/>3.0.0-s
 * Többrégiós írási műveletek támogatása.
 * Namespace azure.cosmos módosult.
 * Tároló és elem, document_client cosmos_client új nevet kapott: gyűjtemény és dokumentum fogalmakat. 
+
+### <a name="a-name233233"></a><a name="2.3.3"/>2.3.3
+* Támogatás hozzáadva a proxy
+* Támogatás hozzáadva a módosítási hírcsatorna olvasása
+* Támogatás hozzáadva a kvóta fejlécek gyűjtése
+* Nagy munkamenet Bugfix jogkivonatok probléma
+* Az ReadMedia API Bugfix
+* A partíció kulcstartományhoz gyorsítótárban Bugfix
 
 ### <a name="a-name232232"></a><a name="2.3.2"/>2.3.2
 * Támogatás hozzáadva a alapértelmezett újrapróbálkozások kapcsolati problémák.
@@ -145,6 +163,9 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [3.0.2-es](#3.0.2) |2018. november 15. |--- |
+| [3.0.1-es](#3.0.1) |2018. október 04. |--- |
+| [2.3.3](#2.3.3) |2018. Szeptembertől 08. |--- |
 | [2.3.2](#2.3.2) |08 2018. május |--- |
 | [2.3.1](#2.3.1) |2017. december 21. |--- |
 | [2.3.0](#2.3.0) |2017. november 10. |--- |

@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/07/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5f95b71497b59eafff09d4add2b4bb1c20656592
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 9f475c7bc373afd8a109873908bb583bc07708f1
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339358"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722547"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Az Azure AD B2C: Bejelentkezés egy iOS-alkalmazás használatával
 
@@ -38,16 +38,16 @@ A következő lépésben hozzon létre egy alkalmazást a B2C-címtárban. Az al
 * Másolja az alkalmazáshoz rendelt **alkalmazásazonosítót**. Később szüksége lesz a GUID.
 * Állítsa be a **átirányítási URI-t** egy egyéni sémával (például com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect). Később szüksége lesz az URI.
 
-## <a name="create-your-policies"></a>Szabályzatok létrehozása
-Az Azure AD B2C-ben a felhasználói élményeket [szabályzatok](active-directory-b2c-reference-policies.md) határozzák meg. Ez az alkalmazás egyetlen identitással kapcsolatos tartalmaz: egy kombinált bejelentkezési és a regisztrációhoz. Ez a szabályzat létrehozása a leírtak szerint a [házirendek áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). A szabályzat létrehozásakor ügyeljen arra, hogy:
+## <a name="create-your-user-flows"></a>A felhasználói folyamatok létrehozása
+Az Azure AD B2C felhasználói élményeket által meghatározott egy [felhasználói folyamat](active-directory-b2c-reference-policies.md). Ez az alkalmazás egyetlen identitással kapcsolatos tartalmaz: egy kombinált bejelentkezési és a regisztrációhoz. Ez a felhasználói folyamat létrehozása a leírtak szerint a [felhasználói folyamat áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). Ha a felhasználói folyamatot hoz létre, ügyeljen arra, hogy:
 
 * A **regisztrálási attribútumok**, válassza ki az attribútumot **megjelenítendő név**.  Egyéb attribútumokat is választhat.
 * A **alkalmazásjogcímek**, válassza a jogcímek **megjelenítendő név** és **felhasználó Objektumazonosítója**. Kiválaszthat egyéb jogcímeket is.
-* Az egyes házirendek létrehozása után másolja a házirend **nevét**. A házirend neve a következő előtaggal kezdődik `b2c_1_` a szabályzat mentésekor.  Később szüksége lesz a házirend nevét.
+* Másolás a **neve** az egyes felhasználói folyamatok létrehozása után. A felhasználói interakciósorozat neve a következő előtaggal kezdődik `b2c_1_` a felhasználói folyamat mentésekor.  Később szüksége lesz a felhasználói interakciósorozat neve.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-A szabályzat létrehozását követően készen áll az alkalmazás elkészítésére.
+A felhasználói folyamatok létrehozását követően készen áll az alkalmazás elkészítésére.
 
 ## <a name="download-the-sample-code"></a>A mintakód letöltése
 Biztosítunk egy mintát, amely az AppAuth használja az Azure AD B2C-vel [a Githubon](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c). Töltse le a kódot, és futtathatja. A saját Azure AD B2C-bérlő használatához hajtsa végre a következő témakör utasításait a [README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md).
@@ -64,7 +64,7 @@ Ez a minta hozta létre a információs fájlban OLVASHATÓ utasítások szerint
 
 Az Azure AD B2C-vel kommunikációs konfigurálhatja az engedélyezési végpont és a jogkivonat-végpont URI-k megadásával.  Az URI-k létrehozásához szüksége van a következő információkat:
 * Bérlő azonosítója (például contoso.onmicrosoft.com)
-* A házirend nevét (például a B2C\_1\_SignUpIn)
+* Felhasználói interakciósorozat neve (például a B2C\_1\_SignUpIn)
 
 A jogkivonat-végpont URI-t hozhat létre és cserélje le a bérlő\_Azonosítóját és a szabályzat\_az alábbi URL-cím neve:
 

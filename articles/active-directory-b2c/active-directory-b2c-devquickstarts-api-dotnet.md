@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/14/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2e93a8340699d1fcf68c53baa87990e799bc933d
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 3283e7b0e0b7e20d4b8522f08ab2460504fa355f
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447583"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723431"
 ---
 # <a name="azure-active-directory-b2c-build-a-net-web-api"></a>Azure Active Directory B2C: .NET webes API készítése
 
@@ -39,17 +39,17 @@ A következő lépésben hozzon létre egy webes API-alkalmazást a B2C-címtár
 * Adjon meg egy alkalmazásazonosítót az **Alkalmazásazonosító URI** mezőben. Másolja át a teljes **Alkalmazásazonosító URI-t**. Erre később még szüksége lesz.
 * Adjon hozzá engedélyeket a **Közzétett hatókörök** menüből.
 
-## <a name="create-your-policies"></a>Szabályzatok létrehozása
+## <a name="create-your-user-flows"></a>A felhasználói folyamatok létrehozása
 
-Az Azure AD B2C-ben a felhasználói élményeket [szabályzatok](active-directory-b2c-reference-policies.md) határozzák meg. Létre kell hoznia egy házirendet az Azure AD B2C-vel való kommunikációhoz. Javasoljuk a kombinált regisztrálási/bejelentkezési házirend használatát a [házirendek áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md) leírtak szerint. A házirend létrehozásakor ügyeljen arra, hogy:
+Az Azure AD B2C felhasználói élményeket által meghatározott egy [felhasználói folyamat](active-directory-b2c-reference-policies.md). Szüksége lesz egy Azure AD B2C-vel folytatott kommunikációhoz felhasználói folyamat létrehozása. Javasoljuk a kombinált regisztrálási-regisztrálási vagy bejelentkezési felhasználói folyamata leírtak szerint a [felhasználói folyamat áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md). Ha a felhasználói folyamatot hoz létre, ügyeljen arra, hogy:
 
-* A házirendben válassza ki a **megjelenítendő nevet** és az egyéb regisztrációs attribútumokat.
-* Alkalmazási jogcímnek minden házirend esetén válassza ki a **megjelenítendő nevet** és az **objektumazonosítót**. Kiválaszthat egyéb jogcímeket is.
-* Az egyes házirendek létrehozása után másolja a házirend **nevét**. A szabályzat nevére később még szüksége lesz.
+* Válasszon **megjelenítendő név** és a felhasználói folyamat egyéb regisztrációs attribútumokat.
+* Válasszon **megjelenített név** és **Objektumazonosító** alkalmazási jogcímnek minden felhasználói folyamat. Kiválaszthat egyéb jogcímeket is.
+* Másolás a **neve** az egyes felhasználói folyamatok létrehozása után. A felhasználói interakciósorozat neve később szüksége lesz.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-A házirend sikeres létrehozása után készen áll az app elkészítésére.
+Miután létrehozta a felhasználói folyamat sikeres, készen áll az alkalmazás elkészítésére.
 
 ## <a name="download-the-code"></a>A kód letöltése
 
@@ -63,20 +63,20 @@ Miután letöltötte a mintakódot, nyissa meg a Visual Studio .sln fájlt a kez
 
 ### <a name="update-the-azure-ad-b2c-configuration"></a>Az Azure AD B2C konfiguráció frissítése
 
-A minta úgy van konfigurálva, hogy a bemutató bérlőnk házirendjeit és ügyfél-azonosítóját használja. Ha a saját bérlőjét szeretné használni, tegye a következőt:
+Ebben a mintában a felhasználói folyamatok és az ügyfél-azonosító, hogy a bemutató bérlőnk használatára van konfigurálva. Ha a saját bérlőjét szeretné használni, tegye a következőt:
 
 1. Nyissa meg a `web.config` fájlt a `TaskService` projektben, és a következőképpen cserélje le az értékeket:
     * Az `ida:Tenant` helyett szerepeljen a bérlő neve
     * Az `ida:ClientId` helyett szerepeljen a webes API-alkalmazás azonosítója
-    * Az `ida:SignUpSignInPolicyId` helyett szerepeljen a „regisztrálási vagy bejelentkezési” házirend neve
+    * `ida:SignUpSignInPolicyId` az a "Regisztrálási vagy bejelentkezési" felhasználói interakciósorozat neve
 
 2. Nyissa meg a `web.config` fájlt a `TaskWebApp` projektben, és a következőképpen cserélje le az értékeket:
     * Az `ida:Tenant` helyett szerepeljen a bérlő neve
     * Az `ida:ClientId` helyett szerepeljen a webapp alkalmazásazonosítója
     * Az `ida:ClientSecret` helyett szerepeljen a webapp titkos kulcsa
-    * Az `ida:SignUpSignInPolicyId` helyett szerepeljen a „regisztrálási vagy bejelentkezési” házirend neve
-    * Az `ida:EditProfilePolicyId` helyett szerepeljen a „profil szerkesztése” házirend neve
-    * Az `ida:ResetPasswordPolicyId` helyett szerepeljen a „Jelszó alaphelyzetbe állítása” házirend neve
+    * `ida:SignUpSignInPolicyId` az a "Regisztrálási vagy bejelentkezési" felhasználói interakciósorozat neve
+    * `ida:EditProfilePolicyId` az a "Profil szerkesztése" felhasználói interakciósorozat neve
+    * `ida:ResetPasswordPolicyId` az a "Jelszó visszaállítása" felhasználói interakciósorozat neve
     * Az `api:ApiIdentifier` helyett szerepeljen az „Alkalmazásazonosító URI”
 
 
@@ -169,7 +169,7 @@ public class TasksController : ApiController
 
 ### <a name="get-user-information-from-the-token"></a>Felhasználói adatok beolvasása a jogkivonatból
 
-A `TasksController` egy olyan adatbázisban tárolja a feladatokat, ahol minden feladathoz hozzá van rendelve egy felhasználó, aki a feladat „tulajdonosa”. A tulajdonos azonosítása a felhasználói **objektumazonosítóval** történik. (Ezért kellett az alkalmazás jogcímeként objektumazonosítót hozzáadnia minden házirendben.)
+A `TasksController` egy olyan adatbázisban tárolja a feladatokat, ahol minden feladathoz hozzá van rendelve egy felhasználó, aki a feladat „tulajdonosa”. A tulajdonos azonosítása a felhasználói **objektumazonosítóval** történik. (Ezért kellett Objektumazonosítót hozzáadnia az alkalmazást az összes felhasználói folyamat jogcím.)
 
 ```CSharp
 // Controllers\TasksController.cs
@@ -204,6 +204,6 @@ public IEnumerable<Models.Task> Get()
 
 Végezetül készítse el és futtassa a következőket: `TaskWebApp` és `TaskService`. Hozzon létre feladatokat a felhasználói feladatlistában, és figyelje meg, hogy azok megmaradnak a API-ban azután is, ha leállította, majd újraindította az adott ügyfelet.
 
-## <a name="edit-your-policies"></a>Házirendek szerkesztése
+## <a name="edit-your-user-flows"></a>A felhasználói folyamatok szerkesztése
 
-Miután az Azure AD B2C használatával biztonságossá tett egy API-t, kísérletezhet a bejelentkezési/regisztrálási szabályzattal, és megtekintheti ennek az API-ra gyakorolt hatásait (vagy a hatás hiányát). Módosíthatja a házirendekben az alkalmazás jogcímét és a webes API-n hozzáférhető felhasználói adatokat. Minden hozzáadott jogcím elérhető lesz a .NET MVC webes API számára a(z) `ClaimsPrincipal` objektumban az ebben a cikkben leírtak szerint.
+Után az Azure AD B2C által biztonságossá tett egy API-t, kísérletezhet a bejelentkezési-a vagy a regisztráláshoz felhasználói folyamatot, és megtekintheti a hatások (vagy hiányát) API. Az alkalmazás jogcímét a felhasználói folyamatokban, és módosíthatja a felhasználó adatait, amely elérhető a webes API-t. Minden hozzáadott jogcím elérhető lesz a .NET MVC webes API számára a(z) `ClaimsPrincipal` objektumban az ebben a cikkben leírtak szerint.

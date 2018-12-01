@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: cwatson
-ms.openlocfilehash: 6a070d9ebd46d117041276436107abcc958d58d4
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 670aafeb8eb107fc5970b70bfa85d7469c343483
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583737"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722853"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Az Azure-erőforrások foglalások kezelése
 
@@ -54,7 +54,7 @@ A Foglalás kezelési delegálása:
 2. Válassza ki **minden szolgáltatás** > **foglalás** lista foglalásokat, amely hozzáfér a.
 3. Válassza ki a foglalást, amelyet szeretne más felhasználókkal való hozzáférés delegálására.
 4. Válassza ki **hozzáférés-vezérlés (IAM)**.
-5. Válassza ki **hozzáadása** > **szerepkör** > **tulajdonosa**. Vagy, ha korlátozott hozzáférést szeretne, válassza ki egy másik szerepkör.
+5. Válassza ki **szerepkör-hozzárendelés hozzáadása** > **szerepkör** > **tulajdonosa**. Vagy, ha korlátozott hozzáférést szeretne, válassza ki egy másik szerepkör.
 6. Írja be a tulajdonosként hozzáadni kívánt felhasználó e-mail-címét.
 7. Válassza ki a felhasználót, majd válassza a **Mentés** lehetőséget.
 

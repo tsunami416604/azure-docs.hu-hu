@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: eeaa0e9a940f16c2416418959c98cd17e4816afc
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 1a9034d7cbc276f35c5f01b06f6973553222d1c4
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387633"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722377"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Az Azure Service Fabric rendszeres biztonsági mentési konfiguráció ismertetése
 
@@ -110,6 +110,7 @@ Biztonsági mentési szabályzat az alábbi konfigurációk áll:
             ```
 
         2. _Felhasználónév és jelszó segítségével történő védelmét fájlmegosztás_, a hozzáférés a fájlmegosztáshoz amennyiben a megadott felhasználóknak. Megosztás tárolási fájlspecifikáció teszi, hogy adja meg a másodlagos felhasználó nevét és a másodlagos jelszó fall visszaírt hitelesítő adatok megadása, abban az esetben, ha a felhasználónév elsődleges hitelesítés sikertelen és az elsődleges jelszó is biztosít. Ebben az esetben állítsa a következő mezők konfigurálása _fájlmegosztás_ -alapú biztonsági mentési tár.
+
             ```json
             {
                 "StorageKind": "FileShare",
@@ -125,6 +126,17 @@ Biztonsági mentési szabályzat az alábbi konfigurációk áll:
 > [!NOTE]
 > Győződjön meg arról, hogy a tárolómegbízhatóság megfelel-e vagy meghaladja a biztonsági mentési adatok megbízhatóságának követelményeket.
 >
+
+* **Adatmegőrzési házirend**: meghatározza a házirendet a beállított storage-ban biztonsági mentések megőrzési idejét. Csak az alapszintű adatmegőrzési szabályzat használata támogatott.
+    1. **Alapszintű adatmegőrzési**: A megőrzési házirend lehetővé teszi a biztonsági mentési fájlokat, amelyek nem szükséges eltávolításával optimális tárterület kihasználtsága biztosításához. `RetentionDuration` beállítása a azt az időtartományt, amelyhez a biztonsági mentések szükségesek őrzi meg a storage-ban adható meg. `MinimumNumberOfBackups` egy nem kötelező paraméter, győződjön meg arról, hogy a megadott számú biztonsági mentéseket mindig megőrzi függetlenül adható meg a `RetentionDuration`. Alábbi példa szemlélteti a konfiguráció a biztonsági mentések megőrzési idejét _10_ nap, és nem teszi lehetővé a alatt nyissa meg a biztonsági mentések száma _20_.
+
+        ```json
+        {
+            "RetentionPolicyType": "Basic",
+            "RetentionDuration" : "P10D",
+            "MinimumNumberOfBackups": 20
+        }
+        ```
 
 ## <a name="enable-periodic-backup"></a>Rendszeres biztonsági mentés engedélyezése
 Adatok biztonsági mentés követelményeinek teljesítéséhez biztonsági mentési házirend meghatározása, miután a biztonsági mentési szabályzat társítható megfelelően vagy egy _alkalmazás_, vagy _szolgáltatás_, vagy egy _partíció_.
@@ -178,6 +190,13 @@ Biztonsági mentési szabályzatok letiltható, ha nem kell adatainak biztonság
 * A biztonsági mentési szabályzat letiltása egy _szolgáltatás_ leállítja az összes rendszeres biztonsági mentések szolgálatának eredményeként terjesztése a biztonsági mentési szabályzatot, a partíciók a _szolgáltatás_.
 
 * A biztonsági mentési szabályzat letiltása egy _partíció_ összes rendszeres adatok biztonsági mentése történik a partíció, a biztonsági mentési szabályzat miatt leáll.
+
+* Egy entity(application/service/partition) biztonsági mentésének letiltása közben `CleanBackup` állítható _igaz_ beállított storage-ban biztonsági másolatok törléséről.
+    ```json
+    {
+        "CleanBackup": true 
+    }
+    ```
 
 ## <a name="suspend--resume-backup"></a>Felfüggeszteni és folytatni a biztonsági mentés
 Bizonyos helyzet kérhetik rendszeres biztonsági mentési adatok ideiglenes felfüggesztése. Ilyen esetben a követelmény függően felfüggesztése API is használható, biztonsági mentés egy _alkalmazás_, _szolgáltatás_, vagy _partíció_. Rendszeres biztonsági mentési felfüggesztése tranzitív az alkalmazás-hierarchia a pontról alkalmazásának részfa keresztül. 

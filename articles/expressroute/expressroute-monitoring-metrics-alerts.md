@@ -5,22 +5,26 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 11/30/2018
 ms.author: cherylmc
-ms.openlocfilehash: fcdaf10ad30cee0e7b79304ff21d67560522875c
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 90735ac04c95ee3d270853c18eddebd3f11dd8c1
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377797"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725955"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Az ExpressRoute monitorozása, mérőszámai és riasztásai
 
- Ez a cikk segítségével megismerheti az ExpressRoute monitorozása, mérőszámok és riasztások. Az Azure Monitor riasztási, az összes Azure diagnosztikai naplók egy helyen érheti minden metrika.
+Ez a cikk segítségével megismerheti az ExpressRoute monitorozása, mérőszámok és riasztások. Az Azure Monitor riasztási, az összes Azure diagnosztikai naplók egy helyen érheti minden metrika.
+ 
+>[!NOTE]
+>Használatával **klasszikus metrikák** nem ajánlott. 
+>
 
 ## <a name="circuit-metrics"></a>Kapcsolatcsoport metrikák
 
-Keresse meg a **metrikák**, az ExpressRoute lapon a kapcsolatcsoporthoz, amelyet figyelni szeretne. A **figyelés** megtekintheti a **metrikák**. Válassza ki a BitsInPerSecond vagy BitsOutPerSecond, és ilyenkor az összesítést. Opcionálisan alkalmazhatja felosztása, amely megjelenik a metrika társviszony-létesítés típusa.
+Keresse meg a **metrikák**, az ExpressRoute lapon a kapcsolatcsoporthoz, amelyet figyelni szeretne. A **figyelés**, megtekintheti a **metrikák**. Válassza ki a BitsInPerSecond vagy BitsOutPerSecond, és ilyenkor az összesítést. Opcionálisan alkalmazhatja a felosztás amely jelennek meg a metrika társviszony-létesítés típusa.
 
 ![Kapcsolatcsoport metrikák](./media/expressroute-monitoring-metrics-alerts/ermetricspeering.jpg)
 
@@ -42,11 +46,10 @@ Magánhálózati, nyilvános és a Microsoft a társviszony-létesítés bit/má
 
 2. Kattintson a **+ cél kiválasztása** , és válassza ki az ExpressRoute-átjáró kapcsolati erőforrás.
 
-  ![cél]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
+  ![Cél]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
 3. A riasztás részleteinek megadása.
 
   ![Műveletcsoport](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
-
 
 4. Határozza meg, és adja hozzá a műveleti csoport.
 
@@ -61,9 +64,10 @@ Magánhálózati, nyilvános és a Microsoft a társviszony-létesítés bit/má
 Az a **riasztási feltételek**, választhat **tevékenységnapló** a jel típusa, és válassza ki a jel.
 
   ![egy másik](./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg)
-
+  
 ## <a name="next-steps"></a>További lépések
-* Az ExpressRoute-kapcsolat konfigurálása.
+
+Az ExpressRoute-kapcsolat konfigurálása.
   
   * [Kapcsolatcsoport létrehozása és módosítása](expressroute-howto-circuit-arm.md)
   * [Társhálózati konfiguráció létrehozása és módosítása](expressroute-howto-routing-arm.md)

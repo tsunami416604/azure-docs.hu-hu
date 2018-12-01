@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 8295fb58bdf92ca8688f5f7b6270dc1b48632a73
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 37932dc9d4e96ee31ee0b8adf1e19fc779b5c94e
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057131"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722870"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Application Insights .NET SDK-val egyéni műveletek követése
 
@@ -171,7 +170,7 @@ public async Task Enqueue(string payload)
 }
 ```
 
-#### <a name="process"></a>Folyamat
+#### <a name="process"></a>Feldolgozás
 ```csharp
 public async Task Process(BrokeredMessage message)
 {
@@ -336,7 +335,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
 }
 ```
 
-#### <a name="process"></a>Folyamat
+#### <a name="process"></a>Feldolgozás
 
 A következő példában egy bejövő üzenet követi nyomon módon hasonlóan a bejövő HTTP-kérelem:
 

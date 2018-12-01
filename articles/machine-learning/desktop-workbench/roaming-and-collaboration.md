@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 11/16/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 07a9d46dff17b43d01a6b411292cf240c32476f3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0117a08c76288cda25da2196ec18433b3678e24b
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983718"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724638"
 ---
 # <a name="roaming-and-collaboration-in-azure-machine-learning-workbench"></a>Barangolás és együttműködés az Azure Machine Learning Workbenchben
 
@@ -124,9 +124,9 @@ Egy távoli Git-adattárat a projekthez tartozó megosztásával Alice, Bob és 
 ### <a name="use-the-azure-portal-to-add-users"></a>Felhasználók hozzáadása az Azure portal használatával
 <a name="portal"></a>
 
-Machine Learning-Kísérletezési fiók munkaterületeket és projekteket az Azure Resource Manager-erőforrásokat. Ha szerepköröket, használhatja a **hozzáférés-vezérlés** hivatkozásra a [az Azure portal](https://portal.azure.com). 
+Machine Learning-Kísérletezési fiók munkaterületeket és projekteket az Azure Resource Manager-erőforrásokat. Ha szerepköröket, használhatja a **hozzáférés-vezérlés (IAM)** hivatkozásra a [az Azure portal](https://portal.azure.com). 
 
-Keresse meg az, hogy a felhasználók hozzáadása a kívánt erőforrást a **összes erőforrás** megtekintése. Válassza ki a **hozzáférés-vezérlés (IAM)** hivatkozásra, és válassza ki **felhasználók hozzáadása**. 
+Keresse meg az, hogy a felhasználók hozzáadása a kívánt erőforrást a **összes erőforrás** megtekintése. Válassza ki a **hozzáférés-vezérlés (IAM)** hivatkozásra, és válassza ki **szerepkör-hozzárendelés hozzáadása**. 
 
 <img src="./media/roaming-and-collaboration/iam.png" width="320px">
 

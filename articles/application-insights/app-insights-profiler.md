@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: b0fc10099f1388169146d90efcd7c20dcbe8df27
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 2f726c9c70e6e46ad2e82e9d6f15dae2c9d3d008
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164948"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724689"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profil élő Azure-webalkalmazások az Application insights segítségével
 

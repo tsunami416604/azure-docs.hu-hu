@@ -10,17 +10,16 @@ ms.assetid: a831fd90-3f55-423b-8b20-ccbaaac2ca75
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 497b5b9d33ab2dea37e1017fa2d5bf2d0db66a5f
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 881188e7dab0e50b5bc62258c87cb546020c8410
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007671"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723584"
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Adatokat küldeni a Log Analytics és a HTTP-adatgyűjtő API (nyilvános előzetes verzió)
 Ez a cikk bemutatja, hogyan adatokat küldeni a Log Analytics REST API-ügyfél-nak a HTTP-adatgyűjtő API használatával.  Ismerteti, hogyan formázza a parancsfájl vagy az alkalmazások által gyűjtött adatokat, foglalja bele egy kérelmet, és rendelkezik a Log Analytics által engedélyezett kérelmet.  A példák a PowerShell, a C# és Python.
@@ -98,7 +97,7 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 
 A következő szakaszokban a mintákat hozhat létre az engedélyeztetési fejléc mintakód rendelkezik.
 
-## <a name="request-body"></a>Kérelem törzse
+## <a name="request-body"></a>A kérés törzse
 Az üzenet törzse JSON formátumban kell lennie. A tulajdonság név-érték párok az egy vagy több rekord a következő formátumban kell tartalmaznia:
 
 ```json
@@ -179,7 +178,7 @@ A HTTP-állapotkód: 200, az azt jelenti, hogy a kérelem érkezett-e a feldolgo
 
 Ez a táblázat felsorolja, amely a szolgáltatás előfordulhat, hogy vissza állapotkódok teljes körét:
 
-| Kód | Állapot | Hibakód | Leírás |
+| Kód | status | Hibakód | Leírás |
 |:--- |:--- |:--- |:--- |
 | 200 |OK | |A kérelem sikeresen elfogadva. |
 | 400 |Hibás kérés |InactiveCustomer |A munkaterület le van zárva. |
@@ -472,4 +471,4 @@ post_data(customer_id, shared_key, body, log_type)
 ## <a name="next-steps"></a>További lépések
 - Használja a [Log Search API](log-analytics-queries.md) adatokat lekérni a Log Analytics-adattárban.
 
-- Tudjon meg többet [adatfolyamat létrehozása a Data Collector API-val](log-analytics-create-pipeline-datacollector-api.md) Logic Apps-munkafolyamatot a Log Analytics használatával.
+- Tudjon meg többet [adatfolyamat létrehozása a Data Collector API-val](../azure-monitor/platform/create-pipeline-datacollector-api.md) Logic Apps-munkafolyamatot a Log Analytics használatával.

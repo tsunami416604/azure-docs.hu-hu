@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 38839379f584b40cdbefad3e4cbb3bc47881c9a7
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 1afd98026a2aad552258b636ba078ca4f9bd2d58
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094595"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723142"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Egy Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz
 Csatlakozás az Azure-SSIS integrációs modulját (IR) az Azure virtual Networkhöz a következő esetekben: 
@@ -198,19 +198,21 @@ Virtuális hálózat konfigurálása előtt, akkor csatlakozhat egy Azure-SSIS i
 
 1. Csatlakozás **MicrosoftAzureBatch** , a **virtuális gépek hagyományos Közreműködője** szerepkör a virtuális hálózathoz. 
 
-    a. Válassza ki **hozzáférés-vezérlés (IAM)** a bal oldali menüben, és válassza a **Hozzáadás** az eszköztáron. 
+    a. Válassza ki **hozzáférés-vezérlés (IAM)** elemre a bal oldali menüben, majd válassza a **szerepkör-hozzárendelések** fülre. 
 
     !["Hozzáférés-vezérlés" és "Hozzáadása" gomb](media/join-azure-ssis-integration-runtime-virtual-network/access-control-add.png)
 
-    b. Az a **engedélyek hozzáadása** lapon jelölje be **virtuális gépek hagyományos Közreműködője** a **szerepkör**. Beillesztés **ddbf3205-c6bd-46ae-8127-60eb93363864** a a **kiválasztása** mezőbe, majd válassza ki **a Microsoft Azure Batch** találatok listájából. 
+    b. Válassza ki **szerepkör-hozzárendelés hozzáadása**.
 
-    !["Engedélyek hozzáadása" lapon a keresési eredmények](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
+    c. Az a **szerepkör-hozzárendelés hozzáadása** lapon jelölje be **virtuális gépek hagyományos Közreműködője** a **szerepkör**. Beillesztés **ddbf3205-c6bd-46ae-8127-60eb93363864** a a **kiválasztása** mezőbe, majd válassza ki **a Microsoft Azure Batch** találatok listájából. 
 
-    c. Válassza ki **mentése** a beállítások mentéséhez, majd zárja be a lapot. 
+    ![A "Szerepkör-hozzárendelés hozzáadása" lapon a keresési eredmények](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
+
+    d. Válassza ki **mentése** a beállítások mentéséhez, majd zárja be a lapot. 
 
     ![Hozzáférési beállítások mentése](media/join-azure-ssis-integration-runtime-virtual-network/save-access-settings.png)
 
-    d. Győződjön meg arról, hogy **a Microsoft Azure Batch** a közreműködők listája. 
+    e. Győződjön meg arról, hogy **a Microsoft Azure Batch** a közreműködők listája. 
 
     ![Azure Batch-hozzáférés ellenőrzése](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-in-list.png)
 

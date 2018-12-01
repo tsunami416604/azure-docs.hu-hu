@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 1d49403ec04b2ec35291869385c316cb5ab3b0da
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 8b2f16f45be1d095e9be8042611de328af36f064
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044909"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724060"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Az Azure Portalon az Azure Data Lake Analytics kezelése
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -111,7 +111,7 @@ A Data Lake Analytics-fejlesztő szerepkör használatával a Data Lake Analytic
 ### <a name="add-users-or-security-groups-to-a-data-lake-analytics-account"></a>Felhasználók vagy biztonsági csoportok hozzáadása a Data Lake Analytics-fiók
 
 1. Az Azure Portalon nyissa meg a Data Lake Analytics-fiók.
-2. Kattintson a **hozzáférés-vezérlés (IAM)** > **Hozzáadás**.
+2. Kattintson a **hozzáférés-vezérlés (IAM)** > **szerepkör-hozzárendelés hozzáadása**.
 3. Válasszon ki egy szerepkört.
 4. Felhasználó hozzáadása.
 5. Kattintson az **OK** gombra.

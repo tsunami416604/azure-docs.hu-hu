@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2354bf02b47c9fbc74dbc0dab07e30ca321279cf
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: f517754a8076fc18ed29f7db49f6ff9bfc6c7b3d
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669916"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725760"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C felhasználói fiókok áttekintése
 
@@ -25,7 +25,7 @@ A következő típusú fiókok érhetők el:
 
 - **Munkahelyi fiók** – munkahelyi fiókkal a bérlőben lévő erőforrások eléréséhez, és a egy rendszergazda szerepkör segítségével felügyelheti a bérlők.
 - **Vendégfiók** -Vendég fiókkal csak Microsoft-fiókkal vagy egy használható alkalmazások hozzáféréséhez vagy felügyeletéhez a bérlő Azure Active Directory-felhasználó lehet. 
-- **Felhasználói fiók** – végfelhasználói fiók létrejön egy regisztrálási szabályzatot az Azure AD B2C alkalmazások végigkövetésével vagy Azure AD Graph API-val, és a felhasználók számára, hogy az Azure AD B2C-vel regisztrált alkalmazások. 
+- **Felhasználói fiók** -egy felhasználói fiók jön létre az Azure AD B2C alkalmazások-előfizetés felhasználói folyamat végigkövetésével vagy Azure AD Graph API-val, és a felhasználók számára, hogy az Azure AD B2C-vel regisztrált alkalmazások. 
 
 ## <a name="work-account"></a>Munkahelyi fiók
 
@@ -73,7 +73,7 @@ Is használhatja a [Microsoft Graph API](https://developer.microsoft.com/en-us/g
 
 ## <a name="consumer-user"></a>Fogyasztói felhasználó
 
-A fogyasztói felhasználó bejelentkezhet az Azure AD B2C által védett alkalmazások, de például az Azure Portalt Azure erőforrásai nem érhetők el.  A fogyasztói felhasználó használhatja a helyi vagy összevont partnerek, mint a Facebook és Twitter. A felhasználói fiók használatával hozták létre a [regisztrálási vagy bejelentkezési szabályzat](../active-directory-b2c/active-directory-b2c-reference-policies.md).
+A fogyasztói felhasználó bejelentkezhet az Azure AD B2C által védett alkalmazások, de például az Azure Portalt Azure erőforrásai nem érhetők el.  A fogyasztói felhasználó használhatja a helyi vagy összevont partnerek, mint a Facebook és Twitter. A felhasználói fiók használatával hozták létre a [regisztrálási vagy bejelentkezési felhasználói folyamata](../active-directory-b2c/active-directory-b2c-reference-policies.md).
 
 A végfelhasználói felhasználói fiók létrehozásakor az egyéni felhasználói attribútumok használatával gyűjtött adatokat is megadhat. További információkért lásd: [egyéni attribútumok megadása az Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-reference-custom-attr.md).
 

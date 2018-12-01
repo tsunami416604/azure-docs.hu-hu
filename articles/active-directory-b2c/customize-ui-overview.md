@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/30/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: cec9e5bfea16e5ba11f8cd7324acf15188fb907a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: b5d3703f052ef47bcbacf0be04072357ee5b9986
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634061"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722598"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Tudnivalók az Azure Active Directory B2C felhasználói felület testreszabása
 
@@ -23,13 +23,13 @@ Lehetővé teszi, hogy saját arculat és testre szabhatja a felhasználói fel�
 
 Esetén ezek a tapasztalatok, attól függően, az igényeinek, hogy a felhasználói felület testreszabása az alkalmazás különböző módon. Példa:
 
-- Ha használ [beépített szabályzatok](active-directory-b2c-reference-policies.md) regisztrálási vagy bejelentkezési, a jelszó alaphelyzetbe állítása, illetve profilszerkesztést funkciókat az alkalmazásban, használja a [a felhasználói felület testreszabása az Azure Portalon](tutorial-customize-ui.md).
+- Ha használ [felhasználói folyamatok](active-directory-b2c-reference-policies.md) regisztrálási vagy bejelentkezési, a jelszó alaphelyzetbe állítása, illetve profilszerkesztést funkciókat az alkalmazásban, használja a [a felhasználói felület testreszabása az Azure Portalon](tutorial-customize-ui.md).
 - Ha Ön biztosítani a bejelentkezési csak, a hozzájuk tartozó jelszó-visszaállítási oldalra, és ellenőrzési e-mailt küld, használja a testreszabási lépéseket, amelyeket egy [az Azure AD bejelentkezési oldal](../active-directory/fundamentals/customize-branding.md).
 - Ha az ügyfelek kipróbálják, szerkesztheti a profilját, mielőtt bejelentkeznek, a rendszer átirányítja egy oldal, testre szabhatja az Azure AD bejelentkezési oldal testreszabása használt lépésekben.
 - Használata [egyéni szabályzatok](active-directory-b2c-overview-custom.md) adnia regisztrálási vagy bejelentkezési, a jelszót alaphelyzetbe állítása, illetve -profilszerkesztést az alkalmazásban, használhatja [házirendfájljait testreszabni a felhasználói Felületet](active-directory-b2c-ui-customization-custom.md).
 - Ha meg kell adnia egy ügyfél döntés a dinamikus tartalmak, használhatja a [egyéni szabályzatot, amely módosíthatja lapon tartalom](active-directory-b2c-ui-customization-custom-dynamic.md) függően egy lekérdezési karakterláncban elküldött paraméter. Például a háttérkép, az Azure AD B2C-vel regisztrálási vagy bejelentkezési oldalon megváltozik, egy paramétert, amely adja át a webes vagy mobilalkalmazás alapján.
 
-Az Azure AD B2C az ügyfél böngészőjében kódja fut, és egy modern néven ismert megközelítés [eltérő eredetű erőforrások megosztása (CORS)](http://www.w3.org/TR/cors/). Futásidőben a tartalom betöltése a házirendben megadott URL-címről. Különböző URL-eket különböző oldalain adhatja meg. Tartalom betöltését a URL-CÍMÉT, miután egy HTML-részlet beszúrni az Azure AD B2C-ből, és ezután megjelenik, az ügyfél és az egyesítés.
+Az Azure AD B2C az ügyfél böngészőjében kódja fut, és egy modern néven ismert megközelítés [eltérő eredetű erőforrások megosztása (CORS)](http://www.w3.org/TR/cors/). Tartalom futásidőben, be van töltve a felhasználói folyamat vagy szabályzat megadott URL-címről. Különböző URL-eket különböző oldalain adhatja meg. Tartalom betöltését a URL-CÍMÉT, miután egy HTML-részlet beszúrni az Azure AD B2C-ből, és ezután megjelenik, az ügyfél és az egyesítés.
 
 A Kezdés előtt tekintse át a következő útmutatást:
 
@@ -118,6 +118,6 @@ Példák testreszabási, töltse le, majd tekintse át a [sablonfájlokat minta]
 
 ## <a name="next-steps"></a>További lépések
 
-- Beépített szabályzatokat használ, ha az oktatóanyag a felhasználói felület testreszabása elkezdheti: [az alkalmazásait az Azure Active Directory B2C, a felhasználói felület testreszabása](tutorial-customize-ui.md).
+- Felhasználói folyamatok használja, ha az oktatóanyag a felhasználói felület testreszabása elkezdheti: [az alkalmazásait az Azure Active Directory B2C, a felhasználói felület testreszabása](tutorial-customize-ui.md).
 - Ha egyéni szabályzatokat használ, az a cikk a felhasználói felület testreszabása elkezdheti: [egyéni szabályzat használata az Azure Active Directory B2C az alkalmazás a felhasználói felület testreszabása](active-directory-b2c-ui-customization-custom.md).
 

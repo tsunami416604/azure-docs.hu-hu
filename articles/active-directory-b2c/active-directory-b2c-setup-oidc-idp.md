@@ -7,26 +7,26 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/19/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 30bc3e0f1a8230bdbcad653c8c2db7dc078629bb
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 49f3f80832597b231aec812a4c1613da9897f72a
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47180348"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722445"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés a OpenID-kapcsolattal az Azure Active Directory B2C beállítása
 
 >[!NOTE]
 > Ez a funkció jelenleg nyilvános előzetes verzióban. Az éles környezetben ne használja a szolgáltatást.
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) , amelyek segítségével biztonságosan bejelentkezhetnek a felhasználók OAuth 2.0-ra épülő, hitelesítési protokoll. A legtöbb Identitásszolgáltatók, például ezt a protokollt használó [Azure ad-ben](active-directory-b2c-setup-oidc-azure-active-directory.md), az Azure AD B2C-ben támogatottak. Ez a cikk bemutatja, hogyan adhat hozzá egyéni OpenID Connect Identitásszolgáltatók, a beépített szabályzatokat.
+[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) , amelyek segítségével biztonságosan bejelentkezhetnek a felhasználók OAuth 2.0-ra épülő, hitelesítési protokoll. A legtöbb Identitásszolgáltatók, például ezt a protokollt használó [Azure ad-ben](active-directory-b2c-setup-oidc-azure-active-directory.md), az Azure AD B2C-ben támogatottak. Ez a cikk bemutatja, hogyan adhat hozzá egyéni OpenID Connect Identitásszolgáltatók be a felhasználói folyamatok.
 
 ## <a name="add-the-identity-provider"></a>Identitásszolgáltató hozzáadása
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
 2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
 3. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
 4. Válassza ki **Identitásszolgáltatók**, és kattintson a **Hozzáadás**.

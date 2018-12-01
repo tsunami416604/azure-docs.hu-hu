@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: bba15ee901e7ccecc513f526339bde2fcc6277fa
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 7780c10233a0ce256ee6e9015f40ea789516c25b
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142457"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726899"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profil éles üzemi alkalmazások az Azure-ban az Application insights segítségével
 ## <a name="enable-profiler-for-your-application"></a>Profiler engedélyezése az alkalmazáshoz
@@ -38,7 +37,7 @@ Profiler futó helyi hivatalosan nem támogatott, de van néhány [megpróbálha
 
 ## <a name="view-profiler-data"></a>A profiler-adatok megtekintése
 
-Ahhoz, hogy a profiler nyomkövetések feltölteni az alkalmazás aktívan kezeli a kérelmeket. Ha egy kísérlet, a web app használatával hozhat létre kérelmek [Application Insights Teljesítménytesztelés](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test). Ha engedélyezte a Profiler újonnan, egy rövid terhelési teszt is futtathatja. A terhelési teszt futása közben nyomja le az **profil most** gombra a [ **Profiler beállítások lapon**](). Ha profiler már fut, a rendszer véletlenszerűen profilt körülbelül óránként egyszer, és a egy időtartama két perc. Ha az alkalmazás olyan kérelmeket kezel, Profiler feltölti nyomkövetések óránként.
+Ahhoz, hogy a profiler nyomkövetések feltölteni az alkalmazás aktívan kezeli a kérelmeket. Ha egy kísérlet, a web app használatával hozhat létre kérelmek [Application Insights Teljesítménytesztelés](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test). Ha engedélyezte a Profiler újonnan, egy rövid terhelési teszt is futtathatja. A terhelési teszt futása közben nyomja le az **profil most** gombra a [ **Profiler beállítások lapon**](app-insights-profiler-settings.md#profiler-settings-page). Ha profiler már fut, a rendszer véletlenszerűen profilt körülbelül óránként egyszer, és a egy időtartama két perc. Ha az alkalmazás olyan kérelmeket kezel, Profiler feltölti nyomkövetések óránként.
 
 Miután az alkalmazás fogad a forgalom egy része, és a profiler időm van a trances feltölteni, rendelkeznie kell a nyomkövetések megtekintéséhez. Ez a folyamat 5-10 percet is igénybe vehet. Nyomkövetések megtekintéséhez nyissa meg a **teljesítmény** ablaktáblán válassza **igénybe műveletek** a profiler hívásláncai megtekintése, majd válassza a **Profiler nyomkövetések** gombra.
 

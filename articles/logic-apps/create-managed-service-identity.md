@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 10/05/2018
-ms.openlocfilehash: 84529e1097678ba7a039ffaeec57a9293c93dafd
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 19e6693de673eae6fe0b885580975c4cefc35d60
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229639"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725148"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Felügyelt identitások Azure Logic Apps-erőforrások eléréséhez és hitelesítéséhez
 
@@ -128,13 +128,13 @@ Hozzáférés biztosítása a logikai alkalmazás alapértelmezett felügyelt id
 
 1. Az Azure Portalon lépjen az Azure-erőforrás, a felügyelt identitás hozzáférést hozzárendelni kívánt. 
 
-1. Az erőforrás menüben válassza ki a **hozzáférés-vezérlés (IAM)**, és válassza a **Hozzáadás**. 
+1. Az erőforrás menüben válassza ki a **hozzáférés-vezérlés (IAM)**, és válassza a **szerepkör-hozzárendelés hozzáadása**. 
 
-   ![Engedélyek hozzáadása](./media/create-managed-service-identity/add-permissions-logic-app.png)
+   ![Szerepkör-hozzárendelés hozzáadása](./media/create-managed-service-identity/add-permissions-logic-app.png)
 
-1. A **engedélyek hozzáadása**, jelölje be a **szerepkör** az identitást használni szeretne. 
+1. A **szerepkör-hozzárendelés hozzáadása**, jelölje be a **szerepkör** az identitást használni szeretne. 
 
-1. Az a **rendelhet hozzáféréseket** tulajdonság, jelölje be **az Azure AD-felhasználó, csoport vagy alkalmazás**, ha még nem lenne kiválasztva.
+1. Az a **rendelhet hozzáféréseket** tulajdonság, jelölje be **az Azure AD-felhasználó, csoport vagy szolgáltatásnév**, ha még nem lenne kiválasztva.
 
 1. Az a **kiválasztása** rendszertől kezdve a logikai alkalmazás nevét, az első karakter mezőben adja meg a logikai alkalmazás nevét. Amikor megjelenik a logikai alkalmazást, válassza ki a logikai alkalmazást.
 

@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.reviewer: pharring
 ms.author: mbullwin
-ms.openlocfilehash: 9d0cb566ffb8fbec4b99b0f0eeca79b21d1b0dde
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 2c5e99c16ed6ae0df9af4783fb6431edcbb6f100
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335129"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725403"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>A .NET-alkalmazások kivételeinek hibakeresési pillanatképei
 
@@ -202,7 +201,7 @@ Előfizetés-tulajdonost kell rendelni a `Application Insights Snapshot Debugger
 
 1. Keresse meg az Application Insights-erőforrást az Azure Portalon.
 1. Kattintson a **hozzáférés-vezérlés (IAM)**.
-1. Kattintson a **+ Hozzáadás** gombra.
+1. Kattintson a **+ szerepkör-hozzárendelés hozzáadása** gombra.
 1. Válassza ki **Application Insights Snapshot Debugger** származó a **szerepkörök** legördülő listából.
 1. Keresse meg, és adja meg a hozzáadni kívánt felhasználó nevét.
 1. Kattintson a **mentése** gombra kattintva adja hozzá a felhasználót a szerepkörhöz.

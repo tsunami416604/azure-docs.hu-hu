@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2ea9356f1292669f115d2bb482419435320f644c
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 1b07825bd3ff46267764467bba815c1097278084
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978825"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726287"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Az erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata konfigurálása az Azure AD B2C-vel
 
@@ -35,14 +35,17 @@ A következő folyamatok nem támogatottak:
 - **Kiszolgálók közötti**: az identity protection rendszer kell egy megbízható IP-címet a hívó (a natív ügyfél) a interakció részeként összegyűjtött. Kiszolgálóoldali API-hívással, csak a kiszolgáló IP-címet használja. Ha túllépi a sikertelen hitelesítések a dinamikus küszöbértéket, az identity protection rendszer azonosíthat egy ismétlődő IP-cím egy támadó.
 - **Bizalmas client flow**: az alkalmazás ügyfél-azonosító érvényességét, de az alkalmazás titkos nincs érvényesítve.
 
-##  <a name="create-a-resource-owner-policy"></a>Erőforrás tulajdonosának szabályzat létrehozása
+##  <a name="create-a-resource-owner-user-flow"></a>Erőforrás tulajdonosának felhasználói folyamat létrehozása
 
-1. Jelentkezzen be az Azure Portalon az Azure AD B2C-bérlő globális rendszergazdájaként.
-2. Váltson át az Azure AD B2C-bérlő, válassza ki a B2C-címtárat a portál jobb felső sarkában.
-3. A **házirendek**válassza **erőforrás-tulajdonosi szabályzatok**.
-4. Adjon meg egy nevet a házirend, például: *ROPC_Auth*, majd válassza ki **alkalmazásjogcímek**.
-5. Válassza ki az alkalmazását, például a szükséges alkalmazásjogcímek *megjelenítendő név*, *E-mail cím*, és *identitásszolgáltató*.
-6. Kattintson az **OK**, majd a **Létrehozás** gombra.
+1.  Jelentkezzen be az Azure Portalon az Azure AD B2C-bérlő globális rendszergazdájaként.
+2.  Váltson át az Azure AD B2C-bérlő, válassza ki a B2C-címtárat a portál jobb felső sarkában.
+3.  Kattintson a **felhasználói folyamatok**, és válassza ki **új felhasználói folyamat**.
+4.  Kattintson a **összes** lapot, és válasszon **erőforrás tulajdonosa**.
+5.  Adjon meg egy nevet a felhasználói folyamatot, például: *ROPC_Auth*.
+6.  A **alkalmazásjogcímek**, kattintson a **Továbbiak megjelenítése**.
+7.  Válassza ki az alkalmazáshoz, például a megjelenített név, E-mail-címét és identitásszolgáltató kell application jogcímeket.
+8.  Kattintson az **OK**, majd a **Létrehozás** gombra.
+9.  Kattintson a **felhasználói folyamat futtatása**.
 
    Ekkor megjelenik egy végpontot, például az ebben a példában:
 
@@ -57,9 +60,9 @@ A következő folyamatok nem támogatottak:
 4. Az összes többi értéket hagyja, és válassza ki **létrehozás**.
 5. Válassza ki az új alkalmazást, és jegyezze fel az Alkalmazásazonosítót későbbi használatra.
 
-## <a name="test-the-policy"></a>A házirend tesztelése
+## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
-A kedvenc API-fejlesztési alkalmazás használatával létrehozhat egy olyan API-hívás, és tekintse át a válasz lehet hibákat keresni a házirend. A POST-kérés törzse a következő táblázatban az információt az ilyen hívást össze:
+A kedvenc API-fejlesztési alkalmazás használatával létrehozhat egy olyan API-hívás, és tekintse át a válasz lehet hibákat keresni a felhasználói folyamat. A POST-kérés törzse a következő táblázatban az információt az ilyen hívást össze:
 - Cserélje le  *\<yourtenant.onmicrosoft.com >* a B2C-bérlő nevével.
 - Cserélje le  *\<B2C_1A_ROPC_Auth >* az erőforrás tulajdonosa hitelesítő adatok jelszóházirend teljes nevét.
 - Cserélje le  *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* való regisztrációját, az alkalmazás azonosítójával.

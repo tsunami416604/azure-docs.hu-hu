@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2018
 ms.author: terrylan
-ms.openlocfilehash: caab7e3d15f6d82ee4daf6eb343601ff849bfde5
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 6175ca26412dccf7ff6dfbce02df738ea8b6eb1a
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298778"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721544"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Összes bérlőre vonatkozó információk megjelenítése az Azure Security Centerben
 Ez a cikk használatának megkezdésébe vezeti be, amely az Azure Security Center biztosít előnyök maximalizálása és több művelet végrehajtásával. Ezek a műveletek végrehajtása lehetővé teszi, hogy nagyobb láthatóságot érhet el az összes Azure-előfizetések vannak kapcsolva, az Azure Active Directory-bérlőhöz, és hatékonyan kezelheti a szervezet biztonsági állapotáról, ipari méretekben több biztonsági házirendek alkalmazásával előfizetések aggregative módon.
@@ -93,13 +93,16 @@ Az információk megjelenítése az összes előfizetés, a bérlői rendszergaz
 #### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>Rendeljen RBAC-szerepköröket a felhasználók számára az Azure Portalon: 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
-2. Felügyeleti csoportok megtekintéséhez jelölje ki **minden szolgáltatás** az Azure főmenüjében válassza **felügyeleti csoportok**.
-3.  Válasszon ki egy felügyeleti csoportot, és kattintson a **részletek**.
+1. Felügyeleti csoportok megtekintéséhez jelölje ki **minden szolgáltatás** az Azure főmenüjében válassza **felügyeleti csoportok**.
+1.  Válasszon ki egy felügyeleti csoportot, és kattintson a **részletek**.
 
     ![Felügyeleti csoportok részletek képernyőképe](./media/security-center-management-groups/management-group-details.PNG)
  
-4. Kattintson a **hozzáférés-vezérlés (IAM)** majd **Hozzáadás**.
-5. Válassza ki a szerepkör hozzárendelése és a felhasználót, majd kattintson a **mentése**.  
+1. Kattintson a **hozzáférés-vezérlés (IAM)** majd **szerepkör-hozzárendelések**.
+
+1. Kattintson a **szerepkör-hozzárendelés hozzáadása**.
+
+1. Válassza ki a szerepkör hozzárendelése és a felhasználót, majd kattintson a **mentése**.  
    
    ![Biztonsági olvasó szerepkör képernyőfelvétel hozzáadása](./media/security-center-management-groups/asc-security-reader.png)
 

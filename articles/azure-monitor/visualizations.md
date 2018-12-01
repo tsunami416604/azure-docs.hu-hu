@@ -9,16 +9,15 @@ documentationcenter: azure-monitor
 ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: 4200accee94840a8a4455308f24a857fd5d7034a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b2011003306e72ac9fb243b640e388e6f3d5e7d3
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632976"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722207"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Az Azure Monitor az adatok megjelenítése
 Ez a cikk az Azure Monitor-ban tárolt adatok megjelenítése a választható módszerek összegzését tartalmazza. Ez magában foglalja [mérőszámok az Azure-metrikagyűjtéshez áruházban](../azure-monitor/platform/data-collection.md#metrics) és [adatok Log Analytics naplóbeli](../azure-monitor/platform/data-collection.md#logs). 

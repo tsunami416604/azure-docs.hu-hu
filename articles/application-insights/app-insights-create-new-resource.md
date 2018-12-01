@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy új Azure Application Insights-erőforrást |} Microsoft Docs
-description: Manuálisan állítsa be az Application Insights egy új élő alkalmazás figyelését.
+title: Hozzon létre egy új Azure Application Insights-erőforrást |} A Microsoft Docs
+description: Manuálisan állítsa be az Application Insights új élő alkalmazások figyelését.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -9,65 +9,64 @@ ms.assetid: 878b007e-161c-4e36-8ab2-3d7047d8a92d
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: mbullwin
-ms.openlocfilehash: 59bb8564613e9a0cebda00c2c847283ff218b882
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 5b6afe4856e7e2c643a636f070937e81a2add2dd
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294717"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724230"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
-Azure Application Insights az alkalmazással kapcsolatos adatokat jeleníti meg a Microsoft Azure *erőforrás*. Új erőforrás létrehozása része ezért [Application Insights beállítása egy új alkalmazás figyelésére][start]. Sok esetben erőforrás létrehozása automatikusan úgy teheti az IDE. De néhány esetben hoz létre egy erőforrás manuálisan - például számára elkülönített erőforrások fejlesztési és éles az alkalmazás létrehozza.
+Az Azure Application Insights a Microsoft Azure-ban jeleníti meg az alkalmazással kapcsolatos adatok *erőforrás*. Ezért részét képezi egy új erőforrás létrehozását [Application Insights beállítása egy új alkalmazás figyelésére][start]. Sok esetben egy erőforrás létrehozását teheti meg automatikusan az ide. De bizonyos esetekben egy erőforrást manuálisan létrehozott – például számára elkülönített erőforrások fejlesztési és éles környezetben hoz létre az alkalmazás.
 
-Az erőforrás létrehozása után annak instrumentation kulcs lekérése, és azt használja az alkalmazás az SDK konfigurálására. Az erőforráskulcs telemetriai adatok az erőforrás hivatkozásokat tartalmaz.
+Miután létrehozta az erőforrást, a kialakítási kulcs lekérése, és használja, amely az alkalmazás az SDK konfigurálására. Az erőforrás-kulcsot a telemetria hivatkozik, az erőforrás.
 
-## <a name="sign-up-to-microsoft-azure"></a>Jelentkezzen a Microsoft Azure
-Ha még nem kapott egy [Microsoft fiókot, egy letöltése](http://live.com). (Például Outlook.com, OneDrive, Windows Phone vagy XBox Live-szolgáltatást használ, ha már rendelkezik Microsoft-fiók.)
+## <a name="sign-up-to-microsoft-azure"></a>Iratkozzon fel a Microsoft Azure
+Ha még nem kapott egy [Microsoft-fiók, most már igényelhet](http://live.com). (Ha használja a szolgáltatások, például az Outlook.com, onedrive vállalati verzió, Windows Phone vagy XBox Live, már Microsoft-fiókkal.)
 
-Emellett szükség van egy előfizetés [Microsoft Azure](http://azure.com). Ha a csapat vagy szervezet Azure-előfizetéssel, a tulajdonos adhat hozzá, a Windows Live ID azonosítójával. Most csak felszámított a valóban használt funkciókért. Az alapértelmezett alapszintű csomag lehetővé teszi a kísérleti díjmentesen használható bizonyos mennyiségű.
+Emellett az előfizetés [Microsoft Azure](http://azure.com). Ha a csapata vagy szervezete rendelkezik Azure-előfizetéssel, a tulajdonosa Önt is hozzáadhatja, használja a Windows Live ID azonosítójával. Csak díjkötelesek kell fizetni. Az alapértelmezett alapszintű csomag lehetővé teszi bizonyos mennyiségű kísérleti használata díjmentes.
 
-Előfizetés hozzáférést van, amikor jelentkezzen be az Application Insights részére, [ http://portal.azure.com ](https://portal.azure.com), és a Live ID bejelentkezési használja.
+Amikor egy előfizetéshez konfiguráltunk, jelentkezzen be az Application Insights jelenleg [ http://portal.azure.com ](https://portal.azure.com), és használhatja a bejelentkezni a Live ID.
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
-Az a [portal.azure.com](https://portal.azure.com), vegyen fel egy Application Insights-erőforrást:
+Az a [portal.azure.com](https://portal.azure.com), Application Insights-erőforrás hozzáadása:
 
 ![Kattintson az Új, majd az Application Insights lehetőségre](./media/app-insights-create-new-resource/01-new.png)
 
-* **Az alkalmazástípus** elemnél mi jelenik a áttekintése panel megnyitásához, és a tulajdonságok érhetők el a [metrika explorer][metrics]. Ha nem látja a típusú alkalmazást, válassza az általános.
+* **Az alkalmazástípus** érinti, amit lát az áttekintési panelen és az elérhető tulajdonságok [metrika explorer][metrics]. Ha nem látja az alkalmazás típusát, válassza az általános.
 * **Előfizetés** a fizetési fiók az Azure-ban.
-* **Erőforráscsoport** a könnyebb tulajdonságainak kezelésére van, például hozzáférés-vezérlést. Ha már létrehozott más Azure-erőforrások, válassza ki az új erőforrás helyezze ugyanabba a csoportba.
-* **Hely** van, ahol azt megőrizni az adatokat.
-* **Rögzítés az irányítópulton** helyezi az erőforrás egy gyors elérést csempe az Azure kezdőlapján. Ajánlott.
+* **Erőforráscsoport** van, a könnyebb kezeléséhez tulajdonságai, például hozzáférés-vezérlés. Ha már létrehozott egyéb Azure-erőforrások, válassza ki az új erőforrás helyezze ugyanabba a csoportba.
+* **Hely** van, ahol azt tartsa adatait.
+* **Rögzítés az irányítópulton** az erőforrás gyors elérést csempe az Azure kezdőlapjának helyezi. Ajánlott.
 
-Ha az alkalmazás létrehozása után egy új panelen nyitja meg. Ezen a panelen, ahol látható teljesítmény- és használati adatokat az alkalmazásra vonatkozó. 
+Az alkalmazás létrehozásakor egy új panel nyílik meg. Ezen a panelen, ahol látható teljesítmény- és használati adatokat az alkalmazása. 
 
-Kattintva visszatérhet, amikor legközelebb bejelentkezik Azure, keresse meg az alkalmazás gyors üzembe helyezési csempe a start táblán (kezdőképernyő). Vagy kattintson a Tallózás gombra, és keresse meg.
+Való visszatéréshez, amikor legközelebb belép az Azure, keresse meg az alkalmazás gyors üzembe helyezési csempe a kezdő táblán (kezdőképernyő). Vagy kattintson a Tallózás gombra kattintva keresse meg azt.
 
-## <a name="copy-the-instrumentation-key"></a>A rendszerállapot-kulcs másolása
-A instrumentation kulcs azonosítja az erőforrás, amelyet létrehozott. Esetleg szükség lenne rá, hogy biztosítsa az SDK-t a.
+## <a name="copy-the-instrumentation-key"></a>A kialakítási kulcs másolása
+A kialakítási kulcs azonosítja az erőforrást, Ön által létrehozott. Szüksége lesz rá, az SDK-t biztosíthat.
 
-![Essentials kattintson, majd a Instrumentation kulcsot, a CTRL + C](./media/app-insights-create-new-resource/02-props.png)
+![Kattintson az Essentials, a kialakítási kulcsot, a CTRL + C](./media/app-insights-create-new-resource/02-props.png)
 
-## <a name="install-the-sdk-in-your-app"></a>Az alkalmazás az SDK telepítése
-Telepítse az Application Insights SDK az alkalmazás. Ezt a lépést az alkalmazás fokozottan függ. 
+## <a name="install-the-sdk-in-your-app"></a>Az SDK telepítése az alkalmazásban
+Az Application Insights SDK telepítése az alkalmazásban. Ebben a lépésben a az alkalmazás erősen függ. 
 
-A rendszerállapot-kulcsot használ konfigurálása [az SDK-t, hogy az alkalmazás telepítése][start].
+Konfigurálja a rendszerállapotkulcsot használatával [az SDK az alkalmazás telepítése][start].
 
-Az SDK magában foglalja a telemetriai adatokat küldhet anélkül, hogy a kód írása modulban. Nyomon követheti a felhasználói műveletek vagy eseményadatokat részletesen, [API-t használó] [ api] saját telemetriai adatokat küldhet.
+Az SDK-t a globális modulok anélkül kód írása a telemetriai adatokat küldő tartalmaz. Felhasználói műveletek nyomon követése, vagy további részleteket a problémák diagnosztizálása [az API-val] [ api] saját telemetriát küldhet.
 
-## <a name="monitor"></a>Lásd: a telemetriai adatok
-Zárja be a gyors üzembe helyezési panel az alkalmazás panel az Azure-portálon való visszatéréshez.
+## <a name="monitor"></a>Telemetriai adatok megtekintése
+Zárja be a gyors üzembe helyezési panel térjen vissza alkalmazása paneljéhez az Azure Portalon.
 
-Kattintson a keresés csempe megtekintéséhez [diagnosztikai keresési][diagnostic], ahol az első események jelennek meg. 
+Kattintson a keresés csempét megtekintéséhez [diagnosztikai keresés][diagnostic], ahol az első események megjelennek. 
 
-Ha több adatot várt, kattintson a **frissítése** néhány másodperc múlva.
+Ha több adatot vár, kattintson a **frissítése** néhány másodperc múlva.
 
 ## <a name="creating-a-resource-automatically"></a>Erőforrás automatikus létrehozása
-Írhat egy [PowerShell-parancsfájl](app-insights-powershell.md) erőforrás automatikus létrehozása.
+Írhat egy [PowerShell-parancsprogram](app-insights-powershell.md) erőforrás automatikus létrehozásához.
 
 ## <a name="next-steps"></a>További lépések
 * [Irányítópult létrehozása](app-insights-dashboards.md)

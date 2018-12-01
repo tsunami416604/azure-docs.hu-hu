@@ -9,16 +9,15 @@ ms.assetid: 9f73b87f-be63-4847-88c8-368543acad8b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: 262d2511879047d1723d3b15c4c107b80ba1c297
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b9110222d52a6b4e14faf28d55ae9d10fa067949
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250340"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725777"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Hozzon létre egy Application Insights-erőforrást PowerShell használatával
 Ez a cikk bemutatja, hogyan automatizálhatja a létrehozása és frissítése [Application Insights](app-insights-overview.md) erőforrások automatikusan az Azure Resource Management használatával. Előfordulhat például, ekkor a buildelési folyamat részeként. Alapszintű Application Insights-erőforrás, valamint létrehozhat [rendelkezésre állási webes tesztek](app-insights-monitor-web-app-availability.md), állítsa be [riasztások](app-insights-alerts.md)állítsa be a [díjszabási séma](app-insights-pricing.md), és más Azure-erőforrások létrehozása .

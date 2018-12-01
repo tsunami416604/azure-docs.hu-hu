@@ -8,12 +8,12 @@ ms.author: sahubbar
 ms.date: 09/15/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 35db7bf87c7b72fc31d820c9058b1df8415bd553
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: ac5accc72369d811c0d36c4ef64cd8d523a061f3
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031305"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724502"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Hozzon létre és futtathat feladatokat az Azure IoT központi alkalmazás
 
@@ -56,8 +56,13 @@ Ez a szakasz bemutatja, hogyan hozhat létre és futtathat feladatokat. Az egyes
 
 Ha szeretné leállítani egy feladatot, amely jelenleg fut, kattintson a szeretné leállítani a futó feladat nevét. Válassza ki a **leállítása** gombra a panel. Láthatja, hogy a feladat állapota megváltozott megfelelően, hogy a feladat le lett állítva.
 
-> [!NOTE]
-> Ha egy feladat le lett állítva, nem indítható újra. A kívánt műveleteket és az eszközök, létre kell hoznia egy másik feladat.
+   ![Feladat leállítása](./media/howto-run-a-job/stopjob.png)
+
+### <a name="run-a-stopped-job"></a>A leállt feladat futtatása
+
+Ha szeretne futtatni egy feladatot, amely jelenleg le van állítva, kattintson a leállt feladatot, amely a futtatni kívánt nevét. Válassza ki a **futtatása** gombra a panel. Látni fogja, hogy a feladat állapota módosult-e, hogy fut a feladat most ismét megfelelően.
+
+   ![Feladat folytatása](./media/howto-run-a-job/resumejob.png)
 
 ## <a name="view-the-job-status"></a>A feladat állapotának megtekintéséhez
 

@@ -10,16 +10,15 @@ keywords: az Azure backup server; számítási feladatok; védelme számítási 
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 6/5/2018
 ms.author: markgal
-ms.openlocfilehash: 5092a677bcbeac179e26fa0591b6a1cfbc3263d4
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 14379d82b4b60c0ea555388ac61c9c7b8fbe9e4f
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576697"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721433"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server telepítése az Azure Stacken
 
@@ -325,7 +324,7 @@ Egy időben az Azure-előfizetést kell lennie a kifogástalan állapotban. Isme
 
 Ha már tudja, hogy az állapot, az Azure-kapcsolat és az Azure-előfizetést, az alábbi táblázat segítségével ismerje meg, hogy a művelet hatása a biztonsági mentési és visszaállítási funkció érhető el.
 
-| Kapcsolati állapota | Azure-előfizetés | Azure biztonsági mentés | Biztonsági mentés lemezre | Állítsa vissza az Azure-ból | Lemez visszaállítása |
+| Kapcsolati állapota | Azure-előfizetés | Azure biztonsági mentés | Biztonsági mentés lemezre | Állítsa vissza az Azure-ból | Visszaállítás lemezről |
 | --- | --- | --- | --- | --- | --- |
 | Csatlakozva |Aktív |Engedélyezve |Engedélyezve |Engedélyezve |Engedélyezve |
 | Csatlakozva |Elévült |Leállítva |Leállítva |Engedélyezve |Engedélyezve |

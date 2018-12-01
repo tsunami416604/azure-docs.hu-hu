@@ -9,17 +9,16 @@ editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 8337d6b353b6651a2699176813220ed7a7a0f879
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5010426db97a9cd404d265d1ea9b319877eda1de
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634795"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723958"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Azure-bA az OMS-portálon
 
@@ -92,7 +91,7 @@ A riasztási felügyeleti megoldások (riasztás típussal rendelkező rekordok)
 Az OMS mobilalkalmazást lesz sunsetted együtt az OMS-portálon. Helyett az OMS mobilalkalmazást az informatikai infrastruktúra, irányítópultok és mentett lekérdezések eléréséhez keresztül elérhető az Azure Portalon közvetlenül a böngészőből a mobil eszközére. Értesítéseket kaphat, konfigurálnia kell [Azure Action Groups általi](../monitoring-and-diagnostics/monitoring-action-groups.md) értesítések fogadásához, SMS vagy hanghívás formájában
 
 ## <a name="application-insights-connector-and-solution"></a>Application Insights-összekötő és megoldás
-[Application Insights-összekötő](log-analytics-app-insights-connector.md) lehetővé teszi az Application Insights adatokat importálnak a Log Analytics-munkaterületet. Az adatdeduplikáció volt szükség infrastruktúra és az alkalmazás adatok láthatóságának engedélyezése.
+[Application Insights-összekötő](../azure-monitor/platform/app-insights-connector.md) lehetővé teszi az Application Insights adatokat importálnak a Log Analytics-munkaterületet. Az adatdeduplikáció volt szükség infrastruktúra és az alkalmazás adatok láthatóságának engedélyezése.
 
 A támogatási [erőforrások közötti lekérdezések](log-analytics-cross-workspace-search.md), már nem létezik a szükséges adatokat. Mint ilyen a meglévő Application Insights-megoldáshoz elavulttá válik. Október kezdve nem lesz új Application Insights-erőforrások összekapcsolása a Log Analytics-munkaterületeket. Meglévő kapcsolatokat, és az irányítópultok továbbra is működik, a 2019. január 15-ig.
 

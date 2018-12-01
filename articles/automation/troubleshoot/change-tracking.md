@@ -3,18 +3,18 @@ title: Az Azure Change Tracking kapcsolatos hibák elhárítása
 description: Ez a cikk információkat a Change Tracking hibaelhárítása
 services: automation
 ms.service: automation
-ms.component: change-tracking
+ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 10/24/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2f2e66a1fab31ce6099ab426d6e8ce144e155efb
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 686a2c0ef0766176658d42d5ca53ea1ce6d3241c
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50088848"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722938"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory"></a>A Change Tracking és Inventory hibaelhárítása
 

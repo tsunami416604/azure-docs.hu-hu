@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 9d3d1e5ba7ebc7e2afefb31df3be9f2a8f43e153
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 34a72bb38c87902648ad92261a70d6545f10d0fa
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685395"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723686"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>A SUSE Linux Enterprise Server az Azure-ban támasztja beállítása
 
@@ -527,10 +527,10 @@ Rendelje hozzá az egyéni szerepkör "Linux időkorlát ügynök szerepkör", a
 1. Nyissa meg az összes erőforrás panelen
 1. Válassza ki a virtuális gépet, az első fürtcsomópontra
 1. Kattintson a hozzáférés-vezérlés (IAM)
-1. Kattintson az Add (Hozzáadás) parancsra
+1. Kattintson a szerepkör-hozzárendelés hozzáadása
 1. A "Linux időkorlát ügynök szerepkör" szerepkör kiválasztása
 1. Adja meg a fent létrehozott alkalmazás neve
-1. Kattintson az OK gombra
+1. Kattintson a Save (Mentés) gombra.
 
 Ismételje meg a fenti lépéseket a második fürtcsomópontra.
 

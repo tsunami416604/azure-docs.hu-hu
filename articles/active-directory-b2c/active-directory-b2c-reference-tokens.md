@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/16/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5ff4ddee3d8af15caf082be56a51b1aa0d36f02a
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 10de56ac8945be4bb0920f95774b469d283f575b
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339977"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721374"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Az Azure AD B2C: Jogkivonat-referencia
 
@@ -66,7 +66,7 @@ Az API-t egy hozzáférési jogkivonatot kap, amikor kell [érvényesíteni az a
 
 ### <a name="claims-in-id-and-access-tokens"></a>Azonosító és a hozzáférési jogkivonatokban lévő jogcímek
 
-Azure AD B2C-vel való használatakor, teljes mértékben szabályozhatják a jogkivonatok tartalmát. Konfigurálható [házirendek](active-directory-b2c-reference-policies.md) bizonyos csoportok felhasználói adatok küldése a jogcímek az alkalmazáshoz szükséges a műveletek. Ezek a jogcímek tartalmazhatják az alapvető tulajdonságok, például a felhasználó `displayName` és `emailAddress`. Emellett tartalmazhat [egyéni felhasználói attribútumok](active-directory-b2c-reference-custom-attr.md) definiálható a B2C-címtárban. Minden azonosító és a hozzáférési jogkivonatot kapott biztonsággal kapcsolatos jogcímek egy bizonyos készletét tartalmazza. Az alkalmazások használhatják ezeket a jogcímeket biztonságosan a felhasználók és a kérelmek hitelesítéséhez.
+Azure AD B2C-vel való használatakor, teljes mértékben szabályozhatják a jogkivonatok tartalmát. Konfigurálható [felhasználói folyamatok](active-directory-b2c-reference-policies.md) és egyéni szabályzatok felhasználói bizonyos adatkészletek küldjön a jogcímek az alkalmazáshoz szükséges a műveletek. Ezek a jogcímek tartalmazhatják az alapvető tulajdonságok, például a felhasználó `displayName` és `emailAddress`. Emellett tartalmazhat [egyéni felhasználói attribútumok](active-directory-b2c-reference-custom-attr.md) definiálható a B2C-címtárban. Minden azonosító és a hozzáférési jogkivonatot kapott biztonsággal kapcsolatos jogcímek egy bizonyos készletét tartalmazza. Az alkalmazások használhatják ezeket a jogcímeket biztonságosan a felhasználók és a kérelmek hitelesítéséhez.
 
 Vegye figyelembe, hogy a jogcímek, az ID jogkivonatok nem bármely adott sorrendben adja vissza. Emellett új jogcímeket költségektől azonosító-jogkivonatokat a tetszőleges időpontban. Az alkalmazás kell tilos megszüntetnie, ahogy új jogcímeket jelennek meg. Az alábbiakban szerepel az Azure AD B2C által kiadott azonosítója és a hozzáférési jogkivonatokban várhatóan jogcímeket. Bármilyen további jogcím szabályzatok határozzák meg. Eljárás, próbálja meg illessze be azt a mintául szolgáló azonosító jogkivonat jogcímeiben vizsgálatával [jwt.ms](https://jwt.ms). További részletek találhatók a [OpenID Connect specifikáció](http://openid.net/specs/openid-connect-core-1_0.html).
 

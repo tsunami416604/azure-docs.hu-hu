@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 90c434a37d3209e0c11a04425c337ec6930cfd00
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 85e6dc8d72588ff64c0119a6c1944755ce5686f4
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025259"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720932"
 ---
 <a name="azure-resource-manager-test-drive"></a>Az Azure Resource Manager kipróbálása
 =================================
@@ -382,15 +382,13 @@ Kattintson a Mentés gombra. Az utolsó lépés, hogy az Alkalmazásazonosítót
 Adott használjuk az alkalmazás üzembe helyezéséhez az előfizetéshez, hozzá kell adnunk a az alkalmazás az előfizetés közreműködője. A következő útmutatót: ezek a következők alatt:
 
 1. Az előfizetések panelen keresse meg, és válassza ki a megfelelő előfizetést, amely csak a Test Drive használja.
-2. Kattintson a hozzáférés-vezérlés (IAM).
-3. Kattintson a + adja hozzá az új panelen.
-4. A szerepkör közreműködői állítja be.
-5. Írja be az AAD-alkalmazás nevét, és válassza ki a szerepkört az AAD-alkalmazás.
-6. Kattintson a mentés.
-
-![Adjon hozzá egy új hozzáférés-vezérlés egyszerű](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
-
-![Az engedélyek hozzáadása](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. Kattintson a **hozzáférés-vezérlés (IAM)**.
+1. Kattintson a **szerepkör-hozzárendelések** fülre.  ![Adjon hozzá egy új hozzáférés-vezérlés egyszerű](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
+1. Kattintson a **szerepkör-hozzárendelés hozzáadása**.
+1. Állítsa be a szerepkört, **közreműködői**.
+1. Írja be az Azure AD-alkalmazás nevét, és válassza ki a szerepkör hozzárendelése az alkalmazást.
+    ![Az engedélyek hozzáadása](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. Kattintson a **Save** (Mentés) gombra.
 
 **Az Azure AD-Alkalmazáskulcs -** *szükséges* az utolsó mezőt, hogy a hitelesítési kulcs létrehozásához. A kulcsok adjon meg egy kulcs leírást az időtartamot, soha nem jár le, majd válassza a mentés. Ez **fontos** ne kelljen egy lejárt kulcs, amely megszakítja a test drive éles környezetben. Másolja ezt az értéket, és illessze be a Test Drive kötelező mező.
 

@@ -9,17 +9,16 @@ editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 8a73ad7c17710ab3e6e4ed41eced643ce9eb86dc
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 8fdf1bed0b75111abef4579565698f0c48b5d843
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042478"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724145"
 ---
 # <a name="viewing-and-analyzing-data-in-log-analytics"></a>A Log Analytics adatok megtekintésére és elemzésére
 Két lehetőség van a Log analytics szolgáltatásban tárolt adatok elemzése és az alkalmi elemzési lekérdezések létrehozásához az Azure Portalon érhető el. A lekérdezések létrehozásakor használja a fenti portálokhoz más funkciók, például a riasztások és az irányítópultok is használható.

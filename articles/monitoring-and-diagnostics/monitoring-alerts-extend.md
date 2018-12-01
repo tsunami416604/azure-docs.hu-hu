@@ -8,14 +8,18 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 8aabcf342cde6de9fd4438014c9c400b28470e9b
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 22f9375329a69aab000eb54e0b442959aef41766
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632670"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722912"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>A Log Analytics-riasztások kiterjesztése az Azure-riasztások
+
+> [!NOTE]
+> A Microsoft már az Azure nyilvános verzióihoz készült cikkben leírt folyamat befejeződött. Azonban továbbra is érvényes a US government verziók.  
+
 Nemrég, amíg az Azure Log Analytics a saját riasztási funkcióval rendelkezik, amely sikerült proaktívan kaphat értesítést a Log Analytics-adatok alapuló feltételek tartalmazza. A Microsoft Operations Management Suite portál riasztási szabályok felügyelt. A riasztások új kezelőfelülete mostantól integrálva van riasztási között különböző szolgáltatások, Microsoft Azure-ban. Érhető el **riasztások** alatt az Azure Monitor az Azure Portalon, és támogatja a vizsgálati naplók, metrikák, a riasztások és a Log Analytics és az Azure Application Insights-naplók. 
 
 ## <a name="benefits-of-extending-your-alerts"></a>A riasztások kiterjesztését az előnyei
@@ -28,10 +32,6 @@ Nincsenek számos előnnyel jár. a létrehozása és kezelése például a rias
 
 ## <a name="process-of-extending-your-alerts"></a>A riasztások kiterjesztésének folyamata
 Áttérés a riasztások a Log Analytics az Azure Alerts folyamata nem foglalja magában a riasztások definícióit, a lekérdezés vagy a konfiguráció semmilyen módon módosítása. Az egyetlen változás szükség, hogy az Azure-ban, akkor minden művelet végrehajtására műveletcsoport használatával. Műveletcsoportok már társítva a riasztás, ha azok szerepelnek a kiterjesztett az Azure-bA.
-
-> [!NOTE]
-> A Microsoft automatikusan kiterjeszti a nyilvános felhő példányát az Azure Alerts szolgáltatáshoz, a Log Analytics létrehozott riasztásokat egy ismétlődő sorozat, amíg befejeződik a 2018. május 14., kezdve. Ha problémába ütközik létrehozása [Műveletcsoportok](monitoring-action-groups.md), használjon [javítási lépések](monitoring-alerts-extend-tool.md#troubleshooting) beolvasni a Műveletcsoportok jönnek létre automatikusan. 2018. július 5-ig is használhatja ezeket a lépéseket. *Nem alkalmazható az Azure Government és a Log Analytics szuverén felhő felhasználóinak*. 
-> 
 
 Riasztások a Log Analytics-munkaterület, ki kell terjeszteni az Azure-bA ütemezésekor mindaddig működnek, és nem az egyébként veszélyeztetheti a konfigurációt. Ütemezése, a riasztások előfordulhat, hogy nem érhető el, a módosítás átmenetileg, de továbbra is új Azure-riasztások létrehozásához ebben az időszakban. Ha próbál szerkeszteni vagy létrehozni a riasztásokat az Operations Management Suite-portálon, akkor a beállítást, így a Log Analytics-munkaterületet hoz létre. Azt is beállíthatja az Azure Portalon az Azure-riasztások létrehozásához őket.
 

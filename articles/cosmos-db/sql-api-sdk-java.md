@@ -9,15 +9,15 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 11/21/2018
+ms.date: 11/29/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4c58c1972fee782a93f9641d00376db916021f95
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 4a1be3b948ca5571972179e08ba8b85657b0bb8d
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634489"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725165"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Az SQL API-t az Azure Cosmos DB Java SDK: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -52,6 +52,23 @@ Az SQL API-t a Java SDK támogatja a szinkron műveletek. Aszinkron támogatást
 </table></br>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+* Többrégiós írási támogatása az közvetlen üzemmódban.
+* Támogatás hozzáadva a kezelési IOExceptions ServiceUnavailable kivételeket, a proxy lépett fel.
+* Kijavítva a hiba, a végpont felderítési újrapróbálkozási szabályzat.
+* Kijavítva a hiba, NULL értékű mutató nem kivételek BaseDatabaseAccountConfigurationProvider a biztosításához.
+* Kijavítva a hiba, annak érdekében, hogy iterátor lekérdezés nem ad vissza a null értékeket.
+* Kijavítva a hiba, annak érdekében, hogy nagy PartitionKey engedélyezett
+
+### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+* Többrégiós írási támogatása az átjáró mód.
+
+### <a name="a-name11641164"></a><a name="1.16.4"/>1.16.4
+* Kijavítva a hiba, olvassa el a partíción kulcs egy lekérdezés tartományokat.
+
+### <a name="a-name11631163"></a><a name="1.16.3"/>1.16.3
+* Kijavítva a hiba, a beállítás a folytatási token fejléc mérete DirectHttps módban.
 
 ### <a name="a-name11621162"></a><a name="1.16.2"/>1.16.2
 * Támogatás hozzáadva streamelési feladatátvétele.
@@ -205,6 +222,10 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [2.1.1](#2.1.1) |2018. november 21. |--- |
+| [2.0.0](#2.0.0) |2018. Szeptembertől 21. |--- |
+| [1.16.4](#1.16.4) |2018. Szeptembertől 10. |--- |
+| [1.16.3](#1.16.3) |2018. Szeptembertől 09. |--- |
 | [1.16.2](#1.16.2) |2018. június 29. |--- |
 | [1.16.1](#1.16.1) |2018. május 16. |--- |
 | [1.16.0](#1.16.0) |2018. március 15. |--- |

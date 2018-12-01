@@ -7,25 +7,25 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/04/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5634c14ee2b25600d66ff0f2c7385b2aaa9f1810
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: a1457b2aa571b58502b7d819eb3bcf142c10dac1
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699498"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725063"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C-vel egyéni szabályzatok
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Egyéni szabályzatok olyan konfigurációs fájlokat, amelyek az Azure Active Directory (Azure AD) B2C-bérlő viselkedésének megadása. Beépített szabályzatokat az Azure AD B2C-vel portal a leggyakrabban használt identitás-feladatok előre meghatározott. Egyéni szabályzatok teljes körűen szerkeszthetik-identitás fejlesztői számos különböző feladat végrehajtásához.
+Egyéni szabályzatok olyan konfigurációs fájlokat, amelyek az Azure Active Directory (Azure AD) B2C-bérlő viselkedésének megadása. Felhasználói folyamatok identitás leggyakoribb feladatokat az Azure AD B2C-vel portál előre meghatározott. Egyéni szabályzatok teljes körűen szerkeszthetik-identitás fejlesztői számos különböző feladat végrehajtásához.
 
-## <a name="comparing-built-in-policies-and-custom-policies"></a>Beépített és egyéni házirendeket összehasonlítása
+## <a name="comparing-user-flows-and-custom-policies"></a>Felhasználói folyamatok és az egyéni szabályzatok összehasonlítása
 
-| | Beépített szabályzatok | Egyéni szabályzatok |
+| | Felhasználói folyamatok | Egyéni szabályzatok |
 |-|-------------------|-----------------|
 | Felhasználói célcsoport számára | Minden alkalmazás vagy fejlesztők számára az identitás szakértelem nélkül is. | Identitáskezelő szakemberek használhatják, rendszerintegrátoroktól, tanácsadókkal és házon belüli identitás csapatok. Ezek nem okoz gondot az OpenIDConnect folyamatok és identitás-szolgáltatóktól és jogcímalapú hitelesítést. |
 | Konfigurációs mód | Egy felhasználóbarát felhasználói felület (UI) az Azure Portalon. | XML-fájlok közvetlen módosítása, majd feltölti az Azure Portalra. |
@@ -33,7 +33,7 @@ Egyéni szabályzatok olyan konfigurációs fájlokat, amelyek az Azure Active D
 | Attribútum testreszabása | Standard és egyéni attribútumait. | Azonos |
 | Jogkivonat és munkamenet-kezelés | Egyéni jogkivonatot, és több munkamenet-beállításokkal. | Azonos |
 | Identitásszolgáltatók | Előre definiált helyi vagy a közösségi szolgáltató. | OIDC szabványokon alapuló, az OAUTH és a SAML. |
-| Identitáskezelési tevékenységek | Regisztrálási vagy bejelentkezési helyi vagy számos közösségi fiókok.<br><br>Az önkiszolgáló jelszó-visszaállítás.<br><br>Profil szerkesztése.<br><br>A multi-factor Authentication szolgáltatás.<br><br>Testre szabhatja a biztonsági jogkivonat és munkamenet.<br><br>Hozzáférési jogkivonat folyamatokat. | Beépített szabályzatok használatával egyéni Identitásszolgáltatók megegyező feladatok elvégzéséhez, vagy használja az egyéni hatókörök.<br><br>Építhet ki egy felhasználói fiókot egy másik rendszer regisztrációs időpontjában.<br><br>A saját e-mail-szolgáltató használatával üdvözlő e-mail küldése.<br><br>Ezen kívül az Azure AD B2C-vel a felhasználókhoz tartozó tárolóban.<br><br>Ellenőrizze a felhasználó által megadott megbízható rendszerrel információkat egy API-val. |
+| Identitáskezelési tevékenységek | Regisztrálási vagy bejelentkezési helyi vagy számos közösségi fiókok.<br><br>Az önkiszolgáló jelszó-visszaállítás.<br><br>Profil szerkesztése.<br><br>A multi-factor Authentication szolgáltatás.<br><br>Testre szabhatja a biztonsági jogkivonat és munkamenet.<br><br>Hozzáférési jogkivonat folyamatokat. | Felhasználói folyamatok használatával egyéni Identitásszolgáltatók megegyező feladatok elvégzéséhez, vagy használjon egyéni hatókörök.<br><br>Építhet ki egy felhasználói fiókot egy másik rendszer regisztrációs időpontjában.<br><br>A saját e-mail-szolgáltató használatával üdvözlő e-mail küldése.<br><br>Ezen kívül az Azure AD B2C-vel a felhasználókhoz tartozó tárolóban.<br><br>Ellenőrizze a felhasználó által megadott megbízható rendszerrel információkat egy API-val. |
 
 ## <a name="policy-files"></a>A házirend-fájlok
 
@@ -43,7 +43,7 @@ Ezek a házirend-fájlok három típusú használhatók:
 - **Bővítmények fájl** – az egyedi konfigurációs módosítások tárolja a bérlő számára.
 - **Függő entitás (RP) fájl** -feladat témájú az egyetlen fájl, amelyet közvetlenül az alkalmazás vagy szolgáltatás hív (egy függő entitás néven is ismert). Minden egyedi tevékenységhez szükséges a saját RP és függően márkajelzési követelmények, a szám előfordulhat, hogy "az alkalmazások x használati esetek száma összesen."
 
-Beépített szabályzatokat az Azure AD B2C hajtsa végre a fenti kitaláltak három Fájlmintát, de a fejlesztői csak látja a helyreállítási pont Védettként fájlt, amíg az Azure Portalon módosítást hajt végre a háttérben a bővítmények fájl.
+Az Azure AD B2C felhasználói folyamatok hajtsa végre a fenti kitaláltak három Fájlmintát, de a fejlesztői csak látja a helyreállítási pont Védettként fájlt, amíg az Azure Portalon módosítást hajt végre a háttérben a bővítmények fájl.
 
 ## <a name="custom-policy-core-concepts"></a>Egyéni szabályzat alapfogalmak
 

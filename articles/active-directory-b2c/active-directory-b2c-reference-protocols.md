@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/07/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6cfa3e0cb23f13b50c0fb7cd4f07a8d53c0f3186
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: fa6ae230a209d804f244d8bc46a3c6ac1abf6071
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340766"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725573"
 ---
 # <a name="azure-ad-b2c-authentication-protocols"></a>Az Azure AD B2C: Hitelesítési protokollok
 Az Azure Active Directory B2C (Azure AD B2C-vel) identitást biztosít az alkalmazások szolgáltatás két, az iparági szabványos protokollok támogatása révén: OpenID Connectet és az OAuth 2.0. A szolgáltatás szabványoknak megfelelő, de bármilyen két implementációiban ezeket a protokollokat is finom eltérések vannak. 
@@ -50,12 +50,12 @@ Szinte minden OAuth és OpenID Connect folyamatokban négy felek vesz részt, az
 
 * A **erőforrás-kiszolgáló** van, ahol az erőforrásra vagy található. Az engedélyezési kiszolgáló biztonságos hitelesítéséhez és engedélyezéséhez az OAuth-ügyfél megbízik. Győződjön meg arról, hogy az erőforrásokhoz való hozzáférést is megadható a tulajdonosi jogkivonatot is használ.
 
-## <a name="policies"></a>Házirendek
+## <a name="policies-and-user-flows"></a>Szabályzatok és a felhasználói folyamatok
 Késései az Azure AD B2C-szabályzatok a szolgáltatás legfontosabb funkcióit. Az Azure AD B2C a szabványos OAuth 2.0 és OpenID Connect protokollok szabályzatok bevezetésével kiterjeszti. Ezek lehetővé teszik az Azure AD B2C-vel sokkal jobban, mint az egyszerű hitelesítés és engedélyezés. 
 
-Házirendek teljes mértékben ismertetik a fogyasztói identitások jellemzőit, beleértve a regisztrációs, bejelentkezési, és profil szerkesztése. Házirendek egy rendszergazdai felhasználói felületen lehet definiálni. Ezek a HTTP-hitelesítési kéréseket egy speciális lekérdezési paraméter használatával hajthatók végre. 
+Segítséget a leggyakoribb feladatok identitás beállítása, az Azure AD B2C-portálon előre meghatározott, a konfigurálható szabályzatok nevű tartalmaz **felhasználókövetési adatai**. Felhasználói folyamatok teljes körű ismertetik a fogyasztói identitások jellemzőit, beleértve a regisztrációs, bejelentkezési, és profil szerkesztése. Felhasználói folyamatok egy rendszergazdai felhasználói felületen lehet definiálni. Ezek a HTTP-hitelesítési kéréseket egy speciális lekérdezési paraméter használatával hajthatók végre. 
 
-Házirendek amelyek nem szabványos OAuth 2.0 és OpenID Connect, szolgáltatásait, értelmezését időt kell tennie. További információkért lásd: a [Azure AD B2C-szabályzat referencia-útmutató](active-directory-b2c-reference-policies.md).
+Szabályzatok és felhasználókövetési adatai nem el szabványos OAuth 2.0 és OpenID Connect, szolgáltatásait, értelmezését időt kell tennie. További információkért lásd: a [Azure AD B2C felhasználói folyamat referencia-útmutató](active-directory-b2c-reference-policies.md).
 
 ## <a name="tokens"></a>Tokenek
 Az OAuth 2.0 és OpenID Connect Azure AD B2C-vel megvalósítását teszi erősen igénybe veszi a tulajdonosi jogkivonatokat, beleértve a tulajdonosi jogkivonatokat, amelyek JSON webes jogkivonatainak (JWTs) helyettesítik. A tulajdonosi jogkivonatot, amely hozzáférést biztosít a "tulajdonos" védett erőforrásokhoz való könnyű biztonsági jogkivonat.

@@ -5,19 +5,18 @@ services: log-analytics
 ms.service: log-analytics
 ms.subservice: performance
 ms.custom: ''
-ms.devlang: na
 ms.topic: conceptual
 author: danimir
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/26/2018
 ms.author: v-daljep
-ms.openlocfilehash: 57faa347b2733ebf65757b02ee9395f94776cf10
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b2c8ed30e26f5408123fe77606ddfec67479bcad
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635390"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726151"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Az Azure SQL Database megfigyelése az Azure SQL Analytics (előzetes verzió)
 
@@ -29,7 +28,7 @@ A megoldással gyűjtött metrikák használatával létrehozhat egyéni figyel�
 
 A gyakorlati áttekintése az Azure SQL Analytics megoldás használatával és a jellemző használati forgatókönyvei: a beágyazott videót:
 
->[!VIDEO https://youtu.be/j-NDkN4GIzg]
+>[!VIDEO https://www.youtube.com/embed/j-NDkN4GIzg]
 >
 
 ## <a name="connected-sources"></a>Összekapcsolt források
@@ -38,8 +37,8 @@ Az Azure SQL Analytics csak egy felhőalapú megoldást támogató adatfolyamké
 
 | Összekapcsolt forrás | Támogatott | Leírás |
 | --- | --- | --- |
-| [Azure Diagnostics](log-analytics-azure-storage.md) | **Igen** | Az Azure metrika- és naplózási adatok közvetlenül az Azure Log Analytics érkeznek. |
-| [Azure Storage-fiók](log-analytics-azure-storage.md) | Nem | A log Analytics egy storage-fiókból az adatok nem olvashatók. |
+| [Azure Diagnostics](../azure-monitor/platform/collect-azure-metrics-logs.md) | **Igen** | Az Azure metrika- és naplózási adatok közvetlenül az Azure Log Analytics érkeznek. |
+| [Azure Storage-fiók](../azure-monitor/platform/collect-azure-metrics-logs.md) | Nem | A log Analytics egy storage-fiókból az adatok nem olvashatók. |
 | [Windows-ügynökök](../azure-monitor/platform/agent-windows.md) | Nem | A megoldás a közvetlen Windows-ügynökök nem használja. |
 | [Linux-ügynökök](log-analytics-quick-collect-linux-computer.md) | Nem | A megoldás a közvetlen Linux-ügynökök nem használja. |
 | [System Center Operations Manager felügyeleti csoport](log-analytics-om-agents.md) | Nem | Közvetlen kapcsolat legyen az Operations Manager-ügynök a Log Analytics szolgáltatáshoz a megoldás nem használja. |

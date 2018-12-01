@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: hrasheed
-ms.openlocfilehash: 77f1d0f9d1f9ad07b977750e7701b660781d63e5
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: c615188e5f198cb8707b12643e0942e8d8821983
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499378"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725182"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>A HDInsight Apache Hadoop-fürtök kezelése az Azure portal használatával
 
@@ -64,7 +64,7 @@ Egy HDInsight-fürt létrehozásakor meg kell adnia egy Azure-előfizetést. A f
     1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
     2. Kattintson a **erőforráscsoportok** a bal oldali menüben az erőforráscsoportok listázásához.
     3. Az erőforráscsoport, a HDInsight-fürt létrehozásához használni kívánt gombra.
-    4. Kattintson a **hozzáférés-vezérlés (IAM)**, és ellenőrizze, hogy Ön (vagy egy csoport, amelynek tagja) legalább az erőforráscsoport közreműködői hozzáféréssel rendelkeznek.
+    4. Kattintson a **hozzáférés-vezérlés (IAM)** és **szerepkör-hozzárendelések**, és ellenőrizze, hogy Ön (vagy egy csoport, amelynek tagja) legalább az erőforráscsoport közreműködői hozzáféréssel rendelkeznek.
 
 Ha a NoRegisteredProviderFound hiba vagy a MissingSubscriptionRegistration hibaüzenetet kap, tekintse meg a [hibáinak elhárítása a közös Azure-beli hibák az Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md).
 
@@ -106,7 +106,7 @@ Ha a NoRegisteredProviderFound hiba vagy a MissingSubscriptionRegistration hiba�
 * **Diagnosztikai beállítások**: beállításainak tárolására, a diagnosztikai metrikák **támogatás + hibaelhárítás**
     * **A Resource health**: lásd: [az Azure resource health áttekintése](../service-health/resource-health-overview.md).
     * **Új támogatási kérelem**: lehetővé teszi, hogy hozzon létre egy támogatási jegyet a Microsoft ügyfélszolgálatához.
-
+    
 6. Kattintson a **tulajdonságok**:
 
     A tulajdonságok a következők:

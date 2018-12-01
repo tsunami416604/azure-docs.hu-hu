@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: f0fd4efe7fc6f8f217d889b5f87c133b5e250b54
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 938472edf0c82da6f3e1fdaf4e6b052ac178bd8a
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810707"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722972"
 ---
 <a name="logic-app-test-drive"></a>Logikai alkalmazás kipróbálása
 ====================
@@ -48,7 +48,7 @@ Töltse ki a következő szakaszban a Test Drive részleteit kínálnak.
 
 ![Teszt illesztőprogram adatai](./media/azure-resource-manager-test-drive/howtopub2.png)
 
-**Leírás –** *[kötelező mező]* Ez az, ahol ír a fő leírást arról, mi van a Test Drive. Az ügyfél milyen helyzetekben a Test Drive fog lefedő, a termékkel kapcsolatos elolvasható itt fognak érkezni. 
+**Leírás –** *[kötelező mező]* Ez az, ahol ír a fő leírást arról, mi van a Test Drive. Az ügyfél milyen helyzetekben a Test Drive fog lefedő, a termékkel kapcsolatos elolvasható itt fognak érkezni. 
 
 **Felhasználó manuális –** *[kötelező mező]* Ez az a Test Drive felhasználói élmény részletes leírását. Az ügyfél megnyílik ez, és pontosan mit azt szeretné, hajtsa végre a Test Drive alatt is végig. Fontos, hogy ez a tartalom így könnyen megismerhető és hajtsa végre a! (.Pdf fájlnak kell lennie)
 
@@ -126,15 +126,13 @@ Kattintson a Mentés gombra. Az utolsó lépés, hogy az Alkalmazásazonosítót
 Adott használjuk az alkalmazás üzembe helyezéséhez az előfizetéshez, hozzá kell adnunk a az alkalmazás az előfizetés közreműködője. A következő útmutatót: ezek a következők alatt:
 
 1. Az előfizetések panelen keresse meg, és válassza ki a megfelelő előfizetést, amely csak a Test Drive használja.
-2. Kattintson a hozzáférés-vezérlés (IAM).
-3. Kattintson a + adja hozzá az új panelen.
-4. A szerepkör közreműködői állítja be.
-5. Írja be az AAD-alkalmazás nevét, és válassza ki a szerepkört az AAD-alkalmazás.
-6. Kattintson a mentés.
-
-![Az Azure Active Directory, új egyszerű hozzáférés-vezérlés hozzáadása](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
-
-![Azure Active Directory-engedélyek](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. Kattintson a **hozzáférés-vezérlés (IAM)**.
+1. Kattintson a **szerepkör-hozzárendelések** fülre.  ![Az Azure Active Directory, új egyszerű hozzáférés-vezérlés hozzáadása](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
+1. Kattintson a **szerepkör-hozzárendelés hozzáadása**.
+1. Állítsa be a szerepkört, **közreműködői**.
+1. Írja be az Azure AD-alkalmazás nevét, és válassza ki a szerepkör hozzárendelése az alkalmazást.
+    ![Az Azure Active Directory-engedélyek](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. Kattintson a **Save** (Mentés) gombra.
 
 **Az Azure AD-Alkalmazáskulcs -** *[kötelező mező]* az utolsó mezőt, hogy a hitelesítési kulcs létrehozásához. A kulcsok adjon meg egy kulcs leírást az időtartamot, soha nem jár le, majd válassza a mentés. Ez **fontos** ne kelljen egy lejárt kulcs, amely megszakítja a test drive éles környezetben. Másolja ezt az értéket, és illessze be a Test Drive kötelező mező.
 

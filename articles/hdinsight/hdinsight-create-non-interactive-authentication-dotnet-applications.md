@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2351e0cdeb6fd17efbe70fdebb12e6c9776c1fa1
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 899adc8d4fb26ac64cd3fbd7096a8b8387900517
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498323"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722292"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Hozzon létre egy .NET HDInsight-alkalmazás nem interaktív hitelesítés
 Az alkalmazás saját identitás (nem interaktív), vagy a bejelentkezett felhasználó az alkalmazás (interaktív) alatt a Microsoft .NET Azure HDInsight alkalmazását futtathatja. Ez a cikk bemutatja, hogyan hozhat létre egy .NET-alkalmazás csatlakoztatása az Azure és a HDInsight kezelése nem interaktív hitelesítéssel. A minta egy interaktív alkalmazás: [csatlakozhat az Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight). 
@@ -34,11 +34,12 @@ Az Azure AD-alkalmazás hozzárendelése egy [szerepkör](../role-based-access-c
 **A tulajdonosi szerepkör hozzáadása az Azure AD-alkalmazás**
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldali menüben válassza ki a **erőforráscsoport**.
+2. A bal oldali menüben válassza az **Erőforráscsoportok** elemet.
 3. Válassza ki az erőforráscsoportot, amely rendelkezik a HDInsight-fürt, amelyre később az oktatóanyagban a Hive-lekérdezést fog futni. Ha nagy számú erőforráscsoportok, a szűrő segítségével keresse meg a megfelelőt.
 4. Válassza ki az erőforráscsoport menüben **hozzáférés-vezérlés (IAM)**.
-5. A **felhasználók**válassza **Hozzáadás**.
-6. Kövesse az utasításokat a tulajdonosi szerepkör hozzáadása az Azure AD-alkalmazást. Miután sikeresen hozzáadta a szerepkör, az alkalmazás részen **felhasználók**, a tulajdonosi szerepkörrel rendelkező. 
+5. Válassza ki a **szerepkör-hozzárendelések** lapján megtekintheti a jelenlegi szerepkör-hozzárendeléseket.
+6. A lap tetején válassza **szerepkör-hozzárendelés hozzáadása**.
+7. Kövesse az utasításokat a tulajdonosi szerepkör hozzáadása az Azure AD-alkalmazást. Miután sikeresen hozzáadta a szerepkör, az alkalmazás tulajdonosának szerepkör alatt jelenik meg. 
 
 ## <a name="develop-an-hdinsight-client-application"></a>Egy HDInsight-ügyfél alkalmazás fejlesztése
 

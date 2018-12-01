@@ -8,18 +8,17 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: c1e5b420c4821732aa8cc19328b0955070100926
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: d173cd8ddcd713e39fc925a101b42bdd918e5499
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138504"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721154"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Felhasználói viselkedés elemzési eszközök az Application Insights – hibaelhárítás
 Kapcsolatos kérdése van a [felhasználói viselkedés elemzési eszközök az Application Insights](app-insights-usage-overview.md): [felhasználók, munkamenetek, események](app-insights-usage-segmentation.md), [tölcsérek](usage-funnels.md), [felhasználói folyamatok](app-insights-usage-flows.md), [Megőrzési](app-insights-usage-retention.md), vagy a Kohorszok? Az alábbiakban néhány válasz.

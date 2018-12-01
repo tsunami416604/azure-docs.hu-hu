@@ -9,17 +9,16 @@ ms.assetid: 2001db30-efc5-417a-a413-93c1b218975f
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2017
 ms.reviewer: aruna
 ms.author: mbullwin
-ms.openlocfilehash: 016d13a08ea3fe591529ad6dd29b25534d9c603d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 358d17f29960983af1834e87f502331141fcff46
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303744"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726117"
 ---
 # <a name="release-notes-for-developer-analytics-tools"></a>Developer Analytics Tools kibocsátási megjegyzései
 
@@ -212,7 +211,7 @@ Ha ASP.NET-alkalmazások, az Application Insights SDK-val rendelkezik, tegye a k
 3. Ha az Application insights segítségével még nem regisztrált, a keresési ablak hibakeresési munkamenet telemetriai módban nyílik meg.
 4. Kattintson a **keresési** ikonra kattintva megtekintheti a helyi telemetriai adatokat.
 
-![Feltöltés befejezve](./media/app-insights-release-notes-vsix/LocalSearch.png)
+![A feltöltés befejeződött](./media/app-insights-release-notes-vsix/LocalSearch.png)
 
 ## <a name="version-42"></a>4.2-es verzió
 Ebben a kiadásban könnyebben események kontextusában adatok keresésének lehetővé teszi az Ugrás a kódot a további adatok események és a egy zökkenőmentes élményt a naplózási adatokat küldjön az Application Insights funkciók hozzáadtunk. Ez a bővítmény a havonta frissül. Ha visszajelzést vagy funkciókérést, küldje el azt aidevtools@microsoft.com.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: f8e16af629eaa18b49b054be9fc478d633263ddb
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: d023bf4428790667ef192a3ce981087694224f50
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45637764"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724536"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>A Red Hat Enterprise Linux az Azure-ban támasztja beállítása
 
@@ -224,10 +224,10 @@ Rendelje hozzá az egyéni szerepkör "Linux időkorlát ügynök szerepkör", a
 1. Nyissa meg az összes erőforrás panelen
 1. Válassza ki a virtuális gépet, az első fürtcsomópontra
 1. Kattintson a hozzáférés-vezérlés (IAM)
-1. Kattintson az Add (Hozzáadás) parancsra
+1. Kattintson a szerepkör-hozzárendelés hozzáadása
 1. A "Linux időkorlát ügynök szerepkör" szerepkör kiválasztása
 1. Adja meg a fent létrehozott alkalmazás neve
-1. Kattintson az OK gombra
+1. Kattintson a Save (Mentés) gombra.
 
 Ismételje meg a fenti lépéseket a második fürtcsomópontra.
 
