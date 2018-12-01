@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 17/07/2018
 ms.author: sedusch
-ms.openlocfilehash: 2f3b8371357403071e70dd2e351cd75dbd34f746
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 2a0934fa3bb46eebba02029a8292b9bee6b12c62
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40006449"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52728225"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Az Azure SAP LaMa összekötő
 
@@ -87,13 +87,13 @@ Az Azure-összekötő az SAP LaMa 3.0 SP05 kezdődően tartalmazza a szükséges
 Az egyszerű szolgáltatás nem rendelkezik engedélyekkel alapértelmezés szerint az Azure-erőforrások eléréséhez. Kell adni az egyszerű szolgáltatás engedélyeket érheti el őket.
 
 1. Nyissa meg a következőt: https://portal.azure.com
-1. Nyissa meg az erőforráscsoport panel
+1. Nyissa meg az erőforráspanelt csoportok
 1. Válassza ki a használni kívánt erőforráscsoportot
 1. Kattintson a hozzáférés-vezérlés (IAM)
-1. Kattintson a Hozzáadás gombra
+1. Kattintson a szerepkör-hozzárendelés hozzáadása
 1. Válassza ki a közreműködő szerepkört
 1. Adja meg a fent létrehozott alkalmazás neve
-1. Kattintson az OK gombra
+1. Kattintson a Save (Mentés) gombra.
 1. Ismételje meg a 3 – 8 SAP LaMa használni kívánt összes erőforráscsoportra vonatkozóan
 
 Nyissa meg az SAP LaMa webhelyet, és keresse meg az infrastruktúrához. Nyissa meg felhőalapú kezelők lapot, és kattintson a Hozzáadás gombra. Válassza ki a Microsoft Azure felhőalapú adaptert, és kattintson a Tovább gombra. Adja meg a következő információkat:

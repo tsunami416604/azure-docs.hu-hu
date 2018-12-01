@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: cwatson
-ms.openlocfilehash: 2380cd3712c47ca08e9b9b3597f09f4119238af3
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 53cecc845ed8bd15311e1bcec3ec9b36db8f5c2c
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581613"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727868"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Adja hozzá, vagy az Azure-előfizetések rendszergazdáinak módosításáról
 
@@ -42,10 +42,10 @@ Ha valakit egy Azure-előfizetés rendszergazdájaként szeretne hozzáadni, ren
 1. Látogasson el [ **előfizetések** az Azure Portalon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 2. Válassza ki azt az előfizetést, amelynek hozzáférést szeretne adni.
 3. Válassza a listában a **Hozzáférés-vezérlés (IAM)** elemet.
-4. Válassza a **Hozzáadás** lehetőséget.
-   (Ha hiányzik a Hozzáadás gomb, nincs engedélye engedélyek hozzáadására.)
+4. Válassza ki **szerepkör-hozzárendelés hozzáadása**.
+   (A Hozzáadás szerepkör-hozzárendelés gombra hiányzik, akkor nincs engedélye engedélyek hozzáadásához.)
 5. A **Szerepkör** mezőben válassza a **Tulajdonos** elemet. 
-6. A **Hozzáférés hozzárendelése** mezőben válassza az **Azure AD, felhasználó, csoport vagy alkalmazás** elemet. 
+6. Az a **rendelhet hozzáféréseket** jelölje ki **az Azure AD-felhasználó, csoport vagy szolgáltatásnév**. 
 7. A **Kiválasztás** mezőbe írja be annak a felhasználónak az e-mail-címét, amelyet tulajdonosként szeretne hozzáadni. Válassza ki a felhasználót, majd válassza a **Mentés** lehetőséget.
 
     ![A tulajdonosi szerepkörrel, kijelölt bemutató képernyőkép](./media/billing-add-change-azure-subscription-administrator/add-role.png)

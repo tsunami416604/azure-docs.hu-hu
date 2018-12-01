@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/06/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b00eb1b2d25187dc50be53425ebae347edde33b4
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 20d1e39a2f2cda66f3b490000f48dd6c5fb72915
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344811"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727333"
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Az Azure AD B2C: Egyoldalas alkalmazás jelentkezzen be az OAuth 2.0 implicit folyamat
 
@@ -27,10 +27,10 @@ Számos modern alkalmazás egylapos alkalmazás előtérrendszerét elsősorban 
 
 Ezek az alkalmazások Azure Active Directory B2C-t támogató (az Azure AD B2C-vel) az OAuth 2.0 implicit folyamat használja. Az OAuth 2.0 típusú implicit engedélyezés folyamat leírt [szakaszban, az OAuth 2.0 ismertetőjének 4.2](http://tools.ietf.org/html/rfc6749). Az implicit folyamatot, az alkalmazás fogad jogkivonatok közvetlenül az Azure Active Directory (Azure AD) authorize végponton, bármely az exchange server-kiszolgáló nélkül. Hitelesítési logikát, és a munkamenet idő szükséges kezelése teljes mértékben a JavaScript-ügyfelet, anélkül, hogy további oldal átirányítja az helyezze el.
 
-Az Azure AD B2C kiterjeszti a szabványos OAuth 2.0 implicit folyamat több, mint az egyszerű hitelesítés és engedélyezés. Az Azure AD B2C bevezeti a [szabályzatparaméter](active-directory-b2c-reference-policies.md). A házirend-paraméterrel, az OAuth 2.0 használatával felhasználói élményeket adhat hozzá alkalmazásához, például a regisztrációs, bejelentkezési és profilok kezelése. Ebben a cikkben bemutatjuk, ezek a tapasztalatok mindegyike az egyoldalas alkalmazások megvalósításához az implicit folyamat és az Azure AD használatával. Segít megismerkedni, hogy vessen egy pillantást a [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi) és [a Microsoft .NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi) mintákat.
+Az Azure AD B2C kiterjeszti a szabványos OAuth 2.0 implicit folyamat több, mint az egyszerű hitelesítés és engedélyezés. Az Azure AD B2C bevezeti a [szabályzatparaméter](active-directory-b2c-reference-policies.md). A házirend-paraméterrel, az OAuth 2.0 segítségével szabályzatokat adhat hozzá alkalmazásához, mint például regisztrációs, bejelentkezési, és a felhasználói folyamatok felügyeleti profil. Ebben a cikkben bemutatjuk, ezek a tapasztalatok mindegyike az egyoldalas alkalmazások megvalósításához az implicit folyamat és az Azure AD használatával. Segít megismerkedni, hogy vessen egy pillantást a [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi) és [a Microsoft .NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi) mintákat.
 
-Az ebben a cikkben példa HTTP-kérések, használjuk a mintául szolgáló Azure AD B2C-címtár **fabrikamb2c.onmicrosoft.com**. Is használhatja a saját mintaalkalmazás és a szabályzatok. Próbálja meg a kérések saját maga az ezeket az értékeket, vagy is le kell cserélni a saját értékeire.
-Ismerje meg, hogyan [első saját Azure AD B2C directory, az alkalmazás és a szabályzatok](#use-your-own-b2c-tenant).
+Az ebben a cikkben példa HTTP-kérések, használjuk a mintául szolgáló Azure AD B2C-címtár **fabrikamb2c.onmicrosoft.com**. Azt is használhatja a saját minta és felhasználói folyamatokat. Próbálja meg a kérések saját maga az ezeket az értékeket, vagy is le kell cserélni a saját értékeire.
+Ismerje meg, hogyan [első saját Azure AD B2C directory, az alkalmazás és a felhasználói folyamatokat](#use-your-own-b2c-tenant).
 
 
 ## <a name="protocol-diagram"></a>Protokoll diagramja
@@ -40,11 +40,11 @@ Az implicit bejelentkezési folyamat a következőhöz hasonló az alábbi ábra
 ![OpenID Connect sávok](../media/active-directory-v2-flows/convergence_scenarios_implicit.png)
 
 ## <a name="send-authentication-requests"></a>Hitelesítési kérelem küldése
-Ha a webalkalmazás kell hitelesíteni a felhasználót, és hajtsa végre egy házirendet, irányítja a felhasználót, hogy a `/authorize` végpont. Ez az interaktív részének a folyamatot, ahol a felhasználó által készített művelet függően a szabályzatot. A felhasználó beolvasása az Azure AD-végpont jogkivonat-azonosító.
+Ha a webalkalmazás kell hitelesíteni a felhasználót, és hajtsa végre a felhasználói folyamat, irányítja a felhasználót, hogy a `/authorize` végpont. Ez az interaktív részének a folyamatot, ahol a felhasználó által készített művelet, attól függően, a felhasználói folyamatot. A felhasználó beolvasása az Azure AD-végpont jogkivonat-azonosító.
 
-A kéréshez, az ügyfél azt jelzi, hogy az a `scope` paraméter szerzi be a felhasználó szükséges engedélyeket. Az a `p` paraméter azt jelzi, hajtsa végre a szabályzatot. Az alábbi három példák (a sortörések az olvashatóság érdekében) minden egyes egy másik szabályzat használja. Betekintést nyerhet az egyes kérések működését, próbálja meg beilleszteni a kérelem egy böngészőbe, és azt futtatja.
+A kéréshez, az ügyfél azt jelzi, hogy az a `scope` paraméter szerzi be a felhasználó szükséges engedélyeket. Az a `p` paraméter azt jelzi, a felhasználói folyamat végrehajtásához. Az alábbi három példák (a sortörések az olvashatóság érdekében) minden egyes használja egy másik felhasználói folyamatot. Betekintést nyerhet az egyes kérések működését, próbálja meg beilleszteni a kérelem egy böngészőbe, és azt futtatja.
 
-### <a name="use-a-sign-in-policy"></a>Bejelentkezés szabályzattal
+### <a name="use-a-sign-in-user-flow"></a>Felhasználói bejelentkezési folyamat használata
 ```
 GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
@@ -57,7 +57,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_sign_in
 ```
 
-### <a name="use-a-sign-up-policy"></a>Előfizetési szabályzat
+### <a name="use-a-sign-up-user-flow"></a>Regisztráció felhasználói folyamat használata
 ```
 GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
@@ -70,7 +70,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_sign_up
 ```
 
-### <a name="use-an-edit-profile-policy"></a>Profil szerkesztése szabályzattal
+### <a name="use-an-edit-profile-user-flow"></a>Egy profil szerkesztése felhasználói folyamat használata
 ```
 GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
@@ -92,12 +92,12 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | scope |Szükséges |Hatókörök szóközzel elválasztott listáját. Hatókör érték azt jelzi, az Azure AD mindkét engedélyeket, hogy a kérés érkezik. A `openid` hatókör azt jelzi, hogy jelentkezzen be a felhasználó és azonosító-jogkivonatokat formájában a felhasználóval kapcsolatos adatok beolvasása az engedélyt. (Tárgyaljuk Ez a cikk több későbbi részében.) A `offline_access` hatókör megadása nem kötelező web apps számára. Azt jelzi, hogy kell-e az alkalmazás egy frissítési jogkivonat hosszú élettartamú erőforrások eléréséhez. |
 | state |Ajánlott |A kérésben is a token válaszban visszaadott érték. Bármilyen tartalmat, amelyet használni szeretne, karakterlánc lehet. Általában egy véletlenszerűen létrehozott, egyedi érték szolgál, webhelyközi kérések hamisításának megakadályozása támadások megelőzése érdekében. Az állapot is szolgál a felhasználói állapot az alkalmazás információ kódolás előtt a hitelesítési kérelmet, a lap, amelyen korábban volt. |
 | egyszeri |Szükséges |A kérésben (az alkalmazás által generált), amely az eredményül kapott azonosító jogkivonat jogcímként szerepel érték. Az alkalmazás ezután ellenőrizheti ezt az értéket ismétlésének támadások számának csökkentése érdekében. Általában értéke véletlenszerű, egyedi karakterlánc, amely a kérés eredetének azonosítására használhatók. |
-| p |Szükséges |A szabályzat végrehajtásához. Egy szabályzatot, amely jön létre az Azure AD B2C-bérlő nevét. A szabályzat neve értéket érdemes kezdenie **b2c\_1\_**. További információkért lásd: [beépített szabályzatok Azure AD B2C-vel](active-directory-b2c-reference-policies.md). |
+| p |Szükséges |A szabályzat végrehajtásához. Egy házirend (felhasználói folyamat) jön létre az Azure AD B2C-bérlő neve. A szabályzat neve értéket érdemes kezdenie **b2c\_1\_**. További információkért lásd: [Azure AD B2C felhasználói folyamatok](active-directory-b2c-reference-policies.md). |
 | parancssor |Optional |A felhasználói beavatkozás szükséges típusa. Jelenleg az egyetlen érvényes érték el `login`. Ez kényszeríti a felhasználónak meg kell adnia a hitelesítő adataik adott kérelem. Egyszeri bejelentkezés nem lépnek érvénybe. |
 
-Ezen a ponton a felhasználó kéri a házirend-munkafolyamat végrehajtásához. Ez a felhasználó megadja a felhasználónevüket és jelszavukat, bejelentkezés egy közösségi identitás való regisztráláskor a címtárban, vagy bármely más több lépést is járhat. Felhasználói műveletek attól függ, hogyan van definiálva a szabályzatot.
+Ezen a ponton a felhasználó kéri a házirend-munkafolyamat végrehajtásához. Ez a felhasználó megadja a felhasználónevüket és jelszavukat, bejelentkezés egy közösségi identitás való regisztráláskor a címtárban, vagy bármely más több lépést is járhat. Felhasználói műveletek attól függ, hogyan van definiálva a felhasználói folyamatot.
 
-Miután a felhasználó elvégzi a szabályzatot, az Azure AD választ az értéket az alkalmazáshoz használt `redirect_uri`. A megadott metódust használ a `response_mode` paraméter. A válasz a pontosan megegyezik az egyes felhasználói művelet forgatókönyv, függetlenül a szabályzat, amely végre lett hajtva.
+Miután a felhasználó a felhasználói folyamat befejeződött, az Azure AD választ az alkalmazáshoz használt értéke a `redirect_uri`. A megadott metódust használ a `response_mode` paraméter. A válasz a pontosan megegyezik az egyes felhasználói művelet forgatókönyv, függetlenül a végrehajtott felhasználói folyamatot.
 
 ### <a name="successful-response"></a>A sikeres válasz
 A sikeres válasz által használt `response_mode=fragment` és `response_type=id_token+token` tűnik, a sortörések az olvashatóság érdekében a következő:
@@ -142,15 +142,15 @@ Fogadó-azonosító jogkivonat már nem elég a felhasználó hitelesítéséhez
 
 Számos nyílt forráskódú kódtár szeretné használni a nyelvtől függően JWTs, ellenőrzésével kapcsolatos érhetők el. Fontolja meg a saját ellenőrzési logika megvalósítása helyett használható nyílt forráskódú könyvtáraink feltárása. Információt is használhatja az ebben a cikkben megtudhatja, hogyan megfelelően használni az ezen kódtárak segítségével.
 
-Az Azure AD B2C az OpenID Connect metaadatok végpontja van. Egy alkalmazás használhatja a végpont információ az Azure AD B2C-t a futásidőben beolvassa. Ezen információk közé tartozik a végpontokat, a jogkivonat tartalma és a jogkivonat-aláíró kulcsok. Nincs a az Azure AD B2C-bérlő minden egyes házirendjének metaadatok JSON-dokumentumok. Ha például a metaadat-dokumentum fabrikamb2c.onmicrosoft.com bérlőben b2c_1_sign_in házirend következő helyen található:
+Az Azure AD B2C az OpenID Connect metaadatok végpontja van. Egy alkalmazás használhatja a végpont információ az Azure AD B2C-t a futásidőben beolvassa. Ezen információk közé tartozik a végpontokat, a jogkivonat tartalma és a jogkivonat-aláíró kulcsok. Az egyes Azure AD B2C-bérlőben a felhasználói folyamat JSON-metaadatok dokumentumok van. Ha például a bérlő fabrikamb2c.onmicrosoft.com b2c_1_sign_in felhasználói folyamathoz tartozó metaadat-dokumentum helyen található:
 
 `https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in`
 
-A konfigurációs dokumentum tulajdonságainak egyike a `jwks_uri`. Ugyanaz a szabályzat értéke a következő lesz:
+A konfigurációs dokumentum tulajdonságainak egyike a `jwks_uri`. A felhasználói folyamatot értéke a következő lesz:
 
 `https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in`
 
-Határozza meg, mely a házirend-azonosító jogkivonat aláírásához használt (és beolvassa a metaadatokat a helyét), a két lehetősége van. Először a szabályzat neve szerepel a `acr` a jogcím `id_token`. A jogcímeket egy azonosító jogkivonat elemzése kapcsolatos információkért lásd: a [Azure AD B2C-jogkivonatok referenciájából](active-directory-b2c-reference-tokens.md). A másik lehetőség egy kódolása a szabályzatot az értékét a `state` paramétert a kérés elküldésekor. Ezt követően dekódolni a `state` paraméter határozza meg, mely házirend lett megadva. Mindkét módszer esetén érvényes.
+Meghatározni, melyik felhasználói folyamat egy azonosító jogkivonat aláírásához használt (és beolvassa a metaadatokat a helyét), két lehetősége van. Először a felhasználói interakciósorozat neve szerepel a `acr` a jogcím `id_token`. A jogcímeket egy azonosító jogkivonat elemzése kapcsolatos információkért lásd: a [Azure AD B2C-jogkivonatok referenciájából](active-directory-b2c-reference-tokens.md). A másik lehetőség, hogy az értékét a felhasználói folyamat kódolása a `state` paramétert a kérés elküldésekor. Ezt követően dekódolni a `state` paraméter határozza meg, hogy mely felhasználói folyamat lett megadva. Mindkét módszer esetén érvényes.
 
 A metaadat-dokumentum, az OpenID Connect metaadat-végpontról, melyeket beszerezett, miután a érvényesíteni az aláírást a azonosító jogkivonat használhatja az RSA-256 nyilvános kulcsot (Ez a végpont található). Előfordulhat, hogy egy adott időpontban a végponti szereplő több kulcsok, minden egyes által azonosított egy `kid`. Fejlécében `id_token` is tartalmaz egy `kid` jogcím. Azt jelzi, amely ezeket a kulcsokat a azonosító jogkivonat aláírásához használt. További információk, megismerését [jogkivonatok érvényességének](active-directory-b2c-reference-tokens.md#token-validation), tekintse meg a [Azure AD B2C-jogkivonatok referenciájából](active-directory-b2c-reference-tokens.md).
 <!--TODO: Improve the information on this-->
@@ -172,7 +172,7 @@ Egy azonosító jogkivonat jogcímeiben kapcsolatos további információkért l
 Teljesen érvényesítése az azonosító jogkivonat után elkezdheti a munkamenet a felhasználóval. Az alkalmazásba, a jogcímek használata az azonosító jogkivonat beszerzése a felhasználói információt. Ez az információ használható megjelenített, rekordokat, engedélyezési és így tovább.
 
 ## <a name="get-access-tokens"></a>Hozzáférési jogkivonat beszerzése
-Ha egyedül a web apps szüksége van, akkor hajtsa végre a házirendek, továbbléphet a következő néhány szakaszban. Az alábbi szakaszokban található információk csak hitelesített hívásokat indíthat egy webes API-nak kell, és amely az Azure AD B2C által védett webalkalmazások érvényesek.
+Ha egyedül a web apps szüksége van, akkor hajtsa végre a felhasználói folyamatok, továbbléphet a következő néhány szakaszban. Az alábbi szakaszokban található információk csak hitelesített hívásokat indíthat egy webes API-nak kell, és amely az Azure AD B2C által védett webalkalmazások érvényesek.
 
 Most, hogy a bejelentkezett felhasználó az egyoldalas alkalmazás, kérheti le jogkivonatot hívó webes API-k az Azure AD által védett. Akkor is, ha a jogkivonat használatával már megkapta a `token` válasz típusát, ez a módszer használatával szerzi be a további erőforrások jogkivonatokat nélkül átirányítás, a felhasználót, hogy jelentkezzen be újra.
 
@@ -274,7 +274,7 @@ Próbálja ki ezeket a kérelmeket saját magának, hajtsa végre az alábbi há
 
 1. [Azure AD B2C-bérlő létrehozása](active-directory-b2c-get-started.md). A bérlő nevét használja a kérelmeket.
 2. [Hozzon létre egy alkalmazást](active-directory-b2c-app-registration.md) -Alkalmazásazonosító beszerzése és a egy `redirect_uri` értéket. Vegye fel az alkalmazás egy webalkalmazás vagy webes API-t. Igény szerint hozhat létre egy alkalmazás titkos kulcs.
-3. [Szabályzatok létrehozása](active-directory-b2c-reference-policies.md) beszerzése a házirend nevét.
+3. [A felhasználói folyamatok létrehozása](active-directory-b2c-reference-policies.md) beszerzése a felhasználói folyamat nevét.
 
 ## <a name="samples"></a>Példák
 

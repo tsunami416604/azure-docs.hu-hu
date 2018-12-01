@@ -5,16 +5,15 @@ services: site-recovery
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: sujayt
-ms.openlocfilehash: 7d11460fd1db5ba92725567a41aaaeab9e752adb
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 84875a47df1830a7f5aa439a17df233d8c93ba1c
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308124"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52728242"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure – Azure virtuális gép replikálási problémák elhárítása
 
@@ -61,37 +60,37 @@ Mivel a SuSE Linux symlinks tanúsítvány listának a karbantartására haszná
 
       ``# cd /etc/ssl/certs``
 
-3. Ellenőrizze, hogy ha a Symantec legfelső szintű Hitelesítésszolgáltatói tanúsítvány telepítve lett-e.
+1. Ellenőrizze, hogy ha a Symantec legfelső szintű Hitelesítésszolgáltatói tanúsítvány telepítve lett-e.
 
       ``# ls VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem``
 
-4. Ha a Symantec legfelső szintű Hitelesítésszolgáltatói tanúsítvány nem található, a következő parancsot a fájl letöltéséhez. Keressen hibákat, és hajtsa végre a javasolt művelet hálózati hibák.
+2. Ha a Symantec legfelső szintű Hitelesítésszolgáltatói tanúsítvány nem található, a következő parancsot a fájl letöltéséhez. Keressen hibákat, és hajtsa végre a javasolt művelet hálózati hibák.
 
       ``# wget https://www.symantec.com/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem -O VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem``
 
-5. Ellenőrizze, hogy a Baltimore legfelső szintű Hitelesítésszolgáltatói tanúsítvány megtalálható.
+3. Ellenőrizze, hogy a Baltimore legfelső szintű Hitelesítésszolgáltatói tanúsítvány megtalálható.
 
       ``# ls Baltimore_CyberTrust_Root.pem``
 
-6. Ha a Baltimore legfelső szintű Hitelesítésszolgáltatói tanúsítvány nem található, töltse le a tanúsítványt.  
+4. Ha a Baltimore legfelső szintű Hitelesítésszolgáltatói tanúsítvány nem található, töltse le a tanúsítványt.  
 
     ``# wget http://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem -O Baltimore_CyberTrust_Root.pem``
 
-7. Ellenőrizze, hogy ha a DigiCert_Global_Root_CA tanúsítvány telepítve lett-e.
+5. Ellenőrizze, hogy ha a DigiCert_Global_Root_CA tanúsítvány telepítve lett-e.
 
     ``# ls DigiCert_Global_Root_CA.pem``
 
-8. Ha a DigiCert_Global_Root_CA nem található, a következő parancsokat a tanúsítvány letöltése.
+6. Ha a DigiCert_Global_Root_CA nem található, a következő parancsokat a tanúsítvány letöltése.
 
     ``# wget http://www.digicert.com/CACerts/DigiCertGlobalRootCA.crt``
 
     ``# openssl x509 -in DigiCertGlobalRootCA.crt -inform der -outform pem -out DigiCert_Global_Root_CA.pem``
 
-9. A tanúsítvány frissítése rehash parancsprogram futtatásával az újonnan letöltött tanúsítványok a tulajdonos kivonatokat.
+7. A tanúsítvány frissítése rehash parancsprogram futtatásával az újonnan letöltött tanúsítványok a tulajdonos kivonatokat.
 
     ``# c_rehash``
 
-10. Ellenőrizze, hogy ha a tulajdonos kivonatolja a tanúsítványok symlinks létrehozásakor.
+8.  Ellenőrizze, hogy ha a tulajdonos kivonatolja a tanúsítványok symlinks létrehozásakor.
 
     - Parancs
 
@@ -120,11 +119,11 @@ Mivel a SuSE Linux symlinks tanúsítvány listának a karbantartására haszná
       ``lrwxrwxrwx 1 root root   27 Jan  8 09:48 399e7759.0 -> DigiCert_Global_Root_CA.pem
       -rw-r--r-- 1 root root 1380 Jun  5  2014 DigiCert_Global_Root_CA.pem``
 
-11. Hozzon létre egy másolatot a fájlról VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem filename b204d74a.0
+9.  Hozzon létre egy másolatot a fájlról VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem filename b204d74a.0
 
     ``# cp VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem b204d74a.0``
 
-12. Hozzon létre egy másolatot a fájlról Baltimore_CyberTrust_Root.pem filename 653b494a.0
+10. Hozzon létre egy másolatot a fájlról Baltimore_CyberTrust_Root.pem filename 653b494a.0
 
     ``# cp Baltimore_CyberTrust_Root.pem 653b494a.0``
 

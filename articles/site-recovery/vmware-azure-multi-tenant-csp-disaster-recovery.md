@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: c26421f848cf25e391589fa791f801e30fd14797
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: d4eac6a2a0b4b9414fdf110c599ff557cabeede5
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50208901"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727103"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>A Cloud Solution Provider (CSP) program, több-bérlős környezetben VMware-vészhelyreállítás beállítása
 
@@ -72,9 +72,13 @@ Ezután hajtsa végre és az Azure Portalon a bérlő összes Site Recovery-műv
 
       ![A bérlő CSP-előfizetés lapján](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
 
-      (b) írja be a vonatkozó adatokat, majd válassza az engedélyeket, vagy a kiválasztott felhasználók a CSV-fájl feltöltésével most új felhasználó létrehozása.
+    (b) írja be a vonatkozó adatokat, majd válassza az engedélyeket, vagy a kiválasztott felhasználók a CSV-fájl feltöltésével most új felhasználó létrehozása.
+    
     c) Miután létrehozott egy új felhasználó, lépjen vissza az Azure Portalon. Az a **előfizetés** lapon, válassza ki a megfelelő előfizetést.
-    d) a select **hozzáférés-vezérlés (IAM)**, és kattintson a **Hozzáadás**, hozzáadni egy felhasználót a megfelelő hozzáférési szinttel. A CSP-portálon keresztül létrehozó felhasználók automatikusan megjelennek a egy hozzáférési szintet kattintás után a megnyíló lapon.
+
+    d) a select **hozzáférés-vezérlés (IAM)**, és kattintson a **szerepkör-hozzárendelések**.
+
+    e) kattintson **szerepkör-hozzárendelés hozzáadása** hozzáadni egy felhasználót a megfelelő hozzáférési szinttel. A CSP-portálon keresztül létrehozó felhasználók a szerepkör-hozzárendelések lapon jelennek meg.
 
       ![Felhasználó hozzáadása](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
 

@@ -12,92 +12,97 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/25/2018
+ms.date: 10/23/2018
 ms.author: dekapur
-ms.openlocfilehash: 03dac03405588ba00a0f8ca5b127956c40853e36
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: a568fc6316211755fabc15ab3cf0227e3a87cb01
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868513"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727340"
 ---
 # <a name="list-of-service-fabric-events"></a>A Service Fabric-események listája 
 
-A Service Fabric megjelenít egy elsődleges Fürtesemények tájékoztatja, mint a fürt állapotának [Service Fabric-események](service-fabric-diagnostics-events.md). Ezek a csomópontok és a fürt Service Fabric által végrehajtott műveletek vagy a fürt tulajdonosa vagy operátor által végzett kezelési döntést alapulnak. Ezek az események lekérdezésével érhető el a [EventStore](service-fabric-diagnostics-eventstore.md) a fürtben, vagy a működési csatornán keresztül. Windows-gépeken a műveleti csatorna van is csatlakoztatnia kell az eseménynaplóba – így láthatja a Service Fabric-események az eseménynaplóban. 
+A Service Fabric megjelenít egy elsődleges Fürtesemények tájékoztatja, mint a fürt állapotának [Service Fabric-események](service-fabric-diagnostics-events.md). Ezek a csomópontok és a fürt Service Fabric által végrehajtott műveletek vagy a fürt tulajdonosa vagy operátor által végzett kezelési döntést alapulnak. Ezek az események hozzáférhető konfigurálása a különféle módokon, például a konfigurálás [a fürttel a Log Analytics](service-fabric-diagnostics-oms-setup.md), vagy a lekérdezése a [EventStore](service-fabric-diagnostics-eventstore.md). Windows-gépeken ezeket az eseményeket az Eseménynapló - be vannak adatkéréseket így láthatja a Service Fabric-események az eseménynaplóban. 
 
->[!NOTE]
->Service Fabric-fürtök verziói < 6.2 események listája tekintse meg a következő szakaszt. 
+Az alábbiakban néhány ezeket az eseményeket jellemzői
+* Minden egyes esemény egy adott entitás a fürt van kötve. példa: alkalmazás, szolgáltatás, csomópontot, replika.
+* Minden esemény tartalmaz egy közös mezők halmaza: EventInstanceId EventName és kategória.
+* Minden esemény lehessen vonni az eseményt az entitást, melyhez hozzá van rendelve mezőket tartalmaz. Például a ApplicationCreated esemény kellene mezőket, amelyek azonosítják a létrehozott alkalmazás nevét.
+* Események struktúrája úgy, hogy azok használhatók fel az eszközök ehhez számos további elemzés. Ezenkívül az esemény részleteinek vonatkozó hosszú karakterlánc helyett külön tulajdonságok vannak meghatározva. 
+* Események által írt különböző alrendszereket, a Service Fabricben az alábbi Source(Task) azonosítja. További információ érhető el a alrendszereket [Service Fabric-architektúra](service-fabric-architecture.md) és [a Service Fabric technikai áttekintése](service-fabric-technical-overview.md).
 
-Itt érhető el az összes esemény listáját a platformon, az entitást, amelyek leképezik a szerint rendezve.
+Itt látható ezen entitás szerint vannak rendezve a Service Fabric-események listája.
 
 ## <a name="cluster-events"></a>Fürtesemények
 
 **A fürt frissítési események**
 
-| EventId | Name (Név) | Leírás |Forrás (feladat) | Szint | Verzió |
-| --- | --- | --- | --- | --- | --- |
-| 29627 | ClusterUpgradeStarted | Fürt frissítése megkezdődött. | CM | Tájékoztató | 1 |
-| 29628 | ClusterUpgradeCompleted | Fürt frissítése befejeződött| CM | Tájékoztató | 1 |
-| 29629 | ClusterUpgradeRollbackStarted | Fürt frissítése megkezdődött a visszaállítás | CM | Tájékoztató | 1 |
-| 29630 | ClusterUpgradeRollbackCompleted | Fürt frissítése befejeződött, visszaállítása | CM | Tájékoztató | 1 |
-| 29631 | ClusterUpgradeDomainCompleted | Fürt frissítése során egy tartomány frissítése befejeződött | CM | Tájékoztató | 1 |
+További információt a fürtfrissítések [Itt](service-fabric-cluster-upgrade-windows-server.md).
+
+| EventId | Name (Név) | Kategória | Leírás |Forrás (feladat) | Szint | 
+| --- | --- | --- | --- | --- | --- | 
+| 29627 | ClusterUpgradeStarted | Frissítés | Fürt frissítése megkezdődött. | CM | Tájékoztató |
+| 29628 | ClusterUpgradeCompleted | Frissítés | Fürt frissítése befejeződött | CM | Tájékoztató | 
+| 29629 | ClusterUpgradeRollbackStarted | Frissítés | Fürt frissítése megkezdődött a visszaállítás  | CM | Figyelmeztetés | 
+| 29630 | ClusterUpgradeRollbackCompleted | Frissítés | Fürt frissítése befejeződött, visszaállítása | CM | Figyelmeztetés | 
+| 29631 | ClusterUpgradeDomainCompleted | Frissítés | A frissítési tartomány véget ért, a frissítés során a fürt frissítése | CM | Tájékoztató | 
 
 ## <a name="node-events"></a>Csomópont-események
 
 **Csomópont életciklussal kapcsolatos események** 
 
-| EventId | Name (Név) | Leírás |Forrás (feladat) | Szint | Verzió |
-| --- | --- | ---| --- | --- | --- |
-| 18602 | NodeDeactivateCompleted | A csomópont inaktiválása befejeződött | AZ FM | Tájékoztató | 1 |
-| 18603 | NodeUp | A fürt észlelt egy csomópont van elindítva | AZ FM | Tájékoztató | 1 |
-| 18604 | NodeDown | A fürt észlelt egy csomópont le lett állítva. |  AZ FM | Tájékoztató | 1 |
-| 18605 | NodeAddedToCluster | Új csomóponttal bővült a fürt | AZ FM | Tájékoztató | 1 |
-| 18606 | NodeRemovedFromCluster | A csomópont el lett távolítva a fürtből | AZ FM | Tájékoztató | 1 |
-| 18607 | NodeDeactivateStarted | A csomópont inaktiválása megkezdődött | AZ FM | Tájékoztató | 1 |
-| 25620 | NodeOpening | Egy csomópont indítása folyamatban van. Első szakasz a csomópont-életciklus | FabricNode | Tájékoztató | 1 |
-| 25621 | NodeOpenSucceeded | Egy csomópont sikeresen elindult | FabricNode | Tájékoztató | 1 |
-| 25622 | NodeOpenFailed | A csomópont nem indult el | FabricNode | Tájékoztató | 1 |
-| 25623 | NodeClosing | Egy csomópont leáll. Az utolsó fáziséit, a csomópont-életciklus kezdete | FabricNode | Tájékoztató | 1 |
-| 25624 | NodeClosed | A csomópont leállítása sikeresen megtörtént | FabricNode | Tájékoztató | 1 |
-| 25625 | NodeAborting | Egy csomópontja megkezdi ungracefully leállítása | FabricNode | Tájékoztató | 1 |
-| 25626 | NodeAborted | Egy csomópont ungracefully le lett állítva | FabricNode | Tájékoztató | 1 |
+| EventId | Name (Név) | Kategória | Leírás |Forrás (feladat) | Szint |
+| --- | --- | ---| --- | --- | --- | 
+| 18602 | NodeDeactivateCompleted | StateTransition | A csomópont inaktiválása befejeződött | FM | Tájékoztató | 
+| 18603 | NodeUp | StateTransition | A fürt észlelt egy csomópont van elindítva | FM | Tájékoztató | 
+| 18604 | NodeDown | StateTransition | A fürt észlelt egy csomópont le lett állítva. Egy csomópont újraindítását során látni fogja a egy követett NodeUp esemény NodeDown esemény |  FM | Hiba | 
+| 18605 | NodeAddedToCluster | StateTransition |  Új csomóponttal bővült a fürt és a Service Fabric ezt a csomópontot alkalmazásokat helyezhet üzembe. | FM | Tájékoztató | 
+| 18606 | NodeRemovedFromCluster | StateTransition |  A csomópont el lett távolítva a fürtből. A Service Fabric már nem az ebben a csomópontban az alkalmazások központi telepítése | FM | Tájékoztató | 
+| 18607 | NodeDeactivateStarted | StateTransition |  A csomópont inaktiválása megkezdődött | FM | Tájékoztató | 
+| 25621 | NodeOpenSucceeded | StateTransition |  Egy csomópont sikeresen elindult | FabricNode | Tájékoztató | 
+| 25622 | NodeOpenFailed | StateTransition |  Egy csomópont nem sikerült elindítani, és csatlakozzon a kör | FabricNode | Hiba | 
+| 25624 | NodeClosed | StateTransition |  A csomópont leállítása sikeresen megtörtént | FabricNode | Tájékoztató | 
+| 25626 | NodeAborted | StateTransition |  Egy csomópont ungracefully le lett állítva | FabricNode | Hiba | 
 
 ## <a name="application-events"></a>Alkalmazásesemények
 
 **Alkalmazások életciklus-események**
 
-| EventId | Name (Név) | Leírás |Forrás (feladat) | Szint | Verzió |
-| --- | --- | ---| --- | --- | --- |
-| 29620 | ApplicationCreated | Új alkalmazás létrehozása | CM | Tájékoztató | 1 |
-| 29625 | ApplicationDeleted | Egy meglévő alkalmazás törölve lett | CM | Tájékoztató | 1 |
-| 23083 | ApplicationProcessExited | Az alkalmazáson belül a folyamat kilépett. | Hosting | Tájékoztató | 1 |
+| EventId | Name (Név) | Kategória | Leírás |Forrás (feladat) | Szint | 
+| --- | --- | --- | --- | --- | --- | 
+| 29620 | ApplicationCreated | Életciklus | Új alkalmazás létrehozása | CM | Tájékoztató | 
+| 29625 | ApplicationDeleted | Életciklus | Egy meglévő alkalmazás törölve lett | CM | Tájékoztató | 
+| 23083 | ApplicationProcessExited | Életciklus | Az alkalmazáson belül a folyamat kilépett. | Hosting | Tájékoztató | 
 
 **Frissítési alkalmazásesemények**
 
-| EventId | Name (Név) | Leírás |Forrás (feladat) | Szint | Verzió |
-| --- | --- | ---| --- | --- | --- |
-| 29621 | ApplicationUpgradeStarted | Egy alkalmazás frissítése megkezdődött. | CM | Tájékoztató | 1 |
-| 29622 | ApplicationUpgradeCompleted | Egy alkalmazás frissítése befejeződött | CM | Tájékoztató | 1 |
-| 29623 | ApplicationUpgradeRollbackStarted | Egy alkalmazás frissítése megkezdődött a visszaállítás |CM | Tájékoztató | 1 |
-| 29624 | ApplicationUpgradeRollbackCompleted | Egy alkalmazás frissítése befejeződött, visszaállítása | CM | Tájékoztató | 1 |
-| 29626 | ApplicationUpgradeDomainCompleted | Tartomány frissítése befejeződött, egy alkalmazás frissítése során | CM | Tájékoztató | 1 |
+További részleteket az alkalmazásfrissítések található [Itt](service-fabric-application-upgrade.md).
+
+| EventId | Name (Név) | Kategória | Leírás |Forrás (feladat) | Szint | 
+| --- | --- | ---| --- | --- | --- | 
+| 29621 | ApplicationUpgradeStarted | Frissítés | Egy alkalmazás frissítése megkezdődött. | CM | Tájékoztató | 
+| 29622 | ApplicationUpgradeCompleted | Frissítés | Egy alkalmazás frissítése befejeződött | CM | Tájékoztató | 
+| 29623 | ApplicationUpgradeRollbackStarted | Frissítés | Egy alkalmazás frissítése megkezdődött a visszaállítás |CM | Figyelmeztetés | 
+| 29624 | ApplicationUpgradeRollbackCompleted | Frissítés | Egy alkalmazás frissítése befejeződött, visszaállítása | CM | Figyelmeztetés | 
+| 29626 | ApplicationUpgradeDomainCompleted | Frissítés | A frissítési tartomány véget ért a frissítés során egy alkalmazás frissítése | CM | Tájékoztató | 
 
 ## <a name="service-events"></a>Szolgáltatás-események
 
 **Service-életciklusesemények**
 
-| EventId | Name (Név) | Leírás |Forrás (feladat) | Szint | Verzió |
+| EventId | Name (Név) | Kategória | Leírás |Forrás (feladat) | Szint | 
 | --- | --- | ---| --- | --- | --- |
-| 18657 | ServiceCreated | Egy új szolgáltatás létrehozása | AZ FM | Tájékoztató | 1 |
-| 18658 | ServiceDeleted | Egy meglévő szolgáltatás törlése | AZ FM | Tájékoztató | 1 |
+| 18657 | ServiceCreated | Életciklus | Egy új szolgáltatás létrehozása | FM | Tájékoztató | 
+| 18658 | ServiceDeleted | Életciklus | Egy meglévő szolgáltatás törlése | FM | Tájékoztató | 
 
 ## <a name="partition-events"></a>Partíció események
 
 **Partíció áthelyezési események**
 
-| EventId | Name (Név) | Leírás |Forrás (feladat) | Szint | Verzió |
+| EventId | Name (Név) | Kategória | Leírás |Forrás (feladat) | Szint | 
 | --- | --- | ---| --- | --- | --- |
-| 18940 | PartitionReconfigured | A partíció újrakonfigurálása befejeződött | RA | Tájékoztató | 1 |
+| 18940 | PartitionReconfigured | Életciklus | A partíció újrakonfigurálása befejeződött | RA | Tájékoztató | 
 
 ## <a name="container-events"></a>Tárolóesemények
 
@@ -110,6 +115,12 @@ Itt érhető el az összes esemény listáját a platformon, az entitást, amely
 | 23082 | ContainerExited | Egy tároló kilépett – ellenőrizze a UnexpectedTermination jelző | Hosting | Tájékoztató | 1 |
 
 ## <a name="health-reports"></a>Rendszerállapot-jelentések
+
+A [Service Fabric Állapotmodell](service-fabric-health-introduction.md) biztosít egy gazdag, rugalmas és bővíthető állapotának kiértékelését és a jelentéskészítés. A Service Fabric verziója 6.2-től kezdődően állapotadatok kiírt Platform az eseményeket az egészségügyi korábbi rekordjait tartalmazzák. Tartani egészségügyi események mennyisége alacsony, a következő, a Service Fabric-események csak írható:
+
+* Az összes `Error` vagy `Warning` rendszerállapot-jelentések
+* `Ok` rendszerállapot-jelentések átmenetek során
+* Ha egy `Error` vagy `Warning` állapotesemény lejár. Ez határozza meg, hogy mennyi ideig egy entitás: nem megfelelő állapotú használható
 
 **A fürt jelentés állapotesemények**
 
@@ -233,11 +244,12 @@ A következő események 6.2 verzió előtt a Service Fabric által biztosított
 | 29624 | ApplicationUpgradeRollbackComplete | CM | Tájékoztató |
 | 29625 | ApplicationDeleted | CM | Tájékoztató |
 | 29626 | ApplicationUpgradeDomainComplete | CM | Tájékoztató |
-| 18566 | ServiceCreated | AZ FM | Tájékoztató |
-| 18567 | ServiceDeleted | AZ FM | Tájékoztató |
+| 18566 | ServiceCreated | FM | Tájékoztató |
+| 18567 | ServiceDeleted | FM | Tájékoztató |
 
 ## <a name="next-steps"></a>További lépések
 
-* További tudnivalók a teljes [események létrehozása a platform szintjén](service-fabric-diagnostics-event-generation-infra.md) a Service Fabricben
+* Áttekintheti a [Service Fabric-diagnosztika](service-fabric-diagnostics-overview.md)
+* További információ az EventStore a [a Service Fabric az Eventstore áttekintése](service-fabric-diagnostics-eventstore.md)
 * Módosítása a [Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) konfigurációját, és további naplók összegyűjtése
 * [Az Application Insights beállítása](service-fabric-diagnostics-event-analysis-appinsights.md) a műveleti naplók channel megtekintéséhez

@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8cec3d3695eaff8719757dd022951b969de99f6a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: bccbf5462668913f6f3025e8d2274c115d49457f
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010643"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727239"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Az Azure AD B2C: Gyakori kérdések (GYIK) 
 Ez az oldal az Azure Active Directory (Azure AD) B2C-vel kapcsolatos gyakori kérdésekre ad választ. Tartsa vissza a frissítések keresése.
@@ -34,7 +34,7 @@ Az Azure AD-bérlő, a bérlőhöz tartozó felhasználók jelentkezzen be egy e
 
 Az Azure AD B2C-bérlő, a legtöbb alkalmazás a felhasználót, hogy jelentkezzen be bármilyen tetszőleges e-mail-címmel szeretne (például joe@comcast.net, bob@gmail.com, sarah@contoso.com, vagy jim@live.com). Ez a fiók típus egy helyi fiókot.  Helyi fiókok (például joe, bob, sarah vagy jim) tetszőleges felhasználói neveket is támogatja. Kiválaszthatja az említett két helyi fiók az Azure Portalon az Azure AD B2C Identitásszolgáltatók konfigurálása során. Kattintson az Azure AD B2C-bérlőben **Identitásszolgáltatók** majd **felhasználónév** a helyi fiókok. 
 
-Felhasználói fiókok alkalmazások mindig létre kell hozni egy regisztrálási szabályzat, a regisztrálási vagy bejelentkezési-házirendben, vagy az Azure AD Graph API-val. Az Azure Portalon létrehozott felhasználói fiókok felügyelete a bérlő csak szolgálnak.
+Alkalmazásokhoz tartozó felhasználói fiókok mindig létre kell hozni egy előfizetési felhasználói folyamatot, a regisztrálási vagy bejelentkezési felhasználói folyamata, vagy az Azure AD Graph API-val. Az Azure Portalon létrehozott felhasználói fiókok felügyelete a bérlő csak szolgálnak.
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Melyik közösségi Identitásszolgáltatók támogatja most? Melyik tervezi a jövőben támogatásához?
 Jelenleg támogatott Facebook, Google +, LinkedIn, Amazon, a Twitterhez (előzetes verzió), WeChat (előzetes verzió), Weibo (előzetes verzió) és Gyorsműveletek (előzetes verzió). Hozzáadjuk más népszerű közösségi Identitásszolgáltatók az ügyfelek igényei szerint támogatása.
@@ -79,8 +79,8 @@ Jelenleg nem lehet módosítani a "származó:" mezőjében az e-mailt.
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>Hogyan telepíthetek át a meglévő felhasználói neveket, jelszavakat és profilok a saját adatbázis az Azure AD B2C-vel?
 Az Azure AD Graph API segítségével írhat az áttelepítési eszköz. Tekintse meg a [áttelepítési útmutatója](active-directory-b2c-user-migration.md) részleteiről.
 
-### <a name="what-password-policy-is-used-for-local-accounts-in-azure-ad-b2c"></a>Milyen jelszóházirend szolgál a helyi felhasználói fiókok Azure AD B2C-ben?
-Helyi fiókok esetében az Azure AD B2C-vel jelszóházirend az Azure ad a szabályzat alapul. Az Azure AD B2C bejelentkezési, regisztrációs vagy bejelentkezési és a jelszó alaphelyzetbe állítása a házirendek használja "erős" jelszó erőssége és jelszavakat nem jár le. Olvassa el a [az Azure AD-jelszóházirendet](https://msdn.microsoft.com/library/azure/jj943764.aspx) további részletekért. További információ a fiók zárolásának és jelszavak: [kezeli az erőforrások és adatok az Azure Active Directory B2C fenyegetések](active-directory-b2c-reference-threat-management.md).
+### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Helyi fiókok Azure AD B2C-ben használatos jelszó felhasználói folyamatot?
+Az Azure AD B2C-vel jelszó felhasználói folyamat helyi fiókok esetében a házirend alapján az Azure ad-hez. Az Azure AD B2C a regisztrációt, a regisztrálási vagy bejelentkezési és a jelszó alaphelyzetbe állítása felhasználói folyamatok használja "erős" jelszó erőssége, és nem jár le a jelszavakat. Olvassa el a [az Azure AD-jelszóházirendet](https://msdn.microsoft.com/library/azure/jj943764.aspx) további részletekért. További információ a fiók zárolásának és jelszavak: [kezeli az erőforrások és adatok az Azure Active Directory B2C fenyegetések](active-directory-b2c-reference-threat-management.md).
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Az Azure AD Connect használatával a saját Azure AD B2C-vel a helyszíni Active Directory tárolt felhasználói identitások migrálása?
 Nem, az Azure AD Connect nem célja, hogy az Azure AD B2C-vel működik. Fontolja meg a [Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) felhasználói migrálásra.  Tekintse meg a [áttelepítési útmutatója](active-directory-b2c-user-migration.md) részleteiről.
@@ -105,7 +105,7 @@ Nem, az Azure AD B2C-vel nem támogatja ugyanazokat a jelentések prémium szint
 * **Használati jelentések** felhasználók száma, a bejelentkezések száma, és az MFA mennyisége. 
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>A felhasználói felület az Azure AD B2C által üzemeltetett oldalak is honosításához? Milyen nyelveket támogat?
-Igen.  További információ [nyelvi testreszabás](active-directory-b2c-reference-language-customization.md), amely jelenleg nyilvános előzetes verzióban.  Fordítások 36 nyelvhez biztosítunk, és igény szerint bármilyen karakterlánc felül lehet bírálni.
+Igen!  További információ [nyelvi testreszabás](active-directory-b2c-reference-language-customization.md), amely jelenleg nyilvános előzetes verzióban.  Fordítások 36 nyelvhez biztosítunk, és igény szerint bármilyen karakterlánc felül lehet bírálni.
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-loginmicrosoftonlinecom-to-logincontosocom"></a>Használható a saját regisztrációs és bejelentkezési lapok, amelyek az Azure AD B2C által üzemeltetett saját URL-címek? Például válthatok az URL-címet a login.microsoftonline.com login.contoso.com?
 Jelenleg nem. Ez a funkció tervbe van. A tartomány az ellenőrzése a **tartományok** lap az Azure Portalon nem ezen cél megvalósításához.

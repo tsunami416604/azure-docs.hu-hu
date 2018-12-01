@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 507bbc9013d8b02084b639f8d9fac0c7d97503f4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0787d023676c707a987b4b69cb5601394db4bd3b
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014278"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52728378"
 ---
-# <a name="troubleshoot-azure-file-sync"></a>Azure File Sync – hibaelhárítás
+# <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
 
 Ez a cikk célja, hibakeresésre és az Azure File Sync üzembe helyezéssel előforduló problémák megoldására. Azt is ismertetjük, hogyan fontos naplók gyűjtését a rendszer, ha a probléma egy mélyebb vizsgálatra szükség. Ha nem látja a választ a kérdésére, lépjen kapcsolatba velünk (a eszkalálásáról rendelésben) a következő csatornákon keresztül:
@@ -91,13 +91,14 @@ Felhőbeli végpont létrehozása, a felhasználói fiókot a következő Micros
 
 A következő beépített szerepkör rendelkezik a szükséges Microsoft Authorization engedélyekkel:  
 * Tulajdonos
-* Felhasználói hozzáférés adminisztrátora
+* Felhasználói hozzáférés rendszergazdája
 
 Az határozza meg, hogy a felhasználói fiók szerepkör rendelkezik-e a szükséges engedélyek:  
 1. Az Azure Portalon válassza ki a **erőforráscsoportok**.
 2. Az erőforráscsoport, ahol a storage-fiók megtalálható, majd válassza ki és **hozzáférés-vezérlés (IAM)**.
-3. Válassza ki a **szerepkör** (például a tulajdonos vagy közreműködő) a felhasználói fiókjához.
-4. Az a **erőforrás-szolgáltató** listáról válassza ki **Microsoft Authorization**. 
+3. Válassza ki a **szerepkör-hozzárendelések** fülre.
+4. Válassza ki a **szerepkör** (például a tulajdonos vagy közreműködő) a felhasználói fiókjához.
+5. Az a **erőforrás-szolgáltató** listáról válassza ki **Microsoft Authorization**. 
     * **Szerepkör-hozzárendelés** kell **olvasási** és **írási** engedélyeket.
     * **Szerepkör-definíció** kell **olvasási** és **írási** engedélyeket.
 
@@ -151,7 +152,7 @@ A kiszolgáló jelenlegi szinkronizálási tevékenység megtekintéséhez [hogy
 > [!Note]  
 > Ha a kiszolgáló állapota, a regisztrált kiszolgálók panelen "Jelenik meg a kapcsolat nélküli", hajtsa végre a leírt lépéseket a [kiszolgálói végpont rendelkezik egy "Nincs tevékenység" vagy "Függő" állapotát, és a regisztrált kiszolgálók panelen a kiszolgáló állapota "Offline jelenik meg" ](#server-endpoint-noactivity) szakaszban.
 
-## <a name="sync"></a>Szinkronizálás
+## <a name="sync"></a>Sync
 <a id="afs-change-detection"></a>**Ha Létrehoztam egy fájlt közvetlenül a saját Azure-fájlmegosztást az SMB-n keresztül, vagy a portálon keresztül, mennyi ideig tart a fájl szinkronizálása a szinkronizálási csoport kiszolgálóira?**  
 [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
@@ -164,7 +165,7 @@ Minden egyes szinkronizálási csoportban részletezhető le az egyes kiszolgál
 
 ![Az Azure portal képernyőképe](media/storage-sync-files-troubleshoot/portal-sync-health.png)
 
-# <a name="servertabserver"></a>[Server](#tab/server)
+# <a name="servertabserver"></a>[Kiszolgáló](#tab/server)
 Nyissa meg a kiszolgáló telemetrianaplók, találja az eseménynaplóban, megjelenítő `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`. Esemény 9102 felel meg egy befejezett szinkronizálási munkamenet; a szinkronizálási legújabb állapot keresse meg a legutóbbi esemény azonosítója 9102. SyncDirection arra kéri, ha a munkamenet volt egy fel- vagy letöltést. Ha a HResult 0, a szinkronizálási munkamenet sikeresen befejeződött. Egy nem nulla értékű HResult azt jelenti, hogy hiba történt; szinkronizálás során Lásd az alábbi gyakori hibák listáját. Ha a PerItemErrorCount 0-nál nagyobb, akkor ez azt jelenti, hogy egyes fájlok vagy mappák nem szinkronizált megfelelően. Lehetséges, hogy egy HResult 0, de egy PerItemErrorCount 0-nál nagyobb legyen.
 
 Az alábbi, a sikeres feltöltése egy példát. Az áttekinthetőség minden egyes 9102 eseményben szereplő értékek csak néhányat az alábbiakban láthatók. 
@@ -199,7 +200,7 @@ Néha szinkronizálási munkamenetek teljes sikertelen, vagy egy nem nulla ért�
 # <a name="portaltabportal1"></a>[Portál](#tab/portal1)
 A szinkronizálási csoport nyissa meg a szóban forgó kiszolgálói végpontot, és tekintse meg a szinkronizálási tevékenység szakaszt a fájlok fel- vagy letölthető a jelenlegi szinkronizálási munkamenet száma. Vegye figyelembe, hogy késni fog ez az állapot szerint körülbelül 5 percet, és ha kellően kicsire ezen az időn belül befejezni a szinkronizálási munkamenet, nem jelenthető-e a portálon. 
 
-# <a name="servertabserver"></a>[Server](#tab/server)
+# <a name="servertabserver"></a>[Kiszolgáló](#tab/server)
 Keresse meg a legutóbbi 9302 telemetriát az Eseménynapló a kiszolgálón (a eseménynaplót, nyissa meg az alkalmazások és szolgáltatások Logs\Microsoft\FileSync\Agent\Telemetry). Az esemény azt jelzi, hogy a szinkronizálási munkamenet jelenlegi állapotát. TotalItemCount azt jelzi, hogy hány fájl van szinkronizálva, hogy AppliedItemCount eddig szinkronizált fájlok és PerItemErrorCount, amelyek nem (lásd lent ez kezelése) szinkronizálási fájlok száma.
 
 ```
@@ -221,7 +222,7 @@ Egy adott szinkronizálási csoport minden egyes kiszolgáló esetén ellenőriz
 - A szinkronizálási tevékenység mutatja nagyon kevés vagy a hátralévő szinkronizálási fájlokat.
 - A fájlok nem szinkronizálja a mező értéke 0, a fel- és letöltést.
 
-# <a name="servertabserver"></a>[Server](#tab/server)
+# <a name="servertabserver"></a>[Kiszolgáló](#tab/server)
 Tekintse meg a befejezett szinkronizálási munkamenetek, amelyek 9102 esemény, a telemetriai adatok eseménynaplójában kiszolgálónként megjelölve (az eseménynaplót, lépjen a `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`). 
 
 1. Bármelyik megadott kiszolgálón szeretné ellenőrizze, hogy a legújabb feltöltés, és töltse le a munkamenet sikeresen befejeződött. Ehhez ellenőrizze, hogy a HResult és PerItemErrorCount fel- és letöltést a 0 (a SyncDirection mezőben azt jelzi, hogy egy adott munkamenet-fel- vagy letöltést munkamenet). Fontos megjegyezni, hogy ha nem látja a nemrégiben befejezett szinkronizálási munkamenet, valószínűleg egy szinkronizálási munkamenet várható, ha csak hozzáadni vagy módosítani egy nagy mennyiségű adatot folyamatban van.
@@ -248,7 +249,7 @@ Ezek a hibák megtekintéséhez futtassa a **FileSyncErrorsReport.ps1** (az Azur
 | 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | A fájl nem szinkronizálható, mert az használatban van. Ha már nincs használatban a fájl lesznek szinkronizálva. | Nincs szükség felhasználói műveletre. Az Azure File Sync naponta egyszer létrehoz egy ideiglenes VSS-pillanatkép megnyitott kezelőkkel rendelkező fájlok szinkronizálása a kiszolgálón. |
 | 0x20 | 32 | ÚJRA | A fájl nem szinkronizálható, mert az használatban van. Ha már nincs használatban a fájl lesznek szinkronizálva. | Nincs szükség felhasználói műveletre. |
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Egy fájl vagy címtár módosítása nem szinkronizálható még, mert egy függő mappa szinkronizálása még nem történt. Ez az elem után a rendszer szinkronizálja a függő módosításokat szinkronizálja. | Nincs szükség felhasználói műveletre. |
-| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Egy fájl módosult a szinkronizálás közben, ezért a fájlt újra kell szinkronizálni. | Nincs szükség felhasználói műveletre. |
+| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | A fájl módosításának szinkronizálás során a szinkronizálható, újra kell. | Nincs szükség felhasználói műveletre. |
 
 #### <a name="handling-unsupported-characters"></a>Kezelése nem támogatott karaktereket
 Ha a **FileSyncErrorsReport.ps1** PowerShell-parancsfájl bemutatja a hiba oka nem támogatott karaktereket (hibakódjai 0x7b és 0x8007007b), érdemes távolítsa el vagy nevezze át a megfelelő fájlnevek a hibás karaktereket. PowerShell valószínűleg nyomtatja ki ezeket a karaktereket a kérdőjelek vagy üres téglalapok, mivel ezek a karakterek a legtöbb nem szabványos kódolással. A [Megoldásértékelési eszköz](storage-sync-files-planning.md#evaluation-tool) segítségével azonosíthatja a nem támogatott karaktereket.
@@ -447,7 +448,7 @@ Ez a hiba akkor fordulhat elő, ha a szervezet az SSL-megszakító proxy, vagy h
     Restart-Service -Name FileSyncSvc -Force
     ```
 
-Ha beállítja ezt a beállításazonosítót, az Azure File Sync-ügynök minden helyileg megbízhatónak minősülő SSL-tanúsítványt elfogad a kiszolgáló és a felhőszolgáltatás közötti adatátvitel során.
+Ez a beállításazonosító beállításával az Azure File Sync ügynök fogad el minden olyan helyi megbízható SSL-tanúsítványt a kiszolgáló és a felhőszolgáltatás közötti adatátvitel során.
 
 <a id="-2147012894"></a>**Nem sikerült létrehozni a kapcsolatot a szolgáltatással.**  
 | | |
@@ -540,7 +541,7 @@ Azokban az esetekben vannak sok fájl a szinkronizálási hibák száma, ahol sz
 | **Hibakarakterlánc** | ECS_E_SYNC_INVALID_PATH |
 | **Szervizelés szükséges** | Igen |
 
-Győződjön meg arról, hogy az elérési út létezik, helyi NTFS-köteten található, és nem újraelemzési pont vagy meglévő kiszolgálói végpont.
+Győződjön meg arról, az elérési út létezik, a helyi NTFS-köteten, és nem egy újraelemzési pontot vagy a meglévő kiszolgálói végpontot.
 
 <a id="-2134376373"></a>**A szolgáltatás jelenleg nem érhető el.**  
 | | |
@@ -705,8 +706,9 @@ if ($fileShare -eq $null) {
 
 <a id="troubleshoot-rbac"></a>**Győződjön meg arról, az Azure File Sync hozzáfér a tárfiókhoz.**  
 # <a name="portaltabportal"></a>[Portál](#tab/portal)
-1. Kattintson a **hozzáférés-vezérlés (IAM)** a felhasználók és az alkalmazások listájában keresse meg a bal oldali tartalomjegyzékben (*egyszerű szolgáltatások*) amely rendelkezik a tárfiókhoz való hozzáférést.
-2. Győződjön meg arról **hibrid File Sync szolgáltatásbeli** a listában megjelenik a **olvasó és adatelérés** szerepkör. 
+1. Kattintson a **hozzáférés-vezérlés (IAM)** a bal oldali tartalomjegyzékben.
+1. Kattintson a **szerepkör-hozzárendelések** lap listájához, a felhasználók és alkalmazások (*egyszerű szolgáltatások*), amely rendelkezik a tárfiókhoz való hozzáférést.
+1. Győződjön meg arról **hibrid File Sync szolgáltatásbeli** a listában megjelenik a **olvasó és adatelérés** szerepkör. 
 
     ![A hibrid File Sync szolgáltatásbeli szolgáltatásnév az a tárfiók a hozzáférés-vezérlési lap látható képernyőfelvétel](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
 

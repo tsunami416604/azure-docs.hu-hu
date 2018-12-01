@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/1/2018
 ms.author: raynew
-ms.openlocfilehash: 2210aaa5d4d0ba9d730e5aee97972565ea0c1090
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 32a489ee6266018ef1160a0870fe236cc6a72d36
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092974"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726984"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso - áttelepítési infrastruktúra üzembe helyezése
 
@@ -256,8 +256,8 @@ Azure [szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.
 
 Contoso-rendszergazdák mostantól rendel az AD-csoportokat, akkor szinkronizálja a helyszíni szerepkörök.
 
-1. Az a **ControlCobRG** erőforráscsoportot, kattintson **hozzáférés-vezérlés (IAM)** > **Hozzáadás**.
-2. A **engedélyek hozzáadása** > **szerepkör**, > **közreműködői**, akkor válassza ki a **ContosoCobRG** AD-csoportot a listából. A csoport megjelenik majd a **kiválasztott tagok** listája. 
+1. Az a **ControlCobRG** erőforráscsoportot, kattintson **hozzáférés-vezérlés (IAM)** > **szerepkör-hozzárendelés hozzáadása**.
+2. A **szerepkör-hozzárendelés hozzáadása** > **szerepkör**, > **közreműködői**, akkor válassza ki a **ContosoCobRG** AD-csoportot a listából. A csoport megjelenik majd a **kiválasztott tagok** listája. 
 3. Ezek ismételje meg ezt az egyéb erőforráscsoportok ugyanazokkal az engedélyekkel (kivéve a **ContosoAzureAdmins**), a közreműködői engedélyekkel ad hozzá az AD-fiókot, amely megegyezik az erőforráscsoport.
 4. Az a **ContosoAzureAdmins** AD-csoporthoz hozzárendelni a **tulajdonosa** szerepkör.
 

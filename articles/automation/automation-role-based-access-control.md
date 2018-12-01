@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fe35f26fe73661901fa85da65e353fe66adf5d47
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 538208c39d6436c15b95760133e00c980e2e8277
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094217"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727902"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Szerepköralapú hozzáférés-vezérlés az Azure Automationben
 
@@ -39,7 +39,7 @@ Az Azure Automationben a hozzáférés biztosításához a megfelelő RBAC-szere
 | Olvasó figyelése | A Monitoring Reader szerepkör lehetővé teszi, hogy az összes monitorozási adat olvasása. |
 | Felhasználói hozzáférés rendszergazdája |A felhasználói hozzáférés rendszergazdájának szerepköre lehetővé teszi, hogy kezelje a felhasználói hozzáférést az Azure Automation-fiókokhoz. |
 
-## <a name="role-permissions"></a>Szerepkör engedélyei
+## <a name="role-permissions"></a>Szerepkör-engedélyek
 
 Az alábbi táblázatok ismertetik az egyes szerepkörökhöz meghatározott engedélyeket. Ez magában foglalhatja műveletek, amelyek az engedélyeket, és NotActions, amelyek korlátozzák a őket.
 
@@ -261,8 +261,8 @@ Az Update management eléri a szolgáltatásokat több szolgáltatás. Az alább
 |---------|---------|---------|
 |Automation-fiók     | Log Analytics közreműködő       | Automation-fiók        |
 |Automation-fiók    | Virtuális gépek közreműködője        | A fiókhoz tartozó erőforráscsoportot        |
-|Azure-beli monitorozási munkaterület     | Log Analytics közreműködő| Azure-beli monitorozási munkaterület        |
-|Azure-beli monitorozási munkaterület |Log Analytics olvasó| Előfizetés|
+|Log Analytics-munkaterület     | Log Analytics közreműködő| Log Analytics-munkaterület        |
+|Log Analytics-munkaterület |Log Analytics olvasó| Előfizetés|
 |Megoldás     |Log Analytics közreműködő         | Megoldás|
 |Virtuális gép     | Virtuális gépek közreműködője        | Virtuális gép        |
 
@@ -274,12 +274,13 @@ A következő szakasz bemutatja, hogyan RBAC konfigurálása az Automation-fiók
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/), és nyissa meg az Automation-fiókját az Automation-fiókok lapról.
 2. Kattintson a **hozzáférés-vezérlés (IAM)** vezérlőelem bal felső sarokban található. Ekkor megnyílik a **hozzáférés-vezérlés (IAM)** oldal, ahol hozzáadhat új felhasználókat, csoportokat, és az alkalmazások kezelheti az Automation-fiók, és megtekintheti a meglévő szerepköröket, amelyek konfigurálhatók az Automation-fiókot.
+3. Kattintson a **szerepkör-hozzárendelések** fülre.
 
    ![Hozzáférés gomb](media/automation-role-based-access-control/automation-01-access-button.png)
 
 #### <a name="add-a-new-user-and-assign-a-role"></a>Új felhasználó hozzáadása és szerepkör hozzárendelése
 
-1. Az a **hozzáférés-vezérlés (IAM)** kattintson **+ Hozzáadás** megnyitásához a **engedélyek hozzáadása** oldal, ahol a felhasználó, csoport vagy alkalmazás hozzá, és hozzájuk rendelhet egy szerepkört.
+1. Az a **hozzáférés-vezérlés (IAM)** kattintson **+ szerepkör-hozzárendelés hozzáadása** megnyitásához a **szerepkör-hozzárendelés hozzáadása** oldal, ahol hozzáadhat egy felhasználó, csoport vagy alkalmazás, és szerepkör hozzárendelése hozzájuk.
 
 2. Válasszon egy szerepkört az elérhető szerepkörök listájáról. Kiválaszthatja, hogy bármelyik elérhető szerepkört, amely támogatja az Automation-fiók, illetve bármely egyéni szerepkört, amelyet korábban definiált.
 

@@ -1,6 +1,6 @@
 ---
-title: Biztonsági mentése és visszaállítása az Azure Service Fabric szereplője |} Microsoft Docs
-description: Megtudhatja, hogyan valósítja meg a biztonsági másolat és az Azure Service Fabric szereplője visszaállítja.
+title: Biztonsági mentés és visszaállítás Azure Service Fabric actors |} A Microsoft Docs
+description: Ismerje meg a biztonsági mentés végrehajtása, és az Azure Service Fabric actors visszaállítása.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -12,17 +12,22 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/19/2018
+ms.date: 10/29/2018
 ms.author: vturecek
-ms.openlocfilehash: c72aea9d104264243ef0654aea01e0a41f33ed6f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d5922e21dd464b8cbd0075e7bd2515ffa73607e6
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206866"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726933"
 ---
-# <a name="implement-reliable-actors-backup-and-restore"></a>Alkalmazzon Reliable Actors biztonsági mentése és visszaállítása
-A következő példa egy egyéni szereplő szolgáltatás adatok biztonsági mentésének szereplő már szerepel a távoli eljáráshívás-figyelő kihasználásával metódus közzététele `ActorService`:
+# <a name="implement-reliable-actors-backup-and-restore"></a>Reliable Actors megvalósítása biztonsági mentése és visszaállítása
+
+> [!NOTE]
+> A Microsoft azt javasolja, használandó [rendszeres biztonsági mentés és visszaállítás](service-fabric-backuprestoreservice-quickstart-azurecluster.md) Reliable Stateful services és Reliable actors – adatok biztonsági másolatának konfigurálásához. 
+> 
+
+A következő példában egy egyéni aktorszolgáltatás biztonsági másolatok aktor kihasználásával a távoli eljáráshívás figyelő már szerepel a metódus közzététele `ActorService`:
 
 ```csharp
 public interface IMyActorService : IService
@@ -98,7 +103,7 @@ class MyActorServiceImpl extends ActorService implements MyActorService
 }
 ```
 
-Ebben a példában `IMyActorService` , amely távoli eljáráshívási szerződés `IService` (C#) és `Service` (Java), majd valósítható `MyActorService`. A távoli eljáráshívás szerződés metódusok hozzáadásával `IMyActorService` most is elérhetők ügyfél keresztül egy távoli eljáráshívás proxy létrehozásával `ActorServiceProxy`:
+Ebben a példában `IMyActorService` megvalósító távoli eljáráshívás szerződés `IService` (C#) és `Service` (Java), majd valósít meg és `MyActorService`. A távoli eljáráshívás szerződés, a metódusok hozzáadásával a `IMyActorService` most is elérhetők az ügyfél távoli eljáráshívás proxyn keresztül létrehozásával `ActorServiceProxy`:
 
 ```csharp
 IMyActorService myActorServiceProxy = ActorServiceProxy.Create<IMyActorService>(
@@ -113,12 +118,12 @@ MyActorService myActorServiceProxy = ActorServiceProxy.create(MyActorService.cla
 myActorServiceProxy.backupActorsAsync();
 ```
 
-További információ a Reliable Actors, olvassa el az alábbiakat:
+Reliable actors – további információért olvassa el a következő cikkeket:
 * [Aktor állapotkezelés](service-fabric-reliable-actors-state-management.md)
-* [Aktor életciklusának és szemétgyűjtési gyűjtése](service-fabric-reliable-actors-lifecycle.md)
-* [Actors API referenciadokumentációt tartalmaz](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Actors-életciklus-kezelés és szemétgyűjtés gyűjtemény](service-fabric-reliable-actors-lifecycle.md)
+* [Aktorok API dokumentációja](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [.NET mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java-példakód](http://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Java-mintakód](http://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/13/2018
 ms.author: aljo
-ms.openlocfilehash: 9da213525a5921295d6271adfd473b7a05a049a4
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 14513e23aafd05796767e1ae08d4d4c14cecdfbc
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497919"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52728310"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállítások testre szabása
 Ez a cikk ismerteti a Service Fabric-fürtöt, amely testre szabható a különböző fabric beállításait. A fürtök az Azure-ban üzemeltetett, testre szabhatja a beállításokat a [az Azure portal](https://portal.azure.com) vagy Azure Resource Manager-sablon használatával. További információkért lásd: [egy Azure-fürtön konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md). Az önálló fürtök esetén, testre szabható beállítások frissítése a *ClusterConfig.json* fájl- és a egy konfigurálási frissítse a fürtön. További információkért lásd: [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -138,6 +138,13 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |IsEnabled|bool, alapértelmezett érték a hamis|Statikus|Engedélyezi vagy letiltja a nincs. Nincs alapértelmezés szerint le van tiltva, és ez a konfiguráció kell állítani az engedélyezéshez. |
 |PartitionPrefix|sztring, alapértelmezett érték a "--"|Statikus|Azt szabályozza, hogy a partíció előtag karakterlánc értékét a particionált szolgáltatások DNS-lekérdezésekre. Az érték: <ul><li>Kell RFC-kompatibilis DNS-lekérdezés részeként lesz.</li><li>Nem tartalmazhat egy pont követ, '.', mert pont zavarja a DNS-utótag viselkedés.</li><li>Nem lehet 5 karakternél hosszabb.</li><li>Nem lehet üres karakterlánc.</li><li>Ha felülbírálja a PartitionPrefix beállítást, majd PartitionSuffix felül kell bírálni, és fordítva.</li></ul>További információkért lásd: [Service Fabric DNS-szolgáltatás.](service-fabric-dnsservice.md).|
 |PartitionSuffix|sztring, alapértelmezett érték a ""|Statikus|Azt szabályozza, hogy a partíció utótag karakterlánc értékét a particionált szolgáltatások DNS-lekérdezésekre. Az érték: <ul><li>Kell RFC-kompatibilis DNS-lekérdezés részeként lesz.</li><li>Nem tartalmazhat egy pont követ, '.', mert pont zavarja a DNS-utótag viselkedés.</li><li>Nem lehet 5 karakternél hosszabb.</li><li>Ha felülbírálja a PartitionPrefix beállítást, majd PartitionSuffix felül kell bírálni, és fordítva.</li></ul>További információkért lásd: [Service Fabric DNS-szolgáltatás.](service-fabric-dnsservice.md). |
+
+## <a name="eventstore"></a>Az EventStore
+| **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
+| --- | --- | --- | --- |
+|MinReplicaSetSize|int, alapértelmezett érték 0|Statikus|Az EventStore szolgáltatás MinReplicaSetSize |
+|PlacementConstraints|sztring, alapértelmezett érték a ""|Statikus|  Az EventStore szolgáltatás PlacementConstraints |
+|TargetReplicaSetSize|int, alapértelmezett érték 0|Statikus| Az EventStore szolgáltatás TargetReplicaSetSize |
 
 ## <a name="fabricclient"></a>FabricClient
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |

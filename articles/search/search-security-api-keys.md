@@ -1,6 +1,6 @@
 ---
-title: Létrehozása, kezelése és biztonságos rendszergazdai és lekérdezés api-kulcsot az Azure Search |} Microsoft Docs
-description: API-kulcsokat a szolgáltatási végpont való hozzáférés szabályozása. Adminisztrációs kulcsok írási hozzáférést. Lekérdezési kulcsok a csak olvasási hozzáféréssel is létrehozható.
+title: Hozzon létre, kezelhet és secure admin és lekérdezési api-kulcsok az Azure Search |} A Microsoft Docs
+description: API-kulcsok a szolgáltatásvégpont való hozzáférés szabályozása. Az adminisztrációs kulcsok írási hozzáférést. Lekérdezési kulcsok a csak olvasási hozzáféréssel is létrehozható.
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
@@ -10,70 +10,70 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: heidist
-ms.openlocfilehash: 2ec720f26cfbadb9963ff3991ad1795c9b30c136
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 0a8975fad21645535a6e7407bcd2d59f537a9fff
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284981"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727973"
 ---
-# <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Hozzon létre és api-kulcsok az Azure Search szolgáltatás kezelése
+# <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Az Azure Search szolgáltatás api-kulcsok létrehozása és kezelése
 
-Összes kérelmet, a keresési szolgáltatás kell egy csak olvasható api-kulcs lett létrehozva, kifejezetten a szolgáltatás számára. Az api-kulcs az egyetlen módszer a keresési szolgáltatás végpontjának való hozzáférés hitelesítéséhez, és tartalmaznia kell minden kérést. A [REST megoldások](search-get-started-nodejs.md#update-the-configjs-with-your-search-service-url-and-api-key), az api-kulcs általában sor kerül a kérelem fejlécében. A [.NET megoldások](search-howto-dotnet-sdk.md#core-scenarios), egy kulcs gyakran szerepel a konfigurációs beállításokat, és majd átadása pedig [hitelesítő adatok](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) (adminisztrációs kulcsot) vagy [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.searchcredentials) (lekérdezési kulcsot) a [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient).
+Egy keresési szolgáltatás érkező összes kérés egy csak olvasható api-kulcs jött létre kifejezetten a szolgáltatás a kell. Az api-kulcsot a egyetlen a keresési szolgáltatás végpontját való hozzáférés hitelesítéséhez mechanizmus, és szerepelnie kell halasztása minden kérelemnél. A [REST megoldások](search-get-started-nodejs.md#update-the-configjs-with-your-search-service-url-and-api-key), az api-kulcsot általában a kérelem fejlécében van megadva. A [.NET – megoldások](search-howto-dotnet-sdk.md#core-scenarios), egy kulcs gyakran megadott konfigurációs beállításai, és ezután adhatók be [hitelesítő adatok](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) (admin key) vagy [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.searchcredentials) (lekérdezési kulcsot) a [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient).
 
-Kulcsok szolgáltatás kiépítése során jönnek létre a keresési szolgáltatáshoz. Megtekintheti és kulcsértékek az beszerzése a [Azure-portálon](https://portal.azure.com).
+Kulcsok jönnek létre a search Service szolgáltatás kiépítése során. Megtekintheti, és szerezze be a kulcs értékeit az [az Azure portal](https://portal.azure.com).
 
-![Portállapon, beállítások, a kulcsok szakasz](media/search-manage/azure-search-view-keys.png)
+![Portál oldalán beállításait, a kulcsok szakaszban](media/search-manage/azure-search-view-keys.png)
 
-## <a name="what-is-an-api-key"></a>Mi az az api-kulcsát
+## <a name="what-is-an-api-key"></a>Mi az api-kulcsát
 
-Api-kulcsát: véletlenszerűen generált számok és betűk álló karakterlánc. Keresztül [szerepköralapú engedélyeinek](search-security-rbac.md), törölheti vagy a kulcsok beolvasása a, de nem egy kulcs cserélje le a felhasználói jelszó vagy Active Directory keresési műveletek eléréséhez használják elsődleges hitelesítési módszert. 
+Api-kulcsát: véletlenszerűen generált számokból és betűkből álló karakterlánc. Keresztül [szerepköralapú engedélyeinek](search-security-rbac.md), törölheti, vagy olvassa el a kulcsokat, de nem egy felhasználói jelszót cserélje le egy kulcsot és keresési műveletek eléréséhez, az elsődleges hitelesítési módszert az Active Directory használatával. 
 
-A keresési szolgáltatás eléréséhez használt kulcsok kétféle: admin (olvasható és írható) és a lekérdezés (csak olvasható).
+A keresési szolgáltatás eléréséhez használt kulcsok kétféle: admin (olvasás / írás) és a lekérdezés (csak olvasható).
 
 |Kulcs|Leírás|Korlátok|  
 |---------|-----------------|------------|  
-|Adminisztratív körzet|Teljes körű jogosultságot biztosít az összes művelethez, beleértve a szolgáltatás kezelése létrehozása, és törölje az indexek, az indexelők és az adatforrások.<br /><br /> Két adminisztrációs kulcsok, néven *elsődleges* és *másodlagos* kulcsok a portálon jönnek létre, ha a szolgáltatás jön létre, és az igény szerinti külön-külön újragenerálása. A két kulcs lehetővé teszi egy kulcs váltása a második kulcs használatakor a szolgáltatás folyamatos elérésére.<br /><br /> Adminisztrációs kulcsok csak HTTP-kérelmek fejléceinek vannak megadva. Az egy URL-cím nem helyezhető el egy adminisztrációs api-kulcsot.|Legfeljebb 2-szolgáltatás|  
-|Lekérdezés|Csak olvasható hozzáférést biztosítanak az indexekhez és dokumentumokhoz, és általában a keresési kérelmeket kibocsátó ügyfélalkalmazások számára.<br /><br /> Lekérdezési kulcsok igény szerint jönnek létre. Létrehozhat őket manuálisan a portálon vagy programozottan keresztül a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/).<br /><br /> Lekérdezési kulcsok a keresés, a javaslat, vagy a keresési művelet HTTP-kérelem fejléc adható meg. Másik lehetőségként átadhatók egy lekérdezési kulcsot paraméterként egy URL-címen. Attól függően, hogy az ügyfélalkalmazás formulates a kérelmet akkor valószínűleg egyszerűbb felelt meg a kulcsot a lekérdezési paramétert:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2017-11-11&api-key=[query key]`|50-szolgáltatás|  
+|Adminisztratív körzet|Minden művelet, beleértve a szolgáltatás kezelését lehetővé teszi teljes jogokat biztosít létrehozása, és az indexek, indexelők és adatforrások törlése.<br /><br /> Két adminisztrációs kulcsot néven *elsődleges* és *másodlagos* a Portal kulcsok akkor jönnek létre, ha a szolgáltatás jön létre, és igény szerint külön-külön újragenerálása. Két kulcs lehetővé teszi, hogy vihetők át egy kulcs használatával, a második kulcsot e folyamatos hozzáférésre a szolgáltatáshoz.<br /><br /> Az adminisztrációs kulcsok csak a HTTP-kérelemfejlécek vannak megadva. Egy URL-cím nem helyezhető el egy rendszergazdai api-kulcsát.|Legfeljebb 2 szolgáltatásonként|  
+|Lekérdezés|Csak olvasási hozzáférést biztosít az indexekhez és dokumentumokhoz, és általában oszlanak meg, hogy a keresési kérelmeket kibocsátó ügyfélalkalmazások számára.<br /><br /> Lekérdezési kulcsok igény szerint jönnek létre. Létrehozhatja őket manuálisan a portálon vagy programozottan keresztül a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/).<br /><br /> Lekérdezési kulcsok segítségével is megadható egy HTTP-kérelem fejléce keresési, a javaslat vagy a keresési műveletet. Másik lehetőségként adhat át egy lekérdezési kulcsot paraméterként az URL-cím. Attól függően, hogy az ügyfélalkalmazás formulates a kérelmet azt valószínűleg egyszerűbb adja át a kulcsot a lekérdezési paramétert:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2017-11-11&api-key=[query key]`|50 szolgáltatásonként|  
 
- Nincs vizuálisan, egy adminisztrációs kulcsot vagy a lekérdezési kulcs közötti különbség. Mindkét kulcsai 32 véletlenszerűen álló karakterláncok generált alfanumerikus karakter. Ha elveszti nyomon milyen kulcs van megadva az alkalmazásban, akkor [ellenőrizze a portálon értékek](https://portal.azure.com) , vagy használja a [REST API](https://docs.microsoft.com/rest/api/searchmanagement/) adhatja vissza az értéket és a kulcs típusa.  
+ Vizuálisan nincs különbség a között, egy adminisztrációs kulcsot vagy a lekérdezési kulcsot. Mindkét kulcsai karakterláncok mikroszolgáltatásokból álló, 32 véletlenszerűen generált alfanumerikus karakterek. Milyen típusú kulcs van megadva, az alkalmazás nyomon megszakad, ha [ellenőrizze a kulcs a portálon](https://portal.azure.com) vagy használja a [REST API-val](https://docs.microsoft.com/rest/api/searchmanagement/) adhatja vissza az értéket, és a kulcs típusa.  
 
 > [!NOTE]  
->  A gyenge biztonsági eljárás felelt meg a bizalmas adatokat, mint egy `api-key` kérési URI-ban. Emiatt Azure Search csak fogad egy lekérdezési kulcsot egy `api-key` a lekérdezésben karakterlánc, és kerülje ennek során, kivéve, ha az index tartalmát nyilvánosan elérhetőnek kell lennie. Általános szabályként elmondható, sikeres javasoljuk a `api-key` fejléc szerint.  
+>  Bizalmas adatok átadására például gyenge biztonsági gyakorlat minősül egy `api-key` a kérelem URI-t. Emiatt az Azure Search csak fogad egy lekérdezési kulcsot egy `api-key` a lekérdezésben szereplő karakterláncot, és kerülje ennek során, kivéve, ha az index tartalmát nyilvánosan elérhetőnek kell lennie. Általános szabály, javasoljuk, hogy megadásának a `api-key` fejléc szerint.  
 
-## <a name="find-api-keys-for-your-service"></a>A szolgáltatás található api-kulcsok
+## <a name="find-api-keys-for-your-service"></a>A szolgáltatás api-kulcsainak megkereséséhez
 
-Ezt úgy szerezheti be a portál vagy a tárelérési kulcsok a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/). További információkért lásd: [rendszergazda és a lekérdezés api-kulcsok kezelése](search-security-api-keys.md).
+Hozzáférési kulcsok a portálon vagy keresztül szerezheti be a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/). További információkért lásd: [rendszergazda és a lekérdezési api-kulcsok kezelése](search-security-api-keys.md).
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Lista a [keresési szolgáltatások](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az előfizetéséhez.
-3. Válassza ki a szolgáltatást, és keresse meg a szolgáltatás lapján **beállítások** >**kulcsok** rendszergazda és a lekérdezési kulcsok megtekintéséhez.
+2. Lista a [keresési szolgáltatások](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az előfizetéshez.
+3. Válassza ki a szolgáltatást, és keresse meg a szolgáltatás oldalán **beállítások** >**kulcsok** rendszergazda és a lekérdezési kulcsok megtekintéséhez.
 
-![Portállapon, beállítások, a kulcsok szakasz](media/search-security-overview/settings-keys.png)
+![Portál oldalán beállításait, a kulcsok szakaszban](media/search-security-overview/settings-keys.png)
 
-## <a name="regenerate-admin-keys"></a>Adminisztrációs kulcsok újragenerálása
+## <a name="regenerate-admin-keys"></a>Az adminisztrációs kulcsok újragenerálása
 
-Két adminisztrációs kulcsok minden egyes szolgáltatás jönnek létre, hogy egy elsődleges kulcs átfordulási a másodlagos kulcs használatával a folyamatos hozzáférés érdekében.
+Két adminisztrációs kulcsot minden egyes szolgáltatás jön létre, így is váltása elsődleges kulcs, a másodlagos kulcs használatával a folyamatos hozzáférés érdekében.
 
-Ha az elsődleges és másodlagos kulcsok újragenerálása egyszerre, vagy a kulcs eléréséhez a szolgáltatási műveletek használó alkalmazások többé nem lesz a szolgáltatás elérésére.
+Ha az elsődleges és másodlagos kulcsok egy időben hozza létre újra mindkét kulcsot használó szolgáltatási műveletek eléréséhez szükséges alkalmazások többé nem lesz a szolgáltatáshoz való hozzáférést.
 
-1. Az a **beállítások** >**kulcsok** lapon, a másodlagos kulcs másolása.
-2. Minden olyan alkalmazásnál frissítse az api-kulcs beállításokat a másodlagos kulcsot használ.
+1. Az a **beállítások** >**kulcsok** lapon, a másodlagos kulcs másolásához.
+2. Az összes alkalmazást frissítse a másodlagos kulcs használatára api-kulcs beállításait.
 3. Az elsődleges kulcs újragenerálása.
-4. Frissítse az alkalmazásokat az új elsődleges kulcsot használják.
+4. Frissítse az összes alkalmazást az új elsődleges kulcsot használja.
 
-## <a name="secure-api-keys"></a>A biztonságos api-kulcsok
-Kulcs biztonsági korlátozza a hozzáférést a portál vagy az erőforrás-kezelő felületek (a PowerShell vagy a parancssori felület) keresztül biztosított. Amint az előfizetés rendszergazdáihoz megtekintheti, és minden api-kulcs újragenerálása. Éppen ezért tekintse át a szerepkör-hozzárendelések megérteni, hogy ki férhet hozzá az adminisztrációs kulcsok.
+## <a name="secure-api-keys"></a>Biztonságos api-kulcsok
+Kulcsfontosságú biztonsági biztosított korlátozza a hozzáférést a portálon vagy a Resource Manager-felületeket (a PowerShell vagy a parancssori felület). Feljegyzett, előfizetés-rendszergazda megtekintheti, és minden api-kulcsok újragenerálása. Elővigyázatosságból tekintse át a szerepkör-hozzárendelések megértéséhez, hogy ki férhet hozzá az adminisztrációs kulcsok.
 
-+ A szolgáltatás irányítópultján kattintson **hozzáférés-vezérlés (IAM)** a szolgáltatás szerepkör-hozzárendelések megtekintése.
++ A szolgáltatás irányítópultján kattintson **hozzáférés-vezérlés (IAM)** , majd a **szerepkör-hozzárendelések** fülre kattintva megtekintheti a szolgáltatás szerepkör-hozzárendeléseit.
 
 A következő szerepkörök tagjai megtekinthetik és kulcsok újragenerálása: tulajdonos, közreműködő, [keresési szolgáltatás közreműködők](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor)
 
 > [!Note]
-> A keresési eredmények azonosító-alapú hozzáférés létrehozhat lehet levágni eredményeket e identitása, a biztonsági szűrők eltávolítása a dokumentumok, amelynek a kérelmező nem rendelkeznek hozzáféréssel. További információkért lásd: [biztonsági szűrők](search-security-trimming-for-azure-search.md) és [biztonságos és az Active Directory](search-security-trimming-for-azure-search-with-aad.md).
+> A keresési eredmények az identitásalapú hozzáférés létrehozhat által identitás, az eredmények azokat a biztonsági szűrők, amelynek a kérelmező nem szeretett volna dokumentumok eltávolítása. További információkért lásd: [biztonsági szűrők](search-security-trimming-for-azure-search.md) és [az Active Directory biztonságos](search-security-trimming-for-azure-search-with-aad.md).
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Azure Search szerepköralapú hozzáférés-vezérlés](search-security-rbac.md)
++ [Szerepköralapú hozzáférés-vezérlés az Azure Search](search-security-rbac.md)
 + [Kezelés a PowerShell használatával](search-manage-powershell.md) 
-+ [Teljesítmény- és optimalizálási cikk](search-performance-optimization.md)
++ [Teljesítmény és optimalizálás a cikk](search-performance-optimization.md)

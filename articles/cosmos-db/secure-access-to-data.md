@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/19/2018
 ms.author: rafats
-ms.openlocfilehash: ed97a2c31897d1e5e61421ea489a35af377f4f37
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 0d5243a1dd2a7c9244860da15d39f407b281e1e3
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621445"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726797"
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Azure Cosmos DB-adatokhoz való hozzáférés biztonságossá tétele
 Ez a cikk áttekintést tárolt adatokhoz való hozzáférés biztonságossá tétele [a Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
@@ -180,8 +180,8 @@ DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 Azure Cosmos DB fiók olvasói hozzáférés hozzáadása a felhasználói fiókjával, rendelkeznie egy előfizetés tulajdonosa, hajtsa végre az alábbi lépéseket az Azure Portalon.
 
 1. Nyissa meg az Azure Portalon, és válassza ki az Azure Cosmos DB-fiókját.
-2. Kattintson a **hozzáférés-vezérlés (IAM)** fülre, majd **+ Hozzáadás**.
-3. Az a **engedélyek hozzáadása** ablaktáblán, a a **szerepkör** jelölje ki **Cosmos DB-fiók olvasói szerepköre**.
+2. Kattintson a **hozzáférés-vezérlés (IAM)** fülre, majd **+ szerepkör-hozzárendelés hozzáadása**.
+3. Az a **szerepkör-hozzárendelés hozzáadása** ablaktáblán, a a **szerepkör** jelölje ki **Cosmos DB-fiók olvasói szerepköre**.
 4. Az a **hozzáférés hozzárendelése a boxba**válassza **az Azure AD-felhasználó, csoport vagy alkalmazás**.
 5. Válassza ki a címtárban, amelyhez hozzáférést szeretne a felhasználó, csoport vagy alkalmazás.  A címtár megjelenített név, e-mail címét vagy objektumazonosítók kereshet.
     A kiválasztott felhasználó, csoport vagy alkalmazás a kijelölt tagok listájában jelenik meg.

@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/28/2018
+ms.date: 11/28/2018
 ms.author: dekapur
-ms.openlocfilehash: 80b331d32fe1e7bb4eb331bd981106968bc73bed
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: e4540076b29cf3cd51f03239a1868e18a41781d9
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163209"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726525"
 ---
 # <a name="create-service-fabric-clusters-on-windows-server-or-linux"></a>Service Fabric-fürtök létrehozása Windows Serveren vagy Linuxon
 Service Fabric-fürt, amelybe mikroszolgáltatásokat helyezhet üzembe és felügyelhet virtuális vagy fizikai gépek hálózaton keresztül csatlakozó készlete áll. Egy számítógép vagy virtuális Gépet, amely egy fürt része egy fürt csomópontja nevezzük. Fürtök méretezheti több ezer csomóponton. Ha új csomópontot ad hozzá a fürtöt, akkor a Service Fabric csomópontok megnövekedett számú rebalances a szolgáltatás partíció replikák és példányok. A teljes javítja az alkalmazások teljesítményéről, és csökkenti a versengés memória való hozzáféréshez. Ha a fürt csomópontjainak hatékonyan nincsenek használatban, csökkentheti a fürtben található csomópontok számát. A Service Fabric rebalances a partíciók replikáit és példányainak újra a csomópontokat, hogy a hardver jobban kihasználja a csomópontokon csökkent számú.
@@ -35,7 +35,9 @@ Fürt létrehozása az Azure-ban történik, akár egy erőforrás-modellje sabl
 * Windows Server 2012 R2
 * Windows Server 2016 
 * A Windows Server 1709-es
+* A Windows Server 1803-as verzióban
 * Linux Ubuntu 16.04
+* Red Hat Enterprise Linux 7.4 (előzetes verzió támogatása)
 
 > [!NOTE]
 > Ha úgy dönt, hogy üzembe helyezése a Service Fabric Windows Server 1709-es, vegye figyelembe, hogy (1), ne legyen olyan hosszú távú karbantartási ág, ezért előfordulhat, hogy a jövőben áthelyezése verziók, és (2) Ha a tárolók üzembe helyezése, a Windows Server 2016-ra épülő tárolók nem működnek a Windows Server  1709-es, és ez fordítva is igaz (kell őket az üzembe helyezés helyszíne újraépítése).

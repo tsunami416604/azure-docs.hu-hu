@@ -9,16 +9,15 @@ ms.assetid: fc0a9e2f-3beb-4f47-a9fe-3f86cd29d97a
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: mbullwin
-ms.openlocfilehash: 99f172245a0a42a95928a785c4bd70efcb19a694
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 934d5929048627bf378f50814f0cecde794ddab9
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093911"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727851"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Nyomkövetési naplók az Application Insights Java felfedezése
 Ha a Logback vagy Log4J használja (1.2-es verzió vagy 2.0-s verzió) nyomkövetés, az automatikusan elküldi az Application Insights, amelyen ismerje meg, és keresse meg azokat a nyomkövetési naplók rendelkezhet.
@@ -101,7 +100,7 @@ Ezután frissítse a projektfüggőségeket, hogy a Projektfüggőségek.
 #### <a name="otherwise-"></a>Egyéb esetben...
 Kövesse a manuálisan Application Insights Java SDK telepítése, töltse le a jar (miután Maven központi lapra jogokért letöltési szakaszban "jar" hivatkozásra kattintva) megfelelő naplóírói, és a letöltött naplóírói jar hozzáadása a projekthez.
 
-| Naplózó | Letöltés | Részletes ismertetés |
+| Naplózó | Letöltés | Erőforrástár |
 | --- | --- | --- |
 | Logback |[Logback naplóírói Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights – naplózás – logback |
 | Log4J v2.0 |[Log4J v2 naplóírói Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |

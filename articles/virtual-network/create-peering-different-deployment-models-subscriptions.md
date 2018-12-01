@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 34c11c911b6c2ffbc4d4800cd7203a8d430814fb
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 666e4c434d05bb953950893f32c262183055becd
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311245"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52728166"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Hozzon létre egy virtuális hálózati társviszony - másik üzembe helyezési modellek és -előfizetések
 
@@ -56,8 +56,8 @@ Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Mindk�
     - **Hely**: *USA keleti RÉGIÓJA*
 4. Az a **erőforrások keresése** mezőbe írja be a portál tetején lévő *myVnetA*. Kattintson a **myVnetA** amikor megjelenik a keresési eredmények között. Megjelenik egy panel az **myVnetA** virtuális hálózatot.
 5. Az a **myVnetA** panel, amelyen megjelenik, kattintson a **hozzáférés-vezérlés (IAM)** a panel bal oldali beállítások függőleges listájából.
-6. Az a **myVnetA - hozzáférés-vezérlés (IAM)** panel, amelyen megjelenik, kattintson a **+ Hozzáadás**.
-7. Az a **engedélyek hozzáadása** panel, amelyen megjelenik, válassza ki **hálózati közreműködő** a a **szerepkör** mezőbe.
+6. Az a **myVnetA - hozzáférés-vezérlés (IAM)** panel, amelyen megjelenik, kattintson a **+ szerepkör-hozzárendelés hozzáadása**.
+7. Az a **szerepkör-hozzárendelés hozzáadása** panel, amelyen megjelenik, válassza ki **hálózati közreműködő** a a **szerepkör** mezőbe.
 8. Az a **kiválasztása** mezőben válassza ki a Felhasználób, vagy írja be a Felhasználób e-mail-címet a keresési funkciót. A társviszony-létesítés beállítása a virtuális hálózatnak ugyanahhoz az Azure Active Directory bérlőhöz van a kiválasztott felhasználók látható. Amikor megjelenik a listában, kattintson a Felhasználób.
 9. Kattintson a **Save** (Mentés) gombra.
 10. Jelentkezzen ki a portálra a Felhasználóa felhasználóként, majd jelentkezzen be Felhasználób felhasználóként.

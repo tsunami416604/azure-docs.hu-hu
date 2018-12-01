@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 5da34e8e79c0df88cfad0b398aa8e1c22f158489
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 5f558ea851d63b08885293efcff3fef600f2cc17
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428878"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726389"
 ---
 # <a name="manage-access-rights-to-azure-blob-and-queue-data-with-rbac-preview"></a>Hozzáférési jogosultsággal az Azure Blob- és üzenetsoradatot RBAC (előzetes verzió) használata kezelheti
 
@@ -61,15 +61,16 @@ A következő szakaszok bemutatják, hogyan rendelhet egy szerepkört tároló a
 Minden tárolók vagy az Azure Portalon a tárfiókban lévő üzenetsorok való hozzáférést beépített szerepkör hozzárendelése:
 
 1. Az a [az Azure portal](https://portal.azure.com), lépjen a tárfiókhoz.
-2. Válassza ki a tárfiókot, majd válassza ki **hozzáférés-vezérlés (IAM)** a fiókhoz tartozó hozzáférés-vezérlési beállítások megjelenítéséhez. Kattintson a **Hozzáadás** gombra kattintva adhat hozzá egy új szerepkör.
+1. Válassza ki a tárfiókot, majd válassza ki **hozzáférés-vezérlés (IAM)** a fiókhoz tartozó hozzáférés-vezérlési beállítások megjelenítéséhez. Válassza ki a **szerepkör-hozzárendelések** lapján megtekintheti a szerepkör-hozzárendelések listáját.
 
     ![Tárolási hozzáférés-vezérlési beállításokkal ábrázoló képernyőfelvétel](media/storage-auth-aad-rbac/portal-access-control.png)
 
-3. Az a **engedélyek hozzáadása** ablakban válassza ki a szerepkört az Azure AD identitás hozzárendelése. Majd keresse meg az identitást, akiknek az adott szerepkörhöz hozzárendelni kívánt keresse. Ha például az alábbi képen a **Storage-Blobadatok olvasója (előzetes verzió)** a felhasználóhoz rendelt szerepkör.
+1. Kattintson a **szerepkör-hozzárendelés hozzáadása** gombra kattintva adhat hozzá egy új szerepkör.
+1. Az a **szerepkör-hozzárendelés hozzáadása** ablakban válassza ki a szerepkört az Azure AD identitás hozzárendelése. Majd keresse meg az identitást, akiknek az adott szerepkörhöz hozzárendelni kívánt keresse. Ha például az alábbi képen a **Storage-Blobadatok olvasója (előzetes verzió)** a felhasználóhoz rendelt szerepkör.
 
     ![Az RBAC szerepkör hozzárendelése bemutató képernyőkép](media/storage-auth-aad-rbac/add-rbac-role.png)
 
-4. Kattintson a **Save** (Mentés) gombra. Az identitás, akinek a szerepköre alatt a szerepkör a listán jelenik meg. Ha például az alábbi képen látható, hogy a felvett felhasználók most már rendelkezik olvasási engedéllyel a tárfiókban tárolt összes blob.
+1. Kattintson a **Save** (Mentés) gombra. Az identitás, akinek a szerepköre alatt a szerepkör a listán jelenik meg. Ha például az alábbi képen látható, hogy a hozzáadott felhasználó már rendelkezik olvasási engedéllyel a tárfiókban lévő összes blob adatokat.
 
     ![Képernyőn egy szerepkörhöz rendelt felhasználók listáját bemutató képernyőkép](media/storage-auth-aad-rbac/account-scoped-role.png)
 
@@ -78,17 +79,20 @@ Minden tárolók vagy az Azure Portalon a tárfiókban lévő üzenetsorok való
 Egy tároló vagy egy üzenetsor hatókörű beépített szerepkör hozzárendelése szükséges lépések hasonlóak. Az itt bemutatott eljárás hozzárendel egy szerepkör hatóköre egy tároló, de várólista hatóköre szerepkör hozzárendelése ugyanazokat a lépéseket követheti: 
 
 1. Az a [az Azure portal](https://portal.azure.com), lépjen a tárfiókhoz, és megjeleníti a **áttekintése** a fiókhoz.
-2. Blob Service, válassza a **Blobok tallózása**. 
-3. Keresse meg a helyet, amelynek meg szeretné rendelhet egy szerepkört, és megjeleníti a tároló beállításait. 
-4. Válassza ki **hozzáférés-vezérlés (IAM)** a tárolóhoz a hozzáférés-vezérlési beállítások megjelenítéséhez.
-5. Az a **engedélyek hozzáadása** ablakban válassza ki a szerepkört, amely egy Azure AD Identity hozzárendelni kívánt. Ezután keresse meg az identitást, amelyhez szeretné, hogy a szerepkör hozzárendelése.
-6. Kattintson a **Save** (Mentés) gombra. Az identitás, akinek a szerepköre alatt a szerepkör a listán jelenik meg. Ha például az alábbi képen látható, hogy a hozzáadott felhasználó már rendelkezik olvasási engedéllyel a nevű tárolóban lévő adatok *minta-tároló*.
+1. A szolgáltatások területen válassza ki a **Blobok**. 
+1. Keresse meg a helyet, amelynek meg szeretné rendelhet egy szerepkört, és megjeleníti a tároló beállításait. 
+1. Válassza ki **hozzáférés-vezérlés (IAM)** a tárolóhoz a hozzáférés-vezérlési beállítások megjelenítéséhez. Válassza ki a **szerepkör-hozzárendelések** lapján megtekintheti a szerepkör-hozzárendelések listáját.
+
+    ![Képernyő-tároló hozzáférés-vezérlési beállításokkal bemutató képernyőkép](media/storage-auth-aad-rbac/portal-access-control-container.png)
+1. Kattintson a **szerepkör-hozzárendelés hozzáadása** gombra kattintva adhat hozzá egy új szerepkör.
+1. Az a **szerepkör-hozzárendelés hozzáadása** ablakban válassza ki a szerepkört, amely egy Azure AD Identity hozzárendelni kívánt. Ezután keresse meg az identitást, amelyhez szeretné, hogy a szerepkör hozzárendelése.
+1. Kattintson a **Save** (Mentés) gombra. Az identitás, akinek a szerepköre alatt a szerepkör a listán jelenik meg. Ha például az alábbi képen látható, hogy a hozzáadott felhasználó már rendelkezik olvasási engedéllyel a nevű tárolóban lévő adatok *minta-tároló*.
 
     ![Képernyőn egy szerepkörhöz rendelt felhasználók listáját bemutató képernyőkép](media/storage-auth-aad-rbac/container-scoped-role.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- RBAC kapcsolatos további információkért lásd: [szerepköralapú hozzáférés-vezérlés használatának első lépései](../../role-based-access-control/overview.md).
+- RBAC kapcsolatos további információkért lásd: [Mi a szerepköralapú hozzáférés-vezérlés (RBAC)?](../../role-based-access-control/overview.md).
 - Ismerje meg, hogyan hozzárendelése és kezelése az Azure PowerShell, az Azure CLI vagy a REST API az RBAC szerepkör-hozzárendeléseit, tanulmányozza a következő cikkeket:
     - [Kezelheti a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md)
     - [Kezelheti a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure CLI-vel](../../role-based-access-control/role-assignments-cli.md)
