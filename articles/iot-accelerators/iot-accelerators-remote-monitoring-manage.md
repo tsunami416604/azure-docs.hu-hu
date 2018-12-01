@@ -1,35 +1,32 @@
 ---
-title: Eszközök kezelése egy Azure-alapú távoli monitorozási megoldásban – oktatóanyag | Microsoft Docs
-description: Ez az oktatóanyag azt mutatja be, hogyan kezelheti a távoli monitorozási megoldásgyorsítóhoz csatlakoztatott eszközöket.
+title: Eszközök konfigurálása egy Azure-alapú távoli figyelési megoldás – oktatóanyag |} A Microsoft Docs
+description: Ez az oktatóanyag bemutatja, hogyan konfigurálhatja az eszközöket a távoli figyelési megoldásgyorsító csatlakozik.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 11/08/2018
+ms.date: 11/15/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: b54f7601f66bd115b7ceb937e2c0ebf8ca8eb01e
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: b8352b062efdb49df01834bd3c2a5e1393e11a44
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821061"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679154"
 ---
-# <a name="tutorial-configure-and-manage-devices-connected-to-your-monitoring-solution"></a>Oktatóanyag: A monitorozási megoldáshoz csatlakoztatott eszközök konfigurálása és kezelése
+# <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Oktatóanyag: A figyelési megoldáshoz csatlakoztatott eszközök konfigurálása
 
-Ebben az oktatóanyagban a távoli monitorozási megoldásgyorsítóval konfigurálhatja és kezelheti a csatlakoztatott IoT-eszközöket. Új eszközt fog hozzáadni a megoldásgyorsítóhoz, amelyet konfigurálni fog, és frissíti a belső vezérlőprogramját.
+Ebben az oktatóanyagban a távoli monitorozási megoldásgyorsítóval konfigurálhatja és kezelheti a csatlakoztatott IoT-eszközöket. A megoldásgyorsító hozzáad egy új eszközt, és konfigurálja az eszközt.
 
-A Contoso új gépet rendelt, amellyel az egyik létesítményét szeretné bővíteni. Amíg az új gép kézbesítésére vár, Ön lefuttat egy szimulációt a megoldás működésének tesztelése érdekében. A szimuláció futtatásához hozzá kell adnia új szimulált motoreszközt a távoli monitorozási megoldásgyorsítóhoz, és tesztelnie kell, hogy a szimulált eszköz megfelelő választ ad-e a műveletekre és a konfiguráció frissítéseire.
-
-Az eszközök rugalmas konfigurálásához és kezeléséhez a távoli monitorozási megoldásgyorsító olyan IoT Hub-funkciókat használ, amilyenek például a [feladatok](../iot-hub/iot-hub-devguide-jobs.md) és a [közvetlen metódusok](../iot-hub/iot-hub-devguide-direct-methods.md). Bár ebben az oktatóanyagban szimulált eszközök szerepelnek, az eszközfejlesztők a közvetlen metódusokat olyan [fizikai eszközökön is implementálhatják, amelyek a távoli monitorozási megoldásgyorsítóhoz vannak csatlakoztatva](iot-accelerators-connecting-devices.md).
+A Contoso új gépet rendelt, amellyel az egyik létesítményét szeretné bővíteni. Amíg az új gép kézbesítésére vár, Ön lefuttat egy szimulációt a megoldás működésének tesztelése érdekében. A szimuláció futtatja, hozzáadhat új eszköz szimulált motor a távoli figyelési megoldásgyorsító és tesztelje, hogy ezt a szimulált eszközt megfelelően válaszol-konfiguráció frissítéseit. Bár ebben az oktatóanyagban szimulált eszközök szerepelnek, az eszközfejlesztők a közvetlen metódusokat olyan [fizikai eszközökön is implementálhatják, amelyek a távoli monitorozási megoldásgyorsítóhoz vannak csatlakoztatva](iot-accelerators-connecting-devices.md).
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 >[!div class="checklist"]
 > * Szimulált eszköz üzembe helyezése.
 > * Szimulált eszköz tesztelése.
-> * Eszköz belső vezérlőprogramjának frissítése.
 > * Eszköz újrakonfigurálása.
 > * Eszközök rendszerezése.
 
@@ -60,24 +57,6 @@ A **Device Details** (Eszközök részletei) résznél ellenőrizze, hogy az új
 Az **eszközt részletező** panel további információkat is megjelenít (például címkeértékeket, támogatott metódusokat, az eszköz által támogatott tulajdonságokat).
 
 A részletes diagnosztikai adatok megtekintéséhez görgessen lefelé a **Device Details** (Eszköz részletei) panelen a**Diagnostics** (Diagnosztika) szakasz megtekintéséhez.
-
-## <a name="act-on-a-device"></a>Műveletek elvégzése egy eszközön
-
-Ha tesztelni szeretné, hogy a szimulált motoreszköz megfelelő választ ad-e az irányítópult által kezdeményezett műveletekre, futtassa a **FirmwareUpdate** metódust. Ha egy műveletet szeretne végrehajtani egy eszközön egy metódus futtatásával, válassza ki az eszközt az eszközök listájából, majd válassza a **Jobs** (Feladatok) lehetőséget. Ha több eszközön is szeretne műveleteket végezni, egyszerre több eszközt is kiválaszthat. Az a **feladatok** panelen kattintson **módszerek**. Az **Engine** (Motor) eszközmodell három metódust határoz meg: **FirmwareUpdate**, **FillTank** és **EmptyTank**:
-
-[![Motorokhoz kapcsolódó metódusok](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-expanded.png#lightbox)
-
-Válassza ki a **FirmwareUpdate** metódust, a feladat neveként adja meg az **UpdateEngineFirmware** nevet, a belső vezérlőprogram verziója legyen **2.0.0**, a belső vezérlőprogram URI-ja a **http://contoso.com/engine.bin**, majd kattintson az **Apply** (Alkalmaz) gombra:
-
-[![A belső vezérlőprogram frissítési metódusának ütemezése](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatejob-inline.png)](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatejob-expanded.png#lightbox)
-
-A feladat állapotának nyomon követéséhez kattintson a **View job status** (Feladat állapotának megtekintése) elemre:
-
-[![Ütemezett belsővezérlőprogram-frissítési feladat monitorozása](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatestatus-inline.png)](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatestatus-expanded.png#lightbox)
-
-Ha a feladat befejeződött, lépjen vissza az **eszközök** lapjára. Megjelenik a motoreszköz belső vezérlőprogramjának új verziója.
-
-Ha az **eszközök** lapján több különböző típusú eszközt választ ki, létrehozhat egy feladatot, amellyel egy metódust az összes kiválasztott eszközön futtathat. A **feladatok** panelje a kiválasztott eszközöknek csak a közös metódusait jeleníti meg.
 
 ## <a name="reconfigure-a-device"></a>Eszköz újrakonfigurálása
 

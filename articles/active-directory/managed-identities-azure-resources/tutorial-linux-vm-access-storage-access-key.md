@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: e0261f96b1b097cba753ec905bc590a35e9a2c24
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: f00de9095e45901f92fcf3004a5f51cfdd709da2
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623604"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724773"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Oktatóanyag: Linux VM-beli, rendszer által hozzárendelt felügyelt identitás használata az Azure Storage eléréséhez hozzáférési kulccsal
 
@@ -65,7 +65,7 @@ Az Azure Storage nem támogatja natív módon az Azure AD-hitelesítést.  Az Az
 
 1. Lépjen vissza az újonnan létrehozott tárfiókra.
 2. Kattintson a **Hozzáférés-vezérlés (IAM)** hivatkozásra a bal oldali panelen.  
-3. A lap tetején a **+ Hozzáadás** gombra kattintva adjon hozzá egy új szerepkör-hozzárendelést a VM-hez.
+3. Kattintson a **+ szerepkör-hozzárendelés hozzáadása** az oldalra egy új szerepkör-hozzárendelés hozzáadása a virtuális gép felett
 4. A lap jobb oldalán a **Szerepkör** értékeként adja meg a „Storage Account Key Operator Service Role” (Tárfiókkulcs-kezelési szolgáltatás szerepkör) értéket. 
 5. A következő legördülő menüben a **Hozzáférés hozzárendelése** beállítás számára válassza ki a „Virtuális gép” értéket.  
 6. Ezután ellenőrizze, hogy a megfelelő előfizetés szerepel-e az **Előfizetés** legördülő menüben, majd állítsa az **Erőforráscsoport** értékét a „Minden erőforráscsoport” értékre.  

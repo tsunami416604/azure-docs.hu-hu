@@ -10,86 +10,98 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jansko
-ms.openlocfilehash: 222e37e38772b82e9d9849e3a955b865d43d3c63
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 0b1187083c14fc7c536f6a32f3a41957f53f299b
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957391"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679715"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>A Translator Text API nyelvéhez és régiójához támogatása
 
-A Translator Text API a következő nyelveket támogatja a szöveg a fordítás. Neurális gépi fordítás (NMT) magas színvonalú mesterséges Intelligenciával rendelkező gép fordítások új szabványa, és használja, a Translator Text API v3-as, akkor egy Neurális rendszeren érhető el az alapértelmezett érhető el. Neurális gépi fordítás érhető el a v2-ben a "generalnn" kategóriája használatával.
+A Translator Text API a következő nyelveket támogatja a szöveg a fordítás. Neurális gépi fordítás (NMT) magas színvonalú mesterséges Intelligenciával rendelkező gép fordítások új szabványa, és használja, a Translator Text API v3-as, akkor egy Neurális rendszeren érhető el az alapértelmezett érhető el. 
 
 [További információ arról, hogyan működik a gépi fordítás](https://www.microsoft.com/translator/mt.aspx)
 
-| Nyelv    | Fordítási típusa |Nyelvkód |
-|:----------- |:-------:|:-------------:|
-| afrikaans      | Statisztikai |`af`          |
-| arab      | Neurális | `ar`          |
-| Arab, Levantine    | Neurális | `apc`
-| Bengáli      | Neurális |`bn`          |
-| bosnyák (latin betűs)      | Statisztikai |`bs`          |
-| bolgár     |  Neurális |`bg`          |
-| Kantoni (hagyományos)      | Statisztikai |`yue`          |
-| katalán      | Statisztikai |`ca`          |
-| kínai (egyszerűsített)        |  Neurális |`zh-Hans`          |
-| kínai (hagyományos)        |  Neurális |`zh-Hant`          |
-| horvát      | Neurális |`hr`          |
-| cseh        |  Neurális |`cs`          |
-| dán        |  Neurális |`da`          |
-| holland        |  Neurális |`nl`          |
-| Angol       |  Neurális |`en`          |
-| észt      | Neurális |`et`          |
-| Fijian      | Statisztikai |`fj`          |
-| filippínó      | Statisztikai |`fil`          |
-| finn      | Neurális |`fi`          |
-| francia        |  Neurális |`fr`          |
-| német       |  Neurális |`de`          |
-| görög      | Neurális |`el`          |
-| Haitian Creole      | Statisztikai |`ht`          |
-| héber      | Neurális |`he`          |
-| hindi        |  Neurális |`hi`          |
-| Hmong Daw      | Statisztikai |`mww`          |
-| magyar      | Neurális |`hu`          |
-| izlandi      |  Neurális |`is`           |
-| indonéz      | Statisztikai |`id`          |
-| olasz        |  Neurális |`it`          |
-| japán        |  Neurális |`ja`          |
-| szuahéli      | Statisztikai |`sw`          |
-| Klingon      | Statisztikai |`tlh`          |
-| Klingon (plqaD)      | Statisztikai |`tlh-Qaak`          |
-| koreai        |  Neurális |`ko`          |
-| lett      | Neurális |`lv`          |
-| litván      | Neurális |`lt`          |
-| Madagaszkári      | Statisztikai |`mg`          |
-| maláj      | Statisztikai |`ms`          |
-| máltai      | Statisztikai |`mt`          |
-| norvég        |  Neurális |`nb`          |
-| perzsa      | Statisztikai |`fa`          |
-| lengyel        |  Neurális |`pl`          |
-| portugál        |  Neurális |`pt`          |
-| Queretaro Otomi      | Statisztikai |`otq`          |
-| román        |  Neurális |`ro`          |
-| orosz        |  Neurális |`ru`          |
-| Samoa      | Statisztikai |`sm`          |
-| szerb (cirill betűs)      | Statisztikai |`sr-Cyrl`          |
-| szerb (latin betűs)      | Statisztikai |`sr-Latn`          |
-| szlovák     | Neurális |`sk`          |
-| szlovén      | Neurális |`sl`          |
-| spanyol        |  Neurális |`es`          |
-| svéd        |  Neurális |`sv`          |
-| Tahitian      | Statisztikai |`ty`          |
-| tamil      | Statisztikai |`ta`          |
-| telugu   | Neurális   | `te` |
-| thai      | Neurális |`th`          |
-| Tongan      | Statisztikai |`to`          |
-| török       |  Neurális |`tr`          |
-| ukrán      | Neurális |`uk`          |
-| urdu      | Statisztikai |`ur`          |
-| vietnami      | Neurális |`vi`          |
-| walesi      | Neurális |`cy`          |
-| A Maya alkalmazáshoz Yucatec      | Statisztikai |`yua`          |
+**V2 Translator API**
+
+> [!NOTE]
+> V2 elavulttá 2018. április 30., és a 2019. április 30. ezt megszüntetjük.
+
+* Csak statisztikai: nincs Neurális rendszer nem érhető el ehhez a nyelvhez.
+* Neurális érhető el: egy Neurális rendszeren érhető el. Használja ezt a paramétert `category=generalnn` hozzáférhetnek a Neurális rendszerhez.
+* Neurális alapértelmezett: Neurális az alapértelmezett fordítási rendszerét. Használja ezt a paramétert `category=smt` hozzáférhetnek a statisztikai rendszerhez a Microsoft Translator Hub való használatra.
+* Csak Neurális: csak a Neurális fordítással érhető el.
+
+**Translator API v3-as** a v3-as Translator API egy Neurális alapértelmezés szerint, és statisztikai rendszerek csak érhetők el, ha Neurális rendszert nem létezik. Egyéni a fordítót csak akkor használható, a Neurális nyelvek. 
+
+|Nyelv|  Nyelvkód|  V2 API| V3 API|
+|:-----|:-----:|:-----|:-----|
+|afrikaans| `af`    |Csak statisztikai|  Neurális|
+|arab|    `ar`    |Neurális érhető el|  Neurális|
+|Arab, Levantine| `apc`   |Neurális érhető el|  Neurális|
+|Bengáli|    `bn`    |Neurális érhető el|  Neurális|
+|bosnyák (latin betűs)|   `bs`    |Csak statisztikai|  Statisztikai|
+|bolgár| `bg`    |Neurális érhető el|  Neurális|
+|Kantoni (hagyományos)|   `yue`   |Csak statisztikai|  Statisztikai|
+|katalán|   `ca`    |Csak statisztikai|  Statisztikai|
+|kínai (egyszerűsített)|    `zh-Hans`   |Neurális alapértelmezett |Neurális|
+|kínai (hagyományos)|   `zh-Hant`   |Neurális alapértelmezett |Neurális|
+|horvát|  `hr`    |Neurális érhető el|  Neurális|
+|cseh| `cs`    |Neurális érhető el|  Neurális|
+|dán|    `da`    |Neurális érhető el   |Neurális|
+|holland| `nl`    |Neurális érhető el|  Neurális|
+|Angol|   `en`    |Neurális érhető el|  Neurális|
+|észt|  `et`    |Neurális érhető el|  Neurális|
+|Fijian|    `fj`    |Csak statisztikai|  Statisztikai|
+|filippínó|  `fil`   |Csak statisztikai|  Statisztikai|
+|finn|   `fi`    |Neurális érhető el|  Neurális|
+|francia|    `fr`    |Neurális érhető el|  Neurális|
+|német|    `de`    |Neurális érhető el|  Neurális|
+|görög| `el`    |Neurális érhető el|  Neurális|
+|Haitian Creole|    `ht`    |Csak statisztikai   |Statisztikai|
+|héber |`he`   |Neurális érhető el   |Neurális|
+|hindi| `hi`    |Neurális alapértelmezett|    Neurális|
+|Hmong Daw| `mww`   |Csak statisztikai|  Statisztikai|
+|magyar| `hu`    |Neurális érhető el|  Neurális|
+|izlandi| `is`    |Csak Neurális|   Neurális|
+|indonéz|    `id`    |Csak statisztikai|  Statisztikai|
+|olasz|   `it`    |Neurális érhető el|  Neurális|
+|japán|  `ja`    |Neurális érhető el|  Neurális|
+|szuahéli| `sw`    |Csak statisztikai|  Statisztikai|
+|Klingon|   `tlh`   |Csak statisztikai|  Statisztikai|
+|Klingon (plqaD)|   `tlh-Qaak`  |Csak statisztikai|  Statisztikai|
+|koreai |`ko`   |Neurális érhető el|  Neurális|
+|lett|   `lv`    |Neurális érhető el|  Neurális|
+|litván|    `lt`    |Neurális érhető el|  Neurális|
+|Madagaszkári|  `mg`    |Csak statisztikai|  Statisztikai|
+|maláj| `ms`    |Csak statisztikai   |Statisztikai|
+|máltai|   `mt`    |Csak statisztikai|  Statisztikai|
+|norvég| `nb`    |Neurális érhető el|  Neurális|
+|perzsa|   `fa`    |Csak statisztikai|  Statisztikai|
+|lengyel|    `pl`    |Neurális érhető el|  Neurális|
+|portugál|    `pt`    |Neurális érhető el|  Neurális|
+|Queretaro Otomi|   `otq`   |Csak statisztikai|  Statisztikai|
+|román|  `ro`    |Neurális érhető el|  Neurális|
+|orosz|   `ru`    |Neurális érhető el|  Neurális|
+|Samoa|    `sm`    |Csak statisztikai|  Statisztikai|
+|szerb (cirill betűs)|    `sr-Cyrl`   |Csak statisztikai|  Statisztikai|
+|szerb (latin betűs)|   `sr-Latn`   |Csak statisztikai   |Statisztikai|
+|szlovák|    `sk`    |Neurális érhető el|  Neurális|
+|szlovén| `sl`    |Neurális érhető el|  Neurális|
+|spanyol|   `es`    |Neurális érhető el|  Neurális|
+|svéd|   `sv`    |Neurális érhető el   |Neurális|
+|Tahitian|  `ty`    |Csak statisztikai|  Statisztikai|
+|tamil| `ta`    |Csak statisztikai|  Statisztikai|
+|telugu|    `te`    |Csak Neurális|   Neurális|
+|thai|  `th`    |Neurális érhető el|  Neurális|
+|Tongan|    `to`    |Csak statisztikai|  Statisztikai|
+|török|   `tr`    |Neurális érhető el   |Neurális|
+|ukrán| `uk`    |Neurális érhető el|  Neurális|
+|urdu|  `ur`    |Csak statisztikai|  Statisztikai|
+|vietnami|    `vi`    |Neurális érhető el|  Neurális|
+|walesi| `cy`    |Neurális érhető el|  Neurális|
+|A Maya alkalmazáshoz Yucatec|  `yua`   |Csak statisztikai|  Statisztikai|
 
 ## <a name="transliteration"></a>Átírás
 

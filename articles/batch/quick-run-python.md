@@ -7,15 +7,15 @@ manager: jeconnoc
 ms.service: batch
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 11/26/2018
+ms.date: 11/27/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 0ce9d6854f464efdf0ff6eea8644fedc5ad90d1f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 13ed37dddefc5e71e972248545c3e9242bd233ad
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427320"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678200"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Rövid útmutató: Az első Batch-feladat futtatása a Python API használatával
 
@@ -110,7 +110,7 @@ A jellemző végrehajtási idő körülbelül 3 perc, ha az alapértelmezett kon
 A jelen rövid útmutatóban található Python-alkalmazás a következőket hajtja végre:
 
 * Feltölt három kisméretű szövegfájlt az Azure Storage-fiókban lévő blobtárolóba. Ezek a fájlok bemenetek a Batch-tevékenységek általi feldolgozáshoz.
-* Létrehoz egy, két darab, Ubuntu 16.04 LTS rendszert futtató számítási csomópontot tartalmazó készletet.
+* A két, Ubuntu 18.04 LTS rendszert futtató számítási csomópontokból álló készletet hoz létre.
 * Létrehoz egy feladatot és három tevékenységet, amelyek a csomópontokon futnak. Minden tevékenység feldolgoz egy bemeneti fájlt egy Bash felületi parancssor használatával.
 * Megjeleníti a tevékenységek által visszaadott fájlokat.
 
@@ -151,7 +151,7 @@ batch_client = batch.BatchServiceClient(
 
 ### <a name="create-a-pool-of-compute-nodes"></a>Számításicsomópont-készlet létrehozása
 
-Batch-készlet létrehozásához az alkalmazás a [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter) osztály használatával adja meg a csomópontok számát, a virtuális gép méretét és a készletkonfigurációt. Itt egy [VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) objektum megad egy [ImageReference](/python/api/azure.batch.models.imagereference) objektumot egy, az Azure Marketplace-en közzétett Ubuntu Server 16.04 LTS-rendszerképhez. A Batch az Azure Marketplace Linux- és Windows Server-rendszerképeinek széles választékát támogatja, de egyéni rendszerképeket is használhat.
+Batch-készlet létrehozásához az alkalmazás a [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter) osztály használatával adja meg a csomópontok számát, a virtuális gép méretét és a készletkonfigurációt. Itt egy [VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) objektum adja meg egy [ImageReference](/python/api/azure.batch.models.imagereference) az Azure Marketplace-en közzétett Ubuntu Server 18.04 LTS lemezképre. A Batch az Azure Marketplace Linux- és Windows Server-rendszerképeinek széles választékát támogatja, de egyéni rendszerképeket is használhat.
 
 A csomópontok száma (`_POOL_NODE_COUNT`) és a virtuális gépek mérete (`_POOL_VM_SIZE`) meghatározott állandókkal van megadva. A példa alapértelmezés szerint egy 2 *Standard_A1_v2* méretű csomópontot tartalmazó készletet hoz létre. A javasolt méret jó teljesítmény/költség arányt kínál a jelen rövid példában.
 
@@ -164,10 +164,10 @@ new_pool = batch.models.PoolAddParameter(
         image_reference=batchmodels.ImageReference(
             publisher="Canonical",
             offer="UbuntuServer",
-            sku="16.04-LTS",
+            sku="18.04-LTS",
             version="latest"
             ),
-        node_agent_sku_id="batch.node.ubuntu 16.04"),
+        node_agent_sku_id="batch.node.ubuntu 18.04"),
     vm_size=config._POOL_VM_SIZE,
     target_dedicated_nodes=config._POOL_NODE_COUNT
 )

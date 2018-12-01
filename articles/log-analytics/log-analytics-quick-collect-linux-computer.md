@@ -10,18 +10,17 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: 63302997b7abe1a05d4227333c16f1d6601ca09d
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 1c5dfeb6f4f1bb1b56981b61671bb76a1b835e2a
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633452"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720269"
 ---
 # <a name="configure-log-analytics-agent-for-linux-computers-in-a-hybrid-environment"></a>Log Analytics-ügynök konfigurálása Linux rendszerű számítógépekhez hibrid környezetekben
 Az [Azure Log Analytics](../azure-monitor/platform/agent-windows.md) közvetlenül tud adatokat gyűjteni az Ön adatközpontjában vagy egyéb felhőalapú környezetében található fizikai vagy virtuális Linux-gépekről egy adattárba, részletes elemzés és összehasonlítás céljából.  Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a Linux rendszerű számítógépekről történő adatgyűjtést néhány egyszerű lépésben.  Azure-beli linuxos virtuális gépek esetén lásd [az Azure-beli virtuális gépekről történő adatgyűjtést](log-analytics-quick-collect-azurevm.md) ismertető cikket.  

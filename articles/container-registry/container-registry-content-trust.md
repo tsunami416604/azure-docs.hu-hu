@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: quickstart
 ms.date: 08/20/2018
 ms.author: danlep
-ms.openlocfilehash: 1f1e7ce41c00078c0181fc5f32c43b7e5885eef8
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
-ms.translationtype: HT
+ms.openlocfilehash: 6db5bb4ee1995e08bd00588203db1fdba87a3db5
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857669"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727334"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>A tartalmak megbízhatósága az Azure Container Registryben
 
@@ -77,7 +77,7 @@ Az alábbiakban ismertetjük az `AcrImageSigner` szerepkör az Azure Portalon é
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Lépjen az adatbázishoz az Azure Portalon, majd válassza a **Hozzáférés-vezérlés (IAM)** > **Hozzáadás** lehetőséget. Az **Engedélyek hozzáadása** területen válassza az `AcrImageSigner` lehetőséget a **Szerepkör** alatt, majd a **Kiválasztás** mezőben válasszon egy vagy több felhasználót vagy szolgáltatásnevet, és kattintson a **Mentés** gombra.
+Navigáljon a beállításjegyzékhez, az Azure Portalon, majd válassza ki **hozzáférés-vezérlés (IAM)** > **szerepkör-hozzárendelés hozzáadása**. Alatt **szerepkör-hozzárendelés hozzáadása**válassza `AcrImageSigner` alatt **szerepkör**, majd **válassza** több felhasználóval vagy szolgáltatásnevek, majd **mentése**.
 
 Ebben a példában két entitásnak osztottuk ki az `AcrImageSigner` szerepkört: egy „service-principal” nevű szolgáltatásnévnek és egy „Azure User” nevű felhasználónak.
 

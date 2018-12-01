@@ -7,15 +7,15 @@ manager: jeconnoc
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 11/16/2018
+ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: d6d1fb9631af06f6bfbb2c360661779281a08905
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: c13a01b392b9bbc93fff2e997cb6d168a441ad07
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51975109"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679919"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Rövid útmutató: Az első Azure Batch-feladat futtatása a .NET API használatával
 
@@ -47,7 +47,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-quickstart.git
 
 Váltson a Visual Studio `BatchDotNetQuickstart.sln` nevű megoldásfájlját tartalmazó könyvtárra.
 
-Nyissa meg a megoldásfájlt a Visual Studióban, és frissítse a `program.cs` hitelesítő adatait a fiókokhoz beszerzett értékekkel. Példa:
+Nyissa meg a megoldásfájlt a Visual Studióban, és frissítse a `Program.cs` hitelesítő adatait a fiókokhoz beszerzett értékekkel. Példa:
 
 ```csharp
 // Batch account credentials
@@ -143,7 +143,7 @@ Az alkalmazás létrehoz egy [BatchClient](/dotnet/api/microsoft.azure.batch.bat
 BatchSharedKeyCredentials cred = new BatchSharedKeyCredentials(BatchAccountUrl, BatchAccountName, BatchAccountKey);
 
 using (BatchClient batchClient = BatchClient.Open(cred))
-...    
+...
 ```
 
 ### <a name="create-a-pool-of-compute-nodes"></a>Számításicsomópont-készlet létrehozása
@@ -155,33 +155,42 @@ A csomópontok száma (`PoolNodeCount`) és a virtuális gépek mérete (`PoolVM
 A [Commit](/dotnet/api/microsoft.azure.batch.cloudpool.commit) metódus elküldi a készletet a Batch szolgáltatásnak.
 
 ```csharp
-ImageReference imageReference = new ImageReference(
-    publisher: "MicrosoftWindowsServer",
-    offer: "WindowsServer",
-    sku: "2016-Datacenter-smalldisk",
-    version: "latest");
 
-VirtualMachineConfiguration virtualMachineConfiguration =
-new VirtualMachineConfiguration(
-   imageReference: imageReference,
-   nodeAgentSkuId: "batch.node.windows amd64");
-
-try
+private static VirtualMachineConfiguration CreateVirtualMachineConfiguration(ImageReference imageReference)
 {
-    CloudPool pool = batchClient.PoolOperations.CreatePool(
-    poolId: PoolId,
-    targetDedicatedComputeNodes: PoolNodeCount,
-    virtualMachineSize: PoolVMSize,
-    virtualMachineConfiguration: virtualMachineConfiguration);
-
-    pool.Commit();
+    return new VirtualMachineConfiguration(
+        imageReference: imageReference,
+        nodeAgentSkuId: "batch.node.windows amd64");
 }
+
+private static ImageReference CreateImageReference()
+{
+    return new ImageReference(
+        publisher: "MicrosoftWindowsServer",
+        offer: "WindowsServer",
+        sku: "2016-datacenter-smalldisk",
+        version: "latest");
+}
+
+private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfiguration vmConfiguration)
+{
+    try
+    {
+        CloudPool pool = batchClient.PoolOperations.CreatePool(
+            poolId: PoolId,
+            targetDedicatedComputeNodes: PoolNodeCount,
+            virtualMachineSize: PoolVMSize,
+            virtualMachineConfiguration: vmConfiguration);
+
+        pool.Commit();
+    }
 ...
 
 ```
+
 ### <a name="create-a-batch-job"></a>Batch-feladat létrehozása
 
-A Batch-feladat egy vagy több tevékenység logikai csoportosítása. Egy Batch-feladat magában foglalja a tevékenységek közös beállításait, mint a prioritást, illetve a készletet, amelyeken a tevékenységeket futtatni szeretné. Az alkalmazás a [BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob) metódussal létrehoz egy feladatot a készleten. 
+A Batch-feladat egy vagy több tevékenység logikai csoportosítása. Egy Batch-feladat magában foglalja a tevékenységek közös beállításait, mint a prioritást, illetve a készletet, amelyeken a tevékenységeket futtatni szeretné. Az alkalmazás a [BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob) metódussal létrehoz egy feladatot a készleten.
 
 A [Commit](/dotnet/api/microsoft.azure.batch.cloudjob.commit) metódus elküldi a feladatot a Batch szolgáltatásnak. A feladat kezdetben nem tartalmaz tevékenységeket.
 
@@ -192,15 +201,16 @@ try
     job.Id = JobId;
     job.PoolInformation = new PoolInformation { PoolId = PoolId };
 
-    job.Commit(); 
+    job.Commit();
 }
 ...
 ```
 
 ### <a name="create-tasks"></a>Tevékenységek létrehozása
+
 Az alkalmazás létrehoz egy listát a [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) objektumokról. Minden tevékenység feldolgoz egy bemeneti `ResourceFile` objektumot egy [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) tulajdonság segítségével. A mintában a parancssor a Windows `type` parancsát futtatja a bemeneti fájl megjelenítéséhez. Ez a parancs egy bemutató célú, egyszerű példa. Batch használata esetén a parancssorban adhatja meg az alkalmazást vagy szkriptet. A Batch számos módszert kínál az alkalmazások és szkriptek számítási csomópontokon történő üzembe helyezésére.
 
-Ezt követően az alkalmazás tevékenységeket ad a feladathoz az [AddTask](/dotnet/api/microsoft.azure.batch.joboperations.addtask) metódussal, amely várólistára helyezi azokat a számítási csomópontokon való futtatáshoz. 
+Ezt követően az alkalmazás tevékenységeket ad a feladathoz az [AddTask](/dotnet/api/microsoft.azure.batch.joboperations.addtask) metódussal, amely várólistára helyezi azokat a számítási csomópontokon való futtatáshoz.
 
 ```csharp
 for (int i = 0; i < inputFiles.Count; i++)
@@ -216,7 +226,7 @@ for (int i = 0; i < inputFiles.Count; i++)
 
 batchClient.JobOperations.AddTask(JobId, tasks);
 ```
- 
+
 ### <a name="view-task-output"></a>A tevékenység kimenetének megtekintése
 
 Az alkalmazás létrehoz egy [TaskStateMonitor](/dotnet/api/microsoft.azure.batch.taskstatemonitor) objektumot a tevékenységek monitorozására, illetve annak biztosítására, hogy azok sikeresen befejeződjenek. Ezután az alkalmazás a [CloudTask.ComputeNodeInformation](/dotnet/api/microsoft.azure.batch.cloudtask.computenodeinformation) tulajdonság használatával megjeleníti az egyes befejezett tevékenységek által létrehozott `stdout.txt` fájlt. A tevékenység sikeres futtatása esetén a tevékenység parancsának kimenete a `stdout.txt` fájlba lesz írva:

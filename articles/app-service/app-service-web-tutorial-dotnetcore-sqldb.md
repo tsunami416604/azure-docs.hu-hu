@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/11/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: f870902e5bd5ef92d12d1e5e846696c4b26362a3
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: e0161073c0c3e7d6ef491a4f2b86510e826b85dc
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425102"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678661"
 ---
 # <a name="tutorial-build-a-net-core-and-sql-database-web-app-in-azure-app-service"></a>Oktatóanyag: .NET Core- és SQL Database-webalkalmazás összeállítása az Azure App Service-ben
 
@@ -215,6 +215,10 @@ services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate
 Ha ez a kód azt észleli, hogy éles üzemben fut (ami Azure-környezetet jelez), az SQL Database-hez való csatlakozáshoz beállított kapcsolati sztringet használja.
 
 Ha az Azure-ban fut, a `Database.Migrate()` hívás segítséget nyújt, mert automatikusan létrehozza a .NET Core-alkalmazáshoz szükséges adatbázisokat a migrálási konfiguráció alapján. 
+
+> [!IMPORTANT]
+> Az éles alkalmazások horizontális felskálázását, kövesse az ajánlott eljárásokat az [alkalmazása az éles környezetben áttelepítések](/aspnet/core/data/ef-rp/migrations#applying-migrations-in-production).
+> 
 
 Mentse a módosításokat, majd véglegesítse őket a Git adattárban. 
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 6046781f59b64dcec4769686a2acd710c7b68965
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: 8a99a784292c4294456296c1f105e5f485689368
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987307"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679902"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Windows-frissítések kezelése az Azure Automationnel
 
@@ -161,7 +161,7 @@ Az **Új frissítéstelepítés** képernyőn adja meg a következő informáci�
 
 * **Frissítendő csoportok (előzetes verzió)**: Meghatározhat egy előfizetéseken, erőforráscsoportokon, helyeken és címkéken alapuló lekérdezést, amellyel egy dinamikus, Azure-beli virtuális gépekből álló csoportot hozhat létre, majd belefoglalhatja a telepítésbe. További információ: [Dinamikus csoportok](automation-update-management.md#using-dynamic-groups)
 
-* **Frissítendő gépek**: Válasszon ki egy Mentett keresést vagy Importált csoportot, vagy válassza a legördülő listában a Gép lehetőséget, és válasszon ki egyes gépeket. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható. A számítógépcsoportok Log Analyticsben lévő létrehozásának különböző módszereivel kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjait](../log-analytics/log-analytics-computer-groups.md) ismertető részt
+* **Frissítendő gépek**: Válasszon ki egy Mentett keresést vagy Importált csoportot, vagy válassza a legördülő listában a Gép lehetőséget, és válasszon ki egyes gépeket. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható. A számítógépcsoportok Log Analyticsben lévő létrehozásának különböző módszereivel kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjait](../azure-monitor/platform/computer-groups.md) ismertető részt
 
 * **Frissítési besorolás**: Válassza ki azokat a szoftvertípusokat, amelyeket a frissítéstelepítés belefoglal a telepítésbe. Ebben az oktatóanyagban hagyjon minden típust kiválasztva.
 

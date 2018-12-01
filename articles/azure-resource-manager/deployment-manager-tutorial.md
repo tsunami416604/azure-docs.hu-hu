@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e4489fd9119bce0e38e14f536f41940b74205e95
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 8ec180b40e52c5702495a0124bf8ae33d2dc24a1
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425003"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727783"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Oktatóanyag: Az Azure Deployment Manager Resource Manager-sablonokkal való használata (privát előzetes verzió)
 
@@ -152,7 +152,7 @@ Létre kell hoznia egy felhasználó által hozzárendelt felügyelt identitást
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Hozzon létre egy [felhasználó által hozzárendelt felügyelt identitást](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. A portál bal oldali menüjében válassza az **Előfizetések** lehetőséget, majd válassza ki az előfizetést.
-4. Válassza a **Hozzáférés-vezérlés (IAM)**, majd a **Hozzáadás** lehetőséget.
+4. Válassza ki **hozzáférés-vezérlés (IAM)**, majd válassza ki **szerepkör-hozzárendelés hozzáadása**.
 5. Adja meg vagy válassza ki a következő értékeket:
 
     ![Azure Deployment Manager-oktatóanyag – felhasználó által hozzárendelt felügyelt identitás hozzáférés-vezérlése](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-access-control.png)

@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c4fa3f9cbba558cd743f85119dd9e91bd73ce062
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
-ms.translationtype: HT
+ms.openlocfilehash: edfd17763a7d555e773e7d271ed5cc22a0307996
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250597"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726593"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>Gyors útmutató: ASP.NET-alkalmazásba való bejelentkezés konfigurálása Azure Active Directory B2C-vel
 
@@ -35,7 +35,7 @@ Az Azure Active Directory (Azure AD) B2C felhőalapú identitáskezelést nyújt
 
     A mintául szolgáló megoldás az alábbi két projektet tartalmazza:
 
-    - **TaskWebApp** – Ez a webalkalmazás egy feladatlistát hoz létre és szerkeszt. A webalkalmazás a **regisztrálási vagy a bejelentkezési** szabályzatot használja a felhasználók regisztrálásához és bejelentkeztetéséhez.
+    - **TaskWebApp** – Ez a webalkalmazás egy feladatlistát hoz létre és szerkeszt. A webalkalmazás a **regisztrálási vagy bejelentkezési** felhasználók regisztrálási vagy bejelentkezési felhasználói folyamata.
     - **TaskService** – Ez a webes API a feladatlista-funkciók létrehozását, olvasását, frissítését és törlését támogatja. A webes API-nak az Azure AD B2C biztosít védelmet, és a webalkalmazással hívható meg.
 
 ## <a name="run-the-application-in-visual-studio"></a>Az alkalmazás futtatása a Visual Studióban
@@ -46,7 +46,7 @@ Az Azure Active Directory (Azure AD) B2C felhőalapú identitáskezelést nyújt
 4. Kattintson az **OK** gombra.
 5. Nyomja le az **F5** billentyűt mindkét alkalmazás hibakereséséhez. Mindegyik alkalmazás saját böngészőlapon nyílik meg:
 
-    - `https://localhost:44316/` – Az ASP.NET-es webalkalmazás. A rövid útmutatóban közvetlenül kommunikál az alkalmazással.
+    - `https://localhost:44316/` – Az ASP.NET-es webalkalmazás. A gyors útmutatóban közvetlenül kommunikál az alkalmazással.
     - `https://localhost:44332/` – Az ASP.NET-es webalkalmazás által meghívott webes API.
 
 ## <a name="sign-in-using-your-account"></a>Bejelentkezés saját fiókkal
@@ -67,7 +67,7 @@ Az Azure Active Directory (Azure AD) B2C felhőalapú identitáskezelést nyújt
 
 ## <a name="edit-your-profile"></a>Saját profil szerkesztése
 
-Az Azure Active Directory B2C-funkcióival a felhasználók frissíthetik a profiljukat. A minta-webalkalmazás Azure AD B2C-profilszerkesztési szabályzatot használ a munkafolyamathoz. 
+Az Azure Active Directory B2C-funkcióival a felhasználók frissíthetik a profiljukat. A mintául szolgáló webalkalmazás a munkafolyamat az Azure AD B2C-vel szerkesztési profil felhasználói folyamatot használ. 
 
 1. Az alkalmazás menüsávján kattintson a profil nevére, és válassza az **Edit profile** (Profil szerkesztése) parancsot a létrehozott profil szerkesztéséhez.
 

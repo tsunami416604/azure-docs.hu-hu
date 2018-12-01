@@ -10,18 +10,17 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: ca753085efef241ea14443eabf19d7bf8b996361
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 6e09b22687b5b17f0211b5af09112e0820963558
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621530"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723847"
 ---
 # <a name="collect-data-about-azure-virtual-machines"></a>Adatgyűjtés Azure-beli virtuális gépekről
 Az [Azure Log Analytics](log-analytics-queries.md) képes rá, hogy közvetlenül gyűjtsön adatokat az Ön környezetében található Azure-beli virtuális gépekről és egyéb erőforrásokról egy adattárba, részletes elemzés és összehasonlítás céljából.  Ez a rövid útmutató azt ismerteti, hogyan konfigurálhatja néhány egyszerű lépésben az Azure-beli Linux vagy Windows rendszerű virtuális gépekről történő adatgyűjtést.  

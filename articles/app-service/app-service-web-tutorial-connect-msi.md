@@ -11,15 +11,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 10/24/2018
+ms.date: 11/30/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 42a25d6c13fe1052f4aa14696a66c9c7f1fb4d65
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 8c31e410713e4ba8ce6443170ba5ad5c2e740419
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685684"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52677933"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Oktatóanyag: Az SQL Database-kapcsolat biztonságossá tétele az App Service-ből felügyelt identitás segítségével
 
@@ -174,6 +174,10 @@ Ha minden egyes parancsnál meg szeretné tekinteni a JSON-kimenetet, hagyja el 
 ### <a name="reconfigure-azure-ad-administrator"></a>Az Azure AD-rendszergazda újrakonfigurálása
 
 Előzőleg Azure AD-rendszergazdaként rendelte hozzá a felügyelt identitást az SQL Database-hez. Ezt az identitást nem használhatja interaktív bejelentkezéshez (adatbázis-felhasználók hozzáadásához), ezért az igazi Azure AD-felhasználóját kell használnia. Az Azure AD-felhasználója hozzáadásához kövesse az [Azure Active Directory-rendszergazda az Azure SQL Database-kiszolgálóhoz való regisztrálása ](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) témakörrel foglalkozó szakasz lépéseit. 
+
+> [!IMPORTANT]
+> Miután hozzáadta, ne távolítsa el az Azure AD-rendszergazda számára az SQL Database, kivéve, ha le szeretné tiltani az Azure AD-hozzáférés az SQL Database teljesen (az összes Azure AD-fiókok).
+> 
 
 ### <a name="grant-permissions-to-azure-active-directory-group"></a>Engedélyek kiosztása az Azure Active Directory-csoportnak
 

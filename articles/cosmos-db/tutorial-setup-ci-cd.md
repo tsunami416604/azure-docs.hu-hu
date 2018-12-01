@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/02/2018
 ms.author: dech
-ms.openlocfilehash: f08af7e75c75f9e9c89968b403a1eb7dd93bf521
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: e0b1fe3b58d5781ce1e2d7a0701c58c31e6054a6
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620285"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678933"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>CI-/CD-folyamat beállítása az Azure Cosmos DB Emulator buildelési feladatával az Azure DevOpsban
 
@@ -23,7 +23,7 @@ Az Azure Cosmos DB Emulator helyi környezetet biztosít, amely az Azure Cosmos 
 
 Az Azure Cosmos DB Emulator Azure DevOpshoz készült buildelési feladata lehetővé teszi ugyanezt CI-környezetben. A buildelési feladat segítségével összeállítási és kiadási munkafolyamatai részeként futtathat teszteket az emulátorban. A feladat elindít egy Docker-tárolót, amelyben már fut az emulátor, és végpontot biztosít a builddefiníció további része számára. Tetszőleges számú emulátorpéldányt hozhat létre és indíthat el, amelyek mind külön tárolóban futnak. 
 
-Ez a cikk bemutatja, hogyan állíthat be CI-folyamatot az Azure DevOpsban egy ASP.NET-alkalmazás számára, amely a Cosmos DB Emulator buildelési feladatával futtat teszteket. 
+Ez a cikk bemutatja, hogyan állíthat be CI-folyamatot az Azure DevOpsban egy ASP.NET-alkalmazás számára, amely a Cosmos DB Emulator buildelési feladatával futtat teszteket. Hasonló megközelítést segítségével a CI-folyamat beállítása egy Node.js vagy Python-alkalmazás. 
 
 ## <a name="install-the-emulator-build-task"></a>Az emulátor buildelési feladatának telepítése
 

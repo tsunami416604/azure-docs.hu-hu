@@ -2,20 +2,20 @@
 title: Párhuzamos számítási feladat futtatása – Azure Batch Python
 description: Oktatóanyag – Médiafájlok párhuzamos feldolgozása ffmpeg segítségével az Azure Batchben a Batch Python ügyfélkódtár használatával
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 09/24/2018
-ms.author: danlep
+ms.date: 11/29/2018
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 3636faa9478555b64bb94f7dcfb1f3f587ecdca9
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
-ms.translationtype: HT
+ms.openlocfilehash: 6ece4d7d0a39f5ea9dd4d9503d3bdd11a4bffd89
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814168"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678576"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Oktatóanyag: Párhuzamos számításifeladat-futtatás az Azure Batchben a Python API használatával
 
@@ -65,7 +65,7 @@ A Python-környezetében telepítse a szükséges csomagokat a `pip` segítség�
 pip install -r requirements.txt
 ```
 
-Nyissa meg a `batch_python_tutorial_ffmpeg.py` fájlt. Frissítse a Batch- és Storage-fiók hitelesítési sztringjét a fiókjaira jellemző egyedi értékekkel. Például:
+Nyissa meg a `batch_python_tutorial_ffmpeg.py` fájlt. Frissítse a Batch- és Storage-fiók hitelesítési sztringjét a fiókjaira jellemző egyedi értékekkel. Példa:
 
 
 ```Python
@@ -89,7 +89,7 @@ python batch_python_tutorial_ffmpeg.py
 A mintaalkalmazás futtatásakor a konzol kimenete az alábbihoz hasonló lesz. A futtatás során szünet jelentkezhet a következőnél a készlet számítási csomópontjainak indításakor: `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...`. 
    
 ```
-Sample start: 12/12/2017 3:20:21 PM
+Sample start: 11/28/2018 3:20:21 PM
 
 Container [input] created.
 Container [output] created.
@@ -105,7 +105,7 @@ Monitoring all tasks for 'Completed' state, timeout in 00:30:00...
 Success! All tasks completed successfully within the specified timeout period.
 Deleting container [input]....
 
-Sample end: 12/12/2017 3:29:36 PM
+Sample end: 11/28/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
@@ -166,7 +166,7 @@ input_files = [
 
 ### <a name="create-a-pool-of-compute-nodes"></a>Számításicsomópont-készlet létrehozása
 
-A következő lépésben a minta létrehozza a számítási csomópontok készletét a Batch-fiókban a `create_pool` hívásával. Ez a meghatározott funkció a Batch [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter) osztályával adja meg a csomópontok számát, a virtuális gép méretét és a készletkonfigurációt. Itt egy [VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) objektum megad egy [ImageReference](/python/api/azure.batch.models.imagereference) objektumot egy, az Azure Marketplace-en közzétett Ubuntu Server 16.04 LTS-rendszerképhez. A Batch az Azure Marketplace virtuálisgép-rendszerképeinek széles választékát támogatja, de egyéni rendszerképeket is használhat.
+A következő lépésben a minta létrehozza a számítási csomópontok készletét a Batch-fiókban a `create_pool` hívásával. Ez a meghatározott funkció a Batch [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter) osztályával adja meg a csomópontok számát, a virtuális gép méretét és a készletkonfigurációt. Itt egy [VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) objektum adja meg egy [ImageReference](/python/api/azure.batch.models.imagereference) az Azure Marketplace-en közzétett Ubuntu Server 18.04 LTS lemezképre. A Batch az Azure Marketplace virtuálisgép-rendszerképeinek széles választékát támogatja, de egyéni rendszerképeket is használhat.
 
 A csomópontok száma és a virtuális gépek mérete meghatározott állandókkal van megadva. A Batch támogatja a dedikált csomópontokat és az [alacsony prioritású](batch-low-pri-vms.md) csomópontokat is, és a készletekben használhatja mindkét fajtát, akár egyszerre is. A dedikált csomópontok a készlet számára vannak fenntartva. Az alacsony prioritású csomópontok kedvezményes áron érhetők el az Azure többlet VM-kapacitásából. Ha az Azure nem rendelkezik elegendő kapacitással, az alacsony prioritású csomópontok elérhetetlenné válnak. A minta alapértelmezés szerint egy csupán 5 alacsony prioritású, *Standard_A1_v2* méretű csomópontot tartalmazó készletet hoz létre. 
 
@@ -181,10 +181,10 @@ new_pool = batch.models.PoolAddParameter(
         image_reference=batchmodels.ImageReference(
             publisher="Canonical",
             offer="UbuntuServer",
-            sku="16.04-LTS",
+            sku="18.04-LTS",
             version="latest"
             ),
-        node_agent_sku_id="batch.node.ubuntu 16.04"),
+        node_agent_sku_id="batch.node.ubuntu 18.04"),
     vm_size=_POOL_VM_SIZE,
     target_dedicated_nodes=_DEDICATED_POOL_NODE_COUNT,
     target_low_priority_nodes=_LOW_PRIORITY_POOL_NODE_COUNT,

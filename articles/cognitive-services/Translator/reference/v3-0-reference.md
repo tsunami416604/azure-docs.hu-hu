@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 6f679536d69f700fd6678eb3bbbb869e42439cde
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 8302a444f28e4fb330a1eedbac9a5da762979d6c
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853353"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52681959"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API 3.0-s verzió
 
@@ -31,11 +31,22 @@ ms.locfileid: "51853353"
 
 ## <a name="base-urls"></a>Alap URL-címek
 
-Szöveg API 3.0-s verzió a következő felhőben érhető el:
+A Microsoft Translator van szolgálja ki több adatközpontban. Jelenleg találhatók 6 [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions):
 
-| Leírás | Régió | Alap URL-cím                                        |
-|-------------|--------|-------------------------------------------------|
-| Azure       | Globális | API.cognitive.microsofttranslator.com           |
+* **Dél-Amerika:** 2. nyugati RÉGIÓJA és USA nyugati középső RÉGIÓJA 
+* **Ázsia Csendes-óceáni:** Délkelet-Ázsia és Dél-Korea
+* **Európa:** Észak-Európában és Nyugat-Európa
+
+A Microsoft Translator Text API kérelmek vannak a legtöbb esetben az adatközpont, ahol adja meg a kérelem legközelebb eső kezeli. Adatközpont-meghibásodás a kérelmek átirányíthatók a régión kívül.
+
+Kényszeríti a kérelem egy adott adatközpont kell kezelnie, módosítsa a kívánt területi végpont a globális végpont az API-kérelem:
+
+|Leírás|Régió|Alap URL-cím|
+|:--|:--|:--|
+|Azure|Globális|  API.cognitive.microsofttranslator.com|
+|Azure|Észak-Amerika|   API-nam.cognitive.microsofttranslator.com|
+|Azure|Európa|  API-eur.cognitive.microsofttranslator.com|
+|Azure|Ázsia és a Csendes-óceáni térség|    API-apc.cognitive.microsofttranslator.com|
 
 
 ## <a name="authentication"></a>Hitelesítés

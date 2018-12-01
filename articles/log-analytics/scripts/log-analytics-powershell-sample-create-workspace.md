@@ -1,6 +1,6 @@
 ---
-title: Az Azure PowerShell-parancsfájl minta - Naplóelemzési munkaterület létrehozása |} Microsoft Docs
-description: Az Azure PowerShell-parancsfájl minták – a Naplóelemzési munkaterület létrehozása
+title: Azure PowerShell-Példaszkript – Log Analytics-munkaterület létrehozása |} A Microsoft Docs
+description: Azure PowerShell-Példaszkript – a Log Analytics-munkaterület létrehozása
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -9,42 +9,41 @@ editor: tysonn
 tags: ''
 ms.assetid: ''
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/07/2017
 ms.author: magoedte
-ms.openlocfilehash: 30d036ae56acc3a798d2776f292243f65cbea43d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 5ad04c52da4709a7097ff7915d7af7404d6725eb
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23855438"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680259"
 ---
-# <a name="create-a-log-analytics-workspace-with-powershell"></a>A Naplóelemzési munkaterület létrehozása a PowerShell használatával
+# <a name="create-a-log-analytics-workspace-with-powershell"></a>Log Analytics-munkaterület létrehozása a PowerShell használatával
 
-Ez a parancsfájl lekérdezi akkor működik, és gyorsan egy Azure Log Analytics-munkaterület, amely pedig szükséges, ha el szeretné indítani gyűjtése, elemzése és intézkedést adatokon.  
+Ez a szkript beolvassa, és gyorsan az Azure Log Analytics-munkaterület, amely van szükség, ha az adatok gyűjtése, elemzése és az intézkedést elindítja a.  
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-powershell[main](../../../powershell_scripts/log-analytics/log-analytics-create-new-resource/log-analytics-create-new-resource.ps1 "Create new Log Analytics workspace")]
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat egy új Naplóelemzési munkaterület létrehozni az előfizetésben. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
+Hozzon létre egy új Log Analytics-munkaterületet az előfizetésében, a következő parancsokat használja ezt a szkriptet. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Get-AzureRmOperationalInsightsWorkspace](/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightsworkspace) | Egy meglévő munkaterület információ lekérése. |
-| [Új AzureRmOperationalInsightsWorkspace](/powershell/module/azurerm.operationalinsights/new-azurermoperationalinsightsworkspace) | A megadott erőforráscsoport és a hely egy munkaterület hoz létre. |
+| [Get-azurermoperationalinsightsworkspace parancsmagok](/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightsworkspace) | Egy meglévő munkaterületet adatainak beolvasása. |
+| [Új-azurermoperationalinsightsworkspace parancsmagok](/powershell/module/azurerm.operationalinsights/new-azurermoperationalinsightsworkspace) | A megadott erőforráscsoportban és helyen hoz létre egy munkaterületet. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az Azure PowerShell modul további információkért lásd: [Azure PowerShell dokumentációs](/powershell/azure/overview).
+Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
 

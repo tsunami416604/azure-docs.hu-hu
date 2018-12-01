@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 06/18/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dfaee72be883ee8902fe4550890d757f114ff932
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: e526c5f2f446a1ae8134a3e2ca72fcc42024d904
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426106"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724094"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Batch-fiók létrehozása az Azure Portalon
 
@@ -91,11 +91,11 @@ Amikor először hoz létre Batch-fiókot felhasználói előfizetés módban, r
 
     ![A Microsoft.Batch szolgáltató regisztrálása][register_provider]
 
-1. Az **Előfizetés** lapon válassza a **Hozzáférés-vezérlés (IAM)** > **Hozzáadás** elemet.
+1. Az a **előfizetés** lapon jelölje be **hozzáférés-vezérlés (IAM)** > **szerepkör-hozzárendelések** > **szerepkör-hozzárendeléshozzáadása**.
 
     ![Az előfizetéshez való hozzáférés vezérlése][subscription_access]
 
-1. Az **Engedélyek hozzáadása** lapon válassza a **Közreműködő** szerepkört, és keressen rá a Batch API kifejezésre. Keressen rá az egyes sztringekre, addig amíg meg nem találja az API-t:
+1. Az a **szerepkör-hozzárendelés hozzáadása** lapon válassza ki a **közreműködői** szerepkört, és keresse meg a Batch API-t. Keressen rá az egyes sztringekre, addig amíg meg nem találja az API-t:
     1. **MicrosoftAzureBatch**.
     1. **Microsoft Azure Batch**. Újabb Azure AD-bérlők ezt a nevet használhatják.
     1. A **ddbf3205-c6bd-46ae-8127-60eb93363864** a Batch API azonosítója. 

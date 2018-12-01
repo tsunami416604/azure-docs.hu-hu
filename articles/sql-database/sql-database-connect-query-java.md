@@ -11,12 +11,12 @@ ms.author: andrela
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 11/20/2018
-ms.openlocfilehash: afa975a593fd962050c9f894ec091d7f64579138
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 5c12bd54c0ea96ac915fedab94f03cf044330dcf
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52332612"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723295"
 ---
 # <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>Rövid útmutató: Java használata Azure SQL Database-adatbázis lekérdezéséhez
 
@@ -44,13 +44,13 @@ Ez a minta, győződjön meg arról, hogy rendelkezik a következő előfeltéte
 
 ## <a name="create-the-project"></a>A projekt létrehozása
 
-1. A terminálból hozza létre az *sqltest* nevű új Maven-projektet.
+1. A parancssor használatával hozzon létre egy új nevű Maven-projektet *sqltest*.
 
     ```bash
     mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=sqltest" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0" --batch-mode
     ```
 
-1. Módosítsa a könyvtárat *sqltest* névre, és nyissa meg a *pom.xml* fájlt egy tetszőleges szövegszerkesztőben. Adja hozzá a **Microsoft JDBC-illesztőprogram SQL Serverhez** , a következő kód használatával a projekt függőségeit.
+1. A mappa módosítása *sqltest* , és nyissa meg *pom.xml* a kedvenc szövegszerkesztőjével. Adja hozzá a **Microsoft JDBC-illesztőprogram SQL Serverhez** , a következő kód használatával a projekt függőségeit.
 
     ```xml
     <dependency>
@@ -93,10 +93,10 @@ Ez a minta, győződjön meg arról, hogy rendelkezik a következő előfeltéte
         public static void main(String[] args) {
 
             // Connect to database
-            String hostName = "your_server.database.windows.net";
-            String dbName = "your_database";
-            String user = "your_username";
-            String password = "your_password";
+            String hostName = "your_server.database.windows.net"; // update me
+            String dbName = "your_database"; // update me
+            String user = "your_username"; // update me
+            String password = "your_password"; // update me
             String url = String.format("jdbc:sqlserver://%s:1433;database=%s;user=%s;password=%s;encrypt=true;"
                 + "hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
             Connection connection = null;
@@ -139,14 +139,14 @@ Ez a minta, győződjön meg arról, hogy rendelkezik a következő előfeltéte
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-1. A parancssorban futtassa a programot.
+1. A parancssorban futtassa az alkalmazást.
 
     ```bash
     mvn package -DskipTests
     mvn -q exec:java "-Dexec.mainClass=com.sqldbsamples.App"
     ```
 
-1. Ellenőrizze az első 20 sort adja vissza, és zárja be az alkalmazásablakot.
+1. Ellenőrizze az első 20 sort adja vissza, és az alkalmazás ablak bezárásához.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 32fa417d5fcb5c8547dfc7c10b34b3c97ed70559
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 16bcc56dd05c86b7c2adb324de480e7482f80fef
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626065"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724298"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>Oktatóanyag: Az Azure Storage elérése SAS-hitelesítő adatok használatával Linux VM-beli rendszer által hozzárendelt identitással
 
@@ -68,9 +68,9 @@ Később feltöltünk egy fájlt az új tárfiókba, majd letöltjük abból. Mi
 
 Az Azure Storage nem támogatja natív módon az Azure AD-hitelesítést.  A VM rendszer által hozzárendelt felügyelt identitása használatával azonban lekérheti egy tároló SAS-adatait a Resource Managerből, majd a SAS-adatokkal elérheti a tárolót.  Ebben a lépésben hozzáférést biztosít a virtuális gép rendszer által hozzárendelt felügyelt identitása számára a tárfiók SAS-adataihoz.   
 
-1. Lépjen vissza az újonnan létrehozott tárfiókra.   
+1. Lépjen vissza az újonnan létrehozott tárfiókra.
 2. Kattintson a **Hozzáférés-vezérlés (IAM)** hivatkozásra a bal oldali panelen.  
-3. A lap tetején a **+ Hozzáadás** gombra kattintva adjon hozzá egy új szerepkör-hozzárendelést a VM-hez.
+3. Kattintson a **+ szerepkör-hozzárendelés hozzáadása** az oldalra egy új szerepkör-hozzárendelés hozzáadása a virtuális gép felett
 4. A lap jobb oldalán a **Szerepkör** értékeként adja meg a „Tárfiók-közreműködő” értéket. 
 5. A következő legördülő menüben a **Hozzáférés hozzárendelése** beállítás számára válassza ki a „Virtuális gép” értéket.  
 6. Ezután ellenőrizze, hogy a megfelelő előfizetés szerepel-e az **Előfizetés** legördülő menüben, majd állítsa az **Erőforráscsoport** értékét a „Minden erőforráscsoport” értékre.  

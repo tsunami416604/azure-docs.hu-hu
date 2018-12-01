@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: 2f0b2984bf2390a9af0b824495b84c71d04aeac2
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: ce6446caf74e16f69369d5ee8ee7b6342870e826
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852843"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682595"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 V3 áttelepítése
 
@@ -105,11 +105,33 @@ Globális
 
 [Szótár/példa](reference/v3-0-dictionary-examples.md)
 
-## <a name="customization"></a>Testreszabás
+## <a name="compatibility-and-customization"></a>Kompatibilitási és testreszabás
 
-A Microsoft Translator V3 Neurális gépi fordítás alapértelmezés szerint használ. Ezért nem használható a Microsoft Translator hubbal. A Translator Hub csak az örökölt statisztikai gépi fordítási támogatja. Neurális fordítással testreszabásának már elérhető az egyéni translatorral. [További tudnivalók a Neurális gépi fordítás testreszabása](customization.md)
+A Microsoft Translator V3 Neurális gépi fordítás alapértelmezés szerint használ. Ezért nem használható a Microsoft Translator hubbal. A Translator Hub csak az örökölt statisztikai gépi fordítási támogatja. Neurális fordítással testreszabásának már elérhető az egyéni translatorral. [További tudnivalók a Neurális gépi fordítás testreszabása](custom-translator/overview.md)
 
 API v3-as szöveggel Neurális fordítással nem támogatja a standard szintű kategóriák (SMT, beszédfelismerés, szöveg, generalnn) használatát.
+
+| |Végpont|    GDPR-megfelelőség processzor|  Translator hubbal| Egyéni Translator (előzetes verzió) használata|
+|:-----|:-----|:-----|:-----|:-----|
+|Translator Text API-Version 2| API.microsofttranslator.com|    Nem  |Igen    |Nem|
+|Translator Text API-verzió 3| API.cognitive.microsofttranslator.com|  Igen|    Nem| Igen|
+
+**Translator Text API-verzió 3**
+* Az általánosan elérhető és teljes mértékben támogatott.
+* GDPR-kompatibilis, a processzor, amely eleget tesz ISO 20001 és 20018, valamint SOC 3 minősítési követelményeinek. 
+* Lehetővé teszi a Neurális hálózat fordítási rendszerek egyéni Translator (előzetes verzió), az új Translator NMT testreszabási funkcióról a testreszabott meghívásához. 
+* Nem biztosít a Microsoft Translator Hub használatával létrehozott egyéni fordítási rendszerekhez való hozzáférést.
+
+A Translator Text API 3-as verziójához használja a api.cognitive.microsofttranslator.com végpont használata.
+
+**Translator Text API-Version 2**
+* Elavult. A 2019. április 30. ezt megszüntetjük. 
+* Nem felel meg az összes ISO 20001,20018 és a SOC 3 hardvertanúsítvány követelményeit. 
+* Nem teszi lehetővé a Neurális hálózat fordítási rendszerek a Translator testreszabási funkcióval testreszabott meghívásához.
+* A Microsoft Translator Hub használatával létrehozott egyéni fordítási rendszerekhez való hozzáférést biztosít.
+* A Translator Text API 2-es verzióját használja a api.microsofttranslator.com végpont használata.
+
+Nincs a fordító API-verzió létrehoz egy rekordot a fordítások. A fordítások soha nem bárkivel vannak megosztva. További információ a [Translator nyomkövetés-mellőzési](http://www.aka.ms/NoTrace) weblapon.
 
 
 ## <a name="links"></a>Hivatkozások

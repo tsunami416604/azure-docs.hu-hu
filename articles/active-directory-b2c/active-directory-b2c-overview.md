@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 10/23/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: fdb856f92bf790df0065cfc74ce5896f1d10c47b
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.openlocfilehash: 2f9c4acc1a2a98978e12aaf5356a5bc270b8d017
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954106"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724026"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Mi az az Azure Active Directory B2C?
 
@@ -60,9 +60,9 @@ Az Azure AD B2C egymás után kommunikál az identitásszolgáltatókkal, az üg
 
 Az Azure AD B2C megvédi az alkalmazásait a szolgáltatásmegtagadási és jelszóalapú támadások ellen. Az Azure AD B2C olyan észlelési és kockázatcsökkentési technikákat használ, mint a SYN cookie-k vagy sebesség- és kapcsolatkorlátozások, hogy megvédje az erőforrásokat a szolgáltatásmegtagadási támadásokkal szemben. A rendszer kockázatcsökkentést alkalmaz a találgatásos támadásokkal és a szótáralapú jelszótámadásokkal szemben is.
 
-#### <a name="built-in-policies"></a>Beépített szabályzatok
+#### <a name="user-flows"></a>Felhasználói folyamatok
 
-Az Azure AD B2C-nek küldött kérések meghatároznak egy szabályzatot is. A szabályzatok vezérlik az alkalmazás viselkedését az Azure AD B2C-vel történő interakció során. A megoldás előre meghatározott beépített szabályzatokkal rendelkezik a leggyakoribb identitásfeladatokhoz, úgymint a regisztráció, a bejelentkezés és a profil szerkesztése.  A bejelentkezési szabályzat például az alábbi beállítások konfigurálásával teszi lehetővé a viselkedésmódok vezérlését:
+Minden egyes Azure AD B2C-nek küldött kérések adja meg a felhasználói folyamat, amely egy szabályzatot, amely szabályozza, hogy az alkalmazás hogyan használja az Azure AD B2C-vel viselkedését. Előre definiált felhasználókövetési adatai a leggyakrabban használt identitás feladatok, például a regisztráció, bejelentkezést és profilszerkesztést, érhetők el az Azure AD B2C-portálon.  Például egy regisztrációs felhasználói folyamata lehetővé teszi a viselkedés szabályozására, a következő beállítások konfigurálásához:
 
 - Közösségi fiókok, amelyekkel az ügyfelek regisztrálnak az alkalmazásra
 - Az ügyfelekről gyűjtött adatok, úgymint utónév vagy irányítószám

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 19b4a1382b2a9b6034fd6ac9feed776dcca6a124
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 53f9850d794061f5aaebc556743291ae8f3305fb
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51704358"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721289"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>Hozzáférés a Resource Managerhez egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással
 
@@ -41,7 +41,7 @@ Az Azure-erőforrások felügyelt identitásainak segítségével a kód hozzáf
 1.  Navigáljon az **Erőforráscsoportok** lapra. 
 2.  Válassza ki a **Windows VM** számára létrehozott **erőforráscsoportot**. 
 3.  Lépjen a **Hozzáférés-vezérlés (IAM)** részre a bal oldali panelen. 
-4.  Ezután a **Hozzáadás** elemre kattintva adjon hozzá egy új szerepkör-hozzárendelést a **Windows VM-hez**.  A **Szerepkör** beállításhoz válassza ki az **Olvasó** értéket. 
+4.  Ezután **szerepkör-hozzárendelés hozzáadása** az új szerepkör-hozzárendelést a **Windows virtuális gép**.  A **Szerepkör** beállításhoz válassza ki az **Olvasó** értéket. 
 5.  A következő legördülő menüben a **Hozzáférés hozzárendelése** beállítás számára válassza ki a **Virtuális gép** értéket. 
 6.  Ezután ellenőrizze, hogy a megfelelő előfizetés szerepel-e az **Előfizetés** legördülő menüben. Az **Erőforráscsoport** esetében válassza a **Minden erőforráscsoport** lehetőséget. 
 7.  Végül a **Kiválasztás** mezőben válassza ki a Windows VM-et a legördülő menüben, majd kattintson a **Mentés** gombra.

@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: erhopf
-ms.openlocfilehash: e7ba72c95959a0c31ca724f91f519ac705d669fb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f97b1ed30c3f8263c5c4c3465951bb7010466ac
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245783"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678287"
 ---
 # <a name="how-to-sign-up-for-the-translator-text-api"></a>Hogyan regisztrálhat a Translator Text API
 
@@ -48,6 +48,8 @@ Feliratkozás a Translator Text, kap egy személyre szabott hozzáférési kulcs
 
 - [Hitelesítésikód-példák a Githubon](https://github.com/MicrosoftTranslator)
 - [A Microsoft Translator támogatási fórum](https://www.aka.ms/TranslatorForum)
+
+A Microsoft Translator általában lehetővé teszi az első néhány kérelmek előtt ellenőrizte, hogy az előfizetés fiók állapota. Ha az első néhány Microsoft Translator API-kérések majd a hívás nem sikerült, hibaüzenet jelzi a problémát. Kérjük jelentkezzen ki az API-válasz, így láthatja, hogy az oka.
 
 ## <a name="pricing-options"></a>Árképzési lehetőségek
 

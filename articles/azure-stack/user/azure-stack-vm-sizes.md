@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 12/01/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 1af7a1d595b39878f3ed30591e8ad78e767e8cf7
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 5127b748111f993f95f940f4add81c42a032e038
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087491"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722088"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Az Azure Stackben támogatott virtuálisgép-méretek
 
@@ -28,7 +28,7 @@ Ez a cikk a virtuális gép (VM) méretek az Azure Stackben elérhető sorolja f
 
 ## <a name="general-purpose"></a>Általános célú
 
-Általános célú virtuális gépek méreteit adjon meg egy kiegyensúlyozott Processzor-memória arány. Ezek szolgálnak tesztelési-fejlesztési feladatokhoz, kis és közepes méretű adatbázisokhoz, és a kis és közepes adatforgalmú webkiszolgálókhoz.
+Általános célú virtuális gépek méreteit adjon meg egy kiegyensúlyozott Processzor-memória arány. Ezek szolgálnak tesztelési-fejlesztési feladatokhoz, kis és közepes méretű adatbázisokhoz, és a kis és közepes adatforgalmú webkiszolgálókhoz. Az egyes adatlemezek 2300 IOPS, a prémium szintű Virtuálisgép-méretek, kivéve az alapszintű A sorozat. Alapszintű, és az adattároló lemez mérete 500 IOPS.
 
 ### <a name="basic-a"></a>Alapszintű A
 

@@ -10,12 +10,12 @@ ms.component: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: 1fc48687141ea8a7e8cb30d3438d81e8f1088e4f
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: c7e14e2c2d6d38055304610c805a6bede10a6828
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340443"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679290"
 ---
 # <a name="translator-speech-api"></a>Translator Speech API
 
@@ -89,6 +89,9 @@ Figyelje meg, hogy a teljes fájlméret (bájt 4-7) és a "data" (40-43 bájt) m
 
 A WAV (RIFF) fejléc elküldése, után az ügyfél elküldi az audio adatok adattömböket. Az ügyfél általában fog adatfolyam egy meghatározott időtartamra (például stream 100 MS egyszerre hanganyagra) jelölő rögzített méretű adattömbökre.
 
+### <a name="signal-the-end-of-the-utterance"></a>Az utterance (kifejezés) vége jelzés
+A Translator Speech API adja vissza a szöveges és a fordítás a hang Stream, a hanganyag küldése folyamatban van. A végleges átiratok, a végső fordítás és a lefordított hang visszatér, csak az utterance (kifejezés) vége után. Bizonyos esetekben előfordulhat, hogy kényszeríteni kívánja az utterance (kifejezés) végén. Kérjük, küldjön 2,5 másodperc csend végén az utterance (kifejezés) kényszerítése. 
+
 ### <a name="final-result"></a>Végső eredményt
 Végső speech recognition eredményeképpen jön létre az utterance (kifejezés) végén. Egy eredményt a szolgáltatásból átkerülnek a szöveg típusú WebSocket üzenetben az ügyfelet. Az üzenet tartalma a következő tulajdonságokkal rendelkező objektum JSON-szerializálás:
 
@@ -149,7 +152,7 @@ A minta végeredmény a következőképpen történik:
 }
 ```
 
-### <a name="text-to-speech"></a>Szöveg-hang transzformációs
+### <a name="text-to-speech"></a>Text-to-speech
 Ha a szöveg-hang transzformációs funkció engedélyezve van (lásd: `features` paraméterhez), a végső eredményt a hanganyag a kimondott lefordított szöveg követ. Hang adatok adattömbökre osztotta és az ügyfélnek küldött a szolgáltatás bináris típusú Websocket üzenetek sorozataként. Egy ügyfél az egyes üzenetek PÉNZÜGY bit ellenőrzésével képes észlelni a konce datového proudu. Az utolsó üzenet bináris fog rendelkezni a PÉNZÜGY bit beállítása egy, az adatfolyam végén jelzi. Az adatfolyam formátuma értékét függ a `format` paraméter.
 
 ### <a name="closing-the-connection"></a>A kapcsolat bezárása
@@ -171,7 +174,7 @@ Amikor egy ügyfélalkalmazás hang streamelés befejeződött, és az utolsó v
 |Hang|(üres)|Milyen hangalapú használatához a fordítást, szöveg-hang transzformációs rendereléshez azonosítja. Értéke a válaszban a nyelvek API szövegfelolvasás hatókörből hangalapú azonosítók közül. Ha egy hang nincs megadva a rendszer automatikusan az válasszon egy Ha a szöveg-hang transzformációs szolgáltatás engedélyezve van.|lekérdezés|sztring|
 |Formátum|(üres)|Itt adhatja meg a szolgáltatás által visszaadott szöveg-hang transzformációs audio-adatfolyam formátuma. Az elérhető lehetőségek:<ul><li>`audio/wav`: Hang hullám az adatfolyam. Ügyfél használja a WAV-fejléc hangformátum megfelelően értelmezni. WAV hang-szöveg-hang transzformációs a 16 bites, egyetlen csatorna PCM 24kHz vagy 16kHz mintavételi arány.</li><li>`audio/mp3`: Hang MP3-adatfolyam.</li></ul>Az alapértelmezett szint a `audio/wav`.|lekérdezés|sztring|
 |ProfanityAction    |(üres)    |Itt adhatja meg, hogyan kezelje a szolgáltatás a profanities ismeri el a speech. Érvényes műveletek a következők:<ul><li>`NoAction`: Mivel profanities marad.</li><li>`Marked`: A jelölő profanities helyén. Lásd: `ProfanityMarker` paramétert.</li><li>`Deleted`: Profanities törlődnek. Például ha a szó `"jackass"` úgy viselkedik, mint a vulgáris, a kifejezés `"He is a jackass."` lesz `"He is a .".`</li></ul>Alapértelmezés szerint meg van jelölve.|lekérdezés|sztring|
-|ProfanityMarker|(üres)    |Megadja, hogy észlelt profanities mikor kezeli `ProfanityAction` értékre van állítva `Marked`. Az érvényes beállítások a következők:<ul><li>`Asterisk`: A karakterlánc profanities helyén `***`. Például ha a szó `"jackass"` úgy viselkedik, mint a vulgáris, a kifejezés `"He is a jackass."` lesz `"He is a ***.".`</li><li>`Tag`: Egy XML-címke cenzúrázása cenzúrázása zárják közre. Például ha a szó `"jackass"` úgy viselkedik, mint a vulgáris, a kifejezés `"He is a jackass."` lesz `"He is a <profanity>jackass</profanity>."`.</li></ul>Az alapértelmezett érték `Asterisk`.|lekérdezés|sztring|
+|ProfanityMarker|(üres)    |Megadja, hogy észlelt profanities mikor kezeli `ProfanityAction` értékre van állítva `Marked`. Az érvényes beállítások a következők:<ul><li>`Asterisk`: A karakterlánc profanities helyén `***`. Például ha a szó `"jackass"` úgy viselkedik, mint a vulgáris, a kifejezés `"He is a jackass."` lesz `"He is a ***.".`</li><li>`Tag`: Egy XML-címke cenzúrázása cenzúrázása zárják közre. Például ha a szó `"jackass"` úgy viselkedik, mint a vulgáris, a kifejezés `"He is a jackass."` lesz `"He is a <profanity>jackass</profanity>."`.</li></ul>A mező alapértelmezett értéke: `Asterisk`.|lekérdezés|sztring|
 |Engedélyezés|(üres)  |Az ügyfél tulajdonosi jogkivonat értékét adja meg. Használja az előtag `Bearer` értékét követi a `access_token` a hitelesítési jogkivonat-szolgáltatás által visszaadott értéket.|header   |sztring|
 |OCP-Apim-Subscription-Key|(üres)|Kötelező, ha a `Authorization` fejléc nincs megadva.|header|sztring|
 |access_token|(üres)   |Alternatív módja átadni egy érvényes OAuth-jogkivonatot. A tulajdonosi jogkivonatot általában biztosított fejléccel `Authorization`. Websocket könyvtárak Ügyfélkód fejlécek beállítása nem teszik lehetővé. Ebben az esetben az ügyfél használhatja a `access_token` lekérdezési paraméter érvényes token át. Ha a hozzáférési token használatával hitelesíteni, ha `Authorization` fejléc nincs beállítva, majd `access_token` be kell állítani. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja. Az ügyfelek csak egy módszert használja a jogkivonat.|lekérdezés|sztring|

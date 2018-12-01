@@ -11,13 +11,13 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
-ms.date: 11/07/2018
-ms.openlocfilehash: 382ac23ea4c8e0ec54314bb754c00a8e6e43e9f6
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.date: 11/30/2018
+ms.openlocfilehash: fc5398b4ffb0b9310b6ab13561830d8d3db7a611
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300965"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725743"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>Rövid útmutató: A Machine Learning Services (with R) az Azure SQL Database-ben (előzetes verzió)
 
@@ -31,7 +31,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A Machine Learning Services (with R) nyilvános előzetes verziójának használata az SQL Database-ben alapértelmezés szerint nem engedélyezett. E-mail küldése a Microsoftnak, [ sqldbml@microsoft.com ](mailto:sqldbml@microsoft.com) regisztrálhat a nyilvános előzetes verziója.
 
-Miután regisztrált a programban, a Microsoft belépteti Önt a nyilvános előzetes verzióba, és vagy migrálja a meglévő adatbázist, vagy egy új adatbázist hoz létre egy R-kompatibilis szolgáltatásban.
+A programban regisztrált, Microsoft megjelenik majd, a nyilvános előzetes verzióban, és a áttelepítése vagy a meglévő adatbázis, vagy hozzon létre egy új adatbázist egy R-kompatibilis Service.
 
 A Machine Learning Services (with R) az SQL Database-ben jelenleg csak a vCore-alapú vásárlási modellben érhetők el a készletezett adatbázisok **Általános célú** és **Üzleti szempontból kritikus** szolgáltatásszintjein. A kezdeti nyilvános előzetes verzióban sem a **Rugalmas skálázás** szolgáltatásszint, sem a **Felügyelt példányok** nem támogatottak. A Machine Learning Services (with R) nem használható éles számítási feladatokhoz a nyilvános előzetes verzióban.
 
@@ -51,11 +51,10 @@ Ez a rövid útmutató egy kiszolgálószintű tűzfalszabály konfigurálását
 
 ## <a name="different-from-sql-server"></a>Más, mint az SQL Server
 
-Az Azure SQL Database-ben a Machine Learning Services (with R) funkciói hasonlóak az [SQL Server Machine Learning Services](https://review.docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning) funkcióihoz. Van azonban közöttük néhány különbség:
+Az Azure SQL Database-ben a Machine Learning Services (with R) funkciói hasonlóak az [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning) funkcióihoz. Van azonban közöttük néhány különbség:
 
 - Csak az R-rel kompatibilis. A Python jelenleg nem támogatott.
 - Nincs szükség az `external scripts enabled` az `sp_configure` használatával való konfigurálására.
-- Nem kell szkriptvégrehajtási engedélyt adni a felhasználóknak.
 - A csomagokat az **sqlmlutils** használatával kell telepíteni.
 - Nincs külön külsőerőforrás-szabályozás. Az R-erőforrások az SQL-erőforrások adott százalékát teszik ki, a szolgáltatásszinttől függően.
 
@@ -82,16 +81,26 @@ Ellenőrizheti, hogy a Machine Learning Services (with R) engedélyezve van-e az
 
 1. Ha hibába ütközik, előfordulhat, hogy a Machine Learning Services (with R) nyilvános előzetes verziója nincs engedélyezve az SQL-adatbázishoz. A nyilvános verzióra való regisztrálás menete fentebb olvasható.
 
+## <a name="grant-permissions"></a>Engedélyek megadása
+
+Ha Ön rendszergazda, a külső kód automatikusan is futtathatja. Mindenki más jogosultsággal kell rendelkeznie.
+
+Cserélje le `<username>` egy érvényes adatbázis-felhasználói bejelentkezéskor a parancs futtatása előtt.
+
+```sql
+GRANT EXECUTE ANY EXTERNAL SCRIPT TO <username>
+```
+
 ## <a name="basic-r-interaction"></a>Az R alapszintű használata
 
 Kétféleképpen futtathat R-kódokat az SQL Database-ben:
 
-+ Hozzáadhat egy R-szkriptet a rendszer által tárolt [sp_execute_external_script](https://docs.microsoft.com/sql//relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql.md) eljárás argumentumaként.
-+ Csatlakozzon az SQL-adatbázishoz egy [távoli R-ügyfélről](https://review.docs.microsoft.com/sql/advanced-analytics/r/set-up-a-data-science-client), majd futtassa a kódot úgy, hogy a számítási környezet az SQL Database legyen.
++ R-szkript hozzáadása a rendszerszintű tárolt eljárás argumentumként [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql).
++ Csatlakozzon az SQL-adatbázishoz egy [távoli R-ügyfélről](https://docs.microsoft.com/sql/advanced-analytics/r/set-up-a-data-science-client), majd futtassa a kódot úgy, hogy a számítási környezet az SQL Database legyen.
 
 A következő gyakorlat az első használati modellre fókuszál: R-kód továbbítása egy tárolt eljárásnak.
 
-1. Futtasson egy egyszerű szkriptet, hogy láthassa, hogyan fut le egy R-szkript az SQL-adatbázisban.
+1. Megtekintheti, hogyan az R-szkriptek végrehajtása az SQL-adatbázisban egy egyszerű szkript futtatásához.
 
     ```sql
     EXECUTE sp_execute_external_script
@@ -119,7 +128,7 @@ Ne feledje, hogy az `@script` argumentumban csak érvényes R-kódok szerepelhet
 
 ## <a name="inputs-and-outputs"></a>Bemenetek és kimenetek
 
-Alapértelmezés szerint az [sp_execute_external_script](https://review.docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql.md) egyetlen bemeneti adathalmazt fogad, amelyet általában Önnek kell megadnia érvényes SQL-lekérdezés formájában. Az egyéb bemeneti típusok SQL-változóként továbbíthatók.
+Alapértelmezés szerint az [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) egyetlen bemeneti adathalmazt fogad, amelyet általában Önnek kell megadnia érvényes SQL-lekérdezés formájában. Az egyéb bemeneti típusok SQL-változóként továbbíthatók.
 
 A tárolt eljárás egy R-adatkeretet ad vissza kimenetként, de a skaláris értékeket és a modelleket változóként is visszaadhatja. Például bináris változóként adhat vissza kimenetként egy betanított modellt, és továbbíthatja egy T-SQL INSERT utasításhoz, ha a modellt egy táblába szeretné írni. Ezenkívül ábrázolásokat (bináris formátumban) vagy skaláris értékeket (egyéni értékek, például a dátum és az idő, a modell betanításával telt idő, stb.) is létrehozhat.
 
@@ -284,7 +293,7 @@ Betaníthat egy modellt az R használatával, és mentheti egy SQL-adatbázisban
     - Adja meg a modell betanításához használni kívánt bemeneti adatokat.
 
     > [!TIP]
-    > Ha szeretné felfrissíteni a tudását a lineáris modellekkel kapcsolatban, javasoljuk a [Lineáris modellek igazítása](https://docs.microsoft.com/r-server/r/how-to-revoscaler-linear-model) című oktatóanyagot, amely a modellek az rxLinMod függvény használatával való igazításának folyamatát mutatja be.
+    > Ha szeretné felfrissíteni a tudását a lineáris modellekkel kapcsolatban, javasoljuk a [Lineáris modellek igazítása](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model) című oktatóanyagot, amely a modellek az rxLinMod függvény használatával való igazításának folyamatát mutatja be.
 
     A modell létrehozásához adja meg a képletet az R-kódban, majd továbbítsa az adatokat bemeneti paraméterként.
 
@@ -337,7 +346,7 @@ Betaníthat egy modellt az R használatával, és mentheti egy SQL-adatbázisban
     WHERE model_name = 'default model'
     ```
 
-4. Az R kimenete az [sp_execute_external_script](https://review.docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql.md) tárolt eljárásból általában egyetlen adatkeretre korlátozódik.
+4. Az R kimenete az [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) tárolt eljárásból általában egyetlen adatkeretre korlátozódik.
 
     Azonban más típusú kimeneteket, például skaláris értékeket is visszaadhat az adatkeret mellett.
 
@@ -381,7 +390,7 @@ Az előző szakaszban létrehozott modell használatával pontozhatja az új ada
     VALUES (40), (50), (60), (70), (80), (90), (100)
     ```
 
-    Mivel ebben a példában a modell a **RevoScaleR** csomag részeként biztosított **rxLinMod** algoritmuson alapul, az R általános `predict` függvénye helyett hívja meg az [rxPredict](https://docs.microsoft.com/r-server/r-reference/revoscaler/rxpredict) függvényt.
+    Mivel ebben a példában a modell a **RevoScaleR** csomag részeként biztosított **rxLinMod** algoritmuson alapul, az R általános `predict` függvénye helyett hívja meg az [rxPredict](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxpredict) függvényt.
 
     ```sql
     DECLARE @speedmodel varbinary(max) = 
@@ -410,7 +419,7 @@ Az előző szakaszban létrehozott modell használatával pontozhatja az új ada
     + Miután lekérte a modellt a táblából, hívja a meg az `unserialize` függvényt a modellhez.
 
         > [!TIP] 
-        > Emellett tekintse meg a RevoScaleR által biztosított új [szerializálási függvényeket](https://docs.microsoft.com/r-server/r-reference/revoscaler/rxserializemodel) is, amelyek támogatják a valós idejű pontozást.
+        > Emellett tekintse meg a RevoScaleR által biztosított új [szerializálási függvényeket](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxserializemodel) is, amelyek támogatják a valós idejű pontozást.
     + Alkalmazza a modellre az `rxPredict` függvényt a megfelelő argumentumokkal, és adja meg az új bemeneti adatokat.
 
     + A példában az `str` függvényt adjuk hozzá a tesztelési fázisban, hogy ellenőrizzük az R-ből visszaadott adatok sémáját. Az utasítást később eltávolíthatja.
@@ -439,7 +448,7 @@ Ha olyan csomagot szeretne használni, amely még nincs telepítve az SQL-adatb�
     R -e "install.packages('RODBCext', repos='https://cran.microsoft.com')"
     ```
 
-    Ha például **„Az „R” nem ismerhető fel belső vagy külső parancsként, működő programként vagy batch-fájlként.”** üzenetet kapja, az valószínűleg azt jelenti, hogy az R.exe nem szerepel a **PATH** környezeti változóban a Windows rendszeren. Ebben az esetben hozzáadhatja a könyvtárat a környezeti változóhoz, vagy megkeresheti a könyvtárat a parancssorban (például `cd C:\Program Files\R\R-3.5.1\bin`).
+    A következő hibaüzenet jelenik meg, ha "A"R"nem ismerhető fel belső vagy külső parancs, működtethető program vagy parancsfájl", akkor valószínűleg azt jelenti, hogy R.exe elérési útja nem szerepel a **elérési út** Windows környezeti változóba. Adja hozzá a könyvtárat a környezeti változó vagy lépjen abba a könyvtárba, a parancssori ablakban (például `cd C:\Program Files\R\R-3.5.1\bin`) a parancs futtatása előtt.
 
 1. Az **sqlmlutils** telepítéséhez használja az **R CMD INSTALL** parancsot. Adja meg annak a könyvtárnak az elérési útját, amelybe letöltötte a zip-fájlt, valamint adja meg a zip-fájl nevét. Példa:
 
@@ -523,7 +532,7 @@ Ha olyan csomagot szeretne használni, amely még nincs telepítve az SQL-adatb�
 
 A Machine Learning Serviceszel kapcsolatos további információért olvassa el az SQL Server Machine Learning-szolgáltatásokkal foglalkozó alábbi cikkeket. Bár ezek a cikkek az SQL Serverhez készültek, az azokban szereplő információk a Machine Learning Services (with R) esetében is alkalmazhatók az Azure SQL Database-ben.
 
-- [SQL Server Machine Learning-szolgáltatások](https://review.docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
-- [Oktatóanyag: Ismerkedés az adatbázison belüli elemzésekkel az R használatával az SQL Serverben](https://review.docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
-- [Teljes körű adatelemzési útmutató az R-hez és az SQL Serverhez](https://review.docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)
-- [Oktatóanyag: A RevoScaleR R-függvényeinek használata az SQL Server adataival](https://review.docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)
+- [SQL Server Machine Learning-szolgáltatások](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
+- [Oktatóanyag: Ismerkedés az adatbázison belüli elemzésekkel az R használatával az SQL Serverben](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
+- [Teljes körű adatelemzési útmutató az R-hez és az SQL Serverhez](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)
+- [Oktatóanyag: A RevoScaleR R-függvényeinek használata az SQL Server adataival](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)

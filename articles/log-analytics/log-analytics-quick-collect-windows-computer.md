@@ -10,18 +10,17 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: e239f2895597e30da4a3c7c776665c9d2418c5b8
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 85b0b1a4b6c34fb56a575e86439fb2c22cff28bc
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633350"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725352"
 ---
 # <a name="configure-log-analytics-agent-for-windows-computers-in-a-hybrid-environment"></a>Log Analytics-ügynök konfigurálása Windows rendszerű számítógépekhez hibrid környezetekben
 Az [Azure Log Analytics](../azure-monitor/platform/agent-windows.md) közvetlenül tud adatokat gyűjteni az Ön adatközpontjában vagy egyéb felhőalapú környezetében található fizikai vagy virtuális Windows-gépekről egy adattárba, részletes elemzés és összehasonlítás céljából.  Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a windowsos számítógépekről történő adatgyűjtést néhány egyszerű lépésben.  Azure-beli windowsos virtuális gépek esetén lásd [az Azure-beli virtuális gépekről történő adatgyűjtést](log-analytics-quick-collect-azurevm.md) ismertető cikket.  
