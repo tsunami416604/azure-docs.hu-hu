@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 10/24/2018
 ms.author: celested
 ms.reviewer: tomfitz
-ms.openlocfilehash: b60be3db14a756407e62540bb89f3b0924597067
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 87e197821be7c7c72ca1704d6b0123d76d41b30f
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49960387"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721085"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Útmutató: a portál használatával hozzon létre egy Azure AD alkalmazás és -szolgáltatásnév erőforrások eléréséhez
 
@@ -65,9 +65,9 @@ Beállíthatja a hatókör szintjén is az előfizetés, erőforráscsoport vagy
    Ha nem látja a keresett előfizetéshez, válasszon **globális előfizetés-szűrő**. Ellenőrizze, hogy az előfizetés ki van jelölve a portálon. 
 
 1. Válassza ki **hozzáférés-vezérlés (IAM)**.
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza ki **szerepkör-hozzárendelés hozzáadása**.
 
-   ![Válassza a hozzáadása](./media/howto-create-service-principal-portal/select-add.png)
+   ![Válassza ki a szerepkör-hozzárendelés hozzáadása](./media/howto-create-service-principal-portal/select-add.png)
 
 1. Válassza ki a az alkalmazáshoz hozzárendelni kívánt szerepkört. Hajtsa végre a műveleteket, például az alkalmazás számára **újraindítás**, **start** és **leállítása** példányok, válassza ki a **közreműködői** szerepkör. Alapértelmezés szerint az Azure AD-alkalmazások nem megjelenik az elérhető lehetőségek közül. Keresse meg az alkalmazás, keresse meg a nevét, és jelölje ki.
 

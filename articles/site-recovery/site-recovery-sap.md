@@ -6,16 +6,15 @@ manager: rochakm
 ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: asgang
-ms.openlocfilehash: 1f38cd62a1394d45716e7224cc03a059fcaf9e13
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8ccd5a99abff96760ea842dca84b66810b91ae72
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247755"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680922"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Egy többrétegű SAP NetWeaver alkalmazás üzembe helyezése a vészhelyreállítás beállítása
 
@@ -93,8 +92,8 @@ Az alábbiakban a vész-helyreállítási beállításának lépései
 2. A helyreállítási hálózat tervezése
 3.  A tartományvezérlő replikálása
 4.  Adatok csomagnál replikálása 
-5.  Végezzen feladatátvételi tesztet 
-6.  Ehhez a feladatátvétel 
+5.  Futtasson egy feladatátvételi tesztet 
+6.  Feladatátvétel futtatása 
 
 Alább a javaslatot, az egyes csomagok ebben a példában használt vész-helyreállítási van. 
 
@@ -150,7 +149,7 @@ A leggyakrabban használt Azure Site Recovery-szkriptek üzembe helyezhető az A
 
 1.  Az Azure Portalon válassza ki a helyreállítási tárban.
 2.  Válassza ki a helyreállítási tervet, amelyet létrehozott SAP-alkalmazások.
-3.  Válassza ki **feladatátvételi teszt**.
+3.  Kattintson a **Feladatátvétel tesztelése** elemre.
 4.  A teszt feladatátvételi folyamat indításához válassza ki a helyreállítási pont és az Azure virtuális hálózat.
 5.  A másodlagos környezet esetén hajtsa végre az ellenőrzések.
 6.  Ha ellenőrzés befejeződött, tisztítsa meg a feladatátvételi környezet válassza **feladatátvételi teszt utáni karbantartás**.
@@ -161,7 +160,7 @@ További információkért lásd: [az Azure-bA a Site Recovery feladatátvételi
 
 1.  Az Azure Portalon válassza ki a helyreállítási tárban.
 2.  Válassza ki a helyreállítási tervet, amelyet létrehozott SAP-alkalmazások.
-3.  Válassza ki **feladatátvételi**.
+3.  Válassza a **Feladatátvétel** lehetőséget.
 4.  A feladatátvételi folyamat indításához válassza ki a helyreállítási pontot.
 
 További információkért lásd: [feladatátvétel a Site Recoveryben](site-recovery-failover.md).

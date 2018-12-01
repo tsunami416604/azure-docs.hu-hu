@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7b460efbdc50c5b243c3ef78bad568b720e75e59
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: ffceb8fd6f1afcd054bfc4c4035fb2b8b93ed390
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51635557"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720541"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Set átirányítási URL-címek a b2clogin.com-on Azure Active Directory B2C-vel
 
@@ -29,7 +29,7 @@ A b2clogin.com használata lehetővé teszi további előnyökkel, például:
 Vegye figyelembe ezeket a beállításokat, előfordulhat, hogy módosítania kell a b2clogin.com használata esetén:
 
 - Állítsa be az átirányítási URL-címek az identity provider alkalmazásokban a b2clogin.com használata. 
-- A házirend-referenciák és jogkivonat-végpont a b2clogin.com használata az Azure AD B2C-alkalmazás beállítása. 
+- Az Azure AD B2C-alkalmazás a b2clogin.com használata a felhasználói folyamat hivatkozások és a token végpontok beállítása. 
 - Az MSAL használatakor be kell a **ValidateAuthority** tulajdonságot `false`.
 - Győződjön meg arról, hogy módosítja, **engedélyezett eredetek** CORS beállításaiban megadott [felhasználói felület testreszabása](active-directory-b2c-ui-customization-custom-dynamic.md).  
 
@@ -56,7 +56,7 @@ Identitás-szolgáltatóktól telepítési adatait a következő cikkekben talá
 
 ## <a name="update-your-application"></a>Az alkalmazás frissítése
 
-Az Azure AD B2C-alkalmazást valószínűleg hivatkozik `login.microsoftonline.com` több helyen, például a házirend-hivatkozások és a jogkivonat-végpont.  Győződjön meg arról, hogy az engedélyezési végpont, a jogkivonat-végpont és a kiállító használatára frissítve lett-e `your-tenant-name.b2clogin.com`.  
+Az Azure AD B2C-alkalmazást valószínűleg hivatkozik `login.microsoftonline.com` több helyen, például a felhasználói folyamat hivatkozások és a jogkivonat-végpont.  Győződjön meg arról, hogy az engedélyezési végpont, a jogkivonat-végpont és a kiállító használatára frissítve lett-e `your-tenant-name.b2clogin.com`.  
 
 ## <a name="set-the-validateauthority-property"></a>A ValidateAuthority tulajdonsága
 

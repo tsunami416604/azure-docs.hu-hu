@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e7fd5649f1cd08713b066a20887b36b9a3c38e7c
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 510fe187661534c4c82ae7ec62904de51eb4b221
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633078"
+ms.locfileid: "52682731"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Gyűjtsön információt a DNS-infrastruktúra, a DNS Analytics előzetes verziójának megoldással kapcsolatos
 
@@ -47,7 +47,7 @@ A következő táblázat ismerteti a megoldás által támogatott csatlakoztatot
 | [Windows-ügynökök](../../azure-monitor/platform/agent-windows.md) | Igen | A megoldás a DNS-adatok Windows-ügynököktől gyűjti. |
 | [Linux-ügynökök](../../log-analytics/log-analytics-quick-collect-linux-computer.md) | Nem | A megoldás nem DNS-információkat gyűjtsön a közvetlen Linux-ügynökök. |
 | [System Center Operations Manager felügyeleti csoport](../../log-analytics/log-analytics-om-agents.md) | Igen | A megoldás a DNS-adatok egy csatlakoztatott az Operations Manager felügyeleti csoportban lévő ügynököktől gyűjti. Ehhez nem szükséges, hogy közvetlen kapcsolat legyen az Operations Manager-ügynök és a Log Analytics között. Adatok lesznek továbbítva a felügyeleti csoportból a Log Analytics-munkaterületet. |
-| [Azure Storage-fiók](../../log-analytics/log-analytics-azure-storage.md) | Nem | A megoldás az Azure storage nem használja. |
+| [Azure Storage-fiók](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Nem | A megoldás az Azure storage nem használja. |
 
 ### <a name="data-collection-details"></a>Adatok gyűjtése részletei
 

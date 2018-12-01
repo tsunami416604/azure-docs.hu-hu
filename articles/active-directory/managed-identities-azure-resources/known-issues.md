@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 256f36ac56126fc76561a6dbe4281ac4975df6e4
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b535939e200b533c06c97686897e283fb6cf57bc
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632789"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720184"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Gyakori kérdések és ismert problémái az Azure-erőforrások felügyelt identitásokból
 
@@ -115,7 +115,7 @@ Ha a virtuális gép konfigurációs panel nem látható a virtuális Gépen, ma
 
 ### <a name="cannot-assign-access-to-virtual-machines-in-the-access-control-iam-blade"></a>A hozzáférés-vezérlés (IAM) paneljén a virtuális gépek nem hozzáférés hozzárendelése
 
-Ha **virtuális gép** nem jelenik meg az Azure Portalon választást **rendelhet hozzáféréseket** a **hozzáférés-vezérlés (IAM)** > **hozzáadása engedélyek**, majd a felügyelt identitások Azure-erőforrások számára van még nincs engedélyezve a portálon az Ön régiójában. Próbálja újra később.  Az Azure-erőforrások egyszerű szolgáltatás a felügyelt identitásokból keressen rá a virtuális gép szerepkör-hozzárendelés továbbra is választhat az identitást.  Adja meg a virtuális gép nevét a **kiválasztása** mező, és az egyszerű szolgáltatás megjelenik a keresési eredményekben.
+Ha **virtuális gép** nem jelenik meg az Azure Portalon választást **rendelhet hozzáféréseket** a **hozzáférés-vezérlés (IAM)** > **szerepkör hozzáadása hozzárendelés**, majd a felügyelt identitások Azure-erőforrások számára van még nincs engedélyezve a portálon az Ön régiójában. Próbálja újra később.  Az Azure-erőforrások egyszerű szolgáltatás a felügyelt identitásokból keressen rá a virtuális gép szerepkör-hozzárendelés továbbra is választhat az identitást.  Adja meg a virtuális gép nevét a **kiválasztása** mező, és az egyszerű szolgáltatás megjelenik a keresési eredményekben.
 
 ### <a name="vm-fails-to-start-after-being-moved-from-resource-group-or-subscription"></a>Virtuális gép nem erőforráscsoportba vagy előfizetésbe az áthelyezés után indul el
 

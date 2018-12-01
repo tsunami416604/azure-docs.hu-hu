@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: e18b670b94962c0e7aa469402228fd4ed95d846b
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 9b9789979f6fa3beb606007ca252827c7a1599e0
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287251"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682282"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése a klasszikus metrikariasztásokat az Azure Monitor használatával
 
@@ -126,36 +126,9 @@ Ez a szakasz azt mutatja be, hogyan használható a PowerShell-parancsok létreh
     Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
     ```
 
-8. Használhatja a `Add-AlertRule` parancsmag létrehozása, frissítése, vagy tiltsa le egy riasztási szabályt. E-mailt és webhookot tulajdonságok használatával hozhat létre `New-AzureRmAlertRuleEmail` és `New-AzureRmAlertRuleWebhook`, illetve. A riasztási szabály parancsmag rendelje hozzá ezeket a tulajdonságokat a műveleteket a **műveletek** a riasztási szabály tulajdonságát. A következő táblázat ismerteti a használt paraméterek és értékek metrikával riasztás létrehozásához.
-
-    | paraméter | érték |
-    | --- | --- |
-    | Name (Név) |simpletestdiskwrite |
-    | Ez a riasztási szabály helye |USA keleti régiója |
-    | ResourceGroup |montest |
-    | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-    | A létrehozott riasztás MetricName |\PhysicalDisk (aránya _teljes) \Disk Lemezírások/mp. Tekintse meg a `Get-MetricDefinitions` parancsmaggal kapcsolatos hogyan kérheti le a pontos metrikus nevek |
-    | Operátor |GreaterThan |
-    | Küszöbérték (száma/s az a mérőszám) |1 |
-    | Ablakméret (Igen) |00:05:00 |
-    | naplózási gyűjtő (statisztikai mérőszám, amely ebben az esetben használja a átlagos száma) |Átlag |
-    | egyéni e-mailek (karakterlánc-tömbben) |'foo@example.com','bar@example.com' |
-    | e-mail küldése a tulajdonosoknak, közreműködőknek és olvasóknak |-SendToServiceOwners |
-
-9. E-mail-művelet létrehozása
-
-    ```PowerShell
-    $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail myname@company.com
-    ```
-
-10. Hozzon létre egy Webhook művelettel
-
-    ```PowerShell
-    $actionWebhook = New-AzureRmAlertRuleWebhook -ServiceUri https://example.com?token=mytoken
-    ```
+8. Klasszikus riasztási szabályok a Powershellen keresztül többé nem hozható létre. Szeretné használni az Új riasztási szabály létrehozása ["Add-AzureRmMetricAlertRule"](https://docs.microsoft.com/powershell/module/azurerm.insights/add-azurermmetricalertrule?view=azurermps-6.13.0) parancsot.
 
 ## <a name="next-steps"></a>További lépések
 
 - [Klasszikus metrikariasztás létrehozása Resource Manager-sablonnal](monitoring-enable-alerts-using-template.md).
 - [Rendelkezik egy webhook használatával nem Azure-beli system értesítése klasszikus metrikariasztás](insights-webhooks-alerts.md).
-

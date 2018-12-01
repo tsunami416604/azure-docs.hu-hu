@@ -13,26 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: 33a5b6e894c9c2b74f4c85ee96d59c0313a4bbe2
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: adbe33bedf23e37c2d3fd485965dea86edbd269a
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446976"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52681466"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Az Azure Active Directoryval az Azure API Management fejlesztői fiókok engedélyezése
 
 Ez a cikk bemutatja, hogyan hozzáférés engedélyezése a felhasználók számára a fejlesztői portálra az Azure Active Directory (Azure AD). Ez az útmutató emellett bemutatja, hogyan kezelheti az Azure AD felhasználói csoportokat hozzáadja a felhasználókat tartalmazó külső csoportok.
-
-> [!NOTE]
-> Az Azure AD-integráció érhető el a [fejlesztői, Standard és prémium szintű](https://azure.microsoft.com/pricing/details/api-management/) csak szint esetében.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
 - Importálása és közzététele az Azure API Management-példány. További információkért lásd: [importálása és közzététele](import-and-publish.md).
 
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+[!INCLUDE [premium-dev-standard.md](../../includes/api-management-availability-premium-dev-standard.md)]
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Fejlesztői fiókok engedélyezése az Azure AD-vel
 

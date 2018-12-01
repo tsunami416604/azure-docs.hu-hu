@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 3e8230ea7b2d6d0e44468bd90289ee82d5a82367
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 0226e5dc03c3f10b951a4e4cc1d97a999c952f3b
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715445"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678882"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Térkép (előzetes verzió) virtuális gépek az Azure Monitor használatával történő alkalmazás-összetevők ismertetése
 Megtekintés a detektált alkalmazás-összetevők a környezet figyelhető meg az Azure Monitor szolgáltatással kétféleképpen virtuális gépek esetén közvetlenül a virtuális gépről vagy virtuális gépek az Azure Monitor csoportokhoz Azure-ban futó Windows és Linux rendszerű virtuális gépeken. 
@@ -107,7 +107,7 @@ Az Azure Monitor a térkép funkciót biztosít a virtuális gépek és azok fü
 
 ![Az Azure virtuális gépre kiterjedő térkép – áttekintés](./media/vminsights-maps/map-multivm-azure-monitor-01.png)
 
-Az a **munkaterület** , az oldal tetején található választóval, ha egynél több Log Analytics-munkaterületen válassza a munkaterület, amely a megoldás engedélyezve van, és virtuális gépek jelent. A **csoport** választóval adja vissza az előfizetések, erőforráscsoportok, [számítógépcsoportok](../../log-analytics/log-analytics-computer-groups.md), és a Virtuálisgép-méretezési csoportok a kijelölt munkaterülethez kapcsolódó számítógépek. A kijelölt csak a térkép funkció vonatkozik, és nem elterjednek teljesítmény vagy a térképen.
+Az a **munkaterület** , az oldal tetején található választóval, ha egynél több Log Analytics-munkaterületen válassza a munkaterület, amely a megoldás engedélyezve van, és virtuális gépek jelent. A **csoport** választóval adja vissza az előfizetések, erőforráscsoportok, [számítógépcsoportok](../../azure-monitor/platform/computer-groups.md), és a Virtuálisgép-méretezési csoportok a kijelölt munkaterülethez kapcsolódó számítógépek. A kijelölt csak a térkép funkció vonatkozik, és nem elterjednek teljesítmény vagy a térképen.
 
 Alapértelmezés szerint a térképen jeleníti meg az elmúlt 30 percben. Használatával a **TimeRange** választó, lekérdezheti, akár egy óráig bemutatják, hogyan függőségek kikeresi az elmúlt (például az incidens alatt vagy előtt módosítás történt) múltbéli címtartományok esetében.   
 

@@ -6,14 +6,14 @@ manager: camerons
 ms.author: timlav
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 09/12/2018
+ms.date: 11/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 94641796fa77e03efc7158bc3aaf4bde9385c899
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 20af014e5a59cb526d5b96e543b10d5b2b6d6937
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824268"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679596"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>Távoli Monitorozási architektúra lehetőségei
 
@@ -25,7 +25,7 @@ Az Azure IoT távoli figyelési megoldásgyorsító egy nyílt forráskódú, MI
 
 A távoli figyelési megoldás követi az ajánlott [Azure IoT-referenciaarchitektúra](https://aka.ms/iotrefarchitecture).
 
-Ez a cikk ismerteti a használt architekturális és technikai választott, és az alternatív megoldások tekinthető, az egyes, a távoli figyelési alrendszerek. Azonban a műszaki választási lehetőségek a Microsoft végzett a távoli figyelési megoldás nem az egyetlen módszer a távoli figyelési IoT-megoldást valósíthat meg. Érdemes figyelembe veszi a gyakorlati megvalósításról kiindulópontként, amellyel egy sikeres alkalmazás, és módosítania kell, hogy:
+Ez a cikk ismerteti az egyes, a távoli figyelési alrendszerek fő architekturális és technikai lehetőségek. Azonban a műszaki választási lehetőségek a Microsoft végzett a távoli figyelési megoldás nem az egyetlen módszer a távoli figyelési IoT-megoldást valósíthat meg. Érdemes figyelembe veszi a gyakorlati megvalósításról kiindulópontként, amellyel egy sikeres alkalmazás, és módosítania kell, hogy:
 
 - Az elérhető képességek fér, és a szervezet élmény.
 - A függőleges alkalmazás igényeinek.
@@ -52,7 +52,8 @@ Az Azure IoT Hub használata a távoli figyelési megoldás felhőátjárónak. 
 IoT-eszköz kapcsolatot használhatja:
 
 - A [az IoT Hub eszközoldali SDK-k](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-device-sdks) az eszköz natív ügyfélalkalmazás megvalósítása. Az SDK-k az IoT Hub – REST API körül burkolókat és a forgatókönyvek, például az újrapróbálkozások kezelésére.
-- Az integráció az Azure IoT Edge segítségével a megoldásgyorsító üzembe helyezése és kezelése az eszközök tárolókban futó egyéni modulok.
+- Az integráció az Azure IoT Edge üzembe helyezése és kezelése az eszközök tárolókban futó egyéni modulok.
+- Az integráció az automatikus az Eszközfelügyelet az IoT hubhoz csatlakoztatott eszközök tömeges kezelése.
 
 ### <a name="stream-processing"></a>Stream-feldolgozás
 
@@ -62,7 +63,7 @@ Adatfolyam-feldolgozás, a távoli figyelési megoldást használ az Azure Strea
 
 Tárolás a távoli figyelési megoldásgyorsító használja az Azure Time Series Insights és az Azure Cosmos DB-hez. Az Azure Time Series Insights tárolja a csatlakoztatott eszközökről az IoT Hub beérkező üzeneteket. A megoldásgyorsító az Azure Cosmos DB az összes többi tárhelyen, például a ritka elérésű tárolási, a szabályok definíciók, a riasztások és a konfigurációs beállításokat.
 
-Az Azure Cosmos DB az IoT-alkalmazások ajánlott általános célú meleg tárolási megoldás, bár a megoldások, például az Azure Time Series Insights és az Azure Data Lake esetében számos alkalmazási megfelelőek. Az Azure Time Series Insights mélyebb betekintést az idősorozat-kinyerhető trendek és rendellenességek is kaphat. Ez a funkció lehetővé teszi egyetlen elvégezheti az alapvető okok elemzését, és elkerülheti a költséges.
+Az Azure Cosmos DB az általános célú ajánlott meleg tárolási megoldás az IoT-alkalmazások is. Azonban megoldások, például az Azure Time Series Insights és az Azure Data Lake esetében számos használati esetek is megfelelő. Az Azure Time Series Insights mélyebb betekintést az idősorozat-kinyerhető trendek és rendellenességek is kaphat. Ez a funkció lehetővé teszi egyetlen elvégezheti az alapvető okok elemzését, és elkerülheti a költséges.
 
 > [!NOTE]
 > A Time Series Insights jelenleg nem áll rendelkezésre az Azure China felhőben. Új távoli figyelési megoldás gyorsító üzemelő példányok az Azure China felhőben Cosmos DB összes tárolót használja.

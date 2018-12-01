@@ -9,18 +9,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 11/29/2018
 ms.author: jingwang
-ms.openlocfilehash: 558b426ea85decb0309390e36910eb18719e6e99
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 108ced5416eb7cd6826f4f96d4f62fd33e8f5653
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002527"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680854"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-preview-with-azure-data-factory"></a>Adatok betöltése az Azure Data Lake Storage Gen2 (előzetes verzió) az Azure Data Factoryvel
 
-[Az Azure Data Lake Storage Gen2 (előzetes verzió)](../storage/data-lake-storage/introduction.md) ad hozzá egy protokoll a hierarchikus fájlrendszer névtér és biztonsági szolgáltatásokat az Azure Blob Storage analytics keretrendszerek csatlakozni egy tartós tárolási réteg egyszerűvé. A Data Lake Storage Gen2 (előzetes verzió), a objektum tárolási összes minőségű továbbra is egy fájlrendszer felületen előnyei hozzáadása során.
+Az Azure Data Lake Storage Gen2 előzetes verzió egy olyan dedikált big data-analitika, beépített képességei [Azure Blob storage](../storage/blobs/storage-blobs-introduction.md). Lehetővé teszi az adatok használata mindkét fájl rendszer és a objektum tárolási paradigmákat csatoló.
 
 Az Azure Data Factory egy teljes körűen felügyelt felhőalapú adatintegrációs szolgáltatás az. A szolgáltatás segítségével feltölti a lake széles helyszíni adataival és a felhőalapú adatokat tárolja, és ezzel időt takaríthat az elemzési megoldások készítése során. Támogatott összekötők részletes listáját lásd a táblázat az [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
 
@@ -76,14 +76,14 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
     ![Forrásadattár s3 lap](./media/load-azure-data-lake-storage-gen2/source-data-store-page-s3.png)
     
 4. Az a **adja meg az Amazon S3-kapcsolat** lapon, tegye a következőket:
-   1. Adja meg a **elérési kulcs Azonosítóját** értéket.
-   2. Adja meg a **titkos elérési kulcsát** értéket.
-   3. Kattintson a **kapcsolat tesztelése** ellenőrzése a beállításokat, majd válassza ki **Befejezés**.
+
+    1. Adja meg a **elérési kulcs Azonosítóját** értéket.
+    2. Adja meg a **titkos elérési kulcsát** értéket.
+    3. Kattintson a **kapcsolat tesztelése** ellenőrzése a beállításokat, majd válassza ki **Befejezés**.
+    4. Megjelenik egy új kapcsolat jön létre. Kattintson a **Tovább** gombra.
    
-   ![Az Amazon S3-fiók megadása](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
-   
-   4. Megjelenik egy új kapcsolat jön létre. Kattintson a **Tovább** gombra.
-   
+    ![Az Amazon S3-fiók megadása](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
+      
 5. Az a **a bemeneti fájl vagy mappa kiválasztása** párbeszédpanelen tallózással keresse meg a mappát és fájlt, amelyet másolja át azokat. Válassza ki a mappát vagy fájlt, jelölje be **válasszon**:
 
     ![Bemeneti fájl vagy mappa kiválasztása](./media/load-azure-data-lake-storage-gen2/choose-input-folder.png)
@@ -99,7 +99,7 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
 8. Az a **adja meg az Azure Data Lake Storage kapcsolati** lapon, tegye a következőket:
 
    1. Válassza ki a Data Lake Storage Gen2 a "Tárfiók neve" képes a fiókot a legördülő listából.
-   2. Kattintson a **Tovább** gombra.
+   2. Válassza ki **Befejezés** a kapcsolat létrehozásához. Ezután kattintson a **Tovább** gombra.
    
    ![Az Azure Data Lake Storage Gen2-fiók megadása](./media/load-azure-data-lake-storage-gen2/specify-adls.png)
 

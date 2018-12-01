@@ -9,16 +9,15 @@ ms.assetid: d1e98390-3ce4-4d04-9351-144314a42aa2
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: 87de134f6f0484208e8b6cec52b5eefaac4621c6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2d378c537d4e20698863c789101e4ad3167b7f10
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251934"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680820"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Az Application insights segítségével a webalkalmazások kivételeinek diagnosztizálása
 Az élő webalkalmazását kivételek által jelentett [Application Insights](app-insights-overview.md). Sikertelen kérelmek kapcsolhatja össze a kivételek és az ügyfél és a kiszolgáló, az eseményeket, hogy gyorsan diagnosztizálhatja a okok.

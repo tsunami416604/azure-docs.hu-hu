@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 7902a4fb747a53b26b6f100291c77e6fec4c8d05
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: d4728d5f631b0671be67ff4976674bde2044d4c0
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633435"
+ms.locfileid: "52682874"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>A kapacitásra és teljesítményre megoldással (előzetes verzió) a Hyper-V virtuális gép kapacitásának megtervezése
 
@@ -53,7 +53,7 @@ Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott �
 | [Windows-ügynökök](../../azure-monitor/platform/agent-windows.md) | Igen | A megoldás kapacitás és teljesítmény adatokkal kapcsolatos információk Windows-ügynököktől gyűjti. |
 | [Linux-ügynökök](../../log-analytics/log-analytics-quick-collect-linux-computer.md) | Nem    | A megoldás nem kapacitás és teljesítmény adatok adatainak gyűjtését a Linux-ügynökök közvetlen.|
 | [Az SCOM felügyeleti csoport](../../log-analytics/log-analytics-om-agents.md) | Igen |A megoldás egy csatlakoztatott SCOM felügyeleti csoportban lévő ügynököktől származó kapacitás és teljesítmény adatokat gyűjt. Az SCOM-ügynöktől a Log Analyticshez való közvetlen kapcsolat nem kötelező.|
-| [Azure Storage-fiók](../../log-analytics/log-analytics-azure-storage.md) | Nem | Az Azure storage nem tartalmaz a kapacitás-és teljesítményadatokat.|
+| [Azure Storage-fiók](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Nem | Az Azure storage nem tartalmaz a kapacitás-és teljesítményadatokat.|
 
 ## <a name="prerequisites"></a>Előfeltételek
 

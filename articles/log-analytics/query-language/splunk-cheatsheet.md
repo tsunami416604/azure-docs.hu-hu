@@ -10,17 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 5ea9790695b8afe7bd42b98b071869756b301350
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 61f0cff661c79f994a5b3c20646996f617a31b7e
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42447514"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52683064"
 ---
 # <a name="splunk-to-log-analytics"></a>A Log Analytics Splunk
 
@@ -39,7 +37,7 @@ Az alábbi táblázat összehasonlítja a fogalmakat és adatstruktúrák Splunk
  | Adatfelderítési rekordok | esemény | sor |  Csak terminológiai változás. |
  | Rekord adatattribútum | A mező |  Oszlop |  A Log Analyticsben ezzel előre a táblázat szerkezetét részeként. A Splunkban mindegyik esemény rendelkezik a saját mezőket. |
  | Típusok | adattípus |  adattípus |  Log Analytics adattípusok olyan több explicit módon az oszlopok vannak beállítva. Az adattípusok és adattípusok többek között a JSON-támogatás nagyjából készletét dinamikusan képességüket is rendelkezik. |
- | Lekérdezés és a keresés  | keresés | lekérdezés |  Fogalmak alapvetően ugyanazok, a Log Analytics és a Splunk között. |
+ | Lekérdezés és a keresés  | Keresés | lekérdezés |  Fogalmak alapvetően ugyanazok, a Log Analytics és a Splunk között. |
  | Esemény betöltési ideje | Rendszer pontos ideje | ingestion_time() |  Splunk minden egyes esemény egy időbélyegző az idő, az esemény volt indexelt lesz. A Log Analyticsben meghatározhatja egy szabályzatot, amely elérhetővé teszi a rendszer oszlopot, amely a ingestion_time() funkción keresztül lehet rá hivatkozni ingestion_time nevű. |
 
 ## <a name="functions"></a>Functions
@@ -57,11 +55,11 @@ Az alábbi táblázat a Log Analytics Splunk funkciók egyenértékű funkcióit
 | SUBSTR | Substring() | (1)<br>Azt is vegye figyelembe, hogy a Splunk egy alapú indexek használja. A log Analytics megjegyzi a nulla alapú index. |
 | ToLower |  ToLower() | (1) |
 | ToUpper | ToUpper() | (1) |
-| egyezés | megfelel reguláris kifejezés |  (2)  |
+| Egyezés | megfelel reguláris kifejezés |  (2)  |
 | reguláris kifejezés | megfelel reguláris kifejezés | A Splunkban `regex` operátor. A Log Analytics az összehasonlító operátor. |
 | searchmatch | == | A Splunkban `searchmatch` lehetővé teszi, hogy a pontos karakterláncokat keresése.
 | véletlenszerű | rand()<br>rand(n) | A Splunk függvény számot ad vissza 2 nulla<sup>31</sup>– 1. A log Analytics 0,0 és 1,0, közötti számot ad vissza, vagy ha egy 0 és n-1 között a megadott paraméter.
-| most | Now() | (1)
+| most | now() | (1)
 | relative_time | ToTimeSpan() | (1)<br>A Log Analytics a Splunk a egyenértékű relative_time (datetimeVal, offsetVal) datetimeVal + totimespan(offsetVal).<br>Ha például <code>search &#124; eval n=relative_time(now(), "-1d@d")</code> válik <code>...  &#124; extend myTime = now() - totimespan("1d")</code>.
 
 (1) a Splunkban, a függvény meghívása a `eval` operátor. A Log Analyticsben, használatos részeként `extend` vagy `project`.<br>(2) a Splunkban, a függvény meghívása a `eval` operátor. A Log Analyticsben, hogy használható a `where` operátor.
@@ -80,7 +78,7 @@ A Splunkban, kihagyhatja a `search` kulcsszó és a egy nem jegyzett karakterlá
 | |  | |
 |:---|:---|:---|
 | Splunk | **Keresés** | <code>search Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" earliest=-24h</code> |
-| Log Analytics | **Keresés** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
+| Log Analytics | **find** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
 | | |
 
 ### <a name="filter"></a>Szűrés

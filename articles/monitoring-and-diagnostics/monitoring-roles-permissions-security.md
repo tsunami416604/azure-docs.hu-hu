@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 10/27/2017
+ms.date: 11/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: caa1b4b3bf1f9b8fb1a34bd58dde04f13fbc6c88
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 367ecd4534a2221e996e706f8b4426ea6f70f213
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614566"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680497"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései
 Számos csapat kell szigorúan szabályozzák a hozzáférést a figyelési adatok és beállítások. Például, ha kizárólag a figyelést (a támogatási szakértők, fejlesztő és üzemeltető mérnököknek) dolgozó csapat tagjai rendelkezik, vagy ha egy felügyelt szolgáltató használ, érdemes hozzáférést biztosít nekik a csak figyelési adatok korlátozásával hozhat létre, módosít, vagy erőforrások törlése. Ez a cikk bemutatja, hogyan gyors beépített figyelési RBAC szerepkör alkalmazásához a felhasználónak az Azure-ban, vagy egy felhasználóhoz, aki csak korlátozott felügyeleti engedélyekre van szüksége a saját egyéni szerepkör létrehozása. Majd az Azure Monitor-kapcsolódó erőforrások és a bennük adatokhoz való hozzáférés korlátozásáról vonatkozó biztonsági szempontokat ismerteti.
@@ -86,7 +86,7 @@ Ha a fenti beépített szerepkörök nem felelnek meg a csapat a pontos igényei
 | Microsoft.Insights/MetricDefinitions/Read |(Erőforrás rendelkezésre álló metrika típusok listája) metrikadefiníciók olvasása. |
 | Microsoft.Insights/Metrics/Read |Olvassa el a erőforrás metrikáit. |
 | Microsoft.Insights/Register/Action |Az Azure Monitor erőforrás-szolgáltató regisztrálásához. |
-| Microsoft.Insights/ScheduledQueryRules/[Read, Write, Delete] |Olvasási, írási és törlési naplóriasztások az Application Insights. |
+| Microsoft.Insights/ScheduledQueryRules/[Read, Write, Delete] |Az Azure monitorban riasztásokat olvasási, írási és törlési naplózási. |
 
 
 
@@ -154,7 +154,7 @@ New-AzureRmRoleDefinition -Role $role
 > 
 
 ### <a name="limiting-access-to-monitoring-related-event-hubs"></a>Figyelés kapcsolatos event hubs-hozzáférés korlátozása
-Az event hubs használatával követheti hasonló mintát, de először hozzon létre egy dedikált Listen engedélyezési szabályt. Ha szeretne hozzáférést biztosítani egy alkalmazás, amely csak a figyelési kapcsolatos event hubs figyelni kell, tegye a következőket:
+Az event hubs használatával követheti hasonló mintát, de először hozzon létre egy dedikált Listen engedélyezési szabályt. Ha azt szeretné, adja meg, egy alkalmazás, amely csak a figyelési kapcsolatos event hubs figyelni kell a hozzáférést, tegye a következőket:
 
 1. Megosztott hozzáférési szabályzat létrehozása a streamelési figyelési jogcímek csak a figyelési adatok létrehozott esemény példáink a. Ezt megteheti a portálon. Például előfordulhat, hogy felhívja azt "monitoringReadOnly." Ha lehetséges érdemes a kulcs közvetlenül adhat a fogyasztói, majd ugorjon a következő lépéssel.
 2. Ha a fogyasztó kell helyeznie a kulcs az ad-hoc van szüksége, adja meg a felhasználónak az adott event hubs listkeys műveletének műveletet. Ez akkor is szükséges a felhasználók számára a diagnosztikai beállítás, vagy jelentkezzen profil streamelés az event hubs képeseknek kell lenniük. Például előfordulhat, hogy az RBAC szabály létrehozása:

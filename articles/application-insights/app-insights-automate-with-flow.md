@@ -8,16 +8,15 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: 65909e13c75ae4d2577ea29f562b841a1eb20477
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c53016c6e8760f2fef15c73f460886c46ac8a58c
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256425"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679205"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Az összekötő Azure Application Insights folyamatok automatizálása a Microsoft Flow
 
@@ -35,7 +34,7 @@ Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre egy folyamatot, amely
 
 ### <a name="step-1-create-a-flow"></a>1. lépés: Folyamat létrehozása
 1. Jelentkezzen be a [Microsoft Flow](https://flow.microsoft.com), majd válassza ki **saját folyamatok**.
-1. Kattintson a **hozzon létre egy üres**.
+2. Kattintson a **hozzon létre egy üres**.
 
 ### <a name="step-2-create-a-trigger-for-your-flow"></a>2. lépés: A folyamat eseményindító létrehozása
 1. Válassza ki **ütemezés**, majd válassza ki **ütemezés – ismétlődés**.

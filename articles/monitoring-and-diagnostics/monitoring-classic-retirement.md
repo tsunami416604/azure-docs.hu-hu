@@ -5,19 +5,19 @@ author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 11/30/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 589aae8321d2c081f09ed46d9def2229d3973ffd
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 5781112d4e45d29f8d623e3175fa5eb8e82444f9
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613206"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682299"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Egyesített riasztások és -monitorozás az Azure monitorban váltja fel a klasszikus riasztások és -monitorozás
 
-Az Azure Monitor vált, am egységes teljes verem figyelési szolgáltatást, amely mostantól támogatja az "Egy metrikák" és "Egy riasztások" erőforrásoknak; További információkért lásd: a [blogbejegyzés az új Azure Monitor](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/). Az új Azure monitorozási és riasztási platformok gyorsabb, megalapozottabb állították össze, és a felhő-számítástechnikában és beágyazott a Microsoft Intelligent Cloud filozófia egyre bővülő expanse bővíthető – megtartja lépést. 
+Az Azure Monitor most vált egy figyelési szolgáltatást, amely mostantól támogatja az "Egy metrika" és "Egy riasztások" erőforrásoknak; egységes teljes verem További információkért lásd: a [blogbejegyzés az új Azure Monitor](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/). Az új Azure monitorozási és riasztási platformok gyorsabb, megalapozottabb állították össze, és a felhő-számítástechnikában és beágyazott a Microsoft Intelligent Cloud filozófia egyre bővülő expanse bővíthető – megtartja lépést. 
 
 Az új Azure monitorozási és riasztási platform helyben, az azt fogja kell kivonása a "klasszikus" figyelési és riasztási platform - ban üzemeltetett *klasszikus riasztások megtekintése* szakaszban az Azure-riasztások elavulttá válik. június 2019.
 
@@ -53,9 +53,13 @@ Monitorozási és riasztási régebbi klasszikus kivonjuk a forgalomból. júniu
 - Régebbi (klasszikus) platform, és egyéni metrikákat az Application Insights, valamint azokat jelenleg elérhető a riasztási [riasztások (klasszikus) szakasz](monitoring-overview-alerts-classic.md) az Azure Portalon, és elérhetőnek [microsoft.insights/ alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules) erőforrás
 - Régebbi (klasszikus) rendellenes hibák riasztás jelenleg elérhető [belül az Application Insights intelligens detektálás](../application-insights/app-insights-proactive-diagnostics.md) ; riasztás konfigurálva az Azure Portalon látható [riasztások (klasszikus) szakasz](monitoring-overview-alerts-classic.md) Azure portál
 
-Az összes klasszikus monitorozási és riasztási rendszer, köztük a megfelelő [API](https://msdn.microsoft.com/library/azure/dn931945.aspx), [PowerShell](insights-alerts-powershell.md), [CLI](insights-alerts-command-line-interface.md), [Azure portal oldalán, és [Resource-sablon](monitoring-enable-alerts-using-template.md) június a 2019-ig használható marad. Ezt a dátumot követően klasszikus figyelés és riasztások szolgáltatás hamarosan megszűnő már nem elérhető; használatra amíg bármilyen a riasztási szabályok, amelyek továbbra is létezik a riasztások (klasszikus) túli június 2019 hajtható végre, de nem áll rendelkezésre, a módosítás továbbra is.
+Az összes klasszikus monitorozási és riasztási rendszer, köztük a megfelelő [API](https://msdn.microsoft.com/library/azure/dn931945.aspx), [PowerShell](insights-alerts-powershell.md), [CLI](insights-alerts-command-line-interface.md), [oldala az Azure portal](alert-metric-classic.md), és [ Erőforrás-sablon](monitoring-enable-alerts-using-template.md) 2019. június végén marad használható. 
 
-Klasszikus monitorozás és riasztások platform túli június 2019, a fennmaradó riasztásokat fog automatikusan át lesznek telepítve a Microsoft által az új Azure monitor platformon megfelelőikre a július 2019. A folyamat végezhető el közvetlenül állásidő nélkül, és a felhasználók rendelkezzenek lefedettség figyelési adatvesztés nélkül.
+Június 2019, az Azure monitorban végén:
+
+- Klasszikus figyelés és riasztások szolgáltatás elavult, és már nem elérhető Új riasztási szabályok létrehozását lesz.
+- Riasztási szabályt, amely továbbra is megtalálhatók a riasztások (klasszikus) túli június 2019 végrehajtása és a értesítések továbbra is, de nem áll rendelkezésre, a módosítás.
+- Július a 2019-től kezdődően naplóriasztási szabályok a klasszikus monitorozás és riasztások automatikusan átkerülnek a Microsoft által az megfelelőikre az új Azure monitor-platformon. A folyamat zökkenőmentes állásidő nélkül, és ügyfelek lefedettség figyelési adatvesztés nélkül fog rendelkezni.
 
 Hamarosan biztosítjuk, hogy önkéntesen áttelepítése a riasztásokat az eszközök [riasztások (klasszikus) szakasz](monitoring-overview-alerts-classic.md) Azure Portal az új Azure-riasztások. A riasztások (klasszikus), amely lesznek áttelepítve az új Azure monitornak konfigurált összes szabályok ingyenes lesz, és nem számítunk fel. Az áttelepített klasszikus riasztási szabályok is nem szerepelhet értesítések elküldése e-mailben, a webhook vagy LogicApp valamilyen díja. Az újabb értesítés és a művelet típusú (például SMS, hanghívás, ITSM-integrációról stb.) használatát azonban felszámítható, hogy hozzáadott egy áttelepített vagy egy új riasztás lesz. További információkért lásd: [Azure Monitor szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/monitor/).
 

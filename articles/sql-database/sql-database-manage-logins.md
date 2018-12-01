@@ -12,13 +12,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/07/2018
-ms.openlocfilehash: f2627aab2598a706e717e8e1d18fd2f8c944835c
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 11/29/2018
+ms.openlocfilehash: 56a121e8b8f7f929b16a0c3507d45402ff586b96
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161469"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682673"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Szabályozása és adatbázis-hozzáférés biztosítása az SQL Database és SQL Data warehouse-bA
 
@@ -28,7 +28,7 @@ Tűzfal-szabályok konfiguráció után csatlakozhat az Azure [SQL Database](sql
 >  Ez a témakör az Azure SQL Serverhez és az Azure SQL Serveren létrehozott SQL Database és az SQL Data Warehouse adatbázisokra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database. 
 
 > [!TIP]
-> Foglalkozó oktatóanyagért lásd: [biztonságossá tétele az Azure SQL Database](sql-database-security-tutorial.md).
+> Foglalkozó oktatóanyagért lásd: [biztonságossá tétele az Azure SQL Database](sql-database-security-tutorial.md). Ebben az oktatóanyagban nem vonatkozik a **Azure SQL Database felügyelt példányába**.
 
 ## <a name="unrestricted-administrative-accounts"></a>Nem korlátozott rendszergazdai fiókok
 Kettő rendszergazdaként működő felügyeleti fiók létezik (**Kiszolgálói rendszergazdai** és **Active Directory-rendszergazdai**). Ha azonosítani szeretné ezeket a rendszergazdai fiókokat az SQL-kiszolgáló esetében, nyissa meg az Azure Portalt, és lépjen az SQL-kiszolgáló tulajdonságaira.
@@ -68,6 +68,10 @@ Ha útmutatót szeretne egy kiszolgáló, adatbázis vagy kiszolgálószintű t�
 
 
 ## <a name="additional-server-level-administrative-roles"></a>További kiszolgálószintű rendszergazdai szerepkörök
+
+>[!IMPORTANT]
+>Ez a szakasz nem vonatkozik a **Azure SQL Database felügyelt példányába** , ezek a szerepkörök kifejezetten egy **Azure SQL Database**.
+
 A korábban már tárgyalt kiszolgálószintű rendszergazdai szerepkörökön kívül az SQL Database két korlátozott rendszergazdai szerepkört tesz elérhetővé a master adatbázisban, amelyekhez felhasználói fiókok adhatók, és amelyek hozzáférést biztosítanak adatbázisok létrehozásához vagy bejelentkezések kezeléséhez.
 
 ### <a name="database-creators"></a>Adatbázis-létrehozók

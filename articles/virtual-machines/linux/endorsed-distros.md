@@ -1,5 +1,5 @@
 ---
-title: Által támogatott Linux-disztribúciók |} A Microsoft Docs
+title: Az Azure által támogatott Linux-disztribúciók |} A Microsoft Docs
 description: További információ a Linux az Azure által támogatott disztribúciók, például a Ubuntu, a CentOS, az Oracle és a SUSE vonatkozó irányelveket.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: szark
-ms.openlocfilehash: b39ae6b5546e9504b9f37504c486c941ab034399
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3c904dadcb01dc889b159dff9ce1b9114db8103e
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249999"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52681806"
 ---
-# <a name="linux-on-distributions-endorsed-by-azure"></a>Linux az Azure által támogatott disztribúciók
+# <a name="linux-distributions-endorsed-on-azure"></a>Az Azure által támogatott Linux-disztribúciók
 Partnerek az Azure Marketplace-en elérhető Linux-lemezképekhez adja meg. Jelenleg is dolgozunk, a különböző Linux közösségekkel, hogy még tovább bővíthesse a támogatott terjesztési listára. Addig is, amelyek nem érhetők el a piactérről disztribúciók, akkor is mindig saját Linux használata az alábbi az irányelveket, [létrehozása és feltöltése a Linux operációs rendszert tartalmazó virtuális merevlemez](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
 
 ## <a name="supported-distributions-and-versions"></a>Támogatott disztribúciók és verziók

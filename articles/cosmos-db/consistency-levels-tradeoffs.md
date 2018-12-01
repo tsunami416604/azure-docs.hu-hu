@@ -9,35 +9,47 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: mjbrown
-ms.openlocfilehash: 0e4105d6f56a8eb45a83e970c85319cf25041781
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: f2b69af6300c6044f7b65d0478301cc6e7b875bb
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514774"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680558"
 ---
 # <a name="availability-and-performance-tradeoffs-for-various-consistency-levels-in-azure-cosmos-db"></a>Kompromisszumot kínál a különböző konzisztenciaszintet az Azure Cosmos DB rendelkezésre állás és teljesítmény
 
-Elosztott adatbázisok hagyatkoznia a magas rendelkezésre állás, alacsony késleltetésű, illetve mindkettőt, replikációs győződjön és a rendelkezésre állási, teljesítmény és a késés az olvasás következetes alapvető magával. Az Azure Cosmos DB álló kínálat az erős és végleges konzisztencia a két szélsőséges helyett lehetőségek, az adatkonzisztencia közelíti meg. A cosmos DB segítségével a fejlesztők számára, hogy az öt jól definiált konzisztenciamodellekkel közül választhat a konzisztencia (legerősebb leggyengébb felé haladva) – színspektrumból **erős**, **korlátozott frissesség**, **munkamenet** , **konzisztens előtag**, és **végleges**. Az öt konzisztenciamodell mindegyike a rendelkezésre állás és teljesítmény kompromisszumot kínál, és átfogó SLA-k élvezik.
+Elosztott adatbázisok magas rendelkezésre állás, alacsony késleltetésű, illetve mindkettőt replikációs támaszkodó kell kompromisszumokat kötni. A kompromisszumot kínál a olvasás következetes és rendelkezésre állás, a késés és az átviteli sebesség között kell lennie. 
+
+Az Azure Cosmos DB választási lehetőségek egy átfogó, az adatkonzisztencia közelíti meg. Ez a megközelítés magában foglalja a több lehetőség a két szélsőséges erős és végleges konzisztencia. A konzisztencia spektrum öt jól definiált modellek közül választhat. A leggyengébb, felé a modellek a következők:
+
+- Erős 
+- Korlátozott frissesség 
+- Munkamenet 
+- Konzisztens előtag 
+- Végleges 
+
+Minden modell rendelkezésre állás és teljesítmény kompromisszumot kínál, és átfogó SLA-je támogat.
 
 ## <a name="consistency-levels-and-latency"></a>Konzisztenciaszintek és késés
 
-- A **olvasási késés** az összes konzisztenciaszintek mindig garantáltan 99 százalékon legfeljebb 10 ezredmásodperc, és az SLA-je támogat. (A az 50. percentilis) az átlagos olvasási késése általában 2 ezredmásodperc vagy kisebb.
+- Az olvasási késés az összes konzisztenciaszintek mindig garantáltan 99 százalékon legfeljebb 10 ezredmásodperc. Az olvasási késés alapját a szolgáltatói szerződés. Az átlagos olvasási késés, az 50. percentilis, a rendszer általában 2 ezredmásodperc vagy kisebb. Az Azure Cosmos-fiókok, amelyek span számos régióban, és megtörténik az erős konzisztencia a garancia kivételt jelentenek.
 
-- A Cosmos-fiókok, span számos régióban, és vannak konfigurálva az erős konzisztencia, kivéve a **írási késés** a fennmaradó konzisztencia szintek mindig garantáltan a 99th, legfeljebb 10 ezredmásodperc PERCENTILIS. Az SLA biztonsági Ez írási késése. A (a az 50. percentilis), az átlagos írási késést általában 5 ezredmásodperc vagy kisebb.
+-  A fennmaradó konzisztenciaszintekről írási késése mindig garantáltan 99 százalékon legfeljebb 10 ezredmásodperc. Az SLA biztonsági Ez írási késése. Az átlagos írási késése, az 50. percentilis, akkor általában 5 ezredmásodperc vagy kisebb.
 
-- A Cosmos-fiókok, amelyek számos régióban konfigurálva az erős konzisztencia (jelenleg előzetes verzióban érhető el) a **írási késés** garantáltan kisebb, mint < (2 * üzenetváltási idő/RTT) + 99 százalékon 10 ezredmásodperc. Az a Cosmos-fiókjához társított két legtávolabbi régiók közötti Körbejárási. A pontos Körbejárási késés a pontos Azure hálózati topológiáját és sebessége, kis távolság függvénye. Az Azure-hálózatok nem biztosít bármely késés SLA-k számára a két Azure-régiók közötti Körbejárási. Cosmos DB replikáció késése Cosmos-fiókja, hogy felmérhesse a replikáció késése-Cosmos-fiókjához hozzárendelt különböző régiók közötti Azure-portálon jelennek meg.
+Előfordulhat, hogy az egyes Azure Cosmos-fiókok konfigurálása, erős konzisztencia számos régióban. Ebben az esetben az írási késése garantáltan legalább két alkalommal üzenetváltási időt (RTT) és 99 százalékon 10 ezredmásodperc. Az összes legtávolabbi két régiót közötti Körbejárási társítva az Azure Cosmos-fiók. Az a két, az Azure Cosmos-fiókjához társított legtávolabbi régiók közötti körbejárási megegyezik. Ez a beállítás jelenleg előzetes verzióban érhető el. 
+
+A pontos Körbejárási késés a jelzőfény sebesség távolság függvénye és az Azure hálózati topológia. Az Azure-hálózatok nem biztosít bármely késés SLA-k számára a két Azure-régiók közötti Körbejárási. Az Azure Cosmos-fiókja replikáció késése jelennek meg az Azure Portalon. Az Azure portal segítségével figyelheti a replikáció késése, amely a fiókhoz társított különböző régiók között.
 
 ## <a name="consistency-levels-and-throughput"></a>Konzisztenciaszintek és az átviteli sebesség
 
-- Kérelemegység azonos számú a munkamenet, konzisztens előtag és végleges konzisztencia szintek adja meg körülbelül 2 X olvasási teljesítménye az erős és a korlátozott frissesség képest.
+- Kérelemegység azonos számú a munkamenet, konzisztens előtag és végleges konzisztencia szintek adja meg körülbelül kétszer az olvasás átviteli sebességét az erős és a korlátozott frissesség képest.
 
-- Írási művelet, például az insert, replace, upsert, törlés, stb. egy adott típusú a lemezírás teljesítménye, a kérelemegységek megegyezik az összes konzisztenciaszintek.
+- Egy adott típusú írási művelet, például az insert, replace, upsert és törlése a lemezírás teljesítménye, a kérelemegységek megegyezik az összes konzisztenciaszintek.
 
 ## <a name="next-steps"></a>További lépések
 
-Ezután meg tudhat meg többet globális terjesztés, és kompromisszumot kínál a konzisztencia általános elosztott rendszerek használatával a következő cikkeket:
+További információ a globális terjesztés, és kompromisszumot kínál a konzisztencia általános elosztott rendszerek. Lásd az alábbi cikkeket:
 
 * [Konzisztencia kompromisszumot kínál a modern elosztott adatbázis-rendszerek terve](https://www.computer.org/web/csdl/index/-/csdl/mags/co/2012/02/mco2012020037-abs.html)
 * [Magas rendelkezésre állás](high-availability.md)
-* [Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)
+* [Az Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

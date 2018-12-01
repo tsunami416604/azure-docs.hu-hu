@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 2ece5700965018a8a9a98e16a1577309a909b7b7
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: cfee8295fc344b1210010a463612fe7d10de280d
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334993"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682911"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Hogyan diagram teljesítmény és az Azure Monitor-beli virtuális gépek (előzetes verzió)
 Az Azure Monitor-beli virtuális gépek több fő teljesítménymutatók (KPI-k) segítségével eldöntheti, milyen jól a virtuális gép működik-e a cél teljesítménydiagramok készletét tartalmazza. A diagramok megjelenítése az erőforrás-használatot egy időszakon belül, így azonosíthatja a szűk keresztmetszeteket, a rendellenességeket, vagy váltson át az egyes gépek megtekintése a kiválasztott metrika alapján erőforrás-használat listázása egy perspektíva. Bár vannak számos elemet kell figyelembe venni, amikor foglalkoznak, teljesítmény, a virtuális gépek az Azure Monitor összpontosít az operációs rendszer keresztül a processzor, memória, hálózati adapterek és lemezek, ahogy. Teljesítmény egészíti ki a állapotát a figyelési funkció, és tegye elérhetővé a problémákat, amelyek jelzik, hogy egy lehetséges rendszer összetevő hibája, támogatási finomhangolása és optimalizálási hatékonyság elérése érdekében, vagy támogatja a kapacitástervezés segít.  
@@ -33,7 +33,7 @@ Az Azure Monitor a teljesítmény funkció erőforráscsoportok, előfizetések 
 
 ![Virtuális gép insights teljesítményének felső N lista megtekintése](./media/vminsights-performance/vminsights-performance-aggview-01.png)
 
-Az a **felső N diagramok** lapon, ha egynél több Log Analytics-munkaterületen, válassza ki a munkaterületet a megoldás engedélyezve van a **munkaterület** választó, amely a lap tetején. A **csoport** választóval adja vissza az előfizetések, erőforráscsoportok, [számítógépcsoportok](../../log-analytics/log-analytics-computer-groups.md), és a virtuális gép méretezési csoportok, amelyek segítségével tovább szűrheti a kijelölt munkaterülethez kapcsolódó számítógépek a diagramok ezen az oldalon, és más oldalain megjelenő eredményeket. A kijelölés csak a teljesítmény funkció vonatkozik, és nem vállalunk pénzügyi vagy a térképen.  
+Az a **felső N diagramok** lapon, ha egynél több Log Analytics-munkaterületen, válassza ki a munkaterületet a megoldás engedélyezve van a **munkaterület** választó, amely a lap tetején. A **csoport** választóval adja vissza az előfizetések, erőforráscsoportok, [számítógépcsoportok](../../azure-monitor/platform/computer-groups.md), és a virtuális gép méretezési csoportok, amelyek segítségével tovább szűrheti a kijelölt munkaterülethez kapcsolódó számítógépek a diagramok ezen az oldalon, és más oldalain megjelenő eredményeket. A kijelölés csak a teljesítmény funkció vonatkozik, és nem vállalunk pénzügyi vagy a térképen.  
 
 Alapértelmezés szerint a diagramok megjelenítése az elmúlt 24 órában. Használatával a **TimeRange** választó, lekérdezheti a múltbéli tartományok megjelenítése, hogyan teljesítmény kikeresi az elmúlt 30 napig.   
 

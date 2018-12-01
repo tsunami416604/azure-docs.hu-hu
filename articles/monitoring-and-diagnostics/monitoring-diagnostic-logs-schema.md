@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 035b12c85720817501da9f4ad580aa8e7da8fdc4
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 9691e139f8eedd18d3c382d3ea8741125a0e9680
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280518"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679630"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Támogatott szolgáltatások, a sémák és a kategóriákat, az Azure diagnosztikai naplók
 
@@ -208,4 +208,4 @@ A séma az erőforrás-diagnosztikai naplók az erőforrás- és naplózási kat
 * [További információ a diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)
 * [Az erőforrás-diagnosztikai naplók Stream **az Event Hubs**](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [Módosítsa az erőforrás diagnosztikai beállításait az Azure Monitor REST API használatával](https://msdn.microsoft.com/library/azure/dn931931.aspx)
-* [A Log Analytics használatával az Azure storage-naplók elemzése](../log-analytics/log-analytics-azure-storage.md)
+* [A Log Analytics használatával az Azure storage-naplók elemzése](../azure-monitor/platform/collect-azure-metrics-logs.md)

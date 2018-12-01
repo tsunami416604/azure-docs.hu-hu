@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 13ba4d774cbc347830c32385ba4927a0df687159
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6170b69d213470b1f5b7e75c9b102e5e07c09209
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035470"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682883"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Feladat állapota és a feladatstreamek automatizálást továbbítása a Log Analyticsbe
 
@@ -182,4 +182,4 @@ Log Analytics az Automation-feladatokkal, nagyobb átláthatók biztosít, és s
 * Más keresési lekérdezéseket hozhat létre, és tekintse át az Automation feladatnaplóit Log Analytics szolgáltatással kapcsolatos további tudnivalókért lásd: [Log Analytics naplóbeli kereséseivel](../log-analytics/log-analytics-log-searches.md).
 * Megtudhatja, hogyan hozhat létre és kimenetet és üzeneteket beolvasni a runbookok, lásd: [Runbook kimeneti és az üzenetek](automation-runbook-output-and-messages.md).
 * A runbook végrehajtásával, a runbook-feladatok figyelésével, illetve az egyéb technikai részletekkel kapcsolatos további tudnivalókat a [Runbook-feladatok nyomon követése](automation-runbook-execution.md) című rész tartalmazza.
-* A Log Analytics használatával és adatgyűjtési forrásokkal kapcsolatos további információkért lásd: [gyűjtése az Azure storage-adatok a Log Analytics – áttekintés](../log-analytics/log-analytics-azure-storage.md).
+* A Log Analytics használatával és adatgyűjtési forrásokkal kapcsolatos további információkért lásd: [gyűjtése az Azure storage-adatok a Log Analytics – áttekintés](../azure-monitor/platform/collect-azure-metrics-logs.md).

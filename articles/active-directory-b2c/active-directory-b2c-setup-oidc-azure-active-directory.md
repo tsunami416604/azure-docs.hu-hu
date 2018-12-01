@@ -1,28 +1,28 @@
 ---
-title: Állítsa be az Azure Active Directory-fiókok bejelentkezési beépített szabályzatot az Azure Active Directory B2C |} A Microsoft Docs
-description: Állítsa be az Azure Active Directory-fiókok bejelentkezési beépített szabályzatot az Azure Active Directory B2C.
+title: Jelentkezzen be az Azure Active Directory B2C egy Azure Active Directory-szervezet beállítása |} A Microsoft Docs
+description: Állítsa be jelentkezzen be az Azure Active Directory B2C egy adott Azure Active Directory szervezet számára.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 86e5381096633e58d7a1a28ac94728136273c685
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: c48e4696d572b87a4e1553f9d4a2dc9921361388
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312782"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52719912"
 ---
-# <a name="set-up-sign-in-azure-active-directory-accounts-a-built-in-policy-in-azure-active-directory-b2c"></a>Állítsa be az Azure Active Directory-fiókok bejelentkezési beépített szabályzatot az Azure Active Directory B2C-vel
+# <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Jelentkezzen be egy adott Azure Active Directory-szervezet az Azure Active Directory B2C beállítása
 
 >[!NOTE]
 > Ez a funkció jelenleg nyilvános előzetes verzióban. Az éles környezetben ne használja a szolgáltatást.
 
-Ez a cikk bemutatja, hogyan való bejelentkezés engedélyezése a felhasználók számára egy adott Azure Active Directory (Azure AD) szervezet beépített házirend segítségével az Azure Active Directory (Azure AD) B2C-ben.
+Ez a cikk bemutatja, hogyan való bejelentkezés engedélyezése a felhasználók számára egy adott Azure Active Directory (Azure AD) szervezet felhasználói folyamat használata az Azure Active Directory (Azure AD) B2C-ben.
 
 ## <a name="create-an-azure-ad-app"></a>Az Azure AD-alkalmazás létrehozása
 

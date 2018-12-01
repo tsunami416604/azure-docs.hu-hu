@@ -10,16 +10,15 @@ ms.assetid: f8ebde72-f819-4ba5-afa2-31dbd49509a5
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 1061f356d75037bae440a5289413b2b5d17af1c9
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: ac91632656e83fc4262f28240525c8fb106b99ec
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43246952"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679130"
 ---
 # <a name="set-alerts-in-application-insights"></a>Riasztásokat állíthat be az Application insights szolgáltatásban
 [Az Azure Application Insights] [ start] riasztja Önt, a webalkalmazásban a teljesítmény vagy a használati metrikák változásai. 

@@ -4,16 +4,16 @@ description: Az Azure IoT Edge-eszköz használata, amely képes feldolgozni az 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/01/2018
+ms.date: 11/29/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a867122aef5dd9d2152bca3ac10c11459ffc03f5
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 55968393ff64d9eed1f5b384094a77d0d169dc5d
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568471"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52681194"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>A transzparens átjáróként működő IoT Edge-eszköz konfigurálása
 
@@ -258,7 +258,11 @@ Ellenőrizheti, hogy melyik modulokat futtatják egy eszközön, a parancs `iote
 6. Az a **sablon áttekintése** lapon jelölje be **küldés**.
 
 ## <a name="route-messages-from-downstream-devices"></a>Üzenetek továbbítását az alsóbb rétegbeli eszközök
-Az IoT Edge-futtatókörnyezet továbbíthatnak hasonlóan modulok által küldött üzenetek alsóbb rétegbeli eszközök által küldött üzeneteket. Ez lehetővé teszi az átjáró futó, mielőtt bármilyen adatot küld a felhő modulban elemzés végrehajtásához. Az alábbi útvonal használni kívánt üzenetek küldéséhez egy alsóbb rétegbeli eszközről nevű `sensor` egy modul nevét, `ai_insights`.
+Az IoT Edge-futtatókörnyezet továbbíthatnak hasonlóan modulok által küldött üzenetek alsóbb rétegbeli eszközök által küldött üzeneteket. Ez lehetővé teszi az átjáró futó, mielőtt bármilyen adatot küld a felhő modulban elemzés végrehajtásához. 
+
+Irányíthatja a alsóbb rétegbeli eszközök által küldött üzenetek módon jelenleg megkülönböztetve azokat az üzeneteket a modulok által. Minden modulok által küldött üzeneteket tartalmaznak rendszer tulajdonsággal **connectionModuleId** , de az alsóbb rétegbeli eszközök által küldött üzenetek viszont nem. Az útvonal a WHERE záradék használatával bármilyen üzenetet a rendszer tulajdonságot tartalmazó kizárása. 
+
+Az útvonal alatt használni kívánt bármely alsóbb rétegbeli eszközök üzeneteket küldeni egy modulnév `ai_insights`.
 
 ```json
 {
@@ -269,7 +273,7 @@ Az IoT Edge-futtatókörnyezet továbbíthatnak hasonlóan modulok által küld�
 }
 ```
 
-Üzenet-útválasztással kapcsolatos további információkért lásd: [modul-összeállítását](./module-composition.md).
+Üzenet-útválasztással kapcsolatos további információkért lásd: [hogyan helyezhet üzembe modulokat, és ezekkel létesíthetnek útvonalat](./module-composition.md#declare-routes).
 
 [!INCLUDE [iot-edge-extended-ofline-preview](../../includes/iot-edge-extended-offline-preview.md)]
 

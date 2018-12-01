@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cwatson
-ms.openlocfilehash: a564e72cc695830edfa5092eddc1f4f9b80ba519
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: b4f38d80bfddc342d83a3552efe5d4a60cf6350f
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583533"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680123"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Tudnivalók az Azure-költségkeretről és annak eltávolításáról
 
@@ -29,7 +29,7 @@ A kreditösszeg erejéig kiadásait elkerülése érdekében létezik költségk
 
 Ha felhasználta a rendelkezésére szereplő havi mennyiséget díjakat a használati eredményezi az előfizetéséhez járó, a telepített szolgáltatások le vannak tiltva, az elszámolási időszakból hátralévő. 
 
-Például ha töltött az előfizetéséhez járó összes kreditet, Cloud Services telepített szolgáltatásai el lesznek távolítva éles és az Azure-beli virtuális gépek le lesznek állítva és fel lesznek szabadítva. A saját tárfiókokban és adatbázisokban lévő adatokat egy csak olvasható módon érhetők el.
+Például ha töltött az előfizetéséhez járó összes kreditet, Cloud Services telepített szolgáltatásai el lesznek távolítva éles és az Azure-beli virtuális gépek le lesznek állítva és fel lesznek szabadítva. Az adatok a storage-fiókok csak olvasható módon érhetők el.
 
 A következő elszámolási időszak kezdetétől érvényesül, ha az előfizetési ajánlatok között a több hónapon átívelő krediteket tartalmaz az előfizetés szeretné újra engedélyezni automatikusan. Ezután ismételt üzembe helyezése a Cloud Services és a tárfiókok és adatbázisok teljes hozzáféréssel rendelkezik.
 

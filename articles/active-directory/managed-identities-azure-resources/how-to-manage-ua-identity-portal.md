@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 2f2f338f7c4ddb885bc909f49815783e616b94c8
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: d54820acf8742ad2f95e8cc8527d9e252ffe3c30
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300455"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720133"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Lista létrehozása, törlése vagy szerepkör hozzárendelése a felügyelt felhasználó által hozzárendelt identitás az Azure portal használatával
 
@@ -69,18 +69,18 @@ Ha törölni szeretné egy felhasználó által hozzárendelt felügyelt identit
 
 ![Felhasználó által hozzárendelt felügyelt identitás törlése](./media/how-to-manage-ua-identity-portal/delete-user-assigned-managed-identity-portal.png)
 
-## <a name="assign-a-role-to-a-user-assigned-managed-identity"></a>Szerepkör hozzárendelése felhasználóhoz felügyelt identitásnak
+## <a name="assign-a-role-to-a-user-assigned-managed-identity"></a>Szerepkör hozzárendelése felhasználóhoz felügyelt identitásnak 
 
 Szerepkör hozzárendelése felhasználóhoz felügyelt identitásnak, hogy a fióknak rendelkeznie kell a [felhasználói hozzáférés rendszergazdája](/azure/role-based-access-control/built-in-roles#user-access-administrator) szerepkör-hozzárendelés.
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy olyan fiókkal az Azure-előfizetéshez társított felügyelt felhasználó által hozzárendelt identitások listázásához.
 2. A Keresés mezőbe írja be a *felügyelt identitások*, és a szolgáltatások területen kattintson a **felügyelt identitások**.
 3. A felhasználó által hozzárendelt felügyelt az előfizetéshez tartozó azonosítók listáját adja vissza.  Válassza ki a felhasználó által hozzárendelt felügyelt identitás, amelyet szeretne rendelhet egy szerepkört.
-4. Válassza ki **hozzáférés-vezérlés (IAM)** majd **Hozzáadás**.
+4. Válassza ki **hozzáférés-vezérlés (IAM)** majd **szerepkör-hozzárendelés hozzáadása**.
 
    ![Felhasználó által hozzárendelt felügyelt identitás indítása](./media/how-to-manage-ua-identity-portal/assign-role-screenshot1.png)
 
-5. Az engedélyek hozzáadása panelen konfigurálja a következő értékeket, és kattintson a **mentése**:
+5. A Hozzáadás szerepkör-hozzárendelés panelen, konfigurálja a következő értékeket, és kattintson a **mentése**:
    - **Szerepkör** -a szerepkör hozzárendelése
    - **Hozzáférés hozzárendelése** – az erőforrás hozzárendelni a felhasználó által hozzárendelt felügyelt identitás
    - **Válassza ki** – a tag hozzáférés hozzárendelése

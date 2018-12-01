@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 82c02c0212fd79d8847d374022b6ac8f862f042a
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 8d6865349f103278131a02c2385557fb53ee24f5
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291113"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720592"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorozás és diagnosztika az Azure Service Fabrichez
 
 Ez a cikk áttekintést monitorozást és diagnosztikát az Azure Service Fabric. A monitoring and diagnostics létfontosságúak fejlesztéséhez, teszteléséhez és bármilyen felhőalapú környezetben a számítási feladatok üzembe helyezése. Ha például nyomon követheti az alkalmazások használata, a Service Fabric platformot, az erőforrások kihasználtságát, a teljesítményszámlálók és az általános állapotát, a fürt által végrehajtott műveletek. Ezen információk használatával diagnosztizálása és a problémák megoldása és megelőzheti azok bekövetkezését a jövőben. A következő néhány szakaszban röviden ismertetik, érdemes figyelembe venni a termelési számítási feladatokhoz monitoring Service Fabric minden területéhez. 
 
-## <a name="application-monitoring"></a>Alkalmazásfigyelés
+## <a name="application-monitoring"></a>Alkalmazások monitorozása
 Az alkalmazásfigyelés követi nyomon, milyen szolgáltatásokat és összetevőket az alkalmazás használ. Győződjön meg arról, hogy problémákat észlelt felhasználókat, hogy hatással az alkalmazások figyelni kívánt. Az alkalmazásfigyelés felelőssége a felhasználók az alkalmazások és a hozzá tartozó szolgáltatások fejlesztéséhez, mivel az egyedi az alkalmazás üzleti logikája számára be van kapcsolva. Az alkalmazások figyelése a következő esetekben hasznos lehet:
 * Mekkora forgalom az alkalmazásom tapasztal? -Van szüksége a services felhasználói igényeknek és a potenciális szűk keresztmetszetté az alkalmazás címének megfelelő a méretezése?
 * Azok a szolgáltatások közötti hívások, a sikeres és a nyomon követett?
@@ -40,9 +40,10 @@ Az oktatóanyag van [állítsa ezt a .NET-alkalmazások regisztrálásához](ser
 ## <a name="platform-cluster-monitoring"></a>Platform (fürt) figyelése
 A felhasználó az vezérlőben milyen telemetriai adatokat keresztül származik alkalmazását ír a kód magát, de mi a diagnosztikai információ a Service Fabric platformot, mivel? A Service Fabric célok egyike az alkalmazások rugalmas a hardveres hibák esetén. A cél a platform system szolgáltatások képességére infrastruktúra problémákat, és gyors feladatátvételi számítási feladatok más csomópontokhoz a fürtben keresztül érhető el. Azonban ebben az esetben, mi történik, ha a rendszer szolgáltatások problémákat? Vagy ha az próbál telepíteni, vagy helyezze át a számítási feladatok, a szolgáltatások elhelyezését szabályainak megsértette vannak? A Service Fabric biztosít ezen és annak biztosításához, hogy a fürt zajló tevékenység kapjanak az Ön további diagnosztika. Fürt figyelés néhány mintaként használható jelen forgatókönyvek a következők:
 
-* Nem Service Fabric várt, elhelyezése az alkalmazások és a fürt áthidaló terheléselosztási módon viselkedik? 
-* Felhasználói műveletek megnyílik a fürtön arra vonatkozik, és a várt módon végrehajtott? Például A méretezés, a feladatátvétel, a központi telepítések
-* A Service Fabric gondoskodik a csomópontok a fürt részét képező nyomon követheti, és letölthetőségi Ha probléma van az egyik?
+A Service Fabric beépített események széles választékát nyújtja. Ezek [Service Fabric-események](service-fabric-diagnostics-events.md) az EventStore vagy a műveleti csatorna (esemény-csatorna a platform által elérhetővé tett) keresztül érhető el. 
+* Az EventStore – az EventStore egy olyan funkció, a platform által biztosított Service Fabric platform eseményeket a Service Fabric Explorerben vagy a REST API-n keresztül érhető el. Láthatja, mi történik a fürtben az egyes entitásokhoz például csomópont, service, alkalmazás és az esemény időpontjában a lekérdezéshez egy pillanatképnézet. Emellett az EventStore található további információ a [az EventStore áttekintése](service-fabric-diagnostics-eventstore.md).    
+
+* A Service Fabric - csatornák és a Windows, a Service Fabric eseményeinek érhetők el megfelelő számú egyetlen ETW-szolgáltató `logLevelKeywordFilters` választja ki, műveleti és adatok & üzenetküldés csatornák - között használt ezzel a a módszerrel azt meg a kimenő külön Service Fabric-események az igény szerint szűrni. Linuxon Service Fabric-események eljussanak az lttng érhető el, és a egy Storage-táblához, ahol azok szűrhető igény szerint a kerüljenek. Ezek a csatornák válogatott, strukturált események, amelyek segítségével értelmezheti a fürt állapotát tartalmazza. Diagnosztikai alapértelmezés szerint engedélyezve vannak a fürt létrehozásakor, amely hozzon létre egy Azure Storage-táblába, ahol kiolvassa az eseményeket ezek a csatornák, hogy a jövőben lekérdezése érkeznek. 
 
 A megadott diagnosztikai események beépített átfogó készletét formájában vannak. Ezek [Service Fabric-események](service-fabric-diagnostics-events.md) bemutatják a különböző entitások, például a csomópontok, alkalmazások, szolgáltatások, a partíciók stb platform által végzett műveleteket. A fenti utolsó esetben, ha egy csomópont leáll, a platform lenne gridre bocsáthatja ki az olyan `NodeDown` esemény, és sikerült haladéktalanul értesíti a figyelési eszközben dolgozhat. Egyéb gyakori példák `ApplicationUpgradeRollbackStarted` vagy `PartitionReconfigured` feladatátvétel alatt. **Ugyanazokat az eseményeket a Windows- és Linux-fürtök érhetők el.**
 

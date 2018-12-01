@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: twhitney, subramar
-ms.openlocfilehash: 743fedd35bc45618f728ba71056f5dabc2fc1ed9
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: e4eb26ab91261d1888d3c756d611db1b31801e8f
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300642"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720227"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Docker-Compose üzembe helyezési támogatás az Azure Service Fabric (előzetes verzió)
 
@@ -64,6 +64,12 @@ A Compose üzemelő példány frissítése a PowerShell indításához használj
 Start-ServiceFabricComposeDeploymentUpgrade -DeploymentName TestContainerApp -Compose docker-compose-v2.yml -Monitored -FailureAction Rollback
 ```
 
+Visszaállítás az összeállítás üzemelő példány frissítése a PowerShell-lel, használja a következő parancsot:
+
+```powershell
+Start-ServiceFabricComposeDeploymentRollback -DeploymentName TestContainerApp
+```
+
 Frissítés elfogadása után a frissítési folyamat állapotát sikerült nyomon követheti a következő paranccsal:
 
 ```powershell
@@ -84,7 +90,7 @@ Miután létrehozta az üzembe helyezés, a következő paranccsal ellenőrizhet
 sfctl compose status --deployment-name TestContainerApp [ --timeout ]
 ```
 
-A compose üzemelő példányának törlése, használja a következő parancsot:
+A Compose üzemelő példányának törlése, használja a következő parancsot:
 
 ```azurecli
 sfctl compose remove  --deployment-name TestContainerApp [ --timeout ]
@@ -94,6 +100,12 @@ A Compose üzemelő példány frissítése indításához használja a következ
 
 ```azurecli
 sfctl compose upgrade --deployment-name TestContainerApp --file-path docker-compose-v2.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [--upgrade-mode Monitored] [--failure-action Rollback] [ --timeout ]
+```
+
+Visszaállítás az összeállítás üzemelő példány frissítése, használja a következő parancsot:
+
+```azurecli
+sfctl compose upgrade-rollback --deployment-name TestContainerApp [ --timeout ]
 ```
 
 Frissítés elfogadása után a frissítési folyamat állapotát sikerült nyomon követheti a következő paranccsal:

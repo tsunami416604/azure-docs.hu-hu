@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 1fc1d3b4418b178921dc32ee834342b75fa31f20
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: fe564e9809a3621ca04e4dad75488fb255f7dc0e
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311075"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682945"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások
 
@@ -40,7 +40,7 @@ Az alábbiakban néhány, a diagnosztikai naplók segítségével teheti:
 
 * Menti azokat egy [ **Tárfiók** ](monitoring-archive-diagnostic-logs.md) naplózási vagy manuális ellenőrzést. A megőrzési ideje (nap) használatával is megadhat **erőforrás diagnosztikai beállításait**.
 * [Azokat a Stream **az Event Hubs** ](monitoring-stream-diagnostic-logs-to-event-hubs.md) egy külső szolgáltatás vagy az egyéni elemzési megoldással, például a Power bi támogatunk.
-* Elemezheti a [Log Analytics](../log-analytics/log-analytics-azure-storage.md)
+* Elemezheti a [Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md)
 
 Használhatja a storage-fiók vagy az Event Hubs-névtér, amely nem ugyanabban az előfizetésben, mint a naplókat kibocsátó. A beállítást konfiguráló felhasználónak rendelkeznie kell a megfelelő RBAC-hozzáférés mindkét előfizetéshez.
 
@@ -235,4 +235,4 @@ Diagnosztikai beállítás hozzáadása megjeleníti a diagnosztikai beállítá
 
 * [Az erőforrás-diagnosztikai naplók Stream **az Event Hubs**](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [Módosítsa az erőforrás diagnosztikai beállításait az Azure Monitor REST API használatával](https://msdn.microsoft.com/library/azure/dn931931.aspx)
-* [A Log Analytics használatával az Azure storage-naplók elemzése](../log-analytics/log-analytics-azure-storage.md)
+* [A Log Analytics használatával az Azure storage-naplók elemzése](../azure-monitor/platform/collect-azure-metrics-logs.md)

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/16/2018
 ms.author: juliako
-ms.openlocfilehash: a74f2e53127b506f42ff49018c3df2985396646d
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: b167d3424d520cf8be515eec9d495164dd9785ab
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619816"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682095"
 ---
 # <a name="liveevent-latency-in-media-services"></a>A Media Services videókhoz késés
 
@@ -43,7 +43,7 @@ LiveEvent liveEvent = new LiveEvent(
             streamOptions: new List<StreamOptionsFlag?>()
             {
                 // Set this to Default or Low Latency
-                // To use low latency optimally, you should tune your encoder settings down to 1 second GOP size instead of 2 seconds.
+                // To use low latency optimally, you should tune your encoder settings down to 1 second "Group Of Pictures" (GOP) length instead of 2 seconds.
                 StreamOptionsFlag.LowLatency
             }
         );
@@ -51,14 +51,23 @@ LiveEvent liveEvent = new LiveEvent(
 
 A teljes példa: [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
 
-## <a name="pass-through-liveevents-latency"></a>Az átmenő LiveEvents késés
+## <a name="liveevents-latency"></a>LiveEvents késés
 
-Az alábbi táblázat jellemző várakozási ideje (Ha engedélyezve van a LowLatency jelző) eredményei a Media Services szolgáltatásban a hozzájárulás hírcsatorna eléri a szolgáltatást, hogy ha egy lejátszási is kérhető az idő mérése történik.
+Az alábbi táblázatok a Media Services szolgáltatásban a hozzájárulás hírcsatorna eléri a szolgáltatást, hogy amikor egy megjelenítőt látja a lejátszó a lejátszás ameddig késés (Ha engedélyezve van a LowLatency jelző) jellemző eredmény megjelenítése. Közel valós idejű optimális használatához meg kell finomhangolása lefelé 1 másodperc "Csoportot a képek" (Képcsoporttal) hossza a kódoló beállításai. Magasabb Képcsoporttal hossza használatakor, sávszélesség-használat minimalizálása érdekében, és csökkentheti a sávszélességű azonos sebessége alapján. Különösen hasznos a videókat, amelyekhez kevesebb mozgásban lévő adatoknak egyaránt.
+
+### <a name="pass-through"></a>Továbbítás 
 
 ||2S Képcsoporttal kis késés, engedélyezve van|1s Képcsoporttal kis késés, engedélyezve van|
 |---|---|---|
 |VONAL-és a|10 egység|8S|
 |A natív iOS-lejátszó HLS|14s|10 egység|
+
+### <a name="live-encoding"></a>Live Encoding
+
+||2S Képcsoporttal kis késés, engedélyezve van|1s Képcsoporttal kis késés, engedélyezve van|
+|---|---|---|
+|VONAL-és a|14s|10 egység|
+|A natív iOS-lejátszó HLS|18s|13s|
 
 > [!NOTE]
 > A végpontok közötti késés eltérőek lehetnek attól függően, helyi hálózati körülmények vagy egy CDN gyorsítótárazási réteg bevezetésével. A pontos konfigurációk kell tesztelni.

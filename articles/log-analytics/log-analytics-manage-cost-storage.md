@@ -10,17 +10,16 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 8343c27693538480757a879e477ec77fba08de3d
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 350c009f77bc37ae2201b1d5c3b701e89301b7aa
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958338"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721697"
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>A Log Analytics és az adatmennyiség szabályozásával költségek kezelése
 
@@ -73,7 +72,7 @@ Felülvizsgálat [Log Analytics-használat és becsült költségek](log-analyti
 ### <a name="manage-the-maximum-daily-data-volume"></a>A maximális napi adatmennyiség kezelése 
 A következő lépések bemutatják, hogyan konfigurálása a Log Analytics lesz képes feldolgozni naponta adatmennyiség kezelése korlátozva.  
 
-1. A munkaterületen válassza ki a **felhasználás és becsült költségek** a bal oldali ablaktáblán.
+1. A munkaterületen válassza a **Felhasználás és becsült költségek** lehetőséget a bal oldali panelen.
 2. Az a **felhasználás és becsült költségek** a kijelölt munkaterület oldalára, kattintson **adatmennyiség-kezelés** az oldal tetején. 
 5. Napi korlát a következő **OFF** – alapértelmezés szerint kattintson **ON** az engedélyezéshez, és állítsa az mennyiségi korlát a GB/nap.<br><br> ![A log Analytics konfigurálása adatkorlát](media/log-analytics-manage-cost-storage/set-daily-volume-cap-01.png)
 
@@ -99,8 +98,8 @@ Riasztás van definiálva, és a eléri a korlátot, riasztás akkor aktiválód
 ## <a name="change-the-data-retention-period"></a>Módosítsa az Adatmegőrzés időtartama 
 Az alábbi lépéseket adatért által a munkaterületen milyen hosszú log konfigurálását ismertetik.
  
-1. A munkaterületen válassza ki a **felhasználás és becsült költségek** a bal oldali ablaktáblán.
-2. Az a **felhasználás és becsült költségek** kattintson **adatmennyiség-kezelés** az oldal tetején.
+1. A munkaterületen válassza a **Felhasználás és becsült költségek** lehetőséget a bal oldali panelen.
+2. A **Felhasználás és becsült költségek** oldalon kattintson az oldal tetején található **Adatmennyiség-kezelés** elemre.
 5. A panelen a csúszka segítségével növelheti vagy csökkentheti a napok számát, és kattintson a **OK**.  Ha a *ingyenes* szint, nem tudja módosítani az Adatmegőrzés időtartama, és annak érdekében, hogy ez a beállítás szabályozza a fizetős csomagra frissíteni szeretne.<br><br> ![Munkaterület megőrzése beállításának módosítása](media/log-analytics-manage-cost-storage/manage-cost-change-retention-01.png)
 
 ## <a name="troubleshooting"></a>Hibaelhárítás

@@ -8,19 +8,18 @@ manager: jwhit
 editor: tysonn
 ms.assetid: 31572b51-6b57-4945-8208-ecfc3b5304fc
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 3e1acb714cfc1c059f8d02240c2a6d49be9f4971
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 62af45d8e093b985d8158b22e369307d8c288493
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335282"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721306"
 ---
 # <a name="custom-fields-in-log-analytics"></a>A Log Analytics egyéni mezők
 A **egyéni mezők** Log Analytics szolgáltatása lehetővé teszi, hogy a saját kereshető mezők hozzáadásával a Log Analytics meglévő rekordok.  Egyéni mezők automatikusan tölti be más tulajdonságokat ugyanazt a rekordot a kinyert adatokkal.

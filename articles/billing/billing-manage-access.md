@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: cwatson
-ms.openlocfilehash: 7a4e19ae5bf770949623f4cee7fa0d3033ccfa29
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 00b29ddf29ae334154d41eedd0bf9e66556e09ad
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582615"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720119"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Számlázási adatokat az Azure-hoz való hozzáférés kezelése
 
@@ -72,9 +72,10 @@ A számlázási olvasó funkció előzetes verzióban érhető el, és nem glob�
 
 1. Válassza ki **hozzáférés-vezérlés (IAM)**.
 1. Válassza ki **szerepkör-hozzárendelések** ehhez az előfizetéshez tartozó szerepkör-hozzárendelések megtekintéséhez.
-1. Válassza ki **Hozzáadás** > **szerepkör-hozzárendelés hozzáadása**.
+1. Válassza ki **szerepkör-hozzárendelés hozzáadása**.
 1. Az a **szerepkör** legördülő menüben válassza ki **számlázási olvasó**.
 1. Az a **kiválasztása** szövegmezőbe írja be a nevét, vagy e-mailben a hozzáadni kívánt felhasználó.
+1. Válassza ki a felhasználót.
 1. Kattintson a **Mentés** gombra.
 1. Néhány pillanat múlva a felhasználó hozzárendelve a számlázási olvasó szerepkört az előfizetések szintjén.
 1. A számlázási olvasó kap egy e-mailt, jelentkezzen be a mutató hivatkozást.

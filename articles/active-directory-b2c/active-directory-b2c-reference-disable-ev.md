@@ -7,32 +7,30 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 2/06/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e36dd19aa020b8cb2a623cda904cf7fa8a0b26da
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0a03be96895ea88ae033fd56df861b985317295b
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51004592"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52719198"
 ---
 # <a name="disable-email-verification-during-consumer-sign-up-in-azure-active-directory-b2c"></a>Regisztráció az Azure Active Directory B2C fogyasztói során e-mailes ellenőrzés letiltása 
 Ha engedélyezve van, a Azure Active Directory (Azure AD) B2C egy e-mail-címet biztosít, és hozzon létre egy helyi fiók alkalmazások regisztráció lehetővé teszi egy fogyasztó. Az Azure AD B2C biztosítja, hogy érvényes e-mail-címek azzal, hogy a felhasználó számára, hogy a regisztrációs folyamat során ellenőrizni őket. Azt is megakadályozza, hogy egy rosszindulatú automatikus folyamat azon alkalmazások hamis fiókok létrehozása.
 
 Egyes alkalmazások fejlesztői inkább a regisztrációs folyamat során az e-mail-ellenőrzés kihagyása és ehelyett a fogyasztók Ellenőrizze később, az e-mail-cím. Ehhez az Azure AD B2C-vel beállítható úgy, hogy e-mailes ellenőrzés letiltása. Ezzel létrehozza az egyenletesebb regisztrációs folyamaton, és rugalmasságot biztosít a fejlesztők a különbséget tenni a felhasználóknak az e-mail-címükkel, ezek a felhasználók, amelyek még nem ellenőrizte.
 
-Alapértelmezés szerint a regisztrálási szabályzatok rendelkezik e-mailes ellenőrzés engedélyezve van. A következő lépések segítségével kikapcsolásához:
+Alapértelmezés szerint az előfizetés-kezelő felhasználói folyamatok rendelkeznek e-mailes ellenőrzés engedélyezve van. A következő lépések segítségével kikapcsolásához:
 
-1. Kattintson a **regisztrálási szabályzatok** vagy **regisztrálási vagy bejelentkezési szabályzatok** a beállításoktól függően-előfizetés.
-2. Kattintson a szabályzatra (például "B2C_1_SiUp") való megnyitásához. 
-3. Kattintson a **szerkesztése** a panel tetején.
-4. Kattintson a **oldal-UI testreszabása**.
-5. Kattintson a **helyi fiók regisztrálási oldala**.
-6. Kattintson a **E-mail cím** a a **neve** oszlop alatt a **regisztrálási attribútumok** szakaszban.
-7. Váltás a **követelhet meg** beállítást **nem**.
-8. Kattintson a **OK** alján, amíg el nem éri a **házirend szerkesztése** panelen.
-9. Kattintson a panel tetején lévő **Mentés** elemre. Kész!
+1. Kattintson a **felhasználókövetési adatai**.
+2. Kattintson a felhasználói folyamat (például "B2C_1_SiUp") való megnyitásához. 
+3. Kattintson a **elrendezések lapon**.
+4. Kattintson a **helyi fiók regisztrálási oldala**.
+5. Kattintson a **E-mail cím** a a **neve** oszlop alatt a **felhasználói attribútumok** szakaszban.
+6. A **ellenőrzés szükséges**válassza **nem**.
+7. Kattintson a panel tetején lévő **Mentés** elemre. Kész!
 
 > [!NOTE]
 > A regisztrációs folyamat az e-mailes ellenőrzés letiltása fogjuk kéretlen információk küldésére vezethet. Ha letiltja az alapértelmezett, ajánlott felvenni a saját ellenőrzési rendszerétől.

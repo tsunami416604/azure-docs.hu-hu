@@ -10,17 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: f8bef8c6ab5c0639f9a99eb2c0443c33d7b6d84e
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 4ef1e302a305f683155139063891b838d8144008
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50244065"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680463"
 ---
 # <a name="log-analytics-query-language"></a>Log Analytics lekérdezési nyelve
 A log Analytics biztosít az Azure Monitor napló gyűjtése és elemzése. Azure adatkezelő épül és a egy verzióját használja, a lekérdezési nyelvre. A [Azure adatkezelő lekérdezési nyelvi dokumentáció](/azure/kusto/query) rendelkezik az összes részletes adat a nyelv és a Log Analytics-lekérdezések írására szolgáló elsődleges erőforrás kell lennie. Ez az oldal más forrásokra mutató hivatkozásokat biztosít, megtudhatja, hogyan kell lekérdezéseket írni és a nyelvet a Log Analytics végrehajtása kapcsán.

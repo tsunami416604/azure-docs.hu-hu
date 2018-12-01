@@ -10,17 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 3bcc5368a99dc7c7c32381ca0226119d81fc2c0a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9d045fefaccc9bc155f80e7b40c340d6531a7dda
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978199"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52683047"
 ---
 # <a name="get-started-with-log-analytics-in-the-azure-portal"></a>Ismerkedés a Log Analytics használatával az Azure Portalon
 
@@ -71,7 +69,7 @@ A lekérdezés futtatásához kattintson a **futtatása** gombra vagy nyomja le 
 - Időtartomány - egy időtartománya _elmúlt 24 órában_ alapértelmezés szerint van beállítva. Egy másik tartományt használ, használja a időválasztó, vagy adjon hozzá egy kifejezett idő dátumtartomány-szűrőt ad a lekérdezéshez.
 
 
-## <a name="understand-the-schema"></a>A séma ismertetése
+## <a name="understand-the-schema"></a>A séma bemutatása
 A séma az gyűjteményét, vizuálisan logikai kategória szerint csoportosítva. A kategóriák számos olyan figyelési megoldások. A _LogManagement_ kategória tartalmazza a közös adatok, például a Windows és a Syslog események, teljesítményadatok és ügyfél szívveréseket.
 
 ![Séma](media/get-started-analytics-portal/schema.png)

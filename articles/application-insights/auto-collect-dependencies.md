@@ -8,19 +8,18 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 08/13/2018
 ms.reviewer: mbullwin
 ms.author: nimolnar
-ms.openlocfilehash: f20963f030c9040b696f7d6a33b25bcee2dc517f
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: f38c4a03a0d9b67b6ec8b20e489a6e4926d511c4
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "40130290"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720224"
 ---
-# <a name="dependency-auto-collection"></a>Függőség az automatikus gyűjtés
+# <a name="dependency-auto-collection"></a>Függőségek automatikus összegyűjtése
 
 Alább látható, amely automatikusan észlelhetők a függőségek anélkül, hogy az alkalmazás kódjában további megvédhetők függőségi hívások jelenleg támogatott listája. Ez a kimenő hívások való kommunikációra való kódtárak, a storage-ügyfelek, a naplózás és a metrikák kódtárak, valamint alkalmazás-keretrendszerek és a kiszolgálók beérkező hívások áll. A függőségek jelenik meg az Application Insights [alkalmazástérkép](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) és [tranzakció diagnosztikája](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics) nézeteket. A függőség nem a lenti listában, ha továbbra is nyomon követheti azt manuálisan egy [függőségi hívás nyomon](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
 
@@ -31,7 +30,7 @@ Alább látható, amely automatikusan észlelhetők a függőségek anélkül, h
 | ASP.NET-fejlesztő | 4.5 + |
 | ASP.NET MVC | 4 + |
 | Az ASP.NET WebAPI | 4.5 + |
-| ASP.NET Core | 1.1 + |
+| ASP.NET-mag | 1.1 + |
 | <b> Kommunikációs könyvtárak</b> |
 | [HttpClient](https://www.microsoft.com/net/) | 4.5 +, .NET core 1.1 + |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | A .NET core 1.0-s +, NuGet 4.3.0 verzióban |
@@ -91,7 +90,7 @@ Alább látható, amely automatikusan észlelhetők a függőségek anélkül, h
 
 | Kommunikációs könyvtárak | Verziók |
 | ------------------------|----------|
-| [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | Mind |
+| [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | Összes |
 
 ## <a name="next-steps"></a>További lépések
 

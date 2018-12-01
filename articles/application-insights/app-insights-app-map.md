@@ -9,17 +9,16 @@ ms.assetid: 3bf37fe9-70d7-4229-98d6-4f624d256c36
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 9b39eef5accec4764f61ab31dd894d368242ee3d
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 1ecdbdfb657d0372fea87c4260226f9de8ded9ce
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094650"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682503"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: Osztályozhatja az elosztott alkalmazások
 
@@ -33,7 +32,7 @@ Alkalmazás-hozzárendelés segít a helyszíni teljesítmény szűk vagy hiba e
 * Összetevők futtassa bármely server-szerepkör-tárolót példányok száma.
 * Összetevők külön Application Insights-kialakítási kulcs (akkor is, ha az előfizetések különböző) vagy egy egyetlen az Application Insights-kialakítási kulcsot a jelentéskészítés különböző szerepköröket is. Előnézeti térkép tapasztalatok mutatja az összetevők függetlenül, hogyan állíthatók be.
 
-## <a name="composite-application-map"></a>Összetett alkalmazástérkép
+## <a name="composite-application-map"></a>Összetett Alkalmazástérkép
 
 A teljes Alkalmazástopológia kapcsolódó alkalmazás-összetevők szinteken átívelő megjelenik. Összetevők különböző Application Insights-erőforrások, és a egy adott erőforrásban a különböző szerepkörrel lehet. Az alkalmazástérkép összetevők a következő függőségi végzett HTTP-hívások az Application Insights SDK telepített kiszolgálók között talál. 
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: jdial
-ms.openlocfilehash: 66b2930e06cef1a31602df3d358c78f42c8cd2cf
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f7d1b5774e41761c7c332b0b38371979ca9d30cd
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406364"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679681"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Kezelheti az Azure DDoS Protection szabványos az Azure portal használatával
 
@@ -158,7 +158,7 @@ A támadás kockázatcsökkentési jelentések összesített értéket jelenít 
 
     - **Archiválás tárfiókba**: adatok írása egy Azure Storage-fiókot. Ezzel a beállítással kapcsolatos további információkért lásd: [diagnosztikai naplói archiválása](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **Az eseményközpontok felé Stream**: lehetővé teszi a naplók használatával egy Azure Eseményközponthoz csomópontmetrikák log fogadó. Az Event hubs integrációjának engedélyezése az Splunk vagy más SIEM-rendszerekkel. Ezzel a beállítással kapcsolatos további információkért lásd: [diagnosztikai naplók egy eseményközpontba Stream](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **Küldés a Log Analyticsnek**: írja a naplókat az Azure Log Analytics szolgáltatásba. Ezzel a beállítással kapcsolatos további információkért lásd: [használata a Log Analytics naplóinak összegyűjtése](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Küldés a Log Analyticsnek**: írja a naplókat az Azure Log Analytics szolgáltatásba. Ezzel a beállítással kapcsolatos további információkért lásd: [használata a Log Analytics naplóinak összegyűjtése](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Mindkét a növekményes és a támadás utáni kockázatcsökkentési a jelentések a következő mezőket tartalmazzák
 - Támadási vektorok
@@ -180,7 +180,7 @@ Támadás kockázatcsökkentési Flow naplók lehetővé teszi, hogy tekintse á
 
     - **Archiválás tárfiókba**: adatok írása egy Azure Storage-fiókot. Ezzel a beállítással kapcsolatos további információkért lásd: [diagnosztikai naplói archiválása](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **Az eseményközpontok felé Stream**: lehetővé teszi a naplók használatával egy Azure Eseményközponthoz csomópontmetrikák log fogadó. Az Event hubs integrációjának engedélyezése az Splunk vagy más SIEM-rendszerekkel. Ezzel a beállítással kapcsolatos további információkért lásd: [diagnosztikai naplók egy eseményközpontba Stream](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **Küldés a Log Analyticsnek**: írja a naplókat az Azure Log Analytics szolgáltatásba. Ezzel a beállítással kapcsolatos további információkért lásd: [használata a Log Analytics naplóinak összegyűjtése](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Küldés a Log Analyticsnek**: írja a naplókat az Azure Log Analytics szolgáltatásba. Ezzel a beállítással kapcsolatos további információkért lásd: [használata a Log Analytics naplóinak összegyűjtése](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 1. Az Azure analytics irányítópulton tekintheti meg a forgalmi naplók adatai, importálhatja a minta-irányítópult https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip
 
 Forgalmi naplók fog rendelkezni a következő mezőket: 

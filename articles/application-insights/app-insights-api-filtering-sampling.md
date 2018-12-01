@@ -9,16 +9,15 @@ ms.assetid: 38a9e454-43d5-4dba-a0f0-bd7cd75fb97b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: 2f8a22c6cda6c63a225fbfe8fba4cf4c8396b53e
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 4bf8bafaff1b9b93b6d4fea0368b2655e6e6af50
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42054887"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682962"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Az Application Insights SDK-t a telemetria szűrése és előfeldolgozása
 
@@ -99,7 +98,7 @@ A telemetriai adatok szűréséhez, írása a telemetriai adatokat feldolgozó, 
     }
 
     ```
-1. Illessze be az applicationinsights.config fájlban:
+3. Illessze be az applicationinsights.config fájlban:
 
 ```xml
 

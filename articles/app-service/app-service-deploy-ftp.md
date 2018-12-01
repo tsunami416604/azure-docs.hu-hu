@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2018
+ms.date: 11/30/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: 32dbef04febb1f3a0cdd8654fc5ec1c5c367439e
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 1e3dbe04652be479a327ed9494299f89ef13492a
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820001"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679392"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Alkalmazás üzembe helyezése az Azure App Service-be FTP/S
 
@@ -31,7 +31,7 @@ Az alkalmazás FTP/S végpontja már aktív. Semmilyen beállítást nem kell FT
 
 Az a [az Azure portal](https://portal.azure.com), nyissa meg az alkalmazás [erőforráslapján](../azure-resource-manager/resource-group-portal.md#manage-resources).
 
-Az FTP-irányítópult megnyitásához kattintson a **folyamatos Készregyártás (előzetes verzió)** > **FTP** > **irányítópult**.
+Az FTP-irányítópult megnyitásához kattintson a **üzembe helyezési központ** > **FTP** > **irányítópult**.
 
 ![FTP-irányítópult megnyitása](./media/app-service-deploy-ftp/open-dashboard.png)
 
@@ -107,6 +107,6 @@ Az Azure App Service támogatja az aktív és passzív mód használatával csat
 
 Összetettebb központi telepítési forgatókönyvek esetén próbálja meg [üzembe helyezése az Azure-ban a Git](app-service-deploy-local-git.md). Git-alapú üzembe helyezés az Azure lehetővé teszi a verziókezeléshez, a csomag-visszaállítás, az MSBuild és egyéb.
 
-## <a name="more-resources"></a>További források
+## <a name="more-resources"></a>További erőforrások
 
 * [Az Azure App Service üzembe helyezési hitelesítő adatok](app-service-deployment-credentials.md)

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 11/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: caa1b6f31325cd67aad106f7829bd32a5e7aeb53
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: c6202ff6f00412a779fb62b7a3bcc3f30ecbb25a
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635815"
+ms.locfileid: "52682323"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -52,7 +52,7 @@ Jelentések, hogy mennyire naprakész a számítógép az alapján, hogy milyen 
 
 A szoftverfrissítések központi telepítéséhez vagy telepítéséhez létrehozhat egy ütemezett üzembe helyezést a frissítést igénylő számítógépeken. Besorolású frissítések *nem kötelező* nem része a Windows-számítógépek esetében az üzembe helyezés hatálya. Csak a szükséges frissítéseket az üzembe helyezés hatálya szerepelnek. 
 
-Az ütemezett telepítés határozza meg, mely célszámítógépek kapni az alkalmazható frissítéseket, vagy explicit módon adja meg a számítógépeket, vagy kiválasztásával egy [számítógépcsoport](../log-analytics/log-analytics-computer-groups.md) , amelyek naplókeresésekkel, a számítógépek adott halmazára alapul. Is adjon meg egy ütemezést, jóváhagyásához, és állítsa be a frissítések telepítése során, amelyek adott időszakban.
+Az ütemezett telepítés határozza meg, mely célszámítógépek kapni az alkalmazható frissítéseket, vagy explicit módon adja meg a számítógépeket, vagy kiválasztásával egy [számítógépcsoport](../azure-monitor/platform/computer-groups.md) , amelyek naplókeresésekkel, a számítógépek adott halmazára alapul. Is adjon meg egy ütemezést, jóváhagyásához, és állítsa be a frissítések telepítése során, amelyek adott időszakban.
 
 A telepítést az Azure Automation runbookjai végzik. A runbookok nem tekinthetők, és a runbookok nem igényelnek semmilyen konfigurálást. Frissítéstelepítés létrehozásakor a központi telepítési ütemezés, amely a megadott időben az érintett számítógépekre irányuló frissítési mester runbookot elindítja hoz létre. A mester runbook egy gyermek runbookot indít az egyes ügynököket, a szükséges frissítések telepítéséhez.
 
@@ -192,7 +192,7 @@ Egy Naplókeresés futtatásához, amely a gép, frissítés vagy telepítés ka
 
 ## <a name="install-updates"></a>Frissítések telepítése
 
-Frissítések értékelni az összes Linux és Windows számítógéphez a munkaterületen, után szükséges frissítések létrehozásával telepíthet egy *frissítéstelepítés*. A frissítéstelepítések egy vagy több számítógép szükséges frissítéseinek ütemezett telepítése. Megadhatja, hogy az érintett foglalandó dátuma és időpontja az üzembe helyezés és a egy számítógép vagy számítógépek csoportja. A számítógépcsoportokkal kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjaival](../log-analytics/log-analytics-computer-groups.md) kapcsolatos részt.
+Frissítések értékelni az összes Linux és Windows számítógéphez a munkaterületen, után szükséges frissítések létrehozásával telepíthet egy *frissítéstelepítés*. A frissítéstelepítések egy vagy több számítógép szükséges frissítéseinek ütemezett telepítése. Megadhatja, hogy az érintett foglalandó dátuma és időpontja az üzembe helyezés és a egy számítógép vagy számítógépek csoportja. A számítógépcsoportokkal kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjaival](../azure-monitor/platform/computer-groups.md) kapcsolatos részt.
 
  Ha számítógépcsoportok szerepelnek a, csoporttagság ütemezés létrehozása idején már csak egyszer lesz kiértékelve. A csoportot érintő későbbi változások nem tükrözi. Ez a használati eléréséhez [dinamikus csoportok](#using-dynamic-groups), ezek a csoportok üzembe helyezéskor feloldása és a egy lekérdezés által meghatározott.
 
@@ -210,7 +210,7 @@ Hozzon létre egy új frissítéstelepítést, jelölje be **frissítések közp
 | Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
 |Operációs rendszer| Linux vagy Windows|
 | A csoportok frissítése (előzetes verzió)|Egy előfizetés, erőforráscsoport, helyek és címkék felvenni az üzembe helyezés az Azure-beli virtuális dinamikus csoportot hozhat létre kombinációja alapján lekérdezést határoz meg. További tudnivalókért lásd: [dinamikus csoportok](automation-update-management.md#using-dynamic-groups)|
-| Frissítendő gépek |Válassza ki, mentett keresést, importált csoporthoz, vagy a legördülő listából válassza ki a gépet, és válassza ki az egyes gépek. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> A számítógépcsoportok Log Analyticsben lévő létrehozásának különböző módszereivel kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjait](../log-analytics/log-analytics-computer-groups.md) ismertető részt |
+| Frissítendő gépek |Válassza ki, mentett keresést, importált csoporthoz, vagy a legördülő listából válassza ki a gépet, és válassza ki az egyes gépek. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> A számítógépcsoportok Log Analyticsben lévő létrehozásának különböző módszereivel kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjait](../azure-monitor/platform/computer-groups.md) ismertető részt |
 |Frissítési besorolások|Válassza ki az összes szükséges|
 |Frissítések belefoglalása vagy kizárása|Ekkor megnyílik a **beszámítása vagy kihagyása** lapot. A belefoglalandó vagy kizárandó frissítések külön lapokon jelennek meg. A belefoglalási kezelésének további információkért lásd: [belefoglalási viselkedés](automation-update-management.md#inclusion-behavior) |
 |Ütemezési beállítások|Válassza ki az időpontot, elindításához, és válassza ki bármelyik egyszer, vagy az ismétlődés ismétlődés|

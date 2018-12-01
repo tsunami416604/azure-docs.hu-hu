@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 43812b68b10f9e4f8510d24cb08c8bb368b3b8f8
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: e81efb0a7977bbd50c63834f676b7cc75201dc68
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445761"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680685"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Hozzáférés az adathalmazokhoz Python segítségével, az Azure Machine Learning Python ügyfélkönyvtárat használva
 Az előzetes verzióját a Microsoft Azure Machine Learning Python ügyfélkönyvtárat engedélyezheti a helyi Python-környezetben az Azure Machine Learning-adatkészletek biztonságos hozzáférést, és lehetővé teszi a létrehozását és kezelését, az adatkészletek a munkaterületen.
@@ -61,7 +61,7 @@ Ha a git telepítve van a gépén, pip használatával közvetlenül a git-adatt
 ## <a name="datasetAccess"></a>Studio-kódtöredékek használata adatkészletek eléréséhez
 A Python ügyféloldali kódtár programozott hozzáférést biztosít a meglévő adatkészletek az adott időpontig futtatott kísérletek.
 
-A Studio webes felületén a kódrészletek, amelyek tartalmazzák a szükséges információkat, töltse le és adatkészletek deszerializálni pandas DataFrame objektumok a hely gépén, is létrehozhat.
+A Studio webes felületén a kódrészletek, amelyek tartalmazzák a szükséges információkat, töltse le és adatkészletek deszerializálni a helyi gépen a pandas DataFrame objektumként is létrehozhat.
 
 ### <a name="security"></a>Adatok hozzáférés biztonsága
 A kódtöredékek Studio által biztosított, a Python ügyféloldali kódtár segítségével tartalmazza a munkaterület azonosítójára és engedélyezési jogkivonat. Ezek biztosítson teljes hozzáférést a munkaterületét, és védeni kell, például a jelszó.

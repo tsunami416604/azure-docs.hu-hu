@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: 756e1426d417c47210e3b766d9d67ef1a70d2516
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 5f7c82143ab11787f5ce186623c1ed4903891c18
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334143"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680351"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Az Azure Monitor által gyűjtött adatok figyelése
 [Az Azure Monitor](../../azure-monitor/overview.md) egy szolgáltatás, amellyel figyelheti az alkalmazások és az erőforrások támaszkodnak. Figyelt erőforrások központi az alábbi függvényre van telemetriai és egyéb adatok tárolására. A cikk ismerteti, hogyan az adatok tárolásának és az Azure Monitor által használt teljes leírását.
@@ -137,13 +137,13 @@ Az Azure Monitor által gyűjtött naplók vannak tárolva a Log Analytics szolg
 ### <a name="sources-of-log-data"></a>Naplózási adatok forrásai
 A log Analytics adatokat gyűjthet, különböző forrásokból is Azure-ban és a helyszíni erőforrásokhoz. A Log Analytics szolgáltatásba írt adatok forrásai az alábbiak:
 
-- [Tevékenységnaplók](../../log-analytics/log-analytics-activity.md) az Azure-erőforrások, amelyek tartalmazzák az információkat a konfigurációjukról és egészségügyi és [diagnosztikai naplók](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) termék működésével kapcsolatos információkat tartalmaznak, amelyek.
+- [Tevékenységnaplók](../../azure-monitor/platform/collect-activity-logs.md) az Azure-erőforrások, amelyek tartalmazzák az információkat a konfigurációjukról és egészségügyi és [diagnosztikai naplók](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) termék működésével kapcsolatos információkat tartalmaznak, amelyek.
 - Az ügynökök [Windows](../../log-analytics/log-analytics-windows-agent.md) és [Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) virtuális gépeket, amelyek a vendég operációs rendszer és alkalmazások a következők szerint a Log Analytics számára küldött telemetriai adatokra [adatforrások](../../azure-monitor/platform/agent-data-sources.md) , konfigurálja.
 - Alkalmazásadatok által gyűjtött [Application Insights](https://docs.microsoft.com/azure/application-insights/).
 - Az adatok egy adott alkalmazás vagy szolgáltatás betekintést nyújtó [figyelési megoldások](../insights/solutions.md) vagy szolgáltatások, például a Container Insights, a virtuális gép Insights vagy a csoport Insights erőforrás.
 - Biztonsági adatok által gyűjtött [az Azure Security Center](https://docs.microsoft.com/azure/security-center/).
 - [Metrikák](#metrics) Azure-erőforrásokból. Ez lehetővé teszi, hogy a 93 napnál hosszabb mérőszámokat tárol, és más naplózási adatokat elemezhet.
-- Telemetria írt [Azure Storage](../../log-analytics/log-analytics-azure-storage-iis-table.md).
+- Telemetria írt [Azure Storage](../../azure-monitor/platform/azure-storage-iis-table.md).
 - Egyéni adatokat bármely REST API-ügyfél használatával a [HTTP-adatgyűjtő API](../../log-analytics/log-analytics-data-collector-api.md) ügyfél és a egy [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) munkafolyamat.
 
 ![A Log Analytics összetevői](media/data-collection/logs-overview.png)
@@ -170,7 +170,7 @@ Minden adatot töröl a Log Analytics használatával lekéri a [naplólekérdez
 ### <a name="metrics-to-logs"></a>Naplók, metrikák
 Metrikák másolhatja a Log Analyticsben, hogy más típusú adatokat tartalmazó összetett elemzéseket végezhet a funkciókban gazdag lekérdezési nyelv használatával. Naplóadatok is, mint a mérőszámok, amely lehetővé teszi, hogy időbeli alakulását hosszabb ideig őrizheti meg. Amikor mérőszámok vagy egyéb teljesítményadatokat tárolódik, amely egy naplót indextáblaként adatok Log Analytics. Metrikák használatával támogatja a közel valós idejű elemzés és riasztás céljából trendelemzés és más elemzési naplók használata során.
 
-Útmutató: Azure-erőforrások metrikáinak begyűjtését kap [gyűjtése az Azure naplói és a Log Analytics használati metrikái](../../log-analytics/log-analytics-azure-storage.md). Útmutató az erőforrások metrikáinak begyűjtését Azure PaaS erőforrására [konfigurálhatja az Azure PaaS-erőforrás-mérőszámok gyűjtését a Log Analytics](../../log-analytics/log-analytics-collect-azurepass-posh.md).
+Útmutató: Azure-erőforrások metrikáinak begyűjtését kap [gyűjtése az Azure naplói és a Log Analytics használati metrikái](../../azure-monitor/platform/collect-azure-metrics-logs.md). Útmutató az erőforrások metrikáinak begyűjtését Azure PaaS erőforrására [konfigurálhatja az Azure PaaS-erőforrás-mérőszámok gyűjtését a Log Analytics](../../azure-monitor/platform/collect-azurepass-posh.md).
 
 ### <a name="logs-to-metrics"></a>Naplók, metrikák
 A fentiekben ismertetettek szerint metrikák, gyorsabb, mint a naplókat, így kisebb késéssel és a egy alacsonyabb költségek létrehozhat riasztásokat. A log Analytics jelentős mennyiségű, metrikák alkalmas lenne, de nem az Azure-metrikagyűjtéshez adatbázisban tárolt numerikus adatokat gyűjt.  Ilyenek például az ügynökök és felügyeleti megoldásokat összegyűjtött teljesítményadatok. Ezek az értékek némelyike átmásolható a metrikák adatbázisba, ahol elérhetők a riasztás és a metrikaböngésző elemzéshez.

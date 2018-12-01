@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8e1c58f2d60ee95189fb583e032d8748fedb88d4
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 2ba34a6d1ecc33e8a4d355aeacb0da8a764a784d
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620217"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679529"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Frissítések kezelése több gép esetén
 
@@ -128,7 +128,7 @@ Az a **új frissítéstelepítés** panelen adja meg a következő információk
 - **Név**: Adjon meg egy egyedi nevet a frissítéstelepítés azonosításához.
 - **Operációs rendszer**: válasszon **Windows** vagy **Linux**.
 - **Frissítendő csoportok (előzetes verzió)**: Meghatározhat egy előfizetéseken, erőforráscsoportokon, helyeken és címkéken alapuló lekérdezést, amellyel egy dinamikus, Azure-beli virtuális gépekből álló csoportot hozhat létre, majd belefoglalhatja a telepítésbe. További információ: [Dinamikus csoportok](automation-update-management.md#using-dynamic-groups)
-- **Frissítendő gépek**: válassza ki, mentett keresést, importált csoporthoz, vagy válassza ki a gépeket, válassza ki a frissíteni kívánt gépeket. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható. A frissítéstelepítés ütemezése előtt látható a gép állapotát. A számítógépcsoportok Log Analyticsben lévő létrehozásának különböző módszereivel kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjait](../log-analytics/log-analytics-computer-groups.md) ismertető részt
+- **Frissítendő gépek**: válassza ki, mentett keresést, importált csoporthoz, vagy válassza ki a gépeket, válassza ki a frissíteni kívánt gépeket. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható. A frissítéstelepítés ütemezése előtt látható a gép állapotát. A számítógépcsoportok Log Analyticsben lévő létrehozásának különböző módszereivel kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjait](../azure-monitor/platform/computer-groups.md) ismertető részt
 
   ![Új frissítés üzembe helyezési panel](./media/manage-update-multi/update-select-computers.png)
 

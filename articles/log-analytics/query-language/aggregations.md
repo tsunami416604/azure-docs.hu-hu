@@ -14,13 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 764c43a382442096a5d130334e54afdc135ba419
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 11216d8b5bbdcea4770ca83a203b349dc424a924
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966680"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679885"
 ---
 # <a name="aggregations-in-log-analytics-queries"></a>Összesítések a Log Analytics-lekérdezések
 
@@ -31,7 +30,7 @@ ms.locfileid: "46966680"
 
 Ez a cikk ismerteti az összesítő függvények a Log Analytics-lekérdezéseket, amelyek kínálnak hasznos módszer az adatok elemzéséhez. Ezek a függvények minden dolgozni a `summarize` operátort, amelynek összesített eredmények a bemeneti tábla egy táblát hoz létre.
 
-## <a name="counts"></a>Száma
+## <a name="counts"></a>Darabszámok
 
 ### <a name="count"></a>count
 Szűrők alkalmazása után az eredményhalmazban sorok számát. Az alábbi példa adja vissza a sorok száma a _Teljesítményoptimalizált_ táblát az elmúlt 30 percben. Az eredményt adja vissza egy adott nevű oszlopban *count_* , kivéve, ha egy adott nevét rendelje hozzá:

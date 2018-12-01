@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: e4e0ff288b9d5539a0110fb157e32b4f23d06bb6
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 53f28d29b9667bb885a5c3d0da8d926f756f3427
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715437"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682069"
 ---
 # <a name="targeting-management-solutions-in-azure-preview"></a>Célcsoport-kezelési megoldások az Azure-ban (előzetes verzió)
 Egy megoldás hozzáadásakor az előfizetés automatikusan telepített összes Windows és Linux-ügynökök az a Log Analytics-munkaterülethez kapcsolódó alapértelmezés szerint.  Érdemes a költségek kezelése és az ügynökök egy adott készletét korlátozásával megoldás összegyűjtött adatok mennyisége korlátozza.  Ez a cikk ismerteti, hogyan használható **megoldás célcsoportjának** Ez a szolgáltatás lehetővé teszi, hogy a alkalmazni egy hatókört a megoldások.
@@ -29,7 +29,7 @@ A célcsoport-kezelési megoldás a következő szakaszokban leírtak szerint h�
 
 
 ### <a name="1-create-a-computer-group"></a>1. Számítógépcsoport létrehozása
-Hozzon létre egy hatókört szerepeltetni kívánt számítógépek megad egy [számítógépcsoport](../../log-analytics/log-analytics-computer-groups.md) a Log Analyticsben.  A számítógép (csoport) lehet egy naplóbeli keresés alapján vagy más forrásokból, például az Active Directory vagy a WSUS-csoportok importálása. Mint [alább ismertetett](#solutions-and-agents-that-cant-be-targeted), csak a Log Analytics közvetlenül csatlakozó számítógépek megtalálható a hatókörben.
+Hozzon létre egy hatókört szerepeltetni kívánt számítógépek megad egy [számítógépcsoport](../../azure-monitor/platform/computer-groups.md) a Log Analyticsben.  A számítógép (csoport) lehet egy naplóbeli keresés alapján vagy más forrásokból, például az Active Directory vagy a WSUS-csoportok importálása. Mint [alább ismertetett](#solutions-and-agents-that-cant-be-targeted), csak a Log Analytics közvetlenül csatlakozó számítógépek megtalálható a hatókörben.
 
 Után a munkaterületen létrehozott számítógép csoportot, majd fog foglalni egy hatókör-konfigurációt, amely egy vagy több megoldásokat is alkalmazható.
  
@@ -75,4 +75,4 @@ Megoldás célcsoportjának nem használható a következő megoldások annak el
 
 ## <a name="next-steps"></a>További lépések
 - További információ a felügyeleti megoldásokról, többek között a megoldások telepítéséhez a környezetben jelenleg elérhető [hozzáadása az Azure Log Analytics felügyeleti megoldás a munkaterülethez](solutions.md).
-- Tudjon meg többet, számítógépcsoportok létrehozását [számítógépcsoportokat a Log Analytics naplóbeli kereséseivel](../../log-analytics/log-analytics-computer-groups.md).
+- Tudjon meg többet, számítógépcsoportok létrehozását [számítógépcsoportokat a Log Analytics naplóbeli kereséseivel](../../azure-monitor/platform/computer-groups.md).

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
-ms.openlocfilehash: 7cf7078353de27c35a607fa8ef1921d6ed4b54b4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5ab54dcd94ebf0a1bad71613a8d749cef0de64f4
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247347"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678678"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Az Azure App Service-ben az operációs rendszer funkcionalitása
 Ez a cikk ismerteti a gyakori alapkonfiguráció operációs rendszer funkcionalitása futó összes Windows-alkalmazások számára elérhető [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Ez a funkció tartalmazza a fájl, hálózati, és az adatbázis eléréséhez, és a diagnosztikai naplók és események. 
@@ -60,7 +60,12 @@ A core, az App Service szolgáltatás az Azure PaaS (szolgáltatásként nyújto
 - Egy alkalmazás meghajtó, amely tartalmazza az Azure cspkg használt csomagfájlok kizárólag az App Service (és az ügyfelek számára nem érhető el)
 - A "user" meghajtó (a C:\ meghajtóra), amelynek mérete a virtuális gép méretétől függően változik. 
 
-Fontos a lemezhasználat monitorozása az alkalmazás növekedésével. Ha a lemez kvóta elérése az alkalmazásnak a negatív hatások rendelkezhet.
+Fontos a lemezhasználat monitorozása az alkalmazás növekedésével. Ha a lemez kvóta elérése az alkalmazásnak a negatív hatások rendelkezhet. Példa: 
+
+- Az alkalmazás throw előfordulhat, hogy egy hibaüzenet nincs elég hely a lemezen.
+- A Kudu konzolhoz böngészésekor lemezterületből fakadó hibák jelenhetnek meg.
+- Az üzembe helyezés a vsts-ben vagy a Visual Studio meghiúsulhat `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`.
+- Az alkalmazás gyengülhet a teljesítmény lecsökkenését tapasztalhatja.
 
 <a id="NetworkDrives"></a>
 

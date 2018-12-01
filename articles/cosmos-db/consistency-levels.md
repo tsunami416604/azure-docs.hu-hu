@@ -1,6 +1,6 @@
 ---
 title: Az Azure Cosmos DB-ben konzisztenciaszintek |} A Microsoft Docs
-description: Az Azure Cosmos DB öt konzisztenciaszint egyenleg végleges konzisztencia, a rendelkezésre állás és a késleltetés kompromisszummal segítségével rendelkezik.
+description: Az Azure Cosmos DB öt konzisztenciaszint egyenleg végleges konzisztencia, a rendelkezésre állási és a késés és kompromisszumot kínál a rendelkezik.
 keywords: végleges konzisztencia, az azure cosmos db, azure, Microsoft azure
 services: cosmos-db
 author: aliuy
@@ -11,66 +11,70 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6ace11cf3704ddbd503c0202d45874670476198e
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 56ac0da521186d9e09b91e26719d7f57e0a56934
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624827"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52681075"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Az Azure Cosmos DB-ben konzisztenciaszintek
 
-Elosztott adatbázisok hagyatkoznia a magas rendelkezésre állás, alacsony késleltetésű, illetve mindkettőt, replikációs győződjön és a rendelkezésre állási, teljesítmény és a késés az olvasás következetes alapvető magával. A legtöbb kereskedelmi forgalomban kapható elosztott adatbázisok kérje meg a fejlesztők számára, hogy a két szélsőséges konzisztencia modell közül választhat: erős konzisztencia és a végleges konzisztencia. Bár a [linearizálhatósági](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) vagy az erős konzisztencia modellje az adatok programozhatóság a gold standard, nagy ahhoz áron (a stabil állapotot) nagyobb késést hozzáadja, és csökkenteni a rendelkezésre állás (meghibásodások). Végleges konzisztencia, másrészt magasabb rendelkezésre állás és jobb teljesítményt nyújt, de nehéz alkalmazások.
+Elosztott adatbázisok által használt, magas rendelkezésre állás, alacsony késleltetésű, illetve mindkettőt, replikációs győződjön meg az olvasás következetes és a rendelkezésre állási, teljesítmény és késés alapvető magával. A legtöbb kereskedelmi forgalomban kapható elosztott adatbázisok kérje meg a fejlesztők számára, hogy a két szélsőséges konzisztencia modell közül választhat: erős konzisztencia és a végleges konzisztencia. A [linearizálhatósági](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) , vagy az erős konzisztencia modell adatok programozhatóság gold színvonalát. De ad hozzá egy nagy ahhoz, díja (a stabil állapotot) nagyobb késést, és csökkenteni a rendelkezésre állás (meghibásodások). Végleges konzisztencia, másrészt magasabb rendelkezésre állás és jobb teljesítményt nyújt, de nehéz alkalmazások. 
 
-A cosmos DB választási lehetőségek, a két szélsőséges helyett egy átfogó, az adatkonzisztencia közelíti meg. Erős konzisztencia és a végleges konzisztencia az értéktartományon két végén, amelyek nincsenek számos konzisztenciaszint mentén az értéktartományon. Ezek konzisztencia beállításai lehetővé teszik a fejlesztők számára, hogy pontos lehetőségeket és a részletes és magas rendelkezésre állás vagy a teljesítmény tekintetében kompromisszumot kínál. A cosmos DB engedélyezve van a fejlesztők számára, hogy az öt jól definiált konzisztenciamodellekkel közül választhat a konzisztencia (legerősebb leggyengébb felé haladva) – színspektrumból **erős**, **korlátozott frissesség**, **munkamenet** , **konzisztens előtag**, és **végleges**. Egyes ezek konzisztenciamodellt kínál jól definiált és könnyen kezelhető és bizonyos valós forgatókönyvek esetén is használható. Az öt konzisztenciamodell mindegyike biztosítanak [rendelkezésre állás és teljesítmény kompromisszumot kínál a](consistency-levels-tradeoffs.md) és átfogó SLA-k élvezik. Az alábbi képen látható a különböző konzisztenciaszintet, egy értéktartományon:
+Az Azure Cosmos DB választási helyett két szélsőséges spektrumát, az adatkonzisztencia közelíti meg. Erős konzisztencia és a végleges konzisztencia vége, de vannak számos konzisztenciaszint mentén az értéktartományon. A fejlesztők ezek a beállítások segítségével győződjön meg arról, pontosan lehetőségeket és részletes és magas rendelkezésre állás vagy a teljesítmény tekintetében kompromisszumot kínál. 
+
+Az Azure Cosmos DB öt jól definiált konzisztenciamodellekkel konzisztencia spektrum fejlesztők is választhat. Leggyengébb, felé a modellek pedig erős, kötött elavulás, munkamenet, konzisztens előtag és végleges. A modellek a következők: jól definiált és intuitív. Bizonyos valós forgatókönyvek esetén használható. Minden modell biztosít [rendelkezésre állás és teljesítmény kompromisszumot kínál a](consistency-levels-tradeoffs.md) és átfogó SLA-k használatával. Az alábbi képen egy átfogó, különböző konzisztenciaszintet látható.
 
 ![A spektrum, konzisztencia](./media/consistency-levels/five-consistency-levels.png)
 
-A konzisztenciaszintek régiófüggetlen. A konzisztencia szintjét a Cosmos DB-fiókot az összes olvasási műveletek függetlenül a régiót, amelyből az olvasási és írási szolgáltatás szolgálja ki, a Cosmos-fiókjával, illetve e van konfigurálva a fiók egyetlen társított régiók számának garantáltan vagy több az írási régió.
+A konzisztenciaszintek régiófüggetlen. A konzisztencia szintjét, az Azure Cosmos-fiók összes olvasási műveletek függetlenül a régiót, amelyből az olvasási és írási szolgáltatás szolgálja ki, az Azure Cosmos-fiókjához társított régiók számának vagy a fiók konfigurálva van-e garantáltan egy egy vagy több írási régiót.
 
-## <a name="scope-of-the-read-consistency"></a>Hatóköre a olvasásának következetessége
+## <a name="scope-of-the-read-consistency"></a>Az olvasás következetes hatóköre
 
-A olvasásának következetessége olvasási művelete (az egyes logikai partíciók) a partíciókulcs tartományon belül hatóköre egyetlen vonatkozik. Az olvasási műveletet egy távoli ügyfélen vagy egy tárolt eljárást adhatnak ki.
+Partíciókulcs tartományt és logikai partíció belül hatóköre egyetlen olvasási művelet olvasásának következetessége vonatkozik. Az olvasási műveletet egy távoli ügyfélen vagy egy tárolt eljárást adhatnak ki.
 
-## <a name="configuring-the-default-consistency-level"></a>Az alapértelmezett konzisztenciaszint konfigurálása
+## <a name="configure-the-default-consistency-level"></a>Az alapértelmezett konzisztenciaszint beállítása
 
-Konfigurálhatja a **alapértelmezett konzisztenciaszint** a Cosmos DB-fiókja bármikor. Az alapértelmezett konzisztenciaszint a fiókjában konfigurált összes Cosmos-adatbázis (és tárolók) vonatkozik, az adott fiók. Olvasási és a egy tároló vagy adatbázis állították lekérdezések alapértelmezés szerint a megadott konzisztenciaszint alkalmaznak. További tudnivalókért lásd: hogyan [konfigurálhatja az alapértelmezett konzisztenciaszint](how-to-manage-consistency.md#configure-the-default-consistency-level) cikk.
+Az alapértelmezett konzisztenciaszint bármikor konfigurálhatja a Azure Cosmos-fiókjában. Az alapértelmezett konzisztenciaszint a fiókjában konfigurált összes az Azure Cosmos DB-adatbázisok és az adott fiók tárolók vonatkozik. Olvasási és a egy tároló vagy adatbázis állították lekérdezések használják alapértelmezés szerint a megadott konzisztencia szintjét. További tudnivalókért lásd: hogyan [konfigurálhatja az alapértelmezett konzisztenciaszint](how-to-manage-consistency.md#configure-the-default-consistency-level).
 
 ## <a name="guarantees-associated-with-consistency-levels"></a>Konzisztenciaszintek társított garanciák
 
-Az átfogó SLA-k az Azure Cosmos DB garantálja, hogy az olvasási kérések 100 % megfelelnek-e a megfelelő konzisztenciagaranciának bármely konzisztenciaszint választja által biztosított. Egy olvasási kérést tekinthető, az SLA-t, konzisztencia a konzisztencia szintjét társított összes konzisztenciagaranciákat teljesülése esetén. Az öt konzisztenciaszintet Cosmos DB-ben a pontos meghatározását a [TLA + specifikációs nyelv](http://lamport.azurewebsites.net/tla/tla.html) szerepelnek a [azure-cosmos-tla](https://github.com/Azure/azure-cosmos-tla) GitHub-adattárban. Az öt konzisztenciaszintek szemantikáját az alábbiakban tekintheti át:
+Az átfogó SLA-k az Azure Cosmos DB garantálja, hogy az olvasási kérések 100 %-os teljesíti-e megfelelő konzisztenciagaranciának bármely konzisztenciaszint választja által biztosított. A konzisztenciaszint társított összes konzisztenciagaranciákat teljesülése esetén egy olvasási kérést megfelel-e a konzisztencia SLA-t. Az öt konzisztenciaszintek az Azure Cosmos DB használatával pontos meghatározását a [TLA + specifikációs nyelv](http://lamport.azurewebsites.net/tla/tla.html) szerepelnek a [azure-cosmos-tla](https://github.com/Azure/azure-cosmos-tla) GitHub-adattárban. 
 
-- **Konzisztenciaszint = "erős"**: erős konzisztencia kínálja a [linearizálhatósági](https://aphyr.com/posts/313-strong-consistency-models) garantálva, az olvasások egy elem legutóbbi véglegesített verzióját garantált. Egy ügyfél soha nem jelenik meg egy nem véglegesített vagy részleges írása. Felhasználók mindig garantáltan olvassa el a legutóbbi véglegesített írása.
+Az öt konzisztenciaszintek szemantikáját ebben a témakörben találhatók:
 
-- **Konzisztenciaszint = "korlátozott frissesség"**: az olvasások garantáltan konzisztens előtag garanciát az irányadó. Az olvasások előfordulhat, hogy késés jelentkezhet írások legfeljebb (az "updates"-elem) K verziók, vagy nincs "időköz. Kiválasztása korlátozott frissesség, ha a "frissesség" két módon konfigurálhatók: 
+- **Erős**: erős konzisztencia kínálja a [linearizálhatósági](https://aphyr.com/posts/313-strong-consistency-models) garantálja. Az olvasások garantáltan adja vissza egy elem legutóbbi véglegesített verzióba. Egy ügyfél soha nem lát egy nem véglegesített vagy részleges írása. Felhasználók mindig garantáltan olvassa el a legutóbbi véglegesített írása.
 
-  * Az elem (K) verzióinak száma vagy
-  * Az időintervallum (t) amely szerint az olvasások előfordulhat, hogy késés jelentkezhet az írást. 
+- **Korlátozott frissesség**: az olvasások garantáltan konzisztens előtag garanciát az irányadó. Az olvasási késés jelentkezhet írások verziónkénti legfeljebb "K" (az "updates") egy elem, vagy a "t" alatt az időtartam alatt. Ha úgy dönt, korlátozott frissesség, a "frissesség" két módon konfigurálhatók: 
 
-  Korlátozott frissesség ajánlatok teljes globális rendelési kivételével a "frissesség időszakban." A monoton olvasási garancia keretén belül egy régión belül és kívül is a "frissesség ablak." Erős konzisztencia rendelkezik azonos által kínált azokat korlátozott frissesség, és a egy "frissesség ablak" nulla egyenlő. Korlátozott frissesség is nevezik **idő – késleltetett linearizálhatósági**. Amikor egy ügyfél ugyanabban a régióban, amely írási olvasási műveleteket végez, korlátozott frissesség konzisztencia által nyújtott garanciák megegyeznek az erős konzisztencia.
+  * Az elem (K) verzióinak száma
+  * Az időintervallum (t), amely szerint az olvasási késés jelentkezhet az írási műveletek 
 
-- **Konzisztenciaszint = "munkamenet"**: olvasási-az-írások, írás-követi-olvasások garantálja az olvasások is garantálható, hogy tartsa tiszteletben a konzisztens előtag, monoton olvasások, monoton írások,. Egy ügyfél-munkamenet munkamenet-konzisztencia hatókörét.
+  Korlátozott frissesség ajánlatok teljes globális rendelési kivételével a "frissesség időszakban." A monoton olvasási garancia egy adott régión belül és a frissesség időszakon kívül is belül léteznek. Erős konzisztencia rendelkezik, mint a korlátozott frissesség által kínált azonos szemantikáját. A frissesség időszak nem lehet negatív érték. Korlátozott frissesség is idő – késleltetett linearizálhatósági nevezik. Amikor egy ügyfél ugyanabban a régióban, amely írási olvasási műveleteket végez, korlátozott frissesség konzisztencia által nyújtott garanciák megegyeznek biztosítékok az erős konzisztencia.
 
-- **Konzisztenciaszint = "konzisztens előtag"**: visszaadott frissítések nincsenek szünetek és az összes frissítés néhány előtagja tartalmaznak. Konzisztens előtag garantálja, hogy olvasások soha nem látható sorrendben írást.
+- **Munkamenet**: garantálja az olvasások garantáltan tartsa tiszteletben a konzisztens előtag (feltéve, hogy egyetlen "író" munkamenet), monoton olvasások, monoton írások, olvassa el az írásokat, és írási-követi-olvasások. Egy ügyfél-munkamenet munkamenet-konzisztencia hatókörét.
 
-- **Konzisztenciaszint = "végleges"**: nem sorbarendezésre garantált az olvasásokhoz. A további írási műveleteket hiányában a replikák végül szerveződik.
+- **Konzisztens előtag**: visszaadott frissítések nincsenek szünetek és az összes frissítés néhány előtagja tartalmaznak. Konzisztens előtag garantálja, hogy olvasási out soron kívüli írások soha nem jelenik meg.
+
+- **Végleges**: nem sorbarendezésre garantált az olvasásokhoz. A további írási műveleteket hiányában a replikák végül szerveződik.
 
 ## <a name="consistency-levels-explained-through-baseball"></a>Konzisztenciaszintek a Baseball példáján
 
-Most a baseball játék forgatókönyv például igénybe vehet, imagine írási műveletek sorozata a pontszám jelölő baseball játékfejlesztőknek, amelynek az inning-inning sor pontszám leírtak szerint a [replikált adatok konzisztencia baseball](https://www.microsoft.com/en-us/research/wp-content/uploads/2011/10/ConsistencyAndBaseballReport.pdf) a tanulmány. A képzeletbeli baseball játékot jelenleg éppen a hetedik inning (a proverbial hetedik – inning Nyújtás), és az otthoni csoport a winning 2 – 5.
+Vessünk egy baseball játék forgatókönyv példaként. Tegyük fel, amelyek a pontszám a baseball játék írási műveletek sorozata. A sor a inning-inning pontszám leírt a [replikált adatok konzisztencia baseball](https://www.microsoft.com/en-us/research/wp-content/uploads/2011/10/ConsistencyAndBaseballReport.pdf) tanulmány. A képzeletbeli baseball játékot jelenleg éppen a hetedik inning. A fenti – inning stretch. A látogatók egy 2 – 5 pontszámmal rendelkező, mögött.
 
 | | **1** | **2** | **3** | **4** | **5** | **6** | **7** | **8** | **9** | **Futtatások** |
 | - | - | - | - | - | - | - | - | - | - | - |
 | **Látogatók** | 0 | 0 | 1 | 0 | 1 | 0 | 0 |  |  | 2 |
 | **Kezdőlap** | 1 | 0 | 1 | 1 | 0 | 2 |  |  |  | 5 |
 
-A Cosmos DB-tároló tárolja a látogatók és az otthoni csoport futtatási összegek. Amíg folyamatban van a játék, különböző olvasási garancia eredményezhet az ügyfelek különböző pontszámok olvasása. Az alábbi táblázat a látogatók és az egyes a öt konzisztenciagaranciákat otthoni pontszámok olvasásával visszaadható pontszámok teljes körét. A látogatói pontszám első helyen szerepel, és különböző lehetséges visszatérési értékek vesszővel kell elválasztani.
+Egy Azure Cosmos DB-tároló tárolja a látogatói és az otthoni csoport összegek futtassa. Amíg folyamatban van a játék, különböző olvasási garancia eredményezheti, hogy az ügyfelek különböző pontszámok olvasása. Az alábbi táblázat felsorolja, előfordulhat, hogy a látogatók és az egyes a öt konzisztenciagaranciákat otthoni pontszámok olvasásával visszaadandó eredmények teljes készletét. A látogatói pontszám jelenik meg először. Különböző lehetséges visszatérési értékek vesszővel kell elválasztani.
 
 | **Konzisztenciaszint** | **Pontszámok** |
 | - | - |
 | **Erős** | 2 – 5 |
-| **Korlátozott frissesség** | eredmények, amelyek a legtöbb egy inning elavult:"2-3, 2 – 4, 2 – 5 |
-| **Munkamenet** | <ul><li>Az író"a 2 – 5</li><li> a csak az író: 0-0, 0 és 1, 0-2, 0 – 3, és 4 közötti 0, 0 – 5, 1-0, 1-1, 1-2, 1 – 3, 1 – 4, 1 – 5, 2-0, 2-1, 2-2, 2-3, 2 – 4, 2 – 5</li><li>1 – 3 elolvasása után: 1-3, 1 – 4, 1 – 5, 2-3, 2 – 4, 2 – 5</li> |
+| **Korlátozott frissesség** | Eredmények, amelyek legfeljebb egy elavult inning: 2-3, 2 – 4, 2 – 5 |
+| **Munkamenet** | <ul><li>Az író számára: 2 – 5</li><li> a csak az író: 0-0, 0 és 1, 0-2, 0 – 3, és 4 közötti 0, 0 – 5, 1-0, 1-1, 1-2, 1 – 3, 1 – 4, 1 – 5, 2-0, 2-1, 2-2, 2-3, 2 – 4, 2 – 5</li><li>1 – 3 elolvasása után: 1-3, 1 – 4, 1 – 5, 2-3, 2 – 4, 2 – 5</li> |
 | **Konzisztens előtag** | 0-0, 0 – 1, 1-1, 1-2, 1 – 3, 2-3, 2 – 4, 2 – 5 |
 | **Végleges** | 0-0, 0 és 1, 0-2, 0 – 3, és 4 közötti 0, 0 – 5, 1-0, 1-1, 1-2, 1 – 3, 1 – 4, 1 – 5, 2-0, 2-1, 2-2, 2-3, 2 – 4, 2 – 5 |
 
@@ -79,8 +83,8 @@ A Cosmos DB-tároló tárolja a látogatók és az otthoni csoport futtatási ö
 Konzisztencia fogalmak kapcsolatos további információkért olvassa el a következő cikkeket:
 
 - [Az Azure Cosmos DB által kínált öt konzisztenciaszintekről magas szintű TLA + előírásai](https://github.com/Azure/azure-cosmos-tla)
-- [Replikált adatok konzisztencia Baseball példáján (videó) Doug Terry által](https://www.youtube.com/watch?v=gluIh8zd26I)
-- [Replikált adatok konzisztencia Baseball példáján (tanulmány) Doug Terry által](https://www.microsoft.com/en-us/research/publication/replicated-data-consistency-explained-through-baseball/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F157411%2Fconsistencyandbaseballreport.pdf)
+- [A replikált adatok konzisztencia kifejtett keresztül Baseball (videó) Doug Terry által](https://www.youtube.com/watch?v=gluIh8zd26I)
+- [A replikált adatok konzisztencia kifejtett keresztül Baseball (tanulmány) Doug Terry által](https://www.microsoft.com/en-us/research/publication/replicated-data-consistency-explained-through-baseball/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F157411%2Fconsistencyandbaseballreport.pdf)
 - [Munkamenet garanciákat, kis mértékben konzisztens replikált adatok](https://dl.acm.org/citation.cfm?id=383631)
 - [Konzisztencia kompromisszumot kínál a Modern elosztott adatbázis rendszerek kialakításában: korlát a történetet csak egy részét képezi.](https://www.computer.org/web/csdl/index/-/csdl/mags/co/2012/02/mco2012020037-abs.html)
 - [A gyakorlati részleges határozatképességére valószínűségi korlátozott frissesség (PBS)](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
@@ -88,11 +92,11 @@ Konzisztencia fogalmak kapcsolatos további információkért olvassa el a köve
 
 ## <a name="next-steps"></a>További lépések
 
-Cosmos DB-ben konzisztenciaszintek kapcsolatos további információkért olvassa el a következő cikkeket:
+Az Azure Cosmos DB-ben konzisztenciaszintek kapcsolatos további információkért olvassa el a következő cikkeket:
 
 * [Az alkalmazás a megfelelő konzisztenciaszint kiválasztása](consistency-levels-choosing.md)
-* [Konzisztenciaszintet Cosmos DB API-k között](consistency-levels-across-apis.md)
+* [Konzisztenciaszintek az Azure Cosmos DB API-k között](consistency-levels-across-apis.md)
 * [Kompromisszumot kínál a különböző konzisztenciaszintet rendelkezésre állás és teljesítmény](consistency-levels-tradeoffs.md)
 * [Az alapértelmezett konzisztenciaszint konfigurálása](how-to-manage-consistency.md#configure-the-default-consistency-level)
-* [Az alapértelmezett konzisztenciaszint felülbírálása](how-to-manage-consistency.md#override-the-default-consistency-level)
+* [Bírálja felül az alapértelmezett konzisztenciaszint](how-to-manage-consistency.md#override-the-default-consistency-level)
 

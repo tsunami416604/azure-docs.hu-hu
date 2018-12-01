@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: e2326f56ad367f744bc7895bc8c4bfd6f32d0310
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 0612a7798d3cc2e43efc296bd2b749735e74f765
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264879"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720847"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Az Azure Monitor riasztások hibaelhárítása  
 ## <a name="overview"></a>Áttekintés
 Ez a cikk bemutatja, hogyan állítson be az Azure monitor riasztások leggyakoribb problémáinak megoldásához. Gyakori kérdés a funkció- vagy naplóriasztások konfigurációját megoldásokat is biztosít. 
 
-Az előfizetési időszak **Naplóriasztások** írja le, hogy az egyéni lekérdezés alapján fire riasztások [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) vagy [Application Insights](../application-insights/app-insights-analytics.md). További információ funkciót, terminológia és-típusok a [Naplóriasztások – áttekintés](monitor-alerts-unified-log.md).
+Az előfizetési időszak **Naplóriasztások** ismerteti, hogy az egyéni lekérdezés alapján fire riasztások [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) vagy [Application Insights](../application-insights/app-insights-analytics.md). További információ funkciót, terminológia és-típusok a [Naplóriasztások – áttekintés](monitor-alerts-unified-log.md).
 
 > [!NOTE]
 > Ez a cikk nem tekinti esetekben, amikor az Azure Portalon látható és a szabály által aktivált riasztás és a egy társított művelet (ok) ban által végrehajtott értesítést. Ezekben az esetekben, olvassa el a részleteket a cikkben a [Műveletcsoportok](monitoring-action-groups.md).
@@ -35,8 +35,7 @@ Riasztás rendszeres időközönként fut a lekérdezés alapján [Log Analytics
 Adatok Adatbetöltési késés csökkentése érdekében, a rendszer megvárja, és újrapróbálkozik a többször is feldolgozza a riasztási lekérdezés Ha megtalálja, hogy a szükséges adatok még nem elemezhető. A rendszer állítsa ezzel exponenciálisan növelve várakozási időt tartalmaz. A napló riasztási csak eseményindítók után az adatok érhető el, így azok késleltetés lassú lekérdezések naplóját adatbetöltés okozhatja. 
 
 ### <a name="incorrect-time-period-configured"></a>Helytelen időtartam konfigurálva
-A cikkben leírtak szerint [naplóriasztások terminológiája](monitor-alerts-unified-log.md#log-search-alert-rule---definition-and-types)az idő, a megadott időszak konfigurációs meghatározza az időtartományt a lekérdezés. A lekérdezés csak a idő ezen tartományában jöttek létre rekordokat adja vissza. Adott időszakban korlátozza az adatokat, a visszaélések megelőzése érdekében naplólekérdezés beolvasott, és minden olyan alkalommal parancs megkerüli (például ezelőtt) napló lekérdezésben használt. 
-*Például ha az adott időszakban 60 percre van beállítva, és a lekérdezés futtatásakor: 1:15-kor, csak a rekordok között 12:15-kor és 1:15-kor létrehozott szolgálnak a napló lekérdezés. Ha a napló-lekérdezést használ hasonló idő parancsot *ezelőtt (1d)*, a lekérdezés még mindig csak használja a 12:15-kor és 1:15-kor adatait, mert az időszak hibagyakorisága értékre van állítva.*
+A cikkben leírtak szerint [naplóriasztások terminológiája](monitor-alerts-unified-log.md#log-search-alert-rule---definition-and-types)az idő, a megadott időszak konfigurációs meghatározza az időtartományt a lekérdezés. A lekérdezés csak a idő ezen tartományában jöttek létre rekordokat adja vissza. Adott időszakban korlátozza az adatokat, a visszaélések megelőzése érdekében naplólekérdezés beolvasott, és minden olyan alkalommal parancs megkerüli (például *ezelőtt*) napló lekérdezésben használt. Például ha az adott időszakban 60 percre van beállítva, és a lekérdezés futtatásakor: 1:15-kor, csak a rekordok között 12:15-kor és 1:15-kor létrehozott szolgálnak a napló lekérdezés. Ha a napló-lekérdezést használ hasonló idő parancsot *ezelőtt (1d)*, a lekérdezés még mindig csak használja a 12:15-kor és 1:15-kor közötti, mert az adott időszakban, hogy interval.* értékre van állítva
 
 Ezért mindig ellenőrizze a konfiguráció megfelel az adott időintervallumban a lekérdezést. A példához korábban említettük, ha a napló lekérdezés *ezelőtt (1d)* ahogyan a Zöld jelölő, majd az adott időszakban kell állítani 24 órás vagy 1440 perc (mint a vörös), a lekérdezés végrehajtása szánt biztosításához.
 
@@ -77,12 +76,14 @@ Részletes következő miért néhány általános oka egy konfigurált [riaszt�
 ### <a name="alert-triggered-by-partial-data"></a>Részleges adatok által aktivált riasztás
 Kockázatszámító a Log Analytics és az Application Insights Analytics vonatkoznak rá a feldolgozási késedelmeket és -feldolgozási; amely miatt a megadott naplóriasztás-lekérdezés futtatásakor - időpontjában lehet egy esetet folyamatban van a rendelkezésre álló adatok nem vagy csak bizonyos adatok legyenek elérhetők. További információkért lásd: [adatok betöltési idő a Log Analytics](../log-analytics/log-analytics-data-ingestion-time.md).
 
-A riasztási szabály konfigurációjától függően előfordulhat, esetleg Gyújtóegységek abban az esetben, ha nincs vagy részleges naplók riasztási végrehajtás időpontjában. Ezekben az esetekben célszerű riasztási lekérdezés vagy a konfiguráció módosult. *Például ha a napló riasztási szabály úgy indítható el, ha elemzési lekérdezésből találatok száma kisebb, mint 5; (például) Ezután ha nem adatok (nulla rekord) vagy a részleges eredményeket (egy rekord) a riasztási szabály első aktiválódik. Ahol-feldolgozási késedelem után ugyanabból a lekérdezés futtatásakor az Analyticsben a lekérdezés az összes adat biztosíthatnak eredmény 10 rögzíti.*
+A riasztási szabály konfigurációjától függően előfordulhat gépeltünk Gyújtóegységek esetén nincs vagy részleges naplók riasztási végrehajtás időpontjában. Ezekben az esetekben azt javasoljuk, hogy a riasztási lekérdezés vagy a konfiguráció módosítását. 
+
+Például, ha a riasztási szabály úgy van beállítva, ha analytics-lekérdezések eredményeinek száma kisebb, mint 5 indít, majd a riasztást aktivál, ha nem adatok (nulla rekord) vagy a részleges eredményeket (egy rekord). Az adatok feldolgozási késleltetés után azonban ugyanabból a lekérdezés az összes adat biztosíthatnak 10 rekordok eredménye.
 
 ### <a name="alert-query-output-misunderstood"></a>Böngésző riasztási lekérdezés kimenete
-A riasztási logika naplóriasztásokra vonatkozó keresztül elemzési lekérdezés felhasználó által megadott. A megadott elemzési lekérdezés azonban különböző Big Data és matematikai függvények létrehozása adott szerkezeteket. A riasztási szolgáltatás; a megadott időszakra vonatkozó adatokat a megadott időközönként hajtja végre a vásárló által biztosított lekérdezés riasztási szolgáltatás lehetővé teszi a változás is módosítja a lekérdezéshez megadott – a kiválasztott riasztási típus alapján, és azonos is lehet witnessed konfigurálási jel logikájának képernyőn "Végrehajtandó lekérdezés" szakaszának alábbi képen szemléltetett módon: ![végrehajtandó lekérdezés](./media/monitor-alerts-unified/LogAlertPreview.png)
+A logic a log analytics-lekérdezések riasztásokhoz adja meg. Az elemzési lekérdezés big data- és matematikai függvények használhatja.  A riasztási szolgáltatás megadott időszakra vonatkozó adatokat tartalmazó megadott időközönként hajtja végre a lekérdezést. A riasztási szolgáltatás lehetővé teszi, hogy a megadott lekérdezés változás is történt a kiválasztott riasztási típus alapján. Ez látható a "Lekérdezés futtatandó" szakaszában *jellogika konfigurálása* képernyőn, ahogy az alábbi: ![végrehajtandó lekérdezés](./media/monitor-alerts-unified/LogAlertPreview.png)
  
-Mi látható **végrehajtandó lekérdezés** rész az mely log riasztási szolgáltatás fut; a felhasználó futtathatja a megadott lekérdezés, valamint a keresztül timespan [Analytics-portál](../log-analytics/log-analytics-log-search-portals.md) vagy [szövegelemzési API](https://docs.microsoft.com/rest/api/loganalytics/) -riasztás létrehozása előtt tudni szeretnék, ha lehet, milyen riasztási lekérdezés kimenetelét.
+Mi látható az **végrehajtandó lekérdezés** mező el a napló riasztási szolgáltatás futtatható. A megadott lekérdezés, valamint a timespan keresztül futtathatja [Analytics-portál](../log-analytics/log-analytics-log-search-portals.md) vagy a [szövegelemzési API](https://docs.microsoft.com/rest/api/loganalytics/) Ha szeretné-e megismerni, mi a riasztási lekérdezés kimeneti lehet, mielőtt ténylegesen a riasztás létrehozásához.
  
 ## <a name="next-steps"></a>További lépések
 

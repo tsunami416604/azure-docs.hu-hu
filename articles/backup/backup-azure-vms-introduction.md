@@ -9,15 +9,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/29/2018
 ms.author: markgal
-ms.openlocfilehash: ae02a1bcbf00a022cfd884b02141ce084f1fffa8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 806d68370921a7658066a9bad770b36b4e8e59bf
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232460"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680038"
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Virtuális gép biztonsági infrastruktúrájának megtervezése az Azure-ban
-A cikk ismerteti a teljesítmény- és erőforrás-javaslatok segítséget nyújt a virtuális gép biztonsági infrastruktúrájának megtervezése. Azt is meghatározza a biztonsági mentési szolgáltatás; fő szempontok Ezeket a szempontokat architektúra, amely meghatározza, hogy kritikus fontosságú lehet kapacitástervezés és ütemezését. Ha [a környezet előkészítése](backup-azure-arm-vms-prepare.md), tervezési a következő lépés megkezdése előtt [a virtuális gépek biztonsági mentése](backup-azure-arm-vms.md). Ha további információt az Azure virtual machines van szüksége, tekintse meg a [Virtual Machines dokumentációja](https://azure.microsoft.com/documentation/services/virtual-machines/). 
+A cikk ismerteti a teljesítmény- és erőforrás-javaslatok segítséget nyújt a virtuális gép biztonsági infrastruktúrájának megtervezése. Azt is meghatározza a biztonsági mentési szolgáltatás; fő szempontok Ezeket a szempontokat architektúra, amely meghatározza, hogy kritikus fontosságú lehet kapacitástervezés és ütemezését. Ha [a környezet előkészítése](backup-azure-arm-vms-prepare.md), tervezési a következő lépés megkezdése előtt [a virtuális gépek biztonsági mentése](backup-azure-arm-vms.md). Ha további információt az Azure virtual machines van szüksége, tekintse meg a [Virtual Machines dokumentációja](https://azure.microsoft.com/documentation/services/virtual-machines/).
 
 > [!NOTE]
 > Ez a cikk a felügyelt és nem felügyelt lemezek való használatra. Ha nem felügyelt lemezeket használ, nincsenek tárfiókokra vonatkozó javaslatok. Ha [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md), nem kell aggódnia a teljesítmény vagy a resource kihasználtság problémákat. Azure optimalizálja a tárterület kihasználtságát az Ön számára.
@@ -96,7 +96,19 @@ Teljes biztonsági mentés időpontja legfeljebb 24 órás növekményes biztons
 
 ### <a name="why-are-backup-times-longer-than-12-hours"></a>Miért vannak a biztonsági mentés időpontjai hosszabb, mint 12 órán át?
 
-Biztonsági mentés két fázisból áll: pillanatképeket, és a pillanatképek átvitele a tárba. A Backup szolgáltatás optimalizálja a tároláshoz. A pillanatkép adatainak továbbítson egy tárolót, a szolgáltatás csak továbbítja a növekményes változásokat az előző pillanatképet.  Annak megállapításához, a növekményes változásokat, a szolgáltatás kiszámítja a blokkok ellenőrzőösszeget. Ha módosul egy, a blokk kell küldeni a tároló egy blokk azonosítja. Ezután a szolgáltatás működése során további minden egyes azonosított blokkok, minimalizálása érdekében az adatok átvitele lehetőségeket keres. Után minden megváltozott blokkokat kiértékelését, a szolgáltatás számmá egyesíti a módosításokat, és elküldi azokat a tárolóban. Egyes örökölt alkalmazások, a kicsi, töredezett írási műveletek nem állnak optimális tároló. Ha a pillanatkép sok kisebb, töredezett írások tartalmaz, a szolgáltatás további időt, az alkalmazások által írt adatok feldolgozására futtatásával töltött. A virtuális Gépen futó alkalmazások esetében a minimálisan ajánlott alkalmazásírás blokk 8 KB-os. Ha az alkalmazás egy 8 KB-blokk, biztonsági mentés teljesítményét történik. Hangolása biztonsági mentési teljesítményének javítása érdekében az alkalmazás-témakörben talál segítséget [hangolása az optimális teljesítmény és az Azure storage alkalmazások](../virtual-machines/windows/premium-storage-performance.md). Bár a cikkben a biztonsági mentés teljesítményét a prémium szintű storage-példák használata, az útmutató érvényes a standard szintű tárolólemezek vonatkozik.
+Biztonsági mentés két fázisból áll: pillanatképeket, és a pillanatképek átvitele a tárba. A Backup szolgáltatás optimalizálja a tároláshoz. A pillanatkép adatainak továbbítson egy tárolót, a szolgáltatás csak továbbítja a növekményes változásokat az előző pillanatképet.  Annak megállapításához, a növekményes változásokat, a szolgáltatás kiszámítja a blokkok ellenőrzőösszeget. Ha módosul egy, a blokk kell küldeni a tároló egy blokk azonosítja. Ezután a szolgáltatás működése során további minden egyes azonosított blokkok, minimalizálása érdekében az adatok átvitele lehetőségeket keres. Után minden megváltozott blokkokat kiértékelését, a szolgáltatás számmá egyesíti a módosításokat, és elküldi azokat a tárolóban. Egyes örökölt alkalmazások, a kicsi, töredezett írási műveletek nem állnak optimális tároló. Ha a pillanatkép sok kisebb, töredezett írások tartalmaz, a szolgáltatás további időt, az alkalmazások által írt adatok feldolgozására futtatásával töltött. A virtuális Gépen futó alkalmazások esetében a minimálisan ajánlott alkalmazásírás blokk 8 KB-os. Ha az alkalmazás egy 8 KB-blokk, biztonsági mentés teljesítményét történik. Hangolása biztonsági mentési teljesítményének javítása érdekében az alkalmazás-témakörben talál segítséget [hangolása az optimális teljesítmény és az Azure storage alkalmazások](../virtual-machines/windows/premium-storage-performance.md). Bár a cikkben a biztonsági mentés teljesítményét a prémium szintű storage-példák használata, az útmutató érvényes a standard szintű tárolólemezek vonatkozik.<br>
+A hosszú biztonsági mentés időpontja számos oka lehet:
+  1. **Első biztonsági mentés már védett virtuális gépekhez újonnan hozzáadott lemezek esetében** <br>
+    Ha a virtuális gép már áteső növekményes biztonsági mentést, ha egy új (eke) t majd adnak hozzá a biztonsági mentés 1 nap SLA-t az új lemez méretétől függően előfordulhat, hogy hagyja.
+  2. **Töredezettség** <br>
+    Ha az ügyfél alkalmazás rosszul van konfigurálva, amely a kis töredezett írását.<br>
+  3. **Túlterhelt ügyfél tárfiókja** <br>
+      a. Ha a biztonsági mentés ütemezése az ügyfél az éles alkalmazások időszakban.  
+      b. Ha több mint 5-10-lemezeket a ugyanazt a tárfiókot.<br>
+  4. **Konzisztencia Check(CC) mód** <br>
+      > 1 TB-ot a lemezeket, ha a biztonsági mentés okai a CC módban történik az alábbiakban leírt:<br>
+        a. A felügyelt lemezes virtuális gépek újraindítási ügyfél részeként helyezi át.<br>
+        b. Ügyfél elősegíti a pillanatkép alap blobba.<br>
 
 ## <a name="total-restore-time"></a>Teljes visszaállítási idő
 

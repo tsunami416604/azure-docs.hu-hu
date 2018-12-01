@@ -1,6 +1,6 @@
 ---
 title: Azure virtuális hálózatokhoz való hozzáférés az Azure Logic Apps integrációs service Environment-környezetekkel (ISEs)
-description: Ez az Áttekintés ismerteti, hogyan segíti az integrációs service-környezetek (ISEs) a logikai alkalmazások az Azure virtuális hálózatok eléréséhez
+description: Ez az Áttekintés ismerteti, hogyan segíti az integrációs service-környezetek (ISEs) a logikai alkalmazások az Azure virtuális hálózatok (Vnetek) eléréséhez
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,54 +8,52 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 09/24/2018
-ms.openlocfilehash: c5fc071e61a3d5304821343b6dc992112f4bd6b1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 11/29/2018
+ms.openlocfilehash: eb296a436f6c09a4f592ba3a26ee1c3a0f8e18bb
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233140"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678832"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Azure virtuális hálózati erőforrásokhoz való hozzáférés Azure Logic Apps integrációs service-környezetek (ISEs) használatával
 
 > [!NOTE]
 > Ez a funkció akkor a *privát előzetes verzió*. Hozzáférés igényléséhez [itt csatlakozni a kérelem létrehozása](https://aka.ms/iseprivatepreview).
 
-Egyes esetekben a logic apps és az integrációs fiókok hozzáférhetnek a biztonságos erőforrások, például virtuális gépek (VM) és a más rendszerekkel vagy belüli szolgáltatások egy [az Azure virtual network](../virtual-network/virtual-networks-overview.md). A hozzáférés beállításával kapcsolatban is [hozzon létre egy *integrációs szolgáltatás környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) , amelyet használhat a hely, a logic apps és az integrációs fiókok. 
+Egyes esetekben a logic apps és az integrációs fiókok hozzáférhetnek a védett erőforrások, például a virtuális gépek (VM) és más rendszerek vagy a szolgáltatások, az egy [az Azure virtual network](../virtual-network/virtual-networks-overview.md). A hozzáférés beállításával kapcsolatban is [hozzon létre egy *integrációs szolgáltatás környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) a logic apps és az integrációs fiókok futtatásához. 
 
 ![Válassza ki az integrációs service-környezet](./media/connect-virtual-network-vnet-isolated-environment-overview/select-logic-app-integration-service-environment.png)
 
 Az ISE létrehozása egy privát és elkülönített Logic Apps-példányt az Azure-beli virtuális hálózatban helyez üzembe. A privát példány dedikált erőforrások, például a storage használ, és a nyilvános "globális" Logic Apps szolgáltatás külön-külön futtatja. Ez a fajta elkülönítés is segít csökkenteni a hatást, amelyet más Azure-bérlőt előfordulhat, hogy az alkalmazások teljesítményét, vagy a ["zajos szomszédok" hatás](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors). 
 
-Ez az Áttekintés ismerteti, hogyan létrehozása az ISE segít a logic apps és az integrációs fiókok tud közvetlenül hozzáférni az erőforrásokhoz az Azure virtuális hálózaton belül, és összehasonlítja az ISE-ben és a globális Logic Apps szolgáltatás közötti különbségeket.
+Ez az Áttekintés ismerteti egy ISE lehetővé teszi a logic apps és integrációs fiókok közvetlen elérése az Azure virtuális hálózat, és összehasonlítja az ISE-ben és a globális Logic Apps szolgáltatás közötti különbségeket.
 
 <a name="difference"></a>
 
 ## <a name="isolated-versus-global"></a>Izolált, és a globális
 
-Integrált service-környezet (ISE) az Azure-ban való létrehozásakor kiválaszthatja egy Azure virtuális hálózatban, mint egy *társ* környezete számára. Azure üzembe helyezte a virtuális hálózatban, ahol Ön hozhat létre és futtathat a logic apps a dedikált erőforrások egy elkülönített környezet eredményez a Logic Apps szolgáltatás a privát példány. Amikor létrehoz egy logikai alkalmazást, az alkalmazás földrajzi hely is a logic app közvetlen hozzáférést ad a virtuális hálózatban lévő erőforrásokra is válassza ki a ebben a környezetben.  
+Amikor integrált service-környezet (ISE) hoz létre az Azure-ban, ki kell választania egy Azure virtuális hálózat, a *beszúrása* környezetben. Azure üzembe helyezte a virtuális hálózatban a Logic Apps szolgáltatás a privát példány. Ez a művelet létrehoz egy izolált környezethez, ahol Ön hozhat létre és futtathat a logic apps a dedikált erőforrásokat. Amikor létrehoz egy logikai alkalmazást, az alkalmazás helyeként, amelyek a logikai alkalmazás közvetlen hozzáférést biztosít a virtuális hálózatban lévő erőforrásokra irányuló kiválasztása ebben a környezetben. 
 
-A Logic apps egy ISE-ben a globális Logic Apps szolgáltatás az ugyanazon felhasználói élmények és a hasonló funkciókat biztosítanak. Nem csak használható built-ins és az összekötők a Logic Apps globális szolgáltatás által biztosított, de az összekötők által biztosított az ISE-verziók közül választhat. Például Íme néhány standard szintű összekötők, amelyek az ISE-ben futtatott verziókat kínálnak:
+A Logic apps egy ISE-ben a globális Logic Apps szolgáltatás az ugyanazon felhasználói élmények és a hasonló funkciókat biztosítanak. Nem csak akkor használhatja az azonos beépített műveletek és az összekötők a globális Logic Apps szolgáltatásban, de ISE-specifikus összekötők is használhatja. Például Íme néhány standard szintű összekötők, amelyek az ISE-ben futtatott verziókat kínálnak:
  
 * Az Azure Blob Storage, File Storage és Table Storage
-* Azure Queues
-* Azure Service Bus
-* FTP
-* SSH FTP (SFTP)
-* SQL Server
+* Az Azure-üzenetsorok, az Azure Service Bus, az Azure Event Hubs és IBM MQ-val
+* Az FTP és SFTP-SSH
+* Az SQL Server, az SQL Data Warehouse, Azure Cosmos DB használatával
 * X 12 és EDIFACT, AS2
 
 ISE-ben, és nem ISE csatlakozók közötti különbség a helyeken, ahol az eseményindítók és műveletek futtatása:
 
-* Beépített triggereket és műveleteket, például a HTTP használata az ISE-ben, ha ezek triggereket és műveleteket mindig fusson, a logikai alkalmazás a azonos ISE-ben. 
+* Az ISE-ben beépített triggereket és műveleteket, például HTTP mindig futtatja, a logikai alkalmazás a azonos ISE-ben. 
 
-* Összekötők két verziója kínáló: egy verziója fut. az ISE-ben, míg a más verziót futtatja, a globális Logic Apps szolgáltatásban.  
+* Két verziója kínáló összekötők egy verziója fut. az ISE-ben, míg a más verziót futtatja, a globális Logic Apps szolgáltatásban.  
 
   Az összekötők, amelyek rendelkeznek a **ISE** címke mindig a azonos ISE-ben, a logikai alkalmazás futtatási. Összekötők nélkül a **ISE** címke futtassa a globális Logic Apps szolgáltatásban. 
 
   ![Válassza ki az ISE-összekötők](./media/connect-virtual-network-vnet-isolated-environment-overview/select-ise-connectors.png)
 
-* Az ISE-ben konfigurált összekötők is elérhetők a globális Logic Apps szolgáltatásban való használatra. 
+* Összekötők, amely egy ISE-ben is elérhetők a globális Logic Apps szolgáltatásban. 
 
 > [!IMPORTANT]
 > A Logic apps beépített műveleteket és az ISE-ben futó összekötők használja egy másik díjszabási csomagot, nem a fogyasztás alapú díjszabással. További információkért lásd: [Logic Apps díjszabási](../logic-apps/logic-apps-pricing.md).
@@ -64,23 +62,24 @@ ISE-ben, és nem ISE csatlakozók közötti különbség a helyeken, ahol az ese
 
 ## <a name="permissions-for-virtual-network-access"></a>Virtuális hálózati hozzáférési engedélyek
 
-Egy integrációs service-környezet (ISE) létrehozásakor kiválaszthatja egy Azure virtuális hálózatban, mint egy *társ* környezete számára. Azonban továbbra is *csak* létrehozni a kapcsolatot, vagy *társviszony-létesítés*, amikor hoz létre az ISE-ben. Ezt a kapcsolatot az ISE hozzáférhet a virtuális hálózat, amely lehetővé teszi a logic apps, hogy ISE közvetlenül csatlakozhat a virtuális hálózatban lévő erőforrásokra erőforrásokhoz. A helyszíni rendszerek egy virtuális hálózatban, amely kapcsolódik az ISE-ben a logic apps közvetlenül hozzáférhetnek ezekhez a rendszerekhez ezek az elemek egyikének használatával: 
+Amikor létrehoz egy integrációs service-környezet (ISE), hol válassza ki Azure-beli virtuális hálózathoz, *beszúrása* a környezetben. Injektálási üzembe helyezi a virtuális hálózatban a Logic Apps szolgáltatás a privát példány. Ez a művelet egy izolált környezethez, ahol Ön hozhat létre és futtathat a logic apps a dedikált erőforrások eredményez. Létrehozásakor a logikai alkalmazások az alkalmazások helyeként válassza ki az ISE-ben. Ezek a logic apps közvetlenül ezután a virtuális hálózat eléréséhez és a hálózaton lévő erőforrások eléréséhez. 
+
+A helyszíni rendszerek egy virtuális hálózatban, amely kapcsolódik az ISE-ben a logic apps közvetlenül hozzáférhetnek ezekhez a rendszerekhez ezek az elemek egyikének használatával: 
 
 * ISE-ben, hogy a rendszer, például az SQL Server-összekötő
-
 * HTTP-művelet 
-
 * Egyéni összekötő
 
-Helyszíni rendszerekhez, amely nem a virtuális hálózat, vagy nem rendelkezik az ISE-összekötők, továbbra is a kapcsolódás után, [beállítása és használata a helyszíni adatátjáró](../logic-apps/logic-apps-gateway-install.md).
+Helyszíni rendszerekhez, amely nem a virtuális hálózat, vagy nem rendelkezik az ISE-összekötők, kapcsolódhat ezekhez a rendszerekhez Miután [beállítása és használata a helyszíni adatátjáró](../logic-apps/logic-apps-gateway-install.md).
 
-Azure-beli virtuális hálózathoz, társ számára a környezet kiválasztása, előtt szerepköralapú hozzáférés-vezérlés (RBAC) engedélyekkel kell állítania a virtuális hálózat az Azure Logic Apps szolgáltatás. A feladathoz szükséges, hogy hozzárendelje a **hálózati közreműködő** és **klasszikus közreműködői** szerepkörök az Azure Logic Apps szolgáltatásba. A társviszony-létesítéshez szükséges szerepkör engedélyeivel kapcsolatos további információkért lásd: a [engedélyek létrehozása, módosítása, témakör vagy egy virtuális hálózati társviszony törlése](../virtual-network/virtual-network-manage-peering.md#permissions).
+A környezet betöltése az Azure virtuális hálózat kiválasztása előtt szerepköralapú hozzáférés-vezérlés (RBAC) engedélyekkel kell állítania a virtuális hálózat az Azure Logic Apps szolgáltatás. A feladathoz szükséges, hogy hozzárendelje a **hálózati közreműködő** és **klasszikus közreműködői** szerepkörök az Azure Logic Apps szolgáltatásba.
+Ezek az engedélyek beállításával kapcsolatban lásd: [csatlakozhat az Azure virtuális hálózatok a logikai alkalmazásokból](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#vnet-access)
 
 <a name="create-integration-account-environment"></a>
 
 ## <a name="integration-accounts-with-ise"></a>Integrációs fiókok az ISE-ben
 
-A logic apps-integráció service-környezet (ISE) futtató integrációs fiókok is használhatja, de ezeket az integrációs fiókok is használnia kell a *azonos ISE* a társított logikai alkalmazásokat. A Logic apps egy ISE-ben csak azok integrációs a fiókok, amelyek ugyanabban az ISE-ben is lehet hivatkozni. Integrációs fiók létrehozásakor kiválaszthatja az ISE helye az integrációs fiók.
+Integrációs fiókok is használhatja a logic apps-integráció service-környezet (ISE) belül. Azonban ezeket az integrációs fiókok kell használnia a *azonos ISE* a társított logikai alkalmazásokat. A Logic apps egy ISE-ben csak azok integrációs a fiókok, amelyek ugyanabban az ISE-ben is lehet hivatkozni. Integrációs fiók létrehozásakor kiválaszthatja az ISE helye az integrációs fiók.
 
 ## <a name="get-support"></a>Támogatás kérése
 

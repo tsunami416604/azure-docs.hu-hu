@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: d650e0d8b76af8d6bdef5aeadf821e3d8f6d1c79
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fd62e216f70c416cb152971d27d6a6e542d3a936
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241871"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680225"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Szolgáltatások összehasonlítása: Azure SQL Database, és az SQL Server összehasonlítása 
 
@@ -43,8 +43,8 @@ A következő táblázat az SQL Server legfontosabb funkcióit, és a szolgálta
 | [Automatikus hangolás (lekérdezésterv)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Igen](sql-database-automatic-tuning.md)| [Igen](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning) |
 | [Automatikus hangolás (indexek)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Igen](sql-database-automatic-tuning.md)| Nem |
 | [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) | Igen | Igen |
-| [BACPAC-fájl (Exportálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Igen – lásd: [SQL Database-adatbázis exportálása](sql-database-export.md) | Nem |
-| [BACPAC-fájl (importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Igen – lásd: [SQL-adatbázis importálása](sql-database-import.md) | Nem |
+| [BACPAC-fájl (Exportálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Igen – lásd: [SQL Database-adatbázis exportálása](sql-database-export.md) | Igen |
+| [BACPAC-fájl (importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Igen – lásd: [SQL-adatbázis importálása](sql-database-import.md) | Igen |
 | [Biztonsági MENTÉSI parancs](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql) | Nem, csak rendszer által kezdeményezett automatikus biztonsági mentések - látható [automatizált biztonsági mentések](sql-database-automated-backups.md) | Rendszer által kezdeményezett automatikus biztonsági másolatokat és a felhasználó által kezdeményezett csak másolatot biztonsági mentések – lásd: [különbségek biztonsági mentése](sql-database-managed-instance-transact-sql-information.md#backup) |
 | [Beépített függvények](https://docs.microsoft.com/sql/t-sql/functions/functions) | Most – tekintse meg az egyes függvények | Igen – lásd: [tárolt eljárások, függvények, eseményindítók különbségek](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |
 | [Adatváltozások rögzítése](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Nem | Igen |

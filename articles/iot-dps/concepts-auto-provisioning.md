@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 025e447995d302c24ab2a7d1c8668857cb47ffdd
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 10648551728e4f3cb41b82433e4cd0d442f9daeb
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42055713"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679256"
 ---
 # <a name="auto-provisioning-concepts"></a>Automatikus kiépítés alapfogalmait
 
@@ -64,6 +64,33 @@ A következő ábra összefoglalja a szerepkörök és az alkalmazás-előkész�
 > [!NOTE]
 > Ha szeretné, a gyártó is elvégezheti a Device Provisioning Service API-val "kapcsolatos igénylési eszközidentitás" műveletet (helyett az operátor keresztül). Az alkalmazás-előkészítés és további részletes tárgyalását lásd: a [nulla touch eszközregisztráció, az Azure IoT-videó](https://youtu.be/cSbDRNg72cU?t=2460) (jelölő 41:00-gyel kezdődik)
 
+## <a name="roles-and-azure-accounts"></a>Szerepkörök és az Azure-fiókok
+
+Hogyan egyes szerepkörök egy Azure-fiókra van leképezve a forgatókönyv-függő, és több forgatókönyv, amely tartozhat. Az alábbi gyakori minták webhelyünkre adjon meg egy általános ismertetése, hogyan szerepkörök általában leképezve egy Azure-fiókkal kapcsolatban.
+
+#### <a name="chip-manufacturer-provides-security-services"></a>Lapka gyártójától biztonsági szolgáltatásokat biztosít.
+
+Ebben a forgatókönyvben a gyártó adatbiztonságot első szintű ügyfelek számára. Ebben a forgatókönyvben ezen első szintű ügyfelek előfordulhat, hogy elsődleges, nem rendelkeznek részletes biztonság kezeléséhez. 
+
+A gyártó biztonsági hardveres biztonsági modulokban (HSM) vezet. A biztonsági kulcsok, a tanúsítványok és az egyéb lekérését a lehetséges ügyfelek, akik már rendelkeznek a DPS példány és a regisztrációs csoportok beállítása a gyártó is tartalmazhatnak. A gyártó generálhat ügyfeleinek biztonsági információit.
+
+Ebben a forgatókönyvben lehet két Azure-fiókok jár:
+
+- **Fiók #1**: a kezelő és a fejlesztői szerepköröket bizonyos mértékű valószínűleg osztva. A entitás a HSM modulok vásárolhatnak a gyártó. Ezek a modulok a számla 1 társított DPS példány vannak mutatott. DPS regisztrációk, az a entitás az eszköz regisztrációs beállítások a DPS Szolgáltatásban újrakonfigurálásával bérbe több második szintű ügyfél-eszközök. Az entitás is IoT-központok lefoglalt végfelhasználói háttérrendszerekhez való eléréséhez a eszköztelemetria stb. Ez utóbbi esetben egy másik fiókot nem lehet szükség.
+
+- **Fiók #2**: végfelhasználók számára, a második szintű ügyfelek a saját IoT-központok rendelkezhet. A számla 1 csak pontok hozzárendelve fogadó fél bérelt rendelkező eszközök helyes-e a fiók. Ez a konfiguráció szükséges csatolása a DPS és az IoT hubok között az Azure-fiókokat, amelyek az Azure Resource Manager-sablonokkal teheti meg.
+
+#### <a name="all-in-one-oem"></a>Teljes körű OEM
+
+A gyártó "Teljes körű OEM" lehet, ahol csak egyetlen gyártó fiók van szükség. A gyártó a biztonság és teljes körű kiépítés kezeli.
+
+A gyártó eszközök megvásárló ügyfeleinknek egy felhőalapú alkalmazás rendelkezhetnek. Ez az alkalmazás és az IoT Hub, a gyártó által lefoglalt lenne illesztő.
+
+Eladóautomaták vagy automatizált kávé gépek jelentik a példák az ehhez a forgatókönyvhöz.
+
+
+
+
 ## <a name="next-steps"></a>További lépések
 
 Akkor lehet, hogy hasznos a könyvjelzők közé ebben a cikkben, hivatkozási pontként végzett munka végig a megfelelő automatikus kiépítés rövid útmutatók. 
@@ -71,7 +98,7 @@ Akkor lehet, hogy hasznos a könyvjelzők közé ebben a cikkben, hivatkozási p
 Első lépésként egy "Automatikus kiépítés beállítása" rövid útmutató, amely a legjobban megfelel az eszköz a "Service-konfiguráció" szakasz végigvezeti felügyeleti szabályozó:
 
 - [Állítsa be az Automatikus kiépítés az Azure CLI használatával](quick-setup-auto-provision-cli.md)
-- [Állítsa be az Automatikus kiépítés az Azure Portal használatával](quick-setup-auto-provision.md)
+- [Állítsa be az Automatikus kiépítés az Azure portal használatával](quick-setup-auto-provision.md)
 - [Automatikus kiépítés használata a Resource Manager-sablon beállítása](quick-setup-auto-provision-rm.md)
 
 Majd folytassa az "Automatikus üzembe egy szimulált eszköz" a rövid útmutató, amely a megfelel az eszköz igazolási mechanizmus és a Device Provisioning Service-SDK/nyelvi beállításokat. Ebben a rövid útmutatóban vezeti végig az "Eszközök regisztrációja" és "eszköz regisztrálása és konfigurálása" fázisok: 
