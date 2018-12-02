@@ -2,42 +2,46 @@
 author: PatAltimore
 ms.service: active-directory-b2c
 ms.topic: include
-ms.date: 11/03/2016
+ms.date: 11/30/2018
 ms.author: patricka
-ms.openlocfilehash: bff2543ec48c66c10db697650def0077e3de28be
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 78abb190dccd27c5bf70dfe12f978e1118601815
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50134203"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52742585"
 ---
-Ahhoz, hogy a minden részletre kiterjedő jelszó kérését az alkalmazásban, használhat egy **új jelszó kérésére vonatkozó** házirend. Az új jelszó összes bérlőre vonatkozó létrehozási lehetősége [itt](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md) van meghatározva. Ez a szabályzat írja le, hogy a felhasználók jelszó-visszaállítás és a jogkivonatokat, amelyeket az alkalmazás fogad a sikeres végrehajtása során.
+Ahhoz, hogy a minden részletre kiterjedő jelszó kérését az alkalmazásban, használhat egy **új jelszó kérésére vonatkozó** felhasználói folyamatot. Vegye figyelembe, hogy a bérlői szintű jelszó-visszaállítási beállítás van megadva [Itt](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md). Ez a felhasználói folyamat írja le, hogy a felhasználók jelszó-visszaállítás és a jogkivonatokat, amelyeket az alkalmazás fogad a sikeres végrehajtása során.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 
-A beállítások szabályzatokat tartalmazó részén válassza az **Új jelszó kérésére vonatkozó szabályzatok** lehetőséget, majd kattintson a **+ Hozzáadás** elemre.
+Alatt **kezelés**válassza **felhasználói folyamatok** , és kattintson a +**új felhasználói folyamat**.
 
-![Válassza a regisztrációs vagy a bejelentkezési szabályzatokat, és kattintson a Hozzáadás gombra.](media/active-directory-b2c-create-password-reset-policy/add-b2c-password-reset-policy.png)
+![Válassza ki az új felhasználói folyamat](media/active-directory-b2c-create-password-reset-policy/add-b2c-new-user-flow.png)
 
-Adjon meg egy **nevet** a szabályzatnak, amelyre az alkalmazás hivatkozni fog. Adja meg például a következőt: `SSPR`.
+Az a **ajánlott** lapon jelölje be **új jelszó kérésére vonatkozó**.
 
-Válassza az **Identitásszolgáltatók** lehetőséget, és jelölje be a **Jelszó visszaállítása e-mail-címmel** jelölőnégyzetet. Kattintson az **OK** gombra.
+Adja meg a felhasználói folyamat **neve** , hogy az alkalmazás hivatkozni. Adja meg például a következőt: `SSPR`.
 
-![Válassza a Jelszó visszaállítása e-mail-címmel lehetőséget identitásszolgáltatóként, és kattintson az OK gombra.](media/active-directory-b2c-create-password-reset-policy/add-b2c-password-reset-identity-providers.png)
+A **Identitásszolgáltatók**, ellenőrizze **jelszó visszaállítása e-mail-címmel**.
 
-Válassza az **Alkalmazásjogcímek** lehetőséget. Válassza ki azokat a jogcímeket, amelyeket szeretne szerepeltetni a sikeres jelszókérési művelet után az alkalmazásnak visszaküldött hitelesítő jogkivonatokban. Válassza például a **Felhasználó objektumazonosítója** lehetőséget.
+![Adjon meg nevet, és válassza ki jelszó visszaállítása e-mail-címmel lehetőséget Identitásszolgáltatóként](media/active-directory-b2c-create-password-reset-policy/add-b2c-password-reset-identity-providers.png)
+
+Alatt **alkalmazásjogcímek**, kattintson a **Továbbiak megjelenítése** , és válassza a jogcímek kívánt visszaküldött hitelesítő jogkivonatokban az alkalmazásnak a sikeres jelszókérési művelet után. Válassza például a **Felhasználó objektumazonosítója** lehetőséget.
+
+Kattintson az **OK** gombra.
 
 ![Válasszon ki néhány alkalmazásjogcímet, majd kattintson az OK gombra.](media/active-directory-b2c-create-password-reset-policy/add-b2c-password-reset-application-claims.png)
 
-A szabályzat hozzáadásához kattintson a **Létrehozás** gombra. A szabályzat **B2C_1_SSPR** néven jelenik meg a listában. A **B2C_1_** előtagot a rendszer adja hozzá a névhez.
+Kattintson a **létrehozás** hozzáadása a felhasználói folyamatot. A felhasználói folyamat állapottal **B2C_1_SSPR**. A **B2C_1_** előtagot a rendszer adja hozzá a névhez.
 
-Nyissa meg a szabályzatot a **B2C_1_SSPR** kiválasztásával. Ellenőrizze a táblázatban megadott beállításokat, majd kattintson a **Futtatás most** gombra.
+Kattintson a **felhasználói folyamat futtatása**. Ellenőrizze a táblázatban megadott beállításokat, majd kattintson a **felhasználói folyamat futtatása**.
 
-![Szabályzat kiválasztása és futtatása](media/active-directory-b2c-create-password-reset-policy/run-b2c-password-reset-policy.png)
+![Válassza ki a felhasználói folyamat és futtatása](media/active-directory-b2c-create-password-reset-policy/add-b2c-sspr-run-user-flow.png)
 
 | Beállítás      | Érték  |
 | ------------ | ------ |
-| **Alkalmazások** | Contoso B2C-alkalmazás |
+| **Alkalmazás** | Contoso B2C-alkalmazás |
 | **Válasz URL-cím kiválasztása** | `https://localhost:44316/` |
 
 Megnyílik egy böngészőablak, ahol ellenőrizheti, hogyan működik az alkalmazása jelszókérési felhasználói folyamata.

@@ -2,48 +2,56 @@
 author: PatAltimore
 ms.service: active-directory-b2c
 ms.topic: include
-ms.date: 11/03/2016
+ms.date: 11/30/2018
 ms.author: patricka
-ms.openlocfilehash: 3485cc96ad1d9ab8f89facf33687a7ab2be43b1e
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: f23d2b02bc2a23c5333a48a50532c03f3aa6a031
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133094"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52742351"
 ---
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 
-A beállítások szabályzatokat tartalmazó részén válassza a **Regisztrálási vagy bejelentkezési szabályzatok** lehetőséget, majd kattintson a **+ Hozzáadás** gombra.
+Alatt **kezelés**válassza **felhasználói folyamatok** , és kattintson a +**új felhasználói folyamat**.
 
-![Válassza ki a regisztrálási vagy a bejelentkezési szabályzatokat, és kattintson a Hozzáadás gombra.](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-policy.png)
+![Válassza ki az új felhasználói folyamat](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-user-flow.png)
 
-Adjon meg egy **nevet** a szabályzatnak, amelyre az alkalmazás hivatkozni fog. Adja meg például a következőt: `SiUpIn`.
+Az a **ajánlott** lapon jelölje be **jelentkezzen be, és jelentkezzen be a**.
 
-Válassza az **Identitásszolgáltatók** lehetőséget, és jelölje be a **Regisztráció e-mail-címmel** jelölőnégyzetet. Azt is megteheti, hogy közösségi identitásszolgáltatókat választ ki, ha ezek már be vannak állítva. Kattintson az **OK** gombra.
+![Válassza ki a jelentkezzen be, és jelentkezzen be a felhasználói folyamat](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-user-flow-type.png)
 
-![Válassza a Regisztráció e-mail-címmel lehetőséget identitásszolgáltatóként, és kattintson az OK gombra.](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-identity-providers.png)
+Adja meg a felhasználói folyamat **neve** , hogy az alkalmazás hivatkozni. Adja meg például a következőt: `SiUpIn`.
 
-Válassza a **Regisztrálási attribútumok** lehetőséget. Válassza ki, milyen attribútumokat kell a felhasználóknak megadniuk a regisztráció során. Például jelölje be az **Ország/régió**, a **Megjelenítendő név** és az **Irányítószám** attribútumokat. Kattintson az **OK** gombra.
+A **Identitásszolgáltatók** , és ellenőrizze **regisztráció E-mail-címmel**. Azt is megteheti, hogy közösségi identitásszolgáltatókat választ ki, ha ezek már be vannak állítva.
 
-![Válaszon ki néhány attribútumot, majd kattintson az OK gombra.](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-sign-up-attributes.png)
+A **többtényezős hitelesítés**, válasszon **engedélyezve** vagy **letiltott**.
 
-Válassza az **Alkalmazásjogcímek** lehetőséget. Válassza ki azokat a jogcímeket, amelyeket szeretne szerepeltetni a sikeres regisztrációs vagy bejelentkezési művelet után az alkalmazásnak visszaküldött hitelesítő jogkivonatokban. Válassza például a **Megjelenítendő név**, az **Identitásszolgáltató**, az **Irányítószám**, az **Új felhasználó** és a **Felhasználó objektumazonosítója** lehetőséget.
+![Adjon meg egy nevet, és válassza ki a regisztráció E-mail-címmel lehetőséget Identitásszolgáltatóként](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-name-identity-providers.png)
 
-![Válasszon ki néhány alkalmazásjogcímet, majd kattintson az OK gombra.](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-application-claims.png)
+A **felhasználói attribútumokról és jogcímekről**válassza **Továbbiak megjelenítése** attribútumokról és jogcímekről közül választhat a teljes listájának megtekintéséhez.
 
-A szabályzat hozzáadásához kattintson a **Létrehozás** gombra. A szabályzat **B2C_1_SiUpIn** néven jelenik meg a listában. A **B2C_1_** előtagot a rendszer adja hozzá a névhez.
+Az a **gyűjtése attribútum** oszlopban válassza ki az attribútumokat, a felhasználóknak megadniuk a regisztráció során szeretné. Például jelölje be az **Ország/régió**, a **Megjelenítendő név** és az **Irányítószám** attribútumokat.
 
-Nyissa meg a szabályzatot a **B2C_1_SiUpIn** kiválasztásával. Ellenőrizze a táblázatban megadott beállításokat, majd kattintson a **Futtatás most** gombra.
+Az a **visszatérési jogcím** oszlopban válassza ki a kívánt visszaküldött hitelesítő jogkivonatokban vissza a sikeres regisztrációs vagy bejelentkezési után az alkalmazásnak a jogcímeket. Válassza például a **Megjelenítendő név**, az **Identitásszolgáltató**, az **Irányítószám**, az **Új felhasználó** és a **Felhasználó objektumazonosítója** lehetőséget.
 
-![Szabályzat kiválasztása és futtatása](media/active-directory-b2c-create-sign-in-sign-up-policy/run-b2c-signup-signin-policy.png)
+Kattintson az **OK** gombra.
+
+![Válassza ki az egyes felhasználói attribútumokról és jogcímekről, és kattintson az OK gombra.](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-sign-up-all-attributes.png)
+
+Kattintson a **létrehozás** hozzáadása a felhasználói folyamatot. A felhasználói folyamat állapottal **B2C_1_SiUpIn**. A **B2C_1_** előtagot a rendszer adja hozzá a névhez.
+
+Válassza ki **felhasználói folyamat futtatása**. Ellenőrizze a táblázatban megadott beállításokat, majd kattintson a **felhasználói folyamat futtatása**.
+
+![Válassza ki a felhasználói folyamat futtatása](media/active-directory-b2c-create-sign-in-sign-up-policy/run-user-flow-b2c-signup-signin.png)
 
 | Beállítás      | Érték  |
 | ------------ | ------ |
-| **Alkalmazások** | Contoso B2C-alkalmazás |
-| **Válasz URL-cím kiválasztása** | `https://localhost:44316/` |
+| **Alkalmazás** | Contoso B2C-alkalmazás |
+| **Válasz URL-cím** | `https://localhost:44316/` |
 
 Megnyílik egy böngészőablak, ahol ellenőrizheti, hogyan működik az alkalmazás regisztrációs vagy bejelentkezési felhasználói folyamata.
 
 > [!NOTE]
-> A szabályzat létrehozása és a frissítések érvénybe lépése akár egy percig is eltarthat.
+> Vesz egy percig a felhasználói folyamat létrehozása és a frissítések érvénybe léptetéséhez.
 >

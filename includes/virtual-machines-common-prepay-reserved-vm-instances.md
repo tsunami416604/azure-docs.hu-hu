@@ -1,15 +1,15 @@
 ---
 author: yashesvi
-ms.author: yashar
+ms.author: cwatson
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 09/05/2018
-ms.openlocfilehash: 40551fa60aa17e9a46d24ffdf17bb61a884a48f2
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.date: 11/30/2018
+ms.openlocfilehash: a35c3a9a6d914cf7e6620819b24e34d954f55c2d
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585729"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52742454"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Fizessen elő az Azure fenntartott VM-példányok a virtuális gépekkel
 
@@ -32,7 +32,6 @@ Fenntartott VM-példányok néhány kivétellel a legtöbb Virtuálisgép-méret
 
 - Foglalási kedvezményt a következő virtuális gépekre nem vonatkozik:
   - Klasszikus virtuális gépeket és a Cloud services
-  - Korlátozott vCPU-méretek
   - Virtuálisgép-sorozat: Az a sorozat, az Av2 sorozatú vagy G-sorozat
   - Virtuális gépek előzetes verzióban érhető el: bármely Virtuálisgép-sorozat vagy -méretet, előzetes verzióként érhető el
 - Felhők: Foglalások nem érhetők el, német és kínai régiókban vásárolható.
