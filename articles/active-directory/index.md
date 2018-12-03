@@ -11,14 +11,14 @@ ms.service: active-directory
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 10/29/2018
+ms.date: 11/30/2018
 ms.author: mtillman
-ms.openlocfilehash: 836204694fff6f39305e3ead4f85ddd47f447e10
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 38efd682c530e79bdea3747bd6f14faa10d399c4
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413077"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723346"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -51,11 +51,11 @@ ms.locfileid: "50413077"
                                                                     <h3><a href="fundamentals/index.yml">Alapvető ismeretek</a></h3> 
                                                                     <p>
                                                                         <a href="fundamentals/active-directory-whatis.md">Mi az Azure AD?</a><br>
-                                                                        <a href="fundamentals/active-directory-get-started-premium.md">Azure AD Premium-fiók regisztrálása</a><br>
-                                                                        <a href="fundamentals/active-directory-access-create-new-tenant.md">Az Azure AD hozzáférése és bérlő létrehozása</a><br>
+                                                                        <a href="fundamentals/add-custom-domain.md">Egyéni tartománynév hozzáadása</a><br>
+                                                                        <a href="fundamentals/customize-branding.md">Céges márkajelzés hozzáadása</a><br>
                                                                         <a href="fundamentals/add-users-azure-active-directory.md">Csoport létrehozása és tagok hozzáadása</a><br>
                                                                         <a href="fundamentals/active-directory-users-assign-role-azure-portal.md">Szerepkörök hozzárendelése felhasználókhoz</a><br>
-                                                                        <a href="fundamentals/license-users-groups.md">Licencek hozzárendelése felhasználókhoz</a><br>
+                                                                        <a href="fundamentals/active-directory-how-subscriptions-associated-directory.md">Azure-előfizetés társítása</a><br>
                                                                         <a href="fundamentals/index.yml"><i>Több megjelenítése &gt;</i></a>
                                                                     </p>
                                                                 </div>
@@ -95,41 +95,41 @@ ms.locfileid: "50413077"
                                                     <div class="cardText">
                                                         <h3><a href="manage-apps/index.yml">Alkalmazáskezelés</a></h3>
                                                         <p>
-                                                            <a href="manage-apps/add-application-portal.md">Alkalmazás hozzáadása</a><br>
-                                                            <a href="manage-apps/configure-single-sign-on-portal.md">Egyszeri bejelentkezés (SSO) konfigurálása</a><br>
+                                                            <a href="manage-apps/what-is-single-sign-on.md">Mi az az egyszeri bejelentkezés (SSO)?</a><br>
+                                                            <a href="manage-apps/configure-single-sign-on-portal.md">Egyszeri bejelentkezés konfigurálása</a><br>
                                                             <a href="manage-apps/application-proxy.md">Alkalmazásproxy helyszíni alkalmazásokhoz</a><br>
                                                             <a href="manage-apps/index.yml"><i>Több megjelenítése &gt;</i></a>
                                                         </p>
                                                         <br><br>
                                                         <h3><a href="authentication/index.yml">Hitelesítés</a></h3>
                                                         <p>
-                                                            <a href="authentication/tutorial-mfa-applications.md">Az MFA engedélyezése az Azure Portalhoz</a><br>
-                                                            <a href="authentication/quickstart-sspr.md">Önkiszolgáló jelszóátállítás engedélyezése</a><br>
-                                                            <a href="authentication/concept-registration-mfa-sspr-converged.md">Konvergens regisztráció az MFA-hoz és az SSPR-hez</a><br>
+                                                            <a href="authentication/concept-mfa-howitworks.md">Az Azure MFA működése</a><br>
+                                                            <a href="authentication/concept-sspr-howitworks.md">Azure AD önkiszolgáló jelszómódosítás</a><br>
+                                                            <a href="authentication/concept-password-ban-bad.md">Azure AD-jelszóvédelem</a><br>
                                                             <a href="authentication/index.yml"><i>Több megjelenítése &gt;</i></a>
                                                             </p>
                                                         <br><br>
                                                         <h3><a href="b2b/index.yml">Vállalatközi (B2B)</a></h3>
                                                         <p>
-                                                            <a href="b2b/b2b-quickstart-add-guest-users-portal.md">Vendégfelhasználók hozzáadása a portálon</a><br>
-                                                            <a href="b2b/b2b-tutorial-bulk-invite.md">Vendégfelhasználók tömeges meghívása</a><br>
-                                                            <a href="b2b/b2b-tutorial-require-mfa.md">MFA megkövetelése a vendégfelhasználóktól</a><br>
+                                                            <a href="b2b/what-is-b2b.md">Mi az az Azure AD B2B?</a><br>
+                                                            <a href="b2b/add-users-administrator.md">Vendégfelhasználók hozzáadása a portálon</a><br>
+                                                            <a href="b2b/o365-external-user.md">B2B- és Office 365-megosztás</a><br>
                                                             <a href="b2b/index.yml"><i>Több megjelenítése &gt;</i></a>
                                                             </p>
                                                         <br><br>
                                                         <h3><a href="/azure/active-directory-b2c/index">Vállalat és ügyfél közötti (B2C)</a></h3>
                                                         <p>
+                                                            <a href="/azure/active-directory-b2c/active-directory-b2c-overview">Mi az az Azure AD B2C?</a><br>
                                                             <a href="/azure/active-directory-b2c/tutorial-create-tenant">Azure AD B2C-bérlő létrehozása</a><br>
-                                                            <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-app">Webalkalmazás általi hitelesítés engedélyezése</a><br>
-                                                            <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-api">Hozzáférés biztosítása ASP.NET webes API-hoz</a><br>
+                                                            <a href="/azure/active-directory-b2c/active-directory-b2c-get-started-custom">Egyéni szabályzatok az Azure AD B2C-ben</a><br>
                                                             <a href="/azure/active-directory-b2c/index"><i>Több megjelenítése &gt;</i></a>
                                                         </p>
                                                         <br><br>
                                                         <h3><a href="conditional-access/index.yml">Feltételes hozzáférés</a></h3>
                                                         <p>
+                                                            <a href="conditional-access/overview.md">Mi az a feltételes hozzáférés?</a><br>
                                                             <a href="conditional-access/app-based-mfa.md">MFA megkövetelése adott alkalmazásokhoz</a><br>
-                                                            <a href="conditional-access/require-tou.md">A használati feltételek elfogadásának kötelezővé tétele</a><br>
-                                                            <a href="conditional-access/app-sign-in-risk.md">Hozzáférés letiltása munkameneti kockázat észlelésekor</a><br>
+                                                            <a href="conditional-access/location-condition.md">Feltételek hely szerint</a><br>
                                                             <a href="conditional-access/index.yml"><i>Több megjelenítése &gt;</i></a>
                                                             </p>
                                                     </div>
@@ -145,40 +145,40 @@ ms.locfileid: "50413077"
                                                         <h3><a href="develop/index.yml">Fejlesztők</a></h3>
                                                         <p>
                                                             <a href="develop/about-microsoft-identity-platform.md">A Microsoft identitásplatformja</a><br>
-                                                            <a href="develop/azure-ad-developers-guide.md">1.0-s verziójú platform</a><br>
-                                                            <a href="develop/v2-overview.md">2.0-s verziójú platform</a><br>
+                                                            <a href="develop/v2-oauth2-auth-code-flow.md">OAuth 2.0-kódfolyamat engedély</a><br>
+                                                            <a href="develop/quickstart-register-app.md">Alkalmazás regisztrálása a Microsoft identitásplatformján</a><br>
                                                             <a href="develop/index.yml"><i>Több megjelenítése &gt;</i></a>
                                                             </p>
                                                         <br><br>
                                                         <h3><a href="devices/index.yml">Eszközkezelés</a></h3>
                                                         <p>
-                                                            <a href="devices/hybrid-azuread-join-managed-domains.md">Hibrid csatlakozás konfigurálása felügyelt tartományokhoz</a><br>
-                                                            <a href="devices/hybrid-azuread-join-federated-domains.md">Hibrid csatlakozás konfigurálása összevont tartományokhoz</a><br>
-                                                            <a href="devices/azuread-joined-devices-frx.md">A Windows 10 első tapasztalatának konfigurálása</a><br>
+                                                            <a href="devices/overview.md">Mi az az eszközfelügyelet?</a><br>
+                                                            <a href="devices/hybrid-azuread-join-plan.md">Hibrid Azure AD-csatlakozás megtervezése</a><br>
+                                                            <a href="devices/azureadjoin-plan.md">Azure AD-csatlakozás megtervezése</a><br>
                                                             <a href="devices/index.yml"><i>Több megjelenítése &gt;</i></a><br>
                                                         </p>
                                                         <br><br>
                                                         <h3><a href="/azure/active-directory-domain-services/index">Tartományi szolgáltatások</a></h3>
                                                         <p>
+                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-overview">Az Azure AD tartományi szolgáltatások ismertetése</a><br>
                                                             <a href="/azure/active-directory-domain-services/active-directory-ds-getting-started">Az Azure AD Domain Services engedélyezése</a><br>
-                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal">Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományhoz</a><br>
-                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap">Biztonságos LDAP konfigurálása</a><br>
+                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-group-policy">Csoportszabályzat-felügyelet</a><br>
                                                             <a href="/azure/active-directory-domain-services/index"><i>Több megjelenítése &gt;</i></a>
                                                         </p>
                                                         <br><br>
                                                         <h3><a href="users-groups-roles/index.yml">Vállalati felhasználók</a></h3>
                                                         <p>
-                                                            <a href="users-groups-roles/directory-assign-admin-roles.md">Rendszergazdai szerepkörök hozzárendelése</a><br>
-                                                            <a href="users-groups-roles/licensing-groups-assign.md">Licencek hozzárendelése csoportokhoz</a><br>
                                                             <a href="users-groups-roles/groups-create-rule.md">Dinamikus csoport létrehozása</a><br>
+                                                            <a href="users-groups-roles/groups-settings-v2-cmdlets.md">PowerShell Azure AD-csoportokhoz</a><br>
+                                                            <a href="users-groups-roles/directory-service-limits-restrictions.md">Azure AD szolgáltatási korlátozások</a><br>
                                                             <a href="users-groups-roles/index.yml"><i>Több megjelenítése &gt;</i></a>
                                                         </p>
                                                         <br><br>
                                                         <h3><a href="hybrid/index.yml">Hibrid identitás</a></h3>
                                                         <p>
-                                                            <a href="hybrid/how-to-connect-install-roadmap.md">Az Azure AD Connect telepítése</a><br>
+                                                            <a href="hybrid/whatis-hybrid-identity.md">Mi az a hibrid identitás?</a><br>
                                                             <a href="hybrid/how-to-connect-sso.md">Egyszeri bejelentkezés az Azure AD Connecttel</a><br>
-                                                            <a href="hybrid/how-to-connect-fed-whatis.md">Azure AD Connect és összevonás</a><br>
+                                                            <a href="hybrid/how-to-connect-install-custom.md">Az Azure AD Connect egyéni telepítése</a><br>
                                                             <a href="hybrid/index.yml"><i>Több megjelenítése &gt;</i></a>
                                                         </p>
                                                     </div>
@@ -193,16 +193,16 @@ ms.locfileid: "50413077"
                                                     <div class="cardText">
                                                         <h3><a href="governance/index.yml">Identitáskezelés</a></h3>
                                                         <p>
-                                                            <a href="governance/manage-user-access-with-access-reviews.md">Felhasználói hozzáférés kezelése</a><br>
-                                                            <a href="governance/manage-guest-access-with-access-reviews.md">Vendéghozzáférés kezelése</a><br>
-                                                            <a href="governance/active-directory-tou.md">Használati feltételek</a><br>
+                                                            <a href="governance/create-access-review.md">Hozzáférési felülvizsgálat létrehozása</a><br>
+                                                            <a href="governance/perform-access-review.md">Hozzáférési felülvizsgálat indítása</a><br>
+                                                            <a href="governance/active-directory-tou.md">Használati feltételek alkalmazása</a><br>
                                                             <a href="governance/index.yml"><i>Több megjelenítése &gt;</i></a>
                                                         </p>
                                                         <br><br>
                                                         <h3><a href="identity-protection/index.yml">Identitásvédelem</a></h3>
                                                         <p>
-                                                            <a href="identity-protection/enable.md">Bekapcsolás</a><br>
-                                                            <a href="identity-protection/playbook.md">Kockázati események szimulálása</a><br>
+                                                            <a href="identity-protection/overview.md">Mi az az identitásvédelem?</a><br>
+                                                            <a href="identity-protection/quickstart-sign-in-risk-policy.md">Hozzáférés letiltása munkameneti kockázat észlelésekor</a><br>
                                                             <a href="identity-protection/howto-unblock-user.md">Felhasználók tiltásának feloldása</a><br>
                                                             <a href="identity-protection/index.yml"><i>Több megjelenítése &gt;</i></a>
                                                         </p>
@@ -225,9 +225,9 @@ ms.locfileid: "50413077"
                                                         <br><br>
                                                         <h3><a href="reports-monitoring/index.yml">Jelentések és monitorozás</a></h3>
                                                         <p>
-                                                            <a href="reports-monitoring/howto-find-activity-reports.md">Tevékenységjelentések keresése</a><br>
-                                                            <a href="reports-monitoring/concept-activity-logs-in-azure-monitor.md">Azure AD-naplók használata az Azure Monitorban</a><br>
-                                                            <a href="reports-monitoring/concept-reporting-api.md">Szoftveres hozzáférés</a><br>
+                                                            <a href="reports-monitoring/concept-audit-logs.md">Naplók</a><br>
+                                                            <a href="reports-monitoring/concept-sign-ins.md">Bejelentkezési naplók</a><br>
+                                                            <a href="reports-monitoring/reference-sign-ins-error-codes.md">Bejelentkezési hibakódok – referencia</a><br>
                                                             <a href="reports-monitoring/index.yml"><i>Több megjelenítése &gt;</i></a>
                                                         </p>
                                                     </div>
