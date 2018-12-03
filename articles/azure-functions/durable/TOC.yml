@@ -1,0 +1,137 @@
+items:
+- name: Tartós függvények – dokumentáció
+- name: Áttekintés
+  items:
+  - name: Az Azure Functions ismertetése
+    href: ../functions-overview.md
+  - name: A tartós függvények ismertetése
+    href: durable-functions-overview.md
+  - name: Kiszolgáló nélküli összehasonlítás
+    href: ../functions-compare-logic-apps-ms-flow-webjobs.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+- name: Gyors útmutatók
+  items:
+  - name: Tartós függvények létrehozása – C#
+    displayName: get started, chaining
+    href: durable-functions-create-first-csharp.md
+  - name: Tartós függvények létrehozása – JavaScript
+    displayName: get started, chaining
+    href: quickstart-js-vscode.md
+  expanded: true
+- name: Oktatóanyagok
+  items:
+  - name: Összevonás/elosztás
+    href: durable-functions-cloud-backup.md
+  - name: Monitorozások
+    href: durable-functions-monitor.md
+  - name: Emberi beavatkozás
+    href: durable-functions-phone-verification.md
+  - name: Közzététel az Event Gridben
+    href: durable-functions-event-publishing.md
+- name: Példák
+  items:
+  - name: Kódminták
+    href: https://azure.microsoft.com/en-us/resources/samples/?service=functions&sort=0&term=durable+
+  - name: Azure CLI
+    href: ../functions-cli-samples.md
+- name: Alapelvek
+  items:
+  - name: Függvények típusai és funkciói
+    href: durable-functions-types-features-overview.md
+  - name: Kötések
+    href: durable-functions-bindings.md
+  - name: Időzítők
+    href: durable-functions-timers.md
+  - name: Külső események
+    href: durable-functions-external-events.md
+  - name: Alvezénylések
+    href: durable-functions-sub-orchestrations.md
+  - name: Feladatközpontok
+    href: durable-functions-task-hubs.md
+  - name: Megbízható végrehajtás
+    href: durable-functions-checkpointing-and-replay.md
+  - name: Verziókezelés
+    href: durable-functions-versioning.md
+- name: Útmutatók
+  items:
+  - name: Tervezés és kialakítás
+    items:
+    - name: Függvényláncolás
+      href: durable-functions-sequence.md
+    - name: Külső vezénylések
+      href: durable-functions-eternal-orchestrations.md
+    - name: Egyszeres vezénylések
+      href: durable-functions-singletons.md
+    - name: Teljesítmény és méret
+      href: durable-functions-perf-and-scale.md
+    - name: Magas rendelkezésre állás
+      href: durable-functions-disaster-recovery-geo-distribution.md
+  - name: Fejlesztés
+    items:
+    - name: Létrehozás az Azure Portalon
+      href: durable-functions-create-portal.md
+    - name: Kapcsolatok kezelése
+      href: ../manage-connections.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+    - name: Hibakezelés
+      href: durable-functions-error-handling.md
+    - name: Egységtesztelés
+      href: durable-functions-unit-testing.md
+    - name: Létrehozás WebJobs-feladatként
+      href: durable-functions-webjobs-sdk.md
+  - name: Üzembe helyezés
+    items:
+    - name: Folyamatos üzembe helyezés
+      href: ../functions-continuous-deployment.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+    - name: Üzembe helyezés zip-fájlokkal
+      href: ../deployment-zip-push.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+    - name: Futtatás csomagból
+      href: ../run-functions-from-deployment-package.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+  - name: Kezelés
+    items:
+    - name: Példányfelügyelet
+      href: durable-functions-instance-management.md
+  - name: Figyelés
+    items:
+    - name: Függvények figyelés
+      href: ../functions-monitoring.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+    - name: Egyéni vezénylési állapot
+      href: durable-functions-custom-orchestration-status.md
+  - name: Hibaelhárítás
+    items:
+    - name: Diagnosztika
+      href: durable-functions-diagnostics.md
+- name: Referencia
+  items:
+  - name: HTTP API
+    href: durable-functions-http-api.md
+- name: További források
+  items:
+  - name: Fejlessze a készségeit a Microsoft Learnnel
+    href: /learn/browse/?products=azure-functions
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/?category=compute
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/functions/
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Régiónkénti rendelkezésre állás
+    href: https://azure.microsoft.com/regions/services/
+  - name: Videók
+    href: https://www.youtube.com/c/AzureFunctions
+  - name: MSDN-fórum
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-functions
+  - name: Twitter
+    href: https://twitter.com/hashtag/DurableFunctions?src=hash
+  - name: Termékkel kapcsolatos visszajelzés küldése
+    href: https://feedback.azure.com/forums/355860-azure-functions
+  - name: A tartós függvények GitHub-adattára
+    href: https://github.com/Azure/azure-functions-durable-extension
+  - name: Szolgáltatási hírek
+    href: https://azure.microsoft.com/updates/?product=functions&updatetype=&platform=
+ms.openlocfilehash: a6a0849aa272b53131c1bef7883fd0b0f76938fa
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52636614"

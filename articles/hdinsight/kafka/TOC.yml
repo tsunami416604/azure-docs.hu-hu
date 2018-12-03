@@ -3,7 +3,7 @@ items:
   href: /azure/hdinsight
 - name: Áttekintés
   items:
-  - name: Tudnivalók a Kafka HDInsightról
+  - name: A HDInsight-alapú Apache Kafka ismertetése
     href: apache-kafka-introduction.md
   - name: Összetevő verziókezelése
     href: ../hdinsight-component-versioning.md
@@ -13,23 +13,23 @@ items:
     maintainContext: true
 - name: Gyors útmutatók
   items:
-  - name: Kafka-fürt létrehozása – Portál
+  - name: Apache Kafka-fürt létrehozása – Portal
     href: apache-kafka-get-started.md
-  - name: Kafka-fürt létrehozása – PowerShell
+  - name: Apache Kafka-fürt létrehozása – PowerShell
     href: apache-kafka-quickstart-powershell.md
-  - name: Kafka-fürt létrehozása – Sablon
+  - name: Apache Kafka-fürt létrehozása – Sablon
     href: apache-kafka-quickstart-resource-manager-template.md
 - name: Oktatóanyagok
   items:
-  - name: 1 – A Spark strukturált streamelésének használata
+  - name: 1 – Az Apache Spark strukturált streamelésének használata
     href: ../hdinsight-apache-kafka-spark-structured-streaming.md
     maintainContext: true
-  - name: 2 – Írás/olvasás a Kafkából a Storm használatával
+  - name: 2 – Írás/olvasás az Apache Kafkából az Apache Storm használatával
     href: ../hdinsight-apache-storm-with-kafka.md
     maintainContext: true
-  - name: 3 – A Kafka Producer és Consumer API használata
+  - name: 3 – Az Apache Kafka Producer és a Consumer API használata
     href: apache-kafka-producer-consumer-api.md
-  - name: 4 – Alkalmazás fejlesztése a Kafka Streams API-val
+  - name: 4 – Alkalmazás fejlesztése az Apache Kafka Streams API-val
     href: apache-kafka-streams-api.md
 - name: Alapelvek
   items:
@@ -44,26 +44,26 @@ items:
   items:
   - name: Automatikus témakör-létrehozás engedélyezése
     href: apache-kafka-auto-create-topics.md
-  - name: A Kafka használata az IoT Hubbal
+  - name: Az Apache Kafka használata az IoT Hubbal
     href: apache-kafka-connector-iot-hub.md
   - name: HDInsight-alkalmazások telepítése
     href: ../hdinsight-apps-install-applications.md
     maintainContext: true
-  - name: A Kafka használata virtuális hálózaton
+  - name: Az Apache Kafka használata virtuális hálózaton
     href: apache-kafka-connect-vpn-gateway.md
-  - name: Kafka-adatok replikálása
+  - name: Apache Kafka-adatok replikálása
     href: apache-kafka-mirroring.md
-  - name: Kafka-naplók elemzése
+  - name: Apache Kafka-naplók elemzése
     href: apache-kafka-log-analytics-operations-management.md
   - name: Streaming folyamatok létrehozása
     items:
-    - name: Spark, Kafka és Azure Cosmos DB
+    - name: Apache Spark, Apache Kafka és Azure Cosmos DB
       href: ../apache-kafka-spark-structured-streaming-cosmosdb.md
       maintainContext: true
-    - name: Kafka és Spark (DStream)
+    - name: Apache Kafka és Apache Spark (DStream)
       href: ../hdinsight-apache-spark-with-kafka.md
       maintainContext: true
-    - name: A Kafka használata az Azure Container Service-szel
+    - name: Az Apache Kafka használata az Azure Container Service-szel
       href: apache-kafka-azure-container-services.md
   - name: Fejlesztés
     items:
@@ -143,7 +143,7 @@ items:
         href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
         maintainContext: true
       maintainContext: true
-    - name: Hadoop-fürtök kezelése
+    - name: Apache Hadoop-fürtök kezelése
       href: ../hdinsight-administer-use-portal-linux.md
       items:
       - name: A .NET SDK használata
@@ -156,13 +156,13 @@ items:
         href: ../hdinsight-administer-use-command-line.md
         maintainContext: true
       maintainContext: true
-    - name: Fürtök kezelése az Ambari webes felülettel
+    - name: Fürtök kezelése az Apache Ambari webes felülettel
       href: ../hdinsight-hadoop-manage-ambari.md
       items:
-      - name: Fürtök optimalizálása az Ambari webes felülettel
+      - name: Fürtök optimalizálása az Apache Ambari webes felülettel
         href: ../hdinsight-changing-configs-via-ambari.md
         maintainContext: true
-      - name: Az Ambari REST API használata
+      - name: Az Apache Ambari REST API használata
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
       maintainContext: true
@@ -172,7 +172,7 @@ items:
     - name: Tárfiókok hozzáadása
       href: ../hdinsight-hadoop-add-storage.md
       maintainContext: true
-    - name: Adatok feltöltése Hadoop-feladatokhoz
+    - name: Adatok feltöltése Apache Hadoop-feladatokhoz
       href: ../hdinsight-upload-data.md
       maintainContext: true
     - name: Több HDInsight-fürt a Data Lake Store-ral
@@ -196,10 +196,10 @@ items:
     - name: Lassú vagy meghibásodott HDInsight-fürt hibaelhárítása
       href: ../hdinsight-troubleshoot-failed-cluster.md
       maintainContext: true
-    - name: HDFS-hibaelhárítás
+    - name: Apache Hadoop HDFS-hibaelhárítás
       href: ../hdinsight-troubleshoot-hdfs.md
       maintainContext: true
-    - name: YARN-hibaelhárítás
+    - name: Apache Hadoop YARN-hibaelhárítás
       href: ../hdinsight-troubleshoot-yarn.md
       maintainContext: true
     - name: További források
@@ -207,13 +207,13 @@ items:
       - name: Információk a HDInsight Linuxon való használatáról
         href: ../hdinsight-hadoop-linux-information.md
         maintainContext: true
-      - name: Hadoop – memória és teljesítmény
+      - name: Apache Hadoop – memória és teljesítmény
         href: ../hdinsight-hadoop-stack-trace-error-messages.md
         maintainContext: true
       - name: Hadoop YARN-alkalmazásnaplók elérése Linuxon
         href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
         maintainContext: true
-      - name: Halomürítések engedélyezése a Hadoop-szolgáltatásokhoz
+      - name: Halomürítések engedélyezése az Apache Hadoop-szolgáltatásokhoz
         href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
         maintainContext: true
     maintainContext: true
@@ -257,7 +257,7 @@ items:
     href: ../hdinsight-go-sdk-overview.md
   - name: REST
     href: /rest/api/hdinsight/
-  - name: REST (Spark)
+  - name: REST (Apache Spark)
     href: /rest/api/hdinsightspark/
 - name: További források
   items:
@@ -274,9 +274,9 @@ items:
   - name: A HDInsight Windows-eszközei
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 9b172aaedcab44b4557368c5d2a5bd6dfd010903
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 0b0fc56015adb5fcecd5bcd6ce501c828e694164
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155014"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495671"

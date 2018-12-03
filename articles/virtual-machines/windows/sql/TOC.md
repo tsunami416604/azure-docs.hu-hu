@@ -1,6 +1,7 @@
 # Áttekintés
 ## [Tudnivalók az SQL Servert futtató, Windows rendszerű virtuális gépekről](virtual-machines-windows-sql-server-iaas-overview.md) 
- 
+## [Kibocsátási megjegyzések](virtual-machines-windows-sql-server-iaas-release-notes.md) 
+
 # Gyors útmutatók
 ## [SQL-alapú virtuális gép létrehozása – portál](quickstart-sql-vm-create-portal.md)
 ## [SQL-alapú virtuális gép létrehozása – PowerShell](quickstart-sql-vm-create-powershell.md)
@@ -40,6 +41,7 @@
 #### [Több régió](virtual-machines-windows-portal-sql-availability-group-dr.md)
 ### Feladatátvevőfürt-példány
 #### [Konfigurálás](virtual-machines-windows-portal-sql-create-failover-cluster.md)
+## [SQL-alapú virtuális gépek licencelési modelljének módosítása](virtual-machines-windows-sql-ahb.md)
 
 # Referencia
 ## [Azure PowerShell](/powershell/azure/overview)
@@ -49,7 +51,7 @@
 ## [REST](/rest/api/)
 
 # További források
-## [GYIK](virtual-machines-windows-sql-server-iaas-faq.md)
+## [Gyakori kérdések](virtual-machines-windows-sql-server-iaas-faq.md)
 ## [Díjszabás](virtual-machines-windows-sql-server-pricing-guidance.md)
 ## [PaaS vagy IaaS?](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2ftoc.json)
 ## [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)

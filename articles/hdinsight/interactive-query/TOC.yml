@@ -29,12 +29,12 @@ items:
     - name: Az Azure Data Lake Store használata
       href: ../hdinsight-hadoop-use-data-lake-store.md
       maintainContext: true
-  - name: Interaktív lekérdezések a Hadoop használatával
+  - name: Interaktív lekérdezések az Apache Hadoop használatával
     items:
-    - name: A Hive és a Hadoop
+    - name: Apache Hive és Hadoop
       href: ../hadoop/hdinsight-use-hive.md
       items:
-      - name: A Zeppelin használata
+      - name: Az Apache Zeppelin használata
         href: ../hdinsight-connect-hive-zeppelin.md
         maintainContext: true
       - name: Visual Studio-eszközök
@@ -46,7 +46,7 @@ items:
       - name: Data Lake Tools with Hortonworks – tesztkörnyezet
         href: ../hdinsight-hadoop-emulator-visual-studio.md
         maintainContext: true
-      - name: A Hive-nézet használata
+      - name: Az Apache Hive-nézet használata
         href: ../hadoop/apache-hadoop-use-hive-ambari-view.md
         maintainContext: true
       - name: A Beeline használata
@@ -74,7 +74,7 @@ items:
     - name: Java UDF-használata a Hive-val
       href: ../hadoop/apache-hadoop-hive-java-udf.md
       maintainContext: true
-    - name: Hadoop-feladatok elküldése
+    - name: Apache Hadoop-feladatok elküldése
       href: ../hadoop/submit-apache-hadoop-jobs-programmatically.md
       maintainContext: true
   - name: Fejlesztés
@@ -91,7 +91,7 @@ items:
     - name: Felhasználó által definiált C#-függvények használata
       href: ../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md
       maintainContext: true
-    - name: A Python használata a Hive-val és a Piggel
+    - name: A Python használata az Apache Hive-val és az Apache Piggel
       href: ../hadoop/python-udf-hdinsight.md
       maintainContext: true
     - name: Nem interaktív hitelesítéssel ellátott .Net HDInsight-alkalmazások létrehozása
@@ -104,13 +104,13 @@ items:
       maintainContext: true
     - name: A Power BI csatlakoztatása az interaktív lekérdezéshez
       href: ./apache-hadoop-connect-hive-power-bi-directquery.md
-    - name: A Power BI csatlakoztatása a Hadoophoz
+    - name: A Power BI csatlakoztatása az Apache Hadoophoz
       href: ../hadoop/apache-hadoop-connect-hive-power-bi.md
       maintainContext: true
-    - name: Az Excel csatlakozása a Hadoophoz
+    - name: Az Excel csatlakoztatása az Apache Hadoophoz
       href: ../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
       maintainContext: true
-    - name: Kapcsolódás a Hive JDBC-illesztővel
+    - name: Kapcsolódás az Apache Hive JDBC-illesztővel
       href: ../hadoop/apache-hadoop-connect-hive-jdbc-driver.md
       maintainContext: true
     - name: Tárolt érzékelőadatok elemzése
@@ -122,7 +122,7 @@ items:
     - name: Repülőjáratok késési adatainak elemzése
       href: ../hdinsight-analyze-flight-delay-data-linux.md
       maintainContext: true
-    - name: Webhelynaplók elemzése a Hive használatával
+    - name: Webhelynaplók elemzése az Apache Hive-val
       href: ../hadoop/apache-hive-analyze-website-log.md
       maintainContext: true
   - name: Fürtök kiterjesztése
@@ -136,10 +136,10 @@ items:
     - name: Szkriptműveletek fejlesztése
       href: ../hdinsight-hadoop-script-actions-linux.md
       maintainContext: true
-    - name: Hive-kódtárak hozzáadása
+    - name: Apache Hive-kódtárak hozzáadása
       href: ../hdinsight-hadoop-add-hive-libraries.md
       maintainContext: true
-    - name: A Zeppelin használata
+    - name: Az Apache Zeppelin használata
       href: ../hdinsight-apache-spark-zeppelin-notebook.md
       maintainContext: true
     - name: Grafana használata
@@ -180,7 +180,7 @@ items:
     - name: Adatokhoz hozzáférésének korlátozása
       href: ../hdinsight-storage-sharedaccesssignature-permissions.md
       maintainContext: true
-    - name: Az Ambari Views használatának engedélyezése felhasználók számára
+    - name: Az Apache Ambari Views használatának engedélyezése felhasználók számára
       href: ../hdinsight-authorize-users-to-ambari.md
       maintainContext: true
   - name: Kezelés
@@ -210,7 +210,7 @@ items:
     - name: Igény szerinti fürtök létrehozása
       href: ../hdinsight-hadoop-create-linux-clusters-adf.md
       maintainContext: true
-    - name: Hadoop-fürtök kezelése
+    - name: Apache Hadoop-fürtök kezelése
       href: ../hdinsight-administer-use-portal-linux.md
       items:
       - name: A .NET SDK használata
@@ -223,13 +223,13 @@ items:
         href: ../hdinsight-administer-use-command-line.md
         maintainContext: true
       maintainContext: true
-    - name: Fürtök kezelése az Ambari webes felülettel
+    - name: Fürtök kezelése az Apache Ambari webes felülettel
       href: ../hdinsight-hadoop-manage-ambari.md
       items:
-      - name: Fürtök optimalizálása az Ambari webes felülettel
+      - name: Fürtök optimalizálása az Apache Ambari webes felülettel
         href: ../hdinsight-changing-configs-via-ambari.md
         maintainContext: true
-      - name: Az Ambari REST API használata
+      - name: Az Apache Ambari REST API használata
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
       maintainContext: true
@@ -245,7 +245,7 @@ items:
     - name: Tárfiókok hozzáadása
       href: ../hdinsight-hadoop-add-storage.md
       maintainContext: true
-    - name: Adatok feltöltése Hadoop-feladatokhoz
+    - name: Adatok feltöltése Apache Hadoop-feladatokhoz
       href: ../hdinsight-upload-data.md
       maintainContext: true
     - name: Több HDInsight-fürt a Data Lake Store-ral
@@ -272,13 +272,13 @@ items:
     - name: Lassú vagy meghibásodott HDInsight-fürt hibaelhárítása
       href: ../hdinsight-troubleshoot-failed-cluster.md
       maintainContext: true
-    - name: HDFS-hibaelhárítás
+    - name: Apache Hadoop HDFS-hibaelhárítás
       href: ../hdinsight-troubleshoot-hdfs.md
       maintainContext: true
-    - name: HIVE-hibaelhárítás
+    - name: Apache HIVE-hibaelhárítás
       href: ../hdinsight-troubleshoot-hive.md
       maintainContext: true
-    - name: YARN-hibaelhárítás
+    - name: Apache Hadoop YARN-hibaelhárítás
       href: ../hdinsight-troubleshoot-yarn.md
       maintainContext: true
     - name: További források
@@ -286,25 +286,25 @@ items:
       - name: Információk a HDInsight Linuxon való használatáról
         href: ../hdinsight-hadoop-linux-information.md
         maintainContext: true
-      - name: Hadoop – memória és teljesítmény
+      - name: Apache Hadoop – memória és teljesítmény
         href: ../hdinsight-hadoop-stack-trace-error-messages.md
         maintainContext: true
-      - name: Hadoop YARN-alkalmazásnaplók elérése Linuxon
+      - name: Apache Hadoop YARN-alkalmazásnaplók elérése Linuxon
         href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
         maintainContext: true
-      - name: Halomürítések engedélyezése a Hadoop-szolgáltatásokhoz
+      - name: Halomürítések engedélyezése az Apache Hadoop-szolgáltatásokhoz
         href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
         maintainContext: true
       - name: WebHCat-hibák megértése és megoldása
         href: ../hdinsight-hadoop-templeton-webhcat-debug-errors.md
         maintainContext: true
-      - name: Hive-beállítások a Nincs elég memória hiba javításához
+      - name: Apache Hive-beállítások a Nincs elég memória hiba javításához
         href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
         maintainContext: true
-      - name: Ambari-nézetek használata a Tez-feladatok hibakereséséhez
+      - name: Apache Ambari Views használata az Apache TEZ-feladatok hibakereséséhez
         href: ../hdinsight-debug-ambari-tez-view.md
         maintainContext: true
-      - name: Hive-lekérdezések optimalizálása
+      - name: Apache Hive-lekérdezések optimalizálása
         href: ../hdinsight-hadoop-optimize-hive-query.md
         maintainContext: true
     maintainContext: true
@@ -324,7 +324,7 @@ items:
     - name: Vállalati biztonság konfigurálása a HDInsightban az Azure AD DS-sel
       href: ../domain-joined/apache-domain-joined-configure-using-azure-adds.md
       maintainContext: true
-    - name: Hive-házirendek konfigurálása
+    - name: Apache Hive-szabályzatok konfigurálása
       href: ../domain-joined/apache-domain-joined-run-hive.md
       maintainContext: true
     - name: Fürtök felügyelete vállalati biztonsági megoldásokkal
@@ -366,13 +366,13 @@ items:
     href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview
   - name: Go SDK
     href: ../hdinsight-go-sdk-overview.md
-  - name: .NET (HBase)
+  - name: .NET (Apache HBase)
     href: https://www.nuget.org/packages/Microsoft.HBase.Client/
   - name: .NET (Avro)
     href: https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library
   - name: REST
     href: /rest/api/hdinsight/
-  - name: REST (Spark)
+  - name: REST (Apache Spark)
     href: /rest/api/hdinsightspark/
 - name: További források
   items:
@@ -396,9 +396,9 @@ items:
   - name: A HDInsight Windows-eszközei
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 3f3dbea40ea402d5fc6670931ddc8fc8f85d1ca4
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 5dd6517a42a906db7297cbfe5bbded3299b0834a
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364319"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308407"

@@ -1,7 +1,7 @@
 items:
 - name: Azure HDInsight – dokumentáció
   href: /azure/hdinsight
-- name: Storm on HDInsight
+- name: HDInsight-alapú Apache Storm
   items:
   - name: Áttekintés
     href: apache-storm-overview.md
@@ -13,7 +13,7 @@ items:
     maintainContext: true
 - name: Bevezetés
   items:
-  - name: Storm-fürt létrehozása
+  - name: Apache Storm-fürt létrehozása
     href: apache-storm-tutorial-get-started-linux.md
   - name: HDInsight-alkalmazások telepítése
     href: ../hdinsight-apps-install-applications.md
@@ -23,7 +23,7 @@ items:
     maintainContext: true
 - name: Útmutató
   items:
-  - name: Storm-topológiák fejlesztése
+  - name: Apache Storm-topológiák fejlesztése
     items:
     - name: Topológiák fejlesztése a Javával
       href: apache-storm-develop-java-topology.md
@@ -33,22 +33,22 @@ items:
       href: apache-storm-develop-csharp-visual-studio-topology.md
     - name: SCP.NET – programozási útmutató
       href: apache-storm-scp-programming-guide.md
-    - name: Storm-példák
+    - name: Apache Storm-példák
       href: apache-storm-example-topology.md
   - name: Topológiák üzembe helyezése és monitorozása
     href: apache-storm-deploy-monitor-topology-linux.md
   - name: Streaming folyamatok létrehozása
     items:
-    - name: Kafka és Storm (Java)
+    - name: Apache Kafka és Apache Storm (Java)
       href: ../hdinsight-apache-storm-with-kafka.md
       maintainContext: true
     - name: Event Hub, tárterület és Data Lake Store (Java)
       href: https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/
-    - name: Event Hub és Storm (C# és Java)
+    - name: Event Hub és Apache Storm (C# és Java)
       href: apache-storm-develop-csharp-event-hub-topology.md
     - name: Azure Storage/Data Lake Store (Java)
       href: apache-storm-write-data-lake-store.md
-    - name: Event Hub, HBase (Java)
+    - name: Event Hub, Apache HBase (Java)
       href: apache-storm-sensor-data-analysis.md
   - name: Fürtök kiterjesztése
     items:
@@ -124,7 +124,7 @@ items:
         href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
         maintainContext: true
       maintainContext: true
-    - name: Hadoop-fürtök kezelése
+    - name: Apache Hadoop-fürtök kezelése
       href: ../hdinsight-administer-use-portal-linux.md
       items:
       - name: A .NET SDK használata
@@ -137,13 +137,13 @@ items:
         href: ../hdinsight-administer-use-command-line.md
         maintainContext: true
       maintainContext: true
-    - name: Fürtök kezelése az Ambari webes felülettel
+    - name: Fürtök kezelése az Apache Ambari webes felülettel
       href: ../hdinsight-hadoop-manage-ambari.md
       items:
-      - name: Fürtök optimalizálása az Ambari webes felülettel
+      - name: Fürtök optimalizálása az Apache Ambari webes felülettel
         href: ../hdinsight-changing-configs-via-ambari.md
         maintainContext: true
-      - name: Az Ambari REST API használata
+      - name: Az Apache Ambari REST API használata
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
       maintainContext: true
@@ -153,13 +153,13 @@ items:
     - name: Tárfiókok hozzáadása
       href: ../hdinsight-hadoop-add-storage.md
       maintainContext: true
-    - name: Adatok feltöltése Hadoop-feladatokhoz
+    - name: Adatok feltöltése Apache Hadoop-feladatokhoz
       href: ../hdinsight-upload-data.md
       maintainContext: true
     - name: Több HDInsight-fürt a Data Lake Store-ral
       href: ../hdinsight-multiple-clusters-data-lake-store.md
       maintainContext: true
-    - name: Adatok importálása és exportálása a Sqoop használatával
+    - name: Adatok importálása és exportálása az Apache Sqoop használatával
       href: ../hdinsight-use-sqoop.md
       items:
       - name: Kapcsolódás az SSH-val
@@ -175,10 +175,10 @@ items:
         href: ../hdinsight-hadoop-use-sqoop-powershell.md
         maintainContext: true
       maintainContext: true
-    - name: Az Oozie használata a munkafolyamatokhoz
+    - name: Az Apache Oozie használata a munkafolyamatokhoz
       href: ../hdinsight-use-oozie-linux-mac.md
       maintainContext: true
-    - name: Időalapú Oozie-koordinátorok használata
+    - name: Időalapú Apache Oozie-koordinátorok használata
       href: ../hdinsight-use-oozie-coordinator-time.md
       maintainContext: true
     - name: Fürt- és szolgáltatásportok, valamint URI-k
@@ -202,12 +202,12 @@ items:
     - name: Lassú vagy meghibásodott HDInsight-fürt hibaelhárítása
       href: ../hdinsight-troubleshoot-failed-cluster.md
       maintainContext: true
-    - name: HDFS-hibaelhárítás
+    - name: Apache Hadoop HDFS-hibaelhárítás
       href: ../hdinsight-troubleshoot-hdfs.md
       maintainContext: true
-    - name: STORM-hibaelhárítás
+    - name: Apache STORM-hibaelhárítás
       href: apache-troubleshoot-storm.md
-    - name: YARN-hibaelhárítás
+    - name: Apache Hadoop YARN-hibaelhárítás
       href: ../hdinsight-troubleshoot-yarn.md
       maintainContext: true
     - name: További források
@@ -215,13 +215,13 @@ items:
       - name: Információk a HDInsight Linuxon való használatáról
         href: ../hdinsight-hadoop-linux-information.md
         maintainContext: true
-      - name: Hadoop – memória és teljesítmény
+      - name: Apache Hadoop – memória és teljesítmény
         href: ../hdinsight-hadoop-stack-trace-error-messages.md
         maintainContext: true
       - name: Hadoop YARN-alkalmazásnaplók elérése Linuxon
         href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
         maintainContext: true
-      - name: Halomürítések engedélyezése a Hadoop-szolgáltatásokhoz
+      - name: Halomürítések engedélyezése az Apache Hadoop-szolgáltatásokhoz
         href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
         maintainContext: true
     maintainContext: true
@@ -263,13 +263,13 @@ items:
     href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview
   - name: Go SDK
     href: ../hdinsight-go-sdk-overview.md
-  - name: .NET (HBase)
+  - name: .NET (Apache HBase)
     href: https://www.nuget.org/packages/Microsoft.HBase.Client/
   - name: .NET (Avro)
     href: https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library
   - name: REST
     href: /rest/api/hdinsight/
-  - name: REST (Spark)
+  - name: REST (Apache Spark)
     href: /rest/api/hdinsightspark/
 - name: Kapcsolódó témakörök
   items:
@@ -281,15 +281,15 @@ items:
     - name: .NET–megoldások áttelepítése Linux-fürtökre
       href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
       maintainContext: true
-    - name: Storm-topológiák üzembe helyezése és kezelése
+    - name: Apache Storm-topológiák üzembe helyezése és kezelése
       href: apache-storm-deploy-monitor-topology.md
-    - name: A Maven használata Java-alkalmazások létrehozásához
+    - name: Az Apache Maven használata Java-alkalmazások létrehozásához
       href: ../hdinsight-hbase-build-java-maven.md
       maintainContext: true
     - name: Testreszabás szkriptműveletekkel
       href: ../hdinsight-hadoop-customize-cluster.md
       maintainContext: true
-    - name: YARN-alkalmazásnaplók elérése
+    - name: Apache Hadoop YARN-alkalmazásnaplók elérése
       href: ../hdinsight-hadoop-access-yarn-app-logs.md
       maintainContext: true
     - name: Szkriptműveletek fejlesztése
@@ -298,7 +298,7 @@ items:
     - name: Fürtök felügyelete az Azure Portalon
       href: ../hdinsight-administer-use-management-portal.md
       maintainContext: true
-    - name: Fürtök figyelése az Ambari API-val
+    - name: Fürtök figyelése az Apache Ambari API-val
       href: ../hdinsight-monitor-use-ambari-api.md
       maintainContext: true
 - name: További források
@@ -316,9 +316,9 @@ items:
   - name: A HDInsight Windows-eszközei
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 056413070b6b268db215a119dd216d8ad711ffb7
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 2d3a2999c69833f759cbaab0241136609e068bf2
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365475"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496242"

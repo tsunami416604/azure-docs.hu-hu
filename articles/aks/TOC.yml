@@ -57,6 +57,22 @@ items:
     href: concepts-storage.md
   - name: Méretezés
     href: concepts-scale.md
+  - name: Ajánlott eljárások
+    items:
+    - name: Fürtüzemeltetőknek
+      items:
+      - name: Több-bérlős működés és fürtelkülönítés
+        href: operator-best-practices-cluster-isolation.md
+      - name: A Scheduler alapszintű funkciói
+        href: operator-best-practices-scheduler.md
+      - name: A Scheduler speciális funkciói
+        href: operator-best-practices-advanced-scheduler.md
+      - name: Hitelesítés és engedélyezés
+        href: operator-best-practices-identity.md
+    - name: Alkalmazásfejlesztőknek
+      items:
+      - name: Erőforrás-kezelés
+        href: developer-best-practices-resource-management.md
   - name: Kvóták és regionális korlátok
     href: container-service-quotas.md
   - name: Migrálás ACS-ről AKS rendszerre
@@ -188,6 +204,9 @@ items:
       href: spark-job.md
     - name: A GPU-k használata
       href: gpu-cluster.md
+    - name: Az Azure Database for PostgreSQL használata
+      href: ../postgresql/concepts-aks.md
+      maintainContext: true
   - name: DevOps
     items:
     - name: Az Ansible használata AKS-fürtök létrehozásához
@@ -246,9 +265,9 @@ items:
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: GYIK
     href: faq.md
-ms.openlocfilehash: 1bb1c6689831eb2057771c22aced1c8567bd22b0
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: fc7f58330bf5ca0819cf0da494e521324fd2a6ea
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51611522"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52441672"

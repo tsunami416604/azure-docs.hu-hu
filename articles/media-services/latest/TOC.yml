@@ -43,6 +43,8 @@ items:
       href: autogen-bitrate-ladder.md
   - name: Entitások vizsgálata
     items:
+    - name: Fiók- és objektumszűrők
+      href: filters-dynamic-manifest-overview.md
     - name: Objektumok
       href: assets-concept.md
     - name: Tartalomkulcsszabályok
@@ -65,8 +67,17 @@ items:
       href: content-protection-overview.md
     - name: Multi-DRM rendszer hozzáférés-vezérléssel
       href: design-multi-drm-system-with-access-control.md
-  - name: Élő streamelés
+  - name: Élő események streamelése
     href: live-streaming-overview.md
+    items:
+    - name: Egy felhőalapú DVR használata
+      href: live-event-cloud-dvr.md
+    - name: Típusok összehasonlítása
+      href: live-event-types-comparison.md
+    - name: Állapotok és számlázás
+      href: live-event-states-billing.md
+    - name: Késés
+      href: live-event-latency.md
 - name: Útmutatók
   items:
   - name: Migrálás a 2-esről a 3-as verzióra
@@ -81,6 +92,14 @@ items:
       href: job-input-from-http-how-to.md
     - name: Egy helyi fájlból – .NET
       href: job-input-from-local-file-how-to.md
+  - name: Szűrők létrehozása
+    items:
+    - name: .NET-tel
+      href: filters-dynamic-manifest-dotnet-howto.md
+    - name: A REST-tel
+      href: filters-dynamic-manifest-rest-howto.md
+    - name: Parancssori felülettel
+      href: filters-dynamic-manifest-cli-howto.md
   - name: Kódolás
     items:
     - name: Előzetes átalakítási beállítások testreszabása – .NET Core
@@ -163,9 +182,9 @@ items:
     href: limits-quotas-constraints.md
   - name: GYIK
     href: frequently-asked-questions.md
-ms.openlocfilehash: bd33adb7a9ed7f20b1d0ff0172f31023239dee9b
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 499be85399b338ba12a4904cc06be4ffd9bdc06c
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51631470"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633027"

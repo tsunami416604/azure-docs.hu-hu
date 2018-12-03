@@ -3,9 +3,9 @@ items:
   href: /azure/hdinsight
 - name: Áttekintés
   items:
-  - name: Tudnivalók a HDInsight-alapú Sparkról
+  - name: A HDInsight-alapú Apache Spark ismertetése
     href: apache-spark-overview.md
-  - name: Hadoop-összetevők a HDInsighton
+  - name: HDInsight-alapú Apache Hadoop-összetevők
     href: ../hdinsight-component-versioning.md
     maintainContext: true
   - name: HDInsight 4.0
@@ -13,19 +13,19 @@ items:
     maintainContext: true
 - name: Gyors útmutatók
   items:
-  - name: Spark-fürt létrehozása – Portál
+  - name: Apache Spark-fürt létrehozása – Portal
     href: apache-spark-jupyter-spark-sql-use-portal.md
-  - name: Spark-fürt létrehozása – PowerShell
+  - name: Apache Spark-fürt létrehozása – PowerShell
     href: apache-spark-jupyter-spark-sql-use-powershell.md
-  - name: Spark-fürt létrehozása – Sablon
+  - name: Apache Spark-fürt létrehozása – Sablon
     href: apache-spark-jupyter-spark-sql.md
 - name: Oktatóanyagok
   items:
-  - name: Lekérdezések futtatása Spark-fürtön
+  - name: Lekérdezések futtatása egy Apache Spark-fürtön
     href: apache-spark-load-data-run-query.md
-  - name: Spark-lekérdezések futtatása VSCode használatával
+  - name: Apache Spark-lekérdezések futtatása VSCode használatával
     href: ../hdinsight-for-vscode.md
-  - name: Spark-lekérdezések futtatása IntelliJ használatával
+  - name: Apache Spark-lekérdezések futtatása IntelliJ használatával
     href: apache-spark-intellij-tool-plugin.md
   - name: Adatok elemzése BI-eszközökkel
     href: apache-spark-use-bi-tools.md
@@ -33,7 +33,7 @@ items:
     href: apache-spark-eventhub-streaming.md
   - name: Machine Learning-alkalmazások létrehozása
     href: apache-spark-ipython-notebook-machine-learning.md
-  - name: Spark-alkalmazás létrehozása IntelliJ-ben
+  - name: Apache Spark-alkalmazás létrehozása IntelliJ-ben
     href: apache-spark-create-standalone-application.md
 - name: Útmutató
   items:
@@ -47,17 +47,17 @@ items:
       maintainContext: true
   - name: Fejlesztés
     items:
-    - name: Interaktív Spark Shell használata
+    - name: Interaktív Apache Spark Shell használata
       href: apache-spark-shell.md
-    - name: Távoli feladatok a Livyvel
+    - name: Távoli feladatok az Apache Livyvel
       href: apache-spark-livy-rest-interface.md
     - name: Alkalmazások létrehozása az Eclipse-szel
       href: apache-spark-eclipse-tool-plugin.md
     - name: Alkalmazások létrehozása az IntelliJ-vel
       href: apache-spark-intellij-tool-plugin.md
-    - name: Spark-feladatok távoli hibakeresése az IntelliJ-vel SSH-n keresztül
+    - name: Apache Spark-feladatok távoli hibakeresése az IntelliJ-vel SSH-n keresztül
       href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
-    - name: Spark-feladatok távoli hibakeresése az IntelliJ-vel VPN-en keresztül
+    - name: Apache Spark-feladatok távoli hibakeresése az IntelliJ-vel VPN-en keresztül
       href: apache-spark-intellij-tool-plugin-debug-jobs-remotely.md
     - name: Nem interaktív hitelesítéssel ellátott .Net HDInsight-alkalmazások létrehozása
       href: ../hdinsight-create-non-interactive-authentication-dotnet-applications.md
@@ -77,9 +77,9 @@ items:
     - name: PySpark for VSCode
       href: ../set-up-pyspark-interactive-environment.md
       maintainContext: true
-    - name: Spark hibakeresése az IntelliJ-ben
+    - name: Az Apache Spark hibakeresése az IntelliJ-ben
       href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
-  - name: Notebookok használata a Sparkban
+  - name: Notebookok használata az Apache Sparkban
     items:
     - name: Helyi Jupyter notebook használata
       href: apache-spark-jupyter-notebook-install-locally.md
@@ -89,7 +89,7 @@ items:
       href: apache-spark-jupyter-notebook-use-external-packages.md
     - name: Külső csomagok használata Jupyterrel, szkriptműveletek használatával
       href: apache-spark-python-package-installation.md
-    - name: Zeppelin notebookok használata
+    - name: Apache Zeppelin-notebookok használata
       href: apache-spark-zeppelin-notebook.md
   - name: Használat más Azure-szolgáltatásokkal
     items:
@@ -97,7 +97,7 @@ items:
       href: apache-spark-use-with-data-lake-store.md
     - name: Kapcsolódás az Azure SQL Database szolgáltatáshoz
       href: apache-spark-connect-to-sql-database.md
-    - name: Lambda architektúra megvalósítása a Spark és a Cosmos DB használatával
+    - name: Lambdaarchitektúra megvalósítása az Apache Spark és a Cosmos DB használatával
       href: ../../cosmos-db/lambda-architecture.md
       maintainContext: true
   - name: Spark-streamelés
@@ -106,20 +106,20 @@ items:
       href: apache-spark-streaming-overview.md
     - name: Strukturált streamelés – áttekintés
       href: apache-spark-structured-streaming-overview.md
-    - name: Magas rendelkezésre állású Spark streamelési feladatok létrehozása a YARN-ban
+    - name: Magas rendelkezésre állású, Apache Spark-beli streamelési feladatok létrehozása az Apache Hadoop YARN-ban
       href: apache-spark-streaming-high-availability.md
-    - name: Strukturált streamelés a Kafkával
+    - name: Strukturált streamelés az Apache Kafkával
       href: ../hdinsight-apache-kafka-spark-structured-streaming.md
       maintainContext: true
-    - name: Strukturált streamelés a Kafkából a CosmosDB-be
+    - name: Strukturált streamelés az Apache Kafkából a CosmosDB-be
       href: ../apache-kafka-spark-structured-streaming-cosmosdb.md
       maintainContext: true
-    - name: Spark streamelés használata a Kafkával
+    - name: Spark-streamelés (DStream) használata az Apache Kafkával
       href: ../hdinsight-apache-spark-with-kafka.md
       maintainContext: true
-    - name: Spark streamelési feladatok létrehozása „pontosan egyszeri” eseményfeldolgozással
+    - name: Apache Spark-streamelési feladatok létrehozása „pontosan egyszeri” eseményfeldolgozással
       href: apache-spark-streaming-exactly-once.md
-  - name: Spark és Machine Learning
+  - name: Apache Spark és Machine Learning
     items:
     - name: Élelmiszer-vizsgálati eredmények előrejelzése
       href: apache-spark-machine-learning-mllib-ipython.md
@@ -129,11 +129,11 @@ items:
       href: apache-spark-deep-learning-caffe.md
     - name: Használat a Microsoft Cognitive Toolkittel
       href: apache-spark-microsoft-cognitive-toolkit.md
-    - name: Spark Machine Learning-folyamat létrehozása
+    - name: Apache Spark Machine Learning-folyamat létrehozása
       href: apache-spark-creating-ml-pipelines.md
   - name: Big Data típusú adatok elemzése
     items:
-    - name: A Spark használata HBase-adatok írására és olvasására
+    - name: Az Apache Spark használata Apache HBase-adatok írására és olvasására
       href: ../hdinsight-using-spark-query-hbase.md
       maintainContext: true
     - name: Application Insights-telemetrianaplók elemzése
@@ -155,16 +155,16 @@ items:
     - name: Mono telepítése vagy frissítése
       href: ../hdinsight-hadoop-install-mono.md
       maintainContext: true
-    - name: Hive-kódtárak hozzáadása
+    - name: Apache Hive-kódtárak hozzáadása
       href: ../hdinsight-hadoop-add-hive-libraries.md
       maintainContext: true
-    - name: A Giraph használata
+    - name: Az Apache Giraph használata
       href: ../hdinsight-hadoop-giraph-install-linux.md
       maintainContext: true
     - name: A Hue használata
       href: ../hdinsight-hadoop-hue-linux.md
       maintainContext: true
-    - name: A Solr használata
+    - name: Az Apache Solr használata
       href: ../hdinsight-hadoop-solr-install-linux.md
       maintainContext: true
     - name: Üres élcsomópontok használata
@@ -206,18 +206,18 @@ items:
     - name: Adatokhoz hozzáférésének korlátozása
       href: ../hdinsight-storage-sharedaccesssignature-permissions.md
       maintainContext: true
-    - name: Az Ambari Views használatának engedélyezése felhasználók számára
+    - name: Az Apache Ambari Views használatának engedélyezése felhasználók számára
       href: ../hdinsight-authorize-users-to-ambari.md
       maintainContext: true
   - name: Kezelés
     items:
     - name: Fürterőforrások kezelése
       href: apache-spark-resource-manager.md
-    - name: Spark-alkalmazások kezelése kiterjesztett előzménykiszolgálóval
+    - name: Apache Spark-alkalmazások kezelése kiterjesztett előzménykiszolgálóval
       href: apache-azure-spark-history-server.md
-    - name: A Spark beállításainak konfigurálása
+    - name: Az Apache Spark beállításainak konfigurálása
       href: apache-spark-settings.md
-    - name: Spark-feladatok optimalizálása
+    - name: Az Apache Spark-feladatok optimalizálása
       href: apache-spark-perf.md
     - name: Gyorsítótárazás engedélyezése I/O gyorsítótárral
       href: apache-spark-improve-performance-iocache.md
@@ -262,13 +262,13 @@ items:
       - name: Az Azure klasszikus parancssori felületének használata
         href: ../hdinsight-administer-use-command-line.md
         maintainContext: true
-    - name: Fürtök kezelése az Ambari webes felülettel
+    - name: Fürtök kezelése az Apache Ambari webes felülettel
       href: ../hdinsight-hadoop-manage-ambari.md
       items:
-      - name: Fürtök optimalizálása az Ambari webes felülettel
+      - name: Fürtök optimalizálása az Apache Ambari webes felülettel
         href: ../hdinsight-changing-configs-via-ambari.md
         maintainContext: true
-      - name: Az Ambari REST API használata
+      - name: Az Apache Ambari REST API használata
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
       maintainContext: true
@@ -278,13 +278,13 @@ items:
     - name: Tárfiókok hozzáadása
       href: ../hdinsight-hadoop-add-storage.md
       maintainContext: true
-    - name: Adatok feltöltése Hadoop-feladatokhoz
+    - name: Adatok feltöltése Apache Hadoop-feladatokhoz
       href: ../hdinsight-upload-data.md
       maintainContext: true
     - name: Több HDInsight-fürt a Data Lake Store-ral
       href: ../hdinsight-multiple-clusters-data-lake-store.md
       maintainContext: true
-    - name: Adatok importálása és exportálása a Sqoop használatával
+    - name: Adatok importálása és exportálása az Apache Sqoop használatával
       href: ../hadoop/hdinsight-use-sqoop.md
       items:
       - name: Kapcsolódás az SSH-val
@@ -303,7 +303,7 @@ items:
     - name: Az Oozie használata a munkafolyamatokhoz
       href: ../hdinsight-use-oozie-linux-mac.md
       maintainContext: true
-    - name: Időalapú Oozie-koordinátorok használata
+    - name: Időalapú Apache Oozie-koordinátorok használata
       href: ../hdinsight-use-oozie-coordinator-time.md
       maintainContext: true
     - name: Fürt- és szolgáltatásportok, valamint URI-k
@@ -323,21 +323,21 @@ items:
       maintainContext: true
   - name: Hibaelhárítás
     items:
-    - name: Hibakeresés Spark-feladatokban
+    - name: Hibakeresés Apache Spark-feladatokban
       href: apache-spark-job-debugging.md
-    - name: Hibakeresés Spark-feladatokban feladatgrafikonokkal
+    - name: Hibakeresés Apache Spark-feladatokban feladatgrafikonokkal
       href: apache-azure-spark-history-server.md
-    - name: Spark-feladatok hibakeresése IntelliJ használatával
+    - name: Apache Spark-feladatok hibakeresése IntelliJ használatával
       href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
     - name: Lassú vagy meghibásodott HDInsight-fürt hibaelhárítása
       href: ../hdinsight-troubleshoot-failed-cluster.md
       maintainContext: true
-    - name: Spark-hibaelhárítás
+    - name: Apache Spark-hibaelhárítás
       href: apache-troubleshoot-spark.md
-    - name: HDFS-hibaelhárítás
+    - name: Apache Hadoop HDFS-hibaelhárítás
       href: ../hdinsight-troubleshoot-hdfs.md
       maintainContext: true
-    - name: YARN-hibaelhárítás
+    - name: Apache Hadoop YARN-hibaelhárítás
       href: ../hdinsight-troubleshoot-yarn.md
       maintainContext: true
     - name: Ismert problémák
@@ -347,25 +347,25 @@ items:
       - name: Információk a HDInsight Linuxon való használatáról
         href: ../hdinsight-hadoop-linux-information.md
         maintainContext: true
-      - name: Hadoop – memória és teljesítmény
+      - name: Apache Hadoop – memória és teljesítmény
         href: ../hdinsight-hadoop-stack-trace-error-messages.md
         maintainContext: true
-      - name: Hadoop YARN-alkalmazásnaplók elérése Linuxon
+      - name: Apache Hadoop YARN-alkalmazásnaplók elérése Linuxon
         href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
         maintainContext: true
-      - name: Halomürítések engedélyezése a Hadoop-szolgáltatásokhoz
+      - name: Halomürítések engedélyezése az Apache Hadoop-szolgáltatásokhoz
         href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
         maintainContext: true
       - name: WebHCat-hibák megértése és megoldása
         href: ../hdinsight-hadoop-templeton-webhcat-debug-errors.md
         maintainContext: true
-      - name: Hive-beállítások a Nincs elég memória hiba javításához
+      - name: Apache Hive-beállítások a Nincs elég memória hiba javításához
         href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
         maintainContext: true
-      - name: Ambari-nézetek használata a Tez-feladatok hibakereséséhez
+      - name: Apache Ambari Views használata az Apache Tez-feladatok hibakereséséhez
         href: ../hdinsight-debug-ambari-tez-view.md
         maintainContext: true
-      - name: Hive-lekérdezések optimalizálása
+      - name: Apache Hive-lekérdezések optimalizálása
         href: ../hdinsight-hadoop-optimize-hive-query.md
         maintainContext: true
 - name: Alkalmasság vállalati használatra
@@ -384,7 +384,7 @@ items:
     - name: Vállalati biztonság konfigurálása a HDInsightban az Azure AD DS-sel
       href: ../domain-joined/apache-domain-joined-configure-using-azure-adds.md
       maintainContext: true
-    - name: Hive-házirendek konfigurálása
+    - name: Apache Hive-szabályzatok konfigurálása
       href: ../domain-joined/apache-domain-joined-run-hive.md
       maintainContext: true
     - name: Fürtök felügyelete vállalati biztonsági megoldásokkal
@@ -426,13 +426,13 @@ items:
     href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview
   - name: Go SDK
     href: ../hdinsight-go-sdk-overview.md
-  - name: .NET (HBase)
+  - name: .NET (Apache HBase)
     href: https://www.nuget.org/packages/Microsoft.HBase.Client/
   - name: .NET (Avro)
     href: https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library
   - name: REST API
     href: /rest/api/hdinsight/
-  - name: REST API (Spark)
+  - name: REST API (Apache Spark)
     href: /rest/api/hdinsightspark/
 - name: További források
   items:
@@ -456,9 +456,9 @@ items:
   - name: A HDInsight Windows-eszközei
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 53f7e70e9ce7442ab37008c1c6614eec0783fd85
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 35ef5face0f64b6766993eeb7f546923726bd166
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428283"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584332"

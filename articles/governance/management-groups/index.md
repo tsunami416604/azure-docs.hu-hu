@@ -6,17 +6,17 @@ manager: rithorn
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/28/2018
+ms.date: 11/20/2018
 ms.author: rithorn
-ms.openlocfilehash: b5a99ff8cfc0a915b70c6d90b8aa04d020177d54
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.topic: overview
+ms.openlocfilehash: ea34296e170d18a1d5636c50e7cae316b1d97948
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748170"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584605"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Erőforrások rendszerezése az Azure Management Groups segítségével
 
@@ -28,12 +28,12 @@ Alkalmazhat például olyan szabályzatokat egy felügyeleti csoportra, amelyek 
 
 A felügyeleti csoportok és előfizetések rugalmas szerkezetének létrehozásával hierarchiába rendezheti erőforrásait az egységes szabályzat- és hozzáféréskezeléshez. Az alábbi ábrán egy példa látható szabályozási hierarchia létrehozására felügyeleti csoportok használatával.
 
-![fa](./media/MG_overview.png)
+![fa](./media/tree.png)
 
-Ha ehhez a példához hasonló hierarchiát hoz létre, alkalmazhat egy szabályzatot, például a virtuális gépek helyét az USA nyugati régiójára korlátozó szabályzatot az „Infrastructure Team management group” csoportra a belső megfelelőségi és biztonsági szabályzatok elősegítése érdekében. Ezt a szabályzatot a felügyeleti csoport alá tartozó mindkét EA-előfizetés örökli, és az előfizetések alá tartozó összes virtuális gépre érvényes lesz. Mivel ez a biztonsági szabályzat a felügyeleti csoporttól öröklődik az előfizetésekre, az erőforrás vagy az előfizetés tulajdonosa nem módosíthatja, ami hatékonyabb kontrollt biztosít.
+Hozzon létre egy hierarchiát, amelyre alkalmazhat egy szabályzatot, például a virtuális gépek helyének az USA nyugati régiójára való korlátozására az „Infrastructure Team management group” csoporton. Ezt a szabályzatot a felügyeleti csoport alá tartozó mindkét EA-előfizetés örökli, és az előfizetések alá tartozó összes virtuális gépre érvényes lesz. Ezt a biztonsági szabályzatot az erőforrás vagy az előfizetés tulajdonosa nem módosíthatja, ez pedig hatékonyabb kontrollt biztosít.
 
-A felügyeleti csoportok használatának másik esete, amikor egyszerre több előfizetés számára szeretne felhasználói hozzáférést biztosítani. Ha több előfizetést helyez a felügyeleti csoport alá, mindössze egy [szerepköralapú hozzáférés-vezérlési](../../role-based-access-control/overview.md) (RBAC) hozzárendelést kell létrehoznia a felügyeleti csoporthoz, amelytől az összes előfizetés örökli a hozzáférést.
-Ahelyett, hogy több előfizetésre szkriptelne RBAC-hozzárendeléseket, a felügyeleti csoporton egyetlen hozzárendeléssel biztosíthatja a szükséges hozzáférést a felhasználóknak.
+A felügyeleti csoportok használatának másik esete, amikor egyszerre több előfizetéshez szeretne felhasználói hozzáférést biztosítani. Ha sok előfizetést helyez a felügyeleti csoport alá, mindössze egy [szerepköralapú hozzáférés-vezérlési](../../role-based-access-control/overview.md) (RBAC) hozzárendelést kell létrehoznia a felügyeleti csoporthoz, amelytől az összes előfizetés örökli a hozzáférést.
+Ahelyett, hogy különböző előfizetésekre szkriptelne RBAC-hozzárendeléseket, a felügyeleti csoporton egyetlen hozzárendeléssel biztosíthatja a szükséges hozzáférést a felhasználóknak.
 
 ### <a name="important-facts-about-management-groups"></a>A felügyeleti csoportok fontosabb jellemzői
 
@@ -41,7 +41,7 @@ Ahelyett, hogy több előfizetésre szkriptelne RBAC-hozzárendeléseket, a fel�
 - A felügyeleticsoport-fák legfeljebb hatszintűek lehetnek.
   - A korlátozásba nem tartozik bele a gyökérszint és az előfizetés szintje.
 - Felügyeleti csoportonként vagy előfizetésenként egy szülő támogatott.
-- Az egyes felügyeleti csoportok alá több gyermek tartozhat.
+- Az egyes felügyeleti csoportok alá számos gyermek tartozhat.
 - Az egyes címtárakban minden előfizetés és felügyeleti csoport egyetlen hierarchiában található. Az előzetes verzióra vonatkozó kivételekről [A gyökérszintű felügyeleti csoport fontosabb jellemzői](#important-facts-about-the-root-management-group) című szakaszban olvashat.
 
 ## <a name="root-management-group-for-each-directory"></a>Az egyes címtárak gyökérszintű felügyeleti csoportja
@@ -73,19 +73,19 @@ A felügyeleti csoportok használatának megkezdésekor először egy beállít�
 
 ## <a name="trouble-seeing-all-subscriptions"></a>Nem látható az összes előfizetés
 
-Néhány címtárban, amelyek az előzetes verzió korai szakaszában (2018. június 25. előtt) kezdtek felügyeleti csoportokat használni, egy probléma jelentkezhet, amelynek következtében a rendszer nem minden előfizetést érvényesít a hierarchiában.  Ennek az oka, hogy az előfizetéseket a hierarchiában érvényesítő eljárás azután lett megvalósítva, hogy egy szerepkör- vagy szabályzat-hozzárendelés végre lett hajtva a címtár gyökérszintű felügyeleti csoportján.
+Néhány címtárban, amelyek az előzetes verzió korai szakaszában (2018. június 25. előtt) kezdtek felügyeleti csoportokat használni, egy probléma jelentkezhet, amelynek következtében a rendszer nem minden előfizetést érvényesít a hierarchiában.  Az előfizetéseket a hierarchiában érvényesítő eljárás azután lett implementálva, hogy egy szerepkör- vagy szabályzat-hozzárendelés végre lett hajtva a címtár gyökérszintű felügyeleti csoportján.
 
 ### <a name="how-to-resolve-the-issue"></a>A probléma elhárítása
 
-A probléma megoldására két önkiszolgáló megoldás létezik.
+A probléma megoldására két lehetősége van.
 
 1. Az összes szerepkör- és szabályzat-hozzárendelés eltávolítása a gyökérszintű felügyeleti csoportról
-    1. Ha az összes szerepkör- és szabályzat-hozzárendelést eltávolítja a gyökérszintű felügyeleti csoportról, a szolgáltatás a következő éjszakai ciklus során visszatölti az összes előfizetést a hierarchiába.  Erre az ellenőrzésre annak biztosításához van szükség, hogy a hozzáférések vagy szabályzat-hozzárendelések kiosztása nehogy véletlenül érvényes legyen az összes bérlői előfizetésre.
+    1. Ha az összes szerepkör- és szabályzat-hozzárendelést eltávolítja a gyökérszintű felügyeleti csoportról, a szolgáltatás a következő éjszakai ciklus során visszatölti az összes előfizetést a hierarchiába.  Ennek a folyamatnak az a célja, hogy a hozzáférések vagy szabályzat-hozzárendelések kiosztása nehogy véletlenül érvényes legyen az összes bérlői előfizetésre.
     1. A legjobb mód a folyamat a szolgáltatások működésének befolyásolása nélküli végrehajtására, ha a szerepkör- vagy szabályzat-hozzárendeléseket egy szinttel a gyökérszintű felügyeleti csoport alatt alkalmazza. Ezután eltávolíthatja az összes hozzárendelést a gyökérszintű hatókörből.
 1. A visszatöltési folyamat elindítása az API közvetlen meghívásával
-    1. A címtár bármelyik, megfelelő jogosultsággal rendelkező ügyfele meghívhatja a *TenantBackfillStatusRequest* vagy a *StartTenantBackfillRequest* API-t. A StartTenantBackfillRequest API a meghívásakor elindítja az összes előfizetés a hierarchiába való átvitelére vonatkozó kezdeti konfigurációs folyamatot. A folyamat azt az eljárást is elindítja, amely az összes új előfizetést a gyökérszintű felügyeleti csoport gyermekeként érvényesíti. Ennek az eljárásnak a végrehajtásakor nem szükséges a gyökérszinten módosítani a hozzárendeléseket, mivel ebben az esetben nem gond, hogy a gyökérszinten jelen lévő szabályzatok és hozzáférési hozzárendelések az összes előfizetésre alkalmazhatók.
+    1. A címtár bármelyik ügyfele meghívhatja a *TenantBackfillStatusRequest* vagy a *StartTenantBackfillRequest* API-t. A StartTenantBackfillRequest API a meghívásakor elindítja az összes előfizetés a hierarchiába való átvitelére vonatkozó kezdeti konfigurációs folyamatot. A folyamat azt az eljárást is elindítja, amely az összes új előfizetést a gyökérszintű felügyeleti csoport gyermekeként érvényesíti. Ennek az eljárásnak a végrehajtásakor nem szükséges a gyökérszinten módosítani a hozzárendeléseket. Az API meghívásával jóváhagyja, hogy a gyökérszinten jelen lévő szabályzatok és hozzáférési hozzárendelések az összes előfizetésre alkalmazhatók.
 
-Ha kérdése van a visszatöltési folyamatot illetően, lépjen kapcsolatba velünk a következő e-mail-címen: managementgroups@microsoft.com.  
+Ha kérdése van a visszatöltési folyamatot illetően, lépjen kapcsolatba velünk a következő e-mail-címen: managementgroups@microsoft.com  
   
 ## <a name="management-group-access"></a>Hozzáférés a felügyeleti csoportokhoz
 
@@ -111,12 +111,26 @@ Az alábbi ábrán a felügyeleti csoportokkal kapcsolatos szerepkörök és tá
 
 Az egyéni RBAC-szerepkörök jelenleg nem támogatottak a felügyeleti csoportok esetében. A funkció aktuális állapotáról a [felügyeleti csoportok visszajelzési fórumán](https://aka.ms/mgfeedback) tájékozódhat.
 
+## <a name="audit-management-groups-using-activity-logs"></a>Felügyeleti csoportok naplózása tevékenységnaplókkal
+
+Ha ezzel az API-val szeretné nyomon követni a felügyeleti csoportokat, használja a [Tenant Activity Log API-t](/rest/api/monitor/tenantactivitylogs). A felügyeleti csoportok tevékenységének nyomon követéséhez jelenleg nem használható a PowerShell, a parancssori felület vagy az Azure Portal.
+
+1. Az Azure AD-bérlő bérlői rendszergazdájaként [emelheti a jogosultságszintet](../../role-based-access-control/elevate-access-global-admin.md), majd Olvasó szerepkört rendelhet a naplózást végző felhasználóhoz a `/providers/microsoft.insights/eventtypes/management` hatókörben.
+1. Naplózási felhasználóként meghívhatja a [Tenant Activity Log API-t](/rest/api/monitor/tenantactivitylogs) a felügyeleti csoportok tevékenységének megtekintésére. Minden felügyeleticsoport-tevékenységnél érdemes a **Microsoft.Management** erőforrás-szolgáltató szerint szűrni.  Példa:
+
+```
+GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '{greaterThanTimeStamp}' and eventTimestamp le '{lessThanTimestamp}' and eventChannels eq 'Operation' and resourceProvider eq 'Microsoft.Management'"
+```
+
+> [!NOTE]
+> Az API-t kényelmesen meghívhatja a parancssorból az [ARMClient](https://github.com/projectkudu/ARMClient) segítségével.
+
 ## <a name="next-steps"></a>További lépések
 
 A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 
 - [Felügyeleti csoportok létrehozása az Azure-erőforrások rendszerezéséhez](create.md)
 - [Felügyeleti csoportok módosítása, törlése és kezelése](manage.md)
-- [Az Azure PowerShell-modul telepítése](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups)
-- [A REST API-specifikáció áttekintése](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
-- [Az Azure CLI-bővítmény telepítése](/cli/azure/extension?view=azure-cli-latest#az-extension-list-available)
+- [Felügyeleti csoportok áttekintése az Azure PowerShell Erőforrások moduljában](https://aka.ms/mgPSdocs)
+- [Felügyeleti csoportok áttekintése a REST API-ban](https://aka.ms/mgAPIdocs)
+- [Felügyeleti csoportok áttekintése az Azure CLI-ben](https://aka.ms/mgclidoc)

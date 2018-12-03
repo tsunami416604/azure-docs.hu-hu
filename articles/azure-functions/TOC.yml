@@ -3,8 +3,10 @@ items:
   href: index.yml
 - name: Áttekintés
   items:
-  - name: A Functions ismertetése
+  - name: Az Azure Functions ismertetése
     href: functions-overview.md
+  - name: Tartós függvények
+    href: durable/durable-functions-overview.md
   - name: Kiszolgáló nélküli összehasonlítás
     href: functions-compare-logic-apps-ms-flow-webjobs.md
 - name: Gyors útmutatók
@@ -94,44 +96,6 @@ items:
     href: ip-addresses.md
   - name: Helyszíni függvények
     href: functions-runtime-overview.md
-  - name: Tartós függvények
-    items:
-    - name: Áttekintés
-      href: durable-functions-overview.md
-    - name: Függvények típusai és funkciói
-      href: durable-functions-types-features-overview.md
-    - name: Kötések
-      href: durable-functions-bindings.md
-    - name: Ellenőrzőpont és visszajátszás
-      href: durable-functions-checkpointing-and-replay.md
-    - name: Egyéni vezénylési állapot
-      href: durable-functions-custom-orchestration-status.md
-    - name: Példányfelügyelet
-      href: durable-functions-instance-management.md
-    - name: HTTP API
-      href: durable-functions-http-api.md
-    - name: Hibakezelés
-      href: durable-functions-error-handling.md
-    - name: Diagnosztika
-      href: durable-functions-diagnostics.md
-    - name: Időzítők
-      href: durable-functions-timers.md
-    - name: Külső események
-      href: durable-functions-external-events.md
-    - name: Külső vezénylések
-      href: durable-functions-eternal-orchestrations.md
-    - name: Egyszeres vezénylések
-      href: durable-functions-singletons.md
-    - name: Alvezénylések
-      href: durable-functions-sub-orchestrations.md
-    - name: Feladatközpontok
-      href: durable-functions-task-hubs.md
-    - name: Verziókezelés
-      href: durable-functions-versioning.md
-    - name: Teljesítmény és méret
-      href: durable-functions-perf-and-scale.md
-    - name: Vészhelyreállítás és földrajzi elosztás
-      href: durable-functions-disaster-recovery-geo-distribution.md
 - name: Útmutatók
   items:
   - name: Fejlesztés
@@ -180,6 +144,30 @@ items:
       href: disable-function.md
   - name: Figyelés
     href: functions-monitoring.md
+  - name: Biztonságos
+    items:
+    - name: SSL-tanúsítvány vásárlása
+      href: ../app-service/web-sites-purchase-ssl-web-site.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: Felhasználók hitelesítése
+      items:
+      - name: Hitelesítés az Azure AD-vel
+        href: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fazure-functions%2ftoc.json
+      - name: Hitelesítés a Facebookkal
+        href: ../app-service/app-service-mobile-how-to-configure-facebook-authentication.md?toc=%2fazure%2fazure-functions%2ftoc.json
+      - name: Hitelesítés a Google-lel
+        href: ../app-service/app-service-mobile-how-to-configure-google-authentication.md?toc=%2fazure%2fazure-functions%2ftoc.json
+      - name: Hitelesítés Microsoft-fiókkal
+        href: ../app-service/app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fazure%2fazure-functions%2ftoc.json
+      - name: Hitelesítés a Twitterrel
+        href: ../app-service/app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: Speciális hitelesítés
+      href: ../app-service/app-service-authentication-how-to.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: IP-címek korlátozása
+      href: ../app-service/app-service-ip-restrictions.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: Felügyelt identitás használata
+      href: ../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: Key Vaultból származó titkos kulcsok hivatkozása
+      href: ../app-service/app-service-key-vault-references.md?toc=%2fazure%2fazure-functions%2ftoc.json
   - name: Integrálás
     items:
     - name: Csatlakozás SQL Database-adatbázishoz
@@ -194,24 +182,6 @@ items:
       href: functions-flow-scenario.md
     - name: Felügyelt identitás használata
       href: ../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
-  - name: Tartós függvények
-    items:
-    - name: Telepítés
-      href: durable-functions-install.md
-    - name: Láncolás
-      href: durable-functions-sequence.md
-    - name: Elosztás/összevonás
-      href: durable-functions-cloud-backup.md
-    - name: Monitorozások
-      href: durable-functions-monitor.md
-    - name: Emberi beavatkozás
-      href: durable-functions-phone-verification.md
-    - name: Egységtesztelés
-      href: durable-functions-unit-testing.md
-    - name: Események közzététele
-      href: durable-functions-event-publishing.md
-    - name: A WebJobs SDK használata
-      href: durable-functions-webjobs-sdk.md
   - name: Hibaelhárítás
     items:
     - name: A tárolás hibaelhárítása
@@ -288,13 +258,15 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-functions
   - name: Twitter
     href: https://twitter.com/azurefunctions
+  - name: Termékkel kapcsolatos visszajelzés küldése
+    href: https://feedback.azure.com/forums/355860-azure-functions
   - name: Az Azure Functions GitHub-adattára
     href: https://github.com/Azure/Azure-Functions/
   - name: Szolgáltatási hírek
     href: https://azure.microsoft.com/updates/?product=functions&updatetype=&platform=
-ms.openlocfilehash: eb408491ee9ed4994324a5fd425e87da6e4c59a1
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: facc469c576bf1de905441bb5b56a00bd745e924
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633784"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632296"
