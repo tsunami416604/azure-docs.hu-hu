@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.author: davidmu
-ms.date: 01/23/2018
+ms.date: 11/30/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 2b70ed174331b88f9afc9aa30d14a585986496a5
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
-ms.translationtype: HT
+ms.openlocfilehash: bd900071bbcd894d4fe71e0f8a265d98348eb262
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604341"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726406"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-from-a-web-app-using-azure-active-directory-b2c"></a>Oktatóanyag: ASP.NET webes API-hoz való hozzáférés engedélyezése egy webalkalmazásból az Azure Active Directory B2C használatával
 
@@ -120,7 +120,7 @@ A mintául szolgáló webes API-t az előfeltételként megadott oktatóanyag el
 
 Két projekt szerepel a mintául szolgáló megoldásban:
 
-**Mintául szolgáló webalkalmazás (TaskWebApp):** webalkalmazás feladatlista létrehozáshoz és szerkesztéséhez. A webalkalmazás a **regisztrálási vagy bejelentkezési** szabályzatot arra, hogy e-mail-címmel regisztráljon vagy jelentkeztessen be felhasználókat.
+**Mintául szolgáló webalkalmazás (TaskWebApp):** webalkalmazás feladatlista létrehozáshoz és szerkesztéséhez. A webes alkalmazás használja a **regisztrálási vagy bejelentkezési** való regisztráció vagy bejelentkezés e-mail-címmel rendelkező felhasználók a felhasználói folyamat.
 
 **Mintául szolgáló webes API-alkalmazás (TaskService):** webes API, amely támogatja a feladatlista létrehozását, olvasását, frissítését és törlését. A webes API-nak az Azure AD B2C biztosít védelmet, és a webalkalmazással hívható meg.
 
@@ -162,10 +162,10 @@ Nyissa meg a **B2C-WebAPI-DotNet** megoldást a Visual Studióban.
     <add key="ida:ClientId" value="<The Application ID for your web API obtained from the Azure portal>"/>
     ```
 
-4. Frissítse a szabályzat beállítását a regisztrálási és bejelentkezési szabályzat létrehozásakor megadott névvel.
+4. Frissítés a felhasználói folyamat beállítás mentése létrehozásakor a bejelentkezési nevét és bejelentkezési felhasználói folyamata.
 
     ```C#
-    <add key="ida:SignUpSignInPolicyId" value="B2C_1_SiUpIn" />
+    <add key="ida:SignUpSignInUserFlowId" value="B2C_1_SiUpIn" />
     ```
 
 5. Konfigurálja a hatókör beállításait, hogy egyezzenek a portálon korábban létrehozottakkal.
