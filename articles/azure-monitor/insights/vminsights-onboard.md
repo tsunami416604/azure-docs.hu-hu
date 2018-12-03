@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 7b6752196d3512ab3ede4f5e339d681948e732e8
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 93cbb9a891f83eed623f095f208319c9071e287e
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853761"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635543"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Hogyan üzembe helyezni az Azure figyeli, hogy virtuális gépeket (előzetes verzió)
 Ez a cikk bemutatja, hogyan állítható be az Azure Monitor a virtuális gépek az Azure-beli virtuális gépek és virtuálisgép-méretezési csoportok és a környezetben, a virtuális gépek operációs rendszer állapotának figyelésére többek között a felderítés és az alkalmazásfüggőségek leképezése Előfordulhat, hogy futhat őket.  
@@ -151,8 +151,8 @@ A következő táblázat ismerteti a térkép funkció támogatja a hibrid körn
 
 | Csatlakoztatott forrás | Támogatott | Leírás |
 |:--|:--|:--|
-| Windows-ügynökök | Igen | Mellett a [Log Analytics-ügynököket for Windows](../../log-analytics/log-analytics-agent-overview.md), Windows-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
-| Linux-ügynökök | Igen | Mellett a [Linuxhoz készült Log Analytics-ügynök](../../log-analytics/log-analytics-agent-overview.md), Linux-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
+| Windows-ügynökök | Igen | Mellett a [Log Analytics-ügynököket for Windows](../../azure-monitor/platform/log-analytics-agent.md), Windows-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
+| Linux-ügynökök | Igen | Mellett a [Linuxhoz készült Log Analytics-ügynök](../../azure-monitor/platform/log-analytics-agent.md), Linux-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
 | System Center Operations Manage felügyeleti csoport | Nem | |  
 
 A függőségi ügynök a következő helyről lehet letölteni.
@@ -205,7 +205,7 @@ A lépéseket kell elvégeznie, mielőtt konfigurálhatná üzembe helyezésébe
 Ha nem rendelkezik a Log Analytics-munkaterületet, tekintse át a javasolt alatt elérhető módszerek a [Előfeltételek](#log-analytics) szakasz hozhat létre egyet.  
 
 #### <a name="enable-performance-counters"></a>Teljesítményszámlálók engedélyezése
-Ha a Log Analytics-munkaterületet a megoldás által hivatkozott már összegyűjtéséhez a teljesítményszámlálókat, a megoldás által igényelt nincs konfigurálva, akkor kell engedélyezni kell. Ez manuálisan leírt módon valósítható [Itt](../../log-analytics/log-analytics-data-sources-performance-counters.md), vagy pedig letöltésével és futtatásával egy PowerShell-parancsprogram elérhető [Azure Powershell-galériából](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1).
+Ha a Log Analytics-munkaterületet a megoldás által hivatkozott már összegyűjtéséhez a teljesítményszámlálókat, a megoldás által igényelt nincs konfigurálva, akkor kell engedélyezni kell. Ez manuálisan leírt módon valósítható [Itt](../../azure-monitor/platform/data-sources-performance-counters.md), vagy pedig letöltésével és futtatásával egy PowerShell-parancsprogram elérhető [Azure Powershell-galériából](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1).
  
 #### <a name="install-the-servicemap-and-infrastructureinsights-solutions"></a>Telepítse a ServiceMap és InfrastructureInsights megoldásokat
 Ez a módszer egy JSON-sablon ahhoz, hogy a megoldás-összetevőket a Log Analytics-munkaterület konfigurációját tartalmazza.  
@@ -531,9 +531,9 @@ Failed: (0)
 ## <a name="enable-for-hybrid-environment"></a>A hibrid környezet engedélyezése
 Ez a szakasz ismerteti, hogyan előkészítheti a virtuális gépeket vagy fizikai számítógépek üzemeltetett az adatközpontban vagy egyéb felhőkörnyezet által az Azure Monitor-beli virtuális gépek figyelésére.  
 
-Az Azure Monitor, virtuális gépek térkép függőségi ügynök nem továbbít adatokat magát, és nem igényel tűzfalak és a portok módosítása. A térképadatok mindig továbbítása a Log Analytics-ügynököket, az Azure Monitor szolgáltatásba, vagy közvetlenül vagy keresztül a [OMS-átjáró](../../log-analytics/log-analytics-oms-gateway.md) Ha az informatikai biztonsági szabályzatok nem engedélyezik a számítógépeken a hálózat csatlakozik az internethez.
+Az Azure Monitor, virtuális gépek térkép függőségi ügynök nem továbbít adatokat magát, és nem igényel tűzfalak és a portok módosítása. A térképadatok mindig továbbítása a Log Analytics-ügynököket, az Azure Monitor szolgáltatásba, vagy közvetlenül vagy keresztül a [OMS-átjáró](../../azure-monitor/platform/gateway.md) Ha az informatikai biztonsági szabályzatok nem engedélyezik a számítógépeken a hálózat csatlakozik az internethez.
 
-Tekintse át a követelményeket és a központi telepítési módszerek a [Log Analytics Linux és Windows-ügynök](../../log-analytics/log-analytics-agent-overview.md).  
+Tekintse át a követelményeket és a központi telepítési módszerek a [Log Analytics Linux és Windows-ügynök](../../azure-monitor/platform/log-analytics-agent.md).  
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -591,7 +591,7 @@ A függőségi ügynök fájlok kerülnek a következő könyvtárak:
 | Bináris tárolófájlok | /var/opt/microsoft/dependency-agent/storage |
 
 ### <a name="enable-performance-counters"></a>Teljesítményszámlálók engedélyezése
-Ha a Log Analytics-munkaterületet a megoldás által hivatkozott már összegyűjtéséhez a teljesítményszámlálókat, a megoldás által igényelt nincs konfigurálva, akkor kell engedélyezni kell. Ez manuálisan leírt módon valósítható [Itt](../../log-analytics/log-analytics-data-sources-performance-counters.md), vagy pedig letöltésével és futtatásával egy PowerShell-parancsprogram elérhető [Azure Powershell-galériából](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1).
+Ha a Log Analytics-munkaterületet a megoldás által hivatkozott már összegyűjtéséhez a teljesítményszámlálókat, a megoldás által igényelt nincs konfigurálva, akkor kell engedélyezni kell. Ez manuálisan leírt módon valósítható [Itt](../../azure-monitor/platform/data-sources-performance-counters.md), vagy pedig letöltésével és futtatásával egy PowerShell-parancsprogram elérhető [Azure Powershell-galériából](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1).
  
 ### <a name="onboard-azure-monitor-for-vms"></a>A virtuális gépek előkészítése az Azure Monitor
 Ez a módszer egy JSON-sablon ahhoz, hogy a megoldás-összetevőket a Log Analytics-munkaterület konfigurációját tartalmazza.  

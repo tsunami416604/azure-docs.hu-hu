@@ -9,16 +9,15 @@ documentationcenter: monitoring-and-diagnostics
 ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: d1b7b5baeba88ec0209abff60e9327031afa8b66
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5ef451da3eae696c3506f25ee9458b3ad3286b07
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633775"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721182"
 ---
 # <a name="azure-monitor-overview"></a>Az Azure Monitor áttekintése
 
@@ -137,7 +136,7 @@ Milyen gyakran kell a követelmény az Azure Monitor integrálható más rendsze
 ### <a name="logic-apps"></a>Logic Apps
 [A Logic Apps](https://azure.microsoft.com/services/logic-apps) egy szolgáltatás, amely lehetővé teszi, hogy a feladatok és a munkafolyamatok, amelyek integrálhatók a különböző rendszerek és szolgáltatások segítségével üzleti folyamatok automatizálása. Tevékenységek érhetők el, amely írási és olvasási metrikák és naplók az Azure monitorban, amely lehetővé teszi, hogy más rendszerek különböző integrálása munkafolyamatokat építhet rájuk.
 
-![Logikai alkalmazás](../log-analytics/media/log-analytics-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
+![Logikai alkalmazás](platform/media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
 
 ### <a name="api"></a>API
 Több API-t írási és olvasási metrikákat és naplókat, és az Azure Monitor kívül által előállított riasztások érhetők el. Is konfigurálhatja, és beolvasni a riasztásokat. Ezzel biztosítható az egyéni megoldásokat, amelyek integrálhatók az Azure Monitor gyakorlatilag korlátlan lehetőségeket.

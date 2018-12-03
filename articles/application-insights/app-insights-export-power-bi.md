@@ -9,16 +9,15 @@ ms.assetid: 7f13ea66-09dc-450f-b8f9-f40fdad239f2
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6e19735f604fdcd6d6642814e776fd9987d11fde
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4a30e562b04a3414a1305604a521e0d659753142
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499506"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720405"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Az Application Insights szolgáltatásból a Power BI hírcsatorna
 [Power bi-ban](http://www.powerbi.com/) üzleti eszközök együttese, amely segít az adatok elemzése és elemzéseket oszthat meg. Gazdag irányítópultok érhetők el a minden eszközön. Számos más forrásból, beleértve az elemzési lekérdezések az adatok is kombinálhatók [Azure Application Insights](app-insights-overview.md).
@@ -52,18 +51,18 @@ Telepítés [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
     ![Képernyőkép a Power BI Desktopban, a speciális szerkesztő kiemelésével](./media/app-insights-export-power-bi/power-bi-import-analytics-query.png)
 
-1. Ahhoz, hogy a Power BI Azure eléréséhez, akkor előfordulhat, hogy adja meg hitelesítő adatait. Használat **szervezeti fiók** kattintva jelentkezhet be Microsoft-fiókjával.
+5. Ahhoz, hogy a Power BI Azure eléréséhez, akkor előfordulhat, hogy adja meg hitelesítő adatait. Használat **szervezeti fiók** kattintva jelentkezhet be Microsoft-fiókjával.
    
     ![A Power BI lekérdezés beállításai képernyőkép párbeszédpanel](./media/app-insights-export-power-bi/power-bi-import-sign-in.png)
 
     Ha a hitelesítő adatok ellenőrzése van szüksége, használja a **adatforrás-beállítások** menüparancs a Lekérdezésszerkesztő. Győződjön meg róla, Azure-t, amely eltérhet a hitelesítő adatait a Power bi-ban használt hitelesítő adatok megadásához.
-2. Válasszon olyan vizualizációt, a lekérdezés, és jelölje ki a mezőket az x tengely, az y tengely és a dimenzió szegmentálja.
+6. Válasszon olyan vizualizációt, a lekérdezés, és jelölje ki a mezőket az x tengely, az y tengely és a dimenzió szegmentálja.
    
     ![Képernyőkép a Power BI Desktopban Vizualizációk beállítások](./media/app-insights-export-power-bi/power-bi-analytics-visualize.png)
-3. A jelentés közzététele a Power BI-felhő munkaterületre. Itt egy szinkronizált verziót is beágyazása más weblapok.
+7. A jelentés közzététele a Power BI-felhő munkaterületre. Itt egy szinkronizált verziót is beágyazása más weblapok.
    
     ![Képernyőkép a Power BI Desktop közzététel gomb kiemelésével](./media/app-insights-export-power-bi/publish-power-bi.png)
-4. A beállítások lapon egy ütemezett frissítés beállítása, illetve manuálisan frissítse a jelentést, időközönként.
+8. A beállítások lapon egy ütemezett frissítés beállítása, illetve manuálisan frissítse a jelentést, időközönként.
 
 ### <a name="export-a-funnel"></a>A tölcsér exportálása
 1. [Győződjön meg arról, a tölcsér](usage-funnels.md).

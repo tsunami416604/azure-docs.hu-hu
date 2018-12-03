@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b42dc0f86a70feb06b32a20c7cbdd513920f65d6
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 816992fa05613bc8904cfaf4b34345a02c9b3ba2
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263521"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52728293"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect: Verziókiadások
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
@@ -36,6 +36,17 @@ Lépések az Azure AD Connect frissítése | Különböző módszerekkel [friss�
 Szükséges engedélyek | Tekintse meg a frissítés alkalmazásához szükséges engedélyek [fiókok és engedélyek](reference-connect-accounts-permissions.md#upgrade).
 
 Letöltés |} [Töltse le az Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
+
+## <a name="12680"></a>1.2.68.0
+
+### <a name="release-status"></a>Kiadási állapot 
+
+11/30/2018:, amely a letölthető
+
+### <a name="fixed-issues"></a>Hibák kijavítva:
+
+Ez a gyorsjavítás-build ütközés javít, ahol hitelesítési hiba fordulhat elő, mert független az MSOnline PowerShell-galéria-modul a szinkronizálási kiszolgálón.
+
 
 
 ## <a name="12670"></a>1.2.67.0
@@ -308,9 +319,9 @@ Engedélyezés    | Rendszergazdák                | Teljes hozzáférés       
 Engedélyezés    | Vállalati tartományvezérlők | Tartalom listázása        | Ez az objektum  |
 Engedélyezés    | Vállalati tartományvezérlők | Az összes tulajdonság olvasása  | Ez az objektum  |
 Engedélyezés    | Vállalati tartományvezérlők | Olvasási engedélyek     | Ez az objektum  |
-Engedélyezés    | Hitelesített felhasználók           | Tartalom listázása        | Ez az objektum  |
-Engedélyezés    | Hitelesített felhasználók           | Az összes tulajdonság olvasása  | Ez az objektum  |
-Engedélyezés    | Hitelesített felhasználók           | Olvasási engedélyek     | Ez az objektum  |
+Engedélyezés    | A hitelesített felhasználók           | Tartalom listázása        | Ez az objektum  |
+Engedélyezés    | A hitelesített felhasználók           | Az összes tulajdonság olvasása  | Ez az objektum  |
+Engedélyezés    | A hitelesített felhasználók           | Olvasási engedélyek     | Ez az objektum  |
 
 A beállítások a az AD DS-fiók megerősítéséhez futtathatja [a PowerShell-szkript](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978). A PowerShell-szkriptet fogja hozzárendelni az engedélyeket, az AD DS-fiókot a fent említett.
 

@@ -13,25 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 1e2d809ed476b1789736f0d61dfea528b090da50
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: dbf763b569ff513ff8ebc3669c6c8094a075704d
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447129"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680004"
 ---
-> [!WARNING]
-> Az Azure Active Directory B2C-integráció érhető el a [fejlesztői, Standard és prémium szintű](https://azure.microsoft.com/pricing/details/api-management/) csak szint esetében.
-
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Hogyan lehet Azure Active Directory B2C használatával az Azure API Management fejlesztői fiókok engedélyezése
 
 ## <a name="overview"></a>Áttekintés
+
 Az Azure Active Directory B2C egy felhőbeli identitáskezelő megoldás a felhasználók felé néző webes és mobilalkalmazások. A fejlesztői portál hozzáférés kezelésére használható. Ez az útmutató bemutatja, a konfiguráció szükséges az API Management szolgáltatás integrálása az Azure Active Directory B2C a. A fejlesztői portálra való hozzáférés engedélyezése a klasszikus Azure Active Directory használatával kapcsolatos információkért lásd: [Hogyan lehet az Azure Active Directory fejlesztői fiókok engedélyezése].
 
 > [!NOTE]
 > Hajtsa végre a jelen útmutató lépéseit, először szüksége van az alkalmazás létrehozása az Azure Active Directory B2C-bérlő. Emellett szüksége lesz készen áll a regisztráció és bejelentkezés házirendeket. További információkért lásd: [Az Azure Active Directory B2C – áttekintés].
 
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+[!INCLUDE [premium-dev-standard.md](../../includes/api-management-availability-premium-dev-standard.md)]
 
 ## <a name="authorize-developer-accounts-by-using-azure-active-directory-b2c"></a>Fejlesztői fiókok engedélyezése az Azure Active Directory B2C használatával
 
