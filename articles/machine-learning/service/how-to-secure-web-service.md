@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2018
-ms.openlocfilehash: ec7b956f080837b297bac56e6237ac0672601ce7
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: a9dee2d88c986ed292567a18c29cd325833b5e6f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344484"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832870"
 ---
 # <a name="secure-azure-machine-learning-web-services-with-ssl"></a>Biztonságos SSL-lel az Azure Machine Learning-webszolgáltatások
 
@@ -118,7 +118,7 @@ Ezt követően frissítenie kell a DNS, a web Service mutasson.
 
   Frissítse a DNS, a "Beállítások" lapon a "nyilvános IP-címe" az AKS-fürtöt a képen látható módon. A nyilvános IP-címet az erőforráscsoportban, amely tartalmazza az AKS-ügynök csomópontok és más hálózati erőforrások létrehozása az erőforrástípusok egyikét találja.
 
-  ![Az Azure Machine Learning szolgáltatás: webszolgáltatások SSL használatával biztonságossá tétele](./media/how-to-secure-web-service/aks-public-ip-address.png)Önkiszolgáló-
+  ![Az Azure Machine Learning szolgáltatás: webszolgáltatások SSL használatával biztonságossá tétele](./media/how-to-secure-web-service/aks-public-ip-address.png)
 
 ## <a name="next-steps"></a>További lépések
 

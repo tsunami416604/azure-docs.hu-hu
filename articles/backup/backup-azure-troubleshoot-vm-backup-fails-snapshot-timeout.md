@@ -7,14 +7,14 @@ manager: cshepard
 keywords: Az Azure backup; A Virtuálisgép-ügynök; Hálózati kapcsolat;
 ms.service: backup
 ms.topic: troubleshooting
-ms.date: 10/30/2018
+ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 496afab869d8cf1b7b00791913c3082e31b45327
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 9f26a51a8da2c3fec3ff180dbc8c8de08bb0a93a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633920"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833873"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibaelhárítása: az ügynök vagy a bővítmény kapcsolatos problémák
 
@@ -77,9 +77,9 @@ Miután regisztrálta, és a egy virtuális Gépet az Azure Backup szolgáltatá
 **2. ok: [a biztonsági mentési bővítményt frissítésére vagy betöltése sikertelen](#the-backup-extension-fails-to-update-or-load)**  
 **3. ok: [a virtuális gép nem rendelkezik internet-hozzáférés](#the-vm-has-no-internet-access)**
 
-## <a name="ExtentionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtentionOperationFailed - VMSnapshot bővítmény művelete sikertelen volt
+## <a name="ExtentionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtentionOperationFailedForManagedDisks - VMSnapshot bővítmény művelete sikertelen volt
 
-**Hibakód:**: ExtentionOperationFailed <br>
+**Hibakód:**: ExtentionOperationFailedForManagedDisks <br>
 **Chybová zpráva**: a VMSnapshot bővítmény művelete sikertelen volt<br>
 
 Miután regisztrálta, és a egy virtuális Gépet az Azure Backup szolgáltatás a ütemezése, biztonsági mentés a Virtuálisgép-biztonsági mentési bővítmény időponthoz pillanatképének kommunikálva indítja el a feladatot. Az alábbi feltételek bármelyike előfordulhat, hogy a pillanatkép nem aktiválása. A pillanatkép nem aktiválódik, ha egy biztonsági mentési hiba fordulhat elő. Kövesse az alábbi hibaelhárítási lépéseket a megadott sorrendben, majd próbálja megismételni a műveletet:  
@@ -156,11 +156,11 @@ Továbbá ha az alhálózat nem rendelkezik a kimenő internetes forgalmat útvo
 #### <a name="solution"></a>Megoldás
 A Virtuálisgép-ügynök sérült, vagy a szolgáltatás előfordulhat, hogy leállt. A Virtuálisgép-ügynök újratelepítése révén a legújabb verzióra. Emellett segít, indítsa újra a szolgáltatással való kommunikáció.
 
-1. Határozza meg, hogy a Windows Vendégügynöke szolgáltatás fut-e a virtuális gép szolgáltatások (services.msc). Próbálja meg újraindítani a Windows Vendégügynöke szolgáltatást, és indítsa el a biztonsági mentést.    
-2. Ha a Windows Vendégügynöke szolgáltatást nem látható a szolgáltatások, a Vezérlőpulton **programok és szolgáltatások** meghatározni, hogy telepítve van-e a Windows Vendégügynöke szolgáltatást.
-4. Ha megjelenik a Windows Vendégügynöke **programok és szolgáltatások**, távolítsa el a Windows Vendégügynöke.
+1. Határozza meg, a Windows Azure Vendég ügynök szolgáltatás fut-e a virtuális gép szolgáltatások (services.msc). Próbálja meg újraindítani a Windows Azure Guest Agent szolgáltatást, és indítsa el a biztonsági mentést.    
+2. Ha a Windows Azure Guest Agent szolgáltatás nem látható a szolgáltatások, a Vezérlőpulton **programok és szolgáltatások** meghatározni, hogy telepítve van-e a Windows Azure Guest Agent szolgáltatást.
+4. Ha megjelenik a Windows Azure-Vendégügynök **programok és szolgáltatások**, a Windows Azure Vendég ügynök eltávolítása.
 5. Töltse le és telepítse a [az ügynök MSI legfrissebb verzióját](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). A telepítés befejezéséhez rendszergazdai jogosultságokkal kell rendelkeznie.
-6. Győződjön meg arról, hogy a Windows Vendégügynöke szolgáltatás szolgáltatások jelennek meg.
+6. Győződjön meg arról, hogy a Windows Azure-Vendégügynök services szolgáltatások jelennek meg.
 7. Egy igény szerinti biztonsági mentés futtatása:
     * Válassza a portál **biztonsági mentés**.
 
@@ -205,7 +205,7 @@ A következő feltételek előfordulhat, hogy a pillanatkép-feladat meghiúsul:
 | Ok | Megoldás |
 | --- | --- |
 | A virtuális gép állapota helytelenül van jelenteni, mert a virtuális gép le van állítva a távoli asztal protokoll (RDP). | Ha leállítja a virtuális Géphez RDP, ellenőrizze a portálra, ellenőrizze, hogy a virtuális gép állapota megfelelő. Ha nem megfelelő, állítsa le a virtuális Gépet a portál használatával a **leállítási** lehetőség a VM-irányítópulton. |
-| A virtuális gép nem olvasható be a gazdagép vagy a háló címét a DHCP-Kiszolgálótól. | A Vendég az IaaS virtuális gépek biztonsági mentésének működéséhez engedélyezni kell a DHCP. Ha a virtuális gép nem olvasható be a gazdagép vagy a háló cím 245 DHCP-válaszból, nem töltse le és futtassa a kiterjesztések. Ha statikus magánhálózati IP-cím van szüksége, konfigurálja a platformon keresztül. A virtuális gép DHCP-beállítást engedélyezni kell a bal oldalon. További információkért lásd: [statikus belső magánhálózati IP-cím beállítása](../virtual-network/virtual-networks-reserved-private-ip.md). |
+| A virtuális gép nem olvasható be a gazdagép vagy a háló címét a DHCP-Kiszolgálótól. | A Vendég az IaaS virtuális gépek biztonsági mentésének működéséhez engedélyezni kell a DHCP. Ha a virtuális gép nem olvasható be a gazdagép vagy a háló cím 245 DHCP-válaszból, nem töltse le és futtassa a kiterjesztések. Statikus magánhálózati IP-cím van szüksége, ha úgy konfigurálja, keresztül a **az Azure Portal** vagy **PowerShell** , és győződjön meg arról, hogy a virtuális gép a DHCP-beállítás engedélyezve van. További információ a Powershellen keresztül statikus IP-cím telepítés: [klasszikus virtuális gép](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm) és [Resource Manager-alapú](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface).
 
 ### <a name="the-backup-extension-fails-to-update-or-load"></a>A biztonsági mentési bővítményt frissítésére vagy betöltése sikertelen
 Bővítmények nem tölthető be, ha a biztonsági mentés sikertelen, mert nem lehet egy pillanatképet készíteni.

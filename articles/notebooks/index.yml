@@ -1,0 +1,74 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 1be098bb098befecf29863bfe2d0d5220edddb01
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52852432"
+documentType: LandingData
+title: Az Azure Notebooks dokumentációja
+metadata:
+  title: Az Azure Notebooks dokumentációja – Rövid útmutatók, oktatóanyagok és útmutatók | Microsoft Docs
+  description: Megtudhatja, hogyan hozhat létre, futtathat és oszthat meg Jupyter notebookokat az üzemeltetett Azure Notebooks-szolgáltatással.
+  services: notebooks
+  author: kraigb
+  manager: douge
+  ms.service: notebooks
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 12/04/2018
+  ms.author: kraigb
+abstract:
+  description: Az Azure Notebooks egy ingyenes üzemeltetett szolgáltatás a Jupyter notebookok felhőben történő, telepítés nélküli fejlesztéséhez és futtatásához. A Jupyter (korábbi nevén IPython) egy nyílt forráskódú projekt, amellyel egyetlen megosztható vásznon – más néven egy notebookon – egyesítheti a Markdown-szövegeket, a végrehajtható kódot (Python, R és F#), valamint az állandó adatokat, grafikákat és vizualizációkat.
+sections:
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: A rövid útmutatókból megismerheti az Azure Notebooks használatát.
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 2
+    items:
+    - href: /azure/notebooks/quickstart-create-share-jupyter-notebook
+      html: <p>Ismerje meg, hogyan hozhat létre és futtathat Jupyter notebookot az Azure Notebooksban, és hogyan oszthatja meg másokkal.</p>
+      image:
+        src: media/index/Azure_AddNotebook.svg
+      title: Notebook létrehozása és megosztása
+    - href: /azure/notebooks/quickstart-clone-jupyter-notebook
+      html: <p>Ismerje meg, hogyan klónozhat Jupyter notebookokat a GitHub-adattárból, és hogyan futtathatja őket Azure Notebooks-fiókjában.</p>
+      image:
+        src: media/index/Azure_ClonePage.svg
+      title: Notebook klónozása
+    - href: /azure/notebooks/quickstart-migrate-local-jupyter-notebook
+      html: <p>Ismerje meg, hogyan továbbíthat Jupyter notebookokat a helyi számítógépről vagy egy webes URL-címről az Azure Notebooksba, és hogyan oszthatja meg együttműködéshez.</p>
+      image:
+        src: media/index/Azure_MigrateNotebook.svg
+      title: Helyi Jupyter notebook migrálása
+    - href: /azure/notebooks/quickstart-create-jupyter-notebook-project-environment
+      html: <p>Ismerje meg, hogyan konfigurálhat egy telepített csomagokat és indítási szkripteket tartalmazó Azure Notebooks-projektet.</p>
+      image:
+        src: media/index/Azure_CustomEnvironment.svg
+      title: Projekt létrehozása egyéni környezettel
+    - href: /azure/notebooks/quickstart-sign-in-azure-notebooks
+      html: <p>Ismerje meg, hogyan jelentkezhet be az Azure Notebooksba, és hogyan állíthat be egy felhasználói azonosítót, amellyel hozzáférhet a mentett projektekhez, és notebookokat oszthat meg másokkal.</p>
+      image:
+        src: media/index/Azure_UserAccount.svg
+      title: Bejelentkezés és felhasználói azonosító beállítása
+- title: Részletes útmutatók
+  items:
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/notebooks/tutorial-create-run-jupyter-notebook">Ismerje meg a notebookok létrehozásának teljes folyamatát.</a>
+- title: Példák
+  items:
+  - type: paragraph
+    text: 'A következő minták segítségével dolgozhat a Notebooks szolgáltatással:'
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/notebooks/azure-notebooks-samples">Minta Jupyter notebookok</a>
