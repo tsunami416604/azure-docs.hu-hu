@@ -11,7 +11,7 @@
 # Útmutató
 
 ## Elemzés
-### [Log Analytics](../log-analytics/log-analytics-queries.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+### [Log Analytics](../azure-monitor/log-query/log-query-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ## Automatizálás
 ### [Az Azure Automation áttekintése](../automation/automation-intro.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
