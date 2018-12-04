@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 4128d113535c67c0b440dc3fb275af05b5c1c1ae
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 79803a749b6d08c94bcbf5f3ca66aac8b7294fa3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306145"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844651"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Biztonsági keret: Titkosítás |} Megoldások 
 | Termék vagy szolgáltatás | Cikk |
@@ -172,8 +172,8 @@ ms.locfileid: "43306145"
 | **SDL fázis**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | Eszköz operációs rendszere – a Windows IoT Core, eszközkapcsolat – Azure IoT eszközoldali SDK-k |
-| **Hivatkozások**              | [A Windows IoT Core TPM](https://developer.microsoft.com/windows/iot/docs/tpm), [állítsa be a TPM-eszköz Windows IoT Core-on](https://developer.microsoft.com/windows/iot/win10/setuptpm), [Azure IoT eszköz SDK-t TPM-eszköz](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
-| **Lépések** | Biztonságosan Symmetric vagy a tanúsítvány titkos kulcsokat hardveres védett tárolók például TPM-eszköz vagy az intelligens kártya lapkák. Windows 10 IoT Core támogatja a felhasználó egy TPM-eszköz, és vannak, amelyek segítségével több kompatibilis TPM: https://developer.microsoft.com/windows/iot/win10/tpm. Belső vezérlőprogramban vagy különálló TPM használata ajánlott. Szoftver TPM kell csak fejlesztési és tesztelési célokra használható. Miután egy TPM-eszköz érhető el, valamint a kulcsok akkor vannak kiépítve, a kódot, amely a token állít elő kell írni nélkül sorszámozás benne bizalmas adatokat. | 
+| **Hivatkozások**              | [A Windows IoT Core TPM](https://developer.microsoft.com/windows/iot/docs/tpm), [állítsa be a TPM-eszköz Windows IoT Core-on](https://docs.microsoft.com/windows/iot-core/secure-your-device/setuptpm), [Azure IoT eszköz SDK-t TPM-eszköz](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
+| **Lépések** | Biztonságosan Symmetric vagy a tanúsítvány titkos kulcsokat hardveres védett tárolók például TPM-eszköz vagy az intelligens kártya lapkák. Windows 10 IoT Core támogatja a felhasználó egy TPM-eszköz, és vannak, amelyek segítségével több kompatibilis TPM: https://docs.microsoft.com/windows/iot-core/secure-your-device/tpm#discrete-tpm-dtpm. Belső vezérlőprogramban vagy különálló TPM használata ajánlott. Szoftver TPM kell csak fejlesztési és tesztelési célokra használható. Miután egy TPM-eszköz érhető el, valamint a kulcsok akkor vannak kiépítve, a kódot, amely a token állít elő kell írni nélkül sorszámozás benne bizalmas adatokat. | 
 
 ### <a name="example"></a>Példa
 ```

@@ -11,20 +11,20 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: c7153823ade64b086eb38046ed6d7cdb0e0a1381
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: a0aed1fd65444397b3ca084cc0100aa5af49c918
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52638632"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839506"
 ---
-# <a name="create-your-first-durable-function-in-c"></a>A tartós függvény létrehozásaC#
+# <a name="create-your-first-durable-function-in-c"></a>Az első tartós függvény létrehozása a C\#
 
 *Durable Functions* kiterjesztése [Azure Functions](../functions-overview.md) , amellyel írási állapot-nyilvántartó functions egy kiszolgáló nélküli környezetben. A bővítmény kezeli a állapot, ellenőrzőpontok és újraindul az Ön számára.
 
 Ebből a cikkből elsajátíthatja, hogyan használja a Visual Studio 2017-eszközök az Azure Functions helyi létrehozásához és a egy "hello world" tartós függvény tesztelése.  Ez a függvény összehangolására, és a lánc együttesen hívások egyéb funkciók. Ezután közzéteheti a függvénykódot az Azure-ban. Ezek az eszközök a Visual Studio 2017 Azure-fejlesztési számítási feladatának részeként érhetők el.
 
-![Tartós függvény futtatása a felhőben](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
+![Azure-ban futó tartós függvény](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -50,7 +50,7 @@ A Visual Studio Azure Functions projektsablonja egy olyan projektet hoz létre, 
 
 3. Használja a kép alatti táblázatban megadott beállításokat.
 
-    ![A Visual Studio Új függvény párbeszédpanelje](./media/durable-functions-create-first-csharp/functions-vs-new-function.png) 
+    ![A Visual Studio Új függvény párbeszédpanelje](./media/durable-functions-create-first-csharp/functions-vs-new-function.png)
 
     | Beállítás      | Ajánlott érték  | Leírás                      |
     | ------------ |  ------- |----------------------------------------- |

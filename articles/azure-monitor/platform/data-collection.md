@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: 5f7c82143ab11787f5ce186623c1ed4903891c18
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 3ea446a726634ead520b902bd00a54cd8ae32b70
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680351"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844124"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Az Azure Monitor által gyűjtött adatok figyelése
 [Az Azure Monitor](../../azure-monitor/overview.md) egy szolgáltatás, amellyel figyelheti az alkalmazások és az erőforrások támaszkodnak. Figyelt erőforrások központi az alábbi függvényre van telemetriai és egyéb adatok tárolására. A cikk ismerteti, hogyan az adatok tárolásának és az Azure Monitor által használt teljes leírását.
@@ -161,7 +161,7 @@ A naplók segítségével elvégezhető feladatok a következők:
 - Egy parancssorból vagy egy egyéni alkalmazást a metrikaértékek eléréséhez [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/?view=azurermps-6.8.1) vagy [REST API-val](https://dev.loganalytics.io/).
 
 ### <a name="viewing-log-data"></a>Teljesítménynapló-adatok megtekintése
-Minden adatot töröl a Log Analytics használatával lekéri a [naplólekérdezés](../../log-analytics/log-analytics-queries.md) , amely meghatározza, hogy egy adott adatkészletet. Lekérdezések használatával írt a [Log Analytics lekérdezési nyelvre](../../log-analytics/query-language/get-started-queries.md) Ez egy teljes funkcionalitású lekérdezésnyelvet gyorsan lekérni, konszolidálhatja és elemezheti az összegyűjtött adatokat. Használja a [Log Analytics lapot](../../log-analytics/log-analytics-log-search-portals.md) közvetlenül elemezheti az Azure Portalon a metrika az adatok tárolására, és több mérőszámok értékeit diagram idővel. A diagramok megjelenítése interaktív módon, vagy egy irányítópultot, megtekintheti őket más vizualizációkat rögzítheti őket. Metrikák használatával is lekérhet a [Azure REST API-val figyelési](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
+Minden adatot töröl a Log Analytics használatával lekéri a [naplólekérdezés](../../azure-monitor/log-query/log-query-overview.md) , amely meghatározza, hogy egy adott adatkészletet. Lekérdezések használatával írt a [Log Analytics lekérdezési nyelvre](../../log-analytics/query-language/get-started-queries.md) Ez egy teljes funkcionalitású lekérdezésnyelvet gyorsan lekérni, konszolidálhatja és elemezheti az összegyűjtött adatokat. Használja a [Log Analytics lapot](../../log-analytics/log-analytics-log-search-portals.md) közvetlenül elemezheti az Azure Portalon a metrika az adatok tárolására, és több mérőszámok értékeit diagram idővel. A diagramok megjelenítése interaktív módon, vagy egy irányítópultot, megtekintheti őket más vizualizációkat rögzítheti őket. Metrikák használatával is lekérhet a [Azure REST API-val figyelési](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
 
 ![Logs](media/data-collection/logs.png)
 

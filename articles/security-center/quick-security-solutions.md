@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
 ms.author: rkarlin
-ms.openlocfilehash: d02c71865f900c2b75da60bd2e989e04a6823d11
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 7783a10badd98a29488732d68267241ff619b645
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005240"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838667"
 ---
 # <a name="quickstart-connect-security-solutions-to-security-center"></a>Rövid útmutató – Biztonsági megoldások csatlakoztatása a Security Centerhez
 
@@ -33,7 +33,7 @@ Ez a rövid útmutató a következőket mutatja be:
 ## <a name="prerequisites"></a>Előfeltételek
 A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/free/).
 
-A rövid útmutató lépéseinek végrehajtásához a Security Center Standard tarifacsomagjával kell rendelkeznie. Az első 60 napban díjmentesen próbálhatja ki a Security Center Standard verzióját. [Az Azure-előfizetés a Security Center Standard verziójába való felvételével](security-center-get-started.md) foglalkozó rövid útmutató végigvezeti azokon a lépéseken, amelyekkel frissíthet a Standard verzióra.
+A rövid útmutató lépéseinek végrehajtásához a Security Center Standard tarifacsomagjával kell rendelkeznie. Megpróbálhatja Security Center Standard költségek nélkül. [Az Azure-előfizetés a Security Center Standard verziójába való felvételével](security-center-get-started.md) foglalkozó rövid útmutató végigvezeti azokon a lépéseken, amelyekkel frissíthet a Standard verzióra. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
 
 Emellett szükség van egy [Linux rendszerű számítógépre is](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-linux), amelyen a Syslog szolgáltatás már csatlakoztatva van a Security Centerhez.
 

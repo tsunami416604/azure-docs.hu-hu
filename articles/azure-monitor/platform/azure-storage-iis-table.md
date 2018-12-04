@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 78ce4a2bc61d5ab343710bae9f567e6d2b15b7db
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: df5c52de14368896f77e48ebfd4ba7e4b4f38b67
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52684977"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837679"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Az Azure blob storage használata az IIS és az Azure table storage-események Log Analytics szolgáltatással
 
@@ -195,4 +195,4 @@ Tekintse át a következő példaszkript, másolja, igény szerint módosítsa, 
 ## <a name="next-steps"></a>További lépések
 * [Naplók és mérőszámok az Azure-szolgáltatásokhoz gyűjtése](collect-azure-metrics-logs.md) támogatott Azure-szolgáltatásokat.
 * [Megoldások engedélyezése](../../azure-monitor/insights/solutions.md) nyújt betekintést az adatokat.
-* [Keresési lekérdezéseket használnak](../../log-analytics/log-analytics-queries.md) az adatok elemzéséhez.
+* [Keresési lekérdezéseket használnak](../../azure-monitor/log-query/log-query-overview.md) az adatok elemzéséhez.

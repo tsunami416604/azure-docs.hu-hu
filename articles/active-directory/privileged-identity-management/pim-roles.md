@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: 63f4c4c48dd0fed3130dc99929a0e84c3cba2026
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 531d19925d24930b6a2bd642a8ff0ec55bd6d16f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46466047"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841574"
 ---
 # <a name="azure-ad-directory-roles-you-can-manage-in-pim"></a>A PIM segítségével kezelheti az Azure AD címtárszerepkörök
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -75,7 +75,7 @@ Online Microsoft-szolgáltatásokhoz való hozzáférés szükségessé, a felha
 
 ## <a name="assign-a-license-to-a-user-in-azure-ad"></a>Rendeljen egy licencet a felhasználó Azure AD-ben
 
-1. Jelentkezzen be a [az Azure portal](http://portal.azure.com) egy globális rendszergazdai vagy tulajdonosi szerepkörrel rendelkező.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy globális rendszergazdai vagy tulajdonosi szerepkörrel rendelkező.
 
 1. Válassza ki a használni kívánt Azure AD-címtár, és licenceket társítva van.
 
@@ -93,7 +93,7 @@ Online Microsoft-szolgáltatásokhoz való hozzáférés szükségessé, a felha
 
 1. Kattintson a **hozzárendelése** a licenc hozzárendelése panel megnyitásához.
 
-    ![Licenccel rendelkező felhasználók](./media/pim-roles/licenses-licensed-users.png)
+    ![A licenccel rendelkező felhasználók](./media/pim-roles/licenses-licensed-users.png)
 
 1. Válassza ki a felhasználót vagy csoportot, amelyet szeretne hozzárendelni a licencet.
 
@@ -108,6 +108,6 @@ Online Microsoft-szolgáltatásokhoz való hozzáférés szükségessé, a felha
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>További lépések
 
-- [A PIM használatának megkezdése](pim-getting-started.md)
+- [Ismerkedés a PIM-mel](pim-getting-started.md)
 - [A PIM az Azure AD-címtárbeli szerepkörök hozzárendelése](pim-how-to-add-role-to-user.md)
 

@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5bc1e0faf01125f498eb339bba841b96f6de9d82
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: cec84b5be64f82d4edd286127330ae3bdebc6367
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181804"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842575"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés a az Azure Active Directory B2C fiókkal Amazon beállítása
 
 ## <a name="create-an-amazon-application"></a>Amazon-alkalmazás létrehozása
 
-Amazon fiók használatára az identitásszolgáltatójaként az Azure Active Directory (Azure AD) B2C-ben, hozzon létre egy alkalmazást a bérlőben, hogy az azt jelölő kell. Ha még nem rendelkezik egy Amazon-fiókkal beszerezheti a [ http://www.amazon.com/ ](http://www.amazon.com/).
+Amazon fiók használatára az identitásszolgáltatójaként az Azure Active Directory (Azure AD) B2C-ben, hozzon létre egy alkalmazást a bérlőben, hogy az azt jelölő kell. Ha még nem rendelkezik egy Amazon-fiókkal beszerezheti a [ https://www.amazon.com/ ](https://www.amazon.com/).
 
 1. Jelentkezzen be a [Amazon fejlesztői központ](https://login.amazon.com/) Amazon-fiókja hitelesítő adataival.
 2. Ha még nem tette meg, kattintson a **regisztráció**, hajtsa végre a fejlesztői regisztrációs lépéseket, és fogadja el a szabályzatot.
@@ -33,7 +33,7 @@ Amazon fiók használatára az identitásszolgáltatójaként az Azure Active Di
 
 ## <a name="configure-an-amazon-account-as-an-identity-provider"></a>Amazon-fiókkal konfigurálása identitás-szolgáltatóként
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
 2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
 3. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
 4. Válassza ki **Identitásszolgáltatók**, majd válassza ki **Hozzáadás**.

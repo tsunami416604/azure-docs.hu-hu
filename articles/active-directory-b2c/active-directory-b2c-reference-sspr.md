@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7dd68f409ad4c8130ed841ddc7ef5910d3b1945c
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: c9d6a66a9d54c75fbb20775f0ae4de4d22a7d599
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52719742"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840866"
 ---
 # <a name="set-up-self-service-password-reset-for-your-customers"></a>Állítsa be az önkiszolgáló jelszó-visszaállítás, az ügyfelek számára
 Az önkiszolgáló jelszó-visszaállítási szolgáltatással az ügyfelek, akik regisztráltak a helyi fiókok alaphelyzetbe állíthatja a saját jelszavukat. Ez jelentősen csökkenti a a megoldás a támogatási csapat találkozik, különösen ha az alkalmazás ügyfélbázisra rendszeresen használja. Ellenőrzött e-mail cím használata jelenleg az egyetlen támogatott helyreállítási módszer.
 
 > [!NOTE]
-> Ez a cikk vonatkozik az önkiszolgáló jelszó alaphelyzetbe állítása a V1 környezetében használt **jelentkezzen be a** felhasználói folyamatot, amely használja **helyi fiókba** Identitásszolgáltatóként. Ha a megoldásportálról indított az alkalmazás teljes mértékben testre szabható jelszó alaphelyzetbe állítása felhasználói folyamatok van szüksége, tekintse meg [Ez a cikk](active-directory-b2c-reference-policies.md#create-a-password-reset-policy).
+> Ez a cikk vonatkozik az önkiszolgáló jelszó alaphelyzetbe állítása a V1 környezetében használt **jelentkezzen be a** felhasználói folyamatot, amely használja **helyi fiókba** Identitásszolgáltatóként. Ha a megoldásportálról indított az alkalmazás teljes mértékben testre szabható jelszó alaphelyzetbe állítása felhasználói folyamatok van szüksége, tekintse meg [Ez a cikk](active-directory-b2c-reference-policies.md#create-a-password-reset-user-flow).
 > 
 > 
 

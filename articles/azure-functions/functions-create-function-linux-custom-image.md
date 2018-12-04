@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: de15d1f8c268e80ac1659c53a141ec39cc6d3cb8
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 5d03b7075b1ae590c400eb96525ab84d8487fa3e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564809"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840095"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>Függvény létrehozása Linux rendszerben egyéni rendszerkép használatával (előzetes verzió)
 
@@ -66,6 +66,7 @@ Amikor a rendszer kéri, válasszon ki egy feldolgozói futtatókörnyezetet az 
 
 * `dotnet`: létrehoz egy .NET osztálytárprojektet (.csproj).
 * `node`: létrehoz egy JavaScript-projektet.
+* `python`: egy Python-projektet hoz létre.
 
 A parancs végrehajtásakor a következő kimenethez hasonlót fog látni:
 

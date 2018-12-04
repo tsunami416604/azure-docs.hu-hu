@@ -11,21 +11,21 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/07/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 09c719dd03f375127448851d0af9dada9238d1f1
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: a2dea792db39c753d0ea720c8e610a399401315f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377504"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840571"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Gyors útmutató: Linux rendszerű kiszolgáló virtuális gép létrehozása az Azure Stack PowerShell használatával
 
 *A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Létrehozhat egy Ubuntu Server 16.04 LTS virtuális gépet az Azure Stack PowerShell használatával. Kövesse a cikkben hozhat létre és használhat egy virtuális gépet.  Ez a cikk is biztosít a lépéseket:
+Ubuntu Server 16.04 LTS virtuális gépként az Azure Stack PowerShell használatával hozhat létre. Kövesse a cikkben hozhat létre és használhat egy virtuális gépet.  Ez a cikk is biztosít a lépéseket:
 
 * Csatlakozzon a virtuális géphez a távoli ügyfélhez.
 * Az NGINX-webkiszolgálót, és az alapértelmezett kezdőlap megtekintéséhez.
@@ -47,7 +47,7 @@ Létrehozhat egy Ubuntu Server 16.04 LTS virtuális gépet az Azure Stack PowerS
 
 Egy erőforráscsoport olyan logikai tároló, ahol üzembe helyezése és kezelése az Azure Stack-erőforrások. A fejlesztői készlet vagy az Azure Stackkel integrált rendszereknél futtassa a következő kódblokk egy erőforráscsoport létrehozásához. A jelen dokumentum összes változót értékek vannak hozzárendelve, használja ezeket az értékeket, vagy rendelje hozzá az új értékekkel.
 
-```powershell
+```powershell  
 # Create variables to store the location and resource group names.
 $location = "local"
 $ResourceGroupName = "myResourceGroup"
@@ -61,7 +61,7 @@ New-AzureRmResourceGroup `
 
 Hozzon létre egy tárfiókot, és hozzon létre egy storage-tárolót az Ubuntu Server 16.04 LTS-rendszerképhez.
 
-```powershell
+```powershell  
 # Create variables to store the storage account name and the storage account SKU information
 $StorageAccountName = "mystorageaccount"
 $SkuName = "Standard_LRS"
@@ -395,7 +395,7 @@ Az ssh-val telepített ügyfél rendszer a következő parancs segítségével c
 ssh <Public IP Address>
 ```
 
-Amikor a rendszer kéri, adja meg a bejelentkezési felhasználójának azureuser. Ha egy hozzáférési kódot az SSH-kulcsok létrehozásakor használt, kell meg a jelszót.
+Amikor a rendszer kéri, jelentkezzen be, **azureuser**. Ha egy hozzáférési kódot az SSH-kulcsok létrehozásakor használt, kell meg a jelszót.
 
 ## <a name="install-the-nginx-web-server"></a>Az NGINX-webkiszolgáló telepítése
 

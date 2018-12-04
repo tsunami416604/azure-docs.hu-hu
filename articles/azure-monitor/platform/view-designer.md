@@ -15,15 +15,15 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: bbf38d17f2f411fde240a67f6666953b275fb788
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: af2ecad79bef0889ca0d1e47171ebaf9777418ca
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642472"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833397"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Az egyéni nézetek létrehozása az adatforrásnézet-tervezőből a Log Analytics használatával
-Az adatforrásnézet-tervezőből használatával [Azure Log Analytics](../../log-analytics/log-analytics-queries.md), különböző egyéni nézeteket hozhat létre az Azure Portalon, amelyek segítségével adatokat a Log Analytics-munkaterület megjelenítése. Ez a cikk áttekintést nyújt az adatforrásnézet-tervezőből és eljárások létrehozása és módosítása az egyéni nézetek.
+Az adatforrásnézet-tervezőből használatával [Azure Log Analytics](../../azure-monitor/log-query/log-query-overview.md), különböző egyéni nézeteket hozhat létre az Azure Portalon, amelyek segítségével adatokat a Log Analytics-munkaterület megjelenítése. Ez a cikk áttekintést nyújt az adatforrásnézet-tervezőből és eljárások létrehozása és módosítása az egyéni nézetek.
 
 Nézettervező kapcsolatos további információkért lásd:
 
@@ -42,7 +42,7 @@ Az adatforrásnézet-tervezőből létrehozott nézeteket az alábbi táblázatb
 |:--- |:--- |
 | Csempék | A Log Analytics-munkaterületre jelennek **áttekintése** lapot. Minden csempe ezt az egyéni nézetének visual összegzését jeleníti meg. Minden csempe írja be a rekordok egy másik vizualizációt biztosít. Egyéni nézet megjelenítéséhez olyan csempét választ. |
 | Egyéni nézet | Amikor kiválaszt egy csempe jelenik meg. Egyes nézetek egy vagy több Vizualizáció részt tartalmaz. |
-| Vizualizáció részei | Egy vizualizációt, az adatok alapján egy vagy több Log Analytics-munkaterületnek jelentenek [naplókereséseket](../../log-analytics/log-analytics-queries.md). A legtöbb részei egy fejlécet, amely biztosít magas szintű képi megjelenítés, és a egy listát, amely megjeleníti a kiemelt találatok tartalmazzák. Minden egyes rész írja be a Log Analytics-munkaterületet a rekordok egy másik vizualizációt biztosít. A rész részletes rekordok biztosító Naplókeresés végrehajtásához elemek választhatja ki. |
+| Vizualizáció részei | Egy vizualizációt, az adatok alapján egy vagy több Log Analytics-munkaterületnek jelentenek [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md). A legtöbb részei egy fejlécet, amely biztosít magas szintű képi megjelenítés, és a egy listát, amely megjeleníti a kiemelt találatok tartalmazzák. Minden egyes rész írja be a Log Analytics-munkaterületet a rekordok egy másik vizualizációt biztosít. A rész részletes rekordok biztosító Naplókeresés végrehajtásához elemek választhatja ki. |
 
 
 ## <a name="work-with-an-existing-view"></a>Meglévő nézet használata

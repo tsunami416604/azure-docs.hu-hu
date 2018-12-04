@@ -18,12 +18,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: sureshja
 ms.custom: aaddev
-ms.openlocfilehash: b8dba999ac6523aad29aae40b528fd010fec0550
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 7a3c3e39792119d296c849c012d4798ec85a0e03
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687350"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845483"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>Útmutató: az Azure AD Graph API használata
 
@@ -82,7 +82,7 @@ Vegye figyelembe a következő szolgáltatásokat és az Azure AD Graph Explorer
 
 ## <a name="using-fiddler-to-write-to-the-directory"></a>A könyvtárba írást a Fiddler segítségével
 
-A rövid útmutató az alkalmazásában használhatja a Fiddler webes hibakereső eljárás szerint "write" az Azure AD-címtárral végzett műveletek végrehajtása. Például lekérése, és töltse fel a felhasználó profilfényképének (ez nem lehetséges az Azure AD Graph Explorer). További információk, valamint a Fiddler telepítéséhez lásd: [ http://www.telerik.com/fiddler ](http://www.telerik.com/fiddler).
+A rövid útmutató az alkalmazásában használhatja a Fiddler webes hibakereső eljárás szerint "write" az Azure AD-címtárral végzett műveletek végrehajtása. Például lekérése, és töltse fel a felhasználó profilfényképének (ez nem lehetséges az Azure AD Graph Explorer). További információk, valamint a Fiddler telepítéséhez lásd: [ https://www.telerik.com/fiddler ](https://www.telerik.com/fiddler).
 
 Az alábbi példában a Fiddler webes hibakereső használhatja "MyTestGroup" új biztonsági csoport létrehozása az Azure AD-címtárban.
 

@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 10/24/2018
-ms.openlocfilehash: 31b09818f901ecf957364ae77fd8c6e636b04342
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.date: 12/03/2018
+ms.openlocfilehash: 489eccf1b73e7f5df76a3ce681b4479893a9e0ac
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712143"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843206"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről Azure SQL Database felügyelt példány T-SQL különbségek
 
@@ -145,7 +145,7 @@ Felügyelt példány nem elérhető fájlok, így nem hozható létre a kriptogr
 
 ### <a name="collation"></a>Rendezés
 
-Kiszolgáló illesztés `SQL_Latin1_General_CP1_CI_AS` és nem módosítható. Lásd: [rendezések](https://docs.microsoft.com/sql/t-sql/statements/collations).
+Az alapértelmezett példány rendezése nem `SQL_Latin1_General_CP1_CI_AS` és létrehozási paraméterként is megadhatók. Lásd: [rendezések](https://docs.microsoft.com/sql/t-sql/statements/collations).
 
 ### <a name="database-options"></a>Adatbázis-beállítások
 
@@ -277,7 +277,8 @@ Műveletek
 ### <a name="logins--users"></a>Bejelentkezések és felhasználók
 
 - Létrehozott SQL-bejelentkezésekben `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY`, és `FROM SID` támogatottak. Lásd: [létrehozás bejelentkezési](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql).
-- A létrehozott Windows-bejelentkezések `CREATE LOGIN ... FROM WINDOWS` szintaxis használata nem támogatott.
+- A létrehozott Azure Active Directory (AAD) bejelentkezések [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) szintaxis vagy a [CREATE USER](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) szintaxis használata támogatott (**nyilvános előzetes verzióban**).
+- A létrehozott Windows-bejelentkezések `CREATE LOGIN ... FROM WINDOWS` szintaxis használata nem támogatott. Használja az Azure Active Directory-bejelentkezések és felhasználók.
 - A példányt hozott létre az Azure Active Directory (Azure AD) felhasználó [rendszergazdai jogosultságokat unrestricted](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#unrestricted-administrative-accounts).
 - Nem rendszergazdai Azure Active Directory (Azure AD) adatbázisszintű felhasználók hozható létre `CREATE USER ... FROM EXTERNAL PROVIDER` szintaxist. Lásd: [felhasználó létrehozása... A KÜLSŐ SZOLGÁLTATÓ](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users)
 
@@ -333,7 +334,7 @@ Restore utasítások kapcsolatos információkért lásd: [VISSZAÁLLÍTÁSA uta
 Kereszt-példány service broker nem támogatott:
 
 - `sys.routes` -Előfeltétel: Válasszon ki sys.routes címet. -Címnek kell lennie a helyi minden útvonalon. Lásd: [sys.routes](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
-- `CREATE ROUTE` -nem `CREATE ROUTE` a `ADDRESS` eltérő `LOCAL`. Lásd: [létrehozás ÚTVONAL](https://docs.microsoft.com/sql/t-sql/statements/create-route-transact-sql).
+- `CREATE ROUTE` – nem használható `CREATE ROUTE` a `ADDRESS` eltérő `LOCAL`. Lásd: [létrehozás ÚTVONAL](https://docs.microsoft.com/sql/t-sql/statements/create-route-transact-sql).
 - `ALTER ROUTE` nem lehet `ALTER ROUTE` a `ADDRESS` eltérő `LOCAL`. Lásd: [ALTER ÚTVONAL](https://docs.microsoft.com/sql/t-sql/statements/alter-route-transact-sql).  
 
 ### <a name="service-key-and-service-master-key"></a>Kulcs és a szolgáltatás főkulcsának szolgáltatás
@@ -427,12 +428,12 @@ A következő változók, functions és a nézetek különböző eredményeket a
 
 Minden felügyelt példány rendelkezik az Azure prémium szintű lemez terület számára lefoglalt 35 TB tárterület, és egyes adatbázisfájlok külön fizikai lemezen kerül. Adatlemez-méretet 128 GB-os, 256 GB, 512 GB, 1 TB vagy 4 TB-os lehet. Nem használt területet a lemezen nem számítunk fel díjat, de az Azure prémium szintű lemezméretek teljes összege legfeljebb 35 TB. Bizonyos esetekben egy felügyelt példányt, amely nem kell 8 TB összesen meghaladhatja a 35 TB-os az Azure a belső töredezettség miatt a tárhely mérete korlátozza.
 
-Például a felügyelt példány lehet egy fájl 1,2 TB méretű, amely el van helyezve, és 4 TB-os lemezt 248 fájlok minden 1 GB méretű, amely külön 128 GB-os lemezeken vannak elhelyezve. Ebben a példában:
+Például a felügyelt példány lehet egy 1,2 TB-os fájlt, amely el van helyezve a 4 TB-os lemez mérete, és 248-fájlok (minden 1 GB-os méretig) külön 128 GB-os lemezeken vannak elhelyezve. Ebben a példában:
 
-- a teljes lemezméret: x 4 1 TB + 248 x 128 GB = 35 TB.
+- Az összes lefoglalt lemezterület tárméret: x 4 1 TB + 248 x 128 GB = 35 TB.
 - a példányon adatbázisok teljes lefoglalt terület: x 1.2 1 TB + 248 x 1 GB = 1,4 TB.
 
-Ez az ábra bemutatja, hogy bizonyos körülmény miatt, fájlok jellemző terjesztési csoportban a felügyelt példány elérje előfordulhat, hogy a csatlakoztatott Azure prémium szintű lemezes számára fenntartva, amikor előfordulhat, hogy nem a várt 35 TB.
+Ez az ábra bemutatja, hogy bizonyos körülmény miatt a fájlok egy adott terjesztési csoportban, a felügyelt példány lehet elérni a csatolt Azure prémium szintű lemezes számára fenntartva, amikor előfordulhat, hogy nem a várt 35 TB.
 
 Ebben a példában a meglévő adatbázisok továbbra is működni fog, és növelhető bármilyen probléma nélküli mindaddig, amíg az új fájlok nem lettek hozzáadva. Azonban új adatbázisokat nem kell létrehozni, vagy vissza, mert nem áll elég hely az új meghajtók, még akkor is, ha az összes adatbázis teljes mérete nem éri el a példány méretének korlátja. A visszaadott hiba ebben az esetben nem egyértelmű.
 
@@ -443,7 +444,10 @@ Győződjön meg arról, hogy távolítsa el a vezető `?` az Azure portal haszn
 
 ### <a name="tooling"></a>Eszköztámogatás
 
-SQL Server Management Studio és az SQL Server Data Tools néhány probléma lehet felügyelt példány elérése közben. Eszközökkel kapcsolatos összes problémát általános rendelkezésre állás előtti kibocsátásokban megtörténik.
+SQL Server Management Studio (SSMS) és az SQL Server Data Tools (SSDT) közben: felügyelt példány néhány probléma lehet.
+
+- Az Azure AD-bejelentkezések és felhasználók használata (**nyilvános előzetes verzióban**) és az SSDT együttes használata jelenleg nem támogatott.
+- Az Azure AD-bejelentkezések és felhasználók-szkriptek (**nyilvános előzetes verzióban**) nem támogatottak az ssms-ben.
 
 ### <a name="incorrect-database-names-in-some-views-logs-and-messages"></a>Az egyes nézetek, naplók és üzenetek helytelen adatbázis neve
 
@@ -451,7 +455,7 @@ Több rendszernézetek, teljesítményszámlálók, hibaüzenetek, xevent típus
 
 ### <a name="database-mail-profile"></a>Adatbázisbeli levelezési profil
 
-Csak egy adatbázisbeli levelezési profil lehet és kell meghívni `AzureManagedInstance_dbmail_profile`. Ez az egy átmeneti korlátozás, amely hamarosan törlődnek.
+Csak egy adatbázisbeli levelezési profil lehet és kell meghívni `AzureManagedInstance_dbmail_profile`.
 
 ### <a name="error-logs-are-not-persisted"></a>Hibanaplók nem megőrzött
 
@@ -496,7 +500,7 @@ Bár ez a kód ugyanazon adatok együttműködik az MSDTC megadása kötelező.
 
 ### <a name="clr-modules-and-linked-servers-sometime-cannot-reference-local-ip-address"></a>CLR-beli modulok és a egy ideig a csatolt kiszolgálók nem hivatkozhat helyi IP-cím
 
-CLR-beli modulok helyezi el a felügyelt példány és a egy ideig hivatkoznak a jelenlegi példány csatolt kiszolgálók/elosztott lekérdezések nem tudja feloldani az IP-címét a helyi példány. Ez az átmeneti hiba.
+CLR-beli modulok helyezi el a felügyelt példány és a egy ideig hivatkoznak a jelenlegi példány csatolt kiszolgálók/elosztott lekérdezések nem tudja feloldani az IP-címét a helyi példány. Ez a hiba átmeneti jellegű probléma.
 
 **Megkerülő megoldás**: Ha lehetséges használja a helyi kapcsolatok CLR-beli modulban.
 

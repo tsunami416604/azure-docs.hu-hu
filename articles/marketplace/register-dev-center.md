@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: cc4e128cab3cad235462e29e65fa58002a103bcd
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 393426678d9331837bdc3b73c4e491dbe7eae6fa
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855901"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834825"
 ---
 # <a name="register-in-dev-center"></a>A fejlesztői központban regisztrálása  
 Annak érdekében, győződjön meg arról, hogy nem jelentkezve egy böngésző személyes fiók, nyisson meg egy új Internet Explorer InPrivate vagy Chrome Inkognitó böngészési munkamenetében.  
@@ -171,7 +171,7 @@ A banki és adózási adatait az ajánlati típus transact használatával minde
 > Lépjen a "Program" (https://developer.microsoft.com/dashboard/Account/Programs) , és jelentkezzen be a fejlesztői központban lévő fiókjához. Ha nem lát Azure regisztrált programként, keresse meg a "Ajánlott programok Ön", és keresse meg az Azure-hoz, jelölje be az "Első lépések."
 
 *   **Hogyan lehet hivatkozni a saját fejlesztői központban lévő fiókjához a Cloud Partner Portalon közzétevő profilomhoz?**
-> Az utolsó lépés előtt a közzététel a Cloud Partner portálra a fejlesztői központban lévő fiókjához összekapcsolása [profil](https://cloudpartner.azure.com/#profile). A fejlesztői központban lévő fiókjához eltér-e a fiókját a [Cloud Partner Portalon](https://cloudpartner.azure.com/#alloffers), adja hozzá a fejlesztői központban lévő fiókjához új [felhasználói](https://cloudpartner.azure.com/#documentation/manage-users) az a Cloud Partner portálra. Jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com/#alloffers) a fejlesztői központ-fiókjához. Közzétevő profil található, a felső menüben válassza ki, a böngésző jobb. Válassza ki hivatkozás fejlesztői központban lévő fiókjához.
+> Az utolsó lépés előtt a közzététel a Cloud Partner portálra a fejlesztői központban lévő fiókjához összekapcsolása [profil](https://cloudpartner.azure.com/#profile). A fejlesztői központban lévő fiókjához eltér-e a fiókját a [Cloud Partner Portalon](https://cloudpartner.azure.com/#alloffers), adja hozzá a fejlesztői központban lévő fiókjához új [felhasználói](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-manage-users) az a Cloud Partner portálra. Jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com/#alloffers) a fejlesztői központ-fiókjához. Közzétevő profil található, a felső menüben válassza ki, a böngésző jobb. Válassza ki hivatkozás fejlesztői központban lévő fiókjához.
 
 *   **Miért elutasítják a fejlesztői központban az alkalmazásom?**
 > A külső átvizsgálási vállalati (Duns & Bradstreet) nem tudta Önnel a kapcsolatot a megadott telefonszám keresztül. Forduljon a támogatási szolgálathoz [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) , indítsa újra a átvizsgálási folyamatot

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c363056fc013cc8b8fd67fb9d656d3550d3bf5a2
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 8c3684f93bbf5b9fe9f5ea9167396b9822e70c48
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139509"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841625"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Egyéni házirendek felhasználói út, a felhasználói felület testreszabása
 
@@ -31,7 +31,7 @@ Zökkenőmentes felhasználói élményt az üzleti és ügyfél-megoldással a 
 
 Az Azure AD B2C segítségével-és-megjelenésének felhasználói felület (UX) a különböző oldalakon szolgálja ki és az Azure AD B2C által megjelenített testreszabhatja az egyéni szabályzatok használatával.
 
-Erre a célra az Azure AD B2C-t futtatja a kódot a fogyasztói böngészőben, és a modern és szabványos megközelítést használ [eltérő eredetű erőforrások megosztása (CORS)](http://www.w3.org/TR/cors/) átirányítása egyéni szabályzatokban megadott konkrét URL-címről egyéni tartalom betöltése a HTML5-alapú/CSS-sablonokat. A CORS olyan mechanizmus, amely lehetővé teszi, hogy a korlátozott erőforrások, például a betűtípus, egy weblap, egy másik tartomány, amelyből az erőforrás adja meg a tartományon kívüli kell kérni a rendszer.
+Erre a célra az Azure AD B2C-t futtatja a kódot a fogyasztói böngészőben, és a modern és szabványos megközelítést használ [eltérő eredetű erőforrások megosztása (CORS)](https://www.w3.org/TR/cors/) átirányítása egyéni szabályzatokban megadott konkrét URL-címről egyéni tartalom betöltése a HTML5-alapú/CSS-sablonokat. A CORS olyan mechanizmus, amely lehetővé teszi, hogy a korlátozott erőforrások, például a betűtípus, egy weblap, egy másik tartomány, amelyből az erőforrás adja meg a tartományon kívüli kell kérni a rendszer.
 
 A régi hagyományos módszerétől, ahol sablon oldalak tulajdonosa a megoldás, ahol a megadott korlátozott szöveget és képeket, ahol az elrendezés és működését érintő korlátozott szabályozása a CORS módja egy zökkenőmentes eléréséhez több mint nehézségek vezető által kínált támogatja a HTML5- és CSS, és lehetővé teszi:
 
@@ -69,10 +69,10 @@ Annak érdekében, hogy minden megfelelően működik-e, tegye a következőket:
 - Használjon abszolút URL-CÍMEK például https://yourdomain/content hivatkozások és a CSS-tartalom.
 
 > [!TIP]
-> Ellenőrizze, hogy a hely üzemelteti a tartalmat a CORS-támogatással rendelkezik-e, és tesztelése a CORS-kérések, használhatja a hely http://test-cors.org/. Ez a hely köszönhetően is a CORS-kérést küld egy távoli kiszolgálóra (tesztelje, hogy a CORS támogatott), vagy a CORS-kérést küld a kiszolgáló (az egyes CORS funkcióinak bemutatása).
+> Ellenőrizze, hogy a hely üzemelteti a tartalmat a CORS-támogatással rendelkezik-e, és tesztelése a CORS-kérések, használhatja a hely https://test-cors.org/. Ez a hely köszönhetően is a CORS-kérést küld egy távoli kiszolgálóra (tesztelje, hogy a CORS támogatott), vagy a CORS-kérést küld a kiszolgáló (az egyes CORS funkcióinak bemutatása).
 
 > [!TIP]
-> A hely http://enable-cors.org/ egy több, mint a CORS hasznos forrásokat is jelent.
+> A hely https://enable-cors.org/ egy több, mint a CORS hasznos forrásokat is jelent.
 
 Köszönhetően ez a CORS-alapú megközelítés a végfelhasználók rendelkezik az alkalmazás és az Azure AD B2C által üzemeltetett oldalak közötti egységes felületeket.
 
@@ -120,7 +120,7 @@ A végponthoz tartozó tartalom betöltése az Azure AD B2C CORS (eltérő erede
 Annak ellenőrzéséhez, hogy rendelkezik-e a tárterület üzemelteti a tartalmat a CORS-támogatással, folytassa a következő lépéseket:
 
 1. Nyisson meg egy böngészési munkamenetet, és nyissa meg a lapot *unified.html* használatával a teljes URL-címét a helyet a tárfiókban lévő `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html`. Például: https://contoso369b2c.blob.core.windows.net/b2c/unified.html.
-2. Nyissa meg a http://test-cors.org címet. Ez a hely ellenőrizze, hogy használja az oldal rendelkezik-e a CORS-támogatással teszi lehetővé.  
+2. Nyissa meg a https://test-cors.org címet. Ez a hely ellenőrizze, hogy használja az oldal rendelkezik-e a CORS-támogatással teszi lehetővé.  
 <!--
 ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
 -->

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: fa6ae230a209d804f244d8bc46a3c6ac1abf6071
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 19f3318c8bcaf634447285cab2951a89abf13a67
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725573"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837477"
 ---
 # <a name="azure-ad-b2c-authentication-protocols"></a>Az Azure AD B2C: Hitelesítési protokollok
 Az Azure Active Directory B2C (Azure AD B2C-vel) identitást biztosít az alkalmazások szolgáltatás két, az iparági szabványos protokollok támogatása révén: OpenID Connectet és az OAuth 2.0. A szolgáltatás szabványoknak megfelelő, de bármilyen két implementációiban ezeket a protokollokat is finom eltérések vannak. 
@@ -66,7 +66,7 @@ Néhány biztonsági jogkivonatokat, amelyek meggátolják, hogy a nem hitelesí
 
 Tulajdonosi jogkivonattal továbbított kívül egy biztonságos csatornán, ha egy rosszindulatú fél használhatja a man-in-the-middle támadások beszerezni a jogkivonatot, és a védett erőforrások jogosulatlan elérésére. Biztonsági alapelveket alkalmazható, ha a tulajdonosi jogkivonatokat tárolt vagy későbbi használatra a gyorsítótárba. Mindig győződjön meg arról, hogy az alkalmazás továbbítja, és biztonságosan tárolja a tulajdonosi jogkivonatokat.
 
-További tulajdonosi jogkivonat biztonsági szempontokért lásd: [RFC 6750 5. szakasz](http://tools.ietf.org/html/rfc6750).
+További tulajdonosi jogkivonat biztonsági szempontokért lásd: [RFC 6750 5. szakasz](https://tools.ietf.org/html/rfc6750).
 
 A különböző típusú jogkivonatokat, amelyek az Azure AD B2C-vel kapcsolatos további információk érhetők el a [az Azure AD-jogkivonatok referenciájából](active-directory-b2c-reference-tokens.md).
 

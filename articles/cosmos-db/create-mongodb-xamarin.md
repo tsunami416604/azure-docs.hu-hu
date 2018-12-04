@@ -1,9 +1,8 @@
 ---
-title: 'Azure Cosmos DB: Xamarin.Forms-alkalmazás létrehozása .NET-tel és a MongoDB API-val | Microsoft Docs'
+title: 'Az Azure Cosmos DB: .NET-tel és a MongoDB API-t a Xamarin.Forms-alkalmazás létrehozása'
 description: Egy Xamarin-kódminta bemutatása, amellyel csatlakoztatható és lekérdezhető az Azure Cosmos DB MongoDB API
 services: cosmos-db
 author: codemillmatt
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.custom: quickstart, xamarin
@@ -11,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: 45d299e2d5e1f9c9c454e6b2f77df7cdf8295e5f
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 4fde6d203999b15f0f60d4879c2fdc595e1fb7e9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568709"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835556"
 ---
 # <a name="quickstart-build-a-mongodb-api-xamarinforms-app-with-net-and-the-azure-portal"></a>Rövid útmutató: MongoDB API Xamarin.Forms-alkalmazás létrehozása a .NET-tel az Azure Portalon
 

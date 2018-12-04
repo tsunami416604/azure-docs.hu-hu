@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: d9ed140d404387b94428cea5d925911806b62552
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 129f77ec9ea4d4e2633e1ea0b02795bc0df26433
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705856"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834706"
 ---
 # <a name="what-is-the-myapps-portal"></a>Mi az a MyApps portálról?
 
@@ -41,9 +41,9 @@ A MyApps portálról elkülönül az Azure Portalon. Nem igényel, hogy rendelke
 
 ## <a name="access-the-myapps-portal"></a>Hozzáférés a MyApps portálról
 
-Hozzáférhet a MyApps portálról a `http://myapps.microsoft.com`.
+Hozzáférhet a MyApps portálról a `https://myapps.microsoft.com`.
 
-Ha a bejelentkezési lapon konfigurált egyéni márkajelzési, az URL-címet a szervezet tartományához hozzáfűzésével márkajelzési betöltheti (például `http://myapps.microsoft.com/<your domain>.com`).
+Ha a bejelentkezési lapon konfigurált egyéni márkajelzési, az URL-címet a szervezet tartományához hozzáfűzésével márkajelzési betöltheti (például `https://myapps.microsoft.com/<your domain>.com`).
 
 Minden aktív vagy ellenőrzött tartomány nevét az Azure Portalon konfigurált itt látható módon használható: ![Wingtip Toys címtárra tartománynév][2]  
 

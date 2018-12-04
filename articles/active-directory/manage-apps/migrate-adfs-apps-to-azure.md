@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: b799a3947770b44752b599dbb2c47cbf1cfbcda2
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 647ff43d0b1e0dc52ccecd2dad709af969c61c15
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49959060"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840664"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>Az AD FS az Azure AD-alkalmazások áthelyezése 
 
@@ -203,7 +203,7 @@ A felhasználók az Azure AD Portalon való hozzárendeléséhez lépjen az SaaS
 
 ![„Hozzárendelés hozzáadása” panel](media/migrate-adfs-apps-to-azure/migrate7.png)
 
-A hozzáférés ellenőrzéséhez győződjön meg róla, hogy a felhasználó látja-e az adott SaaS-alkalmazást a bejelentkezéskor a [hozzáférési panelen](../user-help/active-directory-saas-access-panel-introduction.md). A hozzáférési panel itt található http://myapps.microsoft.com. Ebben a példában az alábbi felhasználóhoz sikeresen hozzá lett rendelve a Salesforce- és a ServiceNow-hozzáférés.
+A hozzáférés ellenőrzéséhez győződjön meg róla, hogy a felhasználó látja-e az adott SaaS-alkalmazást a bejelentkezéskor a [hozzáférési panelen](../user-help/active-directory-saas-access-panel-introduction.md). A hozzáférési panel itt található https://myapps.microsoft.com. Ebben a példában az alábbi felhasználóhoz sikeresen hozzá lett rendelve a Salesforce- és a ServiceNow-hozzáférés.
 
 ![Példa: hozzáférési panel a Salesforce és a ServiceNow alkalmazásokkal](media/migrate-adfs-apps-to-azure/migrate8.png)
 

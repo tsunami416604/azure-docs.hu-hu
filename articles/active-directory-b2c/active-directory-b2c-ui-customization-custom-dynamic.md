@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 11a14bc8b593e5e7d81e9bdbd4ac4ee3b2bbecaa
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: f078c1389e36b82f95b011ca1fbd7fbd1c4f895e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582887"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834223"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Az Azure Active Directory B2C: Dinamikus tartalom a felhasználói felület konfigurálása egyéni szabályzatok használatával
 
@@ -193,7 +193,7 @@ A HTML5-alapú sablon készen áll a használatra. Azonban nem érhető el a a `
 * A webtartalom-kiszolgáló a CORS engedélyezve van.
 
     >[!NOTE]
-    >Győződjön meg arról, hogy a hely hol tárolja a tartalmat a CORS engedélyezve van, és tesztelheti a CORS-kérések, lépjen a [test-cors.org](http://test-cors.org/) webhelyén. 
+    >Győződjön meg arról, hogy a hely hol tárolja a tartalmat a CORS engedélyezve van, és tesztelheti a CORS-kérések, lépjen a [test-cors.org](https://test-cors.org/) webhelyén. 
 
 * A biztonságos keresztül szolgálatban tartalma **HTTPS**.
 * Használ *abszolút URL-CÍMEK*, mint például *https://yourdomain/content*, minden hivatkozások, a CSS-tartalom és a képeket.

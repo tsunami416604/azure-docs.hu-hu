@@ -7,16 +7,16 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 09/05/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
-ms.reviewer: ''
+ms.reviewer: kivenkat
 ms.custom: mvc
-ms.openlocfilehash: e82c3de4461e2d663496cd4ae4a98c10e7819466
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 0664316d73b1473ab52b08f8abead2ec33d121b6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025410"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836746"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>Gyors útmutató: Linux rendszerű kiszolgáló virtuális gép létrehozása az Azure Stack portálon
 
@@ -36,7 +36,7 @@ Létrehozhat egy Ubuntu Server 16.04 LTS virtuális gépet az Azure Stack-portá
 
 * **Egy Linuxos rendszerképet az Azure Stack piactéren**
 
-   Az Azure Stack piactéren alapértelmezés szerint nem tartalmaz a Linux-rendszerképen. Linuxos virtuális gép létrehozása előtt győződjön meg arról, hogy biztosít-e az Azure Stack-operátorokról a **Ubuntu Server 16.04 LTS** rendszerképre van szüksége. Az operátor leírt lépéseket követve használhat a [Piactéri termékek letöltése az Azure-ból az Azure Stackhez](../azure-stack-download-azure-marketplace-item.md) cikk.
+   Az Azure Stack piactéren alapértelmezés szerint nem rendelkezik egy Linuxos rendszerképet. Ellenőrizze, hogy az Azure Stack operátori biztosít a **Ubuntu Server 16.04 LTS** lemezképet a Marketplace-en. Az operátor leírt lépéseket követve használhat a [Piactéri termékek letöltése az Azure-ból az Azure Stackhez](../azure-stack-download-azure-marketplace-item.md) cikk.
 
 * **Egy SSH-ügyféllel való hozzáférés**
 
@@ -71,7 +71,7 @@ Jelentkezzen be az Azure Stack portálon. Az Azure Stack portálon címe attól 
 
 2. Válassza a **Számítás**, majd az **Ubuntu Server 16.04 LTS** elemet.
    
-   ![Válasszon a Linux-kiszolgálón](media/azure-stack-quick-linux-portal/select.png)
+   ![Válassza ki a Linux-kiszolgálón](media/azure-stack-quick-linux-portal/select.png)
 1. Kattintson a **Create** (Létrehozás) gombra.
 
 4. Írja be a virtuális gép adatait. A **Hitelesítés típusa** résznél válassza az **SSH nyilvános kulcs** lehetőséget. Illessze be az SSH nyilvános kulcs mentése, és kattintson a **OK**.
@@ -97,11 +97,11 @@ Jelentkezzen be az Azure Stack portálon. Az Azure Stack portálon címe attól 
 
 ## <a name="connect-to-the-virtual-machine"></a>Csatlakozás a virtuális géphez
 
-1. Kattintson a **Connect** a virtuális gép oldalon. Ez megjeleníti a virtuális géphez való kapcsolódáshoz szükséges SSH kapcsolati karakterláncot. 
+1. Kattintson a **Connect** a virtuális gép oldalon. Megtalálhatja az SSH-kapcsolati karakterláncot, amely a virtuális gépnek csatlakoznia kell. 
 
 2. Nyissa meg a PuTTY eszközt.
 
-3. Az a **PuTTY konfigurációs** képernyő fog használni a **kategória** ablakban görgessen felfelé vagy lefelé. Görgessen le a **SSH**, bontsa ki a **SSH**, és kattintson a **Auth**. Kattintson a **Tallózás** , és válassza ki a mentett titkos kulcs fájlját.
+3. A PuTTY konfigurációs képernyőjén fogja használni a **kategória** ablakban görgessen felfelé vagy lefelé. Görgessen le a **SSH**, bontsa ki a **SSH**, és kattintson a **Auth**. Kattintson a **Tallózás** , és válassza ki a mentett titkos kulcs fájlját.
    ![Virtuális gép csatlakoztatása](media/azure-stack-quick-linux-portal/putty03.PNG)
 
 4. A másolatot görgessen a **kategória** ablakot, és kattintson **munkamenet**.

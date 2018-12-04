@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2018
 ms.author: mjbrown
-ms.openlocfilehash: c0525cfba16fb61f8388ae4d6a693be3bb71674c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 0333bc5e95b74fc97cfff3d79adbe28aefff5d40
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629067"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834638"
 ---
 # <a name="indexing-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelése
 
@@ -25,7 +25,7 @@ JSON-dokumentumok formájában a tárolóban lévő elemek kivetítést, és ők
 
 Adja meg szülőként a tényleges csomópontok, a címkék a dokumentum alá tartozó, egy ál gyökércsomópont jön létre. A beágyazott adatstruktúrák meghajtó a hierarchiában a fában. A numerikus értékek (például 0, 1,...) feliratú mesterséges csomópontok köztes enumerálások megjelenítésére alkalmazzák, és a tömb indexek.
 
-## <a name="index-paths"></a>Index elérési utak
+## <a name="index-paths"></a>Indexek elérési útjai
 
 Az Azure Cosmos DB-projektek, JSON-dokumentumok formájában elemek, és tetszőleges fák. Majd hangolhassa a szabályzatok az elérési utak a fa belül. Választhat, vagy elérési utak kizárása a indexelés. Ez jobb írási teljesítményt, és csökkentheti a indexelt tárolási forgatókönyvekhez, ahol a lekérdezési mintáknak ismert előre. További tudnivalókért lásd: [Index elérési utak](index-paths.md).
 

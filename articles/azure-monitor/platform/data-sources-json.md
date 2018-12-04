@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c8972df6f42920af6a9bd5f04a27f14dc647da44
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: f749bea517ce8ed3f910efa92d0f0c237cd63b6c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336844"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833346"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-log-analytics"></a>A Log Analytics Linuxhoz készült Log Analytics-ügynökkel rendelkező egyéni JSON adatforrások gyűjtése
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -106,5 +106,5 @@ Beágyazott JSON-adatok források támogatottak, de az indexelt minden szülő m
 
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [naplókereséseket](../../log-analytics/log-analytics-queries.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 
+* Ismerje meg [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 
  

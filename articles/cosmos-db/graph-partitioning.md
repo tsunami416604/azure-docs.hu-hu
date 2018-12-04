@@ -1,21 +1,19 @@
 ---
-title: Az Azure Cosmos DB Gremlin API particionálás |} A Microsoft Docs
+title: Az Azure Cosmos DB Gremlin API particionálása
 description: Ismerje meg, hogyan használhatja egy particionált Graph Azure Cosmos DB-ben.
 services: cosmos-db
 author: luisbosquez
-manager: kfile
+ms.author: lbosq
 ms.service: cosmos-db
 ms.component: cosmosdb-graph
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.author: lbosq
-ms.openlocfilehash: 7e9de68866b5e5849d0e48ad5073fc7b89fbb1ca
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 27b0d9d7ca22ba346dbc288020f704dc7d27aa6a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239304"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837196"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Az Azure Cosmos DB egy particionált graph használatával
 

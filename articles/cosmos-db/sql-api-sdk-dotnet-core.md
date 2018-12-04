@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5216a4a21fbbded4a10429c658f4842db225657
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 5a0fb429c36005edca579cbdb7b379e6b04be60b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161718"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840843"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB .NET Core SDK-t az SQL API-hoz: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -52,6 +52,13 @@ ms.locfileid: "52161718"
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 Az Azure Cosmos DB .NET Core SDK legújabb verziójában funkcióparitás rendelkezik a [Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet.md).
+
+### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1-Preview
+* 1 előzetes verziójának [3.0.0-s verziójának](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) a .NET SDK a nyilvános előzetes verziójához.
+* Cél .NET Standard, amely támogatja a .NET-keretrendszer 4.6.1+ és a .NET Core 2.0 +
+* Új hálózatiobjektum-modellt, a legfelső szintű CosmosClient és módszerek elosztja a megfelelő CosmosDatabases, CosmosContainers és CosmosItems osztályokat. 
+* Streamek támogatását. 
+* Frissített CosmosResponseMessage állapotkódot adja vissza, és csak throw kivétel, ha nem érkezik válasz-kiszolgálóról. 
 
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 

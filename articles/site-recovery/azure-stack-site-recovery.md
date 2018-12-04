@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.topic: conceptual
 ms.service: site-recovery
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 9da64ebe675f9d481c7474a81fec294d50e49ce7
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8285632d8dea76763c65dd06e8be2d7494a47188
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215208"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838990"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Az Azure Stack-alapú virtuális gépek replikálása az Azure-bA
 
@@ -207,8 +207,8 @@ Válassza ki és ellenőrizze a célerőforrásokat.
 ### <a name="create-a-replication-policy"></a>Replikációs házirend létrehozása
 
 1. Kattintson a **az infrastruktúra előkészítése** > **replikációs beállítások**.
-2. A **replikációs házirend létrehozása**, adja meg a szabályzat nevét.
-3. A **helyreállítási Időkorlát küszöbértéke**, adja meg a helyreállítási pont célkitűzés (RPO) vonatkozó korlátozás.
+2. A **Replikációs szabályzat létrehozása** beállításnál adja meg a szabályzat nevét.
+3. Az **RPO küszöbértéke** beállításnál adja meg a helyreállítási időkorlátot (RPO).
     - A replikált adatok helyreállítási pontjait beállítás szerint jönnek létre.
     - Ez a beállítás nem befolyásolja a replikáció, azaz folyamatos. Ez egyszerűen egy riasztással figyelmeztet, ha a küszöb határt egy helyreállítási pont létrehozása nélkül.
 4. A **helyreállítási pont megőrzése**, adja meg, mennyi ideig van megtartva egyes helyreállítási pontok. A replikált virtuális gépek az adott időszakon belül bármikor helyreállíthatók legyenek.

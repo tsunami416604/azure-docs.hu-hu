@@ -1,9 +1,8 @@
 ---
-title: 'Gyors útmutató: Table API a Pythonnal – Azure Cosmos DB | Microsoft Docs'
+title: 'Gyors útmutató: Table API a Pythonnal – Azure Cosmos DB használatával'
 description: Ez a gyors útmutató azt ismerteti, hogy hogyan használható az Azure Cosmos DB Table API alkalmazások létrehozására az Azure Portal és a Python használatával
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: python
@@ -11,12 +10,12 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 614e22cbbb6a94d9b148b29474a5fc82c3f0fef4
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
-ms.translationtype: HT
+ms.openlocfilehash: 70a7f17ed0ecb78337d13f68a260fc9f860e3a4a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696785"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837018"
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>Gyors útmutató: Table API-alkalmazás felépítése a Python és az Azure Cosmos DB használatával
 

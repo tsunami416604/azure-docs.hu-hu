@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 836fdb5da13465d77c6e9e6ede4780f5d4048597
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: ad97543ee6bc40bdee5b0ffc7ec92f061b16dae4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447163"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839534"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Adatelemzés a Scala és a Spark használatával az Azure rendszerben
-Ez a cikk bemutatja, hogyan Scala használata a Spark méretezhető MLlib és a Spark ML-csomagokat az Azure HDInsight Spark-fürtön a felügyelt gépi tanulási feladatok. Emellett végigvezeti a feladatok alkotó a [adatelemzési folyamat](https://aka.ms/datascienceprocess): adatbetöltés és feltárása, képi megjelenítés, funkciófejlesztési, modellezés és használatalapú modellt. A cikk a modellek között logisztikai és lineáris regresszió, véletlenszerű erdők és színátmenet súlyozott fákat (GBTs), két általános felügyelt gépi tanulási feladatok mellett:
+Ez a cikk bemutatja, hogyan Scala használata a Spark méretezhető MLlib és a Spark ML-csomagokat az Azure HDInsight Spark-fürtön a felügyelt gépi tanulási feladatok. Emellett végigvezeti a feladatok alkotó a [adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/): adatbetöltés és feltárása, képi megjelenítés, funkciófejlesztési, modellezés és használatalapú modellt. A cikk a modellek között logisztikai és lineáris regresszió, véletlenszerű erdők és színátmenet súlyozott fákat (GBTs), két általános felügyelt gépi tanulási feladatok mellett:
 
 * Regressziós problémaként: előrejelzés taxi útnak tipp összeg ($)
 * Bináris osztályozás: előrejelzés tipp vagy taxi útnak nincs tip (1/0)
@@ -1100,7 +1100,7 @@ Ezután a modell optimalizálása egyéni kód használatával, és a legjobb mo
 A cella futási idejét: 61 másodperc.
 
 ## <a name="consume-spark-built-machine-learning-models-automatically-with-scala"></a>A Spark használatával összeállított gépi tanulási modelleket automatikusan Scala felhasználása
-Témakörök, amelyek végigvezetik a feladatokat az Azure-ban az adatelemzési folyamat alkotó áttekintését lásd: [csoportos adatelemzési folyamat](https://aka.ms/datascienceprocess).
+Témakörök, amelyek végigvezetik a feladatokat az Azure-ban az adatelemzési folyamat alkotó áttekintését lásd: [csoportos adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 [Csoportos adatelemzési folyamat forgatókönyvek](walkthroughs.md) más végpontok közötti forgatókönyvek, amelyek bemutatják, bizonyos forgatókönyvek esetén a csoportos adatelemzési folyamat lépéseit ismerteti. A forgatókönyvek bemutatják, hogyan kombinálhatja a felhőalapú és helyszíni eszközöket és szolgáltatásokat, munkafolyamat vagy folyamat, intelligens alkalmazások létrehozására is.
 

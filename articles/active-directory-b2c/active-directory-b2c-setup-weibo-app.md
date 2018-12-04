@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4600ec9d76f682f0dedf8c802d23b32fd6126481
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: b0044387698e6b7b682061d48249d6e635b32cd5
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181498"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842441"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés a az Azure Active Directory B2C fiókkal Weibo beállítása
 
@@ -25,19 +25,19 @@ ms.locfileid: "47181498"
 
 ## <a name="create-a-weibo-application"></a>Weibo alkalmazás létrehozása
 
-Weibo fiók használatára az identitásszolgáltatójaként az Azure Active Directory (Azure AD) B2C-ben, hozzon létre egy alkalmazást a bérlőben, hogy az azt jelölő kell. Ha egy Weibo fiók még nem rendelkezik, beszerezheti a [ http://weibo.com/signup/signup.php?lang=en-us ](http://weibo.com/signup/signup.php?lang=en-us).
+Weibo fiók használatára az identitásszolgáltatójaként az Azure Active Directory (Azure AD) B2C-ben, hozzon létre egy alkalmazást a bérlőben, hogy az azt jelölő kell. Ha egy Weibo fiók még nem rendelkezik, beszerezheti a [ https://weibo.com/signup/signup.php?lang=en-us ](https://weibo.com/signup/signup.php?lang=en-us).
 
-1. Jelentkezzen be a [Weibo fejlesztői portál](http://open.weibo.com/) Weibo-fiókja hitelesítő adataival.
+1. Jelentkezzen be a [Weibo fejlesztői portál](https://open.weibo.com/) Weibo-fiókja hitelesítő adataival.
 2. Bejelentkezés után a jobb felső sarokban válassza ki a megjelenítési nevet.
 3. A legördülő listában válassza ki a**编辑开发者信息**(fejlesztői adatok szerkesztése).
 4. Adja meg a szükséges információkat, és válassza ki**提交**(beküldése).
 5. Fejezze be az e-mail ellenőrzésének folyamatát.
-6. Nyissa meg a [identitás-ellenőrzési lapot](http://open.weibo.com/developers/identity/edit).
+6. Nyissa meg a [identitás-ellenőrzési lapot](https://open.weibo.com/developers/identity/edit).
 7. Adja meg a szükséges információkat, és válassza ki**提交**(beküldése).
 
 ### <a name="register-a-weibo-application"></a>Egy Weibo alkalmazás regisztrálása
 
-1. Nyissa meg a [új Weibo alkalmazásregisztrációs oldalán](http://open.weibo.com/apps/new).
+1. Nyissa meg a [új Weibo alkalmazásregisztrációs oldalán](https://open.weibo.com/apps/new).
 2. Adja meg a szükséges alkalmazás adatait.
 3. Válassza ki**创建**(létrehozás).
 4. Másolja le az értékeket a **Alkalmazáskulcs** és **titkos Alkalmazáskulcs**. Mindkettő az identitásszolgáltató hozzáadása a bérlőhöz van szüksége.
@@ -50,7 +50,7 @@ Weibo fiók használatára az identitásszolgáltatójaként az Azure Active Dir
 
 ## <a name="configure-a-weibo-account-as-an-identity-provider"></a>Identitás-szolgáltatóként Weibo fiók konfigurálása
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
 2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
 3. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
 4. Válassza ki **Identitásszolgáltatók**, majd válassza ki **Hozzáadás**.

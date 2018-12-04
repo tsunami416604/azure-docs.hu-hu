@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4a4b9863d8f74592a8d9a700c3dbc850cd867331
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: a5bf15289e91cc568524e8110702b5608118bc2d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725556"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833924"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-android-application"></a>Az Azure AD B2C: Bejelentkezés egy Android-alkalmazás használatával
 
@@ -42,7 +42,7 @@ A következő lépésben hozzon létre egy alkalmazást a B2C-címtárban. Ez bi
 
 ## <a name="create-your-user-flows"></a>A felhasználói folyamatok létrehozása
 
-Az Azure AD B2C felhasználói élményeket által meghatározott egy [felhasználói folyamat](active-directory-b2c-reference-policies.md), azaz az Azure AD működését szabályozó házirendjei. Ez az alkalmazás egyetlen identitással kapcsolatos tartalmaz: egy kombinált bejelentkezési és regisztrációs felhasználói folyamata. Szeretne létrehozni a felhasználói folyamat leírtak szerint a [felhasználói folyamat áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). Ha a felhasználói folyamatot hoz létre, ügyeljen arra, hogy:
+Az Azure AD B2C felhasználói élményeket által meghatározott egy [felhasználói folyamat](active-directory-b2c-reference-policies.md), azaz az Azure AD működését szabályozó házirendjei. Ez az alkalmazás egyetlen identitással kapcsolatos tartalmaz: egy kombinált bejelentkezési és regisztrációs felhasználói folyamata. Szeretne létrehozni a felhasználói folyamat leírtak szerint a [felhasználói folyamat áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow). Ha a felhasználói folyamatot hoz létre, ügyeljen arra, hogy:
 
 * Válassza ki a **megjelenítendő név** a felhasználói folyamat előfizetési attribútumaként.
 * Válassza ki a **megjelenítendő név** és **Objektumazonosító** alkalmazásjogcímek minden felhasználó flow-ban. Kiválaszthat egyéb jogcímeket is.

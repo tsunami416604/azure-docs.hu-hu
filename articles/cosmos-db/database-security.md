@@ -1,21 +1,19 @@
 ---
-title: Adatbázis-biztonság – Azure Cosmos DB |} A Microsoft Docs
+title: Adatbázis-biztonság – Azure Cosmos DB-hez
 description: Ismerje meg, hogyan nyújt az Azure Cosmos DB az adatbázis védelmét és az adatok biztonsági adataihoz.
 keywords: nosql-alapú adatbázis-biztonság, információ-biztonság, adatbiztonság, az adatbázis-titkosítás, az adatbázis védelme, biztonsági házirendeket, biztonsági tesztelés
 services: cosmos-db
 author: rafats
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: rafats
-ms.openlocfilehash: 11e1a6d8c0a21c64c38ca1d9cb0583c75056dd08
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 6fb9ebe2b0afc645bbdfb6de6a8551440644fe59
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620506"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836083"
 ---
 # <a name="azure-cosmos-db-database-security"></a>Az Azure Cosmos DB adatbázis-biztonság
 

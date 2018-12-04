@@ -9,12 +9,12 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 3c07f39a6c6c4ce244ba49a26617b3e645c57acb
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 31a905e1fb16997eb80e47af3b790f431f28e49b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710375"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842866"
 ---
 # <a name="deploy-web-services-to-azure-container-instances"></a>Webszolgáltatások üzembe helyezése az Azure Container Instances szolgáltatásban 
 
@@ -252,6 +252,23 @@ prediction = service.run(input_data = test_samples)
 print(prediction)
 ```
 
+## <a name="update-the-web-service"></a>A web service frissítése
+
+A web service frissítéséhez használja a `update` metódust. A következő kód bemutatja, hogyan frissíthető egy új rendszerkép használata a web service:
+
+```python
+from azureml.core.webservice import Webservice
+
+service_name = 'aci-mnist-3'
+# Retrieve existing service
+service = Webservice(name = service_name, workspace = ws)
+# Update the image used by the service
+service.update(image = new-image)
+print(service.state)
+```
+
+> [!NOTE]
+> Amikor frissít egy képet, a webszolgáltatás nem frissül automatikusan. Minden egyes szolgáltatás, amely az új lemezképet használni kívánt manuálisan kell frissítenie.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

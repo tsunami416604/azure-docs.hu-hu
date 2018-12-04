@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 1069b7f9bdc0301f840e796f49fdb4031d297cf2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a44812ccb89606416b2161a133adf2c781e81bd0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436240"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842030"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>Oktatóanyag: Azure Active Directory-integráció az Predictix növekedett tervezése
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása a Predictix növekedett tervezést, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Predictix növekedett tervezési egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure AD-be Predictix növekedett tervezési integráció konfigurálásához
 
 **Predictix növekedett tervezési hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -123,7 +123,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     | `https://<sub-domain>.dev.ap.predictix.com`|
     
     > [!NOTE] 
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [Predictix növekedett tervezési ügyfél-támogatási csapatának](http://www.infor.com/support) beolvasni ezeket az értékeket. 
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [Predictix növekedett tervezési ügyfél-támogatási csapatának](https://www.infor.com/support) beolvasni ezeket az értékeket. 
  
 
 
@@ -139,7 +139,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Predictix növekedett tervezési konfiguráció](./media/predictix-assortment-planning-tutorial/tutorial_predictixassortmentplanning_configure.png) 
 
-1. Az egyszeri bejelentkezés konfigurálása **Predictix növekedett tervezési** oldalon kell küldenie a letöltött **Certificate(Base64)**, **SAML Entitásazonosító**, **SAML Egyszeri bejelentkezési szolgáltatás URL-**, és **kijelentkezéses URL-cím** való [Predictix növekedett tervezési támogatási csapatának](http://www.infor.com/support). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+1. Az egyszeri bejelentkezés konfigurálása **Predictix növekedett tervezési** oldalon kell küldenie a letöltött **Certificate(Base64)**, **SAML Entitásazonosító**, **SAML Egyszeri bejelentkezési szolgáltatás URL-**, és **kijelentkezéses URL-cím** való [Predictix növekedett tervezési támogatási csapatának](https://www.infor.com/support). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -179,7 +179,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-predictix-assortment-planning-test-user"></a>Predictix növekedett tervezési tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Predictix növekedett tervezési Britta Simon nevű felhasználó hoz létre. Együttműködve [Predictix növekedett tervezési támogatási csapatának](http://www.infor.com/contact/) a felhasználók hozzáadása az Predictix növekedett tervezési platformon.
+Ebben a szakaszban egy Predictix növekedett tervezési Britta Simon nevű felhasználó hoz létre. Együttműködve [Predictix növekedett tervezési támogatási csapatának](https://www.infor.com/contact/) a felhasználók hozzáadása az Predictix növekedett tervezési platformon.
  > [!NOTE]
  > Az Azure Active Directory fióktulajdonos kap egy e-mailt, és a egy hivatkozást, mielőtt aktívvá válik, győződjön meg arról, hogy fiókjuk követi.
 
@@ -213,7 +213,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

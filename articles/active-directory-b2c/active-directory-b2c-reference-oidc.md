@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e689f93150d225d5b8c9ee9d5cfc422a1154c45a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 41f6027378e48b525345e29e1d1e08dd2c48aaa5
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724553"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843750"
 ---
 # <a name="azure-active-directory-b2c-web-sign-in-with-openid-connect"></a>Az Azure Active Directory B2C: Webes bejelentkezés OpenID-kapcsolattal
 OpenID Connect hitelesítést egy olyan hitelesítési protokoll, OAuth 2.0, biztonságosan bejelentkezhetnek a felhasználók webes alkalmazásokhoz használt illesztőprogramra épül. Az Azure Active Directory B2C használatával OpenID Connect (Azure AD B2C-vel) megvalósítását, is kiszervezik a regisztrációt, bejelentkezést és egyéb identitáskezelési funkciókat használhat a a webalkalmazások Azure Active Directory (Azure AD). Ez az útmutató bemutatja, hogyan ehhez egy nyelvtől független módon. Azt ismerteti, hogyan küldhetők és fogadhatók HTTP-üzenetek a nyílt forráskódú könyvtáraink bármelyikének használata nélkül.
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) kibővíti az OAuth 2.0 *engedélyezési* protokoll használható egy *hitelesítési* protokollt. Ez lehetővé teszi az egyszeri bejelentkezés OAuth használatával végezhető el. Ez bemutatja a egy *azonosító jogkivonat*, amelynek egy biztonsági jogkivonatot, amely lehetővé teszi az ügyfél ellenőrizze a felhasználó identitását, és szerezze be a felhasználóval kapcsolatos főbb profiladatait.
+[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) kibővíti az OAuth 2.0 *engedélyezési* protokoll használható egy *hitelesítési* protokollt. Ez lehetővé teszi az egyszeri bejelentkezés OAuth használatával végezhető el. Ez bemutatja a egy *azonosító jogkivonat*, amelynek egy biztonsági jogkivonatot, amely lehetővé teszi az ügyfél ellenőrizze a felhasználó identitását, és szerezze be a felhasználóval kapcsolatos főbb profiladatait.
 
 Kibővíti az OAuth 2.0, mivel lehetővé teszi alkalmazások biztonságosan beszerezni *hozzáférési jogkivonatokat*. Access_tokens által védett erőforrások eléréséhez használható egy [az engedélyezési kiszolgáló](active-directory-b2c-reference-protocols.md#the-basics). Javasoljuk, hogy OpenID Connect, amely a kiszolgálón futtatott és böngészőn keresztül elért webalkalmazás létrehozásakor. Ha azt szeretné, Identitáskezelés adhat a mobil- vagy asztali alkalmazásokhoz az Azure AD B2C segítségével, használjon [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) ahelyett, hogy az OpenID Connect.
 
@@ -120,7 +120,7 @@ error=access_denied
 | state |Lásd az ebben a szakaszban az első táblázat a teljes leírását. Ha egy `state` paraméter tartalmazza a kérés ugyanazt az értéket meg kell jelennie a választ. Az alkalmazás kell ellenőrizze, hogy a `state` a kérés- és az értékek megegyeznek. |
 
 ## <a name="validate-the-id-token"></a>Az azonosító jogkivonat érvényesítése
-Egy azonosító jogkivonat érkező már nem elég a felhasználó hitelesítéséhez. Az azonosító jogkivonat-aláírás ellenőrzése kell, és ellenőrizze a jogcímeket az alkalmazáskövetelmények szerint. Használja az Azure AD B2C [JSON webes jogkivonatainak (JWTs)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) és a nyilvános kulcsú hitelesítésen jogkivonatok aláírásához, és ellenőrizze, hogy azok érvényesek.
+Egy azonosító jogkivonat érkező már nem elég a felhasználó hitelesítéséhez. Az azonosító jogkivonat-aláírás ellenőrzése kell, és ellenőrizze a jogcímeket az alkalmazáskövetelmények szerint. Használja az Azure AD B2C [JSON webes jogkivonatainak (JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) és a nyilvános kulcsú hitelesítésen jogkivonatok aláírásához, és ellenőrizze, hogy azok érvényesek.
 
 Nincsenek elérhető JWTs, ellenőrzése preferencia a nyelvtől függően számos nyílt forráskódú-kódtár. Javasoljuk, hogy ezek a lehetőségek felfedezése a saját ellenőrzési logika megvalósítása helyett. Az adatok itt lesz hasznos foglalkozhatunk azzal, hogyan megfelelően használni az ezeket a kódtárakat.
 
@@ -143,7 +143,7 @@ Az azonosító jogkivonat aláírása érvényesítése után nincsenek ellenőr
 * Ellenőrizni kell a `aud` győződjön meg arról, hogy az azonosító jogkivonat az alkalmazáshoz kiállított jogcímet. Az értéknek kell lennie a az alkalmazás azonosítója.
 * Ellenőrizni kell a `iat` és `exp` jogcímeket kell győződjön meg arról, hogy az azonosító jogkivonat nem járt le.
 
-Nincsenek is végre kell hajtania néhány további ellenőrzések. Ezek a részletes leírását a [OpenID Connect Core specifikációja](http://openid.net/specs/openid-connect-core-1_0.html).  Érdemes azt is, további jogcímek a forgatókönyvtől függően ellenőrzése. Néhány gyakori ellenőrzések a következők:
+Nincsenek is végre kell hajtania néhány további ellenőrzések. Ezek a részletes leírását a [OpenID Connect Core specifikációja](https://openid.net/specs/openid-connect-core-1_0.html).  Érdemes azt is, további jogcímek a forgatókönyvtől függően ellenőrzése. Néhány gyakori ellenőrzések a következők:
 
 * Annak ellenőrzése, hogy a felhasználó és szervezet regisztrált az alkalmazáshoz.
 * Annak ellenőrzése, hogy a felhasználó rendelkezik-e a megfelelő engedélyezési vagy jogosultságokkal.

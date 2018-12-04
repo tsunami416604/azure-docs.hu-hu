@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/05/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviwer: xiaofmao
-ms.openlocfilehash: 14e32bdfcde6969b820c0950d59bd5cf946a51e6
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: efdc1cda9b52b6b79a3ccdcfd16542f7cb4b891a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802321"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838548"
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Az Azure Stack storage: különbségek és szempontok
 
@@ -84,10 +84,10 @@ Az Azure Stack storage a következő ügyfélkódtárak támogatja:
 
 | Ügyfélkódtár | Az Azure Stack támogatott verziója | Hivatkozás                                                                                                                                                                                                                                                                                                                                     | Végpont-specifikáció       |
 |----------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
-| .NET           | A 6.2.0 8.7.0 való.          | Nuget-csomagot:<br>https://www.nuget.org/packages/WindowsAzure.Storage/<br> <br>GitHub-verzió:<br>https://github.com/Azure/azure-storage-net/releases                                                                                                                                                                                    | App.config fájlban              |
+| .NET           | A 6.2.0 8.7.0 való.          | NuGet-csomagot:<br>https://www.nuget.org/packages/WindowsAzure.Storage/<br> <br>GitHub-verzió:<br>https://github.com/Azure/azure-storage-net/releases                                                                                                                                                                                    | App.config fájlban              |
 | Java           | A 4.1.0-s 6.1.0           | Maven-csomag:<br>http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage<br> <br>GitHub-verzió:<br>https://github.com/Azure/azure-storage-java/releases                                                                                                                                                                    | Kapcsolati karakterlánc beállítása      |
 | Node.js        | Az 1.1.0-s 2.7.0           | Az NPM-hivatkozás:<br>https://www.npmjs.com/package/azure-storage<br>(Például: futtatása "npm telepítése azure-storage@2.7.0")<br> <br>Github-verzió:<br>https://github.com/Azure/azure-storage-node/releases                                                                                                                                         | Szolgáltatás deklarációjában |
-| C++            | A 2.4.0 3.1.0           | Nuget-csomagot:<br>https://www.nuget.org/packages/wastorage.v140/<br> <br>GitHub-verzió:<br>https://github.com/Azure/azure-storage-cpp/releases                                                                                                                                                                                          | Kapcsolati karakterlánc beállítása      |
+| C++            | A 2.4.0 3.1.0           | NuGet-csomagot:<br>https://www.nuget.org/packages/wastorage.v140/<br> <br>GitHub-verzió:<br>https://github.com/Azure/azure-storage-cpp/releases                                                                                                                                                                                          | Kapcsolati karakterlánc beállítása      |
 | PHP            | Az az 1.0.0-s 0.15.0          | GitHub-verzió:<br>https://github.com/Azure/azure-storage-php/releases<br> <br>Composer keresztül (lásd lejjebb)                                                                                                                                                                                                                  | Kapcsolati karakterlánc beállítása      |
 | Python         | Az az 1.0.0-s 0.30.0          | GitHub-verzió:<br>https://github.com/Azure/azure-storage-python/releases                                                                                                                                                                                                                                                                | Szolgáltatás deklarációjában |
 | Ruby           | A 0.12.1 1.0.1          | RubyGems csomag:<br>Közös:<br>https://rubygems.org/gems/azure-storage-common/<br>BLOB: https://rubygems.org/gems/azure-storage-blob/<br>Várólista: https://rubygems.org/gems/azure-storage-queue/<br>Tábla: https://rubygems.org/gems/azure-storage-table/<br> <br>GitHub-verzió:<br>https://github.com/Azure/azure-storage-ruby/releases | Kapcsolati karakterlánc beállítása      |

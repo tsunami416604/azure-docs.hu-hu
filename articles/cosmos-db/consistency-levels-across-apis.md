@@ -1,20 +1,19 @@
 ---
-title: Konzisztenciaszintek és az Azure Cosmos DB API-k |} A Microsoft Docs
+title: Konzisztenciaszintek és az Azure Cosmos DB API-k
 description: A konzisztenciaszintek ismertetése az Azure Cosmos DB API-k között.
 keywords: konzisztencia, az azure cosmos db, azure, modellek, mongodb, cassandra, gráf, tábla, a Microsoft azure
 services: cosmos-db
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/23/2018
-ms.author: mjbrown
-ms.openlocfilehash: 22ddfbf86dacdd5d7f80d1fa7826d6ae11c4de45
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 277a064d93e2ebcea82f3909b3fd16328a775105
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680395"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832496"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Konzisztenciaszintek és az Azure Cosmos DB API-k
 

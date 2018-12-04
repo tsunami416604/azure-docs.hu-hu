@@ -2,18 +2,18 @@
 title: Egyéni rendszerképpel Azure Batch-készlet kiépítése |} A Microsoft Docs
 description: Hozzon létre egy Batch-készlet egyéni rendszerképpel történő üzembe helyezése számítási csomópontok, amelyek a szoftverek és az alkalmazás számára szükséges adatokat tartalmazzák. Egyéni rendszerképek olyan hatékony módja a Batch számítási feladatok futtatásához a számítási csomópontok konfigurálása.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
 ms.date: 10/04/2018
-ms.author: danlep
-ms.openlocfilehash: 7d0526dd233afd3976b22d257300681db0bfcead
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.author: lahugh
+ms.openlocfilehash: b296dce0a83971626c8e66ddc314c4d1e07d8602
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885210"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840367"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Hozzon létre egy virtuálisgép-készletek egyéni rendszerkép használatával 
 
@@ -50,7 +50,13 @@ Az Azure-ban előkészítheti egy felügyelt rendszerképet egy Azure virtuális
 
 ### <a name="prepare-a-vm"></a>A virtuális gép előkészítése 
 
-A lemezkép egy új virtuális Gépet hoz létre, ha használja az Azure Marketplace-rendszerképpel, mint az alaprendszerképet a felügyelt rendszerkép támogatja a kötegelt és testre szabni.  Azure Batch által támogatott Azure Marketplace-en képhivatkozásokkal listájának lekéréséhez tekintse meg a [lista csomóponti ügynök SKU-k](/rest/api/batchservice/account/listnodeagentskus) műveletet. Az alaplemezkép, külső lemezképe nem használható.
+A lemezkép egy új virtuális Gépet hoz létre, ha használja az Azure Marketplace-rendszerképpel, mint az alaprendszerképet a felügyelt rendszerkép támogatja a kötegelt és testre szabni.  Azure Batch által támogatott Azure Marketplace-en képhivatkozásokkal listájának lekéréséhez tekintse meg a [lista csomóponti ügynök SKU-k](/rest/api/batchservice/account/listnodeagentskus) műveletet. 
+
+> [!NOTE]
+> További licenc és az alaplemezkép beszerzési feltételek rendelkező külső lemezképe nem használható. A Marketplace-rendszerképek kapcsolatos információkért tekintse meg az útmutató a [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
+) vagy [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
+) virtuális gépeket.
+
 
 * Győződjön meg arról, hogy a virtuális Gépet hozunk létre egy felügyelt lemezt. Ez az alapértelmezett tároló beállítása, a virtuális gép létrehozásakor.
 * Ne telepítse az Azure-bővítmény, az egyéni szkriptek futtatására szolgáló bővítmény, például a virtuális gépen. Ha a rendszerkép előre telepített bővítményt tartalmaz, az Azure problémába ütközhet, a Batch-készlet üzembe helyezésekor.

@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: stefanmsft
-ms.openlocfilehash: ac7664e94c6e02ab90dbb1b32a54c8234614afe2
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 559c737c4e8309527d588b59759b93750da33a9e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636271"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837715"
 ---
 # <a name="how-to-debug-issues-with-user-defined-functions-in-azure-digital-twins"></a>Felhasználó által definiált függvények használata az Azure digitális Twins problémák hibakeresése
 
@@ -25,7 +25,7 @@ Hogyan diagnosztizálhatja a belül az Azure digitális Twins-példány felmerü
 
 ### <a name="enable-log-analytics-for-your-instance"></a>A példány a log analytics engedélyezése
 
-Naplók és mérőszámok az Azure digitális Twins-példány az Azure monitoron keresztül érhetők el. Az alábbi dokumentáció azt feltételezi, hogy létrehozott egy [Azure Log Analytics](../log-analytics/log-analytics-queries.md) munkaterületen a [az Azure Portal](../log-analytics/log-analytics-quick-create-workspace.md)segítségével, [Azure CLI-vel](../log-analytics/log-analytics-quick-create-workspace-cli.md), vagy a Kiszolgálókezelő [ PowerShell](../log-analytics/log-analytics-quick-create-workspace-posh.md).
+Naplók és mérőszámok az Azure digitális Twins-példány az Azure monitoron keresztül érhetők el. Az alábbi dokumentáció azt feltételezi, hogy létrehozott egy [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md) munkaterületen a [az Azure Portal](../log-analytics/log-analytics-quick-create-workspace.md)segítségével, [Azure CLI-vel](../log-analytics/log-analytics-quick-create-workspace-cli.md), vagy a Kiszolgálókezelő [ PowerShell](../log-analytics/log-analytics-quick-create-workspace-posh.md).
 
 > [!NOTE]
 > Események küldése során egy 5 perces késleltetés tapasztalhat **Log Analytics** először.

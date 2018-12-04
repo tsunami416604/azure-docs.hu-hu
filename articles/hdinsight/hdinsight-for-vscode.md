@@ -10,16 +10,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/27/2017
-ms.openlocfilehash: 9603751db01eaffdf9fbe26164aed53017c5e23c
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: fe186966dbddb5aa743e465f897aa5a1a0e07db1
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499538"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840205"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Az Azure HDInsight Tools for Visual Studio Code használata
 
-Ismerje meg, hogyan használható a [Azure HDInsight Tools for Visual Studio Code](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode) (a VS Code) létrehozásához és elküldéséhez [Apache Hive](https://hive.apache.org/) batch-feladatokat, interaktív Apache Hive-lekérdezéseket és PySpark szkripteket. Az Azure HDInsight-eszközök a VS Code által támogatott platformokat is telepíthető. Ezek közé tartozik a Windows, a Linux és a macOS. A különböző platformok előfeltételei is megtalálhatja.
+Ismerje meg, hogyan használja az Azure HDInsight Tools for Visual Studio Code (a VS Code) létrehozása és elküldése az Apache Hive kötegelt feladatokat, interaktív Hive-lekérdezéseket és PySpark szkripteket az Apache Spark. Először ismertetjük a HDInsight-eszközök telepítése a VS Code-ban, és majd végigvezetjük a Hive és a Spark-feladatok elküldése hogyan. 
+
+Az Azure HDInsight Tools a platformokat, amelyek támogatottak a VS Code, többek között Windows, Linux és MacOS rendszeren is telepíthető. Az alábbiakban találja a különböző platformok előfeltételeit.
 
 
 ## <a name="prerequisites"></a>Előfeltételek

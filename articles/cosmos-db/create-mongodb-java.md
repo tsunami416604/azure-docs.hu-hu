@@ -1,9 +1,8 @@
 ---
-title: 'Azure Cosmos DB: Konzolalkalmazás létrehozása Javával és MongoDB API-val | Microsoft Docs'
+title: 'Az Azure Cosmos DB: Konzolalkalmazás létrehozása Javával és MongoDB API-val'
 description: Egy Java-kódmintátmutat be, amellyel csatlakozhat az Azure Cosmos DB MongoDB API-hoz és lekérdezheti azt
 services: cosmos-db
 author: slyons
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.custom: quick start connect, mvc
@@ -11,12 +10,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/10/2017
 ms.author: sclyon
-ms.openlocfilehash: ac5c0427ee178cee3abd71f4fbdfd5f8697f11a7
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
-ms.translationtype: HT
+ms.openlocfilehash: c77d6610939322fcf258e1b650672f319baf0815
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698672"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832411"
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-java-and-the-azure-portal"></a>Azure Cosmos DB: MongoDB API konzolalkalmazás létrehozása Javával és az Azure Portallal
 

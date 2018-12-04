@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/17/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1db805efe7eaec77fcafeb169b3d99098b57f582
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 88cc884489c29f964d68908dd394f23b5b21790f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978978"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839398"
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>ASP.NET-webalkalmazás létrehozása az Azure Active Directory B2C regisztrációs, bejelentkezési,-profilszerkesztést és jelszó alaphelyzetbe állítása
 
@@ -51,27 +51,27 @@ Válassza az Azure Portal bal felső sarkában található **Minden szolgáltat�
 
 Amikor elkészült, egy API-t és a egy natív alkalmazást kap az alkalmazás beállításaiban.
 
-## <a name="create-policies-on-your-b2c-tenant"></a>Szabályzatok a B2C bérlő létrehozása
+## <a name="create-user-flows-on-your-b2c-tenant"></a>A B2C-bérlő létrehozása a felhasználói folyamatok
 
-Az Azure AD B2C-ben a felhasználói élményeket [szabályzatok](active-directory-b2c-reference-policies.md) határozzák meg. Ez a kódminta három identitásélményt tartalmaz: **regisztrációs és bejelentkezési**, **profil szerkesztése**, és **új jelszó kérésére vonatkozó**.  Mindkettőhöz létre kell hoznia egy szabályzatot a [szabályzatok áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md) leírtak szerint. Az egyes szabályzatoknál mindenképpen jelölje ki a megjelenítendő név attribútum vagy a jogcím, és másolja le a házirend nevét későbbi használatra.
+Az Azure AD B2C felhasználói élményeket által meghatározott egy [felhasználói folyamat](active-directory-b2c-reference-policies.md). Felhasználói folyamatok az előre meghatározott házirendek, amelyek segítséget nyújtanak a leggyakoribb identitásélményt beállítása az Azure AD B2C-vel portálon elérhető. Ez a kódminta három identitásélményt tartalmaz: **regisztrációs és bejelentkezési**, **profil szerkesztése**, és **új jelszó kérésére vonatkozó**.  Szeretne létrehozni egy felhasználói folyamat minden típusú leírtak szerint a [felhasználói folyamat áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md). Az egyes felhasználói folyamatok mindenképpen jelölje ki a megjelenítendő név attribútum vagy a jogcím, és másolja le a felhasználói folyamat nevét későbbi használatra.
 
 ### <a name="add-your-identity-providers"></a>Az identitásszolgáltató hozzáadása
 
 Válassza a beállítások **Identitásszolgáltatók** , és válassza a regisztráció felhasználónév vagy a regisztráció E-mail-címmel.
 
-### <a name="create-a-sign-up-and-sign-in-policy"></a>Regisztrációs és bejelentkezési szabályzat létrehozása
+### <a name="create-a-sign-up-and-sign-in-user-flow"></a>Regisztráció és bejelentkezés a felhasználói folyamat létrehozása
 
 [!INCLUDE [active-directory-b2c-create-sign-in-sign-up-policy](../../includes/active-directory-b2c-create-sign-in-sign-up-policy.md)]
 
-### <a name="create-a-profile-editing-policy"></a>Profilszerkesztési szabályzat létrehozása
+### <a name="create-a-profile-editing-user-flow"></a>Profilszerkesztési felhasználói folyamata létrehozása
 
 [!INCLUDE [active-directory-b2c-create-profile-editing-policy](../../includes/active-directory-b2c-create-profile-editing-policy.md)]
 
-### <a name="create-a-password-reset-policy"></a>Új jelszó kérésére vonatkozó szabályzat létrehozása
+### <a name="create-a-password-reset-user-flow"></a>Jelszó alaphelyzetbe állítása felhasználói folyamat létrehozása
 
 [!INCLUDE [active-directory-b2c-create-password-reset-policy](../../includes/active-directory-b2c-create-password-reset-policy.md)]
 
-Miután létrehozta a szabályzatokat, készen áll az alkalmazás elkészítésére.
+Miután létrehozta a felhasználói folyamatok, készen áll az alkalmazás elkészítésére.
 
 ## <a name="download-the-sample-code"></a>A mintakód letöltése
 
@@ -83,16 +83,16 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 Miután letöltötte a mintakódot, nyissa meg a Visual Studio .sln fájlt a kezdéshez. A megoldásfájl két projektet tartalmaz: `TaskWebApp` és `TaskService`. `TaskWebApp` a rendszer az MVC-webalkalmazás, amellyel a felhasználó kommunikál. A `TaskService` az alkalmazás webes API háttérszolgáltatása, amely tárolja a felhasználók feladatlistáit. Ez a cikk csak a `TaskWebApp` alkalmazást ismerteti. Megtudhatja, hogyan hozhat létre `TaskService` Azure AD B2C-t használja, lásd: [a .NET webes api-oktatóanyag](active-directory-b2c-devquickstarts-api-dotnet.md).
 
-## <a name="update-code-to-use-your-tenant-and-policies"></a>A bérlő és a szabályzatok használata a kód frissítése
+## <a name="update-code-to-use-your-tenant-and-user-flows"></a>Frissítse a kódot, ha a bérlő és a felhasználói folyamatok
 
-A minta úgy van konfigurálva, hogy a bemutató bérlőnk házirendjeit és ügyfél-azonosítóját használja. Szeretne csatlakozni, a saját bérlőn, meg kell nyitnia `web.config` a a `TaskWebApp` projektre, és cserélje le a következő értékeket:
+Ebben a mintában a felhasználói folyamatok és az ügyfél-azonosító, hogy a bemutató bérlőnk használatára van konfigurálva. Szeretne csatlakozni, a saját bérlőn, meg kell nyitnia `web.config` a a `TaskWebApp` projektre, és cserélje le a következő értékeket:
 
 * Az `ida:Tenant` helyett szerepeljen a bérlő neve
 * Az `ida:ClientId` helyett szerepeljen a webapp alkalmazásazonosítója
 * Az `ida:ClientSecret` helyett szerepeljen a webapp titkos kulcsa
-* Az `ida:SignUpSignInPolicyId` helyett szerepeljen a „regisztrálási vagy bejelentkezési” házirend neve
-* Az `ida:EditProfilePolicyId` helyett szerepeljen a „profil szerkesztése” házirend neve
-* Az `ida:ResetPasswordPolicyId` helyett szerepeljen a „Jelszó alaphelyzetbe állítása” házirend neve
+* `ida:SignUpSignInPolicyId` az a "Regisztrálási vagy bejelentkezési" felhasználói interakciósorozat neve
+* `ida:EditProfilePolicyId` az a "Profil szerkesztése" felhasználói interakciósorozat neve
+* `ida:ResetPasswordPolicyId` az a "Jelszó visszaállítása" felhasználói interakciósorozat neve
 
 ## <a name="launch-the-app"></a>Indítsa el az alkalmazást
 A Visual studióban nyissa meg az alkalmazást. Lépjen a feladatlista lapra, és figyelje meg az URL-cím: https://*YourTenantName*.b2clogin.com/*YourTenantName*/oauth2/v2.0/authorize?p=*YourSignUpPolicyName* & client_id =*YourclientID*...
@@ -110,16 +110,16 @@ A közösségi identitásszolgáltató hozzáadása az alkalmazáshoz, először
 * [Amazon-Identitásszolgáltató beállítása](active-directory-b2c-setup-amzn-app.md)
 * [LinkedIn-Identitásszolgáltató beállítása](active-directory-b2c-setup-li-app.md)
 
-Miután az identitás-szolgáltatóktól ad B2C-címtárban, szerkessze tartalmazza az új identitásszolgáltató használatát, a három szabályzat minden egyes leírtak szerint a [házirendek áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md). Miután mentette a szabályzatokat, futtassa újra az alkalmazást.  Az új identitásszolgáltató bejelentkezési hozzáadott kell megjelennie, és minden, az identitás-előfizetési beállítások élményhez.
+Miután az identitás-szolgáltatóktól ad B2C-címtárban, szerkesztheti mindegyike tartalmazza az új identitásszolgáltató használatát, a három felhasználói folyamatok leírtak szerint a [felhasználói folyamat áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md). Miután menti a felhasználói folyamatok, futtassa újra az alkalmazást.  Az új identitásszolgáltató bejelentkezési hozzáadott kell megjelennie, és minden, az identitás-előfizetési beállítások élményhez.
 
-Kísérletezhet a szabályzatokat, és vizsgálja meg a mintaalkalmazást kifejtett hatást. Adja hozzá, vagy távolítsa el az identitásszolgáltató használatát, alkalmazás jogcímét, vagy módosítsa a regisztrációs attribútumokat. Kísérletet, amíg nem láthatja, hogy milyen szabályzatok, a hitelesítési kérések és OWIN alkalmazássá.
+A felhasználói folyamatokkal való kísérletezéshez, és figyelje meg a mintaalkalmazást kifejtett hatást. Adja hozzá, vagy távolítsa el az identitásszolgáltató használatát, alkalmazás jogcímét, vagy módosítsa a regisztrációs attribútumokat. Kísérletet, amíg nem láthatja, hogyan felhasználókövetési adatai, a hitelesítési kérések és OWIN alkalmazássá.
 
 ## <a name="sample-code-walkthrough"></a>Kód mintaútmutató
 A következő szakaszok bemutatják, hogyan van konfigurálva a mintakódot. Használhat ez segítségképp jövőbeli alkalmazás fejlesztése.
 
 ### <a name="add-authentication-support"></a>Hitelesítési támogatás hozzáadása
 
-Most konfigurálhatja az alkalmazás Azure AD B2C segítségével. Az alkalmazás az Azure AD B2C-vel kommunikál, OpenID Connect hitelesítési kérések küldésével. A kérések végrehajtásához adja meg a szabályzatot szeretné az alkalmazás felhasználói élményét szabályozzák. A Microsoft OWIN könyvtár segítségével ezeket a kérelmeket küldeni, hajtsa végre a házirendek, a felhasználói munkamenetek kezelhet stb.
+Most konfigurálhatja az alkalmazás Azure AD B2C segítségével. Az alkalmazás az Azure AD B2C-vel kommunikál, OpenID Connect hitelesítési kérések küldésével. A kérések végrehajtásához adja meg a felhasználói folyamatot szeretné az alkalmazás felhasználói élményét szabályozzák. A Microsoft OWIN könyvtár segítségével ezeket a kérelmeket küldeni, hajtsa végre a felhasználói folyamatok, a felhasználói munkamenetek kezelhet stb.
 
 #### <a name="install-owin"></a>Az OWIN telepítése
 
@@ -207,11 +207,11 @@ public partial class Startup
 
 A `OpenIdConnectAuthenticationOptions` újabb meghatározzuk egy készletét az adott értesítésekhez, az OpenID Connect közbenső szoftver által kapott visszahívási függvényekben. Ezen viselkedés meghatározása egy `OpenIdConnectAuthenticationNotifications` objektumra, és eltárolni a `Notifications` változó. A mintánkban meghatározzuk az esemény függően három különböző visszahívásokat.
 
-### <a name="using-different-policies"></a>Különböző szabályzatok használatával
+### <a name="using-different-user-flows"></a>Különböző felhasználói folyamatok
 
-A `RedirectToIdentityProvider` értesítés aktiválódik, amikor kérelem érkezik, az Azure AD B2C-t. A visszahívási függvény `OnRedirectToIdentityProvider`, ellenőrizzük a kimenő hívásban szeretnénk egy másik szabályzat használja. Annak érdekében, hogy ne a jelszó alaphelyzetbe állítása, és a egy profil szerkesztése, például a jelszó-visszaállítási házirend az alapértelmezett "Regisztrálási vagy bejelentkezési" házirend helyett használja a megfelelő házirendet kell.
+A `RedirectToIdentityProvider` értesítés aktiválódik, amikor kérelem érkezik, az Azure AD B2C-t. A visszahívási függvény `OnRedirectToIdentityProvider`, ellenőrizzük a kimenő hívásban szeretnénk használni a különböző felhasználói folyamat. Annak érdekében, hogy ne a jelszó alaphelyzetbe állítása, és a egy profil szerkesztése, szeretné használni a megfelelő felhasználói folyamatot, mint például a jelszó-visszaállítási felhasználói folyamat helyett az alapértelmezett "Regisztrálási vagy bejelentkezési" felhasználói folyamatot.
 
-A mintánkban amikor a felhasználó alaphelyzetbe állíthatja a jelszót, vagy módosítsa a profilt kíván hozzáadunk a szabályzatot, hogy inkább az OWIN-környezetben való használata. Amely a következő módon teheti meg:
+A mintánkban amikor a felhasználó alaphelyzetbe állíthatja a jelszót, vagy módosítsa a profilt kíván hozzáadunk a felhasználói folyamatot, hogy inkább az OWIN összefüggésben használja. Amely a következő módon teheti meg:
 
 ```CSharp
     // Let the middleware know you are trying to use the edit profile policy
@@ -246,7 +246,7 @@ A `AuthorizationCodeReceived` értesítés akkor aktiválódik, ha a hozzáfér�
 
 ### <a name="handling-errors"></a>Hibák kezelése
 
-A `AuthenticationFailed` értesítés akkor aktiválódik, ha a hitelesítés sikertelen. A visszahívási metódus képes kezelni a hibákat, igény szerint. Azonban hozzá kell adnia egy hibakód keresése `AADB2C90118`. A "Regisztrálási vagy bejelentkezési" szabályzatot a végrehajtása során a felhasználó rendelkezik-e ki egy **elfelejtette a jelszavát?** hivatkozásra. Ebben az esetben az Azure AD B2C-t küld az alkalmazás adott hiba kód jelzi, hogy az alkalmazás egy kérelmet, a jelszó-visszaállítási házirend használata esetén inkább győződjön meg.
+A `AuthenticationFailed` értesítés akkor aktiválódik, ha a hitelesítés sikertelen. A visszahívási metódus képes kezelni a hibákat, igény szerint. Azonban hozzá kell adnia egy hibakód keresése `AADB2C90118`. A "Regisztrálási vagy bejelentkezési" felhasználói folyamat végrehajtása közben a felhasználó rendelkezik-e ki egy **elfelejtette a jelszavát?** hivatkozásra. Ebben az esetben az Azure AD B2C-t küld az alkalmazás adott hiba kód jelzi, hogy az alkalmazás egy kérelmet, használja helyette a jelszó alaphelyzetbe állítása felhasználói folyamatot győződjön meg.
 
 ```CSharp
 /*
@@ -357,7 +357,7 @@ public void SignOut()
 }
 ```
 
-Explicit módon meghívása egy szabályzatot, túl használhatja egy `[Authorize]` címke, a vezérlők, amely végrehajtja a házirend, ha a felhasználó nem jelentkezett be. Nyissa meg `Controllers\HomeController.cs` , és adja hozzá a `[Authorize]` a jogcímek vezérlő címkét.  Az utolsó szabályzat konfigurálva mikor OWIN kiválasztja a `[Authorize]` címke elérte.
+Felhasználói folyamat explicit módon figyelőn mellett használhatja egy `[Authorize]` címke, a vezérlők, amely végrehajtja a felhasználói folyamat, ha a felhasználó nem jelentkezett be. Nyissa meg `Controllers\HomeController.cs` , és adja hozzá a `[Authorize]` a jogcímek vezérlő címkét.  Az utolsó szabályzat konfigurálva mikor OWIN kiválasztja a `[Authorize]` címke elérte.
 
 ```CSharp
 // Controllers\HomeController.cs

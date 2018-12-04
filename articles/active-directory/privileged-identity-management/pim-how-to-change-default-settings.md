@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 09/21/2018
+ms.date: 11/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 77a57afda3859de4a246c15d3b5c0b4ba8e2a8c8
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 87003a053823cfc257a3b6f41699feefadbbcc66
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039000"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835165"
 ---
 # <a name="configure-azure-ad-directory-role-settings-in-pim"></a>A PIM az Azure AD directory szerepkör-beállítások konfigurálása
 
@@ -50,7 +50,15 @@ Használja a **aktiválások** csúszka, hogy a szerepkör aktív marad-e után 
 
 ## <a name="notifications"></a>Értesítések
 
-Használja a **értesítések** kapcsolót, hogy adja meg, hogy a rendszer elküldi az e-rendszergazdák megerősíti, hogy a szerepkör aktiválta. Ez lehet hasznos, ha jogosulatlan vagy illegitimate aktiválások észlelése.
+Használja a **értesítések** kapcsolót, hogy adja meg, hogy a rendszergazdák e-mail értesítéseket kap, szerepkör aktiválásakor. Ez lehet hasznos, ha jogosulatlan vagy illegitimate aktiválások észlelése.
+
+Ha a beállítása **engedélyezése**, értesítést kap:
+
+- Kiemelt szerepkörű rendszergazda
+- Biztonsági rendszergazda
+- Globális rendszergazda
+
+További információkért lásd: [E-mail-értesítések a PIM](pim-email-notifications.md).
 
 ## <a name="incidentrequest-ticket"></a>Esemény/kérelmezési jegy
 
@@ -73,7 +81,7 @@ Használja a **multi-factor Authentication** kapcsolót, hogy adja meg a felhasz
   * Exchange-rendszergazda
   * Globális rendszergazda
   * Information Protection-rendszergazda
-  * Intune-szolgáltatásadminisztrátor
+  * Intune szolgáltatás rendszergazdája
   * Power BI-szolgáltatásadminisztrátor
   * Kiemelt szerepkörű rendszergazda
   * Biztonsági rendszergazda

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: 25f5d79b900cf15a9bdcb8f037fa95494c63b7e1
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 991199747f51f379ee6f3efe8009ab9166c33ac7
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50088841"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832006"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>A végfelhasználók beleegyezik abba, hogy egy alkalmazás az Azure Active Directoryban módszer konfigurálása
 Megtudhatja, hogyan konfigurálhatja a felhasználók engedélyt adjanak az Alkalmazásengedélyek módon. Egyszerűsítheti a felhasználói élmény azáltal, hogy biztosítja a rendszergazdai jóváhagyás. Ez a cikk a különböző módokon konfigurálhatja a felhasználói beleegyezés biztosít. A módszerek alkalmazni az Azure Active Directory (Azure AD) bérlő összes végfelhasználók számára. 
@@ -73,4 +73,4 @@ A végfelhasználók számára, hogy engedélyt adjanak az alkalmazás minden al
 
 [Jóváhagyás és az Azure ad v2.0 csatornákban összevont alkalmazások](../develop/active-directory-v2-scopes.md)
 
-[Azure ad stackoverflow-n](http://stackoverflow.com/questions/tagged/azure-active-directory)
+[Azure ad stackoverflow-n](https://stackoverflow.com/questions/tagged/azure-active-directory)

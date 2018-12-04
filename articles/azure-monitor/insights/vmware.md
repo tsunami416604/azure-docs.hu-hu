@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5caa4940865ff0f0f684a8aa8c3164fee6f321b2
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 383b73d335c8993aa99109c7430d2292a3bfea4a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634455"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836440"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>VMware Monitoring (előzetes verzió) megoldás a Log Analyticsben
 
@@ -131,7 +131,7 @@ Az a **VMware** irányítópult-nézet, a többi panelen szerint vannak rendszer
 
 Kattintson a panelre, hogy a panel az adott részletes információkat jelenít meg a Log Analytics keresése panel megnyitásához.
 
-Itt szerkesztheti a keresési lekérdezés esetében valamilyen konkrét módosíthat. Naplókeresések létrehozásával kapcsolatos részletekért lásd: [adatokat naplókeresések a Log Analyticsben található](../../log-analytics/log-analytics-queries.md).
+Itt szerkesztheti a keresési lekérdezés esetében valamilyen konkrét módosíthat. Naplókeresések létrehozásával kapcsolatos részletekért lásd: [adatokat naplókeresések a Log Analyticsben található](../../azure-monitor/log-query/log-query-overview.md).
 
 #### <a name="find-esxi-host-events"></a>ESXi-gazdagép események
 Egyetlen ESXi-gazdagép több naplókat, a folyamatok alapján hoz létre. A VMware Monitoring megoldás központosítja azokat, és az események számát foglalja össze. Ez a nézet központi segítségével megismerheti, milyen ESXi-gazdagép rendelkezik nagy mennyiségű esemény, és milyen eseményeket fordulnak elő a leggyakrabban a környezetben.
@@ -206,6 +206,6 @@ Több oka lehet:
     d. Ha a fájl nem létezik vagy nem megfelelő, a felhasználó és csoport beállításának intézkedéseket által [egy Linux-kiszolgáló előkészítése](#prepare-a-linux-server).
 
 ## <a name="next-steps"></a>További lépések
-* Használat [Naplókeresések](../../log-analytics/log-analytics-queries.md) adatokat tárolni a Log Analytics részletes VMware megtekintéséhez.
+* Használat [Naplókeresések](../../azure-monitor/log-query/log-query-overview.md) adatokat tárolni a Log Analytics részletes VMware megtekintéséhez.
 * [Saját irányítópult létrehozásával](../../azure-monitor/platform/dashboards.md) VMware gazdagép adatainak megjelenítése.
 * [Riasztások létrehozása](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) amikor adott VMware gazdagép események történnek.

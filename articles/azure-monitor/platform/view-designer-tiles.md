@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 17d1419501b4833d0abc3b5670827d57dfd7a286
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 53837573daef56bad12f627400f7db1ccd1c26cf
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52643347"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836967"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Az adatforrásnézet-tervezőből csempék a Log Analytics használati útmutató
 Nézettervező az Azure Log Analytics használatával egyéni nézeteket hozhat létre az Azure Portalon, amelyek a Log Analytics-munkaterület adatvizualizációk széles. Ez a cikk egy referencia-útmutató a csempék az egyéni nézetekben elérhető beállításai.
@@ -179,5 +179,5 @@ A **két idősor** csempe oszlopdiagramként idővel két naplófájl lekérdez�
 
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [naplókereséseket](../../log-analytics/log-analytics-queries.md) lévő csempék a lekérdezések támogatásához.
+* Ismerje meg [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md) lévő csempék a lekérdezések támogatásához.
 * Adjon hozzá [Vizualizáció részek](view-designer-parts.md) a egyéni nézethez.

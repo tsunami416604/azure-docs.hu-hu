@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: bwren
-ms.openlocfilehash: 4ef1e302a305f683155139063891b838d8144008
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 493c48fe87158ee357d98eb0b0d1bd2a4fad5b2f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680463"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843784"
 ---
 # <a name="log-analytics-query-language"></a>Log Analytics lekérdezési nyelve
 A log Analytics biztosít az Azure Monitor napló gyűjtése és elemzése. Azure adatkezelő épül és a egy verzióját használja, a lekérdezési nyelvre. A [Azure adatkezelő lekérdezési nyelvi dokumentáció](/azure/kusto/query) rendelkezik az összes részletes adat a nyelv és a Log Analytics-lekérdezések írására szolgáló elsődleges erőforrás kell lennie. Ez az oldal más forrásokra mutató hivatkozásokat biztosít, megtudhatja, hogyan kell lekérdezéseket írni és a nyelvet a Log Analytics végrehajtása kapcsán.
@@ -29,7 +29,7 @@ A log Analytics biztosít az Azure Monitor napló gyűjtése és elemzése. Azur
 -  [Ismerkedés a Log Analytics lekérdezéseinek](get-started-queries.md) van egy Log Analytics-adatok használatával összetevőjében leckében.
 
 ## <a name="concepts"></a>Alapelvek
-- [Az Azure monitorban Log Analytics-adatok elemzése](../log-analytics-queries.md) lehetővé teszi a napló rövid áttekintést lekérdezése és ismerteti, hogyan épül fel Log Analytics-adatok.
+- [Az Azure monitorban Log Analytics-adatok elemzése](../../azure-monitor/log-query/log-query-overview.md) lehetővé teszi a napló rövid áttekintést lekérdezése és ismerteti, hogyan épül fel Log Analytics-adatok.
 - [A Log Analytics adatok megtekintésére és elemzésére](../log-analytics-log-search-portals.md) ismerteti a portálok, ahol létrehozni és a Log Analytics-lekérdezések futtatásához.
 
 ## <a name="reference"></a>Leírások

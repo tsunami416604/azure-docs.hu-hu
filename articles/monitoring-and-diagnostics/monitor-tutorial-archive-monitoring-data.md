@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.component: metrics
-ms.openlocfilehash: ac8be998a70b31af9829eeeab24902c62fd2fe37
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: HT
+ms.openlocfilehash: ab91ac3eb115504727e5ee9e912d070262027cc7
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961509"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834077"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Azure-metrikák és naplóadatok archiválása az Azure Storage használatával
 
@@ -198,4 +198,4 @@ Ebben az oktatóanyagban megismerte, hogyan állíthatja be az Azure-környezetb
 Ha többet szeretne kihozni az adatokból és további betekintést szeretne nyerni, a Log Analyticsnek is küldje el az adatokat.
 
 > [!div class="nextstepaction"]
-> [Ismerkedés a Log Analytics szolgáltatással](../log-analytics/log-analytics-queries.md)
+> [Ismerkedés a Log Analytics szolgáltatással](../azure-monitor/log-query/log-query-overview.md)

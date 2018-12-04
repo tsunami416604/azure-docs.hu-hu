@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: d5cda8830b480e9ef9dff18cb3d7b99e1db55590
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 0339889228c80cc3675fd7fde52e75cb84521ab6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442795"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840180"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Oktatóanyag: Azure Active Directory-integráció ellenszolgáltatás átjáróval
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása ellenszolgáltatás átjáróval, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy átjáró ellenszolgáltatás egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az Azure AD integrálása a ellenszolgáltatás átjáró konfigurálásához sz
 
 **Ellenszolgáltatás átjáró hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -129,7 +129,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     | `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>` |
 
     > [!NOTE] 
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Beolvasni ezeket az értékeket kezdje-integráció beállítása a ellenszolgáltatás Manager portál. A részletek megtalálhatók http://success.rewardgateway.com/it-implementation/293968-how-to-configure-a-sso-integration
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Beolvasni ezeket az értékeket kezdje-integráció beállítása a ellenszolgáltatás Manager portál. A részletek megtalálhatók https://success.rewardgateway.com/it-implementation/293968-how-to-configure-a-sso-integration
  
 1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
@@ -139,7 +139,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](./media/reward-gateway-tutorial/tutorial_general_400.png)
 
-1. Az egyszeri bejelentkezés konfigurálása **ellenszolgáltatás átjáró** oldalán, az integráció beállításának megkezdése a ellenszolgáltatás Manager portál. A letöltött metaadatok használatával az aláíró tanúsítvány beszerzése és feltöltése, a konfiguráció során. A részletek megtalálhatók http://success.rewardgateway.com/it-implementation/293968-how-to-configure-a-sso-integration
+1. Az egyszeri bejelentkezés konfigurálása **ellenszolgáltatás átjáró** oldalán, az integráció beállításának megkezdése a ellenszolgáltatás Manager portál. A letöltött metaadatok használatával az aláíró tanúsítvány beszerzése és feltöltése, a konfiguráció során. A részletek megtalálhatók https://success.rewardgateway.com/it-implementation/293968-how-to-configure-a-sso-integration
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)

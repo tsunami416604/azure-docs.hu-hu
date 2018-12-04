@@ -1,20 +1,19 @@
 ---
-title: Tömeges végrehajtó Java-kódtár segítségével hajtsa végre a tömeges importálási és frissítési műveleteket az Azure Cosmos DB |} A Microsoft Docs
+title: Tömeges végrehajtó Java-kódtár segítségével hajtsa végre a tömeges importálási és frissítési műveleteket az Azure Cosmos DB-ben
 description: Tömeges importálás, és frissítse az Azure Cosmos DB-dokumentumot tömeges végrehajtó Java-kódtár használatával.
 services: cosmos-db
 author: tknandu
-manager: kfile
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: 44477f77547c9373bd4a3394c80e217d419bc8e0
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 2767b8e493327e4e8275481ffc7aa18d70c81ccd
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420047"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836797"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Tömeges végrehajtó Java-kódtár használatával tömeges műveletek végrehajtása az Azure Cosmos DB-adatai
 

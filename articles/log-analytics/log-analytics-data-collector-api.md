@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 881188e7dab0e50b5bc62258c87cb546020c8410
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 8f12649a126cd618991dce0c98b3472a77acbb8c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723584"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841319"
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Adatokat küldeni a Log Analytics és a HTTP-adatgyűjtő API (nyilvános előzetes verzió)
 Ez a cikk bemutatja, hogyan adatokat küldeni a Log Analytics REST API-ügyfél-nak a HTTP-adatgyűjtő API használatával.  Ismerteti, hogyan formázza a parancsfájl vagy az alkalmazások által gyűjtött adatokat, foglalja bele egy kérelmet, és rendelkezik a Log Analytics által engedélyezett kérelmet.  A példák a PowerShell, a C# és Python.
@@ -143,7 +143,7 @@ A tulajdonság adattípusát azonosításához, a Log Analytics hozzáadja egy u
 | Logikai |_b |
 | Dupla |_d |
 | Dátum és idő |_t |
-| GUID |_g |
+| GUID AZONOSÍTÓJA |_g |
 
 Az adattípus, amely a Log Analytics alkalmaz minden egyes tulajdonság attól függ, hogy typ záznamu az új rekord már létezik.
 
@@ -193,14 +193,14 @@ Ez a táblázat felsorolja, amely a szolgáltatás előfordulhat, hogy vissza á
 | 403 |Tiltott |InvalidAuthorization |A szolgáltatás nem tudta hitelesíteni a kérelmet. A munkaterület Azonosítóját és a kapcsolat kulcsa érvényességének ellenőrzése. |
 | 404 |Nem található | | A megadott URL-cím helytelen, vagy a kérelem mérete túl nagy. |
 | 429 |Túl sok kérelem | | A szolgáltatás nagy mennyiségű adatait a fiókból, tapasztal. Próbálkozzon újra később a kérelmet. |
-| 500 |Belső kiszolgálóhiba |UnspecifiedError |Belső szolgáltatáshiba történt. Ismételje meg a kérelmet. |
+| 500 |Belső kiszolgálóhiba |UnspecifiedError |A szolgáltatás belső hibába ütközött. Ismételje meg a kérelmet. |
 | 503 |Elérhetetlen szolgáltatás |ServiceUnavailable |A szolgáltatás jelenleg nem érhető el a kérelmek fogadására. Ismételje meg a kérelmet. |
 
 ## <a name="query-data"></a>Adatok lekérdezése
 A Log Analytics HTTP-adatgyűjtő API, a rekordok keresése által küldött adatokat lekérdezni **típus** , amely megegyezik a **LogType** meghatározott, értékkel kiegészítve **_CL**. Például, ha a használt **MyCustomLog**, akkor adna vissza, akkor az összes rekordot **típus = MyCustomLog_CL**.
 
 >[!NOTE]
-> Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](log-analytics-queries.md), akkor a fenti lekérdezés módosulnak az alábbiak.
+> Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](../azure-monitor/log-query/log-query-overview.md), akkor a fenti lekérdezés módosulnak az alábbiak.
 
 > `MyCustomLog_CL`
 
@@ -469,6 +469,6 @@ post_data(customer_id, shared_key, body, log_type)
 ```
 
 ## <a name="next-steps"></a>További lépések
-- Használja a [Log Search API](log-analytics-queries.md) adatokat lekérni a Log Analytics-adattárban.
+- Használja a [Log Search API](../azure-monitor/log-query/log-query-overview.md) adatokat lekérni a Log Analytics-adattárban.
 
 - Tudjon meg többet [adatfolyamat létrehozása a Data Collector API-val](../azure-monitor/platform/create-pipeline-datacollector-api.md) Logic Apps-munkafolyamatot a Log Analytics használatával.

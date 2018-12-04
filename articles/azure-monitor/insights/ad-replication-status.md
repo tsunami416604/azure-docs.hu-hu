@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: d0156ccc3caea2f47296740d57422ccc706f84f1
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: be519dd2a6e6948bedeedd4166c7adf466dbb365
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634234"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836372"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>A Log Analytics használatával az Active Directory-replikációs állapotának figyelése
 
@@ -110,7 +110,7 @@ Ha egyik lista tetszőleges elemre kattint, láthatja naplóbeli keresés haszn�
 
 ![Replikációs állapothibák AD keresési eredmények](./media/ad-replication-status/oms-ad-replication-search-details.png)
 
-Itt további szűréséhez, módosítsa a keresési lekérdezést, és így tovább. A naplóbeli keresés használatával kapcsolatos további információkért lásd: [Naplókereséseket](../../log-analytics/log-analytics-queries.md).
+Itt további szűréséhez, módosítsa a keresési lekérdezést, és így tovább. A naplóbeli keresés használatával kapcsolatos további információkért lásd: [Naplókereséseket](../../azure-monitor/log-query/log-query-overview.md).
 
 A **HelpLink** mezőben látható URL-címét a TechNet-oldal, további részletekkel a meghatározott hiba. Másolja, és ez a hivatkozás illessze be a böngészőablakot, hibaelhárítási és a hiba kijavítása információinak megtekintéséhez.
 
@@ -154,4 +154,4 @@ Csatlakozás a tartományvezérlők egyik segítségre van szüksége, ha megtek
 Ha nem szeretne csatlakozni a tartományvezérlők bármelyikét közvetlenül a Log Analytics vagy a System Center Operations Manager, [ahhoz, hogy egy nem tartományvezérlő AD adatokat küldeni a Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
 
 ## <a name="next-steps"></a>További lépések
-* Használat [Log Analytics naplóbeli kereséseivel](../../log-analytics/log-analytics-queries.md) Active Directory-replikáció állapota részletes adatainak megtekintéséhez.
+* Használat [Log Analytics naplóbeli kereséseivel](../../azure-monitor/log-query/log-query-overview.md) Active Directory-replikáció állapota részletes adatainak megtekintéséhez.

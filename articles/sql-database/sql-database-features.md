@@ -11,28 +11,28 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, carlrab
 manager: craigg
-ms.date: 09/25/2018
-ms.openlocfilehash: fd62e216f70c416cb152971d27d6a6e542d3a936
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.date: 12/03/2018
+ms.openlocfilehash: b559607f741c25f668100a33b9ba8e65f0acd40a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680225"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841292"
 ---
-# <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Szolgáltatások összehasonlítása: Azure SQL Database, és az SQL Server összehasonlítása 
+# <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Szolgáltatások összehasonlítása: Azure SQL Database, és az SQL Server összehasonlítása
 
-Az Azure SQL Database egy általános kódbázis közös SQL Server. Az Azure SQL Database által támogatott SQL Server funkcióit az Ön által létrehozott Azure SQL database-típustól függnek. Az Azure SQL Database, vagy létrehozhat egy adatbázist részeként egy [felügyelt példány](sql-database-managed-instance.md) vagy létrehozhat egy adatbázist, amely része a logikai kiszolgáló, és igény szerint elhelyezett rugalmas készletben. 
+Az Azure SQL Database egy általános kódbázis közös SQL Server. Az Azure SQL Database által támogatott SQL Server funkcióit az Ön által létrehozott Azure SQL database-típustól függnek. Az Azure SQL Database, vagy létrehozhat egy adatbázist részeként egy [felügyelt példány](sql-database-managed-instance.md) vagy létrehozhat egy adatbázist, amely része a logikai kiszolgáló, és igény szerint elhelyezett rugalmas készletben.
 
 A Microsoft továbbra is biztosítja a funkciók az Azure SQL Database. Látogasson el a szolgáltatásfrissítések weblap az Azure-hoz a legújabb frissítések ezekkel a szűrőkkel:
 
-* Szűrjön [SQL Database szolgáltatásra](https://azure.microsoft.com/updates/?service=sql-database).
-* Szűrjön az általános elérhetőséggel kapcsolatos [bejelentésekre](https://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) az SQL Database funkcióira vonatkozóan.
+- Szűrjön [SQL Database szolgáltatásra](https://azure.microsoft.com/updates/?service=sql-database).
+- Szűrjön az általános elérhetőséggel kapcsolatos [bejelentésekre](https://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) az SQL Database funkcióira vonatkozóan.
 
 ## <a name="sql-server-feature-support-in-azure-sql-database"></a>Az Azure SQL Database az SQL Server-funkciók támogatása
 
-A következő táblázat az SQL Server legfontosabb funkcióit, és a szolgáltatás részlegesen vagy teljesen támogatja-e, és a egy a szolgáltatásra vonatkozó bővebb információira mutató hivatkozásokat nyújt információt. 
+A következő táblázat az SQL Server legfontosabb funkcióit, és a szolgáltatás részlegesen vagy teljesen támogatja-e, és a egy a szolgáltatásra vonatkozó bővebb információira mutató hivatkozásokat nyújt információt.
 
-| **Az SQL szolgáltatás** | **Támogatott az Azure SQL Database logikai kiszolgáló** | **Támogatott az Azure SQL Database/Managed Instance (fontos üzleti szint jelenleg előzetes verzióban)** |
+| **Az SQL szolgáltatás** | **Támogatott az Azure SQL Database logikai kiszolgáló** | **Támogatott az Azure SQL Database/Managed Instance** |
 | --- | --- | --- |
 | [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Igen – lásd: [tanúsítványtár](sql-database-always-encrypted.md) és [Key vault](sql-database-always-encrypted-azure-key-vault.md) | Igen – lásd: [tanúsítványtár](sql-database-always-encrypted.md) és [Key vault](sql-database-always-encrypted-azure-key-vault.md) |
 | [Always On rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [Magas rendelkezésre állású](sql-database-high-availability.md) minden adatbázis részét képezi. Vész-helyreállítási a következő cikkben [az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése](sql-database-business-continuity.md) | [Magas rendelkezésre állású](sql-database-high-availability.md) minden adatbázis részét képezi. Vész-helyreállítási a következő cikkben [az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése](sql-database-business-continuity.md) |
@@ -49,7 +49,8 @@ A következő táblázat az SQL Server legfontosabb funkcióit, és a szolgálta
 | [Beépített függvények](https://docs.microsoft.com/sql/t-sql/functions/functions) | Most – tekintse meg az egyes függvények | Igen – lásd: [tárolt eljárások, függvények, eseményindítók különbségek](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |
 | [Adatváltozások rögzítése](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Nem | Igen |
 | [Változások követése](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) | Igen |Igen |
-| [Rendezési utasítások](https://docs.microsoft.com/sql/t-sql/statements/collations) | Igen | Igen |
+| [Rendezés - adatbázis](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation) | Igen | Igen |
+| [Rendezés - server-példány](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation) | Nem | [Igen (előzetes verzió)](https://docs.microsoft.com/azure/sql-database/scripts/sql-managed-instance-create-powershell-azure-resource-manager-template)|
 | [Az Oszlopcentrikus indexek](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Igen – [prémium szintű, a Standard szint – S3-as vagy újabb, általános célú csomagban és a kritikus fontosságú üzleti szint](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Igen |
 | [Közös nyelvi futtatókörnyezet (CLR)](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Nem | Igen – lásd: [CLR-beli különbségek](sql-database-managed-instance-transact-sql-information.md#clr) |
 | [Tartalmazott adatbázisok](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | Igen | Igen |
@@ -57,7 +58,7 @@ A következő táblázat az SQL Server legfontosabb funkcióit, és a szolgálta
 | [Vezérlőnyelvi kulcsszavak ellenőrzése](https://docs.microsoft.com/sql/t-sql/language-elements/control-of-flow) | Igen | Igen |
 | [Adatbázisközi lekérdezések](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nem – lásd: [rugalmas lekérdezések](sql-database-elastic-query-overview.md) | Igen, valamint [rugalmas lekérdezések](sql-database-elastic-query-overview.md) |
 | [Adatbázisközi tranzakciók](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nem | Igen – lásd: [csatolt kiszolgáló különbségek](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-transact-sql-information#linked-servers) |
-| [A kurzorok](https://docs.microsoft.com/sql/t-sql/language-elements/cursors-transact-sql) | Igen |Igen | 
+| [A kurzorok](https://docs.microsoft.com/sql/t-sql/language-elements/cursors-transact-sql) | Igen |Igen |
 | [Az adattömörítés](https://docs.microsoft.com/sql/relational-databases/data-compression/data-compression) | Igen |Igen |
 | [Az adatbázisbeli levelezés](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail) | Nem | Igen |
 | [Data Migration Service (DMS)](https://docs.microsoft.com/sql/dma/dma-overview) | Igen | Igen |
@@ -78,16 +79,16 @@ A következő táblázat az SQL Server legfontosabb funkcióit, és a szolgálta
 | [Rugalmas készletek](sql-database-elastic-pool.md) | Igen | Beépített – egyetlen felügyelt példány, amelyek ugyanazt a készletet az erőforrások több adatbázis is rendelkezhet. |
 | [Eseményértesítések](https://docs.microsoft.com/sql/relational-databases/service-broker/event-notifications) | Nem – lásd: [riasztások](sql-database-insights-alerts-portal.md) | Igen |
 | [Kifejezések](https://docs.microsoft.com/sql/t-sql/language-elements/expressions-transact-sql) |Igen | Igen |
-| [Bővített események](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) | Néhány – lásd [bővített események SQL Database-ben](sql-database-xevent-db-diff-from-svr.md) | Igen – lásd: [bővített események különbségek ](sql-database-managed-instance-transact-sql-information.md#extended-events) |
+| [Bővített események](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) | Néhány – lásd [bővített események SQL Database-ben](sql-database-xevent-db-diff-from-svr.md) | Igen – lásd: [bővített események különbségek](sql-database-managed-instance-transact-sql-information.md#extended-events) |
 | [Bővített tárolt eljárások](https://docs.microsoft.com/sql/relational-databases/extended-stored-procedures-programming/creating-extended-stored-procedures) | Nem | Nem |
 [Fájlok és fájlcsoportok](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups) | Elsődleges fájlcsoport | Igen |
 | [Filestream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) | Nem | Nem |
 | [Teljes szöveges keresés](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) |  Külső szóhatároló nem támogatottak. |Külső szóhatároló nem támogatottak. |
 | [Functions](https://docs.microsoft.com/sql/t-sql/functions/functions) | Most – tekintse meg az egyes függvények | Igen – lásd: [tárolt eljárások, függvények, eseményindítók különbségek](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |
 | [Geo-restore](sql-database-recovery-using-backups.md#geo-restore) | Igen – általános célú és a kritikus fontosságú üzleti szolgáltatásszintek csak | Nem állíthatja vissza COPY_ONLY tekintse meg a teljes biztonsági mentést, hogy rendszeres időközönként - [biztonsági mentési különbségek](sql-database-managed-instance-transact-sql-information.md#backup) és [különbségek visszaállítása](sql-database-managed-instance-transact-sql-information.md#restore-statement). |
-| [Georeplikáció](sql-database-geo-replication-overview.md) | Igen – általános célú és a kritikus fontosságú üzleti szolgáltatásszintek csak| Nem |
+| [Georeplikáció](sql-database-geo-replication-overview.md) | Igen – általános célú és a kritikus fontosságú üzleti szolgáltatásszintek csak| Igen |
 | [Graph-feldolgozás](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) | Igen | Igen |
-| [Memóriabeli optimalizálás](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Igen – [csak a prémium és üzletileg kritikus szintet](sql-database-in-memory.md) | Igen – [üzletileg kritikus réteg csak – jelenleg előzetes verzióban érhető el](sql-database-managed-instance.md) |
+| [Memóriabeli optimalizálás](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Igen – [csak a prémium és üzletileg kritikus szintet](sql-database-in-memory.md) | Igen – [üzleti csak a kritikus szintű](sql-database-managed-instance.md) |
 | [JSON-adatok támogatása](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | [Igen](https://docs.microsoft.com/azure/sql-database/sql-database-json-features) | [Igen](https://docs.microsoft.com/azure/sql-database/sql-database-json-features) |
 | [Nyelvi elemei](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | Most – tekintse meg az egyes elemek |  Igen – lásd: [a T-SQL eltérései](sql-database-managed-instance-transact-sql-information.md) |
 | [Társított kiszolgálók](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nem – lásd: [rugalmas lekérdezés](sql-database-elastic-query-horizontal-partitioning.md) | Csak az SQL Server és SQL Database |
@@ -128,7 +129,7 @@ A következő táblázat az SQL Server legfontosabb funkcióit, és a szolgálta
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Igen | Igen |
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Igen | Igen |
 | [Az SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Nem – lásd: [bővített események](sql-database-xevent-db-diff-from-svr.md) | Igen |
-| [SQL Server-replikáció](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [Kizárólag tranzakciós és pillanatkép-replikációs előfizetők](sql-database-cloud-migrate.md) | Igen – [replikáció az SQL Database felügyelt példányain – nyilvános előzetes verzió](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance) |
+| [SQL Server-replikáció](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [Kizárólag tranzakciós és pillanatkép-replikációs előfizetők](sql-database-cloud-migrate.md) | Igen – [replikáció az SQL Database felügyelt példánya](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance) |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Nem - [tekintse meg a Power BI](https://docs.microsoft.com/power-bi/) | Nem - [tekintse meg a Power BI](https://docs.microsoft.com/power-bi/) |
 | [Tárolt eljárások](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) | Igen | Igen |
 | [A rendszer tárolt függvényei](https://docs.microsoft.com/sql/relational-databases/system-functions/system-functions-for-transact-sql) | Most – tekintse meg az egyes függvények | Igen – lásd: [tárolt eljárások, függvények, eseményindítók különbségek](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |
@@ -140,7 +141,7 @@ A következő táblázat az SQL Server legfontosabb funkcióit, és a szolgálta
 |Fenyegetések észlelése|  [Igen](sql-database-threat-detection.md)|[Igen](sql-database-managed-instance-threat-detection.md)|
 | [Nyomkövetési jelzők](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Nem | Nem |
 | [Változók](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | Igen | Igen |
-| [Transzparens adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Igen – általános célú és a kritikus fontosságú üzleti szolgáltatásszintek csak| Részlegesen, csak a szolgáltatás által felügyelt titkosítás segítségével |
+| [Transzparens adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Igen – általános célú és a kritikus fontosságú üzleti szolgáltatásszintek csak| [Igen](transparent-data-encryption-azure-sql.md) |
 [Virtuális hálózat](../virtual-network/virtual-networks-overview.md) | Részben – lásd: [VNet-végpontok](sql-database-vnet-service-endpoint-rule-overview.md) | Igen, csak a Resource Manager-modell |
 | [Windows Server feladatátvételi fürtszolgáltatás](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | [Magas rendelkezésre állású](sql-database-high-availability.md) minden adatbázis részét képezi. Vész-helyreállítási a következő cikkben [az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése](sql-database-business-continuity.md) | [Magas rendelkezésre állású](sql-database-high-availability.md) minden adatbázis részét képezi. Vész-helyreállítási a következő cikkben [az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése](sql-database-business-continuity.md) |
 | [XML-indexek](https://docs.microsoft.com/sql/t-sql/statements/create-xml-index-transact-sql) | Igen | Igen |

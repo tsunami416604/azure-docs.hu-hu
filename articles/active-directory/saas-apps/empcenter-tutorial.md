@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: e7e594619c3b7c1ebd34c802d53b3897046a9cd7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 722a5b90b9ca17197cb0a0d117e58a01108d0a9c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426836"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845042"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-empcenter"></a>Oktatóanyag: Azure Active Directory-integráció az EmpCenter
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 EmpCenter az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy EmpCenter egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az Azure AD integrálása a EmpCenter konfigurálásához hozzá kell EmpCenter 
 
 **EmpCenter hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -119,7 +119,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     | `https://<subdomain>.workforcehosting.com/<instancename>` |
 
     > [!NOTE] 
-    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [EmpCenter ügyfél-támogatási csapatának](http://www.workforcesoftware.com/services/customer-support/) a gépkulcsengedélyek értékének. 
+    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [EmpCenter ügyfél-támogatási csapatának](https://www.workforcesoftware.com/services/customer-support/) a gépkulcsengedélyek értékének. 
  
 1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
@@ -129,7 +129,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](./media/empcenter-tutorial/tutorial_general_400.png)
 
-1. Az egyszeri bejelentkezés konfigurálása **EmpCenter** oldalon kell küldenie a letöltött **metaadatainak XML** való [EmpCenter támogatási csapatának](http://www.workforcesoftware.com/services/customer-support/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+1. Az egyszeri bejelentkezés konfigurálása **EmpCenter** oldalon kell küldenie a letöltött **metaadatainak XML** való [EmpCenter támogatási csapatának](https://www.workforcesoftware.com/services/customer-support/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -168,7 +168,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="creating-an-empcenter-test-user"></a>Egy EmpCenter tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók EmpCenter jelentkezzen be, akkor ki kell építeni EmpCenter be. EmpCenter, esetén a felhasználói fiókokat kell hozható létre a [EmpCenter támogatási csapatának](http://www.workforcesoftware.com/services/customer-support/).
+Ahhoz, hogy az Azure AD-felhasználók EmpCenter jelentkezzen be, akkor ki kell építeni EmpCenter be. EmpCenter, esetén a felhasználói fiókokat kell hozható létre a [EmpCenter támogatási csapatának](https://www.workforcesoftware.com/services/customer-support/).
 
 > [!NOTE]
 > Bármely más EmpCenter felhasználói fiók létrehozása eszközöket használhatja, vagy API-k által biztosított EmpCenter üzembe helyezni az Azure Active Directory felhasználói fiókokat.

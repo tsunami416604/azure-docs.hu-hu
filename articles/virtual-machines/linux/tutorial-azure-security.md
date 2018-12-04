@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 562fc267a056d6908af5b89fd7a93e858f1c6165
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
-ms.translationtype: HT
+ms.openlocfilehash: ba23e9b8ac79a0a2a3899332bfc373665cf561af
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092611"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841163"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Oktatóanyag: Az Azure Security Center használata a Linux rendszerű virtuális gépek monitorozásához
 
@@ -106,7 +106,7 @@ Ha a rendszer elvégzi a javaslatokhoz tartozó javításokat, megoldottként je
 
 Az erőforrások konfigurációjára vonatkozó javaslatok mellett a Security Center megjelenít fenyegetésészlelési riasztásokat is. A biztonsági riasztások szolgáltatása az Azure-erőforrásokra leselkedő biztonsági fenyegetések felderítése érdekében összesíti az egyes virtuális gépekről gyűjtött adatokat, az Azure-beli hálózati naplókat és a csatlakoztatott partnermegoldásokat. A Security Center fenyegetésészlelési képességeivel kapcsolatban további információt [az Azure Security Center észlelési képességeit](../../security-center/security-center-detection-capabilities.md) ismertető szakaszban talál.
 
-A biztonsági riasztások funkciójának használatához a Security Center tarifacsomagját *Ingyenesről* *Standardra* kell emelni. Ha erre a magasabb tarifacsomagra vált, egy 60 napos **ingyenes próbaidőszak** áll a rendelkezésére. 
+A biztonsági riasztások funkciójának használatához a Security Center tarifacsomagját *Ingyenesről* *Standardra* kell emelni. A **az ingyenes próbaidőszak** érhető el a magasabb tarifacsomagra lép. 
 
 A tarifacsomag módosítása:  
 

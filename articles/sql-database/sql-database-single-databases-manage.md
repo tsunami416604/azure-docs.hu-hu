@@ -11,17 +11,17 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 11/09/2018
-ms.openlocfilehash: 27228904dab0726a1d84e58751a3315f3ff03447
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.date: 12/03/2018
+ms.openlocfilehash: 52caae38c21fe403735b8479ec2e721ef38f521e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515386"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845790"
 ---
 # <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Logikai kiszolgáló és az Azure SQL Database önálló adatbázisok létrehozása és kezelése
 
-Hozzon létre, és kezelheti az Azure SQL database logikai kiszolgálóiról és az önálló adatbázisok az Azure portal, PowerShell, Azure CLI, REST API és a Transact-SQL használatával.
+Hozzon létre, és kezelheti az Azure SQL Database logikai kiszolgálóiról és az önálló adatbázisok az Azure portal, PowerShell, Azure CLI, REST API és a Transact-SQL használatával.
 
 ## <a name="azure-portal-manage-logical-servers-and-databases"></a>Az Azure portal: logikai kiszolgálóiról és adatbázisairól kezelése
 
@@ -57,10 +57,10 @@ Létező adatbázis kezeléséhez, lépjen a **SQL-adatbázisok** lapon, majd ka
 
 ## <a name="powershell-manage-logical-servers-and-databases"></a>PowerShell: Logikai kiszolgálóiról és adatbázisairól kezelése
 
-Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak az Azure PowerShell használatával, a következő PowerShell-parancsmagokat használja. Ha telepíteni vagy frissíteni a PowerShell, lásd: kell [Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps).
+Létrehozása és kezelése az Azure SQL logikai kiszolgálók, egyetlen vagy készletezett adatbázisok és logikai kiszolgálóhoz tűzfalak az Azure PowerShell-lel, használja a következő PowerShell-parancsmagokat. Ha telepíteni vagy frissíteni a PowerShell, lásd: kell [Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps).
 
 > [!TIP]
-> PowerShell-példa szkriptek, lásd: [használja a Powershellt egy Azure SQL-adatbázis létrehozása és tűzfalszabály konfigurálása](scripts/sql-database-create-and-configure-database-powershell.md) és [figyelés és méret egy önálló SQL database PowerShell-lel](scripts/sql-database-monitor-and-scale-database-powershell.md).
+> PowerShell-példa szkriptek, lásd: [használja a Powershellt egy Azure SQL-adatbázis létrehozása és a egy logikai kiszolgáló tűzfalszabály konfigurálása](scripts/sql-database-create-and-configure-database-powershell.md) és [figyelés és méret egy önálló SQL database PowerShell-lel](scripts/sql-database-monitor-and-scale-database-powershell.md).
 
 | Parancsmag | Leírás |
 | --- | --- |
@@ -120,9 +120,8 @@ Hozzon létre és kezeli az Azure SQL server, adatbázisok és tűzfalak a Trans
 
 | Parancs | Leírás |
 | --- | --- |
-|[ADATBÁZIS (az Azure SQL Database) létrehozása](/sql/t-sql/statements/create-database-azure-sql-database)|Létrehoz egy új adatbázist. Új adatbázis létrehozásához a master adatbázishoz internetkapcsolatra.|
-| [Az ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |Módosítja egy Azure SQL database. |
-|[Az ALTER DATABASE (Azure SQL Data Warehouse)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse)|Az Azure SQL Data Warehouse módosítja.|
+|[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)|Létrehoz egy új adatbázist. Új adatbázis létrehozásához a master adatbázishoz internetkapcsolatra.|
+| [Az ALTER DATABASE (Azure SQL Database)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Módosítja egy Azure SQL database. |
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Töröl egy adatbázist.|
 |[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Adja vissza az edition (szolgáltatási réteg), a szolgáltatási cél (tarifacsomag) és a rugalmas készlet nevét, egy Azure SQL database vagy az Azure SQL Data Warehouse esetében. Ha be van jelentkezve a master adatbázishoz az Azure SQL Database kiszolgáló, információkat az összes adatbázis adja vissza. Az Azure SQL Data Warehouse akkor kapcsolódnia kell a master adatbázisban.|
 |[sys.dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Egy Azure SQL Database-adatbázishoz a CPU, IO, és a memória használati adja vissza. Egy sor létezik 15 másodpercenként, még akkor is, ha ott nem nincs tevékenység az adatbázisban.|
@@ -145,7 +144,7 @@ Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak, eze
 |[Kiszolgálók – létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Létrehozza vagy frissíti az új kiszolgálóra.|
 |[Kiszolgálók – törlés](https://docs.microsoft.com/rest/api/sql/servers/delete)|SQL-kiszolgáló törlése.|
 |[Kiszolgálók – Get](https://docs.microsoft.com/rest/api/sql/servers/get)|Lekérdezi a kiszolgálót.|
-|[Kiszolgálók – lista](https://docs.microsoft.com/rest/api/sql/servers/list)|A kiszolgálók listáját adja vissza.|
+|[Kiszolgálók – lista](https://docs.microsoft.com/rest/api/sql/servers/list)|Előfizetés a kiszolgálók listáját adja vissza.|
 |[Kiszolgálók – lista erőforráscsoport alapján](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|A kiszolgálók listáját adja vissza egy erőforráscsoportban.|
 |[Kiszolgálók – frissítés](https://docs.microsoft.com/rest/api/sql/servers/update)|Frissíti egy meglévő kiszolgálóra.|
 |[-Adatbázis létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|Új adatbázis létrehozása vagy frissítése egy meglévő adatbázist.|

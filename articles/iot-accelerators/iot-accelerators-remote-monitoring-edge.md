@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 329bc41555f2def0e2b7001a7b445cd3de16d439
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 51c19447e115426bd39d39fedc86193c8f091df1
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51828142"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843308"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Oktatóanyag: A távoli figyelési megoldásgyorsító észlelje a rendellenességeket a peremhálózaton
 
@@ -24,16 +24,26 @@ Edge feldolgozás olyan távoli megfigyelés bevezetni, az ebben az oktatóanyag
 
 A Contoso biztosítani szeretné egy intelligens edge-modul üzembe helyezése az olaj szivattyú jack, amely észleli a rendellenességeket hőmérséklet. Edge-modul riasztásokat küld a távoli figyelési megoldás. Egy riasztás fogadásakor, a Contoso operátor karbantartási technikus is csatolva. Contoso is beállíthat automatikus műveletek, például az e-mail küldése a futtatását, amikor a megoldás egy riasztást kap.
 
-Ebben az oktatóanyagban használja az IoT Edge-eszközöket a helyi Windows-fejlesztői gépére. A hőmérséklet rendellenességek észlelése és az olaj szivattyú jack eszköz szimulálása az edge-modulok telepítése.
+Az oktatóanyagban használt forgatókönyv az alábbi ábrán látható a legfontosabb összetevők:
+
+![Áttekintés](media/iot-accelerators-remote-monitoring-edge/overview.png)
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 >[!div class="checklist"]
 > * Az IoT Edge-eszközöket a megoldás hozzáadása
 > * Az Edge jegyzékfájl létrehozása
-> * Egy csomagot, amely meghatározza az eszköz futtatásához a modulok importálása
+> * A jegyzékfájl importálja, amely meghatározza a modulokat az eszközön futtatni csomagként
 > * A csomag az IoT Edge-eszköz üzembe helyezése
 > * Az eszközről riasztások megtekintése
+
+Az IoT Edge-eszközön:
+
+* A futtatókörnyezet fogadja a csomagot, és telepíti a modulokat.
+* A stream analytics-modul hőmérséklet rendellenességeket a szivattyú észleli, és elküldi a parancsok a probléma megoldásához.
+* A stream analytics-modul a megoldásgyorsító szűrt adatokat továbbítja.
+
+Ebben az oktatóanyagban egy Linux rendszerű virtuális gép, IoT Edge-eszköz. Az olaj szivattyú jack eszköz szimulálása az edge-modul is telepíti.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -111,54 +121,23 @@ Edge-eszköz kell telepíteni az Edge-futtatókörnyezet szükséges. Ebben az o
     az vm create \
       --resource-group IoTEdgeDevices \
       --name EdgeVM \
-      --image Canonical:UbuntuServer:16.04-LTS:latest \
+      --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest \
       --admin-username azureuser \
       --generate-ssh-keys \
       --size Standard_B1ms
     ```
 
-    Jegyezze fel a nyilvános IP-címet, szüksége lesz rá a következő lépésben mikor csatlakozhat SSH-val.
-
-1. Ha csatlakozni szeretne a virtuális gép SSH-val, a cloud shellben futtassa a következő parancsot:
+1. Az eszköz kapcsolati karakterláncának konfigurálása az Edge-futtatókörnyezet, futtassa a következő parancsot, korábban végzett jegyezze fel, az eszköz kapcsolati karakterláncának használata:
 
     ```azurecli-interactive
-    ssh azureuser@{vm IP address}
+    az vm run-command invoke \
+      --resource-group IoTEdgeDevices \
+      --name EdgeVM \
+      --command-id RunShellScript \
+      --scripts 'sudo /etc/iotedge/configedge.sh "YOUR_DEVICE_CONNECTION_STRING"'
     ```
 
-1. Ha a virtuális gép csatlakozik, a következő parancsokat a virtuális gépen a tárház beállítása:
-
-    ```azurecli-interactive
-    curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > ./microsoft-prod.list
-    sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
-    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-    sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
-    ```
-
-1. A virtuális gépen a tároló és az Edge-modulok telepítéséhez futtassa a következő parancsokat:
-
-    ```azurecli-interactive
-    sudo apt-get update
-    sudo apt-get install moby-engine
-    sudo apt-get install moby-cli
-    sudo apt-get update
-    sudo apt-get install iotedge
-    ```
-
-1. Az eszköz kapcsolati karakterláncának konfigurálása az Edge-futtatókörnyezet, a konfigurációs fájl szerkesztése:
-
-    ```azurecli-interactive
-    sudo nano /etc/iotedge/config.yaml
-    ```
-
-    Rendelje hozzá, az eszköz kapcsolati karakterláncát a **device_connection_string** változó, mentse a módosításokat, és zárja be a szerkesztőt.
-
-1. Indítsa újra az Edge-futtatókörnyezet, az új konfiguráció használatához:
-
-    ```azurecli-interactive
-    sudo systemctl restart iotedge
-    ```
-
-1. Most lépjen ki az SSH-munkamenetet, és zárja be a cloud shellben.
+    Mindenképp adja hozzá a kapcsolati karakterláncot az idézőjelek belül.
 
 Sikeresen telepítve és konfigurálva, az IoT Edge-futtatókörnyezet egy Linux rendszerű eszközön. Az oktatóanyag későbbi részében használhatja a távoli figyelési megoldás üzembe helyezése IoT Edge-modulok ezen az eszközön.
 

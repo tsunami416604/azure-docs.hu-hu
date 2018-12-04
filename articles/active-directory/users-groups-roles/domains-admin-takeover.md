@@ -14,12 +14,12 @@ ms.date: 04/06/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 857d58d31565e413a207162202f1a680d7da7c65
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: c07b87d88b884b22f44fe108bb28877cb30f973e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250733"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837171"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Rendszergazdaként az Azure Active Directoryban egy nem felügyelt könyvtár átvétele
 Ez a cikk ismerteti egy DNS-tartománynevet az Azure Active Directoryban (Azure AD) egy nem felügyelt könyvtár átvétele kétféle módon. Amikor egy önkiszolgáló felhasználó regisztrál egy Azure AD-t használó felhőszolgáltatásra, a rendszer az e-mail-címe alapján hozzáadja egy nem felügyelt Azure AD-címtárhoz. Önkiszolgáló vagy "vírusos" regisztráció kapcsolatos további információkért lásd: [Mi az Azure Active Directory önkiszolgáló regisztráció?](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-signup)
@@ -108,7 +108,11 @@ A [RMS egyéni felhasználók számára](/azure/information-protection/rms-for-i
 
 A kulcs és a sablonok nem kerülnek, ha a nem felügyelt bérlő egy másik régióban van. Például a nem felügyelt bérlő az Európai és a bérlő Észak-amerikai van saját. 
 
-RMS egyéni felhasználók számára védett tartalom megnyitása az Azure AD-hitelesítés támogatására szolgálnak, bár nem rendszergazdák számára is a tartalmak védelmére. Felhasználók tartalomvédelemre volt az RMS egyéni felhasználók számára előfizetéssel, és a kulcs és a sablonok nem lett áthelyezve, tartalom nem érhető el követően a tartomány átvételéről.    
+RMS egyéni felhasználók számára védett tartalom megnyitása az Azure AD-hitelesítés támogatására szolgálnak, bár nem rendszergazdák számára is a tartalmak védelmére. Felhasználók tartalomvédelemre volt az RMS egyéni felhasználók számára előfizetéssel, és a kulcs és a sablonok nem lett áthelyezve, tartalom nem érhető el követően a tartomány átvételéről.
+
+#### <a name="more-information-about-power-bi"></a>További információ a Power bi-ban
+
+Egy külső átvétel, Power BI-tartalmakat, amelyek előtt kerül az átvétel végrehajtásakor egy [a Power BI archivált munkaterülete](/power-bi/service-admin-power-bi-archived-workspace). Az új bérlő használni kívánt tartalmak manuálisan át kell telepítenie.
 
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>Az Azure AD PowerShell-parancsmagok a ForceTakeover lehetőséget
 Láthatja, hogy ezeket a parancsmagokat a használt [PowerShell-példa](#powershell-example).

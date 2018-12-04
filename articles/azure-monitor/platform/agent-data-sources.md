@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 8dad4c11ac309d959675d525fbeb48fe385cf4a5
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 022dd52e05b9227e3ce0920a083f75413a2eebc8
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336865"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836916"
 ---
 # <a name="data-sources-in-log-analytics"></a>A Log Analytics adatforrások
 Log Analytics gyűjti az adatokat a csatlakoztatott források, és azt a Log Analytics-munkaterületen tárolja.  Az adatok az egyes gyűjtött határozza meg azokat az adatforrásokat, konfigurálhat.  A Log Analytics Data rekordkészletet van tárolva.  Minden adatforrás egy adott típusú rekordot hoz létre a saját tulajdonságkészlettel minden típus.
@@ -68,5 +68,5 @@ Rekordokat a munkaterületet a Log Analytics által gyűjtött összes adat van 
 
 ## <a name="next-steps"></a>További lépések
 * Ismerje meg [megoldások](../../azure-monitor/insights/solutions.md) , amelyek további funkciókkal bővítik a Log Analytics és a is gyűjthet adatokat a munkaterületre.
-* Ismerje meg [naplókereséseket](../../log-analytics/log-analytics-queries.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
+* Ismerje meg [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
 * Konfigurálása [riasztások](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) proaktívan értesíti az adatforrások és megoldások kritikus fontosságú adatok.

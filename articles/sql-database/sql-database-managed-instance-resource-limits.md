@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: 97c141b6e0c071a8cea27f9a873f28a6c5113a18
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.date: 12/03/2018
+ms.openlocfilehash: c8a100577ba4bc67d12c7376b5897f397d010d4d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394867"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844923"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Áttekintés az Azure SQL Database felügyelt példányain erőforráskorlátok
 
-Ez a cikk az Azure SQL Database felügyelt példányába erőforráskorlátok áttekintést nyújt, és ismerteti, hogyan hozhat létre az alapértelmezett területi előfizetési korlátozásait növelésére. 
+Ez a cikk az Azure SQL Database felügyelt példányába erőforráskorlátok áttekintést nyújt, és ismerteti, hogyan hozhat létre az alapértelmezett területi előfizetési korlátozásait növelésére.
 
 > [!NOTE]
 > Egyéb felügyelt példány korlátozások is érvényesek, lásd: [Virtuálismag-alapú vásárlási modell](sql-database-managed-instance.md#vcore-based-purchasing-model) és [felügyelt példány szolgáltatásszintek](sql-database-managed-instance.md#managed-instance-service-tiers). Támogatott szolgáltatások és a T-SQL eltérései utasításokat lásd [különbségek](sql-database-features.md) és [T-SQL utasítás támogatása](sql-database-managed-instance-transact-sql-information.md).
@@ -43,9 +43,9 @@ Az Azure SQL Database felügyelt példánya is telepíthető a két hardver gene
 
 ### <a name="service-tier-characteristics"></a>Szolgáltatási szint tulajdonságok
 
-Felügyelt példány két szolgáltatási csomagban – általános célú és az üzletileg kritikus (nyilvános előzetes verzió) rendelkezik. Ezek a csomagok különböző képességeket biztosítanak, az alábbi táblázatban leírtak szerint:
+Felügyelt példány két szolgáltatási csomagban – általános célú és a kritikus fontosságú üzleti rendelkezik. Ezek a csomagok különböző képességeket biztosítanak, az alábbi táblázatban leírtak szerint:
 
-| **Funkció** | **Általános célú** | **Üzletileg kritikus (előzetes verzió)** |
+| **Funkció** | **Általános célú** | **Üzletileg kritikus** |
 | --- | --- | --- |
 | Virtuális magok száma\* | Gen4: 8, 16, 24<br/>Gen5: 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> Gen5: 8, 16, 24, 32, 40, 64, 80 |
 | Memory (Memória) | Gen4: 56GB – 156GB<br/>Gen5: 44GB – 440GB<br/>\*Arányos virtuális magok száma | Gen4: 56GB – 156GB <br/> Gen5: 44GB – 440GB<br/>\*Arányos virtuális magok száma |
@@ -53,7 +53,7 @@ Felügyelt példány két szolgáltatási csomagban – általános célú és a
 | Maximális tárterület adatbázisonként | Határozza meg a maximális tárhelyméretet a példány | Határozza meg a maximális tárhelyméretet a példány |
 | Egy példány adatbázisok maximális száma | 100 | 100 |
 | Maximális adatbázisfájlok példányonként | Legfeljebb 280 | Korlátlan |
-| Várt adatbázisonkénti maximális tárolási IOPS | 500-5000 ([adatok mérete attól függ,](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)). | Alapul szolgáló SSD sebességétől függ. |
+| IO-átviteli sebesség (becsült) | A maximális iops-érték 200 000 magonként 5000 IOPS |
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
@@ -98,12 +98,12 @@ Ezek a korlátok növelhető a speciális létrehozásával [támogatási kéré
 
 [Nagyvállalati Szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) előfizetések kombinációja csoportházirend és BC-példányok is rendelkezhet. Vannak azonban bizonyos az alhálózatokon a példányok elhelyezésére vonatkozó korlátozások.
 
-> [!Note] 
+> [!Note]
 > [Használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0003p/) és [Felhőszolgáltató (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources) típusú előfizetésessel is rendelkezik, vagy egy fontos üzleti vagy akár 4 általános célú példányok.
 
 A következő példákban üzembe helyezési esetekre, nem üres alhálózattal, és vegyes GP és a BC szolgáltatásszintek.
 
-|Alhálózatok száma|1. alhálózata|2. alhálózata|Alhálózat 3|
+|Alhálózatok száma|1. alhálózat|2. alhálózat|3. alhálózat|
 |:---|:---|:---|:---|
 |1|1 BC és legfeljebb 8 GP<br>2 BC és akár 4 általános védelmi|–| –|
 |2|0 BC, akár 4 általános védelmi|1 BC, akár 4 általános védelmi<br>2 BC, 0 A CSOPORTHÁZIREND|–|
@@ -114,9 +114,10 @@ A következő példákban üzembe helyezési esetekre, nem üres alhálózattal,
 
 ## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>SQL felügyelt példánya a nagyobb kvótát beszerzése
 
-Ha több felügyelt példány az aktuális régióban, elküldheti a támogatási kérelmet a kvóta az Azure portal használatával kiterjesztheti. A folyamat lehet beszerezni a nagyobb kvótát kezdeményezéséhez:
+Ha több felügyelt példány az aktuális régióban, elküldheti a támogatási kérelmet a kvóta az Azure portal használatával kiterjesztheti.
+A folyamat lehet beszerezni a nagyobb kvótát kezdeményezéséhez:
 
-1. Nyissa meg **súgó + támogatás**, és kattintson a **új támogatási kérelem**. 
+1. Nyissa meg **súgó + támogatás**, és kattintson a **új támogatási kérelem**.
 
    ![Súgó és támogatás](media/sql-database-managed-instance-resource-limits/help-and-support.png)
 2. Az alapismeretek lapon az új támogatási kérelem:
@@ -140,13 +141,13 @@ Ha több felügyelt példány az aktuális régióban, elküldheti a támogatás
      > - Régió, hogy melyik előfizetéssel korlátot növelni kell
      > - Példányok száma a szolgáltatási rétegben lévő alhálózatok a kvóta növelése után szükséges száma (ha az egyik létező alhálózathoz ki kell bővíteni kell növelése
      > - Szükséges új alhálózatok számát és a példányok száma a szolgáltatási szinten belül az új alhálózatokra teljes száma (ha üzembe kell helyeznie az új alhálózatokra felügyelt példányok).
-     
+
 5. Kattintson a **Tovább** gombra.
 6. Adja meg a kapcsolattartási adatai lap az új támogatási kérelmet az elsődleges kapcsolattartási módszert (e-mail cím vagy telefonszám) és a kapcsolattartási adatait.
 7. Kattintson a **Create** (Létrehozás) gombra.
 
 ## <a name="next-steps"></a>További lépések
 
-- Felügyelt példánnyal kapcsolatos további információkért lásd: [mit jelent a felügyelt példány?](sql-database-managed-instance.md). 
+- Felügyelt példánnyal kapcsolatos további információkért lásd: [mit jelent a felügyelt példány?](sql-database-managed-instance.md).
 - Díjszabási információkért tekintse meg a [SQL Database felügyelt példányain díjszabás](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 - Ismerje meg, hogyan hozhat létre az első felügyelt példányhoz, lásd: [gyors üzembe helyezési útmutató](sql-database-managed-instance-get-started.md).

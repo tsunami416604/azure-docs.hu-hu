@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 11452dfb94a5a1c8cf4734b1ef21a44cccafbea1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bccc7abed9a86bcba74a5d994664a20313f3282a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430508"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833805"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redbrick-health"></a>Oktatóanyag: Azure Active Directory-integráció az RedBrick állapota
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása az RedBrick Health, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy RedBrick egészségügyi egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ RedBrick egészségügyi integrálása az Azure AD beállítása, hozzá kell Re
 
 **RedBrick állapotfigyelő hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -110,7 +110,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![RedBrick egészségügyi tartomány és URL-címek egyszeri bejelentkezési adatait](./media/redbrickhealth-tutorial/tutorial_redbrickhealth_url.png)
 
-    a. Az a **azonosító** szövegmezőbe írja be egy URL-címe: `http://www.redbrickhealth.com`
+    a. Az a **azonosító** szövegmezőbe írja be egy URL-címe: `https://www.redbrickhealth.com`
     
     b. Az a **válasz URL-cím** szövegmezőbe írja be egy URL-címe: `https://sso-intg.redbrickhealth.com/sp/ACS.saml2`
     
@@ -205,7 +205,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
   
 ### <a name="create-a-redbrick-health-test-user"></a>RedBrick egészségügyi tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű RedBrick állapota a felhasználó hoz létre. Együttműködve [RedBrick Health támogatási csapatának](https://home.redbrickhealth.com/contact/) a felhasználók hozzáadása az RedBrick egészségügyi platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
+Ebben a szakaszban egy Britta Simon nevű RedBrick állapota a felhasználó hoz létre. Együttműködve [RedBrick Health támogatási csapatának](https://home.redbrickhealth.com/contact/) a felhasználók hozzáadása az RedBrick egészségügyi platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -237,7 +237,7 @@ Ebben a szakaszban engedélyezze Britta Simon használandó Azure egyszeri bejel
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -8,17 +8,17 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: 8ad7369bc940f682bb7c11c3ed4e3444f1bb056a
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: b8d5526b258e70238bf8d5e4dc91ab02f403368e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035084"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843682"
 ---
 # <a name="monitor-and-tune"></a>Figyelés és hangolás
 A kiszolgálók adatainak segítségével hibaelhárítása és optimalizálhatja a számítási feladatok számára. Azure Database for PostgreSQL biztosít a különböző megfigyelési lehetőségeket nyújt betekintést a kiszolgáló a hálózatvédelem működését.
 
-## <a name="metrics"></a>Metrikák
+## <a name="metrics"></a>Mérőszámok
 Azure Database for postgresql-hez különböző mérőszámokat, amelyek a PostgreSQL-kiszolgáló támogató erőforrásokban viselkedését betekintést biztosít. Mindegyik metrikát bocsásson ki egy egy perces gyakorisággal, és akár 30 napig előzmények rendelkezik. A metrikákhoz riasztásokat is beállíthatja. Lépésenkénti útmutatásért lásd: [riasztások beállítása](howto-alert-on-metric.md). Egyéb feladatok közé tartozik, automatizált műveletek, speciális analitikai végrehajtása és archiváláshoz előzmények. További információkért lásd: a [Azure metrikáinak áttekintésében](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
 ### <a name="list-of-metrics"></a>Mérőszámok listája
@@ -35,19 +35,19 @@ Ezek a metrikák érhetők el az Azure Database for postgresql-hez:
 |serverlog_storage_percent|Server Log storage százalékban|Százalék|A százalékos aránya ki a kiszolgáló maximális kiszolgálói naplók tárolására használt kiszolgálói naplók tárolásához.|
 |serverlog_storage_usage|Kiszolgálói naplók tárolására használt|Bájt|Kiszolgálói naplók tárolására használt mennyisége.|
 |serverlog_storage_limit|Log storage maximális|Bájt|A maximális kiszolgálói naplók tárolásához, ehhez a kiszolgálóhoz.|
-|active_connections|Az aktív kapcsolatok|Mennyiség|A kiszolgáló aktív kapcsolatok száma.|
-|connections_failed|Sikertelen kapcsolatok|Mennyiség|Nem sikerült a kiszolgálóval létesített kapcsolatok száma.|
+|active_connections|Az aktív kapcsolatok|Darabszám|A kiszolgáló aktív kapcsolatok száma.|
+|connections_failed|Sikertelen kapcsolatok|Darabszám|Nem sikerült a kiszolgálóval létesített kapcsolatok száma.|
 |network_bytes_egress|Hálózat kimenő adatforgalma|Bájt|Kimenő hálózati forgalom az aktív kapcsolatok között.|
 |network_bytes_ingress|Hálózat bejövő adatforgalma|Bájt|Hálózati az aktív kapcsolatok között.|
 |backup_storage_used|Felhasznált biztonsági mentési tár|Bájt|A felhasznált biztonsági mentési tárterület mennyisége.|
 
-## <a name="server-logs"></a>Kiszolgálónaplók
-Engedélyezheti a naplózást a kiszolgálón. Ezek a naplók is elérhetők az Azure-diagnosztikai naplók keresztül [Log Analytics](../log-analytics/log-analytics-queries.md), az Event Hubs és a Storage-fiókot. Naplózásával kapcsolatos további tudnivalókért látogasson el a [kiszolgálónaplók](concepts-server-logs.md) lapot.
+## <a name="server-logs"></a>Kiszolgálói naplók
+Engedélyezheti a naplózást a kiszolgálón. Ezek a naplók is elérhetők az Azure-diagnosztikai naplók keresztül [Log Analytics](../azure-monitor/log-query/log-query-overview.md), az Event Hubs és a Storage-fiókot. Naplózásával kapcsolatos további tudnivalókért látogasson el a [kiszolgálónaplók](concepts-server-logs.md) lapot.
 
 ## <a name="query-store"></a>Lekérdezéstár
 [Query Store](concepts-query-store.md) nyilvános előzetes verziójú funkció, amely nyomon követi a lekérdezési teljesítményt idő többek között lekérdezés futásidejének statisztikai adatait, és várjon eseményeket. A funkció továbbra is fennáll, lekérdezés futásidejű teljesítményadatait nevű rendszer-adatbázisok **azure_sys** a query_store séma alapján. Szabályozhatja, hogy a gyűjtemény és az adatok különböző konfigurációs belül keresztül.
 
-## <a name="query-performance-insight"></a>Információ a lekérdezések teljesítményéről
+## <a name="query-performance-insight"></a>Lekérdezési terheléselemző
 [Lekérdezési Terheléselemző](concepts-query-performance-insight.md) Query Store az Azure Portalon elérhető képi megjelenítésekhez együtt működik. Ezekbe a diagramokba engedélyezése elsődlegeskulcs-lekérdezések azonosíthatja, hogy hatással lehet a teljesítményre. Lekérdezési Terheléselemző nyilvános előzetes verzióban érhető el, és elérhető a **támogatás + hibaelhárítás** az Azure Database for PostgreSQL-kiszolgáló portáloldalán szakaszában.
 
 ## <a name="performance-recommendations"></a>Teljesítménnyel kapcsolatos javaslatok

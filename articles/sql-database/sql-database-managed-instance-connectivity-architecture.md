@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 08/16/2018
-ms.openlocfilehash: 312425d3ea02d15a992b9a694f09cb2be73b6221
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: d0747e9e54a48ecccb7051ad4fe9998d86599ffe
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161590"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840732"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Az Azure SQL Database felügyelt példány kapcsolati architektúra 
 
@@ -66,7 +66,7 @@ Vegyük részletesebben megismerni a felügyelt példány kapcsolati architektú
 
 A magánhálózati IP-cím tartozik, hogy a felügyelt példány belső Load Balancer (ILB), amely irányítja a forgalmat, a felügyelt példány átjáró (GW). Több felügyelt példány sikerült potenciálisan futtatásakor ugyanazon a fürtön belül GW irányítsa át a forgalmat a megfelelő SQL-kezelő szolgáltatás felügyelt példány állomásnevet használja. 
 
-Felügyeleti és a központi telepítési szolgáltatások csatlakozhat a felügyelt példányhoz az nyilvános végpontot, amely külső terheléselosztó. Az adatforgalmat a csomópontok csak akkor, ha a kapott az előre meghatározott kizárólag a felügyelt példány felügyeleti összetevői által használt portok csoportja. Felügyeleti összetevők és a felügyeleti sík közötti minden kommunikáció a kölcsönösen hitelesített tanúsítvány. 
+Felügyelet és a központi telepítési szolgáltatások csatlakozhat a felügyelt példány használatával [felügyeleti végpont](sql-database-managed-instance-management-endpoint.md) , amely leképezi a külső terheléselosztó. Forgalmat irányítja a rendszer a csomópontok csak akkor, ha kizárólag a felügyelt példány felügyeleti összetevői által használt portok előre meghatározott érkezett. A csomópontokon, beépített tűzfal van konfigurálva, hogy csak a megadott IP-címtartományok Microsoft érkező forgalmat. Felügyeleti összetevők és a felügyeleti sík közötti minden kommunikáció a kölcsönösen hitelesített tanúsítvány. 
 
 ## <a name="next-steps"></a>További lépések 
 

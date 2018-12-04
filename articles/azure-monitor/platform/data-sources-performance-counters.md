@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: ffc3443c0c4bca214cc576e1345ad09874287426
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 1069916efc1932b0a1a3139d015f448d4f8153a4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336848"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843121"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>A Log Analytics Windows és Linux rendszerű teljesítmény adatforrások
 Teljesítményszámlálók a Windows és Linux cybercrime hardverösszetevők, operációs rendszerek és alkalmazások teljesítményét.  A log Analytics képes teljesítményszámlálók gyűjtése gyakori időközönként teljesítményadatoknak a hosszabb távú elemzésekhez és jelentéskészítési mellett közel valós idejű azokat elemzés céljából.
@@ -227,5 +227,5 @@ Az alábbi táblázat példákat különböző naplókeresések teljesítményre
 
 ## <a name="next-steps"></a>További lépések
 * [Teljesítményszámlálók gyűjtése Linuxos alkalmazások](data-sources-linux-applications.md) többek között a MySQL és az Apache HTTP Server.
-* Ismerje meg [naplókereséseket](../../log-analytics/log-analytics-queries.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
+* Ismerje meg [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
 * Az összegyűjtött adatok exportálása [Power BI](../../log-analytics/log-analytics-powerbi.md) további Vizualizációk és elemző.

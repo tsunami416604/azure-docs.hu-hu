@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 2173a24eb3bbaafe9dcf25461eb5357ba3a6e7ad
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
-ms.translationtype: HT
+ms.openlocfilehash: c5dcfcb61903c3dbb92e942a5d3dca264ad454e3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166899"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834383"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Az Azure Service Bus – Azure Event Grid integráció áttekintése
 
@@ -36,10 +36,7 @@ A funkció engedélyezéséhez a következőkre van szüksége:
 ![19][]
 
 ### <a name="verify-that-you-have-contributor-access"></a>Győződjön meg arról, hogy rendelkezik közreműködői hozzáféréssel
-
-Keresse meg a Service Bus-névteret, és válassza az alább látható **Hozzáférés-vezérlés (IAM)** lehetőséget:
-
-![1][]
+Nyissa meg a Service Bus-névteret, és válassza ki **hozzáférés-vezérlés (IAM)**, és válassza ki **szerepkör-hozzárendelések** fülre. Győződjön meg arról, hogy a közreműködői hozzáférés a névtérhez. 
 
 ### <a name="events-and-event-schemas"></a>Események és eseménysémák
 

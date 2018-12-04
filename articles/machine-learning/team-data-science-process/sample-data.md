@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: b7b233532a526879e886950c3a0d8cfe169251a7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 679d812c239e0f626d2872d29bc9de7848399bc6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441502"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844600"
 ---
 # <a name="heading"></a>Adatmintavétel az Azure blobtárolókban, az SQL Server, és Hive-táblákban
 
@@ -26,7 +26,7 @@ Az alábbi cikkek ismertetik, hogyan lehet az adatokat három különböző Azur
 * [**SQL Server-adatok** ](sample-data-sql-server.md) mintavételezés SQL és a Python programozási nyelv használatával. 
 * [**Hive-táblák adatainak** ](sample-data-hive.md) mintavételezés Hive-lekérdezések segítségével.
 
-Ez a mintavételi feladat Ez a lépés a [csoportos adatelemzési folyamat (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+Ez a mintavételi feladat Ez a lépés a [csoportos adatelemzési folyamat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 **Miért érdemes az adatokat?**
 

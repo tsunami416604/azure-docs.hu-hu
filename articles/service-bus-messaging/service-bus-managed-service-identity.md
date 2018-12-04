@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 5532c86271fa6a5f2b573e005993a68ac0a9e248
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 25d2db5dcf3979341fc104643f7178047c29483b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857074"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842832"
 ---
 # <a name="managed-identities-for-azure-resources-with-service-bus"></a>Felügyelt identitások az Azure Service Bus-erőforrások 
 
@@ -53,10 +53,8 @@ Miután engedélyezte a funkciót, egy új felügyeltszolgáltatás-identitás l
 
 Ezután [hozzon létre egy Service Bus üzenetkezelési névteret](service-bus-create-namespace-portal.md) RBAC előzetes támogató Azure-régiók egyikében: **USA keleti régiójában**, **USA keleti régiója 2**, vagy **Nyugat-Európa** . 
 
-Keresse meg a névtér **hozzáférés-vezérlés (IAM)** lapon a portálon, és kattintson a **Hozzáadás** felügyelt identitásnak hozzáadása a **tulajdonosa** szerepkör. Ehhez keresse meg a webalkalmazás nevére a **engedélyek hozzáadása** panel **kiválasztása** mezőben, majd kattintson a bejegyzésre. Ezután kattintson a **Save** (Mentés) gombra.
+Keresse meg a névtér **hozzáférés-vezérlés (IAM)** lapon a portálon, és kattintson a **szerepkör-hozzárendelés hozzáadása** felügyelt identitásnak hozzáadása a **tulajdonosa** szerepkör. Ehhez keresse meg a webalkalmazás nevére a **engedélyek hozzáadása** panel **kiválasztása** mezőben, majd kattintson a bejegyzésre. Ezután kattintson a **Save** (Mentés) gombra.
 
-![](./media/service-bus-managed-service-identity/msi2.png)
- 
 A webalkalmazás felügyelt identitás ezentúl hozzáférhet a Service Bus-névteret, és az üzenetsorba korábban hozott létre. 
 
 ### <a name="run-the-app"></a>Az alkalmazás futtatása

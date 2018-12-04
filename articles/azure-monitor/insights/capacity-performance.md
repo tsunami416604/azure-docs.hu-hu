@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: d4728d5f631b0671be67ff4976674bde2044d4c0
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: aa940e238601f06a53247c0da4d1a92f16b6f56c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682874"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840605"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>A kapacitásra és teljesítményre megoldással (előzetes verzió) a Hyper-V virtuális gép kapacitásának megtervezése
 
@@ -138,4 +138,4 @@ Az alábbi táblázat a kapacitás és teljesítmény adatokat gyűjteni, és a 
 
 
 ## <a name="next-steps"></a>További lépések
-* Használat [Log Analytics naplóbeli kereséseivel](../../log-analytics/log-analytics-queries.md) részletes kapacitásra és teljesítményre vonatkozó adatok megtekintéséhez.
+* Használat [Log Analytics naplóbeli kereséseivel](../../azure-monitor/log-query/log-query-overview.md) részletes kapacitásra és teljesítményre vonatkozó adatok megtekintéséhez.

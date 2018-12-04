@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 4f4a61ad0c1b1fcab4773dcc16c5e22053c4158d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fa2f16f1a7d99a825039e2191c69642a45ff728a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230886"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845229"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Vészhelyreállítás az Azure-bA a helyszíni fizikai kiszolgálók beállítása
 
@@ -23,7 +23,7 @@ Ez az oktatóanyag bemutatja, hogyan állítható be, valamint a helyszíni fizi
 
 > [!div class="checklist"]
 > * Az Azure és helyszíni Előfeltételek beállítása
-> * Hozzon létre egy Recovery Services-tárolót a Site Recovery 
+> * Helyreállítási tár létrehozása a Site Recovery számára 
 > * Állítsa be a forrás és cél replikációs környezet
 > * Replikációs házirend létrehozása
 > * A kiszolgáló a replikáció engedélyezése
@@ -157,10 +157,10 @@ Válassza ki és ellenőrizze a célerőforrásokat.
 
 ## <a name="create-a-replication-policy"></a>Replikációs házirend létrehozása
 
-1. Hozzon létre egy új replikációs házirendet, kattintson a **Site Recovery-infrastruktúra** > **replikációs házirendek** > **+ replikációs házirend**.
-2. A **replikációs házirend létrehozása**, adja meg a szabályzat nevét.
-3. A **helyreállítási Időkorlát küszöbértéke**, adja meg a helyreállítási pont célkitűzés (RPO) vonatkozó korlátozás. Ez az érték határozza meg, milyen gyakran jönnek létre adat-helyreállítási pontok. A rendszer riasztást ad, ha a folyamatos replikáció túllépi ezt a korlátot.
-4. A **helyreállítási pont megőrzése**, adja meg, hogy mennyi ideig (órákban) adatmegőrzési időtartama az egyes helyreállítási pontok. A replikált virtuális gépek ezen az időtartamon belül bármikor helyreállíthatók. 24 óra megőrzési támogat a premium storage és a standard szintű tárolóra vonatkozó 72 óra replikált gépek esetében.
+1. Új replikációs szabályzat létrehozásához kattintson a **Site Recovery-infrastruktúra** > **Replikációs szabályzatok** > **+Replikációs szabályzat** elemre.
+2. A **Replikációs szabályzat létrehozása** beállításnál adja meg a szabályzat nevét.
+3. Az **RPO küszöbértéke** beállításnál adja meg a helyreállítási időkorlátot (RPO). Ez az érték határozza meg, milyen gyakran jönnek létre adat-helyreállítási pontok. A rendszer riasztást ad, ha a folyamatos replikáció túllépi ezt a korlátot.
+4. A **Helyreállítási pont megőrzése** beállításnál azt adhatja meg, hogy milyen hosszú (hány órás) legyen az egyes helyreállítási pontok adatmegőrzési időtartama. A replikált virtuális gépek ezen az időtartamon belül bármikor helyreállíthatók. A rendszer a prémium tárolóra replikált gépek esetében 24 órás, a standard tárolóra replikált gépek esetében 72 órás megőrzést támogat.
 5. A **alkalmazáskonzisztens pillanatkép gyakorisága**, adja meg, milyen gyakran (perc), létrehozza alkalmazáskonzisztens pillanatképeket tartalmazó helyreállítási pontokat. A szabályzat létrehozásához kattintson az **OK** gombra.
 
     ![Replikációs szabályzat](./media/physical-azure-disaster-recovery/replication-policy.png)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 558df3fa70989aaf9ba182df3a918994c7dc9db6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1f1797cf3022285f81991eb15818b68df195de4b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243709"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834128"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Tulajdonosok és felhasználók hozzáadása az Azure DevTest Labs szolgáltatásban
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -69,15 +69,11 @@ A következő lépések végigvezetik a tulajdonosnak vagy felhasználó hozzáa
 3. Tesztkörnyezetek listájában jelölje ki a kívánt tesztkörnyezetben.
 4. A labor paneljén válassza ki a **Konfigurace a zásady**. 
 5. Az a **Konfigurace a zásady** lapon jelölje be **hozzáférés-vezérlés (IAM)** a bal oldali menüből. 
-6. Válassza ki **Hozzáadás** hozzáadása egy felhasználó egy szerepkörhöz az eszköztáron.
-
-    ![Felhasználó hozzáadása](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
+6. Válassza ki **szerepkör-hozzárendelés hozzáadása** hozzáadása egy felhasználó egy szerepkörhöz az eszköztáron.
 1. Az a **engedélyek hozzáadása** ablakban hajtsa végre a következőket: 
     1. Válasszon egy szerepkört (például: DevTest Labs-felhasználó). A szakasz [minden szerepkörben végrehajtható műveletek](#actions-that-can-be-performed-in-each-role) felsorolja azokat a különböző műveleteket, hogy a felhasználók a tulajdonos, DevTest-felhasználó, és közreműködő szerepkörrel végezhet el.
     2. Válassza ki a felhasználót a szerepkörhöz kell hozzáadni. 
     3. Kattintson a **Mentés** gombra. 
-
-        ![Adja hozzá a felhasználót a szerepkörhöz](./media/devtest-lab-add-devtest-user/add-user.png) 
 11. Amikor visszatér a **felhasználók** panelen, a felhasználó hozzá lett adva.  
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>Külső felhasználó hozzáadása egy laborhoz PowerShell-lel

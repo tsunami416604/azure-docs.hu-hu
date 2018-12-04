@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: deadbc8186d80b050fdb40879ecf29fd229c8709
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 12/03/2018
+ms.openlocfilehash: 6b694794da5eabaddf4d6f29203b7d6553ef4940
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465448"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844396"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Csak olvasható replikákat használ a betöltése terheléselosztása csak olvasható lekérdezési számítási feladatok (előzetes verzió)
 
@@ -76,7 +76,7 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 
 ## <a name="enable-and-disable-read-scale-out"></a>Engedélyezheti vagy letilthatja a horizontális Felskálázás olvasása
 
-Alapértelmezés szerint engedélyezve van a olvasási kibővített [felügyelt példány](sql-database-managed-instance.md) üzletileg kritikus fontosságú tier(Preview). Ez explicit módon engedélyezni kell a [database logikai kiszolgáló elhelyezett](sql-database-logical-servers.md) prémium és üzletileg kritikus szintet. A módszerek engedélyezése és letiltása olvasási horizontális Felskálázás az alábbiakban ismertetjük.
+Alapértelmezés szerint engedélyezve van a olvasási kibővített [felügyelt példány](sql-database-managed-instance.md) üzletileg kritikus. Ez explicit módon engedélyezni kell a [database logikai kiszolgáló elhelyezett](sql-database-logical-servers.md) prémium és üzletileg kritikus szintet. A módszerek engedélyezése és letiltása olvasási horizontális Felskálázás az alábbiakban ismertetjük.
 
 ### <a name="enable-and-disable-read-scale-out-using-azure-powershell"></a>Engedélyezheti vagy letilthatja az olvasási horizontális Felskálázás az Azure PowerShell-lel
 

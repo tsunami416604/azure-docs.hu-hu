@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 776ad8445c1968928a631ae1a401db4c65a6bb6d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: afc2d52044a294af0ead373dfce283d0ec994d1e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421241"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840622"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>Oktatóanyag: Azure Active Directory-integráció rendfokozati SAML SSO-val
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása rendfokozati SAML SSO-val, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy rendfokozati SAML SSO egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure AD-be rendfokozati SAML SSO-integráció konfigurálásához, hozzá ke
 
 **Rendfokozati SAML SSO hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -120,7 +120,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<customername>.insigniailsusa.com/<uniqueid>`
 
     > [!NOTE] 
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [rendfokozati SAML SSO-ügyfél-támogatási csapatának](http://www.insigniasoftware.com/insignia/Techsupport.aspx) beolvasni ezeket az értékeket. 
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [rendfokozati SAML SSO-ügyfél-támogatási csapatának](https://www.insigniasoftware.com/insignia/Techsupport.aspx) beolvasni ezeket az értékeket. 
  
 
 1. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
@@ -135,7 +135,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Rendfokozati SAML egyszeri bejelentkezés konfigurálása](./media/insigniasamlsso-tutorial/tutorial_insigniasamlsso_configure.png) 
 
-1. Az egyszeri bejelentkezés konfigurálása **rendfokozati SAML SSO** oldalon kell küldenie a letöltött **tanúsítvány (Base64)**, **kijelentkezéses URL-címet, és a SAML egyszeri bejelentkezési szolgáltatás URL-cím** , [Rendfokozati SAML SSO-ügyfélszolgálathoz](http://www.insigniasoftware.com/insignia/Techsupport.aspx). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+1. Az egyszeri bejelentkezés konfigurálása **rendfokozati SAML SSO** oldalon kell küldenie a letöltött **tanúsítvány (Base64)**, **kijelentkezéses URL-címet, és a SAML egyszeri bejelentkezési szolgáltatás URL-cím** , [Rendfokozati SAML SSO-ügyfélszolgálathoz](https://www.insigniasoftware.com/insignia/Techsupport.aspx). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -175,7 +175,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-an-insignia-saml-sso-test-user"></a>Hozzon létre egy rendfokozati SAML SSO tesztfelhasználó számára
 
-Ebben a szakaszban egy rendfokozati könyvtár rendszer Britta Simon nevű felhasználó hoz létre. Együttműködve [rendfokozati könyvtár rendszer támogatási csapatának](http://www.insigniasoftware.com/insignia/Techsupport.aspx) a felhasználók hozzáadása az rendfokozati könyvtár rendszer platformon.
+Ebben a szakaszban egy rendfokozati könyvtár rendszer Britta Simon nevű felhasználó hoz létre. Együttműködve [rendfokozati könyvtár rendszer támogatási csapatának](https://www.insigniasoftware.com/insignia/Techsupport.aspx) a felhasználók hozzáadása az rendfokozati könyvtár rendszer platformon.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -207,7 +207,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

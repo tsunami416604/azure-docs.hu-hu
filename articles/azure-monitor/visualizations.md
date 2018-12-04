@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: b2011003306e72ac9fb243b640e388e6f3d5e7d3
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: e537795c9dec5f909810a37d4f13d5664bec05a2
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722207"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839976"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Az Azure Monitor az adatok megjelenítése
 Ez a cikk az Azure Monitor-ban tárolt adatok megjelenítése a választható módszerek összegzését tartalmazza. Ez magában foglalja [mérőszámok az Azure-metrikagyűjtéshez áruházban](../azure-monitor/platform/data-collection.md#metrics) és [adatok Log Analytics naplóbeli](../azure-monitor/platform/data-collection.md#logs). 
@@ -32,7 +32,7 @@ Vizualizációk, például diagramokat és ábrákat segíthet a problémák ré
 ### <a name="advantages"></a>Előnyök
 - Szoros integráció az Azure-bA. Vizualizációkat több Azure oldalra, beleértve a metrikák explorer, a Log Analytics és az Application Insights kitűzhetők az irányítópultokra.
 - Metrikák és naplók is támogatja.
-- Többek között a kimenetét a több forrásból származó adatokat kombinálni [metrikaböngésző](../monitoring-and-diagnostics/monitoring-metric-charts.md), [Log Analytics-lekérdezések](../log-analytics/log-analytics-queries.md), és [térképek](../application-insights/app-insights-app-map.md) és [rendelkezésre állási]()az Application Insightsban.
+- Többek között a kimenetét a több forrásból származó adatokat kombinálni [metrikaböngésző](../monitoring-and-diagnostics/monitoring-metric-charts.md), [Log Analytics-lekérdezések](../azure-monitor/log-query/log-query-overview.md), és [térképek](../application-insights/app-insights-app-map.md) és [rendelkezésre állási]()az Application Insightsban.
 - Saját vagy megosztott irányítópultok beállítása. Az Azure-ral integrálva [szerepköralapú hitelesítést (RBAC)](../role-based-access-control/overview.md).
 - Automatikus frissítés. Metrikák frissítési időtartomány, legalább öt perc alatt függ. Naplók frissítése, egy perc.
 - Paraméteres metrikák irányítópultok időbélyeg és egyéni paraméterekkel.

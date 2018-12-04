@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/25/2018
-ms.openlocfilehash: 9c5cdf6c2baf4197b693b522848fc1fd04db7abf
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.date: 12/03/2018
+ms.openlocfilehash: 939c008dbfdb996c84132d5aa0b5ed625e0a68ec
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422510"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837902"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>További információ az automatikus SQL-adatbázisok biztonsági mentése
 
@@ -33,8 +33,8 @@ Ezek a biztonsági mentések használhatók:
 
 - Adatbázis visszaállítása egy-időponthoz a megőrzési időn belül. Ez a művelet létrehoz egy új adatbázist az eredeti adatbázissal megegyező kiszolgálóra.
 - Törölt adatbázis visszaállítása az idő, azt törölték, vagy a megőrzési időtartamon belül bármikor. A törölt adatbázisok csak állítható vissza ugyanazon a kiszolgálón, ahol az eredeti adatbázis lett létrehozva.
-- Adatbázis visszaállítása egy másik földrajzi régióban. Ez lehetővé teszi, hogy egy földrajzi katasztrófa utáni helyreállítás, amikor nem fér hozzá a kiszolgálóhoz és adatbázishoz. Ez létrehoz egy új adatbázist a világ bármely pontján található bármely meglévő Server.
-- Adatbázis visszaállítása egy adott hosszú távú biztonsági másolatból, ha az adatbázis konfigurálva van a hosszú távú adatmegőrzési (LTR). Ez lehetővé teszi, hogy állítsa vissza az adatbázist megfelelőségi kérelem teljesítéséhez kívánja lefuttatni, vagy az alkalmazás régi verziója, régebbi verzióját. Lásd: [hosszú távú megőrzés](sql-database-long-term-retention.md).
+- Adatbázis visszaállítása egy másik földrajzi régióban. A GEO-visszaállítás lehetővé teszi egy földrajzi katasztrófa utáni helyreállítás, amikor nem fér hozzá a kiszolgálóhoz és adatbázishoz. Ez létrehoz egy új adatbázist a világ bármely pontján található bármely meglévő Server.
+- Adatbázis visszaállítása egy adott hosszú távú biztonsági másolatból, ha az adatbázis konfigurálva van a hosszú távú adatmegőrzési (LTR). Az LTR lehetővé teszi az adatbázis megfelelőségi kérelem teljesítéséhez kívánja lefuttatni, vagy az alkalmazás régi verziója, régebbi verzióját. További információkért lásd: [Hosszú távú megőrzés](sql-database-long-term-retention.md).
 - A visszaállítás végrehajtásához lásd: [adatbázis visszaállítás biztonsági mentésből](sql-database-recovery-using-backups.md).
 
 > [!NOTE]
@@ -42,16 +42,16 @@ Ezek a biztonsági mentések használhatók:
 
 ## <a name="how-long-are-backups-kept"></a>Mennyi ideig biztonsági mentések őrzi meg
 
-Minden egyes SQL-adatbázis rendelkezik, amely attól függ, 7, és 35 nap közötti, egy alapértelmezett biztonsági másolatainak megőrzési ideje a [vásárlási modell és a szolgáltatási rétegben](#pitr-retention-period). Az Azure logikai kiszolgálón (Ez a funkció hamarosan engedélyezve lesz a felügyelt példány) egy adatbázis biztonsági másolatának megőrzési ideje frissítheti. Lásd: [módosítsa biztonsági mentések megőrzési időszaka](#how-to-change-backup-retention-period) további részletekért.
+Minden egyes SQL-adatbázis rendelkezik, amely attól függ, 7, és 35 nap közötti, egy alapértelmezett biztonsági másolatainak megőrzési ideje a [vásárlási modell és a szolgáltatási rétegben](#pitr-retention-period). Az Azure logikai kiszolgálón egy adatbázis biztonsági másolatának megőrzési ideje frissítheti. További információkért lásd: [módosítsa biztonsági mentések megőrzési időszaka](#how-to-change-the-pitr-backup-retention-period).
 
 Ha töröl egy adatbázist, az SQL Database biztosítják a biztonsági másolatok olvasásainál, online adatbázis megegyező módon. Például ha törli egy hét napos megőrzési idővel rendelkező alapszintű adatbázis, egy biztonsági másolatot, amely négy napnál régebbi mentése további három nappal.
 
-Ha szeretné megőrizni a biztonsági mentéseket hosszabb a maximális PITR a megőrzési időszak, módosíthatja az adatbázis hozzáadása egy vagy több hosszú távú megőrzési időtartamú biztonsági másolat tulajdonságai. Lásd: [hosszú távú adatmegőrzés](sql-database-long-term-retention.md) további részletekért.
+Ha szeretné megőrizni a biztonsági mentéseket hosszabb a maximális adatmegőrzési időtartam, módosíthatja az adatbázis hozzáadása egy vagy több hosszú távú megőrzési időtartamú biztonsági másolat tulajdonságai. További információkért lásd: [Hosszú távú megőrzés](sql-database-long-term-retention.md).
 
 > [!IMPORTANT]
 > Ha törli az Azure SQL server, SQL-adatbázisokat üzemeltető, az összes rugalmas készletek és adatbázisok, a kiszolgálóhoz tartozó is törlődik, és nem állítható helyre. Kiszolgáló törlése nem állítható vissza. De ha konfigurálta a hosszú távú adatmegőrzés, az adatbázisok LTR biztonsági másolatainak nem törlődik, és ezeket az adatbázisokat vissza tudja állítani.
 
-### <a name="pitr-retention-period"></a>PITR a megőrzési időtartam
+### <a name="default-backup-retention-period"></a>Alapértelmezett biztonsági másolatainak megőrzési ideje
 
 #### <a name="dtu-based-purchasing-model"></a>DTU-alapú vásárlási modell
 
@@ -63,12 +63,10 @@ A DTU-alapú vásárlási modell használatával létrehozott adatbázis alapér
 
 #### <a name="vcore-based-purchasing-model"></a>Virtuálismag-alapú vásárlási modell
 
-Ha használja a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md), az alapértelmezett biztonsági másolat megőrzési idejének (mind a logikai kiszolgálók és a felügyelt példányok) 7 nap.
+Ha használja a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md), az alapértelmezett biztonsági másolat megőrzési idejének (az egyetlen, összevont és felügyelt példányok adatbázisai) 7 nap. Az összes Azure SQL-adatbázis (önálló, készletezett, és a felügyelt példányok adatbázisai, akkor is [módosítsa a biztonsági másolat megőrzési idejének 35 napon belül](#how-to-change-the-pitr-backup-retention-period).
 
-- Egyetlen vagy készletezett adatbázisok esetén is [módosítsa a biztonsági másolat megőrzési idejének 35 napon belül](#how-to-change-backup-retention-period).
-- Biztonsági másolat megőrzési idejének módosítása nem áll rendelkezésre a felügyelt példányhoz.
-
-Ha csökkenti az aktuális megőrzési időszak, az összes meglévő biztonsági másolatok, régebbi, mint az új megőrzési időszak van már nem érhető el. Aktuális megőrzési időszakán növeli, ha az SQL Database megtartja a meglévő biztonsági másolatok a hosszabb adatmegőrzési idő eléréséig.
+> [!WARNING]
+> Ha csökkenti az aktuális megőrzési időszak, az összes meglévő biztonsági másolatok, régebbi, mint az új megőrzési időszak van már nem érhető el. Aktuális megőrzési időszakán növeli, ha az SQL Database megtartja a meglévő biztonsági másolatok a hosszabb adatmegőrzési idő eléréséig.
 
 ## <a name="how-often-do-backups-happen"></a>Milyen gyakran történjen a biztonsági mentéseket
 
@@ -96,21 +94,24 @@ Ha az adatbázis a TDE van titkosítva, a biztonsági másolatok titkosítása a
 
 Töltheti az Azure SQL Database mérnöki csapat automatikusan teszteli, automatikus biztonsági adatbázismentés az adatbázisok visszaállítása a szolgáltatás között. Változónevét adatbázisokat is kapnak a sértetlenségi ellenőrzések DBCC CHECKDB utasítás segítségével. Az integritás-ellenőrzése során talált problémákat a mérnöki csapathoz egy riasztást eredményez. Az Azure SQL Database adatintegritásának kapcsolatos további információkért lásd: [adatok integritásának megőrzése, az Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
 
-## <a name="how-do-automated-backups-impact-my-compliance"></a>Hogyan tegye automatikus biztonsági másolatok hatással van a megfelelőség
+## <a name="how-do-automated-backups-impact-compliance"></a>Hogyan tegye hatással megfelelőségi automatikus biztonsági másolatokat
 
-Ha az adatbázis telepít át az alapértelmezett PITR a megőrzési 35 nap a DTU-alapú szolgáltatási szintről a Virtuálismag-alapú szolgáltatásréteghez, PITR a megőrzési megőrzi a rendszer győződjön meg arról, hogy az alkalmazás adat-helyreállítási házirend nem sérül. Ha az alapértelmezett megőrzési sem felel meg a megfelelőségi előírásokat, módosíthatja a PITR a megőrzési időszak a PowerShell vagy REST API használatával. Lásd: [módosítsa biztonsági mentések megőrzési időszaka](#how-to-change-backup-retention-period) további részletekért.
+Ha az adatbázis telepít át az alapértelmezett PITR a megőrzési 35 nap a DTU-alapú szolgáltatási szintről a Virtuálismag-alapú szolgáltatásréteghez, PITR a megőrzési megőrzi a rendszer győződjön meg arról, hogy az alkalmazás adat-helyreállítási házirend nem sérül. Ha az alapértelmezett megőrzési sem felel meg a megfelelőségi előírásokat, módosíthatja a PITR a megőrzési időszak a PowerShell vagy REST API használatával. Lásd: [módosítsa biztonsági mentések megőrzési időszaka](#how-to-change-the-pitr-backup-retention-period) további részletekért.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="how-to-change-backup-retention-period"></a>Biztonsági másolat megőrzési idejének módosítása
+## <a name="how-to-change-the-pitr-backup-retention-period"></a>A PITR a biztonsági másolat megőrzési idejének módosítása
 
-> [!Note]
-> Alapértelmezett biztonsági másolatainak megőrzési ideje (7 nap) a felügyelt példány nem módosítható.
-
-Módosíthatja az alapértelmezett megőrzési REST API vagy a PowerShell használatával. A támogatott értékek a következők: 7, 14, 21, 28 és 35 nap. Az alábbi példák bemutatják, hogyan PITR a Megtartás módosítása 28 nap.
+Módosíthatja az alapértelmezett PITR a biztonsági másolat megőrzési idejének az Azure Portal, PowerShell vagy a REST API használatával. A támogatott értékek a következők: 7, 14, 21, 28 és 35 nap. Az alábbi példák bemutatják, hogyan PITR a Megtartás módosítása 28 nap.
 
 > [!NOTE]
-> Ezek API-k csak negatív hatással lesz a PITR a megőrzési időtartam. Ha az adatbázis konfigurált balról jobbra, ez nem érinti. Lásd: [hosszú távú adatmegőrzés](sql-database-long-term-retention.md) módosítása az LTR-megőrzési időszak részleteit.
+> Ezek API-k csak negatív hatással lesz a PITR a megőrzési időtartam. Ha az adatbázis konfigurált balról jobbra, ez nem érinti. Az LTR-megőrzési időszak módosításával kapcsolatos további információkért lásd: [hosszú távú megőrzés](sql-database-long-term-retention.md).
+
+### <a name="change-pitr-backup-retention-period-using-the-azure-portal"></a>Az Azure portal használatával PITR a biztonsági másolat megőrzési idejének módosítása
+
+Az Azure Portallal PITR a biztonsági másolat megőrzési idejének módosításához lépjen az adatbázishoz, amelynek megőrzési ideje, hogy módosítani kívánja, majd kattintson **áttekintése**.
+
+![Változás PITR a az Azure portal](./media/sql-database-automated-backup/configure-backup-retention.png)
 
 ### <a name="change-pitr-backup-retention-period-using-powershell"></a>PowerShell-lel PITR a biztonsági másolat megőrzési idejének módosítása
 
@@ -154,7 +155,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 }
 ```
 
-Lásd: [biztonsági mentés megőrzési REST API-val](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies) további részletekért.
+További információkért lásd: [biztonsági mentés megőrzési REST API](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies).
 
 ## <a name="next-steps"></a>További lépések
 

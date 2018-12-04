@@ -4,19 +4,18 @@ description: Értékelési számítások az Azure Migrate szolgáltatás átteki
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 11/28/2018
 ms.author: raynew
-ms.openlocfilehash: 04ae28ca566e97570ec64e78d3408ea8bd1e3d42
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 9baf6ea70a8e9fa0dcd8ceefc9f58d7fa972767a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010320"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841965"
 ---
-# <a name="dependency-visualization"></a>Függőségek képi megjelenítése
+# <a name="dependency-visualization"></a>Függőségek vizualizációja
 
 A [Azure Migrate](migrate-overview.md) szolgáltatások felméri a helyszíni gépek áttelepítése az Azure-bA a csoportjait. A függőségek képi megjelenítésének funkcióival az Azure Migrate segítségével hozzon létre csoportokat. Ez a cikk a szolgáltatásról.
-
 
 ## <a name="overview"></a>Áttekintés
 
@@ -31,7 +30,13 @@ Azure Migrate az a [Service Map](../operations-management-suite/operations-manag
 
     ![Log Analytics-munkaterület társítása](./media/concepts-dependency-visualization/associate-workspace.png)
 
-- Amikor létrehoz egy új munkaterületet, adja meg a munkaterület nevét kell. A munkaterületen létrejön ugyanabban a régióban [Azure földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/) a migrálási projektet.
+- Munkaterület társítása, miközben kap arra, hozzon létre egy új munkaterületet, vagy csatlakoztasson egy már meglévőt:
+      - Amikor létrehoz egy új munkaterületet, adja meg a munkaterület nevét kell. A munkaterületen létrejön ugyanabban a régióban [Azure földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/) a migrálási projektet.
+      - Ha csatlakoztat egy meglévő munkaterületet, a rendelkezésre álló munkaterületek ugyanahhoz az előfizetéshez tartozik, mint a migrálási projekt közül választhat. Vegye figyelembe, hogy csak azokat a munkaterületeket egy régióban létrehozott szerepel ahol [Service Map támogatott](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions). Tudják csatolása egy munkaterületet, győződjön meg arról, hogy a munkaterület "Olvasó" elérhető lesz.
+
+  > [!NOTE]
+  > Miután egy projektet egy munkaterületet van csatolva, később nem módosítható.
+
 - A kapcsolódó munkaterület a kulccsal van megjelölve **Migrálási projekt**, és érték **projektnév**, amelyek segítségével az Azure Portalon keresse.
 - Nyissa meg a munkaterületet a projekthez kapcsolódó, nyissa meg a **Essentials** projekt **áttekintése** lapon és a munkaterület eléréséhez
 
@@ -47,7 +52,7 @@ Nem kell ezeket az ügynököket, kivéve, ha függőségmegjelenítést haszná
 
 ## <a name="do-i-need-to-pay-for-it"></a>Kell fizetni?
 
-Az Azure Migrate további díjfizetés nélkül elérhető. A függőségmegjelenítési funkciót az Azure Migrate használata szükséges a Szolgáltatástérkép, és elő kell társítani egy Log Analytics-munkaterületet, vagy új vagy meglévő, az Azure Migrate-projektben. A függőségek képi megjelenítésének funkcióival az Azure Migrate az Azure Migrate az első 180 nap díjmentes.
+Az Azure Migrate díjmentesen érhető el. A függőségmegjelenítési funkciót az Azure Migrate használata szükséges a Szolgáltatástérkép, és elő kell társítani egy Log Analytics-munkaterületet, vagy új vagy meglévő, az Azure Migrate-projektben. A függőségek képi megjelenítésének funkcióival az Azure Migrate az Azure Migrate az első 180 nap díjmentes.
 
 1. A Log Analytics-munkaterületen a Service Map kívül bármely megoldások használatát díjat [standard Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) díjak.
 2. További költségek nélkül áttelepítési forgatókönyvek támogatása érdekében a Service Map megoldás nem számítunk fel díjakat a nap, a Log Analytics-munkaterület társítása az Azure Migrate-projekt első 180 napig. 180 nap elteltével a Log Analytics standard díjszabás vonatkozik.

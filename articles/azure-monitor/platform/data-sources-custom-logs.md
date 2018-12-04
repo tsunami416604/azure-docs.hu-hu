@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 494d4f39965849ebef7dfbbacc7114dd95f48641
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 099fe053f354f2773dfec1d3085c03d83671ed2a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336840"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833856"
 ---
 # <a name="custom-logs-in-log-analytics"></a>A Log Analytics egyéni naplók
 Az egyéni naplókat adatforrás a Log Analytics lehetővé teszi az események gyűjtésére a Windows és a Linux rendszerű számítógépek szöveges fájlok. Számos alkalmazás adatokat szöveges fájlok nem szabványos naplózási szolgáltatásokkal, például a Windows Eseménynapló vagy a Syslog naplófájlba.  Után minden egyes mezőket a bejelentkezés rekordja értelmezni tudja a [egyéni mezők](../../log-analytics/log-analytics-custom-fields.md) Log Analytics szolgáltatást.
@@ -182,4 +182,4 @@ Egyéni mezők definiálásához használjuk a *EventTime*, *kód*, *állapot*, 
 
 ## <a name="next-steps"></a>További lépések
 * Használat [egyéni mezők](../../log-analytics/log-analytics-custom-fields.md) elemezni az egyéni jelentkezzen be az egyes mezők bejegyzést.
-* Ismerje meg [naplókereséseket](../../log-analytics/log-analytics-queries.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.
+* Ismerje meg [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.

@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/18/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 8b67947412055d0c0b9f39cb49961e435393cec9
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 5d6510c1e069abe1fc295f2fccd9f2c0a9aad5bf
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162602"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837564"
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b5d3703f052ef47bcbacf0be04072357ee5b9986
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 94f7239bdcdc5ddc91f3ed8b49b59378309711e8
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722598"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844957"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Tudnivalók az Azure Active Directory B2C felhasználói felület testreszabása
 
@@ -29,7 +29,7 @@ Esetén ezek a tapasztalatok, attól függően, az igényeinek, hogy a felhaszn�
 - Használata [egyéni szabályzatok](active-directory-b2c-overview-custom.md) adnia regisztrálási vagy bejelentkezési, a jelszót alaphelyzetbe állítása, illetve -profilszerkesztést az alkalmazásban, használhatja [házirendfájljait testreszabni a felhasználói Felületet](active-directory-b2c-ui-customization-custom.md).
 - Ha meg kell adnia egy ügyfél döntés a dinamikus tartalmak, használhatja a [egyéni szabályzatot, amely módosíthatja lapon tartalom](active-directory-b2c-ui-customization-custom-dynamic.md) függően egy lekérdezési karakterláncban elküldött paraméter. Például a háttérkép, az Azure AD B2C-vel regisztrálási vagy bejelentkezési oldalon megváltozik, egy paramétert, amely adja át a webes vagy mobilalkalmazás alapján.
 
-Az Azure AD B2C az ügyfél böngészőjében kódja fut, és egy modern néven ismert megközelítés [eltérő eredetű erőforrások megosztása (CORS)](http://www.w3.org/TR/cors/). Tartalom futásidőben, be van töltve a felhasználói folyamat vagy szabályzat megadott URL-címről. Különböző URL-eket különböző oldalain adhatja meg. Tartalom betöltését a URL-CÍMÉT, miután egy HTML-részlet beszúrni az Azure AD B2C-ből, és ezután megjelenik, az ügyfél és az egyesítés.
+Az Azure AD B2C az ügyfél böngészőjében kódja fut, és egy modern néven ismert megközelítés [eltérő eredetű erőforrások megosztása (CORS)](https://www.w3.org/TR/cors/). Tartalom futásidőben, be van töltve a felhasználói folyamat vagy szabályzat megadott URL-címről. Különböző URL-eket különböző oldalain adhatja meg. Tartalom betöltését a URL-CÍMÉT, miután egy HTML-részlet beszúrni az Azure AD B2C-ből, és ezután megjelenik, az ügyfél és az egyesítés.
 
 A Kezdés előtt tekintse át a következő útmutatást:
 

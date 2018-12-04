@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: dbf21c7c22a9b3273a65f7e186a2ac02ccae6ba2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b933bc5f5ecb39c3462e4e9bd300f1e07fd718c0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436207"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838771"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Oktatóanyag: Azure Active Directory-integráció Symantec webes biztonsági szolgáltatás (VSS)
 
@@ -40,7 +40,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása a Symantec webes biztonsági szolgáltatás (VSS), a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - A Symantec a webes biztonsági szolgáltatás (VSS) fiók
 
 > [!NOTE]
@@ -63,7 +63,7 @@ Az Azure AD-be a Symantec webes biztonsági szolgáltatás (VSS) integráció ko
 
 **A Symantec a webes biztonsági szolgáltatás (VSS) hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -170,7 +170,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 Ebben a szakaszban egy Britta Simon a Symantec webhelyén biztonsági szolgáltatás (WSS) nevű felhasználó létrehozásához. A megfelelő teljes felhasználónevet manuálisan létrehozott a WSS-portálon, vagy várja meg, néhány perc (~ 15 perc) után szinkronizálni kell a WSS-portálon az Azure AD-ben üzembe helyezett felhasználók/csoportok. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. A végfelhasználói gép, webhelyek, tallózással használandó nyilvános IP-címét is szükség lesz a Symantec a webes biztonsági szolgáltatás (VSS) portálon.
 
 > [!NOTE]
-> Adjon [ide](http://www.bing.com/search?q=my+ip+address&qs=AS&pq=my+ip+a&sc=8-7&cvid=29A720C95C78488CA3F9A6BA0B3F98C5&FORM=QBLH&sp=1) a gépet a nyilvános IP-cím.
+> Adjon [ide](https://www.bing.com/search?q=my+ip+address&qs=AS&pq=my+ip+a&sc=8-7&cvid=29A720C95C78488CA3F9A6BA0B3F98C5&FORM=QBLH&sp=1) a gépet a nyilvános IP-cím.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -202,7 +202,7 @@ Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezés hozz
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni fogja az egyszeri bejelentkezés funkció most, hogy konfigurálta a WSS fiókkal az Azure AD a SAML-hitelesítés.
 

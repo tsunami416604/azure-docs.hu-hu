@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 3331ed7775cd3027f1262b195c6230fbea742497
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 32c8acb28eba0d5a19144e7c0f922f206976b6d0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336833"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833669"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-log-analytics-agent-for-linux"></a>A Linuxhoz készült Log Analytics-ügynök Nagios-és Zabbix a Log Analytics-riasztások gyűjtése 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -80,7 +80,7 @@ Riasztások gyűjtése a Nagios-kiszolgálón, hajtsa végre az alábbi lépése
 
 
 ## <a name="alert-records"></a>Riasztási rekordok
-Riasztási rekord lekérése Nagios- és Zabbix használatával [naplókereséseket](../../log-analytics/log-analytics-queries.md) a Log Analyticsben.
+Riasztási rekord lekérése Nagios- és Zabbix használatával [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md) a Log Analyticsben.
 
 ### <a name="nagios-alert-records"></a>Nagios-riasztás rekordok
 
@@ -119,4 +119,4 @@ Riasztás Zabbix által összegyűjtött rekordokkal rendelkezik egy **típus** 
 
 ## <a name="next-steps"></a>További lépések
 * Ismerje meg [riasztások](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) a Log Analyticsben.
-* Ismerje meg [naplókereséseket](../../log-analytics/log-analytics-queries.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 
+* Ismerje meg [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
-ms.openlocfilehash: 7319dc02d07ef1e100b39dbe138870676578fd69
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 801dddd3379d3c9c375ab883e98f346c69068033
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634285"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834417"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata az App Service-ben és az Azure Functions
 
@@ -210,7 +210,10 @@ Ha például egy webalkalmazás előfordulhat, hogy a következőhöz hasonló:
     "name": "[variables('appName')]",
     "location": "[resourceGroup().location]",
     "identity": {
-        "type": "UserAssigned"
+        "type": "UserAssigned",
+        "userAssignedIdentities": {
+            "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]": {}
+        }
     },
     "properties": {
         "name": "[variables('appName')]",
@@ -220,7 +223,8 @@ Ha például egy webalkalmazás előfordulhat, hogy a következőhöz hasonló:
         "alwaysOn": true
     },
     "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
+        "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
+        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]"
     ]
 }
 ```
@@ -254,9 +258,9 @@ Nincs a beszerzésével egy lexikális elem szerepel az App Service-ben és az A
 
 A .NET-alkalmazások és funkciók az a legegyszerűbb módja egy felügyelt identitás használata a Microsoft.Azure.Services.AppAuthentication csomag keresztül történik. Ebben a könyvtárban is lehetővé teszi, hogy a kód a fejlesztői gépen, a felhasználói fiókkal a Visual Studióban a helyi tesztelése az [Azure CLI-vel](/cli/azure), vagy az Active Directory beépített hitelesítést. További információ a helyi fejlesztési lehetőségek az ebben a könyvtárban, tekintse meg a [Microsoft.Azure.Services.AppAuthentication reference]. Ez a szakasz bemutatja, hogyan első lépések a kódtárat a programkódba.
 
-1. Adja hozzá hivatkozásokat az [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet-csomagok az alkalmazáshoz.
+1. Adja hozzá hivatkozásokat az [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és a többi szükséges NuGet-csomagok az alkalmazáshoz. Az alábbi példában is használt [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault).
 
-2.  Az alábbi kód hozzáadása az alkalmazáshoz:
+2.  Adja hozzá a következő kódot az alkalmazást, amelyre alkalmazza a megfelelő erőforrás módosítása. Ebben a példában az Azure Key Vault használata két módszert mutat be:
 
 ```csharp
 using Microsoft.Azure.Services.AppAuthentication;
@@ -279,9 +283,9 @@ Az alkalmazás felügyelt identitással rendelkezik definiált két környezeti 
 A **MSI_ENDPOINT** egy helyi URL-cím, amelyről az alkalmazás jogkivonatokat kérhetnek. Erőforrás egy token beszerzéséhez hajtsa végre egy HTTP GET kérés ehhez a végponthoz, többek között a következő paraméterekkel:
 
 > [!div class="mx-tdBreakAll"]
-> |Paraméter neve|Eleme ennek|Leírás|
+> |Paraméter neve|A|Leírás|
 > |-----|-----|-----|
-> |erőforrás|Lekérdezés|Az AAD erőforrás URI-t az erőforrás számára, ami egy token beszerzése.|
+> |erőforrás|Lekérdezés|Az AAD erőforrás URI-t az erőforrás számára, ami egy token beszerzése. Ez lehet egy a [Azure-szolgáltatások, hogy a támogatás az Azure AD-hitelesítés](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication) vagy bármely egyéb erőforrás URI-t.|
 > |API-verzió|Lekérdezés|A használt jogkivonat API-verzió. "2017-09-01" jelenleg az egyetlen támogatott verzió.|
 > |titkos kód|Fejléc|A MSI_SECRET környezeti változó értékét.|
 > |ClientID|Lekérdezés|(Nem kötelező) A felhasználó által hozzárendelt identitás használt azonosítója. Ha nincs megadva, a rendszer által hozzárendelt identitás szolgál.|

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: cecc1df23ebed88db315e7de14ea850ba5297697
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 576194f0b85e95f07ab0370c4be7029d3b8aecb9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212981"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833890"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Az Azure-bA Hyper-V virtuális gép vész-helyreállítási hálózatleképezés előkészítése
 
@@ -23,7 +23,7 @@ Ez a cikk segít könnyebben átláthatja és készítse elő a hálózatleképe
 
 ## <a name="prepare-network-mapping-for-replication-to-azure"></a>Az Azure-bA hálózatleképezés előkészítése
 
-Ha hálózati leképezés maps a forrás VMM-kiszolgálón futó Virtuálisgép-hálózatok között, az Azure-bA replikál, illetve cél Azure virtuális hálózatok. Leképezés a következőket teszi:
+Ha hálózati leképezés maps a forrás VMM-kiszolgálón futó Virtuálisgép-hálózatok között, az Azure-bA replikál, illetve cél Azure virtuális hálózatok. A leképezés a következőket hajtja végre:
     -  **Hálózati kapcsolat**– biztosítja, hogy a csatlakoztatott hálózati replikált Azure virtuális gépek csatlakoznak. Minden olyan gép, amely az azonos hálózaton feladatátvételt is csatlakozni egymáshoz, még akkor is, ha azok az különböző helyreállítási tervek a feladatátvételt.
     - **Hálózati átjáró**– Ha a cél Azure-hálózatban hálózati átjáró be van állítva, a virtuális gépek más helyszíni virtuális gépek csatlakozhat.
 
@@ -37,7 +37,7 @@ A hálózatleképezés a következőképpen történik:
 
 ## <a name="prepare-network-mapping-for-replication-to-a-secondary-site"></a>Replikálás másodlagos helyre hálózatleképezés előkészítése
 
-Ha egy másodlagos helyre replikál, a hálózatleképezés kapcsolatot hoz létre, a forrás VMM-kiszolgálón futó Virtuálisgép-hálózatok és Virtuálisgép-hálózatok VMM célkiszolgálón között meg. Leképezés a következőket teszi:
+Ha egy másodlagos helyre replikál, a hálózatleképezés kapcsolatot hoz létre, a forrás VMM-kiszolgálón futó Virtuálisgép-hálózatok és Virtuálisgép-hálózatok VMM célkiszolgálón között meg. A leképezés a következőket hajtja végre:
 
 - **Hálózati kapcsolat**– virtuális gépek kapcsolódik a megfelelő hálózatokhoz a feladatátvételt követően. A replika virtuális gép csatlakoznak a leképezett a Forráshálózat célhálózattal.
 - **Optimális Virtuálisgép-elhelyezés**– a replika virtuális gépek optimálisan helyezi el a Hyper-V gazdakiszolgálókra. Replika virtuális gépek kerülnek, a gazdagépeken, amelyek hozzáférhetnek a hozzárendelt Virtuálisgép-hálózatokat.

@@ -3,23 +3,22 @@ title: Az Azure Advisor magas rendelkezésre állás – javaslatok |} A Microso
 description: Az Azure Advisor használata az Azure-környezetek, magas rendelkezésre állás javítása érdekében.
 services: advisor
 documentationcenter: NA
-author: manbeenkohli
+author: kasparks
 manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: advisor
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
-ms.author: makohli
-ms.openlocfilehash: 2216b915c47ea05d3303ca02e51e976490ea36c6
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.author: kasparks
+ms.openlocfilehash: 61e85861ab5829620699d07fe24b1ebfdfc7cbdc
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068354"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839508"
 ---
 # <a name="advisor-high-availability-recommendations"></a>Az Advisor magas rendelkezésre állás – javaslatok
 
@@ -34,7 +33,7 @@ Az alkalmazás redundanciájának garantálása érdekében javasoljuk, hogy a v
 
 ## <a name="ensure-availability-set-fault-tolerance"></a>Győződjön meg, hogy a rendelkezésre állási csoport hibatűrése 
 
-Az alkalmazás redundanciájának garantálása érdekében javasoljuk, hogy a virtuális gépeket legalább kettesével foglalja rendelkezésre állási csoportokba. Az Advisor egy egyetlen virtuális gépet tartalmazó rendelkezésre állási csoportok azonosítja, és javasolja, hogy egy vagy több virtuális gép hozzáadása. Ez a konfiguráció biztosítja, hogy vagy a tervezett vagy nem tervezett karbantartási események esetén legalább egy virtuális gép elérhető, és megfelel-e az Azure-beli virtuálisgép-SLA. Kiválaszthatja a virtuális gép létrehozása vagy meglévő virtuális gép hozzáadása a rendelkezésre állási csoporthoz.  
+Az alkalmazás redundanciájának garantálása érdekében javasoljuk, hogy a virtuális gépeket legalább kettesével foglalja rendelkezésre állási csoportokba. Az Advisor egy egyetlen virtuális gépet tartalmazó rendelkezésre állási csoportok azonosítja, és javasolja, hogy egy vagy több virtuális gép hozzáadása. Ez a konfiguráció biztosítja, hogy vagy a tervezett vagy nem tervezett karbantartási események esetén legalább egy virtuális gép elérhető, és megfelel-e az Azure-beli virtuálisgép-SLA. Kiválaszthatja a virtuális gép létrehozása vagy meglévő virtuális gép hozzáadása a rendelkezésre állási csoporthoz.  
 
 ## <a name="ensure-application-gateway-fault-tolerance"></a>Application gateway hibatűrő képesség biztosítása
 Az az üzletmenet folytonosságának biztosítása az alapvető fontosságú alkalmazások, amelyek az application Gateway átjárók által, az Advisor azonosítja az application gateway-példány hibatűrése nem konfigurált, és azt sugallja, hogy elvégezhető javítási műveleteket. Az Advisor azonosítja a közepes vagy nagy egy példányban – az application Gateway átjárók, és legalább egy további példányok hozzáadása javasolja. Egyetlen vagy több instance kis application Gateway átjárókon azonosítja és a közepes vagy nagy SKU-ba való migrálás javasolja. Ezeket a műveleteket, ellenőrizze, hogy az application gateway-példány megfelelnek a jelenlegi SLA ezekhez az erőforrásokhoz javasol.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 74ecfe50170f35420d3cf5dc5531b0fe1046889d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 14b5f13070554328a47cd80185efb487d887a6d5
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433850"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832907"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cs-stars"></a>Oktatóanyag: Azure Active Directory-integráció az CS csillagok
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása a CS csillag, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - A CS csillag egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az Azure AD integrálása a CS csillag konfigurálásához hozzá kell CS csilla
 
 **CS csillag hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -117,7 +117,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<subdomain>.csstars.com/enterprise/`
 
     > [!NOTE] 
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [CS csillag ügyfél-támogatási csapatának](http://www.marshclearsight.com/support/) beolvasni ezeket az értékeket. 
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [CS csillag ügyfél-támogatási csapatának](https://www.marshclearsight.com/support/) beolvasni ezeket az értékeket. 
  
 1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
@@ -127,7 +127,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](./media/cs-stars-tutorial/tutorial_general_400.png) 
 <CS>
-1. Az egyszeri bejelentkezés konfigurálása **CS csillag** oldalon kell küldenie a letöltött **metaadatainak XML** való [CS csillag támogatási csoportjának](http://www.marshclearsight.com/support/). 
+1. Az egyszeri bejelentkezés konfigurálása **CS csillag** oldalon kell küldenie a letöltött **metaadatainak XML** való [CS csillag támogatási csoportjának](https://www.marshclearsight.com/support/). 
 <CE>
 
 > [!TIP]
@@ -169,7 +169,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 Ez a szakasz célja CS csillag Britta Simon nevű felhasználó létrehozásához.
 
-CS csillag létrehozott felhasználó lekérése, lépjen kapcsolatba kell a [CS csillag támogatási csoportjának](http://www.marshclearsight.com/support/).
+CS csillag létrehozott felhasználó lekérése, lépjen kapcsolatba kell a [CS csillag támogatási csoportjának](https://www.marshclearsight.com/support/).
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

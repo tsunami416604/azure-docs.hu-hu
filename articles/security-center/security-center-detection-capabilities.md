@@ -12,22 +12,20 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2018
+ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: fb0e503eedf62a7d72bd58fbf94cba3faac524e9
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 922e0afb77a9f1e42f014770ccc51d2a356d112b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632908"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843733"
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Az Azure Security Center észlelési funkciói
-Ez a dokumentum az Azure Security Center speciális észlelési funkciót ismerteti, amelyek segítségével azonosíthatja a Microsoft Azure-erőforrásokra irányuló aktív fenyegetéseket, és betekintést nyújt a gyors reagálás lehetőségeibe.
+Ebben a dokumentumban megismerkedhet az Azure Security Center speciális észlelési funkciót, amely segít azonosítani a Microsoft Azure-erőforrások – Windows és Linux - irányuló aktív fenyegetéseket, és a gyors reagálás lehetőségeibe elemzéseket biztosít.
 
-A speciális észlelési funkciók az Azure Security Center Standard rétegben érhetők el. A 60 napos próbaverzió ingyenes. A választott tarifacsomagról a [Biztonsági szabályzat](security-center-azure-policy.md) beállításainál frissíthet. A díjszabással kapcsolatos további tudnivalókért keresse fel a [Security Center oldalát](https://azure.microsoft.com/pricing/details/security-center/).
+A speciális észlelési funkciók az Azure Security Center Standard rétegben érhetők el. Az ingyenes próbaverzió is elérhető. A választott tarifacsomagról a [Biztonsági szabályzat](security-center-azure-policy.md) beállításainál frissíthet. A díjszabással kapcsolatos további tudnivalókért keresse fel a [Security Center oldalát](https://azure.microsoft.com/pricing/details/security-center/).
 
-> [!NOTE]
-> A Security Center korlátozott előzetes verzióként kiadott új készlet naplózott naplózott rekordokat, egy közös naplózási keretrendszerben a Linux rendszerű gépek rosszindulatú viselkedésének észlelésére. Amennyiben csatlakozni szeretne az előzetes verzióhoz, küldjön [nekünk](mailto:ASC_linuxdetections@microsoft.com) egy e-mailt, amely tartalmazza az előfizetés-azonosítóit.
 
 ## <a name="responding-to-todays-threats"></a>Reagálás a napjainkban felmerülő fenyegetésekre
 Az elmúlt 20 évben jelentős változásokat figyelhettünk meg a fenyegetések területén. Korábban a vállalatoknak általában csak a webhelyük arculatának lerombolása miatt kellett aggódniuk, mert a támadókat főleg az érdekelte, hogy kipróbálják, „mit is lehetne tenni”. A mai támadók sokkal bonyolultabban és szervezettebben cselekszenek. Gyakran konkrét pénzügyi és stratégiai célokat követnek. Ezenkívül több erőforrás áll a rendelkezésükre, mert akár az is előfordulhat, hogy egy nemzetállam vagy a szervezett bűnözés biztosítja számukra az anyagi hátteret.

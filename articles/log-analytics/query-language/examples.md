@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
-ms.openlocfilehash: 486e485a78f767c4d75461558d06068a2e1c4525
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: d5cad3869e74f33a2d1a56352c658bb9c8f23db6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682809"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835794"
 ---
 # <a name="log-analytics-query-examples"></a>Log Analytics lekérdezési példa
-Ez a cikk példákat különböző [lekérdezések](../log-analytics-queries.md) használatával a [Kusto nyelvi](https://docs.microsoft.com/azure/kusto/query/) Log Analytics különféle típusú adatokat lekérdezni. Különböző módszerek használhatók konszolidálhatja és az adatok elemzése, így ezek a minták segítségével azonosíthatja a különböző stratégiákat használhatja a saját igényeinek megfelelően.  
+Ez a cikk példákat különböző [lekérdezések](../../azure-monitor/log-query/log-query-overview.md) használatával a [Kusto nyelvi](https://docs.microsoft.com/azure/kusto/query/) Log Analytics különféle típusú adatokat lekérdezni. Különböző módszerek használhatók konszolidálhatja és az adatok elemzése, így ezek a minták segítségével azonosíthatja a különböző stratégiákat használhatja a saját igényeinek megfelelően.  
 
 Tekintse meg a [Kusto nyelvi referencia](https://docs.microsoft.com/azure/kusto/query/) használja ezeket a mintákat a különböző kulcsszavak részleteiért. Olvassa el a [leckében a lekérdezések létrehozásáról](get-started-queries.md) Ha most ismerkedik a Log Analytics szolgáltatásba.
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 65acbfbecf8ae34ff25780bfc161c52b5adc1d65
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 21b3ba88037c7956304fa6a53268e779841b14f3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634914"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838361"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-log-analytics"></a>Optimalizálhatja a Active Directory környezetet az Active Directory állapotának ellenőrzése megoldás a Log Analyticsben
 
@@ -186,4 +186,4 @@ A következő ütemezett egészségügyi ellenőrzés futtatásakor a szolgálta
 * Igen, tekintse meg [figyelmen kívül hagyja a javaslatok](#ignore-recommendations) című fenti szakaszban.
 
 ## <a name="next-steps"></a>További lépések
-* Használat [Log Analytics naplóbeli kereséseivel](../../log-analytics/log-analytics-queries.md) megtudhatja, hogyan elemezheti a részletes adatokat AD állapotának ellenőrzése és javaslatok.
+* Használat [Log Analytics naplóbeli kereséseivel](../../azure-monitor/log-query/log-query-overview.md) megtudhatja, hogyan elemezheti a részletes adatokat AD állapotának ellenőrzése és javaslatok.

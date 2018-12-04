@@ -4,14 +4,14 @@ description: Ismerteti, hogyan hozhat létre értékeléseket függőségeivel a
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 09/21/2018
+ms.date: 11/28/2018
 ms.author: raynew
-ms.openlocfilehash: 2755cc4e8e0e5a1b2a0e491b00fc73530dd9b958
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: e83ec29c5ff06e80c09b9328a7bfe545f3a0f6f3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635679"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844821"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Gépek csoportosítása a gépek függőségi leképezés használatával
 
@@ -28,8 +28,9 @@ Kihasználhatja a függőségek képi megjelenítésével, hozzá kell rendelni 
 
     ![Log Analytics-munkaterület társítása](./media/concepts-dependency-visualization/associate-workspace.png)
 
-- Amikor létrehoz egy új munkaterületet, adja meg a munkaterület nevét kell. A migrálási projekt ugyanabban az előfizetésben, és ugyanabban a régióban a munkaterület létrehozását majd [Azure földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/) a migrálási projektet.
-- A **meglévő** a beállítás csak a régióban, ahol a Service Map elérhető létrehozott munkaterületek listája. Ha egy munkaterületet egy régióban, ahol a Service Map nem érhető el, az nem lehet jelenik meg a listában.
+- Munkaterület társítása, miközben kap arra, hozzon létre egy új munkaterületet, vagy csatlakoztasson egy már meglévőt:
+  - Amikor létrehoz egy új munkaterületet, adja meg a munkaterület nevét kell. A munkaterületen létrejön ugyanabban a régióban [Azure földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/) a migrálási projektet.
+  - Ha csatlakoztat egy meglévő munkaterületet, a rendelkezésre álló munkaterületek ugyanahhoz az előfizetéshez tartozik, mint a migrálási projekt közül választhat. Vegye figyelembe, hogy csak azokat a munkaterületeket egy régióban létrehozott szerepel ahol [Service Map támogatott](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions). Tudják csatolása egy munkaterületet, győződjön meg arról, hogy a munkaterület "Olvasó" elérhető lesz.
 
 > [!NOTE]
 > A migrálási projekthez tartozó munkaterület nem módosítható.

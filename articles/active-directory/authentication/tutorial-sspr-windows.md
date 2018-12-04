@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: bec94e2017660e9804bbc232e0a3163afdaafcb6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 0c5554ca929cbd5231c99e568e987e6e0b7cf6eb
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277766"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844838"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Oktatóanyag: Új Azure AD-jelszó kérése a bejelentkezési képernyőről
 
@@ -101,23 +101,29 @@ Amikor a felhasználók megpróbálnak bejelentkezni, a bejelentkezési képerny
 
 A felhasználók a funkcióval kapcsolatban a [Munkahelyi vagy iskolai jelszó visszaállítása](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in) témakörben találhatnak útmutatást.
 
-## <a name="common-issues"></a>Gyakori problémák
+Az Azure AD auditnaplója információkat tartalmaz az IP-címről és az ügyféltípusról, ahol az új jelszó kérése megtörtént.
+
+![Példa új jelszó kérésére a bejelentkezési képernyőn az Azure AD auditnaplójában](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
+
+## <a name="limitations"></a>Korlátozások
 
 A funkció a Hyper-V használatával történő tesztelésekor a „Jelszó visszaállítása” hivatkozás nem jelenik meg.
 
 * Lépjen a teszteléshez használt virtuális géphez, kattintson a **Nézet** lehetőségre, majd távolítsa el a **Bővített munkamenet** lehetőség jelölőnégyzetét.
 
-A funkció a Távoli asztal használatával történő tesztelésekor a „Jelszó visszaállítása” hivatkozás nem jelenik meg.
+Ez a funkció a távoli asztal vagy egy virtuális gép bővített munkamenet tesztelésekor a "Jelszó visszaállítása" hivatkozás nem jelenik meg.
 
 * A Távoli asztalokról jelenleg nem támogatott a jelszó-visszaállítás.
 
-Ha a Windows zárolási képernyője egy beállításkulcs vagy csoportszabályzat használatával le lett tiltva, a **Jelszó visszaállítása** hivatkozás nem lesz elérhető.
-
 Ha a szabályzat a Ctrl+Alt+Del billentyűparancs használatát követeli meg, vagy a zárolási képernyő értesítései ki vannak kapcsolva, a **Jelszó visszaállítása** nem fog működni.
 
-Az Azure AD auditnaplója információkat tartalmaz az IP-címről és az ügyféltípusról, ahol az új jelszó kérése megtörtént.
+A következő házirend-beállításokat ismert zavarják a jelszavak alaphelyzetbe állítása
 
-![Példa új jelszó kérésére a bejelentkezési képernyőn az Azure AD auditnaplójában](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
+   * HideFastUserSwitching engedélyezve értékre van állítva vagy 1
+   * DontDisplayLastUserName engedélyezve értékre van állítva vagy 1
+   * NoLockScreen engedélyezve értékre van állítva vagy 1
+   * EnableLostMode van beállítva, az eszközön
+   * Az egyéni shell Explorer.exe váltja fel
 
 Ha a Windows 10-es gépek proxykiszolgáló vagy tűzfal mögött találhatók, a passwordreset.microsoftonline.com és ajax.aspnetcdn.com helyekre irányuló HTTPS-forgalmat (443) engedélyezni kell.
 

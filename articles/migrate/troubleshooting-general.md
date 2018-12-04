@@ -4,14 +4,14 @@ description: Ismert problémák az Azure Migrate szolgáltatás és a hibaelhár
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 11/28/2018
 ms.author: raynew
-ms.openlocfilehash: 0b2954ddfda0ab4c94ddf6176d76d8bcd937fa42
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 9303f20d84547dee62e7012e0dca50f47ad54083
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413333"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839585"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -19,9 +19,9 @@ ms.locfileid: "50413333"
 
 [Az Azure Migrate](migrate-overview.md) felméri a helyszíni számítási feladatokat az Azure-ba való migrálásra. Ez a cikk segítségével üzembe helyezése és az Azure Migrate szolgáltatással kapcsolatos problémák elhárítása.
 
-### <a name="i-am-using-the-continuous-discovery-ova-but-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>Az OVA, de a saját helyszíni környezetben törölt virtuális gépek továbbra is alatt jelennek meg a portál folyamatos felderítési használok.
+### <a name="i-am-using-the-ova-that-continuously-discovers-my-on-premises-environment-but-the-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>Az OVA, amely folyamatosan felderíti a helyszíni környezetben használom, de a saját helyszíni környezetben törölt virtuális gépek továbbra is alatt látható a portálon.
 
-A folyamatos felderítési Appliance berendezés csak az folyamatosan teljesítményadatokat gyűjt, semmilyen konfigurálási változást nem észleli a helyszíni környezetben (pl. virtuális gép hozzáadása, törlése, lemez hozzáadása stb.). Ha a helyszíni környezet konfigurációja módosul, a következőket teheti a változások tükrözésére a portálon:
+A folyamatos felderítési berendezés csak az folyamatosan teljesítményadatokat gyűjt, semmilyen konfigurálási változást nem észleli a helyszíni környezetben (pl. virtuális gép hozzáadása, törlése, lemez hozzáadása stb.). Ha a helyszíni környezet konfigurációja módosul, a következőket teheti a változások tükrözésére a portálon:
 
 - Elemek (virtuális gépek, lemezek, magok stb.) hozzáadása: Ezeknek a módosításoknak az Azure Portalon való tükrözéséhez állítsa le, majd indítsa újra a felderítést a berendezésen. Ez biztosítja, hogy a módosítások frissítése megtörténjen az Azure Migrate-projektben.
 
@@ -35,15 +35,36 @@ A probléma akkor fordulhat elő, a felhasználók számára, akik nem rendelkez
 
 Miután a meghívást tartalmazó e-mail érkezik, nyissa meg az e-mailt, és kattintson a hivatkozásra az e-mailben a meghívás elfogadásához kell. Miután ez megtörtént, jelentkezzen ki az Azure Portalon kell, és jelentkezzen be ismét a böngészőlap frissítése nem fog működni. Majd megpróbálkozhat a migrálási projekt létrehozása.
 
+### <a name="i-am-unable-to-export-the-assessment-report"></a>Az értékelési jelentés exportálása nem sikerült
+
+Ha nem tudja az értékelési jelentés exportálása a portálról, próbálkozzon az alábbi REST API-t egy letöltési URL-cím lekérése az értékelési jelentés.
+
+1. Telepítés *armclient* a számítógépen (Ha még nincs telepítve):
+
+a. Egy rendszergazdai parancssort, futtassa a következő parancsot:  *@powershell - NoProfile - ExecutionPolicy megkerülése - parancs "iex ((New-Object System.Net.WebClient). DownloadString('https://chocolatey.org/install.ps1')) "& & ÁLLÍTSA"PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"*
+
+b.In egy rendszergazda Windows PowerShell-ablakban futtassa a következő parancsot: *choco armclient telepítése*
+
+2.  A letöltési URL-cím lekérése az Azure Migrate REST API használatával az értékelési jelentéshez tartozó
+
+a.  Egy rendszergazda Windows PowerShell-ablakban futtassa a következő parancsot: *armclient bejelentkezési* ekkor megnyílik az Azure bejelentkezési előugró hol kell bejelentkezni az Azure-bA.
+
+b.  Ugyanebben a PowerShell ablakban futtassa a következő parancsot az értékelési jelentés (cserélje le az URI-paraméterek megfelelő értékeivel, a minta API-kérelem alább) a letöltési URL-Címének lekéréséhez
+
+       *armclient POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02*
+
+Mintakérelem és kimenet:
+
+PS C:\WINDOWS\system32 > armclient POST https://management.azure.com/subscriptions/8c3c936a-c09b-4de3-830b-3f5f244d72e9/r esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/contosopayroll/assessments/assessment_11_16_2 018_12_16_21/downloadUrl? api-version = 2018-02-02 {" assessmentReportUrl":"https://migsvcstoragewcus.blob.core.windows.net/4f7dddac-f33b-4368-8e6a-45afcbd9d4df/contosopayrollassessment_11_16_2018_12_16_21?sv=2016-05-31&sr=b&sig=litQmHuwi88WV%2FR%2BDZX0%2BIttlmPMzfVMS7r7dULK7Oc%3D&st=2018-11-20T16%3A09%3A30Z&se=2018-11-20T16%3A19%3A30Z&sp=r","expirationTime":" 2018-11-20T22:09:30.5681954 + 05:30 "
+
+3. Másolja az URL-címet a válaszból, és nyissa meg böngészőben az értékelési jelentés letöltése.
+4. A jelentéskészítő letöltését követően Excel segítségével keresse meg a letöltött mappát, és nyissa meg a fájlt az Excelben a megtekintéséhez.
+
 ### <a name="performance-data-for-disks-and-networks-adapters-shows-as-zeros"></a>Lemezek és a hálózat adapterek teljesítményadatokat nullák állapota
 
 Ez akkor fordulhat elő, ha a statisztikai beállítást szintje a vCenter-kiszolgálón kevesebb mint három. Vagy magasabb szintű három vCenter tárolja a virtuális gépek korábbi teljesítménye számítási, tárolási és hálózati. A három szint kisebb, mint a vCenter tárolási és hálózati adatok, de csak a CPU és memória adatok nem tárolja. Ebben a forgatókönyvben teljesítmény adatokat jeleníti meg, mint az Azure Migrate nulla, és az Azure Migrate biztosít a lemezek és a helyszíni gépekről gyűjtött metaadatok alapján hálózatok mérete javaslat.
 
 Ahhoz, hogy a lemez- és teljesítményadatok gyűjtése, módosítsa a statisztikai beállítások szintjét három. Ezt követően legalább egy napot várni a környezet felderítéséhez és értékeléséhez.
-
-### <a name="i-installed-agents-and-used-the-dependency-visualization-to-create-groups-now-post-failover-the-machines-show-install-agent-action-instead-of-view-dependencies"></a>E telepített ügynökök és a függőségek képi megjelenítéséről csoportok létrehozásához használt. Most már feladatátvétel után, a gépek művelet "Ügynök telepítése" helyett "Nézet függőségei" megjelenítése
-* POST tervezett vagy nem tervezett feladatátvétel esetén a helyszíni gépek ki vannak kapcsolva, és egyenértékű gépeket hoz létre az Azure-ban. Ezek a gépek egy másik MAC-címet szerezni. Előfordulhat, hogy vásárolnak, egy másik IP-cím alapján, hogy a felhasználó úgy döntött, a helyi IP-cím megőrzése, vagy nem. MAC- és IP-címek különböznek, ha az Azure Migrate a helyszíni gépek nem rendel hozzá a Service Map függőségi adatokat, és kéri a felhasználót, hogy telepítse a helyett függőségek megtekintéséhez ügynököket.
-* Feladatátvételi teszt közzététele a helyszíni gépek elvárt bekapcsolva maradjon. Egyenértékű gépeket hoz létre az Azure-ban másik MAC-címet beszerezni, és előfordulhat, hogy másik IP-cím beszerzéséhez. Kivéve, ha a felhasználó blokkolja a kimenő forgalmát a Log Analytics ezeken a gépeken, az Azure Migrate a helyszíni gépek nem rendel hozzá a Service Map függőségi adatokat, és kéri a felhasználót, hogy telepítse a helyett függőségek megtekintéséhez ügynököket.
 
 ### <a name="i-specified-an-azure-geography-while-creating-a-migration-project-how-do-i-find-out-the-exact-azure-region-where-the-discovered-metadata-would-be-stored"></a>Migrálási projekt, hogyan állapítható meg a felderített metaadatokat lenne tárolásához pontos Azure-régió létrehozása során egy Azure földrajzi meg?
 
@@ -55,8 +76,8 @@ Megnyithatja a **Essentials** című rész a **áttekintése** a projekt a ponto
 
 ### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Az Azure Migrate Collector telepítésének nem sikerült a hiba: Érvénytelen a megadott jegyzékfájl: Érvénytelen OVF-jegyzékfájl bejegyzés.
 
-1. Győződjön meg arról, ha az Azure Migrate Collector OVA-fájl a kivonatolt érték ellenőrzésével megfelelően letölti. Tekintse meg a [cikk](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance) a kivonat értékével ellenőrizheti. Ha a kivonat értéke nem egyezik, töltse le újból az OVA-fájl, és próbálkozzon újra a telepítéssel.
-2. Ha továbbra is sikertelen, és a VMware vSphere Client használatával az OVF telepítése, próbálja ki az üzembe helyezést, vSphere webes ügyfélben. Ha továbbra is sikertelen, próbálkozzon a különböző webböngésző használatával.
+1. Győződjön meg arról, ha az Azure Migrate Collector OVA-fájl a kivonatolt érték ellenőrzésével megfelelően letölti. Tekintse meg a következő [cikket](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance) a kivonatérték ellenőrzéséhez. Ha a kivonat értéke nem egyezik, töltse le újból az OVA-fájl, és próbálkozzon újra a telepítéssel.
+2. Ha továbbra is sikertelen, és a VMware vSphere-ügyfelet használja az OVF telepítéséhez, próbálja meg a vSphere webes ügyfélen keresztül telepíteni. Ha továbbra is sikertelen, próbálkozzon a különböző webböngésző használatával.
 3. Ha szeretne üzembe helyezni a vcenter Server 6.5-ös és a vSphere webes ügyféllel, próbálja meg az OVA közvetlenül az ESXi-gazdagép telepítése a következő az alábbi lépéseket:
   - Közvetlenül (vCenter-kiszolgáló) helyett az ESXi-gazdagép csatlakozik a webes ügyfél használata (https:// <*gazdagép IP-cím*> /ui)
   - Lépjen a kezdőlapra > leltár
@@ -128,7 +149,7 @@ Ha a probléma továbbra is történik a legújabb verzió, annak oka az lehet, 
 3. Adja meg a megfelelő portszámot a vCenterhez történő csatlakozáshoz.
 4. Végezetül pedig ellenőrizze, hogy a vCenter-kiszolgáló fut-e.
 
-## <a name="troubleshoot-dependency-visualization-issues"></a>Függőségek képi megjelenítés hibáinak elhárítása
+## <a name="dependency-visualization-issues"></a>Függőségek képi megjelenítés kapcsolatos problémák
 
 ### <a name="i-installed-the-microsoft-monitoring-agent-mma-and-the-dependency-agent-on-my-on-premises-vms-but-the-dependencies-are-now-showing-up-in-the-azure-migrate-portal"></a>A Microsoft Monitoring Agent (MMA) és a függőségi ügynök telepítése a helyszíni virtuális gépek, de a függőségek most jelennek meg az Azure Migrate portálon.
 
@@ -159,7 +180,11 @@ Az Azure Migrate függőségeinek megjelenítése akár egy órás időtartamán
 ### <a name="i-am-unable-to-visualize-dependencies-for-groups-with-more-than-10-vms"></a>Nem lehet több mint 10 virtuális géppel csoportok függőségek vizualizálása vagyok?
 Is [csoportokra vonatkozó függőségek vizualizálása](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) , hogy rendelkezik mentése 10 virtuális gépekhez, ha egy csoport több mint 10 virtuális géppel, azt javasoljuk, hogy felosztása kisebb csoportok a csoport, és a Függőségek megjelenítése.
 
-## <a name="troubleshoot-readiness-issues"></a>Készültségi problémák elhárítása
+### <a name="i-installed-agents-and-used-the-dependency-visualization-to-create-groups-now-post-failover-the-machines-show-install-agent-action-instead-of-view-dependencies"></a>E telepített ügynökök és a függőségek képi megjelenítéséről csoportok létrehozásához használt. Most már feladatátvétel után, a gépek művelet "Ügynök telepítése" helyett "Nézet függőségei" megjelenítése
+* POST tervezett vagy nem tervezett feladatátvétel esetén a helyszíni gépek ki vannak kapcsolva, és egyenértékű gépeket hoz létre az Azure-ban. Ezek a gépek egy másik MAC-címet szerezni. Előfordulhat, hogy vásárolnak, egy másik IP-cím alapján, hogy a felhasználó úgy döntött, a helyi IP-cím megőrzése, vagy nem. MAC- és IP-címek különböznek, ha az Azure Migrate a helyszíni gépek nem rendel hozzá a Service Map függőségi adatokat, és kéri a felhasználót, hogy telepítse a helyett függőségek megtekintéséhez ügynököket.
+* Feladatátvételi teszt közzététele a helyszíni gépek elvárt bekapcsolva maradjon. Egyenértékű gépeket hoz létre az Azure-ban másik MAC-címet beszerezni, és előfordulhat, hogy másik IP-cím beszerzéséhez. Kivéve, ha a felhasználó blokkolja a kimenő forgalmát a Log Analytics ezeken a gépeken, az Azure Migrate a helyszíni gépek nem rendel hozzá a Service Map függőségi adatokat, és kéri a felhasználót, hogy telepítse a helyett függőségek megtekintéséhez ügynököket.
+
+## <a name="troubleshoot-azure-readiness-issues"></a>Azure-kompatibilitás hibáinak elhárítása
 
 **A probléma** | **Fix**
 --- | ---
@@ -173,7 +198,6 @@ Az operációs rendszer bitszáma nem támogatott | Az operációs rendszer 32-b
 A Visual Studio-előfizetést igényel. | A gépek rendelkezik egy Windows ügyfél operációs rendszer fut, amely csak Visual Studio-előfizetés használata támogatott.
 Nem található a szükséges tárolási teljesítménynek megfelelő virtuális gép. | A tárolási teljesítményt (IOPS és átviteli sebesség) a gép meghaladja az Azure virtuális gépek támogatása szükséges. Csökkenti a tárolási követelményeket a gép áttelepítés előtt.
 A virtuális gép nem található a szükséges hálózati teljesítmény. | A hálózati teljesítmény (bejövő és kimenő), a gép szükséges meghaladja az Azure virtuális gépek támogatása. Csökkentheti a hálózati követelmények, a gép.
-Nem található a megadott tarifacsomagnak megfelelő virtuális gép. | A tarifacsomag beállítása Standard lesz, ha csökkenteni a virtuális gép az Azure-ba való migrálás előtt. Ha a méretezési réteg alapszintű, fontolja meg az értékelés tarifacsomagját módosítja a standard.
 A virtuális gép nem található a megadott helyen. | Használjon egy másik célhelyet az áttelepítés előtt.
 Egy vagy több lemez. | Egy vagy több lemezt a virtuális Géphez csatlakoztatott Azure-követelményeknek nem felel meg. A virtuális géphez csatlakoztatott összes lemez győződjön meg arról, hogy a lemez mérete < 4 TB-os, ha nem, a lemez mérete csökkentheti az Azure-ba való migrálás előtt. Győződjön meg arról, hogy egyes lemezek által igényelt teljesítményt (IOPS és átviteli sebesség) az Azure által támogatott [a virtuális gép lemezeinek felügyelt](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits).   
 Egy vagy több hálózati adapter nem megfelelő. | Távolítsa el a használaton kívüli hálózati adapterek a gépről a migrálás előtt.

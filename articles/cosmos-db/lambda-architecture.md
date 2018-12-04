@@ -1,22 +1,19 @@
 ---
-title: Lambda architektúra az Azure Cosmos DB és a HDInsight (az Apache Spark) |} A Microsoft Docs
+title: Lambda architektúra az Azure Cosmos DB és a HDInsight (az Apache Spark)
 description: Ez a cikk bemutatja, hogyan lehet Azure Cosmos DB, a HDInsight és a Spark használatával lambda architektúra megvalósítása
 keywords: lambda-architektúra
 services: cosmos-db
-author: tknandu
-manager: kfile
-editor: ''
 ms.service: cosmos-db
-ms.devlang: na
+author: tknandu
+ms.author: ramkris
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.author: ramkris
-ms.openlocfilehash: c926c67a330648e09c1fd8133164f64582ad9a34
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: e2366a9fb127d134d2b15acb345f424d2f84b666
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701075"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842101"
 ---
 # <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Az Azure Cosmos DB: A lambda architektúra megvalósítása az Azure platformon 
 

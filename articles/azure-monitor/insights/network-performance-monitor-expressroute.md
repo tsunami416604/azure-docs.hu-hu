@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: 69088f7d07312d4110eafea369ea999f0597868b
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 85e39e47c5f532888911c00d3e526e51596f57bb
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441995"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832819"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute-figyelő
 
@@ -160,4 +160,4 @@ Tekintse meg az értesítés kódokat, és riasztásokat állíthat be a rajtuk 
  
 
 ## <a name="next-steps"></a>További lépések
-[Naplók keresése](../../log-analytics/log-analytics-queries.md) részletes hálózati teljesítmény adatfelderítési rekordok megtekintéséhez.
+[Naplók keresése](../../azure-monitor/log-query/log-query-overview.md) részletes hálózati teljesítmény adatfelderítési rekordok megtekintéséhez.

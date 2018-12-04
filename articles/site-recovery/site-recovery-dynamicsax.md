@@ -5,14 +5,14 @@ author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: e2cba8cb53e73bd1fc25f1fe43fa0365247e2bd2
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c1714fd6ada45f2b4498a3f5972424200afa9aa3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210822"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838140"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Állítsa be a Dynamics AX Többrétegű alkalmazások vészhelyreállítása 
 
@@ -37,7 +37,7 @@ Végrehajtási Dynamics AX-alkalmazások vészhelyreállítása a Site Recovery 
 
 • Ha az Azure helyreállítási webhelyként, az Azure Virtual Machine Readiness Assessment eszköz virtuális gépeken futnak. Az Azure Virtual Machines és a Site Recovery services-kompatibilis kell lennie.
 
-## <a name="site-recovery-support"></a>Site Recovery támogatási
+## <a name="site-recovery-support"></a>Site Recovery támogatása
 
 Ez a cikk létrehozása, céljából a VMware virtuális gépek a Dynamics AX 2012 R3 verzióját a Windows Server 2012 R2 Enterprise használtuk. Mivel a site recovery-replikációja alkalmazás független, várhatóan a javaslatok, az itt elérhető, amely tárolja a következő célokra.
 
@@ -139,7 +139,7 @@ További információ az SQL server adott feladatátvételi teszt során, tekint
 
 2. Válassza ki a helyreállítási terv létrehozása a Dynamics AX.
 
-3. Válassza ki **feladatátvételi teszt**.
+3. Kattintson a **Feladatátvétel tesztelése** elemre.
 
 4. Válassza ki a virtuális hálózat, a teszt feladatátvételi folyamat elindításához.
 

@@ -6,15 +6,15 @@ author: seanmck
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
-ms.date: 10/02/2018
+ms.date: 11/30/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 33d6d89e91ecdec00c1b17ecddf91128e9d07526
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.openlocfilehash: b5f97dac202edd5405c51b75581275166042ac38
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802100"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841455"
 ---
 # <a name="azure-container-instances"></a>Azure Container Instances
 
@@ -38,6 +38,8 @@ Korábban a tárolók biztosítottak ugyan alkalmazásfüggőség-elkülöníté
 
 A tárolók általában egyetlen alkalmazás futtatására vannak optimalizálva, azonban ezeknek az alkalmazásoknak a pontos igényei nagyon is eltérőek lehetnek. Az Azure Container Instances optimális kihasználtságot biztosít, mivel pontosan megadható a processzormagok száma és a memória mennyisége. A fizetés az igényelt erőforrások alapján történik másodpercalapú elszámolás szerint, így tényleges igényeinek megfelelően optimalizálhatja költségeit a legkisebb részletekig.
 
+Nagy számítási igényű feladatok például machine learning, az Azure Container Instances ütemezheti a Linux-tárolók használata NVIDIA Tesla [GPU-erőforrások](container-instances-gpu.md) (előzetes verzió).
+
 ## <a name="persistent-storage"></a>Állandó tárolók
 
 Az állapotok az Azure Container Instanceszel való lekéréséhez és megőrzéséhez az [Azure-fájlmegosztások közvetlen csatolásának](container-instances-mounting-azure-files-volume.md) lehetőségét kínáljuk.
@@ -59,7 +61,7 @@ Az Azure Container Instances támogatja az olyan [több tárolóból álló csop
 Ez a jelenleg előzetes verzióban lévő Azure Container Instances-funkció lehetővé teszi [tárolópéldányok üzembe helyezését egy Azure virtuális hálózatban](container-instances-vnet.md). Ha a tárolópéldányokat a virtuális hálózat egyik alhálózatában helyezi üzembe, biztonságosan tudnak majd kommunikálni a virtuális hálózat más erőforrásaival, így a helyszíniekkel is (a [VPN Gateway-en](../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy az [ExpressRoute-on](../expressroute/expressroute-introduction.md) keresztül).
 
 > [!IMPORTANT]
-> A tárolócsoportok virtuális hálózatokban történő üzembe helyezése jelenleg előzetes verzióban érhető el, ezért néhány [korlátozás vonatkozik rá](container-instances-vnet.md#preview-limitations). Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+> Azure Container Instances bizonyos funkciói a következők előzetes verzióban érhető el, és néhány [korlátozások érvényesek a](container-instances-vnet.md#preview-limitations). Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. Ezek a szolgáltatások egyes funkcióit általánosan (elérhetővé tétel GA) előtt módosíthatja.
 
 ## <a name="next-steps"></a>További lépések
 

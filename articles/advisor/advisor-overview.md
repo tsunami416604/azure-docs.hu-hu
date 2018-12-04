@@ -3,22 +3,21 @@ title: Bevezetés az Azure Advisor |} A Microsoft Docs
 description: Az Azure Advisor használata az Azure-környezetek optimalizálására.
 services: advisor
 documentationcenter: NA
-author: manbeenkohli
+author: kasparks
 manager: ''
 ms.assetid: ''
 ms.service: advisor
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
-ms.author: makohli
-ms.openlocfilehash: e1d7edef304dc91829066f19b6974f0bcf0be0a5
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.author: kasparks
+ms.openlocfilehash: d1b91d62eaafa60426c837cd0e40faaf7b60600b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42060129"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844583"
 ---
 # <a name="introduction-to-azure-advisor"></a>Bevezetés az Azure Advisor
 

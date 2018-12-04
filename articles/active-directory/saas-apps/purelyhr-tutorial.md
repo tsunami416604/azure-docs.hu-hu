@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: c02dc274c5d22c16b2bda6d7896ee64c41d6e2ab
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 88388be1a0687c3e56fd39dde2f70e40cf578f2a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438994"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841047"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purelyhr"></a>Oktatóanyag: Azure Active Directory-integráció az PurelyHR
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 PurelyHR az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy PurelyHR egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az Azure AD integrálása a PurelyHR konfigurálásához hozzá kell PurelyHR a 
 
 **PurelyHR hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -121,7 +121,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     Az a **bejelentkezési URL-** szövegmezőbe írja be az értéket a következő minta használatával: `https://<companyID>.purelyhr.com/sso-initiate`
      
     > [!NOTE]
-    > Ezek az értékek nem a valós. Frissítse a tényleges válasz URL-cím és a bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [PurelyHR ügyfél-támogatási csapatának](http://support.purelyhr.com/) beolvasni ezeket az értékeket. 
+    > Ezek az értékek nem a valós. Frissítse a tényleges válasz URL-cím és a bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [PurelyHR ügyfél-támogatási csapatának](https://support.purelyhr.com/) beolvasni ezeket az értékeket. 
 
 1. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 

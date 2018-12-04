@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 9d3f867dad40017e8e97ec4f5e370533b018263c
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: fcceecbd933980d0ab751fd5e377bbf810b9502e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181172"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837630"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Virtuális hálózat konfigurálása az Azure SQL Database felügyelt példány
 
@@ -66,6 +66,9 @@ Felügyelt példány létrehozásához (a felügyelt példány alhálózatára) 
 |felügyelet  |80-as, 443-as, 12000|TCP     |Bármelyik              |Bármelyik        |Engedélyezés |
 |mi_subnet   |Bármelyik           |Bármelyik     |Bármelyik              |MI ALHÁLÓZAT  |Engedélyezés |
 
+  > [!Note]
+  > Bár a kötelező bejövő biztonsági szabályok érkező adatforgalom engedélyezéséhez _bármely_ portokon 9000, 9003, forrás 1438, 1440, 1452 beépített tűzfal védi ezeket a portokat. Ez [cikk](sql-database-managed-instance-management-endpoint.md) bemutatja, hogyan felderítése felügyeleti végpont IP-címét, és a tűzfalszabályok ellenőrzése. 
+
 ##  <a name="determine-the-size-of-subnet-for-managed-instances"></a>Alhálózat méretét határozza meg a felügyelt példány
 
 Felügyelt példány létrehozásakor az Azure virtuális gépek kiépítésekor kiválasztott csomagtól függően számos foglal le. Mivel ezek a virtuális gépek társítva az alhálózat, IP-címek igényelnek. Magas rendelkezésre állásának biztosításához a normál működést és a szolgáltatás karbantartás alatt, az Azure további virtuális gépeket is kioszthat. Ennek eredményeképpen az alhálózat szükséges IP-címek száma, az alhálózat által felügyelt példányok száma nagyobb. 
@@ -73,7 +76,7 @@ Felügyelt példány létrehozásakor az Azure virtuális gépek kiépítésekor
 A kialakításból fakadóan felügyelt példány legalább 16, az alhálózat IP-címet kell, és előfordulhat, hogy legfeljebb 256 IP-cím használata. Ennek eredményeképpen alhálózati maszkok/28-as, /24 használja, az alhálózati IP-címtartományok meghatározásakor. 
 
 > [!IMPORTANT]
-> Alhálózat 16 IP-címekkel rendelkező mérete korlátozott lehetséges a további felügyelt példány horizontális felskálázás az operációs rendszer nélküli helyreállításra minimális. Erősen ajánlott lehetőséget választva alhálózati előtagot/27-eset vagy alá. 
+> Alhálózat 16 IP-címekkel rendelkező mérete korlátozott lehetséges a további felügyelt példány horizontális felskálázás az operációs rendszer nélküli helyreállításra minimális. Erősen ajánlott lehetőséget választva alhálózati előtagot/27-eset vagy alá. 
 
 Ha azt tervezi, az alhálózaton belül több felügyelt példány üzembe helyezése és az alhálózat méretét optimalizálására, a számítás használni ezeket a paramétereket: 
 
@@ -84,7 +87,7 @@ Ha azt tervezi, az alhálózaton belül több felügyelt példány üzembe helye
 **Példa**: tervezett három általános célú és két üzleti az kritikus fontosságú felügyelt példányok. Hogy azt jelenti, hogy 5 + 3 * 2 + 2 * 4 = 19 kell IP-címek. IP-címtartományok 2 hatványa határozzák meg, mint az IP-címtartományt 32 kell (2 ^ 5) IP-címeket. Ezért kell lefoglalni az alhálózat/27-eset a alhálózati maszkkal. 
 
 > [!IMPORTANT]
-> További fejlesztések fog elavulnak számítási fent látható. 
+> További fejlesztések fog elavulnak számítási fent látható. 
 
 ## <a name="create-a-new-virtual-network-for-a-managed-instance"></a>Hozzon létre egy új virtuális hálózatot a felügyelt példányhoz
 

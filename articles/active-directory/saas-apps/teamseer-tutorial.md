@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: a5910689f34c511c6cf7d8a044ef4358d2e0570d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 2b9f3c7905fbb301c74a040a259b2f8666c75377
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445580"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834489"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>Oktatóanyag: Azure Active Directory-integráció az TeamSeer
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 TeamSeer az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy TeamSeer egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ TeamSeer az Azure ad-integráció konfigurálásához, hozzá kell TeamSeer a ga
 
 **TeamSeer hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -115,7 +115,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
      Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://www.teamseer.com/<companyid>`
 
     > [!NOTE] 
-    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [TeamSeer ügyfél-támogatási csapatának](http://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html) a gépkulcsengedélyek értékének. 
+    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [TeamSeer ügyfél-támogatási csapatának](https://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html) a gépkulcsengedélyek értékének. 
  
 1. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 

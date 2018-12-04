@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: bfed4318d09a776f56a5a4b6218120d75a49fc80
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: d12de42be9cf5d1a48288aabf21b25546e5b4bbc
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715482"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833075"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Az Azure Monitor naplók lekérdezni a virtuális gépek (előzetes verzió)
-Az Azure Monitor-beli virtuális gépek teljesítmény- és kapcsolati metrikák, a számítógép és a folyamat leltáradatokat és az állapotinformációkat gyűjt, és továbbítja azokat a Log Analytics data store az Azure Monitor.  Ezek az adatok érhető el [keresési](../../log-analytics/log-analytics-queries.md) a Log Analyticsben. Ezeket az adatokat, beleértve az áttelepítés megtervezése, kapacitáselemzési, felderítési és igény szerinti teljesítménnyel kapcsolatos hibaelhárítás forgatókönyveket is alkalmazhat.
+Az Azure Monitor-beli virtuális gépek teljesítmény- és kapcsolati metrikák, a számítógép és a folyamat leltáradatokat és az állapotinformációkat gyűjt, és továbbítja azokat a Log Analytics data store az Azure Monitor.  Ezek az adatok érhető el [keresési](../../azure-monitor/log-query/log-query-overview.md) a Log Analyticsben. Ezeket az adatokat, beleértve az áttelepítés megtervezése, kapacitáselemzési, felderítési és igény szerinti teljesítménnyel kapcsolatos hibaelhárítás forgatókönyveket is alkalmazhat.
 
 ## <a name="map-records"></a>Rekord leképezése
 Egy rekord minden egyedi számítógép és a folyamat a rekordokat, amelyek akkor jönnek létre egy folyamatot, vagy a számítógép indításakor vagy bevezetve az Azure monitornak a virtuális gépek térkép funkció mellett óránként jön létre. Ezek a rekordok tulajdonságait az alábbi táblázatban rendelkezik. A mezők és értékek a mezők a ServiceMap Azure Resource Manager API-ban a gép erőforrás ServiceMapComputer_CL események leképezés. A mezők és értékek a ServiceMapProcess_CL események leképezés a mezőket a folyamat erőforrás a ServiceMap Azure Resource Manager API-ban. A ResourceName_s mezője megegyezik a megfelelő Resource Manager-erőforrás neve mezőjében. 

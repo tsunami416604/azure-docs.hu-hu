@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 77fad7b0035a9ba21d71e6c493a4f1a5bd9a2111
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
-ms.translationtype: HT
+ms.openlocfilehash: 0a582dc3acf17a10bd143988da7dd12627650dff
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395207"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834860"
 ---
 # <a name="virtual-network-service-endpoints"></a>Virtuális hálózati szolgáltatásvégpontok
 
@@ -74,7 +74,7 @@ A szolgáltatásvégpontok az alábbi előnyöket nyújtják:
 
   Alapértelmezés szerint a virtuális hálózatokhoz biztosított Azure-szolgáltatási erőforrások nem érhetők el helyszíni hálózatokról. Ha engedélyezni szeretné a helyszíni eredetű forgalmat, ahhoz engedélyeznie kell a nyilvános (általában NAT) IP-címeket is a helyszíni vagy ExpressRoute-kapcsolatokon. Ezeket az IP-címeket az Azure-szolgáltatási erőforrások IP-tűzfalainak konfigurálásával lehet megadni.
 
-  ExpressRoute: Ha [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-ot használ a helyszíni eredetű nyilvános társviszony-létesítéshez vagy Microsoft-társviszony-létesítéshez, meg kell határoznia a használt NAT IP-címeket. Nyilvános társviszony-létesítés esetén alapértelmezés szerint minden ExpressRoute-kapcsolatcsoport két NAT IP-címet használ, amelyeket akkor alkalmaz az Azure-szolgáltatások forgalmára, amikor a forgalom belép a Microsoft Azure gerinchálózatába. Microsoft-társviszony-létesítés esetén a használt NAT IP-cím(ek)et vagy az ügyfél vagy a szolgáltató adja meg. A szolgáltatási erőforrások hozzáférésének engedélyezéséhez engedélyeznie kell ezeket a nyilvános IP-címeket az erőforrás IP-tűzfalának beállításai között. A nyilvános társviszony-létesítési ExpressRoute-kapcsolatcsoport IP-címeinek megkereséséhez [hozzon létre egy támogatási jegyet az ExpressRoute-tal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az Azure Portalon. További információk az [ExpressRoute NAT nyilvános és Microsoft-társviszony-létesítéséről](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering).
+  ExpressRoute: Ha [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-ot használ a helyszíni eredetű nyilvános társviszony-létesítéshez vagy Microsoft-társviszony-létesítéshez, meg kell határoznia a használt NAT IP-címeket. Nyilvános társviszony-létesítés esetén alapértelmezés szerint minden ExpressRoute-kapcsolatcsoport két NAT IP-címet használ, amelyeket akkor alkalmaz az Azure-szolgáltatások forgalmára, amikor a forgalom belép a Microsoft Azure gerinchálózatába. Microsoft-társviszony-létesítés esetén a használt NAT IP-cím(ek)et vagy az ügyfél vagy a szolgáltató adja meg. A szolgáltatási erőforrások hozzáférésének engedélyezéséhez engedélyeznie kell ezeket a nyilvános IP-címeket az erőforrás IP-tűzfalának beállításai között. A nyilvános társviszony-létesítési ExpressRoute-kapcsolatcsoport IP-címek keresése [nyisson egy támogatási jegyet az expressroute-tal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az Azure Portalon keresztül. További információk az [ExpressRoute NAT nyilvános és Microsoft-társviszony-létesítéséről](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering).
 
 ![Azure-szolgáltatások biztosítása virtuális hálózatokhoz](./media/virtual-network-service-endpoints-overview/VNet_Service_Endpoints_Overview.png)
 
@@ -133,11 +133,17 @@ A virtuális hálózatokon korlátlan számú szolgáltatásvégpont üzemelhet.
 
 Az Azure-szolgáltatási erőforrások (például Azure-tárfiókok) esetében a szolgáltatások korlátozhatják az erőforrás biztosításához használt alhálózatok számát. Részletekért tekintse meg a [Következő lépések](#next-steps) című szakaszban felsorolt szolgáltatások dokumentációit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="virtual-network-service-endpoint-policies"></a>Virtuális hálózati szolgáltatásvégpont-szabályzat 
+
+Virtuális hálózati szolgáltatásvégpont-szabályzat lehetővé teszi az Azure-szolgáltatások, csak bizonyos Azure-szolgáltatási erőforrások, így keresztül a Szolgáltatásvégpontok a virtuális hálózati forgalmának szűrése. Szolgáltatásvégpont-szabályzat részletes hozzáférés-vezérlés az Azure-szolgáltatások virtuális hálózati forgalomhoz adja meg. További információ: [virtuális hálózati szolgáltatásvégpont-szabályzat](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
+
+
+## <a name="next-steps"></a>További lépések
 
 - [Virtuális hálózati szolgáltatásvégpontok konfigurálása](tutorial-restrict-network-access-to-resources.md) – útmutató
 - [Azure Storage-fiókok biztosítása virtuális hálózatokhoz](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json) – útmutató
 - [Azure SQL Database biztosítása virtuális hálózatokhoz](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) – útmutató
 - [Azure-szolgáltatások integrálása virtuális hálózatokon](virtual-network-for-azure-services.md) – útmutató
+- Ismerje meg [virtuális hálózati szolgáltatásvégpont-szabályzat](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 -  Rövid útmutató: [Azure Resource Manager-sablon](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration) szolgáltatásvégpont beállításához egy VNet alhálózatán, és egy Azure Storage-fiók létrehozása azon az alhálózaton.
 

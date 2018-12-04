@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 40922080857563b86d538586b90513381edb5d89
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 9a20b8df1f0d9cddbde4c4886e11967bc8c04160
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381533"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842408"
 ---
 # <a name="define-a-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>OpenId Connect technikai profil meghatározása az Azure Active Directory B2C egyéni házirendek
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az Azure Active Directory (Azure AD) B2C támogatást biztosít a [OpenId Connect](http://openid.net/2015/04/17/openid-connect-certification-program/) protokoll identitásszolgáltató. OpenID Connect 1.0 határozza meg az identitási rétegben OAuth 2.0-s felett, és a legmodernebb a modern hitelesítési protokollok jelöli.  OpenId-kapcsolattal a technikai profilban, akkor is összevonható az OpenId Connect-alapú identitásszolgáltató, például az Azure AD lehetővé teszi felhasználók jelentkezzen be a meglévő közösségi vagy vállalati identitásokat.
+Az Azure Active Directory (Azure AD) B2C támogatást biztosít a [OpenId Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) protokoll identitásszolgáltató. OpenID Connect 1.0 határozza meg az identitási rétegben OAuth 2.0-s felett, és a legmodernebb a modern hitelesítési protokollok jelöli.  OpenId-kapcsolattal a technikai profilban, akkor is összevonható az OpenId Connect-alapú identitásszolgáltató, például az Azure AD lehetővé teszi felhasználók jelentkezzen be a meglévő közösségi vagy vállalati identitásokat.
 
 ## <a name="protocol"></a>Protokoll
 
@@ -85,7 +85,7 @@ A technikai profil is az identitásszolgáltató nem adott vissza jogcímeket ad
 | HttpBinding | Nem | A várt HTTP-kötést a hozzáférési jogkivonatot, és a jogcímek jogkivonat végpontokhoz. A lehetséges értékek: `GET` vagy `POST`.  |
 | ValidTokenIssuerPrefixes | Nem | Egy kulcs, amely segítségével jelentkezzen be a bérlők mindegyike egy több-bérlős identitásszolgáltató, például az Azure Active Directory használatakor. |
 | UsePolicyInRedirectUri | Nem | Azt jelzi, hogy egy szabályzatot használja, ha az átirányítási URI-t hozhat létre. Az identitásszolgáltató az alkalmazás konfigurálásakor adja meg az átirányítási URI-t kell. Az átirányítási URI-t mutat az Azure AD B2C- `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` (a login.microsoftonline.com a saját bérlő name.b2clogin.com változhat).  Ha megad `false`, átirányítási URI-t használ minden egyes házirend hozzá kell adnia. Például: `https://login.microsoftonline.com/te/{tenant}/{policy}/oauth2/authresp`. |
-| MarkAsFailureOnStatusCode5xx | Nem | Azt jelzi, hogy e sikertelen egy külső szolgáltatás kérelmet kell megjelölni, ha a Http-állapotkód: az 5xx tartományban. Az alapértelmezett érték `false`. |
+| MarkAsFailureOnStatusCode5xx | Nem | Azt jelzi, hogy e sikertelen egy külső szolgáltatás kérelmet kell megjelölni, ha a Http-állapotkód: az 5xx tartományban. A mező alapértelmezett értéke: `false`. |
 | DiscoverMetadataByTokenIssuer | Nem | Azt jelzi, hogy OIDC metaadatok kell felderítése a kibocsátó a JWT-jogkivonat használatával. |
 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok

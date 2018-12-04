@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: e389f37448211afc35fb98572161be4fcaea7556
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8020db5f099f0d2c3dc8203f2d4afeea6a38cb41
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210720"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844753"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Vész-helyreállítási a helyszíni Hyper-V virtuális gépek az Azure-támogatási mátrixa
 
@@ -92,7 +92,7 @@ Gyorsított hálózatkezelés | Nem | Nem
 
 **Tárolás** | **A Hyper-V Virtual Machine Manager** | **A Hyper-V Virtual Machine Manager nélkül**
 --- | --- | --- | ---
-NFS | NA | NA
+AZ NFS | NA | NA
 SMB 3.0 | Igen | Igen
 TÁROLÓHÁLÓZAT (ISCSI) | Igen | Igen
 Több elérési út (MPIO). Tesztelték:<br></br> A Microsoft DSM-et, EMC PowerPath 5.7 SP4<br/><br/> EMC PowerPath DSM CLARiiON számára | Igen | Igen
@@ -107,7 +107,7 @@ VHD/VHDX | Igen | Igen
 EFI/UEFI| Igen | Igen
 A megosztott fürtlemezre | Nem | Nem
 Titkosított lemez | Nem | Nem
-NFS | NA | NA
+AZ NFS | NA | NA
 SMB 3.0 | Nem | Nem
 RDM | NA | NA
 Lemez > 1 TB-ot | Igen, legfeljebb 4095 GB-ig | Igen, legfeljebb 4095 GB-ig

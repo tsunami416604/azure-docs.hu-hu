@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: c43497a69b3188b4bc38e91b6ff9b1cc8b6bd21a
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 411ffd9479c3f686495de21b60ef0a811915c260
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624148"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834570"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Kockázatosként megjelölt felhasználók szervizelése az Azure Active Directory portálon
 
@@ -58,9 +58,9 @@ Hozzáférés a **kockázatosként megjelölt felhasználók** jelentések az Of
 
 Végezze el a következő műveleteket az érintett fiókok javításához és a környezet biztonságossá tételéhez:
 
-1.  [Ellenőrizze a megfelelő információkkal](http://aka.ms/MFAValid) a multi-factor authentication és az önkiszolgáló jelszó alaphelyzetbe állítása. 
-2.  [Többtényezős hitelesítés engedélyezése](http://aka.ms/MFAuth) az összes felhasználó számára. 
-3.  Ezzel [szervizelési parancsfájl](http://aka.ms/remediate) minden érintett fiók automatikusan hajtsa végre az alábbi lépéseket: 
+1.  [Ellenőrizze a megfelelő információkkal](https://aka.ms/MFAValid) a multi-factor authentication és az önkiszolgáló jelszó alaphelyzetbe állítása. 
+2.  [Többtényezős hitelesítés engedélyezése](https://aka.ms/MFAuth) az összes felhasználó számára. 
+3.  Ezzel [szervizelési parancsfájl](https://aka.ms/remediate) minden érintett fiók automatikusan hajtsa végre az alábbi lépéseket: 
 
     a. A fiók biztonságát, és az aktív munkamenetek kill jelszó alaphelyzetbe állítása.
 
@@ -84,10 +84,10 @@ Végezze el a következő műveleteket az érintett fiókok javításához és a
 
 Ezenkívül el a következőket kell elvégeznie:
 
-- Olvassa el és megvalósításának [útmutató azoknak a szokatlan tevékenységek](http://aka.ms/fixaccount). 
-- [Engedélyezze a naplózási folyamatot](http://aka.ms/improvesecurity) , amelyek segítségével elemezheti a tevékenységeket, a bérlőben. Ha elkészült, a naplótároló elkezd a vizsgálati naplók feltöltése. Ezen a ponton is használhatja a [biztonsági és megfelelőségi központ keresés és vizsgálat erőforrás](http://aka.ms/sccsearch). 
-- Ezzel [postaláda-naplózás engedélyezéséhez parancsfájl](http://aka.ms/mailboxaudit1) az összes fiók. 
-- Tekintse át az összes postafiók engedélyek delegálásával és levelek továbbításával kapcsolatos szabályait. Ezzel a [PowerShell-szkripttel](http://aka.ms/delegateforwardrules) végezheti el ezt a feladatot. 
+- Olvassa el és megvalósításának [útmutató azoknak a szokatlan tevékenységek](https://aka.ms/fixaccount). 
+- [Engedélyezze a naplózási folyamatot](https://aka.ms/improvesecurity) , amelyek segítségével elemezheti a tevékenységeket, a bérlőben. Ha elkészült, a naplótároló elkezd a vizsgálati naplók feltöltése. Ezen a ponton is használhatja a [biztonsági és megfelelőségi központ keresés és vizsgálat erőforrás](https://aka.ms/sccsearch). 
+- Ezzel [postaláda-naplózás engedélyezéséhez parancsfájl](https://aka.ms/mailboxaudit1) az összes fiók. 
+- Tekintse át az összes postafiók engedélyek delegálásával és levelek továbbításával kapcsolatos szabályait. Ezzel a [PowerShell-szkripttel](https://aka.ms/delegateforwardrules) végezheti el ezt a feladatot. 
 
 ## <a name="next-steps"></a>További lépések
 

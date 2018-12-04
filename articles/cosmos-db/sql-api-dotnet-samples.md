@@ -2,21 +2,19 @@
 title: 'Azure Cosmos DB: .NET-példák az SQL API-hoz | Microsoft Docs'
 description: A GitHub tartalmaz az Azure Cosmos DB általános feladataihoz, többek között a CRUD-műveletekhez kötődő C# .NET-példákat.
 keywords: NoSQL-példa
-services: cosmos-db
 author: rnagpal
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: na
 ms.topic: sample
 ms.date: 02/22/2017
 ms.author: rnagpal
-ms.openlocfilehash: 5cee4a736232e7734be85b2940ce457bfbfd1613
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 3aa8e915cff7ba641a0181639ffb4ce26840d476
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262287"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837749"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: .NET-példák az SQL API-hoz
 > [!div class="op_single_selector"]
@@ -29,10 +27,12 @@ ms.locfileid: "52262287"
 > 
 > 
 
-Az [azure-documentdb-dotnet](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples) GitHub-adattárban megtalálhatók a legújabb mintamegoldások, amelyek CRUD műveleteket és más általános műveleteket végeznek az Azure Cosmos DB erőforrásokon. Ez a cikk a következő információkat tartalmazza:
+CRUD-műveleteket és más olyan gyakori műveleteket az Azure Cosmos DB-erőforrások végző legújabb mintamegoldások szerepelnek a [azure-cosmos-dotnet-v2](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples) GitHub-adattárban. Ez a cikk a következő információkat tartalmazza:
 
 * Az egyes C#-projektfájlokban lévő feladatok hivatkozásai. 
 * A kapcsolódó API-referenciatartalmak hivatkozásai.
+
+Kódminták a .NET SDK verziója 3.0-s (előzetes verzió), a legújabb mintáiban találhat a [azure-cosmos-dotnet-v3](https://github.com/Azure/azure-cosmos-dotnet-v3) GitHub-adattárban. 
 
 **Előfeltételek**
 

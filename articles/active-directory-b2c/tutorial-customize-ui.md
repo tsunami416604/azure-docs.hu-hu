@@ -7,25 +7,25 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 588ce454248f0577a52515a4327d1e43013d34a5
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: f8ebb282d3f6abbc37739891c0f7228bef110d82
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581799"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842679"
 ---
 # <a name="tutorial-customize-the-user-interface-of-your-applications-in-azure-active-directory-b2c"></a>Oktatóanyag: Az alkalmazások az Azure Active Directory B2C a felhasználói felület testreszabása
 
-A gyakori felhasználói élményt például a regisztrációs, bejelentkezést és profilszerkesztést, használhatja [beépített szabályzatok](active-directory-b2c-reference-policies.md) Azure Active Directory (Azure AD) B2C-ben. Ebben az oktatóanyagban szereplő információk segítségével megtudhatja, hogyan [testre szabhatja a felhasználói felület (UI)](customize-ui-overview.md) , ezek a tapasztalatok saját HTML és CSS-fájlok használatával.
+A gyakori felhasználói élményt például a regisztrációs, bejelentkezést és profilszerkesztést, használhatja [felhasználókövetési adatai](active-directory-b2c-reference-policies.md) Azure Active Directory (Azure AD) B2C-ben. Ebben az oktatóanyagban szereplő információk segítségével megtudhatja, hogyan [testre szabhatja a felhasználói felület (UI)](customize-ui-overview.md) , ezek a tapasztalatok saját HTML és CSS-fájlok használatával.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Felhasználói felület testreszabása fájlok létrehozása
-> * A fájlok használó regisztrációs és bejelentkezési szabályzat létrehozása
+> * A fájlok használó regisztráció és bejelentkezés a felhasználói folyamat létrehozása
 > * A testre szabott felhasználói felület teszteléséhez
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
@@ -61,7 +61,7 @@ Bár ebben az oktatóanyagban számos módon tárolhatja a fájlokat, azokat a t
 
 ### <a name="enable-cors"></a>CORS engedélyezése
 
- Egy böngészőben az Azure AD B2C-kód egyéni tartalom betöltése egy házirendben megadott URL-címről a modern és szabványos megközelítést használ. Eltérő eredetű erőforrások megosztása (CORS) lehetővé teszi a korlátozott erőforrások egy weblap más tartományokból a kötelező.
+ Egy böngészőben az Azure AD B2C-kód egyéni tartalom betöltéséhez a felhasználói folyamat a megadott URL-címről a modern és szabványos megközelítést használ. Eltérő eredetű erőforrások megosztása (CORS) lehetővé teszi a korlátozott erőforrások egy weblap más tartományokból a kötelező.
 
 1. Válassza a menüben **CORS**.
 2. A **engedélyezett eredetek**, adja meg `https://your-tenant-name.b2clogin.com`. Cserélje le `your-tenant-name` az Azure AD B2C-bérlő nevével. Például: `https://fabrikam.b2clogin.com`. Csak kisbetűk használata a bérlő nevének megadásakor kell.
@@ -137,9 +137,9 @@ Ebben az oktatóanyagban létrehozott storage-fiókban, hogy az Azure AD B2C-vel
 4. Másolja az URL-címet az oktatóanyag későbbi részében használni a feltöltött fájl.
 5. Ismételje meg a műveletet 3. és 4. lépés a *style.css* fájlt.
 
-## <a name="create-a-sign-up-and-sign-in-policy"></a>Regisztrációs és bejelentkezési szabályzat létrehozása
+## <a name="create-a-sign-up-and-sign-in-user-flow"></a>Regisztráció és bejelentkezés a felhasználói folyamat létrehozása
 
-Ebben az oktatóanyagban szereplő lépések végrehajtásához szüksége egy teszt alkalmazás és a regisztrálási vagy bejelentkezési szabályzat létrehozása az Azure AD B2C-ben. Ebben az oktatóanyagban a többi felhasználói élményt, például a profil szerkesztését leírt elveket alkalmazhat.
+Ebben az oktatóanyagban szereplő lépések végrehajtásához szüksége egy teszt alkalmazás és a egy regisztrálási vagy bejelentkezési felhasználói folyamata létrehozása az Azure AD B2C-ben. Ebben az oktatóanyagban a többi felhasználói élményt, például a profil szerkesztését leírt elveket alkalmazhat.
 
 ### <a name="create-an-azure-ad-b2c-application"></a>Az Azure AD B2C-alkalmazás létrehozása
 
@@ -153,29 +153,34 @@ Kommunikáció az Azure AD B2C-vel hoz létre a bérlő alkalmazás keresztül t
 6. A **Web App / Web API**, jelölje be `Yes`, majd adja meg `https://jwt.ms` a a **válasz URL-cím**.
 7. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="create-the-policy"></a>A szabályzat létrehozása
+### <a name="create-the-user-flow"></a>A felhasználói folyamat létrehozása
 
-A testreszabási fájlokat teszteléséhez hozzon létre egy beépített regisztrálási vagy bejelentkezési szabályzatot, amely a korábban létrehozott alkalmazást használja.
+A testreszabási fájlokat teszteléséhez hozzon létre egy beépített regisztrálási vagy bejelentkezési felhasználói folyamatot, amely a korábban létrehozott alkalmazást használja.
 
-1. Válassza ki az Azure AD B2C-bérlőben **regisztrálási vagy bejelentkezési szabályzatok**, és kattintson a **Hozzáadás**.
-2. Adjon meg egy nevet a házirend. Ha például *signup_signin*. Az előtag *B2C_1* automatikusan hozzáadódik a nevet a házirend létrehozásakor.
-3. Válassza ki **Identitásszolgáltatók**állítsa be **regisztrációs E-mail** egy helyi fiókot, és kattintson a **OK**.
-4. Válassza ki **regisztrálási attribútumok**, válassza ki a regisztráció során az ügyfél gyűjteni kívánt attribútumokat. Például állítsa be **ország/régió**, **megjelenítendő név**, és **irányítószám**, és kattintson a **OK**.
-5. Válassza ki **alkalmazásjogcímek**, válassza ki a jogcímeket, amelyeket szeretne visszaküldött hitelesítő jogkivonatokban sikeres regisztrációs vagy bejelentkezési élmény után az alkalmazásnak. Válassza ki például **megjelenítendő név**, **identitásszolgáltató**, **irányítószám**, **felhasználó egyik új** és **felhasználó Objektumazonosítója** , és kattintson a **OK**.
-6. Válassza ki **oldal-UI testreszabása**válassza **egyesített regisztrálási vagy bejelentkezési oldal**, és kattintson a **Igen** a **használata egyéni lap**.
-7. A **egyéni oldal URI-ja**, adja meg az URL-címet a *egyéni-ui.html* fájlt, hogy Ön korábban rögzített, és kattintson a **OK**.
-8. Kattintson a **Create** (Létrehozás) gombra.
+1. Válassza ki az Azure AD B2C-bérlőben **felhasználói folyamatok**, és kattintson a **új felhasználói folyamat**.
+2. Az a **ajánlott** lapra, majd **jelentkezzen be, és jelentkezzen be a**.
+3. Adjon meg egy nevet a felhasználói folyamatot. Ha például *signup_signin*. Az előtag *B2C_1* automatikusan hozzáadódik a nevet a felhasználói folyamat létrehozásakor.
+4. A **Identitásszolgáltatók**válassza **regisztrációs E-mail**.
+5. A **felhasználói attribútumokról és jogcímekről**, kattintson a **Továbbiak megjelenítése**.
+6. Az a **gyűjtése attribútum** oszlopban válassza ki a regisztráció során az ügyfél gyűjteni kívánt attribútumokat. Például állítsa be **ország/régió**, **megjelenítendő név**, és **irányítószám**.
+7. Az a **visszatérési jogcím** oszlopban válassza ki a jogcímeket, amelyeket szeretne visszaküldött hitelesítő jogkivonatokban sikeres regisztrációs vagy bejelentkezési élmény után az alkalmazásnak. Válassza például a **Megjelenítendő név**, az **Identitásszolgáltató**, az **Irányítószám**, az **Új felhasználó** és a **Felhasználó objektumazonosítója** lehetőséget.
+8. Kattintson az **OK** gombra.
+9. Kattintson a **Create** (Létrehozás) gombra.
+10. A **Testreszabás**válassza **elrendezések lapon**. Válassza ki **egyesített regisztrálási vagy bejelentkezési oldal**, és kattintson a **Igen** a **egyéni Laptartalom használata**.
+11. A **egyéni oldal URI-ja**, adja meg az URL-címet a *egyéni-ui.html* korábban feljegyzett fájlt.
+12. Kattintson a lap tetején **mentése**.
 
-## <a name="test-the-policy"></a>A házirend tesztelése
+## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
-1. Válassza ki az Azure AD B2C-bérlőben **regisztrálási vagy bejelentkezési szabályzatok**, majd válassza ki a létrehozott szabályzatot. Ha például *B2C_1_signup_signin*.
-2. Győződjön meg arról, hogy az Ön által létrehozott alkalmazás van kijelölve, **válassza ki az alkalmazás**, és kattintson a **Futtatás most**.
+1. Válassza ki az Azure AD B2C-bérlőben **felhasználókövetési adatai** , és válassza ki a létrehozott felhasználói folyamatot. Ha például *B2C_1_signup_signin*.
+2. Kattintson a lap tetején **felhasználói folyamat futtatása**.
+3. Kattintson a **felhasználói folyamat futtatása** gombra.
 
-    ![Futtassa a regisztrálási vagy bejelentkezési szabályzat](./media/tutorial-customize-ui/signup-signin.png)
+    ![Regisztrálási vagy bejelentkezési felhasználói folyamat futtatása](./media/tutorial-customize-ui/run-user-flow.png)
 
     Az Ön által létrehozott CSS-fájlon alapul, a következő példában az elemeket, középre igazítva a hasonló lap kell megjelennie:
 
-    ![Csoportházirend-eredmények](./media/tutorial-customize-ui/run-now.png) 
+    ![Felhasználói folyamat eredmények](./media/tutorial-customize-ui/run-now.png) 
 
 ## <a name="next-steps"></a>További lépések
 
@@ -183,7 +188,7 @@ Ebben a cikkben megtanulta, hogyan lehet:
 
 > [!div class="checklist"]
 > * Felhasználói felület testreszabása fájlok létrehozása
-> * A fájlok használó regisztrációs és bejelentkezési szabályzat létrehozása
+> * A fájlok használó regisztráció és bejelentkezés a felhasználói folyamat létrehozása
 > * A testre szabott felhasználói felület teszteléséhez
 
 > [!div class="nextstepaction"]

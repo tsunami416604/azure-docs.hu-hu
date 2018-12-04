@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 75ec3cf41a70722001ec51185d83aded0a69efff
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 464e497c806a0b3172cbf4f5ae802693def1b435
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52684585"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832666"
 ---
 # <a name="configure-collection-of-azure-paas-resource-metrics-with-log-analytics"></a>Az Azure PaaS-erőforrás-metrikák gyűjtésének konfigurálása a Log Analytics használatával
 
@@ -81,7 +81,7 @@ A rendszer bekéri válaszolni, ugyanazokat az információkat, mint a kezdeti k
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg [naplókereséseket](../../log-analytics/log-analytics-queries.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 
+* Ismerje meg [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 
 
 * Használat [egyéni mezők](../../log-analytics/log-analytics-custom-fields.md)(így az eseményrekordok elemezni az egyes mezőket.
 

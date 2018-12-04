@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 034d7b61d4a02ac899c7215a042d47bc7938176d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 777586bc24c0962ec1f0ba3913397bfe26d0d0d5
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438147"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841064"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>Oktatóanyag: Azure Active Directory-integráció az SpringCM
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 SpringCM az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy SpringCM egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az Azure AD integrálása a SpringCM konfigurálásához hozzá kell SpringCM a 
 
 **SpringCM hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -189,7 +189,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 Ahhoz, hogy az Azure Active Directory-felhasználók SpringCM jelentkezzen be, akkor ki kell építeni SpringCM be. SpringCM, esetén kiépítése a manuális feladat.
 
 >[!NOTE]
->További információkért lásd: [hozhat létre és módosíthat egy SpringCM felhasználó](http://knowledge.springcm.com/create-and-edit-a-springcm-user). 
+>További információkért lásd: [hozhat létre és módosíthat egy SpringCM felhasználó](https://knowledge.springcm.com/create-and-edit-a-springcm-user). 
 
 **Üzembe helyez egy felhasználói fiókot SpringCM, hajtsa végre az alábbi lépéseket:**
 
@@ -248,7 +248,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
- 
+ 
 Ha a hozzáférési panelen a SpringCM csempére kattint, meg kell lekérése automatikusan bejelentkezett az SpringCM alkalmazáshoz.
 
 A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 

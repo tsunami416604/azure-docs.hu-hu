@@ -10,12 +10,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 04/09/2018
-ms.openlocfilehash: 399c7b000360a73a9bab06b046be21c9d93a1c70
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: ef06e7b1abd66a2204ef982943fe24354bd7f122
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367126"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837443"
 ---
 # <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>A Time Series Insights-környezet a problémák diagnosztizálása és megoldása
 
@@ -31,7 +31,7 @@ Ez a cikk ismerteti a Time Series Insights-környezet láthat kapcsolatos probl�
 Miért nem láthatja az adatokat számos gyakori oka lehet a [Azure Time Series Insights Explorerben](https://insights.timeseries.azure.com):
 
 ### <a name="possible-cause-a-event-source-data-is-not-in-json-format"></a>Lehetséges ok v: esemény forrásadatok nem szerepel a JSON-formátumban
-Az Azure Time Series Insights támogatja a csak a JSON-adatokat. JSON-minták, lásd: [támogatott JSON-alakzatok](time-series-insights-send-events.md#supported-json-shapes).
+Az Azure Time Series Insights támogatja a csak a JSON-adatokat. JSON-minták, lásd: [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
 
 ### <a name="possible-cause-b-event-source-key-is-missing-a-required-permission"></a>Lehetséges ok "b" esemény forrása kulcs hiányzik egy szükséges engedély
 * Egy IoT hubot, meg kell adnia a kulcsot, amelynek **szolgáltatás csatlakozása** engedéllyel.
@@ -70,7 +70,7 @@ Tegyük fel például, hogy ebben a környezetben van fürtjét üzeneteket egy 
 
 Ahogy az ábrán látható, a napi bejövő forgalom ~ 67,000 üzeneteket. Ez a díjszabás a rendszer lefordítja nagyjából 46 üzenetek percenként. Minden event hub üzenet lett simítva egyetlen Time Series Insights esemény, ha ebben a környezetben nincs szabályozás fog látni. Ha minden event hub üzenet 100 Time Series Insights-eseményekre lett simítva, majd 4,600 eseményeket kell fogyasztanak percenként. 3 kapacitása S1 Termékváltozat környezetben is csak 2,100 beáramlási események percenként (1 millió esemény naponta 3 egységet a percenkénti 700 események 2,100 események száma percenként). Ezért a szabályozás miatt késéssel láthatja. 
 
-Összefoglaló jellegű ismertetése, hogyan működik az egybesimítás logikai, lásd: [támogatott JSON-alakzatok](time-series-insights-send-events.md#supported-json-shapes).
+Összefoglaló jellegű ismertetése, hogyan működik az egybesimítás logikai, lásd: [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
 
 ### <a name="recommended-resolution-steps-for-excessive-throttling"></a>Túl sok szabályozási javasolt megoldási lépések
 A lag javításához a környezet Termékváltozata kapacitásának növelése. További információkért lásd: [a Time Series Insights-környezet méretezése](time-series-insights-how-to-scale-your-environment.md).

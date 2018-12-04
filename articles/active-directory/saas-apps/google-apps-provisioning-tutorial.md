@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 924584a77d36ec41488d8c76d9631baf484ff494
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 48a835bf8c63ffa5512173b600fb85abd5c6cb45
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346389"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840350"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Oktatóanyag: A G Suite konfigurálása a felhasználók automatikus átadása
 
@@ -67,7 +67,7 @@ Ez a szakasz végigvezeti az Azure AD-csatlakozás a felhasználói fiók kiép�
 > [!NOTE]
 > Egy másik kivitelezhető lehetőség, automatizálhatja a felhasználókiépítés és a G Suite [Google Apps Directory Sync (GADS)](https://support.google.com/a/answer/106368?hl=en). GADS látja el a helyszíni Active Directory-identitások G Suite-hoz. Ezzel szemben az ebben az oktatóanyagban a megoldás látja el az Azure Active Directory (felhő) felhasználók és a levelezési csoportok a G Suite-hoz. 
 
-1. Jelentkezzen be a [Google Apps felügyeleti konzol](http://admin.google.com/) a rendszergazdai fiók, és válassza ki a **biztonsági**. Ha a hivatkozás nem jelenik meg, akkor előfordulhat, hogy rejtve alatt a **további vezérlők** menü a képernyő alján.
+1. Jelentkezzen be a [Google Apps felügyeleti konzol](https://admin.google.com/) a rendszergazdai fiók, és válassza ki a **biztonsági**. Ha a hivatkozás nem jelenik meg, akkor előfordulhat, hogy rejtve alatt a **további vezérlők** menü a képernyő alján.
    
     ![Válassza ki a biztonsági.][10]
 
@@ -110,7 +110,7 @@ Ez a szakasz végigvezeti az Azure AD-csatlakozás a felhasználói fiók kiép�
 
 1. Most, hogy az összes tartományt, az Azure AD ellenőrizte, ellenőriznie kell őket újra a Google Apps. Minden egyes tartományhoz, amely még nincs regisztrálva a Google a következő lépéseket:
    
-    a. Az a [Google Apps felügyeleti konzol](http://admin.google.com/)válassza **tartományok**.
+    a. Az a [Google Apps felügyeleti konzol](https://admin.google.com/)válassza **tartományok**.
      
      ![Select Domains][20]
 
@@ -129,7 +129,7 @@ Ez a szakasz végigvezeti az Azure AD-csatlakozás a felhasználói fiók kiép�
      > [!WARNING]
      > Ha módosítja az elsődleges tartomány G Suite-bérlője számára, és ha Ön már rendelkezik konfigurált az egyszeri bejelentkezés az Azure ad-vel, akkor meg kell ismételnie a #3. lépés [2. lépés: az egyszeri bejelentkezés engedélyezése](#step-two-enable-single-sign-on).
        
-1. Az a [Google Apps felügyeleti konzol](http://admin.google.com/)válassza **rendszergazdai szerepkörök**.
+1. Az a [Google Apps felügyeleti konzol](https://admin.google.com/)válassza **rendszergazdai szerepkörök**.
    
      ![Select Google Apps][26]
 
@@ -152,7 +152,7 @@ Ez a szakasz végigvezeti az Azure AD-csatlakozás a felhasználói fiók kiép�
 
 1. Alatt a **rendszergazdai hitelesítő adataival** szakaszban jelölje be **engedélyezés**. Egy Google-engedélyezési párbeszédpanel egy új böngészőablakban nyílik meg.
 
-1. Győződjön meg arról, hogy szeretné-e el a G Suite-bérlő Azure Active Directory engedélyt. Válassza ki **fogadja el**.
+1. Győződjön meg arról, hogy szeretné-e el a G Suite-bérlő Azure Active Directory engedélyt. Válassza ki az **Elfogadás** lehetőséget.
     
      ![Ellenőrizze az engedélyeket.][28]
 

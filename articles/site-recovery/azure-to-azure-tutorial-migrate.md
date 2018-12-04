@@ -1,30 +1,30 @@
 ---
-title: Azure-beli IaaS virtuális gépek migrálása egy másik Azure-régióba az Azure Site Recovery szolgáltatással | Microsoft Docs
-description: Az Azure Site Recoveryvel Azure IaaS-virtuálisgépeket migrálhat egy Azure-régióból egy másikba.
+title: Azure IaaS virtuális gépek áthelyezése egy másik Azure-régióba az Azure Site Recovery szolgáltatással |} A Microsoft Docs
+description: Az Azure Site Recovery használatával az Azure IaaS virtuális gépek áthelyezése egy Azure-régióból a másikba.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 9ad994ad3dc1fc350a9a41c23574acfa2bae9629
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: 656f58bb9864757635ab5752da6bf31320504415
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212284"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843257"
 ---
-# <a name="migrate-azure-vms-to-another-region"></a>Azure-beli virtuális gépek migrálása másik régióba
+# <a name="move-azure-vms-to-another-region"></a>Azure virtuális gépek áthelyezése egy másik régióba
 
-Az [Azure Site Recovery](site-recovery-overview.md) szolgáltatás helyszíni gépek és Azure-beli virtuális gépek vészhelyreállításának az üzleti folytonosság biztosítása és vészhelyreállítás (BCDR) céljából való kezelésére és vezénylésére használható, valamint az Azure-beli virtuális gépek másodlagos régióba történő migrálásának kezelésére. Az Azure-beli virtuális gépek migrálásához engedélyezi azok replikációját, és az elsődleges régióból egy tetszőleges másodlagos régióba veszi át azokat.
+Használata mellett a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás való kezelésére és vezénylésére vészhelyreállítása az Azure-beli és helyszíni gépek üzletmenet-folytonossági és vészhelyreállítási (BCDR) céljából is használhatja a hely Helyreállítási kezelése Azure virtuális gépek áthelyezése egy másodlagos régióba. Azure virtuális gépek áthelyezéséhez engedélyezi azok replikációját, és átirányíthatja azokat az elsődleges régióból tetszőleges másodlagos régióba.
 
-Ez az oktatóanyag bemutatja, hogyan migrálhat Azure-beli virtuális gépeket egy másik régióba. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag bemutatja, hogyan lehet Azure virtuális gépek áthelyezése egy másik régióban. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Recovery Services-tároló létrehozása
 > * Virtuális gép replikálásának engedélyezése
-> * Feladatátvétel futtatása a virtuális gép migrálásához
+> * Helyezze át a virtuális Gépet a feladatátvétel futtatása
 
 Ez az oktatóanyag feltételezi, hogy már rendelkezik Azure-előfizetéssel. Ha mégsem így lenne, a kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -34,7 +34,7 @@ Ez az oktatóanyag feltételezi, hogy már rendelkezik Azure-előfizetéssel. Ha
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Győződjön meg arról, hogy rendelkezik Azure-beli virtuális gépekkel abban az Azure-régióban, amelyről migrálni szeretne.
+- Győződjön meg arról, hogy az Azure virtuális gépek Azure-régióban, amelyről el szeretné helyezni.
 - Ismernie kell a [forgatókönyv-architektúrát és az összetevőket](azure-to-azure-architecture.md).
 - Tekintse át a [támogatási korlátokat és követelményeket](azure-to-azure-support-matrix.md) ismertető részt.
 
@@ -66,12 +66,12 @@ Ha most hozta létre az ingyenes Azure-fiókját, akkor Ön az előfizetés rend
 
 ### <a name="verify-vm-outbound-access"></a>Virtuális gép kimenő hozzáférésének ellenőrzése
 
-1. Győződjön meg arról, hogy nem használ hitelesítési proxyt a migrálni kívánt virtuális gépek hálózati kapcsolatának vezérlésére. 
-2. Ebben az oktatóanyagban feltételezzük, hogy a migrálni kívánt virtuális gépek hozzáférnek az internethez, és nem használ tűzfalproxyt a kimenő hozzáférés vezérléséhez. Ha használ ilyet, ellenőrizze az [itt](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity) szereplő követelményeket.
+1. Győződjön meg arról, hogy nem használ hitelesítési proxyt az áthelyezni kívánt virtuális gépek hálózati kapcsolatának vezérlésére. 
+2. Ez az oktatóanyag céljából feltételezzük, hogy az áthelyezni kívánt virtuális gépek hozzáférnek az internethez, és nem használ tűzfalproxyt a kimenő hozzáférés vezérléséhez. Ha használ ilyet, ellenőrizze az [itt](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity) szereplő követelményeket.
 
 ### <a name="verify-vm-certificates"></a>Virtuális gép tanúsítványainak ellenőrzése
 
-Ellenőrizze, hogy a legújabb főtanúsítványok mindegyike megtalálható-e a migrálni kívánt Azure-beli virtuális gépeken. Ha a legújabb főtanúsítványok nem találhatók, a virtuális gépet biztonsági okokból nem lehet regisztrálni a Site Recoveryben.
+Ellenőrizze, hogy a legújabb főtanúsítványok megtalálhatók-e az áthelyezni kívánt Azure virtuális gépeken. Ha a legújabb főtanúsítványok nem találhatók, a virtuális gépet biztonsági okokból nem lehet regisztrálni a Site Recoveryben.
 
 - A Windows rendszerű virtuális gépek esetében az összes új Windows-frissítést telepíteni kell a virtuális gépen, így a megbízható főtanúsítványok mindegyike megtalálható lesz a számítógépen. Leválasztott környezet esetén hajtsa végre a vállalat szabványos Windows Update- és tanúsítványfrissítési folyamatait.
 - Linux rendszerű virtuális gépek esetében kövesse a Linux-terjesztőtől származó útmutatást a legújabb megbízható főtanúsítványok és a visszavont tanúsítványok listájának lekéréséhez a virtuális gépen.
@@ -113,7 +113,7 @@ A Site Recovery lekéri az előfizetéshez és az erőforráscsoporthoz társít
 
 
 1. Az Azure Portalon kattintson a **Virtuális gépek** elemre.
-2. Válassza ki a migrálni kívánt virtuális gépet. Ezután kattintson az **OK** gombra.
+2. Válassza ki az áthelyezni kívánt virtuális Gépet. Ezután kattintson az **OK** gombra.
 3. A **Beállítások** területen kattintson a **Vészhelyreállítás** elemre.
 4. A **Vészhelyreállítás konfigurálása** > **Célrégió** részben válassza ki a célrégiót, amelybe a replikálást végezni kívánja.
 5. A jelen oktatóanyag esetében fogadja el a többi alapértelmezett értéket.
@@ -136,7 +136,7 @@ A Site Recovery lekéri az előfizetéshez és az erőforráscsoporthoz társít
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy másik régióba migrált egy Azure-beli virtuális gépet. Most konfigurálhatja a migrált virtuális gép vészhelyreállítását.
+Ebben az oktatóanyagban egy Azure virtuális Gépen egy másik régióba való áthelyezése. Vész-helyreállítási mostantól konfigurálhatja az áthelyezett virtuális gép számára.
 
 > [!div class="nextstepaction"]
 > [Vészhelyreállítás beállítása migrálás után](azure-to-azure-quickstart.md)

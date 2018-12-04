@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 4cea2b7feb6d21a0566a4876414b2d75abc29959
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 9f4ee3bdba87747a04dd4a5af9391c9dba6e1b51
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681755"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834214"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Adatgyűjtés, a Log Analytics az Azure Automation-runbook
 Számos különféle forrásból például gyűjthet adatokat a Log Analytics jelentős mennyiségű [adatforrások](../../azure-monitor/platform/agent-data-sources.md) ügynökökön és is [adatokat gyűjteni az Azure-ból](../../azure-monitor/platform/collect-azure-metrics-logs.md).  Vannak olyan forgatókönyvek ellenére, hogy hol kell gyűjtenie az adatokat, amely nem érhető el standard források segítségével.  Ezekben az esetekben használhatja a [HTTP-adatgyűjtő API](../../log-analytics/log-analytics-data-collector-api.md) használatával írhat adatokat a Log Analyticsbe bármely REST API-ügyfélből.  Egy általános módszer az adatgyűjtést az Azure Automation runbook használ.   
@@ -145,7 +145,7 @@ Az Azure Automation tartalmaz egy környezetet [tesztelheti a runbookját](../..
     ![POST-kimenet](media/runbook-datacollect/post-output.png)
 
 ## <a name="5-verify-records-in-log-analytics"></a>5. A Log Analytics ellenőrzése
-Miután befejeződött a runbook tesztelése, és ellenőrizte, hogy a kimenet sikeresen megérkezett, ellenőrzéséhez, hogy a rekordok használatával létrehozott egy [a Log Analytics naplóbeli keresés](../../log-analytics/log-analytics-queries.md).
+Miután befejeződött a runbook tesztelése, és ellenőrizte, hogy a kimenet sikeresen megérkezett, ellenőrzéséhez, hogy a rekordok használatával létrehozott egy [a Log Analytics naplóbeli keresés](../../azure-monitor/log-query/log-query-overview.md).
 
 ![Napló kimenetét](media/runbook-datacollect/log-output.png)
 

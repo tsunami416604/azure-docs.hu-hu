@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9f475c7bc373afd8a109873908bb583bc07708f1
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 9dbe88e1e179df4560d5094cf3f58ca770541323
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722547"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842272"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Az Azure AD B2C: Bejelentkezés egy iOS-alkalmazás használatával
 
@@ -39,7 +39,7 @@ A következő lépésben hozzon létre egy alkalmazást a B2C-címtárban. Az al
 * Állítsa be a **átirányítási URI-t** egy egyéni sémával (például com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect). Később szüksége lesz az URI.
 
 ## <a name="create-your-user-flows"></a>A felhasználói folyamatok létrehozása
-Az Azure AD B2C felhasználói élményeket által meghatározott egy [felhasználói folyamat](active-directory-b2c-reference-policies.md). Ez az alkalmazás egyetlen identitással kapcsolatos tartalmaz: egy kombinált bejelentkezési és a regisztrációhoz. Ez a felhasználói folyamat létrehozása a leírtak szerint a [felhasználói folyamat áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). Ha a felhasználói folyamatot hoz létre, ügyeljen arra, hogy:
+Az Azure AD B2C felhasználói élményeket által meghatározott egy [felhasználói folyamat](active-directory-b2c-reference-policies.md). Ez az alkalmazás egyetlen identitással kapcsolatos tartalmaz: egy kombinált bejelentkezési és a regisztrációhoz. Ez a felhasználói folyamat létrehozása a leírtak szerint a [felhasználói folyamat áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow). Ha a felhasználói folyamatot hoz létre, ügyeljen arra, hogy:
 
 * A **regisztrálási attribútumok**, válassza ki az attribútumot **megjelenítendő név**.  Egyéb attribútumokat is választhat.
 * A **alkalmazásjogcímek**, válassza a jogcímek **megjelenítendő név** és **felhasználó Objektumazonosítója**. Kiválaszthat egyéb jogcímeket is.

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/02/2018
 ms.author: jeedes
-ms.openlocfilehash: c9ee0af3cbf2c1aa7b24d2f4cf5fba9d664bc087
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 5d61ac27eb5a6e4f546d8c6db66b84f2c204b507
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248040"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840469"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-expensify"></a>Oktatóanyag: Azure Active Directory-integráció az Expensify
 
@@ -132,7 +132,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![image](./media/expensify-tutorial/certificatebase64.png)
 
-7. Ahhoz, hogy az egyszeri bejelentkezés az Expensify, akkor először engedélyeznie kell **tartomány-ellenőrzési** az alkalmazásban. Tartomány-ellenőrzési engedélyezheti az alkalmazást a felsorolt lépéseket [Itt](http://help.expensify.com/domain-control). Ha további támogatási együttműködve [Expensify ügyfél-támogatási csapatának](mailto:help@expensify.com). Ha már rendelkezik a tartomány-ellenőrzési engedélyezve van, kövesse az alábbi lépéseket:
+7. Ahhoz, hogy az egyszeri bejelentkezés az Expensify, akkor először engedélyeznie kell **tartomány-ellenőrzési** az alkalmazásban. Tartomány-ellenőrzési engedélyezheti az alkalmazást a felsorolt lépéseket [Itt](https://help.expensify.com/domain-control). Ha további támogatási együttműködve [Expensify ügyfél-támogatási csapatának](mailto:help@expensify.com). Ha már rendelkezik a tartomány-ellenőrzési engedélyezve van, kövesse az alábbi lépéseket:
    
     ![Egyszeri bejelentkezés konfigurálása](./media/expensify-tutorial/tutorial_expensify_51.png)
     

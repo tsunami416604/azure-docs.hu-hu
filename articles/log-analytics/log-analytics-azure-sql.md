@@ -11,12 +11,12 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/26/2018
 ms.author: v-daljep
-ms.openlocfilehash: b2c8ed30e26f5408123fe77606ddfec67479bcad
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 84b5665f434bcf7cdb0ac58a74727244d4155835
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726151"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844549"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Az Azure SQL Database megfigyelése az Azure SQL Analytics (előzetes verzió)
 
@@ -185,7 +185,7 @@ A megoldás automatikus riasztások teljesül egy feltétel alapján riasztást 
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>Riasztások létrehozása az Azure SQL Database
 
-Könnyen [riasztásokat hozhat létre](../monitoring-and-diagnostics/alert-metric.md) az Azure SQL Database-erőforrásokat érkező adatokat. Íme néhány hasznos [naplóbeli keresés](log-analytics-queries.md) lekérdezéseket, amelyek egy riasztás használhatja:
+Könnyen [riasztásokat hozhat létre](../monitoring-and-diagnostics/alert-metric.md) az Azure SQL Database-erőforrásokat érkező adatokat. Íme néhány hasznos [naplóbeli keresés](../azure-monitor/log-query/log-query-overview.md) lekérdezéseket, amelyek egy riasztás használhatja:
 
 #### <a name="high-cpu-on-azure-sql-database"></a>Az Azure SQL Database magas CPU
 
@@ -297,6 +297,6 @@ Bár a megoldás használata ingyenes, vonatkozik-e az diagnostics telemetriai a
 
 ## <a name="next-steps"></a>További lépések
 
-- Használat [Naplókeresések](log-analytics-queries.md) a Log Analytics az Azure SQL részletes adatainak megtekintéséhez.
+- Használat [Naplókeresések](../azure-monitor/log-query/log-query-overview.md) a Log Analytics az Azure SQL részletes adatainak megtekintéséhez.
 - [Saját irányítópult létrehozásával](../azure-monitor/platform/dashboards.md) Azure SQL-adatainak megjelenítése.
 - [Riasztások létrehozása](../monitoring-and-diagnostics/monitoring-overview-alerts.md) amikor adott Azure SQL-események történnek.

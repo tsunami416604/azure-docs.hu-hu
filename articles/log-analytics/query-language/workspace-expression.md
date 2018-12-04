@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 63c6c231477a1c5abea15903b17843717e61f96a
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 2909f586ce102b319ca9dfeea191c7812e3f6b06
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679954"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842662"
 ---
 # <a name="workspace-expression-in-log-analytics-query"></a>a Log Analytics-lekérdezés Workspace() kifejezés
 
@@ -73,4 +73,4 @@ union
 ## <a name="next-steps"></a>További lépések
 
 - Tekintse meg a [alkalmazás kifejezés](workspace-expression.md) , tekintse meg az Application Insights alkalmazást.
-- Megtudhatja, hogyan lehet [Log Analytics-adatok](../../log-analytics/log-analytics-queries.md) tárolja.
+- Megtudhatja, hogyan lehet [Log Analytics-adatok](../../azure-monitor/log-query/log-query-overview.md) tárolja.

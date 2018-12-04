@@ -1,23 +1,19 @@
 ---
-title: Hogyan lehet lekérdezést végezni SQL-lel az Azure Cosmos DB-ben? | Microsoft Docs
+title: Hogyan lehet lekérdezést végezni SQL-lel az Azure Cosmos DB-ben?
 description: Megismerheti, hogyan lehet lekérdezést végezni SQL-lel az Azure Cosmos DB-ben
 services: cosmos-db
 author: rafats
-manager: kfile
-editor: ''
-tags: ''
+ms.author: rafats
 ms.service: cosmos-db
 ms.custom: tutorial-develop, mvc
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/10/2017
-ms.author: rafats
-ms.openlocfilehash: 5f5a98f0f28eba499b7ea3fa76944c21cf8bf8db
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
-ms.translationtype: HT
+ms.openlocfilehash: 7f8c3f6d11ba7551cb0d0c9398b46bb001b9b75b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958868"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832632"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Oktatóanyag: Az Azure Cosmos DB lekérdezése az SQL API használatával
 
@@ -65,7 +61,7 @@ A cikkben szereplő SQL-lekérdezések a következő mintadokumentumot használj
 Az Azure Portalon az Adatkezelővel futtathat lekérdezéseket a [REST API-n és az SDK-n](sql-api-sdk-dotnet.md) keresztül. Emellett használhatja még a [Tesztlekérdezéseket](https://www.documentdb.com/sql/demo) is, amelyek a mintaadatok meglévő készletén futtatnak lekérdezéseket.
 
 További tudnivalók az SQL-lekérdezésekről:
-* [SQL-lekérdezések és SQL-szintaxis](sql-api-sql-query.md)
+* [SQL-lekérdezések és SQL-szintaxis](how-to-sql-query.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 

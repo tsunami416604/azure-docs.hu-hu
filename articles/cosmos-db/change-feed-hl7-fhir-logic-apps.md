@@ -1,21 +1,19 @@
 ---
-title: A változáscsatorna HL7 FHIR-erőforrások – Azure Cosmos DB |} A Microsoft Docs
+title: A változáscsatorna HL7 FHIR-erőforrások – Azure Cosmos DB-hez
 description: Ismerje meg, hogyan állítható be a módosítási értesítésekre; HL7 FHIR egészségügyi betegnyilvántartást Azure Logic Apps, az Azure Cosmos DB és a Service Bus használatával.
 keywords: HL7 fhir
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: sngun
-ms.openlocfilehash: aab6e5247830ee444bcab0b15bda34e4464aaad1
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 591b79d4d9d44c55c2438d872b61a90abbe6ecad
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51565479"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841115"
 ---
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>A Logic Apps és az Azure Cosmos DB használatával HL7 FHIR egészségügyi rekord módosításait a betegek értesítése
 

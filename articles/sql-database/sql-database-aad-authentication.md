@@ -11,17 +11,17 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 86e60f339af3d6d467b68d5d3b27d77a9861add1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/03/2018
+ms.openlocfilehash: ff9011dda4a94f323b430a3860eadc8d970a23f7
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244075"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838616"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>SQL-hitelesítéshez használandó Azure Active Directory-hitelesítéssel
 
-Az Azure Active Directory-hitelesítés olyan mechanizmus csatlakozás az Azure-bA [SQL Database](sql-database-technical-overview.md) és [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) identitások Azure Active Directoryban (Azure AD) használatával. 
+Az Azure Active Directory-hitelesítés olyan mechanizmus csatlakozás az Azure-bA [SQL Database](sql-database-technical-overview.md), [felügyelt példány](sql-database-managed-instance.md), és [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) identitások használatával az Azure-ban Az Active Directory (Azure AD). 
 
 > [!NOTE]
 > Ez a témakör az Azure SQL Server-kiszolgálókra, valamint az Azure SQL Serveren létrehozott SQL Database- és SQL Data Warehouse-adatbázisokra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database.
@@ -84,15 +84,7 @@ Az alábbi tagokat az Azure AD az Azure SQL-kiszolgáló vagy az SQL Data Wareho
 - Importált más Azure AD-ből tartózkodó tagok natív vagy összevont tartomány tagjai.
 - Active Directory-csoportok biztonsági csoportokat létrehozni.
 
-Azure AD-korlátozások kapcsolódó felügyelt példányt:
-
-- Csak az Azure AD-rendszergazda létrehozhat adatbázisokat, az Azure AD-felhasználók hatóköre egyetlen adatbázis, és nem rendelkezik ezzel az engedéllyel
-- Adatbázis-tulajdonosi:
-  - Az Azure AD-szolgáltatásnév nem módosítható az adatbázis (ALTER engedélyezési ON adatbázis) tulajdonjogát, és tulajdonosként nem állítható be.
-  - Az Azure AD-rendszergazda által létrehozott adatbázisok esetében nincs tulajdonosa van beállítva (sys.sysdatabases owner_sid mezője a 0x1).
-- Az SQL Agent nem kezelhető, ha bejelentkezett az Azure AD rendszerbiztonsági tagok használatával.
-- Az Azure AD-rendszergazda nem lehet megszemélyesíteni, EXECUTE AS használatával
-- Az Azure AD rendszerbiztonsági tagok nem támogatott a DAC-kapcsolatról.
+Az Azure AD-bejelentkezések és felhasználók támogatottak az előzetes verziójú funkcióként [felügyelt példányok](sql-database-managed-instance.md)
 
 Ezek a rendszer függvények végrehajtása alatt az Azure AD rendszerbiztonsági tagok NULL értéket adja vissza:
 

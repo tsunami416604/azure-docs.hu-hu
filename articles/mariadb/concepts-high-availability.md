@@ -7,16 +7,16 @@ editor: jasonwhowell
 services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 2f06c9515c6ee79ea7475452b7000d1babdbecfe
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 12/03/2018
+ms.openlocfilehash: 043988066cae672225b850b57864bddb3155689c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956523"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833839"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mariadb"></a>Magas rendelkezésre állású fogalmak MariaDB-hez készült Azure Database-ben
-Az Azure Database for MariaDB szolgáltatás garantált magas szintű rendelkezésre állást biztosít. A pénzügyi felelősséggel vállalt garantált szolgáltatási szinttel (SLA) 99,99 %-os általános elérhetővé tételtől. Az SLA nem alkalmazható a nyilvános előzetes verziója. Gyakorlatilag alkalmazások egyike sem állásidő a szolgáltatás használata esetén.
+Az Azure Database for MariaDB szolgáltatás garantált magas szintű rendelkezésre állást biztosít. A pénzügyi felelősséggel vállalt garantált szolgáltatási szinttel (SLA) 99,99 %-os általános elérhetővé tételtől. Gyakorlatilag alkalmazások egyike sem állásidő a szolgáltatás használata esetén.
 
 ## <a name="high-availability"></a>Magas rendelkezésre állás
 A magas rendelkezésre ÁLLÁS modell feladatátvételt a beépített mechanizmusok alapján egy csomópont-szintű megszakadása esetén. Egy csomópont-szintű megszakítás akkor fordulhat elő, hardverhiba miatt, vagy a szolgáltatások üzembe helyezéséhez.
@@ -34,4 +34,4 @@ A magas rendelkezésre ÁLLÁSÚ modell, Azure Database for MariaDB-méretezve, 
 A skálázási művelet során az adatbázis-kapcsolatok romlását történik. Az ügyfélalkalmazások le vannak választva, és nyissa meg a nem véglegesített tranzakciót megszakították. Az ügyfélalkalmazás újrapróbálja a kapcsolódást, vagy egy új kapcsolatot, miután az átjáró irányítja a kapcsolat az újonnan méretű példánnyal.
 
 ## <a name="next-steps"></a>További lépések
-- A szolgáltatás áttekintését lásd: [, Azure Database for MariaDB áttekintése](overview.md)
+- A szolgáltatás áttekintését lásd: [, Azure Database for MariaDB áttekintése](overview.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 3686a90cb088dae99d20df619c161251b5bdfd60
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c8708de847e1aeb6e460000c1517078512ec439b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438943"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838344"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-price-reporting"></a>Oktatóanyag: Azure Active Directory-integráció az Predictix ár Reporting
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása az Predictix ár jelentéskészítési, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Predictix ár Reporting egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure AD-be Predictix ár Reporting integráció konfigurálásához, hozzá 
 
 **Predictix ár jelentés hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -119,7 +119,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     | `https://<companyname-pricing>.dev.predictix.com` |
 
     > [!NOTE] 
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [Predictix ár Reporting ügyfél-támogatási csapatának](http://www.infor.com/company/customer-center/) beolvasni ezeket az értékeket. 
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [Predictix ár Reporting ügyfél-támogatási csapatának](https://www.infor.com/company/customer-center/) beolvasni ezeket az értékeket. 
  
 1. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
@@ -133,7 +133,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Predictix ár beállítása](./media/predictixpricereporting-tutorial/tutorial_predictixpricereporting_configure.png) 
 
-1. Az egyszeri bejelentkezés konfigurálása **Predictix ár Reporting** oldalon kell küldenie a letöltött **tanúsítvány (Base64)**, **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím**  való [ügyfélszolgálathoz Predictix ár Reporting](http://www.infor.com/company/customer-center/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+1. Az egyszeri bejelentkezés konfigurálása **Predictix ár Reporting** oldalon kell küldenie a letöltött **tanúsítvány (Base64)**, **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím**  való [ügyfélszolgálathoz Predictix ár Reporting](https://www.infor.com/company/customer-center/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -173,7 +173,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-predictix-price-reporting-test-user"></a>Predictix ár Reporting tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Predictix ár jelentési Britta Simon nevű felhasználó hoz létre. Együttműködve [ügyfélszolgálathoz Predictix ár Reporting](http://www.infor.com/company/customer-center/) a felhasználók hozzáadása az Predictix ár Reporting platformon.
+Ebben a szakaszban egy Predictix ár jelentési Britta Simon nevű felhasználó hoz létre. Együttműködve [ügyfélszolgálathoz Predictix ár Reporting](https://www.infor.com/company/customer-center/) a felhasználók hozzáadása az Predictix ár Reporting platformon.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -205,7 +205,7 @@ Ebben a szakaszban Britta Simon használandó Azure egyszeri bejelentkezést a h
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

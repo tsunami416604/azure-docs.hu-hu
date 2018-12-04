@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 793431e6e81712bae5033eff1eecddbf448ce120
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: e344ccb02d4d4ac78f4311b1a23a936e6cff99e1
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446925"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844889"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Adatmintavétel az Azure HDInsight Hive-táblákban
 Ez a cikk bemutatja, hogyan való Hive-lekérdezések segítségével könnyebben kezelhető elemzéshez méretre csökkenteni az Azure HDInsight Hive-táblákban tárolt adatokat. Azt a három közkeletű használt mintavételi módszer terjed ki:
@@ -28,7 +28,7 @@ Ez a cikk bemutatja, hogyan való Hive-lekérdezések segítségével könnyebbe
 **Miért érdemes az az adatokat?**
 Ha azt tervezi, hogy elemezheti az adatkészlet túl nagy, általában egy célszerű való az adatokat egy kisebb, de reprezentatív és könnyebben kezelhető méretű-re csökkenteni. Alsó-mintavétel segíti az adatok megértését, feltárási és funkciófejlesztési. A csoportos adatelemzési folyamat szerepét, hogy az adatokat feldolgozó függvények és a gépi tanulási modellek gyors prototípus-készítés engedélyezése.
 
-Ez a mintavételi feladat Ez a lépés a [csoportos adatelemzési folyamat (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+Ez a mintavételi feladat Ez a lépés a [csoportos adatelemzési folyamat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 ## <a name="how-to-submit-hive-queries"></a>Hogyan lehet elküldeni a Hive-lekérdezések
 Hive-lekérdezések a Hadoop parancssori konzolból, az a Hadoop-fürt fő csomópontjának küldheti. Ehhez jelentkezzen be a Hadoop-fürt fő csomópontjának, nyissa meg a Hadoop parancssori konzolt, és ott a Hive-lekérdezések elküldéséhez. A Hive-lekérdezések a Hadoop parancssori konzolon elküldése útmutatásért lásd: [Hive-lekérdezések elküldéséhez hogyan](move-hive-tables.md#submit).

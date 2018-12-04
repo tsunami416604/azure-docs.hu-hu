@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: c3eecfdf4bc2e6bf6798a6b3845cdc2e2e243341
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: ee2def6287a845cd0fd0260254efb20f9638ab2c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467429"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839041"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Oktatóanyag: Tesztkörnyezet létrehozása az Azure DevTest Labs szolgáltatással
 Ebben az oktatóanyagban létrehoz egy tesztkörnyezetet az Azure Portalon. A tesztkörnyezet rendszergazdája létrehozza a tesztkörnyezetet a vállalaton belül és a virtuális gépeket a tesztkörnyezetben, továbbá konfigurálja a szabályzatokat. A tesztkörnyezet felhasználói (például a fejlesztők és a tesztelők) lefoglalják a tesztkörnyezet virtuális gépeit, csatlakoznak azokhoz, és használják azokat. 
@@ -80,15 +80,11 @@ A következő lépések bemutatják, hogyan használhatja az Azure Portalt labor
 1. A bal oldali menüben válassza a **Konfigurálás és szabályzatok** elemet. 
 
     ![Konfigurálás és szabályzatok](./media/tutorial-create-custom-lab/configuration-and-policies-menu.png)
-1. A menüben válassza a **Hozzáférés-vezérlés (IAM)** elemet, majd kattintson az eszköztár **+ Hozzáadás** elemére. 
-
-    ![Hozzáférés-vezérlés – Felhasználó hozzáadása gomb](./media/tutorial-create-custom-lab/access-control-add.png)
+1. Válassza ki **hozzáférés-vezérlés (IAM)** a menüben, és válassza a **+ szerepkör-hozzárendelés hozzáadása** az eszköztáron. 
 1. Az **Engedélyek hozzáadása** oldalon tegye a következőket:
     1. A **Szerepkör** esetében válassza a **DevTest Labs-felhasználó** lehetőséget. 
     2. Válassza ki a hozzáadni kívánt **felhasználót**. 
     3. Kattintson a **Mentés** gombra.
-
-        ![Engedélyek hozzáadása](./media/tutorial-create-custom-lab/add-lab-user.png)
 4. A **Konfigurálás és szabályzatok – Hozzáférés-vezérlés (IAM)** lap bezáráshoz kattintson a jobb felső sarokban található **X** gombra. 
 
 ## <a name="cleanup-resources"></a>Az erőforrások eltávolítása

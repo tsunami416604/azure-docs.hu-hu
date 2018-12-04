@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 04708806b9e1ba224e7b438f11c68dca82d6320e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 60beecc0895fbfb5d3af7817e8b76e0819c89a99
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448818"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835386"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>Oktatóanyag: Azure Active Directory-integráció a vállalati ScaleX
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása a ScaleX vállalati, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy vállalati ScaleX egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ ScaleX vállalat az Azure AD-integrációjának konfigurálásához hozzá kell 
 
 **ScaleX vállalati hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -123,7 +123,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     Az a **bejelentkezési URL-** szövegmezőbe írja be az értéket a következő minta használatával: `https://platform.rescale.com/saml2/<company id>/sso/`
      
     > [!NOTE] 
-    > Ezek eltérnek a valós értékeket. Frissítse a tényleges azonosítója, válasz URL-cím vagy a bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [ScaleX vállalati ügyfél-támogatási csapatának](http://info.rescale.com/contact_sales) beolvasni ezeket az értékeket. 
+    > Ezek eltérnek a valós értékeket. Frissítse a tényleges azonosítója, válasz URL-cím vagy a bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [ScaleX vállalati ügyfél-támogatási csapatának](https://info.rescale.com/contact_sales) beolvasni ezeket az értékeket. 
 
 1. ScaleX alkalmazását a SAML helyességi feltételek vár egy megadott formátumban, amelyek megkövetelik a SAML-jogkivonat attribútumai konfiguráció egyéni attribútumleképezések módosítása. Kattintson a **megtekintése és egyéb felhasználói attribútumok szerkesztése** jelölőnégyzetet, nyissa meg az egyéni attribútumok beállításait.
 

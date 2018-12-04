@@ -5,14 +5,14 @@ author: nsoneji
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: bac995829e90fea35eebf5e5e57a0ffb85bbba0c
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 49435665ae1e99dd2b9696e5e5bb048e438dcc4c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211825"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832956"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Vészhelyreállítás beállítása a többrétegű az IIS-alapú webalkalmazás
 
@@ -52,13 +52,13 @@ Az ARR, az IIS-kiszolgáló, az alkalmazáskiszolgáló és az SQL Server egy II
 
 ![Az IIS-alapú webfarm, amely négy szinten rendelkezik ábrája](./media/site-recovery-iis/deployment-pattern2.png)
 
-## <a name="site-recovery-support"></a>Site Recovery támogatási
+## <a name="site-recovery-support"></a>Site Recovery támogatása
 
 Az ebben a cikkben szereplő példák a VMware virtuális gépek és a Windows Server 2012 R2 Enterprise IIS 7.5 használunk. A Site Recovery replikációs nem alkalmazás-specifikus, mert ebben a cikkben szereplő ajánlások várhatóan az alábbi táblázatban és az IIS különböző verzióit a felsorolt forgatókönyvek a alkalmazni.
 
 ### <a name="source-and-target"></a>Forrás és cél
 
-Forgatókönyv | Egy másodlagos helyre | Az Azure-bA
+Forgatókönyv | Egy másodlagos helyre | Az Azure-ba
 --- | --- | ---
 Hyper-V | Igen | Igen
 VMware | Igen | Igen
@@ -142,7 +142,7 @@ Ha az alkalmazás-specifikus függ, hogy a virtuális gépek IP-címe alapján, 
 
 1. Az Azure Portalon válassza ki a helyreállítási tárban.
 2. Válassza ki a helyreállítási tervet, amelyet az IIS webfarm létrehozott.
-3. Válassza ki **feladatátvételi teszt**.
+3. Kattintson a **Feladatátvétel tesztelése** elemre.
 4. A teszt feladatátvételi folyamat indításához válassza ki a helyreállítási pont és az Azure virtuális hálózat.
 5. A másodlagos környezet esetén ellenőrzések is végezhet.
 6. Ha ellenőrzés befejeződött, tisztítsa meg a teszt feladatátvételi környezetet válassza **ellenőrzések elvégzéséhez**.
@@ -153,7 +153,7 @@ További információkért lásd: [az Azure-bA a Site Recovery feladatátvételi
 
 1. Az Azure Portalon válassza ki a helyreállítási tárban.
 1. Válassza ki a helyreállítási tervet, amelyet az IIS webfarm létrehozott.
-1. Válassza ki **feladatátvételi**.
+1. Válassza a **Feladatátvétel** lehetőséget.
 1. A feladatátvételi folyamat indításához válassza ki a helyreállítási pontot.
 
 További információkért lásd: [feladatátvétel a Site Recoveryben](site-recovery-failover.md).

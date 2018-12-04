@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 2b811029e2cadcb89238375e8fe50160a58b0c62
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 7575d55f65598d39a8ffe0c3802cf11fa7470180
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52685012"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837783"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Számítógépcsoportok a Log Analytics naplóbeli kereséseivel
 
-A Log Analytics számítógépcsoportjaival lehetővé teszi a hatókör [naplókereséseket](../../log-analytics/log-analytics-queries.md) a számítógépek egy adott készletét.  Minden csoport fel van töltve, vagy az Ön által meghatározott lekérdezés segítségével számítógépek vagy csoportok különböző forrásokból származó importálásával.  A csoport szerepel egy Naplókeresés, amikor az eredmények korlátozódnak, amelyek megfelelnek a számítógépek a csoportban lévő rekordok.
+A Log Analytics számítógépcsoportjaival lehetővé teszi a hatókör [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md) a számítógépek egy adott készletét.  Minden csoport fel van töltve, vagy az Ön által meghatározott lekérdezés segítségével számítógépek vagy csoportok különböző forrásokból származó importálásával.  A csoport szerepel egy Naplókeresés, amikor az eredmények korlátozódnak, amelyek megfelelnek a számítógépek a csoportban lévő rekordok.
 
 ## <a name="creating-a-computer-group"></a>Számítógépcsoport létrehozása
 Létrehozhat egy számítógépcsoportot a Log Analytics az alábbi táblázatban a módszerek bármelyikével.  Részletek az egyes módszerek az alábbi szakaszokban találhatók. 
@@ -70,7 +70,7 @@ A Log Analytics az Active Directory biztonsági csoportok importálása a Log An
 
 Ha csoportok lettek importálva, a menü mutatja az a csoport tagjai észlelt számítógépek számát és a csoport importálva számát.  Kattintson a visszaadandó alábbi hivatkozások egyikét a **ComputerGroup** ezeket az adatokat rögzíti.
 
-### <a name="windows-server-update-service"></a>A Windows Server Update Service
+### <a name="windows-server-update-service"></a>Windows Server Update Service
 Konfigurálja a Log Analyticsben, hogy a WSUS-csoporttagságok importálása, megvizsgálja a célcsoport-kezelési csoport tagságát, minden olyan, Log Analytics-ügynökkel rendelkező számítógépek.  Ügyféloldali használatakor célozza, minden olyan számítógép, amely a Log Analyticshez csatlakoztatva van, és minden olyan WSUS része csoportokat célzó rendelkezik csoporttagságát. a Log Analytics szolgáltatásba importált. Kiszolgálóoldali használatakor céloz meg, a Log Analytics ügynököt kell telepíteni ahhoz, hogy a csoporttagsági információkat lehet importálni a Log Analytics WSUS-kiszolgálón.  A csoporttagság 4 óránként folyamatosan frissítjük. 
 
 Konfigurálja a WSUS-csoportok importálása a Log Analytics a Log Analytics **speciális beállítások** az Azure Portalon.  Válassza ki **számítógépcsoportok**, **WSUS**, majd **importálási WSUS-csoporttagságok**.  Nincs szükség további konfigurációra.
@@ -79,7 +79,7 @@ Konfigurálja a WSUS-csoportok importálása a Log Analytics a Log Analytics **s
 
 Ha csoportok lettek importálva, a menü mutatja az a csoport tagjai észlelt számítógépek számát és a csoport importálva számát.  Kattintson a visszaadandó alábbi hivatkozások egyikét a **ComputerGroup** ezeket az adatokat rögzíti.
 
-### <a name="system-center-configuration-manager"></a>System Center Configuration Managerben
+### <a name="system-center-configuration-manager"></a>System Center Configuration Manager
 Amikor konfigurálja a Configuration Manager-gyűjteménytagságok importálása a Log Analytics, az egyes gyűjtemények számítógépcsoport hoz létre.  A gyűjtemény tagsági információ 3 óránként rendszer olvassa be a számítógépcsoportok naprakészen tartása. 
 
 A Configuration Manager-gyűjtemények importálása előtt kell [a Configuration Manager csatlakoztatása a Log Analytics](../../log-analytics/log-analytics-sccm.md).  Ezt követően konfigurálhatja a Log Analytics az importálás **speciális beállítások** az Azure Portalon.  Válassza ki **számítógépcsoportok**, **SCCM**, majd **importálása a Configuration Manager-gyűjteménytagságok**.  Nincs szükség további konfigurációra.
@@ -136,5 +136,5 @@ Egy rekord jön létre minden egyes létrehozott Active Directory vagy a WSUS sz
 | TimeGenerated |Dátum és időpont a számítógép (csoport) létrehozott vagy frissített. |
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [naplókereséseket](../../log-analytics/log-analytics-queries.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
+* Ismerje meg [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
 

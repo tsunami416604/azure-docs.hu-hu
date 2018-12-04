@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 8ee04008b62867c8eba68b1525cf50edec881cbc
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c8d3364f9de298d19df35846af5f421978fea960
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432633"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842169"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>Oktatóanyag: Azure Active Directory-integráció Five9 Plus-adaptert (PBX, ügyfél-Center-ügynökök)
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása Five9 Plus-adaptert (PBX, ügyfél-Center-ügynökök), a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök) egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök) integrálásának konfigu
 
 **Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök) hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -142,11 +142,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 1. Az egyszeri bejelentkezés konfigurálása **Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök)** oldalon kell küldenie a letöltött **Certificate(Base64), kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím**való [Five9 plusz (PBX, ügyfél-Center-ügynökök) támogatás adaptercsoporton](https://www.five9.com/about/contact). Is ezenkívül SSO további konfigurálásához kövesse az alábbi lépéseket a csatoló megfelelően:
 
-    a. "Five9 plusz ügynök asztali eszközkészlet adaptert" rendszergazdai útmutató: [http://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf](http://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf)
+    a. "Five9 plusz ügynök asztali eszközkészlet adaptert" rendszergazdai útmutató: [https://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf)
     
-    b. "Five9 és a Microsoft Dynamics CRM Adapter" rendszergazdai útmutató: [http://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf](http://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf)
+    b. "Five9 és a Microsoft Dynamics CRM Adapter" rendszergazdai útmutató: [https://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf)
     
-    c. "Five9 plusz Zendesk adaptert" rendszergazdai útmutató: [http://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf](http://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf)
+    c. "Five9 plusz Zendesk adaptert" rendszergazdai útmutató: [https://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf)
 
 
 > [!TIP]
@@ -186,7 +186,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="creating-a-five9-plus-adapter-cti-contact-center-agents-test-user"></a>Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök) tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök) a felhasználó hoz létre. Együttműködve [Five9 plusz (PBX, ügyfél-Center-ügynökök) támogatás adaptercsoporton](https://www.five9.com/about/contact) a felhasználók hozzáadása a Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök) platform. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy Britta Simon nevű Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök) a felhasználó hoz létre. Együttműködve [Five9 plusz (PBX, ügyfél-Center-ügynökök) támogatás adaptercsoporton](https://www.five9.com/about/contact) a felhasználók hozzáadása a Five9 plusz Adapter (PBX, ügyfél-Center-ügynökök) platform. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

@@ -1,22 +1,19 @@
 ---
-title: Helyi fejlesztés az Azure Cosmos DB Emulator használatával | Microsoft Docs
+title: Az Azure Cosmos DB Emulator a helyi fejlesztés
 description: Az Azure Cosmos DB Emulator használatával helyben, ingyenesen fejlesztheti és tesztelheti alkalmazását, anélkül, hogy ehhez regisztrálnia kellene egy Azure-előfizetést.
 services: cosmos-db
 keywords: Azure Cosmos DB Emulator
 author: David-Noble-at-work
-manager: kfile
-editor: ''
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: danoble
-ms.openlocfilehash: ce42d30b816599f7eaf90ce5a92164c6b85cfa36
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: 7fca4adf8130a6a60e4a89edf129a73562289c5e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094173"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837494"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Az Azure Cosmos DB Emulator használata helyi fejlesztéshez és teszteléshez
 

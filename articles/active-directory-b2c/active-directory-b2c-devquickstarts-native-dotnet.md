@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: bd504beabbb126db2cd90ac010dbc2757e571185
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 2e515ee61144dfe56d2b5a4fac97da81b0fa8c84
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441899"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834842"
 ---
 # <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Az Azure AD B2C: A Windows asztali alkalmazás készítése
 Az Azure Active Directory (Azure AD) B2C segítségével néhány egyszerű lépéssel az asztali alkalmazás hatékony önkiszolgáló identitáskezelési funkciókat adhat hozzá. Ebből a cikkből megtudhatja, hogyan hozhat létre egy .NET Windows megjelenítési Alaprendszeri (WPF) "Feladatlista" alkalmazást, amely tartalmazza a felhasználói regisztrációt, bejelentkezést és profilkezelést. Az alkalmazás támogatni fogja a regisztrációs és bejelentkezési felhasználónév vagy e-mail használatával. Ez például a Facebook és a Google közösségi fiókok használatával is magában foglalja regisztráció és bejelentkezés támogatása.
@@ -31,7 +31,7 @@ A következő lépésben hozzon létre egy alkalmazást a B2C-címtárban. Ez bi
 * Másolja az alkalmazáshoz rendelt **alkalmazásazonosítót**. Erre később még szüksége lesz.
 
 ## <a name="create-your-policies"></a>Szabályzatok létrehozása
-Az Azure AD B2C-ben a felhasználói élményeket [szabályzatok](active-directory-b2c-reference-policies.md) határozzák meg. Ez a kódminta három identitásélményt tartalmaz: regisztráció, bejelentkezés és profilszerkesztés. Kell hoznia egy szabályzatot az egyes típusok leírtak szerint a [házirendek áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). A három szabályzat létrehozásakor ügyeljen arra, hogy:
+Az Azure AD B2C-ben a felhasználói élményeket [szabályzatok](active-directory-b2c-reference-policies.md) határozzák meg. Ez a kódminta három identitásélményt tartalmaz: regisztráció, bejelentkezés és profilszerkesztés. Kell hoznia egy szabályzatot az egyes típusok leírtak szerint a [házirendek áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow). A három szabályzat létrehozásakor ügyeljen arra, hogy:
 
 * Az identitásszolgáltatók paneljén válassza a **User ID sign-up** (Regisztrálás felhasználói azonosítóval) vagy az **Email sign-up** (Regisztrálás e-mail címmel) lehetőséget.
 * A regisztrációs házirendben válassza ki a **megjelenítendő nevet** és az egyéb regisztrációs attribútumokat.

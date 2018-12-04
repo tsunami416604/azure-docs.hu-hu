@@ -10,12 +10,12 @@ author: raymondlaghaeian
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: d9328b293d38114d319d79e38b91b1b67e410d94
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 5db0efd825a655143828e7ccea73704516893ea2
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581830"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845263"
 ---
 # <a name="how-to-deploy-models-from-azure-machine-learning-service-to-azure-kubernetes-service"></a>Az Azure Kubernetes Service az Azure Machine Learning szolgáltatásból származó modellek üzembe helyezése
 
@@ -183,6 +183,24 @@ test_sample = bytes(test_sample,encoding = 'utf8')
 prediction = aks_service.run(input_data = test_sample)
 print(prediction)
 ```
+
+## <a name="update-the-web-service"></a>A web service frissítése
+
+A web service frissítéséhez használja a `update` metódust. A következő kód bemutatja, hogyan frissíthető egy új rendszerkép használata a web service:
+
+```python
+from azureml.core.webservice import Webservice
+
+service_name = 'aci-mnist-3'
+# Retrieve existing service
+service = Webservice(name = service_name, workspace = ws)
+# Update the image used by the service
+service.update(image = new-image)
+print(service.state)
+```
+
+> [!NOTE]
+> Amikor frissít egy képet, a webszolgáltatás nem frissül automatikusan. Minden egyes szolgáltatás, amely az új lemezképet használni kívánt manuálisan kell frissítenie.
 
 ## <a name="cleanup"></a>Felesleges tartalmak törlése
 

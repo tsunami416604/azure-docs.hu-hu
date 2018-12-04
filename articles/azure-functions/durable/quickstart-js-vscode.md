@@ -11,18 +11,20 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: 114278b2d53cab8dd3302a8a2c2c074b8a5b24fa
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 7dceed4d81f1e1767cbf91804573043d1204beee
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52638580"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838905"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>A JavaScript tartós függvény létrehozása
 
 *Durable Functions* kiterjesztése [Azure Functions](../functions-overview.md) , amellyel írási állapot-nyilvántartó functions egy kiszolgáló nélküli környezetben. A bővítmény kezeli a állapot, ellenőrzőpontok és újraindul az Ön számára.
 
 Ebből a cikkből elsajátíthatja az Azure Functions Visual Studio Code-bővítmény használata helyi létrehozásához és a egy "hello world" tartós függvény tesztelése.  Ez a függvény összehangolására, és a lánc együttesen hívások egyéb funkciók. Ezután közzéteheti a függvénykódot az Azure-ban.
+
+![Azure-ban futó tartós függvény](./media/quickstart-js-vscode/functions-vs-code-complete.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,21 +46,21 @@ Az oktatóanyag elvégzéséhez:
 
 ## <a name="create-a-starter-function"></a>Alapszintű függvény létrehozása
 
+Először hozzon létre egy HTTP által aktivált függvényt, amely egy tartós függvény vezénylési elindítja.
+
 1. Az **Azure: Functions** menüben válassza a függvény létrehozására szolgáló ikont.
 
-    ![Függvény létrehozása](../media/functions-create-first-function-vs-code/create-function.png)
+    ![Függvény létrehozása](./media/quickstart-js-vscode/create-function.png)
 
 1. Válassza ki a függvényalkalmazás-projektet tartalmazó mappát, majd válassza a **HTTP-trigger** (HTTP-eseményindító) függvénysablont.
 
-    ![A HTTP-eseményindító sablon kiválasztása](../media/functions-create-first-function-vs-code/create-function-choose-template.png)
+    ![A HTTP-eseményindító sablon kiválasztása](./media/quickstart-js-vscode/create-function-choose-template.png)
 
 1. A függvénynek adja a `HttpStart` nevet, nyomja le az Enter billentyűt, majd válassza az **Anonymous** (Névtelen) hitelesítést.
 
-    ![A névtelen hitelesítés kiválasztása](../media/functions-create-first-function-vs-code/create-function-anonymous-auth.png)
+    ![A névtelen hitelesítés kiválasztása](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 
     A rendszer létrehoz egy függvényt a választott nyelven a HTTP által indított függvények sablonjának használatával.
-
-    ![A HTTP által indított függvények sablonja a Visual Studio Code-ban](../media/functions-create-first-function-vs-code/new-function-full.png)
 
 1. Cserélje le az index.js a JavaScript alatt:
 
@@ -107,23 +109,15 @@ Ezzel létrehoztunk egy belépési pont a tartós függvény. Adjunk hozzá egy 
 
 ## <a name="create-an-orchestrator-function"></a>Az Orchestrator-függvény létrehozása
 
-1. Az **Azure: Functions** menüben válassza a függvény létrehozására szolgáló ikont.
+Ezután hozzon létre egy másik függvényt az orchestrator lennie. A HTTP-eseményindító sablonjához függvényt használjuk kényelmi célokat szolgál. Magát a függvénykódot az orchestrator kódot váltja fel.
 
-    ![Függvény létrehozása](../media/functions-create-first-function-vs-code/create-function.png)
+1. Ismételje meg az előző szakaszban hozhat létre egy másik függvény használatával a HTTP-eseményindító sablonjához. Most adja a függvénynek `OrchestratorFunction`.
 
-1. Válassza ki a függvényalkalmazás-projektet tartalmazó mappát, majd válassza a **HTTP-trigger** (HTTP-eseményindító) függvénysablont. Mivel ez a kód fogja cserélni, maga az eseményindító nem számít.
-
-    ![A HTTP-eseményindító sablon kiválasztása](../media/functions-create-first-function-vs-code/create-function-choose-template.png)
-
-1. A függvénynek adja a `OrchestratorFunction` nevet, nyomja le az Enter billentyűt, majd válassza az **Anonymous** (Névtelen) hitelesítést.
-
-    ![A névtelen hitelesítés kiválasztása](../media/functions-create-first-function-vs-code/create-function-anonymous-auth.png)
-
-1. Cserélje le az index.js a JavaScript alatt:
+1. Nyissa meg az új függvény az index.js fájlt, és cserélje ki annak tartalmát az alábbira:
 
     [!code-json[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
 
-1. Cserélje le a function.json az alábbi JSON-ban:
+1. Nyissa meg a function.json fájlt, és cserélje le a következő JSON-ra:
 
     [!code-json[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/function.json)]
 
@@ -131,19 +125,9 @@ Hozzáadtunk egy orchestrator tevékenységfüggvényeket koordinálására. Mos
 
 ## <a name="create-an-activity-function"></a>Egy tevékenység függvény létrehozása
 
-1. Az **Azure: Functions** menüben válassza a függvény létrehozására szolgáló ikont.
+1. Ismételje meg a használatával a HTTP-eseményindító sablonjához harmadik függvény létrehozásához az előző szakaszokban. De ezúttal adja a függvénynek `SayHello`.
 
-    ![Függvény létrehozása](../media/functions-create-first-function-vs-code/create-function.png)
-
-1. Válassza ki a függvényalkalmazás-projektet tartalmazó mappát, majd válassza a **HTTP-trigger** (HTTP-eseményindító) függvénysablont. Mivel ez a kód fogja cserélni, maga az eseményindító nem számít.
-
-    ![A HTTP-eseményindító sablon kiválasztása](../media/functions-create-first-function-vs-code/create-function-choose-template.png)
-
-1. A függvénynek adja a `SayHello` nevet, nyomja le az Enter billentyűt, majd válassza az **Anonymous** (Névtelen) hitelesítést.
-
-    ![A névtelen hitelesítés kiválasztása](../media/functions-create-first-function-vs-code/create-function-anonymous-auth.png)
-
-1. Cserélje le az index.js a JavaScript alatt:
+1. Nyissa meg az új függvény az index.js fájlt, és cserélje ki annak tartalmát az alábbira:
 
     [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/index.js)]
 
@@ -151,7 +135,7 @@ Hozzáadtunk egy orchestrator tevékenységfüggvényeket koordinálására. Mos
 
     [!code-json[Main](~/samples-durable-functions/samples/csx/E1_SayHello/function.json)]
 
-Lehetőségekkel bővült a vezénylési és a lánc együttesen tevékenységfüggvényeket indításához szükséges összes összetevőt.
+Hozzáadtunk egy vezénylési és lánc együttesen tevékenységfüggvényeket indulhat szükséges összes összetevő most.
 
 ## <a name="test-the-function-locally"></a>A függvény helyi tesztelése
 

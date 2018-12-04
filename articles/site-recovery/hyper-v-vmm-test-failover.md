@@ -1,18 +1,18 @@
 ---
 title: Futtassa a Hyper-V virtuális gépek vészhelyreállítási próbát egy másodlagos helyre az Azure Site Recoveryvel |} A Microsoft Docs
 description: Ismerje meg, hogyan vész-helyreállítási futtassa a VMM-felhőkben futó Hyper-V virtuális gépek egy másodlagos helyszíni adatközpontba, az Azure Site Recovery használatával.
-author: ponatara
-manager: abhemraj
+author: rajani-janaki-ram
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/06/2018
-ms.author: ponatara
-ms.openlocfilehash: 3f7e534e9c698e31e1061c35aec713d20c7e570f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.date: 11/27/2018
+ms.author: rajanaki
+ms.openlocfilehash: 5e6d155a3efebfc8289263ac703a87e9aa3287cd
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211349"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834757"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Vész-helyreállítási futtatása Hyper-V virtuális gépek másodlagos helyre
 
@@ -125,7 +125,7 @@ Ez az eljárás ismerteti egy helyreállítási terv feladatátvételi teszt fut
 4. Feladatátvétel befejezése után ellenőrizze, hogy a virtuális gépek sikeresen elindulnak-e.
 5. Ha elkészült, kattintson a **feladatátvételi teszt utáni karbantartás** elemre a helyreállítási terven. A **Jegyzetek** területen jegyezheti fel és mentheti a feladatátvételi teszttel kapcsolatos megfigyeléseket. Ez a lépés törli a virtuális gépek és a Site Recovery által a feladatátvételi teszt során létrehozott hálózatok. 
 
-![Feladatátvételi teszt](./media/hyper-v-vmm-test-failover/TestFailover.png)
+![Feladatátvétel tesztelése](./media/hyper-v-vmm-test-failover/TestFailover.png)
  
 
 

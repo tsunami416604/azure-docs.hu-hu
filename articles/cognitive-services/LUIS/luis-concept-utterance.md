@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/03/2018
 ms.author: diberry
-ms.openlocfilehash: 2b21102a5416c1fd7e2abb35be677c48ffc63263
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 1f86631d75ceec5fc013c21f74f03b9157c78b4a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638075"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836457"
 ---
 # <a name="utterances-in-luis"></a>A LUIS kimondott szöveg
 
@@ -55,6 +55,10 @@ A modell minden egyes ismétléskor ne adjon hozzá egy nagy mennyiségű kimond
 A LUIS, gondosan ki van jelölve, hogy megcímkézzen hatékony modelleket hoz létre. Túl sok beszédmódok hozzáadása nincs értékes keveredési, mert.  
 
 Néhány utterances, majd indítása jobb [tekintse át a végpont utterances](luis-how-to-review-endoint-utt.md) megfelelő szándék előrejelzése és egyéb entitások kivonási.
+
+## <a name="punctuation-marks"></a>Központozási jelek
+
+A LUIS nem hagyja figyelmen kívül írásjelek, alapértelmezés szerint, mert egyes ügyfélalkalmazások helyezhet többszörösére. Ezek közé. Ellenőrizze, hogy a példa utterances használatával írásjelek és a nem absztrakt ahhoz, hogy mindkét stílusok azonos relatív pontszámokat ad vissza. Ha írásjelek nincs meghatározott jelentéssel az ügyfélalkalmazásban, érdemes lehet [figyelmen kívül hagyja a központozási](#ignoring-words-and-punctuation) minták használatával. 
 
 ## <a name="ignoring-words-and-punctuation"></a>Szavak és írásjelek figyelmen kívül hagyása
 Ha azt szeretné, figyelmen kívül hagyja a szó vagy az a példában utterance (kifejezés) absztrakt, egy [minta](luis-concept-patterns.md#pattern-syntax) az a _figyelmen kívül hagyása_ szintaxist. 

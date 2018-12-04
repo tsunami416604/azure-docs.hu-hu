@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: 061ad1cf8cf99d8100163bd6b7c9d72377075108
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 359c4bb807f1bc1f26c451f039a384024463da9d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52428766"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844454"
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>A Log Analytics megoldások monitorozása az Azure-hálózatok
 
@@ -236,4 +236,4 @@ A frissített megoldások használata:
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>További lépések
-* Használat [Log Analytics naplóbeli kereséseivel](../../log-analytics/log-analytics-queries.md) részletes Azure diagnostics-adatok megtekintéséhez.
+* Használat [Log Analytics naplóbeli kereséseivel](../../azure-monitor/log-query/log-query-overview.md) részletes Azure diagnostics-adatok megtekintéséhez.

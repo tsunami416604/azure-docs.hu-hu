@@ -10,19 +10,21 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 49f3f80832597b231aec812a4c1613da9897f72a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: e6fc9ded2b3509f9505d88f0ae7ccc790e47b0f2
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722445"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842764"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés a OpenID-kapcsolattal az Azure Active Directory B2C beállítása
 
 >[!NOTE]
 > Ez a funkció jelenleg nyilvános előzetes verzióban. Az éles környezetben ne használja a szolgáltatást.
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) , amelyek segítségével biztonságosan bejelentkezhetnek a felhasználók OAuth 2.0-ra épülő, hitelesítési protokoll. A legtöbb Identitásszolgáltatók, például ezt a protokollt használó [Azure ad-ben](active-directory-b2c-setup-oidc-azure-active-directory.md), az Azure AD B2C-ben támogatottak. Ez a cikk bemutatja, hogyan adhat hozzá egyéni OpenID Connect Identitásszolgáltatók be a felhasználói folyamatok.
+
+[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) , amelyek segítségével biztonságosan bejelentkezhetnek a felhasználók OAuth 2.0-ra épülő, hitelesítési protokoll. A legtöbb Identitásszolgáltatók, például ezt a protokollt használó [Azure ad-ben](active-directory-b2c-setup-oidc-azure-active-directory.md), az Azure AD B2C-ben támogatottak. Ez a cikk bemutatja, hogyan adhat hozzá egyéni OpenID Connect Identitásszolgáltatók be a felhasználói folyamatok.
+
 
 ## <a name="add-the-identity-provider"></a>Identitásszolgáltató hozzáadása
 
@@ -39,13 +41,13 @@ Minden OpenID Connect Identitásszolgáltatók ismerteti egy metaadat-dokumentum
 Ahhoz, hogy a felhasználók jelentkezhetnek be, az identitásszolgáltató igényel a fejlesztők számára, hogy egy alkalmazás regisztrálása a szolgáltatásban. Ez az alkalmazás-azonosító néven van a **ügyfél-azonosító** és a egy **titkos Ügyfélkód**. Másolja ki ezeket az értékeket az identitásszolgáltató, és adja meg azokat a megfelelő mezőkbe.
 
 > [!NOTE]
-> A titkos ügyfélkulcsot nem kötelező. Azonban meg kell adnia egy ügyfélkulcsot Ha használni szeretné a [hitelesítési kódfolyamat](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth), amely a titkos kulcs használatával a kód a jogkivonat exchange.
+> A titkos ügyfélkulcsot nem kötelező. Azonban meg kell adnia egy ügyfélkulcsot Ha használni szeretné a [hitelesítési kódfolyamat](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth), amely a titkos kulcs használatával a kód a jogkivonat exchange.
 
 Hatókör definiálja azokat az adatokat és engedélyeket szeretne gyűjteni, az egyéni identitásszolgáltató. OpenID Connect kérelmek tartalmaznia kell a `openid` hatókör értéke az identitásszolgáltatótól az azonosító jogkivonat fogadásához. Az azonosító jogkivonat nélkül munkavégzésük nem tud bejelentkezni az Azure AD B2C-t az egyéni identitásszolgáltató használatával. Más hatókörök szóközökkel elválasztott is bővül. Az egyéni identitásszolgáltató dokumentációban megtekintheti, hogy más hatókörök lehet érhető el.
 
 Válasz típusa ismerteti, milyen típusú információkat küld a kezdeti hívást a `authorization_endpoint` az egyéni identitásszolgáltató. A következő választ típusok használhatók:
 
-- `code`: Forgalomért a [hitelesítési kódfolyamat](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth), vissza az Azure AD B2C-vel visszaad egy kódot. Az Azure AD B2C abból hívja a `token_endpoint` Exchange a kódot a jogkivonat.
+- `code`: Forgalomért a [hitelesítési kódfolyamat](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth), vissza az Azure AD B2C-vel visszaad egy kódot. Az Azure AD B2C abból hívja a `token_endpoint` Exchange a kódot a jogkivonat.
 - `token`: Egy hozzáférési jogkivonatot az egyéni identitásszolgáltató küldte vissza az Azure AD B2C-t.
 - `id_token`: Egy azonosító jogkivonat vissza az Azure AD B2C-t küld vissza, az egyéni identitásszolgáltató.
 

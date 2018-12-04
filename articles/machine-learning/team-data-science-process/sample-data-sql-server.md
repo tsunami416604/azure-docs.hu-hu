@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 6483ba9f070252f58e0e3706472939dbfab12b59
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 1520e683fdd4ab2f2731f5eb0d3a1a30fed81723
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445038"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833482"
 ---
 # <a name="heading"></a>Mintaadatok az SQL Server az Azure-ban
 
@@ -30,9 +30,9 @@ A Python-mintavételt használ a [pyodbc](https://code.google.com/p/pyodbc/) ODB
 > 
 
 **Miért érdemes az az adatokat?**
-Ha azt tervezi, hogy elemezheti az adatkészlet túl nagy, általában egy célszerű való az adatokat egy kisebb, de reprezentatív és könnyebben kezelhető méretű-re csökkenteni. Ez lehetővé teszi az adatok megértését, feltárási és funkciófejlesztési. A szerepkör a [csoportos adatelemzési folyamat (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) az adatfeldolgozás funkciók és a gépi tanulási modellek gyors prototípus-készítés engedélyezése.
+Ha azt tervezi, hogy elemezheti az adatkészlet túl nagy, általában egy célszerű való az adatokat egy kisebb, de reprezentatív és könnyebben kezelhető méretű-re csökkenteni. Ez lehetővé teszi az adatok megértését, feltárási és funkciófejlesztési. A szerepkör a [csoportos adatelemzési folyamat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) az adatfeldolgozás funkciók és a gépi tanulási modellek gyors prototípus-készítés engedélyezése.
 
-Ez a mintavételi feladat Ez a lépés a [csoportos adatelemzési folyamat (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+Ez a mintavételi feladat Ez a lépés a [csoportos adatelemzési folyamat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 ## <a name="SQL"></a>SQL-lel
 Ez a szakasz ismerteti a több módszert is egyszerű véletlenszerű mintavétel az adatokban az adatbázisban való végrehajtásához SQL használatával. Az adatok mérete és a telepítési módszer kiválasztása.

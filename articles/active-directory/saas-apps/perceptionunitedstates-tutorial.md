@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 61fb9904e69f5269c345b733ef2396294c6c790a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8c29d054f2e4e9ff4b57785a57e5c6ea512623a6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448172"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840662"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Oktatóanyag: Azure Active Directory-integrációval rendelkező Érzete Egyesült Államok (nem-UltiPro)
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása a megfigyelés é Egyesült Államok (nem-UltiPro), a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - A megfigyelés é Egyesült Államok (nem-UltiPro) egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Megfigyelés é Amerikai Egyesült államokbeli (nem-UltiPro) integráció konfi
 
 **Megfigyelés é Egyesült Államok (nem-UltiPro) hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -209,7 +209,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
   
 ### <a name="create-a-perception-united-states-non-ultipro-test-user"></a>Megfigyelés é Egyesült Államok (nem-UltiPro) tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon a megfigyelés é Egyesült Államok (nem-UltiPro) nevű felhasználó létrehozásához. Együttműködve [Érzete Egyesült Államok (nem-UltiPro) támogatási csapatának](http://www.ultimatesoftware.com/Contact/ContactUs) a felhasználók hozzáadása a megfigyelés é Egyesült Államok (nem-UltiPro) platform.
+Ebben a szakaszban egy Britta Simon a megfigyelés é Egyesült Államok (nem-UltiPro) nevű felhasználó létrehozásához. Együttműködve [Érzete Egyesült Államok (nem-UltiPro) támogatási csapatának](https://www.ultimatesoftware.com/Contact/ContactUs) a felhasználók hozzáadása a megfigyelés é Egyesült Államok (nem-UltiPro) platform.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -241,7 +241,7 @@ Ebben a szakaszban engedélyezze Britta Simon ehhez biztosítson hozzáférést 
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

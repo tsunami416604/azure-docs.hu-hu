@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 4e89664bf980717dbfd7994d6469fc4a412307a0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8bb964308e11d238def4eed3f194ffc9ef8ab086
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258544"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840163"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>A felhőbeli piactér felügyeleti vezethet
 
@@ -39,15 +39,15 @@ Megkezdődik az érdeklődőket, érdeklődő Management-összekötő a Cloud Pa
 
 Az alábbiakban részletesen ismerteti a lehetséges érdeklődő célhelyek mindegyike csatlakozni:
 
-**A Dynamics CRM Online** - [kattintson ide a](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics) útmutatást szeretne kapni az érdeklődők lekérhesse a Dynamics CRM Online konfigurálása.
+**A Dynamics CRM Online** - [kattintson ide a](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) útmutatást szeretne kapni az érdeklődők lekérhesse a Dynamics CRM Online konfigurálása.
 
-**A Marketo** - [ide](https://cloudpartner.azure.com/#documentation/lead-management-instructions-marketo) az érdeklődők lekérése a Marketo vezethet konfigurációs beállításával kapcsolatos útmutatást.
+**A Marketo** - [ide](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) az érdeklődők lekérése a Marketo vezethet konfigurációs beállításával kapcsolatos útmutatást.
 
-**A Salesforce** - [ide](https://cloudpartner.azure.com/#documentation/lead-management-instructions-salesforce) beolvasni az érdeklődőket a Salesforce-példány beállításával kapcsolatos útmutatás beolvasásához.
+**A Salesforce** - [ide](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) beolvasni az érdeklődőket a Salesforce-példány beállításával kapcsolatos útmutatás beolvasásához.
 
-**Az Azure Table** – [ide](https://cloudpartner.azure.com/#documentation/lead-management-instructions-azure-table) beolvasni az érdeklődők lekérhesse az Azure-táblát az Azure storage-fiók beállításával kapcsolatos utasításokat.
+**Az Azure Table** – [ide](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) beolvasni az érdeklődők lekérhesse az Azure-táblát az Azure storage-fiók beállításával kapcsolatos utasításokat.
 
-**HTTPS-végpont** – [ide](https://cloudpartner.azure.com/#documentation/lead-management-instructions-https) beolvasni az érdeklődők lekérése a Https-végpont beállításával kapcsolatos utasításokat.
+**HTTPS-végpont** – [ide](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) beolvasni az érdeklődők lekérése a Https-végpont beállításával kapcsolatos utasításokat.
 
 Megfelelően konfigurálva az érdeklődő cél, és a közzététel elérte az ajánlat, azt fogja a kapcsolat ellenőrzése, és küldünk egy teszt érdeklődő. Az ajánlat előtt élő tekinti meg, ha a vezető kapcsolat is letesztelheti próbál szerezni az ajánlat magát az előzetes verziójú környezet a. Fontos győződjön meg arról, hogy az érdeklődő beállítások naprakész marad, hogy ne veszítse el azok az érdeklődők, ezért ügyeljen arra, amikor valami megváltozott, a végén frissíti ezeket a kapcsolatokat.
 
@@ -62,32 +62,32 @@ Után állítsa be a műszaki van beállítva, az érdeklődők válaszaránya m
 
 **Nem sikerült menteni az érdeklődő a Dynamics CRM-hez. Ellenőrizze a Dynamics CRM-fiók beállításait. LastCRMError: Nem sikerült bejelentkezni a Dynamics CRM, LastCRMException:** 
 
-> Ha O365 hitelesítési volt jelölve, ellenőrizze, ha a felhasználói fiók és jelszó érvényes. Ha az aad-ben lett kiválasztva, ellenőrizze, ha a bérlő azonosítója, a Alkalmazásazonosító és az alkalmazás titkos kulcs megfelel mi be lett állítva az aad-ben. Kövesse az utasításokat [Itt](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics). Ha a fiók felhasználónév/jelszó érvényes, győződjön meg arról, Dynamics 365-hozzáféréssel rendelkezik, és rendelkezik egy hozzárendelni a licencet (lépések 11. 15. Ha egy Office-felhasználó használata az Azure Active Directory vagy a biztonsági beállítások használatával). 
+> Ha O365 hitelesítési volt jelölve, ellenőrizze, ha a felhasználói fiók és jelszó érvényes. Ha az aad-ben lett kiválasztva, ellenőrizze, ha a bérlő azonosítója, a Alkalmazásazonosító és az alkalmazás titkos kulcs megfelel mi be lett állítva az aad-ben. Kövesse az utasításokat [Itt](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics). Ha a fiók felhasználónév/jelszó érvényes, győződjön meg arról, Dynamics 365-hozzáféréssel rendelkezik, és rendelkezik egy hozzárendelni a licencet (lépések 11. 15. Ha egy Office-felhasználó használata az Azure Active Directory vagy a biztonsági beállítások használatával). 
 
  
 **Nem sikerült menteni az érdeklődő a Dynamics CRM-hez. Felhasználó nem rendelkezik létrehozása engedély az leadsourcecode attribútum az érdeklődő entitásban** 
 
-> Az alkalmazás/felhasználó biztonsági szerepkört a Microsoft Marketplace érdeklődő író hiányzik. Lépése 11. 15. Ha egy Office-felhasználó használata az Azure Active Directory vagy a biztonsági beállítások használatával [Itt](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics).
+> Az alkalmazás/felhasználó biztonsági szerepkört a Microsoft Marketplace érdeklődő író hiányzik. Lépése 11. 15. Ha egy Office-felhasználó használata az Azure Active Directory vagy a biztonsági beállítások használatával [Itt](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics).
 
 **Nem sikerült menteni az érdeklődő a Dynamics CRM-hez AAD használatával. Kivétel:: Tenant nem található. Ez a példány akkor fordulhat elő, ha a bérlő nincs aktív előfizetések tartoznak.**  
 
-> Az érdeklődő felügyeleti szakaszban megadott címtár-azonosító nem érvényes. Kérjük, vegye fel a címtár-azonosító, a 2. lépés utasításait alapján (az Azure Active Directory, a [Itt](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics) 
+> Az érdeklődő felügyeleti szakaszban megadott címtár-azonosító nem érvényes. Kérjük, vegye fel a címtár-azonosító, a 2. lépés utasításait alapján (az Azure Active Directory, a [Itt](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) 
 
 **Nem sikerült menteni az érdeklődő a Dynamics CRM-hez. LastCRMError: Nem sikerült – SecLib::RetrievePrivilegeForUser nincsenek szerepkörök vannak hozzárendelve felhasználóhoz.**  
 
-> Megoldás: Biztonsági szerepkör hozzárendelése a Microsoft Marketplace érdeklődő írta. Kövesse az utasításokat [Itt](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics) a biztonsági beállítások 
+> Megoldás: Biztonsági szerepkör hozzárendelése a Microsoft Marketplace érdeklődő írta. Kövesse az utasításokat [Itt](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) a biztonsági beállítások 
 
 **Nem sikerült menteni az érdeklődő a Dynamics CRM-hez AAD használatával. Kivétel:: Azonosítójú alkalmazás nem található a címtárban** 
 
-> Az érdeklődő felügyeleti szakaszban az alkalmazás-azonosító nem érvényes. Kérjük, vegye fel a címtár-azonosító, a 8. lépés utasításait alapján (az Azure Active Directory, a [Itt](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
+> Az érdeklődő felügyeleti szakaszban az alkalmazás-azonosító nem érvényes. Kérjük, vegye fel a címtár-azonosító, a 8. lépés utasításait alapján (az Azure Active Directory, a [Itt](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
 
 **Nem sikerült menteni az érdeklődő a Dynamics CRM-hez AAD használatával. Kivétel:: Kért bérlőazonosító formátuma nem érvényes és érvénytelen külső tartományt** 
 
-> Az érdeklődő felügyeleti szakaszban megadott címtár-azonosító nem érvényes. Kérjük, vegye fel a címtár-azonosító, a 2. lépés utasításait alapján (az Azure Active Directory, a [Itt](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
+> Az érdeklődő felügyeleti szakaszban megadott címtár-azonosító nem érvényes. Kérjük, vegye fel a címtár-azonosító, a 2. lépés utasításait alapján (az Azure Active Directory, a [Itt](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
 
 **Nem sikerült menteni az érdeklődő a Dynamics CRM-hez AAD használatával. Kivétel: Ellenőrzése hitelesítő adatait. hiba: Érvénytelen titkos Ügyfélkód van megadva.** 
 
-> Megoldás: Jelentkezzen be az Azure Portal, ellenőrizze, hogy az alkalmazáskulcsot megegyezik, mi az a Cloud Partner portálra. Hozza létre a jelszó alapján utasítás (az Azure Active Directory), 10. lépésében a [Itt](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
+> Megoldás: Jelentkezzen be az Azure Portal, ellenőrizze, hogy az alkalmazáskulcsot megegyezik, mi az a Cloud Partner portálra. Hozza létre a jelszó alapján utasítás (az Azure Active Directory), 10. lépésében a [Itt](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
 
 **Nem sikerült menteni az érdeklődő a Dynamics CRM-hez. LastCRMError: A 00:02:00 után egy válasz várakozás közben túllépte az időkorlátot kérelem-csatornát. Növelje az időkorlát értékét átadott kérelem hívása, vagy növelje a SendTimeout értékét a kötés. Ez a művelet engedélyezett idő egy része egy hosszabb időkorlát törölték.**  
 
@@ -102,7 +102,7 @@ Után állítsa be a műszaki van beállítva, az érdeklődők válaszaránya m
 
 **Honnan szerezhetem be az érdeklődő cél beállításához segítséget?** 
 
-Dokumentáció itt található: https://cloudpartner.azure.com/#documentation/get-customer-leads vagy keresztül aka.ms/marketplacepublishersupport válassza ajánlattípusra támogatási jegyet is küldhet, és felügyeleti vezethet. 
+Dokumentáció itt található: [ügyfélérdeklődések lekérése](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) vagy keresztül aka.ms/marketplacepublishersupport válassza ajánlattípusra támogatási jegyet is küldhet, és felügyeleti vezethet. 
 
 
 
@@ -199,7 +199,7 @@ Egyes potenciális ügyfelek fog rendelkezni a kijelölt érdeklődők célhelye
 
     } 
 
-További információ a [vezethet Info](https://cloudpartner.azure.com/#documentation/get-customer-leads). 
+További információ a [vezethet Info](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads). 
 
 
 **Konfiguráltam az Azure BLOB saját érdeklődő célhelyeként, miért nem látom az érdeklődő?** 
@@ -219,7 +219,7 @@ A blob vagy table elérheti az Azure Portalról, vagy letöltheti és telepíthe
 
 **Konfiguráltam az Azure Table saját érdeklődő célhelyeként, is szeretnék értesítést kaphat, amikor új érdeklődő piactér által küldött?** 
 
-Igen, kövesse az utasításokat a dokumentáció az Azure Table + funkció beállítása [Itt](https://cloudpartner.azure.com/#documentation/lead-management-instructions-azure-table). 
+Igen, kövesse az utasításokat a dokumentáció az Azure Table + funkció beállítása [Itt](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table). 
 
 
 

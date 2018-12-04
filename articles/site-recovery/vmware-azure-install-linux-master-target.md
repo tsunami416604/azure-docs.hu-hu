@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan állítható be egy Linux-fő célkiszolgálót
 author: nsoneji
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: 415b50b94052e7d428ddfa55d5288c8954a3ff1a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: e35a8cf720fffa3a3b4c7d9f1b83c2323041b1c4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212369"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833312"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Telepítse a Linuxos fő célkiszolgáló a feladat-visszavételhez
 Miután átadja a feladatokat a virtuális gépek az Azure-ba, visszaadhatja a virtuális gépek, a helyszíni helyre. Feladat-visszavételt, ismételt védelem a virtuális gép az Azure-ból a helyszíni helyre kell. Ez a folyamat szüksége lesz egy a helyszíni fő célkiszolgáló forgalom fogadására. 
@@ -259,7 +259,7 @@ A következő lépések segítségével hozzon létre egy adatmegőrzési lemez:
     
     Válassza ki **beszúrása** a fájl szerkeszthető. Hozzon létre egy új sort, és helyezze be a következő szöveget. Szerkessze a többutas Lemezazonosítót az előző parancs által kiemelt többutas azonosítója alapján.
 
-    **/dev/eseményleképező/ <Retention disks multipath id> /mnt/megőrzési ext4 rw 0 0**
+     **/dev/eseményleképező/ <Retention disks multipath id> /mnt/megőrzési ext4 rw 0 0**
 
     Válassza ki **Esc**, majd írja be **: wq** (írás és kilépés) gombra kattintva zárja be a szerkesztő ablakot.
 

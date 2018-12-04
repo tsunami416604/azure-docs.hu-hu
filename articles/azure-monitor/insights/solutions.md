@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: f056e30850168ec8a9179e1e11686f7221f6fded
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: a498c9251c305b4845cc911fc9a21fbdafda72fe
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715522"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832258"
 ---
 # <a name="management-solutions-in-azure"></a>Felügyeleti megoldások az Azure-ban
 Felügyeleti megoldások használhatja a szolgáltatásokat nyújt további betekintést a művelet egy adott alkalmazás vagy szolgáltatás Azure-ban. Ez a cikk az Azure és a részletek megoldások rövid áttekintést nyújt a használatáról, és telepíteni kell őket.
@@ -104,5 +104,5 @@ Keresse meg a telepített megoldás eltávolításához a [telepített megoldás
 
 ## <a name="next-steps"></a>További lépések
 * Get- [listán, megoldások a Microsoft](solutions-inventory.md).
-* Ismerje meg, hogyan [lekérdezések létrehozása](../../log-analytics/log-analytics-queries.md) felügyeleti megoldások által gyűjtött adatok elemzéséhez.
+* Ismerje meg, hogyan [lekérdezések létrehozása](../../azure-monitor/log-query/log-query-overview.md) felügyeleti megoldások által gyűjtött adatok elemzéséhez.
 

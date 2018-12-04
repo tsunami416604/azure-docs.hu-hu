@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7ca97c52d81af2c224d27025266a628c28c0af78
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 536ae926ad8f401f952a41e17074536cc2b3c5f1
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428902"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832037"
 ---
 # <a name="manage-analysis-services"></a>Analysis Services kezelése
 Miután az Azure-ban létrehozott egy Analysis Services-kiszolgálón, néhány felügyelet és kezelés feladatot kell elvégeznie a azonnal, vagy egy ideig le lehet. Például futtassa a frissítés adatokhoz, el tudja érni a modellek a kiszolgálón, vagy a kiszolgáló állapotának figyeléséhez vezérléséhez feldolgozása. Egyes felügyeleti feladatok csak az Azure Portalon, az SQL Server Management Studio (SSMS), mások hajtható végre, és néhány feladatot végezhető, vagy.
 
 ## <a name="azure-portal"></a>Azure Portal
-[Az Azure portal](http://portal.azure.com/) is hozzon létre és kiszolgálók törlése, figyelheti a kiszolgáló-erőforrásokon, méretének módosítása, és ki férhet hozzá a kiszolgálók kezelése.  Ha problémákat tapasztal, küldje el egy támogatási kérést.
+[Az Azure portal](https://portal.azure.com/) is hozzon létre és kiszolgálók törlése, figyelheti a kiszolgáló-erőforrásokon, méretének módosítása, és ki férhet hozzá a kiszolgálók kezelése.  Ha problémákat tapasztal, küldje el egy támogatási kérést.
 
 ![A kiszolgáló nevének lekérése az Azure-ban](./media/analysis-services-manage/aas-manage-portal.png)
 

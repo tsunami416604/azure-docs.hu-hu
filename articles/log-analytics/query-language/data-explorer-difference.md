@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 65f3388074ff7a84c6e0516a64665019d5883ab1
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 0469ddb18014d36b33a42d1e7183bef9784d0dfb
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913172"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843138"
 ---
 # <a name="log-analytics-query-language-differences"></a>Log Analytics lekérdezési nyelv különbségek
 
-Amíg [Log Analytics](../log-analytics-queries.md) épül [Azure adatkezelő](/azure//data-explorer) , és használja a [azonos lekérdezési nyelvet](/azure/kusto/query), a nyelvi verzióját van néhány különbség. Ez a cikk azonosítja az elemeket, amelyeket az adatkezelő használt nyelv és a Log Analytics-lekérdezések használt verziója eltérő.
+Amíg [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) épül [Azure adatkezelő](/azure//data-explorer) , és használja a [azonos lekérdezési nyelvet](/azure/kusto/query), a nyelvi verzióját van néhány különbség. Ez a cikk azonosítja az elemeket, amelyeket az adatkezelő használt nyelv és a Log Analytics-lekérdezések használt verziója eltérő.
 
 ## <a name="data-explorer-elements-not-supported-in-log-analytics"></a>Nem támogatott a Log Analytics Data Explorer elemek
 A következő szakaszok ismertetik az adatkezelő lekérdezési nyelv elemei, amelyek a Log Analytics által nem támogatott.

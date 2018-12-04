@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: huishao
-ms.openlocfilehash: 9c3815f0083d049d9b4baed8e360f5927fcd3d69
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: e6f284b2a3483b21901dc4ad26bff83b8fcd8848
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025684"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843019"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Bevezetés a FreeBSD Azure-on
 Ez a cikk a FreeBSD virtuális gépek Azure-ban futó áttekintést nyújt.
@@ -41,9 +41,9 @@ FreeBSD jövőbeli verzióiban, mint a stratégia az, hogy legyen naprakész, é
 ## <a name="deploying-a-freebsd-virtual-machine"></a>FreeBSD virtuális gép üzembe helyezése
 FreeBSD virtuális gép üzembe helyezése egy olyan egyszerű folyamat, az Azure Portalról az Azure Marketplace-lemezkép használatával:
 
-- [FreeBSD 10.3 az Azure Marketplace-en](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103)
-- [FreeBSD 10.4 az Azure Marketplace-en](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.FreeBSD104)
+- [FreeBSD 10.4 az Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
 - [FreeBSD 11.1 az Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD111)
+- [FreeBSD 11,2 az Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112)
 
 ### <a name="create-a-freebsd-vm-through-azure-cli-on-freebsd"></a>Az Azure CLI-n keresztül FreeBSD virtuális gép létrehozása a FreeBSD
 Először telepítenie kell [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) ellenére, hogy a következő parancs a FreeBSD gépen.

@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: cd41fba675a0814e6f2a1b17576add7811a803eb
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: a2fed45e4ec51fac7d4d04e50616a7e3748d71c4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233480"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834400"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Virtual Kubelet használata az Azure Kubernetes Service (AKS)
 
@@ -22,9 +22,9 @@ Az Azure Container Instances (ACI) adjon meg egy üzemeltetett környezetben fut
 A Virtual Kubelet-szolgáltató Azure Container Instances használatakor Linux- és Windows-tárolókat is ütemezhető egy tárolópéldányt, ha egy standard Kubernetes-csomópontot. Ez a konfiguráció lehetővé teszi a Kubernetes képességeit és a tárolópéldányok felügyeleti érték és a költség előnyeit is kihasználhatja.
 
 > [!NOTE]
+> Az AKS most már rendelkezik beépített támogatást nyújt, a tárolók az aci-ban, nevű ütemezés *virtuális csomópontok*. Ezek a virtuális csomópontok jelenleg támogatja a Linux container Instances szolgáltatásban. Ha Windows tárolópéldányok ütemezése van szüksége, folytathatja a Virtual Kubelet használatával. Ellenkező esetben használjon virtuális csomópontok helyett a manuális Virtual Kubelet feljegyzett ebben a cikkben. A virtuális csomópontok használatával megkezdheti a [Azure CLI] [ virtual-nodes-cli] vagy [az Azure portal][virtual-nodes-portal].
+>
 > Virtual Kubelet egy kísérleti nyílt forráskódú projekt, és így használható. Közre, fájl problémákat, és tanulmányozza részletesen virtual kubelet, tekintse meg a [Virtual Kubelet GitHub-projekt][vk-github].
-
-Ez a dokumentum részletesen, a container Instances Virtual Kubelet konfigurálása egy AKS-en.
 
 ## <a name="prerequisite"></a>Előfeltétel
 
@@ -235,6 +235,8 @@ További információ a Virtual Kubelet a [Virtual Kubelet Github-projekt][vk-gi
 [aks-remove-connector]: /cli/azure/aks#az-aks-remove-connector
 [az-container-list]: /cli/azure/aks#az-aks-list
 [aks-install-connector]: /cli/azure/aks#az-aks-install-connector
+[virtual-nodes-cli]: virtual-nodes-cli.md
+[virtual-nodes-portal]: virtual-nodes-portal.md
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create

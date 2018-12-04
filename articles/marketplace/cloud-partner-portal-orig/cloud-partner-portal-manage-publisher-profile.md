@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 16e3e73e00af1cc6c2c531575345f12c288f1b69
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 8459866aa192f2364ae52d0d5d68eace693e127e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853693"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832683"
 ---
 # <a name="manage-azure-marketplace-and-appsource-publisher-profile"></a>"Azure piactér" és "Az AppSource" közzétevő profil kezelése
 
@@ -27,7 +27,7 @@ Ez a dokumentum megtekintéséhez és a felhasználók számára a regisztrált 
 
 Ez idő szerint lesz egy Azure Marketplace és AppSource közzétevő lépések elvégzése után. A közzétevő profil regisztrálva van a **[Cloud Partner Portalon](https://cloudpartner.azure.com/)** a partner kérelem jóváhagyását követően. A közzétevő profil érvénybe lépnek minden olyan ajánlat, és a partner-regisztráció során használt fiók közzétett termékváltozatokat.
 
-Ha a vállalati felhő-partnerként még nem regisztrált, [első lépések a cloud partner portálra](https://cloudpartner.azure.com/#documentation/getting-started-with-the-cloud-partner-portal).
+Ha a vállalati felhő-partnerként még nem regisztrált, [első lépések a cloud partner portálra](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal).
 
 **Közzétevő profil**: A közzétevő profil különbözteti meg a vállalat az Azure Marketplace és appsource-ban. A közzétevő-azonosító, a megjelenítendő név és a tulajdonos email(s) áll. Egy jól felügyelt profil lesz növelje láthatóságát, és segít a marketplace-felhasználót, könnyedén megtalálhatja és kiválaszthatja a megfelelő ajánlatot.
 

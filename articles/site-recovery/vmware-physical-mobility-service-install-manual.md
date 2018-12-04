@@ -5,17 +5,15 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/04/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: b3b6d7a64873d77336b2fcf14e22f4d6ae33e3a2
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: d0180a32f2a4258cb728869e2cb9f2abd57cc545
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976791"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845960"
 ---
-MS.Author: ramamill
-
 # <a name="install-the-mobility-service-manually-on-vmware-vms-and-physical-servers"></a>A mobilitási szolgáltatás manuális telepítése a VMware virtuális gépek és fizikai kiszolgálókon
 
 Amikor, vészhelyreállítás beállítása VMware virtuális gépek és fizikai kiszolgálók [Azure Site Recovery](site-recovery-overview.md), telepíti a [Site Recovery mobilitási szolgáltatás](vmware-physical-mobility-service-overview.md) minden helyszíni VMware virtuális gépek és fizikai kiszolgálón.  A mobilitási szolgáltatást kell-e a gépen adatírásokat, és továbbítja őket a Site Recovery is folyamatkiszolgálón.

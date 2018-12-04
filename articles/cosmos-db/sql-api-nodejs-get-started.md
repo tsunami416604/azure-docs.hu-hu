@@ -10,18 +10,20 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 61d9d33ae7e8e2104e61bbd24862a709dd6d78ec
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 18e2bf418fe3405718b6e32379c3cd5e81547551
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636492"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844519"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Oktatóanyag: Node.js-konzolalkalmazás létrehozása a JavaScript SDK-val az Azure Cosmos DB SQL API-adatok kezeléséhez
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
+> * [.NET (előzetes verzió)](sql-api-dotnet-get-started-preview.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
+> * [A .NET core (előzetes verzió)](sql-api-dotnet-core-get-started-preview.md)
 > * [Java](sql-api-java-get-started.md)
 > * [Aszinkron Java](sql-api-async-java-get-started.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
@@ -497,9 +499,9 @@ Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-elemet.
 
 
 ## <a id="Query"></a>8. lépés: Az Azure Cosmos DB-erőforrások lekérdezése
-Az Azure Cosmos DB támogatja az egyes tárolókban tárolt JSON-dokumentumokon végzett [részletes lekérdezéseket](sql-api-sql-query.md). Az alábbi mintakód egy olyan lekérdezést mutat be, amelyet a tárolóban található dokumentumokra vonatkozóan futtathat le.
+Az Azure Cosmos DB támogatja az egyes tárolókban tárolt JSON-dokumentumokon végzett [részletes lekérdezéseket](how-to-sql-query.md). Az alábbi mintakód egy olyan lekérdezést mutat be, amelyet a tárolóban található dokumentumokra vonatkozóan futtathat le.
 
-1. Másolja és illessze be a **queryContainer** függvényt a **createFamilyItem** függvény alá az app.js fájlban. Az Azure Cosmos DB támogatja az SQL-szerű lekérdezéseket, ahogyan azt az alábbi példa is mutatja. A bonyolult lekérdezések felépítésével kapcsolatos további információkért tekintse meg a [Query Playground](https://www.documentdb.com/sql/demo) (Tesztlekérdezések) szakaszt, valamint a [lekérdezésekre vonatkozó dokumentációt](sql-api-sql-query.md).
+1. Másolja és illessze be a **queryContainer** függvényt a **createFamilyItem** függvény alá az app.js fájlban. Az Azure Cosmos DB támogatja az SQL-szerű lekérdezéseket, ahogyan azt az alábbi példa is mutatja. A bonyolult lekérdezések felépítésével kapcsolatos további információkért tekintse meg a [Query Playground](https://www.documentdb.com/sql/demo) (Tesztlekérdezések) szakaszt, valamint a [lekérdezésekre vonatkozó dokumentációt](how-to-sql-query.md).
 
    ```nodejs
    /**

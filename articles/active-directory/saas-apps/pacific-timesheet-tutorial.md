@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 051e39d0e7a58c79eb00bc3dfb73eaf5389617c8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8b821da194ce41fc419e769336eeeb5927306684
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448363"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843648"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pacific-timesheet"></a>Oktatóanyag: Azure Active Directory-integráció a csendes-óceáni időrendben
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása a csendes-óceáni idő-nyilvántartási, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - A csendes-óceáni időrend egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az Azure AD integrálása a csendes-óceáni időrend konfigurálásához hozzá
 
 **Csendes-óceáni időrend hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -117,7 +117,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`
 
     > [!NOTE] 
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Kapcsolattartó [csendes-óceáni időrend támogatási csapatának](http://www.pacifictimesheet.com/support) beolvasni ezeket az értékeket.
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Kapcsolattartó [csendes-óceáni időrend támogatási csapatának](https://www.pacifictimesheet.com/support) beolvasni ezeket az értékeket.
  
 1. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
@@ -131,7 +131,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](./media/pacific-timesheet-tutorial/tutorial_pacifictimesheet_configure.png) 
 
-1. Az egyszeri bejelentkezés konfigurálása **csendes-óceáni időrend** oldalon kell küldenie a letöltött **tanúsítvány (Base64)**, **SAML egyszeri bejelentkezési szolgáltatás URL-cím**, és **SAML Entitásazonosító** való [csendes-óceáni időrend támogatási csapatának](http://www.pacifictimesheet.com/support). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+1. Az egyszeri bejelentkezés konfigurálása **csendes-óceáni időrend** oldalon kell küldenie a letöltött **tanúsítvány (Base64)**, **SAML egyszeri bejelentkezési szolgáltatás URL-cím**, és **SAML Entitásazonosító** való [csendes-óceáni időrend támogatási csapatának](https://www.pacifictimesheet.com/support). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -170,7 +170,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="creating-a-pacific-timesheet-test-user"></a>Csendes-óceáni időrend tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy csendes-óceáni időrendben Britta Simon nevű felhasználó létrehozásához. Együttműködve [csendes-óceáni időrend támogatási csapatának](http://www.pacifictimesheet.com/support) felhasználó létrehozása az alkalmazásban.
+Ebben a szakaszban egy csendes-óceáni időrendben Britta Simon nevű felhasználó létrehozásához. Együttműködve [csendes-óceáni időrend támogatási csapatának](https://www.pacifictimesheet.com/support) felhasználó létrehozása az alkalmazásban.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

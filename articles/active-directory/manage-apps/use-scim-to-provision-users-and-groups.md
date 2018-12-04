@@ -16,12 +16,12 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: d99996bb4177a11342f0897d2cf69f82a5b81bf7
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: db607da10898744441ac11bcb60fa63566cdfdd7
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721228"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833958"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>A rendszer a tartományok közötti Identity Management (SCIM) használatával automatikus kiépítésére a felhasználók és csoportok alkalmazásokhoz az Azure Active Directoryból
 
@@ -163,7 +163,7 @@ Segítségével hozhatja létre saját webes szolgáltatás, amely megfelel az S
   
   ![][3]
   
-2. [Express route-kezelők](http://expressjs.com/guide/routing.html) elemzéséhez node.js kérelem objektumok-hívás (megfelelően az SCIM-specifikáció szerint), amely elérhető végrehajtott egy node.js webes szolgáltatás.   
+2. [Express route-kezelők](https://expressjs.com/guide/routing.html) elemzéséhez node.js kérelem objektumok-hívás (megfelelően az SCIM-specifikáció szerint), amely elérhető végrehajtott egy node.js webes szolgáltatás.   
 
 ### <a name="building-a-custom-scim-endpoint"></a>Egy egyéni SCIM-végpont létrehozása
 A CLI-kódtárak használata esetén ezek a kódtárak használatával a fejlesztők is szolgáltatásaikat bármilyen végrehajtható közös nyelvi infrastruktúra szerelvény, vagy az Internet Information Services. Itt látható mintakód a címen egy végrehajtható v sestavení szolgáltatás üzemeltetéséhez http://localhost:9000: 

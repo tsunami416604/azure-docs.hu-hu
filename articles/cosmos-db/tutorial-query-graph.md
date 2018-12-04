@@ -1,24 +1,20 @@
 ---
-title: Hogyan kérdezhetők le gráfadatok az Azure Cosmos DB-ben? | Microsoft Docs
+title: Hogyan kérdezhetők le gráfadatok az Azure Cosmos DB-ben?
 description: Megismerheti, hogyan kérdezhetők le gráfadatok az Azure Cosmos DB-ben
 services: cosmos-db
 author: luisbosquez
-manager: kfile
-editor: ''
-tags: ''
+ms.author: lbosq
 ms.service: cosmos-db
 ms.component: cosmosdb-graph
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/02/2018
-ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: e3ed90d0b706e742588a5a0966d9ac3bda44ecbd
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
-ms.translationtype: HT
+ms.date: 01/02/2018
+ms.openlocfilehash: 10ec4abc7f38106611a9510cc7bcc0b5ec18b7b0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697442"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833499"
 ---
 # <a name="tutorial-query-azure-cosmos-db-gremlin-api-by-using-gremlin"></a>Oktatóanyag: Azure Cosmos DB Gremlin API lekérdezése a Gremlin használatával
 

@@ -12,18 +12,19 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 7483ac4521b0b997111dcc5705ba8c28a8443299
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
-ms.translationtype: HT
+ms.openlocfilehash: fdd29bbfaf36619fd823220e5d32a48a1619679b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116402"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842067"
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>Az első függvény létrehozása a Java és a Maven használatával (előzetes verzió)
 
-[!INCLUDE [functions-java-preview-note](../../includes/functions-java-preview-note.md)]
+> [!NOTE] 
+> A Java for Azure Functions jelenleg előzetes verzióban érhető el.
 
-Ez a rövid útmutató végigvezeti a [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) függvények a Maven használatával való létrehozásának, a helyszíni tesztelésnek és az Azure Functionsben való üzembe helyezésének lépésein. Az oktatóanyag eredménye egy, az Azure-ban futó HTTP-triggert használó függvényalkalmazás lesz.
+Ez a rövid útmutató végigvezeti egy [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) a Mavennel, helyi tesztelés, és hogyan helyezheti üzembe az Azure Functions-projektet. Ha elkészült, a Java-függvénykódot a felhőben fut, és is elindítható a HTTP-kérést.
 
 ![„Hello World” függvény elérése a parancssorból a cURL használatával](media/functions-create-java-maven/hello-azure.png)
 
@@ -41,9 +42,23 @@ Ha függvényalkalmazást szeretne létrehozni a Java használatával, akkor a s
 
 ## <a name="install-the-azure-functions-core-tools"></a>Az Azure Functions Core Tools telepítése
 
-Az Azure Functions Core Tools helyi fejlesztési környezetet biztosít az Azure Functions-függvények írásához, futtatásához, valamint a terminálból vagy parancssorból történő hibakereséséhez. 
+Az [Azure Functions Core Tools 2.0](https://www.npmjs.com/package/azure-functions-core-tools) helyi fejlesztési környezetet biztosít az Azure-függvények írásához, futtatásához és a hibakereséshez. 
 
-A folytatás előtt telepítse a [Core Tools 2. verzióját](functions-run-local.md#v2) a helyi számítógépen.
+A telepítéshez nyissa meg az Azure Functions Core Tools projekt [Telepítés](https://github.com/azure/azure-functions-core-tools#installing) szakaszát, és keresse meg az operációs rendszeréhez tartozó utasításokat.
+
+Manuálisan is telepítheti az [npm](https://www.npmjs.com/) használatával, amely a [Node.js](https://nodejs.org/) részét képezi, miután telepítette az alábbiakat:
+
+-  A [.NET Core](https://www.microsoft.com/net/core) legújabb verziója.
+-  A [Node.js](https://nodejs.org/download/) 8.6-os vagy újabb verziója.
+
+Az npm-alapú telepítés folytatásához futtassa a következőt:
+
+```
+npm install -g azure-functions-core-tools@core
+```
+
+> [!NOTE]
+> Ha az Azure Functions Core Tools 2.0-s verziójának telepítése során problémába ütközik, tekintse meg a [2.x-es verziók futtatókörnyezetével](/azure/azure-functions/functions-run-local#version-2x-runtime) foglalkozó részt.
 
 ## <a name="generate-a-new-functions-project"></a>Új Functions-projekt létrehozása
 
@@ -66,8 +81,6 @@ mvn archetype:generate ^
 
 A Maven kérni fogja a projekt létrehozásához szükséges értékeket. A _groupId_, _artifactId_ és _version_ értékek a [Maven elnevezési konvenciókra](https://maven.apache.org/guides/mini/guide-naming-conventions.html) vonatkozó referenciákban találhatók. Az _appName_ értékének egyedinek kell lennie az Azure-ban, ezért a Maven alapértelmezés szerint az előzőleg megadott _artifactId_ érték alapján létrehoz egy alkalmazásnevet. A _packageName_ érték meghatározza a Java-csomagot a létrehozott függvénykódhoz.
 
-Az `appRegion` érték határozza meg, hogy melyik [Azure-régióban](https://azure.microsoft.com/global-infrastructure/regions/) szeretné futtatni a telepített függvényalkalmazást. A régiónévértékek listáját az Azure CLI `az account list-locations` parancsával kérheti le. A `resourceGroup` érték határozza meg, hogy melyik Azure-erőforráscsoportban jön létre a függvényalkalmazás.
-
 Az alábbi `com.fabrikam.functions` és `fabrikam-functions` azonosítók példaként szolgálnak, és könnyebben átláthatóvá teszik a rövid útmutató későbbi lépéseit. Javasoljuk, hogy adja meg a saját értékekeit a Mavennek ebben a lépésben.
 
 ```Output
@@ -76,18 +89,22 @@ Define value for property 'artifactId' : fabrikam-functions
 Define value for property 'version' 1.0-SNAPSHOT : 
 Define value for property 'package': com.fabrikam.functions
 Define value for property 'appName' fabrikam-functions-20170927220323382:
-Define value for property 'appRegion' westus : 
-Define value for property 'resourceGroup' java-functions-group: 
 Confirm properties configuration: Y
 ```
 
-A Maven az _artifactId_ nevét viselő új mappában hozza létre a projektfájlokat, amely ebben a példában `fabrikam-functions`. A projekten belül létrehozott futásra kész kód egy egyszerű [HTTP-triggert](/azure/azure-functions/functions-bindings-http-webhook) használó függvény, amely egy „Hello” karaktersor után a kérés törzsét adja vissza.
+A Maven az _artifactId_ nevét viselő új mappában hozza létre a projektfájlokat, amely ebben a példában `fabrikam-functions`. A projekten belül létrehozott futásra kész kód egy egyszerű [HTTP-triggert](/azure/azure-functions/functions-bindings-http-webhook) használó függvény, amely a kérés törzsét adja vissza:
 
 ```java
 public class Function {
-    @FunctionName("HttpTrigger-Java")
-    public HttpResponseMessage HttpTriggerJava(
-    @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,final ExecutionContext context) {
+    /**
+     * This function listens at endpoint "/api/hello". Two ways to invoke it using "curl" command in bash:
+     * 1. curl -d "HTTP Body" {your host}/api/hello
+     * 2. curl {your host}/api/hello?name=HTTP%20Query
+     */
+    @FunctionName("hello")
+    public HttpResponseMessage<String> hello(
+            @HttpTrigger(name = "req", methods = {"get", "post"}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processed a request.");
 
         // Parse query parameter
@@ -95,12 +112,13 @@ public class Function {
         String name = request.getBody().orElse(query);
 
         if (name == null) {
-            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Please pass a name on the query string or in the request body").build();
+            return request.createResponse(400, "Please pass a name on the query string or in the request body");
         } else {
-            return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+            return request.createResponse(200, "Hello, " + name);
         }
     }
 }
+
 ```
 
 ## <a name="run-the-function-locally"></a>Függvény helyi futtatása
@@ -108,7 +126,7 @@ public class Function {
 Módosítsa a könyvtárt az újonnan létrehozott projektmappára, majd hozza létre és futtassa a függvényt a Maven használatával:
 
 ```
-cd fabrikam-functions
+cd fabrikam-function
 mvn clean package 
 mvn azure-functions:run
 ```
@@ -119,22 +137,22 @@ mvn azure-functions:run
 Ha a függvény helyben, az Ön rendszerén fut, és készen áll a HTTP-kérelmekre való válaszadásra, a következő kimenet látható:
 
 ```Output
-Listening on http://0.0.0.0:7071/
+Listening on http://localhost:7071
 Hit CTRL-C to exit...
 
 Http Functions:
 
-        HttpTrigger-Java: http://localhost:7071/api/HttpTrigger-Java
+   hello: http://localhost:7071/api/hello
 ```
 
 Aktiválja a függvényt a parancssorból egy új terminálablakban a curl használatával:
 
 ```
-curl -w '\n' -d LocalFunctionTest http://localhost:7071/api/HttpTrigger-Java
+curl -w '\n' -d LocalFunction http://localhost:7071/api/hello
 ```
 
 ```Output
-Hello, LocalFunctionTest
+Hello LocalFunction!
 ```
 
 A `Ctrl-C` billentyűparanccsal állítsa le a függvénykódot a terminálablakban.
@@ -166,11 +184,11 @@ Az üzembe helyezés végén megjelenik az URL-cím, amellyel bejelentkezhet az 
 Tesztelje az Azure-ban futó függvényalkalmazást a `cURL` használatával. Az alábbi mintában található URL-címet módosítsa az előző lépésben üzembe helyezett saját függvényalkalmazása címére.
 
 ```
-curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/HttpTrigger-Java
+curl -w '\n' https://fabrikam-function-20170920120101928.azurewebsites.net/api/hello -d AzureFunctions
 ```
 
 ```Output
-Hello, AzureFunctionsTest
+Hello AzureFunctions!
 ```
 
 ## <a name="make-changes-and-redeploy"></a>Módosítások elvégzése és ismételt üzembe helyezés

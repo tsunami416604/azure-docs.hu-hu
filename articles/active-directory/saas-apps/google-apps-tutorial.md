@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2018
 ms.author: jeedes
-ms.openlocfilehash: b8f6e69169cd146ec9dd20d8dad43b74ddb59228
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: bcea7848c7331ecd326f0ccb6ab9f543ce972205
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726882"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834689"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>Oktatóanyag: Azure Active Directory-integráció a G Suite-tal
 
@@ -154,8 +154,8 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     |--|
     | `google.com/a/<yourdomain.com>` |
     | `google.com` |
-    | `http://google.com` |
-    | `http://google.com/a/<yourdomain.com>` |
+    | `https://google.com` |
+    | `https://google.com/a/<yourdomain.com>` |
 
     > [!NOTE]
     > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [G Suite ügyfél-támogatási csapatának](https://www.google.com/contact/) beolvasni ezeket az értékeket.
@@ -190,7 +190,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![G Suite konfigurálása](common/configuresection.png)
 
-9. Nyisson meg egy új lapot a böngészőben, és jelentkezzen be a [G Suite felügyeleti konzol](http://admin.google.com/) a rendszergazdai fiók használatával.
+9. Nyisson meg egy új lapot a böngészőben, és jelentkezzen be a [G Suite felügyeleti konzol](https://admin.google.com/) a rendszergazdai fiók használatával.
 
 10. Kattintson a **biztonsági**. Ha a hivatkozás nem jelenik meg, akkor előfordulhat, hogy elrejtve a **további vezérlők** menü a képernyő alján.
 

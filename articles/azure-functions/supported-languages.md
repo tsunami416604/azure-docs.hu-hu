@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/02/2018
 ms.author: glenga
-ms.openlocfilehash: 15d2e40127579fbd278cc3dc18653d782a515caa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5f55122b3bf4bb7160459d524b20dd1303cc0fd8
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957312"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835420"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Az Azure Functions támogatott nyelvek
 
@@ -37,11 +37,9 @@ Támogatási három szintre sorolhatók:
 
 ### <a name="experimental-languages"></a>Kísérleti nyelvek
 
-A kísérleti nyelvek verzióban 1.x nem jól méretezhető, és nem támogatják az összes kötését. Például 1.x Python azért lassú a Functions-futtatókörnyezetben fut *python.exe* minden egyes függvény elindításával. És a Python HTTP-kötések támogatja, míg a támogatásikérelem-objektum nem férhet hozzá.
+A kísérleti nyelvek verzióban 1.x nem jól méretezhető, és nem támogatják az összes kötését. Például kísérleti 1.x a PowerShell-támogatás korlátozódik 5.1-es, mivel az a függvény alkalmazások futtatása a virtuális gépeken alapértelmezés szerint van telepítve. Ha szeretné futtatni a PowerShell-parancsfájlok, érdemes lehet [Azure Automation](https://azure.microsoft.com/services/automation/).
 
-Kísérleti 1.x a PowerShell-támogatás korlátozódik 5.1-es, mivel az a függvény alkalmazások futtatása a virtuális gépeken alapértelmezés szerint van telepítve. Ha szeretné futtatni a PowerShell-parancsfájlok, érdemes lehet [Azure Automation](https://azure.microsoft.com/services/automation/).
-
-Kísérleti nyelvek, amelyeket Ön támaszkodnak, ne használjon, mivel azok nem hivatalos támogatott. Támogatási esetek kísérleti nyelvek kapcsolatos problémák nem lehet megnyitni. 
+Kísérleti jellegű funkciókhoz, amelyeket Ön támaszkodnak, ne használjon, mivel azok nem hivatalos támogatott. Támogatási esetek kísérleti nyelvek kapcsolatos problémák nem lehet megnyitni. 
 
 A verzió 2.x verziójú futtatókörnyezet kísérleti nyelvek nem támogatja. Újabb támogatott nyelvek csak akkor, amikor a nyelv is támogatott, éles környezetben megjelenik. 
 
@@ -64,3 +62,6 @@ Ha többet szeretne megtudni az Azure Functions használata a végleges verzió 
 
 > [!div class="nextstepaction"]
 > [Java](functions-reference-java.md)
+
+> [!div class="nextstepaction"]
+> [Python](functions-reference-python.md)

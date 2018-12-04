@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: raynew
-ms.openlocfilehash: d79513569b53d2b8958f44fbfac3839c91caaff8
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 3b75e8607c85f79bb64c57c2154115c41ebe8366
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634302"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835506"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Eszközcsoport-leképezés függőségi csoport pontosítása
 
@@ -32,8 +32,9 @@ Kihasználhatja a függőségek képi megjelenítésével, hozzá kell rendelni 
 
     ![Log Analytics-munkaterület társítása](./media/concepts-dependency-visualization/associate-workspace.png)
 
-- Amikor létrehoz egy új munkaterületet, adja meg a munkaterület nevét kell. A migrálási projekt ugyanabban az előfizetésben, és ugyanabban a régióban a munkaterület létrehozását majd [Azure földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/) a migrálási projektet.
-- A **meglévő** a beállítás csak a régióban, ahol a Service Map elérhető létrehozott munkaterületek listája. Ha egy munkaterületet egy régióban, ahol a Service Map nem érhető el, az nem lehet jelenik meg a listában.
+- Munkaterület társítása, miközben kap arra, hozzon létre egy új munkaterületet, vagy csatlakoztasson egy már meglévőt:
+    - Amikor létrehoz egy új munkaterületet, adja meg a munkaterület nevét kell. A munkaterületen létrejön ugyanabban a régióban [Azure földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/) a migrálási projektet.
+    - Ha csatlakoztat egy meglévő munkaterületet, a rendelkezésre álló munkaterületek ugyanahhoz az előfizetéshez tartozik, mint a migrálási projekt közül választhat. Vegye figyelembe, hogy csak azokat a munkaterületeket egy régióban létrehozott szerepel ahol [Service Map támogatott](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions). Tudják csatolása egy munkaterületet, győződjön meg arról, hogy a munkaterület "Olvasó" elérhető lesz.
 
 > [!NOTE]
 > A migrálási projekthez tartozó munkaterület nem módosítható.
@@ -63,7 +64,6 @@ Az ügynök telepítése Linux rendszerű gépen:
 2. A csomag telepítéséhez használja az--install argumentum.
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
-
 
 ### <a name="install-the-dependency-agent"></a>A függőségi ügynök telepítése
 1. A függőségi ügynök telepítése a Windows-gépen, kattintson duplán a telepítőfájlra, és kövesse a varázsló utasításait.

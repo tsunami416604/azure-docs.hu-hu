@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: 72c7febe48c89041aad3c2e127eeb4e2d33d5eca
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 28246e89d798fa86561930ed52f0c84e433f0d9d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52428962"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838741"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Az Azure Key Vault Analytics megoldás a Log Analyticsben
 
@@ -153,4 +153,4 @@ A frissített megoldás használata:
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>További lépések
-* Használat [Log Analytics naplóbeli kereséseivel](../../log-analytics/log-analytics-queries.md) Azure Key Vault részletes adatainak megtekintéséhez.
+* Használat [Log Analytics naplóbeli kereséseivel](../../azure-monitor/log-query/log-query-overview.md) Azure Key Vault részletes adatainak megtekintéséhez.

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 20d1e39a2f2cda66f3b490000f48dd6c5fb72915
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 9e72eafc49167848996328774f7d18198667aa3d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727333"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845246"
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Az Azure AD B2C: Egyoldalas alkalmazás jelentkezzen be az OAuth 2.0 implicit folyamat
 
@@ -25,7 +25,7 @@ Számos modern alkalmazás egylapos alkalmazás előtérrendszerét elsősorban 
 * Számos engedélyezési kiszolgálók és identitás-szolgáltatóktól nem támogatja az eltérő eredetű erőforrások megosztása (CORS) kéréseket.
 * Lehet, hogy oldalas böngésző átirányítja a forrásadatok az alkalmazás jelentősen invazív, hogy a felhasználói élmény.
 
-Ezek az alkalmazások Azure Active Directory B2C-t támogató (az Azure AD B2C-vel) az OAuth 2.0 implicit folyamat használja. Az OAuth 2.0 típusú implicit engedélyezés folyamat leírt [szakaszban, az OAuth 2.0 ismertetőjének 4.2](http://tools.ietf.org/html/rfc6749). Az implicit folyamatot, az alkalmazás fogad jogkivonatok közvetlenül az Azure Active Directory (Azure AD) authorize végponton, bármely az exchange server-kiszolgáló nélkül. Hitelesítési logikát, és a munkamenet idő szükséges kezelése teljes mértékben a JavaScript-ügyfelet, anélkül, hogy további oldal átirányítja az helyezze el.
+Ezek az alkalmazások Azure Active Directory B2C-t támogató (az Azure AD B2C-vel) az OAuth 2.0 implicit folyamat használja. Az OAuth 2.0 típusú implicit engedélyezés folyamat leírt [szakaszban, az OAuth 2.0 ismertetőjének 4.2](https://tools.ietf.org/html/rfc6749). Az implicit folyamatot, az alkalmazás fogad jogkivonatok közvetlenül az Azure Active Directory (Azure AD) authorize végponton, bármely az exchange server-kiszolgáló nélkül. Hitelesítési logikát, és a munkamenet idő szükséges kezelése teljes mértékben a JavaScript-ügyfelet, anélkül, hogy további oldal átirányítja az helyezze el.
 
 Az Azure AD B2C kiterjeszti a szabványos OAuth 2.0 implicit folyamat több, mint az egyszerű hitelesítés és engedélyezés. Az Azure AD B2C bevezeti a [szabályzatparaméter](active-directory-b2c-reference-policies.md). A házirend-paraméterrel, az OAuth 2.0 segítségével szabályzatokat adhat hozzá alkalmazásához, mint például regisztrációs, bejelentkezési, és a felhasználói folyamatok felügyeleti profil. Ebben a cikkben bemutatjuk, ezek a tapasztalatok mindegyike az egyoldalas alkalmazások megvalósításához az implicit folyamat és az Azure AD használatával. Segít megismerkedni, hogy vessen egy pillantást a [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi) és [a Microsoft .NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi) mintákat.
 
@@ -138,7 +138,7 @@ error=access_denied
 | state |Lásd az előző táblázatban a teljes leírását. Ha egy `state` paraméter tartalmazza a kérés ugyanazt az értéket meg kell jelennie a választ. Az alkalmazás kell ellenőrizze, hogy a `state` a kérés- és az értékek megegyeznek.|
 
 ## <a name="validate-the-id-token"></a>Az azonosító jogkivonat érvényesítése
-Fogadó-azonosító jogkivonat már nem elég a felhasználó hitelesítéséhez. Az azonosító jogkivonat-aláírás ellenőrzése, és ellenőrizze a jogcímeket az alkalmazáskövetelmények szerint. Használja az Azure AD B2C [JSON webes jogkivonatainak (JWTs)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) és a nyilvános kulcsú hitelesítésen jogkivonatok aláírásához, és ellenőrizze, hogy azok érvényesek.
+Fogadó-azonosító jogkivonat már nem elég a felhasználó hitelesítéséhez. Az azonosító jogkivonat-aláírás ellenőrzése, és ellenőrizze a jogcímeket az alkalmazáskövetelmények szerint. Használja az Azure AD B2C [JSON webes jogkivonatainak (JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) és a nyilvános kulcsú hitelesítésen jogkivonatok aláírásához, és ellenőrizze, hogy azok érvényesek.
 
 Számos nyílt forráskódú kódtár szeretné használni a nyelvtől függően JWTs, ellenőrzésével kapcsolatos érhetők el. Fontolja meg a saját ellenőrzési logika megvalósítása helyett használható nyílt forráskódú könyvtáraink feltárása. Információt is használhatja az ebben a cikkben megtudhatja, hogyan megfelelően használni az ezen kódtárak segítségével.
 
@@ -161,7 +161,7 @@ Az azonosító jogkivonat aláírása, ellenőrzése után több jogcím követe
 * Ellenőrizze a `aud` győződjön meg arról, hogy az azonosító jogkivonat az alkalmazáshoz kiállított jogcímet. Az értéknek kell lennie a az alkalmazás azonosítója.
 * Ellenőrizze a `iat` és `exp` jogcímeket kell győződjön meg arról, hogy az azonosító jogkivonat nem járt le.
 
-Végre kell hajtania néhány további ellenőrzések a részletes leírását a [OpenID Connect Core specifikációja](http://openid.net/specs/openid-connect-core-1_0.html). Érdemes azt is, további jogcímek a forgatókönyvtől függően ellenőrzése. Néhány gyakori ellenőrzések a következők:
+Végre kell hajtania néhány további ellenőrzések a részletes leírását a [OpenID Connect Core specifikációja](https://openid.net/specs/openid-connect-core-1_0.html). Érdemes azt is, további jogcímek a forgatókönyvtől függően ellenőrzése. Néhány gyakori ellenőrzések a következők:
 
 * Annak ellenőrzése, hogy a felhasználó vagy a szervezet regisztrált az alkalmazáshoz.
 * Annak ellenőrzése, hogy a felhasználó rendelkezik-e a megfelelő hitelesítési és a jogosultságokat.

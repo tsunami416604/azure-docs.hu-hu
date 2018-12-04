@@ -5,15 +5,15 @@ services: container-instances
 author: seanmck
 ms.service: container-instances
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 11/30/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: c17bdb5a81640a7162ae735a4633a31cdfffbb1d
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 08bc344a20ade3d8bb0f7dd23a854fd03ddac006
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803511"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845806"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Az Azure Container Instances és tárolóvezénylőt
 
@@ -40,9 +40,9 @@ Az Azure Container Instances lehetővé teszi a réteges megközelítésének sz
 
 Az Azure container Instances az alapul szolgáló infrastruktúra kezeli, mivel az orchestrator platform nem kell magát a keresés, egy megfelelő gazdagép egyetlen tároló futtatására vonatkoznak. A felhő rugalmasságát biztosítja, hogy egy mindig elérhető. Ehelyett az orchestrator összpontosíthat a feladatok, amelyek megkönnyítik a több tároló-architektúrák, beleértve a méretezés és összehangolt frissítése.
 
-## <a name="potential-scenarios"></a>A lehetséges forgatókönyvek
+## <a name="scenarios"></a>Forgatókönyvek
 
-Bár az Azure Container Instances használatával az orchestrator integrációs továbbra is születőfélben, várhatóan tovább fogjuk, hogy néhány különböző környezetekben előfordulhat, hogy kész:
+Az orchestrator-integráció az Azure Container Instances használatával pedig továbbra is születőfélben tervezzük, hogy néhány különböző környezetek fog megjelenni:
 
 ### <a name="orchestration-of-container-instances-exclusively"></a>Vezénylési tároló kizárólag példányok
 
@@ -54,13 +54,15 @@ A hosszan futó, stabil számítási feladatokhoz dedikált virtuális gépek eg
 
 Ahelyett, hogy a horizontális felskálázás a fürtben lévő virtuális gépek számát, akkor ezeken a gépeken alakzatot további tárolók üzembe helyezése, az orchestrator is egyszerűen ütemezheti a további tárolókat az Azure Container Instances szolgáltatásban, és törölje őket, ha azok már nem szükséges.
 
-## <a name="sample-implementation-virtual-kubelet-for-kubernetes"></a>Példa: a Kubernetes Virtual Kubelet
+## <a name="sample-implementation-virtual-nodes-for-azure-kubernetes-service-aks"></a>Példa: virtuális csomópontok számára az Azure Kubernetes Service (AKS)
 
-A [Virtual Kubelet] [ aci-connector-k8s] projektet mutatja be, hogyan integrálható a vezénylési tárolóplatformokhoz az Azure Container Instances használatával.
+Az alkalmazások és szolgáltatások gyors méretezése egy [Azure Kubernetes Service](../aks/intro-kubernetes.md) -(AKS)-fürt, használhatja *virtuális csomópontok* dinamikusan létrehozott, az Azure Container Instances szolgáltatásban. Jelenleg előzetes verzióban elérhető virtuális csomópontok ACI futtató podok és az AKS-fürt közötti hálózati kommunikáció engedélyezéséhez. 
 
-Virtual Kubelet utánozza a Kubernetes [kubelet] [ kubelet-doc] csomópontként regisztrálás korlátlan kapacitást és létrehozásának zahájeno [podok] [ pod-doc] , tárolócsoportok az Azure Container Instances szolgáltatásban.
+Virtuális csomópontok jelenleg támogatja a Linux container Instances szolgáltatásban. Virtuális csomópontok használatával – első lépések a [Azure CLI-vel](https://go.microsoft.com/fwlink/?linkid=2047538) vagy [az Azure portal](https://go.microsoft.com/fwlink/?linkid=2047545).
 
-Összekötők más vezénylők sikerült felépíteni, amelyek hasonló módon integrálhatók a platform primitívek úgy, hogy az orchestrator API hatékonyságát a gyorsasága és egyszerűsége kezelése az Azure Container Instances a tárolók.
+Virtuális csomópontok használja a nyílt forráskódú [Virtual Kubelet] [ aci-connector-k8s] referenciaszámítógépnek a Kubernetes [kubelet] [ kubelet-doc] oly módon, a korlátlan számú csomópont a kapacitás. A Virtual Kubelet továbbítja a létrehozásának [podok] [ pod-doc] , tárolócsoportok az Azure Container Instances szolgáltatásban.
+
+Tekintse meg a [Virtual Kubelet](https://github.com/virtual-kubelet/virtual-kubelet) projekt kapcsolatos további példák a Kubernetes API-t kiterjesztése a kiszolgáló nélküli tárolóplatformokhoz.
 
 ## <a name="next-steps"></a>További lépések
 

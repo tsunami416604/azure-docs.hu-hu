@@ -13,15 +13,15 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 64b4ab95d4972848c6c0cf7130ec97c2be41ead0
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 7fe018a1584561ae12742da6e75f7d265ae82656
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722911"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833550"
 ---
 # <a name="standard-properties-in-log-analytics-records"></a>A Log Analytics-rekordok szabványos tulajdonságai
-Az adatok [Log Analytics](../log-analytics/log-analytics-queries.md) rekordkészletet, amelyek mindegyike egy adott adattípus, amely egy egyedi tulajdonságkészlettel rendelkezik van tárolva. Számos adattípusok, amelyek közösek a több típus több alapvető tulajdonságainak lesz. Ez a cikk ismerteti ezeket a tulajdonságokat és példákat, hogyan használhatja ezeket a lekérdezéseket.
+Az adatok [Log Analytics](../log-analytics/../azure-monitor/log-query/log-query-overview.md) rekordkészletet, amelyek mindegyike egy adott adattípus, amely egy egyedi tulajdonságkészlettel rendelkezik van tárolva. Számos adattípusok, amelyek közösek a több típus több alapvető tulajdonságainak lesz. Ez a cikk ismerteti ezeket a tulajdonságokat és példákat, hogyan használhatja ezeket a lekérdezéseket.
 
 Ezek a tulajdonságok néhány létrehozás folyamatban van megvalósítva, így előfordulhat, hogy megjelennek az egyes adattípusok, de még nincs a többi.
 
@@ -88,6 +88,6 @@ AzureActivity
 
 ## <a name="next-steps"></a>További lépések
 
-- További információk [Log Analytics-adatok tárolt](../log-analytics/log-analytics-queries.md).
+- További információk [Log Analytics-adatok tárolt](../log-analytics/../azure-monitor/log-query/log-query-overview.md).
 - Gyorsan egy leckében a [lekérdezések írása a Log Analytics](../log-analytics/query-language/get-started-queries.md).
 - Gyorsan egy leckében a [a táblázatok összekapcsolása a Log Analytics-lekérdezések](../log-analytics/query-language/joins.md).

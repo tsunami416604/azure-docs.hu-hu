@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/02/2018
+ms.date: 12/01/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: b4b81546a267e6fd082f83db8b23010f0742771f
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: b043c5ebe4c2a02bd4d40ca4b2bb7d5f488f5747
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237905"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837341"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>Oktatóanyag: Az Azure és az Azure Stack hozzon létre egy előkészített adatelemzési megoldással 
 
@@ -133,7 +133,7 @@ Hozzon létre egy új Azure Stack-függvény tiszta adatok áthelyezése az Azur
 
     | Beállítás | Ajánlott érték | Leírás |
     | ---- | ---- | ---- |
-    | Alkalmazásnév | Globálisan egyedi név | Az új függvényalkalmazást azonosító név. Érvényes karakterek: `a` - `z`, `0``-9`, és `-`. |
+    | App neve | Globálisan egyedi név | Az új függvényalkalmazást azonosító név. Érvényes karakterek: `a` - `z`, `0``-9`, és `-`. |
     | Előfizetés | Az Ön előfizetése | Az előfizetés, amelyben létrehozta az új függvényalkalmazást. |
     | **Erőforráscsoport** |  |  |
     | myResourceGroup | Az új erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. |  |
@@ -252,7 +252,7 @@ A lépéseket és a egy másik tárolási fiók és a blob tároló létrehozás
 
 ## <a name="test-the-queue-triggered-function"></a>Teszt az üzenetsor által aktivált függvény
 
-1.  Az Azure Portalon keresse meg a függvényt. Bontsa ki a **naplók** a lap alján, és győződjön meg arról, a naplózási adatfolyam nincs leállítva.
+1.  Az Azure Stack portálon keresse meg a függvényt. Bontsa ki a **naplók** a lap alján, és győződjön meg arról, a naplózási adatfolyam nincs leállítva.
 
 2.  Nyissa meg a Storage Explorert, és csatlakozzon, ez a szakasz elején létrehozott tárfiókot.
 

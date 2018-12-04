@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 48f178a3316eb7232fad7d39b28aaa2fdcd77bff
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 63346068529591d4d396b0590db96a73782181e9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642906"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838854"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Hozzon létre, és a Log Analytics REST API-val riasztási szabályok kezelése
 A Log Analytics Alert REST API lehetővé teszi, hogy hozhat létre, és a Log Analytics-riasztások kezelése.  Ez a cikk részletesen az API-val és néhány példa a különféle műveletek végezhetők.
@@ -28,7 +28,7 @@ A Log Analytics Alert REST API lehetővé teszi, hogy hozhat létre, és a Log A
 A Log Analytics Search REST API RESTful és az Azure Resource Manager REST API-n keresztül érhető el. Ebben a dokumentumban talál példákat, az API-t szeretné elérni, egy PowerShell parancssori használatával [ARMClient](https://github.com/projectkudu/ARMClient), egy nyílt forráskódú parancssori eszköz, amely leegyszerűsíti az Azure Resource Manager API meghívása. ARMClient és a PowerShell használata a Log Analytics Search API eléréséhez számos lehetőség. Ezekkel az eszközökkel a REST-alapú Azure Resource Manager API Log Analytics-munkaterületek hívásokat, és végezze el a keresési parancsok azokon belül használhat. Az API-t fog keresési eredményeket is JSON formátumban, lehetővé téve, hogy programozott módon használja a keresési eredmények között számos különböző módon.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Jelenleg riasztások csak hozhatja létre a Log Analytics mentett keresést.  Olvassa el a [Log Search REST API](../../log-analytics/log-analytics-queries.md) további információt.
+Jelenleg riasztások csak hozhatja létre a Log Analytics mentett keresést.  Olvassa el a [Log Search REST API](../../azure-monitor/log-query/log-query-overview.md) további információt.
 
 ## <a name="schedules"></a>Ütemezések
 Mentett keresés egy vagy több ütemezés is rendelkezhet. Az ütemezés határozza meg, hogy milyen gyakran a keresés Futtatás és az az időintervallum, amelyen a feltétel azonosítja.
@@ -510,6 +510,6 @@ Egy webhook művelettel ütemezés módosításához használja a Put metódust 
 
 
 ## <a name="next-steps"></a>További lépések
-* Használja a [REST API-t, hajtsa végre a naplókeresések](../../log-analytics/log-analytics-queries.md) a Log Analyticsben.
+* Használja a [REST API-t, hajtsa végre a naplókeresések](../../azure-monitor/log-query/log-query-overview.md) a Log Analyticsben.
 * Ismerje meg [naplóriasztások az azure-riasztások](../../monitoring-and-diagnostics/monitor-alerts-unified-log.md)
 

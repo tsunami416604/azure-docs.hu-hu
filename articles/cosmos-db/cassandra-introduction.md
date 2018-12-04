@@ -1,22 +1,20 @@
 ---
-title: Bevezetés az Azure Cosmos DB Cassandra API használatába | Microsoft Docs
+title: Az Azure Cosmos DB Cassandra API bemutatása
 description: Ez a cikk azt ismerteti, hogy miként használható az Azure Cosmos DB meglévő alkalmazások áthelyezésére és új alkalmazások létrehozására a Cassandra API segítségével a már ismert Cassandra-illesztőprogramok és CQL használatával.
 services: cosmos-db
 author: kanshiG
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
-ms.devlang: na
 ms.topic: overview
 ms.date: 09/24/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 1037f7921093d38d9020bafd9fd3597f27ca5011
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: 79c131be14de05e84eb21d6d53eefd1aa224df16
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230250"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835006"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Az Azure Cosmos DB Cassandra API bemutatása
 

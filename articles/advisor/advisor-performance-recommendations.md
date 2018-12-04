@@ -3,23 +3,22 @@ title: Az Azure Advisor-teljesítményajánlások |} A Microsoft Docs
 description: Az Advisor használatával az Azure-környezetek teljesítményének optimalizálásához.
 services: advisor
 documentationcenter: NA
-author: manbeenkohli
+author: kasparks
 manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: advisor
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
-ms.author: makohli
-ms.openlocfilehash: 9516534216c4a2c0f61e33ea3cbf1bbcb2ab58c7
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: kasparks
+ms.openlocfilehash: ba79d2d5ed4350960af1b92ee863595e3540a1d2
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301310"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843927"
 ---
 # <a name="advisor-performance-recommendations"></a>Advisor-teljesítményajánlások
 
@@ -33,7 +32,7 @@ Az Azure Advisor azonosítja a Traffic Manager-profilok konfigurált hosszabb TT
 
 ## <a name="improve-database-performance-with-sql-db-advisor"></a>Adatbázis-teljesítmény javítása az SQL DB Advisor szolgáltatással
 
-Az Advisor-javaslatok az Azure-erőforrások egységes, összevont nézetének biztosít. Integrálható az SQL Database Advisor viszi, az SQL Azure adatbázis teljesítményének javítására vonatkozó javaslatokat. Az SQL Database Advisor az SQL Azure-adatbázisok teljesítményét értékeli a használati előzmények elemzésével. Javaslatok, amelyek a leginkább kihasználni az adatbázis jellemző számítási feladatot futtat majd kínál. 
+Az Advisor-javaslatok az Azure-erőforrások egységes, összevont nézetének biztosít. Integrálható az SQL Database Advisor viszi, az SQL Azure adatbázis teljesítményének javítására vonatkozó javaslatokat. Az SQL Database Advisor az SQL Azure-adatbázisok teljesítményét értékeli a használati előzmények elemzésével. Javaslatok, amelyek a leginkább kihasználni az adatbázis jellemző számítási feladatot futtat majd kínál. 
 
 > [!NOTE]
 > Javaslatokat beolvasni egy adatbázisnak rendelkeznie kell egy hét használati kapcsolatban, és a hét belül kell lennie konzisztens tevékenységet észleltünk a fiókjában. Az SQL Database Advisor a lekérdezés konzisztens minták, mint a tevékenység véletlenszerű csúcsforgalomra könnyebben optimalizálható.

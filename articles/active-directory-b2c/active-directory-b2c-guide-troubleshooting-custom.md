@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 32692cbe7959650d5181c9e9dfcd7dd5ee55a46e
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 8bb95ae776c329e67e9f9936213a9f4c2a0c8f62
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024593"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842594"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Az Azure AD B2C-vel egyéni szabályzatok és az identitás-kezelőfelületi keretrendszer hibaelhárítása
 
@@ -60,7 +60,7 @@ Kódrészlet. hiba: `Reason: User is currently logged as a user of 'yourtenant.o
     * Webalkalmazást vagy webes API: nem
     * Natív ügyfél: nem
 
-* Az exchange, az ügyfél böngészője és az Azure AD B2C-vel közötti üzenetek nyomon követése, használja a [Fiddler](http://www.telerik.com/fiddler). Ez segíthet álló, ahol a felhasználói interakciósorozat nem működik, a vezénylési lépésekben.
+* Az exchange, az ügyfél böngészője és az Azure AD B2C-vel közötti üzenetek nyomon követése, használja a [Fiddler](https://www.telerik.com/fiddler). Ez segíthet álló, ahol a felhasználói interakciósorozat nem működik, a vezénylési lépésekben.
 
 * A **fejlesztői mód**, használjon **Application Insights** az identitás-kezelőfelületi keretrendszer felhasználói interakciósorozat tevékenységét nyomon követéséhez. A **fejlesztői mód**, figyelheti, hogy az exchange között az identitás-kezelőfelületi keretrendszer és a különböző jogcímszolgáltatóktól technikai profilok, identitás-szolgáltatóktól, API-alapú szolgáltatások, például meghatározott jogcímek a Az Azure AD B2C felhasználói címtár- és egyéb szolgáltatások, például az Azure több többtényezős hitelesítés.  
 

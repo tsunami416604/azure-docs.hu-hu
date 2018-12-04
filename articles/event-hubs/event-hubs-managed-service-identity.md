@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: shvija
-ms.openlocfilehash: 815a6ff528e024ed1685b09b66f8fabce4d360c1
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 51b9aa33fd186a46d51f7e2fb64b42648b854cd3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48784553"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833907"
 ---
 # <a name="managed-identities-for-azure-resources-with-event-hubs"></a>Az Azure-erőforrásokhoz az Event Hubs felügyelt identitásokból
 
@@ -55,11 +55,7 @@ Miután engedélyezte a funkciót, egy új felügyeltszolgáltatás-identitás l
 
 Ezután [Event Hubs-névtér létrehozása](event-hubs-create.md) előzetes támogatást nyújt az Azure-erőforrások felügyelt identitások az Azure-régiók egyikében: **USA keleti régiójában**, **USA keleti régiója 2**, vagy  **Nyugat-Európa**. 
 
-Keresse meg a névtér **hozzáférés-vezérlés (IAM)** lapon a portálon, és kattintson a **Hozzáadás** felügyelt identitásnak hozzáadása a **tulajdonosa** szerepkör. Ehhez keresse meg a webalkalmazás nevére a **engedélyek hozzáadása** panel **kiválasztása** mezőben, majd kattintson a bejegyzésre. Ezután kattintson a **Save** (Mentés) gombra.
-
-![](./media/event-hubs-managed-service-identity/msi2.png)
- 
-A felügyelt identitás a webes alkalmazás most már hozzáfér az Event Hubs-névtér és az event hubs korábban hozott létre. 
+Keresse meg a névtér **hozzáférés-vezérlés (IAM)** lapon a portálon, és kattintson a **szerepkör-hozzárendelés hozzáadása** felügyelt identitásnak hozzáadása a **tulajdonosa** szerepkör. Ehhez keresse meg a webalkalmazás nevére a **engedélyek hozzáadása** panel **kiválasztása** mezőben, majd kattintson a bejegyzésre. Ezután kattintson a **Save** (Mentés) gombra. A felügyelt identitás a webes alkalmazás most már hozzáfér az Event Hubs-névtér és az event hubs korábban hozott létre. 
 
 ### <a name="run-the-app"></a>Az alkalmazás futtatása
 

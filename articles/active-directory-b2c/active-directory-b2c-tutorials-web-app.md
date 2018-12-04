@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.author: davidmu
-ms.date: 1/23/2018
+ms.date: 11/30/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: e215577fdb39b3dc1a9c5ce641c44e3cdef8fb45
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
-ms.translationtype: HT
+ms.openlocfilehash: 8b482391dfafdda0e54b3f9e2b8a3a7de2f2d5cd
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604093"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834723"
 ---
 # <a name="tutorial-enable-a-web-application-to-authenticate-with-accounts-using-azure-active-directory-b2c"></a>Oktatóanyag: Webalkalmazások fiókokkal történő hitelesítésének engedélyezése az Azure Active Directory B2C használatával
 
@@ -25,7 +25,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Egy mintául szolgáló ASP.NET-webalkalmazás regisztrálása az Azure AD B2C-bérlőben.
-> * A felhasználói regisztrációra, bejelentkezésre, profil szerkesztésére és új jelszó kérésére vonatkozó szabályzatok létrehozása.
+> * Hozzon létre felhasználói folyamatokat a felhasználói regisztrációs, bejelentkezési, profil szerkesztésére és új jelszó kérésére.
 > * A mintául szolgáló webalkalmazás konfigurálása az Azure AD B2C-bérlő használatára. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -79,65 +79,87 @@ Az Azure AD B2C az OAuth2 engedélyezést használja az [ügyfélalkalmazásokho
 
 A portál egyszer megjeleníti a kulcsot. Fontos, hogy kimásolja és elmentse a kulcs értékét. Szüksége lesz rá az alkalmazás konfigurálásakor. A kulcsot tárolja biztonságos helyen, és ne ossza meg nyilvánosan.
 
-## <a name="create-policies"></a>Szabályzatok létrehozása
+## <a name="create-user-flows"></a>Felhasználói folyamatok létrehozása
 
-Az Azure AD B2C-szabályzatok felhasználói munkafolyamatokat határoznak meg. A gyakori munkafolyamatok közé tartozik például a bejelentkezés, a feliratkozás, a jelszó módosítása és a profilok szerkesztése.
+Az Azure AD B2C felhasználói folyamat a felhasználói élmény identitás tevékenység határozza meg. Bejelentkezés, regisztráció, a jelszó módosítása és a profilok szerkesztése például olyan közös felhasználókövetési adatai.
 
-### <a name="create-a-sign-up-or-sign-in-policy"></a>Regisztrálási vagy bejelentkezési szabályzat létrehozása
+### <a name="create-a-sign-up-or-sign-in-user-flow"></a>Regisztrálási vagy bejelentkezési felhasználói folyamat létrehozása
 
-A webalkalmazás eléréséhez szükséges felhasználói regisztrációhoz és bejelentkezéshez hozzon létre egy **regisztrálási vagy bejelentkezési szabályzatot**.
+Jelentkezzen be a webalkalmazás eléréséhez szükséges felhasználói regisztrációhoz, hozzon létre egy **regisztrálási vagy bejelentkezési felhasználói folyamata**.
 
-1. Válassza ki az Azure AD B2C portáloldalán a **Regisztrálási vagy bejelentkezési szabályzatok** lehetőséget, és kattintson a **Hozzáadás** elemre.
+1. Az Azure AD B2C portáloldalán válassza **felhasználói folyamatok** kattintson **új felhasználói folyamat**.
+2. Az a **ajánlott** lapra, majd **jelentkezzen be, és jelentkezzen be a**.
 
-    A szabályzat konfigurálásához használja a következő beállításokat:
+    A felhasználói folyamat konfigurálásához használja a következő beállításokat:
 
-    ![Regisztrálási vagy bejelentkezési szabályzat hozzáadása](media/active-directory-b2c-tutorials-web-app/add-susi-policy.png)
-
-    | Beállítás      | Ajánlott érték  | Leírás                                        |
-    | ------------ | ------- | -------------------------------------------------- |
-    | **Name (Név)** | SiUpIn | Adja meg a szabályzat **nevét**. A szabályzat neve a következő előtaggal kezdődik: **b2c_1_**. A példakódban a szabályzat teljes **b2c_1_SiUpIn** nevét fogja használni. | 
-    | **Identitásszolgáltató** | Regisztráció e-mail-címmel | Az identitásszolgáltató alapján lehet kétséget kizáróan azonosítani a felhasználót. |
-    | **Regisztrációs attribútumok** | Megjelenítendő név és postai irányítószám | Válassza ki a regisztráció során a felhasználótól összegyűjtendő attribútumokat. |
-    | **Alkalmazásjogcímek** | Megjelenítendő név, postai irányítószám, új felhasználó, a felhasználó objektumazonosítója | Válassza ki a [hozzáférési jogkivonatban](../active-directory/develop/developer-glossary.md#access-token) szerepeltetni kívánt [jogcímeket](../active-directory/develop/developer-glossary.md#claim). |
-
-2. Kattintson a **Létrehozás** gombra a szabályzat létrehozásához. 
-
-### <a name="create-a-profile-editing-policy"></a>Profilszerkesztési szabályzat létrehozása
-
-Ahhoz, hogy a felhasználók saját maguk is alaphelyzetbe állíthassák felhasználói profiljuk adatait, hozzon létre egy **profilszerkesztési szabályzatot**.
-
-1. Válassza ki az Azure AD B2C portáloldalán a **Profilszerkesztési szabályzatok** elemet, és kattintson a **Hozzáadás** gombra.
-
-    A szabályzat konfigurálásához használja a következő beállításokat:
+    ![Regisztrálási vagy bejelentkezési felhasználói folyamat hozzáadása](media/active-directory-b2c-tutorials-web-app/add-susi-user-flow.png)
 
     | Beállítás      | Ajánlott érték  | Leírás                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **Name (Név)** | SiPe | Adja meg a szabályzat **nevét**. A szabályzat neve a következő előtaggal kezdődik: **b2c_1_**. A példakódban a szabályzat teljes **b2c_1_SiPe** nevét fogja használni. | 
-    | **Identitásszolgáltató** | Bejelentkezés helyi fiókba | Az identitásszolgáltató alapján lehet kétséget kizáróan azonosítani a felhasználót. |
-    | **Profilattribútumok** | Megjelenítendő név és postai irányítószám | Válassza ki azokat az attribútumokat, amelyeket a felhasználók módosíthatnak a profilszerkesztés során. |
-    | **Alkalmazásjogcímek** | Megjelenítendő név, postai irányítószám, a felhasználó objektumazonosítója | Válassza ki azokat a [jogcímeket](../active-directory/develop/developer-glossary.md#claim), amelyeket egy sikeres profilszerkesztés után szerepeltetni szeretne a [hozzáférési jogkivonatban](../active-directory/develop/developer-glossary.md#access-token). |
+    | **Name (Név)** | SiUpIn | Adjon meg egy **neve** a felhasználói folyamat. A felhasználói interakciósorozat neve a következő előtaggal kezdődik **b2c_1_**. A flow felhasználónév használata **b2c_1_SiUpIn** a mintakód. | 
+    | **Identitásszolgáltatók** | Regisztráció e-mail-címmel | Az identitásszolgáltató alapján lehet kétséget kizáróan azonosítani a felhasználót. |
 
-2. Kattintson a **Létrehozás** gombra a szabályzat létrehozásához. 
+3. A **felhasználói attribútumokról és jogcímekről**, kattintson a **Továbbiak megjelenítése** , és válassza ki a következő beállításokat:
 
-### <a name="create-a-password-reset-policy"></a>Új jelszó kérésére vonatkozó szabályzat létrehozása
+    ![Regisztrálási vagy bejelentkezési felhasználói folyamat hozzáadása](media/active-directory-b2c-tutorials-web-app/add-attributes-and-claims.png)
 
-Ha engedélyezni szeretné az új jelszavak kérését az alkalmazásban, létre kell hoznia egy **új jelszó kérésére** vonatkozó szabályzatot. Ez a szabályzat írja le, hogy mit tapasztalnak a felhasználók az új jelszó kérése során, valamint megadja azokat a jogkivonatokat, amelyeket az alkalmazás fogad a művelet sikeres elvégzésekor.
+    | Oszlop      | Javasolt értékek  | Leírás                                        |
+    | ------------ | ------- | -------------------------------------------------- |
+    | **Attribútum gyűjtése** | Megjelenítendő név és postai irányítószám | Válassza ki a regisztráció során a felhasználótól összegyűjtendő attribútumokat. |
+    | **Vissza a jogcímet** | Megjelenítendő név, postai irányítószám, új felhasználó, a felhasználó objektumazonosítója | Válassza ki a [hozzáférési jogkivonatban](../active-directory/develop/developer-glossary.md#access-token) szerepeltetni kívánt [jogcímeket](../active-directory/develop/developer-glossary.md#claim). |
+
+4. Kattintson az **OK** gombra.
+5. Kattintson a **létrehozás** a felhasználói folyamat létrehozásához. 
+
+### <a name="create-a-profile-editing-user-flow"></a>Profilszerkesztési felhasználói folyamata létrehozása
+
+Ahhoz, hogy a hogy a felhasználók visszaállíthassák a saját felhasználói profil adatait saját, hozzon létre egy **Profilszerkesztési felhasználói folyamata**.
+
+1. Az Azure AD B2C portáloldalán válassza **felhasználói folyamatok** kattintson **új felhasználói folyamat**.
+2. Az a **ajánlott** lapra, majd **profilszerkesztést**.
+
+    A felhasználói folyamat konfigurálásához használja a következő beállításokat:
+
+    | Beállítás      | Ajánlott érték  | Leírás                                        |
+    | ------------ | ------- | -------------------------------------------------- |
+    | **Name (Név)** | SiPe | Adjon meg egy **neve** a felhasználói folyamat. A felhasználói interakciósorozat neve a következő előtaggal kezdődik **b2c_1_**. A flow felhasználónév használata **b2c_1_SiPe** a mintakód. | 
+    | **Identitásszolgáltatók** | Bejelentkezés helyi fiókba | Az identitásszolgáltató alapján lehet kétséget kizáróan azonosítani a felhasználót. |
+
+3. A **felhasználói attribútumok**, kattintson a **Továbbiak megjelenítése** , és válassza ki a következő beállításokat:
+
+    | Oszlop      | Javasolt értékek  | Leírás                                        |
+    | ------------ | ------- | -------------------------------------------------- |
+    | **Attribútum gyűjtése** | Megjelenítendő név és postai irányítószám | Válassza ki azokat az attribútumokat, amelyeket a felhasználók módosíthatnak a profilszerkesztés során. |
+    | **Vissza a jogcímet** | Megjelenítendő név, postai irányítószám, a felhasználó objektumazonosítója | Válassza ki azokat a [jogcímeket](../active-directory/develop/developer-glossary.md#claim), amelyeket egy sikeres profilszerkesztés után szerepeltetni szeretne a [hozzáférési jogkivonatban](../active-directory/develop/developer-glossary.md#access-token). |
+
+4. Kattintson az **OK** gombra.
+5. Kattintson a **létrehozás** a felhasználói folyamat létrehozásához. 
+
+### <a name="create-a-password-reset-user-flow"></a>Jelszó alaphelyzetbe állítása felhasználói folyamat létrehozása
+
+Engedélyezze az új jelszó kérését az alkalmazásban, meg kell hoznia egy **jelszó-visszaállítási felhasználói folyamat**. A felhasználói folyamat során a jelszó-változtatási és -jogkivonatokat, amelyeket az alkalmazás fogad a tartalmát fogyasztói élményt ismerteti a művelet sikeres elvégzésekor.
 
 1. Az Azure AD B2C portáloldalán válassza ki az **Új jelszó kérésére vonatkozó szabályzatok** lehetőséget, és kattintson a **Hozzáadás** gombra.
+2. Az a **ajánlott** lapra, majd **új jelszó kérésére vonatkozó**.
 
-    A szabályzat konfigurálásához használja a következő beállításokat.
+    A felhasználói folyamat konfigurálásához használja a következő beállításokat.
 
     | Beállítás      | Ajánlott érték  | Leírás                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **Name (Név)** | SSPR | Adja meg a szabályzat **nevét**. A szabályzat neve a következő előtaggal kezdődik: **b2c_1_**. A példakódban a szabályzat teljes **b2c_1_SSPR** nevét fogja használni. | 
-    | **Identitásszolgáltató** | Új jelszó kérése e-mail-cím használatával | Az identitásszolgáltató alapján lehet kétséget kizáróan azonosítani a felhasználót. |
-    | **Alkalmazásjogcímek** | A felhasználó objektumazonosítója | Válassza ki azokat a [jogcímeket](../active-directory/develop/developer-glossary.md#claim), amelyeket egy új jelszó sikeres kérése után szerepeltetni kíván a [hozzáférési jogkivonatban](../active-directory/develop/developer-glossary.md#access-token). |
+    | **Name (Név)** | SSPR | Adjon meg egy **neve** a felhasználói folyamat. A felhasználói interakciósorozat neve a következő előtaggal kezdődik **b2c_1_**. A flow felhasználónév használata **b2c_1_SSPR** a mintakód. | 
+    | **Identitásszolgáltatók** | Új jelszó kérése e-mail-cím használatával | Az identitásszolgáltató alapján lehet kétséget kizáróan azonosítani a felhasználót. |
 
-2. Kattintson a **Létrehozás** gombra a szabályzat létrehozásához. 
+3. A **alkalmazásjogcímek**, kattintson a **Továbbiak megjelenítése** , és válassza ki az alábbi beállítást:
+    | Oszlop      | Ajánlott érték  | Leírás                                        |
+    | ------------ | ------- | -------------------------------------------------- |
+    | **Vissza a jogcímet** | A felhasználó objektumazonosítója | Válassza ki azokat a [jogcímeket](../active-directory/develop/developer-glossary.md#claim), amelyeket egy új jelszó sikeres kérése után szerepeltetni kíván a [hozzáférési jogkivonatban](../active-directory/develop/developer-glossary.md#access-token). |
+
+4. Kattintson az **OK** gombra.
+5. Kattintson a **létrehozás** a felhasználói folyamat létrehozásához. 
 
 ## <a name="update-web-app-code"></a>Webalkalmazás kódjának frissítése
 
-Most, hogy regisztrálta a webalkalmazást és létrehozta a szabályzatokat, konfigurálnia kell az alkalmazást az Azure AD B2C-bérlő használatához. Ebben az oktatóanyagban a GitHubról letölthető, mintául szolgáló webalkalmazást fog konfigurálni. 
+Most, hogy regisztrálta a webalkalmazást, és létrehozott felhasználói folyamatok, konfigurálnia kell az alkalmazást az Azure AD B2C-bérlő használatához. Ebben az oktatóanyagban a GitHubról letölthető, mintául szolgáló webalkalmazást fog konfigurálni. 
 
 [Töltse le a zip-fájlt](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip), vagy a klónozza a mintául szolgáló webalkalmazást a GitHubról. A mintafájlt egy olyan mappába kell kibontani, ahol a teljes elérési út rövidebb, mint 260 karakter.
 
@@ -145,15 +167,15 @@ Most, hogy regisztrálta a webalkalmazást és létrehozta a szabályzatokat, ko
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-A mintául szolgáló ASP.NET-webalkalmazás egy egyszerű feladatlista-alkalmazás, amellyel feladatlistát lehet létrehozni és frissíteni. Az alkalmazás által használt [Microsoft OWIN köztes összetevők](https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/) lehetővé teszik, hogy a felhasználók regisztráljanak az alkalmazás Azure AD B2C-bérlőben történő használatához. Egy Azure AD B2C-szabályzat létrehozása lehetővé teszi a felhasználók számára, hogy egy meglévő közösségi hálózati fiókot vagy egy újonnan létrehozott fiókot használjanak azonosítóként az alkalmazás eléréséhez. 
+A mintául szolgáló ASP.NET-webalkalmazás egy egyszerű feladatlista-alkalmazás, amellyel feladatlistát lehet létrehozni és frissíteni. Az alkalmazás által használt [Microsoft OWIN köztes összetevők](https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/) lehetővé teszik, hogy a felhasználók regisztráljanak az alkalmazás Azure AD B2C-bérlőben történő használatához. Az Azure AD B2C felhasználói folyamatot hoz létre, a felhasználók közösségi fiók használata vagy hozzon létre egy fiókot használjanak azonosítóként az alkalmazás elérésére használhat. 
 
 Két projekt szerepel a mintául szolgáló megoldásban:
 
-**Mintául szolgáló webalkalmazás (TaskWebApp):** webalkalmazás feladatlista létrehozáshoz és szerkesztéséhez. A webalkalmazás a **regisztrálási vagy bejelentkezési** szabályzatot használja a felhasználók regisztrálásához és bejelentkeztetéséhez.
+**Mintául szolgáló webalkalmazás (TaskWebApp):** webalkalmazás feladatlista létrehozáshoz és szerkesztéséhez. A webes alkalmazás használja a **regisztrálási vagy bejelentkezési** való regisztráció vagy bejelentkezés a felhasználói felhasználói folyamatot.
 
 **Mintául szolgáló webes API-alkalmazás (TaskService):** webes API, amely támogatja a feladatlista létrehozását, olvasását, frissítését és törlését. A webes API-nak az Azure AD B2C biztosít védelmet, és a webalkalmazással hívható meg.
 
-Módosítania kell az alkalmazást ahhoz, hogy használni tudja az alkalmazás regisztrációját a saját bérlőjében, amely tartalmazza a korábban feljegyzett alkalmazásazonosítót és kulcsot. A létrehozott szabályzatokat konfigurálni is kell. A mintául szolgáló webalkalmazás a konfigurációs értékeket alkalmazásbeállításokként határozza meg a Web.config fájlban. Az alkalmazás beállításainak módosításához:
+Módosítania kell az alkalmazást ahhoz, hogy használni tudja az alkalmazás regisztrációját a saját bérlőjében, amely tartalmazza a korábban feljegyzett alkalmazásazonosítót és kulcsot. Azt is konfigurálnia kell a létrehozott felhasználói folyamatok. A mintául szolgáló webalkalmazás a konfigurációs értékeket alkalmazásbeállításokként határozza meg a Web.config fájlban. Az alkalmazás beállításainak módosításához:
 
 1. Nyissa meg a **B2C-WebAPI-DotNet** megoldást a Visual Studióban.
 
@@ -171,11 +193,11 @@ A mintaalkalmazás támogatja a regisztrációt, a bejelentkezést, a profil sze
 
 ### <a name="sign-up-using-an-email-address"></a>Regisztrálás e-mail-címmel
 
-1. Kattintson a felső sávban található **Regisztráció/Bejelentkezés** hivatkozásra, hogy regisztrálja magát a webalkalmazás felhasználójaként. A művelet azt a **b2c_1_SiUpIn** szabályzatot használja, amelyet az egyik előző lépésben határozott meg.
+1. Kattintson a felső sávban található **Regisztráció/Bejelentkezés** hivatkozásra, hogy regisztrálja magát a webalkalmazás felhasználójaként. Ez a **b2c_1_SiUpIn** az előző lépésben meghatározott felhasználói folyamatot.
 
 2. Az Azure AD B2C megjelenít egy bejelentkezési oldalt egy regisztrációs hivatkozással. Mivel még nincs fiókja, kattintson a **Regisztráció** hivatkozásra. 
 
-3. A regisztrációs munkafolyamat megjelenít egy lapot, amely a felhasználó azonosító adatait gyűjti be és ellenőrzi az e-mail-cím alapján. A munkafolyamat a felhasználói jelszavakat és a szabályzatban meghatározott attribútumokat is összegyűjti.
+3. A regisztrációs munkafolyamat megjelenít egy lapot, amely a felhasználó azonosító adatait gyűjti be és ellenőrzi az e-mail-cím alapján. A munkafolyamat az a felhasználó jelszavát, és a felhasználói folyamat meghatározott attribútumokat is gyűjti.
 
     Érvényes e-mail-címet használjon, és ellenőrizze az ellenőrző kód használatával. Állítson be egy jelszót. Adja meg a kért attribútumokhoz tartozó értékeket. 
 
@@ -191,7 +213,7 @@ Az Azure AD B2C-bérlőt ahhoz is használhatja, ha más Azure AD B2C-oktatóany
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megismerte az Azure AD B2C-bérlő és a szabályzatok létrehozásának folyamatát, valamint azt, hogyan frissítheti a mintául szolgáló webalkalmazást az Azure AD B2C-bérlő használatához. Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan kell regisztrálni, konfigurálni és meghívni az Azure AD B2C-bérlővel védett ASP.NET webes API-t.
+Ebben az oktatóanyagban megtudhatta, hogyan hozzon létre egy Azure AD B2C-bérlő, felhasználói folyamatokat létrehozni és frissíteni a mintául szolgáló webalkalmazást az Azure AD B2C-bérlő használatához. Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan kell regisztrálni, konfigurálni és meghívni az Azure AD B2C-bérlővel védett ASP.NET webes API-t.
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Az Azure Active Directory B2C használata az ASP.NET webes API védelméhez](active-directory-b2c-tutorials-web-api.md)

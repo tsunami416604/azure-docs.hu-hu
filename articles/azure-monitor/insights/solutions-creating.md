@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4fd36d58574b60e3e6351cba03c68b9217bc703d
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 2c842efd6c66fd70bbac3969090b71c42c725545
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632466"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839636"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Megtervezik és megvalósítják a felügyeleti megoldás az Azure-ban (előzetes verzió)
 > [!NOTE]
@@ -49,7 +49,7 @@ Adatforrások leírtak szerint a Log Analytics-adattárban gyűjtött számos m�
 Nem minden elérhető adatforrások-n keresztül elérhető adatok van szüksége, akkor használhatja a [HTTP-adatgyűjtő API](../../log-analytics/log-analytics-data-collector-api.md) így a használatával írhat adatokat a Log Analytics-tárházba bármely ügyfélnek, amely segítségével meghívhatja a REST API-t.  A leggyakoribb azt jelenti, hogy egyéni adatgyűjtés felügyeleti megoldás az, hogy hozzon létre egy [az Azure Automation runbook](../../automation/automation-runbook-types.md) , amely a szükséges adatokat gyűjti össze az Azure- vagy külső erőforrásokat, és az adatgyűjtő API segítségével írni a adattár.  
 
 ### <a name="log-searches"></a>Naplókeresések
-[Naplókeresések](../../log-analytics/log-analytics-queries.md) kibontása és elemzése a Log Analytics-adattárban lévő adatok használhatók.  Ezek a nézetek és riasztások mellett lehetővé teszi a felhasználónak az ad hoc elemzést az adatok a tárházban szolgálnak.  
+[Naplókeresések](../../azure-monitor/log-query/log-query-overview.md) kibontása és elemzése a Log Analytics-adattárban lévő adatok használhatók.  Ezek a nézetek és riasztások mellett lehetővé teszi a felhasználónak az ad hoc elemzést az adatok a tárházban szolgálnak.  
 
 Meg kell határozni, hogy úgy gondolja, hogy akkor is hasznos lehet a felhasználónak, akkor is, ha nem használta azokat bármilyen nézeteket és riasztásokat lekérdezéseket.  Ezek őket a mentett keresések, a portálon elérhető lesz, és is hozzáadhatja őket egy [lista a lekérdezés vizualizációs rész](../../azure-monitor/platform/view-designer-parts.md#list-of-queries-part) az egyéni nézetben.
 

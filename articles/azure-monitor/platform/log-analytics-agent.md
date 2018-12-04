@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9729c7313f275201fc61bb5c7552066eecb13373
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 6a096d95ee883556c03bbaef026c1d0fc8430797
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642990"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844028"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Az Azure Log Analytics-ügynököket a naplóadatok gyűjtése
 
@@ -124,6 +124,6 @@ Az Azure-előfizetés vagy hibrid környezetben gépek csatlakoztatása közvetl
 
 * Felülvizsgálat [adatforrások](../../azure-monitor/platform/agent-data-sources.md) az adatok gyűjtését a Windows vagy Linux rendszert elérhető adatforrásokkal kapcsolatos tudnivalók. 
 
-* Ismerje meg [lekérdezések naplózását](../../log-analytics/log-analytics-queries.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 
+* Ismerje meg [lekérdezések naplózását](../../azure-monitor/log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 
 
 * Ismerje meg [figyelési megoldások](../../azure-monitor/insights/solutions.md) , amelyek további funkciókkal bővítik a Azure Monitor és is gyűjthet adatokat a Log Analytics-munkaterületre.

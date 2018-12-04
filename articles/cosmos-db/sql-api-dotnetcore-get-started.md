@@ -1,29 +1,27 @@
 ---
 title: 'Azure Cosmos DB: Bevezetés az SQL API és a .NET Core használatába – oktatóanyag | Microsoft Docs'
 description: Ez az oktatóanyag létrehoz egy online adatbázist és egy C# konzolalkalmazást az Azure Cosmos DB SQL API .NET Core SDK használatával.
-services: cosmos-db
 author: SnehaGunda
-manager: kfile
-editor: ''
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 03/12/2018
 ms.author: sngun
-ms.custom: devcenter
-ms.openlocfilehash: ca2f855166d9a36f600889059368ebeb313e789c
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 772e52960cf76a19c78d50533fe57cbc339ca34a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636288"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838573"
 ---
 # <a name="tutorial-build-a-net-core-app-to-manage-azure-cosmos-db-sql-api-data"></a>Oktatóanyag: .Net Core-alkalmazás létrehozása az Azure Cosmos DB SQL API-adatok kezeléséhez
 
 > [!div class="op_single_selector"]
-> * [.NET](sql-api-get-started.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
+> * [A .NET core (előzetes verzió)](sql-api-dotnet-core-get-started-preview.md)
+> * [.NET](sql-api-get-started.md)
+> * [.NET (előzetes verzió)](sql-api-dotnet-get-started-preview.md)
 > * [Java](sql-api-java-get-started.md)
 > * [Aszinkron Java](sql-api-async-java-get-started.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
@@ -399,7 +397,7 @@ Gratulálunk! Sikeresen létrehozott két Azure Cosmos DB-dokumentumot.
 
 ## <a id="Query"></a>7. lépés: Az Azure Cosmos DB-erőforrások lekérdezése
 
-Az Azure Cosmos DB támogatja az egyes gyűjteményekben tárolt JSON-dokumentumokon végzett [részletes lekérdezéseket](sql-api-sql-query.md). Az alábbi kódminta több olyan lekérdezést mutat be – az Azure Cosmos DB SQL-szintaxis és a LINQ használatával egyaránt – amelyeket az előző lépésben beszúrt dokumentumokon futtathatunk.
+Az Azure Cosmos DB támogatja az egyes gyűjteményekben tárolt JSON-dokumentumokon végzett [részletes lekérdezéseket](how-to-sql-query.md). Az alábbi kódminta több olyan lekérdezést mutat be – az Azure Cosmos DB SQL-szintaxis és a LINQ használatával egyaránt – amelyeket az előző lépésben beszúrt dokumentumokon futtathatunk.
 
 Másolja, majd illessze be a **ExecuteSimpleQuery** metódust a **CreateFamilyDocumentIfNotExists** metódus alá.
 
@@ -456,7 +454,7 @@ Az alábbi diagram bemutatja, hogyan indít hívást az Azure Cosmos DB SQL-lek�
 
 ![A NoSQL-oktatóanyagban a C# konzolalkalmazás létrehozásához használt lekérdezés hatókörét és jelentését ábrázoló diagram.](./media/sql-api-dotnetcore-get-started/nosql-tutorial-collection-documents.png)
 
-A [FROM](sql-api-sql-query.md#FromClause) kulcsszó kihagyható a lekérdezésből, mivel az Azure Cosmos DB-lekérdezések hatóköre eleve egyetlen gyűjtemény. Ezért a „FROM Families f” lecserélhető a „FROM root r” vagy bármilyen tetszőleges változónévre. Az Azure Cosmos DB úgy tekinti, hogy a Families, a root vagy a választott változónév alapértelmezés szerint az aktuális gyűjteményre hivatkozik.
+A [FROM](how-to-sql-query.md#FromClause) kulcsszó kihagyható a lekérdezésből, mivel az Azure Cosmos DB-lekérdezések hatóköre eleve egyetlen gyűjtemény. Ezért a „FROM Families f” lecserélhető a „FROM root r” vagy bármilyen tetszőleges változónévre. Az Azure Cosmos DB úgy tekinti, hogy a Families, a root vagy a választott változónév alapértelmezés szerint az aktuális gyűjteményre hivatkozik.
 
 ## <a id="ReplaceDocument"></a>8. lépés: JSON-dokumentumok cseréje
 

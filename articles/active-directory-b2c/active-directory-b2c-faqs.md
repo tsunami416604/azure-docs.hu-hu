@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: bccbf5462668913f6f3025e8d2274c115d49457f
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 6957a18440dfc225c63a1b1843e2b47af8b841bf
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727239"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842951"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Az Azure AD B2C: Gyakori kérdések (GYIK) 
 Ez az oldal az Azure Active Directory (Azure AD) B2C-vel kapcsolatos gyakori kérdésekre ad választ. Tartsa vissza a frissítések keresése.
@@ -39,7 +39,7 @@ Alkalmazásokhoz tartozó felhasználói fiókok mindig létre kell hozni egy el
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Melyik közösségi Identitásszolgáltatók támogatja most? Melyik tervezi a jövőben támogatásához?
 Jelenleg támogatott Facebook, Google +, LinkedIn, Amazon, a Twitterhez (előzetes verzió), WeChat (előzetes verzió), Weibo (előzetes verzió) és Gyorsműveletek (előzetes verzió). Hozzáadjuk más népszerű közösségi Identitásszolgáltatók az ügyfelek igényei szerint támogatása.
 
-Az Azure AD B2C is hozzáadott támogatása [egyéni szabályzatok](active-directory-b2c-overview-custom.md).  Ezek [egyéni szabályzatok](active-directory-b2c-overview-custom.md) lehetővé teszi a saját szabályzat létrehozása, amely bármely identitásszolgáltatóval, amely támogatja a fejlesztő [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) vagy SAML. 
+Az Azure AD B2C is hozzáadott támogatása [egyéni szabályzatok](active-directory-b2c-overview-custom.md).  Ezek [egyéni szabályzatok](active-directory-b2c-overview-custom.md) lehetővé teszi a saját szabályzat létrehozása, amely bármely identitásszolgáltatóval, amely támogatja a fejlesztő [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) vagy SAML. 
 
 Ismerkedés az egyéni szabályzatok kiveszi a [egyéni házirendet kezdőcsomag](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack).
 

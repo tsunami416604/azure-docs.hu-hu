@@ -1,5 +1,5 @@
 ---
-title: Mintaadatok betöltése egy Azure Cosmos DB Cassandra API-táblába egy Java-alkalmazással | Microsoft Docs
+title: Mintaadatok betöltése az Azure Cosmos DB Cassandra API táblába Java-alkalmazás használatával
 description: Ez a cikk azt mutatja be, hogyan tölthet be mintául kapott felhasználói adatokat egy táblába az Azure Cosmos DB Cassandra API-fiókban egy Java-alkalmazással.
 services: cosmos-db
 author: kanshiG
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: e116dbf1d49fed1a47b830f9a57cd77a33b7ea9c
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
-ms.translationtype: HT
+ms.openlocfilehash: ac297a04936785c76b7651cb5b78080baf4f684c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740720"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836253"
 ---
 # <a name="tutorial-load-sample-data-into-an-azure-cosmos-db-cassandra-api-table"></a>Oktatóanyag: Mintaadatok betöltése egy Azure Cosmos DB Cassandra API-táblába
 

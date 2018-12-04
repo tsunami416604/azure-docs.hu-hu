@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: chmutali
-ms.openlocfilehash: 78b9fe704c5c8a1f81da480787f1791e88bf4f72
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9c789f5fec9b31b53d316b23faad5c438b52137c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714718"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843342"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>Oktatóanyag: Azure Active Directory-integráció a workdayjel képes
 
@@ -114,7 +114,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://impl.workday.com/<tenant>/login-saml2.htmld`
 
-    b. Az a **azonosító** szövegmezőbe írja be egy URL-címe: `http://www.workday.com`
+    b. Az a **azonosító** szövegmezőbe írja be egy URL-címe: `https://www.workday.com`
 
 4. Ellenőrizze **speciális URL-beállítások megjelenítése** , és hajtsa végre a következő lépést:
 
@@ -225,7 +225,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurációja](./media/workday-tutorial/WorkdaySSOConfiguratio.png "egyszeri bejelentkezés konfigurálása")
 
-    a.  Az a **szolgáltatás Szolgáltatóazonosító** szövegmezőbe írja be **http://www.workday.com**.
+    a.  Az a **szolgáltatás Szolgáltatóazonosító** szövegmezőbe írja be **https://www.workday.com**.
 
     b. Válassza ki **nem Deflate hitelesítési Szolgáltató által kezdeményezett kérelem**.
 

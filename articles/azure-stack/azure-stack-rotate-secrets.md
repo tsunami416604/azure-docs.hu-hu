@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 8d84801aacfc60bb11aac4c9046a433378a59b79
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 2b1dc0ad28a6608e3a46087d31a3d077e9291a3d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314473"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841676"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Azure Stack titkos kulcsainak rotálása
 
@@ -44,7 +44,7 @@ Infrastruktúra-szolgáltatás tanúsítványok kívülre irányuló szolgáltat
 
    <sup>*</sup> Csak alkalmazható, ha a környezet identitásszolgáltató Active Directory összevonási szolgáltatásokban (AD FS).
 
-> [!NOTE]
+> [!NOTE]  
 > Bármely más biztonságos kulcsokat és a karakterláncokat, beleértve a BMC, és váltson a jelszavak, a rendszergazda manuálisan is frissíti a felhasználói és rendszergazdai fiókok jelszavait. 
 
 Az Azure Stack-infrastruktúra biztonságának fenntartása, operátorok rendszeres időközönként elforgatásának az infrastruktúra titkos kódok, amelyek a szervezeti biztonsági követelményeknek való következetes frekvencia kell.

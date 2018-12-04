@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 07/02/2018
 ms.author: panosper
-ms.openlocfilehash: 93c8d3302444c7d764849fe41d529bc06696243f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: c7f82e9fb286e53f9408e2134dbdc9c2b24ff267
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466171"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837698"
 ---
 # <a name="enable-custom-pronunciation"></a>Engedélyezze az egyéni kiejtése
 Egyéni írásmódja használatával meghatározhatja a fonetikus formában és megjelenített egy szó vagy kifejezés. Ez hasznos testre szabott feltételek, például termékneveket vagy betűszavakat kezelése. Szüksége egy írásmódja fájlt (egy egyszerű .txt fájlt).
@@ -61,7 +61,7 @@ Megjelenítési űrlap csak egy egyéni szó, kifejezés, egy betűszó vagy ös
 >Ezzel a funkcióval újraszövegezése gyakori szavakat vagy a kimondott képernyő módosítása nem ajánlott. Célszerűbb a dekóder megtekintéséhez, hogy egyes ritka szavakat (például rövidítéseket, műszaki szakkifejezéseket vagy külső szavak) helytelenül dekódovat futtassa. Ha igen, adja hozzá azokat az egyéni kiejtés fájlhoz. A nyelvi modell csak és mindig használjon a megjelenítési űrlap szó. 
 
 ## <a name="requirements-for-the-file-size"></a>A fájl mérete követelményei
-A .txt fájlt, amely tartalmazza a írásmódja bejegyzések mérete legfeljebb 1 megabájt (MB). Általában nem szükséges nagy mennyiségű adat feltöltése keresztül ezt a fájlt. A legtöbb egyéni írásmódja fájlok mérete valószínűleg csak néhány kilobájtban (KB). Az összes területi beállításhoz tartozó .txt fájl kódolása az UTF-8 AJ kell lennie. Az angol területi beállítás, az ANSI is fogadható el.
+A .txt fájlt, amely tartalmazza a írásmódja bejegyzések mérete legfeljebb 1 MB (ingyenes szint kulcsok 1KB). Általában nem szükséges nagy mennyiségű adat feltöltése keresztül ezt a fájlt. A legtöbb egyéni írásmódja fájlok mérete valószínűleg csak néhány kilobájtban (KB). Az összes területi beállításhoz tartozó .txt fájl kódolása az UTF-8 AJ kell lennie. Az angol területi beállítás, az ANSI is fogadható el.
 
 ## <a name="next-steps"></a>További lépések
 * Pontosságának javítása hozzon létre egy [importálni akusztikai modell](how-to-customize-acoustic-models.md).

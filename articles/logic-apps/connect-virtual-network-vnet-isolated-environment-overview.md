@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 11/29/2018
-ms.openlocfilehash: eb296a436f6c09a4f592ba3a26ee1c3a0f8e18bb
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.date: 12/03/2018
+ms.openlocfilehash: 5046b1012e0074e9548cad050c16eef25c00cee0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678832"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845195"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Azure virtuális hálózati erőforrásokhoz való hozzáférés Azure Logic Apps integrációs service-környezetek (ISEs) használatával
 
@@ -64,13 +64,15 @@ ISE-ben, és nem ISE csatlakozók közötti különbség a helyeken, ahol az ese
 
 Amikor létrehoz egy integrációs service-környezet (ISE), hol válassza ki Azure-beli virtuális hálózathoz, *beszúrása* a környezetben. Injektálási üzembe helyezi a virtuális hálózatban a Logic Apps szolgáltatás a privát példány. Ez a művelet egy izolált környezethez, ahol Ön hozhat létre és futtathat a logic apps a dedikált erőforrások eredményez. Létrehozásakor a logikai alkalmazások az alkalmazások helyeként válassza ki az ISE-ben. Ezek a logic apps közvetlenül ezután a virtuális hálózat eléréséhez és a hálózaton lévő erőforrások eléréséhez. 
 
-A helyszíni rendszerek egy virtuális hálózatban, amely kapcsolódik az ISE-ben a logic apps közvetlenül hozzáférhetnek ezekhez a rendszerekhez ezek az elemek egyikének használatával: 
+A virtuális hálózathoz csatlakozó rendszerek esetében is szúr be egy ISE-ben a virtuális hálózatban, a logic apps közvetlenül hozzáférhetnek ezekhez a rendszerekhez ezek az elemek egyikének használatával: 
 
 * ISE-ben, hogy a rendszer, például az SQL Server-összekötő
+
 * HTTP-művelet 
+
 * Egyéni összekötő
 
-Helyszíni rendszerekhez, amely nem a virtuális hálózat, vagy nem rendelkezik az ISE-összekötők, kapcsolódhat ezekhez a rendszerekhez Miután [beállítása és használata a helyszíni adatátjáró](../logic-apps/logic-apps-gateway-install.md).
+A helyszíni rendszerek, amelyek nem csatlakoznak egy virtuális hálózathoz, vagy nem rendelkezik az ISE-összekötők, kapcsolódhat ezekhez a rendszerekhez által [beállításával és a helyszíni adatátjáró használatával](../logic-apps/logic-apps-gateway-install.md).
 
 A környezet betöltése az Azure virtuális hálózat kiválasztása előtt szerepköralapú hozzáférés-vezérlés (RBAC) engedélyekkel kell állítania a virtuális hálózat az Azure Logic Apps szolgáltatás. A feladathoz szükséges, hogy hozzárendelje a **hálózati közreműködő** és **klasszikus közreműködői** szerepkörök az Azure Logic Apps szolgáltatásba.
 Ezek az engedélyek beállításával kapcsolatban lásd: [csatlakozhat az Azure virtuális hálózatok a logikai alkalmazásokból](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#vnet-access)
