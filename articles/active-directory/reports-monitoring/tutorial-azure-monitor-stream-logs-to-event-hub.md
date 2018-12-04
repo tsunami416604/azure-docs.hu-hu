@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7582c578e91fb3e36d7a0ecc1da7ede0cefc0f4c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 941e914e6ce99082abdd920bd7171644f3575a38
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623778"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849394"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub-preview"></a>Oktatóanyag: Azure Active Directory-naplók streamelése Azure eseményközpontba (előzetes verzió)
 
@@ -77,7 +77,7 @@ Miután az adatok megjelentek az eseményközpontban, kétféleképpen érheti e
 * **Támogatott SIEM-eszköz konfigurálásával**. Az adatok eseményközpontból való beolvasásához a legtöbb eszköz használata esetében szükség van az eseményközpont kapcsolati sztringjére és bizonyos jogosultságokra az Azure-előfizetésben. Az Azure Monitorral integrált, külső gyártótól származó eszközök közé többek között az alábbiak tartoznak:
     * **Splunk**: Az Azure AD-naplók a Splunkkal való integrálásával kapcsolatos további információkért lásd [az Azure AD-naplók a Splunkkal történő integrálását az Azure Monitor használatával](tutorial-integrate-activity-logs-with-splunk.md) ismertető cikket.
     
-    * **IBM QRadar**: Az eszközspecifikus modul (DSM) és az Azure Event Hub protokoll az [IBM támogatási webhelyéről](http://www.ibm.com/support) tölthető le. Az Azure-integrációról további információkat az [IBM QRadar Security Intelligence Platform 7.3.0](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0) webhelyén talál.
+    * **IBM QRadar**: Az eszközspecifikus modul (DSM) és az Azure Event Hub protokoll az [IBM támogatási webhelyéről](https://www.ibm.com/support) tölthető le. Az Azure-integrációról további információkat az [IBM QRadar Security Intelligence Platform 7.3.0](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0) webhelyén talál.
     
     * **SumoLogic**: Az [Azure AD alkalmazás telepítésével és az irányítópultok megtekintésével](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards) foglalkozó részben leírtakat követve konfigurálhatja a Sumo Logicot úgy, hogy egy eseményközpont adatait használja. 
 

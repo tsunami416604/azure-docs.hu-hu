@@ -1,21 +1,19 @@
 ---
-title: 'Bevezetés az Azure Cosmos DB használatába: Gremlin API | Microsoft Docs'
+title: Bevezetés az Azure Cosmos DB Gremlin API-hoz
 description: Ez a cikk azt ismerteti, hogy miként használható az Azure Cosmos DB közel valós idejű adateléréssel nagy méretű gráfok tárolására, lekérdezésére és bejárására az Apache TinkerPop gráflekérdezési nyelve, a Gremlin használatával.
 services: cosmos-db
 author: LuisBosquez
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-graph
-ms.devlang: na
 ms.topic: overview
 ms.date: 09/05/2018
 ms.author: lbosq
-ms.openlocfilehash: 809dead23a12f761d46c1be6a24951b8762dc1e1
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: f2ca118e137104c6dddd2945b7b88b2f535621eb
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092218"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849229"
 ---
 # <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Bevezetés az Azure Cosmos DB használatába: Gremlin API
 

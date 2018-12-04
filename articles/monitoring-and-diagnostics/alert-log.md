@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 6e6db7ef2f2de075aea41a29e69b2c674efafa17
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: cca15447587fcec7253b449d93fc2f644fe6c249
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635356"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52851043"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure Monitor használatával riasztások  
 
@@ -57,7 +57,7 @@ Részletes tovább lépésenkénti útmutató, amellyel az Azure portal felület
 
    > [!NOTE]
 
-   > Lista importálhat analytics-lekérdezéshez, mivel jel típusa – riasztások **Log (mentett lekérdezés)**, a fenti ábrán látható módon. Így a felhasználók tökéletes a lekérdezést az Analyticsben és mentheti későbbi használatra, a riasztások – olvashat részletesebben használatával érhető el lekérdezés mentése [a log analytics naplóbeli keresés használatával](../log-analytics/log-analytics-queries.md) vagy [megosztott lekérdezést az application insights szolgáltatásban Analytics](../log-analytics/log-analytics-queries.md). 
+   > Lista importálhat analytics-lekérdezéshez, mivel jel típusa – riasztások **Log (mentett lekérdezés)**, a fenti ábrán látható módon. Így a felhasználók tökéletes a lekérdezést az Analyticsben és mentheti későbbi használatra, a riasztások – olvashat részletesebben használatával érhető el lekérdezés mentése [a log analytics naplóbeli keresés használatával](../azure-monitor/log-query/log-query-overview.md) vagy [megosztott lekérdezést az application insights szolgáltatásban Analytics](../azure-monitor/log-query/log-query-overview.md). 
 
 1.  *Naplóriasztások*: a kijelölt riasztási lekérdezés is fel kell tüntetni **keresési lekérdezés** mező; Ha a lekérdezés szintaxisa helytelen a mezőben az hiba vörös színnel jelenik meg. Ha a lekérdezés szintaxisa helyes - referenciaként előzményadatok a megadott lekérdezés látható gráfként kapcsolóval, hogy a Teljesítménybeállítások az időtartomány utolsó 6 óra múlt héten.
 
@@ -246,5 +246,5 @@ Sikeres művelet esetén 201-es állapot új riasztási szabály létrehozása a
 * Ismerje meg [Naplóriasztások az Azure-riasztások](monitor-alerts-unified-log.md)
 * Megismerheti [naplóriasztásokra vonatkozó Webhook-műveletek](monitor-alerts-unified-log-webhook.md)
 * Tudjon meg többet [Application Insights](../application-insights/app-insights-analytics.md)
-* Tudjon meg többet [Log Analytics](../log-analytics/log-analytics-queries.md). 
+* Tudjon meg többet [Log Analytics](../azure-monitor/log-query/log-query-overview.md). 
 

@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/22/2018
+ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 46f5f73293875cd89036eb615e7bd81188bc4c67
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: d4be7b9c7774163aed8c0efb3414dbd6a794cf7f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210261"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847796"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Vészhelyreállítás beállítása az SQL Server 
 
@@ -35,7 +35,7 @@ Számos számítási feladatokhoz használja az SQL Server alaprendszert, és in
 * SQL Always On rendelkezésre állási csoportok, a vész-helyreállítási adja meg az SQL Server 2012 vagy 2014 Enterprise kiadások.
 * Az SQL adatbázis-tükrözés a magas biztonsági üzemmódú, SQL Server 2008 R2 vagy SQL Server Standard kiadásához (bármilyen verzió).
 
-## <a name="site-recovery-support"></a>Site Recovery támogatási
+## <a name="site-recovery-support"></a>Site Recovery támogatása
 
 ### <a name="supported-scenarios"></a>Támogatott esetek
 Site Recovery szolgáltatás védi az SQL Server, a táblázat foglalja össze.

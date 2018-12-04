@@ -1,20 +1,19 @@
 ---
 title: Az Azure Stream Analytics az IoT Edge-ben (előzetes verzió)
-description: Az Azure Stream Analytics edge-feladatok létrehozása és üzembe helyezheti őket az Azure IoT Edge eszközöket futtató.
+description: Edge-feladatok létrehozása az Azure Stream Analytics, és az Azure IoT Edge futtató eszközre telepítse őket.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/16/2017
-ms.openlocfilehash: a9d3b92b9cb3334c8c52a9127a2fab92d187e3d9
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 11/30/2018
+ms.openlocfilehash: 6d3060545946f1f003058932f1ffc50c2a64586f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687435"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846232"
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>Az Azure Stream Analytics az IoT Edge-ben (előzetes verzió)
 
@@ -197,7 +196,7 @@ Létrehoz egy feladatot az Edge-ben a referenciaadatok:
 
 3. Rendelkezik egy referencia-adatfájl készen áll az eszközön. Az egy Windows-tárolók helyezze a referencia-adatfájl a helyi meghajtón, és megoszthatja a helyi meghajtón a Docker-tárolót. Linux-tárolók hozzon létre egy Docker-kötetet, és töltse fel az adatok fájlt a köteten.
 
-4. Állítsa be a fájl elérési útját. Egy windows-eszköz az abszolút elérési utat használja. Egy Linux rendszerű eszköz használata az elérési út a kötet.
+4. Állítsa be a fájl elérési útját. A Windows gazda operációs rendszer és Windows-tárolót használja az abszolút elérési út: `E:\<PathToFile>\v1.csv`. Egy Windows-gazda operációs rendszer- és Linux-tárolót vagy a Linux operációs rendszer és a Linux-tárolót, használja a mennyiségi programban az elérési út: `<VolumeName>/file1.txt`.
 
 ![Az Azure Stream Analytics-feladat az IoT Edge-ben új referenciaadat-bemenetek](./media/stream-analytics-edge/ReferenceDataNewInput.png)
 
@@ -206,7 +205,6 @@ A referenciaadatok IoT Edge-frissítés központi telepítés által aktiválód
 A referenciaadatok frissítése két módja van:
 * Frissítés referencia adatelérési útvonalán az ASA-feladat az Azure Portalról.
 * Az IoT Edge üzemelő példány frissítése.
-
 
 ## <a name="license-and-third-party-notices"></a>Licenc és a harmadik felekkel kapcsolatos közlemények
 * [Azure Stream Analytics az IoT Edge előzetes licenc](https://go.microsoft.com/fwlink/?linkid=862827). 

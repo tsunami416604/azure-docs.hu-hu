@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e66f74edf93688a2793b3f24516f8b14328a8bb9
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5afb8e03dedbe09c2c95495fb6ff18333f4c648d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634948"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847592"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optimalizálhatja a környezetet SQL az SQL Server állapotának ellenőrzése megoldás a Log Analyticsben
 
@@ -184,7 +184,7 @@ Ha javaslatoknál, amelyeket figyelmen kívül kívánja, létrehozhat egy szöv
     ```
 
     >[!NOTE]
-    > Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](../../log-analytics/log-analytics-queries.md), akkor a fenti lekérdezés módosulnak az alábbiak.
+    > Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](../../azure-monitor/log-query/log-query-overview.md), akkor a fenti lekérdezés módosulnak az alábbiak.
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -209,7 +209,7 @@ Ha javaslatoknál, amelyeket figyelmen kívül kívánja, létrehozhat egy szöv
     ```
 
     >[!NOTE]
-    > Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](../../log-analytics/log-analytics-queries.md), akkor a fenti lekérdezés módosulnak az alábbiak.
+    > Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](../../azure-monitor/log-query/log-query-overview.md), akkor a fenti lekérdezés módosulnak az alábbiak.
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -265,4 +265,4 @@ Ha javaslatoknál, amelyeket figyelmen kívül kívánja, létrehozhat egy szöv
 * Igen, tekintse meg [figyelmen kívül hagyja a javaslatok](#ignore-recommendations) című fenti szakaszban.
 
 ## <a name="next-steps"></a>További lépések
-* [Naplók keresése](../../log-analytics/log-analytics-queries.md) megtudhatja, hogyan elemezhet SQL állapotának ellenőrzése a részletes adatok és javaslatok.
+* [Naplók keresése](../../azure-monitor/log-query/log-query-overview.md) megtudhatja, hogyan elemezhet SQL állapotának ellenőrzése a részletes adatok és javaslatok.

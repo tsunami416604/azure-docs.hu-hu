@@ -15,18 +15,18 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: barbkess
 ms.reviewer: richagi
-ms.openlocfilehash: 4a5cb7d15627ac3e48b72567ec3740377b2a0264
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: ca3396024fdab31217b00ef7cdd39e4e61504d27
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365670"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52851094"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>A felhőalapú alkalmazások használati Bérlőkorlátozások SaaS való hozzáférés kezelése
 
 Nagy szervezeteknek, amelyek biztonsági hangsúlyozzák át szeretné helyezni a felhőalapú szolgáltatások, például az Office 365-höz, de kell tudni, hogy a felhasználók csak hozzáférhetnek a jóváhagyott erőforrásokhoz. Hagyományosan vállalatok korlátozza a tartomány neve vagy IP-hozzáférés kezelése szeretne. Ez a megközelítés egy olyan világban, SaaS-alkalmazások a nyilvános felhőben futó megosztott tartományneveket, mint outlook.office.com és login.microsoftonline.com üzemeltető sikertelen lesz. Ezek a címek blokkolása szeretné, hogy a felhasználók hozzáférjenek a webes Outlookban teljesen, helyett csupán jóváhagyott identitások és erőforrásokhoz való korlátozása.
 
-Az Azure Active Directory-megoldás mutatták Bérlőkorlátozások nevű funkciója. Bérlői korlátozások lehetővé teszi a szervezetek számára, hogy ki férhet hozzá a felhőalapú SaaS-alkalmazásai, az egyszeri bejelentkezés használata az alkalmazások Azure AD-bérlő alapján. Például érdemes férhessenek hozzá a szervezet Office 365-alkalmazásokhoz, és megakadályozza, hogy más szervezetek számára példányok ugyanazt az alkalmazásokhoz való hozzáférést.  
+Az Azure Active Directory-megoldás mutatták Bérlőkorlátozások nevű funkciója. Bérlői korlátozások lehetővé teszi a szervezetek számára, hogy ki férhet hozzá a felhőalapú SaaS-alkalmazásai, az egyszeri bejelentkezés használata az alkalmazások Azure AD-bérlő alapján. Például érdemes férhessenek hozzá a szervezet Office 365-alkalmazásokhoz, és megakadályozza, hogy más szervezetek számára példányok ugyanazt az alkalmazásokhoz való hozzáférést.  
 
 Bérlői korlátozások révén a szervezetek a bérlők, amely hozzáférhető a felhasználók listáját adja meg. Az Azure AD majd csak ezeket a bérlők számára engedélyezett hozzáférést biztosít.
 
@@ -34,13 +34,13 @@ Ez a cikk foglalkozik a bérlői korlátozások az Office 365-höz, de a szolgá
 
 ## <a name="how-it-works"></a>Működés
 
-A teljes megoldás az alábbi összetevőkből áll: 
+A teljes megoldás az alábbi összetevőkből áll: 
 
-1. **Az Azure AD** – Ha a `Restrict-Access-To-Tenants: <permitted tenant list>` van adva, az Azure AD csak problémák biztonsági jogkivonatokat az engedélyezett bérlők számára. 
+1. **Az Azure AD** – Ha a `Restrict-Access-To-Tenants: <permitted tenant list>` van adva, az Azure AD csak problémák biztonsági jogkivonatokat az engedélyezett bérlők számára. 
 
-2. **A helyszíni proxy server infrastruktúra** – SSL-forgalmat, úgy konfigurálva, hogy a fejléc listáját tartalmazó beszúrása képes proxy eszköz engedélyezett bérlők be az Azure ad felé irányuló forgalom. 
+2. **A helyszíni proxy server infrastruktúra** – SSL-forgalmat, úgy konfigurálva, hogy a fejléc listáját tartalmazó beszúrása képes proxy eszköz engedélyezett bérlők be az Azure ad felé irányuló forgalom. 
 
-3. **Ügyfélszoftver** – bérlői korlátozása érdekében, az ügyfélszoftvert kell újraindítást igényelnie jogkivonatok közvetlenül az Azure AD-ben, hogy a forgalom a-proxy infrastruktúra elfoghatják. Bérlői korlátozások jelenleg támogatott Office-ügyfelek és a böngészőalapú Office 365-alkalmazások (például az OAuth 2.0-s) a modern hitelesítés használatakor. 
+3. **Ügyfélszoftver** – bérlői korlátozása érdekében, az ügyfélszoftvert kell újraindítást igényelnie jogkivonatok közvetlenül az Azure AD-ben, hogy a forgalom a-proxy infrastruktúra elfoghatják. Bérlői korlátozások jelenleg támogatott Office-ügyfelek és a böngészőalapú Office 365-alkalmazások (például az OAuth 2.0-s) a modern hitelesítés használatakor. 
 
 4. **Modern hitelesítés nélküli** – a cloud services kell használnia a modern hitelesítés Bérlőkorlátozások használhatja, és nem engedélyezett az összes bérlőre való hozzáférés letiltása. Office 365 cloud services alapértelmezés szerint kell állítani a modern hitelesítési protokollok használatára. Az Office 365 modern hitelesítés támogatása a legfrissebb információkért olvassa el a [frissített Office 365 modern hitelesítését](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/).
 
@@ -54,7 +54,7 @@ Ismerkedés a bérlői korlátozások két lépésből áll. Győződjön meg ar
 
 ### <a name="urls-and-ip-addresses"></a>URL-címek és IP-címek
 
-Bérlői korlátozások használata, az ügyfelek csatlakozni a következő Azure AD URL-címek hitelesítéséhez képesnek kell lennie: login.microsoftonline.com login.microsoft.com és login.windows.net. Emellett való hozzáférést az Office 365, az ügyfelek is kell lennie csatlakozni a teljes tartománynevek/URL-címek és IP-címek meghatározott [Office 365 URL-címei és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2). 
+Bérlői korlátozások használata, az ügyfelek csatlakozni a következő Azure AD URL-címek hitelesítéséhez képesnek kell lennie: login.microsoftonline.com login.microsoft.com és login.windows.net. Emellett való hozzáférést az Office 365, az ügyfelek is kell lennie csatlakozni a teljes tartománynevek/URL-címek és IP-címek meghatározott [Office 365 URL-címei és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2). 
 
 ### <a name="proxy-configuration-and-requirements"></a>Proxy konfigurálása és követelmények
 
@@ -62,7 +62,7 @@ Bérlői korlátozások engedélyezése a proxy-infrastruktúrán keresztül a k
 
 #### <a name="prerequisites"></a>Előfeltételek
 
-- A proxy SSL hozzáférés, HTTP-fejléc Beszúrás után hajtsa végre, és teljes tartománynevek/URL-címekkel destinations szűrése képesnek kell lennie. 
+- A proxy SSL hozzáférés, HTTP-fejléc Beszúrás után hajtsa végre, és teljes tartománynevek/URL-címekkel destinations szűrése képesnek kell lennie. 
 
 - Az ügyfelek meg kell bíznia az SSL-kommunikációhoz a proxy által bemutatott tanúsítványlánc. Például ha a belső PKI-tanúsítványok használata esetén a belső vállalati tanúsítvány tanúsítvány megbízhatónak kell lennie.
 
@@ -72,14 +72,14 @@ Bérlői korlátozások engedélyezése a proxy-infrastruktúrán keresztül a k
 
 Az egyes bejövő kérések login.microsoftonline.com, login.microsoft.com és login.windows.net két HTTP-fejlécek beszúrása: *korlátozása-Access-az-bérlők* és *korlátozása-Access-környezet*.
 
-A fejlécek a következő elemeket kell tartalmaznia: 
-- A *korlátozása-Access-az-bérlők*, érték \<engedélyezett bérlő listájának\>, azaz engedélyezheti a felhasználók hozzáférhessenek a bérlők vesszővel tagolt listája. Bármely tartomány, amely regisztrálva van a bérlő segítségével azonosíthatja a bérlő ebben a listában. Például hogy engedélyezze a hozzáférést a Contoso és Fabrikam is bérlők számára, a név-érték pár hasonlóan néz ki:  `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com` 
-- A *korlátozása-Access-környezet*, egy egyetlen címtár-azonosító, kijelenti, hogy melyik bérlőhöz beállítása a bérlői korlátozások érték. Például Contoso nyilvánítja, a bérlő, amely a bérlői korlátozások házirend beállítása, a név-érték pár hasonlóan néz ki: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
+A fejlécek a következő elemeket kell tartalmaznia: 
+- A *korlátozása-Access-az-bérlők*, érték \<engedélyezett bérlő listájának\>, azaz engedélyezheti a felhasználók hozzáférhessenek a bérlők vesszővel tagolt listája. Bármely tartomány, amely regisztrálva van a bérlő segítségével azonosíthatja a bérlő ebben a listában. Például hogy engedélyezze a hozzáférést a Contoso és Fabrikam is bérlők számára, a név-érték pár hasonlóan néz ki:  `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com` 
+- A *korlátozása-Access-környezet*, egy egyetlen címtár-azonosító, kijelenti, hogy melyik bérlőhöz beállítása a bérlői korlátozások érték. Például Contoso nyilvánítja, a bérlő, amely a bérlői korlátozások házirend beállítása, a név-érték pár hasonlóan néz ki: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
 
 > [!TIP]
 > A címtár-azonosító, az annak a [az Azure portal](https://portal.azure.com). Jelentkezzen be rendszergazdaként, válassza ki **Azure Active Directory**, majd **tulajdonságok**.
 
-Meg, hogy a felhasználók saját HTTP-fejléc beszúrása a nem jóváhagyott bérlők, a proxy cserélje le a korlátozása-Access-az-bérlők fejléc, ha már a bejövő kérelemben szereplő kell. 
+Meg, hogy a felhasználók saját HTTP-fejléc beszúrása a nem jóváhagyott bérlők, a proxy cserélje le a korlátozása-Access-az-bérlők fejléc, ha már a bejövő kérelemben szereplő kell. 
 
 Az ügyfelek kell kényszeríthető login.microsoftonline.com login.microsoft.com és login.windows.net érkező összes kérés a proxy használatára. Például ha a PAC-fájlt használ a proxy használata az ügyfelek, a végfelhasználók nem lehet tudni szerkesztése vagy letiltása a PAC-fájlokat.
 
@@ -116,7 +116,7 @@ Bérlői korlátozások Office 365 böngészőalapú alkalmazások által jelenl
 
 Az Outlook verzió és az üzleti ügyfelek számára a modern hitelesítést támogató előfordulhat, hogy továbbra is tudja használni a bérlőre, régebbi protokollokra, ahol nincs engedélyezve a modern hitelesítést, hatékonyan Bérlőkorlátozások kihagyásával. Alkalmazásokat, amelyek használják az örökölt protokollok Bérlőkorlátozások előfordulhat, hogy blokkolja, ha azok kapcsolatba login.microsoftonline.com, login.microsoft.com vagy login.windows.net hitelesítés során.
 
-Az Outlook, a Windows-ügyfelek dönthetnek úgy, hogy meggátolja, hogy a végfelhasználók számára nem engedélyezett e-mail-fiókokat ad hozzá a profilok korlátozásokat. Ha például a [nem alapértelmezett Exchange-fiókok hozzáadásának letiltása](http://gpsearch.azurewebsites.net/default.aspx?ref=1) csoportházirend-beállítás.
+Az Outlook, a Windows-ügyfelek dönthetnek úgy, hogy meggátolja, hogy a végfelhasználók számára nem engedélyezett e-mail-fiókokat ad hozzá a profilok korlátozásokat. Ha például a [nem alapértelmezett Exchange-fiókok hozzáadásának letiltása](https://gpsearch.azurewebsites.net/default.aspx?ref=1) csoportházirend-beállítás.
 
 ## <a name="testing"></a>Tesztelés
 
@@ -126,8 +126,8 @@ Ha azt szeretné, kipróbálhatja a bérlői korlátozások megvalósítása, az
 
 A fiddler egy ingyenes webes hibaelhárító proxy, amely segítségével rögzítése, és módosítsa a HTTP/HTTPS-forgalmat, többek között a HTTP-fejlécek beszúrását. Bérlői korlátozások tesztelése a Fiddler konfigurálásához hajtsa végre az alábbi lépéseket:
 
-1.  [Töltse le és telepítse a Fiddler](http://www.telerik.com/fiddler).
-2.  Fiddler-HTTPS-forgalom visszafejtése konfigurálása [Fiddler a Súgó dokumentációját](http://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS).
+1.  [Töltse le és telepítse a Fiddler](https://www.telerik.com/fiddler).
+2.  Fiddler-HTTPS-forgalom visszafejtése konfigurálása [Fiddler a Súgó dokumentációját](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS).
 3.  Konfigurálja a Fiddler beszúrása a *korlátozása-Access-az-bérlők* és *korlátozása-Access-környezet* fejlécek egyéni szabályok használatával:
   1. A Fiddler webes hibakereső eszközben válassza ki a **szabályok** menüre, majd válassza **szabályok testreszabása...** a customrules fájl egynél fájl megnyitásához.
   2. Adja hozzá a következő sorokat elején a *OnBeforeRequest* függvény. Cserélje le \<bérlői tartomány\> egy tartomány regisztrálva a bérlővel, például contoso.onmicrosoft.com. Cserélje le \<címtár-azonosító\> a bérlő Azure AD GUID azonosítóval.

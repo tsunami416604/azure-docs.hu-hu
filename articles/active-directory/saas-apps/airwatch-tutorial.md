@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: f3bbcbb70759e7a995797cf89ad75a2a39314927
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: bf95b949d6fee4057f67d1e44ded36f363aa5e2b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048480"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848918"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-airwatch"></a>Oktatóanyag: Azure Active Directory-integráció az AirWatch
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása az AirWatch, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Az AirWatch egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure AD integrálása a AirWatch konfigurálásához hozzá kell AirWatch a 
 
 **AirWatch hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -118,7 +118,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     b. Az a **azonosító** szövegmezőbe írja be az értéket, mint `AirWatch`
 
     > [!NOTE] 
-    > Ez az érték nem a valós. Ez az érték frissítse a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [AirWatch ügyfél-támogatási csapatának](http://www.air-watch.com/company/contact-us/) lekérni ezt az értéket. 
+    > Ez az érték nem a valós. Ez az érték frissítse a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [AirWatch ügyfél-támogatási csapatának](https://www.air-watch.com/company/contact-us/) lekérni ezt az értéket. 
  
 4. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse az XML-fájlt a számítógépen.
 
@@ -292,7 +292,7 @@ Ha szeretné tesztelni az egyszeri bejelentkezés beállításai, nyissa meg a h
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

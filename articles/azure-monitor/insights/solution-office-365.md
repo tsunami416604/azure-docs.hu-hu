@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 14e89d5eab058b9fa42c20811df9c5ac0ceca44a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 80a5b49d27ffc2b75cc9a1092a4d9f17e09bef24
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633197"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848867"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Az Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -30,7 +30,7 @@ Az Office 365 felügyeleti megoldás a Log Analytics az Office 365-környezete f
 - Konfigurációs módosítások vagy magas jogosultságú műveleteket nyomon követéséhez rendszergazdai tevékenységek figyelése.
 - Észlelése és vizsgálata a nem kívánt felhasználói viselkedés, amely a szervezet igényeinek megfelelően testre szabható.
 - Naplózási és megfelelőségi bemutatása. Figyelheti például fájl bizalmas fájlokat, amelyek segítségére lehet a naplózást és megfelelőségi folyamat a hozzáférési műveleteket.
-- Az operatív hibaelhárítás elvégzése érdekében [naplókereséseket](../../log-analytics/log-analytics-queries.md) a szervezet az Office 365 adatok felett.
+- Az operatív hibaelhárítás elvégzése érdekében [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md) a szervezet az Office 365 adatok felett.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A következő kötelező végezniük a megoldás telepítve és konfigurálva.
@@ -518,7 +518,7 @@ A következő tulajdonságok megegyeznek az összes Office 365-rekord.
 | A szervezeti | A szervezet Office 365-bérlőhöz tartozó GUID azonosítója. Ez az érték mindig lesz azonos, a szervezete számára, függetlenül az Office 365 szolgáltatás, amelyben történik. |
 | RecordType | Végrehajtott művelet típusát. |
 | ResultStatus | Azt jelzi, hogy a (művelet tulajdonságban megadott) művelet sikeres volt-e vagy sem. Lehetséges értékek: Succeeded, PartiallySucceded vagy sikertelen. Az Exchange-rendszergazdai tevékenységhez, értéke pedig IGAZ vagy hamis. |
-| Felhasználói azonosító | A rekordnaplózást eredményező naplózott; műveletet végrehajtó felhasználó egyszerű Felhasználóneve (egyszerű felhasználónév) Ha például my_name@my_domain_name. Vegye figyelembe, hogy a Rendszerfiókok (például a SHAREPOINT\system vagy NTAUTHORITY\SYSTEM) által végrehajtott tevékenységek rekordjai is szerepelnek. | 
+| UserId | A rekordnaplózást eredményező naplózott; műveletet végrehajtó felhasználó egyszerű Felhasználóneve (egyszerű felhasználónév) Ha például my_name@my_domain_name. Vegye figyelembe, hogy a Rendszerfiókok (például a SHAREPOINT\system vagy NTAUTHORITY\SYSTEM) által végrehajtott tevékenységek rekordjai is szerepelnek. | 
 | UserKey | Egy alternatív Azonosítót a felhasználó a UserId tulajdonság azonosítja.  Például ez a tulajdonság megjelenik a passport egyedi azonosító (PUID), és az Exchange a SharePoint, a onedrive-on a felhasználók által végrehajtott eseményeket. Ez a tulajdonság is megadható ugyanazt az értéket a UserID tulajdonság számára a más szolgáltatások és a rendszer fiókok által végrehajtott eseményeket bekövetkező események|
 | UserType | A műveletet végrehajtó felhasználó típusa.<br><br>Adminisztratív körzet<br>Alkalmazás<br>DcAdmin<br>Rendszeres<br>Foglalt<br>ServicePrincipal<br>Rendszer |
 
@@ -709,6 +709,6 @@ A következő táblázat a megoldás által összegyűjtött frissítési rekord
 
 
 ## <a name="next-steps"></a>További lépések
-* A részletes frissítési adatokat a [Log Analytics](../../log-analytics/log-analytics-queries.md) Naplókeresés funkciójával is megtekintheti.
+* A részletes frissítési adatokat a [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) Naplókeresés funkciójával is megtekintheti.
 * [Saját irányítópult létrehozásával](../../azure-monitor/platform/dashboards.md) kedvenc Office 365 keresési lekérdezések megjelenítéséhez.
 * [Riasztások létrehozása](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) proaktívan értesíti a fontos Office 365-tevékenységek.  

@@ -5,15 +5,15 @@ services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
-ms.date: 09/05/2018
+ms.topic: conceptual
+ms.date: 12/03/2018
 ms.author: cherylmc
-ms.openlocfilehash: 18d705f68ff06621e30c051dac9fb9607fd043ac
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: e635eddabe239268829d3a907df10392c7e1b6a3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300936"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850958"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Tanúsítványok létrehozása és exportálása pont – hely a PowerShell használatával
 
@@ -27,7 +27,7 @@ Ha nem rendelkezik hozzáféréssel Windows 10-es vagy Windows Server 2016 szám
 
 A New-SelfSignedCertificate-parancsmag segítségével hozzon létre egy önaláírt főtanúsítványt. További információkért lásd: [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
 
-1. Windows 10-es vagy Windows Server 2016 rendszert futtató számítógépről nyissa meg a Windows PowerShell-konzolt emelt szintű jogosultságokkal.
+1. Windows 10-es vagy Windows Server 2016 rendszert futtató számítógépről nyissa meg a Windows PowerShell-konzolt emelt szintű jogosultságokkal. Ezek a példák nem működik az Azure Cloud shellben "Próbálja ki". Ezekben a példákban helyileg kell futtatni.
 2. A következő példa használatával hozza létre az önaláírt főtanúsítványt. Az alábbi példa létrehoz egy önaláírt főtanúsítványt a "P2SRootCert", amely automatikusan települ a "Tanúsítványok – aktuális felhasználó\személyes\tanúsítványok" nevű. A tanúsítvány megtekintéséhez nyissa meg *certmgr.msc*, vagy *felhasználói tanúsítványok kezelése*.
 
   ```powershell
@@ -104,7 +104,7 @@ Ha további ügyféltanúsítványok hoz létre, vagy nem használ, amelyet az �
 
 ### <a name="export-the-self-signed-root-certificate-and-private-key-to-store-it-optional"></a>Exportálhatja az önaláírt főtanúsítványok és a titkos kulcsot tárolni (nem kötelező)
 
-Érdemes önaláírt főtanúsítvány exportálása, és tárolja biztonságos biztonsági mentés. Ha kell, később is telepítheti egy másik számítógépen, és több ügyfél certifiates készítése. Önaláírt főtanúsítvány exportálása a .pfx fájlként, válassza ki a legfelső szintű tanúsítványt, és ugyanazokat a lépéseket ismertetett módon kihasználhassák [ügyféltanúsítvány exportálásához](#clientexport).
+Érdemes önaláírt főtanúsítvány exportálása, és tárolja biztonságos biztonsági mentés. Ha kell, később is telepítheti egy másik számítógépen, és további ügyféltanúsítványok előállítása. Önaláírt főtanúsítvány exportálása a .pfx fájlként, válassza ki a legfelső szintű tanúsítványt, és ugyanazokat a lépéseket ismertetett módon kihasználhassák [ügyféltanúsítvány exportálásához](#clientexport).
 
 ## <a name="clientexport"></a>4. Az ügyféltanúsítvány exportálása
 

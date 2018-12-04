@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e5f6cbec75a9f652cf05c9608c412e00489288b9
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: c0d5b556cfeaf26e58104c1cbb7d394e5594f3e5
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212930"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850499"
 ---
 # <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása 
 
@@ -54,10 +54,10 @@ A replikálási feladat befejeződése után ellenőrizheti a replikálás álla
 
 Az elsődleges régióban lévő virtuális gép replikálása leáll, ha letiltja a gép esetében a replikálást:
 
-- A forrás replikálási beállításai automatikusan törlődnek.
+- A forrás replikálási beállításai automatikusan törlődnek. Vegye figyelembe, hogy a Site Recovery-bővítmény, amely telepítve van a replikáció során nem törlődnek, és manuálisan el kell távolítani. 
 - Emellett leáll a virtuális gép Site Recovery-számlázása is.
 
-Állítsa le a replikálást a következő módon:
+A következő replikáció leállítása
 
 1. Válassza ki a virtuális gépet.
 2. A **Vészhelyreállítás** területen kattintson **A replikálás letiltása** elemre.

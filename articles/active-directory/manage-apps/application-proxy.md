@@ -15,18 +15,18 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 428f094dae2b9a69b58912190d2959a7dfc467ec
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 212628c0ec97524e91ab8eaeb766c3e405023aaf
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365262"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846164"
 ---
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>Hogyan lehet a helyszíni alkalmazások biztonságos távoli elérést biztosíthat
 
-Az alkalmazottak szeretnék még ma munkavégzéshez bárhol, bármikor és bármilyen eszközről. Szeretne saját eszközükön munkahelyi legyenek azok táblagépek, telefonokon vagy hordozható számítógépeken. És azt várja, érhetik el, hogy minden alkalmazásra, mindkét SaaS-alkalmazások a felhőben és a vállalati alkalmazásokhoz a helyszínen. Hozzáférést biztosít a helyszíni alkalmazások rendelkezik hagyományosan vesz részt a virtuális magánhálózatok (VPN) vagy demilitarizált zóna (DMZ-ket). Nem csak ezek a megoldások komplex és nehéz biztonságának érdekében, de azok költséges beállításához és kezeléséhez.
+Napjainkban a munkavállalók a legkülönfélébb helyeken, időpontokban és eszközökön szeretnek dolgozni. Szeretne saját eszközükön munkahelyi legyenek azok táblagépek, telefonokon vagy hordozható számítógépeken. És azt várja, érhetik el, hogy minden alkalmazásra, mindkét SaaS-alkalmazások a felhőben és a vállalati alkalmazásokhoz a helyszínen. A helyszíni alkalmazások eléréséhez régebben virtuális magánhálózatokat (VPN) vagy szegélyhálózatokat (más néven DMZ vagy demilitarizált zóna) használtak. Ezeket a megoldásokat azonban nem csupán nagyon nehéz és komplex dolog védelemmel ellátni, hanem a beállításuk és az üzemeltetésük is nagyon költséges.
 
-Hatékony megoldást van!
+Van jobb módszer is!
 
 A mobil-és felhőközpontú a modern munkaerőt,-és felhőközpontú világ kell egy modern távelérési megoldás. Az Azure AD-alkalmazásproxy funkciója az Azure Active Directory által kínált a távelérési szolgáltatás. Ez azt jelenti, hogy könnyen központi telepítése, használata és kezelése.
 
@@ -100,5 +100,5 @@ Miután az első alkalmazás közzétételéhez nincs sokkal több mindent tehet
 * [Meglévő helyszíni proxykiszolgálók használata](application-proxy-configure-connectors-with-proxy-servers.md) 
 * [Egyéni kezdőlap beállítása](application-proxy-configure-custom-home-page.md)
 
-A legújabb híreket és frissítéseket itt találja: [Alkalmazásproxy blog](http://blogs.technet.com/b/applicationproxyblog/).
+A legújabb híreket és frissítéseket itt találja: [Alkalmazásproxy blog](https://blogs.technet.com/b/applicationproxyblog/).
 

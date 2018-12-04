@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 4cce49509a452153815c845d9ab72a1b4a8a5b7f
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 13a628d37ef67d0a1dc3ad8231229493191c4e7f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356632"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849564"
 ---
 # <a name="error-on-an-applications-page-after-signing-in"></a>Hiba történt a bejelentkezés után az alkalmazás lapon
 
@@ -30,7 +30,7 @@ Nincsenek miért fogadja el az alkalmazást nem a választ az Azure ad-ből enne
 
 -   Az Azure AD katalógusából származó alkalmazás esetén ellenőrizze a cikkben található összes lépéseket követte [SAML-alapú egyszeri bejelentkezés az Azure Active Directory-alkalmazások hibakeresése](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging).
 
--   Egy eszköz, például használata [Fiddler](http://www.telerik.com/fiddler) az SAML-kérelmet, a SAML-válasz és az SAML-jogkivonat.
+-   Egy eszköz, például használata [Fiddler](https://www.telerik.com/fiddler) az SAML-kérelmet, a SAML-válasz és az SAML-jogkivonat.
 
 -   Az SAML-válasz megoszthatja tudnia, mi hiányzik az alkalmazás gyártójától.
 
@@ -62,7 +62,7 @@ Attribútum hozzáadása az Azure AD-konfigurációjának az Azure ad-ben válas
 
    * Kattintson a **mentéséhez.** Megjelenik az új attribútum a táblán.
 
-9.  A konfiguráció mentéséhez.
+9.  Mentse a konfigurációt.
 
 A felhasználó bejelentkezik az alkalmazásba, amikor legközelebb az Azure AD küldése az új attribútumot a SAML-válasz.
 

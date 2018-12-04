@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/3/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: df020fc3a4e2f57730dea7329b08e1e46660e610
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: fab03f12f4099fe2df2525cb3a6fa093170d1c79
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037039"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850176"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>A telepítő az Azure-SSIS integrációs modul testreszabása
 
@@ -131,7 +131,7 @@ Testre szabhatja az Azure-SSIS integrációs modul, a következőkre van szüks�
 
     c. Válassza ki a csatlakoztatott nyilvános előzetes verzióban tárolót, és kattintson duplán a `CustomSetupScript` mappát. Ebben a mappában az alábbi elemek a következők:
 
-       1. A `Sample` mappába, amely tartalmaz egy egyszerű feladat telepítése az Azure-SSIS integrációs modult. minden egyes csomópontjára egy egyéni telepítés A feladat nem végez műveletet, de néhány másodpercre alvó állapotba lépni. A mappa is tartalmaz egy `gacutil` mappát, amelybe `gacutil.exe`. Ezenkívül `main.cmd` fájlmegosztások hozzáférési hitelesítő adatok megőrzéséhez megjegyzéseket tartalmaz.
+       1. A `Sample` mappába, amely tartalmaz egy egyszerű feladat telepítése az Azure-SSIS integrációs modult. minden egyes csomópontjára egy egyéni telepítés A feladat nem végez műveletet, de néhány másodpercre alvó állapotba lépni. A mappa is tartalmaz egy `gacutil` mappához, annak teljes tartalma (`gacutil.exe`, `gacutil.exe.config`, és `1033\gacutlrc.dll`) másolhatók, mert a tárolóba. Ezenkívül `main.cmd` fájlmegosztások hozzáférési hitelesítő adatok megőrzéséhez megjegyzéseket tartalmaz.
 
        1. A `UserScenarios` mappába, amely a valós felhasználóiélmény-forgatókönyvekhez számos egyéni beállításokat tartalmazza.
 
@@ -146,8 +146,6 @@ Testre szabhatja az Azure-SSIS integrációs modul, a következőkre van szüks�
        1. A `BCP` mappába, amely egy egyéni telepítő telepítse az SQL Server parancssori segédeszközöket tartalmaz (`MsSqlCmdLnUtils.msi`), beleértve a tömeges másolási funkciójával (`bcp`), az Azure-SSIS integrációs modult. minden egyes csomópontjára
 
        1. Egy `EXCEL` mappába, amely egy egyéni telepítőt, és telepítse a nyílt forráskódú szerelvényeket tartalmazza (`DocumentFormat.OpenXml.dll`, `ExcelDataReader.DataSet.dll`, és `ExcelDataReader.dll`) minden egyes csomópontján az Azure-SSIS integrációs modult.
-
-       1. Egy `MSDTC` mappába, amely tartalmaz egy egyéni telepítés módosításához a hálózati és biztonsági konfigurációi a Microsoft elosztott tranzakciók koordinátora (MSDTC) szolgáltatást minden egyes csomóponton, az Azure-SSIS integrációs modult. Győződjön meg arról, hogy el van-e az MSDTC, adja hozzá folyamat végrehajtása tevékenység, hajtsa végre a következő parancsot a csomagokban átvitelvezérlés elejére: `%SystemRoot%\system32\cmd.exe /c powershell -Command "Start-Service MSDTC"` 
 
        1. Egy `ORACLE ENTERPRISE` mappába, amely tartalmazza az egyéni telepítési parancsfájl (`main.cmd`) és a Csendes telepítési konfigurációs fájl (`client.rsp`) az Oracle-összekötők és OCI illesztőprogram telepítése az Azure-SSIS integrációs modul Enterprise Edition minden egyes csomópontjára. Ez a beállítás lehetővé teszi az Oracle-Csatlakozáskezelő, forrás és cél használatát. Először töltse le a Microsoft Connectors 5.0-s verzió Oracle (`AttunitySSISOraAdaptersSetup.msi` és `AttunitySSISOraAdaptersSetup64.msi`) származó [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=55179) és a legújabb Oracle-ügyfél – például `winx64_12102_client.zip` – ki [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html), majd feltölti őket az összes együtt `main.cmd` és `client.rsp` alkalmazásfájlokat a tárolóba. Ha TNS használatával csatlakozhat az Oracle, is szeretné letölteni `tnsnames.ora`, szerkeszthetik és feltöltése a tárolóba, akkor lehet másolni az Oracle telepítési mappába telepítés során.
 

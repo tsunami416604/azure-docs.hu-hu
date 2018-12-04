@@ -1,19 +1,19 @@
 ---
 title: Az Azure Maps-fiók és kulcsok kezelése |} A Microsoft Docs
 description: Az Azure portal segítségével az Azure Maps-fiók kezeléséhez, és kezelheti a hozzáférési kulcsait.
-author: dsk-2015
-ms.author: dkshir
-ms.date: 09/11/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 12/02/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 29fd63139d31d146cfc67153f35bd57650b08cfa
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 2678b9d9adeddd7599680b6fc3f6e54cecd61a26
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541619"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848102"
 ---
 # <a name="how-to-manage-your-azure-maps-account-and-keys"></a>Az Azure Maps-fiók és kulcsok kezelése
 
@@ -53,5 +53,10 @@ Ekkor megjelenik egy megerősítő oldal. A fiók törlése a név beírásával
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg, hogyan használható az Azure Maps API-k, [cím keresése](./how-to-search-for-address.md).
-* Ismerje meg, hogyan használható az Azure maps [JavaScript térkép vezérlőelem](./how-to-use-map-control.md).
+Ismerje meg, hogyan kezelheti az Azure Maps-fiók tarifacsomag:
+> [!div class="nextstepaction"]
+> [Tarifacsomag kezelése](./how-to-manage-pricing-tier.md)
+
+Megtudhatja, hogyan tekintheti meg az API-használati metrikák az Azure Maps-fiók:
+> [!div class="nextstepaction"]
+> [Használati metrikák megtekintése](./how-to-view-api-usage.md)

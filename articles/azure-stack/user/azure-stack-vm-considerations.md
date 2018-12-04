@@ -6,20 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 6613946D-114C-441A-9F74-38E35DF0A7D7
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
-ms.openlocfilehash: cb02ecb06728f5f36a0d51a3ec22cc8ba5cb44e7
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.reviewer: kivenkat
+ms.openlocfilehash: 9d6bb8d4327b428bb47d1d44422d816e7b20ed87
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094755"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847524"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Szempontok a virtuális gépek az Azure Stackben
 
@@ -40,7 +40,7 @@ Az Azure Stack virtuális gépek igény szerinti, méretezhető számítási er�
 | Virtuális gépek lemezek teljesítménye | Függ a lemez típusát és méretét. | Virtuális gép, a lemezek vannak csatolva a virtuális gép méretétől függ, tekintse meg a [virtuális gépek méretei az Azure Stackben támogatott](azure-stack-vm-sizes.md) cikk.
 | API-verziók | Az Azure mindig a legújabb API-verziók a virtuális gép minden funkció esetén rendelkezik. | Az Azure Stack konkrét Azure-szolgáltatás és az adott API-verziók támogatja ezeket a szolgáltatásokat. Ha szeretné megtekinteni a támogatott API-verziók listáját, tekintse meg a [API-verziók](#api-versions) című szakaszát. |
 |Virtuális gép rendelkezésre állási csoportok|Több tartalék tartomány (2 vagy 3 régiónként)<br>Több frissítési tartomány<br>Felügyelt lemezek támogatása|Több tartalék tartomány (2 vagy 3 régiónként)<br>(Legfeljebb 20) több frissítési tartomány<br>Nem felügyelt lemezes támogatás|
-|Virtuálisgép-méretezési csoportok|Automatikus skálázás támogatott|Automatikus skálázás nem támogatott.<br>További példányok hozzáadása egy méretezési csoportot a portálon, a Resource Manager-sablonok vagy a PowerShell használatával.
+|Virtuálisgép-méretezési csoportok|Az automatikus méretezés támogatott|Az automatikus méretezés nem támogatott.<br>További példányok hozzáadása egy méretezési csoportot a portálon, a Resource Manager-sablonok vagy a PowerShell használatával.
 
 ## <a name="virtual-machine-sizes"></a>Virtuálisgép-méretek
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 12ab224481c519db36ae21dd11916649ff0bfbe3
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 3284202ffaa6767a8dd4a6a5050dbdc928075237
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269034"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846114"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>Oktatóanyag: Azure Active Directory-integráció az ArcGIS online-nal
 
@@ -126,7 +126,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     ![image](./media/arcgis-tutorial/b1-domains_and_urls.png)
 
     > [!NOTE] 
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [az ArcGIS Online ügyfél-támogatási csapatának](http://support.esri.com/en/) beolvasni ezeket az értékeket.
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [az ArcGIS Online ügyfél-támogatási csapatának](https://support.esri.com/en/) beolvasni ezeket az értékeket.
 
 6. Az a **SAML-aláíró tanúsítvány** szakaszt, kattintson a **letöltése** letöltéséhez **összevonási metaadatainak XML** , és mentse az xml-fájlt a számítógépen.
 

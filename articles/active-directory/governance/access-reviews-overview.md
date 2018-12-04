@@ -15,12 +15,12 @@ ms.component: compliance
 ms.date: 11/19/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: fe51419106f1164f9a9b5993261c61bad63333b5
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: ecaceea42d64ab15676a9cb5a42ee8659e40d517
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262958"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847286"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Mik az Azure AD hozzáférési felülvizsgálatok?
 
@@ -67,7 +67,7 @@ A hozzáférési felülvizsgálatok használandó kell rendelkeznie a következ�
 - Prémium szintű Azure AD P2
 - Enterprise Mobility + Security (EMS) E5 licenc
 
-További információkért lásd: [hogyan: regisztráljon az Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) vagy [Enterprise Mobility + Security E5 próba](http://aka.ms/emse5trial).
+További információkért lásd: [hogyan: regisztráljon az Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) vagy [Enterprise Mobility + Security E5 próba](https://aka.ms/emse5trial).
 
 ## <a name="get-started-with-access-reviews"></a>Ismerkedés a hozzáférési felülvizsgálatok
 

@@ -1,10 +1,7 @@
 ---
 title: 'Az Azure Cosmos DB: SQL .NET API, SDK és -erőforrások |} A Microsoft Docs'
 description: Mindent megtudhat a SQL .NET API és az SDK, beleértve a kiadási dátum, kivezetési dátum és az Azure Cosmos DB .NET SDK minden verziója között végrehajtott módosítások.
-services: cosmos-db
 author: rnagpal
-manager: kfile
-editor: cgronlun
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: dotnet
@@ -12,12 +9,12 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f7f8af635eb7d5449a242f3a7708d865c13bb448
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 0ec1f9cf7847e0eb3c48599a4d52412c1a37560d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162806"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52851162"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Az Azure Cosmos DB .NET SDK, az SQL API-hoz: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -50,6 +47,14 @@ ms.locfileid: "52162806"
 </table></br>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1-Preview
+* 1 előzetes verziójának [3.0.0-s verziójának](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) a .NET SDK a nyilvános előzetes verziójához.
+* Cél .NET Standard, amely támogatja a .NET-keretrendszer 4.6.1+ és a .NET Core 2.0 +
+* Új hálózatiobjektum-modellt, a legfelső szintű CosmosClient és módszerek elosztja a megfelelő CosmosDatabases, CosmosContainers és CosmosItems osztályokat. 
+* Streamek támogatását. 
+* Frissített CosmosResponseMessage állapotkódot adja vissza, és csak throw kivétel, ha nem érkezik válasz-kiszolgálóról. 
+
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 
 * Frissített System.Net.Security 4.3.2 való.

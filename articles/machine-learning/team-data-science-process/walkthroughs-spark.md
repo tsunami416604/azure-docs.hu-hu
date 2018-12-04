@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: a7697d2be1a43af93109bb7bbdab50828275f5aa
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 8b7089a034b352366ee6a67e8da3d85c61e9039b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446398"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846266"
 ---
 # <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>Az Pysparkkal és Scalával az Azure HDInsight Spark adatelemzési útmutatók
 
@@ -40,7 +40,7 @@ Lásd: [speciális adatáttekintés és modellezés a Spark segítségével](spa
 
 ## <a name="predict-taxi-tips-using-scala-on-azure-spark"></a>Azure Spark a Scala használatával taxi tippek előrejelzése
 
-A [használata Scala Spark az Azure-ban](scala-walkthrough.md) forgatókönyv New York-i taxikra adatait használja e tipp fizetős és fizetendő várt mennyiségű számos előre jelezni. Azt jeleníti meg a Scala használata felügyelt gépi tanulási feladatok és a Spark machine learning-kódtár (MLlib) és a könnyen használható csomagok az Azure HDInsight Spark-fürtön. Emellett végigvezeti a feladatok alkotó a [adatelemzési folyamat](https://aka.ms/datascienceprocess): adatbetöltés és feltárása, képi megjelenítés, funkciófejlesztési, modellezés és használatalapú modellt. A modellek tartalmazzák a logisztikai és lineáris regresszió, véletlenszerű erdők és gyorsított fa átmenetes.
+A [használata Scala Spark az Azure-ban](scala-walkthrough.md) forgatókönyv New York-i taxikra adatait használja e tipp fizetős és fizetendő várt mennyiségű számos előre jelezni. Azt jeleníti meg a Scala használata felügyelt gépi tanulási feladatok és a Spark machine learning-kódtár (MLlib) és a könnyen használható csomagok az Azure HDInsight Spark-fürtön. Emellett végigvezeti a feladatok alkotó a [adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/): adatbetöltés és feltárása, képi megjelenítés, funkciófejlesztési, modellezés és használatalapú modellt. A modellek tartalmazzák a logisztikai és lineáris regresszió, véletlenszerű erdők és gyorsított fa átmenetes.
 
 
 ## <a name="next-steps"></a>További lépések

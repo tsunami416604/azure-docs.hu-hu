@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/24/2018
+ms.date: 11/30/2018
 ms.author: cherylmc
-ms.openlocfilehash: ced92cd28c12443234b47353548a9c968cc175ac
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: c579bb32fdd43c95f027e6c9f5a6ef656d059d60
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095586"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847405"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Pont–hely kapcsolat konfigurálása virtuális hálózathoz az Azure natív tanúsítványalapú hitelesítésének használatával: PowerShell
 
@@ -56,26 +56,17 @@ A példaértékek használatával létrehozhat egy tesztkörnyezetet, vagy a seg
 * **Nyilvános IP-név: VNet1GWPIP**
 * **VPN típusa: RouteBased** 
 
-## <a name="declare"></a>1. Bejelentkezés és a változók beállítása
+## <a name="declare"></a>1. Jelentkezzen be, és a változók beállítása
 
-Ez a szakasz a bejelentkezést és a konfigurációban használt értékek deklarálását ismerteti. A minta parancsprogramok a deklarált értékeket használják. Módosítsa az értékeket úgy, hogy megfeleljenek a saját környezetének. Azt is megteheti, hogy a deklarált értékeket használja, és gyakorlásként halad végig a lépéseken.
+Ebben a szakaszban jelentkezzen be, és ehhez a konfigurációhoz használt értékek deklarálását ismerteti. A minta parancsprogramok a deklarált értékeket használják. Módosítsa az értékeket úgy, hogy megfeleljenek a saját környezetének. Azt is megteheti, hogy a deklarált értékeket használja, és gyakorlásként halad végig a lépéseken.
 
-1. Nyissa meg emelt a PowerShell-konzolt szintű jogosultságokkal, és jelentkezzen be az Azure-fiókjába. Ez a parancsmag bejelentkezési hitelesítő adatokat kér be. A bejelentkezés után letölti a fiók beállításait, hogy elérhetők legyenek az Azure PowerShell számára. Ha helyileg nem futtatja a Powershellt, és helyette használja az Azure Cloud Shell "próbálja ki: a böngészőben, továbbléphet, a 2. lépés a ebben a szakaszban.
+### <a name="sign-in"></a>Bejelentkezés
 
-  ```azurepowershell
-  Connect-AzureRmAccount
-  ```
-2. Olvassa be az Azure-előfizetések listáját.
+[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps login.md)]
 
-  ```azurepowershell-interactive
-  Get-AzureRmSubscription
-  ```
-3. Válassza ki a használni kívánt előfizetést.
+### <a name="declare-variables"></a>Változók deklarálása
 
-  ```azurepowershell-interactive
-  Select-AzureRmSubscription -SubscriptionName "Name of subscription"
-  ```
-4. Deklarálja a használni kívánt változókat. Használja a következő példát, és szükség szerint cserélje le az értékeket a sajátjaira.
+Deklarálja a használni kívánt változókat. Használja a következő példát, és szükség szerint cserélje le az értékeket a sajátjaira.
 
   ```azurepowershell-interactive
   $VNetName  = "VNet1"

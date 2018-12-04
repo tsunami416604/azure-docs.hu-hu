@@ -1,5 +1,5 @@
 ---
-title: Privát termékváltozatok |} A Microsoft Docs
+title: Privát SKU-k és a tervek |} A Microsoft Docs
 description: Hogyan kezelheti az ajánlatok elérhetőségéről privát SKU-k használatával.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 28fe85c6443701d5fb40d4f90dbec9ba445a234d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 519f0354f2a19e106ca1072170721b27357d173e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230240"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849207"
 ---
-<a name="private-skus"></a>Privát termékváltozatok
+<a name="private-skus-and-plans"></a>Privát termékváltozatok és csomagok
 ============
 
 Privát SKU-k lehetővé teszik a termékváltozatok rendelkezésre állásának korlátozása egy adott ügyfélnek. A Termékváltozat privát van megjelölve, ha nem érhető el a bármely nyilvános katalógus, amely a [Azure Marketplace-en](https://azuremarketplace.microsoft.com) és a [az Azure portal](http://portal.azure.com). Az Azure Portalon csak a Termékváltozat-hozzáféréssel rendelkező felhasználók láthatják őket. Ezenkívül, akkor is lehet felszólítja a felhasználót szóló ajánlatok hozzáféréssel rendelkeznek.
@@ -37,7 +37,7 @@ Privát SKU-k segítségével kezeli a következő esetekben:
 
 Ha szeretné módosítani az árat, felhasználhatja ugyanazt az ajánlatban Termékváltozatáról egy másikra a lemezeket. A privát SKU-k nem kell küldje el újra a lemezeket termékváltozatok között.
 
-<a name="mark-a-sku-private"></a>Megjelölés Termékváltozat privát
+<a name="mark-a-sku-private"></a>A Termékváltozat privát megjelölése
 ---------------------
 
 Egy privát Termékváltozatot megjelöléséhez váltsa át a beállítást, a Termékváltozat-e privát kéri:
@@ -91,7 +91,12 @@ Minta CSV-fájl tartalma:
 
 Váltson át manuális bejegyzés csv-fájlba, töltse fel a nézet vagy fürtkötetről való manuális bejegyzés előfizetés azonosítókat a Termékváltozat-hozzáféréssel rendelkező régi listája nem őrződnek meg. A figyelmeztetés akkor jelenik meg, és a listában csak a rendszer felülírja az ajánlat mentése után.
 
-<a name="previewing-private-offers"></a>Saját ajánlatok megtekintése
+<a name="sync-private-subscriptions"></a>Szinkronizálási saját előfizetések
+-------------------------
+
+Előfizetések hozzáadása egy privát Termékváltozat vagy a csomag közzétett ajánlatra, amikor nem kell újból közzéteszi a célközönség tudnivalókkal az ajánlatot. Egy Azure-előfizetés-azonosítója (a csomagok és az SKU-k) vagy a bérlő azonosítója (csak csomagok) egyszerűen használnak, célközönség hozzá.
+
+<a name="previewing-private-offers"></a>Előnézet privát kínál
 -------------------------
 
 Az előnézet/előkészítés során lépést, csak az ajánlat szint előzetes előfizetések érhetik el a Termékváltozat. Ez a tesztelési fázisban ekkor ellenőrizheti, mely az ajánlat kellene kinéznie a megcélzott felhasználók, és minden típusú közzététel standard.

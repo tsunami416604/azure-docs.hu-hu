@@ -7,19 +7,19 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: eabae0f3575719c6cb93affefe0a393dd13d1439
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6c44bebad6b54ab673fcbf3b2ef5e5d34c8c6882
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014006"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847728"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C-t a többtényezős hitelesítés engedélyezése
 
-Az Azure Active Directory (Azure AD) B2C közvetlenül integrálódik az [Azure multi-factor Authentication](../active-directory/authentication/multi-factor-authentication.md) , hogy az alkalmazások a regisztrációs és bejelentkezési élményt egy második biztonsági réteggel is hozzáadhat. Engedélyezi a multi-factor authentication szolgáltatás egy egyetlen sor kód írása nélkül. Ha már létrehozott jelentkezzen be és bejelentkezési szabályzatok továbbra is engedélyezheti a multi-factor authentication szolgáltatás.
+Az Azure Active Directory (Azure AD) B2C közvetlenül integrálódik az [Azure multi-factor Authentication](../active-directory/authentication/multi-factor-authentication.md) , hogy az alkalmazások a regisztrációs és bejelentkezési élményt egy második biztonsági réteggel is hozzáadhat. Engedélyezi a multi-factor authentication szolgáltatás egy egyetlen sor kód írása nélkül. Ha már létrehozott jelentkezzen be, és jelentkezzen be a felhasználói folyamatok, a multi-factor authentication továbbra is engedélyezheti.
 
 Ez a szolgáltatás segít az alkalmazások kezelésére a következőkhöz hasonló forgatókönyveket:
 
@@ -28,25 +28,24 @@ Ez a szolgáltatás segít az alkalmazások kezelésére a következőkhöz haso
 
 ## <a name="set-multi-factor-authentication"></a>Többtényezős hitelesítés beállítása
 
-Amikor létrehoz egy házirendet, lehetősége van a multi-factor authentication szolgáltatás engedélyezése.
+Amikor egy felhasználó folyamatot hoz létre, lehetősége van a multi-factor authentication szolgáltatás engedélyezése.
 
 ![Többtényezős hitelesítés beállítása](./media/active-directory-b2c-reference-mfa/add-policy.png)
 
-Állítsa be **állapot** való **a**.
+Állítsa be **többtényezős hitelesítés** való **engedélyezve**.
 
-Használhat **Futtatás most** a szabályzatra, ellenőrizze a felhasználói élményt. Erősítse meg az alábbi forgatókönyvet:
+Használhat **felhasználói folyamat futtatása** ellenőrizheti a felhasználói élményt. Erősítse meg az alábbi forgatókönyvet:
 
 Egy felhasználói fiók a bérlő jön létre, akkor fordul elő, a multi-factor Authentication hitelesítés lépés előtt. A lépés során az ügyfél ekkor adja meg egy telefonszámot, majd ellenőrzi, hogy az. Ha az ellenőrzés sikeres, a telefonszámot a fiók későbbi használatra van csatolva. Akkor is, ha az ügyfél lemond vagy csökken, az ügyfél is megkéri, hogy egy telefonszám ellenőrzése során újra a következő bejelentkezéskor és a többtényezős hitelesítés engedélyezve van.
 
 ## <a name="add-multi-factor-authentication"></a>A multi-factor authentication szolgáltatás hozzáadása
 
-Akkor lehet multi-factor authentication szolgáltatás engedélyezése a korábban létrehozott egy szabályzatot. 
+Akkor lehet multi-factor authentication szolgáltatás engedélyezése a korábban létrehozott felhasználói folyamat. 
 
 A multi-factor authentication szolgáltatás engedélyezése:
 
-1. Nyissa meg a szabályzatot, majd **szerkesztése**. 
-2. Válassza ki **többtényezős hitelesítés**
-3. Állítsa be **állapot** való **a**.
-4. Kattintson az oldal tetején lévő **Mentés** elemre.
+1. Nyissa meg a felhasználói folyamatot, majd **tulajdonságok**. 
+2. A **többtényezős hitelesítés**válassza **engedélyezve**.
+3. Kattintson az oldal tetején lévő **Mentés** elemre.
 
 

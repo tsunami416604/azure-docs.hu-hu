@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
+ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: ddf9c5e30a27a829a74ccf0985dce30a68f9bbb7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b4023d45c3628df5006d076e01f32bb8f3aa80a6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256648"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846249"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Adaptív alkalmazásvezérlők az Azure Security Centerben
 Az útmutató azt ismerteti, hogyan konfigurálható az alkalmazásvezérlés az Azure Security Centerben.
@@ -118,7 +118,8 @@ Miután a létrehozás lehetőséget választja, az Azure Security Center automa
   - **Enforce** (Kényszerítés): ebben a módban az alkalmazásvezérlési megoldás kikényszeríti a szabályokat, és gondoskodik róla, hogy blokkolva legyenek azok az alkalmazások, amelyeknek a futtatása nem engedélyezett.
 
    > [!NOTE]
-   > Amint azt fent említettük, az új alkalmazásvezérlési szabályzatok alapértelmezés szerint minden esetben *Felügyelet* módban lesznek konfigurálva. 
+   > -  **Kényszerítése** védelmi mód le van tiltva, további értesítésig.
+   > - Amint azt fent említettük, az új alkalmazásvezérlési szabályzatok alapértelmezés szerint minden esetben *Felügyelet* módban lesznek konfigurálva. 
    >
 
 4. A **szabályzatbővítmény**, bármely alkalmazás elérési útja, amely számára engedélyezni is hozzáadhat. Elérési utak felvétele után a Security Center frissíti az whielisting házirend a kiválasztott virtuális gépek csoportján belül a virtuális gépeken, és ezekhez az alkalmazásokhoz, amelyek már érvényben lévő szabályok mellett a megfelelő szabályokat hoz létre.

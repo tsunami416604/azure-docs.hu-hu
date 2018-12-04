@@ -4,15 +4,15 @@ description: Ismerteti, hogyan derítheti fel és értékelheti ki a helyszíni 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/23/2018
+ms.date: 11/28/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 18e1ecd4896277f0dd0dfc2ceac2185cbdd09b93
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
-ms.translationtype: HT
+ms.openlocfilehash: dddfbab1d40c03659ba346c9f0e898cfefc8d55e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241106"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847983"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Helyszíni VMware virtuális gépek felderítése és kiértékelése az Azure-ba való migráláshoz
 
@@ -26,16 +26,13 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Helyszíni gyűjtő virtuális gép (VM) beállítása a helyszíni VMware virtuális gépek felderítéséhez kiértékelésre.
 > * Virtuális gépek csoportosítása és értékelés készítése.
 
-
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) a virtuális gép létrehozásának megkezdése előtt.
-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - **VMware**: A migrálni kívánt virtuális gépeket egy 5.5-ös, 6.0-s vagy 6.5-ös verziójú vCenter Servernek kell felügyelnie. Emellett egy 5.0-s vagy újabb verziójú ESXi gazdagépre is szükség van a gyűjtő virtuális gép üzembe helyezéséhez.
 - **vCenter Server-fiók**: A vCenter Server eléréséhez egy csak olvasási jogokat biztosító fiók szükséges. Az Azure Migrate ezt a fiókot használja a helyszíni virtuális gépek felderítéséhez.
 - **Engedélyek**: A vCenter Serveren megfelelő jogosultságra van szüksége ahhoz, hogy a virtuális gépeket .OVA-formátumú fájlok importálásával létrehozhassa.
-- **Statisztikai beállítások**: Ez az előfeltétel csak az egyszeri felderítéses modellek esetén alkalmazható. Az egyszeri felderítés működéséhez a vCenter Server statisztikai beállításait az üzembe helyezés megkezdése előtt a 3. szintre kell állítani. A 3. szintnél alacsonyabb konfiguráció esetén a kiértékelés működni fog, de a tároló és a hálózat adatai nem lesznek gyűjtve. A méretezési javaslatok alapjául ebben az esetben a processzor és a memória teljesítményadatai, valamint a lemezek és a hálózati adapterek konfigurációs adatai szolgálnak majd.
 
 ## <a name="create-an-account-for-vm-discovery"></a>Fiók létrehozása virtuális gépek felderítéséhez
 
@@ -67,20 +64,21 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 Az Azure Migrate létrehoz egy gyűjtőberendezésnek nevezett helyszíni virtuális gépet. A virtuális gép felderíti a helyszíni VMware virtuális gépeket, és az azokkal kapcsolatos metaadatokat továbbítja az Azure Migrate szolgáltatásnak. A gyűjtőberendezés beállításához egy .OVA-fájlt kell letöltenie, majd importálnia a helyszíni vCenter-kiszolgálóra a virtuális gép létrehozásához.
 
 1. Az Azure Migrate projektben kattintson a **Bevezetés** > **Felderítés és értékelés** > **Gépek felderítése** elemre.
-2. A **Gépek felderítése** területen kétféle berendezés közül választhat. Kattintson a **Letöltés** gombra az igényeinek megfelelő berendezés letöltéséhez.
+2. A **gépek felderítése**, kattintson a **letöltése** a berendezés letöltése.
 
-    a. **Egyszeri felderítés:** Az ilyen modellű berendezés a vCenter Serverrel kommunikálva gyűjt metaadatokat a virtuális gépekről. A virtuális gépek teljesítményadatainak gyűjtése esetén a teljesítményadatoknak a vCenter Serveren tárolt előzményeit veszi figyelembe, és az előző hónap teljesítményelőzményeit gyűjti össze. Ebben a modellben az Azure Migrate a metrikák átlagértékeit (nem pedig a maximumértékeit) gyűjti. [További információ](https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected). Ez egy egyszeri felderítés, így a felderítés befejeződését követően nem fognak megjelenni a helyszíni környezet változásai. Ha szeretné, hogy megjelenjenek ezek a változások, végre kell hajtania egy ismételt felderítést ugyanennek a projektnek ugyanezen környezetén.
-
-    b. **Folyamatos felderítés:** Az ilyen modellű berendezés folyamatosan profilkészítést végez a helyszíni környezeten, így valós idejű használati adatokat gyűjt az egyes virtuális gépekről. Ez a modell a metrikák (processzorhasználat, memóriahasználat stb.) maximumszámlálóit gyűjti össze. Ez a modell a teljesítményadatok gyűjtése során nem függ a vCenter Server statisztikai beállításaitól. A berendezésben bármikor leállítható a folyamatos profilkészítés.
-
-    Vegye figyelembe, hogy a berendezés a teljesítményadatok folyamatosan gyűjtését végzi, és nem észleli a konfiguráció változását a helyszíni környezetben (pl. virtuális gépek hozzáadását, törlését, lemezek hozzáadását stb.). Ha a helyszíni környezet konfigurációja módosul, a következőket teheti a változások tükrözésére a portálon:
-
-    1. Elemek (virtuális gépek, lemezek, magok stb.) hozzáadása: Ezeknek a módosításoknak az Azure Portalon való tükrözéséhez állítsa le, majd indítsa újra a felderítést a berendezésen. Ez biztosítja, hogy a módosítások frissítése megtörténjen az Azure Migrate-projektben.
-
-    2. Virtuális gépek törlése: A berendezés kialakítása miatt a virtuális gépek törlése akkor sem lesz látható, ha leállítja, majd újraindítja a felderítést. Ennek az oka, hogy a későbbi felderítések adatait a rendszer hozzáfűzi a korábbi felderítések adataihoz, nem pedig felülírja azokat. Ebben az esetben egyszerűen figyelmen kívül hagyhatja a virtuális gépet a portálon. Ehhez távolítsa el a csoportból, és számítsa újra az értékelést.
+    Az Azure Migrate készülék kommunikál a vCenter-kiszolgálóhoz, és folyamatosan profilt készít a valós idejű használati adatok gyűjtéséhez az egyes virtuális Gépekhez a helyszíni környezetben. Összegyűjti az csúcs számlálói mindegyik metrikát (CPU-használat, memóriahasználat stb.). Ez a modell a teljesítményadatok gyűjtése során nem függ a vCenter Server statisztikai beállításaitól. A berendezésben bármikor leállítható a folyamatos profilkészítés.
 
     > [!NOTE]
-    > A folyamatos felderítés funkciója jelenleg előzetes verzióban érhető el. Javasoljuk, hogy így járjon el, mivel ez a módszer részletes teljesítményadatokat gyűjt, és pontosan számítja a megfelelő méretezést.
+    > A felderítés egyszeri felderítés berendezés elavulttá vált, ez a módszer támaszkodtak a vCenter Server statisztikai beállításait teljesítmény adatok pont rendelkezésre állását és virtuális gépek áttelepítése az Azure-ba való korrigáljuk méretezésének eredményezett átlagos teljesítményszámlálók gyűjtése.
+
+    **Azonnali változtatásait:** a folyamatos felderítési berendezéssel után a felderítés befejezéséhez (veszi fel néhány óra múlva, virtuális gépek számától függően), itt azonnal létrehozhat értékeléseket. Mivel a teljesítményadat-gyűjtés akkor kezdődik, amikor Ön indíthat felderítési, ha azonnali változtatásait keres, válassza a méretezési feltétel teljesítményalapú az értékelésben, *helyszíni*. Teljesítmény-alapú értékelések javasolt a legalább egy napot várni megbízható méretezési javaslatokat kaphat a felderítés megkezdése után.
+
+    A berendezés csak az folyamatosan teljesítményadatokat gyűjt, semmilyen konfigurálási változást nem észleli a helyszíni környezetben, (, virtuális gép hozzáadása, törlése, lemez hozzáadása stb.). Ha a helyszíni környezet konfigurációja módosul, a következőket teheti a változások tükrözésére a portálon:
+
+    - Elemek (virtuális gépek, lemezek, magok stb.) hozzáadása: Ezeknek a módosításoknak az Azure Portalon való tükrözéséhez állítsa le, majd indítsa újra a felderítést a berendezésen. Ez biztosítja, hogy a módosítások frissítése megtörténjen az Azure Migrate-projektben.
+
+    - Virtuális gépek törlése: A berendezés kialakítása miatt a virtuális gépek törlése akkor sem lesz látható, ha leállítja, majd újraindítja a felderítést. Ennek az oka, hogy a későbbi felderítések adatait a rendszer hozzáfűzi a korábbi felderítések adataihoz, nem pedig felülírja azokat. Ebben az esetben egyszerűen figyelmen kívül hagyhatja a virtuális gépet a portálon. Ehhez távolítsa el a csoportból, és számítsa újra az értékelést.
+
 
 3. A **Projekt hitelesítő adatainak másolása** területen másolja ki a projekt azonosítóját és kulcsát. Ezekre a gyűjtő konfigurálásához lesz szüksége.
 
@@ -96,7 +94,20 @@ A telepítése előtt ellenőrizze, hogy az .OVA-fájl biztonságos-e.
     - Gyakorlati példa: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. A létrehozott kivonatnak egyeznie kell ezekkel a beállításokkal.
 
-#### <a name="one-time-discovery"></a>Egyszeri felderítés
+#### <a name="continuous-discovery"></a>Folyamatos felderítés
+
+  Az OVA 1.0.10.4-es verziója esetén
+
+  **Algoritmus** | **Kivonat értéke**
+  --- | ---
+  MD5 | 2ca5b1b93ee0675ca794dd3fd216e13d
+  SHA1 | 8c46a52b18d36e91daeae62f412f5cb2a8198ee5
+  SHA256 | 3b3dec0f995b3dd3c6ba218d436be003a687710abab9fcd17d4bdc90a11276be
+
+
+#### <a name="one-time-discovery-deprecated-now"></a>Felderítés egyszeri felderítés (most már elavult)
+
+Ez a modell már elavult, meglévő berendezések biztosítunk támogatást.
 
   Az OVA 1.0.9.15-ös verziója esetén
 
@@ -121,33 +132,6 @@ A telepítése előtt ellenőrizze, hogy az .OVA-fájl biztonságos-e.
   MD5 | d0363e5d1b377a8eb08843cf034ac28a
   SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b
   SHA256 | f677b6c255e3d4d529315a31b5947edfe46f45e4eb4dbc8019d68d1d1b337c2e
-
-  Az OVA 1.0.9.8-as verziója esetében
-
-  **Algoritmus** | **Kivonat értéke**
-  --- | ---
-  MD5 | b5d9f0caf15ca357ac0563468c2e6251
-  SHA1 | d6179b5bfe84e123fabd37f8a1e4930839eeb0e5
-  SHA256 | 09c68b168719cb93bd439ea6a5fe21a3b01beec0e15b84204857061ca5b116ff
-
-
-  Az OVA 1.0.9.7-es verziója esetében
-
-  **Algoritmus** | **Kivonat értéke**
-  --- | ---
-  MD5 | d5b6a03701203ff556fa78694d6d7c35
-  SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
-  SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
-
-#### <a name="continuous-discovery"></a>Folyamatos felderítés
-
-  Az OVA 1.0.10.4-es verziója esetén
-
-  **Algoritmus** | **Kivonat értéke**
-  --- | ---
-  MD5 | 2ca5b1b93ee0675ca794dd3fd216e13d
-  SHA1 | 8c46a52b18d36e91daeae62f412f5cb2a8198ee5
-  SHA256 | 3b3dec0f995b3dd3c6ba218d436be003a687710abab9fcd17d4bdc90a11276be
 
 ## <a name="create-the-collector-vm"></a>A gyűjtő virtuális gép létrehozása
 
@@ -195,12 +179,9 @@ Importálja a letöltött fájlt a vCenter Serverre.
 > Ha módosítja a beállításokat egy értékelni kívánt gépen, az értékelés futtatása előtt aktiválja újra az észlelést. Ehhez használja a gyűjtőben a **Gyűjtés újbóli elindítását**. Miután elkészült a gyűjtemény, válassza az **Újraszámítás** lehetőséget az értékeléshez a portálon, hogy megkapja a frissített értékelési eredményeket.
 
 
-
 ### <a name="verify-vms-in-the-portal"></a>Virtuális gépek ellenőrzése a portálon
 
-Egyszeri felderítés esetén a felderítés ideje a felderíteni kívánt virtuális gépek számától függ. 100 virtuális gép esetében a gyűjtő futtatását követően általában nagyjából egy órát vesz igénybe a konfigurációs adatok és a teljesítményadatok gyűjtésének befejezése. Az felderítés végeztével azonnal létrehozhat értékeléseket (teljesítményalapú és helyszíni értékeléseket egyaránt).
-
-Folyamatos felderítés (előzetes verzió) esetén a gyűjtő folyamatos profilkészítést fog végezni a helyszíni környezeten, és a teljesítményadatokat folyamatosan, egyórás időközönként fogja küldeni. Egy órával a felderítés indítását követően tekintheti át a gépeket a portálon. Javasoljuk, hogy várjon legalább egy napot, és csak utána hozza létre a virtuális gépek teljesítményalapú értékeléseit.
+A gyűjtőberendezés folyamatosan fog profilját a helyszíni környezetben, és fog tartani az adatküldés teljesítmény órás időközzel. Egy órával a felderítés megkezdése után a gépek a portálon tekintheti meg.
 
 1. A migrálási projektben kattintson a **Kezelés** > **Gépek** elemre.
 2. Ellenőrizze, hogy a felderíteni kívánt virtuális gépek megjelennek-e a portálon.
@@ -208,7 +189,7 @@ Folyamatos felderítés (előzetes verzió) esetén a gyűjtő folyamatos profil
 
 ## <a name="create-and-view-an-assessment"></a>Értékelés készítése és megtekintése
 
-A virtuális gépeket a felderítésüket követően csoportosíthatja, és értékelést hozhat létre.
+Virtuális gépek a portálon a felderítésüket követően csoportosíthatja, és hozzon létre értékeléseket. Itt azonnal létrehozhat a helyszíni felmérését követően a virtuális gépeket a felderítésüket a portálon. Javasoljuk, hogy Várjon, amíg legalább egy napig bármely teljesítményalapú értékelések megbízható javaslatok létrehozása előtt.
 
 1. A projekt **Áttekintés** lapján kattintson az **+Értékelés létrehozása** elemre.
 2. Kattintson az **Összes megtekintése** elemre az értékelési tulajdonságok áttekintéséhez.
@@ -219,7 +200,7 @@ A virtuális gépeket a felderítésüket követően csoportosíthatja, és ért
 7. Az értékelés az **Értékelés exportálása** gombra kattintva Excel-fájlként letölthető.
 
 > [!NOTE]
-> Folyamatos felderítés esetén javasoljuk, hogy a felderítés elindítását követően várjon legalább egy napot, és csak utána hozzon létre értékeléseket. Ha szeretné egy meglévő értékelését a legújabb teljesítményadatokkal frissíteni, akkor ezt az értékelés **Újraszámítás** parancsával teheti meg.
+> Erősen ajánlott, az értékelés létrehozása előtt felderítési, elindítása után legalább egy napot várnia. Ha szeretné egy meglévő értékelését a legújabb teljesítményadatokkal frissíteni, akkor ezt az értékelés **Újraszámítás** parancsával teheti meg.
 
 ### <a name="assessment-details"></a>Értékelés részletei
 
@@ -272,22 +253,14 @@ A teljesítményalapú méretezéshez az Azure Migrate-nek szüksége van a virt
 
 Az értékelésekben a következő okok miatt nem lehet elérhető az összes adatpont:
 
-**Egyszeri felderítés**
-
-- A vCenter Server statisztikai beállítása nem a 3. szintre van állítva. Az egyszeri felderítés függ a vCenter Server statisztikai beállításaitól, így ha ez a beállítás a 3. szintnél alacsonyabb, akkor a lemez és a hálózat teljesítményadatai nem lesznek begyűjtve a vCenter Serverről. Ebben az esetben az Azure Migrate által a lemezhez és a hálózathoz nyújtott javaslat nem a kihasználtságon alapul. A lemez IOPS-értékének/adatátviteli teljesítményének figyelembe vétele nélkül az Azure Migrate nem tudja meghatározni, hogy a lemez prémium szintű lemezt igényel-e az Azure-ban, ezért minden esetben standard lemezeket javasol az összes lemezhez.
-- A vCenter Server statisztikai beállítása csak nem sokkal a felderítés megkezdése előtt lett a 3. szintre lett állítva. Vegyünk például egy olyan forgatókönyvet, ahol ma 3. szintre módosítja a statisztikai beállítást, és holnap elindítja a felderítést a gyűjtőberendezéssel (24 óra eltelte után). Ha egy nap értékelését hozza létre, az összes adatponttal rendelkezik, az értékelés megbízhatósági minősítése pedig 5 csillagos lesz. Ha azonban egy hónapra változtatja az értékelésben a teljesítmény időtartamát, a megbízhatósági minősítés csökken, mert nem lennének elérhetők az utolsó egy hónap lemezzel és hálózati teljesítménnyel kapcsolatos adatai. Ha az utolsó egy hónap teljesítményadatait szeretné figyelembe venni, a felderítés megkezdése előtt egy hónapig ajánlott a 3. szinten tartani a vCenter Server statisztikai beállítását.
-
-**Folyamatos felderítés**
-
 - Nem végzett profilkészítést a környezeten abban az időtartamban, amelyre az értékelést létrehozta. Ha például létrehoz egy teljesítményértékelést 1 napra állított időtartammal, akkor a felderítés indítását követően legalább egy napot várnia kell arra, hogy az összes adatpont be legyen gyűjtve.
 
-**Gyakori okok**  
-
 - Néhány virtuális gép le lett állítva abban az időszakban, amelyhez az értékelést számította. Ha valamelyik virtuális gép egy ideig ki volt kapcsolva, nem fogjuk tudni begyűjteni az adott időszak teljesítményadatait.
+
 - Néhány virtuális gép létrejött abban az időszakban, amelyhez az értékelést számította. Ha például az utolsó egy hónap teljesítményelőzményeinek értékelését hozza létre, de néhány virtuális gép csak egy hete jött létre a környezetben. Ilyen esetekben az új virtuális gépeknek nincsenek teljesítményelőzményei a teljes időtartamhoz.
 
 > [!NOTE]
-> Ha valamely értékelés megbízhatósági minősítése 4 csillag alatt van, egyszeri felderítéses modell esetén ajánlott a 3. szintre állítani a vCenter Server statisztikai beállításait, megvárni az értékeléshez használni kívánt időt (1 nap/1 hét/1 hónap), és ezután elvégezni a felderítést és az értékelést. Folyamatos felderítés esetén várjon legalább egy napot, hogy a berendezés elvégezhesse a profilkészítést környezeten, és ezután futtassa az értékelés *Újraszámítását*. Ha ez nem végezhető el, akkor lehet, hogy a teljesítményalapú méretezés nem megbízható, és azt javasoljuk, hogy az értékelés tulajdonságainak módosításával váltson *helyszíni méretezésre*.
+> Ha valamely értékelés megbízhatósági minősítése 5 csillag alatt van, várja meg a berendezés, hogy a profil a környezet legalább egy napot, majd *újraszámítása* az értékelést. Ha ez nem végezhető el, akkor lehet, hogy a teljesítményalapú méretezés nem megbízható, és azt javasoljuk, hogy az értékelés tulajdonságainak módosításával váltson *helyszíni méretezésre*.
 
 ## <a name="next-steps"></a>További lépések
 

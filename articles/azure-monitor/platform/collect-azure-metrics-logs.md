@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: ef2cb2f1bbde857273316181b81eeae743fca20c
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: e8b8dac6d877ab8ab4a0abcdd64ceae1aa48d3ad
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52684781"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848544"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Naplók gyűjtése az Azure service és a Log Analytics használati metrikái
 
@@ -159,4 +159,4 @@ Az Azure-sablon szerepel [példák az Azure Automationnel](https://azure.microso
 
 * [A blob storage használata az IIS és a table storage-események](azure-storage-iis-table.md) , olvassa el a naplókat az Azure-szolgáltatások, a table storage vagy az IIS-napló írása blobtárolókba írási diagnosztika.
 * [Megoldások engedélyezése](../../azure-monitor/insights/solutions.md) nyújt betekintést az adatokat.
-* [Keresési lekérdezéseket használnak](../../log-analytics/log-analytics-queries.md) az adatok elemzéséhez.
+* [Keresési lekérdezéseket használnak](../../azure-monitor/log-query/log-query-overview.md) az adatok elemzéséhez.

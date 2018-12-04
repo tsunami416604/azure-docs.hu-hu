@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 5e3ebd7d3aa5555fbe5ea77dece6eb3177809de7
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 1f3168cef503fed0aea09228c9bc11dfb456f2ab
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215073"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848476"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Állítsa be az Azure Site Recovery használata vész-helyreállítási SharePoint Többrétegű alkalmazások vészhelyreállítása
 
@@ -54,7 +54,7 @@ A SharePoint egy vagy több kiszolgáló megfelel-e meghatározott célok és c�
 ![1. telepítési minta](./media/site-recovery-sharepoint/sharepointarch.png)
 
 
-## <a name="site-recovery-support"></a>Site Recovery támogatási
+## <a name="site-recovery-support"></a>Site Recovery támogatása
 
 Ez a cikk létrehozására, VMware virtuális gépeknek a Windows Server 2012 R2 Enterprise használták. A SharePoint 2013 Enterprise edition és az SQL server 2014 Enterprise edition használták. A Site Recovery replikációs az alkalmazás független, a javaslatok, az itt elérhető kis türelmet, a következő szituációkat is várható.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/05/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 3c06a0b0af306aaf46f4aa542e26c3fcf885e754
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: fc762a4cf500713a09ba325e8b4e41c4cc2b8f15
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49168267"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848939"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>Állítsa be a bejelentkezést egy Amazon-fiókkal, az Azure Active Directory B2C-vel egyéni szabályzatok használatával
 
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan bejelentkezés engedélyezése a felhasználók szá
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Hajtsa végre a [egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md).
-- Ha már nincs Amazon-fiókkal, hozzon létre egyet, [ http://www.amazon.com/ ](https://www.amazon.com/).
+- Ha már nincs Amazon-fiókkal, hozzon létre egyet, [ https://www.amazon.com/ ](https://www.amazon.com/).
 
 ## <a name="register-the-application"></a>Az alkalmazás regisztrálása
 

@@ -12,12 +12,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: d150a56c04d29ae44b7dbb05016889ad2bcefe8f
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 7ff57519cfbb99fa705aff6c970951730c501f3e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620319"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846453"
 ---
 # <a name="create-your-first-function-from-the-command-line"></a>Az első függvény létrehozása parancssorból
 
@@ -107,19 +107,6 @@ A függvény létrehozása után az Azure CLI az alábbi példához hasonló inf
     // Remaining output has been truncated for readability.
 }
 ```
-
-### <a name="configure-the-function-app-nodejs"></a>A függvényalkalmazás (Node.js) konfigurálása
-
-Amikor egy JavaScript-függvényalkalmazást hoz létre, fontos, hogy a megfelelő Node.js-verziót célozza meg. A függvények futtatókörnyezetének 2.x-es verziójához a Node.js 8.x-es verziója szükséges. A `WEBSITE_NODE_DEFAULT_VERSION` alkalmazásbeállítás vezérli, hogy az Azure-beli függvényalkalmazás a Node.js mely verzióját használja. Az [az functionapp config appsettings set](https://docs.microsoft.com/cli/azure/functionapp/config/appsettings#set) paranccsal állítsa be a Node.js verzióját a következőre: `8.11.1`.
-
-A következő Azure CLI-parancsban az <app_name> a függvényalkalmazás neve.
-
-```azurecli-interactive
-az functionapp config appsettings set --resource-group myResourceGroup \
- --name <app_name> --settings WEBSITE_NODE_DEFAULT_VERSION=8.11.1
-```
-
-A kimeneten ellenőrizze az új beállítást.
 
 [!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
 

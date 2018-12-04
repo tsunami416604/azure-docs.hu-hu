@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 88531ee1a98eefdf3ee85b4308150f10417858d0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 986640c6af07c5a7ad85cfe8ca1f3d5b8a8aae84
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420223"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845994"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kiteworks"></a>Oktatóanyag: Azure Active Directory-integráció a Kiteworks
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása a Kiteworks, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - A Kiteworks egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az Azure AD integrálása a Kiteworks konfigurálásához szüksége Kiteworks h
 
 **Adja hozzá a Kiteworks a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -117,7 +117,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<subdomain>.kiteworks.com/sp/module.php/saml/sp/saml2-acs.php/sp-sso`
 
     > [!NOTE] 
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [Kiteworks ügyfél-támogatási csapatának](http://accellion.com/support) beolvasni ezeket az értékeket. 
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [Kiteworks ügyfél-támogatási csapatának](https://accellion.com/support) beolvasni ezeket az értékeket. 
  
 1. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
@@ -201,7 +201,7 @@ Ez a szakasz célja Britta Simon Kiteworks nevű felhasználó létrehozásához
 Kiteworks támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az Kitewors elérésére, ha még nem létezik tett kísérlet során.
 
 >[!NOTE]
->Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [Kiteworks támogatási csoportjának](http://accellion.com/support).
+>Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [Kiteworks támogatási csoportjának](https://accellion.com/support).
  
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése

@@ -1,17 +1,17 @@
 ---
-title: Azure CLI-minták az Azure Cosmos DB-ben | Microsoft Docs
+title: Az Azure CLI-minták az Azure Cosmos DB használatával
 description: Azure CLI-minták – Azure Cosmos DB-fiókok, -adatbázisok, -tárolók, -régiók és -tűzfalak létrehozása és kezelése.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/26/2018
 ms.author: mjbrown
-ms.openlocfilehash: 461207d0c9d27ed645dcac98e6256431bb23f8ad
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 48beb93fbc5952951fff1ed31e5f8625faf78ccd
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005988"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850397"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db"></a>Azure CLI-minták az Azure Cosmos DB-hez
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: a20dec67201cb7d8b7ccd3a7662438f2afabfe63
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 33f04f9deced7c4bc1c27cea5e8c431d4cd5512a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446789"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849326"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Az Azure Functions – HTTP-eseményindítók és kötések
 
@@ -42,7 +42,7 @@ A HTTP-kötések szerepelnek a [Microsoft.Azure.WebJobs.Extensions.Http](http://
 
 ## <a name="trigger"></a>Eseményindító
 
-A HTTP-eseményindítóval lehetővé teszi a HTTP-kérést függvény hívása. HTTP-trigger használatával hozhat létre kiszolgáló nélküli API-kat és webhookokat válaszol. 
+A HTTP-eseményindítóval lehetővé teszi a HTTP-kérést függvény hívása. HTTP-trigger használatával hozhat létre kiszolgáló nélküli API-kat és webhookokat válaszol.
 
 Alapértelmezés szerint HTTP-trigger adja vissza HTTP 200 OK az funkciók egy üres szövegtörzzsel 1.x vagy HTTP 204 Nincs tartalom az funkciók egy üres szövegtörzzsel 2.x. Módosítsa a válasz, állítson be egy [HTTP kimeneti kötésének](#output).
 
@@ -53,8 +53,9 @@ Tekintse meg az adott nyelvű példa:
 * [C#](#trigger---c-example)
 * [C# script (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
-* [JavaScript](#trigger---javascript-example)
 * [Java](#trigger---java-example)
+* [JavaScript](#trigger---javascript-example)
+* [Python](#trigger---python-example)
 
 ### <a name="trigger---c-example"></a>Eseményindító - C#-példa
 
@@ -276,6 +277,61 @@ module.exports = function(context, req) {
 };
 ```
 
+### <a name="trigger---python-example"></a>Eseményindító - Python-példát
+
+Az alábbi példa bemutatja a trigger kötés egy *function.json* fájl és a egy [funkce Pythonu](functions-reference-python.md) , amely a kötés használja. A függvény megkeresi egy `name` paraméter a lekérdezési karakterlánc vagy a HTTP-kérelem törzse.
+
+Íme a *function.json* fájlt:
+
+```json
+{
+    "scriptFile": "__init__.py",
+    "disabled": false,    
+    "bindings": [
+        {
+            "authLevel": "function",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req"
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "res"
+        }
+    ]
+}
+```
+
+A [konfigurációs](#trigger---configuration) szakasz mutatja be ezeket a tulajdonságokat.
+
+A Python-kód itt látható:
+
+```python
+import logging
+import azure.functions as func
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('Python HTTP trigger function processed a request.')
+
+    name = req.params.get('name')
+    if not name:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            name = req_body.get('name')
+
+    if name:
+        return func.HttpResponse(f"Hello {name}!")
+    else:
+        return func.HttpResponse(
+            "Please pass a name on the query string or in the request body",
+            status_code=400
+        )
+```
+
 ### <a name="trigger---java-example"></a>Eseményindító - Java-példában
 
 Az alábbi példa bemutatja a trigger kötés egy *function.json* fájl és a egy [Java függvény](functions-reference-java.md) , amely a kötés használja. A függvény HTTP-állapot 200-as kód válaszban előtagok a riasztást kiváltó kérés törzse egy "Helló," az üdvözlőszöveget kéréstörzs adja vissza.
@@ -307,7 +363,7 @@ A Java-kód itt látható:
 ```java
 @FunctionName("hello")
 public HttpResponseMessage<String> hello(@HttpTrigger(name = "req", methods = {"post"}, authLevel = AuthorizationLevel.ANONYMOUS), Optional<String> request,
-                        final ExecutionContext context) 
+                        final ExecutionContext context)
     {
         // default HTTP 200 response code
         return String.format("Hello, %s!", request);
@@ -352,12 +408,11 @@ A C# és F# funkciók eszközhöz adhat meg a bemeneti adatokat lehet az esemén
 
 A JavaScript-függvények a Functions futtatókörnyezete biztosít, a kérelem törzsében a támogatásikérelem-objektum helyett. További információkért lásd: a [JavaScript eseményindító példa](#trigger---javascript-example).
 
-
 ### <a name="customize-the-http-endpoint"></a>A HTTP-végpontot testreszabása
 
 Alapértelmezés szerint létrehozott egy függvényt a HTTP-trigger, a függvény a megcímezhető az útvonal a következő formában:
 
-    http://<yourapp>.azurewebsites.net/api/<funcname> 
+    http://<yourapp>.azurewebsites.net/api/<funcname>
 
 Ez az útvonal nem kötelező testre szabható `route` tulajdonsága a HTTP-trigger bemeneti kötést. Tegyük fel, a következő *function.json* fájl határozza meg a `route` HTTP-trigger tulajdonságát:
 
@@ -389,7 +444,7 @@ http://<yourapp>.azurewebsites.net/api/products/electronics/357
 Ez lehetővé teszi a függvénykódot a címet, két paramétert támogató _kategória_ és _azonosító_. Bármilyen [webes API útvonal megkötés](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) a paraméterekkel. Az alábbi C#-függvénykódot mindkét paraméter használnak.
 
 ```csharp
-public static Task<HttpResponseMessage> Run(HttpRequestMessage req, string category, int? id, 
+public static Task<HttpResponseMessage> Run(HttpRequestMessage req, string category, int? id,
                                                 ILogger log)
 {
     if (id == null)
@@ -421,7 +476,7 @@ module.exports = function (context, req) {
     }
 
     context.done();
-} 
+}
 ```
 
 Alapértelmezés szerint az összes funkció útvonal van fűzve előtagként *api*. Is testreszabhatja, vagy távolítsa el a előtagot használja a `http.routePrefix` tulajdonságot a [host.json](functions-host-json.md) fájlt. A következő példában eltávolítjuk a *api* útválasztási előtagot a előtag, az üres karakterlánc használatával a *host.json* fájlt.
@@ -533,17 +588,15 @@ Ezek függvény alkalmazási szintű biztonsági módszer használata esetén á
 ### <a name="webhooks"></a>Webhookok
 
 > [!NOTE]
-> Webhook mód csak verzió érhető el a Functions futtatókörnyezet 1.x.
+> Webhook mód csak verzió érhető el a Functions futtatókörnyezet 1.x. A módosítás a HTTP-eseményindítók verzióban teljesítményének növelése 2.x.
 
-Webhook mód a webhook hasznos adat található további ellenőrzést biztosít. A verzió 2.x, az alapszintű HTTP-eseményindító továbbra is működik, és a webhookok az ajánlott eljárás.
+A verzió 1.x, a webhook sablonok webhook is észleltünk adattartalmakat. a további érvényesítés biztosítása érdekében. A verzió 2.x, az alapszintű HTTP-eseményindító továbbra is működik, és a webhookok az ajánlott eljárás. 
 
 #### <a name="github-webhooks"></a>GitHub-webhookok
 
 GitHub-webhookok válaszolni, először a függvény HTTP-Trigger létrehozása, és állítsa be a **webHookType** tulajdonságot `github`. Az URL-CÍMÉT és API-kulcsát, majd másolja a **webhook hozzáadása** a GitHub-adattár oldalát. 
 
 ![](./media/functions-bindings-http-webhook/github-add-webhook.png)
-
-Példaként tekintse meg a [GitHub-webhookok által aktivált függvények létrehozását](functions-create-github-webhook-triggered-function.md).
 
 #### <a name="slack-webhooks"></a>Slack-webhookok
 
@@ -560,7 +613,7 @@ Webhook engedélyezési kezelje a webhook fogadó összetevő, a HTTP-eseményin
 
 A HTTP-kérelem hossza legfeljebb 100 MB-ra (104,857,600 bájt), és az URL-cím hossza legfeljebb 4 KB-os (4096 bájt). Ezek a korlátok határozza meg a `httpRuntime` elem a futtatókörnyezet [Web.config fájl](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config).
 
-Ha egy függvényt, amely használja a HTTP-eseményindító nem befejezéséhez körülbelül 2,5 percen belül, az átjáró időtúllépés és HTTP 502-es hibát adhat vissza. A funkció továbbra is fut, de nem lehet egy HTTP-választ adja vissza. Hosszú lefutású funkciók azt javasoljuk, hogy hajtsa végre az aszinkron minták, és visszaadja azt a helyet, ahol megpingelheti a kérés állapotát. Mennyi ideig futhat egy függvény kapcsolatos információkért lásd: [méretezés és üzemeltetés – Használatalapú csomagban](functions-scale.md#consumption-plan). 
+Ha egy függvényt, amely használja a HTTP-eseményindító nem befejezéséhez körülbelül 2,5 percen belül, az átjáró időtúllépés és HTTP 502-es hibát adhat vissza. A funkció továbbra is fut, de nem lehet egy HTTP-választ adja vissza. Hosszú lefutású funkciók azt javasoljuk, hogy hajtsa végre az aszinkron minták, és visszaadja azt a helyet, ahol megpingelheti a kérés állapotát. Mennyi ideig futhat egy függvény kapcsolatos információkért lásd: [méretezés és üzemeltetés – Használatalapú csomagban](functions-scale.md#consumption-plan).
 
 ## <a name="trigger---hostjson-properties"></a>Eseményindító - host.json tulajdonságai
 
@@ -574,7 +627,7 @@ A HTTP-kimenet válaszol a HTTP-kérést küldő kötés használja. A kötés H
 
 ## <a name="output---configuration"></a>Kimenete – konfiguráció
 
-A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt. A C#-osztálykódtárakat, ezeket nem attribútum tulajdonságok vannak *function.json* tulajdonságait. 
+A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt. A C#-osztálykódtárakat, ezeket nem attribútum tulajdonságok vannak *function.json* tulajdonságait.
 
 |Tulajdonság  |Leírás  |
 |---------|---------|

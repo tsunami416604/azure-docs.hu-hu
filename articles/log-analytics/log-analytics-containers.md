@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 439ae934484649a5bddb821e6a4cf47f7e77a772
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 6373c5c3b613bcc7e01a8c86ad5f9c1af7101f53
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722514"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849309"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Figyelés a Log Analytics megoldásra
 
@@ -603,7 +603,7 @@ Naplóbeli keresés jelenik meg, amelyen a tárolókat állapotával kapcsolatos
 
 ![Log Search for containers szolgáltatásban](./media/log-analytics-containers/containers-log-search.png)
 
-Itt szerkesztheti a keresési lekérdezés módosítása, hogy az adott információk kereséséhez érdekli. Naplókeresések kapcsolatos további információkért lásd: [Log Analytics naplóbeli kereséseivel](log-analytics-queries.md).
+Itt szerkesztheti a keresési lekérdezés módosítása, hogy az adott információk kereséséhez érdekli. Naplókeresések kapcsolatos további információkért lásd: [Log Analytics naplóbeli kereséseivel](../azure-monitor/log-query/log-query-overview.md).
 
 ## <a name="troubleshoot-by-finding-a-failed-container"></a>Hibás tárolók felderítésével hibaelhárítása
 
@@ -671,4 +671,4 @@ A Log Analytics alapvető szolgáltatás lekérdezéseket elmenti. Menti őket, 
 Miután létrehozott egy lekérdezést, amely akkor hasznosak, mentse kattintva **Kedvencek** a naplók keresése lap tetején. Ezután könnyedén elérheti később a **saját irányítópult** lapot.
 
 ## <a name="next-steps"></a>További lépések
-* [Naplók keresése](log-analytics-queries.md) részletes tároló adatfelderítési rekordok megtekintéséhez.
+* [Naplók keresése](../azure-monitor/log-query/log-query-overview.md) részletes tároló adatfelderítési rekordok megtekintéséhez.

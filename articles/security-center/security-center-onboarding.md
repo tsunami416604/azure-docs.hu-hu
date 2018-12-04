@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/02/2018
+ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: d5a4cfa3a91b82aa0f5b1725f86c732fecf632d4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 2ea94e79fdcc331554f42e2396d954af7cb979d8
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405446"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850074"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Bevezetés az Azure Security Center Standard a fokozott biztonság
-Frissítse a Security Center Standard kihasználásához fokozott biztonsági felügyeletet és fenyegetésvédelmet a hibrid felhőalapú számítási feladatokhoz.  Standard 60 napig ingyenesen kipróbálhatja. Tekintse meg a Security Center [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/security-center/) további információt.
+Frissítse a Security Center Standard kihasználásához fokozott biztonsági felügyeletet és fenyegetésvédelmet a hibrid felhőalapú számítási feladatokhoz.  Ingyenes Standard próbálhatja ki. Tekintse meg a Security Center [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/security-center/) további információt.
 
 A Security Center a következőket tartalmazza:
 
@@ -83,7 +83,7 @@ Ha rendelkezik meglévő munkaterületek, alatt vannak felsorolva **új nem Azur
 
 2. A **biztonsági és auditálási**válassza **OMS-munkaterület** hozhat létre egy új munkaterületet.
 > [!NOTE]
-> OMS-munkaterülete mostantól Log Analytics-munkaterületek nevezik.
+> Az OMS-munkaterületeket mostantól Log Analytics-munkaterületeknek nevezzük.
 3. A **OMS-munkaterület**, írja be a munkaterület adatait.
 4. A **OMS-munkaterület**válassza **OK**.  Után kattintson az OK gombra, kap egy Windows vagy Linux-ügynököt és a kulcsok letöltési hivatkozást tartalmaz az ügynök konfigurálásához használja a munkaterület-azonosító.
 5. A **biztonsági és auditálási**válassza **OK**.

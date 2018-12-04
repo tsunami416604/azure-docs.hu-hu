@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 6ba2fd85e23f3a0b634319f7399f97bec9ef3954
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 89236575a73325d650f1357ff03abb53bbc7b00c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346422"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848943"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -37,16 +37,6 @@ Ha másként nincs jelezve, az ebben a cikkben szereplő példák verziójára v
 ## <a name="install-the-azure-functions-core-tools"></a>Az Azure Functions Core Tools telepítése
 
 [Az Azure Functions Core Tools] ugyanazzal a futtatókörnyezettel-megoldás, amely a helyi fejlesztői számítógépen való futtatása az Azure Functions runtime verzióját. Függvények létrehozása, csatlakoztatása az Azure-és függvény projektek telepítésére parancsokat is tartalmaz.
-
-### <a name="v1"></a>Verzió 1.x
-
-Az eszközök az eredeti verzió a Functions 1.x modul használja. Ez a verzió a .NET-keretrendszer (4.7) használja, és csak a Windows-számítógépeken támogatott. Előtt a verzió 1.x eszközök telepítése, be kell [NodeJS telepítése](https://docs.npmjs.com/getting-started/installing-node), amely tartalmazza az npm-et.
-
-Használja a következő parancsot a verzió 1.x eszközök telepítéséhez:
-
-```bash
-npm install -g azure-functions-core-tools@v1
-```
 
 ### <a name="v2"></a>Verzió 2.x
 
@@ -155,7 +145,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 | **`--force`** | A projekt inicializálása, akkor is, ha a meglévő fájlok vannak a projekt. Ez a beállítás felülírja a meglévő fájlok ugyanazzal a névvel. Más fájlokat a projektmappába a szabályzat nem vonatkozik. |
 | **`--no-source-control -n`** | Nem kell alapértelmezett létrehozni egy Git-tárház verzió 1.x. A verzió 2.x-es, a git-tárház nem jön létre alapértelmezés szerint. |
 | **`--source-control`** | Azt szabályozza, hogy egy git-tárház létrehozása. Alapértelmezés szerint a tárház nem jön létre. Amikor `true`, egy tárház jön létre. |
-| **`--worker-runtime`** | Beállítja a nyelvi futtatókörnyezetet a projekthez. Támogatott értékei a következők `dotnet`, `node` (JavaScript), és `java`. Ha nincs beállítva, kéri, válassza ki a modul inicializálása során. |
+| **`--worker-runtime`** | Beállítja a nyelvi futtatókörnyezetet a projekthez. Támogatott értékei a következők `dotnet`, `node` (JavaScript), `java`, és `python`. Ha nincs beállítva, kéri, válassza ki a modul inicializálása során. |
 
 > [!IMPORTANT]
 > Alapértelmezés szerint verzió 2.x verzióját az Core Tools hoz létre a funkció a .NET-futtatókörnyezet, az alkalmazás projektek [C# osztály projektek](functions-dotnet-class-library.md) (.csproj). Ezek a C# a projektek, amely használható a Visual Studióval vagy a Visual Studio Code-ot, összeállítása tesztelése során, és az Azure-ba való közzétételekor. Ha inkább a az azonos C#-szkript (.csx) létrehozását és használatát a fájlok verziójában létrehozott 1.x és a portálon, meg kell adni a `--csx` paraméter létrehozása és központi telepítésekor a funkciók.
@@ -420,11 +410,11 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 
 Core Tools két típusú központi, támogatja a függvény soubory projektu közvetlenül a függvényalkalmazás üzembe helyezése és üzembe helyezése egy egyéni Linux-tárolót, amely csak a verzió támogatott 2.x. Már rendelkeznie kell [egy függvényalkalmazás létrehozása az Azure-előfizetésében](functions-cli-samples.md#create).
 
-Verzió 2.x, rendelkeznie kell [regisztrálva a bővítmények](#register-extensions) a projekt közzététel előtt. Fordítási igénylő projektek kell kialakítani, hogy a bináris fájlokat is üzembe helyezhetők.
+Verzió 2.x, rendelkeznie kell [regisztrálva a bővítmények](#register-extensions) a projekt közzététel előtt. Fordítási igénylő projektek kell kialakítani, hogy a bináris fájlokat is üzembe helyezhetők. 
 
 ### <a name="project-file-deployment"></a>Projekt fájl telepítése  
 
-A leggyakoribb üzembe helyezési módszer magában foglalja a függvényalkalmazás projektjét csomagolása és üzembe helyezni a csomag a függvényalkalmazás Core Tools használatával. Igény szerint is [a függvényeket közvetlenül a központi telepítési csomag futtathatja](run-functions-from-deployment-package.md).
+A leggyakoribb üzembe helyezési módszer magában foglalja a függvényalkalmazás projektjét, a bináris fájlok és a függőségek csomagolása és üzembe helyezni a csomagot a függvényalkalmazás Core Tools használatával. Igény szerint is [a függvényeket közvetlenül a központi telepítési csomag futtathatja](run-functions-from-deployment-package.md).
 
 A Functions-projekt közzététele az Azure-ban egy függvényalkalmazás, használja a `publish` parancsot:
 
@@ -440,14 +430,14 @@ A `publish` parancs feltölti az a funkciók projekt könyvtár tartalmát. Ha t
 > Ha függvényalkalmazást hoz létre az Azure Portalon, akkor verzióját használja, alapértelmezés szerint a függvény futtatókörnyezetét 2.x. Győződjön meg arról, a függvény Alkalmazásverzió használatát, a futtatókörnyezet 1.x kövesse a [verziót futtat 1.x](functions-versions.md#creating-1x-apps).  
 > A futtatókörnyezet verziója, amely rendelkezik a meglévő funkciók függvényalkalmazás nem módosítható.
 
-A következő közzétételi lehetőségeket, amelyek a alkalmazni verziója, a 1.x és 2.x használhatja:
+A következő projekt közzététele beállítások verziója, a 1.x és 2.x a alkalmazni:
 
 | Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  Közzétételi beállítások a local.settings.json az Azure-ba, kéri a felhasználót, felülírása, ha a beállítás már létezik. A storage emulatort használja, ha módosítja az Alkalmazásbeállítás- [tényleges tárolási kapcsolat](#get-your-storage-connection-strings). |
 | **`--overwrite-settings -y`** | Alkalmazásbeállítások felülírja a rendszer kéri le. Ha `--publish-local-settings -i` szolgál.|
 
-A következő közzétételi beállítások verziójában csak támogatott 2.x:
+A következő projekt közzététele a beállítások csak verziójában támogatott 2.x:
 
 | Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
@@ -455,6 +445,8 @@ A következő közzétételi beállítások verziójában csak támogatott 2.x:
 |**`--list-ignored-files`** | Közzététele a .funcignore fájl alapuló során figyelmen kívül hagyott fájlok listáját jeleníti meg. |
 | **`--list-included-files`** | Azon fájlok listáját, amely közzétett, a .funcignore fájl alapján jeleníti meg. |
 | **`--zip`** | Tegye közzé a Run-From-Zip-csomagot. Az alkalmazásnak, hogy rendelkezik definiált AzureWebJobsStorage beállítást igényel. |
+| **`--build-native-deps`** | Alkalmazások átugrása .wheels mappa python közzétételekor fog működni. |
+| **`--additional-packages`** | Natív függőségek készítése során a telepítendő csomagok listáját. Például: `python3-dev libevent-dev`. |
 | **`--force`** | Bizonyos esetekben előre közzétételi ellenőrzési figyelmen kívül. |
 | **`--csx`** | Tegyen közzé egy C#-szkript (.csx) projektet. |
 | **`--no-build`** | Dotnet-függvények készítése kihagyása. |

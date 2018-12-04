@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jeedes
-ms.openlocfilehash: fd35cb67d0555919a1340c428bac042b67239469
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d51ced3f264a486288c951def7c23a0d95609ac0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427339"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850677"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobile-xpense"></a>Oktatóanyag: Azure Active Directory-integráció az Mobile Xpense
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása a Mobile Xpense, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy mobil Xpense egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure AD integrálása a Mobile Xpense konfigurálásához hozzá kell Mobile
 
 **A Mobile Xpense hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -121,7 +121,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<sub-domain>.mobilexpense.com/<customername>`
      
     > [!NOTE] 
-    > Ezek a értékei nem valódi. Frissítse a tényleges válasz URL-címet, és a bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [Mobile Xpense ügyfél-támogatási csapatának](http://www.mobilexpense.net/contact) beolvasni ezeket az értékeket. 
+    > Ezek a értékei nem valódi. Frissítse a tényleges válasz URL-címet, és a bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [Mobile Xpense ügyfél-támogatási csapatának](https://www.mobilexpense.net/contact) beolvasni ezeket az értékeket. 
 
 1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
@@ -131,7 +131,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/mobilexpense-tutorial/tutorial_general_400.png)
 
-1. Az egyszeri bejelentkezés konfigurálása **Mobile Xpense** oldalon kell küldenie a letöltött **metaadatainak XML** való [Mobile Xpense támogatási csapatának](http://www.mobilexpense.net/contact). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+1. Az egyszeri bejelentkezés konfigurálása **Mobile Xpense** oldalon kell küldenie a letöltött **metaadatainak XML** való [Mobile Xpense támogatási csapatának](https://www.mobilexpense.net/contact). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -170,7 +170,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-mobile-xpense-test-user"></a>A Mobile Xpense tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű MobileXpense hoz létre. a munkahelyi [MobileXpense támogatási csapatának](http://www.mobilexpense.net/contact) a felhasználók hozzáadása az MobileXpense platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
+Ebben a szakaszban egy felhasználói Britta Simon nevű MobileXpense hoz létre. a munkahelyi [MobileXpense támogatási csapatának](https://www.mobilexpense.net/contact) a felhasználók hozzáadása az MobileXpense platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -202,7 +202,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

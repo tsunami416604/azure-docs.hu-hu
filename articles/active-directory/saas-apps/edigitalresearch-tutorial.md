@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: ca42d6c8ca1333f2ffba77b79584b7092b26f03e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d5c86186cd6ee02d83800c6483a2e35d8f1fb3c7
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438596"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848714"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edigitalresearch"></a>Oktatóanyag: Azure Active Directory-integráció az eDigitalResearch
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 EDigitalResearch az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy eDigitalResearch egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure AD integrálása a eDigitalResearch konfigurálásához hozzá kell eDi
 
 **EDigitalResearch hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -115,7 +115,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<company-name>.edigitalresearch.com/login/consume`
 
     > [!NOTE] 
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Kapcsolattartó [eDigitalResearch támogatási csapatának](http://www.maruedr.com/contact) beolvasni ezeket az értékeket.
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Kapcsolattartó [eDigitalResearch támogatási csapatának](https://www.maruedr.com/contact) beolvasni ezeket az értékeket.
  
 
 
@@ -131,7 +131,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![eDigitalResearch konfiguráció](./media/edigitalresearch-tutorial/tutorial_edigitalresearch_configure.png) 
 
-1. Az egyszeri bejelentkezés konfigurálása **eDigitalResearch** oldalon kell küldenie a letöltött **(Base64) tanúsítványfájl**, **SAML Entitásazonosító**, és **kijelentkezés URL-cím** való [eDigitalResearch támogatási csapatának](http://www.maruedr.com/contact). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+1. Az egyszeri bejelentkezés konfigurálása **eDigitalResearch** oldalon kell küldenie a letöltött **(Base64) tanúsítványfájl**, **SAML Entitásazonosító**, és **kijelentkezés URL-cím** való [eDigitalResearch támogatási csapatának](https://www.maruedr.com/contact). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -172,7 +172,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 Ez a szakasz célja eDigitalResearch Britta Simon nevű felhasználó létrehozásához. 
 
-Együttműködik a [eDigitalResearch támogatási csapatának](http://www.maruedr.com/contact) rávenni a felhasználókat létrehozni.     
+Együttműködik a [eDigitalResearch támogatási csapatának](https://www.maruedr.com/contact) rávenni a felhasználókat létrehozni.        
     
  > [!NOTE]
  > Az Azure Active Directory fióktulajdonos kap egy e-mailt, és a egy hivatkozást, mielőtt aktívvá válik, győződjön meg arról, hogy fiókjuk követi.
@@ -207,7 +207,7 @@ Ebben a szakaszban engedélyezze Britta Simon használja az Azure egyszeri bejel
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

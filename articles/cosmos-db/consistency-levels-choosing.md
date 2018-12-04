@@ -1,20 +1,19 @@
 ---
-title: Az alkalmazás, amely az Azure Cosmos DB a megfelelő konzisztenciaszint kiválasztása |} A Microsoft Docs
+title: Az alkalmazás, amely az Azure Cosmos DB a megfelelő konzisztenciaszint kiválasztása
 description: Az alkalmazás a megfelelő konzisztenciaszint kiválasztása az Azure Cosmos DB-ben.
 keywords: konzisztencia, teljesítmény, az azure cosmos db, azure, Microsoft azure
 services: cosmos-db
 author: markjbrown
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/24/2018
 ms.author: mjbrown
-ms.openlocfilehash: 42128a05ad9f82ff6b202eb6566c1fea60caa760
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: a1c7d750bcd0c3f37d2269aee299e0ccd8c4ef4a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162423"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849292"
 ---
 # <a name="choose-the-right-consistency-level-for-your-application"></a>Az alkalmazás a megfelelő konzisztenciaszint kiválasztása
 

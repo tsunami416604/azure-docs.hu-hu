@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: dx@sendgrid.com
-ms.openlocfilehash: a5f07d02bfe4032d77a17e5972b88f6530125f28
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 91d28802b4af23da5b8060fa7c8f9a7e843a7dab
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38634968"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840265"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>Hogyan lehet E-mail küldése a SendGrid használatával az Azure-ral
 ## <a name="overview"></a>Áttekintés
@@ -43,7 +43,7 @@ További információért látogasson el [ https://sendgrid.com ](https://sendgr
 A [SendGrid NuGet-csomag](https://www.nuget.org/packages/Sendgrid) legegyszerűbb módja a SendGrid API-t és az alkalmazás konfigurálása az összes függőség. NuGet egy Visual Studio-bővítmény a Microsoft Visual Studio 2015-höz mellékelt és fölött, amely megkönnyíti a telepíthet és frissíthet, könyvtárak és eszközök.
 
 > [!NOTE]
-> Telepítse a NuGet, ha a Visual Studio Visual Studio 2015-nél korábbi verzióját futtatja, a Microsoft [ http://www.nuget.org ](http://www.nuget.org), kattintson a **NuGet telepítése** gombra.
+> Telepítse a NuGet, ha a Visual Studio Visual Studio 2015-nél korábbi verzióját futtatja, a Microsoft [ https://www.nuget.org ](https://www.nuget.org), kattintson a **NuGet telepítése** gombra.
 >
 >
 

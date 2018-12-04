@@ -7,14 +7,14 @@ author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 12/03/2018
 ms.author: glenga
-ms.openlocfilehash: a92a4183962f71005577478bf27df9b5fb945acf
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 83e5a15d8a7f9c01f6a180ebceb715600b8a39db
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634362"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849479"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP-címek az Azure Functions szolgáltatásban
 
@@ -88,13 +88,13 @@ Például ez az a Nyugat-Európa JSON-töredék néz:
 
 ## <a name="inbound-ip-address-changes"></a>Bejövő IP-cím módosításai
 
- A bejövő IP-cím **előfordulhat, hogy** módosítsa, ha Ön:
+A bejövő IP-cím **előfordulhat, hogy** módosítsa, ha Ön:
 
 - Törölje a függvényalkalmazást, és hozza létre újra egy másik erőforráscsoportban található.
 - Törölje a legutóbbi erőforrás csoport és a régió kombinációja függvényalkalmazást, és hozza létre újból.
 - Egy SSL-kötés törlése például során [tanúsítvány-megújítási](../app-service/app-service-web-tutorial-custom-ssl.md#renew-certificates)).
 
-A bejövő IP-cím lehet, hogy is módosíthatja, ha még nem léptek a azokat a műveleteket, mint például a felsorolt.
+Ha fut a függvényalkalmazás egy [Használatalapú csomag](functions-scale.md#consumption-plan), a bejövő IP-cím is előfordulhat, hogy módosítsa, ha még nem léptek a azokat a műveleteket, mint például a felsorolt.
 
 ## <a name="outbound-ip-address-changes"></a>Kimenő IP-cím módosításai
 
@@ -103,7 +103,7 @@ A készlet elérhető kimenő IP-címek függvényalkalmazás változhatnak, ami
 * Semmit sem, amely a bejövő IP-címet módosíthatja.
 * Módosítsa az App Service-csomag tarifacsomagját. A lista összes lehetséges kimenő IP-címet az alkalmazás használhatja az összes tarifacsomag, a `possibleOutboundIPAddresses` tulajdonság. Lásd: [keresse meg a kimenő IP-címek](#find-outbound-ip-addresses).
 
-A bejövő IP-cím lehet, hogy is módosíthatja, ha még nem léptek a azokat a műveleteket, mint például a felsorolt.
+Ha fut a függvényalkalmazás egy [Használatalapú csomag](functions-scale.md#consumption-plan), a kimenő IP-cím is előfordulhat, hogy módosítsa, ha még nem léptek a azokat a műveleteket, mint például a felsorolt.
 
 Kimenő IP-cím módosítása szándékosan kényszerítése:
 

@@ -1,34 +1,33 @@
 ---
-title: Csoportban értékeléséhez Azure telepítse át a gépek |} Microsoft Docs
-description: Útmutatás a gépek az Azure áttelepítése szolgáltatással értékelését futtatása előtt.
+title: Az Azure Migrate-tel gépeket |} A Microsoft Docs
+description: Ismerteti, hogyan lehet gépeket az Azure Migrate szolgáltatással értékelés futtatása előtt.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 06/19/2018
+ms.date: 11/28/2018
 ms.author: raynew
-ms.openlocfilehash: ccab88c0195a7ca459c8579b7870d121dfd0fe1d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3f90fbb4ae30f8cc7730385730c39321974a94c4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231406"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850703"
 ---
-# <a name="group-machines-for-assessment"></a>Csoport gépek értékeléshez
+# <a name="group-machines-for-assessment"></a>A gépeket a
 
-Ez a cikk ismerteti az értékelés szerint gépcsoport létrehozása [Azure áttelepítése](migrate-overview.md). Azure áttelepítése értékeli a csoport, ellenőrizze, hogy azok alkalmas áttelepítése az Azure-ba, és biztosít az Azure-beli a gép méretezési és költségű becsléseket gépek.
+Ez a cikk bemutatja, hogyan hozhat létre az értékelés szerint gépcsoport [Azure Migrate](migrate-overview.md). Az Azure Migrate, ellenőrizze, hogy azok még az Azure-ba való migrálásra alkalmas, és a gép futtatása az Azure-ban a méretezési és becsléseket biztosít a csoportban található gépek értékeli. Ha tudja, hogy a gépek, amelyeket együttesen kell áttelepíteni, manuálisan is létrehozhat a csoport az Azure Migrate használatával a következő metódust. Ha nem biztos nagyon kapcsolatban, amely csoportosítja a kell a gépek, használhatja a függőségek képi megjelenítésének funkcióival az Azure Migrate hozhat létre csoportokat. [Részletek](how-to-create-group-machine-dependencies.md)
 
+## <a name="create-a-group"></a>Csoport létrehozása
 
-## <a name="create-a-group"></a>Hozzon létre egy csoportot
+1. Az a **áttekintése** az Azure Migrate-projektben, kezelés, területen kattintson a **csoportok** > **+ csoport**, és adjon meg egy csoportnevet.
+2. Adjon hozzá egy vagy több gépet a csoporthoz, és kattintson a **létrehozás**.
+3. Választhatja a csoport egy új értékelés futtatása igény szerint.
 
-1. A a **áttekintése** Azure áttelepítése projekt kezelése, kattintson a **csoportok** > **+ csoport**, és adjon meg egy felügyeleticsoport-nevet.
-2. Egy vagy több gépek felvétele a csoportba, és kattintson a **létrehozása**. 
-3. Bejelölésével opcionálisan megadhatja a csoport egy új assessment futtatásához. 
+    ![Csoport létrehozása](./media/how-to-create-a-group/create-group.png)
 
-    ![Hozzon létre egy csoportot](./media/how-to-create-a-group/create-group.png)
-
-A csoport létrehozása után módosíthatja a csoport választva módosíthatja a **csoportok** lap, és hozzáadása vagy eltávolítása a gépek.
+A csoport létrehozása után módosítja a csoport választva a **csoportok** lapot, és ezután hozzáadásával vagy eltávolításával gépek.
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogyan használható [gép függőségi leképezési](how-to-create-group-machine-dependencies.md) magas megbízhatósági csoportok létrehozásához.
+- Ismerje meg, hogyan használható [gépfüggőségi leképezések](how-to-create-group-machine-dependencies.md) nagy megbízhatóságú csoportokat létrehozni.
 - [További információk](concepts-assessment-calculation.md) az értékelések számításával kapcsolatban.

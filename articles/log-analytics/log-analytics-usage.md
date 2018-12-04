@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 03c1afb45ddde994ba79838fc73eb3c16e8510f2
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 843271901b8d58c2c5a6c4cf495997498b8278b6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723975"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848850"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Az adathasználat elemzése a Log Analyticsben
 
@@ -209,7 +209,7 @@ Megadhat egy meglévő [műveletcsoportot](../monitoring-and-diagnostics/monitor
 Riasztás fogadásakor kövesse a következő szakaszban leírt lépéseket a vártnál magasabb szintű használatot okozó hibák elhárításához.
 
 ## <a name="next-steps"></a>További lépések
-* A keresési nyelv használatával kapcsolatban tekintse meg a [Log Analytics naplókeresési funkciójával](log-analytics-queries.md) kapcsolatos cikket. A keresési lekérdezésekkel további elemzéseket végezhet a használati adatokon.
+* A keresési nyelv használatával kapcsolatban tekintse meg a [Log Analytics naplókeresési funkciójával](../azure-monitor/log-query/log-query-overview.md) kapcsolatos cikket. A keresési lekérdezésekkel további elemzéseket végezhet a használati adatokon.
 * Az [új naplózási riasztás létrehozásával kapcsolatos](../monitoring-and-diagnostics/alert-metric.md) szakaszban leírt lépéseket követve beállíthatja, hogy értesítést kapjon, ha teljesül egy keresési feltétel.
 * A [megoldáscélzási](../azure-monitor/insights/solution-targeting.md) funkcióval megadhatja, hogy csak a szükséges számítógépcsoportoktól gyűjtsön adatokat.
 * Hatékony biztonságiesemény-gyűjtési szabályzat konfigurálásához tekintse meg az [Azure Security Center szűrési szabályzataival](../security-center/security-center-enable-data-collection.md) foglalkozó cikket.

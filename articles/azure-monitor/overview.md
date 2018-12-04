@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: 5ef451da3eae696c3506f25ee9458b3ad3286b07
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: a3e0125a66c4b8bbda6e0b7087fe5e0e387d43e4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721182"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847388"
 ---
 # <a name="azure-monitor-overview"></a>Az Azure Monitor áttekintése
 
@@ -39,7 +39,7 @@ Sok Azure-erőforrások látni fogja az áttekintő oldala az Azure Portalon az 
 
 ![Mérőszámok](media/overview/metrics.png)
 
-A Log Analyticsben, amely tartalmazza a tárolt naplóadatokat az Azure Monitor által gyűjtött egy [teljes funkcionalitású lekérdezésnyelvet](../log-analytics/log-analytics-queries.md) gyorsan lekérni, konszolidálhatja és elemezheti az összegyűjtött adatokat.  Hozhat létre és tesztelheti a lekérdezéseket a [Log Analytics lapot](../log-analytics/log-analytics-log-search-portals.md) az Azure Portalon, majd vagy a közvetlenül elemezheti az adatokat ezekkel az eszközökkel, vagy mentheti a lekérdezéseket a segítségével [Vizualizációk](visualizations.md) vagy [ riasztási szabályok](../monitoring-and-diagnostics/monitoring-overview-alerts.md).
+A Log Analyticsben, amely tartalmazza a tárolt naplóadatokat az Azure Monitor által gyűjtött egy [teljes funkcionalitású lekérdezésnyelvet](../azure-monitor/log-query/log-query-overview.md) gyorsan lekérni, konszolidálhatja és elemezheti az összegyűjtött adatokat.  Hozhat létre és tesztelheti a lekérdezéseket a [Log Analytics lapot](../log-analytics/log-analytics-log-search-portals.md) az Azure Portalon, majd vagy a közvetlenül elemezheti az adatokat ezekkel az eszközökkel, vagy mentheti a lekérdezéseket a segítségével [Vizualizációk](visualizations.md) vagy [ riasztási szabályok](../monitoring-and-diagnostics/monitoring-overview-alerts.md).
 
 A Log Analytics lekérdezési nyelv egyszerű naplólekérdezések alkalmas, de tartoznak az olyan speciális funkciókat, például összesítés, illesztés és intelligens elemzés. Segítségével gyorsan megismerkedhet a lekérdezési nyelv használatával [több leckék](../log-analytics/query-language/get-started-queries.md) elérhető.  Azon felhasználók számára, akik már ismerik az [SQL](../log-analytics/query-language/sql-cheatsheet.md) és [Splunk](../log-analytics/query-language/splunk-cheatsheet.md) használatát, külön útmutató áll rendelkezésére.
 
@@ -85,7 +85,7 @@ Az Azure Monitor VM insights az Azure-beli virtuális gépek (VM) ipari méretek
 ![VM Insights](media/overview/vm-insights.png)
 
 ### <a name="monitoring-solutions"></a>Monitorozási megoldások
-[Figyelési megoldások](../azure-monitor/insights/solutions.md) az Azure monitorban, amelyeket a csomagolt logika, amelyek elemzéseket nyújtanak egy adott alkalmazás vagy szolgáltatás esetében. Gyűjtenek adatokat a Log Analytics-be más figyelési adatokat, valamint [lekérdezések](../log-analytics/log-analytics-queries.md) elemzéshez és [nézetek](../azure-monitor/platform/view-designer.md) a vizualizációt. Figyelési megoldások [a Microsoft](../azure-monitor/insights/solutions-inventory.md) és partnerek számára a különböző Azure-szolgáltatások és más alkalmazások figyelésére.
+[Figyelési megoldások](../azure-monitor/insights/solutions.md) az Azure monitorban, amelyeket a csomagolt logika, amelyek elemzéseket nyújtanak egy adott alkalmazás vagy szolgáltatás esetében. Gyűjtenek adatokat a Log Analytics-be más figyelési adatokat, valamint [lekérdezések](../azure-monitor/log-query/log-query-overview.md) elemzéshez és [nézetek](../azure-monitor/platform/view-designer.md) a vizualizációt. Figyelési megoldások [a Microsoft](../azure-monitor/insights/solutions-inventory.md) és partnerek számára a különböző Azure-szolgáltatások és más alkalmazások figyelésére.
 
 ![Monitorozási megoldások](media/overview/solutions-overview.png)
 
@@ -146,4 +146,4 @@ További információk:
 
 * [Metrikák és naplók](../azure-monitor/platform/data-collection.md) az Azure Monitor által összegyűjtött adatokat.
 * [Adatforrások](../azure-monitor/platform/data-sources.md) számára az alkalmazás összetevői hogyan telemetriai adatokat küldhet.
-* [Log Analytics](../log-analytics/log-analytics-queries.md) összegyűjtött adatok elemzéséhez.
+* [Log Analytics](../azure-monitor/log-query/log-query-overview.md) összegyűjtött adatok elemzéséhez.

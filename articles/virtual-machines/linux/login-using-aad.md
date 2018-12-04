@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 4f86dee539e3cc5a90db828ed11dbd225a00555d
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: e75758c5a4171adc7af56581026a727db2ef4740
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334635"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850975"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Jelentkezzen be egy Linux rendszerű virtuális gép az Azure-ban az Azure Active Directory-hitelesítés (előzetes verzió)
 
@@ -129,7 +129,7 @@ Először is megtekintheti a virtuális gép nyilvános IP-címét [az vm show](
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-Jelentkezzen be az Azure-beli Linuxos virtuális gép az Azure ad-ben használt hitelesítő adataival. A `-l` paraméter lehetővé teszi a saját Azure AD-fiók címét adja meg. Adja meg a virtuális gép nyilvános IP-címét az előző parancs kimenete:
+Jelentkezzen be az Azure-beli Linuxos virtuális gép az Azure ad-ben használt hitelesítő adataival. A `-l` paraméter lehetővé teszi a saját Azure AD-fiók címét adja meg. Fiók címek csupa kisbetűket meg kell adni. Az előző parancs által a virtuális gép nyilvános IP-címet használja:
 
 ```azurecli-interactive
 ssh -l azureuser@contoso.onmicrosoft.com publicIps

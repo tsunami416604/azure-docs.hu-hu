@@ -8,17 +8,17 @@ services: mariadb
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
-ms.date: 11/14/2018
-ms.openlocfilehash: ed4c05afdc5b061c7779a0b1ca34975f8b06ad7d
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 12/03/2018
+ms.openlocfilehash: b1e458339c2befdb51439cd23ef5f22ba4379c78
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686024"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850261"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Mi az Azure Database for MariaDB?
 
-Az Azure Database for MariaDB egy fejlesztőknek készült relációsadatbázis-szolgáltatás a Microsoft Cloudban. Azure Database for MariaDB alapul a [MariaDB community Edition kiadását](https://mariadb.org/download/) database engine, a verzió 10.2. Ez a szolgáltatás nyilvános előzetes verziója. 
+Az Azure Database for MariaDB egy fejlesztőknek készült relációsadatbázis-szolgáltatás a Microsoft Cloudban. Azure Database for MariaDB alapul a [MariaDB community Edition kiadását](https://mariadb.org/download/) database engine, a verzió 10.2.
 
 Az Azure Database for MariaDB szolgáltatás a következőket nyújtja:
 
@@ -43,7 +43,7 @@ For a set of Azure CLI samples, see:
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Teljesítmény módosítása és skálázása másodperceken belül
 
-Az előzetes verzióban az Azure Database for MariaDB szolgáltatás számos szolgáltatási szintet kínál: Alapszintű, Általános célú és Memóriahasználatra optimalizált. Az egyes szintek különböző teljesítményt és képességeket kínálnak, így különböző adatbázis-tevékenységprofilokat képesek támogatni, a könnyűtől a nehéz számítási feladatokig. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőségnek köszönhetően az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor valóban szüksége van rájuk. Lásd: [Tarifacsomagok](concepts-pricing-tiers.md) részleteiről.
+Az Azure Database for MariaDB szolgáltatás számos különböző szolgáltatásszinttel rendelkezik: alapszintű, általános célú és memóriahasználatra optimalizált. Az egyes szintek különböző teljesítményt és képességeket kínálnak, így különböző adatbázis-tevékenységprofilokat képesek támogatni, a könnyűtől a nehéz számítási feladatokig. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőségnek köszönhetően az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor valóban szüksége van rájuk. Lásd: [Tarifacsomagok](concepts-pricing-tiers.md) részleteiről.
 
 ## <a name="monitoring-and-alerting"></a>Figyelés és riasztás
 
@@ -51,7 +51,7 @@ Hogyan lehet megállapítani, hogy mikor van szükség vertikális fel- vagy les
 
 ## <a name="keep-your-app-and-business-running"></a>Biztosítsa alkalmazása és vállalkozása folyamatos működését
 
-A Microsoft által felügyelt adatbázisok globális hálózata teszi lehetővé az Azure szolgáltatói szerződésében (az SLA-ban) biztosított 99,99%-os rendelkezésre állást (amely a nyilvános előzetes verziókban még nem érhető el). Ez a hálózat segíti elő, hogy alkalmazása a hét minden napján, napi 24 órában fusson. Az Azure Database for MariaDB által biztosított beépített biztonság, hibatűrés és adatvédelem előnyeit is kihasználhatja. Az Azure Database for MariaDB-vel az időponthoz kötött visszaállítás segítségével a kiszolgálót visszaállíthatja egy legfeljebb 35 nappal korábbi állapotba.
+Az Azure-szolgáltatás piacvezető 99,99 %-os rendelkezésre állási SLA-t a Microsoft által felügyelt adatközpontok globális hálózata működteti. Ez a hálózat segíti elő, hogy alkalmazása a hét minden napján, napi 24 órában fusson. Az Azure Database for MariaDB által biztosított beépített biztonság, hibatűrés és adatvédelem előnyeit is kihasználhatja. Az Azure Database for MariaDB-vel az időponthoz kötött visszaállítás segítségével a kiszolgálót visszaállíthatja egy legfeljebb 35 nappal korábbi állapotba.
 
 ## <a name="secure-your-data"></a>Az adatok védelme
 

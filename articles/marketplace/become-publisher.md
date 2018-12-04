@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 35feb1b2aa593d403b3b54781ddbba41964d15e5
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: bc6e77643783e1e9f124bc98ea1eb910304a5f32
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394833"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846470"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Felhőbeli piactér kiadói válik
 
@@ -78,7 +78,7 @@ Meg kell adnia az alábbi információkat:
 Marketplace-en csapat fogja ellenőrizni a piactér-beli regisztrációs részleteit a 3. lépésben megadott. Amint jóváhagyják, a fiók hitelesítő adatait és útmutatás a bejelentkezés üdvözlő e-mailt fog kapni a [Cloud Partner Portalon](https://cloudpartner.azure.com).
 
 Használhatja a [Cloud Partner Portalon](https://cloudpartner.azure.com) szeretne létrehozni, közzététele és kezelése a marketplace-ajánlat. Miután a jóváhagyó üdvözlő e-mailt kap, akkor azonnal be tud jelentkezni a [Cloud Partner Portalon](https://cloudpartner.azure.com) eléréséhez további műszaki információt Marketplace-en való közzététel és az ajánlat létrehozása Microsoft-fiókkal. 
-*   További információ a Cloud Partner portálra, használatával [látogasson el az első lépések a cikk további részében](https://cloudpartner.azure.com/#documentation/getting-started-with-the-cloud-partner-portal). A Cloud Partner portálra el az alábbi adatokat kell bejelentkeznie.
+*   További információ a Cloud Partner portálra, használatával [látogasson el az első lépések a cikk további részében](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal). A Cloud Partner portálra el az alábbi adatokat kell bejelentkeznie.
 *   Ha kérdése van vagy lenne például ütemezzen egy előkészítési áttekintése hívás, tekintse át más kiadó útmutató cikkek, vagy hozzon létre egy támogatási kérést probléma típusa alatt > belül a Cloud Partner portálra a Marketplace-en bevezetése.
 *   Ha nem kapta meg az üdvözlő e-mailt, ellenőrizze a Levélszemét mappát egy e-mailek, a tárgysorban a "Üdvözli a Microsoft Marketplace!." Nincs e-mail nem található a Levélszemét mappát, ha [forduljon a Microsoft ügyfélszolgálatához](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=&supportregion=&pesid=16230&forceorigin=esmc&ccsid=636595105151894820). A támogatási oldalon válasszon ki: Problem Type > piactér bevezetése.  Csapat Marketplace Publisher forduljon hozzánk, és a lekérdezések elvégzésében segítségére lesz. 
 

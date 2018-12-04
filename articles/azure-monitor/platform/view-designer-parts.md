@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: cdf3fda4228eadc2921c8fbc1bc72702461d04e4
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 876cb037aab718a91f469f8862c501bb9a29e4d6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642815"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846426"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Nézettervező vizualizációs részére a Log Analytics használati útmutató
 Nézettervező az Azure Log Analytics használatával egyéni nézeteket hozhat létre az Azure Portalon, amelyek a Log Analytics-munkaterület adatvizualizációk széles. Ez a cikk egy referencia-útmutató a beállítások a vizualizációs rész, amely szerepel az egyéni nézetek.
@@ -214,7 +214,7 @@ A fejléc statikus szöveget és a egy nem kötelező hivatkozást jeleníti meg
 | Címke |A hivatkozás szövege. |
 | URL-cím |A hivatkozás URL-címét. |
 | **Információs elemek** | |
-| Cím |A cím az egyes elemek megjelenő szöveg. |
+| Beosztás |A cím az egyes elemek megjelenő szöveg. |
 | Tartalom |Az egyes elemekhez megjelenített szöveg. |
 
 ## <a name="line-chart-callout-and-list-part"></a>Vonaldiagram, képfelirat és lista része
@@ -230,8 +230,8 @@ A fejléc log lekérdezésből származó több sorozat vonaldiagramot időt és
 | Ikon |A result fejlécben mellett megjelenik az képfájl. |
 | Ikon használata |Válassza ki ezt a hivatkozást a ikonjának megjelenítése. |
 | **Fejléc** | |
-| Cím |A fejléc tetején megjelenő szöveg. |
-| Felirat |A szöveg, amely a fejléc tetején a cím alatt jelenik meg. |
+| Beosztás |A fejléc tetején megjelenő szöveg. |
+| Alcím |A szöveg, amely a fejléc tetején a cím alatt jelenik meg. |
 | **Vonaldiagram** | |
 | Lekérdezés |A lekérdezés futtatása a vonaldiagramot. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus értéket. Ez a lekérdezés parancsmagokéval használ a *mérték* kulcsszó összefoglalva az eredményeket. Ha a lekérdezés a *időköz* kulcsszó, a diagram x tengely ez alatt az időtartam használja. Ha a lekérdezés nem tartalmazza a *időköz* kulcsszó, az x tengely használ óránként történik. |
 | Átkattintásos navigáció | A fejlécére kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
@@ -270,8 +270,8 @@ A fejléc log lekérdezésből származó több sorozat vonaldiagramot idővel j
 | Ikon |A result fejlécben mellett megjelenik az képfájl. |
 | Ikon használata |Válassza ki ezt a hivatkozást a ikonjának megjelenítése. |
 | **Fejléc** | |
-| Cím |A fejléc tetején megjelenő szöveg. |
-| Felirat |A szöveg, amely a fejléc tetején a cím alatt jelenik meg. |
+| Beosztás |A fejléc tetején megjelenő szöveg. |
+| Alcím |A szöveg, amely a fejléc tetején a cím alatt jelenik meg. |
 | **Vonaldiagram** | |
 | Lekérdezés |A lekérdezés futtatása a vonaldiagramot. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus értéket. Ez a lekérdezés parancsmagokéval használ a *mérték* kulcsszó összefoglalva az eredményeket. Ha a lekérdezés a *időköz* kulcsszó, a diagram x tengely ez alatt az időtartam használja. Ha a lekérdezés nem tartalmazza a *időköz* kulcsszó, az x tengely használ óránként történik. |
 | Átkattintásos navigáció | A fejlécére kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
@@ -305,8 +305,8 @@ A vonaldiagram-verem három külön vonaldiagramok használata több sorozat id�
 | Új csoport |Válassza ki ezt a hivatkozást az új csoport létrehozása a nézetben, a jelenlegi nézet ellenében. |
 | Ikon |A result fejlécben mellett megjelenik az képfájl. |
 | **Diagram – 1<br>2 diagram<br>3 mutató részletes diagram** |**> Header** |
-| Cím |A diagram tetején megjelenő szöveg. |
-| Felirat |A szöveg, amely a diagram tetején a cím alatt jelenik meg. |
+| Beosztás |A diagram tetején megjelenő szöveg. |
+| Alcím |A szöveg, amely a diagram tetején a cím alatt jelenik meg. |
 | **Diagram – 1<br>2 diagram<br>3 mutató részletes diagram** |**Vonaldiagram** |
 | Lekérdezés |A lekérdezés futtatása a vonaldiagramot. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus értéket. Ez a lekérdezés parancsmagokéval használ a *mérték* kulcsszó összefoglalva az eredményeket. Ha a lekérdezés a *időköz* kulcsszó, a diagram x tengely ez alatt az időtartam használja. Ha a lekérdezés nem tartalmazza a *időköz* kulcsszó, az x tengely használ óránként történik. |
 | Átkattintásos navigáció | A fejlécére kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
@@ -359,8 +359,8 @@ A következő táblázat a küszöbértékek beállításai:
 |:--- |:--- |
 | Küszöbértékek engedélyezése |Válassza ki ezt a hivatkozást egy szín ikon megjelenítése a bal oldali részén minden érték. Az ikon azt jelzi, hogy az érték egészségügyi viszonyítva megadott küszöbértékeket. |
 | Name (Név) |A küszöbérték neve. |
-| Küszöb |Az értéke a küszöbérték. Az egyes listaelemek egészségügyi színe a legmagasabb küszöbérték, amely az elem értéke túl van színét értékre van állítva. Ha nincs küszöbértéket, egy alapértelmezett szín használja. |
+| Küszöbérték |Az értéke a küszöbérték. Az egyes listaelemek egészségügyi színe a legmagasabb küszöbérték, amely az elem értéke túl van színét értékre van állítva. Ha nincs küszöbértéket, egy alapértelmezett szín használja. |
 | Szín |A szín, amely azt jelzi, hogy a küszöbérték. |
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [naplókereséseket](../../log-analytics/log-analytics-queries.md) Vizualizáció részeiben lekérdezések támogatásához.
+* Ismerje meg [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md) Vizualizáció részeiben lekérdezések támogatásához.

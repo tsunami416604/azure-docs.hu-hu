@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 93c3bd3f902f08c8f019744b3f30745c1fd9fa01
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 15526cc829d556457a7069df613bb6a8d2a2b23b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442423"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847660"
 ---
 # <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C: Védelem biztosítása webes API-k számára a Node.js segítségével
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
@@ -47,7 +47,7 @@ Következő lépésként létre kell hoznia egy alkalmazást a B2C-címtárban, 
 * Másolja az alkalmazáshoz rendelt **alkalmazásazonosítót**. Erre az adatra később még szükség lesz.
 
 ## <a name="create-your-policies"></a>Szabályzatok létrehozása
-Az Azure AD B2C-ben a felhasználói élményeket [szabályzatok](active-directory-b2c-reference-policies.md) határozzák meg. Ez az alkalmazás két, identitással kapcsolatos műveletet tartalmaz: regisztráció és bejelentkezés. Mindkettőhöz létre kell hoznia egy szabályzatot a [szabályzatok áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#create-a-sign-up-policy) leírtak szerint.  A három szabályzat létrehozásakor ügyeljen arra, hogy:
+Az Azure AD B2C-ben a felhasználói élményeket [szabályzatok](active-directory-b2c-reference-policies.md) határozzák meg. Ez az alkalmazás két, identitással kapcsolatos műveletet tartalmaz: regisztráció és bejelentkezés. Mindkettőhöz létre kell hoznia egy szabályzatot a [szabályzatok áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow) leírtak szerint.  A három szabályzat létrehozásakor ügyeljen arra, hogy:
 
 * A regisztrációs szabályzatban adja meg a **Megjelenített név** értékét, illetve az egyéb regisztrációs attribútumokat.
 * Az összes szabályzatban válassza ki a **Megjelenített név** és az **Objektumazonosító** alkalmazási jogcímet.  Ezenfelül más jogcímeket is használhat.
@@ -71,12 +71,12 @@ A kész alkalmazás [.zip fájlként](https://github.com/AzureADQuickStarts/B2C-
 ## <a name="download-nodejs-for-your-platform"></a>A Node.js letöltése a platformra
 A minta használatához rendelkeznie kell a Node.js telepített és működő verziójával.
 
-Telepítse a Node.js-t a [nodejs.org](http://nodejs.org) oldalról.
+Telepítse a Node.js-t a [nodejs.org](https://nodejs.org) oldalról.
 
 ## <a name="install-mongodb-for-your-platform"></a>A MongoDB telepítése a platformra
 A minta használatához rendelkeznie kell a MongoDB telepített és működő verziójával. A MongoDB-re a REST API különböző kiszolgálópéldányok közötti perzisztenciájának kialakításához van szükség.
 
-Telepítse a MongoDB-t a [mongodb.org](http://www.mongodb.org) oldalról.
+Telepítse a MongoDB-t a [mongodb.org](https://www.mongodb.org) oldalról.
 
 > [!NOTE]
 > Ebben az útmutatóban feltételezzük, hogy Ön a MongoDB alapértelmezett telepítését és kiszolgálóvégpontjait használja, amely a cikk írásának időpontjában a következő: `mongodb://localhost`.

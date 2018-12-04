@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: c38c751701b323bf1c985a4127d0e9deac2c8eaa
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c72ed655166dc1fe8045f5b9fdc7221cdf24d567
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446021"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850992"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ethicspoint-incident-management-epim"></a>Oktatóanyag: Azure Active Directory-integráció EthicsPoint Incident Management (EPIM)
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása EthicsPoint Incident Management (EPIM), a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy EthicsPoint Incident Management (EPIM) egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az Azure AD-be EthicsPoint Incident Management (EPIM)-integráció konfigurálá
 
 **EthicsPoint Incident Management (EPIM) hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -123,7 +123,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     c. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<servername>.navexglobal.com/adfs/ls/`
 
     > [!NOTE] 
-    > Ezek a értékei nem valódi. Frissítse a tényleges válasz URL-cím, azonosítókat és bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [EthicsPoint Incident Management (EPIM) ügyfél-támogatási csapatának](http://www.navexglobal.com/company/contact-us) beolvasni ezeket az értékeket. 
+    > Ezek a értékei nem valódi. Frissítse a tényleges válasz URL-cím, azonosítókat és bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [EthicsPoint Incident Management (EPIM) ügyfél-támogatási csapatának](https://www.navexglobal.com/company/contact-us) beolvasni ezeket az értékeket. 
 
 1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
@@ -133,7 +133,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](./media/ethicspoint-incident-management-tutorial/tutorial_general_400.png)
     
-1. Az egyszeri bejelentkezés konfigurálása **EthicsPoint Incident Management (EPIM)** oldalon kell küldenie a letöltött **metaadatainak XML** való [EthicsPoint Incident Management (EPIM) támogatási csoport ](http://www.navexglobal.com/company/contact-us).
+1. Az egyszeri bejelentkezés konfigurálása **EthicsPoint Incident Management (EPIM)** oldalon kell küldenie a letöltött **metaadatainak XML** való [EthicsPoint Incident Management (EPIM) támogatási csoport ](https://www.navexglobal.com/company/contact-us).
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -172,7 +172,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="creating-a-ethicspoint-incident-management-epim-test-user"></a>EthicsPoint Incident Management (EPIM) tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon EthicsPoint Incident Management (EPIM) nevű felhasználó létrehozásához. Együttműködve [EthicsPoint Incident Management (EPIM) támogatási csapatának](http://www.navexglobal.com/company/contact-us) a felhasználók hozzáadása a EthicsPoint Incident Management (EPIM) platform.
+Ebben a szakaszban egy Britta Simon EthicsPoint Incident Management (EPIM) nevű felhasználó létrehozásához. Együttműködve [EthicsPoint Incident Management (EPIM) támogatási csapatának](https://www.navexglobal.com/company/contact-us) a felhasználók hozzáadása a EthicsPoint Incident Management (EPIM) platform.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

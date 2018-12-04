@@ -1,17 +1,17 @@
 ---
-title: Indexelési szabályzatok az Azure Cosmos DB |} A Microsoft Docs
+title: Az Azure Cosmos DB indexelési szabályzatok
 description: Indexelő működésének megismerése az Azure Cosmos DB-hez. Ismerje meg, hogyan konfigurálja, és módosítsa az indexelési házirendet az Automatikus indexelés és jobb teljesítményt nyújt.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2018
 ms.author: mjbrown
-ms.openlocfilehash: ffb70ce8c26b7774e90801271c55cd8a80906c90
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 2153f0a16df9e79b3f5324ce19880e2708855196
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629137"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848000"
 ---
 # <a name="indexing-policy-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelési házirend
 

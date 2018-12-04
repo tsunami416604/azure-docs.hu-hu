@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 6a0463640f9a7194632a65cdb10653a520fcc0c9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a997de5530bf8ed475031147369b591b2d44d227
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435230"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850329"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skilljar"></a>Oktatóanyag: Azure Active Directory-integráció az Skilljar
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Skilljar az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Skilljar egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az Azure AD integrálása a Skilljar konfigurálásához hozzá kell Skilljar a 
 
 **Skilljar hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -117,7 +117,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<companyname>.skilljar.com/`
 
     > [!NOTE] 
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [Skilljar ügyfél-támogatási csapatának](http://support.skilljar.com/hc/) beolvasni ezeket az értékeket. 
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [Skilljar ügyfél-támogatási csapatának](https://support.skilljar.com/hc/) beolvasni ezeket az értékeket. 
  
 1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
@@ -127,7 +127,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](./media/skilljar-tutorial/tutorial_general_400.png)
 
-1. Az egyszeri bejelentkezés konfigurálása **Skilljar** oldalon kell küldenie a letöltött **metaadatainak XML**, és **neve azonosító formátumú érték - urn: oasis: nevek: tc: SAML:1.1:nameid-formátum: e-mail cím** való [Skilljar támogatási csapatának](http://support.skilljar.com/hc/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+1. Az egyszeri bejelentkezés konfigurálása **Skilljar** oldalon kell küldenie a letöltött **metaadatainak XML**, és **neve azonosító formátumú érték - urn: oasis: nevek: tc: SAML:1.1:nameid-formátum: e-mail cím** való [Skilljar támogatási csapatának](https://support.skilljar.com/hc/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -171,7 +171,7 @@ Ez a szakasz célja Skilljar Britta Simon nevű felhasználó létrehozásához.
 Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az Skilljar elérésére, ha még nem létezik tett kísérlet során. 
 
 >[!NOTE]
->Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [Skilljar támogatási csapatának](http://support.skilljar.com/hc/). 
+>Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [Skilljar támogatási csapatának](https://support.skilljar.com/hc/). 
 > 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése

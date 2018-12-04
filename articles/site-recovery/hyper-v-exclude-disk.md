@@ -4,14 +4,14 @@ description: Ismerteti, hogyan lehet Virtuálisgép-lemezek kizárása a replik�
 author: nsoneji
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: 851da02ebd7486c0e96451a14086eb95d81968b4
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 7de9dc497b1c9ee29b46aa0d645b7b28676cb22d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213202"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849020"
 ---
 # <a name="exclude-disks-from-replication"></a>Lemezek kizárása a replikációból
 Ez a cikk azt mutatja be, hogyan zárhatóak ki lemezek a replikációból. A kizárás segítségével optimalizálható a felhasznált replikációs sávszélesség, valamint optimalizálhatók a lemezek által felhasznált céloldali erőforrások.

@@ -4,14 +4,14 @@ description: Értékelési számítások az Azure Migrate szolgáltatás átteki
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 11/28/2018
 ms.author: raynew
-ms.openlocfilehash: f7f06636e025eda604caa65ca82d4dd7eb909d3f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ab4af59b71dada84fd99df0299aeccfd5662d474
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165687"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849173"
 ---
 # <a name="assessment-calculations"></a>Értékelési számítások
 
@@ -21,7 +21,6 @@ ms.locfileid: "47165687"
 ## <a name="overview"></a>Áttekintés
 
 Az Azure Migrate értékelés három fázisa van. Értékelés egy alkalmasságát elemzés, a méretezés, kiegészítve előtaggal kezdődik, és végül egy-egy havi költségbecsléshez. A gép csak áthelyezi egy későbbi szakaszban Ha átadja az előzőre. Például egy gép az Azure-megfelelőségi ellenőrzés meghiúsul, ha meg van jelölve, nem alkalmasak az Azure, és a méretezési és költségszámítási nem történik meg.
-
 
 ## <a name="azure-suitability-analysis"></a>Azure-megfelelőségi elemzés
 
@@ -119,22 +118,14 @@ A teljesítményalapú méretezéshez az Azure Migrate-nek szüksége van a virt
 
    Az okok, az alábbiakban a vannak vonatkozóan miért értékelés kérhetők le egy alacsony megbízhatósági minősítés:
 
-   **Felderítés egyszeri felderítés**
+   - Nem végzett profilkészítést a környezeten abban az időtartamban, amelyre az értékelést létrehozta. Ha például létrehoz egy teljesítményértékelést 1 napra állított időtartammal, akkor a felderítés indítását követően legalább egy napot várnia kell arra, hogy az összes adatpont be legyen gyűjtve.
 
-   - A vCenter Server statisztikai beállítása nem a 3. szintre van állítva. Mivel a felderítés egyszeri felderítés modell függ a vCenter Server statisztikai beállításait a 3. szintnél alacsonyabb a statisztikai beállítást, a vCenter-kiszolgáló esetén, lemez és a hálózat teljesítményadatai nem lesznek begyűjtve a vCenter-kiszolgáló. Ebben az esetben az Azure Migrate által a lemezhez és a hálózathoz nyújtott javaslat nem a kihasználtságon alapul. A lemez IOPS-értékének/adatátviteli teljesítményének figyelembe vétele nélkül az Azure Migrate nem tudja meghatározni, hogy a lemez prémium szintű lemezt igényel-e az Azure-ban, ezért minden esetben standard lemezeket javasol az összes lemezhez.
-   - A statisztikai beállítást, a vCenter Server lett állítva 3. szintre rövidebb időre a felderítés megkezdése előtt. Vegyünk például egy olyan forgatókönyvet, ahol ma 3. szintre módosítja a statisztikai beállítást, és holnap elindítja a felderítést a gyűjtőberendezéssel (24 óra eltelte után). Ha egy nap értékelését hozza létre, az összes adatponttal rendelkezik, az értékelés megbízhatósági minősítése pedig 5 csillagos lesz. Ha azonban egy hónapra változtatja az értékelésben a teljesítmény időtartamát, a megbízhatósági minősítés csökken, mert nem lennének elérhetők az utolsó egy hónap lemezzel és hálózati teljesítménnyel kapcsolatos adatai. Ha az utolsó egy hónap teljesítményadatait szeretné figyelembe venni, a felderítés megkezdése előtt egy hónapig ajánlott a 3. szinten tartani a vCenter Server statisztikai beállítását.
+   - Néhány virtuális gép le lett állítva abban az időszakban, amelyhez az értékelést számította. Ha valamelyik virtuális gép egy ideig ki volt kapcsolva, nem fogjuk tudni begyűjteni az adott időszak teljesítményadatait.
 
-   **Folyamatos felderítése**
-
-   - A környezet profiljának az időtartam, amelynek az értékelés létrehozásakor nem fejeződött. Például az értékelés a teljesítmény időtartamát, 1 nap létrehozásakor, meg kell legalább egy napot az összes adatponttal gyűjtött kigyűjtése a felderítés megkezdése után vár.
-
-   **Leggyakoribb okai**  
-
-   - Néhány virtuális gép le lett állítva abban az időszakban, amelyhez az értékelést számította. Ha olyan virtuális gépek van kapcsolva egy ideig, hogy nem tudják a teljesítményadatok gyűjtése az adott időszak.
    - Néhány virtuális gép létrejött abban az időszakban, amelyhez az értékelést számította. Ha például az utolsó egy hónap teljesítményelőzményeinek értékelését hozza létre, de néhány virtuális gép csak egy hete jött létre a környezetben. Ilyen esetekben az új virtuális gépeknek nincsenek teljesítményelőzményei a teljes időtartamhoz.
 
    > [!NOTE]
-   > Ha valamely értékelés megbízhatósági minősítése 4 csillag felderítés egyszeri felderítés modell alatt azt javasoljuk, hogy módosítsa a vCenter Server statisztikai beállítások szintjét 3, megvárni az értékelés figyelembe venni kívánt időt (1 nap/1 hét/1 hónap), és hajtsa végre felderítés és értékelés. A folyamatos felderítési modell, várjon, amíg legalább egy napot a berendezéshez, hogy a profil a környezet, majd *újraszámítása* az értékelést. Ha az előző nem hajtható végre, teljesítményalapú nem lehet megbízható és javasoljuk, hogy váltson *helyszíni méretezési* értékelés tulajdonságainak módosításával.
+   > Ha valamely értékelés megbízhatósági minősítése 5 csillag alatt van, azt javasoljuk, hogy Várjon, amíg legalább egy napot a berendezés-profil a környezetre, majd *újraszámítása* az értékelést. Ha ez nem végezhető el, akkor lehet, hogy a teljesítményalapú méretezés nem megbízható, és azt javasoljuk, hogy az értékelés tulajdonságainak módosításával váltson *helyszíni méretezésre*.
 
 ## <a name="monthly-cost-estimation"></a>Havi Költségbecslés
 

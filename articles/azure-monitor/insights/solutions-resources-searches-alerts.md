@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c496bd6f7ccec4cc08ca5eead02cb06ff3efde09
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 74987d09a9b8979d3c3596c87764f8f3bd4b5795
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715497"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846665"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics hozzáadása mentett keresések és a riasztások felügyeleti megoldásra (előzetes verzió)
 
@@ -27,7 +27,7 @@ ms.locfileid: "51715497"
 > Ez az előzetes dokumentum, jelenleg előzetes verzióban elérhető kezelési megoldások létrehozásához. Semmilyen sémát, az alábbiakban a változhat.   
 
 
-[Felügyeleti megoldások](solutions.md) rendszerint tartalmazza a [mentett keresések](../../log-analytics/log-analytics-queries.md) a Log Analytics megoldás által összegyűjtött adatok elemzéséhez.  Ezen felül is meghatározhatnak [riasztások](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) értesíti a felhasználót, vagy automatikusan hajtsa végre a műveletet egy kritikus problémát adott válaszként.  Ez a cikk azt ismerteti, hogyan adhat meg a Log Analytics-beli mentett keresések, és a riasztást egy [Resource Management-sablonnal](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) így is szerepelni a [felügyeleti megoldások](solutions-creating.md).
+[Felügyeleti megoldások](solutions.md) rendszerint tartalmazza a [mentett keresések](../../azure-monitor/log-query/log-query-overview.md) a Log Analytics megoldás által összegyűjtött adatok elemzéséhez.  Ezen felül is meghatározhatnak [riasztások](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) értesíti a felhasználót, vagy automatikusan hajtsa végre a műveletet egy kritikus problémát adott válaszként.  Ez a cikk azt ismerteti, hogyan adhat meg a Log Analytics-beli mentett keresések, és a riasztást egy [Resource Management-sablonnal](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) így is szerepelni a [felügyeleti megoldások](solutions-creating.md).
 
 > [!NOTE]
 > Ebben a cikkben a minták használata, paraméterek és változók, kötelező vagy közös felügyeleti megoldások és az itt ismertetett [tervezés és felépítés felügyeleti megoldás az Azure-ban](solutions-creating.md)  
@@ -54,9 +54,9 @@ Az alábbi táblázat az ebben a példában használt erőforrás API-verzió.
 
 
 ## <a name="saved-searches"></a>Mentett keresések
-Például [mentett keresések](../../log-analytics/log-analytics-queries.md) a megoldás a felhasználók a megoldás által összegyűjtött adatokat lekérdezni.  Mentett keresések meg fog jelenni **mentett keresések** az Azure Portalon.  Mentett keresés is az egyes riasztások szükség.   
+Például [mentett keresések](../../azure-monitor/log-query/log-query-overview.md) a megoldás a felhasználók a megoldás által összegyűjtött adatokat lekérdezni.  Mentett keresések meg fog jelenni **mentett keresések** az Azure Portalon.  Mentett keresés is az egyes riasztások szükség.   
 
-[A log Analytics-beli mentett keresés](../../log-analytics/log-analytics-queries.md) erőforrás rendelkezik egy típusú `Microsoft.OperationalInsights/workspaces/savedSearches` és az alábbi struktúrával rendelkeznek.  Ez magában foglalja közös változók és paraméterek, így másolhatja, és ez a kódrészlet illessze be a megoldásfájlt, és módosítsa a paraméterek nevei. 
+[A log Analytics-beli mentett keresés](../../azure-monitor/log-query/log-query-overview.md) erőforrás rendelkezik egy típusú `Microsoft.OperationalInsights/workspaces/savedSearches` és az alábbi struktúrával rendelkeznek.  Ez magában foglalja közös változók és paraméterek, így másolhatja, és ez a kódrészlet illessze be a megoldásfájlt, és módosítsa a paraméterek nevei. 
 
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name)]",

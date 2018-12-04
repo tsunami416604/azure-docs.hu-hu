@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 4e20d787bef4da518765d1eeeb33237ddd612606
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 8e30b1ba093e38f81c9a09a0b9107e5a3b2eb768
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721221"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847371"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>A Configuration Manager csatlakoztatása a Log Analyticsbe
 A System Center Configuration Manager-környezet szinkronizálási eszköz gyűjtemény adatait az Azure Log Analyticshez csatlakozhat, és ezeket a gyűjteményeket, a Log Analytics és Azure Automation hivatkozhat.  
@@ -112,7 +112,7 @@ Miután a gyűjtemények importálása, láthatja, hány csoporttagsággal rende
 
 ![Számítógépcsoportok – SCCM lap](./media/log-analytics-sccm/sccm-computer-groups02.png)
 
-Ha egy gombra kattint, keresési jelenik meg, amelyen az importált csoportok összes vagy egyes csoporthoz tartozó összes számítógép. Használatával [naplóbeli keresés](log-analytics-queries.md), elkezdheti a Configuration Manager adatok részletes elemzését.
+Ha egy gombra kattint, keresési jelenik meg, amelyen az importált csoportok összes vagy egyes csoporthoz tartozó összes számítógép. Használatával [naplóbeli keresés](../azure-monitor/log-query/log-query-overview.md), elkezdheti a Configuration Manager adatok részletes elemzését.
 
 ## <a name="next-steps"></a>További lépések
-* Használat [naplóbeli keresés](log-analytics-queries.md) részletes információkat a Configuration Manager adatainak megtekintéséhez.
+* Használat [naplóbeli keresés](../azure-monitor/log-query/log-query-overview.md) részletes információkat a Configuration Manager adatainak megtekintéséhez.
