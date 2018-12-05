@@ -9,14 +9,14 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: overview
-ms.openlocfilehash: 76e6bc006ff6049b631409a3515628fbd169f713
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: f845c064ec3625d205ec346ddfc90c3a1b2c3d8d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976978"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874838"
 ---
-# <a name="what-is-custom-translator-preview"></a>Mi a Custom Translator (előzetes verzió)?
+# <a name="what-is-custom-translator"></a>Mi az egyéni a fordítót?
 
 [Egyéni a fordítót](https://portal.customtranslator.azure.ai) funkció a Microsoft Translator szolgáltatás, amely lehetővé teszi a Translator vállalkozások, fejlesztők, és a nyelvi szolgáltatók hozhat létre egyéni Neurális gépi fordítás (NMT) rendszereket. A testre szabott fordítási rendszerek zökkenőmentesen integrálhatja meglévő alkalmazások, munkafolyamatok és a websites. [Egyéni a fordítót](https://portal.customtranslator.azure.ai/) hasonló funkciókat kínál, amit [Microsoft Translator Hub](https://hub.microsofttranslator.com/) does a statisztikai gépi fordítási (SMT), de a kizárólag a Neurális gépi fordítás (NMT) rendszerekhez.
 

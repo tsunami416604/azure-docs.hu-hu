@@ -14,12 +14,12 @@ ms.date: 08/15/2018
 ms.author: sethm
 ms.reviewer: sijuman
 <!-- dev: viananth -->
-ms.openlocfilehash: 657eefcd5b7793f2f181d074084a272e65943681
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 17fb8a82709e7c0c7353b70f7731895889167a79
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246446"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873954"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>API-verzióprofilok használata az Azure Stackben Pythonnal
 
@@ -153,5 +153,5 @@ os_disk = compute_client.disks.get(GROUP_NAME, os_disk_name)
 
 - [Azure Python fejlesztői központ](https://azure.microsoft.com/develop/python/)
 - [Az Azure Virtual Machines – dokumentáció](https://azure.microsoft.com/services/virtual-machines/)
-- [Képzési terv a virtuális gépek](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
+- [Képzési terv a virtuális gépek](/learn/paths/deploy-a-website-with-azure-virtual-machines/)
 - Ha nem rendelkezik Microsoft Azure-előfizetési, beszerezheti a egy ingyenes próbafiókot [Itt](https://go.microsoft.com/fwlink/?LinkId=330212).

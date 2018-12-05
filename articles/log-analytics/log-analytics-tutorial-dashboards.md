@@ -15,12 +15,12 @@ ms.date: 09/14/2017
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: 6423b1347d5748b46c4ee35928515cec6891e167
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f4d46b7b8ba245c4a7e3eddbe0615c47a1e99096
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725590"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870436"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Irányítópultok létrehozása és megosztása Log Analytics-adatokból
 
@@ -55,7 +55,7 @@ A rendszer felkéri, hogy válasszon ki egy előfizetést és egy erőforráscso
 
 Az Azure Portal naplókeresési portálján hozhat létre alapszintű lekérdezéseket egyetlen sorra vonatkozóan. A naplókeresési portál egy külső portál megnyitása nélkül használható, és a segítségével számos feladatot végrehajthat naplókeresésekkel, például a riasztási szabályok létrehozását, számítógépcsoportok létrehozását és a lekérdezéseredmények exportálását. 
 
-A [Log Analytics portál](../log-analytics/query-language/get-started-analytics-portal.md) egy dedikált portál, amely olyan fejlett funkciókkal rendelkezik, amelyek nem érhetők el a naplókeresési portálon. Szolgáltatásai közé tartozik a lekérdezés több sorban való szerkesztése, a szelektív kódvégrehajtás, a kontextusfüggő Intellisense és az intelligens elemzés. A Bővített analitika portálon létre fog hozni egy grafikus teljesítménynézetet, menti egy későbbi kereséshez, majd rögzíti az imént létrehozott megosztott irányítópulton.   
+A [Log Analytics portál](../azure-monitor/log-query/get-started-portal.md) egy dedikált portál, amely olyan fejlett funkciókkal rendelkezik, amelyek nem érhetők el a naplókeresési portálon. Szolgáltatásai közé tartozik a lekérdezés több sorban való szerkesztése, a szelektív kódvégrehajtás, a kontextusfüggő Intellisense és az intelligens elemzés. A Bővített analitika portálon létre fog hozni egy grafikus teljesítménynézetet, menti egy későbbi kereséshez, majd rögzíti az imént létrehozott megosztott irányítópulton.   
 
 A Bővített analitika portált a naplókeresési portálon található hivatkozással indíthatja el.<br> ![A Bővített analitika portál elindítása](media/log-analytics-tutorial-dashboards/log-analytics-advancedportal-01.png)
 

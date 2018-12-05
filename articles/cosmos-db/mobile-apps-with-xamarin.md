@@ -1,20 +1,19 @@
 ---
-title: Mobilalkalmazások létrehozása a Xamarin és az Azure Cosmos DB használatával | Microsoft Docs
+title: Mobilalkalmazások létrehozása a Xamarin és az Azure Cosmos DB használatával
 description: Oktatóanyag egy Xamarin iOS-, Android- vagy Forms-alkalmazás létrehozásához az Azure Cosmos DB használatával. Az Azure Cosmos DB egy gyors, világméretű, felhőalapú adatbázis mobilalkalmazásokhoz.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: a41ffdb31cb54e1488c0f114632c605b92d4c444
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: d5c17325bfccef2c97378cb54d8843290cc98635
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255285"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878006"
 ---
 # <a name="build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Mobilalkalmazások létrehozása a Xamarin és az Azure Cosmos DB használatával
 
@@ -35,7 +34,7 @@ Az Azure Cosmos DB az alábbi fő lehetőségeket nyújtja a mobilalkalmazás-fe
 
 ![Az Azure Cosmos DB képességei mobilalkalmazásokhoz](media/mobile-apps-with-xamarin/documentdb-for-mobile.png)
 
-* Séma nélküli adatok részletes lekérdezése. Az Azure Cosmos DB az adatokat séma nélküli JSON-dokumentumok formájában tárolja, heterogén gyűjteményekben. [Részletes és gyors lekérdezéseket](sql-api-sql-query.md) nyújt, amelyekhez nem kell sémákkal vagy indexekkel foglalkoznia.
+* Séma nélküli adatok részletes lekérdezése. Az Azure Cosmos DB az adatokat séma nélküli JSON-dokumentumok formájában tárolja, heterogén gyűjteményekben. [Részletes és gyors lekérdezéseket](how-to-sql-query.md) nyújt, amelyekhez nem kell sémákkal vagy indexekkel foglalkoznia.
 * Gyors adatátvitel. Az Azure Cosmos DB mindössze néhány ezredmásodperc alatt végzi a dokumentumok írását és olvasását. A fejlesztők megadhatják a kívánt adatátviteli sebességet, amelyre vonatkozóan az Azure Cosmos DB 99,99%-os rendelkezésre állású SLA-t biztosít minden enyhén korlátozott konzisztenciájú egyrégiós és többrégiós fiókhoz, valamint 99,999%-os olvasási rendelkezésre állást minden többrégiós adatbázisfiókhoz.
 * Korlátlan skálázhatóság. Azure Cosmos DB-gyűjteménye [az alkalmazással együtt növekszik](partition-data.md). Kezdetben a kis adatmennyiségek és a másodpercenkénti néhány száz kérés lehet a jellemző. A gyűjtemények vagy adatbázisok olyan mértékig növekedhetnek, hogy több petabájtnyi adatot tartalmazhatnak, és hatalmas mennyiségű, akár másodpercenként több százmillió kérést szolgálhatnak ki.
 * Globálisan elosztott. A mobilalkalmazások felhasználói általában úton vannak, gyakran a világ legtávolabbi pontjai között. Az Azure Cosmos DB egy [globálisan elosztott adatbázis](distribute-data-globally.md). Kattintson a térképre, és tegye elérhetővé adatait a felhasználói számára.
@@ -107,7 +106,7 @@ Gratulálunk! Elkészítette a megoldást és a mobilalkalmazást a Xamarin és 
 * Forráskód megtekintése a [Xamarin és Azure Cosmos DB a GitHubon](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin) oldalon.
 * Az [Azure Cosmos DB .NET Core SDK](sql-api-sdk-dotnet-core.md) letöltése.
 * További kódminták [.NET-alkalmazásokhoz](sql-api-dotnet-samples.md).
-* Az [Azure Cosmos DB részletes lekérdezési képességeinek](sql-api-sql-query.md) ismertetése.
+* Az [Azure Cosmos DB részletes lekérdezési képességeinek](how-to-sql-query.md) ismertetése.
 * Az [Azure Cosmos DB térinformatikai támogatásának](geospatial.md) ismertetése.
 
 

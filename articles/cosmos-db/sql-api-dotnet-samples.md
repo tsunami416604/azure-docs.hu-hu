@@ -1,20 +1,19 @@
 ---
-title: 'Azure Cosmos DB: .NET-példák az SQL API-hoz | Microsoft Docs'
+title: 'Azure Cosmos DB: .NET-példák az SQL API-hoz'
 description: A GitHub tartalmaz az Azure Cosmos DB általános feladataihoz, többek között a CRUD-műveletekhez kötődő C# .NET-példákat.
 keywords: NoSQL-példa
 author: rnagpal
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
-ms.devlang: na
 ms.topic: sample
 ms.date: 02/22/2017
 ms.author: rnagpal
-ms.openlocfilehash: 3aa8e915cff7ba641a0181639ffb4ce26840d476
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 39eacca1e5ddb4c7024c5195dc1823f2c3c651e7
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837749"
+ms.locfileid: "52875263"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: .NET-példák az SQL API-hoz
 > [!div class="op_single_selector"]

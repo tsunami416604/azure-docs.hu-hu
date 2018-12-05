@@ -3,7 +3,7 @@ title: PowerShell példa – georeplikációs feladatátvételi csoport – egye
 description: Azure PowerShell példaszkript az aktív georeplikációs feladatátvételi csoport beállításához egyetlen Azure SQL-adatbázishoz és a feladatai átvételéhez.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: sample
@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/07/2018
-ms.openlocfilehash: 923dce806b27b8c07bce426cd2814ced873e776f
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
-ms.translationtype: HT
+ms.openlocfilehash: 7c0789237a6fcf7453195514887d75c8bf068d81
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47053979"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872492"
 ---
 # <a name="use-powershell-to-configure-an-active-geo-replication-failover-group-for-a-single-azure-sql-database"></a>Aktív georeplikációs feladatátvételi csoport konfigurálása egyetlen Azure SQL-adatbázishoz a PowerShell használatával
 

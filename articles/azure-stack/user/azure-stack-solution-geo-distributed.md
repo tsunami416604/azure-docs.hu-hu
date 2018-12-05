@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 19e7506dac82e4d12d5aecbdb5ae1c14fb944c29
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 215cc45f09e15c74a39347e3a62945b45eafa130
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961535"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877666"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Oktatóanyag: Az Azure és az Azure Stack földrajzilag elosztott alkalmazás megoldás létrehozása
 
@@ -81,7 +81,7 @@ Ez a rész létrehozza a webalkalmazást.
 
 > [!div class="checklist"]
 > - Web Apps alkalmazások létrehozása és közzététele
-> - A VSTS-projektben adja hozzá a kódot
+> - Adja hozzá a kódot az Azure-Adattárakkal
 > - Az alkalmazás buildszáma több felhő cél mutat.
 > - Kezelheti és konfigurálhatja a CD-folyamat
 
@@ -108,9 +108,9 @@ Webes alkalmazás üzembe helyezése az Azure és az Azure Stack, hibrid CI/CD b
 > [!Note]  
 > Az Azure Stack megfelelő képekkel hírcsatorna-futtassa (Windows Server és SQL) és az App Service-környezet szükség. Tekintse át az App Service – dokumentáció "[az App Service-ben az Azure Stack használatának megkezdése előtt](/articles/azure-stack/azure-stack-app-service-before-you-get-started)" szakaszban az Azure Stack-operátorokról.
 
-#### <a name="add-code-to-vsts-project"></a>A VSTS-projektben adja hozzá a kódot
+#### <a name="add-code-to-azure-repos"></a>Adja hozzá a kódot az Azure-Adattárakkal
 
-1. Jelentkezzen be a Visual Studio- **project-létrehozási jogokkal rendelkező fiók** a vsts-en.
+1. Jelentkezzen be a Visual Studio- **project-létrehozási jogokkal rendelkező fiók** az Azure-Adattárakkal.
 
     Hibrid folyamatos integráció/folyamatos Készregyártás (CI/CD) az alkalmazás kódjában és az infrastruktúra kódjának alkalmazhat. Használat [Azure Resource Manager-sablonok](https://azure.microsoft.com/resources/templates/) mindkét magán- és üzemeltetett felhőalapú fejlesztéshez.
 
@@ -126,13 +126,13 @@ Webes alkalmazás üzembe helyezése az Azure és az Azure Stack, hibrid CI/CD b
 
     ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image3.png)
 
-1.  **A vsts-ben a forráskód verziókezelőbe** Team Explorer használatával.
+1.  **Az Azure-kódtárak a forráskód verziókezelőbe** Team Explorer használatával.
 
-2.  Ellenőrizze, hogy a **alkalmazáskód** ellenőrizte a Visual Studio Team Services-be.
+2.  Ellenőrizze, hogy a **alkalmazáskód** be Azure-kódtárak ellenőrzése megtörtént.
 
 ### <a name="create-the-build-definition"></a>A build definíció létrehozása
 
-1. **Jelentkezzen be a VSTS** buildelési definíciókat létrehozására megerősítéséhez.
+1. **Jelentkezzen be Azure-folyamatok** buildelési definíciókat létrehozására megerősítéséhez.
 
 2. Adjon hozzá **- r win10-x64** kódot. Erre azért szükség, aktiválhat egy önálló üzembe helyezés a .net Core.
 
@@ -142,11 +142,11 @@ Webes alkalmazás üzembe helyezése az Azure és az Azure Stack, hibrid CI/CD b
 
 **Az Azure szolgáltatott ügynök használatával**
 
-A vsts-ben üzemeltetett ügynök használatával beállítás kényelmes készíthet és helyezhet üzembe webalkalmazásokat. A Microsoft Azure-folyamatos, megszakítás nélküli fejlesztési, tesztelési és üzembe helyezés engedélyezése automatikusan végzi a karbantartása és frissítései.
+Az Azure-folyamatokban üzemeltetett ügynök használatával beállítás kényelmes készíthet és helyezhet üzembe webalkalmazásokat. A Microsoft Azure-folyamatos, megszakítás nélküli fejlesztési, tesztelési és üzembe helyezés engedélyezése automatikusan végzi a karbantartása és frissítései.
 
 ### <a name="manage-and-configure-the-cd-process"></a>Kezelheti és konfigurálhatja a CD-folyamat
 
-A Visual Studio Team Services (VSTS) és a Team Foundation Server (TFS) adja meg hatékonyan konfigurálható és kezelhető folyamat számára több környezetekben, például fejlesztési, előkészítési, QA és éles környezetek; amely jóváhagyások adott szintjén is.
+Az Azure DevOps és az Azure DevOps-kiszolgáló adja meg hatékonyan konfigurálható és kezelhető folyamat számára több környezetekben, például fejlesztési, előkészítési, QA és éles környezetek; amely jóváhagyások adott szintjén is.
 
 #### <a name="create-release-definition"></a>Kiadási definíció létrehozása
 

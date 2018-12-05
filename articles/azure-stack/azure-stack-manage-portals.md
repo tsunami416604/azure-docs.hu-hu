@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 12/04/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4453516626c39f73deea8fce0d744fcecbd5c3fc
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 58856875fa7d7bb3ba63c489fb17790e68f99aec
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085817"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872186"
 ---
 # <a name="using-the-administrator-portal-in-azure-stack"></a>A felügyeleti portál használatával az Azure Stackben
 
@@ -86,6 +86,10 @@ Ha a felügyeleti portál jobb felső sarkában válassza ki a Súgó és támog
 
 - Integrált rendszer használja, ha ez a művelet megnyitja a hely, ahol közvetlenül megnyithatja egy támogatási jegyet a Microsoft ügyfél támogatási szolgálat (CSS). Tekintse meg [kérhet támogatást Where](azure-stack-manage-basics.md#where-to-get-support) megértéséhez, hogy mikor kell lépjen a Microsoft támogatási vagy a számítógépgyártó (OEM) hardver szállítójával támogatási keresztül.
 - Ha a csomag használata esetén ez a művelet közvetlenül megnyitja az Azure Stack-fórumok. Ezek a fórumok rendszeresen figyeli a program. Mivel a csomag egy kiértékelési környezete, rendszer nem hivatalos támogatja a Microsoft CSS keresztül érhető el.
+
+### <a name="quick-access-to-the-azure-roadmap"></a>Gyors elérése az Azure-ütemterv
+
+Ha **Súgó és támogatás** (a kérdőjel) a portálon, és adja meg a rendszergazda jobb felső sarkában található **Azure ütemterve**, egy új böngészőlapon nyílik meg, és megnyílik az Azure-ütemterv. Beírásával **Azure Stack** a a **termékek** keresőmezőbe, láthatja az összes Azure Stack ütemterv frissítés.
 
 ## <a name="next-steps"></a>További lépések
 

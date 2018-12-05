@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: a6ccfa439b58d36ee44d5f8441c2058622965653
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: dc301f218855139cfb3a5faa30109dd5a301eb07
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42056649"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871200"
 ---
 # <a name="download-and-extract-the-azure-stack-development-kit-asdk"></a>Töltse le és csomagolja ki az Azure Stack Development Kit (ASDK)
 Miután meggyőződött arról, hogy a fejlesztői csomag fogadó számítógép megfelel-e a ASDK telepítésére vonatkozó minimális követelményeinek, a következő lépés az töltse le és csomagolja ki a ASDK központi telepítési csomag beolvasni a Cloudbuilder.vhdx.
@@ -29,7 +29,7 @@ Miután meggyőződött arról, hogy a fejlesztői csomag fogadó számítógép
 1. A letöltés a Kezdés előtt győződjön meg arról, hogy a számítógép megfelel-e a következő előfeltételek vonatkoznak:
 
   - A számítógépnek rendelkeznie kell legalább 60 GB lemezterület elérhető négy különálló, azonos logikai merevlemezek emellett ingyenesen az operációsrendszer-lemez.
-  - [.NET-keretrendszer 4.6 (vagy újabb verzió)](https://aka.ms/r6mkiy) kell telepíteni.
+  - [.NET-keretrendszer 4.6 (vagy újabb verzió)](https://dotnet.microsoft.com/download/dotnet-framework-runtime/net46) kell telepíteni.
 
 2. [Nyissa meg az első lépések lap](https://azure.microsoft.com/overview/azure-stack/try/?v=try) ahol az Azure Stack Development Kit letöltése, adja meg az adatait és kattintson a **küldés**.
 3. Töltse le és futtassa a [Deployment Checker for Azure Stack Development Kit](https://go.microsoft.com/fwlink/?LinkId=828735&clcid=0x409) előfeltétel-ellenőrző parancsfájlt. Ez a szkript önálló halad át az előfeltételeket ellenőrzi az Azure Stack Development Kit telepítője által végzett. Lehetővé teszi annak ellenőrzéséhez, hogy a hardver- és szoftverkövetelmények, a nagyobb csomag letöltése az Azure Stack Development Kit előtt találkoznak.

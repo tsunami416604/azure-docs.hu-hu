@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 48bedff0cd09c3f0dbffdabe6a94847d035a0cf9
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: HT
+ms.openlocfilehash: 7061776ba5325a333033d0f272de3b2663b44351
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963931"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887797"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Oktatóanyag: A hibrid Azure Active Directory-csatlakozás konfigurálása felügyelt tartományokhoz
 
@@ -140,6 +140,8 @@ Ha a tartományhoz csatlakoztatott eszközök között korábbi verziójú Windo
  
 - A helyi intranet-beállítások konfigurálása az eszközregisztrációhoz
 
+- Közvetlen egyszeri bejelentkezés (SSO) konfigurálása
+
 - A korábbi verziójú Windows-eszközök vezérlése 
 
 
@@ -166,6 +168,11 @@ A korábbi verziójú Windows-eszközök sikeres hibrid Azure AD-csatlakoztatás
 - `https://autologon.microsoftazuread-sso.com`.
 
 Emellett engedélyezni kell **az állapotsor szkriptekkel való frissítését** a felhasználó helyi intranetes zónájában.
+
+
+### <a name="configure-seamless-sso"></a>Közvetlen egyszeri bejelentkezés konfigurálása
+
+Sikeresen befejeződött a hibrid Azure AD join a Windows, a régebbi verziójú eszközök, az Azure AD átmenő hitelesítés (ESP) vagy a jelszó Jelszókivonat szinkronizálása (nál) segítségével felügyelt tartományban felhőalapú hitelesítési mód, ezenkívül meg kell adnia [konfigurálása Közvetlen egyszeri bejelentkezés](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature). 
 
 
 ### <a name="control-windows-down-level-devices"></a>A korábbi verziójú Windows-eszközök vezérlése 

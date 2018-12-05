@@ -8,19 +8,19 @@ ms.topic: tutorial
 author: hning86
 ms.author: haining
 ms.reviewer: sgilley
-ms.date: 11/21/2018
-ms.openlocfilehash: 53de4715a458c5713a31541da64a4a671bf8c132
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.date: 12/04/2018
+ms.openlocfilehash: 8d3dd87adaad168d193b53507dbbb40efab57810
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496226"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879485"
 ---
 # <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>1. oktatóanyag: Képbesorolási modell betanítása az Azure Machine Learning szolgáltatással
 
-Az oktatóanyag során egy gépi tanulási modellt fog betanítani helyi és távoli számítási erőforrások használatával. Az Azure Machine Learning szolgáltatás (előzetes verzió) betanítási és üzembehelyezési munkafolyamatát fogja használni egy Python Jupyter-notebookban.  Ezután a notebookot sablonként használhatja a saját gépi tanulási modelljének saját adatokkal való betanításához. Ez az oktatóanyag **egy kétrészes sorozat első része**.  
+Az oktatóanyag során egy gépi tanulási modellt fog betanítani helyi és távoli számítási erőforrások használatával. A képzés és az üzembe helyezést megvalósító munkafolyamat a Python Jupyter notebook az Azure Machine Learning szolgáltatás fogja használni.  Ezután a notebookot sablonként használhatja a saját gépi tanulási modelljének saját adatokkal való betanításához. Ez az oktatóanyag **egy kétrészes sorozat első része**.  
 
-Ez az oktatóanyag egy egyszerű logisztikai regresszió betanítását foglalja magában, a [MNIST](http://yann.lecun.com/exdb/mnist/)-adathalmaz, a [scikit-learn](http://scikit-learn.org) és az Azure Machine Learning szolgáltatás használatával.  Az MNIST egy 70 000 szürkeárnyalatos képből álló, népszerű adathalmaz. Mindegyik képe egy 28x28 képpontos, 0 és 9 közötti, kézzel írt számjegy. A cél egy többosztályos besoroló létrehozása, amely képes azonosítani az egyes képeken látható számjegyeket. 
+Ez az oktatóanyag egy egyszerű logisztikai regresszió betanítását foglalja magában, a [MNIST](https://yann.lecun.com/exdb/mnist/)-adathalmaz, a [scikit-learn](https://scikit-learn.org) és az Azure Machine Learning szolgáltatás használatával.  Az MNIST egy 70 000 szürkeárnyalatos képből álló, népszerű adathalmaz. Mindegyik képe egy 28x28 képpontos, 0 és 9 közötti, kézzel írt számjegy. A cél egy többosztályos besoroló létrehozása, amely képes azonosítani az egyes képeken látható számjegyeket. 
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -36,16 +36,14 @@ A modellek kiválasztásával és üzembe helyezésével később, az [oktatóan
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://aka.ms/AMLfree) a virtuális gép létrehozásának megkezdése előtt.
 
 >[!NOTE]
-> Ebben a cikkben kód teszteltük az Azure Machine Learning SDK verziója 0.1.79
+> Ebben a cikkben kód tesztelés az Azure Machine Learning SDK-val 1.0.2-es verzióját
 
 ## <a name="get-the-notebook"></a>A notebook beszerzése
 
-Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://aka.ms/aml-notebook-tut-01) is elérhető. A `01.train-models.ipynb` notebook az Azure Notebooks szolgáltatásban vagy a saját Jupyter-notebookkiszolgálóján futtatható.
+Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb) is elérhető. A `tutorials/img-classification-part1-training.ipynb` notebook az Azure Notebooks szolgáltatásban vagy a saját Jupyter-notebookkiszolgálóján futtatható.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
->[!NOTE]
-> Ez az oktatóanyag az Azure Machine Learning SDK verziója 0.1.74 tesztelés 
 
 ## <a name="set-up-your-development-environment"></a>A fejlesztési környezet beállítása
 
@@ -94,11 +92,11 @@ from azureml.core import Experiment
 exp = Experiment(workspace=ws, name=experiment_name)
 ```
 
-### <a name="create-remote-compute-target"></a>Távoli számítógépcél létrehozása
+### <a name="create-or-attach-existing-amlcompute"></a>Hozzon létre vagy meglévő AMlCompute csatolása
 
-Az Azure Machine Learning felügyelt számítási egy felügyelt szolgáltatás, amely lehetővé teszi az adatszakértők, az Azure virtuális gépek, beleértve a virtuális gépek a GPU-támogatással rendelkező fürtökön gépi tanulási modelleket taníthat be.  Ez az oktatóanyag-fürtöt hoz létre az Azure által felügyelt számítási a képzési környezet. Ez a kód létrehoz Önnek egy fürtöt, ha még nem létezik a munkaterületén. 
+Az Azure Machine Learning-felügyelt Compute(AmlCompute) egy felügyelt szolgáltatás, amely lehetővé teszi az adatszakértők, az Azure virtuális gépek, beleértve a virtuális gépek a GPU-támogatással rendelkező fürtökön gépi tanulási modelleket taníthat be.  Ebben az oktatóanyagban létrehoz AmlCompute a képzési környezet. Ez a kód létrehozza az Ön számára a számítási fürtök, ha ezt még nem létezik a munkaterületén.
 
- **A fürt létrehozása körülbelül 5 percet vesz igénybe.** Ha a fürt már szerepel a munkaterületben, akkor a létrehozási folyamat kimarad, és a kód a meglévő fürtöt használja.
+ **A számítási létrehozása körülbelül 5 percet vesz igénybe.** Ha a számítási már a munkaterületen ezt a kódot használja ezt a szolgáltatást, és kihagyja a létrehozási folyamat.
 
 
 ```python
@@ -107,12 +105,17 @@ from azureml.core.compute import ComputeTarget
 import os
 
 # choose a name for your cluster
-compute_name = os.environ.get("BATCHAI_CLUSTER_NAME", "cpucluster")
-compute_min_nodes = os.environ.get("BATCHAI_CLUSTER_MIN_NODES", 0)
-compute_max_nodes = os.environ.get("BATCHAI_CLUSTER_MAX_NODES", 4)
+from azureml.core.compute import AmlCompute
+from azureml.core.compute import ComputeTarget
+import os
+
+# choose a name for your cluster
+compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpucluster")
+compute_min_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MIN_NODES", 0)
+compute_max_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MAX_NODES", 4)
 
 # This example uses CPU VM. For using GPU VM, set SKU to STANDARD_NC6
-vm_size = os.environ.get("BATCHAI_CLUSTER_SKU", "STANDARD_D2_V2")
+vm_size = os.environ.get("AML_COMPUTE_CLUSTER_SKU", "STANDARD_D2_V2")
 
 
 if compute_name in ws.compute_targets:
@@ -132,7 +135,7 @@ else:
     # if no min node count is provided it will use the scale settings for the cluster
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
     
-     # For a more detailed view of current BatchAI cluster status, use the 'status' property    
+     # For a more detailed view of current AmlCompute status, use the 'status' property    
     print(compute_target.status.serialize())
 ```
 
@@ -320,11 +323,10 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 Figyelje meg, hogyan kéri le a szkript az adatokat, és menti a modelleket:
 
 + A betanító szkript beolvas egy argumentumot az adatokat tartalmazó könyvtár megtalálásához.  Amikor később elküldi a feladatot, az adattárban a következő argumentumra kell mutatnia: `parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')`
-    
+
 + A betanítási szkript egy outputs (kimenetek) nevű könyvtárba menti a modellt. <br/>
 `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`<br/>
 Az ebbe a könyvtárba írt összes fájl automatikusan fel lesz töltve a munkaterületére. Az oktatóanyag későbbi részében ebből a könyvtárból férhet majd hozzá a modelljéhez.
-
 A rendszer a betanítási szkript alapján hivatkozik a `utils.py` fájlra az adathalmaz megfelelő betöltéséhez.  Másolja ezt a szkriptet a szkriptmappába, hogy a betanítási szkripttel együtt elérhető legyen a távoli erőforráson.
 
 
@@ -340,12 +342,12 @@ A futtatás elküldése egy becslőobjektummal történik.  A becslő létrehoz�
 
 * A becslőobjektum neve (`est`)
 * A szkripteket tartalmazó könyvtár. Az ebben a könyvtárban található összes fájl fel lesz töltve a fürtcsomópontokra végrehajtás céljából. 
-* A számítási cél.  Ebben az esetben a létrehozott Batch AI-fürtöt fogja használni.
+* A számítási cél.  Ebben az esetben használhatja az Azure Machine Learning számítási fürt hozott létre
 * A betanítási szkript neve (train.py)
 * A betanítási szkript szükséges paraméterei 
 * A betanításhoz szükséges Python-csomagok
 
-Az oktatóanyagban ez a cél a Batch AI-fürt. A parancsfájl mappában lévő összes fájlt a rendszer feltölti a fürtcsomópontokon a végrehajtáshoz. A data_folder érték az adattárra van állítva (`ds.as_mount()`).
+Ebben az oktatóanyagban ez a cél AmlCompute. A parancsfájl mappában lévő összes fájlt a rendszer feltölti a fürtcsomópontokon a végrehajtáshoz. A data_folder érték az adattárra van állítva (`ds.as_mount()`).
 
 ```python
 from azureml.train.estimator import Estimator

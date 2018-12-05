@@ -1,22 +1,20 @@
 ---
-title: Az Azure Table Storage és az Azure Cosmos DB Table API használata a Ruby nyelvvel | Microsoft Docs
+title: Az Azure Table Storage és az Azure Cosmos DB Table API használata a Ruby nyelvvel
 description: Az Azure Table Storage vagy az Azure Cosmos DB Table API használatával strukturált adatok tárolhatók a felhőben.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
-editor: ''
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: ruby
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: d1583001550f5f272f4070006a4a6ac3be000de6
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
-ms.translationtype: HT
+ms.openlocfilehash: 7ddf9c3ef848537cb68dce043bb22680439e9cd5
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798270"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877913"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Ruby nyelvvel
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -58,7 +56,7 @@ Azure.config.storage_access_key = "<your Azure Storage access key>"
 
 Ezeket az értékeket a következőképp kérheti le egy klasszikus vagy Resource Manager-tárfiókból az Azure Portalon:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Lépjen a használni kívánt tárfiókra.
 3. A jobb oldali Beállítások panelen kattintson az **Hozzáférési kulcsok** lehetőségre.
 4. A megjelenő Hozzáférési kulcsok panelen láthatja az 1. és a 2. hozzáférési kulcsot. Ezek bármelyikét használhatja.

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2f5cffa0b31d46d76564565001aaed678eb1a649
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 7e0b3fff0ed60d5eb77194e7f9081d35f2e38571
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613581"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869637"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>Oktatóanyag: Virtuális gépi bővítmények üzembe helyezése Azure Resource Manager-sablonokkal
 
@@ -116,7 +116,7 @@ Az erőforrás-definícióval kapcsolatos további információért tekintse meg
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-Az üzembe helyezés folyamatát a [Sablon üzembe helyezése](./resource-manager-tutorial-create-multiple-instances.md#deploy-the-template) szakaszban tekintheti meg. Javasoljuk, hogy automatikusan létrehozott jelszót használjon a virtuális gép rendszergazdai fiókjához. Lásd: [Előfeltételek](#prerequisites).
+Az üzembe helyezés folyamatát a [Sablon üzembe helyezése](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) szakaszban tekintheti meg. Javasoljuk, hogy automatikusan létrehozott jelszót használjon a virtuális gép rendszergazdai fiókjához. Lásd: [Előfeltételek](#prerequisites).
 
 ## <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
 
