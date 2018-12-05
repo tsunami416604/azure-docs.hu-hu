@@ -1,5 +1,5 @@
 items:
-- name: Az Azure Machine Learning dokumentációja (előzetes verzió)
+- name: Az Azure Machine Learning dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
@@ -25,18 +25,22 @@ items:
     href: quickstart-create-workspace-with-python.md
 - name: Oktatóanyagok
   items:
-  - name: 'Modellek betanítása: 1. rész'
-    href: tutorial-train-models-with-aml.md
-  - name: 'Modellek üzembe helyezése: 2. rész'
-    href: tutorial-deploy-models-with-aml.md
-  - name: Automatizált gépi tanulási modellek betanítása
-    displayName: automl
-    href: tutorial-auto-train-models.md
+  - name: Képbesorolás (MNIST-adatok)
+    items:
+    - name: 1. Modell betanítása
+      href: tutorial-train-models-with-aml.md
+    - name: 2. Modell üzembe helyezése
+      href: tutorial-deploy-models-with-aml.md
+  - name: Regresszió (NYC Taxi adatai)
+    items:
+    - name: 1. Adatok előkészítése modellezéshez
+      href: tutorial-data-prep.md
+    - name: 2. Automatizált gépi tanulási modellek betanítása
+      displayName: automl, automated, auto ml,
+      href: tutorial-auto-train-models.md
 - name: Példák
-  items:
-  - name: Jupyter-notebookok (GitHub)
-    displayName: example, examples
-    href: https://aka.ms/aml-notebooks
+  displayName: example, examples, jupyter, azure notebooks, python, notebook, github
+  href: samples-notebooks.md
 - name: Alapelvek
   items:
   - name: Modellkezelés
@@ -52,11 +56,11 @@ items:
     href: how-to-manage-workspace.md
   - name: Fejlesztési környezet beállítása 
     items:
-    - name: Környezet konfigurálása
-      displayName: local, remote, azure notebooks, notebook, jupyter, dsvm
+    - name: A fejlesztési környezet konfigurálása
+      displayName: local, remote, azure notebooks, notebook, jupyter, dsvm, Databricks, ADB
       href: how-to-configure-environment.md
-    - name: VS Code Tools for AI
-      displayName: Visual Studio Code, vscode
+    - name: Visual Studio Code-bővítmény
+      displayName: Visual Studio Code, vscode, tools, ai, vs
       items:
       - name: Bevezetés
         href: how-to-vscode-tools.md
@@ -75,7 +79,7 @@ items:
   - name: Modellek betanítása
     items:
     - name: Betanítási környezetek beállítása
-      displayName: compute target, dsvm, Data Science Virtual Machine, batchai, batch ai, local, cluster, aci, container instance, databricks, data lake, lake, hdi, hdinsights
+      displayName: compute target, dsvm, Data Science Virtual Machine, local, cluster, aci, container instance, databricks, data lake, lake, hdi, hdinsights
       href: how-to-set-up-training-targets.md
     - name: Adathozzáférés a betanítás során
       href: how-to-access-data.md
@@ -127,12 +131,16 @@ items:
     - name: Felhasználás valós időben
       displayName: create client, client, consume
       href: how-to-consume-web-service.md
+    - name: Köteg-előrejelzések futtatása
+      href: how-to-run-batch-predictions.md
   - name: Webszolgáltatások monitorozása
     items:
     - name: Modelladatok gyűjtése és kiértékelése
       href: how-to-enable-data-collection.md
     - name: Monitorozás az Application Insights segítségével
       href: how-to-enable-app-insights.md
+  - name: Az első folyamat létrehozása
+    href: how-to-create-your-first-pipeline.md
   - name: Erőforráskvóták kezelése
     displayName: limits
     href: how-to-manage-quotas.md
@@ -368,9 +376,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: Régi problémák
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 308c767eb4a4bd332037093e23a1cb53a9fd1dc7
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 67bf0dfb2939cfd561f4558f9003c36883dcef93
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845059"
+ms.locfileid: "52864825"

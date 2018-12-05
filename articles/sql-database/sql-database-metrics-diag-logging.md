@@ -3,7 +3,7 @@ title: Az Azure SQL database-metrikák és diagnosztikai naplózás |} A Microso
 description: Ismerje meg konfigurálása az Azure SQL Database erőforrás-használat, a kapcsolat és a lekérdezés-végrehajtási statisztikák tárolására.
 services: sql-database
 ms.service: sql-database
-ms.subservice: performance
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: b903d0ddbccac8fe4fa8b251d409bd8addebb435
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 19117803783047d8ddd9740c799b4cb81fd74c2c
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425999"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890908"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database-metrikák és diagnosztikai naplózás 
 
@@ -291,7 +291,7 @@ Megtudhatja, hogyan lehet a [erőforrás létrehozásakor a diagnosztikai beáll
 
 Az Azure SQL Analytics egy felhőalapú megoldást kínál a teljesítmény figyelése Azure SQL adatbázisok, rugalmas készletek és a felügyelt példányok ipari méretekben és tekinthesse át egyetlen több előfizetésre kiterjedő figyelési. Azt gyűjti elérhetővé, és fontos Azure SQL Database teljesítmény-mérőszámok – teljesítménnyel kapcsolatos hibaelhárítás a beépített intelligenciával.
 
-![Az Azure SQL Analytics áttekintése](../log-analytics/media/log-analytics-azure-sql/azure-sql-sol-overview.png)
+![Az Azure SQL Analytics áttekintése](../azure-monitor/insights/media/azure-sql/azure-sql-sol-overview.png)
 
 SQL Database-metrikák és diagnosztikai naplókat is lehet streameli az Azure SQL Analytics használatával a beépített **Küldés a Log Analyticsnek** lehetőség a diagnosztikai beállítások panelen a portálon. A Log Analytics egy diagnosztikai beállítás PowerShell parancsmagok, az Azure CLI vagy az Azure Monitor REST API használatával is engedélyezi.
 
@@ -327,7 +327,7 @@ Abban az esetben az a rugalmas készletek vagy felügyelt példányok, ezeket az
 
 ### <a name="use-the-sql-analytics-solution"></a>Az SQL Analytics megoldás használata
 
-Az SQL Analytics egy hierarchikus irányítópultot, amely lehetővé teszi, hogy az SQL Database-erőforrásokat a hierarchián keresztül helyezze át a. Az SQL Analytics megoldás használatával kapcsolatban lásd: [SQL Database megfigyelése az SQL Analytics megoldás használatával](../log-analytics/log-analytics-azure-sql.md).
+Az SQL Analytics egy hierarchikus irányítópultot, amely lehetővé teszi, hogy az SQL Database-erőforrásokat a hierarchián keresztül helyezze át a. Az SQL Analytics megoldás használatával kapcsolatban lásd: [SQL Database megfigyelése az SQL Analytics megoldás használatával](../azure-monitor/insights/azure-sql.md).
 
 ## <a name="stream-into-event-hubs"></a>Streamelés az Event Hubsba
 

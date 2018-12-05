@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: f3e40f9d10ce3d0515d466e9bbdde324458e624d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e94b9e6d39a8a2694658a4231c54a027523af10c
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834111"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889242"
 ---
 # <a name="use-sql-database-managed-instance-with-virtual-networks-and-near-100-compatibility"></a>Használja az SQL Database felügyelt példánya, közel 100 %-os kompatibilitással és a virtuális hálózatokkal
 
@@ -214,7 +214,7 @@ Felügyelt példány előnyei nem mindig felfelé-elejétől számított a felh�
 
 ### <a name="managed-instance-administration-features"></a>Felügyelt példány felügyeleti funkciók
 
-A felügyelt példány engedélyezése rendszergazdák számára, hogy vállalati a legfontosabb dolgokra koncentrálni. Sok rendszergazda/DBA rendszertevékenységek nem szükségesek, vagy egyszerű. Ha például az operációs rendszer / relációsadatbázis-kezelő rendszer telepítési és javítása, a dinamikus példány, átméretezése és a konfiguráció, a biztonsági mentések [adatbázis-replikáció](replication-with-sql-database-managed-instance.md) (beleértve a rendszeradatbázisok), magas rendelkezésre állású, és rendszerállapot-konfigurációt és [alkalmazásteljesítmény-figyelési](../log-analytics/log-analytics-azure-sql.md) adatfolyamokat.
+A felügyelt példány engedélyezése rendszergazdák számára, hogy vállalati a legfontosabb dolgokra koncentrálni. Sok rendszergazda/DBA rendszertevékenységek nem szükségesek, vagy egyszerű. Ha például az operációs rendszer / relációsadatbázis-kezelő rendszer telepítési és javítása, a dinamikus példány, átméretezése és a konfiguráció, a biztonsági mentések [adatbázis-replikáció](replication-with-sql-database-managed-instance.md) (beleértve a rendszeradatbázisok), magas rendelkezésre állású, és rendszerállapot-konfigurációt és [alkalmazásteljesítmény-figyelési](../azure-monitor/insights/azure-sql.md) adatfolyamokat.
 
 > [!IMPORTANT]
 > Támogatott, részlegesen támogatott és nem támogatott funkciók listáját lásd: [SQL Database funkciói](sql-database-features.md). Felügyelt példány az SQL Server és a T-SQL különbségek listája: [felügyelt példány T-SQL eltérései az SQL Serverről](sql-database-managed-instance-transact-sql-information.md)
@@ -228,7 +228,7 @@ Az alábbi táblázat Transact SQL-n keresztül elérhető számos tulajdonság,
 |`@@VERSION`|A Microsoft SQL Azure (RTM) – 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Ez ugyanaz, mint az SQL Database értéke.|
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Ez ugyanaz, mint az SQL Database értéke.|
 |`SERVERPROPERTY('EngineEdition')`|8|Ez az érték a felügyelt példány egyedileg azonosítja.|
-|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Példány teljes DNS-név a következő formátumban:`<instanceName>`.`<dnsPrefix>`. Database.Windows.NET, ahol `<instanceName>` az ügyfél által megadott név közben `<dnsPrefix>` a neve, ami garantálja az globális DNS neve egyedi-e automatikusan létrehozott része ("wcus17662feb9ce98", például)|Példa: saját-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Példány teljes DNS-név a következő formátumban:`<instanceName>`.`<dnsPrefix>`.Database.Windows.NET, ahol `<instanceName>` az ügyfél által megadott név közben `<dnsPrefix>` a neve, ami garantálja az globális DNS neve egyedi-e automatikusan létrehozott része ("wcus17662feb9ce98", például)|Példa: saját-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>További lépések
 
@@ -237,5 +237,5 @@ Az alábbi táblázat Transact SQL-n keresztül elérhető számos tulajdonság,
 - A VNetek konfigurálásával kapcsolatos további információkért tekintse meg a [felügyelt példányok VNetjének konfigurálásával kapcsolatos](sql-database-managed-instance-vnet-configuration.md) cikket.
 - Ha a rövid útmutató, amely létrehoz egy felügyelt példányt, és visszaállít egy adatbázist egy biztonsági mentési fájlból, lásd: [létrehoz egy felügyelt példányt](sql-database-managed-instance-get-started.md).
 - Az Azure Database Migration Service migráláshoz való használatát a [felügyelt példány DMS használatával történő migrálását](../dms/tutorial-sql-server-to-managed-instance.md) bemutató oktatóanyag ismerteti.
-- A speciális hibaelhárítási beépített intelligenciával felügyelt példány adatbázis-teljesítmény figyelését: [figyelése Azure SQL Database az Azure SQL Analytics használatával](../log-analytics/log-analytics-azure-sql.md)
+- A speciális hibaelhárítási beépített intelligenciával felügyelt példány adatbázis-teljesítmény figyelését: [figyelése Azure SQL Database az Azure SQL Analytics használatával](../azure-monitor/insights/azure-sql.md)
 - Díjszabási információkért tekintse meg a [SQL Database felügyelt példányain díjszabás](https://azure.microsoft.com/pricing/details/sql-database/managed/).

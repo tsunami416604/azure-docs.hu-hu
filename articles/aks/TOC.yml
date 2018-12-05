@@ -155,7 +155,7 @@ items:
       href: ../container-registry/container-registry-auth-aks.md?toc=%2fazure%2faks%2ftoc.json
   - name: Monitorozás és naplózás
     items:
-    - name: Azure-tárolóállapot megoldás
+    - name: Azure Monitor tárolókhoz
       href: ../monitoring/monitoring-container-health.md
       maintainContext: true
     - name: A fő összetevőnaplók megtekintése
@@ -212,6 +212,12 @@ items:
       href: spark-job.md
     - name: A GPU-k használata
       href: gpu-cluster.md
+    - name: Az Istio használata
+      items:
+      - name: Telepítés és konfigurálás
+        href: istio-install.md
+      - name: Intelligens útválasztás és tesztcsoportos kiadások
+        href: istio-scenario-routing.md
     - name: Az Azure Database for PostgreSQL használata
       href: ../postgresql/concepts-aks.md
       maintainContext: true
@@ -273,9 +279,9 @@ items:
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: GYIK
     href: faq.md
-ms.openlocfilehash: 4bc03d2a50f384527bdfd3612d684cff6a6310e2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5e6f4aca52e72a8dbb578a874e050734c52393d7
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847337"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890925"

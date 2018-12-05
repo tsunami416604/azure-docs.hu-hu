@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 686e878b25c79538f3d228398bcb665622c2c36b
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: a5177293b24ec400714d8f87be4198a76d59214a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721663"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878720"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése
 Miután telepítette a webappot vagy a webhelyet bármely kiszolgálóra, webes teszteket állíthat be az alkalmazás rendelkezésre állásának és válaszkészségének megfigyeléséhez. Az [Azure Application Insights](app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást jelenít meg, ha az alkalmazás nem válaszol, vagy lassan válaszol.
@@ -182,7 +182,7 @@ Egy rendelkezésre állási teszt eredménye a tranzakció részleteit láthatja
 
 * Megvizsgálhatja a kiszolgálótól érkezett választ.
 * Kapcsolódó kiszolgálóoldali telemetriát a sikertelen rendelkezésre állási teszt feldolgozásakor begyűjtött diagnosztizálhatja a hibákat.
-* Naplózhat egy problémát vagy munkaelemet a Git vagy a VSTS segítségével a probléma nyomon követéséhez. A hiba tartalmazni fog egy hivatkozást erre az eseményre.
+* Probléma jelentkezik, vagy munkatétel a Git- vagy Azure célra szolgáló kártyákat, a probléma nyomon követéséhez. A hiba tartalmazni fog egy hivatkozást erre az eseményre.
 * Megnyithatja a webes teszt eredményét a Visual Studióban.
 
 Ismerje meg, további információt a végpontok közötti tranzakció diagnosztikája élmény [Itt](app-insights-transaction-diagnostics.md).

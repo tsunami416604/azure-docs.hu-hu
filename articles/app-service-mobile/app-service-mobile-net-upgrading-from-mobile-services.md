@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 25eb5c732927dcfb18bfd92991391ff99d4e3629
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 2d346739cd2e80546aee921317e278c1cff32b34
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918258"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873138"
 ---
 # <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>App Service-ben a .NET Azure meglévő Mobile Service frissítése
 Az App Service Mobile egy új módja a Microsoft Azure mobile alkalmazásokat hozhat létre. További tudnivalókért lásd: [Mi a Mobile Apps szolgáltatás?].
@@ -84,18 +84,23 @@ Több fordítási hibákat adta az SDK-k közötti különbségek eredő lesz, d
 ### <a name="base-configuration"></a>Alapkonfiguráció
 Ezt követően WebApiConfig.cs, akkor is cserélje le:
 
-        // Use this class to set configuration options for your mobile service
-        ConfigOptions options = new ConfigOptions();
+```csharp
+// Use this class to set configuration options for your mobile service
+ConfigOptions options = new ConfigOptions();
 
-        // Use this class to set WebAPI configuration options
-        HttpConfiguration config = ServiceConfig.Initialize(new ConfigBuilder(options));
+// Use this class to set WebAPI configuration options
+HttpConfiguration config = ServiceConfig.Initialize(new ConfigBuilder(options));
+```
 
 a következővel:
 
-        HttpConfiguration config = new HttpConfiguration();
-        new MobileAppConfiguration()
-            .UseDefaultConfiguration()
-        .ApplyTo(config);
+```csharp
+HttpConfiguration config = new HttpConfiguration();
+new MobileAppConfiguration()
+    .UseDefaultConfiguration()
+.ApplyTo(config);
+
+```
 
 > [!NOTE]
 > Ha szeretne további információt az új .NET kiszolgálói SDK és funkciók hozzáadása/eltávolítása az alkalmazásból, olvassa el a [a .NET kiszolgálóoldali SDK használata] témakör.
@@ -110,8 +115,10 @@ Ha az alkalmazás lehetővé teszi a hitelesítési funkciók használatához, r
 
 Győződjön meg arról, hogy a `Configuration()` metódus végződik:
 
-        app.UseWebApi(config)
-        app.UseAppServiceAuthentication(config);
+```csharp
+app.UseWebApi(config)
+app.UseAppServiceAuthentication(config);
+```
 
 Nincsenek hitelesítéshez kapcsolódó további módosításokat, amelyek a teljes hitelesítés szakaszban szerepelnek.
 
@@ -120,7 +127,9 @@ A Mobile Services a mobilalkalmazás neve szolgálja ki, az Entity Framework be�
 
 Annak érdekében, hogy ugyanazzal a sémával előtti, használja a következő beállítása a séma az alkalmazás a DbContext hivatkozik rá:
 
-        string schema = System.Configuration.ConfigurationManager.AppSettings.Get("MS_MobileServiceName");
+```csharp
+string schema = System.Configuration.ConfigurationManager.AppSettings.Get("MS_MobileServiceName");
+```
 
 Győződjön meg arról, hogy állítsa be, ha a fenti MS_MobileServiceName. Ha az alkalmazás korábban testreszabott ez is megadhatja egy másik séma neve.
 
@@ -140,7 +149,7 @@ Azure Mobile Apps, a rendszer tulajdonságai már nem speciális formátuma a, �
 * createdAt
 * updatedAt
 * törölve
-* verzió:
+* version
 
 A Mobile Apps-ügyfél SDK-k az új rendszer tulajdonságok neveket használ, így a módosítások nem szükségesek az Ügyfélkód. Azonban ha közvetlenül a szolgáltatás REST-hívások majd akkor kell megváltoztatnia a lekérdezések megfelelően.
 
@@ -156,7 +165,7 @@ IOS-eszközökön akkor módosítani kell a Core sémát az adatok entitások me
 | id |Karakterlánc, kötelezőként megjelölt |Távoli tároló az elsődleges kulcs |
 | createdAt |Dátum |(nem kötelező) vannak leképezve createdAt rendszertulajdonság |
 | updatedAt |Dátum |(nem kötelező) vannak leképezve updatedAt rendszertulajdonság |
-| verzió: |Sztring |(nem kötelező) annak észlelésére használnak, ütközéseket, a maps-verzióra |
+| version |Karakterlánc |(nem kötelező) annak észlelésére használnak, ütközéseket, a maps-verzióra |
 
 #### <a name="querying-system-properties"></a>Lekérdezés tulajdonságai
 Azure Mobile Services, a rendszer tulajdonságai nem kap meg alapértelmezés szerint, de csak akkor, amikor erre felkérést kapnak a lekérdezési karakterlánc használatával `__systemProperties`. Ezzel szemben az Azure Mobile Apps rendszerben a tulajdonságok akkor vannak **mindig kiválasztott** , mivel a kiszolgáló SDK hálózatiobjektum-modellt részét képezik.
@@ -167,28 +176,30 @@ A legegyszerűbben úgy oldható meg, hogy a DTOs módosítása, hogy azok örö
 
 Ha például a következőket határozza meg `TodoItem` rendszer tulajdonságok nélkül:
 
-    using System.ComponentModel.DataAnnotations.Schema;
+```csharp
+using System.ComponentModel.DataAnnotations.Schema;
 
-    public class TodoItem : ITableData
-    {
-        public string Text { get; set; }
+public class TodoItem : ITableData
+{
+    public string Text { get; set; }
 
-        public bool Complete { get; set; }
+    public bool Complete { get; set; }
 
-        public string Id { get; set; }
+    public string Id { get; set; }
 
-        [NotMapped]
-        public DateTimeOffset? CreatedAt { get; set; }
+    [NotMapped]
+    public DateTimeOffset? CreatedAt { get; set; }
 
-        [NotMapped]
-        public DateTimeOffset? UpdatedAt { get; set; }
+    [NotMapped]
+    public DateTimeOffset? UpdatedAt { get; set; }
 
-        [NotMapped]
-        public bool Deleted { get; set; }
+    [NotMapped]
+    public bool Deleted { get; set; }
 
-        [NotMapped]
-        public byte[] Version { get; set; }
-    }
+    [NotMapped]
+    public byte[] Version { get; set; }
+}
+```
 
 Megjegyzés: Ha hibaüzenet jelenik `NotMapped`, vegyen fel egy hivatkozást a szerelvény `System.ComponentModel.DataAnnotations`.
 
@@ -208,12 +219,16 @@ Most már rendelkeznie kell az összes ApiControllers, amelyet egy mobilügyfél
 
 A `ApiServices` objektum már nem része az SDK-t. A Mobile App beállításai eléréséhez a következőket használhatja:
 
-    MobileAppSettingsDictionary settings = this.Configuration.GetMobileAppSettingsProvider().GetMobileAppSettings();
+```csharp
+MobileAppSettingsDictionary settings = this.Configuration.GetMobileAppSettingsProvider().GetMobileAppSettings();
+```
 
 Ehhez hasonlóan naplózási most használatával valósítható meg az ASP.NET nyomkövetési standard írás:
 
-    ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
-    traceWriter.Info("Hello, World");  
+```csharp
+ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
+traceWriter.Info("Hello, World");  
+```
 
 ## <a name="authentication"></a>Hitelesítési kapcsolatos szempontok
 A Mobile Services hitelesítés összetevői rendelkezik már át lett helyezve az App Service hitelesítés/engedélyezés funkciót. Olvassa el a webhely engedélyezésével talál további információt a [hitelesítés hozzáadása a mobilalkalmazáshoz](app-service-mobile-ios-get-started-users.md) témakör.
@@ -227,11 +242,15 @@ Ha használja egy másik AuthorizeLevel beállításai, például felügyeleti v
 ### <a name="getting-additional-user-information"></a>További felhasználói információk lekérése
 További felhasználói információt, beleértve a hozzáférési jogkivonatok használatával a `GetAppServiceIdentityAsync()` módszer:
 
-        FacebookCredentials creds = await this.User.GetAppServiceIdentityAsync<FacebookCredentials>();
+```csharp
+FacebookCredentials creds = await this.User.GetAppServiceIdentityAsync<FacebookCredentials>();
+```
 
 Emellett ha az alkalmazás függőségei tart a felhasználói azonosítóval, például az adatbázisban tárolja őket, fontos megjegyezni, hogy a felhasználói azonosítók között a Mobile Services és az App Service Mobile Apps különböző. A Mobile Services felhasználói Azonosítót, azonban továbbra is kaphat. Valamennyi ProviderCredentials alosztályát rendelkezik felhasználói azonosító tulajdonsággal. Ezért a folytatás előtt a példában:
 
-        string mobileServicesUserId = creds.Provider + ":" + creds.UserId;
+```csharp
+string mobileServicesUserId = creds.Provider + ":" + creds.UserId;
+```
 
 Ha az alkalmazás végrehajtása a függőségek, a felhasználói azonosítókat, akkor fontos, hogy, használhatja ugyanazt a regisztrációt egy identitásszolgáltatóval, ha lehetséges. Felhasználói azonosítók általában hatóköre az alkalmazás regisztrációja használt, így a problémákat a feltételeknek megfelelő felhasználók az adataikhoz, létrehozhat egy új regisztrációs bemutatása.
 
@@ -243,9 +262,11 @@ Ha már rendelkezik a egy működési Mobile Apps-háttéralkalmazást, használ
 
 A legfontosabb változások között az egyik célja, hogy a konstruktor már nincs szüksége egy alkalmazáskulcsot. Most már egyszerűen átadhatja a mobilalkalmazás URL-címét. A .NET-ügyfelek, például az a `MobileServiceClient` a konstruktor már:
 
-        public static MobileServiceClient MobileService = new MobileServiceClient(
-            "https://contoso.azurewebsites.net", // URL of the Mobile App
-        );
+```csharp
+public static MobileServiceClient MobileService = new MobileServiceClient(
+    "https://contoso.azurewebsites.net", // URL of the Mobile App
+);
+```
 
 Itt olvashat az új SDK-k telepítéséről és használatáról az új struktúra keresztül az alábbi hivatkozásokat:
 
@@ -261,15 +282,10 @@ Ha készen áll az új ügyfél verziója, próbálja ki a frissített kiszolgá
 [Azure Portal]: https://portal.azure.com/
 [klasszikus Azure portál]: https://manage.windowsazure.com/
 [Mi a Mobile Apps szolgáltatás?]: app-service-mobile-value-prop.md
-[I already use web sites and mobile services – how does App Service help me?]: /en-us/documentation/articles/app-service-mobile-value-prop-migration-from-mobile-services
 [Mobil alkalmazások kiszolgálói SDK]: http://www.nuget.org/packages/microsoft.azure.mobile.server
-[Create a Mobile App]: app-service-mobile-xamarin-ios-get-started.md
-[Add push notifications to your mobile app]: app-service-mobile-xamarin-ios-get-started-push.md
 [Add authentication to your mobile app]: app-service-mobile-xamarin-ios-get-started-users.md
 [Azure Scheduler]: /azure/scheduler/
 [Webjobs-feladat]: https://github.com/Azure/azure-webjobs-sdk/wiki
 [A .NET kiszolgálóoldali SDK használata]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
-[Migrate from Mobile Services to an App Service Mobile App]: app-service-mobile-migrating-from-mobile-services.md
-[Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
 [App Service szolgáltatás díjszabása]: https://azure.microsoft.com/pricing/details/app-service/
 [.NET kiszolgálói SDK – áttekintés]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md

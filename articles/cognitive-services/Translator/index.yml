@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d74ef4b68545c349c8df2cb7090ee8c26e2cd3e4
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: dd13a8178fd74f54ffa6fa5d9d8c23d214965dca
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622857"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866968"
 documentType: LandingData
 title: A Translator Text dokumentációja
 metadata:
@@ -37,7 +37,7 @@ sections:
       html: <p>A Custom Translator ismertetése</p>
       image:
         src: ../media/index/i_overview.svg
-      title: Mi a Custom Translator (előzetes verzió)?
+      title: Mi a Custom Translator?
     - href: /azure/cognitive-services/translator/custom-translator/quickstart-build-deploy-custom-model
       html: <p>Bevezetés a Custom Translator használatába</p>
       image:

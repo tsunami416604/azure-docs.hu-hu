@@ -1,21 +1,20 @@
 ---
-title: Az Azure Table Storage és az Azure Cosmos DB Table API használata a Java segítségével | Microsoft Docs
+title: Hogyan használható az Azure Table storage vagy az Azure Cosmos DB Table API a Javával
 description: Az Azure Table Storage vagy az Azure Cosmos DB Table API használatával strukturált adatok tárolhatók a felhőben.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: Java
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: f4ebcf51ab6682009190e467ca9dbf67caf1c182
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
-ms.translationtype: HT
+ms.openlocfilehash: d7be0ed8d59063f75b3d4fadbf69237bdb2d0d13
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797896"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863686"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Java segítségével
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]

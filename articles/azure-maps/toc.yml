@@ -65,13 +65,21 @@ items:
       href: choose-map-style.md
     - name: Térképvezérlők hozzáadása
       href: map-add-controls.md
-    - name: Szimbólumok és jelölők hozzáadása
+    - name: Szimbólumréteg hozzáadása
       href: map-add-pin.md
     - name: Előugró ablak hozzáadása
       href: map-add-popup.md
+    - name: Buborékréteg hozzáadása
+      href: map-add-bubble-layer.md
     - name: Alakzat hozzáadása
       href: map-add-shape.md
-    - name: Egyéni HTML hozzáadása
+    - name: Hőtérképréteg hozzáadása
+      href: map-add-heat-map-layer.md
+    - name: Rendszerképréteg hozzáadása
+      href: map-add-image-layer.md
+    - name: Mozaikréteg hozzáadása
+      href: map-add-tile-layer.md
+    - name: HTML-jelölők hozzáadása
       href: map-add-custom-html.md
     - name: Szolgáltatások
       items:
@@ -167,9 +175,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: Videók
     href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
-ms.openlocfilehash: d59d9b758ce7748dc20a48682d3e5f75ea87c037
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5653e8567637877426af54e50436211637478ca5
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845739"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888596"

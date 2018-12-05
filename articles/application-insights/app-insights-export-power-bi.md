@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4a30e562b04a3414a1305604a521e0d659753142
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: bc85f210b1057ea775b01bfe74f7a0e23ff9057e
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720405"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878397"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Az Application Insights szolgáltatásból a Power BI hírcsatorna
 [Power bi-ban](http://www.powerbi.com/) üzleti eszközök együttese, amely segít az adatok elemzése és elemzéseket oszthat meg. Gazdag irányítópultok érhetők el a minden eszközön. Számos más forrásból, beleértve az elemzési lekérdezések az adatok is kombinálhatók [Azure Application Insights](app-insights-overview.md).
@@ -40,7 +40,7 @@ Az Application Insights-lekérdezés importálásához a Power BI asztali verzi�
 Telepítés [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
 ### <a name="export-an-analytics-query"></a>Analytics-lekérdezések exportálása
-1. [Nyissa meg a Analytics és a lekérdezés írása](../log-analytics/query-language/get-started-analytics-portal.md).
+1. [Nyissa meg a Analytics és a lekérdezés írása](../azure-monitor/log-query/get-started-portal.md).
 2. Tesztelje, és pontosítsa a lekérdezést, mindaddig, amíg az eredmények elégedett. Győződjön meg arról, hogy a lekérdezés megfelelően fut az Analyticsben exportálás előtt.
 3. Az a **exportálása** menüben válassza a **Power bi-ban (M)**. Mentse a fájlt.
    
@@ -153,5 +153,5 @@ Az első importálás után az irányítópult és a jelentések továbbra is na
 
 ## <a name="next-steps"></a>További lépések
 * [Power bi-ban – ismerje meg,](http://www.powerbi.com/learning/)
-* [Elemzések – oktatóanyag](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Elemzések – oktatóanyag](../azure-monitor/log-query/get-started-portal.md)
 

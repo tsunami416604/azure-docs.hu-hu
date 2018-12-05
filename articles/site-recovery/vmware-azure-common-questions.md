@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 11/27/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 99e108da5fc9c13d0a9ec65a485055d1b990f8b7
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 83216091c950593b16f158ea3d8df5a194ecee02
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838227"
+ms.locfileid: "52869823"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
@@ -74,7 +74,7 @@ Bármilyen alkalmazást vagy a VMware virtuális gép, amely megfelel az számí
 A Site Recovery replikálja az adatokat a helyszínről az Azure storage egy nyilvános végpontot, vagy használja az ExpressRoute nyilvános társviszony-létesítés. Site-to-site VPN hálózaton keresztül a replikáció nem támogatott.
 
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>Replikálás az Azure ExpressRoute használatával is?
-Igen, az ExpressRoute segítségével virtuális gépek replikálása az Azure-bA. A Site Recovery replikálja az adatokat egy Azure Storage-fiók egy nyilvános végpontot keresztül, és be kell állítania [nyilvános társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#azure-public-peering) a Site Recovery replikációjára. Miután a virtuális gépek átadja a feladatokat az Azure virtuális hálózat, elérheti azokat használó [magánhálózati társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#azure-private-peering).
+Igen, az ExpressRoute segítségével virtuális gépek replikálása az Azure-bA. A Site Recovery replikálja az adatokat egy Azure Storage-fiók egy nyilvános végpontot keresztül, és be kell állítania [nyilvános társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#publicpeering) a Site Recovery replikációjára. Miután a virtuális gépek átadja a feladatokat az Azure virtuális hálózat, elérheti azokat használó [magánhálózati társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#privatepeering).
 
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Miért nem tudja replikálni VPN-kapcsolaton keresztül?

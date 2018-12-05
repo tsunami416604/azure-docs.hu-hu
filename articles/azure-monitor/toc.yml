@@ -62,6 +62,8 @@ items:
   items:
   - name: Azure-felügyelet
     href: azure-management.md?toc=/azure/azure-monitor/toc.json
+  - name: Folyamatos monitorozás
+    href: continuous-monitoring.md
   - name: Adatok monitorozása
     items:
     - name: Metrikák és naplók
@@ -75,13 +77,13 @@ items:
     - name: Diagnosztikai naplók
       href: ../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=/azure/azure-monitor/toc.json
     - name: Naplóadatok feldolgozási ideje
-      href: ../log-analytics/log-analytics-data-ingestion-time.md?toc=/azure/azure-monitor/toc.json
+      href: platform/data-ingestion-time.md
     - name: Egyéni metrikák a metrikatárba
       href: ../monitoring-and-diagnostics/metrics-custom-overview.md?toc=/azure/azure-monitor/toc.json
     - name: Adatbiztonság
       items:
       - name: Naplóadatok
-        href: ../log-analytics/log-analytics-data-security.md?toc=/azure/azure-monitor/toc.json
+        href: platform/data-security.md
       - name: Személyes naplóadatok kezelése
         href: ../log-analytics/log-analytics-personal-data-mgmt.md?toc=/azure/azure-monitor/toc.json
       - name: Alkalmazásadatok gyűjtése, megőrzése és tárolása
@@ -109,7 +111,7 @@ items:
     - name: Log Analytics
       href: log-query/log-query-overview.md
     - name: Naplólekérdezési portálok
-      href: ../log-analytics/log-analytics-log-search-portals.md?toc=/azure/azure-monitor/toc.json
+      href: log-query/portals.md
     - name: OMS-portálváltás
       items:
       - name: Áttekintés
@@ -139,7 +141,7 @@ items:
   - name: GYIK
     items:
     - name: Log Analytics
-      href: ../log-analytics/log-analytics-faq.md?toc=/azure/azure-monitor/toc.json
+      href: platform/log-faq.md
     - name: Application Insights
       href: ../application-insights/app-insights-troubleshoot-faq.md?toc=/azure/azure-monitor/toc.json
 - name: Útmutatók
@@ -199,7 +201,7 @@ items:
         - name: Virtuálisgép-bővítmény Linuxhoz
           href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
         - name: Operations Manager
-          href: ../log-analytics/log-analytics-om-agents.md?toc=/azure/azure-monitor/toc.json
+          href: platform/om-agents.md
         - name: OMS-átjáró
           href: platform/gateway.md
         - name: Ügynökkezelés
@@ -257,7 +259,7 @@ items:
       - name: Egyéni naplók
         href: platform/data-sources-custom-logs.md
       - name: Egyéni mezők
-        href: ../log-analytics/log-analytics-custom-fields.md?toc=/azure/azure-monitor/toc.json
+        href: platform/custom-fields.md
     - name: Alkalmazások konfigurálása
       items:
       - name: Azure-alkalmazások
@@ -423,7 +425,7 @@ items:
     - name: Egyéni adatok gyűjtése
       items:
       - name: Log Analytics Data Collector API
-        href: ../log-analytics/log-analytics-data-collector-api.md?toc=/azure/azure-monitor/toc.json
+        href: platform/data-collector-api.md
       - name: Példa Log Analytics Data Collector API-folyamatra
         href: platform/create-pipeline-datacollector-api.md
       - name: Alkalmazásadatok
@@ -514,7 +516,7 @@ items:
         - name: Munkafüzetek
           href: ../application-insights/app-insights-usage-workbooks.md?toc=/azure/azure-monitor/toc.json
       - name: Web App Analytics-megoldás
-        href: ../log-analytics/log-analytics-azure-web-apps-analytics.md?toc=/azure/azure-monitor/toc.json
+        href: insights/azure-web-apps-analytics.md
     - name: Tárolók figyelése
       items:
       - name: Azure Monitor tárolókhoz
@@ -532,7 +534,7 @@ items:
         - name: Hibaelhárítás
           href: insights/container-insights-troubleshoot.md
       - name: Docker- és Windows-tárolók monitorozása
-        href: ../log-analytics/log-analytics-containers.md?toc=/azure/azure-monitor/toc.json
+        href: insights/containers.md
       - name: Docker-alkalmazások monitorozása
         href: ../application-insights/app-insights-docker.md?toc=/azure/azure-monitor/toc.json
     - name: Erőforráscsoportok monitorozása
@@ -540,7 +542,7 @@ items:
     - name: Adatbázisok monitorozása
       items:
       - name: Azure SQL
-        href: ../log-analytics/log-analytics-azure-sql.md?toc=/azure/azure-monitor/toc.json
+        href: insights/azure-sql.md
       - name: SQL Server
         href: insights/sql-assessment.md
     - name: Hálózatok monitorozása
@@ -661,55 +663,55 @@ items:
     - name: Naplóadatok lekérdezése
       items:
       - name: Lekérdezési nyelv dokumentációja
-        href: ../log-analytics/query-language/query-language.md
+        href: log-query/query-language.md
       - name: Nyelvi különbözőségek
-        href: ../log-analytics/query-language/data-explorer-difference.md?toc=/azure/azure-monitor/toc.json
+        href: log-query/data-explorer-difference.md
       - name: Bevezetés
         items:
         - name: Ismerkedés az Analytics-portál használatával
-          href: ../log-analytics/query-language/get-started-analytics-portal.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/get-started-portal.md
         - name: Ismerkedés a lekérdezések használatával
-          href: ../log-analytics/query-language/get-started-queries.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/get-started-queries.md
         - name: Keresési lekérdezések
-          href: ../log-analytics/query-language/search-queries.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/search-queries.md
         - name: Hasznos operátorok
-          href: ../log-analytics/query-language/useful-operators.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/useful-operators.md
       - name: Leckék
         items:
         - name: Sztringműveletek
-          href: ../log-analytics/query-language/string-operations.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/string-operations.md
         - name: Dátum és idő típusú adatokkal végzett műveletek
-          href: ../log-analytics/query-language/datetime-operations.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/datetime-operations.md
         - name: Aggregátumfüggvények
-          href: ../log-analytics/query-language/aggregations.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/aggregations.md
         - name: Speciális aggregátumok
-          href: ../log-analytics/query-language/advanced-aggregations.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/advanced-aggregations.md
         - name: Illesztések
-          href: ../log-analytics/query-language/joins.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/joins.md
         - name: JSON és adatstruktúrák
-          href: ../log-analytics/query-language/json-data-structures.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/json-data-structures.md
         - name: Továbbfejlesztett lekérdezésírás
-          href: ../log-analytics/query-language/advanced-query-writing.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/advanced-query-writing.md
         - name: Diagramok
-          href: ../log-analytics/query-language/charts.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/charts.md
         - name: Functions
-          href: ../log-analytics/query-language/functions.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/functions.md
       - name: Hasznos tanácsok
         items:
         - name: SQL
-          href: ../log-analytics/query-language/sql-cheatsheet.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/sql-cheatsheet.md
         - name: Splunk
-          href: ../log-analytics/query-language/splunk-cheatsheet.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/splunk-cheatsheet.md
       - name: Lekérdezés nyelve
         items:
         - name: Példák
-          href: ../log-analytics/query-language/examples.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/examples.md
         - name: Keresés több erőforrásban
-          href: ../log-analytics/log-analytics-cross-workspace-search.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/cross-workspace-query.md
         - name: alkalmazáskifejezés
-          href: ../log-analytics/query-language/app-expression.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/app-expression.md
         - name: munkaterület-kifejezés
-          href: ../log-analytics/query-language/workspace-expression.md?toc=/azure/azure-monitor/toc.json
+          href: log-query/workspace-expression.md
       - name: Naplóadatok
         items:
         - name: Alkalmazásadatok
@@ -717,11 +719,11 @@ items:
         - name: Szokásos tulajdonságok
           href: ../log-analytics/log-analytics-standard-properties.md?toc=/azure/azure-monitor/toc.json
       - name: Műveletek végrehajtása a keresési eredményekből
-        href: ../log-analytics/log-analytics-log-search-takeaction.md?toc=/azure/azure-monitor/toc.json
+        href: log-query/take-action.md
       - name: Számítógépcsoportok
         href: platform/computer-groups.md
       - name: Folyamat-összekötő
-        href: ../log-analytics/log-analytics-flow-tutorial.md?toc=/azure/azure-monitor/toc.json
+        href: platform/flow-tutorial.md
       - name: Log Search API
         href: https://dev.loganalytics.io/
   - name: Reagálás incidensekre
@@ -821,11 +823,11 @@ items:
     - name: Informatikai szolgáltatásfelügyelet
       items:
       - name: Informatikai szolgáltatásfelügyeleti összekötő
-        href: ../log-analytics/log-analytics-itsmc-overview.md?toc=/azure/azure-monitor/toc.json
+        href: platform/itsmc-overview.md
       - name: Informatikai szolgáltatásfelügyeleti kapcsolatok
         href: platform/itsmc-connections.md
       - name: Service Manager-webalkalmazás létrehozása
-        href: ../log-analytics/log-analytics-itsmc-service-manager-script.md?toc=/azure/azure-monitor/toc.json
+        href: platform/itsmc-service-manager-script.md
   - name: Használat és költségek kezelése
     items:
     - name: Használat és becsült költségek
@@ -1007,9 +1009,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Kódminták
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 46f8dfa668deed1be2b955fd42b894dfa5513a20
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d87574fb4e430742a733d92992ef2009e0240d43
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846181"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889752"

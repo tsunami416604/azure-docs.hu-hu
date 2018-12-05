@@ -8,12 +8,12 @@ ms.date: 06/19/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c11013c926e77447a69ce0dfe697fdda1ecc2b8c
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 52ff52ffb558278507bb24e1b1e2054c251b2512
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284846"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879638"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>Hibák elhárítása során megoldások bevezetése
 
@@ -21,7 +21,7 @@ Bevezetési megoldások, például az Update Management vagy a Change Tracking a
 
 ## <a name="general-errors"></a>Általános hiba
 
-### <a name="computer-grou-query-format-error"></a>Forgatókönyv: ComputerGroupQueryFormatError
+### <a name="computer-group-query-format-error"></a>Forgatókönyv: ComputerGroupQueryFormatError
 
 #### <a name="issue"></a>Probléma
 

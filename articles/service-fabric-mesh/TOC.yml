@@ -10,7 +10,7 @@ items:
   items:
   - name: A Hello World üzembe helyezése
     href: service-fabric-mesh-quickstart-deploy-container.md
-  - name: Webalkalmazás létrehozása és üzembe helyezése az Azure Service Fabric Mesh-ben
+  - name: Webalkalmazás létrehozása a Visual Studióval
     href: service-fabric-mesh-quickstart-dotnet-core.md
 - name: Oktatóanyagok
   items:
@@ -42,26 +42,46 @@ items:
     href: service-fabric-mesh-terminology.md
   - name: Service Fabric-erőforrások
     href: service-fabric-mesh-service-fabric-resources.md
+  - name: Hálózatok és átjárók
+    href: service-fabric-mesh-networks-and-gateways.md
+  - name: A szolgáltatás méretezhetősége
+    href: service-fabric-mesh-scalability.md
   - name: Monitorozás és diagnosztika
     href: service-fabric-mesh-monitoring-diagnostics.md
   - name: Tárolási állapot
     href: service-fabric-mesh-storing-state.md
+  - name: Titkos kulcsok
+    href: service-fabric-mesh-secrets-overview.md
 - name: Útmutatók
   items:
   - name: A fejlesztési környezet beállítása
     href: service-fabric-mesh-howto-setup-developer-environment-sdk.md
   - name: A Service Fabric Mesh parancssori felületének beállítása
     href: service-fabric-mesh-howto-setup-cli.md
+  - name: Meglévő .NET-alkalmazás tárolóba helyezése
+    href: service-fabric-mesh-howto-containerize-vs.md
+  - name: A Visual Studio teljesítményének optimalizálása
+    href: service-fabric-mesh-howto-optimize-vs.md
+  - name: Átjáró-erőforrások konfigurálása
+    href: service-fabric-mesh-howto-configure-gateways.md
+  - name: Szolgáltatások automatikus skálázása
+    href: service-fabric-mesh-howto-auto-scale-services.md
   - name: Állapot tárolása Azure Files-kötettel
     href: service-fabric-mesh-howto-deploy-app-azurefiles-volume.md
-  - name: Alkalmazáson belüli mikroszolgáltatások független skálázása
-    href: service-fabric-mesh-howto-app-scale-out.md
+  - name: Állapot tárolása Service Fabric Reliable Disk-köteten
+    href: service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md
+  - name: Titkos kulcsok kezelése
+    href: service-fabric-mesh-howto-manage-secrets.md
+  - name: Minták keresése
+    href: service-fabric-mesh-howto-find-samples.md
 - name: Referencia
   items:
   - name: A Service Fabric Mesh erőforrás-szolgáltatói REST API-jai
     href: /rest/api/servicefabric/sfmeshrp-index
   - name: Service Fabric ügyfél-erőforrás REST API-k
     href: /rest/api/servicefabric/sfclient-index#service-fabric-resource-model
+  - name: Service Fabric Maven parancssori felületével kapcsolatos referencia
+    href: service-fabric-mesh-reference-maven.md
 - name: További források
   items:
   - name: Gyakori kérdések
@@ -78,9 +98,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric-mesh
   - name: Régiónkénti rendelkezésre állás
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: e29d383397b202578326d1db34265eddf5f7c40a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: a510d3eeace6125e25faf4088cee16389001b3d9
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155116"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888443"

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: a3e0125a66c4b8bbda6e0b7087fe5e0e387d43e4
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e1e20e3fb43c9e1480ced956069ce8ac8643e686
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847388"
+ms.locfileid: "52879603"
 ---
 # <a name="azure-monitor-overview"></a>Az Azure Monitor áttekintése
 
@@ -39,9 +39,9 @@ Sok Azure-erőforrások látni fogja az áttekintő oldala az Azure Portalon az 
 
 ![Mérőszámok](media/overview/metrics.png)
 
-A Log Analyticsben, amely tartalmazza a tárolt naplóadatokat az Azure Monitor által gyűjtött egy [teljes funkcionalitású lekérdezésnyelvet](../azure-monitor/log-query/log-query-overview.md) gyorsan lekérni, konszolidálhatja és elemezheti az összegyűjtött adatokat.  Hozhat létre és tesztelheti a lekérdezéseket a [Log Analytics lapot](../log-analytics/log-analytics-log-search-portals.md) az Azure Portalon, majd vagy a közvetlenül elemezheti az adatokat ezekkel az eszközökkel, vagy mentheti a lekérdezéseket a segítségével [Vizualizációk](visualizations.md) vagy [ riasztási szabályok](../monitoring-and-diagnostics/monitoring-overview-alerts.md).
+A Log Analyticsben, amely tartalmazza a tárolt naplóadatokat az Azure Monitor által gyűjtött egy [teljes funkcionalitású lekérdezésnyelvet](../azure-monitor/log-query/log-query-overview.md) gyorsan lekérni, konszolidálhatja és elemezheti az összegyűjtött adatokat.  Hozhat létre és tesztelheti a lekérdezéseket a [Log Analytics lapot](../azure-monitor/log-query/portals.md) az Azure Portalon, majd vagy a közvetlenül elemezheti az adatokat ezekkel az eszközökkel, vagy mentheti a lekérdezéseket a segítségével [Vizualizációk](visualizations.md) vagy [ riasztási szabályok](../monitoring-and-diagnostics/monitoring-overview-alerts.md).
 
-A Log Analytics lekérdezési nyelv egyszerű naplólekérdezések alkalmas, de tartoznak az olyan speciális funkciókat, például összesítés, illesztés és intelligens elemzés. Segítségével gyorsan megismerkedhet a lekérdezési nyelv használatával [több leckék](../log-analytics/query-language/get-started-queries.md) elérhető.  Azon felhasználók számára, akik már ismerik az [SQL](../log-analytics/query-language/sql-cheatsheet.md) és [Splunk](../log-analytics/query-language/splunk-cheatsheet.md) használatát, külön útmutató áll rendelkezésére.
+A Log Analytics lekérdezési nyelv egyszerű naplólekérdezések alkalmas, de tartoznak az olyan speciális funkciókat, például összesítés, illesztés és intelligens elemzés. Segítségével gyorsan megismerkedhet a lekérdezési nyelv használatával [több leckék](../azure-monitor/log-query/get-started-queries.md) elérhető.  Azon felhasználók számára, akik már ismerik az [SQL](../azure-monitor/log-query/sql-cheatsheet.md) és [Splunk](../azure-monitor/log-query/splunk-cheatsheet.md) használatát, külön útmutató áll rendelkezésére.
 
 ![Logs](media/overview/logs.png)
 
@@ -61,7 +61,7 @@ Kiterjesztheti az adatokat gyűjt be az erőforrások a tényleges művelet [eng
 [Adja hozzá az alkalmazáshoz egy kialakítási csomagot](../application-insights/app-insights-azure-web-apps.md), amely lehetővé teszi az Application Insights részletes információkat az alkalmazásról, beleértve a lapmegtekintések, alkalmazásokra irányuló kérések és kivételek gyűjtésére. Továbbá ellenőrizze az alkalmazás rendelkezésre állásának konfigurálásával egy [rendelkezésre állási teszt](../application-insights/app-insights-monitor-web-app-availability.md) érkező felhasználói forgalom szimulálásához.
 
 ### <a name="custom-sources"></a>Egyéni források
-Az Azure Monitor naplózási adatokat gyűjt a bármely REST-ügyfél használatával a [adatgyűjtő API](../log-analytics/log-analytics-data-collector-api.md). Ez lehetővé teszi, hogy hozzon létre egyéni figyelési helyzeteket, és kiterjesztheti az erőforrásokhoz, amelyek nem teszik elérhetővé a telemetriai adatok segítségével más adatforrások figyelését.
+Az Azure Monitor naplózási adatokat gyűjt a bármely REST-ügyfél használatával a [adatgyűjtő API](../azure-monitor/platform/data-collector-api.md). Ez lehetővé teszi, hogy hozzon létre egyéni figyelési helyzeteket, és kiterjesztheti az erőforrásokhoz, amelyek nem teszik elérhetővé a telemetriai adatok segítségével más adatforrások figyelését.
 
 
 

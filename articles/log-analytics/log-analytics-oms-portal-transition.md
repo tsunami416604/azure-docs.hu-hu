@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 5010426db97a9cd404d265d1ea9b319877eda1de
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: bd97de9680eb2fe5f5e6da3b7cba48dc7280e398
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723958"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888715"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Azure-bA az OMS-portálon
 
@@ -93,7 +93,7 @@ Az OMS mobilalkalmazást lesz sunsetted együtt az OMS-portálon. Helyett az OMS
 ## <a name="application-insights-connector-and-solution"></a>Application Insights-összekötő és megoldás
 [Application Insights-összekötő](../azure-monitor/platform/app-insights-connector.md) lehetővé teszi az Application Insights adatokat importálnak a Log Analytics-munkaterületet. Az adatdeduplikáció volt szükség infrastruktúra és az alkalmazás adatok láthatóságának engedélyezése.
 
-A támogatási [erőforrások közötti lekérdezések](log-analytics-cross-workspace-search.md), már nem létezik a szükséges adatokat. Mint ilyen a meglévő Application Insights-megoldáshoz elavulttá válik. Október kezdve nem lesz új Application Insights-erőforrások összekapcsolása a Log Analytics-munkaterületeket. Meglévő kapcsolatokat, és az irányítópultok továbbra is működik, a 2019. január 15-ig.
+A támogatási [erőforrások közötti lekérdezések](../azure-monitor/log-query/cross-workspace-query.md), már nem létezik a szükséges adatokat. Mint ilyen a meglévő Application Insights-megoldáshoz elavulttá válik. Október kezdve nem lesz új Application Insights-erőforrások összekapcsolása a Log Analytics-munkaterületeket. Meglévő kapcsolatokat, és az irányítópultok továbbra is működik, a 2019. január 15-ig.
 
 
 ## <a name="azure-network-security-group-analytics"></a>Azure Network Security Group Analytics
@@ -111,7 +111,7 @@ Ez a megoldás elemzi a hálózati biztonsági csoportok naplóinak és elemezhe
 Továbbra is számíthat a diagnosztikai beállítások NSG-naplók a Log Analytics szolgáltatásba, így a meglévő mentett keresések, riasztások, az irányítópultok továbbra is működni fog küldeni. Ügyfelek, akik már telepítették a megoldás továbbra is használhatja azt további értesítésig. Szeptember 5-től kezdődően a hálózati biztonsági csoport Analytics megoldás a rendszer eltávolítja a marketplace-ről és a Közösség keresztül elérhetővé tett egy [Azure gyorsindítási sablon](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights).
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-Ha [Log Analytics az Operations Manager felügyeleti csoport csatlakoztatva](log-analytics-om-agents.md), akkor továbbra is működik, nem kell módosítania. Az új kapcsolatok, kövesse az útmutató [konfigurálása az Operations Management Suite a Microsoft System Center Operations Manager felügyeleti csomag](https://blogs.technet.microsoft.com/momteam/2018/07/25/microsoft-system-center-operations-manager-management-pack-to-configure-operations-management-suite/).
+Ha [Log Analytics az Operations Manager felügyeleti csoport csatlakoztatva](../azure-monitor/platform/om-agents.md), akkor továbbra is működik, nem kell módosítania. Az új kapcsolatok, kövesse az útmutató [konfigurálása az Operations Management Suite a Microsoft System Center Operations Manager felügyeleti csomag](https://blogs.technet.microsoft.com/momteam/2018/07/25/microsoft-system-center-operations-manager-management-pack-to-configure-operations-management-suite/).
 
 ## <a name="next-steps"></a>További lépések
 - Lásd: [gyakori kérdések a Log Analytics-felhasználók az Azure Portalon OMS-portálon való váltás](log-analytics-oms-portal-faq.md) útmutatást áthelyezését az OMS-portálon az Azure Portalon.

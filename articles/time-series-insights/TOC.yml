@@ -5,7 +5,7 @@ items:
   href: index.yml
 - name: Áttekintés
   items:
-  - name: A Time Series Insights (előzetes verzió) bemutatása
+  - name: Tudnivalók a Time Series Insightsról
     href: time-series-insights-update-overview.md
 - name: Gyors útmutatók
   items:
@@ -29,7 +29,7 @@ items:
       href: tutorial-create-populate-tsi-environment.md
   - name: Azure Time Series Insights (előzetes verzió)
     items:
-    - name: TSI-környezet létrehozása
+    - name: Azure TSI (előzetes verzió) oktatóanyag
       href: time-series-insights-update-create-environment.md
 - name: Alapelvek
   items:
@@ -51,9 +51,9 @@ items:
       href: time-series-insights-update-storage-ingress.md
     - name: Használati esetek
       href: time-series-insights-update-use-cases.md
-    - name: Time Series-modell
+    - name: Adatmodellezés
       href: time-series-insights-update-tsm.md
-    - name: Time Series-lekérdezés
+    - name: Adatok lekérdezése
       href: time-series-insights-update-tsq.md
     - name: Adatok vizualizációja az Explorer frissítésében
       href: time-series-insights-update-explorer.md
@@ -109,25 +109,29 @@ items:
   items:
   - name: Time Series Insights
     items:
-    - name: Time Series Insights – általánosan elérhető
+    - name: Azure Time Series Insights (általánosan elérhető)
+      href: /rest/api/time-series-insights/ga
       items:
       - name: Lekérdezés
+        href: /rest/api/time-series-insights/ga-query
         items:
         - name: API
-          href: /rest/api/time-series-insights/time-series-insights-reference-queryapi
+          href: /rest/api/time-series-insights/ga-query-api
         - name: Szintaxis
-          href: /rest/api/time-series-insights/time-series-insights-reference-query-syntax
+          href: /rest/api/time-series-insights/ga-query-syntax
       - name: Reference Data API
+        href: /rest/api/time-series-insights/ga-reference-data-api
     - name: Azure Time Series Insights (előzetes verzió)
+      href: /rest/api/time-series-insights/preview
       items:
       - name: Time Series-lekérdezés
-        href: /rest/api/time-series-insights/time-series-insights-reference-update-tsq
+        href: /rest/api/time-series-insights/preview-query
       - name: Time Series-modell
-        href: /rest/api/time-series-insights/time-series-insights-reference-update-tsm
+        href: /rest/api/time-series-insights/preview-model
       - name: Time Series Environment API
-        href: /rest/api/time-series-insights/time-series-insights-reference-update-env
+        href: /rest/api/time-series-insights/preview-env
       - name: Time Series-kifejezés és -szintaxis
-        href: /rest/api/time-series-insights/time-series-insights-reference-update-tsx
+        href: /rest/api/time-series-insights/preview-tsx
 - name: Kapcsolódó témakörök
   items:
   - name: Megoldások
@@ -176,9 +180,9 @@ items:
     href: https://azure.microsoft.com/support/options/
   - name: Videók
     href: https://azure.microsoft.com/resources/videos/index/?services=time-series-insights
-ms.openlocfilehash: d30b4b2b19a4f055647b4723c91a15a1a977de6d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c75c034e0f54b33e28aa7f0ef5d0c18ad0004e55
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849513"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889991"
