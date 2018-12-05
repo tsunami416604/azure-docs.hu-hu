@@ -5,16 +5,16 @@ services: service-fabric-mesh
 keywords: ''
 author: tylermsft
 ms.author: twhitney
-ms.date: 08/08/2018
+ms.date: 11/29/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: jeconnoc
-ms.openlocfilehash: 0531985cbab9c10b4df8ea3f27ac6c7903790da5
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
-ms.translationtype: HT
+ms.openlocfilehash: bec0b9a7e34f1577f80a99f5380795c479c04bc8
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978230"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890466"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>A Windows fejlesztési környezet kialakítása Service Fabric Mesh-alkalmazások létrehozásához
 
@@ -73,27 +73,31 @@ Telepítse a Service Fabric Mesh-futtatókörnyezetet, az SDK-t és az eszközö
 
 ## <a name="build-a-cluster"></a>Fürt létrehozása
 
+> [!IMPORTANT]
+> Egy fürt létrehozása előtt a Dockernek futnia **kell**.
+> A Docker futásának ellenőrzéséhez nyisson meg egy terminálablakot, majd a `docker ps` parancs futtatásával ellenőrizze, hogy történik-e hiba. Ha a válasz nem jelez hibát, akkor a Docker fut, és készen áll a fürt létrehozására.
+
 Ha a Visual Studiót használja, kihagyhatja ezt a szakaszt. Ha még nem rendelkezik helyi fürttel, a Visual Studio létre fog hozni egyet.
 
 Service Fabric-alkalmazások létrehozásakor és futtatásakor a legjobb hibakeresési teljesítmény érdekében javasoljuk, hogy hozzon létre egy egycsomópontos helyi fejlesztői fürtöt. Ennek a fürtnek Service Fabric Mesh-projektek üzembe helyezésekor vagy hibakeresésekor mindig futnia kell.
 
-Egy fürt létrehozása előtt a Dockernek futnia **kell**. A Docker futásának ellenőrzéséhez nyisson meg egy terminálablakot, majd a `docker ps` parancs futtatásával ellenőrizze, hogy történik-e hiba. Ha a válasz nem jelez hibát, akkor a Docker fut, és készen áll a fürt létrehozására.
-
-A futtatókörnyezetet, az SDK-k és a Visual Studio-eszközök telepítése után hozzon létre egy fejlesztési fürtöt.
+Miután telepítette a futtatókörnyezet, az SDK-k, a Visual Studio tools, Docker, és Docker rendszert, hozzon létre egy fejlesztési fürtöt.
 
 1. Zárja be a PowerShell-ablakot.
 2. Nyisson meg egy új, emelt szintű PowerShell-ablakot rendszergazdaként. Ez a lépés a nemrégiben telepített Service Fabric-modulok betöltéséhez szükséges.
 3. Futtassa az alábbi PowerShell-parancsot egy fejlesztési fürt létrehozásához:
 
     ```powershell
-    . "C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1" -CreateOneNodeCluster -UseMachineName
+    . "C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1" -CreateMeshCluster -CreateOneNodeCluster
     ```
-
 4. A helyi fürtkezelő eszköz elindításához futtassa a következő PowerShell-parancsot:
 
     ```powershell
     . "C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager\ServiceFabricLocalClusterManager.exe"
     ```
+5. Ha a szolgáltatás cluster manager eszköz fut (megjelenik a tálcán), kattintson a jobb gombbal, és kattintson a **helyi fürt elindításához**.
+
+![1. ábra – a helyi fürt indítása](./media/service-fabric-mesh-howto-setup-developer-environment-sdk/start-local-cluster.png)
 
 Készen áll a Service Fabric Mesh-alkalmazások létrehozására!
 
@@ -109,5 +113,5 @@ Válaszok a [gyakori kérdésekre](service-fabric-mesh-faq.md).
 [download-runtime]: https://aka.ms/sfruntime
 [download-sdk]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK
 [download-sdkmesh]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-SDK-Mesh
-[download-tools]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.ServiceFabricMesh
+[download-tools]: https://aka.ms/sfmesh_vs2017tools
 [download-visual-studio]: https://www.visualstudio.com/downloads/

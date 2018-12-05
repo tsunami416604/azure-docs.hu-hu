@@ -1,152 +1,179 @@
 ---
 title: 'Rövid útmutató: Szövegszkript átalakítása, Java – Translator Text API'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban szöveget alakít át egy nyelven egy szkriptből egy másikba a Translator Text API és Java segítségével.
+description: Ebben a rövid útmutatóban fog elsajátíthatja átírás (átalakítás) szöveg egy parancsfájlból származó Java és a Translator Text REST API egy másik használatával. Ebben a példában egy japán nyelvű szövegből hozunk létre latin betűs átiratot.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
-ms.date: 06/21/2018
+ms.date: 12/03/2018
 ms.author: erhopf
-ms.openlocfilehash: 0a5cc66aec3244d08fa5552c673aec8c98cb2383
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 1679445f73cd6b90423e05f985b83b818e32997e
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419384"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888868"
 ---
-# <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-java"></a>Rövid útmutató: Szöveg átírása a Translator Text REST API használatával (Java)
+# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-java"></a>Rövid útmutató: Java használatával szöveg átbetűzés a Translator Text API használatával
 
-Ebben a rövid útmutatóban szöveget fog átalakítani egy nyelven egyik szkriptből egy másikba a Translator Text API segítségével.
+Ebben a rövid útmutatóban fog elsajátíthatja átírás (átalakítás) szöveg egy parancsfájlból származó Java és a Translator Text REST API egy másik használatával. A megadott példában egy japán nyelvű szövegből hozunk létre latin betűs átiratot.
+
+Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmaz egy Translator Text-erőforrást. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kód lefordításához és futtatásához a [JDK 7 vagy 8](https://aka.ms/azure-jdks) telepítése szükséges. Ha van kedvence, használhat Java IDE-t vagy egy szövegszerkesztőt is.
+* [JDK 7 vagy újabb verzió](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Gradle-t](https://gradle.org/install/)
+* Egy Azure-előfizetői azonosító a Translator Text szolgáltatáshoz
 
-A Translator Text API használatához szüksége van egy előfizetési kulcsra is. Lásd [a Translator Text API regisztrációját](translator-text-how-to-signup.md).
+## <a name="initialize-a-project-with-gradle"></a>Gradle-projekt inicializálása
 
-## <a name="transliterate-request"></a>Transliterate kérés
+Először hozzon létre egy könyvtárat a projekthez. A parancssor (vagy a Terminálszolgáltatások) a következő parancs futtatásával:
 
-A következő egy szöveget alakít át egy nyelven egy szkriptből egy másik szkriptbe a [Transliterate](./reference/v3-0-transliterate.md) metódussal.
+```console
+mkdir transliterate-sample
+cd transliterate-sample
+```
 
-1. Hozzon létre egy új Java-projektet a kedvenc kódszerkesztőjében.
-2. Adja hozzá az alábbi kódot.
-3. A `subscriptionKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
-4. Futtassa a programot.
+Ezután fog inicializálni a Gradle-projektet. Ezzel a paranccsal fájlokat hoz létre alapvető build gradle-t, a legfontosabb, a `build.gradle.kts`, amelyek futásidőben használatos létrehozni és konfigurálni az alkalmazást. Futtassa ezt a parancsot a munkakönyvtárban:
+
+```console
+gradle init --type basic
+```
+
+Amikor a rendszer kéri, válassza ki a **DSL**válassza **Kotlin**.
+
+## <a name="configure-the-build-file"></a>A build-fájl konfigurálása
+
+Keresse meg `build.gradle.kts` és nyissa meg a kedvenc IDE-szerkesztőben vagy szövegszerkesztőben. Ezután másolja a build konfigurációját:
+
+```
+plugins {
+    java
+    application
+}
+application {
+    mainClassName = "Transliterate"
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    compile("com.squareup.okhttp:okhttp:2.5.0")
+    compile("com.google.code.gson:gson:2.8.5")
+}
+```
+
+Jegyezze fel, hogy ez a minta a HTTP-kéréseket OkHttp és Gson kezelni, és JSON elemzése függőségekkel rendelkezik. További tudnivalók a felépítéskonfigurációkban váltogatni szeretné, ha [új buildek Gradle létrehozása](https://guides.gradle.org/creating-new-gradle-builds/).
+
+## <a name="create-a-java-file"></a>Hozzon létre egy Java-fájlt
+
+Hozzunk létre egy mappát a mintaalkalmazást. Futtassa a munkakönyvtárban:
+
+```console
+mkdir -p src/main/java
+```
+
+Ezt követően ebben a mappában hozzon létre egy fájlt `Transliterate.java`.
+
+## <a name="import-required-libraries"></a>Importálja a szükséges kódtárak
+
+Nyissa meg `Transliterate.java` , és adja hozzá ezeket kimutatások importálása:
 
 ```java
 import java.io.*;
 import java.net.*;
 import java.util.*;
-import javax.net.ssl.HttpsURLConnection;
+import com.google.gson.*;
+import com.squareup.okhttp.*;
+```
 
-/*
- * Gson: https://github.com/google/gson
- * Maven info:
- *     groupId: com.google.code.gson
- *     artifactId: gson
- *     version: 2.8.1
- */
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
-/* NOTE: To compile and run this code:
-1. Save this file as Transliterate.java.
-2. Run:
-    javac Transliterate.java -cp .;gson-2.8.1.jar -encoding UTF-8
-3. Run:
-    java -cp .;gson-2.8.1.jar Transliterate
-*/
+## <a name="define-variables"></a>Változók meghatározása
 
+Először hozzon létre egy nyilvános osztályt a projekthez lesz szüksége:
+
+```java
 public class Transliterate {
+  // All project code goes here...
+}
+```
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+Adja hozzá ezeket a sorokat a `Transliterate` osztály. Láthatja, hogy az a `api-version`, két további paraméterek hozzáfűzött lett a `url`. Ezek a paraméterek segítségével állítsa be a beviteli nyelv és a parancsfájlok átbetűzésű. Ebben a példában japán nyelvre van beállítva (`jpan`) és a Latin (`latn`). Ellenőrizze, hogy frissíti az előfizetési kulcs értékét.
 
-// Replace the subscriptionKey string value with your valid subscription key.
-    static String subscriptionKey = "ENTER KEY HERE";
+```java
+String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
+String url = "https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0&language=ja&fromScript=jpan&toScript=latn";
+```
 
-    static String host = "https://api.cognitive.microsofttranslator.com";
-    static String path = "/transliterate?api-version=3.0";
+## <a name="create-a-client-and-build-a-request"></a>Hozzon létre egy ügyfél és a egy kérelem létrehozása
 
-    // Transliterate text in Japanese from Japanese script (i.e. Hiragana/Katakana/Kanji) to Latin script.
-    static String params = "&language=ja&fromScript=jpan&toScript=latn";
+Adja hozzá a sort, hogy a `Transliterate` osztály példányt létrehozni a `OkHttpClient`:
 
-    // Transliterate "good afternoon".
-    static String text = "こんにちは";
+```java
+// Instantiates the OkHttpClient.
+OkHttpClient client = new OkHttpClient();
+```
 
-    public static class RequestBody {
-        String Text;
+Következő lépésként létrehozzuk a POST-kérés. Nyugodtan módosítsa átbetűzésű szövegét.
 
-        public RequestBody(String text) {
-            this.Text = text;
-        }
-    }
+```java
+// This function performs a POST request.
+public String Post() throws IOException {
+    MediaType mediaType = MediaType.parse("application/json");
+    RequestBody body = RequestBody.create(mediaType,
+            "[{\n\t\"Text\": \"こんにちは\"\n}]");
+    Request request = new Request.Builder()
+            .url(url).post(body)
+            .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
+            .addHeader("Content-type", "application/json").build();
+    Response response = client.newCall(request).execute();
+    return response.body().string();
+}
+```
 
-    public static String Post (URL url, String content) throws Exception {
-        HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type", "application/json");
-        connection.setRequestProperty("Content-Length", content.length() + "");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-        connection.setRequestProperty("X-ClientTraceId", java.util.UUID.randomUUID().toString());
-        connection.setDoOutput(true);
+## <a name="create-a-function-to-parse-the-response"></a>A válasz elemzéséhez függvény létrehozása
 
-        DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
-        byte[] encoded_content = content.getBytes("UTF-8");
-        wr.write(encoded_content, 0, encoded_content.length);
-        wr.flush();
-        wr.close();
+Ez a függvény egyszerű elemzi, és a JSON-válasz a Translator Text szolgáltatásból prettifies.
 
-        StringBuilder response = new StringBuilder ();
-        BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
-        String line;
-        while ((line = in.readLine()) != null) {
-            response.append(line);
-        }
-        in.close();
+```java
+// This function prettifies the json response.
+public static String prettify(String json_text) {
+    JsonParser parser = new JsonParser();
+    JsonElement json = parser.parse(json_text);
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    return gson.toJson(json);
+}
+```
 
-        return response.toString();
-    }
+## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
 
-    public static String Transliterate () throws Exception {
-        URL url = new URL (host + path + params);
+Az utolsó lépés, hogy a kérés és válasz érkezik. Ezek a sorok hozzáadása a projekthez:
 
-        List<RequestBody> objList = new ArrayList<RequestBody>();
-        objList.add(new RequestBody(text));
-        String content = new Gson().toJson(objList);
-
-        return Post(url, content);
-    }
-
-    public static String prettify(String json_text) {
-        JsonParser parser = new JsonParser();
-        JsonElement json = parser.parse(json_text);
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(json);
-    }
-
-    public static void main(String[] args) {
-        try {
-            String response = Transliterate ();
-            System.out.println (prettify (response));
-        }
-        catch (Exception e) {
-            System.out.println (e);
-        }
+```java
+public static void main(String[] args) {
+    try {
+        Transliterate transliterateRequest = new Transliterate();
+        String response = transliterateRequest.Post();
+        System.out.println(prettify(response));
+    } catch (Exception e) {
+        System.out.println(e);
     }
 }
 ```
 
-## <a name="transliterate-response"></a>Transliterate válasz
+## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
 
-A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
+Ennyi az egész, készen áll a mintaalkalmazás futtatásához. A parancssor (vagy a terminál-munkamenetben) keresse meg a munkakönyvtárban gyökérkönyvtárában, és futtassa:
+
+```console
+gradle build
+```
+
+## <a name="sample-response"></a>Mintaválasz
 
 ```json
 [
@@ -163,3 +190,11 @@ A GitHubon megismerheti a rövid útmutató és egyebek mintakódját, beleértv
 
 > [!div class="nextstepaction"]
 > [A Java-példák megismerése a GitHubon](https://aka.ms/TranslatorGitHub?type=&language=java)
+
+## <a name="see-also"></a>Lásd még
+
+* [Szöveg lefordítása](quickstart-java-translate.md)
+* [A beviteli nyelv azonosítása](quickstart-java-detect.md)
+* [Alternatív fordítások beolvasása](quickstart-java-dictionary.md)
+* [A támogatott nyelvek listájának beolvasása](quickstart-java-languages.md)
+* [Bemenet mondatai hosszának meghatározása](quickstart-java-sentences.md)

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 645a32f56ee2bdc4132377f2d56f61b963104e42
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 4881f992e5362efc7e4d7ac23898684966a066e0
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334890"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890993"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>Oktatóanyag: Több felhőre kiterjedő méretezési megoldások létrehozása az Azure-ral
 
@@ -60,7 +60,7 @@ Ebben az oktatóanyagban egy mintául szolgáló környezet fog létrehozni:
 
 -   Hozzon létre egy webalkalmazást a bérlő az előfizetésen belül. Jegyezze fel az új webes alkalmazás URL-CÍMÉT a későbbi használatra.
 
--   A bérlői előfizetéshez tartozó VSTS virtuális gépet üzembe helyezni.
+-   A bérlői előfizetéshez tartozó Azure folyamatok virtuális gépet üzembe helyezni.
 
 -   A Windows Server 2016 virtuális gép a .NET 3.5 szükséges. Ez a virtuális gép a bérlő előfizetés az Azure Stacken, a saját build ügynök lesz felépítve.
 
@@ -99,9 +99,11 @@ Webes alkalmazás üzembe helyezése az Azure és az Azure Stack, hibrid folyama
 > [!Note]  
 > Az Azure Stack megfelelő képekkel hírcsatorna-futtassa (Windows Server és SQL) és az App Service-környezet szükség. Tekintse át az App Service – dokumentáció "[az App Service-ben az Azure Stack használatának megkezdése előtt](../azure-stack-app-service-before-you-get-started.md)" szakaszban az Azure Stack-operátorokról.
 
-### <a name="add-code-to-visual-studio-team-services-project"></a>Adja hozzá a kódot, a Visual Studio Team Services, Project
+### <a name="add-code-to-azure-repos"></a>Adja hozzá a kódot az Azure-Adattárakkal
 
-1. Jelentkezzen be a Visual Studio Team Services (VSTS) egy olyan fiókkal, amely a projekt létrehozásának jogosultságokkal rendelkezik a vsts-en.
+Azure-beli adattárak
+
+1. Jelentkezzen be Azure-kódtárak egy olyan fiókkal, amely az Azure-kódtárak a projekt létrehozása jogosultságokkal rendelkezik.
 
     CI/CD hibrid alkalmazás kódja és az infrastruktúra kódjának alkalmazhatja. Használat [Azure Resource Manager-sablonok](https://azure.microsoft.com/resources/templates/) mindkét magán- és üzemeltetett felhőalapú fejlesztéshez.
 
@@ -117,13 +119,13 @@ Webes alkalmazás üzembe helyezése az Azure és az Azure Stack, hibrid folyama
 
     ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image3.png)
 
-2.  Ellenőrizze a kód a vsts-ben Team Explorer használatával.
+2.  Ellenőrizze, hogy az Azure tárházra Team Explorer a kódot.
 
-3.  Győződjön meg arról, hogy az alkalmazás kódja ellenőrizte a Visual Studio Team Services-be.
+3.  Győződjön meg arról, hogy az alkalmazáskódban az Azure-Adattárakkal ellenőrizve.
 
 ## <a name="create-the-build-definition"></a>A build definíció létrehozása
 
-1. Jelentkezzen be a VSTS-buildelési definíciókat létrehozására megerősítéséhez.
+1. Jelentkezzen be Azure-folyamatok létrehozására megerősítéséhez definíciókat hozhat létre.
 
 2. Adjon hozzá **- r win10-x64** kódot. Erre azért szükség, aktiválhat egy önálló üzembe helyezés a .net Core.
 
@@ -133,11 +135,11 @@ Webes alkalmazás üzembe helyezése az Azure és az Azure Stack, hibrid folyama
 
 ## <a name="use-an-azure-hosted-agent"></a>Azure-beli használatra üzemeltetett ügynök
 
-Használja a VSTS-ben üzemeltetett ügynök kényelmes beállítás készíthet és helyezhet üzembe webalkalmazásokat. A Microsoft Azure-folyamatos, megszakítás nélküli fejlesztési, tesztelési és üzembe helyezés engedélyezése automatikusan végzi a karbantartása és frissítései.
+Egy Azure-folyamatokban üzemeltetett ügynök használata kényelmes beállítás készíthet és helyezhet üzembe webalkalmazásokat. A Microsoft Azure-folyamatos, megszakítás nélküli fejlesztési, tesztelési és üzembe helyezés engedélyezése automatikusan végzi a karbantartása és frissítései.
 
 ### <a name="manage-and-configure-the-cd-process"></a>Kezelheti és konfigurálhatja a CD-folyamat
 
-A Visual Studio Team Services és a Team Foundation Server (TFS) adja meg hatékonyan konfigurálható és kezelhető folyamat számára több környezetekben, például fejlesztési, előkészítési, QA és éles környezetek; amely jóváhagyások adott szintjén is.
+Az Azure folyamatok és Azure DevOps-kiszolgáló biztosít hatékonyan konfigurálható és kezelhető folyamat kiadásokban több környezethez például fejlesztési, előkészítési, QA és éles környezetek; amely jóváhagyások adott szintjén is.
 
 ## <a name="create-release-definition"></a>Kiadási definíció létrehozása
 
@@ -228,11 +230,11 @@ A Visual Studio Team Services és a Team Foundation Server (TFS) adja meg haték
 21. Mentse az összes módosítást.
 
 > [!Note]  
-> A feladatok egyes beállítások előfordulhat, hogy automatikusan meghatározott [környezeti változók](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables) kiadási definíció a sablon létrehozásakor. Ezek a beállítások nem módosíthatók a tevékenység beállításait; Ehelyett a szülő környezet típusú elem szerkesztése ezek a beállítások ki kell választani
+> A feladatok egyes beállítások előfordulhat, hogy automatikusan meghatározott [környezeti változók](https://docs.microsoft.com/azure/devops/pipelines/release/variables?view=vsts&tabs=batch#custom-variables) kiadási definíció a sablon létrehozásakor. Ezek a beállítások nem módosíthatók a tevékenység beállításait; Ehelyett a szülő környezet típusú elem szerkesztése ezek a beállítások ki kell választani
 
 ## <a name="publish-to-azure-stack-via-visual-studio"></a>Az Azure Stack használatával a Visual Studio közzététele
 
-Végpontok létrehozása a Visual Studio online-hoz (VSTO) build helyezzen üzembe Azure Service-alkalmazások az Azure Stackhez. Vsts-ben a fordító-ügynökhöz, amely csatlakoztatja az Azure Stackhez csatlakozik.
+Végpontok létrehozása a Visual Studio online-hoz (VSTO) build helyezzen üzembe Azure Service-alkalmazások az Azure Stackhez. Az Azure folyamatok csatlakozik a fordító-ügynökhöz, amely csatlakoztatja az Azure Stackhez.
 
 1.  Jelentkezzen be a VSTO, és nyissa meg az alkalmazás beállítások oldalát.
 
@@ -254,18 +256,18 @@ Végpontok létrehozása a Visual Studio online-hoz (VSTO) build helyezzen üzem
 
 10. Válassza ki **módosítások mentése**.
 
-Most, hogy létezik a végpont adatait, a vsts-ben az Azure Stack kapcsolat készen áll a használatra. A fordító-ügynökhöz az Azure Stackben utasításokat lekérdezi a VSTS-ből, és ezután az ügynök közvetíti a kommunikációt az Azure Stack-végpontjának információit.
+Most, hogy létezik a végpont adatait, az Azure Stack-kapcsolat Azure folyamatok készen áll a használatra. A fordító-ügynökhöz az Azure Stackben utasításokat olvas be az Azure-folyamatokat, és ezután az ügynök közvetíti a kommunikációt az Azure Stack-végpontjának információit.
 
 ## <a name="develop-the-application-build"></a>Fejlesztés a sestavení aplikace
 
 > [!Note]  
 > Az Azure Stack megfelelő képekkel hírcsatorna-futtassa (Windows Server és SQL) és az App Service-környezet szükség. Tekintse át az App Service – dokumentáció "[az App Service-ben az Azure Stack használatának megkezdése előtt](../azure-stack-app-service-before-you-get-started.md)" szakaszban az Azure Stack-operátorokról.
 
-Használat [Azure Resource Manager-sablonokat, mint webes](https://azure.microsoft.com/resources/templates/) alkalmazáskód mindkét felhőben való üzembe helyezése a VSTS-ből.
+Használat [Azure Resource Manager-sablonokat, mint webes](https://azure.microsoft.com/resources/templates/) mindkét felhőben való üzembe helyezéséhez az Azure-Adattárakkal kódját.
 
-### <a name="add-code-to-a-vsts-project"></a>Adja hozzá a kódot egy VSTS-projektbe
+### <a name="add-code-to-a-azure-repos-project"></a>Adja hozzá a kódot egy Azure-Adattárakkal projekthez
 
-1.  Jelentkezzen be a VSTS-fiókkal rendelkező projekt létrehozása az Azure Stacken. A következő képernyőfelvétel bemutatja, hogyan kapcsolódjon a HybridCICD.
+1.  Jelentkezzen be Azure-kódtárak egy olyan fiókkal rendelkező projekt létrehozása az Azure Stacken. A következő képernyőfelvétel bemutatja, hogyan kapcsolódjon a HybridCICD.
 
 2.  **A tárház klónozása** létrehozásával és az alapértelmezett webes alkalmazás megnyitásával.
 
@@ -273,13 +275,13 @@ Használat [Azure Resource Manager-sablonokat, mint webes](https://azure.microso
 
 1.  Szerkessze a **WebApplication.csproj** fájlt: válassza ki **Runtimeidentifier** majd adja hozzá a win10-x64. További információkért lásd: [önálló telepítés](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) dokumentációját.
 
-2.  Team Explorer segítségével ellenőrizze a kódot a VSTS-be.
+2.  Ellenőrizze a kódot az Azure-kódtárak a Team Explorer használatával.
 
-3.  Győződjön meg arról, hogy az alkalmazás kódja Visual Studio Team Services-be lett-e érvényesítve.
+3.  Győződjön meg arról, hogy az alkalmazáskódban az Azure-Adattárakkal lett érvényesítve.
 
 ### <a name="create-the-build-definition"></a>A build definíció létrehozása
 
-1.  Jelentkezzen be a VSTS-fiókkal, amely a builddefiníció hozhat létre.
+1.  Jelentkezzen be egy olyan fiókkal, amely a builddefiníció hozhat létre Azure folyamatok.
 
 2.  Keresse meg a **webes alkalmazás készítése** a projekt lapját.
 
@@ -289,17 +291,17 @@ Használat [Azure Resource Manager-sablonokat, mint webes](https://azure.microso
 
 #### <a name="use-an-azure-hosted-build-agent"></a>Azure-beli használatra üzemeltetett fordító-ügynökhöz
 
-A vsts-ben üzemeltetett build ügynök használatával lehetőség egy kényelmes és webes alkalmazások üzembe. Ügynök karbantartása és frissítései automatikusan végzi a Microsoft Azure, amely lehetővé teszi a folyamatos és zavartalan fejlesztési ciklus.
+Az Azure-folyamatokban üzemeltetett build ügynök használatával beállítás kényelmes és webes alkalmazások üzembe. Ügynök karbantartása és frissítései automatikusan végzi a Microsoft Azure, amely lehetővé teszi a folyamatos és zavartalan fejlesztési ciklus.
 
 ### <a name="configure-the-continuous-deployment-cd-process"></a>Konfigurálja a folyamatos készregyártás (CD) folyamatot
 
-Visual Studio Team Services (VSTS) és a Team Foundation Server (TFS) adja meg hatékonyan konfigurálható és kezelhető folyamat számára több környezetekben, például fejlesztési, előkészítési, minőségbiztosítási (Tesztelés), és éles környezetben. Ez a folyamat tartalmazhat jóváhagyásokat igénylő az alkalmazás életciklusát az adott szakaszában.
+Az Azure folyamatok és az Azure DevOps-kiszolgáló hatékonyan konfigurálható és kezelhető folyamat több, például fejlesztési, átmeneti, minőségbiztosítási (Tesztelés) és éles környezetek számára adja meg. Ez a folyamat tartalmazhat jóváhagyásokat igénylő az alkalmazás életciklusát az adott szakaszában.
 
 #### <a name="create-release-definition"></a>Kiadási definíció létrehozása
 
 Kiadási definíció létrehozása az utolsó lépés az alkalmazás létrehozása folyamatban. A kiadási definíció kiadás létrehozása és üzembe helyezése a build szolgál.
 
-1.  Jelentkezzen be a vsts-ben, és navigáljon a **készítése és kiadása** a projekthez.
+1.  Jelentkezzen be Azure-folyamatokat, és navigáljon a **készítése és kiadása** a projekthez.
 
 2.  Az a **kiadásokban** lapon jelölje be **[+]** majd válasszon **kiadási definíció létrehozása**.
 
@@ -346,7 +348,7 @@ Kiadási definíció létrehozása az utolsó lépés az alkalmazás létrehozá
 23. Mentse az összes módosítást.
 
 > [!Note]  
-> A feladatkiadási tevékenységeket egyes beállítások automatikusan vannak meghatározva [környezeti változók](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables) kiadási definíció a sablon létrehozásakor. Ezeket a beállításokat nem lehet módosítani a tevékenység beállításait, de a szülőelemektől környezet módosíthatók.
+> A feladatkiadási tevékenységeket egyes beállítások automatikusan vannak meghatározva [környezeti változók](https://docs.microsoft.com/azure/devops/pipelines/release/variables?view=vsts&tabs=batch#custom-variables) kiadási definíció a sablon létrehozásakor. Ezeket a beállításokat nem lehet módosítani a tevékenység beállításait, de a szülőelemektől környezet módosíthatók.
 
 ## <a name="create-a-release"></a>Hozzon létre egy kiadás
 

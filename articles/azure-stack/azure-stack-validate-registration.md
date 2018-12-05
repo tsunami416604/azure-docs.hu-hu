@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/08/2018
+ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 51753a5324bbbcbf4e951628a42dd3bf425354af
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 209793545078a47f91e8fe34c3f85ffb671a2bdb
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957582"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888171"
 ---
 # <a name="validate-azure-registration"></a>Azure-regisztráció ellenőrzése 
 Az Azure Stack készültségi ellenőrző eszköz (AzsReadinessChecker) használatával ellenőrizze, hogy az Azure Stack használatra készen áll-e az Azure-előfizetésében. Az Azure Stack központi telepítésének megkezdése előtt a regisztráció érvényesítése. A készenléti ellenőrző ellenőrzi:
@@ -46,7 +46,7 @@ A következő előfeltételek vonatkoznak a helyen kell lennie.
 **Az Azure Active Directory-környezetet:**
  - Azonosítsa a felhasználónevet és jelszót, amely használhatja az Azure Stack Azure-előfizetés tulajdonosa.  
  - Azonosítsa az előfizetés-azonosító az Azure-előfizetés fogja használni. 
- - Azonosítsa az AzureEnvironment fog használni: *AzureCloud*, *AzureGermanCloud*, vagy *AzureChinaCloud*.
+ - Azonosítsa az AzureEnvironment fogja használni. A környezet neve paraméter támogatott értékei a következők: AzureCloud, AzureChinaCloud vagy AzureUSGovernment attól függően, hogy mely Azure-előfizetést használ.
 
 ## <a name="validate-azure-registration"></a>Azure-regisztráció ellenőrzése
 1. A számítógépen, amely megfelel az előfeltételeknek nyisson meg egy rendszergazdai PowerShell-parancssort, és futtassa a következő parancsot a AzsReadinessChecker telepítéséhez.
@@ -59,21 +59,20 @@ A következő előfeltételek vonatkoznak a helyen kell lennie.
      > `$subscriptionID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"` 
 
 4. A PowerShell parancssorában futtassa a következőt indítsa el az előfizetés érvényesítése 
-   - Adja meg az értéket, AzureEnvironment *AzureCloud*, *AzureGermanCloud*, vagy *AzureChinaCloud*.  
+   - Adja meg az értéket AzureEnvironment. A környezet neve paraméter támogatott értékei a következők: AzureCloud, AzureChinaCloud vagy AzureUSGovernment attól függően, hogy mely Azure-előfizetést használ.  
    - Adja meg az Azure Active Directory-rendszergazda és az Azure Active Directory-bérlő nevét. 
 
-   > `Invoke-AzsRegistrationValidation -RegistrationAccount $registrationCredential -AzureEnvironment AzureCloud -RegistrationSubscriptionID $subscriptionID`
+   > `Invoke-AzsRegistrationValidation -RegistrationAccount $registrationCredential -AzureEnvironment <environment name> -RegistrationSubscriptionID $subscriptionID`
 
 5. Az eszköz futtatása után tekintse át a kimenetet. Győződjön meg arról, a állapota OK: a bejelentkezési és a regisztrációs követelményeket is. Sikeres ellenőrzés jelenik meg, a következőhöz hasonló:  
-````PowerShell
-Invoke-AzsRegistrationValidation v1.1809.1005.1 started.
-Checking Registration Requirements: OK
 
-Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
-Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
-Invoke-AzsRegistrationValidation Completed
-````
-
+    ```PowerShell
+    Invoke-AzsRegistrationValidation v1.1809.1005.1 started.
+    Checking Registration Requirements: OK
+    Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+    Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+    Invoke-AzsRegistrationValidation Completed
+    ```
 
 ## <a name="report-and-log-file"></a>A jelentés és-naplófájl
 Minden egyes alkalommal érvényesítési fut, az eredmények naplózza **AzsReadinessChecker.log** és **AzsReadinessCheckerReport.json**. Ezek a fájlok helyét jeleníti meg az ellenőrzés eredményét a PowerShellben. 
@@ -90,7 +89,7 @@ Ha egy ellenőrzés nem sikerül, a hibával kapcsolatos részleteket a PowerShe
 Az alábbi példák gyakori ellenőrzési hibákat ad útmutatást.
 
 ### <a name="user-must-be-an-owner-of-the-subscription"></a>Felhasználói előfizetés tulajdonosának kell lennie.   
-````PowerShell
+```PowerShell
 Invoke-AzsRegistrationValidation v1.1809.1005.1 started.
 Checking Registration Requirements: Fail 
 Error Details for registration account admin@contoso.onmicrosoft.com:
@@ -100,14 +99,14 @@ Additional help URL https://aka.ms/AzsRemediateRegistration
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsRegistrationValidation Completed
-````
+```
 **OK** – a fiók nem áll az Azure-előfizetés rendszergazdája.   
 
 **Feloldási** -fiókkal, amely rendszergazda az Azure-előfizetés, amely az Azure Stack üzemelő példányához. a használat után kell fizetnie.
 
 
 ### <a name="expired-or-temporary-password"></a>Lejárt vagy ideiglenes jelszó 
-````PowerShell
+```PowerShell
 Invoke-AzsRegistrationValidation v1.1809.1005.1 started.
 Checking Registration Requirements: Fail 
 Error Details for registration account admin@contoso.onmicrosoft.com:
@@ -120,7 +119,7 @@ Timestamp: 2018-10-22 11:16:56Z: The remote server returned an error: (401) Unau
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsRegistrationValidation Completed
-````
+```
 **OK** – a fiók nem jelentkezhet be, mert a jelszó vagy lejárt, vagy ideiglenes.     
 
 **Feloldási** –, a PowerShellben futtassa és kövesse az utasításokat a jelszó alaphelyzetbe állítása. 
@@ -130,17 +129,17 @@ Azt is megteheti, jelentkezzen be https://portal.azure.com , a fiók és a felha
 
 
 ### <a name="unknown-user-type"></a>Ismeretlen felhasználó típusa  
-````PowerShell
+```PowerShell
 Invoke-AzsRegistrationValidation v1.1809.1005.1 started.
 Checking Registration Requirements: Fail 
 Error Details for registration account admin@contoso.onmicrosoft.com:
-Checking Registration failed with: Retrieving TenantId for subscription 3f961d1c-d1fb-40c3-99ba-44524b56df2d using account admin@contoso.onmicrosoft.com failed with unknown_user_type: Unknown Us
+Checking Registration failed with: Retrieving TenantId for subscription <subscription ID> using <account> failed with unknown_user_type: Unknown Us
 er Type
 
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsRegistrationValidation Completed
-````
+```
 **OK** – a fiók nem tud bejelentkezni a megadott Azure Active Directory-környezetet. Ebben a példában *AzureChinaCloud* a következőként van megadva a *AzureEnvironment*.  
 
 **Feloldási** -erősítse meg, hogy a fiók a megadott Azure-környezet esetében érvényes. A PowerShellben futtassa a következő ellenőrizni a fiók érvényességét, egy adott környezetben.     

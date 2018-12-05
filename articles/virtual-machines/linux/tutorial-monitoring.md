@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f8310885ddf7e2229054f36b8fda92b92c1ab01e
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: HT
+ms.openlocfilehash: c271efceacab7f310b8e08a28d101f653c73a186
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406500"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868548"
 ---
 # <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Oktatóanyag – Linux rendszerű virtuális gépek monitorozása és frissítése az Azure-ban
 
@@ -208,7 +208,7 @@ A frissítések telepítéséhez ütemezzen egy olyan telepítést, amely megfel
 * **Frissítési besorolás** – Válassza ki azokat a szoftvertípusokat, amelyeket a frissítéstelepítés belefoglal a telepítésbe. A választható besorolási típusok a következők:
   * Kritikus vagy biztonsági frissítések
   * Egyéb frissítések
-* **Kihagyandó frissítések** – Megadhatja, hogy a frissítések telepítése során a rendszer mely csomagneveket hagyja ki. A csomagnevek támogatják a helyettesítő karakterek használatát (például \*kernel\*).
+* **Kihagyandó frissítések** – Megadhatja, hogy a frissítések telepítése során a rendszer mely csomagneveket hagyja ki. Csomagnevek támogatják a helyettesítő karakterek (például \*kernel\*).
 
   ![A frissítés ütemezés beállításai képernyője](./media/tutorial-monitoring/manage-updates-exclude-linux.png)
 

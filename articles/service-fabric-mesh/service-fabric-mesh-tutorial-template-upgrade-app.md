@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c82e0cd5bd6a15ff33f51b4e88f68c13080f595d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: f617be79cb61932f79728feef76f056ce72ae0ab
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967965"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52891129"
 ---
 # <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>Oktatóanyag: A Service Fabric Meshben futó Service Fabric-alkalmazások frissítése
 
-Ez az oktatóanyag egy sorozat harmadik része. Elsajátíthatja, hogyan frissíthet [korábban a Service Fabric Meshben üzembe helyezett](service-fabric-mesh-tutorial-template-deploy-app.md) Service Fabric-alkalmazásokat a lefoglalt CPU-erőforrások mennyiségének növelésével.  Amikor elkészült, rendelkezni fog egy webes előtér-szolgáltatással, amely nagyobb mennyiségű CPU-erőforrással üzemel.
+Ez az oktatóanyag egy sorozat harmadik része. Elsajátíthatja, hogyan frissíthet [korábban a Service Fabric Meshben üzembe helyezett](service-fabric-mesh-tutorial-template-deploy-app.md) Service Fabric-alkalmazásokat a lefoglalt CPU-erőforrások mennyiségének növelésével.  Ha elkészült, rendelkezni fog egy webes előtér-szolgáltatás fut, a magasabb CPU-erőforrásokkal.
 
 A sorozat harmadik részében az alábbiakkal fog megismerkedni:
 
@@ -47,7 +47,7 @@ Az oktatóanyag elkezdése előtt:
 
 * Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Nyissa meg az [Azure Cloud Shellt](service-fabric-mesh-howto-setup-cli.md), vagy [telepítse helyileg az Azure CLI-t és a Service Fabric Mesh CLI-t](service-fabric-mesh-howto-setup-cli.md#install-the-service-fabric-mesh-cli-locally).
+* Nyissa meg az [Azure Cloud Shellt](service-fabric-mesh-howto-setup-cli.md), vagy [telepítse helyileg az Azure CLI-t és a Service Fabric Mesh CLI-t](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli).
 
 ## <a name="upgrade-application-configurations"></a>Alkalmazáskonfigurációk frissítése
 
@@ -59,7 +59,7 @@ Ez az oktatóanyag az [előzőleg telepített](service-fabric-mesh-tutorial-temp
 az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-name todolistapp
 ```
 
-Az alkalmazás erőforrásának üzembehelyezési sablonjában mindegyik szolgáltatás rendelkezik egy *cpu* tulajdonsággal, amellyel megadhatja a használni kívánt CPU-erőforrásokat. Egy alkalmazás több szolgáltatásból is állhat, és minden szolgáltatás egyedi *cpu* beállítással rendelkezik, amelyeket a rendszer együtt helyez üzembe és kezel. Annak érdekében, hogy növelhesse a webes előtér-szolgáltatás CPU-erőforrásainak mennyiségét, módosítsa a *cpue* értékét a központi telepítési sablonban vagy a paraméterek fájlban.  Ezt követően frissítse az alkalmazást.
+Az alkalmazás erőforrásának üzembehelyezési sablonjában mindegyik szolgáltatás rendelkezik egy *cpu* tulajdonsággal, amellyel megadhatja a használni kívánt CPU-erőforrásokat. Egy alkalmazás több szolgáltatásból is állhat, és minden szolgáltatás egyedi *cpu* beállítással rendelkezik, amelyeket a rendszer együtt helyez üzembe és kezel. Annak érdekében, hogy a webes kezelőfelületi szolgáltatás CPU-erőforrások növelése érdekében módosítsa a *cpue* a központi telepítési sablon és paraméterek fájlban.  Ezt követően frissítse az alkalmazást.
 
 ### <a name="modify-the-deployment-template-parameters"></a>Az üzembehelyezési sablon paramétereinek módosítása
 

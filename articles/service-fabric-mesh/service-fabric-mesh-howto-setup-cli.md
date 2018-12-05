@@ -5,38 +5,87 @@ services: service-fabric-mesh
 keywords: ''
 author: tylermsft
 ms.author: twhitney
-ms.date: 07/26/2018
+ms.date: 11/28/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: c30f4b9de279f8c02b7f6bc7fa7d9765972899b1
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
-ms.translationtype: HT
+ms.openlocfilehash: dc37ff85deccdd5a1f8703033d300d878f9a7e4c
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50977431"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887984"
 ---
-# <a name="set-up-the-service-fabric-mesh-cli"></a>A Service Fabric Mesh parancssori felületének beállítása
-A Service Fabric Mesh parancssori felülete az erőforrások a Service Fabric Meshben való üzembe helyezéséhez és felügyeletéhez szükséges. 
+# <a name="set-up-service-fabric-mesh-cli"></a>A Service Fabric Mesh parancssori felületének beállítása
+Service Fabric-háló parancssori felület (CLI) telepítése és a helyileg és az Azure Service Fabric-háló-erőforrások kezelése szükséges. 
+
+Használható CLI három típusa van, és azokat az alábbi táblázat foglalja össze. 
+
+| CLI-modul | Célkörnyezet |  Leírás | 
+|---|---|---|
+| az háló | Az Azure Service Fabric háló | Az elsődleges CLI, amely lehetővé teszi, hogy az alkalmazások üzembe helyezése és kezelése az Azure Service Fabric-háló környezetre leselkedő erőforrások. 
+| sfctl | Helyi fürt | Service Fabric parancssori felület, amely lehetővé teszi a központi telepítési és tesztelése a Service Fabric-erőforrások helyi fürtök ellen.  
+| Maven parancssori felület | Helyi fürt és az Azure Service Fabric-háló | "Az háló" és "sfctl" burkolója, amely lehetővé teszi a Java fejlesztőknek, hogy egy ismerős parancssori élmény a helyi és az Azure fejlesztési környezetet biztosít.  
 
 Az előzetes verzióban az Azure Service Fabric Mesh parancssori felülete az Azure CLI bővítményeként van megírva. Telepítheti az Azure Cloud Shellbe vagy az Azure CLI helyileg telepített példányába. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-## <a name="install-the-service-fabric-mesh-cli-locally"></a>A Service Fabric Mesh parancssori felületének helyi telepítése
-Ha a parancssori felület helyi telepítését és használatát választja, az Azure CLI 2.0.43-as vagy újabb verzióját kell telepítenie. A verzió azonosításához futtassa a következőt: `az --version`. A parancssori felület (CLI) telepítéséhez vagy legújabb verzióra történő frissítéséhez lásd: [Az Azure CLI telepítése][azure-cli-install].
+## <a name="install-the-azure-service-fabric-mesh-cli"></a>Az Azure Service Fabric háló parancssori felület telepítése
+1. Telepítenie kell az Azure CLI 2.0.43 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. A parancssori felület (CLI) telepítéséhez vagy legújabb verzióra történő frissítéséhez lásd: [Az Azure CLI telepítése][azure-cli-install].
 
-Az Azure Service Fabric Mesh parancssori felület bővítménymodulját az alábbi paranccsal telepítheti. 
+2. Az Azure Service Fabric háló parancssori bővítmény modul a következő paranccsal telepítse. 
 
-```azurecli-interactive
-az extension add --name mesh
+    ```azurecli-interactive
+    az extension add --name mesh
+    ```
+
+3. A következő parancsot meglévő Azure Service Fabric háló parancssori modulok frissítésére.
+
+    ```azurecli-interactive
+    az extension update --name mesh
+    ```
+
+## <a name="install-the-service-fabric-cli-sfctl"></a>Telepítse a Service Fabric parancssori felület (sfctl) 
+
+Kövesse az utasításokat [Service Fabric parancssori felület beállítása](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli). A **sfctl** modul szemben a Service Fabric-fürtök a helyi gépen az erőforrás-modellen alapuló alkalmazások telepítéséhez is használható. 
+
+## <a name="install-the-maven-cli"></a>A Maven parancssori felület telepítése 
+
+A Maven parancssori Felületet, a következő kell telepítve lennie a gépen használatához: 
+
+* [Java](https://www.azul.com/downloads/zulu/)
+* [Maven 3](http://maven.apache.org/download.cgi)
+* [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+* Azure háló CLI (az háló) – az Azure Service Fabric-háló cél 
+* SFCTL (sfctl) –, amelyekre a helyi fürt 
+
+A Maven parancssori felület a Service fabric továbbra is előzetes verzióban van. 
+
+A Maven-Java-alkalmazást a Maven beépülő modul használatához adja meg a következő kódrészletet a pom.xml fájlba:
+
+```XML
+<project>
+  ...
+  <build>
+    ...
+    <plugins>
+      ...
+      <plugin>
+        <groupId>com.microsoft.azure</groupId>
+          <artifactId>azure-sf-maven-plugin</artifactId>
+          <version>0.1.0</version>
+          <configuration>
+            ...
+          </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
 ```
 
-Egy létező Azure Service Fabric Mesh parancssori felületi modult az alábbi paranccsal frissíthet.
+Olvassa el a [Maven CLI-referenciáját](service-fabric-mesh-reference-maven.md) című szakaszt a részletes használati adatok ismertetése.
 
-```azurecli-interactive
-az extension update --name mesh
-```
 ## <a name="next-steps"></a>További lépések
 
 A [Windows fejlesztési környezetet](service-fabric-mesh-howto-setup-developer-environment-sdk.md) is beállíthatja.

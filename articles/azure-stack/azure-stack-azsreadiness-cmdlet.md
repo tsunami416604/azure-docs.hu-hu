@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/26/2018
+ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 60e9a790a9b74bce7ccbdd58b320ad969c0932f3
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 03fd91b8412c75a994f55f589179f718189e67a7
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079282"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52891163"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Start-AzsReadinessChecker parancsmag-referencia
 
@@ -228,7 +228,8 @@ Ebben a példában egy kivonattáblát elérési utak és a jelszavakat az egyes
 **Példa: Azure-identitás ellenőrzése**
 ```PowerShell
 $serviceAdminCredential = Get-Credential -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant e.g. serviceadmin@contoso.onmicrosoft.com"
-Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment AzureCloud -AzureDirectoryTenantName azurestack.contoso.com
+# Supported values for the <environment name> parameter are AzureCloud, AzureChinaCloud or AzureUSGovernment depending which Azure subscription you are using.
+Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment "<environment name>" -AzureDirectoryTenantName azurestack.contoso.com
 ```
 
 Ebben a példában a szolgáltatás-rendszergazdai fiók hitelesítő adatait kéri a biztonságos, és a Start-AzsReadinessChecker ellenőrzi, hogy az Azure-fiók és az Azure Active Directory bérlői könyvtár nevét a "azurestack.contoso.com" AAD telepítési érvényesek
@@ -245,9 +246,10 @@ Ebben a példában a szolgáltatás-rendszergazdai fiók hitelesítő adatait k�
 
 **Példa: Azure-regisztráció ellenőrzése**
 ```PowerShell
-$registrationCredential = Get-Credential -Message "Enter Credentials for Subscription Owner"e.g. subscriptionowner@contoso.onmicrosoft.com"
-$subscriptionID = "f7c26209-cd2d-4625-86ba-724ebeece794"
-Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -RegistrationSubscriptionID $subscriptionID -AzureEnvironment AzureCloud
+$registrationCredential = Get-Credential -Message "Enter Credentials for Subscription Owner e.g. subscriptionowner@contoso.onmicrosoft.com"
+$subscriptionID = "<subscription ID"
+# Supported values for the <environment name> parameter are AzureCloud, AzureChinaCloud or AzureUSGovernment depending which Azure subscription you are using.
+Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -RegistrationSubscriptionID $subscriptionID -AzureEnvironment "<environment name>"
 ```
 
 Ebben a példában az előfizetés tulajdonosa hitelesítő adatait kéri a biztonságos és Start-AzsReadinessChecker végez az adott fiókhoz sémaellenőrzésen, és győződjön meg arról, hogy az előfizetés is használható az Azure Stack-regisztráció. 
@@ -255,8 +257,8 @@ Ebben a példában az előfizetés tulajdonosa hitelesítő adatait kéri a bizt
 
 **Példa: Központi adatokat (a telepítési csapat) az Azure-regisztráció ellenőrzése**
 ```PowerShell
-$registrationCredential = Get-Credential -Message "Enter Credentials for Subscription Owner"e.g. subscriptionowner@contoso.onmicrosoft.com"
-$subscriptionID = "f7c26209-cd2d-4625-86ba-724ebeece794"
+$registrationCredential = Get-Credential -Message "Enter Credentials for Subscription Owner e.g. subscriptionowner@contoso.onmicrosoft.com"
+$subscriptionID = "<subscription ID>"
 Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -RegistrationSubscriptionID $subscriptionID -DeploymentDataJSONPath .\contoso-deploymentdata.json
 ```
 
@@ -293,7 +295,7 @@ Ebben a példában az üzembe helyezés vagy a támogatási csapat ügyfelektől
 Az Azure Stack üzembe helyezés régió nevét adja meg.
 |  |  |
 |----------------------------|--------------|
-|Típus:                       |Sztring        |
+|Típus:                       |Karakterlánc        |
 |Pozíció:                   |nevű         |
 |Alapértelmezett érték:              |None          |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)         |
@@ -304,7 +306,7 @@ Az Azure Stack üzembe helyezés régió nevét adja meg.
 Adja meg az Azure Stack üzembe helyezés külső teljes Tartományneve, is ExternalFQDN és ExternalDomainName aliasneve.
 |  |  |
 |----------------------------|--------------|
-|Típus:                       |Sztring        |
+|Típus:                       |Karakterlánc        |
 |Pozíció:                   |nevű         |
 |Alapértelmezett érték:              |ExternalFQDN, ExternalDomainName |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)         |
@@ -317,7 +319,7 @@ Adja meg az Azure Stack üzembe helyezés külső teljes Tartományneve, is Exte
 Megadja az Azure Stack üzemelő példányához Identitásrendszer érvényes értékek, az AAD vagy az ADFS, Azure Active Directory és az Active Directory összevonási szolgáltatásokat jelölik.
 |  |  |
 |----------------------------|--------------|
-|Típus:                       |Sztring        |
+|Típus:                       |Karakterlánc        |
 |Pozíció:                   |nevű         |
 |Alapértelmezett érték:              |None          |
 |Érvényes értékek:               |"AAD", "ADFS"  |
@@ -351,7 +353,7 @@ Az elérési utak és a jelszavakat a PaaS-tanúsítványokat tartalmazó kivona
 Itt adható meg az Azure Stack üzembe helyezési adatok JSON-konfigurációs fájlt. Ez a fájl jön létre a központi telepítés.
 |  |  |
 |----------------------------|---------|
-|Típus:                       |Sztring   |
+|Típus:                       |Karakterlánc   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |None     |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)    |
@@ -362,7 +364,7 @@ Itt adható meg az Azure Stack üzembe helyezési adatok JSON-konfigurációs f�
 Importálási/exportálási rutin megoldásához, ez az eszköz a tanúsítvány érvényesítése aszinkronitást igénylő problémát észlel tanúsítvány elérési útja.
 |  |  |
 |----------------------------|---------|
-|Típus:                       |Sztring   |
+|Típus:                       |Karakterlánc   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |None     |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)    |
@@ -373,7 +375,7 @@ Importálási/exportálási rutin megoldásához, ez az eszköz a tanúsítvány
 Itt adhatja meg az importálási/exportálási rutin eredő PFX-fájljának elérési utat.  
 |  |  |
 |----------------------------|---------|
-|Típus:                       |Sztring   |
+|Típus:                       |Karakterlánc   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |None     |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)    |
@@ -398,7 +400,7 @@ A SAN adja meg a tanúsítványkérelem. Érvényes értékek MultipleCSR, Singl
 
 |  |  |
 |----------------------------|---------|
-|Típus:                       |Sztring   |
+|Típus:                       |Karakterlánc   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |None     |
 |Érvényes értékek:               |"MultipleCSR',"SingleCSR" |
@@ -410,7 +412,7 @@ A SAN adja meg a tanúsítványkérelem. Érvényes értékek MultipleCSR, Singl
 A cél elérési útját adja meg a tanúsítvány kérést fájlok esetében könyvtár már léteznie kell.
 |  |  |
 |----------------------------|---------|
-|Típus:                       |Sztring   |
+|Típus:                       |Karakterlánc   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |None     |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)    |
@@ -432,7 +434,7 @@ Adja meg az Azure Active Directory szolgáltatás rendszergazdáját az Azure St
 Azure Stack központi telepítéshez használt adja meg az Azure Active Directoryban.
 |  |  |
 |----------------------------|---------|
-|Típus:                       |Sztring   |
+|Típus:                       |Karakterlánc   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |None     |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)    |
@@ -443,10 +445,10 @@ Azure Stack központi telepítéshez használt adja meg az Azure Active Director
 Az Azure-szolgáltatások tartalmazó a fiókok, könyvtárak és az előfizetések Azure Stack üzembe helyezésére és regisztrációjára használható példányát határozza meg.
 |  |  |
 |----------------------------|---------|
-|Típus:                       |Sztring   |
+|Típus:                       |Karakterlánc   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |None     |
-|Érvényes értékek:               |"AzureCloud', 'AzureChinaCloud',"AzureGermanCloud" |
+|Érvényes értékek:               |"AzureCloud', 'AzureChinaCloud',"AzureUSGovernment" |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)    |
 |Helyettesítő karakterek elfogadása: |False (Hamis)    |
 
@@ -455,7 +457,7 @@ Az Azure-szolgáltatások tartalmazó a fiókok, könyvtárak és az előfizeté
 Megadja, hogy a regisztráció az Azure Stack-regisztráció használandó.
 |  |  |
 |----------------------------|---------|
-|Típus:                       |Sztring   |
+|Típus:                       |Karakterlánc   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |None     |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)    |
@@ -477,7 +479,7 @@ Itt adhatja meg a regisztrációs előfizetés-azonosító használható az Azur
 Alapértelmezés szerint az aktuális címtár és az alapértelmezett a jelentés nevét, adja meg a elérési útja a készültségi jelentést.
 |  |  |
 |----------------------------|---------|
-|Típus:                       |Sztring   |
+|Típus:                       |Karakterlánc   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |Összes      |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)    |
@@ -501,7 +503,7 @@ ACSBlob, ACSQueue, ACSTable, ADFS, felügyeleti portál, rendszergazdai ARM, ARM
 
 |  |  |
 |----------------------------|---------|
-|Típus:                       |Sztring   |
+|Típus:                       |Karakterlánc   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |. \Certificates |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)    |
@@ -527,7 +529,7 @@ Itt adhatja meg, ha a PaaS szolgáltatások/állomásnevek kell adni a tanúsít
 Itt adhatja meg, hogy csak az jeleníti meg a jelentés összefoglaló, az áttekinthetőség kedvéért kihagyja részletei.
 |  |  |
 |----------------------------|---------|
-|Típus:                       |Sztring   |
+|Típus:                       |Karakterlánc   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |Összes      |
 |Érvényes értékek:               |"Tanúsítvány", 'AzureRegistration', "AzureIdentity", "Jobs", "All" |
@@ -565,7 +567,7 @@ Eltávolítja az előző végrehajtás és érvényesítési előzmények, és a
 Itt adható meg egyéni elérési út készültségi JSON-jelentés és a részletes naplófájl mentéséhez.  Ha az elérési út már nem létezik, az eszköz megkísérli létrehozni a könyvtárat.
 |  |  |
 |----------------------------|------------------|
-|Típus:                       |Sztring            |
+|Típus:                       |Karakterlánc            |
 |Pozíció:                   |nevű             |
 |Alapértelmezett érték:              |$ENV: TEMP\AzsReadinessChecker  |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)             |

@@ -11,15 +11,15 @@ author: jovanpop-msft
 ms.author: jovanpop-msft
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/03/2018
-ms.openlocfilehash: cee03533f5b2033ab7cb45aa72209789d96606d0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/04/2018
+ms.openlocfilehash: e2075f8a8e54a091dbb82f9ed6d1c8ddaa9da4d0
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52852938"
+ms.locfileid: "52869840"
 ---
-# <a name="use-powershell-with-azure-resource-manager-template-to-create-a-azure-sql-database-managed-instance-with-specified-and-configure-a-firewall-rule"></a>Az Azure Resource Manager-sablon létrehozása PowerShell-lel egy Azure SQL Database felügyelt példánya a megadott, és egy tűzfalszabály konfigurálása
+# <a name="use-powershell-with-azure-resource-manager-template-to-create-an-azure-sql-database-managed-instance"></a>A PowerShell használata az Azure Resource Manager-sablon létrehozása az Azure SQL Database felügyelt példánya
 
 Az Azure SQL Database felügyelt példány az Azure PowerShell-könyvtár és Azure Resource Manager-sablonok használatával is létrehozható. 
 
@@ -33,7 +33,7 @@ Az Azure PowerShell-parancsok előre meghatározott Azure Resource Manager-sablo
 - SQL-rendszergazdai felhasználónevet és jelszót. 
 - A példány (magok számától és maximális tárméretének) mérete.
 - Virtuális hálózatot és alhálózatot, ahol a példány kerül.
-- A példány kiszolgálói szintű rendezése.
+- Kiszolgálószintű rendezést a példány (előzetes verzió).
 
 Példány neve, az SQL-rendszergazda felhasználóneve, virtuális hálózat/alhálózat és rendezési később nem módosítható. Egyéb példány tulajdonságai módosíthatók.
 
@@ -112,7 +112,7 @@ $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwor
 $subnetId = $subnet.Id
 
 # Deploy Instance using Azure Resource Manager template:
-New-AzureRmResourceGroupDeployment  -Name Poland2 -ResourceGroupName $resourceGroup  `
+New-AzureRmResourceGroupDeployment  -Name MyDeployment -ResourceGroupName $resourceGroup  `
                                     -TemplateFile 'C:\...\create-managed-instance.json' `
                                     -instance $name -user $user -pwd $secpasswd -subnetId $subnetId
 ```

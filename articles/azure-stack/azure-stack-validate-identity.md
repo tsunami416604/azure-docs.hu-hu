@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/23/2018
+ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 0a46344893c8ad62bd85f9abb84d434c0331d507
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 61562450d484f34385b4e6e111bf62326eaca159
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984196"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888375"
 ---
 # <a name="validate-azure-identity"></a>Azure-identitás ellenőrzése 
 Az Azure Stack készültségi ellenőrző eszköz (AzsReadinessChecker) használatával ellenőrizze, hogy az Azure Stack használatra készen áll-e az Azure Active Directory (Azure AD). Ellenőrizze az Azure identitáskezelési megoldás, az Azure Stack központi telepítésének megkezdése előtt.  
@@ -48,7 +48,7 @@ A következő előfeltételek vonatkoznak a helyen kell lennie.
 **Az Azure Active Directory-környezetet:**
  - Azonosítsa az Azure AD-fiókot fogja használni az Azure Stack és, hogy az Azure Active Directory globális rendszergazdája.
  - Azonosítsa az Azure AD-bérlő nevét. A bérlő nevének kell lennie a *elsődleges* tartománynév az Azure Active Directoryban. Ha például *contoso.onmicrosoft.com*. 
- - A használandó AzureEnvironement azonosítása: *AzureCloud*, *AzureGermanCloud*, vagy *AzureChinaCloud*.
+ - Azonosítsa a AzureEnvironement fogja használni. A környezet neve paraméter támogatott értékei a következők: AzureCloud, AzureChinaCloud vagy AzureUSGovernment attól függően, hogy mely Azure-előfizetést használ.
 
 ## <a name="validate-azure-identity"></a>Azure-identitás ellenőrzése 
 1. A számítógépen, amely megfelel az előfeltételeknek nyisson meg egy rendszergazdai PowerShell-parancssort, és futtassa a következő parancsot a AzsReadinessChecker telepítéséhez:  
@@ -59,10 +59,10 @@ A következő előfeltételek vonatkoznak a helyen kell lennie.
    > `$serviceAdminCredential = Get-Credential serviceadmin@contoso.onmicrosoft.com -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant"` 
 
 3. A PowerShell használatával futtassa a következő, az Azure AD-ellenőrzés indítása. 
-   - Adja meg az értéket, AzureEnvironment *AzureCloud*, *AzureGermanCloud*, vagy *AzureChinaCloud*.  
+   - Adja meg a környezet név-érték AzureEnvironment. A környezet neve paraméter támogatott értékei a következők: AzureCloud, AzureChinaCloud vagy AzureUSGovernment attól függően, hogy mely Azure-előfizetést használ.  
    - Adja meg az Azure Active Directory bérlői neve helyett *contoso.onmicrosoft.com*. 
 
-   > `Invoke-AzsAzureIdentityValidation -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment AzureCloud -AADDirectoryTenantName contoso.onmicrosoft.com`
+   > `Invoke-AzsAzureIdentityValidation -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment <environment name> -AADDirectoryTenantName contoso.onmicrosoft.com`
 4. Az eszköz futtatása után tekintse át a kimenetet. Az állapot megerősítéséhez **OK** a telepítési követelményeknek. Sikeres ellenőrzés a következő képhez hasonlóan jelenik meg: 
  
 ````PowerShell
