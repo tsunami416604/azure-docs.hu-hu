@@ -9,12 +9,12 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 841448f477accb8a73d543447cd317bb9b427408
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 0fd3bebc1e2dba3ab7d1204e779a8c80b97c990b
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497601"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864060"
 ---
 # <a name="tutorial-2--deploy-an-image-classification-model-in-azure-container-instance-aci"></a>2. oktatóanyag: Képbesorolási modell üzembe helyezése az Azure Container Instances (ACI) szolgáltatásban
 
@@ -22,7 +22,7 @@ Ez az oktatóanyag **egy kétrészes oktatóanyag-sorozat második része**. Az 
 
 Most készen áll a modell webszolgáltatásként való üzembe helyezésére az [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (ACI) szolgáltatásban. A webszolgáltatás egy rendszerkép, ebben az esetben egy Docker-rendszerkép, amely magában foglalja a pontozási logikát, illetve magát a modellt is. 
 
-Az oktatóanyagnak ebben a részében az Azure Machine Learning-szolgáltatás (előzetes verzió) segítségével a következőket hajtja végre:
+Az oktatóanyagnak ebben a részében az Azure Machine Learning szolgáltatás segítségével a következőket hajtja végre:
 
 > [!div class="checklist"]
 > * A tesztkörnyezet beállítása
@@ -35,10 +35,12 @@ Az ACI termelési környezetekhez nem ideális, teszteléshez és a munkafolyama
 
 ## <a name="get-the-notebook"></a>A notebook beszerzése
 
-Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://aka.ms/aml-notebook-tut-02) is elérhető. A `02.deploy-models.ipynb` notebook az Azure Notebooks szolgáltatásban vagy a saját Jupyter-notebookkiszolgálóján futtatható.
+Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part2-deploy.ipynb) is elérhető. A `tutorials/img-classification-part2-deploy.ipynb` notebook az Azure Notebooks szolgáltatásban vagy a saját Jupyter-notebookkiszolgálóján futtatható.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
+>[!NOTE]
+> Ebben a cikkben kód tesztelés az Azure Machine Learning SDK-val 1.0.2-es verzióját
 
 ## <a name="prerequisites"></a>Előfeltételek
 

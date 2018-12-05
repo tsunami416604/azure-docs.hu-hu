@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/09/2018
 ms.author: sharadag
-ms.openlocfilehash: e36253600dd8039940209cb5912cb2e4c2e0fbcf
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: a2ba0fb34dd34129a134aa2639d06816f3523408
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988625"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865505"
 ---
 # <a name="geo-filtering-geographic-based-access-control-to-azure-front-door-service-frontends"></a>Geoszűrés: Az Azure Front Door Service előtérrendszereinek földrajzi alapú hozzáférés-vezérlése
 
@@ -31,7 +31,7 @@ A Front Door geoszűrési szabályzatát az [Azure PowerShell-lel](front-door-tu
 
 |Országkód | Ország neve |
 | ----- | ----- |
-| AD | Orosz Föderáció |
+| AD | Andorra |
 | AE | Egyesült Arab Emírségek|
 | AF | Afganisztán|
 | AG | Antigua és Barbuda|
@@ -97,7 +97,7 @@ A Front Door geoszűrési szabályzatát az [Azure PowerShell-lel](front-door-tu
 | GR | Görögország|
 | GT | Guatemala|
 | GY | Guyana|
-| HK | Hongkong|
+| HK | Hongkong KKT|
 | HN | Honduras|
 | HR | Horvátország|
 | HT | Haiti|

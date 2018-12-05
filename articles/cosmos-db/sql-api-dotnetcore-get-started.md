@@ -1,19 +1,19 @@
 ---
-title: 'Azure Cosmos DB: Bevezetés az SQL API és a .NET Core használatába – oktatóanyag | Microsoft Docs'
+title: 'Az Azure Cosmos DB: Ismerkedés a .NET Core oktatóanyaggal SQL API'
 description: Ez az oktatóanyag létrehoz egy online adatbázist és egy C# konzolalkalmazást az Azure Cosmos DB SQL API .NET Core SDK használatával.
 author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 03/12/2018
-ms.author: sngun
-ms.openlocfilehash: 772e52960cf76a19c78d50533fe57cbc339ca34a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 494e64e81655d69ae86920aeb367039de3e1c0a8
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838573"
+ms.locfileid: "52863907"
 ---
 # <a name="tutorial-build-a-net-core-app-to-manage-azure-cosmos-db-sql-api-data"></a>Oktatóanyag: .Net Core-alkalmazás létrehozása az Azure Cosmos DB SQL API-adatok kezeléséhez
 

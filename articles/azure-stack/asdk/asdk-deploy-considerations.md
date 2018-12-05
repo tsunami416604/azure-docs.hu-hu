@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 9cffbeae3e73682f5e76523de7ee607285c9fc75
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 10ae943711fcd7516b0fdbe982fd5d9e09227bdc
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238626"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864978"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Tervezési megfontolások az Azure Stack üzemelő példányához
 Az Azure Stack Development Kit (ASDK), üzembe helyezése előtt győződjön meg arról, a fejlesztői csomag fogadó számítógép megfelel-e az ebben a cikkben ismertetett követelményeknek.
@@ -121,7 +121,7 @@ Kizárólag az IPv4 használata támogatott. Nem hozhat létre IPv6-hálózatoka
 Győződjön meg róla, hogy egy DHCP-kiszolgáló elérhető azon a hálózaton, amelyhez a NIC csatlakozik. Ha a DHCP nem elérhető el, egy kiegészítő, az állomás által használt melletti, statikus IPv4-hálózatot kell előkészítenie. Üzembehelyezési paraméterként meg kell adnia azt az IP-címet és átjárót.
 
 ### <a name="internet-access"></a>Internetelérés
-Az Azure Stack internet-hozzáférésre van szüksége, közvetlenül vagy a transzparens proxy használatával. Az Azure Stack nem támogatja az Internet-hozzáférés engedélyezése egy webalkalmazás-proxy konfigurálása. A gazdagép és az új IP-Címek rendel hozzá a MAS-BGPNAT01 (DHCP vagy statikus IP-cím) egyaránt elérhető Internet képesnek kell lennie. 80-as és 443-as portok a graph.windows.net és login.microsoftonline.com tartományok alatt vannak használatban.
+Az Azure Stack internet-hozzáférésre van szüksége, közvetlenül vagy a transzparens proxy használatával. Az Azure Stack nem támogatja az Internet-hozzáférés engedélyezése egy webalkalmazás-proxy konfigurálása. A gazdagép IP-cím és a AzS-BGPNAT01 (által a DHCP vagy statikus IP-cím) rendelt új IP az Internet eléréséhez képesnek kell lennie. 80-as és 443-as portok a graph.windows.net és login.microsoftonline.com tartományok alatt vannak használatban.
 
 
 ## <a name="next-steps"></a>További lépések

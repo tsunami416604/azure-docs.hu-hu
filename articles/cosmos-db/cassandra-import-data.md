@@ -1,24 +1,24 @@
 ---
-title: Adatok migrálása az Azure Cosmos DB Cassandra API-fiókba
-description: Ismerje meg, hogyan másolhat Apache Cassandra-adatokat az Azure Cosmos DB Cassandra API-ba a CQL másolási parancs és a Spark használatával.
-services: cosmos-db
+title: 'Oktatóanyag: Az adatok áttelepítése az Azure Cosmos DB Cassandra API-fiók'
+description: Ebből az oktatóanyagból megtudhatja, hogyan másolhat adatokat egy Apache Cassandra-ból az Azure Cosmos DB Cassandra API-fiók a CQL Másolás parancs és a Spark használatával.
 author: kanshiG
 ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.author: govindk
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 12/03/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 56fc07c6d775ee8015ce244acb7782607bda802a
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
-ms.translationtype: HT
+Customer intent: As a developer, I want to migrate my existing Cassandra workloads to Azure Cosmos DB so that the overhead to manage resources, clusters, and garbage collection is automatically handled by Azure Cosmos DB.
+ms.openlocfilehash: 604cab3bed73366ce28c8bb35b63df6379985cfb
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739787"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867460"
 ---
-# <a name="tutorial-migrate-your-data-to-azure-cosmos-db-cassandra-api-account"></a>Oktatóanyag: Adatok migrálása az Azure Cosmos DB Cassandra API-fiókba
+# <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>Oktatóanyag: Az adatok áttelepítése az Azure Cosmos DB Cassandra API-fiók
 
-Ez az oktatóanyag bemutatja, hogyan migrálhat Apache Cassandra-adatokat az Azure Cosmos DB Cassandra API-ba. 
+A fejlesztők, lehetséges, hogy a helyszínen futtató meglévő Cassandra-feladatokat vagy a felhőben, és előfordulhat, hogy szeretne az Azure-bA migrálásához. Ilyen számítási feladatok áttelepítheti az Azure Cosmos DB Cassandra API-fiók. Ebben az oktatóanyagban útmutatás különböző lehetőség legyen elérhető a Apache Cassandra-adatok áttelepítése az Azure Cosmos DB Cassandra API-fiókba.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -26,45 +26,45 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * Az áttelepítés megtervezése
 > * A migrálás előfeltételei
 > * Adatok migrálása a cqlsh COPY paranccsal
-> * Adatok migrálása a Spark használatával 
+> * Adatok migrálása a Spark használatával
 
-## <a name="plan-for-migration"></a>Az áttelepítés megtervezése
-
-Az adatok az Azure Cosmos DB Cassandra API-ba való migrálása előtt fel kell becsülnie a számítási feladat által igényelt átviteli sebességet. Általában ajánlott a CRUD-műveletekhez szükséges átlagos átviteli sebességgel kezdeni, majd ezt kiegészíteni a kinyerési, átalakítási és betöltési (ETL-) vagy a csúcsidejű műveletekhez szükséges további sebességgel. A migrálás megtervezéséhez a következő adatokra lesz szükség: 
-
-* **Meglévő vagy becsült adatmennyiség:** A minimálisan szükséges adatbázisméretet és átviteli sebességet határozza meg. Ha egy új alkalmazás adatmennyiségét becsüli fel, feltételezheti, hogy az adatok egyenletesen oszlanak majd el a sorok között, és az értéket az adatok méretét felszorozva kaphatja meg. 
-
-* **Szükséges átviteli sebesség:** A hozzávetőleges olvasási (lekérdezési/lekérési) és írási (frissítési/törlési/beszúrási) átviteli sebesség. Erre az értékre a szükséges kérelemegység-mennyiség állandó adatmennyiség melletti kiszámításához van szükség.  
-
-* **A séma beolvasása:** Csatlakozzon a meglévő Cassandra-fürthöz cqlsh használatával, és exportálja a sémát a Cassandráról: 
-
-  ```bash
-  cqlsh [IP] "-e DESC SCHEMA" > orig_schema.cql
-  ```
-
-Miután felmérte a meglévő számítási feladathoz szükséges kapacitásokat, hozzon létre egy Azure Cosmos DB-fiókot, egy adatbázist és tárolókat az összegyűjtött teljesítménykövetelmények alapján.  
-
-* **A műveletek kérelemegységenkénti díjának megállapítása:** A kérelemegységeket bármely tetszőleges Azure Cosmos DB Cassandra API SDK-val meghatározhatja. Ez a példa a kérelemegység-díjak .NET-tel való beszerzését mutatja be.
-
-  ```csharp
-  var tableInsertStatement = table.Insert(sampleEntity);
-  var insertResult = await tableInsertStatement.ExecuteAsync();
-
-  foreach (string key in insertResult.Info.IncomingPayload)
-    {
-       byte[] valueInBytes = customPayload[key];
-       string value = Encoding.UTF8.GetString(valueInBytes);
-       Console.WriteLine($"CustomPayload:  {key}: {value}");
-    }
-  ```
-
-* **A szükséges átviteli sebesség lefoglalása:** Az Azure Cosmos DB-vel automatikusan, a növekvő követelményeknek megfelelően skálázható a tárolás és az átviteli sebesség. A szükséges átviteli sebességet az [Azure Cosmos DB kérelemegység-kalkulátorával](https://www.documentdb.com/capacityplanner) számíthatja ki. 
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites-for-migration"></a>A migrálás előfeltételei
 
-* **Táblák létrehozása az Azure Cosmos DB Cassandra API-fiókban:** Az adatok migrálásának indítása előtt hozza létre előre az összes táblát az Azure Portalról vagy a cqlsh-val. Ha egy olyan Azure Cosmos DB-fiókba migrál, amely adatbázisszintű átviteli sebességgel rendelkezik, az Azure Cosmos DB-tárolók létrehozásakor mindenképpen adjon meg egy partíciókulcsot.
+* **Az átviteli sebességet igényei meghatározásához:** adatok áttelepítése a Cassandra API-nak az Azure Cosmos DB-fiók, mielőtt kell becslései szerint a számítási feladatok átviteli igényeit. Általában ajánlott a CRUD-műveletekhez szükséges átlagos átviteli sebességgel kezdeni, majd ezt kiegészíteni a kinyerési, átalakítási és betöltési (ETL-) vagy a csúcsidejű műveletekhez szükséges további sebességgel. A migrálás megtervezéséhez a következő adatokra lesz szükség: 
 
-* **Átviteli sebesség növelése:** Az adatok migrálásának időtartama az Azure Cosmos DB-táblákhoz lefoglalt átviteli sebességtől függ. A migrálás idejére növelje meg az átviteli sebességet. Nagyobb átviteli sebesség beállításakor nincs szükség a sebesség korlátozására, és gyorsabban végezhet a migrálással. A migrálás befejezése után, a költségtakarékosság érdekében csökkentse az átviteli sebességet. További információ az átviteli sebesség növeléséről az Azure Cosmos DB-tárolók [átviteli sebességének beállítását](set-throughput.md) ismertető szakaszban található. Emellett javasolt az Azure Cosmos DB-fiókot és a forrásadatbázist azonos régióban használni. 
+   * **Meglévő vagy becsült adatmennyiség:** A minimálisan szükséges adatbázisméretet és átviteli sebességet határozza meg. Ha egy új alkalmazás adatmennyiségét becsüli fel, feltételezheti, hogy az adatok egyenletesen oszlanak majd el a sorok között, és az értéket az adatok méretét felszorozva kaphatja meg. 
+
+   * **Átviteli sebességgel:** hozzávetőleges olvasási (lekérdezés/get), és írási (update/delete/insert) átviteli sebességgel rendelkeznek. Erre az értékre a szükséges kérelemegység-mennyiség állandó adatmennyiség melletti kiszámításához van szükség.  
+
+   * **A séma:** csatlakozás Cassandra cqlsh és exportálása a sémát a meglévő Cassandra-fürt: 
+
+     ```bash
+     cqlsh [IP] "-e DESC SCHEMA" > orig_schema.cql
+     ```
+
+   Miután azonosította a meglévő számítási feladatok követelményeit, hozzunk létre egy Azure Cosmos-fiók, adatbázis és tárolók az összegyűjtött átviteli követelményeinek megfelelően.  
+
+   * **Határozza meg egy művelet RU ingyenesen:** segítségével meghatározhatja a kérelemegység a Cassandra API által támogatott SDK-k egyikével. Ez a példa a kérelemegység-díjak .NET-tel való beszerzését mutatja be.
+
+     ```csharp
+     var tableInsertStatement = table.Insert(sampleEntity);
+     var insertResult = await tableInsertStatement.ExecuteAsync();
+
+     foreach (string key in insertResult.Info.IncomingPayload)
+       {
+          byte[] valueInBytes = customPayload[key];
+          string value = Encoding.UTF8.GetString(valueInBytes);
+          Console.WriteLine($"CustomPayload:  {key}: {value}");
+       }
+     ```
+
+* **A szükséges átviteli sebesség lefoglalása:** Az Azure Cosmos DB-vel automatikusan, a növekvő követelményeknek megfelelően skálázható a tárolás és az átviteli sebesség. A szükséges átviteli sebességet az [Azure Cosmos DB kérelemegység-kalkulátorával](https://www.documentdb.com/capacityplanner) számíthatja ki. 
+
+* **Táblázatok létrehozása a Cassandra API-fiók:** adatok áttelepítése előtt előre létrehozni minden a táblák az Azure Portalról vagy a cqlsh. Ha az áttelepítés egy Azure Cosmos-fiókhoz, amelyen adatbázis-szintű átviteli sebessége, ügyeljen arra, hogy az Azure Cosmos-tároló létrehozásakor adja meg a partíciókulcsot.
+
+* **Átviteli sebesség növelése:** Az adatok migrálásának időtartama az Azure Cosmos DB-táblákhoz lefoglalt átviteli sebességtől függ. A migrálás idejére növelje meg az átviteli sebességet. Nagyobb átviteli sebesség beállításakor nincs szükség a sebesség korlátozására, és gyorsabban végezhet a migrálással. A migrálás befejezése után, a költségtakarékosság érdekében csökkentse az átviteli sebességet. Az Azure Cosmos-fiók rendelkezik a forrásadatbázis ugyanabban a régióban is ajánlott. 
 
 * **Az SSL engedélyezése:** Az Azure Cosmos DB szigorú biztonsági feltételekkel és szabványokkal rendelkezik. A fiókja használatakor mindig engedélyezze az SSL-t. Ha az SSH-val használja a CQL-t, akkor megadhat SSL-információkat.
 
@@ -77,11 +77,11 @@ A meglévő Cassandra-számításifeladatokból a következő lehetőségekkel m
 
 ## <a name="migrate-data-using-cqlsh-copy-command"></a>Adatok migrálása a cqlsh COPY paranccsal
 
-A [CQL COPY paranccsal](http://cassandra.apache.org/doc/latest/tools/cqlsh.html#cqlsh) helyi adatok másolhatók az Azure Cosmos DB Cassandra API-fiókba. Az adatok másolásához hajtsa végre a következő lépéseket:
+A [CQL Másolás parancs](http://cassandra.apache.org/doc/latest/tools/cqlsh.html#cqlsh) a Cassandra API-fiókot az Azure Cosmos DB helyi adatok másolása szolgál. Az adatok másolásához hajtsa végre a következő lépéseket:
 
 1. A Cassandra API-fiók kapcsolatisztring-adatainak lekérése:
 
-   * Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és lépjen az Azure Cosmos DB-fiókhoz.
+   * Jelentkezzen be a [az Azure portal](https://portal.azure.com), és lépjen az Azure Cosmos-fiókra.
 
    * Nyissa meg a **Kapcsolati sztring** panelt, amely a Cassandra API-fiókhoz a cqlsh-ból való kapcsolódáshoz szükséges összes információt tartalmazza.
 
@@ -95,17 +95,21 @@ A [CQL COPY paranccsal](http://cassandra.apache.org/doc/latest/tools/cqlsh.html#
 
 ## <a name="migrate-data-using-spark"></a>Adatok migrálása a Spark használatával 
 
-A következő lépések végrehajtásával migrálhatja az adatokat a Sparkkal az Azure Cosmos DB Cassandra API-ba:
+A következő lépések segítségével telepítse át az adatokat a Cassandra API-fiókot, a Spark segítségével:
 
-- Foglaljon le egy [Azure Databricks-](cassandra-spark-databricks.md) vagy egy [HDInsight-fürtöt](cassandra-spark-hdinsight.md). 
+- Üzembe helyezése egy [Azure Databricks-fürt](cassandra-spark-databricks.md) vagy egy [HDInsight-fürt](cassandra-spark-hdinsight.md) 
 
-- Helyezze át az adatokat a Cassandra API-célvégpontra a [táblamásolási művelet](cassandra-spark-table-copy-ops.md) végrehajtásával. 
+- Helyezze át adatokat a rendeltetési Cassandra API-végpont használatával a [tábla másolási művelet](cassandra-spark-table-copy-ops.md) 
 
-Az adatok a Spark-feladatokkal való migrálása a javasolt megoldás, ha az adatok egy meglévő fürtben találhatók egy Azure-beli virtuális gépen vagy valamely más felhőben. Ehhez a Sparkot közvetítőként kell beállítani egyszeri vagy rendszeres betöltéshez. A migrálás felgyorsítható, ha a helyszíni és az Azure-beli rendszerek között ExpressRoute-kapcsolatot használ. 
+Áttelepítés a Spark-feladatok adatok a beállítás ajánlott Ha egy meglévő fürthöz az Azure-beli virtuális gépek vagy bármely más felhőalapú szereplő adatokat. Ehhez a beállításhoz az Apache Spark a szokásos betöltési vagy egy ideig a köztes beállítása. Az áttelepítés gyorsítható fel az Azure ExpressRoute-kapcsolat a helyszíni és az Azure között. 
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Amikor szükség van rájuk már nem, törölheti az erőforráscsoportot, az Azure Cosmos-fiók és minden kapcsolódó erőforrás. Ehhez válassza ki a virtuális gép, jelölje be az erőforráscsoport **törlése**, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan migrálhatja adatait az Azure Cosmos DB Cassandra API-fiókba. Az Azure Cosmos DB-vel kapcsolatos további információért folytassa az Alapfogalmak szakasz áttekintésével. 
+Ebben az oktatóanyagban bemutattuk az adatok áttelepítése az Azure Cosmos DB Cassandra API-fiókot. Most már továbbléphet a következő cikkben más az Azure Cosmos DB kapcsolatos fogalmak megismeréséhez:
 
 > [!div class="nextstepaction"]
 > [Beállítható adatkonzisztencia-szintek az Azure Cosmos DB-ben](../cosmos-db/consistency-levels.md)

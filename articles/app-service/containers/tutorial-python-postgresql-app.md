@@ -9,21 +9,21 @@ ms.service: app-service-web
 ms.workload: web
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 09/28/2018
+ms.date: 11/29/2018
 ms.author: beverst;cephalin
 ms.custom: mvc
-ms.openlocfilehash: f4ce197d541b8573e38fd85dcebb575c8ee99f59
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
-ms.translationtype: HT
+ms.openlocfilehash: 3963e2ffb521a4b4732814e9b2992f4e83af1835
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435794"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865624"
 ---
-# <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>Docker Python- és PostgreSQL-webalkalmazás létrehozása az Azure-ban
+# <a name="build-a-python-and-postgresql-web-app-in-azure-app-service"></a>A Python és PostgreSQL-webalkalmazás létrehozása az Azure App Service-ben
 
-A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan skálázható, önjavító webes üzemeltetési szolgáltatást nyújt. Ez az oktatóanyag bemutatja, hogyan hozhat létre egy adatvezérelt Python-webalkalmazást PostgreSQL-háttéradatbázis segítségével. Az oktatóanyag eredménye egy, a Linux App Service-ben lévő Docker-tárolóban futó Python Flask-alkalmazás lesz.
+A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan skálázható, önjavító webes üzemeltetési szolgáltatást nyújt. Ez az oktatóanyag bemutatja, hogyan hozhat létre egy adatvezérelt Python-webalkalmazást PostgreSQL-háttéradatbázis segítségével. Ha elkészült, rendelkezni fog olyan Django-alkalmazást a linuxon futó App Service-ben.
 
-![Docker Python Flask-alkalmazás a Linux App Service-ben](./media/tutorial-python-postgresql-app/docker-flask-in-azure.png)
+![Python Django-alkalmazást a linuxon futó App Service-ben](./media/tutorial-python-postgresql-app/django-admin-azure.png)
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -32,7 +32,6 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Python-alkalmazás csatlakoztatása a PostgreSQL-hez
 > * Az alkalmazás üzembe helyezése az Azure-ban
 > * Diagnosztikai naplók megtekintése
-> * Az adatmodell frissítése és az alkalmazás ismételt üzembe helyezése
 > * Az alkalmazás kezelése az Azure Portalon
 
 A cikk lépései macOS rendszerre vonatkoznak. Linux és Windows rendszeren a legtöbb esetben ugyanezek az utasítások érvényesek, az oktatóanyag azonban nem tér ki az eltérésekkel kapcsolatos részletekre.
@@ -44,8 +43,8 @@ A cikk lépései macOS rendszerre vonatkoznak. Linux és Windows rendszeren a le
 Az oktatóanyag elvégzéséhez:
 
 1. [A Git telepítése](https://git-scm.com/)
-1. [Telepítse a Pythont](https://www.python.org/downloads/)
-1. [A PostgreSQL telepítése és futtatása](https://www.postgresql.org/download/)
+2. [Telepítse a Pythont](https://www.python.org/downloads/)
+3. [A PostgreSQL telepítése és futtatása](https://www.postgresql.org/download/)
 
 ## <a name="test-local-postgresql-installation-and-create-a-database"></a>A helyi PostgreSQL-telepítés tesztelése és egy adatbázis létrehozása
 
@@ -63,12 +62,12 @@ psql postgres
 
 Ha a kapcsolat létrejött, a PostgreSQL-adatbázis fut. Ha nem, mindenképp a [Letöltések – PostgreSQL központi kiadással](https://www.postgresql.org/download/) foglalkozó szakaszban ismertetett, az operációs rendszerére vonatkozó utasításokat követve indítsa el a helyi PostgreSQL-adatbázist.
 
-Hozzon létre egy adatbázist *eventregistration* néven, majd hozzon létre egy adatbázis-felhasználót *manager* néven és a *supersecretpass* jelszóval.
+Hozzon létre egy adatbázist nevű *pollsdb* és a egy adatbázis-felhasználót beállítása *manager* felhasználónévvel és jelszóval *supersecretpass*.
 
 ```sql
-CREATE DATABASE eventregistration;
+CREATE DATABASE pollsdb;
 CREATE USER manager WITH PASSWORD 'supersecretpass';
-GRANT ALL PRIVILEGES ON DATABASE eventregistration TO manager;
+GRANT ALL PRIVILEGES ON DATABASE pollsdb TO manager;
 ```
 
 A PostgreSQL-ügyfél bezárásához írja be a `\q` parancsot.
@@ -77,7 +76,7 @@ A PostgreSQL-ügyfél bezárásához írja be a `\q` parancsot.
 
 ## <a name="create-local-python-app"></a>Helyi Python-alkalmazás létrehozása
 
-Ebben a lépésben beállítjuk a helyi Python Flask-projektet.
+Ebben a lépésben beállíthatja a helyi Python Django-projektet.
 
 ### <a name="clone-the-sample-app"></a>A mintaalkalmazás klónozása
 
@@ -86,53 +85,69 @@ Nyissa meg a terminálablakot, és a `CD` paranccsal hozzon létre egy munkakön
 Az alábbi parancsok futtatásával klónozza a mintatárházat.
 
 ```bash
-git clone https://github.com/Azure-Samples/flask-postgresql-app.git
-cd flask-postgresql-app
+git clone https://github.com/Azure-Samples/djangoapp.git
+cd djangoapp
 ```
 
-A mintaadattár tartalmaz egy [Flask](http://flask.pocoo.org/)-alkalmazást.
+Ez a mintaadattár tartalmaz egy [Django](https://www.djangoproject.com/) alkalmazás. A következő számíthat ugyanazon az adatvezérelt alkalmazás legyen a [a Django dokumentációja a kezdeti lépéseket ismertető oktatóanyag](https://docs.djangoproject.com/en/2.1/intro/tutorial01/). Ez az oktatóanyag nem tartalmazza a Django, de bemutatja, hogyan helyezhet üzembe és futtathat egy Django-alkalmazás (vagy az adatvezérelt Python-alkalmazás egy másik) App Service-ben.
 
-### <a name="run-the-app-locally"></a>Az alkalmazás futtatása helyben
+### <a name="configure-environment"></a>A környezet konfigurálása
 
-Telepítse a szükséges csomagokat, és indítsa el az alkalmazást.
+Hozzon létre egy Python virtuális környezetet, és a egy parancsfájllal állítsa be az adatbázis kapcsolati beállításokat.
 
 ```bash
 # Bash
 python3 -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt
-cd app
-FLASK_APP=app.py DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" DBPASS="supersecretpass" flask db upgrade
-FLASK_APP=app.py DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" DBPASS="supersecretpass" flask run
+source ./env.sh
 
 # PowerShell
-pip install virtualenv
-virtualenv venv
-source venv/bin/activate
+py -3 -m venv venv
+venv\scripts\activate
+.\env.ps1
+```
+
+A meghatározott környezeti változókat *env.sh* és *env.ps1* használt _azuresite/settings.py_ adatbázis beállítások meghatározásához.
+
+### <a name="run-app-locally"></a>Az alkalmazás futtatása helyileg
+
+A szükséges csomagok telepítéséhez [futtassa a Django-migrálási](https://docs.djangoproject.com/en/2.1/topics/migrations/) és [hozzon létre egy rendszergazdai felhasználó](https://docs.djangoproject.com/en/2.1/intro/tutorial02/#creating-an-admin-user).
+
+```bash
 pip install -r requirements.txt
-cd app
-Set-Item Env:FLASK_APP ".\app.py"
-DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" DBPASS="supersecretpass" flask db upgrade
-DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" DBPASS="supersecretpass" flask run
+python manage.py migrate
+python manage.py createsuperuser
+```
+
+A rendszergazda felhasználó létrehozása után futtassa a Django-kiszolgáló.
+
+```bash
+python manage.py runserver
 ```
 
 Az alkalmazás teljes betöltését követően az alábbihoz hasonló üzenet jelenik meg:
 
 ```bash
-INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
-INFO  [alembic.runtime.migration] Will assume transactional DDL.
-INFO  [alembic.runtime.migration] Running upgrade  -> 791cd7d80402, empty message
- * Serving Flask app "app"
- * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+Performing system checks...
+
+System check identified no issues (0 silenced).
+October 26, 2018 - 10:54:59
+Django version 2.1.2, using settings 'azuresite.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
 ```
 
-Egy böngészőben nyissa meg a `http://localhost:5000` oldalt. Kattintson a **Register!** (Regisztrálás) gombra, és hozzon létre egy tesztfelhasználót.
+Egy böngészőben nyissa meg a `http://localhost:8000` oldalt. Az üzenetnek kell megjelennie `No polls are available.`. 
 
-![Helyileg futó Python Flask-alkalmazás](./media/tutorial-python-postgresql-app/local-app.png)
+Navigáljon a `http://localhost:8000/admin` és jelentkezzen be a rendszergazdai felhasználó, az előző lépésben létrehozott. Kattintson a **Hozzáadás** melletti **kérdések** , és hozzon létre egy lekérdezési kérdést néhány.
 
-A Flask-mintaalkalmazás a felhasználói adatokat az adatbázisban tárolja. A felhasználó sikeres regisztrálása esetén az alkalmazás a helyi PostgreSQL-adatbázisba írja az adatokat.
+![Helyileg futó Python Django-alkalmazás](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
-Ha bármikor le szeretné állítani a Flask-kiszolgálót, nyomja le a Ctrl+C billentyűparancsot a terminálban.
+Navigáljon a `http://localhost:8000` újra, és tekintse meg a lekérdezési kérdés jelenik meg.
+
+A Django-mintaalkalmazás a felhasználói adatokat az adatbázisban tárolja. Ha Ön egy lekérdezési kérdés hozzáadása sikeres, az alkalmazás írja az adatokat a helyi PostgreSQL-adatbázishoz.
+
+Bármikor a Django-kiszolgáló leállításához írja be a Ctrl + C billentyűkombinációt a terminálon.
 
 ## <a name="create-a-production-postgresql-database"></a>Éles PostgreSQL-adatbázis létrehozása
 
@@ -198,11 +213,11 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 
 ## <a name="connect-python-app-to-production-database"></a>Python-alkalmazás csatlakoztatása éles adatbázishoz
 
-Ebben a lépésben a Flask-mintaalkalmazást a létrehozott Azure Database for PostgreSQL-kiszolgálóhoz csatlakoztatjuk.
+Ebben a lépésben csatlakoztatja a Django-mintaalkalmazást, az Azure Database for PostgreSQL-kiszolgálóhoz létrehozott.
 
 ### <a name="create-empty-database-and-user-access"></a>Üres adatbázis és felhasználói hozzáférés létrehozása
 
-A helyi terminálablakban csatlakozzon az adatbázishoz az alábbi parancs futtatásával. Ha a rendszer a rendszergazdai jelszó megadására kéri, használja az [Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz](#create-an-azure-database-for-postgresql-server) részben megadott jelszót.
+A Cloud shellben csatlakozzon az adatbázishoz az alábbi parancs futtatásával. Ha a rendszer a rendszergazdai jelszó megadására kéri, használja az [Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz](#create-an-azure-database-for-postgresql-server) részben megadott jelszót.
 
 ```bash
 psql -h <postgresql_name>.postgres.database.azure.com -U <my_admin_username>@<postgresql_name> postgres
@@ -210,39 +225,55 @@ psql -h <postgresql_name>.postgres.database.azure.com -U <my_admin_username>@<po
 
 Csakúgy, mint a helyi Postgres-kiszolgáló esetében, az adatbázist és a felhasználót itt is az Azure Postgres-kiszolgálón hozza létre.
 
-```bash
-CREATE DATABASE eventregistration;
+```sql
+CREATE DATABASE pollsdb;
 CREATE USER manager WITH PASSWORD 'supersecretpass';
-GRANT ALL PRIVILEGES ON DATABASE eventregistration TO manager;
+GRANT ALL PRIVILEGES ON DATABASE pollsdb TO manager;
 ```
 
 A PostgreSQL-ügyfél bezárásához írja be a `\q` parancsot.
 
 > [!NOTE]
-> Ajánlott eljárás, hogy bizonyos alkalmazásokhoz korlátozott hozzáféréssel rendelkező adatbázis-felhasználókat hozzon létre a rendszergazdai felhasználó használata helyett. Ebben a példában a `manager` felhasználó _kizárólag_ az `eventregistration` adatbázishoz rendelkezik teljes körű hozzáféréssel.
+> Ajánlott eljárás, hogy bizonyos alkalmazásokhoz korlátozott hozzáféréssel rendelkező adatbázis-felhasználókat hozzon létre a rendszergazdai felhasználó használata helyett. Ebben a példában a `manager` felhasználó _kizárólag_ az `pollsdb` adatbázishoz rendelkezik teljes körű hozzáféréssel.
 
 ### <a name="test-app-connectivity-to-production-database"></a>Az alkalmazás és az éles adatbázis közötti kapcsolat ellenőrzése
 
-A helyi terminálablakba visszalépve futtassa a következő parancsokat a Flask-adatbázis migrálása és a Flask-kiszolgáló futtatásához.
+A helyi terminálablakban, módosítsa az adatbázis-környezeti változók (amelyet korábban beállított futtatásával *env.sh* vagy *env.ps1*):
 
 ```bash
-FLASK_APP=app.py DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBNAME="eventregistration" DBPASS="supersecretpass" flask db upgrade
-FLASK_APP=app.py DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBNAME="eventregistration" DBPASS="supersecretpass" flask run
+# Bash
+export DBHOST="<postgresql_name>.postgres.database.azure.com"
+export DBUSER="manager@<postgresql_name>"
+export DBNAME="pollsdb"
+export DBPASS="supersecretpass"
+
+# PowerShell
+$Env:DBHOST = "<postgresql_name>.postgres.database.azure.com"
+$Env:DBUSER = "manager@<postgresql_name>"
+$Env:DBNAME = "pollsdb"
+$Env:DBPASS = "supersecretpass"
 ```
 
-Az alkalmazás teljes betöltését követően az alábbihoz hasonló üzenet jelenik meg:
+Django-áttelepítés futtatása az Azure-adatbázishoz, és hozzon létre egy rendszergazdai felhasználót.
 
 ```bash
-INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
-INFO  [alembic.runtime.migration] Will assume transactional DDL.
-INFO  [alembic.runtime.migration] Running upgrade  -> 791cd7d80402, empty message
- * Serving Flask app "app"
- * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+python manage.py migrate
+python manage.py createsuperuser
 ```
 
-Egy böngészőben nyissa meg a http://localhost:5000 oldalt. Kattintson a **Register!** (Regisztrálás) gombra, és hozzon létre egy tesztregisztrációt. Most az Azure-ban lévő adatbázisba írunk adatokat.
+A rendszergazda felhasználó létrehozása után futtassa a Django-kiszolgáló.
 
-![Helyileg futó Python Flask-alkalmazás](./media/tutorial-python-postgresql-app/local-app.png)
+```bash
+python manage.py runserver
+```
+
+Navigáljon a `http://localhost:8000` az újra. Az üzenetnek kell megjelennie `No polls are available.` újra. 
+
+Navigáljon a `http://localhost:8000/admin` , és jelentkezzen be a rendszergazdai felhasználó hozott létre, és hozzon létre egy lekérdezési kérdést például előtt.
+
+![Helyileg futó Python Django-alkalmazás](./media/tutorial-python-postgresql-app/django-admin-local.png)
+
+Navigáljon a `http://localhost:8000` újra, és tekintse meg a lekérdezési kérdés jelenik meg. Az alkalmazás most már írja az adatokat az adatbázisba, az Azure-ban.
 
 ## <a name="deploy-to-azure"></a>Üzembe helyezés az Azure-ban
 
@@ -250,13 +281,42 @@ Ebben a lépésben üzembe helyezi a Postgreshez csatlakoztatott Python-alkalmaz
 
 ### <a name="configure-repository"></a>Az adattár konfigurálása
 
-A Git üzembe helyező összetevője az App Service-ben elindítja a `pip` automatizálást, ha van egy _application.py_ elem az adattárgyökérben. Ebben az oktatóanyagban engedje, hogy az üzembe helyező összetevő futtassa Ön helyett az automatizálást. A helyi terminálablakban keresse meg az adattárgyökeret, hozzon létre egy tesztként funkcionáló _application.py_ elemet, majd véglegesítse a módosításokat.
+Django érvényesíti a `HTTP_HOST` fejléc a bejövő kérelmeket. Az App Service-ben működnek a Django-alkalmazások esetén szüksége a teljesen minősített tartománynevet az alkalmazás hozzáadása az engedélyezett gazdagépek. Nyissa meg _azuresite/settings.py_ , és keresse meg a `ALLOWED_HOSTS` beállítás. Módosítsa a sort:
+
+```python
+ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
+```
+
+Ezután nem támogatja a Django [éles környezetben statikus fájlok kiszolgálása](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/), így ez manuálisan engedélyeznie kell. A jelen oktatóanyag esetében használja [WhiteNoise](http://whitenoise.evans.io/en/stable/). A WhiteNoise csomag már szerepel a _requirements.txt_. Egyszerűen Django a használatára konfigurálja. 
+
+A _azuresite/settings.py_, keresse meg a `MIDDLEWARE` beállítást, és adja hozzá a `whitenoise.middleware.WhiteNoiseMiddleware` közbenső szoftvert a listában csak az alábbiakban a `django.middleware.security.SecurityMiddleware` közbenső szoftver. A `MIDDLEWARE` beállítást kell kinéznie:
+
+```python
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    ...
+]
+```
+
+Végén _azuresite/settings.py_, adja hozzá a következő sorokat.
+
+```python
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+```
+
+WhiteNoise konfigurálásával kapcsolatos további információkért lásd: a [WhiteNoise dokumentáció](http://whitenoise.evans.io/en/stable/).
+
+> [!IMPORTANT]
+> Az adatbázis-beállítások szakaszban már követi a biztonsági szempontból ajánlott a környezeti változók használatával. A teljes üzembe helyezés javaslatokért lásd: [a Django dokumentációja: telepítési ellenőrzőlista](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/).
+
+
+Véglegesítse a módosításokat a tárházba.
 
 ```bash
-cd ..
-touch application.py
-git add .
-git commit -m "ensure azure automation"
+git commit -am "configure for App Service"
 ```
 
 ### <a name="configure-a-deployment-user"></a>Üzembe helyező felhasználó konfigurálása
@@ -280,7 +340,7 @@ Az App Service-ben a környezeti változókat _alkalmazásbeállításként_ leh
 Az alábbi példa az adatbázis kapcsolati adatait alkalmazásbeállításokként adja meg. 
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBPASS="supersecretpass" DBNAME="eventregistration"
+az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBPASS="supersecretpass" DBNAME="pollsdb"
 ```
 
 ### <a name="push-to-azure-from-git"></a>Leküldéses üzenet küldése a Gitből az Azure-ra
@@ -288,42 +348,28 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 [!INCLUDE [app-service-plan-no-h](../../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
 ```bash 
-Counting objects: 5, done. 
-Delta compression using up to 4 threads. 
-Compressing objects: 100% (5/5), done. 
-Writing objects: 100% (5/5), 489 bytes | 0 bytes/s, done. 
-Total 5 (delta 3), reused 0 (delta 0) 
-remote: Updating branch 'master'. 
-remote: Updating submodules. 
-remote: Preparing deployment for commit id '6c7c716eee'. 
-remote: Running custom deployment command... 
-remote: Running deployment command... 
-remote: Handling node.js deployment. 
+Counting objects: 7, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (7/7), 775 bytes | 0 bytes/s, done.
+Total 7 (delta 4), reused 0 (delta 0)
+remote: Updating branch 'master'.
+remote: Updating submodules.
+remote: Preparing deployment for commit id '6520eeafcc'.
+remote: Generating deployment script.
+remote: Running deployment command...
+remote: Python deployment.
+remote: Kudu sync from: '/home/site/repository' to: '/home/site/wwwroot'
 . 
 . 
 . 
-remote: Deployment successful. 
+remote: Deployment successful.
+remote: App container will begin restart within 10 seconds.
 To https://<app_name>.scm.azurewebsites.net/<app_name>.git 
- * [new branch]      master -> master 
+   06b6df4..6520eea  master -> master
 ```  
 
-### <a name="configure-entry-point"></a>Belépési pont konfigurálása
-
-Alapértelmezés szerint a beépített rendszerkép egy _wsgi.py_ vagy egy _application.py_ elemet keres a gyökérkönyvtárban belépési pontként, de az Ön belépési pontja az _app/app.py_. Az _application.py_, amelyet korábban hozzáadott, üres, és nincsen semmi szerepe.
-
-A Cloud Shellben futtassa az [`az webapp config set`](/cli/azure/webapp/config?view=azure-cli-latest#az-webapp-config-set) parancsot egy egyéni indítási szkript beállításához.
-
-```azurecli-interactive
-az webapp config set --name <app_name> --resource-group myResourceGroup --startup-file "gunicorn '--bind=0.0.0.0' --chdir /home/site/wwwroot/app app:app"
-```
-
-A `--startup-file` paraméter egy egyéni parancs vagy az egyéni parancsot tartalmazó fájlhoz vezető elérési út értékét veszi fel. Az egyéni parancsot a következő formátumban kell megadni:
-
-```
-gunicorn '--bind=0.0.0.0' --chdir /home/site/wwwroot/<subdirectory> <module>:<variable>
-```
-
-Az egyéni parancsban szükség van a `--chdir` elemre, ha a belépési pontja nem szerepel a gyökérkönyvtárban, és a `<subdirectory>` az alkönyvtár. A _.py_ fájl neve `<module>`, és az Ön webalkalmazását a `<variable>` változó képviseli a modulban.
+Az App Service-ben rendszerbe állítási kiszolgáló látja _requirements.txt_ az adattár gyökérkönyvtárában és után automatikusan futtatja a Python-csomagkezelés `git push`.
 
 ### <a name="browse-to-the-azure-web-app"></a>Az Azure webalkalmazás megkeresése
 
@@ -333,91 +379,29 @@ Keresse meg az üzembe helyezett webalkalmazást. Az elindítása hosszabb időt
 http://<app_name>.azurewebsites.net
 ```
 
-Láthatja az előzőleg regisztrált vendégeket, akik az előző lépésben lettek mentve az éles Azure-adatbázisban.
+A korábban létrehozott lekérdezési kérdést kell megjelennie. 
 
-![Azure-ban futó Python Flask-alkalmazás](./media/tutorial-python-postgresql-app/docker-app-deployed.png)
+App Service-ben a tárház projekt Django észleli az olyan _wsgi.py_ egyes alkönyvtárában található cikkre hivatkozik, amely által létrehozott `manage.py startproject` alapértelmezés szerint. Ha a fájlt talál, betölti a Django-alkalmazás. Hogyan betölti az App Service a Python-alkalmazások további információkért lásd: [konfigurálása beépített Python-rendszerkép](how-to-configure-python.md).
+
+Navigáljon a `<app_name>.azurewebsites.net` , és jelentkezzen be a ugyanaz a rendszergazda felhasználó hozott létre. Ha szeretné próbálja meg néhány további lekérdezési kérdések létrehozása.
+
+![Helyileg futó Python Django-alkalmazás](./media/tutorial-python-postgresql-app/django-admin-azure.png)
 
 **Gratulálunk!** Egy Python-alkalmazást futtat a Linux rendszerhez készült App Service-ben.
 
 ## <a name="access-diagnostic-logs"></a>Diagnosztikai naplók elérése
 
-Mivel a Python-alkalmazás egy tárolóban fut, a Linux rendszeren futó App Service lehetővé teszi a tárolóból létrehozott konzolnaplókhoz való hozzáférést. A naplófájlok kikereséséhez látogasson el a következő URL-címre:
+A Linuxon futó App Service apps futnak a tárolókon belül egy alapértelmezett Docker-rendszerképet. A konzolnaplófájlokban a tárolón belül létrehozott is elérheti. A naplók eléréséhez először kapcsolja be a tároló naplózása a következő parancsot a Cloud shellben való futtatásával:
 
-```
-https://<app_name>.scm.azurewebsites.net/api/logs/docker
-```
-
-Két JSON-objektumot kell látnia, amelyek mindegyike rendelkezik egy `href` tulajdonsággal. Az egyik `href` a Docker-konzolnaplókra mutat (a vége `_docker.log`), a másik `href` pedig a Python-tárolóból létrehozott konzolnaplókhoz. 
-
-```json
-[  
-   {  
-      "machineName":"RD0003FF61ACD0_default",
-      "lastUpdated":"2018-09-27T16:48:17Z",
-      "size":4766,
-      "href":"https://<app_name>.scm.azurewebsites.net/api/vfs/LogFiles/2018_09_27_RD0003FF61ACD0_default_docker.log",
-      "path":"/home/LogFiles/2018_09_27_RD0003FF61ACD0_default_docker.log"
-   },
-   {  
-      "machineName":"RD0003FF61ACD0",
-      "lastUpdated":"2018-09-27T16:48:19Z",
-      "size":2589,
-      "href":"https://<app_name>.scm.azurewebsites.net/api/vfs/LogFiles/2018_09_27_RD0003FF61ACD0_docker.log",
-      "path":"/home/LogFiles/2018_09_27_RD0003FF61ACD0_docker.log"
-   }
-]
+```azurecli-interactive
+az webapp log config --name <app_name> --resource-group myResourceGroup --docker-container-logging filesystem
 ```
 
-Másolja át a használni által kívánt `href` értékét egy böngészőablakba a naplók megkereséséhez. A naplók küldése nem streameléssel történik, így a művelet eredményére valamennyit várni kell. Az új naplók megtekintéséhez frissítse a böngészőlapot.
+Miután a tároló naplózása be van kapcsolva, a következő parancsot a naplófolyam lásd:
 
-## <a name="update-data-model-and-redeploy"></a>Az adatmodell frissítése és ismételt üzembe helyezése
-
-Ebben a lépésben hozzáadja a résztvevők számát ad hozzá az egyes eseményregisztrációkhoz a `Guest` modell frissítésével, majd újra üzembe helyezi a frissítést az Azure-ban.
-
-A helyi terminálablakban vegye ki a fájlokat a `modelChange` ágból a következő git-paranccsal:
-
-```bash
-git checkout origin/modelChange -- .
+```azurecli-interactive
+az webapp log tail --name <app_name> --resource-group myResourceGroup
 ```
-
-Ez a kivételi művelet végrehajtja a szükséges módosításokat a modellen, a nézeteken és a vezérlőkön. Emellett tartalmaz egy, az *alembic* (`flask db migrate`) használatával létrehozott adatbázismigrálást is. Az alábbi git-paranccsal áttekintheti a módosításokat:
-
-```bash
-git diff master origin/modelChange
-```
-
-### <a name="test-your-changes-locally"></a>Módosítások helyi tesztelése
-
-A helyi terminálablakban az alábbi parancsok futtatásával helyben tesztelheti a módosításokat a Flask-kiszolgáló futtatásával.
-
-```bash
-source venv/bin/activate
-cd app
-FLASK_APP=app.py DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBNAME="eventregistration" DBPASS="supersecretpass" flask db upgrade
-FLASK_APP=app.py DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBNAME="eventregistration" DBPASS="supersecretpass" flask run
-```
-
-A módosítások megtekintéséhez a böngészőben keresse fel a http://localhost:5000 címet. Hozzon létre egy tesztregisztrációt.
-
-![Helyileg futó, Docker-tárolóalapú Python Flask-alkalmazás](./media/tutorial-python-postgresql-app/local-app-v2.png)
-
-### <a name="publish-changes-to-azure"></a>Módosítások közzététele az Azure-ba
-
-A helyi terminálablakban mentse az összes módosítást a Gitben, majd továbbítsa a kód módosításait az Azure-ba.
-
-```bash 
-git add . 
-git commit -m "updated data model" 
-git push azure master 
-``` 
-
-Nyissa meg az Azure-webalkalmazást, és próbálja ki ismét az új funkciót. Mindenképpen frissítse az oldalt.
-
-```bash
-http://<app_name>.azurewebsites.net
-```
-
-![Docker Python Flask-alkalmazás az Azure App Service-ben](./media/tutorial-python-postgresql-app/docker-flask-in-azure.png)
 
 ## <a name="manage-your-web-app-in-the-azure-portal"></a>A webalkalmazás kezelése az Azure Portalon
 
@@ -442,14 +426,13 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Python-alkalmazás csatlakoztatása a PostgreSQL-hez
 > * Az alkalmazás üzembe helyezése az Azure-ban
 > * Diagnosztikai naplók megtekintése
-> * Az adatmodell frissítése és az alkalmazás ismételt üzembe helyezése
 > * Az alkalmazás kezelése az Azure Portalon
 
 Lépjen a következő oktatóanyaghoz, amelyből megtudhatja, hogyan képezhet le egyedi DNS-nevet a webalkalmazáshoz.
 
 > [!div class="nextstepaction"]
-> [Beépített Python-rendszerkép konfigurálása](how-to-configure-python.md)
+> [Meglévő egyéni DNS-név hozzákapcsolása az Azure-webalkalmazásokhoz](../app-service-web-tutorial-custom-domain.md)
 
 > [!div class="nextstepaction"]
-> [Meglévő egyéni DNS-név hozzákapcsolása az Azure-webalkalmazásokhoz](../app-service-web-tutorial-custom-domain.md)
+> [Konfigurálja a beépített Python kép és hibáinak elhárítása](how-to-configure-python.md)
 
