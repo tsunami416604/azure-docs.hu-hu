@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
-ms.date: 09/24/2018
-ms.openlocfilehash: c761d0ac5d2c52241eadd18b2d8b65e00ccb34ba
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.date: 12/04/2018
+ms.openlocfilehash: 5746180b894da265dfc02176c13b5f9b60f4df96
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114983"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872781"
 ---
 # <a name="how-to-train-tensorflow-models"></a>Hogyan TensorFlow modelleket taníthat be
 
@@ -23,7 +23,7 @@ Neurális hálózat (DNN) képzést nyújt tensorflow-hoz, az Azure Machine Lear
 ## <a name="single-node-training"></a>Egy csomópontos képzés
 A képzés a `TensorFlow` estimator hasonlít a használatával a [alap `Estimator` ](how-to-train-ml-models.md), ezért először olvassa el a cikkben található útmutató, és ellenőrizze, hogy tisztában van a bemutatott fogalmakkal.
   
-TensorFlow-feladatok futtatásához, hozza létre a `TensorFlow` objektum. Már létrehozott kell a [számítási célt](how-to-set-up-training-targets.md#batch) objektum `compute_target`.
+TensorFlow-feladatok futtatásához, hozza létre a `TensorFlow` objektum. Már létrehozott kell a [számítási célt](how-to-set-up-training-targets.md#amlcompute) objektum `compute_target`.
 
 ```Python
 from azureml.train.dnn import TensorFlow
@@ -47,7 +47,7 @@ Paraméter | Leírás
 --|--
 `source_directory` | Helyi könyvtár, amely tartalmazza az összes a betanítási feladathoz szükséges kódot. Ez a mappa a távoli számítási átmásolódnak a helyi gépen
 `script_params` | A parancssori paraméterek, a tanítási szkriptet megadása szótárban `entry_script`, < parancssori argumentum, érték > formájában párok
-`compute_target` | Távoli számítási arról, hogy az a tanítási szkriptet, ebben az esetben egy [Batch AI](how-to-set-up-training-targets.md#batch) fürt
+`compute_target` | Arról, hogy az a tanítási szkriptet, ebben az esetben az Azure Machine Learning Compute távoli számítási célnak ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) fürt
 `entry_script` | Fájl elérési útja (viszonyítva a `source_directory`), a tanítási szkriptet futtatandó távoli számítási. Ezt a fájlt, és a további fájlokat attól függ, ebben a mappában kell elhelyezni.
 `conda_packages` | Szükség szerint a tanítási szkriptet conda-n keresztül kell telepíteni a Python-csomagok listáját. Ebben az esetben használja a tanítási szkriptet `sklearn` tölt be az adatokat, így adja meg ezt a csomagot kell telepíteni.  A konstruktor rendelkezik egy másik nevű paramétert `pip_packages` használható az esetleges pip csomagokat szükséges
 `use_gpu` | Ezt a jelzőt `True` kihasználhatja a GPU, a betanításhoz. Alapértelmezés szerint a `False`.
@@ -170,16 +170,9 @@ run = exp.submit(tf_est)
 ```
 
 ## <a name="examples"></a>Példák
-Egy csomópontos TensorFlow-betanítás oktatóanyagot tekintse meg:
-* [Training/03.train-hyperparameter-Tune-Deploy-with-tensorflow](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow/03.train-hyperparameter-tune-deploy-with-tensorflow.ipynb)
 
-Az elosztott TensorFlow-Horovod oktatóanyagért lásd:
-* [képzés és 04.distributed-tensorflow-az-horovod](https://github.com/Azure/MachineLearningNotebooks/tree/master/training/04.distributed-tensorflow-with-horovod)
-
-Natív elosztott TensorFlow-oktatóanyagot tekintse meg:
-* [betanítási/05.distributed-tensorflow-az-paraméter-kiszolgáló](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/05.distributed-tensorflow-with-parameter-server)
-
-Ezeket a notebookokat lekérése:
+Notebooks az elosztott deep learninget tekintse meg:
+* [How-to-use-azureml/Training-with-deep-Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

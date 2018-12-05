@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 90918b306b83a17476107ae427fc938509712d9e
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 631272e4e98c2c0326a1b22857603bef0b88eb93
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725981"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889174"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
@@ -46,7 +46,7 @@ Képes figyelni a Linux-alapú csomópontokat használó hálózatok jelenleg pr
 A csomópont virtuális gépek, hálózatok figyelése az NPM-megoldást futtatja, a csomópontok legalább 500 MB memória és a egy magot kell rendelkeznie. Nem kell különálló csomópontok használata futtatásához npm-et. A megoldás, amely rendelkezik a rajta futó számítási feladatoktól csomópontján futtathatja. A megoldás a teszi, hogy a monitorozási folyamat leállítása, abban az esetben azt használja, amely több, mint 5 %-ot tartalmaz.
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>Npm-et használja, hogy csatlakozhatok saját csomópontok közvetlen ügynök vagy a System Center Operations Manager használatával?
-A Teljesítményfigyelő és a szolgáltatás Kapcsolatfigyelő képességeket is támogatja a csomópontok [közvetlen ügynökök csatlakoztatott](../azure-monitor/platform/agent-windows.md) , valamint [szolgáltatást az Operations Manageren keresztül csatlakozó](log-analytics-om-agents.md).
+A Teljesítményfigyelő és a szolgáltatás Kapcsolatfigyelő képességeket is támogatja a csomópontok [közvetlen ügynökök csatlakoztatott](../azure-monitor/platform/agent-windows.md) , valamint [szolgáltatást az Operations Manageren keresztül csatlakozó](../azure-monitor/platform/om-agents.md).
 
 Az ExpressRoute-figyelő szolgáltatás az Azure-csomópontok csatlakoznia kell a közvetlen ügynökök, csak. Az Operations Manager keresztül vannak csatlakoztatva az Azure csomópontok nem támogatottak. Helyszíni csomópontokat a közvetlen ügynökök, valamint az Operations Manager csatlakoztatott csomópontok ExpressRoute-kapcsolatcsoport figyelésére használhatók.
 

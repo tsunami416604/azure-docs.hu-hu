@@ -17,19 +17,19 @@ ms.date: 12/01/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 1eea38a5a360d8ab12aa4ff6dac7161828ec1c72
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 2d0530e2d7b97c4b3fda84f796de1a0e2857e2ac
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682996"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871999"
 ---
 # <a name="v20-protocols---oauth-20-and-openid-connect"></a>v2.0 protokoll – OAuth 2.0 és OpenID Connect
 
 A v2.0-végpont használhatja az Azure Active Directory (Azure AD) identitás--szolgáltatásként az iparági szabványos protokollok, OpenID Connect és az OAuth 2.0. Szabványokkal kompatibilis a szolgáltatás pedig finom eltérések ezeket a protokollokat bármely két megvalósítása között lehet. Az adatok itt lesznek lehet hasznos, ha úgy dönt, hogy a kód írása közvetlenül küldésével és HTTP-kérelmek kezelésére, vagy egy harmadik féltől származó nyílt forráskódú kódtár, ahelyett, hogy az egyik a [nyílt forráskódú könyvtáraink](reference-v2-libraries.md).
 
 > [!NOTE]
-> Nem minden Azure ad-ben az Azure-forgatókönyvek és funkciók támogatottak a v2.0-végpontra. Annak megállapításához, ha a v2.0-végpont használja, olvassa el [v2.0 korlátozások](active-directory-v2-limitations.md).
+> A 2.0-s verziójú végpont nem minden Azure AD-forgatókönyvet és -funkciót támogat. Annak megállapításához, ha a v2.0-végpont használja, olvassa el [v2.0 korlátozások](active-directory-v2-limitations.md).
 
 ## <a name="the-basics"></a>Az alapok
 

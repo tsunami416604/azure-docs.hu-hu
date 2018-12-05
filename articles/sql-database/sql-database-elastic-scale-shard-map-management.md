@@ -3,7 +3,7 @@ title: Horizontális felskálázás az Azure SQL database |} A Microsoft Docs
 description: A ShardMapManager, az elastic database-ügyfélkódtár használatával
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/16/2018
-ms.openlocfilehash: 71496a11deff5236161931d572e75d4a84b75c5f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 28387c1487c506173cba2eaaf3364dab36c7f70f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162066"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865852"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Horizontális felskálázás a szilánkleképezés-kezelővel rendelkező adatbázisok
 Könnyen felskálázhatják horizontálisan az SQL Azure adatbázis, a szilánkleképezés-kezelő használata. A szilánkleképezés-kezelő egy speciális adatbázis, amely fenntartja a globális hozzárendelés információ minden szegmensre (adatbázisok) egy szegmens csoportban. A metaadatok, lehetővé teszi olyan alkalmazások értéke alapján a megfelelő adatbázishoz való csatlakozáshoz a **horizontális skálázási kulcs**. Emellett a készletben lévő minden szegmens tartalmazza, amelyek nyomon követik az adatok helyi horizontális skálázását (más néven **shardlet**). 
@@ -52,8 +52,8 @@ Rugalmas méretezés a következő típusú horizontális skálázási kulcsokk�
 | .NET | Java |
 | --- | --- |
 | egész szám |egész szám |
-| hossz |hossz |
-| GUID azonosítója |UUID |
+| hosszú |hosszú |
+| GUID azonosítója |uuid |
 | byte]  |byte] |
 | dátum/idő | időbélyeg |
 | Időtartam | időtartam|

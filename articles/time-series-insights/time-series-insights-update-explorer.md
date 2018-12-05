@@ -1,6 +1,6 @@
 ---
-title: Adatok megjelenítése az Explorer frissítés |} A Microsoft Docs
-description: Az Azure Time Series Insights Explorer frissítése
+title: Adatok megjelenítése az Azure Time Series Insights explorer frissítés |} A Microsoft Docs
+description: Az Azure Time Series Insights explorer frissítése
 author: ashannon7
 ms.author: anshan
 ms.workload: big-data
@@ -8,31 +8,31 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/28/2018
-ms.openlocfilehash: bf091eec271e3fb27f6ab312ff5d0096efa7f90c
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/03/2018
+ms.openlocfilehash: 48f3be2de2f23cef311994c603d50544b5d13a6e
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856075"
+ms.locfileid: "52879782"
 ---
-# <a name="visualize-data-in-the-explorer-update"></a>Az Explorer frissítése az adatok megjelenítése
+# <a name="visualize-data-in-the-explorer-preview"></a>Az explorer (előzetes verzió) az adatok megjelenítése
 
-Ez a cikk ismerteti a szolgáltatások és az Azure Time Series Insights (előzetes verzió) Explorer webalkalmazás belül elérhető beállítások.
+Ez a cikk azt ismerteti, lehetőségek és beállítások az Azure Time Series Insights (előzetes verzió) belül elérhető [explorer webalkalmazás](https://insights.timeseries.azure.com/preview/samples).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt használná az Azure Time Series Insights (előzetes verzió) Explorer, a következőket kell tennie:
+Mielőtt használná az Azure Time Series Insights (előzetes verzió) explorer, a következőket kell tennie:
 
 * Egy Time Series Insights-környezet üzembe helyezett rendelkezik. További információ a kiépítése itt egy Time Series Insights-környezetet.
 * A Time Series Insights környezetet hozott létre a fiókhoz tartozó adatok hozzáférést biztosítanak. Hozzáférést lehet biztosítani másoknak, valamint saját magának.
 * Eseményforrás hozzáadása a Time Series Insights környezetet az adatok leküldéséhez a környezetet.
 
-## <a name="learn-about-the-azure-time-series-insights-preview-explorer"></a>További tudnivalók az Azure Time Series Insights (előzetes verzió) Explorer
+## <a name="learn-about-the-azure-time-series-insights-preview-explorer"></a>További tudnivalók az Azure Time Series Insights (előzetes verzió) explorer
 
   ![Explorer egy az egyhez][1]
 
-Az Azure Time Series Insights (előzetes verzió) Explorert a következő hét elemek van osztva:
+Az Azure Time Series Insights (előzetes verzió) explorer az alábbi hét elemeket van osztva:
 
 1. Navigációs sáv TSI (előzetes verzió) lehetővé teszi elemzések és a modell lapok közötti váltáshoz.
 1. Hierarchiafája TSI (előzetes verzió) válassza ki a forrásadatok adott adatelemeket.
@@ -47,7 +47,7 @@ A környezet panel hozzáfér a TSI környezetek jeleníti meg. Ez magában fogl
 
   ![a második Explorer][2]
 
-## <a name="time-series-insights-preview-navigation-menu"></a>A Time Series Insights (előzetes verzió) navigációs menü
+## <a name="time-series-insights-preview-navigation-menu"></a>Time Series Insights (előzetes verzió) navigációs menü
 
   ![Explorer-három][3]
 
@@ -67,13 +67,13 @@ Ez az alkalmazás teszi lehetővé az Idősorozat-modell CRUD-műveletek végreh
 
 A TSM kapcsolatos további információkért olvassa el [alkalommal sorozat modellek](./time-series-insights-update-tsm.md).
 
-## <a name="time-series-insights-preview-model-search-panel"></a>A Time Series Insights (előzetes verzió) modellt keresése Panel
+## <a name="time-series-insights-preview-model-search-panel"></a>Time Series Insights (előzetes verzió) modell keresési Panel
 
 A modell keresés panelen keresését és keresse meg a TSM hierarchiában található a megadott idő sorozat példányai a diagramon megjelenítendő teszi lehetővé. Amikor kiválasztja a példányok, nem csak hozzá az aktuális diagram, de is bekerülnek az adatok is.
 
   ![negyedik Explorer][4]
 
-## <a name="time-series-insights-preview-well"></a>A Time Series Insights (előzetes verzió) is
+## <a name="time-series-insights-preview-well"></a>Idő Series Insights (előzetes verzió) jól
 
 A jól szolgáltatáspéldány-mezők és más metaadatokat adott sorozat példányai társított jeleníti meg. Jobb oldalán a jelölőnégyzetek lehetővé teszik az aktuális diagram konkrét példányok megjelenítése vagy elrejtése. A piros x vezérlő az elem jobb kattintással is az aktuális adatok alapján is eltávolítása meghatározott elemek.
 
@@ -83,29 +83,31 @@ A telemetriai adatok panel egy elem jobb függőleges nézet is található az a
 
   ![Explorer-hat][6]
 
-Megjegyzés: Ha a következő ikon látható, a példány nem rendelkezik semmilyen adatot a kiválasztott időtartomány során.  Oldja meg, növelheti a kiválasztott időtartomány, illetve győződjön meg arról, hogy a példány küld-e adatokat.
+> [!NOTE]
+> A következő ikon jelenik meg, ha a példány nem rendelkezik semmilyen adatot a kiválasztott időtartam során.
+> Oldja meg, növelheti a kiválasztott időtartomány, illetve győződjön meg arról, hogy a példány küld-e adatokat.
 
   ![Explorer-hét][7]
 
-## <a name="time-series-insights-preview-chart"></a>A Time Series Insights (előzetes verzió) diagram
+## <a name="time-series-insights-preview-chart"></a>Idősorozat-Insights (előzetes verzió) diagram
 
 A diagram idő sorozat példányai ugyanitt sorok teszi lehetővé. A környezet panel adatmodell és idő span Vezérlőpult összecsukódjon a webes szabályozza, hogy a diagram nagyobb kattint.
 
   ![Explorer-nyolc][8]
 
-1. Kiválasztott dátumtartomány – a jelenleg kijelölt dátumtartományban a diagram panel, a vezérlők, mely adatelem Vizualizáció elérhető lesz.
+1. **A kijelölt dátumtartományban** – a kijelölt dátumtartományban a diagram panel, a vezérlők, mely adatelem Vizualizáció elérhető lesz.
 
-1. Belső dátum tartomány csúszkaeszközt - használatát a két végpontot vezérlők kattint, és húzza őket a kívánt idővel kiterjednek.
+1. **Belső dátum tartomány csúszkaeszközt** – kattintva a két végpontot vezérlőket használja, és húzza őket a kívánt idővel span.
 
-1. Idő span összecsukása vezérlő – Ez a vezérlő magasságúra csökken, és az idő span panel szerkesztő fájl.
+1. **Idő a tartomány összecsukása vezérlő** – a vezérlő összecsukása és kibővíti az idő span panel szerkesztő.
 
-1. Y tengely formátum vezérlő esetében – ez szabályozhatja az elérhető lehetőségek a y tengely nézet közötti váltáshoz kattintson. Az y tengely nézetben elérhető lehetőségek a következők:
+1. **Vezérlő y tengely formázása** – kattintson erre a vezérlőre elérhető y tengely megjelenítési beállítások közötti váltáshoz. Az y tengely nézetben elérhető lehetőségek a következők:
 
-    * Alapértelmezett – minden sorban van egy egyéni y tengely
-    * Halmozott – Ez lehetővé teszi, hogy az azonos y tengelyen több sor zásobníku az y tengely adatok módosítását a kijelölt sor alapján
-    * Megosztott – együtt jelenik meg az összes y tengely adatok
+    * `Default`  – minden sorban van egy egyéni y tengely
+    * `Stacked` – Ez lehetővé teszi, hogy több sorban található azonos y zásobníku, az y tengely adatok módosítása a kijelölt sor alapján
+    * `Shared` – Az összes y tengely adatok együtt jelenik meg
 
-1. Aktuális adatelem – a jelenleg kijelölt adatelemének és a kapcsolódó részletes adatait.
+1. **Aktuális adatelem** – a jelenleg kijelölt adatelemének és a kapcsolódó részletes adatait.
 
 További részletesen is egy adott adatszelet által kattint, a jelenlegi grafikonon egy adatpont közben tartsa lenyomva az egérgombot, és húzza a kijelölt terület, a tetszőleges végpontot. Kattintson a jobb gombbal a szürke színnel, a kijelölt területen, majd kattintson a nagyítás, lent látható módon. További lehetőségek:
 
@@ -119,9 +121,9 @@ Itt látható egy példa egy megosztott y tengellyel.
 
   ![Explorer tizenegy][11]
 
-## <a name="time-series-insights-preview-time-editor-panel"></a>A Time Series Insights (előzetes verzió) idő szerkesztő Panel
+## <a name="time-series-insights-preview-time-editor-panel"></a>Time Series Insights (előzetes verzió) idő szerkesztő Panel
 
-A TSI használata során először kiválaszthatja meg azt az időtartományt. A kiválasztott azt az időtartományt szabályozza az adatkészlet, amely a TSI a frissítés widgetek esetében adatkezelési érhető el. A következő webes vezérlők kiválasztásakor a működő azt az időtartományt a TSI frissítés érhető el.
+Ha a TSI dolgozik, először kiválaszthatja meg azt az időtartományt. A kiválasztott azt az időtartományt szabályozza az adatkészlet, amely a TSI a frissítés widgetek esetében adatkezelési érhető el. A következő webes vezérlők kiválasztásakor a működő azt az időtartományt a TSI frissítés érhető el.
 
   ![Explorer-tizenkét][12]
 
@@ -133,11 +135,11 @@ A TSI használata során először kiválaszthatja meg azt az időtartományt. A
 
 1. **Külső dátumtartomány csúszkavezérlő** -végpont vezérlők használatával válassza ki a külső dátumtartományt, amely a "Belső dátum" időtartomány-vezérlő elérhető lesz.
 
-1. **Gyorshivatkozások dátumtartomány legördülő lista** – lehetővé teszi az előre beállított idő span beállításokat, például az elmúlt 30 percben, az elmúlt 12 órában, egyéni tartomány között. Ez az érték módosítása módosítja a rendelkezésre álló időköz tartományokat, lásd az alábbiakban az intervallum mérete csúszka eszközben is.
+1. **Gyorshivatkozások dátum tartomány legördülő** – lehetővé teszi az előre beállított idő span beállításokat, például az elmúlt 30 percben, az elmúlt 12 órában, egyéni tartomány között. Ez az érték módosítása módosítja a rendelkezésre álló időköz tartományokat, lásd az alábbiakban az intervallum mérete csúszka eszközben is.
 
 1. **Intervallum méretű csúszkaeszközt** – az intervallum mérete csúszkaeszközt lehetővé teszi nagyítás adataikkal időközök keresztül a ugyanazt azt az időtartományt. Ez biztosítja, hogy idő nagy webterületek trendeket jelenít meg az zökkenőmentes szeletek le legyen az ezredmásodperc alatt maradnak, így megjelenik az adatok részletes, nagy felbontású darabok közötti mozgás még pontosabb irányítását. A csúszka alapértelmezett kiindulási pontjaként a kijelölésből; az adatok a legoptimálisabb nézet van beállítva terheléselosztási megoldás, a lekérdezés sebessége és a granularitási.
 
-1. **Dátumtartomány és a webes vezérlő** – egyszerűen kattintson és válassza ki a kívánt dátum és idő címtartományok webes vezérlőhöz. A vezérlőelem használatával váltson a különböző időzónák között. Az aktuális munkaterület a alkalmazni szeretné a módosítások elvégzése után kattintson a Mentés gombra.
+1. **Dátumtartomány és a webes vezérlő** – egyszerűen kattintson és válassza ki a kívánt dátum és idő címtartományok webes vezérlőhöz. A vezérlőelem használatával váltson a különböző időzónák között. Miután elvégezte a módosításokat, szeretné-e alkalmazni az aktuális munkaterületen kattintson a Mentés gombra.
 
   ![Explorer tizenhárom][13]
 
@@ -151,7 +153,7 @@ A TSI frissítés navigációs panelen a következő szolgáltatásokat nyújtja
 
   ![Explorer-tizenöt][15]
 
-Kattintson a hivatkozás bekarikázott webes vezérlő mentéséhez, vagy az aktuális Time Series Insights munkafolyamat tartalmazó megosztani egy URL-címet generálni:
+Kattintson a hivatkozás bekarikázott webes vezérlő mentéséhez, vagy ossza meg az aktuális Azure TSI munkafolyamat, amely tartalmaz egy URL-címet generálni:
 
 * Jelenleg kijelölt időtartományban
 * Kijelölt intervallumának mérete
@@ -177,7 +179,7 @@ Itt is módosíthatja a támogatott nyelvek között.
 
 ## <a name="s1s2-environment-controls"></a>S1/S2 környezeti vezérlők
 
-### <a name="time-series-insights-preview-terms-panel"></a>A Time Series Insights (előzetes verzió) kifejezések Panel
+### <a name="time-series-insights-preview-terms-panel"></a>Time Series Insights (előzetes verzió) kifejezések Panel
 
 Ez a szakasz csak a frissített felhasználói felületén a kezelővel próbál meglévő S1/S2 környezet vonatkozik. Ehhez használja a végleges verzió termék és frissítése (előzetes verzió) egy másik együtt érdemes. A Microsoft bizonyos funkciói a meglévő felhasználói felületről történő hozzáadása a frissített explorer, de tudja, a meglévő TSI Explorerben S1/S2 környezetben mindig megtekintheti a teljes felhasználói felület.  
 
@@ -214,7 +216,9 @@ Kattintva látható ikonra, ahogy az alábbi elemek a diagram panelről megjelen
 
 Olvassa el a [Azure TSI (előzetes verzió) tárolási a bejövő és kimenő](./time-series-insights-update-storage-ingress.md).
 
-Olvassa el az új [Time Series modellek](./time-series-insights-update-tsm.md).
+További információ [adatmodellezés](./time-series-insights-update-tsm.md).
+
+Ismerje meg [felismerése és hibaelhárítási](./time-series-insights-update-how-to-troubleshoot.md).
 
 <!-- Images -->
 [1]: media/v2-update-explorer/explorer-one.png

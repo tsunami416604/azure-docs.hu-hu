@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: c0255ff31353ca8fe0cf684af53a12654b400208
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: ca844c89b657bc3286f3472af3acbf937ef1e20f
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407554"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52891061"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure biztonsági és megfelelőségi terv – a HIPAA/HITRUST-állapotadatok és mesterséges Intelligencia
 
@@ -345,8 +345,8 @@ A megoldás az Azure Event Grid, egy egyetlen szolgáltatás kezelése, az össz
 ### <a name="machine-learning"></a>Machine Learning
 
 
--   [Naplózás engedélyezve van](/azure/machine-learning/studio/web-services-logging) Machine Learning Studio a web services.
-- használatával [Machine Learning Studio](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) workbench igényel, amely lehetővé teszi a számára egy megoldás előrejelzése kísérletek, fejlesztését. [A workbench integrálása](/azure/machine-learning/desktop-workbench/using-git-ml-project) segíthet kísérletek felügyelete egyszerűbb.
+- [Naplózás engedélyezve van](/azure/machine-learning/studio/web-services-logging) Machine Learning Studio a web services.
+- Használatával [Machine Learning Studio](/azure/machine-learning/studio/what-is-ml-studio) kísérletek, amely lehetővé teszi, hogy a megoldás számára egy előre jelezni fejlődéséhez igényel.
 
 ## <a name="security"></a>BIZTONSÁG
 

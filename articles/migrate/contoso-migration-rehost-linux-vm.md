@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 4845fdbbfa4dfabf53b1f7e747668cf7f5108eb7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4f4c52bd217bf67206fe1208c1d5402216bd8178
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232708"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879451"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms"></a>Contoso áttelepítési: egy a helyszíni Linux alkalmazás Újratárolása az Azure virtuális gépek
 
@@ -145,7 +145,7 @@ Contoso cégnek szüksége van a több Azure-összetevőket a Site Recovery:
     - A tárfióknak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie.
     - Egy általános célú fiók, és standard szintű storage, LRS-replikációval használnak.
 
-    ![Site Recovery-tároló](./media/contoso-migration-rehost-linux-vm/asr-storage.png)
+      ![Site Recovery-tároló](./media/contoso-migration-rehost-linux-vm/asr-storage.png)
 
 2. A helyen lévő hálózati és tárolási fiókkal, hozzon létre egy tárolót (ContosoMigrationVault) és elhelyezheti a **ContosoFailoverRG** erőforráscsoport az USA keleti RÉGIÓJA 2 elsődleges régióban.
 

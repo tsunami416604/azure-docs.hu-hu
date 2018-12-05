@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: 32198387be680fd01558e900e4c438cde2cdc5b1
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: b2f106edf69b57410fd1990d0888cf9d3a71be56
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266930"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52880182"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Az Azure Marketplace-en kereskedelmi ügylet képességek és szempontok
 
@@ -177,8 +177,9 @@ Például ha a vásárló megvásárolhatja a hitelkártya használatával:
 |Küldenie jóváhagyásra cége kifizetési kiszámítási dátuma (havonta a 15.) | 2018. október 1. |
 |Küldenie jóváhagyásra cége kifizetési dátuma | 2018. október 15. |
 
-Ha a vásárló megvásárolhatja a nagyvállalati szerződés használatával:  
-|Leírás    |    Dátum  |
+Ha a vásárló megvásárolhatja a nagyvállalati szerződés használatával:
+
+| Leírás |    Dátum  |
 |----------|----------|
 |Rendelés időszak | Augusztus 15, 2018-2018. augusztus 30. |
 |Előfizetési időszak vége (negyedév) | 2018. Szeptembertől 30. |

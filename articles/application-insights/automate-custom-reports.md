@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/25/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 2cda1d0f216678f1dd8c074136ae35683c52d910
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 51482aa460826d4b364ba6b034129be9b7211ff3
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52719674"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872442"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Az Azure Application Insights-adatokat tartalmazó egyéni jelentések automatizálása
 
@@ -159,7 +159,7 @@ Ezeket a lépéseket csak akkor érvényesek, ha még nem rendelkezik konfigurá
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a létrehozásával [elemzési lekérdezések](../log-analytics/query-language/get-started-queries.md).
+* További információ a létrehozásával [elemzési lekérdezések](../azure-monitor/log-query/get-started-queries.md).
 * Tudjon meg többet [programozott módon az Application Insights-adatok lekérdezése](https://dev.applicationinsights.io/)
 * További tudnivalók a [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps) szolgáltatásról
 * Tudjon meg többet [Microsoft Flow](https://ms.flow.microsoft.com).

@@ -11,15 +11,20 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 15fd86a88c3025f81741d614b03d5c4c7c60262c
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 11/30/2018
+ms.openlocfilehash: 7de4415dd332254c595b6687dfb9d8db01c42362
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351742"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871710"
 ---
-# <a name="general-purpose-and-business-critical-service-tiers"></a>Általános célú és az üzletileg kritikus szolgáltatási szintek
+# <a name="azure-sql-database-service-tiers"></a>Az Azure SQL Database szolgáltatási csomagjai
+
+Az Azure SQL Database az SQL Server adatbázismotor architektúra, amely 99,99 %-os rendelkezésre állását, még akkor is, az infrastruktúra-hibák esetekben biztosítása érdekében a felhőalapú környezet módosul alapul. Nincsenek az Azure SQL Database által használt három architekturális modellek:
+- [Általános célú](sql-database-service-tier-general-purpose.md) többsége az általános számítási feladatokhoz tervezték.
+- [Üzletileg kritikus](sql-database-service-tier-business-critical.md) rövid késleltetésű számítási feladatok és egy olvasható replika tervezve.
+- [Nagy kapacitású](sql-database-service-tier-hyperscale.md) nagyon nagy méretű adatbázisok számára hoztuk létre (akár 100 TB-os) rendelkező több olvasható replika.
 
 Ez a cikk ismerteti az általános célú és az üzletileg kritikus szolgáltatási csomagokra a Virtuálismag-alapú vásárlási modell a storage és a biztonsági másolat szempontjai.
 

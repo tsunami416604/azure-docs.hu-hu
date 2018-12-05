@@ -1,27 +1,25 @@
 ---
-title: Csatlakozás az Azure Cosmos DB használatával, BI elemzőeszközök |} A Microsoft Docs
+title: Csatlakozás az Azure Cosmos DB használatával, BI elemzési eszközök
 description: Ismerje meg, hogyan normalizált adatok BI és az adatok elemzési szoftver lehet megtekinteni, hogy a táblák és nézetek létrehozásához az Azure Cosmos DB ODBC-illesztő használatával.
 keywords: ODBC, odbc-illesztő
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 010556dae1649754df5199fb81c10efcf4c5a226
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 578a5e43cb2acf77801d24682cb5e2750aebb428
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050000"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869909"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Csatlakozás az Azure Cosmos DB BI elemzési eszközök használata az ODBC-illesztő
 
 Az Azure Cosmos DB ODBC-illesztő segítségével csatlakozhat az Azure Cosmos DB használatával BI elemzési eszközök, például az SQL Server Integration Services, a Power BI Desktop és a Tableau, így elemezheti és az Azure Cosmos DB-adatok vizualizációkat létrehozni a ezen megoldások.
 
-Az Azure Cosmos DB ODBC-illesztő ODBC 3.8 megfelelő, és támogatja az ANSI SQL-92 szintaxist. Az illesztőprogram normalizálását adatokat az Azure Cosmos DB segítségével gazdag funkciókat nyújtja. A illesztőprogrammal adatokat az Azure Cosmos DB-táblák és nézetek hozhat létre. Az illesztőprogram lehetővé teszi, szemben a táblák és nézetek lekérdezéseket, ideértve csoportosítás szúr be a frissítéseket, és törli az SQL-műveletek végrehajtásához.
+Az Azure Cosmos DB ODBC-illesztő kompatibilis az ODBC 3.8-as verzióval, és támogatja az ANSI SQL-92 szintaxist. Az illesztő rengeteg funkciót tartalmaz, amelyek segítségével újranormalizálhatja az Azure Cosmos DB adatait. Az illesztő használatával az Azure Cosmos DB-ben található adatokat táblaként és nézetként jelenítheti meg. Az illesztő lehetővé teszi az SQL-műveletek elvégzését a táblákon és nézeteken, például a lekérdezések szerinti csoportosítást, beszúrást, frissítést és törlést.
 
 > [!NOTE]
 > Az ODBC-illesztő az Azure Cosmos DB-összekötő csak az Azure Cosmos DB SQL API-fiókok jelenleg támogatott.

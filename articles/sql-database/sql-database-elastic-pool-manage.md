@@ -3,7 +3,7 @@ title: Hozzon létre és kezelhetők rugalmas készletek – Azure SQL database 
 description: Hozzon létre, és rugalmas Azure SQL-készletek kezelése.
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-pool
+ms.subservice: elastic-pools
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/29/2018
-ms.openlocfilehash: acf17533ee73313937c2edb9badaef9007309373
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 366bdf73c6b62ffa98ce44076374df8be8b3de3c
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243095"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865879"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Az Azure SQL Database rugalmas készletek létrehozása és kezelése
 

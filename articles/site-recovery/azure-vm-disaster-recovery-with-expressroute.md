@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 84c6477a1c9bc61b339e66d91cb7c1fbc8e90ea0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5a16b81abb9cc95f46bd61f6c0232a28f3cda0ff
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837001"
+ms.locfileid: "52875399"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Vészhelyreállítás az Azure virtuális gépek Azure ExpressRoute integrálása
 
@@ -37,7 +37,7 @@ Az ExpressRoute segítségével kiterjesztheti helyszíni hálózatait a Microso
 Mielőtt elkezdené, győződjön meg arról, hogy megértette a következő fogalmak:
 
 - Az ExpressRoute [Kapcsolatcsoportok](../expressroute/expressroute-circuit-peerings.md)
-- Az ExpressRoute [útválasztási tartományok](../expressroute/expressroute-circuit-peerings.md#expressroute-routing-domains)
+- Az ExpressRoute [útválasztási tartományok](../expressroute/expressroute-circuit-peerings.md#routingdomains)
 - Az ExpressRoute [helyek](../expressroute/expressroute-locations.md).
 - Az Azure virtuális gép [replikáció architektúrája](azure-to-azure-architecture.md)
 - Hogyan [-replikálás beállítása](azure-to-azure-tutorial-enable-replication.md) az Azure virtuális gépek.
@@ -136,7 +136,7 @@ Ebben a példában a következő történjen, amikor engedélyezi az Azure-beli 
 
 ## <a name="fail-over-azure-vms-when-using-expressroute"></a>Azure virtuális gépek feladatainak átadása ExpressRoute használata során
 
-Miután a feladatátvételt az Azure virtuális gépek a cél a Site Recovery használatával az Azure-régióban, elérheti azokat ExpressRoute-tal [magánhálózati társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#azure-private-peering).
+Miután a feladatátvételt az Azure virtuális gépek a cél a Site Recovery használatával az Azure-régióban, elérheti azokat ExpressRoute-tal [magánhálózati társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#privatepeering).
 
 - A cél virtuális hálózat egy új kapcsolat ExpressRoute csatlakozni kell. A meglévő ExpressRoute-kapcsolat nem át automatikusan.
 - Amelyben állítsa be az ExpressRoute-kapcsolat a célként megadott virtuális hálózathoz módja attól függ, hogy az ExpressRoute-topológia.

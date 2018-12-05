@@ -3,7 +3,7 @@ title: Az SQL Database vészhelyreállítási próbák |} A Microsoft Docs
 description: Ismerje meg, útmutatást és ajánlott eljárásait vészhelyreállítási próba végrehajtása az Azure SQL Database használatával.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: c861163670b05b01c9c6d64b81f6e83c979a2af8
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 4ed98d80f54ba781e7230a7081b85a4437d20242
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163035"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877013"
 ---
 # <a name="performing-disaster-recovery-drill"></a>Vészhelyreállítási próba végrehajtása
 Javasoljuk, hogy az alkalmazás készenléti állapota helyreállítási munkafolyamat érvényesítése rendszeres időközönként történik. Az alkalmazások működését és a következmények ellenőrzése az adatvesztést és/vagy a megszakítások időtartamát, hogy a feladatátvétel magában foglalja a mérnöki célszerű. Emellett akkor is követelmény a legtöbb iparági normák szerint üzleti folytonossági hitelesítő részeként.

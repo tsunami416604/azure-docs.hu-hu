@@ -1,6 +1,6 @@
 ---
-title: Az Azure API management házirend minta - közös hozzáférésű Jogosultságkód létrehozása |} Microsoft Docs
-description: Az Azure API management házirend minta - bemutatja, hogyan kell létrehozni a közös hozzáférésű Jogosultságkód kifejezésekkel, és továbbítja a kérést az átírást-uri házirendek az Azure storage...
+title: Az Azure API management házirend minta – közös hozzáférésű Jogosultságkód létrehozása |} A Microsoft Docs
+description: Az Azure API management házirend-minta - bemutatja, hogyan hozhat létre közös hozzáférésű Jogosultságkód kifejezésekkel, és továbbítja a kérést az Azure storage-újraírási-uri-házirendet az...
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,27 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: c8a4d25211a0030c013628e69865406bb6e8899e
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 2c3adaa6f4e113f09e676583c2c35b5f1fbdb622
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286288"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877854"
 ---
 # <a name="generate-shared-access-signature"></a>Közös hozzáférésű Jogosultságkód létrehozása
 
-Ez a cikk bemutatja az Azure API management házirend minta, amely bemutatja, hogyan kell létrehozni [közös hozzáférésű Jogosultságkód](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) kifejezésekkel, és továbbítja a kérelmet az Azure storage az átírást-uri-házirendet. Beállíthatja vagy szerkesztheti a házirendet kódot, kövesse a témakörben ismertetett [beállítása és módosítása a házirend](../set-edit-policies.md). További példák, olvassa el [házirend minták](../policy-samples.md).
+Ez a cikk bemutatja egy Azure API management házirend minta azt mutatja be, hogyan hozhat létre [közös hozzáférésű Jogosultságkód](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) kifejezésekkel, és továbbítja a kérést az Azure storage-újraírási-uri-házirendet. Az ismertetett lépéseket követve beállíthatja, vagy szerkesztheti egy szabályzat-kódot, [Set meg vagy szerkessze a szabályzat](../set-edit-policies.md). További példák megtekintéséhez lásd: [házirend minták](../policy-samples.md).
 
 ## <a name="policy"></a>Szabályzat
 
-Illessze be a kódot a **bejövő** blokkot.
+Illessze be a kódot a **bejövő** letiltása.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Generate Shared Access Signature and forward request to Azure storage.policy.xml)]
 
 ## <a name="next-steps"></a>További lépések
 
-További tudnivalók APIM házirendek:
+További információ az APIM-szabályzatokat:
 
 + [Átalakítási házirendek](../api-management-transformation-policies.md)
-+ [Házirend-minták](../policy-samples.md)
++ [A házirend-minták](../policy-samples.md)
 

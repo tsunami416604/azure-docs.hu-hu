@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: 76b3d23a042fae452b25b0a707e3c7ff9bbda613
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 06bb64d85b8299564d1aa4fe12584ad36d0713e7
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838192"
+ms.locfileid: "52877890"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Hálózatkezelés az Azure-bA replikációs kapcsolatban
 
@@ -114,7 +114,10 @@ Ez a példa bemutatja egy virtuális gép replikálása NSG-szabályok konfigur�
 
       ![Storage-címke](./media/azure-to-azure-about-networking/storage-tag.png)
 
-2. Kimenő HTTPS (443) szabályok létrehozását az összes IP-címtartományokat, amelyek megfelelnek az Office 365 [hitelesítés és identitás IP V4 végpontok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
+2. HTTPS (443) kimenő biztonsági szabály létrehozása "AzureActiveDirectory" az NSG-t az alábbi képernyőképen látható módon.
+
+      ![aad-címke](./media/azure-to-azure-about-networking/aad-tag.png)
+
 3. A Site Recovery IP-címek, amelyek megfelelnek a célhelyen kimenő HTTPS (443) a szabályok létrehozása:
 
    **Hely** | **Site Recovery IP-cím** |  **Site Recovery monitorozási IP-cím**

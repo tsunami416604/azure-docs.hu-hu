@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: f440e92f62c7c61966145a1e74d3d3be9f6b7825
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 033b52c2c109211c347b90d721f0bdc593caa58e
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250558"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868761"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Az Azure Szolgáltatásbusz-kötések az Azure Functions szolgáltatáshoz
 
@@ -118,9 +118,9 @@ public static void Run(string myQueueItem,
 }
 ```
 
-### <a name="trigger---f-example"></a>Eseményindító - F #-példa
+### <a name="trigger---f-example"></a>Eseményindító - F# példa
 
-Az alábbi példa bemutatja egy kötelező a Service Bus-trigger egy *function.json* fájl és a egy [F #-függvény](functions-reference-fsharp.md) , amely a kötés használja. A függvény egy Service Bus üzenetsor-üzenetet naplózza. 
+Az alábbi példa bemutatja egy kötelező a Service Bus-trigger egy *function.json* fájl és a egy [ F# függvény](functions-reference-fsharp.md) , amely a kötés használja. A függvény egy Service Bus üzenetsor-üzenetet naplózza. 
 
 Itt van a kötési adatait a *function.json* fájlt:
 
@@ -139,7 +139,7 @@ Itt van a kötési adatait a *function.json* fájlt:
 }
 ```
 
-Az F #-szkriptkódot itt látható:
+Íme a F# parancsfájl-kódot:
 
 ```fsharp
 let Run(myQueueItem: string, log: ILogger) =
@@ -419,9 +419,9 @@ public static void Run(TimerInfo myTimer, ILogger log, ICollector<string> output
 }
 ```
 
-### <a name="output---f-example"></a>Kimenet – F #-példa
+### <a name="output---f-example"></a>Kimenete – F# példa
 
-Az alábbi példa bemutatja egy kötelező a Service Bus-kimenet egy *function.json* fájl és a egy [F #-szkriptfüggvény](functions-reference-fsharp.md) , amely a kötés használja. A függvény egy időzítő eseményindító 15 másodpercenként üzenetsori üzenetek küldéséhez használja.
+Az alábbi példa bemutatja egy kötelező a Service Bus-kimenet egy *function.json* fájl és a egy [ F# függvény parancsfájl](functions-reference-fsharp.md) , amely a kötés használja. A függvény egy időzítő eseményindító 15 másodpercenként üzenetsori üzenetek küldéséhez használja.
 
 Itt van a kötési adatait a *function.json* fájlt:
 
@@ -447,7 +447,7 @@ Itt van a kötési adatait a *function.json* fájlt:
 }
 ```
 
-F #-szkriptkódot, amely létrehoz egy üzenet a következő:
+Íme F# parancsfájl-kódot, amely létrehozza egy adott üzenet:
 
 ```fsharp
 let Run(myTimer: TimerInfo, log: ILogger, outputSbQueue: byref<string>) =
@@ -617,6 +617,7 @@ Ez a szakasz ismerteti a globális konfigurációs beállításoknak a kötéshe
                 "autoComplete": false,
                 "maxConcurrentCalls": 32,
                 "maxAutoRenewDuration": "00:55:00"
+            }
         }
     }
 }

@@ -8,19 +8,19 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.openlocfilehash: 926d1a35cb10d50ddeacbed5476e2dcf14d0999d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/03/2018
+ms.openlocfilehash: dc6244b6e263d3fb963d40b2f0c626cdfa9ecff8
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856634"
+ms.locfileid: "52873461"
 ---
 # <a name="data-modeling-in-azure-time-series-insights"></a>Az Azure Time Series Insightsban adatmodellezési
 
 Ez a dokumentum azt ismerteti, hogyan használható a **Time Series modellek** követve az Azure Time Series Insights (előzetes verzió). Számos gyakori adatforgatókönyvek azt részletezi.
 
-Olvassa el a [Azure TSI (előzetes verzió) Explorer](./time-series-insights-update-explorer.md) cikkben további információt a privát előzetes verzió megnyitásával.
+Olvassa el a [(előzetes verzió) az Azure TSI explorer](./time-series-insights-update-explorer.md) cikkben további információt a frissítés megnyitásával.
 
 ## <a name="types"></a>Típusok
 
@@ -130,9 +130,11 @@ Olvassa el a [Azure TSI (előzetes verzió) Explorer](./time-series-insights-upd
 
 ## <a name="next-steps"></a>További lépések
 
-Olvasási [Time Series modellek](./time-series-insights-update-tsm.md) bővebben **Time Series modellek**.
+További információ [adatmodellezés](./time-series-insights-update-tsm.md) bővebben **Time Series modellek**.
 
-Megtekintheti az Azure TSI (előzetes verzió) Explorer [cikk](./time-series-insights-update-explorer.md) további információ az előzetes verzióra.
+Megtekintheti a (előzetes verzió) az Azure TSI Explorerben engedélyezett [cikk](./time-series-insights-update-explorer.md) további információ az előzetes verzióra.
+
+További információ a támogatott JSON-alakzatok, olvassa el [támogatott JSON-alakzatok](./time-series-insights-send-events.md#json).
 
 <!-- Images -->
 [1]: media/v2-update-how-to-tsm/portal_one.png

@@ -2,19 +2,19 @@
 title: Mi is az Azure Backup Server biztonsági másolatot készíteni
 description: Ez a cikk egy felsoroló összes számítási feladatok, adattípusokat és az Azure Backup Server védő telepítések támogatási mátrixa.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 ms.service: backup
 keywords: ''
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.author: markgal
+ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: a48944beda52e134fcd02f6d12a35789a41aad31
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: e0ac5b318939ef576eae0d0caabc8a9c794b9641
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614735"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871251"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Az Azure Backup Server védelmi mátrixa
 

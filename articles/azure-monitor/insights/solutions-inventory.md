@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 38ed7a7fff08003563147d6b8eb9bbc33fb32bc9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4e7bcfbbec7be7320328df9ed2fa34ba7f7dbfc6
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836151"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888392"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Adatok gyűjtése részletei felügyeleti megoldások az Azure-ban
 Ez a cikk tartalma [felügyeleti megoldások](solutions.md) elérhető a Microsoft mutató hivatkozásokat tartalmaz a részletes dokumentációt.  A módszer és a Log analyticsbe adatok gyűjtésének gyakorisága információkat is biztosít.  Használhatja az információkat ebben a cikkben, azonosíthatja a különféle elérhető megoldások és más felügyeleti megoldásokkal data flow és a kapcsolat követelményeinek megismeréséhez. 
@@ -31,10 +31,10 @@ A következő táblázat felsorolja a [felügyeleti megoldások](solutions.md) a
 Magyarázat az oszlopok a következők:
 
 - **A Microsoft-figyelőügynök** -ügynök futtatható a Management pack SCOM és felügyeleti megoldásokat az Azure-ból a Windows és Linux rendszereken használható. Ebben a konfigurációban az ügynök közvetlenül kapcsolódik a Log Analytics az Operations Manager felügyeleti csoporthoz való csatlakozás nélkül. 
-- **Az Operations Manager** -azonos a Microsoft monitoring agent ügynök. Ebben a konfigurációban van [egy Operations Manager felügyeleti csoporthoz csatlakoztatott](../../log-analytics/log-analytics-om-agents.md) a Log Analyticshez csatlakoztatva van. 
+- **Az Operations Manager** -azonos a Microsoft monitoring agent ügynök. Ebben a konfigurációban van [egy Operations Manager felügyeleti csoporthoz csatlakoztatott](../../azure-monitor/platform/om-agents.md) a Log Analyticshez csatlakoztatva van. 
 -  **Az Azure Storage** -megoldás gyűjti az adatokat egy Azure storage-fiókot. 
 - **Az Operations Manager szükséges?** -Az Operations Manager csatlakoztatott felügyeleti csoport felügyeleti megoldás által adatgyűjtés szükség. 
-- **Felügyeleti csoport Operations Manager-ügynök adatok küldött** – Ha az ügynök [egy SCOM felügyeleti csoporthoz csatlakoztatott](../../log-analytics/log-analytics-om-agents.md), majd az adatokat küld a Log Analytics a felügyeleti kiszolgálóról. Ebben az esetben az ügynököt nem szükséges közvetlen csatlakoztatása a Log Analytics. Ha a jelölőnégyzet nincs bejelölve, tartó adatküldést követően az ügynök közvetlenül a Log Analytics akkor is, ha az ügynök csatlakozik egy SCOM felügyeleti csoport. El kell képesnek lennie kommunikálni a Log Analytics segítségével a [Log Analytics-átjáró](../../azure-monitor/platform/gateway.md).
+- **Felügyeleti csoport Operations Manager-ügynök adatok küldött** – Ha az ügynök [egy SCOM felügyeleti csoporthoz csatlakoztatott](../../azure-monitor/platform/om-agents.md), majd az adatokat küld a Log Analytics a felügyeleti kiszolgálóról. Ebben az esetben az ügynököt nem szükséges közvetlen csatlakoztatása a Log Analytics. Ha a jelölőnégyzet nincs bejelölve, tartó adatküldést követően az ügynök közvetlenül a Log Analytics akkor is, ha az ügynök csatlakozik egy SCOM felügyeleti csoport. El kell képesnek lennie kommunikálni a Log Analytics segítségével a [Log Analytics-átjáró](../../azure-monitor/platform/gateway.md).
 - **Gyűjtés gyakorisága** – adja meg, hogy a felügyeleti megoldás által összegyűjtött adatok. 
 
 
@@ -54,12 +54,12 @@ Magyarázat az oszlopok a következők:
 | [Az Azure Application Gateway Analytics](../../azure-monitor/insights/azure-networking-analytics.md) | Azure |  |  |  |  |  | az értesítés |
 | **Felügyeleti megoldások** | **Platform** | **A Microsoft-figyelőügynököt** | **Operations Manager-ügynök** | **Azure Storage** | **Az Operations Manager szükséges?** | **A felügyeleti csoport Operations Manager-ügynök adatok küldött** | **Gyűjtés gyakorisága** |
 | [Azure-beli hálózati biztonsági csoport Analytics (elavult)](../../azure-monitor/insights/azure-networking-analytics.md) | Azure |  |  |  |  |  | az értesítés |
-| [Az Azure SQL Analytics (előzetes verzió)](../../log-analytics/log-analytics-azure-sql.md) | Windows | | | | | | 1 perc |
+| [Az Azure SQL Analytics (előzetes verzió)](../../azure-monitor/insights/azure-sql.md) | Windows | | | | | | 1 perc |
 | [Biztonsági mentés](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | az értesítés |
 | [Kapacitás és teljesítmény (előzetes verzió)](../../azure-monitor/insights/capacity-performance.md) |Windows |&#8226; |&#8226; | | |&#8226; |a beérkezéskor |
 | [Változáskövetés](../../automation/automation-change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |óránként |
 | [Változáskövetés](../../automation/automation-change-tracking.md) |Linux |&#8226; | | | | |óránként |
-| [Containers](../../log-analytics/log-analytics-containers.md) | Windows és Linux | &#8226; | &#8226; |  |  |  | 3 perc |
+| [Containers](../../azure-monitor/insights/containers.md) | Windows és Linux | &#8226; | &#8226; |  |  |  | 3 perc |
 | [Key Vault-elemzés](../../azure-monitor/insights/azure-key-vault.md) |Windows | | | | | |az értesítés |
 | [Kártevőfelmérés](../../security-center/security-center-install-endpoint-protection.md) |Windows |&#8226; |&#8226; | | |&#8226; |óránként |
 | [Hálózati teljesítményfigyelő](../../azure-monitor/insights/network-performance-monitor.md) | Windows | &#8226; | &#8226; |  |  |  | TCP-kézfogások 5 másodpercenként, adatokat küld át 3 percenként |

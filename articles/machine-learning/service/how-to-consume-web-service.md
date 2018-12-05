@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: larryfr
-ms.date: 10/30/2018
-ms.openlocfilehash: 58c1b53a4b97aad7b916e593fd4d6b52b51b7a52
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.date: 12/03/2018
+ms.openlocfilehash: 9b3daca572140229bf2d38cd56f65ce44683f0f7
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262899"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864400"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Az Azure Machine Learning-modellek webszolgáltatásként üzembe helyezett felhasználása
 
@@ -100,7 +100,7 @@ A REST API-t vár egy JSON-dokumentumot, az alábbi struktúra használatával k
 > [!IMPORTANT]
 > Az adatok struktúráját milyen a pontozó szkript és a szolgáltatás várt modellek egyeznie kell. A pontozó szkript előfordulhat, hogy módosíthatja az adatokat a modell való továbbítás előtt.
 
-Például a modell a [Train belül notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook) például egy 10 számból álló tömböt vár. Ebben a példában a pontozó szkript létrehoz egy Numpy tömböt a kérelemből, és átadja azokat a modellbe. Az alábbi példa bemutatja az adatok, ez a szolgáltatás vár:
+Például a modell a [Train belül notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) például egy 10 számból álló tömböt vár. Ebben a példában a pontozó szkript létrehoz egy Numpy tömböt a kérelemből, és átadja azokat a modellbe. Az alábbi példa bemutatja az adatok, ez a szolgáltatás vár:
 
 ```json
 {
@@ -126,7 +126,7 @@ A webszolgáltatás egy kérelem több adatkészletek tud fogadni. Egy JSON-doku
 
 ## <a name="call-the-service-c"></a>Meghívja a szolgáltatást (C#)
 
-Ez a példa bemutatja, hogyan használható C# a létrehozott webes szolgáltatás hívása a [Train belül notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook) példa:
+Ez a példa bemutatja, hogyan használható C# a létrehozott webes szolgáltatás hívása a [Train belül notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) példa:
 
 ```csharp
 using System;
@@ -215,7 +215,7 @@ A következő JSON-dokumentumot kapott eredmények hasonlók:
 
 ## <a name="call-the-service-go"></a>Meghívja a szolgáltatást (Futtatás)
 
-Ez a példa bemutatja, hogyan használható a Go a létrehozott webszolgáltatás meghívandó a [Train belül notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook) példa:
+Ez a példa bemutatja, hogyan használható a Go a létrehozott webszolgáltatás meghívandó a [Train belül notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) példa:
 
 ```go
 package main
@@ -307,7 +307,7 @@ A következő JSON-dokumentumot kapott eredmények hasonlók:
 
 ## <a name="call-the-service-java"></a>Meghívja a szolgáltatást (Java)
 
-Ez a példa bemutatja, hogyan használható a Java meghívni a webszolgáltatás alapján létrehozott a [Train belül notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook) példa:
+Ez a példa bemutatja, hogyan használható a Java meghívni a webszolgáltatás alapján létrehozott a [Train belül notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) példa:
 
 ```java
 import java.io.IOException;
@@ -387,7 +387,7 @@ A következő JSON-dokumentumot kapott eredmények hasonlók:
 
 ## <a name="call-the-service-python"></a>Meghívja a szolgáltatást (Python)
 
-Ez a példa bemutatja, hogyan használhatja a Pythont a létrehozott webes szolgáltatás hívása a [Train belül notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook) példa:
+Ez a példa bemutatja, hogyan használhatja a Pythont a létrehozott webes szolgáltatás hívása a [Train belül notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) példa:
 
 ```python
 import requests

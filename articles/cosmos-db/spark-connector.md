@@ -1,21 +1,19 @@
 ---
-title: Csatlakozás az Apache Spark az Azure Cosmos DB |} A Microsoft Docs
+title: Csatlakozás az Apache Spark az Azure Cosmos DB
 description: További információ az Azure Cosmos DB Spark-összekötő, amely lehetővé teszi az Apache Spark az Azure Cosmos DB-hez kapcsolódni. A több-bérlős, globálisan elosztott adatbázisrendszerként a Microsoft elosztott összesítések végezheti el.
 keywords: az Apache spark
 services: cosmos-db
 author: tknandu
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: ramkris
-ms.openlocfilehash: 62395ff5370a057ca1888dd135b83be9d6f34f8d
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: b52305d59803d9fb8e70d89ae13cd5006c74129f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51707180"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865454"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Gyorsítsa fel a big data-elemzés az Azure Cosmos DB-összekötő az Apache Spark használatával
  

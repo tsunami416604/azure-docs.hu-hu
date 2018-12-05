@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: cca15447587fcec7253b449d93fc2f644fe6c249
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5dbfa9ee054bbaf3235326883d7d33b356c4cc5d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52851043"
+ms.locfileid: "52878244"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure Monitor használatával riasztások  
 
@@ -107,7 +107,7 @@ A **Naplóriasztások** riasztások alapjául is:
 
     Néhány percen belül a riasztás aktív, és elindítja a fent leírtaknak megfelelően.
 
-Felhasználók is fejeződik be, a saját elemzési lekérdezés [naplók elemzési lap az Azure Portalon](../log-analytics/log-analytics-log-search-portals.md#log-analytics-page
+Felhasználók is fejeződik be, a saját elemzési lekérdezés [naplók elemzési lap az Azure Portalon](../azure-monitor/log-query/portals.md#log-analytics-page
 ) és majd leküldeni a keresztül beállítva riasztás gomb - riasztás létrehozása, majd a következő utasításokat a 6. lépés és újabb verziók esetében a fenti oktatóanyagban.
 
  ![Log Analytics - riasztás beállítása](media/alert-log/AlertsAnalyticsCreate.png)

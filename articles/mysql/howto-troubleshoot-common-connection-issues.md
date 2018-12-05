@@ -3,19 +3,19 @@ title: MySQL-hez készült Azure Database-kapcsolatok problémáinak hibaelhár�
 description: Ismerje meg, hogyan lehet a MySQL-hez készült Azure Database-kapcsolatok problémáinak hibaelhárítása.
 keywords: MySQL-kapcsolat, a kapcsolati karakterlánc, a kapcsolódási problémák, a átmeneti hiba, a kapcsolódási hiba
 services: mysql
-author: janeng
+author: jan-eng
 ms.author: janeng
 manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 11/09/2018
-ms.openlocfilehash: 7688ddd28dfab2ebb8eb0b5e8d9bb1189ec62564
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: cf447ddef0639c35efeb0f396a61ae7bc5fe9781
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51284912"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890585"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>MySQL-hez készült Azure Database-kapcsolatok problémáinak hibaelhárítása
 

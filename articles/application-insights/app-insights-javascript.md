@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: db02df7ed27e011e51b4af470e80ac00054bf0dc
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 01c118b61540c88d5c08015db32a97ef791b43ce
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727936"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879592"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 Megismerheti a weblap vagy alkalmazás teljesítményét és használatát. Ha a Visual Studio [Application Insightst](app-insights-overview.md) a lap szkriptjeihez adja, megkapja az oldalbetöltések és AJAX-hívások időzítését, a böngészőkivételek és az AJAX-hibák számát és részleteit, valamint a felhasználók és munkamenetek számát. Ezek mindegyike szegmentálható lap, ügyfél operációs rendszere és böngészőverziója, földrajzi hely és más dimenziók alapján. Beállíthat riasztásokat a hibaszámokról és a lassú lapbetöltésekről. Ha nyomkövetési hívásokat szúr be a JavaScript-kódba, nyomon követheti a webalkalmazás különböző szolgáltatásainak használati módját is.
@@ -76,7 +76,7 @@ A szkript tartalmazza a kialakítási kulcsot, amely az adatokat az Application 
 
 ([A szkript részletesebb magyarázata.](http://apmtips.com/blog/2015/03/18/javascript-snippet-explained/))
 
-*(Ha jól ismert weblapkeretrendszert használ, keressen Application Insights-adaptereket. Például van [egy AngularJS modul](http://ngmodules.org/modules/angular-appinsights).)*
+*(Ha jól ismert weblapkeretrendszert használ, keressen Application Insights-adaptereket. Például van [egy AngularJS modul](https://github.com/johnhidey/angular-appinsights).)*
 
 ## <a name="detailed-configuration"></a>Részletes konfiguráció
 Több [paramétert](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config) beállíthat, de a legtöbb esetben erre nincs szükség. Letilthatja vagy korlátozhatja például az oldalmegtekintésenként jelentett Ajax-hívások számát (a forgalom csökkentése érdekében). Vagy beállíthatja a hibakeresési módot, hogy a telemetria gyorsan haladjon át a folyamaton, kötegkészítés nélkül.

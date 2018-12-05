@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5ad39cab343e17040e0086934e50be580590241d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: cb246ad927669ac9b8a3981134142ad9be27c6ae
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834145"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889531"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Összegyűjtheti és elemezheti a Log Analytics az Azure-Tevékenységnaplók
 
@@ -56,7 +56,7 @@ Ellentétben a legtöbb más Log Analytics-megoldások nem az adatgyűjtés a Te
 | --- | --- | --- |
 | [Windows-ügynökök](../../azure-monitor/platform/agent-windows.md) | Nem | Windows-ügynököktől a megoldás nem gyűjt adatokat. |
 | [Linux-ügynökök](../../log-analytics/log-analytics-quick-collect-linux-computer.md) | Nem | A megoldás a Linux-ügynökök nem gyűjt adatokat. |
-| [Az SCOM felügyeleti csoport](../../log-analytics/log-analytics-om-agents.md) | Nem | A megoldás az ügynökök a csatlakoztatott SCOM felügyeleti csoport nem gyűjt adatokat. |
+| [Az SCOM felügyeleti csoport](../../azure-monitor/platform/om-agents.md) | Nem | A megoldás az ügynökök a csatlakoztatott SCOM felügyeleti csoport nem gyűjt adatokat. |
 | [Azure Storage-fiók](collect-azure-metrics-logs.md) | Nem | A megoldás nem gyűjt adatokat az Azure storage-ból. |
 
 ## <a name="prerequisites"></a>Előfeltételek

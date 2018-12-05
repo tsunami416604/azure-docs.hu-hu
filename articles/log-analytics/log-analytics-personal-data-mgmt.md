@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 08af5cd3dcce1044bd77e03ed5a28e9422ff2b23
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4e6243cb39a248a112f1abebe70e50165b54db98
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721578"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866797"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Útmutató a Log Analytics és az Application Insights tárolt személyes adatok
 
@@ -56,7 +56,7 @@ A log Analytics egy rugalmas tárolja, ami előíró egy sémát az adatokhoz, m
     ```
 Keresse meg a nemcsak a természetes nyelven olvasható felhasználónevek, hanem közvetlenül visszakövethető egy adott felhasználó GUID-azonosítói. ne felejtse el!
 * *Az eszközazonosítókat*: például a "felhasználói azonosítókat, eszközazonosítókat néha titkosnak számítanak". Használja ugyanazt a megközelítést felhasználói azonosítók a fent felsorolt azonosítja, ha ez egy potenciálisan veszélyes lehet. 
-* *Egyéni adatok*: a Log Analytics lehetővé teszi, hogy a különböző módszereiről ad a gyűjteményhez: egyéni naplók és az egyéni mezők a [HTTP-adatgyűjtő API](log-analytics-data-collector-api.md) , és egyéni adatokat gyűjteni a rendszer eseménynaplóit részeként. Ezek mindegyikét ki van téve a titkos adatokat tartalmazó, és ellenőrizze, hogy létezik-e ilyen jellegű adatokat meg kell vizsgálni.
+* *Egyéni adatok*: a Log Analytics lehetővé teszi, hogy a különböző módszereiről ad a gyűjteményhez: egyéni naplók és az egyéni mezők a [HTTP-adatgyűjtő API](../azure-monitor/platform/data-collector-api.md) , és egyéni adatokat gyűjteni a rendszer eseménynaplóit részeként. Ezek mindegyikét ki van téve a titkos adatokat tartalmazó, és ellenőrizze, hogy létezik-e ilyen jellegű adatokat meg kell vizsgálni.
 * *Megoldás rögzített adatoknak*: mivel a megoldás mechanizmus egy nyílt, ajánlott áttekinteni a megoldások a megfelelőség biztosítása által létrehozott összes tábla.
 
 ### <a name="application-data"></a>Alkalmazásadatok
@@ -124,5 +124,5 @@ Miután az Azure Resource Manager-szerepkör van rendelve, két új API-útvonal
 >  Amíg a végleges törlés műveletek túlnyomó többsége sokkal gyorsabb, mint az SLA-t, az Application Insights által használt data platform (nagy erőforrásigényű) gyakorolt miatt előfordulhat, hogy befejezéséhez **a formális SLA-kiürítési művelet befejezése után van beállítva, 30 napig**.
 
 ## <a name="next-steps"></a>További lépések
-- A Log Analytics-adatok gyűjtött, feldolgozott és védett kapcsolatos további információkért lásd: [Log Analytics és adatbiztonság](log-analytics-data-security.md).
+- A Log Analytics-adatok gyűjtött, feldolgozott és védett kapcsolatos további információkért lásd: [Log Analytics és adatbiztonság](../azure-monitor/platform/data-security.md).
 - Az Application Insights-adatok gyűjtött, feldolgozott és biztonságos kapcsolatos további információkért lásd: [Application Insights által nyújtott adatbiztonság](../application-insights/app-insights-data-retention-privacy.md).

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e02b2591e145933979b5c69f9a6c0cf6f9b57b82
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 98c4191f693a95dc5273c7eee0ac400837ba2f55
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52719878"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890653"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Log Analytics-munkaterület létrehozása az Azure Portalon
 Az Azure Portalon beállíthatja a Log Analytics-munkaterületet akkor egy egy saját adattárházzal, adatforrások és megoldások rendelkező egyedülálló Log Analytics-környezetre.  Ebben a cikkben leírt lépések szükségesek, ha azt tervezi, a következő forrásokból származó adatok gyűjtése a:
@@ -63,6 +63,6 @@ Az **Értesítések** menüpontot kiválasztva nyomon követheti, hogyan ellenő
 Most, hogy a munkaterület érhető el, figyelési telemetriai adatok gyűjtésének konfigurálása, naplókereséseket elemezheti az adatokat, és adjon hozzá egy felügyeleti megoldás, további adat- és elemzési elemzéseket biztosít. 
 
 * Ahhoz, hogy az adatok gyűjtését az Azure-erőforrásokat az Azure Diagnostics vagy az Azure storage, lásd: [gyűjtése az Azure naplói és a Log Analytics használati metrikái](../azure-monitor/platform/collect-azure-metrics-logs.md).  
-* [Adja hozzá a System Center Operations Manager alkalmazást adatforrásként](log-analytics-om-agents.md) adatokat gyűjteni az Operations Manager felügyeleti csoportnak jelentő ügynökök és a Log Analytics-munkaterületen tárolja. 
+* [Adja hozzá a System Center Operations Manager alkalmazást adatforrásként](../azure-monitor/platform/om-agents.md) adatokat gyűjteni az Operations Manager felügyeleti csoportnak jelentő ügynökök és a Log Analytics-munkaterületen tárolja. 
 * Csatlakozás [Configuration Manager](log-analytics-sccm.md) számítógépek, amelyek tagjai a hierarchiában lévő gyűjtemények importálása.  
 * Tekintse át a [felügyeleti megoldások](https://docs.microsoft.com/azure/monitoring/monitoring-solutions-inventory?toc=%2fazure%2flog-analytics%2ftoc.json) érhető el, és hogyan lehet hozzáadni vagy megoldás eltávolítása a munkaterületről.

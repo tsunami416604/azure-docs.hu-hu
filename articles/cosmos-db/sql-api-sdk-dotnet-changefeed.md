@@ -1,21 +1,20 @@
 ---
-title: 'Az Azure Cosmos DB: .NET módosítási hírcsatorna processzor API, SDK és -erőforrások |} A Microsoft Docs'
+title: 'Az Azure Cosmos DB: .NET módosítási hírcsatorna processzor API, SDK és -erőforrások'
 description: Mindent megtudhat a módosítási hírcsatorna processzor API és az SDK kiadási dátum, a kivezetési dátum és a processzor .NET módosítási hírcsatorna SDK minden verziója között végrehajtott módosítások.
 services: cosmos-db
 author: ealsur
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: 327873d228fe92a9da495f802c97eb73612caef9
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: ab4831a4a84e1f96624c5de1e53f9b8688a5c2cd
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632483"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871659"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET módosítási hírcsatorna processzor SDK: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]

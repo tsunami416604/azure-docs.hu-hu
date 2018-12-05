@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf, glenga
-ms.openlocfilehash: acbba991e6dcce56fad7f27c45f85214cc8fc707
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 3381939e296009b0fd58366f7fff410ea01d1206
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642304"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864026"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Hozzon létre Durable Functions az Azure portal használatával
 
@@ -34,7 +34,7 @@ Rendelkeznie kell egy függvényalkalmazással a bármely függvény végrehajt�
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
-Alapértelmezés szerint a telepített verzióját használja a létrehozott függvényalkalmazás 2.x verzióját az Azure Functions futtatókörnyezettel. Mindkét verziót működik a Durable Functions bővítmény 1.x és a 2.x verzióját az Azure Functions futtatókörnyezettel. Azonban sablonok esetén csak érhetők el verzió célzó 2.x verziójú futtatókörnyezet.
+Alapértelmezés szerint létrehozott függvényalkalmazás használt verzió 2.x verzióját az Azure Functions futtatókörnyezettel. Mindkét verziót működik a Durable Functions bővítmény 1.x és a 2.x verzióját az Azure Functions futtatókörnyezettel. Azonban sablonok esetén csak érhetők el verzió célzó 2.x verziójú futtatókörnyezet.
 
 ## <a name="create-an-orchestrator-function"></a>Az orchestrator-függvény létrehozása
 

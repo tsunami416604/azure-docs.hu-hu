@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 350c009f77bc37ae2201b1d5c3b701e89301b7aa
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: fdb6bfef6b3bd670a214d2d7b2223686c52f2f97
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721697"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868004"
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>A Log Analytics és az adatmennyiség szabályozásával költségek kezelése
 
@@ -93,7 +93,7 @@ Az első lépésekhez, az alábbiakban a riasztás az ajánlott beállításokat
 * Riasztási szabály neve: elérte a napi korlátot
 * Súlyosság: Figyelmeztetés (Sev 1)
 
-Riasztás van definiálva, és a eléri a korlátot, riasztás akkor aktiválódik, és hajtja végre a választ a műveletcsoport meghatározott. Küldjön értesítést munkatársainak e-mailek és SMS-EK, valamint automatizálja a műveleteket webhookok, Automation-runbookok használatával vagy [integrálása egy külső ITSM-megoldással](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts). 
+Riasztás van definiálva, és a eléri a korlátot, riasztás akkor aktiválódik, és hajtja végre a választ a műveletcsoport meghatározott. Küldjön értesítést munkatársainak e-mailek és SMS-EK, valamint automatizálja a műveleteket webhookok, Automation-runbookok használatával vagy [integrálása egy külső ITSM-megoldással](../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts). 
 
 ## <a name="change-the-data-retention-period"></a>Módosítsa az Adatmegőrzés időtartama 
 Az alábbi lépéseket adatért által a munkaterületen milyen hosszú log konfigurálását ismertetik.

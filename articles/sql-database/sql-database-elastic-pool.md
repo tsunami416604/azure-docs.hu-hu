@@ -3,7 +3,7 @@ title: Több, a rugalmas készletek – Azure SQL-adatbázisok kezelése |} A Mi
 description: Kezelése és méretezése több SQL-adatbázis – több száz és több ezer - rugalmas készletek használatával. Egyetlen díj oszthat meg, ahol szükséges erőforrások.
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-pool
+ms.subservice: elastic-pools
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: a6e2be02f9954a036fdcb67a15c73cc82670834b
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 292d24e8fb6d87174c481cd9dbca616497ff8ca3
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283563"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868922"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Rugalmas készletek kezelése és a több Azure SQL-adatbázisok horizontális Súgó
 

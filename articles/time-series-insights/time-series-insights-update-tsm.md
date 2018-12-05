@@ -8,25 +8,25 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.openlocfilehash: 4cb83b61068922002c0c308f4d129a2e069beadd
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/04/2018
+ms.openlocfilehash: 5d5f94aebcd55474385e903246ce7945586456dd
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856448"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890415"
 ---
-# <a name="time-series-model"></a>Idősorozat-modell
+# <a name="time-series-model"></a>Time Series-modell
 
 Ez a dokumentum ismerteti a **Idősorozat-modell** (TSM) rész az Azure Time Series Insights (TSI) frissítése. Modellelemek a modellben, annak képességeit és hogyan kezdheti el létrehozását és a saját modellek ismerteti.
 
-Az IoT-eszközökről gyűjtött adatok hagyományosan, megnehezítve a keresése, és gyorsan elemezheti az érzékelők környezeti információkat nem rendelkezik. A fő motiváció TSM számára, hogy egyszerűbb keresése és elemzése IoT-adatot válogatott, a karbantartással és a felderítési bővítést az idősorozat-adatok épülő architektúratervezési foglakozásokon fogyasztói használatra kész adatkészleteket engedélyezésével. **Time Series modellek** a lekérdezésekben és navigációs létfontosságú szerepet játszik, mivel azok contextualize eszköz és az eszközre irányuló entitásokat. Adatait a bennük tárolt képletek kihasználva TSM powers time series lekérdezések számításokban megőrzi.
+Az IoT-eszközökről gyűjtött adatok hagyományosan, megnehezítve a keresése, és gyorsan elemezheti az érzékelők környezeti információkat nem rendelkezik. A fő motiváció TSM számára, hogy egyszerűbb keresése és elemzése IoT-adatot válogatott, a karbantartással és a felderítési bővítést az idősorozat-adatok épülő architektúratervezési foglakozásokon fogyasztói használatra kész adatkészleteket engedélyezésével. TSMs a lekérdezésekben és navigációs létfontosságú szerepet játszik, mivel azok contextualize eszköz és az eszközre irányuló entitásokat. Adatait a bennük tárolt képletek kihasználva TSM powers time series lekérdezések számításokban megőrzi.
 
 ![TSM][1]
 
 ## <a name="key-capabilities"></a>Főbb képességek
 
-. A cél legyen a egyszerű és zökkenőmentes time series contextualization kezeléséhez TSM lehetővé teszi, hogy az Azure Time Series Insights (előzetes verzió) található a következő képességekkel:
+. A cél legyen a egyszerű és zökkenőmentes kezelheti a time series contextualization TSM lehetővé teszi a az Azure TSI-ben (előzetes verzió) a következő képességekkel:
 
 * Lehetővé teszi az hozhat létre és kezelheti a számítások vagy a képleteket, átalakítja az adatokat kihasználva skaláris függvények, összesített műveletek, stb.
 * Szülő-gyermek típusú kapcsolatokat navigációs és referencia kontextusának biztosításához a time series telemetria engedélyezése meghatározása.
@@ -44,125 +44,36 @@ Nincsenek TSM három fő összetevői:
 
 **Time Series modell** *típusok* meghatározó változókat és adatelemzésre számítások képletek engedélyezése és a egy adott TSI-példányhoz társított. A típus lehet egy vagy több változót. Például a TSI-példány típusú lehet **hőmérséklet-érzékelő**, amely a következőkből áll a változók: *átlagos hőmérsékletét*, *min hőmérséklet*, és *maximális hőmérséklet*. Alapértelmezett típussal hozunk létre, az adatok indításakor TSI beérkeznek. Azt is olvassa és beállítások frissítve lett. Alapértelmezett típusok fog rendelkezni, amely az események száma.
 
-## <a name="time-series-model-type-json-request-and-response-example"></a>Idő tanulása típusú kérések és válaszok példa JSON
+## <a name="time-series-model-type-json-example"></a>Time Series modell típusa példa JSON
 
-Egy HTTP POST-kérést kap:
-
-```plaintext
-https://YOUR_ENVIROMENT.env.timeseries.azure.com/timeseries/types/$batch?api-version=API_VERSION
-```
-
-| Name (Név) | Leírás | Példa |
-| --- | --- | --- |
-| YOUR_ENVIRONMENT  |  A környezet neve  | `environment123` |
-| API_VERSION  |  Az API-specifikáció | `2018-11-01-preview` |
-
-A következő JSON szervezet és a változó attribútumokkal:
-
-| Attribútum | Kötelező vagy választható |
-| --- | --- |
-| **típusa**  |  Szükséges  |
-| **filter**  |  Optional |
-| **value**  | NULL értékű vagy nincs megadva  |
-| **interpolációs**  |  Optional |
-| **Összesítés**  |  Szükséges |
+Minta:
 
 ```JSON
 {
-    "get": null,
-    "put": [
-        {
-            "name": "SampleType",
-            "description": "This is type 2",
-            "variables": {
-                "Avg Temperature": {
-                    "kind": "numeric",
-                    "filter": null,
-                    "value": { "tsx": "$event.temperature.Double" },
-                    "interpolation": "None",
-                    "aggregation": {"tsx": "avg($value)"}
-                },
-                "Count Temperature": {
-                    "kind": "aggregate",
-                    "filter": null,
-                    "value": null,
-                    "interpolation": "None",
-                    "aggregation": {"tsx": "count()"}
-                },
-                "Min Temperature": {
-                    "kind": "aggregate",
-                    "filter": null,
-                    "value": null,
-                    "interpolation": "None",
-                    "aggregation": {"tsx": "min($event.temperature)"}
-                },
-            }
+    "name": "SampleType",
+    "description": "This is sample type",
+    "variables": {
+        "Avg Temperature": {
+            "kind": "numeric",
+            "filter": null,
+            "value": { "tsx": "$event.temperature.Double" },
+            "aggregation": {"tsx": "avg($value)"}
+        },
+        "Count Temperature": {
+            "kind": "aggregate",
+            "filter": null,
+            "value": null,
+            "aggregation": {"tsx": "count()"}
         }
-    ]
-}
-```
-
-Válasz:
-
-```JSON
-{
-    "get": null,
-    "put": [
-        {
-            "timeSeriesType": {
-                "id": "fc4f526c-da6e-4b85-87f7-16f6cf9b69be",
-                "name": "type2",
-                "description": "This is type 2",
-                "variables": {
-                    "Avg Temperature": {
-                        "kind": "numeric",
-                        "filter": null,
-                        "value": { "tsx": "$event.temperature.Double" },
-                        "interpolation": "None",
-                        "aggregation": {"tsx": "avg($value)"}
-                    },
-                    "Count Temperature": {
-                        "kind": "aggregate",
-                        "filter": null,
-                        "value": null,
-                        "interpolation": "None",
-                        "aggregation": {"tsx": "count()"}
-                    },
-                    "Min Temperature": {
-                        "kind": "aggregate",
-                        "filter": null,
-                        "value": null,
-                        "interpolation": "None",
-                        "aggregation": {"tsx": "min($event.temperature)"}
-                    }
-                }
-            },
-            "error": null
-        }
-    ]
+    }
 }
 ``````
 
-A **alapértelmezett** *típus* JSON-választ:
-
-```JSON
-{
-    "modelSettings": {
-        "name": "DefaultModel",
-        "timeSeriesIdProperties": [
-            {
-                "name": "someType1",
-                "type": "String"
-            }
-        ],
-        "defaultTypeId": "1be09af9-f089-4d6b-9f0b-48018b5f7393"
-    }
-}
-```
+További információk a származó Idősorozat-modell típust a [Referenciadokumentációt](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
 
 ## <a name="variables"></a>Változók
 
-Az Azure TSI-típusok változók, a keresztül az események értékeinek ezek nevesített számítások. A TSI változó definíciók olyan képletet, és a számítási szabályokat tartalmaz. Változó-definícióhoz tartozik típusa, érték, szűrő, csökkentésére és határok. Változók TSM definíciójában vannak tárolva, és a tárolt definíció felülbírálása a lekérdezési API-kon keresztül beágyazott adható meg.
+Az Azure TSI-típusok változók, nevesített számítások keresztül az események értékeinek rendelkezik. A TSI változó definíciók olyan képletet, és a számítási szabályokat tartalmaz. Változó-definícióhoz tartozik típusa, érték, szűrő, csökkentésére és határok. Változók TSM definíciójában vannak tárolva, és a tárolt definíció felülbírálása a lekérdezési API-kon keresztül beágyazott adható meg.
 
 Az alábbi mátrix változó definíciók jelmagyarázat módon működik:
 
@@ -172,7 +83,8 @@ Az alábbi mátrix változó definíciók jelmagyarázat módon működik:
 
 A következő változó jellegű támogatottak:
 
-* Numerikus – folyamatos
+* Numerikus
+* Összesítés
 
 ### <a name="variable-filter"></a>Változó szűrő
 
@@ -182,15 +94,9 @@ Változó szűrők adjon meg egy nem kötelező szűrőfeltételt, törölje a s
 
 Változó és számítási célszerű használni. Ez az az oszlop az eseményeket, hogy kell hivatkoznia.
 
-### <a name="variable-interpolation"></a>Változó interpolációs
-
-A folyamat értékek egy halmazát egy időszakonként érték átalakítása változó csökkentését nevezzük. Változó csökkentése lehet összesített rögzített adatokat a forrás- vagy rekonstruált interpolációs és összesítése, vagy a rekonstruált jelek interpolációs használatával, és a mintavételi jelek. Változó határok interpolációs lehet hozzáadni, ezek lehetővé teszik többek között a keresés kívüli események számításokat.
-
-Az Azure TSI (előzetes verzió) támogatja a következő változó interpolációs: `linear`, `stepright`, és `none`.
-
 ### <a name="variable-aggregation"></a>Változó összesítés
 
-Az aggregate függvényt a változó lehetővé teszi a számítási része. Ha a változó interpolációs `null` vagy `none`, majd TSI támogatni fogja a szokásos összesítések (nevezetesen, **min**, **maximális**, **átlagos**, **összeg** , és **száma**). Ha a változó interpolációs `stepright` vagy `linear`, majd fogja támogatni a TSI **twmin**, **twmax**, **twavg**, és **twsum**. Interpolációs száma nem adható meg.
+Az aggregate függvényt a változó lehetővé teszi a számítási része. A TSI támogatni fogja a szokásos összesítések (nevezetesen, **min**, **maximális**, **átlagos**, **sum**, és **száma**).
 
 ## <a name="time-series-model-hierarchies"></a>Time Series modell hierarchiák
 
@@ -198,61 +104,24 @@ Hierarchiák rendszerezéséhez példányok és azok a tulajdonságnevek megadá
 
 Hierarchiák által meghatározott **Hierarchiaazonosító**, **neve**, és **forrás**. Hierarchiák elérési utak rendelkezik, egy elérési utat a felhasználó szeretne létrehozni a hierarchiában felülről lefelé szülő-gyermek sorrendjét. A szülő/gyermek tulajdonságok szolgáltatáspéldány-mezők leképezése.
 
-### <a name="time-series-model-hierarchy-json-request-and-response-example"></a>Idő tanulása hierarchia kérések és válaszok példa JSON
+### <a name="time-series-model-hierarchy-json-example"></a>Time Series modell hierarchia példa JSON
 
-Egy HTTP POST-kérést kap:
-
-```plaintext
-https://YOUR_ENVIROMENT.env.timeseries.azure.com/timeseries/hierarchies/$batch?api-version=API_VERSION
-```
-
-| Name (Név) | Leírás | Példa |
-| --- | --- | --- |
-| YOUR_ENVIRONMENT  |  A környezet neve  | `environment123` |
-| API_VERSION  |  Az API-specifikáció | `2018-11-01-preview` |
-
-A JSON-törzse:
+Minta:
 
 ```JSON
 {
-    "get": null,
-    "put": [
-        {
-            "id": "4c6f1231-f632-4d6f-9b63-e366d04175e3",
-            "name": "Location",
-            "source": {
-                "instanceFieldNames": [
-                    "state",
-                    "city"
-                ]
-            }
-        }
-    ]
+    "id": "4c6f1231-f632-4d6f-9b63-e366d04175e3",
+    "name": "Location",
+    "source": {
+        "instanceFieldNames": [
+                "state",
+                "city"
+            ]
+    }
 }
 ```
 
-Válasz:
-
-```JSON
-{
-    "get": null,
-    "put": [
-        {
-            "hierarchy": {
-                "id": "4c6f1231-f632-4d6f-9b63-e366d04175e3",
-                "name": "Location",
-                "source": {
-                    "instanceFieldNames": [
-                        "state",
-                        "city"
-                    ]
-                }
-            },
-            "error": null
-        }
-    ]
-}
-```
+További információt az Idősorozat-modell hierarchiát a [Referenciadokumentációt](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
 
 ### <a name="hierarchy-definition-behavior"></a>Hierarchia definíció viselkedése
 
@@ -276,82 +145,36 @@ A fenti példában ID1 jeleníti meg a felhasználói felület és felhasználó
 
 ## <a name="time-series-model-instances"></a>Time Series modell-példány
 
-Az idősor magukat a példányai. A legtöbb esetben ez lesz a *deviceId* vagy *assetId* , hogy a környezetben az eszköz egyedi azonosítója. A példányok rendelkeznek leíró információkat a hozzájuk társított példány tulajdonságainak neve. Minimális példány tulajdonságai közé tartozik a hierarchiára vonatkozó információk. Akkor hasznos, leíró adatok, például a gyártó, operátor vagy a legutóbbi szolgáltatás dátuma is tartalmazhatnak.
+Az idősor magukat a példányai. A legtöbb esetben a *deviceId* vagy *assetId* lesz a környezetben az eszköz egyedi azonosítója. A példányok rendelkeznek leíró információkat a hozzájuk társított példány tulajdonságainak neve. Minimális példány tulajdonságai közé tartozik a hierarchiára vonatkozó információk. Akkor hasznos, leíró adatok, például a gyártó, operátor vagy a legutóbbi szolgáltatás dátuma is tartalmazhatnak.
 
 Példányok által meghatározott *timeSeriesId*, *typeId*, *hierarchyId*, és *instanceFields*. Csak egy rendeli minden példány *típus*, és a egy vagy több hierarchiák. Példányok összes tulajdonságok öröklése a hierarchiák, míg további *instanceFields* adhat hozzá további példányt erőforrástulajdonság-definíciót.
 
 *instanceFields* példányát és a statikus adatokat, amely meghatározza egy példányt, tulajdonság. Miközben is támogatja a keresési műveletek végrehajtása az indexelés meghatározzák a hierarchiában, vagy nem hierarchia tulajdonságának értékét.
 
-## <a name="time-series-model-instance-json-request-and-response-example"></a>Idő tanulása példány kérések és válaszok példa JSON
+## <a name="time-series-model-instance-json-example"></a>Time Series modell példány példa JSON
 
-Egy HTTP POST-kérést kap:
-
-```plaintext
-https://YOUR_ENVIROMENT.env.timeseries.azure.com/timeseries/instances/$batch?api-version=API_VERSION
-```
-
-| Name (Név) | Leírás | Példa |
-| --- | --- | --- |
-| YOUR_ENVIRONMENT  |  A környezet neve  | `environment123` |
-| API_VERSION  |  Az API-specifikáció | `2018-11-01-preview` |
-
-A JSON-törzse:
+Minta:
 
 ```JSON
 {
-    "get": null,
-    "put": [
-        {
-            "name": "SampleName",
-            "typeId": "1be09af9-f089-4d6b-9f0b-48018b5f7393",
-            "timeSeriesId": [
-                "samplePartitionKeyValueOne"
-            ],
-            "description": "floor 100",
-            "hierarchyIds": [
-                "e37a4666-9650-42e6-a6d2-788f12d11158"
-            ],
-            "instanceFields": {
-                "state": "California",
-                "city": "Los Angeles"
-            }
-        }
-    ]
+    "typeId": "1be09af9-f089-4d6b-9f0b-48018b5f7393",
+    "timeSeriesId": ["sampleTimeSeriesId"],
+    "description": "Sample Instance",
+    "hierarchyIds": [
+        "1643004c-0a84-48a5-80e5-7688c5ae9295"
+    ],
+    "instanceFields": {
+        "state": "California",
+        "city": "Los Angeles"
+    }
 }
 ```
 
-Válasz:
-
-```JSON
-{
-    "get": null,
-    "put": [
-        {
-            "instance": null,
-            "error": null
-        },
-        {
-            "instance": null,
-            "error": null
-        }
-    ]
-}
-```
+További információt az Idősorozat-modell példányok a [Referenciadokumentációt](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api).
 
 ## <a name="time-series-model-settings-example"></a>Idő tanulása beállítások példa
 
-Egy HTTP POST-kérést kap:
-
-```plaintext
-https://YOUR_ENVIROMENT.env.timeseries.azure.com/timeseries/modelSettings?api-version=API_VERSION
-```
-
-| Name (Név) | Leírás | Példa |
-| --- | --- | --- |
-| YOUR_ENVIRONMENT  |  A környezet neve  | `environment123` |
-| API_VERSION  |  Az API-specifikáció | `2018-11-01-preview` |
-
-Válasz:
+Minta:
 
 ```JSON
 {
@@ -359,7 +182,7 @@ Válasz:
         "name": "DefaultModel",
         "timeSeriesIdProperties": [
             {
-                "name": "someType1",
+                "name": "id",
                 "type": "String"
             }
         ],
@@ -368,32 +191,13 @@ Válasz:
 }
 ```
 
-## <a name="time-series-model-limits"></a>Adatsorozat modell határidők
-
-| Paraméter |   Korlátok |
-| --- | --- |
-| Adatmodell-entitásokat (típusok, hierarchiákat és példányok) objektum mérete|  32 KB-ot tartalmaz tulajdonságokat |
-| Az Azure Portalon konfigurált TSID-tulajdonságként engedélyezett kulcsok |   Max. 3 |
-| A környezet típusok maximális száma |    1000|
-| V typu változók maximális száma |    50|
-| A környezet hierarchiák maximális száma|   32|
-| Maximális hierarchia mélysége | 32|
-| 1-példányhoz társított hierarchiák maximális száma   |21|
-| A környezet a példányok maximális száma |    500,000|
-| Szolgáltatáspéldány-mezők példányonként maximális száma |   50|
-| A modellekre objektumok upsert/frissítése/törlése művelet / másodperc   |100 / másodperc|
-| Idősorozat-modell API-kérelem mérete: kötegelt |  8 MB vagy 1000 adatmodell-objektumokat (amelyik hamarabb következik be)|
-| Time Series modell kérés mérete: keresési és javaslat   | 32 KB|
-| Idősorozat-modell API-kérelem mérete: kötegelt    | 32 MB|
-| Keresés/javaslat 32 MB|  32 MB|
-
-[!INCLUDE [tsi-update-docs](../../includes/time-series-insights-update-documents.md)]
+Az Idősorozat-modell beállításokkal kapcsolatos további információkért olvassa el a [Referenciadokumentációt](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api).
 
 ## <a name="next-steps"></a>További lépések
 
 Olvassa el a [Azure TSI (előzetes verzió) tárolási a bejövő és kimenő](./time-series-insights-update-storage-ingress.md).
 
-Olvassa el az új [Idősorozat-modell](./time-series-insights-update-tsm.md).
+Olvassa el az új [idősorozat-modell](https://docs.microsoft.com/rest/api/time-series-insights/preview-model).
 
 <!-- Images -->
 [1]: media/v2-update-tsm/tsm.png

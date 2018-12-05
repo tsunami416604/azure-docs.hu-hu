@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: e6a3fab0e6b3b092ddb55043882c4d284268abfc
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: c83497ee8a0e25313c55825dbff3b67d66d9ebaa
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006847"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866661"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>A Azure Data Lake tools for Visual Studio és a hortonworks – tesztkörnyezet használata
 
-Az Azure Data Lake általános Hadoop-fürtökkel folytatott munkavégzéshez kapcsolódó eszközöket tartalmazza. Ez a dokumentum egy helyi virtuális gépen futó a Data Lake-eszközök használata a Hortonworks Sandbox szükséges lépéseket ismerteti.
+Az Azure Data Lake általános Apache Hadoop-fürtökkel folytatott munkavégzéshez kapcsolódó eszközöket tartalmazza. Ez a dokumentum egy helyi virtuális gépen futó a Data Lake-eszközök használata a Hortonworks Sandbox szükséges lépéseket ismerteti.
 
 A hortonworks – tesztkörnyezet használata lehetővé teszi a fejlesztési környezetet a helyi és a hadoop együttes működését. Miután a megoldást, és a méretezett telepíteni, majd továbbléphet egy HDInsight-fürtön.
 
@@ -34,7 +34,7 @@ A hortonworks – tesztkörnyezet használata lehetővé teszi a fejlesztési k�
 
 ## <a name="configure-passwords-for-the-sandbox"></a>A védőfal jelszavak beállítása
 
-Győződjön meg arról, hogy fut-e a hortonworks – tesztkörnyezet. Ezután kövesse a lépéseket a [Ismerkedjen meg a Hortonworks Sandbox](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords) dokumentumot. Ezeket a lépéseket a jelszót az SSH konfigurálása `root` fiókot és az Ambari `admin` fiókot. Ezek a jelszavak használt való csatlakozáskor a védőfal a Visual Studióból.
+Győződjön meg arról, hogy fut-e a hortonworks – tesztkörnyezet. Ezután kövesse a lépéseket a [Ismerkedjen meg a Hortonworks Sandbox](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords) dokumentumot. Ezeket a lépéseket a jelszót az SSH konfigurálása `root` fiókot és az Apache Ambari `admin` fiókot. Ezek a jelszavak használt való csatlakozáskor a védőfal a Visual Studióból.
 
 ## <a name="connect-the-tools-to-the-sandbox"></a>Az eszközök csatlakozni a védőfal
 
@@ -71,7 +71,7 @@ Győződjön meg arról, hogy fut-e a hortonworks – tesztkörnyezet. Ezután k
 
 Után az alábbi lépésekkel, most már rendelkezik egy **helyi HDInsight-fürt** a Server Explorerben bejegyzés alatt a **HDInsight** szakasz.
 
-## <a name="write-a-hive-query"></a>Napsat dotaz Hivu
+## <a name="write-an-apache-hive-query"></a>Az Apache Hive-lekérdezés írása
 
 Hive használata a strukturált adatok egy SQL-szerű lekérdezési nyelvet (HiveQL) tartalmaz. A következő lépések segítségével megtudhatja, hogyan igény szerinti lekérdezéseket futtassanak a helyi fürtöt.
 
@@ -100,7 +100,7 @@ Hive használata a strukturált adatok egy SQL-szerű lekérdezési nyelvet (Hiv
     Miután a **feladat állapota** vált **kész**, egy irányított aciklikus Graph (DAG) jelenik meg. Ez az ábra ismerteti a végrehajtási útvonalát, amely a Tez volt határozza meg a Hive-lekérdezés feldolgozása során. Tez a alapértelmezett-végrehajtó motor a Hive a helyi fürtön.
 
     > [!NOTE]
-    > Tez egyben az alapértelmezett Linux-alapú HDInsight-fürtök használata esetén. Akkor sem a Windows-alapú HDInsight az alapértelmezett. A használatára, hozzá kell adnia a sor `set hive.execution.engine = tez;` elején található a Hive-lekérdezést.
+    > Az Apache Tez egyben az alapértelmezett Linux-alapú HDInsight-fürtök használata esetén. Akkor sem a Windows-alapú HDInsight az alapértelmezett. A használatára, hozzá kell adnia a sor `set hive.execution.engine = tez;` elején található a Hive-lekérdezést.
 
     Használja a **Feladatkimenet** hivatkozásra a kimenet megtekintéséhez. Ebben az esetben fontos 823, a sample_08 tábla sorainak számát. A feladat diagnosztikai információ segítségével tekintheti a **Job Log** és **töltse le a YARN-naplók** hivatkozásokat.
 
@@ -127,7 +127,7 @@ Egy több Hive-parancsfájlt tartalmazó projektet is létrehozhat. A projekt ha
 
 A **minta Hive** -projekt tartalmazza a két parancsfájlok **WebLogAnalysis.hql** és **SensorDataAnalysis.hql**. Ezek a szkriptek használatával azonos küldhet **küldés** gombra az ablak tetején.
 
-## <a name="create-a-pig-project"></a>Hozzon létre egy Pig-projektet
+## <a name="create-an-apache-pig-project"></a>Hozzon létre egy Apache Pig-projektet
 
 Hive SQL-szerű nyelv biztosít a strukturált adatokkal dolgozik, a Pig átalakításokat végez az adatok alapján működik megfelelően. A Pig, amely lehetővé teszi, hogy egy folyamatot átalakítások fejlesztése nyelv (a Pig latin betűs) biztosít. A Pig használata a helyi fürthöz, kövesse az alábbi lépéseket:
 
@@ -201,4 +201,4 @@ Ezután létrehozhat a tábla űrlap segítségével. Az alábbi képernyőképe
 ## <a name="next-steps"></a>További lépések
 
 * [Tanulási a köteleknek, a hortonworks – tesztkörnyezet](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
-* [Hadoop oktatóanyag – HDP – első lépések](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
+* [Az Apache Hadoop-oktatóanyag – HDP – első lépések](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)

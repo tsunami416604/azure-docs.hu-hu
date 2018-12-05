@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 9f4ee3bdba87747a04dd4a5af9391c9dba6e1b51
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5ca2a8fd53ec6ae1ccdaa869de8d06b3c76ed6b3
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834214"
+ms.locfileid: "52875067"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Adatgyűjtés, a Log Analytics az Azure Automation-runbook
-Számos különféle forrásból például gyűjthet adatokat a Log Analytics jelentős mennyiségű [adatforrások](../../azure-monitor/platform/agent-data-sources.md) ügynökökön és is [adatokat gyűjteni az Azure-ból](../../azure-monitor/platform/collect-azure-metrics-logs.md).  Vannak olyan forgatókönyvek ellenére, hogy hol kell gyűjtenie az adatokat, amely nem érhető el standard források segítségével.  Ezekben az esetekben használhatja a [HTTP-adatgyűjtő API](../../log-analytics/log-analytics-data-collector-api.md) használatával írhat adatokat a Log Analyticsbe bármely REST API-ügyfélből.  Egy általános módszer az adatgyűjtést az Azure Automation runbook használ.   
+Számos különféle forrásból például gyűjthet adatokat a Log Analytics jelentős mennyiségű [adatforrások](../../azure-monitor/platform/agent-data-sources.md) ügynökökön és is [adatokat gyűjteni az Azure-ból](../../azure-monitor/platform/collect-azure-metrics-logs.md).  Vannak olyan forgatókönyvek ellenére, hogy hol kell gyűjtenie az adatokat, amely nem érhető el standard források segítségével.  Ezekben az esetekben használhatja a [HTTP-adatgyűjtő API](../../azure-monitor/platform/data-collector-api.md) használatával írhat adatokat a Log Analyticsbe bármely REST API-ügyfélből.  Egy általános módszer az adatgyűjtést az Azure Automation runbook használ.   
 
 Ez az oktatóanyag végigvezeti a folyamat létrehozásához és az adatok írása a Log Analytics az Azure Automation runbook ütemezése.
 
@@ -41,7 +41,7 @@ Ebben az oktatóanyagban egy runbook Automation-feladatokkal kapcsolatos inform�
 
 
 ## <a name="1-install-data-collector-api-module"></a>1. Adatgyűjtő API-modul telepítése
-Minden [kérelme. a HTTP-adatgyűjtő API](../../log-analytics/log-analytics-data-collector-api.md#create-a-request) megfelelően kell formázni, és a egy engedélyezési fejléc.  Ezt megteheti a runbookban is, de csökkentheti a modul, amely leegyszerűsíti a folyamatot a szükséges kód.  Egy modul használható [OMSIngestionAPI modul](https://www.powershellgallery.com/packages/OMSIngestionAPI) a PowerShell-galériában.
+Minden [kérelme. a HTTP-adatgyűjtő API](../../azure-monitor/platform/data-collector-api.md#create-a-request) megfelelően kell formázni, és a egy engedélyezési fejléc.  Ezt megteheti a runbookban is, de csökkentheti a modul, amely leegyszerűsíti a folyamatot a szükséges kód.  Egy modul használható [OMSIngestionAPI modul](https://www.powershellgallery.com/packages/OMSIngestionAPI) a PowerShell-galériában.
 
 Használata egy [modul](../../automation/automation-integration-modules.md) egy runbook kell telepíteni az Automation-fiókban.  Minden runbook ugyanazt a fiókot az a funkciók a modul használhatja.  Telepíthet új modul kiválasztásával **eszközök** > **modulok** > **modul hozzáadása** az Automation-fiókban.  
 
@@ -216,4 +216,4 @@ Minden alkalommal, amikor egy runbook elindult, [létrejön egy feladat](../../a
 - A runbook a csomag egy [felügyeleti megoldás](../../azure-monitor/insights/solutions-creating.md) az ügyfelek számára terjeszteni.
 - Tudjon meg többet [Log Analytics](https://docs.microsoft.com/azure/log-analytics/).
 - Tudjon meg többet [Azure Automation](https://docs.microsoft.com/azure/automation/).
-- Tudjon meg többet a [HTTP-adatgyűjtő API](../../log-analytics/log-analytics-data-collector-api.md).
+- Tudjon meg többet a [HTTP-adatgyűjtő API](../../azure-monitor/platform/data-collector-api.md).

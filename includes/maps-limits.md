@@ -5,18 +5,18 @@ services: azure maps
 author: jinzh-azureiot
 ms.service: azure-maps
 ms.topic: include
-ms.date: 05/07/2018
+ms.date: 11/29/2018
 ms.author: jinzh
 ms.custom: include file
-ms.openlocfilehash: fc96c66ce0cdda133d8776008874c5518cb80be6
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 1124e265b533b5f44c3b430746c48654883e524b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38755779"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52857108"
 ---
-Az alábbiakban az Azure Maps szolgáltatás használatának korlátai láthatók. Kapcsolatos információkért lásd: [díjszabásáról az Azure Maps](https://azure.microsoft.com/pricing/details/azure-maps/). [Lépjen kapcsolatba velünk](https://azure.microsoft.com/overview/sales-number/) az előfizetéséhez tartozó maximális kérelemszám növeléséhez.
+Az alábbiakban a a használati korlátot, az Azure Maps szolgáltatás **S0 tarifacsomag**. Használati korlát a tarifacsomag függ. Az Azure Maps tarifacsomagok további információkért lásd: [díjszabásáról az Azure Maps](https://azure.microsoft.com/pricing/details/azure-maps/).
 
-| Erőforrás                              | Korlát |
-|---------------------------------------|:-----:|
+| Erőforrás                              | S0 díjszabási réteg korlát |
+|---------------------------------------|:---------------------:|
 | Maximális kérelemszám előfizetésenként |   50 kérelem másodpercenként  |

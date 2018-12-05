@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 12/03/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: 3796f5c8956b633a4789baaf31a439746dc96b96
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 10a33163b2bfe6a1c9c24b9de58f83813e7534a6
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233762"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863924"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Az Azure App Service egy felhőbeli mappa szinkronizálási tartalom
 Ez a cikk bemutatja, hogyan szinkronizálja a tartalmat [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) a Dropbox és a onedrive vállalati verzió. 
@@ -61,7 +61,7 @@ Ha meg szeretné szinkronizálni a felhőbeli mappa tartalmát az App Service sz
 
 Tartalmak szinkronizálása letiltásához nyissa meg az App Service-oldalra a [az Azure portal](https://portal.azure.com).
 
-A bal oldali menüben kattintson a **üzembe helyezési központ** > **onedrive vállalati verzió** vagy **Dropbox** > **Disconnect**.
+A bal oldali menüben kattintson a **üzembe helyezési központ** > **Disconnect**.
 
 ![](media/app-service-deploy-content-sync/disable.png)
 

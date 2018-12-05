@@ -1,21 +1,20 @@
 ---
-title: A Mongoose-keretrendszer használata Azure Cosmos DB-vel | Microsoft Docs
+title: A Mongoose-keretrendszer használata Azure Cosmos DB-vel
 description: Megtudhatja, hogyan csatlakoztathat egy Node.js Mongoose alkalmazást az Azure Cosmos DB-hez
 services: cosmos-db
 author: slyons
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: sclyon
-ms.openlocfilehash: 8cfa53a1792d8e01c05aad8e4a1a0b5239a092c1
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 1230e8d4352254ef637419c77b4addb7f6f6bb05
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857393"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875127"
 ---
 # <a name="azure-cosmos-db-using-the-mongoose-framework-with-azure-cosmos-db"></a>Azure Cosmos DB: A Mongoose-keretrendszer használata Azure Cosmos DB-vel
 

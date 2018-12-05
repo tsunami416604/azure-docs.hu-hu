@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 11/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c6202ff6f00412a779fb62b7a3bcc3f30ecbb25a
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 218961e8758897ab20d0a1627f55130e3a862004
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682323"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889735"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -120,7 +120,7 @@ Ha a System Center Operations Manager felügyeleti csoportban a Log Analytics-mu
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
 * Frissítéstelepítő felügyeleti csomag
 
-Hogyan megoldás felügyeleti csomagok frissítéseivel kapcsolatos további információkért lásd: [Operations Manager csatlakoztatása a Log Analytics](../log-analytics/log-analytics-om-agents.md).
+Hogyan megoldás felügyeleti csomagok frissítéseivel kapcsolatos további információkért lásd: [Operations Manager csatlakoztatása a Log Analytics](../azure-monitor/platform/om-agents.md).
 
 > [!NOTE]
 > Azon rendszerek esetében az Operations Manager ügynök az Update Management, teljes mértékben felügyeltek lehessen az ügynökét frissíteni kell a Microsoft Monitoring Agent. Az ügynök frissítésével kapcsolatban lásd: [Operations Manager-ügynök frissítése](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents).
@@ -158,7 +158,7 @@ Ha az ügynök nem tud kommunikálni a Log Analytics és az ügynök kommunikál
 
 Újonnan hozzáadott Linux-ügynökök állapota **frissített** értékelés végrehajtását követően. A folyamat akár hat órát is igénybe vehet.
 
-Ellenőrizheti, hogy az Operations Manager felügyeleti csoport kommunikál a Log Analytics [ellenőrzése az Operations Manager Log Analytics-integráció](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-log-analytics).
+Ellenőrizheti, hogy az Operations Manager felügyeleti csoport kommunikál a Log Analytics [ellenőrzése az Operations Manager Log Analytics-integráció](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-log-analytics).
 
 ## <a name="data-collection"></a>Adatgyűjtés
 

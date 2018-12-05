@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/26/2017
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6b1531e23d0e5fd34eff59868055ccd855b423e4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 573b7e9c5c44c7162b4020f1ef54b8986003c0b5
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444303"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877133"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Adatmodell az Azure Backup-jelentésekhez
 Ez a cikk ismerteti a Power BI adatmodell az Azure Backup-jelentések készítéséhez. A data modellel meglévő jelentések kapcsolódó mezők alapján szűrheti, és további táblákat és mezőket a modellben is fontosabb, létrehozhatja saját jelentéseit. 
@@ -33,7 +33,7 @@ Ez a táblázat alapszintű mezők és az aggregációhoz különböző riasztá
 | #AlertsCreatedInPeriod |Egész szám |A kijelölt időszakban létrehozott riasztások számát |
 | A(z) % ActiveAlertsCreatedInPeriod |Százalék |Aktív riasztások a kiválasztott időszakban százaléka |
 | A(z) % CriticalAlertsCreatedInPeriod |Százalék |Kritikus riasztások a kiválasztott időszakban százaléka |
-| AlertOccurenceDate |Dátum |A riasztás létrehozásának dátuma |
+| AlertOccurrenceDate |Dátum |A riasztás létrehozásának dátuma |
 | AlertSeverity |Szöveg |A példában a kritikus riasztás súlyossága |
 | AlertStatus |Szöveg |A riasztás, ha például aktív állapot |
 | AlertType |Szöveg |A generált riasztások, például a biztonsági mentés típusa |

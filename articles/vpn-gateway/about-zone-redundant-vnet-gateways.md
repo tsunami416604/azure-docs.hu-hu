@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: 27bac5265a5e884b808c4ccb58fda0b2fffeb774
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d3dda3bb5fd39b844f50044c1262008e3610e301
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975657"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871404"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>Tudnivalók az Azure rendelkezésre állási zónákban a zónaredundáns virtuális hálózati átjárók
 
@@ -86,7 +86,7 @@ Igen, az Azure portal használatával üzembe helyezése az új termékváltozat
 
 ### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>Mely régiók érhetők el az új termékváltozatokra használni?
 
-Az új termékváltozatokra Azure-régiók, amelyek az Azure-beli rendelkezésre állási zónák – USA középső RÉGIÓJA, közép-Franciaország és Nyugat-európai régióban érhető el. Továbbítja, hogy elérhetővé teszi a Zónaredundáns átjárók Önnek más nyilvános Azure-régióban.
+Az új termékváltozatokra az Azure-régióban, amely rendelkezik az Azure-beli rendelkezésre állási zónák – USA középső RÉGIÓJA, közép-Franciaország, Észak-Európa, Nyugat-Európa és USA 2. nyugati régióban érhetők el. Továbbítja, hogy elérhetővé teszi átjárók zónaredundáns meg más nyilvános Azure-régióban.
 
 ### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>Helyezhetem el a módosítása/áttelepítése/frissítése a meglévő virtuális hálózati átjárók zónaredundáns vagy zónaszintű átjárók?
 

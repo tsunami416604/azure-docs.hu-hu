@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e8b8dac6d877ab8ab4a0abcdd64ceae1aa48d3ad
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 867d3647e293292a6294a30b71a046cc1c64d0d3
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848544"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888290"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Naplók gyűjtése az Azure service és a Log Analytics használati metrikái
 
@@ -52,7 +52,7 @@ Naplók és mérőszámok az Azure-szolgáltatásokhoz gyűjt négy különböz�
 | Szolgáltatások keresése         | Microsoft.Search/searchServices         | Diagnosztika | Diagnosztika | |
 | Service Bus-névtér   | Microsoft.ServiceBus/namespaces         | Diagnosztika | Diagnosztika | [Service Bus-elemzés (előzetes verzió)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
 | Service Fabric          |                                         | Storage     |             | [Service Fabric-elemzés (előzetes verzió)](../../service-fabric/service-fabric-diagnostics-oms-setup.md) |
-| SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | Diagnosztika | [Az Azure SQL Analytics (előzetes verzió)](../../log-analytics/log-analytics-azure-sql.md) |
+| SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | Diagnosztika | [Az Azure SQL Analytics (előzetes verzió)](../../azure-monitor/insights/azure-sql.md) |
 | Storage                 |                                         |             | Szkript      | [Az Azure Storage Analytics (előzetes verzió)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution) |
 | Virtuális gépek        | Microsoft.Compute/virtualMachines       | Mellék   | Mellék <br> Diagnosztika  | |
 | Virtuális gépek méretezési csoportjai | Microsoft.Compute/virtualMachines <br> Microsoft.Compute/virtualMachineScaleSets/virtualMachines |             | Diagnosztika | |
@@ -151,7 +151,7 @@ Tudjon meg többet a [Application Insights-összekötő](https://blogs.technet.m
 
 ## <a name="scripts-to-collect-and-post-data-to-log-analytics"></a>A szkriptek gyűjtése, és ezeket az adatokat a Log Analyticsbe
 
-Az Azure-szolgáltatásokhoz, amelyek nem rendelkeznek a naplók és mérőszámok küldése a Log Analyticshez való közvetlen módszer egy Azure Automation-szkript használatával a naplók és mérőszámok gyűjtése. A szkript ezután is küldheti az adatokat a Log Analytics használatával az [adatgyűjtő API](../../log-analytics/log-analytics-data-collector-api.md)
+Az Azure-szolgáltatásokhoz, amelyek nem rendelkeznek a naplók és mérőszámok küldése a Log Analyticshez való közvetlen módszer egy Azure Automation-szkript használatával a naplók és mérőszámok gyűjtése. A szkript ezután is küldheti az adatokat a Log Analytics használatával az [adatgyűjtő API](../../azure-monitor/platform/data-collector-api.md)
 
 Az Azure-sablon szerepel [példák az Azure Automationnel](https://azure.microsoft.com/resources/templates/?term=OMS) adatokat gyűjteni a szolgáltatások és a Log Analytics felé.
 

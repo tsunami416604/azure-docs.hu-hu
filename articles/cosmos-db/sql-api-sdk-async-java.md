@@ -1,21 +1,20 @@
 ---
-title: 'Az Azure Cosmos DB: SQL aszinkron Java API, SDK és -erőforrások |} A Microsoft Docs'
+title: 'Az Azure Cosmos DB: SQL aszinkron Java API, SDK és -erőforrások'
 description: Mindent megtudhat a SQL aszinkron Java API-t és az SDK kiadási dátum, kivezetési dátum és az Azure Cosmos DB SQL aszinkron Java SDK minden verziója közötti végzett módosításokat.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: moderakh
-ms.openlocfilehash: b5c393ada7ba0cfbce5e406046eb7285d5d07259
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 01d353d3f1b59fecbb1894d08c6404f441422593
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849343"
+ms.locfileid: "52872893"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB aszinkron Java SDK SQL API-hoz: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]

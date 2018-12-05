@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/11/2017
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 4275b734a30310c896c397a5ef9cc1b218d89476
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b2774b53956ad0ca6121189a494d6d4996d4e0c3
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842543"
+ms.locfileid: "52870775"
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Windows Eseménynapló-adatforrások a Log Analyticsben
 Windows-eseménynaplók közé tartoznak a leggyakoribb [adatforrások](agent-data-sources.md) Windows-ügynökök használata, mivel számos alkalmazásban a Windows eseménynaplójába írhatja az adatok gyűjtéséhez.  Események, például a rendszer- és standard szintű naplók is összegyűjtheti a bármely kell figyelnie alkalmazások által létrehozott egyéni naplók megadása mellett.
@@ -77,5 +77,5 @@ Az alábbi táblázat példákat különböző naplókeresésekkel, amelyek lek�
 ## <a name="next-steps"></a>További lépések
 * Konfigurálja a gyűjtendő más Log Analytics [adatforrások](agent-data-sources.md) elemzés céljából.
 * Ismerje meg [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
-* Használat [egyéni mezők](../../log-analytics/log-analytics-custom-fields.md) az eseményrekordok elemezni az egyes mezőket.
+* Használat [egyéni mezők](../../azure-monitor/platform/custom-fields.md) az eseményrekordok elemezni az egyes mezőket.
 * Konfigurálása [teljesítményszámláló-gyűjtemény](data-sources-performance-counters.md) a Windows-ügynököktől.

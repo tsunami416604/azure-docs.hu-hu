@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
-ms.openlocfilehash: 2e5c0e479d5564a48048b9fa9c67ad8870122601
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 9fdb9699a5c402fa05c98ff6aaf46ee551007f71
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706058"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873665"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX és az Azure Machine Learning: hozzon létre és együttműködésre AI-modellek üzembe helyezése
 
@@ -32,7 +32,7 @@ ONNX-modellekkel számos keretrendszereket PyTorch, Chainer, a Microsoft Cogniti
 
 Jelenítenek meg, és felgyorsítja az ONNX-modellekkel eszközök ökoszisztémája is van. Előre betanított ONNX-modellekkel számos gyakori szituációhoz kínál is elérhetők.
 
-[ONNX-modellekkel is üzembe helyezhetők](#deploy) a felhőbe az Azure Machine Learning és az ONNX-futtatókörnyezet. A Windows 10-eszközökön is telepíthető [Windows ML](https://docs.microsoft.com/windows/ai/). Akkor is telepíthetők legyenek más platformokon elérhető az ONNX-Közösségből származó átalakítók használatával. 
+[ONNX-modellekkel is üzembe helyezhetők](#deploy) a felhőbe az Azure Machine Learning és ONNX-futtatókörnyezet. A Windows 10-eszközökön is telepíthető [Windows ML](https://docs.microsoft.com/windows/ai/). Akkor is telepíthetők legyenek más platformokon elérhető az ONNX-Közösségből származó átalakítók használatával. 
 
 [ ![Képzés, konverterek és telepítési folyamatábrája ONNX](media/concept-onnx/onnx.png) ] (. / media/concept-onnx/onnx.png#lightbox)
 
@@ -63,13 +63,13 @@ A támogatott keretrendszerek és található konverterek legújabb listáját m
 
 ## <a name="deploy-onnx-models-in-azure"></a>Az Azure-ban az ONNX-modellek üzembe helyezése
 
-Az Azure Machine Learning szolgáltatás üzembe helyezése, kezelése és figyelése az ONNX-modellekkel. A standard használatával [üzembe helyezést megvalósító munkafolyamat](concept-model-management-and-deployment.md) az ONNX-futtatókörnyezet, hozhat létre a felhőben üzemeltetett REST-végponton. Egy teljes példa Jupyter notebookot, próbálja ki saját maga számára ez a cikk végén talál. 
+Az Azure Machine Learning szolgáltatás üzembe helyezése, kezelése és figyelése az ONNX-modellekkel. A standard használatával [üzembe helyezést megvalósító munkafolyamat](concept-model-management-and-deployment.md) ONNX-futtatókörnyezet, hozhat létre a felhőben üzemeltetett REST-végponton. Egy teljes példa Jupyter notebookot, próbálja ki saját maga számára ez a cikk végén talál. 
 
-### <a name="install-and-configure-the-onnx-runtime"></a>Telepítse és konfigurálja az ONNX-futtatókörnyezet
+### <a name="install-and-configure-onnx-runtime"></a>Telepítse és konfigurálja az ONNX-modul
 
-Az ONNX-modul az egy nagy teljesítményű következtetésekhez motor az ONNX-modellekkel. Tartalmaz egy Python API-t és a hardveres gyorsítás Ez a Processzor és GPU is. Jelenleg támogatja az 1.2-es ONNX-modellek és Ubuntu 16.04 linuxon futtatja. Mindkét [CPU](https://pypi.org/project/onnxruntime) és [GPU](https://pypi.org/project/onnxruntime-gpu) csomagok elérhetők az [PyPi.org](https://pypi.org).
+Az ONNX-modul egy olyan nyílt forráskódú nagy teljesítményű következtetésekhez motor az ONNX-modellekkel. A Processzor és GPU, Python, a rendelkezésre álló API-kkal is biztosít a hardveres gyorsítás C#, és a c ONNX modul támogatja az 1.2-es + ONNX modelljei és futtatja a Linux, Windows és Mac rendszerre. Python-csomagok elérhetők az [PyPi.org](https://pypi.org) ([CPU](https://pypi.org/project/onnxruntime), [GPU](https://pypi.org/project/onnxruntime-gpu)), és [ C# csomag](https://www.nuget.org/packages/Microsoft.ML.OnnxRuntime/) található [Nuget.org](https://www.nuget.org). A talál további információt a projekt [Github](https://github.com/Microsoft/onnxruntime). 
 
-Az ONNX-modul telepítéséhez használja:
+Pythonhoz készült ONNX-modul telepítéséhez használja:
 ```python
 pip install onnxruntime
 ```
@@ -94,7 +94,7 @@ results = session.run(["output1", "output2"], {"input1": indata1, "input2": inda
 results = session.run([], {"input1": indata1, "input2": indata2})
 ```
 
-A teljes körű API-referencia, lásd: a [ONNX-futtatókörnyezet referenciadokumentumok](https://aka.ms/onnxruntime-python).
+A teljes Python API-referencia, lásd: a [ONNX-futtatókörnyezet referenciadokumentumok](https://aka.ms/onnxruntime-python).
 
 ### <a name="example-deployment-steps"></a>A példában az üzembe helyezés lépései
 
@@ -191,16 +191,7 @@ A teljes körű API-referencia, lásd: a [ONNX-futtatókörnyezet referenciadoku
 
 ## <a name="examples"></a>Példák
  
-A következő notebookok ONNX-modellek létrehozása és üzembe helyezhetik azokat az Azure Machine Learning bemutatása: 
-+ [onnx/onnx-modelzoo-aml-üzembe helyezése – resnet50.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-modelzoo-aml-deploy-resnet50.ipynb)
-+ [onnx/onnx-convert-aml-üzembe helyezése – tinyyolo.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-convert-aml-deploy-tinyyolo.ipynb)
-+ [onnx/onnx-train-pytorch-AML-Deploy-mnist.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-train-pytorch-aml-deploy-mnist.ipynb)
-
-A következő notebookok bemutatják, hogyan lehet az Azure Machine Learning meglévő ONNX-modellek üzembe helyezése: 
-+ [onnx/onnx-következtetésekhez-mnist-deploy.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-inference-mnist-deploy.ipynb) 
-+ [onnx/onnx-inference-facial-Expression-Recognition-Deploy.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-inference-facial-expression-recognition-deploy.ipynb)
- 
-Ezeket a notebookokat lekérése:
+Lásd: [útmutatóval-to-használat-azureml/üzembe helyezés/onnx](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx) létrehozásáért és ONNX-modellekkel például jegyzetfüzeteket.
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
@@ -210,3 +201,8 @@ További információ az ONNX vagy járulnak hozzá a projekthez:
 + [Az ONNX-projekt webhelyének](https://onnx.ai)
 
 + [Az ONNX-kódját a Githubon](https://github.com/onnx/onnx)
+
+További információ az ONNX-futtatókörnyezet, illetve járulnak hozzá a projekthez:
++ [Az ONNX-futtatókörnyezet Github-adattár](https://github.com/Microsoft/onnxruntime)
+
+

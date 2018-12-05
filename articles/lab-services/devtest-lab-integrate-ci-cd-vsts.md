@@ -1,6 +1,6 @@
 ---
-title: Az Azure DevTest Labs folyamatba való integrálásához VSTS folyamatos integrációt és teljesítést |} A Microsoft Docs
-description: Ismerje meg, hogyan integrálhatja az Azure DevTest Labs a VSTS folyamatos integrációs és teljesítési folyamat
+title: Az Azure DevTest Labs folyamatba való integrálásához Azure folyamatok folyamatos integrációt és teljesítést |} A Microsoft Docs
+description: Ismerje meg, hogyan integrálhatja az Azure DevTest Labs szolgáltatásban az Azure-folyamatok folyamatos integrációs és teljesítési folyamat
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: b7ce07547eccd52a8b10d4cffecaf1456778da4a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 28327a650bad529595ec843ed73f00a9dfcfa58a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301208"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874226"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-devops-continuous-integration-and-delivery-pipeline"></a>Az Azure DevTest Labs integrálása az Azure DevOps folyamatos integrációs és teljesítési folyamat
 Használhatja a *Azure DevTest Labs-feladatok* bővítmény, amely telepítve van az Azure DevOps-könnyedén integrálhatja a build és kiadás folyamatos üzembe helyezési folyamat az Azure DevTest Labs. A bővítmény telepítését három feladatot: 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: c4279002f599b26ac0333e442bbca7afaebefebe
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b8d482342d0f8af9f6aebc4aa2b84731532a9c8a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837608"
+ms.locfileid: "52875229"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Naplóriasztások az Azure monitorban
 Ez a cikk ismerteti a riasztások részleteinek közé tartoznak a különböző típusú riasztások belül támogatott a [Azure Alerts](monitoring-overview-alerts.md) és a felhasználó használhat az Azure elemzési platform alapjaként, mert így.
@@ -29,7 +29,7 @@ Riasztás létre naplóbeli keresés szabályból áll [Azure Log Analytics](../
 Az Azure Alerts naplókeresési szabályokat hoz létre megadott naplólekérdezések rendszeres időközönként való automatikus futtatására.  Ha a naplólekérdezés eredménye megfelel bizonyos feltételeknek, létrejön egy riasztásbejegyzés. A szabály ekkor automatikusan futtathat egy vagy több műveletet [Műveletcsoportok](monitoring-action-groups.md) használatával. 
 
 Log search szabályok határozzák meg a következő adatokat:
-- **Lekérdezés jelentkezzen**.  Akkor következik be, a lekérdezést, amely minden alkalommal lefut a riasztási szabályt.  A lekérdezés által visszaadott rekordok segítségével meghatározhatja, hogy létrejöjjön-e riasztást. Analytics-lekérdezés is tartalmazhatnak [alkalmazások közti hívások](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery), [munkaterület-hívások közötti és [erőforrások közötti hívások](../log-analytics/log-analytics-cross-workspace-search.md) biztosított a felhasználó rendelkezik hozzáférési jogokat a külső alkalmazások számára. 
+- **Lekérdezés jelentkezzen**.  Akkor következik be, a lekérdezést, amely minden alkalommal lefut a riasztási szabályt.  A lekérdezés által visszaadott rekordok segítségével meghatározhatja, hogy létrejöjjön-e riasztást. Analytics-lekérdezés is tartalmazhatnak [alkalmazások közti hívások](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery), [munkaterület-hívások közötti és [erőforrások közötti hívások](../azure-monitor/log-query/cross-workspace-query.md) biztosított a felhasználó rendelkezik hozzáférési jogokat a külső alkalmazások számára. 
 
     > [!IMPORTANT]
     > Felhasználónak rendelkeznie kell [Azure Monitoring közreműködői](monitoring-roles-permissions-security.md) szerepkör létrehozása, módosítása és frissítése naplóriasztások az Azure monitorban; valamint & lekérdezése az analytics cél(ok) riasztási szabály vagy a riasztási lekérdezés végrehajtási jogokat. Ha a felhasználó létrehozása nem fér hozzá a riasztási szabály vagy a riasztási lekérdezés – az összes analytics cél(ok) a szabály létrehozása meghiúsulhat, vagy a riasztási szabály lesz végrehajtva a részleges eredményeket.

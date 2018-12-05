@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: e66dcac1d83c71174ad5d7c3fdcd2310143f8e01
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.date: 12/04/2018
+ms.openlocfilehash: b722af6fd5dd29a5b7cef8581d27d421825fb323
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140806"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868157"
 ---
 # <a name="tune-hyperparameters-for-your-model"></a>Hiperparaméterek a modell finomhangolása
 
@@ -36,8 +36,6 @@ Mély tanulás / gépi tanulás forgatókönyveket, a modellek teljesítményén
 
 Az Azure Machine Learning lehetővé teszi, hogy automatizálja a hiperparaméter feltárása és hatékonyan, így jelentős mennyiségű időt és erőforrásokat. Adjon meg hiperparaméter értékek, és a futtatások képzési maximális száma. A rendszer ezután automatikusan elindítja a paraméterek különböző konfigurációjú több egyidejű futtatás, és megkeresi a konfigurációt, amely a legjobb teljesítmény érdekében a mérőszám úgy dönt, mérjük eredményez. Gyengén teljesítő betanítási futtatások automatikusan korai leállt, csökkenti a számítási erőforrások veszteség. Ezeket az erőforrásokat más hiperparaméter konfigurációk megismerése helyett használhatók.
 
->[!NOTE]
-> Ebben a cikkben kód teszteltük az Azure Machine Learning SDK verziója 0.168 
 
 ## <a name="define-search-space"></a>Keresési hely megadása
 
@@ -311,7 +309,7 @@ hyperdrive_run = experiment.submit(hyperdrive_run_config)
 Az Azure Machine Learning SDK-t biztosít, amely megjeleníti a tanítási előrehaladását Notebook widget futtatja. Az alábbi kódrészlet megjeleníti az összes a hiperparaméter finomhangolása egy Jupyter Notebookban egy helyen fut:
 
 ```Python
-from azureml.train.widgets import RunDetails
+from azureml.widgets import RunDetails
 RunDetails(hyperdrive_run).show()
 ```
 
@@ -348,10 +346,9 @@ print('\n batch size:',parameter_values[7])
 ```
 
 ## <a name="sample-notebook"></a>Minta notebook
-Tekintse meg 
-* [Training/03.train-hyperparameter-Tune-Deploy-with-tensorflow](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow) hiperparaméterek Tensorflow modell finomhangolásával oktatóanyagot. 
-
-Ez a jegyzetfüzet lekérése:
+Tekintse meg ezeket a notebookokat:
+* [How-to-use-azureml/Training-with-deep-Learning/train-hyperparameter-Tune-Deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch) 
+* [How-to-use-azureml/Training-with-deep-Learning/train-hyperparameter-Tune-Deploy-with-tensorflow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

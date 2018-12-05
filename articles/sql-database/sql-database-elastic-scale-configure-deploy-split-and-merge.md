@@ -3,7 +3,7 @@ title: Felosztási-egyesítési szolgáltatás üzembe helyezése |} A Microsoft
 description: Használja a szétválasztás és egyesítés túl szilánkokra osztott adatbázisok közötti.
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 253a50f50e94888a5d764e51a4ff49cc0c1424c6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d44ce52e923c8f5b8ad8b873992163dca56ae0af
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253533"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875195"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Szilánkokra osztott adatbázisok közötti felosztási-egyesítési szolgáltatás üzembe helyezése
 

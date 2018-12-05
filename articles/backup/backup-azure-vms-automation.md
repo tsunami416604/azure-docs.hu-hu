@@ -2,19 +2,19 @@
 title: A biztonsági mentés üzembe helyezése és kezelése a Resource Managerrel üzembe helyezett virtuális gépeken a PowerShell-lel
 description: Üzembe helyezése és biztonsági másolatainak kezelése az Azure Resource Manager által telepített virtuális gépek PowerShell használatával
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 10/20/2018
-ms.author: markgal
+ms.author: raynew
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 855a046425f051739f61c74b551d4ffea7b9120a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 814afb8731f8e4da3d3cbc75ef69c3b5da487914
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252360"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877861"
 ---
 # <a name="use-powershell-to-back-up-and-restore-virtual-machines"></a>Készítsen biztonsági másolatot, és virtuális gépek visszaállítása a PowerShell használatával
 

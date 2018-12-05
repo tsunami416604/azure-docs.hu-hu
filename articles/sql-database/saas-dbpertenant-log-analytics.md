@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: b207af3bed40f6287f60b25638f3091fa187aa6f
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 58a354950e303eda8158ca072870bfecbf33a89f
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405072"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890211"
 ---
 # <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>Állítsa be, és a Log Analytics használatához egy több-bérlős SQL Database SaaS-alkalmazással
 
@@ -32,7 +32,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
 
 * A Wingtip Tickets SaaS bérlőnkénti adatbázis alkalmazás telepítve van. Kevesebb mint öt perc alatt üzembe helyezéséhez lásd: [üzembe helyezése és felfedezése a Wingtip Tickets SaaS bérlőnkénti adatbázis alkalmazás](saas-dbpertenant-get-started-deploy.md).
-* Az Azure PowerShell telepítve van. További információkért lásd: [Azure PowerShell használatának első lépései](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Az Azure PowerShell telepítve van. További információért lásd [az Azure PowerShell használatának első lépéseit](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 Tekintse meg a [teljesítmény figyelése és kezelése oktatóanyag](saas-dbpertenant-performance-monitoring.md) említett SaaS-forgatókönyveket és a mintákat és azok figyelési megoldást a követelményeknek.
 
@@ -42,7 +42,7 @@ Az Azure SQL-adatbázis monitorozási és riasztási érhető el adatbázisokhoz
 
 Nagy mennyiségű forgatókönyvek esetén használhatja a Log Analytics figyelés és riasztás céljából. A log Analytics egy külön Azure-szolgáltatás, amely lehetővé teszi elemzési diagnosztikai naplók és a egy adott munkaterület potenciálisan sok szolgáltatás összegyűjtött telemetriai keresztül. Log Analytics biztosít beépített lekérdezési nyelvet és adatvizualizációs eszközöket, amelyek lehetővé teszik a működési adatok elemzését. Az SQL Analytics megoldás számos előre definiált rugalmas készlet és -adatbázis figyelési és riasztási nézeteket és lekérdezéseket biztosít. A log Analytics egyéni Nézettervező is biztosít.
 
-OMS-munkaterülete mostantól Log Analytics-munkaterületek nevezik. Az Azure Portalon nyissa meg a log Analytics munkahelyek és elemzési megoldások. Az Azure portal az újabb hozzáférési pont, de elképzelhető, hogy mi az egyes területeken az Operations Management Suite portál mögött.
+Az OMS-munkaterületeket mostantól Log Analytics-munkaterületeknek nevezzük. Az Azure Portalon nyissa meg a log Analytics munkahelyek és elemzési megoldások. Az Azure portal az újabb hozzáférési pont, de elképzelhető, hogy mi az egyes területeken az Operations Management Suite portál mögött.
 
 ### <a name="create-performance-diagnostic-data-by-simulating-a-workload-on-your-tenants"></a>A bérlők számára a számítási feladatok szimulálásával diagnosztikai teljesítményadatok létrehozása 
 
@@ -127,7 +127,7 @@ Ebben a gyakorlatban az Azure Portalon, és tekintse meg az adatbázisokhoz és 
 
 1. Vissza a Log Analytics-munkaterületen, válassza ki **OMS-portálon** , nyissa meg a munkaterület létezik.
 
-    ![Azure-beli monitorozási munkaterület](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
+    ![Log Analytics-munkaterület](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
 
 A Log Analytics munkaterületen áttekintheti a napló- és metrikaadatokat adatok további. 
 
@@ -151,4 +151,4 @@ Próbálja ki a [bérlői elemzések – oktatóanyag](saas-dbpertenant-log-anal
 ## <a name="additional-resources"></a>További források
 
 * [További oktatóanyagokat szeretnénk a hozhat létre a Wingtip Tickets SaaS bérlőnkénti adatbázis alkalmazás kezdeti üzembe helyezése](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
-* [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md)
+* [Azure Log Analytics](../azure-monitor/insights/azure-sql.md)

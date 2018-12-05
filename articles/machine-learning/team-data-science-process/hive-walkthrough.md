@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 1b494f78998a03d39b18d4f9bba80642c04c483e
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: ad6493b8acb315a0764e1aee153f0919318747ce
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444205"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879655"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>A csoportos adatelemzési folyamat működés közben: használata Azure HDInsight Hadoop-fürtök
 Ez az útmutató használjuk a [csoportos adatelemzési folyamat (TDSP)](overview.md) egy teljes körű forgatókönyvben. Használjuk egy [Azure HDInsight Hadoop-fürt](https://azure.microsoft.com/services/hdinsight/) tárolását, ismerje meg, és a nyilvánosan elérhető a szolgáltatás-mérnök adatainak [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészlet, és való az adatokat. Bináris és többosztályos besorolási és regressziós prediktív feladatok kezelésére, hogy ki, hogy az adatok az Azure Machine Learning modellek. 
@@ -416,7 +416,7 @@ A Hive-könyvtár használatával futtassa a következő parancsot:
 > 
 > 
 
-Ha az adatkészlet feltárása, gyakran szeretnénk vizsgálja meg a csoportok az értékek az co-előfordulások száma. Ez a szakasz azt szemlélteti, hogyan teheti ezt a kabinetfájlok és illesztőprogramok.
+Ha az adatkészlet feltárása, gyakran szeretnénk vizsgálja meg az értékek csoportok társ előfordulások száma. Ez a szakasz azt szemlélteti, hogyan teheti ezt a kabinetfájlok és illesztőprogramok.
 
 A **minta\_hive\_út\_száma\_által\_medallion\_license.hql** fájl diszkont adatkészlet csoportjait a **medallion** és **hack_license**, és egyes kombinációk számát adja vissza. Az alábbiakban a tartalmát:
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/02/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5e19c7c1ed15183fdb796a6fa4e537da946b40b9
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 68698cf23a59a5f4fd182891ebed243dac1319bf
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642535"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870537"
 ---
 # <a name="connect-computers-without-internet-access-using-the-log-analytics-gateway"></a>Számítógépek csatlakoztatása a Log Analytics-átjáró Internet-hozzáférés nélkül
 Ez a dokumentum ismerteti az Azure Automation szolgáltatással kommunikáció konfigurálása és a Log Analytics használatával az a Log Analytics-átjáró, amikor közvetlen csatlakoztatva, vagy az Operations Manager figyelt számítógépek nem rendelkeznek Internet-hozzáférés.  A Log Analytics-átjáró, amely, amely támogatja a HTTP-bújtatás a HTTP-csatlakozási paranccsal továbbítsa HTTP-proxyt, adatok gyűjtéséhez és küldhet az Azure Automation és a Log Analytics a felhasználók nevében.  
@@ -82,7 +82,7 @@ A Log Analytics-átjáró a következő nyelveken érhető el:
 - Spanyol (nemzetközi)
 
 ### <a name="supported-encryption-protocols"></a>Támogatott titkosítási protokollokkal
-A Log Analytics-átjáró csak a Transport Layer Security (TLS) 1.0, 1.1 és 1.2-es támogatja.  Nem támogatja a Secure Sockets Layer (SSL).  A Log Analytics az átvitt adatok biztonságának biztosítása érdekében, azt javasoljuk, hogy az átjáró használatához legalább konfigurálása Transport Layer Security (TLS) 1.2-es. Biztonsági rés található régebbi verziói a TLS/Secure Sockets Layer (SSL), és jelenleg továbbra is működnek, hogy a visszamenőleges kompatibilitás, amíg azok **nem ajánlott**.  További információkért tekintse át a [biztonságosan a TLS 1.2 használatával az adatok küldésének](../../log-analytics/log-analytics-data-security.md#sending-data-securely-using-tls-12). 
+A Log Analytics-átjáró csak a Transport Layer Security (TLS) 1.0, 1.1 és 1.2-es támogatja.  Nem támogatja a Secure Sockets Layer (SSL).  A Log Analytics az átvitt adatok biztonságának biztosítása érdekében, azt javasoljuk, hogy az átjáró használatához legalább konfigurálása Transport Layer Security (TLS) 1.2-es. Biztonsági rés található régebbi verziói a TLS/Secure Sockets Layer (SSL), és jelenleg továbbra is működnek, hogy a visszamenőleges kompatibilitás, amíg azok **nem ajánlott**.  További információkért tekintse át a [biztonságosan a TLS 1.2 használatával az adatok küldésének](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
 
 ### <a name="supported-number-of-agent-connections"></a>Támogatott ügynök-kapcsolatok száma
 Az alábbi táblázat az átjáró-kiszolgálóval való kommunikációhoz ügynökök támogatott száma emeli ki.  Ez a támogatás közel 200KB méretű adatot feltölteni 6 másodpercenként ügynökök alapul. Tesztelt ügynök / adatmennyiség naponta körülbelül 2.7-es GB.

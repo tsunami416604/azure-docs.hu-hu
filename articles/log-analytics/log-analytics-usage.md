@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 843271901b8d58c2c5a6c4cf495997498b8278b6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c2299c6178dbca821362f51cf088f34022df772c
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848850"
+ms.locfileid: "52878040"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Az adathasználat elemzése a Log Analyticsben
 
@@ -47,6 +47,7 @@ Vessünk egy pillantást, hogy hogyan tudjuk többet is megtudhat ezek mindegyik
 
 > [!NOTE]
 > Egyes mezőit a használati adattípusú, miközben továbbra is a séma már elavult, és azok értékei már fel van töltve. Ezek a **számítógép** valamint Adatbetöltési kapcsolódó mezőket (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**,  **BatchesCapped** és **AverageProcessingTimeMs**.
+> Lekérdezni egy számítógépen a feldolgozott adatok mennyisége az új módon lentebb. 
 
 ### <a name="data-volume"></a>Adatmennyiség 
 Az a **használat és becsült költségek** lapon a *adatbetöltés megoldásonként* küldött adatok teljes mennyiségét, és mekkora küld a rendszer egyes megoldások által látható diagramon. Ez lehetővé teszi, hogy határozza meg a trendeket, például hogy a teljes adathasználat (vagy egy adott megoldás használatának) nő, állandó vagy csökken van hátra. Ennek létrehozásához használt lekérdezés
@@ -64,24 +65,32 @@ Lásd: adatok trendjeit adott adattípusok, például ha az IIS-naplók miatt az
 
 ### <a name="nodes-sending-data"></a>Adatokat küldő csomópontok
 
-Szeretné megtudni, a jelentési adatok az elmúlt hónapban a csomópontok számát, használata
+Az elmúlt hónapban adatokat küldő számítógépek (csomópontok) számát tudni használata
 
 `Heartbeat | where TimeGenerated > startofday(ago(31d))
 | summarize dcount(ComputerIP) by bin(TimeGenerated, 1d)    
 | render timechart`
 
-A számítógép betöltött események száma használja
+Megtekintheti a **mérete** számítógép betöltött számlázható események használata
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last `
+
+Ezen lekérdezések használatához takarékosan, különböző adatok adatok typres keresésekre költséges végrehajtásához. Ez a lekérdezés a lekérdezés ezt a használati adatok típusa a régi módja váltja fel. 
+
+Megtekintheti a **száma** számítógép betöltött események használata
 
 `union withsource = tt *
 | summarize count() by Computer | sort by count_ nulls last`
 
-Ez a lekérdezés, költséges hajtható végre, mert megtörhetik a cikk folytonosságát használja. A számítógép betöltött számlázható események száma használja 
+A számítógép betöltött számlázható események száma használja 
 
 `union withsource = tt * 
 | where _IsBillable == true 
 | summarize count() by Computer  | sort by count_ nulls last`
 
-Ha meg szeretné tekinteni a számlázható adattípusokat adatot küldenek, adott számítógéphez, használja:
+Ha meg szeretné tekinteni a számlázható adattípusok darabszáma adatot küldenek, adott számítógéphez, használja:
 
 `union withsource = tt *
 | where Computer == "*computer name*"
@@ -209,7 +218,7 @@ Megadhat egy meglévő [műveletcsoportot](../monitoring-and-diagnostics/monitor
 Riasztás fogadásakor kövesse a következő szakaszban leírt lépéseket a vártnál magasabb szintű használatot okozó hibák elhárításához.
 
 ## <a name="next-steps"></a>További lépések
-* A keresési nyelv használatával kapcsolatban tekintse meg a [Log Analytics naplókeresési funkciójával](../azure-monitor/log-query/log-query-overview.md) kapcsolatos cikket. A keresési lekérdezésekkel további elemzéseket végezhet a használati adatokon.
+* A keresési nyelv használatával kapcsolatban tekintse meg a [Log Analytics naplókeresési funkciójával](log-analytics-queries.md) kapcsolatos cikket. A keresési lekérdezésekkel további elemzéseket végezhet a használati adatokon.
 * Az [új naplózási riasztás létrehozásával kapcsolatos](../monitoring-and-diagnostics/alert-metric.md) szakaszban leírt lépéseket követve beállíthatja, hogy értesítést kapjon, ha teljesül egy keresési feltétel.
 * A [megoldáscélzási](../azure-monitor/insights/solution-targeting.md) funkcióval megadhatja, hogy csak a szükséges számítógépcsoportoktól gyűjtsön adatokat.
 * Hatékony biztonságiesemény-gyűjtési szabályzat konfigurálásához tekintse meg az [Azure Security Center szűrési szabályzataival](../security-center/security-center-enable-data-collection.md) foglalkozó cikket.

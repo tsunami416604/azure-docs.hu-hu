@@ -6,25 +6,26 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-ms.author: krishnan
-author: krishnaanumalasetty
-ms.date: 9/24/2018
-ms.openlocfilehash: 2a9c05b68d05102fab80b2aa8fb1c1dad8a367ea
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+author: nacharya1
+ms.author: nilesha
+ms.date: 12/04/2018
+ms.openlocfilehash: b5ebd2e1b2e6a6fd6ba55a8923c31a54d13413e1
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960039"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878634"
 ---
 # <a name="what-is-automated-machine-learning"></a>Mi a machine learning automatikus?
 
-Ebben a cikkben megismerheti az automatikus gépi tanulás. Az Azure Machine Learning szolgáltatás automatikusan algoritmus kiválasztása az Ön számára, és hozzon létre egy modellt. Automatikus machine learning segít időt takarít meg a paramétereket, és az Ön által megadott feltételeknek, válassza ki a legjobb algoritmus a modell használatával.
+Ebben a cikkben megismerheti az automatikus gépi tanulás. Az Azure Machine Learning szolgáltatás automatikusan algoritmus kiválasztása az Ön számára, és hozzon létre egy modellt. A célok és a kísérlethez, például az idő a kísérlet futtatásához definiált megkötések lehetőségeire modellek, vagy amely tiltólistára kell helyezni a modellek létrehozásával időt automatizált machine learning-menti.
 
 ## <a name="how-it-works"></a>Működés
 
-1. Konfigurálja a machine learning problémát megoldani kívánt típusát. Felügyelt tanítás két kategóriába támogatottak:
+1. Konfigurálja a machine learning problémát megoldani kívánt típusát. Felügyelt tanítás kategóriáit támogatottak:
    + Besorolás
    + Regresszió
+   + Előrejelzések
 
    Tekintse meg a [modellek listájának](how-to-configure-auto-train.md#select-your-experiment-type) Azure Machine Learning betanításakor próbálja meg.
 

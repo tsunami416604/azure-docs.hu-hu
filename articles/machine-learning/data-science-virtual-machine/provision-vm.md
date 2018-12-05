@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: gokuma
-ms.openlocfilehash: 1b293ee8f0f83d727cd647cdcdcc424b4db7e5d3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c6314b4f53969b32040713df4834e5706d31be3a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240885"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865352"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>A Windows Data Science virtuális gép Azure-beli üzembe helyezése
 A Microsoft Data Science virtuális gépet (DSVM) egy Windows Azure virtuális gép (VM) rendszerkép. Előtelepített és konfigurált adatelemzési és machine learning használt számos eszközzel. A következő eszközök foglalja magában:
@@ -77,7 +77,7 @@ Hozzon létre egy példányt, a Microsoft Data Science virtuális gép, kövesse
 
     i. **Név**. Neve az adatelemzési kiszolgálót hoz létre.  
 
-    II. **Virtuális merevlemez típusa**. Válasszon **SSD** vagy **HDD**. Egy hasonló NVidia Tesla K80-alapú NC_v1 GPU-példány, válassza ki a **HDD** , a lemez típusát.   
+    ii. **Virtuális merevlemez típusa**. Válasszon **SSD** vagy **HDD**. Egy hasonló NVidia Tesla K80-alapú NC_v1 GPU-példány, válassza ki a **HDD** , a lemez típusát.   
 
     III. **Felhasználónév**. Jelentkezzen be a rendszergazdai fiók azonosítója.   
 
@@ -95,7 +95,7 @@ Hozzon létre egy példányt, a Microsoft Data Science virtuális gép, kövesse
 
     i. **Felügyelt lemezek használata**. Válasszon **felügyelt** Ha azt szeretné, hogy Azure-lemezek kezelése a virtuális gép számára. Ha nem, akkor meg kell adnia egy új vagy meglévő tárfiókot.  
 
-    II. **Más paramétereket**. Az alapértelmezett értékeket is használhat. Ha azt szeretné, nem alapértelmezett értékek, a kurzort az egyes mezőkkel tájékoztató mutató hivatkozás.  
+    ii. **Más paramétereket**. Az alapértelmezett értékeket is használhat. Ha azt szeretné, nem alapértelmezett értékek, a kurzort az egyes mezőkkel tájékoztató mutató hivatkozás.  
 
   d. **Összefoglalás**. Győződjön meg arról, hogy helyesen szerepel-e a megadott összes információt. Kattintson a **Létrehozás** gombra. 
 
@@ -150,7 +150,7 @@ Az asztali ikonra duplán kattintva nyissa meg a Visual Studio vagy a **Start** 
 * Az Azure HDInsight Hadoop és Spark
 * Azure Data Lake 
 
-Emellett van egy beépülő modul nevű ```Visual Studio Tools for AI``` , amely zökkenőmentesen integrálható az Azure Machine Learning, és segít gyorsan hozhat létre AI-alkalmazások. 
+Emellett van egy beépülő modul nevű ```Azure Machine Learning for Visual Studio Code``` , amely zökkenőmentesen integrálható az Azure Machine Learning, és segít gyorsan hozhat létre AI-alkalmazások. 
 
 > [!NOTE]
 > Előfordulhat, hogy kap egy üzenetet, hogy a próbaidőszak lejárt. Adja meg a Microsoft-fiók hitelesítő adatait. Vagy hozzon létre egy új, hozzáférhet a Visual Studio Community ingyenes fiókot. 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/24/2017
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f9cdb11bad5d4aa94fdc083a0fc7dc6a2c5787cd
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: f4ecc87a0a7a0c74b02b72164fe129daa6530ea2
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635152"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877581"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics-adatmodell az Azure biztonsági mentési adatok
 A Log Analytics data model használatával jelentéseket készíthet. Az adatmodellel egyéni lekérdezéseket és irányítópultokat hozhat létre, vagy testre szabhatja az Azure biztonsági mentési adatok, tetszés.
@@ -30,7 +30,7 @@ Ez a táblázat részletesen riasztási kapcsolódó mezőket.
 | AlertUniqueId_s |Szöveg |A generált riasztások egyedi azonosítója |
 | AlertType_s |Szöveg |Riasztás, ha például biztonsági mentés típusa |
 | AlertStatus_s |Szöveg |A riasztás állapotának, például aktív |
-| AlertOccurenceDateTime_s |Dátum/idő |Dátum és idő, a riasztás létrehozásakor |
+| AlertOccurrenceDateTime_s |Dátum/idő |Dátum és idő, a riasztás létrehozásakor |
 | AlertSeverity_s |Szöveg |A riasztás súlyosságát, például kritikus |
 | EventName_s |Szöveg |Az esemény neve. Mindig AzureBackupCentralReport |
 | BackupItemUniqueId_s |Szöveg |A riasztáshoz tartozó biztonsági mentési elem egyedi azonosítója |

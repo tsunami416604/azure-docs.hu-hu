@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: 5823e6e3bf2614bf834a9ab64c3403829d58a779
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 1c6012503c5300d64d17a4b8efc262fa91355c88
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715529"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890109"
 ---
 #  <a name="agent-health-solution-in-azure"></a>Ügynökállapot megoldás az Azure-ban
 Az Azure-ban az Agent Health megoldás segít átlátni, az összes jelentő ügynökök közül közvetlenül a Log Analytics-munkaterületet, vagy a System Center Operations Manager felügyeleti csoport csatlakoztatva a Log Analytics, amelyek nem válaszol, a üzemeltetési elküldése adatok.  Azt is nyomon követheti, hogy hány ügynök lett üzembe helyezve, és milyen a földrajzi eloszlásuk, illetve egyéb lekérdezéseket hajthat végre, amelyekkel megismerheti az Azure-ban, egyéb felhőkörnyezetekben, illetve helyszínen üzembe helyezett ügynökök eloszlását.    
 
 ## <a name="prerequisites"></a>Előfeltételek
-A megoldás telepítése előtt győződjön meg arról, hogy rendelkezik aktuálisan támogatott [Windows-ügynökök](../../log-analytics/log-analytics-windows-agent.md) a Log Analytics-munkaterületre jelentő vagy a jelentéskészítés egy [Operations Manager felügyeleti csoport](../../log-analytics/log-analytics-om-agents.md) integrálva van a munkaterület.    
+A megoldás telepítése előtt győződjön meg arról, hogy rendelkezik aktuálisan támogatott [Windows-ügynökök](../../log-analytics/log-analytics-windows-agent.md) a Log Analytics-munkaterületre jelentő vagy a jelentéskészítés egy [Operations Manager felügyeleti csoport](../../azure-monitor/platform/om-agents.md) integrálva van a munkaterület.    
 
 ## <a name="solution-components"></a>Megoldás-összetevők
 Ez a megoldás a következő erőforrásokból áll, amelyek a munkaterületéhez lesznek hozzáadva, és ügynökökhöz vagy az Operations Managerhez kapcsolt felügyeleti csoporthoz lesznek közvetlenül hozzákapcsolva.
@@ -36,7 +36,7 @@ Ha a System Center Operations Manager felügyeleti csoportban a Log Analytics-mu
 * Microsoft System Center Advisor HealthAssessment Direct Channel Intelligence Pack (Microsoft.IntelligencePacks.HealthAssessmentDirect)
 * Microsoft System Center Advisor HealthAssessment Server Channel Intelligence Pack (Microsoft.IntelligencePacks.HealthAssessmentViaServer).  
 
-A megoldási felügyeleti csomagok frissítéseivel kapcsolatban lásd: [Az Operations Manager csatlakoztatása a Log Analyticshez](../../log-analytics/log-analytics-om-agents.md).
+A megoldási felügyeleti csomagok frissítéseivel kapcsolatban lásd: [Az Operations Manager csatlakoztatása a Log Analyticshez](../../azure-monitor/platform/om-agents.md).
 
 ## <a name="configuration"></a>Konfiguráció
 Adja hozzá az Agent Health megoldás a Log Analytics-munkaterülethez ismertetett folyamatot [megoldások hozzáadása](solutions.md). Nincs szükség további konfigurációra.

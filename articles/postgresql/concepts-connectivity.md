@@ -3,19 +3,19 @@ title: Átmeneti kapcsolati hibákat kezelése az Azure Database for postgresql-
 description: Ismerje meg, hogy átmeneti kapcsolati hibáinak kezelése az Azure Database for postgresql-hez.
 keywords: postgresql-kapcsolat, kapcsolati karakterlánc, kapcsolódási problémák, átmeneti hiba, kapcsolódási hiba
 services: postgresql
-author: janeng
+author: jan-eng
 ms.author: janeng
 manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 11/09/2018
-ms.openlocfilehash: 0459c8ff31564adfbaa3e1735535cd24c3064663
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 021fad5e59e76444351711fb529c542d428af189
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51284928"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890060"
 ---
 # <a name="handling-of-transient-connectivity-errors-for-azure-database-for-postgresql"></a>Átmeneti kapcsolati hibákat kezelése az Azure Database for postgresql-hez
 
@@ -49,4 +49,4 @@ Ellenőrizze, hogy tesztelje, újrapróbálkozási logika. Például próbálja 
 
 ## <a name="next-steps"></a>További lépések
 
-* [PostgreSQL-hez készült Azure Database-kapcsolatok problémáinak hibaelhárítása](howto-troubleshoot-common-connection-issues.md)
+* [Az Azure Database for PostgreSQL-hez való csatlakozás hibáinak elhárítása](howto-troubleshoot-common-connection-issues.md)

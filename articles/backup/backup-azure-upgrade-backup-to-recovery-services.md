@@ -2,18 +2,18 @@
 title: Egy Backup tároló frissítése Recovery Services-tároló
 description: Útmutató és támogatási információk az Azure Backup-tároló frissítése Recovery Services-tárolóba.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 1/4/2018
 ms.author: sogup
-ms.openlocfilehash: 431ca75a653b93342b61a9b39dc42a93270519f1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 41a826304af338814666e80dfaf584021809dbb0
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228521"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52880046"
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Egy Backup tároló frissítése Recovery Services-tároló
 

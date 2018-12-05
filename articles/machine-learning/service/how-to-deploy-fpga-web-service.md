@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
 ms.date: 10/29/2018
-ms.openlocfilehash: c6bf3c50958085f45c52ec2fa3cbdfba8adbe35f
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: e46b2c0de1b65d2355e7258e9940ee1fee6be071
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711718"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872135"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning"></a>Modell üzembe helyezése az Azure Machine Learning-FPGA webszolgáltatásként
 
@@ -165,14 +165,6 @@ registered_model.delete()
 
 FPGA-kban futtat az Azure Machine Learning-modellek adja meg az SSL-támogatás és a kulcs alapú hitelesítés. Ez lehetővé teszi, hogy a szolgáltatás és az ügyfelek által küldött biztonságos adatokat való hozzáférés korlátozása. [Ismerje meg, hogyan védheti meg a webszolgáltatás](how-to-secure-web-service.md).
 
-
-## <a name="sample-notebook"></a>Minta notebook
-
-A jelen cikk fogalmait találja meg a a [project-brainwave/project-brainwave-quickstart.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/project-brainwave/project-brainwave-quickstart.ipynb) notebookot.
-
-Ez a jegyzetfüzet lekérése:
-
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>További lépések
 

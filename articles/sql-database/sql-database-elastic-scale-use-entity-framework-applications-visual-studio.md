@@ -3,7 +3,7 @@ title: Elastic database-ügyfélkódtár használatával az Entity Framework |} 
 description: Elastic Database-ügyfélkódtár és az Entity Framework használata adatbázisok kódolása
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 58b109651408a51ca7505c92d3875de63aae2cc6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 030ec9db16f90430a544ca8715a4e1dea02e2c62
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261927"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873240"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Rugalmas adatbázis-ügyfélkódtárnak az Entity Framework
 Ez a dokumentum az Entity Framework-alkalmazásba való integrálásához szükséges változásait jeleníti meg a [rugalmas adatbáziseszközöket](sql-database-elastic-scale-introduction.md). A fókusz a összeállítása van [szilánkleképezés-kezelés](sql-database-elastic-scale-shard-map-management.md) és [Adatfüggő útválasztásnak](sql-database-elastic-scale-data-dependent-routing.md) az Entity Framework- **Code First** megközelítést. A [kód először – új adatbázis](https://msdn.microsoft.com/data/jj193542.aspx) oktatóanyag az EF ebben a dokumentumban futó példaként szolgálja ki. A jelen dokumentum kísérő mintakódot is, a Visual Studio-Kódminták beállítása elastic database-eszközök részét képezi.

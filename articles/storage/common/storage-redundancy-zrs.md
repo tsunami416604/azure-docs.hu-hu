@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: jeking
 ms.component: common
-ms.openlocfilehash: b310c06f508395635976009005dd2c4db2917abc
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 1b39de45d5046ce5a59dcaf0648b87aca2a5c6f5
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218738"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868344"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Zónaredundáns tárolás (ZRS): az Azure Storage magas rendelkezésre állású alkalmazások
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
@@ -81,7 +81,7 @@ Kérheti az élő áttelepítés révén a [Azure-támogatási portál](https://
     - **Probléma típusa**: válasszon **adatáttelepítés**.
     - **Kategória**: válasszon **áttelepítése a zrs-t egy adott régión belül**.
     - **Cím**: Adjon meg egy leíró címet, például **ZRS fiók áttelepítési**.
-    - **Részletek**: írja be a további részletek a **részletek** mezőbe, például szeretnék áttelepítésére [LRS, GRS] ZRS ___ a régióban. 
+    - **Részletek**: írja be a további részletek a **részletek** mezőbe, például szeretnék áttelepítésére [LRS, GRS] ZRS az a \_ \_ régióban. 
 5. Kattintson a **Tovább** gombra.
 6. Győződjön meg arról, hogy a kapcsolattartási adatokat a megfelelő a **kapcsolattartási adatok** panelen.
 7. Kattintson a **Létrehozás** gombra.

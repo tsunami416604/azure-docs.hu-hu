@@ -9,16 +9,16 @@ ms.reviewer: jmartens
 ms.author: haining
 author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: e2b3545c020f41f25f19843eab158cfb1b419164
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8517b469e622068b37bb0fde34f5cfcd8703c7ee
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253448"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877270"
 ---
 # <a name="migrate-to-the-latest-version-of-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatás legújabb verziójára való áttérést 
 
-**Ha telepítette a Workbench (előzetes verzió) alkalmazást, illetve a kísérleti és modellkezelési fiókok előzetes rendelkezik, ez a cikk segítségével áttelepítheti az a legújabb verzióra.**  Ha az előzetes verziójú Workbench telepítve, vagy egy Kísérletezési, illetve a modellkezelési fiók nem rendelkezik, nem kell áttelepíteni semmit.
+**Ha telepítette a Workbench alkalmazást, illetve kísérleti és modellkezelési fiókok előzetes rendelkezik, ez a cikk segítségével áttelepítheti az a legújabb verzióra.**  Ha az előzetes verziójú Workbench telepítve, vagy egy Kísérletezési, illetve a modellkezelési fiók nem rendelkezik, nem kell áttelepíteni semmit.
 
 ## <a name="what-can-i-migrate"></a>Milyen telepíthet át?
 Az első Azure Machine Learning szolgáltatás előzetes verzióban létrehozott legtöbb összetevők tárolására is szolgál a saját helyi vagy felhőbeli tárhelyén. Ezek az összetevők nem eltűnik. A migráláshoz az összetevők való újbóli regisztráláshoz a frissített Azure Machine Learning szolgáltatásban. 

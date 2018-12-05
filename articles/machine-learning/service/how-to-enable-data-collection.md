@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
 ms.date: 11/08/2018
-ms.openlocfilehash: f4340d1ef30bb4317e658c9a9a936f009054e784
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 0f09e168cf3e7944db0381bc54e66e0b95d0dd8e
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710630"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877150"
 ---
 # <a name="collect-data-for-models-in-production"></a>A modellek éles adatok gyűjtése
 
@@ -45,8 +45,6 @@ A kimeneti adatokat a BLOB elérési útja ezt a szintaxist követi:
 /modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
->[!NOTE]
-> Ebben a cikkben kód teszteltük az Azure Machine Learning SDK verziója 0.1.74
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -172,7 +170,7 @@ Gyors eléréséhez az adatok a blobból:
 
 ### <a name="analyzing-model-data-through-power-bi"></a>Modell adatelemzés a Power bi-ban
 
-1. Töltse le és nyissa meg a [Power bi Desktopban](http://www.powerbi.com)
+1. Töltse le és nyissa meg a [Power bi Desktopban](https://www.powerbi.com)
 
 1. Válassza ki **adatok lekérése** , majd kattintson a [ **Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources).
 
@@ -231,8 +229,6 @@ Gyors eléréséhez az adatok a blobból:
 
 ## <a name="example-notebook"></a>Példa notebook
 
-A [00. első Started/12.enable-data-collection-for-models-in-aks.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/12.enable-data-collection-for-models-in-aks) notebook mutatja be a jelen cikk fogalmait.  
+A [how-to-use-azureml/deployment/enable-data-collection-for-models-in-aks/enable-data-collection-for-models-in-aks.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-data-collection-for-models-in-aks/enable-data-collection-for-models-in-aks.ipynb) notebook mutatja be a jelen cikk fogalmait.  
 
-Ez a jegyzetfüzet lekérése:
- 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: c86609ae5b993328beced468b74c7f2a1b65def4
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 4fba15a98757e06aa167fbc18a9606fd042a08dc
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283614"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874532"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Bevezetés az Azure Data Lake Storage Gen2 előzetes verzió
 
@@ -47,7 +47,7 @@ Múltbeli időpont felhőalapú elemzési kellett veszélyeztetheti a teljesítm
 
 - **Felülbírálja a POSIX-engedélyek**: A Data Lake Gen2 biztonsági modell támogatja az ACL-JEI és POSIX engedélyekkel együtt néhány további pontossággal megadott Data Lake Storage Gen2-re. Beállítások felügyeleti eszközökkel vagy keretrendszereket, mint például a Hive és a Spark segítségével konfigurálhatók.
 
-- **Költséghatékony**: Data Lake Storage Gen2 kínál költséghatékony tárolási kapacitás és a tranzakciók. A teljes körű életciklus keresztül adatok transitions lehetőségnél szerint díjszabása nem módosul módosítja a megtartja költségeket a beépített funkciók használatával minimális például [Azure Blob storage életciklus](../common/storage-lifecycle-managment-concepts.md).
+- **Költséghatékony**: Data Lake Storage Gen2 kínál költséghatékony tárolási kapacitás és a tranzakciók. A teljes körű életciklus keresztül adatok transitions lehetőségnél szerint díjszabása nem módosul módosítja a megtartja költségeket a beépített funkciók használatával minimális például [Azure Blob storage életciklus](../common/storage-lifecycle-management-concepts.md).
 
 - **A Blob storage-eszközökkel, keretrendszerek és alkalmazások működik**: Data Lake Storage Gen2 továbbra is az eszközöket, keretrendszerek és alkalmazások a Blob Storage jelenleg létező széles választékának működik.
 

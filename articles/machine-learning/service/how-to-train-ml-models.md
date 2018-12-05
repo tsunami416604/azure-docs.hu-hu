@@ -8,13 +8,13 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.reviewer: sgilley
-ms.date: 09/24/2018
-ms.openlocfilehash: c47761c184d0e6c091ff49b3eca2fdf89574b49d
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.date: 12/04/2018
+ms.openlocfilehash: f7705d5dca75ce0906b9ffc2e4b4275ea8778656
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114859"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875433"
 ---
 # <a name="how-to-train-models-with-azure-machine-learning"></a>Hogyan lehet az Azure Machine Learning-modellek betanításához
 
@@ -35,7 +35,7 @@ Ez a cikk foglalkozik a 4 – 5. lépéseket. 1 – 3. lépéseket lásd a [mode
 
 ### <a name="single-node-training"></a>Egy csomópontos képzés
 
-Használata egy `Estimator` egy egycsomópontos képzéshez futtathatók az Azure-ban egy scikit távoli számítási – ismerje meg a modellt. Már létrehozott kell a [számítási célt](how-to-set-up-training-targets.md#batch) objektum `compute_target` és a [adattárolója](how-to-access-data.md) objektum `ds`.
+Használata egy `Estimator` egy egycsomópontos képzéshez futtathatók az Azure-ban egy scikit távoli számítási – ismerje meg a modellt. Már létrehozott kell a [számítási célt](how-to-set-up-training-targets.md#amlcompute) objektum `compute_target` és a [adattárolója](how-to-access-data.md) objektum `ds`.
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -58,7 +58,7 @@ Paraméter | Leírás
 --|--
 `source_directory`| Helyi könyvtár, amely tartalmazza az összes a betanítási feladathoz szükséges kódot. Ez a mappa a távoli számítási átmásolódnak a helyi gépen 
 `script_params`| A parancssori paraméterek, a tanítási szkriptet megadása szótárban `entry_script`, < parancssori argumentum, érték > formájában párok
-`compute_target`| Távoli számítási arról, hogy az a tanítási szkriptet, ebben az esetben egy [Batch AI](how-to-set-up-training-targets.md#batch) fürt
+`compute_target`| Arról, hogy az a tanítási szkriptet, ebben az esetben az Azure Machine Learning Compute távoli számítási célnak ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) fürt
 `entry_script`| Fájl elérési útja (viszonyítva a `source_directory`), a tanítási szkriptet futtatandó távoli számítási. Ezt a fájlt, és a további fájlokat attól függ, ebben a mappában kell elhelyezni.
 `conda_packages`| Szükség szerint a tanítási szkriptet conda-n keresztül kell telepíteni a Python-csomagok listáját.  
 A konstruktor rendelkezik egy másik nevű paramétert `pip_packages` , amelyet használhat az esetleges pip csomagokat szükséges
@@ -87,7 +87,7 @@ Két további esetben az is sokat elvégezhet a `Estimator`:
 
 A következő kód bemutatja, hogyan elosztott betanítás egy CNTK modell elvégzésére. Emellett helyett használja az alapértelmezett Azure Machine Learning-lemezképek, azt feltételezi, hogy a saját egyéni docker-rendszerképet használ a betanítási.
 
-Már létrehozott kell a [számítási célt](how-to-set-up-training-targets.md#batch) objektum `compute_target`. A estimator következőképpen hozhat létre:
+Már létrehozott kell a [számítási célt](how-to-set-up-training-targets.md#amlcompute) objektum `compute_target`. A estimator következőképpen hozhat létre:
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -117,13 +117,11 @@ run = experiment.submit(cntk_est)
 ```
 
 ## <a name="examples"></a>Példák
-Az sklearn modell betanítása oktatóanyagot tekintse meg:
-* [tutorials/01.train-models.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/01.train-models.ipynb)
+Az sklearn modell betanítja a jegyzetfüzet lásd:
+* [oktatóanyagok és img-besorolás-1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
-Egyéni docker használatával elosztott CNTK oktatóanyagot tekintse meg:
-* [képzési/06.distributed – cntk-az-custom-docker](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/06.distributed-cntk-with-custom-docker)
-
-Ezeket a notebookokat lekérése:
+Notebooks az elosztott deep learninget tekintse meg:
+* [How-to-use-azureml/Training-with-deep-Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

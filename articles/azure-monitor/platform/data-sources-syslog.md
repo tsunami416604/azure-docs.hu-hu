@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 292def9303cf74142a55e1101fe6371476f9f09d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5522055dc69288a5769458157ad25e5016ccf494
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845212"
+ms.locfileid: "52878788"
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>A Log Analytics Syslog-adatforrások
 Syslog-esemény naplózása protokoll, amely Linux közös.  Alkalmazások küld üzeneteket, amelyek a helyi számítógépen tárolt vagy a Syslog-gyűjtő lett elküldve.  A Linuxhoz készült OMS-ügynök telepítve van, konfigurálja a továbbított üzenetek az ügynöknek a helyi Syslog démon.  Az ügynök ezután elküldi az üzenetet a Log Analytics, ahol a megfelelő rekord jön létre az OMS-adattárban.  
@@ -208,5 +208,5 @@ Az alábbi táblázat a rekordok Syslog lekérő lekérdezések log különböz�
 
 ## <a name="next-steps"></a>További lépések
 * Ismerje meg [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.
-* Használat [egyéni mezők](../../log-analytics/log-analytics-custom-fields.md) syslog-rekord származó adatok elemzése az egyes mezőket.
+* Használat [egyéni mezők](../../azure-monitor/platform/custom-fields.md) syslog-rekord származó adatok elemzése az egyes mezőket.
 * [Linux-ügynökök konfigurálása](../../log-analytics/log-analytics-quick-collect-linux-computer.md) más típusú adatok gyűjtéséhez.

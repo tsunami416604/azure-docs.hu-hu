@@ -1,21 +1,20 @@
 ---
-title: Az Azure Cosmos DB teljesítményével kapcsolatos tippek Async Javához |} A Microsoft Docs
+title: Az Azure Cosmos DB teljesítményével kapcsolatos tippek Async Javához
 description: Ismerje meg az ügyfél-konfigurációs beállításokat az Azure Cosmos DB adatbázis-teljesítmény javítása
 keywords: adatbázis teljesítményének növelése
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
-ms.openlocfilehash: a2c66894270a537239c5328eff0acdc4b8339994
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 8cfc62948df679fa900099c0e5dbb33a60e42b08
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443542"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876249"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Teljesítménnyel kapcsolatos tippek Async Javához pedig az Azure Cosmos DB
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure API management házirend minta - szűrő válasz tartalom |} Microsoft Docs
-description: Az Azure API management házirend - mutatja be a válasz forgalma a kérelemhez társított termék alapuló elemeit adatok szűrése.
+title: Az Azure API management házirend minta - szűrő válasz tartalma |} A Microsoft Docs
+description: Az Azure API management házirend-minta - bemutatja, hogyan szűrheti a válasz-adattartalomra a kéréshez társított termék alapján adatelemeit.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,27 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: af362ac51fb8b7d1689451d49f2ed831c5f9ee2e
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 26829dfc04acdac2a25fe0d4fdc3e95e4d219057
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284427"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869177"
 ---
-# <a name="filter-response-content"></a>Válasz tartalom szűrése
+# <a name="filter-response-content"></a>Válasz tartalma szűrése
 
-Ez a cikk bemutatja az Azure API management házirend minta azt mutatja be, a válasz forgalma a kérelemhez társított termék alapuló elemeit adatok szűrése. Beállíthatja vagy szerkesztheti a házirendet kódot, kövesse a témakörben ismertetett [beállítása és módosítása a házirend](../set-edit-policies.md). További példák, olvassa el [házirend minták](../policy-samples.md).
+Ez a cikk bemutatja egy Azure API felügyeleti házirend minta azt mutatja be, hogyan szűrheti a válasz-adattartalomra a kéréshez társított termék alapján adatelemeit. Az ismertetett lépéseket követve beállíthatja, vagy szerkesztheti egy szabályzat-kódot, [Set meg vagy szerkessze a szabályzat](../set-edit-policies.md). További példák megtekintéséhez lásd: [házirend minták](../policy-samples.md).
 
 ## <a name="policy"></a>Szabályzat
 
-Illessze be a kódot a **kimenő** blokkot.
+Illessze be a kódot a **kimenő** letiltása.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Filter response content based on product name.policy.xml)]
 
 ## <a name="next-steps"></a>További lépések
 
-További tudnivalók APIM házirendek:
+További információ az APIM-szabályzatokat:
 
 + [Átalakítási házirendek](../api-management-transformation-policies.md)
-+ [Házirend-minták](../policy-samples.md)
++ [A házirend-minták](../policy-samples.md)
 

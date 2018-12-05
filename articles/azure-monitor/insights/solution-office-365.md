@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 80a5b49d27ffc2b75cc9a1092a4d9f17e09bef24
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1e819f819561c5fac722ca6954a10d80a482b5cd
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848867"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889361"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Az Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -41,7 +41,7 @@ A következő kötelező végezniük a megoldás telepítve és konfigurálva.
  
 
 ## <a name="management-packs"></a>Felügyeleti csomagok
-Ez a megoldás nem telepíti a minden felügyeleti csomagot [csatlakoztatott felügyeleti csoportok](../../log-analytics/log-analytics-om-agents.md).
+Ez a megoldás nem telepíti a minden felügyeleti csomagot [csatlakoztatott felügyeleti csoportok](../../azure-monitor/platform/om-agents.md).
   
 ## <a name="install-and-configure"></a>Telepítés és konfigurálás
 Először adja hozzá a [az előfizetés az Office 365-megoldás](solutions.md#install-a-management-solution). Miután hozzáadta, ebben a szakaszban neki hozzáférést az Office 365-előfizetéssel, hajtsa végre a konfigurációs lépéseket.
@@ -518,7 +518,7 @@ A következő tulajdonságok megegyeznek az összes Office 365-rekord.
 | A szervezeti | A szervezet Office 365-bérlőhöz tartozó GUID azonosítója. Ez az érték mindig lesz azonos, a szervezete számára, függetlenül az Office 365 szolgáltatás, amelyben történik. |
 | RecordType | Végrehajtott művelet típusát. |
 | ResultStatus | Azt jelzi, hogy a (művelet tulajdonságban megadott) művelet sikeres volt-e vagy sem. Lehetséges értékek: Succeeded, PartiallySucceded vagy sikertelen. Az Exchange-rendszergazdai tevékenységhez, értéke pedig IGAZ vagy hamis. |
-| UserId | A rekordnaplózást eredményező naplózott; műveletet végrehajtó felhasználó egyszerű Felhasználóneve (egyszerű felhasználónév) Ha például my_name@my_domain_name. Vegye figyelembe, hogy a Rendszerfiókok (például a SHAREPOINT\system vagy NTAUTHORITY\SYSTEM) által végrehajtott tevékenységek rekordjai is szerepelnek. | 
+| Felhasználói azonosító | A rekordnaplózást eredményező naplózott; műveletet végrehajtó felhasználó egyszerű Felhasználóneve (egyszerű felhasználónév) Ha például my_name@my_domain_name. Vegye figyelembe, hogy a Rendszerfiókok (például a SHAREPOINT\system vagy NTAUTHORITY\SYSTEM) által végrehajtott tevékenységek rekordjai is szerepelnek. | 
 | UserKey | Egy alternatív Azonosítót a felhasználó a UserId tulajdonság azonosítja.  Például ez a tulajdonság megjelenik a passport egyedi azonosító (PUID), és az Exchange a SharePoint, a onedrive-on a felhasználók által végrehajtott eseményeket. Ez a tulajdonság is megadható ugyanazt az értéket a UserID tulajdonság számára a más szolgáltatások és a rendszer fiókok által végrehajtott eseményeket bekövetkező események|
 | UserType | A műveletet végrehajtó felhasználó típusa.<br><br>Adminisztratív körzet<br>Alkalmazás<br>DcAdmin<br>Rendszeres<br>Foglalt<br>ServicePrincipal<br>Rendszer |
 

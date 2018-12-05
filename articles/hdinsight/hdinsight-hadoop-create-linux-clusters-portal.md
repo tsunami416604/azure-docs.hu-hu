@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 42b0a2440fa459fa31a7d6e137d124883646c205
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 013c425e911340a1b85c21ff6fc89819087e90a1
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686010"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869160"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-azure-portal"></a>Linux-alapú fürtök létrehozása a HDInsight az Azure portal használatával
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -28,7 +28,7 @@ Az Azure Portalon egy webalapú felügyeleti eszköz, szolgáltatások és erőf
 * **A modern webböngésző**. Az Azure Portalon használja a HTML5-alapú és a Javascript, és előfordulhat, hogy nem működik megfelelően régebbi böngészőkben.
 
 ## <a name="create-clusters"></a>Fürtök létrehozása
-Az Azure Portalon a tulajdonságait a legtöbb tesz elérhetővé. Azure Resource Manager-sablonnal számos Részletek elrejtése. További információkért lásd: [Linux-alapú Hadoop-fürtök a HDInsight az Azure Resource Manager-sablonok használatával](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
+Az Azure Portalon a tulajdonságait a legtöbb tesz elérhetővé. Azure Resource Manager-sablonnal számos Részletek elrejtése. További információkért lásd: [Linux-alapú Apache Hadoop-fürtök a HDInsight az Azure Resource Manager-sablonok használatával](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
@@ -136,23 +136,23 @@ Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse me
 ## <a name="next-steps"></a>További lépések
 Most, hogy sikeresen létrehozott egy HDInsight-fürtöt, megtudhatja, hogyan használható a fürt a következő használatával:
 
-### <a name="hadoop-clusters"></a>Hadoop-fürtök
-* [A Hive használata a HDInsightban](hadoop/hdinsight-use-hive.md)
-* [A Pig használata a HDInsightban](hadoop/hdinsight-use-pig.md)
-* [A MapReduce használata a HDInsight](hadoop/hdinsight-use-mapreduce.md)
+### <a name="apache-hadoop-clusters"></a>Az Apache Hadoop-fürtök
+* [Az Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
+* [A HDInsight UseApache Pig](hadoop/hdinsight-use-pig.md)
+* [Apache Hadoop MapReduce használata a HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
-### <a name="hbase-clusters"></a>HBase-fürtök
-* [A HDInsighton futó HBase használatának első lépései](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [A HDInsight hbase Java-alkalmazások fejlesztése](hbase/apache-hbase-build-java-maven-linux.md)
+### <a name="apache-hbase-clusters"></a>Az Apache HBase-fürtök
+* [A HDInsight Apache HBase használatának első lépései](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [Az Apache HBase on HDInsight Java-alkalmazások fejlesztése](hbase/apache-hbase-build-java-maven-linux.md)
 
-### <a name="storm-clusters"></a>Storm-fürtök
-* [Java-topológiák fejlesztése HDInsight alatt futó Stormmal](storm/apache-storm-develop-java-topology.md)
-* [Python-összetevők használata a HDInsight alatt futó Stormmal](storm/apache-storm-develop-python-topology.md)
-* [Telepítheti és figyelheti a HDInsight Storm-topológiák](storm/apache-storm-deploy-monitor-topology-linux.md)
+### <a name="apache-storm-clusters"></a>Apache Storm-fürtök
+* [Java-topológiák fejlesztése a HDInsight az Apache stormmal](storm/apache-storm-develop-java-topology.md)
+* [Az Apache Storm on HDInsight használata a Python-összetevők](storm/apache-storm-develop-python-topology.md)
+* [Telepítheti és figyelheti a HDInsight Apache Storm-topológiák](storm/apache-storm-deploy-monitor-topology-linux.md)
 
-### <a name="spark-clusters"></a>A Spark-fürtök
+### <a name="apache-spark-clusters"></a>Az Apache Spark-fürtök
 * [Önálló alkalmazás létrehozása a Scala használatával](spark/apache-spark-create-standalone-application.md)
-* [Feladatok távoli futtatása Spark-fürtön a Livy használatával](spark/apache-spark-livy-rest-interface.md)
-* [Spark és BI: Interaktív adatelemzés végrehajtása a Spark on HDInsight használatával, BI-eszközökkel](spark/apache-spark-use-bi-tools.md)
-* [Spark és Machine Learning: A Spark on HDInsight használata az élelmiszervizsgálati eredmények előrejelzésére](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Feladatok távoli futtatása egy Apache Spark-fürtön az Apache Livy használatával](spark/apache-spark-livy-rest-interface.md)
+* [Az Apache Spark és BI: interaktív adatelemzés a Spark on HDInsight használatával, BI-eszközökkel végrehajtása](spark/apache-spark-use-bi-tools.md)
+* [Az Apache Spark és Machine Learning: használja a Spark on HDInsight az élelmiszervizsgálati eredmények előrejelzésére](spark/apache-spark-machine-learning-mllib-ipython.md)
 

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 12/03/2018
-ms.openlocfilehash: 8ad4c356c5826532b94721bc4d9071179e8bd93a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 61255add37d4bc4224278e089879823b1a2f9981
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846690"
+ms.locfileid: "52863550"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-through-an-integration-service-environment-ise"></a>Azure virtuális hálózatok az Azure Logic Apps keresztül csatlakozhat egy integrációs service-környezet (ISE)
 
@@ -65,7 +65,7 @@ Amikor létrehoz egy integrációs service-környezet (ISE), hol válassza ki Az
 
    1. A **szerepkör**válassza **hálózati közreműködő**. 
    
-   1. A **rendelhet hozzáféréseket**válassza **az Azure AD-felhasználó, csoport vagy alkalmazás**.
+   1. Alatt **rendelhet hozzáféréseket**válassza **az Azure AD-felhasználó, csoport vagy szolgáltatásnév**.
 
    1. A **kiválasztása**, adja meg **Azure Logic Apps**. 
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 623e4392ff8ff75d09da92c54b9e4dc620146432
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 47f3e8ab14ecd50e958c57ba4c8f9f098fd5bb7b
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251040"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868361"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Irányítás az Azure DevTest Labs-infrastruktúra - kezelheti a költségeket és tulajdonosi viszonyainak
 Költség és tulajdonosi is elsődleges szempontok, fontolja meg a fejlesztési és tesztelési környezetek. Ebben a szakaszban található információk segítségével optimalizálhatja a költségeket, és tulajdonosi igazítása megtalálhatja a környezetben.
@@ -40,7 +40,7 @@ Ez a megközelítés nyújt számos előnye:
  
 Csak aktív Visual Studio-előfizetők (standard szintű, éves felhőalapú előfizetések és havi) használható az enterprise Dev/Test előfizetésen belül futtatott Azure-erőforrásokat. Azonban a végfelhasználók elérhetik az alkalmazást a visszajelzés és elfogadottsági. Ezen az előfizetésen belül az erőforrások használata az alkalmazások fejlesztésére és tesztelésére korlátozódik, rendelkezésre állási garancia nélkül.
 
-Ha úgy dönt, hogy a DevTest ajánlat használja, vegye figyelembe, hogy ez a kedvezmény kizárólag fejlesztési és tesztelési az alkalmazások számára. Előfizetésekhez nem vállalunk pénzügyi kötelezettségvállalással egybekötött szolgáltatási szerződést, a Visual Studio Team Services és a HockeyApp kivételével.
+Ha úgy dönt, hogy a DevTest ajánlat használja, vegye figyelembe, hogy ez a kedvezmény kizárólag fejlesztési és tesztelési az alkalmazások számára. Előfizetésekhez nem vállalunk pénzügyi kötelezettségvállalással egybekötött szolgáltatási szerződést, az Azure DevOps és a HockeyApp kivételével.
 
 ## <a name="define-a-role-based-access-across-your-organization"></a>A szerepköralapú hozzáférés megadása a szervezetben
 ### <a name="question"></a>Kérdés
@@ -57,7 +57,7 @@ A DevTest Labs-erőforrás a tulajdonosok, akik megközelíti a projekt vagy alk
 
 A projekt vagy alkalmazás csapat tagjai a a DevTest Labs-felhasználó szerepkör lehet hozzáadni. Ezek a felhasználók is létrehozhatnak virtuális gépeket (beágyazott a labor és előfizetés-szintű szabályzatok). Is kezelhetik saját virtuális gépeiket. Más felhasználókhoz tartozó virtuális gépek, nem tudja kezelni.
 
-További információkért lásd: [Azure enterprise scaffold-előíró előfizetés-irányítás](/architecture/cloud-adoption/appendix/azure-scaffold) dokumentációját.
+További információkért lásd: [Azure enterprise scaffold-előíró előfizetés-irányítás](/azure/architecture/cloud-adoption/appendix/azure-scaffold) dokumentációját.
 
 
 ## <a name="next-steps"></a>További lépések

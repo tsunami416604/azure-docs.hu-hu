@@ -1,6 +1,6 @@
 ---
 title: Hibaelhárítási útmutató Azure Machine Learning szolgáltatás a központi telepítés
-description: Ismerje meg, hogyan megkerülő megoldásként megoldásában, és az Azure Machine Learning szolgáltatás közös Docker üzembehelyezési hibák elhárítása.
+description: Ismerje meg, hogyan megkerülő megoldásként megoldásában, és a Docker telepítési kapcsolatos gyakori hibák elhárítása AKS és Azure Machine Learning szolgáltatás használatával ACI.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.author: haining
 author: hning86
 ms.reviewer: jmartens
-ms.date: 10/01/2018
-ms.openlocfilehash: a10b05e95fa719b80775191e48bd4117e3a785fd
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.date: 12/04/2018
+ms.openlocfilehash: ed6fed58aac236f143345a9504ece21aceae09d2
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321682"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865369"
 ---
-# <a name="troubleshooting-azure-machine-learning-service-deployments"></a>Az Azure Machine Learning szolgáltatás üzemelő példányainak hibaelhárítása
+# <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Az Azure Machine Learning szolgáltatás AKS és az aci Szolgáltatásban üzemelő példányainak hibaelhárítása
 
-Ebben a cikkben, megtudhatja, hogyan megkerüléséhez vagy az Azure Machine Learning szolgáltatás a gyakori Docker üzembe helyezési hibák megoldásához.
+Ebben a cikkben, megtudhatja, hogyan megkerüléséhez vagy oldja meg a közös Docker telepítési hibák az Azure Container Instances (ACI) és az Azure Kubernetes Service (AKS) az Azure Machine Learning szolgáltatás használatával.
 
 Amikor üzembe helyezéséhez az Azure Machine Learning szolgáltatáshoz, a rendszer számos feladatot hajt végre. Toto je sekvence, az események összetett, és néha problémák merülnek fel. A központi telepítésének feladatai a következők:
 
@@ -117,7 +117,7 @@ print(ws.webservices()['mysvc'].get_logs())
 ```
 
 ### <a name="debug-the-docker-image-locally"></a>A Docker-rendszerkép helyi hibakeresése
-Néhány eset a Docker-naplót nem gridre bocsáthatja ki az elegendő információ a nem megfelelő eseményeit. Egy lépéssel tovább, és kérje le a beépített Docker-rendszerképet, helyi tároló indítása és interaktív módon javítása közvetlenül a élő tárolóban. Helyi tároló indítása rendelkeznie kell egy Docker-motor helyben fut, és lenne sokkal egyszerűbb, ha akkor is [azure-cli](/cli/azure/install-azure-cli?view=azure-cli-latest) telepítve.
+Néhány eset a Docker-naplót nem gridre bocsáthatja ki az elegendő információ a nem megfelelő eseményeit. Egy lépéssel tovább, és kérje le a beépített Docker-rendszerképet, helyi tároló indítása és interaktív módon javítása közvetlenül a élő tárolóban. Helyi tároló indítása rendelkeznie kell egy Docker-motor helyben fut, és lenne sokkal egyszerűbb, ha akkor is [azure-cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) telepítve.
 
 Először azt kell ismerje meg, hogy a lemezkép helyét:
 

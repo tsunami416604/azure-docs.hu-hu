@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 464e497c806a0b3172cbf4f5ae802693def1b435
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: bf8e0dbb35fadf1c2e19e6d549332e6d1592e81e
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832666"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888562"
 ---
 # <a name="configure-collection-of-azure-paas-resource-metrics-with-log-analytics"></a>Az Azure PaaS-erőforrás-metrikák gyűjtésének konfigurálása a Log Analytics használatával
 
@@ -69,7 +69,7 @@ A következő lépésekkel letöltéséhez, és hajtsa végre a parancsfájlt.
 
 A parancsfájl futtatásához a kiválasztott feltételeknek megfelelő minden egyes erőforrás, és a hozzájuk metrikák gyűjtésének engedélyezéséhez. Miután elkészült, egy üzenet jelzi a konfiguráció véget ér, látni fogja.  
 
-Hamarosan a művelet befejezését követően hozzákezdhet az Azure PaaS-erőforrás a Log Analytics-adattárban adatainak megtekintéséhez.  Típusú rekord `AzureMetrics` jön létre, és ezeket a rekordokat elemzése által támogatott a [Azure SQL Analytics](../../log-analytics/log-analytics-azure-sql.md) és [Azure Web Apps Analytics](../../log-analytics/log-analytics-azure-web-apps-analytics.md) felügyeleti megoldások.   
+Hamarosan a művelet befejezését követően hozzákezdhet az Azure PaaS-erőforrás a Log Analytics-adattárban adatainak megtekintéséhez.  Típusú rekord `AzureMetrics` jön létre, és ezeket a rekordokat elemzése által támogatott a [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md) és [Azure Web Apps Analytics](../../azure-monitor/insights/azure-web-apps-analytics.md) felügyeleti megoldások.   
 
 ## <a name="update-a-resource-to-send-data-to-another-workspace"></a>Egy erőforrás adatokat küldeni egy másik munkaterület frissítése
 Ha egy erőforrás, amely már küld adatokat a Log Analytics-munkaterülethez van, és később úgy dönt, azt egy másik munkaterület hivatkozni úgy, a parancsprogram futtatásával az `-Update` paraméter.  
@@ -83,6 +83,6 @@ A rendszer bekéri válaszolni, ugyanazokat az információkat, mint a kezdeti k
 
 * Ismerje meg [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 
 
-* Használat [egyéni mezők](../../log-analytics/log-analytics-custom-fields.md)(így az eseményrekordok elemezni az egyes mezőket.
+* Használat [egyéni mezők](../../azure-monitor/platform/custom-fields.md)(így az eseményrekordok elemezni az egyes mezőket.
 
 * Felülvizsgálat [használható egyéni irányítópult létrehozása a Log Analytics](../../azure-monitor/platform/dashboards.md) tudni, hogyan jelenítheti meg a napló keres környezetben megfelelőnek bizonyuló a szervezet számára.

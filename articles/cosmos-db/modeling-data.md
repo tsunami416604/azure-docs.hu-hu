@@ -1,21 +1,19 @@
 ---
-title: Dokumentumadatok modellezése, egy NoSQL-adatbázis |} A Microsoft Docs
+title: A NoSQL-adatbázis dokumentumadatok modellezése
 description: További tudnivalók a NoSQL-adatbázisok adatainak modellezése
 keywords: adatok modellezése
 services: cosmos-db
 author: aliuy
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2016
 ms.author: andrl
-ms.openlocfilehash: c577c9734490e3aacc148153f550162371ae482e
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 37b5f116652f30c0f708d91f6e251bab143e9df0
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42055706"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870809"
 ---
 # <a name="modeling-document-data-for-nosql-databases"></a>NoSQL-adatbázisok dokumentumadatok modellezése
 Bár a sémamentes adatbázisok, például az Azure Cosmos dB-ben, hogy fantasztikusan egyszerű kihasználni a módosításokat az adatmodellbe kell továbbra is töltött némi idő gondolkodás az adataival kapcsolatban. 

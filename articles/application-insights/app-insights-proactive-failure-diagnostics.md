@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/09/2017
 ms.reviewer: yossiy
 ms.author: mbullwin
-ms.openlocfilehash: 776c923910866b3c65271a8acdc00edc6eb6df59
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 0895d31475de5d78c82f3bfedc0765e5a9549339
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723822"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877598"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Intelligens detektálás – rendellenes hibák
 [Az Application Insights](app-insights-overview.md) automatikus értesítést küld közel valós időben Ha a webalkalmazás a sikertelen kérelmek arányának rendellenes növekedése. Azt észleli, hogy egy szokatlan megnövekedhet a HTTP-kérések vagy sikertelenként jelentett függőségi hívások sebessége. A kéréseket, a sikertelen kérések esetében általában a válaszkódot 400 vagy magasabb. Könnyebben osztályozhatja és diagnosztizálhatja a problémát, jellemzőit, a hibák és a kapcsolódó telemetriai adatok elemzése az értesítés megtalálható. Emellett mutató hivatkozások találhatók az Application Insights portálon további elemzés céljából. A szolgáltatás nincs beállítás és konfiguráció, nem kell, gépi tanulási algoritmusok használatával előrejelezheti a normál hibaszázalék.
@@ -146,7 +146,7 @@ Ezek a diagnosztikai eszközök segítséget nyújt az alkalmazásából szárma
 
 * [Metrika explorer](app-insights-metrics-explorer.md)
 * [A keresési ablak](app-insights-diagnostic-search.md)
-* [Analytics – erőteljes lekérdezési nyelv](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Analytics – erőteljes lekérdezési nyelv](../azure-monitor/log-query/get-started-portal.md)
 
 Az intelligens észlelés teljesen automatikus. De esetleg szeretné néhány további riasztásokat állíthat be?
 

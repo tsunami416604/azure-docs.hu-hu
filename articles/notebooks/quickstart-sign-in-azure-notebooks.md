@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 44513a63f3bc13592a5c7de2595149956597251c
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 573a5892489857fef5d542da0b3c58ec879aa772
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855984"
+ms.locfileid: "52878363"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id"></a>Gyors útmutató: Jelentkezzen be, és állítsa be a felhasználói azonosító
 
@@ -54,9 +54,9 @@ Bár az Azure-jegyzetfüzetek mindig bejelentkezés nélkül is megtekintheti, j
 
 ## <a name="sign-out"></a>Kijelentkezés
 
-1. Jelentkezzen ki, válassza ki, az oldal jobb felső sarokban a felhasználónevére, majd válassza ki a **Kijelentkezés**:
+Jelentkezzen ki, válassza ki, az oldal jobb felső sarokban a felhasználónevére, majd válassza ki a **Kijelentkezés**:
 
-    ![Kijelentkezés parancsot Azure notebookokban helye](media/accounts/sign-out-command.png)
+![Kijelentkezés parancsot Azure notebookokban helye](media/accounts/sign-out-command.png)
 
 ## <a name="next-steps"></a>További lépések
 

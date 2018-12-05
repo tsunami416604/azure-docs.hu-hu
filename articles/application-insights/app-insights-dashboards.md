@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 904727c09fec1cd9cf1093f2681ba170c84f4fab
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4e6f50614520639901dcd4a6edbefe22f1226bde
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723108"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875382"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Navigáció és irányítópultok az Application Insights portálon
 Miután [Application Insights beállítása a projektben](app-insights-overview.md), az alkalmazás teljesítményének és használatának telemetriai adatait jelenik meg a projekt Application Insights-erőforrást a [az Azure portal](https://portal.azure.com).
@@ -62,7 +62,7 @@ A rendszer automatikusan frissíti a diagram, amely attól függ, a diagram idő
 * Időtartomány 24 óra feletti: (időtartomány) / 60.
 
 ### <a name="pin-any-query-in-analytics"></a>Analytics minden lekérdezés rögzítése
-Emellett [Analytics rögzítése](../log-analytics/query-language/get-started-analytics-portal.md) a diagram egy [megosztott](#share-dashboards-with-your-team) irányítópult. Ez lehetővé teszi, hogy bármilyen tetszőleges lekérdezés mellett a standard metrikák diagramok. 
+Emellett [Analytics rögzítése](../azure-monitor/log-query/get-started-portal.md) a diagram egy [megosztott](#share-dashboards-with-your-team) irányítópult. Ez lehetővé teszi, hogy bármilyen tetszőleges lekérdezés mellett a standard metrikák diagramok. 
 
 Eredmények a rendszer automatikusan újraszámít minden órában. Kattintson a diagramban azonnal számítsa ki újra a frissítés ikont. (Böngésző frissítés nem újraszámítása.)
 

@@ -1,17 +1,18 @@
 ---
 title: Létrehozása és testreszabása az Azure Site Recovery használata vész-helyreállítási helyreállítási tervek |} A Microsoft Docs
 description: Ismerje meg, hogyan hozhat létre, és az Azure Site Recovery szolgáltatással vész-helyreállítási helyreállítási tervek testreszabása.
+author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: aed37195f352719f3363992e4cee1e339e6e6056
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 85e649f3065d7f8d601541bbac6e93f4b2a0dc85
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835590"
+ms.locfileid: "52878635"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Hozzon létre, és a helyreállítási tervek testreszabása
 
@@ -42,7 +43,7 @@ Ez a cikk azt ismerteti, hogyan hozhat létre, és a helyreállítási terv test
 
 ## <a name="add-a-group-to-a-plan"></a>Csoport hozzáadása egy csomaghoz
 
-Hozzon létre további csoportokat, és gépeket ad hozzá különböző csoportokhoz, hogy megadhat eltérő viselkedést a potának-csoport alapján. Megadhatja például, ha a csoportban lévő gépek kell elindítani a feladatátvételt követően, vagy adja meg a csoportok szerinti egyéni műveletek.
+Hozzon létre további csoportokat, és gépeket ad hozzá különböző csoportokhoz, hogy megadhat eltérő viselkedést csoportja által történik. Megadhatja például, ha a csoportban lévő gépek kell elindítani a feladatátvételt követően, vagy adja meg a csoportok szerinti egyéni műveletek.
 
 1. A **helyreállítási tervek**, kattintson a jobb gombbal a terv > **Testreszabás**. Alapértelmezés szerint a terv létrehozását követően a gépek felvett összes található az alapértelmezett 1 csoport.
 2. Kattintson a **+ csoport**. Alapértelmezés szerint egy új csoportot a sorrendben, ahol megjelenik a számozott. Legfeljebb hét csoportokkal is rendelkezik.

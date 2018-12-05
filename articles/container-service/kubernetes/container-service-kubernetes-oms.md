@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: a353fe3803b2d93c151559076960df06eb260bfe
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: bd28eabaacc73e6d006d590340577fa08383e435
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426413"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887525"
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-log-analytics"></a>A figyelő az Azure Container Service-fürt, a Log Analytics használatával
 
@@ -59,11 +59,11 @@ az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUST
 
 ## <a name="monitoring-containers-with-log-analytics"></a>A tárolók Log Analytics szolgáltatással
 
-A log Analytics a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a kezelése és védelme a helyszíni és felhőalapú infrastruktúrára. Tároló megoldás egy olyan megoldás a Log Analyticsben, így a segítségével egyetlen helyen, a tároló készlet, a teljesítmény és a naplók megtekintéséhez. Naplózási, tárolók hibaelhárítása központi helyen a naplóinak megtekintésével és zajos felhasználása felesleges tároló-gazdagépen található.
+A log Analytics a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a kezelése és védelme a helyszíni és felhőalapú infrastruktúrára. Tároló megoldás egy olyan megoldás a Log Analyticsben, így a segítségével egyetlen helyen, a tároló készlet, a teljesítmény és a naplók megtekintéséhez. Naplózási, tárolók hibaelhárítása központi helyen a naplóinak megtekintésével és zajos felhasználása felesleges tároló-gazdagépen található.
 
 ![](media/container-service-monitoring-oms/image1.png)
 
-Tároló megoldásról további információkért tekintse meg a [tároló megoldás a Log Analytics](../../log-analytics/log-analytics-containers.md).
+Tároló megoldásról további információkért tekintse meg a [tároló megoldás a Log Analytics](../../azure-monitor/insights/containers.md).
 
 ## <a name="installing-log-analytics-on-kubernetes"></a>A Kubernetes a Log Analytics telepítése
 

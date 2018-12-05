@@ -3,7 +3,7 @@ title: Azure SQL Database – az áttelepítés után kezelése |} A Microsoft D
 description: Megtudhatja, hogyan kezelheti az adatbázis áttelepítése az Azure SQL Database után.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: migration
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: fd32a00fe83e731321cb5e365f64d0f6acf8732d
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: e4f70521fbd081f7e26f56f4175656cca61887d1
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870978"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890704"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Új adatbázis a felhőben – Azure SQL Database adatbázis
 
@@ -209,7 +209,7 @@ Ez a diagram is konfigurálhatja riasztások erőforrás szerint. Ezek a riaszt�
 
    ![Lekérdezési terheléselemző](./media/sql-database-manage-after-migration/query-performance-insight.png)
 
-- **Az Azure SQL Analytics (előzetes verzió) a Log Analytics**: [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md) legfeljebb 150 000 SQL-adatbázisok és 5000 rugalmas SQL-készletek száma támogatása lehetővé teszi, hogy gyűjtése és az Azure SQL Azure fő teljesítménymutatók, megjelenítése munkaterület. Használhatja figyelésére és az értesítések fogadásához. Képes figyelni az SQL Database és rugalmas készletekkel kapcsolatos metrikák több Azure-előfizetések és a rugalmas készletek, és a egy alkalmazáscsoportokat minden rétegében problémák azonosításához használható.
+- **Az Azure SQL Analytics (előzetes verzió) a Log Analytics**: [Azure Log Analytics](../azure-monitor/insights/azure-sql.md) legfeljebb 150 000 SQL-adatbázisok és 5000 rugalmas SQL-készletek száma támogatása lehetővé teszi, hogy gyűjtése és az Azure SQL Azure fő teljesítménymutatók, megjelenítése munkaterület. Használhatja figyelésére és az értesítések fogadásához. Képes figyelni az SQL Database és rugalmas készletekkel kapcsolatos metrikák több Azure-előfizetések és a rugalmas készletek, és a egy alkalmazáscsoportokat minden rétegében problémák azonosításához használható.
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>E vagyok észre a teljesítménnyel kapcsolatos problémák: saját SQL Database hibaelhárítás módszertana Miben különbözik az SQL Serverről?
 Az lekérdezési diagnosztizálásakor használja a hibaelhárítási eljárások jelentős részét, és adatbázis teljesítményproblémák változatlan marad. Után minden ugyanazt az SQL Server adatbázismotor működteti a felhőben. Azonban a platform – Azure SQL Database beépített rendelkezik "intelligens". Hibaelhárítása és diagnosztizálhatja a teljesítménybeli problémákat még könnyebben segíthet. Azt is elvégezhetők a javítási műveleteket az Ön nevében, és bizonyos esetekben, proaktív módon javítsa ki őket – automatikusan. 

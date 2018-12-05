@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 11/12/2018
+ms.date: 12/4/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 33fce88e7108ee45236e20b1f20dde56bb7446b5
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 5f2f262d5ec4b9e8884e47c6c064927da2af4790
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616384"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876149"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Az Azure Blockchain Workbench üzembe helyezése
 
@@ -43,6 +43,9 @@ Az alábbiakban a létrehozott központi telepítésre példát **myblockchain**
 ![A központi telepítési példa](media/deploy/example-deployment.png)
 
 A Blockchain Workbenchet költségét az összesítést az alapul szolgáló Azure-szolgáltatások költségeinek. Díjszabási információk az Azure-szolgáltatások használatával kiszámítható az [díjkalkulátor](https://azure.microsoft.com/pricing/calculator/).
+
+> [!IMPORTANT]
+> Ha egy előfizetést az alacsony szolgáltatások korlátozásai, például egy ingyenes szintű Azure-előfizetést használ, a központi telepítés miatt sikertelenek lehetnek a kvóta nem elegendő a virtuális gép magjainak. Telepítés előtt ellenőrizze a kvóta útmutatásának a [virtuális gép vCPU-kvóták](../../virtual-machines/windows/quotas.md) cikk. Az alapértelmezett virtuális gép lehetőséget 6 Virtuálisgép-magokra van szükség. Például egy kisebb méretű virtuális gép módosítása *Standard DS1 v2* csökkenti a magok számát a 4.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -99,7 +102,7 @@ Az előfeltételként felsorolt lépéseket befejezése után készen áll a Blo
     |---------|--------------|
     | Figyelés | Válassza ki, hogy szeretné-e a blockchain-hálózat figyelése az Azure Monitor engedélyezése |
     | Az Azure Active Directory-beállítások | Válasszon **hozzáadását a későbbiekben**.</br>Megjegyzés: Ha úgy döntött, hogy [előre konfigurálhatja az Azure ad-ben](#azure-ad-configuration) vagy újbóli üzembe helyezés, válassza ki a *felvétele most*. |
-    | Virtuális gép kiválasztása | Válassza ki a kívánt Virtuálisgép-méretet a blockchain-hálózat. |
+    | Virtuális gép kiválasztása | Válassza ki a kívánt Virtuálisgép-méretet a blockchain-hálózat. Válassza ki például kisebb Virtuálisgép-mérettel *Standard DS1 v2* a alacsony szolgáltatásokra vonatkozó korlátozások, mint például az Azure ingyenes díjcsomagjának rendelkező előfizetés. |
 
     A **meglévő**:
 

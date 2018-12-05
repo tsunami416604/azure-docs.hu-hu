@@ -15,19 +15,19 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c704639ce696672a87485a36d43a282d04a47a7e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 434907c9ba903b10b8a8e2ebd88b20bc3d8732a6
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845169"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889684"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights-összekötő felügyeleti megoldás (előzetes verzió)
 
 ![Application Insights szimbólum](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
-> A támogatási [erőforrások közötti lekérdezések](../../log-analytics/log-analytics-cross-workspace-search.md), már nem szükséges az Application Insights-összekötő felügyeleti megoldást, és később elavulttá fog. Július kezdve nem lesz új Application Insights-erőforrások összekapcsolása a Log Analytics-munkaterületeket. Meglévő kapcsolatokat, és az irányítópultok továbbra is működik. November 2018-ig. További információkért lásd: [Azure-bA az OMS-portálon](../../log-analytics/log-analytics-oms-portal-transition.md).
+> A támogatási [erőforrások közötti lekérdezések](../../azure-monitor/log-query/cross-workspace-query.md), már nem szükséges az Application Insights-összekötő felügyeleti megoldást, és később elavulttá fog. Július kezdve nem lesz új Application Insights-erőforrások összekapcsolása a Log Analytics-munkaterületeket. Meglévő kapcsolatokat, és az irányítópultok továbbra is működik. November 2018-ig. További információkért lásd: [Azure-bA az OMS-portálon](../../log-analytics/log-analytics-oms-portal-transition.md).
 
 A Applications Insights Connector megoldás segítségével diagnosztizálhatja a teljesítménnyel kapcsolatos problémák, és megismerheti, mit a felhasználók az alkalmazását, amikor a figyelhető [Application Insights](../../application-insights/app-insights-overview.md). Az ugyanazon alkalmazás telemetriát az Application Insightsban a fejlesztőknek nézet áll rendelkezésre a Log Analyticsben. Azonban az Application Insights-alkalmazások integrálása a Log Analytics-szel, az alkalmazások láthatóságát emelkedett üzemeltetési és alkalmazásadatokat létesíteni egy helyen. Az azonos nézetek kellene megismerheti, hogyan működhet együtt az alkalmazásfejlesztőknek. Az Általános nézetek segítségével csökkentheti az időt, és oldja meg az alkalmazás és a platformmal.
 
@@ -46,7 +46,7 @@ Ellentétben a legtöbb más Log Analytics-megoldások adatok nem lesznek gyűjt
 | --- | --- | --- |
 | [Windows-ügynökök](../../azure-monitor/platform/agent-windows.md) | Nem | Windows-ügynököktől a megoldás nem gyűjt adatokat. |
 | [Linux-ügynökök](../../log-analytics/log-analytics-quick-collect-linux-computer.md) | Nem | A megoldás a Linux-ügynökök nem gyűjt adatokat. |
-| [Az SCOM felügyeleti csoport](../../log-analytics/log-analytics-om-agents.md) | Nem | A megoldás az ügynökök a csatlakoztatott SCOM felügyeleti csoport nem gyűjt adatokat. |
+| [Az SCOM felügyeleti csoport](../../azure-monitor/platform/om-agents.md) | Nem | A megoldás az ügynökök a csatlakoztatott SCOM felügyeleti csoport nem gyűjt adatokat. |
 | [Azure Storage-fiók](collect-azure-metrics-logs.md) | Nem | A megoldás nem az Azure storage-ból nem gyűjteményadatokat. |
 
 ## <a name="prerequisites"></a>Előfeltételek

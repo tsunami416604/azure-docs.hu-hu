@@ -1,10 +1,8 @@
 ---
-title: Az Azure Cosmos DB Table API a Pythonhoz készült |} A Microsoft Docs
+title: Az Azure Cosmos DB Table API a Pythonhoz
 description: Mindent megtudhat az Azure Cosmos DB Table API többek között a kiadási dátum, használatból való kivonást egyaránt dátumok és minden verzió között végrehajtott módosítások.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
-editor: ''
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: python
@@ -12,12 +10,12 @@ ms.topic: reference
 ms.date: 11/20/2017
 ms.author: sngun
 ms.custom: ''
-ms.openlocfilehash: d079b30657d3e8f770ea8ed6a7c419e7619ce99c
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 165dbaf3faec90498cf42bad39257e26662da072
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024137"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869857"
 ---
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Az Azure Cosmos DB Table API SDK Pythonhoz készült: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]

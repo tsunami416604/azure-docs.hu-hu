@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4f4aedd1d85a83e6f55d5729b82b88e2e9e8c00d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 5edaf056dd28d132c8abeb148464f5b07bb9265e
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415933"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874787"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése Azure HDInsight - storage ajánlott eljárásai
 
@@ -100,7 +100,7 @@ Múltbeli időpont felhőalapú elemzési kellett veszélyeztetheti a teljesítm
 
 - **Felülbírálja a POSIX-engedélyek**: A biztonsági modell a Data Lake Gen2 teljes körűen támogatja az ACL-JEI és POSIX engedélyekkel együtt néhány további pontossággal megadott Data Lake Storage Gen2-re. Beállítások felügyeleti eszközökkel vagy keretrendszereket, mint például a Hive és a Spark segítségével konfigurálhatók.
 
-- **Költséghatékony**: Data Lake Storage Gen2 funkciói költséghatékony tárolási kapacitás és a tranzakciók. A teljes életciklusán keresztül adatok transitions lehetőségnél szerint díjszabása nem módosul, mint például a beépített funkciók használatával költségek minimalizálása érdekében módosítsa [Azure Blob storage életciklus](../../storage/common/storage-lifecycle-managment-concepts.md).
+- **Költséghatékony**: Data Lake Storage Gen2 funkciói költséghatékony tárolási kapacitás és a tranzakciók. A teljes életciklusán keresztül adatok transitions lehetőségnél szerint díjszabása nem módosul, mint például a beépített funkciók használatával költségek minimalizálása érdekében módosítsa [Azure Blob storage életciklus](../../storage/common/storage-lifecycle-management-concepts.md).
 
 - **A Blob storage-eszközökkel, keretrendszerek és alkalmazások működik**: Data Lake Storage Gen2 továbbra is az eszközöket, keretrendszerek és alkalmazások a Blob Storage jelenleg létező széles választékának működik.
 

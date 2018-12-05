@@ -3,7 +3,7 @@ title: Vészhelyreállítás az Azure SQL Database biztonságának konfigurálá
 description: Ismerje meg, hogy a biztonsági szempontok konfigurálásához és kezeléséhez biztonsági után egy adatbázis visszaállítása vagy feladatátvétel a másodlagos kiszolgálóra.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 2f5a455cecfbf4b40b1a410a756117d70c4a4b69
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ac57f97f45f14c5011782fa0fb8b708bc52bd151
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166826"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871183"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurálhatja és kezelheti az Azure SQL Database geo-visszaállítás vagy a feladatátvételi biztonsága 
 

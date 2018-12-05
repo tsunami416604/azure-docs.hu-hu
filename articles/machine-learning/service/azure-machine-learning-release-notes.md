@@ -8,17 +8,83 @@ ms.topic: reference
 author: hning86
 ms.author: haining
 ms.reviewer: j-martens
-ms.date: 10/24/2018
-ms.openlocfilehash: 6007a7e32e168ada529feb6aa24b8d572671d835
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.date: 12/04/2018
+ms.openlocfilehash: 1ee28638ed68b40672143f10c4373e287a370e2d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291340"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868106"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
 Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások. 
+
+## <a name="2018-12-04-general-availability"></a>2018-12-04: általánosan elérhető
+
+Az Azure Machine Learning szolgáltatás már általánosan elérhető.
+
+### <a name="azure-machine-learning-compute"></a>Az Azure Machine Learning Compute
+Ebben a kiadásban bejelentjük, hogy egy új felügyelt számítási élményt [Azure Machine Learning Compute](how-to-set-up-training-targets.md#amlcompute). A számítási képzés és a Batch következtetési is használható, egy - a több - node számítási, és a fürt felügyeleti does és a felhasználó feladatütemezésre. Ez alapértelmezés szerint automatikusan leskálázódik támogatja a Processzor-és GPU, és alacsony prioritású virtuális gépek használatával alacsonyabb költségek mellett lehetővé teszi. Az Azure Machine Learning Batch AI-számítási lecseréli azt.
+  
+Az Azure Machine Learning Compute a Python, az Azure portal vagy a parancssori felület használatával hozható létre. A munkaterület a régióban kell létrehozni, és bármilyen egyéb munkaterülethez nem csatolható. A számítási egy Docker-tárolót használ a futtatáskor, és a függőségek ugyanabban a környezetben replikálni az összes csomópont-csomagot.
+
+> [!Warning]
+> Azt javasoljuk, hogy használata az Azure Machine Learning Compute új munkaterület létrehozása. Nincs távoli előfordulhat, hogy a felhasználók próbál létrehozni egy meglévő munkaterületet az Azure Machine Learning COMPUTE számítási hiba láthatják. A munkaterületen található meglévő számítási továbbra is változatlanul működik.
+
+### <a name="azure-machine-learning-sdk-for-python-v102"></a>Az Azure Machine Learning SDK for Python v1.0.2
+
++ **Használhatatlanná tévő változásai**
+  + Ettől a kiadástól kezdve megszüntetjük a virtuális gép létrehozása az Azure Machine Learning támogatása. Továbbra is csatolhat a virtuális gép meglévő felhő vagy egy távoli helyszíni kiszolgáló. 
+  + Emellett megszüntetjük BatchAI, mindegyike támogatnia kell az Azure Machine Learning Compute révén most támogatása.
+
++ **Új**
+  + A machine learning-folyamatokat:
+    + [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimator_step.estimatorstep?view=azure-ml-py)
+    + [HyperDriveStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.hyper_drive_step.hyperdrivestep?view=azure-ml-py)
+    + [MpiStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.mpi_step.mpistep?view=azure-ml-py)
+
+
++ **Frissítve**
+  + A machine learning-folyamatokat:
+    + [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) már elfogad runconfig
+    + [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) most másolja és a egy SQL-adatforrás
+    + Az SDK-t létrehozni és frissíteni a közzétett folyamatok futó ütemezések funkció ütemezéséhez
+
+<!--+ **Bugs fixed**-->
+
+### <a name="azure-machine-learning-data-prep-sdk-v052"></a>Az Azure Machine Learning adat-előkészítési SDK v0.5.2
+
++ **Használhatatlanná tévő változásai** 
+  * `SummaryFunction.N` új nevet kapott `SummaryFunction.Count`.
+  
++ **Hibajavítások**
+  * Legújabb AML futtatása jogkivonat használata a távoli Futtatás adattárainak való írásakor vagy olvasásakor a. Korábban az AML futtatása Token frissül a Python, ha az Adatelőkészítés-modul nem frissül a frissített AML futtatása jogkivonat a.
+  * További világosabb hibaüzenetek
+  * Amikor Spark használ Kryo szerializálási to_spark_dataframe() már nem összeomlik.
+  * Értékek száma vizsgáló most már 1000-nél több egyedi értékeket jeleníti meg
+  * Véletlenszerű Split már nem sikertelen lesz, ha az eredeti adatfolyam nem rendelkezik egy nevet  
+
+### <a name="docs-and-notebooks"></a>Docs és jegyzetfüzetek
++ Gépi Tanulási folyamatok
+  + Ismerkedés a folyamatok, kötegelt hatókörének és stílus az új és frissített notebookok példák át: https://aka.ms/aml-pipeline-notebooks
+  + Ismerje meg, hogyan [az első folyamat létrehozása](how-to-create-your-first-pipeline.md)
+  + Ismerje meg, hogyan [batch előrejelzéseket folyamatok használatával futtassa](how-to-run-batch-predictions.md)
++ Az Azure Machine Learning compute
+  + [Mintafüzetek] (https://aka.ms/aml-notebooks) most frissülnek, hogy az új felügyelt számítási használja.
+  + [Ismerje meg a számítási](how-to-set-up-training-targets.md#amlcompute)
+
+### <a name="azure-portal-new-features"></a>Az Azure portal: új funkciók
++ Létrehozásához és kezeléséhez [Azure Machine Learning Compute](how-to-set-up-training-targets.md#amlcompute) típusok a portálon.
++ Fiókkvóta-használat figyeléséhez és [kérelmi kvótát](how-to-manage-quotas.md) az Azure Machine Learning Compute.
++ Valós idejű Azure Machine Learning COMPUTE számítási fürt állapotának megtekintése.
++ Virtuálishálózat-támogatást az Azure Machine Learning COMPUTE számítási és az Azure Kubernetes Service létrehozásakor lett hozzáadva.
++ Futtassa újra a közzétett folyamatok meglévő paraméterekkel.
++ Új [machine learning diagramok automatikus](how-to-track-experiments.md#auto) képbesorolási modellek (lift, nyereség, hitelesítési, funkció fontosság diagramot modell explainability) és regressziós modellek (például és a szolgáltatás fontosság diagram modellel explainability). 
++ A folyamatok tekinthetnek meg az Azure Portalon
+
+
+
 
 ## <a name="2018-11-20"></a>2018-11-20
 

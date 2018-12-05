@@ -5,16 +5,16 @@ services: service-fabric-mesh
 keywords: Ne adjon hozzá kulcsszavakat és ne szerkessze azokat a keresőoptimalizálást végző szakemberrel való egyeztetés nélkül.
 author: rwike77
 ms.author: ryanwi
-ms.date: 08/24/2018
+ms.date: 11/27/2018
 ms.topic: quickstart
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: d50ebeef686de7e467e2a71b6bb33f207414bcc8
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
-ms.translationtype: HT
+ms.openlocfilehash: ce3001a2984726332b036eea69d4e18e3d7d300b
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541466"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890432"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Rövid útmutató: A Hello World üzembe helyezése a Service Fabric Meshben
 
@@ -48,14 +48,32 @@ az group create --name myResourceGroup --location eastus
 Hozza létre az alkalmazást az erőforráscsoportban az `az mesh deployment create` paranccsal.  Futtassa a következőt:
 
 ```azurecli-interactive
-az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json --parameters "{'location': {'value': 'eastus'}}" 
+az mesh deployment create --resource-group myResourceGroup --template-uri https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/mesh_rp.linux.json --parameters "{'location': {'value': 'eastus'}}" 
 ```
 
 Az előző parancs Linux-alkalmazást helyez üzembe a [mesh_rp.linux.json sablonnal](https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json). Ha Windows-alkalmazást szeretne üzembe helyezni, használja a [mesh_rp.windows.json sablont](https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.windows.json). A Windows-tárolórendszerképek nagyobbak, mint a Linux-tárolórendszerképek, ezért több ideig tarthat az üzembe helyezésük.
 
-A parancs néhány percen belül visszaadja a következőt:
+Ez a parancs, amely az alábbiakban látható JSON-kódrészlet állítja elő. Alatt a ```outputs``` a JSON-kimenetet másolási szakaszában a ```publicIPAddress``` tulajdonság.
 
-`helloWorldApp has been deployed successfully on helloWorldNetwork with public ip address <IP Address>` 
+```json
+"outputs": {
+    "publicIPAddress": {
+    "type": "String",
+    "value": "40.83.78.216"
+    }
+}
+```
+
+Ez az információ származik a ```outputs``` az ARM-sablon részében. Ahogy az alábbi, ebben a szakaszban hivatkozik az átjáró erőforrás nyilvános IP-címének beolvasása. 
+
+```json
+  "outputs": {
+    "publicIPAddress": {
+      "value": "[reference('helloWorldGateway').ipAddress]",
+      "type": "string"
+    }
+  }
+```
 
 ## <a name="open-the-application"></a>Az alkalmazás megnyitása
 Az alkalmazás sikeres üzembe helyezése után másolja a szolgáltatásvégpont nyilvános IP-címét a parancssori felület kimenetéből. Nyissa meg az IP-címet egy webböngészőben. Megjelenik egy weboldal az Azure Service Fabric Mesh logójával.

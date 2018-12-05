@@ -3,7 +3,7 @@ title: Feladatátvételi csoportok és az aktív georeplikáció – Azure SQL D
 description: Aktív georeplikációs automatikus feladatátvételi csoportok használata, és engedélyezze az Automatikus feladatátvétel meghibásodás esetére.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: de439683082909e65d285a7946a71eb781287937
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 819b63873fc74d5e38227a93c124f5f9c34ae097
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843478"
+ms.locfileid: "52867392"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Áttekintés: Aktív georeplikációs és automatikus feladatátvételi csoportok
 
@@ -206,7 +206,7 @@ Ha az alkalmazás felügyelt példány az adatréteg használja, az üzletmenet 
 
 - **A másodlagos példány ugyanazt a DNS-zónát, az elsődleges példány létrehozása**
 
-  Amikor létrejön egy új példányt, egyedi azonosító automatikusan jön létre, mint a DNS-zóna és a példány DNS-név szerepel. A több tartományt (SAN) tanúsítvány esetében ez a példány üzembe van helyezve, a SAN-mezőt formájában &lt;zone_id&gt;. database.windows.net. Ez a tanúsítvány használható a DNS-zónájában egy példányt az ügyfélkapcsolatok hitelesítése céljából. Győződjön meg, hogy az elsődleges példány nem megszakadt kapcsolat a feladatátvételt követően az elsődleges és másodlagos példányok kell lennie DNS-zónájában. Az alkalmazás éles környezet készen áll, amikor egy másodlagos példány létrehozása egy másik régióban, és ellenőrizze, hogy a DNS-zóna közös az elsődleges példánnyal. Ez történik, adjon meg egy `DNS Zone Partner` választható paramétere a `create instance` PowerShell-parancsot.
+  Amikor létrejön egy új példányt, egyedi azonosító automatikusan jön létre, mint a DNS-zóna és a példány DNS-név szerepel. A több tartományt (SAN) tanúsítvány esetében ez a példány üzembe van helyezve, a SAN-mezőt formájában &lt;zone_id&gt;. database.windows.net. Ez a tanúsítvány használható a DNS-zónájában egy példányt az ügyfélkapcsolatok hitelesítése céljából. Győződjön meg, hogy az elsődleges példány nem megszakadt kapcsolat a feladatátvételt követően az elsődleges és másodlagos példányok kell lennie DNS-zónájában. Az alkalmazás éles környezet készen áll, amikor egy másodlagos példány létrehozása egy másik régióban, és ellenőrizze, hogy a DNS-zóna közös az elsődleges példánnyal. Ez történik, adjon meg egy `DNS Zone Partner` nem kötelező paraméter, az Azure portal, PowerShell vagy a REST API használatával.
 
 - **Két példány közötti replikációs forgalom engedélyezése**
 
@@ -380,6 +380,7 @@ Ahogy korábban tárgyalt, automatikus feladatátvételi csoportok és az aktív
 | Set-AzureRmSqlDatabaseInstanceFailoverGroup |A feladatátvételi csoport konfigurációjának módosítása|
 | Get-AzureRmSqlDatabaseInstanceFailoverGroup |A feladatátvételi csoport konfigurációjának beolvasása|
 | Switch-AzureRmSqlDatabaseInstanceFailoverGroup |A másodlagos kiszolgáló feladatátvételi csoport feladatátvétele eseményindítók|
+| Remove-AzureRmSqlDatabaseInstanceFailoverGroup | A feladatátvételi csoport eltávolítása|
 
 ### <a name="manage-sql-database-failover-using-the-rest-api"></a>A REST API használatával az SQL database feladatátvételi kezelése
 

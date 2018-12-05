@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: 9fb25f21e9ff54baf0e297fad1601018af45e476
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: aba3d9f33d179c09708464975fa2a929a8bb68d0
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497237"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876519"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
@@ -330,6 +330,21 @@ Az előző szakaszban feljegyzett futásidejű függvénykivételek adatait egy 
 ## <a name="configure-sampling"></a>Mintavétel konfigurálása
 
 Az Application Insights rendelkezik egy [mintavételi](../application-insights/app-insights-sampling.md) szolgáltatás, amely szembeni az előállító túl sok telemetriai adatokat esetenként a csúcsterhelés között. Ha a bejövő telemetriát aránya túllépi a küszöbértéket, az Application Insights véletlenszerűen figyelmen kívül az egyes bejövő elemek elindul. Az alapértelmezett beállítás a tétel / másodperc maximális száma érték az 5. Beállíthatja, hogy a mintavétel [host.json](functions-host-json.md).  Például:
+
+### <a name="version-2x"></a>Verzió 2.x 
+
+```json
+{
+  "logging": {
+    "applicationInsights": {
+      "samplingSettings": {
+        "isEnabled": true,
+        "maxTelemetryItemsPerSecond" : 5
+      }
+    }
+  }
+}
+```
 
 ### <a name="version-1x"></a>Verzió 1.x 
 

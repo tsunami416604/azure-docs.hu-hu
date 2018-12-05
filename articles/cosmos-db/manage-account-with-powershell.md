@@ -1,22 +1,19 @@
 ---
-title: Az Azure Cosmos DB Automation - kezelés a PowerShell-lel |} A Microsoft Docs
+title: Az Azure Cosmos DB Automation - kezelés a PowerShell-lel
 description: Az Azure Powershell használata kezelheti az Azure Cosmos DB-fiókokhoz.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
-editor: ''
 tags: azure-resource-manager
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/21/2017
 ms.author: sngun
-ms.openlocfilehash: b115058353d14a3bd7c774197e06de088030ffff
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 89c8fd169322f08681547cc7ae33f1d894e26781
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741351"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873020"
 ---
 # <a name="create-an-azure-cosmos-db-account-using-powershell"></a>Egy PowerShell-lel az Azure Cosmos DB-fiók létrehozása
 

@@ -1,22 +1,20 @@
 ---
-title: A Studio 3T használata (MongoChef) az Azure Cosmos DB |} A Microsoft Docs
+title: A Studio 3T használata (MongoChef) az Azure Cosmos DB használatával
 description: A Studio 3T használata egy Azure Cosmos DB MongoDB API-fiókkal
 keywords: a mongochef, a studio 3T
 services: cosmos-db
 author: slyons
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.author: sclyon
-ms.openlocfilehash: af66f413055c01d9a4c3e94c7d3b9c5f1d5917b0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 8a41c40963602b5a207271b818987ca13ad021d0
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42059459"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863839"
 ---
 # <a name="azure-cosmos-db-use-studio-3t-with-a-mongodb-api-account"></a>Az Azure Cosmos DB: Használja a Studio 3T MongoDB API-fiókkal
 

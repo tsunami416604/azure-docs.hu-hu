@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
 ms.date: 10/01/2018
-ms.openlocfilehash: 9e0f07e744aaf5f1c35666b40285937dce6dd4de
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 2999ea8f7c6e6bb9410f9e8d1c85c44c8ec19b71
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275054"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875161"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Az Application insights szolgáltatással az Azure Machine Learning-modellek figyelése
 
@@ -24,9 +24,6 @@ Ebből a cikkből elsajátíthatja az Azure Application Insights beállítása a
 * Kivételek.
 
 [További információ az Application Insights](../../application-insights/app-insights-overview.md). 
-
->[!NOTE]
-> Ebben a cikkben kód teszteltük az Azure Machine Learning SDK verziója 0.1.74
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -130,7 +127,7 @@ Az Application Insights használatával kapcsolatos további tudnivalókért lá
 
 ## <a name="example-notebook"></a>Példa notebook
 
-A [00. első Started/13.enable-app-insights-in-production-service.ipynb](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/13.enable-app-insights) notebook mutatja be a jelen cikk fogalmait.  Ez a jegyzetfüzet lekérése:
+A [how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) notebook mutatja be a jelen cikk fogalmait. 
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

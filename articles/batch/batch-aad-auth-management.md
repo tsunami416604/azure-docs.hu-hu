@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: danlep
-ms.openlocfilehash: a52dbdad3842760c447e22f4274ab944750840e7
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: b2ab2ad1c31337e006b613ad7f17b4ad22495893
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816786"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870419"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Hitelesítés az Active Directory Batch Management solutions
 
@@ -28,7 +28,7 @@ Az alkalmazásokat, amelyek az Azure Batch Management szolgáltatás hívása a 
 
 A Batch Management .NET könyvtár típusok használata Batch-fiókok, fiókkulcsok, alkalmazások és az alkalmazáscsomagok számára tesz elérhetővé. A Batch Management .NET könyvtár egy Azure-erőforrás-szolgáltató ügyfél, és együtt használatos [Azure Resource Manager] [ resman_overview] programozott módon kezelheti ezeket az erőforrásokat. Az Azure AD bármely Azure-erőforrás szolgáltató ügyfél, például a Batch Management .NET könyvtár és révén-kérelmek hitelesítéséhez szükséges [Azure Resource Manager][resman_overview].
 
-Ebben a cikkben tárgyaljuk, az Azure AD-vel történő hitelesítés a Batch Management .NET-es libraryt használó alkalmazások. Bemutatjuk, hogyan az Azure AD használatával hitelesíti a előfizetés rendszergazdai vagy társadminisztrátori, integrált hitelesítés használatával. Használjuk a [AccountManagment] [ acct_mgmt_sample] mintaprojektet, elérhető a Githubon, az Azure AD-vel a Batch Management .NET könyvtár az bemutatására.
+Ebben a cikkben tárgyaljuk, az Azure AD-vel történő hitelesítés a Batch Management .NET-es libraryt használó alkalmazások. Bemutatjuk, hogyan az Azure AD használatával hitelesíti a előfizetés rendszergazdai vagy társadminisztrátori, integrált hitelesítés használatával. Használjuk a [AccountManagement] [ acct_mgmt_sample] mintaprojektet, elérhető a Githubon, az Azure AD-vel a Batch Management .NET könyvtár az bemutatására.
 
 A Batch Management .NET könyvtár és a AccountManagement minta használatával kapcsolatos további tudnivalókért lásd: [kezelése a Batch-fiókok és kvóták a Batch Management .NET-hez készült ügyféloldali kódtára a](batch-management-dotnet.md).
 

@@ -8,13 +8,13 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/27/2018
-ms.openlocfilehash: 438d71997d2c92e377cd068615d274af6b8b5edb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/03/2018
+ms.openlocfilehash: c385d10aac01c844f1d4b390c0bb3d064b9befa3
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856484"
+ms.locfileid: "52878703"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Az Azure Time Series Insights (előzetes verzió) környezet megtervezése
 
@@ -22,19 +22,24 @@ Ez a cikk ismerteti az ajánlott eljárások és első lépések az Azure Time S
 
 ## <a name="best-practices-for-planning-and-preparation"></a>Ajánlott eljárások tervezése és előkészítése
 
-Legyen a legjobb, ha készen áll az első lépések előtt a következőkkel:
+Ismerkedés a Time Series Insights (TSI), érdemes a következő megismerése:
 
-* Megismerte a **Time Series azonosítók**
-* Rendelkezik a **időbélyeg** tulajdonság kész
-* Létrehozott a **Idősorozat-modell**
-* Megismerte, hogyan küldhet eseményeket, amelyek hatékonyan denormalizált JSON-ban
+* Mi azért kapta a TSI (előzetes verzió) környezet üzembe helyezésekor.
+* Mi a **Time Series azonosítók** és **időbélyeg** a tulajdonságok akkor vannak.
+* Milyen új **Idősorozat-modell** van, és hogyan hozhat létre saját.
+* Hogyan küldhet eseményeket hatékonyan a JSON-ban.  
+* A TSI üzleti vész-helyreállítási lehetőségeket.
 
-Ezen elemek kész segít egyszerűsítése érdekében a tervezést és előkészítést kíván kellene. Emellett, ha előre tervez, és döntse el, az üzleti vészhelyreállítás (BCDR) van szüksége a példány létrehozása előtt célszerű előre megtervezni (és később nem). Így időben biztosíthatja a példány standardként kész.
+A Time Series Insights frissítés egy üzleti használatalapú modellt alkalmaz.  További információ a költségek és a kapacitás: [Time Series Insights díjszabása](https://azure.microsoft.com/pricing/details/time-series-insights/).
 
-> [!TIP]
-> A környezet igényeinek megfelelően a BCDR, mielőtt és a példány létrehozását követően nem konfigurálja.
+## <a name="the-time-series-insights-preview-environment"></a>A Time Series Insights (előzetes verzió) környezet
 
-Az Azure TSI (előzetes verzió) egy üzleti használatalapú modellt alkalmaz. További információ a költségek és a kapacitás: [Time Series Insights díjszabása](https://azure.microsoft.com/pricing/details/time-series-insights).
+A TSI (előzetes verzió) környezet üzembe helyezésekor, hozzon létre két Azure-erőforrások:
+
+* A TSI (előzetes verzió) környezet
+* Az Azure storage általános célú V1 fiók
+
+A termék kell három további elemeket.  Az első egy [Idősorozat-modell](./time-series-insights-update-tsm.md), a második pedig egy [eseményforrás csatlakozik a Time Series Insights](./time-series-insights-how-to-add-an-event-source-iothub.md), és a harmadik pedig [tárfiókba kerülnek az eseményforrás események](./time-series-insights-send-events.md) , amelyek a modell hozzárendelve, és érvényes JSON formátumban vannak.  
 
 ## <a name="configure-your-time-series-ids-and-timestamp-properties"></a>A Time Series azonosítók és időbélyegzés tulajdonságainak konfigurálása
 
@@ -43,9 +48,9 @@ Hozzon létre egy új TSI-környezetben, válasszon egy **Time Series azonosít�
 > [!IMPORTANT]
 > **Time Series azonosítók** vannak **nem módosítható** és **később már nem módosítható**. Minden egyes végső kiválasztása előtt ellenőrizze, és először használja.
 
-Akár választhatja **három** egyedileg megkülönböztetéséhez az erőforrások (3) kulcsokat. Olvassa el a [ajánlott eljárások a Time Series ID kiválasztására vonatkozó](./time-series-insights-update-how-to-id.md) cikkben további információt.
+Akár választhatja **három** egyedileg megkülönböztetéséhez az erőforrások (3) kulcsokat. Olvassa el a [ajánlott eljárások a Time Series ID kiválasztására vonatkozó](./time-series-insights-update-how-to-id.md) és [tárolási a bejövő és kimenő](./time-series-insights-update-storage-ingress.md) cikkekben további információt.
 
-Minden egyes eseményforrás van egy nem kötelező **időbélyeg** tulajdonságot, amely segítségével nyomon követése eseményforrások idővel. **Időbélyeg** értékek kis-és nagybetűket, és az egyes specifikációjának egyes eseményforrás kell formázni.
+A **időbélyeg** tulajdonság is nagyon fontos. Ez a tulajdonság is kijelölhet, eseményforrások hozzáadásakor. Minden egyes eseményforrás van egy nem kötelező **időbélyeg** tulajdonságot, amely segítségével nyomon követése eseményforrások idővel. **Időbélyeg** értékek kis-és nagybetűket, és az egyes specifikációjának egyes eseményforrás kell formázni.
 
 > [!TIP]
 > Ellenőrizze a eseményforrások formázás és elemzés követelményei.
@@ -56,9 +61,9 @@ Ha üresen hagyja, a **eseményt sorba idő** esemény adatforrást használja, 
 
 A TSI-környezet konfigurálhat **Idősorozat-modell**. Az új modell egyszerűen keresése és elemzése IoT-adatot. Úgy valósítja meg a válogatott, a karbantartással és a felderítési bővítést az idősorozat-adatok engedélyezésével és a fogyasztói használatra kész adatkészleteket előkészítése segítségével. A modell **Time Series azonosítók**, amelyek leképezése egy példányt az egyedi erőforráscsoport társítását (más néven típusok) változók és a hierarchiák. Olvassa el az új [Idősorozat-modell](./time-series-insights-update-tsm.md).
 
-A modell a dinamikus, így bármikor építhetők azt. Azonban meg fogja tudni első lépések gyorsabban történik, ha létrehozott és feltöltött, adatok leküldése a TSI megkezdése előtt. A modellek létrehozását, tekintse át a [Idősorozat-modell](./time-series-insights-update-tsm.md) cikk.
+A modell a dinamikus, így bármikor építhetők azt. Azonban meg fogja tudni első lépések gyorsabban történik, ha létrehozott és feltöltött, adatok leküldése a TSI megkezdése előtt. A modellek létrehozását, tekintse át a [TSM használata](./time-series-insights-update-how-to-tsm.md) cikk.
 
-Sok felhasználónál várhatóan a **Idősorozat-modell** leképezése egy meglévő eszköz modell vagy a rendszer ERP már megfelel. Azon ügyfelek számára, amelyek nem rendelkeznek egy meglévő modell, egy előre elkészített felhasználói élmény van [megadott](https://github.com/Microsoft/tsiclient) gyors üzembe helyezéséig.
+Sok felhasználónál várhatóan a **Idősorozat-modell** leképezése egy meglévő eszköz modell vagy a rendszer ERP már megfelel. Azon ügyfelek számára, amelyek nem rendelkeznek egy meglévő modell, egy előre elkészített felhasználói élmény van [megadott](https://github.com/Microsoft/tsiclient) gyors üzembe helyezéséig. Hogyan modell segíthetnek megtekintésével elképzeli a [minta bemutató környezetben](https://insights.timeseries.azure.com/preview/demo).  
 
 ## <a name="shaping-your-events"></a>Az események alakításra.
 
@@ -71,7 +76,7 @@ Jó tapasztalatok:
   * **Time Series-azonosító**
   * **Időbélyeg**
 
-Tekintse át a [alakzat eseményeket hogyan](./time-series-insights-update-how-to-shape-events.md) részletesen ismertető cikket.
+Tekintse át a [alakzat eseményeket hogyan](./time-series-insights-send-events.md#json) részletesen ismertető cikket.
 
 ## <a name="business-disaster-recovery"></a>Üzleti katasztrófa utáni helyreállítás
 
@@ -93,7 +98,7 @@ Ehhez a konkrét lépések a következők:
 
 1. Hozzon létre egy környezetet egy második régióba. További információ [TSI környezetek](./time-series-insights-get-started.md).
 1. Hozzon létre az eseményforrás második dedikált fogyasztói csoportot, és az esemény-adatforráshoz csatlakozhat az új környezet. Győződjön meg arról, hogy a második, dedikált fogyasztói csoportot kijelölje. Ismerje meg alaposabban a [az IoT Hub dokumentációja](./time-series-insights-how-to-add-an-event-source-iothub.md) vagy a [Event Hub dokumentáció](./time-series-insights-data-access.md).
-1. Ha az elsődleges régióban egy vészhelyreállítási incidens alatt volt érintett, irányítsa át a műveletek a biztonsági mentési TSI-környezetet.
+1. Ha az elsődleges régió kihatással van a vészhelyreállítási incidens alatt, új vonalvezetés műveletek a biztonsági mentési TSI-környezetet.
 
 > [!IMPORTANT]
 > * Vegye figyelembe, hogy a késés előfordulhat, hogy észlelt feladatátvétel esetén.
@@ -104,4 +109,4 @@ Ehhez a konkrét lépések a következők:
 
 Olvassa el a [Azure TSI (előzetes verzió) tárolási a bejövő és kimenő](./time-series-insights-update-storage-ingress.md).
 
-Olvassa el az új [Idősorozat-modell](./time-series-insights-update-tsm.md).
+További információ [adatmodellezés](./time-series-insights-update-tsm.md).

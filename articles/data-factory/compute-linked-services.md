@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: douglasl
-ms.openlocfilehash: 127438e1e65400daac75cec525197a5cfc8cd46a
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 110005469d5ff42af10b29fcee97c2f130ecdc2d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390211"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873824"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Számítási környezetek Azure Data Factory által támogatott
 Ez a cikk ismerteti a különböző számítási környezetekben használható folyamat vagy átalakítási adatok. Emellett biztosítja linking ezeket a társított szolgáltatások konfigurálásakor a Data Factory által támogatott különböző konfigurációt (igény szerinti és használata a saját) adatait számítási környezeteket az Azure data factoryt.
@@ -30,7 +30,7 @@ Az alábbi táblázat a Data Factory és a rajtuk futó tevékenységek által t
 | [Azure Machine Learning](#azure-machine-learning-linked-service) | [Machine Learning-tevékenységek: kötegelt végrehajtás és erőforrás frissítése](transform-data-using-machine-learning.md) |
 | [Az Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
 | [Az Azure SQL](#azure-sql-database-linked-service), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service), [az SQL Server](#sql-server-linked-service) | [Tárolt eljárás](transform-data-using-stored-procedure.md) |
-| [Az Azure Databricks](#azure-databricks-linked-service)         | [Notebook](transform-data-databricks-notebook.md), [Jar](transform-data-databricks-jar.md), [Python](transform-data-databricks-python.md) |
+| [Azure Databricks](#azure-databricks-linked-service)         | [Notebook](transform-data-databricks-notebook.md), [Jar](transform-data-databricks-jar.md), [Python](transform-data-databricks-python.md) |
 
 >  
 
@@ -48,11 +48,7 @@ Vegye figyelembe a következőket **fontos** pontokra vonatkozó igény szerinti
 * Az igény szerinti HDInsight-fürt jön létre az Azure-előfizetéshez. A fürt az Azure Portalon megtekintheti, ha a fürt működik és fut áll. 
 * A naplók egy igény szerinti HDInsight-fürtön futó feladatok a HDInsight-fürthöz társított tárfiókba kerülnek. A clusterUserName, clusterPassword, clusterSshUserName, a társított szolgáltatás definíciójában meghatározott clusterSshPassword segítségével jelentkezzen be a fürthöz, a részletes hibakeresés a fürt élettartama során. 
 * Csak a az időpontot, amikor a HDInsight-fürt kell felfelé és a futó feladatok számítunk fel.
-* Igény szerinti Azure HDInsight társított szolgáltatással Szkriptműveletet nem használható. Ha más függőségek telepítéséhez, például, nézze meg az Azure Automationnel futtatni egy PowerShell-parancsprogram, amely a következőket hajtja végre:  
-  a. A HDInsight-fürt létrehozásához.  
-  b. Egyéb függőségek telepítéséhez például Szkriptműveletet futtassa.  
-  c. A Data Factory-folyamatok futtatásához.  
-  d. Törölje a fürtöt.  
+* Parancsfájlművelet most már támogatott az Azure HDInsight igény szerinti társított szolgáltatás.  
 
 > [!IMPORTANT]
 > Vesz **20 perc** legalább egy igény szerinti Azure HDInsight-fürt kiépítéséhez.
@@ -108,7 +104,7 @@ A következő JSON egy Linux-alapú igény szerinti HDInsight társított szolg�
 | clusterResourceGroup         | A HDInsight-fürtöt az erőforráscsoportban jön létre. | Igen      |
 | az élettartam                   | A megengedett üresjárati idő az igény szerinti HDInsight-fürt számára. Itt adhatja meg, mennyi ideig az igény szerinti HDInsight-fürt aktív marad egy tevékenység fut, ha nincsenek a fürt más aktív feladatok befejezése után. A minimális megengedett érték érték 5 perc (00: 05:00).<br/><br/>Például ha egy tevékenység futtatása 6 percig tart, és az élettartam értéke 5 perc, a fürt marad, a figyelő életben 5 perc, a 6 percnek feldolgozása a tevékenység futtatása után. Ha egy másik tevékenység-végrehajtásonként 6 – perc időkeretet, dolgoz fel ugyanazon a fürtön.<br/><br/>Egy igény szerinti HDInsight-fürt létrehozása egy (eltarthat egy ideig) drága művelet, így használja ezt a beállítást a szükséges adat-előállító egy igény szerinti HDInsight-fürt újrafelhasználásával teljesítményét.<br/><br/>Ha timetolive az érték 0, a fürt törlődik, amint az a tevékenység futása befejeződik. Mivel a Ha a magas érték, a fürt számára, hogy jelentkezzen be az egyes elhárítása üresjárati felfüggesztheti a célú, de eredményezheti magas költségeknek. Ezért fontos, hogy beállította-e a megfelelő értéket a saját igényei szerint.<br/><br/>A timetolive tulajdonság értéke megfelelően van beállítva, ha több folyamatot oszthatnak meg az igény szerinti HDInsight-fürt példányának. | Igen      |
 | clusterType                  | A HDInsight-fürt létrehozása típusa. Megengedett értékek: "hadoop" és "spark". Ha nincs megadva, alapértelmezett érték: hadoop. Fürt engedélyezve van a vállalati biztonsági csomag jelenleg nem támogatott | Nem       |
-| verzió:                      | A HDInsight-fürt verzióját. Ha nincs megadva, a jelenlegi HDInsight meghatározott alapértelmezett verziót használ. | Nem       |
+| version                      | A HDInsight-fürt verzióját. Ha nincs megadva, a jelenlegi HDInsight meghatározott alapértelmezett verziót használ. | Nem       |
 | hostSubscriptionId           | A HDInsight-fürt létrehozásához használt Azure-előfizetés azonosítója. Ha nincs megadva, az előfizetés-azonosító az Azure bejelentkezési kontextus használ. | Nem       |
 | clusterNamePrefix           | A HDI-fürt nevét, az időbélyegző-előtagot automatikusan hozzá lesznek fűzve a fürt nevének végén| Nem       |
 | sparkVersion                 | Ha a fürt típusa "Spark" spark verziója | Nem       |
@@ -488,7 +484,7 @@ Létrehozhat **Azure Databricks társított szolgáltatás** Databricks-munkater
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | név                 | A társított szolgáltatás neve               | Igen   |
 | type                 | A type tulajdonságot kell megadni: **az Azure Databricks**. | Igen                                      |
-| tartomány               | Adja meg az Azure-régió, ennek megfelelően a Databricks-munkaterület az a régió alapján. Példa: https://eastus.azuredatabricks.net | Igen                                 |
+| tartomány               | Adja meg az Azure-régió, ennek megfelelően a Databricks-munkaterület az a régió alapján. Például: https://eastus.azuredatabricks.net | Igen                                 |
 | hozzáférési tokent          | Hozzáférési jogkivonat hitelesíti az Azure databricks a Data Factory szükség. Hozzáférési jogkivonat hozható létre a databricks-munkaterület szükséges. Keresse meg a hozzáférési jogkivonat található lépéseket részletes [Itt](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token)  | Igen                                       |
 | existingClusterId    | A fürt összes feladat futtatásához a meglévő fürtök azonosítója. Egy már létrehozott interaktív fürt kell lennie. Szükség lehet manuálisan indítsa újra a fürtöt, ha azt nem válaszol. Databricks javasolja a futó feladatok nagyobb megbízhatóság érdekében új fürtökön. A fürt azonosító található egy interaktív fürt a Databricks-munkaterület ->-fürtök interaktív fürt neve > -> Konfiguráció -> címkéket. [További részletek](https://docs.databricks.com/user-guide/clusters/tags.html) | Nem 
 | newClusterVersion    | A Spark-verziót a fürt. A databricks-feladat fürtjében hoz létre. | Nem  |

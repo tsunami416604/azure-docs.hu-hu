@@ -1,10 +1,8 @@
 ---
-title: 'Az Azure Cosmos DB: SQL Java API, SDK és -erőforrások |} A Microsoft Docs'
+title: 'Az Azure Cosmos DB: SQL Java API, SDK és -erőforrások'
 description: Mindent megtudhat a SQL Java API-t és az SDK kiadási dátum, kivezetési dátum és az Azure Cosmos DB SQL Java SDK minden verziója közötti végzett módosításokat.
 services: cosmos-db
 author: rnagpal
-manager: kfile
-editor: cgronlun
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
@@ -12,12 +10,12 @@ ms.topic: reference
 ms.date: 11/29/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4a1be3b948ca5571972179e08ba8b85657b0bb8d
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 6c8d7221e367abbbcb1a7968003c1cd25106b866
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725165"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871217"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Az SQL API-t az Azure Cosmos DB Java SDK: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]

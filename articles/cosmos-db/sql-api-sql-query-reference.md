@@ -1,21 +1,19 @@
 ---
-title: 'Az Azure Cosmos DB: SQL-szintaxis lekérdezés referencia |} A Microsoft Docs'
+title: 'Az Azure Cosmos DB: SQL-szintaxis lekérdezés referencia'
 description: Az Azure Cosmos DB SQL-lekérdezési nyelv dokumentációja.
 services: cosmos-db
 author: LalithaMV
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
-ms.devlang: na
 ms.topic: reference
 ms.date: 08/19/2018
 ms.author: laviswa
-ms.openlocfilehash: dbd3d4e34df3bf918c831a3d9c74de8a9015b50e
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 37b76094678d812a450817110055a74f8daae87b
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163605"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52880250"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Az Azure Cosmos DB SQL-szintaxis referenciája
 

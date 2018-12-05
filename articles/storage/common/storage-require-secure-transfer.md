@@ -8,20 +8,20 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 201bf1e5d3580902934f139b70ca5363e7cc5930
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 72e0937e91a7287d240bbdb25996865f934d432d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523015"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876502"
 ---
 # <a name="require-secure-transfer-in-azure-storage"></a>Az Azure Storage-ban biztonságos átvitel megkövetelése
 
 A "Biztonságos átvitelre van szükség" beállítás csak a fiók teszi kérelmek biztonságos kapcsolatok növeli a storage-fiók biztonságát. Például meghívásakor REST API-k, a tárfiók eléréséhez, akkor csatlakoznia kell HTTPS-en keresztül. "A biztonságos átvitelre van szükség" elutasítja a HTTP-kérelmeket.
 
-Az Azure Files szolgáltatást használja, minden olyan kapcsolat, titkosítás nélkül sikertelen lesz, ha a "Biztonságos átvitelre van szükség" engedélyezve van. Ez magában foglalja a forgatókönyvek, amelyek használják az egyes verziói a Linuxos SMB-ügyfél, SMB 2.1 és az SMB 3.0 titkosítás nélkül. 
+Az Azure Files szolgáltatást használja, minden olyan kapcsolat, titkosítás nélkül sikertelen lesz, ha a "Biztonságos átvitelre van szükség" engedélyezve van. Ez magában foglalja a forgatókönyvek, amelyek használják az egyes verziói a Linuxos SMB-ügyfél, SMB 2.1 és az SMB 3.0 titkosítás nélkül. 
 
-Alapértelmezés szerint a "Biztonságos átvitelre van szükség" lehetőség le van tiltva.
+Alapértelmezés szerint a "Biztonságos átvitelre van szükség" lehetőség le van tiltva az SDK-val egy storage-fiók létrehozásakor. És ez alapértelmezés szerint engedélyezve van az Azure Portal tárfiók létrehozásakor.
 
 > [!NOTE]
 > Azure Storage nem támogatja a HTTPS az egyéni tartománynevek, mert a rendszer nem alkalmazza ezt a beállítást, ha egy egyéni tartománynevet használ. És a klasszikus tárfiókok nem támogatottak.

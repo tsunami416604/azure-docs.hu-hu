@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 876cb037aab718a91f469f8862c501bb9a29e4d6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8f2bf9707d28744707c39a507108120e948dde7f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846426"
+ms.locfileid: "52866678"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Nézettervező vizualizációs részére a Log Analytics használati útmutató
 Nézettervező az Azure Log Analytics használatával egyéni nézeteket hozhat létre az Azure Portalon, amelyek a Log Analytics-munkaterület adatvizualizációk széles. Ez a cikk egy referencia-útmutató a beállítások a vizualizációs rész, amely szerepel az egyéni nézetek.
@@ -324,7 +324,7 @@ A név és érték elválasztó a határolójel használatával a text tulajdons
 Vegyük példaként a tulajdonságot, *hely* például tartalmazza, amely értékek *Redmond-összeállító 41* és *Bellevue-összeállító 12*. Név és érték elválasztó is megadhat egy kötőjelet (-) és *város-összeállító* neve. Ez a megközelítés elemzi az egyes értékek be két tulajdonság nevű *Város* és *épület*.
 
 ### <a name="click-through-navigation"></a>Átkattintásos navigáció
-Átkattintásos navigáció határozza meg, milyen műveletet nem hajt egy fejléc vagy a lista elemére kattintva.  Vagy megnyílik a lekérdezés a [Naplókeresési portál](../../log-analytics/log-analytics-log-search-portals.md) vagy egy másik nézet indítása.
+Átkattintásos navigáció határozza meg, milyen műveletet nem hajt egy fejléc vagy a lista elemére kattintva.  Vagy megnyílik a lekérdezés a [Naplókeresési portál](../../azure-monitor/log-query/portals.md) vagy egy másik nézet indítása.
 
 Az alábbi táblázat az átkattintásos navigáció vonatkozó beállításait ismerteti.
 

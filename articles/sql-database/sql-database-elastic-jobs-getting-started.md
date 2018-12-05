@@ -3,7 +3,7 @@ title: Ismerkedés a rugalmas adatbázis-feladatok |} A Microsoft Docs
 description: Rugalmas adatbázis-feladatok segítségével hajtsa végre a több adatbázisra kiterjedő T-SQL-parancsfájlok.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,27 +12,27 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 07/16/2018
-ms.openlocfilehash: ada95f9fc09aeb7e8dac67bc5f9c4af96f9700df
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 0269a8ea460667d44b6173e4504a9ccb5695d722
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241361"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863533"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Ismerkedés a rugalmas adatbázis-feladatok
 
-
 [!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
-
 
 Elastic Database-feladatok (előzetes verzió) az Azure SQL Database lehetővé teszi, hogy automatikusan újra próbálkozik, és a végleges befejezési garanciákat biztosít több adatbázisra kiterjedő T-SQL-parancsfájlok megbízhatóan futtathat. A rugalmas feladat szolgáltatással kapcsolatos további információkért lásd: [az Elastic jobs](sql-database-elastic-jobs-overview.md).
 
 Ez a cikk a található minta kibővíti [Ismerkedés az Elastic Database-eszközök](sql-database-elastic-scale-get-started.md). Amikor elkészült, megismerheti, hogyan hozhat létre és kezelhet, amelyek a kapcsolódó adatbázisok egy csoportjának kezelését feladatok. Nem kötelező a rugalmasan méretezhető eszközeivel az Elastic jobs előnyeinek kihasználása érdekében.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Töltse le és futtassa a [Ismerkedés az Elastic Database-eszközök minta](sql-database-elastic-scale-get-started.md).
 
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>Hozzon létre egy szegmens a mintaalkalmazással kezelő
+
 Itt létrehozhat horizontálispartíció-térkép manager több szegmensben, majd az adatok beszúrását a szegmensekre együtt. Ha már rendelkezik állítsa be őket a horizontálisan skálázott adatok szegmensek, hagyja ki a következő lépéseket, és helyezze át a következő szakaszra.
 
 1. Hozza létre és futtassa a **Ismerkedés az Elastic Database-eszközök** mintaalkalmazást. Kövesse a lépéseket, amíg a szakasz a 7. lépés [töltse le és futtassa a mintaalkalmazást](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app). 7. lépés végén jelenik meg a következő parancssort:
@@ -48,8 +48,9 @@ Itt létrehozhat horizontálispartíció-térkép manager több szegmensben, maj
 
 Itt mi lenne általában horizontálispartíció-térkép létrehozása cél használata a **New-AzureSqlJobTarget** parancsmagot. A szegmenstérkép-kezelő adatbázis állítson be egy adatbázis célként, és majd a különleges szegmenstérkép célként van megadva. Ehelyett fogjuk enumerálni az összes adatbázist a kiszolgálón, és adja hozzá az adatbázisokat az új egyéni gyűjtemény kivételével a master adatbázisban.
 
-## <a name="creates-a-custom-collection-and-add-all-databases-in-the-server-to-the-custom-collection-target-with-the-exception-of-master"></a>Egy egyéni gyűjteményt hoz létre, és minden adatbázisok hozzáadása a kiszolgálón a egyéni gyűjtemény cél fő kivételével.
-   ```
+## <a name="creates-a-custom-collection-and-add-all-databases-in-the-server-to-the-custom-collection-target-with-the-exception-of-master"></a>Egy egyéni gyűjteményt hoz létre, és adja hozzá minden adatbázis a kiszolgáló master kivételével az egyéni gyűjtemény cél
+
+   ```Powershell
     $customCollectionName = "dbs_in_server"
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $ResourceGroupName = "ddove_samples"
@@ -301,6 +302,7 @@ A frissíteni kívánt végrehajtási szabályzat frissítése:
    ```
 
 ## <a name="cancel-a-job"></a>Feladatok megszakítása
+
 Elastic Database-feladatok feladatok megszakítási kérések támogatja.  Elastic Database-feladatok egy jelenleg végrehajtás alatt feladat megszakítási kérelmet észleli, ha megkísérli leállítani a feladatot.
 
 Elastic Database-feladatok is hajtsa végre a megszakítási két különböző módja van:
@@ -312,12 +314,13 @@ Ha egy feladat törlése a szülőfeladat van szükség, a szülő feladat és a
 
 Megszakítási kérelmet küldeni, használja a **Stop-AzureSqlJobExecution** parancsmagot, és állítsa a **JobExecutionId** paraméter.
 
-   ```
+   ```Powershell
     $jobExecutionId = "{Job Execution Id}"
     Stop-AzureSqlJobExecution -JobExecutionId $jobExecutionId
    ```
 
 ## <a name="delete-a-job-by-name-and-the-jobs-history"></a>Feladat neve és a feladatelőzmények törlése
+
 Elastic Database-feladatok támogatja az aszinkron feladatok törlése. Egy feladat is törlésre, és a rendszer törli a feladatot és annak feladatelőzmények összes feladat-végrehajtások a feladat befejezése után. A rendszer nem automatikusan szünteti meg az aktív feladat-végrehajtások.  
 
 Ehelyett Stop-AzureSqlJobExecution megszakítja az aktív feladat-végrehajtások lehet meghívni.

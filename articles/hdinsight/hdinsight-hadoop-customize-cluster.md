@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8923dcb4c35bbf90a6f68bd296bb9a862c5ff07d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: aeb0dec07ef9c8fb124089c785929f4e5ce69ffe
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230801"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871428"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Szkriptműveletek használatával Windows-alapú HDInsight-fürtök testre szabása
 **Parancsfájl-művelet** hívja használhatók [egyéni parancsfájlok](hdinsight-hadoop-script-actions.md) a további szoftverek telepítése egy fürtre a fürt létrehozása során.
@@ -24,7 +24,7 @@ Ebben a cikkben található információk csak a Windows-alapú HDInsight-fürt�
 > [!IMPORTANT]
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-HDInsight-fürtök számos más módon is testre szabható, többek között további Azure Storage-fiókokat, például a Hadoop módosítása konfigurációs fájlok (core-site.xml, hive-site.xml stb.) vagy kódtárakat (pl. a Hive, az Oozie) való hozzáadása megosztott általánosan használt helyet ismertet a fürtben. Ezek a testreszabások végezhető el az Azure PowerShell, az Azure HDInsight .NET SDK vagy az Azure Portalon. További információkért lásd: [Hadoop-fürtök létrehozása a HDInsight][hdinsight-provision-cluster].
+Más módon is, sokféle testre szabható HDInsight-fürtök további Azure Storage-fiókok, módosítás, ideértve például a [Apache Hadoop](https://hadoop.apache.org/) konfigurációs fájlok (core-site.xml, hive-site.xml stb.), vagy megosztott hozzáadása kódtárak (pl. [Apache Hive](https://hive.apache.org/), [Apache Oozie](https://oozie.apache.org/)) be a fürt általánosan használt helyet ismertet. Ezek a testreszabások végezhető el az Azure PowerShell, az Azure HDInsight .NET SDK vagy az Azure Portalon. További információkért lásd: [Apache Hadoop-fürtök létrehozása a HDInsight][hdinsight-provision-cluster].
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell-cli-and-dotnet-sdk.md)]
 
@@ -48,16 +48,16 @@ HDInsight számos szkript a következő összetevők telepítése a HDInsight-f�
 
 | Name (Név) | Szkript |
 | --- | --- |
-| **A Spark telepítése** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1`. Lásd: [telepítése és használata a Spark on HDInsight-fürtök][hdinsight-install-spark]. |
+| **Az Apache Spark telepítése** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1`. Lásd: [telepítése és használata Apache Spark on HDInsight-fürtök][hdinsight-install-spark]. |
 | **Az R telepítése** | `https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1`. Lásd: [telepítése és az R használata a HDInsight-fürtökön](r-server/r-server-hdinsight-manage.md#install-additional-r-packages-on-the-cluster). |
-| **A Solr telepítése** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1`. Lásd: [telepítése és használata a Solr a HDInsight-fürtök](hdinsight-hadoop-solr-install.md). |
-| **A Giraph telepítése** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1`. Lásd: [telepítése és használata a Giraph a HDInsight-fürtök](hdinsight-hadoop-giraph-install.md). |
-| **Hive-kódtárak előzetes betöltése** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1`. Lásd: [adja hozzá a Hive-kódtárak a HDInsight-fürtök](hdinsight-hadoop-add-hive-libraries.md) |
+| **Az Apache Solr telepítése** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1`. Lásd: [telepítése és használata a HDInsight Apache Solr fürtök](hdinsight-hadoop-solr-install.md). |
+| **Az Apache Giraph telepítése** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1`. Lásd: [telepítése és használata az Apache Giraph a HDInsight-fürtök](hdinsight-hadoop-giraph-install.md). |
+| **Az Apache Hive-kódtárak előzetes betöltése** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1`. Lásd: [kódtárak hozzáadása az Apache Hive a HDInsight-fürtökön](hdinsight-hadoop-add-hive-libraries.md) |
 
 ## <a name="call-scripts-using-the-azure-portal"></a>Hívás parancsfájlok az Azure portal használatával
 **Az Azure Portalról**
 
-1. Indítsa el a fürt létrehozása ismertetett módon [Hadoop-fürtök létrehozása a HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+1. Indítsa el a fürt létrehozása ismertetett módon [Apache Hadoop-fürtök létrehozása a HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 2. Választható konfiguráció mellett a a **Parancsfájlműveletek** panelen kattintson a **parancsfájlművelet hozzáadása** , adja meg a parancsfájlművelet adatait, ahogy az alábbi:
 
     ![Fürt testreszabása Szkriptműveletek használatával](./media/hdinsight-hadoop-customize-cluster/HDI.CreateCluster.8.png "Szkriptműveleteket használata a fürt testreszabása")
@@ -165,7 +165,7 @@ Más szoftver telepítéséhez szüksége cserélje le a parancsfájlt a parancs
 Amikor a rendszer kéri, adja meg a hitelesítő adatokat a fürtön. Mielőtt a fürt létrehozása több percet is igénybe vehet.
 
 ## <a name="call-scripts-using-net-sdk"></a>.NET SDK használatával szkriptek meghívása
-A következő minta bemutatja, hogyan Spark telepítése Windows-alapú HDInsight-fürt. Más szoftverek telepítése, szüksége lesz cserélje le a parancsfájlt a kódban.
+A következő minta bemutatja, hogyan Apache Spark telepítése Windows-alapú HDInsight-fürt. Más szoftverek telepítése, szüksége lesz cserélje le a parancsfájlt a kódban.
 
 **A Spark egy HDInsight-fürt létrehozása**
 
@@ -283,7 +283,7 @@ A Microsoft Azure HDInsight szolgáltatást az rugalmas platform, amely lehetőv
 
 A HDInsight szolgáltatásban elérhető nyílt forráskódú összetevőket két típusa van:
 
-* **Beépített összetevők** – ezek az összetevők a HDInsight-fürtök előre telepítve vannak, és adja meg a fürt fő funkciói. Ha például YARN ResourceManager, a Hive-lekérdezés nyelv (HiveQL) és a Mahout kódtár tartoznak ebbe a kategóriába. Kiszolgálófürt-összetevők teljes listája megtalálható [a HDInsight által biztosított Hadoop-fürtverziók újdonságai?](hdinsight-component-versioning.md) </a>.
+* **Beépített összetevők** – ezek az összetevők a HDInsight-fürtök előre telepítve vannak, és adja meg a fürt fő funkciói. Például az Apache Hadoop YARN ResourceManager, a Hive-lekérdezés nyelv (HiveQL) és az Apache Mahout kódtár tartoznak ebbe a kategóriába. Kiszolgálófürt-összetevők teljes listája megtalálható [a HDInsight által biztosított Hadoop-fürtverziók újdonságai?](hdinsight-component-versioning.md) </a>.
 * **Egyéni összetevők** -, a fürt felhasználói telepítése vagy használata az alkalmazások és szolgáltatások valamelyik összetevő a Közösségben elérhető vagy Ön által létrehozott.
 
 Beépített összetevők teljes mértékben támogatottak, és a Microsoft Support fog help elkülönítésére, és ezeket az összetevőket kapcsolatos problémák megoldásához.
@@ -305,11 +305,11 @@ A HDInsight szolgáltatás használatához az egyéni összetevők több módot 
 Lásd: [Szkriptművelet fejlesztése HDInsight-parancsfájlok][hdinsight-write-script].
 
 ## <a name="see-also"></a>Lásd még
-* [A HDInsight Hadoop-fürtök létrehozása] [ hdinsight-provision-cluster] útmutatás egy HDInsight-fürt létrehozása más egyéni beállításai használatával.
+* [A HDInsight Apache Hadoop-fürtök létrehozása] [ hdinsight-provision-cluster] útmutatás egy HDInsight-fürt létrehozása más egyéni beállításai használatával.
 * [Parancsfájlművelet-parancsfájlok fejlesztése a HDInsight][hdinsight-write-script]
-* [Spark telepítése és használata HDInsight-fürtökön][hdinsight-install-spark]
-* [Soir telepítése és használata HDInsight-fürtökön](hdinsight-hadoop-solr-install.md).
-* [Giraph telepítése és használata HDInsight-fürtökön](hdinsight-hadoop-giraph-install.md).
+* [Telepítse, és az Apache Spark használata a HDInsight-fürtökön][hdinsight-install-spark]
+* [Telepítse és Apache Solr használata a HDInsight-fürtökön](hdinsight-hadoop-solr-install.md).
+* [Telepítse, és az Apache Giraph használata a HDInsight-fürtökön](hdinsight-hadoop-giraph-install.md).
 
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-write-script]: hdinsight-hadoop-script-actions.md

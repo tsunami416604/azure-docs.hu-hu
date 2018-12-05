@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: d12de42be9cf5d1a48288aabf21b25546e5b4bbc
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 17d663873639cc36e9727881d990a3f32697c798
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833075"
+ms.locfileid: "52872152"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Az Azure Monitor naplók lekérdezni a virtuális gépek (előzetes verzió)
 Az Azure Monitor-beli virtuális gépek teljesítmény- és kapcsolati metrikák, a számítógép és a folyamat leltáradatokat és az állapotinformációkat gyűjt, és továbbítja azokat a Log Analytics data store az Azure Monitor.  Ezek az adatok érhető el [keresési](../../azure-monitor/log-query/log-query-overview.md) a Log Analyticsben. Ezeket az adatokat, beleértve az áttelepítés megtervezése, kapacitáselemzési, felderítési és igény szerinti teljesítménnyel kapcsolatos hibaelhárítás forgatókönyveket is alkalmazhat.
@@ -238,5 +238,5 @@ let remoteMachines = remote | summarize by RemoteMachine;
 ```
 
 ## <a name="next-steps"></a>További lépések
-* Ha még nem ismeri a lekérdezések írásának módját a Log Analyticsben, tekintse át [használata a Log Analytics lapot](../../log-analytics/query-language/get-started-analytics-portal.md) Log Analytics-lekérdezéseket írhat az Azure Portalon.
-* Ismerje meg [keresési lekérdezések írása](../../log-analytics/query-language/search-queries.md).
+* Ha még nem ismeri a lekérdezések írásának módját a Log Analyticsben, tekintse át [használata a Log Analytics lapot](../../azure-monitor/log-query/get-started-portal.md) Log Analytics-lekérdezéseket írhat az Azure Portalon.
+* Ismerje meg [keresési lekérdezések írása](../../azure-monitor/log-query/search-queries.md).

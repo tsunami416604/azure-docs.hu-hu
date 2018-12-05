@@ -2,19 +2,19 @@
 title: Az Azure Backup Server rendszer rendszerállapotának védelmét látja el, és visszaállítja az operációs rendszer nélküli
 description: Az Azure Backup Server használatával a rendszerállapotának biztonsági mentése és az operációs rendszer nélküli helyreállítás (BMR) védelmének biztosítására.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keywords: ''
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: markgal
-ms.openlocfilehash: 7cb87847d6a1e191fb20dfa9cdf263066704eb6d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: raynew
+ms.openlocfilehash: 35ab150670cdc27efcedca233928e0c2184aeca6
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238811"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52880097"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Rendszerállapotának biztonsági mentése és visszaállítása az Azure Backup Server operációs rendszer nélküli
 

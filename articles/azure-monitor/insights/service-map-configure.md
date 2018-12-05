@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: cead67bf18dcd0ea7b5c1479588083884dab475f
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b18e106e27c38d3035a65f32c4f0811335897014
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632959"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890806"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurálja a Service Map az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Használhatja a kiszolgálók megtekintéséhez, ahogyan Ön gondol rájuk összekapcsolt rendszerekkel, amelyek kritikus fontosságú szolgáltatásokat. A Service Map megmutatja a kapcsolatokat kiszolgálók, folyamatok és portok között bármely TCP-kapcsolattal összekötött architektúrában semmilyen beállítást nem szükséges, eltérő ügynököt telepíteni.
@@ -135,7 +135,7 @@ A Service Map az adatok lekérése a Microsoft Dependency agent. A függőségi 
 |:--|:--|:--|
 | Windows-ügynökök | Igen | A Service Map elemzi, és gyűjti az adatokat Windows-számítógépek. <br><br>Mellett a [Log Analytics-ügynököket for Windows](../../azure-monitor/platform/log-analytics-agent.md), Windows-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
 | Linux-ügynökök | Igen | A Service Map elemzi, és a Linux rendszerű számítógépek gyűjti az adatokat. <br><br>Mellett a [Linuxhoz készült Log Analytics-ügynök](../../azure-monitor/platform/log-analytics-agent.md), Linux-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
-| System Center Operations Manage felügyeleti csoport | Igen | A Service Map elemzi, és a egy csatlakoztatott a Windows és Linux-ügynökök gyűjti az adatokat [System Center Operations Manager felügyeleti csoport](../../log-analytics/log-analytics-om-agents.md). <br><br>Ehhez közvetlen kapcsolat szükséges a System Center Operations Manager-ügynökszámítógép és a Log Analytics között. |
+| System Center Operations Manage felügyeleti csoport | Igen | A Service Map elemzi, és a egy csatlakoztatott a Windows és Linux-ügynökök gyűjti az adatokat [System Center Operations Manager felügyeleti csoport](../../azure-monitor/platform/om-agents.md). <br><br>Ehhez közvetlen kapcsolat szükséges a System Center Operations Manager-ügynökszámítógép és a Log Analytics között. |
 | Azure Storage-fiók | Nem | A Service Map gyűjti az adatokat ügynökszámítógépen, így nem szerepel megjeleníthető adat gyűjtését az Azure Storage-ból származó. |
 
 A Windows, a Microsoft Monitoring Agent (MMA) segítségével a System Center Operations Manager és a Log Analytics összegyűjtése és küldése figyelési adatok. (Ez az ügynök nevezzük a System Center Operations Manager-ügynök, a Log Analytics-ügynököket, az MMA vagy a közvetlen ügynök, a környezettől függően.) A System Center Operations Manager és a Log Analytics biztosít különböző ki a box verziói az MMA. Ezek a verziók jelenthetnek a Log Analyticsnek, a System Center Operations Managernek vagy mindkettőnek.  
@@ -156,7 +156,7 @@ Ha egy System Center Operations Manager-ügyfél a Log Analytics csatlakozik a f
 Ha a Windows vagy Linux rendszerű számítógépek közvetlenül nem tud csatlakozni a szolgáltatáshoz, konfigurálása a Log Analytics-ügynököket a Log Analytics-munkaterület használata az átjáró csatlakozni szeretne. Hogyan telepítheti és konfigurálhatja a Log Analytics-átjáró további információkért lásd: [számítógépek csatlakoztatása a Log Analytics-átjáró Internet-hozzáférés nélküli](../../azure-monitor/platform/gateway.md).  
 
 ### <a name="management-packs"></a>Felügyeleti csomagok
-A Service Map aktiválásakor a Log Analytics-munkaterületen, 300 KB-os felügyeleti csomag munkaterület Windows-kiszolgálók lesznek továbbítva. Ha a System Center Operations Manager ügynököt használ egy [csatlakoztatott felügyeleti csoport](../../log-analytics/log-analytics-om-agents.md), a Service Map felügyeleti csomag telepítése a System Center Operations Managerből. 
+A Service Map aktiválásakor a Log Analytics-munkaterületen, 300 KB-os felügyeleti csomag munkaterület Windows-kiszolgálók lesznek továbbítva. Ha a System Center Operations Manager ügynököt használ egy [csatlakoztatott felügyeleti csoport](../../azure-monitor/platform/om-agents.md), a Service Map felügyeleti csomag telepítése a System Center Operations Managerből. 
 
 A felügyeleti csomag neve Microsoft.IntelligencePacks.ApplicationDependencyMonitor. %Programfiles%\Microsoft Monitoring Agent\Agent\Health szolgáltatás State\Management Packs\ írás. Az adatforrás, amely a felügyeleti csomagot használja a % Program files%\Microsoft figyelés Agent\Agent\Health szolgáltatás State\Resources\<AutoGeneratedID > \ Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
 

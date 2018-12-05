@@ -3,7 +3,7 @@ title: Ismerkedés az Elastic Database-eszközök – Azure |} A Microsoft Docs
 description: Alapszintű magyarázata a rugalmas Adatbáziseszközök funkció az Azure SQL Database, egy egyszerű futtatható minta alkalmazást is beleértve.
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: anjangsh
 ms.reviewer: ''
 manager: craigg
 ms.date: 08/27/2018
-ms.openlocfilehash: ad07b0a9ae2d0c90f63d4f3a842a5d386ac4c59b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 13e9bb045bcce553ba9fdc344baa86ba96260387
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249863"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870231"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Ismerkedés az Elastic Database-eszközökkel
 Ez a dokumentum bemutatja a fejlesztői felületet a [elastic database-ügyfélkódtár](sql-database-elastic-database-client-library.md) segít egy mintaalkalmazás futtatásához. A mintaalkalmazás egy egyszerű szilánkokra osztott alkalmazás létrehozása, és bemutatja az Azure SQL Database rugalmas Adatbáziseszközöket funkcióját rejlő lehetőségeket. Használati eset foglalkozik [szilánkleképezés-kezelés](sql-database-elastic-scale-shard-map-management.md), [Adatfüggő útválasztásnak](sql-database-elastic-scale-data-dependent-routing.md), és [több szegmensre vonatkozó lekérdezésekkel](sql-database-elastic-scale-multishard-querying.md). Az ügyféloldali kódtára a .NET, Java érhető el. 

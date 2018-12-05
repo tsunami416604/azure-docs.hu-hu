@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: f56e15e12bc176e6b6837e144494599ea4fb5403
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: a6c8a8aa954379036ce566a205b8cb4e97952727
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282532"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887838"
 ---
 # <a name="add-a-popup-to-the-map"></a>A térkép egy előugró ablak hozzáadása
 
@@ -37,20 +37,32 @@ A negyedik kódblokkot létrehoz egy [előugró objektum](https://docs.microsoft
 
 A legutóbbi kódblokkot által aktivált függvény létrehozása a `mouseover` eseményfigyelő. Azt állítja be a tartalmát és tulajdonságait – előugró, és hozzáadja az előugró objektum a térképen.
 
+## <a name="reusing-a-popup-with-multiple-points"></a>Egy előugró ablak, több pontok újbóli használata
+
+Sok pontok, és csak egy előugró ablak megjelenítése egyszerre szeretné, a legjobb módszer esetén hozzon létre egy előugró ablak, és újra felhasználhatja azt létrehozása helyett egy előugró ablak az egyes pont szolgáltatásokhoz. Ezáltal a DOM-elemek az alkalmazás által létrehozott száma jelentősen csökken, amely jobb teljesítményt tud nyújtani. Ez a példa 3 pont szolgáltatásokat hoz létre. Ha ezek közül bármelyik kattint, a tartalom az adott pont szolgáltatás egy előugró ablak jelenik meg.
+
+<br/>
+
+<iframe height='500' scrolling='no' title='Újbóli felhasználása több PIN-kód az előugró ablak' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>újbóli felhasználása több PIN-kód az előugró</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
 ## <a name="next-steps"></a>További lépések
 
 További információ az osztályok és módszerek a cikk ezt használja:
 
 > [!div class="nextstepaction"]
-> [Térkép](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Helyi menü](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [Helyi menü](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+> [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions?view=azure-iot-typescript-latest)
 
 Tekintse meg az alábbi nagyszerű teljes körű Kódminták cikkeket:
 
 > [!div class="nextstepaction"]
-> [Alakzat hozzáadása](./map-add-shape.md)
+> [Egy szimbólum réteg hozzáadása](./map-add-pin.md)
 
 > [!div class="nextstepaction"]
-> [Egyéni HTML hozzáadása](./map-add-custom-html.md)
+> [Egy HTML-mutató hozzáadása](./map-add-custom-html.md)
+
+> [!div class="nextstepaction"]
+> [Alakzat hozzáadása](./map-add-shape.md)

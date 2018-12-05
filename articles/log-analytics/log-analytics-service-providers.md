@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: meirm
 ms.component: ''
-ms.openlocfilehash: b1c64a24a1053d8cafd039d3bd816e02aecc95e3
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 03eae1be7b7ec52209849b6392fbd00e39da522a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725437"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878414"
 ---
 # <a name="log-analytics-for-service-providers"></a>A log Analytics, a szolgáltatók számára
 A log Analytics segítségével a felügyelt szolgáltatóknak (MSP), a nagyobb vállalatok, független szoftverszállítók (ISV-k) és üzemeltetési szolgáltatók az ügyfél helyszíni vagy felhőalapú infrastruktúrában lévő kiszolgálók kezelése és figyelése. 
@@ -73,7 +73,7 @@ A harmadik architektúra vegyesen a két lehetőség között. A naplók esetén
 
 A központi hely megvalósításához a Log Analytics két lehetőség van:
 
-1. Központi munkaterület: A szolgáltató hozzon létre egy munkaterületet a bérlőben, és a egy parancsfájlt, amelyik a használni a [Query API](https://dev.loganalytics.io/) az a [adatok gyűjtési API](log-analytics-data-collector-api.md) életre az adatokat a különböző munkaterületekhez, ez a központi hely. Egy másik lehetőség, a parancsfájl nem [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
+1. Központi munkaterület: A szolgáltató hozzon létre egy munkaterületet a bérlőben, és a egy parancsfájlt, amelyik a használni a [Query API](https://dev.loganalytics.io/) az a [adatok gyűjtési API](../azure-monitor/platform/data-collector-api.md) életre az adatokat a különböző munkaterületekhez, ez a központi hely. Egy másik lehetőség, a parancsfájl nem [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
 
 2. Power bi-ban egy központi helyet: Ha a különböző munkaterületekhez rájuk a Log Analytics integrációjával adatok exportálása Power BI működhet a központi helyet és [Power BI](log-analytics-powerbi.md). 
 

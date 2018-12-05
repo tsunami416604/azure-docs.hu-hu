@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: kuhussai
 ms.component: blobs
-ms.openlocfilehash: 3a980abc7b9611cfd6a3933a54505b0208b67f50
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b69958aad129550c8e4956307d197a3692fddec4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253720"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866321"
 ---
 # <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Az Azure Blob storage: prémium szintű (előzetes verzió), gyakori, ritka és archív tárolási szintek
 
@@ -113,7 +113,7 @@ Egy adott fiók tartalmazhat blobokat egyszerre akár mindhárom szinten is. Azo
 Hozzáférés prémium szinten tárolt adatok nem helyezhető el, a ritkáról gyakori elérésű, ritka elérésű vagy archív tárolási szint használatával [Blobszint beállítása](/rest/api/storageservices/set-blob-tier) vagy Azure Blob Storage életciklus-felügyelet használatával. Az adatok áthelyezéséhez szinkron módon másolja az blobok az prémium szintű hozzáférést a gyakran használt adatok használata a [blokk helyezze a API URL-címet a](/rest/api/storageservices/put-block-from-url) vagy az AzCopy az API-t támogató verzióját. A *URL blokk Put* API szinkron módon másolja az adatokat a kiszolgálón, ami azt jelenti, a hívás befejezése csak egyszer minden az adatokat a rendeltetési helyre áthelyezik az eredeti kiszolgálón.
 
 ### <a name="blob-lifecycle-management"></a>BLOB életciklus-felügyelete
-A BLOB Storage életciklus-felügyelet (előzetes verzió) kínál egy gazdag, szabályalapú házirend, amelyet használhat való áttérés a adatait, hogy a legjobb hozzáférési szint és az adatok életciklusa végén lejár. Lásd: [kezelése az Azure Blob storage életciklus](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts) további.  
+A BLOB Storage életciklus-felügyelet (előzetes verzió) kínál egy gazdag, szabályalapú házirend, amelyet használhat való áttérés a adatait, hogy a legjobb hozzáférési szint és az adatok életciklusa végén lejár. Lásd: [kezelése az Azure Blob storage életciklus](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-management-concepts) további.  
 
 ### <a name="blob-level-tiering-billing"></a>Blobszintű rétegezési számlázás
 
@@ -245,7 +245,7 @@ Az adattárolási és egyéb korlátok a fiókok szintjén vannak meghatározva,
 
 [Gyors Elérésűre, ritka elérésű és az archív régiónként elérhetőségének ellenőrzése](https://azure.microsoft.com/regions/#services)
 
-[Az Azure Blob storage életciklus kezelése](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts)
+[Az Azure Blob storage életciklus kezelése](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-management-concepts)
 
 [Aktuális tárfiókjai használatának értékelése az Azure Storage mérőszámainak engedélyezésével](../common/storage-enable-and-view-metrics.md)
 

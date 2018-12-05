@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.author: tedway
 author: tedway
 ms.reviewer: jmartens
-ms.date: 9/24/2018
-ms.openlocfilehash: 411beacd65915c30338ab415b095acc1a0c8cbe6
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.date: 10/24/2018
+ms.openlocfilehash: c40837baf66b39d98da17c244f462f356d2b1f26
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238855"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864349"
 ---
 # <a name="what-is-fpga-and-project-brainwave"></a>Mi az FPGA- és Project Brainwave?
 
@@ -37,7 +37,7 @@ FPGA-kban programozható logikai blokkok tömbjét tartalmazza, és amellyel új
 
 [A Project Brainwave](https://www.microsoft.com/research/project/project-brainwave/) Microsoft gazdaságos hardver architektúra, alapú Intel FPGA-eszközön, az adatelemzők és fejlesztők használatával felgyorsíthatja a valós idejű mesterséges Intelligencia számításokat.  Ez az architektúra FPGA-kompatibilis kínál **teljesítmény**, **rugalmasságot**, és **méretezési** és az Azure-ban érhető el.
 
-**FPGA-kban közel valós idejű következtetési kérelmek eléréséhez lehetővé teszik.** Kötegelés azt jelenti, nagy mennyiségű adatot gyűjt, és át a processzor-javíthatja a hardver kihasználását. Kötegelés okozhat, késés, mert több adatot kell feldolgozni, de javíthatja a teljesítményt. Neurális feldolgozóegység Project Brainwave megvalósítása nem igénylik a kötegelés; ezért a késés lehet sokszor alacsonyabb Processzor és GPU képest.
+**FPGA-kban közel valós idejű következtetési kérelmek eléréséhez lehetővé teszik.** Aszinkron kérelmet (kötegelt) nincs rájuk szükség. Kötegelés okozhat, késés, mert több adatot kell feldolgozni, de fokozható a teljesítmény bizonyos környezetekben. Neurális feldolgozóegység Project Brainwave megvalósítása nem igénylik a kötegelés; ezért a késés lehet sokszor alacsonyabb Processzor és GPU képest.
 
 ### <a name="reconfigurable-power"></a>Újrakonfigurálható power
 **FPGA-kban újra kell konfigurálni a különböző típusú gépi tanulási modelleket.** Ezt a rugalmasságot megkönnyíti az alkalmazások, a legtöbb optimális numerikus pontosság és a használt memória modell alapján gyorsabb.
@@ -68,7 +68,7 @@ A következő helyzetekben használjon FPGA Project Brainwave architektúra:
 
 Íme a munkafolyamat az Azure-ban támogatott dnn-eket, egy featurizer Azure FPGA-kban központi telepítésével kapcsolatos kép felismerés szolgáltatás létrehozására szolgáló:
 
-1. A szolgáltatás-definíciót, amely egy fájl létrehozásához használja az Azure Machine Learning SDK Pythonhoz készült TensorFlow grafikonok (bemeneti, featurizer és osztályozó) folyamat leírása alapján. A telepítési parancs automatikusan a definíció- és grafikonok tömörítése ZIP-fájlban, és a zip-fájl feltöltése az Azure Blob storage.  A DNN Project Brainwave futtathatók a FPGA már telepítve van.
+1. Használja a [Azure Machine Learning SDK Pythonhoz készült](https://aka.ms/aml-sdk) szolgáltatásdefiníció létrehozásához, amely van egy fájl leíró folyamat grafikonok (bemeneti, featurizer és osztályozó) alapján, a tensorflow-hoz. A telepítési parancs automatikusan a definíció- és grafikonok tömörítése ZIP-fájlban, és a zip-fájl feltöltése az Azure Blob storage.  A DNN Project Brainwave futtathatók a FPGA már telepítve van.
 
 1. Regisztrálja a modellt, az SDK-val rendelkező a ZIP-fájlt az Azure Blob storage-ban.
 

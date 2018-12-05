@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 0854361b262b1177d72a4ab9718698daff3c47fd
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 61303b1e21f8c52c46aa0365f51abc24790784eb
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850057"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887933"
 ---
 # <a name="azure-monitor-for-containers-preview-overview"></a>Az Azure Monitor tárolók (előzetes verzió) – áttekintés
 
@@ -41,7 +41,7 @@ Az Azure Monitor-tárolókhoz az Azure Monitor vagy közvetlenül a kijelölt AK
 
 ![Hozzáférés az Azure Monitor-tárolók módszereinek áttekintése](./media/container-insights-overview/azmon-containers-views.png)
 
-Ha érdekli, figyelése és kezelése a Docker és a Windows a tárológazdagép konfiguráció megtekintése, naplózási és erőforrás-használatot, tekintse meg a [Tárolómonitorozási megoldás](../../log-analytics/log-analytics-containers.md).
+Ha érdekli, figyelése és kezelése a Docker és a Windows a tárológazdagép konfiguráció megtekintése, naplózási és erőforrás-használatot, tekintse meg a [Tárolómonitorozási megoldás](../../azure-monitor/insights/containers.md).
 
 ## <a name="next-steps"></a>További lépések
 Az AKS-fürt a figyelés megkezdése előtt tekintse át a [hogyan üzembe helyezni az Azure figyeli, hogy tárolók](container-insights-onboard.md) engedélyezése a figyelési követelmények és választható módszerek.  

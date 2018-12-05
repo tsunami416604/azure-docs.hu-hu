@@ -14,18 +14,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: ambapat
-ms.openlocfilehash: 23f02f87b75cd41d1a56a388e4526be6d9a2e119
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 67f24bbccdd2dcf5cca09e09557d7ebebd0a5c2d
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682732"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52891078"
 ---
 # <a name="secure-your-key-vault"></a>Kulcstartó védelme
 Az Azure Key Vault egy felhőszolgáltatás, amely megvédi a titkosítási kulcsok és titkos kulcsokat (például a tanúsítványok, kapcsolati karakterláncok és jelszavak). Mivel ezek az adatok bizalmas, és az üzletileg kritikus, meg kell biztonságos hozzáférés a a kulcstartók, így csak a hitelesített alkalmazások és felhasználók számára. Ez a cikk áttekintést a Key Vault hozzáférés-modellt. Hitelesítési és engedélyezési ismerteti, és hogyan biztosíthat hozzáférést.
 
 ## <a name="overview"></a>Áttekintés
-Két külön felületen key vault elérését Ön szabályozza: az *felügyeleti sík* és a *adatsík*. Mindkét sík esetében megfelelő hitelesítés és engedélyezés részére egy kulcstartó eléréséhez kell rendelkeznie egy hívó (felhasználó vagy alkalmazás). Hitelesítés a hívó azonosítását hoz létre, az engedélyezés pedig meghatározza a műveletek a hívó hajthat végre.
+A kulcstartó-hozzáférés vezérlése két külön felületen, a felügyeleti síkon és az adatsíkon keresztül történik. 
+**Felügyeleti sík** foglalkozik, a tároló kezelése, például: tároló létrehozása, frissítése egy tárolót, -tároló törlése. 
+**Az adatsík** üzletek belül egy tároló tartalmazza, létrehozni, titkos kulcsok frissítése, törlése és a kulcstartóban titkos olvasásához. Mindkét sík esetében megfelelő hitelesítésre és engedélyezésre szükség egy hívó (felhasználó vagy alkalmazás) kulcstartó hozzáférést kaphasson. Hitelesítés a hívó azonosítását létesít az engedélyezés pedig meghatározza a műveletek elvégzésére jogosult a hívó.
+
+Hitelesítésre mind a felügyeleti sík, mind az adatsík az Azure Active Directoryt használja. Engedélyezésre a felügyeleti sík szerepköralapú hozzáférés-vezérlést (RBAC) használ, míg az adatsík kulcstartó-hozzáférési házirendet.
+
+A tárgyalt témakörök rövid áttekintése:
+
+[Hitelesítés az Azure Active Directory használatával](#authentication-using-azure-active-directory) – Ebből a fejezetből megtudhatja, hogyan végezhet hitelesítést a hívó az Azure Active Directoryval a felügyeleti síkon és az adatsíkon keresztüli kulcstartó-hozzáférés céljából. 
 
 Mindkét sík hitelesítést, az Azure Active Directory (Azure AD) használja. A hitelesítéshez a felügyeleti sík szerepköralapú hozzáférés-vezérlést (RBAC), míg az adatsík használja a Key Vault hozzáférési szabályzattal.
 

@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: c8a100577ba4bc67d12c7376b5897f397d010d4d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 434c6f6bcf0b684fab70aab6f550c90a8ce1cdb6
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844923"
+ms.locfileid: "52878074"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Áttekintés az Azure SQL Database felügyelt példányain erőforráskorlátok
 
@@ -52,8 +52,10 @@ Felügyelt példány két szolgáltatási csomagban – általános célú és a
 | Maximális tárméret | 8 TB | Általános 4: 1 TB <br/> A gen 5: <br/>– 1 TB-os 8, 16 virtuális mag<br/>– A 24 virtuális mag 2 TB<br/>– 4 TB-os 32, 40, 64, 80 virtuális magok |
 | Maximális tárterület adatbázisonként | Határozza meg a maximális tárhelyméretet a példány | Határozza meg a maximális tárhelyméretet a példány |
 | Egy példány adatbázisok maximális száma | 100 | 100 |
-| Maximális adatbázisfájlok példányonként | Legfeljebb 280 | Korlátlan |
-| IO-átviteli sebesség (becsült) | A maximális iops-érték 200 000 magonként 5000 IOPS |
+| Maximális adatbázisfájlok példányonként | Legfeljebb 280 | – 32 767 fájlt adatbázisonként |
+| IOPS (becsült) | fájlonkénti 500-7500<br/>\*[A fájl mérete attól függ](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 11-K – 110K (1375 / virtuális mag) |
+| IO-késés (becsült) | 5 – 10 ms | 1 – 2 ms |
+| Max. tempDB mérete | 192-1920 GB (24 GB / virtuális mag) | Határozza meg a maximális tárhelyméretet a példány |
 
 ## <a name="supported-regions"></a>Támogatott régiók
 

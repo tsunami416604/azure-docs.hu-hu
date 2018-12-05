@@ -3,7 +3,7 @@ title: Az elastic database ügyfélkódtár a hitelesítő adatok kezelése |} A
 description: A megfelelő szintű hitelesítő adatokat, a rendszergazdák csak olvasható, rugalmas adatbázis-alkalmazások beállítása
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 116afab3a4481511ed6e1e8420b4bfa783add3d7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 8f5de47e9d9c8cc50f77ddadfe9d781ef4c3bc96
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161233"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863822"
 ---
 # <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Az Elastic Database ügyfélkódtár eléréséhez használt hitelesítő adatokat
 A [Elastic Database-ügyfélkódtár](sql-database-elastic-database-client-library.md) három különböző típusú hitelesítő adatok segítségével fér hozzá a [szilánkleképezés-kezelővel](sql-database-elastic-scale-shard-map-management.md). Attól függően, szükség van a hitelesítő adatok használata a legalacsonyabb hozzáférési szintet, lehetséges.

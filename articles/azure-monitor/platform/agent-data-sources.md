@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 022dd52e05b9227e3ce0920a083f75413a2eebc8
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 29306fa508a2c0702e69f6b6ebcb7571041d57d6
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836916"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890262"
 ---
 # <a name="data-sources-in-log-analytics"></a>A Log Analytics adatforrások
 Log Analytics gyűjti az adatokat a csatlakoztatott források, és azt a Log Analytics-munkaterületen tárolja.  Az adatok az egyes gyűjtött határozza meg azokat az adatforrásokat, konfigurálhat.  A Log Analytics Data rekordkészletet van tárolva.  Minden adatforrás egy adott típusú rekordot hoz létre a saját tulajdonságkészlettel minden típus.
@@ -59,7 +59,7 @@ Az adatforrásokat kell konfigurálnia a **adatok** menü a Log Analytics **spec
 ## <a name="data-collection"></a>Adatgyűjtés
 Az adatforrások konfigurációját az ügynököknek a Log Analytics közvetlenül csatlakoztatott néhány percen belül lépnek.  A megadott adat az ügynöktől gyűjtött és kézbesítése közvetlenül a Log Analytics minden adatforráshoz adott időközönként.  Az egyes adatforrások ezen bírálattal dokumentációjában talál.
 
-A System Center Operations Manager-ügynökök a csatlakoztatott felügyeleti csoport az adatforrások konfigurációját fordítja, a felügyeleti csomagok és a felügyeleti csoport 5 percenként által szállított alapértelmezett.  Az ügynök letölti a felügyeleti csomagban, mint minden más, és a megadott adatokat gyűjti össze. Az adatforrástól függően az adatok lesznek, vagy elküldi a felügyeleti kiszolgálóra, amely továbbítja az adatokat a Log Analytics vagy az ügynök az adatokat küld a Log Analytics a felügyeleti kiszolgáló áthaladás nélkül. Lásd: [felügyeleti megoldások az Azure-beli adatok gyűjtemény adatait](../../azure-monitor/insights/solutions-inventory.md) részleteiről.  Itt olvashat részleteket összekapcsolása az Operations Manager és a Log Analytics és a gyakoriság módosítása, hogy a konfigurációs érkeznek [integráció konfigurálása a System Center Operations Managerrel](../../log-analytics/log-analytics-om-agents.md).
+A System Center Operations Manager-ügynökök a csatlakoztatott felügyeleti csoport az adatforrások konfigurációját fordítja, a felügyeleti csomagok és a felügyeleti csoport 5 percenként által szállított alapértelmezett.  Az ügynök letölti a felügyeleti csomagban, mint minden más, és a megadott adatokat gyűjti össze. Az adatforrástól függően az adatok lesznek, vagy elküldi a felügyeleti kiszolgálóra, amely továbbítja az adatokat a Log Analytics vagy az ügynök az adatokat küld a Log Analytics a felügyeleti kiszolgáló áthaladás nélkül. Lásd: [felügyeleti megoldások az Azure-beli adatok gyűjtemény adatait](../../azure-monitor/insights/solutions-inventory.md) részleteiről.  Itt olvashat részleteket összekapcsolása az Operations Manager és a Log Analytics és a gyakoriság módosítása, hogy a konfigurációs érkeznek [integráció konfigurálása a System Center Operations Managerrel](../../azure-monitor/platform/om-agents.md).
 
 Ha az ügynök nem tud kapcsolódni a Log Analytics vagy az Operations Manager, továbbra is azt fog nyújtani, amikor kapcsolatot létesít, adatok gyűjtésére.  Ha az adatok mennyisége eléri a gyorsítótár maximális mérete az ügyfél, vagy ha az ügynök nem tud 24 órán belül kapcsolatot létesíteni a adat elveszhet.
 

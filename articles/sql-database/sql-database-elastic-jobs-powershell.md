@@ -3,7 +3,7 @@ title: PowerShell-lel a rugalmas feladatok létrehozása és kezelése |} A Micr
 description: PowerShell az Azure SQL Database-készletek kezelésére használja
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: pwershell
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 9ed5026211bec11b510d095decac25f8d4b8a52a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 487ffef25726c9905fd5b34b28fe11c553e32e12
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243197"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871778"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>PowerShell (előzetes verzió) használatával az SQL Database rugalmas feladatok létrehozása és kezelése
 

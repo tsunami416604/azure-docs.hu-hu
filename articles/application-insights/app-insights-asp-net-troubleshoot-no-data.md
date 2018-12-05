@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: cc255d69a9a8b63ee65fb5dfcfe3879e68844a01
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 68a2f11692a4a1bc0ccf62012dda4d2e57c9894f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679562"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868633"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Adathiány hibaelhárítása – Application Insights .NET-hez
 ## <a name="some-of-my-telemetry-is-missing"></a>Láthatók a telemetriai adatok némelyike hiányzik
@@ -140,7 +140,7 @@ Javítás:
     
     ![](./media/app-insights-asp-net-troubleshoot-no-data/ikey-check.png)
 * Az a [Microsoft Azure irányítópult](https://portal.azure.com), tekintse meg a Service Health-leképezés. Ha egyes riasztási jelzések, várjon, amíg azok OK vissza majd zárja be és nyissa meg ismét az Application Insights-alkalmazás paneljén.
-* Ellenőrizze azt is [állapot blogunkat](https://blogs.msdn.com/b/applicationinsights-status/).
+* Ellenőrizze azt is [állapot blogunkat](https://blogs.msdn.microsoft.com/servicemap-status/).
 * Felelt meg a kód írása a [kiszolgálóoldali SDK](app-insights-api-custom-events-metrics.md) , előfordulhat, hogy módosítsa a kialakítási kulcsot az `TelemetryClient` példányok vagy a `TelemetryContext`? Adta meg írni vagy egy [szűrő vagy mintavételi konfiguráció](app-insights-api-filtering-sampling.md) előfordulhat, hogy szűrése, amely túl sok ki?
 * Ha szerkesztette az applicationinsights.config fájlt, gondosan ellenőrizze konfigurációját [TelemetryInitializers és TelemetryProcessors](app-insights-api-filtering-sampling.md). Egy nem megfelelően nevű típus vagy paraméter okozhat adatot nem küld az SDK-t.
 

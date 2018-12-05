@@ -1,21 +1,19 @@
 ---
-title: Kiszolgálóoldali JavaScript programozása az Azure Cosmos DB |} A Microsoft Docs
+title: Az Azure Cosmos DB kiszolgálóoldali JavaScript programozása
 description: Ismerje meg, hogyan lehet Azure Cosmos DB segítségével tárolt eljárások, adatbázis-eseményindítók és felhasználó által definiált függvények (UDF-EK) írását a JavaScript. Adatbázis olyan programozási tippek és egyéb beolvasása.
 keywords: Adatbázis-eseményindítók, tárolt eljárás, a tárolt eljárás, adatbázis program, sproc, azure, Microsoft azure
 services: cosmos-db
 author: aliuy
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 8452f84c1358c410cd0431416a5b65a88a8b903e
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: ea6bad6c6711240b8a5a0c57813a69b7c109c9c0
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817104"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878291"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Az Azure Cosmos DB kiszolgálóoldali programozása: tárolt eljárások, adatbázis-eseményindítók és felhasználói függvények
 
@@ -733,7 +731,7 @@ Document createdItem = await client.CreateDocumentAsync(UriFactory.CreateDocumen
     });
 ```
 
-A következő példa bemutatja, hogyan hozhat létre egy felhasználói függvény (UDF), és használhatja, és egy [SQL-lekérdezés](sql-api-sql-query.md).
+A következő példa bemutatja, hogyan hozhat létre egy felhasználói függvény (UDF), és használhatja, és egy [SQL-lekérdezés](how-to-sql-query.md).
 
 ```javascript
 UserDefinedFunction function = new UserDefinedFunction()

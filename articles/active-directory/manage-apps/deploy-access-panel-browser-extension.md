@@ -15,12 +15,12 @@ ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a21a21f40e731e8bc1d20e01d3671c372df65d84
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: be3950d199b4362caa5fcd3f66b948802cfa1c49
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622040"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877476"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>A hozzáférési Panel bővítmény telepítése csoportházirend használatával az Internet Explorer
 Ez az oktatóanyag bemutatja, hogyan csoportházirend használatával távolról telepíteni a felhasználók gépein az Internet Explorer a hozzáférési Panel bővítményt. A bővítmény szükséges az Internet Explorer-felhasználók, akik alkalmazásokat használatával vannak konfigurálva, be kell jelentkeznie az [jelszóalapú egyszeri bejelentkezés](what-is-single-sign-on.md#password-based-sso).
@@ -54,7 +54,7 @@ Először be kell jelölnie a a telepítőcsomag a gépek távolról telepíteni
 1. Jelentkezzen be a kiszolgálóra, amelyen az Active Directory Domain Services (AD DS) telepítése.
 2. Nyissa meg a Server Manager **eszközök** > **csoportházirend-kezelő**.
    
-    ![Lépjen a Tools > szabályzat Managment csoport](./media/deploy-access-panel-browser-extension/tools-gpm.png)
+    ![Lépjen a Tools > csoportházirend-kezelés](./media/deploy-access-panel-browser-extension/tools-gpm.png)
 3. A bal oldali panelen, a **Csoportházirend kezelése** ablakban megtekintheti a szervezeti egység (OU) hierarchiában, és határozza meg, melyik hatókörben alkalmazza a csoportházirendet szeretne. Például dönthet úgy, hogy válasszon ki egy kis OU tesztelési néhány felhasználó számára üzembe, vagy előfordulhat, hogy válasszon ki egy legfelső szintű szervezeti Egységhez, az egész vállalattal való üzembe helyezéséhez.
    
    > [!NOTE]

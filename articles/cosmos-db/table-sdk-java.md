@@ -1,10 +1,8 @@
 ---
-title: Az Azure Cosmos DB Table API-val Java |} A Microsoft Docs
+title: A Javához készült Azure Cosmos DB tábla API
 description: Mindent megtudhat az Azure Cosmos DB Table API többek között a kiadási dátum, használatból való kivonást egyaránt dátumok és minden verzió között végrehajtott módosítások.
 services: cosmos-db
 author: yarong
-manager: kfile
-editor: ''
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: java
@@ -12,12 +10,12 @@ ms.topic: reference
 ms.date: 11/20/2017
 ms.author: yaronyg
 ms.custom: ''
-ms.openlocfilehash: 3bb4a433b06deff27ce80ab1fb631efde29a3f83
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 67d4da0a57e38863cc73faab1e3ed8d4b271ceb3
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465576"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864162"
 ---
 # <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>Az Azure Cosmos DB Table API a Javához készült: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 24fecd73876228b3665cde21ae312963ec979df6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 5ef7ddc068fea7703dad67b80b96c292bfd26943
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279722"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870707"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Szkriptműveletek használatával Linux-alapú HDInsight-fürtök testre szabása
 
@@ -111,7 +111,7 @@ A következő ábra szemlélteti a parancsprogram-művelet végrehajtásakor a l
 A szkript futtatása, amíg megtörténik a HDInsight konfigurálása folyamatban van. A parancsfájl a megadott csomópontok a fürtben párhuzamosan fut, és a csomópontok gyökérszintű jogosultságokkal futtatja.
 
 > [!NOTE]
-> Például a szolgáltatások, beleértve a Hadoop-hez kapcsolódó szolgáltatások indítása és leállítása műveleteket hajthat végre. Ha leállítja a szolgáltatások, biztosítania kell, hogy az Ambari szolgáltatás és más Hadoop-hez kapcsolódó szolgáltatások, mielőtt a parancsfájl futtatása befejeződik. Ezek a szolgáltatások állapotának és a fürt állapotának sikeresen meghatározása, létrehozása közben van szükség.
+> Például a szolgáltatások, többek között az Apache Hadoop-hez kapcsolódó szolgáltatások indítása és leállítása műveleteket hajthat végre. Ha leállítja a szolgáltatások, biztosítania kell, hogy az Ambari szolgáltatás és más Hadoop-hez kapcsolódó szolgáltatások, mielőtt a parancsfájl futtatása befejeződik. Ezek a szolgáltatások állapotának és a fürt állapotának sikeresen meghatározása, létrehozása közben van szükség.
 
 
 Fürt létrehozása során egyszerre több parancsprogram-művelet is használja. Ezeket a parancsfájlokat a megadott is sorrendben kerül meghívásra.
@@ -168,7 +168,7 @@ Ez a szakasz példákat használhatja a Parancsfájlműveletek egy HDInsight-fü
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>Használjon szkriptműveletet az Azure Portalról a fürt létrehozásakor
 
-1. Indítsa el a fürt létrehozása ismertetett módon [Hadoop-fürtök létrehozása a HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Fürt létrehozása során, érkezik egy __fürt összegzése__ lapot. Az a __fürt összegzése__ lapon válassza ki a __szerkesztése__ hozzárendeli a __speciális beállítások__.
+1. Indítsa el a fürt létrehozása ismertetett módon [Apache Hadoop-fürtök létrehozása a HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Fürt létrehozása során, érkezik egy __fürt összegzése__ lapot. Az a __fürt összegzése__ lapon válassza ki a __szerkesztése__ hozzárendeli a __speciális beállítások__.
 
     ![Speciális beállítások hivatkozása](./media/hdinsight-hadoop-customize-cluster-linux/advanced-settings-link.png)
 
@@ -402,11 +402,11 @@ A .NET SDK használatával parancsfájl előzményeinek lekérése a fürt egy p
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>A HDInsight-fürtökön használt nyílt forráskódú szoftverek támogatása
 
-A Microsoft Azure HDInsight szolgáltatást használ az ökoszisztéma formátumú körül Hadoop nyílt forráskódú technológiák. A Microsoft Azure nyílt forráskódú technológiák egy általános szintű támogatást biztosít. További információkért lásd: a **támogatás hatóköre** szakaszában a [Azure támogatás – gyakori kérdések webhely](https://azure.microsoft.com/support/faq/). A HDInsight szolgáltatás egy további szintű támogatást biztosít a beépített összetevők.
+A Microsoft Azure HDInsight szolgáltatást használ az ökoszisztéma formátumú körül Apache Hadoop nyílt forráskódú technológiák. A Microsoft Azure nyílt forráskódú technológiák egy általános szintű támogatást biztosít. További információkért lásd: a **támogatás hatóköre** szakaszában a [Azure támogatás – gyakori kérdések webhely](https://azure.microsoft.com/support/faq/). A HDInsight szolgáltatás egy további szintű támogatást biztosít a beépített összetevők.
 
 A HDInsight szolgáltatásban elérhető nyílt forráskódú összetevőket két típusa van:
 
-* **Beépített összetevők** – ezek az összetevők a HDInsight-fürtök előre telepítve vannak, és adja meg a fürt fő funkciói. Ha például YARN ResourceManager, a Hive-lekérdezés nyelv (HiveQL) és a Mahout kódtár tartoznak ebbe a kategóriába. Kiszolgálófürt-összetevők teljes listája megtalálható [a HDInsight által biztosított Hadoop-fürtverziók újdonságai](hdinsight-component-versioning.md).
+* **Beépített összetevők** – ezek az összetevők a HDInsight-fürtök előre telepítve vannak, és adja meg a fürt fő funkciói. Például [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) ResourceManager, a Hive lekérdezési nyelvet ([HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)), és a [Apache Mahout](https://mahout.apache.org/) könyvtár ebbe a kategóriába tartozik. Kiszolgálófürt-összetevők teljes listája megtalálható [a HDInsight által biztosított Hadoop-fürtverziók újdonságai](hdinsight-component-versioning.md).
 * **Egyéni összetevők** -, a fürt felhasználói telepítése vagy használata az alkalmazások és szolgáltatások valamelyik összetevő a Közösségben elérhető vagy Ön által létrehozott.
 
 > [!WARNING]
@@ -426,7 +426,7 @@ A HDInsight szolgáltatás használatához az egyéni összetevők több módot 
 
 Az Ambari webes felhasználói felület segítségével szkriptműveletek által naplózott adatok megtekintéséhez. Ha a parancsfájl futása sikertelen, a fürt létrehozásakor, a naplók is elérhetők a fürthöz társított alapértelmezett tárfiókban. Ez a szakasz információt nyújt az mindkét ezek a beállítások használatával a naplók begyűjtéséről.
 
-### <a name="using-the-ambari-web-ui"></a>Az Ambari webes Felülettel
+### <a name="using-the-apache-ambari-web-ui"></a>Az Apache Ambari webes Felülettel
 
 1. A böngészőjében lépjen a https://CLUSTERNAME.azurehdinsight.net helyre. CLUSTERNAME cserélje le a HDInsight-fürt nevére.
 
@@ -513,8 +513,8 @@ Ez alól két kivétel van:
 ## <a name="next-steps"></a>További lépések
 
 * [Parancsfájl művelet-parancsfájlok fejlesztése a HDInsight](hdinsight-hadoop-script-actions-linux.md)
-* [Soir telepítése és használata HDInsight-fürtökön](hdinsight-hadoop-solr-install-linux.md)
-* [Giraph telepítése és használata HDInsight-fürtökön](hdinsight-hadoop-giraph-install-linux.md)
+* [Telepítse és Apache Solr használata a HDInsight-fürtökön](hdinsight-hadoop-solr-install-linux.md)
+* [Telepítse, és az Apache Giraph használata a HDInsight-fürtökön](hdinsight-hadoop-giraph-install-linux.md)
 * [Adjon hozzá további tárterületet HDInsight-fürthöz](hdinsight-hadoop-add-storage.md)
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "Fürt létrehozása során szakaszai"

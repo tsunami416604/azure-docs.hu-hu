@@ -9,13 +9,13 @@ ms.author: cforbe
 author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 09/24/2018
-ms.openlocfilehash: 988301f24f710a3e29fad1254d405501166e8a4e
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.date: 12/04/2018
+ms.openlocfilehash: 652392f869ed3c064e7a3899b74848e223ee6472
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309793"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52880233"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Adatok átalakítása a az Azure Machine Learning Data Prep SDK segítségével
 
@@ -216,16 +216,16 @@ builder.preview(skip=30)
 
 ||DATE|date_timerange|
 |-----|-----|-----|
-|30|11/1/2015 22:54|2015. január 1-én ESTE 10 – 12 óra|
-|31|11/1/2015 23:54|2015. január 1-én ESTE 10 – 12 óra|
-|32|11/1/2015 23:59|2015. január 1-én ESTE 10 – 12 óra|
-|33|11/2/2015 0:54|2015. február 1-én 12 AM - 2 AM|
-|34|11/2/2015 1:00|2015. február 1-én 12 AM - 2 AM|
-|35|11/2/2015 1:54|2015. február 1-én 12 AM - 2 AM|
-|36|11/2/2015 2:54|2015. február 1-2 AM - 4 AM|
-|37|11/2/2015 3:54|2015. február 1-2 AM - 4 AM|
-|38|11/2/2015 4:00|2015. február 1-4 AM – 6: 00|
-|39|11/2/2015 4:54|2015. február 1-4 AM – 6: 00|
+|30|1/1/2015 22:54|2015. január 1-én ESTE 10 – 12 óra|
+|31|1/1/2015 23:54|2015. január 1-én ESTE 10 – 12 óra|
+|32|1/1/2015 23:59|2015. január 1-én ESTE 10 – 12 óra|
+|33|1/2/2015 0:54|2015. február 1-én 12 AM - 2 AM|
+|34|1/2/2015 1:00|2015. február 1-én 12 AM - 2 AM|
+|35|1/2/2015 1:54|2015. február 1-én 12 AM - 2 AM|
+|36|1/2/2015 2:54|2015. február 1-2 AM - 4 AM|
+|37|1/2/2015 3:54|2015. február 1-2 AM - 4 AM|
+|38|1/2/2015 4:00|2015. február 1-4 AM – 6: 00|
+|39|1/2/2015 4:54|2015. február 1-4 AM – 6: 00|
 
 Itt láthatja a létrehozott program problémáját. A származtatása program elemezni a dátum szerint "Nap/hó/év", azaz nem választható ebben az esetben kizárólag a fent megadott egy példa alapján, választotta. A probléma megoldásához adjon meg egy másik példa használatával a `add_example()` működnek a `builder` változó.
 

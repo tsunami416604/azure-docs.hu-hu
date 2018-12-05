@@ -9,13 +9,13 @@ ms.reviewer: douglasl
 ms.service: database-migration
 ms.workload: data-services
 ms.topic: article
-ms.date: 10/19/2018
-ms.openlocfilehash: 2003b90f95c8c139bf5b3526ed8d3994ee08efd9
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.date: 12/04/2018
+ms.openlocfilehash: ce13607e795710ebc7b0020a0025bd207327f1d2
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444477"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878754"
 ---
 # <a name="what-is-the-azure-database-migration-service"></a>Mi az az Azure Database Migration Service?
 Az Azure Database Migration Service egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a zökkenőmentes migrálást a több adatbázis-forrásokhoz, az Azure data platformokra minimális állásidővel (online áttelepítések).
@@ -24,7 +24,7 @@ Az Azure Database Migration Service egy teljes körűen felügyelt szolgáltatá
 Az Azure Database Migration Service integrálható a meglévő eszközök és szolgáltatások működésének néhány. Ügyfelek biztosít egy átfogó, magas rendelkezésre állású megoldás. A szolgáltatás által használt a [Data Migration Assistant](https://aka.ms/dma) , amely végigvezeti a szükséges áttelepítés előtt módosításokat javaslatokkal elemzéseket és jelentéseket létrehozni. Van arra, hogy minden szükséges szervizelés végrehajtása. Ha készen áll a migrálási folyamat megkezdésére, az Azure Database Migration Service végrehajtja az összes szükséges lépést. Indul el, és felejtse el a migrálási projektek, a biztonságot, tudván, hogy a folyamat kihasználja a Microsoft meghatározása szerint ajánlott eljárásokat.
 
 > [!NOTE]
-> Az Azure Database Migration Service egy online migrálás végrehajtásához használatához hozzon létre egy példányt az üzletileg kritikus (előzetes verzió) réteg díjszabása alapján.
+> Az Azure Database Migration Service egy online migrálás végrehajtásához használatához hozzon létre egy példányt (előzetes verzió) prémium tarifacsomag alapján.
 
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 

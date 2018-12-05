@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: yizhon
-ms.openlocfilehash: 078f6bcd7aa48f2a63118e6dfb625d9b2c69fbb3
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: ebe039c37eb42b0044fa0acf9361edc7e8cbb828
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248023"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879366"
 ---
 # <a name="azure-iot-sdks-platform-support"></a>Az Azure IoT SDK-k Eszközplatform-támogatás
 
@@ -20,7 +20,7 @@ A [Azure IoT SDK-k](iot-hub-devguide-sdks.md) kommunikáljon az IoT Hub és a sz
 
 A Microsoft támogatja az operációs rendszerek/platformok és keretrendszerek széles, és az Azure IoT C SDK-t is kiterjeszthető. Néhány hivatalosan által támogatott a csapat számíthatnak támogatás szintjét képviselő szinten vannak csoportosítva. *Teljes körűen támogatott platformok* azt jelenti, hogy a Microsoft:
 
-    * Folyamatosan épít, és teljes körű teszteket futtatja a master és a támogatott LTS verziót.
+    * Folyamatosan épít, és teljes körű teszteket futtatja a master és a támogatott LTS verziót.  Ahhoz, hogy a tesztelési lefedettségről különböző verzióin átívelő, általában teszteljük a legújabb LTS verzióját és a legnépszerűbb verzió szemben.  Egyéb verziói ugyanarra a platformra keresztül platform verziókompatibilitás támogathatók.
     * Telepítéssel kapcsolatos útmutató vagy csomagokat biztosít, ha van ilyen.
     * Teljes körűen támogatja a platformokhoz a Githubon.
 
@@ -31,7 +31,6 @@ Emellett az C SDK be további platformok rendelkezik ültették át a partnerek 
 * Windows CE 2013 (2018. október kivezetjük)
 * .NET standard 1.3 és 2.1-es verziója a .NET Core és a .NET-keretrendszer 4.7
 * Xamarin iOS, Android, az UWP
-* Java Android
 
 ## <a name="supported-platforms"></a>Támogatott platformok
 
@@ -83,6 +82,7 @@ Nincsenek támogatott számos platformon.
 |---------------------|------|--------------|
 | Ubuntu 16.04 LTS    | X64  | Java 8       |
 | Windows Server 2016 | X64  | Java 8       |
+| Android API 28 | X64  | Java 8       |
 
 ## <a name="partner-supported-platforms"></a>A partner támogatott platformok
 

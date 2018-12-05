@@ -1,5 +1,5 @@
 ---
-title: Az intelligens csoportok kezelése
+title: Intelligens csoportok kezelése
 description: A riasztási példányok létre intelligens csoportok kezelése
 author: anantr
 services: monitoring
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: d04684e7d4eed1b997ec803dc9ccc1dcc079bde0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 80d5d667b4edee579afed4a9eaa88996663497f4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959376"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879775"
 ---
-# <a name="manage-smart-groups"></a>Az intelligens csoportok kezelése
+# <a name="manage-smart-groups"></a>Intelligens csoportok kezelése
 [Csoportok intelligens](https://aka.ms/smart-groups) csoport együtt riasztások alapján közös előfordulás vagy a hasonló, gépi tanulási algoritmusok használata, hogy a felhasználó is intelligens csoportokat helyett minden riasztás kezelése külön-külön kellene kezelni. Ez a cikk végigvezeti elérése és intelligens csoportok használata az Azure monitorban.
 1.  Az intelligens csoportokat létrehozni a riasztási példányok megtekintéséhez lehetőségek közül választhat
      1. Kattintson a **intelligens csoportok** származó a **riasztások szerint** lap    

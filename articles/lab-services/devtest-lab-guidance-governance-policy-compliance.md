@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 016daa7ed57650a42b224df4e4173c7593893eb7
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 8165efaa10eb31410f00dfa9bfffb2c02d7396ae
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251120"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872329"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Irányítás az Azure DevTest Labs-infrastruktúra - vállalati házirend és megfelelőség
 Ez a cikk útmutatást nyújt szabályozó vállalati házirend és megfelelőség az Azure DevTest Labs-infrastruktúrához. 
@@ -42,10 +42,10 @@ Egy szervezet tervezése egy adattárba vagy több tárházak engedélyezése?
 ### <a name="answer"></a>Válasz
 A szervezet teljes irányítás és a konfiguráció-kezelési stratégia részeként azt javasoljuk, hogy egy központi tárházban használja. Több adattárak használata esetén a silók a nem felügyelt szoftver az idő függvényében előfordulhat, hogy válnak. Egy központi tárházban, a több csapat felhasználhatja az adattárból projektjeikhez tartozó összetevőket. Szabványügyi szervezet, a biztonság, a könnyű kezelés kikényszeríti, és kiküszöböli a párhuzamos erőfeszítések. A forrásadattárakból részeként a következő műveletek használata ajánlott eljárások a hosszú távú felügyeleti és népszerűsítését:
 
-- A Visual Studio Team Services társítása az azonos Azure Active Directory-bérlő az Azure-előfizetés által használt a hitelesítéshez és engedélyezéshez.
+- Az Azure-Adattárakkal társítása az azonos Azure Active Directory-bérlő az Azure-előfizetés által használt a hitelesítéshez és engedélyezéshez.
 - Hozzon létre egy csoportot nevű **DevTest Labs minden fejlesztő** az Azure Active Directoryban, amely központilag felügyelt. Minden fejlesztő, aki összetevő fejlesztési hozzájárul az ebbe a csoportba kell elhelyezni.
-- Az azonos Azure Active Directory-csoport hozzáférést biztosít a Visual Studio Team Services-tárházban, és a tesztkörnyezet a használható.
-- A Visual Studio Team Servicesben elágaztatás vagy elágaztatási használandó külön egy a-development tárházhoz az elsődleges éles adattárból. Tartalom csak hozzáadódik a főágba irányuló lekéréses kérelmet a megfelelő kód áttekintése után. A kód a felülvizsgáló jóváhagyja a módosítást, miután érdeklődő fejlesztő, aki felelős karbantartása a master ággal, egyesíti a frissített kóddal. 
+- Az azonos Azure Active Directory-csoport hozzáférést biztosít az Azure-Adattárakkal adattárba, és a labor létrehozása a használható.
+- Az Azure-Adattárakkal Elágaztatás és elágaztatási használandó külön egy a-development tárházhoz az elsődleges éles adattárból. Tartalom csak hozzáadódik a főágba irányuló lekéréses kérelmet a megfelelő kód áttekintése után. A kód a felülvizsgáló jóváhagyja a módosítást, miután érdeklődő fejlesztő, aki felelős karbantartása a master ággal, egyesíti a frissített kóddal. 
 
 ## <a name="corporate-security-policies"></a>Vállalati biztonsági szabályzatok
 

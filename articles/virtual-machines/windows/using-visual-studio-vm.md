@@ -17,12 +17,12 @@ ms.prod: vs-devops-alm
 ms.date: 09/12/2018
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 6861eb54b0f9ccaa0bfaa7b514e9bb3861160fdd
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 610b3111b8b84f42327f39ac17285ba7fef0d719
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165619"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869211"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure Visual Studio-rendszerképek
 A Visual Studio használatával egy előre konfigurált Azure virtuális gépen (VM) módja a gyors és egyszerű nyissa meg a művelet egy felfelé és a futó fejlesztési környezetben. Visual Studio különböző konfigurációival rendszerképek érhetők el a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1).
@@ -32,15 +32,16 @@ Most ismerkedik az Azure-ral? [Ingyenes Azure-fiók létrehozása](https://azure
 ## <a name="what-configurations-and-versions-are-available"></a>Mely konfigurációkat és verziói érhetők el?
 A legutóbbi főbb verziók, Visual Studio 2017-et és a Visual Studio 2015-öt, a lemezképek az Azure Marketplace-en található. Minden főbb verzióhoz megjelenik a eredetileg kiadott (RTW) verziója és a legújabb frissített verzióit. Ezek a fájlok mindegyike kínál a Visual Studio Enterprise és a Visual Studio Community kiadása. Ezek a lemezképek legalább havonta frissül a legújabb Visual Studio és a Windows-frissítéseket tartalmaznak. A rendszerképek nevei változatlanok maradnak, amíg minden Képleírás tartalmazza a telepített verzió és a kép "megfelelő".
 
-| Verzió                                              | Kiadás                     |     Termék verziószáma     |
-|:------------------------------------------------------------:|:----------------------------:|:-----------------------:|
-| A Visual Studio 2017: Legújabb (15.9 verzió)                    |    Vállalati, Közösség     |      Verzió 15.9.0     |
-|         Visual Studio 2017: RTW                              |    Vállalati, Közösség     |      Verzió 15.0.18    |
-|   Visual Studio 2015: Legújabb (3. frissítés)                      |    Vállalati, Közösség     |  Verzió 14.0.25431.01  |
-|         Visual Studio 2015: RTW                              |             None             | (Karbantartási lejárt) |
+| Verzió                                              | Kiadás                     |     Termék verziószáma      |
+|:------------------------------------------------------------:|:----------------------------:|:------------------------:|
+|   A Visual Studio 2019: Előzetes (Preview 1)                   |           Enterprise         | 1. verzió 16.0.0 előzetes |
+| A Visual Studio 2017: Legújabb (15.9 verzió)                    |    Vállalati, Közösség     |       Verzió 15.9.0     |
+|         Visual Studio 2017: RTW                              |    Vállalati, Közösség     |      Verzió 15.0.18     |
+|   Visual Studio 2015: Legújabb (3. frissítés)                      |    Vállalati, Közösség     |  Verzió 14.0.25431.01   |
+|         Visual Studio 2015: RTW                              |             None             | (Karbantartási lejárt)  |
 
 > [!NOTE]
-> Fogja a providerhez kiadott Microsoft karbantartási szabályzat a Visual Studio 2015 (RTW) eredetileg kiadott verzióját karbantartási érvényessége lejárt. A Visual Studio 2015 Update 3 az egyetlen fennmaradó verzió érhető el a Visual Studio 2015-öt termék sor.  Is a Visual Studio 2017 15.9 kiadott verzió, mivel azt a "legújabb előzetes verzió" képek, amely tartalmazza az előzetes verziójú 15.9 már megszűnt.
+> Fogja a providerhez kiadott Microsoft karbantartási szabályzat a Visual Studio 2015 (RTW) eredetileg kiadott verzióját karbantartási érvényessége lejárt. A Visual Studio 2015 Update 3 az egyetlen fennmaradó verzió érhető el a Visual Studio 2015-öt termék sor.
 
 További információkért lásd: a [Visual Studio karbantartási szabályzat](https://www.visualstudio.com/productinfo/vs-servicing-vs).
 

@@ -15,12 +15,12 @@ ms.date: 07/28/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 2321ccf115e3b517bdc593c0c428c61d5dd90968
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 28837436ee4336dd7fa2b3e66402257d1e1263b9
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39367089"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889786"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Hálózati topológia szempontjai Azure Active Directory Application Proxy használatával
 
@@ -40,7 +40,7 @@ Amikor egy alkalmazás közzé van téve az Azure AD-alkalmazásproxyn keresztü
 
 Feliratkozás az Azure AD-bérlővel, az ország, adja meg a bérlő a régió határozza meg. Ha engedélyezi az alkalmazásproxyt, az alkalmazásproxy szolgáltatás példányainak a bérlő számára választott vagy és az Azure AD-bérlője ugyanabban a régióban, vagy az ahhoz legközelebbi régióban létrehozott.
 
-Például ha az Azure AD-bérlő régió az Európai Unió (EU), az alkalmazásproxy-összekötők használata szolgáltatáspéldányok az EU-ban üzemelő Azure-adatközpontokban. Amikor a felhasználók hozzáférjenek a közzétett alkalmazásokhoz, hogy a forgalmat végighalad az alkalmazásproxy-szolgáltatás példányainak ezen a helyen.
+Például ha az Azure AD-bérlő ország vagy régió az Egyesült Királyság, az alkalmazásproxy-összekötők használata szolgáltatáspéldányok EU adatközpontokban. Amikor a felhasználók hozzáférjenek a közzétett alkalmazásokhoz, hogy a forgalmat végighalad az alkalmazásproxy-szolgáltatás példányainak ezen a helyen.
 
 ## <a name="considerations-for-reducing-latency"></a>Csökkenti a késéseket szempontjai
 

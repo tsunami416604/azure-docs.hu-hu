@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/1/2017
 ms.author: dekapur
-ms.openlocfilehash: aabdae370c28f8fa633372be4505c00c25254408
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 48c0fa778b3af3af3595b562b3798dd2c23729e3
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403250"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888409"
 ---
 # <a name="monitor-containers-with-log-analytics"></a>Tárolók figyelése a Log Analytics használatával
  
 Ez a cikk ismerteti a tároló-események megtekintése az Azure Log Analytics-tároló monitorozására szolgáló megoldás beállításához szükséges lépéseket. A fürt beállításához a tároló eseménygyűjtési, ez látható [részletes oktatóanyag](service-fabric-tutorial-monitoring-wincontainers.md). 
 
-[!INCLUDE [log-analytics-agent-note.md](../../includes/log-analytics-agent-note.md)]
+[!INCLUDE [log-analytics-agent-note.md](../../includes/log-analytics-agent-note.md)]
 
 ## <a name="set-up-the-container-monitoring-solution"></a>A tároló monitorozására szolgáló megoldás beállítása
 
@@ -53,7 +53,7 @@ Az ügynök lehetővé teszi, hogy a gyűjtemény több tároló-specifikus napl
 
 
 ## <a name="next-steps"></a>További lépések
-* Tudjon meg többet [Log Analytics tárolómegoldások](../log-analytics/log-analytics-containers.md).
+* Tudjon meg többet [Log Analytics tárolómegoldások](../azure-monitor/insights/containers.md).
 * További információ a Service Fabric - tárolóvezénylés [Service Fabric és a tárolók](service-fabric-containers-overview.md)
 * Ismerkedjen meg a [naplókeresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkciók a Log Analytics részeként érhető el
 * Konfigurálja a Log Analytics beállítása [automatizált riasztások](../log-analytics/log-analytics-alerts.md) , ezzel elősegítve az észlelést és a diagnosztikát szabályok

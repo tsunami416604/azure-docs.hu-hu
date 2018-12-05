@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 9f7659dadb4c710169ec1e700d31e60cbc957ac1
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: eddeb251bac3cc0d02573c4c0b3047a2eafd8237
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855983"
+ms.locfileid: "52865116"
 ---
 # <a name="quickstart-create-and-share-a-notebook"></a>Gyors útmutató: Létrehozása, és a egy jegyzetfüzetet megosztása
 
@@ -97,11 +97,11 @@ ms.locfileid: "52855983"
 
 ## <a name="share-the-notebook"></a>A notebook megosztása
 
-1. Szeretne megosztani a jegyzetfüzet, váltson vissza a projekt lapját a szükség esetén, kattintson a jobb gombbal a jegyzetfüzet-fájlt, jelölje ki **hivatkozás másolása** (billentyűparancs: y), és illessze be a hivatkozás egy megfelelő üzenet (e-mail, azonnali üzenetek stb.).
+Szeretne megosztani a jegyzetfüzet, váltson vissza a projekt lapját a szükség esetén, kattintson a jobb gombbal a jegyzetfüzet-fájlt, jelölje ki **hivatkozás másolása** (billentyűparancs: y), és illessze be a hivatkozás egy megfelelő üzenet (e-mail, azonnali üzenetek stb.).
 
-    A projekt oldalon is használhatja a **megosztás** menüre, és szerezzen be egy hivatkozást, létrehozhat egy e-mailt a hivatkozás, vagy a HTML- és Markdown-beágyazási kódot:
+A projekt oldalon is használhatja a **megosztás** menüre, és szerezzen be egy hivatkozást, létrehozhat egy e-mailt a hivatkozás, vagy a HTML- és Markdown-beágyazási kódot:
 
-    ![Projekt megosztás parancs](media/quickstarts/share-project-command.png)
+![Projekt megosztás parancs](media/quickstarts/share-project-command.png)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,25 +1,24 @@
 ---
-title: Az Azure Cosmos DB nosql-alapú áttelepítés és az alkalmazás fejlesztői-partnerek |} A Microsoft Docs
+title: Az Azure Cosmos DB nosql-alapú áttelepítés és az alkalmazás fejlesztői-partnerek
 description: Migrálási megoldásokkal, amelyek támogatják az Azure Cosmos DB a Microsoft-partnerek listája.
 services: cosmos-db
 author: SnehaGunda
 ms.author: sngun
-manager: kfile
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/07/2018
-ms.openlocfilehash: 1e52c6eb96b98db76628a3a77ce1ef95bd58f837
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: ba4b47cb3b88400c6257d7711c93f2e4eb2628fd
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48871610"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864707"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Az Azure Cosmos DB nosql-alapú áttelepítés és az alkalmazás fejlesztői-partnerek
 
 A nosql-alapú áttelepítés alkalmazásfejlesztés közül választhat különböző rendszerintegrátor partnereink tapasztalt rendszerek és eszközök támogatásához az Azure Cosmos DB-megoldások. 
 
-## <a name="migration-tools"></a>Áttelepítési eszközök
+## <a name="migration-tools"></a>Migrálási eszközök
 
 |**Partner**  |**Képességek és tapasztalatok**  |**Támogatott országok**  |**Contact**  |
 |---------|---------|---------|---------|

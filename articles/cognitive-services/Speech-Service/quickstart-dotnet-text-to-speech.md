@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: erhopf
-ms.openlocfilehash: 4f424e73fbe1f05155e7f051d90dd72d57405adf
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: d3fbe3f566ca25d94496b3a89a9488ae52e96c42
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52641585"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890602"
 ---
 # <a name="quickstart-convert-text-to-speech-using-net-core"></a>Gyors útmutató: Konvertálása szöveg-hang transzformációs .NET Core használatával
 
@@ -193,7 +193,6 @@ using (var client = new HttpClient())
         // Update your resource name
         request.Headers.Add("User-Agent", "YOUR_RESOURCE_NAME");
         request.Headers.Add("X-Microsoft-OutputFormat", "riff-24khz-16bit-mono-pcm");
-        request.Headers.Add("Connection", "Keep-Alive");
         // Create a request
         Console.WriteLine("Calling the TTS service. Please wait... \n");
         using (var response = await client.SendAsync(request).ConfigureAwait(false))
@@ -237,4 +236,5 @@ Ha nem változtatható módon adta meg az előfizetői azonosítót a programban
 
 ## <a name="see-also"></a>Lásd még
 
-* [Oktatóanyag: Ismeri fel a Speech-leképezések](how-to-recognize-intents-from-speech-csharp.md)
+* [Egyéni hangtípust létrehozása](how-to-customize-voice-font.md)
+* [Hozzon létre egy egyéni beszédfelismerési rekord hangalapú minták](record-custom-voice-samples.md)

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 28bdbcbbfa014495feb394bde78a197b274f07d9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 46e05ef45cca5accd6af817a06b63861c41aa2b3
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844175"
+ms.locfileid: "52869585"
 documentType: LandingData
 title: Felügyelt Azure SQL Database-példány
 metadata:
@@ -123,7 +123,6 @@ sections:
     - html: Győződjön meg arról, hogy az adatbázis áttelepíthető-e használatával <a href="https://www.microsoft.com/download/details.aspx?id=53595">adatok áttelepítési Asisstant</a> vagy <a href="https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/">adatbázis Kísérletezési Segéd</a>.
     - html: Felügyelt példány használatával az adatbázisok életre <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">natív visszaállítási</a> vagy <a href="/azure/dms/tutorial-sql-server-managed-instance-online">Data Migration Service</a>.
     - html: Helyezze át az SSIS-csomagokat a <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure Data Factory</a>, SSAS táblázatos modellek <a href="https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/">Azure Analysis Service</a>, és a jelentéseket az SSRS <a href="https://docs.microsoft.com/business-applications-release-notes/april18/power-bi/service/sql-server-reporting-services-ssrs-reports-power-bi-premium">Power bi Premium</a>.
-    - html: Optimalizálja a tárhely <a href="https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/">általános célú csomagban</a>.
     - html: Keresse meg az ajánlott eljárásokat és javaslatokat <a href="https://www.youtube.com/watch?v=vO6k05Ox1iI">biztonságossá tétele a-példány</a>.
     - html: Terjesztheti az adatait az <a href="/azure/sql-database/replication-with-sql-database-managed-instance">tranzakciós replikáció</a>.
 - title: Leírások

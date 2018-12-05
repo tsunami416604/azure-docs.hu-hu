@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 62c89861d784931b2a13297abac578010e0fea5f
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 61ec9d0639f4bee950be69ee951492974ac95c64
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251036"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867474"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>Koordinálhatja az Azure DevTest Labs megvalósítása
 Ebben a cikkben javasolt módszert biztosít a gyors üzembe helyezési és az Azure DevTest Labs megvalósítását. Az alábbi képen területdiagram általános eljárásait, előírásszerű útmutató a különböző iparági követelményeknek és forgatókönyveknek támogató rugalmasságot szem előtt tartásával.
@@ -46,7 +46,7 @@ Miután a hálózati topológia van beállítva, az első/próbaüzem tesztlabor
 2. Engedélyezett Virtuálisgép-rendszerképek és a tesztkörnyezet segítségével méretek határozzák meg. Döntse el, hogy egyéni rendszerképek is feltölthetők az Azure-bA a DevTest Labs segítségével.
 3. Biztonságos hozzáférés a labor létrehozása a kezdeti szerepkör alap hozzáférés vezérlők (RBAC) a tesztkörnyezethez (labortulajdonosok és -labor felhasználók) létrehozásával. Azt javasoljuk, hogy használjon szinkronizált active directory-fiókokat az Azure Active Directory identity a DevTest Labs szolgáltatással.
 4. DevTest Labs használandó ütemezéseket, a költség, felügyeleti, igényelhető virtuális gépek, egyéni rendszerképek és képletek például szabályzatok konfigurálása.
-5. Létesítsen egy online adattárban, például a VSTS és Git.
+5. Az online tárházban például az Azure Adattárakkal/Git létesíteni.
 6. Döntse el, a nyilvános vagy privát adattárak vagy mindkettőt. JSON-sablonok rendszerezésére központi telepítések és a hosszú távú sustainment.
 7. Ha szükséges, egyéni összetevők létrehozása. Ez a lépés nem kötelező. 
 

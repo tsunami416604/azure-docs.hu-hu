@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: aab867e5c58ba9de17b3c68c8e507fca5354eb90
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 31ea45eba9d15240fc82828b8010ecd1fe0f82bd
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093441"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890517"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for postgresql-hez tarifacsomagok
 
@@ -23,7 +23,7 @@ Létrehozhat egy Azure Database for PostgreSQL-kiszolgáló három különböző
 |    | **Basic** | **Általános célú** | **Memóriahasználatra optimalizált** |
 |:---|:----------|:--------------------|:---------------------|
 | Számítási generáció | A gen 4, 5 általános | A gen 4, 5 általános | Gen 5 |
-| Virtuális magok | 1, 2 | 2, 4, 8, 16 és 32 |2, 4, 8, 16 |
+| Virtuális magok | 1, 2 | 2, 4, 8, 16, 32 vagy 64 |2, 4, 8, 16 és 32 |
 | Memória / virtuális mag | 2 GB | 5 GB | 10 GB |
 | Tároló mérete | 5 GB – 1 TB | 5 GB-tól 4 TB-ig | 5 GB-tól 4 TB-ig |
 | Tárolási típus | Az Azure standard szintű Storage | Azure Premium Storage | Azure Premium Storage |

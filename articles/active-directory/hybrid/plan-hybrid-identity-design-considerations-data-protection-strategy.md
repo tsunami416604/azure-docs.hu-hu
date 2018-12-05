@@ -16,12 +16,12 @@ ms.date: 11/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 9f02c6779b3561f6eea57512ecb27dd2fd451d90
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 20782679a4e73c029d6c83fd3bc57914b4d28691
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238148"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865046"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Adja meg a hibrid identitáskezelési megoldás az adatvédelmi stratégiát?
 Ebben a feladatban az adatvédelmi stratégiát a hibrid identitáskezelési megoldás az üzleti szükségletek kielégítése céljából, amelyet a megadott fogja definiálni:
@@ -92,7 +92,7 @@ A hitelesítési, engedélyezési és hozzáférés-vezérlési funkciókkal az 
 
 Központi felügyeletet, és teljesen más címtár-integráció
 
-Az Azure Active Directory biztosítja az egyszeri bejelentkezés több ezer SaaS-alkalmazásokhoz, és a helyszíni webalkalmazásokat. Tekintse meg a [Azure Active Directory összevonási kompatibilitási lista: harmadik fél Identitásszolgáltatók, amelyek segítségével az egyszeri bejelentkezés megvalósítása](https://msdn.microsoft.com/library/azure/jj679342.aspx) az egyszeri bejelentkezés külső további tudnivalókat a Microsoft által tesztelt cikk. Ez a funkció lehetővé teszi, hogy a szervezet B2B-forgatókönyvekhez számos folyamatos ellenőrzése mellett az identitás- és hozzáférés-kezelés. Azonban során a B2B folyamat tervezése fontos megérteni a partner által használt hitelesítési módszert, és ellenőrizheti, hogy ez a módszer az Azure által támogatott. Az Azure AD jelenleg az alábbi módszereket támogatja:
+Az Azure Active Directory biztosítja az egyszeri bejelentkezés több ezer SaaS-alkalmazásokhoz, és a helyszíni webalkalmazásokat. Tekintse meg a [Azure Active Directory összevonási kompatibilitási lista: harmadik fél Identitásszolgáltatók, amelyek segítségével az egyszeri bejelentkezés megvalósítása](how-to-connect-fed-compatibility.md) az egyszeri bejelentkezés külső további tudnivalókat a Microsoft által tesztelt cikk. Ez a funkció lehetővé teszi, hogy a szervezet B2B-forgatókönyvekhez számos folyamatos ellenőrzése mellett az identitás- és hozzáférés-kezelés. Azonban során a B2B folyamat tervezése fontos megérteni a partner által használt hitelesítési módszert, és ellenőrizheti, hogy ez a módszer az Azure által támogatott. Az Azure AD jelenleg az alábbi módszereket támogatja:
 
 * Security Assertion Markup Language (SAML)
 * OAuth

@@ -1,5 +1,5 @@
 ---
-title: Az Azure Stream Analytics az IoT Edge-ben (előzetes verzió)
+title: Azure Stream Analytics az IoT Edge segítségével
 description: Edge-feladatok létrehozása az Azure Stream Analytics, és az Azure IoT Edge futtató eszközre telepítse őket.
 services: stream-analytics
 author: mamccrea
@@ -7,15 +7,15 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.openlocfilehash: 6d3060545946f1f003058932f1ffc50c2a64586f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/04/2018
+ms.openlocfilehash: c70a0ceed76ec6f86f2c6c4b082c45055dda6701
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846232"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889106"
 ---
-# <a name="azure-stream-analytics-on-iot-edge-preview"></a>Az Azure Stream Analytics az IoT Edge-ben (előzetes verzió)
+# <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics az IoT Edge segítségével
 
 > [!IMPORTANT]
 > Ez a funkció előzetes verzióban érhető el, és nem javasolt éles környezetben való használatra.

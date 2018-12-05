@@ -3,7 +3,7 @@ title: Elastic database-ügyfélkódtár használata a dapperrel |} A Microsoft 
 description: Elastic database-ügyfélkódtár használata a dapperrel.
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 3a25d68b0f0bdd97b204906af87fac8013ad3cff
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 14eb92141a9d27d9f8978abb6d5c9a738c821ead
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253023"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866304"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Elastic database-ügyfélkódtár használata a dapperrel
 Alkalmazásokat hozhat létre Dapper támaszkodik, de is szeretné kihasználni a fejlesztők számára van ez a dokumentum [elastic database tooling](sql-database-elastic-scale-introduction.md) , alkalmazzon horizontális skálázási horizontális felskálázási méretezhetik alkalmazások létrehozásához.  Ez a dokumentum a Dapper-alapú alkalmazások integrálása az elastic database-eszközökkel való szükséges változásokat mutatja be. A fókusz a rugalmas adatbázis szilánkkezelési és Adatfüggő útválasztásnak dapperrel összeállítása be van kapcsolva. 

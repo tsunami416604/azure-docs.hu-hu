@@ -2,19 +2,19 @@
 title: Az Azure-beli virtuális gép biztonsági mentési infrastruktúrájának tervezése
 description: Az Azure-beli virtuális gépek biztonsági mentése megtervezésekor fontos szempontok
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keywords: virtuális gépek biztonsági mentése, virtuális gépek biztonsági mentését
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/29/2018
-ms.author: markgal
-ms.openlocfilehash: 806d68370921a7658066a9bad770b36b4e8e59bf
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.author: raynew
+ms.openlocfilehash: 7ebb71c6c5968f8f3548f1accd8d659039e6b545
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680038"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871642"
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Virtuális gép biztonsági infrastruktúrájának megtervezése az Azure-ban
 A cikk ismerteti a teljesítmény- és erőforrás-javaslatok segítséget nyújt a virtuális gép biztonsági infrastruktúrájának megtervezése. Azt is meghatározza a biztonsági mentési szolgáltatás; fő szempontok Ezeket a szempontokat architektúra, amely meghatározza, hogy kritikus fontosságú lehet kapacitástervezés és ütemezését. Ha [a környezet előkészítése](backup-azure-arm-vms-prepare.md), tervezési a következő lépés megkezdése előtt [a virtuális gépek biztonsági mentése](backup-azure-arm-vms.md). Ha további információt az Azure virtual machines van szüksége, tekintse meg a [Virtual Machines dokumentációja](https://azure.microsoft.com/documentation/services/virtual-machines/).

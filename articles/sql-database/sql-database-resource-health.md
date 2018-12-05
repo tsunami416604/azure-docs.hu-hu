@@ -3,7 +3,7 @@ title: Az Azure Resource Health használata az SQL Database állapotának figyel
 description: Az Azure Resource Health segítségével megfigyelheti azok állapotát. az SQL Database és segít diagnosztizálni, és a támogatás igénylésében, ha egy Azure-beli probléma kihat az SQL-erőforrások.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: aamalvea
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/14/2018
-ms.openlocfilehash: 9cbe88a44ba598a22fab628ae01605ac9d63bece
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 8b982dbddf22393e276437c77007e18bc4d40042
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632628"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867189"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>A Resource Health használata az Azure SQL Database-kapcsolatának hibaelhárítása
 
@@ -41,7 +41,7 @@ Az állapot **elérhető** azt jelenti, hogy a Resource Health bejelentkezések 
 
 ### <a name="degraded"></a>Csökkentett teljesítmény
 
-Az állapot **csökkentett teljesítményű** azt jelenti, hogy a Resource Health azt észlelte a sikeres bejelentkezések, de, valamint bizonyos hibák többségét. Ezek a legnagyobb valószínűséggel átmeneti bejelentkezési hibák. Kapcsolódási problémákat, amelyeket átmeneti bejelentkezési hibák hatásának csökkentése érdekében hajtsa [újrapróbálkozási logika](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) a kódban.
+A **Csökkentett teljesítmény** állapot azt jelenti, hogy a Resource Health főleg sikeres bejelentkezéseket észlelt, de néhány sikertelent is. Ezek a legnagyobb valószínűséggel átmeneti bejelentkezési hibák. Kapcsolódási problémákat, amelyeket átmeneti bejelentkezési hibák hatásának csökkentése érdekében hajtsa [újrapróbálkozási logika](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) a kódban.
 
 ![Csökkentett teljesítmény](./media/sql-database-resource-health/sql-resource-health-degraded.jpg)
 
@@ -63,7 +63,7 @@ Akár 14 napig állapotelőzmények a Resource Health egészségügyi korábbi s
 
 ### <a name="downtime-reasons"></a>Állásidő okok
 
-Amikor az SQL Database állásidő, elemzési történik egy okának megállapításához. Ha elérhető, a Resource Health állapotelőzmények szakaszában jelenti, az üzemszünet okát. Állásidő okai általában közzétett 30 percig az esemény után.
+Amikor az SQL Database állásidő, elemzési történik egy okának megállapításához. Ha elérhető, a Resource Health állapotelőzmények szakaszában jelenti, az üzemszünet okát. Az állásidő okai általában az eseményt követő 30 percen belül megjelennek.
 
 #### <a name="planned-maintenance"></a>Tervezett karbantartás
 
@@ -76,7 +76,7 @@ Reconfigurations átmeneti feltételek minősülnek, és várhatóan időről id
 ## <a name="next-steps"></a>További lépések
 
 - Tudjon meg többet [újrapróbálkozási logika átmeneti hibák esetén](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)
-- [Elhárítása, diagnosztizálása és elkerülése az SQL-csatlakozási hibák](./sql-database-connectivity-issues.md)
+- [SQL-csatlakozási hibák elhárítása, diagnosztizálása és elkerülése](./sql-database-connectivity-issues.md)
 - Tudjon meg többet [Resource Health-riasztások konfigurálása](/articles/service-health/resource-health-alert-arm-template-guide.md)
 - Áttekintheti a [Resource Health](/articles/service-health/resource-health-overview.md)
 - [A Resource Health – gyakori kérdések](/articles/service-health/resource-health-faq.md)

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: hrasheed
-ms.openlocfilehash: 9a8c39864d05a4e2b89da7bdfc937f8d2e5dbec9
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: b6ec48085d5dd2ea31543e208e8d32b954cb0bca
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038417"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872846"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Az Azure REST API használatával az Apache Hadoop-fürtök létrehozása
 
@@ -290,7 +290,7 @@ A kérelem által visszaadott JSON-dokumentumok nevű elemet tartalmaz **access_
 }
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 A következő használatával hozzon létre egy erőforráscsoportot.
 
@@ -353,19 +353,19 @@ Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse me
 
 Most, hogy sikeresen létrehozott egy HDInsight-fürtöt, a következő segítségével megtudhatja, hogyan működik a fürttel.
 
-### <a name="hadoop-clusters"></a>Hadoop-fürtök
+### <a name="apache-hadoop-clusters"></a>Az Apache Hadoop-fürtök
 
-* [A Hive használata a HDInsightban](hadoop/hdinsight-use-hive.md)
-* [A Pig használata a HDInsightban](hadoop/hdinsight-use-pig.md)
-* [A MapReduce használata a HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Az Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
+* [Az Apache Pig használata a HDInsight](hadoop/hdinsight-use-pig.md)
+* [Apache Hadoop MapReduce használata a HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
-### <a name="hbase-clusters"></a>HBase-fürtök
+### <a name="apache-hbase-clusters"></a>Az Apache HBase-fürtök
 
-* [A HDInsighton futó HBase használatának első lépései](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [A HDInsight hbase Java-alkalmazások fejlesztése](hbase/apache-hbase-build-java-maven-linux.md)
+* [A HDInsight Apache HBase használatának első lépései](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [Az Apache HBase on HDInsight Java-alkalmazások fejlesztése](hbase/apache-hbase-build-java-maven-linux.md)
 
-### <a name="storm-clusters"></a>Storm-fürtök
+### <a name="apache-storm-clusters"></a>Apache Storm-fürtök
 
-* [Java-topológiák fejlesztése HDInsight alatt futó Stormmal](storm/apache-storm-develop-java-topology.md)
-* [Python-összetevők használata a HDInsight alatt futó Stormmal](storm/apache-storm-develop-python-topology.md)
-* [Telepítheti és figyelheti a HDInsight Storm-topológiák](storm/apache-storm-deploy-monitor-topology-linux.md)
+* [Java-topológiák fejlesztése a HDInsight az Apache stormmal](storm/apache-storm-develop-java-topology.md)
+* [Az Apache Storm on HDInsight használata a Python-összetevők](storm/apache-storm-develop-python-topology.md)
+* [Telepítheti és figyelheti a HDInsight Apache Storm-topológiák](storm/apache-storm-deploy-monitor-topology-linux.md)

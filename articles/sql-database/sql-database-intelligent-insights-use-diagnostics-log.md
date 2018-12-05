@@ -12,16 +12,16 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/04/2018
-ms.openlocfilehash: 70096c8f3a5c07fa757b68494c04519b63435dcd
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 2809dd45042e41c8337ecddccc76ec4e16d7cb8b
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166894"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887695"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Az Intelligent Insights az Azure SQL Database teljesítményét diagnosztikai napló használata
 
-Ez az oldal nyújt információkat által létrehozott Azure SQL Database teljesítményét diagnosztikai napló használatával [Intelligent Insights](sql-database-intelligent-insights.md), annak formátum, és az adatok esetében az egyéni fejlesztői kell tartalmaz. Elküldheti a diagnosztikai naplót a [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), vagy egy külső megoldás, riasztási és jelentéskészítési egyéni fejlesztők és üzemeltetők számára képességek.
+Ez az oldal nyújt információkat által létrehozott Azure SQL Database teljesítményét diagnosztikai napló használatával [Intelligent Insights](sql-database-intelligent-insights.md), annak formátum, és az adatok esetében az egyéni fejlesztői kell tartalmaz. Elküldheti a diagnosztikai naplót a [Azure Log Analytics](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), vagy egy külső megoldás, riasztási és jelentéskészítési egyéni fejlesztők és üzemeltetők számára képességek.
 
 ## <a name="log-header"></a>Napló-fejléc
 
@@ -39,9 +39,7 @@ A napló a fejléc gyakori, és az időbélyeg (TimeGenerated), amely megjelení
 
 ## <a name="issue-id-and-database-affected"></a>Probléma azonosítója és az érintett adatbázis
 
-A probléma azonosítása tulajdonság (issueId_d) biztosítja az egyedi vagyunk megoldásáig teljesítménnyel kapcsolatos problémák nyomon követése. Intelligent Insights minden egyes probléma életciklusa megegyezik az "Active", "Ellenőrzése" vagy "Teljes" területen. Egyes fázisokkal állapot Intelligent Insights több eseményrekordok rögzítheti a naplóban. Ezek a bejegyzések mindegyike esetében a probléma azonosítószámát egyedi marad. Intelligent Insights nyomon követi a probléma, annak életciklusát keresztül, és a egy elemzést hoz létre a diagnosztikai napló 15 percenként.
-
-Miután a teljesítménybeli problémát észlel, és mindaddig, amíg tart, a probléma van a állapota (status_s) tulajdonságánál "Aktív" jelentett. Probléma megoldása után egy észlelt, ellenőrzött és jelenik meg "Ellenőrzése", a status (status_s) tulajdonság alapján. Ha a probléma már nem létezik, a status (status_s) tulajdonság "Teljes" kiderítheti a probléma.
+A probléma azonosítása tulajdonság (issueId_d) biztosít a teljesítménnyel kapcsolatos problémák megoldásáig egyedileg követésének. A naplóban, ugyanez a probléma állapotát reporting több eseményrekordok osztani, ugyanezzel az azonosítóval probléma.
 
 A probléma azonosítója, valamint a diagnosztikai napló a kezdő (intervalStartTime_t) és befejezési (intervalEndTme_t) időbélyegeket az adott esemény, a diagnosztikai naplóban jelentett probléma kapcsolatos jelentések.
 

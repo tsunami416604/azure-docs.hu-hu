@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5cbf0895274672c053158cf07acb344908b37831
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 98a1dd3fb3fd733cc17ac9c6ccf9d0dfc77737e1
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623468"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868021"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Gyakori kérdések az Azure Active Directory-jelentések körül
 
@@ -94,7 +94,7 @@ Ez a cikk – gyakori kérdések az Azure Active Directory (Azure AD) jelentésk
 
 **K: mely API-k használható Office 365-Tevékenységnaplók információt szeretne kapni?**
 
-**V:** használja a [Office 365 felügyeleti API-k](https://msdn.microsoft.com/office-365/office-365-managment-apis-overview) eléréséhez az Office 365 Tevékenységnaplók az API-n keresztül.
+**V:** használja a [Office 365 felügyeleti API-k](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) eléréséhez az Office 365 Tevékenységnaplók az API-n keresztül.
 
 ---
 

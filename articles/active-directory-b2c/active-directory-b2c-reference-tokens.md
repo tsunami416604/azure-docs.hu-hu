@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 81927c4e69f36fbc4859ac2865bc15cbfacb17fb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d1c9101f10342f98803a4ace420abbed5d49ba23
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843869"
+ms.locfileid: "52880114"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Az Azure AD B2C: Jogkivonat-referencia
 
@@ -89,7 +89,7 @@ Vegye figyelembe, hogy a jogcímek, az ID jogkivonatok nem bármely adott sorren
 ### <a name="refresh-tokens"></a>Frissítési jogkivonatok
 Frissítési jogkivonatok olyan biztonsági jogkivonatok, amelyek az alkalmazás segítségével szerzi be a új azonosító-jogkivonatokat, és hozzáférési jogkivonatokat az OAuth 2.0 flow-ban. Az alkalmazás a hosszú távú a felhasználók nevében erőforrásokhoz való hozzáférés, anélkül, hogy a ezeket a felhasználói nyújtanak.
 
-Fogadásához egy frissítési jogkivonat a jogkivonat-válasz, az alkalmazás kell igényelnie a `offline_acesss` hatókör. További információkat talál a `offline_access` hatókörét, tekintse meg a [Azure AD B2C protokollreferenciáját](active-directory-b2c-reference-protocols.md).
+Fogadásához egy frissítési jogkivonat a jogkivonat-válasz, az alkalmazás kell igényelnie a `offline_access` hatókör. További információkat talál a `offline_access` hatókörét, tekintse meg a [Azure AD B2C protokollreferenciáját](active-directory-b2c-reference-protocols.md).
 
 Frissítési jogkivonatok, és mindig lesz, teljesen átlátszatlan, az alkalmazáshoz. Azok az Azure AD által kiállított és ellenőrzött és értelmezése kizárólag az Azure ad-ben. Hosszú élettartamú, azonban az alkalmazás nem kell írni az az elvárás, hogy a frissítési jogkivonatok egy meghatározott ideig tart. Frissítési biztonsági jogkivonat bármely pillanatban a többféle okból lehet érvényteleníteni. Az egyetlen módszer az alkalmazás tudja, hogy ha egy frissítési jogkivonat érvényes, hogy azáltal, hogy a jogkivonat kérése az Azure AD a beváltáshoz kísérlet.
 

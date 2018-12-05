@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: barclayn
-ms.openlocfilehash: a28bf1dc23d678c710d7bd6b13f067427e76ef41
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bb4ef826ed29187209b28c349445ca0eb5ffe9bb
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238399"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864899"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Bevezetés az Azure Key Vault használatába
 Ez a cikk útmutatást nyújt az Azure Key Vault PowerShell segítségével történő használatának a megismerésében, és az alábbi tevékenységeken vezeti végig:
@@ -222,14 +222,14 @@ Az alkalmazás regisztrálása az Azure Active Directory szolgáltatásban:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A bal oldalon kattintson az **Alkalmazásregisztrációk** elemre. Ha nem lát alkalmazásregisztrációkat, kattintson a **további szolgáltatások**.  
->[!NOTE]
-Azt a címtárat kell kiválasztania, amely a kulcstartót létrehozó Azure-előfizetést tartalmazza. 
+    > [!NOTE]
+    > Azt a címtárat kell kiválasztania, amely a kulcstartót létrehozó Azure-előfizetést tartalmazza. 
 3. Kattintson az **Új alkalmazásregisztráció** elemre.
 4. A **Létrehozás** panelen adjon meg egy nevet az alkalmazásnak, majd válassza a **WEB APPLICATION AND/OR WEB API** (WEBALKALMAZÁS ÉS/VAGY WEBES API) (az alapértelmezett beállítás) lehetőséget, és adja meg a webalkalmazás **SIGN-ON URL** (Bejelentkezési URL) címét. Ha jelenleg nem rendelkezik ezekkel az információkkal, ehhez a lépéshez nem létező értékeket is megadhat (például megadhatja a http://test1.contoso.com címet). Nem számít, hogy ezek a webhelyek léteznek-e. 
 
     ![Új alkalmazásregisztráció](./media/key-vault-get-started/new-application-registration.png)
-    >[!WARNING]
-    Ügyeljen arra, hogy a **WEB APPLICATION AND/OR WEB API** (WEBALKALMAZÁS ÉS/VAGY WEBES API) lehetőség legyen kiválasztva, különben a **kulcsok** lehetőség nem jelenik meg a beállítások között.
+    > [!WARNING]
+    > Ügyeljen arra, hogy a **WEB APPLICATION AND/OR WEB API** (WEBALKALMAZÁS ÉS/VAGY WEBES API) lehetőség legyen kiválasztva, különben a **kulcsok** lehetőség nem jelenik meg a beállítások között.
 
 5. Kattintson a **Létrehozás** gombra.
 6. Amikor befejeződött az alkalmazás regisztrációját, látni fogja a regisztrált alkalmazások listája. Keresse meg az alkalmazás regisztrált, és kattintson rá.

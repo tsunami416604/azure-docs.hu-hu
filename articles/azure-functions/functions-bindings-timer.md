@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 6589a90f6eea2bfd7188e89b701233b37c162d54
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 0e08d532c1f3ef965d9bd6cf013b272c9a050256
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978760"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866440"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Az Azure Functions időzítő eseményindító 
 
@@ -50,7 +50,7 @@ Tekintse meg az adott nyelvű példa:
 
 ### <a name="c-example"></a>C#-példa
 
-A következő példa bemutatja egy [C#-függvény](functions-dotnet-class-library.md) öt percenként futó:
+A következő példa bemutatja egy [ C# függvény](functions-dotnet-class-library.md) által öt, amely végrehajtott minden alkalommal, amikor a perc osztható fel értékkel rendelkeznie (például a függvény 18:57:00-kor kezdődik, ha a következő lesz a teljesítmény 19:00:00):
 
 ```cs
 [FunctionName("TimerTriggerCSharp")]
@@ -92,9 +92,9 @@ public static void Run(TimerInfo myTimer, ILogger log)
 }
 ```
 
-### <a name="f-example"></a>F #-példa
+### <a name="f-example"></a>F#Példa
 
-Az alábbi példa bemutatja egy időzítő indítófeltételt kötelező egy *function.json* fájl és a egy [F #-szkriptfüggvény](functions-reference-fsharp.md) , amely a kötés használja. A függvény a napló-e a függvény meghívási okozza-e a kihagyott ütemezés előfordulási számainak jelző ír.
+Az alábbi példa bemutatja egy időzítő indítófeltételt kötelező egy *function.json* fájl és a egy [ F# függvény parancsfájl](functions-reference-fsharp.md) , amely a kötés használja. A függvény a napló-e a függvény meghívási okozza-e a kihagyott ütemezés előfordulási számainak jelző ír.
 
 Itt van a kötési adatait a *function.json* fájlt:
 
@@ -107,7 +107,7 @@ Itt van a kötési adatait a *function.json* fájlt:
 }
 ```
 
-Az F #-szkriptkódot itt látható:
+Íme a F# parancsfájl-kódot:
 
 ```fsharp
 let Run(myTimer: TimerInfo, log: ILogger ) =

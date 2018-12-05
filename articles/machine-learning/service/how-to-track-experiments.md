@@ -8,66 +8,55 @@ ms.service: machine-learning
 ms.component: core
 ms.workload: data-services
 ms.topic: article
-ms.date: 09/24/2018
-ms.openlocfilehash: 9af7e57db0e465f59f43c93d0b5f6ec220836ff7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.date: 12/04/2018
+ms.openlocfilehash: 409ce776f574c33d8b1a2a3a22929b01e0f8c69e
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308188"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876189"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Kísérletek és az Azure Machine Learning betanítási metrikák követése
 
 Az Azure Machine Learning szolgáltatásban a kísérletek nyomon, és figyelheti a mérőszámokat javíthatják a modell létrehozását. Ebből a cikkből megtanulhatja, naplózás hozzáadása a tanítási szkriptet különféle módjai hogyan lehet elküldeni a kísérlet **start_logging** és **ScriptRunConfig**, hogyan ellenőrizheti az előrehaladását egy futó feladat, és a egy Futtatás eredményeinek megtekintése. 
 
->[!NOTE]
-> Ebben a cikkben kód teszteltük az Azure Machine Learning SDK verziója 0.1.74 
 
 ## <a name="list-of-training-metrics"></a>Képzési mérőszámok listája 
 
-A következő metrikák hozzáadhat egy Futtatás betanítási kísérlet során. Mi a Futtatás követhető részletes listáját, tekintse meg a [SDK-forrásdokumentáció](https://aka.ms/aml-sdk).
+A következő metrikák hozzáadhat egy Futtatás betanítási kísérlet során. Mi a Futtatás követhető részletes listáját, tekintse meg a [osztály dokumentációja futtatása](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py).
 
-|Típus| Funkce Pythonu | Példa | Megjegyzések|
-|----|:----|:----|:----|
-|Skaláris értékek | `run.log(name, value, description='')`| `run.log("accuracy", 0.95) ` |Napló egy numerikus vagy karakterlánc értéket, a Futtatás a megadott névvel. Ennek a mutatónak tárolhatók a kísérletben a futtatási rekord a naplózási a metrika a futtató okoz.  Az azonos metrika futtató, az eredmény egy adott mérőszám vektor fontolóra belül több alkalommal bejelentkezhet.|
-|Listák| `run.log_list(name, value, description='')`| `run.log_list("accuracies", [0.6, 0.7, 0.87])` | Jelentkezzen a Futtatás a megadott nevű értékek listáját.|
-|Sor| `run.log_row(name, description=None, **kwargs)`| `run.log_row("Y over X", x=1, y=0.4)` | Használatával *log_row* hoz létre egy metrika több oszlopból álló kwargs leírtak szerint. Minden elnevezett paraméter generálja egy oszlop megadott értékkel.  *log_row* egyszer hívható egy hurkot, és a egy teljes táblát hozzon létre egy tetszőleges rekord, vagy több alkalommal bejelentkezni.|
-|Tábla| `run.log_table(name, value, description='')`| `run.log_table("Y over X", {"x":[1, 2, 3], "y":[0.6, 0.7, 0.89]})` | Jelentkezzen a szótárobjektum a Futtatás a megadott névvel. |
-|Képek| `run.log_image(name, path=None, plot=None)`| `run.log_image("ROC", plt)` | Jelentkezzen egy képet a futtatási rekord. Be-vagy képfájl a matplotlib log_image használatával a Futtatás rajz.  Ezek a lemezképek lesz látható, és a futtatási rekord összehasonlítható.|
-|Futtatás címkézése| `run.tag(key, value=None)`| `run.tag("selected", "yes")` | A Futtatás egy karakterláncot és egy opcionális karakterláncértéket a címkékkel.|
-|Töltse fel a fájl vagy könyvtár|`run.upload_file(name, path_or_stream)`| Run.upload_file ("best_model.pkl", ". / model.pkl") | Töltse fel egy fájlt a futtatási rekord. Futtatások automatikusan rögzítheti a megadott kimeneti könyvtár, amely alapértelmezés szerint a fájl ". / kimenete" legtöbb Futtatás típusok esetében.  Upload_file csak akkor használja további fájlokat szeretne feltölteni, vagy nincs megadva egy kimeneti könyvtárat. Javasoljuk, hogy hozzáadása `outputs` a nevéhez, így az informatikai részleg által feltöltött lekérdezi a kimeneti könyvtár. Listázhatja az összes kapcsolódó fájlt a futtatási rekord által nevű `run.get_file_names()`|
+|Típus| Funkce Pythonu | Megjegyzések|
+|----|:----|:----|
+|Skaláris értékek |Függvény:<br>`run.log(name, value, description='')`<br><br>Példa:<br>Run.log ("pontossággal", 0,95) |Napló egy numerikus vagy karakterlánc értéket, a Futtatás a megadott névvel. Ennek a mutatónak tárolhatók a kísérletben a futtatási rekord a naplózási a metrika a futtató okoz.  Az azonos metrika futtató, az eredmény egy adott mérőszám vektor fontolóra belül több alkalommal bejelentkezhet.|
+|Listák|Függvény:<br>`run.log_list(name, value, description='')`<br><br>Példa:<br>Run.log_list ("pontosságú", [a 0.6-os, 0,7, 0.87]) | Jelentkezzen a Futtatás a megadott nevű értékek listáját.|
+|Sor|Függvény:<br>"run.log_row (név, leírás = None, ** kwargs)<br>Példa:<br>Run.log_row ("Keresztül X Y", x = 1, y = 0,4) | Használatával *log_row* hoz létre egy metrika több oszlopból álló kwargs leírtak szerint. Minden elnevezett paraméter generálja egy oszlop megadott értékkel.  *log_row* egyszer hívható egy hurkot, és a egy teljes táblát hozzon létre egy tetszőleges rekord, vagy több alkalommal bejelentkezni.|
+|Tábla|Függvény:<br>`run.log_table(name, value, description='')`<br><br>Példa:<br>Run.log_table ("Keresztül X Y", {"x": [1, 2, 3], "y": [a 0.6-os, 0,7, 0.89]}) | Jelentkezzen a szótárobjektum a Futtatás a megadott névvel. |
+|Képek|Függvény:<br>`run.log_image(name, path=None, plot=None)`<br><br>Példa:<br>Run.log_image ("ROC",. lbi) | Jelentkezzen egy képet a futtatási rekord. Be-vagy képfájl a matplotlib log_image használatával a Futtatás rajz.  Ezek a lemezképek lesz látható, és a futtatási rekord összehasonlítható.|
+|Futtatás címkézése|Függvény:<br>`run.tag(key, value=None)`<br><br>Példa:<br>Run.tag ("kijelölt", "yes") | A Futtatás egy karakterláncot és egy opcionális karakterláncértéket a címkékkel.|
+|Töltse fel a fájl vagy könyvtár|Függvény:<br>`run.upload_file(name, path_or_stream)`<br> <br> Példa:<br>Run.upload_file ("best_model.pkl", ". / model.pkl") | Töltse fel egy fájlt a futtatási rekord. Futtatások automatikusan rögzítheti a megadott kimeneti könyvtár, amely alapértelmezés szerint a fájl ". / kimenete" legtöbb Futtatás típusok esetében.  Upload_file csak akkor használja további fájlokat szeretne feltölteni, vagy nincs megadva egy kimeneti könyvtárat. Javasoljuk, hogy hozzáadása `outputs` a nevéhez, így az informatikai részleg által feltöltött lekérdezi a kimeneti könyvtár. Listázhatja az összes kapcsolódó fájlt a futtatási rekord által nevű `run.get_file_names()`|
 
 > [!NOTE]
 > Metrikák fejlécekké, a listákat, a sorok és a táblák rendelkezhet típusa: lebegőpontos, egész szám vagy karakterlánc.
 
-## <a name="log-metrics-for-experiments"></a>Kísérletek log metrikái
+## <a name="start-logging-metrics"></a>Indítsa el a naplózás metrikák
 
 Ha szeretné nyomon követni vagy figyelése is futtathatja a kísérletet, hozzá kell adnia a naplózása, amikor a Futtatás küld kódot. A futtatási küldésének aktiválásához módjai a következők:
 * __Run.start_logging__ – a naplózási szolgáltatások hozzáadása a tanítási szkriptet, és a egy interaktív naplózási munkamenet elindításához a megadott kísérletben. **start_logging** notebookok – egyéb felhasználási helyzetek egy interaktív Futtatás használatra hoz létre. A munkamenet során naplózott összes metrikák kerülnek a futtatási rekordját a kísérletben.
 * __ScriptRunConfig__ – a naplózási szolgáltatások hozzáadása a tanítási szkriptet, és a teljes parancsfájl mappát a Futtatás tölthető be.  **ScriptRunConfig** beállítása szkript konfigurációi fut egy osztály van. Ezzel a beállítással adhat hozzá figyelés kódja befejezéséről értesítést, vagy egy vizuális widget figyelése lekéréséhez.
 
-## <a name="set-up-the-workspace-and-experiment"></a>A munkaterület és a kísérlet
-Mielőtt hozzáadná a naplózás és a egy kísérlet elküldése, be kell állítania a munkaterületet, és a kísérlet.
+## <a name="set-up-the-workspace"></a>A munkaterület beállítása
+Mielőtt hozzáadná a naplózás és a egy kísérlet elküldése, be kell állítania a munkaterületen.
 
 1. Töltse be a munkaterület. A munkaterület-konfiguráció beállításával kapcsolatos további információkért kövesse a [rövid](https://docs.microsoft.com/azure/machine-learning/service/quickstart-get-started).
 
   ```python
-  from azureml.core import Workspace, Run
+  from azureml.core import Experiment, Run, Workspace
   import azureml.core
   
   ws = Workspace(workspace_name = <<workspace_name>>,
                subscription_id = <<subscription_id>>,
                resource_group = <<resource_group>>)
    ```
-
-2. A kísérlet létrehozása.
-
-  ```python
-  from azureml.core import Experiment
-
-  # make up an arbitrary name
-  experiment_name = 'train-in-notebook'
-  ```
   
 ## <a name="option-1-use-startlogging"></a>1. lehetőség: Start_logging használata
 
@@ -102,22 +91,34 @@ Az alábbi példában egy egyszerű sklearn Ridge modell helyileg a helyi Jupyte
 2. Adjon hozzá kísérlet nyomon követése az Azure Machine Learning szolgáltatás SDK használatával, és a egy megőrzött modell feltöltése rekord futtassa a kísérletet. Az alábbi kód felveszi a címkéket, naplók, a, és feltölti egy modellfájl futtassa a kísérletet.
 
   ```python
-  experiment = Experiment(workspace = ws, name = experiment_name)
-  run = experiment.start_logging()
-  run.tag("Description","My first run!")
+  # Get an experiment object from Azure Machine Learning
+  experiment = Experiment(workspace = ws, name = "train-within-notebook")
+  
+  # Create a run object in the experiment
+  run = experiment.start_logging()# Log the algorithm parameter alpha to the run
   run.log('alpha', 0.03)
-  reg = Ridge(alpha = 0.03)
-  reg.fit(data['train']['X'], data['train']['y'])
-  preds = reg.predict(data['test']['X'])
-  run.log('mse', mean_squared_error(preds, data['test']['y']))
-  joblib.dump(value = reg, filename = 'model.pkl')
-  # Upload file directly to the outputs folder
-  run.upload_file(name = 'outputs/model.pkl', path_or_stream = './model.pkl')
 
+  # Create, fit, and test the scikit-learn Ridge regression model
+  regression_model = Ridge(alpha=0.03)
+  regression_model.fit(data['train']['X'], data['train']['y'])
+  preds = regression_model.predict(data['test']['X'])
+
+  # Output the Mean Squared Error to the notebook and to the run
+  print('Mean Squared Error is', mean_squared_error(data['test']['y'], preds))
+  run.log('mse', mean_squared_error(data['test']['y'], preds))
+
+  # Save the model to the outputs directory for capture
+  joblib.dump(value=regression_model, filename='outputs/model.pkl')
+
+  # Take a snapshot of the directory containing this notebook
+  run.take_snapshot('./')
+
+  # Complete the run
   run.complete()
+  
   ```
 
-A parancsfájl végződik ```run.complete()```, amely jelöli meg a futtatást, befejezettként.  Ez jellemzően interaktív notebook forgatókönyvekben.
+A parancsfájl végződik ```run.complete()```, amely jelöli meg a futtatást, befejezettként.  Ezt a funkciót általában interaktív notebook olyan forgatókönyvekben használatos.
 
 ## <a name="option-2-use-scriptrunconfig"></a>2. lehetőség: ScriptRunConfig használata
 
@@ -125,7 +126,7 @@ A parancsfájl végződik ```run.complete()```, amely jelöli meg a futtatást, 
 
 Ebben a példában a fent sklearn Ridge alapmodell tartalmazó gyűjteménnyel bővítjük. Egy egyszerű paraméter Ismétlés az ismétlés metrikákat rögzítheti a modell és a kísérlet alatt fut, a betanított modellek az alfa értékeknek keresztül hajtja végre. A példában helyben fut egy felhasználó által felügyelt környezetben. 
 
-1. Hozzon létre egy tanítási szkriptet. Ez az használ ```%%writefile%%``` a betanítási kódot írja ki a parancsfájl mappába ```train.py```.
+1. Hozzon létre egy tanítási szkriptet. Ez a kód ```%%writefile%%``` a betanítási kódot írja ki a parancsfájl mappába ```train.py```.
 
   ```python
   %%writefile $project_folder/train.py
@@ -208,7 +209,8 @@ Ebben a példában a fent sklearn Ridge alapmodell tartalmazó gyűjteménnyel b
 
   ```python
   from azureml.core import ScriptRunConfig
-
+  
+  experiment = Experiment(workspace=ws, name="train-on-local")
   src = ScriptRunConfig(source_directory = './', script = 'train.py', run_config = run_config_user_managed)
   run = experiment.submit(src)
   ```
@@ -221,11 +223,28 @@ Ha a **ScriptRunConfig** elküldéséhez metódus fut, a Futtatás, a Jupyter no
 1. A Jupyter widget tekintse meg a Futtatás befejeződik várakozás közben.
 
   ```python
-  from azureml.train.widgets import RunDetails
+  from azureml.widgets import RunDetails
   RunDetails(run).show()
   ```
 
   ![Képernyőkép a Jupyter notebook widget](./media/how-to-track-experiments/widgets.PNG)
+
+2. **[Automatikus machine learning futtatások]**  Az előző menetből a diagramok eléréséhez. Cserélje le `<<experiment_name>>` megfelelő kísérlet nevét:
+
+   ``` 
+   from azureml.train.widgets import RunDetails
+   from azureml.core.run import Run
+
+   experiment = Experiment (workspace, <<experiment_name>>)
+   run_id = 'autoML_my_runID' #replace with run_ID
+   run = Run(experiment, run_id)
+   RunDetails(run).show()
+   ```
+
+  ![Képernyőkép a Jupyter notebook widget](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
+
+
+További részleteit a folyamat kattintson a folyamat a megtekintéséhez, amelyet szeretne Fedezze fel a táblázatban, és a diagramok az Azure-portálról egy előugró ablak jelenik meg.
 
 ### <a name="get-log-results-upon-completion"></a>Naplóeredmények lekérése a befejezéskor
 
@@ -236,18 +255,20 @@ Modell betanítása és figyelési fordulnak elő a háttérben, hogy a várakoz
 Megtekintheti a metrikákat egy betanított modell használatával ```run.get_metrics()```. Most már beszerezheti az összes naplózott határozza meg a legjobb modellt a fenti példában a metrikákat.
 
 <a name='view-the-experiment-in-the-web-portal'/>
+
 ## <a name="view-the-experiment-in-the-azure-portal"></a>A kísérlet megtekintéséhez az Azure Portalon
 
-Amikor egy kísérlet befejezését követően, megnyithatja a futtatási rekord rögzített kísérletet. Ezt kétféleképpen teheti meg:
+Amikor egy kísérlet befejezését követően, megnyithatja a futtatási rekord rögzített kísérletet. Teheti kétféleképpen az előzmények elérése:
 
 * Első futtatás URL-CÍMÉT közvetlenül ```print(run.get_portal_url())```
-* A Futtatás neve elküldésével részleteinek megtekintése (ebben az esetben ```run```). Ez mutat, a kísérlet neve, azonosítója, típusa, állapot, részleteit megjelenítő oldalon, az Azure Portalon mutató hivatkozást és a dokumentációra mutató hivatkozással.
+* A Futtatás neve elküldésével részleteinek megtekintése (ebben az esetben ```run```). Ezzel a módszerrel a kísérlet neve, azonosítója, típus, állapot, részleteit megjelenítő oldalon, egy hivatkozást az Azure Portalra és dokumentáció mutató hivatkozás mutat.
 
 A hivatkozás a Futtatás méretezhetőséget kínál, közvetlenül a futtatási Részletek lap az Azure Portalon. Itt láthatja, bármely tulajdonságai, a nyomon követett metrikák, lemezképek és bejelentkezett a kísérlet diagram. Ebben az esetben azt naplózza, MSE és az alfa értékeknek.
 
   ![Képernyőkép a futtatási részletek az Azure Portalon](./media/how-to-track-experiments/run-details-page-web.PNG)
 
 Bármely kimenetek vagy a naplók a Futtatás megtekintéséhez, vagy töltse le a kísérlet, így a kísérlet mappa másokkal is megoszthat küldte el a pillanatkép is.
+
 ### <a name="viewing-charts-in-run-details"></a>Diagramok részleteinek megtekintése
 
 Különféle módon használhatja a naplózási metrikák rekord különböző típusú API-kat a futtatás során, és megtekintheti őket, mint a diagramok az Azure Portalon. 
@@ -259,13 +280,146 @@ Különféle módon használhatja a naplózási metrikák rekord különböző t
 |Jelentkezzen egy sor 2 numerikus oszlopok ismételten|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Kétváltozós vonaldiagram|
 |A numerikus oszlopok 2 naplótábláját|`run.log_table(name='Sine Wave', value=sines)`|Kétváltozós vonaldiagram|
 
+<a name="auto"></a>
+## <a name="understanding-automated-ml-charts"></a>Understanding automatikus ML-diagramok
+
+Egy jegyzetfüzet egy automatizált gépi Tanulási feladat elküldése után ezek futtatások előzményei a machine learning-szolgáltatás munkaterület található. 
+
+További információk:
++ [Diagramok és görbék képbesorolási modellek esetében](#classification)
++ [Diagramok és grafikonok, regressziós modellek](#regression)
++ [Modell lehetővé teszi azt ismertetik](#model-explain-ability-and-feature-importance)
+
+
+### <a name="how-to-see-run-charts"></a>Hogyan futtatási diagramok megjelenítéséhez:
+
+1. Lépjen a munkaterülethez. 
+
+1. Válassza ki **kísérletek** a munkaterület a bal oldali panelen.
+
+  ![Kísérlet menü képernyőképe](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_menu.PNG)
+
+1. Jelölje ki az Önt érdeklő kísérletet.
+
+  ![Kísérlet menü képernyőképe](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_list.PNG)
+
+1. A tábla válassza ki a Futtatás száma.
+
+   ![Kísérlet menü képernyőképe](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_run.PNG)
+
+1.  A tábla a modellhez, amely a kívánt vizsgálódáshoz iteráció számának kiválasztása
+
+   ![Kísérlet menü képernyőképe](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_model.PNG)
+
+
+
+### <a name="classification"></a>Besorolás
+
+Minden besorolás modell, amely az automatizált gépi tanulási funkciókat az Azure Machine Learning segítségével tekintheti meg a következő diagramok: 
++ [Keveredési mátrix](#confusion-matrix)
++ [Pontosság-visszahívási diagram](#precision-recall-chart)
++ [Fogadó működési jellemzői (vagy ROC)](#ROC)
++ [Átemelés görbévé](#lift-curve)
++ [Nyereség görbévé](#gains-curve)
++ [Hitelesítési diagram](#calibration-plot)
+
+#### <a name="confusion-matrix"></a>Keveredési mátrix
+
+Egy keveredési mátrixot egy osztályozási modell teljesítményét leírására szolgál. Minden egyes sor jeleníti meg az IGAZ osztály példányait, és minden oszlop felel meg a példányok, az előrejelzett osztály. A keveredési mátrix megfelelően osztályozott címkéket és a egy adott modell hibásan besorolt címkéit jeleníti meg.
+
+Az Azure Machine Learning osztályozási problémák, automatikusan biztosít mindegyik modellt, amely egy keveredési mátrixot. Az egyes keveredési mátrixot automatizált gépi Tanulási vörös, zöld és hibásan besorolt címkékként jelennek megfelelően osztályozott címkéket. A kör mérete az adott doboz minták számát jelöli. Emellett a szomszédos sávdiagramok minden egyes előre jelzett címke és az egyes igaz címke gyakorisága száma megtalálható. 
+
+1. példa: Egy osztályozási modell gyenge pontosságú ![gyenge pontosságú osztályozási modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion_matrix1.PNG)
+
+2. példa: Egy osztályozási modell nagy pontosságú (ideális) ![nagy pontosságú osztályozási modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion_matrix2.PNG)
+
+
+#### <a name="precision-recall-chart"></a>Pontosság-visszahívási diagram
+
+Az ezen a diagramon hasonlítsa össze a pontosság-visszahívási görbék egyes modellekre meghatározni, mely a modellnek van egy elfogadható pontosság és a visszaírási az adott üzleti probléma közötti kapcsolat. A diagram bemutatja a makró átlagos pontosság-visszahívási, a Micro átlagos pontosság-visszahívási és a egy modell minden osztály társított pontosság-visszahívási.
+
+A pontosság jelöli, hogy arra, hogy az összes példány megfelelően címkézése besorolás kifejezés. Visszaírási arra, hogy az összes példányát egy adott címkét az osztályozó által igénybe vett jelöli. A pontosság-visszahívási görbe két ezek a fogalmak közötti kapcsolatot mutatja. Ideális esetben a modell kellene pontosság 100 %-os és 100 %-os pontossággal.
+
+1. példa: Egy besorolási modell az alacsony pontosság és alacsony visszaírási ![alacsony pontosság és alacsony visszaírási osztályozási modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision_recall1.PNG)
+
+2. példa: Besorolási modell ~ 100 % -os pontosság és a ~ 100 % -os visszaírási (ideális) ![egy besorolási modell nagy pontosságú és visszaírási](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision_recall2.PNG)
+
+#### <a name="roc"></a>ROC
+
+Jellemző (vagy ROC) működő fogadó egy diagram, a megfelelő osztályozott címkék és a egy adott modell hibásan besorolt címkéit. ROC-görbe kevesebb adatot tartalmazó lehet, amikor nagy eltérés, mivel az adatkészletek képzési modellek nem jelenik meg a hamis pozitív címkéket.
+
+1. példa: Besorolási modell valódi címkéket alacsony és magas false (hamis) címke ![osztályozási modell a valódi címkéket alacsony és magas false (hamis) címke](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc1.PNG)
+
+2. példa: Besorolási modell valódi címkéket magas és alacsony false (hamis) címke ![valódi címkéket magas és alacsony false (hamis) címke osztályozási modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc2.PNG)
+
+#### <a name="lift-curve"></a>Átemelés görbévé
+
+Összehasonlíthatja a felvonó, a létrehozott modell automatikusan az Azure Machine Learning az alaptervhez annak érdekében, hogy az érték nyer, hogy az adott modell megtekintéséhez.
+
+Lift diagramok segítségével egy osztályozási modell teljesítményének értékeléséhez. Megmutatja, hogyan sokkal jobban várható, hogy a modell egy modell nélkül képest. 
+
+1. példa: Modell hajt végre egy véletlenszerű kijelölés modell rosszabb ![egy osztályozási modell, amelyek rosszabb, mint egy véletlenszerű kiválasztása](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift_curve1.PNG)
+
+2. példa: Modell hajt végre egy véletlenszerű kijelölés modell jobban ![osztályozási modell, amely jobb](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift_curve2.PNG)
+
+#### <a name="gains-curve"></a>Nyereség görbévé
+
+Az adatok minden egyes része egy osztályozási modell teljesítményét értékeli ki a nyereséget diagram. Az egyes PERCENTILIS mennyi jobban várható végrehajtásához egy véletlenszerű kijelölés modell összehasonlítja az adatkészlet jeleníti meg.
+
+A halmozott nyereség diagram segítségével válassza ki a besorolást megszakítási használatával, amely megfelel a modellből a kívánt nyereség százalékban. Ezt az információt biztosít egy másik módszer a megnézzük a kísérő növekedési diagramon az eredményeket.
+
+1. példa: Besorolási modell minimális nyereség ![minimális nyereség osztályozási modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains_curve1.PNG)
+
+2. példa: Besorolási modell jelentős nyereség ![jelentős nyereség osztályozási modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains_curve2.PNG)
+
+#### <a name="calibration-plot"></a>Hitelesítési diagram
+
+Az összes besorolási kapcsolatos problémák esetén a hitelesítési sor micro – átlag, a makró-átlagos és a egy adott prediktív modellt az egyes osztályok tekintheti meg. 
+
+Hitelesítési rajzot a prediktív modellek magabiztosan megjelenítésére szolgál. Ezt nem: Megjeleníti az előre jelzett valószínűség és a tényleges valószínűsége közötti kapcsolat, ahol "valószínűség" jelenti a valószínűsége, hogy az adott példány néhány címke alatt tartozik. Egy jól hitelesített modell igazítja az y = x sor, ahol a szolgáltatás ésszerűen abban az előrejelzéseket. Egy túlzott confident modell igazítja az y = 0 sort, amelyben az előre jelzett valószínűség megtalálható, de nem tényleges valószínűsége.
+
+1. példa: Egy jól hitelesített modell ![ jól hitelesített modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib_curve1.PNG)
+
+2. példa: Egy túlzott confident modell ![egy túlzott confident modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib_curve2.PNG)
+
+### <a name="regression"></a>Regresszió
+Minden regressziós modell az automatizált gépi tanulási funkciókat az Azure Machine Learning segítségével létrehozhat, a következő diagram látható: 
++ [Előre jelzett vs. Igaz](#pvt)
++ [Például hisztogramja](#histo)
+
+<a name="pvt"></a>
+
+#### <a name="predicted-vs-true"></a>Előre jelzett vs. True (Igaz)
+
+Előre jelzett vs. Igaz előre jelzett érték és a egy regressziós probléma a correlating IGAZ érték közötti kapcsolatot mutatja. Ez a diagram segítségével mérheti a modell teljesítményét, minél közelebb az y = x sor az előre jelzett értékek a következők, annál jobb a prediktív modell pontosságát.
+
+Minden egyes futás után megjelenik egy előre jelzett és minden egyes regressziós modell igaz grafikon. Adatok védelme érdekében értékek együtt vannak binned, és a egy oszlopdiagram a diagramterület alsó részén jelenik meg minden doboz méretét. Hiba történt a margók, ahol a modell lehet ideális megoldás értékkel megjelenítő világosabb terület árnyékolása a össze lehessen hasonlítani a prediktív modellben.
+
+1. példa: Egy regressziós modellt az előrejelzések kis pontosságú ![alacsony pontosságát az előrejelzések regressziós modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression1.PNG)
+
+2. példa: Egy regressziós modellt az előrejelzések a nagy pontosságú ![egy regressziós modellt, az előrejelzéseket a nagy pontosságú](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression2.PNG)
+
+<a name="histo"></a>
+
+#### <a name="histogram-of-residuals"></a>Például hisztogramja
+
+A fennmaradó megfigyelt y – az előre jelzett y jelöli. A hibahatáron az alacsony eltérés megjelenítéséhez, például a hisztogram kell alakúak lehetnek harang görbe 0 Eszközkezelőre. 
+
+1. példa: Regressziós modell a hibák az eltérés ![SA regressziós modellt a hibák az eltérés](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression3.PNG)
+
+2. példa: Egy regressziós modellt a hibák eloszlását még több ![hibák még több terjesztési regressziós modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression4.PNG)
+
+### <a name="model-explain-ability-and-feature-importance"></a>A modellekre teszi azt ismertetik, és a szolgáltatás fontosság
+
+Funkció fontosság biztosít, amely jelzi, hogy milyen értékes alapdokumentációjában volt a modell felépítése a pontszámot. A funkció fontos pontszám modell átfogó, valamint egy prediktív modellt az osztály egy tekintheti meg. Szolgáltatás / láthatja, hogyan viszonyul fontosságát, minden egyes osztály ellen, és teljes.
+
+![A szolgáltatás magyarázat képessége](./media/how-to-track-experiments/azure-machine-learning-auto-ml-feature_explain1.PNG)
+
 ## <a name="example-notebooks"></a>Példa notebookok
 A következő notebookok a jelen cikk fogalmait bemutatása:
-* [01.Getting-Started/01.train-within-notebook/01.train-within-notebook.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/01.train-within-notebook)
-* [01.Getting-Started/02.train-on-Local/02.train-on-local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local)
-* [01.Getting-Started/06.Logging-API/06.Logging-API.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/06.logging-api/06.logging-api.ipynb)
-
-Ezeket a notebookokat lekérése:
+* [How-to-use-azureml/Training/train-within-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training\train-within-notebook)
+* [How-to-use-azureml/Training/train-on-Local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
+* [How-to-use-azureml/Training/Logging-API/Logging-API.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

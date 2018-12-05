@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 12/03/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: 9dead2c8801340a736b6f67010a85f3dd34fbe85
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 5f52dfb4547cfac991387d333c3f5684544d691f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820258"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877510"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Folyamatos üzembe helyezés az Azure App Service-ben
 Ez a cikk bemutatja, hogyan konfigurálhatja a folyamatos üzembe helyezés [Azure App Service](app-service-web-overview.md). Az App Service lehetővé teszi, hogy a BitBucket, GitHub, a folyamatos üzembe helyezés és [Azure DevOps-szolgáltatásokkal](https://www.visualstudio.com/team-services/) kiindulásként a a legújabb frissítéseket a meglévő adattárból az egyik szolgáltatásba.
@@ -47,7 +47,7 @@ Az a **Build szolgáltató** lapon válassza ki a build-szolgáltatót, és katt
 
 Az a **konfigurálása** lapra, jelölje be a szervezet, tárházat, és az ágat, ahonnan a folyamatos üzembe helyezés. Ha befejezte, kattintson a **Folytatás**.
 
-### <a name="option-2-use-azure-devops-services-continuous-delivery"></a>2. lehetőség: használja a folyamatos készregyártás az Azure DevOps-szolgáltatásokkal
+### <a name="option-2-use-azure-pipelines-preview"></a>2. lehetőség: az Azure-folyamatok (előzetes verzió) használata
 
 > [!NOTE]
 > Az App Service a szükséges Azure-folyamatok létrehozására a szervezet az Azure DevOps-szolgáltatásokkal, az Azure-fiókkal kell rendelkeznie szerepe **tulajdonos** az Azure-előfizetésében.
@@ -90,15 +90,18 @@ Az a **összefoglalás** oldalon ellenőrizze a beállításokat, kattintson a *
 
 Konfiguráció befejezését követően a kijelölt adattárban új véglegesítéseket az App Service alkalmazásba folyamatosan vannak telepítve.
 
-## <a name="deploy-continuously-from-azure-devops-services"></a>Folyamatos üzembe helyezés az Azure DevOps-szolgáltatásokkal
+## <a name="deploy-continuously-from-azure-repos-devops-services"></a>Folyamatos üzembe helyezés az Azure-kódtárak (fejlesztési és üzemeltetési szolgáltatások)
 
-Ahhoz, hogy a folyamatos üzembe helyezés az Azure DevOps-szolgáltatásokkal, keresse meg az App Service-oldalra a [az Azure portal](https://portal.azure.com).
+Folyamatos üzembe helyezés a származó engedélyezéséhez [Azure Adattárakkal](https://docs.microsoft.com/azure/devops/repos/index), keresse meg az App Service-oldalra a [az Azure portal](https://portal.azure.com).
 
-A bal oldali menüben kattintson a **üzembe helyezési központ** > **Azure DevOps-szolgáltatásokkal** > **Folytatás**. 
+A bal oldali menüben kattintson a **üzembe helyezési központ** > **Azure Adattárakkal** > **Folytatás**. 
 
 ![](media/app-service-continuous-deployment/vsts-choose-source.png)
 
 Az a **Build szolgáltató** lapon válassza ki a build-szolgáltatót, és kattintson > **Folytatás**.
+
+> [!NOTE]
+> Ha egy már meglévő Azure DevOps-szolgáltatásokkal szervezet, amely nem szerepel a használni kívánt, kell [az Azure DevOps-szolgáltatásokkal szervezet összekapcsolása az Azure-előfizetés](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
 
 ### <a name="option-1-use-app-service-kudu-build-server"></a>1. lehetőség: használata App Service Kudu-buildelési kiszolgáló
 
@@ -111,9 +114,6 @@ Az a **konfigurálása** lapra, jelölje be a szervezet az Azure DevOps-szolgál
 >
 
 Az a **konfigurálása** lap a **kód** területen válassza ki a szervezet az Azure DevOps-szolgáltatásokkal, projekt, tárház és ágat, ahonnan a folyamatos üzembe helyezés. Ha befejezte, kattintson a **Folytatás**.
-
-> [!NOTE]
-> Ha egy már meglévő Azure DevOps-szolgáltatásokkal szervezet, amely nem szerepel a használni kívánt, kell [az Azure DevOps-szolgáltatásokkal szervezet összekapcsolása az Azure-előfizetés](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
 
 Az a **konfigurálása** lap a **összeállítása** területén adja meg a nyelvi keretrendszerébe, amely az Azure DevOps-szolgáltatásokkal a kiválasztott tárház az összeállítási feladatok futtatásához csatlakoznia kell. Ha befejezte, kattintson a **Folytatás**.
 
@@ -146,11 +146,11 @@ A bal oldali menüben kattintson a **üzembe helyezési központ** > **GitHub** 
 * [Az Azure használatával automatikusan létrehozhat egy CI/CD-folyamat számára egy ASP.NET 4-alkalmazás üzembe helyezése](https://www.visualstudio.com/docs/build/get-started/aspnet-4-ci-cd-azure-automatic)
 
 [Azure portal]: https://portal.azure.com
-[VSTS Portal]: https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx
+[Azure DevOps portal]: https://azure.microsoft.com/services/devops/
 [Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [A PowerShell használata az Azure-ban]: /powershell/azureps-cmdlets-docs
 [A Git dokumentációja]: http://git-scm.com/documentation
 
 [Adattár létrehozása (GitHub)]: https://help.github.com/articles/create-a-repo
 [Adattár létrehozása (BitBucket)]: https://confluence.atlassian.com/get-started-with-bitbucket/create-a-repository-861178559.html
-[Ismerkedés az Azure DevOps-szolgáltatásokkal]: https://www.visualstudio.com/docs/vsts-tfs-overview
+[Ismerkedés az Azure DevOps-szolgáltatásokkal]: https://docs.microsoft.com/azure/devops/user-guide/devops-alm-overview

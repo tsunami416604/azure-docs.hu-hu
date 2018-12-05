@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 453101b1f5368dba9aa9dbfc89f5b893d42a0542
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 280df7ff80e637539f85c5d7ddafbb564b8fe562
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52684592"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879553"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Adatfolyamatok létrehozása a Data Collector API-val
 
-A [Log Analytics Data Collector API](../../log-analytics/log-analytics-data-collector-api.md) lehetővé teszi, hogy egyéni az adatok importálása a Log analyticsbe. A csak követelmények, hogy az adatok JSON-formátumú, és 30 MB vagy kisebb szegmensek felosztása kell-e. Ez egy teljesen rugalmas mechanizmust, amely számos módon lehet csatlakoztatni az: közvetlenül az alkalmazásból küldött adatokból való egyszeri ad hoc ad hoc tölt fel. Ez a cikk néhány gyakori forgatókönyv esetén kiindulási pont lesz szerkezeti: töltse fel az adatok rendszeres, automatizált alapon-fájlban tárolt kell. Amíg a folyamat megjelenik itt nem lesz a legtöbb nagy teljesítményű, vagy ellenkező esetben optimalizált, célja, hogy saját éles folyamat felépítésével bajlódnia felé kiindulási pontként szolgál.
+A [Log Analytics Data Collector API](../../azure-monitor/platform/data-collector-api.md) lehetővé teszi, hogy egyéni az adatok importálása a Log analyticsbe. A csak követelmények, hogy az adatok JSON-formátumú, és 30 MB vagy kisebb szegmensek felosztása kell-e. Ez egy teljesen rugalmas mechanizmust, amely számos módon lehet csatlakoztatni az: közvetlenül az alkalmazásból küldött adatokból való egyszeri ad hoc ad hoc tölt fel. Ez a cikk néhány gyakori forgatókönyv esetén kiindulási pont lesz szerkezeti: töltse fel az adatok rendszeres, automatizált alapon-fájlban tárolt kell. Amíg a folyamat megjelenik itt nem lesz a legtöbb nagy teljesítményű, vagy ellenkező esetben optimalizált, célja, hogy saját éles folyamat felépítésével bajlódnia felé kiindulási pontként szolgál.
 
 ## <a name="example-problem"></a>A példában a probléma
 Ez a cikk további részében hogy megvizsgálja a lapmegtekintések adatainak az Application insights szolgáltatásban. A képzeletbeli esetünkben korrelációját, ha a cél az azonosítása, ahol azt kell lennie költségkeret-beállítási a legtöbbet a világ minden ország népesség tartalmazó egyéni adatok alapértelmezés szerint az Application Insights SDK által gyűjtött földrajzi adatok szeretnénk marketing dollár. 
@@ -173,4 +173,4 @@ Ez a cikk egy működő prototípust, amely mögötti logika is alkalmazható fe
 
 
 ## <a name="next-steps"></a>További lépések
-Tudjon meg többet a [adatgyűjtő API](../../log-analytics/log-analytics-data-collector-api.md) használatával írhat adatokat a Log Analyticsbe bármely REST API-ügyfélből.
+Tudjon meg többet a [adatgyűjtő API](../../azure-monitor/platform/data-collector-api.md) használatával írhat adatokat a Log Analyticsbe bármely REST API-ügyfélből.

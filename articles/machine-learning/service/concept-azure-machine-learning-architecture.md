@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.author: haining
 author: hning86
 ms.reviewer: larryfr
-ms.date: 10/24/2018
-ms.openlocfilehash: 0acf41cc0a2673ba665d1815b493df928fa4507d
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.date: 12/04/2018
+ms.openlocfilehash: 054fba06ea4a372fe59fb1ef0c7aa51e72558210
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706806"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877394"
 ---
 # <a name="how-the-azure-machine-learning-service-works-architecture-and-concepts"></a>Az Azure Machine Learning szolgáltatás működése: architektúra és fogalmak
 
@@ -33,8 +33,6 @@ A munkafolyamat általában kövesse az alábbi lépéseket:
 1. __Hozzon létre egy rendszerképet__ , és regisztrálja a a __regisztrációs adatbázisba__. 
 1. __A lemezkép telepítése__ , egy __webszolgáltatás__ az Azure-ban.
 
-
-[!INCLUDE [aml-preview-note](../../../includes/aml-preview-note.md)]
 
 > [!NOTE]
 > Amíg ez a dokumentum az Azure Machine Learning által használt kifejezések és fogalmak meghatározása, kifejezések és fogalmak az Azure platform nem definiál. További információ az Azure-platform-terminológia, tekintse meg a [Microsoft Azure szószedet](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
@@ -65,7 +63,7 @@ Amikor létrehoz egy új munkaterületet, automatikusan létrehoz több Azure-a 
 
 Az alábbi ábrán a besorolás, a munkaterület:
 
-[![Munkaterület besorolás](./media/concept-azure-machine-learning-architecture/taxonomy.png)](./media/concept-azure-machine-learning-architecture/taxonomy.png#lightbox)
+[![Munkaterület besorolás](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 ## <a name="model"></a>Modell
 
@@ -169,19 +167,23 @@ Egy számítási célnak, hogy az a tanítási szkriptet futtatni, vagy a szolg�
 | Számítási célt | Képzés | Környezet |
 | ---- |:----:|:----:|
 | A helyi számítógépen | ✓ | &nbsp; |
+| Az Azure Machine Learning Compute | ✓ | &nbsp; |
 | Linux rendszerű virtuális gép az Azure-ban</br>(például a Data Science virtuális gép) | ✓ | &nbsp; |
-| Az Azure Batch AI-fürtön | ✓ | &nbsp; |
 | Azure Databricks | ✓ | &nbsp; | &nbsp; |
 | Azure Data Lake Analytics | ✓ | &nbsp; |
 | Az Apache Spark for HDInsight | ✓ | &nbsp; |
-| Azure Container Instance | ✓ | ✓ |
+| Azure Container Instance | &nbsp; | ✓ |
 | Azure Kubernetes Service | &nbsp; | ✓ |
 | Azure IoT Edge | &nbsp; | ✓ |
 | Project Brainwave</br>(Field-programmable gate array) | &nbsp; | ✓ |
 
 Számítási célnak csatolt munkaterület. Számítási, a munkaterület felhasználók által megosztott célok nem a helyi gépen.
 
-A legtöbb számítási céljainak közvetlenül a munkaterület az Azure Portalon, az Azure Machine Learning SDK vagy az Azure CLI használatával hozható létre. Ha rendelkezik (például az Azure Portalon vagy az Azure CLI) egy másik folyamat által létrehozott számítási célnak, adhat hozzá (csatolás) őket a munkaterülethez. Néhány számítási céljainak kell létrehozni a munkaterületen kívül, és ezután csatolja.
+### <a name="managed-and-unmanaged-compute-targets"></a>Felügyelt és nem felügyelt számítási célnak
+
+**Felügyelt** számítási tárolók létrehozása és felügyelete az Azure Machine Learning szolgáltatás által. Ezek a számítási célok ML feladatokra lettek optimalizálva. __Az Azure Machine Learning Compute__ az egyetlen felügyelt számítási célnak jelenleg (2018. December 4.). A jövőben további felügyelt számítási célnak vehetők fel. Ml-es számítási példányok az Azure Portalon, az Azure Machine Learning SDK vagy az Azure CLI használatával közvetlenül a munkaterület hozható létre. Minden egyéb számítási célokhoz kell létrehozni a munkaterületen kívül, és ezután csatlakozik.
+
+**Nem felügyelt** nincsenek tárolók számítási kezeli az Azure Machine Learning szolgáltatás. Szükség lehet kívül az Azure Machine Learning létrehozása őket, és csatolja őket a munkaterület használata előtt. Ezek a számítási célok karbantartása további lépések szükségesek, vagy a Machine Learning számítási feladatokhoz a teljesítmény javítása.
 
 A képzési számítási céljának kiválasztásakor információkért lásd: a [kiválasztása és használata egy számítási célnak a modell betanításához](how-to-set-up-training-targets.md) dokumentumot.
 

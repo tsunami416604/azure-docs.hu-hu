@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: af2ecad79bef0889ca0d1e47171ebaf9777418ca
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2aa2f4e55d375f6ed7960af8bbe327d45b5ea025
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833397"
+ms.locfileid: "52871761"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Az egyéni nézetek létrehozása az adatforrásnézet-tervezőből a Log Analytics használatával
 Az adatforrásnézet-tervezőből használatával [Azure Log Analytics](../../azure-monitor/log-query/log-query-overview.md), különböző egyéni nézeteket hozhat létre az Azure Portalon, amelyek segítségével adatokat a Log Analytics-munkaterület megjelenítése. Ez a cikk áttekintést nyújt az adatforrásnézet-tervezőből és eljárások létrehozása és módosítása az egyéni nézetek.
@@ -55,7 +55,7 @@ A beállítások a következő táblázat ismerteti:
 | Beállítás | Leírás |
 |:--|:--|
 | Frissítés   | Frissíti a nézetet a legújabb adatokkal. | 
-| Elemzés | Megnyílik a [bővített analitika portál](../../log-analytics/log-analytics-log-search-portals.md) naplólekérdezések az adatok elemzéséhez. |
+| Elemzés | Megnyílik a [bővített analitika portál](../../azure-monitor/log-query/portals.md) naplólekérdezések az adatok elemzéséhez. |
 | Szerkesztés       | A nézet megnyitása az adatforrásnézet-tervezőből tartalmának és konfigurációs szerkesztéséhez.  |
 | Klónozás      | Létrehoz egy új nézetet, és megnyílik a adatforrásnézet-tervezőből. Az új nézet neve ugyanaz, mint az eredeti nevén, de nem *másolási* rá hozzáfűzve. |
 | Dátumtartomány | A dátum és idő dátumtartomány-szűrő, amely megtalálható a nézet az adatok megadása A dátumtartomány bármely dátumtartományokat lekérdezést a nézetben beállítása előtt a rendszer alkalmazza.  |
