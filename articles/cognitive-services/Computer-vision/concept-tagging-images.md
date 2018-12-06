@@ -10,18 +10,18 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 0025cdcfaa64a262a5ca54ab4db5a84f6a5768ba
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7e9181b6e805a768ca5dd8ed558b8feea45f22d3
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338913"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960907"
 ---
 # <a name="tagging-images"></a>Képek címkézése
 
-Számítógépes Látástechnológia alapján ad vissza címkéket több mint 2000 felismerhető objektumok, tárgy, táj és műveleteket. Ha a címkék olyan nem egyértelmű vagy nem közismert, az API-válasz biztosít "tippek" ismert beállítását a környezetben a címke jelentésének értelmezéséhez. Címkék nem egy besorolás szerint vannak rendezve, és nincs öröklési hierarchiát létezik. Tartalom címkék gyűjteménye a lemezkép teljes mondatokban formázott emberi olvasható nyelveként megjelenik a "leírás" alapját képezi. Vegye figyelembe, hogy ezen a ponton angol Képleírás az egyetlen támogatott nyelv.
+Számítógépes Látástechnológia alapján ad vissza címkéket ezer felismerhető objektumok, tárgy, táj és műveleteket. Amennyiben a címkék félreérthetőek vagy nem közismertek, az API válasza „tippeket” tartalmaz a címke adott környezetben való értelmezésének megkönnyítése érdekében. A címkékhez nincs besorolási rendszer és öröklési hierarchia. A tartalomcímkék gyűjteménye képezi a kép ember által olvasható nyelven, teljes mondatokban megformált „leírásának” alapját. Fontos tudni, hogy a képleírásokhoz jelenleg csak az angol nyelv támogatott.
 
-Kép feltöltése vagy a kép URL-címének megadása után a Látástechnológiai algoritmus kimeneti címkék az objektumok, a tárgy és a műveletek azonosítja a kép alapján. Címkézés nem korlátozódik a fő tulajdonos, például az előtérben, a személy, de is tartalmaz, a beállítás (belső vagy külső) bútordarab, eszközök, üzemek, például állatokat, Kellékek, kütyük stb.
+Kép feltöltése vagy a kép URL-címének megadása után a Látástechnológiai algoritmus kimeneti címkék az objektumok, a tárgy és a műveletek azonosítja a kép alapján. A címkézés nem korlátozódik a kép fő témájára, például az előtérben szereplő személyre, hanem magában foglalja a környezetet (beltér vagy kültér), bútorokat, eszközöket, növényeket, állatokat, kiegészítőket, készülékeket stb.
 
 ## <a name="image-tagging-example"></a>Kép címkézési példa
 

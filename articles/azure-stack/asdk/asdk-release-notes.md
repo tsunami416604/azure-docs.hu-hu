@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: c9ac1c228fd3fd4ba666fd7881e387d79929ed9a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a4be229e1c491c3062b14e631cfec5b14185bb82
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869959"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957657"
 ---
 # <a name="asdk-release-notes"></a>ASDK kibocsátási megjegyzései  
-Ez a cikk ismerteti fejlesztései, javításokat és ismert problémák az Azure Stack Development Kit (ASDK). Ha nem biztos abban, hogy melyik verziót futtatja, akkor az [ellenőrizhető a portál használatával](.\.\azure-stack-updates.md#determine-the-current-version).
+Ez a cikk ismerteti fejlesztései, javításokat és ismert problémák az Azure Stack Development Kit (ASDK). Ha nem biztos abban, hogy melyik verziót futtatja, akkor az [ellenőrizhető a portál használatával](../azure-stack-updates.md#determine-the-current-version).
 
 > What's new in a ASDK való feliratkozással vétele a [ ![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [hírcsatorna](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#).
 
@@ -180,13 +180,13 @@ További információkért lásd: [syslog-továbbítás az Azure Stack](../azure
 A build tartalmaz a következő fejlesztések és javítások az Azure Stackhez.  
 
 <!-- 1658937 | ASDK, IS --> 
-- **Indítsa el a biztonsági mentések előre meghatározott ütemezés szerint** -telepíthetőek, mint az Azure Stack is automatikusan aktiválja infrastruktúra biztonsági mentések rendszeres időközönként az emberi beavatkozás kiküszöbölése érdekében. Az Azure Stack biztonsági mentésekhez, régebbi, mint a meghatározott adatmegőrzési időszaka a külső megosztást is automatikusan törölni fogja. További információkért lásd: [biztonsági mentés engedélyezése az Azure Stack a PowerShell-lel](.\.\azure-stack-backup-enable-backup-powershell.md).
+- **Indítsa el a biztonsági mentések előre meghatározott ütemezés szerint** -telepíthetőek, mint az Azure Stack is automatikusan aktiválja infrastruktúra biztonsági mentések rendszeres időközönként az emberi beavatkozás kiküszöbölése érdekében. Az Azure Stack biztonsági mentésekhez, régebbi, mint a meghatározott adatmegőrzési időszaka a külső megosztást is automatikusan törölni fogja. További információkért lásd: [biztonsági mentés engedélyezése az Azure Stack a PowerShell-lel](../azure-stack-backup-enable-backup-powershell.md).
 
 <!-- 2496385 | ASDK, IS -->  
-- **A hozzáadott adatátviteli időt a teljes biztonsági mentés időpontja.** További információkért lásd: [biztonsági mentés engedélyezése az Azure Stack a PowerShell-lel](.\.\azure-stack-backup-enable-backup-powershell.md).
+- **A hozzáadott adatátviteli időt a teljes biztonsági mentés időpontja.** További információkért lásd: [biztonsági mentés engedélyezése az Azure Stack a PowerShell-lel](../azure-stack-backup-enable-backup-powershell.md).
 
 <!-- 1702130 | ASDK, IS --> 
-- **Biztonsági mentési külső kapacitás most a megfelelő kapacitást a külső megosztás jeleníti meg.** (Ez korábban rögzített kód 10 GB-ra.) További információkért lásd: [biztonsági mentés engedélyezése az Azure Stack a PowerShell-lel](.\.\azure-stack-backup-enable-backup-powershell.md).
+- **Biztonsági mentési külső kapacitás most a megfelelő kapacitást a külső megosztás jeleníti meg.** (Ez korábban rögzített kód 10 GB-ra.) További információkért lásd: [biztonsági mentés engedélyezése az Azure Stack a PowerShell-lel](../azure-stack-backup-enable-backup-powershell.md).
  
 <!-- 2753130 |  IS, ASDK   -->  
 - **Az Azure Resource Manager-sablonok mostantól támogatják a feltétel elem** – most már telepítheti egy erőforrást egy Azure Resource Manager-sablonban vonatkozó feltétellel. A sablon üzembe helyezéséhez egy erőforrást, egy feltételt, például kiértékelése, ha a jelenlegi paraméter értéke alapján is tervezhet. Feltételként egy sablon használatával kapcsolatos információkért lásd: [erőforrás feltételes üzembe helyezése](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/conditional-deploy) és [változók szakaszban az Azure Resource Manager-sablonok](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-templates-variables) az Azure dokumentációjában olvashatók. 
@@ -194,7 +194,7 @@ A build tartalmaz a következő fejlesztések és javítások az Azure Stackhez.
    Is használhatja a sablonok [erőforrások üzembe helyezése az egynél több előfizetésen vagy erőforráscsoporton](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-cross-resource-group-deployment).  
 
 <!--2753073 | IS, ASDK -->  
-- **A rendszer frissítette az API a Microsoft.Network erőforrás Verziótámogatás** támogatását olyan API-verzió 2017-10-01, 2015-06-15 az Azure Stack hálózati erőforrásokhoz. 2017-10-01-es és a 2015-06-15 közötti erőforrás-verziók támogatása nem érhető el ebben a kiadásban. Tekintse meg [Azure Stack hálózati szempontjai](.\.\user\azure-stack-network-differences.md) funkcióinak különbségeit.
+- **A rendszer frissítette az API a Microsoft.Network erőforrás Verziótámogatás** támogatását olyan API-verzió 2017-10-01, 2015-06-15 az Azure Stack hálózati erőforrásokhoz. 2017-10-01-es és a 2015-06-15 közötti erőforrás-verziók támogatása nem érhető el ebben a kiadásban. Tekintse meg [Azure Stack hálózati szempontjai](../user/azure-stack-network-differences.md) funkcióinak különbségeit.
 
 <!-- 2272116 | IS, ASDK   -->  
 - **Az Azure Stack megjelenésével támogatottá fordított DNS-lekérdezések a kívülről elérhető az Azure Stack-infrastruktúra-végpontokra** (amely a portál, adminportal, felügyeleti és adminmanagement). Ez lehetővé teszi az Azure Stack külső végpont nevének IP-címről fogja megoldani.
@@ -222,7 +222,7 @@ A build tartalmaz a következő fejlesztések és javítások az Azure Stackhez.
 - **Az Azure Resource Manager tartalmazza a régió nevét.** Ebben a kiadásban objektumokat beolvasni az Azure Resource Manager most már tartalmazza a régió neve attribútum. Ha egy meglévő PowerShell-szkriptet közvetlenül továbbítja az objektum más parancsmagok, a parancsfájl hibaüzenet és sikertelen lesz. Azure Resource Manager megfelelő működés, és megköveteli a hívó ügyfél régió attribútum kivonása céljából. További információ az Azure Resource Manager lásd [Azure Resource Manager dokumentációja](https://docs.microsoft.com/azure/azure-resource-manager/).
 
 <!-- TBD | IS, ASDK -->  
-- **Áthelyezése előfizetések között a delegált szolgáltatók.** Most már továbbléphet az előfizetések közötti új vagy meglévő Directory ugyanazt bérlőhöz tartozó delegált szolgáltatói előfizetések. Az alapértelmezett szolgáltatója előfizetéshez tartozó előfizetéseket is áthelyezhetők a Directory-bérlőben azonos delegált szolgáltatói előfizetések. További információ: [ajánlat delegálása az Azure Stack](.\.\azure-stack-delegated-provider.md).
+- **Áthelyezése előfizetések között a delegált szolgáltatók.** Most már továbbléphet az előfizetések közötti új vagy meglévő Directory ugyanazt bérlőhöz tartozó delegált szolgáltatói előfizetések. Az alapértelmezett szolgáltatója előfizetéshez tartozó előfizetéseket is áthelyezhetők a Directory-bérlőben azonos delegált szolgáltatói előfizetések. További információ: [ajánlat delegálása az Azure Stack](../azure-stack-delegated-provider.md).
  
 <!-- 2536808 IS ASDK --> 
 - **Virtuális gép létrehozáskor továbbfejlesztett** rendszerképek az Azure marketplace-ről letöltött használatával létrehozott virtuális gépek számára.
@@ -246,7 +246,7 @@ A build tartalmaz a következő fejlesztések és javítások az Azure Stackhez.
 - A biztonsági mentési listában most frissíti a külső megosztást a manuálisan törölje a biztonsági mentés során.
 
 <!-- 2360715 |  ASDK, IS -->  
-- Adatközpont integrációja beállításakor, már nem elérhető az AD FS metaadatait tartalmazó fájl egy megosztást. További információkért lásd: [összevonási metaadatait tartalmazó fájl azáltal, hogy az AD FS-integráció beállításával](.\.\azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file). 
+- Adatközpont integrációja beállításakor, már nem elérhető az AD FS metaadatait tartalmazó fájl egy megosztást. További információkért lásd: [összevonási metaadatait tartalmazó fájl azáltal, hogy az AD FS-integráció beállításával](../azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file). 
 
 <!-- 2388980 | ASDK, IS --> 
 - Hogy kijavítva, hogy megakadályozta abban a rendelt felhasználók egy meglévő nyilvános IP-címet, amely korábban korábban hozzárendelve egy hálózati adapter vagy egy új hálózati adapter vagy a terheléselosztó a terheléselosztó.  
@@ -269,7 +269,7 @@ A build tartalmaz a következő fejlesztések és javítások az Azure Stackhez.
 <!--  TBD ASDK --> 
 - A virtuális gép, amelyen a jogosultság végpontja (EGP) 4GB-ra nőtt. A virtuális gép a ASDK AzS-ERCS01 neve.
 
-- <!--  TBD – IS, ASDK --> *Alapszintű A* virtuálisgép-méretek esetében kivezettük [virtuálisgép-méretezési csoportok létrehozása](.\.\azure-stack-compute-add-scalesets.md) (VMSS) a portálon keresztül. Ez a méret a VMSS létrehozásához, használja a PowerShell vagy a sablont. 
+- <!--  TBD – IS, ASDK --> *Alapszintű A* virtuálisgép-méretek esetében kivezettük [virtuálisgép-méretezési csoportok létrehozása](../azure-stack-compute-add-scalesets.md) (VMSS) a portálon keresztül. Ez a méret a VMSS létrehozásához, használja a PowerShell vagy a sablont. 
 
 ### <a name="known-issues"></a>Ismert problémák
 
@@ -283,7 +283,7 @@ A build tartalmaz a következő fejlesztések és javítások az Azure Stackhez.
 - Nem lehet törölni a felhasználói előfizetés, mint egy kiegészítő csomag hozzáadott tervek, akkor is, ha a csomag eltávolítása a felhasználói előfizetés. A terv marad mindaddig, amíg az előfizetéseket, hogy a kiegészítő csomagot is törlődik. 
 
 <!--2760466 – IS  ASDK --> 
-- Amikor telepít egy új Azure Stack-környezet, amely ebben a verzióban fut, a riasztás azt jelzi, *aktiválás szükséges* nem jelenítik meg. [Az aktiválás](.\.\azure-stack-registration.md) marketplace szindikálási használatához szükség. 
+- Amikor telepít egy új Azure Stack-környezet, amely ebben a verzióban fut, a riasztás azt jelzi, *aktiválás szükséges* nem jelenítik meg. [Az aktiválás](../azure-stack-registration.md) marketplace szindikálási használatához szükség. 
 
 <!-- TBD - IS ASDK --> 
 - A két felügyeleti előfizetés-típus verziójú 1804-es verzióban bevezetett nem használható. Az előfizetés-típusok a következők **előfizetés mérési**, és **Használatalapú előfizetés**. Ezek a típusok előfizetés **előfizetés mérési**, és **Használatalapú előfizetés**. Ezek a típusok előfizetés új Azure Stack-környezetek verziójától kezdve az 1804 láthatók, de még nem használatra kész. Ön továbbra is használja a **alapértelmezett szolgáltatói előfizetés** típusa.
@@ -417,17 +417,17 @@ A build tartalmaz a következő fejlesztések és javítások az Azure Stackhez.
 ### <a name="new-features"></a>Új funkciók
 A build tartalmaz a következő fejlesztések és javítások az Azure Stackhez.  
 
-- <!-- 1658937 | ASDK, IS --> **Indítsa el a biztonsági mentések előre meghatározott ütemezés szerint** -telepíthetőek, mint az Azure Stack is automatikusan aktiválja infrastruktúra biztonsági mentések rendszeres időközönként az emberi beavatkozás kiküszöbölése érdekében. Az Azure Stack biztonsági mentésekhez, régebbi, mint a meghatározott adatmegőrzési időszaka a külső megosztást is automatikusan törölni fogja. További információkért lásd: [biztonsági mentés engedélyezése az Azure Stack a PowerShell-lel](.\.\azure-stack-backup-enable-backup-powershell.md).
+- <!-- 1658937 | ASDK, IS --> **Indítsa el a biztonsági mentések előre meghatározott ütemezés szerint** -telepíthetőek, mint az Azure Stack is automatikusan aktiválja infrastruktúra biztonsági mentések rendszeres időközönként az emberi beavatkozás kiküszöbölése érdekében. Az Azure Stack biztonsági mentésekhez, régebbi, mint a meghatározott adatmegőrzési időszaka a külső megosztást is automatikusan törölni fogja. További információkért lásd: [biztonsági mentés engedélyezése az Azure Stack a PowerShell-lel](../azure-stack-backup-enable-backup-powershell.md).
 
-- <!-- 2496385 | ASDK, IS -->  **A hozzáadott adatátviteli időt a teljes biztonsági mentés időpontja.** További információkért lásd: [biztonsági mentés engedélyezése az Azure Stack a PowerShell-lel](.\.\azure-stack-backup-enable-backup-powershell.md).
+- <!-- 2496385 | ASDK, IS -->  **A hozzáadott adatátviteli időt a teljes biztonsági mentés időpontja.** További információkért lásd: [biztonsági mentés engedélyezése az Azure Stack a PowerShell-lel](../azure-stack-backup-enable-backup-powershell.md).
 
--   <!-- 1702130 | ASDK, IS -->  **Biztonsági mentési külső kapacitás most a megfelelő kapacitást a külső megosztás jeleníti meg.** (Ez korábban rögzített kód 10 GB-ra.) További információkért lásd: [biztonsági mentés engedélyezése az Azure Stack a PowerShell-lel](.\.\azure-stack-backup-enable-backup-powershell.md).
+-   <!-- 1702130 | ASDK, IS -->  **Biztonsági mentési külső kapacitás most a megfelelő kapacitást a külső megosztás jeleníti meg.** (Ez korábban rögzített kód 10 GB-ra.) További információkért lásd: [biztonsági mentés engedélyezése az Azure Stack a PowerShell-lel](../azure-stack-backup-enable-backup-powershell.md).
  
 - <!-- 2753130 |  IS, ASDK   -->  **Az Azure Resource Manager-sablonok mostantól támogatják a feltétel elem** – most már telepítheti egy erőforrást egy Azure Resource Manager-sablonban vonatkozó feltétellel. A sablon üzembe helyezéséhez egy erőforrást, egy feltételt, például kiértékelése, ha a jelenlegi paraméter értéke alapján is tervezhet. Feltételként egy sablon használatával kapcsolatos információkért lásd: [erőforrás feltételes üzembe helyezése](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/conditional-deploy) és [változók szakaszban az Azure Resource Manager-sablonok](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-templates-variables) az Azure dokumentációjában olvashatók. 
 
    Is használhatja a sablonok [erőforrások üzembe helyezése az egynél több előfizetésen vagy erőforráscsoporton](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-cross-resource-group-deployment).  
 
-- <!--2753073 | IS, ASDK -->  **A rendszer frissítette az API a Microsoft.Network erőforrás Verziótámogatás** támogatását olyan API-verzió 2017-10-01, 2015-06-15 az Azure Stack hálózati erőforrásokhoz.  2017-10-01-es és a 2015-06-15 közötti erőforrás-verziók támogatása nem érhető el ebben a kiadásban, de egy későbbi kiadásban fog szerepelni.  Tekintse meg [Azure Stack hálózati szempontjai](.\.\user\azure-stack-network-differences.md) funkcióinak különbségeit.
+- <!--2753073 | IS, ASDK -->  **A rendszer frissítette az API a Microsoft.Network erőforrás Verziótámogatás** támogatását olyan API-verzió 2017-10-01, 2015-06-15 az Azure Stack hálózati erőforrásokhoz.  2017-10-01-es és a 2015-06-15 közötti erőforrás-verziók támogatása nem érhető el ebben a kiadásban, de egy későbbi kiadásban fog szerepelni.  Tekintse meg [Azure Stack hálózati szempontjai](../user/azure-stack-network-differences.md) funkcióinak különbségeit.
 
 - <!-- 2272116 | IS, ASDK   -->  **Az Azure Stack megjelenésével támogatottá fordított DNS-lekérdezések a kívülről elérhető az Azure Stack-infrastruktúra-végpontokra** (amely a portál, adminportal, felügyeleti és adminmanagement). Ez lehetővé teszi az Azure Stack külső végpont nevének IP-címről fogja megoldani.
 
@@ -444,11 +444,11 @@ A build tartalmaz a következő fejlesztések és javítások az Azure Stackhez.
 
   Mivel ez a szolgáltatás még előzetes verzióban érhető el, akkor ne hagyatkozzon, az éles környezetben.
 
-  További információkért lásd: [syslog-továbbítás az Azure Stack](.\.\azure-stack-integrate-security.md).
+  További információkért lásd: [syslog-továbbítás az Azure Stack](../azure-stack-integrate-security.md).
 
 - <!-- ####### | IS, ASDK -->  **Az Azure Resource Manager tartalmazza a régió nevét.** Ebben a kiadásban objektumokat beolvasni az Azure Resource Manager most már tartalmazza a régió neve attribútum. Ha egy meglévő PowerShell-szkriptet közvetlenül továbbítja az objektum más parancsmagok, a parancsfájl hibaüzenet és sikertelen lesz. Azure Resource Manager megfelelő működés, és megköveteli a hívó ügyfél régió attribútum kivonása céljából. További információ az Azure Resource Manager lásd [Azure Resource Manager dokumentációja](https://docs.microsoft.com/azure/azure-resource-manager/).
 
-- <!-- TBD | IS, ASDK -->  **Áthelyezése előfizetések között a delegált szolgáltatók.** Most már továbbléphet az előfizetések közötti új vagy meglévő Directory ugyanazt bérlőhöz tartozó delegált szolgáltatói előfizetések. Az alapértelmezett szolgáltatója előfizetéshez tartozó előfizetéseket is áthelyezhetők a Directory-bérlőben azonos delegált szolgáltatói előfizetések. További információ: [ajánlat delegálása az Azure Stack](.\.\azure-stack-delegated-provider.md).
+- <!-- TBD | IS, ASDK -->  **Áthelyezése előfizetések között a delegált szolgáltatók.** Most már továbbléphet az előfizetések közötti új vagy meglévő Directory ugyanazt bérlőhöz tartozó delegált szolgáltatói előfizetések. Az alapértelmezett szolgáltatója előfizetéshez tartozó előfizetéseket is áthelyezhetők a Directory-bérlőben azonos delegált szolgáltatói előfizetések. További információ: [ajánlat delegálása az Azure Stack](../azure-stack-delegated-provider.md).
  
 - <!-- 2536808 IS ASDK --> **Virtuális gép létrehozáskor továbbfejlesztett** rendszerképek az Azure marketplace-ről letöltött használatával létrehozott virtuális gépek számára.
 
@@ -464,7 +464,7 @@ A build tartalmaz a következő fejlesztések és javítások az Azure Stackhez.
 
 - <!-- 2215948 |  ASDK, IS --> A biztonsági mentési listában most frissíti a külső megosztást a manuálisan törölje a biztonsági mentés során.
 
-- <!-- 2360715 |  ASDK, IS -->  Adatközpont integrációja beállításakor, már nem elérhető az AD FS metaadatait tartalmazó fájl egy megosztást. További információkért lásd: [összevonási metaadatait tartalmazó fájl azáltal, hogy az AD FS-integráció beállításával](.\.\azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file). 
+- <!-- 2360715 |  ASDK, IS -->  Adatközpont integrációja beállításakor, már nem elérhető az AD FS metaadatait tartalmazó fájl egy megosztást. További információkért lásd: [összevonási metaadatait tartalmazó fájl azáltal, hogy az AD FS-integráció beállításával](../azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file). 
 
 - <!-- 2388980 | ASDK, IS --> Hogy kijavítva, hogy megakadályozta abban a rendelt felhasználók egy meglévő nyilvános IP-címet, amely korábban korábban hozzárendelve egy hálózati adapter vagy egy új hálózati adapter vagy a terheléselosztó a terheléselosztó.  
 
@@ -511,7 +511,7 @@ A build tartalmaz a következő fejlesztések és javítások az Azure Stackhez.
 - Illesztőprogram-frissítések nem alkalmazhat egy OEM-kiterjesztési csomag segítségével az Azure Stack jelen verziójában.  Nem áll megkerülő megoldás a probléma.
  
 <!-- TBD - IS ASDK --> 
-- Lehetővé teszi [, nyisson egy új támogatási kérelmet a legördülő listából](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support) a belül a felügyeleti portálon nem érhető el. Ehelyett használja a következő hivatkozásra:     
+- Lehetővé teszi [, nyisson egy új támogatási kérelmet a legördülő listából](../azure-stack-manage-portals.md#quick-access-to-help-and-support) a belül a felügyeleti portálon nem érhető el. Ehelyett használja a következő hivatkozásra:     
     - Az Azure Stack fejlesztői készletének használata https://aka.ms/azurestackforum.    
 
 <!-- 2403291 - IS ASDK --> 
@@ -605,7 +605,7 @@ A build tartalmaz a következő fejlesztések és javítások az Azure Stackhez.
 <!-- 2292271 - IS ASDK --> 
 - Ha megemeli egy kvótát egy hálózati erőforrás-ajánlat és a egy bérlői előfizetéshez társított csomag részét képező, a rendszer nem alkalmazza az új határértéket előfizetéshez. Azonban az új határértéket nő, a kvóta növelése után létrehozott új előfizetések a alkalmazni.
 
-  A probléma megkerüléséhez használja egy kiegészítő csomagot egy hálózati kvóta növeléséhez, amikor a csomag már társítva van egy előfizetést. További információkért lásd: hogyan [egy kiegészítő csomag elérhetővé](.\.\azure-stack-subscribe-plan-provision-vm.md#to-make-an-add-on-plan-available).
+  A probléma megkerüléséhez használja egy kiegészítő csomagot egy hálózati kvóta növeléséhez, amikor a csomag már társítva van egy előfizetést. További információkért lásd: hogyan [egy kiegészítő csomag elérhetővé](../azure-stack-subscribe-plan-provision-vm.md#to-make-an-add-on-plan-available).
 
 <!-- 2304134 IS ASDK --> 
 - DNS-zóna erőforrások vagy társítva útvonaltábla erőforrás rendelkező előfizetés nem törölhető. Sikerült törölni az előfizetést, először törölnie kell DNS-zóna és az útvonaltábla erőforrásokhoz a bérlő előfizetésből.

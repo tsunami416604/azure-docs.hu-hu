@@ -10,18 +10,18 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 613cdd14ad196058458b090024cc6b9a4b8a80b6
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 841982a4ecbfa5241d826beaaae81921b2859596
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018621"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967333"
 ---
 # <a name="translator-text-api-30-transliterate"></a>Translator Text API 3.0: átírás
 
 Egy nyelvű szöveget egy parancsfájlból származó alakítja egy másik szkriptet.
 
-## <a name="request-url"></a>Lekérdezés URL-címe
+## <a name="request-url"></a>Kérés URL-címe
 
 Küldjön egy `POST` kérelmet:
 
@@ -42,15 +42,15 @@ A kérelem lekérdezési karakterláncot az átadott paraméterek a következők
   </tr>
   <tr>
     <td>language</td>
-    <td>*Kötelező paraméter*.<br/>Meghatározza a szöveg átalakítása egy parancsfájl egy másik nyelvét. Lehetséges nyelven szerepelnek a `transliteration` hatókör számára a szolgáltatás lekérdezésével kapott a [támogatott nyelvek](.\v3-0-languages.md).</td>
+    <td>*Kötelező paraméter*.<br/>Meghatározza a szöveg átalakítása egy parancsfájl egy másik nyelvét. Lehetséges nyelven szerepelnek a `transliteration` hatókör számára a szolgáltatás lekérdezésével kapott a [támogatott nyelvek](./v3-0-languages.md).</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>*Kötelező paraméter*.<br/>Megadja a parancsprogramot, a bemeneti szöveg által használt. Kereshet [támogatott nyelvek](.\v3-0-languages.md) használatával a `transliteration` hatókörét, a bemeneti érhető el parancsprogram található a kiválasztott nyelven.</td>
+    <td>*Kötelező paraméter*.<br/>Megadja a parancsprogramot, a bemeneti szöveg által használt. Kereshet [támogatott nyelvek](./v3-0-languages.md) használatával a `transliteration` hatókörét, a bemeneti érhető el parancsprogram található a kiválasztott nyelven.</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>*Kötelező paraméter*.<br/>Megadja a kimeneti parancsfájlt. Kereshet [támogatott nyelvek](.\v3-0-languages.md) használatával a `transliteration` hatókörét, a kimeneti parancsfájlok érhető el a kiválasztott kombinációjának beviteli nyelv és a bemeneti parancsprogram található.</td>
+    <td>*Kötelező paraméter*.<br/>Megadja a kimeneti parancsfájlt. Kereshet [támogatott nyelvek](./v3-0-languages.md) használatával a `transliteration` hatókörét, a kimeneti parancsfájlok érhető el a kiválasztott kombinációjának beviteli nyelv és a bemeneti parancsprogram található.</td>
   </tr>
 </table> 
 
@@ -77,7 +77,7 @@ Kérelemfejlécek a következők:
   </tr>
 </table> 
 
-## <a name="request-body"></a>Kérelem törzse
+## <a name="request-body"></a>A kérés törzse
 
 A kérelem törzsében egy JSON-tömböt. Egyes tömbelemeken nevű karakterlánc tulajdonsággal rendelkező JSON-objektum `Text`, amelyek az átalakítandó sztring jelöli.
 

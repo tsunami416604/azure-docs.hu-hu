@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 5d3073c3ed499ecdb20243e6db2b217aec3e1448
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f22754a16c4765989b5773d099fc3ecda73040db
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254519"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972388"
 ---
 # <a name="azure-stack-administration-basics"></a>Az Azure Stack az Adminisztráció alapjai
 Több szempontot, ha most ismerkedik az Azure Stack felügyeleti ismernie kell. Ez az útmutató az Azure Stack operátorait szerint a szerepkör áttekintése és kell, hogy a felhasználók a számukra a gyors elindulásban biztosít.
@@ -32,9 +32,9 @@ Használja az Azure Stackkel integrált rendszer, ha frissített verzióit tarta
  
 ### <a name="development-kit"></a>Fejlesztői készlete
 
-Ha az Azure Stack Development Kit használja, tekintse át a [az Azure Stack?](.\asdk\asdk-what-is.md) cikket, ellenőrizze, hogy a fejlesztői készletet, majd korlátatait rendeltetésének megismerése. A csomag egy ", védőfal"mögött, kiértékelheti az Azure Stack, és fejlesztheti és tesztelheti az alkalmazásokat nem éles környezetben célszerű használni. (Üzembe helyezés információkért lásd: a [Azure Stack Development Kit központi telepítési](.\asdk\asdk-install.md) cikkben.)
+Ha az Azure Stack Development Kit használja, tekintse át a [az Azure Stack?](./asdk/asdk-what-is.md) cikket, ellenőrizze, hogy a fejlesztői készletet, majd korlátatait rendeltetésének megismerése. A csomag egy ", védőfal"mögött, kiértékelheti az Azure Stack, és fejlesztheti és tesztelheti az alkalmazásokat nem éles környezetben célszerű használni. (Üzembe helyezés információkért lásd: a [Azure Stack Development Kit központi telepítési](./asdk/asdk-install.md) cikkben.)
 
-Például az Azure-ban hogy gyors innováció. Új buildek rendszeresen adunk lesz. Ha futtatja a csomagot, és szeretné helyezni a legújabb buildre kell [Azure Stack ismételt üzembe helyezése](.\asdk\asdk-redeploy.md). Frissítési csomagokat nem lehet alkalmazni. Ez a folyamat időt vesz igénybe, de az az előnye, hogy a legújabb funkciók kipróbálhatja. A fejlesztői csomag dokumentációjában találhatók a webhelyen tükrözi a legfrissebb kiadott buildjét.
+Például az Azure-ban hogy gyors innováció. Új buildek rendszeresen adunk lesz. Ha futtatja a csomagot, és szeretné helyezni a legújabb buildre kell [Azure Stack ismételt üzembe helyezése](./asdk/asdk-redeploy.md). Frissítési csomagokat nem lehet alkalmazni. Ez a folyamat időt vesz igénybe, de az az előnye, hogy a legújabb funkciók kipróbálhatja. A fejlesztői csomag dokumentációjában találhatók a webhelyen tükrözi a legfrissebb kiadott buildjét.
 
 ## <a name="learn-about-available-services"></a>Elérhető szolgáltatások ismertetése
 

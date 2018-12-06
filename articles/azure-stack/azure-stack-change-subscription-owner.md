@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/19/2018
 ms.author: sethm
 ms.reviewer: shnatara
-ms.openlocfilehash: e5ce479940faaaae95467fe6d426e999b4c6569f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 46dd9c786fddb2f6ce9fb8a761a1b9f135a82d74
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468670"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959196"
 ---
 # <a name="change-the-owner-for-an-azure-stack-user-subscription"></a>Módosíthatja a tulajdonost az Azure Stack felhasználói előfizetés
 
@@ -40,8 +40,8 @@ Két típusa van *tulajdonosok* előfizetéshez társított:
 
 Futtassa a következő parancsfájlt, módosíthatja a felhasználói előfizetés számlázási tulajdonosa. A számítógépen, amely a parancsfájl futtatásához használt kell csatlakozás az Azure Stack, és futtassa az Azure Stack PowerShell modul 1.3.0 vagy újabb. További információkért lásd: [telepítse az Azure Stack PowerShell](azure-stack-powershell-install.md). 
 
-> [!Note]  
->  Egy több-bérlős Azure Stack az új tulajdonos ugyanabban a könyvtárban, a meglévő tulajdonosának kell lennie. Mielőtt az előfizetés tulajdonjogának egy felhasználónak, amely egy másik címtárban, előbb futtatnia kell [meghívni, hogy a felhasználó vendégként a címtárba](../active-directory/b2b/add-users-administrator.md). 
+> [!Note]
+>  Egy több-bérlős Azure Stack az új tulajdonos ugyanabban a könyvtárban, a meglévő tulajdonosának kell lennie. Mielőtt az előfizetés tulajdonjogának egy felhasználónak, amely egy másik címtárban, előbb futtatnia kell [meghívni, hogy a felhasználó vendégként a címtárba](../active-directory/b2b/add-users-administrator.md). 
 
 Cserélje le a következő értékeket a szkriptben, futtatásuk előtt: 
  

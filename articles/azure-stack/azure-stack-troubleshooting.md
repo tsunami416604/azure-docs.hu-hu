@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: c463599190c5bfaac47a70dbca7b8a67dc830f3a
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: b6ec3283121a3403afb80ccad81f313decf16c88
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363483"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957640"
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>A Microsoft Azure Stack hibaelhárítása
 
@@ -43,7 +43,7 @@ Ez a viselkedés esetén valószínűleg csak egy PowerShell-parancsablakban ala
 Virtuális gépek az Azure Stack üzembe helyezése előtt hozzá kell adni egy Windows Server rendszerképet és a katalógus elemet.
 
 ### <a name="after-restarting-my-azure-stack-host-some-vms-may-not-automatically-start"></a>Az Azure Stack gazdagépen az újraindítás után néhány virtuális gép esetleg nem indul el automatikusan.
-A gazdagép az újraindítást követően, Észreveheti, az Azure Stack-szolgáltatások nem érhetők el közvetlenül.  Ennek az az oka az Azure Stack [infrastruktúra virtuális gépein](..\azure-stack\asdk\asdk-architecture.md#virtual-machine-roles) és erőforrás-szolgáltatók konzisztenciájának ellenőrzése hosszabb időt is igénybe, de végül automatikusan elindul.
+A gazdagép az újraindítást követően, Észreveheti, az Azure Stack-szolgáltatások nem érhetők el közvetlenül.  Ennek az az oka az Azure Stack [infrastruktúra virtuális gépein](../azure-stack/asdk/asdk-architecture.md#virtual-machine-roles) és erőforrás-szolgáltatók konzisztenciájának ellenőrzése hosszabb időt is igénybe, de végül automatikusan elindul.
 
 Előfordulhat, hogy a bérlői virtuális gépek nem indul el automatikusan az Azure Stack development kit gazdagép újraindítása után is. Ez egy ismert probléma, és csak az online állapotba helyezés néhány manuális lépéseket igényel:
 

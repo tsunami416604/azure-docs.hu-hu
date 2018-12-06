@@ -1,18 +1,18 @@
 ---
-title: Azure CLI-szkript – Azure Cosmos DB Cassandra API-fiók, -adatbázis és -táblázat létrehozása | Microsoft Docs
+title: Az Azure CLI-szkript – létrehozása egy Azure Cosmos DB Cassandra API-fiókot, adatbázist és táblát
 description: Azure CLI-példaszkript – Azure Cosmos DB Cassandra API-fiók, -adatbázis és -táblázat létrehozása
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: 72eb26599ce2f57e7178d5741851b6e442a62e23
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 381dc16366b4772f828ed474637d029324703c9e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019568"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961554"
 ---
 # <a name="azure-cosmos-db-create-a-cassandra-api-account-using-azure-cli"></a>Azure Cosmos DB: Cassandra API-fiók létrehozása az Azure CLI használatával
 

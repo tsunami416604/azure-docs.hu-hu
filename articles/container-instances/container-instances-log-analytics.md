@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 07/17/2018
 ms.author: danlep
-ms.openlocfilehash: 7f4af06222141eb0e143e67ba4bfcdcb2f5f92fa
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 06123944072142187bfd5b875cbadd36b4d47bd2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614004"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958900"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>Tárolópéldány-naplózás az Azure Log Analytics használatával
 
@@ -24,7 +24,7 @@ A tárolópéldányok adatainak a Log Analytics szolgáltatásba való elküldé
 
 A tárolópéldányokban való naplózás engedélyezéséhez a következőkre van szükség:
 
-* [Log Analytics-munkaterület](../log-analytics/log-analytics-quick-create-workspace.md)
+* [Log Analytics-munkaterület](../azure-monitor/learn/quick-create-workspace.md)
 * [Azure CLI](/cli/azure/install-azure-cli) (vagy [Cloud Shell](/azure/cloud-shell/overview))
 
 ## <a name="get-log-analytics-credentials"></a>A Log Analytics hitelesítő adatainak lekérése

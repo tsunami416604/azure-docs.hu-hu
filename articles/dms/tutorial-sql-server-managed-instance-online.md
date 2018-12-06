@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 12/04/2018
-ms.openlocfilehash: ccbfc6e204981a4e14812759715d0482e5b6cb67
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 030cd89bbd6407cd2e83a9b56942adbf419e069b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874759"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956703"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-managed-instance-online-using-dms"></a>Oktatóanyag: SQL Server online migrálása felügyelt Azure SQL Database-példányra a DMS használatával
 Az Azure Database Migration Service használatával minimális állásidővel migrálhatja egy helyszíni SQL Server-példány adatbázisait egy [felügyelt Azure SQL Database-példányra](../sql-database/sql-database-managed-instance.md). Ha olyan módszerek is érdeklik, amelyek esetenként manuális beavatkozást is igényelhetnek, tekintse át az [SQL Server-példány felügyelt Azure SQL Database-példányra történő migrálásával](../sql-database/sql-database-managed-instance-migrate.md) foglalkozó témakört.
@@ -64,24 +64,24 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 1. Jelentkezzen be az Azure Portalra, és válassza a **Minden szolgáltatás**, majd az **Előfizetések** elemet.
 
-    ![Portál-előfizetések megtekintése](media\tutorial-sql-server-to-managed-instance-online\portal-select-subscriptions.png)        
+    ![Portál-előfizetések megtekintése](media/tutorial-sql-server-to-managed-instance-online/portal-select-subscriptions.png)        
 2. Válassza ki azt az előfizetést, amelyen az Azure Database Migration Service példányát létre szeretné hozni, majd válassza az **Erőforrás-szolgáltatók** elemet.
 
-    ![Erőforrás-szolgáltatók megtekintése](media\tutorial-sql-server-to-managed-instance-online\portal-select-resource-provider.png)
+    ![Erőforrás-szolgáltatók megtekintése](media/tutorial-sql-server-to-managed-instance-online/portal-select-resource-provider.png)
 
 3. Keressen a „migration” kifejezésre, majd a **Microsoft.DataMigration** jobb oldalán válassza a **Regisztrálás** elemet.
 
-    ![Erőforrás-szolgáltató regisztrálása](media\tutorial-sql-server-to-managed-instance-online\portal-register-resource-provider.png)   
+    ![Erőforrás-szolgáltató regisztrálása](media/tutorial-sql-server-to-managed-instance-online/portal-register-resource-provider.png)   
 
 ## <a name="create-an-azure-database-migration-service-instance"></a>Azure Database Migration Service-példány létrehozása
 
 1. Az Azure Portalon válassza a + **Erőforrás létrehozása** lehetőséget, keressen ár az **Azure Database Migration Service** kifejezésre, és a legördülő menüben válassza ki az **Azure Database Migration szolgáltatás** elemet.
 
-     ![Azure Piactér](media\tutorial-sql-server-to-managed-instance-online\portal-marketplace.png)
+     ![Azure Piactér](media/tutorial-sql-server-to-managed-instance-online/portal-marketplace.png)
 
 2. Az **Azure Database Migration Service** képernyőn válassza a **Létrehozás** lehetőséget.
 
-    ![Azure Database Migration Service-példány létrehozása](media\tutorial-sql-server-to-managed-instance-online\dms-create1.png)
+    ![Azure Database Migration Service-példány létrehozása](media/tutorial-sql-server-to-managed-instance-online/dms-create1.png)
 
 3. **A migrálási szolgáltatás létrehozása** képernyőn adja meg a szolgáltatás, az előfizetés és egy új vagy meglévő erőforráscsoport nevét.
 
@@ -102,7 +102,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
    
     További tájékoztatás a költségekről és a tarifacsomagokról a [díjszabási lapon](https://aka.ms/dms-pricing) olvasható.
    
-    ![DMS-szolgáltatás létrehozása](media\tutorial-sql-server-to-managed-instance-online\dms-create-service3.png)
+    ![DMS-szolgáltatás létrehozása](media/tutorial-sql-server-to-managed-instance-online/dms-create-service3.png)
 
 7.  A szolgáltatás létrehozásához válassza a **Létrehozás** lehetőséget.
 
@@ -112,7 +112,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 
 1. Az Azure Portalon válassza a **Minden szolgáltatás** lehetőséget, keresse meg az Azure Database Migration Service-t, majd válassza ki az **Azure Database Migration Servicest**.
 
-    ![Az Azure Database Migration Service minden példányának megkeresése](media\tutorial-sql-server-to-managed-instance-online\dms-search.png)
+    ![Az Azure Database Migration Service minden példányának megkeresése](media/tutorial-sql-server-to-managed-instance-online/dms-search.png)
 
 2. Az **Azure Database Migration Service** képernyőjén keresse meg a létrehozott példány nevét, és válassza ki a példányt.
  
@@ -120,7 +120,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 
 4. Az **Új migrálási projekt** képernyőn nevezze el a projektet, majd a **Forráskiszolgáló típusa** szövegbeviteli mezőben válassza ki az **SQL Servert**, a **Célkiszolgáló típusa** szövegbeviteli mezőben pedig a **felügyelt Azure SQL Database-példányt**. A **Válassza ki a tevékenység típusát** szövegbeviteli mezőben válassza az **Online adatok migrálása (Előzetes verzió)** lehetőséget.
 
-   ![DMS-projekt létrehozása](media\tutorial-sql-server-to-managed-instance-online\dms-create-project3.png)
+   ![DMS-projekt létrehozása](media/tutorial-sql-server-to-managed-instance-online/dms-create-project3.png)
 
 5. Válassza a **Tevékenység létrehozása és futtatása** lehetőséget a projekt létrehozásához.
 
@@ -135,7 +135,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
     > [!CAUTION]
     > Az önaláírt tanúsítványokkal titkosított SSL-kapcsolatok nem biztosítanak erős védelmet. Az ilyen tanúsítványok közbeékelődéses támadásoknak vannak kitéve. Éles környezetben vagy az internethez csatlakozó kiszolgálók esetén az önaláírt tanúsítványokkal működő SSL nem megbízható.
 
-   ![Forrás részletei](media\tutorial-sql-server-to-managed-instance-online\dms-source-details2.png)
+   ![Forrás részletei](media/tutorial-sql-server-to-managed-instance-online/dms-source-details2.png)
 
 3. Kattintson a **Mentés** gombra.
 
@@ -151,7 +151,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 
 3. Adja meg az **SQL-felhasználót** és a **jelszót** a célként szolgáló felügyelt Azure SQL Database-példányhoz való csatlakozáshoz.
 
-    ![Cél kiválasztása](media\tutorial-sql-server-to-managed-instance-online\dms-target-details3.png)
+    ![Cél kiválasztása](media/tutorial-sql-server-to-managed-instance-online/dms-target-details3.png)
 
 2.  Kattintson a **Mentés** gombra.
 
@@ -159,7 +159,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 
 1. A **Forrásadatbázisok kiválasztása** képernyőn válassza ki a migrálni kívánt forrásadatbázist.
 
-    ![Forrásadatbázisok kiválasztása](media\tutorial-sql-server-to-managed-instance-online\dms-select-source-databases2.png)
+    ![Forrásadatbázisok kiválasztása](media/tutorial-sql-server-to-managed-instance-online/dms-select-source-databases2.png)
 
 2. Kattintson a **Mentés** gombra.
 
@@ -175,7 +175,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
     |**Az Azure Storage-tárfiók előfizetése** | Válassza ki az Azure Storage-tárfiókot tartalmazó előfizetést. |
     |**Azure Storage-tárfiók** | Válassza ki az Azure Storage-tárfiókot, amelybe a DMS feltöltheti az SMB hálózati megosztásból származó biztonsági mentési fájlokat, majd felhasználhatja azokat a migráláskor.  Az optimális fájlfeltöltési teljesítmény érdekében javasoljuk, hogy a tárfiók ugyanabban a régióban legyen, mint a DMS-szolgáltatás. |
     
-    ![Migrálási beállítások konfigurálása](media\tutorial-sql-server-to-managed-instance-online\dms-configure-migration-settings4.png)
+    ![Migrálási beállítások konfigurálása](media/tutorial-sql-server-to-managed-instance-online/dms-configure-migration-settings4.png)
 
 2. Kattintson a **Mentés** gombra.
  
@@ -185,7 +185,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 
 2. Tekintse át és hagyja jóvá a migrálási projekttel kapcsolatos részleteket.
  
-    ![Migrálási projekt áttekintése](media\tutorial-sql-server-to-managed-instance-online\dms-project-summary3.png)
+    ![Migrálási projekt áttekintése](media/tutorial-sql-server-to-managed-instance-online/dms-project-summary3.png)
 
 ## <a name="run-and-monitor-the-migration"></a>A migrálás futtatása és monitorozása
 
@@ -193,11 +193,11 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 
 2. A migrálási tevékenység ablakában válassza a **Frissítés** lehetőséget a megjelenítés frissítéséhez.
  
-   ![A migrálási tevékenység folyamatban van](media\tutorial-sql-server-to-managed-instance-online\dms-monitor-migration2.png)
+   ![A migrálási tevékenység folyamatban van](media/tutorial-sql-server-to-managed-instance-online/dms-monitor-migration2.png)
 
     Az adatbázisok és a bejelentkezések kategóriáit is kibonthatja a kapcsolódó kiszolgálói objektumok migrálási állapotának nyomon követéséhez.
 
-   ![A migrálási tevékenység folyamatban van](media\tutorial-sql-server-to-managed-instance-online\dms-monitor-migration-extend2.png)
+   ![A migrálási tevékenység folyamatban van](media/tutorial-sql-server-to-managed-instance-online/dms-monitor-migration-extend2.png)
 
 ## <a name="performing-migration-cutover"></a>Átállásos migrálás végrehajtása
 
@@ -213,11 +213,11 @@ Miután a célként szolgáló felügyelt Azure SQL Database-példányon a telje
 
 4.  Kattintson a **Megerősítés**, majd az **Alkalmaz** gombra.
 
-    ![Teljes átállás előkészítése](media\tutorial-sql-server-to-managed-instance-online\dms-complete-cutover.png)
+    ![Teljes átállás előkészítése](media/tutorial-sql-server-to-managed-instance-online/dms-complete-cutover.png)
 
 5.  Ha az adatbázis migrálási állapota **Befejezve** értékre vált, csatlakoztassa alkalmazásait a célként szolgáló új felügyelt Azure SQL Database-példányhoz.
 
-    ![Az átállás befejeződött](media\tutorial-sql-server-to-managed-instance-online\dms-cutover-complete.png)
+    ![Az átállás befejeződött](media/tutorial-sql-server-to-managed-instance-online/dms-cutover-complete.png)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -7,12 +7,12 @@ ms.author: maghan
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 156673bfac9bfa38772e4daca166e3431f81c09a
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: e68dc22943b7a53693320528f91670d9229b806f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405009"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958332"
 ---
 # <a name="how-to-view-related-data-assets-in-azure-data-catalog"></a>Kapcsolódó adategységek megtekintése az Azure Data Catalog hogyan?
 Az Azure Data Catalog lehetővé teszi a kijelölt adatok eszköz és a nézet közötti kapcsolatok őket kapcsolódó adategységek megtekintése. 
@@ -31,7 +31,7 @@ Ha regisztrálja a következő adatforrások származó adategységeket, az Azur
 ## <a name="view-related-data-assets"></a>Kapcsolódó adategységek megtekintése
 A kiválasztott adatkészlet kapcsolódó adategységek megtekintéséhez használja a **kapcsolatok** lapon az alábbi képen látható módon: 
 
-![Az Azure Data Catalog – kapcsolódó adategységek megtekintése](media\data-catalog-how-to-view-related-data-assets\relationships-tab.png)
+![Az Azure Data Catalog – kapcsolódó adategységek megtekintése](media/data-catalog-how-to-view-related-data-assets/relationships-tab.png)
 
 Ebben a példában a kiválasztott két kapcsolat nincsenek **ProductSubcategory** Adateszköz: 
 
@@ -43,7 +43,7 @@ Ebben a példában a kiválasztott két kapcsolat nincsenek **ProductSubcategory
 
 További részletek például a teljes nevet, az oszlop, vigye az egérmutatót, és megjelenik egy előugró ablak az alábbi képhez hasonló: 
 
-![Az Azure Data Catalog – kapcsolat előugró ablak](media\data-catalog-how-to-view-related-data-assets\relationship-popup.png)
+![Az Azure Data Catalog – kapcsolat előugró ablak](media/data-catalog-how-to-view-related-data-assets/relationship-popup.png)
 
 Adja meg a regisztrált eszközök közötti kapcsolatokat, regisztrálja újra azokat az eszközöket.
 

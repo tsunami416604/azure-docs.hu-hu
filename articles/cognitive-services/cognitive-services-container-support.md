@@ -7,31 +7,33 @@ author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: 05a364cc66d18909c7833138d351dc02bace32c2
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: c71d7de2ac036fe47253be08bb0b1e01e9e76701
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822109"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957214"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Az Azure Cognitive Servicesben tároló támogatása
 
-Tároló támogatása az Azure Cognitive Services lehetővé teszi a fejlesztőknek, hogy az azonos API-k gazdag elérhető az Azure-ban, és lehetővé teszi a rugalmasság a szolgáltatásokat, amelyek kapható üzembe helyezése és hol [Docker-tárolók](https://www.docker.com/what-container). Tárolótámogatás jelenleg érhető el az Azure Cognitive Services, beleértve egy részhalmazát előzetes verziójában [Computer Vision](Computer-vision/Home.md), [Face](Face/Overview.md), és [Szövegelemzés](text-analytics/overview.md).
+Tároló támogatása az Azure Cognitive Services lehetővé teszi a fejlesztőknek, hogy az azonos API-k gazdag elérhető az Azure-ban, és lehetővé teszi a rugalmasság a szolgáltatásokat, amelyek kapható üzembe helyezése és hol [Docker-tárolók](https://www.docker.com/what-container). Tárolótámogatás jelenleg érhető el az Azure Cognitive Services, beleértve egy részhalmazát előzetes verziójában [Computer Vision](Computer-vision/Home.md), [Face](Face/Overview.md), [Szövegelemzés](text-analytics/overview.md), és [ Language Understanding](LUIS/luis-container-howto.md) (LUIS).
 
 Bontás, amelyben egy alkalmazás vagy szolgáltatás, beleértve a függőségeket és a konfigurációk, csomagolt össze egy tárolórendszerképet, szoftverterjesztés egy megközelítést. Alig vagy egyáltalán nem módosítással egy tárolórendszerképet egy tároló-gazdagépen is telepíthető. Tárolók el különítve egymással és az alapjául szolgáló operációs rendszer, tárhely kisebb, mint egy virtuális gépet. A tárolók rövid távú feladatok tárolórendszerképeket a példányt, és távolítja el, amikor már nincs rá szükség.
 
-Nézze meg ezt [rövid videónkat](https://azure.microsoft.com/resources/videos/containers-support-of-cognitive-services) bemutató célokra.
+A következő videó bemutatja a Cognitive Services-tároló használatával.
 
-A [Computer Vision](Computer-vision/Home.md), [Face](Face/Overview.md), és [Szövegelemzés](text-analytics/overview.md) szolgáltatások elérhetők a [Microsoft Azure](https://azure.microsoft.com). Jelentkezzen be a [az Azure portal](https://portal.azure.com/) hozhat létre, és Fedezze fel az Azure-szolgáltatások erőforrásait.
+[![Cognitive Services tároló bemutató](./media/index/containers-video-image.png)](https://azure.microsoft.com/resources/videos/containers-support-of-cognitive-services)
+
+A [Computer Vision](Computer-vision/Home.md), [Face](Face/Overview.md), [Szövegelemzés](text-analytics/overview.md), és [Language Understanding (LUIS)](LUIS/what-is-luis.md) szolgáltatások elérhetők a [Microsoft Azure](https://azure.microsoft.com). Jelentkezzen be a [az Azure portal](https://portal.azure.com/) hozhat létre, és Fedezze fel az Azure-szolgáltatások erőforrásait.
 
 ## <a name="features-and-benefits"></a>Funkciók és előnyök
 
-- **Adatok felett**: lehetővé teszi ügyfeleink számára a Cognitive Services használata a teljes körű felügyeletet gyakorolnak az adataik felett.  Ez a alapvető olyan ügyfelek számára, nem tud adatokat küldeni a felhőben, de a Cognitive Services technológia hozzáférésre van szükségük. Támogatja a konzisztencia hibrid környezetben – keresztül adatok, felügyeleti, identitáskezelési és biztonsági.
+- **Adatok felett**: lehetővé teszi az ügyfelek számára, hogy válassza ki, ahol a ezeket a Cognitive Services az adatok feldolgozása.  Ez a alapvető olyan ügyfelek számára, nem tud adatokat küldeni a felhőben, de a Cognitive Services technológia hozzáférésre van szükségük. Támogatja a konzisztencia hibrid környezetben – keresztül adatok, felügyeleti, identitáskezelési és biztonsági.
 - **Adatmodell-frissítéseket felett**: nyújt az ügyfeleknek verziókezelés és a modellek üzembe helyezett megoldásaikat frissítése.
-- **Hordozható architektúra**: egy hordozható alkalmazásarchitektúra is telepíthető központilag a felhőben, a helyszíni és a peremhálózaton létrehozásának engedélyezéséhez. Tárolók közvetlenül is telepíthető [Azure Kubernetes Service](/azure/aks/), [Azure Container Instances](/azure/container-instances/), vagy egy [Kubernetes](https://kubernetes.io/) fürtben telepített [Azure Stack](/azure/azure-stack/). További információkért lásd: [Kubernetes üzembe helyezése az Azure Stackhez](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
-- **Nagy átviteli sebesség / kis késés**: teszi lehetővé az ügyfelek nagy átviteli sebességet és közel valós idejű követelmények méretezését, futtassa az Azure Kubernetes Service fizikailag közel az alkalmazáslogika és az adatokat a Cognitive Services engedélyezésével.
+- **Hordozható architektúra**: egy hordozható alkalmazásarchitektúra is üzembe helyezhetők az Azure-ban, a helyszíni és a peremhálózaton létrehozásának engedélyezéséhez. Tárolók közvetlenül telepíthető [Azure Kubernetes Service](/azure/aks/), [Azure Container Instances](/azure/container-instances/), vagy egy [Kubernetes](https://kubernetes.io/) fürtben telepített [Azure Stack](/azure/azure-stack/). További információkért lásd: [Kubernetes üzembe helyezése az Azure Stackhez](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
+- **Nagy átviteli sebesség / kis késés**: teszi lehetővé az ügyfelek nagy átviteli sebességet és közel valós idejű követelmények méretezését, engedélyezi a Cognitive Services futtatásához fizikailag közel az alkalmazáslogika és az adatokat. A tárolók nem költségplafont, másodpercenkénti tranzakciók (TPS), és a horizontális felskálázás és kibővítés is kezeléséhez igény szerint, ha megadja a szükséges hardver-erőforrások lehet tenni. 
 
 
 ## <a name="containers-in-azure-cognitive-services"></a>A tárolók az Azure Cognitive Services
@@ -42,6 +44,7 @@ Az Azure Cognitive Services-tárolók meg azt az alábbi Docker-tárolókat, ame
 |---------|----------|-------------|
 |[Computer Vision](Computer-vision/computer-vision-how-to-install-containers.md) |**Szövegének felismerése** |Kivonatok nyomtatott szöveg különféle objektumokat a különféle felületekkel és hátterek, például a visszaigazolások és poszterek vagy tájékoztató névjegykártyák-rendszerképeket.<br/><br/>**Fontos:** a szöveg felismerése tároló jelenleg csak az angol nyelvű működik.<br>[Hozzáférés kérése](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
 |[Arcfelismerés](Face/face-how-to-install-containers.md) |**Arcfelismerés** |Észleli az emberi arcok a képeken, és azonosítja az attribútumokat, (például noses és szemek) arcrészek, nemek, életkor és egyéb gép – előre meghatározott arcjellemzőket sorolják fel. Észlelési, mellett Face is ellenőrizze, hogy két arc ugyanazt a lemezképet vagy különböző képek egy megbízhatósági pontszám használatával azonosak, vagy olyan adatbázison annak ellenőrzéséhez, hogy a hasonló megjelenésű arcokat összehasonlítása vagy azonos face már létezik. Azt is is csoportokba rendezheti a hasonló arcokat keres, közös visual tulajdonságok használatával.<br>[Hozzáférés kérése](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
+|[LUIS](LUIS/luis-container-howto.md) |**A LUIS** ([kép](https://go.microsoft.com/fwlink/?linkid=2043204))|Betanított vagy közzétett Language Understanding modell, más néven LUIS-alkalmazásokon, tölt be egy docker-tárolót, és hozzáférést biztosít az API-végpontokat a tárolót a lekérdezés előrejelzéseket. Lekérdezés naplók összegyűjtése a tárolóból, és töltse fel ezeket a vissza a [LUIS portál](https://www.luis.ai) való az alkalmazás előrejelzési pontosság növeléséhez.|
 |[Szövegelemzés](text-analytics/how-tos/text-analytics-how-to-install-containers.md) |**Kulcs kulcsszókeresés** ([kép](https://go.microsoft.com/fwlink/?linkid=2018757)) |Kiolvassa a fő pontokat azonosíthatja a kulcskifejezéseket. Például „Az étel finom volt, és a személyzet kedves volt” bemeneti szövegből az API a következő fő pontokat adja vissza: „étel” és „személyzet kedves”. |
 |[Szövegelemzés](text-analytics/how-tos/text-analytics-how-to-install-containers.md)|**Nyelv észlelése** ([kép](https://go.microsoft.com/fwlink/?linkid=2018759)) |Legfeljebb 120 nyelvet mely a bemeneti szöveg nyelven van megírva nyelvet és a jelentés minden egyes dokumentum, a kérelem küldése egyetlen nyelvkód észleli. A nyelvkód egy pontszámmal párba állítva jelzi a pontszám erősségét. |
 |[Szövegelemzés](text-analytics/how-tos/text-analytics-how-to-install-containers.md)|**Hangulatelemzés** ([kép](https://go.microsoft.com/fwlink/?linkid=2018654)) |Elemzi a nyers szöveg a keresőmotorok kapcsolatos pozitív vagy negatív véleményeket. Az API minden dokumentumhoz visszaad egy 0 és 1 közötti hangulati pontszámot, ahol az 1 a legpozitívabb pontszám. Az elemzési modellek is előre betanított használatával egy Microsoft szöveg és a természetes nyelvi technológiák széles körű törzse. [Bizonyos nyelvek](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages.md) esetében az API képes a megadott szöveg elemzéséből kiszámított pontszámot közvetlenül visszaadni a hívó alkalmazásnak. |
@@ -78,3 +81,4 @@ Telepítse, és ismerje meg a tárolók az Azure Cognitive Services által bizto
 * [Telepítheti és használhatja a Computer Vision tárolók](Computer-vision/computer-vision-how-to-install-containers.md)
 * [Telepítheti és használhatja a Face tárolók](Face/face-how-to-install-containers.md)
 * [Telepítheti és használhatja a Text Analytics tárolók](text-analytics/how-tos/text-analytics-how-to-install-containers.md)
+* [Telepítése és Language Understanding (LUIS) tárolók használata](LUIS/luis-container-howto.md)

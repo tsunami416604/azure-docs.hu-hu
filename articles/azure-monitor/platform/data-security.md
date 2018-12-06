@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: aa65cace316c68d46e1547b30a4b2c4f4932f450
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: cdd01953e4053eec6e8b0cb57c7a68bb2ae01673
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882628"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957478"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics és adatbiztonság
 Ez a dokumentum információkat biztosít a Log Analyticsbe, amely egy Azure monitor, az információ kiegészítésére a szolgáltatás célja [Azure adatvédelmi központ](../../security/security-microsoft-trust-center.md).  
@@ -183,5 +183,5 @@ A Log Analytics-munkaterület elérését, jelentkezzen be az Azure Portalon a s
 ## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan gyűjthet adatokat a Log Analytics az Azure virtuális gépek következő a [Azure virtuális gépek rövid útmutatóját](../../log-analytics/log-analytics-quick-collect-azurevm.md).  
 
-*  Ha a környezete fizikai vagy virtuális Windows vagy Linux rendszerű számítógépek adatainak összegyűjtése, tekintse meg a [gyors útmutató: Linux rendszerű számítógépek](../../log-analytics/log-analytics-quick-collect-linux-computer.md) vagy [a rövid útmutató a Windows-számítógépek](../../log-analytics/log-analytics-quick-collect-windows-computer.md)
+*  Ha a környezete fizikai vagy virtuális Windows vagy Linux rendszerű számítógépek adatainak összegyűjtése, tekintse meg a [gyors útmutató: Linux rendszerű számítógépek](../../log-analytics/log-analytics-quick-collect-linux-computer.md) vagy [a rövid útmutató a Windows-számítógépek](../../azure-monitor/learn/quick-collect-windows-computer.md)
 

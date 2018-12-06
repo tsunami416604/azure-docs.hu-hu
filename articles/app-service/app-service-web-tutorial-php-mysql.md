@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 9a1468c27e668663ca9079f5f1c9e5e97e51d2d5
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: e5574eee1ac553151f073fe4e398a84c596c55f2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291286"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968221"
 ---
 # <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>Oktatóanyag: PHP- és MySQL-webalkalmazás létrehozása az Azure-ban
 
@@ -49,7 +49,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Az oktatóanyag elvégzéséhez:
 
 * [A Git telepítése](https://git-scm.com/)
-* [Telepítse a PHP 5.6.4-es vagy újabb verzióját](http://php.net/downloads.php)
+* [Telepítse a PHP 5.6.4-es vagy újabb verzióját](https://php.net/downloads.php)
 * [Telepítse a Composert](https://getcomposer.org/doc/00-intro.md)
 * Engedélyezze a következő PHP-bővítményeket, amelyre a Laravelnek szüksége van: OpenSSL, PDO-MySQL, Mbstring, Tokenizer, XML
 * [Telepítse és indítsa el a MySQL-t](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
@@ -598,9 +598,9 @@ A naplóstreamelés megkezdése után frissítse az Azure-webalkalmazást a bön
 A naplóstreamelés leállításához írja be a `Ctrl`+`C` billentyűparancsot.
 
 > [!TIP]
-> A PHP-alkalmazások használhatják a normál [error_log()](http://php.net/manual/function.error-log.php) függvényt a kimenet konzolra küldéséhez. A mintaalkalmazás ezt a megközelítést alkalmazza az _app/Http/routes.php_ fájlban.
+> A PHP-alkalmazások használhatják a normál [error_log()](https://php.net/manual/function.error-log.php) függvényt a kimenet konzolra küldéséhez. A mintaalkalmazás ezt a megközelítést alkalmazza az _app/Http/routes.php_ fájlban.
 >
-> Webes keretrendszerként a [Laravel a Monologot használja](https://laravel.com/docs/5.4/errors) naplózási szolgáltatóként. Ha szeretné megtudni, hogyan érheti el, hogy a Monolog-üzeneteket jelenítsen meg a konzolon, tekintse meg a [PHP: A Monolog használata a konzolba való naplózáshoz (php://out)](http://stackoverflow.com/questions/25787258/php-how-to-use-monolog-to-log-to-console-php-out) című cikket.
+> Webes keretrendszerként a [Laravel a Monologot használja](https://laravel.com/docs/5.4/errors) naplózási szolgáltatóként. Ha szeretné megtudni, hogyan érheti el, hogy a Monolog-üzeneteket jelenítsen meg a konzolon, tekintse meg a [PHP: A Monolog használata a konzolba való naplózáshoz (php://out)](https://stackoverflow.com/questions/25787258/php-how-to-use-monolog-to-log-to-console-php-out) című cikket.
 >
 >
 

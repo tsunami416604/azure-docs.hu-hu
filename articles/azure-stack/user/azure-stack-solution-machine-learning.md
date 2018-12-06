@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 8c947e2effab84b17ea88623695e0a6b0d020d0f
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 7c92b2a060e73484b73a60f9215425cba40ea3f1
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285118"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966721"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>Oktatóanyag: Hozzon létre egy gépi tanulási megoldásokat az Azure és az Azure Stack megoldás
 
@@ -163,23 +163,23 @@ Hozzon létre egy tárfiókot és egy tárolót a tiszta adatok tárolását.
 
 10. Kattintson a **Létrehozás** gombra a tárfiók létrehozásához.
 
-    ![Helyettesítő szöveg](\media\azure-stack-solution-machine-learning\image1.png)
+    ![Helyettesítő szöveg](/media/azure-stack-solution-machine-learning/image1.png)
 
 11.  Válassza ki a nemrég létrehozott tárfiókot.
 
 12.  Válassza ki a **Blobok**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image2.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image2.png)
 
 13.  Válassza ki a **+ tároló** , és válassza ki a **tároló**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image3.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image3.png)
 
 14.  Nevezze el a tároló a **uploadeddata** , és válassza ki a hozzáférési **tároló**.
 
 15.  Válassza ki a **létrehozása**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image4.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image4.png)
 
 ## <a name="step-2-create-a-data-science-virtual-machine"></a>2. lépés: Hozzon létre egy Data Science virtuális gép
 
@@ -189,11 +189,11 @@ Hozzon létre egy Ubuntu adatelemzési virtuális gép (DSVM) az Azure Portalon.
 
 2.  Válassza ki a a **+ új** hivatkozásra, és keresse meg a "Data Science virtuális gép a Linux Ubuntu CSP
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image5.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image5.png)
 
 1.  Válassza a **adatelemző virtuális gép Linux (Ubuntu)** a listában, és kövesse a képernyőn megjelenő utasításokat követve hozzon létre a dsvm-hez.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image6.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image6.png)
 
 > ! [Fontos]  
 > **Válasszon** jelszó **, a*hitelesítési típus*.
@@ -268,19 +268,19 @@ Az Azure portal használatával üzembe helyezése az Azure Machine Learning-fi�
 
 1.  Jelentkezzen be a [az Azure portal](https://portal.azure.com/) használható az Azure-előfizetés hitelesítő adataival. Szerezze be az Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image7.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image7.png)
 
 1.  A portál bal felső sarkában válassza az **Erőforrás létrehozása** (+) gombot.
 
-    ![Erőforrás létrehozása az Azure Portalon](media\azure-stack-solution-machine-learning\image8.png)
+    ![Erőforrás létrehozása az Azure Portalon](media/azure-stack-solution-machine-learning/image8.png)
 
 1.  Írja be a **Machine Learning** kifejezést a keresősávba. Válassza a **Machine Learning-kísérletezés (előzetes verzió)** elnevezésű keresési eredményt.
 
-    ![Azure Machine Learning-keresés](media\azure-stack-solution-machine-learning\image9.png)
+    ![Azure Machine Learning-keresés](media/azure-stack-solution-machine-learning/image9.png)
 
 1.  Az a **Machine Learning-kísérletezés** panelen görgessen lefelé, és válassza **létrehozás** , a Kísérletezési fiók meghatározásának megkezdéséhez.
 
-    ![Azure Machine Learning – kísérletezési fiók létrehozása](media\azure-stack-solution-machine-learning\image10.png)
+    ![Azure Machine Learning – kísérletezési fiók létrehozása](media/azure-stack-solution-machine-learning/image10.png)
 
 1.  Az a **ML-kísérletezés** panelen konfigurálja a Machine Learning-kísérletezés-fiókot.
 
@@ -299,15 +299,15 @@ Az Azure portal használatával üzembe helyezése az Azure Machine Learning-fi�
     | Modellkezelési tarifacsomag | **DEVTEST** | Válassza ki **nincs kijelölt tarifacsomag** a Modellkezelés-fiók tarifacsomagjának megadásához. Költségmegtakarítás érdekében válassza a DEVTEST tarifacsomagot, ha elérhető az előfizetésén (korlátozottan elérhető). Ellenkező esetben válassza az S1 tarifacsomagot. Válassza ki a tarifacsomag beállításának mentéséhez válassza. |
     | Rögzítés az irányítópulton | Jelölőnégyzet | Válassza ki a **rögzítés az irányítópulton** lehetőség kiválasztásával egyszerűen nyomon követheti a Machine Learning-kísérletezés fiókját az Azure Portal irányítópultjának első lapján. |
 
-    ![A Machine Learning-kísérletezési fiók konfigurálása](media\azure-stack-solution-machine-learning\image11.png)
+    ![A Machine Learning-kísérletezési fiók konfigurálása](media/azure-stack-solution-machine-learning/image11.png)
 
 1.  A **Létrehozás** lehetőség kiválasztásával indíthatja el a kísérletezési fiók és a modellkezelési fiók létrehozási folyamatát.
 
-    ![A Machine Learning-kísérletezési fiók konfigurálása](media\azure-stack-solution-machine-learning\image12.png)
+    ![A Machine Learning-kísérletezési fiók konfigurálása](media/azure-stack-solution-machine-learning/image12.png)
 
     Hozzon létre egy fiókot egy kis ideig is eltarthat. Az Azure portal eszköztárában található értesítések ikonra (harang) kiválasztásával az üzembehelyezési folyamat állapotának ellenőrzéséhez.
 
-    ![Az Azure Portal értesítései](media\azure-stack-solution-machine-learning\image13.png)
+    ![Az Azure Portal értesítései](media/azure-stack-solution-machine-learning/image13.png)
 
 ### <a name="install-and-log-in-to-workbench"></a>Telepítse, és jelentkezzen be a workbench 
 
@@ -349,7 +349,7 @@ Az Azure Machine Learning Workbench Windows és macOS rendszeren érhető el. It
 
 1.  Válassza a **PROJEKTEK** ablaktáblán a plusz jelet (+), majd az **Új projekt** lehetőséget.
 
-    ![Új munkaterület](media\azure-stack-solution-machine-learning\image14.png)
+    ![Új munkaterület](media/azure-stack-solution-machine-learning/image14.png)
 
 1.  Töltse ki az űrlap mezőit, és válassza a **Létrehozás** gombot, hogy új projektet hozzon létre a Workbenchben.
 
@@ -362,11 +362,11 @@ Az Azure Machine Learning Workbench Windows és macOS rendszeren érhető el. It
     | Kiválasztott munkaterület | IrisGarden (ha van) | Válassza ki egy munkaterület a Kísérletezési fiók az Azure Portalon létrehozott. <br>Rövid útmutató segítségével, a munkaterület IrisGarden nevű szerepel. Ellenkező esetben használja a munkaterület a Kísérletezési fiók neve, vagy egy előnyben részesített fiók nevét. |
     | Projektsablon | Írisz osztályozása | Sablonok szkripteket és Fedezze fel a termék segítségével adatokat tartalmaznak. Ez a sablon tartalmazza a szkripteket és a dokumentációs webhelyen található ebben a rövid és a többi szükséges adatokat. |
 
-    ![Új projekt](media\azure-stack-solution-machine-learning\image15.png)
+    ![Új projekt](media/azure-stack-solution-machine-learning/image15.png)
 
 1.  Létrejön egy új projekt, és megnyílik az irányítópultja. Fedezze fel a projekt kezdőlapját, adatforrások, jegyzetfüzeteket és forráskódfájljait.
 
-    ![Projekt megnyitása](media\azure-stack-solution-machine-learning\image16.png)
+    ![Projekt megnyitása](media/azure-stack-solution-machine-learning/image16.png)
 
 ### <a name="attach-a-dsvm-compute-target"></a>A DSVM számítási célnak csatolása
 
@@ -374,7 +374,7 @@ A DSVM-létrehozása után csatlakoztassa azt az Azure Machine Learning-projekte
 
 1.  A az Azure Machine Learning Workbench alkalmazásban, indítsa el az Azure Machine Learning Workbench parancssori felület kiválasztásával **fájl**->**megnyitott PowerShell**
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image17.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image17.png)
 
 1.  Ha a PowerShell-parancssort nyitotta meg a következő paranccsal:
 
@@ -384,19 +384,19 @@ A DSVM-létrehozása után csatlakoztassa azt az Azure Machine Learning-projekte
 
 1.  A következő üzenet:
 
-     ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image18.png)
+     ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image18.png)
 
 1.  Tallózással keresse meg a helyet, a rendszer kéri a, és adja meg a kódot, amely biztosítja.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image19.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image19.png)
 
 1.  Kattintson a Folytatás, amikor a rendszer kéri, majd válassza ki az Azure-fiók az Azure Machine Learning kísérleti fiók hozzá van rendelve.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image20.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image20.png)
 
 1.  Az Azure Machine Learning Workbench parancssori felület ezután elküldi a következő üzenet:
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image21.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image21.png)
 
 1.  ML-fiók és a munkaterület bejelentkezés sikeres jelenik meg, amikor csatolni a dsvm-hez.
 
@@ -406,7 +406,7 @@ A DSVM-létrehozása után csatlakoztassa azt az Azure Machine Learning-projekte
 
     A következő értesítés jelenik meg:
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image22.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image22.png)
 
     ```PowerShell  
         # prepare the Docker image on the DSVM 
@@ -427,15 +427,15 @@ Az adatelőkészítési csomag átadható később egy futtatókörnyezetnek, p�
 
     A fájl egy 5 oszlopból és 50 sorból álló táblázatot tartalmaz. Négy oszlop számokat tartalmaz olyan. Az ötödik oszlop a karakterláncokat. Egyik oszlopnak sincs fejlécneve.
 
-    ![iris.csv](media\azure-stack-solution-machine-learning\image23.png)
+    ![iris.csv](media/azure-stack-solution-machine-learning/image23.png)
 
 1.  Az **Adatnézetben** válassza a pluszjelet (**+**) egy új adatforrás hozzáadásához. Megnyílik az **Adatforrás hozzáadása** lap.
 
-    ![Az Adatnézet az Azure Machine Learning Workbenchben](media\azure-stack-solution-machine-learning\image24.png)
+    ![Az Adatnézet az Azure Machine Learning Workbenchben](media/azure-stack-solution-machine-learning/image24.png)
 
 1.  Válassza ki **szövegfájlok (\*.csv, \*.json, \*.txt., …)** .
 
-    ![Az adatforrás az Azure Machine Learning Workbenchben](media\azure-stack-solution-machine-learning\image25.png)
+    ![Az adatforrás az Azure Machine Learning Workbenchben](media/azure-stack-solution-machine-learning/image25.png)
 
 1.  Kattintson a **Tovább** gombra.
 
@@ -444,39 +444,39 @@ Az adatelőkészítési csomag átadható később egy futtatókörnyezetnek, p�
     > [!Important]  
     > Válassza ki a **iris.csv** ehhez a gyakorlathoz az aktuális projektmappából fájlt. Ellenkező esetben későbbi lépések sikertelenek lehetnek.
 
-    ![Válassza ki az iris elemet](media\azure-stack-solution-machine-learning\image26.png)
+    ![Válassza ki az iris elemet](media/azure-stack-solution-machine-learning/image26.png)
 
 1.  Egy új fájlt `*iris-1.dsource` jön létre. A fájl neve egyedi `-1` , mert a projektben már van egy nem számozott **iris.dsource** fájlt.
 
     Megnyílik a fájl, és megjelennek az adatok. Egy oszlopfejlécet a **Column1** való **Column5**, ez az adatkészlet automatikusan hozzáadódik. Görgessen le, és figyelje meg, hogy az adatkészlet utolsó sora üres. A sor a CSV-fájl az extra sortörést miatt je prázdná.
 
-    ![Iris adatnézet](media\azure-stack-solution-machine-learning\image27.png)
+    ![Iris adatnézet](media/azure-stack-solution-machine-learning/image27.png)
 
 1.  Válassza a **Mérőszámok** gombot. Hisztogramok jönnek létre és jelennek meg.
 
     Váltson vissza az adatnézetre kiválasztásával a **adatok** gombra.
 
-    ![Iris adatnézet](media\azure-stack-solution-machine-learning\image28.png)
+    ![Iris adatnézet](media/azure-stack-solution-machine-learning/image28.png)
 
 1.  Tekintse át a hisztogramokat. A rendszer minden oszlophoz részletes statisztikákat számított ki.
 
-    ![Iris adatnézet](media\azure-stack-solution-machine-learning\image29.png)
+    ![Iris adatnézet](media/azure-stack-solution-machine-learning/image29.png)
 
 1.  Az **Előkészítés** gombra kattintva kezdheti el az adatelőkészítési csomag létrehozását. Megnyílik az **Előkészítés** párbeszédpanel.
 
     A mintaprojekt tartalmaz egy **iris.dprep** adatelőkészítési fájlt, amely alapértelmezés szerint ki van választva.
 
-    ![Iris adatnézet](media\azure-stack-solution-machine-learning\image30.png)
+    ![Iris adatnézet](media/azure-stack-solution-machine-learning/image30.png)
 
 1.  Hozzon létre egy új adat-előkészítési csomag kiválasztásával **+ új adatelőkészítési csomag** a menüből.
 
-    ![Iris adatnézet](media\azure-stack-solution-machine-learning\image31.png)
+    ![Iris adatnézet](media/azure-stack-solution-machine-learning/image31.png)
 
 1.  Adjon meg egy új értéket a csomag neveként (**iris-1**), majd válassza az **OK** gombot.
 
     Egy új adat-előkészítési csomag **iris-1.dprep** létrejön és megnyílik az adatelőkészítés-szerkesztőben.
 
-    ![Iris adatnézet](media\azure-stack-solution-machine-learning\image32.png)
+    ![Iris adatnézet](media/azure-stack-solution-machine-learning/image32.png)
 
     Ezután az adat-előkészítési van szükség.
 
@@ -484,7 +484,7 @@ Az adatelőkészítési csomag átadható később egy futtatókörnyezetnek, p�
 
     Adja meg sorrendben **csészelevél hossza**, **csészelevél szélessége**, **szirom hosszúsága**, **szirom szélessége**, és **fajok** az öt oszlopok jelölik.
 
-    ![Oszlopok átnevezése](media\azure-stack-solution-machine-learning\image33.png)
+    ![Oszlopok átnevezése](media/azure-stack-solution-machine-learning/image33.png)
 
 1.  Az egyes értékek megszámlálása:
 
@@ -496,23 +496,23 @@ Az adatelőkészítési csomag átadható később egy futtatókörnyezetnek, p�
 
         Megnyílik a **Vizsgálók** panel az adatok alatt. Megjelenik egy Négysávos hisztogramot. A céloszlop négy különféle értékkel rendelkezik: **Iris-virginica**, **Iris-versicolor**,**Iris-setosa**, és a egy **(null)** értéket.
 
-    ![Az Értékek számának kiválasztása](media\azure-stack-solution-machine-learning\image34.png)
+    ![Az Értékek számának kiválasztása](media/azure-stack-solution-machine-learning/image34.png)
 
-    ![Értékek száma hisztogram](media\azure-stack-solution-machine-learning\image35.png)
+    ![Értékek száma hisztogram](media/azure-stack-solution-machine-learning/image35.png)
 
 1.  A null értékek kiszűréséhez válassza a (null) sávot, majd a mínuszjelet (**-**).
 
     Ezután a (null) sor szürkévé válik, ami jelzi, hogy ki lett szűrve.
 
-    ![Null értékek kiszűrése](media\azure-stack-solution-machine-learning\image36.png)
+    ![Null értékek kiszűrése](media/azure-stack-solution-machine-learning/image36.png)
 
 1.  Figyelje meg a **LÉPÉSEK** panelen részletezett egyes adatelőkészítési lépéseket. Átnevezi az oszlopokat, és szűr a rendszer a nullértékű sorokat, minden műveletet adat-előkészítési lépésként rögzíti. Módosíthatja a beállításaikat, átrendezheti a lépéseket, és távolítsa el a lépéseket az egyes lépések szerkesztésével.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image37.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image37.png)
 
 1.  Zárja be az adatelőkészítés-szerkesztőt. Válassza az **x** ikont a diagramikonnal ellátott **iris-1** lapon a lap bezárásához. A munkahelyi rendszer automatikusan menti a **iris-1.dprep** fájl alatt látható a **adat-Előkészítések** fejléc.
 
-    ![Bezárás](media\azure-stack-solution-machine-learning\image38.png)
+    ![Bezárás](media/azure-stack-solution-machine-learning/image38.png)
 
 ### <a name="generate-python-code-to-invoke-a-data-preparation-package"></a>Adat-előkészítési csomagok meghívásához Python-kód létrehozása
 
@@ -522,7 +522,7 @@ Az adatelőkészítési csomagok kimenetét közvetlenül megvizsgálhatja a Pyt
 
 2.  Kattintson a jobb gombbal az **iris-1.dprep** fájlra, majd válassza az **Adathozzáférési kódfájl létrehozása** elemet a helyi menüből.
 
-    ![Kód létrehozása](media\azure-stack-solution-machine-learning\image39.png)
+    ![Kód létrehozása](media/azure-stack-solution-machine-learning/image39.png)
 
     Egy új fájlt **iris-1.py** megnyílik az alábbi kódsorokkal az adatelőkészítési csomagként létrehozott logika meghívásához:
 
@@ -552,18 +552,18 @@ Az adatelőkészítési csomagok kimenetét közvetlenül megvizsgálhatja a Pyt
 
 1.  A megnyitott projektben, válassza ki a **fájlok** gombra (mappa ikon) a projektmappa fájllistájának megnyitásához a bal szélső ablaktáblán.
 
-    ![Az Azure Machine Learning Workbench-projekt megnyitása](media\azure-stack-solution-machine-learning\image40.png)
+    ![Az Azure Machine Learning Workbench-projekt megnyitása](media/azure-stack-solution-machine-learning/image40.png)
 
 1.  Válassza ki az **iris_sklearn.py** Python-szkriptfájlt.
 
-    ![Szkript kiválasztása](media\azure-stack-solution-machine-learning\image41.png)
+    ![Szkript kiválasztása](media/azure-stack-solution-machine-learning/image41.png)
 
     A Workbench alkalmazásban egy új szövegszerkesztő lapon megnyílik a kód.
 
     > [!Note]  
     > A megjelenített kódot nem lehet pontosan ugyanaz, mint a fenti kóddal, mivel a mintaprojekt rendszeresen frissül.
 
-    ![Fájl megnyitása](media\azure-stack-solution-machine-learning\image42.png)
+    ![Fájl megnyitása](media/azure-stack-solution-machine-learning/image42.png)
 
 1.  Vizsgálja meg közelebbről a Python-szkriptkódot, hogy megismerkedjen a kódolási stílussal.
 
@@ -615,31 +615,31 @@ Az adatelőkészítési csomagok kimenetét közvetlenül megvizsgálhatja a Pyt
 
 2.  Keresse meg az **iris_sklearn.py** nevű lapot.
 
-    ![Lap megkeresése szkripttel](media\azure-stack-solution-machine-learning\image43.png)
+    ![Lap megkeresése szkripttel](media/azure-stack-solution-machine-learning/image43.png)
 
 1.  Az eszköztáron a lap tetején válassza **helyi** a végrehajtási környezetet, futtatandó szkriptként andiris_sklearn.pyas. Előfordulhat, hogy már ki vannak választva.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image44.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image44.png)
 
 1.  Az eszköztáron, majd enter0.01in jobb oldalán a **argumentumok** mező.
 
     Ez az érték megfelel a logisztikai regressziós modell regularizációs arányának.
 
-    ![Local és szkript kiválasztása](media\azure-stack-solution-machine-learning\image45.png)
+    ![Local és szkript kiválasztása](media/azure-stack-solution-machine-learning/image45.png)
 
 1.  Kattintson a **Futtatás** gombra. Azonnal be lesz ütemezve egy feladat. A feladat megjelenik a Workbench-ablak jobb oldalán található **Feladatok** panelen.
 
-    ![Local és szkript kiválasztása](media\azure-stack-solution-machine-learning\image46.png)
+    ![Local és szkript kiválasztása](media/azure-stack-solution-machine-learning/image46.png)
 
     Néhány pillanat múlva a feladat állapotának átvált **elküldés**, az **futó**, és végül a **befejezve**.
 
 1.  Válassza ki a **Befejezve** elemet a **Feladatok** panel állapotszöveg részén.
 
-    ![Az sklearn futtatása](media\azure-stack-solution-machine-learning\image47.png)
+    ![Az sklearn futtatása](media/azure-stack-solution-machine-learning/image47.png)
 
     Egy előugró ablak nyílik meg, és a Futtatás standard kimenetre (stdout) szöveget jeleníti meg. A stdout szöveg bezárásához válassza a **bezárásához** (**x**) gombra a jobb felső sarkában az előugró ablakban.
 
-    ![Standard kimenet](media\azure-stack-solution-machine-learning\image48.png)
+    ![Standard kimenet](media/azure-stack-solution-machine-learning/image48.png)
 
 1.  Az azonos feladat állapotánál a **feladatok** panelen válassza a kék színű **iris_sklearn.py \[n\] **(* n * Futtatás száma) feladatállapotában a  **Befejezett** állapota és a kezdési időpontot. Az ekkor megnyíló **Futtatás tulajdonságai** ablakban az adott futtatás következő adatai láthatók:
 
@@ -701,13 +701,13 @@ Az Azure Machine Learning Workbenchben minden szkriptvégrehajtást futtatási e
 
 1.  A **Futtatások** listájának megnyitásához kattintson a **Futtatások** gombra (óra ikon) a bal oldali eszköztáron. Válassza ki **iris_sklearn.py** megjelenítéséhez a **futtatási irányítópult** ofiris_sklearn.py.
 
-    ![Futtatásnézet](media\azure-stack-solution-machine-learning\image49.png)
+    ![Futtatásnézet](media/azure-stack-solution-machine-learning/image49.png)
 
 1.  Megnyílik a **Futtatási irányítópult** lap.
 
     Áttekintheti a több futtatás során rögzített statisztikákat. Gráfok a lap tetején jelennek meg. Minden futtatásához tartozik egy egymást követő számot, és a Futtatás részletei a képernyő alján a táblázatban láthatók.
 
-    ![Futtatási irányítópult](media\azure-stack-solution-machine-learning\image50.png)
+    ![Futtatási irányítópult](media/azure-stack-solution-machine-learning/image50.png)
 
 1.  Szűrheti a táblázatot, majd az egyes diagramokra kattintva megtekintheti a futtatások állapotát, időtartamát, pontosságát és regularizációs arányát.
 
@@ -715,11 +715,11 @@ Az Azure Machine Learning Workbenchben minden szkriptvégrehajtást futtatási e
 
 3.  Az **Összehasonlítás** ablaktábla bal felső részén található **Futtatási lista** gombra kattintva térjen vissza a **futtatási irányítópulthoz**.
 
-    ![Vissza a Futtatási listához](media\azure-stack-solution-machine-learning\image51.png)
+    ![Vissza a Futtatási listához](media/azure-stack-solution-machine-learning/image51.png)
 
 1.  Kijelölhet egy adott futtatást a futtatás részletes nézetének megtekintéséhez. Figyelje meg, hogy a **Futtatás tulajdonságai** szakaszban megjelennek a kiválasztott futtatás statisztikái. A kimeneti mappába írt fájlok szerepelnek a **kimenetek** szakaszt, és a fájlok letöltése onnan.
 
-    ![Futtatás részletei](media\azure-stack-solution-machine-learning\image52.png)
+    ![Futtatás részletei](media/azure-stack-solution-machine-learning/image52.png)
 
 A két grafikon, a keveredési mátrix és a többcsoportos ROC-görbe a **Képi megjelenítések** szakaszban látható. A naplófájlokat is megtalálhatja a **Naplók** szakaszban.
 
@@ -840,13 +840,13 @@ A két grafikon, a keveredési mátrix és a többcsoportos ROC-görbe a **Képi
 
     Válassza ki a bal oldali ablaktáblán a mappa ikont a projektfájlok felsorolásához.  Nyissa meg a **run.py** nevű Python-szkriptet. Ez a szkript akkor hasznos, ha különböző regularizációs arányokat. 
 
-    ![Vissza a futtatási listához](media\azure-stack-solution-machine-learning\image53.png)
+    ![Vissza a futtatási listához](media/azure-stack-solution-machine-learning/image53.png)
 
 1.  Futtassa többször is a kísérletet ezekkel az arányokkal.
 
     A szkript elindít` aniris_sklearn.pyjob` együtt a regularizációs arány o `10.0` (nevetségesen nagy szám). A parancsfájl majd felezi az arányt – a következő futtatáskor, és így tovább, félig, amíg az arány el nem kisebb, mint a nem `0.005`. A szkript a következő kódot tartalmazza:
 
-    ![Vissza a Futtatási listához](media\azure-stack-solution-machine-learning\image54.png)
+    ![Vissza a Futtatási listához](media/azure-stack-solution-machine-learning/image54.png)
 
 1.  Futtassa a **run.py** szkriptet a parancssorból a következőképpen:
 
@@ -906,7 +906,7 @@ Ez a kódrészlet megmutatja, hogyan jött létre a pickle kimeneti fájlja. A k
 
     3. Megnyílik a **Futtatás tulajdonságai** ablaktábla. A panel a jobb felső területen figyelje meg, hogy a **kimenetek** szakaszban. d\. A pickle-fájl letöltéséhez jelölje be a a **model.pkl** fájlt, és válassza ki **letöltése**. Mentse a fájlt a projektmappa gyökérkönyvtárába. A fájl a későbbi lépések során szükség lesz.  
 
-    ![A pickle-fájl letöltése](media\azure-stack-solution-machine-learning\image55.png)
+    ![A pickle-fájl letöltése](media/azure-stack-solution-machine-learning/image55.png)
 
 ### <a name="get-scoring-script-and-schema-files"></a>Pontozó szkript és sémafájlok lekérése
 
@@ -918,7 +918,7 @@ A modellfájl mellett a webszolgáltatás üzembe helyezéséhez pontozó szkrip
 
 3.  Válassza a **score_iris.py** fájlt. Megnyílik a Python-szkript. Ezt a fájlt használjuk pontozófájlként.
 
-    ![Pontozófájl](media\azure-stack-solution-machine-learning\image56.png)
+    ![Pontozófájl](media/azure-stack-solution-machine-learning/image56.png)
 
 1.  A sémafájl lekéréséhez futtassa a szkriptet. Válassza ki a **helyi** környezetet és a **score_iris.py** szkriptet a parancssorban, majd válassza a **Futtatás** lehetőséget.
 
@@ -1040,7 +1040,7 @@ A Docker Engine-nek helyileg kell futnia a modell üzembe helyezése következő
 
     Győződjön meg arról, hogy "Provisioning State" értéke "Succeeded", ahogy látható, mielőtt beállítaná a környezetet az 5. lépés:
 
-    ![Kiépítési állapot](media\azure-stack-solution-machine-learning\image57.png)
+    ![Kiépítési állapot](media/azure-stack-solution-machine-learning/image57.png)
 
 1.  Állítsa be a környezetet.
 
@@ -1160,7 +1160,7 @@ A munkamenet a Linux Windows alrendszere belül használja a következő parancs
     The key fingerprint is: SHA256:lUtUUjzaqWqGeolEPKeBmsnrhcNGM9Dn2OxYatt05SE  <user>@<machine-name>
     The key's randomart image is:  
     ```
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image58.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image58.png)
 
 4. A kulcs létrehozása után illessze be a fontos információ a következő parancsokkal: 
     ```Bash
@@ -1217,11 +1217,11 @@ A szolgáltatás egyszerű hozzáférést biztosít az előfizetés, előfordulh
 
 9.  Válassza ki **+ új** > **számítási** > **Kubernetes-fürt**. Kattintson a **Létrehozás** gombra.
 
-    ![Megoldássablon telepítése](media\azure-stack-solution-machine-learning\image59.png)
+    ![Megoldássablon telepítése](media/azure-stack-solution-machine-learning/image59.png)
 
 10\. Válassza ki **alapjai** a a Kubernetes-fürt létrehozása.
 
-    ![Deploy Solution Template](media\azure-stack-solution-machine-learning\image60.png)
+    ![Deploy Solution Template](media/azure-stack-solution-machine-learning/image60.png)
 
 11. Adja meg a **Linux rendszerű virtuális gép rendszergazdai felhasználónevét**. A Linux rendszerű virtuális gépek, a Kubernetes-fürt részét képező és a DVM felhasználóneve.
 
@@ -1250,7 +1250,7 @@ A szolgáltatás egyszerű hozzáférést biztosít az előfizetés, előfordulh
 
 1.  Válassza ki a **blokk beállításait az Azure Stack**.
 
-    ![Megoldássablon telepítése](media\azure-stack-solution-machine-learning\image61.png)
+    ![Megoldássablon telepítése](media/azure-stack-solution-machine-learning/image61.png)
 
 2.  Adja meg a **bérlői Azure Resource Manager-végpont**. Ez az az Azure Resource Manager-végpont hozza létre az erőforráscsoportot, a Kubernetes-fürthöz való kapcsolódáshoz. A végpont az az Azure Stack-operátorokról integrált rendszer szükséges. Az az Azure Stack Development Kit (ASDK), használjon `https://management.local.azurestack.external`.
 
@@ -1356,7 +1356,7 @@ Egy új WSL-munkamenetben a helyi JSON-fájl beszerzését követően használja
 
 Kubernetes konfigurációs beállítások meghatározva (lásd az alábbi kimenetben).
 
-![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image62.png)
+![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image62.png)
 
 A helyi proxy szolgáltatás elindítása:
 
@@ -1366,19 +1366,19 @@ kubectl proxy
 
 Tallózással keresse meg a kubernetes fürt felhasználói Felületét a következő címen: `https://localhost:8001`.
 
-![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image63.png)
+![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image63.png)
 
 Most már üzembe helyezéséhez a tároló és a egy tároló, amely abban a felhőben, amelyek a helyszínen látható, ahol egy helyen.
 
-![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image64.png)
+![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image64.png)
 
 Testre szabhatja a **iris_deployment.yaml** fájlt (található /*mnt/c/felhasználók/<current user>/dokumentumok/directory Kube*) így **webservicename** és tárolók  **Kép** és **neve** felel meg a központi telepítéshez választott bármilyen kód szerkesztővel.
 
-![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image65.png)
+![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image65.png)
 
 A tároló portját állítsa **5001.**
 
-![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image66.png)
+![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image66.png)
 
 Majd hozza létre a **imagePullSecret**:
 
@@ -1409,7 +1409,7 @@ Mentse a **iris_deployment.yaml** fájl (található /*mnt/c/felhasználó/<curr
 kubectl.exe create -f /mnt/c/users/<current  user>/documents/Kube/iris_deployment.yaml
 ```
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image67.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image67.png)
 
 Üzembe helyezés állapotának ellenőrzéséhez:
 
@@ -1417,7 +1417,7 @@ kubectl.exe create -f /mnt/c/users/<current  user>/documents/Kube/iris_deploymen
 Kubectl get deployments
 ```
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image68.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image68.png)
 
 Az üzembe helyezés hosszabb ideig is eltarthat.
 
@@ -1429,7 +1429,7 @@ Az üzembe helyezés hosszabb ideig is eltarthat.
 
 2.  Válassza ki a projektek oldaláról **új projekt**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image69.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image69.png)
 
 1.  Adja a projektnek **HybridMLIris**.
 
@@ -1437,7 +1437,7 @@ Az üzembe helyezés hosszabb ideig is eltarthat.
 
 3.  Válasszon ki egy folyamat, és válassza ki **létrehozás**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image70.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image70.png)
 
 ### <a name="import-some-code--create-repository"></a>Importálja egy kódrészletet tárház létrehozása
 
@@ -1447,15 +1447,15 @@ Szükség van egy Git-tárház YAML-kódot.
 
 1.  Jelölje ki az alapértelmezett projekt-irányítópult készítése a Git hitelesítő adatokat.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image71.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image71.png)
 
 1.  Adja meg a jelszót, ha szükséges, és mentse el a Git hitelesítő adatokat.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image72.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image72.png)
 
 1.  A tárház inicializálása kiválasztásával a **inicializálása** gomb és létrehozása egy **információs** fájlt.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image73.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image73.png)
 
 #### <a name="clone-the-git-repository-locally-and-upload-the-code"></a>A Git-tárház helyi klón, és töltse fel a kódot. 
 
@@ -1465,7 +1465,7 @@ Szükség van egy Git-tárház YAML-kódot.
     sudo mkdir /mnt/c/users/<User>/source sudo mkdir /mnt/c/users/<User>/source/repos sudo mkdir /mnt/c/users/<User>/source/repos/hybridMLIris cd /mnt/c/users/<User>/source/repos/hybridMLIris sudo git clone  https://<yourvstssite>.visualstudio.com/HybridMLIris/_git/HybridMLIris
     ```
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image74.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image74.png)
 
 1.  Navigáljon az újonnan klónozott tárház:
 
@@ -1474,7 +1474,7 @@ Szükség van egy Git-tárház YAML-kódot.
     cd ./HybridMLIris
     ```
     
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image75.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image75.png)
 
 1.  Másolás a **iris_deployment.yaml** fájlt a tárházba.
 
@@ -1488,7 +1488,7 @@ Szükség van egy Git-tárház YAML-kódot.
     git add . git commit -m Added Deployment YAML git push
     ```
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image76.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image76.png)
 
 ### <a name="prepare-the-private-build-and-release-agent-for-vsts-integration"></a>A saját Build és kiadás ügynök előkészítése a VSTS-integrációval
 
@@ -1514,27 +1514,27 @@ Egyszerű szolgáltatás hitelesítési kulcs használatát igényli, kövesse a
 
 1.  A **alkalmazásregisztrációk** az Azure Active Directoryban, válassza ki az alkalmazást.
 
-    ![alkalmazás kiválasztása](media\azure-stack-solution-machine-learning\image77.png)
+    ![alkalmazás kiválasztása](media/azure-stack-solution-machine-learning/image77.png)
 
 1.  Jegyezze fel az értékét **azonosítóját. Ha a szolgáltatásvégpont beállítása a vsts-ben az értéket használja.**
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image78.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image78.png)
 
 1.  A hitelesítési kulcs létrehozásához válassza a **Beállítások** elemet.
 
-    ![beállítások kiválasztása](media\azure-stack-solution-machine-learning\image79.png)
+    ![beállítások kiválasztása](media/azure-stack-solution-machine-learning/image79.png)
 
 1.  Válassza a **Kulcsok** elemet.
 
-    ![kulcsok kiválasztása](media\azure-stack-solution-machine-learning\image80.png)
+    ![kulcsok kiválasztása](media/azure-stack-solution-machine-learning/image80.png)
 
 1.  Adjon meg egy leírást és egy időtartamot a kulcshoz. Ha elkészült, kattintson a **Mentés** elemre.
 
-    ![kulcs mentése](media\azure-stack-solution-machine-learning\image81.png)
+    ![kulcs mentése](media/azure-stack-solution-machine-learning/image81.png)
 
 A kulcs mentése után megjelenik a kulcs értéke. Másolja ezt az értéket, később igény szerint. A **kulcs értékét** ID azonosító szükséges, jelentkezzen be az alkalmazás az alkalmazással együtt. A kulcs értékét, ahol az alkalmazás le tudja kérni Store.
 
-![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image82.png)
+![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image82.png)
 
 #### <a name="get-tenant-id"></a>Bérlőazonosító beszerzése
 
@@ -1542,15 +1542,15 @@ A Szolgáltatásvégpontok konfigurálásának részeként a vsts-ben van szüks
 
 1.  Válassza az **Azure Active Directory** elemet.
 
-    ![Azure Active Directory kiválasztása](media\azure-stack-solution-machine-learning\image83.png)
+    ![Azure Active Directory kiválasztása](media/azure-stack-solution-machine-learning/image83.png)
 
 1.  A Bérlőazonosító lekéréséhez válassza **tulajdonságok** az Azure AD-bérlő számára.
 
-    ![Azure AD tulajdonságok kiválasztása](media\azure-stack-solution-machine-learning\image84.png)
+    ![Azure AD tulajdonságok kiválasztása](media/azure-stack-solution-machine-learning/image84.png)
 
 1.  Másolja ki a **Címtár-azonosítót**. Ez az érték a bérlő azonosítója.
 
-    ![bérlőazonosító](media\azure-stack-solution-machine-learning\image85.png)
+    ![bérlőazonosító](media/azure-stack-solution-machine-learning/image85.png)
 
 A szolgáltatásnév engedélyeket helyezhet üzembe erőforrásokat az Azure Stack-előfizetés
 
@@ -1560,27 +1560,27 @@ Az előfizetésben található erőforrások eléréséhez, rendeljen hozzá egy
 
 1.  Keresse meg az alkalmazás hozzárendelése hatókör kívánt szintjét. Válassza ki például az előfizetések szintjén szerepkör hozzárendelése **előfizetések**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image86.jpeg)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image86.jpeg)
 
 1.  Válassza ki a **előfizetés** (erőforráscsoportra vagy erőforrásra) az alkalmazás hozzárendelése.
 
-    ![Válasszon hozzárendelés előfizetést](media\azure-stack-solution-machine-learning\image87.png)
+    ![Válasszon hozzárendelés előfizetést](media/azure-stack-solution-machine-learning/image87.png)
 
 1.  Válassza ki **hozzáférés-vezérlés (IAM)**.
 
-    ![Jelölje be a hozzáférés](media\azure-stack-solution-machine-learning\image88.png)
+    ![Jelölje be a hozzáférés](media/azure-stack-solution-machine-learning/image88.png)
 
 1.  Válassza a **Hozzáadás** lehetőséget.
 
-    ![Válassza a hozzáadása](media\azure-stack-solution-machine-learning\image89.png)
+    ![Válassza a hozzáadása](media/azure-stack-solution-machine-learning/image89.png)
 
 1.  Válassza ki az alkalmazást hozzárendelni a szerepkört. Az alábbi képen látható a **tulajdonosa** szerepkör.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image90.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image90.png)
 
 1.  Alapértelmezés szerint az Azure Active Directory-alkalmazások nem megjelenik az elérhető lehetőségek közül. Az alkalmazás található **nevet kell adnia** keresési mezőbe, és válassza ki azt.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image91.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image91.png)
 
 1.  Válassza ki **mentése** befejeződik, a szerepkör hozzárendelése. Az alkalmazás megjelenik az adott hatókörnél egy szerepkörhöz rendelt felhasználók listáját.
 
@@ -1598,18 +1598,18 @@ Ahelyett, hogy minden ügynök külön-külön, ügynökök be vannak szervezve 
 
  -  Válassza ki **biztonság kezeléséhez** hozzáférési token létrehozása oldalra.
 
-![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image92.png)
+![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image92.png)
 
-![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image93.jpeg)
+![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image93.jpeg)
 
-![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image94.jpeg)
+![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image94.jpeg)
 
 > [!Note]  
 > Szerezze be a jogkivonat adatai. Nem jelennek a képernyő elhagyása után újra.
 
 1.  Másolás a **token**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image95.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image95.png)
 
 #### <a name="install-the-vsts-build-agent-on-the-azure-stack-hosted-build-server"></a>Telepítse a VSTS ügynök létrehozása az Azure Stack-kiszolgálón üzemeltetett kiszolgáló létrehozása
 
@@ -1660,7 +1660,7 @@ Ahelyett, hogy minden ügynök külön-külön, ügynökök be vannak szervezve 
 
 2.  Töltse le és telepítse a fordító-ügynökhöz, mint a szolgáltatás használata egy **személyes hozzáférési jogkivonat (PAT)** , és futtassa a VM-rendszergazda fiókkal.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image96.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image96.png)
 
     ```Bash  
         cd \home\<user>
@@ -1678,7 +1678,7 @@ Ahelyett, hogy minden ügynök külön-külön, ügynökök be vannak szervezve 
         ./config.sh
     ```
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image97.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image97.png)
 
 2.  Miután **./config.sh**befejezése után futtassa az alábbi engedélyezéséhez a szolgáltatást a kiszolgáló rendszerindító, és indítsa el a szolgáltatást:
 
@@ -1693,23 +1693,23 @@ Az ügynök már látható a VSTS-mappában.
 
 Felhasználók végpontokat hozhat létre, így VSTO buildek Azure Service alkalmazásokat telepíthet a verem. Vsts-ben a fordító-ügynökhöz, amely csatlakoztatja az Azure Stack használatával csatlakozik.
 
-![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image98.png)
+![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image98.png)
 
 1.  Az a **beállítások** menüjében válassza **biztonsági**.
 
 2.  Az a **VSTS csoportok** listája a bal oldali válassza **végpont alkotói**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image99.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image99.png)
 
 3.  Az a **tagok lapon** válassza ki a **+ Hozzáadás**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image100.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image100.png)
 
 1.  Típus **felhasználónév** és a felhasználónév kiválasztása a listából.
 
 2.  Válassza ki **módosítások mentése**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image101.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image101.png)
 
 3.  Az a **VSTS csoportok** listája a bal oldali válassza **végpont rendszergazdák**.
 
@@ -1719,13 +1719,13 @@ Felhasználók végpontokat hozhat létre, így VSTO buildek Azure Service alkal
 
 6.  Válassza ki **módosítások mentéséhez.**
 
-    ![buchatech](media\azure-stack-solution-machine-learning\image102.jpeg)
+    ![buchatech](media/azure-stack-solution-machine-learning/image102.jpeg)
 
     A fordító-ügynökhöz az Azure Stackben átveszi az utasításokat a vsts Szolgáltatásból, amely majd ruház kommunikál az Azure Stack-végpontjának információit.
 
     Az Azure Stack kapcsolat VSTS most már készen áll.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image103.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image103.png)
 
 ### <a name="configure-build-and-release-definitions"></a>A Build és kiadás-definíciók konfigurálása
 
@@ -1735,61 +1735,61 @@ Most, hogy a kapcsolatot létesít, fogja manuálisan képezze le a létrehozott
 
 1.  Válassza ki a buildek szakasz alatt a Build és kiadás eseményközpont, és hozzon létre egy új definíciót.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image104.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image104.png)
 
 1.  A VSTS Git kiválasztása, és válassza ki a korábban létrehozott tárházba.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image105.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image105.png)
 
 1.  Válassza ki az üres folyamatot sablonként
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image106.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image106.png)
 
 1.  Nevezze el a Build **másolási összetevő** , és válassza ki az Azure Stack-hozhat létre kiszolgálót az ügynök várólista.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image107.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image107.png)
 
 1.  1. fázis válassza a folyamatok, és nevezze át, hogy **másolási összetevő**, majd **feladat hozzáadása** fázisa:
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image108.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image108.png)
 
 1.  Válassza ki **összeállítása összetevők közzététele** a a **segédprogram** listájára és válassza ki **hozzáadása**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image109.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image109.png)
 
 1.  Válassza ki a **közzététele elérési út** , és válassza ki a **iris_deployment.yaml** fájlt.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image110.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image110.png)
 
 1.  A lehívandó összetevő neve **iris_deployment** , és válassza a közzététel hely **Visual Studio Team Services/TFS**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image111.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image111.png)
 
 1.  Válassza ki **várólistára & mentése**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image112.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image112.png)
 
 1.  Build állapotának ellenőrzéséhez válassza a build-azonosítót.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image113.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image113.png)
 
 Sikeres ehhez hasonlóan fog kinézni:
 
-![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image114.png)
+![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image114.png)
 
 #### <a name="create-the-release-definition-for-the-yaml-code"></a>A YAML-kódot a kiadási definíció létrehozása
 
 1.  Válassza ki a kiadások szakasz alatt a Build és kiadás hubot, új-definíció
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image115.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image115.png)
 
 1.  Válassza ki az üres folyamatot sablonként.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image106.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image106.png)
 
 1.  Neve a környezet az Azure Stack.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image116.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image116.png)
 
 1.  Adjon hozzá egy új összetevő kiválasztásával **összetevők** és **+ Hozzáadás**
 
@@ -1799,25 +1799,25 @@ Sikeres ehhez hasonlóan fog kinézni:
 
 4.  Válassza ki **hozzáadása**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image117.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image117.png)
 
 1.  Válassza ki az Azure Stack környezetből, majd egy új feladat hozzáadása az Azure Stackhez
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image118.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image118.png)
 
 
 1.  Az ügynök fázis állítsa be az ügynök üzenetsor, az Azure Stack üzemeltetett hozhat létre kiszolgálót.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image119.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image119.png)
 
 1.  Ebben a fázisban egy új feladatot ad hozzá, válassza ki az üzembe helyezés az üzembe helyezés a Kubernetes feladat, és válassza a Hozzáadás.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image120.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image120.png)
 
 
 1.  Nevezze el **a Kubectl a alkalmazni** (név), és válassza ki a alkalmaz parancsot.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image121.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image121.png)
 
     Most hozzon létre egy új Kubernetes szolgáltatás kapcsolatot.
 
@@ -1846,7 +1846,7 @@ Sikeres ehhez hasonlóan fog kinézni:
 
 11. Lépjen a <https://aka.ms/devicelogin> a böngészőben. Amikor a rendszer kéri, írja be a kódot, a parancssori felületen, a böngészőben kapott.
 
-    ![Kubernetes Service-végpont](media\azure-stack-solution-machine-learning\image122.png)
+    ![Kubernetes Service-végpont](media/azure-stack-solution-machine-learning/image122.png)
 
 1.  Írja be a következő parancsot a parancssorban a hozzáférési hitelesítő adatok lekérése a Kubernetes-fürt.
 
@@ -1854,20 +1854,20 @@ Sikeres ehhez hasonlóan fog kinézni:
 
 az aks get-credentials resource-group <yourResourceGroup> neve <yourazurecontainerservice>
 
-![Kubernetes Service-végpont](media\azure-stack-solution-machine-learning\image123.png)
+![Kubernetes Service-végpont](media/azure-stack-solution-machine-learning/image123.png)
 
 1.  Keresse meg a **.kube**a kezdőkönyvtár mappát (például: C:\\felhasználók\\<user>\\dokumentumok\\Kube)
 
 2.  Másolja ki a tartalmát a**config**fájlt, és illessze be a Kubernetes-kapcsolat ablak. Válassza ki a**OK**gombra.
 
-    ![Kubernetes Service-végpont](media\azure-stack-solution-machine-learning\image124.png)
+    ![Kubernetes Service-végpont](media/azure-stack-solution-machine-learning/image124.png)
     
 
 3.  A Kubernetes-végpont létrehozása és kiválasztott, után jelölje használata konfigurációs fájlok be a konfigurációs fájl hozzáadásához. Majd keresse meg a csatolt összetevők iris_deployment.yaml fájlt.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image125.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image125.png)
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image126.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image126.png)
 
 4.  A kiadási definíció mentéséhez.
 
@@ -1883,7 +1883,7 @@ kubectl get deployments
 
 A kimenet a központi telepítés folyamatban, hasonlóan kell kinéznie.
 
-![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image127.png)
+![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image127.png)
 
 ```Bash  
 kubectl proxy
@@ -1891,7 +1891,7 @@ kubectl proxy
 
 Ha a kubernetes felhasználói felület már fut, keresse meg a központi telepítésben [ **https://localhost:8001/** ](https://localhost:8001/) majd keresse meg a **számítási feladatok -> replikakészletekhez**.
 
-![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image128.png)
+![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image128.png)
 
 ### <a name="deploy-the-yaml-service"></a>A YAML-szolgáltatás üzembe helyezése
 
@@ -1903,7 +1903,7 @@ Ha a kubernetes felhasználói felület már fut, keresse meg a központi telep�
     cd /mnt/c/users/<User>/source/repos/HybridMLIris/HybridMLIris/
     ```
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image75.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image75.png)
 
 1.  Másolás a **iris_service.yaml** fájlt a tárházba.
 
@@ -1919,21 +1919,21 @@ Ha a kubernetes felhasználói felület már fut, keresse meg a központi telep�
     git push
     ```
 
-![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image129.png)
+![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image129.png)
 
 #### <a name="update-the-build-definition-for-the-yaml-code"></a>Frissítés a YAML-kódot készíthet definíciója
 
 1.  Válassza ki a buildek szakasz alatt a Build és kiadás eseményközpont, és válassza ki a korábban létrehozott definíciót.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image130.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image130.png)
 
 2.  Válassza ki a Szerkesztés gombra a definíció szerkesztése.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image131.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image131.png)
 
 3.  **Feladat hozzáadása** fázisa. Válassza ki **összeállítása összetevők közzététele** a a **segédprogram** listájára és válassza ki **hozzáadása**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image108.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image108.png)
 
 4.  Nevezze el **a Kubectl a alkalmazni** (név), és válassza ki a alkalmaz parancsot.
 
@@ -1943,26 +1943,26 @@ Ha a kubernetes felhasználói felület már fut, keresse meg a központi telep�
 
 1.  Válassza ki a Build és kiadás központ alatt theReleases szakaszt, és válassza ki a korábban létrehozott kiadási definíció. Ezután válassza ki a Szerkesztés hivatkozásra.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image132.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image132.png)
 
 1.  Válassza ki a környezetet **Azure Stack** majd egy új feladat hozzáadása az Azure Stackhez.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image133.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image133.png)
 
 1.  Hozzáadás egy **új feladat** ebben a fázisban válassza a **üzembe helyezés, kubernetes** alatt feladat **telepítés** , és válassza ki **Hozzáadás**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image134.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image134.png)
 
 1.  Nevezze el **a Kubectl a alkalmazni** (név), és válassza ki a alkalmaz parancsot.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image109.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image109.png)
 
 1.  Állítsa be a Kubernates szolgáltatáskapcsolódási a korábban létrehozott Azure Stack-kapcsolatra, és válassza a **konfigurációs fájlok használata** jelölőnégyzetet, adjon hozzá egy konfigurációs fájlt. Keresse meg a csatolt összetevők iris_service.yaml fájlt.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image135.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image135.png)
 
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image136.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image136.png)
 
 1.  A kiadási definíció mentéséhez.
 
@@ -1978,7 +1978,7 @@ kubectl get deployments
 
 A kimenet a központi telepítés folyamatban, hasonlóan kell kinéznie.
 
-![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image127.png)
+![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image127.png)
 
 
 ```Bash  
@@ -1987,7 +1987,7 @@ kubectl proxy
 
 Ha a kubernetes felhasználói felület már fut, keresse meg a központi telepítésben [ **https://localhost:8001/** ](https://localhost:8001/) majd keresse meg a **számítási feladatok -> replikakészletekhez**.
 
-![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image137.png)
+![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image137.png)
 
 
 ### <a name="kubernetes-scoring-and-validation"></a>Kubernetes pontozási és ellenőrzési
@@ -2000,15 +2000,15 @@ kubectl proxy
 
 Keresse meg a Kubernetes felhasználói felülete, majd nyissa meg **központi telepítések** -> **Iris-üzembe helyezési** -> **új replikakészlet**  ->  **Iris-telepítés – xxxxxxxxx** (ahol az xs az üzemelő példány azonosítója).
 
-![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image138.png)
+![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image138.png)
 
 Majd keresse meg a **szolgáltatások** , és válassza ki a **külső végpont** a szolgáltatás ellenőrzése, hogy működik.
 
-![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image139.png)
+![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image139.png)
 
 Egy érvényesítési az alábbihoz hasonló üzenetnek kell megjelennie:
 
-![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image140.png)
+![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image140.png)
 
 #### <a name="create-azure-stack-scoring-function-app-in-the-azure-stack-portal"></a>Hozzon létre az Azure Stack pontozási Függvényalkalmazást az Azure Stack portálon
 
@@ -2016,37 +2016,37 @@ Minden függvény végrehajtásának egy függvényalkalmazáshoz szükséges. A
 
 1.  Az Azure Stack felhasználói portálon, válassza ki a **+ új** majd válassza ki a bal felső sarkában található gomb**Web + mobil** >**Függvényalkalmazás**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image141.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image141.png)
 
 1.  Adja a függvénynek **data-funkciók** és helyezze ugyanazt az erőforráscsoportot és a fennmaradó Machine Learning tartalom. Lehetővé teszik az eszköz automatikus létrehozása egy új app service-csomag felhasználásra és a korábban létrehozott alkalmazás tárolására szolgáló tárfiókot használni.
 
-    ![Új függvényalkalmazás-beállítások megadása](media\azure-stack-solution-machine-learning\image142.png)
+    ![Új függvényalkalmazás-beállítások megadása](media/azure-stack-solution-machine-learning/image142.png)
 
 1.  Válassza ki**létrehozás**és a függvényalkalmazás üzembe helyezéséhez.
 
 2.  Válassza ki az értesítési ikon a portál jobb felső sarkában, és tekintse meg a a**üzembe helyezés sikeres** üzenet.
 
-    ![Új függvényalkalmazás-beállítások megadása](media\azure-stack-solution-machine-learning\image143.png)
+    ![Új függvényalkalmazás-beállítások megadása](media/azure-stack-solution-machine-learning/image143.png)
 
 1.  Válassza ki**erőforrás megnyitása** az új függvényalkalmazás megtekintéséhez.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image144.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image144.png)
 
 1.  Hozzon létre egy új függvényt kiválasztásával **funkciók**, akkor a **+ új funkció** gombra.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image145.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image145.png)
 
 1.  Válassza ki a HTTP-eseményindító
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image146.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image146.png)
 
 1.  Válassza ki **C\#**  , a nyelv és a függvény neve: **clean-pontszám-data**, és állítsa be a jogosultsági szintet **névtelen**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image147.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image147.png)
 
 1.  Másolás és beillesztés a példában a tartalmát a következő hibakóddal tiszta pontszám-adatok a függvénybe.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image148.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image148.png)
 
 #### <a name="use-postman-to-validate-functions"></a>Funkciók ellenőrzése a Postman használatával
 
@@ -2054,39 +2054,39 @@ Annak érdekében, hogy meg van adva a Kbernetes és funkciók megfelelően hasz
 
 1.  Keresse meg a Kubernetes felhasználói felülete, majd nyissa meg **központi telepítések** -> **Iris-üzembe helyezési** -> **új replikakészlet**  ->  **Iris-telepítés – xxxxxxxxx** (ahol az xs az üzemelő példány azonosítója)
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image138.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image138.png)
 
 1.  Majd keresse meg a **szolgáltatások** , és másolja a **külső végpont**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image149.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image149.png)
 
 1.  Töltse le és telepítse a Postman alkalmazást [Itt](https://www.getpostman.com/apps) szükség esetén.
 
 2.  Jelentkezzen be a Postman alkalmazást, és zárja be az új fájl párbeszédpanelen.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image150.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image150.png)
 
 1.  A postman-alkalmazáson belül válassza POST...
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image151.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image151.png)
 
 1.  Illessze be a **külső végpont** URL-CÍMÉT az a postman alkalmazást a **kérés URL-címe** hozzáadása  **\\pontszám** ahogy az alábbi URL-címe végéhez.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image152.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image152.png)
 
 1.  Válassza ki a **törzs** fülre, majd az adatok típusa **nyers**, majd **JSON**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image153.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image153.png)
 
 1.  Egy webböngészőben nyissa meg **külső végpont**. Az URL-címet ad hozzá a következő **/swagger.json** Ez a telepítés tesztelésére szolgáltatások Swagger-fájl vezet.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image154.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image154.png)
 
 1.  A példában szereplő másolja a **Swagger.JSON** fájlt.
 
 2.  A Postman alkalmazást a illessze be a példában a bejegyzés törzse, majd válassza ki **küldése**. Azt adja vissza egy érték hasonlít az alábbi képen látható.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image155.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image155.png)
 
 ## <a name="step-7-create-an-azure-stack-storage-account-and-storage-queue"></a>7. lépés: Az Azure Stack tárfiókok és a tárolási üzenetsor létrehozása
 
@@ -2106,29 +2106,29 @@ Hozzon létre egy Azure Stack tárfiókok és a Storage-üzenetsor adatokat.
 
 7.  Válassza ki**létrehozás**a tárfiók létrehozásához.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image156.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image156.png)
 
 1.  Válassza ki a nemrég létrehozott tárfiókot.
 
 2.  Válassza ki a**üzenetsorok**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image157.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image157.png)
 
 1.  Válassza ki a **+ üzenetsor** és nevezze el a várólista, és válasszon **OK.**
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image158.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image158.png)
 
 1.  Első a **kapcsolati karakterlánc** számára a tárolási üzenetsort, és másolja azt.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image159.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image159.png)
 
 1.  Keresse meg az Azure-Függvényalkalmazást, és válassza ki **Alkalmazásbeállítások**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image160.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image160.png)
 
 1.  Az alkalmazás beállításait, a Függvényalkalmazás belül görgessen az alkalmazásbeállítások, és válassza **+ új beállítás hozzáadása**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image161.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image161.png)
 
 1.  Adja meg a storage-fiók nevét a **neve** mező, a teljes körű hozzáadása; tá_rolási
 
@@ -2136,11 +2136,11 @@ Ez lehetővé teszi az alkalmazás tudja, hogy ez az egy storage-fiók végpontj
 
 1.  Illessze be a kapcsolati karakterláncot a **érték** mező.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image162.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image162.png)
 
 1.  Görgessen az alkalmazásbeállítások tetejére, és válassza ki **mentése**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image163.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image163.png)
 
 ### <a name="update-the-scoring-function-to-use-storage-queue"></a>Tárolási üzenetsor használni kívánt pontozási függvény frissítése
 
@@ -2150,15 +2150,15 @@ Ez lehetővé teszi az alkalmazás tudja, hogy ez az egy storage-fiók végpontj
 
 3.  Válassza ki **+ új kimenet** származó a kimenetek.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image164.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image164.png)
 
 1.  Válassza ki **Azure Queue Storage** válassza **kiválasztása**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image165.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image165.png)
 
 1.  Frissítés a **üzenetsor neve** korábban létrehozott, és adja meg a Storage-üzenetsorhoz a **Tárfiók kapcsolata** létrehozott korábbi, és válassza ki a Tárfiók kapcsolata a **mentéséhez.**
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image166.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image166.png)
 
 ## <a name="step-8-create-a-function-to-handle-clean-data"></a>8. lépés: Hozzon létre egy függvényt, amely kezeli az adatok tisztítása
 
@@ -2166,15 +2166,15 @@ Hozzon létre egy új Azure Stack-függvény a tiszta adatok áthelyezése az Az
 
 1.  Hozzon létre egy új függvényt kiválasztásával **funkciók**, akkor a **+ új funkció** gombra.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image167.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image167.png)
 
 1.  Válassza ki **időzítő eseményindító**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image168.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image168.png)
 
 1.  Válassza ki **C\#**  , a nyelv és a függvény neve: **feltöltése – azure** , és állítsa az ütemezést **0 0 \*/1 \* \* \***  amely CRON jelöléssel van óránként egyszer.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image169.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image169.png)
 
 ### <a name="get-the-connection-string-to-the-azure-hosted-storage-account"></a>Üzemeltetett Azure Storage-fiókhoz tartozó kapcsolati karakterlánc beolvasása
 
@@ -2182,17 +2182,17 @@ Hozzon létre egy új Azure Stack-függvény a tiszta adatok áthelyezése az Az
 
 2.  Válassza ki **hozzáférési kulcsok**, majd másolja a **kapcsolati karakterlánc** a tárfiókhoz.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image170.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image170.png)
 
 ### <a name="update-the-upload-to-azure-function-to-use-the-azure-hosted-storage"></a>A feltöltés – azure használata az Azure üzemeltetett tárolási függvény frissítése
 
 1.  Keresse meg az Azure-Függvényalkalmazást, és válassza ki **Alkalmazásbeállítások**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image171.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image171.png)
 
 1.  Az alkalmazás beállításait, a Függvényalkalmazás belül görgessen az alkalmazásbeállítások, és válassza **+ új beállítás hozzáadása**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image172.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image172.png)
 
 1.  Adja meg a storage-fiók nevét a **neve** mező, a teljes körű hozzáadása; tá_rolási
 
@@ -2200,11 +2200,11 @@ Ez lehetővé teszi az alkalmazás tudja, hogy ez az egy storage-fiók végpontj
 
 1.  Illessze be az Azure szolgáltatott Tárfiók kapcsolati Sztringje be a **érték** mező.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image173.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image173.png)
 
 1.  Görgessen az alkalmazásbeállítások tetejére, és válassza ki **mentése**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image174.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image174.png)
 
 1.  Lépjen vissza a **feltöltése – azure** függvény.
 
@@ -2212,15 +2212,15 @@ Ez lehetővé teszi az alkalmazás tudja, hogy ez az egy storage-fiók végpontj
 
 3.  Válassza ki **+ új kimenet** származó a kimenetek.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image175.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image175.png)
 
 1.  Válassza ki **Azure Blob Storage** válassza **kiválasztása**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image176.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image176.png)
 
 1.  Frissítés a **elérési** formátuma a következő korábban létrehozott storage-tárolóba: **uploadeddata / {rand-guid} .txt**, majd állítsa be a **Tárfiók kapcsolata** , a Tárfiók kapcsolata az Azure-ban létrehozott korábbi és select **mentéséhez.**
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image177.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image177.png)
 
 1.  Másolás és beillesztés a példában a tartalmát a code **feltöltése – azure** a függvénybe.
 
@@ -2228,11 +2228,11 @@ Ez lehetővé teszi az alkalmazás tudja, hogy ez az egy storage-fiók végpontj
 
 3.  Mentse és futtassa a kódot.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image178.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image178.png)
 
 1.  Ellenőrizze, hogy az adatok Azure üzemeltetett Storage-fiókhoz tartozik elemzett akár a felhőben az Azure-ból: sikeres hasonlóan néz ki az alábbi.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-machine-learning\image179.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-machine-learning/image179.png)
 
 Az adatok fertőtlenítsék a bizalmas adatok az Azure Stack üzemeltetett Kubernetes gépi tanulással és a helyszíni Azure Stack-n keresztül az Azure Stack üzemeltetett Function Apps, az Azure nyilvános felhőbe feltöltött és úgy végezheti el az adatokat egy edge/leválasztása a feltöltéshez Ez a forgatókönyv.
 

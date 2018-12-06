@@ -10,16 +10,16 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 940d5f87e8e411d520c3d30f3e9f08e982162748
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.openlocfilehash: 3d92849eae64e48cb2052b233b89c96ad702e622
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338590"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971062"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-nodejs-in-computer-vision"></a>Rövid útmutató: Miniatűr létrehozása a REST API és Node.js használatával a Computer Visionben
 
-Ebben a rövid útmutatóban miniatűrt hozhat létre egy képből a Computer Vision API REST API-jának használatával. A [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) metódussal létrehozhatja egy kép miniatűrjét. Megadhatja a magasságát és a szélességét, amely eltérhet a bemeneti kép oldalarányától. A Computer Vision intelligens körbevágással azonosítja a releváns régiót, amely alapján létrehozza a vágási koordinátákat.
+Ebben a rövid útmutatóban miniatűrt hozhat létre egy képből a Computer Vision API REST API-jának használatával. A [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) metódussal létrehozhatja egy kép miniatűrjét. Megadhatja a magasságát és a szélességét, amely eltérhet a bemeneti kép oldalarányától. Computer Vision segítségével intelligens vágása nyelvelemző, mind a terület hasznos helyek azonosításához, és hozzon létre körbevágási koordinátái alapján az adott régióban.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -49,7 +49,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
     1. Ha szükséges, cserélje le az `uriBase` értéket azon Azure-régió [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) metódusának végponti URL-címére, ahol az előfizetői azonosítókat beszerezte.
     1. Ha szeretné, cserélje le az `imageUrl` értéket egy másik elemzendő kép URL-címére.
 1. Mentse a kódot fájlként `.js` kiterjesztéssel. Például: `get-thumbnail.js`.
-1. Nyisson meg egy parancssort.
+1. Nyisson meg egy parancsablakot.
 1. Amikor a rendszer kéri, a `node` paranccsal futtassa a fájlt. Például: `node get-thumbnail.js`.
 
 ```nodejs

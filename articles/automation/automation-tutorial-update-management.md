@@ -6,15 +6,15 @@ author: zjalexander
 ms.service: automation
 ms.component: update-management
 ms.topic: tutorial
-ms.date: 09/18/2018
+ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 8a99a784292c4294456296c1f105e5f485689368
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: d66221dea768d75395300ab663c9466718a0140d
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679902"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966783"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Windows-frissítések kezelése az Azure Automationnel
 
@@ -82,48 +82,24 @@ A frissítés bármely más részére kattintva megnyílik a kiválasztott friss
 
 ## <a name="configure-alerts"></a>Riasztások konfigurálása
 
-Ebben a lépésben egy riasztást állíthat be, amely értesíti, ha a frissítések sikeresen telepítve lettek egy Log Analytics lekérdezésen keresztül, vagy a sikertelen telepítések követésével az Update Management mesterrunbookjának segítségével.
+Ebben a lépésben megismerheti riasztást beállításához, hogy tudja a frissítéstelepítés állapotát.
 
 ### <a name="alert-conditions"></a>A riasztás feltételei
 
-Különböző riasztástípusok esetén különböző riasztási feltételeket kell meghatározni.
+Az Automation-fiók alatt **figyelés** lépjen a **riasztások**, és kattintson a **+ Új riasztási szabály**.
 
-#### <a name="log-analytics-query-alert"></a>Log Analytics-lekérdezés riasztása
+Az Automation-fiók az erőforrás már ki van választva. Ha módosítani szeretné, kattintson **válassza** és a a **válasszon ki egy erőforrást** lapon válassza ki **Automation-fiókok** a a **szűrőerőforrástípusszerint** legördülő listából. Válassza ki az Automation-fiókját, majd kattintson a **Kész** gombra.
 
-Létrehozhat egy Log Analytics-lekérdezésen alapuló riasztást a sikeres telepítések esetére. Sikertelen telepítések esetén használhatja a [Runbook-riasztás](#runbook-alert) lépéseit, hogy tudomást szerezzen az üzemelő példányok frissítését vezénylő fő runbook meghiúsulásáról. Bármilyen egyéni lekérdezés alapján létrehozhat további riasztásokat, amelyekkel számos különféle forgatókönyv lefedhető.
+Kattintson a **feltétel hozzáadása** a megfelelő központi telepítési a jel kiválasztásához. Az alábbi táblázat a frissítési telepítések esetén két elérhető jelekkel részleteit jeleníti meg:
 
-Az Azure Portalon lépjen a **Figyelés** felületre, és válassza a **Riasztás létrehozása** lehetőséget.
+|Jel neve|Dimenziók|Leírás|
+|---|---|---|
+|**Teljes frissítés központi telepítésének futtatásai**|-A frissítéstelepítés nevét</br>– Állapot|A jel használatos általános állapotát, a frissítéstelepítések riasztásra.|
+|**Teljes frissítés üzembe helyezési gép futtatások**|-A frissítéstelepítés nevét</br>– Állapot</br>-A cél számítógépen</br>-Telepítés futtatási azonosítója|A jel szolgál egy adott gépek célzó központi telepítésének állapota riasztás|
 
-Az **1. Riasztási feltétel megadása** szakaszban kattintson a **Cél kiválasztása** gombra. A **Szűrés erőforrástípus alapján** mezőben válassza a **Log Analytics** elemet. Válassza ki a Log Analytics-munkaterületet, és kattintson a **Kész** gombra.
-
-![Riasztás létrehozása](./media/automation-tutorial-update-management/create-alert.png)
-
-Kattintson a **Feltételek hozzáadása** elemre.
-
-A **Jellogika konfigurálása** területen válassza ki az **Egyéni naplókeresés** elemet a táblázatban. Adja meg az alábbi lekérdezést a **Keresési lekérdezés** szövegmezőben:
-
-```loganalytics
-UpdateRunProgress
-| where InstallationStatus == 'Succeeded'
-| where TimeGenerated > now(-10m)
-| summarize by UpdateRunName, Computer
-```
-A lekérdezés visszaadja a számítógépek és a frissítési menet nevét a megadott időszakra vonatkozóan.
-
-A **Riasztási logika** területen a **Küszöbérték** legyen **1**. Ha elkészült, válassza a **Kész** lehetőséget.
+A dimenzióértékek válasszon ki egy érvényes értéket a listából. Ha a keresett érték nem szerepel a listában, kattintson a **\+** a dimenzió, és írja be az egyéni név melletti jelre. Ezután válassza ki a keresni kívánt érték. Ha azt szeretné, válassza ki az összes értéket egy dimenzió, kattintson a **kiválasztása \***  gombra. Ha nem választ egy dimenzió értékét, a dimenzió figyelmen kívül kiértékelés során.
 
 ![Jellogika konfigurálása](./media/automation-tutorial-update-management/signal-logic.png)
-
-#### <a name="runbook-alert"></a>Runbook-riasztás
-
-A sikertelen üzembe helyezések esetén értesülnie kell a mesterpéldány futtatási hibájáról.
-Az Azure Portalon lépjen a **Figyelés** felületre, és válassza a **Riasztás létrehozása** lehetőséget.
-
-Az **1. Riasztási feltétel megadása** szakaszban kattintson a **Cél kiválasztása** gombra. A **Szűrés erőforrástípus alapján** mezőben válassza az **Automation-fiókok** elemet. Válassza ki az Automation-fiókját, majd kattintson a **Kész** gombra.
-
-A **Runbook neve** mezőben kattintson a **\+** jelre, majd egyéni névnek írja be a következőt: **Patch-MicrosoftOMSComputers**. **Állapotnak** válassza a **Sikertelen** lehetőséget, vagy kattintson a **\+** jelre, hogy **Sikertelenként** jelölhesse meg a telepítést.
-
-![Runbookok jellogikájának konfigurálása](./media/automation-tutorial-update-management/signal-logic-runbook.png)
 
 A **Riasztási logika** területen a **Küszöbérték** legyen **1**. Ha elkészült, válassza a **Kész** lehetőséget.
 
@@ -133,7 +109,7 @@ A **2. Riasztás részleteinek megadása** résznél adja meg a riasztás nevét
 
 ![Jellogika konfigurálása](./media/automation-tutorial-update-management/define-alert-details.png)
 
-A **3. Műveleti csoport megadása** szakaszban kattintson az **Új műveletcsoport** gombra. A műveletcsoport műveletek csoportja, amelyeket több riasztáson is alkalmazhat. Ezek a műveletek a teljesség igénye nélkül a következők lehetnek: e-mail-értesítések, runbookok, webhookok stb. A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](../monitoring-and-diagnostics/monitoring-action-groups.md) szóló cikkben talál.
+A **Műveletcsoportok**válassza **hozzon létre új**. A műveletcsoport műveletek csoportja, amelyeket több riasztáson is alkalmazhat. Ezek a műveletek a teljesség igénye nélkül a következők lehetnek: e-mail-értesítések, runbookok, webhookok stb. A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](../monitoring-and-diagnostics/monitoring-action-groups.md) szóló cikkben talál.
 
 A **Műveletcsoport neve** mezőben adja meg a riasztás nevét és egy rövid nevet. A rendszer a rövid nevet használja a műveletcsoport teljes neve helyett, amikor értesítéseket küld a csoport használatával.
 
@@ -159,7 +135,7 @@ Az **Új frissítéstelepítés** képernyőn adja meg a következő informáci�
 
 * **Operációs rendszer**: Válassza ki azt az operációs rendszert, amelyre a frissítéstelepítés vonatkozni fog.
 
-* **Frissítendő csoportok (előzetes verzió)**: Meghatározhat egy előfizetéseken, erőforráscsoportokon, helyeken és címkéken alapuló lekérdezést, amellyel egy dinamikus, Azure-beli virtuális gépekből álló csoportot hozhat létre, majd belefoglalhatja a telepítésbe. További információ: [Dinamikus csoportok](automation-update-management.md#using-dynamic-groups)
+* **Frissítendő csoportok (előzetes verzió)**: Meghatározhat egy előfizetéseken, erőforráscsoportokon, helyeken és címkéken alapuló lekérdezést, amellyel egy dinamikus, Azure-beli virtuális gépekből álló csoportot hozhat létre, majd belefoglalhatja a telepítésbe. További tudnivalókért lásd: [dinamikus csoportok](automation-update-management.md#using-dynamic-groups)
 
 * **Frissítendő gépek**: Válasszon ki egy Mentett keresést vagy Importált csoportot, vagy válassza a legördülő listában a Gép lehetőséget, és válasszon ki egyes gépeket. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható. A számítógépcsoportok Log Analyticsben lévő létrehozásának különböző módszereivel kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjait](../azure-monitor/platform/computer-groups.md) ismertető részt
 
@@ -174,7 +150,7 @@ Az **Új frissítéstelepítés** képernyőn adja meg a következő informáci�
 
    A besorolási típusok ismertetését [a frissítések besorolását](automation-update-management.md#update-classifications) leíró szakaszban találja.
 
-* **Belefoglalandó/kizárandó frissítések** – Ez megnyitja a **Belefoglalás/kizárás** lapot. A belefoglalandó vagy kizárandó frissítések külön lapokon jelennek meg. További információ a belefoglalás menetéről: [Belefoglalási viselkedés](automation-update-management.md#inclusion-behavior)
+* **Belefoglalandó/kizárandó frissítések** – Ez megnyitja a **Belefoglalás/kizárás** lapot. A belefoglalandó vagy kizárandó frissítések külön lapokon jelennek meg. A belefoglalási kezelésének további információkért lásd: [belefoglalási viselkedés](automation-update-management.md#inclusion-behavior)
 
 * **Ütemezési beállítások**: Megnyitja az **Ütemezési beállítások** ablaktáblát. Az alapértelmezett kezdési időpont az aktuális időpontnál 30 perccel későbbi időpont. Bármilyen időpontra beállítható a pillanatnyi időt követő 10. perc után.
 

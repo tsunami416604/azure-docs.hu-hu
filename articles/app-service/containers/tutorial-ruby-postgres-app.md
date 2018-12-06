@@ -12,16 +12,16 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 925537b3dff852921aad1e74d009e09fc90c394a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: 9b64cedb54ac0777c4402d39bad5a23df79e5cf7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445076"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961246"
 ---
 # <a name="build-a-ruby-and-postgres-web-app-in-azure-app-service-on-linux"></a>Ruby- és Postgres-webalkalmazás létrehozása a Linuxon futó Azure App Service-ben
 
-A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Ruby-webalkalmazást, és hogyan csatlakoztathatja azt egy PostgreSQL-adatbázishoz. Az oktatóanyag eredménye egy, a Linux App Service-ben futó [Ruby on Rails](http://rubyonrails.org/)-alkalmazás lesz.
+A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Ruby-webalkalmazást, és hogyan csatlakoztathatja azt egy PostgreSQL-adatbázishoz. Az oktatóanyag eredménye egy, a Linux App Service-ben futó [Ruby on Rails](https://rubyonrails.org/)-alkalmazás lesz.
 
 ![Az Azure App Service-ben futó Ruby on Rails-alkalmazás](./media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
@@ -43,7 +43,7 @@ Az oktatóanyag elvégzéséhez:
 
 * [A Git telepítése](https://git-scm.com/)
 * [Telepítse a Ruby 2.3-as verzióját](https://www.ruby-lang.org/en/documentation/installation/)
-* [Telepítse a Ruby on Rails 5.1-es verzióját](http://guides.rubyonrails.org/v5.1/getting_started.html)
+* [Telepítse a Ruby on Rails 5.1-es verzióját](https://guides.rubyonrails.org/v5.1/getting_started.html)
 * [A PostgreSQL telepítése és futtatása](https://www.postgresql.org/download/)
 
 ## <a name="prepare-local-postgres"></a>A helyi Postgres előkészítése
@@ -92,7 +92,7 @@ bundle install --path vendor/bundle
 
 ### <a name="run-the-sample-locally"></a>A minta futtatása helyben
 
-Futtassa [a Rails migrálásokat](http://guides.rubyonrails.org/active_record_migrations.html#running-migrations) az alkalmazás számára szükséges táblák létrehozásához. Ha látni szeretné a migrálások során keletkező táblákat, tekintse meg a _db/migrate_ könyvtárat a Git-tárházban.
+Futtassa [a Rails migrálásokat](https://guides.rubyonrails.org/active_record_migrations.html#running-migrations) az alkalmazás számára szükséges táblák létrehozásához. Ha látni szeretné a migrálások során keletkező táblákat, tekintse meg a _db/migrate_ könyvtárat a Git-tárházban.
 
 ```bash
 rake db:create

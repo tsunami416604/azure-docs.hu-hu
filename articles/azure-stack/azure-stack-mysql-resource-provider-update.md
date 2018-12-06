@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/15/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 36d37adff6d45b7d154511c11888aad090c54638
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: ee76d71f89fb94c8c05c6a733dac241a9e4fa13c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853676"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965138"
 ---
 # <a name="update-the-mysql-resource-provider"></a>A MySQL erőforrás-szolgáltató frissítése 
 
@@ -28,7 +28,7 @@ ms.locfileid: "51853676"
 Azure Stack-buildek frissítésekor előfordulhat, hogy elérhető egy új SQL erőforrás-szolgáltató adapter. A meglévő adapter továbbra is működik, javasoljuk, hogy frissítse a legújabb buildre minél hamarabb. 
 
 > [!IMPORTANT]
-> A már kiadott sorrendben frissítéseket telepíteni kell. Verziók nem hagyhatja ki. A verziók listáját lásd [üzembe helyezése az erőforrás-szolgáltatóra vonatkozó Előfeltételek](.\azure-stack-mysql-resource-provider-deploy.md#prerequisites).
+> A már kiadott sorrendben frissítéseket telepíteni kell. Verziók nem hagyhatja ki. A verziók listáját lásd [üzembe helyezése az erőforrás-szolgáltatóra vonatkozó Előfeltételek](./azure-stack-mysql-resource-provider-deploy.md#prerequisites).
 
 ## <a name="update-the-mysql-resource-provider-adapter-integrated-systems-only"></a>Frissítés a MySQL erőforrás-szolgáltató adapter (csak az integrált rendszerek)
 

@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1b9d6342d30c5f5e9ef80213664447c48a62494c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
-ms.translationtype: HT
+ms.openlocfilehash: ed226ff689649b7eb6a4717fd07be043e1cdfc1e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521900"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966940"
 ---
 # <a name="provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Az eszköz kiépítése IoT Hubra az Azure IoT Hub Device Provisioning Service használatával
 
@@ -89,7 +89,7 @@ Az eszköz indítása után a következő műveleteket kell elvégezni:
 
     ![Sikeres csatlakozás a hubhoz a portálon](./media/tutorial-provision-device-to-hub/hub-connect-success.png)
 
-További információért tekintse meg a TPM-szimulátor [dps_client_sample](https://github.com/Azure/azure-iot-device-auth/blob/master/dps_client/samples/dps_client_sample/dps_client_sample.c) mintaalkalmazását. 
+További információkért tekintse meg az üzembe helyezési eszközügyfél minta, [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c). A minta azt mutatja be, a TPM használatával szimulált eszköz kiépítése X.509-tanúsítványokat és a szimmetrikus kulcsokat. Lépjen vissza a [TPM](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device), [X.509](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-x509), és [szimmetrikus kulcs](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-symm-key) igazolási gyors útmutatók részletes útmutató a minta használatához.
 
 ## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:

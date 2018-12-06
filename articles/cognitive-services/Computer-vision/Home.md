@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/22/2018
 ms.author: pafarley
-ms.openlocfilehash: 8f18b01409680c07b942087b75b1618c75973391
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: c5340599bc4ed400ce11ea8ba997d03c4df7cc05
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634328"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963215"
 ---
 # <a name="what-is-computer-vision"></a>Mi a Computer Vision?
 
@@ -35,14 +35,16 @@ A Computer Vision a következő műveleteket képes végrehajtani a képek elemz
 
 | Műveletek | Leírás |
 | ------ | ----------- |
-|**[Vizuális jellemzők címkézése](concept-tagging-images.md)**|Felismeri és címkézi a kép vizuális jellemzőit több mint 2000 felismerhető tárgy, élőlény, háttér és tevékenység alapján. Amennyiben a címkék félreérthetőek vagy nem közismertek, a válasz „tippeket” tartalmaz a címke adott környezetben való értelmezésének megkönnyítése érdekében. A címkézés nem korlátozódik a kép fő témájára, például az előtérben szereplő személyre, hanem magában foglalja a környezetet (beltér vagy kültér), bútorokat, eszközöket, növényeket, állatokat, kiegészítőket, készülékeket stb.|
+|**[Vizuális jellemzők címkézése](concept-tagging-images.md)**|Valamint a vizuális jellemzőket a képet, az ezer felismerhető objektumok, élő dolog, táj és műveletek közül. Ha a címkék nem egyértelmű vagy nem közismert, az API-válasz biztosít "tippek" egy ismert beállítás kontextusában a címke jelentésének értelmezéséhez. A címkézés nem korlátozódik a kép fő témájára, például az előtérben szereplő személyre, hanem magában foglalja a környezetet (beltér vagy kültér), bútorokat, eszközöket, növényeket, állatokat, kiegészítőket, készülékeket stb.|
+|**[Objektumok észlelése](concept-object-detection.md)**| Objektumfelismerés hasonlít a címkézés, de az API-t adja vissza a határolókeret koordinátái minden alkalmazott címke esetében. Például képet tartalmaz egy kutya, cat és személy, ha a hibakeresés művelet felsorolja azokat az objektumokat a a koordináták a képen. Ez a funkció segítségével a dolgozhatók további a képet az objektumok közötti kapcsolatok. Azt jelzi, ha több példánya ugyanazt a címkét a képet.|
 |**[Képek kategorizálása](concept-categorizing-images.md)**|Felismeri és kategorizálja a teljes képet egy [kategóriaelnevezési rendszer](Category-Taxonomy.md) segítségével, szülő/gyermek hierarchiák használatával. A kategóriák egyedül vagy az új címkéző modellekkel együtt is használhatóak.<br/>Jelenleg az egyetlen támogatott nyelv a képek címkézéséhez és kategorizálásához az angol.|
 |**[Képek leírása](concept-describing-images.md)**|Leírást hoz létre a teljes képhez a felhasználók által is olvasható nyelven, teljes mondatok használatával. A Computer Vision algoritmusai különböző leírásokat hoznak létre a képen felismert tárgyak alapján. A leírásokat a rendszer kiértékeli, majd megbízhatósági pontszámot hoz létre hozzájuk. A megbízhatósági pontszámok listája csökkenő sorrendbe rendezve érkezik vissza.|
 |**[Arcfelismerés](concept-detecting-faces.md)** |Felismeri a képen található arcokat, és információval szolgál minden felismert arccal kapcsolatban. A Computer Vision visszaküldi az arcok koordinátáit, a téglalapot és a képen szereplő személy nemét és életkorát.<br/>A Computer Vision a [Face](/azure/cognitive-services/face/) funkcióinak csak egy részét tartalmazza. A Face szolgáltatást részletesebb elemzések elvégzésére is használhatja, például az arc vagy a testtartás azonosítására.|
 |**[Képek típusának észlelése](concept-detecting-image-types.md)**|Észleli a kép jellemzőit, például hogy a kép vonalrajz-e, vagy annak a valószínűségét, hogy a kép ClipArt.|
 |**[Tartományspecifikus tartalom észlelése](concept-detecting-domain-content.md)**|Tartománymodellek segítségével észleli és felismeri a kép tartományspecifikus tartalmát, például a hírességeket vagy nevezetességeket. Például, ha egy képen személyek szerepelnek, a Computer Vision egy beépített híresség-tartománymodell használatával megállapítja, hogy a képen felismert személyek megegyeznek-e az ismert hírességek valamelyikével.|
 |**[Színséma észlelése](concept-detecting-color-schemes.md)**|A képen használt színek elemzése. A Computer Vision eldönti, hogy a kép fekete-fehér-e vagy színes, illetve színes képek esetében felismeri a domináns és a kiegészítő színeket.|
-|**[Miniatűr létrehozása](concept-generating-thumbnails.md)**|Elemzi a kép tartalmát, hogy megfelelő miniatűrt tudjon létrehozni a képhez. A Computer Vision először egy nagy felbontású miniatűrt hoz létre, majd elemzi a képen szereplő objektumokat, hogy meghatározhassa a *releváns tartományt* (ROI). A Computer Vision úgy vágja ki a képet, hogy az megfeleljen a releváns tartomány követelményeinek. Igény szerint a létrehozott miniatűr az eredeti képtől eltérő oldalaránnyal is rendelkezhet.|
+|**[Miniatűr létrehozása](concept-generating-thumbnails.md)**|Elemzi a kép tartalmát, hogy megfelelő miniatűrt tudjon létrehozni a képhez. Számítógépes Látástechnológia először létrehoz egy jó minőségű miniatűrt, és ezután elemzi a tárgyakat meghatározni a *érdeklődési körét*. Számítógépes Látástechnológia majd körülvágja a képet a terület a lényeges követelményeinek. Igény szerint a létrehozott miniatűr az eredeti képtől eltérő oldalaránnyal is rendelkezhet.|
+|**[A terület a lényeges beolvasása](concept-generating-thumbnails.md#area-of-interest)**|Elemezheti a koordinátáit adja vissza a kép tartalmát a *érdeklődési körét*. Ugyanezt a funkciót, amellyel miniatűrkép generálása, de ahelyett, hogy a kép levágás, Computer Vision adja vissza a határolókeret koordinátái a régió, így a hívó alkalmazás az eredeti képet igény szerint módosíthatja.|
 
 ## <a name="extracting-text-from-images"></a>Szöveg kinyerése képekből
 

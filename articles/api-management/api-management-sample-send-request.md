@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: fdcc230171006c6388e75b947e10a73fb953001a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: bfb08cb3bb81917414e4d34afe47964b738980e7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294679"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970178"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Az Azure API Management szolgáltatás a külső szolgáltatások használata
 Az Azure API Management szolgáltatásban elérhető házirendek számos hasznos munkát alapján csak a bejövő kérelem, a kimenő válaszok és alapvető konfigurációs adatai hajthatja végre. Azonban képes arra, hogy az API Management külső szolgáltatásokkal interakcióba sok további lehetőség nyílik házirendeket.
@@ -68,13 +68,13 @@ Bizonyos hátrányai is vannak, a kérés aktiválásának és elfelejt stílus�
 A `send-request` házirend lehetővé teszi, hogy egy külső szolgáltatás használatával összetett feldolgozás feladatokat és adatokat az API management szolgáltatás, amely további házirend feldolgozásának beállítása is használható.
 
 ### <a name="authorizing-reference-tokens"></a>Referencia-tokenek engedélyezése
-Az API Management a fő függvény háttérerőforrásokhoz védelmére használja. Az engedélyezési kiszolgáló, az API által használt hozott létre [JWT-jogkivonatokkal](http://jwt.io/) az OAuth2 folyamat részeként, [Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) használható, akkor a `validate-jwt` házirend a token érvényességének ellenőrzése. Egyes engedélyezési kiszolgálók létrehozása ún [jogkivonatok hivatkozhat](http://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/) anélkül, hogy egy visszahívást, az engedélyezési kiszolgálón, amely nem ellenőrizhető.
+Az API Management a fő függvény háttérerőforrásokhoz védelmére használja. Az engedélyezési kiszolgáló, az API által használt hozott létre [JWT-jogkivonatokkal](https://jwt.io/) az OAuth2 folyamat részeként, [Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) használható, akkor a `validate-jwt` házirend a token érvényességének ellenőrzése. Egyes engedélyezési kiszolgálók létrehozása ún [jogkivonatok hivatkozhat](https://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/) anélkül, hogy egy visszahívást, az engedélyezési kiszolgálón, amely nem ellenőrizhető.
 
 ### <a name="standardized-introspection"></a>Szabványos önelemzési
 A múltban történt nem szabványos lehet az engedélyezési kiszolgálón egy referencia-token ellenőrzése. Azonban nemrégiben javasolt szabványos [RFC 7662](https://tools.ietf.org/html/rfc7662) , amely meghatározza, hogyan erőforrás-kiszolgáló egy token érvényességének ellenőrzéséhez az IETF által lett közzétéve.
 
 ### <a name="extracting-the-token"></a>A jogkivonat beolvasása
-Az első lépés, hogy a jogkivonat kinyerni az engedélyeztetési fejléc. A fejléc értéke legyen formázva a `Bearer` engedélyezési séma, egy szóközt, majd az engedélyezési jogkivonatot megfelelően [RFC 6750](http://tools.ietf.org/html/rfc6750#section-2.1). Sajnos előfordulhatnak olyan esetek, ahol az engedélyezési séma van hagyva. Ez a fiók elemzésekor, az API Management a fejléc értéke adhatja meg bontja, és az utolsó karakterlánc kiválasztja a visszaadott karakterláncok tömbje. A program rosszul formázott engedélyezési fejléceket biztosít egy megkerülő megoldás.
+Az első lépés, hogy a jogkivonat kinyerni az engedélyeztetési fejléc. A fejléc értéke legyen formázva a `Bearer` engedélyezési séma, egy szóközt, majd az engedélyezési jogkivonatot megfelelően [RFC 6750](https://tools.ietf.org/html/rfc6750#section-2.1). Sajnos előfordulhatnak olyan esetek, ahol az engedélyezési séma van hagyva. Ez a fiók elemzésekor, az API Management a fejléc értéke adhatja meg bontja, és az utolsó karakterlánc kiválasztja a visszaadott karakterláncok tömbje. A program rosszul formázott engedélyezési fejléceket biztosít egy megkerülő megoldás.
 
 ```xml
 <set-variable name="token" value="@(context.Request.Headers.GetValueOrDefault("Authorization","scheme param").Split(' ').Last())" />
@@ -118,7 +118,7 @@ Használhat egy `<choose>` észleli, ha a jogkivonat érvénytelen, és ha igen,
 </choose>
 ```
 
-Megfelelően [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) melyik leírás fedi le hogyan `bearer` jogkivonatok kell használni, az API Management is adja vissza egy `WWW-Authenticate` a 401-es válasz fejléce. A WWW-Authenticate célja, hogy egy ügyfél a megfelelő engedéllyel rendelkező kérelem létrehozására utasítja. Miatt számos megközelítés lehetséges az OAuth2-keretrendszerrel meglehetősen nehéz kommunikációhoz szükséges összes információ. Szerencsére nincsenek folyamatban segítségével erőfeszítések [ügyfelek felderítése hogyan kell megfelelően egy erőforrás-kiszolgálóhoz intézett kérésekben](http://tools.ietf.org/html/draft-jones-oauth-discovery-00).
+Megfelelően [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) melyik leírás fedi le hogyan `bearer` jogkivonatok kell használni, az API Management is adja vissza egy `WWW-Authenticate` a 401-es válasz fejléce. A WWW-Authenticate célja, hogy egy ügyfél a megfelelő engedéllyel rendelkező kérelem létrehozására utasítja. Miatt számos megközelítés lehetséges az OAuth2-keretrendszerrel meglehetősen nehéz kommunikációhoz szükséges összes információ. Szerencsére nincsenek folyamatban segítségével erőfeszítések [ügyfelek felderítése hogyan kell megfelelően egy erőforrás-kiszolgálóhoz intézett kérésekben](https://tools.ietf.org/html/draft-jones-oauth-discovery-00).
 
 ### <a name="final-solution"></a>Végső megoldás
 A végén kérje le a következő szabályzatot:

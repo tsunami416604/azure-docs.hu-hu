@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/24/2018
+ms.date: 12/05/2018
 ms.author: roiyz
-ms.openlocfilehash: 2c8ac43d96c100f0c26281fea1d4e9eba41bc178
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 1370f541f8913d86db948a3165d6660a8cd66528
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282329"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963504"
 ---
 # <a name="custom-script-extension-for-windows"></a>A Windows egyéni szkriptek futtatására szolgáló bővítmény
 
@@ -37,11 +37,11 @@ Ez a dokumentum részletesen használata az egyéni Szkriptbővítmény használ
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-Az egyéni Szkriptbővítmény Linux fog futni a támogatott bővítmény bővítmény rendszerbeli, további információkért lásd: Ez [cikk](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems).
+Az egyéni Szkriptbővítmény Linux fog futni a támogatott bővítmény bővítmény nyílt forráskódú, további információkért lásd: Ez [cikk](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems).
 
 ### <a name="script-location"></a>A parancsprogram helye
 
-A bővítmény használhatja az Azure Blob storage hitelesítő adatai az Azure Blob storage elérésére használhat. Másik lehetőségként a parancsprogram helyét lehet bármelyik where, mindaddig, amíg a virtuális gép irányíthatja a végpontot, például a GitHub, a belső fájlkiszolgáló stb.
+A bővítmény használhatja az Azure Blob storage hitelesítő adatai az Azure Blob storage elérésére használhat. Másik lehetőségként a parancsprogram helyét bárhol lehet, mindaddig, amíg a virtuális gép irányíthatja a végpontot, például a GitHub, a belső fájlkiszolgáló stb.
 
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
@@ -52,15 +52,15 @@ Ha a parancsfájl egy helyi kiszolgálón, akkor továbbra is szükség lehet to
 ### <a name="tips-and-tricks"></a>tippek és trükkök
 * Ehhez a kiterjesztéshez legmagasabb Hibaarány miatt a parancsfájl tesztelési hiba nélkül fut a parancsfájl szintaxishibáinak és is helyezheti további jelentkezik be, hogy könnyebben megtalálja, ahol nem sikerült a parancsfájl.
 * Parancsfájlokat írhat, amelyek idempotensek, így az első futás egynél többször véletlenül, ha módosításokat a rendszer nem okoz.
-* Győződjön meg arról, a parancsfájlok nem igényelnek felhasználói bevitel futtatás esetén.
+* Győződjön meg arról, a parancsfájlok futtatásakor. nem szükséges felhasználói bevitel.
 * A parancsfájl futtatása engedélyezett 90 perc, semmit hosszabb egy sikertelen a bővítmény kiépítése eredményez.
-* Ne telepítse a parancsfájl belül újraindul, ez lesz okozhat problémát más bővítményeket, amelyek telepítése folyamatban van, és utáni újraindítás, a bővítmény nem továbbra is az újraindítás után. 
-* Ha egy parancsfájl, amely hatására az újraindítás, alkalmazásokat telepíthet, és futtassa a parancsfájlok stb. Olyan időszakra ütemezze az újraindítás a Windows ütemezett feladat használatával, vagy a DSC, vagy a Chef, Puppet, bővítmények.
+* A parancsfájl belül újraindítások ne helyezzen, ez a művelet lesz okozhat problémát más bővítményeket, amelyek telepítése folyamatban van. Utáni újraindítás, a bővítmény nem továbbra is az újraindítás után. 
+* Ha egy parancsfájl, amely hatására az újraindítás, alkalmazásokat telepíthet, és futtassa a parancsfájlok stb. Az újraindítás a Windows ütemezett feladat használatával, vagy a DSC, vagy a Chef, Puppet, bővítmények ütemezheti.
 * A bővítmény csak fut egy parancsfájl egyszer, ha azt szeretné, parancsfájl futtatása a naplózásra kerül minden rendszerindításkor, akkor a bővítmény használata a Windows ütemezett feladat létrehozásához szükséges.
 * Ha azt szeretné, meghatározhatja, mikor egy parancsprogram futtatása, a bővítmény Windows ütemezett feladat létrehozásához használjon. 
-* A szkript fut, amikor egy "átviteli" bővítmény állapotát az Azure Portalon vagy a parancssori felület csak akkor jelenik meg. Ha azt szeretné, hogy a futó parancsfájl gyakoribb ügyfélállapot-frissítés, szüksége lesz a saját megoldást hozhat létre.
+* A szkript fut, amikor egy "átviteli" bővítmény állapotát az Azure Portalon vagy a parancssori felület csak akkor jelenik meg. Ha azt szeretné, hogy a futó parancsfájl gyakoribb ügyfélállapot-frissítés, szüksége saját megoldást hozhat létre.
 * Egyéni szkriptek futtatására szolgáló bővítmény nem támogatja natív módon proxykiszolgálókat, azonban egy fájlátviteli eszköz, amely támogatja a proxykiszolgálók a parancsfájlban, például használhatja *Curl* 
-* Vegye figyelembe, hogy a parancsfájlok vagy parancsok függő előfordulhat, hogy nem alapértelmezett directory-helyeken, a logikai ennek kezelése rendelkezik.
+* Nem alapértelmezett vegye figyelembe, hogy a parancsfájlok vagy parancsok függhet, directory-hely rendelkezik logikai a helyzet kezeléséhez.
 
 
 ## <a name="extension-schema"></a>Bővítményséma
@@ -92,7 +92,8 @@ Ezeket az elemeket kell kezelni, mint a bizalmas adatok és a bővítmények vé
         "settings": {
             "fileUris": [
                 "script location"
-            ]
+            ],
+            "timestamp":123456789
         },
         "protectedSettings": {
             "commandToExecute": "myExecutionCommand",
@@ -113,6 +114,7 @@ Ezeket az elemeket kell kezelni, mint a bizalmas adatok és a bővítmények vé
 | type | CustomScriptExtension | sztring |
 | typeHandlerVersion | 1.9 | int |
 | fileUris (például:) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | tömb |
+| időbélyegző (például:) | 123456789 | 32 bites egész szám |
 | commandToExecute (például:) | PowerShell - ExecutionPolicy Unrestricted - fájl konfigurálása music-app.ps1 | sztring |
 | storageAccountName (például:) | examplestorageacct | sztring |
 | storageAccountKey (például:) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | sztring |
@@ -123,19 +125,20 @@ Ezeket az elemeket kell kezelni, mint a bizalmas adatok és a bővítmények vé
 #### <a name="property-value-details"></a>A tulajdonság értéke részletei
  * `commandToExecute`: (**szükséges**, string) végrehajtásához a BelépésiPont-szkriptet. Helyette használja ezt a mezőt, ha a parancs tartalmazza a titkos kulcsok, például jelszavak, vagy a fileUris rendszer-és nagybetűket.
 * `fileUris`: (nem kötelező, csak karakterlánc-tömbben) fájl(ok) le kell tölteni az URL-címeket.
+* `timestamp` Ebben a mezőben csak való egy futtassa újból a parancsfájl a mező értékének módosításával (nem kötelező, a 32 bites egész szám) használatát.  Minden olyan egész értéket az elfogadható; Ez csak különbözőnek kell lennie, mint a korábbi értéket.
 * `storageAccountName`: (nem kötelező, string) a tárfiók nevére. Ha storage hitelesítő adatai, adja meg az összes `fileUris` URL-címeket kell lennie az Azure-Blobok.
 * `storageAccountKey`: (nem kötelező, string) storage-fiók hozzáférési kulcsa
 
 A következő értékeket nyilvános vagy védett beállítások is megadhatók, a bővítmény elutasítják semmilyen konfigurálást, ahol az alábbi értékek vannak beállítva, a nyilvános és a védett beállításaiban.
 * `commandToExecute`
 
-Hibakeresés, de hasznos lehet nyilvános beállítások használata erősen ajánlott, hogy védett beállításokat használja.
+Hibakeresés, de hasznos lehet nyilvános beállítások használata javasolt, hogy védett beállításokat használja.
 
-Nyilvános beállításokat a virtuális gép, ahol a parancsfájl végrehajtása szövegként érkeznek.  Védett beállítások vannak titkosítva, csak az Azure és a virtuális gép ismert kulcsot használ. A beállítások lesznek mentve a virtuális géphez, mivel lettek küldve, vagyis ha a beállítások titkosított menti őket a titkosított a virtuális gépen. A tanúsítvány használatával fejthetők vissza a titkosított értékek tárolja a virtuális gépen, és fejti vissza a futásidejű beállításokat (ha szükséges).
+Nyilvános beállításokat a virtuális gép, ahol a parancsfájl végrehajtása szövegként érkeznek.  Védett beállítások vannak titkosítva, csak az Azure és a virtuális gép ismert kulcsot használ. A beállítások lesznek mentve a virtuális géphez, mivel lettek küldve, vagyis ha a beállítások titkosított menti őket titkosított a virtuális gépen. A tanúsítvány használatával fejthetők vissza a titkosított értékek tárolja a virtuális gépen, és fejti vissza a futásidejű beállításokat (ha szükséges).
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. Az előző szakaszban részletes JSON-sémájában az egyéni szkriptek futtatására szolgáló bővítmény futtatása során egy Azure Resource Manager-sablon üzembe helyezése Azure Resource Manager-sablon is használható. A következő példák bemutatják, hogyan használja az egyéni szkriptek futtatására szolgáló bővítmény:
+Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. A JSON-séma, amely az előző szakaszban részletes az egyéni szkriptek futtatására szolgáló bővítmény futtatása során egy Azure Resource Manager-sablon üzembe helyezése Azure Resource Manager-sablon is használható. A következő példák bemutatják, hogyan használja az egyéni szkriptek futtatására szolgáló bővítmény:
 
 * [Oktatóanyag: Virtuálisgép-bővítmények az Azure Resource Manager-sablonok üzembe helyezése](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)
 * [A Windows és az Azure SQL Database két szintű alkalmazás üzembe helyezése](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)
@@ -199,9 +202,9 @@ Set-AzureRmVMExtension -ResourceGroupName myRG
 ```
 
 ### <a name="how-to-run-custom-script-more-than-once-with-cli"></a>Egyéni parancsfájl egynél többször futtatása a parancssori felülettel
-Ha azt szeretné, az egyéni szkriptek futtatására szolgáló bővítmény futtatása egynél többször, csak ehhez ezen feltételek:
+Ha azt szeretné, az egyéni szkriptek futtatására szolgáló bővítmény futtatása egynél többször, ez a művelet ezen feltételek csak teheti meg:
 1. A bővítmény "Név" paraméternek megegyezik a bővítmény a korábbi telepítésben.
-2. Frissítenie kell a konfigurációt más módon a parancs nem lehet újra végrehajtja, például hozzáadhatja a dinamikus tulajdonságban a parancsot, például egy időbélyegző. 
+2. A parancs nem hajtható újra egyéb konfigurációs kell frissíteni. Hozzáadhat egy dinamikus tulajdonságban parancsba, például egy időbélyegző.
 
 ## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
 
@@ -222,9 +225,9 @@ A megadott fájlok letöltése a cél virtuális gépen a következő könyvtár
 ```cmd
 C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 ```
-ahol `<n>` módosíthatja a bővítmény végrehajtások közötti decimális egész szám.  A `1.*` értéke megegyezik a tényleges, jelenlegi `typeHandlerVersion` érték a kiterjesztést.  A tényleges directory lehet például `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2`.  
+ahol `<n>` decimális egész szám, amely előfordulhat, hogy módosítsa a bővítmény végrehajtások közötti.  A `1.*` értéke megegyezik a tényleges, jelenlegi `typeHandlerVersion` érték a kiterjesztést.  A tényleges directory lehet például `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2`.  
 
-Végrehajtásakor a `commandToExecute` parancsot, a bővítmény beállítja ezt a könyvtárat (például `...\Downloads\2`), az aktuális munkakönyvtár. Ez lehetővé teszi, hogy a relatív elérési útjai keresse meg a letöltött fájlok használata a `fileURIs` tulajdonság. Tekintse meg az alábbi táblázatban példák.
+Végrehajtásakor a `commandToExecute` parancsot, a bővítmény beállítja ezt a könyvtárat (például `...\Downloads\2`), az aktuális munkakönyvtár. Ez a folyamat lehetővé teszi, hogy a relatív elérési útjai keresse meg a letöltött fájlok használata a `fileURIs` tulajdonság. Tekintse meg az alábbi táblázatban példák.
 
 Mivel a letöltés abszolút elérési útját idővel változhat, akkor célszerűbb, hogy a parancsfájl/fájl relatív elérési utakat a a `commandToExecute` string, amikor csak lehetséges. Példa:
 ```json
@@ -244,4 +247,4 @@ Után az első URI-szegmens őrizzük meg a letöltött fájlok elérési útra 
 
 ### <a name="support"></a>Támogatás
 
-Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) , és válassza ki a Get-támogatást. Azure-támogatási használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Emellett a egy Azure-támogatási esemény is fájl. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) , és válassza ki a Get-támogatást. Azure-támogatási használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).

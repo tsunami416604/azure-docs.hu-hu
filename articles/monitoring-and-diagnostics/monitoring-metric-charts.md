@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2017
 ms.author: vitaly.gorbenko
 ms.component: metrics
-ms.openlocfilehash: f82b4dff20e2b26e62889c41b3ff3c27bc86066a
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: d1cfaadd06d20a0f57d75cd43d00040c9e44c429
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901413"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966024"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Az Azure Monitor Metrikaböngészőjének
 
@@ -100,6 +100,21 @@ Jeleníthetik meg egymással szembeni metrika összehasonlítási különböző 
    > [!NOTE]
    > Szűrés és a csoportosítási egyazon dimenzió használatával a szegmensek nem releváns, mivel a forgatókönyvhöz, és könnyebben olvashatóvá teszi a diagramok elrejtése.
 
+## <a name="how-do-i-lock-lower-and-upper-boundaries-of-the-chart-y-axis"></a>Hogyan zárolja a diagram y alsó és felső határai?
+
+Az y tengely skáláját zárolás akkor válik fontossá, amikor a diagram bemutatja a nagyobb érték kisebb ingadozások által megkövetelt. 
+
+Például ha sikeres kérések mennyisége lenyílik 99,99 % 99,5 %-ra, azt tüntetheti jelentős csökkenését a szolgáltatásminőség. Azonban egy kis numerikus érték ingadozása okainak lenne nehezen vagy egyáltalán nem lehetséges a diagram alapértelmezett beállításokkal. Ebben az esetben lehetett zárolni 99 %-os, amely biztosítja, kis legördülő több kétségtelenül fennáll-e a diagram legalacsonyabb határait. 
+
+Egy másik példa egy ingadozás a rendelkezésre álló memória, amely az érték technikailag soha nem eléri a 0. Értéke a tartomány rögzítése előfordulhat, hogy könnyebben a csepp a rendelkezésre álló memória helyszíni. 
+
+Az y tengely tartománya szabályozni, használja a "..." diagram menüt, és válassza a **diagram szerkesztése** speciális diagram beállítások eléréséhez. Az y tengely tartománya szakaszban szereplő értékeket módosíthatja, vagy használjon **automatikus** Alapértelmezések visszaállítása gombra.
+
+![metrika kép](./media/monitoring-metric-charts/0013.png)
+
+> [!WARNING]
+> Y tengely, hogy a diagramok, amelyek nyomon követik a különböző határain zárolásának számolja, vagy idő (és így használatban lévők száma, sum, minimum vagy maximum összesítések) egy adott időszakban összegzi általában igényel, adjon meg egy rögzített idő részletesség, nem pedig az automatikus alapértelmezett hagyatkoznia. Erre azért szükség, mert a diagramok az értékeket módosíthatja, ha az idő részletessége automatikusan módosította a böngészőablak átméretezése, vagy egy képernyőfelbontás fog egy másik felhasználó. A létrejövő idő részletesség hatásokat megjelenésének módosítása a diagram y tengely tartomány kijelölt érvénytelenítése.
+
 ## <a name="how-do-i-pin-charts-to-dashboards"></a>Hogyan rögzítheti a diagramokat az irányítópultokon?
 
 Miután a diagramok, érdemes hozzáadása az irányítópultokhoz, így megtekintheti azt újra, esetleg egyéb figyelési telemetriát összefüggésben vagy megosztásra a csapatával. 
@@ -108,7 +123,7 @@ Az irányítópult konfigurált diagram rögzítése:
 
 Miután a diagramot, kattintson a a **diagram műveletek** menüben kattintson a jobb felső sarokban, a diagram, és kattintson a **rögzítés az irányítópulton**.
 
-   ![metrika kép](./media/monitoring-metric-charts/0013.png)
+![metrika kép](./media/monitoring-metric-charts/0013.png)
 
 ## <a name="next-steps"></a>További lépések
 

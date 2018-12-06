@@ -16,22 +16,22 @@ ms.date: 09/18/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
 ms.custom: mvc
-ms.openlocfilehash: b98879483d35a91810c9e9ab5e0ac81151bde52f
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 8dcc64350e25be0c8131dc75d96f2a8938944eaf
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368660"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962181"
 ---
 # <a name="azure-stack-compute-capacity-planning"></a>Az Azure Stack számítási kapacitásának megtervezése
-A [Virtuálisgép-méretek támogatott az Azure Stacken](.\user\azure-stack-vm-sizes.md) részhalmazát alkotják, az Azure-ban támogatott. Az Azure erőforrások (helyi és a szolgáltatásiszint-kiszolgáló) overconsumption elkerülése érdekében számos vektorok mentén erőforráskorlátok ír elő. Nélkül betartatásához bérlői használat bizonyos korlátozások, a bérlő élményt, amikor más bérlők overconsume erőforrások romlani fog. Hálózati kimenő forgalom a virtuális gépről a sávszélesség a caps teljesülnek az Azure Stacken, amelyek megfelelnek az Azure korlátai vannak. Storage access-bérlők a tárolási erőforrások, az Azure Stack-erőforrások egyszerű overconsumption elkerülése érdekében történtek tárolási IOPs-korlátok.  
+A [Virtuálisgép-méretek támogatott az Azure Stacken](./user/azure-stack-vm-sizes.md) részhalmazát alkotják, az Azure-ban támogatott. Az Azure erőforrások (helyi és a szolgáltatásiszint-kiszolgáló) overconsumption elkerülése érdekében számos vektorok mentén erőforráskorlátok ír elő. Nélkül betartatásához bérlői használat bizonyos korlátozások, a bérlő élményt, amikor más bérlők overconsume erőforrások romlani fog. Hálózati kimenő forgalom a virtuális gépről a sávszélesség a caps teljesülnek az Azure Stacken, amelyek megfelelnek az Azure korlátai vannak. Storage access-bérlők a tárolási erőforrások, az Azure Stack-erőforrások egyszerű overconsumption elkerülése érdekében történtek tárolási IOPs-korlátok.  
 
 ## <a name="vm-placement-and-virtual-to-physical-core-overprovisioning"></a>Virtuálisgép-elhelyezés és -túlzott virtuális és fizikai mag
 Az Azure Stackben nem adja meg egy adott kiszolgálóra a bérlő Virtuálisgép-Elhelyezés a használandó lehetőség. A csak szempont, virtuális gépek elhelyezésekor, hogy van-e elegendő memória a gazdagépen a virtuális gép típusa. Az Azure Stack nem szükségesnél memória; azonban a magok számát egy overcommit használata engedélyezett. Elhelyezési algoritmus nem vizsgálja a meglévő virtuális és fizikai mag túlzott arány tényezőként, mivel minden állomás egy eltérő arány rendelkezhet. 
 
 Az Azure-ban magas rendelkezésre állás egy virtuális gépre kiterjedő éles rendszer, a virtuális gépek kerüljenek a rendelkezésre állási több tartalék tartomány között lehetnek elosztva. Ez azt jelentené, hogy egy rendelkezésre állási csoportot helyezett virtuális gépek fizikailag elkülönített, egymástól, állvány, hogy hiba rugalmasság, az alábbi ábrán látható módon:
 
-![Tartalék és frissítési tartományok](media\azure-stack-capacity-planning\domains.png)
+![Tartalék és frissítési tartományok](media/azure-stack-capacity-planning/domains.png)
 
 
 Az Azure Stack-infrastruktúra képes legyen hatással a meghibásodások, míg az alapul szolgáló technológiát (feladatátvételi fürtszolgáltatás) továbbra is leállást bizonyos virtuális gépek érintett fizikai kiszolgálón egy hardverhiba. Jelenleg az Azure Stack támogatja tekintettel a rendelkezésre állási csoport, amely legfeljebb három tartalék tartományt konzisztens Azure-ral. Virtuális gépeket egy rendelkezésre állási csoportot helyezett osztja szét őket lehető legegyenletesebben több tartalék tartomány (az Azure Stack-csomópontok) keresztül lesz fizikailag különítve egymástól. Hardverhiba esetén a sikertelen tartalék tartomány virtuális gépeket fog a többi csomópont újraindítása, de, ha lehetséges, külön tartalék tartományokban tartani a más virtuális gépek ugyanazon rendelkezésre állási csoportban. A hardver visszatér online állapotba, ha virtuális gépek fog rebalanced magas rendelkezésre állás fenntartása érdekében.

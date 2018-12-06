@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/10/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 3380322286740e3b87df11107ac5ade62ffa535d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: feaaf0df96a1742d071dec5f98b57a69ea85b1ac
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432065"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972320"
 ---
 # <a name="build-a-nodejs-and-mongodb-web-app-in-azure-app-service-on-linux"></a>Node.js- és MongoDB-webalkalmazás létrehozása Linuxon futó Azure App Service-ben
 
@@ -28,7 +28,7 @@ ms.locfileid: "39432065"
 > Ebben a cikkben egy alkalmazást helyezünk üzembe a Linuxon futó App Service-ben. A _Windowson_ futó App Service-ben való üzembe helyezéssel kapcsolatban lásd: [Node.js- és MongoDB-webalkalmazás létrehozása az Azure-ban](../app-service-web-tutorial-nodejs-mongodb-app.md).
 >
 
-A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy Node.js-webalkalmazást, hogyan csatlakoztathatja egy helyi MongoDB-adatbázishoz, majd hogyan helyezheti üzembe az Azure-ban, egy CosmosDB-adatbázishoz csatlakoztatva a MongoDB API segítségével. Az oktatóanyag eredménye egy, a Linux App Service-ben futó MEAN-alkalmazás (MongoDB, Express, AngularJS, and Node.js) lesz. Az egyszerűség kedvéért a mintaalkalmazás a [MEAN.js webes keretrendszert](http://meanjs.org/) használja.
+A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy Node.js-webalkalmazást, hogyan csatlakoztathatja egy helyi MongoDB-adatbázishoz, majd hogyan helyezheti üzembe az Azure-ban, egy CosmosDB-adatbázishoz csatlakoztatva a MongoDB API segítségével. Az oktatóanyag eredménye egy, a Linux App Service-ben futó MEAN-alkalmazás (MongoDB, Express, AngularJS, and Node.js) lesz. Az egyszerűség kedvéért a mintaalkalmazás a [MEAN.js webes keretrendszert](https://meanjs.org/) használja.
 
 ![Az Azure App Service-ben futó MEAN.js alkalmazás](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
@@ -50,7 +50,7 @@ Az oktatóanyag elvégzéséhez:
 
 1. [A Git telepítése](https://git-scm.com/)
 1. [Telepítse a Node.js 6.0-s vagy újabb verzióját és az NPM-et](https://nodejs.org/).
-1. [Telepítse a Gulp.js-t](http://gulpjs.com/) (a [MEAN.js](http://meanjs.org/docs/0.5.x/#getting-started) követelménye)
+1. [Telepítse a Gulp.js-t](https://gulpjs.com/) (a [MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started) követelménye)
 1. [Telepítse és futtassa a MongoDB Community Editiont](https://docs.mongodb.com/manual/administration/install-community/).
 
 ## <a name="test-local-mongodb"></a>Helyi MongoDB tesztelése
@@ -299,10 +299,10 @@ remote: Handling node.js deployment.
 .
 remote: Deployment successful.
 To https://<app_name>.scm.azurewebsites.net/<app_name>.git
- * [new branch]      master -> master
+ * [new branch]      master -> master
 ```
 
-Azt tapasztalhatja, hogy az üzembehelyezési folyamat az `npm install` után kezdi meg a [Gulp](http://gulpjs.com/) futtatását. Az App Service nem futtatja a Gulp vagy a Grunt feladatait az üzembe helyezés során, ezért ez a mintaadattár két további fájllal rendelkezik a gyökérkönyvtárában ennek lehetővé tételéhez:
+Azt tapasztalhatja, hogy az üzembehelyezési folyamat az `npm install` után kezdi meg a [Gulp](https://gulpjs.com/) futtatását. Az App Service nem futtatja a Gulp vagy a Grunt feladatait az üzembe helyezés során, ezért ez a mintaadattár két további fájllal rendelkezik a gyökérkönyvtárában ennek lehetővé tételéhez:
 
 - _.deployment_ – Ez a fájl utasítja az App Service-t, hogy a `bash deploy.sh` fájlt futtassa egyéni üzembehelyezési szkriptként.
 - _deploy.sh_ – Az egyéni üzembehelyezési szkript. Ha áttekinti a fájlt, láthatja, hogy az `npm install` és a `bower install` után futtatja a `gulp prod` parancsot.

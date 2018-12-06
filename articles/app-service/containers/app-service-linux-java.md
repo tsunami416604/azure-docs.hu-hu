@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: 2eb38c84cb68f7694fdc23d641e94771652d03fc
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: cf3e5bf6752311881e1266d2fb49aa5b7108e68a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888638"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965564"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>A linuxon futó App Service-hez Java fejlesztői útmutatója
 
@@ -270,7 +270,7 @@ Szeretné használni az Azure által támogatott Zulu JDK a tárolókban, ügyel
 
 App Service Linux rendszeren Java-webalkalmazások felügyelt üzemeltetési két modulok támogatja:
 
-- A [Tomcat-szervlet tároló](http://tomcat.apache.org/) csomagolt alkalmazások futtatásához, web archive-(WAR-) fájlok. Támogatott verziók a következők: 8.5 és 9.0-s.
+- A [Tomcat-szervlet tároló](https://tomcat.apache.org/) csomagolt alkalmazások futtatásához, web archive-(WAR-) fájlok. Támogatott verziók a következők: 8.5 és 9.0-s.
 - Java használata futtatókörnyezetének futó alkalmazások a csomagolt Java archiválására (JAR) fájlokat. Az egyetlen támogatott főbb verzió Java 8.
 
 ## <a name="java-runtime-statement-of-support"></a>Java runtime rendszerállapot-támogatás 

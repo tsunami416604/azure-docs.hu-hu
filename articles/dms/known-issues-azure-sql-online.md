@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: d228fbde230f89848d895bd1c004724b88de4431
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: a8d91c0410d2a59e4b22866aa48d36c026f3ee8e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883822"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956295"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>Ismert problémák és a migrálás korlátozások az online migrálást az Azure SQL DB
 
@@ -30,7 +30,7 @@ Ha a forrásadatbázis egy vagy több historikus táblát tartalmaz, az adatbáz
 
 {"erőforrás-azonosító": "/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType": "Adatbázis-migrálási hiba", "errorEvents": "[" rögzítési funkciói nem állítható be. RetCode: Való SqlState: 42000 NativeError: 13570 üzenetet: [Microsoft] [SQL Server natív ügyfél 11.0] [SQL Server] a replikáció nem támogatott a rendszerverzióval ellátott historikus tábla a(z) [alkalmazás. Város]: sor: 1 oszlop: -1 "]"}
  
- ![A historikus tábla hibák példa](media\known-issues-azure-sql-online\dms-temporal-tables-errors.png)
+ ![A historikus tábla hibák példa](media/known-issues-azure-sql-online/dms-temporal-tables-errors.png)
 
 **Megkerülő megoldás**
 
@@ -52,7 +52,7 @@ További információkért tekintse meg a cikket [időbeli Verziózású táblá
 
 Láthatja, hogy egy SQL-kivétel javasolásával "ntext nem kompatibilis a hierarchyid" a "adatok teljes betöltése" művelet során:
      
-![hierarchyid hibák példa](media\known-issues-azure-sql-online\dms-hierarchyid-errors.png)
+![hierarchyid hibák példa](media/known-issues-azure-sql-online/dms-hierarchyid-errors.png)
 
 **Megkerülő megoldás**
 
@@ -107,7 +107,7 @@ Ha DMS áttelepíteni a forrástábla tárolt időbélyeg pontos érték van sz�
 
 Az adatbázisok részletek állapot nézetben a migrálási hibák hibát tapasztal, amikor kiválasztja a **adatok áttelepítési hibák** hivatkozást a felső szalagon nem rendelkezhetnek a migrálási hibák további adatait.
 
-![adatok áttelepítési hibák semmilyen részleteinek példa](media\known-issues-azure-sql-online\dms-data-migration-errors-no-details.png)
+![adatok áttelepítési hibák semmilyen részleteinek példa](media/known-issues-azure-sql-online/dms-data-migration-errors-no-details.png)
 
 **Megkerülő megoldás**
 
@@ -115,6 +115,6 @@ Az adott hiba részletei lekéréséhez kövesse az alábbi lépéseket.
 
 1. Zárja be a Migrálási tevékenység képernyő megjelenítéséhez az adatbázis részletes állapota panel.
 
-     ![migrálási tevékenység képernyő](media\known-issues-azure-sql-online\dms-migration-activity-screen.png)
+     ![migrálási tevékenység képernyő](media/known-issues-azure-sql-online/dms-migration-activity-screen.png)
 
 2. Válassza ki **lásd a hibarészleteket** konkrét hibaüzeneteket, amelyek segítségével áttelepítési hibák elhárítása megtekintéséhez.

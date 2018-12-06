@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 2363f7f2e17bfc451ea9fd5486ba60fbc8ccb993
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
-ms.translationtype: HT
+ms.openlocfilehash: a74360575f1dbaeb86886e0e04240eb97baa521a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364285"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971691"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-web-app-in-azure"></a>Oktatóanyag: Node.js- és MongoDB-webalkalmazás fejlesztése az Azure-ban
 
@@ -28,7 +28,7 @@ ms.locfileid: "49364285"
 > Ebben a cikkben egy alkalmazást helyezünk üzembe a Windowson futó App Service-ben. A _Linuxon_ futó App Service-ben való üzembe helyezéssel kapcsolatban lásd: [Node.js- és MongoDB-webalkalmazás létrehozása a Linuxon futó Azure App Service-ben](./containers/tutorial-nodejs-mongodb-app.md).
 >
 
-Az Azure Web Apps egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy Node.js-webalkalmazást az Azure-ban, és hogyan csatlakoztathatja egy MongoDB-adatbázishoz. Az oktatóanyag eredménye egy, az [Azure App Service](app-service-web-overview.md)-ben futó MEAN-alkalmazás (MongoDB, Express, AngularJS és Node.js) lesz. Az egyszerűség kedvéért a mintaalkalmazás a [MEAN.js webes keretrendszert](http://meanjs.org/) használja.
+Az Azure Web Apps egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy Node.js-webalkalmazást az Azure-ban, és hogyan csatlakoztathatja egy MongoDB-adatbázishoz. Az oktatóanyag eredménye egy, az [Azure App Service](app-service-web-overview.md)-ben futó MEAN-alkalmazás (MongoDB, Express, AngularJS és Node.js) lesz. Az egyszerűség kedvéért a mintaalkalmazás a [MEAN.js webes keretrendszert](https://meanjs.org/) használja.
 
 ![Az Azure App Service-ben futó MEAN.js alkalmazás](./media/app-service-web-tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
@@ -50,8 +50,8 @@ Az oktatóanyag elvégzéséhez:
 
 1. [A Git telepítése](https://git-scm.com/)
 1. [Telepítse a Node.js-t és az NPM-et](https://nodejs.org/)
-1. [Telepítse a Bowert](https://bower.io/) (a [MEAN.js](http://meanjs.org/docs/0.5.x/#getting-started) követelménye)
-1. [Telepítse a Gulp.js-t](http://gulpjs.com/) (a [MEAN.js](http://meanjs.org/docs/0.5.x/#getting-started) követelménye)
+1. [Telepítse a Bowert](https://bower.io/) (a [MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started) követelménye)
+1. [Telepítse a Gulp.js-t](https://gulpjs.com/) (a [MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started) követelménye)
 1. [Telepítse és futtassa a MongoDB Community Editiont](https://docs.mongodb.com/manual/administration/install-community/). 
 
 ## <a name="test-local-mongodb"></a>Helyi MongoDB tesztelése
@@ -310,10 +310,10 @@ remote: Handling node.js deployment.
 .
 remote: Deployment successful.
 To https://<app_name>.scm.azurewebsites.net/<app_name>.git
- * [new branch]      master -> master
+ * [new branch]      master -> master
 ``` 
 
-Azt tapasztalhatja, hogy az üzembehelyezési folyamat az `npm install` után kezdi meg a [Gulp](http://gulpjs.com/) futtatását. Az App Service nem futtatja a Gulp vagy a Grunt feladatait az üzembe helyezés során, ezért ez a mintaadattár két további fájllal rendelkezik a gyökérkönyvtárában ennek lehetővé tételéhez: 
+Azt tapasztalhatja, hogy az üzembehelyezési folyamat az `npm install` után kezdi meg a [Gulp](https://gulpjs.com/) futtatását. Az App Service nem futtatja a Gulp vagy a Grunt feladatait az üzembe helyezés során, ezért ez a mintaadattár két további fájllal rendelkezik a gyökérkönyvtárában ennek lehetővé tételéhez: 
 
 - _.deployment_ – Ez a fájl utasítja az App Service-t, hogy a `bash deploy.sh` fájlt futtassa egyéni üzembehelyezési szkriptként.
 - _deploy.sh_ – Az egyéni üzembehelyezési szkript. Ha áttekinti a fájlt, láthatja, hogy az `npm install` és a `bower install` után futtatja a `gulp prod` parancsot. 

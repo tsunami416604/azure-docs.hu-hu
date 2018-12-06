@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/04/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: d897fd43cf712f217b6cd55f14854164fb7abfa6
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 8fc8be105c6c610e6b246fa0ec619fecc81b1dd9
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52887780"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966245"
 ---
 # <a name="update-the-sql-resource-provider"></a>Az SQL erőforrás-szolgáltató frissítése
 
@@ -28,11 +28,11 @@ ms.locfileid: "52887780"
 Azure Stack egy új létrehozást való frissítésekor előfordulhat, hogy elérhető egy új SQL erőforrás-szolgáltató. Bár a meglévő adapter továbbra is működik, javasoljuk, hogy frissítse a legújabb buildre minél hamarabb.
 
 > [!IMPORTANT]
-> A már kiadott sorrendben frissítéseket telepíteni kell. Verziók nem hagyhatja ki. A verziók listáját lásd [üzembe helyezése az erőforrás-szolgáltatóra vonatkozó Előfeltételek](.\azure-stack-sql-resource-provider-deploy.md#prerequisites).
+> A már kiadott sorrendben frissítéseket telepíteni kell. Verziók nem hagyhatja ki. A verziók listáját lásd [üzembe helyezése az erőforrás-szolgáltatóra vonatkozó Előfeltételek](./azure-stack-sql-resource-provider-deploy.md#prerequisites).
 
 ## <a name="overview"></a>Áttekintés
 
-Az erőforrás-szolgáltató frissítéséhez használja a *UpdateSQLProvider.ps1* parancsfájlt. Ez a szkript az új SQL erőforrás-szolgáltató a letöltés részét képezi. A frissítési folyamat hasonlít a folyamat, amellyel [az erőforrás-szolgáltató üzembe helyezése](.\azure-stack-sql-resource-provider-deploy.md). A frissítési parancsfájl ugyanazon argumentumokat használja DeploySqlProvider.ps1 szkriptet, és meg kell adnia a tanúsítvány adatait.
+Az erőforrás-szolgáltató frissítéséhez használja a *UpdateSQLProvider.ps1* parancsfájlt. Ez a szkript az új SQL erőforrás-szolgáltató a letöltés részét képezi. A frissítési folyamat hasonlít a folyamat, amellyel [az erőforrás-szolgáltató üzembe helyezése](./azure-stack-sql-resource-provider-deploy.md). A frissítési parancsfájl ugyanazon argumentumokat használja DeploySqlProvider.ps1 szkriptet, és meg kell adnia a tanúsítvány adatait.
 
 ### <a name="update-script-processes"></a>Frissítési parancsfájl folyamatok
 

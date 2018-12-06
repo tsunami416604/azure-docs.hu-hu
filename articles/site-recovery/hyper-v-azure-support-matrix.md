@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 8020db5f099f0d2c3dc8203f2d4afeea6a38cb41
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 52657ae18b6fd06408887df82bd822eb2ff8fffe
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844753"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964356"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Vész-helyreállítási a helyszíni Hyper-V virtuális gépek az Azure-támogatási mátrixa
 
@@ -92,7 +92,7 @@ Gyorsított hálózatkezelés | Nem | Nem
 
 **Tárolás** | **A Hyper-V Virtual Machine Manager** | **A Hyper-V Virtual Machine Manager nélkül**
 --- | --- | --- | ---
-AZ NFS | NA | NA
+NFS | NA | NA
 SMB 3.0 | Igen | Igen
 TÁROLÓHÁLÓZAT (ISCSI) | Igen | Igen
 Több elérési út (MPIO). Tesztelték:<br></br> A Microsoft DSM-et, EMC PowerPath 5.7 SP4<br/><br/> EMC PowerPath DSM CLARiiON számára | Igen | Igen
@@ -107,7 +107,7 @@ VHD/VHDX | Igen | Igen
 EFI/UEFI| Igen | Igen
 A megosztott fürtlemezre | Nem | Nem
 Titkosított lemez | Nem | Nem
-AZ NFS | NA | NA
+NFS | NA | NA
 SMB 3.0 | Nem | Nem
 RDM | NA | NA
 Lemez > 1 TB-ot | Igen, legfeljebb 4095 GB-ig | Igen, legfeljebb 4095 GB-ig
@@ -170,6 +170,9 @@ Virtuális gép típusa | Az 1.<br/><br/> Windows – a 2. generációs | 2. gen
 --- | --- | ---
 Tároló áthelyezése erőforráscsoportok közt<br/><br/> Belül és azok az előfizetések között | Nem | Nem
 Tárolás, hálózat, Azure-beli virtuális gépek erőforráscsoportok közötti áthelyezése<br/><br/> Belül és azok az előfizetések között | Nem | Nem
+
+> [!NOTE]
+> (SCVMM/nélkül felügyelt) Hyper-virtuális gépek replikálása a helyszínről az Azure-ba, amikor replikálhatja csak egy AD-bérlővel, egy adott környezetben – a Hyper-V-helyhez vagy SCVMM, amennyiben alkalmazhatók.
 
 
 ## <a name="provider-and-agent"></a>Provider és Agent

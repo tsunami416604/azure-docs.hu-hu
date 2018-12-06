@@ -10,16 +10,16 @@ ms.component: bing-visual-search
 ms.topic: conceptual
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: c7464558dd7227303fd7a3cc8be71ca5e2d2cfca
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 76fb61f0f1dd3c1f72c4c6132d1bfdc8b516477a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414964"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955547"
 ---
 # <a name="using-an-insights-token-to-get-insights-about-an-image"></a>Az insights-jogkivonat használatával kaphat elemzési információkat kép
 
-A Bing Visual Search API információkat ad vissza egy Ön által megadott képről. A kép feltöltéséhez használhatja a kép URL-címét, egy megállapítási jogkivonatot, vagy feltöltheti magát a képet. Ezek a beállítások kapcsolatos információkért lásd: [Mi az a Bing Visual Search API?](overview.md). Ez a cikk bemutatja az insights token használatával. További példák, amelyek bemutatják, hogy elemzéseket, kép feltöltése: a gyors útmutatók ([C#](quickstarts\csharp.md) | [Java](quickstarts\java.md) | [Node.js](quickstarts\nodejs.md)  |  [Python](quickstarts\python.md)).
+A Bing Visual Search API információkat ad vissza egy Ön által megadott képről. A kép feltöltéséhez használhatja a kép URL-címét, egy megállapítási jogkivonatot, vagy feltöltheti magát a képet. Ezek a beállítások kapcsolatos információkért lásd: [Mi az a Bing Visual Search API?](overview.md). Ez a cikk bemutatja az insights token használatával. További példák, amelyek bemutatják, hogy elemzéseket, kép feltöltése: a gyors útmutatók ([C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md)).
 
 
 Ha képhez tartozó jogkivonatot vagy URL-címet küld a Visual Search szolgáltatásnak, az alábbiakban láthatja a POST törzsében kötelezően szerepeltetendő űrlapadatokat. Az űrlap adatait tartalmaznia kell a tartalom-szabályozó fejléc, az `name` paraméter "knowledgeRequest" értékre kell állítani. Az `imageInfo` objektummal kapcsolatos részletekért lásd: [A kérelem](#the-request).

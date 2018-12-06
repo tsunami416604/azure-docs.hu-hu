@@ -10,12 +10,12 @@ keywords: azure automation, DSC, powershell, desired state configuration, friss�
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 8f6473603bb6e6ae734bde722742c58514d777c8
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
-ms.translationtype: HT
+ms.openlocfilehash: f91464ebdd29c082fd721e9e4b2e029de991cc1e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428096"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958696"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Az Azure Automation bemutatása
 
@@ -40,18 +40,26 @@ A vendégen futtatott erőforrások leltáradatai révén betekintést nyerhet a
 
 Az Azure Automationnel frissítheti a windowsos és linuxos rendszereket a hibrid környezetekben. Így láthatóvá válik a frissítési megfelelőség az Azure-beli, a helyszíni és egyéb felhőkben. Ütemezett üzembe helyezéseket hozhat létre a frissítések telepítésének egy adott karbantartási időablakban való végrehajtatásához. Ha egy adott frissítést nem szeretne telepíteni a gépekre, kizárhatja azt az üzembe helyezésből.
 
-### <a name="shared-capabilities"></a>Közös képességek
+### <a name="shared-resources"></a>Megosztott erőforrások
 
 Az Azure Automation megosztott erőforrásainak segítségével könnyebben automatizálhatja és konfigurálhatja a nagy méretű környezeteket.
 
-* **[Szerepköralapú hozzáférés-vezérlés](automation-role-based-access-control.md)** – Az Automation-kezelői szerepkör segítségével szabályozhatja a fiókhoz való hozzáférést, mivel ez a szerepkör feladatokat futtathat, írási jogokkal azonban nem rendelkezik.
-* **[Változók](automation-variables.md)** – A változókban olyan tartalmakat tárolhat, amelyek több runbookban és konfigurációban is felhasználhatók. Az értékeket anélkül módosíthatja, hogy szerkesztenie kellene az azokra hivatkozó runbookokat és konfigurációkat.
-* **[Hitelesítő adatok](automation-credentials.md)** – A runbookokban és konfigurációkban használt bizalmas adatok biztonságosan tárolhatók.
-* **[Tanúsítványok](automation-certificates.md)** – A tanúsítványok tárolhatók, és futásidőben elérhetővé tehetők, így hitelesítésre és az üzembe helyezett erőforrások védelmére használhatók.
-* **[Kapcsolatok](automation-connections.md)** – Gyakori adatokat tartalmazó név-érték adatpárokat tárolhat a kapcsolati erőforrásokban lévő rendszerekhez való kapcsolódáshoz. A kapcsolatokat a modul létrehozója definiálja a runbookokban és konfigurációkban való futásidejű használatra.
 * **[Ütemezések](automation-schedules.md)** – Az ütemezések használatával az automatizmusok előre meghatározott időpontokban aktiválhatók.
-* **[Verziókövetés-integráció](automation-source-control-integration.md)** – Segíti a kóddal való konfigurálást, amennyiben a runbookok és a konfigurációk beadhatók egy verziókövetési rendszerbe.
-* **[PowerShell-modulok](automation-integration-modules.md)** – A modulok segítségével felügyelhető az Azure és az egyéb rendszerek. Importálhatók az Automation-fiókba a Microsofttól, külső felektől vagy a közösségtől származó, illetve az egyénileg definiált parancsmagokhoz és DSC-erőforrásokhoz.
+* **[Modulok](automation-integration-modules.md)**  -modulok segítségével felügyelhető az Azure és más rendszerekhez. Importálja az Automation-fiókot a Microsoft, külső gyártótól származó, közösségi, vagy egyénileg definiált parancsmagokhoz és DSC erőforrásokat.
+* **[Modulkatalógus](automation-runbook-gallery.md)**  – natív integráció az runbookok megtekintése, és importálja azokat az Automation-fiók a PowerShell-galériában.
+* **[Python 2 csomagok](python-packages.md)**  – a Python-forgatókönyvekben használandó, az automation-fiók hozzáadása a Python 2-csomagok.
+* **[Hitelesítő adatok](automation-credentials.md)** – A runbookokban és konfigurációkban használt bizalmas adatok biztonságosan tárolhatók.
+* **[Kapcsolatok](automation-connections.md)** – Gyakori adatokat tartalmazó név-érték adatpárokat tárolhat a kapcsolati erőforrásokban lévő rendszerekhez való kapcsolódáshoz. A kapcsolatokat a modul létrehozója definiálja a runbookokban és konfigurációkban való futásidejű használatra.
+* **[Tanúsítványok](automation-certificates.md)** – A tanúsítványok tárolhatók, és futásidőben elérhetővé tehetők, így hitelesítésre és az üzembe helyezett erőforrások védelmére használhatók.
+* **[Változók](automation-variables.md)** – A változókban olyan tartalmakat tárolhat, amelyek több runbookban és konfigurációban is felhasználhatók. Az értékeket anélkül módosíthatja, hogy szerkesztenie kellene az azokra hivatkozó runbookokat és konfigurációkat.
+
+### <a name="source-control-integration"></a>Verziókövetés integrálása
+
+Az Azure Automation képes [verziókövetés integrálása](source-control-integration.md) ami elősegíti a konfigurációs kódként, ahol runbookok és a konfigurációk is ellenőrizni kell azokat egy forráskódú verziókezelő rendszer.
+
+### <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
+
+Az Azure Automation szerepköralapú hozzáférés-vezérlés az Automation-fiókhoz való hozzáférés szabályozásához támogatja, és az összes erőforrás, további információ a konfigurációs RBAC Automation-fiók, a runbookok és a feladatok, lásd: [szerepköralapú hozzáférés-vezérlés az Azure számára Automation](automation-role-based-access-control.md).
 
 ### <a name="windows-and-linux"></a>Windows és Linux
 

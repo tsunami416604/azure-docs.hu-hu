@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 950ab0b07a97c044b124e56c8d43b79aae29ec88
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: b781c4657306beb92e730e22e56e6a75359f4401
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721272"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964134"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>OMS-portálon való váltás az Azure portálon a Log Analytics felhasználók kapcsolatos gyakori kérdések
 A log Analytics kezdetben a saját Portalt használta az OMS-portál nevű felügyelje a konfigurációt, és elemezheti az összegyűjtött adatokat.  Ezen a portálon az összes funkció át lett helyezve az Azure Portalra, továbbra is ki kell alakítani.
@@ -37,7 +37,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 A Log Analytics-munkaterületet az Azure Portalon nem érheti el, ha szüksége konfigurálja az engedélyeik [Azure szerepköralapú hozzáférés-](../role-based-access-control/role-assignments-portal.md). A munkaterület-engedélyek kezelésének részletes ismertetéséért lásd: [munkaterületeinek kezeléséhez](../log-analytics/log-analytics-manage-access.md#manage-accounts-and-users). A riasztásokra vonatkozó engedélyekkel kezeléséről további információért lásd: [szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md).
 
 ## <a name="how-do-i-create-a-new-workspace"></a>Hogyan hozhatok létre egy új munkaterületet? 
-A munkaterület listája, az Azure Portalon, kattintson **Hozzáadás** munkaterületek listájában.  További információkat lásd: [Log Analytics-munkaterület létrehozása az Azure Portalon](../log-analytics/log-analytics-quick-create-workspace.md).
+A munkaterület listája, az Azure Portalon, kattintson **Hozzáadás** munkaterületek listájában.  További információkat lásd: [Log Analytics-munkaterület létrehozása az Azure Portalon](../log-analytics/../azure-monitor/learn/quick-create-workspace.md).
 
 ![– Áttekintés oldalra](media/log-analytics-oms-portal-faq/new-workspace.png)
 
@@ -112,7 +112,7 @@ Az OMS-portálon az eszközfelügyeleti megoldások telepítéséhez kövesse a 
 Riasztási szabályok alapján a Log Analytics-lekérdezések már kezelhetők a [egységes felhasználói élményt riasztási](../monitoring-and-diagnostics/alert-metric.md). Lásd: [bővítése a riasztások a Log Analytics az Azure Alerts](../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md) konfigurálása és riasztások használatával az Azure Portalon.
 
 ## <a name="how-do-i-access-my-dashboards"></a>Hogyan érhetem el az irányítópultokat?
-A [saját irányítópult](../log-analytics/../azure-monitor/platform/dashboards.md) a Log Analytics funkció elavult. Ez a funkció engedélyezett, hogy privát adatforrásnézet-tervezőből részek-gyűjteménnyel rendelkezik, és a beépített Azure-irányítópulton funkcióval helyettesít. Folytathatja az adatok megjelenítése a Log Analytics használatával [adatforrásnézet-tervezőből](../log-analytics/../azure-monitor/platform/view-designer.md) megosztott nézetekhez. Az ezeket a nézeteket, vagy vizualizációkat is rögzíthet [az egyes lekérdezések](../log-analytics/log-analytics-tutorial-dashboards.md) az Azure-irányítópultok.
+A [saját irányítópult](../log-analytics/../azure-monitor/platform/dashboards.md) a Log Analytics funkció elavult. Ez a funkció engedélyezett, hogy privát adatforrásnézet-tervezőből részek-gyűjteménnyel rendelkezik, és a beépített Azure-irányítópulton funkcióval helyettesít. Folytathatja az adatok megjelenítése a Log Analytics használatával [adatforrásnézet-tervezőből](../log-analytics/../azure-monitor/platform/view-designer.md) megosztott nézetekhez. Az ezeket a nézeteket, vagy vizualizációkat is rögzíthet [az egyes lekérdezések](../log-analytics/../azure-monitor/learn/tutorial-logs-dashboards.md) az Azure-irányítópultok.
 
 ## <a name="how-do-i-check-my-usage"></a>Hogyan tudom ellenőrizni, a használat?
 Is most már egyszerűen megtekinthető és kezelhető a használat és a Log Analytics költsége kiválasztásával **felhasználás és becsült költségek** a munkaterületén.
@@ -126,4 +126,4 @@ Korlátozott ideig továbbra is elérheti a portálon keresztül az URL-címet, 
 ## <a name="next-steps"></a>További lépések
 
 - [Keresse meg és telepítse a felügyeleti megoldások](../azure-monitor/insights/solutions.md) az Azure portal használatával.
-- Ismerje meg [az Azure Portal Naplókeresési](log-analytics-log-search-portals.md).
+- Ismerje meg [az Azure Portal Naplókeresési](../azure-monitor/log-query/portals.md).

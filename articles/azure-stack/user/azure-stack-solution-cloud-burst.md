@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 4881f992e5362efc7e4d7ac23898684966a066e0
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 57624133b249a8ec2ece90eac4a64729e4d15151
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890993"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968203"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>Oktatóanyag: Több felhőre kiterjedő méretezési megoldások létrehozása az Azure-ral
 
@@ -107,17 +107,17 @@ Azure-beli adattárak
 
     CI/CD hibrid alkalmazás kódja és az infrastruktúra kódjának alkalmazhatja. Használat [Azure Resource Manager-sablonok](https://azure.microsoft.com/resources/templates/) mindkét magán- és üzemeltetett felhőalapú fejlesztéshez.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image1.JPG)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image1.JPG)
 
 2. **A tárház klónozása** létrehozásával és az alapértelmezett webes alkalmazás megnyitásával.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image2.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image2.png)
 
 ### <a name="create-self-contained-web-app-deployment-for-app-services-in-both-clouds"></a>Önálló webes alkalmazás üzembe helyezése az App Services létrehozása az mindkét felhőben
 
 1.  Szerkessze a **WebApplication.csproj** fájlt. Válassza ki **Runtimeidentifier** , és adja hozzá **win10-x64**. (Lásd: [Self-contained telepítési](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) dokumentációja.) 
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image3.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image3.png)
 
 2.  Ellenőrizze, hogy az Azure tárházra Team Explorer a kódot.
 
@@ -129,7 +129,7 @@ Azure-beli adattárak
 
 2. Adjon hozzá **- r win10-x64** kódot. Erre azért szükség, aktiválhat egy önálló üzembe helyezés a .net Core.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image4.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image4.png)
 
 3. Futtassa a build. A [önálló telepítés build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) folyamat közzéteszi az összetevők, amelyek futhatnak az Azure és az Azure Stackben.
 
@@ -143,87 +143,87 @@ Az Azure folyamatok és Azure DevOps-kiszolgáló biztosít hatékonyan konfigur
 
 ## <a name="create-release-definition"></a>Kiadási definíció létrehozása
 
-![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image5.png)
+![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image5.png)
 
 1.  Válassza ki a **plusz** gombra kattintva adhat hozzá egy új kiadása alatt a **kiadások lapra** VSO, a Build és kiadás oldalon.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image6.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image6.png)
 
 2. A alkalmazni az Azure App Service központi telepítési sablont.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image7.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image7.png)
 
 3. Az Add-összetevőt adja meg az Azure Cloud build alkalmazás összetevő.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image8.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image8.png)
 
 4. A folyamat fülre, válassza a **fázisba, a feladat** a környezet hivatkozásra, és állítsa be az Azure-felhő környezet értékeket.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image9.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image9.png)
 
 5. Állítsa be a **környezet neve** , és válassza ki az Azure **előfizetés** az Azure Felhőbeli végpont számára.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image10.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image10.png)
 
 6. A környezet neve, állítsa be a szükséges **az Azure app service neve**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image11.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image11.png)
 
 7. Adja meg **Hosted VS2017** alatt fronta Agenta Azure-felhőben üzemeltetett környezetben.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image12.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image12.png)
 
 8. Az Azure App Service üzembe helyezése menüben válassza a érvényes **csomag vagy a mappa** a környezethez. Válassza ki **OK** való **mappába**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image13.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image13.png)
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image14.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image14.png)
 
 9. Mentse az összes módosítást, és térjen vissza a **kibocsátási folyamatok**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image15.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image15.png)
 
 10. Adjon hozzá egy új összetevő, a build, az Azure Stack-alkalmazás kiválasztása.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image16.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image16.png)
 
 11. Adjon hozzá egy további környezet alkalmazása az Azure App Service üzembe helyezéséhez.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image17.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image17.png)
 
 12. Az Azure Stack új környezet nevét.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image18.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image18.png)
 
 13. Keresse meg az Azure Stack-környezet alapján **feladat** fülre.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image19.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image19.png)
 
 14. Válassza ki az előfizetést az Azure Stack-végpont.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image20.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image20.png)
 
 15. Az Azure Stack webalkalmazás nevét állítja be az App service nevét.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image21.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image21.png)
 
 16. Válassza ki az Azure Stack-ügynök.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image22.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image22.png)
 
 17. Az üzembe helyezése az Azure App Service szakaszban válassza a érvényes **csomag vagy a mappa** a környezethez. Válassza ki **OK** mappába.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image23.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image23.png)
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image24.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image24.png)
 
 18. Változó lapján nevű változó hozzáadása `VSTS\_ARM\_REST\_IGNORE\_SSL\_ERRORS`, mint az értékét állítsa **igaz**, és az Azure Stackhez.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image25.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image25.png)
 
 19. Válassza ki a **folyamatos** üzembe helyezési eseményindító ikonra az összetevők és a engedélyezése a **folytatja** készregyártás eseményindítója.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-cloud-burst\image26.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image26.png)
 
 20. Válassza ki a **központi telepítés előtti** feltételek ikonra az Azure Stack-környezetben, és állítsa az eseményindító **kiadás után.**
 
@@ -307,7 +307,7 @@ Kiadási definíció létrehozása az utolsó lépés az alkalmazás létrehozá
 
 3.  A **válasszon ki egy sablont**, válassza a **Azure App Service üzembe helyezési**, majd válassza ki **alkalmaz**.
 
-4.  A **Hozzáadás összetevő**, az a ** forrás (builddefiníció), válassza ki az Azure Cloud hozhat létre alkalmazást.
+4.  A **Hozzáadás összetevő**, az a **forrás (builddefiníció)** válassza ki az Azure Cloud hozhat létre alkalmazást.
 
 5.  Az a **folyamat** lapon jelölje be a **1. fázis**, **1 feladat** mutató hivatkozás **környezettel kapcsolatos feladatok megtekintéséhez**.
 
@@ -323,7 +323,7 @@ Kiadási definíció létrehozása az utolsó lépés az alkalmazás létrehozá
 
 11. Mentse az összes módosítást, és térjen vissza a **folyamat**.
 
-12. A a **folyamat** lapon jelölje be **Hozzáadás összetevő**, válassza a **NorthwindCloud Traders-hajó** a a ** Source (Build definíció) ** lista.
+12. A a **folyamat** lapon jelölje be **Hozzáadás összetevő**, és válassza a **NorthwindCloud Traders-hajó** a a **Source (Build definíció)** listája.
 
 13. A **válasszon ki egy sablont**, adjon hozzá egy másik környezetre. Válasszon **Azure App Service üzembe helyezési** majd **alkalmaz**.
 

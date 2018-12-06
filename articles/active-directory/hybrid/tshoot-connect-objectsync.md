@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/15/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c810e121b751d098bd0fbda09db51c031f003460
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cfd963ae38d42d245f2eec1ddb76c7af316039ba
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314999"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961127"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Az Azure AD Connect szinkronizálási objektum-szinkronizálás hibaelhárítása
 Ez a cikk lépéseit kapcsolatos hibák elhárításának felügyeltobjektum-szinkronizációs a hibaelhárítási feladat használatával. Az az Azure Active Directory (Azure AD) Connect hibaelhárítási kipróbálásához, tekintse meg a [Ez a rövid videó](https://aka.ms/AADCTSVideo).
@@ -36,13 +36,13 @@ A hibaelhárítási feladat futtatása a varázsló, hajtsa végre az alábbi l�
 4.  Nyissa meg a további feladatok lapot, válassza ki a hibaelhárítás, és kattintson a Tovább gombra.
 5.  A hibaelhárítás lapon kattintson az indítás, indítsa el a hibaelhárítási menü a PowerShellben.
 6.  A fő menüjéből válassza az objektum-szinkronizálás hibáinak elhárítása.
-![](media\tshoot-connect-objectsync\objsynch11.png)
+![](media/tshoot-connect-objectsync/objsynch11.png)
 
 ### <a name="troubleshooting-input-parameters"></a>Hibaelhárítás a bemeneti paraméterek
 A következő bemeneti paraméterek a hibaelhárítási feladat által van szükség:
 1.  **Az objektum megkülönböztető nevét** – Ez a hibaelhárítási igénylő az objektum megkülönböztető nevét
 2.  **AD-összekötő neve** – Ez a neve az AD-erdőhöz, amelyben a fenti objektum található.
-3.  Az Azure AD bérlő globális rendszergazdai hitelesítő adatait ![](media\tshoot-connect-objectsync\objsynch1.png)
+3.  Az Azure AD bérlő globális rendszergazdai hitelesítő adatait ![](media/tshoot-connect-objectsync/objsynch1.png)
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>A hibaelhárítási feladat eredményeivel
 A hibaelhárítási feladat az alábbi ellenőrzéseket hajtja végre:
@@ -59,27 +59,27 @@ Ez a szakasz a többi adott a tevékenység által visszaadott eredmények ismer
 ### <a name="upn-suffix-is-not-verified-with-azure-ad-tenant"></a>Az Azure AD-bérlő nem ellenőrzött UPN-utótagja
 Ha a UserPrincipalName (UPN) / az Azure AD-bérlőben nem ellenőrzi a másodlagos bejelentkezési azonosító utótagot, majd az Azure Active Directory UPN-utótagot cseréli az alapértelmezett tartomány neve "onmicrosoft.com".
 
-![](media\tshoot-connect-objectsync\objsynch2.png)
+![](media/tshoot-connect-objectsync/objsynch2.png)
 
 ### <a name="changing-upn-suffix-from-one-federated-domain-to-another-federated-domain"></a>Egyszerű Felhasználónévi utótagot összevont tartományok egy másik, összevont tartomány módosítása
 Az Azure Active Directory nem teszi lehetővé a szinkronizálás a UserPrincipalName (UPN) / másik bejelentkezési azonosító utótag módosítása egy összevont tartományból egy másikba összevont tartományban. Ez vonatkozik, amelyek ellenőrzése az Azure AD-bérlőben, és amelyek a hitelesítési típus szerint az összevont tartományokban.
 
-![](media\tshoot-connect-objectsync\objsynch3.png) 
+![](media/tshoot-connect-objectsync/objsynch3.png) 
 
 ### <a name="azure-ad-tenant-dirsync-feature-synchronizeupnformanagedusers-is-disabled"></a>Az Azure AD bérlő a DirSync szolgáltatás "SynchronizeUpnForManagedUsers" le van tiltva
 Ha az Azure AD-bérlő a DirSync szolgáltatás "SynchronizeUpnForManagedUsers" le van tiltva, az Azure Active Directory nem engedélyezi a szinkronizálási frissítéseket UserPrincipalName/másodlagos bejelentkezési azonosító felügyelt hitelesítéssel licenccel rendelkező felhasználói fiókok esetében.
 
-![](media\tshoot-connect-objectsync\objsynch4.png)
+![](media/tshoot-connect-objectsync/objsynch4.png)
 
 ## <a name="object-is-filtered-due-to-domain-filtering"></a>Objektum tartomány szűrés miatt van szűrve.
 ### <a name="domain-is-not-configured-to-sync"></a>Nincs konfigurálva a tartományhoz való szinkronizálás
 Objektum nem miatt a tartomány nincs konfigurálva. Az alábbi példában az objektum szinkronban hatókör vannak leszűrve a tartományban, amelyhez tartozik, mint a szinkronizálás.
 
-![](media\tshoot-connect-objectsync\objsynch5.png)
+![](media/tshoot-connect-objectsync/objsynch5.png)
 
 ### <a name="domain-is-configured-to-sync-but-is-missing-run-profilesrun-steps"></a>Tartomány úgy van konfigurálva, hogy szinkronizálhatók, de hiányzik a futtatási profilok és futtató lépések
 Objektum hatókörén kívül hiányzik a tartomány futtatja a profilok és futtató lépéseket. Az alábbi példában objektum szinkronban hatókör, a tartományban, amelyhez tartozik, futtatási lépéseket hiányzik a futtatási profil teljes importálásra.
-![](media\tshoot-connect-objectsync\objsynch6.png)
+![](media/tshoot-connect-objectsync/objsynch6.png)
 
 ## <a name="object-is-filtered-due-to-ou-filtering"></a>Objektum szűrt miatt szervezeti egységek szűrése
 Az objektum nincs szinkronban hatókör OU-szűrés konfiguráció miatt. Az alábbi példában az objektum tartozik OU NoSync, DC = = bvtadwbackdc, DC = com.  Adatszinkronizálás hatóköre nem szerepel az ebbe a szervezeti Egységbe.</br>
@@ -98,7 +98,7 @@ Helyszíni különböző eltérései miatt az Active Directory és az Azure Acti
 ## <a name="html-report"></a>HTML-jelentés
 Az objektum elemzése, mellett a hibaelhárítási feladat is egy HTML-jelentést, amely mindent az objektumra vonatkozó ismert állít elő. Ez a jelentés HTML megoszthatók a támogatási csapat számára a do további hibaelhárítási, ha szükséges.
 
-![](media\tshoot-connect-objectsync\objsynch8.png)
+![](media/tshoot-connect-objectsync/objsynch8.png)
 
 ## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

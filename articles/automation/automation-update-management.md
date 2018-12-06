@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 11/28/2018
+ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 218961e8758897ab20d0a1627f55130e3a862004
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 504bb56a7cb3b9582d5c8d2ab1e770d55b8ca9e5
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889735"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961620"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -583,6 +583,6 @@ Folytassa a következő oktatóanyagban megtudhatja, hogyan kezelheti a frissít
 > [Az Azure Windows rendszerű virtuális gépek frissítéseinek és javításainak kezelése](automation-tutorial-update-management.md)
 
 * Naplókeresés funkciójával [Log Analytics](../log-analytics/log-analytics-log-searches.md) frissítés részletes adatainak megtekintéséhez.
-* [Riasztások létrehozása](../monitoring-and-diagnostics/monitoring-overview-alerts.md) , a számítógépekről hiányzó kritikus frissítések észlelésekor, vagy ha egy számítógép automatikus frissítése letiltott állapotba kerül.
+* [Riasztások létrehozása](automation-tutorial-update-management.md#configure-alerts) frissítés telepítési állapota.
 
 * Hogyan kezelheti az Update Management REST API-val kapcsolatban lásd: [szoftverkonfigurációjáról Update](/rest/api/automation/softwareupdateconfigurations)

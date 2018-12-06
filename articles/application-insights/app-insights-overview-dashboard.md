@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: mbullwin
-ms.openlocfilehash: 59052a2f0f2fbaa898502073f27b23185026e45e
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: cd8bcc9345ec73f95e8e742446522ec41c1f0f65
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724417"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956949"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights áttekintő irányítópult
 
@@ -27,17 +27,17 @@ Az Application Insights mindig biztosított gyors és a egy pillantással érté
 
 Az új áttekintő irányítópult mostantól alapértelmezés szerint elindul:
 
-![Áttekintő kép panel](.\media\app-insights-overview-dashboard\overview.png)
+![Áttekintő kép panel](./media/app-insights-overview-dashboard/overview.png)
 
 ## <a name="better-performance"></a>Jobb teljesítmény érdekében
 
 Időtartomány kijelölésének egyszerűsített, egy egyszerű, egykattintásos felületen.
 
-![Időtartomány](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-03.png)
+![Időtartomány](./media/app-insights-overview-dashboard/app-insights-overview-dashboard-03.png)
 
 Általános teljesítménye jelentősen nőtt. Népszerű szolgáltatások, mint az egykattintásos hozzáférést rendelkezik **keresési** és **Analytics**. Egyes alapértelmezett dinamikus frissítése a KPI-csempe megfelelő Application Insights-funkciók betekintést nyújt. Tudjon meg többet sikertelen kérelmek válassza **hibák** alatt a **vizsgálat** fejléc:
 
-![Meghibásodások](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-04.png)
+![Meghibásodások](./media/app-insights-overview-dashboard/app-insights-overview-dashboard-04.png)
 
 ## <a name="application-dashboard"></a>Alkalmazás irányítópultja
 
@@ -45,11 +45,11 @@ Alkalmazás irányítópult kihasználja a meglévő irányítópult technológi
 
 Az alapértelmezett irányítópulton válassza el _alkalmazás irányítópult_ a bal felső sarokban.
 
-![Irányítópult nézet](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-05.png)
+![Irányítópult nézet](./media/app-insights-overview-dashboard/app-insights-overview-dashboard-05.png)
 
 Ha most először az irányítópulthoz hozzáférő, indítja el az alapértelmezett nézet:
 
-![Irányítópult nézet](.\media\app-insights-overview-dashboard\0001-dashboard.png)
+![Irányítópult nézet](./media/app-insights-overview-dashboard/0001-dashboard.png)
 
 Ha például azt megtarthatja az alapértelmezett nézet. Vagy is hozzáadhat, és a csapat igényeinek legjobban megfelelő, az az irányítópult törlése.
 
@@ -58,7 +58,7 @@ Ha például azt megtarthatja az alapértelmezett nézet. Vagy is hozzáadhat, �
 
 Nyissa meg újra az áttekintő tapasztalatok csak adja meg:
 
-![Áttekintés gombra](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-07.png)
+![Áttekintés gombra](./media/app-insights-overview-dashboard/app-insights-overview-dashboard-07.png)
 
 ## <a name="next-steps"></a>További lépések
 

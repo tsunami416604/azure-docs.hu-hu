@@ -15,16 +15,16 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: cephalin;robmcm
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 854ae54992a1389ec7c7f7892c738d070421264d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
-ms.translationtype: HT
+ms.openlocfilehash: 4b812cfa2c551e9d2f365f74bebee96626f4dd94
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30283928"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968312"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Az első Java-webalkalmazás létrehozása az Azure-ban
 
-Az [Azure Web Apps](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez a gyorsútmutató bemutatja, hogyan helyezhet üzembe Java-webalkalmazásokat az App Service-ben a [Java EE-fejlesztőknek készült Eclipse IDE](http://www.eclipse.org/) használatával.
+Az [Azure Web Apps](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez a gyorsútmutató bemutatja, hogyan helyezhet üzembe Java-webalkalmazásokat az App Service-ben a [Java EE-fejlesztőknek készült Eclipse IDE](https://www.eclipse.org/) használatával.
 
 > [!NOTE]
 >
@@ -41,7 +41,7 @@ A gyors útmutató befejezését követően alkalmazása webböngészőben megte
 
 A gyorsútmutató elvégzéséhez a következők telepítése szükséges:
 
-* Az ingyenes, <a href="http://www.eclipse.org/downloads/" target="_blank">Java EE-fejlesztőknek készült Eclipse IDE</a>. Ez a gyorsútmutató az Eclipse Neont használj.
+* Az ingyenes, <a href="https://www.eclipse.org/downloads/" target="_blank">Java EE-fejlesztőknek készült Eclipse IDE</a>. Ez a gyorsútmutató az Eclipse Neont használj.
 * Az <a href="/java/azure/eclipse/azure-toolkit-for-eclipse-installation" target="_blank">Eclipse-hez készült Azure-eszközkészlet</a>.
 
 > [!NOTE]

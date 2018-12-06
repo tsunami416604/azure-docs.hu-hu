@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: luisca
-ms.openlocfilehash: 4694d7a580c9544e43cf0b56b192b55c02257531
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
+ms.openlocfilehash: 3350f182e236cc0828040f1ee1eb73cf54cf18a8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730664"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957367"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Oktatóanyag: Ismerje meg a kognitív keresési API-k (előzetes verzió) meghívásának módját
 
@@ -52,22 +52,25 @@ Első lépésként regisztráljon az Azure Search szolgáltatásra.
 
 1. Kattintson az **Erőforrás létrehozása** gombra, keresse meg az Azure Search szolgáltatást, majd kattintson a **Létrehozás** gombra. Ha első alkalommal próbálkozik keresési szolgáltatás beállításával, tekintse meg az [Azure Search szolgáltatás a portálon történő létrehozását](search-create-service-portal.md) ismertető szakaszt.
 
-  ![A portál irányítópultja](./media/cognitive-search-tutorial-blob/create-service-full-portal.png "Azure Search szolgáltatás létrehozása a portálon")
+  ![A portál irányítópultja](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Azure Search szolgáltatás létrehozása a portálon")
 
 1. Az Erőforráscsoport résznél hozzon létre egy erőforráscsoportot az oktatóanyag során létrehozott erőforrások tárolására. Ezáltal könnyebb lesz az erőforrások eltávolítása, miután az oktatóanyag végére ért.
 
-1. A Hely esetében válassza az **USA déli középső régióját** vagy a **Nyugat-Európa** régiót. Jelenleg az előzetes verzió csak ezekben a régiókban érhető el.
+1. A helyen, válasszon egyet az a [támogatott régiók](https://docs.microsoft.com/en-us/azure/search/cognitive-search-quickstart-blob#supported-regions) Cognitive search.
 
 1. A Tarifacsomagra vonatkozóan az oktatóanyagok és rövid útmutatók elvégzéséhez létrehozhat egy **ingyenes** szolgáltatást. A saját adatok mélyrehatóbb vizsgálatához hozzon létre egy **Alapszintű** vagy **Standard** [fizetős szolgáltatást](https://azure.microsoft.com/pricing/details/search/). 
 
   Az ingyenes szolgáltatás legfeljebb 3 indexet és 2 perc indexelést tartalmazhat, 16 MB-os maximális blobmérettel, amely nem elegendő a kognitív keresés funkcióinak teljes körű használatához. A különböző csomagok korlátozásait a [szolgáltatási korlátozásokat](search-limits-quotas-capacity.md) ismertető részben tekintheti meg.
+
+  ![A portál szolgáltatás-definíció lap](./media/cognitive-search-tutorial-blob/create-search-service1.png "szolgáltatás definíció lap a portálon")
+  ![szolgáltatás definíció lap a portálon](./media/cognitive-search-tutorial-blob/create-search-service2.png "Service definition lap az a portálon")
 
   > [!NOTE]
   > A kognitív keresés nyilvános előzetes verzióban érhető el. A képességcsoportok végrehajtása jelenleg minden csomagban elérhető, az ingyenes csomagot is beleértve. Ennek a funkciónak a díjszabását a későbbiekben jelentjük be.
 
 1. A szolgáltatási információk gyors eléréséhez rögzítse a szolgáltatást az irányítópulton.
 
-  ![Szolgáltatásdefiníciós oldal a portálon](./media/cognitive-search-tutorial-blob/create-search-service.png "Szolgáltatásdefiníciós oldal a portálon")
+  ![Szolgáltatásdefiníciós oldal a portálon](./media/cognitive-search-tutorial-blob/create-search-service3.png "Szolgáltatásdefiníciós oldal a portálon")
 
 1. Miután létrehozta a szolgáltatást, gyűjtse össze a következő információkat: az **URL-címet** az Áttekintés lapról és az **api-kulcsot** (elsődleges vagy másodlagos) a Kulcsok lapról.
 
@@ -523,7 +526,7 @@ Ha az új definíciókkal újra el szeretné végezni a dokumentumok indexelés�
 2. Módosítson egy képességcsoport és egy indexdefiníciót.
 3. Hozza létre újból az indexet és az indexelőt a szolgáltatásban a folyamat futtatásához. 
 
-Az indexek és az indexelés törléséhez használhatja a portált. A képességcsoportok csak egy HTTP-paranccsal törölhetők, ha a törlés mellett dönt.
+Használhatja a portál törli az indexek, indexelők és ismereteket.
 
 ```http
 DELETE https://[servicename].search.windows.net/skillsets/demoskillset?api-version=2017-11-11-Preview

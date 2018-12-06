@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: a2330cee3d5ea48f9f679ac02f6889ccce6c1d7c
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 18900c4a1dbc25526a3f60c7410ad87e7dd9a9fa
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242755"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967844"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Hibaelhárítás: Az Azure site-to-site VPN-kapcsolat nem lehet kapcsolódni, és leáll
 
@@ -39,7 +39,7 @@ Ellenőrizze az Azure VPN gateway típusa.
 
 2. Ellenőrizze a **áttekintése** a típussal kapcsolatos információk a VPN-átjáró oldalán.
     
-    ![Az átjáró – áttekintés](media\vpn-gateway-troubleshoot-site-to-site-cannot-connect\gatewayoverview.png)
+    ![Az átjáró – áttekintés](media/vpn-gateway-troubleshoot-site-to-site-cannot-connect/gatewayoverview.png)
 
 ### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>1. lépés Ellenőrizze, hogy a rendszer érvényesíti a helyszíni VPN-eszköz
 

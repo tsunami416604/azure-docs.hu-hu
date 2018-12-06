@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: astay;cephalin;kraigb
 ms.custom: mvc
-ms.openlocfilehash: 9474b2d64c97b6e6d0fc06c3c448fa6e0515e70c
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 22afdc0ae483959940776aecd20b0a29854097d9
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633648"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970756"
 ---
 # <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>Python-alkalmazás konfigurálása az Azure App Service szolgáltatáshoz Linux rendszeren
 
@@ -48,7 +48,7 @@ Python-alkalmazások üzembe helyezését futtathatók Docker-tároló a GitHub-
 
 Ez a tároló a következő jellemzőkkel rendelkezik:
 
-- Az alkalmazások a [Gunicorn WSGI HTTP-kiszolgáló](http://gunicorn.org/) és további argumentumok használatával futnak`--bind=0.0.0.0 --timeout 600`.
+- Az alkalmazások a [Gunicorn WSGI HTTP-kiszolgáló](https://gunicorn.org/) és további argumentumok használatával futnak`--bind=0.0.0.0 --timeout 600`.
 
 - Alapértelmezés szerint az alaprendszerkép magában foglalja a Flask webes keretrendszert, de a tároló a WSGI-vel és a Python 3.7-es verziójával kompatibilis keretrendszereket is támogat, így például a Djangót.
 
@@ -100,7 +100,7 @@ Ha a főmodul egy almappában található (például `website`), a mappát a `--
 gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
-A Gunicorn számára további argumentumokat is adhat a parancshoz, például: `--workers=4`. További információkért lásd: [A Gunicorn futtatása](http://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
+A Gunicorn számára további argumentumokat is adhat a parancshoz, például: `--workers=4`. További információkért lásd: [A Gunicorn futtatása](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
 
 Egyéni parancs megadásához tegye a következőket:
 
