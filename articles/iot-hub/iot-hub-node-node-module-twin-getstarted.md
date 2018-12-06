@@ -9,12 +9,12 @@ ms.devlang: node
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: fa77e117b8045be4ef0566e388c4e8df08c95fe2
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 4016471be05c1062eb389ab4851330f3a80dbcb2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42058711"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969026"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-nodejs-back-end-and-nodejs-device"></a>Ismerkedés az IoT Hub identitás- és modul ikermodul Node.js háttérrendszer és a Node.js-eszköz használata
 
@@ -35,18 +35,17 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 * Egy IoT hubot.
 * Telepítse a legújabb [Node.js SDK](https://github.com/Azure/azure-iot-sdk-node).
 
-
 Létrehozta az IoT Hubot, és rendelkezik az oktatóanyag további részeinek teljesítéséhez szükséges állomásnévvel és IoT Hub kapcsolati sztringgel.
 
 ## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>Az IoT Hub eszközidentitás és a egy modul identitás létrehozása
 
 Ebben a szakaszban egy Node.js-alkalmazást, amely egy eszközidentitást, valamint egy modul identitás létrehozza az IoT hub eszközidentitás-jegyzékben lévő hoz létre. Egy eszköz vagy modul csak akkor tud csatlakozni az IoT Hubhoz, ha be van jegyezve az identitásjegyzékbe. További információkért lásd az [IoT Hub fejlesztői útmutatójának][lnk-devguide-identity] „Identitásjegyzék” című szakaszát. A konzolalkalmazás a futtatásakor egy egyedi azonosítót és kulcsot állít elő az eszköz és a modul számára. Ezekkel az értékekkel az eszköz és a modul azonosítani tudja magát, amikor az eszközről a felhőbe irányuló üzeneteket küld az IoT Hubnak. Az azonosítók megkülönböztetik a kis- és nagybetűket.
 
-1.  Hozzon létre egy könyvtárat, amely tárolja a kódot.
-2. Belül a könyvtárhoz, először futtassa **npm init -y** hozhat létre egy üres package.json alapértelmezett értékekkel. Ez a következő projektfájlban: a kódhoz.
-3. Futtatás **npm -S telepítése azure-iothub@modules-preview**  SDK-szolgáltatás telepítése belül a **node_modules** alkönyvtárat. 
+1. Hozzon létre egy könyvtárat, amely tárolja a kódot.
+2. Belül a könyvtárhoz, először futtassa **npm init -y** hozhat létre egy üres package.json alapértelmezett értékekkel. Ez a következő projektfájlban: a kódhoz.
+3. Futtatás **npm -S telepítése azure-iothub@modules-preview ** SDK-szolgáltatás telepítése belül a **node_modules** alkönyvtárat.
 
-    > [!NOTE] 
+    > [!NOTE]
     > A alkönyvtár neve node_modules a word modult használja a "csomópontja library" jelenti. Az előfizetési időszak itt nem az IoT Hub-modulokkal.
 
 4. Hozzon létre a következő .js fájl a könyvtárban. Meghívására **add.js**. Másolja és illessze be a kapcsolati karakterlánccal és a hub nevét.
@@ -126,7 +125,7 @@ Ebben a szakaszban egy Node.js létrehozása a szimulált eszköz, amely frissí
     > [!NOTE]
     > Az npm install parancs úgy lassú. Türelemmel, akkor van lehetőség le nagy mennyiségű kódot a csomag tárházból.
 
-    > [!NOTE] 
+    > [!NOTE]
     > Ha hibaüzenet jelenik meg, amely szerint a npm hiba! beállításjegyzék hiba json-elemzés, ez a biztonsággal figyelmen kívül hagyhatja. Ha hibaüzenet jelenik meg, amely szerint a npm hiba! beállításjegyzék hiba json-elemzés, ez a biztonsággal figyelmen kívül hagyhatja.
 
 3. Hozzon létre egy twin.js nevű fájlt. Másolja és illessze be a modul azonosító karakterláncot.
@@ -180,7 +179,7 @@ Ebben a szakaszban egy Node.js létrehozása a szimulált eszköz, amely frissí
     });
     ```
 
-2. Most futtassa ezt a parancsot **csomópont twin.js**.
+2. Most futtassa ezt a parancsot **csomópont twin.js**.
 
     ```
     F:\temp\module_twin>node twin.js
@@ -200,9 +199,8 @@ További bevezetés az IoT Hub használatába, valamint egyéb IoT-forgatóköny
 * [Eszközfelügyelet – első lépések][lnk-device-management]
 * [Ismerkedés az IoT Edge szolgáltatással][lnk-iot-edge]
 
-
 <!-- Images. -->
-[15]: ./media\iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
+[15]: ./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
 <!-- Links -->
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/

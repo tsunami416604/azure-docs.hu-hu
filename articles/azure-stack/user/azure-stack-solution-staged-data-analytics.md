@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: b043c5ebe4c2a02bd4d40ca4b2bb7d5f488f5747
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d63faf63012360d4448166ac5d69eba6ede9d0ed
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837341"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969532"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>Oktatóanyag: Az Azure és az Azure Stack hozzon létre egy előkészített adatelemzési megoldással 
 
@@ -103,7 +103,7 @@ A storage-fiók és a blob-tárolót fog generálja a helyi tevékenységeket, b
 
 4.  Válassza ki **Create a storage-fiók létrehozása**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-staged-data-analytics\image1.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-staged-data-analytics/image1.png)
 
 5.  Létrehozása után válassza ki a tárfiók nevét.
 
@@ -111,7 +111,7 @@ A storage-fiók és a blob-tárolót fog generálja a helyi tevékenységeket, b
 
 7.  Válassza a panel tetején lévő **+ tároló.** Válassza ki **tároló**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-staged-data-analytics\image2.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-staged-data-analytics/image2.png)
 
 8.  Name: **tetszőleges**
 
@@ -146,31 +146,31 @@ Hozzon létre egy új Azure Stack-függvény tiszta adatok áthelyezése az Azur
 
     **Példa**
 
-    ![Új függvényalkalmazás-beállítások megadása](media\azure-stack-solution-staged-data-analytics\image6.png)
+    ![Új függvényalkalmazás-beállítások megadása](media/azure-stack-solution-staged-data-analytics/image6.png)
 
 5.  Kattintson a **Létrehozás** elemre a függvényalkalmazás kiépítéséhez és üzembe helyezéséhez.
 
 6.  Válassza a portál jobb felső sarkában található Értesítések ikont, és várja meg az **üzembe helyezés sikerességét** jelző üzenetet.
 
-    ![Új függvényalkalmazás-beállítások megadása](media\azure-stack-solution-staged-data-analytics\image7.png)
+    ![Új függvényalkalmazás-beállítások megadása](media/azure-stack-solution-staged-data-analytics/image7.png)
 
 7.  Válassza ki **erőforrás megnyitása** új függvényalkalmazás megtekintéséhez.
 
-![A függvényalkalmazás elkészült.](media\azure-stack-solution-staged-data-analytics\image8.png)
+![A függvényalkalmazás elkészült.](media/azure-stack-solution-staged-data-analytics/image8.png)
 
 ### <a name="add-a-function-to-the-azure-stack-function-app"></a>Az Azure Stack függvényalkalmazáshoz függvény hozzáadása
 
 1.  Hozzon létre egy új függvényt kattintva **funkciók**, akkor a **+ új funkció** gombra.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-staged-data-analytics\image3.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-staged-data-analytics/image3.png)
 
 2.  Válassza ki **időzítő eseményindító**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-staged-data-analytics\image4.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-staged-data-analytics/image4.png)
 
 3.  Válassza ki **C\#**  , a nyelv és a függvény neve: `upload-to-azure` az ütemezés beállítása, `0 0 * * * *`, amely CRON jelöléssel egyszer egy óra.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-staged-data-analytics\image5.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-staged-data-analytics/image5.png)
 
 ## <a name="create-a-blob-storage-triggered-function"></a>A blobtároló által aktivált függvény létrehozása
 
@@ -178,7 +178,7 @@ Hozzon létre egy új Azure Stack-függvény tiszta adatok áthelyezése az Azur
 
 2.  A keresőmezőbe írja be a `blob` majd válassza ki a kívánt nyelvet és a **Blob eseményindító** sablont.
 
-  ![Válassza ki a blobtároló-eseményindító sablonját.](media\azure-stack-solution-staged-data-analytics\image10.png)
+  ![Válassza ki a blobtároló-eseményindító sablonját.](media/azure-stack-solution-staged-data-analytics/image10.png)
 
 3.  Az alábbi táblázatban megadott beállításokkal:
 
@@ -190,7 +190,7 @@ Hozzon létre egy új Azure Stack-függvény tiszta adatok áthelyezése az Azur
 
     **Példa**
 
-    ![Hozza létre a blobtároló által aktivált függvényt.](media\azure-stack-solution-staged-data-analytics\image11.png)
+    ![Hozza létre a blobtároló által aktivált függvényt.](media/azure-stack-solution-staged-data-analytics/image11.png)
 
 4.  Válassza ki **létrehozás** a függvény létrehozásához.
 
@@ -202,7 +202,7 @@ Hozzon létre egy új Azure Stack-függvény tiszta adatok áthelyezése az Azur
 
 3.  Bontsa ki a tárfiókot, **Blobtárolók**, és a blob korábban létrehozott. Válassza ki **feltöltése** , majd **fájlok feltöltése**.
 
-    ![Töltsön fel egy fájlt a blobtárolóba.](media\azure-stack-solution-staged-data-analytics\image12.png)
+    ![Töltsön fel egy fájlt a blobtárolóba.](media/azure-stack-solution-staged-data-analytics/image12.png)
 
 4.  A fájlok feltöltése párbeszédpanelen válassza ki a fájlokat a mező. Válasszon egy fájlt a helyi számítógépen, például egy képfájlt, jelölje ki, és válassza ki **nyílt** , majd **feltöltése**.
 
@@ -210,7 +210,7 @@ Hozzon létre egy új Azure Stack-függvény tiszta adatok áthelyezése az Azur
 
     **Példa**
 
-    ![Tekintse meg a naplókban található üzeneteket.](media\azure-stack-solution-staged-data-analytics\image13.png)
+    ![Tekintse meg a naplókban található üzeneteket.](media/azure-stack-solution-staged-data-analytics/image13.png)
 
 ## <a name="create-an-azure-stack-storage-account"></a>Azure Stack-storage-fiók létrehozása
 
@@ -232,9 +232,9 @@ A lépéseket és a egy másik tárolási fiók és a blob tároló létrehozás
 
 4.  Válassza ki **OK.**
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-staged-data-analytics\image14.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-staged-data-analytics/image14.png)
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-staged-data-analytics\image15.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-staged-data-analytics/image15.png)
 
 ## <a name="create-a-queue-triggered-function"></a>Üzenetsor által aktivált függvény létrehozása
 
@@ -258,7 +258,7 @@ A lépéseket és a egy másik tárolási fiók és a blob tároló létrehozás
 
 3.  Bontsa ki a tárfiókot, **Blobtárolók**, és a blob korábban létrehozott. Válassza ki **feltöltése** , majd **fájlok feltöltése.**
 
-    ![Töltsön fel egy fájlt a blobtárolóba.](media\azure-stack-solution-staged-data-analytics\image12.png)
+    ![Töltsön fel egy fájlt a blobtárolóba.](media/azure-stack-solution-staged-data-analytics/image12.png)
 
 4.  A fájlok feltöltése párbeszédpanelen válassza ki a fájlokat a mező. Válasszon egy fájlt a helyi számítógépen, például egy képfájlt, jelölje ki, és válassza ki **nyílt** , majd **feltöltése**.
 
@@ -266,7 +266,7 @@ A lépéseket és a egy másik tárolási fiók és a blob tároló létrehozás
 
   **Példa**
 
-    ![Tekintse meg a naplókban található üzeneteket.](media\azure-stack-solution-staged-data-analytics\image13.png)
+    ![Tekintse meg a naplókban található üzeneteket.](media/azure-stack-solution-staged-data-analytics/image13.png)
 
 ## <a name="securely-stored-and-accessed-compliant-data"></a>Biztonságos tárolása és használt megfelelő adatok
 

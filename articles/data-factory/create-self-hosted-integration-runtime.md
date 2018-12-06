@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: 0f48d65d1b3e6d1f608d85cff3a24ef379caa9cf
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: f0040f7e84fefd745b3ca097a4808dc685dd5b72
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284829"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969481"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Létrehozhat és konfigurálhat egy saját üzemeltetésű integrációs modul
 Az integrációs modul (IR) a számítási infrastruktúra, amellyel Azure Data Factory adatintegrációs képességeket biztosítja különböző hálózati környezetekben. Integrációs modul kapcsolatos részletekért lásd: [Integration runtime áttekintése](concepts-integration-runtime.md).
@@ -49,7 +49,7 @@ Amikor adatok áthelyezése a helyszíni és a felhőben, a tevékenység egy sa
 
 A következő magas szintű adatok folyamat lépéseit egy saját üzemeltetésű integrációs modul másolás összefoglalása:
 
-![Áttekintés](media\create-self-hosted-integration-runtime\high-level-overview.png)
+![Áttekintés](media/create-self-hosted-integration-runtime/high-level-overview.png)
 
 1. A data-fejlesztési belül egy Azure data factory egy saját üzemeltetésű integrációs modult egy PowerShell-parancsmag használatával hoz létre. Az Azure portal jelenleg nem támogatja ezt a szolgáltatást.
 2. A data-fejlesztési egy helyszíni adattár társított szolgáltatás megadja a saját üzemeltetésű integrációsmodul-példány, amelyet szeretne csatlakozni az adattárak használnia kell hoz létre. A társított szolgáltatás beállításának részeként az adatok fejlesztői használ a hitelesítőadat-kezelő alkalmazás (jelenleg nem támogatott) hitelesítési típusok és a hitelesítő adatok beállítása. A hitelesítőadat-kezelő alkalmazás kommunikál az adattár, tesztelje a kapcsolatot és a saját üzemeltetésű integrációs modult a hitelesítő adatok mentéséhez.
@@ -131,7 +131,7 @@ Ha alacsony a rendelkezésre álló memóriát a saját üzemeltetésű integrá
 
 A rendelkezésre álló memória és a Processzor nem használhatók jól, de az egyidejű feladatok végrehajtásának hamarosan eléri a korlátot, érdemes a vertikális felskálázáshoz, amely képes futni a csomóponton egyidejű feladatok számának növelése. Érdemes azt is, amikor a tevékenységek időtúllépésekbe ütközzenek, mert a saját üzemeltetésű integrációs modul túl van terhelve vertikális. Ahogy az az alábbi képen is látható, növelheti a maximális kapacitás egy csomópont:  
 
-![Egyidejű feladatok, amely képes futni a csomóponton növelése](media\create-self-hosted-integration-runtime\scale-up-self-hosted-IR.png)
+![Egyidejű feladatok, amely képes futni a csomóponton növelése](media/create-self-hosted-integration-runtime/scale-up-self-hosted-IR.png)
 
 ### <a name="tlsssl-certificate-requirements"></a>A TLS/SSL-tanúsítvány követelményei
 
@@ -162,33 +162,33 @@ A tizenkét perces bevezető és a funkció bemutatójáért tekintse meg a köv
 
 1. A saját üzemeltetésű integrációs modul megosztását, az engedélyeket a data factoryhoz, amelyben szeretné létrehozni a csatolt bemutathatja 
 
-   ![A Megosztás lapon engedély megadása gombra](media\create-self-hosted-integration-runtime\grant-permissions-IR-sharing.png)
+   ![A Megosztás lapon engedély megadása gombra](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)
 
-   ![Engedélyek hozzárendelése a kiválasztott beállításokat](media\create-self-hosted-integration-runtime\3_rbac_permissions.png)
+   ![Engedélyek hozzárendelése a kiválasztott beállításokat](media/create-self-hosted-integration-runtime/3_rbac_permissions.png)
 
 2. Vegye figyelembe a megosztását a saját üzemeltetésű integrációs modul erőforrás-Azonosítóját.
 
-   ![Az erőforrás-azonosító helye](media\create-self-hosted-integration-runtime\4_ResourceID_self-hostedIR.png)
+   ![Az erőforrás-azonosító helye](media/create-self-hosted-integration-runtime/4_ResourceID_self-hostedIR.png)
 
 3. Az adat-előállítóban, amelyhez engedélyeket kapnak hozzon létre egy új helyi Vezérlésű integrációs modul (csatolt), és adja meg az erőforrás-azonosítója.
 
-   ![A csatolt saját üzemeltetésű integrációs modul létrehozására szolgáló gombok](media\create-self-hosted-integration-runtime\6_create-linkedIR_2.png)
+   ![A csatolt saját üzemeltetésű integrációs modul létrehozására szolgáló gombok](media/create-self-hosted-integration-runtime/6_create-linkedIR_2.png)
 
-   ![Mezők nevét és az erőforrás-azonosítóhoz](media\create-self-hosted-integration-runtime\6_create-linkedIR_3.png)
+   ![Mezők nevét és az erőforrás-azonosítóhoz](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
 
 ### <a name="monitoring"></a>Figyelés 
 
 - **Megosztott integrációs modul**
 
-  ![Egy megosztott integrációs modul megkeresése szolgáló kiválasztások](media\create-self-hosted-integration-runtime\Contoso-shared-IR.png)
+  ![Egy megosztott integrációs modul megkeresése szolgáló kiválasztások](media/create-self-hosted-integration-runtime/Contoso-shared-IR.png)
 
-  ![A figyelés lapon](media\create-self-hosted-integration-runtime\contoso-shared-ir-monitoring.png)
+  ![A figyelés lapon](media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png)
 
 - **Társított integrációs modul**
 
-  ![Keresés, a társított integrációs modul szolgáló kiválasztások](media\create-self-hosted-integration-runtime\Contoso-linked-ir.png)
+  ![Keresés, a társított integrációs modul szolgáló kiválasztások](media/create-self-hosted-integration-runtime/Contoso-linked-ir.png)
 
-  ![A figyelés lapon](media\create-self-hosted-integration-runtime\Contoso-linked-ir-monitoring.png)
+  ![A figyelés lapon](media/create-self-hosted-integration-runtime/Contoso-linked-ir-monitoring.png)
 
 ### <a name="known-limitations-of-self-hosted-ir-sharing"></a>A saját üzemeltetésű integrációs modul megosztási ismert korlátozások
 
@@ -211,12 +211,12 @@ A tizenkét perces bevezető és a funkció bemutatójáért tekintse meg a köv
 
 Ha az ikon vagy az üzenet az értesítési területen lévő viszi a kurzort, megtalálhatja a saját üzemeltetésű integrációs modul állapotának részleteit.
 
-![Értesítések az értesítési területen](media\create-self-hosted-integration-runtime\system-tray-notifications.png)
+![Értesítések az értesítési területen](media/create-self-hosted-integration-runtime/system-tray-notifications.png)
 
 ## <a name="ports-and-firewall"></a>Portok és tűzfal
 Nincsenek kell figyelembe venni két tűzfal: a *vállalati tűzfal* fut a szervezet a központi útválasztón és a *Windows tűzfal* konfigurálva egy démon a helyi számítógépen, ahol a saját üzemeltetésű integrációs modul telepítve van.
 
-![Tűzfal](media\create-self-hosted-integration-runtime\firewall.png)
+![Tűzfal](media/create-self-hosted-integration-runtime/firewall.png)
 
 Jelenleg a *vállalati tűzfal* szintű, konfigurálnia kell a következő tartományok és a kimenő portokat:
 
@@ -249,11 +249,11 @@ Ha például szeretné másolni a helyszíni adattárolókból az Azure SQL Data
 ## <a name="proxy-server-considerations"></a>Proxy server kapcsolatos szempontok
 Ha a vállalati hálózati környezet az egy proxykiszolgálón keresztül csatlakozik az internetre, konfigurálja a megfelelő proxykiszolgáló-beállításokat kívánja használni a saját üzemeltetésű integrációs modult. A proxy állíthatja be a kezdeti regisztrációs fázis során.
 
-![Adja meg a proxy](media\create-self-hosted-integration-runtime\specify-proxy.png)
+![Adja meg a proxy](media/create-self-hosted-integration-runtime/specify-proxy.png)
 
 A saját üzemeltetésű integrációs modul csatlakozni a felhőszolgáltatáshoz a proxykiszolgálót használ. Válassza ki **módosítás hivatkozásra** kezdeti beállítás során. A proxy-beállítás párbeszédpanel jelenik meg.
 
-![Proxy beállítása](media\create-self-hosted-integration-runtime\set-http-proxy.png)
+![Proxy beállítása](media/create-self-hosted-integration-runtime/set-http-proxy.png)
 
 Három konfigurációs lehetőség áll rendelkezésre:
 
@@ -272,7 +272,7 @@ Miután a saját üzemeltetésű integrációs modul sikeresen regisztrálva let
 
 Megtekintheti, és a HTTP-proxy frissítése a Configuration Manager eszközzel.
 
-![Nézet proxy](media\create-self-hosted-integration-runtime\view-proxy.png)
+![Nézet proxy](media/create-self-hosted-integration-runtime/view-proxy.png)
 
 > [!NOTE]
 > Az NTLM-hitelesítés proxykiszolgálót állít be, ha az integration runtime Gazdaszolgáltatásának a tartományi fiók alatt fut. Ha módosítja a később a tartományi fiók jelszavát, ne felejtse el frissíteni a szolgáltatás konfigurációs beállításait, és ennek megfelelően indítsa újra. Ez a követelmény miatt javasoljuk, hogy, dedikált tartományi fiók használatával, amely nem igényel, hogy a jelszó gyakran frissíteni a proxykiszolgáló eléréséhez.

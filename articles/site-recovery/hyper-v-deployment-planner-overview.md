@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: 7c65dceadf8afb6a0eacf268dd953feb8477a8df
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 7c5a5cddca2aa8e459bde711465425bdd32c669e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842713"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964016"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Tudnivalók az Azure Site Recovery Deployment Planner a Hyper-V vész-helyreállítási az Azure-bA
 
@@ -115,9 +115,9 @@ A virtuális gép ajánlott konfigurációja: 8 vCPU, 16 GB RAM, 300 GB HDD.
 1.  Csomagolja ki a .zip mappát.
 A mappa több fájlt és almappát tartalmaz. Az ASRDeploymentPlanner.exe futtatható fájl a szülőmappában található.
 
-Példa: másolja a zip-fájlt az E:\ meghajtóra, és csomagolja ki. E:\ASR Deployment Planner_v2.2.zip
+Példa: másolja a zip-fájlt az E:\ meghajtóra, és csomagolja ki. Üzembe helyezés Planner_v2.3.zip E:\ASR
 
-E:\ASR Deployment Planner_v2.2\ASRDeploymentPlanner.exe
+Üzembe helyezés Planner_v2.3\ASRDeploymentPlanner.exe E:\ASR
 
 ### <a name="updating-to-the-latest-version-of-deployment-planner"></a>Frissítés az üzembehelyezés-tervező a legújabb verzióra
 Ha az üzembehelyezés-tervező korábbi verziójával rendelkezik, tegye az alábbiak egyikét:
@@ -132,7 +132,7 @@ Ha az üzembehelyezés-tervező korábbi verziójával rendelkezik, tegye az al�
   >Minden új Deployment Planner a .zip fájl összegző frissítését jelenti. Ezért nem kell a legújabb fájlokat a korábbi mappába másolnia. Létrehozhat és használhat egy új mappát is.
 
 ## <a name="version-history"></a>Verzióelőzmények
-A legutóbbi ASR Deployment Planner eszköz verziószáma 2.2-es.
+A legutóbbi ASR Deployment Planner eszköz verziószáma 2.3-as.
 Az egyes frissítésekben hozzáadott javításokról az [ASR Deployment Planner verzióelőzményeinek oldalán](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) lehet tájékozódni.
 
 

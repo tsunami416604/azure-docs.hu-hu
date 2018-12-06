@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 530b2a1909ec198ddff5abfe4fd5bb7c645f7582
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: b961fac00ba43eb1b44acc46c6f60fa0f3a10877
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261582"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957078"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>Csatlakozás Azure Stack PowerShell-kezelőként
 
@@ -29,7 +29,7 @@ Az Azure Stack, például az ajánlatok, tervek, kvóták és riasztások létre
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Futtassa a következő előfeltételek vonatkoznak, az a [development Kitet](.\asdk\asdk-connect.md#connect-with-rdp) vagy -ügyfélről Windows-alapú külső Ha [a ASDK VPN-kapcsolaton keresztül csatlakozó](.\asdk\asdk-connect.md#connect-with-vpn). 
+Futtassa a következő előfeltételek vonatkoznak, az a [development Kitet](./asdk/asdk-connect.md#connect-with-rdp) vagy -ügyfélről Windows-alapú külső Ha [a ASDK VPN-kapcsolaton keresztül csatlakozó](./asdk/asdk-connect.md#connect-with-vpn). 
 
  - Telepítés [Azure Stack-kompatibilis Azure PowerShell-modulok](azure-stack-powershell-install.md).  
  - Töltse le a [az Azure Stack működéséhez szükséges eszközök](azure-stack-powershell-download.md).  

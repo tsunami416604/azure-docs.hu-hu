@@ -13,18 +13,18 @@ ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: fb04a3410291e52f4ea0d02e625bdbf02f64f8c7
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4a7b5cd925bd4b66e25754c30de5cbaf866dab0b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721043"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970621"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights kohorszok
 
 Egy kohorszt olyan felhasználók, munkamenetek, események vagy a gyakori, hogy műveleteket. Az Azure Application Insights analytics-lekérdezések kohorszok határozza meg. Azokban az esetekben, amelyekben egy adott elemzéséhez beállítása a felhasználók, vagy események ismételten kohorszok is nagyobb rugalmasságot nyújtanak pontosan az Önt érdeklő set Express.
 
-![Kohorszok panel](.\media\app-insights-usage-cohorts\001.png)
+![Kohorszok panel](./media/app-insights-usage-cohorts/001.png)
 
 ## <a name="cohorts-versus-basic-filters"></a>Alapszintű szűrők és kohorszok
 
@@ -52,14 +52,14 @@ A csapata egy szerepet játszanak felhasználói bárki, aki használja az alkal
 
 4. Változás **UsedAtLeastCustom** való **5 + nap**, és hagyja **időszak** 28 napos alapértelmezett.
 
-    ![Szerepet játszanak felhasználók](.\media\app-insights-usage-cohorts\003.png)
+    ![Szerepet játszanak felhasználók](./media/app-insights-usage-cohorts/003.png)
 
     Most a kohorsz a következő jelöli az összes felhasználóazonosító küldi el minden egyéni esemény vagy oldal nézet 5 nappal ezelőtti külön 28.
 
 5. Kattintson a **Mentés** gombra.
 
    > [!TIP]
-   >  Adja meg a kohorsz nevét, például "Engaged felhasználók (5 vagy több nap)." Mentse a "Saját reports" vagy "Megosztott jelentések," attól függően, hogy mások, akik hozzáférhetnek az Application Insights-erőforráshoz a kohorsz a következő témakörben talál.
+   > Adja meg a kohorsz nevét, például "Engaged felhasználók (5 vagy több nap)." Mentse a "Saját reports" vagy "Megosztott jelentések," attól függően, hogy mások, akik hozzáférhetnek az Application Insights-erőforráshoz a kohorsz a következő témakörben talál.
 
 6. Válassza ki **vissza a katalógushoz**.
 
@@ -69,9 +69,10 @@ Nyissa meg a felhasználók eszköz. Az a **megjelenítése** listából válass
 
 Mostantól a felhasználók eszköz szűrve van a felhasználói kohorsz a következő:
 
-![Felhasználók panel szűri, hogy egy adott kohorsz](.\media\app-insights-usage-cohorts\004.png)
+![Felhasználók panel szűri, hogy egy adott kohorsz](./media/app-insights-usage-cohorts/004.png)
 
 Néhány fontos dolog figyelje meg, hogy:
+
 * A készlet normál szűrők használatával nem hozható létre. A dátum logika több speciális.
 * A kohorsz a következő további a felhasználók eszköz a szokásos szűrők használatával is szűrheti. Ezért a kohorsz 28 napos windows rendszeren van definiálva, de továbbra is módosíthatja az időtartományt, a felhasználók eszköz 30, 60 vagy 90 napot.
 
@@ -87,7 +88,7 @@ Győződjön meg a kohorszok események is. Ebben a szakaszban, a következők k
 
 3. Válassza ki **események választó**.
 
-    ![Képernyőkép a események kiválasztása](.\media\app-insights-usage-cohorts\006.png)
+    ![Képernyőkép a események kiválasztása](./media/app-insights-usage-cohorts/006.png)
 
 4. Az a **tevékenységek** legördülő mezőben válassza ki a kívánt eseményeket, a kohorsz lehet.
 
@@ -97,11 +98,11 @@ Győződjön meg a kohorszok események is. Ebben a szakaszban, a következők k
 
 Az előző két kohorszok legördülő listák használatával lettek definiálva. De kohorszok is meghatározhat az elemzési lekérdezések teljes rugalmasság érdekében. Megtekintheti, hogy hozzon létre egy felhasználói kohorsz a következő, az Egyesült Királyság.
 
-![Kohorszok eszközzel használatát ajánljuk figyelmébe az animált kép](.\media\app-insights-usage-cohorts\cohorts0001.gif)
+![Kohorszok eszközzel használatát ajánljuk figyelmébe az animált kép](./media/app-insights-usage-cohorts/cohorts0001.gif)
 
 1. Nyissa meg a Kohorszok eszközzel, válassza ki a **Sablonkatalógus** lapot, majd **üres felhasználók kohorsz**.
 
-    ![Üres felhasználók kohorsz](.\media\app-insights-usage-cohorts\001.png)
+    ![Üres felhasználók kohorsz](./media/app-insights-usage-cohorts/001.png)
 
     Nincsenek három szakaszra osztható:
     * A Markdown szöveg szakaszban, ahol meg kell adni a kohorsz részletesebben mások a csapata.
@@ -136,7 +137,8 @@ Kohorszok és szűrők eltérőek. Tegyük fel, hogy a felhasználók az Egyesü
 * A szűrők verzió csak az egyesült királyságbeli események jeleníti meg. Azonban akkor feloszthatja az ország vagy régió szerint, ha csak az Egyesült Királyság látja.
 
 ## <a name="learn-more"></a>Részletek
-- [Analytics lekérdezési nyelve](https://go.microsoft.com/fwlink/?linkid=856587)
-- [Felhasználók, munkamenetek, események](app-insights-usage-segmentation.md)
-- [Felhasználói folyamatok](app-insights-usage-flows.md)
-- [Használat – áttekintés](app-insights-usage-overview.md)
+
+* [Analytics lekérdezési nyelve](https://go.microsoft.com/fwlink/?linkid=856587)
+* [Felhasználók, munkamenetek, események](app-insights-usage-segmentation.md)
+* [Felhasználói folyamatok](app-insights-usage-flows.md)
+* [Használat – áttekintés](app-insights-usage-overview.md)

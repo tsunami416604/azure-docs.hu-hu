@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.openlocfilehash: 200df7602f94f70f3fb9c62ad81a0710923184c7
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 81c5eabcfcca6818293ff9dbbfb1515d5729dd79
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291414"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963284"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Megismerheti a Stream Analytics-feladat figyelése és lekérdezések figyelése
 
@@ -29,7 +29,7 @@ Az ablakban látható módon jelenik meg:
 ## <a name="metrics-available-for-stream-analytics"></a>Stream Analytics-metrikáit
 | Metrika                 | Meghatározás                               |
 | ---------------------- | ---------------------------------------- |
-| Várakozó bemeneti események       | A bemeneti események száma "várakozó. |
+| Várakozó bemeneti események       | Bemeneti vannak várakozó események száma. |
 | Adatkonverziós hibák | Nem konvertálható a várt kimeneti sémájának kimeneti események számát. |
 | Korai bemeneti események       | Fogadott korai események száma. |
 | Sikertelen függvénykérések | Nem sikerült az Azure Machine Learning függvényhívások (ha van ilyen) száma. |

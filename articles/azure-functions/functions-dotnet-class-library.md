@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: bdae72f5ed4ebed87842ade05ec7a6bc21d349dc
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 4711c766c2a074c25f019ce5b523e0ba8b599c17
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086641"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971317"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Az Azure Functions C# – fejlesztői referencia
 
@@ -81,7 +81,7 @@ Az eseményindító attribútum határozza meg az eseményindító, és van köt
 A metódus aláírásához nem az a eseményindító attribútumon használt paraméterek tartalmazhat. Íme néhány a további paraméterek, amelyeket megadhat:
 
 * [Bemeneti és kimeneti kötések](functions-triggers-bindings.md) jelölt ilyen dekorálása azokat az attribútumokat.  
-* Egy `ILogger` vagy `TraceWriter` paramétere [naplózás](#logging).
+* Egy `ILogger` vagy `TraceWriter` ([csak 1.x verzió](functions-versions.md#creating-1x-apps)) paramétere [naplózás](#logging).
 * A `CancellationToken` paramétere [szabályos leállítást](#cancellation-tokens).
 * [Kötési kifejezésekben](functions-triggers-bindings.md#binding-expressions-and-patterns) paramétereket aktiválása metaadatait.
 
@@ -233,7 +233,7 @@ public static class ICollectorExample
 
 ## <a name="logging"></a>Naplózás
 
-A folyamatos átviteli naplók, a kimeneti bejelentkezni C#, például típusú argumentumot [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). Javasoljuk, hogy nevezze el `log`. Kerülje a `Console.Write` az Azure Functions szolgáltatásban.
+A folyamatos átviteli naplók, a kimeneti bejelentkezni C#, például típusú argumentumot [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). Javasoljuk, hogy nevezze el `log`, ahogy az alábbi példában:  
 
 ```csharp
 public static class SimpleExample
@@ -248,8 +248,7 @@ public static class SimpleExample
 } 
 ```
 
-> [!NOTE]
-> Egy újabb naplózási keretrendszer helyett használható információ `TraceWriter`, lásd: [írási bejelentkezik a C#-függvények](functions-monitoring.md#write-logs-in-c-functions) a a **figyelése az Azure Functions** cikk.
+Kerülje a `Console.Write` az Azure Functions szolgáltatásban. További információkért lásd: [írási bejelentkezik C# funkciók](functions-monitoring.md#write-logs-in-c-functions) a a **figyelése az Azure Functions** cikk.
 
 ## <a name="async"></a>Az aszinkron
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: bd97de9680eb2fe5f5e6da3b7cba48dc7280e398
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 4dde0663c6db4187cd4728dd88b808fc22b66708
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888715"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964168"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Azure-bA az OMS-portálon
 
@@ -71,7 +71,7 @@ Mindkét ezekben az esetekben a rendszergazdának manuálisan, a megfelelő szer
  
 
 ## <a name="new-workspaces"></a>Új munkaterületek
-Van már nem hozhat létre új munkaterületek az OMS-portálon. Kövesse az útmutató [Log Analytics-munkaterület létrehozása az Azure Portalon](log-analytics-quick-create-workspace.md) új munkaterület létrehozása az Azure Portalon.
+Van már nem hozhat létre új munkaterületek az OMS-portálon. Kövesse az útmutató [Log Analytics-munkaterület létrehozása az Azure Portalon](../azure-monitor/learn/quick-create-workspace.md) új munkaterület létrehozása az Azure Portalon.
 
 ## <a name="changes-to-alerts"></a>Riasztások módosításait
 

@@ -11,19 +11,19 @@ ms.component: data-science-vm
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 12/04/2018
 ms.author: gokuma
-ms.openlocfilehash: c6314b4f53969b32040713df4834e5706d31be3a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 20867b6bfecb981a9bc47180cb39a1c489b19d2f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865352"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959750"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>A Windows Data Science virtuális gép Azure-beli üzembe helyezése
 A Microsoft Data Science virtuális gépet (DSVM) egy Windows Azure virtuális gép (VM) rendszerkép. Előtelepített és konfigurált adatelemzési és machine learning használt számos eszközzel. A következő eszközök foglalja magában:
 
-* [Az Azure Machine Learning](../service/index.yml) Workbench.
+* [Az Azure Machine Learning szolgáltatás](../service/index.yml) Python SDK-t.
 * [Microsoft Machine Learning-kiszolgáló](https://docs.microsoft.com/machine-learning-server/index) Developer Edition szoftverhez.
 * Anaconda Python elosztási.
 * Jupyter Notebook az R, Python és a PySpark kernelt.
@@ -193,13 +193,13 @@ A **Power BI Desktop** irányítópultokat és vizualizációkat hozhat létre s
 > 
 > 
 
-### <a name="azure-machine-learning-workbench"></a>Azure Machine Learning Workbench
+### <a name="azure-machine-learning-service-python-sdk"></a>Az Azure Machine Learning szolgáltatás Python SDK-t
 
-Az Azure Machine Learning Workbench egy asztali alkalmazás és parancssori felület. A workbench beépített adat-előkészítés, amely megtanulja az adat-előkészítési lépéseket, ezeket is rendelkezik. Is biztosít a projektmenedzsment, a futtatási előzmények vagy a jegyzetfüzet-integráció a hatékonyság növelése érdekében. 
+Azure Machine Learning-SDK Pythonhoz készült segítségével az adatszakértők és a Mesterségesintelligencia-fejlesztőknek létrehozhatja és futtathatja a machine learning munkafolyamatok a [az Azure Machine Learning szolgáltatás](../service/overview-what-is-azure-ml.md). Használhatja a szolgáltatást minden olyan Python-környezetet, beleértve a Jupyter notebookok vagy a kedvenc Python IDE, a nyílt forráskódú keretrendszerekkel, mint például a tensorflow-hoz és a scikit-megtudhatja.
 
-Használhatja a nyílt forráskódú keretrendszereket is, a TensorFlow, a Cognitive Toolkit, a Spark Machine Learning és a scikit-ismerje meg, a modellek fejlesztésére. A dsvm-hez, a biztosítunk egy asztali ikonra az Azure Machine Learning Workbench telepítése az egyes felhasználói csoportokban **% LOCALAPPDATA %** könyvtár. 
+A Python SDK használatának első lépései, lásd: [az Azure Machine Learning használatának első lépései a Python](../service/quickstart-create-workspace-with-python.md).
 
-A munkaterület minden felhasználó végre kell hajtania egy egyszeri művelet. Kattintson duplán a ```AzureML Workbench Setup``` asztali ikonra a workbench-példány telepítése. Az Azure Machine Learning is hoz létre, illetve egy felhasználó Python-környezetet, amely bontja ki / a **%LOCALAPPDATA%\amlworkbench\python** könyvtár.
+A Python SDK telepítve van a Microsoft Data Science virtuális gépen.
 
 ## <a name="more-microsoft-development-tools"></a>További Microsoft fejlesztési eszközök
 A [Microsoft Webplatform-telepítő](https://www.microsoft.com/web/downloads/platform.aspx) keresse meg és más Microsoft fejlesztői eszközöket tölthet le. Emellett van egy parancsikont a Microsoft adatelemző virtuális gép asztalán a megadott eszköz.  
@@ -215,7 +215,6 @@ A [Microsoft Webplatform-telepítő](https://www.microsoft.com/web/downloads/pla
 | Microsoft Machine Learning-kiszolgálója (önálló) Python | C:\Program Files\Microsoft\ML Server\PYTHON_SERVER |
 | Az R alapértelmezett példány, Machine Learning-kiszolgáló (önálló) | C:\Program Files\Microsoft\ML Server\R_SERVER |
 | Machine Learning-szolgáltatások az SQL-adatbázis-példány könyvtár | C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER |
-| Az Azure Machine Learning Workbench, felhasználónként | %localappdata%\amlworkbench | 
 | Egyéb eszközök | c:\dsvm\tools |
 
 > [!NOTE]
@@ -226,7 +225,7 @@ A [Microsoft Webplatform-telepítő](https://www.microsoft.com/web/downloads/pla
 ## <a name="next-steps"></a>További lépések
 
 * Fedezze fel az eszközök az adatelemző virtuális gép kiválasztásával a **Start** menü.
-* Ismerje meg a termék ellátogat az Azure Machine Learning-szolgáltatások és a Workbench [rövid és oktatóanyagok lap](../service/index.yml). 
+* Ismerje meg az Azure Machine Learning szolgáltatással kapcsolatban, olvassa el [Mi az Azure Machine Learning szolgáltatás?](../service/overview-what-is-azure-ml.md) , illetve próbálhatja ki a [útmutatóink és oktatóanyagaink segítségével](../service/index.yml) elérhető.
 * Navigáljon a **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts** , amely a RevoScaleR kódtára, amely támogatja az adatelemzés, a nagyvállalati szintű R a minták.  
 * A cikk a [tíz dolog, amire alkalmas az adatelemző virtuális gép](https://aka.ms/dsvmtenthings).
 * Megtudhatja, hogyan teljes körű elemzési megoldásokat rendszeresen használatával hozhat létre a [csoportos adatelemzési folyamat](../team-data-science-process/index.yml).

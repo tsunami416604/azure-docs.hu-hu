@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: d7d47b61c926c6704a06dacc55f00d77a1266988
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: d8d88484181c3c38f64cf8f00f9d8feaa3b0217a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038365"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962562"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Biztonsági mentés engedélyezése az Azure Stack a felügyeleti portálról
-Engedélyezze az infrastruktúra Backup szolgáltatás a felügyeleti portálon keresztül, úgy, hogy az Azure Stack biztonsági mentéseket hozhat létre. Ezeket a biztonsági másolatokat segítségével helyreállíthatja az-környezet a felhőbeli helyreállítási [végzetes hiba](.\azure-stack-backup-recover-data.md). A felhőbeli helyreállítási célja, hogy győződjön meg arról, hogy az operátorok és a felhasználók is jelentkezzen be újra a portál recovery befejeződése után. Felhasználók lesz visszaállítva, beleértve a szerepköralapú hozzáférési engedélyek és szerepkörök, eredeti csomagok, ajánlatok, és korábban meghatározott számítási, tárolási és hálózati kvóták megszűnni.
+Engedélyezze az infrastruktúra Backup szolgáltatás a felügyeleti portálon keresztül, úgy, hogy az Azure Stack biztonsági mentéseket hozhat létre. Ezeket a biztonsági másolatokat segítségével helyreállíthatja az-környezet a felhőbeli helyreállítási [végzetes hiba](./azure-stack-backup-recover-data.md). A felhőbeli helyreállítási célja, hogy győződjön meg arról, hogy az operátorok és a felhasználók is jelentkezzen be újra a portál recovery befejeződése után. Felhasználók lesz visszaállítva, beleértve a szerepköralapú hozzáférési engedélyek és szerepkörök, eredeti csomagok, ajánlatok, és korábban meghatározott számítási, tárolási és hálózati kvóták megszűnni.
 
 Azonban a biztonsági mentési infrastruktúra-szolgáltatás biztonsági mentés IaaS virtuális gépekhez, hálózati konfigurációk és tárolási erőforrások, például a storage-fiókok, blobok, táblák, és így tovább, így a felhasználók felhőalapú helyreállítás után a bejelentkezés befejezése nem jelenik meg bármelyik korábban meglévő az erőforrásokat. Platform (PaaS) szolgáltatás-erőforrások és adatok is nem készül biztonsági másolat a szolgáltatás által. 
 
@@ -58,31 +58,31 @@ A rendszergazdák és felhasználók felelőssége biztonsági mentése és viss
     ```
 10. Válassza ki **OK** a biztonsági mentés vezérlő beállítások mentéséhez.
 
-    ![Az Azure Stack - biztonsági mentést vezérlő beállítások](media\azure-stack-backup\backup-controller-settings.png)
+    ![Az Azure Stack - biztonsági mentést vezérlő beállítások](media/azure-stack-backup/backup-controller-settings.png)
 
 ## <a name="start-backup"></a>Biztonsági mentés indítása
 A biztonsági mentés indításához kattintson a **biztonsági mentés** egy igény szerinti biztonsági mentés elindításához. Egy igény szerinti biztonsági mentés nem módosítják a következő ütemezett biztonsági mentés időpontját. A feladat befejezése után ellenőrizheti a beállítások **Essentials**:
 
-![Az Azure Stack - igény szerinti biztonsági mentés](media\azure-stack-backup\scheduled-backup.png)
+![Az Azure Stack - igény szerinti biztonsági mentés](media/azure-stack-backup/scheduled-backup.png)
 
 A PowerShell-parancsmagot is futtathatja **Start-AzsBackup** az Azure Stack felügyeleti számítógépen. További információkért lásd: [biztonsági mentése az Azure Stack](azure-stack-backup-back-up-azure-stack.md).
 
 ## <a name="enable-or-disable-automatic-backups"></a>Engedélyezi vagy letiltja az automatikus biztonsági mentés
 Biztonsági mentés automatikusan van ütemezve, amikor a biztonsági mentés engedélyezése. A következő biztonsági mentési ütemezés alkalommal ellenőrizheti **Essentials**. 
 
-![Az Azure Stack - igény szerinti biztonsági mentés](media\azure-stack-backup\on-demand-backup.png)
+![Az Azure Stack - igény szerinti biztonsági mentés](media/azure-stack-backup/on-demand-backup.png)
 
 Ha a jövőbeli ütemezett biztonsági mentések tiltása van szüksége, kattintson a **automatikus biztonsági mentések tiltása**. Letiltását automatikus biztonsági mentést fogja megőrizni a biztonsági mentési beállítások konfigurálása, és megőrzi a biztonsági mentés ütemezése. Ez a művelet egyszerűen arra utasítja a jövőbeli biztonsági mentések kihagyja az ütemezőnek. 
 
-![Az Azure Stack - letiltása az ütemezett biztonsági mentések](media\azure-stack-backup\disable-auto-backup.png)
+![Az Azure Stack - letiltása az ütemezett biztonsági mentések](media/azure-stack-backup/disable-auto-backup.png)
 
 Győződjön meg arról, hogy jövőbeli ütemezett biztonsági mentések le vannak tiltva a **Essentials**:
 
-![Az Azure Stack - erősítse meg a biztonsági mentések le vannak tiltva.](media\azure-stack-backup\confirm-disable.png)
+![Az Azure Stack - erősítse meg a biztonsági mentések le vannak tiltva.](media/azure-stack-backup/confirm-disable.png)
 
 Kattintson a **engedélyezze az automatikus biztonsági mentés** tájékoztatja az ütemező jövőbeli biztonsági mentések elindítani az ütemezett időpontban. 
 
-![Az Azure Stack - enable ütemezett biztonsági mentések](media\azure-stack-backup\enable-auto-backup.png)
+![Az Azure Stack - enable ütemezett biztonsági mentések](media/azure-stack-backup/enable-auto-backup.png)
 
 
 > [!Note]  

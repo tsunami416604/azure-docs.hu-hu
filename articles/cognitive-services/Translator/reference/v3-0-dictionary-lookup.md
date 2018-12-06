@@ -10,18 +10,18 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 41b610f3504a8eb6619613e3ad0aa7c1c4cf9f66
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: b51067b9e854566991d49aeb1ff2b1ad13999a51
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127841"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957742"
 ---
 # <a name="translator-text-api-30-dictionary-lookup"></a>Translator Text API 3.0: Szótár keresése
 
-Egy szót, és bármilyen kifejezések kis számú felkínálásával biztosít. Minden egyes fordítási rendelkezik egy rész-az-beszéd- és back-fordítások listáját. A biztonsági fordításokat engedélyezi a felhasználókat a környezetben a fordítás megértéséhez. A [szótár példa](.\v3-0-dictionary-examples.md) művelet lehetővé teszi, hogy további részletes elemzési, lásd: Ebben a példában minden egyes fordítási pár képességet.
+Egy szót, és bármilyen kifejezések kis számú felkínálásával biztosít. Minden egyes fordítási rendelkezik egy rész-az-beszéd- és back-fordítások listáját. A biztonsági fordításokat engedélyezi a felhasználókat a környezetben a fordítás megértéséhez. A [szótár példa](./v3-0-dictionary-examples.md) művelet lehetővé teszi, hogy további részletes elemzési, lásd: Ebben a példában minden egyes fordítási pár képességet.
 
-## <a name="request-url"></a>Lekérdezés URL-címe
+## <a name="request-url"></a>Kérés URL-címe
 
 Küldjön egy `POST` kérelmet:
 
@@ -42,11 +42,11 @@ A kérelem lekérdezési karakterláncot az átadott paraméterek a következők
   </tr>
   <tr>
     <td>forrás:</td>
-    <td>*Kötelező paraméter*.<br/>Meghatározza a bemeneti szöveg nyelvét. A Forrásnyelv egyikének kell lennie a [támogatott nyelvek](.\v3-0-languages.md) szerepel a `dictionary` hatókör.</td>
+    <td>*Kötelező paraméter*.<br/>Meghatározza a bemeneti szöveg nyelvét. A Forrásnyelv egyikének kell lennie a [támogatott nyelvek](./v3-0-languages.md) szerepel a `dictionary` hatókör.</td>
   </tr>
   <tr>
     <td>erre:</td>
-    <td>*Kötelező paraméter*.<br/>Meghatározza a kimeneti szöveg nyelvét. A Célnyelv egyikének kell lennie a [támogatott nyelvek](.\v3-0-languages.md) szerepel a `dictionary` hatókör.</td>
+    <td>*Kötelező paraméter*.<br/>Meghatározza a kimeneti szöveg nyelvét. A Célnyelv egyikének kell lennie a [támogatott nyelvek](./v3-0-languages.md) szerepel a `dictionary` hatókör.</td>
   </tr>
 </table>
 
@@ -73,7 +73,7 @@ Kérelemfejlécek a következők:
   </tr>
 </table> 
 
-## <a name="request-body"></a>Kérelem törzse
+## <a name="request-body"></a>A kérés törzse
 
 A kérelem törzsében egy JSON-tömböt. Egyes tömbelemeken nevű karakterlánc tulajdonsággal rendelkező JSON-objektum `Text`, amelyek keresési kifejezés jelöli.
 
@@ -92,13 +92,13 @@ Az alábbi korlátozások érvényesek:
 
 A sikeres válasz egy JSON-tömböt az egyes sztringek a bemeneti számtömbből egy eredmény. Egy objektumra a következő tulajdonságokat tartalmazza:
 
-  * `normalizedSource`: Egy karakterlánc, így a forrás kifejezés normalizált formájában. Például ha a kérés "JÁNOS", a normalizált képernyő lesz "János". Ez a mező tartalma válik a bemeneti [keresési példák](.\v3-0-dictionary-examples.md).
+  * `normalizedSource`: Egy karakterlánc, így a forrás kifejezés normalizált formájában. Például ha a kérés "JÁNOS", a normalizált képernyő lesz "János". Ez a mező tartalma válik a bemeneti [keresési példák](./v3-0-dictionary-examples.md).
     
   * `displaySource`: Egy karakterlánc leginkább az űrlapon jogosultságot ad a forrás kifejezés olyan végfelhasználói megjelenítése. Például, ha a bemeneti "JÁNOS", a megjelenítési űrlap fogja tartalmazni a szokásos helyesírás-ellenőrzés a név: "János". 
 
   * `translations`: A forrás időszakra fordítások listája. A lista minden eleme egy olyan objektum, a következő tulajdonságokkal:
 
-    * `normalizedTarget`: Egy karakterlánc, így a normalizált kifejezés formájában a célként megadott nyelven. Ezt az értéket kell használni bemeneteként [keresési példák](.\v3-0-dictionary-examples.md).
+    * `normalizedTarget`: Egy karakterlánc, így a normalizált kifejezés formájában a célként megadott nyelven. Ezt az értéket kell használni bemeneteként [keresési példák](./v3-0-dictionary-examples.md).
 
     * `displayTarget`: Egy karakterlánc, így a kifejezés a Célnyelv és a egy űrlap leginkább az olyan végfelhasználói megjelenítése. Általában ez csak különbözni fog a `normalizedTarget` nagybetűs tekintetében. Ha például a tulajdonneveknél "Juan" fog rendelkezni, `normalizedTarget = "juan"` és `displayTarget = "Juan"`.
 
@@ -125,11 +125,11 @@ A sikeres válasz egy JSON-tömböt az egyes sztringek a bemeneti számtömbből
     
     * `backTranslations`: A cél "vissza fordítások" listája. Például a forrás, amely lefordítja a cél a szavakat. A lista tartalmazza a lekért forrás szó garantáltan (pl., ha a forrás word folyamatban kulcskeresési "repülési", akkor azt garantálja, hogy a "repülési" lesz a `backTranslations` lista). Azonban nem garantált, hogy az első helyen kell, és gyakran nem lesz. Egyes elemeinek a `backTranslations` lista egy olyan objektum leírtak szerint a következő tulajdonságokkal:
 
-        * `normalizedText`: Egy karakterlánc, így a forrás kifejezés, amely a cél vissza fordítási normalizált formájában. Ezt az értéket kell használni bemeneteként [keresési példák](.\v3-0-dictionary-examples.md).        
+        * `normalizedText`: Egy karakterlánc, így a forrás kifejezés, amely a cél vissza fordítási normalizált formájában. Ezt az értéket kell használni bemeneteként [keresési példák](./v3-0-dictionary-examples.md).        
 
         * `displayText`: Egy karakterlánc, így a forrás kifejezés, amely a cél egy űrlapon, ajánlott biztonsági fordítási olyan végfelhasználói megjelenítése.
 
-        * `numExamples`: Egy példa, amelyek érhetők el a fordítási pár számát jelző egész számot. Tényleges példák külön hívásával kell beolvasni [keresési példák](.\v3-0-dictionary-examples.md). A szám többnyire célja, hogy egy UX megjelenítéshez megkönnyítése Felhasználói felület például hivatkozás hozzáadása szövegmezőhöz a biztonsági fordítás Ha példák száma csak nullánál nagyobb és megjelenítése a biztonsági fordítás pedig egyszerű szövegként, esetén nem nincs példákat. Vegye figyelembe, hogy a példák tényleges száma hívása által visszaadott [keresési példák](.\v3-0-dictionary-examples.md) lehet, hogy kevesebb mint `numExamples`, mert a további szűréshez menet közben is távolítsa el a "rossz" példák alkalmazhatók.
+        * `numExamples`: Egy példa, amelyek érhetők el a fordítási pár számát jelző egész számot. Tényleges példák külön hívásával kell beolvasni [keresési példák](./v3-0-dictionary-examples.md). A szám többnyire célja, hogy egy UX megjelenítéshez megkönnyítése Felhasználói felület például hivatkozás hozzáadása szövegmezőhöz a biztonsági fordítás Ha példák száma csak nullánál nagyobb és megjelenítése a biztonsági fordítás pedig egyszerű szövegként, esetén nem nincs példákat. Vegye figyelembe, hogy a példák tényleges száma hívása által visszaadott [keresési példák](./v3-0-dictionary-examples.md) lehet, hogy kevesebb mint `numExamples`, mert a további szűréshez menet közben is távolítsa el a "rossz" példák alkalmazhatók.
         
         * `frequencyCount`: Egy a gyakoriságát, az adatok a fordítási pár jelző egész számot. Ez a mező fő célja, hogy a vissza-fordítások rendezni, így a leggyakoribb használati első azt jelenti, hogy egy felhasználói felületet kínálnak.
 

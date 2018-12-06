@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: a9248e2310e509bbc4f527608246b47543a03fc4
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: aee8492c73ace608abaeca9d833494e041d2b9dd
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502177"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969004"
 ---
 # <a name="check-the-health-of-an-azure-ad-domain-services-managed-domain"></a>Az Azure AD Domain Services felügyelt tartomány állapotának ellenőrzése
 
@@ -32,7 +32,7 @@ A health-oldal használatával az Azure Portalon, Ön képesek arra, hogy mi tö
 2. Kattintson a tartomány állapotának megtekintéséhez.
 3. Kattintson a bal oldali navigációs ablaktáblában **egészségügyi**.
 
-A következő képen látható egy minta health-oldal mutatja be: ![health (példa)](.\media\active-directory-domain-services-alerts\health-page.png)
+A következő képen látható egy minta health-oldal mutatja be: ![health (példa)](./media/active-directory-domain-services-alerts/health-page.png)
 
 >[!NOTE]
 > A felügyelt tartomány állapotának abban az esetben minden órában. A felügyelt tartomány módosítások elvégzése után várja meg, amíg a következő értékelési ciklus során frissített a felügyelt tartomány állapotának megtekintéséhez. A jobb felső sarokban lévő "Legutóbbi értékelésének" időbélyeg jeleníti meg, ha a felügyelt tartomány állapotának legutóbbi értékelésének.
@@ -43,10 +43,10 @@ A felső állapota az állapot, a jobb oldalon azt jelzi, hogy a felügyelt tart
 
 | status | Ikon | Magyarázat |
 | --- | :----: | --- |
-| Fut | <img src= ".\media\active-directory-domain-services-alerts\running-icon.png" width = "15"> | A felügyelt tartomány már simán fut, és nem rendelkezik minden kritikus vagy figyelmeztető riasztást. Ez a tartomány előfordulhat tájékoztatási szintű riasztások. |
-| Figyelmet igényel (figyelmeztetés) | <img src= ".\media\active-directory-domain-services-alerts\warning-icon.png" width = "15"> | Nincsenek kritikus riasztások a felügyelt tartományban lévő, de tartandó egy vagy több figyelmeztető riasztások. |
-| Figyelmet igényel (kritikus) | <img src= ".\media\active-directory-domain-services-alerts\critical-icon.png" width = "15"> | Nincs olyan egy vagy több kritikus riasztást a felügyelt tartományra. Figyelmeztetési és/vagy tájékoztató riasztások is rendelkezhetnek. |
-| Központi telepítés | <img src= ".\media\active-directory-domain-services-alerts\deploying-icon.png" width = "15"> | A tartomány folyamatban üzembe helyezése folyamatban van. |
+| Fut | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15"> | A felügyelt tartomány már simán fut, és nem rendelkezik minden kritikus vagy figyelmeztető riasztást. Ez a tartomány előfordulhat tájékoztatási szintű riasztások. |
+| Figyelmet igényel (figyelmeztetés) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15"> | Nincsenek kritikus riasztások a felügyelt tartományban lévő, de tartandó egy vagy több figyelmeztető riasztások. |
+| Figyelmet igényel (kritikus) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15"> | Nincs olyan egy vagy több kritikus riasztást a felügyelt tartományra. Figyelmeztetési és/vagy tájékoztató riasztások is rendelkezhetnek. |
+| Központi telepítés | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15"> | A tartomány folyamatban üzembe helyezése folyamatban van. |
 
 ## <a name="monitors"></a>Monitorozások
 Figyelők a felügyelt tartományhoz, amely rendszeresen figyeli az Azure AD Domain Services aspektusait. A legjobb módja, hogy a figyelő kifogástalan állapotban, a felügyelt tartományhoz tartozó aktív riasztások megoldása érdekében.

@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/20/2017
+ms.date: 12/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6afb54caca572988c566ab7c6325d511e77fbd3e
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 5e00c52c17eac92edc3273e2d765d6c5fd76f59b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582088"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970679"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Futó Azure HDInsight az Apache Spark-feladatok hibakereséséhez
 
@@ -28,12 +28,12 @@ Az alábbiakkal kell rendelkeznie:
 * Meg kell kezdeni a notebook futó  **[Machine learning: élelmiszervizsgálati egészségügyi adatok MLLib segítségével prediktív elemzési](apache-spark-machine-learning-mllib-ipython.md)**. Ez a jegyzetfüzet futtatásához útmutatást kövesse a hivatkozást.  
 
 ## <a name="track-an-application-in-the-yarn-ui"></a>Nyomon követheti az alkalmazás a YARN felhasználói felületén
-1. Nyissa meg a YARN felhasználói felületén. Kattintson a **fürt irányítópultja**, és kattintson a **YARN**.
+1. Nyissa meg a YARN felhasználói felületén. Kattintson a **Yarn** alatt **fürt irányítópultjai**.
    
     ![Indítsa el a YARN felhasználói felületén](./media/apache-spark-job-debugging/launch-yarn-ui.png)
    
    > [!TIP]
-   > Másik lehetőségként az Ambari felhasználói felületén, a YARN felhasználói felületén is megnyithatja. Az Ambari felhasználói felületén indításához kattintson **fürt irányítópultja**, és kattintson a **HDInsight-fürt irányítópultja**. Az Ambari felhasználói felületén kattintson **YARN**, kattintson a **Gyorshivatkozások**, kattintson az aktív erőforrás-kezelő, majd **erőforrás-kezelő felhasználói felületén**.    
+   > Másik lehetőségként az Ambari felhasználói felületén, a YARN felhasználói felületén is megnyithatja. Az Ambari felhasználói felületén indításához kattintson **otthoni Ambari** alatt **fürt irányítópultjai**. Az Ambari felhasználói felületén kattintson **YARN**, kattintson a **Gyorshivatkozások**, kattintson az aktív erőforrás-kezelő, majd **erőforrás-kezelő felhasználói felületén**.    
    > 
    > 
 2. A Jupyter notebookok használata Spark-feladat indítása, mert az alkalmazás rendelkezik ezzel a névvel **remotesparkmagics** (Ez a minden alkalmazás, amely a notebookok való indítása a nevét). Kattintson az Alkalmazásazonosítót, szemben az alkalmazás nevét a feladattal kapcsolatos további információért. Ezzel elindítja az alkalmazás megtekintése.
@@ -88,12 +88,12 @@ A Spark felhasználói felületén részletezhető le a Spark-feladatok, amelyek
 ## <a name="find-information-about-completed-jobs-using-the-spark-history-server"></a>Információ a befejezett feladatok használata a Spark-Előzménykiszolgáló
 Ha egy feladat befejeződött, a feladat információi a Spark-Előzménykiszolgáló a rendszer megőrzi.
 
-1. Indítsa el a Spark-Előzménykiszolgáló, a fürt panelén kattintson a **fürt irányítópultja**, és kattintson a **Spark-Előzménykiszolgáló**.
+1. Indítsa el a Spark-Előzménykiszolgáló, az Áttekintés panelen kattintson a **Spark-előzménykiszolgáló** alatt **fürt irányítópultjai**.
    
     ![Indítsa el a Spark-Előzménykiszolgáló](./media/apache-spark-job-debugging/launch-spark-history-server.png)
    
    > [!TIP]
-   > Másik lehetőségként a Spark előzmények kiszolgáló felhasználói felülete a az Ambari felhasználói felületén is megnyithatja. Indítsa el a Ambari felhasználói felületén, a fürt panelén kattintson a **fürt irányítópultja**, és kattintson a **HDInsight-fürt irányítópultja**. Az Ambari felhasználói felületén kattintson **Spark**, kattintson a **Gyorshivatkozások**, és kattintson a **Spark előzmények kiszolgáló felhasználói felülete**.
+   > Másik lehetőségként a Spark előzmények kiszolgáló felhasználói felülete a az Ambari felhasználói felületén is megnyithatja. Indítsa el a Ambari felhasználói felületén, az Áttekintés panelen kattintson a **otthoni Ambari** alatt **fürt irányítópultjai**. Az Ambari felhasználói felületén kattintson **Spark**, kattintson a **Gyorshivatkozások**, és kattintson a **Spark előzmények kiszolgáló felhasználói felülete**.
    > 
    > 
 2. A befejezett alkalmazásokkal felsorolt láthatja. Kattintson egy Alkalmazásazonosítót az alkalmazás további információk feltárásához.
@@ -122,5 +122,3 @@ Ha egy feladat befejeződött, a feladat információi a Spark-Előzménykiszolg
 * [Notebookokhoz elérhető kernelek Jupyter a HDInsight az Apache Spark-fürt](apache-spark-jupyter-notebook-kernels.md)
 * [Külső csomagok használata Jupyter notebookokkal](apache-spark-jupyter-notebook-use-external-packages.md)
 * [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](apache-spark-jupyter-notebook-install-locally.md)
-
-

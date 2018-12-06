@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/27/2018
+ms.date: 11/19/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 2f0c552c29021400e901e94c643c8f20171638b8
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 03c561001999245b55e6e76b02f8916d0b2d619f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875061"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963232"
 ---
 # <a name="custom-logs-in-log-analytics"></a>A Log Analytics egyéni naplók
-Az egyéni naplókat adatforrás a Log Analytics lehetővé teszi az események gyűjtésére a Windows és a Linux rendszerű számítógépek szöveges fájlok. Számos alkalmazás adatokat szöveges fájlok nem szabványos naplózási szolgáltatásokkal, például a Windows Eseménynapló vagy a Syslog naplófájlba.  Után minden egyes mezőket a bejelentkezés rekordja értelmezni tudja a [egyéni mezők](../../azure-monitor/platform/custom-fields.md) Log Analytics szolgáltatást.
+Az egyéni naplókat adatforrás a Log Analytics lehetővé teszi az események gyűjtésére a Windows és a Linux rendszerű számítógépek szöveges fájlok. Számos alkalmazás adatokat szöveges fájlok nem szabványos naplózási szolgáltatásokkal, például a Windows Eseménynapló vagy a Syslog naplófájlba. Követően az adatok elemzése az egyes mezők a lekérdezéseiben, vagy az adatokat nyerhet ki az egyes mezők a gyűjtés során.
 
 ![Egyéni naplók összegyűjtése](media/data-sources-custom-logs/overview.png)
 
@@ -105,13 +105,10 @@ Megkezdéséről Log Analytics gyűjti össze az egyéni napló, a rekordok egy 
 
 > [!NOTE]
 > A RawData tulajdonság hiányzik a keresési, szükség lehet bezárja és újra megnyitja a böngészőt.
->
->
+
 
 ### <a name="step-6-parse-the-custom-log-entries"></a>6. lépés Az egyéni napló bejegyzései elemzése
-A teljes naplóbejegyzés lesz tárolva egyetlen tulajdonsággal **RawData**.  Valószínűleg érdemes a különböző információt tárolja a rekordban levő egyes tulajdonságokat az egyes bejegyzések elválasztásához.  Ehhez használja a [egyéni mezők](../../azure-monitor/platform/custom-fields.md) Log Analytics szolgáltatást.
-
-Részletes lépéseit az egyéni naplóbejegyzés elemzés nem tartozik ide.  Tekintse meg a [egyéni mezők](../../azure-monitor/platform/custom-fields.md) ezt az információt a dokumentáció.
+A teljes naplóbejegyzés lesz tárolva egyetlen tulajdonsággal **RawData**.  Valószínűleg érdemes külön az egyes tulajdonságok az egyes rekordok minden egyes bejegyzés a különböző információt. Tekintse meg [elemzése a Log Analytics szöveges adatok](../log-query/parse-text.md) elemzése a beállítások **RawData** több tulajdonságot be.
 
 ## <a name="removing-a-custom-log"></a>Egyéni napló eltávolítása
 A következő folyamat használja az Azure Portalon, amely korábban definiált egyéni napló eltávolítása.
@@ -123,7 +120,7 @@ A következő folyamat használja az Azure Portalon, amely korábban definiált 
 ## <a name="data-collection"></a>Adatgyűjtés
 A log Analytics új bejegyzések-fájlokból gyűjt mindegyik egyéni napló körülbelül 5 percenként.  Az ügynök által gyűjtött, akkor minden egyes naplófájlban a helyére jegyezze fel.  Ha az ügynököt egy ideig offline állapotba kerül, majd a Log Analytics bejegyzések-fájlokból gyűjt ahol utolsó abbamaradtak, akkor is, ha tételekhez jöttek létre, miközben az ügynök offline állapotban volt.
 
-A naplóbejegyzés teljes tartalmát írt egyetlen tulajdonsággal **RawData**.  Ez az elemzett és definiálásával külön-külön keresni lehet több tulajdonságot tudja elemezni [egyéni mezők](../../azure-monitor/platform/custom-fields.md) az egyéni napló létrehozása után.
+A naplóbejegyzés teljes tartalmát írt egyetlen tulajdonsággal **RawData**.  Lásd: [elemzése a Log Analytics szöveges adatok](../log-query/parse-text.md) elemezni az egyes módszerek importált naplóbejegyzés több tulajdonságot be.
 
 ## <a name="custom-log-record-properties"></a>Az egyéni napló rekord tulajdonságai
 Az egyéni napló rögzíti az alábbi táblázatban egy típus a napló nevére, Ön által megadott és a Tulajdonságok rendelkezik.
@@ -132,18 +129,8 @@ Az egyéni napló rögzíti az alábbi táblázatban egy típus a napló nevére
 |:--- |:--- |
 | TimeGenerated |Dátum és idő, a rekord a Log Analytics által összegyűjtött.  Ha a napló egy időalapú elválasztó használ majd ez az az idő a bejegyzés gyűjtött. |
 | SourceSystem |A rekord gyűjtötte a program az ügynök típusa. <br> OpsManager – Windows-ügynök, vagy közvetlen csatlakozás vagy a System Center Operations Manager <br> Linux – az összes Linux-ügynökök |
-| RawData |Teljes szöveges összegyűjtött bejegyzés. |
+| RawData |Teljes szöveges összegyűjtött bejegyzés. Valószínűleg érdemes [elemezni az adatokat az egyes tulajdonságok](../log-query/parse-text.md). |
 | ManagementGroupName |A System Center Operations kezelése ügynökök a felügyeleti csoport neve.  Más ügynökök esetén ez AOI -\<munkaterület azonosítója\> |
-
-## <a name="log-searches-with-custom-log-records"></a>Az egyéni napló rekordokat tartalmazó naplókeresések
-Csakúgy, mint bármely más adatforrás rekordjainak a Log Analytics-munkaterületen tárolja a rekordokat az egyéni naplókat.  Így használhatja a Type tulajdonság a keresésben beolvasni egy konkrét naplófájlokból származó összegyűjtött rekordokkal meghatározása naplóban során megadandó névnek megfelelő típus rendelkeznek.
-
-Az alábbi táblázat példákat különböző egyéni naplók le a rekordokat, a naplókeresésekben.
-
-| Lekérdezés | Leírás |
-|:--- |:--- |
-| MyApp_CL |Egyéni összes eseménye elnevezett MyApp_CL naplózása. |
-| MyApp_CL &#124; ahol Severity_CF == "error" |Egyéni összes eseménye elnevezett MyApp_CL jelentkezzen értékkel *hiba* nevű egyéni mező *Severity_CF*. |
 
 
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Egyéni napló hozzáadásának mintaútmutató
@@ -181,5 +168,5 @@ Egyéni mezők definiálásához használjuk a *EventTime*, *kód*, *állapot*, 
 ![Egyéni mezőkkel naplólekérdezés](media/data-sources-custom-logs/query-02.png)
 
 ## <a name="next-steps"></a>További lépések
-* Használat [egyéni mezők](../../azure-monitor/platform/custom-fields.md) elemezni az egyéni jelentkezzen be az egyes mezők bejegyzést.
-* Ismerje meg [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.
+* Lásd: [elemzése a Log Analytics szöveges adatok](../log-query/parse-text.md) elemezni az egyes módszerek importált naplóbejegyzés több tulajdonságot be.
+* Ismerje meg [naplókereséseket](../log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.

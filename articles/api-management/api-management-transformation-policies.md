@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 6796ecd272c7a1ed1d29c89fbe06c87dc2d4601b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 87d2ebcf6a12f51775b15e906ea7813962e3630f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242806"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965376"
 ---
 # <a name="api-management-transformation-policies"></a>Az API Management átalakítási szabályzatok
 Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -709,7 +709,7 @@ OriginalUrl.
 |----------|-----------------|--------------|
 |xsl-transform|A gyökérelem.|Igen|
 |paraméter|Az átalakítás használt változókat határozhat meg segítségével|Nem|
-|XSL: stylesheet|Stíluslap gyökérelem. Minden elemek és attribútumok meghatározott hajtsa végre a standard [XSLT-specifikáció](http://www.w3.org/TR/xslt)|Igen|
+|XSL: stylesheet|Stíluslap gyökérelem. Minden elemek és attribútumok meghatározott hajtsa végre a standard [XSLT-specifikáció](https://www.w3.org/TR/xslt)|Igen|
 
 ### <a name="usage"></a>Használat
  Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).

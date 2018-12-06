@@ -9,12 +9,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/04/2018
-ms.openlocfilehash: 409ce776f574c33d8b1a2a3a22929b01e0f8c69e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 44c5cce103996f1774fb87b46760c23dc9ab575c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876189"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957708"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Kísérletek és az Azure Machine Learning betanítási metrikák követése
 
@@ -254,8 +254,7 @@ Modell betanítása és figyelési fordulnak elő a háttérben, hogy a várakoz
 
 Megtekintheti a metrikákat egy betanított modell használatával ```run.get_metrics()```. Most már beszerezheti az összes naplózott határozza meg a legjobb modellt a fenti példában a metrikákat.
 
-<a name='view-the-experiment-in-the-web-portal'/>
-
+<a name="view-the-experiment-in-the-web-portal"></a>
 ## <a name="view-the-experiment-in-the-azure-portal"></a>A kísérlet megtekintéséhez az Azure Portalon
 
 Amikor egy kísérlet befejezését követően, megnyithatja a futtatási rekord rögzített kísérletet. Teheti kétféleképpen az előzmények elérése:

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: kumud
-ms.openlocfilehash: d784bf3637c83c724c3616a1a42b66c4914b4ff7
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: f4c687ff0d02c78b88b24834f6c3acfc563ecbfc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987239"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963572"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>A TRAFFIC Manager – gyakori kérdések (GYIK)
 
@@ -134,7 +134,7 @@ Igen, csak az API 2017-03-01-es verzió és az újabb támogatja a földrajzi ú
 ## <a name="traffic-manager-subnet-traffic-routing-method"></a>A TRAFFIC Manager alhálózati forgalom-útválasztási módszer
 
 ### <a name="what-are-some-use-cases-where-subnet-routing-is-useful"></a>Mik az egyes használati esetek, ahol alhálózat útválasztási hasznos?
-Alhálózat útválasztási teszi lehetővé teszi elérhetővé a forrás IP-címét a DNS-kérelmek IP-cím által azonosított felhasználók adott részhalmazához tapasztalatok megkülönböztetéséhez. Példaként bemutató különböző tartalommal lenne, ha felhasználók csatlakoznak egy webhelyre kínál a vállalati központ. Egy másik lenne bizonyos internetszolgáltatók csak eléréséhez a végpontok, amelyek támogatják a csak IPv4-kapcsolat, ha ezeket az internetszolgáltatók az optimálisnál par teljesítmény IPv6 használatakor a felhasználók korlátozása.
+Alhálózat útválasztási teszi lehetővé teszi elérhetővé a forrás IP-címét a DNS-kérelmek IP-cím által azonosított felhasználók adott részhalmazához tapasztalatok megkülönböztetéséhez. Például különböző tartalmakat megjelenítő lenne, ha a felhasználók a vállalati központ egy webhelyhez csatlakozik. Egy másik lenne bizonyos internetszolgáltatók csak eléréséhez a végpontok, amelyek támogatják a csak IPv4-kapcsolat, ha ezeket az internetszolgáltatók az optimálisnál par teljesítmény IPv6 használatakor a felhasználók korlátozása.
 A másik ok az alhálózat útválasztási módszer együtt más egymásba ágyazott profilelérési profilok beállítása. Például ha a felhasználók használni földrajzi útválasztási mód a geokerítés-kívánt, de egy adott internetszolgáltató szeretne egy másik útválasztási módszert, profil withy alhálózat útválasztási módszer a szülő profilként és a is felülbírálása egy adott gyermek pro használatára, hogy az Internetszolgáltató fájl- és Mindenki másnak a standard földrajzi profil rendelkezik.
 
 ### <a name="how-does-traffic-manager-know-the-ip-address-of-the-end-user"></a>Hogyan, hogy a Traffic Manager a felhasználó IP-címét?

@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 11/14/2018
+ms.date: 12/04/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: 1edac9f7eac1f47974f4c94f3cae5bb3451f92fd
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: e67edf382a49839d890d2c1dec50c44bbb19705a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705378"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966823"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-october-2018"></a>Mi az új Azure SQL Data warehouse? 2018. október
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek 2018. október.
@@ -62,6 +62,7 @@ Az Azure SQL Data Warehouse (az SQL DW) natív integráció az Azure Data Lake S
 | **CETAS DW2000 és a Data warehouse-adattárházak kis erőforrásosztályok a parquet vagy egyéb hibák** | A javítás megfelelően azonosítja a Parquet kódelérési út a létrehozása külső táblát, a NULL értékű hivatkozás. |
 |**Azonosító oszlop értékét előfordulhat, hogy elvesznek a CTAS egy másik művelet** | Az identitás oszlop értéke lehet, hogy nem megőrzi a CTASed egy másik táblába. Jelentett blog: [ https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/ ](https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/). |
 | **Bizonyos esetekben, amikor a munkamenet meg lett szakítva egy lekérdezés futása közben belső hiba** | A javítás eseményindítók egy InvalidOperationException, ha a munkamenet meg lett szakítva, amikor a lekérdezés futtatása. |
+| **(Telepített 2018. November) Ügyfelek is tapasztalják optimálisnál teljesítmény, több kis méretű fájlt (Gen1) ADLS-ből a Polybase betöltése közben.** | A rendszer teljesítménye volt bottlenecked AAD biztonsági jogkivonat érvényesítése során. Teljesítménybeli problémák voltak hivatottak engedélyezése a biztonsági jogkivonatok gyorsítótárazását. |
 
 
 ## <a name="next-steps"></a>További lépések

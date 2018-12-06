@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: 8c30af5023cb83ee1f9ca0f41db5b7f977cc4bc7
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 1725be4209bfc9335654c574098c43102eca5a2d
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883907"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961178"
 ---
 # <a name="monitor-migration-activity"></a>Áttelepítési tevékenység figyelése
 Ebből a cikkből elsajátíthatja egy adatbázisszintű és a egy tábla szintjén egyaránt áttelepítés előrehaladásának figyeléséhez.
@@ -24,7 +24,7 @@ Ebből a cikkből elsajátíthatja egy adatbázisszintű és a egy tábla szintj
 ## <a name="monitor-at-the-database-level"></a>Az adatbázis szintjén figyelése
 Az adatbázis szintjén figyelése, tekintse meg az adatbázisszintű panelen:
 
-![Adatbázisszintű panel](media\how-to-monitor-migration-activity\dms-database-level-blade.png)
+![Adatbázisszintű panel](media/how-to-monitor-migration-activity/dms-database-level-blade.png)
 
 > [!NOTE]
 > Az adatbázis-hivatkozás kijelölésével bemutatják, a táblákat és az áttelepítési folyamat listáját.
@@ -104,7 +104,7 @@ A tábla szintjén figyelése, tekintse meg a táblaszintű panel. A panel fels�
 
 A panel alsó részén felsorolja a táblákat, és az áttelepítési folyamat gyors összegzését jeleníti meg.
 
-![Táblaszintű panel – rövid összefoglalás](media\how-to-monitor-migration-activity\dms-table-level-blade-summary.png)
+![Táblaszintű panel – rövid összefoglalás](media/how-to-monitor-migration-activity/dms-table-level-blade-summary.png)
 
 A következő táblázat ismerteti a mezőket a táblaszintű részletei között látható.
 
@@ -123,9 +123,9 @@ A következő táblázat ismerteti a mezőket a táblaszintű részletei közöt
 ## <a name="monitor-at-table-level--detailed-summary"></a>Tábla szintjén – részletes összegzése figyelése
 Nincsenek azt mutatják be, a teljes terhelés és az adatok növekményes szinkronizálása az áttelepítési folyamat két lap található.
     
-![A teljes terhelés lap](media\how-to-monitor-migration-activity\dms-full-load-tab.png)
+![A teljes terhelés lap](media/how-to-monitor-migration-activity/dms-full-load-tab.png)
 
-![Adatok növekményes szinkronizálás lap](media\how-to-monitor-migration-activity\dms-incremental-data-sync-tab.png)
+![Adatok növekményes szinkronizálás lap](media/how-to-monitor-migration-activity/dms-incremental-data-sync-tab.png)
 
 A következő táblázat ismerteti a táblázat szintű áttelepítési folyamatban lévő mezők.
 

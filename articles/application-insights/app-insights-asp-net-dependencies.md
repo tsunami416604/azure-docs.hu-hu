@@ -10,19 +10,17 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/08/2018
+ms.date: 12/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 767497a6ced0eb54559b9bdd10761b659e32a33f
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 034e611f6ea95675dc3169feefe1916a81c50943
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681024"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972371"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Application Insights beállítása: függőségi nyomon követése
 A *függőségi* egy külső összetevő, amely hívja meg az alkalmazást. Fontos általában nevű HTTP-n vagy egy adatbázist vagy egy fájlrendszert használó szolgáltatás. [Az Application Insights](app-insights-overview.md) méri a mennyi az alkalmazás megvárja, amíg függőségeket, és milyen gyakran egy függőségi hívás sikertelen lesz. Vizsgálja meg az adott hívásokat, és összekapcsolhatja őket a kérelmeket és kivételeket.
-
-![mintadiagramok](./media/app-insights-asp-net-dependencies/10-intro.png)
 
 A-a-beépített függőségi figyelő jelenleg az ilyen típusú függőségek hívásainak jelentések:
 
@@ -30,13 +28,16 @@ A-a-beépített függőségi figyelő jelenleg az ilyen típusú függőségek h
   * SQL Database-adatbázisok
   * ASP.NET webes és WCF-szolgáltatások, amelyek a HTTP-alapú kötések használata
   * A helyi vagy távoli HTTP-hívások
-  * Az Azure Cosmos DB, tábla, a blob storage és queue
+  * Az Azure Cosmos DB, tábla, a blob storage és queue 
 * Weblapok
   * AJAX-hívások
 
 Works figyelése használatával [bájt kód instrumentation](https://msdn.microsoft.com/library/z9z62c29.aspx) kiválasztott metódusok köré. Teljesítménybeli terhelést okoz a minimális.
 
 Saját SDK-hívásokat figyelése egyéb függőségeket, mind az ügyfél és kiszolgáló kódban is kiírhatja használatával a [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency).
+
+> [!NOTE]
+> Az Azure Cosmos DB automatikusan rögzíti csak akkor, ha [HTTP/HTTPS](../cosmos-db/performance-tips.md#networking) szolgál. Az Application Insights nem rögzíti a TCP-módot.
 
 ## <a name="set-up-dependency-monitoring"></a>Állítsa be a függőség figyelése
 Részleges függőségi gyűjtött automatikusan a [Application Insights SDK](app-insights-asp-net.md). Mindazok az adatok lekéréséhez a megfelelő ügynököt, a gazdagép-kiszolgáló telepítéséhez.

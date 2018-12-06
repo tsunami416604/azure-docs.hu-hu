@@ -10,12 +10,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 136279a94d64b846247c436eb7a5fb487e05b41a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d095be8c5d921001ab4a492d2385938020fa8ce0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946901"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967214"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Napló-alapú és előre összesített mérőszámok az Application insights szolgáltatásban
 
@@ -55,7 +55,7 @@ Több [módszerekkel egyéni metrikákat küldését az Application Insights SDK
 
 Minden metrikák használatával elküldött [trackMetric](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackmetric) vagy [GetMetric és TrackValue](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#getmetric) API-hívások egyben a tárolt naplókat és metrikákat is. Azonban amíg a napló-alapú verzióját az egyéni metrika mindig megőrzi minden, a metrika előzetes összesítésére verziója tárolt nincs dimenzió alapértelmezés szerint. Egyéni metrikák méretei gyűjteményében bekapcsolhatja a a [használat és becsült költségek](https://docs.microsoft.com/azure/application-insights/app-insights-pricing) ellenőrzésével "Egyéni metrika dimenziók számlálóihoz engedélyezése" lapon: 
 
-![Használat és becsült költségek](.\media\pre-aggregated-metrics-log-metrics\001-cost.png)
+![Használat és becsült költségek](./media/pre-aggregated-metrics-log-metrics/001-cost.png)
 
 ## <a name="why-is-collection-of-custom-metrics-dimensions-turned-off-by-default"></a>Miért érdemes az egyéni metrikákat dimenziók gyűjtemény ki van kapcsolva alapértelmezés szerint?
 
@@ -65,7 +65,7 @@ Egyéni metrikák dimenziók a gyűjtemény ki van kapcsolva alapértelmezés sz
 
 Az Azure Monitor Metrikaböngészőjének használatával diagramokat előzetes összesítésére és a napló-alapú metrikákat, és a szerző irányítópultok diagramokkal. Miután kiválasztotta a kívánt Application Insights-erőforrást, a névtér-választó használatával Váltás normál (előzetes verzió) és a napló mérőszámok, vagy válasszon egy egyéni metrika névteret:
 
-![Metrika névtér](.\media\pre-aggregated-metrics-log-metrics\002-metric-namespace.png)
+![Metrika névtér](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 
 ## <a name="next-steps"></a>További lépések
 

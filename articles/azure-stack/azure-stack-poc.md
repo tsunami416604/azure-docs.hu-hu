@@ -16,12 +16,12 @@ ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
 ms.custom: mvc
-ms.openlocfilehash: 041d679cfc428278737a5668887e73f13ac694b1
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 89552bc568ce38c6153683e9c3b0f3f26f569083
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50137053"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959537"
 ---
 # <a name="what-is-azure-stack"></a>Mi az Azure Stack?
 
@@ -34,7 +34,7 @@ Integrált rendszerek felkínált keresztül egy partneri kapcsolat áll fenn a 
 
 ## <a name="azure-stack-development-kit"></a>Azure Stack fejlesztői készlete
 
-Microsoft [Azure Stack Development Kit (ASDK)](.\asdk\asdk-what-is.md) egy egy csomópontos telepítés Azure Stacket, kiértékeléséhez és megismerése az Azure Stack használható.  ASDK egy fejlesztői környezet használatával az API-k és eszközök alkalmazásokat hozhat létre, amely összhangban is használhatja.
+Microsoft [Azure Stack Development Kit (ASDK)](./asdk/asdk-what-is.md) egy egy csomópontos telepítés Azure Stacket, kiértékeléséhez és megismerése az Azure Stack használható.  ASDK egy fejlesztői környezet használatával az API-k és eszközök alkalmazásokat hozhat létre, amely összhangban is használhatja.
 
 >[!Note]
 >A ASDK használata nem javasolt éles környezetben használható.

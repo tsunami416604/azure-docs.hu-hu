@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: cb9058d4f68b2dc202edeeaa6cafb2eefa82470b
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: c32612c411f275220f549eea79276fa5a7232fd0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284727"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52954612"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>Nem lehet távoli csatlakozás egy virtuális Gépet, mert az RDP-port nincs engedélyezve az NSG-t
 
@@ -51,7 +51,7 @@ Ahhoz, hogy az RDP-portra egy NSG-ben, kövesse az alábbi lépéseket:
     **Célok**: összes </br>
     **A művelet**: engedélyezése </br>
 
-Azt adja meg a forrás IP-címe, ez a beállítás lehetővé teszi, hogy csak a megadott IP-címet vagy IP-címtartományt a virtuális Géphez való csatlakozáshoz érkező forgalmat. Győződjön meg arról, hogy az RDP-munkamenet elindításához használja a számítógépet a tartományba esik.
+Ha a forrás IP-címet ad meg, ez a beállítás lehetővé teszi, hogy csak a megadott IP-címet vagy IP-címtartományt a virtuális Géphez való csatlakozáshoz érkező forgalmat. Győződjön meg arról, hogy az RDP-munkamenet elindításához használja a számítógépet a tartományba esik.
 
 NSG-kkel kapcsolatos további információkért lásd: [hálózati biztonsági csoport](../../virtual-network/security-overview.md).
 

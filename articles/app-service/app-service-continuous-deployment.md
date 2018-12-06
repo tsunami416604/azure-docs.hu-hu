@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: 5f52dfb4547cfac991387d333c3f5684544d691f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 9fd25e8730bf98c8fccf1e77436b8f2f480c7cca
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877510"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966551"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Folyamatos üzembe helyezés az Azure App Service-ben
 Ez a cikk bemutatja, hogyan konfigurálhatja a folyamatos üzembe helyezés [Azure App Service](app-service-web-overview.md). Az App Service lehetővé teszi, hogy a BitBucket, GitHub, a folyamatos üzembe helyezés és [Azure DevOps-szolgáltatásokkal](https://www.visualstudio.com/team-services/) kiindulásként a a legújabb frissítéseket a meglévő adattárból az egyik szolgáltatásba.
@@ -147,9 +147,9 @@ A bal oldali menüben kattintson a **üzembe helyezési központ** > **GitHub** 
 
 [Azure portal]: https://portal.azure.com
 [Azure DevOps portal]: https://azure.microsoft.com/services/devops/
-[Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
+[Installing Git]: https://git-scm.com/book/en/Getting-Started-Installing-Git
 [A PowerShell használata az Azure-ban]: /powershell/azureps-cmdlets-docs
-[A Git dokumentációja]: http://git-scm.com/documentation
+[A Git dokumentációja]: https://git-scm.com/documentation
 
 [Adattár létrehozása (GitHub)]: https://help.github.com/articles/create-a-repo
 [Adattár létrehozása (BitBucket)]: https://confluence.atlassian.com/get-started-with-bitbucket/create-a-repository-861178559.html

@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 819b63873fc74d5e38227a93c124f5f9c34ae097
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c951791031b6304a26aadd434fa7336a9c7c474f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867392"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963147"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Áttekintés: Aktív georeplikációs és automatikus feladatátvételi csoportok
 
@@ -25,7 +25,7 @@ Aktív georeplikáció az Azure SQL Database szolgáltatás, amely lehetővé te
 
 ![Georeplikáció](./media/sql-database-geo-replication-failover-portal/geo-replication.png )
 
-Aktív georeplikáció üzleti folytonossági megoldás, amely lehetővé teszi az alkalmazásnak, hogy az egyes adatbázisok egy regionális disastor vagy a nagyméretű méretezési szolgáltatáskimaradás esetén gyors vészhelyreállítás tervezték. Ha engedélyezve van a georeplikáció, az alkalmazás kezdeményezhet feladatátvételt egy másodlagos adatbázist egy másik Azure-régióban. Legfeljebb négy meghatározhatják az azonos vagy eltérő régiókban támogatottak, és a másodlagos példány hozható létre a csak olvasási hozzáféréssel lekérdezésekhez is használható. A feladatátvétel kell kezdeményeznie manuálisan az alkalmazás vagy a felhasználó. A feladatátvételt követően az új elsődleges rendelkezik egy másik kapcsolat végpontját.
+Aktív georeplikáció üzleti folytonossági megoldás, amely lehetővé teszi az alkalmazásnak, hogy az egyes adatbázisok egy regionális katasztrófa vagy a nagyméretű méretezési szolgáltatáskimaradás esetén gyors vészhelyreállítás tervezték. Ha engedélyezve van a georeplikáció, az alkalmazás kezdeményezhet feladatátvételt egy másodlagos adatbázist egy másik Azure-régióban. Legfeljebb négy meghatározhatják az azonos vagy eltérő régiókban támogatottak, és a másodlagos példány hozható létre a csak olvasási hozzáféréssel lekérdezésekhez is használható. A feladatátvétel kell kezdeményeznie manuálisan az alkalmazás vagy a felhasználó. A feladatátvételt követően az új elsődleges rendelkezik egy másik kapcsolat végpontját.
 
 > [!NOTE]
 > Aktív georeplikáció az összes adatbázis összes szolgáltatási szinten az összes régióban érhető el.
@@ -210,7 +210,7 @@ Ha az alkalmazás felügyelt példány az adatréteg használja, az üzletmenet 
 
 - **Két példány közötti replikációs forgalom engedélyezése**
 
-  Minden példány van különítve a saját virtuális hálózaton, mert ezek a virtuális hálózatok közötti kétirányú forgalmat engedélyezni kell. Lásd: [replikáció az SQL Database felügyelt példány](replication-with-sql-database-managed-instance.md).
+  Minden példány van különítve a saját virtuális hálózaton, mert ezek a virtuális hálózatok közötti kétirányú forgalmat engedélyezni kell. Lásd: [Azure VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
 - **Kezelheti az egész példány feladatátvétele egy feladatátvételi csoport konfigurálása**
 
@@ -229,8 +229,8 @@ Ha az alkalmazás felügyelt példány az adatréteg használja, az üzletmenet 
 
   > [!NOTE]
   > Az egyes szolgáltatásszintek után az Azure SQL Database használatát támogatja [csak olvasható replikák](sql-database-read-scale-out.md) terheléselosztása csak olvasható lekérdezési számítási feladatok egy csak olvasható replika kapacitását, valamint használatához betölteni a `ApplicationIntent=ReadOnly` paraméter a kapcsolat karakterlánc. Egy georeplikált másodlagos van beállítva, amikor ez a funkció használatával csatlakozni vagy egy csak olvasható replika az elsődleges helyen, illetve a georeplikált helyre.
-  > - Ha csatlakozni szeretne egy csak olvasható replika az elsődleges helyen, használhatók &lt;feladatátvételi csoportnév&gt;.&lt; zone_id&gt;. database.windows.net.
-  > - Ha csatlakozni szeretne egy csak olvasható replika az elsődleges helyen, használhatók &lt;feladatátvételi csoportnév&gt;.secondary.&lt; zone_id&gt;. database.windows.net.
+  > - Csak olvasható replika az elsődleges helyen csatlakozni, használja &lt;feladatátvételi csoportnév&gt;.&lt; zone_id&gt;. database.windows.net.
+  > - Csak olvasható replika az elsődleges helyen csatlakozni, használja &lt;feladatátvételi csoportnév&gt;.secondary.&lt; zone_id&gt;. database.windows.net.
 - **Elő kell készíteni a teljesítményoptimalizált teljesítménycsökkenése**
 
   SQL feladatátvételi döntés független az alkalmazás vagy a használt egyéb szolgáltatások többi részétől. Az alkalmazás "összekeverhetők" egy adott régióban, és néhány, a másik néhány összetevőt. A probléma elkerülése érdekében győződjön meg, hogy az a Vészhelyreállítás régióban található redundáns alkalmazástelepítés, és kövesse a hálózati biztonsági ebben a cikkben <link>.

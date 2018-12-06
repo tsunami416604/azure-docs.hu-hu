@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: ae8739a65efbe7662a8f72e961d772fecaf4b527
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: a4c96ea75bae69fa5a1af13e4e8b908759817e95
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303694"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959325"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Helyi üzembe helyezés Git használatával az Azure App Service szolgáltatásban
 
@@ -30,7 +30,7 @@ Ez az útmutató bemutatja, hogyan helyezhet üzembe a kódot a [Azure App Servi
 
 Ez az Útmutató lépéseit kövesse:
 
-* [Telepítse a Git szoftvert](http://www.git-scm.com/downloads).
+* [Telepítse a Git szoftvert](https://www.git-scm.com/downloads).
 * Kód számára telepíteni kívánja a helyi Git-tárház karbantartása.
 
 Hogy követni tudja a mintaadattár használatához a helyi terminálablakban futtassa a következő parancsot:

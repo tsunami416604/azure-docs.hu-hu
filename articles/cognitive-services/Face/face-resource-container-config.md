@@ -10,12 +10,12 @@ ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 9410d895c791cd860c53542091608263f601b225
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 1009660df94eb145bbc37c27662411032bd87110
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682486"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970943"
 ---
 # <a name="configure-containers"></a>Tárolók konfigurálása
 
@@ -91,7 +91,7 @@ A `Authentication` konfigurációs beállítások megadása a tároló az Azure 
 
 ## <a name="billing-configuration-setting"></a>Számlázási konfigurációs beállítás
 
-A `Billing` konfigurációs beállítás határozza meg a végpont URI-t az Azure-ban a Face erőforrás számlázási adatokat tároló nyomon követésére szolgál. Meg kell adnia egy értéket a konfigurációs beállítás, és az értéknek kell lennie az Azure-ban Face erőforrás URI érvényes végpontot.
+A `Billing` konfigurációs beállítás határozza meg a számlázási adatokat tároló mérni szeretné használt URI-t az Azure-ban a Face erőforrás végpont. Meg kell adnia egy értéket a konfigurációs beállítás, és az értéknek kell lennie az Azure-ban Face erőforrás URI érvényes végpontot.
 
 > [!IMPORTANT]
 > A [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), és [ `Eula` ](#eula-configuration-setting) konfigurációs beállítások együtt használja, és meg kell adnia az érvényes értékek mindhárom őket. Ellenkező esetben a tároló nem indul el. Egy tároló példányosítása a konfigurációs beállítások használatával kapcsolatos további információkért lásd: [számlázási](face-how-to-install-containers.md#billing).
@@ -143,6 +143,8 @@ A `Eula` konfigurációs beállítás azt jelzi, hogy Ön már elfogadta a licen
 
 > [!IMPORTANT]
 > A [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), és [ `Eula` ](#eula-configuration-setting) konfigurációs beállítások együtt használja, és meg kell adnia az érvényes értékek mindhárom őket. Ellenkező esetben a tároló nem indul el. Egy tároló példányosítása a konfigurációs beállítások használatával kapcsolatos további információkért lásd: [számlázási](face-how-to-install-containers.md#billing).
+
+Cognitive Services-tárolók licencelése az Azure használatát szabályozó a szerződés keretében. Ha nem rendelkezik egy meglévő, az Azure használatát szabályozó megállapodást, Ön elfogadja, hogy az Azure használatát szabályozó megállapodást-e a Microsoft Online előfizetői szerződés (amely magában foglalja az Online szolgáltatások használati feltételeit). Az előnézetben is elfogadja a kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó. A tároló használatával elfogadja ezeket a feltételeket.
 
 ## <a name="fluentd-configuration-settings"></a>Fluentd konfigurációs beállításai
 

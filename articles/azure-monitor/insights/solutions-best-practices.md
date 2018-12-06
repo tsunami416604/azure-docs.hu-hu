@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: e5011dbaad5e5935f3aa792bd3a3ed2b271f23bc
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 726159f7450c29385a331b29191c38085a820876
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632433"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957623"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>Ajánlott eljárások az eszközkezelési megoldások létrehozása az Azure-ban (előzetes verzió)
 > [!NOTE]
@@ -28,7 +28,7 @@ ms.locfileid: "52632433"
 Ez a cikk ismerteti az ajánlott eljárások a [hozzon létre egy felügyeleti megoldás fájlt](solutions-solution-file.md) az Azure-ban.  Ezt az információt a további ajánlott eljárások meghatározott frissül.
 
 ## <a name="data-sources"></a>Adatforrások
-- Adatforrások lehet [Resource Manager-sablonnal konfigurált](../../log-analytics/log-analytics-template-workspace-configuration.md), de azok nem szerepelnie kell a megoldásfájlt.  A hiba oka, hogy adatforrások konfigurálása jelenleg nem idempotens, ami azt jelenti, hogy a megoldás felülírhatja a felhasználó munkaterületét a meglévő konfigurációt.<br><br>A megoldás például szükség lehet az alkalmazások eseménynaplójában a figyelmeztetési és eseményeket.  Ha megadja ezt adatforrásként a megoldásában, azzal kockáztatja információs események eltávolítása, ha a felhasználó a saját munkaterületen konfigurált.  Ha tartalmazza az összes eseményt, majd, előfordulhat, hogy kell események gyűjtése a túlzott információkat a felhasználó munkaterületén.
+- Adatforrások lehet [Resource Manager-sablonnal konfigurált](../../azure-monitor/platform/template-workspace-configuration.md), de azok nem szerepelnie kell a megoldásfájlt.  A hiba oka, hogy adatforrások konfigurálása jelenleg nem idempotens, ami azt jelenti, hogy a megoldás felülírhatja a felhasználó munkaterületét a meglévő konfigurációt.<br><br>A megoldás például szükség lehet az alkalmazások eseménynaplójában a figyelmeztetési és eseményeket.  Ha megadja ezt adatforrásként a megoldásában, azzal kockáztatja információs események eltávolítása, ha a felhasználó a saját munkaterületen konfigurált.  Ha tartalmazza az összes eseményt, majd, előfordulhat, hogy kell események gyűjtése a túlzott információkat a felhasználó munkaterületén.
 
 - Ha a megoldáshoz szükséges a standard szintű forrásokból származó adatokat, majd meg kell határozni a előfeltételként.  Állapot a dokumentációban, hogy az ügyfél önállóan kell állítania az adatforrás.  
 - Adjon hozzá egy [Data Flow ellenőrzési](../../azure-monitor/platform/view-designer-tiles.md) meg azokat az adatforrásokat, úgy kell konfigurálni a szükséges adatokat gyűjteni a felhasználót a megoldás nézetekhez üzenet.  Ez az üzenet jelenik meg a nézet a csempe a szükséges adatok nem található.

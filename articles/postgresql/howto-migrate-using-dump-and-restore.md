@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 7c67cac7a5579386921b2b949e9312cb4e5da172
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 2aa59bcf0d56358601b81730abe330a56ca35d02
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984672"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966908"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Memóriakép és visszaállítás használatával a PostgreSQL-adatbázis migrálása
 Használhatja [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) be memóriakép-fájl egy PostgreSQL-adatbázis kibontásához és [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) pg_dump által létrehozott archív fájl visszaállítása a PostgreSQL-adatbázishoz.
@@ -71,7 +71,7 @@ A meglévő PostgreSQL-adatbázis migrálása az Azure Database for PostgreSQL s
     ```
 
 ### <a name="for-the-restore"></a>A visszaállításhoz
-- Javasoljuk, hogy a biztonságimásolat-fájl áthelyezése egy Azure virtuális Gépen az Azure Database for PostgreSQL-kiszolgáló végzi az áttelepítést, és hajtsa végre a pg_restore a hálózati késés csökkentése érdekében a virtuális Gépeket ugyanabban a régióban. Azt javasoljuk, hogy a virtuális gép létrejött-e a [gyorsított hálózatkezelést](..\virtual-network\create-vm-accelerated-networking-powershell.md) engedélyezve van.
+- Javasoljuk, hogy a biztonságimásolat-fájl áthelyezése egy Azure virtuális Gépen az Azure Database for PostgreSQL-kiszolgáló végzi az áttelepítést, és hajtsa végre a pg_restore a hálózati késés csökkentése érdekében a virtuális Gépeket ugyanabban a régióban. Azt javasoljuk, hogy a virtuális gép létrejött-e a [gyorsított hálózatkezelést](../virtual-network/create-vm-accelerated-networking-powershell.md) engedélyezve van.
 - Alapértelmezés szerint már végezhető, de a memóriakép-fájl, és ellenőrizze, hogy a create index utasításokat az adatok a Beszúrás után nyissa meg. Ha nem, akkor a helyzet, a create index utasításokat áthelyezése után az adatok.
 - Állítsa vissza a kapcsolók a -Fc és -j *#* való párhuzamosíthatja a visszaállítást. *#* van a célkiszolgálón magok számát. Az is megpróbálhatja *#* kétszer a célkiszolgáló magok számát értékre van állítva,-azonosítókra gyakorolt hatást. Példa:
 

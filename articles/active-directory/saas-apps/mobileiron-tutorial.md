@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/9/2017
 ms.author: jeedes
-ms.openlocfilehash: 1b6527207793558c132be4cf004b7d6fdde14a90
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 8bdf49f4cea7c6f0ff30e37bcf1cf2fed3abc2bb
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584111"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963810"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Oktatóanyag: Azure Active Directory-integráció az MobileIron
 
@@ -50,24 +50,27 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 - Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
+
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. MobileIron hozzáadása a katalógusból
 1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-mobileiron-from-the-gallery"></a>MobileIron hozzáadása a katalógusból
+
 Az Azure AD integrálása a MobileIron konfigurálásához hozzá kell MobileIron a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
 **MobileIron hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb][1]
 
 1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![A vállalati alkalmazások panelen][2]
-    
+
 1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
@@ -103,7 +106,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
 1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
- 
+
     ![Egyszeri bejelentkezési párbeszédpanel](./media/mobileiron-tutorial/tutorial_mobileiron_samlbase.png)
 
 1. Az a **MobileIron tartomány és URL-címek** területén kövesse az alábbi lépéseket, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
@@ -119,12 +122,13 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     ![MobileIron tartomány és URL-címek egyszeri bejelentkezés](./media/mobileiron-tutorial/tutorial_mobileiron_url1.png)
 
     Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<host>.mobileiron.com/user/login.html`
-    
-    > [!NOTE]  Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. A felügyeleti portálról, az oktatóanyag későbbi részében ismertetett MobileIron kap a kulcs és a gazdagép értékeit.
+
+    > [!NOTE]
+    > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. A felügyeleti portálról, az oktatóanyag későbbi részében ismertetett MobileIron kap a kulcs és a gazdagép értékeit.
 
 1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozás](./media/mobileiron-tutorial/tutorial_mobileiron_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](./media/mobileiron-tutorial/tutorial_mobileiron_certificate.png)
 
 1. Kattintson a **mentése** gombra.
 
@@ -134,7 +138,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 1. Lépjen a **rendszergazdai** > **identitás**.
 
-   * Válassza ki **AAD** beállítást a **információ a felhőalapú Identitásszolgáltató beállítása** mező.
+   - Válassza ki **AAD** beállítást a **információ a felhőalapú Identitásszolgáltató beállítása** mező.
 
     ![Egyszeri bejelentkezés rendszergazdai gomb konfigurálása](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
 
@@ -143,7 +147,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     ![Egyszeri bejelentkezés rendszergazdai gomb konfigurálása](./media/mobileiron-tutorial/key.png)
 
 1. Az a **exportálási származó metaadatfájl aad-ben és az importálás MobileIron Felhőbeli mezőre** kattintson **fájl kiválasztása** feltöltése az Azure Portalról letöltött metaadatait. Kattintson a **kész** egyszer feltöltve.
- 
+
     ![Rendszergazdai metaadatok gomb egyszeri bejelentkezés konfigurálása](./media/mobileiron-tutorial/tutorial_mobileiron_adminmetadata.png)
 
 > [!TIP]
@@ -203,20 +207,20 @@ MobileIron, esetén kiépítése a manuális feladat.
     1. A **Utónév** szöveg Britta például a felhasználó utónevét adja meg.
 
     1. A **Vezetéknév** szöveget adja meg a Simon például a felhasználó vezetékneve.
-    
-    1. Kattintson a **Done** (Kész) gombra.  
+
+    1. Kattintson a **Done** (Kész) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés MobileIron Azure egyszeri bejelentkezés használatára.
 
-![A felhasználói szerepkör hozzárendelése][200] 
+![A felhasználói szerepkör hozzárendelése][200]
 
 **Britta Simon rendel MobileIron, hajtsa végre az alábbi lépéseket:**
 
 1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
-    ![Felhasználó hozzárendelése][201] 
+    ![Felhasználó hozzárendelése][201]
 
 1. Az alkalmazások listájában jelölje ki a **MobileIron**.
 
@@ -235,19 +239,18 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-    
+
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
 Ha a hozzáférési panelen a MobileIron csempére kattint, meg kell lekérése automatikusan bejelentkezett az MobileIron alkalmazáshoz.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 
@@ -262,4 +265,3 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 [201]: ./media/mobileiron-tutorial/tutorial_general_201.png
 [202]: ./media/mobileiron-tutorial/tutorial_general_202.png
 [203]: ./media/mobileiron-tutorial/tutorial_general_203.png
-

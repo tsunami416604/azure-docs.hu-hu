@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
-ms.openlocfilehash: 5ab54dcd94ebf0a1bad71613a8d749cef0de64f4
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: ebb95093d96a3c1fd36565831215355b18ac5d1a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678678"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968425"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Az Azure App Service-ben az operációs rendszer funkcionalitása
 Ez a cikk ismerteti a gyakori alapkonfiguráció operációs rendszer funkcionalitása futó összes Windows-alkalmazások számára elérhető [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Ez a funkció tartalmazza a fájl, hálózati, és az adatbázis eléréséhez, és a diagnosztikai naplók és események. 
@@ -85,7 +85,7 @@ A helyi meghajtókon csatolva a virtuális géphez, amely egy alkalmazást futta
 
 Hogyan használja az App Service-ben a helyi ideiglenes tárhely két példa az ideiglenes ASP.NET-fájlok a könyvtárban, és az IIS-címtárnak tömörített fájlok. Az ASP.NET-fordítási rendszer a "Ideiglenes ASP.NET-fájlok" könyvtárat használja egy ideiglenes fordítási gyorsítótár helyét. Az IIS tömörített válasz kimenetének tárolására a "IIS ideiglenes tömörített fájlok" könyvtárat használja. Mindkét említett típusú fájl használati (ahogy mások) rendszer újramegfeleltetése alatt App Service-ben alkalmazásonkénti ideiglenes helyi tárba. Az újbóli hozzárendelés biztosítja, hogy funkciói továbbra is a várt módon.
 
-Minden alkalmazás az App Service-ben fut, egy véletlenszerű egyedi alacsony jogosultsági szintű munkavégző folyamat identitása, a "alkalmazáskészlet-identitás", továbbá az itt leírtak szerint nevű: [ http://www.iis.net/learn/manage/configuring-security/application-pool-identities ](http://www.iis.net/learn/manage/configuring-security/application-pool-identities). Alkalmazás kódja ezt az identitást használja az alapszintű csak olvasási hozzáféréssel az operációs rendszer meghajtójára (a D:\ meghajtóra). Ez azt jelenti, hogy alkalmazáskód közös könyvtárstruktúrák listában, és az operációs rendszer meghajtóján közös fájlok olvasását. Bár ez jelenhet meg kell a hozzáférést, az ugyanazon könyvtárak és fájlok némileg széles körben elérhetők, amikor üzembe helyez egy feldolgozói szerepkört az Azure-ban üzemeltetett szolgáltatás, és olvassa el a meghajtó tartalmát. 
+Minden alkalmazás az App Service-ben fut, egy véletlenszerű egyedi alacsony jogosultsági szintű munkavégző folyamat identitása, a "alkalmazáskészlet-identitás", továbbá az itt leírtak szerint nevű: [ https://www.iis.net/learn/manage/configuring-security/application-pool-identities ](https://www.iis.net/learn/manage/configuring-security/application-pool-identities). Alkalmazás kódja ezt az identitást használja az alapszintű csak olvasási hozzáféréssel az operációs rendszer meghajtójára (a D:\ meghajtóra). Ez azt jelenti, hogy alkalmazáskód közös könyvtárstruktúrák listában, és az operációs rendszer meghajtóján közös fájlok olvasását. Bár ez jelenhet meg kell a hozzáférést, az ugyanazon könyvtárak és fájlok némileg széles körben elérhetők, amikor üzembe helyez egy feldolgozói szerepkört az Azure-ban üzemeltetett szolgáltatás, és olvassa el a meghajtó tartalmát. 
 
 <a name="multipleinstances"></a>
 

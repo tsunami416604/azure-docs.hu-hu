@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: 537c94976dbb4f7753b7fafb3b6c94e97cc2cc17
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 6cc4a5d5bfc2056f2517bcbcecb19b9f6b2f437a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126326"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966262"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Az Azure Data Lake Storage Gen1-erőforrások kezelése a Storage Explorer használatával
 
@@ -136,7 +136,7 @@ A következő cikkek bemutatják, hogyan kezelheti az erőforrásokat egy Data L
 
    ![Feltöltés folyamatban párbeszédpanel](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-folder-drag.png) 
 
-> [!NOTE] 
+> [!NOTE]
 > A feltöltés elindításához közvetlenül át is húzhatja a mappákat és fájlokat a helyi számítógépen. 
        
 ### <a name="download-folders-or-files-to-your-local-computer"></a>Mappák vagy fájlok letöltése a helyi számítógépre
@@ -164,7 +164,7 @@ A rendszer letölti a fájlt, majd megnyitja a fájltípushoz társított alkalm
 
 ![Mappa másolására szolgáló kiválasztások](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-copy-paste.png)
 
-> [!NOTE] 
+> [!NOTE]
 > A tárolási típusok közötti másolási és beillesztési művelet nem támogatott. Data Lake Storage Gen1 mappák és fájlok másolása, és illessze be őket egy másik Data Lake Storage Gen1 fiókot. De *nem* Data Lake Storage Gen1 mappák és fájlok másolása, majd illessze be őket az Azure Blob storage- vagy fordítva.
 > 
 > A másolási és beillesztési művelet során letölti a mappákat vagy fájlokat a helyi számítógépre, majd feltölti őket a célhelyre. Az eszköz *nem* a háttérben hajtja végre a műveletet. A nagyméretű fájlok másolása és beillesztése lassú folyamat. A nagy teljesítményű fájlmásolási és -áthelyezési funkció optimalizálása folyamatban van.

@@ -10,18 +10,18 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 1e6bd1b7ddb38d0fad33ab9d282f8edc4ff8c765
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 4b24ba4b4d83ac3f0c8291308debb6317efa4a55
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129131"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967997"
 ---
 # <a name="translator-text-api-30-dictionary-examples"></a>Translator Text API 3.0: Szótár példák
 
-Példákat talál, amelyek megmutatják, hogyan feltételeket a szótár környezetben használják. Ezzel a művelettel területtel együtt [szótár keresési](.\v3-0-dictionary-lookup.md).
+Példákat talál, amelyek megmutatják, hogyan feltételeket a szótár környezetben használják. Ezzel a művelettel területtel együtt [szótár keresési](./v3-0-dictionary-lookup.md).
 
-## <a name="request-url"></a>Lekérdezés URL-címe
+## <a name="request-url"></a>Kérés URL-címe
 
 Küldjön egy `POST` kérelmet:
 
@@ -42,11 +42,11 @@ A kérelem lekérdezési karakterláncot az átadott paraméterek a következők
   </tr>
   <tr>
     <td>forrás:</td>
-    <td>*Kötelező paraméter*.<br/>Meghatározza a bemeneti szöveg nyelvét. A Forrásnyelv egyikének kell lennie a [támogatott nyelvek](.\v3-0-languages.md) szerepel a `dictionary` hatókör.</td>
+    <td>*Kötelező paraméter*.<br/>Meghatározza a bemeneti szöveg nyelvét. A Forrásnyelv egyikének kell lennie a [támogatott nyelvek](./v3-0-languages.md) szerepel a `dictionary` hatókör.</td>
   </tr>
   <tr>
     <td>erre:</td>
-    <td>*Kötelező paraméter*.<br/>Meghatározza a kimeneti szöveg nyelvét. A Célnyelv egyikének kell lennie a [támogatott nyelvek](.\v3-0-languages.md) szerepel a `dictionary` hatókör.</td>
+    <td>*Kötelező paraméter*.<br/>Meghatározza a kimeneti szöveg nyelvét. A Célnyelv egyikének kell lennie a [támogatott nyelvek](./v3-0-languages.md) szerepel a `dictionary` hatókör.</td>
   </tr>
 </table>
 
@@ -73,13 +73,13 @@ Kérelemfejlécek a következők:
   </tr>
 </table> 
 
-## <a name="request-body"></a>Kérelem törzse
+## <a name="request-body"></a>A kérés törzse
 
 A kérelem törzsében egy JSON-tömböt. Egyes tömbelemeken egy JSON-objektum a következő tulajdonságokkal:
 
-  * `Text`: Egy karakterlánc, a keresési kifejezést adja meg. Ez az érték legyen egy `normalizedText` vissza a korábbi fordítások a mezőt [szótár keresési](.\v3-0-dictionary-lookup.md) kérelmet. Az érték lehet is a `normalizedSource` mező.
+  * `Text`: Egy karakterlánc, a keresési kifejezést adja meg. Ez az érték legyen egy `normalizedText` vissza a korábbi fordítások a mezőt [szótár keresési](./v3-0-dictionary-lookup.md) kérelmet. Az érték lehet is a `normalizedSource` mező.
 
-  * `Translation`: A lefordított szöveg által korábban visszaadott egy olyan karakterláncot a [szótár keresési](.\v3-0-dictionary-lookup.md) műveletet. Ez legyen az értékét a `normalizedTarget` mezőbe a `translations` listája a [szótár keresési](.\v3-0-dictionary-lookup.md) választ. A szolgáltatás visszaadja a megadott forrás-cél word-pár példákat.
+  * `Translation`: A lefordított szöveg által korábban visszaadott egy olyan karakterláncot a [szótár keresési](./v3-0-dictionary-lookup.md) műveletet. Ez legyen az értékét a `normalizedTarget` mezőbe a `translations` listája a [szótár keresési](./v3-0-dictionary-lookup.md) választ. A szolgáltatás visszaadja a megadott forrás-cél word-pár példákat.
 
 A következő egy példa:
 

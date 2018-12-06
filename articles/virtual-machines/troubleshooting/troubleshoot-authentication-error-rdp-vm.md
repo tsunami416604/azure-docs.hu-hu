@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 5f9d933f0f294855719c8d187e759708ef8c9931
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 47d3b827099d3a4a7520ac66765d2928795b6e49
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634112"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967980"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Hitelesítési hibák elhárítása Azure virtuális géphez csatlakozni RDP használatakor
 
@@ -75,7 +75,7 @@ A virtuális gép be lett állítva csak Federal Information Processing Standard
 
 ### <a name="create-a-backup-snapshot"></a>Biztonsági mentési pillanatkép létrehozása
 
-Hozzon létre egy biztonsági mentési pillanatképet, kövesse a [lemez pillanatképének elkészítése](..\windows\snapshot-copy-managed-disk.md).
+Hozzon létre egy biztonsági mentési pillanatképet, kövesse a [lemez pillanatképének elkészítése](../windows/snapshot-copy-managed-disk.md).
 
 ### <a name="connect-to-the-vm-remotely"></a>Távolról csatlakozhat a virtuális gép
 

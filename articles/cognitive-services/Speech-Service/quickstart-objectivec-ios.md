@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: chlandsi
-ms.openlocfilehash: 7d1e05e13e55b8b7bc07eda71d63f96f12c81ff9
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: HT
+ms.openlocfilehash: 3f9b523c1efc22a94ef2a18367689c356c5be8f1
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219188"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971623"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-service-sdk"></a>Rövid útmutató: Beszédfelismerés Objective-C nyelven írt iOS-alkalmazásokban a Speech Service SDK használatával
 
@@ -25,8 +25,11 @@ Ebből a cikkből megtudhatja, hogyan írhat Objective-C nyelven olyan iOS-alkal
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Előfizetői azonosító a Speech Service-hez. Lásd [A Speech Service ingyenes kipróbálása](get-started.md) című cikket.
-* iOS-es fejlesztési környezetként az Xcode 9.4.1-es verziójával rendelkező Mac számítógép. Ez az oktatóanyag az iOS 11.4-es verziójára vonatkozik. Ha Mac számítógépén még nincs Xcode, telepítheti az [App Store](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12)-ból.
+Mielőtt elkezdené, a következő előfeltételek listáját:
+
+* A [előfizetési kulcs](get-started.md) a beszédfelismerési szolgáltatás
+* Olyan macOS-gépeken, [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) vagy újabb
+* A cél 11.4 vagy újabb IOS-verzió beállítása
 
 ## <a name="get-the-speech-sdk-for-ios"></a>Az iOS-re szánt Speech SDK letöltése
 
@@ -37,7 +40,7 @@ A Cognitive Services Speech SDK jelenlegi verziója az `1.1.0`.
 A Macre és iOS-re szánt Cognitive Services Speech SDK-t jelenleg Cocoa-keretrendszerként áll rendelkezésre.
 Innen tölthető le: https://aka.ms/csspeech/iosbinary. Töltse le a fájlt a kezdőkönyvtárába.
 
-## <a name="create-an-xcode-project"></a>Xcode-projekt létrehozása 
+## <a name="create-an-xcode-project"></a>Xcode-projekt létrehozása
 
 Indítsa el az Xcode-ot, majd a **File** > **New** > **Project** lehetőséget választva kezdjen új projektet.
 A sablonválasztó párbeszédpanelen válassza az „iOS Single View App” sablont.
@@ -103,4 +106,3 @@ A jelen útmutatóban használt mintát a `quickstart/objectivec-ios` mappában 
 
 > [!div class="nextstepaction"]
 > [Minták letöltése](speech-sdk.md#get-the-samples)
-

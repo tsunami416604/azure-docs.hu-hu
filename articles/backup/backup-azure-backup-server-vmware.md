@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/24/2017
 ms.author: adigan
-ms.openlocfilehash: 625313b612ffa99dd3b1185072074c06f57e22de
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e39e5d12610164ca4a1372830cf25ea203fd382c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878057"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968834"
 ---
 # <a name="back-up-a-vmware-server-to-azure"></a>VMware-kiszolgáló biztonsági mentése az Azure-bA
 
@@ -55,7 +55,7 @@ A probléma megoldásához, és hozzon létre egy biztonságos kapcsolatot, töl
 4. Kattintson a jobb gombbal **download.zip**, majd válassza ki **összes kibontása** a tartalma kinyeréséhez.
 
     A .zip fájl kibontása a nevű tartalmát **tanúsítványok**. Két típusú fájlok jelennek meg a tanúsítványok mappában. A legfelső szintű tanúsítvány fájl kiterjesztése, amely egy számokból álló sorozat például.0 és ikonra.1 kezdődik.
-    
+
     A CRL-fájl kiterjesztése, amely egy feladatütemezési .r0 vagy .r1 hasonlóan kezdődik. A tanúsítvány CRL-fájlnak kapcsolódik.
 
     ![Töltse le a fájlt helyileg kibontása ](./media/backup-azure-backup-server-vmware/extracted-files-in-certs-folder.png)
@@ -249,7 +249,7 @@ Telepítse a VMware-kiszolgáló hozzáadása az Azure Backup Serverhez, előtt 
     ![Az Azure Backup Server hitelesítő adatok hozzáadása párbeszédpanel](./media/backup-azure-backup-server-vmware/mabs-add-credential-dialog2.png)
 
     Kattintson a **Hozzáadás** új hitelesítő adatok hozzáadása az Azure Backup Server. Az új hitelesítő adat megjelenik a listában a **hitelesítő adatok kezelése** párbeszédpanel bezárásához.
-    
+
     ![Az Azure Backup Server hitelesítő adatok kezelése párbeszédpanel](./media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
 
 5. Gombra kattintva zárja be a **hitelesítő adatok kezelése** párbeszédpanelen kattintson a **X** jobb felső sarokban.
@@ -271,7 +271,7 @@ Telepítse a VMware-kiszolgáló hozzáadása az Azure Backup Serverhez, előtt 
 
 2. Az a **válassza ki az üzemi kiszolgáló típusának** lapra, jelölje be **VMware-kiszolgálók**, és kattintson a **tovább**.
 
-3. A **kiszolgáló neve vagy IP-címének**, adja meg a teljesen minősített tartománynevét (FQDN) vagy a VMware-kiszolgáló IP-címét. Minden ESXi-kiszolgáló eltérő vCenter által felügyelt, ha a vCenter-nevet használhat.
+3. A **kiszolgáló neve vagy IP-címének**, adja meg a teljesen minősített tartománynevét (FQDN) vagy a VMware-kiszolgáló (a gazdagép ESXi-kiszolgáló) IP-címét. Minden ESXi-kiszolgáló eltérő vCenter által felügyelt, ha a vCenter-nevet használhat.
 
     ![Adja meg a VMware server teljes Tartományneve vagy IP-cím](./media/backup-azure-backup-server-vmware/add-vmware-server-provide-server-name.png)
 

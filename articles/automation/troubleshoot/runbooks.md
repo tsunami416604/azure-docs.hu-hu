@@ -4,16 +4,16 @@ description: Ismerje meg, az Azure Automation-runbookokkal kapcsolatos problém�
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/17/2018
+ms.date: 12/04/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 532d3d73c939a44678091734f2bbff22267ab6b7
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 9a60d8c17ba091da7c5eaf0e28160573d5faafa8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094864"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963130"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbookokkal kapcsolatos hibák elhárítása
 
@@ -337,6 +337,27 @@ A PowerShell-parancsmagok, amelyek lehetővé teszik a gyermek runbook forgatók
 [Start-AzureRMAutomationRunbook](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook) – Ez a parancsmag lehetővé teszi elindít egy runbookot, és át a paramétereket a forgatókönyvhöz
 
 [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/get-azurermautomationjob) – Ez a parancsmag lehetővé teszi, hogy a feladat állapotának ellenőrzése minden gyermek, ha a művelet, amely a gyermekrunbook befejezése után kell elvégezni.
+
+### <a name="429"></a>Forgatókönyv: 429-es: jelenleg túl nagy a kérések aránya. Próbálja újra
+
+#### <a name="issue"></a>Probléma
+
+Az az alábbi hibaüzenet futtatásakor a `Get-AzureRmAutomationJobOutput` parancsmagot:
+
+```
+429: The request rate is currently too large. Please try again
+```
+
+#### <a name="cause"></a>Ok
+
+Ez a hiba akkor fordulhat elő, sok runbook-feladat kimeneti lekérésekor [részletes Streamek](../automation-runbook-output-and-messages.md#verbose-stream).
+
+#### <a name="resolution"></a>Megoldás:
+
+Ez a hiba megoldásához két módja van:
+
+* A runbook szerkesztése és a feladatstreamek, amely azt bocsát ki számának csökkentése.
+* Kevesebb Streamek lekérni a parancsmag futtatásakor. Ehhez is megadhat a `-Stream Output` paramétert a `Get-AzureRmAutomationJobOutput` csak a kimeneti steamjeihez beolvasásához. 
 
 ## <a name="common-errors-when-importing-modules"></a>A modulok importálása során előforduló gyakori hibák
 

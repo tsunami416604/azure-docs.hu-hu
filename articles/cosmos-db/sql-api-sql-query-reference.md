@@ -8,14 +8,14 @@ ms.component: cosmosdb-sql
 ms.topic: reference
 ms.date: 08/19/2018
 ms.author: laviswa
-ms.openlocfilehash: 37b76094678d812a450817110055a74f8daae87b
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 26dc21a7d6d24df70a0d7884c67180624074636a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880250"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972473"
 ---
-# <a name="azure-cosmos-db-sql-syntax-reference"></a>Az Azure Cosmos DB SQL-szintaxis referenciája
+# <a name="azure-cosmos-db-sql-language-reference"></a>Az Azure Cosmos DB SQL nyelvi referencia 
 
 Az Azure Cosmos DB támogatja a dokumentumok egy jól ismert SQL (Structured Query Language) lekérdezés nyelvtani például hierarchikus JSON-dokumentumokon végzett explicit séma vagy másodlagos indexek létrehozása nélkül. Ez a cikk az SQL-lekérdezési nyelvi szintaxis, amely kompatibilis az SQL API-fiókok dokumentációját. Példa SQL-lekérdezések leírását lásd: [SQL-lekérdezéseket a Cosmos DB](how-to-sql-query.md).  
   

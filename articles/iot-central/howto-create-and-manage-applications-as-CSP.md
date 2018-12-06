@@ -8,12 +8,12 @@ ms.author: tanmayb
 ms.date: 10/29/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: dbc72e040f3d68ca77c036c41612f57616d1e74e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: b72b2183cb796602f05a0a6858d4de108d3cc2c7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016828"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964798"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Egy CSP-hez hozzon létre, és az ügyfél nevében egy Azure IoT központi alkalmazás kezelése 
 
@@ -23,21 +23,21 @@ Egy CSP-hez, létrehozása és kezelése a Microsoft Azure IoT Central alkalmaz�
 
 Első lépésként jelentkezzen be a fiókját a Microsoft Partner portálra, és válassza ki egy ügyfelet, amely az Azure IoT központi alkalmazás létrehozása kívánja. Keresse meg a bal oldali navigációs ablaktáblán a Service management az ügyfél
 
-![Microsoft Partner Centeren ügyfél megtekintése](media\howto-create-application-asCSP\image1.png)
+![Microsoft Partner Centeren ügyfél megtekintése](media/howto-create-application-asCSP/image1.png)
 
 Az Azure IoT Central felügyeletére a szolgáltatásként jelenik meg. Kattintson az oldalon az új alkalmazások létrehozása vagy meglévő alkalmazások az ügyfélhez kezelése az Azure IoT Central hivatkozásra.
 
-![Segítségével kezelheti az Azure IoT Central](media\howto-create-application-asCSP\image2.png)
+![Segítségével kezelheti az Azure IoT Central](media/howto-create-application-asCSP/image2.png)
 
 Az Azure IoT központi alkalmazás-kezelő lap megjelenni. Az Azure IoT Central tartja a környezetet, hogy honnan származnak a Microsoft Partner Centeren és honnan vevőt kezeléséhez. Ez arra vonatkozik, az alkalmazás-kezelő lap fejlécében megjelenik. Itt akár navigálhat egy korábban az ügyfélhez kezeléséhez, vagy hozzon létre egy új alkalmazást az ügyfél korábban létrehozott meglévő alkalmazáshoz.
 
-![Hozzon létre a CSP-kezelője](media\howto-create-application-asCSP\image3.png)
+![Hozzon létre a CSP-kezelője](media/howto-create-application-asCSP/image3.png)
 
 Az Azure IoT központi alkalmazás létrehozása, kattintson a **új alkalmazás** csempére. Ez az alkalmazás létrehozása oldal betöltődik. Kell ezen a lapon az összes mezőt, és válassza a **létrehozás**. További információ az egyes alábbi mezők találja.
 
-![Hozzon létre az alkalmazás oldalán a CSP-k](media\howto-create-application-asCSP\image4.png)
+![Hozzon létre az alkalmazás oldalán a CSP-k](media/howto-create-application-asCSP/image4.png)
 
-![Hozzon létre az alkalmazás oldalán a CSP-k](media\howto-create-application-asCSP\image4-1.png)
+![Hozzon létre az alkalmazás oldalán a CSP-k](media/howto-create-application-asCSP/image4-1.png)
 
 ## <a name="payment-plan"></a>Fizetési lehetőség
 
@@ -53,7 +53,7 @@ Az alkalmazás URL-je a hivatkozásra kattintva az alkalmazás. A böngészőben
 
 Adja meg a nevet az alkalmazásnak az alkalmazás URL-címe esetén automatikusan létrehozott. Igény szerint választhat egy másik URL-címet az alkalmazás. Minden egyes Azure IoT Central URL-cím az Azure IoT Central belül egyedinek kell lennie. Akkor egy hibaüzenet jelenik meg, ha úgy dönt, az URL-cím már foglalt.
 
-## <a name="directory"></a>Könyvtár
+## <a name="directory"></a>Címtár
 
 Mivel az Azure IoT Central kezelheti a kiválasztott a Microsoft Partner portál ügyfél tartalomcsomagokból környezet rendelkezik, csak az Azure Active Directory-bérlő a Directory mezőben adott ügyfélhez tartozó láthatja. 
 
@@ -65,11 +65,11 @@ További tudnivalókért lásd: [Azure Active Directory](https://docs.microsoft.
 
 Azure-előfizetés lehetővé teszi a példányok az Azure-szolgáltatások létrehozásához. Az Azure IoT Central automatikusan megkeresi az ügyfél, amely rendelkezik az összes Azure-előfizetések hozzáférést, és megjeleníti őket a legördülő listában a **alkalmazás létrehozása** lapot. Válassza ki az új Azure IoT központi alkalmazás létrehozása az Azure-előfizetés.
 
-Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egyet a Microsoft Partner Centeren. Miután létrehozta az Azure-előfizetést, lépjen vissza a **alkalmazás létrehozása** lapot. Az új előfizetés megjelenik a **Azure-előfizetés** listából.
+Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egyet a Microsoft Partner Centeren. Az Azure-előfizetés létrehozása után lépjen vissza az **alkalmazás-létrehozási** lapra. Az új előfizetése megjelenik az **Azure-előfizetések** legördülő menüjében.
 
 További tudnivalókért lásd: [Azure-előfizetések](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing).
 
-## <a name="region"></a>Region (Régió)
+## <a name="region"></a>Régió
 
 Válassza ki a régiót, ahol szeretné az Azure IoT központi alkalmazás létrehozása. Általában a fizikailag az optimális teljesítmény eléréséhez az eszközök legközelebb eső régiót kell választania.
 
@@ -78,17 +78,17 @@ További tudnivalókért lásd: [Azure-régiók](https://docs.microsoft.com/azur
 Láthatja, hogy a régiók, amelyek az Azure IoT Central érhető el a [elérhető termékek régiók szerint](https://azure.microsoft.com/regions/services/) lapot.
 
 > [!Note]
-> Ha úgy dönt, a régiót, később nem lehet áthelyezni az alkalmazás egy másik régióba.
+> Ha kiválasztott egy régiót, később nem helyezheti át az alkalmazást egy másik régióba.
 
-## <a name="application-template"></a>Alkalmazás sablon
+## <a name="application-template"></a>Alkalmazássablon
 
-A rendelkezésre álló sablonok közül választhat az új Azure IoT Central alkalmazáshoz. Alkalmazássablonok tartalmazhat például eszközsablonok előre meghatározott elemek, és az irányítópultok segítségével első lépései.
+A rendelkezésre álló sablonok közül választhat az új Azure IoT Central alkalmazáshoz. Az alkalmazássablon előre megadott elemeket, például eszközsablonokat és irányítópultokat tartalmazhat, amelyek segítséget nyújtanak az első lépésekhez.
 
-| Alkalmazás sablon | Leírás |
+| Alkalmazássablon | Leírás |
 | -------------------- | ----------- |
-| Egyéni alkalmazás   | Létrehoz egy üres alkalmazást, hogy adja meg a saját eszköz sablonokat és eszközöket. |
-| Minta Contoso       | Létrehoz egy alkalmazást, amely tartalmaz egy egyszerű csatlakoztatott eszköz eszköz-sablont. Ez a sablon használatával első lépései az Azure IoT Central feltárása. |
-| Minta Devkits       | Létrehoz egy alkalmazás eszközsablonok készen áll, hogy egy MXChip vagy a Raspberry Pi-eszköz kapcsolódjon. Sablon használata, ha az eszköz a kódra kísérletezés eszköz a fejlesztők. |
+| Egyéni alkalmazás   | Létrehoz egy üres alkalmazást, amelybe a saját eszközsablonjait és eszközeit helyezheti el. |
+| Minta: Contoso       | Létrehoz egy alkalmazást, amely tartalmaz egy egyszerű csatlakoztatott eszköz eszköz-sablont. Használja ezt a sablont az Azure IoT Central megismerésének megkezdéséhez. |
+| Minta: Devkits       | Létrehoz egy eszközsablonokat tartalmazó alkalmazást, amelyekkel csatlakoztathat egy MXChip vagy Raspberry Pi eszközt. Sablon használata, ha az eszköz a kódra kísérletezés eszköz a fejlesztők. |
 
 ## <a name="next-steps"></a>További lépések
 

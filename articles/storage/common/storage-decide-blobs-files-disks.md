@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/28/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: c7e9c841e7a1d73fcdedd99e210eefb1e52bbf3e
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 9819b2bf3c5e5a07d788dc7f51b674a07e6c41ef
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498760"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972337"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Annak eldöntése, mikor érdemes használni az Azure-Blobok, az Azure Files és az Azure-lemezek
 
@@ -26,7 +26,7 @@ Az alábbi táblázat összehasonlítja a fájlok, Blobok és lemezek, és minde
 | Szolgáltatás | Leírás | A következő esetekben használja |
 |--------------|-------------|-------------|
 | **Az Azure Files** | Biztosít egy SMB-kapcsolatot, ügyfél szalagtárakban és a egy [REST-felület](/rest/api/storageservices/file-service-rest-api) hozzáférés bárhonnan, amely lehetővé teszi a tárolt fájlok. | "Lift and shift" szeretne egy alkalmazást a felhőbe, amely már a natív fájlrendszer API-k segítségével, és más Azure-ban futó alkalmazások közötti adatmegosztást.<br/><br/>Fejlesztés és hibakeresés eszközöket, amelyek számos virtuális gépekről érhető el kell tárolni szeretné. |
-| **Azure Blobs** | Ügyfélkódtárak biztosít és a egy [REST-felület](/rest/api/storageservices/blob-service-rest-api) , amely lehetővé teszi a strukturálatlan adatok tárolása és elérése a blokkblobok nagy méretű. | Szeretné, hogy az alkalmazás támogatja a streamelési és a véletlenszerű adathozzáférési forgatókönyvek esetében.<br/><br/>Szeretné tudni alkalmazásadatok bárhonnan elérheti. |
+| **Azure Blobs** | Ügyfélkódtárak biztosít és a egy [REST-felület](/rest/api/storageservices/blob-service-rest-api) , amely lehetővé teszi a strukturálatlan adatok tárolása és elérése a blokkblobok nagy méretű.<br/><br/>Emellett támogatja [Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md) vállalati big Data típusú adatok elemzési megoldásokat. | Szeretné, hogy az alkalmazás támogatja a streamelési és a véletlenszerű adathozzáférési forgatókönyvek esetében.<br/><br/>Szeretné tudni alkalmazásadatok bárhonnan elérheti.<br/><br/>Szeretné hozhat létre egy vállalati a data lake az Azure-ban, és hajtsa végre a big data-elemzés. |
 | **Azure-lemezek** | Ügyfélkódtárak biztosít és a egy [REST-felület](/rest/api/compute/manageddisks/disks/disks-rest-api) , amely lehetővé teszi az adatok állandó tárolása és elérése a csatlakoztatott virtuális merevlemezről. | Olvasási és írási adatok állandó lemezt natív fájlrendszer API-kat használó alkalmazások átemelése szeretné.<br/><br/>Ez nem szükséges a virtuális gép, amelyhez a lemez csatlakozik kívülről adatokat tárolni szeretné. |
 
 ## <a name="comparison-files-and-blobs"></a>Összehasonlítás: Blobok és fájlok

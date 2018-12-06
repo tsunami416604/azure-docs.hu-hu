@@ -7,17 +7,17 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: ronitr
-ms.author: ronitr
+author: vainolo
+ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/25/2018
-ms.openlocfilehash: fc82fa592a513d735d4adc602bedaf8e492af13b
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: e947c284843074cf36c2d85dd240df23a1958cd5
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092951"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971521"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -39,8 +39,6 @@ Használhatja az SQL database naplózási szolgáltatásán keresztül:
 - **Megőrzése** auditnaplót kiválasztott események. Megadhatja, hogy az adatbázis-műveleteket naplózni kívánt kategóriáit.
 - **A jelentés** az adatbázis-tevékenységeket. Előre konfigurált jelentéseket és a egy irányítópult segítségével gyorsan használatba tevékenység és az események naplózásához.
 - **Elemezheti** jelentéseket. Megtalálhatja a gyanús eseményeket, a szokatlan tevékenységeket és a trendeket.
-
-Konfigurálhatja a különböző típusú eseménykategóriák, naplózás leírtak a [beállítása az adatbázis naplózási](#subheading-2) szakaszban.
 
 > [!IMPORTANT]
 > Auditnaplók írt **hozzáfűző Blobok** egy Azure Blob Storage, Azure-előfizetésében.
@@ -198,7 +196,7 @@ Georeplikált adatbázisokhoz amikor engedélyezi a naplózást az elsődleges a
 3. Lépjen vissza a naplózási konfiguráció lapon váltson a tárelérési kulcs az elsődleges, másodlagos, és kattintson **OK**. Kattintson a **mentése** a naplózási konfiguráció lap tetején.
 4. Lépjen vissza a tárolási konfiguráció lapon, és újragenerálja a másodlagos elérési kulcsot (a frissítés során a következő kulcs előkészítése).
 
-## <a name="additional-information"></a>További információ
+## <a name="additional-information"></a>További információk
 
 - További információ a napló formátumú, a hierarchiában, a tároló mappa, és elnevezési konvenciók, tekintse meg a [Blob auditálási napló fájlformátum referenciája](https://go.microsoft.com/fwlink/?linkid=829599).
 

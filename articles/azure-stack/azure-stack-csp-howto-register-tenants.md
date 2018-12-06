@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/19/2018
 ms.author: sethm
 ms.reviewer: alfredo
-ms.openlocfilehash: eef1a2f82dc73a1c53b89bb3c9d145f87212ffcc
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 6f93a72acdcc249720abeec3fe871b7108e2bb29
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498572"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963742"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Adja hozzá a bérlői használat és számlázás az Azure Stackhez
 
@@ -36,7 +36,7 @@ Az alábbi ábrán látható a lépéseket, amelyeket a CSP kell követnie kell 
 
 **Egy végfelhasználói hozzáadásának lépéseit**
 
-![Felhőszolgáltató beállítása, a használat nyomon követése és a teljes felhasználói fiók kezelése](media\azure-stack-csp-enable-billing-usage-tracking\process-csp-enable-billing.png)
+![Felhőszolgáltató beállítása, a használat nyomon követése és a teljes felhasználói fiók kezelése](media/azure-stack-csp-enable-billing-usage-tracking/process-csp-enable-billing.png)
 
 ## <a name="create-a-new-customer-in-partner-center"></a>A Partner Center új ügyfél létrehozása
 
@@ -50,7 +50,7 @@ Miután létrehozott egy rekordot, az ügyfél a Partner Center, értékesítés
 ## <a name="create-a-guest-user-in-the-end-customer-directory"></a>A teljes ügyfél címtárban Vendég felhasználó létrehozása
 
 Ha a végfelhasználó ügyfél fogja kezelni a saját fiókjukat, hozzon létre egy Vendég felhasználót a címtárban, és elküldi azokat az adatokat. A felhasználó ezután vegye fel a Vendég és a Vendég számára jogosultságszintjének **tulajdonos** az Azure Stack CSP-fiókjába.
- 
+ 
 ## <a name="update-the-registration-with-the-end-customer-subscription"></a>Frissítse a regisztrációt a teljes ügyfél-előfizetés
 
 Frissítse a regisztrációt az új ügyfél-előfizetés. Azure-Partner központi az ügyfél azonosítójának használatával az ügyfél használati jelentések. Ez a lépés biztosítja, hogy minden egyes ügyfelek általi használatot jelentett adott ügyfél által az egyes CSP előfizetéshez tartozik. Így felhasználói használat nyomon követése és számlázási sokkal egyszerűbb, mivel.
@@ -86,10 +86,10 @@ Azure Stack-szolgáltatások használatára az Azure Stackben több Azure AD-bé
 
 ## <a name="create-a-local-resource-in-the-end-customer-tenant-in-azure-stack"></a>Hozzon létre egy helyi erőforrás a teljes ügyfél bérlő az Azure Stackben
 
-Miután hozzáadta az új ügyfél az Azure Stackhez, vagy az end ügyfélbérlőn tulajdonosi jogosultságokkal a Vendég fiók engedélyezve van, győződjön meg arról, hogy a bérlőjükhöz hozhat létre egy erőforrást. Ha például a következőkre [Windows virtuális gép létrehozása az Azure Stack portal](user\azure-stack-quick-windows-portal.md).
+Miután hozzáadta az új ügyfél az Azure Stackhez, vagy az end ügyfélbérlőn tulajdonosi jogosultságokkal a Vendég fiók engedélyezve van, győződjön meg arról, hogy a bérlőjükhöz hozhat létre egy erőforrást. Ha például a következőkre [Windows virtuális gép létrehozása az Azure Stack portal](user/azure-stack-quick-windows-portal.md).
 
 ## <a name="next-steps"></a>További lépések
 
  - Tekintse át a hibaüzeneteket, ha a regisztrációs folyamat során el, lásd: [bérlő regisztrációs hibaüzenetek](azure-stack-csp-ref-infrastructure.md#usage-and-billing-error-codes).
  - Erőforrás-használati adatok lekérése az Azure Stack kapcsolatos további tudnivalókért lásd: [használat és számlázás az Azure Stackben](azure-stack-billing-and-chargeback.md).
- - Tekintse át, hogy egy végfelhasználói előfordulhat, hogy vegye fel, a CSP, az Azure stack-kezelőként bérlői, lásd: [engedélyezése az Azure Stack-előfizetés kezelése céljából Felhőszolgáltató](user\azure-stack-csp-enable-billing-usage-tracking.md).
+ - Tekintse át, hogy egy végfelhasználói előfordulhat, hogy vegye fel, a CSP, az Azure stack-kezelőként bérlői, lásd: [engedélyezése az Azure Stack-előfizetés kezelése céljából Felhőszolgáltató](user/azure-stack-csp-enable-billing-usage-tracking.md).

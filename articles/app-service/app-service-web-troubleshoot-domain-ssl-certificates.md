@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: e10c6580c29784f8d56a31e267c47ec08894113b
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 5c5bdb8fad60a2e4196c2c9f74764e27cec5ba62
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418364"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970773"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-web-apps"></a>Tartomány és az Azure web apps SSL tanúsítvánnyal kapcsolatos problémák elhárítása
 
@@ -145,7 +145,7 @@ Alternatív megoldásként a HTML-weblap módszer segítségével manuálisan el
 3.  Töltse fel ezt a fájlt a webalkalmazás-kiszolgáló, amelyen az a tartomány gyökerében.
 4.  Válassza ki **frissítése** tanúsítvány állapotának ellenőrzéséhez. Az ellenőrzés befejezése néhány percet igénybe vehet.
 
-Például, ha a tartomány ellenőrzési token 1234abcd értéket az Azure.com webhelyen egy normál tanúsítványt vásárol, webes kérelem végzett http://azure.com/1234abcd.html 1234abcd értéket kell visszaadnia. 
+Például, ha a tartomány ellenőrzési token 1234abcd értéket az Azure.com webhelyen egy normál tanúsítványt vásárol, webes kérelem végzett https://azure.com/1234abcd.html 1234abcd értéket kell visszaadnia. 
 
 > [!IMPORTANT]
 > A tanúsítványrendelések csak 15 nap áll a tartomány-ellenőrzési művelet befejezéséhez. 15 nap után a hitelesítésszolgáltató a tanúsítványt megtagadja, és nem terheli a tanúsítványt. Ebben a helyzetben törli ezt a tanúsítványt, és próbálkozzon újra.

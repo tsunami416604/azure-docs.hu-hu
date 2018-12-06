@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 22c9aeaa9f02d91ea90083fae69f28fa5984c565
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: d75df381f1afc17d291fe0a477078acb3435019c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680616"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958134"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Az Azure-tevékenységnapló-előfizetési tevékenység figyelése
 
@@ -102,7 +102,7 @@ Egy tároló vagy egy eseményközpontba eseményközpont-névtér, amely nem ug
 >  Jelenleg nem archiválhatja egy tárfiókot, amelyet mögött egy biztonságos virtuális hálózaton található adatokat.
 
 > [!WARNING]
-> A tárfiókban lévő naplóadatok formátuma 2018. nov. 1-től JSON Lines lesz. [Ebben a cikkben olvashat ennek hatásairól, valamint arról, hogy hogyan frissítheti eszközeit az új formátum kezeléséhez.](./monitor-diagnostic-logs-append-blobs.md) 
+> A naplóadatok JSON sorok 2018. november 1-től változik a tárfiókban formátumát. [Ebben a cikkben olvashat ennek hatásairól, valamint arról, hogy hogyan frissítheti eszközeit az új formátum kezeléséhez.](./monitor-diagnostic-logs-append-blobs.md) 
 >
 > 
 

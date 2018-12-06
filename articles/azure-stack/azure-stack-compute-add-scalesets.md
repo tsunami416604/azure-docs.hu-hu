@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: sethm
 ms.reviewer: kivenkat
-ms.openlocfilehash: accd36c9e0d09da0073570301600b362fff85f6e
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 2c615dd781b40c3ebb78ae291453c5b4b2d2ef4d
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647340"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971827"
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Virtual Machine Scale Sets elérhetővé az Azure Stackben
 
@@ -97,7 +97,7 @@ Miután létrehozott egy virtuálisgép-méretezési csoportot, a felhasználók
 
     Ha egy újabb verzióval (amely megváltoztatja a rendelkezésre álló verzió) egy rendszerképet tölt le, a méretezési csoportban nem vertikális felskálázás. Ez szándékosan van, mert a rendszerkép verziószámát, a méretezési csoport sablonjában megadott elérhetőnek kell lennie.  
 
-További információkért lásd: [operációsrendszer-lemezek és lemezképek](.\user\azure-stack-compute-overview.md#operating-system-disks-and-images).  
+További információkért lásd: [operációsrendszer-lemezek és lemezképek](./user/azure-stack-compute-overview.md#operating-system-disks-and-images).  
 
 ## <a name="scale-a-virtual-machine-scale-set"></a>Egy virtuálisgép-méretezési készlet méretezése
 

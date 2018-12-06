@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c2299c6178dbca821362f51cf088f34022df772c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c72e1c92815f70838db20ab67c3f70fc5223ac03
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878040"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964747"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Az adathasználat elemzése a Log Analyticsben
 
@@ -77,7 +77,7 @@ Megtekintheti a **mérete** számítógép betöltött számlázható események
 | where _IsBillable == true 
 | summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last `
 
-Ezen lekérdezések használatához takarékosan, különböző adatok adatok typres keresésekre költséges végrehajtásához. Ez a lekérdezés a lekérdezés ezt a használati adatok típusa a régi módja váltja fel. 
+Ezen lekérdezések használatához takarékosan, különböző adattípusok keresésekre költséges végrehajtásához. Ez a lekérdezés a lekérdezés ezt a használati adatok típusa a régi módja váltja fel. 
 
 Megtekintheti a **száma** számítógép betöltött események használata
 

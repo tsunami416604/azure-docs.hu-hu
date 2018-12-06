@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
 ms.date: 11/26/2018
-ms.openlocfilehash: ed25d03f7c592476b9284790ac12f9954661a42b
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 9a8486a5022a58dd9d4b94ddbe71f3a4e66f18cf
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872305"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969498"
 ---
 # <a name="azure-time-series-insights-preview-tutorial"></a>Az oktatóanyag az Azure Time Series Insights (előzetes verzió)
 
@@ -34,23 +34,23 @@ Ez a szakasz ismerteti, hogyan hozhat létre az Azure TSI (előzetes verzió) k�
 1. Válassza az **+ Erőforrás létrehozása** lehetőséget a bal felső sarokban.
 1. Válassza az **Eszközök internetes hálózata** kategóriát, majd a **Time Series Insights** elemet.
 
-  ![az oktatóanyag egy az egyhez][1]
+   ![az oktatóanyag egy az egyhez][1]
 
 1. A Time Series Insights környezetet lapon adja meg a szükséges paramétereket, és kattintson a **tovább: forrás**
 
-  ![az oktatóanyag második][2]
+   ![az oktatóanyag második][2]
 
 1. Az a **eseményforrás** lapon töltse ki a szükséges paramétereket, kattintson a **felülvizsgálat + létrehozás**.
 
-  ![oktatóanyag – három][3]
+   ![oktatóanyag – három][3]
 
 1. Tekintse át a részletes adatait, és kattintson a **létrehozás** a környezet kiépítésének megkezdéséhez.
 
-  ![oktatóanyag – 4][4]
+   ![oktatóanyag – 4][4]
 
 1. A telepítés sikeres befejezése után kapni fog egy értesítést.
 
-  ![az oktatóanyag-öt][5]
+   ![az oktatóanyag-öt][5]
 
 ## <a name="send-events-to-your-tsi-environment"></a>Események küldése a TSI-környezetbe
 
@@ -71,7 +71,7 @@ Ebben a szakaszban egy Szélmalom készülékszimulátort használandó küldhet
 
   1. Lépjen vissza az eseményközpontba. Meg kell jelennie a hub.d fogadja az új események
 
-     ![oktatóanyag – 8][8]
+      ![oktatóanyag – 8][8]
 
 ## <a name="analyze-data-in-your-environment"></a>A környezetben lévő adatok elemzése
 
@@ -83,37 +83,37 @@ Ebben a szakaszban végre fogja hajtani alapszintű analitika az idősorozat-ada
 
   1. A Explorerben kattintson a a **fölérendelt objektum nélküli példányok** csomópontok a környezet a Time Series példányok megtekintéséhez.
 
-     ![oktatóanyag – tíz][10]
+      ![oktatóanyag – tíz][10]
 
   1. Ebben az oktatóanyagban fogunk az elmúlt napon belül küldött adatok elemzéséhez. Ehhez kattintson a **Gyorshivatkozások** , és válassza ki a **az elmúlt 24 órából** lehetőséget.
 
-     ![oktatóanyag – tizenegy][11]
+      ![oktatóanyag – tizenegy][11]
 
   1. Válassza ki **Sensor_0** válassza **átlagos érték megjelenítése** küldését a time series példány adatainak megjelenítéséhez.
 
-     ![oktatóanyag – 12][12]
+      ![oktatóanyag – 12][12]
 
   1. Hasonlóképpen dolgozunk más idő sorozat példányai alapszintű analitika végrehajtásához származó adatokat is.
 
-     ![oktatóanyag – tizenhárom][13]
+      ![oktatóanyag – tizenhárom][13]
 
-## <a name="define-a-type--hierarchy"></a>A típus & hierarchia megadása 
+## <a name="define-a-type-and-hierarchy"></a>Adja meg a típust és a hierarchia
 
 Ebben a szakaszban egy típust, a hierarchiában, szerzői, és rendelje azokat a time series példányok. Tudjon meg többet [Time Series modellek](./time-series-insights-update-tsm.md).
 
   1. A Explorerben kattintson a a **modell** alkalmazássávon lapján.
 
-     ![oktatóanyag – tizennégy][14]
+      ![oktatóanyag – tizennégy][14]
 
   1. A típusok területen kattintson a **+ Hozzáadás**. Ez lehetővé teszi, új Time Series modell típus létrehozásához.
 
-     ![az oktatóanyag-tizenöt][15]
+      ![az oktatóanyag-tizenöt][15]
 
   1. Adja meg a típus-szerkesztőben egy **neve**, **leírása**, és a változók létrehozása **átlagos**, **Min**, és **maximális** értékek az alább látható módon. Kattintson a **létrehozás** menteni a típusát.
 
-     ![oktatóanyag – tizenhat][16]
+      ![oktatóanyag – tizenhat][16]
 
-     ![oktatóanyag – seventeen][17]
+      ![oktatóanyag – seventeen][17]
 
   1. Az a **hierarchiák** területén kattintson a **+ Hozzáadás**. Ez lehetővé teszi, hozzon létre egy új Time Series modell hierarchia.
 

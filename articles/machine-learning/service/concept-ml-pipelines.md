@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
 ms.date: 11/07/2018
-ms.openlocfilehash: 099b59cde4ee438f16b9d7e77bd81c004006cb71
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 3b5afd2a39c14d71e123f93d503692356a655a87
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684868"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965837"
 ---
 # <a name="pipelines-and-azure-machine-learning"></a>Folyamatok és az Azure Machine Learning
 
@@ -69,8 +69,10 @@ Tekintse meg a [folyamatok Python SDK referenciadokumentumai](https://docs.micro
 
 ## <a name="example-notebooks"></a>Példa notebookok
  
-A következő notebook az Azure Machine Learning folyamatok mutatja be: [folyamat/folyamat – batch-scoring.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/pipeline/pipeline-batch-scoring.ipynb).
- 
-Ez a jegyzetfüzet lekérése:
+A következő notebookok folyamatokat az Azure Machine Learning bemutatása: [how-to-use-azureml/machine-learning-pipelines](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines).
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
+
+## <a name="next-steps"></a>További lépések
+
+Ismerje meg, hogyan [az első folyamat létrehozása](how-to-create-your-first-pipeline.md).

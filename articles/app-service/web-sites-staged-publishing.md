@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: 32f3dd0543e841c4aae87cf48654c95a4609e51a
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: c6e28554f86a6a7de5d50027ceb552e15856bc96
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682843"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970858"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Állítsa be átmeneti környezeteket az Azure App Service-ben
 <a name="Overview"></a>
@@ -58,7 +58,7 @@ Az alkalmazásnak futnia kell a **Standard**, **prémium szintű**, vagy **elkü
 4. Az alkalmazás erőforrás panelen kattintson **üzembe helyezési pontok**, majd kattintson az üzembehelyezési pont megnyithatja, hogy a tárhely-erőforrás paneljének, metrikákat és konfigurációs csakúgy, mint bármely más alkalmazást. A tárolóhely neve emlékezteti, hogy az üzembe helyezési pont jelenik meg a panel tetején látható.
    
     ![Üzembe helyezési pont címe][StagingTitle]
-5. Kattintson az alkalmazás URL-CÍMÉT a tárolóhely panelen. Figyelje meg, hogy az üzembe helyezési pont rendelkezik a saját állomásnév, és ezzel egyúttal élő alkalmazások. Az üzembe helyezési pont való nyilvános hozzáférés korlátozása, lásd: [App Service Web App – webes elérésének letiltása nem éles rendszerek üzembe helyezési pontok](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/).
+5. Kattintson az alkalmazás URL-CÍMÉT a tárolóhely panelen. Figyelje meg, hogy az üzembe helyezési pont rendelkezik a saját állomásnév, és ezzel egyúttal élő alkalmazások. Az üzembe helyezési pont való nyilvános hozzáférés korlátozása, lásd: [App Service Web App – webes elérésének letiltása nem éles rendszerek üzembe helyezési pontok](https://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/).
 
 Nincs tartalom van üzembe helyezési tárhely létrehozása után. A tárolóhely egy másik adattárban ágat, vagy egy teljesen más tárházat telepítheti. A tárolóhely-konfiguráció is módosíthatja. A közzétételi profil vagy a központi telepítési hitelesítő adatok használata társított tartalom frissítések üzembe helyezési pont.  Például végezheti [közzététele a gittel tárolóhely](app-service-deploy-local-git.md).
 
@@ -258,7 +258,7 @@ Remove-AzureRmResource -ResourceGroupName [resource group name] -ResourceType Mi
 A [Azure CLI-vel](https://github.com/Azure/azure-cli) parancsok a üzembe helyezési pontok, lásd: [az webapp deployment slot](/cli/azure/webapp/deployment/slot).
 
 ## <a name="next-steps"></a>További lépések
-[Az Azure App Service Web App – webes elérésének letiltása nem éles rendszerek üzembe helyezési pontok](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)  
+[Az Azure App Service Web App – webes elérésének letiltása nem éles rendszerek üzembe helyezési pontok](https://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)  
 [A linuxon futó App Service bemutatása](../app-service/containers/app-service-linux-intro.md)  
 [A Microsoft Azure ingyenes próbaverziója](https://azure.microsoft.com/pricing/free-trial/)
 

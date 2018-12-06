@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 434c6f6bcf0b684fab70aab6f550c90a8ce1cdb6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 1512098c29c8916a0486ed66b438654ba29f0601
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878074"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968229"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Áttekintés az Azure SQL Database felügyelt példányain erőforráskorlátok
 
@@ -56,6 +56,8 @@ Felügyelt példány két szolgáltatási csomagban – általános célú és a
 | IOPS (becsült) | fájlonkénti 500-7500<br/>\*[A fájl mérete attól függ](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 11-K – 110K (1375 / virtuális mag) |
 | IO-késés (becsült) | 5 – 10 ms | 1 – 2 ms |
 | Max. tempDB mérete | 192-1920 GB (24 GB / virtuális mag) | Határozza meg a maximális tárhelyméretet a példány |
+
+- Felhasználói és rendszer-adatbázisokat a storage példányméret, a rendszer összehasonlítja a maximális méretkorlát szerepelnek. Használat <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> rendszernézet meghatározni az összes adatbázis által felhasznált terület. Hibanaplók nem megőrzött és a méret nem tartalmazza. Biztonsági mentések nem szerepelnek a tárterület méretét.
 
 ## <a name="supported-regions"></a>Támogatott régiók
 

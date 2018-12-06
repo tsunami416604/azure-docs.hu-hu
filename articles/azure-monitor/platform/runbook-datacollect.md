@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 5ca2a8fd53ec6ae1ccdaa869de8d06b3c76ed6b3
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: ac0e004039465171c615bbd3c79f361ceb764166
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875067"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962250"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Adatgyűjtés, a Log Analytics az Azure Automation-runbook
 Számos különféle forrásból például gyűjthet adatokat a Log Analytics jelentős mennyiségű [adatforrások](../../azure-monitor/platform/agent-data-sources.md) ügynökökön és is [adatokat gyűjteni az Azure-ból](../../azure-monitor/platform/collect-azure-metrics-logs.md).  Vannak olyan forgatókönyvek ellenére, hogy hol kell gyűjtenie az adatokat, amely nem érhető el standard források segítségével.  Ezekben az esetekben használhatja a [HTTP-adatgyűjtő API](../../azure-monitor/platform/data-collector-api.md) használatával írhat adatokat a Log Analyticsbe bármely REST API-ügyfélből.  Egy általános módszer az adatgyűjtést az Azure Automation runbook használ.   
@@ -30,7 +30,7 @@ Ez az oktatóanyag végigvezeti a folyamat létrehozásához és az adatok írá
 ## <a name="prerequisites"></a>Előfeltételek
 Ebben a forgatókönyvben a következő erőforrások konfigurált az Azure-előfizetés szükséges.  Mindkettő egy ingyenes fiók is lehet.
 
-- [Log Analytics-munkaterület](../../log-analytics/log-analytics-quick-create-workspace.md).
+- [Log Analytics-munkaterület](../../azure-monitor/learn/quick-create-workspace.md).
 - [Azure automation-fiók](../..//automation/automation-quickstart-create-account.md).
 
 ## <a name="overview-of-scenario"></a>Forgatókönyv áttekintése

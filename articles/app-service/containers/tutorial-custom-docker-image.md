@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 517926a3c78e9c95a9ecef9ae058c33e47566adb
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
-ms.translationtype: HT
+ms.openlocfilehash: 0811b8e81d8c2c4327885007685e15a8d2aea88e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432608"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963402"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Egyéni Docker-rendszerkép használata a Web App for Containers szolgáltatásban
 
@@ -292,7 +292,7 @@ Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommun
     > [!NOTE]
     > Ez a konfiguráció nem tesz elérhetővé külső kapcsolatokat a tárolóhoz. Az SSH csak a Kudu/SCM webhelyen keresztül érhető el. A Kudu/SCM webhely a közzétételi hitelesítő adatokkal van hitelesítve.
 
-* Egy [COPY](https://docs.docker.com/engine/reference/builder/#copy) utasítás, amely utasítja a Docker-motort az [sshd_config](http://man.openbsd.org/sshd_config) fájl az */etc/ssh/* könyvtárba történő másolására. A konfigurációs fájlnak [ezen az sshd_config fájlon](https://github.com/Azure-App-Service/node/blob/master/6.11.1/sshd_config) kell alapulnia.
+* Egy [COPY](https://docs.docker.com/engine/reference/builder/#copy) utasítás, amely utasítja a Docker-motort az [sshd_config](https://man.openbsd.org/sshd_config) fájl az */etc/ssh/* könyvtárba történő másolására. A konfigurációs fájlnak [ezen az sshd_config fájlon](https://github.com/Azure-App-Service/node/blob/master/6.11.1/sshd_config) kell alapulnia.
 
     ```docker
     COPY sshd_config /etc/ssh/

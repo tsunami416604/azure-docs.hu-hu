@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 10/04/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 29f09034988acde3643eebe368445caab035fabd
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 761637a9c44cc490d6633aeb1a9b8d81f8885583
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387503"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972082"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Files kapcsolatos gyakori kérdések (GYIK)
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabványnak megfelelő keresztül érhető el a felhőben [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Azure-fájlmegosztások párhuzamosan csatlakoztathatja felhőbeli vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. A Windows Server-gépek Azure-fájlmegosztások közel, ahol az adatok felhasználásának gyors hozzáférés az Azure File Sync használatával képes gyorsítótárazni.
@@ -45,7 +45,7 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
 
     Az Azure Files egy kifejezetten egy fájlrendszer. Az Azure Files ismert és kedvelt a munka a helyi operációs rendszer összes fájl kivonatok rendelkezik. Azure Blob storage, például a az Azure Files egy REST-felület és a REST-alapú klienskódtárak kínál. Ellentétben az Azure Blob storage az Azure Files Azure-fájlmegosztások SMB hozzáférést biztosít. Az SMB használatával csatlakoztathatja Azure-fájlmegosztások közvetlenül Windows, Linux vagy MacOS rendszerű, helyszíni vagy felhőbeli VM-eken, kód írása és speciális illesztőprogramok csatolása a fájlrendszer nélkül. A helyszíni fájlkiszolgálókon lévő Azure-fájlmegosztások a gyors hozzáférés érdekében közel, ahol az adatokat használja az Azure File Sync használatával képes gyorsítótárazni. 
    
-    Az Azure Files és az Azure Blob storage közötti különbségekről további részletes ismertetését lásd: [való használata az Azure Blob storage, az Azure Files és az Azure Disks](../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Azure Blob storage szolgáltatással kapcsolatos további tudnivalókért lásd: [Blob storage bemutatása](../blobs/storage-blobs-introduction.md).
+    Az Azure Files és az Azure Blob storage közötti különbségekről további részletes ismertetését lásd: [való használata az Azure Blob storage, az Azure Files és az Azure Disks](../common/storage-decide-blobs-files-disks.md). Azure Blob storage szolgáltatással kapcsolatos további tudnivalókért lásd: [Blob storage bemutatása](../blobs/storage-blobs-introduction.md).
 
 * <a id="files-versus-disks"></a>**Miért célszerű használni az Azure-fájlmegosztások Azure-lemezek helyett?**  
     Az Azure Disks egy lemez egyszerűen egy lemez. Az Azure Disks érték lekéréséhez a lemez csatolása kell az Azure-ban futó virtuális géphez. Azure-lemezek minden, egy helyszíni kiszolgálón szeretné használni a lemez is használható. Egy operációs rendszer lemezként, lapozóterület-os vagy egy alkalmazás dedikált tárolására használható. Egy Azure-lemezek érdekes használja, ha egy fájlkiszolgáló ugyanazon a helyen, ahol az Azure-fájlmegosztás segítségével lehet használni a felhőben. Egy Azure Virtual Machines fájlkiszolgáló üzembe helyezésének módja a nagy teljesítményű kaphat a file storage az Azure-ban, ha a központi telepítési beállítások, amelyek jelenleg nem támogatottak az Azure Files (például az NFS protokoll támogatása vagy a prémium szintű storage) van szüksége. 
@@ -54,7 +54,7 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
 
     Bevezetés az Azure Files és a egy fájlkiszolgálón, amely az Azure Virtual machines szolgáltatásban üzemeltetett (mellett az Azure-lemezek használatával háttér-tároló) a legjobb egyik módja, hogy egy fájlkiszolgálón, amely egy felhőalapú virtuális gép az Azure File Sync telepítése. Ha az Azure-fájlmegosztást a fájlkiszolgáló ugyanabban a régióban, felhőbeli rétegezés, és állítsa be a kötetet a szabad terület százalékos aránya (99 %) legfeljebb engedélyezheti. Ez biztosítja, hogy a minimális adatredundancia. Is használhatja az alkalmazásokat, a fájlkiszolgálók, az azt szeretné, például az NFS-protokollt igénylő alkalmazások támogatásához.
 
-    A beállítás a egy nagy teljesítményű és magas rendelkezésre állású fájlkiszolgáló az Azure-ban való beállításának kapcsolatos információkért lásd: [telepítése IaaS virtuális gépek vendégfürtjének a Microsoft Azure-ban](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/). Az Azure Files és az Azure-lemezek közötti különbségekről további részletes ismertetését lásd: [való használata az Azure Blob storage, az Azure Files és az Azure Disks](../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Az Azure Disks kapcsolatos további információkért lásd: [Azure Managed Disks – áttekintés](../../virtual-machines/windows/managed-disks-overview.md).
+    A beállítás a egy nagy teljesítményű és magas rendelkezésre állású fájlkiszolgáló az Azure-ban való beállításának kapcsolatos információkért lásd: [telepítése IaaS virtuális gépek vendégfürtjének a Microsoft Azure-ban](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/). Az Azure Files és az Azure-lemezek közötti különbségekről további részletes ismertetését lásd: [való használata az Azure Blob storage, az Azure Files és az Azure Disks](../common/storage-decide-blobs-files-disks.md). Az Azure Disks kapcsolatos további információkért lásd: [Azure Managed Disks – áttekintés](../../virtual-machines/windows/managed-disks-overview.md).
 
 * <a id="get-started"></a>
 **Hogyan kezdhetem Azure Files használatával?**  
@@ -205,7 +205,7 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
     Ha az előfizetés, amely alatt a fájlmegosztás üzembe lesz helyezve az Azure AD-bérlőhöz, a virtuális gép tartomány részeként csatlakoztatva, majd az Azure Files Azure AD hitelesítő adatokkal érheti el az Azure AD tartományi szolgáltatások deploymnet társítva. A korlátozás nem az előfizetés a várakozásnak, de a társított Azure ad-bérlőben.    
     
 * <a id="ad-support-subscription"></a>
-**Lehet engedélyezni az Azure AD-hitelesítés SMB-n keresztül az Azure Files számára az Azure AD-bérlő, amely különbözik az elsődleges bérlőt, amelyhez a fájlmegosztás assoicated?**
+**Lehet engedélyezni az Azure AD-hitelesítés SMB-n keresztül az Azure Files számára az Azure AD-bérlő, amely különbözik az elsődleges bérlőt, amelyhez társítva a fájlmegosztás?**
 
     Az Azure Files nem, csak az Azure AD-integráció az Azure AD-bérlő, amely ugyanahhoz az előfizetéshez, mivel a fájlmegosztás található támogatja. Lehet, hogy csak egy előfizetéssel társított Azure AD-bérlővel.
 

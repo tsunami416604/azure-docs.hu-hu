@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: adigan
-ms.openlocfilehash: 575b994fb34d673578b1a40ae4bdd9f6716b6687
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 65ab497b2467846a324d10f8487ab384a01441ee
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720031"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968885"
 ---
 # <a name="update-the-azure-backup-central-reporting-content-pack"></a>Az Azure Backup központi jelentéskészítési tartalomcsomag frissítése 
 
@@ -41,30 +41,30 @@ Az előre konfigurált jelentéseket, amelyek az Azure Backup-tartalomcsomaghoz 
 
 ### <a name="summary"></a>Összegzés
    
-![Összegzés](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Summary.png)
+![Összegzés](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Summary.png)
 
 ### <a name="billing"></a>Számlázás
 
-![Számlázás](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Billing.png)
+![Számlázás](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Billing.png)
 
 ### <a name="compliance"></a>Megfelelőség
 
-![Megfelelőség](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Compliance.png)
+![Megfelelőség](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Compliance.png)
 
 ### <a name="storage"></a>Storage
 
-![Storage](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Storage.png)
+![Storage](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Storage.png)
 
 ### <a name="backup-items"></a>Biztonsági másolati elemek
-![Biztonsági másolati elemek](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-BackupItem.png)
+![Biztonsági másolati elemek](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-BackupItem.png)
 
 ### <a name="alerts"></a>Riasztások
 
-![Riasztások](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Alerts.png)
+![Riasztások](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Alerts.png)
 
 ### <a name="jobs"></a>Feladatok
 
-![Feladatok](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Jobs.png)
+![Feladatok](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Jobs.png)
     
 
 ## <a name="next-steps"></a>További lépések

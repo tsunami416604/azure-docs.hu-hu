@@ -7,17 +7,17 @@ ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
+author: VanMSFT
+ms.author: vanto
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 74717b55ca8c935af7b4311ef29404e4a7d64d9c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: 06e9b443c5b0dc1c23b325c7127511f8542a1a11
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879731"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964832"
 ---
 # <a name="split-merge-security-configuration"></a>Biztonság szétválasztás és egyesítés konfiguráció
 A felosztás/egyesítés szolgáltatás használatához a megfelelő biztonsági kell konfigurálnia. A szolgáltatás része a Microsoft Azure SQL Database rugalmas méretezési funkció. További információkért lásd: [rugalmas méretezési felosztása és egyesítése Service-oktatóanyag](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
@@ -46,7 +46,7 @@ Ha ezek a lehetőségek nem érhetők el, létrehozhat **önaláírt tanúsítv�
 * A WDK az első [Windows 8.1: készletek és eszközök letöltése](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-ssl-certificate"></a>Az SSL-tanúsítvány konfigurálása
-Egy SSL-tanúsítvány szükséges a kommunikáció titkosításához, és a kiszolgáló hitelesítésére. Válassza ki a legmegfelelőbb az alábbi három forgatókönyv, és hajtsa végre az összes lépését:
+SSL-tanúsítvány szükséges a kommunikáció titkosításához, és a kiszolgáló hitelesítésére. Válassza ki a legmegfelelőbb az alábbi három forgatókönyv, és hajtsa végre az összes lépését:
 
 ### <a name="create-a-new-self-signed-certificate"></a>Hozzon létre egy új önaláírt tanúsítványt
 1. [Önaláírt tanúsítvány létrehozása](#create-a-self-signed-certificate)
@@ -142,7 +142,7 @@ Van két különböző mechanizmus támogatott észlelése és a szolgáltatásm
 Ezek a funkciók további részletes ismertetését lásd: az IIS-ben a dinamikus IP-biztonság alapul. Ha ez a konfiguráció módosítása ügyeljen arra, hogy a következő tényezőket:
 
 * Proxyk és a távoli állomás információkat a hálózati címfordítás eszközök működését.
-* Minden kérelmet a webes szerepkör az összes erőforrást számít (például betöltése parancsfájlok, képeket stb)
+* Minden kérelmet a webes szerepkör az összes erőforrást számít (például parancsfájlok, képek és egyéb betöltése)
 
 ## <a name="restricting-number-of-concurrent-accesses"></a>Egyidejű hozzáférések számának korlátozása
 Az ezt a viselkedést konfiguráló beállítások a következők:
@@ -166,7 +166,7 @@ A következő beállítást konfigurálja a megtagadott irányuló kérelemre ad
 Tekintse meg a dokumentációt más támogatott értékei a dinamikus IP-biztonság az IIS-ben.
 
 ## <a name="operations-for-configuring-service-certificates"></a>Operations for service-tanúsítványok konfigurálása
-Ez a témakör csak referenciaként van. Kövesse a leírt konfigurációs lépéseket:
+Ez a témakör csak referenciaként van. Kövesse az ismertetett konfigurációs lépései:
 
 * Az SSL-tanúsítvány konfigurálása
 * Ügyfél-tanúsítványok konfigurálása
@@ -178,7 +178,7 @@ Hajtsa végre:
       -n "CN=myservice.cloudapp.net" ^
       -e MM/DD/YYYY ^
       -r -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.1" ^
-      -a sha1 -len 2048 ^
+      -a sha256 -len 2048 ^
       -sv MySSL.pvk MySSL.cer
 
 Testreszabása:
@@ -223,7 +223,7 @@ Minden fiók/gép, amely fog kommunikálni a szolgáltatás az alábbi lépések
 ## <a name="turn-off-client-certificate-based-authentication"></a>Ügyfél-alapú hitelesítés kikapcsolása
 Csak az ügyfél tanúsítványalapú hitelesítést is támogatja, és letiltásával lehetővé teszi a nyilvános hozzáférés szolgáltatásvégpontokra, kivéve, ha más mechanizmusok nem helyben (például a Microsoft Azure virtuális hálózat esetén).
 
-Ezek a beállítások módosítása a konfigurációs fájlban a funkció kikapcsolásához hamis értékre:
+Ezek a beállítások módosítása a konfigurációs fájlban a szolgáltatás kikapcsolásához hamis értékre:
 
     <Setting name="SetupWebAppForClientCertificates" value="false" />
     <Setting name="SetupWebserverForClientCertificates" value="false" />
@@ -239,7 +239,7 @@ Hajtsa végre az alábbi lépéseket egy hitelesítésszolgáltató segítségé
     -n "CN=MyCA" ^
     -e MM/DD/YYYY ^
      -r -cy authority -h 1 ^
-     -a sha1 -len 2048 ^
+     -a sha256 -len 2048 ^
       -sr localmachine -ss my ^
       MyCA.cer
 
@@ -280,7 +280,7 @@ Frissítse az alábbi beállítás értéke az azonos ujjlenyomattal rendelkező
     <Setting name="AdditionalTrustedRootCertificationAuthorities" value="" />
 
 ## <a name="issue-client-certificates"></a>Ügyfél-tanúsítványok kiállítása
-Rendelkeznie kell egy ügyféltanúsítvánnyal a his/hers kizárólagos használata minden egyes jogosult hozzáférni a szolgáltatáshoz, és his/hers saját, a titkos kulcs védelme érdekében erős jelszót kell választania. 
+Minden egyes jogosult hozzáférni a szolgáltatáshoz kizárólagos használatú ügyféltanúsítvánnyal kell rendelkeznie, és a saját erős jelszót a titkos kulcs védelme érdekében érdemes választania. 
 
 Ahol a önaláírt hitelesítésszolgáltató tanúsítványát előállított és tárolt ugyanarra a gépre a következő lépéseket kell végrehajtani:
 
@@ -288,7 +288,7 @@ Ahol a önaláírt hitelesítésszolgáltató tanúsítványát előállított �
       -n "CN=My ID" ^
       -e MM/DD/YYYY ^
       -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.2" ^
-      -a sha1 -len 2048 ^
+      -a sha256 -len 2048 ^
       -in "MyCA" -ir localmachine -is my ^
       -sv MyID.pvk MyID.cer
 
@@ -316,14 +316,14 @@ Adja meg a jelszót, és ezután exportálja a tanúsítványt ezekkel a beáll�
 * A személy, akinek a tanúsítvány kiállítását az exportálási jelszót kell választania
 
 ## <a name="import-client-certificate"></a>Ügyfél-tanúsítvány importálása
-Minden egyes személy, akinek ügyféltanúsítvány adtak ki kell importálni a kulcspár a gépek hallgatója fogja használni a szolgáltatással való kommunikációra:
+Minden egyes személy, akinek ügyfél-tanúsítvány kibocsátása megtörtént a kulcspár szeretnének a szolgáltatással kommunikáló gépeken kell importálni:
 
 * Kattintson duplán a. PFX-fájlt a Windows Intézőben
 * Importálás be személyes tanúsítványtároló a legalább ezt a beállítást:
   * Tartalmazza az összes kiterjesztett tulajdonság be van jelölve
 
 ## <a name="copy-client-certificate-thumbprints"></a>Másolja a tanúsítvány-ujjlenyomatok ügyfél
-Minden egyes személy, akinek ügyféltanúsítvány nyújtására his/hers ujjlenyomatának beszerzéséhez kövesse az alábbi lépéseket tanúsítvány, amely megjelenik a szolgáltatás konfigurációs fájlja:
+Minden egyes személy, akinek ügyféltanúsítvány adtak ki annak érdekében, hogy a tanúsítványt, amely megjelenik a szolgáltatás konfigurációs fájlja ujjlenyomatának beszerzéséhez kövesse az alábbi lépéseket:
 
 * Run certmgr.exe
 * Válassza ki a személyes lap
@@ -339,7 +339,7 @@ Frissítse a konfigurációs fájlban a következő beállítás értékét az h
     <Setting name="AllowedClientCertificateThumbprints" value="" />
 
 ## <a name="configure-client-certificate-revocation-check"></a>Konfigurálja az ügyfél tanúsítvány visszavonási ellenőrzése
-Az alapértelmezett beállítás nem ellenőrzi az ügyfél tanúsítvány visszavonási állapotának a hitelesítésszolgáltatóhoz. Az ellenőrzések bekapcsolása, ha a hitelesítésszolgáltató által kibocsátott tanúsítványok az ügyfél, amely támogatja ezeket az ellenőrzéseket, módosítsa a következő beállítást egy, a X509RevocationMode enumerálása a megadott:
+Az alapértelmezett beállítás nem ellenőrzi az ügyfél tanúsítvány visszavonási állapotának a hitelesítésszolgáltatóhoz. Az ellenőrzések bekapcsolása, ha a hitelesítésszolgáltató által kibocsátott tanúsítványok az ügyfél támogatja az ilyen ellenőrzéseket, módosítsa a következő beállítást egy, a X509RevocationMode enumerálása a megadott:
 
     <Setting name="ClientCertificateRevocationCheck" value="NoCheck" />
 

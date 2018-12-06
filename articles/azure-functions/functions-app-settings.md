@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: 2eb736891b12c07441bc8828ca07dd0b9fa13d98
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: e346aed2efaab6afcd24e622f577708221b47cb1
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458122"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965854"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Az Azure Functions – alkalmazásbeállítási referencia
 
@@ -82,7 +82,7 @@ A gyökérkönyvtár elérési útja, a *host.json* fájl- és függvény mappá
 
 ## <a name="azurewebjobssecretstoragetype"></a>AzureWebJobsSecretStorageType
 
-Megadja a tárházban vagy a szolgáltató kulcs tárolására. A támogatott adattárak jelenleg a blob storage ("Blob") és a helyi fájlrendszer ("fájlok"). Az alapértelmezett érték 1-es verzió a blobok és a fájlrendszerhez a 2. verzióban. Vegye figyelembe, hogy verzióban 1 fájlrendszer csak működni fog az funkciók futó app service-csomagban.
+Megadja a tárházban vagy a szolgáltató kulcs tárolására. A támogatott adattárak jelenleg a blob storage ("Blob") és a helyi fájlrendszer ("fájlok"). Az alapértelmezett érték a 2. verzióban blob és a fájlrendszerhez az 1. verzióban.
 
 |Kulcs|Mintaérték|
 |---|------------|
@@ -122,7 +122,7 @@ A használatához a függvényalkalmazást a Functions futtatókörnyezetének v
 
 ## <a name="functionsworkerruntime"></a>FÜGGVÉNYEK\_FELDOLGOZÓ\_MODUL
 
-A nyelvi feldolgozói modul betöltése a függvényalkalmazáshoz.  Ez felel meg a nyelvet, az alkalmazásban (például "dotnet") használja. Functions több nyelven is szüksége lesz, ha közzétesszük őket, több alkalmazás, amelyek mindegyike egy megfelelő értéket a worker futásidejű.  Érvényes értékek a következők `dotnet` (C# /F #), `node` (JavaScript), és `java` (Java).
+A nyelvi feldolgozói modul betöltése a függvényalkalmazáshoz.  Ez felel meg a nyelvet, az alkalmazásban (például "dotnet") használja. Functions több nyelven is szüksége lesz, ha közzétesszük őket, több alkalmazás, amelyek mindegyike egy megfelelő értéket a worker futásidejű.  Érvényes értékek a következők `dotnet` (C#/F#), `node` (JavaScript), és `java` (Java).
 
 |Kulcs|Mintaérték|
 |---|------------|

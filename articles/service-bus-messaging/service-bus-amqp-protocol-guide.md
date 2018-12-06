@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: 0801e3a0e9217ab0855d09df8a054926b488d759
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 04588d0af0f85a9e69f44e82d01294c2a4440abc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821548"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961144"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Az AMQP 1.0-s verziójában az Azure Service Bus és Event Hubs protokoll – útmutató
 
@@ -94,7 +94,7 @@ A hivatkozást kezdeményező tárolót kéri, fogadja el a hivatkozást a ellen
 
 Hivatkozások nevű, és a csomópontok társított. A kezdő leírtaknak csomópontokat tartalmazza a kommunikáló entitásokat a tárolókon belül.
 
-A Service Bus a csomópont megegyezik közvetlenül egy üzenetsor, témakör, előfizetés vagy a kézbesíthetetlen üzenetek sorába,-üzenetsor vagy előfizetés. A csomópont nevét, az AMQP használt ezért belül a Service Bus-névtér az entitás relatív neve. Ha egy üzenetsor neve `myqueue`, ez is a AMQP csomópont nevét. Egy témakör-előfizetésben a HTTP API egyezmény a következő szerint rendezi az "előfizetések" erőforrás-gyűjtemény, és így egy előfizetés **sub** vagy -témakör **mytopic** AMQP a csomópont neve  **mytopic/előfizetés/sub**.
+A Service Bus a csomópont megegyezik közvetlenül egy üzenetsor, témakör, előfizetés vagy a kézbesíthetetlen üzenetek sorába,-üzenetsor vagy előfizetés. A csomópont nevét, az AMQP használt ezért belül a Service Bus-névtér az entitás relatív neve. Ha egy üzenetsor neve `myqueue`, ez is a AMQP csomópont nevét. Egy témakör-előfizetésben a HTTP API egyezmény a következő szerint rendezi az "előfizetések" erőforrás-gyűjtemény, és így egy előfizetés **sub** témakörökre **mytopic** AMQP a csomópont neve  **mytopic/előfizetés/sub**.
 
 A kapcsolódó ügyfelek is kell használnia a helyi csomópont nevét; hivatkozások létrehozása A Service Bus nem csomópont nevére vonatkozó előírásoknak megfelelő és nem értelmezi őket. AMQP 1.0-ügyfél implementációt általánosan használatával egy sémát, hogy biztosítsa, hogy ezeket a rövid élettartamú csomópont egyedinek kell lennie az ügyfél hatókörén belül.
 

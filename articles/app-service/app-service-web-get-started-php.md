@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 08/24/2018
 ms.author: cephalin;cfowler
 ms.custom: mvc
-ms.openlocfilehash: 0dd8f90a39abc18263fcaa5bdb63a5b743728952
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
-ms.translationtype: HT
+ms.openlocfilehash: 08b474b1159ff433eadb0a7717f2c60e3e7995f1
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42884964"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962715"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>PHP-webapp létrehozása az Azure-ban
 
@@ -41,7 +41,7 @@ Ezeket a lépéseket Mac, Windows vagy Linux rendszert futtató gépen is követ
 A gyorsútmutató elvégzéséhez:
 
 * <a href="https://git-scm.com/" target="_blank">A Git telepítése</a>
-* <a href="http://php.net/manual/install.php" target="_blank">A PHP telepítése</a>
+* <a href="https://php.net/manual/install.php" target="_blank">A PHP telepítése</a>
 
 ## <a name="download-the-sample-locally"></a>Minta helyi letöltése
 

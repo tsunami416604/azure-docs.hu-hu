@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: c65cc24f9b0083e9c873465008490bf00ea83852
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: adc97da12d1a55dd3dcf435fc8051a8eb9b537a9
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232376"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968186"
 ---
 # <a name="monitor-logic-apps-with-azure-log-analytics"></a>Logikai alkalmazások figyelése az Azure Log Analytics használatával
 
@@ -27,7 +27,7 @@ A meglévő logic apps Azure Log Analytics bekapcsolásához kövesse az alábbi
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Kezdés előtt szüksége van egy Log Analytics-munkaterületet. Ismerje meg, [Log Analytics-munkaterület létrehozása](../log-analytics/log-analytics-quick-create-workspace.md). 
+A Kezdés előtt szüksége van egy Log Analytics-munkaterületet. Ismerje meg, [Log Analytics-munkaterület létrehozása](../azure-monitor/learn/quick-create-workspace.md). 
 
 ## <a name="turn-on-diagnostics-logging-when-creating-logic-apps"></a>Logikai alkalmazások létrehozásának diagnosztikai naplózás bekapcsolása
 

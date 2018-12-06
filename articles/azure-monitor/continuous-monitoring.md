@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: a19872865fd795a6f8d030d76ceead63df67bae0
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 368cef4ef86e29ea4fe55560e44644e332455b93
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892365"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962664"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Folyamatos figyelés az Azure Monitor szolgáltatással
 
@@ -50,7 +50,7 @@ Alkalmazások csak olyan megbízható, mint hogy az alapul szolgáló infrastruk
 
 [Infrastruktúra mint kód](/devops/learn/what-is-infrastructure-as-code) leíró modelleket, beleértve az azonos versioning használatával fejlesztési és üzemeltetési csapatok forráskód használatát az infrastruktúra felügyeleti. Ez a megbízhatóság és méretezhetőség ad hozzá a környezetben, és lehetővé teszi, hogy az alkalmazások kezelésére szolgáló hasonló folyamatokat.
 
--  Használat [Resource Manager-sablonok](../log-analytics/log-analytics-template-workspace-configuration.md) figyelés és riasztások konfigurálása keresztül erőforrások nagy készletét.
+-  Használat [Resource Manager-sablonok](../azure-monitor/platform/template-workspace-configuration.md) figyelés és riasztások konfigurálása keresztül erőforrások nagy készletét.
 - Használat [Azure Policy](../governance/policy/overview.md) a különböző szabályok kényszerítenek ki az erőforrásokat. Ez biztosítja, hogy ezek az erőforrások megfeleljenek a vállalati szabványoknak és szolgáltatói szerződéseknek maradjon. 
 
 

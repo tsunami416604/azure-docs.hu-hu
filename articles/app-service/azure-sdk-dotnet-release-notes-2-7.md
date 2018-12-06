@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 01a02296354ebe3d60f0e1fda6a6da8554a265fd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4c5a4dfcdde91d1bd0c2728ff9d071d4c2f73f0e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239066"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969770"
 ---
 # <a name="azure-sdk-for-net-27-and-net-271-release-notes"></a>Azure SDK for .NET 2.7-es és a .NET 2.7.1-es verziójához kibocsátási megjegyzései
 ## <a name="overview"></a>Áttekintés
@@ -40,7 +40,7 @@ Jelentkezzen be fejlesztésekre az Azure SDK 2.7-es csak Visual Studio 2015-ben 
 Frissített **Mobile Apps** , hogy a legújabb sablonokat [NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) és telepítési folyamata.
 
 ### <a name="service-bus"></a>Service Bus
-Általános hibajavításokat és fejlesztéseket. Frissítések és funkciók a részletekért tekintse meg a kibocsátási megjegyzéseket, a legutóbbi [Service Bus NuGet](http://www.nuget.org/packages/WindowsAzure.ServiceBus/).
+Általános hibajavításokat és fejlesztéseket. Frissítések és funkciók a részletekért tekintse meg a kibocsátási megjegyzéseket, a legutóbbi [Service Bus NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/).
 
 ### <a name="hdinsight-tools"></a>HDInsight-eszközök
 Ebben a kiadásban a következő frissítések történtek. Ezek a frissítések vannak előzetes verzióban érhető el. További információkért lásd: [ebben a blogbejegyzésben](https://go.microsoft.com/fwlink/?LinkId=619108).

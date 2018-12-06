@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: anwestg
 ms.reviewer: sethm
-ms.openlocfilehash: ee6e4397345b4cb169e7e22d951d4c4fdff5b7b7
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 632cf506477bdc6f35c66a473963168f81e22351
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078715"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971895"
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>App Service-ben az Azure Stack update 1 kibocsátási megjegyzései
 
@@ -145,7 +145,7 @@ Ebben a kiadásban hely tárolóhelycsere megszakadt. Működésének visszaáll
 
       # Commit the changes back to NSG
       Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
-      ```
+    ```
 
 2. Keresse meg a **CN0 virtuális** alatt az Azure Stack felügyeleti portálon található virtuális gépek és **kattintson a csatlakozás** , nyissa meg a távoli asztali munkamenetet a tartományvezérlő-példány. Az App Service üzembe helyezése során megadott hitelesítő adatokat használja.
 3. Indítsa el **Powershellt rendszergazdaként** , és hajtsa végre a következő parancsfájl
@@ -197,18 +197,20 @@ Ebben a kiadásban hely tárolóhelycsere megszakadt. Működésének visszaáll
         # Commit the changes back to NSG
         Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
-- Feldolgozók nem érhető el a fájlkiszolgálót, amikor az App Service-ben meglévő virtuális hálózaton van üzembe helyezve, és a fájlkiszolgáló csak érhető el a magánhálózaton.
- 
+
+6. Feldolgozók nem érhető el a fájlkiszolgálót, amikor az App Service-ben meglévő virtuális hálózaton van üzembe helyezve, és a fájlkiszolgáló csak érhető el a magánhálózaton.
+
 Ha úgy döntött, hogy egy meglévő virtuális hálózattal és belső IP-cím szeretne csatlakozni a fájlkiszolgáló üzembe helyezése, hozzá kell adnia egy kimenő biztonsági szabályt a feldolgozó és a fájlkiszolgáló között SMB-forgalom engedélyezése. Ehhez nyissa meg a WorkersNsg a felügyeleti portálon, és adjon hozzá egy kimenő biztonsági szabályt a következő tulajdonságokkal:
- * Forrás: összes
- * Forrás porttartomány: *
- * Cél: IP-címek
- * Cél IP-címtartomány: IP-címtartományt a fájlkiszolgálóhoz
- * Cél porttartomány: 445-ös
- * Protokoll: TCP
- * Művelet: engedélyezése
- * Prioritás: 700
- * Name: Outbound_Allow_SMB445
+
+- Forrás: összes
+- Forrás porttartomány: *
+- Cél: IP-címek
+- Cél IP-címtartomány: IP-címtartományt a fájlkiszolgálóhoz
+- Cél porttartomány: 445-ös
+- Protokoll: TCP
+- Művelet: engedélyezése
+- Prioritás: 700
+- Name: Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Ismert problémák működtetése az Azure App Service az Azure Stack felhő-rendszergazdák számára
 

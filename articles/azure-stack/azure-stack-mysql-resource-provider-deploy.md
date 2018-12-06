@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/15/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 2017e08361c9ff060fde96b78549133d48372e34
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: da88be76d01b246e273739566d629348895b68b6
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853897"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971997"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Az Azure Stackben a MySQL erőforrás-szolgáltató üzembe helyezése
 
@@ -32,8 +32,8 @@ A MySQL-kiszolgáló erőforrás-szolgáltató használatával teszi közzé a M
 
 Nincsenek számos előfeltételt kell lennie a helyen, az Azure Stack MySQL erőforrás-szolgáltató telepítése előtt. Mindezen követelmények teljesítése érdekében hajtsa végre az olyan számítógépre, amelyen a kiemelt jogosultságú végpont a virtuális gép érhető el ez a cikk lépéseit.
 
-* Ha ezt még nem tette meg, [regisztrálása az Azure Stack](.\azure-stack-registration.md) az Azure-ral, letöltheti az Azure marketplace-elemek.
-* Telepítenie kell az Azure és az Azure Stack PowerShell-modulokat a rendszer, amelyen futtatni fogja a telepítést. A rendszer a .NET-modul legújabb verzióját a Windows 10-es vagy Windows Server 2016 képnek kell lennie. Lásd: [PowerShell telepítése az Azure Stackhez](.\azure-stack-powershell-install.md).
+* Ha ezt még nem tette meg, [regisztrálása az Azure Stack](./azure-stack-registration.md) az Azure-ral, letöltheti az Azure marketplace-elemek.
+* Telepítenie kell az Azure és az Azure Stack PowerShell-modulokat a rendszer, amelyen futtatni fogja a telepítést. A rendszer a .NET-modul legújabb verzióját a Windows 10-es vagy Windows Server 2016 képnek kell lennie. Lásd: [PowerShell telepítése az Azure Stackhez](./azure-stack-powershell-install.md).
 * Az Azure Stack piactéren úgy, hogy letölti a szükséges Windows Server core virtuális gép hozzáadása a **Windows Server 2016 Datacenter - Server Core** kép.
 
 * Töltse le a MySQL erőforrás-szolgáltató bináris, és futtassa a mappába, csomagolja ki a tartalmát egy ideiglenes könyvtárba.
@@ -60,7 +60,7 @@ Nincsenek számos előfeltételt kell lennie a helyen, az Azure Stack MySQL erő
 
 ### <a name="certificates"></a>Tanúsítványok
 
-_Csak az integrált rendszerek telepítés_. Meg kell adnia az SQL PaaS PKI-tanúsítványt a választható PaaS tanúsítványok szakaszában leírt [Azure Stack üzembe helyezési nyilvános kulcsokra épülő infrastruktúra követelményei](.\azure-stack-pki-certs.md#optional-paas-certificates). A megadott helyen helyezze el a .pfx-fájlt a **DependencyFilesLocalPath** paraméter. ASDK rendszerek nem biztosítanak egy tanúsítványt.
+_Csak az integrált rendszerek telepítés_. Meg kell adnia az SQL PaaS PKI-tanúsítványt a választható PaaS tanúsítványok szakaszában leírt [Azure Stack üzembe helyezési nyilvános kulcsokra épülő infrastruktúra követelményei](./azure-stack-pki-certs.md#optional-paas-certificates). A megadott helyen helyezze el a .pfx-fájlt a **DependencyFilesLocalPath** paraméter. ASDK rendszerek nem biztosítanak egy tanúsítványt.
 
 ## <a name="deploy-the-resource-provider"></a>Az erőforrás-szolgáltató üzembe helyezése
 

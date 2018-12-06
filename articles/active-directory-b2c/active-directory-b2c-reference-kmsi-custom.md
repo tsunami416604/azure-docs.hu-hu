@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 12/03/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6d58a62ef70cb5bacb44a3a9832516a30fc91ffa
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: fcc81c8eb3a34b0bda5d91a1a67dd2e04e052967
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248059"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967759"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Engedélyezze a bejelentkezve maradás (KMSI) az Azure Active Directory B2C-vel
 
@@ -152,7 +152,9 @@ Frissítse a függő entitásonkénti (RP) fájl, amely az Ön által létrehozo
 
     KMSI használatára van konfigurálva, a **UserJourneyBehaviors** elemet. A **KeepAliveInDays** attribútum meghatározza, hogy mennyi ideig a felhasználó bejelentkezve marad. A következő példában a KMSI munkamenet automatikusan lejárata után `7` nap, függetlenül attól, hogy milyen gyakran a felhasználói beavatkozás nélküli hitelesítést hajt végre. Beállítás a **KeepAliveInDays** értéket a következőre `0` KMSI funkciót kikapcsol. Alapértelmezés szerint ez az érték a `0`. Ha az értéke **SessionExpiryType** van `Rolling`, a KMSI munkamenet bővített `7` nappal minden alkalommal, amikor a felhasználó csendes hitelesítést hajt végre.  Ha `Rolling` van kijelölve, érdemes megtartani a napok számát minimális. 
 
-    Az érték **SessionExpiryInSeconds** az egyszeri bejelentkezés munkamenet lejárati idejét jelzi. Ez belső használatára szolgál az Azure AD B2C-vel ellenőrizze, hogy KMSI a munkamenet lejárt-e vagy sem. Az érték **KeepAliveInDays** meghatározza, hogy az egyszeri bejelentkezési cookie-t a böngésző Expires és Max-Age értékét. Ellentétben **SessionExpiryInSeconds**, **KeepAliveInDays** szolgál, hogy a böngészőben a cookie-k törlése, ha be van zárva. A felhasználói beavatkozás nélkül jelentkezhetnek be, csak akkor, ha az egyszeri bejelentkezés munkamenet cookie-k létezik, amelyek vezérlik **KeepAliveInDays**, és nem járt le, amelyek vezérlik **SessionExpiryInSeconds**. Javasoljuk, hogy az értékét állítsa be **SessionExpiryInSeconds** egyenértékű idején lennie **KeepAliveInDays** (másodpercben), az alábbi példában látható módon.
+    Az érték **SessionExpiryInSeconds** az egyszeri bejelentkezés munkamenet lejárati idejét jelzi. Ez belső használatára szolgál az Azure AD B2C-vel ellenőrizze, hogy KMSI a munkamenet lejárt-e vagy sem. Az érték **KeepAliveInDays** meghatározza, hogy az egyszeri bejelentkezési cookie-t a böngésző Expires és Max-Age értékét. Ellentétben **SessionExpiryInSeconds**, **KeepAliveInDays** szolgál, hogy a böngészőben a cookie-k törlése, ha be van zárva. A felhasználói beavatkozás nélkül jelentkezhetnek be, csak akkor, ha az egyszeri bejelentkezés munkamenet cookie-k létezik, amelyek vezérlik **KeepAliveInDays**, és nem járt le, amelyek vezérlik **SessionExpiryInSeconds**. 
+    
+    Ha a felhasználó nem engedélyezi az **bejelentkezve szeretnék maradni** a regisztrációs és bejelentkezési oldalon a munkamenet által jelzett idő után jár le **SessionExpiryInSeconds** megfelelt vagy a böngésző be van zárva. Ha a felhasználó engedélyezi **bejelentkezve szeretnék maradni**, értékét **KeepAliveInDays** értékét felülírja **SessionExpiryInSeconds** és előírja a munkamenet lejárati ideje. A felhasználók még akkor is, zárja be a böngészőt, és nyissa meg újra, is csendes továbbra is be, amíg idején belül **KeepAliveInDays**. Javasoljuk, hogy az értékét állítsa be **SessionExpiryInSeconds** rövid időn (1200-as másodperc), miközben értékét kell **KeepAliveInDays** értékre lehet beállítani egy viszonylag hosszú ideje (7 nap), ahogyan az a Példa:
 
     ```XML
     <RelyingParty>
@@ -160,7 +162,7 @@ Frissítse a függő entitásonkénti (RP) fájl, amely az Ön által létrehozo
       <UserJourneyBehaviors>
         <SingleSignOn Scope="Tenant" KeepAliveInDays="7" />
         <SessionExpiryType>Absolute</SessionExpiryType>
-        <SessionExpiryInSeconds>604800</SessionExpiryInSeconds>
+        <SessionExpiryInSeconds>1200</SessionExpiryInSeconds>
       </UserJourneyBehaviors>
       <TechnicalProfile Id="PolicyProfile">
         <DisplayName>PolicyProfile</DisplayName>

@@ -1,18 +1,18 @@
 ---
-title: Azure CLI-szkript – Azure Cosmos DB SQL API-fiók, -adatbázis és -tároló létrehozása | Microsoft Docs
+title: Az Azure CLI-szkript – létrehozása egy Azure Cosmos DB SQL API-fiókot, adatbázist és tároló
 description: Azure CLI-példaszkript – Azure Cosmos DB SQL API-fiók, -adatbázis és -tároló létrehozása
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: b38c836efce9f0bd2e29dcfa8c88f6894cf29b38
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 0a39786d2ccc8b0b57f539b10ee12d7b55bba381
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016369"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964594"
 ---
 # <a name="azure-cosmos-db-create-a-sql-api-account-using-cli"></a>Azure Cosmos DB: SQL API-fiók létrehozása a CLI használatával
 

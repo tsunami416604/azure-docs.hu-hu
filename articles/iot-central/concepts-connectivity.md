@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 7b2dd4e97d23f37c8261e51f3f65e78436493ddc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7e90fb6bcfa1bfab59177cbc6c717fefc163a67a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238733"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960096"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Eszköz csatlakoztatása az Azure IoT Central
 
@@ -44,12 +44,12 @@ Egy eszköz csatlakozik az IoT-központ SAS használatával egyszerűen, mindös
 1. Adjon hozzá egy **valós eszköz** Device Explorer, kattintson a **+ új > valós** valós eszköz hozzáadásához.
     * Adja meg az eszköz azonosítója **<span style="color:Red">(kell lennie a kisbetűs)</span>** vagy a javasolt eszközazonosítót használ.
     * Adja meg az eszköz nevét, vagy használja a javasolt név   
-    ![Eszköz hozzáadása](media\concepts-connectivity\add-device.png)
+    ![Eszköz hozzáadása](media/concepts-connectivity/add-device.png)
 1. Például beolvasni a kapcsolat adatait **hatókör azonosítója, az eszköz Azonosítóját és az elsődleges kulcs** kattintva az új eszköz **Connect** az eszköz oldalon.
     * **[Hatókör azonosítója](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope)**  kiszolgálónként IoT Central-alkalmazást, és hozza létre a DPS biztosítja az eszköz egyedi azonosítója az alkalmazáson belül.
     * **Eszközazonosító** eszköz egyedi azonosítója az egyes alkalmazások a eszközt kell küldenie a eszközazonosító a regisztrációs hívás részeként van.   
     * **Elsődleges kulcs** SAS-tokent, akkor az adott eszköz IoT-központ által generált. 
-    ![A kapcsolat részletei](media\concepts-connectivity\device-connect.PNG)
+    ![A kapcsolat részletei](media/concepts-connectivity/device-connect.PNG)
 1. Használja az alábbi kapcsolati adatokat **Eszközidentitás eszköz nevét és az eszköz elsődleges kulcs** kiépítése, és csatlakoztassa az eszközt, és azokat az adatokat, azonnal áramlása az eszköz kódjában. Az MxChip eszköz kövesse használatakor [részletes utasításokat itt](howto-connect-devkit.md#add-a-real-device), indítsa el a szakaszban leírt **az DevKit eszköz előkészítése**.   
 
     Az alábbiakban a hivatkozások más nyelven, akkor érdemes használni.
@@ -137,13 +137,13 @@ Csatlakoztatni az eszközöket az IoT-X509 használatával központi tanúsítv�
 
     *   **Adja hozzá a X509 legfelső szintű vagy köztes tanúsítványt** a levél eszköztanúsítványok létrehozásához használ. Nyissa meg a felügyelet > eszköz kapcsolat > tanúsítványok. 
     
-        ![Kapcsolati beállítások](media\concepts-connectivity\connection-settings.PNG)
+        ![Kapcsolati beállítások](media/concepts-connectivity/connection-settings.PNG)
     *   **Tanúsítvány-ellenőrzés:** ellenőrzése a tanúsítvány tulajdonosa biztosítja, hogy a tanúsítvány titkos kulcs birtokában van a tanúsítvány feltöltése. A tanúsítvány
         *  Ellenőrző kód létrehozása, a gombra kattintva az ellenőrző kód mezőben az ellenőrző kód létrehozása mellett. 
         *  Hozzon létre egy X.509-hitelesítési tanúsítvány az ellenőrzőkódot, mentse el a tanúsítványt egy .cer fájlba. 
         *  Töltse fel az aláírt hitelesítési tanúsítványt, és kattintson ellenőrizze.
 
-        ![Kapcsolati beállítások](media\concepts-connectivity\verify-cert.png)
+        ![Kapcsolati beállítások](media/concepts-connectivity/verify-cert.png)
     *   **Másodlagos tanúsítvány:** szeretné visszaállítani a tanúsítványokat kell az IoT-megoldás élettartama során. Két fő oka a működés közbeni tanúsítványok lenne a biztonsági incidensek és a tanúsítvány lejárhat. Másodlagos tanúsítványok segítségével csökkenthető a leállások a megfelelő eszközök kiépítése az elsődleges tanúsítvány frissítése során.
 
     **CSAK TESZTELÉSI CÉLRA** 
@@ -180,7 +180,7 @@ IoT Central lehetővé teszi azon kulcsfontosságú forgatókönyvek egyike OEM-
 
 Alább van a flow csatlakoztatni az eszközöket a szolgáltatással
 
-![Kapcsolati beállítások](media\concepts-connectivity\device-connection-flow.PNG)
+![Kapcsolati beállítások](media/concepts-connectivity/device-connection-flow.PNG)
 
 
 Kövesse a lépéseket, az Ön által választott eszköz hitelesítési sémát (X509/SAS-) alapú
@@ -188,7 +188,7 @@ Kövesse a lépéseket, az Ön által választott eszköz hitelesítési sémát
 1. **Kapcsolati beállítások** 
     * **X509 tanúsítványok:** [hozzáadása, és ellenőrizze a legfelső szintű vagy köztes tanúsítványt](#connect-devices-using-x509-certificates) , amellyel az eszköztanúsítványok létrehozásához a következő lépésben.
     * **SAS:** másolja az elsődleges kulcsot (ezt a kulcsot nem a csoport az IoT Central alkalmazáshoz tartozó SAS-kulcsot), és ezzel hozzon létre az eszköz SAS-kulcsokat, a következő lépésben. 
-![Kapcsolatbeállítások SAS](media\concepts-connectivity\connection-settings-sas.png)
+![Kapcsolatbeállítások SAS](media/concepts-connectivity/connection-settings-sas.png)
 
 1. **Eszköz hitelesítő adatok előállítása** 
     *   **Tanúsítványok X509:** az eszközöket a legfelső szintű vagy köztes tanúsítványt az alkalmazáshoz hozzáadott segítségével levél-tanúsítványainak előállításához. Győződjön meg arról, hogy használja a **Eszközazonosító** , egy olyan CNAME rekordot a levél tanúsítványok és  **<span style="color:Red">(kell lennie a kisbetűs)</span>**. Íme egy [parancssori eszköz](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md ) tesztelés levél/eszköz tanúsítványainak előállításához.
@@ -232,7 +232,7 @@ Eszköz Registeretd során
 Iot hub eszköz kapcsolati karakterláncát az Azure IoT Hub használatával lekérheti az alábbi lépéseket 
 1. Például beolvasni a kapcsolat adatait **hatókör azonosítója, az eszköz Azonosítóját, a eszköz elsődleges kulcs** az eszköz oldalról (itt van az eszköz lapon > kattintson a csatlakozás) 
 
-    ![Kapcsolat adatai](media\concepts-connectivity\device-connect.PNG)
+    ![Kapcsolat adatai](media/concepts-connectivity/device-connect.PNG)
 
 1. Az alábbi parancs parancssori eszköz használatával, az eszköz kapcsolati karakterláncának beolvasása.
     Használja az alábbi utasításokat követve az eszköz kapcsolati karakterláncának lekérése  

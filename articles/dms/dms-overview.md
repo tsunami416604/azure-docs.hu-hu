@@ -10,12 +10,12 @@ ms.service: database-migration
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/04/2018
-ms.openlocfilehash: ce13607e795710ebc7b0020a0025bd207327f1d2
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: d255894b7b9673f3a7d27414b4fb0c114d821747
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878754"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962144"
 ---
 # <a name="what-is-the-azure-database-migration-service"></a>Mi az az Azure Database Migration Service?
 Az Azure Database Migration Service egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a zökkenőmentes migrálást a több adatbázis-forrásokhoz, az Azure data platformokra minimális állásidővel (online áttelepítések).
@@ -27,7 +27,6 @@ Az Azure Database Migration Service integrálható a meglévő eszközök és sz
 > Az Azure Database Migration Service egy online migrálás végrehajtásához használatához hozzon létre egy példányt (előzetes verzió) prémium tarifacsomag alapján.
 
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
-
 Naprakész információk az Azure Database Migration Service regionális elérhetősége: [elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/?products=database-migration).
 
 ## <a name="pricing"></a>Díjszabás

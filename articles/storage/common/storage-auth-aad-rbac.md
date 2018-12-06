@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 5f558ea851d63b08885293efcff3fef600f2cc17
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: ac62800e81cece61e9f51c496ace2868629a49a1
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726389"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960243"
 ---
 # <a name="manage-access-rights-to-azure-blob-and-queue-data-with-rbac-preview"></a>Hozzáférési jogosultsággal az Azure Blob- és üzenetsoradatot RBAC (előzetes verzió) használata kezelheti
 
@@ -40,14 +40,14 @@ A tárolók és a várólisták segítségével egyéni szerepköröket is megha
 
 ## <a name="assign-a-role-to-a-security-principal"></a>Szerepkör hozzárendelése a rendszerbiztonsági tag
 
-Az RBAC szerepkör hozzárendelése egy Azure-identitás engedélyeket lehet biztosítani a tárolók vagy a tárfiókban lévő üzenetsorok. A szerepkör-hozzárendelést a storage-fiókot, vagy egy adott tároló vagy egy üzenetsor gazdagépcsoportjaira. A következő táblázat összefoglalja a hatókör függően a beépített szerepkörök, hozzáférési jogot: 
+Az RBAC szerepkör hozzárendelése egy Azure-identitás engedélyeket lehet biztosítani a tárolók vagy a tárfiókban lévő üzenetsorok. A szerepkör-hozzárendelést a storage-fiókot, vagy egy adott tároló vagy egy üzenetsor gazdagépcsoportjaira. A következő táblázat összefoglalja a hatókör függően a beépített szerepkörök, hozzáférési jogot:
 
-|                                 |     Blobadatok Közreműködője                                                 |     Blobadatok olvasója                                                |     Üzenetsorbeli adatok Közreműködője                                  |     Üzenetsorbeli adatok olvasója                                 |
-|---------------------------------|------------------------------------------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------|----------------------------------------------------------|
-|    Előfizetés hatóköre       |    Tárolók és blobok az előfizetésben az olvasási/írási hozzáférést       |    Olvasási hozzáférés tárolók és blobok az előfizetésben       |    Olvasási/írási hozzáférést az előfizetés összes várólista       |    Olvasási hozzáférés az előfizetésben található összes várólista         |
-|    Erőforráscsoport hatóköre     |    Olvasási/írási hozzáférést a tárolók és blobok az erőforráscsoportban     |    Olvasási hozzáférés tárolók és blobok az erőforráscsoportban     |    Olvasási/írási hozzáférés az erőforráscsoportban lévő összes várólista     |    Olvasási hozzáférés az erőforráscsoportban lévő összes üzenetsor     |
-|    Storage-fiók hatóköre    |    Olvasási/írási hozzáférést a tárolókhoz és a BLOB storage-fiókban    |    Olvasási hozzáférés tárolók és a BLOB storage-fiókban    |    Olvasási/írási hozzáférést a storage-fiókban lévő összes várólista    |    Olvasási hozzáférés a tárfiókban lévő összes üzenetsor    |
-|    Tároló/várólista hatóköre    |    Olvasási/írási hozzáférést a megadott tárolóhoz és annak blobjaihoz              |    A megadott tárolóhoz és annak blobjaihoz olvasási hozzáférés              |    Olvasási/írási hozzáférést a megadott várólista                  |    Olvasási hozzáférés a megadott várólista                    |
+|Hatókör|BLOB adatok tulajdonosa|Blobadatok Közreműködője|Blobadatok olvasója|Üzenetsorbeli adatok Közreműködője|Üzenetsorbeli adatok olvasója|
+|---|---|---|---|---|---|
+|Az előfizetés-szintű|Tárolók és blobok az előfizetésben az olvasási/írási hozzáférést|Tárolók és blobok az előfizetésben az olvasási/írási hozzáférést| Olvasási hozzáférés tárolók és blobok az előfizetésben|Olvasási/írási hozzáférést az előfizetés összes várólista|Olvasási hozzáférés az előfizetésben található összes várólista|
+|Erőforráscsoport szintjén|Olvasási/írási hozzáférést a tárolók és blobok az erőforráscsoportban|Olvasási/írási hozzáférést a tárolók és blobok az erőforráscsoportban|Olvasási hozzáférés tárolók és blobok az erőforráscsoportban|Olvasási/írási hozzáférés az erőforráscsoportban lévő összes várólista|Olvasási hozzáférés az erőforráscsoportban lévő összes üzenetsor|
+|Storage-fiók szintjén|Olvasási/írási hozzáférést a tárolókhoz és a BLOB storage-fiókban|Olvasási/írási hozzáférést a tárolókhoz és a BLOB storage-fiókban|Olvasási hozzáférés tárolók és a BLOB storage-fiókban|Olvasási/írási hozzáférést a storage-fiókban lévő összes várólista|Olvasási hozzáférés a tárfiókban lévő összes üzenetsor|
+|Tároló/várólista szint|Olvasási/írási hozzáférést a megadott tárolóhoz és annak blobjaihoz|Olvasási/írási hozzáférést a megadott tárolóhoz és annak blobjaihoz|A megadott tárolóhoz és annak blobjaihoz olvasási hozzáférés|Olvasási/írási hozzáférést a megadott várólista|Olvasási hozzáférés a megadott várólista|
 
 > [!NOTE]
 > Az Azure Storage-fiók tulajdonosai akkor nem lesznek automatikusan hozzárendelve engedélyeket az adatok eléréséhez. Kell explicit módon saját magának egy RBAC szerepkör hozzárendelése az Azure Storage. Az előfizetés, erőforráscsoport, tárfiók, vagy egy tároló vagy üzenetsor szintjén rendelhet.
@@ -76,6 +76,9 @@ Minden tárolók vagy az Azure Portalon a tárfiókban lévő üzenetsorok való
 
 ### <a name="assign-a-role-scoped-to-a-container-or-queue-in-the-azure-portal"></a>Egy tároló vagy az Azure Portalon várólista hatóköre szerepkör hozzárendelése
 
+> [!IMPORTANT]
+> Ezt megteheti egy fiókot használja a hierarchikus névtér esetében engedélyezve van, még ha nem.
+
 Egy tároló vagy egy üzenetsor hatókörű beépített szerepkör hozzárendelése szükséges lépések hasonlóak. Az itt bemutatott eljárás hozzárendel egy szerepkör hatóköre egy tároló, de várólista hatóköre szerepkör hozzárendelése ugyanazokat a lépéseket követheti: 
 
 1. Az a [az Azure portal](https://portal.azure.com), lépjen a tárfiókhoz, és megjeleníti a **áttekintése** a fiókhoz.
@@ -99,4 +102,3 @@ Egy tároló vagy egy üzenetsor hatókörű beépített szerepkör hozzárendel
     - [Szerepköralapú hozzáférés-vezérlés (RBAC) a REST API-val kezelheti.](../../role-based-access-control/role-assignments-rest.md)
 - A tárolókhoz és üzenetsorok, a storage-alkalmazásokban való elérésének hitelesítéséhez, lásd: [az Azure AD használata az Azure Storage-alkalmazások](storage-auth-aad-app.md).
 - Az Azure-tárolók és -üzenetsorok az Azure AD-integrációval kapcsolatos további információkért lásd: az Azure Storage csapat blogja tenne fel, [bejelentése a megtekintése az Azure AD-hitelesítés az Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/).
-- 

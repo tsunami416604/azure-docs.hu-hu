@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: heidist
-ms.openlocfilehash: 68d546fc4c853f1a19230b8aee7e86519aaa7e4c
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 5d7f275be1f04658f9901aba9faca83375a9bbf5
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729049"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956193"
 ---
 # <a name="what-is-cognitive-search"></a>Mi a cognitive search?
 
@@ -31,7 +31,7 @@ A kognitív képességek az Azure Search szolgáltatásban a Cognitive Services 
 Természetes nyelvi és képfeldolgozás alkalmazni az adatok betöltési fázisban az eredményeket a dokumentum létrehozása az Azure Search a kereshető indexet az részévé. Az adatok egy Azure data beállított tárolási forrása és egy indexelési folyamat használatával, amelyik keresztül továbbítja [beépített képességek](cognitive-search-predefined-skills.md) van szüksége. Az architektúra olyan bővíthető, így ha a beépített képességek nem elegendő, létrehozása és csatolása [egyéni képesség](cognitive-search-create-custom-skill-example.md) egyéni feldolgozási integrálásához. Példa lehet egy adott tartományban, például a pénzügyi, a tudományos vagy orvosi célzó egyéni entitás modul vagy a dokumentum besorolás.
 
 > [!NOTE]
-> A kognitív keresés nyilvános előzetes verzióban érhető el. Képességcsoport végrehajtási, és a lemezkép kinyerése és a normalizálási jelenleg rendelkezésre állnak az ingyenes. Később az ezen funkciók díjszabásáról jelentjük be. 
+> A kognitív keresés nyilvános előzetes verzióban érhető el. A képességcsoport, a képkinyerés és a normalizálás jelenleg ingyenesen érhető el. Ezeknek a funkcióknak a díjszabását a későbbiekben jelentjük be. 
 
 ## <a name="components-of-cognitive-search"></a>A kognitív keresés összetevői
 
@@ -90,8 +90,19 @@ Indexek jönnek létre az index sémájából, amely meghatározza a mezők és 
 
 **1. lépés: Hozzon létre egy keresési szolgáltatás olyan régióban, így az API-k** 
 
++ USA nyugati középső régiója
 + USA déli középső régiója
++ USA keleti régiója
++ USA 2. keleti régiója
++ USA nyugati régiója, 2.
++ Közép-Kanada
 + Nyugat-Európa
++ Az Egyesült Királyság déli régiója
++ Észak-Európa
++ Dél-Brazília
++ Délkelet-Ázsia
++ Közép-India
++ Kelet-Ausztrália
 
 **2. lépés: Gyakorlati tapasztalatokat szakértőjévé válhat a munkafolyamat**
 

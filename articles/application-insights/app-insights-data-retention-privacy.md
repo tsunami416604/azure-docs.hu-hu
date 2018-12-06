@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 075358ad559806c375d44b6a125e8d2839b6632f
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 2814ecb0ff9fc49e4763dbe604fef353394f9aac
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726304"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965240"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés, megőrzés és tárolás az Application Insights szolgáltatásban
 
@@ -101,7 +101,6 @@ A Microsoft adatokat használja, csak annak érdekében, hogy a szolgáltatás �
 
 ## <a name="where-is-the-data-held"></a>Az adatok tárolási helye?
 * Az Amerikai Egyesült Államok, Európa vagy Délkelet-Ázsia. Kiválaszthatja a helyét, amikor létrehoz egy új Application Insights-erőforrást. 
-
 
 #### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>Jelent az alkalmazás rendelkezik az Amerikai Egyesült Államok, Európa vagy Délkelet-Ázsia felhőben szeretne?
 * Nem. Az alkalmazás bárhol futhat, a felhőben vagy a saját helyszíni gazdagépekre.
@@ -280,6 +279,9 @@ A [platformokhoz készült SDK-k][platforms], tekintse meg a dokumentumokat.
 | SDK-diagnosztika |Nyomkövetési üzenet vagy kivétel |
 
 Is [kikapcsolhatja az egyes adatok is az ApplicationInsights.config szerkesztésével][config]
+
+> [!NOTE]
+> Ügyfél IP használható kikövetkeztetni a földrajzi hely, de alapértelmezés szerint a már nem található IP-adatokat, és nullákból kerüljenek a kapcsolódó mezőben. Ismerje meg jobban a személyes adatok kezelésének ajánlott ez [cikk](../log-analytics/log-analytics-personal-data-mgmt.md#application-data). Ha szeretné tárolni az IP-cím ehhez az egy [telemetriainicializáló](./app-insights-api-filtering-sampling.md#add-properties-itelemetryinitializer).
 
 ## <a name="credits"></a>Stáblisták
 A termék által elérhető MaxMind létrehozott GeoLite2 adatokat tartalmaz [ http://www.maxmind.com ](http://www.maxmind.com).

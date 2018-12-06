@@ -1,6 +1,6 @@
 ---
-title: Helyezze át a nyilvános társviszony-létesítés az Azure ExpressRoute a Microsoft társviszony-létesítés |} Microsoft Docs
-description: Ez a cikk bemutatja, a lépések a Microsoft a nyilvános társviszony az ExpressRoute-társviszony létesítése –.
+title: Helyezze át a nyilvános társviszony-létesítést az Azure expressroute-on Microsoft társviszony-létesítésre |} A Microsoft Docs
+description: Ez a cikk bemutatja, a lépések végrehajtásával helyezhetők át, a nyilvános társviszony-létesítés a Microsoft társviszony-létesítést az expressroute-on.
 services: expressroute
 documentationcenter: na
 author: cherylmc
@@ -15,67 +15,67 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: f34fabc95d5b56edc6e37c323bebf60bd98c8b90
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 579f8874459004ef6bfa0d0794ab09333e053acb
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30314299"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966114"
 ---
-# <a name="move-a-public-peering-to-microsoft-peering"></a>Helyezze át a nyilvános társviszony-létesítést úgy Microsoft társviszony-létesítés
+# <a name="move-a-public-peering-to-microsoft-peering"></a>Helyezze át a nyilvános társviszony-létesítés Microsoft társviszony-létesítésre
 
-A Microsoft társviszony-létesítés útvonal szűrők az Azure PaaS szolgáltatások, például az Azure storage és az Azure SQL Database ExpressRoute támogatja. Most kell a Microsoft PaaS és a Szolgáltatottszoftver-szolgáltatások eléréséhez csak egy útválasztási tartomány. Útvonal-szűrőkkel szelektív hirdetési használni kívánt Azure-régiók PaaS szolgáltatás előtagjait.
+Az ExpressRoute támogatja a Microsoft-társviszony-létesítés útvonalszűrőkkel való használatát az Azure PaaS-szolgáltatások, például az Azure Storage és az Azure SQL Database esetén. A Microsoft PaaS- és SaaS-szolgáltatásokhoz való hozzáféréshez most csak egy útválasztási tartományra van szüksége. Útvonalszűrők segítségével szelektíven meghirdetheti a PaaS-szolgáltatások előtagjait a felhasználni kívánt Azure-régiókhoz.
 
-Ez a cikk segítséget nyújt egy nyilvános társviszony-létesítési konfiguráció áthelyezése a Microsoft társviszony-létesítés állásidő nélkül. További információ az útválasztási tartományok és esetében: [ExpressRoute Kapcsolatcsoportok és útválasztási tartományok](expressroute-circuit-peerings.md).
+Ez a cikk segít helyezze át a nyilvános társviszony-létesítés konfigurációját a Microsoft társviszony-létesítés üzemkimaradás nélkül. Útválasztási tartományok és a társviszony-létesítéseket kapcsolatos további információkért lásd: [ExpressRoute-Kapcsolatcsoportok és útválasztási tartományok](expressroute-circuit-peerings.md).
 
 
 ## <a name="before"></a>Előkészületek
 
-* Ha csatlakozni szeretne a Microsoft társviszony-létesítést, kell beállítása és kezelése a hálózati címfordítást. A kapcsolat szolgáltatójánál előfordulhat, hogy beállítása és kezelése a felügyelt szolgáltatásként NAT. Ha azt tervezi, hogy elérje az Azure PaaS és a Microsoft társviszony-létesítés Azure szolgáltatott szoftver szolgáltatásokat, fontos a hálózati Címfordítás IP-készlet megfelelő méretének. Az ExpressRoute NAT kapcsolatos további információkért tekintse meg a [NAT követelmények a Microsoft társviszony-létesítéshez](expressroute-nat.md#nat-requirements-for-microsoft-peering).
+* Ha csatlakozni szeretne a Microsoft társviszony-létesítés, kell beállítása és kezelése helyezkedik el. A kapcsolatszolgáltató előfordulhat, hogy beállítása és kezelése a NAT egy felügyelt szolgáltatásként. Ha azt tervezi, az Azure PaaS és Microsoft társviszony-létesítés Azure SaaS-szolgáltatások eléréséhez, fontos a megfelelő méretezés a NAT IP-készlet. Az ExpressRoute NAT kapcsolatos további információkért lásd: a [Microsoft társviszony-létesítés NAT-követelményei](expressroute-nat.md#nat-requirements-for-microsoft-peering).
 
-* Ha nyilvános társviszony használja, és jelenleg nyilvános IP-címekhez használt IP-hálózat szabályok hozzáférés [Azure Storage](../storage/common/storage-network-security.md) vagy [Azure SQL Database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md), meg kell győződnie arról, hogy a hálózati Címfordítás IP-címkészlet konfigurálva a Microsoft társviszony-létesítés szerepel a listában nyilvános IP-címek az Azure storage-fiók vagy az Azure SQL-fiók.
+* Ha a nyilvános társviszony-létesítés használata jelenleg rendelkezik az IP-hálózati szabályok használt nyilvános IP-címek hozzáférés [Azure Storage](../storage/common/storage-network-security.md) vagy [Azure SQL Database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md), győződjön meg róla, hogy a NAT IP-címkészlet konfigurálva kell a Microsoft társviszony-létesítés tartalmazza az Azure storage-fiók vagy az Azure SQL-fiók nyilvános IP-címek listáját.
 
-* Ahhoz, hogy a Microsoft társviszony-létesítés állásidő nélkül áthelyezi, kövesse a lépéseket a cikk jelenjenek meg ezek a sorrendben.
+* Annak érdekében, hogy a Microsoft társviszony-létesítés üzemkimaradás nélkül át, kövesse a lépéseket ebben a sorrendben jelenjenek meg ezek a cikkben.
 
-## <a name="create"></a>1. A Microsoft társviszony-létesítés létrehozása
+## <a name="create"></a>1. A Microsoft társviszony-létesítés
 
-Ha a Microsoft társviszony-létesítés nem lett létrehozva, használja a következő cikkekben valamelyikét létrehozása a Microsoft társviszony-létesítés. Ha a kapcsolat szolgáltató ajánlatok felügyelt réteg 3 szolgáltatások, kérje meg a kapcsolat szolgáltatójánál engedélyezése a Microsoft a kör társviszony-létesítés.
+Microsoft társviszony-létesítés nem lett létrehozva, ha bármely, a következő cikkek segítségével a Microsoft társviszony-létesítés. Ha felügyelt kapcsolat szolgáltató ajánlatait igényei 3 services layer, megkérheti a kapcsolatszolgáltató engedélyezése a Microsoft társviszony-létesítést a kapcsolatcsoporthoz.
 
-  * [Hozzon létre a Microsoft társviszony-létesítés Azure-portál használatával](expressroute-howto-routing-portal-resource-manager.md#msft)
-  * [Hozzon létre a Microsoft társviszony-létesítés Azure Powershell használatával](expressroute-howto-routing-arm.md#msft)
-  * [Hozzon létre a Microsoft társviszony-létesítés Azure parancssori felület használatával](howto-routing-cli.md#msft)
+  * [Hozzon létre a Microsoft társviszony-létesítés Azure portal használatával](expressroute-howto-routing-portal-resource-manager.md#msft)
+  * [Hozzon létre a Microsoft társviszony-létesítés Azure Powershell-lel](expressroute-howto-routing-arm.md#msft)
+  * [Hozzon létre a Microsoft társviszony-létesítés Azure CLI használatával](howto-routing-cli.md#msft)
 
 ## <a name="validate"></a>2. Ellenőrizze a Microsoft társviszony-létesítés engedélyezve van
 
-Győződjön meg arról, hogy engedélyezve van a Microsoft társviszony-létesítést, és a meghirdetett nyilvános előtag konfigurált állapotban van.
+Győződjön meg arról, hogy a Microsoft társviszony-létesítés engedélyezve van, és a meghirdetett nyilvános előtagok konfigurált állapotban vannak.
 
   * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md#getmsft)
   * [Azure PowerShell](expressroute-howto-routing-arm.md#getmsft)
   * [Azure CLI](howto-routing-cli.md#getmsft)
 
-## <a name="routefilter"></a>3. Konfigurál és összekapcsol útvonal szűrőt a kapcsolatcsoport
+## <a name="routefilter"></a>3. Konfigurálása és a egy útvonalszűrőhöz csatlakoztatása kapcsolatcsoporthoz
 
-Alapértelmezés szerint új Microsoft társviszony hirdetményt a előtagokat mindaddig, amíg egy útvonal-szűrőt a kapcsolatcsoport van csatolva. Amikor egy útvonal-szűrő szabályt hoz létre, megadhatja a szolgáltatás közösségeiben kíván felhasználni az Azure PaaS szolgáltatások, az alábbi képernyőfelvételen látható módon Azure-régiók listáját:
+Alapértelmezés szerint a Microsoft társviszony-létesítéseket új ne hirdesse meg bármely előtagok mindaddig, amíg egy útvonalszűrőhöz csatolva van a kapcsolatcsoport. Egy útvonalszűrő-szabály létrehozásakor az Azure-régiók, amelyet szeretne felhasználni az Azure PaaS-szolgáltatások, az alábbi képernyőképen látható módon szolgáltatásközösségek listájában adhatja meg:
 
-![Nyilvános társviszony egyesítése](.\media\how-to-move-peering\public.png)
+![Nyilvános társviszony-létesítés egyesítése](./media/how-to-move-peering/public.png)
 
-Használja a következő cikkek útvonal szűrők konfigurálására:
+Adja meg a következő cikkek bármelyikével útvonalszűrők:
 
-  * [Be annak a Microsoft társviszony-létesítéshez az Azure portál használatával](how-to-routefilter-portal.md)
-  * [Be annak a Microsoft társviszony-létesítéshez Azure PowerShell használatával](how-to-routefilter-powershell.md)
-  * [Be annak a Microsoft társviszony-létesítéshez Azure parancssori felület használatával](how-to-routefilter-cli.md)
+  * [A Microsoft társviszony-létesítést az Azure portal használatával útvonalszűrőinek konfigurálása](how-to-routefilter-portal.md)
+  * [Microsoft társviszony-létesítés Azure PowerShell-lel útvonalszűrőinek konfigurálása](how-to-routefilter-powershell.md)
+  * [Microsoft társviszony-létesítés Azure CLI-vel útvonalszűrőinek konfigurálása](how-to-routefilter-cli.md)
 
-## <a name="delete"></a>4. A nyilvános társviszony törlése
+## <a name="delete"></a>4. A nyilvános társviszony-létesítés törlése
 
-Miután meggyőződött arról, hogy a Microsoft társviszony-létesítés van konfigurálva, és a előtagokat fel kívánja megfelelően hirdet a Microsoft társviszony-létesítést, majd törölheti a nyilvános társviszony-létesítést. A nyilvános társviszony törléséhez használja a következő cikkekben valamelyikét:
+Miután ellenőrizte, hogy a Microsoft társviszony-létesítésre van konfigurálva, és az előtagok fel kívánja használni a Microsoft társviszony-létesítés megfelelően van-e hirdetve, majd törölheti a nyilvános társviszony-létesítés. A nyilvános társviszony-létesítés törléséhez használja a következő cikkek valamelyikét:
 
-  * [Törölje az Azure nyilvános társviszony-létesítés Azure-portál használatával](expressroute-howto-routing-portal-resource-manager.md#deletepublic)
-  * [Törölje az Azure nyilvános társviszony-létesítés Azure PowerShell használatával](expressroute-howto-routing-arm.md#deletepublic)
-  * [Törölje az Azure nyilvános társviszony-létesítés parancssori felület használatával](howto-routing-cli.md#deletepublic)
+  * [Az Azure nyilvános társviszony-létesítés törlése az Azure portal használatával](expressroute-howto-routing-portal-resource-manager.md#deletepublic)
+  * [Az Azure nyilvános társviszony-létesítés törlése az Azure PowerShell-lel](expressroute-howto-routing-arm.md#deletepublic)
+  * [Az Azure nyilvános társviszony-létesítés törlése parancssori felület használatával](howto-routing-cli.md#deletepublic)
   
-## <a name="view"></a>5. Nézet esetében
+## <a name="view"></a>5. Társviszony-létesítéseket megtekintése
   
-Egy ExpressRoute-Kapcsolatcsoportok és az Azure portálon társviszony listája látható. További információkért lásd: [megtekintése a Microsoft társviszony-létesítési részletek](expressroute-howto-routing-portal-resource-manager.md#getmsft).
+Minden ExpressRoute-Kapcsolatcsoportok és a társviszony az Azure Portalon listáját láthatja. További információkért lásd: [megtekintése a Microsoft társviszony-létesítés részleteinek](expressroute-howto-routing-portal-resource-manager.md#getmsft).
 
 ## <a name="next-steps"></a>További lépések
 

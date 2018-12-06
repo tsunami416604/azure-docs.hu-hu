@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 3c2b44455b417d1bc764337d91a5535d7ffa34a5
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: ad6fe023c4e93328331140dc3552ae1afd7c83ef
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783372"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970630"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factoryban történő futtatásának biztonsági szempontjai
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -167,7 +167,7 @@ A következő táblázat tartalmazza a Windows tűzfal bejövő port követelmé
 | ------------- | ---------------------------------------- |
 | 8050 (TCP)    | A PowerShell-parancsmag titkosítás szükséges leírtak szerint [adattárak az Azure Data Factory a helyszíni hitelesítő adatok titkosításához](encrypt-credentials-self-hosted-integration-runtime.md), és a hitelesítőadat-kezelő alkalmazást biztonságosan a helyszíni adattárak hitelesítő adatok beállítása a saját üzemeltetésű integrációs modulban. |
 
-![Átjáró-port követelményei](media\data-movement-security-considerations/gateway-port-requirements.png) 
+![Átjáró-port követelményei](media/data-movement-security-considerations/gateway-port-requirements.png) 
 
 #### <a name="ip-configurations-and-whitelisting-in-data-stores"></a>IP-konfigurációk és engedélyezés az adattárak
 Néhány adattár a felhőben is megkövetelheti, hogy Ön engedélyezett a tároló eléréséhez a gép IP-címét. Győződjön meg arról, hogy a saját üzemeltetésű integrációs modult tartalmazó számítógépen IP-címe szerepel az engedélyezési listán, vagy megfelelően konfigurálva a tűzfal.

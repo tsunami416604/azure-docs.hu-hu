@@ -4,22 +4,19 @@ description: A Microsoft Azure virtuális hálózatok leggyakrabban feltett kér
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: jeconnoc
-editor: tysonn
-ms.assetid: 54bee086-a8a5-4312-9866-19a1fba913d0
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/16/2018
+ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: 6c429931a7a17ab62892ecc774a5cca15a532f72
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 49f7e0b19f454e37e70774f3a675bd5094687114
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237634"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967078"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Az Azure Virtual Network – gyakori kérdések (GYIK)
 
@@ -233,7 +230,7 @@ Igen. Globális virtuális társhálózatok létesítése lehetővé teszi a kü
 Igen. Emellett akkor lehet megállapítani a virtuális hálózatok közötti társviszony-létesítés (akár helyi, akár globális), ha az előfizetés másik Azure Active Directory-bérlő tartozik. Ezt megteheti a PowerShell vagy parancssori felület használatával. Portál még nem támogatott.
 
 ### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>A virtuális hálózatok közötti társviszony-létesítési kapcsolaton egy *kezdeményezve* állapot, miért nem tudok csatlakozni?
-Ha a társviszony-létesítési kapcsolat által kezdeményezett állapotban van, ez azt jelenti, csak egy hivatkozás létrehozott. Egy kétirányú kapcsolat jöjjön létre kell hozni egy sikeres kapcsolat. Például a virtuális hálózat A b virtuális hálózatok közötti társviszonyt, hivatkozást kell létrehozni a b c és a b, c. Mindkét kapcsolat létrehozása módosítja a állapot *csatlakoztatva.*
+Ha a társviszony-létesítési kapcsolat által kezdeményezett állapotban van, ez azt jelenti, csak egy hivatkozás létrehozott. Annak érdekében, hogy a sikeres kapcsolat létrehozásához létre kell hozni egy kétirányú kapcsolat. Például a virtuális hálózat A b virtuális hálózatok közötti társviszonyt, hivatkozást kell létrehozni a b c és a b, c. Mindkét kapcsolat létrehozása módosítja a állapot *csatlakoztatva.*
 
 ### <a name="my-vnet-peering-connection-is-in-disconnected-state-why-cant-i-create-a-peering-connection"></a>A virtuális hálózatok közötti társviszony-létesítési kapcsolaton egy *leválasztott* állapot, miért nem hozható létre egy társviszony-létesítési kapcsolat?
 Ha a virtuális hálózatok közötti társviszony-létesítési kapcsolat megszakad, az azt jelenti, a létrehozott hivatkozások egyikét törölték. Annak érdekében, hogy a társviszony-létesítési kapcsolatot létesíteni, szüksége lesz a hivatkozás törlése, és hozza létre újra.
@@ -242,7 +239,7 @@ Ha a virtuális hálózatok közötti társviszony-létesítési kapcsolat megsz
 Igen. Társviszonyt virtuális hálózatok között, előfizetések és -régiók között.
 
 ### <a name="can-i-peer-two-vnets-with-matching-or-overlapping-address-ranges"></a>Társviszonyt két virtuális hálózat egyező vagy egymást átfedő címtartományai is?
-Nem. Címterek engedélyezése a virtuális hálózatok közötti Társviszony nem overalap kell.
+Nem. Címterei nem fedhetik engedélyezése a virtuális hálózatok közötti társviszony-létesítés.
 
 ### <a name="how-much-do-vnet-peering-links-cost"></a>Virtuális hálózatok közötti társviszony költség hivatkozások mennyi tenni?
 Nem jár költségekkel virtuális hálózatok közötti társviszony-létesítési kapcsolat létrehozásához. Társviszony-létesítési kapcsolaton keresztül történő adatátvitel után kell fizetni. [Itt látható](https://azure.microsoft.com/pricing/details/virtual-network/).
@@ -257,7 +254,7 @@ Virtuális hálózatok közötti társviszony-kapcsolatok lépnek *leválasztott
 Nem. Tranzitív társviszony-létesítés nem támogatott. Meg kell társviszonyt létesíteni, hálózattal és a Társviszonyban kerül sor.
 
 ### <a name="are-there-any-bandwidth-limitations-for-peering-connections"></a>Minden társviszony-kapcsolatok sávszélesség-korlátozások vannak?
-Nem. Virtuális hálózatok közötti társviszonyt, hogy a helyi vagy globális, sávszélesség-korlátozások nem ír elő. A virtuális gép vagy a számítási erőforrás által csak korlátok a sávszélesség.
+Nem. Virtuális hálózatok közötti társviszonyt, hogy a helyi vagy globális, sávszélesség-korlátozások nem ír elő. A sávszélesség csak korlátozza a virtuális gép vagy a számítási erőforrás.
 
 ## <a name="virtual-network-tap"></a>Virtuális hálózat TAP-jai
 
@@ -280,3 +277,108 @@ Virtuális hálózati TAP van fejlesztői előzetes verzióban érhető el. Elő
 ### <a name="is-accelerated-networking-for-linuxcreate-vm-accelerated-networking-climd-or-windowscreate-vm-accelerated-networking-powershellmd-supported-with-virtual-network-tap"></a>A gyorsított hálózatkezelése [Linux](create-vm-accelerated-networking-cli.md) vagy [Windows](create-vm-accelerated-networking-powershell.md) virtuális hálózati TAP támogatott?
 
 Akkor lesz, amelyen engedélyezve van a gyorsított hálózatkezelés virtuális géphez csatolt hálózati adapter egy KOPPINTÁSSAL konfigurációt adhat hozzá. Azonban a teljesítmény és a késés, a virtuális gépen, mivel az Azure jelenleg nem támogatja a kiszervezési az adatforgalom tükrözés a következő KOPPINTSON konfigurációs gyorsított hálózatkezelés hozzáadásával érinti.
+
+## <a name="virtual-network-service-endpoints"></a>Virtuális hálózati szolgáltatásvégpontok
+
+### <a name="what-is-the-right-sequence-of-operations-to-set-up-service-endpoints-to-an-azure-service"></a>Mi az a megfelelő feladatütemezési műveletek beállításához a Szolgáltatásvégpontok Azure Service?
+A szolgáltatásvégpontokon keresztül az Azure-szolgáltatási erőforrásnak védelme érdekében két lépésből áll:
+1. Kapcsolja be az Azure-szolgáltatás esetében.
+2. Állítsa be a virtuális hálózati hozzáférés-vezérlési listák, az Azure-szolgáltatás.
+
+Az első lépés egy olyan hálózati ügyféloldali művelet, és a második lépésben egy szolgáltatás-erőforrás az ügyféloldali művelet. Mindkét lépések akkor hajthatók végre, a rendszergazda vagy a rendszergazda szerepkörhöz adott RBAC engedélyek alapján különböző rendszergazdák. Azt javasoljuk, hogy először kapcsolja be a Szolgáltatásvégpontok a virtuális hálózat virtuális hálózati hozzáférés-vezérlési listák beállítása az Azure-szolgáltatás oldalán előtt. Ezért a lépéseket a fent felsorolt virtuális hálózati Szolgáltatásvégpontok beállításához sorrendben kell végrehajtani.
+
+>[!NOTE]
+> Mindkét a fent leírt műveletek előtt korlátozhatja az Azure-szolgáltatáshoz hozzáférést engedélyezett a virtuális hálózatot és alhálózatot kell elvégezni. Csak ne tudják bekapcsolni a Szolgáltatásvégpontok az Azure-szolgáltatás a hálózati oldalon nem biztosít a korlátozott hozzáférésű. Emellett is be kell állítania virtuális hálózati hozzáférés-vezérlési listák az Azure-szolgáltatás oldalán.
+
+Bizonyos szolgáltatások (például az SQL és cosmos DB) engedélyezzen kivételeket a fenti folyamat révén a **IgnoreMissingVnetServiceEndpoint** jelzőt. Miután a jelzővel állítható be a **igaz**, hozzáférés-vezérlési listák virtuális hálózatok közötti hálózati oldalán a Szolgáltatásvégpontok beállítása előtt az Azure-szolgáltatás oldalán is beállíthat. Azure-szolgáltatások ezt a jelzőt, hogy az ügyfelek azokban az esetekben, ahol az adott IP-tűzfalak úgy vannak konfigurálva, az Azure-szolgáltatásokat, és ne tudják bekapcsolni a Szolgáltatásvégpontok a hálózati oldalon a vezethet, kapcsolat legördülő, mert a forrás IP-címe módosul egy nyilvános IPv4-címet, adja meg. Saját cím. Beállítása virtuális hálózati hozzáférés-vezérlési listák az Azure-szolgáltatás oldalán a hálózati oldalon Szolgáltatásvégpontok beállítása előtt elkerülhetők a kapcsolatok legördülő.
+
+### <a name="do-all-azure-services-reside-in-the-azure-virtual-network-provided-by-the-customer-how-does-vnet-service-endpoint-work-with-azure-services"></a>Azure-szolgáltatásokhoz az ügyfél által biztosított az Azure virtuális hálózatban találhatók tegye? Hogyan működik a szolgáltatásvégpont az Azure-szolgáltatásokat?
+
+Nem, nem Azure-szolgáltatásokhoz az ügyfél virtuális hálózatán található. Többsége az Azure data services, például az Azure Storage, Azure SQL és az Azure Cosmos dB-ben több-bérlős szolgáltatás, amely a nyilvános IP-címek keresztül is elérhető. További információ a virtuális hálózat integrációja Azure-szolgáltatások [Itt](virtual-network-for-azure-services.md). 
+
+Ha a virtuális hálózatok szolgáltatásvégponti funkciója (ne tudják bekapcsolni a szolgáltatásvégpont hálózati oldalán és az Azure-szolgáltatás oldalán megfelelő virtuális hálózat ACL-ek beállítása) használja, az Azure-szolgáltatások elérését egy engedélyezett virtuális hálózatot és alhálózatot van korlátozva.
+
+### <a name="how-does-vnet-service-endpoint-provide-security"></a>Hogyan biztosítja a virtuális hálózati szolgáltatásvégpont biztonsági?
+
+A szolgáltatási végpont szolgáltatás (ne tudják bekapcsolni a szolgáltatásvégpont hálózati oldalán és az Azure-szolgáltatás oldalán megfelelő virtuális hálózat ACL-ek beállítása) korlátozza a Azure-szolgáltatáshoz hozzáférést engedélyezett virtuális hálózatot és alhálózatot, így biztosítva a hálózati biztonság és az elkülönítés az Azure-szolgáltatások forgalmára. A Microsoft gerinchálózatán keresztül, így biztosítva a nyilvános internetről elkülönítési réteget tovább az összes forgalom virtuális hálózati Szolgáltatásvégpontok használatával. Ezen túlmenően ügyfelek kiválaszthatják a nyilvános internetkapcsolaton keresztüli hozzáférés az Azure-szolgáltatási erőforrások teljes eltávolításához, és csak a virtuális hálózati IP-tűzfal és a virtuális hálózati hozzáférés-vezérlési listák, így védelme az Azure-szolgáltatási erőforrások a jogosulatlan együttes érkező adatforgalom engedélyezéséhez a hozzáférés.      
+
+### <a name="what-does-the-vnet-service-endpoint-protect---vnet-resources-or-azure-service"></a>Célja, hogy a virtuális hálózati szolgáltatásvégpont védelem – VNet-erőforrások vagy az Azure-szolgáltatás?
+Virtuális hálózati Szolgáltatásvégpontok Azure-szolgáltatási erőforrások védelme érdekében. VNet-erőforrások védve vannak a hálózati biztonsági csoportok (NSG) keresztül.
+
+### <a name="is-there-any-cost-for-using-vnet-service-endpoints"></a>Nem minden olyan virtuális hálózati Szolgáltatásvégpontok használatáért?
+
+Nem, nincs további költség nélkül a virtuális hálózati Szolgáltatásvégpontok használatával.
+
+### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-subscriptions"></a>Kapcsolja be a virtuális hálózati Szolgáltatásvégpontok és virtuális hálózatok közötti ACL-ek beállítása, ha a virtuális hálózat és az Azure-szolgáltatási erőforrások különböző előfizetésekhez tartoznak?
+
+Igen, ez lehetséges. Virtuális hálózatok és az Azure-szolgáltatási erőforrások lehet az azonos vagy eltérő előfizetésekben. A rendszer egyetlen követelménye, hogy a virtuális hálózat és az Azure-szolgáltatási erőforrások bérlőhöz kell tartozniuk az ugyanazon Active Directory (AD).
+
+### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-ad-tenants"></a>Kapcsolja be a virtuális hálózati Szolgáltatásvégpontok és virtuális hálózatok közötti ACL-ek beállítása, ha a virtuális hálózat és az Azure-szolgáltatási erőforrások különböző AD-bérlő tartozik?
+Nem, virtuális hálózati Szolgáltatásvégpontok és virtuális hálózatok közötti ACL-ek nem támogatottak az AD-bérlőn.
+
+### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-express-route-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>Azure virtuális hálózati átjáró (VPN) vagy Express route-átjárón keresztül van csatlakoztatva egy helyszíni eszköz IP-cím hozzáféréssel Azure PaaS-szolgáltatás virtuális hálózati Szolgáltatásvégpontok?
+Alapértelmezés szerint a virtuális hálózatokhoz biztosított Azure-szolgáltatási erőforrások nem érhetők el helyszíni hálózatokról. Ha azt szeretné, hogy a helyszíni forgalom is engedélyeznie kell a nyilvános (általában NAT) IP-címeket a helyszíni vagy ExpressRoute. Ezen IP-címek is hozzáadhatók az Azure-szolgáltatási erőforrások IP-tűzfalainak konfigurálásával.
+
+### <a name="can-i-use-vnet-service-endpoint-feature-to-secure-azure-service-to-multiple-subnets-with-in-a-virtual-network-or-across-multiple-virtual-networks"></a>Szolgáltatásvégpont-funkció az Azure-szolgáltatás több alhálózattal rendelkező virtuális hálózatban vagy több virtuális hálózaton való biztonságos?
+Biztonságos Azure-szolgáltatások több virtuális hálózaton vagy virtuális hálózaton belüli több alhálózaton, egymástól függetlenül engedélyezze a szolgáltatásvégpontokat az egyes alhálózatok hálózati oldalán, és ezután biztonságos beállításával az Azure-szolgáltatások erőforrásait az alhálózatok megfelelő virtuális hálózati hozzáférés-vezérlési listák Azure-szolgáltatás oldalán.
+ 
+### <a name="how-can-i-filter-outbound-traffic-from-a-virtual-network-to-azure-services-and-still-use-service-endpoints"></a>Hogyan lehet az Azure-szolgáltatások virtuális hálózatról kimenő forgalom szűrése és továbbra is a Szolgáltatásvégpontok használatára?
+Ha meg szeretné vizsgálni vagy szűrni a virtuális hálózatról egy Azure-szolgáltatás felé irányuló forgalom, a virtuális hálózaton belüli hálózati virtuális készüléken is telepítheti. A Szolgáltatásvégpontok majd alkalmazhat az alhálózatról, ahol a hálózati virtuális berendezés csak az alhálózathoz, virtuális hálózati hozzáférés-vezérlési listák használatával üzembe helyezett és biztonságos Azure-szolgáltatások erőforrásait. Ebben a forgatókönyvben is lehet hasznos, ha korlátozni az Azure-szolgáltatásokhoz a virtuális hálózat hálózati virtuális készülékek szűrésének segítségével bizonyos Azure-erőforrásokra szeretné. További információkért lásd a [kimenő forgalommal és a hálózati virtuális berendezésekkel](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha#egress-with-layer-7-nvas.md?toc=%2fazure%2fvirtual-network%2ftoc.json) foglalkozó témakört.
+
+### <a name="what-happens-when-you-access-an-azure-service-account-that-has-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>Mi történik, ha egy Azure-szolgáltatási fiók, amely a virtuális hálózati hozzáférés-vezérlési lista (ACL) a virtuális hálózaton kívülről érkező engedélyezve van?
+A HTTP 404-es hiba jelentkezik.
+
+### <a name="are-subnets-of-a-virtual-network-created-in-different-regions-allowed-to-access-an-azure-service-account-in-another-region"></a>Engedélyezi a hozzáférést egy másik régióban található Azure-szolgáltatás fiókja különböző régiókban létrehozott virtuális hálózat alhálózatain is? 
+Igen, a legtöbb Azure-szolgáltatást, különböző régiókban létrehozott virtuális hálózat egy másik régióban található Azure-szolgáltatások keresztül érhetik a virtuális hálózati Szolgáltatásvégpontok. Például ha az Azure Cosmos DB-fiókot az USA nyugati RÉGIÓJA vagy USA keleti Régiójában és a virtuális hálózatok több régióban, a virtuális hálózat érhetik el az Azure Cosmos DB. Tárolási és SQL kivételt jelentenek ez alól, és regionális jellegűek, és ugyanabban a régióban kell a virtuális hálózathoz és az Azure-szolgáltatás.
+  
+### <a name="can-an-azure-service-have-both-vnet-acl-and-an-ip-firewall"></a>Virtuális hálózat ACL-t és a egy IP-tűzfal rendelkezhet az Azure-szolgáltatások?
+Igen, virtuális hálózatok közötti ACL-JEI és a egy IP-tűzfalon is elérhetőek. Mindkét funkció kiegészíti egymást elkülönítési és biztonsági biztosítása érdekében.
+ 
+### <a name="what-happens-if-you-delete-a-virtual-network-or-subnet-that-has-service-endpoint-turned-on-for-azure-service"></a>Mi történik, ha töröl egy virtuális hálózathoz vagy alhálózathoz, amelyhez a szolgáltatásvégpont engedélyezve van a Azure-szolgáltatás rendelkezik?
+Virtuális hálózatok és alhálózatok törlése független műveletek és támogatottak, még akkor is, ha a Szolgáltatásvégpontok az Azure-szolgáltatások be van kapcsolva. Azokban az esetekben, ahol az Azure-szolgáltatások rendelkezik a virtuális hálózati hozzáférés-vezérlési listák ezen virtuális hálózatok és alhálózatok beállítása a virtuális hálózati hozzáférés-vezérlési listák információkat társított, amely az Azure-szolgáltatás le van tiltva egy Vnetben vagy alhálózatban, amely rendelkezik-e kapcsolva szolgáltatásvégpont törlése.
+ 
+### <a name="what-happens-if-azure-service-account-that-has-vnet-service-endpoint-enabled-is-deleted"></a>Mi történik, amely rendelkezik a virtuális hálózati szolgáltatásvégpont engedélyezve van az Azure szolgáltatás-fiókot törölték?
+Az Azure-szolgáltatási fiók törlését független művelet, és akkor is, ha a szolgáltatásvégpont engedélyezve van a hálózati oldalon történik, és virtuális hálózati hozzáférés-vezérlési listák Azure-szolgáltatás oldalán támogatja. 
+
+### <a name="what-happens-to-the-source-ip-address-of-a-resource-like-a-vm-in-a-subnet-that-has-vnet-service-endpoint-enabled"></a>Mi történik, a forrás IP-VNet-hoz engedélyezett szolgáltatásvégponttal rendelkező erőforrás (például egy alhálózatot a virtuális gép)?
+Ha virtuális hálózati Szolgáltatásvégpontok engedélyezve vannak, a forrás IP-címek az erőforrások a virtuális hálózat alhálózati vált az Azure virtuális hálózat privát IP-címeket nyilvános IPV4-címek használata Azure-szolgáltatás felé irányuló forgalom. Vegye figyelembe, hogy ez a konkrét IP-tűzfalon, nyilvános IPV4-cím a korábban beállított okozhat az Azure-szolgáltatások sikertelen lesz. 
+
+### <a name="does-service-endpoint-route-always-take-precedence"></a>Nem szolgáltatásvégpont útvonala mindig elsőbbséget?
+Szolgáltatásvégpontok hozzáadása egy rendszer útvonalat, amely elsőbbséget élvez a BGP-útvonalak és optimális útválasztást biztosítanak a szolgáltatási végpont forgalomhoz. A Szolgáltatásvégpontok szolgáltatás forgalmát közvetlenül a virtuális hálózatról a szolgáltatás mindig a Microsoft Azure gerinchálózatán igénybe vehet. Hogyan választ útvonalat az Azure kapcsolatos további információkért lásd: [Azure-beli virtuális hálózat forgalmának útválasztása] (virtual-hálózatok-udr-overview.md).
+ 
+### <a name="how-does-nsg-on-a-subnet-work-with-service-endpoints"></a>Hogyan működik a alhálózat NSG-t a Szolgáltatásvégpontok?
+Az Azure-szolgáltatás eléréséhez NSG-ket kell kimenő kapcsolatok engedélyezése. Ha az NSG-k elérhető minden kimenő internetforgalmat, majd a végpont forgalmának működnie kell. A szolgáltatás IP-címek a szolgáltatáscímkék csak a kimenő forgalmat is korlátozhatja.  
+ 
+### <a name="what-permissions-do-i-need-to-set-up-service-endpoints"></a>Milyen engedélyekkel van szükségem a Szolgáltatásvégpontok beállításához?
+A Szolgáltatásvégpontok a virtuális hálózat külön konfigurálhatók a virtuális hálózathoz írási jogosultsággal rendelkező felhasználó által. Ahhoz, hogy egy felhasználó Azure-szolgáltatási erőforrásokat rendelhessen egy virtuális hálózathoz, rendelkeznie kell a hozzáadott alhálózatokra vonatkozó **Microsoft.Network/JoinServicetoaSubnet** engedéllyel. Ez az engedély alapértelmezés szerint a beépített szolgáltatás-rendszergazdai szerepkör része, és egyéni szerepkörök létrehozásával módosítható. Tudjon meg többet a beépített szerepkörök és az adott engedélyek hozzárendelése a [egyéni szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/custom-roles?toc=%2fazure%2fvirtual-network%2ftoc.json).
+ 
+
+### <a name="can-i-filter-virtual-network-traffic-to-azure-services-allowing-only-specific-azure-service-resources-over-vnet-service-endpoints"></a>E szűrheti az Azure-szolgáltatások, virtuális hálózati forgalom virtuális hálózati Szolgáltatásvégpontok keresztül csak az adott azure-szolgáltatási erőforrások, így? 
+
+Virtuális hálózat (VNet) szolgáltatásvégpont-szabályzat lehetővé teszi az Azure-szolgáltatások, így csak bizonyos Azure-szolgáltatási erőforrások keresztül a Szolgáltatásvégpontok a virtuális hálózati forgalmának szűrése. Szolgáltatásvégpont-szabályzatra adja meg a részletes hozzáférés-vezérlés a virtuális hálózati forgalmat az Azure-szolgáltatásokra. További információ a szolgáltatásvégpont-szabályzat [Itt](virtual-network-service-endpoint-policies-overview.md).
+ 
+### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>Bármely korlátozva van hány virtuális hálózati Szolgáltatásvégpontok segítségével állítható be a saját virtuális hálózaton?
+A virtuális hálózati Szolgáltatásvégpontok a virtuális hálózat száma nincs korlátozva van. Az Azure-szolgáltatási erőforrások (például Azure-tárfiókok) esetében a szolgáltatások korlátozhatják az erőforrás biztosításához használt alhálózatok számát. Az alábbi táblázat néhány példa korlát: 
+
+|||
+|---|---|
+|Azure-szolgáltatás| Virtuális hálózati szabályainak vonatkozó korlátozások|
+|Azure Storage| 100|
+|Azure SQL| 128|
+|Azure SQL Data Warehouse|  128|
+|Az Azure KeyVault|    128|
+|Azure Cosmos DB|   64|
+|Azure-eseményközpont|   128|
+|Azure Service Bus| 128|
+|Az Azure Data Lake Store V1|  100|
+ 
+>[!NOTE]
+> A korlátok vetik belátása szerint az Azure-szolgáltatás módosításait. Tekintse meg a megfelelő szolgáltatás dokumentációjában szolgáltatások. 
+
+
+
+
+  
+
+
+

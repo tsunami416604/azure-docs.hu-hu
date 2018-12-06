@@ -14,17 +14,17 @@ ms.devlang: csharp
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: shvija
-ms.openlocfilehash: 32345b0f064aa78dbf1cbb84cb2309138e7bf4f7
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 95a689b00d67a9f2c24b4deaf5575464923a1e60
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49455385"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961773"
 ---
 # <a name="send-events-to-azure-event-hubs-using-c"></a>Események küldése az Azure Event Hubs C használatával
 
 ## <a name="introduction"></a>Bevezetés
-Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event hubs részletes ismertetőt talál [Event Hubs – áttekintés](event-hubs-about.md) és [Event Hubs-szolgáltatások](event-hubs-features.md).
+Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
 
 Ez az oktatóanyag azt ismerteti, hogyan küldhet eseményeket egy eseményközpontba egy konzolalkalmazás a c használatával 
 
@@ -33,6 +33,13 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * C-fejlesztési környezetre. Ez az oktatóanyag feltételezi, hogy a gcc-verem Ubuntu 14.04 Azure Linux rendszerű virtuális Gépekhez.
 * [A Microsoft Visual Studio](https://www.visualstudio.com/).
+
+## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs-névtér és eseményközpont létrehozása
+Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és eseményközpont létrehozásához hajtsa végre az eljárást a [Ez a cikk](event-hubs-create.md).
+
+Az eseményközpont hozzáférési kulcs értékének lekérése kövesse a cikkben szereplő: [kapcsolati sztring lekérése](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). A hozzáférési kulcsot a kód írása az oktatóanyag későbbi részében fogja használni. Az alapértelmezett kulcs neve: **RootManageSharedAccessKey**.
+
+Most folytassa a következő lépéseket ebben az oktatóanyagban.
 
 ## <a name="write-code-to-send-messages-to-event-hubs"></a>Kód írása az üzenetek küldése az Event hubs szolgáltatásba való
 Ez a rész bemutatja, hogyan küldhet eseményeket az eseményközpontjába C alkalmazások írásához. A kód a Proton AMQP kódtárat használja a [Apache Qpid projekt](http://qpid.apache.org/). Ez hasonló a Service Bus-üzenetsorok és témakörök az amqp-vel a C látható módon a [ebben a példában](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504). További információkért lásd: a [Qpid Proton dokumentáció](http://qpid.apache.org/proton/index.html).

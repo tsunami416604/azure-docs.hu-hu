@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: ef9fe0e05343f9c99656634a075b1bd464a13c7e
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: c26dcbc2fab7cff3134846234cafaa481fd5ba1a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379587"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972028"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-deployment"></a>Az Azure Stack PKI-tanúsítványok telepítésének előkészítése
 A tanúsítványfájlokat [választott a hitelesítésszolgáltatótól kapott](azure-stack-get-pki-certs.md) kell exportálható és importálható az Azure Stack szemben támasztott követelményeknek megfelelő tulajdonságokkal.
@@ -38,15 +38,15 @@ Ezen lépések előkészítéséhez és az Azure Stack PKI-tanúsítványok elle
 
 1. Az a **Tanúsítványimportáló varázsló**válassza **helyi gépen** importálás helyeként. Kattintson a **Tovább** gombra. A következő képernyőn kattintson a Tovább újra.
 
-    ![Importálási hely helyi számítógépre](.\media\prepare-pki-certs\1.png)
+    ![Importálási hely helyi számítógépre](./media/prepare-pki-certs/1.png)
 
 1.  Válassza a **ebben a tárolóban az összes tanúsítvány helye** majd **vállalati szintű megbízhatóság** helyeként. Kattintson a **OK** a tároló kiválasztása párbeszédpanel bezárásához, majd **tovább**.
 
-    ![A tanúsítványtároló konfigurálása](.\media\prepare-pki-certs\3.png)
+    ![A tanúsítványtároló konfigurálása](./media/prepare-pki-certs/3.png)
 
     a. Ha egy PFX importál, megjelenik egy további párbeszédpanel. Az a **titkos kulcs védelme** lap, adja meg a jelszót a tanúsítványfájlokat, majd engedélyezze a **a kulcs megjelölése exportálhatóként. Ez lehetővé teszi, hogy készítsen biztonsági másolatot, vagy egy későbbi időpontban a kulcsok átviteli** lehetőséget. Kattintson a **Tovább** gombra.
 
-    ![Kulcs megjelölése exportálhatóként](.\media\prepare-pki-certs\2.png)
+    ![Kulcs megjelölése exportálhatóként](./media/prepare-pki-certs/2.png)
 
 1. Az importálás befejeződik a Befejezés gombra.
 
@@ -58,11 +58,11 @@ Nyissa meg a tanúsítványkezelőben MMC-konzolt, és csatlakozzon a helyi szá
 
 1. Kattintson a fájlra, majd válassza ki a tanúsítványok beépülő modul hozzáadása/eltávolítása kattintson a Hozzáadás gombra.
 
-    ![Tanúsítványkezelő beépülő modul hozzáadása](.\media\prepare-pki-certs\mmc-2.png)
+    ![Tanúsítványkezelő beépülő modul hozzáadása](./media/prepare-pki-certs/mmc-2.png)
  
 1. Válassza ki a fiókot, kattintson a Tovább gombra, majd válassza ki a helyi számítógépen, majd fejezze be. Kattintson az ok gombra kattintva zárja be a beépülő modul hozzáadása/eltávolítása lapon.
 
-    ![Tanúsítványkezelő beépülő modul hozzáadása](.\media\prepare-pki-certs\mmc-3.png)
+    ![Tanúsítványkezelő beépülő modul hozzáadása](./media/prepare-pki-certs/mmc-3.png)
 
 1. Keresse meg a tanúsítványok > Vállalati szintű megbízhatóság > tanúsítvány helye. Győződjön meg arról, hogy megjelenik-e a tanúsítvány a jobb oldalon.
 

@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: a162d0c19bef28e6e4566d39c2dc3b82a87a4aa9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6fef56d780fe664e79f66fa23be526aec71d7e7b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242092"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971164"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Egy Azure Marketplace-rendszerképpel egy Terraformot használó linuxos virtuális gépet hozhat létre az Azure-erőforrások felügyelt identitásaival
 
@@ -37,7 +37,7 @@ Itt találja a Terraformot használó linuxos virtuális gép egy példányának
 
 3. A jobb alsó részen, a Terraform részleteit tartalmazó lapon válassza ki a **Létrehozás** gombot.
 
-    ![Terraformot használó virtuális gép létrehozása](media\terraformmsi.png)
+    ![Terraformot használó virtuális gép létrehozása](media/terraformmsi.png)
 
 4. A következő szakaszok a Terraformot használó linuxos virtuális gép létrehozására szolgáló varázsló egyes lépéseinél megadott értékeket tartalmazzák. A következő szakasz a lépések konfigurálásához szükséges értékeket tartalmazza.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: b4b6e91f9b20166f63a4710f42726bf1d4090022
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e502004db62713585d68cdda6f80b4e4024dde28
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251559"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971215"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Biztonsági keret: Hitelesítés |} Megoldások 
 | Termék vagy szolgáltatás | Cikk |
@@ -322,7 +322,7 @@ A `<netMsmqBinding/>` elem a WCF konfigurációs fájl az alábbi arra utasítja
 | **SDL fázis**               | Felépítés |  
 | **Megfelelő technológiák** | Általános, .NET-keretrendszer 3 |
 | **Attribútumok**              | Ügyfél-hitelesítő adat típusa – None |
-| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_transport_client) |
+| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_transport_client) |
 | **Lépések** | Érhető el a hitelesítés azt jelenti, hogy mindenki érhetik el a szolgáltatást. Egy szolgáltatás, amely nem hitelesíti az ügyfeleket lehetővé teszi, hogy minden felhasználó számára a működését. Állítsa be az alkalmazás ügyfél-hitelesítő adatok hitelesítése. Ezt megteheti úgy, hogy a Windows vagy a tanúsítvány az átviteli clientCredentialType. |
 
 ### <a name="example"></a>Példa

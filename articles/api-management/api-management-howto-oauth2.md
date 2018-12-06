@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: c0e502c1627ebe9d63ca43cb46b982bb0639f3d7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 87e5b6098ff9ee74ef8a4314362c30c436d5ad20
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444724"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967929"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Hogyan lehet OAuth 2.0-val az Azure API Management fejlesztői fiókok engedélyezése
 
-Több API-t támogatja [OAuth 2.0](http://oauth.net/2/) biztosításához az API-t, és győződjön meg arról, hogy csak akkor érvényes, ha a felhasználók hozzáférhetnek, és csak, amelyre jogosult használt erőforrások eléréséhez. Ilyen API-k Azure API Management interaktív fejlesztői konzol használatához a szolgáltatás lehetővé teszi a service-példányt szeretne dolgozni az OAuth 2.0-s engedélyezett API konfigurálása.
+Több API-t támogatja [OAuth 2.0](https://oauth.net/2/) biztosításához az API-t, és győződjön meg arról, hogy csak akkor érvényes, ha a felhasználók hozzáférhetnek, és csak, amelyre jogosult használt erőforrások eléréséhez. Ilyen API-k Azure API Management interaktív fejlesztői konzol használatához a szolgáltatás lehetővé teszi a service-példányt szeretne dolgozni az OAuth 2.0-s engedélyezett API konfigurálása.
 
 ## <a name="prerequisites"> </a>Előfeltételek
 
@@ -143,7 +143,7 @@ OAuth 2.0 és az API Management használatával kapcsolatos további informáci�
 [Caching policies]: api-management-policy-reference.md#caching-policies
 [Create an API Management service instance]: get-started-create-service-instance.md
 
-[http://oauth.net/2/]: http://oauth.net/2/
+[https://oauth.net/2/]: https://oauth.net/2/
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
 
 [Prerequisites]: #prerequisites

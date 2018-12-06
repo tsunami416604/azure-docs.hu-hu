@@ -8,20 +8,25 @@ manager: jwhit
 editor: tysonn
 ms.assetid: 31572b51-6b57-4945-8208-ecfc3b5304fc
 ms.service: log-analytics
+ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2018
+ms.date: 12/04/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 8493014856fcd8cbe316edc66a5fb934674f5f35
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 63423f8eca6515ebb6467e296f5336ee349c82f4
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882542"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963047"
 ---
-# <a name="custom-fields-in-log-analytics"></a>A Log Analytics egyéni mezők
+# <a name="create-custom-fields-in-log-analytics"></a>Egyéni mezőket hozhat létre a Log Analyticsben
+
+> [!NOTE]
+> Ez a cikk bemutatja, hogyan szöveges adatok a Log Analytics elemezni, a begyűjtésük. Számos előnnyel jár a lekérdezés szöveges datain elemzés, a begyűjtésük után [elemzése a Log Analytics szöveges adatok](../log-query/parse-text.md).
+
 A **egyéni mezők** Log Analytics szolgáltatása lehetővé teszi, hogy a saját kereshető mezők hozzáadásával a Log Analytics meglévő rekordok.  Egyéni mezők automatikusan tölti be más tulajdonságokat ugyanazt a rekordot a kinyert adatokkal.
 
 ![Egyéni mezők áttekintése](media/custom-fields/overview.png)
@@ -45,9 +50,9 @@ A következő szakaszok az eljárás az egyéni mezőt hoz létre.  Ez a cikk al
 > 
 
 ### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>1. lépés – azonosíthatja a bejegyzéseket, amelyek az egyéni mező
-Az első lépéseként azonosítani az egyéni mező lekéri a rekordokat.  Kezdjen egy [standard naplóbeli keresés](../../azure-monitor/log-query/log-query-overview.md) , majd egy rekordot, hogy működjön, a Log Analytics tekintjük át, a modell.  Megadhatja, hogy fog adatokat nyerhet ki az egyéni mezők, amikor a **mező kinyerése varázsló** van megnyitva, ahol ellenőrzése és finomítsa a feltétel.
+Az első lépéseként azonosítani az egyéni mező lekéri a rekordokat.  Kezdjen egy [standard naplólekérdezés](../log-query/log-query-overview.md) , majd egy rekordot, hogy működjön, a Log Analytics tekintjük át, a modell.  Megadhatja, hogy fog adatokat nyerhet ki az egyéni mezők, amikor a **mező kinyerése varázsló** van megnyitva, ahol ellenőrzése és finomítsa a feltétel.
 
-1. Lépjen a **naplóbeli keresés** , és egy [lekérdezése a rekordok](../../azure-monitor/log-query/log-query-overview.md) , amely lesz az egyéni mező.
+1. Lépjen a **naplóbeli keresés** , és egy [lekérdezése a rekordok](../log-query/log-query-overview.md) , amely lesz az egyéni mező.
 2. Válassza ki egy rekordot, amely a Log Analytics segítségével egy modellt használ az adatok feltöltése az egyéni mező kinyerése fogja használni.  Az adatok kinyerése a rekord kívánt határozható meg, és a Log Analytics ezt az információt fogja használni, töltse ki az egyéni mező összes hasonló rekordok logikát meghatározni.
 3. A gombra kattintva bármely a text tulajdonság a rekordot, majd válassza a balra **mezők kinyerése a következőből**.
 4. A **mező a varázsló megnyitásakor**, és a kiválasztott rekord jelenik meg a **fő példa** oszlop.  Az egyéni mező azokat a rekordokat, ugyanazokat az értékeket a tulajdonságokat, amelyeket kiválasztott a meghatározva.  
@@ -80,7 +85,7 @@ A felügyeleti csoportban az összes egyéni mezők listáját megtekintheti a *
 Kétféleképpen egyéni mező eltávolítása.  Az első a **eltávolítása** lehetőséget az egyes mezőkhöz, amikor a teljes lista megtekintése a fent leírtak szerint.  A más módon, hogy egy rekord lekérése, és kattintson a gombra a mező balra.  A menüben a egyéni mező eltávolítása lehetőség lesz.
 
 ## <a name="sample-walkthrough"></a>Mintaútmutató
-A következő szakasz bemutatja egy egyéni mezőt hoz létre teljes példát.  Ebben a példában kibontja a szolgáltatás nevének a Windows-eseményeket, amelyek jelzik a szolgáltatás állapotának módosítása.  Ez a Service Control Manager által létrehozott Windows-számítógépeken a rendszernapló-események támaszkodik.  Ha azt szeretné, kövesse az ebben a példában, kell lennie [rendszernapló információk események gyűjtése a](../../azure-monitor/platform/data-sources-windows-events.md).
+A következő szakasz bemutatja egy egyéni mezőt hoz létre teljes példát.  Ebben a példában kibontja a szolgáltatás nevének a Windows-eseményeket, amelyek jelzik a szolgáltatás állapotának módosítása.  Ez a Service Control Manager által létrehozott Windows-számítógépeken a rendszernapló-események támaszkodik.  Ha azt szeretné, kövesse az ebben a példában, kell lennie [rendszernapló információk események gyűjtése a](data-sources-windows-events.md).
 
 Azt adja meg a következő lekérdezés az összes esemény vissza a szolgáltatásvezérlő 7036-esemény azonosítója, amelyre az esemény azt jelzi, hogy a szolgáltatás indítása vagy leállítása rendelkező.
 
@@ -139,6 +144,6 @@ Mi most már használhatja az egyéni mező, mint bármely más rekord tulajdons
 ![Lekérdezés csoportosítás](media/custom-fields/query-group.png)
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md) építhetők fel lekérdezések egyéni mezők feltétel használatával.
-* A figyelő [egyéni naplófájlok](../../azure-monitor/platform/data-sources-custom-logs.md) , amely elemezni a egyéni mezőkkel.
+* Ismerje meg [naplókereséseket](../log-query/log-query-overview.md) építhetők fel lekérdezések egyéni mezők feltétel használatával.
+* A figyelő [egyéni naplófájlok](data-sources-custom-logs.md) , amely elemezni a egyéni mezőkkel.
 

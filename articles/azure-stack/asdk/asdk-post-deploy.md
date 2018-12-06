@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: a343b01b89bfbe9bc047c0b8b703b975b21b6290
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: e099240d3f8670032ff2d6c0fad295c5f14f6e70
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901878"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969362"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>ASDK telepítés utáni konfigurációs feladatok
 
@@ -41,7 +41,7 @@ API-verzióprofilok segítségével adja meg az Azure Stack-kompatibilis AzureRM
 Telepítheti a legújabb Azure Stack PowerShell-modul vagy a ASDK gazdagépnek internetkapcsolat nélkül:
 
 > [!IMPORTANT]
-> A szükséges verzió telepítése előtt győződjön meg arról, hogy [távolítsa el minden meglévő Azure PowerShell-modulok](.\.\azure-stack-powershell-install.md#3-uninstall-existing-versions-of-the-azure-stack-powershell-modules).
+> A szükséges verzió telepítése előtt győződjön meg arról, hogy [távolítsa el minden meglévő Azure PowerShell-modulok](../azure-stack-powershell-install.md#3-uninstall-existing-versions-of-the-azure-stack-powershell-modules).
 
 - **Internetkapcsolattal rendelkező** ASDK állomásról. Futtassa a következő PowerShell-parancsfájlt a development kit telepítésen ezeket a modulokat telepíteni:
 
@@ -173,7 +173,7 @@ Set-ADDefaultDomainPasswordPolicy -MaxPasswordAge 180.00:00:00 -Identity azurest
 
 ## <a name="enable-multi-tenancy"></a>A több-bérlős üzemmód engedélyezése
 
-Az Azure AD-vel telepítések esetén kell [több bérlős üzemmód engedélyezése](.\.\azure-stack-enable-multitenancy.md#enable-multi-tenancy) a ASDK telepítésekor.
+Az Azure AD-vel telepítések esetén kell [több bérlős üzemmód engedélyezése](../azure-stack-enable-multitenancy.md#enable-multi-tenancy) a ASDK telepítésekor.
 
 > [!NOTE]  
 > Ha eltérő Azure Stack regisztrálásához használt rendszergazda vagy a felhasználói fiók segítségével jelentkezzen be az Azure Stack Portalra, a tartománynév regisztrálása az Azure Stack segítségével kell hozzáfűzi a portál URL-címét. Például, ha a fabrikam.onmicrosoft.com Azure Stack regisztrálva van, és a bejelentkezett felhasználói fiók van admin@contoso.com, a használatával jelentkezzen be a felhasználói portál URL-cím: https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.

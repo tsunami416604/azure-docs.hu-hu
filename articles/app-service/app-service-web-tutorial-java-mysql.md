@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: ec942d97e7671c0477d8d723afacb06b73565c1c
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: ad199f71fda020d86bb08706d346fa847e5c4d9f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414557"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966891"
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>Oktatóanyag: Java- és MySQL-webalkalmazás létrehozása az Azure-ban
 
@@ -143,7 +143,7 @@ A Cloud Shellben hozzon létre egy kiszolgálót az Azure Database for MySQL szo
 Az alábbi parancsban írjon egy egyedi kiszolgálónevet a *\<mysql_server_name>*, egy felhasználónevet az *\<admin_user>*, valamint egy jelszót az *\<admin_password>* helyőrző helyére. A kiszolgálónév a postgreSQL-végpont (`https://<mysql_server_name>.mysql.database.azure.com`) részét képezi majd, így egyedi kiszolgálónévnek kell lennie a teljes Azure-ban.
 
 ```azurecli-interactive
-az mysql server create --resource-group myResourceGroup --name <mysql_server_name>--location "West Europe" --admin-user <admin_user> --admin-password <server_admin_password> --sku-name GP_Gen4_2
+az mysql server create --resource-group myResourceGroup --name <mysql_server_name> --location "West Europe" --admin-user <admin_user> --admin-password <server_admin_password> --sku-name GP_Gen4_2
 ```
 
 > [!NOTE]
@@ -272,7 +272,7 @@ A webalkalmazás-definíció megadása után az Azure CLI az alábbi példához 
 
 A Cloud Shellben az [`az webapp config set`](/cli/azure/webapp/config#az-webapp-config-set) paranccsal állítsa be a Java-futtatókörnyezet az alkalmazás által igényelt konfigurációját.
 
-Az alábbi parancs a webalkalmazást arra konfigurálja, hogy az újabb [Java 8 JDK](https://aka.ms/azure-jdks)-n és az [Apache Tomcat](http://tomcat.apache.org/) 8.0-s verzióján fusson.
+Az alábbi parancs a webalkalmazást arra konfigurálja, hogy az újabb [Java 8 JDK](https://aka.ms/azure-jdks)-n és az [Apache Tomcat](https://tomcat.apache.org/) 8.0-s verzióján fusson.
 
 ```azurecli-interactive
 az webapp config set --name <app_name> --resource-group myResourceGroup --java-version 1.8 --java-container Tomcat --java-container-version 8.0

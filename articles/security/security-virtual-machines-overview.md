@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: terrylan
-ms.openlocfilehash: fb053cb646d433d1e326747a4b48ed430583b847
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5e024161b55db9662aa288a4d3ff6a7c2b7e6266
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259105"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969685"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Az Azure virtuális gépek biztonsági áttekintése
 
@@ -112,7 +112,6 @@ Az Azure Backup egy méretezhető megoldás, amely segít megvédeni a nulla tő
 További információ:
 
 * [Mi az az Azure Backup?](../backup/backup-introduction-to-azure-backup.md)
-* [Az Azure biztonsági mentési képzési terv](https://azure.microsoft.com/documentation/learning-paths/backup/)
 * [Az Azure Backup szolgáltatás – gyakori kérdések](../backup/backup-azure-backup-faq.md)
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery

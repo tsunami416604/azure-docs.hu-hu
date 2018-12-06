@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 687feec668e628e36f9c23cec9943220524cc6e9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e3967319cd41399209bd50886bce88efc8ba6ba6
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841931"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956516"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Tudnivalók a mobilitási szolgáltatás VMware virtuális gépek és fizikai kiszolgálókhoz
 
@@ -56,11 +56,11 @@ Ha replikálni kívánt gépek aktív víruskereső szoftvert, ellenőrizze, hog
 2. A portálon nyissa meg a tároló > **replikált elemek**.
 3. Ha a konfigurációs kiszolgálót a legújabb verzióra, megjelenik egy értesítés, olvasó, "új Site recovery replikációs ügynökének frissítése érhető el. Telepítéséhez kattintson ide."
 
-     ![Replikált elemek ablak](.\media\vmware-azure-install-mobility-service\replicated-item-notif.png)
+     ![Replikált elemek ablak](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 
 4. Kattintson az értesítésre, és a **ügynök frissítése**, válassza ki a gépeket, amelyeken szeretné frissíteni a mobilitási szolgáltatást. Ezután kattintson az **OK** gombra.
 
-     ![Replikált elemek Virtuálisgép-lista](.\media\vmware-azure-install-mobility-service\update-okpng.png)
+     ![Replikált elemek Virtuálisgép-lista](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
 5. A mobilitási szolgáltatás frissítése feladat elindul, a kiválasztott gépek mindegyikéhez.
 

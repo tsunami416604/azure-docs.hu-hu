@@ -1,17 +1,17 @@
 ---
-title: Azure CLI-szkript – Fiókkulcsok lekérése az Azure Cosmos DB-hez | Microsoft Docs
+title: Az Azure CLI szkript – fiókkulcsok lekérése az Azure Cosmos DB
 description: Azure CLI-példaszkript – Fiókkulcsok lekérése az Azure Cosmos DB-hez
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: 342c874fc3ada6f9a2480db2632a74cd51031305
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 354184313e541dfa0cbe32c36abbd097c9a97b3c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005176"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965888"
 ---
 # <a name="get-account-keys-for-azure-cosmos-db-using-the-azure-cli"></a>Fiókkulcsok lekérése az Azure Cosmos DB-hez az Azure CLI használatával
 

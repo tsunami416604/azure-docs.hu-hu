@@ -12,12 +12,12 @@ ms.author: MirekS
 ms.reviewer: GeneMi
 ms.date: 04/06/2018
 manager: craigg
-ms.openlocfilehash: 80944e73f21d75943d4fa71c7ac9500e47bab250
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 0b8b83651fb5466f5d9a2f703667d7645b498e89
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055526"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958817"
 ---
 # <a name="use-activedirectoryinteractive-mode-to-connect-to-azure-sql-database"></a>Csatlakozás az Azure SQL Database ActiveDirectoryInteractive mód használatával
 
@@ -66,23 +66,23 @@ Az Azure AD-hitelesítés használatára, a C# ügyfélprogram, egy GUID Azonos�
 
 1. Az Azure portal &gt; **Azure Active Directory** &gt; **alkalmazásregisztráció**
 
-    ![Appok regisztrálása](media\active-directory-interactive-connect-azure-sql-db\sshot-create-app-registration-b20.png)
+    ![Appok regisztrálása](media/active-directory-interactive-connect-azure-sql-db/sshot-create-app-registration-b20.png)
 
 2. A **Alkalmazásazonosító** érték jön létre és jelennek meg.
 
-    ![Alkalmazás-azonosító megjelenítése](media\active-directory-interactive-connect-azure-sql-db\sshot-application-id-app-regis-mk49.png)
+    ![Alkalmazás-azonosító megjelenítése](media/active-directory-interactive-connect-azure-sql-db/sshot-application-id-app-regis-mk49.png)
 
 3. **Regisztrált alkalmazás** &gt; **beállítások** &gt; **szükséges engedélyek** &gt; **hozzáadása**
 
-    ![Regisztrált alkalmazás engedélyek beállításai](media\active-directory-interactive-connect-azure-sql-db\sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
+    ![Regisztrált alkalmazás engedélyek beállításai](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
 
 4. **Szükséges engedélyek** &gt; **API-hozzáférés hozzáadása** &gt; **API kiválasztása** &gt; **Azure SQL Database**
 
-    ![API-t az Azure SQL Database-hozzáférés hozzáadása](media\active-directory-interactive-connect-azure-sql-db\sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
+    ![API-t az Azure SQL Database-hozzáférés hozzáadása](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
 
 5. **API-hozzáférés** &gt; **engedélyek kiválasztása** &gt; **delegált engedélyek**
 
-    ![API-t az Azure SQL Database-engedélyek delegálása](media\active-directory-interactive-connect-azure-sql-db\sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
+    ![API-t az Azure SQL Database-engedélyek delegálása](media/active-directory-interactive-connect-azure-sql-db/sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
 
 
 ### <a name="b-set-azure-ad-admin-on-your-sql-database-server"></a>B. Az SQL Database-kiszolgálóhoz az Azure AD-rendszergazda beállítása
@@ -124,13 +124,13 @@ A névtér támaszkodik a C#-program **Microsoft.IdentityModel.Clients.ActiveDir
 
 C#-példában támaszkodik egy névtér van **System.Data.SqlClient**. Érdeklik az enum **SqlAuthenticationMethod**. Ez az enumerálás rendelkezik a következő értékeket:
 
-- **SqlAuthenticationMethod.ActiveDirectory \*interaktív x**\*:&nbsp; használja ezt az egy Azure AD-felhasználó nevét, a multi-factor authentication, MFA eléréséhez.
+- **SqlAuthenticationMethod.ActiveDirectory * interaktív x:&nbsp; használja ezt az egy Azure AD-felhasználó nevét, a multi-factor authentication, MFA eléréséhez.
     - Ez az érték a fókusz a jelen cikk. A felhasználó jelszavát, majd a többtényezős hitelesítés érvényesítés párbeszédpanelek megjelenítésével, ha a többtényezős hitelesítés a felhasználó a várakozásnak küld egy interaktív élmény.
     - Ezt az értéket a .NET-keretrendszer verziója 4.7.2 kezdődően elérhető.
 
-- **SqlAuthenticationMethod.ActiveDirectory \*integrált x**\*:&nbsp; használata esetén ez egy *összevont* fiókot. Összevont fiókok a felhasználó nevét ismert, hogy a Windows-tartományhoz. Ez a módszer nem támogatja a többtényezős hitelesítés.
+- **SqlAuthenticationMethod.ActiveDirectory * integrált x:&nbsp; használata esetén ez egy *összevont* fiókot. Összevont fiókok a felhasználó nevét ismert, hogy a Windows-tartományhoz. Ez a módszer nem támogatja a többtényezős hitelesítés.
 
-- **SqlAuthenticationMethod.ActiveDirectory \*jelszó x**\*:&nbsp; használja a hitelesítéshez, amely egy Azure AD-felhasználót és a felhasználó jelszót igényel. Az Azure SQL Database végrehajtja a hitelesítést. Ez a módszer nem támogatja a többtényezős hitelesítés.
+- **SqlAuthenticationMethod.ActiveDirectory * jelszó x:&nbsp; használja a hitelesítéshez, amely egy Azure AD-felhasználót és a felhasználó jelszót igényel. Az Azure SQL Database végrehajtja a hitelesítést. Ez a módszer nem támogatja a többtényezős hitelesítés.
 
 
 

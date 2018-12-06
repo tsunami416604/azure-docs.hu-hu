@@ -4,12 +4,12 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
-ms.openlocfilehash: 5f7cbdd98d25855e9b8bb102413bd71148193318
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 488fbb2acbf43ac092a7834fc25f433ef09d2b00
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50132905"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52973238"
 ---
 ### <a name="server-auth"></a>Útmutató: Hitelesítés szolgáltatóval (Server Flow)
 Ha azt szeretné, hogy a Mobile Apps kezelje az alkalmazása hitelesítési folyamatát, regisztrálnia kell az alkalmazását az identitásszolgáltatójánál. Ezután az Azure App Service-ben be kell állítania a szolgáltatótól kapott alkalmazásazonosítót és titkos kulcsot.
@@ -52,27 +52,6 @@ client.login(
 
 ```
 Ez a példa feltételezi, hogy a megfelelő szolgáltatói SDK által adott tokent a rendszer a „token” változóban tárolja.
-
-#### <a name="microsoft-account-example"></a>Microsoft-fiók – példa
-
-Az alábbi példa a Live SDK-t használja, amely a Microsoft-fiók használatával támogatja az egyszeri bejelentkezést a Windows Áruház alkalmazásai esetén.
-
-```
-WL.login({ scope: "wl.basic"}).then(function (result) {
-      client.login(
-            "microsoftaccount",
-            {"authenticationToken": result.session.authentication_token})
-      .done(function(results){
-            alert("You are now signed in as: " + results.userId);
-      },
-      function(error){
-            alert("Error: " + err);
-      });
-});
-
-```
-
-Ez a példa a Live Connectből kér le egy tokent, majd a login függvény meghívásával átadja azt az App Service-nek.
 
 ### <a name="auth-getinfo"></a>Útmutató: A hitelesített felhasználó adatainak lekérdezése
 

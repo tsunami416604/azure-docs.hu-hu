@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 8cc47fc7ec60027851525b98cdf95e7d534ea556
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: b98b0ea68e91bad2a62f40d3dc611308f1bed2de
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241854"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967742"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurálás és felügyelet – gyakori kérdések az Azure Web Apps
 
@@ -106,7 +106,7 @@ További információkért lásd: [– gyakori kérdések az App Service-tanús�
 
 ## <a name="why-do-i-see-the-message-partially-succeeded-when-i-try-to-back-up-my-web-app"></a>Miért látok a "Részben sikeres" üzenet jelenik meg a webes alkalmazás biztonsági mentése?
 
-Egy közös biztonsági mentési hiba oka, hogy némi fájlok használatban vannak, az alkalmazás által. Használatban lévő fájlok zárolva vannak, a biztonsági mentés végrehajtása során. Ez megakadályozza, hogy ezek a fájlok biztonsági mentés alatt álló, és előfordulhat, hogy egy "Részben sikeres" állapotot eredményez. Potenciálisan megakadályozhatja a fájlok kizárása a biztonsági mentési folyamat által lépett fel. Ha szeretné, biztonsági mentése csak van szükség. További információkért lásd: [biztonsági mentése csak a hely és az Azure web Apps alkalmazások fontos részei](http://zainrizvi.io/blog/creating-partial-backups-of-your-site-with-azure-web-apps/).
+Egy közös biztonsági mentési hiba oka, hogy némi fájlok használatban vannak, az alkalmazás által. Használatban lévő fájlok zárolva vannak, a biztonsági mentés végrehajtása során. Ez megakadályozza, hogy ezek a fájlok biztonsági mentés alatt álló, és előfordulhat, hogy egy "Részben sikeres" állapotot eredményez. Potenciálisan megakadályozhatja a fájlok kizárása a biztonsági mentési folyamat által lépett fel. Ha szeretné, biztonsági mentése csak van szükség. További információkért lásd: [biztonsági mentése csak a hely és az Azure web Apps alkalmazások fontos részei](https://zainrizvi.io/blog/creating-partial-backups-of-your-site-with-azure-web-apps/).
 
 ## <a name="how-do-i-remove-a-header-from-the-http-response"></a>Hogyan fejléc eltávolítása a HTTP-válasz?
 
@@ -288,7 +288,7 @@ Hitelesítés és engedélyezés az App Service részletes dokumentációjáért
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>Hogyan átirányítja az alapértelmezett *. azurewebsites.net tartományban, a saját Azure-alapú webes alkalmazás egyéni tartomány?
 
-Amikor új webhely létrehozása az Azure-ban, egy alapértelmezett Web Apps használatával *sitename*. azurewebsites.net tartomány a helyhez van rendelve. Ha egy egyéni nevet hozzá a helyhez, és nem szeretné a felhasználók érhetik el az alapértelmezett *. azurewebsites.net tartományban, irányíthatja át az alapértelmezett URL-címe. Az egyéni tartományban a webhely alapértelmezett tartományból származó összes forgalom átirányítása kezelésével kapcsolatos információkért lásd: [az alapértelmezett tartomány átirányítása az Azure web apps szolgáltatásban az egyéni tartomány](http://zainrizvi.io/blog/block-default-azure-websites-domain/).
+Amikor új webhely létrehozása az Azure-ban, egy alapértelmezett Web Apps használatával *sitename*. azurewebsites.net tartomány a helyhez van rendelve. Ha egy egyéni nevet hozzá a helyhez, és nem szeretné a felhasználók érhetik el az alapértelmezett *. azurewebsites.net tartományban, irányíthatja át az alapértelmezett URL-címe. Az egyéni tartományban a webhely alapértelmezett tartományból származó összes forgalom átirányítása kezelésével kapcsolatos információkért lásd: [az alapértelmezett tartomány átirányítása az Azure web apps szolgáltatásban az egyéni tartomány](https://zainrizvi.io/blog/block-default-azure-websites-domain/).
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>Hogyan állapíthatom meg, melyik verzió a .NET a verziója telepítve van az App Service szolgáltatásban?
 

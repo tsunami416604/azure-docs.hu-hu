@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: (previous author=fboylu, ms.author=fboylu)
-ms.openlocfilehash: 904e9c22f23255f1bee7f532d7f577c7cd457778
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: d5f6934385d616390baf336404ddd79d4bc2a490
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443746"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965436"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Technikai útmutató a prediktív karbantartás a légi közlekedésben és más vállalatok számára a Cortana Intelligence Megoldássablon
 
@@ -218,7 +218,7 @@ A következő lépések végigvezetik hogyan jelenítheti meg a Stream Analytics
    * Győződjön meg arról, hogy a ***Vizualizációk*** panel meg nyitva, és a képernyő jobb oldalán jelenik meg.
 3. Miután a Power BI szolgáltatásba áramló adatokat, elkezdheti a streamelési adatok megjelenítése. Alább néhány gyakori elérésű útvonal Vizualizációk egy példa az irányítópulton rögzítve van rá. Más irányítópult-csempék megfelelő adathalmazok alapján létrehozhat. Attól függően, hogy mennyi ideig futtatja az adatgenerátor a Vizualizációk a számok eltérő lehet.
 
-    ![Irányítópult nézet](media\cortana-analytics-technical-guide-predictive-maintenance\dashboard-view.png)
+    ![Irányítópult nézet](media/cortana-analytics-technical-guide-predictive-maintenance/dashboard-view.png)
 
 1. Az alábbiakban néhány lépését a hozzon létre egyet a fenti – csempék "11. érzékelő és a flotta nézetét. Küszöbérték 48.26" csempére:
    

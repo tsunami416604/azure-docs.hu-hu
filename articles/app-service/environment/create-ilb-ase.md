@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: e9d1f77a85d4b5cfb5bb7d3cb80380be3c79315d
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
-ms.translationtype: HT
+ms.openlocfilehash: e86367d5df8294a7e0f798e47bf87ff3fb8ccf72
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378278"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967572"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Belső terheléselosztó létrehozása és használata App Service Environmenttel #
 
@@ -56,7 +56,7 @@ Néhány dolog, amit nem tehet meg ILB ASE használata esetén:
 
 Az ILB ASE létrehozása:
 
-1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Web** > **App Service Environment** elemet.
+1. Az Azure Portalon válassza ki a **erőforrás létrehozása** > **webes** > **App Service Environment-környezet**.
 
 1. Válassza ki előfizetését.
 
@@ -66,7 +66,7 @@ Az ILB ASE létrehozása:
 
 1. Ha már létező virtuális hálózatot választ, létre kell hoznia egy alhálózatot az ASE környezethez. Gondoskodjon arról, hogy az alhálózat mérete elég nagy legyen az ASE jövőbeli növekedésének biztosítására. Mi a `/24` méretet javasoljuk, amely 256 címet tartalmaz, és képes kezelni egy maximális méretű ASE környezetet és tetszőleges skálázási igényeket. 
 
-1. Válassza a **Virtuális hálózat/hely** > **Virtuális hálózati konfiguráció** elemet. A **VIP típust** állítsa **Belsőre**.
+1. Válassza ki **virtuális hálózat/hely** > **virtuális hálózati konfiguráció**. A **VIP típust** állítsa **Belsőre**.
 
 1. Adjon meg egy tartománynevet. Ezt a tartományt használják az ASE környezetben létrehozott alkalmazások. Van néhány korlátozás. A név nem lehet:
 
@@ -90,20 +90,20 @@ Az ILB ASE létrehozása:
 
 1. Kattintson az **OK**, majd a **Létrehozás** gombra.
 
-    ![ASE létrehozása][1]
+    ! [ASE létrehozása] [1]
 
 A **Virtuális hálózat** panelen található a **Virtuális hálózat konfigurációja**. Használatával kiválaszthat egy külső vagy belső virtuális IP-címet. Az alapértelmezett érték a **Külső**. Ha a **Külső** lehetőséget választja, az ASE közvetlenül az internethez csatlakozó virtuális IP-címet fog használni. Ha a **Belső** lehetőséget választja, az ASE ILB-vel vagy virtuális hálózati IP-címmel lesz konfigurálva.
 
 A **Belső** lehetőség kiválasztását követően további IP-címek nem adhatók hozzá az ASE környezethez. Ehelyett tartományt kell biztosítania az ASE részére. Külső virtuális IP-címmel rendelkező ASE esetén az ASE környezeten belül létrehozott alkalmazások az ASE nevét használják tartományként.
 
-Ha a **VIP típusa** beállítást **Belsőre** állítja, akkor nem az ASE neve lesz az ASE környezet tartománya. Külön megadhatja a tartományt. Ha a tartomány *contoso.corp.net* és az ASE környezetben létrehoz egy *timereporting* nevű alkalmazást, akkor az alkalmazás URL-címe timereporting.contoso.corp.net lesz.
+Ha a **VIP típusa** beállítást **Belsőre** állítja, akkor nem az ASE neve lesz az ASE környezet tartománya. Külön megadhatja a tartományt. Ha a tartomány *contoso.corp.net* és létrehozott egy alkalmazást, hogy ASE nevű *timereporting*, alkalmazás URL-címe timereporting.contoso.corp.net lesz.
 
 
 ## <a name="create-an-app-in-an-ilb-ase"></a>Alkalmazás létrehozása az ILB ASE környezetben ##
 
 Az ILB ASE környezetben a sima ASE környezettel megegyező módon hozhat létre alkalmazást.
 
-1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Web + mobil** > **Webes alkalmazás** elemet.
+1. Az Azure Portalon válassza ki a **erőforrás létrehozása** > **Web + mobil** > **webalkalmazás**.
 
 1. Adja meg az alkalmazás nevét.
 
@@ -117,9 +117,9 @@ Az ILB ASE környezetben a sima ASE környezettel megegyező módon hozhat létr
 
 1. Válassza ki vagy hozzon létre egy App Service-csomagot. Amennyiben új App Service-csomagot szeretne létrehozni, válassza az ASE környezetet helyként. Válassza ki a feldolgozókészletet, amelyben az App Service-csomagot szeretné létrehozni. Amikor létrehozza az új App Service-csomagot, válassza az ASE környezetet helyként és feldolgozókészletként. Az alkalmazás nevének megadásakor az alkalmazás tartománya az ASE tartománynevére cserélődik.
 
-1. Kattintson a **Létrehozás** gombra. Ha szeretné, hogy az alkalmazás megjelenjen az irányítópulton, jelölje be a **Rögzítés az irányítópulton** jelölőnégyzetet.
+1. Kattintson a **Létrehozás** gombra. Ha azt szeretné, hogy az alkalmazásnak, hogy megjelenjen az irányítópulton, válassza ki a **rögzítés az irányítópulton** jelölőnégyzetet.
 
-    ![App Service-csomag létrehozása][2]
+    ! [App Service-csomag létrehozása] a(z) [2]
 
     Az **Alkalmazásnév** területen a tartománynév frissült az ASE tartományának megfelelően.
 
@@ -127,9 +127,9 @@ Az ILB ASE környezetben a sima ASE környezettel megegyező módon hozhat létr
 
 Az ILB ASE kissé különbözik az ILB nélküli ASE környezettől. A fenti információknak megfelelően Önnek kell kezelnie a saját DNS-ét. A HTTPS-csatlakozáshoz is saját tanúsítványt kell biztosítania.
 
-Az ASE létrehozását követően a tartomány az Ön által megadott tartománynevet jeleníti meg. A **Beállítás** menüben egy **ILB-tanúsítvány** nevű új elem jelenik meg. Az ASE olyan tanúsítvánnyal jött létre, amely nem határozza meg az ILB ASE tartományát. Amennyiben ezzel a tanúsítvánnyal használja az ASE környezetet, a böngészője érvénytelennek fogja nyilvánítani. A tanúsítvány egyszerűbbé teszi a HTTPS tesztelését, de fel kell töltenie saját, az ILB ASE környezethez kötött rögzített tanúsítványát. Ez a lépés szükséges, függetlenül attól, hogy a tanúsítvány önaláírt vagy hitelesítésszolgáltatótól származik.
+Az ASE létrehozását követően a tartomány az Ön által megadott tartománynevet jeleníti meg. Egy új elem jelenik meg a **beállítás** nevű menü **ILB-tanúsítvány**. Az ASE olyan tanúsítvánnyal jött létre, amely nem határozza meg az ILB ASE tartományát. Amennyiben ezzel a tanúsítvánnyal használja az ASE környezetet, a böngészője érvénytelennek fogja nyilvánítani. A tanúsítvány egyszerűbbé teszi a HTTPS tesztelését, de fel kell töltenie saját, az ILB ASE környezethez kötött rögzített tanúsítványát. Ez a lépés szükséges, függetlenül attól, hogy a tanúsítvány önaláírt vagy hitelesítésszolgáltatótól származik.
 
-![ILB ASE tartománynév][3]
+! [Az ILB ASE tartomány neve] [3]
 
 Az ILB ASE környezetnek szüksége van egy érvényes SSL-tanúsítványra. Használjon belső tanúsítványszolgáltatót, vásároljon tanúsítványt külső kiállítótól vagy használjon önaláírt tanúsítványt. Az SSL-tanúsítvány forrásától függetlenül az alábbi tanúsítványattribútumokat megfelelően kell konfigurálni:
 
@@ -150,11 +150,11 @@ Amennyiben önaláírt tanúsítványt szeretne létrehozni, itt használhatja a
 
 A böngészők megjelölik a PowerShell-parancs által létrehozott tanúsítványokat, mert a tanúsítványt nem a böngésző megbízhatósági láncában szereplő egyik hitelesítésszolgáltató hozta létre. A böngésző által is elfogadott tanúsítvány beszerzéséhez vegyen egyet a böngésző megbízhatósági láncában megtalálható üzleti hitelesítésszolgáltatók egyikétől. 
 
-![ILB-tanúsítvány beállítása][4]
+! [ILB-tanúsítvány beállítása] [4]
 
 Saját tanúsítványának feltöltéséhez és a hozzáférés teszteléséhez tegye a következőket:
 
-1. Az ASE létrehozása után keresse fel az ASE felhasználói felületét. Válassza az **ASE** > **Beállítások** > **ILB-tanúsítvány** lehetőséget.
+1. Az ASE létrehozása után keresse fel az ASE felhasználói felületét. Válassza az **ASE** > **Beállítások** > **ILB-tanúsítvány** lehetőséget.
 
 1. Az ILB-tanúsítvány beállításához válassza ki a tanúsítvány .pfx fájlját, majd adja meg a jelszót. Ennek a lépésnek a feldolgozása beletelhet egy kis időbe. Egy üzenet jelzi, hogy egy feltöltési művelet van folyamatban.
 
@@ -174,13 +174,13 @@ Saját tanúsítványának feltöltéséhez és a hozzáférés teszteléséhez 
 
     b. A webtelepítés közzétételének teszteléséhez vagy a haladó konzol eléréséhez hozzon létre egy rekordot a _mytestapp.scm.ilbase.com_ tartományban.
 
-1. A virtuális gép böngészőjével keresse fel a következő oldalt: http://mytestapp.ilbase.com. (Vagy keresse fel webalkalmazásának nevét, a saját tartománnyal.)
+1. A virtuális gép böngészőt használ, és nyissa meg https://mytestapp.ilbase.com. (Vagy keresse fel webalkalmazásának nevét, a saját tartománnyal.)
 
-1. A virtuális gép böngészőjével keresse fel a következő oldalt: https://mytestapp.ilbase.com. Ha önaláírt tanúsítványt használ, fogadja el a biztonsági hiányosságot.
+1. A virtuális gép böngészőt használ, és nyissa meg https://mytestapp.ilbase.com. Ha önaláírt tanúsítványt használ, fogadja el a biztonsági hiányosságot.
 
     Az ILB IP-címe az **IP-címek** területen látható. Ez a lista tartalmazza a külső virtuális IP-címet és a bejövő felügyeleti forgalmak IP-címeit is.
 
-    ![ILB IP-címe][5]
+    ! [ILB IP-cím] [5]
 
 ## <a name="web-jobs-functions-and-the-ilb-ase"></a>WebJobs-feladatok, a Functions és az ILB ASE ##
 
@@ -222,13 +222,9 @@ Az ILB ASE WAF eszközhöz való konfigurálásáról további információkat a
 ## <a name="get-started"></a>Bevezetés ##
 
 * Az ASE használatával kapcsolatos első lépésekről [Az App Service Environment bemutatása][Intro] témakörben olvashat.
- 
+ 
 <!--Image references-->
-[1]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-network.png
-[2]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-webapp.png
-[3]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-certificate.png
-[4]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-certificate2.png
-[5]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-ipaddresses.png
+[1]: [2]./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-network.png: [3]./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-webapp.png:. / Media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-Certificate.png [4]: [5./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-certificate2.png ]:./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-ipaddresses.png
 
 <!--Links-->
 [Intro]: ./intro.md
@@ -244,10 +240,10 @@ Az ILB ASE WAF eszközhöz való konfigurálásáról további információkat a
 [webapps]: ../app-service-web-overview.md
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
-[Pricing]: http://azure.microsoft.com/pricing/details/app-service/
+[Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
 [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
-[Kudu]: http://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
+[Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
 [customdomain]: ../app-service-web-tutorial-custom-domain.md

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: bwren
-ms.openlocfilehash: fa41e2d42d5237a4aa59671962420071b29db687
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 32e64ce7772d562ea34a0d74afbd737be27d247d
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52883228"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968868"
 ---
 # <a name="log-analytics-query-language"></a>Log Analytics lekérdezési nyelve
 A log Analytics biztosít az Azure Monitor napló gyűjtése és elemzése. Azure adatkezelő épül és a egy verzióját használja, a lekérdezési nyelvre. A [Azure adatkezelő lekérdezési nyelvi dokumentáció](/azure/kusto/query) rendelkezik az összes részletes adat a nyelv és a Log Analytics-lekérdezések írására szolgáló elsődleges erőforrás kell lennie. Ez az oldal más forrásokra mutató hivatkozásokat biztosít, megtudhatja, hogyan kell lekérdezéseket írni és a nyelvet a Log Analytics végrehajtása kapcsán.
@@ -36,7 +36,7 @@ A log Analytics biztosít az Azure Monitor napló gyűjtése és elemzése. Azur
 
 - [Lekérdezési nyelvi leírása](/azure/kusto/query) van a teljes nyelvi dokumentáció az adatkezelő lekérdezési nyelv.
 - [Log Analytics lekérdezési nyelv különbségek](data-explorer-difference.md) az adatkezelő lekérdezési nyelv verziói közötti különbségeket ismerteti.
-- [A Log Analytics-rekordok alapvető tulajdonságainak](../../log-analytics/log-analytics-standard-properties.md) összes Log Analytics-adatok a szabványos tulajdonságokat ismerteti.
+- [A Log Analytics-rekordok alapvető tulajdonságainak](../../azure-monitor/platform/log-standard-properties.md) összes Log Analytics-adatok a szabványos tulajdonságokat ismerteti.
 - [Hajtsa végre az erőforrások közötti naplókeresések a Log Analytics](../../azure-monitor/log-query/cross-workspace-query.md) ismerteti, hogyan lehet több Log Analytics-munkaterületek és Application Insights-alkalmazások adatait használó lekérdezéseket írni.
 
 

@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 11/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: bc2fbf7aadf99a2f765def2d352819dfa6cd5fa4
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: dc0c6a37e11574cef857a7af773a9d90bea57357
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265856"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972065"
 ---
 # <a name="interactive-feature-verification-testing"></a>Interaktív funkció ellenőrzési tesztelés  
 
@@ -48,7 +48,7 @@ Egy teszt lemezcsere egy gyakori forgatókönyvet. Ebben a példában a teszt h�
 
 3.  Válassza ki **Start** a a **Tesztmenetek** csempére.
 
-    ![Helyettesítő szöveg](media\azure-stack-vaas-interactive-feature-verification\image1.png)
+    ![Helyettesítő szöveg](media/azure-stack-vaas-interactive-feature-verification/image1.png)
 
 4.  Adjon meg egy nevet a **Tesztmenetek** munkafolyamat.
 
@@ -63,7 +63,7 @@ Egy teszt lemezcsere egy gyakori forgatókönyvet. Ebben a példában a teszt h�
 > [!Note]  
 > Lemez azonosítása interaktív funkció ellenőrző teszt kötelező a tartományi rendszergazdai felhasználónevet és jelszót.
 
-![Helyettesítő szöveg](media\azure-stack-vaas-interactive-feature-verification\image2.png)
+![Helyettesítő szöveg](media/azure-stack-vaas-interactive-feature-verification/image2.png)
 
 ## <a name="select-the-test"></a>Válassza ki a teszt
 
@@ -72,51 +72,51 @@ Egy teszt lemezcsere egy gyakori forgatókönyvet. Ebben a példában a teszt h�
     > [!Note]  
     > A teszt verzióját, a teszt biztosítékot való fejlesztést növeli. A legújabb verziót mindig kell használni, kivéve, ha a Microsoft egyéb jelzi.
 
-    ![Helyettesítő szöveg](media\azure-stack-vaas-interactive-feature-verification\image4.png)
+    ![Helyettesítő szöveg](media/azure-stack-vaas-interactive-feature-verification/image4.png)
 
 2.  Adja meg a tartomány rendszergazdai felhasználónév és jelszó kiválasztásával **szerkesztése**.
 
 3.  Válassza ki a megfelelő vizsgálati végrehajtási ügynök/DVM meg a teszt elindításához.
 
-    ![Helyettesítő szöveg](media\azure-stack-vaas-interactive-feature-verification\image5.png)
+    ![Helyettesítő szöveg](media/azure-stack-vaas-interactive-feature-verification/image5.png)
 
 4.  Válassza ki **küldés** a teszt elindításához.
 
-![Helyettesítő szöveg](media\azure-stack-vaas-interactive-feature-verification\image6.png)
+![Helyettesítő szöveg](media/azure-stack-vaas-interactive-feature-verification/image6.png)
 
 ## <a name="start-the-test"></a>A Teszt indítása
 
 A lemez azonosítása teszt utasításokat a VaaS ügynököt futtató számítógép megjelenítése. Általában ez az a DVM vagy a Jumpboxot az Azure Stack-példány.
 
-![Helyettesítő szöveg](media\azure-stack-vaas-interactive-feature-verification\image8.png)
+![Helyettesítő szöveg](media/azure-stack-vaas-interactive-feature-verification/image8.png)
 
 ## <a name="choose-the-actions"></a>Válassza ki a műveleteket
 
 1.  Kövesse a **dokumentáció** és **érvényesítési** hivatkozásokra kattintva útmutatást nyújt a Microsoft a forgatókönyv végrehajtásához.
 
-    ![Helyettesítő szöveg](media\azure-stack-vaas-interactive-feature-verification\image9.png)
+    ![Helyettesítő szöveg](media/azure-stack-vaas-interactive-feature-verification/image9.png)
 
 2.  Kattintson a **Tovább** gombra.
 
-    ![Helyettesítő szöveg](media\azure-stack-vaas-interactive-feature-verification\image10.png)
+    ![Helyettesítő szöveg](media/azure-stack-vaas-interactive-feature-verification/image10.png)
 
 3.  Kövesse az utasításokat a precheck parancsfájl futtatásához.
 
-    ![Helyettesítő szöveg](media\azure-stack-vaas-interactive-feature-verification\image11.png)
+    ![Helyettesítő szöveg](media/azure-stack-vaas-interactive-feature-verification/image11.png)
 
 4.  A precheck szkript sikeres befejezése után hajtsa végre a manuális forgatókönyv (lemezcsere) megfelelően a **dokumentáció** és **érvényesítési** származó hivatkozások a **információk**fülre.
 
-    ![Helyettesítő szöveg](media\azure-stack-vaas-interactive-feature-verification\image12.png)
+    ![Helyettesítő szöveg](media/azure-stack-vaas-interactive-feature-verification/image12.png)
 
 5.  A manuális forgatókönyv működés során ne zárja be a párbeszédpanelt.
 
 6.  Amikor végzett, a manuális forgatókönyv végrehajtása, kövesse az utasításokat a jelölőnégyzet utólagos parancsfájl futtatásához.
 
-    ![Helyettesítő szöveg](media\azure-stack-vaas-interactive-feature-verification\image13.png)
+    ![Helyettesítő szöveg](media/azure-stack-vaas-interactive-feature-verification/image13.png)
 
 7.  A sikeres végrehajtása manuális forgatókönyv (lemezcsere), jelölje be **tovább**.
 
-    ![Helyettesítő szöveg](media\azure-stack-vaas-interactive-feature-verification\image14.png)
+    ![Helyettesítő szöveg](media/azure-stack-vaas-interactive-feature-verification/image14.png)
 
 > [!Important]  
 > Ha bezárja az ablakot, a teszt leáll, mielőtt befejeződött.
@@ -125,7 +125,7 @@ A lemez azonosítása teszt utasításokat a VaaS ügynököt futtató számít�
 
 1.  A teszt befejeződése után a rendszer kéri, hogy visszajelzést.
 
-    ![Helyettesítő szöveg](media\azure-stack-vaas-interactive-feature-verification\image15.png)
+    ![Helyettesítő szöveg](media/azure-stack-vaas-interactive-feature-verification/image15.png)
 
 2.  Ezeket a kérdéseket a segítségével a Microsoft értékeli a forgatókönyv sikerességi arányát és a kiadási minőségét.
 
@@ -133,7 +133,7 @@ A lemez azonosítása teszt utasításokat a VaaS ügynököt futtató számít�
 
 1.  Csatlakoztassa a Microsoftnak elküldeni kívánt naplófájlokat.
 
-    ![Helyettesítő szöveg](media\azure-stack-vaas-interactive-feature-verification\image16.png)
+    ![Helyettesítő szöveg](media/azure-stack-vaas-interactive-feature-verification/image16.png)
 
 2.  A visszajelzés elküldése végfelhasználói licencszerződés elfogadásához.
 

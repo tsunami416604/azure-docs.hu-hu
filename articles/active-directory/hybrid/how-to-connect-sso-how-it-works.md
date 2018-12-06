@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6f93d7c4b76d635a221c2711ce9d4ef0de2286f6
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 236a9dac64fa98b9db68a610de097c1deba3e7ee
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687401"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970424"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: részletes technikai bemutatása
 
@@ -29,6 +29,7 @@ Ez a cikk biztosít technikai részletek be az Azure Active Directory zökkenőm
 ## <a name="how-does-seamless-sso-work"></a>Közvetlen egyszeri bejelentkezés működése
 
 Ez a szakasz a következő három részből hozzá:
+
 1. A közvetlen egyszeri bejelentkezés funkció beállítását.
 2. Egy tranzakció egyetlen felhasználó jelentkezzen be a webböngésző működése a közvetlen egyszeri bejelentkezés.
 3. Egy tranzakció egyetlen felhasználó jelentkezzen be egy natív ügyfél működése a közvetlen egyszeri bejelentkezés.
@@ -36,6 +37,7 @@ Ez a szakasz a következő három részből hozzá:
 ### <a name="how-does-set-up-work"></a>Hogyan állítsa be a munkahelyi?
 
 Közvetlen egyszeri bejelentkezés engedélyezve van az Azure AD Connect használatával, ahogy [Itt](how-to-connect-sso-quick-start.md). A funkció engedélyezése közben a következő lépések történnek:
+
 - Egy számítógép-fiók nevű `AZUREADSSOACC` (amely jelöli az Azure AD) jön létre a helyszíni Active Directory (AD) minden olyan AD-erdőben.
 - A számítógépfiók Kerberos visszafejtési kulcs biztonságosan megosztott Azure AD-val. Ha több AD-erdőkkel, egyenként kell a saját Kerberos visszafejtési kulcsot.
 - Emellett két Kerberos egyszerű szolgáltatásnevek (SPN) jön létre, amelyek a két URL-címet, amelyekre az Azure AD-be.

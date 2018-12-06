@@ -1,5 +1,5 @@
 ---
-title: Tároló konfigurálása
+title: Tárolók konfigurálása
 titlesuffix: Computer Vision - Cognitive Services - Azure
 description: A Computer Vision tárolók konfigurációs beállításait.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 8df293878486a9cd4ded6e899871c30498c4b68f
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 865300f74a74b9768d2d5f5fd532ce9e851b7afb
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51635036"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964100"
 ---
-# <a name="configure-containers"></a>Tároló konfigurálása
+# <a name="configure-containers"></a>Tárolók konfigurálása
 
 Computer Vision a szöveg felismerése tárolóhoz, az egy közös keretrendszer konfigurációs biztosít, így egyszerűen konfigurálása és kezelése a storage, a naplózás és a telemetriai adatok és a biztonsági beállítások a tárolókhoz.
 
@@ -86,7 +86,7 @@ A `Authentication` konfigurációs beállítások megadása a tároló az Azure 
 
 ## <a name="billing-configuration-setting"></a>Számlázási konfigurációs beállítás
 
-A `Billing` konfigurációs beállítás határozza meg a végpont URI-t az Azure-ban a Computer Vision erőforrás számlázási adatokat tároló nyomon követésére szolgál. Meg kell adnia egy értéket a konfigurációs beállítás, és az értéknek kell lennie az Azure-on Computer Vision erőforrás URI érvényes végpontot.
+A `Billing` konfigurációs beállítás határozza meg a számlázási adatokat tároló mérni szeretné használt URI-t az Azure-ban a Computer Vision erőforrás végpont. Meg kell adnia egy értéket a konfigurációs beállítás, és az értéknek kell lennie az Azure-on Computer Vision erőforrás URI érvényes végpontot.
 
 > [!IMPORTANT]
 > A [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), és [ `Eula` ](#eula-configuration-setting) konfigurációs beállítások együtt használja, és meg kell adnia az érvényes értékek mindhárom őket. Ellenkező esetben a tároló nem indul el. Egy tároló példányosítása a konfigurációs beállítások használatával kapcsolatos további információkért lásd: [számlázási](computer-vision-how-to-install-containers.md#billing).
@@ -97,6 +97,8 @@ A `Eula` konfigurációs beállítás azt jelzi, hogy Ön már elfogadta a licen
 
 > [!IMPORTANT]
 > A [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), és [ `Eula` ](#eula-configuration-setting) konfigurációs beállítások együtt használja, és meg kell adnia az érvényes értékek mindhárom őket. Ellenkező esetben a tároló nem indul el. Egy tároló példányosítása a konfigurációs beállítások használatával kapcsolatos további információkért lásd: [számlázási](computer-vision-how-to-install-containers.md#billing).
+
+Cognitive Services-tárolók licencelése az Azure használatát szabályozó a szerződés keretében. Ha nem rendelkezik egy meglévő, az Azure használatát szabályozó megállapodást, Ön elfogadja, hogy az Azure használatát szabályozó megállapodást-e a Microsoft Online előfizetői szerződés (amely magában foglalja az Online szolgáltatások használati feltételeit). Az előnézetben is elfogadja a kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó. A tároló használatával elfogadja ezeket a feltételeket.
 
 ## <a name="fluentd-configuration-settings"></a>Fluentd konfigurációs beállításai
 

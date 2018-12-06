@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2018
 ms.author: spelluru
-ms.openlocfilehash: 99caf04698226de8daa9cfb8f60662e5cb0f8b49
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 9634c70566aba21bdd28ee016c9fa94464ec9c1b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449826"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956330"
 ---
 # <a name="delete-a-lab-or-vm-in-a-lab-in-azure-devtest-labs"></a>Az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet egy labor- vagy virtuális gép törlése
 Ez a cikk bemutatja, hogyan labor- vagy virtuális gép törlése a tesztkörnyezetben.
@@ -34,16 +34,16 @@ Labor törléséhez tegye a következőket:
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki **összes erőforrás** válassza a bal oldali menü **DevTest Labs** típusának megfelelő szolgáltatás, és válassza a labor létrehozása.
 
-    ![Válassza ki a labor](media\devtest-lab-delete-lab-vm\select-lab.png)
+    ![Válassza ki a labor](media/devtest-lab-delete-lab-vm/select-lab.png)
 3. Az a **fejlesztési és tesztelési labor** kattintson **törlése** az eszköztáron. 
 
-    ![Törlés gomb](media\devtest-lab-delete-lab-vm\delete-button.png)
+    ![Törlés gomb](media/devtest-lab-delete-lab-vm/delete-button.png)
 4. Az a **megerősítő** lap, adja meg a **neve** a labor, és válassza ki a **törlése**. 
 
-    ![Megerősítés](media\devtest-lab-delete-lab-vm\confirm-delete.png)
+    ![Megerősítés](media/devtest-lab-delete-lab-vm/confirm-delete.png)
 5. A művelet állapotának megtekintéséhez válassza ki a **értesítések** ikonra (harang). 
 
-    ![Értesítések](media\devtest-lab-delete-lab-vm\delete-status.png)
+    ![Értesítések](media/devtest-lab-delete-lab-vm/delete-status.png)
 
  
 ## <a name="delete-a-vm-in-a-lab"></a>A labor virtuális gép törlése
@@ -59,16 +59,16 @@ A labor virtuális gépek törléséhez tegye a következőket:
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki **összes erőforrás** válassza a bal oldali menü **DevTest Labs** típusának megfelelő szolgáltatás, és válassza a labor létrehozása.
 
-    ![Válassza ki a labor](media\devtest-lab-delete-lab-vm\select-lab.png)
+    ![Válassza ki a labor](media/devtest-lab-delete-lab-vm/select-lab.png)
 3. Válassza ki **... három (pont)**  listájában, a virtuális gépeket, és válassza ki a virtuális gép **törlése**. 
 
-    ![A menüben a virtuális gép törlése](media\devtest-lab-delete-lab-vm\delete-vm-menu-in-list.png)
+    ![A menüben a virtuális gép törlése](media/devtest-lab-delete-lab-vm/delete-vm-menu-in-list.png)
 4. Az a **megerősítő** párbeszédpanelen jelölje ki **Ok**. 
 5. A művelet állapotának megtekintéséhez válassza ki a **értesítések** ikonra (harang). 
 
 A virtuális gép törlése a **virtuális gép**válassza **törlése** az eszköztárról, a következő képen látható módon:
 
-![Virtuális gép törlése a virtuális gép oldalról](media\devtest-lab-delete-lab-vm\delete-from-vm-page.png) 
+![Virtuális gép törlése a virtuális gép oldalról](media/devtest-lab-delete-lab-vm/delete-from-vm-page.png) 
 
 
 ## <a name="next-steps"></a>További lépések

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 98ae7fe0fde922aee28ffc05b64d223a40085447
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 0b1affb708a8d481a1378fa691b6547865b0b214
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340919"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963589"
 ---
 # <a name="start-and-stop-the-azure-stack-development-kit-asdk"></a>Elindíthatja és leállíthatja a az Azure Stack Development Kit (ASDK)
 Egyszerűen indítsa újra a ASDK számítógép nem ajánlott. Ehelyett kövesse megfelelően állítsa le és indítsa újra a ASDK szolgáltatások ebben a cikkben szereplő eljárásokat. 
@@ -62,7 +62,7 @@ Függetlenül attól, hogy a ASDK le lett állítva és ellenőrizze, hogy az ö
    ```
 6. Tekintse át a kimenetet, annak érdekében, hogy az Azure Stack-szolgáltatások újraindítása sikeresen megtörtént.
 
-Megfelelően állítsa le és indítsa újra az Azure Stack-szolgáltatások az ajánlott eljárásokkal kapcsolatos további tudnivalókért lásd: [indítás és leállítás Azure Stack](.\.\azure-stack-start-and-stop.md). 
+Megfelelően állítsa le és indítsa újra az Azure Stack-szolgáltatások az ajánlott eljárásokkal kapcsolatos további tudnivalókért lásd: [indítás és leállítás Azure Stack](../azure-stack-start-and-stop.md). 
 
 ## <a name="troubleshoot-startup-and-shutdown"></a>Indítási és leállítási hibaelhárítása 
 Hajtsa végre ezeket a lépéseket, ha az Azure Stack-szolgáltatások nem sikerült indul el a ASDK gazdaszámítógépen power két órán belül:
@@ -79,7 +79,7 @@ Hajtsa végre ezeket a lépéseket, ha az Azure Stack-szolgáltatások nem siker
    ```powershell
    Test-AzureStack
    ```
-5. Tekintse át a kimenetet, és javítsa ki a hibákat. További információkért lásd: [futtatása az Azure Stack teszt](.\.\azure-stack-diagnostic-test.md).
+5. Tekintse át a kimenetet, és javítsa ki a hibákat. További információkért lásd: [futtatása az Azure Stack teszt](../azure-stack-diagnostic-test.md).
 6. Az Azure Stack-szolgáltatások EGP-munkameneten belül futtatásával indítsa újra a **Start-AzureStack** parancsmagot:
 
    ```powershell
@@ -89,4 +89,4 @@ Hajtsa végre ezeket a lépéseket, ha az Azure Stack-szolgáltatások nem siker
 Ha fut **Start-AzureStack** , hibát okoz, látogasson el a [Azure Stack támogatási fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurestack) hibaelhárítási támogatás ASDK beolvasni. 
 
 ## <a name="next-steps"></a>További lépések 
-További információ az Azure Stack diagnosztikai eszköz, és adja ki a naplózást, lásd: [Azure Stack diagnosztikai eszközök](.\.\azure-stack-diagnostics.md).
+További információ az Azure Stack diagnosztikai eszköz, és adja ki a naplózást, lásd: [Azure Stack diagnosztikai eszközök](../azure-stack-diagnostics.md).

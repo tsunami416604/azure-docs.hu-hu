@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4020d754bd8c7728b43ef583aa7e7d8dbddcebec
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e6f85d327fff1ee32dca6dfb2231b28e6dc96c61
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634149"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965633"
 ---
 # <a name="what-is-the-adconnectivitytool-powershell-module"></a>Mi az a ADConnectivityTool PowerShell-modult?
 
@@ -40,7 +40,7 @@ Az a **csatlakoztassa a címtárakat** lapon, az Azure AD Connect varázsló, ha
 Találhatók esetleges ezeket a problémákat, amikor egy kapcsolódó hibaüzenet jelenik meg az aad Connect varázslóban:
 
 
-![Hiba](media\how-to-connect-adconnectivitytools\error1.png)
+![Hiba](media/how-to-connect-adconnectivitytools/error1.png)
 
 Például ha helyreállításon dolgozunk a könyvtár hozzáadása a **csatlakoztassa a címtárakat** képernyő, az Azure AD Connect kell ellenőriznie ezt, és vár a tartományvezérlővel 389-es porton keresztül kommunikálnak.  Ha nem érhető el, hogy a fenti képernyőképen látható hibaüzenet jelenik meg.  
 

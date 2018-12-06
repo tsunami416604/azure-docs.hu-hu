@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
-ms.openlocfilehash: 2028de68b3c50f24c46bfafd804b00e84301a9d7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: eafb4e82a319a0fdbe954757158a09aba83e9be0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256595"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972286"
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Az Azure App Service szolgáltatásban a Visual Studio használatával webalkalmazások hibáinak elhárítása
 ## <a name="overview"></a>Áttekintés
@@ -90,7 +90,7 @@ A Visual Studio egy részét a webes alkalmazás felügyeleti funkciók és a ko
 
 ![Unhelpful hibalap](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png)
 
-Gyakran a legegyszerűbben úgy, hogy a hiba okát, hogy engedélyezi a részletes hibaüzeneteket, amelyek az előző képernyőfelvételeken közül az első azt ismerteti, hogyan teheti. Amely követel meg a központilag telepített Web.config fájlban. Sikerült szerkeszteni a *Web.config* fájlt a projekt és ismételt üzembe helyezése a projekthez, vagy hozzon létre egy [Web.config átalakító](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) , és hogy hibakeresési buildet telepítsen, de gyorsabban: a **megoldáskezelő** , közvetlenül megtekintése és szerkesztése a távoli webes alkalmazásban fájlok használatával a *távoli nézet* funkció.
+Gyakran a legegyszerűbben úgy, hogy a hiba okát, hogy engedélyezi a részletes hibaüzeneteket, amelyek az előző képernyőfelvételeken közül az első azt ismerteti, hogyan teheti. Amely követel meg a központilag telepített Web.config fájlban. Sikerült szerkeszteni a *Web.config* fájlt a projekt és ismételt üzembe helyezése a projekthez, vagy hozzon létre egy [Web.config átalakító](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) , és hogy hibakeresési buildet telepítsen, de gyorsabban: a **megoldáskezelő** , közvetlenül megtekintése és szerkesztése a távoli webes alkalmazásban fájlok használatával a *távoli nézet* funkció.
 
 1. A **Server Explorer**, bontsa ki a **Azure**, bontsa ki a **App Service-ben**, és bontsa ki az erőforráscsoportot, amely a webes alkalmazás található, majd bontsa ki a csomópontot, a webalkalmazás számára.
 
@@ -491,7 +491,7 @@ You can send logs to any or all of three destinations:
 
 You can specify a different severity level for each destination.
 
-Tables make it easy to view details of logs online, and they support streaming; you can query logs in tables and see new logs as they are being created. Blobs make it easy to download logs in files and to analyze them using HDInsight, because HDInsight knows how to work with blob storage. For more information, see **Hadoop and MapReduce** in [Data Storage Options (Building Real-World Cloud Apps with Azure)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-storage-options).
+Tables make it easy to view details of logs online, and they support streaming; you can query logs in tables and see new logs as they are being created. Blobs make it easy to download logs in files and to analyze them using HDInsight, because HDInsight knows how to work with blob storage. For more information, see **Hadoop and MapReduce** in [Data Storage Options (Building Real-World Cloud Apps with Azure)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-storage-options).
 
 You currently have file system logs set to verbose level; the following steps walk you through setting up information level logs to go to storage account tables. Information level means all logs created by calling `Trace.TraceInformation`, `Trace.TraceWarning`, and `Trace.TraceError` will be displayed, but not logs created by calling `Trace.WriteLine`.
 
@@ -629,12 +629,12 @@ Az Azure App Service web Apps-alkalmazások hibaelhárításával kapcsolatos to
 
 Egy adott hibaelhárítási kérdés segítség elindítani egy szálat a következő fórumok egyikében:
 
-* [Az Azure-fórum az ASP.NET-hely](http://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET).
+* [Az Azure-fórum az ASP.NET-hely](https://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET).
 * [Az Azure-fórum az MSDN](https://social.msdn.microsoft.com/Forums/windowsazure/).
-* [StackOverflow.com](http://www.stackoverflow.com).
+* [StackOverflow.com](https://www.stackoverflow.com).
 
 ### <a name="debugging-in-visual-studio"></a>Hibakeresés a Visual Studióban
-A Visual Studio hibakeresési mód használatával kapcsolatos további információkért lásd: [hibakeresés a Visual Studióban](https://msdn.microsoft.com/library/vstudio/sc65sadd.aspx) és [tippek hibakeresés a Visual Studio 2010](http://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx).
+A Visual Studio hibakeresési mód használatával kapcsolatos további információkért lásd: [hibakeresés a Visual Studióban](https://msdn.microsoft.com/library/vstudio/sc65sadd.aspx) és [tippek hibakeresés a Visual Studio 2010](https://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx).
 
 ### <a name="remote-debugging-in-azure"></a>Távoli hibakeresése az Azure-ban
 Az Azure web apps és webjobs-feladatok távoli hibakereséssel kapcsolatban további információkért lásd a következőket:
@@ -649,7 +649,7 @@ Ha a webalkalmazás az Azure webes API-t vagy a Mobile Services háttérbeli has
 ### <a name="tracing-in-aspnet-applications"></a>Az ASP.NET alkalmazásokban nyomon követése
 Nincsenek nem naprakész, és alapos tudnivalókra az ASP.NET nyomkövetési elérhető az interneten. A legjobb teheti van Ismerkedés a Web Forms MVC nem még létezik, és az újabb blog kiegészíti, mert tesz közzé, amelyek a konkrét problémák írt régi bevezető anyagok. Néhány hasznos helyek a indítsa el a következő források:
 
-* [Monitoring és Telemetria (valós felhőalapú alkalmazások létrehozása az Azure-ral)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry).<br>
+* [Monitoring és Telemetria (valós felhőalapú alkalmazások létrehozása az Azure-ral)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry).<br>
   E-könyv fejezet ajánlásokkal nyomkövetés az Azure felhőalapú alkalmazásokat.
 * [Az ASP.NET nyomkövetési](https://msdn.microsoft.com/library/ms972204.aspx)<br/>
   Régi azonban továbbra is a leghasznosabb, az alapszintű bevezetést a tulajdonosnak.
@@ -672,12 +672,12 @@ catch (Exception ex)
 }
 ```
 
-* [Streamelési diagnosztikai nyomkövetési naplózása az Azure parancssori felületével (plusz ízelítőt kaphatnak abból!)](http://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx)<br/>
-  Milyen Ez az oktatóanyag elvégzéséhez a parancssor használatával a Visual Studióban végrehajtását ismerteti. [Ízelítőt kaphatnak abból](http://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) olyan eszköz, az ASP.NET-alkalmazások a hibakereséshez.
+* [Streamelési diagnosztikai nyomkövetési naplózása az Azure parancssori felületével (plusz ízelítőt kaphatnak abból!)](https://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx)<br/>
+  Milyen Ez az oktatóanyag elvégzéséhez a parancssor használatával a Visual Studióban végrehajtását ismerteti. [Ízelítőt kaphatnak abból](https://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) olyan eszköz, az ASP.NET-alkalmazások a hibakereséshez.
 * [Web Apps-naplózás és diagnosztika – használata David Ebbo](https://azure.microsoft.com/documentation/videos/azure-web-site-logging-and-diagnostics/) és [folyamatos átviteli naplók, a Web Apps – David Ebbo](https://azure.microsoft.com/documentation/videos/log-streaming-with-azure-web-sites/)<br>
   Scott Hanselman és David Ebbo videókat.
 
-Hiba történt a naplózást, a saját nyomkövetési kód írása helyett egy nyílt forráskódú naplózási keretrendszer használandó [ELMAH](http://nuget.org/packages/elmah/). További információkért lásd: [házigazdája, Scott Hanselman kapcsolatos blogbejegyzéseket ELMAH](http://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx).
+Hiba történt a naplózást, a saját nyomkövetési kód írása helyett egy nyílt forráskódú naplózási keretrendszer használandó [ELMAH](https://nuget.org/packages/elmah/). További információkért lásd: [házigazdája, Scott Hanselman kapcsolatos blogbejegyzéseket ELMAH](https://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx).
 
 Emellett nem kell használnia az ASP.NET vagy `System.Diagnostics` le adatfolyam-továbbítási nyomkövetési naplók az Azure-ból. A naplózási szolgáltatás Azure web app streameli bármely *.txt*, *.html*, vagy *.log* fájlt, amely megjeleníti a *LogFiles* mappát. Ezért létrehozhatja a saját naplózási rendszerrel, amely a fájlrendszer, a webalkalmazás ír, és a fájl automatikusan streamelt adatok és letöltött. Ehhez csak írási alkalmazáskóddal, amelyhez a fájlokat hozza létre a *d:\home\logfiles* mappát.
 
@@ -686,13 +686,13 @@ Webkiszolgáló-naplók elemzésével kapcsolatos további információkért lá
 
 * [LogParser](https://www.microsoft.com/download/details.aspx?id=24659)<br/>
   Egy eszköz a adatok megtekintése a webkiszolgáló-naplókkal (*.log* fájlok).
-* [Hibaelhárítási IIS teljesítménybeli problémák vagy az alkalmazáshibák LogParser használatával ](http://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
+* [Hibaelhárítási IIS teljesítménybeli problémák vagy az alkalmazáshibák LogParser használatával ](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   Bevezetés a naplóelemző eszköz, amellyel webkiszolgáló-naplók elemzése.
 * [Blogbejegyzések által Robert McMurray LogParser használatával](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
 * [Az IIS 7.0, IIS 7.5 és IIS 8.0-s HTTP-állapotkód](https://support.microsoft.com/kb/943891)
 
 ### <a name="analyzing-failed-request-tracing-logs"></a>Kérelem nyomkövetési naplók elemzése nem sikerült.
-A Microsoft TechNet webhelyen tartalmaz egy [használatával sikertelen kérelmek nyomkövetését](http://www.iis.net/learn/troubleshoot/using-failed-request-tracing) rész, amely hasznos lehet az ismertetése, hogyan használhatja ezeket a naplókat. Azonban ez a dokumentáció összpontosít főként sikertelen kérelmek nyomkövetése konfigurálása az IIS-ben, amely az Azure Web Apps nem hajtható végre.
+A Microsoft TechNet webhelyen tartalmaz egy [használatával sikertelen kérelmek nyomkövetését](https://www.iis.net/learn/troubleshoot/using-failed-request-tracing) rész, amely hasznos lehet az ismertetése, hogyan használhatja ezeket a naplókat. Azonban ez a dokumentáció összpontosít főként sikertelen kérelmek nyomkövetése konfigurálása az IIS-ben, amely az Azure Web Apps nem hajtható végre.
 
 [GetStarted]: app-service-web-get-started-dotnet.md
 [GetStartedWJ]: https://github.com/Azure/azure-webjobs-sdk/wiki

@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 09/12/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 08cbff7bc58f5925dee9b77ff195d362af4379d8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: aa1d5a4fc29b6fa5fc751edfd40e61d8762f6bd7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245733"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965342"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Fejlesztés és üzembe helyezés a Visual Studio használatával – az Azure App Service webjobs-feladatok
 
@@ -35,7 +35,7 @@ Ha a Visual Studio telepíti a WebJobs-kompatibilis Konzolalkalmazás-projektet,
 
 A WebJobs-kompatibilis projekt hozzáadja a következőkkel rendelkezik:
 
-* A [Microsoft.Web.WebJobs.Publish](http://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet-csomagot.
+* A [Microsoft.Web.WebJobs.Publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet-csomagot.
 * A [webjobs-feladat közzététele settings.json](#publishsettings) üzembe helyezési és ütemezési beállításait tartalmazó fájl. 
 
 ![Mi kerül egy Konzolalkalmazást, Webjobs-feladatként központi telepítés engedélyezése a bemutató ábra.](./media/websites-dotnet-deploy-webjobs/convert.png)
@@ -97,7 +97,7 @@ WebJobs-kompatibilis az új projekt létrehozásához használja a Konzolalkalma
     Hozzon létre egy projektet, amely konfigurálva van egy webes projektet a megoldásban üzembe helyezésekor Webjobs-feladatként automatikus központi telepítés. Használja ezt a beállítást, ha meg szeretné futtatni a webjobs-feladat ugyanazt a webalkalmazást, amelyben a kapcsolódó webalkalmazás futtatása.
 
 > [!NOTE]
-> A webjobs-feladatok új webesprojekt-sablon automatikusan telepíti a NuGet-csomagok és a kód *Program.cs* számára a [WebJobs SDK-val](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs). Ha nem szeretné a WebJobs SDK-val, távolítsa el vagy módosítsa a `host.RunAndBlock` utasítás *Program.cs*.
+> A webjobs-feladatok új webesprojekt-sablon automatikusan telepíti a NuGet-csomagok és a kód *Program.cs* számára a [WebJobs SDK-val](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs). Ha nem szeretné a WebJobs SDK-val, távolítsa el vagy módosítsa a `host.RunAndBlock` utasítás *Program.cs*.
 > 
 > 
 
@@ -130,7 +130,7 @@ A mezők a mezők ezen a párbeszédpanelen felel meg a **a webjobs-feladat hozz
 > 
 
 ## <a id="publishsettings"></a>webjob-publish-settings.json
-Amikor konfigurál egy Konzolalkalmazást WebJobs üzembe helyezéshez, a Visual Studio telepíti a [Microsoft.Web.WebJobs.Publish](http://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet csomag és az ütemezési információkat a tárolók egy *webjobs-feladat közzététele settings.json*  fájlt a projektben *tulajdonságok* mappájában, a WebJobs-projekt. Íme egy példa, hogy a fájl:
+Amikor konfigurál egy Konzolalkalmazást WebJobs üzembe helyezéshez, a Visual Studio telepíti a [Microsoft.Web.WebJobs.Publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet csomag és az ütemezési információkat a tárolók egy *webjobs-feladat közzététele settings.json*  fájlt a projektben *tulajdonságok* mappájában, a WebJobs-projekt. Íme egy példa, hogy a fájl:
 
         {
           "$schema": "http://schemastore.org/schemas/json/webjob-publish-settings.json",

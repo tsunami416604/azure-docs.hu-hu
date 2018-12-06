@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/12/2018
 ms.author: yexu
-ms.openlocfilehash: f06094fb82f10276f7a41d1b22f6dd99836a497f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
-ms.translationtype: HT
+ms.openlocfilehash: eaafc8acb73dd48e213d05d953d9ada457c53132
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095510"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957265"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Adatok növekményes betöltése az Azure SQL Database-ből az Azure Blob Storage-ba változáskövetési adatok használatával 
 Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be a forrás Azure SQL Database-ben lévő **változáskövetési** adatok alapján egy Azure Blob Storage-be.  
@@ -322,7 +322,7 @@ Kattintson az **Aktiválás** gombra a folyamat eszköztárán, majd az **Aktiv�
 ### <a name="review-the-results"></a>Az eredmények áttekintése
 Egy `incremental-<GUID>.txt` nevű fájl található az `adftutorial` nevű tároló `incchgtracking` mappájában. 
 
-![Kimeneti fájl teljes másolásból](media\tutorial-incremental-copy-change-tracking-feature-portal\full-copy-output-file.png)
+![Kimeneti fájl teljes másolásból](media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-output-file.png)
 
 A fájlnak tartalmaznia kell az Azure SQL Database-ből származó adatokat:
 
@@ -445,7 +445,7 @@ Ebben a lépésben a következő tevékenységeket tartalmazó folyamatot fog l�
 ### <a name="review-the-results"></a>Az eredmények áttekintése
 A második fájl az `adftutorial` nevű tároló `incchgtracking` mappájában található. 
 
-![Kimeneti fájl növekményes másolásból](media\tutorial-incremental-copy-change-tracking-feature-portal\incremental-copy-output-file.png)
+![Kimeneti fájl növekményes másolásból](media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-output-file.png)
 
 A fájl kizárólag az Azure SQL Database változásadatait tartalmazza. Az `U` karaktert tartalmazó rekord a frissített sor az adatbázisban, az `I` karaktert tartalmazó rekord pedig a hozzáadott sor. 
 

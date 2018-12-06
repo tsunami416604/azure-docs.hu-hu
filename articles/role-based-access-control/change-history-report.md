@@ -15,12 +15,12 @@ ms.date: 05/23/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a503adb342ac28d4049b58d1de04e7614ad0566b
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c1ba7798fd8c1a18bc84aeb9ab8c4c2e0ff718cc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865824"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967895"
 ---
 # <a name="view-activity-logs-for-rbac-changes"></a>Az RBAC-módosítások Tevékenységnaplók megtekintése
 
@@ -117,7 +117,7 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 Íme az alapvető lépéseken, a kezdéshez:
 
-1. [Hozzon létre egy Log Analytics-munkaterület](../log-analytics/log-analytics-quick-create-workspace.md).
+1. [Hozzon létre egy Log Analytics-munkaterület](../azure-monitor/learn/quick-create-workspace.md).
 
 1. [Az Activity Log Analytics megoldás konfigurálása](../azure-monitor/platform/collect-activity-logs.md#configuration) a munkaterületen.
 

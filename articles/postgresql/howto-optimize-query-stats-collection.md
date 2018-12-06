@@ -7,12 +7,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: 8b8d1a5a16a948953838f51edca091121dc14df1
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 076442d85d7f628504cca95c36f3e99f4d0c5117
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629126"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966687"
 ---
 # <a name="optimize-query-statistics-collection-in-azure-database-for-postgresql-server"></a>Lekérdezési statisztikák gyűjtését az Azure Database for PostgreSQL-kiszolgáló optimalizálása 
 Ez a cikk ismerteti a lekérdezési statisztikák gyűjtését az Azure Database for PostgreSQL-kiszolgáló-optimalizálása érdekében.
@@ -28,7 +28,7 @@ Beállítása `pg_stat_statements.track = NONE`:
 
 - Az Azure Portalon lépjen a [PostgreSQL erőforrás-kezelés lapon, és válassza a kiszolgáló paraméterei panelen](howto-configure-server-parameters-using-portal.md).
 
-![PostgreSQL-kiszolgáló paraméter panel](.\media\howto-optimize-query-stats-collection\pg_stats_statements_portal.png)
+![PostgreSQL-kiszolgáló paraméter panel](./media/howto-optimize-query-stats-collection/pg_stats_statements_portal.png)
 
 - Használatával [Azure CLI-vel](howto-configure-server-parameters-using-cli.md), az postgres server configuration set `--name pg_stat_statements.track --resource-group myresourcegroup --server mydemoserver --value NONE`.
 

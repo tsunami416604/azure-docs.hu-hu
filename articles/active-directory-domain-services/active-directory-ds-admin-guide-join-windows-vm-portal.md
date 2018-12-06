@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: 753818526ad637db0baa13c92e92d2725b19dbf8
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 748345bf89e7f746b8ef388ad5cabc987a07d1f8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158327"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957670"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Windows Server virtuális gépek csatlakoztatása felügyelt tartományokhoz
 Ez a cikk bemutatja, hogyan helyezhet üzembe egy Windows Server virtuális gépet az Azure portal használatával. Ezután bemutatja hogyan kell a virtuális gép csatlakoztatása az Azure Active Directory Domain Services (Azure AD DS) a felügyelt tartományhoz.
@@ -30,7 +30,7 @@ Ez a cikk bemutatja, hogyan helyezhet üzembe egy Windows Server virtuális gép
 ## <a name="step-1-create-a-windows-server-virtual-machine"></a>1. lépés: A Windows Server virtuális gép létrehozása
 A virtuális hálózatot, amelyben engedélyezte az Azure AD DS tartományhoz csatlakozó Windows virtuális gép létrehozásához tegye a következőket:
 
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza a bal oldali ablaktábla tetején **új**.
 3. Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet.
 

@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: rafats
-ms.openlocfilehash: 6fb9ebe2b0afc645bbdfb6de6a8551440644fe59
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d88a82921e5baee06aacc09fafe274a8c56780c7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836083"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972405"
 ---
 # <a name="azure-cosmos-db-database-security"></a>Az Azure Cosmos DB adatbázis-biztonság
 
@@ -75,7 +75,7 @@ Tájékozódjon részletesebben mindegyikhez.
 |Geokerítés-|Az Azure Cosmos DB biztosítja az adatszabályozást szuverén régiók (például Németország, Kína, US Gov).|
 |Védett létesítményekben|Az Azure Cosmos DB adatokat az SSD-k az Azure által védett adatközpontokban tárolja.<br><br>További információ: [Microsoft globális adatközpontjairól](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)|
 |HTTPS/SSL/TLS encryption|Az összes ügyfél – szolgáltatás az Azure Cosmos DB kapcsolati SSL/TLS 1.2-es képes a rendszer. Az összes belüli adatközpontja és több adatközpont replikációs is SSL/TLS 1.2 kényszerítése.|
-|Titkosítás inaktív állapotban|Az Azure Cosmos DB-be tárolt összes adat titkosítása. További információ: [Azure Cosmos DB-titkosítás inaktív állapotban](.\database-encryption-at-rest.md)|
+|Titkosítás inaktív állapotban|Az Azure Cosmos DB-be tárolt összes adat titkosítása. További információ: [Azure Cosmos DB-titkosítás inaktív állapotban](./database-encryption-at-rest.md)|
 |Javított kiszolgálók|Egy felügyelt adatbázis Azure Cosmos DB szükségtelenné teszi a kezelése és a patch-kiszolgálók által elvégzett, automatikusan.|
 |Erős jelszót a rendszergazdai fiókok|Hihetetlen, még akkor is meg kell ezt a követelményt említik, de néhány lemaradni a versenytársak eltérően nem lehet egy rendszergazdai fiók, jelszó nélküli rendelkezik az Azure Cosmos DB.<br><br> Alapértelmezés szerint a számlázásnak biztonsági SSL és HMAC-val titkos alapú hitelesítés használatával.|
 |Biztonság és a data protection minősítések|A legtöbb legfeljebb adatok listája minősítései közül is bemutat, lásd: a teljes [Azure megfelelőségi hely](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) és a legújabb [Azure megfelelőségi dokumentum](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) az összes tanúsítványának (Cosmos keresése). Tekintse meg a 2018. április 25. bejegyzés egy célzottabb olvasni a [Azure #CosmosDB: biztonságos, privát, megfelelő](https://azure.microsoft.com/blog/azure-cosmosdb-secure-private-compliant/) is tartalmazó csak 1/2 Type 2, HITRUST, PCI DSS Level 1, az ISO 27001, a HIPAA, magas szintű FedRAMP és sok más.

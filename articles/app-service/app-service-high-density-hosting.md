@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: byvinyal
-ms.openlocfilehash: f2cf472ef3c2c9950dd9f9382009e21fbf62771b
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: e07653db70c5baff038cacf8628351c682e20f7f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856785"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971980"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Nagy sűrűségű üzemeltetés az Azure App Service alkalmazás skálázással
 Alapértelmezés szerint méretezése App Service-alkalmazások történik méretezés a [App Service-csomag](azure-web-sites-web-hosting-plans-in-depth-overview.md) számítógépen futnak. Amikor több alkalmazás futtatása az App Service-csomag, horizontálisan felskálázott példányonként minden alkalmazás fut a terv.
@@ -78,7 +78,7 @@ Az App Service-csomag beállítása a **PerSiteScaling** tulajdonság igaz ért�
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters":{
         "appServicePlanName": { "type": "string" },

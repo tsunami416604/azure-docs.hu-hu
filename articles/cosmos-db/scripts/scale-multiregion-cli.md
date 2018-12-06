@@ -1,17 +1,17 @@
 ---
-title: Azure CLI-szkript – Többrégiós replikáció az Azure Cosmos DB-ben | Microsoft Docs
+title: Azure CLI parancsfájl Multi-régiók replikáció az Azure Cosmos DB
 description: Azure CLI-példaszkript – Többrégiós replikáció az Azure Cosmos DB-ben
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: d9f1420b5d2706ed4547e46639739c0f707559ab
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 9981d41a259eeb48354002a98c9440156a7f2481
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015202"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962511"
 ---
 # <a name="replicate-an-azure-cosmos-db-database-account-in-multiple-regions-and-configure-failover-priorities-using-the-azure-cli"></a>Egy Azure Cosmos DB-adatbázisfiók replikálása több régióban és a feladatátvételi prioritások konfigurálása az Azure CLI használatával
 

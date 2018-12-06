@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 3d4c9e974f92f26b93900318c01dc8a659d8edbe
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: b7ae066bd8dc2de3227f441fd05b6c7a412b6074
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276210"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965359"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Az Azure Functions az Azure Cosmos DB-kötéseket 1.x
 
@@ -24,7 +24,7 @@ ms.locfileid: "52276210"
 > * [1-es verzió](functions-bindings-cosmosdb.md)
 > * [2-es verzió](functions-bindings-cosmosdb-v2.md)
 
-Ez a cikk azt ismerteti, hogyan használható a [Azure Cosmos DB](..\cosmos-db\serverless-computing-database.md) kötések az Azure Functions szolgáltatásban. Az Azure Functions támogatja a-trigger, bemeneti és kimeneti kötések az Azure Cosmos DB.
+Ez a cikk azt ismerteti, hogyan használható a [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) kötések az Azure Functions szolgáltatásban. Az Azure Functions támogatja a-trigger, bemeneti és kimeneti kötések az Azure Cosmos DB.
 
 > [!NOTE]
 > Ez a cikk az Azure Functions 1.x.  Ilyen kötést ahhoz a függvények használatával kapcsolatos információ 2.x verzióját, lásd: [Azure Cosmos DB-kötések az Azure Functions 2.x](functions-bindings-cosmosdb-v2.md).
@@ -1606,7 +1606,7 @@ Alapértelmezés szerint ha a függvényben a kimeneti paraméter írni egy doku
 
 ## <a name="next-steps"></a>További lépések
 
-* [További tudnivalók a Cosmos DB-vel számítástechnika, kiszolgáló nélküli adatbázis](..\cosmos-db\serverless-computing-database.md)
+* [További tudnivalók a Cosmos DB-vel számítástechnika, kiszolgáló nélküli adatbázis](../cosmos-db/serverless-computing-database.md)
 * [Tudjon meg többet az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)
 
 <!---

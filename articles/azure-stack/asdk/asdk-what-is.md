@@ -16,15 +16,15 @@ ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 62eccba1b876ca8272dacbbd97a1d28c8b796081
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 345d62f4045e7b9279d52acf70cc340d088f5db0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138310"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961331"
 ---
 # <a name="what-is-the-azure-stack-development-kit"></a>Mi az az Azure Stack Development Kit?
-[A Microsoft Azure Stack integrált rendszerek](.\.\azure-stack-poc.md) mérete 4 és 16 közötti csomópontjáról tartományt, és közösen egy hardver partner és a Microsoft által támogatott. Azure Stack integrált rendszerek használatával engedélyezhető az új forgatókönyvek használhatók a termelési számítási feladatokhoz. Ha Ön az Azure Stack operátorait, akik az integrált rendszerek infrastruktúrát felügyeli, és szolgáltatásokat kínál, tekintse meg a [operátori dokumentációja](https://docs.microsoft.com/azure/azure-stack).
+[A Microsoft Azure Stack integrált rendszerek](../azure-stack-poc.md) mérete 4 és 16 közötti csomópontjáról tartományt, és közösen egy hardver partner és a Microsoft által támogatott. Azure Stack integrált rendszerek használatával engedélyezhető az új forgatókönyvek használhatók a termelési számítási feladatokhoz. Ha Ön az Azure Stack operátorait, akik az integrált rendszerek infrastruktúrát felügyeli, és szolgáltatásokat kínál, tekintse meg a [operátori dokumentációja](https://docs.microsoft.com/azure/azure-stack).
 
 Az Azure Stack Development Kit (ASDK) az egyetlen csomópontos üzemelő példánya, letöltheti és használhatja az Azure Stack **ingyenes**. Minden ASDK-összetevő telepítve van a virtuális gépek egy egyetlen számítógépen futó kell elérik vagy túllépik a [hardverre vonatkozó minimális](asdk-deploy-considerations.md#hardware). A ASDK hivatott környezet, amelyben az Azure Stack értékeli és API-k használatával, és az Azure-eszközkészlet modern alkalmazások fejlesztése a *nem éles* környezetben. 
 
@@ -48,9 +48,9 @@ Egy csomópontos ASDK központi telepítések érdemes figyelembe vennie, néhá
 |Leírás|ASDK|Több csomópontos az Azure Stack|
 |-----|-----|-----|
 |**Méretezés**|Az összes összetevő egy egycsomópontos kiszolgálói számítógépre van telepítve.|A 4 és 16 közötti csomópontok mérete terjedhet.|
-|**Rugalmasságának biztosításával**|Egy csomópontos konfigurációja nem biztosít magas rendelkezésre állás|[Magas rendelkezésre állásának](.\.\azure-stack-key-features.md#high-availability-for-azure-stack) funkciót támogatnak.|
-|**Hálózat**|A ASDK nevű AzS-BGPNAT01 virtuális ASDK minden hálózati forgalmat útvonal használja. Nem vonatkoznak további kapcsoló követelmények.|A AzS-BGPNAT01 virtuális gép nem létezik a több csomópontos rendszerekhez. Összetettebb [hálózati útválasztási infrastruktúra](.\.\azure-stack-network.md#network-infrastructure) szükséges, beleértve a Top-Of-Rack (TOR), alaplapi felügyeleti vezérlő (BMC) és kapcsolók szegély (adatközpont-hálózat).|
-|**Javítási és frissítési folyamat**|Helyezze át a ASDK új verziójára, ismét üzembe kell helyeznie a ASDK a development kit gazdagépen.|[Javítása és frissítése](.\.\azure-stack-updates.md) a telepített Azure Stack-verzió frissítésére szolgáló folyamat.|
+|**Rugalmasságának biztosításával**|Egy csomópontos konfigurációja nem biztosít magas rendelkezésre állás|[Magas rendelkezésre állásának](../azure-stack-key-features.md#high-availability-for-azure-stack) funkciót támogatnak.|
+|**Hálózat**|A ASDK nevű AzS-BGPNAT01 virtuális ASDK minden hálózati forgalmat útvonal használja. Nem vonatkoznak további kapcsoló követelmények.|A AzS-BGPNAT01 virtuális gép nem létezik a több csomópontos rendszerekhez. Összetettebb [hálózati útválasztási infrastruktúra](../azure-stack-network.md#network-infrastructure) szükséges, beleértve a Top-Of-Rack (TOR), alaplapi felügyeleti vezérlő (BMC) és kapcsolók szegély (adatközpont-hálózat).|
+|**Javítási és frissítési folyamat**|Helyezze át a ASDK új verziójára, ismét üzembe kell helyeznie a ASDK a development kit gazdagépen.|[Javítása és frissítése](../azure-stack-updates.md) a telepített Azure Stack-verzió frissítésére szolgáló folyamat.|
 |**Támogatás**|Fórum az MSDN Azure Stack. A Microsoft ügyfélszolgálata és a támogatási szolgálathoz (CSS) támogatás *nem* nem éles környezetekben érhető el.|[MSDN Azure Stack forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack) és teljes CSS támogatja.|
 | | |
 

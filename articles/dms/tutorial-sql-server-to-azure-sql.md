@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 783785a73b3a6a99126b07f3759be540fe3098d8
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: HT
+ms.openlocfilehash: 616b3d965993eb3578a8496069f59c9cc88301d8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959239"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971338"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Oktatóanyag: SQL Server migrálása Azure SQL Database-példányra kapcsolat nélküli üzemmódban, a DMS használatával
 Az Azure Database Migration Service használatával migrálhatja egy helyszíni SQL Server-példány adatbázisait az [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/)-be. Ebben az oktatóanyagban az SQL Server 2016 (vagy újabb) helyi példányára visszaállított **Adventureworks2012** adatbázist migrálhatja egy Azure SQL Database-példányba az Azure Database Migration Service használatával.
@@ -69,7 +69,7 @@ Mielőtt migrálhatná az adatokat egy helyszíni SQL Server-példányból az Az
 
     A felmérés befejeztével az eredmények a következőképpen jelennek meg:
 
-    ![Adatmigrálás felmérése](media\tutorial-sql-server-to-azure-sql\dma-assessments.png)
+    ![Adatmigrálás felmérése](media/tutorial-sql-server-to-azure-sql/dma-assessments.png)
 
     Az Azure SQL Database-ben a felmérések szolgáltatásparitási problémákat és a migrálást akadályozó problémákat azonosítanak.
 
@@ -92,52 +92,52 @@ Az **AdventureWorks2012** séma Azure SQL Database-be való migrálásához vég
 
     A fent leírt lépések elvégzése után megjelenik a Data Migration Assistant felhasználói felülete, ahogy az a következő képen látható:
     
-    ![Data Migration Assistant-projekt létrehozása](media\tutorial-sql-server-to-azure-sql\dma-create-project.png)
+    ![Data Migration Assistant-projekt létrehozása](media/tutorial-sql-server-to-azure-sql/dma-create-project.png)
 
 4.  A projekt létrehozásához válassza a **Létrehozás** lehetőséget.
 5.  A Data Migration Assistant programban, adja meg az SQL Server forráskapcsolati adatait, válassza a **Csatlakozás** lehetőséget, majd válassza ki az **AdventureWorks2012** adatbázist.
 
-    ![Data Migration Assistant forráskapcsolati adatok](media\tutorial-sql-server-to-azure-sql\dma-source-connect.png)
+    ![Data Migration Assistant forráskapcsolati adatok](media/tutorial-sql-server-to-azure-sql/dma-source-connect.png)
 
 6.  Válassza a **Tovább**, lehetőséget. A **Csatlakozás célkiszolgálóhoz** területen alatt adja meg az Azure SQL Database célkapcsolati adatait, válassza a **Csatlakozás** lehetőséget, majd válassza ki azt az **AdventureWorksAzure** adatbázist, amelyek az Azure SQL Database-ben előzetesen kiépített.
 
-    ![Data Migration Assistant célkapcsolati adatok](media\tutorial-sql-server-to-azure-sql\dma-target-connect.png)
+    ![Data Migration Assistant célkapcsolati adatok](media/tutorial-sql-server-to-azure-sql/dma-target-connect.png)
 
 7.  A **Tovább** lehetőséggel lépjen tovább az **Objektumok kiválasztása** képernyőre, ahol megadhatja azokat a sémaobjektumokat az **AdventureWorks2012** adatbázisban, amelyeket üzembe kell helyezni az Azure SQL Database-ben.
 
     Alapértelmezés szerint az összes objektum ki van jelölve.
 
-    ![SQL-szkriptek létrehozása](media\tutorial-sql-server-to-azure-sql\dma-assessment-source.png)
+    ![SQL-szkriptek létrehozása](media/tutorial-sql-server-to-azure-sql/dma-assessment-source.png)
 
 8.  Az **SQL-szkript létrehozása** lehetőséggel hozza létre az SQL-szkripteket, majd tekintse át azokat, hogy észrevehesse az esetleges hibákat.
 
-    ![Sémaszkript](media\tutorial-sql-server-to-azure-sql\dma-schema-script.png)
+    ![Sémaszkript](media/tutorial-sql-server-to-azure-sql/dma-schema-script.png)
 
 9.  Válassza a **Séma üzembe helyezése** lehetőséget a séma üzembe helyezéséhez az Azure SQL Database-ben. Az üzembe helyezés után ellenőrizze a célt az esetleges hibákért.
 
-    ![Séma üzembe helyezése](media\tutorial-sql-server-to-azure-sql\dma-schema-deploy.png)
+    ![Séma üzembe helyezése](media/tutorial-sql-server-to-azure-sql/dma-schema-deploy.png)
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>A Microsoft.DataMigration erőforrás-szolgáltató regisztrálása
 1. Jelentkezzen be az Azure Portalra, és válassza a **Minden szolgáltatás** **Előfizetések** elemét.
  
-   ![Portál-előfizetések megtekintése](media\tutorial-sql-server-to-azure-sql\portal-select-subscription1.png)
+   ![Portál-előfizetések megtekintése](media/tutorial-sql-server-to-azure-sql/portal-select-subscription1.png)
        
 2. Válassza ki azt az előfizetést, amelyen az Azure Database Migration Service példányát létre szeretné hozni, majd válassza az **Erőforrás-szolgáltatók** elemet.
  
-    ![Erőforrás-szolgáltatók megtekintése](media\tutorial-sql-server-to-azure-sql\portal-select-resource-provider.png)
+    ![Erőforrás-szolgáltatók megtekintése](media/tutorial-sql-server-to-azure-sql/portal-select-resource-provider.png)
     
 3.  Keressen a „migration” kifejezésre, majd a **Microsoft.DataMigration** jobb oldalán válassza a **Regisztrálás** elemet.
  
-    ![Erőforrás-szolgáltató regisztrálása](media\tutorial-sql-server-to-azure-sql\portal-register-resource-provider.png)    
+    ![Erőforrás-szolgáltató regisztrálása](media/tutorial-sql-server-to-azure-sql/portal-register-resource-provider.png)    
 
 ## <a name="create-an-instance"></a>Példány létrehozása
 1.  Az Azure Portalon válassza a + **Erőforrás létrehozása** lehetőséget, keresse meg az Azure Database Migration Service-t, és a legördülő menüben válassza ki az **Azure Database Migration Service**-t.
 
-    ![Azure Piactér](media\tutorial-sql-server-to-azure-sql\portal-marketplace.png)
+    ![Azure Piactér](media/tutorial-sql-server-to-azure-sql/portal-marketplace.png)
 
 2.  Az **Azure Database Migration Service** képernyőn válassza a **Létrehozás** lehetőséget.
  
-    ![Azure Database Migration Service-példány létrehozása](media\tutorial-sql-server-to-azure-sql\dms-create1.png)
+    ![Azure Database Migration Service-példány létrehozása](media/tutorial-sql-server-to-azure-sql/dms-create1.png)
   
 3.  **A migrálási szolgáltatás létrehozása** képernyőn adja meg a szolgáltatás, az előfizetés és egy új vagy meglévő erőforráscsoport nevét.
 
@@ -155,7 +155,7 @@ Az **AdventureWorks2012** séma Azure SQL Database-be való migrálásához vég
 
     Ha segítségre van szüksége a megfelelő szintű Azure Database Migration Service kiválasztásában, tekintse meg az [itt](https://go.microsoft.com/fwlink/?linkid=861067) közzétett javaslatokat.  
 
-     ![Az Azure Database Migration Service-példány beállításainak konfigurálása](media\tutorial-sql-server-to-azure-sql\dms-settings2.png)
+     ![Az Azure Database Migration Service-példány beállításainak konfigurálása](media/tutorial-sql-server-to-azure-sql/dms-settings2.png)
 
 7.  A szolgáltatás létrehozásához válassza a **Létrehozás** lehetőséget.
 
@@ -164,16 +164,16 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
 1. Az Azure Portalon válassza a **Minden szolgáltatás** lehetőséget, keresse meg az Azure Database Migration Service-t, majd válassza ki az **Azure Database Migration Servicest**.
  
-      ![Az Azure Database Migration Service minden példányának megkeresése](media\tutorial-sql-server-to-azure-sql\dms-search.png)
+      ![Az Azure Database Migration Service minden példányának megkeresése](media/tutorial-sql-server-to-azure-sql/dms-search.png)
 
 2. Az **Azure Database Migration Services** képernyőn keresse meg a létrehozott Azure Database Migration Service-példány nevét, és válassza ki ezt a példányt.
  
-     ![Az Azure Database Migration Service személyes példányának megkeresése](media\tutorial-sql-server-to-azure-sql\dms-instance-search.png)
+     ![Az Azure Database Migration Service személyes példányának megkeresése](media/tutorial-sql-server-to-azure-sql/dms-instance-search.png)
  
 3. Válassza a + **Új migrálási projekt** lehetőséget.
 4. Az **Új migrálási projekt** képernyőn nevezze el a projektet, majd a **Forráskiszolgáló típusa** szövegbeviteli mezőben válassza ki az **SQL Servert**, a **Célkiszolgáló típus** szövegbeviteli mezőben pedig az **Azure SQL Database-t**. A **Válassza ki a tevékenység típusát** szövegbeviteli mezőben válassza az **Offline adatok migrálása** lehetőséget. 
 
-    ![Azure Database Migration Service-projekt létrehozása](media\tutorial-sql-server-to-azure-sql\dms-create-project2.png)
+    ![Azure Database Migration Service-projekt létrehozása](media/tutorial-sql-server-to-azure-sql/dms-create-project2.png)
 
 5.  Válassza a **Tevékenység létrehozása és futtatása** lehetőséget a projekt létrehozásához és a migrálási művelet lefuttatásához.
 
@@ -189,46 +189,46 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
     > [!CAUTION]
     > Az önaláírt tanúsítványokkal titkosított SSL-kapcsolatok nem biztosítanak erős védelmet. Az ilyen tanúsítványok közbeékelődéses támadásoknak vannak kitéve. Éles környezetben vagy az internethez csatlakozó kiszolgálók esetén az önaláírt tanúsítványokkal működő SSL nem megbízható.
 
-   ![Forrás részletei](media\tutorial-sql-server-to-azure-sql\dms-source-details2.png)
+   ![Forrás részletei](media/tutorial-sql-server-to-azure-sql/dms-source-details2.png)
 
 ## <a name="specify-target-details"></a>Cél adatainak megadása
 1. Válassza a **Mentés** lehetőséget, majd a **Migrálási cél részletei** képernyőn adja meg a célul szolgáló Azure SQL Database Server kapcsolati adatait. Ez a cél az az Azure SQL Database, amelyen üzembe helyezte az **AdventureWorks2012** sémát a Data Migration Assistant szolgáltatással.
 
-    ![Cél kiválasztása](media\tutorial-sql-server-to-azure-sql\dms-select-target2.png)
+    ![Cél kiválasztása](media/tutorial-sql-server-to-azure-sql/dms-select-target2.png)
 
 2. Válassza a **Mentés** lehetőséget, majd a **Leképezés céladatbázisokra** képernyőn képezze le a forrás- és a céladatbázist a migráláshoz.
 
     Ha a céladatbázis neve megegyezik a forrásadatbázis nevével, az Azure Database Migration Service alapértelmezés szerint a céladatbázist választja ki.
 
-    ![Leképezés céladatbázisokra](media\tutorial-sql-server-to-azure-sql\dms-map-targets-activity2.png)
+    ![Leképezés céladatbázisokra](media/tutorial-sql-server-to-azure-sql/dms-map-targets-activity2.png)
 
 3. Válassza a **Mentés**, lehetőséget, majd a **Táblák kiválasztása** képernyőn bontsa ki a táblák listáját, és tekintse át az érintett mezőket.
 
     Vegye figyelembe, hogy az Azure Database Migration Service automatikusan kiválasztja az összes üres forrástáblát, amely a célként szolgáló Azure SQL Database-példányon megtalálható. Ha újra kíván migrálni olyan táblákat, amelyek már tartalmaznak adatokat, azokat ezen a panelen külön kikell választania.
 
-    ![Select tables (Táblák kiválasztása)](media\tutorial-sql-server-to-azure-sql\dms-configure-setting-activity2.png)
+    ![Select tables (Táblák kiválasztása)](media/tutorial-sql-server-to-azure-sql/dms-configure-setting-activity2.png)
 
 4.  Válassza a **Mentés** lehetőséget. **A migrálás összegzése** képernyő **Tevékenység neve** szövegbeviteli mezőjében adja meg a migrálási tevékenység nevét.
 
 5. Bontsa ki az **Érvényesítési lehetőség** szakaszt a **Válasszon egy ellenőrzési lehetőséget** képernyő megjelenítéséhez, és itt adja meg, hogy a migrált adatbázisok ellenőrzése **Séma-összehasonlítás**, **Adatkonzisztencia** vagy **Lekérdezés helyessége** szerint történjen.
     
-    ![Ellenőrzési lehetőség kiválasztása](media\tutorial-sql-server-to-azure-sql\dms-configuration2.png)
+    ![Ellenőrzési lehetőség kiválasztása](media/tutorial-sql-server-to-azure-sql/dms-configuration2.png)
 
 6.  Válassza a **Mentés** lehetőséget, és tekintse át az összefoglalást, hogy meggyőződhessen arról, hogy a forrás és cél adatai megegyeznek a korábban megadottakkal.
 
-    ![A migrálás összegzése](media\tutorial-sql-server-to-azure-sql\dms-run-migration2.png)
+    ![A migrálás összegzése](media/tutorial-sql-server-to-azure-sql/dms-run-migration2.png)
 
 ## <a name="run-the-migration"></a>A migrálás futtatása
 - Válassza a **Migrálás futtatása** lehetőséget.
 
     Megjelenik a migrálás műveletének ablaka. A tevékenység **Állapota**: **Függőben**.
 
-    ![Tevékenység állapota](media\tutorial-sql-server-to-azure-sql\dms-activity-status1.png)
+    ![Tevékenység állapota](media/tutorial-sql-server-to-azure-sql/dms-activity-status1.png)
 
 ## <a name="monitor-the-migration"></a>A migrálás monitorozása
 1. A migrálás műveletének ablakában válassza a **Frissítés** lehetőséget a megjelenítés frissítéséhez addig, amíg a migrálás **Állapota** át nem vált **Befejezve** értékre.
 
-    ![Tevékenység állapota: Befejezve](media\tutorial-sql-server-to-azure-sql\dms-completed-activity1.png)
+    ![Tevékenység állapota: Befejezve](media/tutorial-sql-server-to-azure-sql/dms-completed-activity1.png)
 
 2. A migrálás befejezése után válassza a **Jelentés letöltése** lehetőséget. A megjelenő jelentés a migrálás folyamatával kapcsolatos részleteket listázza.
 

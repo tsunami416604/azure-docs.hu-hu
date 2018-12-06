@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 12/04/2018
-ms.openlocfilehash: 3c3127c7fd94ae0f66cd083e8a83dd9119f71dcb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a820287c79dcd8d904c9029de3f58d930118e840
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867936"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959512"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Oktatóanyag: MySQL online migrálása az Azure Database for MySQL-be a DMS használatával
 Az Azure Database Migration Service használatával minimális szolgáltatáskieséssel migrálhatja egy helyszíni MySQL-példány adatbázisait az [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/)-be. Ez azt jelenti, hogy a migrálás az alkalmazás minimális ideig tartó leállásával végezhető el. Ebben az oktatóanyagban az **Employees** mintaadatbázist fogja migrálni a MySQL 5.7 egy helyszíni példányáról az Azure Database for MySQL-be az Azure Database Migration Service online migrálási tevékenységének használatával.
@@ -121,24 +121,24 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>A Microsoft.DataMigration erőforrás-szolgáltató regisztrálása
 1. Jelentkezzen be az Azure Portalra, és válassza a **Minden szolgáltatás**, majd az **Előfizetések** elemet.
  
-   ![Portál-előfizetések megtekintése](media\tutorial-mysql-to-azure-mysql-online\portal-select-subscriptions.png)
+   ![Portál-előfizetések megtekintése](media/tutorial-mysql-to-azure-mysql-online/portal-select-subscriptions.png)
        
 2. Válassza ki azt az előfizetést, amelyen az Azure Database Migration Service példányát létre szeretné hozni, majd válassza az **Erőforrás-szolgáltatók** elemet.
  
-    ![Erőforrás-szolgáltatók megtekintése](media\tutorial-mysql-to-azure-mysql-online\portal-select-resource-provider.png)
+    ![Erőforrás-szolgáltatók megtekintése](media/tutorial-mysql-to-azure-mysql-online/portal-select-resource-provider.png)
     
 3.  Keressen a „migration” kifejezésre, majd a **Microsoft.DataMigration** jobb oldalán válassza a **Regisztrálás** elemet.
  
-    ![Erőforrás-szolgáltató regisztrálása](media\tutorial-mysql-to-azure-mysql-online\portal-register-resource-provider.png)    
+    ![Erőforrás-szolgáltató regisztrálása](media/tutorial-mysql-to-azure-mysql-online/portal-register-resource-provider.png)    
 
 ## <a name="create-a-dms-instance"></a>DMS-példány létrehozása
 1.  Az Azure Portalon válassza a + **Erőforrás létrehozása** lehetőséget, keresse meg az Azure Database Migration Service-t, és a legördülő menüben válassza ki az **Azure Database Migration Service**-t.
 
-    ![Azure Piactér](media\tutorial-mysql-to-azure-mysql-online\portal-marketplace.png)
+    ![Azure Piactér](media/tutorial-mysql-to-azure-mysql-online/portal-marketplace.png)
 
 2.  Az **Azure Database Migration Service** képernyőn válassza a **Létrehozás** lehetőséget.
  
-    ![Azure Database Migration Service-példány létrehozása](media\tutorial-mysql-to-azure-mysql-online\dms-create1.png)
+    ![Azure Database Migration Service-példány létrehozása](media/tutorial-mysql-to-azure-mysql-online/dms-create1.png)
   
 3.  **A migrálási szolgáltatás létrehozása** képernyőn adja meg a szolgáltatás, az előfizetés és egy új vagy meglévő erőforráscsoport nevét.
 
@@ -154,7 +154,7 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 
     Ha segítségre van szüksége a megfelelő szintű Azure Database Migration Service kiválasztásában, tekintse meg az [Azure Database Migration Service- (Azure DMS-) szint kiválasztásáról](https://go.microsoft.com/fwlink/?linkid=861067) szóló blogbejegyzésben közzétett javaslatokat. 
 
-     ![Az Azure Database Migration Service-példány beállításainak konfigurálása](media\tutorial-mysql-to-azure-mysql-online\dms-settings3.png)
+     ![Az Azure Database Migration Service-példány beállításainak konfigurálása](media/tutorial-mysql-to-azure-mysql-online/dms-settings3.png)
 
 7.  A szolgáltatás létrehozásához válassza a **Létrehozás** lehetőséget.
 
@@ -163,17 +163,17 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
 1. Az Azure Portalon válassza a **Minden szolgáltatás** lehetőséget, keresse meg az Azure Database Migration Service-t, majd válassza ki az **Azure Database Migration Servicest**.
  
-      ![Az Azure Database Migration Service minden példányának megkeresése](media\tutorial-mysql-to-azure-mysql-online\dms-search.png)
+      ![Az Azure Database Migration Service minden példányának megkeresése](media/tutorial-mysql-to-azure-mysql-online/dms-search.png)
 
 2. Az **Azure Database Migration Services** képernyőn keresse meg a létrehozott Azure Database Migration Service-példány nevét, és válassza ki ezt a példányt.
  
-     ![Az Azure Database Migration Service személyes példányának megkeresése](media\tutorial-mysql-to-azure-mysql-online\dms-instance-search.png)
+     ![Az Azure Database Migration Service személyes példányának megkeresése](media/tutorial-mysql-to-azure-mysql-online/dms-instance-search.png)
  
 3. Válassza a + **Új migrálási projekt** lehetőséget.
 4. Az **Új migrálási projekt** képernyőn nevezze el a projektet, majd a **Forráskiszolgáló típusa** szövegbeviteli mezőben válassza ki a **MySQL**, a **Célkiszolgáló típusa** szövegbeviteli mezőben pedig az **AzureDbForMySQL** elemet.
 5. A **Tevékenység típusának kiválasztása** szakaszban válassza az **Online adatok migrálása** lehetőséget.
 
-    ![Azure Database Migration Service-projekt létrehozása](media\tutorial-mysql-to-azure-mysql-online\dms-create-project4.png)
+    ![Azure Database Migration Service-projekt létrehozása](media/tutorial-mysql-to-azure-mysql-online/dms-create-project4.png)
 
     > [!NOTE]
     > Alternatív megoldásként választhatja a **csak a projektet létrehozó** lehetőséget, ha most csak a migrálási projektet szeretné létrehozni, és csak később szeretné elindítani a tényleges migrálást.
@@ -183,22 +183,22 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 ## <a name="specify-source-details"></a>Forrás adatainak megadása
 1. A **Forrás adatainak hozzáadása** képernyőn adja meg a forrásként szolgáló MySQL-példány kapcsolati adatait.
  
-    ![A Forrás adatainak hozzáadása képernyő](media\tutorial-mysql-to-azure-mysql-online\dms-add-source-details.png)   
+    ![A Forrás adatainak hozzáadása képernyő](media/tutorial-mysql-to-azure-mysql-online/dms-add-source-details.png)   
 
 ## <a name="specify-target-details"></a>Cél adatainak megadása
 1. Válassza a **Mentés** lehetőséget, majd a **Cél részletei** képernyőn adja meg a célul szolgáló Azure Database for MySQL-kiszolgáló kapcsolati adatait. Ez a cél az Azure Database for MySQL azon példánya, amelyen üzembe helyezte az **Employees** sémát a mysqldump segédprogrammal.
 
-    ![A részleteket tartalmazó képernyő](media\tutorial-mysql-to-azure-mysql-online\dms-add-target-details.png)
+    ![A részleteket tartalmazó képernyő](media/tutorial-mysql-to-azure-mysql-online/dms-add-target-details.png)
 
 2. Válassza a **Mentés** lehetőséget, majd a **Leképezés céladatbázisokra** képernyőn képezze le a forrás- és a céladatbázist a migráláshoz.
 
     Ha a céladatbázis neve megegyezik a forrásadatbázis nevével, az Azure Database Migration Service alapértelmezés szerint a céladatbázist választja ki.
 
-    ![Leképezés céladatbázisokra](media\tutorial-mysql-to-azure-mysql-online\dms-map-target-details.png)
+    ![Leképezés céladatbázisokra](media/tutorial-mysql-to-azure-mysql-online/dms-map-target-details.png)
 
 3.  Válassza a **Mentés** lehetőséget. **A migrálás összegzése** képernyő **Tevékenység neve** szövegbeviteli mezőjében adja meg a migrálási tevékenység nevét, majd tekintse át az összegzést, és ellenőrizze, hogy a forrás és a cél adatai megegyeznek-e a korábban megadottakkal.
 
-    ![A migrálás összegzése](media\tutorial-mysql-to-azure-mysql-online\dms-migration-summary.png)
+    ![A migrálás összegzése](media/tutorial-mysql-to-azure-mysql-online/dms-migration-summary.png)
 
 ## <a name="run-the-migration"></a>A migrálás futtatása
 - Válassza a **Migrálás futtatása** lehetőséget.
@@ -208,22 +208,22 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 ## <a name="monitor-the-migration"></a>A migrálás monitorozása
 1. A migrálás műveletének ablakában válassza a **Frissítés** lehetőséget a megjelenítés frissítéséhez addig, amíg a migrálás **Állapota** át nem vált **Befejezve** értékre.
 
-     ![Tevékenység állapota: Befejezve](media\tutorial-mysql-to-azure-mysql-online\dms-activity-completed.png)
+     ![Tevékenység állapota: Befejezve](media/tutorial-mysql-to-azure-mysql-online/dms-activity-completed.png)
 
 2. Az **Adatbázis neve** mezőben válassza ki az adatbázist, az **Adatok teljes betöltése** és a **Növekményes adatszinkronizálás** műveletek migrálási állapotának megtekintéséhez.
 
     Az Adatok teljes betöltésénél az első betöltés migrálási állapota jelenik meg, a Növekményes adatszinkronizálásnál pedig az Adatváltozások rögzítése (CDC) állapot látható.
    
-     ![Tevékenység állapota – Teljes betöltés kész](media\tutorial-mysql-to-azure-mysql-online\dms-activity-full-load-completed.png)
+     ![Tevékenység állapota – Teljes betöltés kész](media/tutorial-mysql-to-azure-mysql-online/dms-activity-full-load-completed.png)
 
-     ![Tevékenység állapota – Növekményes adatszinkronizálás](media\tutorial-mysql-to-azure-mysql-online\dms-activity-incremental-data-sync.png)
+     ![Tevékenység állapota – Növekményes adatszinkronizálás](media/tutorial-mysql-to-azure-mysql-online/dms-activity-incremental-data-sync.png)
 
 ## <a name="perform-migration-cutover"></a>Átállásos áttelepítés végrehajtása
 Az első teljes betöltés elkészültével az adatbázisok **Átállásra kész** állapotúak lesznek.
 
 1. Ha készen áll az adatbázis migrálásának befejezésére, kattintson az **Átállás indítása** gombra.
 
-    ![Átállás indítása](media\tutorial-mysql-to-azure-mysql-online\dms-start-cutover.png)
+    ![Átállás indítása](media/tutorial-mysql-to-azure-mysql-online/dms-start-cutover.png)
  
 2.  Mindenképpen állítsa le a forrásadatbázis összes bejövő tranzakcióját, és várjon, amíg a **Függőben lévő módosítások** számlálója **0**-t nem mutat.
 3.  Kattintson a **Megerősítés**, majd az **Alkalmaz** gombra.

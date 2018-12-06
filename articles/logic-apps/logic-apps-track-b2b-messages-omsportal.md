@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 0bfb652d9e64b9dbf61ad4032f1449fd484cc80a
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: aacdaf4ec55b1223ce993a7246ed9f0405a5054e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233556"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957181"
 ---
 # <a name="track-b2b-messages-with-azure-log-analytics"></a>Az Azure Log Analytics B2B üzenetek nyomon követése
 
@@ -37,11 +37,11 @@ Miután beállította a kereskedelmi partnerek az integrációs fiókban lévő 
 
 * Ha még nem tette, [diagnosztikai adatok közzététele a Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
-* Miután megfelel a fenti követelményeknek, Log Analytics-munkaterület, amellyel nyomon követési B2B kommunikációs Log Analytics segítségével is szükséges. Ha nem rendelkezik a Log Analytics-munkaterületet, további [Log Analytics-munkaterület létrehozása](../log-analytics/log-analytics-quick-create-workspace.md).
+* Miután megfelel a fenti követelményeknek, Log Analytics-munkaterület, amellyel nyomon követési B2B kommunikációs Log Analytics segítségével is szükséges. Ha nem rendelkezik a Log Analytics-munkaterületet, további [Log Analytics-munkaterület létrehozása](../azure-monitor/learn/quick-create-workspace.md).
 
 ## <a name="install-logic-apps-b2b-solution"></a>Logic Apps B2B-megoldás telepítése
 
-Ahhoz, hogy képes a Log Analytics, a logikai alkalmazás B2B üzenetek nyomon követése, adja hozzá a **Logic Apps B2B** megoldás a Log Analytics szolgáltatásba. Tudjon meg többet [megoldások hozzáadása a Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
+Ahhoz, hogy képes a Log Analytics, a logikai alkalmazás B2B üzenetek nyomon követése, adja hozzá a **Logic Apps B2B** megoldás a Log Analytics szolgáltatásba. Tudjon meg többet [megoldások hozzáadása a Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
 1. Az [Azure Portalon](https://portal.azure.com) válassza a **Minden szolgáltatás** elemet. A keresőmezőbe, keresse meg a "log analytics", és válassza ki **Log Analytics**.
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
 ms.author: mbullwin
-ms.openlocfilehash: 39d6b586158ce292f3697af0f7241a3858842374
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f5f42ae5068440c3a90bf3b374238e18781b9770
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722224"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970586"
 ---
 # <a name="local-forwarder"></a>Helyi továbbító
 
@@ -39,7 +39,7 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
 
 1. Töltse le a LF Karakterrel. WindowsServiceHost.zip fájlt a [helyi továbbító kiadás oldalon](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) a Githubon.
 
-    ![Helyi továbbító kiadási letöltési oldalát bemutató képernyőkép](.\media\opencensus-local-forwarder\001-local-forwarder-windows-service-host-zip.png)
+    ![Helyi továbbító kiadási letöltési oldalát bemutató képernyőkép](./media/opencensus-local-forwarder/001-local-forwarder-windows-service-host-zip.png)
 
 2. Ebben a példában a könnyű bemutató azt fogja csak bontsa ki a zip-fájlt az elérési út `C:\LF-WindowsServiceHost`.
 
@@ -55,7 +55,7 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
     
     Az új szolgáltatást a szolgáltatások grafikus típusú vizsgálata ``services.msc``
         
-     ![Képernyőkép a helyi továbbító szolgáltatás](.\media\opencensus-local-forwarder\002-services.png)
+     ![Képernyőkép a helyi továbbító szolgáltatás](./media/opencensus-local-forwarder/002-services.png)
 
 3. **Kattintson a jobb gombbal** az új helyi továbbítót, és válassza ki **Start**. A szolgáltatás fut. írja.
 
@@ -73,7 +73,7 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
     
 6. Győződjön meg arról, hogy a kívánt beállításokat, és, hogy a helyi továbbító figyeli a nyomkövetési adatok várt ellenőrizze, hogy a ``LocalForwarder.log`` fájlt. A fájl alján alábbi képen láthatóhoz hasonló eredményt kell megjelennie:
 
-    ![Képernyőkép a LocalForwarder.log fájl](.\media\opencensus-local-forwarder\003-log-file.png)
+    ![Képernyőkép a LocalForwarder.log fájl](./media/opencensus-local-forwarder/003-log-file.png)
 
 #### <a name="console-application"></a>Konzolalkalmazás
 

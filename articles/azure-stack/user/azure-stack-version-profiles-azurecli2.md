@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/08/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 2c862dcaf5f9267265879faa8ac927ddf7515419
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 6251a0c7fd43a12dbe02a0013f1530557d142d25
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277273"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969957"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>API-verzióprofilok használata az Azure CLI-vel az Azure Stackben
 
@@ -36,7 +36,7 @@ Az Azure CLI és a számítógépen telepített függő könyvtárak verzióját
 
 ## <a name="trust-the-azure-stack-ca-root-certificate"></a>Az Azure Stack hitelesítésszolgáltató főtanúsítványát a megbízható
 
-1. Az Azure Stack hitelesítésszolgáltató főtanúsítványát a GET [az Azure Stack-operátorokról](..\azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate) és megbízzon benne. Az Azure Stack hitelesítésszolgáltató főtanúsítványát megbízhatónak, hozzáfűzése a meglévő Python-tanúsítványt.
+1. Az Azure Stack hitelesítésszolgáltató főtanúsítványát a GET [az Azure Stack-operátorokról](../azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate) és megbízzon benne. Az Azure Stack hitelesítésszolgáltató főtanúsítványát megbízhatónak, hozzáfűzése a meglévő Python-tanúsítványt.
 
 1. Keresse meg a tanúsítvány helye a gépen. A hely eltérőek lehetnek attól függően, hol telepítette a Python. Rendelkeznie kell [pip](https://pip.pypa.io) és a [certifi](https://pypi.org/project/certifi/) modul telepítve van. A bash használatával a következő Python-parancsot használhatja:
 
@@ -242,6 +242,6 @@ Ismert problémák, amelyet be kell ügyelnie, ha az Azure Stack parancssori fel
 
 [Az Azure CLI-vel sablonok üzembe helyezése](azure-stack-deploy-template-command-line.md)
 
-[Azure CLI-vel engedélyezése az Azure Stack felhasználói (operátor)](..\azure-stack-cli-admin.md)
+[Azure CLI-vel engedélyezése az Azure Stack felhasználói (operátor)](../azure-stack-cli-admin.md)
 
 [Felhasználói engedélyek kezelése](azure-stack-manage-permissions.md)

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2018
+ms.date: 12/05/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 9afce9c6d4ed4d6dc6fbe5bcfcfedc33bdd7cfdf
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: bcb135e19796bcab8a8e06e3c1896b247188a58c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314672"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970841"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 frissítése
 
@@ -57,7 +57,7 @@ Ez a frissítés az Azure Stack a következő fejlesztéseket tartalmazza:
 <!-- TBD - IS ASDK --> 
 - Kijavítva, amelyben létrehozta a virtuális gépek az Azure Stack felhasználói portál és a portálon jelenik meg, hogy a DS sorozatú virtuális gép csatlakoztathat adatlemezek száma helytelen. DS sorozatú virtuális gépek, az Azure-konfiguráció lehetővé teszi tetszőleges számú adatlemezeket.
 
-- A következő felügyelt lemez problémák 1809 javított, és a 1808 is megoldott [Azure Stack gyorsjavítás 1.1808.5.110](https://support.microsoft.com/help/4468920/): 
+- A következő felügyelt lemez problémák 1809 javított, és a 1808 is megoldott [Azure Stack gyorsjavítás 1.1808.9.117](https://support.microsoft.com/help/4481066/): 
 
    <!--  2966665 – IS, ASDK --> 
    - Javítva lett a probléma a melyik csatlakoztatását SSD adatlemezeket a prémium szintű méretre, felügyelt lemezes virtuális gépek (DS, DSv2, Fs, Fs_V2) egy hiba miatt sikertelen volt: *nem sikerült frissíteni a lemezt a virtuális gép "vmname" hiba: a kért művelet nem hajtható végre, mert Virtuálisgép-méret esetében nem támogatott a "Premium_LRS" fióktípust "Standard_DS/Ds_V2 és FS/Fs_v2)*. 
@@ -78,14 +78,14 @@ Ez a frissítés az Azure Stack a következő fejlesztéseket tartalmazza:
       1. A bérlői portálon lépjen a **előfizetések** , és keresse meg az előfizetés. Kattintson a **erőforrás-szolgáltatók**, majd kattintson az **Microsoft.Compute**, és kattintson a **újraregisztrálni**.
       2. Lépjen az azonos előfizetéshez tartozó **hozzáférés-vezérlés (IAM)**, és ellenőrizze, hogy **Azure Stack – felügyelt lemez** szerepel a listán.
    2. Ha egy több-bérlős környezet van beállítva, egy belső hiba miatt meghiúsulhat egy előfizetésben, és a Vendég címtár tartozó virtuális gépek üzembe helyezéséhez. A hiba elhárításához kövesse az alábbi lépéseket:
-      1. Alkalmazza a [1808 Azure Stack gyorsjavítás](https://support.microsoft.com/help/4471992).
+      1. Alkalmazza a [1808 Azure Stack gyorsjavítás](https://support.microsoft.com/help/4481066).
       2. Kövesse a [Ez a cikk](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) újrakonfigurálása a Vendég címtárak mindegyike.
 
 
 ### <a name="changes"></a>Módosítások
 
 <!-- 2635202 - IS, ASDK -->
-- A biztonsági mentési infrastruktúra-szolgáltatás helyezi át a [nyilvános infrastruktúra-hálózaton](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-infrastructure-network) , a [nyilvános VIP-hálózat](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-vip-network). Győződjön meg arról, a szolgáltatás hozzáfér a biztonsági mentési tárhelyet a nyilvános VIP hálózatra ügyfeleknek kell.  
+- A biztonsági mentési infrastruktúra-szolgáltatás helyezi át a [nyilvános infrastruktúra-hálózaton](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-infrastructure-network) , a [nyilvános VIP-hálózat](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-vip-network). Győződjön meg arról, a szolgáltatás hozzáfér a biztonsági mentési tárhelyet a nyilvános VIP hálózatra ügyfeleknek kell.  
 
 > [!IMPORTANT]  
 > Ha nem engedélyezi a fájlkiszolgálóra a nyilvános VIP hálózatra érkező kapcsolatok tűzfal, a módosítás hatására infrastruktúra a biztonsági mentés sikertelen, és a "53-as hiba a hálózati elérési út nem található." Ez a használhatatlanná tévő változást, amely rendelkezik nem elfogadható megkerülő megoldás. Ügyfeleink visszajelzései alapján a Microsoft visszaáll a módosítás a gyorsjavítást. Tekintse át a [közzététele a frissítési lépéseket tartalmazó szakaszában](#post-update-steps) 1809 számára elérhető gyorsjavítások további tájékoztatást. Ha a gyorsjavítás áll rendelkezésre, ügyeljen arra, hogy csak akkor, ha a hálózati szabályzatok nem teszik lehetővé a nyilvános VIP-hálózat eléréséhez infrastruktúra feladatában 1809 való frissítése után alkalmazza azt. a 1811 Ez a változás az összes rendszeren lépnek érvénybe. Ha a 1809 alkalmazza a gyorsjavítás nincs nincs további teendője.  
@@ -143,7 +143,7 @@ További információ a biztonsági rések, kattintson a fenti hivatkozásokat a
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-- Telepítse a legújabb Azure Stack gyorsjavítás 1808 1809 alkalmazása előtt. További információkért lásd: [KB-os 4471992 – az Azure Stack gyorsjavítás az Azure Stack gyorsjavítás 1.1808.7.113](https://support.microsoft.com/help/4471992/).
+- Telepítse a legújabb Azure Stack gyorsjavítás 1808 1809 alkalmazása előtt. További információkért lásd: [KB-os 4481066 – az Azure Stack gyorsjavítás az Azure Stack gyorsjavítás 1.1808.9.117](https://support.microsoft.com/help/4481066/).
 
   > [!TIP]  
   > Fizessen elő a következő *RRS* vagy *Atom* tartani az Azure Stack gyorsjavítások-hírcsatornák:

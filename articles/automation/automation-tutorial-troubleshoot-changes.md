@@ -7,16 +7,16 @@ ms.component: change-inventory-management
 keywords: változás, követés, automatizálás
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 11/01/2018
+ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: e4ea8f92a562ea4bc90df98d6e459377b9886777
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 95ab686961687829526bb00ed87d43d08aeb7db8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844906"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972269"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>A környezet változásainak hibaelhárítása
 
@@ -177,12 +177,11 @@ Hasznos, ha követni tudja a végrehajtott módosításokat az Azure Portalon, d
 
 Ha riasztást szeretne hozzáadni egy szolgáltatás leállításához, az Azure Portalon lépjen a **Figyelés** felületre. Ezt követően a **Megosztott szolgáltatások** területen válassza a **Riasztások** elemet, majd kattintson az **+ Új riasztási szabály** elemre.
 
-Az **1. Riasztási feltétel megadása** szakaszban kattintson a **+ Cél kiválasztása** gombra. A **Szűrés erőforrástípus alapján** mezőben válassza a **Log Analytics** elemet. Válassza ki a Log Analytics-munkaterületet, és kattintson a **Kész** gombra.
+Kattintson a **kiválasztása** , válassza ki egy erőforrást. Az a **válasszon ki egy erőforrást** lapra, jelölje be **Log Analytics** a a **szűrés erőforrástípus szerint** listából. Válassza ki a Log Analytics-munkaterületet, és kattintson a **Kész** gombra.
 
 ![Erőforrás kiválasztása](./media/automation-tutorial-troubleshoot-changes/select-a-resource.png)
 
-Kattintson a **+ Feltétel hozzáadása** elemre.
-A **Jellogika konfigurálása** területen válassza ki az **Egyéni naplókeresés** elemet a táblázatban. Adja meg az alábbi lekérdezést a Keresési lekérdezés szövegmezőben:
+Kattintson a **feltétel hozzáadása**, az a **jellogika konfigurálása** lapon, a tábla, válassza ki a **egyéni naplóbeli keresés**. Adja meg az alábbi lekérdezést a Keresési lekérdezés szövegmezőben:
 
 ```loganalytics
 ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName == "W3SVC" and SvcState == "Stopped" | summarize by Computer
@@ -194,11 +193,9 @@ A **Riasztási logika** területen a **Küszöbérték** legyen **0**. Ha elkés
 
 ![Jellogika konfigurálása](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
 
-A **2. Riasztás részleteinek megadása** résznél adja meg a riasztás nevét és leírását. A **Súlyosság** paraméter értéke legyen **Tájékoztató (Sev 2)**, **Figyelmeztető (Sev 1)** vagy **Kritikus (Sev 0)**.
+A **Műveletcsoportok**válassza **hozzon létre új**. A műveletcsoport műveletek csoportja, amelyeket több riasztáson is alkalmazhat. Ezek a műveletek a teljesség igénye nélkül a következők lehetnek: e-mail-értesítések, runbookok, webhookok stb. A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](../monitoring-and-diagnostics/monitoring-action-groups.md) szóló cikkben talál.
 
-![Riasztás részleteinek megadása](./media/automation-tutorial-troubleshoot-changes/define-alert-details.png)
-
-A **3. Műveleti csoport megadása** szakaszban kattintson az **Új műveletcsoport** gombra. A műveletcsoport műveletek csoportja, amelyeket több riasztáson is alkalmazhat. Ezek a műveletek a teljesség igénye nélkül a következők lehetnek: e-mail-értesítések, runbookok, webhookok stb. A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](../monitoring-and-diagnostics/monitoring-action-groups.md) szóló cikkben talál.
+A **riasztás részletei**, adjon meg egy nevet és leírást a riasztás. A **Súlyosság** paraméter értéke legyen **Tájékoztató (Sev 2)**, **Figyelmeztető (Sev 1)** vagy **Kritikus (Sev 0)**.
 
 A **Műveletcsoport neve** mezőben adja meg a riasztás nevét és egy rövid nevet. A rendszer a rövid nevet használja a műveletcsoport teljes neve helyett, amikor értesítéseket küld a csoport használatával.
 

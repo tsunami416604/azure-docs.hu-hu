@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/12/2017
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: b2483d93fdc83970ca1568326f4bc728de16f77c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3df4be80e1a979590a05ff10601485e950de54bd
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038867"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962217"
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>Bejelentkezés telefonnal a jelszó helyett
 A Microsoft Authenticator alkalmazást, nem csak azt használni, hogy a fiókok biztonságos végez kétlépéses ellenőrzést, miután segítségével adja meg a jelszót, de azt is cserélje le a Microsoft-fiókja jelszavát teljes egészében.
@@ -43,13 +43,13 @@ Ha a szervezet rendelkezik engedélyezve van az új felületet, kapcsolja be, é
 
     Után írja be a felhasználónevét, megjelenik egy oldal egy kétjegyű számmal rákérdez arra, hogy a bejelentkezés a Microsoft Authenticator alkalmazásban jóvá. Ha nem szeretné használni a bejelentkezési módszer, választhatja **inkább jelszó**, és jelentkezzen be a jelszót.
 
-    ![Jelentkezzen be jóváhagyása](media\microsoft-authenticator-app-phone-signin-faq/microsoft-auth-app-sign-in.png)
+    ![Jelentkezzen be jóváhagyása](media/microsoft-authenticator-app-phone-signin-faq/microsoft-auth-app-sign-in.png)
 
 2. A Microsoft Authentication alkalmazásban rákérdez arra, hogy értesítést kapjon **hagyhatja jóvá a bejelentkezést**. Válasszon **jóváhagyás** Ha ismeri fel a bejelentkezési kísérlet. Ellenkező esetben válasszon **Megtagadás**. 
 
 3. Koppintson az azonos számú akkor jelenik meg a **hagyhatja jóvá a bejelentkezést** képernyő. A telefon PIN-kód vagy a biometrikus kulcsot használja a hitelesítéshez.
 
-    ![Hagyja jóvá a bejelentkezési kiválasztásához szám mező](media\microsoft-authenticator-app-phone-signin-faq/microsoft-auth-app-sign-in-numbers.png)
+    ![Hagyja jóvá a bejelentkezési kiválasztásához szám mező](media/microsoft-authenticator-app-phone-signin-faq/microsoft-auth-app-sign-in-numbers.png)
 
 ## <a name="turn-on-phone-sign-in-for-your-personal-account"></a>Jelentkezzen be a személyes fiókjához phone bekapcsolása 
 Bekapcsolhatja a telefonos bejelentkezés személyes Microsoft-fiókja, például az Outlook.com, Xbox vagy Skype bejelentkezéshez használt fióknak.

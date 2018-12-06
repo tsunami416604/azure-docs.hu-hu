@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: a543561658d593398ca74f8ae68dd6d0d27bcdaa
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: df2ab9b16201cdb408cbe028b1814de7a3dfb4c7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636456"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962892"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Oktatóanyag: Meglévő egyéni SSL-tanúsítvány kötése az Azure Web Appshez
 
@@ -139,9 +139,9 @@ Az **Add SSL Binding** (SSL-kötés hozzáadása) lapon a legördülő listákka
 >
 >
 
-Az **SSL Type** (SSL típusa) területen válassza ki, hogy a **[kiszolgálónév jelzésén (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** alapuló vagy IP-alapú SSL-t kíván-e használni.
+Az **SSL Type** (SSL típusa) területen válassza ki, hogy a **[kiszolgálónév jelzésén (SNI)](https://en.wikipedia.org/wiki/Server_Name_Indication)** alapuló vagy IP-alapú SSL-t kíván-e használni.
 
-- **SNI-based SSL** (SNI-alapú SSL) – Több SNI-alapú SSL-kötés adható hozzá. Ez a beállítás lehetővé teszi, hogy több SSL-tanúsítvány biztosítson védelmet több tartomány számára ugyanazon az IP-címen. A legtöbb modern böngésző (beleértve az Internet Explorert, a Chrome-ot, a Firefox-ot és az Operát) támogatja az SNI-t (átfogóbb böngészőtámogatási információkat a [Kiszolgálónév jelzése](http://wikipedia.org/wiki/Server_Name_Indication) című szakaszban talál).
+- **SNI-based SSL** (SNI-alapú SSL) – Több SNI-alapú SSL-kötés adható hozzá. Ez a beállítás lehetővé teszi, hogy több SSL-tanúsítvány biztosítson védelmet több tartomány számára ugyanazon az IP-címen. A legtöbb modern böngésző (beleértve az Internet Explorert, a Chrome-ot, a Firefox-ot és az Operát) támogatja az SNI-t (átfogóbb böngészőtámogatási információkat a [Kiszolgálónév jelzése](https://wikipedia.org/wiki/Server_Name_Indication) című szakaszban talál).
 - **IP-based SSL** (IP-alapú SSL) – Csak egy IP-alapú SSL-kötés adható hozzá. Ez a beállítás csak egy SSL-tanúsítványnak engedélyezi egy dedikált nyilvános IP-cím védelmét. Több tartomány védelméhez mindegyik tartományt ugyanazzal az SSL-tanúsítvánnyal kell védelemmel ellátni. Ez az SSL-kötések hagyományos beállítása.
 
 Kattintson az **Add Binding** (Kötés hozzáadása) lehetőségre.

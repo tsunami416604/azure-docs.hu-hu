@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 215cc45f09e15c74a39347e3a62945b45eafa130
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 632393696274eaf6f876ea717b5fccf7d4fbea3f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877666"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965393"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Oktatóanyag: Az Azure és az Azure Stack földrajzilag elosztott alkalmazás megoldás létrehozása
 
@@ -114,17 +114,17 @@ Webes alkalmazás üzembe helyezése az Azure és az Azure Stack, hibrid CI/CD b
 
     Hibrid folyamatos integráció/folyamatos Készregyártás (CI/CD) az alkalmazás kódjában és az infrastruktúra kódjának alkalmazhat. Használat [Azure Resource Manager-sablonok](https://azure.microsoft.com/resources/templates/) mindkét magán- és üzemeltetett felhőalapú fejlesztéshez.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image1.JPG)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image1.JPG)
 
 2. **A tárház klónozása** létrehozásával és az alapértelmezett webes alkalmazás megnyitásával.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image2.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image2.png)
 
 ### <a name="create-web-app-deployment-in-both-clouds"></a>Webes alkalmazás üzembe helyezése mindkét felhőben létrehozása
 
 1.  Szerkessze a **WebApplication.csproj** fájlt: válassza ki **Runtimeidentifier** , és adja hozzá **win10-x64**. (Lásd: [Self-contained telepítési](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) dokumentációja.)
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image3.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image3.png)
 
 1.  **Az Azure-kódtárak a forráskód verziókezelőbe** Team Explorer használatával.
 
@@ -136,7 +136,7 @@ Webes alkalmazás üzembe helyezése az Azure és az Azure Stack, hibrid CI/CD b
 
 2. Adjon hozzá **- r win10-x64** kódot. Erre azért szükség, aktiválhat egy önálló üzembe helyezés a .net Core.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image4.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image4.png)
 
 3. **Futtassa a build**. A [önálló telepítés build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) folyamat közzéteszi az összetevők, amelyek futhatnak az Azure és az Azure Stackben.
 
@@ -151,87 +151,87 @@ Az Azure DevOps és az Azure DevOps-kiszolgáló adja meg hatékonyan konfigurá
 #### <a name="create-release-definition"></a>Kiadási definíció létrehozása
 
 
-![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image5.png)
+![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image5.png)
 
 1.  Válassza ki a **plusz** gombra kattintva adhat hozzá egy új kiadása alatt a **kiadások lapra** a Build és kiadás oldalon, a Visual Studio Online (VSO).
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image6.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image6.png)
 
 2. Alkalmazza a **Azure App Service üzembe helyezési** sablont.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image7.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image7.png)
 
 3. Hozzáadás összetevő legördülő menü alatt **az összetevő hozzáadása** az Azure Cloud build alkalmazás.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image8.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image8.png)
 
 4. A folyamat fülre, válassza a **fázisba, a feladat** a környezet hivatkozásra, és állítsa be az Azure-felhő környezet értékeket.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image9.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image9.png)
 
 5. Állítsa be a **környezet neve** , és válassza ki az Azure **előfizetés** az Azure Felhőbeli végpont számára.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image10.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image10.png)
 
 6. A környezet neve, állítsa be a szükséges **az Azure app service neve**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image11.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image11.png)
 
 7. Adja meg **Hosted VS2017** alatt fronta Agenta Azure-felhőben üzemeltetett környezetben.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image12.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image12.png)
 
 8. Az Azure App Service üzembe helyezése menüben válassza a érvényes **csomag vagy a mappa** a környezethez. Kattintson az OK gombra **mappába**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image13.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image13.png)
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image14.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image14.png)
 
 9. Mentse az összes módosítást, és térjen vissza a **kibocsátási folyamatok**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image15.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image15.png)
 
 10. Adjon hozzá egy **új összetevő** a build, az Azure Stack-alkalmazás kiválasztása.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image16.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image16.png)
 
 11. Adjon hozzá egy további környezet alkalmazása a **Azure App Service üzembe helyezéséhez.**
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image17.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image17.png)
 
 12. Nevezze el az új környezet **Azure Stack.**
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image18.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image18.png)
 
 13. Keresse meg az Azure Stack-környezet alapján **feladat** fülre.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image19.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image19.png)
 
 14. Válassza ki a **előfizetés** az Azure Stack-végpont.
 
-  ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image20.png)
+  ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image20.png)
 
 15. Állítsa be az Azure Stack webes alkalmazás neve, a **App service neve**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image21.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image21.png)
 
 16. Válassza ki a **Azure Stack-ügynök**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image22.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image22.png)
 
 17. Az üzembe helyezése az Azure App Service szakaszban válassza a érvényes **csomag vagy a mappa** a környezethez. Kattintson az OK gombra **mappába**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image23.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image23.png)
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image24.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image24.png)
 
 18. Alatt **változó** lapon nevű változó hozzáadása `VSTS\_ARM\_REST\_IGNORE\_SSL\_ERRORS`, mint az értékét állítsa `true`, és a hatókört `Azure Stack`.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image25.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image25.png)
 
 19. Válassza ki a **folyamatos** üzembe helyezési eseményindító ikonra az összetevők és a engedélyezése a **folytatja** készregyártás eseményindítója.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image26.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image26.png)
 
 20. Válassza ki a **központi telepítés előtti** feltételek ikonra az Azure Stack-környezetben, és állítsa az eseményindító **kiadás után.**
 
@@ -244,7 +244,7 @@ Az Azure DevOps és az Azure DevOps-kiszolgáló adja meg hatékonyan konfigurá
 
 Az [Azure Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. 
 
-![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image27.png)
+![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image27.png)
 
 > [!div class="checklist"]
 > - Meglévő egyéni DNS-név leképezése az Azure Web Appsra
@@ -296,7 +296,7 @@ DNS-rekordok oldala tekinthető **saját tartományok**. Keresse meg a hivatkoz�
 
 A következő képernyőkép egy DNS-rekordokat tartalmazó oldalra mutat példát:
 
-![DNS-rekordokat tartalmazó oldal példája](media\azure-stack-solution-geo-distributed\image28.png)
+![DNS-rekordokat tartalmazó oldal példája](media/azure-stack-solution-geo-distributed/image28.png)
 
 1.  A tartománynév Regisztrálójánál, válassza ki **hozzáadása vagy a létrehozás** rekord létrehozásához. Egyes szolgáltatók eltérő hivatkozásokat használnak a különböző rekordtípusok hozzáadásához. A szolgáltató dokumentációjában talál.
 
@@ -306,7 +306,7 @@ A következő képernyőkép egy DNS-rekordokat tartalmazó oldalra mutat péld�
 
 Miután hozzáadta a CNAME REKORDOT, a DNS-rekordok oldala a következő példához hasonlóan néz ki:
 
-![Navigálás a portálon egy Azure-alkalmazáshoz](media\azure-stack-solution-geo-distributed\image29.png)
+![Navigálás a portálon egy Azure-alkalmazáshoz](media/azure-stack-solution-geo-distributed/image29.png)
 
 ### <a name="enable-the-cname-record-mapping-in-azure"></a>A CNAME rekord hozzárendelésének engedélyezése az Azure-ban
 
@@ -348,9 +348,9 @@ Miután hozzáadta a CNAME REKORDOT, a DNS-rekordok oldala a következő példá
 
   Az új gazdanév megjelenik az alkalmazás egy kis ideig eltarthat **egyéni tartományok** lapot. Próbálja meg frissíteni a böngészőt az adatok frissítéséhez.
   
-  ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image31.png) 
+  ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image31.png) 
   
-  Egy hiba esetén egy ellenőrzési hiba értesítést az oldal alján jelenik meg. ![Ellenőrzési hiba](media\azure-stack-solution-geo-distributed\image32.png)
+  Egy hiba esetén egy ellenőrzési hiba értesítést az oldal alján jelenik meg. ![Ellenőrzési hiba](media/azure-stack-solution-geo-distributed/image32.png)
 
 > [!Note]  
 >  A fenti lépéseket is meg lehet ismételni a helyettesítő karaktert tartalmazó tartomány hozzárendelése (\*. northwindcloud.com)... Ez lehetővé teszi az app Service-ben további altartományok hozzáadását, mindegyikhez külön CNAME rekord létrehozása nélkül. A regisztráló utasítások szerint a beállítás megadásához.
@@ -404,17 +404,17 @@ Az egyéni SSL-tanúsítvány kötése egy webes alkalmazásban a [App Service-c
 
 2.  A bal oldali menüben válassza ki a **App Services**, majd válassza ki a webalkalmazás nevét.
 
-![Webalkalmazás kiválasztása](media\azure-stack-solution-geo-distributed\image33.png)
+![Webalkalmazás kiválasztása](media/azure-stack-solution-geo-distributed/image33.png)
 
 #### <a name="check-the-pricing-tier"></a>A tarifacsomag ellenőrzése
 
 1.  A webalkalmazás lapjának bal oldali navigációs sávján görgessen a **beállítások** szakaszt, és válassza **vertikális felskálázás (App Service-csomag)**.
 
-    ![Vertikális felskálázás menü](media\azure-stack-solution-geo-distributed\image34.png)
+    ![Vertikális felskálázás menü](media/azure-stack-solution-geo-distributed/image34.png)
 
 1.  Győződjön meg arról, a webalkalmazás nem szerepel a következőben a **ingyenes** vagy **megosztott** szint. A webalkalmazás aktuális szint egy kékkel kiemelt tanúsítványé.
 
-    ![A tarifacsomag ellenőrzése](media\azure-stack-solution-geo-distributed\image35.png)
+    ![A tarifacsomag ellenőrzése](media/azure-stack-solution-geo-distributed/image35.png)
 
 Az egyéni SSL nem támogatott az **Ingyenes** és a **Megosztott** szinten. Upscale, kövesse a lépéseket a következő szakaszban vagy **válassza ki a tarifacsomagot** lapon, és ugorjon [feltölteni és hozzákötni az SSL-tanúsítvány](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl).
 
@@ -424,11 +424,11 @@ Az egyéni SSL nem támogatott az **Ingyenes** és a **Megosztott** szinten. Ups
 
 2.  Válassza ki **kiválasztása**.
 
-![Tarifacsomag kiválasztása](media\azure-stack-solution-geo-distributed\image36.png)
+![Tarifacsomag kiválasztása](media/azure-stack-solution-geo-distributed/image36.png)
 
 A skálázási művelet befejeződött, amikor értesítés jelenik meg.
 
-![Vertikális felskálázási értesítés](media\azure-stack-solution-geo-distributed\image37.png)
+![Vertikális felskálázási értesítés](media/azure-stack-solution-geo-distributed/image37.png)
 
 #### <a name="bind-your-ssl-certificate-and-merge-intermediate-certificates"></a>Az SSL-tanúsítvány kötése és köztes tanúsítványok egyesítése
 
@@ -491,11 +491,11 @@ Amikor az IIS vagy **Certreq.exe** szolgálnak a tanúsítványkérelem létreho
 
 5.  Válassza a **Feltöltés** lehetőséget.
 
-![Tanúsítvány feltöltése](media\azure-stack-solution-geo-distributed\image38.png)
+![Tanúsítvány feltöltése](media/azure-stack-solution-geo-distributed/image38.png)
 
 Amikor az App Service befejezi a tanúsítvány feltöltését, megjelenik a **SSL-beállítások** lapot.
 
-![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image39.png)
+![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image39.png)
 
 #### <a name="bind-your-ssl-certificate"></a>Az SSL-tanúsítvány kötése
 
@@ -514,11 +514,11 @@ Amikor az App Service befejezi a tanúsítvány feltöltését, megjelenik a **S
 
     1.  Válassza ki **kötés hozzáadása**.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image40.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image40.png)
 
 Amikor az App Service befejezi a tanúsítvány feltöltését, megjelenik a **SSL-kötések** szakaszokat.
 
-![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image41.png)
+![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image41.png)
 
 #### <a name="remap-the-a-record-for-ip-ssl"></a>Az A rekord újramegfeleltetése IP SSL-hez
 
@@ -534,7 +534,7 @@ A **egyéni tartomány** lap frissül az új, dedikált IP-címet. Ezt [IP-cím]
 
 Különböző böngészőkben tallózással keresse meg a https://<your.custom.domain>to ap biztosítja a webes biztosítása érdekében.
 
-![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image42.png)
+![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image42.png)
 
 > [!Note]  
 > Tanúsítvány-ellenőrzési hibák fordulnak elő, ha önaláírt tanúsítványt okok válthatják ki, vagy a köztes tanúsítványok előfordulhat, hogy maradtak a PFX-fájlból történő exportálás során.
@@ -545,7 +545,7 @@ Alapértelmezés szerint bárki a webalkalmazást HTTP-n keresztül férhetnek h
 
 Válassza ki a webalkalmazás lapjának **SL beállítások**. Ezután a **HTTPS Only** (Csak HTTPS) területen válassza az **On** (Be) elemet.
 
-![HTTPS kényszerítése](media\azure-stack-solution-geo-distributed\image43.png)
+![HTTPS kényszerítése](media/azure-stack-solution-geo-distributed/image43.png)
 
 A művelet befejeződése után nyissa meg a HTTP URL-címek, amelyek az alkalmazás valamelyik. Példa:
 
@@ -561,7 +561,7 @@ Az alkalmazás lehetővé teszi, hogy [TLS](https://wikipedia.org/wiki/Transport
 
 2.  A **TLS-verzió**, válassza ki a TLS minimális verzióját.
 
-![A TLS 1.1 vagy 1.2 kényszerítése](media\azure-stack-solution-geo-distributed\image44.png)
+![A TLS 1.1 vagy 1.2 kényszerítése](media/azure-stack-solution-geo-distributed/image44.png)
 
 ### <a name="create-a-traffic-manager-profile"></a>Traffic Manager-profil létrehozása
 
@@ -583,7 +583,7 @@ Az alkalmazás lehetővé teszi, hogy [TLS](https://wikipedia.org/wiki/Transport
 
     7.  Ha a Traffic Manager-profil globális üzembe helyezése befejeződött, akkor szerepel megfelelő erőforráscsoportban egy erőforrást.
 
-    ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image45.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image45.png)
 
 ### <a name="add-traffic-manager-endpoints"></a>Traffic Manager-végpontok hozzáadása
 
@@ -632,7 +632,7 @@ Az alkalmazás lehetővé teszi, hogy [TLS](https://wikipedia.org/wiki/Transport
 
 1.  Miután mindkét végpontot hozzáadta, azok megjelennek a **Traffic Manager-profil** panelen, **Online** figyelési állapottal.
 
-  ![Helyettesítő szöveg](media\azure-stack-solution-geo-distributed\image46.png)
+  ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image46.png)
 
 **Globális vállalati Azure Geo-eloszlás képességeket támaszkodik.**
 

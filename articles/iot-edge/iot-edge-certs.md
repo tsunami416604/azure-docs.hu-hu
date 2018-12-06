@@ -8,12 +8,12 @@ ms.date: 09/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5ff85f2c9ef708c7cbac9be4933541f063a6c95b
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: b1b8c660dfd6ea6890a940a97f5ff1ec1617c28d
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568590"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963385"
 ---
 # <a name="azure-iot-edge-certificate-usage-detail"></a>Az Azure IoT Edge-tanúsítvány felhasználási részletek
 
@@ -51,7 +51,7 @@ Minden esetben a gyártó egy köztes Hitelesítésszolgáltatói tanúsítvány
 
 ### <a name="device-ca-certificate"></a>Eszköz Hitelesítésszolgáltatói tanúsítvány
 
-Az eszköz Hitelesítésszolgáltatói tanúsítvány által létrehozott és a folyamat utolsó köztes Hitelesítésszolgáltatói tanúsítvány aláírásával. Ez a tanúsítvány telepítve van a peremhálózati eszköz, lehetőleg a biztonsági tároló, például a hardveres biztonsági modul (HSM). Ezenkívül egy eszköz Hitelesítésszolgáltatói tanúsítvány egyedileg azonosítja az IoT Edge-eszköz. Az IoT Edge-hez az eszköz Hitelesítésszolgáltatói tanúsítvány egyéb tanúsítványok kiállítása alkalmas állapotban. Például az eszköz hitelesítésszolgáltató tanúsítványát problémák levél eszközök való hitelesítéshez használt tanúsítványok a [Azure IoT Device Provisioning Service](..\iot-dps\about-iot-dps.md).
+Az eszköz Hitelesítésszolgáltatói tanúsítvány által létrehozott és a folyamat utolsó köztes Hitelesítésszolgáltatói tanúsítvány aláírásával. Ez a tanúsítvány telepítve van a peremhálózati eszköz, lehetőleg a biztonsági tároló, például a hardveres biztonsági modul (HSM). Ezenkívül egy eszköz Hitelesítésszolgáltatói tanúsítvány egyedileg azonosítja az IoT Edge-eszköz. Az IoT Edge-hez az eszköz Hitelesítésszolgáltatói tanúsítvány egyéb tanúsítványok kiállítása alkalmas állapotban. Például az eszköz hitelesítésszolgáltató tanúsítványát problémák levél eszközök való hitelesítéshez használt tanúsítványok a [Azure IoT Device Provisioning Service](../iot-dps/about-iot-dps.md).
 
 ### <a name="iot-edge-workload-ca"></a>Az IoT Edge munkaterhelés hitelesítésszolgáltató
 

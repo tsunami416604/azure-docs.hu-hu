@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: ec17f6923fc1c928f24fcb762daedbaea5b688ac
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: cca5fe492032c74a9922780f197065e9c2b40ad3
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035101"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966119"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>Infrastruktúra Backup szolgáltatás – ajánlott eljárások
 
@@ -32,11 +32,11 @@ Az ajánlott eljárásokat, győződjön meg arról, hogy a telepítés még a m
 
 ## <a name="configuration-best-practices"></a>Konfigurációs eljárások
 
-### <a name="deployment"></a>Üzembe helyezés
+### <a name="deployment"></a>Környezet
 
 Infrastruktúra biztonsági mentésének engedélyezése az egyes Azure Stack-felhő üzembe helyezés után. Azure Stack PowerShell-lel az operátor felügyeleti API-végpont a hozzáférést minden olyan ügyfél-kiszolgáló biztonsági mentés is ütemezhető.
 
-### <a name="networking"></a>Hálózatkezelés
+### <a name="networking"></a>Hálózat
 
 Az univerzális elnevezési konvenció (UNC) karakterlánc az elérési út egy teljesen minősített tartománynevét (FQDN) kell használnia. IP-cím akkor lehetséges, ha a névfeloldás ez nem lehetséges. Karakterláncnak UNC helyét adja meg az erőforrások, például megosztott fájlokhoz vagy eszközökön.
 
@@ -46,11 +46,11 @@ A titkosítási kulcs beolvasása külső tárterület exportált adatok biztons
 
 A kulcs (például nyilvános Azure Key Vaultban titkos kódot) biztonságos helyen kell tárolni. Ezt a kulcsot kell használni az Azure Stack újbóli üzembe helyezés során. 
 
-![A kulcsot biztonságos helyen tárolja.](media\azure-stack-backup\azure-stack-backup-encryption2.png)
+![A kulcsot biztonságos helyen tárolja.](media/azure-stack-backup/azure-stack-backup-encryption2.png)
 
 ## <a name="operational-best-practices"></a>Gyakorlati tanácsok az üzemeltetéshez
 
-### <a name="backups"></a>Tartalékok
+### <a name="backups"></a>Biztonsági másolatok
 
  - Biztonsági mentési feladatok végrehajtása közben a rendszer fut, így a felhasználói élmény vagy a felhasználói alkalmazások üzemkimaradást sem okoz. A várt a biztonsági mentési feladatok ésszerű mértékű terhelés alatt álló megoldások 20 – 40 percet vesz igénybe.
  - OEM alapján használja, manuálisan biztonsági mentési hálózati kapcsolók és a hardver életciklus gazdagép (HLH) kell tárolni a biztonsági mentési megosztáshoz, a biztonsági mentési infrastruktúra-vezérlő tárolók vezérlő adatsík a biztonsági mentési adatokat. Érdemes tárolni a kapcsoló- és HLH konfigurációk a régió mappában. Ha több Azure Stack-példányok ugyanabban a régióban, fontolja meg, az egyes konfigurációkhoz egy skálázási egység tartozó azonosító használatát.
@@ -80,7 +80,7 @@ OEM-ek javasolt, hogy az a régió mappában összetevők biztonsági mentési a
     \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc\DeploymentData
     \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc\Registration
 
-### <a name="monitoring"></a>Monitoring
+### <a name="monitoring"></a>Figyelés
 
 A rendszer támogatja a következő riasztásokat:
 

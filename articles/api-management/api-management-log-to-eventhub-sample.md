@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: 4c58be8f501e72027e1692ceb73552a3f252f92a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 48dfa3180f040af3e8298d418cf71c537477ba5a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38603178"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956950"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>Az Azure API Management, az Event Hubs és a Runscope API-k monitorozása
 A [API Management-szolgáltatás](api-management-key-concepts.md) javíthatják a HTTP API-nak küldött HTTP-kérések feldolgozását számos funkciót kínál. Létezik-e a kérelmek és válaszok azonban csak átmeneti. A kérelmet, és biztosítani az API Management szolgáltatás számára a háttérrendszeri API segítségével. Az API-t feldolgozza a kérést és választ keresztüláramló vissza az API fogyasztó számára. Az API Management szolgáltatás tartja néhány Megjelenítés az API-k leíró fontos statisztikákat az Azure portal irányítópultján, de után eltűnnek róla, hogy a részletek.
@@ -45,7 +45,7 @@ Az Event Hubs képes az események streamelése több felhasználói csoporthoz.
 ## <a name="a-policy-to-send-applicationhttp-messages"></a>Alkalmazás/http-üzenetek küldése egy házirend
 Egy Eseményközpont eseményadatok egyszerű karakterláncként fogad el. A karakterlánc tartalma szerint strukturálhatja. Az, hogy becsomagolhatja a HTTP-kérést és a mobilszolgáltatásokba az Event Hubs, formázó karakterlánc, a kérelem vagy válasz információkkal kell. Ehhez hasonló helyzeteket, ha egy meglévő formátum felhasználhatja azt, majd azt nem lehet írni a saját kód elemzése. Kezdetben szeretnék venni használatával a [HAR](http://www.softwareishard.com/blog/har-12-spec/) küld el a HTTP-kérelmeket és válaszokat. Azonban ez a formátum tárolására van optimalizálva sorozata, HTTP-kérések egy JSON-alapú formátumban. A forgatókönyvhöz a HTTP üzenet átadja a hálózaton keresztül, a szükségtelen összetettséget hozzáadott kötelező elemek számos tartalmazott.  
 
-Egy másik lehetséges volt, hogy használja a `application/http` media írja be a HTTP-specifikációnak leírtak szerint [RFC 7230](http://tools.ietf.org/html/rfc7230). Ez az adathordozó típusát pontosan ugyanazt a formátumot használja, amely ténylegesen a hálózaton keresztül a HTTP-üzenetek küldésére szolgál, de a teljes üzenetet lehet helyezni egy másik HTTP-kérelem törzse. Ebben az esetben az imént fogjuk a szervezet használja az üzenet küldése az Event Hubsba. Kényelmesen, van egy elemző, amely létezik a [Microsoft ASP.NET webes API 2.2-es ügyfél](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) kódtárakat, amely ebben a formátumban értelmezni és átalakíthatja a natív `HttpRequestMessage` és `HttpResponseMessage` objektumokat.
+Egy másik lehetséges volt, hogy használja a `application/http` media írja be a HTTP-specifikációnak leírtak szerint [RFC 7230](https://tools.ietf.org/html/rfc7230). Ez az adathordozó típusát pontosan ugyanazt a formátumot használja, amely ténylegesen a hálózaton keresztül a HTTP-üzenetek küldésére szolgál, de a teljes üzenetet lehet helyezni egy másik HTTP-kérelem törzse. Ebben az esetben az imént fogjuk a szervezet használja az üzenet küldése az Event Hubsba. Kényelmesen, van egy elemző, amely létezik a [Microsoft ASP.NET webes API 2.2-es ügyfél](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) kódtárakat, amely ebben a formátumban értelmezni és átalakíthatja a natív `HttpRequestMessage` és `HttpResponseMessage` objektumokat.
 
 Hogy ezt az üzenetet létrehozni, használja ki a C#-alapú kell [házirend-kifejezések](https://msdn.microsoft.com/library/azure/dn910913.aspx) az Azure API Management szolgáltatásban. Íme a szabályzatot, amely HTTP-kérelem üzenetet küld az Azure Event Hubs.
 
@@ -159,7 +159,7 @@ A válasz HTTP-üzenet küldése a szabályzat hasonlít a kérelmet, és így n
 A `set-variable` házirend által egyaránt elérhető értéket hoz létre a `log-to-eventhub` szabályzat a `<inbound>` szakaszban, és a `<outbound>` szakaszban.  
 
 ## <a name="receiving-events-from-event-hubs"></a>Az események fogadását az Event Hubsról
-Események az Azure Event Hubs használatával fogadott a [AMQP protokoll](http://www.amqp.org/). A Microsoft Service Bus csapatával ügyfél hajtott végre a fogyasztó események könnyebbé tenni az elérhető szalagtárak. Támogatott két többféle módon, egy folyamatban van egy *közvetlen fogyasztói* és egyéb használ a `EventProcessorHost` osztály. A két megközelítést példái megtalálhatók a [Event Hubs programozási útmutató](../event-hubs/event-hubs-programming-guide.md). A különbségek rövid verziója, `Direct Consumer` teljes körű felügyeletet biztosít, és a `EventProcessorHost` nem közé bekötése, az viszont lehetővé teszi bizonyos feltételezéseket hogyan dolgozza fel ezeket az eseményeket.  
+Események az Azure Event Hubs használatával fogadott a [AMQP protokoll](https://www.amqp.org/). A Microsoft Service Bus csapatával ügyfél hajtott végre a fogyasztó események könnyebbé tenni az elérhető szalagtárak. Támogatott két többféle módon, egy folyamatban van egy *közvetlen fogyasztói* és egyéb használ a `EventProcessorHost` osztály. A két megközelítést példái megtalálhatók a [Event Hubs programozási útmutató](../event-hubs/event-hubs-programming-guide.md). A különbségek rövid verziója, `Direct Consumer` teljes körű felügyeletet biztosít, és a `EventProcessorHost` nem közé bekötése, az viszont lehetővé teszi bizonyos feltételezéseket hogyan dolgozza fel ezeket az eseményeket.  
 
 ### <a name="eventprocessorhost"></a>EventProcessorHost
 Ebben a példában használjuk a `EventProcessorHost` az egyszerűség kedvéért mindazonáltal, előfordulhat, hogy ebben a konkrét esetben nem a legjobb választás. `EventProcessorHost` nem ellenőrizte, hogy nem kell aggódnia threading belül egy adott processzor eseményosztály problémák bonyolult feladatát. Azonban ebben az esetben, hogy egyszerűen konvertálás az üzenet egy másik formátumba és átadásával mentén, és egy másik szolgáltatás async módszert használ. Hiba esetén nem kell megosztott állapotot, és ezért problémák threading kockázata frissítéséhez. A legtöbb esetben `EventProcessorHost` valószínűleg a legjobb választás, és természetesen a könnyebb beállítás.     
@@ -213,7 +213,7 @@ A `HttpMessage` példány tartalmaz egy `MessageId` GUID, amely lehetővé teszi
 A `HttpMessage` megvalósítását, majd továbbítja a példány `IHttpMessageProcessor`, azaz különítse el a forgalmat fogadó és az Azure Event Hubs az esemény értelmezését és a tényleges feldolgozását, létrehozott egy felületet.
 
 ## <a name="forwarding-the-http-message"></a>A HTTP üzenet továbbítása
-Ehhez a mintához kifejezetten érdekes paranccsal küldje le a HTTP-kérelem keresztül lenne [Runscope](http://www.runscope.com). Runscope egy felhőalapú szolgáltatás, amely HTTP-hibakeresés, naplózás és figyelés. Egy ingyenes szinttel, így könnyen próbálja ki, és lehetővé teszi számunkra, hogy tekintse meg a HTTP-kérések valós időben az API Management szolgáltatáson keresztül áramló rendelkeznek.
+Ehhez a mintához kifejezetten érdekes paranccsal küldje le a HTTP-kérelem keresztül lenne [Runscope](https://www.runscope.com). Runscope egy felhőalapú szolgáltatás, amely HTTP-hibakeresés, naplózás és figyelés. Egy ingyenes szinttel, így könnyen próbálja ki, és lehetővé teszi számunkra, hogy tekintse meg a HTTP-kérések valós időben az API Management szolgáltatáson keresztül áramló rendelkeznek.
 
 A `IHttpMessageProcessor` megvalósítási néz ki,
 
@@ -260,7 +260,7 @@ public class RunscopeHttpMessageProcessor : IHttpMessageProcessor
 }
 ```
 
-Képes kihasználni az voltam egy [meglévő ügyféloldali kódtára a Runscope](http://www.nuget.org/packages/Runscope.net.hapikit/0.9.0-alpha) , amely megkönnyíti leküldéses `HttpRequestMessage` és `HttpResponseMessage` példányok be a szolgáltatásba. A Runscope API eléréséhez szüksége egy fiókot és a egy API-kulcsot. Útmutató az első API-kulcs található a [hozzáférés Runscope API-alkalmazások létrehozása](http://blog.runscope.com/posts/creating-applications-to-access-the-runscope-api) képernyőfelvétel.
+Képes kihasználni az voltam egy [meglévő ügyféloldali kódtára a Runscope](https://www.nuget.org/packages/Runscope.net.hapikit/0.9.0-alpha) , amely megkönnyíti leküldéses `HttpRequestMessage` és `HttpResponseMessage` példányok be a szolgáltatásba. A Runscope API eléréséhez szüksége egy fiókot és a egy API-kulcsot. Útmutató az első API-kulcs található a [hozzáférés Runscope API-alkalmazások létrehozása](https://blog.runscope.com/posts/creating-applications-to-access-the-runscope-api) képernyőfelvétel.
 
 ## <a name="complete-sample"></a>Teljes minta
 A [forráskódját](https://github.com/darrelmiller/ApimEventProcessor) és tesztek a minta a Githubon érhetők el. Kell egy [API Management szolgáltatás](get-started-create-service-instance.md), [a csatlakoztatott Eseményközpontot](api-management-howto-log-event-hubs.md), és a egy [Tárfiók](../storage/common/storage-create-storage-account.md) maga a minta futtatásához.   

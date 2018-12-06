@@ -1,6 +1,6 @@
 ---
-title: StorSimple régiónkénti elérhetőség |} Microsoft Docs
-description: Ismerteti az Azure-régiók, amelyben a különböző StorSimple eszköz modellek érhetők el.
+title: A StorSimple-régiók rendelkezésre állása |} A Microsoft Docs
+description: Ismerteti az Azure-régióban, amelyben a különböző StorSimple-eszközök esetében érhető el.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,58 +14,58 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: d47109d541a3df93d9234e27e53d1538f6bc4c6e
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 7e35aa8120c455b8cc0d0881a9ceb5120c57deff
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
-ms.locfileid: "24879058"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969668"
 ---
-# <a name="available-regions-for-your-storsimple"></a>A StorSimple elérhető régiók
+# <a name="available-regions-for-your-storsimple"></a>A StorSimple az elérhető régiók
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure adatközpontjaiban működik, a teljesítmény, a követelmények és a beállítások vonatkozó adatok helye az ügyfél kielégítése érdekében a világ különböző földrajzi. Egy Azure geográfiai egy meghatározott területen a világ, amely tartalmaz legalább egy Azure-régióban. Egy Azure-régió, egy földrajzi hely, egy vagy több adatközpontok tartalmazó terület.
+Az Azure-adatközpontokból a teljesítmény, a követelmények és az adatok helyére vonatkozó beállításait az ügyfél figyelembevételével világszerte több földrajzi területeken működik. Egy Azure földrajzi területet adtunk a világ, amely tartalmaz legalább egy Azure-régióban. Egy Azure-régióban egy olyan terület, a földrajzi helyen tartalmazó egy vagy több adatközpont tartozhat.
 
-Egy Azure-régió kiválasztásával nagyon fontos, és a választott régió tényezőktől, például az adatok rezidens és a közös joghatóság alá, a szolgáltatás rendelkezésre állása, a teljesítmény, a költség és a redundancia befolyásol. Válasszon egy régiót módjáról további információkért látogasson el [ami Azure-régióban megfelelő a számomra?](https://azure.microsoft.com/overview/datacenters/how-to-choose/)
+Egy Azure-régió kiválasztásával nagyon fontos, és befolyásolja a kiválasztott régióban tényezők, például az adatok fizikai tárolási helye és szuverenitás, szolgáltatás rendelkezésre állása, teljesítménye, költség és redundanciát. Válasszon régiót módjáról további információkért lépjen [ami Azure-régióban megfelelő a számomra?](https://azure.microsoft.com/overview/datacenters/how-to-choose/)
 
-A StorSimple megoldásban a választott régió kifejezetten határozza meg a következő tényezőket:
+A StorSimple megoldás a kiválasztott régióban kifejezetten határozza meg a következő tényezőktől függ:
 
-- Az régió, ahol a StorSimple Device Manager szolgáltatás nem érhető el.
-- A országok, ahol a StorSimple fizikai, a felhő és a virtuális eszköz áll rendelkezésre.
-- A régió, ahol a tárfiókok a StorSimple adatokat tároló kell lennie az optimális teljesítmény.
+- Régióban, ahol a StorSimple-Eszközkezelő szolgáltatás érhető el.
+- Az országok, ahol a StorSimple fizikai eszközök, a felhőben és a virtuális eszköz érhető el.
+- A régiók, ahol kell lennie az optimális teljesítmény érdekében a StorSimple-adatok tárolására szolgáló tárfiókot.
 
-Ez az oktatóanyag leírja a régiónkénti elérhetőség, a StorSimple eszköz kezelő szolgáltatás, a helyszíni fizikai és a felhőbeli eszközöket. Ebben a cikkben szereplő információk csak a StorSimple 8000 és 1200 sorozat eszközeire alkalmazható.
+Ez az oktatóanyag azt ismerteti, hogy a régiók rendelkezésre állása a StorSimple-Eszközkezelő szolgáltatás, a helyszíni fizikai és a felhőbeli eszközöket. Az ebben a cikkben szereplő információ egyaránt vonatkozik az a StorSimple 8000-es és az 1200-as sorozatú eszközöket.
 
-## <a name="region-availability-for-storsimple-device-manager-service"></a>Régiónkénti elérhetőség StorSimple Device Manager szolgáltatáshoz
+## <a name="region-availability-for-storsimple-device-manager-service"></a>StorSimple-Eszközkezelő szolgáltatás régiók rendelkezésre állása
 
-StorSimple Device Manager szolgáltatás jelenleg 12 nyilvános régiók és 2 Azure Government régiókban támogatott.
+StorSimple-Eszközkezelő szolgáltatás jelenleg támogatott 12 nyilvános régiókban és 2 Azure Government-régiókban.
 
-Amikor először létre kell hoznia a StorSimple Device Manager szolgáltatás olyan régióban vagy a hely definiálni. Általában a legközelebbi a földrajzi régióban, az eszköz telepítési helyét egy helyre van kiválasztva. De az eszköz és a szolgáltatás is telepíthető a különböző helyeken.
+Definiálja a régió vagy helyét, és a StorSimple-Eszközkezelő szolgáltatás első létrehozásakor. Általánosságban véve a földrajzi régióban, ahol az eszköz telepíti legközelebbi hely van kiválasztva. De az eszköz és a szolgáltatást is üzembe helyezhetők más-más helyen.
 
-Ez egy lista, régió, ahol StorSimple Device Manager szolgáltatás Azure nyilvános felhőjében érhető el és telepíthetők.
+Ez egy lista, régiók, ahol a StorSimple-Eszközkezelő szolgáltatás érhető el az Azure nyilvános felhő, és is üzembe helyezhetők.
 
-![storsimple-eszköz-manager-szolgáltatás-régiók](./media/storsimple-region/storsimple-device-manager-service-regions.png)
+![storsimple-eszköz-manager-szolgáltatás-területek](./media/storsimple-region/storsimple-device-manager-service-regions.png)
 
-Azure Government felhő, a StorSimple Device Manager szolgáltatás érhető el Nekünk – (kormányzati) Iowa és Velünk – (kormányzati) Virginia adatközpontokban.
+Az Azure Government-felhőben a StorSimple-Eszközkezelő szolgáltatás US Gov – Iowa és US Gov Virginia adatközpontokban érhető el.
 
-## <a name="region-availability-for-data-stored-in-storsimple"></a>A StorSimple tárolt adatok esetében régiónkénti elérhetőség
+## <a name="region-availability-for-data-stored-in-storsimple"></a>StorSimple-ben tárolt adatok régiók rendelkezésre állása
 
-StorSimple-adatokat az Azure storage-fiókok fizikailag tárolja, és ezek a fiókok érhetők el minden Azure-régió. Egy Azure storage-fiók létrehozásakor a tárfiók elsődleges hely van kiválasztva, és, amely meghatározza, hogy a régió, az adatokat tároló.
+A StorSimple adatokat az Azure storage-fiókok fizikailag tárolja, és ezeket a fiókokat az összes Azure-régióban érhető el. Amikor létrehoz egy Azure storage-fiókot, az elsődleges helyen, a tárfiók van kiválasztva, és, amely meghatározza, hogy a régió, ahol az adatok találhatók.
 
-Amikor először hozzon létre egy StorSimple Device Manager szolgáltatást, és a storage-fiók társítása, a StorSimple eszköz Manager szolgáltatás és az Azure storage lehet két külön helyen. Ilyen esetben a StorSimple-eszközkezelő fiókot és az Azure-tárfiókot külön kell létrehoznia.
+Amikor először hozzon létre egy StorSimple-Eszközkezelő szolgáltatás és storage-fiókot társítson, a StorSimple-Eszközkezelő szolgáltatás és az Azure storage lehet két külön helyen. Ilyen esetben a StorSimple-eszközkezelő fiókot és az Azure-tárfiókot külön kell létrehoznia.
 
-Általánosságban elmondható válassza ki a tárfiók a szolgáltatás legközelebbi régiót. Azonban a legközelebbi Microsoft Azure azon régióját előfordulhat, hogy nem lehetnek a régióban, a legkisebb mértékű késleltetést. A késés, amely határozzák meg, hogy a hálózati szolgáltatás teljesítményének, így a megoldás teljesítményére. Ezért kiválasztása a tárfiók más régióban, ha fontos tudni, hogy mi a vannak a és a tároló fiókjához társított régió között.
+Általánosságban elmondható válassza ki a legközelebbi régió, a tárfiók a szolgáltatáshoz. Azonban a legközelebbi Microsoft Azure-régióban valójában nem a régiót, a legkisebb késéssel. Legyen a késés, amely előírja a hálózati szolgáltatás teljesítménye, és ezért a megoldás teljesítményére. Így ha egy storage-fiók egy másik régióban is választja, fontos tudni, hogy az késleltetések Mik a és a tárfiók társított régió között.
 
-Ha egy StorSimple felhő készülék használ, majd azt javasoljuk, hogy a szolgáltatás és a kapcsolódó tárfiók ugyanabban a régióban van. Tárfiók más régióban teljesítménycsökkenést eredményezhet.
+Ha egy StorSimple Cloud Appliance használ, majd azt javasoljuk, hogy a szolgáltatás és a kapcsolódó tárfiók van-e ugyanabban a régióban. Egy másik régióban a Storage-fiókok gyenge teljesítményt eredményezhet.
 
 ## <a name="availability-of-storsimple-device"></a>StorSimple-eszköz elérhetősége
 
-Attól függően, a modell, a StorSimple eszközök lehetnek elérhető különböző földrajzi területeken vagy országokból.
+Függően a modellt, a StorSimple-eszközök is érhetők el az különböző földrajzi vagy országok.
 
-### <a name="storsimple-physical-device-models-81008600"></a>A StorSimple fizikai eszköz (modellek 8100/8600)
+### <a name="storsimple-physical-device-models-81008600"></a>A StorSimple fizikai eszköz (8100-as vagy 8600 modelleket)
 
-A StorSimple 8100 vagy 8600 fizikai eszköz használatával, ha az eszköz nem áll rendelkezésre a következő országokban.
+A StorSimple 8100-as vagy 8600-as fizikai eszköz használata esetén az eszköz érhető el az alábbi országokban.
 
 | #  | Ország        | #  | Ország     | #  | Ország      | #  | Ország              |
 |----|----------------|----|-------------|----|--------------|----|----------------------|
@@ -77,7 +77,7 @@ A StorSimple 8100 vagy 8600 fizikai eszköz használatával, ha az eszköz nem �
 | 6  | Kanada         | 21 | Írország     | 36 | Lengyelország       | 51 | Svájc          |
 | 7  | Chile          | 22 | Izrael      | 37 | Portugália     | 52 | Tajvan               |
 | 8  | Kolumbia       | 23 | Olaszország       | 38 | Puerto Rico  | 53 | Thaiföld             |
-| 9  | Csehország | 24 | Japán       | 39 | Katar        | 54 | Törökország               |
+| 9  | Cseh Köztársaság | 24 | Japán       | 39 | Katar        | 54 | Törökország               |
 | 10 | Dánia        | 25 | Kenya       | 40 | Románia      | 55 | Ukrajna              |
 | 11 | Egyiptom          | 26 | Kuvait      | 41 | Oroszország       | 56 | Egyesült Arab Emírségek |
 | 12 | Finnország        | 27 | Makao       | 42 | Szaúd-Arábia | 57 | Egyesült Királyság       |
@@ -85,25 +85,25 @@ A StorSimple 8100 vagy 8600 fizikai eszköz használatával, ha az eszköz nem �
 | 14 | Németország        | 29 | Mexikó      | 44 | Szlovákia     | 59 | Vietnam              |
 | 15 | Görögország         | 30 | Hollandia | 45 | Szlovénia     | 60 | Horvátország              |
 
-Ebben a listában több országban kerülnek változik. A földrajzi legfrissebb listáját, látogasson el a tárolási tömb feltételek függelék: az a [termék feltételek](https://www.microsoft.com/en-us/Licensing/product-licensing).
+Ebben a listában több országban kerülnek változik. A régiócsoportok legfrissebb listáját, nyissa meg a tárolási tömb feltételek függelék: az a [használati feltételeiben](https://www.microsoft.com/en-us/licensing/product-licensing/products).
 
-Microsoft fizikai hardvereszközöket, és adja meg az előző listában földrajzi a StorSimple hardver tartalék részek cseréje.
+A Microsoft is fizikai hardvereszközöket, és adja meg a tartalék hardveralkatrészek cseréje a storsimple, a fenti listán szereplő földrajzi területeken.
 
 > [!IMPORTANT]
-> A StorSimple fizikai eszköz nem helyez egy régiót, ahol StorSimple nem támogatott. A Microsoft nem tudnak majd küldje el minden országban, ahol nem támogatott a StorSimple helyettesítő részből.
+> Ne helyezze a StorSimple fizikai eszköz egy régióban, ahol a StorSimple nem támogatott. A Microsoft nem tud minden olyan országban, ahol nem támogatott a StorSimple cserealkatrészekre szállításra.
 
-### <a name="storsimple-cloud-appliance-models-80108020"></a>StorSimple felhő készülék (modellek 8010-es/8020-as modell)
+### <a name="storsimple-cloud-appliance-models-80108020"></a>A StorSimple Cloud Appliance (8010/8020-as modellek)
 
-Ha egy StorSimple felhő készülék 8010-es vagy a 8020-as modellt használ, az eszköz akkor támogatott, és elérhető minden régióban, ahol az alapul szolgáló virtuális gép esetén támogatott. A 8010 használatát egy _Standard_A3_ virtuális gép, amely az összes Azure-régiók támogatott.
+Egy StorSimple Cloud Appliance 8010 vagy 8020-as használ, majd az eszköz esetén támogatott, és elérhető minden olyan régióban, ahol a mögöttes virtuális gép használata támogatott. A 8010-es használ egy _Standard_A3_ virtuális Gépet, amely az összes Azure-régióban támogatott.
 
-A 8020-as modellt használ a prémium szintű storage és _Standard_DS3_ virtuális gép egy felhőben készülék létrehozásához. A 8020-as modell esetén támogatott Azure-régiók, amely támogatja a prémium szintű Storage és _Standard_DS3_ Azure virtuális gépeken. [Ebben a listában](https://azure.microsoft.com/regions/services/) ellenőrizheti, hogy a **Virtuális gépek &gt; DS-sorozat** és a **Storage &gt; Disk Storage** termékek egyaránt elérhetők-e az adott régióban.
+A 8020-as Premium szintű tárolást használ, és _Standard_DS3_ a virtuális gép létrehozása a felhőalapú berendezés. A 8020-as támogatott az Azure-régióban, amely támogatja a Premium Storage és _Standard_DS3_ Azure virtuális gépeken. [Ebben a listában](https://azure.microsoft.com/regions/services/) ellenőrizheti, hogy a **Virtuális gépek &gt; DS-sorozat** és a **Storage &gt; Disk Storage** termékek egyaránt elérhetők-e az adott régióban.
 
-### <a name="storsimple-virtual-array-model-1200"></a>A StorSimple virtuális tömb (1200-as modell)
+### <a name="storsimple-virtual-array-model-1200"></a>A StorSimple Virtual Array (1200-as modell)
 
-Ha 1200 több StorSimple virtuális tömb használ, majd a virtuális lemezképet használata támogatott minden Azure-régió.
+Ha egy 1200-as sorozat a StorSimple Virtual Array használatával, majd a Virtuálislemez-kép az összes Azure-régióban lesz támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További információ a [különböző StorSimple modellek árképzési](https://azure.microsoft.com/pricing/calculator/#storsimple2).
-* További információ [tárfiók felügyelete a StorSimple](storsimple-8000-manage-storage-accounts.md).
-* További tudnivalók a [felügyelete a StorSimple eszközt a StorSimple Device Manager szolgáltatással](storsimple-8000-manager-service-administration.md).
+* Tudjon meg többet a [különböző StorSimple-modellek díjszabás](https://azure.microsoft.com/pricing/calculator/#storsimple2).
+* Tudjon meg többet [kezelése a StorSimple tárfiók](storsimple-8000-manage-storage-accounts.md).
+* Ismerje meg, hogyan [a StorSimple-eszköz felügyelete a StorSimple-Eszközkezelő szolgáltatás segítségével](storsimple-8000-manager-service-administration.md).

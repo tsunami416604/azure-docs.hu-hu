@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 36b64912eb3393ad496d04ff656bed5b0c41566c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 790d05201550461b095cfefd32f0330f37697e0b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444767"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970331"
 ---
 # <a name="azure-api-management-template-resources"></a>Az Azure API Management-sablon erőforrásainak
 Az Azure API Management biztosít a következő típusú erőforrásokat használja, a fejlesztői portál sablonjainak.  
@@ -176,7 +176,7 @@ Az Azure API Management biztosít a következő típusú erőforrásokat haszná
 |WebDocumentationTemplatesDeveloperKey|Az előfizetési kulcs megadása|  
 |WebDocumentationTemplatesJavaApache|Ez a minta webhelyről () HTTP Components Apache HTTP-ügyfelét használja http://hc.apache.org/httpcomponents-client-ga/)|  
 |WebDocumentationTemplatesOptionalParams|Az opcionális paraméterek értékeinek megadása szükség szerint|  
-|WebDocumentationTemplatesPhpPackage|Ez a minta a http_request2 típusú csomagot használja. (További információ: http://pear.php.net/package/HTTP_Request2)|  
+|WebDocumentationTemplatesPhpPackage|Ez a minta a http_request2 típusú csomagot használja. (További információ: https://pear.php.net/package/HTTP_Request2)|  
 |WebDocumentationTemplatesPythonValuesForPath|Az elérési út paramétereihez tartozó értékek (így jelölve: {...})) és a kéréstörzs megadása szükség szerint|  
 |WebDocumentationTemplatesRequestBody|Kéréstörzs megadása|  
 |WebDocumentationTemplatesRequiredParams|Értékek megadása az alábbi kötelező paraméterekhez|  
@@ -571,13 +571,13 @@ Az Azure API Management biztosít a következő típusú erőforrásokat haszná
 |ApiManagementUserLimitReached|Ez a szolgáltatás elérte az engedélyezett felhasználók maximális számát. Frissítsen egy magasabb díjszabási csomagot.|  
   
 ##  <a name="glyphs"></a> Erőforrások szimbóluma  
- Az API Management fejlesztői portál sablonjainak használhatja az ikonokra a [a rendszerindítási Glyphicons](http://getbootstrap.com/components/#glyphicons). Karaktertábla készlete magában foglalja a több mint 250 Karaktertábla betűtípus formátumban a [Glyphicon](http://glyphicons.com/) Halflings beállítása. A készletből egy szimbóluma használatához használja a következő szintaxist.  
+ Az API Management fejlesztői portál sablonjainak használhatja az ikonokra a [a rendszerindítási Glyphicons](https://getbootstrap.com/components/#glyphicons). Karaktertábla készlete magában foglalja a több mint 250 Karaktertábla betűtípus formátumban a [Glyphicon](https://glyphicons.com/) Halflings beállítása. A készletből egy szimbóluma használatához használja a következő szintaxist.  
   
 ```html  
 <span class="glyphicon glyphicon-user">  
 ```  
   
- Karaktertábla teljes listáját lásd: [a rendszerindítási Glyphicons](http://getbootstrap.com/components/#glyphicons).
+ Karaktertábla teljes listáját lásd: [a rendszerindítási Glyphicons](https://getbootstrap.com/components/#glyphicons).
 
 ## <a name="next-steps"></a>További lépések
 Sablonok használatának ismertetését lásd: [testreszabása sablonok használatával, az API Management fejlesztői portálon](api-management-developer-portal-templates.md).

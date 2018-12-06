@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5de652c1296ddcf94015f8c00529fc5288f98291
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a2cedb95469f97b564aaad2baa0ff7c784d67bf8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834774"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960991"
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>A Log Analyticsben, hogy azok állapotáról, a Surface hubok monitorozása
 
@@ -35,7 +35,7 @@ A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi i
 
 * A [Log Analytics-előfizetést](https://azure.microsoft.com/pricing/details/log-analytics/) szintet, amely támogatja a figyelni kívánt eszközök számát. Log Analytics díjszabása függ attól függően, hogy hány eszköz regisztrált, és mennyi adatot, folyamatokat. Érdemes figyelembe venni ezt, a Surface Hub bevezetésének megtervezésekor.
 
-Ezután fogja hozzáadni egy meglévő Log Analytics-munkaterületet vagy hozzon létre egy újat. Jelenleg mindkét módszer használatával történő szinkronizálásának részletes útmutatásáért [Log Analytics-munkaterület létrehozása az Azure Portalon](../../log-analytics/log-analytics-quick-create-workspace.md). Miután konfigurálta a Log Analytics-munkaterületet, két módja a Surface Hub-eszközök regisztrálásához:
+Ezután fogja hozzáadni egy meglévő Log Analytics-munkaterületet vagy hozzon létre egy újat. Jelenleg mindkét módszer használatával történő szinkronizálásának részletes útmutatásáért [Log Analytics-munkaterület létrehozása az Azure Portalon](../../azure-monitor/learn/quick-create-workspace.md). Miután konfigurálta a Log Analytics-munkaterületet, két módja a Surface Hub-eszközök regisztrálásához:
 
 * Automatikusan Intune-nal
 * Manuálisan keresztül **beállítások** a Surface Hub eszköz.

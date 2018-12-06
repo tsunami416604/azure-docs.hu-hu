@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: 45ce5bfc516d51feddad7ebdad5828705b14620d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 58dc344cc7ab40218a122e34a9032276107a944c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850840"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964458"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Tudnivalók az Azure Site Recovery Deployment Planner VMware – Azure
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a VMware–Azure éles környezetben való üzembe helyezéséhez.
@@ -99,9 +99,9 @@ Az eszközt futtathatja Windows Server 2012 R2-ről, ha a kiszolgáló hálózat
 A mappa több fájlt és almappát tartalmaz. Az ASRDeploymentPlanner.exe futtatható fájl a szülőmappában található.
 
     Példa: másolja a zip-fájlt az E:\ meghajtóra, és csomagolja ki.
-    E:\ASR Deployment Planner_v2.2.zip
+    Üzembe helyezés Planner_v2.3.zip E:\ASR
 
-    E:\ASR Deployment Planner_v2.2\ASRDeploymentPlanner.exe
+    Üzembe helyezés Planner_v2.3\ASRDeploymentPlanner.exe E:\ASR
 
 ### <a name="update-to-the-latest-version-of-deployment-planner"></a>Frissítés a Deployment Planner legújabb verziójára
 Ha a Deployment Planner korábbi verziójával rendelkezik, tegye az alábbiak egyikét:
@@ -117,7 +117,7 @@ Ha a Deployment Planner korábbi verziójával rendelkezik, tegye az alábbiak e
 
 
 ## <a name="version-history"></a>Verzióelőzmények
-A legutóbbi Site Recovery Deployment Planner eszköz verziószáma 2.2.
+A Site Recovery Deployment Planner eszköz legújabb verzióra 2.3-as verzióját.
 Az egyes frissítésekben hozzáadott javításokról a [Site Recovery Deployment Planner verzióelőzményeinek oldalán](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) lehet tájékozódni.
 
 ## <a name="next-steps"></a>További lépések

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: aab9651092f7ad5dbc78c31db8df4ef3538fedfc
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: HT
+ms.openlocfilehash: 82cc5d940a48cfca33a4ad9e160905df34f86454
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039972"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960464"
 ---
 # <a name="quickstart-change-model-using-c"></a>Rövid útmutató: Modell módosítása a C# használatával
 
@@ -98,9 +98,7 @@ Adja hozzá a POST kérelemmetódust a **Program** osztályhoz.
 
 Adjon hozzá kimondott példaszövegeket a fájlmetódusból a **Program** osztályhoz.
 
-   [!code-csharp[Add example utterances from file.
-](~/samples-luis/documentation-samples/quickstarts/change-model/csharp/ConsoleApp1/Program.cs?range=77-86 "Add example utterances from file.
-")]
+   [!code-csharp[Add example utterances from file.](~/samples-luis/documentation-samples/quickstarts/change-model/csharp/ConsoleApp1/Program.cs?range=77-86 "Add example utterances from file.")]
 
 Miután alkalmazta a módosításokat a modellre, tanítsa be a modellt. Adja hozzá a metódust a **Program** osztályhoz.
 

@@ -1,6 +1,6 @@
 ---
-title: Események fogadása az Azure Event Hubsról a .NET Standard kódtár használatával | Microsoft Docs
-description: Üzenetek fogadása az EventProcessorHosttal .NET Standardban – első lépések
+title: Események fogadása az Azure Event Hubsba a .NET Core-kódtár használatával |} A Microsoft Docs
+description: Az EventProcessorHost üzenetek fogadása a .NET Core első lépések
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 9adbd8b9e7934ebe454d14ac6e47fe96898c9184
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: fb99307182ba3ce8ba49a9ae09c12af173799c87
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234391"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963351"
 ---
-# <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>Üzenetek fogadása az Event Processor Hosttal .NET Standardban – első lépések
+# <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-core"></a>Az Event Processor Host-üzenetek fogadása a .NET Core – első lépések
 Az Event Hubs szolgáltatás a csatlakoztatott eszközökről és alkalmazásokból származó nagy mennyiségű eseményadatot dolgoz fel (telemetria). Miután összegyűjtötte az adatokat az Event Hubsban, az adatok egy tárolási fürt használatával tárolhatja, vagy átalakíthatja egy valós idejű elemzési szolgáltató segítségével. Ez az átfogó eseménygyűjtési és -feldolgozási képesség kulcsfontosságú alkotóeleme a modern alkalmazásarchitektúráknak, beleértve az eszközök internetes hálózatát (IoT). Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
 
 Ez az oktatóanyag ismerteti, hogyan írható olyan .NET Core-konzolalkalmazás, amely egy eseményközpontból fogad üzeneteket az [Event Processor Host](event-hubs-event-processor-host.md) használatával. Az [Event Processor Host](event-hubs-event-processor-host.md) egy .NET-osztály, amely leegyszerűsíti az események fogadását az Event Hubsból, mivel kezeli az állandó ellenőrzőpontokat és a párhuzamos fogadásokat az adott Event Hubs-eseményközpontokból. Az Event Processor Host használatával több fogadó között oszthatja el az eseményeket, még akkor is, ha ezek különböző csomópontokon üzemelnek. Ez a példa bemutatja, hogyan használható az Event Processor Host egyetlen fogadóhoz. [A horizontálisan felskálázott eseményfeldolgozási][Az Event Hubst használó horizontálisan felskálázott eseményfeldolgozási] minta bemutatja, hogyan használható az Event Processor Host több fogadóval.
@@ -206,7 +206,7 @@ Gratulálunk! Sikeresen fogadott üzeneteket egy eseményközpontból az Event P
 > Ez az oktatóprogram az [EventProcessorHost](event-hubs-event-processor-host.md) egyetlen példányát használja. Az átviteli sebesség növelése érdekében javasoljuk az [EventProcessorHost](event-hubs-event-processor-host.md) több példányának futtatását, amelyre a [horizontálisan felskálázott eseményfeldolgozási](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3) mintában láthat példát. Ilyen esetekben a példányok automatikusan koordinálnak egymással a fogadott események terhelésének kiegyenlítéséhez. 
 
 ## <a name="next-steps"></a>További lépések
-Ebben a rövid útmutatóban egy .NET Standard-alkalmazást hozott létre, amely üzeneteket fogadott egy eseményközpontból. Az események a .NET Standard használatával eseményközpontokba küldésével kapcsolatban lásd az [események a .NET Standard használatával eseményközpontba küldésére](event-hubs-dotnet-standard-getstarted-send.md) vonatkozó cikket.
+Ebben a rövid útmutatóban létrehozott .NET Core-alkalmazást, amely a fogadott üzeneteket egy eseményközpontból. Ismerje meg, hogyan küldhet eseményeket egy eseményközpontba, .NET Core használatával, lásd: [események küldése az event hubs - .NET Core](event-hubs-dotnet-standard-getstarted-send.md).
 
 [1]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/event-hubs-python1.png
 [2]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/netcorercv.png

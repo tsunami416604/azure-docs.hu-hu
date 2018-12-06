@@ -8,41 +8,44 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 11/30/2018
 ms.author: pafarley
-ms.openlocfilehash: 9cb82b40d1fbec513b0219f26d1959fbd7f64570
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7d914f394ecfcf02ed26f41cd8fe2ef799cf6103
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343962"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966738"
 ---
 # <a name="generating-thumbnails"></a>Miniatűrök létrehozása
 
-A miniatűr a teljes méretű kép kis reprezentációját. Változatos eszközök, például telefonokon, táblagépeken és számítógépeken hozzon létre egy másik felhasználói felület (UX) elrendezések és a miniatűr méretek van szükség. Intelligens levágás, a Computer Vision funkció segítségével megoldani a problémát.
+A miniatűr kép csökkentett méretű reprezentációját. Miniatűr képeket és egyéb adatokat képviselő gazdaságosabb, elrendezés mobilbarát lehetővé szolgálnak. A Computer Vision API használatával intelligens levágás, a kép átméretezése együtt egy adott rendszerképhez intuitív miniatűrök létrehozása.
 
-Kép feltöltése után a Computer Vision egy jó minőségű miniatűrt hoz létre, és ezután elemzi a tárgyakat azonosíthatja a *a lényeges terület* (ROI). Azt is igény szerint vágja körül, a képet a megtérülési RÁTÁRA követelményeinek. A létrehozott miniatűr, amely eltér az eredeti kép, hogy megfeleljen az igényeinek oldalarányának méretarány használatával jelenítheti meg.
+A Computer Vision, miniatűrkép-generálás algoritmus a következőképpen működik:
+1. A lemezképből eltávolíthatja a zavaró elemeket, és azonosíthatja a _érdeklődési körét_&mdash;a terület a fő objektumok jelenik meg a kép.
+1. Az azonosított alapján a kép levágása _érdeklődési körét_.
+1. A cél miniatűr dimenziók igazítás oldalarányának módosítása.
 
-A miniatűr algoritmus a következőképpen történik:
+## <a name="area-of-interest"></a>Érdeklődési körét
 
-1. Zavaró elemet távolít el a lemezképet, és a fő objektum, a tartományban, azonosítja.
-2. Körülvágja a képet a lényeges azonosított régió alapján.
-3. Az arányt, a cél miniatűr dimenziók megfelelően változik.
+Ha feltölt egy képet, a Computer Vision API elemzi azt határozza meg a *érdeklődési körét*. Ebben a régióban használatával, majd határozza meg a kép levágása. A vágási művelet azonban mindig azonos lesz a kívánt oldalarány Ha meg van adva.
+
+Is beszerezheti a nyers határolókeret koordinátái a azonos *érdeklődési körét* meghívásával a **areaOfInterest** API helyette. Ezután használhatja ezeket az adatokat az eredeti lemezkép módosítása azonban kívánja.
+
+## <a name="examples"></a>Példák
 
 A létrehozott miniatűr széles körben függően változhat a megadott magasság, szélesség és intelligens levágás, a következő képen látható módon.
 
 ![Miniatűrök](./Images/thumbnail-demo.png)
 
-## <a name="thumbnail-generation-examples"></a>A miniatűrkészítés példák
-
 Az alábbi táblázat a példában képek a Computer Vision által generált tipikus miniatűrök mutatja be. A miniatűrök a célként megadott magasság generált, és 50 képpontos, intelligens vágása szélessége engedélyezve van.
 
 | Kép | Miniatűr |
 |-------|-----------|
-|![Öltözet hegyi](./Images/mountain_vista.png) | ![Öltözet hegyi miniatűrje](./Images/mountain_vista_thumbnail.png) |
-|![Vizuális Flower elemzése](./Images/flower.png) | ![Vizuális elemzése Flower miniatűrje](./Images/flower_thumbnail.png) |
-|![Nőről tető](./Images/woman_roof.png) | ![Nőről tető miniatűrje](./Images/woman_roof_thumbnail.png) |
+|![Hegyvidéki tájkép](./Images/mountain_vista.png) | ![Öltözet hegyi miniatűrje](./Images/mountain_vista_thumbnail.png) |
+|![Virág képe vizuális elemzéshez](./Images/flower.png) | ![Vizuális elemzése Flower miniatűrje](./Images/flower_thumbnail.png) |
+|![Nő a tetőn](./Images/woman_roof.png) | ![Nőről tető miniatűrje](./Images/woman_roof_thumbnail.png) |
 
 ## <a name="next-steps"></a>További lépések
 
-Fogalmak ismertetése [rendszerképek címkézése](concept-tagging-images.md) és [lemezképek kategorizálásához](concept-categorizing-images.md).
+Ismerje meg [rendszerképek címkézése](concept-tagging-images.md) és [lemezképek kategorizálásához](concept-categorizing-images.md).

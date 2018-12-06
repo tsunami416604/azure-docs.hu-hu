@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 847794d46addc7f3cba09437c2d2c6e8a3a04e89
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: bf13ca603927c85784e446157a79cd96fb70ca05
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165424"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956981"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: fordítása
 
@@ -42,11 +42,11 @@ A kérelem lekérdezési karakterláncot az átadott paraméterek a következők
   </tr>
   <tr>
     <td>forrás:</td>
-    <td>*Nem kötelező paraméter*.<br/>Meghatározza a bemeneti szöveg nyelvét. Milyen nyelveken érhetők el lefordítani a szavazatait található [támogatott nyelvek](.\v3-0-languages.md) használatával a `translation` hatókör. Ha a `from` paraméter nincs megadva, az automatikus nyelvfelismerést a Forrásnyelv alkalmazásával.</td>
+    <td>*Nem kötelező paraméter*.<br/>Meghatározza a bemeneti szöveg nyelvét. Milyen nyelveken érhetők el lefordítani a szavazatait található [támogatott nyelvek](./v3-0-languages.md) használatával a `translation` hatókör. Ha a `from` paraméter nincs megadva, az automatikus nyelvfelismerést a Forrásnyelv alkalmazásával.</td>
   </tr>
   <tr>
     <td>erre:</td>
-    <td>*Kötelező paraméter*.<br/>Meghatározza a kimeneti szöveg nyelvét. A Célnyelv egyikének kell lennie a [támogatott nyelvek](.\v3-0-languages.md) szerepel a `translation` hatókör. Például `to=de` német fordításához.<br/>Újraindításához ismételje meg a paraméter a lekérdezési karakterláncban egyszerre több nyelvhez lefordítani lehetőség. Például `to=de&to=it` , német, olasz lefordítja.</td>
+    <td>*Kötelező paraméter*.<br/>Meghatározza a kimeneti szöveg nyelvét. A Célnyelv egyikének kell lennie a [támogatott nyelvek](./v3-0-languages.md) szerepel a `translation` hatókör. Például `to=de` német fordításához.<br/>Újraindításához ismételje meg a paraméter a lekérdezési karakterláncban egyszerre több nyelvhez lefordítani lehetőség. Például `to=de&to=it` , német, olasz lefordítja.</td>
   </tr>
   <tr>
     <td>textType</td>

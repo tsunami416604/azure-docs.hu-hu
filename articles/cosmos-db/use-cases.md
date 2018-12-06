@@ -1,20 +1,18 @@
 ---
-title: Gyakori alkalmazási helyzetek és a forgatókönyvek az Azure Cosmos DB |} A Microsoft Docs
+title: Gyakori alkalmazási helyzetek és a forgatókönyvek az Azure Cosmos DB
 description: 'További tudnivalók az első öt használati esetek, az Azure Cosmos DB: felhasználók létrehozott tartalmat, az eseménynaplózás, eseménykatalógus-adatok, felhasználói beállítások adatok és eszközök internetes hálózata (IoT).'
 services: cosmos-db
-author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
+author: SnehaGunda
+ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/07/2017
-ms.author: sngun
-ms.openlocfilehash: 50bc70fa18bc8fb04e4f8117340c66665204282c
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 400ce3ddb2a01db32faa7d3303c89a76c2c4649a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251073"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960030"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB gyakori alkalmazási helyzetek
 Ez a cikk számos gyakori alkalmazási helyzetek áttekintést nyújt az Azure Cosmos DB.  Ebben a cikkben szereplő ajánlások szolgálhat a kiindulási pontként, a Cosmos DB az alkalmazás fejlesztését.   

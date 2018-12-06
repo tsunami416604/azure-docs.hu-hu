@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: hector.linares
-ms.openlocfilehash: 3c27aecf18fcb5e14347d8f02d71891b351292be
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 87ba13334b037f7eb47264a120bb91b2be5f8a79
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341837"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963913"
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Az Azure Stack üzembe helyezett virtuális gépek védelme
 
@@ -58,7 +58,7 @@ Tervezze meg a backup-helyreállítás és a vész-helyreállítási stratégia 
 | **Az Azure Stack üzembe helyezve a CSP adatközpontjában és a CSP által működtetett** | Az működtetni CSP az Azure Stack felhasználói virtuális gépeket telepít. Felhasználói virtuális gépek biztonsági másolatból történt visszaállítása vagy feladatátvétel közvetlenül az Azure-bA. | Kriptográfiai Szolgáltató az elsődleges és másodlagos példányai az Azure Stack saját adatközpontban működik. Felhasználói virtuális gépeket visszaállított vagy átadta a feladatait a két Azure Stack-példányok között. | Kriptográfiai Szolgáltató az Azure Stack az elsődleges helyen működik. Ügyfél adatközpontja célja visszaállítása vagy feladatátvétel. |
 | **Az Azure Stack ügyfél adatközpontban helyezi üzembe, és az ügyfél által működtetett** | Felhasználói virtuális gépeket a rendszer telepíti az ügyfél üzemeltetett Azure Stack. Felhasználói virtuális gépek biztonsági másolatból történt visszaállítása vagy feladatátvétel közvetlenül az Azure-bA. | Ügyfél az elsődleges és másodlagos példányai az Azure Stack saját adatközpontban működik. Felhasználói virtuális gépeket visszaállított vagy átadta a feladatait a két Azure Stack-példányok között. | Ügyfél az Azure Stack az elsődleges helyen működik. A Felhőszolgáltató adatközpontjában célja visszaállítása vagy feladatátvétel. |
 
-![Forrás-cél kombinációk](media\azure-stack-manage-vm-backup\vm_backupdataflow_01.png)
+![Forrás-cél kombinációk](media/azure-stack-manage-vm-backup/vm_backupdataflow_01.png)
 
 ## <a name="application-recovery-objectives"></a>Alkalmazás helyreállítási célok
 
@@ -77,7 +77,7 @@ Egy másik metrika **helyreállítása időt** (MTTR), azaz a meghibásodás ut�
 
 A leggyakrabban használt védelmi séma Virtuálisgép-alapú alkalmazásokhoz, hogy biztonsági mentési szoftver. Virtuális gépek biztonsági mentéséről általában tartalmazza az operációs rendszer, az operációs rendszer konfigurálása, alkalmazás bináris fájljainak és az alkalmazásadatokat. A biztonsági mentés pillanatképének elkészítése a köteteket, a lemezek vagy a teljes virtuális Gépet hoznak létre. Az Azure Stack megvan a rugalmasság a biztonsági mentés készül a vendég operációs rendszer vagy az Azure Stack-storage-ból a környezeten belül, és API-k számítási. Az Azure Stack nem támogatja a véve a biztonsági mentések a hipervizor szintjén.
  
-![Backup-restor](media\azure-stack-manage-vm-backup\vm_backupdataflow_03.png)
+![Backup-restor](media/azure-stack-manage-vm-backup/vm_backupdataflow_03.png)
 
 Az alkalmazás helyreállítása szükséges egy vagy több virtuális gép visszaállítása, ugyanabban a felhőben vagy egy új felhőt. A célfelhő az adatközpontban vagy a nyilvános felhőben. A választott cloud teljesen a vezérlőben, amely az és az adatvédelmi követelmények alapján.
  
@@ -107,7 +107,7 @@ Egy másik megközelítést magas rendelkezésre állású, hogy az alkalmazás 
 
 Ezzel a módszerrel a rendszer telepíti az alkalmazást egy felhőben, és a virtuális gép a rendszer replikálja a többi felhőt. A feladatátvételi akkor aktiválódik, ha a másodlagos virtuális gépek kell bekapcsolni a második felhőben. Bizonyos esetekben a feladatátvétel őket a virtuális gépek és rendeli lemezeket hoz létre. Ez a folyamat végrehajtásához, különösen az olyan meghatározott indítási feladatütemezési igénylő többrétegű alkalmazást hosszú időt vehet igénybe. Is előfordulhatnak lépéseket kell futtatni, mielőtt az alkalmazás megkezdheti a szolgáltatáskéréseket.
 
-![Replikálás – kézi feladatátvételt](media\azure-stack-manage-vm-backup\vm_backupdataflow_02.png)
+![Replikálás – kézi feladatátvételt](media/azure-stack-manage-vm-backup/vm_backupdataflow_02.png)
 
  - RTO: Percben mért állásidő
  - Helyreállítási Időkorlát: Változó adatvesztés (replikáció gyakoriságától függően)

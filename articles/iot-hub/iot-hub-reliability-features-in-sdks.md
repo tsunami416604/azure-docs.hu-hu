@@ -12,12 +12,12 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 64bd250f324bed53a9f33aa72f6b1daa48e0dc86
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 8951680ca9488dabffd02ee084e3f6827122276e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424646"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957452"
 ---
 # <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>Kapcsolat és az Azure IoT Hub eszközoldali SDK-k segítségével megbízható üzenetküldést kezelése
 
@@ -115,9 +115,8 @@ Kódminták más nyelven tekintse át a következő megvalósítási dokumentumo
 - [NODE SDK](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them)
 
 ## <a name="next-steps"></a>További lépések
-
-- [Eszköz- és szolgáltatásoldali SDK-k használata](.\iot-hub-devguide-sdks.md)
-- [A C IoT eszközoldali SDK-jának használata](.\iot-hub-device-sdk-c-intro.md)
-- [Fejlesztés korlátozott eszközökhöz](.\iot-hub-devguide-develop-for-constrained-devices.md)
-- [Fejlesztés mobileszközökhöz](.\iot-hub-how-to-develop-for-mobile-devices.md)
+- [Eszköz- és szolgáltatásoldali SDK-k használata](./iot-hub-devguide-sdks.md)
+- [A C IoT eszközoldali SDK-jának használata](./iot-hub-device-sdk-c-intro.md)
+- [Fejlesztés korlátozott eszközökhöz](./iot-hub-devguide-develop-for-constrained-devices.md)
+- [Fejlesztés mobileszközökhöz](./iot-hub-how-to-develop-for-mobile-devices.md)
 - [Hibaelhárítás eszköz bontja a kapcsolatot](iot-hub-troubleshoot-connectivity.md)

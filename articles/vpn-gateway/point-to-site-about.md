@@ -2,25 +2,17 @@
 title: Tudnivalók Azure pont – hely VPN-kapcsolatok |} A Microsoft Docs
 description: Ez a cikk segít megérteni a pont – hely kapcsolatokhoz, és segít eldönteni, melyik P2S VPN gateway hitelesítési típus használata.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 12/04/2018
+ms.topic: conceptual
+ms.date: 12/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: 7626967193faa1f186f223100776b9ffcbf732d7
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: fe25858f185cf4ddfd17f956b66846a22ddb0e6c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877099"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971371"
 ---
 # <a name="about-point-to-site-vpn"></a>Tudnivalók a pont – hely VPN
 
@@ -84,13 +76,11 @@ A zip-fájl néhány fontos beállítás értékét is biztosít, amely segíts�
 >[!INCLUDE [TLS version changes](../../includes/vpn-gateway-tls-change.md)]
 >
 
-## <a name="gwsku"></a>Melyik átjáró SKU-k támogatása P2S VPN?
+## <a name="gwsku"></a>Melyik átjáró-termékváltozatok támogatják a P2S VPN-t?
 
-[!INCLUDE [p2s-skus](../../includes/vpn-gateway-table-point-to-site-skus-include.md)]
+[!INCLUDE [aggregate throughput sku](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
-* Az Összesített átviteli sebesség tesztje több alagút egyetlen átjárón keresztül összesített mérésein alapul. Már nem a garantált átviteli internetes forgalom körülményei és az alkalmazás viselkedése miatt.
-* Díjszabási információk találhatók a díjszabást ismertető oldalon 
-* A SZOLGÁLTATÁSSZINT-szerződésünk SLA (szolgáltatásiszint-szerződés) adatai találhatók.
+* Átjáró-Termékváltozat javaslatok, lásd: [VPN Gateway beállításairól](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
 >[!NOTE]
 >Az alapszintű termékváltozat nem támogatja az IKEv2- vagy RADIUS-hitelesítést.

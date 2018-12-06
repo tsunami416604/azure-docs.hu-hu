@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 614fdae1865f008bdbc2cb8d5e8b96c0addcc112
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 08238732c9e2d4e09e1f956c18768a15c95828c2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036923"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958175"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése Azure HDInsight - infrastruktúra ajánlott eljárások
 
@@ -61,7 +61,7 @@ Alkalmazások és összetevők, amelyek nem voltak elérhetők a helyi fürtökb
 |Presto|IaaS-vagy HDInsight Élcsomóponthoz
 |Python 2|PaaS 
 |Python 3|PaaS 
-|G|PaaS 
+|R|PaaS 
 |SAS|IaaS 
 |Vertica|IaaS (SQLDW helyett az Azure-ban)
 |Tableau|IaaS 
@@ -88,7 +88,7 @@ HDInsight biztosítja a következő összetevők telepíthetők a HDInsight-für
 - A Solr telepítése
 - A Giraph telepítése
 - Hive-kódtárak előzetes betöltése
-- A Mono telepítése vagy frissítése
+- Mono telepítése vagy frissítése
 
 > [!Note]
 > HDInsight biztosít az egyéni hadoop-összetevők és a Parancsfájlműveletek segítségével telepített összetevőket közvetlen támogatást.
@@ -154,7 +154,7 @@ Fürtméretezés automatizálható a következő módszerekkel:
 Set-AzureRmHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <NewSize>
 ```
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+### <a name="azure-cli"></a>Azure CLI
 
 ```powershell
 azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>
@@ -186,7 +186,7 @@ Azure Virtual Network használata a HDInsight lehetővé teszi, hogy a következ
 - HDInsight-adatokhoz való csatlakozásról tárolja egy Azure-beli virtuális hálózathoz.
 - Közvetlen hozzáférés a Hadoop-szolgáltatásokhoz, amelyek nem érhetők el nyilvánosan az interneten keresztül. Ha például Kafka API-k vagy a HBase Java API-t.
 
-HDInsight vagy hozzáadhat egy új vagy meglévő Azure virtuális hálózatban. HDInsight ad hozzá egy meglévő virtuális hálózatot, ha a meglévő hálózati biztonsági csoportok és a felhasználó által megadott útvonalak frissítenie kell, hogy a korlátlan hozzáférés [több IP-címek](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip-1) az Azure-adatközpontban. Győződjön meg arról, hogy nem blokkolja a forgalmat is, a [portok](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ports) HDInsight szolgáltatásokat használják.
+HDInsight vagy hozzáadhat egy új vagy meglévő Azure virtuális hálózatban. HDInsight ad hozzá egy meglévő virtuális hálózatot, ha a meglévő hálózati biztonsági csoportok és a felhasználó által megadott útvonalak frissítenie kell, hogy a korlátlan hozzáférés [több IP-címek](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip) az Azure-adatközpontban. Győződjön meg arról, hogy nem blokkolja a forgalmat is, a [portok](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ports) HDInsight szolgáltatásokat használják.
 
 > [!Note]
 > HDInsight jelenleg nem támogatja a kényszerített bújtatás. Kényszerített bújtatás az alhálózat-beállítással, amely kényszeríti a kimenő internetes forgalmat egy eszközön, az ellenőrzés és naplózás. Kényszerített bújtatás egyik alhálózatában HDInsight telepítése előtt távolítsa el, vagy hozzon létre egy új alhálózatot a HDInsight. HDInsight még nem támogatja a kimenő hálózati kapcsolat korlátozása.

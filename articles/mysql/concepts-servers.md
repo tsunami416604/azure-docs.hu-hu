@@ -1,6 +1,6 @@
 ---
-title: Kiszolgáló kapcsolatos fogalmak, MySQL az Azure-adatbázis
-description: Ez a témakör szempontjait és irányelveket MySQL-kiszolgálók Azure-adatbázishoz való munkához.
+title: Az Azure Database for MySQL Server-fogalmak
+description: Ez a témakör szempontokat és irányelveket tartalmaz az Azure Database for MySQL-kiszolgálók használatához.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -9,48 +9,51 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 9d94f897546ea1e1190aab91e80eb9868224e5a7
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 0ddab6a982f54f0309e87d3b74a7f21c0bb67ced
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265459"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955513"
 ---
-# <a name="server-concepts-in-azure-database-for-mysql"></a>Kiszolgáló kapcsolatos fogalmak, MySQL az Azure-adatbázis
-Ez a cikk szempontjait és útmutatást biztosít a MySQL-kiszolgálók Azure-adatbázis használata.
+# <a name="server-concepts-in-azure-database-for-mysql"></a>Az Azure Database for MySQL Server-fogalmak
 
-## <a name="what-is-an-azure-database-for-mysql-server"></a>Mi az az Azure-adatbázis MySQL-kiszolgáló?
+Ez a cikk szempontokat és irányelveket tartalmaz az Azure Database for MySQL-kiszolgálók használatához.
 
-Egy Azure MySQL-kiszolgáló adatbázisa több adatbázis egy központi felügyeleti pontot. Az azonos MySQL server szerkezet, amely akkor lehetséges, hogy ismernie kell a helyszíni világ. Pontosabban az Azure-adatbázishoz a MySQL-szolgáltatás felügyelt, teljesítmény garanciákat nyújt, és elérhetővé teszi a hozzáférést és a szolgáltatások kiszolgálói szinten.
+## <a name="what-is-an-azure-database-for-mysql-server"></a>Mi az Azure Database for MySQL-kiszolgálót?
 
-Egy MySQL-kiszolgálóhoz tartozó Azure-adatbázis:
+Egy Azure Database for MySQL-kiszolgálót több adatbázis egy központi felügyeleti pont. Az azonos MySQL server-szerkezet, amely, előfordulhat, hogy ismernie kell a helyszíni világ. Pontosabban az Azure Database for MySQL-szolgáltatás felügyelt, teljesítményre vonatkozó garanciákat biztosít, és elérhetővé teszi a hozzáférés és a kiszolgáló szintjén szolgáltatások.
 
-- Azure-előfizetés jön létre.
-- A szülő erőforrás adatbázisok van.
-- Az adatbázisok névteret biztosít.
-- A tároló erős élettartama szemantikájú - kiszolgáló törlése, és törli a tartalmazott adatbázisok.
-- Collocates erőforrások régióban.
-- A csatlakozási végpont server és adatbázis-hozzáférést biztosít.
-- Felügyeleti házirendek vonatkoznak annak adatbázisok hatóköre biztosít: bejelentkezés, tűzfal, felhasználók, szerepkörök, konfiguráció stb.
-- Több verzióban érhető el. További információkért lásd: [támogatott Azure-adatbázis MySQL-adatbázis verziók](./concepts-supported-versions.md).
+Azure Database for MySQL-kiszolgáló:
 
-A MySQL-kiszolgálóhoz létrehozott Azure-adatbázisban egy vagy több adatbázist is létrehozhat. Dönthet úgy is, egy kiszolgálón, az erőforrások használatára, vagy hozzon létre az erőforrások megosztása több adatbázis egyetlen adatbázist hozhat létre. Az árképzés strukturált kiszolgálónként, tarifacsomag, vCores, és tárhely (GB), a konfiguráció alapján. További információkért lásd: [Tarifacsomagok](./concepts-service-tiers.md).
+- Egy Azure-előfizetésen belül jön létre.
+- A szülő erőforrás-adatbázisokat.
+- Névteret biztosít az adatbázisok.
+- Egy tároló erős élettartam-szemantikai képességekkel – kiszolgáló törlése és a tartalmazott adatbázisok törli.
+- Közösen helyezi el egy adott régió erőforrásait.
+- A kiszolgáló és adatbázis-hozzáférés kapcsolódási végpontot biztosít.
+- A hatókört az adatbázisokra vonatkozó felügyeleti szabályzatokat biztosít: bejelentkezés, tűzfal, felhasználók, szerepkörök, konfigurációk, stb.
+- Több verzió érhető el. További információkért lásd: [támogatott, Azure Database for MySQL-adatbázis verziója](./concepts-supported-versions.md).
 
-## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-mysql-server"></a>Hogyan csatlakozzon és hitelesíti magát egy Azure-adatbázisban, MySQL-kiszolgáló?
+A MySQL-kiszolgálóhoz létrehozott Azure-adatbázisban egy vagy több adatbázist is létrehozhat. A naplózott összes erőforrását, vagy hozhat létre az erőforrások megosztását több adatbázis kiszolgálónként egy önálló adatbázis létrehozása. A díjszabás is a strukturált kiszolgálónkénti, árképzési szint, a virtuális magok és a tárterület (GB) konfigurációja alapján. További információkért lásd: [Tarifacsomagok](./concepts-service-tiers.md).
 
-A következő elemek biztosíthatja, hogy az adatbázishoz való hozzáférést.
-|||
+## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-mysql-server"></a>Hogyan csatlakozzon és egy Azure Database for MySQL-kiszolgáló hitelesítést?
+
+A következő elemek biztosíthatja, hogy az adatbázishoz való biztonságos hozzáférést.
+|     |     |
 | :-- | :-- |
-| **Hitelesítés és engedélyezés** | MySQL-kiszolgálóhoz tartozó Azure-adatbázis natív MySQL-hitelesítését támogatja. Csatlakozhat, és a kiszolgáló-rendszergazdai bejelentkezés a kiszolgáló hitelesítéséhez. |
-| **Protocol (Protokoll)** | A szolgáltatás támogatja a MySQL által használt üzenet-alapú protokoll. |
+| **Hitelesítés és engedélyezés** | Azure Database for MySQL-kiszolgáló támogatja a natív MySQL-hitelesítést. Képes csatlakozni és hitelesítése a kiszolgálóra a kiszolgálói rendszergazdai bejelentkezéssel. |
+| **Protocol (Protokoll)** | A szolgáltatás egy üzenet-alapú protokoll, amelyet a MySQL támogatja. |
 | **TCP/IP** | A protokoll támogatott TCP/IP felett, és a Unix-tartomány szoftvercsatornákon keresztül. |
-| **Tűzfal** | Az adatok védelme érdekében egy tűzfalszabály megakadályozza a összes az adatbázis-kiszolgáló csak akkor adja meg, mely számítógépek rendelkeznek engedéllyel. Lásd: [Azure-adatbázis a MySQL-kiszolgáló tűzfalszabályainak](./concepts-firewall-rules.md). |
-| **SSL** | A szolgáltatás támogatja végrehajtó SSL-kapcsolatok az alkalmazások és az adatbázis-kiszolgáló között.  Lásd [SSL-összekapcsolhatóság konfigurálása az alkalmazásban a MySQL Azure-adatbázisához való biztonságos kapcsolódás érdekében](./howto-configure-ssl.md). |
+| **Tűzfal** | Az adatok védelme érdekében egy tűzfalszabály megakadályozza a minden az adatbázis-kiszolgálóhoz, amíg, adja meg, hogy mely számítógépek rendelkeznek ehhez engedéllyel. Lásd: [, Azure Database for MySQL-kiszolgáló tűzfalszabályainak](./concepts-firewall-rules.md). |
+| **SSL** | A szolgáltatás támogatja a korlátozást előírni az alkalmazások és az adatbázis-kiszolgáló közötti SSL-kapcsolatot.  Lásd [SSL-összekapcsolhatóság konfigurálása az alkalmazásban a MySQL Azure-adatbázisához való biztonságos kapcsolódás érdekében](./howto-configure-ssl.md). |
 
-## <a name="how-do-i-manage-a-server"></a>Hogyan kezelheti a kiszolgáló?
-Kezelheti az Azure Database MySQL-kiszolgálók az Azure-portálon vagy az Azure parancssori felület használatával.
+## <a name="how-do-i-manage-a-server"></a>Hogyan kezelhetem a kiszolgáló?
+
+Azure Database for MySQL-kiszolgálók az Azure Portalon vagy az Azure CLI használatával kezelheti.
 
 ## <a name="next-steps"></a>További lépések
-- A szolgáltatás áttekintését lásd: [Azure adatbázis MySQL – áttekintés](./overview.md)
-- Adott erőforrásokra vonatkozó információkból tájékoódhat kvótái és korlátai alapján a **szolgáltatásréteg**, lásd: [Szolgáltatásszinteken](./concepts-service-tiers.md)
-- További információ a szolgáltatáshoz való csatlakozáskor: [MySQL az Azure-adatbázis adatkapcsolattárak](./concepts-connection-libraries.md).
+
+- A szolgáltatás áttekintését lásd: [, Azure Database for MySQL áttekintése](./overview.md)
+- További információ az adott erőforrás kvótái és korlátai alapján a **szolgáltatásszint**, lásd: [szolgáltatásszintek](./concepts-service-tiers.md)
+- További információ a szolgáltatáshoz való csatlakozás: [adatkapcsolattárak az Azure Database for MySQL](./concepts-connection-libraries.md).

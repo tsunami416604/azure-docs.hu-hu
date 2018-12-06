@@ -2,17 +2,17 @@
 title: Az Azure ExpressRoute – gyakori kérdések |} A Microsoft Docs
 description: Az ExpressRoute – gyakori kérdések az információ a támogatott Azure-szolgáltatások, a költségek, adatok és kapcsolatok, SLA-t, szolgáltatók és a helyek, sávszélesség és további technikai részleteket tartalmazza.
 services: expressroute
-author: cherylmc
+author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/23/2018
-ms.author: cherylmc
-ms.openlocfilehash: 8cde172207717aca2af5dfa706f7d9c6d290c36e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 10/28/2018
+ms.author: jaredro;cherylmc
+ms.openlocfilehash: 728e5b9b4934372e060374aeb273843d695c4ba8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239202"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972456"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -68,8 +68,8 @@ Az ExpressRoute támogatja [három útválasztási tartományt](expressroute-cir
 
 * Power BI
 * Dynamics 365 for Finance and Operations (korábbi nevén Dynamics AX Online-hoz)
-* Az Azure-szolgáltatások többsége támogatottak. Tekintse meg közvetlenül a kívánt ellenőrizheti a támogatási szolgáltatással.<br>
-  A következő szolgáltatások nem támogatottak:
+* Az Azure-szolgáltatások többsége támogatottak. Tekintse meg közvetlenül a kívánt ellenőrizheti a támogatási szolgáltatással.<br><br>
+  **A következő szolgáltatások nem támogatottak**:
     * Tartalomkézbesítési hálózat (CDN)
     * Multi-Factor Authentication
     * Traffic Manager
@@ -81,7 +81,7 @@ Az ExpressRoute támogatja [három útválasztási tartományt](expressroute-cir
 * Power BI
 * Azure Active Directory
 * [Az Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (globális Azure-szolgáltatások közösségi)
-* Az Azure-szolgáltatások többsége támogatottak. Tekintse meg közvetlenül a kívánt ellenőrizheti a támogatási szolgáltatással.<br>A következő szolgáltatásokat **nem támogatott**:
+* Az Azure-szolgáltatások többsége támogatottak. Tekintse meg közvetlenül a kívánt ellenőrizheti a támogatási szolgáltatással.<br><br>**A következő szolgáltatások nem támogatottak**:
     * Tartalomkézbesítési hálózat (CDN)
     * Multi-Factor Authentication
     * Traffic Manager

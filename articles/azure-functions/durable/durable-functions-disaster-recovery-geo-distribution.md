@@ -10,18 +10,19 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: d999350f309dbd2bf74bbb3d10e74feddf6ee602
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 34583d8052dfd29a3f08187b88c15e3847a4dbb9
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642381"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966279"
 ---
 # <a name="disaster-recovery-and-geo-distribution"></a>Vészhelyreállítás és földrajzi elosztás
 
 ## <a name="overview"></a>Áttekintés
 Az Azure Durable Functions összes állapot rendszer megőrzi az Azure Storage-ban. A [feladat hub](durable-functions-task-hubs.md) vezénylések használt Azure Storage-erőforrások logikai tárolója. Orchestrator, illetve a tevékenység funkciók tartoznak, a tevékenység egy központban csak is kapcsolatba egymással.
 Az ismertetett forgatókönyvek javaslatot a központi telepítési beállítások növeli a rendelkezésre állás és a vész-helyreállítási tevékenység közbeni állásidő minimálisra csökkentése.
+
 Fontos, és figyelje meg, hogy ezek a forgatókönyvek alapulnak aktív-passzív konfigurációt igényelnek, mivel azok megismerheti az Azure Storage használatát által. Ez a minta áll egy biztonsági mentési (passzív) függvény alkalmazások üzembe helyezése egy másik régióban. A TRAFFIC Manager figyelni fogja az elsődleges (aktív) függvényalkalmazást a rendelkezésre állás érdekében. Azt feladatátvételt hajt végre a biztonsági mentési függvényalkalmazás, ha az elsődleges meghibásodik. További információkért lásd: [Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)a [prioritású forgalom-útválasztási módszer.](../../traffic-manager/traffic-manager-routing-methods.md#a-name--priorityapriority-traffic-routing-method)
 
 

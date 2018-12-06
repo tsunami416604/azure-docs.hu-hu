@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/12/2018
+ms.date: 12/05/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 37fb4c330004ce87afd900d9cafebb337261ec06
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 88041cf185aeb6ae5cb27f2405b62401cae069d9
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568233"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964253"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 frissítése
 
@@ -163,7 +163,7 @@ Emellett tartalmazza a kockázatcsökkentési spekulatív végrehajtás kockáza
 > Készüljön fel az Azure Stack üzemelő példányához bővítmény gazdagép számára. A rendszer a következő útmutató segítségével előkészítése [előkészítése az Azure stack-bővítmény gazdagép](azure-stack-extension-host-prepare.md).
 
 Ez a frissítés telepítése után bármely alkalmazandó gyorsjavítások telepítéséről. További információt a következő cikkeket, megtekintése, valamint a [karbantartási szabályzat](azure-stack-servicing-policy.md). 
-- [KB 4468920 – az Azure Stack gyorsjavítás az Azure Stack gyorsjavítás 1.1808.7.113](https://support.microsoft.com/help/4471992/)
+- [KB 4481066 – az Azure Stack gyorsjavítás az Azure Stack gyorsjavítás 1.1808.9.117](https://support.microsoft.com/help/4481066/)
 
 
 ## <a name="known-issues-post-installation"></a>Ismert problémák (telepítés utáni)
@@ -220,7 +220,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
    
   Futtassa a [Test-AzureStack](azure-stack-diagnostic-test.md) parancsmagot, hogy az infrastruktúra-szerepkör példányai állapotának ellenőrzése és egység csomópontok méretezése. Ha nincsenek problémák észlelhetők által [Test-AzureStack](azure-stack-diagnostic-test.md), ezek a riasztások figyelmen kívül hagyhatja. Ha problémát észlel, próbálja meg elindítani a szerepkörpéldány infrastruktúra vagy a csomópont a felügyeleti portálon vagy a PowerShell használatával.
 
-  A probléma a legújabb javított [1808 gyorsjavítás kiadási](https://support.microsoft.com/help/4471992/), ezért ügyeljen arra, hogy a gyorsjavítás telepítése, ha a probléma fennáll.
+  A probléma a legújabb javított [1808 gyorsjavítás kiadási](https://support.microsoft.com/help/4481066/), ezért ügyeljen arra, hogy a gyorsjavítás telepítése, ha a probléma fennáll.
 
 <!-- 1264761 - IS ASDK --> 
 - A riasztásokat a **egészségügyi vezérlő** összetevő, amely rendelkezik a következő adatokat:  
@@ -269,7 +269,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
       1. A bérlői portálon lépjen a **előfizetések** , és keresse meg az előfizetés. Kattintson a **erőforrás-szolgáltatók**, majd kattintson az **Microsoft.Compute**, és kattintson a **újraregisztrálni**.
       2. Lépjen az azonos előfizetéshez tartozó **hozzáférés-vezérlés (IAM)**, és ellenőrizze, hogy **Azure Stack – felügyelt lemez** szerepel a listán.
    2. Ha egy több-bérlős környezet van beállítva, egy belső hiba miatt meghiúsulhat egy előfizetésben, és a Vendég címtár tartozó virtuális gépek üzembe helyezéséhez. A hiba elhárításához kövesse az alábbi lépéseket:
-      1. Alkalmazza a [1808 Azure Stack gyorsjavítás](https://support.microsoft.com/help/4471992/).
+      1. Alkalmazza a [1808 Azure Stack gyorsjavítás](https://support.microsoft.com/help/4481066/).
       2. Kövesse a [Ez a cikk](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) újrakonfigurálása a Vendég címtárak mindegyike.
       
 <!-- 3179561 - IS --> 

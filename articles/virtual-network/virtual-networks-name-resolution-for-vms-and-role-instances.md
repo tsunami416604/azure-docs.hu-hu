@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: subsarma
-ms.openlocfilehash: 53e3a298dd8a3eebca1943d9bade51187f14d722
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 17bcc7ada244484c2c2df5bd81c82f695a8b5342
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42060806"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969907"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Erőforrások az Azure virtual networkök névfeloldása
 
@@ -125,7 +125,7 @@ options timeout:1 attempts:5
 A resolv.conf fájlt általában automatikusan létrehozott, és nem szerkeszthetők. Az adott hozzáadásának lépései a *beállítások* terjesztési kisszolgáló sor:
 
 * **Ubuntu** (resolvconf használja):
-  1. Adja hozzá a *beállítások* a sor **/etc/resolveconf/resolv.conf.d/head**.
+  1. Adja hozzá a *beállítások* a sor **/etc/resolvconf/resolv.conf.d/tail**.
   2. Futtatás `resolvconf -u` frissíteni.
 * **SUSE** (netconf használja):
   1. Adjon hozzá *timeout:1 kísérletek: 5* , a **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** paraméter **/etc/sysconfig/network/config**. 

@@ -5,15 +5,15 @@ services: time-series-insights
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 06/04/2018
+ms.date: 12/05/2018
 ms.author: anshan
 manager: cshankar
-ms.openlocfilehash: 46fecf6f1b2826f0e23b7b6c4f4511ce9a662d1c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
-ms.translationtype: HT
+ms.openlocfilehash: 4f152273503d9d8026047301975cf54d2ef47d27
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365689"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961490"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Oktatóanyag: Azure Time Series Insights-környezet létrehozása
 
@@ -26,9 +26,9 @@ Az oktatóanyag végigvezeti a szimulált eszközök adataival feltöltött Time
 > * Eszközszimuláció futtatása adatok streamelésére a TSI-környezetbe
 > * A szimulált telemetriaadatok ellenőrzése
 
-## <a name="video"></a>Videó: 
+## <a name="video"></a>Videó
 
-### <a name="in-this-video-we-show-you-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-that-can-be-used-to-get-started-with-time-series-insightsbr"></a>Ebből a videóból megtudhatja, hogyan hozhat létre a Time Series Insights használatbavételéhez szükséges adatokat az Azure IoT-megoldásgyorsítóval.</br>
+Ebből a videóból megtudhatja, hogyan hozhat létre a Time Series Insights használatbavételéhez szükséges adatokat az Azure IoT-megoldásgyorsítóval.
 
 > [!VIDEO https://www.youtube.com/embed/6ehNf6AJkFo]
 

@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: c2e487f421d2dfc875efde82c078f557f7bd03d2
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 4e1a8bd60c71bfc46b3c57cff6a87c5b2477146e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405735"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956448"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Állapot figyelése, állítsa be a diagnosztikai naplózás, és kapcsolja be a riasztásokat az Azure Logic Apps
 
@@ -74,7 +74,7 @@ Kapcsolatos hibák vagy egyéb lehetséges problémákat értesítéseket kapni,
 
 Gazdagabb hibakereséshez a modul részleteit és eseményeket, beállíthatja a diagnosztikai naplózás [Azure Log Analytics](../log-analytics/log-analytics-overview.md). A log Analytics szolgáltatása az Azure-ban, amely figyeli a felhőbeli és helyszíni környezeteket a rendelkezésre állás és teljesítmény karbantartásához. 
 
-A Kezdés előtt szüksége van egy Log Analytics-munkaterületet. Ismerje meg, [Log Analytics-munkaterület létrehozása](../log-analytics/log-analytics-quick-create-workspace.md).
+A Kezdés előtt szüksége van egy Log Analytics-munkaterületet. Ismerje meg, [Log Analytics-munkaterület létrehozása](../azure-monitor/learn/quick-create-workspace.md).
 
 1. Az a [az Azure portal](https://portal.azure.com), keresse meg és válassza ki a logikai alkalmazást. 
 
@@ -92,7 +92,7 @@ A Kezdés előtt szüksége van egy Log Analytics-munkaterületet. Ismerje meg, 
    2. A **Log Analytics**, válassza a **konfigurálása**. 
    3. A **OMS-munkaterületek**, válassza ki a használandó naplózási munkaterületet.
    > [!NOTE]
-   > OMS-munkaterülete mostantól Log Analytics-munkaterületek nevezik.
+   > Az OMS-munkaterületeket mostantól Log Analytics-munkaterületeknek nevezzük.
    4. A **Log**, jelölje be a **WorkflowRuntime** kategória.
    5. Válassza ki a metrika időköz.
    6. Ha elkészült, kattintson a **Mentés** gombra.
@@ -137,7 +137,7 @@ Pontosítsa a lekérdezést egy szűrő hozzáadásával, válassza ki a **+ Hoz
    Ebben a példában a "status" szót a sikertelen események megtalálásához **AzureDiagnostics**.
    Itt a szűrő a **status_s** már be van jelölve.
 
-   ![Válassza ki a szűrő](media/logic-apps-monitor-your-logic-apps/log-search-add-filter.png)
+   ![Szűrő kiválasztása](media/logic-apps-monitor-your-logic-apps/log-search-add-filter.png)
 
 7. A bal oldali sávon válassza ki a szűrő értéket használja, és válassza a kívánt **alkalmaz**.
 

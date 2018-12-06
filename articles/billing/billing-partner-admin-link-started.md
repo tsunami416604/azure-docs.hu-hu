@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 1e2492d978073f63c1c9494d652ec35a7d6565b7
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: a0dad228f23b055d68009eb737e0347ade49e94b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274179"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968048"
 ---
 # <a name="link-partner-id-to-your-azure-accounts"></a>Az Azure-fiókokhoz való hivatkozás Partnerazonosítóra
 
@@ -30,7 +30,7 @@ A Partnerazonosítóra kapcsol, mielőtt az ügyfél kell hozzáférést biztos�
 
 - **A vendégfelhasználók:** az ügyfelek meg vendégként hozzáadhat, és bármely RBAC-szerepkörök hozzárendelése. További információkért lásd: [vendég felhasználók hozzáadása másik címtárból](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
 
-- **Directory-fiók:** az ügyfél új felhasználó létrehozása a szervezet a címtárban, és bármely RBAC szerepkör hozzárendelése.
+- **Directory-fiók:** az ügyfelek felhasználói fiók létrehozása az Ön számára a saját címtárban, és bármely RBAC szerepkör hozzárendelése.
 
 - **Szolgáltatásnév:** az ügyfél hozzáadhat egy alkalmazást vagy szkriptet a szervezet saját címtárban és bármely RBAC szerepkör hozzárendelése. Az alkalmazást vagy szkriptet identitása egyszerű szolgáltatás néven ismert.
 

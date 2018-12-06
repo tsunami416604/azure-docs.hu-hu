@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 999017e24f6c4c24735b7e0cc818bf20aaabab62
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 3caa45064c41b641aa913e210aa698d818d5355e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338573"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970264"
 ---
 # <a name="microsoft-azure-stack-development-kit-asdk-troubleshooting"></a>A Microsoft Azure Stack Development Kit (ASDK) hibáinak elhárítása
 Ez a dokumentum a ASDK általános hibaelhárítási információkat nyújt. Ha nem ismertetett problémát tapasztal, ellenőrizze, hogy ellenőrizze a [Azure Stack MSDN-fórumában](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) további segítséget és információt.  
@@ -64,7 +64,7 @@ Igen, ez a viselkedés várható. Így mivel készült:
 
 Ha a VHD-k "árva" című fontos tudni, hogy találhatók-e egy storage-fiók, amely törölve lett a mappában részei. Ha a tárfiók nem lett törölve, normál, azok továbbra is létezik.
 
-Tudjon meg többet az adatmegőrzési küszöbérték és igény szerinti visszaigénylését konfigurálásával kapcsolatos [tárfiókok kezelését](.\.\azure-stack-manage-storage-accounts.md).
+Tudjon meg többet az adatmegőrzési küszöbérték és igény szerinti visszaigénylését konfigurálásával kapcsolatos [tárfiókok kezelését](../azure-stack-manage-storage-accounts.md).
 
 ## <a name="storage"></a>Storage
 ### <a name="storage-reclamation"></a>Tárolási visszaigénylését
@@ -72,4 +72,3 @@ Akár 14 óra regenerált kapacitás megjelennek a portálon vehet igénybe. Ter
 
 ## <a name="next-steps"></a>További lépések
 [Látogasson el az Azure Stack támogatási fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)
-

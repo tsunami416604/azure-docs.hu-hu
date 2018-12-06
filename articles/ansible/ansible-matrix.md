@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 09/22/2018
 ms.topic: article
-ms.openlocfilehash: a71f28413028efe3547df7c464ec852fe2161f63
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: accb7b84793b9fc98bc20f1637ec30f97a7f4a87
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649941"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962080"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Az Ansible modul és verzió mátrix
 
@@ -133,4 +133,4 @@ A [azure_preview_module forgatókönyv szerepkör](https://galaxy.ansible.com/Az
 A forgatókönyv azure_preview_module szerepkör három hetente akkor szabadul fel.
 
 ## <a name="next-steps"></a>További lépések
-Forgatókönyv-szerepkörök kapcsolatos további információkért lásd [létrehozása újrahasznosítható forgatókönyvek](http://docs.ansible.com/ansible/latest/playbooks_reuse.html). 
+Forgatókönyv-szerepkörök kapcsolatos további információkért lásd [létrehozása újrahasznosítható forgatókönyvek](https://docs.ansible.com/ansible/latest/playbooks_reuse.html). 

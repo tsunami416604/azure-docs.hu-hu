@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 1877acbd39f4e312e3a567e092bb0bcf7531b96b
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 967404fbbff3616d3faf9e315123bccbf3ac9276
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276329"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969064"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>A Google Cloud Platform-fiók csatlakoztatása
 
@@ -31,7 +31,7 @@ Első lépésként a projekttel kapcsolatos információk összegyűjtéséhez.
 1. Jelentkezzen be a Google Cloud Platform kezelőpultját [ https://console.cloud.google.com ](https://console.cloud.google.com).
 2. Tekintse át a Cloudyn, és jegyezze fel a bevezetni kívánt projekt adatokat a **projektnév** és a **Projektazonosító**. Biztosíthatja az adatok későbbi lépéseire praktikus.  
     ![Google Cloud Platform-konzol](./media/connect-google-account/gcp-console01.png)
-3. Ha a számlázás nincs engedélyezve, és a projekthez kapcsolódó, számlázási fiók létrehozása. További információkért lásd: [hozzon létre egy új számlázási fiók](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create\_a\_new\_billing\_account).
+3. Ha a számlázás nincs engedélyezve, és a projekthez kapcsolódó, számlázási fiók létrehozása. További információkért lásd: [hozzon létre egy új számlázási fiók](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create/_a/_new/_billing/_account).
 
 ## <a name="enable-storage-bucket-billing-export"></a>Tárolási gyűjtőbe számlázási Exportálás engedélyezése
 

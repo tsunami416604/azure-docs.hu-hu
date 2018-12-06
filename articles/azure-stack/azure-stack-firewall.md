@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: d50131a9c9e7572f7696a936cbfec3a8568eda2e
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 3759a9845d4ad1514fc5f0183c78b5eca2e31464
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343653"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960651"
 ---
 # <a name="azure-stack-firewall-integration"></a>Az Azure Stack tűzfal integrációja
 Javasoljuk, hogy egy tűzfal eszköz segítségével biztonságos Azure Stack segítségével. Bár tűzfalak többek között elosztott-szolgáltatásmegtagadásos (DDOS) támadások, a behatolásérzékelési és a tartalomvizsgálat segíthet, azokat is az Azure storage-szolgáltatásokhoz hasonlóan a blobok, táblák és üzenetsorok átviteli szűk keresztmetszetté válhat.
@@ -49,7 +49,7 @@ Az edge üzemelő példány, az Azure Stack közvetlenül a peremhálózati útv
 
 Általában nyilvános irányítható IP-címek vannak megadva a nyilvános VIP-készletet a külső hálózatról üzembe helyezéskor. Az edge a forgatókönyvben nem ajánlott bármilyen más hálózati biztonsági okokból nyilvános irányítható IP-címek használatát. Ebben a forgatókönyvben lehetővé teszi, hogy a felhasználó élmény, mint például az Azure nyilvános felhő mint a teljes körű önálló felügyelt felhőbeli élményt.  
 
-![Azure Stack peremhálózati tűzfal – példa](.\media\azure-stack-firewall\firewallScenarios.png)
+![Azure Stack peremhálózati tűzfal – példa](./media/azure-stack-firewall/firewallScenarios.png)
 
 ## <a name="enterprise-intranet-or-perimeter-network-firewall-scenario"></a>Vállalati intranet vagy peremhálózati tűzfal forgatókönyve
 Vállalati intranetes vagy szegélyhálózat-alapú üzembe helyezés Azure Stack üzembe lesz helyezve a többszörös zónázva tűzfalon, vagy a peremhálózati tűzfalon, és a belső, vállalati hálózati tűzfal között. Ezután ossza a biztonságos, szegélyhálózaton (vagy a DMZ) között a forgalmat, és nem biztonságos zónák, az alábbiakban:
@@ -58,7 +58,7 @@ Vállalati intranetes vagy szegélyhálózat-alapú üzembe helyezés Azure Stac
 - **Szegélyhálózat-alapú zóna**. A szegélyhálózaton van, ha külső vagy internetkapcsolattal rendelkező alkalmazás, például webkiszolgálók általában vannak telepítve. Egy tűzfal, például DDoS és a behatolás (feltörés) miközben továbbra is lehetővé teszi a megadott bejövő forgalom az internetről érkező támadások elkerülése érdekében általában figyelhető. Csak a külső hálózati nyilvános VIP-készletet az Azure Stack kell lennie a DMZ zónában.
 - **Nem biztonságos zóna**. Ez az a külső hálózat, az interneten. Ez **nem** javasoljuk, hogy a nem biztonságos zónában az Azure Stack üzembe helyezése.
 
-![Azure Stack szegélyhálózat-alapú hálózat – példa](.\media\azure-stack-firewall\perimeter-network-scenario.png)
+![Azure Stack szegélyhálózat-alapú hálózat – példa](./media/azure-stack-firewall/perimeter-network-scenario.png)
 
 ## <a name="learn-more"></a>Részletek
 Tudjon meg többet [Azure Stack-végpontok által használt portokról és protokollokról](azure-stack-integrate-endpoints.md).

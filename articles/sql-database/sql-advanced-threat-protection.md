@@ -10,13 +10,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 05/17/2018
-ms.openlocfilehash: cb3d8629d5d72644e647da14e7c3b31a4914814d
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 12/05/2018
+ms.openlocfilehash: 6523828b522379dd1cd70f1c548caf7af15b5d90
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159558"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964764"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Az Azure SQL Database-adatbázis komplex veszélyforrások elleni védelem
 
@@ -32,7 +32,7 @@ SQL a speciális veszélyforrások elleni védelem (ATP) egy speciális SQL bizt
 
 SQL ATP engedélyezése, ha ahhoz, hogy ezek mindegyikét tartalmazza a funkciók. A Komplex veszélyforrások elleni védelem egyetlen kattintással engedélyezhető az egész adatbázis-kiszolgálón, ezáltal a kiszolgáló minden adatbázisa védelemmel látható el. 
 
-ATP díjszabás igazítja az Azure Security Center standard szintű, $15/csomópont/hó, ahol egyes védelemmel ellátott SQL Database-kiszolgálók egyetlen csomópontnak számítanak. Engedélyezését követően az első 60 nap ingyenes próbaidőszak egy tekinti, és nem számítunk fel. További információkért lásd: a [az Azure Security Center díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/security-center/).
+ATP díjszabás igazítja az Azure Security Center standard szintű, ahol egyes védelemmel ellátott SQL Database-kiszolgálók egyetlen csomópontnak számítanak. Újonnan védett erőforrások jogosultak a Security Center standard szintű az ingyenes próbaverziójára. További információkért lásd: a [az Azure Security Center díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/security-center/).
 
 
 ## <a name="getting-started-with-atp"></a>Ismerkedés az ATP 
@@ -45,7 +45,7 @@ Az ATP engedélyezése **komplex veszélyforrások elleni védelem** alatt a **b
 ![ATP engedélyezése](./media/sql-advanced-protection/enable_atp.png) 
 
 > [!NOTE]
-> Az ATP költsége $15/csomópont/hó, ahol egy csomópont-e a teljes SQL logikai kiszolgálón. Így licencdíjat csak egyszer az ATP-kiszolgálón az összes adatbázis védelme érdekében. Az első 60 nap ingyenes próbaverzió minősülnek.
+> ATP költségét igazodik az Azure Security Center standard szintű díjszabás csomópontonként, ahol egy csomópont-e a teljes SQL logikai kiszolgálón. Így licencdíjat csak egyszer az ATP-kiszolgálón az összes adatbázis védelme érdekében. Kipróbálhatja ATP kezdetben az ingyenes próbaverziót.
 
 ## <a name="2-configure-vulnerability-assessment"></a>2. A biztonságirés-értékelési konfigurálása
 

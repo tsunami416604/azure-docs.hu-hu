@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 09/18/2018
-ms.openlocfilehash: 0fc5ca73dec79942e05c7dfd410bc0a13e5ffb44
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.date: 12/04/2018
+ms.openlocfilehash: 3469b03cae88a5bdf7c9ccd51b54af92ea8d7b23
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648717"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958388"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database-and-sql-data-warehouse"></a>Virtuális hálózati Szolgáltatásvégpontok és szabályok használata Azure SQL Database és SQL Data warehouse-bA
 
@@ -145,7 +145,7 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 ## <a name="impact-of-removing-allow-azure-services-to-access-server"></a>"Engedélyezi az Azure-szolgáltatások kiszolgálói hozzáférésének" eltávolításának következményei
 
 Hány felhasználó el kívánja távolítani **engedélyezése Azure-szolgáltatások kiszolgálói hozzáférésének** az Azure SQL-kiszolgálók, és cserélje le a VNet tűzfalszabály.
-Az alábbi Azure SQL Database szolgáltatások eltávolítása azonban ez hatással van:
+Azonban ennek eltávolítása hatással van a következő funkciókat:
 
 ### <a name="import-export-service"></a>Az importálási-exportálási szolgáltatás
 
@@ -166,12 +166,64 @@ Az Azure SQL Database a Data Sync szolgáltatást, amely csatlakozik az Azure IP
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Virtuális hálózati Szolgáltatásvégpontok használatával és az Azure storage hatása
 
-Az Azure Storage valósította meg, amely lehetővé teszi, hogy korlátozza a tárfiókhoz való kapcsolódás ugyanazokat a funkciókat.
-Ha ez a funkció használata a Storage-fiók egy Azure SQL Server által használt, problémákat futtathatja. Egy listát, és ez érinti az Azure SQL Database-funkciók hozzászólás mellett van.
+Az Azure Storage ugyanazokat a funkciókat, amely lehetővé teszi, hogy korlátozza a kapcsolatot az Azure Storage-fiókkal van megvalósítva. Ha ez a funkció használata az Azure SQL Server által használt Azure Storage-fiókot választja, problémákat futtathatja. Egy listát és az Azure SQL Database és az Azure SQL Data Warehouse szolgáltatást, amely érinti ez a hozzászólás mellett van.
 
 ### <a name="azure-sql-data-warehouse-polybase"></a>Az Azure SQL Data Warehouse PolyBase
 
-PolyBase az adatok betöltése az Azure SQL Data Warehouse-bA a Storage-fiókok gyakran használatos. Ha a tárfiókot, amely adatokat tölt be csak a VNet-alhálózatok halmaza hozzáférést korlátozza, kapcsolat és a fiók a PolyBase megszakadnak. Ez a megoldás, és előfordulhat, hogy forduljon a Microsoft ügyfélszolgálatához további információt.
+PolyBase az adatok betöltése az Azure SQL Data Warehouse-bA az Azure Storage-fiókok gyakran használatos. Ha az Azure Storage-fiókot, amely adatokat tölt be korlátozza a hozzáférést csak a VNet-alhálózatok halmaza, kapcsolat és a fiók a PolyBase megszakadnak. Mindkét PolyBase engedélyezéséhez importálása és exportálása a forgatókönyvek az Azure SQL Data Warehouse legyen védett virtuális hálózat az Azure-tárolóhoz való kapcsolódás, kövesse az alábbi lépéseket:
+
+#### <a name="prerequisites"></a>Előfeltételek
+1.  Ez az Azure PowerShell telepítése [útmutató](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+2.  Ha rendelkezik egy általános célú v1- vagy blob storage-fiókot, először frissítenie kell, általános célú v2 ez [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+3.  Rendelkeznie kell **engedélyezése megbízható Microsoft-szolgáltatások a tárfiók** kapcsolva az Azure Storage-fiók **tűzfalak és virtuális hálózatok** beállítások menüjében. Ebben [útmutató](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) további információt.
+ 
+#### <a name="steps"></a>Lépések
+1.  A PowerShellben **a logikai SQL-kiszolgáló regisztrálása** az Azure Active Directory (AAD):
+
+    ```powershell
+    Add-AzureRmAccount
+    Select-AzureRmSubscription -SubscriptionId your-subscriptionId
+    Set-AzureRmSqlServer -ResourceGroupName your-logical-server-resourceGroup -ServerName your-logical-servername -AssignIdentity
+    ```
+    
+ 1. Hozzon létre egy **általános célú v2-Tárfiók** ez [útmutató](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
+
+    > [!NOTE]
+    > - Ha rendelkezik egy általános célú v1- vagy blob storage-fiók, meg kell **először frissítse a v2** ez [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+    > - Az Azure Data Lake Storage Gen2 kapcsolatos ismert problémákat, tekintse meg ezt [útmutató](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
+    
+1.  Lépjen a storage-fiók alatt **hozzáférés-vezérlés (IAM)**, és kattintson a **szerepkör-hozzárendelés hozzáadása**. Rendelje hozzá **Storage-Blobadatok Közreműködője (előzetes verzió)** RBAC szerepkör a logikai SQL-kiszolgálóhoz.
+
+    > [!NOTE] 
+    > Csak a tulajdonosa a jogosultsággal rendelkező tagok ebben a lépésben hajthat végre. A különféle beépített szerepkörök az Azure-erőforrásokhoz, tekintse meg a [útmutató](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+  
+1.  **A Polybase-kapcsolat az Azure Storage-fiókba:**
+
+    1. Hozzon létre egy adatbázist **[főkulcs](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql?view=sql-server-2017)** Ha még nem egy korábban létrehozott:
+        ```SQL
+        CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
+        ```
+    
+    1. Az adatbázishoz kötődő hitelesítő adatok létrehozása **azonosító = "Felügyeltszolgáltatás-identitást"**:
+
+        ```SQL
+        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
+        ```
+        > [!NOTE] 
+        > - Adjon meg titkos kulcsot az Azure Storage-hozzáférési kulcsot, mert ezt a mechanizmust használ, nem kell [felügyelt identitás](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) a háttérben.
+        > - SZOLGÁLTATÁSIDENTITÁS neve legyen **Managed Service Identity** a PolyBase csatlakozást dolgozhat Azure Storage-fiók védett virtuális hálózathoz.    
+    
+    1. Külső adatforrás létrehozása abfss: / / az általános célú v2-tárfiók a PolyBase való kapcsolódáshoz séma:
+
+        ```SQL
+        CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.windows.net', CREDENTIAL = msi_cred);
+        ```
+        > [!NOTE] 
+        > - Ha már rendelkezik külső táblák társított, általános célú v1- vagy blob storage-fiók, előbb dobja el a külső táblák, és ezután dobja el a megfelelő külső adatforrást. Végül létrehozhatja külső adatforrás abfss: / / séma, általános célú v2-tárfiók a fenti csatlakozik, és hozza létre újból az új külső adatforrást használó külső táblák. Használhat [létrehozása és közzététele parancsfájlok varázsló](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard?view=sql-server-2017) varázslójától létrehozása – a külső táblák megkönnyítése érdekében.
+        > - További információ a abfss: / / séma, ebben [útmutató](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri).
+        > - CREATE EXTERNAL DATA SOURCE további információkért tekintse meg a [útmutató](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql).
+        
+    1. Lekérdezés a normál használatával [külső táblák](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql).
 
 ### <a name="azure-sql-database-blob-auditing"></a>Az Azure SQL Database Blobnaplózás
 
@@ -179,11 +231,11 @@ Auditnaplók blobnaplózás leküldi a saját tárfiókját. Ha ezt a tárfióko
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>A VNet tűzfalszabály nélkül szolgáltatják a virtuális hálózati Szolgáltatásvégpontok hozzáadása a kiszolgálóhoz
 
-Nagyon régen Ez a szolgáltatás tovább lett fejlesztve, mielőtt kellett virtuális hálózati Szolgáltatásvégpontok bekapcsolása előtt a tűzfalon is Megvalósíthat egy élő virtuális hálózati szabályt. A végpontok kapcsolódik az Azure SQL Database egy megadott VNet-alhálózat. De most 2018 január, megkerülheti ezt a követelményt azzal a **IgnoreMissingServiceEndpoint** jelzőt.
+Nagyon régen Ez a szolgáltatás tovább lett fejlesztve, mielőtt kellett virtuális hálózati Szolgáltatásvégpontok bekapcsolása előtt a tűzfalon is Megvalósíthat egy élő virtuális hálózati szabályt. A végpontok kapcsolódik az Azure SQL Database egy megadott VNet-alhálózat. De most 2018 január, megkerülheti ezt a követelményt azzal a **IgnoreMissingVNetServiceEndpoint** jelzőt.
 
-Csupán beállítása egy tűzfalszabályt nem segít a kiszolgáló védelmét. Meg kell is bekapcsolhatja virtuális hálózati Szolgáltatásvégpontok biztonsága érvénybe léptetéséhez. A Szolgáltatásvégpontok bekapcsolásakor, a virtuális hálózat alhálózatához teljesen állásidő, amíg be nem fejezi be-vagy kikapcsolása való áttérés, a. Ez különösen igaz nagy virtuális hálózatok kontextusában. Használhatja a **IgnoreMissingServiceEndpoint** jelző csökkentése, vagy a hidegindítás okozta üzemkimaradást áttérés során.
+Csupán beállítása egy tűzfalszabályt nem segít a kiszolgáló védelmét. Meg kell is bekapcsolhatja virtuális hálózati Szolgáltatásvégpontok biztonsága érvénybe léptetéséhez. A Szolgáltatásvégpontok bekapcsolásakor, a virtuális hálózat alhálózatához teljesen állásidő, amíg be nem fejezi be-vagy kikapcsolása való áttérés, a. Ez különösen igaz nagy virtuális hálózatok kontextusában. Használhatja a **IgnoreMissingVNetServiceEndpoint** jelző csökkentése, vagy a hidegindítás okozta üzemkimaradást áttérés során.
 
-Beállíthatja a **IgnoreMissingServiceEndpoint** jelző PowerShell használatával. További információkért lásd: [egy virtuális hálózati szolgáltatásvégpont és a szabály létrehozása az Azure SQL Database PowerShell][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
+Beállíthatja a **IgnoreMissingVNetServiceEndpoint** jelző PowerShell használatával. További információkért lásd: [egy virtuális hálózati szolgáltatásvégpont és a szabály létrehozása az Azure SQL Database PowerShell][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
 
 ## <a name="errors-40914-and-40615"></a>Hibák 40914 és 40615
 

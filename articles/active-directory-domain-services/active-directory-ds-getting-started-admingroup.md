@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ergreenl
-ms.openlocfilehash: cac1814057b5adbb75d9484b332bd3f8aaa31a18
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: ec51ba28c81e2aa2dbfe2a3dc55d9940c74ff673
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446858"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959852"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Engedélyezze az Active Directory Domain Servicest az Azure portal használatával
 
-
 ## <a name="task-3-configure-administrative-group"></a>3. feladat: felügyeleti csoport konfigurálása
+
 A konfigurációs feladat egy felügyeleti csoport létrehozhat az Azure AD-címtárban. A speciális felügyeleti csoport neve *AAD DC rendszergazdák*. A csoport tagjai, amely tartományhoz van csatlakoztatva a felügyelt tartományhoz gépeken rendszergazdai jogosultsággal rendelkező. A tartományhoz csatlakoztatott gépeket ehhez a csoporthoz hozzáadni a Rendszergazdák csoportnak. A csoport tagjai Ezenkívül használhatja a távoli asztal távolról csatlakozni a tartományhoz csatlakoztatott gépeket.
 
 > [!NOTE]
@@ -49,14 +49,14 @@ Az Azure AD Domain Services lehetővé teszi, hogy minden felhasználó és csop
 ### <a name="full-synchronization"></a>Teljes szinkronizálás
 
 1. A teljes szinkronizálást, egyszerűen kattintson "OK gombra" a képernyő alján, a teljes már választja.
-    ![Teljes szinkronizálás](./media\active-directory-domain-services-admin-guide\create-sync-all.PNG)
+    ![Teljes szinkronizálás](./media/active-directory-domain-services-admin-guide/create-sync-all.PNG)
 
 ### <a name="scoped-synchronization"></a>Hatókörön belüli szinkronizálás
 
 1. Váltógomb a Szinkronizálás gombra "Lapszintű", és válassza ki a csoportokat oldal jelenik meg. Ez alapján láthatja, milyen csoportokra kell szinkronizálni a felügyelt tartomány már vannak kijelölve.
-    ![Hatókörön belüli szinkronizálás](media\active-directory-domain-services-admin-guide\create-sync-scoped.PNG)
+    ![Hatókörön belüli szinkronizálás](media/active-directory-domain-services-admin-guide/create-sync-scoped.PNG)
 2. Kattintson a **válassza ki a csoportokat** a felső navigációs sávban. Itt egy csoport kiválasztása az oldalon jelenik meg. Ennek segítségével válassza ki minden olyan további csoportok szinkronizálása az Azure AD tartományi szolgáltatásokra. Ha befejezte, kattintson a **kiválasztása** zárja be a csoport választóra, és adja hozzá ezeket a csoportokat a kijelölt listához.
-    ![Hatókörrel rendelkező szinkronizálási csoportok kiválasztása](media\active-directory-domain-services-admin-guide\create-sync-scoped-groupselect.PNG)
+    ![Hatókörrel rendelkező szinkronizálási csoportok kiválasztása](media/active-directory-domain-services-admin-guide/create-sync-scoped-groupselect.PNG)
 3. Kattintson a **OK** áthelyezése az összefoglalás lapon.
 
 ## <a name="deploy-your-managed-domain"></a>A felügyelt tartomány üzembe helyezése
@@ -69,8 +69,8 @@ Az Azure AD Domain Services lehetővé teszi, hogy minden felhasználó és csop
 
     ![Értesítés - telepítés folyamatban](./media/getting-started/domain-services-blade-deployment-in-progress.png)
 
-
 ## <a name="check-the-deployment-status-of-your-managed-domain"></a>A felügyelt tartomány üzembe helyezés állapotának ellenőrzéséhez
+
 A folyamat üzembe helyezésének a felügyelt tartomány órát is igénybe vehet egy.
 
 1. Amíg az üzembe helyezés folyamatban van, Ön is megkeresheti a "tartományi szolgáltatások" az a **erőforrások keresése** keresőmezőbe. Válassza ki **Azure AD tartományi szolgáltatások** a keresési eredmény. A **Azure AD tartományi szolgáltatások** panel felsorolja a felügyelt tartományhoz, amely kiépítése folyamatban van.
@@ -96,10 +96,10 @@ A folyamat üzembe helyezésének a felügyelt tartomány órát is igénybe veh
 
     ![Tartományi szolgáltatások – teljes kiépítés után tulajdonságai lap](./media/getting-started/domain-services-provisioned-properties.png)
 
-
 ## <a name="need-help"></a>Segítség
+
 Eltarthat egy óráig vagy két mindkét ki kell építeni a felügyelt tartományhoz tartozó tartományvezérlőket. Ha a központi telepítés sikertelen volt, vagy több, mint néhány óra múlva "Függő" állapotban elakadt, nyugodtan [kérjen segítséget a termékcsoport](active-directory-ds-contact-us.md).
 
-
 ## <a name="next-step"></a>Következő lépés
+
 [4. feladat: Az Azure virtuális hálózat DNS-beállításainak frissítése](active-directory-ds-getting-started-dns.md)

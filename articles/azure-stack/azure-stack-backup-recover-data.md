@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: bd72abd4f8f23414ea1003c74d2f90cde3b51d34
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 326fd38f7cb738540a389c93de2a9b5be015e0d7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034337"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968732"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>Végzetes adatvesztés utáni helyreállítás
 
@@ -32,7 +32,7 @@ Az adatvesztés kiváltó okának függően szükség lehet egy egyetlen infrast
 
 A forgatókönyv címek helyreállítása a teljes telepítési hiba esetén a berendezés és az újbóli üzembe helyezés a magánfelhő.
 
-| Alkalmazási helyzet                                                           | Adatvesztés                            | Megfontolandó szempontok                                                             |
+| Forgatókönyv                                                           | Adatvesztés                            | Megfontolandó szempontok                                                             |
 |--------------------------------------------------------------------|--------------------------------------|----------------------------------------------------------------------------|
 | Vészhelyreállítási vagy a termékverzió hiba miatt végzetes adatvesztés utáni helyreállítás | Az összes infrastruktúrát és a felhasználó és az alkalmazás adatokat | Felhasználó alkalmazás- és védett külön-külön infrastruktúra-adatokból |
 
@@ -40,11 +40,11 @@ A forgatókönyv címek helyreállítása a teljes telepítési hiba esetén a b
 
 Külön-külön biztonsági mentése az infrastruktúra és az alkalmazás vagy a bérlőjéhez adatok védelme az Azure indítsa el az utazás kezdődik. Ez a dokumentum ismerteti, hogyan védheti meg az infrastruktúra. 
 
-![Kezdeti üzembe helyezhető Azure Stacket](media\azure-stack-backup\azure-stack-backup-workflow1.png)
+![Kezdeti üzembe helyezhető Azure Stacket](media/azure-stack-backup/azure-stack-backup-workflow1.png)
 
 A legrosszabb, használati esetek, ahol minden adat elveszik helyreállítása az Azure Stack az a folyamat egyedi az infrastruktúra-adatok visszaállítása az Azure Stack és az összes felhasználói adatot a telepítés. 
 
-![Az Azure Stack ismételt üzembe helyezése](media\azure-stack-backup\azure-stack-backup-workflow2.png)
+![Az Azure Stack ismételt üzembe helyezése](media/azure-stack-backup/azure-stack-backup-workflow2.png)
 
 ## <a name="restore"></a>Visszaállítás
 

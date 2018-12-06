@@ -1,6 +1,6 @@
 ---
-title: Egyidejű írási műveleteket ad ki az Azure Search erőforrások kezelése
-description: Egyidejű hozzáférések optimista használja a frissítést vagy törlést Azure Search-indexek, az indexelők, az adatforrások közepes vezeték nélkül ütközések elkerülése érdekében.
+title: Egyidejű írások a erőforrásokat az Azure Search kezelése
+description: A frissítést vagy törlést az Azure Search-indexek, indexelők és adatforrások közepes vezeték nélkül regisztrálja az ütközések elkerülése érdekében használjon optimista egyidejűséget.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -8,43 +8,43 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/21/2017
 ms.author: heidist
-ms.openlocfilehash: f5fa495c1266c847cabc0eb4e35b85132550bc3c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 764c39b6619f42c5b765d53af4cbfbe43f1d8799
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31796380"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967497"
 ---
-# <a name="how-to-manage-concurrency-in-azure-search"></a>Az Azure Search párhuzamossági kezelése
+# <a name="how-to-manage-concurrency-in-azure-search"></a>Az Azure Search egyidejűség kezelése
 
-Azure Search erőforrások, például indexekkel és adatforrások kezelése, fontos erőforrásokat frissítése biztonságosan, különösen akkor, ha az erőforrás hozzáférése címtárfelhasználói egyidejűleg az alkalmazás különböző összetevői. Ha két ügyfelek egyidejűleg frissítés nélkül koordinációs erőforrás, versenyhelyzetek is előfordulhatnak. Ennek megelőzése érdekében az Azure Search kínál egy *egyidejű hozzáférések optimista modell*. Nincsenek zárolások erőforráson. Ehelyett nincs egy ETag minden erőforrás, amely azonosítja az erőforrás-verzióval, hogy Ön összeállíthatnak kérelmek elkerüléséhez véletlen felülírja.
+Kezelése az Azure Search-erőforrások, például indexek és adatforrások esetén fontos erőforrások frissítése biztonságosan, különösen akkor, ha az erőforrásokat egyidejűleg hozzáférnek az alkalmazás különböző összetevői. Ha a két ügyfél egyszerre erőforrás koordinálása nélkül, olyan versenyhelyzetekben is előfordulhatnak. Ennek megelőzése érdekében az Azure Search kínál egy *optimista egyidejűséget modell*. Nincsenek nincs zárolása egy erőforrást. Ehelyett van ETag felülírja a minden erőforrás, amely azonosítja az erőforrás-verziója, így elkerülheti a véletlen kérelmek is írhat.
 
 > [!Tip]
-> A fogalmi kód egy [C# megoldás minta](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) azt ismerteti, hogyan párhuzamossági működik az Azure Search. A kód hívása egyidejűség-vezérlési feltételek hoz létre. Olvasás a [az alábbi kódrészlet](#samplecode) elegendő a legtöbb, ha azt szeretné futtatni, de a fejlesztők szerkesztése appsettings.json hozzáadása a szolgáltatásnév és egy adminisztrációs api-kulcsot. A szolgáltatás URL-t adott `http://myservice.search.windows.net`, a szolgáltatás neve megkülönbözteti `myservice`.
+> A fogalmi kód egy [minta C# megoldás](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) ismerteti, hogyan egyidejűség-vezérlés az Azure Search szolgáltatásban. A kód létrehozza a feltételeket, amelyek aktiválják az egyidejűség-vezérlés. Olvasás a [az alábbi kódrészlet](#samplecode) is valószínűleg elegendő az, hogy szeretné-e futtatni, de a legtöbb fejlesztő szerkesztése appsettings.json hozzáadása a szolgáltatás nevét és a egy rendszergazdai api-kulcsát. A szolgáltatás URL-címét megadva `http://myservice.search.windows.net`, a szolgáltatás neve `myservice`.
 
 ## <a name="how-it-works"></a>Működés
 
-Optimista feldolgozási van megvalósítva keresztül hozzáférést feltétel ellenőrzi API-hívásokban indexek, indexelők, adatforrások és synonymMap erőforrások írásakor. 
+Az optimista egyidejűség van megvalósítva hozzáférésével feltétel ellenőrzi az API-hívást történő indexek, indexelők, adatforrások és synonymMap erőforrások. 
 
-Minden erőforrás rendelkezik egy [ *entitáscímke (ETag)* ](https://en.wikipedia.org/wiki/HTTP_ETag) objektum fájlverzió-információkat biztosít. Ehhez először ellenőrizze a ETag, elkerülheti a párhuzamos frissítések egy tipikus munkafolyamatban (beolvasni, helyileg módosítása és frissítése) az erőforrás ETag megegyezik a helyi példány biztosításával. 
+Összes erőforrásnak rendelkeznie kell egy [ *entitáscímkéje (az ETag)* ](https://en.wikipedia.org/wiki/HTTP_ETag) , amely objektum fájlverzió-információkat biztosít. Bejelölésével az ETag először, elkerülheti a tipikus munkafolyamatban egyidejű frissítések (get, módosítsa a helyileg, frissíteni) úgy, hogy az erőforrás Etagje megegyezik a helyi másolatot. 
 
-+ A REST API-t használ egy [ETag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) meg a kérelem fejlécében.
-+ A .NET SDK beállítja az ETag keresztül accessCondition objektum, beállítása a [If-Match |} If-Match-nincs fejléc](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) az erőforráson. Összes objektumtól örököl [IResourceWithETag (.NET SDK-val)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) accessCondition objektum rendelkezik.
++ A REST API-t használja egy [ETag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) a a kérelem fejlécében.
++ A .NET SDK-t állítja be az ETag keresztül accessCondition objektum beállítása a [If-Match |} If-Match – nincs fejléc](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) az erőforráson. Minden objektum való öröklődés [IResourceWithETag (.NET SDK-t)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) accessCondition objektumhoz tartozik.
 
-Minden alkalommal, amikor frissít egy erőforrást, az ETag automatikus módosítja. Párhuzamossági felügyeleti bevezetésekor csak azt egy előfeltétel a frissítési kérelmet, amelyhez szeretné, hogy az erőforrás, az ügyfél módosító másolatként azonos ETag a távoli erőforrás van helyezi. Ha egy egyidejű folyamat már megváltozott a távoli erőforrás, az ETag nem azonos a előfeltétel, és a kérelem sikertelen lesz, és HTTP 412. Ha a .NET SDK használata esetén ez jelentkezik egy `CloudException` ahol a `IsAccessConditionFailed()` kiterjesztésmetódus igaz értéket ad vissza.
+Minden alkalommal, amikor frissít egy erőforrást, az ETag címkéje automatikus módosítja. Egyidejűségi felügyeleti megvalósításakor annyit másnak az előfeltétele a frissítési kérelmet, amely a távoli erőforrás az erőforrás az ügyfélen módosító másolatként azonos Etaggel rendelkeznie kell a helyezi. Ha egy egyidejű folyamat már megváltozott a távoli erőforrás, az ETag nem egyeznek meg az előfeltétel, és a kérelem sikertelen lesz, és HTTP 412. Ha a .NET SDK-t használ, ez alkalmazásjegyzékeket egy `CloudException` ahol a `IsAccessConditionFailed()` metódust igaz értéket ad vissza.
 
 > [!Note]
-> Nincs egyidejűségi csak egy mechanizmus. Mindig használja, függetlenül attól, amely API erőforrás frissítésekhez használatos. 
+> Nincs csak egy egyidejűségi mechanizmust. Mindig használja, amely függetlenül API erőforrás frissítésekhez használatos. 
 
 <a name="samplecode"></a>
-## <a name="use-cases-and-sample-code"></a>Használati esetek és mintakód
+## <a name="use-cases-and-sample-code"></a>Használatieset-forgatókönyveit és a mintakódot
 
-A következő kód bemutatja, hogy accessCondition ellenőrzi a kulcs frissítési műveletek:
+A következő kód bemutatja, hogy accessCondition ellenőrzi a kulcs a frissítési műveletek:
 
-+ Egy frissítés sikertelen, ha az erőforrás már nem létezik.
-+ Egy frissítés sikertelen, ha az erőforrás-verzió
++ Sikertelen a frissítés, ha az erőforrás már nem létezik.
++ Sikertelen a frissítés, ha módosítja az erőforrás-verziója
 
-### <a name="sample-code-from-dotnetetagsexplainer-programhttpsgithubcomazure-samplessearch-dotnet-getting-startedtreemasterdotnetetagsexplainer"></a>A példakód [DotNetETagsExplainer program](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)
+### <a name="sample-code-from-dotnetetagsexplainer-programhttpsgithubcomazure-samplessearch-dotnet-getting-startedtreemasterdotnetetagsexplainer"></a>A mintakód [DotNetETagsExplainer program](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)
 
 ```
     class Program
@@ -165,13 +165,13 @@ A következő kód bemutatja, hogy accessCondition ellenőrzi a kulcs frissíté
 }
 ```
 
-## <a name="design-pattern"></a>Kialakítási mintája
+## <a name="design-pattern"></a>tervezési minta
 
-A kialakítási mintában megvalósításának optimista párhuzamossági kell tartalmaznia, amely a hozzáférés egy feltétele újrapróbálja hurkot ellenőrzéséhez a hozzáférés egy feltétele, próba, és opcionálisan lekéri a módosítások életbe léptetéséhez újbóli megkísérlése előtt egy frissített erőforrása. 
+A kialakítási mintában megvalósításához az optimista egyidejűség tartalmaznia kell egy hurkot, amely a hozzáférés egy feltétele újrapróbálkozik ellenőrizze, a hozzáférés feltétellel, egy teszt, és igény szerint lekéri egy frissített erőforrás mielőtt megpróbálná újra alkalmazza a módosításokat. 
 
-A kódrészlet egy már létező indexek synonymMap hozzáadását mutatja be. Ez a kód származik a [szinonimát (előzetes verzió) C# oktatóanyag az Azure Search](https://docs.microsoft.com/azure/search/search-synonyms-tutorial-sdk). 
+Ez a kódrészlet azt mutatja be az indexbe, amely már létezik egy synonymMap hozzáadását. A rendszer ezt a kódot a [szinonima (előzetes verzió) C# oktatóanyag az Azure Search](https://docs.microsoft.com/azure/search/search-synonyms-tutorial-sdk). 
 
-Lekérdezi a "Hotels nevű" index, ellenőrzi a frissítési művelet az objektum verzióját, kivételt jelez, ha a feltétel nem sikerül, a részlet és majd újrapróbálkozik a művelet (legfeljebb három alkalommal), kezdve az index lekérése a kiszolgálóról a legújabb verzióra.
+A kódrészlet lekérdezi a "hotels" index, ellenőrzi a frissítési művelet az objektum verzióját, kivételt jelez, ha a feltétel nem sikerül, és majd újrapróbálkozik a művelettel (legfeljebb három alkalommal), kezdve az index beolvasása a kiszolgálóról a legújabb verzió beszerzéséhez.
 
         private static void EnableSynonymsInHotelsIndexSafely(SearchServiceClient serviceClient)
         {
@@ -207,14 +207,14 @@ Lekérdezi a "Hotels nevű" index, ellenőrzi a frissítési művelet az objektu
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse át a [szinonimák C# minta](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms) biztonságosan frissítésével a létező indexek további környezethez.
+Tekintse át a [szinonimák C# minta](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms) meglévő index biztonságosan frissítésével kapcsolatos további környezet.
 
-Próbálja meg módosítani vagy a következő minták ETag-EK vagy AccessCondition objektumára.
+Próbálja meg módosítani az ETag vagy AccessCondition objektumok belefoglalása a következő minták egyikét.
 
-+ [REST API-mintát a Githubon](https://github.com/Azure-Samples/search-rest-api-getting-started) 
-+ [.NET SDK mintát a Githubon](https://github.com/Azure-Samples/search-dotnet-getting-started). Ez a megoldás a cikkben bemutatott kódot tartalmazó "DotNetEtagsExplainer" projekt tartalmazza.
++ [REST API minta a Githubon](https://github.com/Azure-Samples/search-rest-api-getting-started) 
++ [.NET SDK-minta a Githubon](https://github.com/Azure-Samples/search-dotnet-getting-started). Ez a megoldás a "DotNetEtagsExplainer" projektet, amely tartalmazza az ebben a cikkben bemutatott kódot tartalmaz.
 
 ## <a name="see-also"></a>Lásd még
 
-  [Közös HTTP-kérelem-válasz fejlécek](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)    
-  [HTTP-állapotkódok](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) [Index műveletek (REST API-t)](https://docs.microsoft.com/\rest/api/searchservice/index-operations)
+  [Közös HTTP-kérelmek és válaszfejlécek](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)    
+  [HTTP-állapotkódok](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) [operations (REST API) indexelése](https://docs.microsoft.com/rest/api/searchservice/index-operations)

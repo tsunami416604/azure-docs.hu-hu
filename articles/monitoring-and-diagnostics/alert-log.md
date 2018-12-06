@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 5dbfa9ee054bbaf3235326883d7d33b356c4cc5d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c2f018915d5e27d4cf16447e403fcb2e1b3f55a6
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878244"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969515"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure Monitor használatával riasztások  
 
@@ -23,10 +23,10 @@ Ez a cikk bemutatja, hogyan állítható be a riasztások felhasználói felüle
 - Feltételek: Adott feltétel vagy logika, amely jel látható, ha indíthat el a művelet
 - Művelet: Adott hívás az értesítés - egyetlen külső eseményfogyasztó küldött e-mailben, SMS, webhook stb.
 
-Az előfizetési időszak **Naplóriasztások** írja le a riasztásokhoz, ahol jel alapuló egyéni lekérdezés [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) vagy [Application Insights](../application-insights/app-insights-analytics.md). További információ funkciót, terminológiája és származó típust [Naplóriasztások – áttekintés](monitor-alerts-unified-log.md).
+Az előfizetési időszak **Naplóriasztások** írja le a riasztásokhoz, ahol jel alapuló egyéni lekérdezés [Log Analytics](../azure-monitor/learn/tutorial-viewdata.md) vagy [Application Insights](../application-insights/app-insights-analytics.md). További információ funkciót, terminológiája és származó típust [Naplóriasztások – áttekintés](monitor-alerts-unified-log.md).
 
 > [!NOTE]
-> Népszerű naplóadatait [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) is már elérhető az Azure monitorban metrika-platformon. A Részletek nézetben [naplók riasztási metrika](monitoring-metric-alerts-logs.md)
+> Népszerű naplóadatait [Azure Log Analytics](../azure-monitor/learn/tutorial-viewdata.md) is már elérhető az Azure monitorban metrika-platformon. A Részletek nézetben [naplók riasztási metrika](monitoring-metric-alerts-logs.md)
 
 ## <a name="managing-log-alerts-from-the-azure-portal"></a>Riasztások kezelése az Azure Portalról
 
