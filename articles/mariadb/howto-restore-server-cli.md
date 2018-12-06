@@ -10,32 +10,33 @@ ms.service: mariadb
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 11/10/2018
-ms.openlocfilehash: 9e8edb2aaeaa116ac71889f7007e435a1a869b7f
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 1f17ab167c6487d59ce31106f1bbcffd86a29fd8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516231"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955190"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Hogyan biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for MariaDB az Azure CLI használatával
 
 ## <a name="backup-happens-automatically"></a>Biztonsági mentés automatikusan történik
+
 Azure Database for MariaDB-kiszolgálók biztonsági mentése rendszeres időközönként visszaállítási szolgáltatások engedélyezése. Ezzel a funkcióval, előfordulhat, hogy állítsa vissza a kiszolgáló és az összes adatbázis egy korábbi-időponthoz, egy új kiszolgálón.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Ez az útmutató végrehajtásához lesz szüksége:
+
 - Egy [, Azure Database for MariaDB-kiszolgáló és adatbázis](quickstart-create-mariadb-server-database-using-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
- 
 
 > [!IMPORTANT]
 > Ez az útmutató az Azure CLI 2.0-s vagy újabb verzió használatát igényli. Adja meg, hogy ellenőrizze a verziót, az Azure CLI-vel parancssorban `az --version`. Telepítéshez vagy frissítéshez olvassa [Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="set-backup-configuration"></a>Biztonsági mentési konfiguráció beállítása
 
-A választást, hogy a kiszolgáló a helyileg redundáns biztonsági mentések vagy a georedundáns biztonsági mentések konfigurálása a kiszolgáló létrehozásakor választja ki. 
+A választást, hogy a kiszolgáló a helyileg redundáns biztonsági mentések vagy a georedundáns biztonsági mentések konfigurálása a kiszolgáló létrehozásakor választja ki.
 
 > [!NOTE]
 > Miután a kiszolgáló akkor jön létre, milyen típusú redundancia rendelkezik, a helyileg redundáns, georedundáns és nem kapcsolható.
@@ -58,7 +59,8 @@ Az előző példában a biztonsági másolatok megőrzési időtartama mydemoser
 A biztonsági másolat megőrzési idejének milyen időben időponthoz visszaállítást is lekérdezhetők,-alapú biztonsági mentések érhető el, mivel szabályozza. Visszaállítási pont kötött erről a következő szakaszban.
 
 ## <a name="server-point-in-time-restore"></a>Kiszolgáló-időponthoz visszaállítása
-A kiszolgáló szerinti visszaállíthatja egy korábbi időpontra. A visszaállított adatokat másolja egy új kiszolgálóra, és a meglévő kiszolgáló maradt-jébe. Például egy tábla már ma délben véletlenül megszakadása, visszaállíthatja az idő, noon előtt. Ezután letöltheti a hiányzó táblázat és az adatokat a kiszolgáló a visszaállított másolatból. 
+
+A kiszolgáló szerinti visszaállíthatja egy korábbi időpontra. A visszaállított adatokat másolja egy új kiszolgálóra, és a meglévő kiszolgáló maradt-jébe. Például egy tábla már ma délben véletlenül megszakadása, visszaállíthatja az idő, noon előtt. Ezután letöltheti a hiányzó táblázat és az adatokat a kiszolgáló a visszaállított másolatból.
 
 A kiszolgáló visszaállításához az Azure CLI használatával [az mariadb-kiszolgálójának visszaállítását](/cli/azure/mariadb/server#az-mariadb-server-restore) parancsot.
 
@@ -85,6 +87,7 @@ A hely és a tarifacsomag-értékei a visszaállított kiszolgáló továbbra is
 A visszaállítási folyamat befejezése után keresse meg az új kiszolgálón, és győződjön meg arról, hogy az adatok helyreáll a várt módon.
 
 ## <a name="geo-restore"></a>GEO-visszaállítás
+
 Ha konfigurálta a kiszolgáló georedundáns biztonsági mentésekhez, egy új kiszolgálót a biztonsági mentésből a meglévő kiszolgáló hozható létre. Az új kiszolgáló bármelyik régióban érhető el, hogy az Azure Database for MariaDB hozható létre.  
 
 Redundáns georedundáns biztonsági másolat segítségével hoz létre, használja az Azure CLI `az mariadb server georestore` parancsot.
@@ -96,8 +99,9 @@ Redundáns georedundáns biztonsági másolat segítségével hoz létre, haszn�
 A geo-visszaállítás a kiszolgáló, az Azure CLI-vel parancssorba írja be a következő parancsot:
 
 ```azurecli-interactive
-az mariadb server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen5_8 
+az mariadb server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen5_8
 ```
+
 Ez a parancs létrehoz egy új kiszolgálót nevű *mydemoserver – georestored* fog tartozni, USA keleti régiójában *myresourcegroup*. Egy általános célú, 8 virtuális maggal rendelkező Gen 5 kiszolgáló. A kiszolgáló akkor jön létre, a georedundáns biztonsági mentéséből *mydemoserver*, ami egyben az erőforráscsoportban lévő *myresourcegroup*
 
 Ha azt szeretné, majd hozzon létre egy másik erőforráscsoportban található, a meglévő kiszolgálóról egy, az új kiszolgálóra a a `--source-server` paraméter jogosultak lennének az a kiszolgáló nevét az alábbi példában látható módon:
@@ -116,12 +120,12 @@ A `az mariadb server georestore` parancs paraméterei a következők:
 |location | eastus | Az új kiszolgáló helyét. |
 |sku-name| GP_Gen5_8 | Ez a paraméter beállítása az árképzési szint, számítási generáció és az új kiszolgáló virtuális magok számát. Egy általános célú, 8 virtuális maggal rendelkező Gen 5 kiszolgáló GP_Gen5_8 rendeli hozzá.|
 
-
 >[!Important]
 >Az új kiszolgáló létrehozása a geo-visszaállítás által, amikor örökli az azonos tárolási mérettel és tarifacsomagjának mint a forráskiszolgálónak. Ezeket az értékeket nem lehet módosítani a létrehozása során. Az új kiszolgáló létrehozása után a tároló mérete is vertikálisan fel.
 
 A visszaállítási folyamat befejezése után keresse meg az új kiszolgálón, és győződjön meg arról, hogy az adatok helyreáll a várt módon.
 
 ## <a name="next-steps"></a>További lépések
+
 - További információ a szolgáltatásról [biztonsági mentések](concepts-backup.md).
 - Tudjon meg többet [üzletmenet-folytonossági](concepts-business-continuity.md) beállítások.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c170f573a473d3fdfca5c916b4be594dc93d6b27
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f0e589689ae9a63ad90a4449c120938066309050
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156323"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961280"
 ---
 # <a name="how-to-use-analytics-to-analyze-your-device-data"></a>Az adatok elemzéséhez analytics használata
 
@@ -23,7 +23,7 @@ ms.locfileid: "50156323"
 
 Az Azure IoT Central jelentéssel bírnak az eszközök adatainak nagy mennyiségű megoldásban gazdag analitikai funkciókat biztosít. Első lépésként látogasson el a **Analytics** a bal oldali navigációs menüben. 
 
-  ![IoT-központ navigációs analyticshez](media\howto-create-analytics\analytics-navigation.png)
+  ![IoT-központ navigációs analyticshez](media/howto-create-analytics/analytics-navigation.png)
 
 ## <a name="querying-your-data"></a>Az adatok lekérdezése
 
@@ -40,7 +40,7 @@ to-do: do we need to explain how fiters work?
 * **Szűrők:** igény szerint hozzáadhat szűrők a keresést, hogy az adatok alaposabb vizsgálatát. Egyszerre legfeljebb 10 szűrőket is hozzáadhat. Például Oakland az összes hűtőszekrények belül található, amelyek hőmérséklet kellett volna nyissa meg a fenti 60 fok. 
 * **Adott időszakban:** alapértelmezés szerint azt fogjuk-adatokat lekérni az elmúlt 10 percben. Egy előre meghatározott időpontra tartományok módosítani ezt az értéket, vagy válasszon egy egyéni időszakot. 
 
- ![Analytics-lekérdezés](media\howto-create-analytics\analytics-query.png)
+ ![Analytics-lekérdezés](media/howto-create-analytics/analytics-query.png)
 
 ## <a name="visualizing-your-data"></a>Az adatok megjelenítése
 
@@ -53,8 +53,8 @@ to-do: confirm if 10 is the max number of measurements
 * **Mértékek:** lehet váltani, az eszközök által jelentett egyszerre legfeljebb 10 különféle telemetriai elemek megjelenítése. Mértékek például hőmérséklettel és páratartalommal kapcsolatos dolgot. 
 * **Összesítés:** alapértelmezés szerint azt összesített adatok alapján az átlagos, de az adatok összesítése módosítsa valami mást saját igényei szerint választhatja. 
 
-   ![Analytics-Vizualizáció](media\howto-create-analytics\analytics-visualize.png) <br/><br/>
-   ![Felosztási szempont Analytics vizualizációs](media\howto-create-analytics\analytics-splitby.png)
+   ![Analytics-Vizualizáció](media/howto-create-analytics/analytics-visualize.png) <br/><br/>
+   ![Felosztási szempont Analytics vizualizációs](media/howto-create-analytics/analytics-splitby.png)
 
 ## <a name="interacting-with-your-data"></a>Interakció adataival
 
@@ -63,14 +63,14 @@ Hogy különféle módokon, amelyben további módosíthatja a lekérdezés ered
 * **Rács megjelenítése:** az eredmények táblázatos formátumban, lehetővé téve a megtekintheti az adott érték az egyes elérhető lesz. Ez a nézet is megfelel az akadálymentességi sztenderdeknek. 
 * **Diagram megjelenítése:** egyszerűen a kritikus pontok elkerülése érdekében felfelé vagy lefelé trendek és rendellenességek sor formátumban jelennek meg az eredményeket. 
 
- ![A rácsnézet elemzési megjelenítése](media\howto-create-analytics\analytics-showgrid.png)
+ ![A rácsnézet elemzési megjelenítése](media/howto-create-analytics/analytics-showgrid.png)
 
 Nagyítás lehetővé teszi az adatok alaposabb vizsgálatát. Ha azt tapasztalja, hogy egy adott időszakban, összpontosítson az eredményhalmaz belül szeretné, használja a kurzort megnyitása a terület, amelyeket szeretne nagyítása, és a rendelkezésre álló vezérlők segítségével hajtsa végre az alábbi műveletek egyikét:
 * **Nagyítás:** nagyítás Miután kiválasztotta, hogy egy adott időszakban, a engedélyezve lesz, és lehetővé teszi az adatokhoz a nagyításhoz.
 * **Kicsinyítés:** Ez a vezérlő lehetővé teszi, hogy az utolsó nagyítás kicsinyítés egy szinttel. Például, ha már ráközelít az adatokhoz három alkalommal, kicsinyítés vesz igénybe egy lépésben egy biztonsági másolatot.
 * **Nagyítás visszaállítási:** különböző szintjeit nagyításához végzett el, miután a Nagyítás visszaállítási vezérlő térjen vissza az eredeti eredményhalmaz használhatja. 
 
- ![Hajtsa végre az adatokon a Nagyítás](media\howto-create-analytics\analytics-zoom.png)
+ ![Hajtsa végre az adatokon a Nagyítás](media/howto-create-analytics/analytics-zoom.png)
 
 
 A vonal stílusának igény szerint módosíthatja. Rendelkezésére a négy beállítás közül választhat:
@@ -79,7 +79,7 @@ A vonal stílusának igény szerint módosíthatja. Rendelkezésére a négy be�
 * **. Lépés:** a diagramon minden pont közötti hoz létre egy lépés diagram
 * **Pontdiagram:** őket sorok nélkül összes pont lesz ábrázolható a diagramra. 
 
- ![Különböző típusa érhető el az Analytics](media\howto-create-analytics\analytics-linetypes.png)
+ ![Különböző típusa érhető el az Analytics](media/howto-create-analytics/analytics-linetypes.png)
 
 Végül rendezheti az adatokat az y tengely között válassza ki a három mód közül:
 
@@ -87,7 +87,7 @@ Végül rendezheti az adatokat az y tengely között válassza ki a három mód 
 * **Trendvonalat:** minden mérték van korrelálnak egy y tengely, de az y tengely értékei változnak a a kijelölt mérték alapján grafikon. Trendvonalat diagramok akkor hasznos, ha átfedő több mértéket, és szeretné látni a minták között ezek az intézkedések ugyanazon időtartományra.
 * **Megosztott y tengely:** összes gráf megosztani az azonos y tengely és a tengely értékeit ne módosítsa. Megosztott y tengely diagramok akkor hasznos, ha egyetlen tekintse meg az adatokat a felosztás által szeletelés közben szeretne.
 
- ![Az adatok elrendezése y tengely között a különböző vizualizációs módok](media\howto-create-analytics\analytics-yaxis.png)
+ ![Az adatok elrendezése y tengely között a különböző vizualizációs módok](media/howto-create-analytics/analytics-yaxis.png)
 
 ## <a name="next-steps"></a>További lépések
 

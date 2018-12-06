@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1bfa52d07ddc4eaf86bce17c0ad7c63493a8b5fd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: dccbd2d87b5a5616c25caed070a337eff9fa753e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255727"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956652"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Az MXChip IoT DevKit eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
 
@@ -23,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan eszköz a fejlesztők az MXChip IoT fejlesztői 
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
-1. A létrehozott Azure IoT Central alkalmazáshoz a **minta Devkits** alkalmazássablon. További információkért lásd: a [hozzon létre egy alkalmazás rövid](quick-deploy-iot-central.md).
+1. A létrehozott Azure IoT Central alkalmazáshoz a **minta Devkits** alkalmazássablon. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
 1. Egy fejlesztői készlet eszköz. DevKit eszköz vásárol, a Microsoft [MXChip IoT DevKit](http://mxchip.com/az3166).
 
 
@@ -49,12 +49,12 @@ Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **MXChip*
     * Adja meg az eszköz azonosítója **<span style="color:Red">(kell lennie a kisbetűs)</span>** vagy a javasolt eszközazonosítót használ.
     * Adja meg az eszköz nevét, vagy használja a javasolt név
     
-    ![Eszköz hozzáadása](media\concepts-connectivity\add-device.png)
+    ![Eszköz hozzáadása](media/concepts-connectivity/add-device.png)
 
 
 1. Például beolvasni a kapcsolat adatait **hatókör azonosítója, az eszköz Azonosítóját és az elsődleges kulcs** kattintva az új eszköz **Connect** az eszköz oldalon.
  
-    ![Kapcsolat adatai](media\concepts-connectivity\device-connect.PNG)
+    ![Kapcsolat adatai](media/concepts-connectivity/device-connect.PNG)
 
 3. Ügyeljen arra, hogy ezek az adatok mentése során fog temporaritly lekérése kapcsolódik az internethez az DevKit eszköz előkészítése. 
 

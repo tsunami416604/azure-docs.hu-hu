@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
-ms.openlocfilehash: e2f3a5655b2fbedf3ad80d555421599e26225196
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
-ms.translationtype: HT
+ms.openlocfilehash: 09a7f02df1102e42bc45b4615a2af4235372bcdc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982101"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957027"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>Mi a Computer Vision API 1.0-s verziója?
 
@@ -44,7 +44,7 @@ A felhőalapú Computer Vision API a fejlesztők számára hozzáférést biztos
 * Képméret: Nagyobb, mint 50 × 50 képpont.
 
 ## <a name="tagging-images"></a>Képek címkézése
-A Computer Vision API több mint 2000 felismerhető tárgy, élőlény, táj és cselekvés alapján ad vissza címkéket eredményül. Amennyiben a címkék félreérthetőek vagy nem közismertek, az API válasza „tippeket” tartalmaz a címke adott környezetben való értelmezésének megkönnyítése érdekében. A címkékhez nincs besorolási rendszer és öröklési hierarchia. A tartalomcímkék gyűjteménye képezi a kép ember által olvasható nyelven, teljes mondatokban megformált „leírásának” alapját. Fontos tudni, hogy a képleírásokhoz jelenleg csak az angol nyelv támogatott.
+Computer Vision API alapján ad vissza címkéket ezer felismerhető objektumok, tárgy, táj és műveleteket. Amennyiben a címkék félreérthetőek vagy nem közismertek, az API válasza „tippeket” tartalmaz a címke adott környezetben való értelmezésének megkönnyítése érdekében. A címkékhez nincs besorolási rendszer és öröklési hierarchia. A tartalomcímkék gyűjteménye képezi a kép ember által olvasható nyelven, teljes mondatokban megformált „leírásának” alapját. Fontos tudni, hogy a képleírásokhoz jelenleg csak az angol nyelv támogatott.
 
 Egy kép feltöltése vagy egy kép URL-címének megadása után a Computer Vision API algoritmusai címkéket adnak vissza a képen felismert tárgyak, élőlények és cselekvések alapján. A címkézés nem korlátozódik a kép fő témájára, például az előtérben szereplő személyre, hanem magában foglalja a környezetet (beltér vagy kültér), bútorokat, eszközöket, növényeket, állatokat, kiegészítőket, készülékeket stb.
 
@@ -267,12 +267,12 @@ Megjegyzés: ez a technológia jelenleg előzetes verzióban, és kizárólag an
 ## <a name="generating-thumbnails"></a>Miniatűrök létrehozása
 A miniatűrök a teljes képek kis méretű helyettesítői. A különböző eszközök, például telefonok, táblagépek és asztali számítógépek felhasználói felülete különböző elrendezéseket és miniatűrméreteket követel. A Computer Vision API okos levágás funkciója megoldja ezt a problémát.
 
-Egy kép feltöltése után abból jó minőségű miniatűr lesz generálva, a Computer Vision API algoritmusa pedig elemzi a képen lévő tárgyakat. Úgy vágja ki a képet, hogy az megfeleljen a releváns tartomány követelményeinek. A kimenet egy speciális keretben jelenik meg, az alábbi ábrán látható módon. A létrehozott miniatűr a felhasználó igényei szerint az eredeti képétől eltérő oldalaránnyal is rendelkezhet.
+Egy kép feltöltése után abból jó minőségű miniatűr lesz generálva, a Computer Vision API algoritmusa pedig elemzi a képen lévő tárgyakat. Majd körülvágja a képet a "lényeges terület" követelményeinek. A kimenet egy speciális keretben jelenik meg, az alábbi ábrán látható módon. A létrehozott miniatűr a felhasználó igényei szerint az eredeti képétől eltérő oldalaránnyal is rendelkezhet.
 
 A miniatűrt előállító algoritmus működése a következő:
 
-1. Eltávolítja a képről a zavaró elemeket, és felismeri a kép fő tárgyát, a „releváns tartományt” (ROI).
-2. Az azonosított releváns tartomány alapján körülvágja a képet.
+1. Zavaró elemet távolít el a lemezképet, és felismeri a fő objektum, a "lényeges terület".
+2. Körülvágja a képet a azonosított terület hasznos hely alapján.
 3. A miniatűrhöz megadott méreteknek megfelelően módosítja az oldalarányt.
 
 ![Miniatűrök](./Images/thumbnail-demo.png)

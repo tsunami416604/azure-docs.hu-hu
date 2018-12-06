@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: ''
-ms.openlocfilehash: aa511e98fefaf25a08f55f2aa47c43c9ed10a10f
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 726e0f335a1586dc35aa1f254ea2b1fae729f01a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261045"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956984"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>A Grafana az Azure-szolgáltatások figyelése
 Figyelheti az Azure szolgáltatásainak és alkalmazásainak [Grafana](https://grafana.com/) használatával a [Azure Monitor adatforrás-beépülő modul](https://grafana.com/plugins/grafana-azure-monitor-datasource). A beépülő modul az Azure Monitor, beleértve a különböző naplókat és mérőszámokat által gyűjtött alkalmazásteljesítmény-adatokat gyűjt. Ezután a Grafana irányítópulton jeleníti meg ezeket az adatokat.
@@ -50,7 +50,7 @@ Egy helyi Grafana kiszolgáló beállításához [töltse le és telepítse a Gr
 
 1. A kiszolgáló IP-cím használatával, nyissa meg a bejelentkezési lapot a *http://\<IP-cím\>: 3000* vagy a  *\<DNSName >\:3000* a böngészőben. Az alapértelmezett port pedig a 3000 vegye figyelembe, előfordulhat, hogy kiválasztott egy másik portot a telepítés során. A Grafana kiszolgáló létrehozott egy bejelentkezési lapját kell megjelennie.
 
-    ![Grafana bejelentkezési képernyő](.\media\monitor-how-to-grafana\grafana-login-screen.png)
+    ![Grafana bejelentkezési képernyő](./media/monitor-how-to-grafana/grafana-login-screen.png)
 
 2. Jelentkezzen be a felhasználónevet *rendszergazdai* és a korábban létrehozott Grafana kiszolgáló-rendszergazdai jelszót. Egy helyi beállítást használja, ha az alapértelmezett jelszó lenne *rendszergazdai*, és szeretné kért változtatnia azt az első bejelentkezésnél.
 
@@ -58,7 +58,7 @@ Egy helyi Grafana kiszolgáló beállításához [töltse le és telepítse a Gr
 
 Miután sikeresen bejelentkezett, láthatja, hogy az Azure Monitor adatforrás beépülő modul már megtalálható.
 
-![Grafana az Azure Monitor beépülő modult is tartalmaz.](.\media\monitor-how-to-grafana\grafana-includes-azure-monitor-plugin-dark.png)
+![Grafana az Azure Monitor beépülő modult is tartalmaz.](./media/monitor-how-to-grafana/grafana-includes-azure-monitor-plugin-dark.png)
 
 1. Válassza ki **adatforrás hozzáadása** hozzáadása és konfigurálása az Azure Monitor az adatforrás.
 
@@ -83,7 +83,7 @@ Miután sikeresen bejelentkezett, láthatja, hogy az Azure Monitor adatforrás b
 5. Ha használja az Application Insights, az Application Insights API és az Alkalmazásazonosítót kíván gyűjteni az Application Insights-alapú is megadhatja. További információkért lásd: [az API-kulcs és az Alkalmazásazonosító beolvasása](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 
 6. Válassza ki **mentése**, és a Grafana teszteli a hitelesítő adatokat az egyes API. Egy a következőhöz hasonló üzenetnek kell megjelennie.  
-    ![Grafana adatforrás-konfiguráció jóváhagyása](.\media\monitor-how-to-grafana\grafana-data-source-config-approved-dark.png)
+    ![Grafana adatforrás-konfiguráció jóváhagyása](./media/monitor-how-to-grafana/grafana-data-source-config-approved-dark.png)
 
 ## <a name="build-a-grafana-dashboard"></a>A Grafana irányítópult létrehozása
 
@@ -92,11 +92,11 @@ Miután sikeresen bejelentkezett, láthatja, hogy az Azure Monitor adatforrás b
 2. Az új irányítópultot, válassza ki a **Graph**. Próbálja meg más diagramkészítési lehetőségek, de ez a cikk *Graph* példaként.
 
 3. Az irányítópulton megjelenik egy üres diagram. Kattintson a panel címe, és válassza ki **szerkesztése** , adja meg, hogy az adatok a graph-diagram a megjeleníteni kívánt.
-    ![Grafana új gráf](.\media\monitor-how-to-grafana\grafana-new-graph-dark.png)
+    ![Grafana új gráf](./media/monitor-how-to-grafana/grafana-new-graph-dark.png)
 
 4. Válassza ki az Azure Monitor adatforrás konfigurálta.
     * Gyűjtése az Azure Monitor - metrikák kiválasztása **Azure Monitor** a szolgáltatás legördülő listában. Választók mutatja be, ahol kiválaszthatja az erőforrások és -metrika figyelése ezen a diagramon listája. Virtuális gép adatainak begyűjtése, használja a névtér **Microsoft.Compute/VirtualMachines**. Miután kiválasztotta a virtuális gépek és a metrikák, indítsa el az adatok megtekintése az irányítópulton.
-    ![Az Azure Monitor Grafana graph-konfiguráció](.\media\monitor-how-to-grafana\grafana-graph-config-for-azure-monitor-dark.png)
+    ![Az Azure Monitor Grafana graph-konfiguráció](./media/monitor-how-to-grafana/grafana-graph-config-for-azure-monitor-dark.png)
     * Gyűjtése az Azure Log Analytics - adatok kiválasztása **Azure Log Analytics** a szolgáltatás legördülő listában. Válassza ki a munkaterületet, szeretné lekérdezni, és állítsa be a lekérdezés szövege. Másolhatja itt bármely Log Analytics-lekérdezés, már van, vagy hozzon létre egy újat. Írja be a lekérdezést, mert IntelliSense jelennek meg, és javasolt az automatikus kiegészítés beállításai. Válassza ki a Vizualizáció típusát a **Time series** **tábla**, és a lekérdezés futtatásához.
     
     > [!NOTE]
@@ -104,7 +104,7 @@ Miután sikeresen bejelentkezett, láthatja, hogy az Azure Monitor adatforrás b
     > A beépülő modul használatával a megadott alapértelmezett lekérdezés két makrók használja: "$__timeFilter() és $__interval. 
     > Ezek a makrók engedélyezése a Grafana dinamikusan alapján számítja ki az időtartományt és időfelbontási szint, ha ráközelít a diagram része. Ezek a makrók eltávolíthatja, és használjon például egy téli idő szűrővel *TimeGenerated > ago(1h)*, de ez azt jelenti, hogy a graph lenne támogatja a nagyítási funkció.
     
-    ![Az Azure Log Analytics Grafana graph-konfiguráció](.\media\monitor-how-to-grafana\grafana-graph-config-for-azure-log-analytics-dark.png)
+    ![Az Azure Log Analytics Grafana graph-konfiguráció](./media/monitor-how-to-grafana/grafana-graph-config-for-azure-log-analytics-dark.png)
 
 5. Következő egy könnyen áttekinthető irányítópult használatával két diagram. A bal oldali mutatja, a két virtuális gépet a Processzorhasználat (%). A diagram a jobb oldalon a tranzakciók az Azure Storage-fiókot, a tranzakciós API-típus szerinti bontásban jeleníti meg.
     ![Grafana két diagramok példa](media/monitor-send-to-grafana/grafana6.png)
@@ -140,7 +140,7 @@ Usage
 Konfigurálhat egy változó, amely felsorolja az összes rendelkezésre álló **megoldás** értéket, majd frissítse a lekérdezést a használatára.
 Hozzon létre egy új változó, kattintson az irányítópult beállítások gomb jobb felső területén, jelölje be **változók**, majd **új**.
 A változó lapon adja meg az adatforrás és lekérdezés fut, hogy az értékek listájának beolvasása.
-![Grafana változó konfigurálása](.\media\monitor-how-to-grafana\grafana-configure-variable-dark.png)
+![Grafana változó konfigurálása](./media/monitor-how-to-grafana/grafana-configure-variable-dark.png)
 
 Létrehozása után módosíthatja a lekérdezést, hogy a kiválasztott érték(ek) használjon, és ennek megfelelően válaszol a diagramokat:
 ```
@@ -150,13 +150,13 @@ Usage
 | sort by TimeGenerated
 ```
     
-![Grafana használata változók](.\media\monitor-how-to-grafana\grafana-use-variables-dark.png)
+![Grafana használata változók](./media/monitor-how-to-grafana/grafana-use-variables-dark.png)
 
 ### <a name="create-dashboard-playlists"></a>Irányítópult-listák létrehozása
 
 A Grafana számos hasznos funkcióját egyik, az irányítópult-lista. Több irányítópultokat hozhat létre, és hozzáadhatja őket a lista konfigurálása mindegyik irányítópult megjelenítéséhez időköze. Válassza ki **lejátszása** megtekintéséhez az irányítópultok közötti váltáshoz. Érdemes egy nagy üzenőfal figyelő állapota tábla biztosít a csoport megjelenítendő őket.
 
-![Példa a Grafana lejátszási lista](.\media\monitor-how-to-grafana\grafana7.png)
+![Példa a Grafana lejátszási lista](./media/monitor-how-to-grafana/grafana7.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

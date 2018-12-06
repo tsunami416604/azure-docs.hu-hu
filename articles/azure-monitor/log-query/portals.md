@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: a649b5961c83fd58c2ea835131acdae45800032c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 1d6a3ef4094bed92e8c40f2416b637f0830c3845
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882660"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959291"
 ---
 # <a name="viewing-and-analyzing-data-in-log-analytics"></a>A Log Analytics adatok megtekintésére és elemzésére
 Két lehetőség van a Log analytics szolgáltatásban tárolt adatok elemzése és az alkalmi elemzési lekérdezések létrehozásához az Azure Portalon érhető el. A lekérdezések létrehozásakor használja a fenti portálokhoz más funkciók, például a riasztások és az irányítópultok is használható.
@@ -76,6 +76,6 @@ Nyissa meg a keresési oldalon a **naplók (klasszikus)** a Log Analytics menüb
 
 ## <a name="next-steps"></a>További lépések
 
-- Végig egy [oktatóanyag naplóbeli keresés használatával](../../log-analytics/log-analytics-tutorial-viewdata.md) megtudhatja, hogyan hozhat létre lekérdezést a lekérdezési nyelv segítségével
+- Végig egy [oktatóanyag naplóbeli keresés használatával](../../azure-monitor/learn/tutorial-viewdata.md) megtudhatja, hogyan hozhat létre lekérdezést a lekérdezési nyelv segítségével
 - Végig egy [. lecke a bővített analitika portál használatával](../../azure-monitor/log-query/get-started-portal.md) amely biztosítja, hogy ugyanazt a felhasználói élményt, mint a Log Analytics lapot.
 

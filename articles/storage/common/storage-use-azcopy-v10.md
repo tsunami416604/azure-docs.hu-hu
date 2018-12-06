@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.author: artemuwka
 ms.component: common
-ms.openlocfilehash: a1b183e5b0929a2149502aa340e2e69c725dba6d
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 2ab933506ea03ae72198113d70888460e5001a6d
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49168264"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958413"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>Adatátvitel az AzCopy v10 (előzetes verzió)
 
@@ -84,6 +84,16 @@ A súgóban talál oldal és a egy bizonyos paranccsal példáit futtassa az al�
 .\azcopy cp -h
 ```
 
+## <a name="create-a-file-system-azure-data-lake-storage-gen2-only"></a>Hozzon létre egy fájlrendszert (csak az Azure Data Lake Storage Gen2 esetén)
+
+Ha engedélyezte a hierarchikus névterek a blob storage-fiókjában, az alábbi parancs segítségével hozzon létre egy új fájlrendszer, így a, feltölthet egy fájlok letöltése.
+
+```azcopy
+.\azcopy make "https://account.dfs.core.windows.net/top-level-resource-name" --recursive=true
+```
+
+A ``account`` Ez a karakterlánc része a tárfiók nevére. A ``top-level-resource-name`` Ez a karakterlánc része a fájlrendszer, amely a létrehozni kívánt nevét.
+
 ## <a name="copy-data-to-azure-storage"></a>Adatok másolása az Azure Storage
 
 A Másolás parancs segítségével adatátvitel a forrásból a célra. A forrás és a cél lehet v:
@@ -107,10 +117,22 @@ A következő parancsot a tároló "mycontainer1" a mappa C:\local\path rekurzí
 .\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --recursive=true
 ```
 
+Ha engedélyezte a hierarchikus névterek a blob storage-fiókjában, a fájlok feltöltése a fájlrendszer használhatja a következő parancsot:
+
+```azcopy
+.\azcopy cp "C:\local\path" "https://myaccount.dfs.core.windows.net/myfolder<sastoken>" --recursive=true
+```
+
 A következő parancsot a C:\local\path mappában található összes fájlt feltölti a tároló "mycontainer1" (nélkül recursing alkönyvtárak be):
 
 ```azcopy
 .\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/mycontainer1<sastoken>"
+```
+
+Ha engedélyezte a hierarchikus névterek a blob storage-fiókjában, használhatja a következő parancsot:
+
+```azcopy
+.\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/myfolder<sastoken>"
 ```
 
 További példák lekéréséhez használja a következő parancsot:
@@ -127,6 +149,8 @@ Két tárfiókok között az adatok másolásához használja a következő para
 ```azcopy
 .\azcopy cp "https://myaccount.blob.core.windows.net/<sastoken>" "https://myotheraccount.blob.core.windows.net/<sastoken>" --recursive=true
 ```
+
+Dolgozunk a blob storage-fiókok, amelyek hierarchikus névterek engedélyezettek, cserélje le a karakterlánc ``blob.core.windows.net`` a ``dfs.core.windows.net`` ezekben a példákban.
 
 > [!NOTE]
 > A parancs fogja enumerálni az összes blob-tárolót, és másolja őket a cél-fiók. Jelenleg az AzCopy v10 támogatja között két storage-fiókok csak blokkblobokhoz másolása. Minden egyéb tárolási fiók objektum (hozzáfűzés a blobok, a lapblobok, fájlok, táblák és üzenetsorok) kimarad.
@@ -154,6 +178,8 @@ Ugyanúgy szinkronizálhat egy blobtárolót a helyi fájlrendszer le:
 ```
 
 A parancs lehetővé teszi a növekményes szinkronizálás a forrás utolsó módosítás időbélyegek alapján a célhelyre. Hozzáadásakor, vagy töröljön egy fájlt a forrás, az AzCopy v10 fog végezze el ugyanezt a célhelyen.
+
+[!NOTE] Dolgozunk a blob storage-fiókok, amelyek hierarchikus névterek engedélyezettek, cserélje le a karakterlánc ``blob.core.windows.net`` a ``dfs.core.windows.net`` ezekben a példákban.
 
 ## <a name="advanced-configuration"></a>Speciális konfiguráció
 

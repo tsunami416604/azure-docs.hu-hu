@@ -13,12 +13,12 @@ ms.date: 10/10/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: bc80bfacf6896161fae03b9ed93f5fe22e13ada2
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 2ccb4d2ff7beeeac53bafe726122c3b47682db03
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725284"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955429"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Használatelemzés az Application Insights szolgáltatással
 
@@ -60,26 +60,6 @@ A jobb oldali insights érdekes szabályszerűségeket az adatkészlet mutasson.
 * A **munkamenetek** jelentés számolja meg a felhasználói munkamenetek, amelyek hozzáférhetnek a webhelyhez. A munkamenet a felhasználó megszakította a több mint fél óra inaktivitási tevékenysége bizonyos.
 
 [További információ a felhasználók, munkamenetek és események eszközök](app-insights-usage-segmentation.md)  
-
-## <a name="page-views"></a>Lapmegtekintések
-
-A használati panelen kattintson a legnépszerűbb lap bontásban beolvasni a lapmegtekintések csempe keresztül:
-
-![Az Áttekintés panelen kattintson a lap nézetek diagram](./media/app-insights-usage-overview/05-games.png)
-
-A fenti példa a játékok webhelyről. A diagramok és azt azonnal tekintheti meg:
-
-* Használat az elmúlt héten nem javult. Talán azt kell gondolniuk a keresés keresőmotor-optimalizálás?
-* Tenisz a legnépszerűbb játékok lapon. Koncentráljunk a ezen a lapon további fejlesztései.
-* Az átlagos felhasználók oldalán tenisz körülbelül három alkalommal hetente. (Nincsenek, mint a felhasználók körülbelül három alkalommal további előadások.)
-* A legtöbb felhasználó keresse fel a webhelyet, az Egyesült Államok működő hétre esik-e, és a munkaidő alatt. Például a "gyorsan elrejtése" gombra kell biztosítunk a weblapon.
-* A [jegyzetek](app-insights-annotations.md) a diagram megjelenítése, amikor új verziókat a webhely üzembe helyezése. A legutóbbi telepítéseket egyike észrevehető hatást a használat.
-
-Mi történik, ha vizsgálni kívánt a forgalmának kiszolgálására részletesebb leírását – például a felosztás a lapmegtekintési telemetriát küld a hely egy egyéni tulajdonság szerint?
-
-1. Nyissa meg a **események** eszközt az Application Insights-erőforrás menüben. Ez az eszköz hány lapmegtekintés és egyéni eseményeket az alkalmazásból, számos szűrési, cohorting és Szegmentálás lehetőség alapján küldött elemzését teszi lehetővé.
-2. A "Ki használt" legördülő listában válassza ki a "Bármely lapmegtekintés".
-3. A "Split szerint" legördülő listában válassza ki a lapmegtekintési telemetriát felosztása egy tulajdonságot.
 
 ## <a name="retention---how-many-users-come-back"></a>Megőrzés – hány felhasználók visszatérő használóivá?
 

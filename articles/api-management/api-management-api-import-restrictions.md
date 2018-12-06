@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: a9f4a4ed4a8771f32a4d66aed2457a43abb92a63
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 34e6fb195ae64823336684e9ad2e9382316822b0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285790"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961074"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API importálási korlátozások és ismert problémák
 ## <a name="about-this-list"></a>Ez a lista kapcsolatban
 API importálásakor, előfordulhat, hogy bizonyos korlátozások bővítményeként vagy azonosíthatja a problémákat, amelyek sikeresen importálása előtt kell-e javítani kell. Ez a cikk dokumentumok, ezek szerint vannak rendezve az API-formátuma.
 
 ## <a name="open-api"> </a>OpenAPI/Swagger
-Ha az OpenAPI-dokumentumok importálása hibák azért küldtük Önnek, győződjön meg arról, ellenőrzése –, vagy a Tervező használatával az Azure Portalon (- előtér - Tervező OpenAPI-specifikáció szerkesztője), vagy egy külső gyártótól származó eszköz például <a href="http://editor.swagger.io">Swagger Editor</a>.
+Ha az OpenAPI-dokumentumok importálása hibák azért küldtük Önnek, győződjön meg arról, ellenőrzése –, vagy a Tervező használatával az Azure Portalon (- előtér - Tervező OpenAPI-specifikáció szerkesztője), vagy egy külső gyártótól származó eszköz például <a href="https://editor.swagger.io">Swagger Editor</a>.
 
 * Csak az az OpenAPI JSON formátum támogatott.
 * Elérési út és a lekérdezési paramétereket egyedi névvel kell rendelkezniük. (Az OpenAPI-paraméter neve csak egyedinek kell lennie egy helyen, például az elérési út, lekérdezés, fejléc.  Azonban az API Management lehetővé tesszük műveletek legyen hátrányos megkülönböztetés elérési út és a lekérdezési paraméterek (amely nem támogatja a OpenAPI). Ezért szükség van a teljes URL-cím sablonon belül egyedinek kell lennie a paraméterek nevei.)

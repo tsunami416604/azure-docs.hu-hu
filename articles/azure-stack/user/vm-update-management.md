@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: rtiberiu
-ms.openlocfilehash: 1ef20dc35b069c5f12c2f31d0979949be27271e0
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: be793fa5d346d05e6b7bd9f93f1108b7a3542fa6
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324274"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959172"
 ---
 # <a name="azure-stack-vm-update-and-management"></a>Az Azure Stack VM update és kezelése
 A következő Azure Automation-megoldás funkciók segítségével Windows üzembe helyezett virtuális gépeket az Azure Stack használata kezelheti:
@@ -41,7 +41,7 @@ Néhány előfeltételnek teljesülnie kell, mielőtt használja ezeket a funkci
 A készlet, a Change Tracking és a frissítés kezelése az Azure automation szolgáltatásokat az Azure Stack Windows virtuális gépek használatához, először engedélyeznie kell ezeket a megoldásokat az Azure-ban.
 
 > [!TIP]
-> Ha már rendelkezik ezeket a funkciókat az Azure virtuális gépek engedélyezve van, használhatja a már meglévő LogAnalytics munkaterület hitelesítő adatait. Ha már rendelkezik egy LogAnalytics munkaterület azonosítója és az elsődleges kulcs, amelyet használni szeretne, ugorjon előre [a következő szakaszban](.\vm-update-management.md#in-the-azure-stack-administration-portal). Ellenkező esetben továbbra is ebben a szakaszban egy új LogAnalytics munkaterületet és automation-fiók létrehozásához.
+> Ha már rendelkezik ezeket a funkciókat az Azure virtuális gépek engedélyezve van, használhatja a már meglévő LogAnalytics munkaterület hitelesítő adatait. Ha már rendelkezik egy LogAnalytics munkaterület azonosítója és az elsődleges kulcs, amelyet használni szeretne, ugorjon előre [a következő szakaszban](./vm-update-management.md#in-the-azure-stack-administration-portal). Ellenkező esetben továbbra is ebben a szakaszban egy új LogAnalytics munkaterületet és automation-fiók létrehozásához.
 
 Az első lépése abban, hogy ezek a megoldások [LogAnalytics munkaterület létrehozása](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace) az Azure-előfizetésében. Log Analytics-munkaterület egy saját adattárházzal, adatforrások és megoldások egyedi Log Analytics-környezetet. Miután létrehozott egy munkaterületet, vegye figyelembe a munkaterület azonosítója és kulcsa. Ezek az információk megtekintéséhez nyissa meg a munkaterület panel, kattintson a **speciális beállítások**, és tekintse át a **munkaterület-Azonosítót** és **elsődleges kulcs** értékeket. 
 

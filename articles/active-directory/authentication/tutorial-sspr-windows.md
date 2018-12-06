@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: tutorial
-ms.date: 07/11/2018
+ms.date: 12/05/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 0c5554ca929cbd5231c99e568e987e6e0b7cf6eb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 291f895ed367ab4871d27ea02cd23eddc496434c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844838"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958678"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Oktatóanyag: Új Azure AD-jelszó kérése a bejelentkezési képernyőről
 
@@ -29,8 +29,8 @@ Ebben az oktatóanyagban engedélyezi, hogy a felhasználók új jelszót kérje
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A Windows 10 2018. áprilisi verziója, vagy egy újabb ügyfél, amely:
-   * [csatlakozik az Azure AD-hez](../device-management-azure-portal.md) vagy 
-   * [csatlakozik a Hibrid Azure AD-hez](../device-management-hybrid-azuread-joined-devices-setup.md)
+   * [Azure AD-hez gép](../device-management-azure-portal.md) vagy
+   * [Hibrid Azure AD-csatlakoztatott gép](../device-management-hybrid-azuread-joined-devices-setup.md), a hálózati kapcsolat a következő bejelentkezéskor a tartományvezérlők és a jelszó alaphelyzetbe állítása után.
 * Engedélyezni kell az Azure AD önkiszolgáló jelszó-visszaállítását.
 
 ## <a name="configure-reset-password-link-using-intune"></a>Jelszó-visszaállítási hivatkozás konfigurálása az Intune használatával

@@ -94,7 +94,7 @@
 ## [Visszajelzés](https://feedback.azure.com/forums/556165-azure-analysis-services)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/analysis-services/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-analysis-services)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-analysis-services)
 ## [Videók](https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest)
 
 

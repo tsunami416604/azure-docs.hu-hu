@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 0b65f37310b911184c05fd8fb8554eeb824814b8
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 185c4685de0c889c3b6e7b173445546ed5b7d921
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364812"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955412"
 ---
 # <a name="advanced-azure-stack-development-kit-evaluation-tasks"></a>Az Azure Stack Development Kit értékelést speciális feladatok
 Után az Azure Stack Development Kit (ASDK) szolgáltatás alapszintű funkciók és képességek ismeretét, révén, akkor is mélyítheti a Tovább az Azure Stack által speciális forgatókönyvek tesztelését. Ezek összetettebb kiértékelése a feladatok teljes körűen vannak dokumentálva az Azure Stack operátori dokumentációja.
@@ -31,17 +31,18 @@ Után az Azure Stack Development Kit (ASDK) szolgáltatás alapszintű funkciók
 ## <a name="delegate-offers-in-azure-stack"></a>Ajánlat delegálása az Azure Stackben
 Az Azure Stack-operátori, milyen gyakran szeretné ajánlatok létrehozásához, és regisztráló felhasználók felelős mások. Például ha Ön a szolgáltató, érdemes lehet a viszonteladók számára a felhasználók regisztrálása és kezelheti azokat az Ön nevében is. Vagy ha Ön egy vállalat egy központi informatikai csoport része, érdemes lehet leányvállalatai Ön beavatkozása nélkül felhasználókat regisztrálhat.
 
-[Ajánlat delegálása az Azure Stack](.\.\azure-stack-delegated-provider.md) segítségével éri el, és közvetlenül választhat, mint további felhasználók kezelése lehetővé teszi ezeket a feladatokat. 
+[Ajánlat delegálása az Azure Stack](../azure-stack-delegated-provider.md) segítségével éri el, és közvetlenül választhat, mint további felhasználók kezelése lehetővé teszi ezeket a feladatokat.
 
 ## <a name="make-sql-databases-available-to-your-azure-stack-users"></a>SQL-adatbázisok az Azure Stack-felhasználók számára elérhetővé
-Az Azure Stack-operátori is kínál, amelyek lehetővé teszik a felhasználók vásárolhatnak (bérlők) is használható a natív felhőalkalmazásokat, a websites és a számítási feladatokat az SQL-adatbázisok létrehozása. Az egyéni, igény szerinti, felhőalapú adatbázisok biztosításával a felhasználók számára, mentheti őket időt és erőforrásokat. 
+Az Azure Stack-operátori is kínál, amelyek lehetővé teszik a felhasználók vásárolhatnak (bérlők) is használható a natív felhőalkalmazásokat, a websites és a számítási feladatokat az SQL-adatbázisok létrehozása. Az egyéni, igény szerinti, felhőalapú adatbázisok biztosításával a felhasználók számára, mentheti őket időt és erőforrásokat.
 
-Használja az SQL Server erőforrás-szolgáltató adapter való [SQL-adatbázisok az Azure Stack-felhasználók számára elérhetővé](.\.\azure-stack-tutorial-sql-server.md) szolgáltatásként az Azure Stack. Az erőforrás-szolgáltató telepítése után, csatlakoztassa azt egy vagy több SQL Server-példányt.
+Használja az SQL Server erőforrás-szolgáltató adapter való [SQL-adatbázisok az Azure Stack-felhasználók számára elérhetővé](../azure-stack-tutorial-sql-server.md) szolgáltatásként az Azure Stack. Az erőforrás-szolgáltató telepítése után, csatlakoztassa azt egy vagy több SQL Server-példányt.
 
 ## <a name="make-web-and-api-apps-available-to-your-azure-stack-users"></a>Webes és API-alkalmazások elérhetővé tétele az Azure Stack-felhasználók számára
 Az Azure Stack-operátori is kínál, amelyek lehetővé teszik a felhasználók vásárolhatnak (bérlők) Azure Functions és a webes és API-alkalmazások létrehozása. Ezek igény szerinti, a felhőbeli alkalmazásokhoz való hozzáférés biztosításával a felhasználók számára, mentheti őket időt és erőforrásokat.
 
-Az App Service-ben az erőforrás-szolgáltató üzembe helyezése [web- és API-alkalmazások elérhetővé tétele az Azure Stack-felhasználók számára](.\.\azure-stack-tutorial-app-service.md)
+Az App Service-ben az erőforrás-szolgáltató üzembe helyezése [web- és API-alkalmazások elérhetővé tétele az Azure Stack-felhasználók számára](../azure-stack-tutorial-app-service.md)
 
 ## <a name="next-steps"></a>További lépések
-[Tudjon meg többet az Azure Stack integrált rendszerek szolgáltatásajánlások](.\.\azure-stack-offer-services-overview.md)
+
+[Tudjon meg többet az Azure Stack integrált rendszerek szolgáltatásajánlások](../azure-stack-offer-services-overview.md)

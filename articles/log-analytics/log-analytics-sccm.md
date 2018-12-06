@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 8e30b1ba093e38f81c9a09a0b9107e5a3b2eb768
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5cd28ec685842f6782699a7538e2f582c3226271
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847371"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955940"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>A Configuration Manager csatlakoztatása a Log Analyticsbe
 A System Center Configuration Manager-környezet szinkronizálási eszköz gyűjtemény adatait az Azure Log Analyticshez csatlakozhat, és ezeket a gyűjteményeket, a Log Analytics és Azure Automation hivatkozhat.  
@@ -42,7 +42,7 @@ Az alábbi lépéseket a Configuration Manager-integráció konfigurálása a Lo
 További információ a Configuration Manager csatlakoztatása a Log Analytics [szinkronizálja a Microsoft Log Analytics adatokat a Configuration Manager](https://technet.microsoft.com/library/mt757374.aspx).
 
 ## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>Támogatás a Configuration Manager a Log Analyticshez való engedélyekkel
-A következő eljárásban biztosítson a *közreműködői* szerepkör a Log Analytics-munkaterület az AD-alkalmazás és egyszerű szolgáltatás korábban létrehozott a Configuration Manager.  Ha Ön még nem rendelkezik egy munkaterületet, [az Azure Log Analytics-munkaterület létrehozása](log-analytics-quick-create-workspace.md) a folytatás előtt.  Ez lehetővé teszi a Configuration Manager hitelesítéséhez és a Log Analytics-munkaterülethez csatlakozik.  
+A következő eljárásban biztosítson a *közreműködői* szerepkör a Log Analytics-munkaterület az AD-alkalmazás és egyszerű szolgáltatás korábban létrehozott a Configuration Manager.  Ha Ön még nem rendelkezik egy munkaterületet, [az Azure Log Analytics-munkaterület létrehozása](../azure-monitor/learn/quick-create-workspace.md) a folytatás előtt.  Ez lehetővé teszi a Configuration Manager hitelesítéséhez és a Log Analytics-munkaterülethez csatlakozik.  
 
 > [!NOTE]
 > A Log Analytics a Configuration Manager engedélyeket kell adnia. Ellenkező esetben hibaüzenet kap, a konfigurációs varázsló a Configuration Manager használata esetén.

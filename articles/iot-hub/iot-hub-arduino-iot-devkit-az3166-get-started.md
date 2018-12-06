@@ -1,20 +1,20 @@
 ---
 title: A felhőbe – IoT DevKit IoT DevKit AZ3166 csatlakozhat az Azure IoT Hub |} A Microsoft Docs
 description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be és IoT DevKit AZ3166 csatlakoztatása Azure IoT hubhoz, így adatokat küldhet az Azure felhőalapú platformján.
-author: rangv
-manager: jeffya
+author: wesmc7777
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 08/27/2018
-ms.author: rangv
-ms.openlocfilehash: 2ece10c43f25ac637a29324f46a88e50d9655431
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.author: wesmc
+ms.openlocfilehash: e6412ce36110f2e9a800262c968039112f2e4b1c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620438"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955683"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Csatlakozás az Azure IoT Hub IoT DevKit AZ3166
 
@@ -133,27 +133,34 @@ Kövesse az alábbi lépéseket a fejlesztési környezet előkészítése a fej
 3. Keressen **Azure IoT Workbench** a bővítmény Marketplace-en, és telepítse.
     ![Az Azure IoT Workbench telepítése](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-workbench.png) az IoT Workbench együtt más függő bővítmények lesz telepítve.
 
-4. Arduino konfigurálása
-    * **Windows**: A **Windows** nyílt **fájl > preferencia > Beállítások** kattintson a **...**  , és nyissa meg a settings.json, majd adja hozzá az alábbi sorokat, Arduino konfigurálása. 
+4. Konfigurálja a Visual Studio Code Arduino beállításokkal. 
+
+    A Visual Studio Code-ban kattintson **fájl > Beállítások > Beállítások**. Kattintson a **...**  és **nyissa meg a settings.json**. 
+    
+    Adja hozzá az alábbi sorokat a platformtól függően Arduino konfigurálása: 
+
+    * **Windows**:
       
-    ```json
-    "arduino.path": "C:\\Program Files (x86)\\Arduino",
-    "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
-    ```
+        ```json
+        "arduino.path": "C:\\Program Files (x86)\\Arduino",
+        "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
+        ```
 
-    * **macOS**: A **macOS** nyílt **kód > Beállítások > Beállítások** kattintson a **...**  , és nyissa meg a settings.json, majd adja hozzá a következő sorokat Arduino konfigurálása
+    * **macOS**:
 
-    ```json
-    "arduino.path": "/Applications",
-    "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
-    ```
+        ```json
+        "arduino.path": "/Applications",
+        "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
+        ```
 
     * **Ubuntu**:
+    
+        Cserélje le a **{username}** alább helyőrzőt a felhasználónevét.
 
-    ```json
-    "arduino.path": "/home/{username}/Downloads/arduino-1.8.5",
-    "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
-    ```
+        ```json
+        "arduino.path": "/home/{username}/Downloads/arduino-1.8.5",
+        "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
+        ```
 
 5. Kattintson a `F1` nyissa meg a parancskatalógus, írja be és válassza ki a **Arduino: tábla Manager**. Keresse meg **AZ3166** és telepítse a legújabb verziót.
     ![Fejlesztői készlet SDK telepítése](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-sdk.png)

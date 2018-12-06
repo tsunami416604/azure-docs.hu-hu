@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: bc88ca63f14c5480210455abcf403771b6a4c232
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: ef4a445539efa27ebd154980a4ea8b70b5aba082
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264126"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956908"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Rövid útmutató: Kognitív keresési folyamat létrehozása képességek és mintaadatok használatával
 
@@ -66,7 +66,7 @@ Első lépésként regisztráljon az Azure Search szolgáltatásra.
 
 1. Kattintson az **Erőforrás létrehozása** gombra, keresse meg az Azure Search szolgáltatást, majd kattintson a **Létrehozás** gombra. Ha első alkalommal próbálkozik keresési szolgáltatás beállításával, és segítségre van szüksége, tekintse meg az [Azure Search szolgáltatás a portálon történő létrehozását](search-create-service-portal.md) ismertető szakaszt.
 
-  ![A portál irányítópultja](./media/cognitive-search-tutorial-blob/create-service-full-portal.png "Azure Search szolgáltatás létrehozása a portálon")
+  ![A portál irányítópultja](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Azure Search szolgáltatás létrehozása a portálon")
 
 1. Az Erőforráscsoport résznél hozzon létre egy erőforráscsoportot a rövid útmutató során létrehozott erőforrások tárolására. Ezáltal könnyebb lesz az erőforrások eltávolítása, miután a rövid útmutató végére ért.
 
@@ -76,12 +76,14 @@ Első lépésként regisztráljon az Azure Search szolgáltatásra.
 
   Az ingyenes szolgáltatás legfeljebb 3 indexet és 2 perc indexelést tartalmazhat, 16 MB-os maximális blobmérettel, amely nem elegendő a kognitív keresés funkcióinak teljes körű használatához. A különböző csomagok korlátozásait a [szolgáltatási korlátozásokat](search-limits-quotas-capacity.md) ismertető részben tekintheti meg.
 
+  ![A portál szolgáltatás-definíció lap](./media/cognitive-search-tutorial-blob/create-search-service1.png "szolgáltatás definíció lap a portálon")
+  ![szolgáltatás definíció lap a portálon](./media/cognitive-search-tutorial-blob/create-search-service2.png "Service definition lap az a portálon")
   > [!NOTE]
   > A kognitív keresés nyilvános előzetes verzióban érhető el. A képességcsoportok végrehajtása jelenleg minden csomagban elérhető, az ingyenes csomagot is beleértve. Ennek a funkciónak a díjszabását a későbbiekben jelentjük be.
 
 1. A szolgáltatási információk gyors eléréséhez rögzítse a szolgáltatást az irányítópulton.
 
-  ![Szolgáltatásdefiníciós oldal a portálon](./media/cognitive-search-tutorial-blob/create-search-service.png "Szolgáltatásdefiníciós oldal a portálon")
+  ![Szolgáltatásdefiníciós oldal a portálon](./media/cognitive-search-tutorial-blob/create-search-service3.png "Szolgáltatásdefiníciós oldal a portálon")
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Az Azure Blob szolgáltatás beállítása és a mintaadatok betöltése
 
@@ -103,7 +105,7 @@ Lépjen vissza az Azure Search szolgáltatás Irányítópult lapjára, és katt
 
 A **Csatlakozás az adatokhoz** > **Azure Blob Storage** menüpontban válassza ki a létrehozott fiókot és tárolót. Adjon nevet az adatforrásnak, a többi beállításnál pedig használja az alapértelmezett értékeket. 
 
-   ![Azure Blob-konfiguráció](./media/cognitive-search-quickstart-blob/blob-datasource.png)
+   ![Azure Blob-konfiguráció](./media/cognitive-search-quickstart-blob/blob-datasource2.png)
 
 
 Az adatforrás létrehozásához kattintson az **OK** gombra.

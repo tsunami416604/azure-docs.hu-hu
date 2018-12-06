@@ -1,17 +1,17 @@
 ---
-title: Azure CLI-szkript – Azure Cosmos DB-fiókkulcs újbóli létrehozása | Microsoft Docs
+title: Az Azure CLI parancsfájl-fiókkulcs újbóli létrehozása az Azure Cosmos DB-fiókkulcs
 description: Azure CLI-példaszkript – Azure Cosmos DB-fiókkulcs újbóli létrehozása
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: 06a71ce759a72483d9ac3993e82d14af21e7d9d7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 38ebfde4b9b473f412ae667cdc6b36ea5e991608
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007807"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958099"
 ---
 # <a name="regenerate-an-azure-cosmos-db-account-key-using-the-azure-cli"></a>Azure Cosmos DB-fiókkulcs újbóli létrehozása az Azure CLI használatával
 

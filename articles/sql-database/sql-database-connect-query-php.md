@@ -11,12 +11,12 @@ ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 11/28/2018
-ms.openlocfilehash: be3ac9fab6c89c65ad9673811e108cefe2c80d00
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: b768b50af7ad6736e5cc3c885e6ac5016976f48a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724247"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958542"
 ---
 # <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Gyors útmutató: PHP használata Azure SQL Database-adatbázis lekérdezéséhez
 
@@ -32,9 +32,9 @@ Ez a minta, győződjön meg arról, hogy rendelkezik a következő előfeltéte
 
 - PHP-kapcsolódó szoftverek az operációs rendszer telepítve:
 
-    - **MacOS**, telepítse a homebrew-t és PHP, az ODBC-illesztőt és az Sqlcmd-t, majd telepítse a PHP-illesztőprogram SQL Serverhez készült. Lásd az [1.2, 1.3 és 2.1 lépést](https://www.microsoft.com/sql-server/developer-get-started/php/mac/).
+    - **MacOS**, telepítse a PHP, az ODBC-illesztőprogramját, majd telepítse a PHP-illesztőprogram SQL Serverhez készült. Lásd: [1, 2 és 3. lépés](/sql/connect/php/installation-tutorial-linux-mac).
 
-    - **Ubuntu**, telepítse a PHP és a többi szükséges csomagot, majd telepítse a PHP-illesztőprogram SQL Serverhez készült. Lásd az [1.2 és 2.1 lépést](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/).
+    - **Linux**, telepítse a PHP, az ODBC-illesztőprogramját, majd telepítse a PHP-illesztőprogram SQL Serverhez készült. Lásd: [1, 2 és 3. lépés](/sql/connect/php/installation-tutorial-linux-mac).
 
     - **Windows**, a PHP telepítése az IIS Express és a chocolatey-t, majd telepítse az ODBC-illesztőt és az Sqlcmd-t. Lásd az [1.2 és 1.3 lépést](https://www.microsoft.com/sql-server/developer-get-started/php/windows/).
 

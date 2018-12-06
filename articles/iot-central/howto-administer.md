@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4bfb7dc2b65dc479189ac7920509e1fd8a23ce4f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: a641b5bb754c265a4fa5fb7e2fe85989d4813354
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961347"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955173"
 ---
 # <a name="administer-your-iot-central-application"></a>Az IoT-központ alkalmazás felügyelete
 
@@ -35,12 +35,12 @@ Hogy eléri és használja a **felügyeleti** szakaszban kell lennie a a **rends
 ### <a name="change-application-name-and-url"></a>Alkalmazás nevének módosítása és URL-címe
 Az a **Alkalmazásbeállítások** lapon módosítsa a nevét és az alkalmazás URL-címet, majd válassza ki **mentése**.
 
-![Alkalmazás-Beállítások lap](media\howto-administer\image0-a.png)
+![Alkalmazás-Beállítások lap](media/howto-administer/image0-a.png)
 
 > [!Note]
 > Ha megváltoztatja az URL-CÍMÉT, a régi URL-CÍMÉT egy másik Azure IoT Central ügyfél elvégezhet. Ha ez történik, már nem érhető el, amelyet használhat. Ha megváltoztatja az URL-CÍMÉT, a régi URL-cím már nem működik, és értesíti a felhasználókat arról, hogy az új URL-cím használatára kell.
 
-### <a name="prepare-and-upload-image"></a>Készítse elő és a Rendszerkép feltöltése
+### <a name="prepare-and-upload-image"></a>Kép előkészítése és feltöltése
 Ha módosítani szeretné az alkalmazás rendszerképét, lásd: [előkészítése és a feltöltés rendszerképek az Azure IoT Central alkalmazásnak](howto-prepare-images.md).
 
 ### <a name="copy-an-application"></a>Alkalmazás másolása
@@ -48,11 +48,11 @@ Minden olyan alkalmazás, bármely eszköz példányok, az adatok eszközelőzm�
 
 Kattintson a **másolási** gombra. A párbeszédpanelen adja meg, hogy az új használatalapú fizetéses alkalmazás. Kattintson a **másolási** gombra annak megerősítéséhez, hogy végre szeretné hajtani. További információ a mezőket az űrlapon található [hozzon létre egy alkalmazást](quick-deploy-iot-central.md) rövid.
 
-![Alkalmazás-Beállítások lap](media\howto-administer\appCopy2.png)
+![Alkalmazás-Beállítások lap](media/howto-administer/appCopy2.png)
 
 Miután az alkalmazás másolási művelet sikeres, az új alkalmazást, az alkalmazás használatával, amely megjelenik a hivatkozás másolása által létrehozott léphet.
 
-![Alkalmazás-Beállítások lap](media\howto-administer\appCopy3.png)
+![Alkalmazás-Beállítások lap](media/howto-administer/appCopy3.png)
 
 > [!Note]
 > Alkalmazás másolása is átmásolja a szabályok és műveletek definíciója. De az eredeti alkalmazáshoz hozzáféréssel rendelkező felhasználók nem másolja át a másolt alkalmazást, mert a felhasználók manuális hozzáadása műveleteket, például e-mail, amelyhez felhasználók előfeltétele. Általában célszerű a szabályokat és műveleteket, győződjön meg arról, hogy azok az új alkalmazás naprakész, ellenőrizze, hogy legyen.
@@ -71,13 +71,13 @@ További információkért lásd: [Microsoft-fiók súgó](https://support.micro
 
 1. Egy felhasználó IoT Central alkalmazáshoz való hozzáadásához nyissa meg a **felhasználók** lapját a **felügyeleti** szakaszban.
 
-    ![Felhasználók listája](media\howto-administer\image1.png)
+    ![Felhasználók listája](media/howto-administer/image1.png)
 
 1. A felhasználó hozzáadásához a **felhasználók** lapon a **+ Hozzáadás felhasználó**.
 
 1. Válassza ki a felhasználót egy szerepkört a **szerepkör** legördülő menüből. További információ a szerepkörökről az [szerepkörök kezelése](#manage-roles) című szakaszát.
 
-    ![Szerepkör kiválasztása](media\howto-administer\image3.png)
+    ![Szerepkör kiválasztása](media/howto-administer/image3.png)
 
     > [!NOTE]
     >  Felhasználók tömeges hozzáadása, a felhasználó az összes olyan a hozzáadni kívánt felhasználó azonosítóját adja meg pontosvesszővel elválasztva. A munkakör kiválasztása a **szerepkör** legördülő menüből. Ezután válassza a **Save** (Mentés) lehetőséget.
@@ -117,10 +117,10 @@ A számla megtekintéséhez nyissa meg a **számlázási** lapját a **felügyel
 
 Átválthat egy használatalapú fizetéses alkalmazás próbaverzió alkalmazását. Az alábbiakban az ilyen típusú alkalmazások közötti különbségeket.
 
-- **Próbaverzió** alkalmazások ingyenesek 7 napig még a lejárat előtt. Ezek konvertálhatók használatalapú fizetéses előfizetésre még a lejárat előtt bármikor.
-- **Használatalapú fizetés** alkalmazások után felszámított díjak eszközt, az első 5 ingyenes eszközökkel.
+- A **próbaalkalmazások** 7 napig ingyenesek, azután lejárnak. A lejárat előtt bármikor átalakíthatók használatalapú fizetéses alkalmazássá.
+- A **használatalapú fizetéses** alkalmazások díjának felszámítása eszközönként történik. Az első 5 eszköz ingyenes.
 
-A díjszabással kapcsolatos további tudnivalókért a [Azure IoT Central díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/iot-central/).
+További információk a díjszabásról az [Azure IoT Central díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/iot-central/) találhatók.
     
 Az önkiszolgáló folyamat befejezéséhez kövesse az alábbi lépéseket:
 

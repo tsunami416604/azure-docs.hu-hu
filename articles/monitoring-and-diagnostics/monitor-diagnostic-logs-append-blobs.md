@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: b83c67e5c2ca47e73c1743d8eeaea03a8d92ea1f
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 48295a48700ee8b7331ae9811b7dd43a0ec8fa69
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247852"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959877"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Az Azure Monitor diagnosztikai naplók tárfiókba archivált formátum módosítás előkészítése
 
@@ -47,11 +47,11 @@ Az Azure Monitor egy olyan funkció, amely lehetővé teszi, hogy küldjön az e
  
 Ha erőforrás diagnosztikai beállításait, amelyek adatokat küldenek az Azure storage-fiók azonosításához navigálhat a **figyelő** szakaszban a portál, kattintson a **diagnosztikai beállítások**, és azonosítása minden olyan erőforrásokat, **diagnosztikai állapot** beállítása **engedélyezve**:
 
-![Az Azure Monitor diagnosztikai beállítások panel](./media/monitor-diagnostic-logs-append-blobs\portal-diag-settings.png)
+![Az Azure Monitor diagnosztikai beállítások panel](./media/monitor-diagnostic-logs-append-blobs/portal-diag-settings.png)
 
 Diagnosztikai beállítás van engedélyezve, ha azok aktív diagnosztikai beállítást az erőforráson. Kattintson az erőforrás megtekintéséhez, ha a diagnosztikai beállítások adatot küldenek egy storage-fiókhoz:
 
-![Storage-fiókban engedélyezve](./media/monitor-diagnostic-logs-append-blobs\portal-storage-enabled.png)
+![Storage-fiókban engedélyezve](./media/monitor-diagnostic-logs-append-blobs/portal-storage-enabled.png)
 
 Ha rendelkezik ezekkel a beállításokkal erőforrás diagnosztikai tárfiók történő adatküldés erőforrásokat, a storage-fiókban lévő adatok formátumát a változás által érintett. A formátumának módosítása nem érinti, kivéve, ha egyéni azokat az eszközöket, amelyek ki ezeket a storage-fiókok nem működik.
 

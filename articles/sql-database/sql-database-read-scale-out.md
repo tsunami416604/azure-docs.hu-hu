@@ -11,19 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/03/2018
-ms.openlocfilehash: 6b694794da5eabaddf4d6f29203b7d6553ef4940
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/05/2018
+ms.openlocfilehash: 16737ed525147968c97ca20a9f4e674a0dee34fc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844396"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955054"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Csak olvasható replikákat használ a betöltése terheléselosztása csak olvasható lekérdezési számítási feladatok (előzetes verzió)
 
 **Horizontális Felskálázás olvasása** lehetővé teszi, hogy terheléselosztása az Azure SQL Database csak olvasható-alapú számítási feladatokat egy csak olvasható replika kapacitásának betölteni.
-
-## <a name="overview-of-read-scale-out"></a>Horizontális Felskálázás olvasása áttekintése
 
 Prémium szinten lévő minden egyes adatbázishoz ([DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md)) vagy az üzletileg kritikus ([Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md)) automatikusan hozzáférést kapnak az AlwaysON replikák több a rendelkezésre állási SLA-t támogatja.
 
@@ -47,7 +45,7 @@ A replikák előnyeit egyike, hogy a replika mindig a tranzakciós szempontból 
 > [!NOTE]
 > Replikációs a régión belül a késleltetések alacsony, és ebben a helyzetben ritkán fordul elő.
 
-## <a name="connecting-to-a-read-only-replica"></a>Csatlakozás egy csak olvasható replika
+## <a name="connect-to-a-read-only-replica"></a>Csatlakozás egy csak olvasható replika
 
 Olvasási horizontális Felskálázás egy adatbázis engedélyezésekor a `ApplicationIntent` az ügyfél által megadott kapcsolati karakterlánc található a beállítás szabja meg,-e a kapcsolat az írható replikával, vagy egy csak olvasási replikára irányítja-e. Pontosabban Ha a `ApplicationIntent` érték `ReadWrite` (az alapértelmezett érték), a rendszer átirányítja a kapcsolatot az adatbázis írható-olvasható replika. Ez megegyezik a létező esetén. Ha a `ApplicationIntent` érték `ReadOnly`, a kapcsolat csak olvasható replika lesz irányítva.
 
@@ -65,6 +63,8 @@ Server=tcp:<server>.database.windows.net;Database=<mydatabase>;ApplicationIntent
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 ```
 
+## <a name="verify-that-a-connection-is-to-a-read-only-replica"></a>Ellenőrizze, hogy a kapcsolat egy csak olvasható replika
+
 Ellenőrizheti, hogy csatlakozik egy csak olvasható replika a következő lekérdezés futtatásával. Ha csatlakozik egy csak olvasható replika READ_ONLY adja vissza.
 
 ```SQL
@@ -78,7 +78,7 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 
 Alapértelmezés szerint engedélyezve van a olvasási kibővített [felügyelt példány](sql-database-managed-instance.md) üzletileg kritikus. Ez explicit módon engedélyezni kell a [database logikai kiszolgáló elhelyezett](sql-database-logical-servers.md) prémium és üzletileg kritikus szintet. A módszerek engedélyezése és letiltása olvasási horizontális Felskálázás az alábbiakban ismertetjük.
 
-### <a name="enable-and-disable-read-scale-out-using-azure-powershell"></a>Engedélyezheti vagy letilthatja az olvasási horizontális Felskálázás az Azure PowerShell-lel
+### <a name="powershell-enable-and-disable-read-scale-out"></a>PowerShell: Engedélyezze és olvasási kibővített letiltásához
 
 A 2016. December kezelése olvasási horizontális Felskálázás az Azure PowerShell szükséges az Azure PowerShell kiadás vagy újabb. A legújabb PowerShell-verzió, lásd: [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
 
@@ -102,7 +102,7 @@ Hozhat létre egy új adatbázist a olvasási kibővített engedélyezve (cseré
 New-AzureRmSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Enabled -Edition Premium
 ```
 
-### <a name="enabling-and-disabling-read-scale-out-using-the-azure-sql-database-rest-api"></a>Engedélyezése és letiltása olvasási horizontális Felskálázás az Azure SQL Database REST API használatával
+### <a name="rest-api-enable-and-disable-read-scale-out"></a>REST API-val: Engedélyezze és olvasási kibővített letiltásához
 
 Új adatbázis létrehozása az olvasási kibővített engedélyezve van, vagy a engedélyezi vagy letiltja a meglévő adatbázis olvasási kibővített, létrehozása vagy frissítése az adatbázis megfelelő entitásának a `readScale` tulajdonság `Enabled` vagy `Disabled` hasonlóan a az alábbi minta a kérést.
 

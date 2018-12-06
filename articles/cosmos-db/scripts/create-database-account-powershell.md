@@ -1,25 +1,20 @@
 ---
-title: Azure PowerShell-szkript – Azure Cosmos DB SQL API-fiók létrehozása | Microsoft Docs
+title: Azure PowerShell-Példaszkript – egy Azure Cosmos DB SQL API-fiók létrehozása
 description: Azure PowerShell-példaszkript – Azure Cosmos DB SQL API-fiók létrehozása
 services: cosmos-db
-documentationcenter: cosmosdb
-author: SnehaGunda
-manager: kfile
-tags: azure-service-management
 ms.service: cosmos-db
+author: SnehaGunda
+ms.author: sngun
 ms.custom: mvc
 ms.devlang: PowerShell
 ms.topic: sample
-ms.tgt_pltfrm: cosmosdb
-ms.workload: database
 ms.date: 05/10/2017
-ms.author: sngun
-ms.openlocfilehash: 48653dc181df146fbbe1078b4c51cdcaacbef058
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
-ms.translationtype: HT
+ms.openlocfilehash: c6b523837096a34c0a60e164883e325519c4393a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41918893"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955564"
 ---
 # <a name="azure-cosmos-db-create-a-sql-api-account-using-powershell"></a>Azure Cosmos DB: SQL API-fiók létrehozása a PowerShell használatával
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: f7f23a6d645a1d8e16e42e751050d8d91b49e2b3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 472dfc04cea65cab39d177bb214c417d229b71d2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007825"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956720"
 ---
 # <a name="troubleshoot-your-deployment-to-kubernetes-to-azure-stack"></a>A Kubernetes az Azure Stack üzembe helyezés hibaelhárítása
 
@@ -112,8 +112,8 @@ Ha a Kubernetes-fürtöt telepít, a telepítés állapota minden olyan problém
     | Tulajdonság | Leírás |
     | ----     | ----        |
     | Erőforrás | Az erőforrás neve. |
-    | Type (Típus) | Az erőforrás-szolgáltató és az erőforrás típusát. |
-    | Állapot | Az elem állapota. |
+    | Típus | Az erőforrás-szolgáltató és az erőforrás típusát. |
+    | status | Az elem állapota. |
     | Időbélyeg | Az az idő, UTC-időbélyeg. |
     | Művelet részletei | A művelet részleteit, például az erőforrás-szolgáltató, amely során a műveletet az erőforrás-végpont és az erőforrás nevét. |
 
@@ -178,6 +178,6 @@ Naplók lekérése, hajtsa végre az alábbi lépéseket:
 
 [Az Azure Stack üzembe helyezése Kubernetes](azure-stack-solution-template-kubernetes-deploy.md)
 
-[Kubernetes-fürt hozzáadása a Marketplace-en (az Azure Stack-operátorokról)](..\azure-stack-solution-template-kubernetes-cluster-add.md)
+[Kubernetes-fürt hozzáadása a Marketplace-en (az Azure Stack-operátorokról)](../azure-stack-solution-template-kubernetes-cluster-add.md)
 
 [Kubernetes az Azure-ban](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

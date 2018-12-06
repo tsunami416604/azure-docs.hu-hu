@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: quickstart
-ms.date: 11/30/2018
+ms.date: 12/4/2018
 ms.author: victorh
-ms.openlocfilehash: e9a286e4ce510cd673a7069b8b7e7d6f631ffb6a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 9929662f1fe4612e51c82248f64e3191f7fdb223
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726440"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955205"
 ---
 # <a name="quickstart-configure-azure-dns-for-name-resolution-by-using-the-portal"></a>Gyors útmutató: Azure DNS konfigurálása a névfeloldáshoz a portál használatával
 
@@ -30,7 +30,7 @@ You can also perform these steps using [Azure PowerShell](dns-getstarted-powersh
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 Az összes lépései a Portalon, jelentkezzen be a [az Azure portal](https://portal.azure.com).
-   
+
 ## <a name="create-a-dns-zone"></a>DNS-zóna létrehozása
 
 DNS-zóna egy tartomány DNS-bejegyzéseket tartalmaz. Üzemeltessen saját tartományt az Azure DNS-ben, hozzon létre egy DNS-zónát az adott tartománynévhez. 
@@ -68,7 +68,7 @@ A tartomány a DNS-zóna belül hoz létre DNS-bejegyzések vagy rekordok. Hozzo
    - **Élettartam mértékegysége**: válasszon **óra**. Ez az a időegysége a **TTL** értéket. 
    - **IP-cím**: írja be a jelen rövid példában *10.10.10.10*. Ez az érték, oldja fel az IP-címet a rekord nevébe. A való életből vett helyzet kell beírnia a nyilvános IP-címet a webkiszolgáló.
 
-Mivel ez a rövid útmutató egy valódi tartomány nem használ, nincs nem kell konfigurálni az Azure DNS névkiszolgálókat a tartománynév regisztrálójánál az. Egy valódi tartomány érdemes bárki hozzáférhet az interneten keresztül csatlakozni a webalkalmazás-kiszolgáló vagy alkalmazás az állomásnév feloldása. A tartománynév regisztrálójához, és cserélje le az Azure DNS névkiszolgálóit névkiszolgálói rekordjainak fog keresse fel. További információ: [Delegate a domain to Azure DNS](dns-delegate-domain-azure-dns.md) (Tartomány delegálása az Azure DNS-be).
+Mivel ez a rövid útmutató egy valódi tartomány nem használ, nincs nem kell konfigurálni az Azure DNS névkiszolgálókat a tartománynév regisztrálójánál az. Egy valódi tartomány érdemes bárki hozzáférhet az interneten keresztül csatlakozni a webalkalmazás-kiszolgáló vagy alkalmazás az állomásnév feloldása. A tartománynév regisztrálójához, és cserélje le az Azure DNS névkiszolgálóit névkiszolgálói rekordjainak fog keresse fel. További információkért lásd: [oktatóanyag: üzemeltessen saját tartományt az Azure DNS](dns-delegate-domain-azure-dns.md#delegate-the-domain).
 
 ## <a name="test-the-name-resolution"></a>A névfeloldás tesztelése
 
