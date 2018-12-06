@@ -15,12 +15,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 8216dafdd846f10ca1c8fc33b710a093aca20c7b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: bbba7898329af9d9bca9d35883e3cb4097ca3de4
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38473713"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968612"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Az Azure Mobile Appshoz készült .NET háttérkiszolgáló-SDK használata
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -66,7 +66,7 @@ Telepítse a [Azure SDK for .NET] [ 4] (2.9.0-s verzió vagy újabb verzió) az 
 
 1. Nyissa meg a **új projekt** párbeszédpanelen (a **fájl** > **új** > **projekt...** ).
 2. Bontsa ki a **sablonok** > **Visual C#**, és válassza ki **webes**.
-3. Válassza ki **ASP.NET-webalkalmazás**.
+3. Válassza az **ASP.NET Web Application** (ASP.NET-es webalkalmazás) lehetőséget.
 4. Adja meg a projekt nevét. Ezután kattintson az **OK** gombra.
 5. A *ASP.NET 4.5.2 sablonok*válassza **Azure Mobile Apps**. Ellenőrizze **üzemeltetés a felhőben** mobilháttérmodul létrehozása, amelyre a projekt közzéteheti a felhőben.
 6. Kattintson az **OK** gombra.
@@ -131,12 +131,12 @@ A bővítmény használt módszerek a következők:
 A következő NuGet-alapú bővítmény csomagok adja meg az alkalmazás által használható különféle mobil szolgáltatások. Bővítmények az inicializálás során használatával engedélyezheti a **MobileAppConfiguration** objektum.
 
 * [Microsoft.Azure.Mobile.Server.Quickstart] támogatja a Mobile Apps alapszintű beállítás. Meghívásával része a konfigurációnak a **UseDefaultConfiguration** metódust az inicializálás során. Ez a bővítmény tartalmazza a következő kiterjesztések: értesítések, hitelesítés, entitás, táblák, a tartományok közötti és a kezdőlap csomagok. A Mobile Apps – első lépések az Azure Portalon ezt a csomagot használja.
-* [Microsoft.Azure.Mobile.Server.Home](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Home/) valósítja meg az alapértelmezett *ezt a mobilalkalmazást működik-lap* webhely legfelső szintű. Adja hozzá a konfigurációhoz meghívásával a **AddMobileAppHomeController** metódust.
-* [Microsoft.Azure.Mobile.Server.Tables](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Tables/) adatkezelési osztályokat tartalmazza, és a csoportok mentése adatfolyamat. Adja hozzá a konfigurációhoz meghívásával a **AddTables** metódust.
-* [Microsoft.Azure.Mobile.Server.Entity](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Entity/) lehetővé teszi, hogy az Entity Framework adatok elérését az SQL Database-ben. Adja hozzá a konfigurációhoz meghívásával a **AddTablesWithEntityFramework** metódust.
+* [Microsoft.Azure.Mobile.Server.Home](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Home/) valósítja meg az alapértelmezett *ezt a mobilalkalmazást működik-lap* webhely legfelső szintű. Adja hozzá a konfigurációhoz meghívásával a **AddMobileAppHomeController** metódust.
+* [Microsoft.Azure.Mobile.Server.Tables](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Tables/) adatkezelési osztályokat tartalmazza, és a csoportok mentése adatfolyamat. Adja hozzá a konfigurációhoz meghívásával a **AddTables** metódust.
+* [Microsoft.Azure.Mobile.Server.Entity](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Entity/) lehetővé teszi, hogy az Entity Framework adatok elérését az SQL Database-ben. Adja hozzá a konfigurációhoz meghívásával a **AddTablesWithEntityFramework** metódust.
 * [Microsoft.Azure.Mobile.Server.Authentication] lehetővé teszi a hitelesítést és a csoportok felfelé az OWIN közbenső szoftver jogkivonatok érvényesítésére használni. Adja hozzá a konfigurációhoz meghívásával a **AddAppServiceAuthentication** és **IAppBuilder**. **UseAppServiceAuthentication** bővítő metódusokat.
 * [Microsoft.Azure.Mobile.Server.Notifications] lehetővé teszi, hogy leküldéses értesítéseket és a egy leküldéses regisztrációs végpont meghatározása. Adja hozzá a konfigurációhoz meghívásával a **AddPushNotifications** metódust.
-* [Microsoft.Azure.Mobile.Server.CrossDomain](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/) hoz létre egy vezérlő, amely régebbi webböngészők, a Mobile App szolgáltat adatokat. Adja hozzá a konfigurációhoz meghívásával a **MapLegacyCrossDomainController** metódust.
+* [Microsoft.Azure.Mobile.Server.CrossDomain](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/) hoz létre egy vezérlő, amely régebbi webböngészők, a Mobile App szolgáltat adatokat. Adja hozzá a konfigurációhoz meghívásával a **MapLegacyCrossDomainController** metódust.
 * [Microsoft.Azure.Mobile.Server.Login] biztosít a AppServiceLoginHandler.CreateToken() módszer, amely egy egyéni hitelesítési forgatókönyvek során használt statická metoda.
 
 ## <a name="publish-server-project"></a>Útmutató: a kiszolgálói projekt közzététele
@@ -483,10 +483,10 @@ Az aláíró kulcs használata a *authSigningKey* paraméter a helyi alkalmazás
 [5]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#client-added-push-notification-tags
 [6]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#push-to-users
 [Azure Portal]: https://portal.azure.com
-[NuGet.org]: http://www.nuget.org/
-[Microsoft.Azure.Mobile.Server]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/
-[Microsoft.Azure.Mobile.Server.Quickstart]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Quickstart/
-[Microsoft.Azure.Mobile.Server.Authentication]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/
-[Microsoft.Azure.Mobile.Server.Login]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
-[Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
+[NuGet.org]: https://www.nuget.org/
+[Microsoft.Azure.Mobile.Server]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/
+[Microsoft.Azure.Mobile.Server.Quickstart]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Quickstart/
+[Microsoft.Azure.Mobile.Server.Authentication]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/
+[Microsoft.Azure.Mobile.Server.Login]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
+[Microsoft.Azure.Mobile.Server.Notifications]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 [MapHttpAttributeRoutes]: https://msdn.microsoft.com/library/dn479134(v=vs.118).aspx

@@ -1,6 +1,6 @@
 ---
-title: Az App Service konfigurálása környezet 1-es verzió
-description: Konfigurációs felügyeleti és az App Service Environment-környezet v1 monitorozása
+title: Egy App Service konfigurálása környezet v1
+description: Konfigurációs, felügyeleti és az App Service Environment-környezet v1 figyelése
 services: app-service
 documentationcenter: ''
 author: ccompy
@@ -14,185 +14,185 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: 34fb3f15c03a3d3ef5f0a27081539bf0a6d19c5f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 60e086197b61d14394cad3d54a7efc4baede1f7b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23837217"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965820"
 ---
-# <a name="configuring-an-app-service-environment-v1"></a>Alkalmazás konfigurálása szolgáltatás környezet 1-es verzió
+# <a name="configuring-an-app-service-environment-v1"></a>Konfigurálása az App Service környezet v1
 
 > [!NOTE]
-> Ez a cikk az App Service Environment-környezet v1 tárgya.  Az App Service-környezet, amely könnyebben használható, és nagyobb teljesítményű infrastruktúra fut egy újabb verziója van telepítve. További információt az új verzió útmutató a [az App Service Environment bemutatása](intro.md).
+> Ez a cikk az App Service Environment-környezet v1 szól.  Nincs az App Service-környezet, amely egyszerűbb és nagyobb teljesítményű infrastruktúra fut egy újabb verziója. További információ az új verzió elindítása a [az App Service Environment bemutatása](intro.md).
 > 
 
 ## <a name="overview"></a>Áttekintés
-Magas szinten az Azure App Service-környezetek több fő részből áll:
+Magas szintű az Azure App Service-környezet több fő összetevőből áll:
 
-* Az App Service-környezetben üzemeltetett szolgáltatásban futó számítási erőforrásokat
+* Az App Service-környezetben üzemeltetett szolgáltatásban futó számítási erőforrások
 * Storage
 * Egy adatbázis
-* Egy Classic(V1) vagy erőforrás Manager(V2) Azure virtuális hálózatot (VNet) 
-* Az App Service-környezetben üzemeltetett szolgáltatás benne futó alhálózat
+* Classic(V1) vagy az erőforrás Manager(V2) Azure virtuális hálózat (VNet) 
+* Az App Service-környezetben üzemeltetett szolgáltatás fut, az alhálózat
 
-### <a name="compute-resources"></a>Számítási erőforrásokat
-A számítási erőforrásokat használ a négy erőforráskészletek.  Minden egyes App Service környezetben (ASE) rendelkezik egy előtér-webkiszolgálóinak és három lehetséges feldolgozókészletek. Nem kell használnia minden három feldolgozókészletek – Ha azt szeretné, használhatja egy vagy két.
+### <a name="compute-resources"></a>Számítási erőforrások
+A négy erőforráskészletek esetében használja a számítási erőforrások.  Minden App Service Environment (ASE) az előtérrendszerek és három lehetséges feldolgozókészletek rendelkezik. Nem kell használnia minden három feldolgozókészletek – Ha azt szeretné, ugyanúgy használhatja egy vagy két.
 
-Az erőforráskészletek (előtér-webkiszolgálóinak és alkalmazottak) a gazdagépek nem érhetők el közvetlenül a bérlők számára. Remote Desktop Protocol (RDP) használatával csatlakozni hozzájuk, módosítsa a kiépítés nem, vagy működjön, és a rendszergazda az őket.
+Az erőforráskészletek (előtérrendszerekből és) lévő gazdagépek nem érhetők el közvetlenül a bérlők számára. Távoli asztal protokoll (RDP) használatával való kapcsolódást, módosítsa a kiépítés nem, vagy rendszergazdai jogosultságokkal azok szerepét.
 
-Beállíthatja az erőforrás-készlet mennyiségétől és méretétől. Service-környezetben lehetősége van négy mérete, amelyek tartalma P1 P4 keresztül. Ezen méretét és tarifacsomagját kapcsolatos részletekért lásd: [App Service díjszabás](https://azure.microsoft.com/pricing/details/app-service/).
-A mennyiség vagy méretének módosítása a méretezési művelet neve.  Egyszerre csak egy skálázási művelet folyamatban lehet.
+Erőforrás-készlet mennyisége és mérete állíthatja be. Az ASE környezetben négy mérete lehetőségeket, amelyek P1-P4 szintű keresztül címkével rendelkezik. Méretek és a díjszabás részleteiért lásd: [App Service díjszabását](https://azure.microsoft.com/pricing/details/app-service/).
+A mennyiség vagy méretének módosítása a skálázási művelet neve.  Egyszerre csak egy skálázási művelet folyamatban lehet.
 
-**Előtérkiszolgáló-végpontok**: az előtér-webkiszolgálóinak azok a HTTP/HTTPS-végpontok az alkalmazások, amelyek a ASE vannak használatban. Nem futtathatja a munkaterheléseket az előtér-webkiszolgálóinak.
+**Előtér-vége**: az előtérrendszerek a HTTP/HTTPS-végpontok az üzenetsorokban található az ASE nem alkalmazások. Az előtérrendszerek a számítási feladatok ne futtassa.
 
-* Egy ASE kezdődik-e két P2s, amely is elegendő fejlesztési és tesztelési célú alkalmazásokat és az alacsony szintű termelési számítási feladatokhoz. Erősen ajánlott P3s a közepes való nehéz termelési számítási feladatokhoz.
-* Mérsékelt való nehéz termelési számítási feladatokhoz javasoljuk, hogy rendelkezik-e legalább négy P3s annak érdekében, hogy van elegendő előtér-webkiszolgálóinak ütemezett karbantartás bekövetkeztekor. Ütemezett karbantartás tevékenységek egyszerre egy előtér le fogja hozni. Ez csökkenti a teljes elérhető előtér-kapacitás karbantartási tevékenységek során.
-* Előtér-webkiszolgálóinak kiépítését egy óráig is eltarthat. 
-* A további méretezési pontosabb beállításra, célszerű figyelemmel kísérni a processzor, memória százalékos és aktív kérelmek metrikák az előtér-készlet. Ha a CPU és memória százalékos 70 százalék felett P3s futtatásakor, vegyen fel több előtér-webkiszolgálóinak. Az aktív kérések érték a 15 000 a 20 000 kérelmek előtér / átlaga szerepel, ha több előtér-webkiszolgálóinak is fel kell. Végső célja az adatok megőrzése CPU és memória százalékos aránya az alábbi 70 %, és a átlagosan az alábbi 15 000 kérelmek száma az első aktív kérelmek fejeződik be, amikor P3s futtatja.  
+* Az ASE két P2s kezdődik, ez elegendő fejlesztési/tesztelési feladatokhoz és alacsony szintű éles számítási feladatokhoz. Javasoljuk, hogy P3s a közepes (nagy erőforrásigényű) éles számítási feladatokhoz.
+* Közepes (nagy erőforrásigényű) éles számítási feladatok javasoljuk, hogy rendelkezik-e legalább négy P3s nincsenek futó, ütemezett karbantartás esetén elegendő kezelőfelületek biztosítása érdekében. Ütemezett karbantartási tevékenységek egyszerre egy előtér rendszer leállásához. Ez csökkenti a teljes rendelkezésre álló előtér-kapacitás karbantartásának idejére.
+* Az előtérrendszerek órát is igénybe vehet az üzembe helyezni. 
+* A további méretezési finomhangolásra, célszerű figyelemmel kísérni a Processzorhasználat (%), a memóriahasználat (%) és az előtérkészlet aktív kérések metrikáit. Ha a CPU és memória százalékos 70 százalék felett P3s futtatásakor, adjon hozzá további előtérrendszerek. Az aktív kérések érték 15 000 előtér 20 000 kérelemre való átlagának kiszámítása, ha több előtér is hozzá kell adnia. A teljes célja, hogy az alábbi CPU és memória százalékos 70 %-os, és átlagosan kevesebb mint az alábbi 15 000 kérések száma előtér aktív kérések fejeződik be, amikor P3s futtatja.  
 
-**Feldolgozók**: A munkavállalók, az alkalmazások ténylegesen futtatják. Az App Service-csomagokról növelheti, ha a társított feldolgozókészletek munkavállalók mentése használó.
+**Feldolgozók**: A munkavállalók, ahol az alkalmazás ténylegesen fut. Amikor az App Service-csomagok, feldolgozóra a társítva mentést használó.
 
-* Azonnal munkavállalók vehető fel. Ezek kiépítését egy óráig is tarthat.
-* A készlet számítási erőforrás mérete skálázás lépnek frissítés tartományonként < 1 óra. Nincsenek 20 frissítési tartományok Service-környezetben. Ha átméretezi a feldolgozókészleten 10 osztályt számítási méretét, eltarthat, legfeljebb 10 óra szükséges.
-* Ha módosítja a számítási erőforrásokat, amelyek szerepelnek a feldolgozókészleten méretét, az adott munkavégző készletét. a futó alkalmazások hidegindítások miatt.
+* Feldolgozók nem azonnal adhat hozzá. Akkor is igénybe vehet egy óránál üzembe helyezni.
+* Skálázás bármilyen a készlet számítási erőforrás méretét veszi frissítési tartományonként < 1 óra. Az ASE 20 frissítési tartományig találhatók. Ha egy feldolgozói készlethez 10 példányra a számítási mérete Feladatütemezőt is igénybe vehet legfeljebb 10 óráig.
+* A feldolgozókészletek használt számítási erőforrások méretének módosítása esetén okoz a kiküszöbölik az adott feldolgozókészlet futó alkalmazást.
 
-A leggyorsabban a feldolgozókészletek nem minden alkalmazás futó számítási erőforrás méretének módosítása, hogy:
+A feldolgozókészletek nem futtató alkalmazások számítási erőforrás méretének módosítása a leggyorsabb módot kínálni arra, hogy:
 
-* Csökkentheti a dolgozók 2 mennyiségét.  A minimális méret a portálon vertikális: 2. A példányok felszabadítani néhány percig tart. 
-* Válassza ki az új számítási mérete és a példányok száma. Itt tart legfeljebb 2 óra szükséges.
+* Vertikális leskálázás 2 feldolgozó mennyiségét.  A minimális vertikális leskálázási a portálon mérete: 2. Szabadítsa fel a példányok néhány percet vesz igénybe. 
+* Válassza ki az új számítási méret és a példányok számát. Itt akár 2 órát vesz igénybe.
 
-Ha az alkalmazások egy nagyobb számítási erőforrás mérete van szükség, akkor tudják kihasználni az előző útmutatás. Helyett a feldolgozókészleten, amelyen ezek az alkalmazások méretének módosítása, egy másik munkavégző címkészlet, amely a kívánt méretű munkavállalók feltöltéséhez, és az alkalmazások átvitele készlethez.
+Ha az alkalmazások a nagyobb számítási erőforrás mérete, nem előnyeit a korábbi útmutatókban. Ezeket az alkalmazásokat futtató feldolgozókészletként méretének módosítása helyett töltse ki a kívánt méretű feldolgozók használata egy másik munkavégző készletét, és az alkalmazások helyezhet át a készlet.
 
-* Hozzon létre egy másik munkavégző készletét. a további példányait a szükséges számítási méretét. A rendszer tarthat egy órával befejezéséhez.
-* Az App Service-csomagokról üzemeltető az alkalmazásokat, amelyek az újonnan konfigurált munkavégző készletbe nagyobb méretű kell rendelni. Ez az egy gyors műveletet hajtson végre egy percen belül befejeződik.  
-* Az első feldolgozókészletek csökkentheti, ha azokat nem használt példányait többé nem szükséges. Ez a művelet néhány percet is igénybe vehet.
+* Hozzon létre a szükséges számítási méretű további példányok egy másik munkavégző készletét. Ez tarthat, amíg egy órát végrehajtásához.
+* Az App Service-csomagok, amelyek egy nagyobb méretű, az újonnan konfigurált feldolgozói készlethez kell rendelni. Ez az egy gyors művelet, amellyel egy percen belül befejeződik.  
+* Az első feldolgozókészlet csökkentheti, ha többé már nincs szüksége a fel nem használt ezekhez a példányokhoz. Ez a művelet néhány percet vesz igénybe.
 
-**Automatikus skálázás**: az eszközök, amelyek segítségével kezelheti a számítási erőforrás-felhasználás egyik automatikus skálázást. Használhatja az automatikus skálázás előtér- vagy feldolgozókészletek. Vezérelhesse növelje a készlet bármilyen példányai reggel, és csökkenteni a este a. Vagy esetleg adhat hozzá példányok, ha a meghatározott küszöbérték alá esik, a feldolgozókészleten az elérhető száma.
+**Az automatikus skálázás**: az eszközök, amelyek segítségével kezelheti a számítási erőforrás-használat egyik automatikus skálázást. Használhatja az automatikus skálázás az előtér- vagy feldolgozókészletek. Műveleteket, mint növelje a készlet típustól példányok reggel, és csökkenteni esténként. Vagy esetleg adhat hozzá példányok, amikor egy meghatározott küszöbérték alá csökken, elérhető egy feldolgozókészletben száma.
 
-Ha be szeretné állítani a számítási erőforrás készlet metrikák körül automatikus skálázási szabályok, majd vegye figyelembe a kiépítés szükséges idő. App Service Environment-környezetek automatikus skálázás kapcsolatos további tudnivalókért lásd: [automatikus skálázás beállítása az App Service-környezetek][ASEAutoscale].
+Ha szeretné körül számítási erőforrás készletekkel kapcsolatos metrikák az automatikus skálázási szabályok, akkor a tartsa szem előtt szükséges időt. Automatikus méretezés App Service Environment-környezetek kapcsolatos további információkért lásd: [konfigurálása az automatikus méretezés App Service Environment-környezetben][ASEAutoscale].
 
 ### <a name="storage"></a>Storage
-Minden egyes ASE 500 GB tárhelyet van konfigurálva. Ez a terület a ASE összes alkalmazást minden használatosak. Ezt a tárolóhelyet a ASE része, és jelenleg nem állítható át a tárhely használja. Ha módosításának hajt végre a virtuális hálózati útválasztási és a biztonság, továbbra is az Azure Storage – hozzáférési engedélyeznie kell a, vagy a ASE nem működik.
+Minden egyes ASE 500 GB-os tárhelyet van konfigurálva. Ez a hely szolgál az ASE összes alkalmazásában. Ez a tárolóhely egy része az ASE-t, és jelenleg nem állítható át tárhely használata. A virtuális hálózati útválasztást vagy a biztonsági beállításainak hajt végre, ha továbbra is engedélyezi a hozzáférést az Azure Storage-ot kell, vagy az ASE nem fog működni.
 
 ### <a name="database"></a>Adatbázis
-Az adatbázis tartalmazza, amely meghatározza a környezet, valamint a benne futó alkalmazások adatait. Ez túl része az Azure-tárolt előfizetés. Nincs valamit, hogy a közvetlen számítógép kezelése céljából. Ha módosításának hajt végre a virtuális hálózati útválasztási és a biztonság, továbbra is hozzáférjenek az SQL Azure--kell, vagy a ASE nem működik.
+Az adatbázis tartalmazza, amely meghatározza a környezetben, valamint a benne lévő futó alkalmazások adatait. Ez túl egy az Azure-tárolt előfizetés részét képezi. Nem valami, amelyek segítségével kezelheti a közvetlen lehetősége van. A virtuális hálózati útválasztást vagy a biztonsági beállításainak hajt végre, ha továbbra is az SQL Azure – való hozzáférés engedélyezése kell, vagy az ASE nem fog működni.
 
 ### <a name="network"></a>Network (Hálózat)
-A virtuális hálózat, amely a mértékéig szolgál egy, a ASE létrehozása után végrehajtott vagy egy időben végrehajtott lehet. ASE létrehozásakor hozza létre az alhálózatot, ha a virtuális hálózatnak ugyanahhoz az erőforráscsoporthoz tartozik találhatók ASE arra kényszeríti. Ha az erőforráscsoport, használja a ASE eltér a virtuális hálózat van szüksége, akkor szüksége a resource manager-sablon használatával ASE létrehozásához.
+A virtuális hálózattal, az ASE-t használják az ASE létrehozása során végrehajtott vagy a kívánt időben végrehajtott lehet. ASE létrehozása során hozza létre az alhálózatot, ha az ASE-t a virtuális hálózatnak ugyanabban az erőforráscsoportban lenniük arra kényszeríti. Ha a virtuális hálózat, amely eltér az ASE által használt erőforráscsoportot, majd szeretne létrehozni az ASE-t egy resource manager-sablon használatával.
 
-Nincsenek a virtuális hálózat egy ASE használt bizonyos korlátozások vonatkoznak:
+A virtuális hálózaton, az ASE használt bizonyos korlátozások vonatkoznak:
 
-* A virtuális hálózat regionális virtuális hálózatot kell lennie.
-* Kell adni egy alhálózat 8 vagy több címekkel a ASE telepítési helyét.
-* Miután az alhálózat egy ASE futtatására szolgál, az alhálózat címtartománya nem módosítható. Ezért azt javasoljuk, hogy az alhálózat ASE jövőbeli növekedésének legalább 64 címeket tartalmaz.
-* Lehet semmi mást az alhálózat, de a ASE.
+* A virtuális hálózat regionális virtuális hálózat kell lennie.
+* Szükség van egy 8 vagy több címmel rendelkező alhálózatot az ASE telepítési helyét.
+* Miután egy alhálózatot az ASE üzemeltetéséhez, az alhálózat címtartománya nem lehet módosítani. Ezért azt javasoljuk, hogy az alhálózat legalább 64 címeket ASE jövőbeli növekedésének tartalmaz.
+* Lehet semmi mást az alhálózaton, de az ASE-t.
 
-Az üzemeltetett szolgáltatás, amely tartalmazza a ASE eltérően a [virtuális hálózati] [ virtualnetwork] és alhálózati felhasználói felügyelete alatt áll.  A virtuális hálózat a virtuális hálózati felhasználói felületén vagy a Powershellen keresztül felügyelheti.  Egy ASE klasszikus és Resource Manager virtuális hálózat is telepíthető.  A portál és API lép némileg eltérő klasszikus és Resource Manager Vnetek között, de a ASE felhasználói.
+Ellentétben az üzemeltetett szolgáltatás, amely tartalmazza az ASE-t a [virtuális hálózat] [ virtualnetwork] és alhálózati felhasználói felügyelete alatt állnak.  A virtuális hálózat a virtuális hálózati felhasználói felületén vagy a Powershellen keresztül felügyelheti.  Az ASE is üzembe helyezhetők a klasszikus vagy Resource Manager virtuális hálózatot.  A portál és API-élmény némileg eltérőek a hagyományos és erőforrás-kezelői virtuális hálózatok között, de az ASE ebben az esetben ugyanúgy.
 
-A virtuális hálózat, amely egy ASE állomásaként vagy saját RFC1918 IP-címek használhatók, vagy telepítheti a nyilvános IP-címeket.  Ha szeretné használni az IP-tartomány, amely nem fedi RFC1918 (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16), majd a VNet és alhálózat előre ASE létrehozása a ASE által használandó létrehozásához szükséges.
+A virtuális hálózattal, az ASE tárolására használt használhatja bármelyik privát RFC1918 IP-címeket vagy nyilvános IP-címek használhat.  Ha egy IP-címtartományt, amely nem vonatkozik az RFC1918 használni kívánt (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) akkor kell létrehozni a virtuális hálózatot és alhálózatot az ASE létrehozása előtt ASE által használható.
 
-Ez a funkció az Azure App Service helyezi el a virtuális hálózaton, mert az azt jelenti, hogy az alkalmazások, amelyek a ASE érhetők el, amelyeket közzétettek expressroute-on vagy a pont-pont virtuális magánhálózatok (VPN) keresztül közvetlenül erőforrásokat. Az alkalmazásokat, amelyek az App Service-környezet belüli nincs szükség további hálózati funkciókat a virtuális hálózat, amelyen az App Service-környezet számára elérhető erőforrások eléréséhez. Ez azt jelenti, hogy nem kell használnia a virtuális integráció vagy hibrid kapcsolatok a vagy csatlakozik-e a virtuális hálózati erőforrások eléréséhez. Továbbra is használhatja ezeket a szolgáltatásokat is hozzáférését az erőforrásokhoz való hálózatokban, amelyek nem csatlakoznak a virtuális hálózat.
+Mivel ez a képesség az Azure App Service helyezi el a virtuális hálózat, az azt jelenti, hogy az alkalmazások az ASE környezetben üzemeltetett most erőforrásokhoz is hozzáférhet, elérhetővé válnak az ExpressRoute- vagy helyek közötti virtuális magánhálózatok (VPN) keresztül közvetlenül. Az alkalmazásokat, amelyek az App Service-környezetben nincs szükség további hálózati funkciókat a virtuális hálózat, amelyen az App Service-környezet számára elérhető erőforrások eléréséhez. Ez azt jelenti, hogy nem kell erőforrásokhoz való beolvasása, illetve azok a virtuális hálózathoz csatlakoztatott VNET-integráció vagy hibrid kapcsolatok használatával. Továbbra is használhatja ezeket a funkciókat is, ha az erőforrások eléréséhez hálózatokban, amelyek nem csatlakoznak a virtuális hálózathoz.
 
-Virtuális integráció segítségével például egy virtuális hálózat előfizetése van, de nem kapcsolódik a virtuális hálózat, amely a ASE integrálható. Hibrid kapcsolatok továbbra is használhatja, ha más hálózatokhoz, ahogy normális esetben is lévő erőforrások eléréséhez.  
+VNET-integráció segítségével például egy virtuális hálózat az előfizetésben, de nincs csatlakoztatva a virtuális hálózathoz, amely az ASE integrálása. Hibrid kapcsolatok továbbra is használhatja, ha más hálózatokhoz, ugyanúgy, mint a szokásos módon is lévő erőforrások eléréséhez.  
 
-Ha a virtuális hálózatot az ExpressRoute VPN, kell ügyelnie, amely rendelkezik egy ASE útválasztási igényeinek részének. Néhány felhasználó által megadott útvonal (UDR) konfigurációkat, amelyek nem kompatibilisek egy mértékéig van. A virtuális hálózatban az ExpressRoute egy ASE futtatásával kapcsolatos további részletekért lásd: [ExpressRoute rendelkező virtuális hálózatban egy App Service Environment-környezet futó][ExpressRoute].
+Ha a virtuális hálózat az ExpressRoute VPN konfigurálva van, néhány útválasztási igényeinek, amely az ASE rendelkezik tisztában kell lennie. Nincsenek néhány felhasználó által megadott útvonal (UDR) konfiguráció az ASE nem kompatibilisek. Az ASE fut a virtuális hálózat az expressroute-tal kapcsolatos további információkért lásd: [egy virtuális hálózat az expressroute-tal futó App Service-környezet][ExpressRoute].
 
-#### <a name="securing-inbound-traffic"></a>Bejövő adatforgalom biztonságossá tétele
-Bejövő forgalmát a ASE vezérlésére két elsődleges módszere van.  Hálózati biztonsági Groups(NSGs) segítségével szabályozhatja, milyen IP-címek hozzáférhet a ASE Itt [az App Service-környezetek bejövő forgalom vezérlése](app-service-app-service-environment-control-inbound-traffic.md) és a ASE is konfigurálható egy belső terheléselosztási Balancer(ILB).  Ezek a funkciók is együtt is használható, ha szeretné korlátozni a ILB ASE NSG-ket használó hozzáférés.
+#### <a name="securing-inbound-traffic"></a>A bejövő adatforgalom védelme
+A bejövő forgalom átirányítása az ASE két elsődleges módszere van.  Hálózati biztonsági Groups(NSGs) segítségével szabályozhatja, hogy milyen IP címek el tud érni az ASE az itt leírtak szerint [az App Service-környezet bejövő forgalom szabályozása](app-service-app-service-environment-control-inbound-traffic.md) és az ASE konfigurálása belső terheléselosztóval (ILB).  Ezeket a funkciókat is használható együtt, ha szeretné korlátozni a hozzáférést NSG-ket az ILB ASE használatával.
 
-Amikor létrehoz egy ASE, VIP hoz létre a Vneten belül.  Két VIP típusa, a külső és belső van.  Amikor létrehoz egy ASE egy külső virtuális IP-címre a ASE alkalmazások internet irányítható IP-cím elérhetők lesznek. Ha bejelöli a ASE belső egy ILB van konfigurálva, és nem lesz közvetlenül az interneten érhető el.  Egy ILB ASE továbbra is igényel egy külső virtuális IP, de csak az Azure felügyeleti és a karbantartás használja.  
+Az ASE létrehozásakor hoz létre egy VIP-címet a virtuális hálózatban található.  Két virtuális IP-cím típusa, a külső és belső van.  Ha egy külső virtuális IP-cím létrehozásához az ASE az ASE környezetben az alkalmazások internetes irányítható IP-cím-en keresztül elérhető lesz. Amikor kiválasztja az ASE belső konfigurálni szeretne egy ILB, és nem fogja közvetlenül elérhető az internetről.  ILB ASE környezetben is szükség van egy külső virtuális IP-cím, de csak az Azure felügyeleti és a karbantartási használható.  
 
-ILB ASE létrehozásakor adja meg az altartományt, a ILB ASE által használt, és kezelheti az altartomány, megadhatja a saját DNS lesz.  Mivel a tanúsítványt a HTTPS-hozzáféréshez használt kezeléséhez szükséges altartománynév be.  ASE létrehozása után kéri adja meg a tanúsítványt.  További létrehozása, és egy ILB ASE használatáról olvassa el [egy belső terheléselosztó használata az App Service-környezetek][ILBASE]. 
+ILB ASE létrehozása során adja meg az altartományt, az ILB ASE által használt, és kezelheti saját DNS-ÉT adja meg, hogy az altartomány lesz szüksége.  Mivel be az altartomány nevével együtt is kell kezelni a HTTPS-hozzáféréshez használt tanúsítvány.  ASE létrehozása után adja meg a tanúsítványt a rendszer kéri.  További létrehozásáról és használatáról az ILB ASE [belső terheléselosztó használata az App Service-környezet][ILBASE]. 
 
 ## <a name="portal"></a>Portál
-Ön felügyelheti és figyelheti az App Service-környezet az Azure-portálon a felhasználói felület használatával. Ha egy ASE, majd valószínűleg az App Service a jelet látja az oldalsávon. Ez a szimbólum az Azure-portálon az App Service Environment-környezetek képviseli a következőkre használható:
+Felügyelheti, és az App Service-környezet figyelése az Azure Portalon a felhasználói felület használatával. Ha egy ASE Környezethez, majd, valószínűleg az App Service-ben szimbólumot az oldalsávon. Ezt a szimbólumot szolgál, amelyek az App Service Environment az Azure Portalon:
 
 ![App Service Environment-környezet szimbólum][1]
 
-A felhasználói felület, amely felsorolja az App Service Environment-környezetek megnyitásához használhatja az ikonra, vagy válassza ki a sávnyíl (">" jel) alsó részén jelölje be az App Service Environment-környezetek az oldalsávon. A felsorolt ASEs közül válassza ki, nyissa meg a felhasználói felület, amellyel figyelheti és kezelheti azt.
+Nyissa meg a felhasználói felület, amely felsorolja az összes, az App Service Environment-környezetek, hogy az ikon használata vagy válassza ki a francia idézőjelre (">" szimbólum) válassza ki az App Service Environment-környezetek az oldalsáv alján. Az ASE felsorolt egyikének kiválasztásával nyissa meg a felhasználói felület, amellyel monitorozni és kezelni.
 
-![Felhasználói felülete figyelése és az App Service-környezet kezelése][2]
+![Felhasználói felület felügyeléséhez és kezeléséhez az App Service-környezet][2]
 
-Az első panel a ASE néhány tulajdonságát együtt erőforrás készletenként metrika diagram jeleníti meg. A tulajdonságok, amelyek megjelennek a **Essentials** blokk megtalálhatók hiperhivatkozásokat, ekkor megnyílik a panelt, amely társítva hozzá. Például kiválaszthatja a **virtuális hálózati** kattintva nyissa meg a felhasználói felület nevet a virtuális hálózat, amely a ASE futtatja a társított. **App Service-csomagok** és **alkalmazások** panelt, amely ezeket az elemeket, amelyek a ASE a listában minden egyes nyissa meg.  
+Az első panel együtt egy metrikadiagram erőforrás készletenként az ASE néhány tulajdonságát tartalmazza. Egyes látható tulajdonságok a **Essentials** blokk egyúttal hiperhivatkozásokat, ekkor megnyílik a panel, amely társítva van. Például kiválaszthatja a **virtuális hálózat** kattintva nyissa meg a felhasználói felület neve a virtuális hálózat, amely az ASE-t futtatja a társított. **App Service-csomagok** és **alkalmazások** minden egyes nyisson meg, hogy ezeket az elemeket, amelyek az ASE környezetben a többi panelen.  
 
 ### <a name="monitoring"></a>Figyelés
-A diagramok lehetővé teszik a számos különböző Teljesítményelemzési mutatón minden erőforráskészlet megjelenítéséhez. Az előtér-készlet figyelheti a átlagos CPU és memória. A feldolgozókészletek figyelheti a használt és a rendelkezésre álló.
+A diagramok lehetővé teszi különböző teljesítmény-mérőszámok egyes erőforráskészlet. Az előtér-készlet esetén figyelheti az átlagos CPU és memória. A feldolgozókészletek figyelemmel kísérheti a használt, illetve a rendelkezésre álló mennyiség.
 
-Több App Service csomagokban teheti a dolgozók a feldolgozókészleten használatát. A munkaterhelés nem a azonos módon terjesztése, mint az előtér-kiszolgálókkal, így a Processzor- és memóriahasználatról nem rendelkeznek nagy átszállítást megakadályozzák hasznos információkat. Fontos több nyomon követéséhez hány munkavállalók használt és elérhető – különösen akkor, ha az Ön által felügyelt mások számára használja a rendszer.  
+Több App Service-ben csomagok győződjön meg arról is, a feldolgozóra egy használata. A számítási feladatok nem elosztva a ugyanolyan módon, az előtér-kiszolgálókon, így a CPU és memória kihasználtsága nem rendelkeznek átszállítást megakadályozzák a hasznos információk nagy részét. Fontos több nyomon követésére, hány használt feldolgozók és a rendelkezésre álló--különösen akkor, ha mások számára is a rendszer felügyeli.  
 
-Is használhatja az összes követhető nyomon a metrikák a diagramokon riasztások beállítása. Itt riasztások beállításával működik máshol, az App Service-ben. Között állítható be egy riasztás vagy a **riasztások** része, vagy állapotkategóriák vizsgálatát az összes metrikák felhasználói felületén, majd válassza a felhasználói felület **hozzáadása riasztás**.
+Használhatja az összes, hogy nyomon követhetők a diagramokban riasztások beállítása. Itt riasztások beállítása ugyanúgy működik, míg az App Service-ben. Beállíthatja egy riasztás vagy a **riasztások** egy része vagy részletezve bármely metrikák felhasználói Felületet, és kiválasztja a felhasználói felület **riasztás hozzáadása**.
 
 ![Felhasználói felület metrikák][3]
 
-A metrikák csak tárgyalt az App Service Environment-környezet metrikákat. Az alkalmazásszolgáltatási csomag szintjén elérhető metrikák is vannak. Ez azért, ahol figyelési CPU és memória lehetővé teszi a nagy mennyiségű logika.
+Az imént ismertetett metrikák az App Service Environment-környezet metrikákat. Az App Service csomag szintjén rendelkezésre álló metrikák is vannak. Ez az, ahol teszi párosítása Processzor- és figyelése.
 
-Service-környezetben az App Service-csomagok összes dedikált App Service-csomagokról. Ez azt jelenti, hogy az állomásokon futó a lefoglalt, hogy-e App Service-csomag az alkalmazásokat az adott App Service-csomag csak alkalmazásokat. Az App Service-csomag a részletek megtekintéséhez válassza az App Service-csomag bármelyik a listák a ASE felhasználói felületén vagy a **Tallózás App Service-csomagok** (amely tartalmazza az összes).   
+Az ASE környezetben az App Service-csomagok összes dedikált App Service-csomagok. Ez azt jelenti, hogy az csak futó alkalmazások a lefoglalt gazdagépeken App Service-csomag biztosítják az alkalmazások az App Service-csomag. Az App Service-csomag részleteinek megtekintéséhez nyissa meg az App Service-csomag bármelyik a listák az ASE felhasználói felületén vagy a **keresse meg az App Service-csomagok** (amely tartalmazza az összes őket).   
 
 ### <a name="settings"></a>Beállítások
-ASE panel belül egy **beállítások** szakasz néhány fontos képességeket tartalmazza:
+Az ASE panelen van egy **beállítások** számos fontos funkciókat tartalmazó szakaszt:
 
-**Beállítások** > **tulajdonságok**: A **beállítások** panel automatikusan nyitja meg elindítani a ASE panelen. A legfelső **tulajdonságok**. Itt láthatók a redundáns elemeinek több **Essentials**, de mi nagyon hasznos lehet az **virtuális IP-cím**, valamint **kimenő IP-címek**.
+**Beállítások** > **tulajdonságok**: A **beállítások** panel automatikusan megnyitja az ASE panel be állapotba állításakor. Felső **tulajdonságok**. Számos itt megjelenik a redundáns elemeinek **Essentials**, de mi nagyon hasznos **virtuális IP-cím**, valamint **kimenő IP-címek**.
 
-![Beállítások panel és tulajdonságai][4]
+![Beállítások panel és a Tulajdonságok][4]
 
-**Beállítások** > **IP-címek**: a ASE IP Secure Sockets Layer (SSL) alkalmazást hoz létre, ha szüksége van-e az IP SSL-címet. Ahhoz, hogy az beszerzése utólag, a ASE kell IP SSL címek azt birtokló oszthat ki. Egy ASE jön létre, amikor erre a célra egy IP SSL-címmel rendelkezik, de több adhat hozzá. Nincs díj további IP-SSL-címek, ahogy az [App Service díjszabás] [ AppServicePricing] (az SSL-kapcsolatok című szakaszban). A további ár az az IP-SSL ár.
+**Beállítások** > **IP-címek**: Ha az ASE környezetben létrehoz egy IP Secure Sockets Layer (SSL) alkalmazást, egy IP SSL-címmel kell rendelkeznie. Annak érdekében, hogy beszerzése utólag, az ASE kell IP SSL-címek azt birtokló oszthat ki. Az ASE létrehozását követően erre a célra egy IP SSL-címmel rendelkezik, de többet is hozzáadhat. Van számítunk fel további IP SSL-címekhez, ahogyan [App Service díjszabását] [ AppServicePricing] (SSL-kapcsolatok szakaszában). A szolgáltatás az IP SSL ár további díja.
 
-**Beállítások** > **első készlet** / **Feldolgozókészletek**: ezen erőforrás készlet paneleken mindegyikének segítségével elvégezheti a csak az adott erőforráskészlethez, teljesen méretezési az adott erőforráskészletben található vezérlők nyújtása mellett talál információt.  
+**Beállítások** > **Front End-készlet** / **Feldolgozókészletek**: ezek erőforráspanelek készlet minden egyes lehetőséget biztosít az adatokat csak az adott erőforráskészlethez, megtekintheti a Emellett a szolgáltató vezérlők teljes mértékben az adott erőforrás-készlet méretezésére.  
 
-Az alap panel minden erőforráskészlet metrikákat a diagramot biztosít adott erőforráskészlethez. Csakúgy, mint a ASE paneljéről diagramok is nyissa meg a diagramba és állítsa be a kívánt riasztásokat. Riasztás beállítása adott erőforráskészlet ASE paneljéről funkciója ugyanaz, mint az erőforráskészlet végezze el. A munkavégző készletből **beállítások** panelen rendelkezik hozzáféréssel az alkalmazások vagy az App Service-csomagok, amelyek a feldolgozókészleten.
+Az alap panel minden erőforráskészlet készít egy grafikont, metrikákkal adott erőforráskészlethez. Csakúgy, mint az ASE panelen diagramokkal megnyithatja a diagramra és riasztásokat tetszés szerint állíthat be. Ugyanaz, mint az erőforráskészlet ezt beállítást a riasztást az ASE panelen egy adott erőforráskészlet végzi. A feldolgozó készletből **beállítások** panelen hozzáfér minden alkalmazás vagy a feldolgozókészlet futó App Service-csomagok.
 
-![Munkavégző Készletbeállítások felhasználói felület][5]
+![Feldolgozói készlethez beállítások Kezelőfelülete][5]
 
-### <a name="portal-scale-capabilities"></a>Portál méretezési képességek
-Nincsenek három a skálázási műveletek:
+### <a name="portal-scale-capabilities"></a>Portál méretezési képességeit
+Nincsenek három skálázási műveletek:
 
-* IP-címek a ASE elérhető IP-SSL használatának számának módosítása.
-* A számítási erőforrással használja erőforráskészlet a méretének módosítása.
-* Az erőforráskészlet, manuális vagy automatikus skálázás használt számítási erőforrások számának módosítása.
+* IP-címek az ASE IP SSL-használat elérhető számának módosításával.
+* Az erőforráskészlet használt számítási erőforrások méretének módosítása.
+* Manuális vagy automatikus skálázást egy erőforráskészlet használt számítási erőforrások számának módosításával.
 
-A portál háromféleképpen szabályozásához, hogy rendelkezik az erőforrás-készletek a kiszolgálók számát:
+A portálon a rendszer három módon lehet szabályozni az erőforráskészletek rendelkező kiszolgálók számát:
 
-* A skálázási művelet a fő ASE paneljéről tetején. Módosításokat végezheti el több skálázási konfigurációs az előtér- és a feldolgozói készletekbe. Az összes lépésük egyetlen műveletként.
-* Az egyes erőforráskészlet egy manuális skálázási művelet **méretezési** panel, amelyen alatt **beállítások**.
-* Az egyes erőforráskészlet beállítása automatikus skálázás **méretezési** panelen.
+* A skálázási művelet a fő ASE panel tetején. Az előtér- és a feldolgozói tárolókészletekben több skálázási konfigurációs módosításokat végezheti el. Az összes alkalmazásuk egyetlen műveletben.
+* Az egyes erőforráskészlet manuális skálázási művelet **méretezési** panel, amely alatt található **beállítások**.
+* Automatikus méretezés, amely beállítása az egyes erőforráskészlet **méretezési** panelen.
 
-A méretezési művelet a ASE panelen használatához húzza a csúszkát a mennyiség szeretne, és mentse. Ez a felhasználói felület is támogatja a méretének módosítása.  
+Szeretné használni a skálázási művelet az ASE panelen, húzza a csúszkát szeretne, majd mentse a mennyiséget. Ez a felhasználói felület is támogatja a megadott méret módosításával.  
 
-![Skála felhasználói felület][6]
+![Méretezési csoport felhasználói felület][6]
 
-Szeretne használni a manuális vagy automatikus skálázás képesség adott erőforráskészlethez, Ugrás **beállítások** > **első készlet** / **Feldolgozókészletek** szükség szerint. Majd nyissa meg a módosítani kívánt készlettől. Nyissa meg a **beállítások** > **horizontális Felskálázás** vagy **beállítások** > **vertikális Felskálázás**. A **horizontális Felskálázás** panel segítségével kezelhető példány mennyiség. **Vertikális Felskálázás** lehetővé teszik az erőforrás mérete.  
+Használja a manuális vagy automatikus skálázási lehetőségeit egy adott erőforráskészlet, lépjen a **beállítások** > **Front End-készlet** / **Feldolgozókészletek** , a megfelelő. Ezután nyissa meg a készlet, amelyet módosítani szeretne. Lépjen a **beállítások** > **horizontális Felskálázása** vagy **beállítások** > **vertikális Felskálázás**. A **horizontális Felskálázás** panel segítségével szabályozható a példány mennyiség. **Vertikális Felskálázás** segítségével szabályozható az erőforrás mérete.  
 
-![Felhasználói felület skálázási beállításokat][7]
+![Méretezési beállítások Kezelőfelülete][7]
 
-## <a name="fault-tolerance-considerations"></a>Hibatűrési szempontok
-Az App Service-környezet legfeljebb 55 teljes számítási erőforrások használatára konfigurálhatja. Gazdagép munkaterhelések 55 számítási erőforrások, csak 50 használható. Ennek oka kétszeres. Nincs legalább 2 előtér-számítási erőforrásokat.  Amely hagyja, akár 53-feldolgozókészleten kiosztásáért támogatásához. Biztosítja a hibatűrést, meg kell rendelkeznie egy további számítási erőforrást, amely a következő szabályok szerint történik:
+## <a name="fault-tolerance-considerations"></a>– Hibatűrési szempontok
+Beállíthatja, hogy az App Service Environment akár 55 összes számítási erőforrások használatát. 55 számítási erőforrások csak 50 számítási feladatokat futtatni használható. Ennek az az oka dokumentumnak. Nincs legalább 2 előtér számítási erőforrásokat.  Akár 53-as a feldolgozókészlet felosztás támogatása, amely hagyja. Hibatűrés biztosításához, szüksége lesz egy további számítási erőforrás, amely a következő szabályok alapján oszlik:
 
-* Minden egyes feldolgozókészletek kell legalább 1 további számítási erőforrás, amely nem érhető el a munkaterhelés hozzárendelni.
-* A feldolgozókészleten a számítási erőforrások mennyisége a megadott érték fölé megy, majd egy másik számítási erőforrás szükség a hibatűrés érdekében. Ez nem a helyzet az előtér-készletben.
+* Minden feldolgozói készlethez legalább 1 további számítási erőforrás, amely nem lehet hozzárendelni egy munkaterhelés számára elérhető van szüksége.
+* Feldolgozókészletek a számítási erőforrások mennyiségét egy bizonyos érték feletti megfelelően, ha egy másik számítási erőforrásra szükség a hibatűrés. Ez nem a helyzet az előtérkészlet.
 
-Bármely egyetlen feldolgozókészletek belül a hibatűrő követelményei, amely a X a feldolgozókészleten rendelt erőforrások megadott érték:
+Minden olyan egyetlen worker készleten belül a hibatűrés követelmények a következők, amely egy adott feldolgozói készlethez hozzárendelt erőforrások X értéke:
 
-* Ha X 2 és 20 közötti, a munkaterhelések használható használható számítási erőforrások mérete X-1.
-* Ha X 21 és 40 közötti, a munkaterhelések használható használható számítási erőforrások mérete X-2.
-* Ha X 41-es és 53 között, a munkaterhelések használható használható számítási erőforrások mérete X-3.
+* Ha X 2 és 20 közötti, használhatja a számítási feladatokhoz felhasználható számítási erőforrások mennyisége X-1.
+* Ha X 21 és 40 között van, használhatja a számítási feladatokhoz felhasználható számítási erőforrások mennyisége X-2.
+* Ha X a 41-es és az 53-as között van, használhatja a számítási feladatokhoz felhasználható számítási erőforrások mennyisége X-3.
 
-A minimális kezdjen 2 előtér- és 2 feldolgozónak van.  A fenti utasítások majd, Íme néhány példa, hogy elmagyarázza:  
+A minimális erőforrás-igényű 2 előtér- és 2 feldolgozó rendelkezik.  A fenti utasítások az ezt követően az alábbiakban néhány példát, azzal a pontosítással:  
 
-* Ha 30 munkavállalók egyetlen tárolókészlet, majd azok 28 segítségével gazdagép munkaterhelések.
-* Ha 2 feldolgozónak egyetlen tárolókészlet, majd 1 segítségével gazdagép munkaterhelések.
-* Ha 20 munkavállalók egyetlen tárolókészlet, majd 19 segítségével gazdagép munkaterhelések.  
-* Ha 21 munkavállalók egyetlen tárolókészlet, majd továbbra is egyetlen 19 gazdagép munkaterhelések is használható.  
+* Ha 30 feldolgozók az egyetlen, majd azok 28 segítségével számítási feladatokat futtatni.
+* Ha egyetlen 2 feldolgozónak van, majd 1 segítségével számítási feladatokat futtatni.
+* Ha egy készletben 20 feldolgozók, majd 19 segítségével számítási feladatokat futtatni.  
+* Ha egyetlen 21 dolgozók is van, majd továbbra is csak 19 segítségével számítási feladatokat futtatni.  
 
-A hibatűrő aspektus fontos, de tartsa szem előtt, mivel bizonyos küszöbérték feletti méretezni kell. Ha azt szeretné, 20 példányokból is nagyobb kapacitású, folytassa a 22 vagy magasabb mert 21 nem adja hozzá a további kapacitást. Ugyanez igaz állapotra fent 40, ahol a következő kapacitás hozzáadó értéke 42.  
+A hibatűrés aspektus azért fontos, de tartsa szem előtt, meghaladja bizonyos megoldást kell. Ha azt szeretné, nagyobb kapacitású példányok 20-ról, folytassa a 22 vagy magasabb szintű mert 21 nem adja hozzá semmilyen további kapacitást. Ugyanez érvényes fog fent 40, a következő számot, amely hozzáadja a kapacitás esetén 42.  
 
 ## <a name="deleting-an-app-service-environment"></a>App Service-környezet törlése
-Ha törölni szeretné az App Service-környezetek, egyszerűen használja a **törlése** művelet az App Service Environment-környezet panel tetején. Ha így tesz, kérni fogja annak megerősítéséhez, hogy valóban ehhez az App Service-környezet nevét. Vegye figyelembe, hogy ha töröl egy App Service Environment-környezet, törli összes benne lévő tartalom is.  
+Ha szeretné törölni az App Service-környezet, majd egyszerűen használja a **törlése** az App Service Environment-környezet panel tetején lévő művelet. Ha így tesz, a program felszólítja annak ellenőrzéséhez, hogy valóban szeretné ezt az App Service-környezet nevét adja meg. Vegye figyelembe, hogy ha töröl egy App Service Environment-környezet, törölje az összes benne lévő tartalom is.  
 
-![Felhasználói felület App Service-környezet törlése][9]  
+![App Service-környezet felhasználói felület törlése][9]  
 
-## <a name="getting-started"></a>Bevezetés
-App Service Environment-környezetek megkezdéséhez, lásd: [egy App Service Environment-környezet létrehozása](app-service-web-how-to-create-an-app-service-environment.md).
+## <a name="getting-started"></a>Első lépések
+App Service Environment-környezetek használatának megkezdéséhez lásd [App Service-környezet létrehozása](app-service-web-how-to-create-an-app-service-environment.md).
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 
@@ -214,7 +214,7 @@ App Service Environment-környezetek megkezdéséhez, lásd: [egy App Service En
 [HowtoScale]: app-service-web-scale-a-web-app-in-an-app-service-environment.md
 [ControlInbound]: app-service-app-service-environment-control-inbound-traffic.md
 [virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
-[AppServicePricing]: http://azure.microsoft.com/pricing/details/app-service/
+[AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ASEAutoscale]: app-service-environment-auto-scale.md
 [ExpressRoute]: app-service-app-service-environment-network-configuration-expressroute.md
 [ILBASE]: app-service-environment-with-internal-load-balancer.md

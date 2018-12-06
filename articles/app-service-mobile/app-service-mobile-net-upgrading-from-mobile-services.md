@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 2d346739cd2e80546aee921317e278c1cff32b34
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 4fd896e3b26ae66621ba49d1bb8a5d86c0dd63ee
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873138"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963266"
 ---
 # <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>App Service-ben a .NET Azure meglévő Mobile Service frissítése
 Az App Service Mobile egy új módja a Microsoft Azure mobile alkalmazásokat hozhat létre. További tudnivalókért lásd: [Mi a Mobile Apps szolgáltatás?].
@@ -204,7 +204,7 @@ public class TodoItem : ITableData
 Megjegyzés: Ha hibaüzenet jelenik `NotMapped`, vegyen fel egy hivatkozást a szerelvény `System.ComponentModel.DataAnnotations`.
 
 ### <a name="cors"></a>CORS
-A Mobile Services néhány támogatást nyújt a CORS szerint alkalmazásburkoló az ASP.NET CORS megoldás része. Lehetővé teszik a fejlesztők további, így közvetlenül is élvezheti, el lett távolítva a burkolás réteg [ASP.NET CORS-támogatásának](http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api).
+A Mobile Services néhány támogatást nyújt a CORS szerint alkalmazásburkoló az ASP.NET CORS megoldás része. Lehetővé teszik a fejlesztők további, így közvetlenül is élvezheti, el lett távolítva a burkolás réteg [ASP.NET CORS-támogatásának](https://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api).
 
 A fő problémás területek, ha a CORS használatával, amelyek a `eTag` és `Location` fejlécek engedélyezni kell ahhoz, hogy az ügyfél SDK-k megfelelően működjön.
 
@@ -282,7 +282,7 @@ Ha készen áll az új ügyfél verziója, próbálja ki a frissített kiszolgá
 [Azure Portal]: https://portal.azure.com/
 [klasszikus Azure portál]: https://manage.windowsazure.com/
 [Mi a Mobile Apps szolgáltatás?]: app-service-mobile-value-prop.md
-[Mobil alkalmazások kiszolgálói SDK]: http://www.nuget.org/packages/microsoft.azure.mobile.server
+[Mobil alkalmazások kiszolgálói SDK]: https://www.nuget.org/packages/microsoft.azure.mobile.server
 [Add authentication to your mobile app]: app-service-mobile-xamarin-ios-get-started-users.md
 [Azure Scheduler]: /azure/scheduler/
 [Webjobs-feladat]: https://github.com/Azure/azure-webjobs-sdk/wiki

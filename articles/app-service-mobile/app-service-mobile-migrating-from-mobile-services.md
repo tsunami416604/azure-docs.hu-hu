@@ -1,6 +1,6 @@
 ---
-title: Mobilszolgáltatások telepítenek át egy App Service mobilalkalmazás
-description: 'Útmutató: a Mobile Services alkalmazás az App Service Mobile Apps könnyen áttelepítése'
+title: Migrálás Mobile servicesből, egy App Service mobilalkalmazás
+description: Ismerje meg, hogyan lehet egyszerűen migrálhatja a Mobile Services-alkalmazás egy App Service Mobile Apps
 services: app-service\mobile
 documentationcenter: ''
 author: conceptdev
@@ -14,159 +14,159 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: 5001704f47af0c7b07744f1dceb7aa58bdb6448c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7fdbbee27f83a4583390158e456270324967b28a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32158868"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961603"
 ---
-# <a name="article-top"></a>A meglévő Azure Mobile szolgáltatás áttelepítése az Azure App Service
-Az a [Azure App Service általános rendelkezésre állását], Azure Mobile Services-webhelyek könnyen áttelepíthető helyi előnyeit az Azure App Service összes funkcióját.  Ez a dokumentum azt ismerteti, mi történik, ha az Azure App Service telepítheti át webhelyét az Azure Mobile Services.
+# <a name="article-top"></a>A meglévő Azure Mobile Service migrálása az Azure App Service
+Az a [az Azure App Service általános elérhetősége], az Azure Mobile Services-webhelyek könnyen migrálhatók helyi kihasználásához az Azure App Service összes funkcióját.  Ez a dokumentum leírja, mi történik, ha telepítheti át webhelyét az Azure Mobile Services az Azure App Service-ben.
 
-## <a name="what-does-migration-do"></a>Mire áttelepítési? és a hely számára
-Az Azure Mobile szolgáltatás kapcsolja be a Mobile Service egy [Azure App Service] app anélkül, hogy befolyásolná a kódot.  A Notification Hubs, SQL adatkapcsolat, hitelesítési beállításai, ütemezett feladatokat, és tartománynév változatlanok maradnak.  Az Azure Mobile szolgáltatással mobil ügyfelek továbbra is megfelelően működik.  Áttelepítési újraindítja a szolgáltatást, miután a rendszer áthelyezi az Azure App Service.
+## <a name="what-does-migration-do"></a>Mire áttelepítési? a helyhez
+Az Azure Mobile Service migrálása kapcsolja be a mobilszolgáltatás- [Azure App Service] alkalmazás a kód módosítása nélkül.  A Notification Hubs, az SQL adatkapcsolat, hitelesítési beállítások, az ütemezett feladatok és tartománynév változatlan marad.  Az Azure Mobile Service használatával mobil ügyfelek továbbra is a szokott.  Áttelepítési a szolgáltatás újraindítása, miután a rendszer áthelyezi az Azure App Service-ben.
 
 [!INCLUDE [app-service-mobile-migrate-vs-upgrade](../../includes/app-service-mobile-migrate-vs-upgrade.md)]
 
-## <a name="why-migrate"></a>Miért át kell telepítenie a webhely
-Microsoft van javasolja, hogy az áttelepített az Azure Mobile szolgáltatás számára, hogy kihasználja az Azure App Service, beleértve a szolgáltatásait:
+## <a name="why-migrate"></a>Miért kell áttelepítheti webhelyét
+A Microsoft javasolja van, az Azure mobilszolgáltatásokhoz az Azure App Service, beleértve a szolgáltatások előnyeinek áttelepíteni:
 
-* Új üzemeltetési funkciók, például a [WebJobs] és [egyéni tartománynevek].
-* Figyelés és hibaelhárítás [Application Insights].
-* Beépített DevOps tooling, beleértve a [átmeneti üzembe helyezési ponti]visszaállítási és az éles tesztelése.
-* [Automatikus méretezése], terheléselosztás, és [teljesítményfigyelés].
+* Új üzemeltetési funkciók, többek között [WebJobs] és [egyéni tartománynevek].
+* Való megfigyelés és hibaelhárítás [Application Insights].
+* Beépített DevOps-eszközök, beleértve a [előkészítési ponton], visszaállítási és éles tesztelése.
+* [Automatikus vertikális felskálázás], terheléselosztást és [Alkalmazásteljesítmény-figyelés].
 
-Az Azure App Service előnyeiről további információkért lásd: a [Mobile Services vs. App Service] témakör.
+Az Azure App Service előnyeiről további információkért lásd: a [A Mobile Services kontra App Service] témakör.
 
 ## <a name="before-you-begin"></a>Előkészületek
-A webhely fő munka megkezdése előtt készítsen biztonsági másolatot a Mobile Service parancsfájlok és az SQL-adatbázis.
+Mielőtt megkezdené a webhely fő munka, készítsen biztonsági másolatot az SQL database és a Mobile Service parancsfájlok.
 
-## <a name="migrating-site"></a>A helyek áttelepítése
-Az áttelepítési folyamat minden hely egyetlen Azure-régión belül áttelepíti.
+## <a name="migrating-site"></a>A webhelyek áttelepítése
+Az áttelepítési folyamat akkor is áttelepíti egy adott Azure-régión belül minden hely.
 
-A webhely áttelepítése:
+A hely áttelepítéséhez:
 
-1. Jelentkezzen be a [a klasszikus Azure portálon].
-2. Válassza ki a Mobile Service áttelepíteni kívánt régiót.
-3. Kattintson a **áttelepítése az App Service** gombra.
+1. Jelentkezzen be a [Klasszikus Azure portál].
+2. Válassza ki az áttelepíteni kívánt régióban egy Mobilszolgáltatást.
+3. Kattintson a **áttelepítése az App Service-** gombra.
 
-   ![Az áttelepítés gomb][0]
-4. Az áttelepítés az App Service párbeszédpanelen.
-5. Adja meg a Mobile Service nevét található megfelelő mezőbe.  Ha a tartomány neve contoso.azure-mobile.net, majd írja be például *contoso* található megfelelő mezőbe.
+   ![A Migrate-gomb][0]
+4. Olvassa el a áttelepítése az App Service párbeszédpanelen.
+5. Adja meg a mobilszolgáltatás nevét a mezőbe.  Ha a tartománynév contoso.azure-mobile.net, majd adja meg például *contoso* található megfelelő mezőbe.
 6. Az osztásjelek gombra.
 
-A tevékenység figyelése az áttelepítés állapotának figyelése. A webhely jelenik meg, *áttelepítése* a klasszikus Azure-portálon.
+A tevékenység figyelése az áttelepítés állapotának monitorozásához. A webhely jelenik meg *áttelepítése* a klasszikus Azure portálon.
 
   ![Áttelepítési tevékenység figyelése][1]
 
-Minden áttelepítési is igénybe vehet 3 az áttelepítés alatt álló mobilszolgáltatás 15 percig.  A webhely az áttelepítés közben elérhető marad.
-Az áttelepítési folyamat végén a webhely újraindítása.  A hely nem érhető el az újraindítási folyamatot, amely lehet akár egy néhány másodperc alatt.
+Minden áttelepítést is eltarthat, a 3. az áttelepítés alatt álló mobilszolgáltatásonként 15 perc.  A hely elérhető marad a migrálás során.
+Az áttelepítési folyamat végén a hely újraindul.  A hely nem érhető el az újraindítási folyamatot, amely előfordulhat, hogy az elmúlt pár másodperc alatt.
 
-## <a name="finalizing-migration"></a>Az áttelepítés befejezése
-Tervezze meg a webhely egy mobil ügyfél lezárásakor az áttelepítési folyamat tesztelése.  Gondoskodjon arról, hogy minden közös Ügyfélműveletek a mobil ügyfél módosítása nélkül végezheti el.  
+## <a name="finalizing-migration"></a>A Migrálás véglegesítése
+Tesztelje webhelyét a mobil ügyfelekből az áttelepítési folyamat a webhelykiszolgáló tervezze.  Győződjön meg arról, a mobile ügyfél módosítása nélkül az összes közös ügyfél műveletek hajthatók végre.  
 
-### <a name="update-app-service-tier"></a>Válassza ki a megfelelő IP-címek alkalmazásszolgáltatás
-Miután áttelepítette az Azure App Service díjszabás több beleszólása van.
+### <a name="update-app-service-tier"></a>Egy megfelelő App Service-tarifacsomag kiválasztása
+A díjszabás az Azure App Service-ben való migrálás után több beleszólása van.
 
-1. Jelentkezzen be az [Azure portálra].
-2. Válassza ki **összes erőforrás** vagy **alkalmazásszolgáltatások** kattintson az áttelepített Mobile szolgáltatás nevét.
+1. Jelentkezzen be az [Azure Portal].
+2. Válassza ki **összes erőforrás** vagy **App Services** kattintson az áttelepített mobilszolgáltatás nevét.
 3. Alapértelmezés szerint a beállítások panel nyílik meg.
 4. Kattintson a **App Service-csomag** a beállítások menüben.
-5. Kattintson a **Tarifacsomagot** csempére.
-6. Kattintson a csempére a követelményeinek megfelelő, majd **válasszon**.  Kattintson esetleg **összes** az elérhető árképzési szinteket megjelenítéséhez.
+5. Kattintson a **Tarifacsomag** csempére.
+6. Kattintson a csempére az igényeinek megfelelő, majd kattintson a **kiválasztása**.  Szükség lehet, majd kattintson **az összes megtekintése** az elérhető tarifacsomagok megtekintéséhez.
 
-Kiindulási pontként a következő rétegek javasoljuk:
+Kiindulási pontként javasoljuk, hogy az alábbi szinteken:
 
-| Mobilszolgáltatás Tarifacsomagot | Az App Service Tarifacsomagot |
+| Mobilszolgáltatás Tarifacsomag | Az App Service-Tarifacsomag |
 |:--- |:--- |
 | Ingyenes |F1 – Ingyenes |
-| Alapszintű |A K1 Basic |
+| Alapszintű |Alapszintű B1 |
 | Standard |S1 – Standard |
 
-Nincs rugalmasan kiválasztani a tarifacsomag az alkalmazáshoz.  Tekintse meg [App Service szolgáltatás díjszabása] az új App Service díjszabás teljes leírását.
+Nincs jelentős rugalmasságot biztosít az alkalmazás tarifacsomagját jobb választás.  Tekintse meg [App Service szolgáltatás díjszabása] az új App Service díjszabás teljes leírását.
 
 > [!TIP]
-> App Service Standard csomagra tartalmaz számos funkciók, előfordulhat, hogy szeretne használni, beleértve a [átmeneti üzembe helyezési ponti], automatikus biztonsági mentésekhez, és az automatikus skálázást.  Tekintse meg az új képességek, amíg hiba nem!
+> Többek között tartalmazza az App Service Standard szintű, előfordulhat, hogy szeretne használni, számos funkciókhoz is hozzáférést [előkészítési ponton], automatikus biztonsági mentést, és az automatikus skálázást.  Tekintse meg az új képességek, amíg Ön van!
 >
 >
 
-### <a name="review-migration-scheduler-jobs"></a>Tekintse át az áttelepített Feladatütemező feladatai
-A Feladatütemező szolgáltatás körülbelül 30 percet az áttelepítés után nem látható lesz.  Ütemezett feladatok továbbra is fut a háttérben.
-Után szeretné megtekinteni az ütemezett feladatok jelenjenek újra:
+### <a name="review-migration-scheduler-jobs"></a>Tekintse át az áttelepített Scheduler-feladatok
+Scheduler-feladatok teljesítése körülbelül 30 percet az áttelepítés után nem látható lesz.  Ütemezett feladatok továbbra is fut a háttérben.
+Az ütemezett feladatok megtekintéséhez, miután jelenjenek újra:
 
-1. Jelentkezzen be az [Azure portálra].
-2. Válassza ki **Tallózás >**, adja meg **ütemezés** a a *szűrő* mezőbe, majd válassza ki **Feladatütemező gyűjtemények**.
+1. Jelentkezzen be az [Azure Portal].
+2. Válassza ki **Tallózás >**, adja meg **ütemezés** a a *szűrő* mezőbe, majd válassza a **Scheduler gyűjtemények**.
 
-Ingyenes scheduler feladatok érhető el az áttelepítést követő korlátozott számú van.  Tekintse át a használati és a [Azure Scheduler tervek].
+Nincsenek csak korlátozott számú ingyenes scheduler feladatok érhető el az áttelepítést követő.  Tekintse át a használat és a [Az Azure Scheduler-csomagok].
 
-### <a name="configure-cors"></a>A CORS konfigurálása, ha szükséges
-Eltérő eredetű erőforrások megosztása a engedélyezi a webhely egy másik tartományban Web API eléréséhez technika.  Ha az Azure Mobile Services webhelyekhez használ, majd kell a CORS konfigurálása az áttelepítés részeként.  Azure Mobile Services kizárólag a mobileszközök érnek el, ha majd CORS nem kell bizonyos ritkán előforduló esetekben kivéve kell konfigurálni.
+### <a name="configure-cors"></a>Szükség esetén a CORS konfigurálása
+Eltérő eredetű erőforrások megosztása a, hogy a webhelyet, hogy hozzáférni egy webes API egy másik tartományba a technika.  Ha az Azure Mobile Services használata egy kapcsolódó webhelyen, majd kell a CORS konfigurálása az áttelepítés részeként.  Ha a hozzáférés az Azure Mobile Services kizárólag a mobileszközökről, majd CORS nem kell kivételével ritka esetekben kell konfigurálni.
 
-Az áttelepített CORS-beállítások állnak rendelkezésre, a **MS_CrossDomainWhitelist** Alkalmazásbeállítás.  A webhely áttelepítése az App Service CORS-létesítményt a személyes:
+Az áttelepített CORS-beállítások érhetők el, a **MS_CrossDomainWhitelist** alkalmazásbeállítást.  A webhely áttelepítése az App Service CORS-funkció:
 
-1. Jelentkezzen be az [Azure portálra].
-2. Válassza ki **összes erőforrás** vagy **alkalmazásszolgáltatások** kattintson az áttelepített Mobile szolgáltatás nevét.
+1. Jelentkezzen be az [Azure Portal].
+2. Válassza ki **összes erőforrás** vagy **App Services** kattintson az áttelepített mobilszolgáltatás nevét.
 3. Alapértelmezés szerint a beállítások panel nyílik meg.
-4. Kattintson a **CORS** az API menüjében.
-5. Adjon meg egy engedélyezett eredetet található megfelelő mezőbe, minden egyes után nyomja le az ENTER billentyűt.
-6. Ha az engedélyezett Eredeteket listája helyes-e, kattintson a Mentés gombra.
+4. Kattintson a **CORS** API menüjében.
+5. Adja meg minden olyan engedélyezett eredetek található megfelelő mezőbe, mindegyik után nyomja le az Enter.
+6. Miután a engedélyezett származási helyek listájára, helyes-e, kattintson a Mentés gombra.
 
 > [!TIP]
-> Az Azure App Service előnyei egyik futtathatja a mobilszolgáltatás és a webhely ugyanazon a helyen.  További információkért lásd: a [lépések](#next-steps) szakasz.
+> Az Azure App Service előnyei egyik, hogy futtatni lehessen a mobilszolgáltatás és a webhely ugyanazon a helyen.  További információkért lásd: a [lépések](#next-steps) szakaszban.
 >
 >
 
 ### <a name="download-publish-profile"></a>Egy új közzétételi profil letöltése
-A közzétételi profil a webhely megváltozik, miközben az Azure App Service áttelepítése.  Ha azt tervezi, a webhely a Visual Studio közzététele, egy új közzétételi profilt kell.  Az új közzétételi profil letöltése:
+A webhely a közzétételi profil megváltozik, amikor az Azure App Service-ba való migrálás.  Ha azt tervezi, a Visual Studión belül a hely közzé, új közzétételi profilt kell.  Az új közzétételi profil letöltése:
 
-1. Jelentkezzen be az [Azure portálra].
-2. Válassza ki **összes erőforrás** vagy **alkalmazásszolgáltatások** kattintson az áttelepített Mobile szolgáltatás nevét.
-3. Kattintson a **Get közzétételi profil**.
+1. Jelentkezzen be az [Azure Portal].
+2. Válassza ki **összes erőforrás** vagy **App Services** kattintson az áttelepített mobilszolgáltatás nevét.
+3. Kattintson a **közzétételi profil letöltése**.
 
-A PublishSettings-fájl a számítógép letölti.  Általában nevezik *sitename*. PublishSettings.  A közzétételi beállítások importálása a létező projekt:
+A PublishSettings-fájl letöltése a számítógépre.  Általában nevezzük *sitename*. PublishSettings.  A közzétételi beállítások importálása a meglévő projekt:
 
-1. Nyissa meg a Visual Studio és az Azure Mobile Services mobilszolgáltatás-projektet.
-2. Kattintson a jobb gombbal a projektre a a **Megoldáskezelőben** válassza **közzététel...**
+1. Nyissa meg a Visual Studio és az Azure mobilszolgáltatás-projekt.
+2. Kattintson a jobb gombbal a projektre a **Megoldáskezelőben** válassza **Publish...**
 3. Kattintson az **Importálás** gombra
-4. Kattintson a **Tallózás** válassza ki a letöltött közzététele beállításfájl.  Kattintson az **OK** gombra
-5. Kattintson a **kapcsolat ellenőrzése** a közzétételi beállítások munkahelyi biztosításához.
-6. Kattintson a **közzététel** a webhely közzététele.
+4. Kattintson a **Tallózás** , és válassza ki a letöltött közzétételi beállítások fájljában.  Kattintson az **OK** gombra
+5. Kattintson a **kapcsolat ellenőrzése** annak biztosítása érdekében a közzétételi beállítások kezelése.
+6. Kattintson a **közzététel** közzétenni a webhelyen.
 
 ## <a name="working-with-your-site"></a>Az áttelepítés utáni webhely használata
-Az új App Service a munka megkezdéséhez a [Azure portálra] áttelepítés utáni.  Az alábbiakban néhány Megjegyzés a konkrét műveletek végrehajtásához használt a [a klasszikus Azure portálon]App Service-megfelelőjükkel együtt,.
+Az új App Service-használatának kezdő a [Azure Portal] áttelepítés után.  Az alábbiakban néhány Megjegyzés a kötegműveletekkel kapcsolatban meghatározott műveleteket végrehajtani, amellyel a [klasszikus Azure portál], valamint azokat az App Service-megfelelőikre.
 
 ### <a name="publishing-your-site"></a>Töltsön le és az áttelepített hely közzététele
-A webhely git- vagy ftp segítségével érhető el, és képes különböző különböző mechanizmusokkal, beleértve a WebDeploy, TFS, Mercurial, GitHub vagy FTP újból közzé.  Az üzembe helyezési hitelesítő adatok áttelepítése a hely többi részének.  Ha nem állított az üzembe helyezési hitelesítő adatok, vagy nem tárolja őket, visszaállíthatja őket:
+A hely git és ftp-n keresztül érhető el, és is a különböző használható különböző mechanizmusokat, beleértve a WebDeploy, a TFS, a mercurial rendszeren keresztül, a GitHub és a FTP tehető közzé.  Az üzembe helyezési hitelesítő adatok át lesznek telepítve, a többi webhely.  Ha nem adta meg az üzembehelyezési hitelesítő adatokat, vagy nem emlékszik őket, visszaállíthatja őket:
 
-1. Jelentkezzen be az [Azure portálra].
-2. Válassza ki **összes erőforrás** vagy **alkalmazásszolgáltatások** kattintson az áttelepített Mobile szolgáltatás nevét.
+1. Jelentkezzen be az [Azure Portal].
+2. Válassza ki **összes erőforrás** vagy **App Services** kattintson az áttelepített mobilszolgáltatás nevét.
 3. Alapértelmezés szerint a beállítások panel nyílik meg.
 4. Kattintson a **üzembe helyezési hitelesítő adatok** a közzététel a menüben.
 5. Adja meg az új üzembe helyezési hitelesítő adatok a megfelelő mezőkbe, majd kattintson a Mentés gombra.
 
-Ezek a hitelesítő adatok segítségével klónozza a hely a gitet, vagy állítsa be automatikus telepítések a Githubból, TFS vagy Mercurial.  További információkért lásd: a [Azure App Service üzembe helyezési dokumentációja].
+Ezek a hitelesítő adatok segítségével a hely a git használatával klónozza, vagy állítsa be automatikus telepítéseket a GitHub, a TFS vagy a Mercurial.  További információkért lásd: [Azure App Service üzembe helyezési dokumentációja].
 
-### <a name="appsettings"></a>Alkalmazásbeállítások
-A legtöbb beállítások áttelepített mobilszolgáltatás Alkalmazásbeállítások keresztül érhetők el.  Kaphat az alkalmazás beállítások listáját a [Azure portálra].
+### <a name="appsettings"></a>Nastavení aplikace
+A legtöbb áttelepített mobilszolgáltatás beállításainak Alkalmazásbeállítások keresztül érhetők el.  Az alkalmazás beállításai listát kap a [Azure Portal].
 Megtekintéséhez, vagy az alkalmazás beállításainak módosítása:
 
-1. Jelentkezzen be az [Azure portálra].
-2. Válassza ki **összes erőforrás** vagy **alkalmazásszolgáltatások** kattintson az áttelepített Mobile szolgáltatás nevét.
+1. Jelentkezzen be az [Azure Portal].
+2. Válassza ki **összes erőforrás** vagy **App Services** kattintson az áttelepített mobilszolgáltatás nevét.
 3. Alapértelmezés szerint a beállítások panel nyílik meg.
-4. Kattintson a **Alkalmazásbeállítások** az általános menüjében.
-5. Görgessen az alkalmazásbeállítások szakaszhoz, és keresse meg az alkalmazásbeállításhoz.
-6. Kattintson az Alkalmazásbeállítás értéke pedig az az érték szerkesztéséhez.  Kattintson a **mentése** mentheti az értéket.
+4. Kattintson a **Alkalmazásbeállítások** általános menüjében.
+5. Görgessen az alkalmazásbeállítások szakaszhoz, és keresse meg az Alkalmazásbeállítás.
+6. Kattintson az érték szerkesztéséhez Alkalmazásbeállítás értékét.  Kattintson a **mentése** mentheti az értéket.
 
-Egyszerre több alkalmazás beállításai frissítheti.
+Egyszerre több Alkalmazásbeállítások frissítheti.
 
 > [!TIP]
-> Nincsenek két Alkalmazásbeállítások ugyanarra az értékre.  Például előfordulhat, hogy látja *ApplicationKey* és *MS\_ApplicationKey*.  Mindkét Alkalmazásbeállítások frissítése egy időben.
+> Nincsenek ugyanazzal az értékkel két alkalmazás beállítását.  Például előfordulhat, hogy látja *applicationkey-hez* és *MS\_applicationkey-hez*.  Mindkét alkalmazás beállításainak frissítése egy időben.
 >
 >
 
 ### <a name="authentication"></a>Hitelesítés
-Minden hitelesítési beállítások állnak rendelkezésre, a áttelepített hely Alkalmazásbeállítások.  Frissítse a hitelesítési beállításokat, meg kell változtatnia a megfelelő alkalmazás beállításai.  Az alábbi táblázat a hitelesítésszolgáltató a megfelelő alkalmazás beállításait:
+Az áttelepített hely alkalmazásbeállításokként minden hitelesítési beállítások érhetők el.  A hitelesítési beállítások frissítéséhez, meg kell változtatnia a megfelelő beállításokat.  Az alábbi táblázat a hitelesítésszolgáltató megfelelő alkalmazás beállításai láthatók:
 
 | Szolgáltató | Ügyfél-azonosító | Titkos ügyfélkulcs | Egyéb beállítások |
 |:--- |:--- |:--- |:--- |
@@ -176,161 +176,161 @@ Minden hitelesítési beállítások állnak rendelkezésre, a áttelepített he
 | Google |**MS\_GoogleClientID** |**MS\_GoogleClientSecret** | |
 | Azure AD |**MS\_AadClientID** | |**MS\_AadTenants** |
 
-Megjegyzés: **MS\_AadTenants** bérlői tartományok (a "Engedélyezett bérlők" mezőket a Mobile Services portálon) vesszővel tagolt listáját tárolja.
+Megjegyzés: **MS\_AadTenants** tárolódik, (a "Engedélyezett bérlők" mezőket a Mobile Services portálon) bérlő tartományok vesszővel elválasztott listáját.
 
 > [!WARNING]
-> **Ne használja a beállítási menüben a hitelesítési mechanizmusok**
+> **Ne használja a hitelesítési mechanizmusok a beállítások menü**
 >
-> Az Azure App Service biztosít egy külön "no-kód" hitelesítési és engedélyezési rendszer alatt a *hitelesítési / engedélyezési* menüpontra, és a (elavult) *Mobile hitelesítési* beállítás a beállítások menüben.  Ezek a beállítások nem kompatibilisek egy áttelepített Azure Mobile Service.  Is [a hely frissítése](app-service-mobile-net-upgrading-from-mobile-services.md) az Azure App Service hitelesítés előnyeinek kihasználása érdekében.
+> Az Azure App Service-ben külön "kód nélküli" hitelesítési és engedélyezési rendszert biztosít alatt a *hitelesítési / engedélyezési* (elavult) és a beállítások menüben *Mobile hitelesítési* lehetőség a beállítások menüben.  Ezek a beállítások nem kompatibilisek a migrált Azure mobilszolgáltatásokhoz.  Is [a hely frissítése](app-service-mobile-net-upgrading-from-mobile-services.md) kihasználásához az Azure App Service-hitelesítés.
 >
 >
 
 ### <a name="easytables"></a>Data
-A *adatok* a Mobile Servicesben lap váltotta *könnyen táblák* az Azure portálon.  Egyszerű táblák elérése:
+A *adatok* a Mobile Servicesben lap váltotta *könnyen kezelhető táblák* az Azure Portalon.  Könnyen kezelhető táblák elérése:
 
-1. Jelentkezzen be az [Azure portálra].
-2. Válassza ki **összes erőforrás** vagy **alkalmazásszolgáltatások** kattintson az áttelepített Mobile szolgáltatás nevét.
+1. Jelentkezzen be az [Azure Portal].
+2. Válassza ki **összes erőforrás** vagy **App Services** kattintson az áttelepített mobilszolgáltatás nevét.
 3. Alapértelmezés szerint a beállítások panel nyílik meg.
-4. Kattintson a **könnyen táblák** a mobil menüben.
+4. Kattintson a **könnyen kezelhető táblák** a mobil menü.
 
-Egy tábla kattintva vehet fel a **Hozzáadás** gombra kattint, vagy nem érhető el a létező táblák gombra kattintva egy tábla nevét.  Ezen a panelen elvégezhető különböző műveletek többek között:
+Egy tábla kattintva adhat hozzá a **Hozzáadás** gombra, vagy egy Táblanév kattintva férhet hozzá a létező táblák.  Nincsenek a különféle műveleteket végezhet, ezen a panelen többek között:
 
-* Tábla engedélyek módosítása
-* A működési parancsfájlok szerkesztése
+* Tábla engedélyeinek módosítása
+* A működési szkriptek szerkesztése
 * A következő tábla sémáját kezelése
 * A tábla törlése
-* Tartalom törlése
-* A táblázat sorait törlése
+* A tábla tartalmának törlése
+* Adott sorokat a tábla törlése
 
 ### <a name="easyapis"></a>API
-A *API* a Mobile Servicesben lap váltotta *egyszerű API-k* az Azure portálon.  Egyszerű API-k elérésére:
+A *API* a Mobile Servicesben lap váltotta *egyszerű API-k* az Azure Portalon.  Egyszerű API-k elérése:
 
-1. Jelentkezzen be az [Azure portálra].
-2. Válassza ki **összes erőforrás** vagy **alkalmazásszolgáltatások** kattintson az áttelepített Mobile szolgáltatás nevét.
+1. Jelentkezzen be az [Azure Portal].
+2. Válassza ki **összes erőforrás** vagy **App Services** kattintson az áttelepített mobilszolgáltatás nevét.
 3. Alapértelmezés szerint a beállítások panel nyílik meg.
-4. Kattintson a **egyszerű API-k** a mobil menüben.
+4. Kattintson a **egyszerű API-k** a mobil menü.
 
-Az áttelepített API-kat már szerepel a panelt.  Azt is megteheti az API-k ezen a panelen.  Egy adott API kezeléséhez kattintson az API-t.
-Új paneljén módosítsa az engedélyeket, és a parancsfájlok szerkesztése az API-hoz.
+Az áttelepített API-k már szerepelnek a panelen.  Azt is megteheti egy API-t ezen a panelen.  Egy adott API kezeléséhez kattintson az API-t.
+Az új panelen módosítsa az engedélyeket, és a szkriptek szerkesztése az API-hoz.
 
-### <a name="on-demand-jobs"></a>Feladatütemező feladatai
-Az összes Feladatütemező feladatai a Scheduler Feladatgyűjteményei szakasz keresztül érhetők el.  A Feladatütemező szolgáltatás eléréséhez:
+### <a name="on-demand-jobs"></a>Scheduler-feladatok
+Scheduler-feladatok a Scheduler-Feladatgyűjtemények szakasz keresztül érhetők el.  A scheduler-feladatok elérése:
 
-1. Jelentkezzen be az [Azure portálra].
-2. Válassza ki **Tallózás >**, adja meg **ütemezés** a a *szűrő* mezőbe, majd válassza ki **Feladatütemező gyűjtemények**.
-3. Válassza ki a Feladatgyűjtemény a helyhez.  A neve *sitename*-feladatokat.
+1. Jelentkezzen be az [Azure Portal].
+2. Válassza ki **Tallózás >**, adja meg **ütemezés** a a *szűrő* mezőbe, majd válassza a **Scheduler gyűjtemények**.
+3. Válassza ki a Feladatgyűjtemény webhelye számára.  Alkalmazás neve *sitename*-feladatokat.
 4. Kattintson a **beállítások**.
-5. Kattintson a **ütemezőjének** felügyelete alatt.
+5. Kattintson a **Scheduler-feladatok** felügyelet alatt.
 
-Ütemezett feladatok szerepelnek, az áttelepítés előtt megadott gyakorisággal.  Igény szerinti feladatok le vannak tiltva.  Egy igény szerinti feladat futtatásához:
+Ütemezett feladatok jelennek meg az áttelepítés előtt a megadott gyakorisággal.  Igény szerinti feladatok le vannak tiltva.  Egy igény szerinti feladat futtatása:
 
 1. Válassza ki a futtatni kívánt feladat.
-2. Szükség esetén kattintson **engedélyezése** engedélyezni a feladatot.
+2. Ha szükséges, kattintson a **engedélyezése** engedélyezni a feladatot.
 3. Kattintson a **beállítások**, majd **ütemezés**.
-4. Válassza ki a ismétlődése **egyszer**, majd kattintson a **mentése**
+4. Válassza ki a ismétlődésének **egyszer**, majd kattintson a **mentése**
 
-Az igény szerinti feladatok találhatók `App_Data/config/scripts/scheduler post-migration`.  Azt javasoljuk, hogy az összes igény szerinti feladatok [WebJobs] átalakítása vagy [funkciók].  Új Feladatütemező feladatok [WebJobs] írási vagy [funkciók].
+Az igény szerinti feladatok találhatók `App_Data/config/scripts/scheduler post-migration`.  Azt javasoljuk, hogy az összes igény szerinti feladatok [webjobs] konvertálása vagy [Functions].  Új scheduler-feladatok [WebJobs], írási vagy [Functions].
 
-### <a name="notification-hubs"></a>A Notification Hubs
-A Mobile Services Notification Hubs leküldéses értesítések használ.  A következő beállításokkal segítségével csatolja az értesítési központnak a Mobile Service áttelepítés után:
+### <a name="notification-hubs"></a>Notification hubs használatával
+A mobilszolgáltatások leküldéses értesítések a Notification Hubs használ.  Az értesítési központ összekapcsolása a saját mobilszolgáltatás az áttelepítés után a következő beállításokkal használhatók:
 
-| Alkalmazás-beállítás | Leírás |
+| Nastavení aplikace | Leírás |
 |:--- |:--- |
 | **MS\_PushEntityNamespace** |A Notification Hub Namespace |
-| **MS\_NotificationHubName** |Az értesítési központ nevét |
+| **MS\_NotificationHubName** |Az értesítési központ neve |
 | **MS\_NotificationHubConnectionString** |Az értesítési központ kapcsolati karakterlánc |
-| **MS\_NamespaceName** |Egy aliast MS_PushEntityNamespace |
+| **MS\_NamespaceName** |MS_PushEntityNamespace alias |
 
-Az értesítési központ kezeli a [Azure portálra].  Vegye figyelembe az értesítési központ nevét (található ez az alkalmazás beállításokkal):
+Az értesítési központ kezelhető a [Azure Portal].  Megjegyzés: az értesítési központ neve (megtalálhatja az alkalmazásbeállítások használatával):
 
-1. Jelentkezzen be az [Azure portálra].
-2. Válassza ki **Tallózás**> elemre, majd válassza **értesítési központok**
-3. Kattintson a mobilszolgáltatáshoz kapcsolódó értesítési központ nevére.
+1. Jelentkezzen be az [Azure Portal].
+2. Válassza ki **Tallózás**>, majd **Notification hubs használatával**
+3. Kattintson a mobilszolgáltatás társított értesítési központ nevére.
 
 > [!NOTE]
-> Ha az értesítési központ egy "Mixed" típust, nincs látható.  "Mixed" írja be a notification hubs Notification Hubs és a korábbi Service Bus-funkciók használatára.  [Alakítsa át a vegyes névterek] folytatása előtt.  Az átalakítás befejeződése után az értesítési központ megjelenik a [Azure portálra].
+> Ha az értesítési központ egy "Mixed" típust, akkor sem látható.  "Vegyes" írja be a notification hubs Notification Hubs és a régebbi Service Bus-funkciók használatához.  [A vegyes névtér konvertálása] a folytatás előtt.  Az átalakítás befejeződése után az értesítési központ megjelenik a [Azure Portal].
 >
 >
 
-További információkért tekintse át a [Notification Hubs] dokumentációját.
+További információkért tekintse át a [Értesítési központ] dokumentációját.
 
 > [!TIP]
-> Notification Hubs felügyeleti szolgáltatásai a [Azure portálra] továbbra is a képen vannak.  A [a klasszikus Azure portálon] továbbra is elérhető a Notification Hubs kezeléséhez.
+> Notification Hubs felügyeleti funkcióit a [Azure Portal] azok továbbra is előzetes verzióban érhető el.  A [klasszikus Azure portál] továbbra is elérhető, a Notification hubs központok felügyeletéhez.
 >
 >
 
-### <a name="legacy-push"></a>A hagyományos leküldéses beállításai
-Ha a mobilszolgáltatást, a Notification Hubs megjelenése előtt a leküldéses konfigurált, az *örökölt leküldéses*.  Ha leküldéses használ, és nem jelenik meg egy értesítési központot, szerepel a konfigurációs, akkor valószínűleg használ *örökölt leküldéses*.  Ez a szolgáltatás az összes többi szolgáltatás áttelepítése.  Azt javasoljuk azonban, hogy frissítsen a Notification Hubs hamarosan az áttelepítés befejezése után.
+### <a name="legacy-push"></a>Örökölt leküldési beállítások
+A mobilszolgáltatást, a Notification Hubs bevezetése előtt konfigurált leküldéses, ha az *örökölt leküldéses*.  Leküldéses használ, és nem jelenik meg egy értesítési központ szerepel a konfigurációs, akkor valószínűleg használ *örökölt leküldéses*.  Ez a szolgáltatás minden más szolgáltatás áttelepítése.  Azt javasoljuk azonban, hogy frissítsen a Notification Hubs hamarosan az áttelepítés befejeződése után.
 
-Az idő alatt (kivétellel a figyelmet a jelentősebb az APN szolgáltatás tanúsítványát) örökölt leküldéses beállítások érhetők alkalmazás beállításaiban.  Az APNS-tanúsítvány frissítése azáltal, hogy a fájlrendszer a megfelelő fájlt.
+Addig minden a régi leküldéses-beállításokat (a jelentős az APNS-tanúsítvány kivétel) érhetők el az alkalmazásbeállítások.  Az APNS-tanúsítvány frissítése azáltal, hogy a fájlrendszer a megfelelő fájlt.
 
-### <a name="app-settings"></a>Egyéb beállítások
-A következő további beállításokkal: áttelepített Mobile szolgáltatás és a rendelkezésre álló *beállítások* > *Alkalmazásbeállítások*:
+### <a name="app-settings"></a>Más alkalmazás beállításai
+A következő további beállításokkal is a saját mobilszolgáltatás áttelepített elérhető alatt *beállítások* > *Alkalmazásbeállítások*:
 
-| Alkalmazás-beállítás | Leírás |
+| Nastavení aplikace | Leírás |
 |:--- |:--- |
 | **MS\_MobileServiceName** |Az alkalmazás neve |
-| **MS\_MobileServiceDomainSuffix** |A megadott tartománynév előtagja. Egytényezős azure-mobile.net |
-| **MS\_ApplicationKey** |Az alkalmazás kulcs |
+| **MS\_MobileServiceDomainSuffix** |A megadott tartománynév előtagja. azaz azure-mobile.net |
+| **MS\_applicationkey-hez** |Az Alkalmazáskulcs |
 | **MS\_MasterKey** |Az alkalmazás főkulcs |
 
-Az alkalmazás kulcs és a főkulcs megegyeznek az alkalmazás kulcsok eredeti Mobile szolgáltatás.  Különösen az Alkalmazáskulcsot által küldött mobil ügyfelek használatát a mobil API érvényesítéséhez.
+Az Alkalmazáskulcs és a főkulcs megegyeznek az alkalmazás kulcsainak az eredeti Mobile Service-ből.  Különösen az Alkalmazáskulcsot által küldött mobilügyfelek mobil API-használati ellenőrzése.
 
 ### <a name="cliequivalents"></a>Parancssori megfelelője
-Már használhatja a *mobil azure* parancs az Azure Mobile Services hely kezeléséhez.  Ehelyett számos funkciót helyett a *azure hely* parancsot.  A következő táblázat segítségével alakokat található általános jellegű parancsok:
+Már használhatja a *azure mobil* parancsot az Azure Mobile Services-hely kezeléséhez.  Helyette számos függvénye felváltotta a *az azure site* parancsot.  Az alábbi táblázat segítségével keresse meg a megfelelő gyakori parancsok:
 
-| *Az Azure Mobile* parancs | Egyenértékű *Azure Site* parancs |
+| *Az Azure Mobile* parancs | Egyenértékű *Azure webhely* parancs |
 |:--- |:--- |
 | mobil helyek |webhelylistájának helye |
 | mobil listája |webhely-lista |
-| mobil megjelenítése *neve* |hely megjelenítése *neve* |
-| mobil újraindítás *neve* |Újraindítás hely *neve* |
-| mobil helyezze üzembe újra *neve* |hely telepítési helyezze üzembe újra *commitId* *neve* |
-| mobil kulcskészlet *neve* *típus* *érték* |hely appsetting törlése *kulcs* *neve* <br/> hely appsetting hozzáadása *kulcs*=*érték* *neve* |
-| Mobile config lista *neve* |appsetting webhelylista *neve* |
-| Mobile config beolvasása *neve* *kulcs* |hely appsetting megjelenítése *kulcs* *neve* |
-| mobil konfiguráció *neve* *kulcs* |hely appsetting törlése *kulcs* *neve* <br/> hely appsetting hozzáadása *kulcs*=*érték* *neve* |
+| mobil show *neve* |hely megjelenítése *neve* |
+| mobil újraindítás *neve* |Webhely újraindítása *neve* |
+| mobil ismételt üzembe helyezés *neve* |hely központi telepítés ismételt üzembe helyezés *commitId* *neve* |
+| mobil kulcskészletben *neve* *típus* *érték* |webhely Alkalmazásbeállítás törlése *kulcs* *neve* <br/> webhely Alkalmazásbeállítás hozzáadása *kulcs*=*érték* *neve* |
+| Mobile config list *neve* |Alkalmazásbeállítás webhelylista *neve* |
+| Mobile config első *neve* *kulcs* |webhely Alkalmazásbeállítás show *kulcs* *neve* |
+| Mobile config set *neve* *kulcs* |webhely Alkalmazásbeállítás törlése *kulcs* *neve* <br/> webhely Alkalmazásbeállítás hozzáadása *kulcs*=*érték* *neve* |
 | mobil tartománylista *neve* |tartomány webhelylista *neve* |
-| mobil tartomány hozzáadása *neve* *tartomány* |hely tartomány hozzáadása *tartomány* *neve* |
-| mobil tartomány törlése *neve* |webhely tartomány törlése *tartomány* *neve* |
-| mobil méretezési megjelenítése *neve* |hely megjelenítése *neve* |
-| mobil méretezési módosítása *neve* |skála webhelymódot *mód* *neve* <br /> hely méretezési példányok *példányok* *neve* |
-| mobil appsetting lista *neve* |appsetting webhelylista *neve* |
-| mobil appsetting hozzáadása *neve* *kulcs* *érték* |hely appsetting hozzáadása *kulcs*=*érték* *neve* |
-| mobil appsetting törlése *neve* *kulcs* |hely appsetting törlése *kulcs* *neve* |
-| mobil appsetting megjelenítése *neve* *kulcs* |hely appsetting törlése *kulcs* *neve* |
+| mobil tartomány hozzáadása *neve* *tartomány* |Adja hozzá a webhely tartománya *tartomány* *neve* |
+| mobil domain delete *neve* |webhely tartomány törlése *tartomány* *neve* |
+| mobil méretezési show *neve* |hely megjelenítése *neve* |
+| mobil méretezési módosítás *neve* |hely skálázási mód *mód* *neve* <br /> méretezési csoport példányai hely *példányok* *neve* |
+| mobil Alkalmazásbeállítás lista *neve* |Alkalmazásbeállítás webhelylista *neve* |
+| mobil Alkalmazásbeállítás hozzáadása *neve* *kulcs* *érték* |webhely Alkalmazásbeállítás hozzáadása *kulcs*=*érték* *neve* |
+| mobil Alkalmazásbeállítás törlése *neve* *kulcs* |webhely Alkalmazásbeállítás törlése *kulcs* *neve* |
+| mobil Alkalmazásbeállítás show *neve* *kulcs* |webhely Alkalmazásbeállítás törlése *kulcs* *neve* |
 
-A megfelelő alkalmazás-beállítás frissítésével hitelesítés vagy a leküldéses értesítési beállításainak frissítése
-Szerkesztheti a fájlokat, és tegye közzé a webhely, ftp vagy git.
+A megfelelő alkalmazás-beállítás frissítése hitelesítés vagy a leküldéses értesítési beállításainak frissítéséhez.
+Szerkesztheti a fájlokat, és tegye közzé webhelyét az ftp-vagy a git.
 
-### <a name="diagnostics"></a>Diagnosztika és naplózás
+### <a name="diagnostics"></a>Diagnosztikai és naplózási
 Diagnosztikai naplózás általában le van tiltva, az Azure App Service-ben.  Diagnosztikai naplózás engedélyezése:
 
-1. Jelentkezzen be az [Azure portálra].
-2. Válassza ki **összes erőforrás** vagy **alkalmazásszolgáltatások** kattintson az áttelepített Mobile szolgáltatás nevét.
+1. Jelentkezzen be az [Azure Portal].
+2. Válassza ki **összes erőforrás** vagy **App Services** kattintson az áttelepített mobilszolgáltatás nevét.
 3. Alapértelmezés szerint a beállítások panel nyílik meg.
-4. Válassza ki **diagnosztikai naplók** szolgáltatások menüjében.
-5. Kattintson a **ON** esetében a következő naplók kapcsolódnak: **Alkalmazásnaplózást (fájlrendszer)**, **a részletes hibaüzeneteket**, és **sikertelen kérelmek nyomkövetése**
-6. Kattintson a **fájlrendszer** Web server naplózás
+4. Válassza ki **diagnosztikai naplók** a szolgáltatások menüpont alatt.
+5. Kattintson a **ON** esetében a következő naplók kapcsolódnak: **Application Logging (fájlrendszer)**, **részletes hibaüzenetek**, és **sikertelen kérelmek nyomkövetése**
+6. Kattintson a **fájlrendszer** a webkiszolgálói naplózás
 7. Kattintson a **Mentés** gombra.
 
 A naplók megtekintéséhez:
 
-1. Jelentkezzen be az [Azure portálra].
-2. Válassza ki **összes erőforrás** vagy **alkalmazásszolgáltatások** kattintson az áttelepített Mobile szolgáltatás nevét.
+1. Jelentkezzen be az [Azure Portal].
+2. Válassza ki **összes erőforrás** vagy **App Services** kattintson az áttelepített mobilszolgáltatás nevét.
 3. Kattintson a **eszközök** gomb
-4. Válassza ki **naplófolyamot** OBSERVE menüjében.
+4. Válassza ki **Log Stream** a OBSERVE menüpont alatt.
 
-Naplók az ablakban jelennek meg, akkor jönnek létre.  Emellett letöltheti a naplók az üzembe helyezési hitelesítő adatok használatával újabb elemzés céljából. További információkért lásd: a [naplózás] dokumentációját.
+Naplók az ablakban jelennek meg, akkor jönnek létre.  A naplók újabb elemzési az üzembe helyezési hitelesítő adatok használatával is letöltheti. További információkért lásd: a [Logging] dokumentációját.
 
 ## <a name="known-issues"></a>Ismert problémák
-### <a name="deleting-a-migrated-mobile-app-clone-causes-a-site-outage"></a>Egy hely leállás Mobile App át másolat törlése okoz.
-Az Azure PowerShell használatával áttelepített mobilszolgáltatás klónozza, majd törölje a klónozás, a DNS-bejegyzést a termelési service távolítja el.  A webhely már nem elérhető az internetről.  
+### <a name="deleting-a-migrated-mobile-app-clone-causes-a-site-outage"></a>Egy hely szolgáltatáskimaradás törlése a Mobile App áttelepített klón okoz
+Az Azure PowerShell-lel áttelepített mobilszolgáltatás klónozza, majd törli a klón, a DNS-bejegyzést a termelési service távolítja el.  A webhely már nem elérhető az internetről.  
 
-Megoldás: Ha a webhely klónozza, ehhez a portálon keresztül.
+Megoldás: Ha a hely klónozza, tegye meg a portálon keresztül.
 
-### <a name="changing-webconfig-does-not-work"></a>Web.config módosítása nem működik
-Az ASP.NET webhely van, ha módosítja a `Web.config` fájl nem érvényben.  Az Azure App Service összeállít egy megfelelő `Web.config` fájl a Mobile Services futásidejű támogatásához rendszerindítás során.  Egyes beállítások (például egyéni fejlécek) felülbírálhatja egy XML-transzformációs fájl használatával.  Hozzon létre egy fájlt a nevű `applicationHost.xdt` -ezt a fájlt a kell végződnie a `D:\home\site` könyvtárhoz, az Azure szolgáltatásban.  Töltse fel a `applicationHost.xdt` fájlt egy egyéni telepítési parancsfájl használatával, vagy közvetlenül a Kudu használatával.  Az alábbiakban látható egy példa a dokumentum:
+### <a name="changing-webconfig-does-not-work"></a>Módosítja a Web.config nem működik
+Egy ASP.NET-hellyel rendelkezik, ha módosítja a `Web.config` fájl nincs alkalmazva.  Az Azure App Service összeállít egy megfelelő `Web.config` fájl támogatásához a mobilszolgáltatások modul indítása során.  XML-átalakítás fájl használatával bizonyos beállításokat (például egyéni fejlécek) felül lehet bírálni.  Hozzon létre egy fájlt a nevű `applicationHost.xdt` -Ez a fájl végződése a `D:\home\site` az Azure Service könyvtárába.  Töltse fel a `applicationHost.xdt` fájlt egy egyéni üzembehelyezési szkript keresztül, vagy közvetlenül a Kudu használatával.  Az alábbiakban látható egy példa a dokumentum:
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -349,23 +349,23 @@ Az ASP.NET webhely van, ha módosítja a `Web.config` fájl nem érvényben.  Az
 </configuration>
 ```
 
-További információkért lásd: a [XDT átalakítási minták] dokumentációnkat a Githubon.
+További információkért lásd: a [Átalakítás XDT a minták] dokumentációja a Githubon.
 
-### <a name="migrated-mobile-services-cannot-be-added-to-traffic-manager"></a>Áttelepített Mobile Services nem adható hozzá a Traffic Manager
-Traffic Manager-profil létrehozásakor a profilhoz áttelepített mobilszolgáltatás közvetlenül nem választható.  Használja a "külső végpont."  A külső végpont nem vehető Powershellen keresztül.  További információkért lásd: a [Traffic Manager-oktatóanyag](https://azure.microsoft.com/blog/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/).
+### <a name="migrated-mobile-services-cannot-be-added-to-traffic-manager"></a>A mobilszolgáltatások áttelepített nem adható hozzá a Traffic Manager
+Traffic Manager-profil létrehozásakor egy áttelepített mobilszolgáltatást a profilt közvetlenül nem választható.  Használja a "külső végpontját."  A külső végpont csak a Powershellen keresztül lehet hozzáadni.  További információkért lásd: a [Traffic Managerre vonatkozó oktatóanyagban](https://azure.microsoft.com/blog/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/).
 
-## <a name="next-steps"></a>További lépések
-Most, hogy az alkalmazás az App Service át van még több szolgáltatást is használhatja:
+## <a name="next-steps"></a>Következő lépések
+Most, hogy az alkalmazás az App Service szolgáltatásba való áttelepítése, van még több szolgáltatást is használhatja:
 
-* Központi telepítési [átmeneti üzembe helyezési ponti] engedélyezi, hogy a webhely változásainak tesztelése, és végezze el A / B tesztelés.
-* [WebJobs] pótlásáról igény ütemezett feladatokhoz.
-* Is [folyamatosan telepítése] GitHub, a TFS vagy Mercurial létrehozhatja, ha a webhely-webhelyét.
-* Használhat [Application Insights] a webhely figyelésére.
-* A webhely és a mobil API ugyanazt a kódot a szolgálnak.
+* Üzembe helyezés [előkészítési ponton] lehetővé teszik a webhelyen végrehajtott módosítások előkészítéséhez és végezhet A / B tesztelés.
+* [WebJobs] igény szerinti ütemezett feladatok helyett adja meg.
+* Is [folyamatos üzembe helyezését] a hely által a hely összekapcsolása a GitHub, a TFS vagy a Mercurial.
+* Használhat [Application Insights] monitorozhatja webhelyét.
+* Szolgálja ki a webhely és a egy mobil API-jával ugyanazt a kódot.
 
-### <a name="upgrading-your-site"></a>Az Azure Mobile Apps SDK a Mobile Services hely frissítése
-* Node.js-alapú kiszolgáló-projektekhez az új [Mobile Apps Node.js SDK] számos új szolgáltatást nyújt. Például mostantól helyi fejlesztési és hibakeresés, bármely fent 0.10 Node.js verziójával, és az összes Express.js köztes testreszabása.
-* A. A NET-alapú kiszolgáló-projektek, az új [Mobile Apps SDK NuGet-csomagok](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) NuGet függőségekkel több beleszólása van.  Ezeket a csomagokat az új App Service-hitelesítését támogatja, és bármely ASP.NET-projekt állítható össze. Történő frissítéssel kapcsolatos további tudnivalókért lásd: [frissítse a meglévő .NET Mobile szolgáltatást az App Service](app-service-mobile-net-upgrading-from-mobile-services.md).
+### <a name="upgrading-your-site"></a>A Mobile Services-hely frissítése az Azure Mobile Apps SDK
+* Node.js-alapú kiszolgáló-projektekhez az új [A Mobile Apps Node.js SDK] számos új funkciót kínál. Például mostantól helyi fejlesztés és hibakeresés tegye, használja a fenti 0.10-ás bármilyen Node.js-verzió, és bármely szolgáló Express.js közbenső szabhatja.
+* A. NET-alapú kiszolgáló-projektek, az új [Mobile Apps SDK NuGet-csomagok](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) sokkal rugalmasabban adható meg a NuGet-függőségek.  Ezeket a csomagokat az új App Service-hitelesítés támogatásához, és a compose-bármilyen ASP.NET-projekt. Frissítéssel kapcsolatos további tudnivalókért lásd: [a meglévő .NET Mobile Service frissítése az App Service-](app-service-mobile-net-upgrading-from-mobile-services.md).
 
 <!-- Images -->
 [0]: ./media/app-service-mobile-migrating-from-mobile-services/migrate-to-app-service-button.PNG
@@ -375,26 +375,26 @@ Most, hogy az alkalmazás az App Service át van még több szolgáltatást is h
 <!-- Links -->
 [App Service szolgáltatás díjszabása]: https://azure.microsoft.com/pricing/details/app-service/
 [Application Insights]: ../application-insights/app-insights-overview.md
-[Automatikus méretezése]: ../app-service/web-sites-scale.md
+[Automatikus vertikális felskálázás]: ../app-service/web-sites-scale.md
 [Azure App Service]: ../app-service/app-service-web-overview.md
-[a klasszikus Azure portálon]: https://manage.windowsazure.com
-[Azure portálra]: https://portal.azure.com
+[Klasszikus Azure portál]: https://manage.windowsazure.com
+[Azure Portal]: https://portal.azure.com
 [Azure Region]: https://azure.microsoft.com/regions/
-[Azure Scheduler tervek]: ../scheduler/scheduler-plans-billing.md
-[folyamatosan telepítése]: ../app-service/app-service-continuous-deployment.md
-[Alakítsa át a vegyes névterek]: https://azure.microsoft.com/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
-[curl]: http://curl.haxx.se/
-[egyéni tartománynevek]: ../app-service/app-service-web-tutorial-custom-domain.md
-[Fiddler]: http://www.telerik.com/fiddler
-[Azure App Service általános rendelkezésre állását]: https://azure.microsoft.com/blog/announcing-general-availability-of-app-service-mobile-apps/
+[Az Azure Scheduler-csomagok]: ../scheduler/scheduler-plans-billing.md
+[folyamatos üzembe helyezését]: ../app-service/app-service-continuous-deployment.md
+[A vegyes névtér konvertálása]: https://azure.microsoft.com/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
+[curl]: https://curl.haxx.se/
+[Egyéni tartománynevek]: ../app-service/app-service-web-tutorial-custom-domain.md
+[Fiddler]: https://www.telerik.com/fiddler
+[az Azure App Service általános elérhetősége]: https://azure.microsoft.com/blog/announcing-general-availability-of-app-service-mobile-apps/
 [Hybrid Connections]: ../app-service/app-service-hybrid-connections.md
-[naplózás]: ../app-service/web-sites-enable-diagnostic-log.md
-[Mobile Apps Node.js SDK]: https://github.com/azure/azure-mobile-apps-node
-[Mobile Services vs. App Service]: app-service-mobile-value-prop-migration-from-mobile-services.md
-[Notification Hubs]: ../notification-hubs/notification-hubs-push-notification-overview.md
-[teljesítményfigyelés]: ../app-service/web-sites-monitor.md
-[Postman]: http://www.getpostman.com/
-[átmeneti üzembe helyezési ponti]: ../app-service/web-sites-staged-publishing.md
+[Logging]: ../app-service/web-sites-enable-diagnostic-log.md
+[A Mobile Apps Node.js SDK]: https://github.com/azure/azure-mobile-apps-node
+[A Mobile Services kontra App Service]: app-service-mobile-value-prop-migration-from-mobile-services.md
+[Értesítési központ]: ../notification-hubs/notification-hubs-push-notification-overview.md
+[Alkalmazásteljesítmény-figyelés]: ../app-service/web-sites-monitor.md
+[Postman]: https://www.getpostman.com/
+[előkészítési ponton]: ../app-service/web-sites-staged-publishing.md
 [VNet]: ../app-service/web-sites-integrate-with-vnet.md
-[XDT átalakítási minták]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
-[funkciók]: ../azure-functions/functions-overview.md
+[Átalakítás XDT a minták]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
+[Functions]: ../azure-functions/functions-overview.md

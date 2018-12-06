@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 1f5626b1001f2d5deb3fa84d64eab6acf6c94b7e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: dfdabed95d89e02b5a4b23ba23949cd0aaf838f3
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239525"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959395"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>A Mobile Apps és Mobile Services ügyfél- és szerveroldali verziószámozás
 Az Azure Mobile Services legújabb verziója a **Mobile Apps** Azure App Service szolgáltatásával.
@@ -62,7 +62,7 @@ Az alábbi diagram bemutatja az összes ügyfél és kiszolgáló típusú köz�
 
 <!-- IMPORTANT!  The anchors for Mobile Services and Mobile Apps MUST be 1.0.0 and 2.0.0 respectively, since there is an exception error message that uses those anchors. -->
 
-<!-- NOTE: the fwlink to this document is http://go.microsoft.com/fwlink/?LinkID=690568 -->
+<!-- NOTE: the fwlink to this document is https://go.microsoft.com/fwlink/?LinkID=690568 -->
 
 ## <a name="1.0.0"></a>A Mobile Services ügyfél és kiszolgáló
 Az ügyfél SDK-k az alábbi táblázat a kompatibilisek **mobilszolgáltatások**.
@@ -75,7 +75,7 @@ Megjegyzés: a Mobile Services ügyféloldali SDK-k *nem* elküldeni egy fejléc
 | Felügyelt ügyfelek (Windows, a Xamarin) |[1.3.2](https://www.nuget.org/packages/WindowsAzure.MobileServices/1.3.2) |n/a |
 | iOS |[2.2.2](https://aka.ms/gc6fex) |n/a |
 | Android |[2.0.3](https://go.microsoft.com/fwLink/?LinkID=280126) |n/a |
-| HTML |[1.2.7](http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.7.min.js) |n/a |
+| HTML |[1.2.7](https://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.7.min.js) |n/a |
 
 ### <a name="mobile-services-server-sdks"></a>A Mobile *szolgáltatások* server SDK-k
 | Kiszolgálóplatform | Verzió | Elfogadott verzió fejléce |
@@ -128,5 +128,5 @@ A következő kiszolgálói SDK-verziókra verzió ellenőrzése tartalmazza:
 [A Mobile Apps-ügyfelek]: #MobileAppsClients
 
 
-[Mobile App Server SDK]: http://www.nuget.org/packages/microsoft.azure.mobile.server
+[Mobile App Server SDK]: https://www.nuget.org/packages/microsoft.azure.mobile.server
 [Mobilszolgáltatás áttelepítése az Azure App Service-ben]: app-service-mobile-migrating-from-mobile-services.md

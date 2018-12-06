@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 1e5f7ed2fb4c77e0a738cbe6ee6c84b46bc59bb8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f9e863146b78fa510ea6f5b6eb9b3aa0fc4ce926
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230835"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965786"
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Az Azure App Service Web Apps szolgáltatásban PHP konfigurálása
 
@@ -148,7 +148,7 @@ A Zend bővítmények használatával is támogatottak egy **PHP_ZENDEXTENSIONS*
 
 Helyett az alapértelmezett PHP-futtatókörnyezet az App Service Web Apps használhatja egy PHP-futtatókörnyezet, a PHP-szkriptek végrehajtása egészíti ki. Az Ön által megadott modul is konfigurálható, hogy egy `php.ini` fájlt, amely azt adja meg. Egyéni PHP-futtatókörnyezet használata a Web Apps, a következő lépéseket.
 
-1. Szerezzen be egy nem szálbiztos, VC9 vagy VC11 PHP for Windows kompatibilis verziója. A PHP for Windows verziók itt található: [ http://windows.php.net/download/ ]. Régebbi kiadásokban az archívum itt található: [ http://windows.php.net/downloads/releases/archives/ ].
+1. Szerezzen be egy nem szálbiztos, VC9 vagy VC11 PHP for Windows kompatibilis verziója. A PHP for Windows verziók itt található: [ https://windows.php.net/download/ ]. Régebbi kiadásokban az archívum itt található: [ https://windows.php.net/downloads/releases/archives/ ].
 1. Módosítsa a `php.ini` a modulhoz tartozó fájl. Web Apps figyelmen kívül hagyja a rendszer szint – csak irányelvek konfigurációs beállításokat. (Rendszer-szint – csak irányelvek kapcsolatos információkért lásd: [A php.ini fájl irányelvek]).
 1. Igény szerint adhat bővítményeket a PHP-futtatókörnyezet, és engedélyezze azokat a `php.ini` fájlt.
 1. Adjon hozzá egy `bin` a gyökérkönyvtár, és a PHP-futtatókörnyezet, az azt tartalmazó könyvtárba put könyvtárat (például `bin\php`).
@@ -196,7 +196,7 @@ További információkért lásd: a [PHP fejlesztői központ](https://azure.mic
 >
 
 [az ingyenes próbaidőszak]: https://www.windowsazure.com/pricing/free-trial/
-[phpinfo()]: http://php.net/manual/en/function.phpinfo.php
+[phpinfo()]: https://php.net/manual/en/function.phpinfo.php
 [select-php-version]: ./media/web-sites-php-configure/select-php-version.png
 [A php.ini fájl irányelvek]: http://www.php.net/manual/en/ini.list.php
 [. user.ini]: http://www.php.net/manual/en/configuration.file.per-user.php
@@ -206,8 +206,8 @@ További információkért lásd: a [PHP fejlesztői központ](https://azure.mic
 [save-button]: ./media/web-sites-php-configure/save-button.png
 [php-extensions]: ./media/web-sites-php-configure/php-extensions.png
 [handler-mappings]: ./media/web-sites-php-configure/handler-mappings.png
-[http://windows.php.net/download/]: http://windows.php.net/download/
-[http://windows.php.net/downloads/releases/archives/]: http://windows.php.net/downloads/releases/archives/
+[https://windows.php.net/download/]: https://windows.php.net/download/
+[https://windows.php.net/downloads/releases/archives/]: https://windows.php.net/downloads/releases/archives/
 [SETPHPVERCLI]: ./media/web-sites-php-configure/ChangePHPVersion-XPlatCLI.png
 [GETPHPVERCLI]: ./media/web-sites-php-configure/ShowPHPVersion-XplatCLI.png
 [SETPHPVERPS]: ./media/web-sites-php-configure/ChangePHPVersion-PS.png

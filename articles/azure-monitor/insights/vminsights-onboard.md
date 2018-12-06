@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 93cbb9a891f83eed623f095f208319c9071e287e
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: d38c93f1e6e390117ff5d9e8772119ed1c26fd10
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635543"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965530"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Hogyan üzembe helyezni az Azure figyeli, hogy virtuális gépeket (előzetes verzió)
 Ez a cikk bemutatja, hogyan állítható be az Azure Monitor a virtuális gépek az Azure-beli virtuális gépek és virtuálisgép-méretezési csoportok és a környezetben, a virtuális gépek operációs rendszer állapotának figyelésére többek között a felderítés és az alkalmazásfüggőségek leképezése Előfordulhat, hogy futhat őket.  
@@ -48,7 +48,7 @@ Log Analytics-munkaterület az alábbi régiókban jelenleg támogatott:
 >Azure-beli virtuális gépek előre telepített bármely régió és nem korlátozottak a támogatott régiók, a Log Analytics-munkaterületen.
 >
 
-Ha nem rendelkezik egy munkaterületet, létrehozhat keresztül [Azure CLI-vel](../../log-analytics/log-analytics-quick-create-workspace-cli.md)segítségével, [PowerShell](../../log-analytics/log-analytics-quick-create-workspace-posh.md), a a [az Azure portal](../../log-analytics/log-analytics-quick-create-workspace.md), vagy [Azure Resource Manager](../../log-analytics/log-analytics-template-workspace-configuration.md).  Ha engedélyezi az Azure Portalon egy Azure virtuális gép figyelése, lehetősége van, hozzon létre egy munkaterületet a folyamat során.  
+Ha nem rendelkezik egy munkaterületet, létrehozhat keresztül [Azure CLI-vel](../../azure-monitor/learn/quick-create-workspace-cli.md)segítségével, [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md), a a [az Azure portal](../../azure-monitor/learn/quick-create-workspace.md), vagy [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md).  Ha engedélyezi az Azure Portalon egy Azure virtuális gép figyelése, lehetősége van, hozzon létre egy munkaterületet a folyamat során.  
 
 A megoldás engedélyezése a nagy mennyiségű először példahelyzet a következő konfigurálása a Log Analytics-munkaterület:
 
@@ -185,7 +185,7 @@ Ha engedélyezni szeretné az Azure Portalon az Azure Virtuálisgép-monitorozá
 5. Az a **Azure Monitor Insights felvételi** lapon, ha rendelkezik egy meglévő Log Analytics munkaterület ugyanabban az előfizetésben, válassza a legördülő listában.  A lista preselects az alapértelmezett munkaterületre és a helyre, amely a virtuális gép telepítve van az előfizetésben. 
 
     >[!NOTE]
-    >Ha azt szeretné, a virtuális gépről a monitorozási adatok tárolására szolgáló új Log Analytics-munkaterület létrehozásához kövesse a [hozzon létre egy Log Analytics-munkaterület](../../log-analytics/log-analytics-quick-create-workspace.md) a támogatott régiók egyikében korábban felsorolt.   
+    >Ha azt szeretné, a virtuális gépről a monitorozási adatok tárolására szolgáló új Log Analytics-munkaterület létrehozásához kövesse a [hozzon létre egy Log Analytics-munkaterület](../../azure-monitor/learn/quick-create-workspace.md) a támogatott régiók egyikében korábban felsorolt.   
 
 Miután engedélyezte a figyelés, a virtuális gép mérőszámok megtekintéséhez nagyjából 10 percet igénybe vehet. 
 

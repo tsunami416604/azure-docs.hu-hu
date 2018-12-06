@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: cbedb17bb7563620d0d9db81333d9a79301b4ee0
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 926712d8d38f144c583dcf61c3cd0f078566296a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42817508"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963998"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>A Mobile Apps Node.js SDK használata
 
@@ -92,16 +92,16 @@ Ezt az alkalmazást a mobileszközökre optimalizált webes API-t hoz létre egy
 * [Android ügyfél a rövid útmutató]
 * [Apache Cordova-ügyfél gyors üzembe helyezés]
 * [iOS-es ügyfél a rövid útmutató]
-* [Windows Store ügyfél rövid útmutató]
-* [Xamarin.iOS ügyfél rövid útmutató]
-* [Xamarin.Android-ügyfél rövid útmutató]
-* [Xamarin.Forms-ügyfél rövid útmutató]
+* [Windows Store-ügyfél a rövid útmutató]
+* [Xamarin.iOS-ügyfél a rövid útmutató]
+* [Xamarin.Android-ügyfél a rövid útmutató]
+* [Xamarin.Forms-ügyfél a rövid útmutató]
 
 Ez a alapvető alkalmazás találja a kódot a [basicapp minta a Githubon].
 
 ### <a name="howto-vs2015-basicapp"></a>Egy Node.js-háttérrendszer létrehozása a Visual Studio 2015 használatával
 
-Visual Studio 2015-bővítményt az ide Node.js-alkalmazások fejlesztéséhez szükséges. Először telepítse a [Visual Studióhoz készült Node.js Tools 1.1]. Amikor befejezi a telepítést, hozzon létre egy expressz 4.x-es alkalmazás:
+Visual Studio 2015-bővítményt az ide Node.js-alkalmazások fejlesztéséhez szükséges. Először telepítse a [1.1 node.js-eszközök a Visual Studióhoz]. Amikor befejezi a telepítést, hozzon létre egy expressz 4.x-es alkalmazás:
 
 1. Nyissa meg a **új projekt** párbeszédpanel (a **fájl** > **új** > **projekt**).
 1. Bontsa ki a **sablonok** > **JavaScript** > **Node.js**.
@@ -148,11 +148,11 @@ Jelölje be a **tudomásul veszem, hogy ezzel felülírja az összes hely tartal
 
 ### <a name="download-quickstart"></a>Töltse le a Node.js háttér-rövid kód projekt a Git használatával
 
-Ha egy Node.js Mobile Apps-háttéralkalmazás létrehozása a portál használatával **gyors üzembe helyezési** ablaktáblán egy Node.js-projektet létre, és a hely telepítve. A portálon adja hozzá a táblák és API-k, és a Node.js-háttérrendszer tartozó kódfájlok szerkesztése. Különböző központi telepítési eszközök használatával töltse le a háttér-projektet, így hozzáadása vagy módosítása a táblák és API-k, és a projekt majd újbóli. További információkért lásd: a [Azure App Service üzembe helyezési útmutató].
+Ha egy Node.js Mobile Apps-háttéralkalmazás létrehozása a portál használatával **gyors üzembe helyezési** ablaktáblán egy Node.js-projektet létre, és a hely telepítve. A portálon adja hozzá a táblák és API-k, és a Node.js-háttérrendszer tartozó kódfájlok szerkesztése. Különböző központi telepítési eszközök használatával töltse le a háttér-projektet, így hozzáadása vagy módosítása a táblák és API-k, és a projekt majd újbóli. További információkért lásd: a [Az Azure App Service üzembe helyezési útmutató].
 
 Az alábbi eljárás egy Git-tárház használatával töltse le a rövid útmutató projekt kódja:
 
-1. Ha ezt még nem tette meg, telepítse a Git. A Git telepítéséhez szükséges lépések eltérőek lehetnek, operációs rendszerek között. Operációsrendszer-specifikus disztribúciók és a telepítéssel kapcsolatos útmutató: [telepítése Git](http://git-scm.com/book/en/Getting-Started-Installing-Git).
+1. Ha ezt még nem tette meg, telepítse a Git. A Git telepítéséhez szükséges lépések eltérőek lehetnek, operációs rendszerek között. Operációsrendszer-specifikus disztribúciók és a telepítéssel kapcsolatos útmutató: [telepítése Git](https://git-scm.com/book/en/Getting-Started-Installing-Git).
 1. Lásd: [készítse elő a tárház](../app-service/app-service-deploy-local-git.md#prepare-your-repository) ahhoz, hogy a Git-tárházba, a háttér-helyhez. Jegyezze fel a központi telepítési felhasználónevet és jelszót.
 1. A panelen for a Mobile Apps-háttéralkalmazáshoz, jegyezze fel a **Git clone URL-cím** beállítás.
 1. Hajtsa végre a `git clone` parancsot a Git clone URL-cím használatával. Adja meg a jelszót, ha szükséges, az alábbi példában látható módon:
@@ -171,7 +171,7 @@ A hely minden alkalommal, amikor a véglegesítés új készletét a rendszer to
 
 ### <a name="howto-publish-to-azure"></a>A Node.js-háttérrendszer közzététele az Azure-bA
 
-Microsoft Azure lehetőséget kínál számos mechanizmusok közzétételéhez a Mobile Apps Node.js háttér az Azure-szolgáltatás. Ezek a mechanizmusok központi telepítési eszközök a Visual Studio integrált parancssori eszközökkel és verziókövetési alapuló folyamatos üzembe helyezési beállítások. További információkért lásd: a [Azure App Service üzembe helyezési útmutató].
+Microsoft Azure lehetőséget kínál számos mechanizmusok közzétételéhez a Mobile Apps Node.js háttér az Azure-szolgáltatás. Ezek a mechanizmusok központi telepítési eszközök a Visual Studio integrált parancssori eszközökkel és verziókövetési alapuló folyamatos üzembe helyezési beállítások. További információkért lásd: a [Az Azure App Service üzembe helyezési útmutató].
 
 Az Azure App Service rendelkezik konkrét útmutatásért tekintse át Node.js-alkalmazásokhoz a háttérrendszer közzététele előtt:
 
@@ -910,7 +910,7 @@ Könnyen kezelhető táblák használatával létrehozhat és táblák közvetle
 * createdAt
 * updatedAt
 * törölve
-* verzió:
+* version
 
 Az App Service Editor table műveletek is szerkesztheti. Ha bejelöli **könnyen kezelhető táblák** a háttér-webhely között hozzáadása, módosítása és törlése egy táblát. A tábla adatait is megtekintheti.
 
@@ -958,17 +958,17 @@ Az Azure Portalon, a Node.js háttér-parancsfájlok az App Service Editor szerk
 [Android ügyfél a rövid útmutató]: app-service-mobile-android-get-started.md
 [Apache Cordova-ügyfél gyors üzembe helyezés]: app-service-mobile-cordova-get-started.md
 [iOS-es ügyfél a rövid útmutató]: app-service-mobile-ios-get-started.md
-[Xamarin.iOS ügyfél rövid útmutató]: app-service-mobile-xamarin-ios-get-started.md
-[Xamarin.Android-ügyfél rövid útmutató]: app-service-mobile-xamarin-android-get-started.md
-[Xamarin.Forms-ügyfél rövid útmutató]: app-service-mobile-xamarin-forms-get-started.md
-[Windows Store ügyfél rövid útmutató]: app-service-mobile-windows-store-dotnet-get-started.md
+[Xamarin.iOS-ügyfél a rövid útmutató]: app-service-mobile-xamarin-ios-get-started.md
+[Xamarin.Android-ügyfél a rövid útmutató]: app-service-mobile-xamarin-android-get-started.md
+[Xamarin.Forms-ügyfél a rövid útmutató]: app-service-mobile-xamarin-forms-get-started.md
+[Windows Store-ügyfél a rövid útmutató]: app-service-mobile-windows-store-dotnet-get-started.md
 [offline adatszinkronizálást]: app-service-mobile-offline-data-sync.md
 [Az Azure Active Directory-hitelesítés konfigurálása]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
 [Facebook-hitelesítés konfigurálása]: ../app-service/app-service-mobile-how-to-configure-facebook-authentication.md
 [Google-hitelesítés konfigurálása]: ../app-service/app-service-mobile-how-to-configure-google-authentication.md
 [A Microsoft-hitelesítés konfigurálása]: ../app-service/app-service-mobile-how-to-configure-microsoft-authentication.md
 [Twitter-hitelesítés konfigurálása]: ../app-service/app-service-mobile-how-to-configure-twitter-authentication.md
-[Azure App Service üzembe helyezési útmutató]: ../app-service/app-service-deploy-local-git.md
+[Az Azure App Service üzembe helyezési útmutató]: ../app-service/app-service-deploy-local-git.md
 [Az Azure App Service figyelése]: ../app-service/web-sites-monitor.md
 [Az Azure App Service-diagnosztikai naplózás engedélyezése]: ../app-service/web-sites-enable-diagnostic-log.md
 [Az Azure App Service a Visual Studio alkalmazásban hibaelhárításához]: ../app-service/web-sites-dotnet-troubleshoot-visual-studio.md
@@ -976,19 +976,19 @@ Az Azure Portalon, a Node.js háttér-parancsfájlok az App Service Editor szerk
 [Node-modulok használata]: ../nodejs-use-node-modules-azure-apps.md
 [Create a new Azure App Service]: ../app-service/
 [azure-mobile-apps]: https://www.npmjs.com/package/azure-mobile-apps
-[Express]: http://expressjs.com/
-[Swagger]: http://swagger.io/
+[Express]: https://expressjs.com/
+[Swagger]: https://swagger.io/
 
 [Azure Portal]: https://portal.azure.com/
-[OData]: http://www.odata.org
+[OData]: https://www.odata.org
 [Megtartva]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 [basicapp minta a Githubon]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/basic-app
 [Teendőlista-minta a Githubon]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/todo
 [minták könyvtárát a Githubon]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples
 [static-schema sample on GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/static-schema
 [QueryJS]: https://github.com/Azure/queryjs
-[Visual Studióhoz készült Node.js Tools 1.1]: https://github.com/Microsoft/nodejstools/releases/tag/v1.1-RC.2.1
+[1.1 node.js-eszközök a Visual Studióhoz]: https://github.com/Microsoft/nodejstools/releases/tag/v1.1-RC.2.1
 [MSSQL Node.js-csomag]: https://www.npmjs.com/package/mssql
-[Microsoft SQL Server 2014 Express]: http://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
-[ExpressJS közbenső szoftver]: http://expressjs.com/guide/using-middleware.html
+[Microsoft SQL Server 2014 Express]: https://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
+[ExpressJS közbenső szoftver]: https://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
