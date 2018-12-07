@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: 34e6fb195ae64823336684e9ad2e9382316822b0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: c55a80749506b0a03af2f8c5f0179b67c8a78d15
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961074"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016742"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API importálási korlátozások és ismert problémák
 ## <a name="about-this-list"></a>Ez a lista kapcsolatban
@@ -34,6 +34,7 @@ Ha az OpenAPI-dokumentumok importálása hibák azért küldtük Önnek, győző
 * **$ref** mutatók nem hivatkozhatnak külső fájlok.
 * **x-ms-elérési utak** és **x-kiszolgálók** csak támogatott bővítmények.
 * Egyéni bővítmények rendszer figyelmen kívül hagyja az importálás és a nem mentett vagy megőrzi az exportálás.
+* **A rekurzió** -definíciókat definiált rekurzív módon (például tekintse meg magukat) APIM által nem támogatott.
 
 > [!IMPORTANT]
 > Az OpenAPI-importálásról ebben a [dokumentumban](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/) talál fontos információt és cikkeket.

@@ -113,7 +113,7 @@ ms.locfileid: "52276376"
 | | orosz
 | | skóciai kelta
 | | szerb (cirill betűs)
-| | Szerb (cirill, Bosznia és Hercegovina)
+| | Szerb (cirill, Bosznia-Hercegovina)
 | | szerb (latin betűs)
 | | Északi
 | | északi szeszotó

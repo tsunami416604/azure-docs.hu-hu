@@ -10,16 +10,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2f09bd7055b987a8647a24d4ebb6ea5a27888a53
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 56747179c69e6495e9a764f81e0827e29cb077e6
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015587"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017406"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>HDInsight Tools for IntelliJ with hortonworks – tesztkörnyezet használata
 
-Ismerje meg, hogyan Apache Scala-alkalmazások fejlesztése, és tesztelje az alkalmazásokat a HDInsight Tools for IntelliJ használatával [hortonworks – tesztkörnyezet](http://hortonworks.com/products/sandbox/) fut a számítógépen. 
+Ismerje meg, hogyan Apache Scala-alkalmazások fejlesztése, és tesztelje az alkalmazásokat a HDInsight Tools for IntelliJ használatával [hortonworks – tesztkörnyezet](https://hortonworks.com/products/sandbox/) fut a számítógépen. 
 
 [Az IntelliJ IDEA](https://www.jetbrains.com/idea/) van egy Java integrált fejlesztőkörnyezet (IDE) számítógép szoftver fejlesztéséhez. Miután fejlesztése és tesztelik az alkalmazásokat a Hortonworks Sandbox, továbbléphet az alkalmazásokat a [Azure HDInsight](apache-hadoop-introduction.md).
 
@@ -29,7 +29,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 - Hortonworks Data Platform (HDP) 2.4 a Hortonworks Sandbox fut a helyi számítógépen. HDP beállításával kapcsolatban lásd: [Ismerkedés a Hadoop-ökoszisztéma a virtuális gépen egy Hadoop-tesztkörnyezet](apache-hadoop-emulator-get-started.md). 
     > [!NOTE]
-    > IntelliJ-hez készült HDInsight-eszközök csak a HDP 2.4 tesztelték. Első HDP 2.4, bontsa ki a **Hortonworks Sandbox archív** a a [hortonworks – tesztkörnyezet tölti le a hely](http://hortonworks.com/downloads/#sandbox).
+    > IntelliJ-hez készült HDInsight-eszközök csak a HDP 2.4 tesztelték. Első HDP 2.4, bontsa ki a **Hortonworks Sandbox archív** a a [hortonworks – tesztkörnyezet tölti le a hely](https://hortonworks.com/downloads/#sandbox).
 
 - [Java fejlesztői készlet (JDK) 1.8-as vagy újabb verzió](https://aka.ms/azure-jdks). IntelliJ-hez készült Azure-eszközkészlet JDK van szükség.
 

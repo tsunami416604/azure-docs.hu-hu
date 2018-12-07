@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/09/2018
+ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: ''
-ms.openlocfilehash: 0adc821f7a3d5b059d549509b7ed18cda95b86bc
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 99e42f404fe103f406c4b3835f8c455bc2b91e07
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52273799"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017688"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Az Azure Cost Managementbe a felhőbe való befektetéséből optimalizálása
 
@@ -140,7 +140,7 @@ További információkért lásd: [költségelemzés](quick-acm-cost-analysis.md
 
 ### <a name="export-billing-data-on-a-schedule"></a>Ütemezés szerint számlázási adatok exportálása
 
-Van szüksége a számlázási adatokat importálni külső rendszerek, például egy irányítópulton vagy pénzügyi rendszer? Napi le kézzel elkerülése érdekében minden hónap fájlok automatikus jelentéseket ütemezhet. Exportálhatja a számlázási adatokat az Azure storage-fiókba, és értesítést kaphat használatával és [Műveletcsoportok](../monitoring-and-diagnostics/monitoring-action-groups.md). Ezután az Azure-beli adatait segítségével egyéni adatok, amelyek segítségével használhatja a saját rendszerekhez való összevonásához.
+Van szüksége a számlázási adatokat importálni külső rendszerek, például egy irányítópulton vagy pénzügyi rendszer? Állítsa be az Azure Storage automatikus export, és manuálisan tölt le fájlokat minden hónapban. Ezután könnyedén állíthat be más rendszerekkel való automatikus Integrációk szinkronban tartani az elszámolási adatok.
 
 Számlázási adatok exportálása kapcsolatos további információkért lásd: [létrehozása és kezelése az exportált adatok](tutorial-export-acm-data.md).
 

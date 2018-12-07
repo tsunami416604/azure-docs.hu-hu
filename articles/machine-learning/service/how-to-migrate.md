@@ -52,7 +52,7 @@ Tudjon meg többet [mi változott, ebben a kiadásban](overview-what-happened-to
 
 Erőforrások, például a kísérletezés-fiókokat, a modellkezelési fiókok és a machine learning számítási környezetek nem át az Azure Machine Learning szolgáltatás legújabb verziójára. Tekintse meg a [ütemterv](overview-what-happened-to-workbench.md#timeline) a mennyi az eszközök továbbra is működni fog.
 
-Hozzon létre egy Azure Machine Learning szolgáltatás munkaterületén az első lépések a legújabb verzióra a [az Azure portal](quickstart-get-started.md). A portál munkaterület irányítópultjának használata csak Edge, Chrome és Firefox böngészőkkel támogatott.
+Hozzon létre egy Azure Machine Learning szolgáltatás munkaterületén az első lépések a legújabb verzióra a [az Azure portal](quickstart-get-started.md). A portál munkaterület irányítópultjának használata csak Microsoft Edge, Chrome és Firefox böngészőkkel támogatott.
 
 Ehhez az új munkaterülethez a legfelső szintű szolgáltatás-erőforrás, és lehetővé teszi, hogy az összes az Azure Machine Learning szolgáltatás legújabb funkcióit használja. További tudnivalók ezzel [munkaterületet és architektúra](concept-azure-machine-learning-architecture.md).
 

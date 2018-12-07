@@ -27,7 +27,7 @@ Ez az oktatóanyag a Storage oktatóanyag-sorozat második része. Kibővíti az
 
 Az Azure CLI és az Azure Portal segítségével hozzáadja az átméretezési funkciót egy meglévő képfeltöltő alkalmazáshoz.
 
-![Közzétett webalkalmazás az Edge böngészőben](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+![Közzétett webalkalmazás a Microsoft Edge böngészőben](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -183,7 +183,7 @@ Kattintson a **Fényképek feltöltése** területre egy fájl kiválasztásáho
 
 Figyelje meg, hogy miután a feltöltött kép eltűnik, a feltöltött kép másolata megjelenik a **Létrehozott miniatűrök** nevű forgó képválasztón. A függvény átméretezte a képet, hozzáadta a *miniatűrök* tárolóhoz, a webes ügyfél pedig letöltötte a képet.
 
-![Közzétett webalkalmazás az Edge böngészőben](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png) 
+![Közzétett webalkalmazás a Microsoft Edge böngészőben](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png) 
 
 ## <a name="next-steps"></a>További lépések
 

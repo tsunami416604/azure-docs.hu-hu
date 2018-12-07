@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: fc5f27ee17ba750e47c5609d9deb94d7f7c9dd8a
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 074e2dd932cada5ae46ee0423dbc29fc8bc7495d
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51631557"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016776"
 ---
 # <a name="get-started-with-a-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Ismerkedés az Apache Hadoop-tesztkörnyezet, egy-egy virtuális gépen emulátoron
 
@@ -27,7 +27,7 @@ Ismerje meg, hogyan lehet telepíteni az Apache Hadoop-tesztkörnyezet Hortonwor
 
 
 ## <a name="download-and-install-the-virtual-machine"></a>Töltse le és telepítse a virtuális gép
-1. Keresse meg a [Hortonworks letölti](http://hortonworks.com/downloads/#sandbox).
+1. Keresse meg a [Hortonworks letölti](https://hortonworks.com/downloads/#sandbox).
 
 2. Kattintson a **töltse le a VIRTUALBOX** töltheti le a legújabb hortonworks – tesztkörnyezet egy virtuális gépen. Azure a Hortonworks közreműködésével regisztrálni a letöltés megkezdése előtt kéri. Töltse le a hálózat sebességétől függően egy-két órát vesz igénybe.
    
@@ -78,6 +78,6 @@ Töltse le egy régebbi HDP verzió védőfal, bontsa ki az archívum:
 
 ## <a name="next-steps"></a>További lépések
 * [Ismerje meg, hogyan használható a Visual Studio a hortonworks – tesztkörnyezet](../hdinsight-hadoop-emulator-visual-studio.md)
-* [Tanulási a köteleknek, a hortonworks – tesztkörnyezet](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
-* [Hadoop oktatóanyag – HDP – első lépések](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
+* [Tanulási a köteleknek, a hortonworks – tesztkörnyezet](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+* [Hadoop oktatóanyag – HDP – első lépések](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
 

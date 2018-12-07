@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: d52785dd7569560f4b6986080b14723762537ec8
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: b1a406c15377cb6931f92594f5ce1526a2f2ab99
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388320"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017099"
 ---
 # <a name="trusted-internet-connections-guidance"></a>Megbízható internetes kapcsolatok útmutató
 
@@ -150,14 +150,14 @@ Azure PaaS-szolgáltatások integrálva vannak a virtuális hálózat, ha a szol
 
 |Szolgáltatás                               |Rendelkezésre állás      |
 |--------------------------------------|------------------|
-|Azure SQL Database felügyelt példány   | Nyilvános előzetes   |
+|Felügyelt Azure SQL Database-példány   | Nyilvános előzetes   |
 |Azure Kubernetes Service (AKS)        | Nyilvános előzetes   |
 |Azure Service Fabric                  | FE               |
 |Azure API Management                  | FE               |
 |Azure Active Directory                | FE               |
 |Azure Batch                           | FE               |
 |App Service-környezet               | FE               |
-|Azure Redis Cache                     | FE               |
+|Azure Cache for Redis                     | FE               |
 |Azure HDInsight                       | FE               |
 |Virtuálisgép-méretezési csoport             | FE               |
 |Azure Cloud Services                  | FE               |
@@ -263,7 +263,7 @@ Hozzáférés a Microsoft Azure, Office 365 és Dynamics 365 TIC 2.0 függelék 
 | Adatbázis | Azure Database for PostgreSQL | | | Igen |
 | Adatbázis | Azure SQL Data Warehouse | | | Igen |
 | Adatbázis | Azure Cosmos DB | | | Igen |
-| Adatbázis | Azure Redis Cache | | Igen | |
+| Adatbázis | Azure Cache for Redis | | Igen | |
 | Storage | Azure Blob Storage | Igen | | |
 | Storage | Azure Files | Igen | | |
 | Storage | Az Azure Queue storage | Igen | | |

@@ -5,25 +5,25 @@ author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/17/2017
+ms.date: 12/05/2018
 ms.author: vitaly.gorbenko
 ms.component: metrics
-ms.openlocfilehash: d1cfaadd06d20a0f57d75cd43d00040c9e44c429
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ff487fef9400803de0dba78352a1d29c5a71e6d2
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966024"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017919"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Az Azure Monitor Metrikaböngészőjének
 
 Az Azure Monitor Metrikaböngészőjének a Microsoft Azure-portálon, amely lehetővé teszi, hogy a diagramok küldik az ábrázolást, vizuálisan naplókezelője trendeket és kivizsgálása adatforgalmi csúcsokhoz és a ' értékeihez süllyedések egyik összetevője. Metrikaböngésző egy alapvető kiindulási pontként különböző teljesítmény- és az alkalmazások és az Azure-ban üzemeltetett vagy az Azure Monitor szolgáltatás által figyelt infrastruktúra rendelkezésre állási problémák kivizsgálása. 
 
-## <a name="what-are-metrics-in-azure"></a>Mik azok a metrikák az Azure-ban?
+## <a name="metrics-in-azure"></a>Metrikák az Azure-ban
 
 A Microsoft Azure-ban mérőszámok olyan mért értékek sorozata, összegyűjtött és tárolt idővel számát. Nincsenek metrikák standard (vagy "platform"), és egyéni mérőszámok. A standard mérőszámok az Azure platform saját maga által biztosított Önnek. Standard mérőszámok az Azure-erőforrások állapotát és a használati statisztikáit tükrözik. Mivel az egyéni metrikák használatával az alkalmazások által az Azure-bA küldött a [Application Insights API egyéni eseményekhez](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics). Egyéni metrikák és más alkalmazás adott mérőszámok az Application Insights-erőforrások vannak tárolva.
 
-## <a name="how-do-i-create-a-new-chart"></a>Hogyan hozhatok létre egy új diagramot?
+## <a name="create-a-new-chart"></a>Új diagram létrehozása
 
 1. Nyissa meg az Azure Portalon
 2. Lépjen az új **figyelő** lapra, és válassza ki **metrikák**.
@@ -54,11 +54,11 @@ A Microsoft Azure-ban mérőszámok olyan mért értékek sorozata, összegyűjt
    > [!NOTE]
    > Általában nem érdemes metrikák különböző mértékegységben (pl. "ezredmásodperc" és "kilobájt") vagy jelentősen eltérő méretezési rendelkezik egy diagram. Ehelyett érdemes lehet több diagramot. Kattintson a több diagram létrehozása a Metrikaböngészőben diagram hozzáadása gombra.
 
-## <a name="how-do-i-apply-filters-to-the-charts"></a>Hogyan szűrőket alkalmaz a diagramok?
+## <a name="apply-filters-to-charts"></a>Szűrőket alkalmazhat a diagramok
 
 A diagramok, amelyek megmutatják a dimenziókkal rendelkező metrikák szűrőket is alkalmazhat. Például, ha a "Tranzakciók száma" metrika van egy dimenzió, "Választípus", amely jelzi, hogy a tranzakció válasza sikeres vagy sikertelen volt, majd szűrése e dimenzión lenne jeleníti meg egy diagram sort csak a sikeres (vagy csak sikertelen) tranzakciók. 
 
-### <a name="to-add-a-filter"></a>Szűrő hozzáadása:
+### <a name="to-add-a-filter"></a>Szűrő hozzáadása
 
 1. Kattintson a szűrő hozzáadása ikonra ![Szűrő ikon](./media/monitoring-metric-charts/icon002.png) a diagram felett
 
@@ -76,11 +76,11 @@ A diagramok, amelyek megmutatják a dimenziókkal rendelkező metrikák szűrők
 
 5. Megismételheti a lépéseket több szűrőket alkalmaz az azonos diagramok 1 – 4.
 
-## <a name="how-do-i-segment-a-chart"></a>Hogyan oszthatja meg a diagramot?
+## <a name="segment-a-chart"></a>A diagram szegmens
 
 Jeleníthetik meg egymással szembeni metrika összehasonlítási különböző szegmensek dimenzió egy metrikát felosztás és a egy dimenzió lakatlan szegmensek azonosítja. 
 
-### <a name="to-segment-a-chart"></a>A diagram szegmens:
+### <a name="to-segment-a-chart"></a>A szegmens diagram
 
 1. Kattintson az ikonra a csoportosítás hozzáadása  ![metrika kép](./media/monitoring-metric-charts/icon003.png) a diagram felett.
  
@@ -100,7 +100,7 @@ Jeleníthetik meg egymással szembeni metrika összehasonlítási különböző 
    > [!NOTE]
    > Szűrés és a csoportosítási egyazon dimenzió használatával a szegmensek nem releváns, mivel a forgatókönyvhöz, és könnyebben olvashatóvá teszi a diagramok elrejtése.
 
-## <a name="how-do-i-lock-lower-and-upper-boundaries-of-the-chart-y-axis"></a>Hogyan zárolja a diagram y alsó és felső határai?
+## <a name="lock-boundaries-of-chart-y-axis"></a>Zárolási határok diagram y tengely
 
 Az y tengely skáláját zárolás akkor válik fontossá, amikor a diagram bemutatja a nagyobb érték kisebb ingadozások által megkövetelt. 
 
@@ -110,12 +110,12 @@ Egy másik példa egy ingadozás a rendelkezésre álló memória, amely az ért
 
 Az y tengely tartománya szabályozni, használja a "..." diagram menüt, és válassza a **diagram szerkesztése** speciális diagram beállítások eléréséhez. Az y tengely tartománya szakaszban szereplő értékeket módosíthatja, vagy használjon **automatikus** Alapértelmezések visszaállítása gombra.
 
-![metrika kép](./media/monitoring-metric-charts/0013.png)
+![metrika kép](./media/monitoring-metric-charts/0014-manually-set-granularity.png)
 
 > [!WARNING]
 > Y tengely, hogy a diagramok, amelyek nyomon követik a különböző határain zárolásának számolja, vagy idő (és így használatban lévők száma, sum, minimum vagy maximum összesítések) egy adott időszakban összegzi általában igényel, adjon meg egy rögzített idő részletesség, nem pedig az automatikus alapértelmezett hagyatkoznia. Erre azért szükség, mert a diagramok az értékeket módosíthatja, ha az idő részletessége automatikusan módosította a böngészőablak átméretezése, vagy egy képernyőfelbontás fog egy másik felhasználó. A létrejövő idő részletesség hatásokat megjelenésének módosítása a diagram y tengely tartomány kijelölt érvénytelenítése.
 
-## <a name="how-do-i-pin-charts-to-dashboards"></a>Hogyan rögzítheti a diagramokat az irányítópultokon?
+## <a name="pin-charts-to-dashboards"></a>PIN-kód diagramok, irányítópultok
 
 Miután a diagramok, érdemes hozzáadása az irányítópultokhoz, így megtekintheti azt újra, esetleg egyéb figyelési telemetriát összefüggésben vagy megosztásra a csapatával. 
 

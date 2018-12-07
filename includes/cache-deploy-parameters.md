@@ -4,15 +4,15 @@ ms.service: redis-cache
 ms.topic: include
 ms.date: 11/21/2018
 ms.author: wesmc
-ms.openlocfilehash: 1ddb81de479317a098f9de8aa5756cbaae59cb72
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 3252a6454bf3f70250d2d792ca1f36a819ab22bf
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52331077"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53019769"
 ---
 ### <a name="cacheskuname"></a>cacheSKUName
-Az új Azure Redis Cache tarifacsomagját.
+Az új Azure Azure Cache redis tarifacsomagját.
 
     "cacheSKUName": {
       "type": "string",
@@ -22,7 +22,7 @@ Az új Azure Redis Cache tarifacsomagját.
       ],
       "defaultValue": "Basic",
       "metadata": {
-        "description": "The pricing tier of the new Azure Redis Cache."
+        "description": "The pricing tier of the new Azure Azure Cache for Redis."
       }
     },
 
@@ -45,7 +45,7 @@ A termékváltozat a család.
 
 
 ### <a name="cacheskucapacity"></a>cacheSKUCapacity
-Az új Azure Redis Cache-példány mérete. 
+Az új Azure Azure Cache Redis-példány mérete. 
 
     "cacheSKUCapacity": {
       "type": "int",
@@ -60,7 +60,7 @@ Az új Azure Redis Cache-példány mérete.
       ],
       "defaultValue": 0,
       "metadata": {
-        "description": "The size of the new Azure Redis Cache instance. "
+        "description": "The size of the new Azure Azure Cache for Redis instance. "
       }
     }
 

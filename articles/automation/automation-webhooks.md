@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3da4ecb1193959fcc8782f8aa5fdf32c130ee238
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 381f8c5fb59379c0494dabcd22f4675be9535837
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840146"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016691"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Azure Automation-runbook kezdve egy webhook
 
@@ -31,7 +31,7 @@ A következő táblázat ismerteti a tulajdonságokat, amelyeket konfigurálnia 
 |:--- |:--- |
 | Name (Név) |Megadhat egy nevet, egy webhook mivel ez az ügyfél nem lesz közzétéve. Ez csak az Ön számára azonosítására szolgál a runbookot, az Azure Automationben. <br> Ajánlott eljárásként meg kell nevezze el a webhook az azokat használó ügyfél kapcsolatos. |
 | URL-cím |A webhook URL-címe az az egyedi cím, egy HTTP POST-indítani a runbookot, a webhook csatolva a meghívó ügyfél. A webhook létrehozásakor automatikusan létrejön. Egy egyéni URL-cím nem adható meg. <br> <br> Az URL-címet tartalmaz egy biztonsági jogkivonatot, amely lehetővé teszi a runbook által egy külső rendszer további hitelesítésre. Ezért azt kell kezelni, mint egy jelszó. Biztonsági okokból csak megtekintheti az URL-cím az Azure Portalon a webhook létrehozásakor. Megjegyzés: az URL-címet egy biztonságos helyre későbbi használat céljából. |
-| Lejárati dátum |Egy tanúsítványt, mint például az egyes webhookok van ekkor már nem használható lejárati dátuma. A webhook létrehozása után módosíthatja a lejárati dátum. |
+| Lejárati dátum |Egy tanúsítványt, mint például az egyes webhookok van ekkor már nem használható lejárati dátuma. A lejárati dátum mindaddig, amíg a webhook nem járt le a webhook létrehozása után módosíthatja. |
 | Engedélyezve |Webhook alapértelmezés szerint engedélyezve van, a létrehozásakor. Ha beállította azt le van tiltva, nem az ügyfél nem használhatja azt. Beállíthatja a **engedélyezve** tulajdonság a webhookot, vagy bármikor egyszer létrehozásakor jön létre. |
 
 ### <a name="parameters"></a>Paraméterek
@@ -121,6 +121,12 @@ Feltételezve, hogy a kérelem sikeres, a webhook válaszát feladat Azonosító
 ```
 
 Az ügyfél nem tudja megállapítani, ha a runbook-feladat befejeződik, vagy a webhook befejezési állapotát. Ezt az információt a Feladatazonosító használjon egy másik módszerrel, például képes meghatározni [Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob) vagy a [Azure Automation API](/rest/api/automation/job).
+
+## <a name="renew-webhook"></a>Újítsa meg a webhook
+
+A webhook létrehozásakor egy év érvényességi időt tartalmaz. Automatikusan a időpont a webhook adott év után lejár. Ha a webhook lejárt nem lehet újra aktivált, kell eltávolítani és újra létre kell hozni. Ha a webhook nem érte el a lejárati idő is kiterjeszthető.
+
+Webhook kiterjeszteni, keresse meg, amely tartalmazza a webhookot a runbookhoz. Válassza ki **Webhookok** alatt **erőforrások**. Kattintson a webhookot, amely bővítéséhez, ekkor megnyílik a **Webhook** lapot.  Válasszon ki egy új lejárati dátum és idő, és kattintson a **mentése**.
 
 ## <a name="sample-runbook"></a>Minta runbook
 

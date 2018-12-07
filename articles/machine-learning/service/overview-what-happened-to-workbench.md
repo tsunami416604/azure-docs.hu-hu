@@ -58,7 +58,7 @@ A futtatási előzmények egy ideig elérhetők maradnak. Ha készen áll az Azu
 
 A jelenlegi kiadásban a futtatási előzmények neve _kísérletek_. Összegyűjtheti a modellkísérleteket, és feltárhatja azokat az SDK, a CLI vagy a webportál használatával.
 
-A portál munkaterület irányítópultjának használata csak Edge, Chrome és Firefox böngészőkkel támogatott.
+A portál munkaterület irányítópultjának használata csak Microsoft Edge, Chrome és Firefox böngészőkkel támogatott.
 
 [ ![Online portál](./media/overview-what-happened-to-workbench/image001.png) ] (./media/overview-what-happened-to-workbench/image001.png#lightbox)
 

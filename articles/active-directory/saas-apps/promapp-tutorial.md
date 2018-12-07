@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 6bcd1add3985112fe60aab22f1799e40ad8889b2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6ed07ea3cc625c518d6733f7a86f4542f91f425c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421862"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017116"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promapp"></a>Oktatóanyag: Azure Active Directory-integráció az Promapp
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Promapp az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Promapp egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az Azure AD integrálása a Promapp konfigurálásához hozzá kell Promapp a ka
 
 **Promapp hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -113,6 +113,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     ![Egyszeri bejelentkezés konfigurálása](./media/promapp-tutorial/tutorial_promapp_url.png)
 
     a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe:
+    
     | |
     |--|
     | `https://go.promapp.com/TENANTNAME/`|

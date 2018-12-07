@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 9460f08c3ff73c70b9b78235c21ee7ed84e016d7
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 12e7a37c1d2811b44dbf943b460b7d620770d45e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684511"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017525"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Oktatóanyag: Azure Active Directory-integráció Procore SSO-val
 
@@ -179,7 +179,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
     a. Az a **neve** írja be a következőt **BrittaSimon**.
   
     b. Az a **felhasználónév** mezőbe írja be a **brittasimon@yourcompanydomain.extension**  
-    Például: BrittaSimon@contoso.com
+       Például: BrittaSimon@contoso.com
 
     c. Válassza ki **tulajdonságok**, jelölje be a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 

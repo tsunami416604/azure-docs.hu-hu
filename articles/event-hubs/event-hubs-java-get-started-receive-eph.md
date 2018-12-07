@@ -7,14 +7,15 @@ manager: timlt
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 08/26/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: dce7c4067ba6d96bf14f4e3300d951b594afe930
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 4768fbb845eb09e8aa3469dc2c4c29c4a323d662
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240632"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017304"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-java"></a>Események fogadása az Azure Event Hubs Java használatával
 
@@ -44,11 +45,11 @@ Az EventProcessorHost használatához rendelkeznie kell egy [Azure Storage-fiók
 1. Jelentkezzen be a [az Azure portal][Azure portal], és kattintson a **+ erőforrás létrehozása** a képernyő bal oldalán.
 2. Kattintson a **Tárolás**, majd a **Tárfiók** elemre. Az a **storage-fiók létrehozása** ablakban írja be a tárfiók nevét. Fejezze be a mezőket, válassza ki a kívánt régiót, és kattintson **létrehozás**.
    
-    ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
+    ![Storage-fiók létrehozása](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
 
 3. Kattintson az újonnan létrehozott tárfiókra, és kattintson **Tárelérési kulcsok**:
    
-    ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
+    ![Hozzáférési kulcsok lekérése](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
 
     1. kulcs értékét egy ideiglenes helyre másolja. Az oktatóanyag későbbi részében használni fogja.
 
@@ -277,7 +278,7 @@ Hozzon létre egy osztályt, amely megvalósítja a felület com.microsoft.azure
 
 Az ellenőrzőpont-kezelő (com.microsoft.azure.eventprocessorhost.ICheckpointManager) egyéni megvalósítását használni
 
-A megvalósítás belül bírálja felül az alapértelmezett ellenőrzőpont-kezelési mechanizmust, és megvalósítani a saját ellenőrzőpontokat a saját data store (az SQL Server, cosmos DB, Redis Cache stb.) alapján. Azt javasoljuk, hogy a tároló az ellenőrzőpont manager megvalósítási biztonsági érhető-e feldolgozni az eseményeket a felhasználói csoport EPH-példányok.
+A megvalósítás belül bírálja felül az alapértelmezett ellenőrzőpont-kezelési mechanizmust, és megvalósítani a saját ellenőrzőpontokat a saját data store (az SQL Server, CosmosDB, Azure Cache a Redis stb.) alapján. Azt javasoljuk, hogy a tároló az ellenőrzőpont manager megvalósítási biztonsági érhető-e feldolgozni az eseményeket a felhasználói csoport EPH-példányok.
 
 Használhat bármilyen a környezetében elérhető adattárolót.
 

@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: a6d50e6f405294bf8e91018dd4d7b6008cd49ada
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: b632ef49f49768c86b7a7ce2efc601f036532a29
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161873"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017586"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>A linuxon futó App Service-ben a Java Enterprise útmutatója
 
@@ -103,7 +103,7 @@ Alapértelmezés szerint a linuxon futó App Service használja munkamenet-affin
 - Ha egy alkalmazáspéldány újraindítják, vagy horizontálisan, a kiszolgáló a felhasználói munkamenet-állapot elvesznek.
 - Ha alkalmazások hosszú munkamenet időtúllépés beállításai vagy a felhasználók rögzített számú, új példányok terhelést kap, mivel csak az új munkamenetek a rendszer átirányítja az újonnan elindított példányok maximumára egy kis ideig is eltarthat.
 
-Beállíthatja, hogy egy külső állapotszolgáltatót tároló használandó Wildfly [Redis Cache](/azure/redis-cache/). Kell [tiltsa le a meglévő ARR-példány affinitás](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) konfigurációját, és kapcsolja ki a munkamenetek cookie-alapú útválasztást, és beavatkozás nélkül konfigurált Wildfly munkamenet áruház engedélyezése.
+Beállíthatja, hogy egy külső állapotszolgáltatót tároló használandó Wildfly [Azure Cache redis](/azure/azure-cache-for-redis/). Kell [tiltsa le a meglévő ARR-példány affinitás](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) konfigurációját, és kapcsolja ki a munkamenetek cookie-alapú útválasztást, és beavatkozás nélkül konfigurált Wildfly munkamenet áruház engedélyezése.
 
 ## <a name="enable-web-sockets"></a>Webes szoftvercsatornák engedélyezése
 

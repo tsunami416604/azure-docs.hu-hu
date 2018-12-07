@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 12/04/2018
-ms.openlocfilehash: 45a5e4c895a0c7a8f76bb34aa5aaf22fa31f4333
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 07ea61ffe3ffc17cd255b826e3506ffe2b1ce9cd
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864859"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017722"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>Válassza ki, és a egy számítási célnak használja a modell betanításához
 
@@ -139,7 +139,8 @@ Az Azure Machine Learning COMPUTE számítási igény szerinti hozhat létre, ha
 
 Az Azure Machine Learning Compute számítási célként futásidőben létrehozhat. Ebben az esetben a számítási futtatás, akár a futtatási konfigurációt megadott max_nodes méretezhető automatikusan létrejön, és ezután __automatikusan__ a Futtatás után.
 
-Ez a funkció jelenleg előzetes verzióként, és a Hiperparaméter finomhangolása vagy a Machine Learning automatizált feladat nem fog működni.
+> [!IMPORTANT]
+> Futtatás-alapú létrehozása az Azure Machine Learning compute jelenleg előzetes verzióként. Ne használjon run-alapú létrehozása, ha a Hiperparaméter finomhangolása vagy a Machine Learning automatikus használ. Ha szeretné használni a Hiperparaméter finomhangolása vagy automatizált Machine Learning, hozzon létre az Azure Machine Learning compute futtató elküldése előtt.
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute

@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 283171fa00837a8a7b4e0a13d7bca5645cf63a83
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: bf1fa41abe1c1f9b0d07ee7d77fe1c819e88ddc1
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633065"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017620"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Futtassa a szerepel a HDInsight MapReduce-példák
 
@@ -167,7 +167,7 @@ Ez a parancs által visszaadott érték hasonlít a **3.14159155000000000000**. 
 
 GraySort a teljesítményteszt rendezés. A metrika az a rendezési gyakoriság (TB/perc), amelyek során nagy mennyiségű adatot, általában egy 100 TB-os minimális rendezés érhető el.
 
-Ez a minta egy szerény 10 GB adatot használja, így viszonylag gyorsan futtatható. A MapReduce alkalmazások Owen O'Malley és Arun Murthy által fejlesztett használ. Ezeket az alkalmazásokat az általános célú ("daytona") terabájt éves rendezési teljesítményteszt megnyert 2009-arány 0.578 TB/perc (100 TB-os 173 percek alatt). Erről és más rendezési referenciaalapokhoz képest történő további információkért lásd: a [Sortbenchmark](http://sortbenchmark.org/) hely.
+Ez a minta egy szerény 10 GB adatot használja, így viszonylag gyorsan futtatható. A MapReduce alkalmazások Owen O'Malley és Arun Murthy által fejlesztett használ. Ezeket az alkalmazásokat az általános célú ("daytona") terabájt éves rendezési teljesítményteszt megnyert 2009-arány 0.578 TB/perc (100 TB-os 173 percek alatt). Erről és más rendezési referenciaalapokhoz képest történő további információkért lásd: a [Sortbenchmark](https://sortbenchmark.org/) hely.
 
 Ebben a példában három különböző MapReduce-programok:
 

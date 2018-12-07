@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 55d4f53a23c92bb96934e84c0400bc182bc3d87e
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 80a32335b8b9b89bdc5bf53cbed994d78a6ca81e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976808"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017603"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Első lépésekhez készült útmutató Azure-fejlesztőknek
 
@@ -245,7 +245,7 @@ Szolgáltatásokkal – például [Mobile Apps](../../app-service-mobile/app-ser
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager 
     
-Az alkalmazás futtatásához az Azure-ban valószínűleg magában foglalja a több Azure-szolgáltatások mindegyike hajtsa végre az azonos életciklus és a egy logikai egységként tekinthető használatának. Webes alkalmazás használhat például Web Apps, az SQL Database, Storage, Azure Redis Cache és Azure Content Delivery Network szolgáltatások. [Az Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) lehetővé teszi, hogy az erőforrásokkal való munka megkezdése egy csoportként az alkalmazásban. Központi telepítése, frissítése vagy törlése az összes erőforrását egyetlen, koordinált műveletben.
+Az alkalmazás futtatásához az Azure-ban valószínűleg magában foglalja a több Azure-szolgáltatások mindegyike hajtsa végre az azonos életciklus és a egy logikai egységként tekinthető használatának. Például egy webalkalmazás használható Web Apps, az SQL Database, Storage, Azure Cache Redis, és az Azure Content Delivery Network szolgáltatások. [Az Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) lehetővé teszi, hogy az erőforrásokkal való munka megkezdése egy csoportként az alkalmazásban. Központi telepítése, frissítése vagy törlése az összes erőforrását egyetlen, koordinált műveletben.
 
 Logikailag csoportosítás, és a kapcsolódó erőforrások kezelése, mellett az Azure Resource Manager üzembe helyezési lehetőségeket, amelyekkel testre szabhatja a központi telepítési és a kapcsolódó erőforrások tartalmazza. Ha például Resource Manager használatával telepítheti és egy alkalmazást, amely több virtuális gépet egy terheléselosztó és az Azure SQL database egyetlen egységként áll.
 

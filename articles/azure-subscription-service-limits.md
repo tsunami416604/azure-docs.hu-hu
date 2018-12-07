@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 11/05/2018
 ms.author: byvinyal
-ms.openlocfilehash: bd20ea58c7693b3be8f583810384aa26dde572d8
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 2ee5eca6f138d9aaa1a2b7cebb61b56fd26e17cc
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219562"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017209"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum felsorolja az egyes a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem vonatkozik Azure-szolgáltatásokhoz. Az idő múlásával a lista fog kibontható vagy frissítve, hogy biztosítsák a platform további.
@@ -54,7 +54,7 @@ Az alábbi korlátok egy új táblát bővült, hogy minden korlátokat különb
 * [Azure Maps](#azure-maps-limits)
 * [Azure Monitor](#monitor-limits)
 * [Azure Policy](#azure-policy-limits)
-* [Azure Redis Cache](#azure-redis-cache-limits)
+* [Az Azure Cache redis](#azure-redis-cache-limits)
 * [Biztonsági mentés](#backup-limits)
 * [Batch](#batch-limits)
 * [Batch AI](#batch-ai-limits)
@@ -329,7 +329,7 @@ További kapcsolatos részletesebb szintű, például a dokumentumok méretétő
 ### <a name="api-management-limits"></a>Az API Management-korlátok
 [!INCLUDE [api-management-service-limits](../includes/api-management-service-limits.md)]
 
-### <a name="azure-redis-cache-limits"></a>Az Azure Redis Cache-korlátok
+### <a name="azure-cache-for-redis-limits"></a>Az Azure Cache a Redis-korlátok
 [!INCLUDE [redis-cache-service-limits](../includes/redis-cache-service-limits.md)]
 
 ### <a name="key-vault-limits"></a>A Key Vault-korlátok

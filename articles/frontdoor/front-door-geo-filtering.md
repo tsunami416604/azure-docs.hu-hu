@@ -65,14 +65,14 @@ A Front Door geoszűrési szabályzatát az [Azure PowerShell-lel](front-door-tu
 | CD | Kongói Demokratikus Köztársaság|
 | CF | Közép-afrikai Köztársaság|
 | CH | Svájc|
-| CI | Elefántcsontpart|
+| CI | Côte d’Ivoire|
 | CL | Chile|
 | CM | Kamerun|
 | CN | Kína|
 | CO | Kolumbia|
 | CR | Costa Rica|
 | CU | Kuba|
-| CV | Zöld-foki Köztársaság|
+| CV | Cabo Verde Köztársaság|
 | CY | Ciprus|
 | CZ | Cseh Köztársaság|
 | DE | Németország|
@@ -132,7 +132,7 @@ A Front Door geoszűrési szabályzatát az [Azure PowerShell-lel](front-door-tu
 | LT | Litvánia|
 | LU | Luxemburg|
 | LV | Lettország|
-| LY | Líbiai Arab Dzsamahiríja|
+| LY | Líbia|
 | MA | Marokkó|
 | MD | Moldovai Köztársaság|
 | MG | Madagaszkár|

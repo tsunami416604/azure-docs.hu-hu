@@ -15,12 +15,12 @@ ms.date: 12/05/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: d082ba8550925d12d3a60d71111c72d561c083c5
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f2143d15156c8f69430610eac2f467c5a6887300
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969063"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017817"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Az Azure-erőforrások beépített szerepkörök
 [Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) rendelkezik, amelyeket hozzárendelhet a felhasználók, csoportok és az egyszerű szolgáltatások számos beépített szerepkör-definíciók. Szerepkör-hozzárendelések módon az Azure-erőforrások elérését Ön szabályozza. Ha a beépített szerepkörök nem felelnek meg a cég vagy intézmény igényeinek, saját [egyéni szerepköröket](custom-roles.md) is létrehozhat.
@@ -98,7 +98,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 | [Hálózati közreműködő](#network-contributor) | Lehetővé teszi a hálózatok kezelését, az azokhoz való hozzáférés nélkül. |
 | [Új Relic APM-Fiókközreműködő](#new-relic-apm-account-contributor) | Lehetővé teszi a New Relic Application Performance Management-fiókok és -alkalmazások kezelését, az azokhoz való hozzáférés nélkül. |
 | [Olvasó és adatelérés](#reader-and-data-access) | Lehetővé teszi minden megtekintését, de nem teszi lehetővé, törölheti, vagy hozzon létre egy storage-fiók vagy az abban található erőforrást. Olvasási/írási hozzáférést a tárfiókok kulcsainak elérésével storage-fiókban tárolt adatokat is engedélyezi. |
-| [Redis gyorsítótárak Közreműködője](#redis-cache-contributor) | Lehetővé teszi a Redis-gyorsítótárak kezelését, az azokhoz való hozzáférés nélkül. |
+| [Az Azure Cache a Redis-közreműködő](#redis-cache-contributor) | Lehetővé teszi az Rediss, de ezekhez nem biztosít hozzáférést Azure Cache kezelését. |
 | [Erőforrás-szabályzati közreműködő (előzetes verzió)](#resource-policy-contributor-preview) | (Előnézet) Erőforrás-szabályzat létrehozására/módosítására, támogatási jegy létrehozására, valamint erőforrások/hierarchia beolvasására jogosultsággal rendelkező, EA-beli visszatöltött felhasználók. |
 | [A Scheduler Feladatgyűjteményeinek Közreműködője](#scheduler-job-collections-contributor) | Lehetővé teszi a Scheduler-feladatgyűjtemények kezelését, az azokhoz való hozzáférés nélkül. |
 | [Search szolgáltatás Közreműködője](#search-service-contributor) | Lehetővé teszi a keresési szolgáltatások kezelését, az azokhoz való hozzáférés nélkül. |
@@ -1285,15 +1285,15 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.Storage/storageAccounts/listKeys/action | A megadott tárfiók hozzáférési kulcsainak lekérése. |
 > | Microsoft.Storage/storageAccounts/read | A tárfiókok listájának vagy a megadott tárfiók tulajdonságainak lekérése. |
 
-## <a name="redis-cache-contributor"></a>Redis gyorsítótárak közreműködője
+## <a name="azure-cache-for-redis-contributor"></a>Az Azure Cache a Redis-közreműködő
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a Redis-gyorsítótárak kezelését, az azokhoz való hozzáférés nélkül. |
+> | **Leírás** | Lehetővé teszi az Rediss, de ezekhez nem biztosít hozzáférést Azure Cache kezelését. |
 > | **Azonosító** | e0f68234-74aa-48ed-b826-c38b57376e17 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör hozzárendelések |
-> | Microsoft.Cache/redis/* | Hozzon létre, és a redis Cache gyorsítótárak kezelése |
+> | Microsoft.Cache/redis/* | Hozzon létre, és kezelheti az Azure Cache Rediss |
 > | Microsoft.Insights/alertRules/* | Hozzon létre, és a riasztási szabályok kezelése |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |

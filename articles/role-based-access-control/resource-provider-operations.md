@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/26/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 396dbfcfd13f508c33d8a1bb7370d9170b8f8a56
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: b09f64e2183453b3656efa340d53682a241dd00e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499681"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017953"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Az Azure Resource Manager erőforrás-szolgáltatói műveletek
 
@@ -695,31 +695,31 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelettípus | Művelet | Leírás |
 > | --- | --- | --- |
-> | Műveletek | Microsoft.Cache/checknameavailability/action | Annak ellenőrzése, hogy a név rendelkezésre áll-e egy új Redis Cache-hez való használatra |
+> | Műveletek | Microsoft.Cache/checknameavailability/action | Ellenőrzi, hogy a név elérhető az új Azure redis gyorsítótár használata |
 > | Műveletek | Microsoft.Cache/locations/operationresults/read | Egy olyan hosszú ideje futó művelet eredményének beolvasása, amelynek esetében a Location (Hely) fejléc vissza lett küldve az ügyfélnek |
 > | Műveletek | Microsoft.Cache/operations/read | A Microsoft.Cache szolgáltató által támogatott műveletek listázása. |
-> | Műveletek | Microsoft.Cache/redis/delete | Teljes Redis gyorsítótár törlése |
+> | Műveletek | Microsoft.Cache/redis/delete | A Redis a teljes Azure-gyorsítótár törlése |
 > | Műveletek | Microsoft.Cache/redis/export/action | Redis-adatok exportálása előre megadott tárolási blobokba meghatározott formátumban |
-> | Műveletek | Microsoft.Cache/redis/firewallRules/delete | Egy Redis Cache IP-tűzfalszabályainak törlése |
-> | Műveletek | Microsoft.Cache/redis/firewallRules/read | Egy Redis Cache IP-tűzfalszabályainak beolvasása |
-> | Műveletek | Microsoft.Cache/redis/firewallRules/write | Egy Redis Cache IP-tűzfalszabályainak szerkesztése |
+> | Műveletek | Microsoft.Cache/redis/firewallRules/delete | A Redis az Azure Cache IP-tűzfalszabályainak törlése |
+> | Műveletek | Microsoft.Cache/redis/firewallRules/read | A Redis az Azure Cache IP-tűzfalszabályainak lekérése |
+> | Műveletek | Microsoft.Cache/redis/firewallRules/write | A Redis az Azure Cache IP-tűzfalszabályainak szerkesztése |
 > | Műveletek | Microsoft.Cache/redis/forceReboot/action | Egy gyorsítótárpéldány kényszerített újraindítása, mely adatvesztést okozhat. |
 > | Műveletek | Microsoft.Cache/redis/import/action | Meghatározott formátumú adatok importálása a Redis szolgáltatásba több blobból |
-> | Műveletek | Microsoft.Cache/redis/linkedservers/delete | Egy Redis gyorsítótárhoz csatolt kiszolgáló törlése |
-> | Műveletek | Microsoft.Cache/redis/linkedservers/read | Egy Redis gyorsítótárhoz hozzárendelt csatolt kiszolgálók beolvasása. |
-> | Műveletek | Microsoft.Cache/redis/linkedservers/write | Csatolt kiszolgáló hozzáadása egy Redis gyorsítótárhoz |
-> | Műveletek | Microsoft.Cache/redis/listKeys/action | Redis gyorsítótár elérésikulcs-értékeinek megtekintése a felügyeleti portálon |
+> | Műveletek | Microsoft.Cache/redis/linkedservers/delete | Azure Cache redis csatolt kiszolgáló törlése |
+> | Műveletek | Microsoft.Cache/redis/linkedservers/read | A Redis az Azure gyorsítótárhoz hozzárendelt csatolt kiszolgálók beolvasása. |
+> | Műveletek | Microsoft.Cache/redis/linkedservers/write | Azure Cache redis csatolt kiszolgáló hozzáadása |
+> | Műveletek | Microsoft.Cache/redis/listKeys/action | Az érték Azure Cache Redis hozzáférési kulcsok megtekintése a felügyeleti portálon |
 > | Műveletek | Microsoft.Cache/redis/listUpgradeNotifications/read | A gyorsítótár bérlője legutóbbi csomagváltási értesítéseinek listázása. |
-> | Műveletek | Microsoft.Cache/redis/metricDefinitions/read | Egy Redis gyorsítótárhoz elérhető metrikai meghatározások beolvasása |
-> | Műveletek | Microsoft.Cache/redis/patchSchedules/delete | Egy Redis Cache javítási ütemezésének törlése |
-> | Műveletek | Microsoft.Cache/redis/patchSchedules/read | Egy Redis Cache javítási ütemezésének beolvasása |
-> | Műveletek | Microsoft.Cache/redis/patchSchedules/write | Egy Redis Cache javítási ütemezésének módosítása |
-> | Műveletek | Microsoft.Cache/redis/read | Redis gyorsítótár beállításainak és konfigurációjának megtekintése a felügyeleti portálon |
-> | Műveletek | Microsoft.Cache/redis/recommendations/read | Azure Redis Cache-javaslatok olvasása |
-> | Műveletek | Microsoft.Cache/redis/regenerateKey/action | Redis gyorsítótár elérésikulcs-értékeinek módosítása a felügyeleti portálon |
+> | Műveletek | Microsoft.Cache/redis/metricDefinitions/read | Elérhető metrikáinak lekérése egy Azure Cache redis |
+> | Műveletek | Microsoft.Cache/redis/patchSchedules/delete | A Redis az Azure Cache javítási ütemezésének törlése |
+> | Műveletek | Microsoft.Cache/redis/patchSchedules/read | A Redis az Azure Cache javítási ütemezésének beolvasása |
+> | Műveletek | Microsoft.Cache/redis/patchSchedules/write | A redis az Azure Cache javítási ütemezésének módosítása |
+> | Műveletek | Microsoft.Cache/redis/read | Az Azure Cache a Redis a beállításainak és konfigurációjának megtekintése a felügyeleti portálon |
+> | Műveletek | Microsoft.Cache/redis/recommendations/read | Olvassa el az Azure Cache Redis-javaslatok |
+> | Műveletek | Microsoft.Cache/redis/regenerateKey/action | Módosítsa az értéket az Azure Cache Redis hozzáférési kulcsok a felügyeleti portálon |
 > | Műveletek | Microsoft.Cache/redis/start/action | Gyorsítótárpéldány elindítása. |
 > | Műveletek | Microsoft.Cache/redis/stop/action | Gyorsítótárpéldány leállítása. |
-> | Műveletek | Microsoft.Cache/redis/write | Redis gyorsítótár beállításainak és konfigurációjának módosítása a felügyeleti portálon |
+> | Műveletek | Microsoft.Cache/redis/write | Az Azure Cache a Redis a beállításokat és a kezelési portál konfigurációs módosítása |
 > | Műveletek | Microsoft.Cache/register/action | A Microsoft.Cache erőforrás-szolgáltató regisztrálása egy előfizetéshez |
 > | Műveletek | Microsoft.Cache/unregister/action | A Microsoft.Cache erőforrás-szolgáltató egy előfizetéshez tartozó regisztrációjának törlése |
 

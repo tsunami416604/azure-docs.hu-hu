@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 50e9162da5fda98d73ccfeea0776dc89ddd25dac
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 08838fef472cd82f976579f70a4c6be33db9d009
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256918"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017560"
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>Hadoop-feladatok adatainak feltöltése a HDInsightba
 
@@ -295,7 +295,7 @@ Most, hogy megismerte, hogyan olvashatja be őket a HDInsight, olvassa el a tov�
 * [A Pig használata a HDInsightban][hdinsight-use-pig]
 
 [azure-management-portal]: https://porta.azure.com
-[azure-powershell]: http://msdn.microsoft.com/library/windowsazure/jj152841.aspx
+[azure-powershell]: https://msdn.microsoft.com/library/windowsazure/jj152841.aspx
 
 [azure-storage-client-library]: /develop/net/how-to-guides/blob-storage/
 [azure-create-storage-account]:../storage/common/storage-create-storage-account.md
