@@ -85,7 +85,7 @@ items:
       - name: Naplóadatok
         href: platform/data-security.md
       - name: Személyes naplóadatok kezelése
-        href: ../log-analytics/log-analytics-personal-data-mgmt.md?toc=/azure/azure-monitor/toc.json
+        href: platform/personal-data-mgmt.md
       - name: Alkalmazásadatok gyűjtése, megőrzése és tárolása
         href: ../application-insights/app-insights-data-retention-privacy.md?toc=/azure/azure-monitor/toc.json
   - name: Insights
@@ -115,9 +115,9 @@ items:
     - name: OMS-portálváltás
       items:
       - name: Áttekintés
-        href: ../log-analytics/log-analytics-oms-portal-transition.md?toc=/azure/azure-monitor/toc.json
+        href: platform/oms-portal-transition.md
       - name: Gyakori kérdések
-        href: ../log-analytics/log-analytics-oms-portal-faq.md?toc=/azure/azure-monitor/toc.json
+        href: platform/oms-portal-faq.md
   - name: Reagálás incidensekre
     items:
     - name: Riasztások
@@ -153,7 +153,7 @@ items:
       - name: Szerepköri engedélyek és biztonság
         href: ../monitoring-and-diagnostics/monitoring-roles-permissions-security.md?toc=/azure/azure-monitor/toc.json
       - name: Munkaterületek
-        href: ../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json
+        href: platform/manage-access.md
       - name: Alkalmazások
         href: ../application-insights/app-insights-resources-roles-access-control.md?toc=/azure/azure-monitor/toc.json
       - name: IP-címek
@@ -166,8 +166,6 @@ items:
         href: ../application-insights/app-insights-web-monitor-performance.md?toc=/azure/azure-monitor/toc.json
       - name: A fejlesztési, tesztelési és éles környezetek elkülönítése
         href: ../application-insights/app-insights-separate-resources.md?toc=/azure/azure-monitor/toc.json
-      - name: Alkalmazások figyelése több összetevővel
-        href: ../application-insights/app-insights-monitor-multi-role-apps.md?toc=/azure/azure-monitor/toc.json
       - name: Hogyan tegyem... az Application Insights szolgáltatásban?
         href: ../application-insights/app-insights-how-do-i.md?toc=/azure/azure-monitor/toc.json
     - name: Munkaterületek kezelése
@@ -181,7 +179,7 @@ items:
         - name: Azure PowerShell használatával
           href: learn/quick-create-workspace-posh.md
       - name: Munkaterület törlése
-        href: ../log-analytics/log-analytics-manage-del-workspace.md?toc=/azure/azure-monitor/toc.json
+        href: platform/delete-workspace.md
       - name: A szolgáltatókat szem előtt tartó tervezés
         href: platform/service-providers.md
   - name: Adatok gyűjtése
@@ -562,7 +560,7 @@ items:
         - name: Díjszabás
           href: insights/network-performance-monitor-pricing-faq.md
         - name: GYIK
-          href: ../log-analytics/log-analytics-network-performance-monitor-faq.md?toc=/azure/azure-monitor/toc.json
+          href: insights/network-performance-monitor-faq.md
     - name: Virtuális gépek figyelése
       items:
       - name: Azure Monitor virtuális gépekhez
@@ -647,7 +645,7 @@ items:
     - name: Power BI
       items:
       - name: Naplóadatok exportálása
-        href: ../log-analytics/log-analytics-powerbi.md?toc=/azure/azure-monitor/toc.json
+        href: platform/powerbi.md
       - name: Alkalmazásadatok exportálása
         href: ../application-insights/app-insights-export-power-bi.md?toc=/azure/azure-monitor/toc.json
     - name: Adatok küldése a Grafana számára
@@ -838,7 +836,7 @@ items:
     - name: Nagyvállalati alkalmazáscsomag részletei
       href: ../application-insights/app-insights-pricing-enterprise-details.md?toc=/azure/azure-monitor/toc.json
     - name: Naplóadatok mennyisége és megőrzése
-      href: ../log-analytics/log-analytics-manage-cost-storage.md?toc=/azure/azure-monitor/toc.json
+      href: platform/manage-cost-storage.md
     - name: Naplóadat-monitorozás használata
       href: ../log-analytics/log-analytics-usage.md?toc=/azure/azure-monitor/toc.json
   - name: Automatizálás
@@ -1010,9 +1008,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Kódminták
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: ee2702e834ce782f5b690cbfc78d300efa1ee602
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: dc89f1634040b7002e58206aaf6d1ade6965b2a8
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968169"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017902"

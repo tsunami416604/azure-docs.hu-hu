@@ -1,6 +1,6 @@
 ---
-title: Mi történik az Azure Machine Learning Workbench alkalmazással? | Microsoft Docs
-description: A cikkből megtudhatja, mi történik a Workbench alkalmazással, mi változott az Azure Machine Learningben, és megismerheti a támogatási ütemtervet.
+title: Mi történt az Azure Machine Learning Workbench alkalmazással?
+description: 'További tudnivalók: Mi történt a Workbench alkalmazás, mi változott, az Azure Machine Learning szolgáltatás és a támogatási idősor van.'
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -8,19 +8,20 @@ ms.topic: overview
 ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
-ms.date: 09/24/2018
-ms.openlocfilehash: b8263c399f287be79590860cce7036207ef2e3f7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: b6df86d63e897d5cde34fb697ad2364c107a8fbe
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243743"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011137"
 ---
-# <a name="what-is-happening-to-workbench-in-azure-machine-learning-preview"></a>Mi történik a Workbench alkalmazással az Azure Machine Learning (előzetes verzió) szolgáltatásban?
+# <a name="what-is-happening-to-workbench-in-azure-machine-learning-service"></a>Mi történik a Workbench az Azure Machine Learning szolgáltatás?
 
-A 2018. szeptemberi kiadásban a Workbench alkalmazás és néhány egyéb korai funkció elavulttá vált, hogy lehetővé tegye a továbbfejlesztett [architektúra](concept-azure-machine-learning-architecture.md) bevezetését. A kiadás számos, ügyfélvisszajelzésen alapuló jelentős frissítést tartalmaz a felhasználói élmény javítása érdekében. Az kísérleti futtatásoktól a modell-üzembehelyezésig az alapvető funkciók nem változtak, de most már használhatja a robusztus <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> és [CLI](reference-azure-machine-learning-cli.md) eszközöket a gépi tanulási feladatok és folyamatok végrehajtására.  
+A Workbench alkalmazás és néhány más korai funkciókat is hozzárendelésénél a 2018 szeptember kiadásban, hogy egy továbbfejlesztett módon [architektúra](concept-azure-machine-learning-architecture.md). A kiadás számos, ügyfélvisszajelzésen alapuló jelentős frissítést tartalmaz a felhasználói élmény javítása érdekében. Az kísérleti futtatásoktól a modell-üzembehelyezésig az alapvető funkciók nem változtak, de most már használhatja a robusztus <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> és [CLI](reference-azure-machine-learning-cli.md) eszközöket a gépi tanulási feladatok és folyamatok végrehajtására.  
 
-Ebből a cikkből elsajátíthatja, mi változott, és hogyan érinti ez a már meglévő munkáját az Azure Machine Learning szolgáltatásban.
+Ebből a cikkből elsajátíthatja, mi változott, és hogyan érinti a már meglévő munkáját az Azure Machine Learning Workbench és annak API-k a kapcsolatban.
 
 ## <a name="what-changed"></a>Mi változott?
 
@@ -44,10 +45,10 @@ Az Azure Machine Learning szolgáltatás korábbi verziójában létrehozott leg
 
 Kísérletezési és modellkezelési fiókjait, valamint a Workbench alkalmazást is használhatja még egy ideig 2018 szeptembere után. Az alábbi erőforrások támogatása fokozatosan szűnik meg a kiadást követő 3-4 hónap folyamán. A régi funkciók dokumentációja továbbra is megtalálható a tartalomjegyzék alján, az [Erőforrások szakaszban](../desktop-workbench/tutorial-classifying-iris-part-1.md).
 
-|Fázis|Korábbi funkciók támogatásának részletezése|
+|Kivezetési&nbsp;fázis|Korábbi funkciók támogatásának részletezése|
 |:---:|----------------|
-|1|Megszűnik az _Azure Machine Learning-kísérletezési fiók_ és _modellkezelési fiók_ Azure Portalon és a CLI-ből való létrehozásának lehetősége. A Machine Learning Compute-környezetek CLI-ből való létrehozásának lehetősége is megszűnik. Meglévő fiók esetén a CLI és az asztali Workbench ebben a fázisban továbbra is működni fog.|
-|2|Ebben a fázisban minden más, így a fennmaradó API-k és az asztali Workbench támogatása megszűnik.|
+|2018. december 4.|Képes létrehozni _Azure Machine Learning-Kísérletezési fiók_ és _Modellkezelési fiók_ az Azure Portalon, és a parancssori felületen véget ért. Machine Learning COMPUTE számítási Környezeteihez létrehozása a parancssori felületen is véget ért. Meglévő fiók esetén a CLI és az asztali Workbench ebben a fázisban továbbra is működni fog.|
+|2019. január 9.|Támogatás minden más, beleértve a fennmaradó API-k és a Workbench asztali véget ér a mai napon.|
 
 [Kezdje meg a migrálást](how-to-migrate.md) még ma. A legújabb funkciók mindegyike elérhető az új <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>, [CLI](reference-azure-machine-learning-cli.md) és [portál](quickstart-get-started.md) használatával.
 
@@ -80,7 +81,7 @@ Ismerje meg, hogyan kezdheti el [a Python használatát a fő SDK-val](quickstar
 
 ## <a name="what-about-my-registers-models-and-images"></a>Mi a helyzet a regisztrált modellekkel és rendszerképekkel?
  
-A modelleket, amelyeket a régi modellregisztrációs adatbázisban regisztrált, át kell áttelepítenie az új munkaterületre, ha továbbra is használni szeretné őket. Ezt megteheti, ha [letölti a modelleket, és újból regisztrálja őket](how-to-migrate.md) az új munkaterületen. 
+Ha azt szeretné, hogy továbbra is használhatja őket a régi modellben beállításjegyzék regisztrált modellek kell áttelepíteni az új munkaterülethez. Ezt megteheti, ha [letölti a modelleket, és újból regisztrálja őket](how-to-migrate.md) az új munkaterületen. 
 
 A rendszerképeket, amelyet a régi rendszerkép-regisztrációs adatbázisban hozott létre, újra létre kell hozni az új munkaterületen, hogy továbbra is használhassa őket. Ezt megteheti a [Docker-rendszerkép létrehozása](how-to-deploy-to-aci.md#configure-an-image) szakasz útmutatását követve. 
 
@@ -92,15 +93,15 @@ Az újabb verzióban a modellek webszolgáltatásként vannak telepítve az [Azu
 
 ## <a name="what-about-the-old-sdk--cli"></a>Mi a helyzet a régi SDK-val és CLI-vel?
 
-Igen, ezek egy ideig továbbra is működni fognak (lásd a fenti [ütemtervet](#timeline)). Javasoljuk, hogy az új kísérletek és modellek létrehozást a legújabb SDK-val és/vagy CLI-vel kezdje el.
+Igen, továbbra is működnek, amíg a január (lásd a [ütemterv](#timeline) fent). Javasoljuk, hogy az új kísérletek és modellek létrehozást a legújabb SDK-val és/vagy CLI-vel kezdje el.
 
 A legújabb kiadásban az új Python SDK használatával bármely Python környezetben kommunikálhat az Azure Machine Learning szolgáltatással. Ismerje meg, hogyan telepítheti a legújabb <a href="https://aka.ms/aml-sdk" target="_blank">SDK-t</a>.  A [frissített Azure CLI gépi tanulási bővítményt](reference-azure-machine-learning-cli.md) is használhatja `az ml` parancsok széles választékával, hogy bármely parancssori felületről interakcióba léphessen a szolgáltatással, többek között az Azure Portal Cloud Shellel.
 
-## <a name="what-about-vs-code-tools-for-ai"></a>Mi a helyzet a VS Code Tools for AI bővítménnyel?
+## <a name="what-about-azure-machine-learning-for-visual-studio-code"></a>Mi a helyzet a Visual Studio Code az Azure Machine Learning?
 
-Ezzel a legújabb kiadással a Visual Studio (VS) Code Tools for AI bővítmény szolgáltatásai kibővültek és javultak, hogy együttműködjenek a fenti új szolgáltatásokkal.
+Ezzel a legújabb kiadással Visual Studio (vagy) kódját az Azure Machine Learning rendelkezik lettek kibontva és továbbfejlesztve, hogy a fenti új funkciók.
 
-[ ![Visual Studio Code Tools for AI](./media/overview-what-happened-to-workbench/vscode.png) ] (./media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
+[ ![A Visual Studio Code az azure Machine Learning](./media/overview-what-happened-to-workbench/vscode.png) ] (. / media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
 
 ## <a name="what-about-domain-packages"></a>Mi a helyzet a tartománycsomagokkal?
 

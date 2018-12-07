@@ -10,16 +10,17 @@ ms.assetid: ''
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
+ms.custom: seodec18
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/16/2018
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 5cb3fee975e99af3d86affcbc18d89277dde2dc1
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: HT
+ms.openlocfilehash: 01c7d9c848465177d5ff1ed7264743437e57d663
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409118"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014718"
 ---
 # <a name="enable-event-hubs-capture-using-the-azure-portal"></a>Az Event Hubs Capture engedélyezése az Azure Portal használatával
 
@@ -35,7 +36,7 @@ Eseményközpont létrehozásakor a **Be** gombra kattintva engedélyezheti a Ca
 
 Az időkeret alapértelmezett értéke 5 perc. A minimális értéke 1, a maximális 15. A **Méret** ablak 10–500 MB tartománnyal rendelkezik.
 
-![][1]
+![Ez alatt az időszak a rögzítéshez][1]
 
 ## <a name="capture-data-to-an-azure-data-lake-store-account"></a>Adatok rögzítése egy Azure Data Lake Store-fiókba
 
@@ -52,7 +53,7 @@ Az adatok Azure Data Lake Store-ban történő rögzítéséhez létre kell hozn
 2. Az **Eseményközpont létrehozása** portál oldalán válassza az **Azure Data Lake Store** lehetőséget a **Capture-szolgáltató** mezőben.
 3. A **Data Lake Store kiválasztása** mezőben adja meg a korábban létrehozott Data Lake Store-fiókot, a **Data Lake elérési útja** mezőben pedig a létrehozott adatmappa elérési útját.
 
-    ![][3]
+    ![Válassza ki a Data Lake Storage-fiók][3]
 
 ## <a name="add-or-configure-capture-on-an-existing-event-hub"></a>A Capture hozzáadása vagy konfigurálása egy meglévő eseményközponton
 
@@ -60,11 +61,11 @@ A Capture-t olyan meglévő eseményközpontokon konfigurálhatja, amelyek az Ev
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-![][2]
+![Az Azure Blob-tároló konfigurálása][2]
 
 ### <a name="azure-data-lake-store"></a>Azure Data Lake Store
 
-![][4]
+![Az Azure Data Lake Storage konfigurálása][4]
 
 [1]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture1.png
 [2]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture2.png

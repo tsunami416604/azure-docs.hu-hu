@@ -1,21 +1,22 @@
 ---
-title: Docker-tároló beállításait a Language Understanding (LUIS)
-titleSuffix: Azure Cognitive Services
+title: Docker-tároló beállításai
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: A LUIS tároló futtatási környezetet segítségével konfigurálható a `docker run` parancssori argumentumokat. A LUIS rendelkezik néhány választható beállítások mellett számos szükséges beállításokat.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: 020c623f881dd806cbc42b72596a2cc87e29045b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 0cb82cfcecbb719b357cda46bf969acf6c6cefe7
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965053"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015296"
 ---
 # <a name="configure-containers"></a>Tárolók konfigurálása
 

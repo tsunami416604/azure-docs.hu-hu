@@ -1,24 +1,27 @@
 ---
-title: Rövid útmutató – Azure Kubernetes-fürt Linux esetén
+title: (ELAVULT) Rövid útmutató – Azure Kubernetes-fürt létrehozása Linux rendszeren
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az Azure CLI segítségével Kubernetes-fürtöt Linux-tárolók esetén az Azure Container Service-ben.
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 2186bd8c28851552bdbd80a74ba7cefd9f7a82d7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 5c5320a541e189043fc27f5c4bcd29afd5d7c70f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950352"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994167"
 ---
-# <a name="deploy-kubernetes-cluster-for-linux-containers"></a>Kubernetes-fürt üzembe helyezése Linux-tárolók esetén
+# <a name="deprecated-deploy-kubernetes-cluster-for-linux-containers"></a>(ELAVULT) Linux-tárolók Kubernetes-fürt üzembe helyezése
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Ez a rövid útmutató, amely használja az Azure Kubernetes Service-ben, lásd: a frissített verzió [a rövid útmutató: Azure Kubernetes Service (AKS)-fürt üzembe helyezése](../../aks/kubernetes-walkthrough.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Ebben a rövid útmutatóban egy Kubernetes-fürtöt helyezünk üzembe az Azure CLI-vel. Ezután egy webes előtérrendszert és egy Redis-példányt magában foglaló többtárolós alkalmazást helyezünk üzembe és futtatunk a fürtön. Miután végeztünk ezzel, az alkalmazás elérhető lesz az interneten. 
 

@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: 4c261a46b96865900a92bc53e4973fa3df094289
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
-ms.translationtype: HT
+ms.openlocfilehash: 8b78ec4e358f654342140df1491e19d3fc62fee7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50246558"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992397"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-python"></a>Rövid útmutató: A Translator Text API használata a támogatott nyelvek listájának lekéréséhez a Pythonnal
 
@@ -215,7 +215,7 @@ Ha nem változtatható módon adta meg az előfizetői azonosítót a programban
 
 ## <a name="see-also"></a>Lásd még
 
-Megtudhatja, hogyan használhatja a Translator Text API-t a szövegátíráson kívül a következőkhöz:
+Ismerje meg, hogyan használható a Translator Text API-t:
 
 * [Szöveg lefordítása](quickstart-python-translate.md)
 * [Szöveg átírása](quickstart-python-transliterate.md)

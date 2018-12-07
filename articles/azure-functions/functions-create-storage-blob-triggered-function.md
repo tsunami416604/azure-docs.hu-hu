@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: f71db50678ad0f1b37e30a4120b90d47d9090942
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
-ms.translationtype: HT
+ms.openlocfilehash: fcc5052d73d921a8181ad068453111e5ead4361a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113852"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999873"
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>Azure Blob-tároló által aktivált függvény létrehozása
 
@@ -27,7 +27,7 @@ Ismerje meg, hogyan hozhat létre olyan függvényt, amelyet az Azure Blob-táro
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ A [Microsoft Azure Storage Explorer](http://storageexplorer.com/) letöltése és telepítése.
++ A [Microsoft Azure Storage Explorer](https://storageexplorer.com/) letöltése és telepítése.
 + Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="create-an-azure-function-app"></a>Azure-függvényalkalmazás létrehozása
@@ -76,7 +76,7 @@ Ezután csatlakozzon az Azure Storage-fiókjához, és hozza létre a **samples-
 
     ![Kérje le a tárfiókhoz való csatlakozáshoz szükséges hitelesítő adatokat.](./media/functions-create-storage-blob-triggered-function/functions-storage-account-connection.png)
 
-1. Futtassa a [Microsoft Azure Storage Explorer](http://storageexplorer.com/) eszközt, kattintson a bal oldalon található csatlakozási ikonra, válassza a **Tárfiók nevének és kulcsának használata** lehetőséget, és kattintson a **Tovább** gombra.
+1. Futtassa a [Microsoft Azure Storage Explorer](https://storageexplorer.com/) eszközt, kattintson a bal oldalon található csatlakozási ikonra, válassza a **Tárfiók nevének és kulcsának használata** lehetőséget, és kattintson a **Tovább** gombra.
 
     ![Futtassa a Storage Account Explorer eszközt.](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-connect-1.png)
 

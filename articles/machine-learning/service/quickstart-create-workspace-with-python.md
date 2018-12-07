@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: A Python SDK használata gépi tanulási szolgáltatás munkaterületének létrehozásához – az Azure Machine Learning szolgáltatás'
-description: Ismerkedés az Azure Machine Learning szolgáltatással. Telepítse a Python SDK-t, és hozzon létre vele egy munkaterületet. Az Azure Machine Learning használata során ez a munkaterület szolgál a gépi tanulási modellekkel való kísérletezés, valamint a betanításuk és üzembe helyezésük alapjául a felhőben.
+title: 'Rövid útmutató: Ismerkedés az Azure Machine Learning szolgáltatás a Pythonban'
+description: Ismerkedés az Azure Machine Learning szolgáltatás a Pythonban. A Python SDK használatával hozzon létre egy munkaterületet, amely az alapvető blokk, amellyel kísérletezhet, betanítását és gépi tanulási modellek üzembe helyezése a felhőben.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,14 +9,15 @@ ms.reviewer: sgilley
 author: hning86
 ms.author: haining
 ms.date: 12/04/2018
-ms.openlocfilehash: 55a62888023c330aef8706bdf9e53187355721ac
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec12
+ms.openlocfilehash: 1a6bb648de251d8764eec52491a918e7cb1de653
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955853"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015381"
 ---
-# <a name="quickstart-use-python-to-get-started-with-azure-machine-learning"></a>Rövid útmutató: A Python használata az Azure Machine Learning szolgáltatással való ismerkedéshez
+# <a name="quickstart-use-python-sdk-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: Használata Python SDK-t az Azure Machine Learning használatának első lépései
 
 Ebben a rövid útmutatóban Machine Learning-[munkaterületet](concept-azure-machine-learning-architecture.md) fog létrehozni és használni a Pythonhoz készült Azure Machine Learning SDK segítségével. A Machine Learning használata során ez a munkaterület szolgál a gépi tanulási modellekkel való kísérletezés, valamint a betanításuk és üzembe helyezésük alapjául a felhőben. Ebben a rövid útmutatóban először saját Python-környezetet és Jupyter-notebookkiszolgálót konfigurál. Ha telepítés nélkül szeretné futtatni, tekintse meg a következőt: [Rövid útmutató: Ismerkedés az Azure Machine Learning szolgáltatással az Azure Portalon](quickstart-get-started.md).
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 3394fc2f6395799a252b645635d982b4573296c6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 31482cc7850c574b952c454021af729da324ba15
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47000723"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52978714"
 ---
 <!-- N.B. no header, no intents here, language-agnostic -->
 
@@ -21,7 +21,7 @@ A Cognitive Services [beszéd SDK](~/articles/cognitive-services/speech-service/
 
 1. Az események aszinkron művelethez lefoglalhatnak, ha szükséges. A felismerő ekkor meghívja az eseménykezelőket, átmeneti és végső eredményt, ha. Ellenkező esetben az alkalmazás csak a végleges átírást eredményt kap.
 
-1. Indítsa el a felismerése. Egylépéses recognition, felismerés parancsot vagy lekérdezést, például használja a `RecognizeOnceAsync()` metódust. Ez a módszer az első felismert utterance (kifejezés) adja vissza. A hosszú ideig futó felismerés például beszédátírási, használja a `StartContinuousRecognitionAsync()` metódust. Az események aszinkron felismerési eredményeket lefoglalhatnak.
+1. Indítsa el a felismerése. Egylépéses recognition, felismerés parancsot vagy lekérdezést, például használja a `RecognizeOnceAsync()` (vagy ezzel egyenértékű nyelvi) metódust. Ez a módszer az első felismert utterance (kifejezés) adja vissza. A hosszan futó felismerés beszédátírási hasonlóan, használja a `StartContinuousRecognitionAsync()` (vagy ezzel egyenértékű nyelvi) metódust. Az események aszinkron felismerési eredményeket lefoglalhatnak.
 
 Tekintse meg az alábbi kódrészleteket speech recognition forgatókönyvek, amelyek a beszéd SDK-val.
 

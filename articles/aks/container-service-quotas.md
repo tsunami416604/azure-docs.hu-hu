@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 08/01/2018
 ms.author: iainfou
-ms.openlocfilehash: 266e2c1f986ba78c9aac40887bc9a7dee1cbff82
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: 62c58e44fa62c7c244da556a89682fe697d0ba24
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420352"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000124"
 ---
 # <a name="quotas-and-region-availability-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)-kvóták és -régiók rendelkezésre állása
 
@@ -40,7 +40,9 @@ Az Azure Kubernetes Service (AKS) szolgáltatás az alábbi régiókban érhető
 - Kelet-Japán
 - Észak-Európa
 - Délkelet-Ázsia
+- Dél-India
 - Az Egyesült Királyság déli régiója
+- Az Egyesült Királyság nyugati régiója
 - Nyugat-Európa
 - USA nyugati régiója
 - USA nyugati régiója, 2.

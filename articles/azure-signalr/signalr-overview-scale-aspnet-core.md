@@ -12,12 +12,12 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 09/13/2018
 ms.author: zhshang
-ms.openlocfilehash: af100c015845d095f39ee4245f71689a4d2a43c0
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.openlocfilehash: 1492b2145187f7334d1e7d9df91adc109ca826ee
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385004"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016929"
 ---
 # <a name="scale-aspnet-core-signalr-applications-with-azure-signalr-service"></a>ASP.NET Core SignalR-alkalmazások skálázása az Azure SignalR szolgáltatással
 
@@ -44,7 +44,7 @@ A másik ok, hogy nem kell ténylegesen üzemeltetnie egy webalkalmazást. Előf
 
 ## <a name="how-does-it-scale"></a>Hogyan skálázható?
 
-A SignalR skálázásához gyakran az SQL Servert, az Azure Service Bust vagy a Redis Cache-t használják. Az Azure SignalR szolgáltatás kezeli a skálázási módszert Ön helyett. A teljesítmény és a költségek a módszertől függően változnak, és Önnek nem kell ezekkel a további szolgáltatásokkal foglalkoznia. Mindössze frissítenie kell a szolgáltatás egységeinek számát. Minden egység legfeljebb 1000 ügyfélkapcsolatot támogat.
+A SignalR az SQL Server, az Azure Service Bus és az Azure Cache méretezését, a Redis szokás. Az Azure SignalR szolgáltatás kezeli a skálázási módszert Ön helyett. A teljesítmény és a költségek a módszertől függően változnak, és Önnek nem kell ezekkel a további szolgáltatásokkal foglalkoznia. Mindössze frissítenie kell a szolgáltatás egységeinek számát. Minden egység legfeljebb 1000 ügyfélkapcsolatot támogat.
 
 ## <a name="next-steps"></a>További lépések
 * [Rövid útmutató: Csevegőszoba létrehozása az Azure SignalRrel](signalr-quickstart-dotnet-core.md)  

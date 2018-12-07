@@ -1,6 +1,6 @@
 ---
-title: Az Azure CLI minták – az App Service |} Microsoft Docs
-description: Az Azure CLI minták – az App Service
+title: Az Azure CLI-minták – az App Service |} A Microsoft Docs
+description: Az Azure CLI-minták – App Service-ben
 services: app-service
 documentationcenter: app-service
 author: syntaxc4
@@ -16,41 +16,41 @@ ms.workload: app-service
 ms.date: 12/12/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: fdc5e03350783fb8c3e30b6c9a40af45a5925ba8
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
-ms.translationtype: HT
+ms.openlocfilehash: b57ec449c597984f8f4a53035be32047ec755274
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
-ms.locfileid: "26658364"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015347"
 ---
-# <a name="azure-cli-samples"></a>Az Azure CLI-minták
+# <a name="azure-cli-samples"></a>Azure CLI-minták
 
-A következő táblázat a bash parancsfájlok az Azure parancssori felület használatával készített mutató hivatkozásokat tartalmaz.
+A következő táblázat az Azure CLI használatával létrehozott bash parancsfájlokra mutató hivatkozásokat tartalmaz.
 
 | | |
 |-|-|
 |**Alkalmazás létrehozása**||
-| [Webalkalmazás létrehozása és központi telepítése FTP-vel fájlok](./scripts/app-service-cli-deploy-ftp.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy Azure webalkalmazás és FTP használatával telepíti a fájl. |
-| [Webalkalmazás létrehozása és kód üzembe helyezése a GitHubról](./scripts/app-service-cli-deploy-github.md?toc=%2fcli%2fazure%2ftoc.json)| Azure-webalkalmazás létrehozza, és egy nyilvános GitHub-tárházban lévő kód telepíti. |
-| [Webalkalmazás létrehozása folyamatos üzembe helyezéssel a GitHubról](./scripts/app-service-cli-continuous-deployment-github.md?toc=%2fcli%2fazure%2ftoc.json)| Saját GitHub-tárházban folyamatos közzététel hoz létre egy Azure-webalkalmazásban. |
-| [Webalkalmazás létrehozása és kód üzembe helyezése helyi Git-tárházból](./scripts/app-service-cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json) | Azure-webalkalmazás létrehozása, és konfigurálja a helyi Git-tárház kód leküldéses. |
-| [Webalkalmazás létrehozása és kód üzembe helyezése átmeneti környezetbe](./scripts/app-service-cli-deploy-staging-environment.md?toc=%2fcli%2fazure%2ftoc.json) | Azure-webalkalmazás egy üzembe helyezési pont kódmódosításokat átmeneti hoz létre. |
-| [ASP.NET-magalapú webalkalmazás létrehozása Docker-tárolóban](./scripts/app-service-cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json)| Azure-webalkalmazás létrehozása a Linux és a Docker-lemezkép betölti a Docker Hub. |
+| [Webalkalmazás létrehozása és üzembe helyezése FTP-fájlok](./scripts/app-service-cli-deploy-ftp.md?toc=%2fcli%2fazure%2ftoc.json)| Azure-webalkalmazás létrehozása és üzembe helyezi a fájlt FTP használatával. |
+| [Webalkalmazás létrehozása és kód üzembe helyezése a GitHubról](./scripts/app-service-cli-deploy-github.md?toc=%2fcli%2fazure%2ftoc.json)| Azure-webalkalmazás létrehozása és üzembe helyezi a kódját egy nyilvános GitHub-adattárból. |
+| [Webalkalmazás létrehozása folyamatos üzembe helyezéssel a GitHubról](./scripts/app-service-cli-continuous-deployment-github.md?toc=%2fcli%2fazure%2ftoc.json)| Egy Azure-webalkalmazást hoz létre a saját GitHub-adattárból folyamatos közzétételre. |
+| [Webalkalmazás létrehozása és kód üzembe helyezése helyi Git-tárházból](./scripts/app-service-cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json) | Azure-webalkalmazás létrehozása és kód leküldéses egy helyi Git-adattárból konfigurálja. |
+| [Webalkalmazás létrehozása és kód üzembe helyezése átmeneti környezetbe](./scripts/app-service-cli-deploy-staging-environment.md?toc=%2fcli%2fazure%2ftoc.json) | Azure-webalkalmazás kódmódosítás átmeneti üzembehelyezési pontot hoz létre. |
+| [ASP.NET-magalapú webalkalmazás létrehozása Docker-tárolóban](./scripts/app-service-cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy Azure-webalkalmazást Linux rendszeren, és betölti egy Docker-rendszerképet a Docker Hubból. |
 |**Alkalmazás konfigurálása**||
-| [Egyéni tartomány leképezése egy webalkalmazásra](./scripts/app-service-cli-configure-custom-domain.md?toc=%2fcli%2fazure%2ftoc.json)| Azure-webalkalmazás létrehozása és egy egyéni tartománynevet rendel. |
-| [Egyéni SSL-tanúsítvány kötése a webes alkalmazás](./scripts/app-service-cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| Azure-webalkalmazás létrehozása, és az SSL-tanúsítvány egy egyéni tartománynév kötődik. |
-|**Skála alkalmazás**||
-| [Webalkalmazások manuális méretezése](./scripts/app-service-cli-scale-manual.md?toc=%2fcli%2fazure%2ftoc.json) | Azure-webalkalmazás létrehozása és méretezi a 2 példányok között. |
-| [Webalkalmazások globális méretezése magas rendelkezésre állású architektúrával](./scripts/app-service-cli-scale-high-availability.md?toc=%2fcli%2fazure%2ftoc.json) | Két Azure-webalkalmazásokban két különböző földrajzi régió hoz létre, és egy végpontot, használja az Azure Traffic Manager keresztül elérhetővé válnak. |
-|**Alkalmazás kapcsolódni tudjon erőforrásokhoz**||
-| [Webes alkalmazás csatlakoztatása SQL-adatbázishoz](./scripts/app-service-cli-app-service-sql.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy Azure web app és az SQL-adatbázis, majd az adatbázis-kapcsolati karakterláncot ad hozzá az alkalmazás beállításaiban. |
-| [Webalkalmazás csatlakoztatása tárfiókhoz](./scripts/app-service-cli-app-service-storage.md?toc=%2fcli%2fazure%2ftoc.json)| Azure-webalkalmazás és a storage-fiók létrehozása, majd hozzáadja a tárolási kapcsolati karakterlánc az alkalmazás beállításaiban. |
-| [Egy webes alkalmazás csatlakoztatása a redis gyorsítótár](./scripts/app-service-cli-app-service-redis.md?toc=%2fcli%2fazure%2ftoc.json) | Azure-webalkalmazás és a redis gyorsítótár hoz létre, majd hozzáadja a redis kapcsolódási adatait az alkalmazás beállításaiban.) |
-| [Webes alkalmazás csatlakoztatása az Cosmos-Adatbázishoz](./scripts/app-service-cli-app-service-documentdb.md?toc=%2fcli%2fazure%2ftoc.json) | Azure-webalkalmazás és egy Cosmos DB hoz létre, majd hozzáadja a Cosmos DB kapcsolódási adatait az alkalmazás beállításai. |
+| [Egyéni tartomány leképezése egy webalkalmazásra](./scripts/app-service-cli-configure-custom-domain.md?toc=%2fcli%2fazure%2ftoc.json)| Egy Azure-webalkalmazást hoz létre, és egy egyéni tartománynevet képez. |
+| [Egyéni SSL-tanúsítvány kötése egy webalkalmazáshoz](./scripts/app-service-cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| Egy Azure-webalkalmazást hoz létre, és kötést hoz létre az egyéni tartománynév SSL-tanúsítványát. |
+|**Az alkalmazás méretezése**||
+| [Webalkalmazások manuális méretezése](./scripts/app-service-cli-scale-manual.md?toc=%2fcli%2fazure%2ftoc.json) | Egy Azure-webalkalmazást hoz létre, és méretezi a 2-példányok között. |
+| [Webalkalmazások globális méretezése magas rendelkezésre állású architektúrával](./scripts/app-service-cli-scale-high-availability.md?toc=%2fcli%2fazure%2ftoc.json) | Két Azure-webalkalmazások létrehoz két különböző földrajzi régióban, és elérhetővé teszi azokat az Azure Traffic Managerrel egyetlen végponton keresztül. |
+|**Alkalmazás csatlakoztatása erőforrásokhoz**||
+| [Webalkalmazás csatlakoztatása SQL-adatbázishoz](./scripts/app-service-cli-app-service-sql.md?toc=%2fcli%2fazure%2ftoc.json)| Azure-webalkalmazás és a egy SQL-adatbázist hoz létre, majd az adatbázis-kapcsolati karakterláncot ad hozzá az alkalmazásbeállításokat. |
+| [Webalkalmazás csatlakoztatása tárfiókhoz](./scripts/app-service-cli-app-service-storage.md?toc=%2fcli%2fazure%2ftoc.json)| Azure-webalkalmazás és a egy storage-fiókot hoz létre, majd a tárfiók kapcsolati karakterláncának ad hozzá az alkalmazásbeállításokat. |
+| [Webes alkalmazás csatlakoztatása az Azure Cache redis](./scripts/app-service-cli-app-service-redis.md?toc=%2fcli%2fazure%2ftoc.json) | Létrehoz egy Azure-webalkalmazást és a egy Azure Cache redis, majd hozzáadja az alkalmazásbeállításokat a redis-kapcsolat adatai.) |
+| [Webes alkalmazás csatlakoztatása a Cosmos DB-hez](./scripts/app-service-cli-app-service-documentdb.md?toc=%2fcli%2fazure%2ftoc.json) | Létrehoz egy Azure-webalkalmazást és a egy Cosmos DB, majd hozzáadja az alkalmazásbeállításokat a Cosmos DB-kapcsolat adatai. |
 |**Biztonsági mentése és visszaállítása alkalmazás**||
-| [Készítsen biztonsági másolatot a webes alkalmazás](./scripts/app-service-cli-backup-onetime.md?toc=%2fcli%2fazure%2ftoc.json) | Azure-webalkalmazás létrehozása és a egyszeri biztonsági hozza létre. |
-| [Ütemezett biztonsági mentés egy webalkalmazás létrehozása](./scripts/app-service-cli-backup-scheduled.md?toc=%2fcli%2fazure%2ftoc.json) | Azure-webalkalmazás létrehozása és a hozza létre az ütemezett biztonsági mentés. |
-| [A webes alkalmazás visszaállítja egy biztonsági másolatból](./scripts/app-service-cli-backup-restore.md?toc=%2fcli%2fazure%2ftoc.json) | Azure-webalkalmazás visszaállítja egy biztonsági másolatból. |
+| [A webes alkalmazás biztonsági mentése](./scripts/app-service-cli-backup-onetime.md?toc=%2fcli%2fazure%2ftoc.json) | Egy Azure-webalkalmazást hoz létre, és egyszeri biztonsági mentést hoz. |
+| [Egy webalkalmazás ütemezett biztonsági másolat létrehozása](./scripts/app-service-cli-backup-scheduled.md?toc=%2fcli%2fazure%2ftoc.json) | Egy Azure-webalkalmazást hoz létre, és a ütemezett biztonsági mentés hozza létre. |
+| [Visszaállít egy webalkalmazást egy biztonsági másolatból](./scripts/app-service-cli-backup-restore.md?toc=%2fcli%2fazure%2ftoc.json) | Azure-webalkalmazás visszaállítása biztonsági másolatból. |
 |**Alkalmazás monitorozása**||
-| [Webalkalmazás figyelése a webkiszolgáló-naplókkal](./scripts/app-service-cli-monitor.md?toc=%2fcli%2fazure%2ftoc.json) | Azure-webalkalmazás létrehozása, engedélyezi a naplózást, és a naplók letölti a helyi számítógépre. |
+| [Webkiszolgáló-naplókkal-WebApp figyelése](./scripts/app-service-cli-monitor.md?toc=%2fcli%2fazure%2ftoc.json) | Egy Azure-webalkalmazást hoz létre, engedélyezi a naplózást, és letölti a naplóit a helyi gépen. |
 | | |

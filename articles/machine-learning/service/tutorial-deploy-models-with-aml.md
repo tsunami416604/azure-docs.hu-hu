@@ -1,22 +1,23 @@
 ---
-title: 'Oktatóanyag: Képbesorolási modell üzembe helyezése az Azure Container Instances (ACI) szolgáltatásban az Azure Machine Learning szolgáltatással'
+title: 'Kép besorolási oktatóanyag: Azure Machine Learning szolgáltatás a modellek üzembe helyezése'
 description: Ez az oktatóanyag bemutatja, hogyan használható az Azure Machine Learning szolgáltatás képbesorolási modell üzembe helyezésére a scikit-learn alkalmazásával egy Python Jupyter-notebookban.  Ez az oktatóanyag egy kétrészes sorozat második része.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: tutorial
+ms.custom: seodec12
 author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 0fd3bebc1e2dba3ab7d1204e779a8c80b97c990b
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 6e56fe88eec70af313d0b0dd8cf0aaf27b054121
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864060"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011538"
 ---
-# <a name="tutorial-2--deploy-an-image-classification-model-in-azure-container-instance-aci"></a>2. oktatóanyag: Képbesorolási modell üzembe helyezése az Azure Container Instances (ACI) szolgáltatásban
+# <a name="tutorial-part-2--deploy-an-image-classification-model-in-azure-container-instance-aci"></a>Az oktatóanyag (2. rész): egy kép besorolási modell az Azure Container Instance (ACI) üzembe helyezése
 
 Ez az oktatóanyag **egy kétrészes oktatóanyag-sorozat második része**. Az [előző oktatóanyagban](tutorial-train-models-with-aml.md) gépi tanulási modelleket tanított be, majd regisztrált egy modellt a felhőbeli munkaterületen.  
 

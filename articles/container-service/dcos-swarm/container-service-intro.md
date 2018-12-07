@@ -1,5 +1,5 @@
 ---
-title: Docker-tárolók üzemeltetése az Azure-felhőben
+title: (ELAVULT) Docker-tárolók üzemeltetése az Azure-felhőben
 description: Az Azure Container Service lehetőséget biztosít arra, hogy egyszerűbben lehessen létrehozni, konfigurálni és kezelni a virtuális gépeknek egy olyan fürtjét, amely tárolóalapú alkalmazások futtatására lett konfigurálva.
 services: container-service
 author: rgardler
@@ -9,14 +9,16 @@ ms.topic: overview
 ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 6bb13ad19f9b0b6137cdb2b4a9afbb2f325b9d36
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 348bde94bc01e00777603af8ac078d5e319d732c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975056"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001982"
 ---
-# <a name="introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>Bevezetés a Docker Azure Container Service-t használó tárolóüzemeltetési megoldásaiba 
+# <a name="deprecated-introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>(ELAVULT) Docker tárolóüzemeltetési megoldás az Azure Container Service bemutatása 
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 Az Azure Container Service elősegíti azt, hogy egyszerűbben lehessen létrehozni, konfigurálni és kezelni a virtuális gépeknek egy olyan fürtjét, amely tárolóalapú alkalmazások futtatására lett konfigurálva. Ezt nyílt forráskódú ütemezési és vezénylési eszközök optimalizált konfigurációját igénybe véve teszi lehetővé. Így lehetővé válik, hogy a meglévő ismereteit használja, vagy egy nagy és egyre növekvő közösségi szakértelmet vegyen igénybe a tárolóalapú alkalmazások Microsoft Azure-on történő üzembe helyezéséhez és kezeléséhez.
 

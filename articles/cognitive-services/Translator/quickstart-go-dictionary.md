@@ -8,273 +8,218 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
-ms.date: 06/29/2018
+ms.date: 12/05/2018
 ms.author: erhopf
-ms.openlocfilehash: 0c4872aaf222110a0044095040db08d0180e37c4
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
+ms.openlocfilehash: bcda716d143bd675f9510b1ecf5974ab9c28a394
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649635"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000593"
 ---
-# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-go"></a>Rövid útmutató: Alternatív fordítások keresése a Translator Text REST API (Go) használatával
+# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-go"></a>Gyors útmutató: A Translator Text API használatával beszerzése a Go használatával alternatív fordítások
 
-Ebben a rövid útmutatóban a kifejezések lehetséges alternatív fordításaival kapcsolatos részleteket, valamint az alternatív fordítások használatának példáit keresi meg a Translator Text API segítségével.
+Ez a rövid útmutatóban megismerheti, hogyan alternatív fordítások és használati példákat találhat a Go és a Translator Text REST API használatával egy adott szöveges lesz.
+
+Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmaz egy Translator Text-erőforrást. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kód futtatásához telepítenie kell a [Go disztribúciót](https://golang.org/doc/install). A mintakód csak **alapvető** kódtárakat használ, így nincsenek külső függőségek.
+Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
-A Translator Text API használatához szüksége van egy előfizetési kulcsra is. Lásd [a Translator Text API regisztrációját](translator-text-how-to-signup.md).
+* [Go](https://golang.org/doc/install)
+* Egy Azure-előfizetői azonosító a Translator Text szolgáltatáshoz
 
-## <a name="dictionary-lookup-request"></a>Dictionary Lookup kérés
+## <a name="create-a-project-and-import-required-modules"></a>Projekt létrehozása és a szükséges modulok importálása
 
-A következő egy szó alternatív fordításait kéri le a [Dictionary Lookup](./reference/v3-0-dictionary-lookup.md) metódussal.
+A kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével használatával új Go-projekt létrehozása. Ezután másolja a következő kódrészletet egy `alt-translations.go` nevű fájlba a projektjében.
 
-1. Hozzon létre egy új Go-projektet a kedvenc kódszerkesztőjében.
-2. Adja hozzá az alábbi kódot.
-3. A `subscriptionKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
-4. Mentse a fájlt „.go” kiterjesztéssel.
-5. Nyisson meg parancssort egy számítógépen, amelyen a Go telepítve van.
-6. Állítsa össze a fájlt (például: „go build quickstart-lookup.go”).
-7. Futtassa a fájlt (például: „quickstart-lookup”).
-
-```golang
+```go
 package main
 
 import (
+    "bytes"
     "encoding/json"
     "fmt"
-    "io/ioutil"
+    "log"
     "net/http"
-    "strconv"
-    "strings"
-    "time"
+    "net/url"
+    "os"
 )
+```
 
+## <a name="create-the-main-function"></a>A fő függvény létrehozása
+
+Ez a minta megpróbálja beolvasni a Translator Text-előfizetői azonosítót a `TRANSLATOR_TEXT_KEY` környezeti változóból. Ha még nem ismeri a környezeti változókat, beállíthatja a `subscriptionKey` sztringet, és megjegyzéssé teheti a feltételes utasítást.
+
+Másolja a projektbe a következő kódot:
+
+```go
 func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
-
-    const uriBase = "https://api.cognitive.microsofttranslator.com"
-    const uriPath = "/dictionary/lookup?api-version=3.0"
-
-    // From English to French
-    const params = "&from=en&to=fr"
-
-    const uri = uriBase + uriPath + params
-
-    const text = "great"
-
-    r := strings.NewReader("[{\"Text\" : \"" + text + "\"}]")
-
-    client := &http.Client{
-        Timeout: time.Second * 2,
+    /*
+     * Read your subscription key from an env variable.
+     * Please note: You can replace this code block with
+     * var subscriptionKey = "YOUR_SUBSCRIPTION_KEY" if you don't
+     * want to use env variables.
+     */
+    subscriptionKey := os.Getenv("TRANSLATOR_TEXT_KEY")
+    if subscriptionKey == "" {
+       log.Fatal("Environment variable TRANSLATOR_TEXT_KEY is not set.")
     }
-
-    req, err := http.NewRequest("POST", uri, r)
-    if err != nil {
-        fmt.Printf("Error creating request: %v\n", err)
-        return
-    }
-
-    req.Header.Add("Content-Type", "application/json")
-    req.Header.Add("Content-Length", strconv.FormatInt(req.ContentLength, 10))
-    req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
-
-    resp, err := client.Do(req)
-    if err != nil {
-        fmt.Printf("Error on request: %v\n", err)
-        return
-    }
-    defer resp.Body.Close()
-
-    body, err := ioutil.ReadAll(resp.Body)
-    if err != nil {
-        fmt.Printf("Error reading response body: %v\n", err)
-        return
-    }
-
-    var f interface{}
-    json.Unmarshal(body, &f)
-
-    jsonFormatted, err := json.MarshalIndent(f, "", "  ")
-    if err != nil {
-        fmt.Printf("Error producing JSON: %v\n", err)
-        return
-    }
-    fmt.Println(string(jsonFormatted))
+    /*
+     * This calls our altTranslations function, which we'll
+     * create in the next section. It takes a single argument,
+     * the subscription key.
+     */
+    altTranslations(subscriptionKey)
 }
 ```
 
-## <a name="dictionary-lookup-response"></a>Dictionary Lookup válasz
+## <a name="create-a-function-to-get-alternate-translations"></a>Alternatív fordítások első függvény létrehozása
 
-A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
+Hozzunk létre egy függvényt, hogy másik fordítások kapjon. Ez a funkció a Translator Text előfizetési kulcs egyetlen argumentumot vesz igénybe.
+
+```go
+func altTranslations(subscriptionKey string) {
+    /*  
+     * In the next few sections, we'll add code to this
+     * function to make a request and handle the response.
+     */
+}
+```
+
+Következő lépésként hozzunk létre az URL-címet. Az URL-címe használatával lett összeállítva a `Parse()` és `Query()` módszereket. Láthatja, hogy a hozzáadott paraméter a `Add()` metódust. Ebben a példában azt Ön fordítása angolról spanyolra.
+
+Másolja be ezt a kódot a `altTranslations` függvény.
+
+```go
+// Build the request URL. See: https://golang.org/pkg/net/url/#example_URL_Parse
+u, _ := url.Parse("https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0")
+q := u.Query()
+q.Add("from", "en")
+q.Add("to", "es")
+u.RawQuery = q.Encode()
+```
+
+>[!NOTE]
+> A végpontokkal, az útvonalakkal és a kérelem-paraméterekkel kapcsolatos további információkért lásd a [Translator Text API 3.0 keresési funkcióját](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup) ismertető témakört.
+
+## <a name="create-a-struct-for-your-request-body"></a>Egy struct a kérés törzsének létrehozása
+
+Ezután hozzon létre egy névtelen struktúráját a kérelem törzsében, és a JSON-ként kódolni, `json.Marshal()`. Adja hozzá a kódot a `altTranslations` függvény.
+
+```go
+// Create an anonymous struct for your request body and encode it to JSON
+body := []struct {
+    Text string
+}{
+    {Text: "Pineapples"},
+}
+b, _ := json.Marshal(body)
+```
+
+## <a name="build-the-request"></a>A kérelem létrehozása
+
+Most, hogy a kéréstörzs JSON-fájlként már kódolva, a POST-kérés hozhat létre, és a Translator Text API hívása.
+
+```go
+// Build the HTTP POST request
+req, err := http.NewRequest("POST", u.String(), bytes.NewBuffer(b))
+if err != nil {
+    log.Fatal(err)
+}
+// Add required headers to the request
+req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
+req.Header.Add("Content-Type", "application/json")
+
+// Call the Translator Text API
+res, err := http.DefaultClient.Do(req)
+if err != nil {
+    log.Fatal(err)
+}
+```
+
+## <a name="handle-and-print-the-response"></a>Kezelni, és a válasz
+
+Adja hozzá a kódot a `altTranslations` függvény dekódolni a JSON-válasz, majd formázza és nyomtassa ki az eredményt.
+
+```go
+// Decode the JSON response
+var result interface{}
+if err := json.NewDecoder(res.Body).Decode(&result); err != nil {
+    log.Fatal(err)
+}
+// Format and print the response to terminal
+prettyJSON, _ := json.MarshalIndent(result, "", "  ")
+fmt.Printf("%s\n", prettyJSON)
+```
+
+## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
+
+Ezzel összeállított egy egyszerű programot, amely meghívja a Translator Text API-t, és visszaad egy JSON-választ. Most itt az ideje, hogy futtassa a programot:
+
+```console
+go run alt-translations.go
+```
+
+Ha szeretné összevetni a saját kódját a miénkkel, a teljes mintakódot megtekintheti a [GitHubon](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go).
+
+## <a name="sample-response"></a>Mintaválasz
 
 ```json
 [
   {
-    "normalizedSource": "great",
-    "displaySource": "great",
+    "displaySource": "pineapples",
+    "normalizedSource": "pineapples",
     "translations": [
       {
-        "normalizedTarget": "grand",
-        "displayTarget": "grand",
-        "posTag": "ADJ",
-        "confidence": 0.2783,
-        "prefixWord": "",
         "backTranslations": [
           {
-            "normalizedText": "great",
-            "displayText": "great",
-            "numExamples": 15,
-            "frequencyCount": 34358
+            "displayText": "pineapples",
+            "frequencyCount": 158,
+            "normalizedText": "pineapples",
+            "numExamples": 5
           },
           {
-            "normalizedText": "big",
-            "displayText": "big",
-            "numExamples": 15,
-            "frequencyCount": 21770
+            "displayText": "cones",
+            "frequencyCount": 13,
+            "normalizedText": "cones",
+            "numExamples": 5
           },
-...
-        ]
+          {
+            "displayText": "piña",
+            "frequencyCount": 5,
+            "normalizedText": "piña",
+            "numExamples": 3
+          },
+          {
+            "displayText": "ganks",
+            "frequencyCount": 3,
+            "normalizedText": "ganks",
+            "numExamples": 2
+          }
+        ],
+        "confidence": 0.7016,
+        "displayTarget": "piñas",
+        "normalizedTarget": "piñas",
+        "posTag": "NOUN",
+        "prefixWord": ""
       },
       {
-        "normalizedTarget": "super",
-        "displayTarget": "super",
-        "posTag": "ADJ",
-        "confidence": 0.1514,
-        "prefixWord": "",
         "backTranslations": [
           {
-            "normalizedText": "super",
-            "displayText": "super",
-            "numExamples": 15,
-            "frequencyCount": 12023
-          },
-          {
-            "normalizedText": "great",
-            "displayText": "great",
-            "numExamples": 15,
-            "frequencyCount": 10931
-          },
-...
-        ]
-      },
-...
-    ]
-  }
-]
-```
-
-## <a name="dictionary-examples-request"></a>Dictionary Examples kérés
-
-A következő a szótárban lévő kifejezések használatának szövegkörnyezetbe foglalt példáit kéri le a [Dictionary Examples](./reference/v3-0-dictionary-examples.md) metódussal.
-
-1. Hozzon létre egy új Go-projektet a kedvenc kódszerkesztőjében.
-2. Adja hozzá az alábbi kódot.
-3. A `subscriptionKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
-4. Mentse a fájlt „.go” kiterjesztéssel.
-5. Nyisson meg parancssort egy számítógépen, amelyen a Go telepítve van.
-6. Állítsa össze a fájlt (például: „go build quickstart-examples.go”).
-7. Futtassa a fájlt (például: „quickstart-examples”).
-
-```golang
-package main
-
-import (
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "net/http"
-    "strconv"
-    "strings"
-    "time"
-)
-
-func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
-
-    const uriBase = "https://api.cognitive.microsofttranslator.com"
-    const uriPath = "/dictionary/examples?api-version=3.0"
-
-    // From English to French
-    const params = "&from=en&to=fr"
-
-    const uri = uriBase + uriPath + params
-
-    const text = "great"
-    const translation = "formidable"
-
-    r := strings.NewReader("[{\"Text\" : \"" + text + "\", \"Translation\" : \"" + translation + "\"}]")
-
-    client := &http.Client{
-        Timeout: time.Second * 2,
-    }
-
-    req, err := http.NewRequest("POST", uri, r)
-    if err != nil {
-        fmt.Printf("Error creating request: %v\n", err)
-        return
-    }
-
-    req.Header.Add("Content-Type", "application/json")
-    req.Header.Add("Content-Length", strconv.FormatInt(req.ContentLength, 10))
-    req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
-
-    resp, err := client.Do(req)
-    if err != nil {
-        fmt.Printf("Error on request: %v\n", err)
-        return
-    }
-    defer resp.Body.Close()
-
-    body, err := ioutil.ReadAll(resp.Body)
-    if err != nil {
-        fmt.Printf("Error reading response body: %v\n", err)
-        return
-    }
-
-    var f interface{}
-    json.Unmarshal(body, &f)
-
-    jsonFormatted, err := json.MarshalIndent(f, "", "  ")
-    if err != nil {
-        fmt.Printf("Error producing JSON: %v\n", err)
-        return
-    }
-    fmt.Println(string(jsonFormatted))
-}
-```
-
-## <a name="dictionary-examples-response"></a>Dictionary Examples válasz
-
-A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
-
-```json
-[
-  {
-    "normalizedSource": "great",
-    "normalizedTarget": "formidable",
-    "examples": [
-      {
-        "sourcePrefix": "You have a ",
-        "sourceTerm": "great",
-        "sourceSuffix": " expression there.",
-        "targetPrefix": "Vous avez une expression ",
-        "targetTerm": "formidable",
-        "targetSuffix": "."
-      },
-      {
-        "sourcePrefix": "You played a ",
-        "sourceTerm": "great",
-        "sourceSuffix": " game today.",
-        "targetPrefix": "Vous avez été ",
-        "targetTerm": "formidable",
-        "targetSuffix": "."
-      },
-...
+            "displayText": "pineapples",
+            "frequencyCount": 16,
+            "normalizedText": "pineapples",
+            "numExamples": 2
+          }
+        ],
+        "confidence": 0.2984,
+        "displayTarget": "ananás",
+        "normalizedTarget": "ananás",
+        "posTag": "NOUN",
+        "prefixWord": ""
+      }
     ]
   }
 ]
@@ -286,3 +231,13 @@ A Cognitive Services API-k Go-csomagjait a GitHubon ismerheti meg, a [Góhoz ké
 
 > [!div class="nextstepaction"]
 > [A Go-csomagok megismerése a GitHubon](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices)
+
+## <a name="see-also"></a>Lásd még
+
+Ismerje meg, hogyan használható a Translator Text API-t:
+
+* [Szöveg lefordítása](quickstart-go-translate.md)
+* [Szöveg átírása](quickstart-go-transliterate.md)
+* [A beviteli nyelv azonosítása](quickstart-go-detect.md)
+* [A támogatott nyelvek listájának beolvasása](quickstart-go-languages.md)
+* [Bemenet mondatai hosszának meghatározása](quickstart-go-sentences.md)

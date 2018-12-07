@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/05/2018
 ms.author: diberry
-ms.openlocfilehash: d3b8d0597f0732a4a3cfab79125a885b2d141c9f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 36751f533b59e0ff140f5ad03e7f1fc0fa9cad41
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424700"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000566"
 ---
 # <a name="tutorial-5-extract-contextually-related-data"></a>5. oktatóanyag: Szövegkörnyezet szerint kapcsolódó adatok kinyerése
 Ebben az oktatóanyagban kapcsolódó adatrészleteket keresünk szövegkörnyezet alapján. Kapcsolódó lehet például az indulási hely és a cél egy épületből és irodából egy másik épületbe és irodába történő fizikai mozgás során. Munkarendelés létrehozásához mindkét adatrészletre szükség lehet, és az adatrészletek kapcsolódnak egymáshoz.  
@@ -55,7 +55,7 @@ Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforr
 3. A **Manage** (Kezelés) szakasz **Versions** (Verziók) lapján klónozza a verziót, és adja neki a `hier` nevet. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. Mivel a verzió neve az URL-útvonal részét képezi, a név nem tartalmazhat olyan karaktert, amely URL-címben nem érvényes. 
 
 ## <a name="remove-prebuilt-number-entity-from-app"></a>Előre összeállított szám entitás eltávolítása az alkalmazásból
-A teljes kimondott szöveg megjelenítéséhez és a hierarchikus gyermek megjelöléséhez ideiglenesen távolítsa el az előre összeállított szám entitást.
+Annak érdekében, hogy tekintse meg a teljes utterance (kifejezés), és jelölje meg a hierarchikus gyermekek [ideiglenesen távolítsa el az előre összeállított számú entitást](luis-prebuilt-entities.md#marking-entities-containing-a-prebuilt-entity-token). 
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 

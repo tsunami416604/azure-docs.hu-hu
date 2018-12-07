@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/24/2018
 ms.author: erhopf
-ms.openlocfilehash: 64831f13811029263a2b76f8030589d9329dd318
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
-ms.translationtype: HT
+ms.openlocfilehash: 1d7ba50bf57a5c7f88f4380c4874d6053f07082e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086131"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992593"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-python"></a>Rövid útmutató: A Translator Text API használata mondatok hosszúságának meghatározásához a Pythonnal
 
@@ -153,7 +153,7 @@ Ha nem változtatható módon adta meg az előfizetői azonosítót a programban
 
 ## <a name="see-also"></a>Lásd még
 
-Megtudhatja, hogyan használhatja a Translator Text API-t a szövegátíráson kívül a következőkhöz:
+Ismerje meg, hogyan használható a Translator Text API-t:
 
 * [Szöveg lefordítása](quickstart-python-translate.md)
 * [Szöveg átírása](quickstart-python-transliterate.md)

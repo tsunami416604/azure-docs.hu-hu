@@ -1,5 +1,5 @@
 ---
-title: '#1. oktatóanyag: Adatok előkészítése az Azure Machine Learning szolgáltatással modellezési'
+title: Regressziós modell oktatóanyag – Azure Machine Learning szolgáltatás az adatok előkészítése
 description: Ez az oktatóanyag első részében meg fogjuk útmutató előkészítheti az adatokat a Python, az Azure Machine Learning SDK-val regressziós modellezéshez.
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +9,15 @@ author: cforbe
 ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
-ms.openlocfilehash: 700dfa9fded30fd09eab69a15abf54fb420c5c06
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec12
+ms.openlocfilehash: 94e004c40177298f805336509d649065fc7dfdb7
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52884129"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012368"
 ---
-# <a name="tutorial-1-prepare-data-for-regression-modeling"></a>#1. oktatóanyag: Adatok előkészítése az regressziós modellezéshez
+# <a name="tutorial-part-1-prepare-data-for-regression-modeling"></a>(1. rész) oktatóanyag: adatok előkészítése az regressziós modellezéshez
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan előkészítheti az adatokat a regressziós modellezéshez, az Azure Machine Learning Data Prep SDK használatával. Különféle átalakításokat szűrését, és kombinálja a két különböző NYC Taxi adatkészletet. A végső cél, ez az oktatóanyag beállított taxi belépőt költsége alapján a data-funkciókat, beleértve a felvételi óra, a modell képes előre jelezni, nap, hét, az utasok és a koordináták száma. Ebben az oktatóanyagban a kétrészes oktatóanyag-sorozat része.
 
@@ -73,7 +74,7 @@ Most töltse fel az összes adatfolyamok érvényes helyi átalakítások bizony
 all_columns = dprep.ColumnSelector(term=".*", use_regex=True)
 drop_if_all_null = [all_columns, dprep.ColumnRelationship(dprep.ColumnRelationship.ALL)]
 useful_columns = [
-    "cost", "distance""distance", "dropoff_datetime", "dropoff_latitude", "dropoff_longitude",
+    "cost", "distance", "dropoff_datetime", "dropoff_latitude", "dropoff_longitude",
     "passengers", "pickup_datetime", "pickup_latitude", "pickup_longitude", "store_forward", "vendor"
 ]
 ```
@@ -104,9 +105,6 @@ tmp_df = (green_df
 tmp_df.head(5)
 ```
 
-
-
-
 <div>
 <style scoped> .dataframe pedig tbody tr th: csak a-típusú {függőleges igazítás: középre;}
 
@@ -131,6 +129,7 @@ tmp_df.head(5)
       <th>dropoff_longitude</th>
       <th>dropoff_latitude</th>
       <th>az utasok</th>
+      <th>távolságskála</th>
       <th>költség</th>
     </tr>
   </thead>
@@ -146,6 +145,7 @@ tmp_df.head(5)
       <td>0</td>
       <td>0</td>
       <td>1</td>
+      <td>.00</td>
       <td>21,25</td>
     </tr>
     <tr>
@@ -159,6 +159,7 @@ tmp_df.head(5)
       <td>0</td>
       <td>0</td>
       <td>2</td>
+      <td>.00</td>
       <td>74.5</td>
     </tr>
     <tr>
@@ -172,6 +173,7 @@ tmp_df.head(5)
       <td>0</td>
       <td>0</td>
       <td>1</td>
+      <td>.00</td>
       <td>1</td>
     </tr>
     <tr>
@@ -185,6 +187,7 @@ tmp_df.head(5)
       <td>0</td>
       <td>0</td>
       <td>1</td>
+      <td>.00</td>
       <td>3.25</td>
     </tr>
     <tr>
@@ -198,16 +201,14 @@ tmp_df.head(5)
       <td>0</td>
       <td>0</td>
       <td>1</td>
+      <td>.00</td>
       <td>8.5</td>
     </tr>
   </tbody>
 </table>
 </div>
 
-
-
 Írja felül a `green_df` változó, a végrehajtott átalakítások `tmp_df` az előző lépésben.
-
 
 ```python
 green_df = tmp_df
@@ -632,6 +633,14 @@ Adatok profil kimenetéből származó `store_forward`, látni, hogy az adatok i
 combined_df = combined_df.replace(columns="store_forward", find="0", replace_with="N").fill_nulls("store_forward", "N")
 ```
 
+Hajtsa végre egy másik `replace` működnek majd, ezúttal a `distance` mező. Ez újraformázza távolság értékek, amelyek nem megfelelően van-e jelölve, `.00`, és bármely nullák nullákkal tölti ki. Konvertálja a `distance` mező numerikus formátumban.
+
+
+```python
+combined_df = combined_df.replace(columns="distance", find=".00", replace_with=0).fill_nulls("distance", 0)
+combined_df = combined_df.to_number(["distance"])
+```
+
 A kivételezést felosztani a, és dobja el a megfelelő dátum és idő oszlopokra, időpontok ki. Használat `split_column_by_example()` a felosztás végrehajtásához. Ebben az esetben, az opcionális `example` paraméterében `split_column_by_example()` van hagyva. Ezért a függvény automatikusan meghatározza, hol található adatok alapján felosztani.
 
 
@@ -641,9 +650,6 @@ tmp_df = (combined_df
     .split_column_by_example(source_column="dropoff_datetime"))
 tmp_df.head(5)
 ```
-
-
-
 
 <div>
 <style scoped> .dataframe pedig tbody tr th: csak a-típusú {függőleges igazítás: középre;}
@@ -673,6 +679,7 @@ tmp_df.head(5)
       <th>dropoff_longitude</th>
       <th>dropoff_latitude</th>
       <th>az utasok</th>
+      <th>távolságskála</th>
       <th>költség</th>
     </tr>
   </thead>
@@ -692,6 +699,7 @@ tmp_df.head(5)
       <td>-73.937767</td>
       <td>40.758480</td>
       <td>1</td>
+      <td>0.0</td>
       <td>2.5</td>
     </tr>
     <tr>
@@ -709,6 +717,7 @@ tmp_df.head(5)
       <td>-73.937927</td>
       <td>40.757843</td>
       <td>1</td>
+      <td>0.0</td>
       <td>2.5</td>
     </tr>
     <tr>
@@ -726,6 +735,7 @@ tmp_df.head(5)
       <td>-73.937721</td>
       <td>40.758369</td>
       <td>1</td>
+      <td>0.0</td>
       <td>3.3</td>
     </tr>
     <tr>
@@ -743,6 +753,7 @@ tmp_df.head(5)
       <td>-73.937790</td>
       <td>40.758358</td>
       <td>1</td>
+      <td>0.0</td>
       <td>3.3</td>
     </tr>
     <tr>
@@ -760,12 +771,12 @@ tmp_df.head(5)
       <td>-73.937775</td>
       <td>40.758450</td>
       <td>1</td>
+      <td>0.0</td>
       <td>3.3</td>
     </tr>
   </tbody>
 </table>
 </div>
-
 
 
 Nevezze át az oszlopokat által generált `split_column_by_example()` be adjon kifejező nevet.
@@ -836,9 +847,6 @@ tmp_df = (combined_df
 tmp_df.head(5)
 ```
 
-
-
-
 <div>
 <style scoped> .dataframe pedig tbody tr th: csak a-típusú {függőleges igazítás: középre;}
 
@@ -871,6 +879,7 @@ tmp_df.head(5)
       <th>dropoff_longitude</th>
       <th>dropoff_latitude</th>
       <th>az utasok</th>
+      <th>távolságskála</th>
       <th>költség</th>
     </tr>
   </thead>
@@ -894,6 +903,7 @@ tmp_df.head(5)
       <td>-73.937767</td>
       <td>40.758480</td>
       <td>1</td>
+      <td>0.0</td>
       <td>2.5</td>
     </tr>
     <tr>
@@ -915,6 +925,7 @@ tmp_df.head(5)
       <td>-73.937927</td>
       <td>40.757843</td>
       <td>1</td>
+      <td>0.0</td>
       <td>2.5</td>
     </tr>
     <tr>
@@ -936,6 +947,7 @@ tmp_df.head(5)
       <td>-73.937721</td>
       <td>40.758369</td>
       <td>1</td>
+      <td>0.0</td>
       <td>3.3</td>
     </tr>
     <tr>
@@ -957,6 +969,7 @@ tmp_df.head(5)
       <td>-73.937790</td>
       <td>40.758358</td>
       <td>1</td>
+      <td>0.0</td>
       <td>3.3</td>
     </tr>
     <tr>
@@ -978,13 +991,12 @@ tmp_df.head(5)
       <td>-73.937775</td>
       <td>40.758450</td>
       <td>1</td>
+      <td>0.0</td>
       <td>3.3</td>
     </tr>
   </tbody>
 </table>
 </div>
-
-
 
 A fenti adatokból láthatja, hogy helyesek-e a begyűjtés és Gyűjtőtár dátum és időpont összetevőket a származtatott átalakítások előállítása. Dobja el a `pickup_datetime` és `dropoff_datetime` oszlopok azok már nem szükséges.
 
@@ -1002,27 +1014,24 @@ type_infer.learn()
 type_infer
 ```
 
-
-
-
-    {'pickup_weekday': [FieldType.STRING],
-     'pickup_hour': [FieldType.DECIMAL],
-     'pickup_second': [FieldType.DECIMAL],
-     'dropoff_hour': [FieldType.DECIMAL],
-     'dropoff_minute': [FieldType.DECIMAL],
-     'dropoff_second': [FieldType.DECIMAL],
-     'store_forward': [FieldType.STRING],
-     'pickup_minute': [FieldType.DECIMAL],
-     'dropoff_weekday': [FieldType.STRING],
-     'vendor': [FieldType.STRING],
-     'pickup_longitude': [FieldType.DECIMAL],
-     'pickup_latitude': [FieldType.DECIMAL],
-     'dropoff_longitude': [FieldType.DECIMAL],
-     'dropoff_latitude': [FieldType.DECIMAL],
-     'passengers': [FieldType.DECIMAL],
-     'cost': [FieldType.DECIMAL]}
-
-
+    Column types conversion candidates:
+    'pickup_weekday': [FieldType.STRING],
+    'pickup_hour': [FieldType.DECIMAL],
+    'pickup_minute': [FieldType.DECIMAL],
+    'pickup_second': [FieldType.DECIMAL],
+    'dropoff_hour': [FieldType.DECIMAL],
+    'dropoff_minute': [FieldType.DECIMAL],
+    'dropoff_second': [FieldType.DECIMAL],
+    'store_forward': [FieldType.STRING],
+    'pickup_longitude': [FieldType.DECIMAL],
+    'dropoff_longitude': [FieldType.DECIMAL],
+    'passengers': [FieldType.DECIMAL],
+    'distance': [FieldType.DECIMAL],
+    'vendor': [FieldType.STRING],
+    'dropoff_weekday': [FieldType.STRING],
+    'pickup_latitude': [FieldType.DECIMAL],
+    'dropoff_latitude': [FieldType.DECIMAL],
+    'cost': [FieldType.DECIMAL]
 
 Az eredmények megfelelő hely az adatok alapján következtetésekhez most már a típusátalakítás az adatfolyamot a alkalmazni.
 
@@ -1032,18 +1041,27 @@ tmp_df = type_infer.to_dataflow()
 tmp_df.get_profile()
 ```
 
-Ezen a ponton rendelkezik egy teljes körűen átalakított és előkészített adatfolyam-objektumot a gépi tanulási modellek használata. Az SDK objektum szerializációs funkciót tartalmaz, amely a következőképpen használja.
-
+A csomagolás az adatfolyamot, mielőtt hajtsa végre az adatkészlet két végső szűrők. Helytelen adatpontok kiküszöböléséhez, az adatfolyamot, a rekordok szűrése ahol mind a `cost` és `distance` nagyobb, mint nulla.
 
 ```python
+tmp_df = tmp_df.filter(dprep.col("distance") > 0)
+tmp_df = tmp_df.filter(dprep.col("cost") > 0)
+```
+
+Ezen a ponton rendelkezik egy teljes körűen átalakított és előkészített adatfolyam-objektumot a gépi tanulási modellek használata. Az SDK objektum szerializációs funkciót tartalmaz, amely a következőképpen használja.
+
+```python
+import os
+file_path = os.path.join(os.getcwd(), "dflows.dprep")
+
 dflow_prepared = tmp_df
 package = dprep.Package([dflow_prepared])
-package.save(".\dflow")
+package.save(file_path)
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Törölje a fájlt `dflow` (akár helyileg vagy az Azure-jegyzetfüzetekben futtat) az aktuális könyvtárban található, ha nem szeretné folytatni a második rész az oktatóanyag. Ha továbbra is be a második, szüksége lesz a `dflow` fájlt az aktuális könyvtárban található.
+Törölje a fájlt `dflows.dprep` (akár helyileg vagy az Azure-jegyzetfüzetekben futtat) az aktuális könyvtárban található, ha nem szeretné folytatni a második rész az oktatóanyag. Ha továbbra is be a második, szüksége lesz a `dflows.dprep` fájlt az aktuális könyvtárban található.
 
 ## <a name="next-steps"></a>További lépések
 

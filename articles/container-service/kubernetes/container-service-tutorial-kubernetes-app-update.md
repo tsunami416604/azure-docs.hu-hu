@@ -1,24 +1,27 @@
 ---
-title: Azure Container Service-oktatóanyag – Alkalmazás frissítése
+title: (ELAVULT) Az Azure Container Service oktatóanyag – alkalmazás frissítése
 description: Azure Container Service-oktatóanyag – Alkalmazás frissítése
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9cb5769d7f54a1036bf14199c87961c95ed2e7ce
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: 99e282b720bb29ed5fb94ad2c9779ae56a019836
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432406"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993514"
 ---
-# <a name="update-an-application-in-kubernetes"></a>Alkalmazások frissítése a Kubernetesben
+# <a name="deprecated-update-an-application-in-kubernetes"></a>(ELAVULT) Alkalmazások frissítése a Kubernetes
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Ebben az oktatóanyagban, amely használja az Azure Kubernetes Service-ben, lásd: a frissített verzió [oktatóanyag: Azure Kubernetes Service (AKS) az alkalmazás frissítése](../../aks/tutorial-kubernetes-app-update.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 A Kubernetesben való telepítésüket követően az alkalmazások egy új tárolórendszerkép- vagy rendszerképverzió megadásával frissíthetőek. Ilyen esetben a frissítés úgy lesz ütemezve, hogy egy adott pillanatban az üzemelő példánynak csak egy része legyen frissítve. Ennek az eltolásos frissítésnek köszönhetően az alkalmazás a frissítés során is tovább fut. Ezen kívül visszaállítási mechanizmust is biztosít az üzembe helyezés során fellépő hibák esetére. 
 

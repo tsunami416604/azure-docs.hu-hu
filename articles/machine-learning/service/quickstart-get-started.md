@@ -1,20 +1,21 @@
 ---
-title: 'Rövid útmutató: Gépi tanulási szolgáltatás létrehozása az Azure portálon – az Azure Machine Learning szolgáltatás'
-description: Az Azure Portalon létrehozhat egy Azure Machine Learning-munkaterületet. Az Azure Machine Learning használata során ez a munkaterület szolgál a gépi tanulási modellekkel való kísérletezés, valamint a betanításuk és üzembe helyezésük alapjául a felhőben.
+title: 'Gyors útmutató: Használja az Azure portál első lépésként az Azure Machine Learning szolgáltatás'
+description: Ismerkedés az Azure Machine Learning szolgáltatásban. Az Azure portal használatával hozzon létre egy munkaterületet, amely az alapvető blokk, amellyel kísérletezhet, betanítását és gépi tanulási modellek üzembe helyezése a felhőben.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: quickstart
 ms.reviewer: sgilley
-author: rastala
-ms.author: roastala
-ms.date: 09/24/2018
-ms.openlocfilehash: 7ed45b5e8a8c3cab26c0998260055ffd7a0f0c5d
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+author: hning86
+ms.author: haining
+ms.date: 12/04/2018
+ms.custom: seodec12
+ms.openlocfilehash: 3b874abc3896b9e6520500370d09e685d49ff82c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710256"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015705"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Rövid útmutató: Ismerkedés az Azure Machine Learning szolgáltatással az Azure Portalon
 
@@ -35,7 +36,7 @@ A következő Azure-erőforrásokat a rendszer automatikusan hozzáadja a munkat
   - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
   - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
-Az Ön által létrehozott erőforrások előfeltételként is használhatók a Machine Learning más szolgáltatási oktatóanyagaiban vagy útmutatóiban. A többi Azure-szolgáltatáshoz hasonlóan a Machine Learninghez társított egyes erőforrások korlátozva vannak. Ilyen például az Azure Batch AI fürtmérete. Az alapértelmezett korlátokról és a kvóta emelésének módjáról [ebben a cikkben](how-to-manage-quotas.md) tájékozódhat.
+Az Ön által létrehozott erőforrások előfeltételként is használhatók a Machine Learning más szolgáltatási oktatóanyagaiban vagy útmutatóiban. Mivel Azure-szolgáltatásokat, nincs korlátok bizonyos erőforrások, például a Machine Learning, társított számítási fürt mérete. Tudjon meg többet [az alapértelmezett korlátok és a kvóta növelése](how-to-manage-quotas.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://aka.ms/AMLfree) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -69,7 +70,7 @@ Kattintson az `Open Azure Notebooks` gombra az első kísérlet kipróbálásáh
 
 A cég vagy az intézmény a bejelentkezéshez [rendszergazdai hozzájárulást](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent) írhat elő.
 
-A bejelentkezés után megnyílik egy új lap, és megjelenik egy `Clone Library` üzenet. A következők szerint válasszon: `Clone`
+A bejelentkezés után megnyílik egy új lap, és megjelenik egy `Clone Library` üzenet. Válassza a(z) `Clone` lehetőséget.
 
 
 ### <a name="run-the-notebook"></a>A notebook futtatása

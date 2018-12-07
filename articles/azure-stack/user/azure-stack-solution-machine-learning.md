@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 7c92b2a060e73484b73a60f9215425cba40ea3f1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e503a394eed7d5c4bdd4c93037dc86442097f72e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966721"
+ms.locfileid: "53002168"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>Oktatóanyag: Hozzon létre egy gépi tanulási megoldásokat az Azure és az Azure Stack megoldás
 
@@ -81,9 +81,8 @@ Az Azure és az Azure Stack előzetes ismeretek megadása kötelező. További a
 
  -  Az üzembe helyezési [az Azure Container Services, Azure-beli Kubernetesben (ACS)](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)
 
- -  Az Azure Machine Learning szolgáltatás (előzetes verzió) üzembe helyezési [4 részes oktatóanyag](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/tutorial-classifying-iris-part-1)
+ -  Üzembe helyezés az Azure Machine Learning szolgáltatás [2 részes oktatóanyag](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml)
 
- -  Az Azure Machine Learning-kísérletezés [fiók](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/experimentation-service-template)
 
 **Azure Stack**
 
@@ -358,7 +357,7 @@ Az Azure Machine Learning Workbench Windows és macOS rendszeren érhető el. It
     | Projektnév | myIris | Adjon meg egy egyedi nevet a fiók azonosításához. Használja a részlegek vagy projekt nevét, amely a legjobban azonosítható a kísérlet. A név 2–32 karakter hosszúságú lehet. A név csak alfanumerikus és kötőjel (-) karaktert tartalmazhat. |
     | Projektkönyvtár | c:\Temp\ | Adja meg a könyvtárat, amelyben a projekt létrejött. |
     | Projekt leírása | Hagyja üresen | A projekt leírására szolgáló mező, amelyet nem kötelező kitölteni. |
-    | Visualstudio.com GIT-adattár URL-címe | Hagyja üresen | Nem kötelező kitölteni. Társítson egy projektet egy Git-tárház a Visual Studio Team Services a forráskezelés és az együttműködés. [Ismerje meg, hogyan állítható be egy tárház](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/using-git-ml-project). |
+    | Visualstudio.com GIT-adattár URL-címe | Hagyja üresen | Nem kötelező kitölteni. Társítson egy projektet egy Git-tárház a Visual Studio Team Services a forráskezelés és az együttműködés. |
     | Kiválasztott munkaterület | IrisGarden (ha van) | Válassza ki egy munkaterület a Kísérletezési fiók az Azure Portalon létrehozott. <br>Rövid útmutató segítségével, a munkaterület IrisGarden nevű szerepel. Ellenkező esetben használja a munkaterület a Kísérletezési fiók neve, vagy egy előnyben részesített fiók nevét. |
     | Projektsablon | Írisz osztályozása | Sablonok szkripteket és Fedezze fel a termék segítségével adatokat tartalmaznak. Ez a sablon tartalmazza a szkripteket és a dokumentációs webhelyen található ebben a rövid és a többi szükséges adatokat. |
 

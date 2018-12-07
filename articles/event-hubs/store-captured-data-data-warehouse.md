@@ -5,17 +5,18 @@ services: event-hubs
 author: ShubhaVijayasarathy
 manager: ''
 ms.author: shvija
-ms.date: 08/27/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 9673a7bff8e2d22764be28abef807434c53cc552
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
-ms.translationtype: HT
+ms.openlocfilehash: 56701f039ae2de6d136a2a06fbeb9e99359a0029
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43145118"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017065"
 ---
-# <a name="process-and-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>A rögzített Event Hubs-adatok feldolgozása és migrálása az SQL Data Warehouse-ba az Event Grid és az Azure Functions használatával
+# <a name="migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Rögzített az Event Hubs-adatok áttelepítése SQL Data Warehouse Event Grid és az Azure Functions használatával
 
 Az Event Hubs [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) a legegyszerűbb megoldás a streamelt Event Hubs-adatok Azure Blob Storage- vagy Azure Data Lake Store-fiókba történő automatikus továbbítására. Később feldolgozhatja és kézbesítheti az adatokat bármely más választott tárolási célhelyre, például az SQL Data Warehouse vagy Cosmos DB tárhelyekre. Ebben az oktatóanyagban megtudhatja, hogyan rögzíthet adatokat az eseményközpontból az SQL Data Warehouse-ba egy [eseményrács](https://docs.microsoft.com/azure/event-grid/overview) által meghívott Azure-függvénnyel.
 

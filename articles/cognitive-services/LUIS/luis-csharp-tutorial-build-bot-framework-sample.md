@@ -1,25 +1,26 @@
 ---
-title: A LUIS-robot a C# - webalkalmazás robot – a Bot keretrendszer SDK 3.0-s
-titleSuffix: Azure Cognitive Services
-description: A language understanding (LUIS) szolgáltatással integrált csevegőrobotot C# használatával hozhat létre. Ez csevegőrobot az előre összeállított HomeAutomation tartomány segítségével rövid idő alatt kiépíthet egy robot megoldás.
+title: A robotC#
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: A C# használatával hozzon létre egy csevegőrobotot integrált nyelvfelismeréssel (LUIS). Ez csevegőrobot az előre összeállított HomeAutomation tartomány segítségével rövid idő alatt kiépíthet egy robot megoldás.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 0ad95d5683ea10803c2f3986be97617051f191cf
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 59d98b46827a5e60dcdcbd109dc484891cef9ba8
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032274"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011793"
 ---
 # <a name="luis-bot-in-c"></a>A LUIS-robot a C#-ban
 
-A language understanding (LUIS) szolgáltatással integrált csevegőrobotot C# használatával hozhat létre. Ez csevegőrobot az előre összeállított HomeAutomation tartomány segítségével rövid idő alatt kiépíthet egy robot megoldás. A robot épül fel a Bot keretrendszer 3.x és az Azure Web app bot.
+A C# használatával hozzon létre egy csevegőrobotot integrált nyelvfelismeréssel (LUIS). Ez csevegőrobot az előre összeállított HomeAutomation tartomány segítségével rövid idő alatt kiépíthet egy robot megoldás. A robot épül fel a Bot keretrendszer 3.x és az Azure Web app bot.
 
 ## <a name="prerequisite"></a>Előfeltétel
 
@@ -27,7 +28,7 @@ A language understanding (LUIS) szolgáltatással integrált csevegőrobotot C# 
 
 ## <a name="luis-homeautomation-intents"></a>A LUIS HomeAutomation leképezések
 
-| Szándék | Példa utterance (kifejezés) | A robot funkció |
+| Szándék | Példa kimondott szöveg | A robot funkció |
 |:----:|:----------:|---|
 | HomeAutomation.TurnOn | Kapcsolja be a lámpák. | Ha a LUIS-leképezés `HomeAutomation.TurnOn` észlel, a bot meghívja a `OnIntent` párbeszédpanel kezelő. Ezen a párbeszédpanelen, ahol meghívta egy IoT-szolgáltatás, kapcsolja be az eszközön, és ossza meg a felhasználót, hogy az eszköz be van kapcsolva. |
 | HomeAutomation.TurnOff | Kapcsolja ki a szobája lámpa. | Ha a LUIS-leképezés `HomeAutomation.TurnOff` észlel, a bot meghívja a `OffIntent` párbeszédpanel kezelő. Ezen a párbeszédpanelen, ahol meghívta egy IoT-szolgáltatás, kapcsolja ki az eszközt, és ossza meg a felhasználót, hogy az eszköz ki van kapcsolva. |
@@ -154,7 +155,7 @@ Az Azure Portalon kattintson a **tesztelni, webes csevegési** a robot tesztelé
 ## <a name="download-the-bot-to-debug"></a>Töltse le a robot hibakeresése
 A robot nem működik, ha a helyi gépre töltse le a projektet, és továbbra is [hibakeresés](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-a-c-bot). 
 
-## <a name="learn-more-about-bot-framework"></a>További tudnivalók a Bot Framework
+## <a name="learn-more-about-bot-framework"></a>További tudnivalók a Bot Frameworkről
 Tudjon meg többet [Bot Framework](https://dev.botframework.com/) és a [3.x](https://github.com/Microsoft/BotBuilder) és [4.x](https://github.com/Microsoft/botbuilder-dotnet) SDK-k.
 
 ## <a name="next-steps"></a>További lépések

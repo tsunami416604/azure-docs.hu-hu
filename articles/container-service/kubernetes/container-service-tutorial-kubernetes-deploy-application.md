@@ -1,24 +1,27 @@
 ---
-title: Azure Container Service oktatóanyag – Alkalmazás üzembe helyezése
+title: (ELAVULT) Az Azure Container Service-oktatóanyag – alkalmazás üzembe helyezése
 description: Azure Container Service oktatóanyag – Alkalmazás üzembe helyezése
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: e7f9c0c3ad11cb6988f528503d614ab26dcc0968
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
-ms.translationtype: HT
+ms.openlocfilehash: dafbb8d1221d5e9c6194611ad338b3714a089cea
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41918082"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998774"
 ---
-# <a name="run-applications-in-kubernetes"></a>Alkalmazások futtatása a Kubernetesben
+# <a name="deprecated-run-applications-in-kubernetes"></a>(ELAVULT) Alkalmazások futtatása a Kubernetesben
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Ebben az oktatóanyagban, amely használja az Azure Kubernetes Service-ben, lásd: a frissített verzió [oktatóanyag: alkalmazások futtatása az Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-deploy-application.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Ebben az oktatóanyagban, amely egy hétrészes sorozat negyedik része, egy alkalmazást helyezünk üzembe egy Kubernetes-fürtön. Ennek lépései az alábbiak:
 

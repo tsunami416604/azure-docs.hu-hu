@@ -3,110 +3,167 @@ title: 'Rövid útmutató: Mondathosszok lekérése, Go – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban kideríti egy szövegben a mondatok hosszát a Translator Text API és a Go segítségével.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: erhopf
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
-ms.date: 06/29/2018
+ms.date: 12/05/2018
 ms.author: erhopf
-ms.openlocfilehash: 92ea2291760edf16863dc58a00bac4389f818e72
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
+ms.openlocfilehash: 71b88afeb941e6b635548468e634e07597318116
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49644923"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994108"
 ---
-# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-go"></a>Rövid útmutató: Mondathosszok lekérése a Translator Text REST API használatával (Go)
+# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-go"></a>Gyors útmutató: A Translator Text API segítségével meghatározhatja a Go használatával mondat hossza
 
-Ebben a rövid útmutatóban kideríti egy szövegben a mondatok hosszát a Translator Text API segítségével.
+Ebben a rövid útmutatóban fog elsajátíthatja meghatározása a mondat karakterszámát () a Go és a Translator Text REST API használatával.
+
+Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmaz egy Translator Text-erőforrást. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kód futtatásához telepítenie kell a [Go disztribúciót](https://golang.org/doc/install). A mintakód csak **alapvető** kódtárakat használ, így nincsenek külső függőségek.
+Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
-A Translator Text API használatához szüksége van egy előfizetési kulcsra is. Lásd [a Translator Text API regisztrációját](translator-text-how-to-signup.md).
+* [Go](https://golang.org/doc/install)
+* Egy Azure-előfizetői azonosító a Translator Text szolgáltatáshoz
 
-## <a name="breaksentence-request"></a>BreakSentence kérés
+## <a name="create-a-project-and-import-required-modules"></a>Projekt létrehozása és a szükséges modulok importálása
 
-A következő kód mondatokra tagolja a forrásszöveget a [BreakSentence](./reference/v3-0-break-sentence.md) metódussal.
+A kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével használatával új Go-projekt létrehozása. Ezután másolja a következő kódrészletet egy `sentence-length.go` nevű fájlba a projektjében.
 
-1. Hozzon létre egy új Go-projektet a kedvenc kódszerkesztőjében.
-2. Adja hozzá az alábbi kódot.
-3. A `subscriptionKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
-4. Mentse a fájlt „.go” kiterjesztéssel.
-5. Nyisson meg parancssort egy számítógépen, amelyen a Go telepítve van.
-6. Állítsa össze a fájlt (például: „go build quickstart-sentences.go”).
-7. Futtassa a fájlt (például: „quickstart-sentences”).
-
-```golang
+```go
 package main
 
 import (
+    "bytes"
     "encoding/json"
     "fmt"
-    "io/ioutil"
+    "log"
     "net/http"
-    "strconv"
-    "strings"
-    "time"
+    "net/url"
+    "os"
 )
+```
 
+## <a name="create-the-main-function"></a>A fő függvény létrehozása
+
+Ez a minta megpróbálja beolvasni a Translator Text-előfizetői azonosítót a `TRANSLATOR_TEXT_KEY` környezeti változóból. Ha még nem ismeri a környezeti változókat, beállíthatja a `subscriptionKey` sztringet, és megjegyzéssé teheti a feltételes utasítást.
+
+Másolja a projektbe a következő kódot:
+
+```go
 func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
-
-    const uriBase = "https://api.cognitive.microsofttranslator.com"
-    const uriPath = "/breaksentence?api-version=3.0"
-
-    const uri = uriBase + uriPath
-
-    const text = "How are you? I am fine. What did you do today?"
-
-    r := strings.NewReader("[{\"Text\" : \"" + text + "\"}]")
-
-    client := &http.Client{
-        Timeout: time.Second * 2,
+    /*
+     * Read your subscription key from an env variable.
+     * Please note: You can replace this code block with
+     * var subscriptionKey = "YOUR_SUBSCRIPTION_KEY" if you don't
+     * want to use env variables.
+     */
+    subscriptionKey := os.Getenv("TRANSLATOR_TEXT_KEY")
+    if subscriptionKey == "" {
+       log.Fatal("Environment variable TRANSLATOR_TEXT_KEY is not set.")
     }
-
-    req, err := http.NewRequest("POST", uri, r)
-    if err != nil {
-        fmt.Printf("Error creating request: %v\n", err)
-        return
-    }
-
-    req.Header.Add("Content-Type", "application/json")
-    req.Header.Add("Content-Length", strconv.FormatInt(req.ContentLength, 10))
-    req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
-
-    resp, err := client.Do(req)
-    if err != nil {
-        fmt.Printf("Error on request: %v\n", err)
-        return
-    }
-    defer resp.Body.Close()
-
-    body, err := ioutil.ReadAll(resp.Body)
-    if err != nil {
-        fmt.Printf("Error reading response body: %v\n", err)
-        return
-    }
-
-    var f interface{}
-    json.Unmarshal(body, &f)
-
-    jsonFormatted, err := json.MarshalIndent(f, "", "  ")
-    if err != nil {
-        fmt.Printf("Error producing JSON: %v\n", err)
-        return
-    }
-    fmt.Println(string(jsonFormatted))
+    /*
+     * This calls our breakSentence function, which we'll
+     * create in the next section. It takes a single argument,
+     * the subscription key.
+     */
+    breakSentence(subscriptionKey)
 }
 ```
 
-## <a name="breaksentence-response"></a>BreakSentence válasz
+## <a name="create-a-function-to-determine-sentence-length"></a>Mondat hossz megállapításához függvény létrehozása
 
-A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
+Hozzunk létre egy függvényt, amely mondat hossza határozza meg. Ez a funkció a Translator Text előfizetési kulcs egyetlen argumentumot vesz igénybe.
+
+```go
+func breakSentence(subscriptionKey string) {
+    /*  
+     * In the next few sections, we'll add code to this
+     * function to make a request and handle the response.
+     */
+}
+```
+
+Következő lépésként hozzunk létre az URL-címet. Az URL-címe használatával lett összeállítva a `Parse()` és `Query()` módszereket. Láthatja, hogy a hozzáadott paraméter a `Add()` metódust.
+
+Másolja be ezt a kódot a `breakSentence` függvény.
+
+```go
+// Build the request URL. See: https://golang.org/pkg/net/url/#example_URL_Parse
+u, _ := url.Parse("https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0")
+q := u.Query()
+q.Add("languages", "en")
+u.RawQuery = q.Encode()
+```
+
+>[!NOTE]
+> Végpontok, útvonalak és a kérelem paramétereinek kapcsolatos további információkért lásd: [Translator Text API 3.0: BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
+
+## <a name="create-a-struct-for-your-request-body"></a>Egy struct a kérés törzsének létrehozása
+
+Ezután hozzon létre egy névtelen struktúráját a kérelem törzsében, és a JSON-ként kódolni, `json.Marshal()`. Adja hozzá a kódot a `breakSentence` függvény.
+
+```go
+// Create an anonymous struct for your request body and encode it to JSON
+body := []struct {
+    Text string
+}{
+    {Text: "How are you? I am fine. What did you do today?"},
+}
+b, _ := json.Marshal(body)
+```
+
+## <a name="build-the-request"></a>A kérelem létrehozása
+
+Most, hogy a kéréstörzs JSON-fájlként már kódolva, a POST-kérés hozhat létre, és a Translator Text API hívása.
+
+```go
+// Build the HTTP POST request
+req, err := http.NewRequest("POST", u.String(), bytes.NewBuffer(b))
+if err != nil {
+    log.Fatal(err)
+}
+// Add required headers to the request
+req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
+req.Header.Add("Content-Type", "application/json")
+
+// Call the Translator Text API
+res, err := http.DefaultClient.Do(req)
+if err != nil {
+    log.Fatal(err)
+}
+```
+
+## <a name="handle-and-print-the-response"></a>Kezelni, és a válasz
+
+Adja hozzá a kódot a `breakSentence` függvény dekódolni a JSON-válasz, majd formázza és nyomtassa ki az eredményt.
+
+```go
+// Decode the JSON response
+var result interface{}
+if err := json.NewDecoder(res.Body).Decode(&result); err != nil {
+    log.Fatal(err)
+}
+// Format and print the response to terminal
+prettyJSON, _ := json.MarshalIndent(result, "", "  ")
+fmt.Printf("%s\n", prettyJSON)
+```
+
+## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
+
+Ezzel összeállított egy egyszerű programot, amely meghívja a Translator Text API-t, és visszaad egy JSON-választ. Most itt az ideje, hogy futtassa a programot:
+
+```console
+go run sentence-length.go
+```
+
+Ha szeretné összevetni a saját kódját a miénkkel, a teljes mintakódot megtekintheti a [GitHubon](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go).
+
+## <a name="sample-response"></a>Mintaválasz
 
 ```json
 [
@@ -130,3 +187,13 @@ A Cognitive Services API-k Go-csomagjait a GitHubon ismerheti meg, a [Góhoz ké
 
 > [!div class="nextstepaction"]
 > [A Go-csomagok megismerése a GitHubon](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices)
+
+## <a name="see-also"></a>Lásd még
+
+Ismerje meg, hogyan használható a Translator Text API-t:
+
+* [Szöveg lefordítása](quickstart-go-translate.md)
+* [Szöveg átírása](quickstart-go-transliterate.md)
+* [A beviteli nyelv azonosítása](quickstart-go-detect.md)
+* [Alternatív fordítások beolvasása](quickstart-go-dictionary.md)
+* [A támogatott nyelvek listájának beolvasása](quickstart-go-languages.md)

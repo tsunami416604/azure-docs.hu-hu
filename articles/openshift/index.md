@@ -11,12 +11,12 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: carolz
-ms.openlocfilehash: 0856b86ce3d5510dfaa395d17705a2c7d5675cde
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6f0d3eae8c005b7e26f425a4411042fdc050fdef
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23071160"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995477"
 ---
 <div class="content">
     <h1>OpenShift az Azure-ban</h1>
@@ -26,13 +26,13 @@ Az OpenShift Origin egy nyílt forráskódú, Kubernetesre épülő tárolóplat
         </div>
     </div>
 <h2>5 perces gyors útmutatók</h2>
-<a href="https://azure.microsoft.com/resources/templates/openshift-origin-rhel/">Az OpenShift Origin közösségi sablonjának üzembe helyezése</a> 
+<a href="https://docs.microsoft.com/azure/virtual-machines/linux/openshift-okd">Az OpenShift Origin közösségi sablonjának üzembe helyezése</a> 
 <h2>Részletes útmutatók</h2>
 <p>Ismerje meg, hogyan telepíthető az OpenShift az Azure-ban.</p>
 <ol>
   <li><a href="/azure/virtual-machines/linux/openshift-get-started">Az OpenShift Origin telepítése Azure virtuális gépekre</a></li>  
 </ol>
-<h2 style="margin-top: 36px">Erőforrások</h2>
+<h2 style="margin-top: 36px">További források</h2>
 <p>Az OpenShift Azure rendszeren történő használatával kapcsolatos további referenciaanyagokért és eszközökért tekintse meg a következő referenciákat.</p>
 <a href="https://docs.openshift.org/latest/getting_started/index.html">Bevezetés az OpenShift Origin használatába</a><br/>
 <a href="https://github.com/Microsoft/openshift-container-platform">Az OpenShift tárolóplatform telepítési sablonja</a><br/>

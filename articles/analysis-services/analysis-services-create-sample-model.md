@@ -1,19 +1,19 @@
 ---
-title: Oktatóanyag – Alapszintű mintamodell hozzáadása az Azure Analysis Services-kiszolgálóhoz a portál használatával | Microsoft Docs
+title: Oktatóanyag – mintamodell hozzáadása az Azure Analysis Services-kiszolgáló |} A Microsoft Docs
 description: Az oktatóanyagnak ez a leckéje a mintamodellek hozzáadását ismerteti az Azure Analysis Servicesben.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: def7ee54390a716027fcacb433b99826d3650f6f
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
-ms.translationtype: HT
+ms.openlocfilehash: 6a492085984eba165bc7cfc5839fa4e1705e823c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428692"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001646"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Oktatóanyag : Mintamodell hozzáadása a portálról
 

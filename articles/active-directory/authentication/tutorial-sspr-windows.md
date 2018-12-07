@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 291f895ed367ab4871d27ea02cd23eddc496434c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6b3299bc93910d1211b0188bdb6639b19302be3c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958678"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014455"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Oktatóanyag: Új Azure AD-jelszó kérése a bejelentkezési képernyőről
 
@@ -30,7 +30,7 @@ Ebben az oktatóanyagban engedélyezi, hogy a felhasználók új jelszót kérje
 
 * A Windows 10 2018. áprilisi verziója, vagy egy újabb ügyfél, amely:
    * [Azure AD-hez gép](../device-management-azure-portal.md) vagy
-   * [Hibrid Azure AD-csatlakoztatott gép](../device-management-hybrid-azuread-joined-devices-setup.md), a hálózati kapcsolat a következő bejelentkezéskor a tartományvezérlők és a jelszó alaphelyzetbe állítása után.
+   * [Hibrid Azure AD-csatlakoztatott gép](../device-management-hybrid-azuread-joined-devices-setup.md), a hálózati kapcsolat egy tartományvezérlőhöz.
 * Engedélyezni kell az Azure AD önkiszolgáló jelszó-visszaállítását.
 
 ## <a name="configure-reset-password-link-using-intune"></a>Jelszó-visszaállítási hivatkozás konfigurálása az Intune használatával
@@ -126,6 +126,8 @@ A következő házirend-beállításokat ismert zavarják a jelszavak alaphelyze
    * Az egyéni shell Explorer.exe váltja fel
 
 Ha a Windows 10-es gépek proxykiszolgáló vagy tűzfal mögött találhatók, a passwordreset.microsoftonline.com és ajax.aspnetcdn.com helyekre irányuló HTTPS-forgalmat (443) engedélyezni kell.
+
+Tartományhoz hibrid forgatókönyvek esetén ez a forgatókönyv létezik, ahol végezze el az SSPR munkafolyamat anélkül, hogy egy Active Directory-tartományvezérlőhöz. Kapcsolat egy tartományvezérlőhöz először az új jelszó használata szükséges.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

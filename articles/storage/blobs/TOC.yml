@@ -127,7 +127,7 @@ items:
     - name: Hozzáférési szintek
       href: storage-blob-storage-tiers.md
     - name: Azure Blob Storage-életciklus felügyelete
-      href: ../common/storage-lifecycle-managment-concepts.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      href: storage-lifecycle-management-concepts.md
     - name: Reagálás az eseményekre
       href: storage-blob-event-overview.md
     - name: Méretezhetőségi és teljesítménycélok
@@ -504,66 +504,6 @@ items:
           href: /rest/api/storagerp
         - name: Import/Export
           href: /rest/api/storageimportexport
-    - name: További források
-      items:
-      - name: Azure-ütemterv
-        href: https://azure.microsoft.com/roadmap/?category=storage
-      - name: Azure Storage-ügyféleszközök
-        href: ../common/storage-explorers.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: Fórum
-        href: https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata
-      - name: Díjszabás
-        href: https://azure.microsoft.com/pricing/details/storage/blobs/
-      - name: Díjkalkulátor
-        href: https://azure.microsoft.com/pricing/calculator/
-      - name: Szolgáltatási hírek
-        href: https://azure.microsoft.com/updates/?product=storage
-      - name: Stack Overflow
-        href: http://stackoverflow.com/questions/tagged/windows-azure-storage
-      - name: Videók
-        href: https://azure.microsoft.com/documentation/videos/index/?services=storage
-      - name: Azure Storage Explorer
-        items:
-        - name: Storage Explorer
-          href: ../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: A Storage Explorer kibocsátási megjegyzései
-          href: ../../vs-azure-tools-storage-explorer-relnotes.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: A Storage Explorer hibaelhárítása
-          href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Storage Explorer – kisegítő lehetőségek
-          href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: NuGet-csomagok
-        items:
-        - name: Az Azure Storage .NET-hez készült ügyféloldali kódtára
-          href: https://www.nuget.org/packages/WindowsAzure.Storage/
-        - name: Azure Storage adatátviteli könyvtár
-          href: https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/
-        - name: Azure Configuration Manager
-          href: https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/
-      - name: Forráskód
-        items:
-        - name: .NET
-          items:
-          - name: Blob, üzenetsor, tábla és fájl
-            href: https://github.com/Azure/azure-storage-net
-          - name: Adatáthelyezés
-            href: https://github.com/Azure/azure-storage-net-data-movement
-          - name: Erőforrás-szolgáltató
-            href: https://github.com/Azure/azure-sdk-for-net
-        - name: Node.js
-          href: http://azure.github.io/azure-storage-node/
-        - name: Java
-          href: https://github.com/Azure/azure-storage-java
-        - name: C++
-          href: https://github.com/Azure/azure-storage-cpp
-        - name: PHP
-          href: https://github.com/Azure/azure-storage-php
-        - name: Python
-          href: https://github.com/Azure/azure-storage-python
-        - name: Ruby
-          href: https://github.com/Azure/azure-storage-ruby
-        - name: iOS
-          href: https://github.com/Azure/azure-storage-ios
 - name: 2. generációs Data Lake Storage
   items:
   - name: Váltás az 1. generációs Data Lake Storage dokumentációjára
@@ -650,6 +590,8 @@ items:
         href: ../blobs/data-lake-storage-performance-tuning-storm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Csatlakozás az Azure Databrickshez
       href: https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html
+    - name: Csatlakozás az Azure SQL Data Warehouse-hoz
+      href: ../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#azure-sql-data-warehouse-polybase
   - name: Referencia
     items:
     - name: REST
@@ -674,9 +616,9 @@ items:
       href: http://stackoverflow.com/questions/tagged/windows-azure-storage
     - name: Videók
       href: https://azure.microsoft.com/documentation/videos/index/?services=storage
-ms.openlocfilehash: bda06ecb2adbcf4aeea5e2877f37b4ddf2761d80
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: dc45425a3e20d18bbe43e4a41ca40bd6c2fe6b9a
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957521"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013645"

@@ -12,12 +12,12 @@ ms.author: jovanpop-msft
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: e2075f8a8e54a091dbb82f9ed6d1c8ddaa9da4d0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 3c91323e0fcf03b5ae05702ea473536739d37e26
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869840"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998776"
 ---
 # <a name="use-powershell-with-azure-resource-manager-template-to-create-an-azure-sql-database-managed-instance"></a>A PowerShell használata az Azure Resource Manager-sablon létrehozása az Azure SQL Database felügyelt példánya
 
@@ -36,6 +36,15 @@ Az Azure PowerShell-parancsok előre meghatározott Azure Resource Manager-sablo
 - Kiszolgálószintű rendezést a példány (előzetes verzió).
 
 Példány neve, az SQL-rendszergazda felhasználóneve, virtuális hálózat/alhálózat és rendezési később nem módosítható. Egyéb példány tulajdonságai módosíthatók.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Ez a példa feltételezi, hogy [egy érvényes hálózati környezetben létrehozott](../sql-database-managed-instance-vnet-configuration.md#create-a-new-virtual-network-for-a-managed-instance) a felügyelt példány. A példa a parancsmagok [New-AzureRmResourceGroupDeployment](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) és [Get-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetwork) ezért ügyeljen arra, hogy telepítette-e az alábbi PowerShell-modulokat:
+
+```
+Install-Module AzureRM.Network
+Install-Module AzureRM.Resources
+```
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 

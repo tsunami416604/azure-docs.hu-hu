@@ -1,22 +1,25 @@
 ---
-title: Rövid Java-útmutató – szándék előrejelzése – LUIS
-titleSuffix: Azure Cognitive Services
+title: 'Gyors útmutató: első beszédszándék – Java'
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Ebben a rövid útmutatóban elérhető nyilvános LUIS-alkalmazással határozza meg egy felhasználó szándékát egy beszélgetés szövegéből. Java nyelven küldje el szövegként a felhasználó szándékát a nyilvános alkalmazás HTTP-előrejelzési végpontjára. A LUIS a végpontnál a nyilvános alkalmazás modelljét alkalmazza a természetes nyelvű szövegen a jelentés elemzése érdekében, amellyel meghatározza az általános szándékot, valamint kinyeri az alkalmazás témájában releváns adatokat.
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: c492a0d0a9d90a79b0e05d4e7de6f5ef0796184a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 417b1138d581a54a3a0a992cebf18ea20fa8dbee
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417531"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013594"
 ---
 # <a name="quickstart-get-intent-using-java"></a>Rövid útmutató: Szándék lekérése a Java használatával
+
+Ebben a rövid útmutatóban átadhat kimondott szövegeket egy LUIS-végpontnak, majd visszakaphatja a szándékot és az entitásokat.
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 

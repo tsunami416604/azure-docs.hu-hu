@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-példaszkript – Webalkalmazás csatlakoztatása Redis Cache-gyorsítótárhoz | Microsoft Docs
-description: Azure CLI-példaszkript – Webalkalmazás csatlakoztatása Redis Cache-gyorsítótárhoz
+title: Azure CLI-Példaszkript – webalkalmazás csatlakoztatása az Azure Cache redis |} A Microsoft Docs
+description: Azure CLI-Példaszkript – webalkalmazás csatlakoztatása az Azure Cache redis
 services: appservice
 documentationcenter: appservice
 author: syntaxc4
@@ -16,16 +16,16 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 0d2ec551183d798da9e6c2f1d79ee2ca5f362f5b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: e909a86912c16cac8f9c92d1632ba2eb29ee1d30
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969274"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012096"
 ---
-# <a name="connect-a-web-app-to-a-redis-cache"></a>Webalkalmazás csatlakoztatása Redis Cache-gyorsítótárhoz
+# <a name="connect-a-web-app-to-an-azure-cache-for-redis"></a>Webes alkalmazás csatlakoztatása az Azure Cache redis
 
-Ez a példaszkript egy Azure Redis Cache-gyorsítótárat és egy Azure-webalkalmazást hoz létre. Ezután az alkalmazásbeállítások használatával hozzákapcsolja a Redis Cache-gyorsítótárat a webalkalmazáshoz.
+Ez a példaszkript egy Azure Cache a Redis és a egy Azure-webalkalmazást hoz létre. Ezután Alkalmazásbeállítások használatával a webalkalmazás az Azure Cache redis hivatkozásokat.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -35,21 +35,21 @@ Ha a parancssori felület helyi telepítését és használatát választja, az 
 
 ## <a name="sample-script"></a>Példaszkript
 
-[!code-azurecli-interactive[main](../../../cli_scripts/app-service/connect-to-redis/connect-to-redis.sh "Azure Redis Cache")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/connect-to-redis/connect-to-redis.sh "Azure Cache for Redis")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-A szkript a következő parancsokat használja egy erőforráscsoport, egy webalkalmazás, egy Redis Cache-gyorsítótár és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a szkript a következő parancsokat használja egy erőforráscsoport, egy webalkalmazás, Redis, az Azure Cache létrehozása és az összes kapcsolódó erőforrás. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy Azure-webalkalmazást. |
-| [`az redis create`](/cli/azure/redis?view=azure-cli-latest#az-redis-create) | Létrehoz egy új Redis Cache-példányt. |
-| [`az redis list-keys`](/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys) | Felsorolja a Redis Cache-példány hozzáférési kulcsait. |
+| [`az redis create`](/cli/azure/redis?view=azure-cli-latest#az-redis-create) | Hozzon létre új Azure Cache a Redis-példányt. |
+| [`az redis list-keys`](/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys) | A Redis-példányt az Azure Cache elérési kulcsainak listázása. |
 | [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Létrehoz vagy frissít egy Azure-webalkalmazáshoz tartozó alkalmazásbeállítást. Az alkalmazásbeállítások környezeti változókként érhetők el az alkalmazás számára. |
 
 ## <a name="next-steps"></a>További lépések

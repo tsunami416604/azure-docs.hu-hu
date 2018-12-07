@@ -1,21 +1,22 @@
 ---
-title: Rövid C#-útmutató – szándék előrejelzése – LUIS
-titleSuffix: Azure Cognitive Services
+title: 'Gyors útmutató: get - leképezésC#'
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Ebben a rövid útmutatóban elérhető nyilvános LUIS-alkalmazással határozza meg egy felhasználó szándékát egy beszélgetés szövegéből. C# nyelven küldje el szövegként a felhasználó szándékát a nyilvános alkalmazás HTTP-előrejelzési végpontjára. A LUIS a végpontnál a nyilvános alkalmazás modelljét alkalmazza a természetes nyelvű szövegen a jelentés elemzése érdekében, amellyel meghatározza az általános szándékot, valamint kinyeri az alkalmazás témájában releváns adatokat.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 51c23029cc771db5351575ce329944a9f06dd286
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: HT
+ms.openlocfilehash: c498554bea0722f81d5dd52d77c0bc88d16e2332
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035844"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015065"
 ---
 # <a name="quickstart-get-intent-using-c"></a>Rövid útmutató: Szándék lekérése a C# használatával
 

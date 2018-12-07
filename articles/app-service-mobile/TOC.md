@@ -21,7 +21,7 @@
 ### [Azure App Service – ajánlott eljárások](../app-service/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Az App Service-csomagok részletes áttekintése](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Nagy sűrűségű üzemeltetés](../app-service/environment/app-service-high-density-hosting.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [App Service Environment](../app-service/environment/app-service-app-service-environment-intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [App Service-környezet](../app-service/environment/app-service-app-service-environment-intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## Fejlesztés
 ### Android
@@ -86,7 +86,7 @@
 ### [Az Azure Resource Manager üzembe helyezése](../app-service/app-service-deploy-complex-application-predictably.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## Méretezés
-### [Alkalmazás vertikális felskálázása](../app-service/web-sites-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Alkalmazás vertikális felskálázás](../app-service/web-sites-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [App Service Environment](../app-service/environment/intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Földrajzi alapú méretezés App Service Environment-környezetekkel](../app-service/environment/app-service-app-service-environment-geo-distributed-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Alkalmazások méretezése App Service-környezetben](../app-service/environment/app-service-web-scale-a-web-app-in-an-app-service-environment.md)
@@ -173,7 +173,7 @@
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/app-service/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=mobile-services)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-mobile-services)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-mobile-services)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=mobile-services)
 ## Példák
 ### [Kihelyezett mérnök](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-fieldengineer/)

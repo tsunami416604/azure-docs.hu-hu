@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 96141ddeeb73c7483935d5da49b9341436c10c18
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
-ms.translationtype: HT
+ms.openlocfilehash: 0351ab3213ac75559cc025f2ef71e2f098a7504c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429702"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993198"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Rövid útmutató: Kiszolgálótűzfal konfigurálása – Portál
 
@@ -24,9 +24,9 @@ Ez a rövid útmutató segítséget nyújt az Azure Analysis Services-kiszolgál
 - Analysis Services-kiszolgáló az előfizetésben. További tudnivalókért lásd: [Rövid útmutató: Kiszolgáló létrehozása – Portál](analysis-services-create-server.md) vagy [Rövid útmutató: Kiszolgáló létrehozása – PowerShell](analysis-services-create-powershell.md)
 - Egy vagy több IP-címtartomány ügyfélszámítógépekhez (ha szükséges).
 
-## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra 
+## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra 
 
-[Bejelentkezés a portálra](https://portal.azure.com)
+[Jelentkezzen be a portálra](https://portal.azure.com)
 
 ## <a name="configure-a-firewall"></a>Tűzfal konfigurálása
 

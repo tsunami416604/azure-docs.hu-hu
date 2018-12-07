@@ -8,109 +8,164 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
-ms.date: 06/29/2018
+ms.date: 12/05/2018
 ms.author: erhopf
-ms.openlocfilehash: fd41eff65c312c125594bb3251f9c4fe74108eaf
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
+ms.openlocfilehash: 6b86d94e53b1ecb7a0d0d7b1f325a425f05c9e4f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648360"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993289"
 ---
-# <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-go"></a>Rövid útmutató: Szöveg átírása a Translator Text REST API (Go) használatával
+# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-go"></a>Gyors útmutató: A Translator Text API használatával átbetűzés szöveget a Go használatával
 
 Ebben a rövid útmutatóban szöveget alakít át egy nyelven egy szkriptből egy másikba a Translator Text API segítségével.
 
+Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmaz egy Translator Text-erőforrást. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kód futtatásához telepítenie kell a [Go disztribúciót](https://golang.org/doc/install). A mintakód csak **alapvető** kódtárakat használ, így nincsenek külső függőségek.
+Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
-A Translator Text API használatához szüksége van egy előfizetési kulcsra is. Lásd [a Translator Text API regisztrációját](translator-text-how-to-signup.md).
+* [Go](https://golang.org/doc/install)
+* Egy Azure-előfizetői azonosító a Translator Text szolgáltatáshoz
 
-## <a name="transliterate-request"></a>Transliterate kérés
+## <a name="create-a-project-and-import-required-modules"></a>Projekt létrehozása és a szükséges modulok importálása
 
-A következő egy szöveget alakít át egy nyelven egy szkriptből egy másik szkriptbe a [Transliterate](./reference/v3-0-transliterate.md) metódussal.
+A kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével használatával új Go-projekt létrehozása. Ezután másolja a következő kódrészletet egy `transliterate-text.go` nevű fájlba a projektjében.
 
-1. Hozzon létre egy új Go-projektet a kedvenc kódszerkesztőjében.
-2. Adja hozzá az alábbi kódot.
-3. A `subscriptionKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
-4. Mentse a fájlt „.go” kiterjesztéssel.
-5. Nyisson meg parancssort egy számítógépen, amelyen a Go telepítve van.
-6. Állítsa össze a fájlt (például: „go build quickstart-transliterate.go”).
-7. Futtassa a fájlt (például: „quickstart-transliterate”).
-
-```golang
+```go
 package main
 
 import (
+    "bytes"
     "encoding/json"
     "fmt"
-    "io/ioutil"
+    "log"
     "net/http"
-    "strconv"
-    "strings"
-    "time"
+    "net/url"
+    "os"
 )
+```
 
+## <a name="create-the-main-function"></a>A fő függvény létrehozása
+
+Ez a minta megpróbálja beolvasni a Translator Text-előfizetői azonosítót a `TRANSLATOR_TEXT_KEY` környezeti változóból. Ha még nem ismeri a környezeti változókat, beállíthatja a `subscriptionKey` sztringet, és megjegyzéssé teheti a feltételes utasítást.
+
+Másolja a projektbe a következő kódot:
+
+```go
 func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
-
-    const uriBase = "https://api.cognitive.microsofttranslator.com"
-    const uriPath = "/transliterate?api-version=3.0"
-
-    // Transliterate text in Japanese from Japanese script (i.e. Hiragana/Katakana/Kanji) to Latin script
-    const params = "&language=ja&fromScript=jpan&toScript=latn"
-
-    const uri = uriBase + uriPath + params
-
-    // Transliterate "good afternoon".
-    const text = "こんにちは"
-
-    r := strings.NewReader("[{\"Text\" : \"" + text + "\"}]")
-
-    client := &http.Client{
-        Timeout: time.Second * 2,
+    /*
+     * Read your subscription key from an env variable.
+     * Please note: You can replace this code block with
+     * var subscriptionKey = "YOUR_SUBSCRIPTION_KEY" if you don't
+     * want to use env variables.
+     */
+    subscriptionKey := os.Getenv("TRANSLATOR_TEXT_KEY")
+    if subscriptionKey == "" {
+       log.Fatal("Environment variable TRANSLATOR_TEXT_KEY is not set.")
     }
-
-    req, err := http.NewRequest("POST", uri, r)
-    if err != nil {
-        fmt.Printf("Error creating request: %v\n", err)
-        return
-    }
-
-    req.Header.Add("Content-Type", "application/json")
-    req.Header.Add("Content-Length", strconv.FormatInt(req.ContentLength, 10))
-    req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
-
-    resp, err := client.Do(req)
-    if err != nil {
-        fmt.Printf("Error on request: %v\n", err)
-        return
-    }
-    defer resp.Body.Close()
-
-    body, err := ioutil.ReadAll(resp.Body)
-    if err != nil {
-        fmt.Printf("Error reading response body: %v\n", err)
-        return
-    }
-
-    var f interface{}
-    json.Unmarshal(body, &f)
-
-    jsonFormatted, err := json.MarshalIndent(f, "", "  ")
-    if err != nil {
-        fmt.Printf("Error producing JSON: %v\n", err)
-        return
-    }
-    fmt.Println(string(jsonFormatted))
+    /*
+     * This calls our transliterate function, which we'll
+     * create in the next section. It takes a single argument,
+     * the subscription key.
+     */
+    transliterate(subscriptionKey)
 }
 ```
 
-## <a name="transliterate-response"></a>Transliterate válasz
+## <a name="create-a-function-to-transliterate-text"></a>Hozzon létre egy függvényt, amely szöveges átírás
 
-A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
+Hozzunk létre egy függvényt, hogy átírás szöveget. Ez a funkció a Translator Text előfizetési kulcs egyetlen argumentumot vesz igénybe.
+
+```go
+func transliterate(subscriptionKey string) {
+    /*  
+     * In the next few sections, we'll add code to this
+     * function to make a request and handle the response.
+     */
+}
+```
+
+Következő lépésként hozzunk létre az URL-címet. Az URL-címe használatával lett összeállítva a `Parse()` és `Query()` módszereket. Láthatja, hogy a hozzáadott paraméter a `Add()` metódust. Ebben a példában egy japán nyelvű szövegből hozunk létre latin betűs átiratot.
+
+Másolja be ezt a kódot a `transliterate` függvény.
+
+```go
+// Build the request URL. See: https://golang.org/pkg/net/url/#example_URL_Parse
+u, _ := url.Parse("https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0")
+q := u.Query()
+q.Add("language", "ja")
+q.Add("fromScript", "jpan")
+q.Add("toScript", "latn")
+u.RawQuery = q.Encode()
+```
+
+>[!NOTE]
+> A végpontokkal, az útvonalakkal és a kérelemparamétereivel kapcsolatos további információért lásd a [Translator Text API 3.0 átírási funkcióját ismertető részt](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate).
+
+## <a name="create-a-struct-for-your-request-body"></a>Egy struct a kérés törzsének létrehozása
+
+Ezután hozzon létre egy névtelen struktúráját a kérelem törzsében, és a JSON-ként kódolni, `json.Marshal()`. Adja hozzá a kódot a `transliterate` függvény.
+
+```go
+// Create an anonymous struct for your request body and encode it to JSON
+body := []struct {
+    Text string
+}{
+    {Text: "こんにちは"},
+}
+b, _ := json.Marshal(body)
+```
+
+## <a name="build-the-request"></a>A kérelem létrehozása
+
+Most, hogy a kéréstörzs JSON-fájlként már kódolva, a POST-kérés hozhat létre, és a Translator Text API hívása.
+
+```go
+// Build the HTTP POST request
+req, err := http.NewRequest("POST", u.String(), bytes.NewBuffer(b))
+if err != nil {
+    log.Fatal(err)
+}
+// Add required headers to the request
+req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
+req.Header.Add("Content-Type", "application/json")
+
+// Call the Translator Text API
+res, err := http.DefaultClient.Do(req)
+if err != nil {
+    log.Fatal(err)
+}
+```
+
+## <a name="handle-and-print-the-response"></a>Kezelni, és a válasz
+
+Adja hozzá a kódot a `transliterate` függvény dekódolni a JSON-válasz, majd formázza és nyomtassa ki az eredményt.
+
+```go
+// Decode the JSON response
+var result interface{}
+if err := json.NewDecoder(res.Body).Decode(&result); err != nil {
+    log.Fatal(err)
+}
+// Format and print the response to terminal
+prettyJSON, _ := json.MarshalIndent(result, "", "  ")
+fmt.Printf("%s\n", prettyJSON)
+```
+
+## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
+
+Ezzel összeállított egy egyszerű programot, amely meghívja a Translator Text API-t, és visszaad egy JSON-választ. Most itt az ideje, hogy futtassa a programot:
+
+```console
+go run transliterate-text.go
+```
+
+Ha szeretné összevetni a saját kódját a miénkkel, a teljes mintakódot megtekintheti a [GitHubon](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go).
+
+## <a name="sample-response"></a>Mintaválasz
 
 ```json
 [
@@ -127,3 +182,13 @@ A Cognitive Services API-k Go-csomagjait a GitHubon ismerheti meg, a [Góhoz ké
 
 > [!div class="nextstepaction"]
 > [A Go-csomagok megismerése a GitHubon](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices)
+
+## <a name="see-also"></a>Lásd még
+
+Ismerje meg, hogyan használható a Translator Text API-t:
+
+* [Szöveg lefordítása](quickstart-go-translate.md)
+* [A beviteli nyelv azonosítása](quickstart-go-detect.md)
+* [Alternatív fordítások beolvasása](quickstart-go-dictionary.md)
+* [A támogatott nyelvek listájának beolvasása](quickstart-go-languages.md)
+* [Bemenet mondatai hosszának meghatározása](quickstart-go-sentences.md)

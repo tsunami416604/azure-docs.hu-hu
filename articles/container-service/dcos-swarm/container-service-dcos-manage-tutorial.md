@@ -1,5 +1,5 @@
 ---
-title: Azure Container Service-oktatóanyag – A DC/OS kezelése
+title: (ELAVULT) Az Azure Container Service-oktatóanyag – DC/OS kezelése
 description: Azure Container Service-oktatóanyag – A DC/OS kezelése
 services: container-service
 author: iainfoulds
@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 8f4b1c1c66243c06d46ef3fddec8ea495163fa07
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: fe943ae5ac7894cdd8d8e104615cea670513b7eb
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999613"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000417"
 ---
-# <a name="azure-container-service-tutorial---manage-dcos"></a>Azure Container Service-oktatóanyag – A DC/OS kezelése
+# <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>(ELAVULT) Az Azure Container Service-oktatóanyag – DC/OS kezelése
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 A DC/OS elosztott platformot nyújt a modern és tárolóalapú alkalmazások futtatásához. Az Azure Container Service használatával egyszerűen és gyorsan építhető ki üzemkész DC/OS fürt. Ez a rövid útmutató a DC/OS fürt üzembe helyezéséhez és az alapvető számítási feladatok futtatásához szükséges alaplépéseket részletezi.
 

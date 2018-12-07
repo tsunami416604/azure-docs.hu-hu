@@ -1,18 +1,19 @@
 ---
-title: Oktatóanyag – Azure Analysis Services kiszolgáló-rendszergazdai és felhasználói szerepkörök konfigurálása | Microsoft Docs
+title: Oktatóanyag – Azure Analysis Services rendszergazdai és felhasználói szerepkörök konfigurálása |} A Microsoft Docs
+description: Ismerje meg, hogyan konfigurálhatja az Azure Analysis Services-szerepkörök.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 07/09/2018
+ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 1c1dd5316eead5e91dd77d3e6b21a7a14d39afeb
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
-ms.translationtype: HT
+ms.openlocfilehash: a1e6e04c4019086d56cc0eb25176a507e514c477
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929229"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000642"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Oktatóanyag: Kiszolgáló-rendszergazdai és felhasználói szerepkörök konfigurálása
 
@@ -35,7 +36,7 @@ Az Azure Analysis Services felhasználói biztonságáról a [Hitelesítés és 
 - [Hozzáadta az adventureworks mintamodellt](../analysis-services-create-sample-model.md) a kiszolgálójához.
 - [Telepítette az SQL Server Management Studio (SSMS) legújabb verzióját](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
 
-## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
+## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
 Jelentkezzen be a [portálra](https://portal.azure.com/).
 

@@ -4,14 +4,16 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: c5200e7e4d5550f26343fab1561c214ee19d6741
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
-ms.translationtype: HT
+ms.openlocfilehash: b385c3e3e5f39e812545143df4a3adcc08ebfce5
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572257"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002208"
 ---
-# <a name="container-service-frequently-asked-questions"></a>A Container Service-re vonatkozó gyakori kérdések
+# <a name="deprecated-container-service-frequently-asked-questions"></a>(ELAVULT) Container Service – gyakori kérdések
+
+[!INCLUDE [ACS deprecation](container-service-deprecation.md)]
 
 ## <a name="orchestrators"></a>Vezénylők
 
@@ -97,7 +99,7 @@ A kapcsolati sztringet az Azure Portalon vagy az Azure parancssori eszközök se
 
 4. A **Summary** (Összefoglalás) lapon az **Outputs** (Kimenetek) részben számos fürthivatkozás található. Az **SSHMaster0** biztosítja a Container Service-fürt első főkiszolgálójához tartozó SSH kapcsolati sztringet. 
 
-A fent említetteknek megfelelően Azure-eszközöket is használhat a főkiszolgálók teljes tartománynevének megkeresésére. Létesítsen SSH-kapcsolatot a főkiszolgálóval a főkiszolgáló teljes tartománynevét és a fürt létrehozásakor megadott felhasználónevet használva. Például:
+A fent említetteknek megfelelően Azure-eszközöket is használhat a főkiszolgálók teljes tartománynevének megkeresésére. Létesítsen SSH-kapcsolatot a főkiszolgálóval a főkiszolgáló teljes tartománynevét és a fürt létrehozásakor megadott felhasználónevet használva. Példa:
 
 ```bash
 ssh userName@masterFQDN –A –p 22 

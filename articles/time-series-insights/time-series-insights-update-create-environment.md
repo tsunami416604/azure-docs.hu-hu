@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
 ms.date: 11/26/2018
-ms.openlocfilehash: 9a8486a5022a58dd9d4b94ddbe71f3a4e66f18cf
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: d4f69533a68e11b3e171963429b141cf0736472d
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969498"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014633"
 ---
 # <a name="azure-time-series-insights-preview-tutorial"></a>Az oktatóanyag az Azure Time Series Insights (előzetes verzió)
 
@@ -36,11 +36,11 @@ Ez a szakasz ismerteti, hogyan hozhat létre az Azure TSI (előzetes verzió) k�
 
    ![az oktatóanyag egy az egyhez][1]
 
-1. A Time Series Insights környezetet lapon adja meg a szükséges paramétereket, és kattintson a **tovább: forrás**
+1. A Time Series Insights környezetet lapon adja meg a szükséges paramétereket, és kattintson a **tovább: eseményforrás**. A jelen oktatóanyag esetében állítsa be a **Time Series azonosító** , `Id`. Tudjon meg többet a **Time Series azonosítók**, olvassa el [Time Series azonosítók](./time-series-insights-update-how-to-id.md).
 
    ![az oktatóanyag második][2]
 
-1. Az a **eseményforrás** lapon töltse ki a szükséges paramétereket, kattintson a **felülvizsgálat + létrehozás**.
+1. Az a **eseményforrás** lapon töltse ki a szükséges paramétereket, kattintson a **felülvizsgálat + létrehozás**. A jelen oktatóanyag esetében állítsa be a **időbélyeg** tulajdonság mező `Timestamp`.
 
    ![oktatóanyag – három][3]
 

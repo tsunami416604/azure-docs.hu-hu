@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 04/09/2018
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 0a187bbc476738294e2f7f31de4e11ea92e604f9
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
-ms.translationtype: HT
+ms.openlocfilehash: b4f234099cb39e524beb2d2e5a5d138355d5cb80
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50977994"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013704"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Az Azure Functions futtatása Azure Stream Analytics-feladatokból 
 
@@ -35,34 +35,34 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="configure-a-stream-analytics-job-to-run-a-function"></a>Stream Analytics-feladat konfigurálása függvény futtatására 
 
-Ez a szakasz bemutatja, hogyan konfigurálható egy Stream Analytics-feladat az Azure Redis Cache-be adatokat író függvény futtatására. A Stream Analytics-feladat eseményeket olvas be az Azure Event Hubsból, és futtat egy lekérdezést, amely meghívja a függvényt. Ez a függvény beolvassa az adatokat a Stream Analytics-feladatból, majd az Azure Redis Cache-be írja azokat.
+Ez a szakasz bemutatja, hogyan konfigurálhatja a Stream Analytics-feladat, Azure Cache redis adatokat író függvény futtatására. A Stream Analytics-feladat eseményeket olvas be az Azure Event Hubsból, és futtat egy lekérdezést, amely meghívja a függvényt. Ez a függvény adatokat olvas be a Stream Analytics-feladat, és a redis Azure Cache írja azt.
 
 ![Az Azure-szolgáltatások közötti kapcsolatokat bemutató ábra](./media/stream-analytics-with-azure-functions/image1.png)
 
 A feladat megvalósításához az alábbi lépéseket kell végrehajtani:
 * [Stream Analytics-feladat létrehozása az Event Hubs szolgáltatást megadva bemenetként](#create-a-stream-analytics-job-with-event-hubs-as-input)  
-* [Azure Redis Cache-példány létrehozása](#create-an-azure-redis-cache-instance)  
-* [Adatokat az Azure Redis Cache-be írni képes függvény létrehozása az Azure Functions szolgáltatásban](#create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache)    
+* [A Redis-példányt az Azure Cache létrehozása](#create-an-azure-redis-cache-instance)  
+* [Függvény létrehozása az tudjon adatokat írni az Azure Cache Redis az Azure Functions szolgáltatásban](#create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache)    
 * [A Stream Analytics-feladat frissítése a kimenetként megadott függvénnyel](#update-the-stream-analytics-job-with-the-function-as-output)  
-* [Az eredmények ellenőrzése az Azure Redis Cache-ben](#check-azure-redis-cache-for-results)  
+* [Ellenőrizze az Azure Cache redis eredmények](#check-azure-redis-cache-for-results)  
 
 ## <a name="create-a-stream-analytics-job-with-event-hubs-as-input"></a>Stream Analytics-feladat létrehozása az Event Hubs szolgáltatást megadva bemenetként
 
 [Az adathamisítások azonnali felismerése](stream-analytics-real-time-fraud-detection.md) oktatóanyag lépéseit követve hozzon létre egy eseményközpontot, indítsa el az eseménylétrehozó alkalmazást, és hozzon létre egy Stream Analytics-feladatot. (Hagyja ki a lekérdezés és a kimenet létrehozására szolgáló lépéseket. Helyette tekintse meg a Functions-kimenet beállítására vonatkozó alábbi szakaszokat.)
 
-## <a name="create-an-azure-redis-cache-instance"></a>Azure Redis Cache-példány létrehozása
+## <a name="create-an-azure-cache-for-redis-instance"></a>A Redis-példányt az Azure Cache létrehozása
 
-1. Hozzon létre egy gyorsítótárat az Azure Redis Cache-ben a [Gyorsítótár létrehozása](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache) című szakaszban ismertetett lépéseket követve.  
+1. Gyorsítótár létrehozása az Azure Cache redis ismertetett lépéseket követve [hozzon létre egy gyorsítótárat](../azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).  
 
 2. Miután létrehozta a gyorsítótárat, a **Beállítások** területen válassza a **Hozzáférési kulcsok** elemet. Jegyezze fel az **Elsődleges kapcsolati sztring** értékét.
 
-   ![Az Azure Redis Cache kapcsolati sztringjének képernyőképe](./media/stream-analytics-with-azure-functions/image2.png)
+   ![Az Azure Cache képernyőkép Redis kapcsolati karakterlánc](./media/stream-analytics-with-azure-functions/image2.png)
 
-## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache"></a>Adatokat az Azure Redis Cache-be írni képes függvény létrehozása az Azure Functions szolgáltatásban
+## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-cache-for-redis"></a>Függvény létrehozása az tudjon adatokat írni az Azure Cache Redis az Azure Functions szolgáltatásban
 
 1. Tekintse meg a Functions dokumentációjának [Függvényalkalmazás létrehozása](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) című szakaszát. Ebből megtudhatja, hogyan hozhat létre függvényalkalmazást és egy [HTTP-eseményindítóval aktivált függvényt az Azure Functionsben](../azure-functions/functions-create-first-azure-function.md#create-function) CSharp nyelven.  
 
-2. Keresse meg a **run.csx** függvényt. Frissítse az alábbi kóddal. (A „\<your redis cache connection string goes here\>” (a redis cache kapcsolati karakterlánca helye) karakterláncot cserélje le az Azure Redis Cache előző szakaszban lekért elsődleges kapcsolati karakterláncára.)  
+2. Keresse meg a **run.csx** függvényt. Frissítse az alábbi kóddal. (Cserélje le "\<ide kerül az Azure Cache Redis kapcsolati karakterlánc\>" az az Azure Cache a Redis az előző szakaszban lekért elsődleges kapcsolati karakterláncot.)  
 
    ```csharp
    using System;
@@ -85,7 +85,7 @@ A feladat megvalósításához az alábbi lépéseket kell végrehajtani:
       {        
          return new HttpResponseMessage(HttpStatusCode.RequestEntityTooLarge);
       }
-      var connection = ConnectionMultiplexer.Connect("<your redis cache connection string goes here>");
+      var connection = ConnectionMultiplexer.Connect("<your Azure Cache for Redis connection string goes here>");
       log.Info($"Connection string.. {connection}");
     
       // Connection refers to a property that returns a ConnectionMultiplexer
@@ -185,17 +185,17 @@ A feladat megvalósításához az alábbi lépéseket kell végrehajtani:
     
 6.  Indítsa el a Stream Analytics-feladatot.
 
-## <a name="check-azure-redis-cache-for-results"></a>Az eredmények ellenőrzése az Azure Redis Cache-ben
+## <a name="check-azure-cache-for-redis-for-results"></a>Ellenőrizze az Azure Cache redis eredmények
 
-1. Lépjen az Azure Portalra, majd keresse meg az Azure Redis Cache-t. Válassza a **Konzol** lehetőséget.  
+1. Keresse meg az Azure Portalon, és keresse meg az Azure Cache redis. Válassza a **Konzol** lehetőséget.  
 
-2. A [Redis Cache parancsainak](https://redis.io/commands) használatával ellenőrizze, hogy az adatok megtalálhatók-e a Redis Cache-ben. (A parancs formátuma: Get {kulcs}.) Például:
+2. Használat [Azure Cache Redis parancsok](https://redis.io/commands) annak ellenőrzéséhez, hogy az adatok Azure Cache redis-ben. (A parancs formátuma: Get {kulcs}.) Példa:
 
    **Get "12/19/2017 21:32:24 - 123414732"**
 
    Ennek a parancsnak a megadott kulcshoz tartozó értéket kell kiírnia:
 
-   ![Az Azure Redis Cache-kimenet képernyőképe](./media/stream-analytics-with-azure-functions/image5.png)
+   ![Az Azure Cache képernyőképe a Redis-kimenet](./media/stream-analytics-with-azure-functions/image5.png)
    
 ## <a name="error-handling-and-retries"></a>Hibakezelés és újrapróbálkozások
 Ha hiba történik az események Azure Functionsbe való küldése során, a Stream Analytics újra megpróbálja végrehajtani a műveletet. Bizonyos hibák előfordulása esetén a rendszer nem próbálkozik újra. Ezek a következők:

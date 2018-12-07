@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 12/05/2018
 ms.author: diberry
-ms.openlocfilehash: 0fe9dbed302fd2d61305167a3bda25b1b403b761
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 8371e99224b511a87b2061708f00822a70c024b0
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139974"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999071"
 ---
 # <a name="prebuilt-entities-to-recognize-common-data-types"></a>Előre összeállított entitások felismerésére általános adattípusok
 
@@ -54,6 +54,12 @@ Teszt új célja a végponton által hozzáadott értéket a **q** paraméter. H
 |a találkozó március 3-án megszakítása|A LUIS a legutóbbi március 3 korábban visszaadott (2018-03-03) és március 3 a jövőben (a 2019-03-03), mert az utterance (kifejezés) nem adott meg egy év.|
 |10-kor értekezlet ütemezése|10:00:00|
 
+## <a name="marking-entities-containing-a-prebuilt-entity-token"></a>Olyan előre összeállított entitások jogkivonatot tartalmazó entitások jelölés
+ Ha rendelkezik a szöveget, például `HH-1234`, amelyek jelölhetnek egy egyéni entitást szeretne _és_ rendelkezik [előre összeállított szám](luis-reference-prebuilt-number.md) ad hozzá a modellt, nem lehet megjelölni az egyéni entitáshoz, a LUIS-portálon. Ez az API-val jelölheti meg. 
+
+ Jelölje meg a jogkivonatot, ahol egy része már meg van jelölve az előre összeállított entitások, az ilyen típusú távolítsa el az előre összeállított entitások a LUIS-alkalmazásból. Nem kell az alkalmazás betanításához. Ezután jelölje meg a jogkivonatot a saját egyéni entitást. Ezután adja hozzá az előre összeállított entitások vissza a LUIS-alkalmazás.
+
+ Egy másik példa, fontolja meg az utterance (kifejezés) osztály beállítások listájának: `I want first year spanish, second year calculus, and fourth year english lit.` a LUIS alkalmazás rendelkezik a Prebuild sorszámot ad hozzá, ha `first`, `second`, és `fourth` a sorszámok már lesz megjelölve. Ha szeretné rögzíteni azt a sorszámot, és az osztályt, összetett entitás létrehozása, és tegye azokat az előre összeállított sorszámnál és az egyéni entitás osztály neveként.
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]

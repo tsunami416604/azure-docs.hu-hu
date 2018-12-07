@@ -1,24 +1,27 @@
 ---
-title: Azure Container Service-oktatóanyag – Fürt üzembe helyezése
+title: (ELAVULT) Az Azure Container Service-oktatóanyag – fürtök üzembe helyezése
 description: Azure Container Service-oktatóanyag – Fürt üzembe helyezése
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 09/14/2017
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 8403e5d8dd3bad07e412b08709dcb8c28201bcdf
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: d77396cdcaa3f2f291aff52dfd1e6793aee4039c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434424"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997845"
 ---
-# <a name="deploy-a-kubernetes-cluster-in-azure-container-service"></a>Kubernetes-fürt üzembe helyezése az Azure Container Service-ben
+# <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>(ELAVULT) Az Azure Container Service Kubernetes-fürt üzembe helyezése
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Ebben az oktatóanyagban, amely használja az Azure Kubernetes Service-ben, lásd: a frissített verzió [oktatóanyag: Azure Kubernetes Service (AKS)-fürt üzembe helyezése](../../aks/tutorial-kubernetes-deploy-cluster.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 A Kubernetes tárolóalapú alkalmazásokhoz kínál elosztott platformot. Az Azure Container Service használatával egyszerűen és gyorsan építhető ki egy üzemkész Kubernetes-fürt. Ebben az oktatóanyagban, amely egy hétrészes sorozat harmadik része, egy Azure Container Service-beli Kubernetes-fürtöt helyezünk üzembe. Ennek lépései az alábbiak:
 

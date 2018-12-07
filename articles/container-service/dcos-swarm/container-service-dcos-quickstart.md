@@ -1,5 +1,5 @@
 ---
-title: Azure Container Service gyors útmutató – DC/OS fürt üzembe helyezése
+title: (ELAVULT) Az Azure Container Service gyors útmutató – DC/OS fürt üzembe helyezése
 description: Azure Container Service gyors útmutató – DC/OS fürt üzembe helyezése
 services: container-service
 author: iainfoulds
@@ -9,14 +9,16 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4cd7f2284f3449fe8abdf1a6f8e85b9b0b712d7a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: efaf82c3f378f572c289b587dbe5df1923a58c62
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998559"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000522"
 ---
-# <a name="deploy-a-dcos-cluster"></a>DC/OS fürt üzembe helyezése
+# <a name="deprecated-deploy-a-dcos-cluster"></a>(ELAVULT) DC/OS fürt üzembe helyezése
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 A DC/OS elosztott platformot nyújt a modern és tárolóalapú alkalmazások futtatásához. Az Azure Container Service használatával egyszerűen és gyorsan építhető ki üzemkész DC/OS fürt. Ez a rövid útmutató a DC/OS fürt üzembe helyezéséhez és az alapvető számítási feladatok futtatásához szükséges alaplépéseket részletezi.
 

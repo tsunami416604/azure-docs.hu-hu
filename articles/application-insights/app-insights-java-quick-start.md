@@ -11,12 +11,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 4ed5363cc927c3e36e6efa7554511d78e1e96d24
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 45d1275ac3b78836cbb77c4e1508d0689c215d69
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970926"
+ms.locfileid: "52998610"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>A Java-webalkalmazás monitorozásának indítása
 
@@ -29,7 +29,7 @@ Ez a rövid útmutató végigvezeti az Application Insights SDK egy meglévő Ja
 A gyorsútmutató elvégzéséhez:
 
 - Telepítse a JRE 1.7-es vagy 1.8-as verzióját.
-- Telepítse az [ingyenes, Java EE-fejlesztőknek készült Eclipse IDE-t](http://www.eclipse.org/downloads/). Ez a rövid útmutató az Eclipse Oxygent (4.7) használja.
+- Telepítse az [ingyenes, Java EE-fejlesztőknek készült Eclipse IDE-t](https://www.eclipse.org/downloads/). Ez a rövid útmutató az Eclipse Oxygent (4.7) használja.
 - Szüksége lesz egy Azure-előfizetésre és egy meglévő Java-alapú dinamikus webes projektre.
  
 Ha nem rendelkezik Java-alapú dinamikus webes projekttel, a létrehozásához követheti a [Java-webalkalmazások létrehozásához készült útmutató](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-java) utasításait.
@@ -67,7 +67,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
    ![Új App Insights-erőforrás űrlap](./media/app-insights-java-quick-start/000-j.png)
 
-2. Másolja a ```http://dl.microsoft.com/eclipse``` címet a „Használt környezet” mezőbe, jelölje be a **Javához készült Azure-eszközkészlet** beállítást, válassza a **Javához készült Application Insights-beépülőmodul** >  **elemet, és törölje** „Az összes frissítési hely felkeresése a szükséges szoftverek letöltéséhez” beállítás jelölését.
+2. Másolja a ```https://dl.microsoft.com/eclipse``` címet a „Használt környezet” mezőbe, jelölje be a **Javához készült Azure-eszközkészlet** beállítást, válassza a **Javához készült Application Insights-beépülőmodul** >  **elemet, és törölje** „Az összes frissítési hely felkeresése a szükséges szoftverek letöltéséhez” beállítás jelölését.
 
 3. A telepítés végén a rendszer megkéri az **Eclipse újraindítására**.
 

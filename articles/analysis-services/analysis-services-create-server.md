@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b5aa300d51deef408b8dd2b410db319449360329
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
-ms.translationtype: HT
+ms.openlocfilehash: ef4099130878813378fb277c45b5d352cbe822a7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428827"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000168"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Gyors útmutató: Kiszolgáló létrehozása – Portal
 
@@ -24,9 +24,9 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre erőforrást egy Azure An
 * **Azure-előfizetés**: A fiók létrehozásával kapcsolatban lásd: [Ingyenes Azure-próbaverzió](https://azure.microsoft.com/offers/ms-azr-0044p/).
 * **Azure Active Directory**: Előfizetésének egy Azure Active Directory-bérlőhöz kell tartoznia. Emellett be kell jelentkeznie az Azure-ba az adott Azure Active Directoryban található fiókkal. További információ: [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md).
 
-## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra 
+## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra 
 
-[Bejelentkezés a portálra](https://portal.azure.com)
+[Jelentkezzen be a portálra](https://portal.azure.com)
 
 
 ## <a name="create-a-server"></a>A kiszolgáló létrehozása

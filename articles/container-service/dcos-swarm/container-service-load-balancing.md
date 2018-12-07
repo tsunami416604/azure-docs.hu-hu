@@ -1,5 +1,5 @@
 ---
-title: Tárolók terheléselosztása az Azure DC/OS-fürtben
+title: (ELAVULT) Tárolók terheléselosztása Azure DC/OS-fürt
 description: Több tárolóra kiterjedő terheléselosztás egy Azure Container Service DC/OS-fürtben.
 services: container-service
 author: rgardler
@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 8e8ad913c6e5b8e947b17ed8920285de3fcfd8ae
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 5a1883412a5285c4916c43a5c6ad81168096dd7f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964360"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993556"
 ---
-# <a name="load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>Tárolók terheléselosztása egy Azure Container Service DC/OS-fürtben
+# <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>(ELAVULT) Tárolók terheléselosztása Azure Container Service DC/OS-fürtben
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 Ebben a cikkben azt vizsgáljuk meg, hogyan lehet belső terheléselosztót létrehozni a Marathon-LB-vel egy, a DC/OS által kezelt Azure Container Service szolgáltatásban. Ez a konfiguráció lehetőséget nyújt az alkalmazások horizontális skálázására. Ezenkívül lehetővé teszi a nyilvános és a privát ügynökös fürtök használatát. Ehhez a terheléselosztókat a nyilvános fürtbe kell helyezni, az alkalmazástárolókat pedig a privát fürtbe. Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
@@ -27,7 +29,7 @@ Ebben a cikkben azt vizsgáljuk meg, hogyan lehet belső terheléselosztót lét
 
 Az oktatóanyagban ismertetett lépések végrehajtásához szüksége lesz egy ACS DC/OS-fürtre. Amennyiben szükséges, [ezzel a mintaszkripttel](./../kubernetes/scripts/container-service-cli-deploy-dcos.md) létrehozhat egyet.
 
-Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
+Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne, tekintse meg [az Azure CLI telepítését ismertető]( /cli/azure/install-azure-cli) szakaszt. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

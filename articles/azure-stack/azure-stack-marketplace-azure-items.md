@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: adde29b0719f777bc6cf3ab86adbdeec4befddf0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e4f15da8464c2103b5f6540d342cb7c741a67c5f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842416"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994838"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Elérhető az Azure Stackhez az Azure piactéren elemek
 
@@ -88,7 +88,6 @@ A Microsoft Azure Stackhez az Azure piactér következő virtuális gépek és a
 | ![A CoreOS tároló Linux](media/azure-stack-marketplace-azure-items/coreos.png) | [A CoreOS tároló Linux](https://azuremarketplace.microsoft.com/marketplace/apps/CoreOS.CoreOS) | Tároló Linux modern és minimális Linux-disztribúció, így könnyedén futtathat tárolókat, kezelheti a fürtöket, és a kiszolgálók zökkenőmentes frissítését – az összes összetevő, amely lehetővé számítási. | CoreOS |
 | ![Ubuntu Server](media/azure-stack-marketplace-azure-items/ubuntu.png) | [Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer) | Ubuntu Server rendszer a világ legnépszerűbb Linux felhőalapú környezetek. | Canonical |
 | ![Debian 8 "Jessie"](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian) | Debian GNU/Linux egyike a népszerű Linux-disztribúció. | credativ |
-| ![Debian 9 "Stretch"](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 9 "Stretch"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian9) | Debian GNU/Linux egyike a népszerű Linux-disztribúció. | credativ |
 | ![CentOS-alapú 6.9.](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-alapú 6.9.](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased69) | Ehhez a terjesztéshez Linux CentOS alapul, és a Rogue Wave szoftver által biztosított. | Rogue Wave Software (korábbi nevén OpenLogic)  |
 | ![CentOS-alapú 6.10](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-alapú 6.10](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased610) | Ehhez a terjesztéshez Linux CentOS alapul, és a Rogue Wave szoftver által biztosított. | Rogue Wave Software (korábbi nevén OpenLogic)  |
 | ![CentOS-alapú 7.3](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-alapú 7.3.](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased73) | Ehhez a terjesztéshez Linux CentOS alapul, és a Rogue Wave szoftver által biztosított. | Rogue Wave Software (korábbi nevén OpenLogic) |

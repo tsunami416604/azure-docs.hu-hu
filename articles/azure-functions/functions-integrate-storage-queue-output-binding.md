@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: e48eac4cdc1e98e21a122850b1dc7d3e8f4efe07
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
-ms.translationtype: HT
+ms.openlocfilehash: 0cd3d3044623e2265a4ef5f817ed41258e63ae1c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854524"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995515"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Üzenetek hozzáadása az Azure Storage üzenetsorába a Functions szolgáltatás használatával
 
@@ -31,7 +31,7 @@ A gyorsútmutató elvégzéséhez:
 
 * Kövesse [Az első függvény Azure Portalon való létrehozását](functions-create-first-azure-function.md) ismertető cikk utasításait, és ne végezze el **Az erőforrások eltávolítása** lépést. Ez a rövid útmutató az itt használt függvényalkalmazást és függvényt hozza létre.
 
-* Telepítse a [Microsoft Azure Storage Explorert](http://storageexplorer.com/). Ezt az eszközt fogja használni a kimeneti kötés által létrehozott üzenetsori üzenetek vizsgálatához.
+* Telepítse a [Microsoft Azure Storage Explorert](https://storageexplorer.com/). Ezt az eszközt fogja használni a kimeneti kötés által létrehozott üzenetsori üzenetek vizsgálatához.
 
 ## <a name="add-binding"></a>Kimeneti kötés hozzáadása
 
@@ -122,7 +122,7 @@ A Functions futtatókörnyezete egy **outqueue** nevű új üzenetsort hoz létr
 
 Hagyja ki ezt a szakaszt, ha már telepítette és csatlakoztatta a Storage Explorert a jelen rövid útmutató során használt tárfiókhoz.
 
-2. Futtassa a [Microsoft Azure Storage Explorer](http://storageexplorer.com/) eszközt, kattintson a bal oldalon található csatlakozási ikonra, válassza ki a **Tárfiók nevének és kulcsának használata** lehetőséget, és kattintson a **Tovább** elemre.
+2. Futtassa a [Microsoft Azure Storage Explorer](https://storageexplorer.com/) eszközt, kattintson a bal oldalon található csatlakozási ikonra, válassza ki a **Tárfiók nevének és kulcsának használata** lehetőséget, és kattintson a **Tovább** elemre.
 
     ![Futtassa a Storage Account Explorer eszközt.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-1.png)
 

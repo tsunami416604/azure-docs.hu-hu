@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/24/2018
 ms.author: erhopf
-ms.openlocfilehash: 564a12de2a0823372ce267f9ff2759ab17199a80
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
-ms.translationtype: HT
+ms.openlocfilehash: cfc2565c0ee2b51eaff40647cfcd7505e0479e64
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086039"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993819"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-python"></a>Rövid útmutató: A Translator Text API használata szöveg nyelvének felismerésére a Pythonnal
 
@@ -163,7 +163,7 @@ Ha nem változtatható módon adta meg az előfizetői azonosítót a programban
 
 ## <a name="see-also"></a>Lásd még
 
-Megtudhatja, hogyan használhatja a Translator Text API-t a nyelvfelismerésen kívül a következőkhöz:
+Ismerje meg, hogyan használható a Translator Text API-t:
 
 * [Szöveg lefordítása](quickstart-python-translate.md)
 * [Szöveg átírása](quickstart-python-transliterate.md)

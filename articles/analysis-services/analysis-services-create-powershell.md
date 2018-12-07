@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8ce9606c6b59175e03da5382f76fb320080db86e
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
-ms.translationtype: HT
+ms.openlocfilehash: 3971311bff90d0b005acd516336e13766028cccf
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427026"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001556"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>Gyors útmutató: Kiszolgáló létrehozása – PowerShell
 
@@ -33,9 +33,9 @@ Ahhoz, hogy kiszolgálót hozzon létre az előfizetésében, használja az [Azu
 Import-Module AzureRM.AnalysisServices
 ```
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be Azure-előfizetésébe a [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) paranccsal. Kövesse a képernyőn megjelenő utasításokat.
+Jelentkezzen be az Azure-előfizetéshez a [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) parancsot. Kövesse a képernyőn megjelenő utasításokat.
 
 ```powershell
 Connect-AzureRmAccount

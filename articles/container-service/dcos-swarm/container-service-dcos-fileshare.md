@@ -1,5 +1,5 @@
 ---
-title: Fájlmegosztás Azure DC/OS-fürthöz
+title: (ELAVULT) Azure DC/OS fürt fájlmegosztás
 description: Fájlmegosztás létrehozása és csatlakoztatása DC/OS-fürthöz az Azure Container Service-ben
 services: container-service
 author: julienstroheker
@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.date: 06/07/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 4e03a0b450c9806edfb81a867fba97052659ec44
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 728f8ddbda35f27c0f89e1d72e98fd2d7669320e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973504"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999862"
 ---
-# <a name="create-and-mount-a-file-share-to-a-dcos-cluster"></a>Fájlmegosztás létrehozása és csatlakoztatása DC/OS-fürthöz
+# <a name="deprecated-create-and-mount-a-file-share-to-a-dcos-cluster"></a>(ELAVULT) Létrehozása és csatlakoztatása DC/OS fürt fájlmegosztás
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 Ez az oktatóanyag részletesen ismerteti, hogyan hozhat létre fájlmegosztást az Azure-ban, és hogyan csatlakoztathatja azt a DC/OS-fürtök egyes ügynökein és főkiszolgálóin. Fájlmegosztás beállítása megkönnyíti a fájlok, például a konfigurációk, hozzáférési jogosultságok, naplók és egyebek megosztását a fürtben. Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 
@@ -27,7 +29,7 @@ Ez az oktatóanyag részletesen ismerteti, hogyan hozhat létre fájlmegosztást
 
 Az oktatóanyagban ismertetett lépések végrehajtásához szüksége lesz egy ACS DC/OS-fürtre. Amennyiben szükséges, [ezzel a mintaszkripttel](./../kubernetes/scripts/container-service-cli-deploy-dcos.md) létrehozhat egyet.
 
-Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
+Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne, tekintse meg [az Azure CLI telepítését ismertető]( /cli/azure/install-azure-cli) szakaszt. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

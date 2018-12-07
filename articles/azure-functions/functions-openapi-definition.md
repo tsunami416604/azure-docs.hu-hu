@@ -12,16 +12,16 @@ ms.date: 11/26/2018
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 2d50e4c2352444d29bdb090bc9a2a7947ecc6a50
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 6daa29b4e8f09a4f8a40c3b92d2e2e86a5dea6aa
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496034"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993182"
 ---
 # <a name="create-an-openapi-definition-for-a-function"></a>OpenAPI definíció létrehozása egy függvényhez
 
-A REST API-k leírása gyakran egy OpenAPI-definíció (korábbi nevén [Swagger](http://swagger.io/)-fájl) használatával történik. Ez a definíció tartalmazza az API-ban elérhető műveletekkel kapcsolatos információkat, illetve az API kérés- és válaszadatainak felépítését.
+A REST API-k leírása gyakran egy OpenAPI-definíció (korábbi nevén [Swagger](https://swagger.io/)-fájl) használatával történik. Ez a definíció tartalmazza az API-ban elérhető műveletekkel kapcsolatos információkat, illetve az API kérés- és válaszadatainak felépítését.
 
 Ebben az oktatóanyagban létrehoz egy függvényt, amely megállapítja, hogy egy szélturbina sürgősségi javítása költséghatékony-e. Ezután létrehoz egy OpenAPI-definíciót a függvényalkalmazáshoz, hogy a függvényt más alkalmazások és szolgáltatások is meghívhassák.
 
@@ -123,7 +123,7 @@ Most már van egy olyan függvénye, amely megállapítja a sürgősségi javít
 
 ## <a name="generate-the-openapi-definition"></a>Az OpenAPI-definíció létrehozása
 
-Most már készen áll arra, hogy létrehozza az OpenAPI-definíciót. Ezt a Microsoft egyéb technológiái is használhatják, például az API Apps, a [PowerApps](functions-powerapps-scenario.md) és a [Microsoft Flow](../azure-functions/app-service-export-api-to-powerapps-and-flow.md), valamint külső gyártóktól származó fejlesztői eszközök is, mint a [Postman](https://www.getpostman.com/docs/importing_swagger) és [még sok más csomag](http://swagger.io/tools/).
+Most már készen áll arra, hogy létrehozza az OpenAPI-definíciót. Ezt a Microsoft egyéb technológiái is használhatják, például az API Apps, a [PowerApps](functions-powerapps-scenario.md) és a [Microsoft Flow](../azure-functions/app-service-export-api-to-powerapps-and-flow.md), valamint külső gyártóktól származó fejlesztői eszközök is, mint a [Postman](https://www.getpostman.com/docs/importing_swagger) és [még sok más csomag](https://swagger.io/tools/).
 
 1. Csak azokat a *műveleteket* válassza ki, amelyeket az API támogat (jelen esetben a POST). Ezáltal átláthatóbb lesz a létrehozott API-definíció.
 
@@ -141,7 +141,7 @@ Most már készen áll arra, hogy létrehozza az OpenAPI-definíciót. Ezt a Mic
 
     ![API-definíció forrása](media/functions-openapi-definition/api-definition-source.png)
 
-    Ez a lépés számos OpenAPI-beállítást engedélyez a függvényalkalmazás számára, köztük egy végpontot, amely a függvényalkalmazás tartományából futtat egy OpenAPI-fájlt, valamint az [OpenAPI-szerkesztő](http://editor.swagger.io) egy beágyazott példányát és egy API-definíciósablon generátort.
+    Ez a lépés számos OpenAPI-beállítást engedélyez a függvényalkalmazás számára, köztük egy végpontot, amely a függvényalkalmazás tartományából futtat egy OpenAPI-fájlt, valamint az [OpenAPI-szerkesztő](https://editor.swagger.io) egy beágyazott példányát és egy API-definíciósablon generátort.
 
 1. Kattintson az **API-definíciósablon létrehozása** > **Mentés** lehetőségre.
 
@@ -168,7 +168,7 @@ Most már készen áll arra, hogy létrehozza az OpenAPI-definíciót. Ezt a Mic
         parameters: []
         description: >-
             Replace with Operation Object
-            #http://swagger.io/specification/#operationObject
+            #https://swagger.io/specification/#operationObject
         responses:
             '200':
             description: Success operation

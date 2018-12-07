@@ -9,18 +9,20 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 812b707b9711d61d0a1326a86644e57ecbe84513
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: f574c85252614fd24734657affe3264d72130dd3
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157893"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997001"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Szimulált TPM-eszköz létrehozása és kiépítése az IoT Hub Device Provisioning Service-hez készült C# eszközoldali SDK-val
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
-Ezek a lépések bemutatják, hogyan hozhat létre Azure IoT Hub C# SDK-val szimulált TPM-eszközt egy Windows operációs rendszert futtató fejlesztői gépen, és hogyan kötheti össze ezt a szimulált eszközt a Device Provisioning Service-szel és az IoT Hubbal. A mintakód a Windows TPM-szimulátort használja az eszköz [Hardveres biztonsági moduljaként (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/). 
+Ezek a lépések bemutatják, hogyan használható a [Azure IoT-minták az C# ](https://github.com/Azure-Samples/azure-iot-samples-csharp) szimulálja a TPM-eszköz, a Windows operációs rendszert futtató fejlesztői gépen. A minta a szimulált eszközt is csatlakozik az IoT Hub Device Provisioning Service használatával. 
+
+A mintakód a Windows TPM-szimulátort használja az eszköz [Hardveres biztonsági moduljaként (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/). 
 
 Amennyiben nem ismeri az automatikus kiépítés folyamatát, olvassa el [az automatikus kiépítés alapfogalmait](concepts-auto-provisioning.md) ismertető cikket is. A folytatás előtt mindenképpen végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) szakasz lépéseit. 
 
@@ -35,14 +37,14 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 <a id="setupdevbox"></a>
 ## <a name="prepare-the-development-environment"></a>A fejlesztési környezet előkészítése 
 
-1. Győződjön meg arról, hogy a [.NET Core SDK](https://www.microsoft.com/net/download/windows) telepítve van a gépén. 
+1. Ellenőrizze, hogy a [a .net Core SDK 2.1-es vagy újabb](https://www.microsoft.com/net/download/windows) telepítve van a gépén. 
 
 1. Győződjön meg arról, hogy a(z) `git` telepítve van a gépen, és a parancsablakból elérhető környezeti változókhoz van adva. A [Software Freedom Conservancy's Git ügyfél eszközeiben](https://git-scm.com/download/) találja a telepíteni kívánt `git` eszközök legújabb verzióját, amely tartalmazza a **Git Bash** eszközt, azt a parancssori alkalmazást, amellyel kommunikálhat a helyi Git-adattárral. 
 
-4. Nyisson meg egy parancssort vagy a Git Basht. Klónozza a C#-hoz készült Azure IoT SDK GitHub-tárházát:
+1. Nyisson meg egy parancssort vagy a Git Basht. Klónozza az Azure IoT-minták az C# GitHub-adattárat:
     
     ```cmd
-    git clone --recursive https://github.com/Azure/azure-iot-sdk-csharp.git
+    git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
     ```
 
 ## <a name="provision-the-simulated-device"></a>A szimulált eszköz kiépítése
@@ -56,7 +58,7 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 2. Egy parancssorban módosítsa a könyvtárakat a TPM-eszközkiépítési minta projektkönyvtárára.
 
     ```cmd
-    cd .\azure-iot-sdk-csharp\provisioning\device\samples\ProvisioningDeviceClientTpm
+    cd .\azure-iot-samples-csharp\provisioning\Samples\device\TpmSample
     ```
 
 2. Írja be az alábbi parancsot, és futtassa a TPM-eszközkiépítési mintát. Az `<IDScope>` értéket cserélje le a kiépítési szolgáltatás Azonosító hatóköre értékére. 
@@ -65,21 +67,22 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
     dotnet run <IDScope>
     ```
 
-1. A parancsablak megjeleníti az eszközök beléptetéséhez szükséges **_ellenőrzőkulcsot_**, **_regisztrációs azonosítót_** és egy javasolt **_eszközazonosítót_**. Jegyezze fel ezeket az értékeket. 
+    Ez a parancs elindít egy különálló parancssorban a TPM-lapka szimulátort.  
+
+1. A parancsablak megjeleníti az eszközök beléptetéséhez szükséges **_ellenőrzőkulcsot_**, **_regisztrációs azonosítót_** és egy javasolt **_eszközazonosítót_**. Jegyezze fel ezeket az értékeket. Ezek a értéket fogja használni a hozhat létre egyéni regisztrációt a Device Provisioning Service-példányában. 
    > [!NOTE]
    > Ne keverje össze a parancskimenetet tartalmazó ablakot a TPM-szimulátor kimenetét tartalmazó ablakkal. Lehet, hogy a parancsablakra kell kattintania, hogy az előtérbe kerüljön.
 
     ![A parancsablak kimenete](./media/quick-create-simulated-device-tpm-csharp/output1.png) 
 
-
 4. Az Azure Portal Device Provisioning Service összefoglalási panelén válassza a **Regisztrációk kezelése** lehetőséget. Válassza az **Egyéni regisztrációk** fület, és kattintson a felül lévő **Egyéni regisztráció hozzáadása** gombra. 
 
 5. A **Regisztráció hozzáadása** alatt adja meg a következő információkat:
     - Válassza a **TPM** elemet az identitás igazolási *Mechanizmusaként*.
-    - Írja be a TPM-eszköz *Regisztrációs azonosítóját* és *Ellenőrzőkulcsát*. 
+    - Adja meg a *regisztrációs azonosító* és *ellenőrzőkulcsot* a TPM-eszköz, amelyet korábban feljegyzett.
     - Kiválaszthatja a kiépítési szolgáltatáshoz kapcsolódó egyik IoT hubot.
     - Adjon meg egy egyedi eszközazonosítót. Beírhatja a mintakimenetben javasolt eszközazonosítót, vagy megadhat egy saját értéket. Ha saját azonosítót használ, ne adjon meg bizalmas adatokat az eszköz elnevezésekor. 
-    - Frissítse az **Eszköz kezdeti ikerállapotát** az eszköz kívánt kezdeti konfigurációjával.
+    - Szükség esetén frissítse a **eszköz kezdeti ikerállapotát** az eszköz kívánt kezdeti konfigurációjával együtt.
     - Ha végzett, kattintson a **Mentés** gombra. 
 
     ![Írja be az eszköz beléptetési információit a portál panelén](./media/quick-create-simulated-device-tpm-csharp/enterdevice-enrollment.png)  

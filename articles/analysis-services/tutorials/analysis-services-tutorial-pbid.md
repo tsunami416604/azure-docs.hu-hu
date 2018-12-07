@@ -2,17 +2,18 @@
 title: Oktatóanyag – Csatlakozás az Azure Analysis Serviceshez a Power BI Desktoppal | Microsoft Docs
 author: minewiskan
 manager: kfile
+description: Ismerje meg, hogyan csatlakozhat az Azure Analysis Services a Power BI Desktopban.
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: ad97fd7569690d0d199b0ce1a82f31f8dfa64c26
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
-ms.translationtype: HT
+ms.openlocfilehash: 0025655b3df8ddfb91857bbd56c04507ac6bca5e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426128"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993982"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>Oktatóanyag: Csatlakozás a Power BI Desktoppal
 
@@ -29,8 +30,8 @@ Ebben az oktatóanyagban a Power BI Desktopot fogja használni arra, hogy csatla
 - [*Olvasási*](../analysis-services-server-admins.md) engedéllyel rendelkezik az adventureworks minta-modelladatbázishoz.
 - [Telepítette a legújabb Power BI Desktopot](https://powerbi.microsoft.com/desktop).
 
-## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
-Ebben az oktatóanyagban csak a kiszolgálónév lekérése miatt jelentkezik be a portálra. A felhasználóknak általában a kiszolgáló rendszergazdája adja meg a kiszolgáló nevét.
+## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
+Ebben az oktatóanyagban, bejelentkezési a portálra, kérje le csak a kiszolgáló nevét. A felhasználóknak általában a kiszolgáló rendszergazdája adja meg a kiszolgáló nevét.
 
 Jelentkezzen be a [portálra](https://portal.azure.com/).
 
@@ -51,7 +52,7 @@ Másolja a kiszolgáló nevét az **Azure Portal** > kiszolgáló > **Áttekint�
 
    ![Kiszolgálónév és modelladatbázis megadása](./media/analysis-services-tutorial-pbid/aas-pbid-connect-aas-servername.png)
 
-3. Amikor a rendszer erre kéri, adja meg hitelesítő adatait. A megadott fióknak legalább olvasási engedéllyel kell rendelkeznie az adventureworks minta-modelladatbázishoz.
+3. Amikor a rendszer erre kéri, adja meg a hitelesítő adatait. A megadott fióknak legalább olvasási engedéllyel kell rendelkeznie az adventureworks minta-modelladatbázishoz.
 
     Az adventureworks modell egy üres jelentéssel, Jelentés nézetben nyílik meg a Power BI Desktopban. A **Mezők** listában minden nem rejtett modellobjektum megjelenik. A csatlakozás állapota a jobb alsó sarokban látható.
 
