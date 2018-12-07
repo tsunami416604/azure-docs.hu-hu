@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 6c62e2e559749ae8dc29e86d9c2414c28b487995
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 97c02726c7e359195c6bf4ea793404562f2acccf
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965619"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001943"
 ---
 # <a name="caching-with-azure-front-door-service"></a>Az Azure bejárati ajtajának szolgáltatással gyorsítótárazás
 A következő dokumentumban az útválasztási szabályokat, amelyeken engedélyezve gyorsítótárazási viselkedés határozza bejárati ajtajának.
@@ -26,7 +26,7 @@ Azure bejárati ajtajának szolgáltatás egy korlát nélküli fájl mérete na
 
 </br>Után az adattömbök megérkezik a bejárati ajtajának környezet, a gyorsítótárba, és azonnal szolgálja ki a felhasználó számára. Bejárati ajtajának majd előre lekéri a következő adattömbök párhuzamosan. Az előzetes betöltési biztosítja, hogy a tartalom marad egy adattömb előre a felhasználót, ami csökkenti a késést. Ez a folyamat folytatódik, amíg a teljes fájl letöltése (ha szükséges), az összes bájttartományok érhetők el (ha szükséges), vagy az ügyfél megszakítja a kapcsolatot.
 
-</br>Bájttartomány-kéréssel kapcsolatos további információkért olvassa el [RFC 7233](http://www.rfc-base.org/rfc-7233.html).
+</br>Bájttartomány-kéréssel kapcsolatos további információkért olvassa el [RFC 7233](https://web.archive.org/web/20171009165003/ http://www.rfc-base.org/rfc-7233.html).
 Bejárati ajtajának gyorsítótárazza a minden olyan adattömböket, fogadásuk, és így nem kell a teljes fájlt a bejárati ajtajának gyorsítótár a gyorsítótárban. A fájl vagy bájt címtartományok esetében későbbi kérelmeket a szolgáltatás a gyorsítótárból szolgálja ki. Ha nem összes adatrészletének lettek gyorsítótárazva, adattömbök kérhet a háttérrendszer lehívását használja. Az optimalizálás támaszkodik a háttérrendszer képességét bájttartomány-kérelmek; támogatásához Ha a háttérrendszer nem támogatja a bájttartomány-kérelmek, az optimalizálás nem elég hatékony.
 
 ## <a name="file-compression"></a>Fájltömörítés
@@ -116,5 +116,5 @@ A következő kérelemfejlécek nem lesznek továbbítva a háttérrendszernek g
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [hozzon létre egy bejárati ajtajának](quickstart-create-front-door.md).
-- Ismerje meg, [bejárati ajtajának működése](front-door-routing-architecture.md).
+- [Frontdoor létrehozására](quickstart-create-front-door.md) vonatkozó információk.
+- A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

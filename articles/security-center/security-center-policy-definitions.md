@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2018
 ms.author: rkarlin
-ms.openlocfilehash: a4f9fc31f411d36e63775a3665b6dfe27eec7710
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: e76464e294a3378bf3a275ec4fe7ccbd87c09475
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319378"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011640"
 ---
 # <a name="azure-security-policies-monitored-by-azure-security-center"></a>Az Azure Security Center által figyelt Azure biztonsági szabályzatok
 Ez a cikk az Azure szabályzat-definíciókat a Security Center által megfigyelt listáját.
@@ -43,7 +43,7 @@ Szeretné megtudni, a beépített szabályzatokat, a Security Center által figy
 |A ClusterProtectionLevel tulajdonság EncryptAndSign értékre való beállításának naplózása a Service Fabricben|Service Fabric egy elsődleges fürttanúsítvány csomópontok közötti kommunikációt három szintje (nincs, bejelentkezési és EncryptAndSign) védelmet biztosít. Biztosíthatja, hogy a csomópontok közötti üzenetek titkosítva és digitálisan aláírt védelmi szintjének beállítása.| 
 |Az Azure Active Directory ügyfél-hitelesítésre való használatának naplózása a Service Fabricben|A kizárólag az Azure Active Directoryval való ügyfél-hitelesítés használatának naplózása a Service Fabricben| 
 |A Search szolgáltatásbeli diagnosztikai naplók engedélyezésének naplózása|Audit naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül.| 
-|Azon művelet naplózása, amely a Redis Cache kizárólag biztonságos kapcsolaton keresztül történő elérését engedélyezi|Naplózás engedélyezése csak SSL Redis Cache-en keresztül kapcsolatok. Biztonságos kapcsolatok használata biztosítja, hogy a kiszolgáló és a szolgáltatás közötti hitelesítéshez, és az átvitt adatokat védi a hálózati réteg támadásoktól, például a man-in-the-middle, lehallgatást, és a munkamenet-eltérítés| 
+|Naplózás engedélyezése a redis az Azure Cache csak biztonságos kapcsolatok|Naplózás engedélyezése az Azure gyorsítótárhoz SSL-en keresztül redis csak kapcsolatot. Biztonságos kapcsolatok használata biztosítja, hogy a kiszolgáló és a szolgáltatás közötti hitelesítéshez, és az átvitt adatokat védi a hálózati réteg támadásoktól, például a man-in-the-middle, lehallgatást, és a munkamenet-eltérítés| 
 |A Logic Apps-beli diagnosztikai naplók engedélyezésének naplózása|Audit naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül.| 
 |A Key Vault-beli diagnosztikai naplók engedélyezésének naplózása|Audit naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül.|
 |Az Event Hubs-beli diagnosztikai naplók engedélyezésének naplózása|Audit naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi a támadások hatékonyabb kivizsgálásához tevékenység nyomot hagyjanak maguk után újra létrehozhatja, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül.| 

@@ -125,8 +125,6 @@ items:
         href: sql-database-connectivity-architecture.md
       - name: A T-SQL eltérései
         href: sql-database-transact-sql-information.md
-      - name: Tranzakciós replikáció – Önálló adatbázisok és rugalmas készletek
-        href: replication-to-sql-database.md
     - name: Rugalmas készletek
       items:
       - name: Rugalmas készletek
@@ -171,8 +169,6 @@ items:
         href: sql-database-managed-instance-connect-app.md
     - name: A T-SQL eltérései
       href: sql-database-managed-instance-transact-sql-information.md
-    - name: Tranzakciós replikáció
-      href: replication-with-sql-database-managed-instance.md
   - name: Szolgáltatásként nyújtott platform
     items:
     - name: Szolgáltatásként nyújtott platform
@@ -231,10 +227,8 @@ items:
         href: sql-database-data-discovery-and-classification.md
       - name: Sebezhetőségi felmérés
         href: sql-vulnerability-assessment.md
-      - name: Fenyegetések észlelése – SQL Database
-        href: sql-database-threat-detection.md
-      - name: Fenyegetések észlelése – Felügyelt példány
-        href: sql-database-managed-instance-threat-detection.md
+      - name: Fenyegetések észlelése
+        href: sql-database-threat-detection-overview.md
     - name: Tűzfalszabályok
       items:
       - name: Létrehozás és kezelés
@@ -473,16 +467,30 @@ items:
       href: sql-database-in-memory-oltp-migration.md
 - name: Útmutatók
   items:
-  - name: Migrálás az SQL Database-be
+  - name: Önálló adatbázis
     items:
     - name: Migrálás az SQL Database-be
       href: sql-database-cloud-migrate.md
+    - name: SQL Database kezelése a migrálás után
+      href: sql-database-manage-after-migration.md
+    - name: Tranzakciós replikáció konfigurálása
+      href: replication-to-sql-database.md
+    - name: Fenyegetésészlelés konfigurálása
+      href: sql-database-threat-detection.md
+    - name: A fájlterület kezelése
+      href: sql-database-file-space-management.md
+    - name: Az erőforrás állapotának használata csatlakozási problémák esetén
+      href: sql-database-resource-health.md
+  - name: Felügyelt példány
+    items:
     - name: Migrálás felügyelt példányra
       href: sql-database-managed-instance-migrate.md
     - name: TDE-tanúsítvány migrálása felügyelt példányra
       href: sql-database-managed-instance-migrate-tde-certificate.md
-    - name: SQL Database kezelése a migrálás után
-      href: sql-database-manage-after-migration.md
+    - name: Tranzakciós replikáció
+      href: replication-with-sql-database-managed-instance.md
+    - name: Fenyegetésészlelés konfigurálása
+      href: sql-database-managed-instance-threat-detection.md
   - name: Adatok betöltése és áthelyezése
     items:
     - name: Adatbázis másolása az Azure-on belül
@@ -509,10 +517,6 @@ items:
       href: sql-database-load-from-csv-with-bcp.md
     - name: Adatok betöltése az ADF használatával
       href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
-  - name: A fájlterület kezelése
-    href: sql-database-file-space-management.md
-  - name: Az erőforrás állapotának használata csatlakozási problémák esetén
-    href: sql-database-resource-health.md
   - name: Alkalmazásfejlesztés
     items:
     - name: Kapcsolatok
@@ -662,9 +666,9 @@ items:
     href: /azure/architecture/
   - name: Ügyfelek történetei
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 8c32468bf7b21cd2545f85226758879cc5b657e8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6ae879edcd2b835cb52e20f070d6d8c0998ba610
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961977"
+ms.locfileid: "52994574"

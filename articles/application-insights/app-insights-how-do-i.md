@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 35c401ed59f859e741c62aa801f6a0c75a8d9194
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 1c76e25c29d79213fbdf36d563b4bd316b832b06
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720490"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017031"
 ---
 # <a name="how-do-i--in-application-insights"></a>Hogyan tegyem... az Application Insights szolgáltatásban?
 ## <a name="get-an-email-when-"></a>E-mail küldése Ha...
@@ -82,7 +82,7 @@ Néhány megfontolandó szempont:
 
 ## <a name="separate-telemetry-from-different-versions"></a>Különböző verzióit külön telemetria
 
-* Az alkalmazás több szerepkört: egy Application Insights-erőforrást használja, és szűrheti a cloud_Rolename. [További információ](app-insights-monitor-multi-role-apps.md)
+* Az alkalmazás több szerepkört: egy Application Insights-erőforrást használja, és szűrheti a [cloud_Rolename](app-insights-app-map.md).
 * Megadhat, fejlesztési, tesztelési és verzió: használja a különböző Application Insights-erőforrást. Vegyen fel a kialakítási kulcs, melyet a web.config fájlból. [További információ](app-insights-separate-resources.md)
 * Jelentéskészítés és buildszámok: egy telemetriainicializáló eszközzel tulajdonság hozzáadása. [További információ](app-insights-separate-resources.md)
 

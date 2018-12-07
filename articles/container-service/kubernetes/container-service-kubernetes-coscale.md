@@ -1,5 +1,5 @@
 ---
-title: Coscale-Azure-beli Kubernetes-fürt megfigyelése
+title: (ELAVULT) Coscale-Azure-beli Kubernetes-fürt megfigyelése
 description: Az Azure Container Service használatával CoScale Kubernetes-fürt monitorozása
 services: container-service
 author: fryckbos
@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: e9896a34e835646e17328482c07d8031c624e858
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 895346447e33926dcaa5ca09302f35c9d6636ed9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544030"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000223"
 ---
-# <a name="monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>Coscale-Azure Container Service Kubernetes-fürt megfigyelése
+# <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>(ELAVULT) Coscale-Azure Container Service Kubernetes-fürt megfigyelése
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-Ebben a cikkben bemutatjuk, hogyan helyezhet üzembe a [CoScale](https://www.coscale.com/) ügynök minden csomópontján és tárolók az Azure Container Service-ben a Kubernetes-fürt monitorozásához. Ez a konfiguráció coscale-fiók szükséges. 
+Ebben a cikkben bemutatjuk, hogyan helyezhet üzembe a [CoScale](https://web.archive.org/web/20180317071550/ https://www.coscale.com/) ügynök minden csomópontján és tárolók az Azure Container Service-ben a Kubernetes-fürt monitorozásához. Ez a konfiguráció coscale-fiók szükséges. 
 
 
 ## <a name="about-coscale"></a>CoScale kapcsolatban 
@@ -34,7 +34,7 @@ Ebben a cikkben látható, a Kubernetes-fürtön történő futtatásra a Szolg�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Először létre kell [CoScale-fiók létrehozása](https://www.coscale.com/free-trial).
+Először létre kell [CoScale-fiók létrehozása](https://web.archive.org/web/20170507123133/ https://www.coscale.com/free-trial).
 
 Az útmutató feltételezi, hogy [egy Kubernetes-fürtöt az Azure Container Service használatával létrehozott](container-service-kubernetes-walkthrough.md).
 
@@ -81,5 +81,5 @@ A CoScale-ügynök automatikusan telepíti a fürtöt az új gépeken. Az ügyn�
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [dokumentáció CoScale](http://docs.coscale.com/) és [blog](https://www.coscale.com/blog) CoScale figyelési megoldások további információt. 
+Tekintse meg a [dokumentáció CoScale](https://web.archive.org/web/20180415164304/ http://docs.coscale.com:80/) és [blog](https://web.archive.org/web/20170501021344/ http://www.coscale.com:80/blog) CoScale figyelési megoldások további információt. 
 
