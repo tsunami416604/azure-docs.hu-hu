@@ -1,5 +1,5 @@
 ---
-title: Azure-beli Kubernetes-fürt – az Operations Management figyelése
+title: (ELAVULT) Azure-beli Kubernetes-fürt – az Operations Management figyelése
 description: Figyelés a Log Analytics szolgáltatást az Azure Container Service Kubernetes-fürtön
 services: container-service
 author: bburns
@@ -9,16 +9,19 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: bd28eabaacc73e6d006d590340577fa08383e435
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 8010d7cbf960c3e2f6528687be97a47d31270696
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52887525"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997202"
 ---
-# <a name="monitor-an-azure-container-service-cluster-with-log-analytics"></a>A figyelő az Azure Container Service-fürt, a Log Analytics használatával
+# <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>(ELAVULT) A figyelő az Azure Container Service-fürt, a Log Analytics használatával
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Ez a cikk, amely a frissített verziót használja Azure Kubernetes Service-ben, lásd: [-tárolókhoz az Azure Monitor](../../azure-monitor/insights/container-insights-overview.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az útmutató feltételezi, hogy [egy Kubernetes-fürtöt az Azure Container Service használatával létrehozott](container-service-kubernetes-walkthrough.md).

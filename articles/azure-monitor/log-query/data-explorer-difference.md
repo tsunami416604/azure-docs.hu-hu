@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: e9a1750682d52c0f69b2413da751408c59a2b5c6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e905b90c405ad8adbc3084ce18fe765744cb8b5a
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52883216"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013764"
 ---
 # <a name="log-analytics-query-language-differences"></a>Log Analytics lekérdezési nyelv különbségek
 
@@ -31,7 +31,7 @@ A következő szakaszok ismertetik az adatkezelő lekérdezési nyelv elemei, am
 
 ### <a name="statements-not-supported-in-log-analytics"></a>Nem támogatott a Log Analytics utasítások
 
-* [Alias](/kusto/query/aliasstatement)
+* [Alias](/azure/kusto/query/aliasstatement)
 * [Lekérdezési paraméterek](/azure/kusto/query/queryparametersstatement)
 
 ### <a name="functions-not-supported-in-log-analytics"></a>A Log Analytics nem támogatott funkciók

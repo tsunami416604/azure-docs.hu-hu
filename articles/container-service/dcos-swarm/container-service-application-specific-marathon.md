@@ -1,5 +1,5 @@
 ---
-title: Alkalmazás- vagy felhasználóspecifikus Marathon-szolgáltatás
+title: (ELAVULT) Alkalmazás- vagy felhasználóspecifikus Marathon-szolgáltatás
 description: Alkalmazás- vagy felhasználóspecifikus Marathon-szolgáltatás létrehozása
 services: container-service
 author: rgardler
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 04/12/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 4ff263fe0ca4f435199127ed64faadee1c2527f9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1ba5ca54c0aa604289eab9c4475297b12580b69a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32164540"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996124"
 ---
-# <a name="create-an-application-or-user-specific-marathon-service"></a>Alkalmazás- vagy felhasználóspecifikus Marathon-szolgáltatás létrehozása
+# <a name="deprecated-create-an-application-or-user-specific-marathon-service"></a>(ELAVULT) Létrehozhat egy alkalmazás- vagy felhasználóspecifikus Marathon-szolgáltatás
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 Az Azure tárolószolgáltatás előkonfigurált Apache Mesos és Marathon rendszerű főkiszolgálókat biztosít. Ezek képesek ugyan az alkalmazások hangolására a fürtön, de jobb, ha erre a célra nem a főkiszolgálókat használja. A Marathon konfigurációjának finomhangolásához például magukra a főkiszolgálókra történő bejelentkezésre, illetve módosításokra van szükség. Így könnyen létrejöhetnek a szabványostól eltérő, egyedi főkiszolgálók, amelyeket emiatt függetlenül kell kezelni és felügyelni. Ezenkívül az is előfordulhat, hogy az egyik csapat által igényelt konfiguráció nem optimális megoldás egy másik csapat számára.
 

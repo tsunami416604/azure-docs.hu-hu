@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 08238732c9e2d4e09e1f956c18768a15c95828c2
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6a1641a76d43cdbac6253e00ea35f70325870853
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958175"
+ms.locfileid: "52993383"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése Azure HDInsight - infrastruktúra ajánlott eljárások
 
 Ez a cikk az Azure HDInsight-fürtök-infrastruktúra kezelésére alkalmas javaslatok biztosít. Ez azt egy olyan sorozat részét, amely ajánlott eljárásokat, amelyek segítik az Azure HDInsight áttelepítése a helyszíni Apache Hadoop-rendszerekhez biztosít.
 
-## <a name="plan-well-for-the-capacity-needed-for-hdinsight-clusters"></a>A HDInsight-fürtök esetében szükséges kapacitást is tervezése
+## <a name="plan-for-hdinsight-cluster-capacity"></a>HDInsight-fürt kapacitásának tervezése
 
 A legfontosabb választási lehetőségek, hogy a HDInsight-fürtök kapacitástervezése a következők:
 
@@ -29,13 +29,13 @@ A legfontosabb választási lehetőségek, hogy a HDInsight-fürtök kapacitást
 - **Válassza ki a virtuális gép méretét és típusát (mostantól támogatja a G-sorozat)** – minden egyes fürttípus csomóponttípusok készletével rendelkezik, és mindegyik csomóponttípus van konkrét beállításokat a virtuális gép méretét és típusát. A virtuális gép méretét és típusát határozza meg a Processzor feldolgozási, a RAM-méretétől és a hálózati késés. Egy szimulált számítási feladat az optimális Virtuálisgép-méretet, és írja be az egyes csomóponttípusok meghatározására használható.
 - **Válassza ki a munkavégző csomópontok számát** – a munkavégző csomópontok kezdeti száma a szimulált számítási feladatok használatával kell meghatározni. A fürt később méretezhetők, ha betöltés megnövekedett igényeket kell kielégíteni további feldolgozó csomópontokat ad hozzá. A fürt később vissza, ha a további feldolgozó csomópontokat nem szükségesek skálázhatók.
 
-További információkért tekintse meg a cikket [HDInsight-fürtök kapacitástervezése](../hdinsight-capacity-planning.md)
+További információkért tekintse meg a cikket [HDInsight-fürtök kapacitástervezése](../hdinsight-capacity-planning.md).
 
-## <a name="use-the-recommended-virtual-machine-types-for-cluster-nodes"></a>A javasolt virtuális gépek típusainak használja a fürtcsomópont
+## <a name="use-recommended-virtual-machine-type-for-cluster"></a>Az ajánlott a fürt virtuális gép típusa
 
 Lásd: [csomópont konfigurációs és virtuális gépek méretei fürtök alapértelmezett](../hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) ajánlott virtuálisgép-típusok az egyes HDInsight-fürt.
 
-## <a name="check-the-availability-of-hadoop-components-in-hdinsight"></a>A HDInsight Hadoop-összetevők rendelkezésre állásának ellenőrzése
+## <a name="check-hadoop-components-availability-in-hdinsight"></a>A HDInsight Hadoop-összetevők elérhetőségének ellenőrzése
 
 Minden HDInsight-verzió felhőalapú terjesztése egy verziójának megfelelő Hortonworks Data Platform (HDP), és a egy Hadoop-ökoszisztéma összetevők készlete áll. Lásd: [HDInsight Component-Versioning](../hdinsight-component-versioning.md) az összes HDInsight-összetevők és azok aktuális verziók.
 
@@ -97,7 +97,7 @@ A szkriptműveletek HDInsight alkalmazásként is az Azure piactéren tehetők k
 
 További információkért tekintse át a következő cikkeket:
 
-- [Külső gyártótól származó Hadoop-alkalmazások telepítése HDInsight](../hdinsight-apps-install-applications.md)
+- [A HDInsight külső Apache Hadoop-alkalmazások telepítése](../hdinsight-apps-install-applications.md)
 - [A Parancsfájlműveletek segítségével HDInsight-fürtök testre szabása](../hdinsight-hadoop-customize-cluster-linux.md)
 - [Egy HDInsight-alkalmazás közzététele az Azure Marketplace-en](../hdinsight-apps-publish-applications.md)
 
@@ -128,9 +128,9 @@ New—AzureRmHDInsightCluster `
     —Config $config
 ```
 
-További információkért tekintse meg a cikket [testreszabása HDInsight-fürtök Bootstrap használatával](../hdinsight-hadoop-customize-cluster-bootstrap.md)
+További információkért tekintse meg a cikket [Bootstrap használatával testre szabhatja a HDInsight-fürtök](../hdinsight-hadoop-customize-cluster-bootstrap.md).
 
-## <a name="use-edge-nodes-on-hadoop-clusters-in-hdinsight-to-access-the-client-tools"></a>Élcsomópontok használata a HDInsight Hadoop-fürtök eléréséhez az ügyféleszközök elől
+## <a name="access-client-tools-from-hdinsight-hadoop-cluster-edge-nodes"></a>Hozzáférés ügyféleszközök a HDInsight Hadoop-fürt élcsomópontok
 
 Üres élcsomópontot egy Linuxos virtuális gép telepítve és konfigurálva, a fő csomópontok azonos ügyféleszközök, de nincs futó Hadoop-szolgáltatásokhoz. Az élcsomópont a következő célokra használhatók:
 
@@ -140,9 +140,9 @@ További információkért tekintse meg a cikket [testreszabása HDInsight-fürt
 
 Élcsomópontok hozhatók létre és törlése az Azure Portalon keresztül, és során is használható vagy után a fürt létrehozása. Az élcsomópont létrehozása után az élcsomóponthoz SSH használatával csatlakozhat, és futtassa az ügyfél eszközök eléréséhez a HDInsight Hadoop-fürtöt. Az élcsomópont ssh végpont van `<EdgeNodeName>.<ClusterName>-ssh.azurehdinsight.net:22`.
 
-További információkért tekintse meg a cikket [üres élcsomópontok használata a HDInsight Hadoop-fürtök](../hdinsight-apps-use-edge-node.md)
+További információkért tekintse meg a cikket [üres élcsomópontok használata a HDInsight Apache Hadoop-fürtök](../hdinsight-apps-use-edge-node.md).
 
-## <a name="use-the-scale-up-and-scale-down-feature-of-clusters"></a>Fürtök felfelé és lefelé méretezési funkciójával
+## <a name="use-scale-up-and-scale-down-feature-of-clusters"></a>Fürtök felfelé és lefelé méretezési funkciójával
 
 HDInsight biztosítja a rugalmasságot felkínálva a lehetőséget az növelheti vagy csökkentheti a feldolgozó csomópontok a fürtben. Ez a funkció lehetővé teszi, hogy egy fürt zsugorítani óra múlva, vagy a hétvégeken, és bontsa ki a üzleti megnövekedett igényeket kell kielégíteni során.
 
@@ -174,7 +174,7 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
 
 A csökkentett mód elhagyása, után manuálisan eltávolíthatja az ideiglenes fájlokat, vagy várja meg, Hive idővel törölni őket automatikusan.
 
-További információkért tekintse meg a cikket [méretezési HDInsight-fürtök](../hdinsight-scaling-best-practices.md)
+További információkért tekintse meg a cikket [méretezési HDInsight-fürtök](../hdinsight-scaling-best-practices.md).
 
 ## <a name="use-hdinsight-with-azure-virtual-network"></a>HDInsight használata az Azure Virtual Network
 
@@ -196,7 +196,7 @@ További információkért tekintse át a következő cikkeket:
 - [Az Azure virtuális hálózatok – áttekintés](../../virtual-network/virtual-networks-overview.md)
 - [Azure virtuális hálózat használatával Azure HDInsight kiterjesztése](../hdinsight-extend-hadoop-virtual-network.md)
 
-## <a name="use-azure-virtual-network-service-endpoints-to-securely-connect-to-other-azure-services"></a>Más Azure-szolgáltatásokhoz való biztonságos kapcsolódás Azure virtuális hálózati Szolgáltatásvégpontok használatával
+## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>Azure virtuális hálózati Szolgáltatásvégpontok az Azure-szolgáltatásokhoz való biztonságos kapcsolódás
 
 HDInsight támogatja [virtuális hálózati Szolgáltatásvégpontok](../../virtual-network/virtual-network-service-endpoints-overview.md) Ez lehetővé teszi annak biztonságosan csatlakozhat az Azure Blob Storage, Azure Data Lake Storage Gen2, Cosmos DB és SQL-adatbázisok. Egy szolgáltatásvégpont engedélyezésével az Azure HDInsight, a forgalom egy biztonságos útvonalat az Azure adatközponton belül keresztül. A megnövelt biztonság, a hálózati rétegben zárolását, így a megadott virtuális hálózatok (Vnetek) tárfiókok big Data típusú adatok, és továbbra is használni HDInsight-fürtök zökkenőmentesen eléréséhez, és az adatok feldolgozásához.
 

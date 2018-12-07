@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 93929df86057b48e132048a0879bc7347402652a
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 2e24a138220f350e56b30406f65bb869dd523bad
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497744"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015874"
 ---
 # <a name="analyze-flight-delay-data-by-using-apache-hive-in-hdinsight"></a>Repülőjáratok késési adatainak elemzése a HDInsight az Apache Hive használatával
 [Az Apache Hive](https://hive.apache.org/) futó módszert biztosít az [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) feladatok egy SQL-szerű programozási nyelv révén nevű *[HiveQL] [ hadoop-hiveql]*, felé összefoglalójához, lekérdezéséhez és nagy mennyiségű adat elemzéséhez is alkalmazható.
@@ -721,9 +721,9 @@ Most már megismerte, hogyan tölthet fel egy fájlt az Azure Blob storage-, hog
 * [Az Apache Pig használata a HDInsight][hdinsight-use-pig]
 * [Java MapReduce programok fejlesztése a HDInsight][hdinsight-develop-mapreduce]
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
 [rita-website]: http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs

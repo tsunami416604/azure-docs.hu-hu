@@ -4,13 +4,15 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: 15f582e80c486a1d12f98e34063af7af84ed6f0a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 2ed74a4ba19af3a441bcf26a48890f033e6c365f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572210"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002254"
 ---
+[!INCLUDE [ACS deprecation](container-service-deprecation.md)]
+
 [Az Azure Container Service-fürt üzembe helyezését követően](../articles/container-service/dcos-swarm/container-service-deployment.md) előfordulhat, hogy módosítania kell az ügynökcsomópontok számát. Például ha több ügynökre van szüksége további tárolóalkalmazások vagy -példányok futtatásához. 
 
 Módosíthatja a DC/OS, Docker Swarm vagy Kubernetes-fürtben ügynökcsomópontok számát az Azure Portalon vagy az Azure CLI használatával. 

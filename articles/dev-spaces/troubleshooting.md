@@ -10,12 +10,12 @@ ms.date: 09/11/2018
 ms.topic: article
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
-ms.openlocfilehash: 36516030741678ec66b4211f49ede35cfdb98605
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 531b431a0753e34592e88211d8a58328fe8a4e45
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706449"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014548"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -236,7 +236,7 @@ Az ügynökcsomópontok általában a fürtben lévő újraindítás megszüntet
 ### <a name="reason"></a>Ok
 Az AKS-fürt az egy névtérhez engedélyezi fejlesztési szóközt, egy kiegészítő tároló hívják _mindaro-proxy_ telepítve van a podok névtéren belül futó minden. Ez a tároló elfogja a pod, amely integrált fejlesztési tárolóhelyek csapat a fejlesztési funkciók szolgáltatásban.
 
-Sajnos rendszertevékenységét bizonyos ezeket a podok futó szolgáltatásokat. Pontosabban hogy zavarja a podok futó Redis cache-re, a csatlakozási hibát okoz az elsődleges és tartalék kiszolgálók közötti kommunikáció.
+Sajnos rendszertevékenységét bizonyos ezeket a podok futó szolgáltatásokat. Pontosabban hogy zavarja a podok Azure Cache Redis fut, a csatlakozási hibát okoz az elsődleges és tartalék kiszolgálók közötti kommunikáció.
 
 ### <a name="try"></a>Próbálja ki:
 Egy névtér, amely a fürtön belül viheti át az érintett pod(s) _nem_ engedélyezve van, miközben továbbra is futtassa az alkalmazást egy fejlesztési szóközt engedélyezni névtéren belül a rest fejlesztési szóközt. Fejlesztői, szóközök nem telepíti a _mindaro-proxy_ tároló nem fejlesztési tárolóhelyek belül engedélyezett névterek.

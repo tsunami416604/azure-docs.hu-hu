@@ -1,5 +1,5 @@
 ---
-title: CI/CD – az Azure Container Service-motor és a Swarm mód
+title: (ELAVULT) CI/CD – az Azure Container Service-motor és a Swarm mód
 description: Az Azure Container Service-motor használja a Docker Swarm módú, egy Azure Container Registry és Azure DevOps, hogy folyamatosan többtárolós .NET Core-alkalmazásokhoz
 services: container-service
 author: diegomrtnzg
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
-ms.openlocfilehash: 296c097ee3302eaa39210274b16c6352866eac8a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 52d20004f43b5c553a17c44f3f35d30fd5693286
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299576"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995071"
 ---
-# <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>Az ACS-motor és a Docker Swarm módú Azure DevOps használatával üzembe helyezhető egy többtárolós alkalmazást az Azure Container Service a teljes CI/CD-folyamat
+# <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>(ELAVULT) Az ACS-motor és a Docker Swarm módú Azure DevOps használatával üzembe helyezhető egy többtárolós alkalmazást az Azure Container Service a teljes CI/CD-folyamat
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 *Ez a cikk alapján [teljes CI/CD-folyamat üzembe helyezéséhez egy többtárolós alkalmazást az Azure Container Service Docker Swarm használatával az Azure DevOps-](container-service-docker-swarm-setup-ci-cd.md) dokumentációja*
 

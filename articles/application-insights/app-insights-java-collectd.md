@@ -12,17 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: 6cc817b86170ddab3152a041924ae99ff52a23ec
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 528b344063dd9f84720ee55c4b3663c20127e5fe
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723924"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995053"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>összegyűjtött: Linux teljesítmény-mérőszámok az Application insights szolgáltatásban
 
 
-Megismerheti a Linux rendszer teljesítmény-mérőszámokat a [Application Insights](app-insights-overview.md), telepítse [összegyűjtött](http://collectd.org/)együtt az Application Insights beépülő modult,. A nyílt forráskódú megoldás különféle rendszererőforrásokat és hálózati statisztikákat gyűjti össze.
+Megismerheti a Linux rendszer teljesítmény-mérőszámokat a [Application Insights](app-insights-overview.md), telepítse [összegyűjtött](https://collectd.org/)együtt az Application Insights beépülő modult,. A nyílt forráskódú megoldás különféle rendszererőforrásokat és hálózati statisztikákat gyűjti össze.
 
 Általában fogja használni összegyűjtött, ha már rendelkezik [kialakítva az Application insights segítségével a Javás webszolgáltatások][java]. Biztosít további adatokat annak érdekében, hogy az alkalmazás teljesítményének növelése, vagy a problémák diagnosztizálásához. 
 
@@ -38,7 +38,7 @@ Készítsen róla egy másolatot a kialakítási kulcs, amely azonosítja az er�
 ## <a name="install-collectd-and-the-plug-in"></a>Összegyűjtött és a beépülő modul telepítése
 A Linux rendszerű kiszolgáló gépeken:
 
-1. Telepítés [összegyűjtött](http://collectd.org/) 5.4.0-s vagy újabb.
+1. Telepítés [összegyűjtött](https://collectd.org/) 5.4.0-s vagy újabb.
 2. Töltse le a [Application Insights összegyűjtött író beépülő modul](https://aka.ms/aijavasdk). Megjegyzés: a verziószámot.
 3. A beépülő modul JAR történő másolás `/usr/share/collectd/java`.
 4. Szerkesztés `/etc/collectd/collectd.conf`:

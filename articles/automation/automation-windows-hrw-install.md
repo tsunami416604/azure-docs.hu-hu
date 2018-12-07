@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 83820440a6304886785a175b27614b45fdb98b13
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a0e0000c4baa22ccc1c26c0e40ec62bb277104af
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252224"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993906"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Egy Windows hibrid Runbook-feldolgozó üzembe helyezése
 
@@ -85,7 +85,7 @@ Hajtsa végre az első két egyszer lépést az automatizálási környezet, és
 
 #### <a name="1-create-a-log-analytics-workspace"></a>1. Log Analytics-munkaterület létrehozása
 
-Ha még nem rendelkezik a Log Analytics-munkaterületet, hozzon létre egyet utasításai szerint [a munkaterület kezelése](../log-analytics/log-analytics-manage-access.md). Egy meglévő munkaterületet is használhatja, ha már rendelkezik ilyennel.
+Ha még nem rendelkezik a Log Analytics-munkaterületet, hozzon létre egyet utasításai szerint [a munkaterület kezelése](../azure-monitor/platform/manage-access.md). Egy meglévő munkaterületet is használhatja, ha már rendelkezik ilyennel.
 
 #### <a name="2-add-the-automation-solution-to-the-log-analytics-workspace"></a>2. Az Automation-megoldás a Log Analytics-munkaterület hozzáadása
 

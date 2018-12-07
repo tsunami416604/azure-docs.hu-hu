@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: mbullwin
-ms.openlocfilehash: daeb2a08e29c71465581e3c51a92cb238a77417e
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 140e9699f19986c929aaa58872b420dd97568c5e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681840"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995453"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Útmutatás: SQL-exportálás a Stream Analytics használatával az Application Insights
 Ez a cikk bemutatja, hogyan helyezheti át a küldött telemetriai adatok [Azure Application Insights] [ start] be egy Azure SQL database használatával [folyamatos exportálás] [ export] és [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -259,6 +259,6 @@ Néhány perc múlva lépjen vissza az SQL Server felügyeleti eszközeit, és f
 [diagnostic]: app-insights-diagnostic-search.md
 [export]: app-insights-export-telemetry.md
 [metrics]: app-insights-metrics-explorer.md
-[portal]: http://portal.azure.com/
+[portal]: https://portal.azure.com/
 [start]: app-insights-overview.md
 

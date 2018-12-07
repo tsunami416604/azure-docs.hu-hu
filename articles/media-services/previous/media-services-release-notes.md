@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 41376448095a5dd760fae594fdfe2d2b57e4440a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ae2697c96435ec18ae7645520d438c41837f036f
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231651"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016861"
 ---
 # <a name="azure-media-services-release-notes"></a>Az Azure Media Services kibocsátási megjegyzései
 Ezek a kibocsátási megjegyzések az Azure Media Services összefoglalója változásokat a korábbi kiadások és ismert problémáit.
@@ -39,7 +39,7 @@ Ezek a kibocsátási megjegyzések az Azure Media Services összefoglalója vál
 | A Media Services mechanizmus szabályozás korlátozza az alkalmazásokat, amelyek a szolgáltatás túl sok kérést az erőforrás-használati. A szolgáltatás a "Szolgáltatás nem érhető el" 503-as HTTP-állapotkód: Előfordulhat, hogy vissza. |További információkért lásd az 503-as HTTP-állapotkód leírását [Media Services-hibakódok](media-services-encoding-error-codes.md). |
 | Ha entitást lekérdezni, legfeljebb 1000 entitások adja vissza egy időben, mert a nyilvános REST 2-es verzió korlátozza az 1000 eredmények lekérdezési eredményeket. |Kihagyás és igénybe (.NET) / (REST) leírtak szerint az első [ebben a példában .NET](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) és [a REST API-példa](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). |
 | Egyes ügyfelek között egy ismételje meg a címke a probléma a Smooth Streaming-jegyzékfájlban származhatnak. |További információkért lásd: [ebben a szakaszban](media-services-deliver-content-overview.md#known-issues). |
-| Media Services .NET SDK objektumok nem szerializálható, és ennek eredményeképpen az Azure Redis Cache nem működnek. |Ha az SDK AssetCollection objektumot az Azure Redis Cache hozzáadni, akkor a program kivételt vált ki. |
+| Media Services .NET SDK-objektumok nem szerializálható, és emiatt nem működnek az Azure Cache redis. |Ha az SDK AssetCollection objektumot hozzáadása az Azure Cache redis, akkor a program kivételt vált ki. |
 
 
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST API-korábbi verziók

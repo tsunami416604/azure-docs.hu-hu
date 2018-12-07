@@ -15,12 +15,12 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 212628c0ec97524e91ab8eaeb766c3e405023aaf
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: aabbcb45edf087b4a7d6268dcca90b21afa16f7c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846164"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998106"
 ---
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>Hogyan lehet a helyszíni alkalmazások biztonságos távoli elérést biztosíthat
 
@@ -59,16 +59,16 @@ Az Azure AD-alkalmazásproxy különböző típusú belső alkalmazás érhető 
 * Gazdag ügyfél alkalmazások integrált a az Active Directory Authentication Library (ADAL)
 
 ## <a name="how-does-application-proxy-work"></a>Hogyan működik az alkalmazásproxyt?
-Hogy be kell állítania, hogy működik az alkalmazásproxy két összetevőből áll: egy összekötőt és a egy külső végpontot. 
+Hogy be kell állítania, hogy működik az alkalmazásproxy két összetevőből áll: egy összekötőt és a egy végpontot. 
 
 Az összekötő egy egyszerűsített ügynök, amely a Windows Server a hálózaton belül helyezkedik el. Az összekötő lehetővé teszi, hogy a forgalom áramlását az alkalmazásproxy-szolgáltatás a felhőben az alkalmazás a helyi. Kimenő kapcsolatok csak így nem kell minden bemenő portokat nyitni, vagy helyezze semmit a DMZ-t használ. Az összekötők állapot nélküli, és kérje le adatokat a felhőben, igény szerint. További információ az összekötők, többek között azok terheléselosztás és hitelesítéséhez, lásd: [megismerheti az Azure AD-alkalmazásproxy összekötőit](application-proxy-connectors.md). 
 
-Külső végpont hogyan a felhasználók számára érhető el az alkalmazások, kívül a hálózaton. Vagy megnyithatja közvetlenül egy külső URL-CÍMÉT, amelyek meghatározzák, hogy a, vagy az alkalmazás eléréséhez a MyApps portálon keresztül. Amikor a felhasználók nyissa meg a végpontok egyikéhez, hitelesítéséhez az Azure ad-ben, és majd az összekötőt a helyszíni alkalmazások kerülnek.
+A végpont lehet egy URL-címet vagy egy [végfelhasználói portál](end-user-experiences.md). Felhasználók által egy külső URL-cím elérése a hálózatán kívüli alkalmazások érhető el. A hálózaton belüli felhasználók elérhetik az alkalmazást egy URL-címet vagy egy végfelhasználói portálon keresztül. Amikor a felhasználók nyissa meg a végpontok egyikéhez, hitelesítéséhez az Azure ad-ben, és majd az összekötőt a helyszíni alkalmazások kerülnek.
 
  ![Azure ad-alkalmazásproxy diagramja](./media/application-proxy/azureappproxxy.png)
 
-1. A felhasználó hozzáfér az alkalmazáshoz az alkalmazásproxy-szolgáltatás, és van irányítva az Azure AD bejelentkezési oldal hitelesítéséhez.
-2. A sikeres bejelentkezést követően egy jogkivonat jön létre, és az ügyfél eszközre elküldött.
+1. Miután a felhasználó az alkalmazás érhető el egy végponton keresztül, az Azure AD bejelentkezési oldal a felhasználó van átirányítva. 
+2. A sikeres bejelentkezést követően egy jogkivonat jön létre és a felhasználó ügyfél eszközre küldött.
 3. Az ügyfél elküldi az alkalmazásproxy-szolgáltatás, amely lekéri az egyszerű felhasználónév (UPN) és a rendszerbiztonsági tag nevének (SPN) a jogkivonatot, majd arra utasítja a kérést az alkalmazásproxy-összekötő.
 4. Ha egyszeri bejelentkezésre konfigurálta, az összekötő a felhasználó nevében szükséges további hitelesítést hajt végre.
 5. Az összekötő a helyszíni alkalmazás elküldi a kérelmet.  

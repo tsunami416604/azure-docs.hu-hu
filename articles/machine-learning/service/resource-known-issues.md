@@ -1,6 +1,6 @@
 ---
 title: Ismert problémák és hibaelhárítás az Azure Machine Learning szolgáltatás
-description: Az ismert problémák kerülő listáját, és hibaelhárítás
+description: Az ismert problémák kerülő listáját és az Azure Machine Learning szolgáltatás hibaelhárítása.
 services: machine-learning
 author: j-martens
 ms.author: jmartens
@@ -9,12 +9,13 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 12/04/2018
-ms.openlocfilehash: b9f58b7338e373c6be88a5dcdb63138c7c723754
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: 471a7494cefd008e8b32855ff232468701505ce7
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879305"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013389"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Ismert problémák és hibaelhárítás az Azure Machine Learning szolgáltatás
  

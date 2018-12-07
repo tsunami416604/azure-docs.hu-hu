@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 05/25/2017
+ms.date: 12/5/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 5f999a17cd375a3338aa936e2f405c36f6021ebc
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 01693f16b0af59881c22fefb6ec8abe0c4fb3874
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984811"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996629"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Egy Azure Active Directory B2B együttműködés felhasználó tulajdonságai
 
@@ -25,31 +25,43 @@ A meghívó szervezetet szükségleteinek egy Azure AD B2B együttműködés fel
 
 - 1. állapot: Az Azure AD külső példányának a következő helyen, és a meghívó szervezetet vendégfelhasználó-kiszolgálókként. Ebben az esetben a B2B-felhasználó bejelentkezik egy az Azure AD-fiókkal, amely a meghívott bérlőhöz tartozik. Ha a fiókpartner-szervezet nem használ az Azure ad-ben, a vendégfelhasználó az Azure ad-ben továbbra is jön létre. A követelmények a következők:, hogy azok beváltani a meghívót, és az Azure AD ellenőrzi az e-mail-címükkel. Ezzel az elrendezéssel fokozott egy – igény (szerinti JIT) bérlős és a egy "vírusos" bérlős is nevezik.
 
-- 2. állapot: Microsoft-fiók tárolt és a gazdagép szervezet vendégfelhasználó-kiszolgálókként. Ebben az esetben a Vendég felhasználó jelentkezik be egy Microsoft-fiókkal. A meghívott felhasználó társadalombiztosítási azonosító (google.com vagy hasonló), která není egy Microsoft-fiók jön létre egy Microsoft-fiók ajánlat érvényesítési során.
+- 2. állapot: A Microsoft vagy más fiók tárolt és a gazdagép szervezet vendégfelhasználó-kiszolgálókként. Ebben az esetben a Vendég felhasználó bejelentkezik egy Microsoft-fiókjával vagy a közösségi fiók (google.com vagy hasonló). A meghívott felhasználó identitása alatt ajánlat érvényesítési egy Microsoft-fiók a meghívó szervezetet címtárban jön létre.
 
-- 3. állapot: Az állomás a szervezet a helyszíni Active Directoryban tárolt, és szinkronizálja a gazdagép a szervezet Azure-ral AD. Ez a kiadás során manuális módosítása az ilyen felhasználók a felhőben a UserType PowerShell kell használnia.
+- 3. állapot: Az állomás a szervezet a helyszíni Active Directoryban tárolt, és szinkronizálja a gazdagép a szervezet Azure-ral AD. Az Azure AD Connect használatával a partner-fiókok szinkronizálása a felhőbe, az Azure AD B2B-felhasználók a UserType = Vendég. Lásd: [helyileg kezelt partner fiókok hozzáférést biztosít a felhőbeli erőforrások](hybrid-on-premises-to-cloud.md).
 
 - 4. állapot: Az állomás a szervezet Azure-ban tárolt AD a UserType = Vendég és hitelesítő adatokat, amelyeket a gazdagép szervezet felügyeli.
 
   ![Megjelenítés a meghívót küldő személy monogramja](media/user-properties/redemption-diagram.png)
 
 
-Most nézzük meg, hogy egy Azure AD B2B együttműködés felhasználói állapot 1 néz ki az Azure ad-ben.
+Most nézzük meg, az Azure AD B2B együttműködés felhasználói néz ki az Azure ad-ben.
 
 ### <a name="before-invitation-redemption"></a>Mielőtt vendégmeghívás beváltása
+
+Állapot: 1 és 2. állapot fiókok olyan vendégfelhasználók működhet a vendég felhasználók saját hitelesítő adataival eredményét. A meghívó a Vendég felhasználó először küld, amikor egy fiókot a címtárban jön létre. Ez a fiók nem rendelkezik, mert a vendégfelhasználó identitásszolgáltató hitelesítés történik tartozó hitelesítő adatokat. A **forrás** a Vendég felhasználói fiókhoz a címtár tulajdonsága **Invited felhasználói**. 
 
 ![Az ajánlat visszaváltás előtt](media/user-properties/before-redemption.png)
 
 ### <a name="after-invitation-redemption"></a>Meghívó beváltása után
 
-![Az ajánlat beváltást követően](media/user-properties/after-redemption.png)
+Miután a Vendég felhasználó elfogadta a meghívást, az **forrás** tulajdonság értéke módosul, a vendégfelhasználó identitásszolgáltató alapján.
+
+A vendégfelhasználók számára az 1. állapot a **forrás** van **külső Azure Active Directory**.
+
+![Az ajánlat beváltást követően állapot 1 vendégfelhasználó](media/user-properties/after-redemption-state1.png)
+
+A vendégfelhasználók számára a állapota 2. a **forrás** van **Microsoft Account**.
+
+![Vendégfelhasználó állapota 2 ajánlat beváltást követően](media/user-properties/after-redemption-state2.png)
+
+A vendégfelhasználók számára az állapot 3. és 4 állapot a **forrás** tulajdonsága **Azure Active Directory** vagy **Windows Server Active Directory**a következő szakaszban leírtak szerint.
 
 ## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Az Azure AD B2B együttműködés felhasználói legfontosabb tulajdonságai
 ### <a name="usertype"></a>UserType
 Ez a tulajdonság azt jelzi, hogy a felhasználót, hogy a gazdagép bérlős kapcsolat. Ez a tulajdonság két értékekkel rendelkezhet:
-- Tag: Ez az érték azt jelzi, hogy a gazdagép szervezet és a egy felhasználó a szervezet Bérlista-alkalmazott. Például ennek a felhasználónak el kell érnie a belső helyek vár. Ez a felhasználó nem tekint egy külső közreműködő.
+- Tag: Ez az érték azt jelzi, hogy a gazdagép szervezet és a egy felhasználó a szervezet Bérlista-alkalmazott. Például ennek a felhasználónak el kell érnie a belső helyek vár. Ez a felhasználó nem számít egy külső közreműködő.
 
-- Vendég: Ez az érték azt jelzi, hogy a felhasználó, aki nem tekinthető a vállalatnak, például egy külső közreműködő, partnerek, ügyfelek vagy hasonló felhasználói belső. A Vezérigazgató belső emlékeztető fogadni, vagy a juttatások igénybe vételéhez vállalati, például ilyen a felhasználó nem várható.
+- Vendég: Ez az érték azt jelzi, hogy a felhasználó, aki nem tekinthető a vállalatnak, például egy külső közreműködő, a partner vagy az ügyfél belső. Az ilyen felhasználók várhatóan nem kap egy Vezérigazgató belső emlékeztető vagy vállalati előnnyel jár, például kap.
 
   > [!NOTE]
   > A UserType nem rendelkezik kapcsolattal, hogy a felhasználó bejelentkezik, a címtár szerepkörrel, a felhasználó, és így tovább. Ez a tulajdonság csak azt jelzi, hogy a felhasználó kapcsolat a gazdagép-szervezethez, és lehetővé teszi, hogy a szervezet, amely ezt a tulajdonságot függ házirendeknek az érvényesítését.
@@ -77,17 +89,17 @@ Ez a tulajdonság azt jelzi, hogy a felhasználó bejelentkezik.
 ![Vendég felhasználók szűrése](media/user-properties/filter-guest-users.png)
 
 ## <a name="convert-usertype"></a>Konvertálja a UserType
-Jelenleg a felhasználók átalakítása UserType tag Vendég, és ez fordítva PowerShell használatával. A UserType tulajdonság azonban a szervezet számára a felhasználói viszony jelölésére értendő. Ezért ez a tulajdonság értékének kell megváltoztatnia, csak akkor, ha a kapcsolat a felhasználó a szervezet számára, megváltozik. Ha a kapcsolat a felhasználó módosítja, a problémák, például hogy az egyszerű felhasználónév (UPN) kell megváltoztatnia, beavatkozást igényel? A felhasználó továbbra is ugyanazokhoz az erőforrásokhoz való hozzáférése? Postaláda hozzárendelve? Ezért nem javasoljuk, hogy váltson a UserType atomi tevékenységként PowerShell használatával. Emellett abban az esetben ez a tulajdonság nem módosítható válik PowerShell-lel, nem ajánlott ezt az értéket a függőség véve.
+Átalakítása UserType tag Vendég, és ez fordítva PowerShell használatával lehetőség. Azonban a UserType tulajdonság jelöli a felhasználói kapcsolat a szervezet számára. Ezért módosítania kell a tulajdonság csak akkor, ha a kapcsolat a felhasználó a szervezet módosítások. Ha a kapcsolat a felhasználó módosítja, az egyszerű felhasználónév (UPN) módosítani kell? A felhasználó továbbra is ugyanazokhoz az erőforrásokhoz való hozzáférése? Postaláda hozzárendelve? PowerShell-lel atomi tevékenységként a UserType módosítása nem ajánlott. Is abban az esetben ez a tulajdonság nem módosítható válik PowerShell-lel, nem ajánlott ezt az értéket a függőség véve.
 
 ## <a name="remove-guest-user-limitations"></a>Távolítsa el a Vendég felhasználói korlátozások
 Előfordulhatnak olyan esetekben, ahol kíván adni a vendégfelhasználót magasabb jogosultságokkal. Vendégfelhasználó hozzáadása szerepkörhöz sem, és akár el is távolíthat Vendég alapértelmezés szerinti felhasználói korlátozásokon tagként ugyanazokat a jogosultságokat biztosíthat a címtárban.
 
-Akkor lehet, hogy a vállalat címtárából vendégfelhasználó ugyanazokkal az engedélyekkel tag felhasználóként van megadva a Vendég felhasználó alapértelmezett korlátozások kikapcsolása.
+Akkor lehet, hogy a vállalat címtárából vendégfelhasználó jogosult tag felhasználóként az alapértelmezett határérték kikapcsolása.
 
 ![Távolítsa el a Vendég felhasználói korlátozások](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Készíthetek vendégfelhasználók látható az Exchange globális címlista?
-Igen. Alapértelmezés szerint Vendég objektumok nem láthatók a szervezet globális címlista, de használhatja az Azure Active Directory PowerShell láthatóvá tegye őket. További információkért lásd: **lehet Vendég objektumok a globális címlista látható?** a [vendég hozzáférés az Office 365-csoportok](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6#PickTab=FAQ). 
+Igen. Alapértelmezés szerint Vendég objektumok nem látható a szervezet globális címlista, de használhatja az Azure Active Directory PowerShell láthatóvá tegye őket. További információkért lásd: **lehet Vendég objektumok a globális címlista látható?** a [vendég hozzáférés az Office 365-csoportok](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6#PickTab=FAQ). 
 
 ## <a name="next-steps"></a>További lépések
 

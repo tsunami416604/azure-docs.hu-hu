@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2814ecb0ff9fc49e4763dbe604fef353394f9aac
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 613e0f51ae7bbb0b295f13d50fc95683085d7da9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965240"
+ms.locfileid: "52995796"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés, megőrzés és tárolás az Application Insights szolgáltatásban
 
@@ -28,14 +28,14 @@ Első, a rövid választ:
 * A normál telemetriai "a kezdő" verzióról futtató modulokra nem valószínű, hogy a bizalmas adatokat küldeni a szolgáltatásnak. A telemetria feladata a terhelés, teljesítmény- és használati metrikák, kivételjelentéseket és más diagnosztikai adatokat. A fő felhasználói adatok láthatók a diagnosztikai jelentéseket a rendszer URL-címek; azonban az alkalmazás nem minden esetben helyezze a bizalmas adatok szövegként egy URL-címben.
 * Írhat kódot, amely segítséget nyújt a diagnosztikai és használati figyelési további egyéni telemetriát küld. (A bővíthetőség az Application Insights egy nagyszerű szolgáltatása.) Ki lehet, véletlen, ezt a kódot írni, hogy személyes és egyéb bizalmas adatokat tartalmazza. Ha az alkalmazás működésével az ilyen adatok, egy alapos felülvizsgálati folyamatok vonatkozik írt kódot.
 * Fejlesztés és tesztelés az alkalmazás közben könnyedék vizsgálja meg, mit küld a rendszer az SDK-ban. Az adatokat a hibakeresési kimeneti Windows-IDE és böngészőben jelenik meg. 
-* Az adatokat a tároló [Microsoft Azure](http://azure.com) kiszolgálók, az USA vagy Európa. (De az alkalmazás bárhol futhat.) Az Azure rendelkezik [erős biztonságot dolgozza fel, és megfelel a számos különböző megfelelőségi szabványok](https://azure.microsoft.com/support/trust-center/). Csak Ön és csapata kijelölt érheti el az adatokat. A Microsoft-alkalmazottak is korlátozott hozzáféréssel rendelkező, hogy csak adott korlátozott körülmények kapcsolatos ismereteit. Az átvitel során, bár nem az a kiszolgáló titkosított.
+* Az adatokat a tároló [Microsoft Azure](https://azure.com) kiszolgálók, az USA vagy Európa. (De az alkalmazás bárhol futhat.) Az Azure rendelkezik [erős biztonságot dolgozza fel, és megfelel a számos különböző megfelelőségi szabványok](https://azure.microsoft.com/support/trust-center/). Csak Ön és csapata kijelölt érheti el az adatokat. A Microsoft-alkalmazottak is korlátozott hozzáféréssel rendelkező, hogy csak adott korlátozott körülmények kapcsolatos ismereteit. Az átvitel során, bár nem az a kiszolgáló titkosított.
 
 Ez a cikk teljes körűen alapuló, ezek a válaszok. Feladata, hogy önálló, lehet, hogy nem azonnali csapata részét munkatársaknak megjelenítése.
 
 ## <a name="what-is-application-insights"></a>Mi az Application Insights?
 [Az Azure Application Insights] [ start] , amely segítséget nyújt a Microsoft által biztosított szolgáltatás teljesítményének és az élő alkalmazása használhatóság javítása. Az alkalmazás fut, tesztelés és már közzétett vagy azt követően folyamatosan figyeli. Az Application Insights a diagramok és táblázatok, amelyek bemutatják, például, mely napszakokban kapja a legtöbb felhasználó, hogyan válaszol-e az alkalmazás, és, attól függ, külső szolgáltatások által kiszolgált arról, hogy hoz létre. Ha összeomlik, sikertelen vagy teljesítménnyel kapcsolatos problémák, a telemetriai adatokat, részletes okát is kereshet. És a szolgáltatás elküldi Önnek e-mailek van-e a rendelkezésre állás és teljesítmény az alkalmazás a módosításokat.
 
-Annak érdekében, hogy ez a funkció lekéréséhez telepítse az Application Insights SDK-t az alkalmazás, amely a kód részévé válik. Ha az alkalmazás fut, az SDK működését figyeli, és telemetriai adatokat küld az Application Insights szolgáltatás. Ez az egy felhőalapú szolgáltatás által üzemeltetett [Microsoft Azure](http://azure.com). (De az Application Insights, nem csak azokat az Azure-ban üzemeltetett alkalmazások esetében működik.)
+Annak érdekében, hogy ez a funkció lekéréséhez telepítse az Application Insights SDK-t az alkalmazás, amely a kód részévé válik. Ha az alkalmazás fut, az SDK működését figyeli, és telemetriai adatokat küld az Application Insights szolgáltatás. Ez az egy felhőalapú szolgáltatás által üzemeltetett [Microsoft Azure](https://azure.com). (De az Application Insights, nem csak azokat az Azure-ban üzemeltetett alkalmazások esetében működik.)
 
 ![Az alkalmazás az SDK-telemetriai adatokat küld az Application Insights szolgáltatásba.](./media/app-insights-data-retention-privacy/01-scheme.png)
 
@@ -204,7 +204,7 @@ Nem javasoljuk, hogy explicit módon beállítása az alkalmazás csak a TLS 1.2
 |.NET | Konfiguráció verziója által támogatott, változik. | Részletes információ a .NET 4.7 és korábbi verziók hivatkoznak [ezek az utasítások](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).  |
 |Állapotmonitor | Támogatott, konfiguráció szükséges | Az állapotfigyelő támaszkodik [operációs rendszer konfigurációja](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [.NET-konfiguráció](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) a TLS 1.2 támogatása.
 |Node.js |  V10.5.0, támogatott konfigurációra lehet szükség. | Használja a [hivatalos Node.js TLS/SSL-dokumentáció](https://nodejs.org/api/tls.html) bármely alkalmazás adott konfigurációhoz. |
-|Java | Támogatott, a TLS 1.2 JDK támogatása hozzáadva [JDK 6-frissítés 121](http://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) és [JDK 7](http://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | JDK 8 használ [a TLS 1.2 alapértelmezés szerint](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
+|Java | Támogatott, a TLS 1.2 JDK támogatása hozzáadva [JDK 6-frissítés 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) és [JDK 7](http://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | JDK 8 használ [a TLS 1.2 alapértelmezés szerint](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
 |Linux | Linux-disztribúciók általában támaszkodhat [OpenSSL](https://www.openssl.org) a TLS 1.2 támogatása.  | Ellenőrizze a [OpenSSL változásnaplójában](https://www.openssl.org/news/changelog.html) annak ellenőrzéséhez, hogy az OpenSSL-verziót támogatja.|
 | Windows 8.0-s és 10 | Támogatott, és alapértelmezés szerint engedélyezve van. | Ellenőrizze, hogy továbbra is használja a [alapértelmezett beállítások](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
 | A Windows Server 2012-2016-ban | Támogatott, és alapértelmezés szerint engedélyezve van. | Ellenőrizze, hogy továbbra is használja a [alapértelmezett beállításai](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
@@ -230,7 +230,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>Az Application insights szolgáltatásban tárolt személyes adatok
 
-A [Application Insights a személyes adatok cikk](../log-analytics/log-analytics-personal-data-mgmt.md) a probléma részletes ismerteti.
+A [Application Insights a személyes adatok cikk](../azure-monitor/platform/personal-data-mgmt.md) a probléma részletes ismerteti.
 
 #### <a name="can-my-users-turn-off-application-insights"></a>A felhasználók kikapcsolhatja az Application Insights?
 Közvetlenül nem. Nem biztosítunk egy kapcsoló, amely a felhasználók működhet a tiltsa le az Application Insights.
@@ -281,10 +281,10 @@ A [platformokhoz készült SDK-k][platforms], tekintse meg a dokumentumokat.
 Is [kikapcsolhatja az egyes adatok is az ApplicationInsights.config szerkesztésével][config]
 
 > [!NOTE]
-> Ügyfél IP használható kikövetkeztetni a földrajzi hely, de alapértelmezés szerint a már nem található IP-adatokat, és nullákból kerüljenek a kapcsolódó mezőben. Ismerje meg jobban a személyes adatok kezelésének ajánlott ez [cikk](../log-analytics/log-analytics-personal-data-mgmt.md#application-data). Ha szeretné tárolni az IP-cím ehhez az egy [telemetriainicializáló](./app-insights-api-filtering-sampling.md#add-properties-itelemetryinitializer).
+> Ügyfél IP használható kikövetkeztetni a földrajzi hely, de alapértelmezés szerint a már nem található IP-adatokat, és nullákból kerüljenek a kapcsolódó mezőben. Ismerje meg jobban a személyes adatok kezelésének ajánlott ez [cikk](../azure-monitor/platform/personal-data-mgmt.md#application-data). Ha szeretné tárolni az IP-cím ehhez az egy [telemetriainicializáló](./app-insights-api-filtering-sampling.md#add-properties-itelemetryinitializer).
 
 ## <a name="credits"></a>Stáblisták
-A termék által elérhető MaxMind létrehozott GeoLite2 adatokat tartalmaz [ http://www.maxmind.com ](http://www.maxmind.com).
+A termék által elérhető MaxMind létrehozott GeoLite2 adatokat tartalmaz [ https://www.maxmind.com ](https://www.maxmind.com).
 
 
 
@@ -297,7 +297,7 @@ A termék által elérhető MaxMind létrehozott GeoLite2 adatokat tartalmaz [ h
 [greenbrown]: app-insights-asp-net.md
 [java]: app-insights-java-get-started.md
 [platforms]: app-insights-platforms.md
-[pricing]: http://azure.microsoft.com/pricing/details/application-insights/
+[pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 

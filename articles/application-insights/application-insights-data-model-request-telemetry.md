@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: d3a2fe9b51e0e6e9de653abb1bfa56a2529218cb
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 2092816946dae20f5b3ae5b0a09179197dda00eb
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722463"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992816"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Telemetriai kérelem: Application Insights adatmodell
 
@@ -29,7 +29,7 @@ Telemetria támogatja a standard szintű bővíthetőségi modell segítségéve
 
 A kérés neve a kérés feldolgozásához igénybe vett kódelérési út jelöli. Alacsony cardinality értéke, hogy jobban kérelmek csoportosítása. A HTTP-kérések azt jelöli, a HTTP-metódus és egy URL-cím elérési út sablont, például `GET /values/{id}` nélkül a tényleges `id` értéket.
 
-Application Insights webes SDK kérelem neve "adott állapotában" küldi a nagybetűk meg. A felhasználói felület a csoportosítás akkor kis-és nagybetűket, `GET /Home/Index` külön számít a `GET /home/INDEX` annak ellenére, hogy milyen gyakran eredményeznek ugyanazon vezérlő és a művelet végrehajtását. Amelyek oka, hogy vannak-e az általános URL-címek [kis-és nagybetűket](http://www.w3.org/TR/WD-html40-970708/htmlweb.html). Tekintse meg, ha az összes érdemes `404` történt kisbetűvel írt URL-címek esetében. Több a kérés a tenantnév-gyűjtemény által az ASP.Net Web SDK-olvashat a [blogbejegyzés](http://apmtips.com/blog/2015/02/23/request-name-and-url/).
+Application Insights webes SDK kérelem neve "adott állapotában" küldi a nagybetűk meg. A felhasználói felület a csoportosítás akkor kis-és nagybetűket, `GET /Home/Index` külön számít a `GET /home/INDEX` annak ellenére, hogy milyen gyakran eredményeznek ugyanazon vezérlő és a művelet végrehajtását. Amelyek oka, hogy vannak-e az általános URL-címek [kis-és nagybetűket](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). Tekintse meg, ha az összes érdemes `404` történt kisbetűvel írt URL-címek esetében. Több a kérés a tenantnév-gyűjtemény által az ASP.Net Web SDK-olvashat a [blogbejegyzés](https://apmtips.com/blog/2015/02/23/request-name-and-url/).
 
 Maximális hossz: 1024 karakter
 
@@ -69,7 +69,7 @@ A webalkalmazások esetén a Application Insights kérelem meghatározása, mert
 
 Részlegesen elfogadta a tartalom `206` előfordulhat, hogy egy átfogó kérelem sikertelenségét jelzik. Például az Application Insights-végpont telemetriai kötegelt egyetlen kérést kap. Adja vissza, `206` mikor a kötegben lévő egyes elemek nem sikerült feldolgozni. Növekvő mértékű `206` , meg kell vizsgálni kapcsolatos problémát jelez. Hasonló a logika vonatkozik `207` több állapota, ahol sikeres lehet, hogy külön válaszkódok legrosszabb.
 
-Tudjon meg több a kérés eredménye kód és az állapotkódot az [blogbejegyzés](http://apmtips.com/blog/2016/12/03/request-success-and-response-code/).
+Tudjon meg több a kérés eredménye kód és az állapotkódot az [blogbejegyzés](https://apmtips.com/blog/2016/12/03/request-success-and-response-code/).
 
 ## <a name="custom-properties"></a>Egyéni tulajdonságok
 

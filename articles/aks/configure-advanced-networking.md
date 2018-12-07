@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: a46989ea197166065b4ca482200a0d30e1def7c9
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 943c0d4eb25fad1282b3329b945ded45581aeba3
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723091"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994549"
 ---
 # <a name="configure-advanced-networking-in-azure-kubernetes-service-aks"></a>Speciális hálózatkezelés konfigurálása az Azure Kubernetes Service (AKS)
 
@@ -162,18 +162,18 @@ További információ a hálózatkezelés az aks-ben a következő cikkeket:
 - [Hozzon létre egy bejövőforgalom-vezérlőjéhez dinamikus nyilvános IP-cím, és nézzük titkosítása automatikusan létrehozni a TLS-tanúsítványok konfigurálása][aks-ingress-tls]
 - [Hozzon létre egy bejövőforgalom-vezérlőjéhez statikus nyilvános IP-cím, és nézzük titkosítása automatikusan létrehozni a TLS-tanúsítványok konfigurálása][aks-ingress-static-tls]
 
-### <a name="acs-engine"></a>ACS Engine
+### <a name="aks-engine"></a>AKS-motor
 
-[Az Azure Container Service-motor (ACS Engine)] [ acs-engine] egy nyílt forráskódú projekt, amely létrehozza az Azure Resource Manager-sablonok üzembe helyezése a Docker-kompatibilis fürtök az Azure-on is használhat. Kubernetes, DC/OS, Swarm módú és Swarm vezénylők telepíthetők az ACS-motor.
+[Az Azure Kubernetes Service (AKS-motor) motor] [ aks-engine] egy nyílt forráskódú projekt, amely létrehozza az Azure Resource Manager-sablonok üzembe helyezése a Docker-kompatibilis fürtök az Azure-on is használhat. Kubernetes, DC/OS, Swarm módú és Swarm vezénylők telepíthetők az AKS-motor.
 
-ACS Engine használatával létrehozott Kubernetes-fürtök támogatják mind a [kubenet] [ kubenet] és [Azure CNI] [ cni-networking] beépülő modulokat. ACS Engine, alapvető és speciális hálózati forgatókönyveket támogatja.
+AKS-motor használatával létrehozott Kubernetes-fürtök támogatása is a [kubenet] [ kubenet] és [Azure CNI] [ cni-networking] beépülő modulokat. Mint ilyen alapvető és speciális hálózati forgatókönyvek támogatottak az AKS-motor.
 
 <!-- IMAGES -->
 [advanced-networking-diagram-01]: ./media/networking-overview/advanced-networking-diagram-01.png
 [portal-01-networking-advanced]: ./media/networking-overview/portal-01-networking-advanced.png
 
 <!-- LINKS - External -->
-[acs-engine]: https://github.com/Azure/acs-engine
+[aks-engine]: https://github.com/Azure/aks-engine
 [services]: https://kubernetes.io/docs/concepts/services-networking/service/
 [portal]: https://portal.azure.com
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md

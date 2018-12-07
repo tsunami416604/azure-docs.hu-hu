@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 49956234c00129508254b96d7d63a4b30af3ad55
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 5c590b8df2eeb8859a6b78f4d719661c8b542ebe
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037583"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000269"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Adatelemzés a egy Linux rendszerű adatelemző virtuális gép az Azure-ban
 Ez az útmutató bemutatja, hogyan hajthat végre számos gyakori adatelemzési feladatok a Linux rendszerű adatelemző virtuális gép. A Linux rendszerű adatelemzési virtuális gép (DSVM), amely előre telepített gyakran használt adatok elemzési és gépi tanulási eszközök gyűjteményét az Azure-ban elérhető virtuálisgép-lemezkép. A kulcs szoftverösszetevőket esethez vannak a [a Linux rendszerű adatelemző virtuális gép kiépítése](linux-dsvm-intro.md) témakör. A Virtuálisgép-lemezkép megkönnyíti az első lépések adatelemzésre percben, anélkül, hogy telepítse és konfigurálja az egyes eszközökről külön-külön kellene. Egyszerűen vertikális felskálázás a virtuális Gépet, ha szükséges, és állítsa le, amikor nincs használatban. Ehhez az erőforráshoz így rugalmas és költséghatékony is.
@@ -357,7 +357,7 @@ Telepítse, és indítsa el a Rattle az alábbi parancsokkal:
 >
 >
 
-Rattle egy lapon-alapú felületet használja. A lapok többsége felel meg a lépéseket a [adatelemzési folyamat](https://azure.microsoft.com/documentation/learning-paths/data-science-process/), például adatok letöltése – vagy legalábbis azt. Az adatelemzési folyamat folyamatok balról jobbra a lapfülekre. Csak az utolsó lapon Rattle által futtatott parancsok R napló tartalmazza.
+Rattle egy lapon-alapú felületet használja. A lapok többsége felel meg a lépéseket a [adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), például adatok letöltése – vagy legalábbis azt. Az adatelemzési folyamat folyamatok balról jobbra a lapfülekre. Csak az utolsó lapon Rattle által futtatott parancsok R napló tartalmazza.
 
 Betölteni, és az adatkészlet konfigurálása:
 

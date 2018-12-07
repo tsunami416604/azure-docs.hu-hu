@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
 ms.custom: hdiseo17may2017
-ms.openlocfilehash: ae728cd1cfc27a17badcce319a8cd047b54ddb1e
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 9727a990548977e0b07710d879881669161c7a4c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634005"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015262"
 ---
 # <a name="serialize-data-in-apache-hadoop-with-the-microsoft-avro-library"></a>Az Apache Hadoop, a Microsoft Avro Library segítségével az adatok szerializálása
 
@@ -27,7 +27,7 @@ Ez a témakör bemutatja, hogyan használhatja a [Microsoft Avro Library](https:
 [!INCLUDE [windows-only](../../../includes/hdinsight-windows-only.md)]
 
 ## <a name="apache-avro"></a>Az Apache avro-hoz
-A <a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library" target="_blank">Microsoft Avro Library</a> valósítja meg az Apache Avro szerializálási rendszer Microsoft.NET környezetre. Apache Avro szerializálási biztosít egy kompakt bináris adatcsere-formátumot. Használ <a href="http://www.json.org" target="_blank">JSON</a> egy nyelvtől független sémát, amely a nyelvi együttműködést nyelvben meghatározásához. Az egyik nyelven szerializált adatok egy másik olvasható. Jelenleg a C, C++, C#, Java, PHP, Python és Ruby támogatottak. Részletes információkat a formátumban található a <a href="http://avro.apache.org/docs/current/spec.html" target="_blank">Apache Avro specifikációjában</a>. 
+A <a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library" target="_blank">Microsoft Avro Library</a> valósítja meg az Apache Avro szerializálási rendszer Microsoft.NET környezetre. Apache Avro szerializálási biztosít egy kompakt bináris adatcsere-formátumot. Használ <a href="http://www.json.org" target="_blank">JSON</a> egy nyelvtől független sémát, amely a nyelvi együttműködést nyelvben meghatározásához. Az egyik nyelven szerializált adatok egy másik olvasható. Jelenleg a C, C++, C#, Java, PHP, Python és Ruby támogatottak. Részletes információkat a formátumban található a <a href="https://avro.apache.org/docs/current/spec.html" target="_blank">Apache Avro specifikációjában</a>. 
 
 >[!NOTE]
 >A Microsoft Avro Library nem támogatja a távoli eljáráshívás (RPC) hívásokat részét ez az meghatározás.
@@ -58,7 +58,7 @@ A következőkre szükség a kódtár telepítése előtt:
 ## <a name="compile-schemas-using-avro-library"></a>Fordítsa le a sémák használata az Avro Libraryvel
 A Microsoft Avro Library tartalmaz egy code generation segédprogram, amely lehetővé teszi, hogy a korábban meghatározott JSON-sémája alapján automatikusan C# típusok létrehozása. A code generation segédprogram nem elosztott bináris futtatható, de az alábbi eljárás segítségével könnyen építhető:
 
-1. Töltse le a .zip fájlt HDInsight SDK forráskódját a legújabb verziójának <a href="http://hadoopsdk.codeplex.com/SourceControl/latest#" target="_blank">a Microsoft .NET SDK-t a Hadoop</a>. (Kattintson a **letöltése** ikonra, nem a **letölti** lapon.)
+1. Töltse le a .zip fájlt HDInsight SDK forráskódját a legújabb verziójának <a href="https://hadoopsdk.codeplex.com/SourceControl/latest#" target="_blank">a Microsoft .NET SDK-t a Hadoop</a>. (Kattintson a **letöltése** ikonra, nem a **letölti** lapon.)
 2. Bontsa ki a HDInsight SDK-t a gépen egy könyvtár a .NET-keretrendszer 4 telepítve van, és csatlakozik az internethez, a szükséges függőséget NuGet-csomagok letöltése. Az alábbiakban feltételezzük, hogy a forráskód C:\SDK kicsomagolta.
 3. Lépjen abba a mappába C:\SDK\src\Microsoft.Hadoop.Avro.Tools, és futtassa a build.bat. (A fájl hívásokat MSBuild a 32 bites terjesztési a .NET-keretrendszer verzióját. Ha szeretné a 64 bites verzióját használja, szerkesztését build.bat, a fájl a hozzászólások.) Győződjön meg arról, hogy a build sikeres. (Egyes rendszerek MSBuild eredményezhet figyelmeztetéseket. Ezek a figyelmeztetések nem befolyásolják a segédprogram mindaddig, amíg nem build tartalmaz hibát.)
 4. A lefordított segédprogram C:\SDK\Bin\Unsigned\Release\Microsoft.Hadoop.Avro.Tools található.
@@ -852,7 +852,7 @@ Az adatok ezután a következő fájl és deszerializálni az objektumok egy gy�
 ## <a name="sample-5-serialization-using-object-container-files-with-a-custom-compression-codec"></a>5. példa: Szerializálási objektum tárolófájlokat használata egy egyéni tömörítési kodek
 Az ötödik példa bemutatja egy egyéni tömörítési kodeket használata az Avro-objektum tárolófájlokat. Az ebben a példában tölthető le, amely tartalmazza a kódot egy minta a [Azure-Kódminták](https://code.msdn.microsoft.com/Serialize-data-with-the-67159111) hely.
 
-A [Avro specifikációjában](http://avro.apache.org/docs/current/spec.html#Required+Codecs) lehetővé teszi, hogy egy nem kötelező tömörítési kodeket használatát (mellett **Null** és **Deflate** alapértelmezett érték). Ebben a példában nem implementálja az egy új kodek például Snappy (egy támogatott választható kodek az említett a [Avro specifikációjában](http://avro.apache.org/docs/current/spec.html#snappy)). Ez bemutatja, hogyan használhatja a .NET-keretrendszer 4.5 megvalósítása a [ **Deflate** ] [ deflate-110] kodek, amely alapján hatékonyabb tömörítési algoritmust biztosít a [zlib ](http://zlib.net/) tömörítési könyvtárban, mint az alapértelmezett .NET-keretrendszer 4 verziót.
+A [Avro specifikációjában](https://avro.apache.org/docs/current/spec.html#Required+Codecs) lehetővé teszi, hogy egy nem kötelező tömörítési kodeket használatát (mellett **Null** és **Deflate** alapértelmezett érték). Ebben a példában nem implementálja az egy új kodek például Snappy (egy támogatott választható kodek az említett a [Avro specifikációjában](https://avro.apache.org/docs/current/spec.html#snappy)). Ez bemutatja, hogyan használhatja a .NET-keretrendszer 4.5 megvalósítása a [ **Deflate** ] [ deflate-110] kodek, amely alapján hatékonyabb tömörítési algoritmust biztosít a [zlib ](https://zlib.net/) tömörítési könyvtárban, mint az alapértelmezett .NET-keretrendszer 4 verziót.
 
     //
     // This code needs to be compiled with the parameter Target Framework set as ".NET Framework 4.5"
@@ -1351,7 +1351,7 @@ A hatodik példa bemutatja az Azure HDInsight szolgáltatással való interakci�
 A minta az alábbi feladatokat hajtja végre:
 
 * Meglévő HDInsight-fürthöz csatlakozik.
-* Szerializálja több CSV-fájlt, és feltölti az eredmény az Azure Blob storage. (A CSV-fájlokat a minta együtt vannak osztva, és AMEX készlet által elosztott korábbi adatok kivonatát képviselő [Infochimps](http://www.infochimps.com/) 1970-2010 időszakra. A minta beolvassa a CSV-fájljaihoz, konvertálja a rekordok példánya a **készlet** osztályt, és ezután tükröződés használatával szerializálja. Tőzsdei típusdefiníció jön létre egy JSON-sémát, a Microsoft Avro Library code generation segédprogram használatával.
+* Szerializálja több CSV-fájlt, és feltölti az eredmény az Azure Blob storage. (A CSV-fájlokat a minta együtt vannak osztva, és AMEX készlet által elosztott korábbi adatok kivonatát képviselő [Infochimps](https://www.infochimps.com/) 1970-2010 időszakra. A minta beolvassa a CSV-fájljaihoz, konvertálja a rekordok példánya a **készlet** osztályt, és ezután tükröződés használatával szerializálja. Tőzsdei típusdefiníció jön létre egy JSON-sémát, a Microsoft Avro Library code generation segédprogram használatával.
 * Új táblát hoz létre külső nevű **készletek** a Hive és a hivatkozásokat, hogy az adatok feltöltése az előző lépésben.
 * A lekérdezés végrehajtása keresztüli Hive használatával a **készletek** tábla.
 
@@ -1378,5 +1378,5 @@ A fürt törléséhez futtassa a következő parancsot:
 
     AvroHDISample clean
 
-[deflate-100]: http://msdn.microsoft.com/library/system.io.compression.deflatestream(v=vs.100).aspx
-[deflate-110]: http://msdn.microsoft.com/library/system.io.compression.deflatestream(v=vs.110).aspx
+[deflate-100]: https://msdn.microsoft.com/library/system.io.compression.deflatestream(v=vs.100).aspx
+[deflate-110]: https://msdn.microsoft.com/library/system.io.compression.deflatestream(v=vs.110).aspx

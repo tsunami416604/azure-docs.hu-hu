@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: a498c9251c305b4845cc911fc9a21fbdafda72fe
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2bf82c19498087e21bc66bf3c813b8f23d50d621
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832258"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996500"
 ---
 # <a name="management-solutions-in-azure"></a>Felügyeleti megoldások az Azure-ban
 Felügyeleti megoldások használhatja a szolgáltatásokat nyújt további betekintést a művelet egy adott alkalmazás vagy szolgáltatás Azure-ban. Ez a cikk az Azure és a részletek megoldások rövid áttekintést nyújt a használatáról, és telepíteni kell őket.
@@ -77,7 +77,7 @@ A Közösség tagjai küldhet az Azure gyorsindítási sablonok adatkezelési me
 
 
 ## <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics-munkaterületet és Automation-fiók
-Az összes felügyeleti megoldások szükséges egy [Log Analytics-munkaterület](../../log-analytics/log-analytics-manage-access.md) a megoldás által összegyűjtött adatok tárolására, és a naplókereséseken és nézeteken üzemeltetéséhez. Egyes megoldások is megkövetelheti egy [Automation-fiók](../../automation/automation-security-overview.md#automation-account-overview) a runbookok és kapcsolódó erőforrásokat tartalmaznak. A munkaterületet és fiókot az alábbi követelményeknek kell megfelelnie.
+Az összes felügyeleti megoldások szükséges egy [Log Analytics-munkaterület](../../azure-monitor/platform/manage-access.md) a megoldás által összegyűjtött adatok tárolására, és a naplókereséseken és nézeteken üzemeltetéséhez. Egyes megoldások is megkövetelheti egy [Automation-fiók](../../automation/automation-security-overview.md#automation-account-overview) a runbookok és kapcsolódó erőforrásokat tartalmaznak. A munkaterületet és fiókot az alábbi követelményeknek kell megfelelnie.
 
 * Minden egyes telepítéséhez, a megoldás csak egy Log Analytics-munkaterület és egy Automation-fiókot használhat. A megoldást külön-külön is telepítheti, több munkaterülettel.
 * Ha a megoldás egy Automation-fiókot igényel, majd a Log Analytics-munkaterületet és Automation-fiók össze kell kapcsolni egymással. Log Analytics-munkaterületet egy Automation-fiók csak lehetnek összekapcsolva, és a egy Automation-fiókot csak egy Log Analytics munkaterülettel lehetnek összekapcsolva.

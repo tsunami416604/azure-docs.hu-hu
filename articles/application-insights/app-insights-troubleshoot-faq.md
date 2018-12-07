@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 894c3e42378ddcbe9cba7b6f33d8500988695754
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 0e934a629edc41ce09cad810b0d3b9b88e36c6d6
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721017"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996513"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Az Application Insights: Gyakori kérdések
 
@@ -140,7 +140,7 @@ A további [ASP.NET](app-insights-api-filtering-sampling.md) vagy [Java](app-ins
 * Böngésző telemetriai: gyűjtünk a küldő IP-címet.
 * Telemetriát: az Application Insights-modult összegyűjti az ügyfél IP-cím. Nem gyűjtenek, ha `X-Forwarded-For` van beállítva.
 
-Konfigurálhatja a `ClientIpHeaderTelemetryInitializer` beolvasandó az IP-cím egy másik fejlécet. Egyes rendszerekben, például áthelyezés olyan proxy, és töltse be a terheléselosztó vagy a CDN-t `X-Originating-IP`. [További információk](http://apmtips.com/blog/2016/07/05/client-ip-address/).
+Konfigurálhatja a `ClientIpHeaderTelemetryInitializer` beolvasandó az IP-cím egy másik fejlécet. Egyes rendszerekben, például áthelyezés olyan proxy, és töltse be a terheléselosztó vagy a CDN-t `X-Originating-IP`. [További információk](https://apmtips.com/blog/2016/07/05/client-ip-address/).
 
 Is [a Power BI használata](app-insights-export-power-bi.md) a kérelmek telemetriai adatai megjelenítéséhez a térképen.
 
@@ -184,7 +184,7 @@ Egyetlen üzleti rendszerekben használja az összetevők vagy a szerepköröket
 ## <a name="what-are-the-user-and-session-counts"></a>Mik azok a felhasználók és munkamenetek száma?
 
 * A JavaScript SDK Csoporttevékenységek a webes ügyfél azonosítsa azokat a visszatérő felhasználókat, a felhasználói cookie-k és a egy munkamenetcookie-t állítja be.
-* Ha nincsenek ügyféloldali parancsfájlok, is [állítsa be a cookie-kat a kiszolgálón](http://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/).
+* Ha nincsenek ügyféloldali parancsfájlok, is [állítsa be a cookie-kat a kiszolgálón](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/).
 * Ha egy valós felhasználói meg a különböző böngészők vagy a privát/inkognitó böngészés használatával, vagy különböző gépek, majd egynél többször beleszámítanak.
 * A bejelentkezett felhasználó azonosíthatja a gépek és a böngészők, adjon hozzá hívást [setAuthenticatedUserContext()](app-insights-api-custom-events-metrics.md#authenticated-users).
 

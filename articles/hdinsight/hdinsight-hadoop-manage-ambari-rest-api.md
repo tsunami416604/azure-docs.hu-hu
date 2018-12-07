@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: cd999a5bfd9f5691c1e624f7a8226eefee5709eb
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 08b8d980b46ccbbce47c4f165a621daa14a95fa2
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015809"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012912"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-rest-api"></a>HDInsight-fürtök kezelése az Ambari REST API használatával
 
@@ -39,7 +39,7 @@ Ebben a dokumentumban szereplő példák a Bourne rendszerhéj (bash) és a Powe
 
 Ha használja a __Bourne rendszerhéj__ (Bash), rendelkeznie kell a következőkkel:
 
-* [cURL](http://curl.haxx.se/): cURL egy segédprogram, amely segítségével a parancssorból a REST API-k használata. Ebben a dokumentumban használatos az Ambari REST API folytatott kommunikációhoz.
+* [cURL](https://curl.haxx.se/): cURL egy segédprogram, amely segítségével a parancssorból a REST API-k használata. Ebben a dokumentumban használatos az Ambari REST API folytatott kommunikációhoz.
 
 A Bash vagy a PowerShell használatával, hogy is rendelkeznie kell [jq](https://stedolan.github.io/jq/) telepítve. Jq, a segédprogram JSON-dokumentumokon végzett munkához. Szerepel, **összes** Bash példákkal és **egy** , a PowerShell-példák.
 

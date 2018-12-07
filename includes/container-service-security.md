@@ -4,14 +4,16 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: f4acec3db7d74b969c55e725d9ec1c5f063b552c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: cc72fb39bf62915be10493a780538121f26ca835
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628149"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002271"
 ---
-# <a name="securing-docker-containers-in-azure-container-service"></a>Docker-tárolók védelme az Azure Container Service-ben
+# <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>(ELAVULT) Az Azure Container Service Docker-tárolók védelme
+
+[!INCLUDE [ACS deprecation](container-service-deprecation.md)]
 
 Ez a cikk az Azure Container Service-ben üzembe helyezett Docker-tárolók védelmével kapcsolatos szempontokat és javaslatokat tartalmazza. A szempontok nagy része általánosságban az Azure vagy egyéb környezetben üzembe helyezett Docker-tárolókra vonatkozik. 
 

@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: 4e1a8bd60c71bfc46b3c57cff6a87c5b2477146e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 79e4d15c79a7f905a33fe471bcfda3e7ca367b01
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956448"
+ms.locfileid: "52996456"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Állapot figyelése, állítsa be a diagnosztikai naplózás, és kapcsolja be a riasztásokat az Azure Logic Apps
 
@@ -158,7 +158,7 @@ Az Azure Log Analytics, valamint bővítheti, hogyan használhatja a logikai alk
 * [Azure Diagnostics-naplók az Azure Storage-archívum](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
 * [Stream Azure-beli diagnosztikai naplók az Azure Event hubs szolgáltatásba](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) 
 
-Ezután get valós idejű figyelést végezni a telemetriai adatokat és elemzéseket tesz további szolgáltatásokkal, például [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) és [Power BI](../log-analytics/log-analytics-powerbi.md). Példa:
+Ezután get valós idejű figyelést végezni a telemetriai adatokat és elemzéseket tesz további szolgáltatásokkal, például [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) és [Power BI](../azure-monitor/platform/powerbi.md). Példa:
 
 * [Stream-adatok az Event Hubsból a Stream Analytics szolgáltatáshoz](../stream-analytics/stream-analytics-define-inputs.md)
 * [A Stream Analytics streamelési adatok elemzéséhez, és a egy valós idejű elemzési irányítópult létrehozása a Power bi-ban](../stream-analytics/stream-analytics-power-bi-dashboard.md)

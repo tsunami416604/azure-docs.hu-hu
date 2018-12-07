@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: victorh
-ms.openlocfilehash: 0c59405cc6d46bcaffbab0e2a746467eec26de69
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: e106094ce94b7f232fd5687988af2bd11b971e3f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024120"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001938"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Hozzon létre egy application gateway-alapú útválasztási szabályok az Azure portal használatával
 
@@ -39,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure Portalra a [http://portal.azure.com](http://portal.azure.com) címen.
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen.
 
 ## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 

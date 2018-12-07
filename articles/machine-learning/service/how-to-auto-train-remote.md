@@ -1,5 +1,5 @@
 ---
-title: Automatizált machine learning – az Azure Machine Learning szolgáltatás távoli számítási céljainak beállítása
+title: Automatizált ML - Azure Machine Learning szolgáltatás beállítása távoli számítási célnak
 description: Ez a cikk azt ismerteti, hogyan hozhat létre automatizált gépi tanulás használatával az Azure Machine Learning szolgáltatással Data Science virtuális gép (DSVM) távoli számítási célt
 services: machine-learning
 author: nacharya1
@@ -10,12 +10,13 @@ ms.component: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: 4abdd02ef8a8314da644fc172effe606d4764174
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec12
+ms.openlocfilehash: c18a36bc5d151835693c625e279b8ff89e9d5664
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879601"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014769"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>A felhőalapú automatikus machine learning-modellek
 

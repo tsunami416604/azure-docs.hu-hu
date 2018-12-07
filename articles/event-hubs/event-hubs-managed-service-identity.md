@@ -8,14 +8,15 @@ manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 51b9aa33fd186a46d51f7e2fb64b42648b854cd3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d7ed4f0276e6220e6df528075e83cb9fabc6cc84
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833907"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011470"
 ---
 # <a name="managed-identities-for-azure-resources-with-event-hubs"></a>Az Azure-erőforrásokhoz az Event Hubs felügyelt identitásokból
 
@@ -47,7 +48,7 @@ Az első lépés az App Service ASP.NET-alkalmazás létrehozása. Ha még nem i
 
 Miután létrehozta az alkalmazást, nyissa meg az újonnan létrehozott webalkalmazás az Azure Portalon (az útmutató is látható), majd nyissa meg a **Felügyeltszolgáltatás-identitás** lapon, és engedélyezze a szolgáltatást: 
 
-![](./media/event-hubs-managed-service-identity/msi1.png)
+![Felügyelt Szolgáltatásidentitás lap](./media/event-hubs-managed-service-identity/msi1.png)
  
 Miután engedélyezte a funkciót, egy új felügyeltszolgáltatás-identitás létrehozása az Azure Active Directoryban, és az App Service-ben gazdagépen konfigurált.
 
@@ -67,7 +68,7 @@ Megjegyzés: a [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.mes
 
 Miután végrehajtotta ezeket a módosításokat, közzététel, és futtathatja az alkalmazást. A helyes közzétételi adatok letöltésével és a egy közzétételi profilt a Visual Studióban, majd importálásával kaphat:
 
-![](./media/event-hubs-managed-service-identity/msi3.png)
+![Közzétételi profil importálása](./media/event-hubs-managed-service-identity/msi3.png)
  
 Üzeneteket küldeni vagy fogadni, adja meg a névtér nevét és a létrehozott entitás nevét, majd kattintson **küldése** vagy **kap**. 
  

@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 12/03/2018
-ms.openlocfilehash: 61255add37d4bc4224278e089879823b1a2f9981
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/06/2018
+ms.openlocfilehash: b0fd2466d72b1aae65a54b9e9813a5af51bf1672
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863550"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997507"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-through-an-integration-service-environment-ise"></a>Azure virtuális hálózatok az Azure Logic Apps keresztül csatlakozhat egy integrációs service-környezet (ISE)
 
@@ -141,14 +141,17 @@ Az eredmények listájában válassza ki a **integrációs Service-környezet (e
 
    ![Sikeres ellenőrzés után válassza a "Létrehozás"](./media/connect-virtual-network-vnet-isolated-environment/ise-validation-success.png)
 
-   Azure elindul, a környezet üzembe helyezéséhez, de ez a folyamat eltarthat *akár két órát* befejezése előtt. 
+   Azure elkezdi a környezetben, de ez a folyamat üzembe helyezéséhez *előfordulhat, hogy* befejezése előtt két órán belül. 
    Ellenőrizze a telepítés állapota, az Azure eszköztárában válassza az értesítések ikont, amely megnyitja az értesítési panelen.
 
    ![Üzembe helyezési állapot ellenőrzése](./media/connect-virtual-network-vnet-isolated-environment/environment-deployment-status.png)
 
-   Központi telepítés sikeres befejezését követően az Azure ezt az értesítést jelenít meg:
+   Ha a központi telepítés sikeres befejezését követően az Azure ezt az értesítést jelenít meg:
 
    ![A telepítés sikerült](./media/connect-virtual-network-vnet-isolated-environment/deployment-success.png)
+
+   > [!NOTE]
+   > Ha üzembe helyezése nem sikerül, vagy törölje az ISE-ben, Azure *előfordulhat, hogy* az alhálózatok kibocsátása előtt egy órát is igénybe vehet. Tehát akkor előfordulhat, hogy várnia kell, ezekhez az alhálózatokhoz egy másik ISE-ben újrahasznosítása előtt.
 
 1. A környezet megtekintéséhez válassza **erőforrás megnyitása** , ha az Azure nem automatikusan nyissa meg a környezet üzembe helyezés befejezése után.  
 

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: c8bad3642f1e98cac3857d536f539554235e1a51
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 8e265f2bed480f7b40476e09ab8f442aedcc9dd4
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578637"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999453"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>A vFXT-fürt üzembe helyezése
 
@@ -286,7 +286,7 @@ RESOURCE_GROUP=
 * Alhálózat neve
 * Az Azure AD modul szerepkör neve – Ha követte a példában a [hozza létre a fürt csomópont hozzáférés szerepkört](#create-the-cluster-node-access-role), használjon ``avere-cluster``. 
 * Tárfiók neve (Ha egy új Blob-tároló létrehozása)
-* Fürt neve – a két vFXT fürt ugyanazzal a névvel nem lehet ugyanabban az erőforráscsoportban. 
+* Fürt neve – a két vFXT fürt ugyanazzal a névvel nem lehet ugyanabban az erőforráscsoportban. Adjon meg egy egyedi nevet az ajánlott eljárás minden egyes fürt.
 * Rendszergazdai jelszó – válasszon egy biztonságos jelszót a monitorozási és a fürt felügyeletéhez. Ezt a jelszót a felhasználóhoz rendelt ``admin``. 
 * Csomóponttípus-példány – lásd: [vFXT csomópontméretűek](avere-vfxt-deploy-plan.md#vfxt-node-sizes) információ
 * Csomópont-gyorsítótár mérete – lásd: [vFXT csomópontméretűek](avere-vfxt-deploy-plan.md#vfxt-node-sizes) információ
@@ -306,6 +306,15 @@ Miután a parancsfájl futása befejeződött, a felügyeleti IP-cím másolás�
 
 ![A szkript végén a felügyeleti IP-cím megjelenítése a parancssori kimenet](media/avere-vfxt-mgmt-ip.png)
 
+> [!IMPORTANT] 
+> Ha létrehozott egy új Blob-tárolóba, azt titkosítva, amelyek a rendszer nem menti a fürtön kívüli alapértelmezett kulccsal. A tároló adatait tárolja, mielőtt kell töltse le a kulcs-helyreállítási, vagy hozzon létre saját titkosítási kulcsot, és mentse a helyreállítási fájlt egy állandó helyre. 
+> 
+> Ha anélkül, hogy a helyreállítás-fájljának letöltése az alapértelmezett kulcsot használ, akkor lehet elveszíti hozzáférését a titkosított adatok a Blob core filer, ha a vFXT fürt megsemmisül vagy elveszett.
+>
+> Ha a parancsfájl bemutatja `WARNING` üzeneteket az alábbi képernyőképen bekarikázott hasonló utasításokat követve [konfigurálta a tárterületet](avere-vfxt-add-storage.md) töltse le a kulcs fájlját, vagy hozzon létre egy új kulcsot a blobtároló. Használja a fürt konfigurációs eszközt, a Vezérlőpult Avere.
+
+![A parancsfájl megjelenítése figyelmeztető üzenetek egy új titkosító kulcs létrehozása a parancssori kimenet](media/avere-vfxt-key-warning.png)
+
 ## <a name="next-step"></a>Következő lépés
 
-Most, hogy a fürt fut, és tudja, a felügyeleti IP-címére, [kapcsolódni a fürt konfigurálása eszköz](avere-vfxt-cluster-gui.md) támogatásának engedélyezése, és adja hozzá a tárolót, ha szükséges.
+Most, hogy a fürt fut, és tudja, a felügyeleti IP-címére, [kapcsolódni a fürt konfigurálása eszköz](avere-vfxt-cluster-gui.md) támogatás engedélyezéséhez adja hozzá az tárolási, ha szükséges, illetve az alapértelmezett titkosítási kulcsot az új Blob Storage-címmel.

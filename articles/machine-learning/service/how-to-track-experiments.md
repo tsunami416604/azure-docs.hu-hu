@@ -9,12 +9,13 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/04/2018
-ms.openlocfilehash: 44c5cce103996f1774fb87b46760c23dc9ab575c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: ae61f6fe24486eb1d4d5deecf5fb005a4d71b5fc
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957708"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016163"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Kísérletek és az Azure Machine Learning betanítási metrikák követése
 
@@ -241,7 +242,7 @@ Ha a **ScriptRunConfig** elküldéséhez metódus fut, a Futtatás, a Jupyter no
    RunDetails(run).show()
    ```
 
-  ![Képernyőkép a Jupyter notebook widget](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
+  ![A Machine Learning automatikus Jupyter notebook widget](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
 
 
 További részleteit a folyamat kattintson a folyamat a megtekintéséhez, amelyet szeretne Fedezze fel a táblázatban, és a diagramok az Azure-portálról egy előugró ablak jelenik meg.
@@ -264,7 +265,7 @@ Amikor egy kísérlet befejezését követően, megnyithatja a futtatási rekord
 
 A hivatkozás a Futtatás méretezhetőséget kínál, közvetlenül a futtatási Részletek lap az Azure Portalon. Itt láthatja, bármely tulajdonságai, a nyomon követett metrikák, lemezképek és bejelentkezett a kísérlet diagram. Ebben az esetben azt naplózza, MSE és az alfa értékeknek.
 
-  ![Képernyőkép a futtatási részletek az Azure Portalon](./media/how-to-track-experiments/run-details-page-web.PNG)
+  ![Futtatás részletei az Azure Portalon](./media/how-to-track-experiments/run-details-page-web.PNG)
 
 Bármely kimenetek vagy a naplók a Futtatás megtekintéséhez, vagy töltse le a kísérlet, így a kísérlet mappa másokkal is megoszthat küldte el a pillanatkép is.
 
@@ -300,15 +301,15 @@ További információk:
 
 1. Jelölje ki az Önt érdeklő kísérletet.
 
-  ![Kísérlet menü képernyőképe](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_list.PNG)
+  ![Kísérlet listája](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_list.PNG)
 
 1. A tábla válassza ki a Futtatás száma.
 
-   ![Kísérlet menü képernyőképe](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_run.PNG)
+   ![Kísérlet futtatása](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_run.PNG)
 
 1.  A tábla a modellhez, amely a kívánt vizsgálódáshoz iteráció számának kiválasztása
 
-   ![Kísérlet menü képernyőképe](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_model.PNG)
+   ![Kísérlet modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_model.PNG)
 
 
 

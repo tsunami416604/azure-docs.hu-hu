@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: bc85f210b1057ea775b01bfe74f7a0e23ff9057e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 83dfd77c311e1b3324540d352432ec7a6b706d78
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878397"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993361"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Az Application Insights szolgáltatásból a Power BI hírcsatorna
-[Power bi-ban](http://www.powerbi.com/) üzleti eszközök együttese, amely segít az adatok elemzése és elemzéseket oszthat meg. Gazdag irányítópultok érhetők el a minden eszközön. Számos más forrásból, beleértve az elemzési lekérdezések az adatok is kombinálhatók [Azure Application Insights](app-insights-overview.md).
+[Power bi-ban](https://www.powerbi.com/) üzleti eszközök együttese, amely segít az adatok elemzése és elemzéseket oszthat meg. Gazdag irányítópultok érhetők el a minden eszközön. Számos más forrásból, beleértve az elemzési lekérdezések az adatok is kombinálhatók [Azure Application Insights](app-insights-overview.md).
 
 Az Application Insights-adatok exportálása Power bi-hoz három módszer van:
 
@@ -152,6 +152,6 @@ Módosíthatja az irányítópulton, az Application Insights-diagramok kombinál
 Az első importálás után az irányítópult és a jelentések továbbra is naponta frissülnek. Szabályozhatja, hogy az adatkészlet frissítési ütemezését.
 
 ## <a name="next-steps"></a>További lépések
-* [Power bi-ban – ismerje meg,](http://www.powerbi.com/learning/)
+* [Power bi-ban – ismerje meg,](https://www.powerbi.com/learning/)
 * [Elemzések – oktatóanyag](../azure-monitor/log-query/get-started-portal.md)
 

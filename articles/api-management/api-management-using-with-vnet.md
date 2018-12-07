@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: dd876462559ac10fc0463c64413bf11eabbc88a1
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: d0af6c098f68c23bf9ef6161bd307afec518ead7
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443525"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011688"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>A virtuális hálózatok az Azure API Management használata
 Az Azure virtuális hálózatok (Vnetek) helyezni, az Azure-erőforrások bármelyikét elérését Ön szabályozza a nem internet routeable hálózat teszi lehetővé. Ezek a hálózatok csatlakozhat a helyszíni hálózatokhoz való kapcsolódásának VPN különböző technológiákat. További információ az Azure-beli virtuális hálózatok Kezdje itt az adatokat további: [Azure Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md).
@@ -120,7 +120,7 @@ Az API Management-szolgáltatáspéldány egy virtuális hálózaton jöhet szó
 | * / 25                       | Kimenő           | TCP                | VIRTUAL_NETWORK / INTERNET            | Az e-mailek küldéséhez SMTP-továbbítás használata csatlakozáshoz                    | Külső és belső  |
 | * / 587                      | Kimenő           | TCP                | VIRTUAL_NETWORK / INTERNET            | Az e-mailek küldéséhez SMTP-továbbítás használata csatlakozáshoz                    | Külső és belső  |
 | * / 25028                    | Kimenő           | TCP                | VIRTUAL_NETWORK / INTERNET            | Az e-mailek küldéséhez SMTP-továbbítás használata csatlakozáshoz                    | Külső és belső  |
-| * / 6381 - 6383              | A bejövő és kimenő | TCP                | VIRTUAL_NETWORK / VIRTUAL_NETWORK     | Hozzáférés a Redis Cache-példányokban RoleInstances között          | Külső és belső  |
+| * / 6381 - 6383              | A bejövő és kimenő | TCP                | VIRTUAL_NETWORK / VIRTUAL_NETWORK     | Az Azure Cache elérése a Redis-példány között RoleInstances          | Külső és belső  |
 | * / *                        | Bejövő            | TCP                | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK | Az Azure infrastruktúra Terheléselosztóját                          | Külső és belső  |
 
 >[!IMPORTANT]

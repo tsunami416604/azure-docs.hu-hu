@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: e0a47da168ae9371979290b3febc9d767e8755d7
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 164ec0898e2f7ad461ab63ce0fcaf47a87998797
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428011"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997833"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Biztonsági mentés és visszaállítás Azure-beli SQL Server-alapú virtuális gépeken
 
@@ -40,7 +40,7 @@ A következő táblázat információkat a különböző biztonsági mentési é
 
 A következő szakaszok ismertetik az egyes lehetőségek részletesebben. Ez a cikk utolsó szakasza összefoglalja funkció mátrix formájában.
 
-## <a id="autoamted"></a> Automatikus biztonsági mentés
+## <a id="automated"></a> Automatikus biztonsági mentés
 
 Automatikus biztonsági mentés egy Azure-beli Windows virtuális gépen futó SQL Server Standard és Enterprise kiadások automatikus biztonsági mentési szolgáltatást biztosít. Ez a szolgáltatás által biztosított a [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md), amely automatikusan települ az SQL Server Windows virtuálisgép-lemezképek az Azure Portalon.
 

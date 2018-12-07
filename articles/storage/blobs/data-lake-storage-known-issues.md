@@ -6,14 +6,14 @@ author: normesta
 ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 12/05/2018
 ms.author: normesta
-ms.openlocfilehash: 83e9dfbe18dd79e8547e6b48daef39a5aed2cced
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 29fe100821e5ad2d9d5d340a1178c19c60c6d821
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975283"
+ms.locfileid: "52995431"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2 ismert problémái
 
@@ -35,7 +35,9 @@ Virtuális gép (VM) a nem felügyelt lemezek ezen API-k attól függenek, ezér
 
 ## <a name="azure-storage-explorer"></a>Azure Storage Explorer
 
-Egyes funkciók a Storage Explorerben még nem működnek az Azure Data Lake Storage Gen2 fájlrendszerek. Ezek a korlátozások vonatkoznak, mindkettő a [önálló verziója](https://azure.microsoft.com/features/storage-explorer/) Azure Storage Explorer, valamint a verzió, amely akkor jelenik meg az Azure Portalon.
+Megtekintéséhez vagy a Data Lake Storage Gen2-fiókok kezelése az Azure Storage Explorer használatával kell rendelkeznie legalább verzió `1.6.0` az eszköz, amely egy [ingyenesen letölthető](https://azure.microsoft.com/features/storage-explorer/).
+
+Vegye figyelembe, hogy a Storage Explorer, az Azure Portalra beágyazott verziója amelyen jelenleg nem támogatja a megtekintése, vagy a Data Lake Storage Gen2-fiókok kezelése a hierarchikus névterek engedélyezettek.
 
 ## <a name="blob-viewing-tool"></a>BLOB megtekintése eszköz
 
@@ -57,21 +59,9 @@ Ehelyett használja az AzCopy legújabb előzetes verzióját ( [AzCopy v10](htt
 
 Például az Azure Databricks, a HDInsight és az Azure Data Factory szolgáltatás még nem integrálható az Azure Active Directory (Azure AD) OAuth tulajdonosi jogkivonat-hitelesítés.
 
-## <a name="access-control-lists-acl"></a>Hozzáférés-vezérlési listák (ACL)
-
-Címtár- és fájlszintű hozzáférés-vezérlési listák (ACL) nagyon nehéz kezelni. Nincs olyan Felhasználóifelület-alapú eszköz, amellyel lekérése, és állítsa be ezeket hozzáférés-vezérlési listák.
-
 ## <a name="azure-event-grid"></a>Azure Event Grid
 
 [Az Azure Event Grid](https://azure.microsoft.com/services/event-grid/) nem események fogadása az Azure Data Lake Gen2 fiókok mert azok a fiókok nem még létre őket.  
-
-## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
-
-Szerepköralapú hozzáférés-vezérlés fájlrendszerobjektumok egy Azure Data Lake Storage Gen2-fiók nem alkalmazhat.
-
-## <a name="sql-data-warehouse-polybase"></a>Az SQL Data Warehouse PolyBase
-
-Ha a Storage-tűzfalak engedélyezve vannak az Azure Storage-fiókot, az SQL Data Warehouse [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide?view=sql-server-2017) nem érhető el ezeket a fiókokat.
 
 ## <a name="soft-delete-and-snapshots"></a>Helyreállítható törlés és pillanatképek
 

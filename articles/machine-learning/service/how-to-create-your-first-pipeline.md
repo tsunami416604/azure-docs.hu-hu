@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre és futtassa a teljes első gépi tanulási folyamat – az Azure Machine Learning szolgáltatás
+title: Hozzon létre és gépi Tanulási folyamatok - futtatásához az Azure Machine Learning szolgáltatás
 description: Hozzon létre, és futtassa a machine learning-folyamat, az Azure Machine Learning-SDK Pythonhoz készült.  A folyamatok létrehozásához és kezeléséhez a munkafolyamatok, például az adat-előkészítés, modell betanítása, modell-üzembehelyezés és következtetési varrva együtt machine learning (gépi tanulás) fázisok szolgálnak.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,13 @@ ms.reviewer: sgilley
 ms.author: sanpil
 author: sanpil
 ms.date: 12/04/2018
-ms.openlocfilehash: 4fcd981c74c80ee1f9cec5ef579cb40c2fb4d6fa
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec12
+ms.openlocfilehash: 0119e60a6493ed13b04b36fc5fccc7227503fe0a
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52883209"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015075"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-using-azure-machine-learning-sdk"></a>Hozhat létre és futtathat egy machine learning folyamatot az Azure Machine Learning SDK
 

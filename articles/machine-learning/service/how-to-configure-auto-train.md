@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: c73b4f677341a16c80a6f7b98e3609810006a938
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: b2be09d69013cc8361f92cb0b6e3aa5fef3bcc02
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877989"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000300"
 ---
 # <a name="configure-your-automated-machine-learning-experiment"></a>Az automatikus machine learning-kísérlet konfigurálása
 
@@ -33,7 +33,11 @@ Az automatikus machine learningben elérhető konfigurációs lehetőségek:
 * Regisztráljon és a modell üzembe helyezése
 
 ## <a name="select-your-experiment-type"></a>A kísérlet típusának kiválasztása
-Mielőtt elkezdené a kísérlethez, meg kell határoznia a megoldandó, machine learning probléma típusú. Automatizált machine learning támogatja a besorolást, regressziós és előrejelzés tevékenységtípust. Automatizált machine learning az automatizálás és a hangolási folyamat során a következő algoritmusokat támogatja. Felhasználójaként van, nem szükséges, hogy adja meg az algoritmus.
+Mielőtt elkezdené a kísérlethez, meg kell határoznia a megoldandó, machine learning probléma típusú. Automatizált machine learning támogatja a besorolást, regressziós és előrejelzés tevékenységtípust. 
+
+Automatizált gépi tanulási funkciók általánosan elérhetők, amíg **előrejelzés jelenleg még nyilvános előzetes verzióban.**
+
+Automatizált machine learning az automatizálás és a hangolási folyamat során a következő algoritmusokat támogatja. Felhasználójaként van, nem szükséges, hogy adja meg az algoritmus.
 
 Besorolás | Regresszió | Előrejelzések
 |-- |-- |--
@@ -305,6 +309,8 @@ root_mean_squared_log_error|Legfelső szintű mean squared log hiba a várt squa
 normalized_root_mean_squared_log_error|Noramlized Root mean squared log hiba a root mean squared log hiba osztva az adatok tartományán|[Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Az adatok számos nullával|
 
 ## <a name="explain-the-model"></a>A modell ismertetik.
+
+Automatizált gépi tanulási funkciók általánosan elérhetők, amíg **a modell explainability funkció nyilvános előzetes verzióként.**
 
 Automatizált machine learning lehetővé teszi, hogy jobban megismerhesse a szolgáltatás fontosságát.  A betanítási folyamat során a globális szolgáltatás fontosság modell kérheti le.  Besorolási forgatókönyvek esetén is kaphat osztályszintű funkció fontosságát.  Meg kell adnia az érvényesítési adatkészletet (X_valid) funkció fontosság beolvasásához.
 

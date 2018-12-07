@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/06/2018
+ms.date: 12/05/2018
 ms.author: genli
-ms.openlocfilehash: 937d0be2e86adf00ac2707d5fd57eb905dcea3fb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f600dbf27fec036b9a80a5a6fb11c5bc50cc915
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238320"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994182"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Hibaelhárítása: Az Azure pont – hely kapcsolati problémák
 
@@ -300,7 +300,7 @@ A probléma akkor fordulhat elő, ha a VPN-ügyfél nem kap az útvonalakat az A
 
 ### <a name="solution"></a>Megoldás
 
-Ez a probléma megoldásához [Azure VPN gateway alaphelyzetbe állítása](vpn-gateway-resetgw-classic.md).
+Ez a probléma megoldásához [Azure VPN gateway alaphelyzetbe állítása](vpn-gateway-resetgw-classic.md). Ahhoz, hogy az új útvonalakat használ, a pont – hely VPN-ügyfelek kell lesznek újra letöltve, miután a virtuális hálózatok közötti társviszony beállítása sikerült.
 
 ## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Hiba: "a visszavont tanúsítványok függvény nem tudta ellenőrizni a visszavont tanúsítványok, mert a visszavont tanúsítványok kiszolgálója offline állapotban volt. (Hiba 0x80092013)"
 

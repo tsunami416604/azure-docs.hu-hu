@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: f4d8f4a927415426248860b07a40e7294c84de59
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: a4f84d6e61d3a100f952908883e6eb70d81f66b2
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406957"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998796"
 ---
 # <a name="azure-security-and-compliance-blueprint---data-analytics-for-nist-sp-800-171"></a>Azure biztonsági és megfelelőségi terv - Data Analytics NIST 800-171-SP rendszerhez
 
@@ -69,7 +69,7 @@ A következő szakaszt az üzembe helyezés és a megvalósítás elemek részle
 
 **Az Azure Functions**: [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) egy kiszolgáló nélküli számítási szolgáltatás, amely igény szerinti futtatja. Nem kell explicit módon infrastruktúrát kiépíteniük vagy kezelniük. Az Azure Functions használatával különféle eseményekre reagálva futtathat szkripteket vagy kódrészleteket.
 
-**Az Azure Machine Learning**: [Machine Learning](https://docs.microsoft.com/azure/machine-learning/preview/) van olyan adatelemzési módszer, amely lehetővé teszi a számítógépek a meglévő adatok jelezheti előre a jövőbeni viselkedéseket, kimeneteket és trendeket.
+**Az Azure Machine Learning szolgáltatás**: [Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/) van olyan adatelemzési módszer, amely lehetővé teszi a számítógépek a meglévő adatok jelezheti előre a jövőbeni viselkedéseket, kimeneteket és trendeket.
 
 **Az Azure Data Catalog**: [a Data Catalog](https://docs.microsoft.com/azure/data-catalog/data-catalog-what-is-data-catalog) megkönnyíti az adatforrások megtalálhatóvá és értelmezhetővé azon felhasználók számára, aki kezelheti az adatokat. Általános adatforrások regisztrálva, címkézett és adatokat keresni. A data marad, a meglévő hely, de a metaadatok másolatát bekerül a Data Catalog szolgáltatásba. Az adatforrás helyét egy hivatkozást részét képezi. A metaadatok, hogy az egyes adatforrások egyszerűen felderítheti, felvétellel indexelve van. Indexelő is teszi értelmezhetővé teszi a felhasználók számára.
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: cb96933569c18b8c70d8991c9ba19f9f3e1243e6
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 65d94c4df3111e1ffe5a5340bba1db454681bb5e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633699"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016010"
 ---
 # <a name="run-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>A Pig feladatok futtatása az Apache Hadoop HDInsight REST használatával
 
@@ -32,14 +32,14 @@ Ismerje meg, hogyan futtathat Apache Pig Latin feladatokat REST-kérelmeket, íg
   > [!IMPORTANT]
   > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-* [A curl](http://curl.haxx.se/)
+* [A curl](https://curl.haxx.se/)
 
-* [jq](http://stedolan.github.io/jq/)
+* [jq](https://stedolan.github.io/jq/)
 
 ## <a id="curl"></a>A Pig-feladatok futtatása a Curl használatával
 
 > [!NOTE]
-> A REST API védelméről [alapszintű hitelesítés](http://en.wikipedia.org/wiki/Basic_access_authentication). Mindig kapcsolatos kéréseit: Győződjön meg arról, hogy a hitelesítő adatait biztonságos módon küldje el a kiszolgáló HTTP Secure (HTTPS) használatával.
+> A REST API védelméről [alapszintű hitelesítés](https://en.wikipedia.org/wiki/Basic_access_authentication). Mindig kapcsolatos kéréseit: Győződjön meg arról, hogy a hitelesítő adatait biztonságos módon küldje el a kiszolgáló HTTP Secure (HTTPS) használatával.
 >
 > Ebben a szakaszban a parancsok használatakor cserélje le a `USERNAME` a fürtön, és cserélje le a felhasználóval `PASSWORD` a felhasználói fiókhoz tartozó jelszót. Cserélje le a `CLUSTERNAME` elemet a fürt nevére.
 >

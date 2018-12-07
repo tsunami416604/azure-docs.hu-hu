@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: e0c612407047a51c4e3d4101a0ee192f55458afe
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 772807fc0a1378eea662a7c4a7e3c720d7092bef
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497010"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013014"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Az Azure multi-factor Authentication beállításainak konfigurálása
 
@@ -384,3 +384,7 @@ A funkció csökkenti a web apps szolgáltatásban, amely minden alkalommal ált
 ### <a name="mark-a-device-as-trusted"></a>Egy eszköz akkor megbízható megjelölése
 
 Miután engedélyezte a tárolása a multi-factor Authentication szolgáltatás, felhasználók jelölheti meg, ha megbízható eszköz kiválasztásával bejelentkezés **ne kérdezzen rá ismét**.
+
+# <a name="next-steps"></a>További lépések
+
+[Az Azure AD bejelentkezési oldal márkajelzési módosítása](..\fundamentals\customize-branding.md)

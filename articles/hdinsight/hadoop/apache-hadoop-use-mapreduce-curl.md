@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: afa9b57d9c0e2acf81b5307273ac038e92073655
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 75f615f63b0741899995c2728f93231d8e46734a
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632294"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016180"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Az Apache Hadoop MapReduce feladatok futtatása HDInsight REST használatával
 
@@ -27,14 +27,14 @@ Ismerje meg, a WebHCat REST API használata egy HDInsight-fürtön az Apache had
 ## <a id="prereq"></a>Előfeltételek
 
 * A Hadoop HDInsight-fürtön
-* Windows PowerShell vagy [Curl](http://curl.haxx.se/) és [jq](http://stedolan.github.io/jq/)
+* Windows PowerShell vagy [Curl](https://curl.haxx.se/) és [jq](https://stedolan.github.io/jq/)
 
 ## <a id="curl"></a>A MapReduce-feladat futtatása
 
 > [!NOTE]
 > Használatakor a Curl vagy más REST kommunikációt használ a Webhcattel, hitelesítenie kell a kéréseket a HDInsight-fürt rendszergazdai felhasználónév és jelszó megadásával. A fürt nevét az URI-t, a kérések a kiszolgálóhoz küldéséhez használt részeként kell használnia.
 >
-> A REST API használatával védett [alapszintű hitelesítés](http://en.wikipedia.org/wiki/Basic_access_authentication). Kérések mindig készítsen, győződjön meg arról, hogy a hitelesítő adatait biztonságos módon küldje el a kiszolgáló a HTTPS-en keresztül.
+> A REST API használatával védett [alapszintű hitelesítés](https://en.wikipedia.org/wiki/Basic_access_authentication). Kérések mindig készítsen, győződjön meg arról, hogy a hitelesítő adatait biztonságos módon küldje el a kiszolgáló a HTTPS-en keresztül.
 
 1. Állítsa be a fürtre való bejelentkezéshez, a jelen dokumentum a parancsfájlok által használt, használja a followig parancsok egyikét:
 

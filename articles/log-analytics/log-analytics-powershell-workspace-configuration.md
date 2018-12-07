@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/21/2016
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: f30114797c7ba62fde555487d3202de5edf48ecb
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 6122c1ef14d8ed1d93f682fdb3dbaaaaf30efabc
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182348"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015024"
 ---
 # <a name="manage-log-analytics-using-powershell"></a>A Log Analytics felügyelete PowerShell használatával
 Használhatja a [Log Analytics PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) parancssori vagy parancsfájl részeként különféle funkciók végrehajtásához a Log Analyticsben.  A PowerShell használatával is elvégezheti a feladatok közé:
@@ -199,13 +199,13 @@ Az ügynök nélküli figyelés az Azure-erőforrások, az erőforrásokat az Az
 | A Data Lake analytics     | Igen | | 
 | A Data Lake store         | Igen | |
 | Rugalmas SQL-készlet        |     | Igen |
-| Eseményközpont-névtér     |     | Igen |
+| Event Hubs-névtér     |     | Igen |
 | IoT Hubok                |     | Igen |
 | Key Vault               | Igen | |
 | Terheléselosztók          | Igen | |
 | Logic Apps              | Igen | Igen |
 | Network Security Groups (Hálózati biztonsági csoportok) | Igen | |
-| Redis Cache             |     | Igen |
+| Azure Cache for Redis             |     | Igen |
 | Szolgáltatások keresése         | Igen | Igen |
 | Service Bus-névtér   |     | Igen |
 | SQL (v12)               |     | Igen |
@@ -221,7 +221,7 @@ $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegrou
 
 $resourceId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/DEMO" 
 
-Set-AzureRmDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
+Set-AzureRmDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
 ```
 
 A fenti parancsmag használatával gyűjtsön naplókat azokról erőforrások különböző előfizetésekhez tartoznak. A parancsmag is képes működni előfizetések között, mivel meg van adva a naplók és a naplókat küld a munkaterület létrehozása egyaránt az erőforrás azonosítója.

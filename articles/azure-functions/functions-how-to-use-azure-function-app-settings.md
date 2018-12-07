@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 5e34aae62f871cba2a27a292242cff8e90c67934
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d9fa5d70a633f423c82457759d7ed18047167e3e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228980"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999890"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Az Azure Portalon a függvényalkalmazás kezelése 
 
 Az Azure Functions egy függvényalkalmazást az egyes függvények a végrehajtási környezet biztosít. Egy adott függvényalkalmazás által üzemeltetett összes függvényt függvény alkalmazás viselkedések vonatkoznak. Ez a témakör ismerteti, hogyan konfigurálhatja és kezelheti a függvényalkalmazásokat az Azure Portalon.
 
-A kezdéshez nyissa meg a [az Azure portal](http://portal.azure.com) , és jelentkezzen be az Azure-fiókjával. A portál tetején a keresősávba írja be a függvényalkalmazás nevét, majd válassza ki a listáról. Miután kiválasztotta a függvényalkalmazást, a következő oldal jelenik meg:
+A kezdéshez nyissa meg a [az Azure portal](https://portal.azure.com) , és jelentkezzen be az Azure-fiókjával. A portál tetején a keresősávba írja be a függvényalkalmazás nevét, majd válassza ki a listáról. Miután kiválasztotta a függvényalkalmazást, a következő oldal jelenik meg:
 
 ![A funkció áttekintése az Azure Portalon](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 

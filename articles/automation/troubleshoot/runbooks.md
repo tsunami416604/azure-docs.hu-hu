@@ -8,12 +8,12 @@ ms.date: 12/04/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 9a60d8c17ba091da7c5eaf0e28160573d5faafa8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 41eb31ecabb20ec9eec3db13d5eda9f9cfbe6c69
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963130"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015466"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbookokkal kapcsolatos hibák elhárítása
 
@@ -123,7 +123,7 @@ A multi-factor authentication szolgáltatás az Azure-fiókkal rendelkezik, ha e
 
 #### <a name="resolution"></a>Megoldás:
 
-A klasszikus Azure üzemi modell parancsmagokban tanúsítványt használ, tekintse meg [létrehozása és kezelése az Azure-szolgáltatások egy tanúsítvány hozzáadása.](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx) Egy egyszerű szolgáltatást az Azure Resource Manager parancsmagjainak használatához tekintse meg [az egyszerű szolgáltatásnév létrehozása az Azure portal használatával](../../active-directory/develop/howto-create-service-principal-portal.md) és [hitelesítése egy egyszerű szolgáltatást az Azure Resource Managerrel.](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
+A klasszikus Azure üzemi modell parancsmagokban tanúsítványt használ, tekintse meg [létrehozása és kezelése az Azure-szolgáltatások egy tanúsítvány hozzáadása.](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx) Egy egyszerű szolgáltatást az Azure Resource Manager parancsmagjainak használatához tekintse meg [az egyszerű szolgáltatásnév létrehozása az Azure portal használatával](../../active-directory/develop/howto-create-service-principal-portal.md) és [hitelesítése egy egyszerű szolgáltatást az Azure Resource Managerrel.](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="common-errors-when-working-with-runbooks"></a>A forgatókönyvek használata során előforduló gyakori hibák
 
@@ -337,6 +337,24 @@ A PowerShell-parancsmagok, amelyek lehetővé teszik a gyermek runbook forgatók
 [Start-AzureRMAutomationRunbook](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook) – Ez a parancsmag lehetővé teszi elindít egy runbookot, és át a paramétereket a forgatókönyvhöz
 
 [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/get-azurermautomationjob) – Ez a parancsmag lehetővé teszi, hogy a feladat állapotának ellenőrzése minden gyermek, ha a művelet, amely a gyermekrunbook befejezése után kell elvégezni.
+
+### <a name="expired webhook"></a>Forgatókönyv: Állapota: 400 Bad kérjen, ha a webhook meghívása
+
+#### <a name="issue"></a>Probléma
+
+Amikor megpróbál egy Azure Automation-runbook webhook meghívása a következő hibaüzenet jelenik meg.
+
+```error
+400 Bad Request : This webhook has expired or is disabled
+```
+
+#### <a name="cause"></a>Ok
+
+A webhookot, amely a meghívni próbált vagy le van tiltva, vagy lejárt.
+
+#### <a name="resolution"></a>Megoldás:
+
+A webhook le van tiltva, ha újból engedélyezheti a webhookot, az Azure Portalon keresztül. Ha a webhook lejárt, a webhook kell törölni kell, majd újra létre kell hozni. Csak [újítsa meg a webhook](../automation-webhooks.md#renew-webhook) Ha ezt még nem járt le.
 
 ### <a name="429"></a>Forgatókönyv: 429-es: jelenleg túl nagy a kérések aránya. Próbálja újra
 

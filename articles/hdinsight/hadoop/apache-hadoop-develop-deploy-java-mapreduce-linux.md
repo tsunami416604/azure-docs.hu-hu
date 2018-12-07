@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3c16d85479399d7988be18f9b852563617bb824b
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 42fc92b0cee20679ab72a389cc11522c0ca4e0fd
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632652"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013754"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>Java MapReduce programok fejlesztése a HDInsight Apache hadoop
 
@@ -25,12 +25,12 @@ Ismerje meg, hogyan hozzon létre egy Java-alapú MapReduce-alkalmazást, majd f
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 vagy újabb (vagy egy azzal egyenértékű, például az OpenJDK).
+* [Java JDK](https://www.oracle.com/technetwork/java/javase/downloads/) 8 vagy újabb (vagy egy azzal egyenértékű, például az OpenJDK).
     
     > [!NOTE]
     > HDInsight-verziók 3.4-es és korábbi használható a Java 7. A HDInsight 3.5-ös és újabb Java 8 használ.
 
-* [Apache Maven](http://maven.apache.org/)
+* [Apache Maven](https://maven.apache.org/)
 
 ## <a name="configure-development-environment"></a>A fejlesztési környezet konfigurálása
 
@@ -63,7 +63,7 @@ Az alábbi környezeti változókat a Java és a JDK telepítésekor lehet beál
 
     Ez a parancs által a megadott néven létrehoz egy könyvtárat a `artifactID` paraméter (**wordcountjava** ebben a példában.) Ez a könyvtár a következő elemeket tartalmazza:
 
-   * `pom.xml` -A [projekt Object Model (POM)](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html) , amely tartalmazza a projekt felépítéséhez használt információk és a konfiguráció részleteit.
+   * `pom.xml` -A [projekt Object Model (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) , amely tartalmazza a projekt felépítéséhez használt információk és a konfiguráció részleteit.
 
    * `src` – A könyvtár, amely tartalmazza az alkalmazást.
 
@@ -94,7 +94,7 @@ Az alábbi környezeti változókat a Java és a JDK telepítésekor lehet beál
     </dependency>
    ```
 
-    Ez határozza meg a szükséges kódtárak (sorolva &lt;artifactId\>) egy adott verziójával (sorolva &lt;verzió\>). A fordítás során a függőségeket a alapértelmezett Maven tárházból letöltődnek. Használhatja a [Maven tárház keresési](http://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) megjelenítése.
+    Ez határozza meg a szükséges kódtárak (sorolva &lt;artifactId\>) egy adott verziójával (sorolva &lt;verzió\>). A fordítás során a függőségeket a alapértelmezett Maven tárházból letöltődnek. Használhatja a [Maven tárház keresési](https://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) megjelenítése.
    
     A `<scope>provided</scope>` arra utasítja a Maven, hogy az ezeket a függőségeket nem csomagolható az alkalmazás a futásidőben a HDInsight-fürt által meghatározott.
 
@@ -138,7 +138,7 @@ Az alábbi környezeti változókat a Java és a JDK telepítésekor lehet beál
     </build>
    ```
 
-    Az első beépülő modul konfigurálása a [Maven Shade beépülő modul](http://maven.apache.org/plugins/maven-shade-plugin/), amely segítségével hozhat létre egy uberjar (más néven egy fatjar), amely szükséges az alkalmazás függőségeit tartalmazza. Megakadályozza a licencek a jar-csomag, amely egyes rendszerek problémákat okozhat a párhuzamos is.
+    Az első beépülő modul konfigurálása a [Maven Shade beépülő modul](https://maven.apache.org/plugins/maven-shade-plugin/), amely segítségével hozhat létre egy uberjar (más néven egy fatjar), amely szükséges az alkalmazás függőségeit tartalmazza. Megakadályozza a licencek a jar-csomag, amely egyes rendszerek problémákat okozhat a párhuzamos is.
 
     A második beépülő modul konfigurálása a cél Java-verzió.
 
@@ -291,9 +291,9 @@ Ebben a dokumentumban megtanulhatta, hogyan hozhat létre egy Java MapReduce-fel
 
 További információ: a [Java fejlesztői központ](https://azure.microsoft.com/develop/java/).
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
 [hdinsight-use-sqoop]:hdinsight-use-sqoop.md
 [hdinsight-ODBC]: hdinsight-connect-excel-hive-ODBC-driver.md
@@ -303,5 +303,5 @@ További információ: a [Java fejlesztői központ](https://azure.microsoft.com
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
 [hdinsight-power-query]:apache-hadoop-connect-excel-power-query.md
 
-[powershell-PSCredential]: http://social.technet.microsoft.com/wiki/contents/articles/4546.working-with-passwords-secure-strings-and-credentials-in-windows-powershell.aspx
+[powershell-PSCredential]: https://social.technet.microsoft.com/wiki/contents/articles/4546.working-with-passwords-secure-strings-and-credentials-in-windows-powershell.aspx
 

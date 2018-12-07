@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: mbullwin
-ms.openlocfilehash: 5b6afe4856e7e2c643a636f070937e81a2add2dd
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 3c3ff606958503efcf2df5fd99b6e52e4687de4a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724230"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996258"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
 Az Azure Application Insights a Microsoft Azure-ban jeleníti meg az alkalmazással kapcsolatos adatok *erőforrás*. Ezért részét képezi egy új erőforrás létrehozását [Application Insights beállítása egy új alkalmazás figyelésére][start]. Sok esetben egy erőforrás létrehozását teheti meg automatikusan az ide. De bizonyos esetekben egy erőforrást manuálisan létrehozott – például számára elkülönített erőforrások fejlesztési és éles környezetben hoz létre az alkalmazás.
@@ -25,11 +25,11 @@ Az Azure Application Insights a Microsoft Azure-ban jeleníti meg az alkalmazás
 Miután létrehozta az erőforrást, a kialakítási kulcs lekérése, és használja, amely az alkalmazás az SDK konfigurálására. Az erőforrás-kulcsot a telemetria hivatkozik, az erőforrás.
 
 ## <a name="sign-up-to-microsoft-azure"></a>Iratkozzon fel a Microsoft Azure
-Ha még nem kapott egy [Microsoft-fiók, most már igényelhet](http://live.com). (Ha használja a szolgáltatások, például az Outlook.com, onedrive vállalati verzió, Windows Phone vagy XBox Live, már Microsoft-fiókkal.)
+Ha még nem kapott egy [Microsoft-fiók, most már igényelhet](https://live.com). (Ha használja a szolgáltatások, például az Outlook.com, onedrive vállalati verzió, Windows Phone vagy XBox Live, már Microsoft-fiókkal.)
 
-Emellett az előfizetés [Microsoft Azure](http://azure.com). Ha a csapata vagy szervezete rendelkezik Azure-előfizetéssel, a tulajdonosa Önt is hozzáadhatja, használja a Windows Live ID azonosítójával. Csak díjkötelesek kell fizetni. Az alapértelmezett alapszintű csomag lehetővé teszi bizonyos mennyiségű kísérleti használata díjmentes.
+Emellett az előfizetés [Microsoft Azure](https://azure.com). Ha a csapata vagy szervezete rendelkezik Azure-előfizetéssel, a tulajdonosa Önt is hozzáadhatja, használja a Windows Live ID azonosítójával. Csak díjkötelesek kell fizetni. Az alapértelmezett alapszintű csomag lehetővé teszi bizonyos mennyiségű kísérleti használata díjmentes.
 
-Amikor egy előfizetéshez konfiguráltunk, jelentkezzen be az Application Insights jelenleg [ http://portal.azure.com ](https://portal.azure.com), és használhatja a bejelentkezni a Live ID.
+Amikor egy előfizetéshez konfiguráltunk, jelentkezzen be az Application Insights jelenleg [ https://portal.azure.com ](https://portal.azure.com), és használhatja a bejelentkezni a Live ID.
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
 Az a [portal.azure.com](https://portal.azure.com), Application Insights-erőforrás hozzáadása:

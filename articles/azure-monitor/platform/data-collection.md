@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: 5393f47a9b22f684c6a287b65980e34d4124c790
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 19d448634998f01505c0e274377e1aa8cd788728
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873221"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993800"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Az Azure Monitor által gyűjtött adatok figyelése
 [Az Azure Monitor](../../azure-monitor/overview.md) egy szolgáltatás, amellyel figyelheti az alkalmazások és az erőforrások támaszkodnak. Figyelt erőforrások központi az alábbi függvényre van telemetriai és egyéb adatok tárolására. A cikk ismerteti, hogyan az adatok tárolásának és az Azure Monitor által használt teljes leírását.
@@ -157,7 +157,7 @@ A naplók segítségével elvégezhető feladatok a következők:
 - Használja a [Log Analytics lapot](../../azure-monitor/log-query/get-started-portal.md) Teljesítménynapló-adatok elemzése lekérdezéseket írhat az Azure Portalon.  Eredmény jelenik meg a táblázatokat vagy diagramokat való rögzítése egy [Azure irányítópultján](../../azure-portal/azure-portal-dashboards.md).
 - Konfigurálja egy [riasztási szabály](../../monitoring-and-diagnostics/alert-log.md) , amely elküld egy értesítést vagy veszi [művelet automatikus](../../monitoring-and-diagnostics/monitoring-action-groups.md) mikor a a lekérdezés eredménye megfelel-e egy adott eredményt.
 - A munkafolyamat az a Log Analytics-adatok alapján hozhat létre [Logic Apps](~/articles/logic-apps/index.yml).
-- A lekérdezés eredményeinek exportálására [Power BI](../../log-analytics/log-analytics-powerbi.md) különböző Vizualizációk használata és megosztása Azure-on kívüli felhasználókkal.
+- A lekérdezés eredményeinek exportálására [Power BI](../../azure-monitor/platform/powerbi.md) különböző Vizualizációk használata és megosztása Azure-on kívüli felhasználókkal.
 - Egy parancssorból vagy egy egyéni alkalmazást a metrikaértékek eléréséhez [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/?view=azurermps-6.8.1) vagy [REST API-val](https://dev.loganalytics.io/).
 
 ### <a name="viewing-log-data"></a>Teljesítménynapló-adatok megtekintése

@@ -1,5 +1,5 @@
 ---
-title: A figyelő Azure DC/OS fürt - műveletek kezelése
+title: (ELAVULT) A figyelő Azure DC/OS fürt - műveletek kezelése
 description: Egy Azure Container Service DC/OS fürt megfigyelése a Log Analytics.
 services: container-service
 author: keikhara
@@ -9,20 +9,22 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
-ms.openlocfilehash: 4576d9decc6ba1e01ef39abdb8a3ef89461196e8
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b5c1596066b02d5ad4f59ed553408d263acc825c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407792"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993569"
 ---
-# <a name="monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>Egy Azure Container Service DC/OS fürt megfigyelése a Log Analytics
+# <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>(ELAVULT) Egy Azure Container Service DC/OS fürt megfigyelése a Log Analytics
 
-A log Analytics a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a kezelése és védelme a helyszíni és felhőalapú infrastruktúrára. Tároló megoldás egy olyan megoldás a Log Analyticsben, így a segítségével egyetlen helyen, a tároló készlet, a teljesítmény és a naplók megtekintéséhez. Naplózási, tárolók hibaelhárítása központi helyen a naplóinak megtekintésével és zajos felhasználása felesleges tároló-gazdagépen található.
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
+
+A log Analytics a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a kezelése és védelme a helyszíni és felhőalapú infrastruktúrára. Tároló megoldás egy olyan megoldás a Log Analyticsben, így a segítségével egyetlen helyen, a tároló készlet, a teljesítmény és a naplók megtekintéséhez. Naplózási, tárolók hibaelhárítása központi helyen a naplóinak megtekintésével és zajos felhasználása felesleges tároló-gazdagépen található.
 
 ![](media/container-service-monitoring-oms/image1.png)
 
-Tároló megoldásról további információkért lásd: a [tároló megoldás a Log Analytics](../../log-analytics/log-analytics-containers.md).
+Tároló megoldásról további információkért lásd: a [tároló megoldás a Log Analytics](../../azure-monitor/insights/containers.md).
 
 ## <a name="setting-up-log-analytics-from-the-dcos-universe"></a>A DC/OS universe rendszerben a Log Analytics beállítása
 
@@ -74,7 +76,7 @@ Miután kiválasztotta a munkaterületet, kattintson a **létrehozás**.
 
 ![](media/container-service-monitoring-oms/image11.png)
 
-A Log Analytics megoldás kapcsolatos további információkért tekintse meg a [tároló megoldás a Log Analytics](../../log-analytics/log-analytics-containers.md).
+A Log Analytics megoldás kapcsolatos további információkért tekintse meg a [tároló megoldás a Log Analytics](../../azure-monitor/insights/containers.md).
 
 ### <a name="how-to-scale-log-analytics-agent-with-acs-dcos"></a>Log Analytics-ügynököket az ACS DC/OS méretezése 
 
@@ -99,4 +101,4 @@ Mi működik? Mi a hiányzó? Mit kell ehhez az Ön számára hasznos lehet? Tud
 
 ## <a name="next-steps"></a>További lépések
 
- Most, hogy úgy állította be a Log Analytics szolgáltatással figyelheti a tárolókat[tekintse meg a tároló irányítópultján](../../log-analytics/log-analytics-containers.md).
+ Most, hogy úgy állította be a Log Analytics szolgáltatással figyelheti a tárolókat[tekintse meg a tároló irányítópultján](../../azure-monitor/insights/containers.md).

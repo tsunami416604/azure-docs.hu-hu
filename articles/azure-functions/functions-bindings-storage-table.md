@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 56616ff01ff70230a591285014ed291a2fdc7b34
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3fc31306af1c85a67a1afca8a34be82a711f2527
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250988"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999534"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Az Azure storage táblakötések az Azure Functions szolgáltatáshoz
 
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan használható az Azure Table storage-kötések az Az
 
 ## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
 
-A Table storage kötéseket szerepelnek a [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-csomag verziója 2.x. A csomag forráskódja a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) GitHub-adattárban.
+A Table storage kötéseket szerepelnek a [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-csomag verziója 2.x. A csomag forráskódja a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) GitHub-adattárban.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -325,9 +325,9 @@ CloudTable használatával kapcsolatos további információkért lásd: [Azure 
 
 Ha megpróbál kötést létrehozni `CloudTable` és a egy hibaüzenet, győződjön meg arról, hogy rendelkezik-e egy hivatkozást, [a megfelelő Storage SDK-verzió](#azure-storage-sdk-version-in-functions-1x).
 
-### <a name="input---f-example"></a>Bemenet - F #-példa
+### <a name="input---f-example"></a>Bemenet - F# példa
 
-Az alábbi példa bemutatja a bemeneti tábla kötés egy *function.json* fájl és [skriptu F #](functions-reference-fsharp.md) a kötést használó kód. A funkció egy üzenetsor eseményindító egyetlen tábla sorokat olvashat el. 
+Az alábbi példa bemutatja a bemeneti tábla kötés egy *function.json* fájl és [ F# parancsfájl](functions-reference-fsharp.md) a kötést használó kód. A funkció egy üzenetsor eseményindító egyetlen tábla sorokat olvashat el. 
 
 A *function.json* fájl adja meg azt a `partitionKey` és a egy `rowKey`. A `rowKey` "{queueTrigger}" érték azt jelzi, hogy a sorkulcs származik-e a várólista üzenet karakterlánc.
 
@@ -357,7 +357,7 @@ A *function.json* fájl adja meg azt a `partitionKey` és a egy `rowKey`. A `row
 
 A [konfigurációs](#input---configuration) szakasz mutatja be ezeket a tulajdonságokat.
 
-Az F #-kód itt látható:
+Íme a F# kódot:
 
 ```fsharp
 [<CLIMutable>]
@@ -627,9 +627,9 @@ public class Person
 
 ```
 
-### <a name="output---f-example"></a>Kimenet – F #-példa
+### <a name="output---f-example"></a>Kimenete – F# példa
 
-Az alábbi példa bemutatja egy rendszertábla kimenetében a kötés egy *function.json* fájl és [skriptu F #](functions-reference-fsharp.md) a kötést használó kód. A függvény több táblaentitások ír.
+Az alábbi példa bemutatja egy rendszertábla kimenetében a kötés egy *function.json* fájl és [ F# parancsfájl](functions-reference-fsharp.md) a kötést használó kód. A függvény több táblaentitások ír.
 
 Íme a *function.json* fájlt:
 
@@ -655,7 +655,7 @@ Az alábbi példa bemutatja egy rendszertábla kimenetében a kötés egy *funct
 
 A [konfigurációs](#output---configuration) szakasz mutatja be ezeket a tulajdonságokat.
 
-Az F #-kód itt látható:
+Íme a F# kódot:
 
 ```fsharp
 [<CLIMutable>]

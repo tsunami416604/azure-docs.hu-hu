@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: eb77046c6e673012209f0db452b20bf25046cd67
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: f61a00e3ea243dfdf777af88b5f211580f35d8a0
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250971"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001665"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps-kötések az Azure Functions szolgáltatáshoz 
 
@@ -31,13 +31,13 @@ A Mobile Apps-kötések lehetővé teszik, hogy olvassa és frissítse a mobilal
 
 ## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
 
-Mobile Apps-kötések szerepelnek a [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) NuGet-csomag verziója 1.x. A csomag forráskódja a [azure-webjobs-sdk-bővítmények](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.MobileApps/) GitHub-adattárban.
+Mobile Apps-kötések szerepelnek a [Microsoft.Azure.WebJobs.Extensions.MobileApps](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) NuGet-csomag verziója 1.x. A csomag forráskódja a [azure-webjobs-sdk-bővítmények](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.MobileApps/) GitHub-adattárban.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="input"></a>Input (Bemenet)
 
-A Mobile Apps bemeneti kötést egy rekord tölt be egy mobil table-végpont, és továbbadja azt a függvényt. C# és az F #-függvények a rekord végzett módosítások automatikusan érkeznek vissza a táblából, a függvény sikeresen kilép.
+A Mobile Apps bemeneti kötést egy rekord tölt be egy mobil table-végpont, és továbbadja azt a függvényt. A C# és F# funkciók, a rekord végzett módosítások a rendszer automatikusan elküldje térjen vissza a táblából, ha a függvény sikeresen kilép.
 
 ## <a name="input---example"></a>Adjon meg – példa
 
@@ -157,11 +157,11 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 
 ## <a name="input---usage"></a>Bemenet - használat
 
-A C#-függvények, ha a rekord a megadott Azonosítóval rendelkező talál, átadva az elnevezett be [JObject](http://www.newtonsoft.com/json/help/html/t_newtonsoft_json_linq_jobject.htm) paraméter. Ha a rekord nem található, a paraméter értéke `null`. 
+A C#-függvények, ha a rekord a megadott Azonosítóval rendelkező talál, átadva az elnevezett be [JObject](https://www.newtonsoft.com/json/help/html/t_newtonsoft_json_linq_jobject.htm) paraméter. Ha a rekord nem található, a paraméter értéke `null`. 
 
 A JavaScript-függvények, a rekord átad a `context.bindings.<name>` objektum. Ha a rekord nem található, a paraméter értéke `null`. 
 
-A C# és az F # függvény, a változtatások a bemeneti, ha a függvény sikeresen kilép a rendszer automatikusan elküldje rekordot (a bemeneti paraméter) térjen vissza a táblából. Egy rekordot a JavaScript-függvények nem módosítható.
+A C# és F# funkciók, a bemeneti végrehajtott módosítások, ha a függvény sikeresen kilép a rendszer automatikusan elküldje rekordot (a bemeneti paraméter) térjen vissza a táblából. Egy rekordot a JavaScript-függvények nem módosítható.
 
 ## <a name="output"></a>Kimenet
 

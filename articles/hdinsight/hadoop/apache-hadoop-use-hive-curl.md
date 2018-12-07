@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: cff24991263ece54c143e5da8a3eb2a9e5b4af18
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 637ce81f2e2ef4c7271e26bd4e9dfe36da524e27
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634498"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012742"
 ---
 # <a name="run-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Hive-lekérdezések futtatásához az Apache hadooppal a HDInsight REST használatával
 
@@ -29,19 +29,19 @@ Ismerje meg, a WebHCat REST API használatával az Apache Hadoop Hive-lekérdez�
   > [!IMPORTANT]
   > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-* REST-ügyféllel. Ez a dokumentum a Windows Powershellt használja, és [Curl](http://curl.haxx.se/) példákat.
+* REST-ügyféllel. Ez a dokumentum a Windows Powershellt használja, és [Curl](https://curl.haxx.se/) példákat.
 
     > [!NOTE]
     > Az Azure PowerShell használata a HDInsight Hive-val dedikált parancsokat tartalmaz. További információkért lásd: a [Hive használata az Azure PowerShell-lel](apache-hadoop-use-hive-powershell.md) dokumentumot.
 
-Ez a dokumentum is használja a Windows PowerShell és [Jq](http://stedolan.github.io/jq/) JSON-adatokat ad vissza, a REST-kérelmeket feldolgozni.
+Ez a dokumentum is használja a Windows PowerShell és [Jq](https://stedolan.github.io/jq/) JSON-adatokat ad vissza, a REST-kérelmeket feldolgozni.
 
 ## <a id="curl"></a>Hive-lekérdezés futtatása
 
 > [!NOTE]
 > Használatakor a cURL vagy más REST kommunikációt használ a Webhcattel, hitelesítenie kell a kéréseket a HDInsight fürt rendszergazdája a felhasználónév és jelszó megadásával.
 >
-> A REST API védelméről [alapszintű hitelesítés](http://en.wikipedia.org/wiki/Basic_access_authentication) gondoskodik. Győződjön meg arról, hogy a hitelesítő adatait biztonságos módon küldje el a kiszolgáló érdekében mindig kérést HTTP Secure (HTTPS) használatával.
+> A REST API védelméről [alapszintű hitelesítés](https://en.wikipedia.org/wiki/Basic_access_authentication) gondoskodik. Győződjön meg arról, hogy a hitelesítő adatait biztonságos módon küldje el a kiszolgáló érdekében mindig kérést HTTP Secure (HTTPS) használatával.
 
 1. Állítsa be a fürtre való bejelentkezéshez, a jelen dokumentum a parancsfájlok által használt, használja a következő parancsok egyikét:
 
@@ -190,15 +190,15 @@ Ha Tez Hive-val használ, tekintse meg a hibakeresési információkat a követk
 
 Ebben a dokumentumban használt REST API további információkért lásd: a [WebHCat referencia](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference) dokumentumot.
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
-[apache-tez]: http://tez.apache.org
-[apache-hive]: http://hive.apache.org/
-[apache-log4j]: http://en.wikipedia.org/wiki/Log4j
+[apache-tez]: https://tez.apache.org
+[apache-hive]: https://hive.apache.org/
+[apache-log4j]: https://en.wikipedia.org/wiki/Log4j
 [hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: http://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
+[import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
 
 
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
@@ -211,6 +211,6 @@ Ebben a dokumentumban használt REST API további információkért lásd: a [We
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
 
-[powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
+[powershell-here-strings]: https://technet.microsoft.com/library/ee692792.aspx
 
 

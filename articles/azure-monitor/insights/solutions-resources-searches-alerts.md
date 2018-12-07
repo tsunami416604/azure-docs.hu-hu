@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74987d09a9b8979d3c3596c87764f8f3bd4b5795
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d2f1035427815facf501c1349619a73e0f134eff
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846665"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995603"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics hozzáadása mentett keresések és a riasztások felügyeleti megoldásra (előzetes verzió)
 
@@ -37,7 +37,7 @@ Ez a cikk feltételezi, hogy már megismerkedett az [felügyeleti megoldás lét
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics-munkaterület
-Összes erőforrás a Log Analyticsben tárolják a [munkaterület](../../log-analytics/log-analytics-manage-access.md).  Leírtak szerint [Log Analytics-munkaterületet és Automation-fiók](solutions.md#log-analytics-workspace-and-automation-account), a munkaterület nem található meg a felügyeleti megoldás, de a megoldás telepítése előtt léteznie kell.  Ha nem érhető el, akkor a megoldás telepítése sikertelen lesz.
+Összes erőforrás a Log Analyticsben tárolják a [munkaterület](../../azure-monitor/platform/manage-access.md).  Leírtak szerint [Log Analytics-munkaterületet és Automation-fiók](solutions.md#log-analytics-workspace-and-automation-account), a munkaterület nem található meg a felügyeleti megoldás, de a megoldás telepítése előtt léteznie kell.  Ha nem érhető el, akkor a megoldás telepítése sikertelen lesz.
 
 A munkaterület neve van be minden egyes Log Analytics-erőforrás nevét.  Ezt a megoldást a **munkaterület** paraméter SavedSearch erőforrás a következő példához hasonlóan.
 

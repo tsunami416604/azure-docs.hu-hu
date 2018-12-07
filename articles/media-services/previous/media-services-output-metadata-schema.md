@@ -12,27 +12,26 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 12/05/2018
 ms.author: juliako
-ms.openlocfilehash: e92bcd412071d1a991a0bd3ec7b28df9f509c54c
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 35b728793b81c41f0a81c5c7621b9e17edf1f22a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250886"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994678"
 ---
 # <a name="output-metadata"></a>Kimeneti metaadatok
 ## <a name="overview"></a>Áttekintés
 A kódolási feladat vagy társítva egy bemeneti objektuma (eszközök) a amely kívánt kódolási feladatok elvégzésére. Kódolása például MP4-fájlokat, a H.264 MP4 adaptív sávszélességű csoportok; Hozzon létre egy miniatűr; Hozzon létre lefedi. A feladat befejeztével a kimeneti adategység jön létre.  A kimeneti objektum tartalmazza a videót, hangot, a miniatűrök, stb. A kimeneti objektum a kimeneti adategység metaadatait tartalmazó fájl is tartalmazza. A metaadatok XML-fájl neve formátuma a következő: &lt;source_file_name&gt;_manifest.xml (például BigBuckBunny_manifest.xml).  
 
+A Media Services jegyértékesítésről nem vizsgálja a bemeneti eszközök metaadatainak létrehozásához. Bemeneti metaadatok csak, egy összetevő, amikor egy eszköz feldolgozása a feladat bemeneti jön létre. Ezért az összetevő íródik a kimeneti adategység. A különböző eszközök bemeneti eszközök létrehozása a metaadatokat, és a kimeneti eszközök segítségével. A bementi metaadat, ezért kimeneti metaadatok némileg különböző sémákkal rendelkeznek.
+
 Ha meg szeretné vizsgálni a metaadatait tartalmazó fájl, létrehozhat egy **SAS** kereső és letöltése a fájlt a helyi számítógépen.  
 
 Ez a cikk ismerteti az elemek és az XML-séma típusát, amelyre a kimeneti metada (&lt;source_file_name&gt;_manifest.xml) alapul. A bemeneti objektum metaadatait tartalmazó fájl kapcsolatos információkért lásd: [bementi metaadat](media-services-input-metadata-schema.md).  
 
-> [!NOTE]
-> A teljes séma kódjának és XML-példában ez a cikk végén találja.  
->
->
+A teljes séma kódjának és XML-példában ez a cikk végén találja.  
 
 ## <a name="AssetFiles "></a> AssetFiles gyökérelem
 A kódolási feladat bejegyzéseket AssetFile gyűjteménye.  

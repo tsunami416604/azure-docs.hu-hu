@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre egy Azure Application Gateway - sablonok |} Microsoft Docs
+title: Az Azure Application Gateway - sablonok létrehozása |} A Microsoft Docs
 description: Ez az oldal utasításokat tartalmaz egy Azure Application Gateway Azure Resource Manager-sablonnal történő létrehozásához
 documentationcenter: na
 services: application-gateway
@@ -13,32 +13,32 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: 24f834c907fee6f2ddae766ae7494f73a31447c5
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: d6180156e1a8f3fa053c7fbb247e38831f86e76a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33202806"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998404"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Application Gateway létrehozása az Azure Resource Manager-sablonokkal
 
-Az Azure Application Gateway egy 7. rétegbeli terheléselosztó. Feladatátvételt és teljesítményalapú útválasztást biztosít a HTTP-kérelmek számára különböző kiszolgálók között, függetlenül attól, hogy a felhőben vagy a helyszínen találhatóak. Az Application Gateway számos alkalmazáskézbesítési vezérlőszolgáltatást (ADC) biztosít, beleértve a HTTP-terheléselosztást, a cookie-alapú munkamenet-affinitást, a Secure Sockets Layer- (SSL-) alapú kiszervezést, az egyéni állapotmintákat, a többhelyes támogatást és még sok mást. Támogatott funkció teljes listájának megkereséséhez látogasson el a [Alkalmazásátjáró áttekintése](overview.md)
+Az Azure Application Gateway egy 7. rétegbeli terheléselosztó. Feladatátvételt és teljesítményalapú útválasztást biztosít a HTTP-kérelmek számára különböző kiszolgálók között, függetlenül attól, hogy a felhőben vagy a helyszínen találhatóak. Az Application Gateway számos alkalmazáskézbesítési vezérlőszolgáltatást (ADC) biztosít, beleértve a HTTP-terheléselosztást, a cookie-alapú munkamenet-affinitást, a Secure Sockets Layer- (SSL-) alapú kiszervezést, az egyéni állapotmintákat, a többhelyes támogatást és még sok mást. Keresse meg a támogatott szolgáltatások teljes listáját, keresse fel [Application Gateway áttekintése](overview.md)
 
-Ez a cikk útmutatást nyújt a letöltés, és módosítja a meglévő [Azure Resource Manager sablon](../azure-resource-manager/resource-group-authoring-templates.md) a Githubról, majd a sablon a Githubon, PowerShell és az Azure parancssori felület telepítése.
+Ebben a cikkben bemutatjuk, hogyan letöltése és a egy meglévő módosítása [Azure Resource Manager-sablon](../azure-resource-manager/resource-group-authoring-templates.md) a Githubról, majd a sablont a Githubból, Powershellből és az Azure CLI telepítése.
 
-Egyszerűen telepít a sablon közvetlenül a Githubból módosítások nélkül, ha a sablont a Githubból telepítendő kihagyása.
+Ha egyszerűen üzembe a sablont, közvetlenül a Githubból módosítása nélkül, ugorjon a sablont a GitHub.
 
 ## <a name="scenario"></a>Forgatókönyv
 
 Ebben a forgatókönyvben az alábbiakat fogja tenni:
 
-* Hozzon létre egy alkalmazás webalkalmazási tűzfal.
+* Hozzon létre egy application gateway webalkalmazási tűzfal.
 * Létrehoz egy VirtualNetwork1 nevű virtuális hálózatot a 10.0.0.0/16 egy fenntartott CIDR-blokkjával.
 * Létrehoz egy Appgatewaysubnet nevű alhálózatot, amelynek a CIDR-blokkja 10.0.0.0/28 lesz.
 * Beállít két korábban konfigurált háttér IP-címet a webkiszolgálóknak, amelyek között el szeretné osztani a forgalom terhelését. Ebben a példasablonban a háttér IP-cím a 10.0.1.10 és a 10.0.1.11.
 
 > [!NOTE]
-> Ezek a beállítások a sablon paraméterei. A sablon testreszabása, módosíthatja a szabályokat, a figyelő, SSL és a azuredeploy.json fájl más beállítások.
+> Ezek a beállítások a sablon paraméterei. A sablon testreszabásához módosíthatja a szabályokat, a figyelőt, SSL és egyéb lehetőségek az azuredeploy.json fájlban.
 
 ![Forgatókönyv](./media/create-vmss-template/scenario.png)
 
@@ -46,38 +46,38 @@ Ebben a forgatókönyvben az alábbiakat fogja tenni:
 
 A GitHubból letöltheti a meglévő Azure Resource Manager-sablont, amellyel létrehozhat egy virtuális hálózatot két alhálózattal, végrehajthatja a kívánt módosításokat, és újra felhasználhatja azt. Ehhez a következőket kell tennie:
 
-1. Navigáljon a [Alkalmazásátjáró létrehozása webalkalmazási tűzfal engedélyezve van a](https://github.com/Azure/azure-quickstart-templates/tree/master/101-application-gateway-waf).
+1. Navigáljon a [engedélyezett webalkalmazási tűzfallal rendelkező Application Gateway létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-application-gateway-waf).
 1. Kattintson az **azuredeploy.json**, majd a **RAW** elemre.
 1. Mentse a fájlt egy helyi mappába a számítógépén.
 1. Ha már ismeri az Azure Resource Manager-sablonokat, akkor ugorjon a 7. lépéshez.
-1. Nyissa meg a mentett fájlt, és tekintse meg a tartalom **paraméterek** sorban
+1. Nyissa meg a mentett fájlt, és tekintse meg a tartalom alatt **paraméterek** sorban
 1. Az Azure Resource Manager-sablonparaméterek az üzembe helyezés során kitölthető paraméterek helyőrzőiként működnek.
 
   | Paraméter | Leírás |
   | --- | --- |
-  | **subnetPrefix** |Az átjáró-alhálózat CIDR-blokkja. |
-  | **applicationGatewaySize** | Az Alkalmazásátjáró mérete.  WAF csak akkor engedélyezett, közepes és nagy méretű. |
-  | **backendIpaddress1** |Az első webalkalmazás-kiszolgáló IP-címe. |
-  | **backendIpaddress2** |A második webalkalmazás-kiszolgáló IP-címe. |
-  | **wafEnabled** | Határozza meg, ha engedélyezve van-e a WAF beállítást.|
-  | **wafMode** | A webalkalmazási tűzfal módját.  Elérhető lehetőségek **megelőzési** vagy **észlelési**.|
-  | **wafRuleSetType** | WAF szabálykészletben típusa.  OWASP jelenleg az egyetlen támogatott beállítás. |
-  | **wafRuleSetVersion** |Szabálykészletben verziója. Program 2.2.9-es és 3.0 OWASP CRS opció jelenleg támogatott. |
+  | **subnetPrefix** |Az application gateway alhálózatának CIDR-blokkja. |
+  | **applicationGatewaySize** | Az application gateway méretét.  WAF csak közepes és nagy méretű teszi lehetővé. |
+  | **backendIpaddress1** |Az első webkiszolgáló IP-címe. |
+  | **backendIpaddress2** |A második webkiszolgáló IP-címe. |
+  | **wafEnabled** | Beállítás határozza meg, ha engedélyezve van-e a WAF.|
+  | **wafMode** | A webalkalmazási tűzfal mód.  Elérhető lehetőségek **megelőzési** vagy **észlelési**.|
+  | **wafRuleSetType** | WAF szabálykészletben típusa.  OWASP jelenleg az egyetlen támogatott lehetőség. |
+  | **wafRuleSetVersion** |Szabálykészletben verziója. OWASP CRS 2.2.9 és 3.0 jelenleg a támogatott kapcsolókat. |
 
-1. Ellenőrizze a tartalmat a **erőforrások** , és figyelje meg a következő tulajdonságokkal:
+1. Ellenőrizze a tartalom alatt **erőforrások** , és figyelje meg a következő tulajdonságokkal:
 
-   * **type**. A sablon által létrehozott erőforrástípus. Ebben az esetben a típus `Microsoft.Network/applicationGateways`, amely olyan átjárót jelöli.
-   * **Név** Az erőforrás neve. Figyelje meg a `[parameters('applicationGatewayName')]`, ami azt jelenti, a név biztosított bemenetként, vagy egy paraméterfájl üzembe helyezése során.
+   * **type**. A sablon által létrehozott erőforrástípus. Ebben az esetben a típus `Microsoft.Network/applicationGateways`, amely egy application gateway jelöli.
+   * **Név** Az erőforrás neve. Figyelje meg a `[parameters('applicationGatewayName')]`, mely azt jelenti, hogy a név bemenetként, vagy egy paraméterfájl üzembe helyezés során.
    * **properties**. Az erőforrás tulajdonságainak listája. A sablon az Application Gateway létrehozása során a virtuális hálózatot és a nyilvános IP-címet használja.
 
-1. Lépjen vissza [ https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/ ](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf).
+1. Lépjen vissza a [ https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/ ](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf).
 1. Kattintson a **azuredeploy-parameters.json**, és kattintson a **RAW**.
 1. Mentse a fájlt egy helyi mappába a számítógépén.
 1. Nyissa meg a mentett fájlt, és módosítsa a paraméterek értékeit. A következő értékek használatával helyezze üzembe a forgatókönyvünkben ismertetett Application Gateway-t.
 
     ```json
     {
-        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
             "addressPrefix": {
@@ -114,13 +114,13 @@ A GitHubból letöltheti a meglévő Azure Resource Manager-sablont, amellyel l�
     }
     ```
 
-1. Mentse a fájlt. A JSON-sablont és a paramétersablont online JSON érvényesítési eszközök, például a [JSlint.com](http://www.jslint.com/) segítségével tesztelheti.
+1. Mentse a fájlt. A JSON-sablont és a paramétersablont online JSON érvényesítési eszközök, például a [JSlint.com](https://www.jslint.com/) segítségével tesztelheti.
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>Az Azure Resource Manager-sablon üzembe helyezése a PowerShell használatával
 
-Ha még sosem használta az Azure PowerShell, látogasson el: [telepítése és konfigurálása az Azure PowerShell](/powershell/azure/overview) és az utasításokat követve jelentkezzen be Azure, és jelölje ki az előfizetését.
+Ha még sosem használta az Azure PowerShell-lel, keresse fel: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview) és kövesse az utasításokat az Azure-ba való bejelentkezéshez, és válassza ki az előfizetését.
 
-1. PowerShell-bejelentkezési
+1. Bejelentkezés a Powershellbe
 
     ```powershell
     Login-AzureRmAccount
@@ -140,7 +140,7 @@ Ha még sosem használta az Azure PowerShell, látogasson el: [telepítése és 
     Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
     ```
 
-1. Szükség esetén hozzon létre egy erőforráscsoportot a **New-AzureResourceGroup** parancsmaggal. A következő példában hozzon létre egy erőforráscsoportot AppgatewayRG nevű USA keleti régiója helyen.
+1. Szükség esetén hozzon létre egy erőforráscsoportot a **New-AzureResourceGroup** parancsmaggal. A következő példában egy az USA keleti régiójában AppgatewayRG nevű erőforráscsoportot hoz létre.
 
     ```powershell
     New-AzureRmResourceGroup -Name AppgatewayRG -Location "West US"
@@ -155,11 +155,11 @@ Ha még sosem használta az Azure PowerShell, látogasson el: [telepítése és 
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-the-azure-cli"></a>Az Azure Resource Manager-sablon üzembe helyezése az Azure CLI használatával
 
-Az Azure Resource Manager sablon Azure CLI használatával történő üzembe helyezéséhez kövesse az alábbi lépéseket:
+Az Azure parancssori felület használatával a letöltött Azure Resource Manager-sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
 
 1. Ha még sosem használta az Azure CLI-t, akkor tekintse meg [Az Azure CLI telepítése és konfigurálása](/cli/azure/install-azure-cli) című szakaszt, és kövesse az utasításokat addig a pontig, ahol ki kell választania az Azure-fiókot és -előfizetést.
 
-1. Szükség esetén a `az group create` parancs futtatásával hozzon létre egy erőforráscsoportot, a következő kódrészletben látható módon. Figyelje meg a parancs kimenetét. A kimenet után látható lista ismerteti a használt paramétereket. További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md).
+1. Szükség esetén a `az group create` paranccsal hozzon létre egy erőforráscsoportot, az alábbi kódrészletben látható módon. Figyelje meg a parancs kimenetét. A kimenet után látható lista ismerteti a használt paramétereket. További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md).
 
     ```azurecli
     az group create --location westus --name appgatewayRG
@@ -167,9 +167,9 @@ Az Azure Resource Manager sablon Azure CLI használatával történő üzembe he
     
     **-n (vagy --name)**. Az új erőforráscsoport neve. A mi esetünkben *appgatewayRG*.
     
-    **-l (vagy --location)**. Az Azure-régió, ahol az új erőforráscsoport létrejön. A mi esetünkben rendelkezik *westus*.
+    **-l (vagy --location)**. Az Azure-régió, ahol az új erőforráscsoport létrejön. Esetünkben az rendelkezik *westus*.
 
-1. Futtassa a `az group deployment create` parancsmag használatával történő telepítéséről az új virtuális hálózat sablonnal és paraméterfájlokkal fájlok letöltött és módosított az előző lépésben. A kimenet után látható lista ismerteti a használt paramétereket.
+1. Futtassa a `az group deployment create` parancsmagot, hogy az új virtuális hálózat sablonnal és paraméterfájlokkal üzembe helyezhesse fájljainak letöltött és módosított az előző lépésben. A kimenet után látható lista ismerteti a használt paramétereket.
 
     ```azurecli
     az group deployment create --resource-group appgatewayRG --name TestAppgatewayDeployment --template-file azuredeploy.json --parameters @azuredeploy-parameters.json
@@ -179,7 +179,7 @@ Az Azure Resource Manager sablon Azure CLI használatával történő üzembe he
 
 Az Azure Resource Manager-sablonok használatának másik módja a kattintással végrehajtható üzembe helyezés. Ez egy egyszerű mód a sablonok Azure portállal történő használatára.
 
-1. Ugrás a [hozzon létre egy alkalmazás webalkalmazási tűzfal](https://azure.microsoft.com/documentation/templates/101-application-gateway-waf/).
+1. Lépjen a [webalkalmazási tűzfallal rendelkező application gateway létrehozása](https://azure.microsoft.com/documentation/templates/101-application-gateway-waf/).
 
 1. Kattintson a **Deploy to Azure** (Üzembe helyezés az Azure-ban) elemre.
 
@@ -189,13 +189,13 @@ Az Azure Resource Manager-sablonok használatának másik módja a kattintással
 
     ![Paraméterek](./media/create-vmss-template/ibiza1.png)
     
-1. Válassza ki **elfogadom a feltételeket és a fenti feltételek** kattintson **beszerzési**.
+1. Válassza ki **elfogadom a feltételeket és a fenti feltételeket** kattintson **beszerzési**.
 
 1. Az Egyéni üzembe helyezés panelen kattintson a **Létrehozás** gombra.
 
-## <a name="providing-certificate-data-to-resource-manager-templates"></a>Tanúsítvány adatait a Resource Manager sablonokhoz szolgáltató
+## <a name="providing-certificate-data-to-resource-manager-templates"></a>Tanúsítvány adatokat szolgáltat a Resource Manager-sablonok
 
-Ha SSL-t egy sablont használ, meg kell adni a feltöltendő helyett Base64 kódolású karakterláncnak kell a tanúsítványt. Alakítsa át a .pfx vagy Base64 kódolású karakterlánc .cer használja a következő parancsok egyikét. Az alábbi parancsokat a tanúsítvány Base64 kódolású karakterlánc, amely a sablonhoz megadható alakítsa át. A várt kimeneti karakterlánc, amely egy változó tárolja, és a sablon a beillesztett.
+Amikor az SSL-sablonnal a tanúsítványt kell adni egy base64-karakterlánc helyett feltöltése folyamatban. Konvertálja a .pfx- vagy .cer Base64 kódolású karakterlánc használja a következő parancsok egyikét. A következő parancsokat egy base64-karakterlánc, amely a sablonhoz adható meg, alakítsa át a tanúsítványt. A várható kimenete egy karakterlánc, amely egy változó tárolja, és a sablonban beillesztett.
 
 ### <a name="macos"></a>macOS
 ```bash
@@ -210,7 +210,7 @@ echo $cert
 
 ## <a name="delete-all-resources"></a>Az összes erőforrás törlése
 
-Ez a cikk létrehozott összes erőforrást törli, végezze el az alábbi lépések egyikét:
+Ebben a cikkben létrehozott összes erőforrás törléséhez hajtsa végre az alábbi lépések egyikét:
 
 ### <a name="powershell"></a>PowerShell
 

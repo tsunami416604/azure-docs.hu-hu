@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4b565252c78bfe2194530d840651a57df2686728
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: cf7c47e14ef41f58ca1d674521da669e56e7e892
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633173"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012181"
 ---
 # <a name="run-apache-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>Az Apache Sqoop-feladatok futtatása a curl használatával HDInsight a Hadoop-keretrendszerrel
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -27,8 +27,8 @@ A curl használatával mutatja be, hogyan használhatja a HDInsight nyers HTTP-k
 A jelen cikkben ismertetett lépések elvégzéséhez a következőkre lesz szüksége:
 
 * Teljes [a Sqoop használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-sqoop.md#create-cluster-and-sql-database) -környezet konfigurálása a HDInsight-fürt és a egy Azure SQL database.
-* [curl](http://curl.haxx.se/). A curl egy olyan eszköz, vagy egy HDInsight-fürtön az adatok átviteléhez.
-* [jq](http://stedolan.github.io/jq/). A jq segédprogram segítségével dolgozza fel a REST-kérelmeket által visszaadott JSON-adatokat.
+* [curl](https://curl.haxx.se/). A curl egy olyan eszköz, vagy egy HDInsight-fürtön az adatok átviteléhez.
+* [jq](https://stedolan.github.io/jq/). A jq segédprogram segítségével dolgozza fel a REST-kérelmeket által visszaadott JSON-adatokat.
 
 ## <a name="submit-sqoop-jobs-by-using-curl"></a>A Curl használatával Sqoop-feladatok elküldése
 > [!NOTE]
@@ -36,7 +36,7 @@ A jelen cikkben ismertetett lépések elvégzéséhez a következőkre lesz szü
 > 
 > Ezen szakasz parancsaiban cserélje le a **USERNAME** elemet a fürthöz hitelesíteni kívánt felhasználóval, és a **PASSWORD** elemet pedig a felhasználói fiók jelszavával. Cserélje le a **CLUSTERNAME** elemet a fürt nevére.
 > 
-> A REST API védelméről [alapszintű hitelesítés](http://en.wikipedia.org/wiki/Basic_access_authentication) gondoskodik. Mindig biztonságos HTTP-n (HTTPS-en) keresztül kell kéréseket végeznie, hogy a hitelesítő adatait biztonságos módon küldje a kiszolgálóhoz.
+> A REST API védelméről [alapszintű hitelesítés](https://en.wikipedia.org/wiki/Basic_access_authentication) gondoskodik. Mindig biztonságos HTTP-n (HTTPS-en) keresztül kell kéréseket végeznie, hogy a hitelesítő adatait biztonságos módon küldje a kiszolgálóhoz.
 > 
 > 
 

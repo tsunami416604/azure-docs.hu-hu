@@ -1,5 +1,5 @@
 ---
-title: Azure tárolószolgáltatás-fürt megfigyelése a Sysdig segítségével
+title: (ELAVULT) A sysdig segítségével egy Azure Container Service-fürt monitorozása
 description: Azure tárolószolgáltatás-fürt megfigyelése a Sysdig segítségével.
 services: container-service
 author: sauryadas
@@ -9,19 +9,21 @@ ms.topic: article
 ms.date: 08/08/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 0c0f4fd1f3a8242061e198d7b5447656f9008e96
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3b6781a6b87f9f11b341cf3cf2bcf6668b640c2b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32162136"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992194"
 ---
-# <a name="monitor-an-azure-container-service-cluster-with-sysdig"></a>Azure tárolószolgáltatás-fürt megfigyelése a Sysdig segítségével
+# <a name="deprecated-monitor-an-azure-container-service-cluster-with-sysdig"></a>(ELAVULT) A sysdig segítségével egy Azure Container Service-fürt monitorozása
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 Ebben a cikkben Sysdig-ügynököket telepítünk az Azure Container Service-fürt összes ügynökcsomópontjára. Ehhez a konfiguráláshoz Sysdig-fiókra van szüksége. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-[Helyezzen üzembe](container-service-deployment.md) és [csatlakoztasson](../container-service-connect.md) egy, az Azure Container Service által konfigurált fürtöt. Ismerkedjen meg a [Marathon felhasználói felülettel](container-service-mesos-marathon-ui.md). Ugrás a [ http://app.sysdigcloud.com ](http://app.sysdigcloud.com) egy Sysdig felhő fiók beállítása. 
+[Helyezzen üzembe](container-service-deployment.md) és [csatlakoztasson](../container-service-connect.md) egy, az Azure Container Service által konfigurált fürtöt. Ismerkedjen meg a [Marathon felhasználói felülettel](container-service-mesos-marathon-ui.md). Lépjen a [ http://app.sysdigcloud.com ](http://app.sysdigcloud.com) Sysdig-felhőfiók beállításához. 
 
 ## <a name="sysdig"></a>Sysdig
 A Sysdig egy olyan megfigyelő szolgáltatás, amelynek a segítségével megfigyelheti a fürtben található tárolókat. A Sysdig a hibaelhárításban nyújtott segítségről ismert, de a processzor, a hálózatkezelés, a memória és az I/O megfigyelésére alkalmas alapvető mérőszámokkal is rendelkezik. A Sysdig megkönnyíti annak áttekintését, hogy mely tárolók működnek a legtöbbet, és melyek használják leginkább a processzort, illetve a legtöbb memóriát. Ez a nézet az „Overview” (Áttekintés) részben található, amelynek jelenleg még csak a bétaverziója érhető el. 
@@ -31,7 +33,7 @@ A Sysdig egy olyan megfigyelő szolgáltatás, amelynek a segítségével megfig
 ## <a name="configure-a-sysdig-deployment-with-marathon"></a>Üzemelő Sysdig-példány konfigurálása a Marathonnal
 Ezek a lépések bemutatják, hogyan konfigurálhat és helyezhet üzembe Sysdig-alkalmazásokat a fürtön a Marathonnal. 
 
-A DC/OS felhasználói felületén keresztül elérni [ http://localhost:80/ ](http://localhost:80/) egyszer a DC/OS felhasználói felületének keresse meg a "Universe", amelyek a bal alsó részén, és keressen a "Sysdig."
+A DC/OS felhasználói felületen keresztüli eléréséhez [ http://localhost:80/ ](http://localhost:80/) egyszer a DC/OS felhasználói felületen navigáljon a "Universe", amely a bal alsó sarokban található, és keressen a "Sysdig" kifejezésre.
 
 ![Sysdig a DC/OS Universe rendszerben](./media/container-service-monitoring-sysdig/sysdig1.png)
 

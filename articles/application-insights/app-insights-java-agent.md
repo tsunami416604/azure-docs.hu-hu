@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: c5a98b9182e3a644a808b363df2fd44b115828f0
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: a62c6cbb6594aaf7c2c57d7efee1832d7b1430b7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727698"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000729"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Függőségek, kivételek kivétel történt, és metódus végrehajtási időpontok a Java-webalkalmazások monitorozása
 
@@ -27,7 +27,7 @@ Ha rendelkezik [kialakítva az Application Insights Java-webalkalmazását][java
 * **Függőségek:** hívások egyéb összetevőivel, például az alkalmazás által adatait:
   * **REST-hívások** HttpClient keresztül történik, OkHttp és RestTemplate (Spring) rögzítve lesznek.
   * **Redis Cache** a Jedis ügyfél-n keresztül végzett hívások rögzítve lesznek.
-  * **[JDBC-hívások](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**  -MySQL, az SQL Server és Oracle DB parancsok automatikusan rögzítve lesznek. A MySQL a hívás hosszabb időt vesz igénybe, mint a 10s, ha az ügynök jelentéseket küld a lekérdezésterv.
+  * **[JDBC-hívások](https://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**  -MySQL, az SQL Server és Oracle DB parancsok automatikusan rögzítve lesznek. A MySQL a hívás hosszabb időt vesz igénybe, mint a 10s, ha az ügynök jelentéseket küld a lekérdezésterv.
 * **Kivétel történt:** a kód által kezelt kivételek kapcsolatos információkat.
 * **Metódus végrehajtási idő:** bizonyos eljárások végrehajtásához szükséges kapcsolatos információkat.
 

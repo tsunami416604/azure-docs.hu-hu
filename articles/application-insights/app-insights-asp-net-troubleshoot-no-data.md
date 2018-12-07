@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 68a2f11692a4a1bc0ccf62012dda4d2e57c9894f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 234cba3a3c58f1cff45925fcfcf23019dfa8d90e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868633"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998462"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Adathiány hibaelhárítása – Application Insights .NET-hez
 ## <a name="some-of-my-telemetry-is-missing"></a>Láthatók a telemetriai adatok némelyike hiányzik
@@ -68,7 +68,7 @@ A Megoldáskezelőben kattintson jobb gombbal a projektre, és válassza a **App
 ## <a name="NuGetBuild"></a> "NuGet-csomagok hiányoznak a" saját buildelési kiszolgáló
 *Minden tekintetben OK I vagyok hibakeresése a saját fejlesztői gépen, de a NuGet-hiba jelenik meg a build-kiszolgálón.*
 
-Lásd: [NuGet-csomagok visszaállításának](http://docs.nuget.org/Consume/Package-Restore) és [automatikus csomagok visszaállításának](http://docs.nuget.org/Consume/package-restore/migrating-to-automatic-package-restore).
+Lásd: [NuGet-csomagok visszaállításának](https://docs.nuget.org/Consume/Package-Restore) és [automatikus csomagok visszaállításának](https://docs.nuget.org/Consume/package-restore/migrating-to-automatic-package-restore).
 
 ## <a name="missing-menu-command-to-open-application-insights-from-visual-studio"></a>Hiányzó menüparancs a Visual Studio Application Insights megnyitása
 *Ha jobb gombbal a projekt Megoldáskezelőben, az Application Insights parancsok nem látható, vagy egy nyissa meg az Application Insights-parancs nem látható.*

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 34161251ac52323bc3eff66cfe30f3de34bdf60c
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 998c3f1fcfbf53f6f0dfb5ddf34d420f2b31a0b2
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715462"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001882"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Hozzon létre egy felügyeleti megoldás fájlt az Azure-ban (előzetes verzió)
 > [!NOTE]
@@ -169,7 +169,7 @@ Ebben az esetben tekintse meg a változó értéke a szintaxissal a megoldáson 
 A **dependsOn** elem azt határozza meg a [függőségi](../../azure-resource-manager/resource-group-define-dependencies.md) egy másik erőforrás.  Telepítette a megoldást, ha egy erőforrás nem jön létre, mindaddig, amíg a létrehozott összes függőségét.  A megoldás Előfordulhat, hogy például [elindít egy runbookot](solutions-resources-automation.md#runbooks) amikor segítségével telepítve van egy [erőforrás feladat](solutions-resources-automation.md#automation-jobs).  A feladat erőforrás lenne, győződjön meg arról, hogy a runbook létrejött-e, mielőtt a feladat jön létre, a runbook erőforrástól függ-e.
 
 ### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics-munkaterületet és Automation-fiók
-Felügyeleti megoldások szükséges egy [Log Analytics-munkaterület](../../log-analytics/log-analytics-manage-access.md) nézeteket tartalmaznak, és a egy [Automation-fiók](../../automation/automation-security-overview.md#automation-account-overview) a runbookok és kapcsolódó erőforrásokat tartalmaznak.  Ezek előtt kell lenniük az erőforrásokat a megoldás jönnek létre, és nem lehet megadni, magát a megoldásban.  A felhasználó fog [adja meg a munkaterület és fiók](solutions.md#log-analytics-workspace-and-automation-account) amikor azokat üzembe helyezheti megoldását, de a szerző, vegye figyelembe a következőket.
+Felügyeleti megoldások szükséges egy [Log Analytics-munkaterület](../../azure-monitor/platform/manage-access.md) nézeteket tartalmaznak, és a egy [Automation-fiók](../../automation/automation-security-overview.md#automation-account-overview) a runbookok és kapcsolódó erőforrásokat tartalmaznak.  Ezek előtt kell lenniük az erőforrásokat a megoldás jönnek létre, és nem lehet megadni, magát a megoldásban.  A felhasználó fog [adja meg a munkaterület és fiók](solutions.md#log-analytics-workspace-and-automation-account) amikor azokat üzembe helyezheti megoldását, de a szerző, vegye figyelembe a következőket.
 
 
 ## <a name="solution-resource"></a>Megoldás-erőforrás

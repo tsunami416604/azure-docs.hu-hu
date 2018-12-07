@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 12/05/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8068c4a8f38cd33a1a0547f5db5079bc75c76ec1
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: fcebada4ef10c3e0bb298e9308d66ecb37247832
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013411"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999256"
 ---
 # <a name="register-an-application-in-azure-active-directory-b2c"></a>Alkalmazás regisztrálása az Azure Active Directory B2C-vel
 
@@ -82,7 +82,4 @@ Ha az alkalmazás Azure AD B2C által biztonságossá tett webes API-hívások, 
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy az Azure AD B2C-vel regisztrált egy alkalmazást, [gyors üzembehelyezési oktatóanyagaink](active-directory-b2c-overview.md) segítségével elsajátíthatja a használatát.
-
-> [!div class="nextstepaction"]
-> [ASP.NET-webalkalmazás létrehozása regisztrációval, bejelentkezéssel és új jelszó kérésével](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
+Ismerje meg, hogyan alkalmazások által használt hozzáférési jogkivonatokat kapcsolatos további engedélyeket az API-k [igénylése hozzáférési jogkivonatok](active-directory-b2c-access-tokens.md)

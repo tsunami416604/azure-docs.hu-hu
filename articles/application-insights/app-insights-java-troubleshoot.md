@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: e39fb82796c8e6b09f624b2030ff6266bd4189f1
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 95eb5475f5584830eac5bd9c690be4a6a85de5c8
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720422"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016726"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Hibaelhárítás, kérdések és válaszok: Application Insights Java-hoz
 Kérdések és problémák [Azure Application Insights Java nyelven][java]? Íme néhány tipp.
@@ -56,7 +56,7 @@ Kérdések és problémák [Azure Application Insights Java nyelven][java]? Íme
 ### <a name="java-agent-cannot-capture-dependency-data"></a>A Java ügynököt nem függőségi adatok rögzítéséhez.
 * Konfigurálta már a Java ügynököt a következő [Java-ügynök konfigurálása](app-insights-java-agent.md) ?
 * Ellenőrizze, hogy a java ügynököt jar mind az AI-Agent.xml fájlt ugyanabba a mappába kerülnek.
-* Győződjön meg arról, hogy a függőséget próbált automatikus – gyűjtése automatikus gyűjtemény támogatott. Jelenleg csak támogatjuk a MySQL, MsSQL, Oracle DB és Redis Cache függőségi gyűjtemény.
+* Győződjön meg arról, hogy a függőséget próbált automatikus – gyűjtése automatikus gyűjtemény támogatott. Csak jelenleg MySQL, MsSQL, Oracle DB és az Azure Cache Redis függőségi gyűjtemény.
 * JDK 1.7-es vagy 1.8-as használunk? Jelenleg nem támogatott függőségi gyűjtemény a JDK-9.
 
 ## <a name="no-usage-data"></a>Nem használati adatok
@@ -156,7 +156,7 @@ Használja az Application Insights `org.apache.http`. Ez az Application Insights
 * [Diagnosztikai naplók rögzítése][javalogs]
 
 ## <a name="get-help"></a>Segítségkérés
-* [Stack Overflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * [Fájl egy problémát a Githubon](https://github.com/Microsoft/ApplicationInsights-Java/issues)
 
 <!--Link references-->

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: c96e195d425cff640a4961e34305c1af447f6f28
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 1e529b2276d2e68c67696ba9d142760f5881a25e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499428"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012810"
 ---
 # <a name="use-the-apache-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Az Apache Tez felhasználói felület használata a Windows-alapú HDInsight a Tez-feladatok hibakereséséhez
 A [Apache TEZ](https://tez.apache.org/) felhasználói felület segítségével debug [Apache Hive](https://hive.apache.org/) használata a Tez végrehajtómotor feladatokat. A Tez felhasználói felület megjeleníti a feladat, egy grafikont a csatlakoztatott elemek részletesen az egyes elemeket, és statisztikák és a naplózási információk lekéréséhez.
@@ -136,4 +136,4 @@ Az alábbi lépések segítségével által használt Tez Hive-lekérdezést fut
 ## <a name="next-steps"></a>További lépések
 Most, hogy megtanulhatta, hogyan használható a [Apache TEZ](https://tez.apache.org/) megtekintheti, tudjon meg többet [Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md).
 
-Részletes technikai információ a Tez, tekintse meg a [Apache Tez lapot a Hortonworks](http://hortonworks.com/hadoop/tez/).
+Részletes technikai információ a Tez, tekintse meg a [Apache Tez lapot a Hortonworks](https://hortonworks.com/hadoop/tez/).

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: eec628a5084dc663978e16e617192802d3ecfcfa
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: ddf40538fc3d6e39fe48ff49311f86314008b4ce
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307656"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994757"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Biztonsági keret: Engedélyezési |} Megoldások 
 | Termék vagy szolgáltatás | Cikk |
@@ -220,7 +220,7 @@ Vegye figyelembe, hogy az RLS-a-beépített adatbázis-szolgáltatásként egyar
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Azure Document DB | 
+| **Összetevő**               | Az Azure Document DB-ről | 
 | **SDL fázis**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
@@ -349,7 +349,7 @@ A `<behaviorExtensions/>` elem a WCF konfigurációs fájl az alábbi arra utas�
 | **SDL fázis**               | Felépítés |  
 | **Megfelelő technológiák** | Általános, 3. NET-keretrendszer |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_unauthorized_access) |
+| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
 | **Lépések** | <p>Ez a szolgáltatás nem használja az engedélyezési vezérlők. Amikor egy ügyfél egy adott WCF-szolgáltatást hív meg, a WCF biztosít különböző engedélyezési programok, győződjön meg arról, hogy a hívó jogosult a szolgáltatás metódus végrehajtása a kiszolgálón. Engedélyezési vezérlők nincsenek engedélyezve a WCF-szolgáltatások, ha egy hitelesített felhasználó jogosultságok eszkalálását érheti el.</p>|
 
 ### <a name="example"></a>Példa

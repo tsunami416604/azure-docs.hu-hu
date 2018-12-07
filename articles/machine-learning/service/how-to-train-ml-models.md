@@ -1,5 +1,5 @@
 ---
-title: Egy Estimator osztály használatával az Azure Machine Learning, machine learning-modellek betanításához.
+title: Az Azure Machine Learning szolgáltatás egy Estimator osztály használatával gépi Tanulási modelleket taníthat be
 description: Ismerje meg, hogyan hajthat végre egy csomópontos és elosztott képzési hagyományos gép tanulási és deep learning-modellek Azure Machine Learning services Estimator osztály használatával
 ms.author: minxia
 author: mx-iao
@@ -9,14 +9,15 @@ ms.component: core
 ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 12/04/2018
-ms.openlocfilehash: f7705d5dca75ce0906b9ffc2e4b4275ea8778656
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec12
+ms.openlocfilehash: 53462fc0aecbb8f5aeef0bb9208264c714ce8394
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875433"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011420"
 ---
-# <a name="how-to-train-models-with-azure-machine-learning"></a>Hogyan lehet az Azure Machine Learning-modellek betanításához
+# <a name="train-models-with-azure-machine-learning"></a>Az Azure Machine Learning-modellek betanításához
 
 Képzési gépi tanulási modelleket, különösen Neurális hálózatok, gyakran egy idő - és számításigényes feladat. Miután végzett a tanítási szkriptet és a egy kis részét jelentik az adatok a helyi gépen futó, valószínűleg érdemes vertikális felskálázása a számítási feladatok.
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.technology: azds-kubernetes
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Container Service, tárolók
-ms.openlocfilehash: 49e9a974dc01548c250f0b0a8b9b5afac5f286ff
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: e155b4151a3b974e9ccc56a88028a89c35896522
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705497"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014001"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Titkos kulcsok kezelése, az egy Azure-fejlesztési terület használatakor
 
@@ -112,5 +112,5 @@ Az Azure fejlesztési tárolóhelyek biztosít két ajánlott, hogy a titkos kul
 
 ## <a name="next-steps"></a>További lépések
 
-A következő módszerekkel, most már biztonságosan csatlakozhat egy adatbázis, a Redis Cache-gyorsítótárhoz vagy a hozzáférés biztonságos Azure-szolgáltatások.
+A következő módszerekkel, most már biztonságosan kapcsolódhat egy adatbázist, az Azure Cache redis, vagy biztonságos Azure-szolgáltatások eléréséhez.
  

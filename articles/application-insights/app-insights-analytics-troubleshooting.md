@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: 9df44ec59e9384ac047b5c67abae334d51ff4dd3
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: b883ccc475a221c8aee135c5d14da32f7598b90c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679273"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999045"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Elemzés hibaelhárítása az Application Insights szolgáltatásban
 Problémák [Application Insights-elemzési](app-insights-analytics.md)? Itt érdemes kezdenie. Analytics az Azure Application Insights hatékony keresési eszközben.
@@ -68,7 +68,7 @@ Hitelesítési hiba történt (a hitelesítési eljárás, illetve a hozzáfér�
      https://login.microsoftonline.com<br/>
      https://login.windows.net
 
-## <a name="e-d"></a>404 ... Az erőforrás nem található
+## <a name="e-d"></a>404 ... Nem található az erőforrás
 ![404... nem található az erőforrás](./media/app-insights-analytics-troubleshooting/040.png)
 
 Alkalmazás-erőforrás törölve lett az Application Insights, és nem használható többé. Ez akkor fordulhat elő, ha az elemzési lap mentett URL-CÍMÉT.
@@ -89,8 +89,8 @@ A portál a HTML5-alapú localStorage és sessionStorage használja.
 
 ![403-as... Próbálja meg engedélyezni a HTML5-alapú tárolás](./media/app-insights-analytics-troubleshooting/060.png)
 
-## <a name="e-g"></a>404 ... Nem található előfizetés
-![404 ... Nem található előfizetés](./media/app-insights-analytics-troubleshooting/070.png)
+## <a name="e-g"></a>404 ... Az előfizetés nem található
+![404 ... Az előfizetés nem található](./media/app-insights-analytics-troubleshooting/070.png)
 
 Az URL-cím érvénytelen. 
 
@@ -104,7 +104,7 @@ Az URL-cím érvénytelen.
 * Nyissa meg az alkalmazás-erőforrást [Application Insights portálon](https://portal.azure.com). Ezután használja az analitika gombra.
 
 ## <a name="cookies"></a>Cookie-k engedélyezése
-  Lásd: [harmadik féltől származó cookie-k letiltása](http://www.digitalcitizen.life/how-disable-third-party-cookies-all-major-browsers), de ellenőriznünk kell a hirdetmény **engedélyezése** őket.
+  Lásd: [harmadik féltől származó cookie-k letiltása](https://www.digitalcitizen.life/how-disable-third-party-cookies-all-major-browsers), de ellenőriznünk kell a hirdetmény **engedélyezése** őket.
 
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: hrasheed
-ms.openlocfilehash: 577f36f53bfad79af968a4c34f4b6ab0b49527c7
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 225cb3d2f78f41bdb17763d13644c1d95bc62710
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633444"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014701"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Lekérdezés az Apache Hive a HDInsight a JDBC-illesztőprogram segítségével
 
@@ -31,7 +31,7 @@ További információ a Hive JDBC-kapcsolaton: [HiveJDBCInterface](https://cwiki
   > [!IMPORTANT]
   > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight 3.3-as kivezetési](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-* [SQuirreL SQL](http://squirrel-sql.sourceforge.net/). SQuirreL JDBC ügyfélalkalmazás.
+* [SQuirreL SQL](https://squirrel-sql.sourceforge.net/). SQuirreL JDBC ügyfélalkalmazás.
 
 * A [Java fejlesztői készlet (JDK) 7-es verzió](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) vagy újabb verziója.
 

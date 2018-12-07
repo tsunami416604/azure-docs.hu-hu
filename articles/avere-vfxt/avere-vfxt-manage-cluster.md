@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 9eba9eef315f1ec6eb25ea21c1d4747ab002d078
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 82b5e175f0340aae7e35b177d9faa4831982984c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958916"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999063"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Az Avere vFXT-fürt felügyelete
 
@@ -81,7 +81,7 @@ A vfxt.py parancsfájlt a fürt felügyeleti feladatokhoz használható:
 
 Például Avere Vezérlőpulton vfxt.py operations próbálja meg ellenőrizze, hogy a módosított adatokat a háttér-tároló leáll, vagy a fürt vagy a csomópont megsemmisítése előtt véglegesen tárolja. Így a biztonságosabb megoldás, mint a Avere portálon.
 
-vfxt.PY előre telepítve van a virtuális gép fürt vezérlőn. <!-- (If you want to install it on another system, refer to http://github.com/Azure/AvereSDK) xxx change when this repo goes  public -->
+vfxt.PY előre telepítve van a virtuális gép fürt vezérlőn. <!-- (If you want to install it on another system, refer to https://github.com/Azure/AvereSDK) xxx change when this repo goes  public -->
 
 Egy teljes vfxt.py használati útmutató a Githubon érhető el: [vfxt.py a fürt Felhőfelügyelet](https://github.com/azure/averesdk/blob/master/docs/README.md)
 

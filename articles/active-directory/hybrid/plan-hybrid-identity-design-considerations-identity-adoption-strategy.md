@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 5aeefe82255d40938eff09d7920e2fd5aca94c95
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 9cfd3f32f6293d5760c4a4ddcf40428a2b9b70f8
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313641"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999085"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>A hibrid identitás bevezetési stratégia kidolgozása
 Ebben a feladatban a hibrid identitáskezelési megoldás, amely aktorcsoportot tárgyalt, az üzleti igényeknek hibrid identitás bevezetési stratégiája határozza meg:
@@ -92,7 +92,7 @@ Is kell vigyázni, milyen lehetőségek nem lesznek elérhetők:
 * Áttérés az Office passzív hitelesítést lehetővé teszi, hogy tiszta SAML 2.0 identitásszolgáltató használatát támogató, de támogatása továbbra is elszámolással, az ügyfél az ügyfél által
 
 > [!NOTE]
-> A legtöbb frissített listáját, olvassa el a cikket a https://aka.ms/ssoproviders.
+> A legtöbb frissített listáját, olvassa el a cikket a [az Azure AD összevonás kompatibilitási listája](how-to-connect-fed-compatibility.md).
 > 
 > 
 

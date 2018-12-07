@@ -9,18 +9,18 @@ ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.component: ''
-ms.openlocfilehash: 35e7d36043defd236252f86facf4b9e2ed945d67
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 3a21b2521cc16b97519f2f84b40a3f51536757e2
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054088"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999676"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Használat és becsült költségek figyelése
 
 > [!NOTE]
 > Ez a cikk ismerteti a használat és becsült költségek megtekintése eltérő díjszabási modelleket a több Azure figyelési szolgáltatások között.  További kapcsolódó információt a következő cikkekben talál.
-> - [Költségek kezelése a Log Analytics és az adatmennyiség szabályozásával](../log-analytics/log-analytics-manage-cost-storage.md) azt ismerteti, hogyan tarthatja a költségeket az Adatmegőrzés időtartama módosításával.
+> - [Költségek kezelése a Log Analytics és az adatmennyiség szabályozásával](../azure-monitor/platform/manage-cost-storage.md) azt ismerteti, hogyan tarthatja a költségeket az Adatmegőrzés időtartama módosításával.
 > - [Adathasználat elemzése a Log Analytics](../log-analytics/log-analytics-usage.md) azt ismerteti, hogyan elemezheti, és riasztást küldjön az adathasználatot.
 > - [Az Application Insights árak és adatmennyiségek kezelése](../application-insights/app-insights-pricing.md) adathasználat elemzése az Application Insights a ismerteti.
 

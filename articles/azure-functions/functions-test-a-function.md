@@ -1,443 +1,362 @@
 ---
-title: Az Azure Functions tesztelése |} A Microsoft Docs
-description: Az Azure functions tesztelése a Postman, a cURL és a Node.js használatával.
+title: Az Azure Functions tesztelése
+description: Hozzon létre automatizált teszteket egy C# függvény a Visual Studio és a JavaScript-függvény a VS Code-ban
 services: functions
 documentationcenter: na
-author: ggailey777
+author: craigshoemaker
 manager: jeconnoc
 keywords: az Azure functions, függvények, eseményfeldolgozás, webhookok, dinamikus számítás, kiszolgáló nélküli architektúra tesztelése
-ms.assetid: c00f3082-30d2-46b3-96ea-34faf2f15f77
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 02/02/2017
-ms.author: glenga
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b2605bb30d7a1442c471c8cf1483b106ca27581
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.date: 12/10/2018
+ms.author: cshoe
+ms.openlocfilehash: c91254b3a4a7037e24b22ba226c66141707d0c10
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086760"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016572"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>A kódot tesztelés az Azure Functions stratégiák
 
-Ez a témakör bemutatja a különböző módszereket teszteléséhez szükséges funkciókat, beleértve a következő általános megközelítéseket használatával:
+Ez a cikk bemutatja, hogyan hozhat létre automatizált teszteket az Azure Functions szolgáltatáshoz. 
 
-+ HTTP-alapú eszközök, például a cURL, a Postman és a web-alapú eseményindítók még egy webes böngésző
-+ Az Azure Storage Explorer, az Azure Storage-alapú eseményindítók tesztelése
-+ Az Azure Functions portálon a tesztelési lapot
-+ Időzítő által aktivált függvény
-+ Alkalmazás- vagy keretrendszer tesztelése
+Az összes kódot tesztelés ajánlott, azonban előfordulhat, hogy kap a legjobb eredmények elérése érdekében egy függvény logikai lezárása, és hozzon létre teszteket kívül a függvényt. Logikai azonnal paltformfüggetlen korlátozza egy függvény sornyi kódot, és lehetővé teszi, hogy a függvény, amely más osztályok vagy a modulokat hívó vonatkozó. Ebben a cikkben azonban bemutatja, hogyan hozhat létre automatizált teszteket egy HTTP- és időzítő által aktivált függvény ellen.
 
-A tesztelési módszer használata egy HTTP által aktivált függvény, amely bemeneti keresztül vagy a lekérdezési sztring paramétereként, vagy a kérelem törzsében. Ez a függvény az első szakaszban az Azure portal használatával hoz létre.
+A következő tartalmától azt, hogy több különböző nyelvet és a környezetek két különböző szakaszokra van osztva. A vizsgálatok alatt hozhat létre további:
 
-## <a name="create-a-simple-function-for-testing-using-the-azure-portal"></a>Hozzon létre egy egyszerű függvény tesztelése az Azure portal használatával
-A legtöbb ebben az oktatóanyagban akkor használható, ha létrehoz egy függvényt HttpTrigger JavaScript-függvény sablon kis mértékben módosított verzióját használjuk. Ha egy függvény létrehozása segítségre van szüksége, tekintse át ezt [oktatóanyag](functions-create-first-azure-function.md). Válassza ki a **HttpTrigger - JavaScript** sablon létrehozásakor a teszt függvényt a [Azure Portal].
+- [C#a Visual Studióban az xUnit](#c-in-visual-studio)
+- [A VS Code-Jest JavaScript](#javascript-in-vs-code)
 
-Az alapértelmezett függvénysablon alapvetően ad vissza a nevét, a kérelem szövegtörzséből vagy a lekérdezési karakterlánc paramétereként, a "hello world" függvény `name=<your name>`.  Frissítjük a kódot is lehetővé teszi, hogy a név és a egy címet, a kérelem törzsében szereplő JSON-tartalmak. A függvény ezután a ezeket újra az ügyfelet, ha elérhető az ad.   
+Az a minta tárház érhető el az [GitHub](https://github.com/craigshoemaker/azure-functions-tests).
 
-Frissítse a függvény a következő kódra, amely a tesztelési használjuk:
+## <a name="c-in-visual-studio"></a>C#a Visual Studióban
+Az alábbi példa bemutatja, hogyan hozhat létre egy C# Függvényalkalmazásnak a Visual Studióban, és futtassa, és teszteli a [xUnit](https://xunit.github.io).
 
-```javascript
-module.exports = function (context, req) {
-    context.log("HTTP trigger function processed a request. RequestUri=%s", req.originalUrl);
-    context.log("Request Headers = " + JSON.stringify(req.headers));
-    var res;
+![Az Azure Functions tesztelése C# a Visual Studióban](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
-    if (req.query.name || (req.body && req.body.name)) {
-        if (typeof req.query.name != "undefined") {
-            context.log("Name was provided as a query string param...");
-            res = ProcessNewUserInformation(context, req.query.name);
+### <a name="setup"></a>Beállítás
+
+Állítsa be a környezetet, hozzon létre egy függvényt, és alkalmazás teszteléséhez. A következő lépések segítségével hozhat létre az alkalmazások és funkciók a tesztek támogatásához szükséges:
+
+1. [Hozzon létre egy új Functions-alkalmazás](./functions-create-first-azure-function.md) , és nevezze el *funkciók*
+2. [Egy HTTP-függvény létrehozása sablonból](./functions-create-first-azure-function.md) , és nevezze el *HttpTrigger*.
+3. [Időzítő függvény létrehozása sablonból](./functions-create-scheduled-function.md) , és nevezze el *TimerTrigger*.
+4. [Hozzon létre egy xUnit tesztalkalmazás](https://xunit.github.io/docs/getting-started-dotnet-core) , és nevezze el *Functions.Test*.
+5. [Referencia a *funkciók* alkalmazás](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) a *Functions.Test* alkalmazást.
+
+### <a name="create-test-classes"></a>Teszt osztályok létrehozása
+
+Most, hogy az alkalmazások jönnek létre, az automatikus tesztek futtatásához használt osztályok hozhat létre.
+
+Minden függvény vesz igénybe egy példányát [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) nahrávání zprávy kezelésére. Néhány teszt nem üzenetek naplózása vagy rendelkezik hogyan van megvalósítva a naplózás nincs miatt aggódnának. Más teszteket kell értékelnie a meghatározásához, hogy egy tesztet, továbbítja a naplózott üzeneteket.
+
+A `ListLogger` osztály hivatott megvalósítása a `ILogger` felületet, és tartsa egy teszt során értékelésre üzeneteket belső listájában.
+
+**Kattintson a jobb gombbal** a a *Functions.Test* alkalmazás, és válassza ki **Hozzáadás > osztály**, adja neki **ListLogger.cs** , és adja meg a következő kódot:
+
+```csharp
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions.Internal;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Functions.Tests
+{
+    public class ListLogger : ILogger
+    {
+        public IList<string> Logs;
+
+        public IDisposable BeginScope<TState>(TState state) => NullScope.Instance;
+
+        public bool IsEnabled(LogLevel logLevel) => false;
+
+        public ListLogger()
+        {
+            this.Logs = new List<string>();
         }
-        else {
-            context.log("Processing user info from request body...");
-            res = ProcessNewUserInformation(context, req.body.name, req.body.address);
+
+        public void Log<TState>(LogLevel logLevel, 
+                                EventId eventId,
+                                TState state,
+                                Exception exception,
+                                Func<TState, Exception, string> formatter)
+        {
+            string message = formatter(state, exception);
+            this.Logs.Add(message);
         }
     }
-    else {
-        res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-    context.done(null, res);
-};
-function ProcessNewUserInformation(context, name, address) {
-    context.log("Processing user information...");
-    context.log("name = " + name);
-    var echoString = "Hello " + name;
-    var res;
-
-    if (typeof address != "undefined") {
-        echoString += "\n" + "The address you provided is " + address;
-        context.log("address = " + address);
-    }
-    res = {
-        // status: 200, /* Defaults to 200 */
-        body: echoString
-    };
-    return res;
 }
 ```
 
-## <a name="test-a-function-with-tools"></a>Az eszközök a függvény tesztelése
-Az Azure Portalon kívül nincsenek különböző eszközöket, amelyek segítségével a tesztelési funkciók elindítani. Ezek közé tartozik a tesztelési eszközök (felületen mind a parancsot. sor), az Azure Storage-hozzáférés eszközökkel és még egy egyszerű webes böngésző HTTP.
+A `ListLogger` osztály által szerződésben vállalt módon valósítja meg az alábbi tagokat az `ILogger` felületen:
 
-### <a name="test-with-a-browser"></a>Tesztelés böngészővel
-A webböngészőben az eseményindító függvények a HTTP Protokollon keresztül egyszerű módszert. Használhat egy böngészőben a GET-kérésekhez egy szervezet adattartalma nem igénylő, és a használata csak lekérdezési karakterlánc paraméterei.
+- **BeginScope**: hatókörök informatívabbá a naplózást. Ebben az esetben a vizsgálat csak pontokat a statikus példányhoz a [NullScope](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.abstractions.internal.nullscope) osztály, hogy a függvény tesztelése.
 
-A korábban meghatározott függvény teszteléséhez, másolja a **függvény URL-címének** a portálról. Rendelkezik a következő formátumot követi:
+- **IsEnabled**: alapértelmezett `false` van megadva.
 
-    https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
+- **Napló**: ezt a módszert használja a megadott `formatter` függvényt az üzenet formázásához és az eredményül kapott szöveg hozzáadja a `Logs` gyűjtemény.
 
-Fűzze hozzá a `name` a lekérdezési karakterlánc paramétert. Egy tényleges nevét használja a `<Enter a name here>` helyőrző.
+A `Logs` gyűjteménye egy példányát `List<string>` és a konstruktorban inicializálva van.
 
-    https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>&name=<Enter a name here>
+Ezután **kattintson a jobb gombbal** a a *Functions.Test* alkalmazás, és válassza **Hozzáadás > osztály**, adja neki **LoggerTypes.cs** , és adja meg a a következő kódot:
 
-Illessze be az URL-címet a böngészőben, és hogy válasz érkezik az alábbihoz hasonló.
-
-![Képernyőkép – a Chrome böngészőlapon teszt válasz](./media/functions-test-a-function/browser-test.png)
-
-Ebben a példában a Chrome böngészőben, amely becsomagolja a visszaadott karakterláncban XML formátumban. Más böngészők csak karakterlánc értéket jeleníti meg.
-
-A portálon **naplók** ablakban kimenete az alábbihoz hasonló be van jelentkezve a függvény végrehajtása:
-
-    2016-03-23T07:34:59  Welcome, you are now connected to log-streaming service.
-    2016-03-23T07:35:09.195 Function started (Id=61a8c5a9-5e44-4da0-909d-91d293f20445)
-    2016-03-23T07:35:10.338 Node.js HTTP trigger function processed a request. RequestUri=https://functionsExample.azurewebsites.net/api/WesmcHttpTriggerNodeJS1?code=XXXXXXXXXX==&name=Glenn from a browser
-    2016-03-23T07:35:10.338 Request Headers = {"cache-control":"max-age=0","connection":"Keep-Alive","accept":"text/html","accept-encoding":"gzip","accept-language":"en-US"}
-    2016-03-23T07:35:10.338 Name was provided as a query string param.
-    2016-03-23T07:35:10.338 Processing User Information...
-    2016-03-23T07:35:10.369 Function completed (Success, Id=61a8c5a9-5e44-4da0-909d-91d293f20445)
-
-### <a name="test-with-postman"></a>Tesztelése a postman használatával
-Az ajánlott eszköz teszteléséhez a függvények a legtöbb Postman, amely integrálható a Chrome böngészőben. Postman telepítése: [első Postman](https://www.getpostman.com/). Postman segítségével szabályozhatja, számos további attribútumok HTTP-kérés.
-
-> [!TIP]
-> A vizsgálati eszköz, amely a leginkább teljesebb HTTP Protokollt használja. Az alábbiakban néhány más Postman:  
->
-> * [Fiddler](http://www.telerik.com/fiddler)  
-> * [Emelt hozzáférési szintű munkaállomás](https://luckymarmot.com/paw)  
->
->
-
-A kérelem törzsében a függvény tesztelése a Postmanben:
-
-1. Indítsa el a Postmant, a **alkalmazások** gombra a Chrome böngészőben ablak bal felső sarkában.
-2. Másolás a **függvény URL-címének**, és illessze be a Postman. Ez magában foglalja a hozzáférési kód lekérdezési karakterlánc paramétereként.
-3. Módosítsa a HTTP-metódus **POST**.
-4. Kattintson a **törzs** > **nyers**, és adjon hozzá egy JSON-kérés törzsének a következőhöz hasonló:
-
-    ```json
+```csharp
+namespace Functions.Tests
+{
+    public enum LoggerTypes
     {
-        "name" : "Wes testing with Postman",
-        "address" : "Seattle, WA 98101"
+        Null,
+        List
     }
-    ```
-5. Kattintson a **küldése**.
+}
+```
+Ez az enumerálás határozza meg a tesztek által használt naplózó. 
 
-Az alábbi képen látható, ez az oktatóanyag az egyszerű echo függvény példa tesztelése.
+Ezután **kattintson a jobb gombbal** a a *Functions.Test* alkalmazás, és válassza **Hozzáadás > osztály**, adja neki **TestFactory.cs** , és adja meg a a következő kódot:
 
-![Képernyőkép a Postman felhasználói felület](./media/functions-test-a-function/postman-test.png)
+```csharp
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Internal;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
+using Microsoft.Extensions.Primitives;
+using System.Collections.Generic;
 
-A portálon **naplók** ablakban kimenete az alábbihoz hasonló be van jelentkezve a függvény végrehajtása:
+namespace Functions.Tests
+{
+    public class TestFactory
+    {
+        public static IEnumerable<object[]> Data()
+        {
+            return new List<object[]>
+            {
+                new object[] { "name", "Bill" },
+                new object[] { "name", "Paul" },
+                new object[] { "name", "Steve" }
 
-    2016-03-23T08:04:51  Welcome, you are now connected to log-streaming service.
-    2016-03-23T08:04:57.107 Function started (Id=dc5db8b1-6f1c-4117-b5c4-f6b602d538f7)
-    2016-03-23T08:04:57.763 HTTP trigger function processed a request. RequestUri=https://functions841def78.azurewebsites.net/api/WesmcHttpTriggerNodeJS1?code=XXXXXXXXXX==
-    2016-03-23T08:04:57.763 Request Headers = {"cache-control":"no-cache","connection":"Keep-Alive","accept":"*/*","accept-encoding":"gzip","accept-language":"en-US"}
-    2016-03-23T08:04:57.763 Processing user info from request body...
-    2016-03-23T08:04:57.763 Processing User Information...
-    2016-03-23T08:04:57.763 name = Wes testing with Postman
-    2016-03-23T08:04:57.763 address = Seattle, W.A. 98101
-    2016-03-23T08:04:57.795 Function completed (Success, Id=dc5db8b1-6f1c-4117-b5c4-f6b602d538f7)
+            };
+        }
 
-### <a name="test-with-curl-from-the-command-line"></a>A parancssorból a cURL tesztelése
-Általában amikor tesztelt szoftvert, nem elengedhetetlen keresse ki az esetleges további a parancssor segítségével az alkalmazás hibakeresését. Ez nem eltér a functions tesztelése. Vegye figyelembe, hogy a cURL Linux-alapú rendszereken alapértelmezés szerint elérhető. A Windows, akkor először le kell töltenie, és telepítse a [cURL eszköz](https://curl.haxx.se/).
+        private static Dictionary<string, StringValues> CreateDictionary(string key, string value)
+        {
+            var qs = new Dictionary<string, StringValues>
+            {
+                { key, value }
+            };
+            return qs;
+        }
 
-A függvény, amely a korábban meghatározott teszteléséhez, másolja a **függvény URL-Címének** a portálról. Rendelkezik a következő formátumot követi:
+        public static DefaultHttpRequest CreateHttpRequest(string queryStringKey, string queryStringValue)
+        {
+            var request = new DefaultHttpRequest(new DefaultHttpContext())
+            {
+                Query = new QueryCollection(CreateDictionary(queryStringKey, queryStringValue))
+            };
+            return request;
+        }
 
-    https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
+        public static ILogger CreateLogger(LoggerTypes type = LoggerTypes.Null)
+        {
+            ILogger logger;
 
-Ez az a függvényt aktiváló URL-CÍMÉT. Tesztelje a cURL-parancs segítségével a parancssorból, hogy egy GET (`-G` vagy `--get`) függvény kérelmet:
+            if (type == LoggerTypes.List)
+            {
+                logger = new ListLogger();
+            }
+            else
+            {
+                logger = NullLoggerFactory.Instance.CreateLogger("Null Logger");
+            }
 
-    curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
+            return logger;
+        }
+    }
+}
+```
+A `TestFactory` osztálya határozza meg a következő tagok:
 
-Ebben a példában van szükség a lekérdezési sztring paramétereként, amely adatok argumentumként átadhatók (`-d`) az a cURL-parancsot:
+- **Adatok**: Ez a tulajdonság adja vissza egy [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) mintaadatok gyűjteménye. A kulcs-érték párral egy lekérdezési karakterláncot az átadott értékeket jelölik.
 
-    curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code> -d name=<Enter a name here>
+- **CreateDictionary**: Ez a módszer egy kulcs/érték pár fogadja argumentumként, és adja vissza egy új `Dictionary` létrehozásához használt `QueryCollection` a lekérdezési karakterlánc értékeit jelölik.
 
-Futtassa a parancsot, és a függvény a következő kimenet jelenik meg a parancssorban:
+- **CreateHttpRequest**: Ezzel a módszerrel hoz létre egy HTTP-kérelem inicializálása a megadott lekérdezési karakterlánc paraméterei.
 
-![Kimenet képernyőképe a parancssor használatával](./media/functions-test-a-function/curl-test.png)
+- **CreateLogger**: naplózó típusa alapján, a metódus visszatérése tesztelésére naplózó osztály. A `ListLogger` nyomon követi a naplózott üzenetek tesztekben kiértékelésére.
 
-A portálon **naplók** ablakban kimenete az alábbihoz hasonló be van jelentkezve a függvény végrehajtása:
+Ezután **kattintson a jobb gombbal** a a *Functions.Test* alkalmazás, és válassza **Hozzáadás > osztály**, adja neki **FunctionsTests.cs** , és adja meg a a következő kódot:
 
-    2016-04-05T21:55:09  Welcome, you are now connected to log-streaming service.
-    2016-04-05T21:55:30.738 Function started (Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
-    2016-04-05T21:55:30.738 Node.js HTTP trigger function processed a request. RequestUri=https://functionsExample.azurewebsites.net/api/HttpTriggerNodeJS1?code=XXXXXXX&name=Azure Functions
-    2016-04-05T21:55:30.738 Function completed (Success, Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
+```csharp
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Xunit;
 
-### <a name="test-a-blob-trigger-by-using-storage-explorer"></a>Storage Explorer használatával tesztelje a blob eseményindító
-Blob eseményindító függvény használatával tesztelheti [Azure Storage Explorer](http://storageexplorer.com/).
+namespace Functions.Tests
+{
+    public class FunctionsTests
+    {
+        private readonly ILogger logger = TestFactory.CreateLogger();
 
-1. Az a [Azure Portal] a függvényalkalmazás létrehozása a C#, F # vagy JavaScript blob eseményindító függvény. Állítsa be a elérési útjának figyelése a blobtároló nevét. Példa:
+        [Fact]
+        public async void Http_trigger_should_return_known_string()
+        {
+            var request = TestFactory.CreateHttpRequest("name", "Bill");
+            var response = (OkObjectResult)await HttpFunction.Run(request, logger);
+            Assert.Equal("Hello, Bill", response.Value);
+        }
 
-        files
-2. Kattintson a **+** gombra, válassza ki vagy hozzon létre a használni kívánt tárfiókot. Ezt követően kattintson a **Create** (Létrehozás) gombra.
-3. Hozzon létre egy szövegfájlt az alábbi szövegre, és mentse azt:
+        [Theory]
+        [MemberData(nameof(TestFactory.Data), MemberType = typeof(TestFactory))]
+        public async void Http_trigger_should_return_known_string_from_member_data(string queryStringKey, string queryStringValue)
+        {
+            var request = TestFactory.CreateHttpRequest(queryStringKey, queryStringValue);
+            var response = (OkObjectResult)await HttpFunction.Run(request, logger);
+            Assert.Equal($"Hello, {queryStringValue}", response.Value);
+        }
 
-        A text file for blob trigger function testing.
-4. Futtatás [Azure Storage Explorer](http://storageexplorer.com/), és csatlakozzon a figyelt storage-fiókban a blob-tároló.
-5. Kattintson a **feltöltése** a szöveges fájlt feltölteni.
+        [Fact]
+        public void Timer_should_log_message()
+        {
+            var logger = (ListLogger)TestFactory.CreateLogger(LoggerTypes.List);
+            TimerFunction.Run(null, logger);
+            var msg = logger.Logs[0];
+            Assert.Contains("C# Timer trigger function executed at", msg);
+        }
+    }
+}
+```
+Ez az osztály megvalósított tagjai:
 
-    ![Képernyőkép a Storage Explorerben](./media/functions-test-a-function/azure-storage-explorer-test.png)
+- **Http_trigger_should_return_known_string**: Ez a vizsgálat kérést hoz létre a lekérdezés-karakterlánc értékét `name=Bill` egy HTTP-függvényt, és ellenőrzi, hogy a várt választ adja vissza.
 
-Az alapértelmezett blob eseményindító függvény kód a blob, a naplók feldolgozását jelentések:
+- **Http_trigger_should_return_string_from_member_data**: Ez a vizsgálat xUnit attribútumok használatával biztosítja a mintaadatokat a HTTP-függvénynek.
 
-    2016-03-24T11:30:10  Welcome, you are now connected to log-streaming service.
-    2016-03-24T11:30:34.472 Function started (Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
-    2016-03-24T11:30:34.472 C# Blob trigger function processed: A text file for blob trigger function testing.
-    2016-03-24T11:30:34.472 Function completed (Success, Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
+- **Timer_should_log_message**: Ez a vizsgálat létrehoz egy példányt a `ListLogger` , és átadja egy időzítő függvények. Miután a függvény fut, majd a napló be van jelölve annak érdekében, hogy jelen a várt üzenet.
 
-## <a name="test-a-function-within-functions"></a>Egy függvény belül függvények tesztelése
-A portál a célja, hogy HTTP tesztelése az Azure Functions és az időzítő által aktivált függvények. Tesztelt egyéb funkciók aktiválásához funkciók is létrehozhat.
+### <a name="run-tests"></a>Tesztek futtatása
 
-### <a name="test-with-the-functions-portal-run-button"></a>A portál Futtatás gombjával funkciók tesztelése
-A portál biztosít egy **futtatása** gombot, amely segítségével hajtsa végre egy korlátozott tesztelése. Kéréstörzs gomb használatával biztosíthat, de nem adja meg a lekérdezési karakterlánc paraméterei, illetve nem frissíthető a kérelemfejlécek.
+A tesztek futtatását, nyissa meg a **teszt Explorer** kattintson **futtathatja az összes**.
 
-A korábban létrehozott hozzáadva a következőhöz hasonló JSON-karakterláncot HTTP által aktivált függvény tesztelése a **kérelem törzse** mező. Kattintson a **futtatása** gombra.
+![Az Azure Functions tesztelése C# a Visual Studióban](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
+
+### <a name="debug-tests"></a>Tesztek hibakeresése
+
+A teszteket végezni, állítson be egy töréspontot a vizsgálatot, keresse meg a **Explorer tesztelése** kattintson **futtassa > utolsó futtassa hibakeresés**.
+
+## <a name="javascript-in-vs-code"></a>JavaScript a VS Code-ban
+
+Az alábbi példa bemutatja, hogyan hozzon létre egy JavaScript-függvény alkalmazást a VS Code-ban, és futtassa, és teszteli a [Jest](https://jestjs.io). Ez az eljárás használja a [VS Code funkciók bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) létrehozása az Azure Functions.
+
+![JavaScript az Azure Functions tesztelése a VS Code-ban](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
+
+### <a name="setup"></a>Beállítás
+
+Állítsa be a környezetet, inicializálni egy új Node.js-alkalmazás az üres mappa futtatásával `npm init`.
+
+```bash
+npm init -y
+```
+Ezután telepítse Jest a következő parancs futtatásával:
+
+```bash
+npm i jest
+```
+Most frissítse _package.json_ lecseréli a meglévő teszt parancs a következő parancsot:
+
+```bash
+"scripts": {
+    "test": "jest"
+}
+```
+
+### <a name="create-test-modules"></a>Teszt modulok létrehozása
+A modulok automatikus vizsgálatok futtatásához használt inicializálása a projekttel hozhat létre. Először hozzon létre egy új mappát *tesztelés* a támogatási modulok tárolásához.
+
+Az a *tesztelés* mappa adjon hozzá egy új fájlt, adja neki **defaultContext.js**, és adja hozzá a következő kódot:
+
+```javascript
+module.exports = {
+    log: jest.fn()
+};
+```
+Ez a modul mocks a *log* függvény, amely jelöli az alapértelmezett végrehajtási környezetet.
+
+Ezután adjon hozzá egy új fájlt, adja neki **defaultTimer.js**, és adja hozzá a következő kódot:
+
+```javascript
+module.exports = {
+    isPastDue: false
+};
+```
+A modul végrehajtja a `isPastDue` passzív tulajdonság értéke hamis időzítő példányként.
+
+Ezután használhatja a VS Code funkciók bővítmény [hozzon létre egy új JavaScript HTTP függvényt](https://code.visualstudio.com/tutorials/functions-extension/getting-started) , és nevezze el *HttpTrigger*. A függvény létrehozása után adjon hozzá egy új fájlt ugyanabba a mappába nevű **index.test.js**, és adja hozzá a következő kódot:
+
+```javascript
+const httpFunction = require('./index');
+const context = require('../testing/defaultContext')
+
+test('Http trigger should return known text', async () => {
+
+    const request = {
+        query: { name: 'Bill' }
+    };
+
+    await httpFunction(context, request);
+
+    expect(context.log.mock.calls.length).toBe(1);
+    expect(context.res.body).toEqual('Hello Bill');
+});
+```
+A HTTP-függvényt a sablonból a "Hello", a lekérdezési karakterláncban megadott névvel összefűzött karakterláncot ad vissza. Ez a vizsgálat egy kérelem egy hamis példányt hoz létre, és továbbítja azt a HTTP-függvényt. A teszt ellenőrzi, hogy a *log* módszert hívja meg egyszer, és a visszaadott szövegben egyenlő "Hello Bill".
+
+Ezután a VS Code funkciók bővítmény használatával hozzon létre egy új JavaScript-időzítő függvény *TimerTrigger*. A függvény létrehozása után adjon hozzá egy új fájlt ugyanabba a mappába nevű **index.test.js**, és adja hozzá a következő kódot:
+
+```javascript
+const timerFunction = require('./index');
+const context = require('../testing/defaultContext');
+const timer = require('../testing/defaultTimer');
+
+test('Timer trigger should log message', () => {
+    timerFunction(context, timer);
+    expect(context.log.mock.calls.length).toBe(1);
+});
+```
+Az időzítő függvény a sablonból a függvény törzséhez végén egy üzenet naplózza. Ez a vizsgálat biztosítja a *log* függvény neve után.
+
+### <a name="run-tests"></a>Tesztek futtatása
+A tesztek futtatásához nyomja le az ENTER **CTRL + ~** nyissa meg a parancsablakot, és futtassa a `npm test`:
+
+```bash
+npm test
+```
+
+![JavaScript az Azure Functions tesztelése a VS Code-ban](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
+
+### <a name="debug-tests"></a>Tesztek hibakeresése
+
+A teszteket végezni, adja hozzá a következő konfigurációt a *launch.json* fájlt:
 
 ```json
 {
-    "name" : "Wes testing Run button",
-    "address" : "USA"
+  "type": "node",
+  "request": "launch",
+  "name": "Jest Tests",
+  "program": "${workspaceRoot}\\node_modules\\jest\\bin\\jest.js",
+  "args": [
+      "-i"
+  ],
+  "internalConsoleOptions": "openOnSessionStart"
 }
 ```
 
-A portálon **naplók** ablakban kimenete az alábbihoz hasonló be van jelentkezve a függvény végrehajtása:
+Ezután állítson be egy töréspontot a teszt- és nyomja le az **F5**.
 
-    2016-03-23T08:03:12  Welcome, you are now connected to log-streaming service.
-    2016-03-23T08:03:17.357 Function started (Id=753a01b0-45a8-4125-a030-3ad543a89409)
-    2016-03-23T08:03:18.697 HTTP trigger function processed a request. RequestUri=https://functions841def78.azurewebsites.net/api/wesmchttptriggernodejs1
-    2016-03-23T08:03:18.697 Request Headers = {"connection":"Keep-Alive","accept":"*/*","accept-encoding":"gzip","accept-language":"en-US"}
-    2016-03-23T08:03:18.697 Processing user info from request body...
-    2016-03-23T08:03:18.697 Processing User Information...
-    2016-03-23T08:03:18.697 name = Wes testing Run button
-    2016-03-23T08:03:18.697 address = USA
-    2016-03-23T08:03:18.744 Function completed (Success, Id=753a01b0-45a8-4125-a030-3ad543a89409)
+## <a name="next-steps"></a>További lépések
 
+Most, hogy megismerte, hogyan írhat az Ön függvényeinek automatizált teszteket, folytassa a ezeket az erőforrásokat:
 
-### <a name="test-with-a-timer-trigger"></a>Időzítő eseményindító tesztelése
-Bizonyos függvények a korábban említett eszközei megfelelően nem tesztelhető. Vegyük példaként, amely akkor fut, amikor egy üzenet van érkező üzenetsor eseményindító függvény [Azure Queue storage](../storage/queues/storage-dotnet-how-to-use-queues.md). Mindig is írhat kódot a dobja el egy üzenetet az üzenetsorba, és a egy példát a konzol-projektben a cikk későbbi részében. Van azonban használhat, amely teszteli a függvényeket közvetlenül egy másik módszere.  
-
-Egy időzítő indítófeltételt üzenetsor konfigurálva használhat kimeneti kötést. Időzítő eseményindító kódot majd írhat a teszt üzeneteket az üzenetsorba. Ez a szakasz egy példán keresztül mutatja be.
-
-További részletes információ a kötések használata az Azure Functions: a [Azure Functions fejlesztői segédanyagai](functions-reference.md).
-
-#### <a name="create-a-queue-trigger-for-testing"></a>Tesztelési üzenetsor eseményindító létrehozása
-Ez a megközelítés bemutatása érdekében először létrehozzuk, tesztelni szeretnénk a várólisták nevű üzenetsor eseményindító függvény `queue-newusers`. Ez a függvény nevét és címét, a Queue storage egy új felhasználó érkező információk dolgozza fel.
-
-> [!NOTE]
-> Ha egy másik várólistához nevet használ, ellenőrizze, hogy használt név megfelel-e a [elnevezési üzenetsorok és metaadatok](https://msdn.microsoft.com/library/dd179349.aspx) szabályokat. Ellenkező esetben a rendszer hibaüzenetet küld.
->
->
-
-1. Az a [Azure Portal] a függvényalkalmazást, kattintson a **új függvény** > **QueueTrigger - C#**.
-2. Adja meg a várólista függvény által figyelendő az üzenetsor neve:
-
-        queue-newusers
-3. Kattintson a **+** gombra, válassza ki vagy hozzon létre a használni kívánt tárfiókot. Ezt követően kattintson a **Create** (Létrehozás) gombra.
-4. Hagyja nyitva, a portál böngészőablakot, hogy meg tudja figyelni a naplóbejegyzéseket az alapértelmezett várólista függvény sablonkódját a.
-
-#### <a name="create-a-timer-trigger-to-drop-a-message-in-the-queue"></a>Az üzenetsorban lévő üzenet eldobni időzítő eseményindító létrehozása
-1. Nyissa meg a [Azure Portal] egy új böngészőablakban, és keresse meg a függvényalkalmazást.
-2. Kattintson a **új függvény** > **TimerTrigger – C#**. Adjon meg egy cron-kifejezés, milyen gyakran teszteli, az üzenetsor-függvény időzítő kódot beállítani. Ezt követően kattintson a **Create** (Létrehozás) gombra. Ha azt szeretné, hogy a teszt 30 másodpercenként futtatásához, a következőt használhatja [CRON-kifejezés](https://wikipedia.org/wiki/Cron#CRON_expression):
-
-        */30 * * * * *
-3. Kattintson a **integráció** lap az új időzítő eseményindító.
-4. A **kimeneti**, kattintson a **+ új kimenet**. Kattintson a **várólista** és **kiválasztása**.
-5. Megjegyzés: a nevet használja a **várólista üzenetobjektum**. Ezzel az időzítő függvény kódban.
-
-        myQueue
-6. Adja meg a várólista nevét, ahová az üzenet elküldésekor:
-
-        queue-newusers
-7. Kattintson a **+** gombra kattintva válassza ki a tárfiókot, az üzenetsor eseményindító a korábban használt. Ezután kattintson a **Save** (Mentés) gombra.
-8. Kattintson a **Develop** az időzítő eseményindító fülre.
-9. A C# időzítő függvény esetében a következő kódot használhatja, mindaddig, amíg a várólista üzenet objektum névvel korábban bemutatott használt. Ezután kattintson a **Save** (Mentés) gombra.
-
-    ```cs
-    using System;
-    using Microsoft.Extensions.Logging;
-
-    public static void Run(TimerInfo myTimer, out String myQueue, ILogger log)
-    {
-        String newUser =
-        "{\"name\":\"User testing from C# timer function\",\"address\":\"XYZ\"}";
-
-        log.Verbose($"C# Timer trigger function executed at: {DateTime.Now}");   
-        log.Verbose($"{newUser}");   
-
-        myQueue = newUser;
-    }
-    ```
-
-Ezen a ponton a C# időzítő függvény végrehajtása 30 másodpercenként, ha például cron-kifejezésként használt. A naplók az időzítő függvény minden egyes végrehajtása jelentheti:
-
-    2016-03-24T10:27:02  Welcome, you are now connected to log-streaming service.
-    2016-03-24T10:27:30.004 Function started (Id=04061790-974f-4043-b851-48bd4ac424d1)
-    2016-03-24T10:27:30.004 C# Timer trigger function executed at: 3/24/2016 10:27:30 AM
-    2016-03-24T10:27:30.004 {"name":"User testing from C# timer function","address":"XYZ"}
-    2016-03-24T10:27:30.004 Function completed (Success, Id=04061790-974f-4043-b851-48bd4ac424d1)
-
-A várólista függvény a böngésző ablakában látható minden üzenet feldolgozása folyamatban:
-
-    2016-03-24T10:27:06  Welcome, you are now connected to log-streaming service.
-    2016-03-24T10:27:30.607 Function started (Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
-    2016-03-24T10:27:30.607 C# Queue trigger function processed: {"name":"User testing from C# timer function","address":"XYZ"}
-    2016-03-24T10:27:30.607 Function completed (Success, Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
-
-## <a name="test-a-function-with-code"></a>A kód egy függvény tesztelése
-Előfordulhat, hogy szeretne létrehozni egy külső alkalmazás vagy keretrendszer, a függvény teszteléséhez.
-
-### <a name="test-an-http-trigger-function-with-code-nodejs"></a>A kód egy HTTP által aktivált függvény tesztelése: Node.js
-Node.js-alkalmazások segítségével HTTP-kérést, a függvény teszteléséhez hajtsa végre.
-Feltétlenül állítson be:
-
-* A `host` a kérelem beállítások függvény app-gazdagépre.
-* A függvény neve az a `path`.
-* A hozzáférési kódot (`<your code>`) az a `path`.
-
-Példa:
-
-```javascript
-var http = require("http");
-
-var nameQueryString = "name=Wes%20Query%20String%20Test%20From%20Node.js";
-
-var nameBodyJSON = {
-    name : "Wes testing with Node.JS code",
-    address : "Dallas, T.X. 75201"
-};
-
-var bodyString = JSON.stringify(nameBodyJSON);
-
-var options = {
-  host: "functions841def78.azurewebsites.net",
-  //path: "/api/HttpTriggerNodeJS2?code=sc1wt62opn7k9buhrm8jpds4ikxvvj42m5ojdt0p91lz5jnhfr2c74ipoujyq26wab3wk5gkfbt9&" + nameQueryString,
-  path: "/api/HttpTriggerNodeJS2?code=sc1wt62opn7k9buhrm8jpds4ikxvvj42m5ojdt0p91lz5jnhfr2c74ipoujyq26wab3wk5gkfbt9",
-  method: "POST",
-  headers : {
-      "Content-Type":"application/json",
-      "Content-Length": Buffer.byteLength(bodyString)
-    }    
-};
-
-callback = function(response) {
-  var str = ""
-  response.on("data", function (chunk) {
-    str += chunk;
-  });
-
-  response.on("end", function () {
-    console.log(str);
-  });
-}
-
-var req = http.request(options, callback);
-console.log("*** Sending name and address in body ***");
-console.log(bodyString);
-req.end(bodyString);
-```
-
-
-Kimenet:
-
-    C:\Users\Wesley\testing\Node.js>node testHttpTriggerExample.js
-    *** Sending name and address in body ***
-    {"name" : "Wes testing with Node.JS code","address" : "Dallas, T.X. 75201"}
-    Hello Wes testing with Node.JS code
-    The address you provided is Dallas, T.X. 75201
-
-A portálon **naplók** ablakban kimenete az alábbihoz hasonló be van jelentkezve a függvény végrehajtása:
-
-    2016-03-23T08:08:55  Welcome, you are now connected to log-streaming service.
-    2016-03-23T08:08:59.736 Function started (Id=607b891c-08a1-427f-910c-af64ae4f7f9c)
-    2016-03-23T08:09:01.153 HTTP trigger function processed a request. RequestUri=http://functionsExample.azurewebsites.net/api/WesmcHttpTriggerNodeJS1/?code=XXXXXXXXXX==
-    2016-03-23T08:09:01.153 Request Headers = {"connection":"Keep-Alive","host":"functionsExample.azurewebsites.net"}
-    2016-03-23T08:09:01.153 Name not provided as query string param. Checking body...
-    2016-03-23T08:09:01.153 Request Body Type = object
-    2016-03-23T08:09:01.153 Request Body = [object Object]
-    2016-03-23T08:09:01.153 Processing User Information...
-    2016-03-23T08:09:01.215 Function completed (Success, Id=607b891c-08a1-427f-910c-af64ae4f7f9c)
-
-
-### <a name="test-a-queue-trigger-function-with-code-c"></a>Tesztelje a kódot az üzenetsor eseményindító függvény: C# #
-Azt korábban említettük, hogy egy üzenetsor eseményindító tesztelheti az üzenetsorban lévő üzenet eldobni kód használatával. Az alábbi példakód C#-kódban megjelenő alapul a [Azure Queue storage használatának első lépései](../storage/queues/storage-dotnet-how-to-use-queues.md) oktatóanyag. A kód más nyelven is a hivatkozás érhető el.
-
-Ez a kód egy konzolalkalmazást a teszteléséhez tegye a következőket:
-
-* [A tárolási kapcsolati karakterlánc konfigurálása az app.config fájlban](../storage/queues/storage-dotnet-how-to-use-queues.md).
-* Adja át a `name` és `address` az alkalmazás paraméterekként. Például: `C:\myQueueConsoleApp\test.exe "Wes testing queues" "in a console app"`. (Ez a kód fogadja el a nevét és címét, egy új felhasználó parancssori argumentumként futtatás ideje alatt.)
-
-A példában a C#-kódot:
-
-```cs
-static void Main(string[] args)
-{
-    string name = null;
-    string address = null;
-    string queueName = "queue-newusers";
-    string JSON = null;
-
-    if (args.Length > 0)
-    {
-        name = args[0];
-    }
-    if (args.Length > 1)
-    {
-        address = args[1];
-    }
-
-    // Retrieve storage account from connection string
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
-
-    // Create the queue client
-    CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-
-    // Retrieve a reference to a queue
-    CloudQueue queue = queueClient.GetQueueReference(queueName);
-
-    // Create the queue if it doesn't already exist
-    queue.CreateIfNotExists();
-
-    // Create a message and add it to the queue.
-    if (name != null)
-    {
-        if (address != null)
-            JSON = String.Format("{{\"name\":\"{0}\",\"address\":\"{1}\"}}", name, address);
-        else
-            JSON = String.Format("{{\"name\":\"{0}\"}}", name);
-    }
-
-    Console.WriteLine("Adding message to " + queueName + "...");
-    Console.WriteLine(JSON);
-
-    CloudQueueMessage message = new CloudQueueMessage(JSON);
-    queue.AddMessage(message);
-}
-```
-
-A várólista függvény a böngésző ablakában látható minden üzenet feldolgozása folyamatban:
-
-    2016-03-24T10:27:06  Welcome, you are now connected to log-streaming service.
-    2016-03-24T10:27:30.607 Function started (Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
-    2016-03-24T10:27:30.607 C# Queue trigger function processed: {"name":"Wes testing queues","address":"in a console app"}
-    2016-03-24T10:27:30.607 Function completed (Success, Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
-
-
-<!-- URLs. -->
-
-[Azure Portal]: https://portal.azure.com
+- [Az Azure Functions hibakezelés](./functions-bindings-error-pages.md)
+- [Azure-függvény Event Grid eseményindító helyi hibakeresés](./functions-debug-event-grid-trigger-local.md)

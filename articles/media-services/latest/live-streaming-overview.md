@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: juliako
-ms.openlocfilehash: 634563a2010562e20691abae132dc7540ef8faf2
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b51f2850a925fcd9daf3a07d8db66193555df0fa
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632704"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000244"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Élő Stream a az Azure Media Services v3
 
@@ -34,7 +34,7 @@ Ez a cikk részletes nyújt útmutatást, és diagramokat, a fő összetevőkrő
 
 A Media Services igény szerinti vagy élő adatfolyamot továbbítani kell rendelkeznie kell legalább egy [Streamvégpontok](https://docs.microsoft.com/rest/api/media/streamingendpoints). A Media Services-fiók létrehozásakor egy **alapértelmezett** Streamvégpontok bekerül a fiókhoz a **leállítva** állapota. Indítsa el a Streamvégpontok, ahonnan a felhasználóknak a tartalmak streamelésére kell. Használhatja az alapértelmezett **Streamvégpontok**, vagy hozzon létre egy másik testre szabott **Streamvégpontok** a szükséges konfiguráció és a CDN-beállításokkal. Ahhoz, hogy több Streamvégpontok, mindegyiknél célzó különböző CDN és a egy egyedi eszköznév megadása a tartalom továbbításának dönthet. 
 
-A Media Services szolgáltatásban [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) feldolgozására és feldolgozása az élő videóközvetítési felelősek. Amikor létrehoz egy videókhoz, egy bemeneti végpont jön létre, használhatja élő jelet küld a távoli kódoló. A távoli az élő kódoló küld a hozzájárulás hírcsatorna, amelyek bemeneti végpont használatával vagy a [RTMP](https://en.wikipedia.org/wiki/Real-Time_Messaging_Protocol) vagy [Smooth Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming#Microsoft_Smooth_Streaming) (töredékes-MP4) protokollt.  
+A Media Services szolgáltatásban [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) feldolgozására és feldolgozása az élő videóközvetítési felelősek. Amikor létrehoz egy videókhoz, egy bemeneti végpont jön létre, használhatja élő jelet küld a távoli kódoló. A távoli az élő kódoló küld a hozzájárulás hírcsatorna, amelyek bemeneti végpont használatával vagy a [RTMP](https://www.adobe.com/devnet/rtmp.html) vagy [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) (töredékes-MP4) protokollt.  
 
 Miután a **videókhoz** fogadása a csatorna közreműködői elindul, használhatja az előzetes verziójú végpont (előzetes verzió URL-cím és ellenőrzéséhez, hogy azért küldtük Önnek, az élő stream további közzététel előtt. Miután ellenőrizte, hogy az előzetes verzió adatfolyam jó, használhatja a videókhoz elérhetővé tenni az élő stream a kézbesítési egy vagy több (előre létrehozott) keresztül **Streamvégpontok**. Ennek érdekében a, hozzon létre egy új [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) a a **videókhoz**. 
 

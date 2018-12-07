@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c59cb8277bee13a83d0bf17c26deef1b8fc8d3e6
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: e01262d67b6d08cd1cb05a6375344a5087fffce3
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822843"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012521"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor-preview"></a>Az Azure Event Hubs-metrikák az Azure Monitor (előzetes verzió)
 
@@ -37,13 +38,13 @@ Alapértelmezés szerint engedélyezve vannak a metrikákat, és elérheti az ut
 
 Az idő függvényében segítségével figyelheti a mérőszámokat a [az Azure portal](https://portal.azure.com). Az alábbi példa bemutatja, hogyan sikeres kérések és a fiók szintjén a bejövő kérelmek megtekintése:
 
-![][1]
+![A sikeres metrikáinak megtekintése][1]
 
 Metrikák a névtér keresztül közvetlenül is elérheti. Ehhez válassza ki a névteret, és kattintson a **metrikák (Peview)**. Az event hubs hatókörének szűrt metrikák megjelenítéséhez válassza ki az event hubs, és kattintson a **metrikák (előnézet)**.
 
 Dimenziók támogató metrikákhoz a kívánt dimenzió értékű a következő példában látható módon kell szűrése:
 
-![][2]
+![A dimenzió értéket szűrése][2]
 
 ## <a name="billing"></a>Számlázás
 

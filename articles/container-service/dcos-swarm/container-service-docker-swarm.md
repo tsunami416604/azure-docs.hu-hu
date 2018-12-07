@@ -1,6 +1,6 @@
 ---
-title: Docker API-t Azure Swarm-fürt kezeléséhez
-description: A Docker Swarm-fürt az Azure Tárolószolgáltatás – tárolók üzembe helyezése
+title: (ELAVULT) Azure Swarm-fürtöt a Docker API-val kezelheti.
+description: Tárolók üzembe helyezése a Docker Swarm-fürt Azure Container Service-ben
 services: container-service
 author: rgardler
 manager: madhana
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 09/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 3f8d18bc053bc303ab124ba38c8621d4ee2e8cb8
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 04cc9048271d653bd77fd7f2707c8f510ea8c29f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
-ms.locfileid: "26331545"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997949"
 ---
-# <a name="container-management-with-docker-swarm"></a>Tárolókezelés a Docker Swarmmal
+# <a name="deprecated-container-management-with-docker-swarm"></a>(ELAVULT) Tárolókezelés a Docker Swarmmal
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 A Docker Swarm olyan környezetet biztosít, amelyben tárolóalapú számítási feladatokat helyezhet üzembe egy Docker-gazdagépekből álló készletben. A Docker Swarm a natív Docker API-t használja. A Docker Swarm tárolókezelésének munkafolyamata majdnem azonos az egyetlen tároló-gazdagépen elvégzendő munkafolyamattal. Ez a dokumentum egyszerű példák segítségével ismerteti, hogy miként helyezhetők üzembe a tárolóalapú munkafolyamatok a Docker Swarm Azure tárolószolgáltatás-példányaiban. További részletes dokumentációt a Docker Swarmról a [ Docker.com](https://docs.docker.com/swarm/) webhelyen talál.
 
@@ -110,6 +112,6 @@ caf185d221b7        adtd/web:0.1        "apache2-foreground"   2 minutes ago    
 
 A `docker-compose ps` használatával természetesen megvizsgálhatja a csak a `compose.yml` fájlban megadott tárolókat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [További információ a Docker Swarmról](https://docs.docker.com/swarm/)
 

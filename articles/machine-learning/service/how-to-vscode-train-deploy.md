@@ -1,5 +1,5 @@
 ---
-title: Betanítása és gépi tanulási modellek Azure Machine Learning használatával a Visual Studio Code telepítése
+title: A Visual Studio Code használatával betanítása és az Azure Machine Learning szolgáltatás modellek üzembe helyezése
 description: További információ az Azure Machine Learning Visual Studio Code és a képzés és üzembe helyezése gépi tanulási és deep learning-modellek a Visual Studio Code az Azure Machine Learning szolgáltatás elindítása.
 services: machine-learning
 ms.service: machine-learning
@@ -8,14 +8,15 @@ ms.topic: conceptual
 ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
-ms.openlocfilehash: 2b4b2eb2377d9a90d14eec0d32a77436381c2c6f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec12
+ms.openlocfilehash: e1ea0b867738f72d9ff4baff25b630887b9232c9
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868311"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016434"
 ---
-# <a name="train-and-deploy-machine-learning-models-using-azure-machine-learning-for-visual-studio-code"></a>Betanítása és gépi tanulási modellek Azure Machine Learning használatával a Visual Studio Code telepítése
+# <a name="use-visual-studio-code-to-train-and-deploy-machine-learning-models"></a>Betanítása és gépi tanulási modellek üzembe helyezése a Visual Studio Code használatával
 
 Ebben a cikkben, megtudhatja, hogyan használható a **az Azure Machine Learning a Visual Studio Code** bővítmény betanítását és üzembe helyezése a gépi tanulási és deep learning-modellek a Visual Studio Code (a VS Code) az Azure Machine Learning szolgáltatással.
 

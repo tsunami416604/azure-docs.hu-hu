@@ -12,20 +12,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: d24a268cf389dfe9dec914b2d27bbe8e466ea675
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a6272f0a6da10075db299d0f8c87f0d748a7a946
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737192"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996481"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Az Azure Data Lake Storage Gen1 és az Azure Blob Storage összehasonlítása
+  >[!NOTE] 
+    >[Az Azure Data Lake Storage Gen2 előzetes verzió](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) nemrég bejelentettük. Data Lake Storage Gen2 előzetes verzió oka beépül a képességeit a két meglévő társzolgáltatások, Azure Blob Storage és az [Azure Data Lake Storage Gen1] (https://docs.microsoft.com/azure/data-lake-store/index). Fájlrendszer szemantikáját, például az Azure Data Lake Storage Gen1 funkciók fájlszintű biztonsági és méretezési csoport alacsony költségű, többrétegű tárolás, a magas rendelkezésre állás/vész-helyreállítási lehetőségei vannak kombinálva [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction). <br> Kifejezetten ajánljuk, hogy indítsa el a Data Lake Storage Gen2 előzetes verzió használata alapjaként, amellyel a vállalat adattárakba rendezhetjük, és az Azure Blob Storage, valamint az Azure Data Lake Storage Gen1 előnyeit.
+
 Ebben a cikkben a táblázat néhány fontos szempontjai big data-feldolgozáshoz mentén az Azure Data Lake Storage Gen1 és az Azure Blob Storage közötti különbségeket foglalja össze. Az Azure Blob Storage egy általános célú, skálázható objektumtárolását, amely számos különböző adattárolási forgatókönyvekhez készült. Az Azure Data Lake Storage Gen1 egy nagy kapacitású adattár, amely a big data-elemzési számítási feladatokhoz van optimalizálva.
+
+
+
+
 
 |  | 1. generációs Azure Data Lake Storage | Azure Blob Storage |
 | --- | --- | --- |
 | Cél |A big data-elemzési célokra tárolás |Általános célú objektumtároló a számos különböző storage-forgatókönyvek, beleértve a big data-elemzés |
-| Használati esetek |Kötegelt, interaktív, analitikai és gép tanulási streamelési például naplófájlok, IoT-adatokat, kattintson a adatfolyamok, nagy méretű adatkészletek |Bármilyen típusú szöveget vagy bináris adatot, például az alkalmazás biztonsági célból, biztonsági mentési adatokat, a streamelési és az általános célú adatok médiatárolónkba. Emellett teljes körű támogatást adatelemzési feladatokhoz; kötegelt, interaktív, analitikai és gép tanulási streamelési például naplófájlok, IoT-adatokat, kattintson a adatfolyamok, nagy méretű adatkészletek |
+| Használati példák |Kötegelt, interaktív, analitikai és gép tanulási streamelési például naplófájlok, IoT-adatokat, kattintson a adatfolyamok, nagy méretű adatkészletek |Bármilyen típusú szöveget vagy bináris adatot, például az alkalmazás biztonsági célból, biztonsági mentési adatokat, a streamelési és az általános célú adatok médiatárolónkba. Emellett teljes körű támogatást adatelemzési feladatokhoz; kötegelt, interaktív, analitikai és gép tanulási streamelési például naplófájlok, IoT-adatokat, kattintson a adatfolyamok, nagy méretű adatkészletek |
 | Fő fogalmak |A Data Lake Storage Gen1 fiók mappával, viszont tartalmazó fájlként tárolt adatok |Storage-fiók rendelkezik tárolókkal, melynek cserébe megvan a blobok formájában adatok |
 | struktúra |Hierarchikus fájlrendszer |Objektumtároló strukturálatlan névtér esetében |
 | API |HTTPS-kapcsolaton keresztül a REST API |REST API HTTP/HTTPS-kapcsolaton keresztül |

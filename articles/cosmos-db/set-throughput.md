@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: andrl
-ms.openlocfilehash: a97032344b904442ed3606c6297251578c3b4ff7
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 15b7dce5af984e4eb719024368479df1b5c8320a
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263893"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010960"
 ---
 # <a name="provision-throughput-on-azure-cosmos-containers-and-databases"></a>Az Azure Cosmos-tárolók és adatbázisok kiépítése átviteli
 
@@ -19,7 +19,7 @@ Egy Azure Cosmos database tárolók több felügyeleti egység. Egy adatbázis s
 
 Az Azure Cosmos DB teszi lehetővé a következő két granularitással – a átviteli sebesség konfigurálásához **tárolók az Azure Cosmos** és **Azure Cosmos-adatbázis**.
 
-# <a name="setting-throughput-on-a-azure-cosmos-container"></a>Egy Azure Cosmos-tároló átviteli sebesség beállítása  
+## <a name="setting-throughput-on-a-container"></a>A beállítás átviteli sebességet egy tárolón  
 
 Az üzembe helyezett egy Azure Cosmos-tároló átviteli kizárólag a tároló számára van fenntartva. A tároló kap a kiosztott átviteli sebesség folyamatosan. Egy tároló kiosztott átviteli felelősséggel szavatolják. Átviteli sebesség beállítása egy tárolón: [hogyan helyezhet üzembe egy Azure Cosmos-tároló átviteli sebességet](how-to-provision-container-throughput.md).
 
@@ -31,7 +31,7 @@ Egy Azure Cosmos-tároló kiosztott átviteli sebesség egyenletesen legyen elos
 
 ![Erőforrás-partíció](./media/set-throughput/resource-partition.png)
 
-# <a name="setting-throughput-on-a-azure-cosmos-database"></a>Átviteli sebesség egy Azure Cosmos-adatbázis beállítása
+## <a name="setting-throughput-on-a-database"></a>A beállítás átviteli sebességet egy adatbázist
 
 Amikor üzembe helyez egy Azure Cosmos database átviteli sebességet, átviteli közösen használja az összes tárolót az adatbázisban, kivéve, ha az adott tárolók a kiosztott átviteli sebesség megadása. Az adatbázis átviteli sebességet a tárolók között megosztása hasonlatos számítógépfürtökön adatbázis üzemeltetéséhez. Adatbázison belüli összes tárolók a gépen elérhető erőforrásokon osztozik, mivel természetesen nem kap kiszámítható teljesítményt bármely adott tárolón. Átviteli sebesség, adatbázis beállítása: [kiosztott átviteli sebesség konfigurálása egy Azure Cosmos database](how-to-provision-database-throughput.md).
 
@@ -53,7 +53,7 @@ A adatbázishoz létesített átviteli sebesség megosztása több logikai part�
 
 ![Erőforrás-partíció](./media/set-throughput/resource-partition2.png)
 
-## <a name="setting-throughput-on-a-azure-cosmos-database-and-a-container"></a>Egy Azure Cosmos-adatbázis és a egy tárolót az átviteli sebesség beállítása
+## <a name="setting-throughput-on-a-database-and-a-container"></a>Az adatbázis és a egy tároló átviteli sebesség beállítása
 
 A két modell kombinálhatja, adatbázis és a tároló átviteli kiépítés engedélyezett. Az alábbi példa bemutatja, hogyan helyezhet üzembe egy Azure Cosmos-adatbázis és a egy tárolót az átviteli sebesség:
 

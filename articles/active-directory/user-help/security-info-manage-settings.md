@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: f9a77c1f3fbce295a40db366619d7485d44efc4f
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 4cd88490118343a9a00dbd919d7820f0334df92e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162716"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016146"
 ---
 # <a name="manage-your-security-info-preview"></a>A biztonsági adatok (előzetes verzió) kezelése
 
@@ -67,7 +67,7 @@ Ha az eszköz elvesztése vagy az eszköz biztonságának sérülése esetén ke
 
 3. Az a **fiók kezelése** területen válassza **MFA elfelejtette a korábban megjegyzett eszközökön**.
     
-    Ez a beállítás azt jelenti, hogy nyissa meg a multi-factor Authentication hitelesítési folyamat ismét bejelentkezés után kell kiválasztása.
+    Ez a beállítás azt jelenti, hogy nyissa meg a multi-factor Authentication (MFA) folyamatot újra bejelentkezés után kell kiválasztása.
 
     ![Profil képernyő és a törlés hivatkozás kiemelésével](media/security-info/security-info-forget.png)
 
@@ -77,7 +77,7 @@ Ez a cikk segít, hogy a biztonsági adatait, beleértve a kétlépéses ellenő
 
 |Probléma|Megoldás|
 |-------|--------|
-|Nem rendelkezem telefonom velem megosztva|Annak lehetséges, hogy nem rendelkezik a telefonját mindig, de hogy fog továbbra is szeretné jelentkezzen be a munkahelyi vagy iskolai fiókjával. A probléma megoldásához, bejelentkezhet egy másik hitelesítési módszerrel, amely nem igényel a telefonra, például az e-mail-címét vagy az irodai telefonszámát. Adja hozzá a további metódusokat hozzá biztonsági adataihoz, kövesse a lépéseket a [módosítása az adatok](#change-your-info) szakaszban.|
+|Nem rendelkezem telefonom velem megosztva|Annak lehetséges, hogy nem rendelkezik a telefonját mindig, de hogy fog továbbra is szeretné jelentkezzen be a munkahelyi vagy iskolai fiókjával. A probléma megoldásához, bejelentkezhet egy másik hitelesítési módszerrel, amely nem igényel a telefonra, például az irodai telefonszámát. Adja hozzá a további metódusokat hozzá biztonsági adataihoz, kövesse a lépéseket a [módosítása az adatok](#change-your-info) szakaszban.|
 |A telefon elvesztése vagy azt ellopták|Sajnos a telefon, vagy hogy mérsékelje elvesztése fordulhat elő. Ebben az esetben azt javasoljuk, hogy, tájékoztassa a szervezetet, így az informatikai részleg alaphelyzetbe állíthatja az alkalmazásjelszókat, és törölje a megbízható eszközök listájáról eszközök bármely megjegyzett. A saját megbízható eszközök felejtse el a lépéseket követve a [az elveszett vagy vélhetően feltört eszközök biztonsági adatok kezelése](#manage-your-security-info-for-a-lost-or-potentially-compromised-device) szakaszban.|
 |Új telefonszám kaptam|A probléma megoldásának két módja van. Bejelentkezhet, és nem igényel a telefonszámát, e-mail, például másik hitelesítési módszert használ, vagy ha ez nem egy beállítást, forduljon a szervezet informatikai személyzetet tart fenn, és azok a beállítások törlése. Adja hozzá a további metódusokat hozzá biztonsági adataihoz, kövesse a lépéseket a [módosítása az adatok](#change-your-info) szakaszban.|
 |Az alapértelmezett módszer nem megfelelő|Az alapértelmezett módszer a biztonsági beállítások között frissítheti. Konkrét részletekért nyissa meg a [módosítása az adatok](#change-your-info) szakaszban.|

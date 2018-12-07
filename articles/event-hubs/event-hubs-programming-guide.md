@@ -5,18 +5,18 @@ services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
 ms.service: event-hubs
+ms.custom: seodec18
 ms.topic: article
-ms.date: 08/12/2018
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: bfb2db8a4a0091e26cc2b893e615ba831da30ac7
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: cd97aed36e9fd82df0d37913d5ea9e57c875a673
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746324"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011453"
 ---
-# <a name="event-hubs-programming-guide"></a>Event Hubs programozási útmutató
-
+# <a name="programming-guide-for-azure-event-hubs"></a>Az Azure Event Hubs programozási útmutatója
 Ez a cikk ismerteti az Azure Event Hubs használatával kód írása néhány gyakori forgatókönyvet. A témakör feltételezi az Event Hubs szolgáltatással kapcsolatos előzetes ismeretek meglétét. Az Event Hubs fogalmi áttekintése: [Event Hubs – áttekintés](event-hubs-what-is-event-hubs.md).
 
 ## <a name="event-publishers"></a>Esemény-közzétevők
@@ -55,7 +55,7 @@ eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuild
 
 ## <a name="send-events-to-an-event-hub"></a>Események küldése eseményközpontba
 
-Eseményeket egy eseményközpontba létrehozásával küldeni egy [EventHubClient][] példány, és küldje el azt aszinkron módon történik a [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) metódus. Ez a metódus szükséges egyetlen [EventData][] példányparamétert és szinkron módon elküldi azt az eseményközpontba.
+Eseményeket egy eseményközpontba létrehozásával küldeni egy [EventHubClient][] példány, és küldje el azt aszinkron módon történik a [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) metódus. Ez a metódus szükséges egyetlen [EventData][] példányparamétert, és aszinkron módon küld egy eseményközpontnak.
 
 ## <a name="event-serialization"></a>Eseményszerializáció
 

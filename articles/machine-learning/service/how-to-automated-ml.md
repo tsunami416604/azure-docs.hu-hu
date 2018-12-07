@@ -1,6 +1,6 @@
 ---
-title: Mi az automatikus Machine Learning – az Azure Machine Learning
-description: Ebben a cikkben megismerheti az automatikus gépi tanulás. Az Azure Machine Learning szolgáltatás automatikusan algoritmus kiválasztása az Ön számára, és hozzon létre egy modellt. Automatikus machine learning segít időt takarít meg a paramétereket, és az Ön által megadott feltételeknek, válassza ki a legjobb algoritmus a modell használatával.
+title: Mi az automatikus Machine Learning – az Azure Machine Learning szolgáltatás
+description: Ismerje meg hogyan Azure Machine Learning szolgáltatás automatikusan algoritmus kiválasztása az Ön számára, és hozzon létre egy modellt, hogy mentse a paramétereket, és az Ön által megadott feltételeknek, válassza ki a legjobb algoritmus a modell használatával ideje.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,12 +9,13 @@ ms.reviewer: jmartens
 author: nacharya1
 ms.author: nilesha
 ms.date: 12/04/2018
-ms.openlocfilehash: b5ebd2e1b2e6a6fd6ba55a8923c31a54d13413e1
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: 4b9356c7cba14cf5bd112c7d7ae1aab2842fb9d1
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878634"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010892"
 ---
 # <a name="what-is-automated-machine-learning"></a>Mi a machine learning automatikus?
 
@@ -25,7 +26,9 @@ Ebben a cikkben megismerheti az automatikus gépi tanulás. Az Azure Machine Lea
 1. Konfigurálja a machine learning problémát megoldani kívánt típusát. Felügyelt tanítás kategóriáit támogatottak:
    + Besorolás
    + Regresszió
-   + Előrejelzések
+   + Előrejelzések 
+
+   Automatizált a machine learning szolgáltatás általánosan elérhető, amíg **az előrejelzési funkció nyilvános előzetes verzióként.**
 
    Tekintse meg a [modellek listájának](how-to-configure-auto-train.md#select-your-experiment-type) Azure Machine Learning betanításakor próbálja meg.
 

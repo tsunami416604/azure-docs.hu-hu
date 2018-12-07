@@ -8,18 +8,19 @@ manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2018
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: a3f7245d8a648249a4e7179cc02982eae8561037
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: e27ac67db6a12b4ebfe04e9e1f89203e5e539318
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280577"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012725"
 ---
-# <a name="event-hubs-features-overview"></a>Event Hubs-szolgáltatások – áttekintés
+# <a name="features-and-terminology-in-azure-event-hubs"></a>Funkciók és az Azure Event Hubs terminológiája
 
 Az Azure Event Hubs egy rugalmasan méretezhető Eseményfeldolgozási szolgáltatás, amely feltölti és dolgozza fel az eseményeket és az adatok, nagy mennyiségű, alacsony késéssel és magas megbízhatósággal. Lásd: [Mi az Event Hubs?](event-hubs-what-is-event-hubs.md) magas szintű áttekintése.
 

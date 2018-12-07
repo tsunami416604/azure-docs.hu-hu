@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/23/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 58cc59b4922a654377dc0d5d2c38c9c0ed7199e0
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 1988f5790b719acf4e5dad1a378139c8d74b56f9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892372"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995329"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Az Operations Manager csatlakoztatása a Log Analyticshez
 A meglévő befektetéseit a [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) és kiterjesztett képességek használata a Log Analytics, az Operations Manager integrálása a Log Analytics-munkaterületre. Így kiaknázhatja a Log Analytics lehetőségeit, miközben továbbra is használhatja az Operations Managert a következőkre:
@@ -43,8 +43,8 @@ Mielőtt hozzákezdene, tekintse át az alábbi követelményeknek.
 
 * Csak a log Analytics támogatja a System Center Operations Manager 1807, az Operations Manager 1801-re, az Operations Manager 2016-ra, az Operations Manager 2012 SP1 UR6 vagy újabb, és az Operations Manager 2012 R2 UR2 vagy újabb. A proxytámogatás az Operations Manager 2012 SP1 UR 7-es és az Operations Manager 2012 R2 UR 3-as verziójában jelent meg.
 * Minden Operations Manager-ügynöknek meg kell felelnie a minimális támogatási feltételeknek. Győződjön meg arról, hogy ügynök a minimális frissítéskor el, egyéb Windows-ügynök kommunikációja sikertelen és hibák készítése az Operations Manager eseménynaplójában.
-* Egy Log Analytics-munkaterület. További információkért tekintse át a [Log Analytics-munkaterület áttekintése](../../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json).
-* Végez hitelesítést az Azure-bA egy olyan fiókkal, amely tagja a [Log Analytics-közreműködő szerepkör](../../log-analytics/log-analytics-manage-access.md#manage-accounts-and-users).  
+* Egy Log Analytics-munkaterület. További információkért tekintse át a [Log Analytics-munkaterület áttekintése](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json).
+* Végez hitelesítést az Azure-bA egy olyan fiókkal, amely tagja a [Log Analytics-közreműködő szerepkör](../../azure-monitor/platform/manage-access.md#manage-accounts-and-users).  
 
 >[!NOTE]
 >Útmutató legutóbbi módosításait az Azure API-k megakadályozza, hogy a felhasználók képes arra, hogy sikeresen az első alkalommal között a felügyeleti csoport és a Log Analytics-integráció konfigurálása. Azok a vásárlóknak, akik már integrálva van a felügyeleti csoport a szolgáltatásban nem érinti, kivéve, ha újra kell konfigurálni a meglévő kapcsolatot.  

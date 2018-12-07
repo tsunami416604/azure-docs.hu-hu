@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: e537795c9dec5f909810a37d4f13d5664bec05a2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 56ad4fdf781d9ed94a082ab5eb352803c70e52ef
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839976"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996229"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Az Azure Monitor az adatok megjelenítése
 Ez a cikk az Azure Monitor-ban tárolt adatok megjelenítése a választható módszerek összegzését tartalmazza. Ez magában foglalja [mérőszámok az Azure-metrikagyűjtéshez áruházban](../azure-monitor/platform/data-collection.md#metrics) és [adatok Log Analytics naplóbeli](../azure-monitor/platform/data-collection.md#logs). 
@@ -89,7 +89,7 @@ Vizualizációk, például diagramokat és ábrákat segíthet a problémák ré
 
 
 ## <a name="power-bi"></a>Power BI
-[Power bi-ban](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) különösen hasznos üzleti-központú irányítópultokat és jelentéseket, valamint hosszú távú KPI-trendek elemzése jelentések létrehozásához. Is [importálja a Log Analytics-lekérdezés eredményeit](../log-analytics/log-analytics-powerbi.md) így kihasználhatja annak szolgáltatásait, például a különböző forrásokból származó adatok összevonása és a webes és mobil eszközök jelentések megosztása a Power BI-adatkészletbe.
+[Power bi-ban](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) különösen hasznos üzleti-központú irányítópultokat és jelentéseket, valamint hosszú távú KPI-trendek elemzése jelentések létrehozásához. Is [importálja a Log Analytics-lekérdezés eredményeit](../azure-monitor/platform/powerbi.md) így kihasználhatja annak szolgáltatásait, például a különböző forrásokból származó adatok összevonása és a webes és mobil eszközök jelentések megosztása a Power BI-adatkészletbe.
 
 ![Power BI](media/visualizations/power-bi.png)
 
@@ -141,5 +141,5 @@ Bármely REST-ügyfél, amely lehetővé teszi, hogy a saját egyéni webhelyek 
 - Ismerje meg [Azure-irányítópultok](../azure-portal/azure-portal-dashboards.md).
 - Ismerje meg [nézetek az Azure Monitor](../azure-monitor/platform/view-designer.md).
 - Ismerje meg [az Application Insights-munkafüzetek](../application-insights/app-insights-usage-workbooks.md).
-- Ismerje meg [Teljesítménynapló-adatok importálása a Power BI-bA](../log-analytics/log-analytics-powerbi.md).
+- Ismerje meg [Teljesítménynapló-adatok importálása a Power BI-bA](../azure-monitor/platform/powerbi.md).
 - További információ a [Grafana az Azure Monitor adatforrás-beépülő modul](../monitoring-and-diagnostics/monitor-send-to-grafana.md).

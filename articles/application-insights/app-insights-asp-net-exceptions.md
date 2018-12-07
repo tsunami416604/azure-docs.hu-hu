@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: 2d378c537d4e20698863c789101e4ad3167b7f10
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: f36d0ec4446ee6591798c0d8926f41a4e177d81d
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680820"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997053"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Az Application insights segítségével a webalkalmazások kivételeinek diagnosztizálása
 Az élő webalkalmazását kivételek által jelentett [Application Insights](app-insights-overview.md). Sikertelen kérelmek kapcsolhatja össze a kivételek és az ügyfél és a kiszolgáló, az eseményeket, hogy gyorsan diagnosztizálhatja a okok.
@@ -168,7 +168,7 @@ A tulajdonságok és a mértékek paraméterek megadása nem kötelező, de hasz
 ## <a name="browser-exceptions"></a>Böngészőkivételek
 A legtöbb böngészőkivételek jelenti.
 
-Ha a weblap tartalmazza a parancsfájlok a tartalomkézbesítési hálózatok vagy más tartományok, győződjön meg arról, a parancsfájl címke má atribut ```crossorigin="anonymous"```, és a kiszolgáló által küldött [CORS fejlécek](http://enable-cors.org/). Ez lehetővé teszi, hogy egy hívásláncot és a részletek beolvasása nem kezelt JavaScript-kivételeknek az ezekhez az erőforrásokhoz.
+Ha a weblap tartalmazza a parancsfájlok a tartalomkézbesítési hálózatok vagy más tartományok, győződjön meg arról, a parancsfájl címke má atribut ```crossorigin="anonymous"```, és a kiszolgáló által küldött [CORS fejlécek](https://enable-cors.org/). Ez lehetővé teszi, hogy egy hívásláncot és a részletek beolvasása nem kezelt JavaScript-kivételeknek az ezekhez az erőforrásokhoz.
 
 ## <a name="web-forms"></a>Web Forms keretrendszerre
 Web Forms a HTTP-modulja fogja tudni gyűjtése a kivételeket, ha nincs konfigurálva CustomErrors átirányítások.

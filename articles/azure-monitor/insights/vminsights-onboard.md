@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: d38c93f1e6e390117ff5d9e8772119ed1c26fd10
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 4e374528a0fa757458e7e4881714370937b56f9c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965530"
+ms.locfileid: "52998291"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Hogyan üzembe helyezni az Azure figyeli, hogy virtuális gépeket (előzetes verzió)
 Ez a cikk bemutatja, hogyan állítható be az Azure Monitor a virtuális gépek az Azure-beli virtuális gépek és virtuálisgép-méretezési csoportok és a környezetben, a virtuális gépek operációs rendszer állapotának figyelésére többek között a felderítés és az alkalmazásfüggőségek leképezése Előfordulhat, hogy futhat őket.  
@@ -169,7 +169,7 @@ A következő hozzáférést kell adni a felhasználók számára, annak érdek�
 
 - A teljesítmény, egészségügyi, megtekintése, és adatokat, az Azure virtuális gép és virtuális gépek az Azure Monitor szolgáltatással konfigurált Log Analytics-munkaterületet a Monitoring Reader szerepkör tagjaként hozzá kell.   
 
-A Log Analytics-munkaterülethez való hozzáférésének kapcsolatos további információkért lásd: [munkaterületeinek kezeléséhez](../../log-analytics/log-analytics-manage-access.md).
+A Log Analytics-munkaterülethez való hozzáférésének kapcsolatos további információkért lásd: [munkaterületeinek kezeléséhez](../../azure-monitor/platform/manage-access.md).
 
 ## <a name="enable-from-the-azure-portal"></a>Az Azure Portalról engedélyezése
 Ha engedélyezni szeretné az Azure Portalon az Azure Virtuálisgép-monitorozási, tegye a következőket:
@@ -197,7 +197,7 @@ Ez a szakasz útmutatást hajtsa végre az a következő felhőméretű üzembe 
 
 A lépéseket kell elvégeznie, mielőtt konfigurálhatná üzembe helyezésében a virtuális gépek előre konfigurálása a Log Analytics-munkaterület foglalja össze vannak.
 
-1. Hozzon létre egy új munkaterületen, ha egy még nem létezik, amely használható az Azure Monitor virtuális gépek támogatásához. Felülvizsgálat [munkaterületeinek kezeléséhez](../../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json) egy új munkaterületet, a költség, felügyeleti és megfelelőségi szempontokat a folytatás előtt létrehozása előtt.       
+1. Hozzon létre egy új munkaterületen, ha egy még nem létezik, amely használható az Azure Monitor virtuális gépek támogatásához. Felülvizsgálat [munkaterületeinek kezeléséhez](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json) egy új munkaterületet, a költség, felügyeleti és megfelelőségi szempontokat a folytatás előtt létrehozása előtt.       
 2. Engedélyezze a teljesítményszámlálók a munkaterületen, a Linux és Windows virtuális gépeken a gyűjteményhez.
 3. Telepíteni és engedélyezni az **ServiceMap** és **InfrastructureInsights** megoldás a munkaterületén.  
 

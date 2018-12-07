@@ -11,12 +11,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 12/05/2018
-ms.openlocfilehash: 6523828b522379dd1cd70f1c548caf7af15b5d90
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ea7b4def23f766e6cda1e1e8e1d4e8dc7be302fe
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964764"
+ms.locfileid: "52997590"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Az Azure SQL Database-adatbázis komplex veszélyforrások elleni védelem
 
@@ -28,7 +28,7 @@ SQL a speciális veszélyforrások elleni védelem (ATP) egy speciális SQL bizt
 
 - Az [adatfelderítés és besorolás](sql-database-data-discovery-and-classification.md) (jelenleg előzetes verzió) az Azure SQL-be épített, az adatbázisokban található bizalmas adatok felderítésére, besorolására, címkézésére és védelmére alkalmas képességeket biztosít. Használatával áttekinthető az adatbázis besorolási állapota, valamint követhető a bizalmas adatokhoz való hozzáférés az adatbázison belül és azon kívül.
 - A [sebezhetőségi felmérés](sql-vulnerability-assessment.md) egy könnyen konfigurálható szolgáltatás, amely képes felderíteni és követni az adatbázisok lehetséges biztonsági réseit, és segít orvosolni azokat. Áttekinthetővé teszi az adatbázisok biztonsági állapotát, és végrehajtható lépéseket kínál a biztonsági problémák megoldására, valamint az adatbázisok védelmének fejlesztésére.
-- A [fenyegetésészlelés](sql-database-threat-detection.md) észleli az adatbázisok hozzáférésére és az adatbázisok biztonságának megsértésére tett szokatlan és potenciálisan kártevő szándékú kísérleteket. A szolgáltatás folyamatosan figyeli az adatbázisokat, és azonnal értesíti a felhasználót a gyanús tevékenységekről, a lehetséges biztonsági résekről, az SQL-injektálásos támadásokról, valamint a rendellenes adatbázis-hozzáférési mintákról. A fenyegetésészlelés által adott riasztások tartalmazzák a gyanús tevékenység részleteit, és javaslatot tesznek a fenyegetés kivizsgálására és mérséklésére tett műveletekre.
+- A [fenyegetésészlelés](sql-database-threat-detection-overview.md) észleli az adatbázisok hozzáférésére és az adatbázisok biztonságának megsértésére tett szokatlan és potenciálisan kártevő szándékú kísérleteket. A szolgáltatás folyamatosan figyeli az adatbázisokat, és azonnal értesíti a felhasználót a gyanús tevékenységekről, a lehetséges biztonsági résekről, az SQL-injektálásos támadásokról, valamint a rendellenes adatbázis-hozzáférési mintákról. A fenyegetésészlelés által adott riasztások tartalmazzák a gyanús tevékenység részleteit, és javaslatot tesznek a fenyegetés kivizsgálására és mérséklésére tett műveletekre.
 
 SQL ATP engedélyezése, ha ahhoz, hogy ezek mindegyikét tartalmazza a funkciók. A Komplex veszélyforrások elleni védelem egyetlen kattintással engedélyezhető az egész adatbázis-kiszolgálón, ezáltal a kiszolgáló minden adatbázisa védelemmel látható el. 
 

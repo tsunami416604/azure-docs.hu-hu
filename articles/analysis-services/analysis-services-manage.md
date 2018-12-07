@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 536ae926ad8f401f952a41e17074536cc2b3c5f1
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0bae06d46c2c96ba9dd058e9c2d380379523811c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832037"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993930"
 ---
 # <a name="manage-analysis-services"></a>Analysis Services kezelése
 Miután az Azure-ban létrehozott egy Analysis Services-kiszolgálón, néhány felügyelet és kezelés feladatot kell elvégeznie a azonnal, vagy egy ideig le lehet. Például futtassa a frissítés adatokhoz, el tudja érni a modellek a kiszolgálón, vagy a kiszolgáló állapotának figyeléséhez vezérléséhez feldolgozása. Egyes felügyeleti feladatok csak az Azure Portalon, az SQL Server Management Studio (SSMS), mások hajtható végre, és néhány feladatot végezhető, vagy.
@@ -35,7 +35,7 @@ Töltse le a legújabb funkciókról és a legegyenletesebb élmény az Azure An
 
 
 ### <a name="to-connect-with-ssms"></a>Csatlakozás az ssms használatával
- Ssms-t, mielőtt a kiszolgálóhoz való kapcsolódás első alkalommal használatakor ellenőrizze, hogy a felhasználónevét az Analysis Services-rendszergazdák csoport része. További tudnivalókért lásd: [kiszolgálói rendszergazdák](#server-administrators) a cikk későbbi részében.
+ Ssms-t, mielőtt a kiszolgálóhoz való kapcsolódás első alkalommal használatakor ellenőrizze, hogy a felhasználónevét az Analysis Services-rendszergazdák csoport része. További tudnivalókért lásd: [kiszolgáló-rendszergazdák és az adatbázis-felhasználók](#server-administrators-and-database-users) a cikk későbbi részében.
 
 1. Csatlakozás előtt kell a kiszolgáló nevét. Másolja a kiszolgáló nevét az **Azure Portal** > kiszolgáló > **Áttekintés** > **Kiszolgálónév** részéből.
    

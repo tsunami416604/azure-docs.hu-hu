@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 194f84d2ce5360aa9ad9f3d771bf24f153ac6f5c
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: a75514013a1945d9ca5718be115184f6ba9950d9
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496298"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015755"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>A HDInsight további tárfiókok hozzáadása
 
@@ -95,7 +95,7 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
 > [!NOTE]
 > Állítsa be `$PASSWORD` a fürt bejelentkezési (rendszergazdai) fiókjelszóra. Állítsa be `$CLUSTERNAME` a HDInsight-fürt nevére. Állítsa be `$STORAGEACCOUNTNAME` a tárfiók nevére.
 >
-> Ez a példa [curl (http://curl.haxx.se/) ](http://curl.haxx.se/) és [jq (https://stedolan.github.io/jq/) ](https://stedolan.github.io/jq/) lekérésére és JSON-adatok elemzése.
+> Ez a példa [curl (https://curl.haxx.se/) ](https://curl.haxx.se/) és [jq (https://stedolan.github.io/jq/) ](https://stedolan.github.io/jq/) lekérésére és JSON-adatok elemzése.
 
 Ez a parancs használata esetén cserélje le a __CLUSTERNAME__ a HDInsight-fürt nevére. Cserélje le __jelszó__ a fürt bejelentkezési jelszavával HTTP. Cserélje le __STORAGEACCOUNT__ szkriptműveletekkel hozzáadva a tárfiók nevére. Ez a parancs által visszaadott információ jelenik meg az alábbi szöveghez hasonló:
 

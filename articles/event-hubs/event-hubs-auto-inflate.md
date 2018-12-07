@@ -10,16 +10,17 @@ ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 19525086b1bd41afcc730fb3860d7a01875e4832
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 1bbbbbada07dc898a4c1424a315d472cf910926f
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987001"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010824"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatikus vertikális felskálázás az Azure Event Hubs átviteli egységek
 
@@ -49,13 +50,13 @@ Engedélyezheti vagy letilthatja az automatikus feltöltési az Event Hubs-névt
 
 Event Hubs-névtér létrehozásakor engedélyezheti az automatikus feltöltési funkció:
  
-![](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
+![Automatikus feltöltés az idő eseményközpont létrehozása:](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
 
 Ez a beállítás engedélyezve van, a kis kezdje az átviteli egységek és a méret a használat növelése igényei szerint. A felső határ az infláció nem azonnal befolyásolja díjszabás, az óránként felhasznált átviteli egységek számától függ.
 
 Az automatikus feltöltési használatával is engedélyezheti a **méretezési** lehetőséget a beállítások panel a portálon:
  
-![](./media/event-hubs-auto-inflate/event-hubs-auto-inflate2.png)
+![Automatikus feltöltés a méretezési csoport lehetőséggel](./media/event-hubs-auto-inflate/event-hubs-auto-inflate2.png)
 
 
 > [!NOTE]

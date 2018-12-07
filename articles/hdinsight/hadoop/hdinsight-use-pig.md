@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 6a1247048907d81b3c9db644bcdb7b5e5eee5fba
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 4eb4fa201a435df5e2b5016ba9686d76707c0635
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633631"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011628"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel
 
-Ismerje meg, hogyan használható [Apache Pig](http://pig.apache.org/) a HDInsight.
+Ismerje meg, hogyan használható [Apache Pig](https://pig.apache.org/) a HDInsight.
 
 Az Apache Pig az Apache Hadoop néven eljárási nyelv használatával programok hoz platform *Pig Latin*. A Pig alternatívája a Java létrehozásához *MapReduce* megoldásokat, és az Azure HDInsight része. Az alábbi táblázat segítségével felderítése a különféle módokon, amely a Pig-alapú HDInsight használható:
 
@@ -69,7 +69,7 @@ Minden napló a fájl tartalmaz egy sort, amely tartalmazza a mezők egy `[LOG L
 Az előző példában a naplózási szint: Hiba történt.
 
 > [!NOTE]
-> A log4j fájl használatával is létrehozhat a [Apache Log4j](http://en.wikipedia.org/wiki/Log4j) naplózása eszközt, és majd töltse fel ezt a fájlt a blobba. Lásd: [töltse fel az adatokat HDInsight](../hdinsight-upload-data.md) útmutatást. Az Azure storage-blobok használata a HDInsight kapcsolatos további információkért lásd: [az Azure Blob Storage a HDInsight](../hdinsight-hadoop-use-blob-storage.md).
+> A log4j fájl használatával is létrehozhat a [Apache Log4j](https://en.wikipedia.org/wiki/Log4j) naplózása eszközt, és majd töltse fel ezt a fájlt a blobba. Lásd: [töltse fel az adatokat HDInsight](../hdinsight-upload-data.md) útmutatást. Az Azure storage-blobok használata a HDInsight kapcsolatos további információkért lásd: [az Azure Blob Storage a HDInsight](../hdinsight-hadoop-use-blob-storage.md).
 
 ## <a id="job"></a>Példa feladat
 
@@ -120,12 +120,12 @@ Most, hogy megtanulhatta, hogyan lehet a Pig használata a HDInsight, egyéb mó
 * [Az Oozie használata a HDInsight](../hdinsight-use-oozie.md)
 * [HDInsight MapReduce-feladatok használata][hdinsight-use-mapreduce]
 
-[apachepig-home]: http://pig.apache.org/
-[putty]: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
-[curl]: http://curl.haxx.se/
-[pigtask]: http://msdn.microsoft.com/library/mt146781(v=sql.120).aspx
-[connectionmanager]: http://msdn.microsoft.com/library/mt146773(v=sql.120).aspx
-[ssispack]: http://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
+[apachepig-home]: https://pig.apache.org/
+[putty]: https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
+[curl]: https://curl.haxx.se/
+[pigtask]: https://msdn.microsoft.com/library/mt146781(v=sql.120).aspx
+[connectionmanager]: https://msdn.microsoft.com/library/mt146773(v=sql.120).aspx
+[ssispack]: https://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
 
 [hdinsight-use-hive]:../hdinsight-use-hive.md
@@ -136,7 +136,7 @@ Most, hogy megtanulhatta, hogyan lehet a Pig használata a HDInsight, egyéb mó
 
 [Powershell-install-configure]: /powershell/azureps-cmdlets-docs
 
-[powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
+[powershell-start]: https://technet.microsoft.com/library/hh847889.aspx
 
 
 [image-hdi-pig-data-transformation]: ./media/hdinsight-use-pig/HDI.DataTransformation.gif

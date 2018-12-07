@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a76486eaf2f9df8eb47b8bb73f1577324152a80f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 65747da92a3cad770cd9d474d27645782f7306b9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623298"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998741"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Hibaelhárítás az Azure Active Directory-Tevékenységnaplók tartalomcsomag-hibái naplók 
 
@@ -34,7 +34,8 @@ A Power BI-tartalomcsomag használata az Azure Active Directory (Azure AD), eset
 
 - [A frissítés nem sikerült](troubleshoot-content-pack.md#refresh-failed) 
 - [Az adatforrás hitelesítő adatainak frissítése sikertelen](troubleshoot-content-pack.md#failed-to-update-data-source-credentials) 
-- [Adatok importálása túl sokáig tart](troubleshoot-content-pack.md#importing-of-data-is-taking-too-long)  
+- [Adatok importálása túl sokáig tart](troubleshoot-content-pack.md#importing-of-data-is-taking-too-long) 
+
 A cikk ismerteti a lehetséges okok és a hibák kijavításához információt.
  
 ## <a name="refresh-failed"></a>A frissítés nem sikerült 

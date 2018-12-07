@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: 2f10db6eddcfc7d398072a3c0aa709798c72c72e
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: da9ec327edc27e2f37f76704d6b5481869621049
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721034"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997481"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Az Application Insights telemetriai korreláció
 
@@ -104,7 +104,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="open-tracing-and-application-insights"></a>Nyissa meg a nyomkövetés és az Application Insights
 
-A [nyílt nyomkövetés adatmodell specifikáció](http://opentracing.io/) és Application Insights-adatmodellek képezze le a következő módon:
+A [nyílt nyomkövetés adatmodell specifikáció](https://opentracing.io/) és Application Insights-adatmodellek képezze le a következő módon:
 
 | Application Insights                  | Nyissa meg a nyomkövetés                                      |
 |------------------------------------   |-------------------------------------------------  |

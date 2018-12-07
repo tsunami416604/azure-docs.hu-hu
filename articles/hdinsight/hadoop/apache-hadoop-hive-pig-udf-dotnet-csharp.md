@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2ef88fff1313a0e7b1aa0abb502629512daaf636
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 21186c522e46dac11c1dc88bbad5c4b330bc1e3f
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633835"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012028"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>Használat C# az Apache Hive és a HDInsight az Apache hadoop streamelési Apache Pig, felhasználó által definiált függvények
 
@@ -45,7 +45,7 @@ Mind a Hive és Pig adhat át adatokat a feldolgozáshoz külső alkalmazások. 
 
 * __Linux-alapú HDInsight__ -fürtök használatával [Mono (https://mono-project.com) ](https://mono-project.com) .NET-alkalmazások futtatására. Monó verzió 4.2.1 megtalálható a HDInsight 3.6-os verzióját.
 
-    A .NET-keretrendszer-verziókat monó kompatibilitást további információkért lásd: [monó kompatibilitási](http://www.mono-project.com/docs/about-mono/compatibility/).
+    A .NET-keretrendszer-verziókat monó kompatibilitást további információkért lásd: [monó kompatibilitási](https://www.mono-project.com/docs/about-mono/compatibility/).
 
     Mono egy adott verzióját használja, tekintse meg a [telepítés vagy frissítés Mono](../hdinsight-hadoop-install-mono.md) dokumentumot.
 
@@ -60,7 +60,7 @@ A verzió a .NET-keretrendszer és a HDInsight-verziók mellékelt Mono további
 1. Nyissa meg a Visual Studio és a egy megoldás létrehozásához. A projekt típusaként válassza **Console App (.NET Framework)**, és nevezze el az új projekt **HiveCSharp**.
 
     > [!IMPORTANT]
-    > Válassza ki __.NET-keretrendszer 4.5__ egy Linux-alapú HDInsight-fürt használata. A .NET-keretrendszer-verziókat monó kompatibilitást további információkért lásd: [monó kompatibilitási](http://www.mono-project.com/docs/about-mono/compatibility/).
+    > Válassza ki __.NET-keretrendszer 4.5__ egy Linux-alapú HDInsight-fürt használata. A .NET-keretrendszer-verziókat monó kompatibilitást további információkért lásd: [monó kompatibilitási](https://www.mono-project.com/docs/about-mono/compatibility/).
 
 2. Cserélje le a tartalmát **Program.cs** a következő kóddal:
 

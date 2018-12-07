@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: fe13c424a3da91e92a04cceb807b98fd1ffe4db0
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 427eb8abdede8c821d214d9f6a64fc6a122699de
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914039"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002012"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid biztonsági és hitelesítés 
 
@@ -25,21 +25,23 @@ Az Azure Event Grid hitelesítési három típusa van:
 
 ## <a name="webhook-event-delivery"></a>WebHook eseménykézbesítés
 
-Webhookok az események fogadása az Azure Event Grid számos módon tartoznak. Amikor készen áll egy új esemény, EventGrid szolgáltatás a kérelem törzsében szereplő bejegyzések HTTP-kérést a konfigurált végpontnak az eseményhez.
+Webhookok az események fogadása az Azure Event Grid számos módon tartoznak. Amikor készen áll egy új esemény, Event Grid szolgáltatás a kérelem törzsében szereplő bejegyzések HTTP-kérést a konfigurált végpontnak az eseményhez.
 
-Sok más szolgáltatásokhoz hasonlóan webhookokat támogató EventGrid kell igazolnia a Webhook-végpontot "tulajdonosa" események azáltal, hogy a végpont megkezdése előtt. Ez a követelmény nem eseménykézbesítés EventGrid a cél végpontját váljon gyanútlan végpont elkerülése érdekében. Ha használja az alábbi három Azure-szolgáltatások bármelyikét, az az Azure-infrastruktúra automatikusan kezeli az ellenőrzés:
+Event Grid számos más szolgáltatásokhoz hasonlóan webhookokat támogató van szükség, hogy a Webhook-végpontot tulajdonjogának igazolásához események azáltal, hogy a végpont megkezdése előtt. Ez a követelmény megakadályozza, hogy egy rosszindulatú felhasználó események a végpont-elárasztás. Ha használja az alábbi három Azure-szolgáltatások bármelyikét, az Azure-infrastruktúra automatikusan kezeli az ellenőrzés:
 
 * Az Azure Logic Apps esetében
 * Az Azure Automation
-* Az Azure Functions EventGrid eseményindító.
+* Az Azure Functions az Event Grid-Trigger.
 
-Ha bármilyen más típusú végpont, például egy HTTP-eseményindító-alapú Azure-függvényt használ, a végpont kódot kell egy érvényesítési kézfogást EventGrid részt. EventGrid két különböző érvényesítési kézfogás modell támogatja:
+Ha bármilyen más típusú végpont, például egy HTTP-eseményindító-alapú Azure-függvényt használ, a végpont kódot kell részt egy érvényesítési kézfogás az Event GRID használatával. Event Grid kétféleképpen érvényesíteni az előfizetés támogatja.
 
-1. **ValidationCode kézfogás**: esemény-előfizetés létrehozása idején EventGrid tesz közzé egy "előfizetés érvényesítési esemény" a végponthoz. Ez az esemény sémája hasonlít bármilyen más EventGridEvent, és ez az esemény adatok részének tartalmaz egy `validationCode` tulajdonság. Miután az alkalmazás ellenőrizte, hogy van-e az érvényesítési kérelmet egy várt esemény-előfizetés, az alkalmazás kódjában kell válaszolnia a echo vissza az érvényesítési kódot EventGrid által. A kézfogás mechanizmus az összes EventGrid-verziót támogatja.
+1. **(Programozott) ValidationCode kézfogás**: szabályozhatja a forráskódot a végponthoz, ha ez a módszer ajánlott. Esemény-előfizetés létrehozása idején az Event Grid egy előfizetés érvényesítési esemény küld a végponthoz. Ez az esemény sémája hasonlít bármilyen más Event Grid-esemény. Ez az esemény adatok részének tartalmaz egy `validationCode` tulajdonság. Az alkalmazás ellenőrzi, hogy az érvényesítési kérelmet egy várt esemény-előfizetés, és az érvényesítési kódot az Event Gridbe ad. A kézfogás mechanizmus az összes Event Grid-verziót támogatja.
 
-2. **ValidationURL kézfogás (manuális kézfogás)**: bizonyos esetekben valószínűleg nem rendelkezik a forráskódot a végpont megvalósításához a alapú ValidationCode kézfogás ellenőrzése. Például, ha egy külső szolgáltatást használ (például [Zapier](https://zapier.com) vagy [IFTTT](https://ifttt.com/)), programozott módon az érvényesítési kóddal vissza nem válaszol. Verzió 2018-05-01-preview verziótól kezdődően EventGrid mostantól támogatja a kézi ellenőrzés kézfogás. Ha egy esemény-előfizetést hoz létre egy SDK-t, vagy az eszközt, amely API verzió 2018-05-01-preview vagy későbbi, EventGrid küld egy `validationUrl` tulajdonság az előfizetés érvényesítése esemény adatok részének részeként. A kézfogás elvégzéséhez tegye egy GET kérelmek az URL-CÍMRE, vagy a REST-ügyféllel, vagy a webböngésző használatával. A megadott érvényesítési URL-CÍMÉT a érvényes csak nagyjából 10 percet. Az időszakban az üzembe helyezési az esemény-előfizetés állapota `AwaitingManualAction`. Ha nem végezte el a kézi ellenőrzés 10 percen belül, a kiépítési állapot értéke `Failed`. Az esemény-előfizetés a kézi ellenőrzés előtt újra létre kell.
+2. **ValidationURL kézfogás (manuális)**: bizonyos esetekben nem férhet hozzá a forráskódot a végpont a ValidationCode kézfogás megvalósításához. Például, ha egy külső szolgáltatást használ (például [Zapier](https://zapier.com) vagy [IFTTT](https://ifttt.com/)), hogy programozott módon nem tud reagálni az érvényesítési kóddal.
 
-Ez a mechanizmus manuális érvényesítésének az előzetes verzióban. A használatához telepítenie kell az [Event Grid-bővítményt](/cli/azure/azure-cli-extensions-list) az [Azure CLI](/cli/azure/install-azure-cli)-hez. A telepítést az `az extension add --name eventgrid` paranccsal tudja végrehajtani. Ha a REST API-t használ, ellenőrizze, hogy használ `api-version=2018-05-01-preview`.
+   Verzió 2018-05-01-preview verziótól kezdődően Event Grid egy manuális érvényesítésre kézfogás támogatja. Ha egy SDK-t, vagy az eszközt, amely API verzió 2018-05-01-preview egy esemény-előfizetést hoz létre, vagy később, az Event Grid küld egy `validationUrl` az előfizetés érvényesítése esemény részén található adatok a tulajdonság. A kézfogás elvégzéséhez, keresse meg az eseményadatokat, és manuálisan az URL egy GET kérelmet küldeni. Is használhatja, vagy a REST-ügyféllel, vagy a böngészőjében.
+
+   A megadott URL-cím a 10 percig érvényes. Az időszakban az üzembe helyezési az esemény-előfizetés állapota `AwaitingManualAction`. Ha nem végezte el a kézi ellenőrzés 10 percen belül, a kiépítési állapot értéke `Failed`. Az esemény-előfizetés a kézi ellenőrzés előtt újra létre kell.
 
 ### <a name="validation-details"></a>Az érvényesítés részletei
 
@@ -80,7 +82,7 @@ Végpont tulajdonjogának igazolásához, echo vissza a validationResponse tulaj
 
 Vagy manuálisan ellenőrizheti az előfizetés egy GET kérést küld az érvényesítési URL-címet. Az esemény-előfizetés mindaddig, amíg érvényesítve függő állapotban marad.
 
-C#-minta bemutatja, hogyan kezelje az előfizetés érvényesítése kézfogás, annak https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs.
+Az előfizetés érvényesítése kézfogás kezelésére egy példa: egy [ C# minta](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs).
 
 ### <a name="checklist"></a>Ellenőrzőlista
 

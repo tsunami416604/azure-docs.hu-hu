@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7f1bb400650a223a9f0b4249c33f7c480a1bc009
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7f90fccd062826493b7add1a90406fa9244e00b2
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262369"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002047"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Biztonsági keret: Bizalmas adatok |} Megoldások 
 | Termék vagy szolgáltatás | Cikk |
@@ -429,7 +429,7 @@ Tanúsítvány vagy Windows clientCredentialType beállítva.
 | **SDL fázis**               | Felépítés |  
 | **Megfelelő technológiák** | Általános, .NET-keretrendszer 3 |
 | **Attribútumok**              | Biztonsági mód - átvitel, biztonsági üzemmód - üzenet |
-| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_security_not_enabled), [WCF biztonsági alapok CoDe magazin](http://www.codemag.com/article/0611051) |
+| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference), [WCF biztonsági alapok CoDe magazin](http://www.codemag.com/article/0611051) |
 | **Lépések** | Nincs átvitele vagy üzenet biztonsági intézkedések lettek megadva. Alkalmazások, amelyek üzenetek nélkül az átviteli vagy a biztonsági nem garantálja a kódintegritási vagy az üzenetek titkosságát üzenet továbbítását. Ha WCF biztonsági kötés None értékre van állítva, átviteli és üzenet biztonsági le vannak tiltva. |
 
 ### <a name="example"></a>Példa

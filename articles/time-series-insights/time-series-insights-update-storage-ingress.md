@@ -8,39 +8,39 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/03/2018
-ms.openlocfilehash: d4c82f01b64ebb0248367f595fe25b2ec50f2d77
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/05/2018
+ms.openlocfilehash: e2440f6aa32710730e8b015bef1e7c583f7063e2
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876033"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001870"
 ---
 # <a name="data-storage-and-ingress-in-the-azure-time-series-insights-preview"></a>Az adattárolás és a bejövő forgalom az Azure Time Series Insights (előzetes verzió)
 
-Ez a cikk ismerteti az adattárolás és a bejövő forgalom módosításait az Azure Time Series Insights (előzetes verzió). Ez fedezi az alapul szolgáló tárolási struktúra formátumú, és **Time Series azonosító** tulajdonság. Emellett ismerteti a mögöttes bejövő folyamat, az átviteli sebesség és a korlátozások.
+Ez a cikk ismerteti az Azure Time Series Insights (TSI) előzetes verzióból való adattárolás a bejövő és kimenő módosítások. Ez fedezi az alapul szolgáló tárolási struktúra formátumú, és **Time Series azonosító** tulajdonság. Emellett ismerteti a mögöttes bejövő folyamat, az átviteli sebesség és a korlátozások.
 
 ## <a name="data-storage"></a>Adattárolás
 
-A Time Series Insights frissítése létrehozásakor (**PAYG Termékváltozat**) környezetben hoz létre két erőforrás:
+Az Azure TSI előzetes létrehozásakor (**PAYG Termékváltozat**) környezetben hoz létre két erőforrás:
 
 * Az Azure TSI-környezetben.
-* Azure storage-általános célú V1 fiók az adatok tárolásához.
+* Azure Storage-általános célú V1 fiók az adatok tárolásához.
 
 A TSI (előzetes verzió) az Azure Blob Storage és a parquet eszközökben fájl típusa. Az Azure TSI létrehozása a blobok, beleértve az műveletek kezeli, indexelési és az Azure Storage-fiókban az adatok particionálása. Ezek a blobok Azure Storage-fiók használatával jön létre.
 
 Mint bármely más Azure Storage-blobból olvassa el, és támogatják a különböző integrációs forgatókönyveket az Azure TSI-létrehozott blobok írni.
 
 > [!TIP]
-> Fontos megjegyezni, hogy a TSI teljesítményt hátrányosan érintheti olvasása vagy írása a blobok túl gyakran.
+> A TSI teljesítmény kedvezőtlen hatással lehet olvasása vagy írása a blobok túl gyakran.
 
-Az Azure Blob Storage működésével áttekintéséhez olvassa el a [Storage-blobok bemutatása](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction).
+Azure Blob Storage áttekintése, olvassa el a [Storage-blobok bemutatása](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction).
 
-A parquet eszközökben fájltípus kapcsolatos további információkért tekintse át a [támogatott fájltípusok az Azure Storage-ban](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs#Parquet-format).
+A parquet eszközökben fájltípus kapcsolatos további információkért lásd: [támogatott fájltípusok az Azure Storage-ban](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs#Parquet-format).
 
 ## <a name="parquet-file-format"></a>Parquet fájlformátum
 
-Parquet Oszlopalapú adatfájlformátumának, amely készült:
+Parquet Oszlopalapú, adatok, fájlformátumot, amely készült:
 
 * Együttműködési lehetőség
 * Hatékony területfelhasználásának
@@ -48,7 +48,7 @@ Parquet Oszlopalapú adatfájlformátumának, amely készült:
 
 Az Azure TSI Parquet úgy döntött, mivel biztosít hatékony az adattömörítés és a kódolási sémát a bővített teljesítményének tömeges összetett adatokat.
 
-Az egy jobb megértéséhez, hogy milyen a Parquet-fájlok formátuma szól, látogasson el a [hivatalos Parquet oldal](https://parquet.apache.org/documentation/latest/).
+A Parquet fájlformátum lényege, hogy kapjanak, olvassa el a [Parquet dokumentációs](https://parquet.apache.org/documentation/latest/).
 
 ## <a name="event-structure-in-parquet"></a>Esemény struktúra a parquet eszközökben
 
@@ -56,18 +56,18 @@ A blobok Azure TSI által létrehozott két példányban lesz tárolva a követk
 
 1. Az első, egy kezdeti másolatot fog particionálandó érkezési ideje:
 
-    * `V=1/PT=Time/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI internal suffix>.parquet`
+    * `V=1/PT=Time/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
     * Létrehozás ideje BLOB érkezési ideje dokumentumtárolási blobok számára.
 
-1. A második repartitioned másolatot, dinamikus csoportosítás a time series-azonosító szerint fog kell particionálni:
+1. A második repartitioned másolatot, a dinamikus csoportosítás kell dokumentumtárolási **Time Series azonosító**:
 
-    • `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI internal suffix>.parquet`
-    * Minimális esemény időbélyegzője a blobok a time series segítségével a blob azonosítója.
+    * `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
+    * A blobok dokumentumtárolási blob minimális esemény időbélyegzője **Time Series azonosító**.
 
 > [!NOTE]
-> * `<YYYY>` év leképezések.
-> * `<MM>` hónap leképezések.
-> * `<YYYYMMDDHHMMSSfff>` teljes időbélyeg ezredmásodpercben vannak leképezve.
+> * `<YYYY>` 4 számjegyű év jelképeként leképezések.
+> * `<MM>` 2 számjegyből hónap jelképeként leképezések.
+> * `<YYYYMMDDHHMMSSfff>` képez le egy időbélyeg képviselettel 4 számjegyű év (`YYYY`), 2 számjegyből hónap (`MM`), 2 számjegyből nap (`DD`), 2 számjegyű óra (`HH`), 2 számjegyből perc (`MM`), 2 számjegyből másodperc (`SS`), és 3 számjegyből ezredmásodperces (`fff`).
 
 Az Azure TSI-események vannak leképezve Parquet fájl tartalmát a következő:
 
@@ -76,11 +76,11 @@ Az Azure TSI-események vannak leképezve Parquet fájl tartalmát a következő
 * Minden egyéb tulajdonságok térképet oszlopok megszűnik az `_string` (karakterlánc), `_bool` (logikai), `_datetime` (datetime), és `_double` (dupla) tulajdonság típusától függően.
 * Ez a fájl formátuma első verziója, és azt nevezzük **V = 1**.  Ha ez a funkció haladásával a neve annak megfelelően növelhető a **V = 2**, **V = 3**, és így tovább.
 
-## <a name="how-to-partition"></a>Particionálása
+## <a name="partitions"></a>Partíciók
 
 Minden egyes Azure TSI (előzetes verzió) környezetben kell rendelkeznie egy **Time Series azonosító** tulajdonság és a egy **időbélyeg** tulajdonság, amely azonosítja. A **Time Series azonosító** funkcionál, az adatok logikai partíció, és biztosít, az Azure TSI (előzetes verzió) egy természetes határ az adatok eloszthatók a fizikai partíciókra. Fizikai partíciók felügyeleti kezeli az Azure TSI (előzetes verzió) egy Azure Storage-fiókban.
 
-Az Azure TSI használja a dinamikus particionálás elvetését, majd újra létre kellene hoznia a partíció szerint tárolási kihasználtságát és a lekérdezési teljesítmény optimalizálása érdekében. A TSI (előzetes verzió) dinamikus particionálási algoritmust nagy hangsúlyt fektet a kellene több különböző logikai partíció adatait egyetlen fizikai partíciók elkerülése érdekében. Más szóval a particionálási algoritmus célja, hogy egy kapcsolódó összes adat vagy **Time Series azonosító** megtalálható kizárólag Parquet-fájlokat anélkül, hogy más folyamatban közbeékeléses **Time Series azonosítók**. A dinamikus particionálási algoritmust is nagy hangsúlyt fektet a egyetlen események eredeti sorrendjének megőrzése **Time Series azonosító**.
+Az Azure TSI használja a dinamikus particionálás elvetését, majd újra létre kellene hoznia a partíció szerint tárolási kihasználtságát és a lekérdezési teljesítmény optimalizálása érdekében. Az Azure TSI (előzetes verzió) dinamikus particionálási algoritmust, hogy az adatok több, hogy egyetlen fizikai partíciók megkísérli különböző, logikai partíciót. Más szóval a particionálási algoritmus megtartja minden adatot adott egyetlen **Time Series azonosító** kizárólag szerepel a parquet eszközökben fájl(ok) nélkül más folyamatban közbeékeléses **Time Series azonosítók**. A dinamikus particionálási algoritmust is igyekszik megőrizni az eseményeket egy eredeti sorrendjét **Time Series azonosító**.
 
 Kezdetben bejövő időpontban adatok particionálása által a **időbélyeg** így egyetlen, logikai partíció egy adott időtartományt belül több fizikai partíciók között lehetnek elosztva. Egyetlen fizikai partíciók számos vagy az összes logikai partíciót is tartalmazhatnak.  A blob mérete korlátozások miatt még optimális particionálási egyetlen logikai partíció sikerült foglalhat el több fizikai partíciókra.
 
@@ -89,7 +89,7 @@ Kezdetben bejövő időpontban adatok particionálása által a **időbélyeg** 
 
 Ha előzményadatok vagy kötegelt üzenetek tölt fel, hogy ki kell jelölnie a **időbélyeg** , amely leképezi a megfelelő az adatok a tulajdonság **időbélyeg** adatait tárolni kívánt érték.  A **időbélyeg** tulajdonság a kis-és nagybetűket. További információkért olvassa el a [Idősorozat-modell cikk](./time-series-insights-update-tsm.md).
 
-## <a name="physical-partition"></a>Fizikai partíciónként
+## <a name="physical-partitions"></a>Fizikai partíciók
 
 Egy fizikai partíciója egy blokkblobot az Azure Storage tárolja. A tényleges méret blobok változnak, attól függ, a leküldéses gyakoriság, azonban blobokon át a rendszer mintegy 20 – 50 MB-nál. A szervezeti elvárások miatt a TSI-csapat kijelölt 20 MB-tal a mérete, a lekérdezési teljesítmény optimalizálása érdekében. Ez sikerült módosítani a fájlmérettől és a sebesség, beérkező adatok alapján.
 
@@ -98,7 +98,7 @@ Egy fizikai partíciója egy blokkblobot az Azure Storage tárolja. A tényleges
 > * Azure-blobok vannak alkalmanként particionálni a jobb teljesítmény érdekében fel eldobták és újból létrehozták.
 > * Azt is vegye figyelembe a TSI ugyanazokat az adatokat, hogy a blobokat több szerepel.
 
-## <a name="logical-partition"></a>Logikai partíció
+## <a name="logical-partitions"></a>Logikai partíciók
 
 A logikai partíció egy partíción belül egy fizikai partíciónak, amely egy adott partíciókulcs-értékhez társított minden adatot tárol. A TSI (előzetes verzió) logikailag particionálja minden egyes blob két tulajdonság alapján:
 
@@ -156,7 +156,7 @@ Az API-végpont címen érhető el `/getRecorded`. Ez az API-val kapcsolatos tov
 
 ### <a name="data-deletion"></a>Adatok törlése
 
-Ne törölje blobok, mivel a Time Series Insights (előzetes verzió) TSI frissítés belül a blobok metaadatait tárolja.
+Ne törölje blobok, mivel az Azure TSI (előzetes verzió) TSI frissítés belül a blobok metaadatait tárolja.
 
 ## <a name="ingress"></a>Bejövő forgalom
 
@@ -166,14 +166,15 @@ Az Azure TSI (előzetes verzió) támogatja az ugyanazon eseményforrásokból �
 
 Támogatott eseményforrások a következők:
 
-* Azure IoT Hub
-* Azure Event Hubs
-  * Megjegyzés: Az Azure Event Hubs-példányok támogatják a Kafka.
+- Azure IoT Hub
+- Azure Event Hubs
+  
+  > [!NOTE]
+  > Az Azure Event Hubs-példányok támogatják a Kafka.
 
 Támogatott fájltípusok:
 
-* JSON
-  * Több támogatott JSON-alakzatok a tudjuk kezelni tud, lásd: a [alakzat JSON hogyan](./time-series-insights-send-events.md#json) dokumentációját.
+* JSON: Több a támogatott JSON-alakzatok tudjuk kezelni tud, lásd: a [alakzat JSON hogyan](./time-series-insights-send-events.md#json) dokumentációját.
 
 ### <a name="data-availability"></a>Az adatok elérhetősége
 
@@ -186,7 +187,7 @@ Nyilvános előzetes verzióban elérhető Azure TSI (előzetes verzió) indexel
 
 ### <a name="scale"></a>Méretezés
 
-Az Azure TSI (előzetes verzió) egy kezdeti bejövő méretezési csoport legfeljebb 6 MB/s környezetenként fogja támogatni. Továbbfejlesztett skálázási támogatást folyamatban. Dokumentáció, hogy ezek a fejlesztések frissülni fog.
+Az Azure TSI (előzetes verzió) egy kezdeti bejövő méretezési csoport legfeljebb 6 MB/s környezetenként támogatja. Továbbfejlesztett skálázási támogatást folyamatban. Dokumentáció, hogy ezek a fejlesztések frissülni fog.
 
 ## <a name="next-steps"></a>További lépések
 

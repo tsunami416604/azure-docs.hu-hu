@@ -1,5 +1,5 @@
 ---
-title: Canary kiadás vamppel Azure DC/OS-fürtön
+title: (ELAVULT) Canary kiadás vamppel Azure DC/OS-fürtön
 description: Canary kiadás szolgáltatások Vamp használatával, és intelligens forgalom szűrése az Azure Container Service DC/OS-fürtön alkalmazása
 services: container-service
 author: gggina
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 116f8ad1760f8e61c70b34d614a0265d11e3ae65
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 7ab63b869d9cd8a5b1f2b60429c5b54d0da5761f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51975856"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002073"
 ---
-# <a name="canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>Canary kiadás mikroszolgáltatások vamppel az Azure Container Service DC/OS-fürtön
+# <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(ELAVULT) Canary kiadás mikroszolgáltatások vamppel az Azure Container Service DC/OS-fürtön
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 Ez az útmutató beállítjuk Vamp az Azure Container Service DC/OS-fürttel. Canary azt a Vamp bemutató szolgáltatás "Száva" kiadási, és oldja meg a szolgáltatás a Firefox inkompatibilitás intelligens adatforgalom-szűrés alkalmazásával. 
 

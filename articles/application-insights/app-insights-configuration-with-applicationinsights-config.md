@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 885482d8baa305695e2b5a6d4247783c5a89b278
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: d18ea661dda0caa33ca5aff34505ce308f7eaec7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680871"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997110"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Az Application Insights SDK konfigurálása az ApplicationInsights.config vagy .xml használatával
-Az Application Insights .NET SDK NuGet-csomagok számos áll. A [core csomag](http://www.nuget.org/packages/Microsoft.ApplicationInsights) az API-t biztosít a telemetria küldését az Application Insights. [További csomagok](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights) adja meg a telemetriai adatok *modulok* és *inicializálók* automatikusan nyomon követési telemetria az alkalmazás és a környezetben. A konfigurációs fájl módosításával engedélyezze vagy tiltsa le a telemetriai adatok modulok és az inicializálók, és némelyike paramétereinek megadása.
+Az Application Insights .NET SDK NuGet-csomagok számos áll. A [core csomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights) az API-t biztosít a telemetria küldését az Application Insights. [További csomagok](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) adja meg a telemetriai adatok *modulok* és *inicializálók* automatikusan nyomon követési telemetria az alkalmazás és a környezetben. A konfigurációs fájl módosításával engedélyezze vagy tiltsa le a telemetriai adatok modulok és az inicializálók, és némelyike paramétereinek megadása.
 
 A konfigurációs fájl neve `ApplicationInsights.config` vagy `ApplicationInsights.xml`az alkalmazás típusától függően. Automatikusan hozzáadódik a projekthez, amikor Ön [telepítheti az SDK legtöbb verzióját][start]. Is megjelenik a webalkalmazás [Állapotfigyelőt az IIS-kiszolgálón történő][redfield], vagy amikor kiválasztja az Application Insights [egy Azure-beli webhelyen vagy a VM-bővítmény](app-insights-azure-web-apps.md).
 
@@ -43,58 +43,58 @@ Egy csomópont van a konfigurációs fájlban, az egyes modulok. Modul letiltás
 A saját függőségi nyomkövetés a kódot is írhat a [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency).
 
 * `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule`
-* [Microsoft.ApplicationInsights.DependencyCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) NuGet-csomagot.
+* [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) NuGet-csomagot.
 
 ### <a name="performance-collector"></a>Teljesítmény-gyűjtő
 [Gyűjti a rendszerteljesítmény-számlálók](app-insights-performance-counters.md) például a CPU, memória- és betölteni az IIS telepítését. Megadhat számlálók összegyűjtése, többek között a teljesítményszámlálók állított be saját magának.
 
 * `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule`
-* [Microsoft.ApplicationInsights.PerfCounterCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector) NuGet-csomagot.
+* [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector) NuGet-csomagot.
 
 ### <a name="application-insights-diagnostics-telemetry"></a>Application Insights diagnosztikai Telemetria
 A `DiagnosticsTelemetryModule` jelenti a hibákat a kódban az Application Insights instrumentation magát. Például ha a kódot a teljesítményszámlálók nem férhet hozzá, vagy ha egy `ITelemetryInitializer` kivételt jelez. Ez a modul által nyomon követett híváslánc-telemetria megjelenik a [diagnosztikai keresés][diagnostic]. Diagnosztikai adatokat küld a dc.services.vsallin.net.
 
 * `Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.DiagnosticsTelemetryModule`
-* [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet-csomagot. Ha csak telepíteni ezt a csomagot, az ApplicationInsights.config fájlban nem jön automatikusan létre.
+* [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet-csomagot. Ha csak telepíteni ezt a csomagot, az ApplicationInsights.config fájlban nem jön automatikusan létre.
 
 ### <a name="developer-mode"></a>Fejlesztői mód
 `DeveloperModeWithDebuggerAttachedTelemetryModule` arra kényszeríti az Application Insights `TelemetryChannel` is küldhet adatokat, azonnal egyszerre, amikor egy hibakereső kapcsolódik az alkalmazás folyamatának egyik telemetriaelemhez. Ez csökkenti a pillanattól idő, amikor az alkalmazás telemetriai nyomon követi, és az Application Insights portálon megjelenő. A Processzor és a hálózati sávszélesség jelentős többletterhelést okoz.
 
 * `Microsoft.ApplicationInsights.WindowsServer.DeveloperModeWithDebuggerAttachedTelemetryModule`
-* [Application Insights Windows Server](http://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) NuGet-csomag
+* [Application Insights Windows Server](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) NuGet-csomag
 
 ### <a name="web-request-tracking"></a>Webes kérelmek nyomon követése
 Jelentések a [idő és az eredmény válaszkód](app-insights-asp-net.md) a HTTP-kérések.
 
 * `Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule`
-* [Microsoft.ApplicationInsights.Web](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet-csomag
+* [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet-csomag
 
 ### <a name="exception-tracking"></a>Kivétel követése
 `ExceptionTrackingTelemetryModule` a webalkalmazás előforduló kezeletlen kivételek nyomon követi. Lásd: [hibák és kivételek][exceptions].
 
 * `Microsoft.ApplicationInsights.Web.ExceptionTrackingTelemetryModule`
-* [Microsoft.ApplicationInsights.Web](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet-csomag
+* [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet-csomag
 * `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule` -számok [feladat kivételek észrevétlen](https://blogs.msdn.com/b/pfxteam/archive/2011/09/28/task-exception-handling-in-net-4-5.aspx).
 * `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule` -a feldolgozói szerepkörök, a windows-szolgáltatások és a konzol alkalmazások nem kezelt kivételek nyomon követi.
-* [Application Insights Windows Server](http://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) NuGet-csomagot.
+* [Application Insights Windows Server](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) NuGet-csomagot.
 
 ### <a name="eventsource-tracking"></a>EventSource nyomon követése
 `EventSourceTelemetryModule` az Application Insights nyomkövetésként küldendő EventSource események konfigurálását teszi lehetővé. A követési események EventSource információkért lásd: [EventSource események használatával](app-insights-asp-net-trace-logs.md#using-eventsource-events).
 
 * `Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule`
-* [Microsoft.ApplicationInsights.EventSourceListener](http://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener) 
+* [Microsoft.ApplicationInsights.EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener) 
 
 ### <a name="etw-event-tracking"></a>ETW-események követése
 `EtwCollectorTelemetryModule` az Application Insights nyomkövetésként küldendő ETW-szolgáltató eseményei konfigurálását teszi lehetővé. ETW-események nyomon követésével kapcsolatos információkért lásd: [ETW-események használatával](app-insights-asp-net-trace-logs.md#using-etw-events).
 
 * `Microsoft.ApplicationInsights.EtwCollector.EtwCollectorTelemetryModule`
-* [Microsoft.ApplicationInsights.EtwCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
+* [Microsoft.ApplicationInsights.EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
 
 ### <a name="microsoftapplicationinsights"></a>Microsoft.ApplicationInsights
 A Microsoft.ApplicationInsights csomagot biztosít a [core API](https://msdn.microsoft.com/library/mt420197.aspx) SDK. A telemetriai adatok modulok használja, és is [segítségével határozza meg a saját telemetriája](app-insights-api-custom-events-metrics.md).
 
 * Nem tartozik bejegyzés az applicationinsights.config fájlban.
-* [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet-csomagot. Csak a NuGet telepítése esetén nem .config fájl jön létre.
+* [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet-csomagot. Csak a NuGet telepítése esetén nem .config fájl jön létre.
 
 ## <a name="telemetry-channel"></a>Telemetria-csatorna
 A telemetriai adatok csatorna pufferelés és továbbítását a telemetria az Application Insights szolgáltatás kezeli.

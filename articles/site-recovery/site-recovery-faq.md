@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 2f9095cf910748948984c28cd9171665df5a6301
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: ef914318174ee3ce738769fcae910c82b35b21b4
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871625"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998554"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Az Azure Site Recovery: gyakori kérdések (GYIK)
 Ez a cikk az Azure Site Recovery – gyakori kérdések tartalmazza. Ha kérdése van a cikk elolvasása után, el őket az a [Azure Recovery Services fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
@@ -116,7 +116,7 @@ Az LRS vagy GRS tárfiókra van szükség. Mi a GRS használatát javasoljuk, mi
 
 ### <a name="how-often-can-i-replicate-data"></a>Milyen gyakran replikálhatom az adatokat?
 * **A Hyper-V:** Hyper-V virtuális gépek (kivéve a premium storage) 30 másodperc, 5 percenként vagy 15 perc lehet replikálni. Ha SAN-replikálás beállítása replikációs szolgáltatása szinkron.
-* **VMware és fizikai kiszolgálók:** a replikáció gyakoriságának ezeknél nincs jelentősége. A replikálás folyamatos történik.
+* **Az Azure virtuális gépek, VMware és fizikai kiszolgálók:** A replikáció gyakoriságának ezeknél nincs jelentősége. A replikálás folyamatos történik.
 
 ### <a name="can-i-extend-replication-from-existing-recovery-site-to-another-tertiary-site"></a>Kiterjesztheti a replikáció már létező helyreállítási helyről egy másik harmadlagos helyhez?
 A kiterjesztett vagy láncolt replikáció nem támogatott. Ennek a funkciónak a kérelem [Visszajelzési fórum](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959-support-for-exisiting-extended-replication).

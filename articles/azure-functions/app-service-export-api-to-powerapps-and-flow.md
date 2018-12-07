@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
-ms.openlocfilehash: ceb0b1ce0d04c15a5b949519caad65d2c33b40ed
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: c91508cbd98f18c875411cc7a36f9d71d817fb31
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092450"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997877"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Egy Azure-ban üzemeltetett API exportálása a PowerApps és Microsoft Flow
 
@@ -25,7 +25,7 @@ ms.locfileid: "44092450"
 Ehhez hasonlóan szeretne közzétenni az API-k szélesebb körben a szervezeten belül a fejlesztők elérhetővé teheti saját API-k, alkalmazások és folyamatok sikerei. Ez a témakör bemutatja, hogyan exportálni egy API-t a következővel [Azure Functions](../azure-functions/functions-overview.md) vagy [Azure App Service](../app-service/app-service-web-overview.md). Az exportált API lesz a *egyéni összekötő*, amely szolgál a PowerApps és Microsoft Flow hasonlóan egy beépített összekötő.
 
 ## <a name="create-and-export-an-api-definition"></a>Hozzon létre és API-definíció exportálása
-API-k az exportálás előtt le kell írnia az API-t egy OpenAPI-definíció (korábban egy [Swagger](http://swagger.io/) fájlt). Ez a definíció tartalmazza az API-ban elérhető műveletekkel kapcsolatos információkat, illetve az API kérés- és válaszadatainak felépítését. A PowerApps és a Microsoft Flow OpenAPI 2.0-definíció bármilyen egyéni összekötőket hozhat létre. Az Azure Functions és az Azure App Service rendelkezik beépített támogatást nyújt a létrehozása, üzemeltetéséhez és felügyeletéhez az OpenAPI-definíció. További információkért lásd: [az Azure App Service cors-támogatással rendelkező RESTful API üzemeltetése](../app-service/app-service-web-tutorial-rest-api.md).
+API-k az exportálás előtt le kell írnia az API-t egy OpenAPI-definíció (korábban egy [Swagger](https://swagger.io/) fájlt). Ez a definíció tartalmazza az API-ban elérhető műveletekkel kapcsolatos információkat, illetve az API kérés- és válaszadatainak felépítését. A PowerApps és a Microsoft Flow OpenAPI 2.0-definíció bármilyen egyéni összekötőket hozhat létre. Az Azure Functions és az Azure App Service rendelkezik beépített támogatást nyújt a létrehozása, üzemeltetéséhez és felügyeletéhez az OpenAPI-definíció. További információkért lásd: [az Azure App Service cors-támogatással rendelkező RESTful API üzemeltetése](../app-service/app-service-web-tutorial-rest-api.md).
 
 > [!NOTE]
 > A PowerApps és a Microsoft Flow felhasználói felület, egyéni összekötőket egy OpenAPI-definíció használata nélkül is létrehozható. További információkért lásd: [regisztrálása és használata egy egyéni összekötőt (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/) és [regisztrálása és használata egy egyéni összekötőt (Microsoft Flow)](https://flow.microsoft.com/documentation/register-custom-api/).
@@ -113,7 +113,7 @@ Az API-definíció importálása a PowerApps és a Microsoft Flow, kövesse az a
 
 4. Az a **általános** fülre, tekintse át az adatokat, amelyek az OpenAPI-definíció származik.
 
-5. Az a **biztonsági** lapon, ha a rendszer kéri, adja meg hitelesítési adatokat, adja meg a hitelesítés típusának megfelelő értékeket. Kattintson a **továbbra is**.
+5. Az a **biztonsági** lapon, ha a rendszer kéri, adja meg hitelesítési adatokat, adja meg a hitelesítés típusának megfelelő értékeket. Kattintson a **Folytatás** gombra.
 
     ![Biztonság lap](media/app-service-export-api-to-powerapps-and-flow/tab-security.png)
 

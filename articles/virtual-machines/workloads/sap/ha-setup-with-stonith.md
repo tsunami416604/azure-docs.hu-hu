@@ -1,6 +1,6 @@
 ---
-title: Magas rendelkezésre állású STONITH SAP Hana Azure (nagy példányok) beállítása |} Microsoft Docs
-description: Magas rendelkezésre állású SAP Hana Azure (nagy példányok) használatával a STONITH SUSE létrehozni
+title: Magas rendelkezésre állás az SAP Hana az Azure-ban (nagyméretű példányok) a STONITH beállítása |} A Microsoft Docs
+description: Magas rendelkezésre állás az SAP Hana az Azure-ban (nagyméretű példányok) a STONITH használatával SUSE létrehozni
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
@@ -14,71 +14,71 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 982c6112a19654e268c9c50fec35d65fbc1766c2
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: c6d4ec767b4c566e6a390f37b97266916819a40c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062020"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015160"
 ---
-# <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Állítsa be a STONITH használatával SUSE a magas rendelkezésre állás
-A dokumentum biztosít a részletes, lépésekre osztott utasításaiért beállítása a magas rendelkezésre állás az STONITH eszközt SUSE operációs rendszeren.
+# <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Magas rendelkezésre állás beállítása a STONITH használatával SUSE
+Ez a dokumentum beállítása a STONITH eszközzel SUSE operációs rendszer a magas rendelkezésre állás a részletes lépésenkénti utasításokat biztosít.
 
-**Jogi nyilatkozat:** *Ez az útmutató a telepítő sikeresen működik a Microsoft HANA nagy példányok környezetben végzett teszteléséhez származik. Microsoft szolgáltatás-felügyeleti csoport nagy HANA-példányok nem támogatja az operációs rendszer, mert szükség lehet további hibaelhárítási és az operációs rendszer réteg tisztázása SUSE kapcsolódni. Microsoft felügyeleti csoport STONITH eszköz beállítása és teljes mértékben támogatja, és tehetők STONITH eszközök kapcsolatos problémák elhárítása.*
+**Jogi nyilatkozat:** *Ez az útmutató a Microsoft nagyméretű HANA-példányok a környezetben, amely sikeresen működik a telepítés tesztelésével származik. Microsoft Service Management csapata HANA nagyméretű példányokhoz nem támogatja az operációs rendszer, mert szükség lehet bármilyen további hibaelhárítási és az operációs rendszer rétegen pontosítása SUSE kapcsolódni. Microsoft service management csapata beállítása a STONITH eszköz és a teljes körűen támogatja, és tehetők STONITH eszközzel kapcsolatos problémák elhárítása.*
 ## <a name="overview"></a>Áttekintés
-Állítsa be a SUSE fürtszolgáltatás használata magas rendelkezésre állás, a következő előfeltételeknek kell megfelelnie.
+A SUSE-fürtszolgáltatás használata magas rendelkezésre állású beállításához, meg kell felelnie a következő előfeltételek teljesülésére.
 ### <a name="pre-requisites"></a>Előfeltételek
-- HANA nagy példányok törlődnek.
-- Regisztrálva van-e az operációs rendszer
-- HANA nagy példányok kiszolgálók SMT server javítások/csomagok segítségével csatlakoznak
-- Operációs rendszer van telepítve, a legújabb javítások
-- NTP (kiszolgálót) be van állítva.
-- Elolvastam és megértettem a magas rendelkezésre ÁLLÁSÚ telepítés SUSE dokumentációja legújabb verzióját
+- Nagyméretű HANA-példányok törlődnek.
+- Regisztrálva van az operációs rendszer
+- Nagyméretű HANA-példányokhoz kiszolgálói kapcsolódnak SMT kiszolgáló beolvasni a javítások és csomagok
+- Operációs rendszer a legfrissebb javításoknak telepítve van
+- NTP (time-kiszolgáló) be van állítva.
+- Elolvastam és megértettem a legújabb verzióra a magas rendelkezésre ÁLLÁSÚ telepítési SUSE-dokumentáció
 
-### <a name="setup-details"></a>A telepítő részletei
-Ez az útmutató a következő telepítő használja:
-- Operációs rendszer: SLES 12 SP1 SAP
-- HANA nagy példányok: 2xS192 (négy szoftvercsatornák, 2 TB)
+### <a name="setup-details"></a>Beállítás részletei
+Ez az útmutató a következő beállítást használja:
+- Operációs rendszer: SLES 12 SAP-SP1
+- Nagyméretű HANA-példányokhoz: 2xS192 (négy sockets, 2 TB)
 - HANA-verzió: HANA 2.0 SP1
-- Kiszolgálók nevei: sapprdhdb95 (1. csomópont) és sapprdhdb96 (2)
-- STONITH eszköz: iSCSI alapú STONITH eszköz
-- Állítsa be a HANA nagy példány csomópontok egyikén NTP
+- Kiszolgálók nevei: sapprdhdb95 (csomópont1) és sapprdhdb96 (csomópont2)
+- STONITH eszköz: az iSCSI-alapú STONITH eszköz
+- Állítsa be, a nagyméretű HANA-példány csomópontjának egyikét, NTP
 
-Nagy példányok HANA HSR beállításakor szolgáltatás vezetőség Microsoft STONITH beállítása is igényelhet. Ha már egy meglévő ügyfél, aki HANA nagy példányok üzembe helyezve, és szükség a meglévő paneleken beállítása STONITH eszköz rendelkezik, adja meg a következő szolgáltatás vezetőség Microsoft szolgáltatás-kérelmek formájában (SRF) adatokat szeretné. A műszaki Ügyfélfelelőshöz vagy a Microsoft Contact HANA nagy példány bevezetése SRF űrlap kérhet. Az új ügyfelek STONITH eszköz kérheti a kiépítés során. A bemeneti adatok érhetők el az üzembe helyezési űrlap.
+A HSR nagyméretű HANA-példányok üzembe helyezésekor a Microsoft szolgáltatás-felügyeleti csoport beállítása a STONITH igényelhet. Ha már egy meglévő ügyfél rendelkező, nagyméretű HANA-példányok üzembe helyezett, és meg kell állítható be a meglévő paneleket a STONITH eszköz, a következő adatokat a szolgáltatás űrlapot (SRF) a Microsoft Service Management csapatának szeretne. A Technical Account Manager vagy a nagyméretű HANA-példány bevezetéséhez a Microsoft Contact SRF űrlap kérhetnek. Az új ügyfelek kérhetnek STONITH eszköz kiépítése időpontjában. A bemeneti kiépítési kérést formájában érhetők el.
 
-- Kiszolgáló neve és a kiszolgáló IP-cím (például myhanaserver1, 10.35.0.1)
-- Helyét (például amerikai keleti)
+- Kiszolgáló neve és a kiszolgáló IP-címet (például myhanaserver1, 10.35.0.1)
+- Hely (például USA keleti régiója)
 - Ügyfél neve (például Microsoft)
-- SID - HANA rendszerazonosító (például H11)
+- SID - HANA rendszer azonosítóját (például H11)
 
-Miután beállította a STONITH eszköz, a Microsoft szolgáltatás-felügyeleti csoport biztosít SBD eszköz nevét és az iSCSI-tárolóhoz, amelyet felhasználhat STONITH telepítő konfigurálását célzó IP-címét. 
+Miután konfigurálta a STONITH eszköz, a Microsoft szolgáltatás-felügyeleti csoport nyújtanak a SBD eszköz és az iSCSI-tárolóhoz, amelyet beállítása a STONITH telepítő használhat IP-címét. 
 
-A végpontok közötti STONITH használatával magas rendelkezésre ÁLLÁSÚ beállításához a következő lépéseket kell követni kell:
+Beállítása a STONITH használatával teljes körű magas rendelkezésre ÁLLÁS, a következő lépéseket kell követnie:
 
-1.  A SBD eszköz azonosítására
+1.  A SBD eszköz azonosítása
 2.  A SBD eszköz inicializálása
 3.  A fürt konfigurálása
 4.  A Softdog figyelő beállítása
-5.  A csomópontok csatlakoztatása a fürt
+5.  Csatlakozzon a csomópontot a fürthöz
 6.  A fürt ellenőrzése
-7.  Az erőforrások a fürt konfigurálása
+7.  A szükséges erőforrásokat a fürt konfigurálása
 8.  A feladatátvételi folyamat tesztelése
 
-## <a name="1---identify-the-sbd-device"></a>1.   A SBD eszköz azonosítására
-Ez a szakasz ismerteti, hogyan meghatározásához SBD a telepítés után a Microsoft service management csapatának van beállítva a STONITH. **Ez a szakasz csak a meglévő ügyfél vonatkozik**. Ha egy új ügyfél, a Microsoft felügyeleti csoport által nyújtott SBD eszköz neve, és hogy ez a szakasz kihagyhatja.
+## <a name="1---identify-the-sbd-device"></a>1.   A SBD eszköz azonosítása
+Ez a szakasz ismerteti, hogyan lehet megállapítani, hogy az SBD eszköz, a telepítés után a Microsoft service management csapata a STONITH konfigurálta a. **Ez a szakasz csak vonatkozik a meglévő ügyfél**. Ha egy új ügyfél, Microsoft service management csapata által nyújtott SBD eszköz nevét, és kihagyhatja az ebben a szakaszban.
 
-1.1 módosítása */etc/iscsi/initiatorname.isci* számára 
+1.1 módosítása */etc/iscsi/initiatorname.isci* , 
 ``` 
 iqn.1996-04.de.suse:01:<Tenant><Location><SID><NodeNumber> 
 ```
 
-A Microsoft service management adja meg ezt a karakterláncot. A következő fájl módosításához a **mindkét** a csomópontok, azonban a csomópont nem mindegyik csomópontján.
+A Microsoft service management adja meg ezt a karakterláncot. A fájl módosítása a **mindkét** a csomópontokon, azonban a csomópont száma eltér a csomópontokon.
 
 ![initiatorname.png](media/HowToHLI/HASetupWithStonith/initiatorname.png)
 
-1.2 módosítása */etc/iscsi/iscsid.conf*: beállítása *node.session.timeo.replacement_timeout=5* és *node.startup = automatikus*. A következő fájl módosításához a **mindkét** a csomópontok.
+1.2 módosítása */etc/iscsi/iscsid.conf*: állítsa be *node.session.timeo.replacement_timeout=5* és *node.startup = automatikus*. A fájl módosítása a **mindkét** a csomópontokat.
 
-1.3 a felderítési parancs hajtható végre, négy munkamenetek mutatja. Futtassa a csomópontokon is.
+1.3-as, hajtsa végre a felderítési parancsot, négy munkamenetek jeleníti meg. Futtassa a csomópontokon is.
 
 ```
 iscsiadm -m discovery -t st -p <IP address provided by Service Management>:3260
@@ -86,21 +86,21 @@ iscsiadm -m discovery -t st -p <IP address provided by Service Management>:3260
 
 ![iSCSIadmDiscovery.png](media/HowToHLI/HASetupWithStonith/iSCSIadmDiscovery.png)
 
-1.4-es, hajtsa végre a parancsot próbál bejelentkezni az iSCSI-eszközhöz, négy munkamenetek mutatja. Futtassa **mindkét** a csomópontok.
+1.4-es, hajtsa végre a parancsot, jelentkezzen be az iSCSI-eszközt, négy munkamenetek jeleníti meg. Futtassa **mindkét** a csomópontokat.
 
 ```
 iscsiadm -m node -l
 ```
 ![iSCSIadmLogin.png](media/HowToHLI/HASetupWithStonith/iSCSIadmLogin.png)
 
-1.5-ös, hajtsa végre az újraellenőrzés parancsfájlt: *újraellenőrzés-scsi-bus.sh*.  A parancsfájl bemutatja, az új lemezek hozott létre.  Futtassa a csomópontokon is. Láthatja, hogy a logikai egység száma nagyobb, mint nulla (például: 1, 2 stb.)
+1.5-ös, hajtsa végre az újraellenőrzés parancsfájlt: *újraellenőrzés-scsi-bus.sh*.  Ez a szkript bemutatja, az Ön számára létrehozott új lemezeket.  Futtassa a csomópontokon is. A LUN számot kell megjelennie, amely csak nullánál nagyobb (például: 1, 2 stb.)
 
 ```
 rescan-scsi-bus.sh
 ```
 ![rescanscsibus.png](media/HowToHLI/HASetupWithStonith/rescanscsibus.png)
 
-1.6 a futtassa a parancsot az eszköznév *fdisk – l*. Futtassa a csomópontokon is. Válassza ki az eszközt az méretének **178 MiB**.
+1.6-os, futtassa a parancsot az eszköznév *fdisk – l*. Futtassa a csomópontokon is. Válassza ki az eszközt az méretének **178 MiB**.
 
 ```
   fdisk –l
@@ -117,16 +117,16 @@ sbd -d <SBD Device Name> create
 ```
 ![sbdcreate.png](media/HowToHLI/HASetupWithStonith/sbdcreate.png)
 
-2.2 Ellenőrizze, hogy mi van írva az eszközre. A **mindkét** a csomópontok
+2.2-es ellenőrizze, hogy az eszköz milyen lett írva. Éppen **mindkét** a csomópontok
 
 ```
 sbd -d <SBD Device Name> dump
 ```
 
 ## <a name="3---configuring-the-cluster"></a>3.   A fürt konfigurálása
-Ez a szakasz a SUSE magas rendelkezésre ÁLLÁSÚ fürt beállítása a lépéseit ismerteti.
+Ez a szakasz ismerteti, hogyan állította be a SUSE magas rendelkezésre ÁLLÁS fürtöt.
 ### <a name="31-package-installation"></a>3.1 csomag telepítése
-3.1.1 Ellenőrizze, hogy ha_sles és SAPHanaSR-doc minták vannak telepítve. Ha nincs telepítve, telepítse őket. Telepítse a **mindkét** a csomópontok.
+3.1.1 Ellenőrizze, hogy ha_sles és SAPHanaSR-doc minták telepítve vannak. Ha nincs telepítve, telepítse őket. Vagy telepítheti **mindkét** a csomópontokat.
 ```
 zypper in -t pattern ha_sles
 zypper in SAPHanaSR SAPHanaSR-doc
@@ -134,10 +134,10 @@ zypper in SAPHanaSR SAPHanaSR-doc
 ![zypperpatternha_sles.png](media/HowToHLI/HASetupWithStonith/zypperpatternha_sles.png)
 ![zypperpatternSAPHANASR-doc.png](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
 
-### <a name="32-setting-up-the-cluster"></a>3.2 a fürt beállítása
-3.2.1 használhatja *magas rendelkezésre állású fürt-inicializálás* parancsot, vagy a fürt beállítása a yast2 varázsló segítségével. Ebben az esetben használja a yast2 varázslót. Ez a lépés végrehajtása **csak az elsődleges csomóponton lévő**.
+### <a name="32-setting-up-the-cluster"></a>3.2-es a fürt beállítása
+3.2.1 használhatja *magas rendelkezésre állás – fürt-init* parancsot, vagy a fürt beállításának yast2 varázsló segítségével. Ebben az esetben a yast2 varázsló szolgál. Ez a lépés végrehajtása **csak az elsődleges csomóponton**.
 
-Hajtsa végre a yast2 > magas rendelkezésre állású > fürt ![yast-vezérlő-center.png](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
+Hajtsa végre a yast2 > magas rendelkezésre állású > fürt ![yast-vezérlés – center.png](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
 ![yast-hawk-install.png](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
 
 Kattintson a **Mégse** óta a halk2 csomag már telepítve van.
@@ -146,49 +146,49 @@ Kattintson a **Mégse** óta a halk2 csomag már telepítve van.
 
 Kattintson a **folytatása**
 
-Várt érték (ebben az esetben 2) telepített csomópontok száma = ![yast-fürt-Security.png](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png) kattintson **következő**
-![yast-fürt-konfigurálása-csync2.png](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png) hozzáadása csomópont nevét, és kattintson az "javasolt fájlok hozzáadása"
+Várt érték (ebben az esetben 2) üzembe helyezett csomópontok számától = ![yast-fürt-Security.png](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png) kattintson **tovább**
+![yast-fürt-konfigurálása – csync2.png](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png) hozzáadása csomópont nevét, majd kattintson "javasolt-fájlok hozzáadása"
 
 Kattintson a "Bekapcsolása csync2"
 
-Kattintson a "Shared kulcsok előtti létrehozásához.", azt jeleníti meg a helyi menü alatti
+Kattintson a "Létrehozás előtti Shared kulcsok", a helyi menü alatt jelenik meg
 
-![yast-kulcs-file.png](media/HowToHLI/HASetupWithStonith/yast-key-file.png)
+![yast-key-file.png](media/HowToHLI/HASetupWithStonith/yast-key-file.png)
 
 Kattintson az **OK** gombra
 
-A hitelesítés az IP-címek és előtti shared kulcsok használata az Csync2 történik. A kulcs fájlját a csync2 -k /etc/csync2/key_hagroup jön létre. A fájl key_hagroup kell másolni, hogy a fürt összes tagja manuális létrehozása után. **Ügyeljen arra, hogy a fájl másolása 1 csomópont csomópont2**.
+A hitelesítés Csync2 az IP-címek és előtti shared kulcsok használatával történik. A kulcsfájl csync2 -k /etc/csync2/key_hagroup hozza létre. A fájl key_hagroup kell másolni, hogy a fürt összes tagja manuális létrehozása után. **Győződjön meg, hogy a fájl másolása 1. csomópont csomópont2**.
 
 ![yast-fürt-conntrackd.png](media/HowToHLI/HASetupWithStonith/yast-cluster-conntrackd.png)
 
-Kattintson a **következő**
+Kattintson a **tovább**
 ![yast-fürt-service.png](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
 
-Az alapértelmezett beállítás rendszerindítása ki volt kapcsolva, módosítsa az "on", így támasztja rendszerindító elindult. A választás a telepítési követelmények alapján végezheti el.
-Kattintson a **következő** és a fürt konfigurálása nem fejeződött be.
+Az alapértelmezett beállítás rendszerindítása ki volt kapcsolva, módosítsa a "be", így támasztja rendszerindító elindult. A kiválasztott telepítő igényei alapján teheti meg.
+Kattintson a **tovább** , és a fürt konfigurálása befejeződött.
 
 ## <a name="4---setting-up-the-softdog-watchdog"></a>4.   A Softdog figyelő beállítása
 Ez a szakasz ismerteti a figyelő (softdog) konfigurációját.
 
-4.1 adja a következő sort */etc/init.d/boot.local* a **mindkét** a csomópontok.
+4.1 adja hozzá a következő sort */etc/init.d/boot.local* a **mindkét** a csomópontokat.
 ```
 modprobe softdog
 ```
 ![modprobe-softdog.png](media/HowToHLI/HASetupWithStonith/modprobe-softdog.png)
 
-4.2 a fájl frissítése */etc/sysconfig/sbd* a **mindkét** a csomópontok a következőként:
+4.2 a fájl frissítése */etc/sysconfig/sbd* a **mindkét** a csomópontok a következőképpen:
 ```
 SBD_DEVICE="<SBD Device Name>"
 ```
 ![sbd-device.png](media/HowToHLI/HASetupWithStonith/sbd-device.png)
 
-4.3 a kernel modul betöltése a **mindkét** a csomópontokat a következő parancs futtatásával
+4.3 a kernel modul betöltése a **mindkét** a csomópontok a következő parancs futtatásával
 ```
 modprobe softdog
 ```
 ![modprobe-softdog-command.png](media/HowToHLI/HASetupWithStonith/modprobe-softdog-command.png)
 
-4.4. Ellenőrizze, és győződjön meg arról, hogy softdog fut. a következőképpen **mindkét** a csomópontok:
+4.4. Ellenőrizze, és győződjön meg arról, hogy softdog fut a következőképpen **mindkét** a csomópontok:
 ```
 lsmod | grep dog
 ```
@@ -198,27 +198,27 @@ lsmod | grep dog
 ```
 /usr/share/sbd/sbd.sh start
 ```
-![sbd-sh-start.png](media/HowToHLI/HASetupWithStonith/sbd-sh-start.png)
+![sbd-sh – start.png](media/HowToHLI/HASetupWithStonith/sbd-sh-start.png)
 
-4.6 a SBD démon tesztelése a **mindkét** a csomópontok. Két bejegyzés megjelenik után konfigurálja úgy a **mindkét** a csomópontok
+4.6 a SBD démon tesztelni az **mindkét** a csomópontokat. Két bejegyzés látja a konfigurálás után **mindkét** a csomópontok
 ```
 sbd -d <SBD Device Name> list
 ```
 ![sbd-list.png](media/HowToHLI/HASetupWithStonith/sbd-list.png)
 
-4.7 a tesztüzenet küldése **egy** a csomópontok
+4.7 tesztüzenet küldése **egy** a csomópontok
 ```
 sbd  -d <SBD Device Name> message <node2> <message>
 ```
 ![sbd-list.png](media/HowToHLI/HASetupWithStonith/sbd-list.png)
 
-4.8 a a **második** csomópont ellenőrizheti, hogy az üzenet állapota (2)
+4.8 a a **második** csomópont (csomópont2) ellenőrizheti, hogy az üzenet állapota
 ```
 sbd  -d <SBD Device Name> list
 ```
 ![sbd-lista-message.png](media/HowToHLI/HASetupWithStonith/sbd-list-message.png)
 
-4.9 elfogadják a sbd config, módosítsa a fájlt */etc/sysconfig/sbd* következőként. A fájl frissítése a **mindkét** a csomópontok
+4.9 elfogadják a sbd config, hogy a fájl frissítése */etc/sysconfig/sbd* következőképpen. A fájl frissítése a **mindkét** a csomópontok
 ```
 SBD_DEVICE=" <SBD Device Name>" 
 SBD_WATCHDOG="yes" 
@@ -226,51 +226,51 @@ SBD_PACEMAKER="yes"
 SBD_STARTMODE="clean" 
 SBD_OPTS=""
 ```
-4.10 támasztja szolgáltatás indítása a **elsődleges csomópont** (1. csomópont)
+4.10 támasztja szolgáltatás indítása a **elsődleges csomóponthoz** (csomópont1)
 ```
 systemctl start pacemaker
 ```
 ![Start-pacemaker.png](media/HowToHLI/HASetupWithStonith/start-pacemaker.png)
 
-Ha a támasztja szolgáltatás *sikertelen*, tekintse meg *forgatókönyv 5: támasztja szolgáltatás sikertelen*
+Ha a támasztja szolgáltatás *sikertelen*, tekintse meg *5. forgatókönyv: támasztja szolgáltatás meghiúsul*
 
-## <a name="5---joining-the-cluster"></a>5.   A fürt csatlakoztatása
-Ez a szakasz ismerteti a csomópontok csatlakoztatása a fürt módjáról.
+## <a name="5---joining-the-cluster"></a>5.   A fürthöz való csatlakozás
+Ez a szakasz ismerteti, hogyan csatlakoztathatók a csomópontot a fürthöz a.
 
 ### <a name="51-add-the-node"></a>5.1 a csomópont hozzáadása
-A következő parancsot **csomópont2** ahhoz, hogy a 2. csomópont csatlakoztatását a fürthöz.
+Futtassa a következő parancsot **csomópont2** ahhoz, hogy csatlakozzon a fürt csomópont2.
 ```
 ha-cluster-join
 ```
-Ha megjelenik egy *hiba* közben csatlakozik, a fürtöt, tekintse meg a *forgatókönyv 6: nem lehet csatlakozni a fürthöz csomópont 2*.
+Ha megjelenik egy *hiba* tekintse meg a fürthöz való csatlakozás során *forgatókönyv 6: nem sikerült csatlakozni a fürthöz a csomópontot 2*.
 
 ## <a name="6---validating-the-cluster"></a>6.   A fürt érvényesítése
 
-### <a name="61-start-the-cluster-service"></a>6.1, indítsa el a fürtszolgáltatást
-Ellenőrizze, és opcionálisan indítsa el a fürt első alkalommal a **mindkét** csomópontok.
+### <a name="61-start-the-cluster-service"></a>6.1 a Fürtszolgáltatás indítása
+Ellenőrizze és szükség esetén indítsa el a fürt első alkalommal a **mindkét** csomópontok.
 ```
 systemctl status pacemaker
 systemctl start pacemaker
 ```
-![systemctl-állapot-pacemaker.png](media/HowToHLI/HASetupWithStonith/systemctl-status-pacemaker.png)
+![systemctl-állapot – pacemaker.png](media/HowToHLI/HASetupWithStonith/systemctl-status-pacemaker.png)
 ### <a name="62-monitor-the-status"></a>6.2 a állapotának figyelése
-Futtassa a parancsot *crm_mon* biztosításához **mindkét** a csomópontja online állapotban. Futtathatja **a csomópontokon** a fürt
+Futtassa a parancsot *crm_mon* biztosításához **mindkét** a csomópontok online állapotban. Futtatás **bármely csomópontjának** a fürt
 ```
 crm_mon
 ```
-![CRM-mon.png](media/HowToHLI/HASetupWithStonith/crm-mon.png) akkor is bejelentkezhet a fürt állapotának hawk *https://<node IP>: 7630*. Az alapértelmezett felhasználói hacluster, és a jelszó linux. Ha szükséges, a jelszó használatával módosíthatja *passwd* parancsot.
+![CRM-mon.png](media/HowToHLI/HASetupWithStonith/crm-mon.png) is bejelentkezhet, a fürt állapotának hawk *https://<node IP>: 7630*. Az alapértelmezett felhasználó hacluster, és a jelszó linux. Ha szükséges, módosíthatja, a jelszó használatával *passwd* parancsot.
 
-## <a name="7-configure-cluster-properties-and-resources"></a>7. Fürt tulajdonságainak és erőforrásainak konfigurálása 
-Ez a szakasz a fürterőforrásokat konfigurálásának lépéseit ismerteti.
-Ebben a példában, állítsa be a következő erőforrás a többi konfigurálhatja (ha szükséges) a SUSE magas rendelkezésre ÁLLÁSÚ útmutató hivatkozik. Hajtsa végre a config **egyik csomópontján** csak. Hajtsa végre az elsődleges csomóponton.
+## <a name="7-configure-cluster-properties-and-resources"></a>7. Konfigurálja a fürt tulajdonságainak és erőforrásainak 
+Ez a szakasz ismerteti, hogyan konfigurálhatja a fürt erőforrásait.
+Ebben a példában a következő erőforrás-a többi konfigurálható (ha szükséges) a SUSE magas rendelkezésre ÁLLÁS útmutató hivatkozva. Hajtsa végre a konfiguráció a **egyik csomópont valamelyik** csak. Hajtsa végre az elsődleges csomópont.
 
 - Fürt rendszerindítási
 - STONITH eszköz
 - A virtuális IP-cím
 
 
-### <a name="71-cluster-bootstrap-and-more"></a>7.1 a rendszerindítási és több fürt
-Vegye fel a fürt rendszerindítási. Hozza létre a fájlt, és adja hozzá a szöveg következő:
+### <a name="71-cluster-bootstrap-and-more"></a>7.1-es fürt rendszerindítási és egyéb
+Adja hozzá a fürt rendszerindítási. A fájl létrehozásához, és adja hozzá a szöveget a következőképpen:
 ```
 sapprdhdb95:~ # vi crm-bs.txt
 # enter the following to crm-bs.txt
@@ -289,16 +289,15 @@ A konfiguráció hozzáadása a fürthöz.
 ```
 crm configure load update crm-bs.txt
 ```
-![CRM konfigurálása crmbs.png](media/HowToHLI/HASetupWithStonith/crm-configure-crmbs.png)
+![CRM-konfigurálása – crmbs.png](media/HowToHLI/HASetupWithStonith/crm-configure-crmbs.png)
 
 ### <a name="72-stonith-device"></a>7.2 STONITH eszköz
-Vegyen fel STONITH erőforrást. Hozza létre a fájlt, és adja hozzá a szöveg következő.
+Adja hozzá a STONITH erőforrás. A fájl létrehozásához és a következőképpen adja hozzá a szöveget.
 ```
 # vi crm-sbd.txt
 # enter the following to crm-sbd.txt
 primitive stonith-sbd stonith:external/sbd \
-params pcmk_delay_max="15" \
-op monitor interval="15" timeout="15"
+params pcmk_delay_max="15"
 ```
 A konfiguráció hozzáadása a fürthöz.
 ```
@@ -306,7 +305,7 @@ crm configure load update crm-sbd.txt
 ```
 
 ### <a name="73-the-virtual-ip-address"></a>7.3 a virtuális IP-cím
-Erőforrás virtuális IP-cím hozzáadása. Hozza létre a fájlt, és adja hozzá az alábbi szöveget.
+Erőforrás virtuális IP-cím hozzáadása. A fájl létrehozásához és az alábbiak szerint adja hozzá a szöveget.
 ```
 # vi crm-vip.txt
 primitive rsc_ip_HA1_HDB10 ocf:heartbeat:IPaddr2 \
@@ -319,45 +318,45 @@ A konfiguráció hozzáadása a fürthöz.
 crm configure load update crm-vip.txt
 ```
 
-### <a name="74-validate-the-resources"></a>7.4 érvényesíteni az erőforrások
+### <a name="74-validate-the-resources"></a>7.4 az erőforrások ellenőrzése
 
-A parancs futtatásakor *crm_mon*, láthatja, hogy a két erőforrásnak.
+A parancs futtatásakor *crm_mon*, láthatja, hogy a két erőforrás.
 ![crm_mon_command.png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
-Ezenkívül megtekintheti a állapotát *https://<node IP address>: 7630/cib/élő/állapota*
+Ezenkívül láthatja a állapotát *https://<node IP address>: 7630/cib/élő/állapota*
 
-![hawlk-állapot-page.png](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
+![hawlk-állapot – page.png](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
 
 ## <a name="8-testing-the-failover-process"></a>8. A feladatátvételi folyamat tesztelése
-A feladatátvételi folyamat teszteléséhez állítsa le a támasztja szolgáltatást, az 1. csomópont, és az erőforrások feladatátvételének csomópont2.
+A feladatátvételi folyamat teszteléséhez, állítsa le a csomópont1 támasztja szolgáltatást, és az erőforrások feladatátvételének csomópont2.
 ```
 Service pacemaker stop
 ```
-Most, támasztja szolgáltatás leállítása **csomópont2** és erőforrások átadja a **csomópont1**
+Most támasztja szolgáltatás leállítása **csomópont2** és erőforrások átadja **csomópont1**
 
-**Feladatátvétel előtt**
+**A feladatátvétel előtt**
 ![előtt failover.png](media/HowToHLI/HASetupWithStonith/Before-failover.png)
-**feladatátvételt követően**
+**a feladatátvételt követően**
 ![után failover.png](media/HowToHLI/HASetupWithStonith/after-failover.png)
- ![ CRM-f-után-failover.png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)
+ ![ CRM-hétfő-után-failover.png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)
 
 
 ## <a name="9-troubleshooting"></a>9. Hibaelhárítás
-Ez a szakasz ismerteti a néhány hiba forgatókönyveket, amelyek a telepítés során előforduló is. Előfordulhat, hogy nem feltétlenül szembesülhetnek ezeket a problémákat.
+Ez a szakasz ismerteti a néhány hiba forgatókönyveket, amelyek a telepítés során előforduló is. Előfordulhat, hogy nem feltétlenül között ezeket a problémákat.
 
 ### <a name="scenario-1-cluster-node-not-online"></a>1. forgatókönyv: Fürtcsomópont nincs online állapotban
-Ha a csomópontokon nem jeleníti meg a kezelő online, megpróbálhatja kapcsolása a következő.
+A csomópontokon nem jeleníti meg a Feladatátvevőfürt-kezelő online, megpróbálhatja a következő online állapotba.
 
-Az iSCSI szolgáltatás elindítása
+Az iSCSI-szolgáltatás indítása
 ```
 service iscsid start
 ```
 
-Most kell tudni bejelentkezni az iSCSI csomópontot és
+És most meg kell tudni jelentkezzen be, hogy az iSCSI-csomópont
 ```
 iscsiadm -m node -l
 ```
-A várt kimeneti láthatóhoz hasonló
+A következő várt kimenetet tűnik
 ```
 sapprdhdb45:~ # iscsiadm -m node -l
 Logging in to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.11,3260] (multiple)
@@ -370,7 +369,7 @@ Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal
 Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.21,3260] successful.
 ```
 ### <a name="scenario-2-yast2-does-not-show-graphical-view"></a>2. forgatókönyv: yast2 nem grafikus nézetének megjelenítése
-A yast2 grafikus képernyő segítségével állítsa be a magas rendelkezésre állású fürt ebben a dokumentumban. Ha yast2 grafikus ablak megnyitásához, és nem Qt hiba throw, hajtsa végre a következő lépéseket. A grafikus ablak nyílik meg, ha a lépéseket kihagyhatja.
+Ebben a dokumentumban a magas rendelkezésre állású fürt beállítása a yast2 grafikus képernyő szolgál. Ha yast2 nyissa meg a grafikus ablakban látható módon, és nem Qt hiba throw, hajtsa végre az alábbi lépéseket. A grafikus ablak nyílik meg, ha a lépést kihagyhatja.
 
 **Hiba történt**
 
@@ -378,25 +377,25 @@ A yast2 grafikus képernyő segítségével állítsa be a magas rendelkezésre 
 
 **Várt kimenet**
 
-![yast-vezérlő-center.png](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
+![yast-vezérlés – center.png](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
 
-A yast2 a grafikus nézet nem nyitható meg, ha kövesse a lépéseket következő.
+A yast2 a grafikus nézet nem nyílik meg, kövesse a lépéseket következő.
 
-Telepítse a szükséges csomagokat. "Gyökér" felhasználóként kell bejelentkeznie, és rendelkezik SMT beállítva a csomagok letöltése vagy telepítése.
+Telepítse a szükséges csomagokat. "Root" felhasználóként kell bejelentkeznie, és rendelkezik SMT beállítani a csomagok letöltése és telepítése.
 
-A csomagok telepítéséhez használja a yast > szoftver > szoftverkezelés > Függőségek > "A telepítés ajánlott csomagok..." lehetőséget. Az alábbi képernyőfelvételen a várt képernyők mutatja be.
+A csomagokat telepíteni, használja a yast > Software > szoftverkezelés > Függőségek > "Ajánlott csomagok... telepítés" lehetőséget. Az alábbi képernyőképen a várt képernyők mutatja be.
 >[!NOTE]
->Kell mindkét csomóponton, hajtsa végre a lépéseket, hogy mindkét csomópontjából yast2 grafikus nézetében végezheti el.
+>Kell mindkét csomóponton, hajtsa végre a lépéseket, hogy a yast2 grafikus nézetet a mindkét csomópont érheti el.
 
 ![yast-sofwaremanagement.png](media/HowToHLI/HASetupWithStonith/yast-sofwaremanagement.png)
 
-A függőségek, válassza a "Ajánlott csomagok telepítése" ![yast-dependencies.png](media/HowToHLI/HASetupWithStonith/yast-dependencies.png)
+Függőségek, válassza a "Ajánlott csomagok telepítése" ![yast-dependencies.png](media/HowToHLI/HASetupWithStonith/yast-dependencies.png)
 
 Tekintse át a módosításokat, és kattintson az OK gombra
 
 ![yast](media/HowToHLI/HASetupWithStonith/yast-automatic-changes.png)
 
-Csomag telepítési hibákra vonatkozó ![yast végrehajtása installation.png](media/HowToHLI/HASetupWithStonith/yast-performing-installation.png)
+Csomag telepítési bevételből ![yast végrehajtása installation.png](media/HowToHLI/HASetupWithStonith/yast-performing-installation.png)
 
 Kattintson a Next (Tovább) gombra.
 
@@ -404,7 +403,7 @@ Kattintson a Next (Tovább) gombra.
 
 Kattintson a Befejezés gombra
 
-Szükség libqt4 és libyui-qt csomagok telepítését.
+Emellett telepítenie kell a libqt4 és libyui-qt csomagokat.
 ```
 zypper -n install libqt4
 ```
@@ -412,25 +411,25 @@ zypper -n install libqt4
 ```
 zypper -n install libyui-qt
 ```
-![zypper-install-ligyui.png](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui.png)
-![zypper-install-ligyui_part2.png](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui_part2.png) Yast2 kell tudni megnyitni grafikus nézetként most látható itt.
-![yast2-vezérlő-center.png](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
+![zypper-telepítés – ligyui.png](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui.png)
+![zypper-telepítés – ligyui_part2.png](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui_part2.png) Yast2 itt nyissa meg a grafikus nézetet, mostantól látható módon képesnek kell lennie.
+![yast2-vezérlés – center.png](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
 
-### <a name="scenario-3-yast2-does-not-high-availability-option"></a>3. forgatókönyv: yast2 does nem magas rendelkezésre állási beállítása
-A magas rendelkezésre állású lehetőség a yast2 control center látható legyen meg kell a további csomagok telepítése.
+### <a name="scenario-3-yast2-does-not-high-availability-option"></a>3. forgatókönyv: yast2 does nem magas rendelkezésre állási lehetőségek
+A magas rendelkezésre állású beállítás lesznek láthatók a yast2 vezérlőközpont a további csomagokat telepítenie kell.
 
-Yast2 használatával > szoftver > szoftverkezelés > Válassza ki a következő minták
+Yast2 használatával > Software > szoftverkezelés > Válassza ki a következő minták
 
 - Alap SAP HANA-kiszolgáló
 - C/C++ fordítóprogram- és eszközök
 - Magas rendelkezésre állás
 - Alap SAP-alkalmazáskiszolgáló
 
-A következő képernyőn látható a minták telepítésének lépéseit.
+A következő képernyőt jeleníti meg a lépéseket a minták telepítéséhez.
 
-Yast2 használatával > szoftver > szoftverkezelés
+Yast2 használatával > Software > szoftverkezelés
 
-![yast2-vezérlő-center.png](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
+![yast2-vezérlés – center.png](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
 
 Válassza ki a minták
 
@@ -445,22 +444,22 @@ Kattintson a **folytatása**
 
 ![yast2 végrehajtása installation.png](media/HowToHLI/HASetupWithStonith/yast2-performing-installation.png)
 
-Kattintson a **következő** Ha a telepítés befejeződött
+Kattintson a **tovább** amikor a telepítés befejeződött
 
 ![yast2-telepítés – report.png](media/HowToHLI/HASetupWithStonith/yast2-installation-report.png)
 
-### <a name="scenario-4-hana-installation-fails-with-gcc-assemblies-error"></a>4. forgatókönyv: Az HANA telepítési ÖET szerelvények hibaüzenettel meghiúsul.
-A HANA telepítése a következő hiba miatt sikertelen.
+### <a name="scenario-4-hana-installation-fails-with-gcc-assemblies-error"></a>4. forgatókönyv: HANA telepítése nem sikerül a gcc-szerelvények hiba
+A HANA telepítése meghiúsul a következő hiba miatt.
 
 ![Hana-telepítés – error.png](media/HowToHLI/HASetupWithStonith/Hana-installation-error.png)
 
-A probléma megoldásához telepítendő függvénytárak (libgcc_sl és libstdc ++ 6), a következő.
+A probléma elhárításához kódtárak telepítése kell (libgcc_sl és libstdc ++ 6), a következőket.
 
 ![zypper-install-lib.png](media/HowToHLI/HASetupWithStonith/zypper-install-lib.png)
 
-### <a name="scenario-5-pacemaker-service-fails"></a>5. forgatókönyv: Támasztja szolgáltatás sikertelen
+### <a name="scenario-5-pacemaker-service-fails"></a>5. forgatókönyv: Támasztja szolgáltatás meghiúsul
 
-A következő probléma lépett fel a támasztja szolgáltatás indítása során.
+A következő hiba történt a támasztja szolgáltatás indítása során.
 
 ```
 sapprdhdb95:/ # systemctl start pacemaker
@@ -501,7 +500,7 @@ sapprdhdb95:/ # tail -f /var/log/messages
 2017-09-28T18:45:01.308066-04:00 sapprdhdb95 CRON[57995]: pam_unix(crond:session): session closed for user root
 ```
 
-Oldhatja meg a problémát, törölje a következő sort a következő fájl */usr/lib/systemd/system/fstrim.timer*
+A javításhoz törölni a következő sort a fájl */usr/lib/systemd/system/fstrim.timer*
 
 ```
 Persistent=true
@@ -509,15 +508,15 @@ Persistent=true
 
 ![Persistent.png](media/HowToHLI/HASetupWithStonith/Persistent.png)
 
-### <a name="scenario-6-node-2-unable-to-join-the-cluster"></a>6. példa: Csomópont nem a fürthöz való csatlakoztatáshoz 2
+### <a name="scenario-6-node-2-unable-to-join-the-cluster"></a>6. példa: Csomópont nem lehet csatlakozni a fürthöz 2
 
-Amikor a 2. csomópont csatlakoztatása a meglévő fürt használatával *magas rendelkezésre állású fürt-illesztési* parancsot a következő hiba történt.
+Ha a csomópont2 csatlakoztatása a meglévő fürt használatával *magas rendelkezésre állás fürt-illesztési* parancsot, a következő hiba történt.
 
 ```
 ERROR: Can’t retrieve SSH keys from <Primary Node>
 ```
 
-![magas rendelkezésre állású-fürt-illesztési-error.png](media/HowToHLI/HASetupWithStonith/ha-cluster-join-error.png)
+![magas rendelkezésre állás – fürt-csatlakozás-error.png](media/HowToHLI/HASetupWithStonith/ha-cluster-join-error.png)
 
 Javítsa ki, futtassa a következő mindkét csomóponton
 
@@ -526,18 +525,18 @@ ssh-keygen -q -f /root/.ssh/id_rsa -C 'Cluster Internal' -N ''
 cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
 ```
 
-![ssh-keygen-1. csomópont. PNG](media/HowToHLI/HASetupWithStonith/ssh-keygen-node1.PNG)
+![ssh-keygen – csomópont1. PNG](media/HowToHLI/HASetupWithStonith/ssh-keygen-node1.PNG)
 
-![ssh-keygen – 2. PNG](media/HowToHLI/HASetupWithStonith/ssh-keygen-node2.PNG)
+![ssh-keygen – csomópont2. PNG](media/HowToHLI/HASetupWithStonith/ssh-keygen-node2.PNG)
 
-A fenti javítás után csomópont2 kell hozzáadják a fürt
+A fenti javítás után csomópont2 kell hozzáadja a fürthöz
 
-![magas rendelkezésre állású-fürt-illesztési-fix.png](media/HowToHLI/HASetupWithStonith/ha-cluster-join-fix.png)
+![magas rendelkezésre állás – fürt-csatlakozás-fix.png](media/HowToHLI/HASetupWithStonith/ha-cluster-join-fix.png)
 
 ## <a name="10-general-documentation"></a>10. Általános dokumentáció
-A következő cikkekben található további információ a SUSE magas rendelkezésre ÁLLÁSÚ telepítés: 
+A következő cikkekben található további információ a SUSE magas rendelkezésre ÁLLÁS telepítési: 
 
-- [SAP HANA SR teljesítményre optimalizált forgatókönyv](https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf )
-- [Storage-alapú kerítés](https://www.suse.com/documentation/sle_ha/book_sleha/data/sec_ha_storage_protect_fencing.html)
-- [Blog - támasztja fürtöt használ a SAP HANA - rész 1](https://blogs.sap.com/2017/11/19/be-prepared-for-using-pacemaker-cluster-for-sap-hana-part-1-basics/)
-- [Blog - támasztja fürtöt használ a SAP HANA - rész 2](https://blogs.sap.com/2017/11/19/be-prepared-for-using-pacemaker-cluster-for-sap-hana-part-2-failure-of-both-nodes/)
+- [Az SAP HANA SR teljesítményre optimalizált forgatókönyv](https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf )
+- [Storage-alapú szintaxiskiemeléshez](https://www.suse.com/documentation/sle_ha/book_sleha/data/sec_ha_storage_protect_fencing.html)
+- [Blog – SAP HANA - rész 1 támasztja fürt használatával](https://blogs.sap.com/2017/11/19/be-prepared-for-using-pacemaker-cluster-for-sap-hana-part-1-basics/)
+- [Blog – SAP HANA - rész 2 támasztja fürt használatával](https://blogs.sap.com/2017/11/19/be-prepared-for-using-pacemaker-cluster-for-sap-hana-part-2-failure-of-both-nodes/)

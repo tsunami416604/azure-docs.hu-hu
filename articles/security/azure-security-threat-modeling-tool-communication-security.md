@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: bc724f57a25e2ca12d334192d2171899345e72de
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: be0dd7147e3864befa90434ade86b4032cd45cc3
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247381"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013185"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Biztonsági keret: Kommunikációs biztonság |} Megoldások 
 | Termék vagy szolgáltatás | Cikk |
@@ -34,7 +34,7 @@ ms.locfileid: "51247381"
 | **Mobileszköz ügyfél** | <ul><li>[Tanúsítvány rögzítését megvalósítása](#cert-pinning)</li></ul> |
 | **WCF** | <ul><li>[HTTPS engedélyezése – biztonságos átvitel csatorna](#https-transport)</li><li>[A WCF: Set Message biztonsági EncryptAndSign és védelmi szint](#message-protection)</li><li>[A WCF: Egy alacsonyabb szintű fiók használata a WCF-szolgáltatás futtatásához](#least-account-wcf)</li></ul> |
 | **Webes API** | <ul><li>[Összes forgalom kényszerített webes API-k HTTPS-kapcsolaton keresztül](#webapi-https)</li></ul> |
-| **Azure Redis Cache** | <ul><li>[Gondoskodjon arról, hogy az Azure Redis Cache kommunikáció SSL-en keresztül](#redis-ssl)</li></ul> |
+| **Az Azure Cache redis** | <ul><li>[Győződjön meg arról, hogy van-e kommunikációt az Azure Cache redis SSL-en keresztül](#redis-ssl)</li></ul> |
 | **IoT helyszíni átjáró** | <ul><li>[Eszköz biztonságossá tételéhez és a helyszíni átjárók közötti kommunikációhoz](#device-field)</li></ul> |
 | **IoT átjáró** | <ul><li>[Biztonságos eszköz és átjáró közötti kommunikációhoz SSL/TLS segítségével](#device-cloud)</li></ul> |
 
@@ -372,16 +372,16 @@ public class ValuesController : ApiController
 }
 ```
  
-## <a id="redis-ssl"></a>Gondoskodjon arról, hogy az Azure Redis Cache kommunikáció SSL-en keresztül
+## <a id="redis-ssl"></a>Győződjön meg arról, hogy van-e kommunikációt az Azure Cache redis SSL-en keresztül
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Azure Redis Cache | 
+| **Összetevő**               | Azure Cache for Redis | 
 | **SDL fázis**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Az Azure redis Cache SSL-támogatás](https://azure.microsoft.com/documentation/articles/cache-faq/#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis) |
-| **Lépések** | Redis Cache kiszolgáló nem támogatja az SSL beépített, de az Azure Redis Cache nem. Ha az Azure Redis Cache csatlakozik, és az ügyfél támogatja az SSL-t, például a StackExchange.Redis, akkor SSL kell használnia. Alapértelmezés szerint nem SSL port le van tiltva az új Azure Redis Cache-példányokban. Győződjön meg arról, hogy biztonságos alapértelmezett beállítást, nem módosulnak, ha nincs függőség az SSL-támogatás a redis-ügyfelek számára. |
+| **Lépések** | Redis Cache kiszolgáló nem támogatja az SSL beépített, de az Azure Cache redis nem. Ha az Azure Cache redis csatlakozik, és az ügyfél támogatja az SSL-t, például a StackExchange.Redis, akkor SSL kell használnia. Nem SSL port az új Azure Cache a Redis-példány alapértelmezés szerint le van tiltva. Győződjön meg arról, hogy biztonságos alapértelmezett beállítást, nem módosulnak, ha nincs függőség az SSL-támogatás a redis-ügyfelek számára. |
 
 Vegye figyelembe, hogy a Redis célja, hogy a belső megbízható környezetek megbízható ügyfelek számára érhető el. Ez azt jelenti, hogy általában nem érdemes közvetlenül az internethez vagy, általában nem megbízható ügyfeleket ahol közvetlenül hozzáférhet a Redis TCP-port vagy a UNIX-szoftvercsatorna-környezetben a Redis-példány elérhetővé. 
 

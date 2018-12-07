@@ -12,12 +12,12 @@ ms.date: 10/19/2018
 ms.author: lizross
 ms.custom: it-pro
 ms.reviewer: krbain
-ms.openlocfilehash: 09e023d1d562ea53d9927adf609335beac38a2d7
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 2d05a31c56cfe8ea92a933696ca3c9b0fadbd4d3
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468030"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000310"
 ---
 # <a name="how-to-add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Hogyan: hozzáadása vagy egy másik csoportot az Azure Active Directory csoport eltávolítása
 Ez a cikk segít hozzáadhat és eltávolíthat egy csoportot az Azure Active Directory használatával egy másik csoportot.
@@ -29,7 +29,7 @@ Ez a cikk segít hozzáadhat és eltávolíthat egy csoportot az Azure Active Di
 Hozzáadhat egy meglévő biztonsági csoport egy másik meglévő biztonsági csoport (más néven beágyazott csoportok), a tag létrehozása (alcsoport) csoport és a egy szülőcsoportot. A tagcsoportnak örökli az attribútumokat és a tulajdonságokat a szülőcsoporthoz, így konfigurációs időt takarít meg.
 
 >[!Important]
->Jelenleg nem támogatottak:<ul><li>Biztonsági csoportok hozzáadása az Office 365-csoportok</li><li>Biztonsági csoportok vagy más Office 365-csoportokat az Office 365-csoportok hozzáadása</li><li>Alkalmazások hozzárendelése a beágyazott csoportok</li><li>Beágyazott csoportok licencek alkalmazása</li></ul>
+>Jelenleg nem támogatottak:<ul><li>Csoportok hozzáadása a helyszíni Active Directoryval szinkronizált csoporthoz</li><li>Biztonsági csoportok hozzáadása az Office 365-csoportok</li><li>Biztonsági csoportok vagy más Office 365-csoportokat az Office 365-csoportok hozzáadása</li><li>Alkalmazások hozzárendelése a beágyazott csoportok</li><li>Beágyazott csoportok licencek alkalmazása</li></ul>
 
 ### <a name="to-add-a-group-as-a-member-of-another-group"></a>Egy másik csoport tagjaként csoport hozzáadása
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: bwren
-ms.openlocfilehash: b260c4eecd0a1aff31c86766e2f03208ba6b1460
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 68986b3d60566ee190a92c6ccf8cda767824350f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727256"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000155"
 ---
 # <a name="azure-monitor-branding-changes"></a>Az Azure Monitor márkajelzési módosítások
 Ez a cikk ismerteti a legutóbbi márkajelzési és Azure felügyeleti szolgáltatások nemrég végrehajtott változások. 
@@ -46,4 +46,4 @@ Az Operations Management Suite (OMS) volt a következő Azure felügyeleti szolg
 ## <a name="next-steps"></a>További lépések
 
 - Olvassa el az [Azure Monitor szolgáltatás áttekintése](overview.md) , amely ismerteti a különböző összetevők és szolgáltatások.
-- További információ a [átvitelét az OMS-portálon](../log-analytics/log-analytics-oms-portal-transition.md).
+- További információ a [átvitelét az OMS-portálon](../azure-monitor/platform/oms-portal-transition.md).

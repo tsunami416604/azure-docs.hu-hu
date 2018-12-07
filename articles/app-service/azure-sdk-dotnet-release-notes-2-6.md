@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 040eea1efd3abdbbfa65c24b2950ebece9d4acbc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: dfc1fe223dbff178c35a969e0273ed80fb4c8be9
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258391"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016426"
 ---
 # <a name="azure-sdk-for-net-26-release-notes"></a>2.6 .NET-hez készült Azure SDK kibocsátási megjegyzései
 Ez a dokumentum az Azure SDK for .NET 2.6-os kiadás tartalmazza a kibocsátási megjegyzéseket. 
@@ -59,7 +59,7 @@ Az Azure SDK 2.6-os fejleszthet a .NET 4.5.2-es vagy a .NET 4.6 célzó, feltév
     Jelenleg az Azure Storage 2011-08-18-as verzió el kell távolítani a 2016. augusztus 1-én van ütemezve. A szerepköralapú gyorsítótár az Azure SDK 2.5-ös vagy az alatti bármely áttelepítések 2.6 kell lennie teljes az időpontig. A használatból való kivonást egyaránt az Azure Storage 2011-08-18-as verzió további információkért lásd: [a Microsoft Azure Storage szolgáltatás verziója eltávolítása frissítés: 2016-ra való kiterjesztés](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx).
 
 > [!IMPORTANT]
-> A 2016. November 30 használatból való kivonást egyaránt az Azure Managed Cache Service és a szerepköralapú gyorsítótár adunk. Azt javasoljuk, hogy telepít át az Azure Redis Cache a kivonás előkészítésekor. Dátum- és migrálási útmutató segítséget nyújt a további információkért lásd: [melyik Azure gyorsítótárat használjam a megfelelő a számomra?](../redis-cache/cache-faq.md#which-azure-cache-offering-is-right-for-me)
+> A 2016. November 30 használatból való kivonást egyaránt az Azure Managed Cache Service és a szerepköralapú gyorsítótár adunk. Azt javasoljuk, hogy telepít át az Azure Cache redis a kivonás előkészítésekor. Dátum- és migrálási útmutató segítséget nyújt a további információkért lásd: [melyik Azure gyorsítótárat használjam a megfelelő a számomra?](../azure-cache-for-redis/cache-faq.md#which-azure-cache-offering-is-right-for-me)
 > 
 > 
 

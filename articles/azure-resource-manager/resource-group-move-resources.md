@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: 15ec028046b7c2b21f1892c460d53c73499680fe
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 27b41655d9a6c9000d9bc3cf98bf3246bb108104
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312537"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015551"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -215,7 +215,7 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Portál irányítópultok
 * A Power BI - mind a Power BI Embedded és a Power BI-munkaterület-csoport
 * Nyilvános IP-Címek – lásd: [nyilvános IP-korlátozások](#pip-limitations)
-* A redis Cache – Redis Cache-példány és a virtuális hálózat van konfigurálva, ha a példány nem lehet áthelyezni egy másik előfizetésbe. Lásd: [virtuális hálózatok korlátozások](#virtual-networks-limitations).
+* Az Azure Cache redis - Ha az Azure Cache Redis-példány van konfigurálva, és a virtuális hálózat, a példány nem helyezhető át másik előfizetésbe. Lásd: [virtuális hálózatok korlátozások](#virtual-networks-limitations).
 * Scheduler
 * Keresés
 * Service Bus
@@ -330,7 +330,7 @@ Virtuális hálózat áthelyezésekor is át kell helyeznie a tőle függő erő
 
 Egy virtuális Társhálózat áthelyezni, előbb le kell tiltania a virtuális hálózatok közötti társviszony. Ha le van tiltva, áthelyezheti a virtuális hálózat. Az áthelyezés után a virtuális hálózatok közötti társviszony újraengedélyezni.
 
-Virtuális hálózat nem helyezhetők át másik előfizetésbe való, ha a virtuális hálózati erőforrás-navigációs hivatkozásaival egy alhálózatot tartalmaz. Például ha egy Redis Cache-erőforrást egy alhálózatában van üzembe helyezve, az alhálózatra, erőforrás-navigációs hivatkozást.
+Virtuális hálózat nem helyezhetők át másik előfizetésbe való, ha a virtuális hálózati erőforrás-navigációs hivatkozásaival egy alhálózatot tartalmaz. Például ha az Azure Cache Redis erőforrás egy alhálózatában van üzembe helyezve, az alhálózatra, erőforrás-navigációs hivatkozást.
 
 ## <a name="app-service-limitations"></a>Az App Service korlátai
 

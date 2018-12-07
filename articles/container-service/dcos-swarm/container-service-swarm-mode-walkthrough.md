@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Azure Docker CE-fürt létrehozása Linux rendszeren
+title: (ELAVULT) Rövid útmutató – Azure Docker CE-fürt létrehozása Linux rendszeren
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az Azure CLI segítségével Docker CE-fürtöt Linux-tárolókhoz az Azure Container Service-ben.
 services: container-service
 author: iainfoulds
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: c8f9db2674976d2c1efa7686b8b224b48a19a534
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a7a7455ce9167a9c480d317d50fdce49e2ef06a9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964445"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994301"
 ---
-# <a name="deploy-docker-ce-cluster"></a>Docker CE-fürt üzembe helyezése
+# <a name="deprecated-deploy-docker-ce-cluster"></a>(ELAVULT) Docker CE-fürt üzembe helyezése
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 Ebben a rövid útmutatóban egy Docker CE-fürtöt helyezünk üzembe az Azure CLI-vel. Ezután egy webes előtérrendszert és egy Redis-példányt magában foglaló többtárolós alkalmazást helyezünk üzembe és futtatunk a fürtön. Miután végeztünk ezzel, az alkalmazás elérhető lesz az interneten.
 

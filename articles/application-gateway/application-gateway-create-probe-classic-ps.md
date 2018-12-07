@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy egyéni mintavétel - Azure Application Gateway - klasszikus PowerShell |} Microsoft Docs
-description: Megtudhatja, hogyan hozzon létre egy egyéni mintavétel az Alkalmazásátjáró a klasszikus üzembe helyezési modellel PowerShell használatával
+title: Hozzon létre egy egyéni mintát – az Azure Application Gateway – klasszikus PowerShell |} A Microsoft Docs
+description: Ismerje meg, hogyan lehet egyéni mintavétel létrehozása az Application Gateway-lel a klasszikus üzemi modellben
 services: application-gateway
 documentationcenter: na
 author: vhorne
@@ -15,24 +15,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
-ms.openlocfilehash: 97d1376dc7908b72d8e8ec15145229cf3cf4acae
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 2b661968fd64f4d2a61bc59f9b99b1eea6b01f86
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33201946"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997273"
 ---
-# <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Hozzon létre egy egyéni mintavétel az Azure Application Gateway (klasszikus) PowerShell használatával
+# <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Egyéni mintavétel létrehozása az Azure Application Gateway (klasszikus) PowerShell-lel
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Klasszikus Azure PowerShell](application-gateway-create-probe-classic-ps.md)
 
-Ebben a cikkben ad hozzá egy egyéni mintavételt meglévő Alkalmazásátjáró a PowerShell használatával. Egyéni mintavételt az alkalmazásokat, amelyek egy adott állapotának ellenőrzése lapon vagy az alapértelmezett webes alkalmazás a sikeres válasz nem biztosító alkalmazások hasznosak.
+Ebben a cikkben egy meglévő application gateway a PowerShell használatával vegyen fel egy egyéni mintát. Az alkalmazásokat, egy adott állapotellenőrzési oldalt, vagy az alapértelmezett webalkalmazást a sikeres válasz nem biztosító alkalmazások egyéni minták hasznosak lehetnek.
 
 > [!IMPORTANT]
-> Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus telepítési modell használatát bemutatja. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. [ Ismerje meg, hogyan ](application-gateway-create-probe-ps.md)hajthatja végre ezeket a lépéseket a Resource Manager-modell használatával.
+> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti a klasszikus üzemi modell használatával. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. [ Ismerje meg, hogyan ](application-gateway-create-probe-ps.md)hajthatja végre ezeket a lépéseket a Resource Manager-modell használatával.
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
@@ -44,7 +44,7 @@ Application Gateway létrehozásához tegye a következőket:
 2. Hozzon létre egy konfigurációs XML-fájlt vagy konfigurációs objektumot.
 3. Véglegesítse az újonnan létrehozott Application Gateway erőforrás konfigurációját.
 
-### <a name="create-an-application-gateway-resource-with-a-custom-probe"></a>Egy egyéni mintavételi alkalmazás átjáró erőforrás létrehozása
+### <a name="create-an-application-gateway-resource-with-a-custom-probe"></a>Egyéni mintavétel létrehozása az application gateway-erőforrás
 
 Az átjáró létrehozásához használja a `New-AzureApplicationGateway` parancsmagot, és cserélje le az értékeket a saját értékeire. Az átjáró használati díjának felszámolása ekkor még nem kezdődik el. A használati díj felszámolása egy későbbi lépésnél kezdődik, amikor az átjáró sikeresen elindul.
 
@@ -61,20 +61,20 @@ Get-AzureApplicationGateway AppGwTest
 ```
 
 > [!NOTE]
-> Az *InstanceCount* alapértelmezett értéke 2, a maximális értéke pedig 10. A *GatewaySize* alapértelmezett értéke Közepes. Kis, közepes és nagy közül választhat.
+> Az *InstanceCount* alapértelmezett értéke 2, a maximális értéke pedig 10. A *GatewaySize* alapértelmezett értéke Közepes. Kicsi, közepes és nagy közül választhat.
 > 
 > 
 
-A *VirtualIPs* és a *DnsName* paraméterek azért üresek, mert az átjáró még nem indult el. Ezek az értékek jönnek létre, ha az átjáró már szerepel a futó állapotot.
+A *VirtualIPs* és a *DnsName* paraméterek azért üresek, mert az átjáró még nem indult el. Ezeket az értékeket jönnek létre, ha az átjáró futó állapotba kerül.
 
-### <a name="configure-an-application-gateway-by-using-xml"></a>Alkalmazásátjáró konfigurálása XML használatával
+### <a name="configure-an-application-gateway-by-using-xml"></a>Application gateway konfigurálása XML-fájl használatával
 
 Az alábbi példában egy XML-fájllal konfigurálja az Application Gateway beállításait, és véglegesíti őket az Application Gateway-erőforráshoz.  
 
 Másolja az alábbi szöveget a Jegyzettömbbe.
 
 ```xml
-<ApplicationGatewayConfiguration xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
+<ApplicationGatewayConfiguration xmlns:i="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
 <FrontendIPConfigurations>
     <FrontendIPConfiguration>
         <Name>fip1</Name>
@@ -139,37 +139,37 @@ Másolja az alábbi szöveget a Jegyzettömbbe.
 
 Szerkessze a zárójelek közötti értékeket a konfigurációs elemeknek megfelelően. Mentse a fájlt .xml kiterjesztéssel.
 
-A következő példa bemutatja, hogyan egy konfigurációs fájl használatával állítsa be a nyilvános port 80-as HTTP-forgalom és a hálózati forgalom elküldése a háttér-két IP-címre egy egyéni mintavételt a 80-as port az Alkalmazásátjáró.
+Az alábbi példa bemutatja, hogyan állítsa be a nyilvános 80-as port HTTP forgalmának terheléselosztására, és a hálózati forgalom elküldése a 80-as porton háttérbeli két IP-cím használatával egy egyéni mintát között az application gateway konfigurációs fájl használatával.
 
 > [!IMPORTANT]
 > A Http és Https protokollelem különbséget tesz a kis- és a nagybetűk között.
 
-Egy új konfigurációelemet \<mintavételi\> konfigurálása egyéni mintavételt kerül.
+Egy új konfigurációelemet \<mintavételi\> adnak hozzá az egyéni minták konfigurálása.
 
 A konfigurációs paraméterek a következők:
 
 |Paraméter|Leírás|
 |---|---|
 |**Name (Név)** |Egyéni mintavétel hivatkozás neve. |
-* **Protokoll** | Használt protokoll (a lehetséges értékek: HTTP vagy HTTPS).|
-| **Állomás** és **elérési útja** | Fejezze be az URL-címet, amelyet az Alkalmazásátjáró példány állapotának meghatározására. Például, ha rendelkezik webhellyel http://contoso.com/, akkor az egyéni vizsgálat konfigurálhatja a "http://contoso.com/path/custompath.htm" a mintavételi ellenőrzi, hogy rendelkezik a sikeres HTTP-válasz.|
-| **Intervallum** | Konfigurálja a mintavételi intervallum ellenőrzések másodpercben.|
-| **Időtúllépés** | Egy HTTP-válasz ellenőrzése mintavételi időtúllépésének meghatározása.|
-| **UnhealthyThreshold** | A szükséges jelzőt a háttér-példányához, a sikertelen HTTP-válaszok száma *sérült*.|
+* **protokoll** | Használt protokoll (a lehetséges értékek: HTTP vagy HTTPS).|
+| **Gazdagép** és **elérési útja** | Teljes URL-cím, amelyeket az application gateway-példány állapotának hívnak. Például, ha rendelkezik a webhellyel http://contoso.com/, majd az egyéni mintavétel állítható be "http://contoso.com/path/custompath.htm" a mintavétel ellenőrzi, hogy rendelkezik egy sikeres HTTP-választ.|
+| **Intervallum** | Konfigurálja a mintavételező időköz másodpercben.|
+| **Időtúllépés** | Határozza meg a mintavétel időkorlátja egy HTTP-válasz ellenőrzés.|
+| **UnhealthyThreshold** | Ez a jelző azt a háttér-példányhoz szükséges sikertelen HTTP-válaszok száma *nem megfelelő állapotú*.|
 
-A mintavétel nevének hivatkozik a \<BackendHttpSettings\> konfigurációját, és rendeljen mely háttér címkészletet egyéni tesztműveleti beállításokat használja.
+A mintavétel nevének hivatkozik a \<BackendHttpSettings\> konfigurációját, és mely háttérkészlet-hozzárendelése egyéni mintavétel beállításait használja.
 
-## <a name="add-a-custom-probe-to-an-existing-application-gateway"></a>Egyéni tesztműveleti hozzáadása egy meglévő Alkalmazásátjáró
+## <a name="add-a-custom-probe-to-an-existing-application-gateway"></a>Egyéni mintavétel hozzáadása egy meglévő application gateway
 
-Az Alkalmazásátjáró a jelenlegi konfiguráció módosításához szükséges három lépés: az aktuális XML konfigurációs fájl beolvasása módosítani szeretné, hogy egy egyéni mintavételt és az új XML-beállítások konfigurálása az Alkalmazásátjáró.
+Az application gateway az aktuális konfiguráció módosításának három lépésre van szükség: az aktuális konfigurációs XML-fájl első módosítani szeretne egyéni mintát és az application gateway konfigurálása XML új beállításokkal.
 
-1. Az XML-fájl segítségével könnyebben nyerhet `Get-AzureApplicationGatewayConfig`. Ez a parancsmag exportálja a konfigurációs XML-kód módosítani kell hozzáadni a mintavételi beállítást.
+1. Az XML-fájl első használatával `Get-AzureApplicationGatewayConfig`. Ez a parancsmag exportálja a konfigurációs XML módosítani kell, hogy adjon hozzá egy mintavételi beállítást.
 
   ```powershell
   Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
   ```
 
-1. Nyissa meg az XML-fájlt egy szövegszerkesztőben. Adja hozzá a `<probe>` után szakasz `<frontendport>`.
+1. Nyissa meg az XML-fájlt egy szövegszerkesztőben. Adjon hozzá egy `<probe>` szakasz után `<frontendport>`.
 
   ```xml
 <Probes>
@@ -185,7 +185,7 @@ Az Alkalmazásátjáró a jelenlegi konfiguráció módosításához szükséges
 </Probes>
   ```
 
-  Az XML a backendhttpsettings beállítások területen adja hozzá a mintavétel nevének a következő példában látható módon:
+  XML-kód a backendHttpSettings területen adja hozzá a mintavétel nevének, a következő példában látható módon:
 
   ```xml
     <BackendHttpSettings>
@@ -200,7 +200,7 @@ Az Alkalmazásátjáró a jelenlegi konfiguráció módosításához szükséges
 
   Mentse az XML-fájlt.
 
-1. Frissítse az alkalmazás átjáró konfigurációját az új XML-fájl használatával `Set-AzureApplicationGatewayConfig`. Ez a parancsmag az Alkalmazásátjáró frissítése az új konfigurációt.
+1. Frissítse az application gateway-konfigurációt az új XML-fájl használatával `Set-AzureApplicationGatewayConfig`. Ez a parancsmag frissíti az application gateway az új konfigurációt.
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile "<path to file>"
@@ -208,7 +208,7 @@ Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile
 
 ## <a name="next-steps"></a>További lépések
 
-Ha a Secure Sockets Layer (SSL) kiszervezési konfigurálni szeretné, lásd: [konfigurálása az SSL-kiszervezés Alkalmazásátjáró](application-gateway-ssl.md).
+Ha azt szeretné, hogy Secure Sockets Layer (SSL) alapú kiszervezés konfigurálása, lásd: [konfigurálása az application gateway SSL-alapú kiszervezéshez](application-gateway-ssl.md).
 
 Ha konfigurálni szeretne egy ILB-vel használni kívánt Application Gateway-t: [Application Gateway létrehozása belső terheléselosztóval (ILB)](application-gateway-ilb.md).
 

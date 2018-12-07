@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0d2f55538517881ce6cc237885f3bcadfa084520
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 312b476f8809d1d6375cc20035901d8d11c32173
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52494958"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012351"
 ---
 # <a name="use-apache-ambari-views-to-debug-apache-tez-jobs-on-hdinsight"></a>Az Apache Ambari-nézetek használata a HDInsight Apache Tez-feladatok hibakereséséhez
 
@@ -103,6 +103,6 @@ A következő lépések használatával, amely Tez Hive-lekérdezések futtatás
 
 Most, hogy megtanulhatta, hogyan használható az Apache Tez nézet, tudjon meg többet [Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md).
 
-Részletes technikai információkat az Apache Tez, tekintse meg a [Apache Tez lapot a Hortonworks](http://hortonworks.com/hadoop/tez/).
+Részletes technikai információkat az Apache Tez, tekintse meg a [Apache Tez lapot a Hortonworks](https://hortonworks.com/hadoop/tez/).
 
 Az Apache Ambari használata a HDInsight további információkért lásd: [kezelése a HDInsight-fürtök az Apache Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md)

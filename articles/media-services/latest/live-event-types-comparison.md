@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: juliako
-ms.openlocfilehash: 7ff48962d01a83e8c9fce380d92fbc196ff96533
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 2dbc2b4e316155e880d3baa900196d5cdd31be72
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585529"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011776"
 ---
 # <a name="liveevent-types-comparison"></a>Videókhoz típusok összehasonlítása
 
@@ -42,6 +42,7 @@ Az alábbi táblázat a videókhoz kétféle funkcióit hasonlítja össze.
 | Támogatott videó bitová hloubka obrázku, bemeneti és kimeneti|Legfeljebb 10 bites többek között HDR 10/HLG|8 bites|
 | Támogatott bemeneti hangkodekek|Az AAC-LC, HE-AAC v1, v2 az AAC-HE|Az AAC-LC, HE-AAC v1, v2 az AAC-HE|
 | Támogatott kimeneti hangkodekek|Ugyanaz, mint a bemenet|AZ AAC-LC|
+| Kimeneti videó videó maximális felbontás|Ugyanaz, mint a bemenet|720p (30 képkocka/másodperc)|
 | A bemeneti protokollok|RTMP, töredékes MP4 (Smooth Streaming)|RTMP, töredékes MP4 (Smooth Streaming)|
 | Ár|Tekintse meg a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/media-services/) , majd kattintson a "Élő videó" lap|Tekintse meg a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/media-services/) , majd kattintson a "Élő videó" lap|
 | Maximálisan engedélyezett futási idő|24 x 365 élő lineáris|A hét minden napján, 24 órában elérhető|

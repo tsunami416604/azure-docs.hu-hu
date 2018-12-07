@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: procedural
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: cd868996066110c8d0457b177e60523886912dd8
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: d38fe1cab27cfade3e6e4d2f6764f455896ac470
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163171"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001971"
 ---
 # <a name="configure-storage"></a>A tárolás konfigurálása
 
@@ -19,6 +19,12 @@ Ebben a lépésben beállítja a háttérrendszer tárolórendszer vFXT-fürthö
 
 > [!TIP]
 > Ha használta a `create-cloudbacked-cluster` prototípus-szkript hozzon létre egy új blobtárolót a Avere vFXT fürttel, a tároló már be van állítva használatra, és nem kell hozzáadnia a storage együtt.
+>
+> Azonban ha az új blobtárolót alapértelmezett titkosítási kulccsal titkosított, vagy töltse le a kulcs-helyreállítási fájlt a fürt vagy kell adatok tárolása előtt cserélje le az alapértelmezett kulcs egy új kulcsot. Az alapértelmezett kulcs menti a rendszer csak a fürtöt, és nem lehet beolvasni, ha a fürt elveszik, vagy nem érhető el.
+>
+> Miután csatlakozott a Avere Vezérlőpult, kattintson a **beállítások** lapra, majd kattintson a **Core Filer** > **Felhőbeállítások titkosítási**. Az a **helyi kulcs Store** válassza az alábbi lehetőségek egyikét: 
+> * Használja a **megjavít helyreállítási fájl** gombra kattintva a meglévő kulcs helyreállítás-fájljának beolvasása. A helyreállítási fájl és a fürt rendszergazdai jelszóval titkosított. Győződjön meg arról, hogy mentse a fájlt egy megbízható helyen. 
+> * Kövesse az utasításokat a **hozzon létre egy új fő kulcsot** hozhat létre egy új titkosítási kulcs, hogy az oldal szakaszában. Ez a beállítás lehetővé teszi, hogy adjon meg egy egyedi jelszót, és töltse fel, és töltse le újra a helyreállítási fájl ellenőrzése a jelszófájlt pár van szükség.
 
 Kövesse ezeket az utasításokat, ha használta a `create-minimal-cluster` prototípus-parancsfájl a fürthöz, vagy ha szeretne hozzáadni egy kiegészítő hardvert vagy a felhőalapú tárolási rendszer.
 
@@ -91,7 +97,7 @@ A fürt létrehozását követően a Blob storage hozzáadásához kövesse az a
    * **Erőforráscsoport** – ugyanaz, mint a vFXT fürtcsoporthoz (nem kötelező)
    * **Hely** – ugyanaz, mint a vFXT fürt
    * **Teljesítmény** – Standard (Premium storage jelenleg nem támogatott)
-   * **Fiók típusa** – általános célú V2 (StorageV2)
+   * **Fiók típusa** -General-purpose V2 (StorageV2)
    * **Replikációs** – helyileg redundáns tárolás (LRS)
    * **Hozzáférési szint** – gyors elérésű
    * **Biztonságos átvitelre van szükség** -letiltja ezt a beállítást (nem alapértelmezett érték)

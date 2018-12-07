@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: d9bf3618b32ce7c5ba7a300a929428dd0614743d
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 9e845d005af9481919472d8baba0aea17a877a5e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276244"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992349"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Az Azure Security Center vizsgálat található felhasználói adatok kezelése
 Ez a cikk az Azure Security Center vizsgálati funkciójáról található felhasználói adatok kezelése ismertetése. Vizsgálat adatok tárolása [Azure Log Analytics](../log-analytics/log-analytics-overview.md) és a Security Centerben elérhető. Felhasználói adatok kezelése lehetőség törölje vagy exportálhat adatokat.
@@ -58,4 +58,4 @@ A Security Center felhasználói szerepkörrel a tulajdonos, közreműködő, va
 
 ## <a name="next-steps"></a>További lépések
 Felhasználói adatok kezelésével kapcsolatos további információkért lásd: [felhasználói adatokat az Azure Security Centerben](security-center-privacy.md).
-Személyes adatokat a Log Analytics törlésével kapcsolatos további tudnivalókért lásd: [és törlése a személyes adatok exportálása](../log-analytics/log-analytics-personal-data-mgmt.md#how-to-export-and-delete-private-data).
+Személyes adatokat a Log Analytics törlésével kapcsolatos további tudnivalókért lásd: [és törlése a személyes adatok exportálása](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data).

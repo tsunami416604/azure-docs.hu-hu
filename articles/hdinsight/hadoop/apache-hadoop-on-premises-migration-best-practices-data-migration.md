@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 492087f7eeca8628ac6ac9a9e42f355a9356f1ce
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 54741bd2d76a7ba414613a40e07c47be703aa033
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584706"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994416"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése az Azure HDInsight - adatok áttelepítése – ajánlott eljárások
 
 Ez a cikk az Azure HDInsight az adatáttelepítés javaslatokat biztosít. Ez azt egy olyan sorozat részét, amely ajánlott eljárásokat, amelyek segítik az Azure HDInsight áttelepítése a helyszíni Apache Hadoop-rendszerekhez biztosít.
 
-## <a name="migrate-data-from-on-premises-to-azure"></a>Adatok migrálása a helyszínről Azure-bA
+## <a name="migrate-on-premises-data-to-azure"></a>A helyszíni adatok migrálása az Azure-bA
 
 Két fő lehetőség át a helyszíni adatok Azure-környezet van:
 
@@ -49,7 +49,7 @@ Az alábbi táblázat a hozzávetőleges adatok átvitel időtartama az adatok m
 
 Az Azure-ba, mint például a DistCp, az Azure Data Factory és a AzureCp, natív eszközök segítségével adatok átvitel a hálózaton keresztül. A külső eszköz, a WANDisco ugyanerre a célra is használható. A Kafka Mirrormakerrel és a Sqoop folyamatos adatátvitel a helyszínről az Azure storage-rendszerekkel használható.
 
-## <a name="performance-considerations-when-using-apache-distcp"></a>Teljesítménnyel kapcsolatos szempontok, ha Apache a DistCp használata
+## <a name="performance-considerations-with-apache-distcp"></a>Az Apache DistCp teljesítménnyel kapcsolatos szempontok
 
 A DistCp egy Apache-projecttel, amely egy térkép MapReduce feladatot használ adatátvitelt, hibák kezelésére, és ezeket a hibákat helyreállítása. Forrásfájljainak listáját rendel térkép feladatokon. A térkép feladat majd átmásolja a hozzárendelt fájlok mindegyikét a célhelyre. Nincsenek a különböző módszereket vetnek javíthatja a DistCp teljesítményét.
 
@@ -92,14 +92,14 @@ A hive-metaadattár a parancsprogramok használatával vagy az adatbázis-replik
 
 #### <a name="hive-metastore-migration-using-scripts"></a>Hive-metaadattár áttelepítési parancsfájlok használata
 
-1. Hozza létre a Hive-DDLs helyszíni Hive-metaadattár. Ebben a lépésben végezhető [burkoló bash parancsfájl] használatával. (https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md)
-1. A létrehozott DDL HDFS URL-címet lecseréli a WASB vagy ADLS/ABFS URL-címek szerkesztése
-1. A frissített DDL a metaadattár futhatnak a HDInsight-fürtből
-1. Ügyeljen arra, hogy a Hive-metaadattár verziója kompatibilis a helyszíni és a felhő között
+1. Hozza létre a Hive-DDLs helyszíni Hive-metaadattár. Ebben a lépésben végezhető használatával egy [burkoló bash-szkript](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md).
+1. A létrehozott DDL HDFS URL-címet lecseréli a WASB vagy ADLS/ABFS URL-címek szerkesztése.
+1. Futtassa a frissített DDL a metaadattár a HDInsight-fürtből.
+1. Győződjön meg arról, hogy a Hive-metaadattár verziója kompatibilis a helyszíni és a felhő között.
 
 #### <a name="hive-metastore-migration-using-db-replication"></a>Hive-metaadattár migrálás, adatbázis-replikációval
 
-- A helyszíni Hive-metaadattár DB és a HDInsight-metaadattár DB közötti adatbázis-replikáció beállítása
+- Adatbázis-replikáció beállítása a helyszíni Hive-metaadattár DB és a HDInsight-metaadattár DB között.
 - Használja a "Hive MetaTool" HDFS URL-címet lecseréli WASB vagy ADLS/ABFS URL-címek, például:
 
 ```bash

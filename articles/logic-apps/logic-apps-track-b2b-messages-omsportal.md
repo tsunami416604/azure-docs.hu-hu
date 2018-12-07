@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: aacdaf4ec55b1223ce993a7246ed9f0405a5054e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ad58257313c60b4757c83793886ce32a2997332b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957181"
+ms.locfileid: "52996546"
 ---
 # <a name="track-b2b-messages-with-azure-log-analytics"></a>Az Azure Log Analytics B2B üzenetek nyomon követése
 
@@ -27,7 +27,7 @@ Miután beállította a kereskedelmi partnerek az integrációs fiókban lévő 
 * Keresési funkciókkal
 
 > [!NOTE]
-> Ezen a lapon a fentiekben már említettük, az a Microsoft Operations Management Suite (OMS), amely a feladatok végrehajtásához szükséges lépéseket [kivonása a január 2019](../log-analytics/log-analytics-oms-portal-transition.md), hanem az Azure Log Analytics váltja fel ezeket a lépéseket. 
+> Ezen a lapon a fentiekben már említettük, az a Microsoft Operations Management Suite (OMS), amely a feladatok végrehajtásához szükséges lépéseket [kivonása a január 2019](../azure-monitor/platform/oms-portal-transition.md), hanem az Azure Log Analytics váltja fel ezeket a lépéseket. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 

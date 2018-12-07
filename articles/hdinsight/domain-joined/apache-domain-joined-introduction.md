@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 270227204af9cf50f0244b8aa11ebf9aa8cdc3ce
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: ed735b8344c301be413dfe998ccf7f44bd686115
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51631999"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011225"
 ---
 # <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>Bevezetés az Apache Hadoop-biztonság, a vállalati biztonsági csomag
 
@@ -22,7 +22,7 @@ Múltbeli időpont, az Azure HDInsight támogatott csak egyetlen felhasználó: 
 
 Létrehozhat egy HDInsight-fürtöt a vállalati biztonsági csomag (ESP), amely egy Active Directory-tartományhoz csatlakozik. Konfigurálhatja a vállalati alkalmazottak, akik hitelesíthetnek az Azure Active Directoryban való bejelentkezéshez a HDInsight-fürt listáját. Egyetlen a vállalaton kívülre jelentkezzen be, vagy a HDInsight-fürt eléréséhez. 
 
-A vállalati rendszergazda konfigurálhatja szerepköralapú hozzáférés-vezérlés (RBAC) az Apache Hive-biztonsághoz használatával [Apache Ranger](http://hortonworks.com/apache/ranger/). RBAC konfigurálása korlátozza az adatok elérése csak akkor szükséges. Végül a rendszergazda naplózhatja az alkalmazottak és bármely változtatást a hozzáférés-vezérlési házirendeket adatelérési. A rendszergazda egy magas szintű a vállalati erőforrásokat, majd érheti el.
+A vállalati rendszergazda konfigurálhatja szerepköralapú hozzáférés-vezérlés (RBAC) az Apache Hive-biztonsághoz használatával [Apache Ranger](https://hortonworks.com/apache/ranger/). RBAC konfigurálása korlátozza az adatok elérése csak akkor szükséges. Végül a rendszergazda naplózhatja az alkalmazottak és bármely változtatást a hozzáférés-vezérlési házirendeket adatelérési. A rendszergazda egy magas szintű a vállalati erőforrásokat, majd érheti el.
 
 > [!NOTE]
 > Az Oozie engedélyezve van a ESP-fürtökön. Hozzáférhet az Oozie webes felület, engedélyezze a felhasználók [tunneling](../hdinsight-linux-ambari-ssh-tunnel.md).
@@ -44,14 +44,14 @@ Ezzel a beállítással vállalat alkalmazottai bejelentkezhet a fürtcsomópont
 ## <a name="authorization"></a>Engedélyezés
 Amely a legtöbb vállalat kövesse az ajánlott eljárás, hogy így arról, hogy nem minden alkalmazott rendelkezik-e az összes vállalati erőforrásokhoz való hozzáférést. Hasonlóképpen a rendszergazda meghatározhatja a szerepköralapú hozzáférés-vezérlési házirendeket, a fürt erőforrásaihoz. 
 
-Például, a rendszergazda konfigurálhatja az [Apache Ranger](http://hortonworks.com/apache/ranger/) keretrendszert, hogy beállítsa a Hive hozzáférés-vezérlés házirendjét. Ez a funkció biztosítja, hogy alkalmazottai érhessék el csak annyi adathoz kell lenniük a munkájuk sikerességéhez. A fürthöz SSH-hozzáférés csak a rendszergazda is korlátozódik.
+Például, a rendszergazda konfigurálhatja az [Apache Ranger](https://hortonworks.com/apache/ranger/) keretrendszert, hogy beállítsa a Hive hozzáférés-vezérlés házirendjét. Ez a funkció biztosítja, hogy alkalmazottai érhessék el csak annyi adathoz kell lenniük a munkájuk sikerességéhez. A fürthöz SSH-hozzáférés csak a rendszergazda is korlátozódik.
 
 ## <a name="auditing"></a>Naplózás
 A fürt erőforrásainak és az adatok hozzáférésének naplózása szükség, nyomon követéséhez az illetéktelen vagy nem szándékos hozzáférések az erőforrásokhoz. Olyan fontos, mint a HDInsight-fürt erőforrásainak védelme a jogosulatlan felhasználók és az adatok védelme. 
 
 A rendszergazda megtekintheti és jelentheti az összes hozzáférést a HDInsight-fürt erőforrásainak és az adatokat. A rendszergazda megtekintheti és jelentheti a hozzáférés-vezérlési házirendeket, az Apache Ranger által támogatott végpontokban létrehozott összes módosítást. 
 
-ESP HDInsight fürtök a jól ismert Apache Ranger felhasználói Felületet használja a keresésre a naplókban. A háttérben a Ranger használ [Apache Solr](http://hortonworks.com/apache/solr/) tárolására, és a keresésre a naplókban.
+ESP HDInsight fürtök a jól ismert Apache Ranger felhasználói Felületet használja a keresésre a naplókban. A háttérben a Ranger használ [Apache Solr](https://hortonworks.com/apache/solr/) tárolására, és a keresésre a naplókban.
 
 ## <a name="encryption"></a>Titkosítás
 Az adatok védelmének fontos értekezlet szervezeti biztonsági és megfelelőségi követelményeknek. Adatok elérésének korlátozásával illetéktelen alkalmazottak, együtt kell titkosítás. 

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 0f5eee20b0487fb5fce82047f40d137effb87ead
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: b975f84106507da6adff11dc62441526773f5cab
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164424"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998138"
 ---
 # <a name="enable-support-uploads"></a>Támogatási feltöltések engedélyezése
 
@@ -42,6 +42,6 @@ Kövesse az alábbi lépéseket a Avere Vezérlőpult támogatás aktiválásáh
 
 ## <a name="next-steps"></a>További lépések
 
-Ha szeretne egy helyi tárolórendszer hozzáadni a fürthöz, kövesse a [konfigurálta a tárterületet](avere-vfxt-add-storage.md). 
+Ha egy helyi tárolórendszer hozzáadni a fürthöz, vagy frissítse az alapértelmezett titkosítási kulcsot egy újonnan létrehozott Blob-tárolóban van szüksége, kövesse a [konfigurálta a tárterületet](avere-vfxt-add-storage.md). 
 
 Ha készen áll a fürt, olvassa el az ügyfelek csatolása [a Avere vFXT fürt csatlakoztatási](avere-vfxt-mount-clients.md).

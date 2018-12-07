@@ -7,19 +7,19 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 042d2ee0f615ce5216fc11152f0f65518ff9bd5c
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 5fe1739fa341a5e3bd2f4d26ef1e94d725b74a61
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376379"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001235"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Belső terheléselosztó az Azure Kubernetes Service (AKS) használatához
 
 Az alkalmazások az Azure Kubernetes Service (AKS) való hozzáférés korlátozásához, hozzon létre, és a egy belső terheléselosztó használata. Belső terheléselosztó csak a Kubernetes-fürt ugyanazon a virtuális hálózaton futó alkalmazások számára elérhető lesz az egy Kubernetes-szolgáltatást. Ez a cikk bemutatja, hogyan hozhat létre és használhat egy belső terheléselosztó az Azure Kubernetes Service (AKS).
 
 > [!NOTE]
-> Az Azure Load Balancer érhető el két termékváltozata - *alapszintű* és *Standard*. További információkért lásd: [Azure load balancer Termékváltozat összehasonlító][azure-lb-comparison]. Az AKS jelenleg támogatja a *alapszintű* Termékváltozat. Ha használni szeretné a *Standard* SKU, használhatja a felsőbb rétegbeli [acs-engine][acs-engine].
+> Az Azure Load Balancer érhető el két termékváltozata - *alapszintű* és *Standard*. További információkért lásd: [Azure load balancer Termékváltozat összehasonlító][azure-lb-comparison]. Az AKS jelenleg támogatja a *alapszintű* Termékváltozat. Ha használni szeretné a *Standard* SKU, használhatja a felsőbb rétegbeli [aks-motor][aks-engine].
 
 ## <a name="create-an-internal-load-balancer"></a>Hozzon létre egy belső terheléselosztót
 
@@ -128,7 +128,7 @@ További tudnivalók a Kubernetes-szolgáltatás, a [Kubernetes services dokumen
 
 <!-- LINKS - External -->
 [kubernetes-services]: https://kubernetes.io/docs/concepts/services-networking/service/
-[acs-engine]: https://github.com/Azure/acs-engine
+[aks-engine]: https://github.com/Azure/aks-engine
 
 <!-- LINKS - Internal -->
 [advanced-networking]: configure-advanced-networking.md

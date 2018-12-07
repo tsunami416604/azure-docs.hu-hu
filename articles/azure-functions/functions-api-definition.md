@@ -10,20 +10,20 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: 93e6b8c606c0a6d7abebeb515b938a45001757c1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 763e1d20f707a1db1f559661089b55093f93a632
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950369"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999925"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>OpenAPI 2.0 metaadatok támogatása az Azure Functions (előzetes verzió)
 OpenAPI 2.0 (korábbi nevén Swagger) metaadatok támogatása az Azure Functions egy előzetes verziójú funkció, amely segítségével írhat egy OpenAPI 2.0-definíció függvényalkalmazás belül. Ezt a fájlt majd a függvényalkalmazás használatával is üzemeltethet.
 
 > [!IMPORTANT]
-> Az OpenAPI előzetes verziójú funkció érhető el csak még ma a 1.x-futtatókörnyezetben. Hogyan lehet létrehozni egy 1.x jellegű parancsot a(z) függvényalkalmazás információkat [itt található](./functions-versions.md#creating-1x-apps).
+> Az OpenAPI előzetes verziójú funkció csak ma, az 1.x futtatókörnyezetben érhető el. 1.x függvényalkalmazás létrehozásáról [itt találhat](./functions-versions.md#creating-1x-apps) további információt.
 
-[OpenAPI metaadatait](http://swagger.io/) lehetővé teszi, hogy a függvény, amely számos egyéb szoftverek által használt REST API-t futtató. Ezek közé tartozik a Microsoft egyéb ajánlatai, mint például a PowerApps és a [Azure App Service API Apps funkcióját](../app-service/app-service-web-overview.md), külső fejlesztői eszközök, például a [Postman](https://www.getpostman.com/docs/importing_swagger), és [számos további csomagok](http://swagger.io/tools/).
+[OpenAPI metaadatait](https://swagger.io/) lehetővé teszi, hogy a függvény, amely számos egyéb szoftverek által használt REST API-t futtató. Ezek közé tartozik a Microsoft egyéb ajánlatai, mint például a PowerApps és a [Azure App Service API Apps funkcióját](../app-service/app-service-web-overview.md), külső fejlesztői eszközök, például a [Postman](https://www.getpostman.com/docs/importing_swagger), és [számos további csomagok](https://swagger.io/tools/).
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -39,7 +39,7 @@ Az összes OpenAPI-beállításokat lehet megadni a **API-definíció** a függv
 Az üzemeltetett OpenAPI-definíció és a egy rövid definíció generációja engedélyezéséhez állítsa **API-definíció forrása** való **funkció (előzetes verzió)**. **Külső URL-cím** lehetővé teszi, hogy a függvény az OpenAPI-definíció, amely rendelkezik a hosted máshol.
 
 ## <a name="generate-definition"></a>A dbfunctionexpression hozzon létre egy Swagger skeleton
-A sablon segítségével írhat az első OpenAPI-definíciójában. A definíció-sablon funkció hoz létre egy ritka OpenAPI-definíció használatával minden metaadat a function.json fájlban a HTTP-eseményindító függvények mindegyike esetében. Az API-jával kapcsolatban további információt adhat meg kell a [OpenAPI-specifikáció](http://swagger.io/specification/), például kérés- és sablonokat.
+A sablon segítségével írhat az első OpenAPI-definíciójában. A definíció-sablon funkció hoz létre egy ritka OpenAPI-definíció használatával minden metaadat a function.json fájlban a HTTP-eseményindító függvények mindegyike esetében. Az API-jával kapcsolatban további információt adhat meg kell a [OpenAPI-specifikáció](https://swagger.io/specification/), például kérés- és sablonokat.
 
 Részletes útmutatásért tekintse meg a [kezdeti lépéseket ismertető oktatóanyag](./functions-api-definition-getting-started.md).
 
@@ -55,10 +55,10 @@ A generált Swagger vázat van leképezve, az alábbi táblázat a Azure-portál
 
 |Swagger.json|Portál felhasználói Felületét|Function.json|
 |:----|:-----|:-----|
-|[Gazdagép](http://swagger.io/specification/#fixed-fields-15)|**Alkalmazásbeállítások függvény** > **App Service szolgáltatás beállításainak** > **áttekintése** > **URL-címe**|*Nincs jelen*
-|[Elérési utak](http://swagger.io/specification/#paths-object-29)|**Integráció** > **kiválasztott HTTP-metódusok**|Kötések: útvonal
-|[Elem elérési útja](http://swagger.io/specification/#path-item-object-32)|**Integráció** > **útvonalsablon**|Kötések: módszerek
-|[Biztonság](http://swagger.io/specification/#security-scheme-object-112)|**kulcsok**|*Nincs jelen*|
+|[Gazdagép](https://swagger.io/specification/#fixed-fields-15)|**Alkalmazásbeállítások függvény** > **App Service szolgáltatás beállításainak** > **áttekintése** > **URL-címe**|*Nincs jelen*
+|[Elérési utak](https://swagger.io/specification/#paths-object-29)|**Integráció** > **kiválasztott HTTP-metódusok**|Kötések: útvonal
+|[Elem elérési útja](https://swagger.io/specification/#path-item-object-32)|**Integráció** > **útvonalsablon**|Kötések: módszerek
+|[Biztonság](https://swagger.io/specification/#security-scheme-object-112)|**kulcsok**|*Nincs jelen*|
 |operationID*|**Útvonal + engedélyezett műveletek**|Útvonal + engedélyezett műveletek|
 
 \*A művelet azonosítója csak a PowerApps és Flow integrálása megadása kötelező.

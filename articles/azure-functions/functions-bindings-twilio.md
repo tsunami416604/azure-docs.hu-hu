@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9832281b586bf4377096ff28362b4fc180480aea
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: cc6ca29af1866c5d26d3b73b26121451440c4dac
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50246144"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993063"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>A Twilio-kötést az Azure Functions
 
@@ -27,13 +27,13 @@ Ez a cikk azt ismerteti, hogyan a szöveges üzenetek küldéséhez a [Twilio](h
 
 ## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
 
-A Twilio-kötések szerepelnek a [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet-csomag verziója 1.x. A csomag forráskódja a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/) GitHub-adattárban.
+A Twilio-kötések szerepelnek a [Microsoft.Azure.WebJobs.Extensions.Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet-csomag verziója 1.x. A csomag forráskódja a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/) GitHub-adattárban.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="packages---functions-2x"></a>Csomagok – 2.x függvények
 
-A Twilio-kötések szerepelnek a [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet-csomag verziója 3.x. A csomag forráskódja a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) GitHub-adattárban.
+A Twilio-kötések szerepelnek a [Microsoft.Azure.WebJobs.Extensions.Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet-csomag verziója 3.x. A csomag forráskódja a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) GitHub-adattárban.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -404,8 +404,8 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**type**|**type**| Meg kell `twilioSms`.|
 |**direction**|**direction**| Meg kell `out`.|
 |**name**|**name**| A Twilio SMS-üzenetben a függvény kódját a használt változó neve. |
-|**accountSid**|**accountSidSetting**| **AccountSidSetting**| Ez az érték TwilioAccountSid kell állítani a Twilio-fiók Sid például tartalmazó alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett alkalmazás beállítása a név "AzureWebJobsTwilioAccountSid". |
-|**authToken**|**authTokenSetting**|**AuthTokenSetting**| Ez az érték TwilioAccountAuthToken kell állítani a Twilio hitelesítési jogkivonat például tartalmazó alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett alkalmazás beállítása a név "AzureWebJobsTwilioAuthToken". |
+|**accountSid**|**accountSidSetting**| **accountSidSetting**| Ez az érték TwilioAccountSid kell állítani a Twilio-fiók Sid például tartalmazó alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett alkalmazás beállítása a név "AzureWebJobsTwilioAccountSid". |
+|**authToken**|**authTokenSetting**|**authTokenSetting**| Ez az érték TwilioAccountAuthToken kell állítani a Twilio hitelesítési jogkivonat például tartalmazó alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett alkalmazás beállítása a név "AzureWebJobsTwilioAuthToken". |
 |**A**| NA – adja meg a kódot | **Címzett**| Ez az érték a telefonszámot, amelyet elküld a SMS szöveg értéke.|
 |**A**|**A** | **A**| Ez az érték a telefonszámot, amelyet az SMS szöveges is küld értéke.|
 |**Törzs**|**Törzs** | **Törzs**| Ez az érték használható az SMS-üzenetben keményen code, ha nem szeretne dinamikusan állítsa a függvény a kódban. |  

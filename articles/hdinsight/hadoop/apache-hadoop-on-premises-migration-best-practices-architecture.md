@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 62e15b5845ed9faa605f978f0d2fd427c9c3ee9b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 7558a853657e3e3764cd8e3faf6dd466e9ead35e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008181"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994142"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése az Azure HDInsight - architektúra ajánlott eljárásai
 
@@ -49,7 +49,7 @@ Az alábbi táblázat a különböző módszereket, amelyek segítségével hozz
 |[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||X|
 |[Az Azure Resource Manager-sablonok](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||
 
-További információkért tekintse meg a cikket [típusok a HDInsight-fürt](../hadoop/apache-hadoop-introduction.md)
+További információkért tekintse meg a cikket [típusok a HDInsight-fürt](../hadoop/apache-hadoop-introduction.md).
 
 ## <a name="use-transient-on-demand-clusters"></a>Átmeneti igény szerinti fürtök használata
 
@@ -57,7 +57,7 @@ HDInsight-fürtök hosszú időn át lehet, hogy nyissa meg a fel nem használt.
 
 A fürt törlésekor a kapcsolódó tárfiók és a külső metaadat nem lesznek eltávolítva. A fürt később újra hozható létre a tárfiókok azonos és a metaadat-tárolók.
 
-Az Azure Data Factory segítségével igény szerinti HDInsight-fürtök létrehozásának ütemezése. További információkért tekintse meg a cikket [igény szerinti Hadoop-fürtök létrehozása az Azure Data Factory használatával HDInsight](../hdinsight-hadoop-create-linux-clusters-adf.md).
+Az Azure Data Factory segítségével igény szerinti HDInsight-fürtök létrehozásának ütemezése. További információkért tekintse meg a cikket [igény szerinti Apache Hadoop-fürtök létrehozása az Azure Data Factory használatával HDInsight](../hdinsight-hadoop-create-linux-clusters-adf.md).
 
 ## <a name="decouple-storage-from-compute"></a>Leválaszthatja a tárterületet a számítási
 
@@ -65,33 +65,33 @@ Tipikus helyszíni Hadoop üzemelő használja ugyanazokat a gépek adattárolá
 
 A HDInsight-fürtökön tároló nem helyezhetők ugyanarra a szalagra számítási kell és vagy az Azure storage, Azure Data Lake Storage vagy mindkettőben. Elválasztás tárterületet a számítási a következő előnyökkel jár:
 
-- Fürtök közötti adatmegosztás
-- Mivel az adatok nem függ a fürt átmeneti fürtök használatát
-- Alacsonyabb tárolási költségek
-- Tároló méretezése, és külön-külön számítási
-- Az adatreplikációt a régiók között
+- Fürtök közötti adatmegosztás.
+- Átmeneti fürtökkel, mivel az adatok nem függ a fürt használatát.
+- Alacsonyabb tárolási költségek.
+- Tároló méretezése, és külön-külön számítási.
+- Az adatreplikációt a régiók között elosztva.
 
 A számítási Azure-régióban elválasztása a számítási és tárolási járó teljesítményi költségeket csökkenti a tárfiók erőforrásainak közelében való létrehozása. Nagy sebességű hálózat hatékonnyá a számítási csomópontok az Azure storage lévő adatok eléréséhez.
 
 ## <a name="use-external-metadata-stores"></a>Külső metaadat-tárolók használata
 
-Vannak, amelyek együttműködnek a HDInsight-fürtök két fő metaadattárakat: Hive-val és az Oozie. A Hive-metaadattár a központi séma tárház, amely a Hadoop, Spark, az LLAP, beleértve a Presto adatokat feldolgozó motorokkal, és a Pig által használható. Az Oozie-metaadattár tárolja a folyamatban lévő és befejezett Hadoop-feladatok ütemezési adatait és állapotát.
+Vannak, amelyek együttműködnek a HDInsight-fürtök két fő metaadattárakat: [Apache Hive](https://hive.apache.org/) és [Apache Oozie](https://oozie.apache.org/). A Hive-metaadattár a központi séma tárház, amely a Hadoop, Spark, az LLAP, beleértve a Presto adatokat feldolgozó motorokkal, és az Apache Pig által használható. Az Oozie-metaadattár tárolja a folyamatban lévő és befejezett Hadoop-feladatok ütemezési adatait és állapotát.
 
 HDInsight az Azure SQL Database, az Oozie és a Hive-metaadattárak. A HDInsight-fürtök metaadattár beállításához két módja van:
 
 1. Alapértelmezett metaadattárat
 
-    - További költségek nélkül
-    - Metaadattár a fürt törlésekor törlődik.
-    - Metaadattár nem lehet megosztani, különböző fürtök között
+    - További költségek nélkül.
+    - Metaadattár törlődik a fürt törlésekor.
+    - Metaadattár eltérő fürtök között nem lehet megosztani.
     - Használja az alapszintű Azure SQL DB, amely öt dtu-k esetében.
 
 1. Egyéni külső metaadattár
 
     - Adja meg egy külső Azure SQL Database a metaadattár.
     - Fürtöket hozhat létre és metaadatok, mint például a Hive séma Oozie feladat részletes elvesztése nélkül.
-    - Egyetlen metaadattár db megoszthatók a különféle típusú fürtök
-    - Metaadattár is vertikálisan fel igény szerint
+    - Egyetlen metaadattár db megoszthatók a különféle típusú fürtök.
+    - Metaadattár igény szerint skálázhatók.
     - További információkért lásd: [külső metaadat-tárolók az Azure HDInsight használata](../hdinsight-use-external-metadata-stores.md).
 
 ## <a name="best-practices-for-hive-metastore"></a>Ajánlott eljárások a Hive-Metaadattár
@@ -106,7 +106,7 @@ Egy HDInsight Hive-metaadattár ajánlott eljárások a következők:
 - A metaadattár a teljesítmény és rendelkezésre állás az Azure SQL-adatbázis figyelési eszközökkel, például az Azure Portalon vagy az Azure Log Analytics használatával figyelheti.
 - Hajtsa végre a **elemzése tábla** létrehozni statisztikákat a táblák és oszlopok kötelezőként parancsot. Például: `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
 
-## <a name="best-practices-for-different-types-of-workloads"></a>Ajánlott eljárások a különféle számítási feladatok
+## <a name="best-practices-for-different-workloads"></a>Ajánlott eljárások a különböző számítási feladatok
 
 - Érdemes megfontolni az LLAP-fürtöt interaktív Hive-lekérdezések és a továbbfejlesztett válaszidő [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) Hive 2.0, amely lehetővé teszi a memórián belüli gyorsítótárazáshoz, a lekérdezések új szolgáltatása. LLAP teszi akár sokkal gyorsabb Hive-lekérdezések [26 x gyorsabb, mint a Hive-1.x bizonyos esetekben](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
 - Spark-feladatok Hive-feladatok helyett érdemes lehet.

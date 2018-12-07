@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.date: 08/28/2018
 ms.reviewer: lmolkova
 ms.author: mbullwin
-ms.openlocfilehash: c8f2677e91eb1c3d2ac670a51793f319e82d61fe
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f2f237d250a6b6e2a0f6ed2e62540968d9fcc7eb
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52719929"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997974"
 ---
 # <a name="application-insights-for-net-console-applications"></a>.NET-hez készült Application Insights konzolon alkalmazások
 [Az Application Insights](app-insights-overview.md) figyelni, webalkalmazása rendelkezésre állását, teljesítményét és használatát.
 
-Az előfizetés kell [Microsoft Azure](http://azure.com). Jelentkezzen be Microsoft-fiókkal, amely Windows, Xbox Live, vagy a Microsoft más felhőszolgáltatásaival előfordulhat, hogy rendelkezik. A csapata szervezeti előfizetéssel az Azure-bA lehet: kérje meg a tulajdonosát, hogy vegye fel a Microsoft-fiók használatával.
+Az előfizetés kell [Microsoft Azure](https://azure.com). Jelentkezzen be Microsoft-fiókkal, amely Windows, Xbox Live, vagy a Microsoft más felhőszolgáltatásaival előfordulhat, hogy rendelkezik. A csapata szervezeti előfizetéssel az Azure-bA lehet: kérje meg a tulajdonosát, hogy vegye fel a Microsoft-fiók használatával.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -124,7 +124,7 @@ TelemetryConfiguration.Active.TelemetryInitializers.Add(new OperationCorrelation
 TelemetryConfiguration.Active.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 ```
 
-* .NET-keretrendszer Windows-alkalmazások esetén is telepítheti és teljesítményszámláló gyűjtő modul inicializálása, amint [Itt](http://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)
+* .NET-keretrendszer Windows-alkalmazások esetén is telepítheti és teljesítményszámláló gyűjtő modul inicializálása, amint [Itt](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)
 
 #### <a name="full-example"></a>Teljes példa
 

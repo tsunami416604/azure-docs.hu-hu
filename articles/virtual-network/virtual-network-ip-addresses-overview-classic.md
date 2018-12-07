@@ -1,6 +1,6 @@
 ---
-title: IP-cím típusok (klasszikus) Azure-ban |} Microsoft Docs
-description: További információk a nyilvános és magánhálózati IP-címek (klasszikus) Azure-ban.
+title: IP-cím-típusok (klasszikus) Azure-ban |} A Microsoft Docs
+description: További információ a nyilvános és privát IP-címek (klasszikus) Azure-ban.
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -15,167 +15,167 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
-ms.openlocfilehash: 6a63099bf2a8bc818c88ccec1d5f44bb9ffc32de
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 81699764952e50cb18c1f299c9c4f7c524b0a332
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798206"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011689"
 ---
-# <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>IP-cím típusok és elosztási módszert (klasszikus) Azure-ban
-IP-címeket rendelhet az Azure-erőforrásokhoz a többi Azure-erőforrással, a helyszíni hálózattal és az internettel való kommunikáció céljából. Az IP-címek is használhatja az Azure-ban két típusa van: nyilvános és titkos.
+# <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>IP-cím-típusok és lefoglalási módszereket (klasszikus) Azure-ban
+IP-címeket rendelhet az Azure-erőforrásokhoz a többi Azure-erőforrással, a helyszíni hálózattal és az internettel való kommunikáció céljából. Az IP-címek is használhatja az Azure-ban két típusa van: a nyilvános és privát.
 
-Nyilvános IP-címeket az interneten, beleértve a nyilvánosan elérhető Azure services szolgáltatással való kommunikációhoz használt.
+Nyilvános IP-címeket használja kommunikációra az internettel, beleértve az Azure nyilvános szolgáltatásait.
 
-Magán IP-címek folyik kommunikáció egy Azure virtuális hálózatot (VNet), a felhőszolgáltatás és a helyszíni hálózat kiterjesztése a hálózat az Azure-bA egy VPN-átjáró vagy ExpressRoute-kapcsolatcsoportot használatakor.
+Magánhálózati IP-címek a hálózat kiterjesztésére az Azure VPN-átjárót vagy ExpressRoute-kapcsolatcsoport használatakor egy Azure virtuális hálózaton (VNet), egy felhőalapú szolgáltatás és a helyszíni hálózaton belüli kommunikációra szolgálnak.
 
 > [!IMPORTANT]
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../resource-manager-deployment-model.md).  Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén használja a Resource Manager. IP-cím erőforrás-kezelő információ összetevőről a [IP-címek](virtual-network-ip-addresses-overview-arm.md) cikk.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../resource-manager-deployment-model.md).  Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy új telepítések esetén a Resource Manager használatához. További információ a IP-címek a Resource Managerben, olvassa el a [IP-címek](virtual-network-ip-addresses-overview-arm.md) cikk.
 
 ## <a name="public-ip-addresses"></a>Nyilvános IP-címek
-A nyilvános IP-címek lehetővé teszik az Azure-erőforrások számára, hogy kommunikáljanak az internettel és az Azure más nyilvános szolgáltatásaival, például az [Azure Redis Cache](https://azure.microsoft.com/services/cache/) és az [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) szolgáltatásokkal, valamint az [SQL-adatbázisokkal](../sql-database/sql-database-technical-overview.md) és az [Azure-tárolóval](../storage/common/storage-introduction.md).
+Nyilvános IP-címek lehetővé teszik az internetes és az Azure nyilvános szolgáltatások esetén például kommunikálni az Azure erőforrások [Azure Cache redis](https://azure.microsoft.com/services/cache/), [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [SQL-adatbázisok](../sql-database/sql-database-technical-overview.md), és [az Azure storage](../storage/common/storage-introduction.md).
 
-A nyilvános IP-cím társítva a következő típusú erőforrások:
+Nyilvános IP-címmel társítva a következő erőforrástípusok:
 
 * Felhőszolgáltatások
-* Infrastruktúra-szolgáltatási virtuális gépeket (VM)
+* Iaas-beli virtuális gépeken (VM)
 * PaaS szerepkörpéldányok
 * VPN-átjárók
 * Alkalmazásátjárók
 
 ### <a name="allocation-method"></a>Lefoglalási módszer
-Ha egy nyilvános IP-címet kell hozzá kell rendelni egy Azure-erőforrás, akkor *dinamikusan* foglalja le a helyre, az erőforrás létrehozása elérhető nyilvános IP-címek készletét. Az IP-cím kiadása történik, amikor az erőforrás le van állítva. Abban az esetben, ha egy felhőszolgáltatás, ez történik, ha a szerepkör összes példányát le van állítva, amelyek segítségével elkerülhetők a *statikus* (fenntartott) IP-cím (lásd: [Felhőszolgáltatások](#Cloud-services)).
+Ha hozzá kell rendelni egy Azure-erőforrás nyilvános IP-címre van szüksége, *dinamikusan* számára lefoglalt nyilvános IP-címet a helyre, az erőforrás létrehozása egy készletét. Az IP-cím akkor szabadul fel, ha az erőforrás le van állítva. Abban az esetben egy felhőszolgáltatás, ez történik, ha az összes szerepkörpéldány le lesz állítva, amelyek használatával elkerülhető olyan *statikus* (fenntartott) IP-cím (lásd: [Cloud Services](#Cloud-services)).
 
 > [!NOTE]
-> Nyilvános IP-címek, amelyből Azure-erőforrások számára kiosztott IP-címtartománylista közzé van téve a [Azure Datacenter IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653).
+> Azure-erőforrások számára kiosztott nyilvános IP-címet, amelyről IP-címtartományok listája közzé van téve [Azure Datacenter IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653).
 > 
 > 
 
 ### <a name="dns-hostname-resolution"></a>DNS-állomásnév feloldása
-Egy felhőalapú szolgáltatás, vagy az infrastruktúra-szolgáltatási virtuális gép létrehozásakor meg kell adnia egy felhőalapú szolgáltatás DNS-neve, ami esetében egyedi összes erőforrást az Azure-ban. Ez az Azure által kezelt DNS-kiszolgálóinak leképezéseket hoz létre *dnsname*. a nyilvános IP-cím erőforrás cloudapp.net. Például ha hoz létre egy felhőszolgáltatás egy felhőalapú szolgáltatás DNS-neve **contoso**, a teljesen minősített tartománynevét (FQDN) **contoso.cloudapp.net** egy nyilvános IP-címére (VIP) fel a a felhőalapú szolgáltatás. Ezt a teljes tartománynevet használhatja az Azure-ban lévő nyilvános IP-címre mutató egyéni tartományi CNAME-rekord létrehozásához.
+A felhőszolgáltatás és a egy IaaS-beli virtuális gép létrehozásakor meg kell adnia egy felhőalapú szolgáltatás DNS-neve, ami egyedi el az összes erőforrást az Azure-ban. Ez az Azure által felügyelt DNS-kiszolgálók, a hozzárendelést hoz létre *dnsname*. cloudapp.net az erőforrás nyilvános IP-címet. Például ha hoz létre egy felhőalapú szolgáltatás egy felhőalapú szolgáltatás DNS-neve **contoso**, a teljes tartománynév (FQDN) **contoso.cloudapp.net** nyilvános IP-cím (VIP) a rendszer feloldja a felhőalapú szolgáltatás. Ezt a teljes tartománynevet használhatja az Azure-ban lévő nyilvános IP-címre mutató egyéni tartományi CNAME-rekord létrehozásához.
 
 ### <a name="cloud-services"></a>Felhőszolgáltatások
-Egy felhőalapú szolgáltatás mindig van egy nyilvános IP-cím, egy virtuális IP-cím (VIP) néven. Rendelje hozzá a virtuális gépek és a felhőszolgáltatás belül szerepkörpéldányok belső portokká VIP különböző portok felhőszolgáltatásban végpontok is létrehozhat. 
+Egy felhőalapú szolgáltatás mindig van egy nyilvános IP-címet virtuális IP-címet (VIP) nevezzük. Egy felhőalapú szolgáltatás társítani a virtuális IP-CÍMEK a virtuális gépek és szerepkörpéldányok felhőszolgáltatáson belül belső portokra különböző portok végpontokat hozhat létre. 
 
-Egy felhőalapú szolgáltatás több IaaS virtuális gépeket, vagy PaaS szerepkörpéldányt, minden elérhetővé a felhőalapú szolgáltatás ugyanazon VIP keresztül is tartalmazhat. Is rendelhet [több virtuális IP-címek egy felhőszolgáltatásra történő](../load-balancer/load-balancer-multivip.md), amely lehetővé teszi több virtuális IP-CÍMES helyzetekben, például a webhely SSL-alapú több-bérlős környezet.
+Egy felhőalapú szolgáltatás több IaaS virtuális gépekhez, vagy PaaS szerepkörpéldányt, az összes elérhetővé tett azonos felhőalapú szolgáltatás virtuális IP-címén is tartalmazhat. Is hozzárendelhet [több virtuális IP-címek egy felhőszolgáltatáshoz](../load-balancer/load-balancer-multivip.md), amely lehetővé teszi több virtuális IP-helyzetek, például az SSL-alapú webhelyek több-bérlős környezetben.
 
-Egy felhőalapú szolgáltatás nyilvános IP-címe változatlan marad, akkor is, ha a szerepkör összes példányát le van állítva, használatával biztosítható a *statikus* nyilvános IP-cím, a továbbiakban [foglalt IP-cím](virtual-networks-reserved-public-ip.md). A statikus (fenntartott) IP-erőforrás létrehozása egy adott helyen, és rendelje hozzá a felhőalapú szolgáltatás azon a helyen. A foglalt IP-cím nem lehet meghatározni az aktuális IP-cím, a készlet létrehozása a helyen rendelkezésre álló IP-címek hozzárendelése. Az IP-cím kiadása nem történik, amíg explicit módon törlése.
+A felhőalapú szolgáltatások nyilvános IP-cím változatlan marad, az összes szerepkörpéldány leállása, akkor a használatával gondoskodhat a *statikus* nyilvános IP-cím néven [fenntartott IP-cím](virtual-networks-reserved-public-ip.md). Hozzon létre egy statikus (fenntartott) IP-erőforrást egy adott helyen, és rendelje hozzá minden olyan felhőalapú szolgáltatás, az adott helyen. A fenntartott IP-cím nem adhat meg a konkrét IP-címet, a készlet létrehozása a helyen rendelkezésre álló IP-címek hozzárendelése. Az IP-címet nem jelent meg, amíg explicit módon törli.
 
-Statikus (fenntartott) nyilvános IP-címek gyakran fordulnak elő a forgatókönyvekben, ahol egy felhőalapú szolgáltatás:
+Statikus (fenntartott) nyilvános IP-címek gyakran fordulnak elő a forgatókönyvek, ahol egy felhőalapú szolgáltatás:
 
-* tűzfalszabályok végfelhasználók telepíteni kell.
-* külső DNS-névfeloldás, attól függ, és egy dinamikus IP-cím A rekordok frissítése szükséges.
-* IP-alapú biztonsági modellt használó külső webes szolgáltatások igényel.
-* IP-címhez társított SSL-tanúsítványokat használ.
+* tűzfalszabályokat kell beállítani a végfelhasználók által igényel.
+* külső DNS-névfeloldás, attól függ, és a egy dinamikus IP-cím miatt frissíteni kellene az egy a rekordot.
+* külső webes szolgáltatásokat, amelyek IP-alapú biztonsági modellt használ.
+* IP-címhez kötött SSL-tanúsítványokat használ.
 
 > [!NOTE]
-> Amikor létrehoz egy klasszikus virtuális Gépet, a tároló *felhőalapú szolgáltatás* jön létre az Azure-ban, a virtuális IP-cím (VIP). Amikor a létrehozás cseréjén keresztül történik egy alapértelmezett RDP és az SSH-portálon *végpont* a portál van beállítva, ezért a virtuális Gépet, a cloud service VIP keresztül is elérheti. A felhőalapú szolgáltatás VIP foglalható le, amely hatékonyan biztosítja a fenntartott IP-cím, amellyel a virtuális Géphez csatlakozik. További portokat úgy is megnyithatja, hogy további végpontok konfigurálásakor.
+> Amikor egy klasszikus virtuális gép, egy tárolót hoz létre *felhőszolgáltatás* jön létre az Azure-ban, amely rendelkezik a virtuális IP-címet (VIP). Amikor a létrehozás egy alapértelmezett RDP vagy SSH-portálon keresztül történik *végpont* a portál által van konfigurálva, így a virtuális gép felhőalapú szolgáltatás virtuális IP-CÍMÉN keresztül csatlakozhat. A felhőalapú szolgáltatás virtuális IP-cím foglalható, amely hatékonyan biztosít egy fenntartott IP-címet a virtuális Géphez való csatlakozáshoz. További portok megnyitásához további végpontok konfigurálása.
 > 
 > 
 
-### <a name="iaas-vms-and-paas-role-instances"></a>Infrastruktúra-szolgáltatási virtuális gépeknél és PaaS szerepkörpéldányok
-Rendelhet egy nyilvános IP-címet közvetlenül egy infrastruktúra-szolgáltatási [VM](../virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy PaaS szerepkörpéldányt felhőszolgáltatásban. Ezt nevezzük példányszintű nyilvános IP-címet ([ILPIP](virtual-networks-instance-level-public-ip.md)). A nyilvános IP-cím csak dinamikus lehet.
+### <a name="iaas-vms-and-paas-role-instances"></a>IaaS virtuális gépeknél és PaaS szerepkörpéldányok
+Hozzárendelhet egy nyilvános IP-címet közvetlenül az IaaS [VM](../virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy PaaS szerepkörpéldányok felhőszolgáltatáson belüli. Ez a neve egy példányszintű nyilvános IP-cím ([ILPIP](virtual-networks-instance-level-public-ip.md)). Csak a nyilvános IP-cím lehet dinamikus.
 
 > [!NOTE]
-> Ez eltér a VIP, a felhőalapú szolgáltatás, amely IaaS virtuális gépeket vagy PaaS szerepkörpéldányt beállítani, mivel egy felhőalapú szolgáltatás több IaaS virtuális gépeket is tartalmazhat, vagy PaaS szerepkörpéldányt, a felhőalapú szolgáltatás ugyanazon VIP keresztül közzétett minden tárolója.
+> Ez különbözik a virtuális IP-CÍMEK a felhőalapú szolgáltatás, amely IaaS virtuális gépek vagy PaaS szerepkörpéldányt, mivel a felhőalapú szolgáltatásként is tartalmazhat több IaaS virtuális gépekhez, vagy PaaS szerepkörpéldányt, mind a felhőalapú szolgáltatás ugyanazon VIP keresztül közzétett tárolója.
 > 
 > 
 
 ### <a name="vpn-gateways"></a>VPN-átjárók
-A [VPN-átjáró](../vpn-gateway/vpn-gateway-about-vpngateways.md) segítségével más Azure Vnetekhez vagy a helyszíni hálózatokhoz való kapcsolódásának egy Azure virtuális hálózatot. VPN-átjáró hozzá van rendelve egy nyilvános IP-cím *dinamikusan*, amely lehetővé teszi a távoli hálózati kommunikáció.
+A [VPN-átjáró](../vpn-gateway/vpn-gateway-about-vpngateways.md) más Azure Vnetekhez vagy helyszíni hálózatokhoz csatlakozni egy Azure virtuális hálózat is használható. VPN-átjáró nyilvános IP-cím van hozzárendelve *dinamikusan*, amely lehetővé teszi a kommunikációt a távoli hálózattal.
 
 ### <a name="application-gateways"></a>Alkalmazásátjárók
-Egy Azure [Alkalmazásátjáró](../application-gateway/application-gateway-introduction.md) Layer7 terheléselosztás a HTTP-alapú hálózati forgalom is használható. Alkalmazásátjáró hozzá van rendelve egy nyilvános IP-cím *dinamikusan*, amely az elosztott terhelésű VIP funkcionál.
+Azure-beli [az Application gateway](../application-gateway/application-gateway-introduction.md) Layer7 terheléselosztást, a HTTP-alapú hálózati forgalom továbbítása is használható. Az Application gateway nyilvános IP-cím van hozzárendelve *dinamikusan*, amely az elosztott terhelésű virtuális IP-CÍMEK szolgál.
 
 ### <a name="at-a-glance"></a>Áttekintés
-Az alábbi táblázat a lehetséges, hogy foglalási módszerek (dinamikus vagy statikus), és képes több nyilvános IP-cím hozzárendelése minden erőforrástípus.
+Az alábbi táblázat a lehetséges lefoglalási módszereket (dinamikus/statikus), és lehetővé teszi több nyilvános IP-címek kiosztása az egyes erőforrástípusok.
 
 | Erőforrás | Dinamikus | Statikus | Több IP-cím |
 | --- | --- | --- | --- |
 | Felhőszolgáltatás |Igen |Igen |Igen |
-| Infrastruktúra-szolgáltatási virtuális gép vagy PaaS szerepkörpéldányt |Igen |Nem |Nem |
+| IaaS virtuális gép vagy PaaS szerepkörpéldányt |Igen |Nem |Nem |
 | VPN-átjáró |Igen |Nem |Nem |
 | Alkalmazásátjáró |Igen |Nem |Nem |
 
 ## <a name="private-ip-addresses"></a>Magánhálózati IP-címek
-Magán IP-címek engedélyezése az Azure-erőforrások kommunikálni az egyéb erőforrások egy felhőalapú szolgáltatás, vagy egy [virtuális hálózati](virtual-networks-overview.md)(VNet), vagy a helyi hálózathoz (keresztül egy VPN-átjáró vagy ExpressRoute-kapcsolatcsoportot) használata nélkül egy Internet-elérhető IP-címre.
+Magánhálózati IP-címek lehetővé teszik az Azure-erőforrások más felhőszolgáltatásban lévő erőforrásokkal kommunikálni, vagy egy [virtuális hálózat](virtual-networks-overview.md)(VNet), vagy a helyi hálózathoz (keresztül VPN-átjárót vagy ExpressRoute-kapcsolatcsoport), használata nélkül egy Internetről elérhető IP-cím.
 
-Az Azure klasszikus üzembe helyezési modellel egy magánhálózati IP-cím a következő Azure-erőforrások rendelhetők:
+Az Azure klasszikus üzemi modellben a következő Azure-erőforrások rendelhetők magánhálózati IP-cím:
 
-* Infrastruktúra-szolgáltatási virtuális gépeknél és PaaS szerepkörpéldányok
+* IaaS virtuális gépeknél és PaaS szerepkörpéldányok
 * Belső terheléselosztó
 * Alkalmazásátjáró
 
-### <a name="iaas-vms-and-paas-role-instances"></a>Infrastruktúra-szolgáltatási virtuális gépeknél és PaaS szerepkörpéldányok
-A klasszikus üzembe helyezési modellel létrehozott virtuális gépeket (VM) mindig kerülnek egy felhőalapú szolgáltatás, a PaaS szerepkörpéldányok hasonló. Magánhálózati IP-címek viselkedését így hasonlóak az ezekhez az erőforrásokhoz.
+### <a name="iaas-vms-and-paas-role-instances"></a>IaaS virtuális gépeknél és PaaS szerepkörpéldányok
+A klasszikus üzemi modellel létrehozott virtuális gépek (VM) egy felhőszolgáltatás, hasonló PaaS szerepkörpéldányok mindig kerülnek. A magánhálózati IP-címek viselkedését így hasonlóak ezekhez az erőforrásokhoz.
 
-Fontos megjegyezni, hogy a felhőszolgáltatás két módon telepíthető:
+Fontos megjegyezni, hogy egy felhőalapú szolgáltatás két módon telepíthető:
 
-* Mint egy *önálló* felhőalapú szolgáltatás, amennyiben nincs a virtuális hálózaton belül.
-* A virtuális hálózat része.
+* Mint egy *önálló* felhőalapú szolgáltatás, amennyiben nincs virtuális hálózaton belül.
+* Virtuális hálózat része.
 
 #### <a name="allocation-method"></a>Lefoglalási módszer
-Esetében a *önálló* felhőalapú szolgáltatás, egy magánhálózati IP-cím lefoglalt erőforrások get *dinamikusan* titkos Azure datacenter IP-címtartományt. Csak a többi virtuális gép belül az azonos felhőszolgáltatás-kommunikációhoz használható. Az IP-címet módosíthatja, amikor az erőforrás leáll, majd elindítani.
+Az egy *önálló* felhőalapú szolgáltatás, magánhálózati IP-cím lefoglalt erőforrások get *dinamikusan* az Azure-adatközpont magánhálózati IP-címtartományt. Csak a többi virtuális gép ugyanazon a felhőszolgáltatáson belüli kommunikációhoz használható. Az IP-címet módosíthatja, amikor az erőforrás leállítása és elindítása.
 
-Esetén egy felhőalapú szolgáltatás, a virtuális hálózaton belül telepített erőforrások (a megadott hálózati konfigurációja) tartozó alhálózat címtartományából lefoglalt privát IP-címek lekérése. A privát IP-címei a Vneten belül az összes virtuális gépek közötti kommunikációra használható.
+Esetén egy virtuális hálózaton belüli üzembe helyezett felhőalapú szolgáltatás az erőforrások beolvasása magánhálózati IP-cím (a megadott hálózati konfigurációjában) a társított alhálózat címtartományából lefoglalva. A magánhálózati IP-cím a virtuális hálózaton belül minden virtuális gép közötti kommunikációhoz használható.
 
-Emellett esetén felhőszolgáltatások történik egy Vneten belül, egy magánhálózati IP-cím van lefoglalva *dinamikusan* (a DHCP használatával) alapértelmezés szerint. Ha az erőforrás leáll, majd elindítani módosíthatja azt. Gondoskodjon arról, hogy az IP-címe ugyanaz marad, a kiosztási módszer beállítása kell *statikus*, és adjon meg egy érvényes IP-címet a megfelelő címtartományán belül.
+Ezenkívül esetén a felhőszolgáltatások, virtuális hálózaton belül, egy privát IP-címek lefoglalhatók *dinamikusan* (a DHCP használatával) alapértelmezés szerint. Ezt módosíthatja, amennyiben az erőforrás leállítása és elindítása. Annak érdekében, hogy az IP-cím ugyanaz marad, a kiosztási módszert állítja be kell *statikus*, és adjon meg egy érvényes IP-címet a megfelelő címtartományán belül.
 
 Statikus magánhálózati IP-címeket általában a következő esetekben szoktak használni:
 
 * Tartományvezérlőként vagy DNS-kiszolgálóként működő virtuális gépek esetén.
-* Virtuális gépek IP-címeket használnak tűzfalszabályokat igénylő.
-* Futó szolgáltatások IP-címet egyéb alkalmazások által elért virtuális gépeket.
+* Virtuális gépek IP-címeket használó tűzfalszabályokat igénylő.
+* A virtuális gépek IP-címen keresztül más alkalmazások által elért szolgáltatások vannak telepítve.
 
 #### <a name="internal-dns-hostname-resolution"></a>Belső DNS-állomásnév feloldása
-Minden Azure virtuális gépek és PaaS szerepkörpéldányok konfigurált [Azure által kezelt DNS-kiszolgálók](virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution) alapértelmezés szerint csak explicit módon egyéni DNS-kiszolgálók. A DNS-kiszolgálók belső névfeloldást biztosít virtuális gépek és a szerepkörpéldányok szolgáltatásának ugyanazt a virtuális hálózat vagy a felhőben található.
+Minden Azure virtuális gépek és PaaS szerepkörpéldányok állítottak [Azure által felügyelt DNS-kiszolgálók](virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution) alapértelmezés szerint ha nem konfigurál kifejezetten egyéni DNS-kiszolgálókat. Ezen DNS-kiszolgálók belső névfeloldást biztosítanak a virtuális gépek és szerepkörpéldányok található ugyanazt a virtuális hálózat vagy a felhőalapú szolgáltatást.
 
-Amikor létrehoz egy virtuális gépet, az állomásnév a magánhálózati IP-címére való leképezése fel lesz véve az Azure által felügyelt DNS-kiszolgálókra. A több hálózati Adapterrel virtuális gépek esetén az állomásnév készletre van leképezve a magánhálózati IP-címe a elsődleges hálózati adaptert. Azonban a hozzárendelési információkat a felhőalapú szolgáltatás- vagy virtuális hálózaton belüli erőforrások korlátozódik.
+Amikor létrehoz egy virtuális gépet, az állomásnév a magánhálózati IP-címére való leképezése fel lesz véve az Azure által felügyelt DNS-kiszolgálókra. Egy több hálózati adapterrel rendelkező virtuális gép esetén az állomásnév a magánhálózati IP-címe az elsődleges hálózati lesz leképezve A megfeleltetési adatokat. azonban korlátozódik ugyanazon a felhőszolgáltatáson vagy virtuális hálózaton belüli erőforrásokhoz.
 
-Esetében a *önálló* felhőalapú szolgáltatás, oldja meg az összes virtuális gépeket/szerepkörpéldányokat belül csak az ugyanabban a felhőalapú szolgáltatás állomásnevek lesz. Egy felhőalapú szolgáltatás egy Vneten belül, ha fogja tudni oldania az összes a virtuális gépeket/szerepkörpéldányokat a Vneten belül állomásnevek.
+Az egy *önálló* felhőalapú szolgáltatás, az összes virtuális gépeket/szerepkörpéldányokat ugyanazon a felhőszolgáltatáson belül csak állomásnevét feloldani lesz. Felhőszolgáltatás virtuális hálózaton belüli esetén lesz minden a virtuális gépeket/szerepkörpéldányokat a virtuális hálózaton belül állomásnevét feloldani.
 
 ### <a name="internal-load-balancers-ilb--application-gateways"></a>Belső terheléselosztók (ILB) és alkalmazásátjárók
-Hozzárendelhet egy magánhálózati IP-címet az [Azure Internal Load Balancer](../load-balancer/load-balancer-internal-overview.md) (ILB) terheléselosztók vagy [Azure Application Gateway](../application-gateway/application-gateway-introduction.md) alkalmazásátjárók **előtér**-konfigurációjához. Ez a magánhálózati IP-cím belső végpontként szolgál, amelyet csak a virtuális hálózatán (VNet) és a VNethez csatlakozó távoli hálózatokon lévő erőforrások érnek el. Hozzárendelhet egy dinamikus vagy egy statikus méretű magánhálózati IP-címet az előtér-konfigurációhoz. Több privát IP-címek lehetővé több virtuális IP-címes forgatókönyveket is hozzárendelhetők.
+Hozzárendelhet egy magánhálózati IP-címet az [Azure Internal Load Balancer](../load-balancer/load-balancer-internal-overview.md) (ILB) terheléselosztók vagy [Azure Application Gateway](../application-gateway/application-gateway-introduction.md) alkalmazásátjárók **előtér**-konfigurációjához. Ez a magánhálózati IP-cím belső végpontként szolgál, amelyet csak a virtuális hálózatán (VNet) és a VNethez csatlakozó távoli hálózatokon lévő erőforrások érnek el. Hozzárendelhet egy dinamikus vagy egy statikus méretű magánhálózati IP-címet az előtér-konfigurációhoz. Több virtuális IP-forgatókönyvek engedélyezése több magánhálózati IP-címek is hozzárendelhetők.
 
 ### <a name="at-a-glance"></a>Áttekintés
-Az alábbi táblázat a lehetséges, hogy foglalási módszerek (dinamikus vagy statikus), és képes több privát IP-cím hozzárendelése minden erőforrástípus.
+Az alábbi táblázat a lehetséges lefoglalási módszereket (dinamikus/statikus), és lehetővé teszi több magánhálózati IP-címek hozzárendelése az egyes erőforrástípusok.
 
 | Erőforrás | Dinamikus | Statikus | Több IP-cím |
 | --- | --- | --- | --- |
-| Virtuális gép (a egy *önálló* felhőalapú szolgáltatás, vagy a virtuális hálózat) |Igen |Igen |Igen |
-| A PaaS szerepkörpéldányt (az egy *önálló* felhőalapú szolgáltatás, vagy a virtuális hálózat) |Igen |Nem |Nem |
-| Belső terheléselosztó előtér |Igen |Igen |Igen |
-| Átjáró előtér-alkalmazás |Igen |Igen |Igen |
+| Virtuális gép (az egy *önálló* felhőalapú szolgáltatás, vagy a virtuális hálózat) |Igen |Igen |Igen |
+| PaaS szerepkörpéldányt (az egy *önálló* felhőalapú szolgáltatás, vagy a virtuális hálózat) |Igen |Nem |Nem |
+| Belső terheléselosztó előtérrendszerhez |Igen |Igen |Igen |
+| Application gateway-kezelőfelület |Igen |Igen |Igen |
 
 ## <a name="limits"></a>Korlátok
-Az alábbi táblázat mutatja a határoz meg küszöbértéket IP-címzés az Azure-ban előfizetésenként. [Lépjen kapcsolatba a támogatással](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), ha növelni szeretné az alapértelmezett korlátot üzleti igényei szerint – akár a maximális korlátig.
+Az alábbi táblázat IP-korlátozások az Azure-előfizetésenként címzés. [Lépjen kapcsolatba a támogatással](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), ha növelni szeretné az alapértelmezett korlátot üzleti igényei szerint – akár a maximális korlátig.
 
 |  | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
 | Nyilvános IP-címek (dinamikus) |5 |kapcsolatfelvétel az ügyfélszolgálattal |
 | Fenntartott nyilvános IP-címek |20 |kapcsolatfelvétel az ügyfélszolgálattal |
-| Nyilvános VIP (felhőszolgáltatás) üzemelő példányonként |5 |kapcsolatfelvétel az ügyfélszolgálattal |
-| Magán a VIP (ILB) a (felhőszolgáltatás) üzemelő példányonként |1 |1 |
+| Nyilvános virtuális IP-cím (felhőszolgáltatás) üzemelő példányonként |5 |kapcsolatfelvétel az ügyfélszolgálattal |
+| Privát virtuális IP-CÍMEK (ilb) Terheléselosztók (felhőszolgáltatás) üzemelő példányonként |1 |1 |
 
-Győződjön meg arról, hogy olvassa el a teljes készletének [korlátozza a hálózati](../azure-subscription-service-limits.md#networking-limits) az Azure-ban.
+Olvassa el a teljes körű [hálózati korlátozásainak](../azure-subscription-service-limits.md#networking-limits) az Azure-ban.
 
 ## <a name="pricing"></a>Díjszabás
-A legtöbb esetben a nyilvános IP-címek szabadon. Nincs további és/vagy a statikus nyilvános IP-címek névleges járnak. Győződjön meg arról, hogy tudomásul veszi a [struktúra árképzési nyilvános IP-címek](https://azure.microsoft.com/pricing/details/ip-addresses/).
+A legtöbb esetben a nyilvános IP-címek használata ingyenes. Egy névleges díj további és/vagy statikus nyilvános IP-címek használatára van. Győződjön meg arról, hogy megértette a [struktúra a nyilvános IP-címek díjszabása](https://azure.microsoft.com/pricing/details/ip-addresses/).
 
-## <a name="differences-between-resource-manager-and-classic-deployments"></a>Erőforrás-kezelő és a klasszikus üzembe helyezés közötti különbségek
-Alább az IP-címzési szolgáltatásainak az erőforrás-kezelő és a klasszikus telepítési modell összehasonlítása.
+## <a name="differences-between-resource-manager-and-classic-deployments"></a>Resource Manager és klasszikus üzembe helyezés közötti különbségek
+Alább az IP-címzési szolgáltatásainak a Resource Manager és a klasszikus üzemi modell összehasonlítása.
 
 |  | Erőforrás | Klasszikus | Resource Manager |
 | --- | --- | --- | --- |
-| **Nyilvános IP-cím** |***VM*** |Egy ILPIP (csak dinamikus) néven |Egy nyilvános IP-cím (dinamikus vagy statikus) néven |
-|  ||Az infrastruktúra-szolgáltatási virtuális gép vagy egy PaaS szerepkörpéldányt rendelt |A virtuális hálózati adapterhez társított | |
-|  |***Az Internet felé néző terheléselosztó*** |Néven VIP (dinamikus) vagy fenntartott IP (statikus) |Egy nyilvános IP-cím (dinamikus vagy statikus) néven | |
-|  ||A felhőalapú szolgáltatáshoz |A terheléselosztó előtér-config társított | |
+| **Nyilvános IP-cím** |***VM*** |Egy ILPIP (csak dinamikus) néven |Egy nyilvános IP-Címek (dinamikus vagy statikus) néven |
+|  ||Egy IaaS-beli virtuális Gépen vagy egy PaaS szerepkörpéldányok hozzárendelve |A virtuális gép hálózati adapterhez hozzárendelt | |
+|  |***Az internetre irányuló terheléselosztó*** |Virtuális IP-CÍMEK (dinamikus) vagy fenntartott IP-Címek (statikus) |Egy nyilvános IP-Címek (dinamikus vagy statikus) néven | |
+|  ||Cloud service rendelve |A load balancer előtér-konfiguráció hozzárendelve | |
 |  | | | |
-| **Magánhálózati IP-cím** |***VM*** |Egy DIP néven |A magánhálózati IP-cím néven |
-|  ||Az infrastruktúra-szolgáltatási virtuális gép vagy egy PaaS szerepkörpéldányt rendelt |A virtuális hálózati adapterhez hozzárendelt | |
-|  |***Belső terheléselosztón (ILB)*** |A ILB (dinamikus vagy statikus) rendelt |A ILB előtér konfigurációs (dinamikus vagy statikus) rendelt | |
+| **Magánhálózati IP-cím** |***VM*** |Egy DIP néven |Magánhálózati IP-cím néven |
+|  ||Egy IaaS-beli virtuális Gépen vagy egy PaaS szerepkörpéldányok hozzárendelve |A virtuális gép hálózati adapterhez hozzárendelt | |
+|  |***Belső load balancer (ILB)*** |Az ILB (dinamikus vagy statikus) rendelve |Az ILB előtér-konfiguráció (dinamikus vagy statikus) rendelve | |
 
 ## <a name="next-steps"></a>További lépések
-* [Telepítse a virtuális Gépet egy statikus magánhálózati IP-cím](virtual-networks-static-private-ip-classic-pportal.md) az Azure portál használatával.
+* [Statikus magánhálózati IP-címmel rendelkező virtuális gép üzembe helyezése](virtual-networks-static-private-ip-classic-pportal.md) az Azure portal használatával.
 

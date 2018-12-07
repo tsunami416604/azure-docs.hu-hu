@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: ce539da92b9d58282ab44a3729f4bf4fb8eaedf5
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 48f8bb2e8251191fac456549cfca7a37e75d7f8c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840333"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997683"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Transact-SQL különbségek feloldása az SQL Database-migráció során
 
@@ -45,25 +45,37 @@ A core (adatdefiníciós nyelv) DDL-utasítások, de néhány DDL-utasítások r
 
 A leírt nem támogatott funkciók kapcsolatos Transact-SQL utasításokkal mellett [Azure SQL Database funkcióinak összehasonlítása](sql-database-features.md), az alábbi utasítások és utasításcsoportok, nem támogatottak. Mint ilyen az adatbázis kell áttelepíteni az alábbi funkciók bármelyike használ, ha újból mérnök a T-SQL-ezeket a T-SQL-funkciók és az utasításokat.
 
--Rendezés rendszer objektumok - kapcsolat kapcsolódó: végponti utasítások. Az SQL Database nem támogatja a Windows-hitelesítést, de támogatja a hasonló Azure Active Directory-hitelesítést. Bizonyos hitelesítési típusokhoz az SSMS legújabb verziója szükséges. További információkért lásd: [SQL Database vagy az SQL Data Warehouse által használatával az Azure Active Directory-hitelesítéssel csatlakozik](sql-database-aad-authentication.md).
--Adatbázisközi lekérdezések három vagy négy kétrészes nevek használatával. (Csak olvasható adatbázisközi lekérdezések használatával támogatottak [elastic database-lekérdezés](sql-database-elastic-query-overview.md).) – adatbázis-tulajdonosi láncolás, platformfüggetlen `TRUSTWORTHY` beállítás - `EXECUTE AS LOGIN` használja a "Végrehajtása FELHASZNÁLÓKÉNT" helyett.
-– A titkosítás támogatott bővíthetőkulcskezelő - eseménykezelési kivételével: események, eseményértesítések, értesítések – fájl elhelyezési lekérdezése: adatbázisfájlok elhelyezéséhez, mérete és automatikusan a Microsoft Azure által felügyelt adatbázis-fájlok kapcsolódó szintaxis.
+- Rendszerobjektumok rendezése
+- Kapcsolatra vonatkozó: végponti utasítások. Az SQL Database nem támogatja a Windows-hitelesítést, de támogatja a hasonló Azure Active Directory-hitelesítést. Bizonyos hitelesítési típusokhoz az SSMS legújabb verziója szükséges. További tudnivalókat a [Csatlakozás az SQL Database vagy az SQL Data Warehouse szolgáltatáshoz Azure Active Directory-hitelesítéssel](sql-database-aad-authentication.md) című cikkben találhat.
+- Adatbázisközi lekérdezések három vagy négy résznévvel. (A csak olvasható adatbázisközi lekérdezéseket a [rugalmas adatbázis lekérdezése](sql-database-elastic-query-overview.md) funkció támogatja.)
+- Tulajdonjog adatbázisközi láncolása, `TRUSTWORTHY` beállítása
+- Az `EXECUTE AS LOGIN` helyett használja az 'EXECUTE AS USER' utasítást.
+- A bővíthető kulcskezelés kivételével a titkosítás funkció támogatott
+- Eseménykezelési: Események, eseményértesítések, lekérdezésértesítések
+- Fájl elhelyezési: adatbázisfájlok elhelyezéséhez, mérete és automatikusan a Microsoft Azure által felügyelt adatbázis-fájlok kapcsolódó szintaxis.
 - Magas rendelkezésre állás: magas rendelkezésre állást, amely a Microsoft Azure-fiókján keresztül felügyelt kapcsolódó szintaxis. Ide tartozik a biztonsági mentéshez, visszaállításhoz, Always On funkcióhoz, adatbázis-tükrözéshez, naplóküldéshez, helyreállítási módokhoz kapcsolódó szintaxis.
--Jelentkezzen olvasó: a napló olvasó, amely nem érhető el az SQL Database támaszkodó Szintaxis: leküldéses replikáció, adatváltozások rögzítése. Az SQL Database a leküldéses replikációs tétel előfizetője lehet.
-– A functions: `fn_get_sql`, `fn_virtualfilestats`, `fn_virtualservernodes` – hardver: hardver kiszolgálóbeállításokhoz kapcsolódó Szintaxis: memória, munkaszálak, processzoraffinitás, például a nyomkövetési jelzők. És méretek inkább számítási szolgáltatásszintek használhat.
-- `KILL STATS JOB`
-- `OPENQUERY`, `OPENROWSET`, `OPENDATASOURCE`, és négyrészes nevek – .NET-keretrendszer: CLR-integráció az SQL Server - szemantikai keresés - kiszolgáló hitelesítő adatai: használata [adatbázishoz kötődő hitelesítő adatok](https://msdn.microsoft.com/library/mt270260.aspx) helyette.
--Kiszolgálószintű elemek: kiszolgálói szerepkörök területen `sys.login_token`. A `GRANT`, `REVOKE`, és `DENY` kiszolgálószintű engedélyek nem érhetők el, bár van köztük olyan, amelyet adatbázisszintű engedélyek helyettesítenek. Néhány hasznos kiszolgálószintű dinamikus felügyeleti nézet rendelkezik egyenértékű adatbázisszintű dinamikus felügyeleti nézettel.
-- `SET REMOTE_PROC_TRANSACTIONS`
-- `SHUTDOWN`
-- `sp_addmessage`
-- `sp_configure` beállítások és `RECONFIGURE`. Egyes beállítások akkor elérhetők az [ADATBÁZISHOZ KÖTŐDŐ konfiguráció módosítása](https://msdn.microsoft.com/library/mt629158.aspx).
-- `sp_helpuser`
-- `sp_migrate_user_to_contained`
+- Jelentkezzen az olvasó: a napló olvasó, amely nem érhető el az SQL Database támaszkodó Szintaxis: leküldéses replikáció, adatváltozások rögzítése. Az SQL Database a leküldéses replikációs tétel előfizetője lehet.
+- Funkciók: `fn_get_sql`, `fn_virtualfilestats`, `fn_virtualservernodes`
+- Hardver: Hardver kiszolgálóbeállításokhoz kapcsolódó Szintaxis: memória, munkaszálak, processzoraffinitás, például a nyomkövetési jelzők. És méretek inkább számítási szolgáltatásszintek használhat.
+- `KILL STATS JOB`
+- `OPENQUERY`, `OPENROWSET`, `OPENDATASOURCE`, és négyrészes nevek
+- .NET-keretrendszer: Az SQL Server CLR-integrációt
+- Szemantikai keresés
+- Kiszolgáló hitelesítő adatai: használata [adatbázishoz kötődő hitelesítő adatok](https://msdn.microsoft.com/library/mt270260.aspx) helyette.
+- Kiszolgálószintű elemek: kiszolgálói szerepkörök területen `sys.login_token`. A `GRANT`, `REVOKE`, és `DENY` kiszolgálószintű engedélyek nem érhetők el, bár van köztük olyan, amelyet adatbázisszintű engedélyek helyettesítenek. Néhány hasznos kiszolgálószintű dinamikus felügyeleti nézet rendelkezik egyenértékű adatbázisszintű dinamikus felügyeleti nézettel.
+- `SET REMOTE_PROC_TRANSACTIONS`
+- `SHUTDOWN`
+- `sp_addmessage`
+- `sp_configure` lehetőségek és `RECONFIGURE`. Egyes lehetőségek elérhetők az [ALTER DATABASE SCOPED CONFIGURATION](https://msdn.microsoft.com/library/mt629158.aspx) (adatbázis-hatókörű konfiguráció változtatása) utasítással.
+- `sp_helpuser`
+- `sp_migrate_user_to_contained`
 - SQL Server Agent: Az SQL Server Agent vagy MSDB-adatbázisra támaszkodó Szintaxis: riasztások, kezelők, központi felügyeleti kiszolgálók. Használjon helyette parancsfájlkezelőt, mint például az Azure PowerShell.
--Az SQL Server audit: az SQL Database naplózási helyette.
--Az SQL Server trace - nyomkövetési jelzők: egyes nyomkövetési jelző elemek lettek áthelyezve kompatibilitási módban.
-– Hibakeresés a transact-SQL - eseményindítók: kiszolgálói hatókörű vagy bejelentkezési eseményindítók - `USE` utasítás: Ha módosítani szeretné az adatbázis-környezet egy másik adatbázishoz, az új adatbázishoz új kapcsolatot kell létesíteni.
+- SQL Server-naplózás: az SQL Database naplózási helyette.
+- SQL Server-nyomkövetés
+- Nyomkövetési jelzők: egyes nyomkövetési jelző elemek lettek áthelyezve kompatibilitási módban.
+- Transact-SQL-hibakeresés
+- Eseményindítók: kiszolgálói hatókörű vagy bejelentkezési eseményindítók
+- `USE` utasítás: Ha másik adatbázissal szeretné felváltani az adatbázis-környezetet, új kapcsolódást kell létesítenie az új adatbázissal.
 
 ## <a name="full-transact-sql-reference"></a>A Transact-SQL teljes leírása
 

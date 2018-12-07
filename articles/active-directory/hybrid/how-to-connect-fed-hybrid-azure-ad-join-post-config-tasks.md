@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2306c03480956a63859355428cbffe0706f43cbc
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 16fc7f1bb69efe94ce87f213627b78a4afa0fcc2
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312479"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999230"
 ---
-# <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>A hibrid Azure AD-csatlakozás utáni konfigurációs feladatok
+# <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Hibrid Azure AD-csatlakozás konfigurálása utáni feladatok
 
 Miután futtatta a szervezetben a hibrid Azure AD-csatlakozás konfigurálása az Azure AD Connect, nincsenek néhány további lépéseket kell végrehajtani, hogy a telepítő véglegesítéséhez.  Csak azokat a lépéseket, amelyek az eszközök a alkalmazni végez.
 
@@ -77,7 +77,7 @@ Windows régebbi verziójú eszközök regisztrálása, győződjön meg arról,
 
 Az Azure AD-eszközök hitelesítési végpont hozzáadása a helyi intranetes zóna elkerülése érdekében utasításokat a tanúsítvány hitelesíti az eszközöket a Windows régebbi verziójú eszközökön: https://device.login.microsoftonline.com 
 
-Ha használ [közvetlen egyszeri bejelentkezés](https://aka.ms/hybrid/sso), is engedélyezze a zóna a "Állapot parancsfájllal történő frissítésének engedélyezése", és adja hozzá a következő végpontot: https://autologon.microsoftazuread-sso.com 
+Ha használ [közvetlen egyszeri bejelentkezés](how-to-connect-sso.md), is engedélyezze a zóna a "Állapot parancsfájllal történő frissítésének engedélyezése", és adja hozzá a következő végpontot: https://autologon.microsoftazuread-sso.com 
 
 ## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. Telepítse a Microsoft munkahelyi csatlakoztatás Windows régebbi verziójú eszközökön
 

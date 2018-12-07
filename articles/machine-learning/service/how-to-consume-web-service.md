@@ -1,6 +1,6 @@
 ---
-title: Webszolgáltatások üzembe helyezéséhez – az Azure Machine Learning használata
-description: Ismerje meg, hogyan üzembe helyezése az Azure Machine Learning-modell által létrehozott webszolgáltatások használata. Az Azure Machine Learning-modellek üzembe helyezése egy webszolgáltatás, amely elérhetővé teszi a REST API-t hoz létre. Az ügyfelek számára az API-t az Ön által választott programozási nyelvet is létrehozhat. Ebből a dokumentumból megtudhatja, hogyan érheti el az API-ban a Python használatával és C#.
+title: Webszolgáltatások üzembe helyezéséhez – az Azure Machine Learning szolgáltatás használata
+description: Megtudhatja, hogyan használhat egy webszolgáltatás, amelyet jött létre, amikor egy modell telepítve lett az Azure Machine Learning-modellel. A webszolgáltatás által elérhetővé tett REST API-t. Hozzon létre az ügyfelek számára az API-t az Ön által választott programozási nyelvet.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,12 +9,13 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: larryfr
 ms.date: 12/03/2018
-ms.openlocfilehash: 9b3daca572140229bf2d38cd56f65ce44683f0f7
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: d964eef08557ddd95ff86bc9e7de806cd4a8ca18
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864400"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016640"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Az Azure Machine Learning-modellek webszolgáltatásként üzembe helyezett felhasználása
 

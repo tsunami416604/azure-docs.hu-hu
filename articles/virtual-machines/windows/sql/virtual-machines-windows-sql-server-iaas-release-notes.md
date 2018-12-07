@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/13/2018
 ms.author: mathoma
-ms.openlocfilehash: 44aee447c7f935cd67ca55902c53c5f6f9eb6fda
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 52036d8f5d25fc4a4f2d1b602428e9cba4762b7f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52500350"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993142"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>Az SQL Server használata Azure virtuális gép kibocsátási megjegyzései
 
@@ -28,8 +28,8 @@ Az Azure lehetővé teszi, hogy az SQL Server beépített rendszerképpel rendel
 
 
 ## <a name="november-2018"></a>A 2018. november
-- **Új SQL típusú erőforrás-szolgáltató**: egy új erőforrás-szolgáltató az SQL virtuális gépek, amelyek jobb kezelése érdekében a virtuális gép van. További információ a virtuális gép regisztrálása: [örökölt SQL virtuális gép új erőforrás-szolgáltató regisztrálásához](virtual-machines-windows-sql-ahb.md#register-legacy-sql-vm-with-new-resource-provider).
-- **Váltson a licencelési modell**: mostantól válthat az SQL virtuális gép Azure parancssori felület vagy a Powershell használatával a használatalapú-per-használat és a bring-your-own-license modell között. További információkért lásd: [SQL virtuális gép licencelési modelljét módosítása](virtual-machines-windows-sql-ahb.md)
+- **Új SQL típusú erőforrás-szolgáltató**: egy új erőforrás-szolgáltató az SQL virtuális gépek, amelyek jobb kezelése érdekében a virtuális gép van. További információ a virtuális gép regisztrálása: [meglévő SQL virtuális gép új erőforrás-szolgáltató regisztrálásához](virtual-machines-windows-sql-ahb.md#register-existing-sql-vm-with-new-resource-provider).
+- **Váltson a licencelési modell**: mostantól válthat az SQL virtuális gép Azure parancssori felület vagy a PowerShell használatával a használatalapú-per-használat és a bring-your-own-license modell között. További információkért lásd: [SQL virtuális gép licencelési modelljét módosítása](virtual-machines-windows-sql-ahb.md)
 
 
 

@@ -9,12 +9,12 @@ ms.date: 11/26/2018
 ms.topic: reference
 ms.service: service-fabric-mesh
 manager: subramar
-ms.openlocfilehash: f526872dc34418f343ab763587835d612b48af75
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 08e842f5b91bd0ca5f8e8b2a7866f3f9a689ac28
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892305"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998996"
 ---
 # <a name="maven-plugin-for-service-fabric-mesh"></a>A Service Fabric háló maven bővítménnyel
 
@@ -96,11 +96,10 @@ mvn azure-sfmesh:init -DapplicationName=helloworldserver
 Futtassa az alábbi parancsot egy hálózati erőforrás yaml létrehozásához. 
 
 ```cmd
-mvn azure-sfmesh:addnetwork -DapplicationName=helloworldserver -DserviceName=helloworldservice -DnetworkName=helloworldservicenetwork -DnetworkAddressPrefix=10.0.0.4/22
+mvn azure-sfmesh:addnetwork -DnetworkName=helloworldservicenetwork -DnetworkAddressPrefix=10.0.0.4/22
 ```
 
 - Létrehoz egy hálózati YAML mappában `servicefabric->appresources` nevű `network_helloworldservicenetwork`
-- Itt adhatja meg, melyik szolgáltatás ezt a hálózatot egy része lesz: `helloworldservice`
 
 #### <a name="add-a-new-service-to-your-application"></a>Egy új szolgáltatás hozzáadása az alkalmazáshoz
 Futtassa az alábbi parancsot egy szolgáltatás yaml létrehozásához. 

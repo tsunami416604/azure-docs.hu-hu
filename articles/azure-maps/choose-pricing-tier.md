@@ -3,17 +3,17 @@ title: Válassza ki a tarifacsomagot az Azure Maps jobb |} A Microsoft Docs
 description: További tudnivalók az Azure Maps által kínált tarifacsomagok
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/03/2018
+ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 20c59f95dcdb47ef3e457f177d7ad1a300981907
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ee277867f449afddeb89c3fd73b5b577a68a4497
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855965"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998384"
 ---
 # <a name="choosing-the-right-pricing-tier-in-azure-maps"></a>A jobb oldalon, az Azure Maps-tarifacsomag kiválasztása
 
@@ -34,14 +34,16 @@ S0 és S1 szintű tarifacsomagban is kapható különböző mennyiségű adat ke
 | Megjelenítés                                  |        ✓           |     ✓    |
 | Adatforgalom                                 |        ✓           |     ✓    |
 | Időzóna                              |        ✓           |     ✓    |
-| Képeken + hibrid képeken (előzetes verzió)      |                    |     ✓    |
-| Útválasztási tartomány (előzetes verzió)                   |                    |     ✓    |
-| IP-2 helye (előzetes verzió)                 |                    |     ✓    |
-| Sokszög keresés (előzetes verzió)          |                    |     ✓    |
-| A Batch Geokódolás (előzetes verzió)               |                    |     ✓    |
-| Batch-útválasztás (előzetes verzió)                 |                    |     ✓    |
-| Mátrix útválasztás (előzetes verzió)                |                    |     ✓    |
+| * Képanyag + hibrid képeken (előzetes verzió)     |        ✓           |     ✓    |
+| * Az útválasztási tartomány (előzetes verzió)                  |        ✓           |     ✓    |
+| * IP 2 helye (előzetes verzió)                |        ✓           |     ✓    |
+| * Poligonok keresés (előzetes verzió)         |        ✓           |     ✓    |
+| * Batch Geokódolás (előzetes verzió)              |        ✓           |     ✓    |
+| * A batch-útválasztás (előzetes verzió)                |        ✓           |     ✓    |
+| * A mátrix útválasztás (előzetes verzió)               |        ✓           |     ✓    |
 
+> [!Note]
+> Ezen tarifacsomag az S0 lehetőségekhez 2019. február 4. után elavulttá válnak.
 
 Néhány további adatpontokat mellett szóló érvek, milyen típusú vállalati rendelkezik, vagy hogyan kritikus fontosságú az alkalmazás a készülő?
 

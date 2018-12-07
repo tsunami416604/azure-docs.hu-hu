@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: raynew
-ms.openlocfilehash: 9baf6ea70a8e9fa0dcd8ceefc9f58d7fa972767a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 9cbb1f080b9a5a98984ad48854bccc4fb2044c16
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841965"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998343"
 ---
 # <a name="dependency-visualization"></a>Függőségek vizualizációja
 
@@ -68,7 +68,7 @@ További tudnivalókat az Azure Migrate díjszabásáról [itt](https://azure.mi
 
 ## <a name="how-do-i-manage-the-workspace"></a>Hogyan kezelhetem a munkaterületet?
 
-A Log Analytics-munkaterületet az Azure Migrate kívül is használhatja. Ha törli a migrálási projektben, ahol létrehozták nem törlődik. Ha már nincs szüksége a munkaterületen [törölné](../log-analytics/log-analytics-manage-access.md) manuálisan.
+A Log Analytics-munkaterületet az Azure Migrate kívül is használhatja. Ha törli a migrálási projektben, ahol létrehozták nem törlődik. Ha már nincs szüksége a munkaterületen [törölné](../azure-monitor/platform/manage-access.md) manuálisan.
 
 Ne törölje az Azure Migrate, által létrehozott munkaterület, hacsak nem törli a migrálási projektet. Ha így tesz, a függőségek képi megjelenítésének funkcióival nem működnek megfelelően.
 

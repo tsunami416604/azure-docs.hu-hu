@@ -9,19 +9,19 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: 5dccfe61eaf97f27b211aa6812145f21f2098738
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 2c1bac07d5086cffb99082520b05c7e42982c6f7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961263"
+ms.locfileid: "52996606"
 ---
 # <a name="monitor-b2b-messages-with-azure-log-analytics-in-azure-logic-apps"></a>Az Azure Log Analytics az Azure Logic Apps B2B-üzenetek monitorozása
 
 Telepítése után B2B kommunikációt az integrációs fiókban lévő kereskedelmi partnerek között, ezek a partnerek is alkalmazásközi egymással. Ellenőrizze, hogy ezt a kommunikációt a várt módon működik, AS2, X12, figyelheti és EDIFACT üzeneteket, és állítsa be a diagnosztikai naplózás az integrációs fiók a [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Ez a szolgáltatás figyeli a felhőbeli és helyszíni környezeteket, Súgó, a rendelkezésre állás és teljesítmény fenntartására és futásidejű részleteit, illetve gazdagabb hibakeresési eseményeket gyűjti. Emellett [használja ezeket az adatokat más szolgáltatásokkal](#extend-diagnostic-data) például az Azure Storage és az Azure Event Hubs.
 
 > [!NOTE]
-> Ezen a lapon lehet, hogy továbbra is hivatkoznak, a Microsoft Operations Management Suite (OMS), amely [kivonása a január 2019](../log-analytics/log-analytics-oms-portal-transition.md), de váltja fel ezeket a lépéseket az Azure Log Analytics, ahol csak lehetséges. 
+> Ezen a lapon lehet, hogy továbbra is hivatkoznak, a Microsoft Operations Management Suite (OMS), amely [kivonása a január 2019](../azure-monitor/platform/oms-portal-transition.md), de váltja fel ezeket a lépéseket az Azure Log Analytics, ahol csak lehetséges. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -124,7 +124,7 @@ Az Azure Log Analytics, valamint bővítheti, hogyan használhatja a logikai alk
 * [Azure Diagnostics-naplók az Azure Storage-archívum](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
 * [Stream Azure-beli diagnosztikai naplók az Azure Event hubs szolgáltatásba](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) 
 
-Ezután get valós idejű figyelést végezni a telemetriai adatokat és elemzéseket tesz további szolgáltatásokkal, például [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) és [Power BI](../log-analytics/log-analytics-powerbi.md). Példa:
+Ezután get valós idejű figyelést végezni a telemetriai adatokat és elemzéseket tesz további szolgáltatásokkal, például [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) és [Power BI](../azure-monitor/platform/powerbi.md). Példa:
 
 * [Stream-adatok az Event Hubsból a Stream Analytics szolgáltatáshoz](../stream-analytics/stream-analytics-define-inputs.md)
 * [A Stream Analytics streamelési adatok elemzéséhez, és a egy valós idejű elemzési irányítópult létrehozása a Power bi-ban](../stream-analytics/stream-analytics-power-bi-dashboard.md)

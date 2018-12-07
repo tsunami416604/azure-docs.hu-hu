@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: a7d498349342e34cb56f031bfe1440e01e79173b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2906f6dff84cdd6a09c05734988ee005a3d65aac
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841846"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994640"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Egy Azure-régióból a másikba történő replikálásához támogatási mátrix
 
@@ -40,7 +40,7 @@ Ez a cikk összefoglalja támogatott konfigurációk és összetevők replikál�
 **Virtuális gépek áttelepítése támogatott földrajzi fürtökben (belül és több előfizetés)-régiók között** | Támogatott azonos Azure Active Directory-bérlőben.
 **Az azonos régión belüli virtuális gépek áttelepítése** | Nem támogatott.
 
-# <a name="region-support"></a>Régió támogatása
+## <a name="region-support"></a>Régió támogatása
 
 Replikálja, és a virtuális gépek helyreállítása ugyanazon a földrajzi fürtön belül bármely két régió között.
 
@@ -62,11 +62,10 @@ Kína | Kelet-Kína, Észak-Kína
 
 Ez a táblázat összefoglalja a Site Recovery által replikáció közben használt gyorsítótárfiók támogatása.
 
-**Beállítás** | **Részletek**
---- | ---
+**Beállítás** | **Támogatás** | **Részletek**
+--- | --- | ---
 Általános célú V2 tárfiókok (gyors és lassú elérésű szint) | Nem támogatott. | A korlátozás létezik a gyorsítótárban mivel lényegesen nagyobb, mint a V1-tárfiókok tranzakciós költségeinek a v2-ben.
-Virtuális hálózatok az Azure Storage-tűzfalak  | Nem | Engedélyezi a hozzáférést az adott Azure virtuális hálózatokhoz a replikált adatok tárolására szolgáló gyorsítótár tárfiókokhoz nem támogatott.
-
+Virtuális hálózatok az Azure Storage-tűzfalak  | Támogatott | Ha engedélyezve van a tűzfal gyorsítótárfiókot vagy a célként megadott tárfiók használ, ügyeljen arra, hogy ["Allow megbízható Microsoft-szolgáltatások"](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 
 
 ## <a name="replicated-machine-operating-systems"></a>A replikált gép operációs rendszerek
@@ -145,7 +144,7 @@ SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.17 | SP1 3.12.49-11-default 3
 --- | --- | ---
 Méret | Minden olyan Azure virtuális gép méretét legalább 2 processzormag és 1 GB RAM | Győződjön meg arról [Azure virtuálisgép-méretek](../virtual-machines/windows/sizes.md).
 Rendelkezésre állási csoportok | Támogatott | Ha engedélyezi az alapértelmezett beállításokat az Azure virtuális gép replikációját, egy rendelkezésre állási csoportot a forrás területi beállítások alapján automatikusan jön létre. Ezek a beállítások módosítása
-Rendelkezésre állási zónák | Nem támogatott | Rendelkezésre állási zónában üzembe helyezett virtuális gépek jelenleg nem lehet replikálni.
+Rendelkezésre állási zónák | Támogatott |  
 Hybrid Use Benefit (HUB) | Támogatott | Ha a forrásoldali virtuális gép van engedélyezve, HUB licence feladatátvételi teszt vagy feladatátvétel a virtuális gép is használ a HUB licenc.
 Virtuális gépek méretezési csoportjai | Nem támogatott |
 Azure-katalógus-rendszerképek – a Microsoft közzétett | Támogatott | Támogatott, ha a virtuális Gépet egy támogatott operációs rendszert futtat.
@@ -194,7 +193,7 @@ GRS | Támogatott |
 RA-GRS | Támogatott |
 ZRS | Nem támogatott |  
 Ritkán használt adatok és a gyakori elérésű tárolási | Nem támogatott | Virtuálisgép-lemezek nem támogatottak a ritkán használt adatok és a gyakori elérésű tárolási
-Virtuális hálózatok az Azure Storage-tűzfalak  | Igen | Ha a tárfiókok vannak, a virtuális hálózati hozzáférés korlátozása, győződjön meg arról, hogy a megbízható Microsoft-szolgáltatások engedélyezettek-e a tárfiókhoz való hozzáférést.
+Virtuális hálózatok az Azure Storage-tűzfalak  | Támogatott | Ha a tárfiókok vannak, a virtuális hálózati hozzáférés korlátozása, ügyeljen arra, hogy ["Allow megbízható Microsoft-szolgáltatások"](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 Általános célú V2-tárfiókok (mindkét gyakori és ritka elérésű szint) | Nem | Tranzakciós költségek növelése jelentősen képest általános célú V1-tárfiókok
 
 >[!IMPORTANT]

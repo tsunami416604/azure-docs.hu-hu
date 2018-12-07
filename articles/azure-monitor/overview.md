@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: e1e20e3fb43c9e1480ced956069ce8ac8643e686
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: ccdee1963d3d37966f6784e7a7421c500d6a8a51
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879603"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994212"
 ---
 # <a name="azure-monitor-overview"></a>Az Azure Monitor áttekintése
 
@@ -119,7 +119,7 @@ Az automatikus méretezés lehetővé teszi a megfelelő mennyiségű erőforrá
 ![Log Analytics-nézet](media/overview/view.png)
 
 ### <a name="power-bi"></a>Power BI
-[Power bi-ban](https://powerbi.microsoft.com) egy üzleti elemzési szolgáltatás, amely lehetővé teszi az adatforrások különböző interaktív vizualizációkat és a egy hatékony azt jelenti, hogy az adatok elérhetővé tétele mások belül, és a szervezeten kívül van. Beállíthatja, hogy a Power BI [automatikus importálása az Azure Monitor naplóadatok](../log-analytics/log-analytics-powerbi.md) ezeket a további vizualizációkat előnyeinek kihasználása érdekében.
+[Power bi-ban](https://powerbi.microsoft.com) egy üzleti elemzési szolgáltatás, amely lehetővé teszi az adatforrások különböző interaktív vizualizációkat és a egy hatékony azt jelenti, hogy az adatok elérhetővé tétele mások belül, és a szervezeten kívül van. Beállíthatja, hogy a Power BI [automatikus importálása az Azure Monitor naplóadatok](../azure-monitor/platform/powerbi.md) ezeket a további vizualizációkat előnyeinek kihasználása érdekében.
 
 
 ![Power BI](media/overview/power-bi.png)

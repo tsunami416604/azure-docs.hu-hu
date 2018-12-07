@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 0e08d532c1f3ef965d9bd6cf013b272c9a050256
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 10cfaab44343a494dd654d0e930e12fa268ea2e3
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866440"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992890"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Az Azure Functions időzítő eseményindító 
 
@@ -28,13 +28,13 @@ Ez a cikk azt ismerteti, hogyan használható az Azure Functions időzített ese
 
 ## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
 
-Az időzítő eseményindító van megadva a [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet-csomag verziója 2.x. A csomag forráskódja a [azure-webjobs-sdk-bővítmények](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) GitHub-adattárban.
+Az időzítő eseményindító van megadva a [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet-csomag verziója 2.x. A csomag forráskódja a [azure-webjobs-sdk-bővítmények](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) GitHub-adattárban.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 ## <a name="packages---functions-2x"></a>Csomagok – 2.x függvények
 
-Az időzítő eseményindító van megadva a [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet-csomag verziója 3.x. A csomag forráskódja a [azure-webjobs-sdk-bővítmények](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) GitHub-adattárban.
+Az időzítő eseményindító van megadva a [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet-csomag verziója 3.x. A csomag forráskódja a [azure-webjobs-sdk-bővítmények](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) GitHub-adattárban.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -150,7 +150,7 @@ module.exports = function (context, myTimer) {
 
 ### <a name="java-example"></a>Java-példában
 
-A következő példa függvény eseményindítók, és 5 percenként végrehajtja. A `@TimerTrigger` jegyzet a függvény meghatározza az ütemezéshez karakterlánc formátumának [CRON-kifejezések](http://en.wikipedia.org/wiki/Cron#CRON_expression).
+A következő példa függvény eseményindítók, és 5 percenként végrehajtja. A `@TimerTrigger` jegyzet a függvény meghatározza az ütemezéshez karakterlánc formátumának [CRON-kifejezések](https://en.wikipedia.org/wiki/Cron#CRON_expression).
 
 ```java
 @FunctionName("keepAlive")

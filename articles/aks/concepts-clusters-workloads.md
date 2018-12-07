@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 1b0b3d0db2067a492905d8f828934f0b63fb8f54
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f5695e52528c3384c46c49c5c5ec2e451bd0be7c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155983"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998098"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>A Kubernetes alapvető fogalmainak Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ Kubernetes az gyorsan fejlődő platform, amely tárolóalapú alkalmazások és
 
 Nyílt platformon, mint a Kubernetes lehetővé teszi a preferált programozási nyelv, az operációs rendszer, kódtárakat vagy üzenetküldési bus az alkalmazások létrehozási. A meglévő folyamatos integráció és folyamatos készregyártás (CI/CD) eszközei integrálhatók a kubernetes használatával történő ütemezésére és üzembe helyezése a kiadások.
 
-Az Azure Kubernetes Service (AKS) egy felügyelt Kubernetes szolgáltatás, amely egyszerűbbé teheti az üzembe helyezés és az alapvető felügyeleti feladatokat, beleértve a koordinációt frissítéseket biztosít. Az Azure platform kezeli az AKS-fürt főkiszolgálót, és csak kell fizetnie az AKS-csomópontok, amelyek az alkalmazások futtatásához. Az AKS a nyílt forráskódú Azure Container Service-motor (acs-engine) épül.
+Az Azure Kubernetes Service (AKS) egy felügyelt Kubernetes szolgáltatás, amely egyszerűbbé teheti az üzembe helyezés és az alapvető felügyeleti feladatokat, beleértve a koordinációt frissítéseket biztosít. Az Azure platform kezeli az AKS-fürt főkiszolgálót, és csak kell fizetnie az AKS-csomópontok, amelyek az alkalmazások futtatásához. Az AKS a nyílt forráskódú Azure Kubernetes Service-motor-(aks-motor) épül.
 
 ## <a name="kubernetes-cluster-architecture"></a>Kubernetes-fürt architektúra
 
@@ -54,7 +54,7 @@ Az AKS biztosít egy egybérlős fürt főkiszolgáló, egy dedikált API-kiszol
 
 A felügyelt fürt fő azt jelenti, hogy nem kell konfigurálni az összetevők, például a magas rendelkezésre állású *etcd* tároló, de azt is jelenti, hogy a fürt fő közvetlenül nem lehet hozzáférni. A Kubernetes frissítése az Azure CLI-vel vagy az Azure Portalon, amely frissíti a fürt fő és a csomópontok Vezényel. A lehetséges hibák elhárításához, a fürt fő naplók az Azure Log Analytics segítségével tekintheti meg.
 
-A fürt fő adott módon vagy hozzájuk a közvetlen hozzáférésre van szükségük van szüksége, ha a saját Kubernetes fürt használatával telepíthet [acs-engine][acs-engine].
+A fürt fő adott módon vagy hozzájuk a közvetlen hozzáférésre van szükségük van szüksége, ha a saját Kubernetes fürt használatával telepíthet [aks-motor][aks-engine].
 
 ## <a name="nodes-and-node-pools"></a>Csomópont és csomópont-készletek
 
@@ -70,7 +70,7 @@ Az Azure virtuális gép méretét a csomópontok határozza meg, hány processz
 
 Az aks-ben Ubuntu Linux esetében a fürtben található csomópontok a Virtuálisgép-lemezkép jelenleg alapján. AKS-fürt létrehozása vagy vertikális felskálázás a csomópontok számát, az Azure platform a kért számú virtuális gépeket hoz létre, és konfigurálja őket. Nem tartozik a végezhető el a manuális konfiguráció.
 
-Egyéni csomagok vagy egy másik gazdagép operációs Rendszeréhez, tároló-futtatókörnyezet, használni kell, ha a saját Kubernetes fürt használatával telepíthet [acs-engine][acs-engine]. A felsőbb rétegbeli `acs-engine` kiadott szolgáltatások és konfigurációs lehetőségeket nyújtanak, mielőtt hivatalosan támogatott az AKS-fürt. Például, ha szeretné használni a Windows-tárolók vagy egy eltérő Docker container modul, használhatja `acs-engine` konfigurálásához és üzembe helyezéséhez a Kubernetes-fürt, amely az aktuális igényeinek.
+Egyéni csomagok vagy egy másik gazdagép operációs Rendszeréhez, tároló-futtatókörnyezet, használni kell, ha a saját Kubernetes fürt használatával telepíthet [aks-motor][aks-engine]. A felsőbb rétegbeli `aks-engine` kiadott szolgáltatások és konfigurációs lehetőségeket nyújtanak, mielőtt hivatalosan támogatott az AKS-fürt. Például, ha szeretné használni a Windows-tárolók vagy egy eltérő Docker container modul, használhatja `aks-engine` konfigurálásához és üzembe helyezéséhez a Kubernetes-fürt, amely az aktuális igényeinek.
 
 ### <a name="resource-reservations"></a>Erőforrás-foglalások
 
@@ -218,7 +218,7 @@ Ez a cikk ismerteti az egyes a Kubernetes-alapösszetevők, és ezek hogyan vona
 - [Kubernetes AKS méretezése /][aks-concepts-scale]
 
 <!-- EXTERNAL LINKS -->
-[acs-engine]: https://github.com/Azure/acs-engine
+[aks-engine]: https://github.com/Azure/aks-engine
 [kubernetes-pods]: https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/
 [kubernetes-pod-lifecycle]: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
 [kubernetes-deployments]: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/

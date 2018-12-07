@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 94c03c9aa6e361167b396af5218b308e6cacfafe
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e11833feba9466fed6ea6b4f698ba2184ad129e2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879808"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962198"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Az Azure Monitor riasztások hibaelhárítása  
 ## <a name="overview"></a>Áttekintés
 Ez a cikk bemutatja, hogyan állítson be az Azure monitor riasztások leggyakoribb problémáinak megoldásához. Gyakori kérdés a funkció- vagy naplóriasztások konfigurációját megoldásokat is biztosít. 
 
-Az előfizetési időszak **Naplóriasztások** ismerteti, hogy az egyéni lekérdezés alapján fire riasztások [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) vagy [Application Insights](../application-insights/app-insights-analytics.md). További információ funkciót, terminológia és-típusok a [Naplóriasztások – áttekintés](monitor-alerts-unified-log.md).
+Az előfizetési időszak **Naplóriasztások** ismerteti, hogy az egyéni lekérdezés alapján fire riasztások [Log Analytics](../azure-monitor/learn/tutorial-viewdata.md) vagy [Application Insights](../application-insights/app-insights-analytics.md). További információ funkciót, terminológia és-típusok a [Naplóriasztások – áttekintés](monitor-alerts-unified-log.md).
 
 > [!NOTE]
 > Ez a cikk nem tekinti esetekben, amikor az Azure Portalon látható és a szabály által aktivált riasztás és a egy társított művelet (ok) ban által végrehajtott értesítést. Ezekben az esetekben, olvassa el a részleteket a cikkben a [Műveletcsoportok](monitoring-action-groups.md).
@@ -30,7 +30,7 @@ Az előfizetési időszak **Naplóriasztások** ismerteti, hogy az egyéni leké
 Az alábbiakban néhány gyakori okáról miért egy konfigurált [riasztási szabály az Azure monitorban](alert-log.md) állapota nem jelenik meg [, *aktivált* várt](monitoring-alerts-managing-alert-states.md). 
 
 ### <a name="data-ingestion-time-for-logs"></a>Naplók adatok betöltési ideje
-Riasztás rendszeres időközönként fut a lekérdezés alapján [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) vagy [Application Insights](../application-insights/app-insights-analytics.md). A Log Analytics világszerte több ezer ügyfelünk különböző forrásokból származó adatok több terabájt feldolgozza, mert a szolgáltatás ki van téve a változó késleltetés. További információkért lásd: [adatok betöltési idő a Log Analytics](../azure-monitor/platform/data-ingestion-time.md).
+Riasztás rendszeres időközönként fut a lekérdezés alapján [Log Analytics](../azure-monitor/learn/tutorial-viewdata.md) vagy [Application Insights](../application-insights/app-insights-analytics.md). A Log Analytics világszerte több ezer ügyfelünk különböző forrásokból származó adatok több terabájt feldolgozza, mert a szolgáltatás ki van téve a változó késleltetés. További információkért lásd: [adatok betöltési idő a Log Analytics](../azure-monitor/platform/data-ingestion-time.md).
 
 Adatok Adatbetöltési késés csökkentése érdekében, a rendszer megvárja, és újrapróbálkozik a többször is feldolgozza a riasztási lekérdezés Ha megtalálja, hogy a szükséges adatok még nem elemezhető. A rendszer állítsa ezzel exponenciálisan növelve várakozási időt tartalmaz. A napló riasztási csak eseményindítók után az adatok érhető el, így azok késleltetés lassú lekérdezések naplóját adatbetöltés okozhatja. 
 

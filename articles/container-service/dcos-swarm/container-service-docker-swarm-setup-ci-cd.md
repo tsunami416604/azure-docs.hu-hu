@@ -1,5 +1,5 @@
 ---
-title: CI/CD – az Azure Container Service és a Swarm
+title: (ELAVULT) CI/CD – az Azure Container Service és a Swarm
 description: Az Azure Container Service Docker Swarm, egy Azure Container Registry és Azure DevOps, hogy folyamatosan többtárolós .NET Core-alkalmazásokhoz
 services: container-service
 author: jcorioland
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 3b91c269104e740add1d3a5b8ecaee93ca269188
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: db0a16fa44dd23cbc32159889fe8b8ec28c77a5f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302826"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992549"
 ---
-# <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>A teljes CI/CD-folyamat egy többtárolós alkalmazást az Azure Container Service Docker Swarm használatával az Azure DevOps-szolgáltatásokkal való üzembe helyezéséhez
+# <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>(ELAVULT) A teljes CI/CD-folyamat egy többtárolós alkalmazást az Azure Container Service Docker Swarm használatával az Azure DevOps-szolgáltatásokkal való üzembe helyezéséhez
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 Az egyik legnagyobb kihívást az jelenti a modern alkalmazások fejlesztése során folyamatban van, hogy ezek az alkalmazások folyamatosan. Ebből a cikkből megismerheti, hogyan teljes folyamatos integráció és készregyártás (CI/CD) folyamat használatával az Azure Container Service a Docker Swarm, az Azure Container Registry és Azure folyamatok felügyeleti megvalósításához.
 

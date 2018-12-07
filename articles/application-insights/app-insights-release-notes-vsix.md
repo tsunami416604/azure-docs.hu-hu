@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/20/2017
 ms.reviewer: aruna
 ms.author: mbullwin
-ms.openlocfilehash: 358d17f29960983af1834e87f502331141fcff46
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: e9a8c6345ca45234ffcec1588a98bf1b8d634e06
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726117"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000689"
 ---
 # <a name="release-notes-for-developer-analytics-tools"></a>Developer Analytics Tools kibocsátási megjegyzései
 
@@ -180,7 +180,7 @@ Az alkalmazás a HockeyApp portálon számos különféle módon kezelheti. Ez m
 
 ![A HockeyApp-portál](./media/app-insights-release-notes-vsix/HockeyAppPortal.png)
 
-Tekintse meg a [HockeyApp Tudásbázis](http://support.hockeyapp.net/kb/app-management-2) alkalmazáskezeléssel kapcsolatos további részletekért.
+Tekintse meg a [HockeyApp Tudásbázis](https://support.hockeyapp.net/kb/app-management-2) alkalmazáskezeléssel kapcsolatos további részletekért.
 
 ### <a name="windows-forms-apps"></a>Windows Forms-alkalmazások
 Egy Windows-űrlap projekt csomópontjának helyi menüjére most már tartalmaz egy beállítást, a build feltölteni a hockeyapp szolgáltatással.
@@ -211,7 +211,7 @@ Ha ASP.NET-alkalmazások, az Application Insights SDK-val rendelkezik, tegye a k
 3. Ha az Application insights segítségével még nem regisztrált, a keresési ablak hibakeresési munkamenet telemetriai módban nyílik meg.
 4. Kattintson a **keresési** ikonra kattintva megtekintheti a helyi telemetriai adatokat.
 
-![A feltöltés befejeződött](./media/app-insights-release-notes-vsix/LocalSearch.png)
+![Feltöltés befejezve](./media/app-insights-release-notes-vsix/LocalSearch.png)
 
 ## <a name="version-42"></a>4.2-es verzió
 Ebben a kiadásban könnyebben események kontextusában adatok keresésének lehetővé teszi az Ugrás a kódot a további adatok események és a egy zökkenőmentes élményt a naplózási adatokat küldjön az Application Insights funkciók hozzáadtunk. Ez a bővítmény a havonta frissül. Ha visszajelzést vagy funkciókérést, küldje el azt aidevtools@microsoft.com.

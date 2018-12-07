@@ -1,6 +1,6 @@
 ---
-title: A részletes tanulási adatok tudományos virtuális gépet az Azure adattudomány |} Microsoft Docs
-description: Hogyan több közös adatok tudományos feladatok végrehajtásához a részletes tanulási adatok tudományos virtuális Gépet.
+title: Adatelemzés a a Deep Learning adatelemzési virtuális gép az Azure-ban |} A Microsoft Docs
+description: Hogyan végezheti el számos gyakori adatelemzési feladatok a Deep Learning adatelemzési virtuális gép.
 services: machine-learning
 documentationcenter: ''
 author: gopitk
@@ -14,34 +14,32 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 2053ed8cc420183d493097eeb2cd2ad93c82c70c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 91c1727907c9a134a257e8f7d7c1efb6721c1906
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32167245"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993769"
 ---
-# <a name="using-the-deep-learning-virtual-machine"></a>A Virtual Machine Learning mély használatával
+# <a name="using-the-deep-learning-virtual-machine"></a>A Mélytanulási virtuális gép használata
 
-A részletes tanulási virtuális gép (DLVM) kiépítése után elindíthatja a létrehozási mély Neurális hálózat modelleket például a számítógép stratégiai és nyelvi ismertetése tartományokban AI alkalmazásokat hozhatnak létre. 
+A Deep Learning virtuális gép (DLVM) kiépítése után elkezdheti a Neurális hálózat modelleket hozhat létre AI-alkalmazások, például a számítógépes látástechnológiai és a language understanding tartományok létrehozását. 
 
-Számos AI a virtuális Gépen mélységi tanulási megadott eszközök. A [mély tanulási és AI keretrendszerek lap](dsvm-deep-learning-ai-frameworks.md) ezekkel az eszközökkel kapcsolatos részleteket tartalmazza. 
+Számos tools for AI a Deep Learning virtuális gép a megadott. A [mély tanulás és Mesterségesintelligencia-keretrendszerek lap](dsvm-deep-learning-ai-frameworks.md) ezekkel az eszközökkel kapcsolatos tartalmazza. 
 
-## <a name="deep-learning-tutorials-and-walkthroughs"></a>Részletes tanulási oktatóanyagok és forgatókönyvek
+## <a name="deep-learning-tutorials-and-walkthroughs"></a>Deep Learning-oktatóanyagok és útmutatók
 
-A keretrendszer-alapú minták mellett átfogó forgatókönyvek készlete is biztosít a DLVM a érvényesítve. Ezek a forgatókönyvek segítséget nyújtanak a tartományokban, például a lemezkép és az SMS-nyelvét ismertetése mély tanulást segítő alkalmazások fejlesztésének jump-start. Több végpont oktatóanyagok eltérő tartományokban és technológia továbbra is fel kell venni a párbeszédpanelre.   
+A keretrendszer-alapú minták mellett forgatókönyvek átfogó készlete is tartalmaz a DLVM a érvényesítve. Ezek az útmutatók segítségével gyorsan elindíthatja a tartományokban, mint például a lemezkép és a szöveg/language understanding deep learning-alkalmazások fejlesztését. További végpontok közötti oktatóanyagok között különböző tartományokban, és a technológia továbbra is hozzá kell adni.   
 
 
-- [Neurális hálózatokat futtatásáért különböző keretrendszerek](https://github.com/ilkarman/DeepLearningFrameworks): egy átfogó forgatókönyv bemutatja, hogyan telepítheti át a kódot egy keretrendszere a másikra. Azt is bemutatja, hogyan modell összehasonlítására, és futtassa a teljesítményét keretek között. 
+- [Neurális hálózatokkal futó különböző keretrendszerekhez](https://github.com/ilkarman/DeepLearningFrameworks): egy átfogó forgatókönyv bemutatja, hogyan kód migrálhat egy keretrendszer a másikra. Azt is bemutatja, hogyan modell összehasonlítására, és futtathatja időt keretrendszereket. 
 
-- [Lemezképek termékek észleléséhez egy végpont megoldás – útmutató útmutatóját](https://github.com/Azure/cortana-intelligence-product-detection-from-images): kép észlelési a keresse meg és lemezképek objektumainak besorolása technika. Ez a technológia nem kapcsolja a hatalmas megtérüléséhez sok valós üzleti tartományok. Például illetve a kiskereskedelemben segítségével ezzel a technikával határozza meg, melyik termék ügyfél rendelkezik felvenni, a forgalomban a. Ezt az információt viszonzásul segíti a termék kezelése tárolja. 
+- [Hozhat létre egy teljes körű megoldást lemezképek termékeivel észleléséhez használati útmutatója](https://github.com/Azure/cortana-intelligence-product-detection-from-images): kép észlelés a olyan módszer, amely megkereshet és lemezképek objektumainak besorolása. Ez a technológia potenciálisan hatalmas jutalmakat beemelhet számos valós üzleti tartományok. A kiskereskedők például használhatja ezt a módszert meghatározni, melyik terméket olyan rendelkezik felülettől a kereskedelmi. Ez az információ viszonzásul segíti a Termékleltár kezelése tárolók. 
 
-- [A PubMed kivonatok entitás kibontási nevű](https://docs.microsoft.com/azure/machine-learning/preview/scenario-tdsp-biomedical-recognition) Ez az oktatóanyag bemutatja, hogyan elnevezett entitások, például a kábítószerrel nevek vagy elleni nevek, kinyerése strukturálatlan szöveg. Az egy egyéni word, az a szöveg corpus a 18 millió PubMed kivonatok beágyazás betanítja entitás kiolvasásához hosszú rövid távú memória (LSTM) ismétlődő Neurális hálózat modell létrehozásához használ, hogy a modell és jeleníti meg, hogy a modell beágyazás tartományspecifikus word outperform is egy általános word beágyazás entitás kiolvasásához.
+- [Deep learning-Audio](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) Ez az oktatóanyag bemutatja, hogyan számára audiotartalmak esemény észlelése egy deep learning-modell betanításához az a [városi hangok adatkészlet](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html) , és adja meg a hang adatok áttekintése.
 
-- [Learning hang a mély](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) Ez az oktatóanyag bemutatja, hogyan kell még betanítani hang esemény észlelése mély tanulási modellt az a [városi hangok dataset](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html) és hangadatok használata az nyújt áttekintést.
-
-- [Szöveg a dokumentumok besorolásának](https://github.com/anargyri/lstm_han): Ez a forgatókönyv bemutatja, hogyan lehet létrehozni, és két különböző Neurális hálózat architektúrák betanítása: hierarchikus figyelmet hálózati és a hosszú rövid távú memória (LSTM) hálózati. Ezeket a Neurális hálózatokat mély megismerésére a Keras API használatával szöveges dokumentumok besorolását. Keras háromra keretrendszerek tanulási legnépszerűbb átfogó előtér: Microsoft kognitív eszközkészlet TensorFlow és Theano.
+- [Szöveges dokumentumok besorolása](https://github.com/anargyri/lstm_han): Ez az útmutató azt ismerteti, hogyan hozhat létre, és két különböző Neurális hálózati architektúrák betanítása: hierarchikus figyelmet a hálózati és a hosszú rövid távú memória (LSTM) hálózatot. Ezeket a Neurális hálózatokat a deep learninghez a Keras API használatával szöveges dokumentumok besorolását. Keras három a népszerű deep learning-keretrendszerek előtér: Microsoft Cognitive Toolkit, tensorflow-hoz és Theano.
 
 ## <a name="next-steps"></a>További lépések
 
-A [minták lap](dsvm-samples-and-walkthroughs.md) nyújt segítséget a keretrendszerekre minden egyes virtuális gépen előre betöltött kódpéldák mutatók gyors használatbavétel. 
+A [oldala](dsvm-samples-and-walkthroughs.md) biztosít mutató hivatkozások a virtuális gépen a keretrendszerek mindegyike segít előre betöltött hitelesítésikód-példák segítségével gyorsan használatba vehető. 

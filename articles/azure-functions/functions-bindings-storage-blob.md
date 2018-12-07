@@ -9,14 +9,14 @@ keywords: az Azure functions, függvények, eseményfeldolgozás, dinamikus szá
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 09/03/2018
+ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 4f8135dd26b58b5b285798af5c420aa09b03074b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b386cf72525c6ef6234d99255ca0eed5ade32066
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850116"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000481"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Az Azure Blob storage-kötések az Azure Functions szolgáltatáshoz
 
@@ -29,11 +29,11 @@ Ez a cikk bemutatja, hogyan használható az Azure Blob storage-kötések az Azu
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE]
-> Az Event Grid eseményindító használata helyett a Blob storage-eseményindító csak a blob storage-fiókok, nagy méretű, vagy hidegindítási késések elkerülése érdekében. További információkért lásd: a [eseményindító](#trigger) szakaszban.
+> Az Event Grid eseményindító használata helyett a Blob storage-eseményindító csak a blob storage-fiókok, nagy méretű, vagy a késés csökkentése érdekében. További információkért lásd: a [eseményindító](#trigger) szakaszban.
 
 ## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
 
-A Blob storage-kötések szerepelnek a [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-csomag verziója 2.x. A csomag forráskódja a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Blob) GitHub-adattárban.
+A Blob storage-kötések szerepelnek a [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-csomag verziója 2.x. A csomag forráskódja a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Blob) GitHub-adattárban.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -55,7 +55,7 @@ Event Grid a Blob storage-eseményindító helyett használja a következő eset
 
 * Blob Storage-fiókok
 * Nagy méretű
-* Hidegindítási Késleltetés minimalizálása
+* Minimalizálja a hálózati késést
 
 ### <a name="blob-storage-accounts"></a>Blob Storage-fiókok
 
@@ -65,9 +65,9 @@ Event Grid a Blob storage-eseményindító helyett használja a következő eset
 
 Nagy méretű lazán adható meg több mint 100 000 blobok bennük rendelkező tárolókat vagy a storage-fiókok, amelyek másodpercenként több mint 100 blob frissítéseit.
 
-### <a name="cold-start-delay"></a>Hidegindítási késleltetés
+### <a name="latency-issues"></a>Késési problémák
 
-Ha a függvényalkalmazást a Használatalapú csomag, létezhet legfeljebb 10 perces késleltetést új blobok feldolgozása, ha a függvényalkalmazás inaktív volt. A hidegindítási késleltetés elkerülése érdekében váltson arra az App Service-csomag, a mindig engedélyezve van, vagy eltérő triggertípust használja.
+Ha a függvényalkalmazást a Használatalapú csomag, létezhet legfeljebb 10 perces késleltetést új blobok feldolgozása, ha a függvényalkalmazás inaktív volt. E késleltetés elkerülése érdekében válthat az App Service-csomag az Always On engedélyezve van. Használhatja egy [Event Grid-trigger](functions-bindings-event-grid.md) a Blob storage-fiókjában. Egy vonatkozó példáért tekintse meg a [Event Grid oktatóanyag](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json). 
 
 ### <a name="queue-storage-trigger"></a>Queue storage-eseményindító
 

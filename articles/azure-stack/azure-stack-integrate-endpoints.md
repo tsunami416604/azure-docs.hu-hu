@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 12/06/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: ''
-ms.openlocfilehash: a2c08c541c3726579d57d99141a147d98bf45849
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.openlocfilehash: 1800ab19e2d99eb639ef4064e64d7bc475aa0c36
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996711"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014870"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Az Azure Stack adatközpont integrációja – végpontok közzététele
 
@@ -86,7 +86,7 @@ Az Azure Stack csak transzparens proxy kiszolgálók támogatja. A központi tel
 > Kimenő URL-címek az Azure traffic Managerrel a földrajzi hely alapján a legjobb lehetséges csatlakozási elosztott terhelésű rendszer. Az elosztott terhelésű URL-címek betöltése, a Microsoft update, és a háttéralkalmazás végpontjainak módosítása ügyfelek befolyásolása nélkül. A Microsoft nem oszt meg IP-címek listája az elosztott terhelésű URL-címek számára. Használjon olyan eszköz, amely támogatja a szűrést, URL-cím helyett IP-cím alapján.
 
 > [!Note]  
-> A 1809 a biztonsági mentési infrastruktúra-szolgáltatás kommunikál a külső fájlkiszolgáló a nyilvános VIP hálózatra. Mielőtt 1809 a szolgáltatás a nyilvános infrastruktúra-hálózaton keresztül kommunikál. Ha a környezetben nem engedélyezi a hozzáférést az infrastruktúra-erőforrások a nyilvános VIP hálózatra, alkalmazza a legújabb 1809 az Azure Stackhez. Ez a gyorsjavítás áthelyezi az nyilvános infrastruktúra-hálózaton a biztonsági mentési infrastruktúra-szolgáltatás. 1811 Ha a 1809 gyorsjavítás telepítve a biztonsági mentési infrastruktúra-szolgáltatás maradnak a nyilvános infrastruktúra-hálózaton. Ha a gyorsjavítás nem alkalmazta, a frissítés fog visszahelyezheti a szolgáltatás nyilvános infrastruktúra-hálózat.
+> A 1809 a biztonsági mentési infrastruktúra-szolgáltatás kommunikál a külső fájlkiszolgáló a nyilvános VIP hálózatra. Mielőtt 1809 a szolgáltatás továbbítani a nyilvános infrastruktúra-hálózaton keresztül. Ha a környezet nem engedélyezi a hozzáférést az infrastruktúra-erőforrások a nyilvános VIP hálózatra, a alkalmazni a legújabb [1809 gyorsjavítás](azure-stack-update-1809.md#post-update-steps) az Azure Stackhez. Ez a gyorsjavítás áthelyezi az nyilvános infrastruktúra-hálózaton a biztonsági mentési infrastruktúra-szolgáltatás. A 1811 Ha gyorsjavítást a 1809, a biztonsági mentési infrastruktúra-szolgáltatás marad a nyilvános infrastruktúra-hálózaton. A gyorsjavítás csak akkor érvényesíthetők, ha a frissítés Visszalépés a szolgáltatás a nyilvános infrastruktúra-hálózathoz.
 
 ## <a name="next-steps"></a>További lépések
 

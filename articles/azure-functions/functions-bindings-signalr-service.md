@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/23/2018
 ms.author: cshoe
-ms.openlocfilehash: 40cad9eec87c07a205a86f1009074cdbeaf58d15
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 74092f57b3531a037aee71d433c33dddf8c2b694
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249962"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001802"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>SignalR-szolgáltatáskötések az Azure Functionshöz
 
@@ -30,7 +30,7 @@ Ez a cikk azt ismerteti, hogyan és valós idejű üzeneteket küldeni a kapcsol
 
 ## <a name="packages---functions-2x"></a>Csomagok – 2.x függvények
 
-A SignalR Service kötéseket szerepelnek a [Microsoft.Azure.WebJobs.Extensions.SignalRService](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) NuGet-csomag verziója 1.0.0-preview1-*. A csomag forráskódja a [azure-functions-signalrservice-bővítmény](https://github.com/Azure/azure-functions-signalrservice-extension) GitHub-adattárban.
+A SignalR Service kötéseket szerepelnek a [Microsoft.Azure.WebJobs.Extensions.SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) NuGet-csomag verziója 1.0.0-preview1-*. A csomag forráskódja a [azure-functions-signalrservice-bővítmény](https://github.com/Azure/azure-functions-signalrservice-extension) GitHub-adattárban.
 
 > [!NOTE]
 > Az Azure SignalR Service szolgáltatás általánosan elérhető. Azonban SignalR Service – Azure Functions kötések jelenleg előzetes verzióban érhető el.

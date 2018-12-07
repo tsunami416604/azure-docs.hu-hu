@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 40536aae15f2ae9fa5e186cdbea1f75f7d264437
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7253a31057d8e7af5c0273ef112b1155cf15a014
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047140"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011657"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Részletes bemutatása – speciális elemzés
 
@@ -24,7 +24,7 @@ HDInsight lehetővé teszi a nagy mennyiségű strukturált és strukturálatlan
 
 ## <a name="advanced-analytics-process"></a>Fejlett analitikai folyamat
 
-![Folyamat](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
+![Feldolgozás](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
 
 Után, az üzleti probléma azonosítása és gyűjtése elindította, és az adatok feldolgozása, létrehoz egy modellt, amely a kérdést kell előre jelezni kívánt. A modell egy vagy több gépi tanulási algoritmusok használatával győződjön meg a legjobban az Ön üzleti igényeinek előrejelzése típusát.  A legtöbb az adatokat a modell betanításához teszteléséhez vagy kiértékeléséhez, a többi használandó. 
 
@@ -63,7 +63,7 @@ HDInsight számos machine learning-beállítások egy fejlett elemzési munkafol
 
 ### <a name="machine-learning-and-spark"></a>Machine Learning- és Spark
 
-[HDInsight Spark](../spark/apache-spark-overview.md) , egy Azure-ban üzemeltetett ajánlat [Spark](http://spark.apache.org/), egy egységesített, nyílt forráskódú, párhuzamos adatfeldolgozási keretrendszert használó a memórián belüli feldolgozást a Big Data analytics növelése érdekében. A Spark feldolgozási motorjára a nagy sebesség, a könnyű használat és a kifinomult elemzési. Spark memóriabeli elosztott számítási képességekkel teszik megfelelő választás az olyan a használt a machine learning és a graph számítások iteratív algoritmusaival együtt. 
+[HDInsight Spark](../spark/apache-spark-overview.md) , egy Azure-ban üzemeltetett ajánlat [Spark](https://spark.apache.org/), egy egységesített, nyílt forráskódú, párhuzamos adatfeldolgozási keretrendszert használó a memórián belüli feldolgozást a Big Data analytics növelése érdekében. A Spark feldolgozási motorjára a nagy sebesség, a könnyű használat és a kifinomult elemzési. Spark memóriabeli elosztott számítási képességekkel teszik megfelelő választás az olyan a használt a machine learning és a graph számítások iteratív algoritmusaival együtt. 
 
 Nincsenek három méretezhető machine learning-kódtárak együttese algoritmikus modellezési képességek életre az elosztott környezetekben:
 

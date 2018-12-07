@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 57e201403374ac72ef79bb4335294e1e937c8757
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: bf096032d0ab429a5c6c06d5ada568c4bfb56d9f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720304"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994424"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Webalkalmazások és szolgáltatások részletes diagnosztikája az Application Insights szolgáltatással
 ## <a name="why-do-i-need-application-insights"></a>Miért kell Application Insights?
@@ -79,7 +79,7 @@ Az adatok a fő kategóriák a következők:
 * Nyomkövetési naplók hibakereséshez.
 
 ## <a name="case-study-real-madrid-fc"></a>Esettanulmány: Real Madrid F.C.
-A web service a [Real Madrid labdarúgó Club](http://www.realmadrid.com/) mintegy 450 millió rajongóhoz szolgál a világ különböző pontjain. Ventilátorok eléréséhez egyaránt webböngészők és a Club a mobile apps segítségével. Ventilátorok is nemcsak jegyek foglalható le, de is elérheti az adatokat és videoklipeket eredmények, a lejátszók és a közelgő játékokat. Azokat a keresési szűrőket például célok számú pontozunk. Közösségi média mutató hivatkozásokat is vannak. A felhasználói élmény magas személyre szabott, és végezhetnek ventilátorok szolgál, amely kétirányú kommunikációt.
+A web service a [Real Madrid labdarúgó Club](https://www.realmadrid.com/) mintegy 450 millió rajongóhoz szolgál a világ különböző pontjain. Ventilátorok eléréséhez egyaránt webböngészők és a Club a mobile apps segítségével. Ventilátorok is nemcsak jegyek foglalható le, de is elérheti az adatokat és videoklipeket eredmények, a lejátszók és a közelgő játékokat. Azokat a keresési szűrőket például célok számú pontozunk. Közösségi média mutató hivatkozásokat is vannak. A felhasználói élmény magas személyre szabott, és végezhetnek ventilátorok szolgál, amely kétirányú kommunikációt.
 
 A megoldás [a szolgáltatások és alkalmazások a Microsoft Azure egy rendszer](https://www.microsoft.com/inculture/sports/real-madrid/). Méretezhetőség azt a fő követelmény: forgalom változó, és elérheti a nagyon nagy mennyiségű során, és egyezés körül.
 

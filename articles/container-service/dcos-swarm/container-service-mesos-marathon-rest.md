@@ -1,5 +1,5 @@
 ---
-title: A Marathon REST API-val Azure DC/OS fürt kezelése
+title: (ELAVULT) A Marathon REST API-val Azure DC/OS fürt kezelése
 description: Tárolók üzembe helyezése egy Azure Container Service DC/OS-fürtön a Marathon REST API-val.
 services: container-service
 author: iainfoulds
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 34fc6f946d172f1431367e84f9d4d8a6855003ed
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 157d70b628ca3583cb8134ec1cccc185c6ff4c8d
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901767"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52991710"
 ---
-# <a name="dcos-container-management-through-the-marathon-rest-api"></a>DC/OS-tárolók kezelése a Marathon REST API
+# <a name="deprecated-dcos-container-management-through-the-marathon-rest-api"></a>(ELAVULT) DC/OS-tárolók kezelése a Marathon REST API
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 A DC/OS biztosítja a fürtözött feladatok telepítését és skálázását lehetővé tevő környezetet, ugyanakkor absztrakciós rétegként működik a hardver fölött. A DC/OS fölötti keretrendszer gondoskodik a számítási feladatok ütemezéséről és végrehajtásáról. Számos népszerű számítási feladathoz érhetők el a keretrendszerek, ez a dokumentum megkönnyíti első lépéseit létrehozásán és skálázásán üzemelő tárolópéldányokat a Marathon REST API-val. 
 

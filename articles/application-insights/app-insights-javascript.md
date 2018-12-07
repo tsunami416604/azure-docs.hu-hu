@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 52fe5ac108e2788e481d89901dd24098cdb3c9b4
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 937cbc1346ce41670270b911e474e900f406a93b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965206"
+ms.locfileid: "52993615"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 Megismerheti a weblap vagy alkalmazás teljesítményét és használatát. Ha a Visual Studio [Application Insightst](app-insights-overview.md) a lap szkriptjeihez adja, megkapja az oldalbetöltések és AJAX-hívások időzítését, a böngészőkivételek és az AJAX-hibák számát és részleteit, valamint a felhasználók és munkamenetek számát. Ezek mindegyike szegmentálható lap, ügyfél operációs rendszere és böngészőverziója, földrajzi hely és más dimenziók alapján. Beállíthat riasztásokat a hibaszámokról és a lassú lapbetöltésekről. Ha nyomkövetési hívásokat szúr be a JavaScript-kódba, nyomon követheti a webalkalmazás különböző szolgáltatásainak használati módját is.
@@ -74,7 +74,7 @@ Szúrja be a szkriptet minden olyan lap `</head>` címkéje elé, amelyet nyomon
 
 A szkript tartalmazza a kialakítási kulcsot, amely az adatokat az Application Insights-erőforrásra irányítja. 
 
-([A szkript részletesebb magyarázata.](http://apmtips.com/blog/2015/03/18/javascript-snippet-explained/))
+([A szkript részletesebb magyarázata.](https://apmtips.com/blog/2015/03/18/javascript-snippet-explained/))
 
 ## <a name="detailed-configuration"></a>Részletes konfiguráció
 Több [paramétert](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config) beállíthat, de a legtöbb esetben erre nincs szükség. Letilthatja vagy korlátozhatja például az oldalmegtekintésenként jelentett Ajax-hívások számát (a forgalom csökkentése érdekében). Vagy beállíthatja a hibakeresési módot, hogy a telemetria gyorsan haladjon át a folyamaton, kötegkészítés nélkül.
@@ -125,7 +125,7 @@ A Böngésző panel [Metrikaböngésző panel](app-insights-metrics-explorer.md)
 ## <a name="page-load-performance"></a>Lapbetöltés teljesítménye
 Felül található a lapbetöltési idők szegmentált diagramja. A diagram teljes magassága jelzi a lapok betöltésének és megjelenítésének átlagos idejét az alkalmazásából a felhasználók böngészőiben. Az idő mérése onnan kezdődik, amikor a böngésző elküldi a kezdeti HTTP-kérelmet, és addig tart, amíg az összes szinkron betöltési esemény fel lett dolgozva, beleértve az elrendezést és a futó szkripteket. Ebben nem tartoznak bele az aszinkron feladatok, például a kijelzők betöltése az AJAX hívásokból.
 
-A diagram a teljes lapbetöltési időt a [W3C által meghatározott standard időzítésekre](http://www.w3.org/TR/navigation-timing/#processing-model) szegmentálja. 
+A diagram a teljes lapbetöltési időt a [W3C által meghatározott standard időzítésekre](https://www.w3.org/TR/navigation-timing/#processing-model) szegmentálja. 
 
 ![](./media/app-insights-javascript/08-client-split.png)
 

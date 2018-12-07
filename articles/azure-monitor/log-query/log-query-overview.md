@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 3015db350b8011ccd328369732c5af3fa028a438
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 2c1949fe991b599e9b002caf4c98c305a3791977
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963555"
+ms.locfileid: "53000860"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Az Azure monitorban Log Analytics-adatok elemzése
 
@@ -43,7 +43,7 @@ A különböző módon, hogy a Log Analytics lekérdezések használja a követk
 - **Riasztási szabályok.** [Riasztási szabályok](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) proaktív módon azonosíthatja a problémákat a munkaterületen lévő adatai.  Minden riasztási szabály naplókeresést, amely rendszeres időközönként automatikusan fut alapul.  Határozza meg, ha egy riasztást kell létrehozni a ellenőrzik az eredményeket.
 - **Az irányítópultok.** Kitűzheti, minden lekérdezés eredményeit egy [Azure irányítópultján](../../azure-monitor/platform/dashboards.md) Ez lehetővé teszi annak együtt megjelenítheti a napló-és metrikaadatokat, és szükség esetén megoszthatja más Azure-felhasználóval. 
 - **Nézetek.**  Adatok foglalandó felhasználói irányítópultokat és vizualizációkat hozhat létre [adatforrásnézet-tervezőből](../../azure-monitor/platform/view-designer.md).  Naplólekérdezések adja meg az adatok által használt [csempék](../../azure-monitor/platform/view-designer-tiles.md) és [Vizualizáció részek](../../azure-monitor/platform/view-designer-parts.md) az egyes nézetek.  
-- **Exportálás.**  Ha importál adatokat a Log Analytics-munkaterületet az Excel vagy [Power BI](../../log-analytics/log-analytics-powerbi.md), az adatok exportálása meghatározásához log lekérdezés létrehozása.
+- **Exportálás.**  Ha importál adatokat a Log Analytics-munkaterületet az Excel vagy [Power BI](../../azure-monitor/platform/powerbi.md), az adatok exportálása meghatározásához log lekérdezés létrehozása.
 - **PowerShell.** PowerShell-szkriptet a parancssorban vagy egy Azure Automation-runbook által használt futtatható [Get-AzureRmOperationalInsightsSearchResults](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightssearchresults?view=azurermps-4.0.0) adatokat lekérni a Log Analytics.  Ez a parancsmag egy lekérdezést a lekérni kívánt meghatározásához szükséges.
 - **Log Analytics API-t.**  A [Log Analytics naplóbeli keresési API](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) lehetővé teszi, hogy bármilyen REST API-ügyfél naplóadatok lekérése a munkaterületen.  Az API-kérelem tartalmaz egy lekérdezést, amely a lekérni kívánt meghatározni a Log Analytics vonatkozóan fut le.
 

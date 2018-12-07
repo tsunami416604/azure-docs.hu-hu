@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: adc97da12d1a55dd3dcf435fc8051a8eb9b537a9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 70242de62e976b05e2708dfd4991915c854d4bb4
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968186"
+ms.locfileid: "52995647"
 ---
 # <a name="monitor-logic-apps-with-azure-log-analytics"></a>Logikai alkalmazások figyelése az Azure Log Analytics használatával
 
@@ -23,7 +23,7 @@ Figyelheti, és a logic apps gazdagabb hibakeresési adatainak, kapcsolja be a [
 A meglévő logic apps Azure Log Analytics bekapcsolásához kövesse az alábbi lépéseket a [kapcsolja be a diagnosztikai naplózás és a logikai alkalmazás futtatókörnyezeti adatokat küldeni a Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
 > [!NOTE]
-> Ezen a lapon a fentiekben már említettük, az a Microsoft Operations Management Suite (OMS), amely a feladatok végrehajtásához szükséges lépéseket [kivonása a január 2019](../log-analytics/log-analytics-oms-portal-transition.md), hanem az Azure Log Analytics váltja fel ezeket a lépéseket. 
+> Ezen a lapon a fentiekben már említettük, az a Microsoft Operations Management Suite (OMS), amely a feladatok végrehajtásához szükséges lépéseket [kivonása a január 2019](../azure-monitor/platform/oms-portal-transition.md), hanem az Azure Log Analytics váltja fel ezeket a lépéseket. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 

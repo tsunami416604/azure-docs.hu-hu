@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: e502004db62713585d68cdda6f80b4e4024dde28
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 1170266ed0b59c53adce4e44fe3e7a0bc62f394e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971215"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014861"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Biztonsági keret: Hitelesítés |} Megoldások 
 | Termék vagy szolgáltatás | Cikk |
@@ -245,7 +245,7 @@ ms.locfileid: "52971215"
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Identitáskezelési kiszolgáló üzembe helyezése – gyorsítótár](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
-| **Lépések** | <p>IdentityServer rendelkezik egy egyszerű beépített memórián belüli gyorsítótárat. Bár ez kis léptékű natív alkalmazások helyes, azt nem méretezhető mid szint és a háttérkiszolgáló alkalmazások a következő okok miatt:</p><ul><li>Ezek az alkalmazások által elért számos felhasználó egyszerre. Minden hozzáférési jogkivonatok mentése ugyanabban a tárolóban hoz létre az elkülönítési problémák és kihívásokat jelent, ha nagy mennyiségű: sok annyi jogkivonatok az alkalmazás hozzáfér a felhasználók nevében, mint a felhasználó is jelenti azt, hogy hatalmas számok és rendkívül drága lenne keresési műveletek</li><li>Ezek az alkalmazások általában telepítve vannak, elosztott topológia, ahol több csomópont hozzáféréssel kell rendelkeznie az azonos gyorsítótár</li><li>Gyorsítótárazott jogkivonatok folyamata újrahasznosítást és deactivations kell túlélni.</li><li>Az összes fenti okokból implementing web apps szolgáltatásban, miközben javasoljuk, hogy egy méretezhető megoldás, például az Azure Redis cache-jogkivonatok gyorsítótárának az alapértelmezett Identitáskiszolgálók felülbírálása</li></ul>|
+| **Lépések** | <p>IdentityServer rendelkezik egy egyszerű beépített memórián belüli gyorsítótárat. Bár ez kis léptékű natív alkalmazások helyes, azt nem méretezhető mid szint és a háttérkiszolgáló alkalmazások a következő okok miatt:</p><ul><li>Ezek az alkalmazások által elért számos felhasználó egyszerre. Minden hozzáférési jogkivonatok mentése ugyanabban a tárolóban hoz létre az elkülönítési problémák és kihívásokat jelent, ha nagy mennyiségű: sok annyi jogkivonatok az alkalmazás hozzáfér a felhasználók nevében, mint a felhasználó is jelenti azt, hogy hatalmas számok és rendkívül drága lenne keresési műveletek</li><li>Ezek az alkalmazások általában telepítve vannak, elosztott topológia, ahol több csomópont hozzáféréssel kell rendelkeznie az azonos gyorsítótár</li><li>Gyorsítótárazott jogkivonatok folyamata újrahasznosítást és deactivations kell túlélni.</li><li>Az összes fenti okokból miközben implementing web apps szolgáltatásban, javasoljuk, hogy bírálja felül az alapértelmezett identitáskezelési kiszolgáló-jogkivonatok gyorsítótárának egy méretezhető megoldás, például az Azure Cache redis</li></ul>|
 
 ## <a id="binaries-signed"></a>Győződjön meg arról, hogy az üzembe helyezett alkalmazás bináris fájljainak digitális aláírással
 
@@ -361,7 +361,7 @@ A `<netMsmqBinding/>` elem a WCF konfigurációs fájl az alábbi arra utasítja
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [A webes alkalmazásokhoz az Azure Active Directoryval modern hitelesítést](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/), [használatával a Redis ADAL-jogkivonatok gyorsítótárának használata](https://blogs.msdn.microsoft.com/mrochon/2016/09/19/using-redis-as-adal-token-cache/)  |
-| **Lépések** | <p>Az alapértelmezett gyorsítótár, amely adal-t (Active Directory Authentication Library) használ a memórián belüli gyorsítótár, amely egy tárolóból, rendelkezésre álló teljes folyamat támaszkodik. Ez a natív alkalmazások esetében működik, amíg azt nem méretezhető mid szint és a háttérkiszolgáló alkalmazások a következő okok miatt:</p><ul><li>Ezek az alkalmazások által elért számos felhasználó egyszerre. Minden hozzáférési jogkivonatok mentése ugyanabban a tárolóban hoz létre az elkülönítési problémák és kihívásokat jelent, ha nagy mennyiségű: sok annyi jogkivonatok az alkalmazás hozzáfér a felhasználók nevében, mint a felhasználó is jelenti azt, hogy hatalmas számok és rendkívül drága lenne keresési műveletek</li><li>Ezek az alkalmazások általában telepítve vannak, elosztott topológia, ahol több csomópont hozzáféréssel kell rendelkeznie az azonos gyorsítótár</li><li>Gyorsítótárazott jogkivonatok folyamata újrahasznosítást és deactivations kell túlélni.</li></ul><p>Az összes fenti okokból miközben implementing web apps szolgáltatásban, ajánlott felülbírálhatja az alapértelmezett ADAL-jogkivonatok gyorsítótárának egy méretezhető megoldás, például az Azure Redis cache.</p>|
+| **Lépések** | <p>Az alapértelmezett gyorsítótár, amely adal-t (Active Directory Authentication Library) használ a memórián belüli gyorsítótár, amely egy tárolóból, rendelkezésre álló teljes folyamat támaszkodik. Ez a natív alkalmazások esetében működik, amíg azt nem méretezhető mid szint és a háttérkiszolgáló alkalmazások a következő okok miatt:</p><ul><li>Ezek az alkalmazások által elért számos felhasználó egyszerre. Minden hozzáférési jogkivonatok mentése ugyanabban a tárolóban hoz létre az elkülönítési problémák és kihívásokat jelent, ha nagy mennyiségű: sok annyi jogkivonatok az alkalmazás hozzáfér a felhasználók nevében, mint a felhasználó is jelenti azt, hogy hatalmas számok és rendkívül drága lenne keresési műveletek</li><li>Ezek az alkalmazások általában telepítve vannak, elosztott topológia, ahol több csomópont hozzáféréssel kell rendelkeznie az azonos gyorsítótár</li><li>Gyorsítótárazott jogkivonatok folyamata újrahasznosítást és deactivations kell túlélni.</li></ul><p>Az összes fenti okokból miközben implementing web apps szolgáltatásban, ajánlott felülbírálhatja az alapértelmezett ADAL-jogkivonatok gyorsítótárának egy méretezhető megoldás, például az Azure Cache redis.</p>|
 
 ## <a id="tokenreplaycache-adal"></a>Győződjön meg arról, hogy az TokenReplayCache használja az ADAL-hitelesítési tokenek az ismétlés megakadályozása
 

@@ -9,19 +9,19 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: af1d00e49819f1d69e08c0fa99891690e07b489f
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 5cfab07e19e543b7a46fcce8f449a46395c144d6
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233752"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995318"
 ---
 # <a name="create-tracking-queries-for-b2b-messages-in-azure-log-analytics-for-azure-logic-apps"></a>B2B-üzenetek nyomon követése lekérdezések létrehozása az Azure Log Analytics az Azure Logic Apps
 
 AS2 megkereséséhez X12 vagy EDIFACT üzeneteket, hogy követi nyomon a [Azure Log Analytics](../log-analytics/log-analytics-overview.md), meghatározott feltétel alapján műveleteket szűrő lekérdezéseket hozhat létre. Például egy adott adatcsere ellenőrzőszáma üzeneteket is megtalálhatja.
 
 > [!NOTE]
-> Ezen a lapon a fentiekben már említettük, az a Microsoft Operations Management Suite (OMS), amely a feladatok végrehajtásához szükséges lépéseket [kivonása a január 2019](../log-analytics/log-analytics-oms-portal-transition.md), hanem az Azure Log Analytics váltja fel ezeket a lépéseket. 
+> Ezen a lapon a fentiekben már említettük, az a Microsoft Operations Management Suite (OMS), amely a feladatok végrehajtásához szükséges lépéseket [kivonása a január 2019](../azure-monitor/platform/oms-portal-transition.md), hanem az Azure Log Analytics váltja fel ezeket a lépéseket. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 4711c766c2a074c25f019ce5b523e0ba8b599c17
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7e84e8e99000e9d8bd7a21d343588b1df777b56d
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971317"
+ms.locfileid: "52994534"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Az Azure Functions C# – fejlesztői referencia
 
@@ -154,7 +154,7 @@ A generált *function.json* fájl tartalmaz egy `configurationSource` tulajdons�
 
 ## <a name="microsoftnetsdkfunctions"></a>Microsoft.NET.Sdk.Functions
 
-A *function.json* fájlt végzi a NuGet-csomag [Microsoft\.NET\.Sdk\.funkciók](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
+A *function.json* fájlt végzi a NuGet-csomag [Microsoft\.NET\.Sdk\.funkciók](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
 
 Ugyanaz a csomag mindkét verziójának szolgál az 1.x és a 2.x verzióját a Functions-futtatókörnyezetben. Cílová architektura egy 1.x jellegű parancsot a(z) projekt kódjába a 2.x projektből. Az alábbiakban a vonatkozó részeinek *.csproj* fájlok megjelenítése a különböző keretrendszerek és azonos cél `Sdk` csomag:
 
@@ -183,7 +183,7 @@ Ugyanaz a csomag mindkét verziójának szolgál az 1.x és a 2.x verzióját a 
 
 Többek között a `Sdk` csomagfüggőségek eseményindítók és kötések. Mivel azokat, a .NET-keretrendszer célként, miközben 2.x eseményindítók és kötések cél .NET Core egy 1.x jellegű parancsot a(z) projekt 1.x eseményindítók és kötések hivatkozik.
 
-A `Sdk` csomag is függ [Newtonsoft.Json](http://www.nuget.org/packages/Newtonsoft.Json), majd a közvetett módon [WindowsAzure.Storage](http://www.nuget.org/packages/WindowsAzure.Storage). A függőségek győződjön meg arról, hogy a projekt azokat a csomagokat, amelyek együttműködnek a Functions futtatókörnyezet verziójának verzióit használja, amely a projekt célokat. Ha például `Newtonsoft.Json` 11-es verzió a .NET-keretrendszer 4.6.1-es verziója, de a Functions futtatókörnyezete .NET-keretrendszer 4.6.1-es célzó csak kompatibilis `Newtonsoft.Json` 9.0.1. Ezért is rendelkezik a függvénykódot a projektben használandó `Newtonsoft.Json` 9.0.1.
+A `Sdk` csomag is függ [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json), majd a közvetett módon [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage). A függőségek győződjön meg arról, hogy a projekt azokat a csomagokat, amelyek együttműködnek a Functions futtatókörnyezet verziójának verzióit használja, amely a projekt célokat. Ha például `Newtonsoft.Json` 11-es verzió a .NET-keretrendszer 4.6.1-es verziója, de a Functions futtatókörnyezete .NET-keretrendszer 4.6.1-es célzó csak kompatibilis `Newtonsoft.Json` 9.0.1. Ezért is rendelkezik a függvénykódot a projektben használandó `Newtonsoft.Json` 9.0.1.
 
 Forráskódja `Microsoft.NET.Sdk.Functions` érhető el a GitHub-adattárat [azure\-funkciók\-vs\-összeállítása\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
 

@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 07/26/2018
-ms.openlocfilehash: 8522fea10a4ec8f85d20e5a9ec04712c77bb6b94
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 3c5c4d24d68fffc86a654e0dee5e2d3f36f15aea
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064271"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000457"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Az Azure SQL Database használatával globálisan elérhető szolgáltatások tervezése
 
@@ -34,7 +34,7 @@ Ebben a forgatókönyvben az alkalmazások a következő jellemzőkkel rendelkez
 *   Webes rétegbeli és adatrétegbeli a kell a késés és a forgalom költségek csökkentése érdekében közös elhelyezésű 
 *   Alapvetően állásidőre-e egy magasabb szintű üzleti kockázat ezekhez az alkalmazásokhoz, mint az adatvesztés
 
-Ebben az esetben az alkalmazás üzembe helyezési topológiát optimalizált regionális katasztrófák kezelése, ha az összes alkalmazás-összetevők együttesen kell a feladatátvételi. Az alábbi ábrán ez a topológia. A földrajzi redundancia céljából az alkalmazás erőforrásai települnek a és b régió B régióban lévő erőforrásokat azonban nem használhatók mindaddig, amíg A régió nem sikerül. Egy feladatátvételi csoportot kezelheti az adatbázis-kapcsolat, a replikáció és a feladatátvétel két régió között van konfigurálva. A web service mindkét régióban van konfigurálva, az olvasási és írási figyelő keresztül az adatbázis eléréséhez  **&lt;feladatátvételi csoportnév&gt;. database.windows.net** (1). A TRAFFIC manager használatára van beállítva [prioritásos útválasztási mód](../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2).  
+Ebben az esetben az alkalmazás üzembe helyezési topológiát optimalizált regionális katasztrófák kezelése, ha az összes alkalmazás-összetevők együttesen kell a feladatátvételi. Az alábbi ábrán ez a topológia. A földrajzi redundancia céljából az alkalmazás erőforrásai települnek a és b régió B régióban lévő erőforrásokat azonban nem használhatók mindaddig, amíg A régió nem sikerül. Egy feladatátvételi csoportot kezelheti az adatbázis-kapcsolat, a replikáció és a feladatátvétel két régió között van konfigurálva. A web service mindkét régióban van konfigurálva, az olvasási és írási figyelő keresztül az adatbázis eléréséhez  **&lt;feladatátvételi csoportnév&gt;. database.windows.net** (1). A TRAFFIC manager használatára van beállítva [prioritásos útválasztási mód](../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2).  
 
 > [!NOTE]
 > [Az Azure traffic manager](../traffic-manager/traffic-manager-overview.md) során ez a cikk csak illusztrációs célokat szolgál. Minden terheléselosztási megoldás, amely támogatja a prioritásos útválasztási mód is használhatja.    
@@ -47,7 +47,7 @@ Az alábbi ábrán ez a konfiguráció a leállás előtt:
 Az elsődleges régióban kimaradás után a az SQL Database szolgáltatás észleli, hogy az elsődleges adatbázis nem érhető el, és elindítja a feladatátvételt a másodlagos régióba, az Automatikus feladatátvétel házirend (1) a paraméterei alapján. Az alkalmazás SLA függően konfigurálhat egy türelmi időszak, amely a szolgáltatáskiesés megszüntetése után észlelését, és magát a feladatátvétel között eltelt idő vezérli. Akkor lehet, hogy a traffic manager a végpont feladatátvételt kezdeményez, a feladatátvételi csoport az adatbázis a feladatátvétel aktiválása előtt. Ebben az esetben a webalkalmazás nem azonnal újra az adatbázishoz. De az ezt a lehetőséget, amint az adatbázis-feladatátvétel befejezése automatikusan fog sikerülni. Ha a sikertelen régió visszaállítása, és ismét online, a régi elsődleges automatikusan újracsatlakozik, egy új másodlagos. Az alábbi ábra a konfigurációt a feladatátvételt követően.
  
 > [!NOTE]
-> A feladatátvétel után végrehajtott összes tranzakciók során az újracsatlakozás elvesznek. A feladatátvétel befejezése után a B régióban az alkalmazás is képes csatlakozzon újra, és indítsa újra a felhasználói kérelmek feldolgozásához. A webes alkalmazás, mind az elsődleges adatbázis most B régióban és ugyanott maradnak. n>
+> A feladatátvétel után végrehajtott összes tranzakciók során az újracsatlakozás elvesznek. A feladatátvétel befejezése után a B régióban az alkalmazás is képes csatlakozzon újra, és indítsa újra a felhasználói kérelmek feldolgozásához. A webes alkalmazás, mind az elsődleges adatbázis most B régióban és ugyanott maradnak. 
 
 ![1. forgatókönyv. Feladatátvétel utáni konfigurációja](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-b.png)
 
@@ -135,7 +135,7 @@ Egy kimaradás például Észak-Európában történik, ha az adatbázis automat
 ![3. forgatókönyv. Észak-Európában szolgáltatáskimaradás.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
 
 > [!NOTE]
-> Ha a végfelhasználói élmény Európai csökken, mert a hosszú várakozási idő csökkentéséhez. Amihez meg kell proaktív módon üzembe helyezni egy alkalmazás másolása és létrehozni a másodlagos adatbázis (oka) egy másik helyi régióban (Nyugat-Európa) Észak-Európában offline alkalmazáspéldány helyett. Az utóbbi újra online állapotba kerül eldöntheti e Nyugat-Európa használatának folytatásához, vagy távolítsa el az alkalmazást a másolatát, és váltson vissza az Észak-Európa, használatával
+> Ha a végfelhasználói élmény Európai csökken, mert a hosszú várakozási idő csökkentéséhez. Amihez meg kell proaktív módon üzembe helyezni egy alkalmazás másolása és létrehozni a másodlagos adatbázis (oka) egy másik helyi régióban (Nyugat-Európa) Észak-Európában offline alkalmazáspéldány helyett. Ha ez utóbbi ismét online eldöntheti e Nyugat-Európa használatának folytatásához, vagy távolítsa el az alkalmazást a másolatát, és váltson vissza az Észak-Európa használatával.
 >
 
 A kulcs **előnyöket** , ez a kialakítás a:

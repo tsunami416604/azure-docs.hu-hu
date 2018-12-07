@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: c129f33655f42c51aeb020b1bbd90a445b50492f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 6ed8906066d66b6e16ec482a53137f9ca70ae9c7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882540"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000052"
 ---
 # <a name="get-started-with-log-analytics-in-the-azure-portal"></a>Ismerkedés a Log Analytics használatával az Azure Portalon
 
@@ -186,7 +186,7 @@ A lekérdezéskezelő ikonra a jobb felső területen van. Ez felsorolja az öss
 A Log Analytics lapot több exportáló módszereket támogatja:
 
 - Excel: Az eredmények mentése CSV-fájlként.
-- A Power bi-ban: Exportálhatja az eredményeket a power bi-ban. Lásd: [importálása az Azure Log Analytics-adatok Power BI-bA](../../log-analytics/log-analytics-powerbi.md) részleteiről.
+- A Power bi-ban: Exportálhatja az eredményeket a power bi-ban. Lásd: [importálása az Azure Log Analytics-adatok Power BI-bA](../../azure-monitor/platform/powerbi.md) részleteiről.
 - Hivatkozás megosztása: magát a lekérdezést, egy hivatkozás, amely majd küldhető és más, ugyanahhoz a munkaterülethez hozzáféréssel rendelkező felhasználók által végrehajtott megoszthatók.
 
 ## <a name="next-steps"></a>További lépések

@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
-ms.openlocfilehash: 9f277e81ebd8dd06d8b115f4b011693d427bc177
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: c5d7d3c10b9c8c191144e1e396d28fc53f813623
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866202"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012674"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>A Visual Studio Code az Azure Machine Learning használatának első lépései
 
@@ -64,11 +65,11 @@ Dolgozunk az Azure Machine Learning, a VS Code alakítsa át a Python ide-vel ke
 
 1. Írja be "az Azure ML SDK telepítése" a pip található az SDK telepítési parancs. Egy helyi, privát Python-környezetet jön létre, amely az Azure Machine Learning használatának előfeltételei a Visual Studio Code-ot.
 
-   ![Telepítése](./media/vscode-tools-for-ai/install-sdk.png)
+   ![Pythonhoz készült Azure Machine Learning SDK telepítése](./media/vscode-tools-for-ai/install-sdk.png)
 
 1. A beépített terminál ablakában adja meg a használandó Python-fordítóra vagy tudja érni **Enter** az alapértelmezett Python-fordítóra használatára.
 
-   ![Telepítése](./media/vscode-tools-for-ai/python.png)
+   ![Válassza ki a értelmezője számára készült](./media/vscode-tools-for-ai/python.png)
 
 ## <a name="get-started-with-azure-machine-learning"></a>Ismerkedés az Azure Machine Learning szolgáltatással
 
@@ -76,7 +77,7 @@ Mielőtt elkezdené a képzés és a VS Code használata a machine learning-mode
 
 1. Kattintson az Azure ikon a Visual Studio Code tevékenységsávon. Az Azure Machine Learning oldalsáv jelenik meg.
 
-   [![Telepítése](./media/vscode-tools-for-ai/CreateNewWorkspace.gif)](./media/vscode-tools-for-ai/CreateNewWorkspace.gif#lightbox)
+   [![Az oldalsáv](./media/vscode-tools-for-ai/CreateNewWorkspace.gif)](./media/vscode-tools-for-ai/CreateNewWorkspace.gif#lightbox)
 
 1. Kattintson a jobb gombbal az Azure-előfizetéshez, és válassza ki **munkaterület létrehozása**. Egy lista jelenik meg. Az animált képen az előfizetés neve "Ingyenes próbaverzió" pedig a munkaterület "TeamWorkspace". 
 

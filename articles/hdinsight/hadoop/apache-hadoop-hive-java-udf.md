@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 562320b49f92d9ebb0c74c06e27fab63681955be
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: f027b4c827fd7afe1a9cd2f8f31839b092345728
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634073"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012487"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Használja a Java UDF-ben az Apache Hive a HDInsight
 
@@ -29,9 +29,9 @@ Ismerje meg, hogyan hozhat létre egy Java-alapú felhasználói függvény (UDF
 
     Ez a dokumentum a lépések többségét mindkét Windows - és Linux-alapú fürtökön működik. Töltse fel a lefordított UDF-ben a fürthöz, majd futtassa használt lépéseket azonban olyan Linux-alapú fürtök jellemző. Hivatkozások, amelyek a Windows-alapú fürtök is használható információk állnak rendelkezésre.
 
-* [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 vagy újabb (vagy egy azzal egyenértékű, például az OpenJDK)
+* [Java JDK](https://www.oracle.com/technetwork/java/javase/downloads/) 8 vagy újabb (vagy egy azzal egyenértékű, például az OpenJDK)
 
-* [Apache Maven](http://maven.apache.org/)
+* [Apache Maven](https://maven.apache.org/)
 
 * Egy szövegszerkesztő vagy a Java ide Környezethez
 

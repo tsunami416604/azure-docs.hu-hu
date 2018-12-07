@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.reviewer: mazhar
 ms.author: mbullwin
-ms.openlocfilehash: b4bc632b4951781b85847699d38fd10df14c1a87
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 3106e523e3f8edd17cc27991181267acfab4308b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720745"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002140"
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Útmutatás: Telemetria engedélyezése a Microsoft Dynamics CRM Online Application Insights használatával
 Ez a cikk bemutatja, hogyan küldött telemetriai adatok lekérése [Microsoft Dynamics CRM Online](https://www.dynamics.com/) használatával [Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Végigvezetjük a teljes folyamat az Application insights eszközt ad hozzá az alkalmazás adatokat, és az adatvizualizációról rögzítése.
@@ -32,7 +32,7 @@ Ez a cikk bemutatja, hogyan küldött telemetriai adatok lekérése [Microsoft D
 Az alkalmazás figyelése, az alkalmazás vegyen fel egy Application Insights SDK-t. Az SDK telemetriát küld a [Application Insights portálon](https://portal.azure.com), ahol használhatja a hatékony elemzési és diagnosztikai eszközöket, vagy az adatok exportálása tárolóba.
 
 ### <a name="create-an-application-insights-resource-in-azure"></a>Application Insights-erőforrás létrehozása az Azure-ban
-1. Első [egy fiókot a Microsoft Azure-ban](http://azure.com/pricing). 
+1. Első [egy fiókot a Microsoft Azure-ban](https://azure.com/pricing). 
 2. Jelentkezzen be a [az Azure portal](https://portal.azure.com) és adjon hozzá egy új Application Insights-erőforrást. Ez az, ahol az adatok feldolgozása és jelenik meg.
 
     ![Kattintson a +, fejlesztői szolgáltatások, Application Insights.](./media/app-insights-sample-mscrm/01.png)

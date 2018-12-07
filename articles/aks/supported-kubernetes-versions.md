@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: saudas
-ms.openlocfilehash: f37bfc59e402e87afcffa469d4d2014ed6877db6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e535d1c2c581e20667a1ccf10fc97fcf988bc91a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955700"
+ms.locfileid: "53001834"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Támogatott az Azure Kubernetes Service (AKS) Kubernetes-verzió
 
 A Kubernetes-közösség körülbelül háromhavonta ad ki alverziókat. Ezek a kiadások új funkciókat és fejlesztéseket tartalmaznak. A javítások kiadásai gyakoribbak (esetenként heti rendszerességűek), és csak az alverziók kritikus hibáinak javítására szolgálnak. A patch-kiadásokkal biztonsági réseket, vagy az ügyfelek és a Kubernetes-alapú éles üzemben futó termékek sok érintő jelentős hibák javításait tartalmazza.
 
-Alverzió elérhetővé az új Kubernetes [acs-engine] [ acs-engine] ismereteik alapján. The AKS szolgáltatási szintjének célkitűzése (SLO) az AKS-fürtök alverzióinak kiadása 30 napon belül. Ez a kiadás stabilitásától függően változhat.
+Alverzió elérhetővé az új Kubernetes [aks-motor] [ aks-engine] ismereteik alapján. The AKS szolgáltatási szintjének célkitűzése (SLO) az AKS-fürtök alverzióinak kiadása 30 napon belül. Ez a kiadás stabilitásától függően változhat.
 
 ## <a name="kubernetes-version-support-policy"></a>A Kubernetes verziótámogatási szabályzata
 
@@ -84,7 +84,7 @@ A fő automatikusan frissül, és a legújabb támogatott verzióját.
 A fürt frissítésével kapcsolatos információkért lásd: [Azure Kubernetes Service (AKS)-fürt frissítése][aks-upgrade].
 
 <!-- LINKS - External -->
-[acs-engine]: https://github.com/Azure/acs-engine
+[aks-engine]: https://github.com/Azure/aks-engine
 [azure-update-channel]: https://azure.microsoft.com/updates/?product=kubernetes-service
 
 <!-- LINKS - Internal -->

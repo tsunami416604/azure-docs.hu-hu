@@ -10,16 +10,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: d7b29980321f04d1ad9325580bc48ab944f60d1c
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 73c68e6946b3715bfa67561141e6c18e32e20c18
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633716"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011759"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Mi az Apache Hive és az Azure HDInsight HiveQL?
 
-[Az Apache Hive](http://hive.apache.org/) egy rendszer data warehouse az Apache Hadoop. Hive adatösszegzéseket, lekérdezéséhez és az adatok elemzése lehetővé teszi. Hive-lekérdezések HiveQL, amely egy hasonló, az SQL-lekérdezési nyelv nyelven íródtak.
+[Az Apache Hive](https://hive.apache.org/) egy rendszer data warehouse az Apache Hadoop. Hive adatösszegzéseket, lekérdezéséhez és az adatok elemzése lehetővé teszi. Hive-lekérdezések HiveQL, amely egy hasonló, az SQL-lekérdezési nyelv nyelven íródtak.
 
 Hive teszi projektstruktúra nagymértékben strukturálatlan adatokon. Struktúráját határozza meg, miután a HiveQL használatával lekérdezheti az adatokat, a Java vagy a MapReduce ismerete nélkül.
 
@@ -193,7 +193,7 @@ Ezek az utasítások hajtsa végre a következő műveleteket:
 
 ### <a id="usetez"></a>Az Apache Tez
 
-[Az Apache Tez](http://tez.apache.org) egy keretrendszer, amely lehetővé teszi, hogy az adatok nagy számításigényű alkalmazásokat, például a Hive, sokkal hatékonyabban futtatásához ipari méretekben. Linux-alapú HDInsight-fürtök esetén alapértelmezés szerint engedélyezve van a tezben futtatja.
+[Az Apache Tez](https://tez.apache.org) egy keretrendszer, amely lehetővé teszi, hogy az adatok nagy számításigényű alkalmazásokat, például a Hive, sokkal hatékonyabban futtatásához ipari méretekben. Linux-alapú HDInsight-fürtök esetén alapértelmezés szerint engedélyezve van a tezben futtatja.
 
 > [!NOTE]
 > Tez jelenleg alapértelmezés szerint le van Windows-alapú HDInsight-fürtök esetén, és engedélyezni kell. Tez kihasználásához, a következő értéket kell beállítani, egy Hive-lekérdezés:
@@ -246,18 +246,18 @@ Most, hogy már Hive van, és hogyan használható a HDInsight a Hadoop-keretren
 * [A Pig használata a HDInsightban][hdinsight-use-pig]
 * [HDInsight MapReduce-feladatok használata][hdinsight-use-mapreduce]
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
-[apache-tez]: http://tez.apache.org
-[apache-hive]: http://hive.apache.org/
-[apache-log4j]: http://en.wikipedia.org/wiki/Log4j
+[apache-tez]: https://tez.apache.org
+[apache-hive]: https://hive.apache.org/
+[apache-log4j]: https://en.wikipedia.org/wiki/Log4j
 [hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: http://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
-[hivetask]: http://msdn.microsoft.com/library/mt146771(v=sql.120).aspx
-[connectionmanager]: http://msdn.microsoft.com/library/mt146773(v=sql.120).aspx
-[ssispack]: http://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
+[import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
+[hivetask]: https://msdn.microsoft.com/library/mt146771(v=sql.120).aspx
+[connectionmanager]: https://msdn.microsoft.com/library/mt146773(v=sql.120).aspx
+[ssispack]: https://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
 
 [hdinsight-use-pig]: hdinsight-use-pig.md
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
@@ -272,7 +272,7 @@ Most, hogy már Hive van, és hogyan használható a HDInsight a Hadoop-keretren
 [hdinsight-upload-data]: ../hdinsight-upload-data.md
 
 [Powershell-install-configure]: /powershell/azureps-cmdlets-docs
-[powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
+[powershell-here-strings]: https://technet.microsoft.com/library/ee692792.aspx
 
 
-[cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
+[cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx

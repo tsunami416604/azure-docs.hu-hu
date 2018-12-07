@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 48b1e47befa647a9d221e5cdf5bf0485c3b66028
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 588e56c9ae22578c08dbca07c7c576fe8b577b58
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423827"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012334"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>Oktatóanyag: Azure Active Directory-integráció az kis fejlesztései
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Kisebb fejlesztések az Azure AD-integráció konfigurálása, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy kis fejlesztései egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Kisebb fejlesztések integrálása az Azure AD beállítása, hozzá kell kis fe
 
 **Kisebb fejlesztések hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -216,7 +216,7 @@ Kisebb fejlesztések jelentkezzen be az Azure AD-felhasználók engedélyezésé
 
     b. Adja meg a **Vezetéknév** például a felhasználó **Simon**.
 
-    c. Adja meg a **E-mail** például a felhasználó **brittasimon@contoso.com**. 
+    c. Adja meg a **E-mail** például a felhasználó <strong>brittasimon@contoso.com</strong>. 
 
     d. Azt is beállíthatja, adja meg a személyes üzenet a **értesítő** mezőbe. Ha nem szeretne az értesítés elküldéséhez, akkor törölje ezt a jelölőnégyzetet.
 
